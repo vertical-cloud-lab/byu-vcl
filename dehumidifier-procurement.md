@@ -60,7 +60,7 @@ This document outlines specific industrial/commercial dehumidifier products suit
 - **Time to target**: 2-4 hours from 24% to 15% RH
 - **Precision**: ±2-3% RH with digital controls
 - **Ideal for powder storage**: ✓ Yes - can maintain very low humidity
-- **Sizing**: **Perfect match** - 12x oversized allows low RH achievement
+- **Sizing**: **Intentionally oversized (12x room size)** - this oversizing enables very low RH achievement
 
 **Why Quest 155 excels at low humidity:**
 - High-efficiency design works well even at low RH
@@ -442,7 +442,7 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 ### Alternative Options:
 
 **💰 BUDGET OPTION: AlorAir HD55 + Built-in Pump**
-- **Price**: ~$503 (WiFi model with pump)
+- **Price**: ~$503 (WiFi model with pump) = **$503 total**
 - **Energy Cost**: ~$446/year
 - **Capacity**: 113 pints/day (14 gallons/day)
 - **Target Humidity**: **~18-22% RH achievable** (marginal for powders)
