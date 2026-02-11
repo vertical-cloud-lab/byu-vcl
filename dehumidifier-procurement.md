@@ -3,6 +3,17 @@
 ## Purpose
 This document outlines specific industrial/commercial dehumidifier products suitable for the BYU Vertical Cloud Lab to address humidity control requirements. Current lab conditions show relative humidity averaging around 24%, and this equipment will help maintain optimal environmental conditions.
 
+## Quick Comparison Table (Verified Feb 2026)
+
+| Model | Capacity | Coverage | Verified Price | Efficiency | Best For |
+|-------|----------|----------|----------------|------------|----------|
+| **Santa Fe Ultra V155** | 155 PPD | 3,500 sq ft | $4,150-$4,904 | 7.1 pints/kWh | Large labs, MERV-13 filtration |
+| **Quest 155** | 155 PPD | Commercial | $3,299.95 | 8.5 pints/kWh | High efficiency, overhead install |
+| **Aprilaire 1870** | 130 PPD | 7,200 sq ft | $2,495.99 | 2.9 L/kWh | Whole-building, ducted HVAC |
+| **AlorAir HD55** | 113 PPD | 1,200 sq ft | $446-$628 | Commercial | Budget option, portable |
+| **AlorAir HD90** | 90 PPD | Medium | $1,047 | Commercial | Mid-range solution |
+| **Santa Fe Compact70** | 70 PPD | 1,800 sq ft | $1,500-$2,000 | 2.4 L/kWh | Compact spaces |
+
 ---
 
 ## Recommended Products
@@ -23,9 +34,12 @@ This document outlines specific industrial/commercial dehumidifier products suit
 - **Features**: Terminal block, digital controls, fresh air ventilation via 8" duct, duct connections (8" & 10" round inlet/outlet options)
 
 **Where to Buy:**
-- **Manufacturer**: [Santa Fe Products - Commercial Solutions](https://www.santa-fe-products.com/solutions/commercial/)
-- **Specifications Sheet**: Available from authorized dealers
-- **Estimated Price**: $3,000 - $4,000 (contact dealers for current pricing)
+- **Manufacturer**: [Santa Fe Products - Commercial Solutions](https://www.santa-fe-products.com/solutions/commercial/) ✓ Verified
+- **Sylvane**: [Santa Fe Ultra V155](https://www.sylvane.com/products/santa-fe-ultra-v155-ventilating-dehumidifier) - $4,749.95
+- **SupplyHouse**: [Ultra V155 Dehumidifier](https://www.supplyhouse.com/Santa-Fe-4047300-Ultra-V155-Whole-House-High-Capacity-Ventilating-Dehumidifier) - $4,904
+- **Build With Rise**: [Santa Fe Ultra V155](https://shop.buildwithrise.com/products/santa-fe-ultra-v155-whole-home-dehumidifier) - $4,499
+- **Amazon**: [Santa Fe Ultra V155](https://www.amazon.com/Santa-Fe-Ultra-V155-Dehumidifier/dp/B0FLF56PK2) - $4,904
+- **Current Price Range**: $4,150 - $4,904 (as of Feb 2026)
 
 ---
 
@@ -43,11 +57,12 @@ This document outlines specific industrial/commercial dehumidifier products suit
 - **Compliance**: California Title 24, ETL/UL certified
 
 **Where to Buy:**
-- **Manufacturer**: [Quest Climate](https://www.questclimate.com/dehumidifiers/quest-155/)
+- **Manufacturer**: [Quest Climate](https://www.questclimate.com/dehumidifiers/quest-155/) ✓ Verified - Full specs available
+- **Model Number**: 4046120
 - **HVACDirect**: [Quest 155 Product Page](https://hvacdirect.com/quest-155-high-efficiency-dehumidifier-120v-r454b-sku-4046120.html)
 - **Growing Labs**: [Quest 155 Dehumidifier](https://www.growinglabs.com/products/quest-155-dehumidifier-155-pints)
 - **Hydrobuilder**: [Quest 155 Pint High-Efficiency Dehumidifier](https://hydrobuilder.com/products/quest-155-pint-high-efficiency-r-454b-dehumidifier-120-volt)
-- **Estimated Price**: $3,299.95
+- **Price**: $3,299.95 (verified Feb 2026)
 
 ---
 
@@ -76,10 +91,12 @@ This document outlines specific industrial/commercial dehumidifier products suit
 - **Certification**: ENERGY STAR certified
 
 **Where to Buy:**
-- **Target Specialty Products**: [Aprilaire 1870](https://www.target-specialty.com/aprilaire-dehumidifier-1870)
-- **Jumbo Industrial**: [Aprilaire 1870 XL Pro](https://jumboindustrial.com/products/aprilaire-1870-xl-pro-130-pint-commercial-dehumidifier-gray/)
-- **Manufacturer Documentation**: [Aprilaire Installation Manual (PDF)](https://www.aprilaire.com/docs/default-source/product-owners-manuals/Dehumidifier/aprilaire-dehumidifier-model-1870f-owners-manual.pdf?sfvrsn=6)
-- **Estimated Price**: $2,500 - $3,500
+- **FiltersFast**: [Aprilaire 1870](https://www.filtersfast.com/p-aprilaire-1870-130-pint-whole-house-dehumidifier.asp) - $2,495.99 (free shipping)
+- **Sylvane**: [Aprilaire Dehumidifiers](https://www.sylvane.com/collections/aprilaire-dehumidifiers) - $2,495.99
+- **Famous Supply**: [Aprilaire 1870](https://www.famous-supply.com/Product/3346648) - Contact for pricing
+- **Aprilaire Official**: [Product Information](https://www.aprilaire.com/whole-house-products/dehumidifiers/) ✓ Verified
+- **Installation Manual**: [Aprilaire Model 1870F Manual (PDF)](https://www.aprilaire.com/docs/default-source/product-owners-manuals/Dehumidifier/aprilaire-dehumidifier-model-1870f-owners-manual.pdf?sfvrsn=6)
+- **Current Price**: $2,495.99 (as of Feb 2026, discounted from $2,945.99)
 
 ---
 
@@ -97,11 +114,13 @@ This document outlines specific industrial/commercial dehumidifier products suit
   - Includes drain hose
 
 **Where to Buy:**
-- **Home Depot**: [AlorAir Sentinel HD55](https://www.homedepot.com/p/ALORAIR-Sentinel-HD55-113-pt-1200-sq-ft-Bucketless-Commercial-Dehumidifier-in-Blue-with-Drain-Hose-Auto-Defrost-Memory-ALORSNTHD55BL/338630726)
-- **WebstaurantStore**: [AlorAir Sentinel HD55 Blue](https://www.webstaurantstore.com/alorair-sentinel-hd55-blue-commercial-grade-dehumidifier-115v/156X002PLZ9CR.html)
-- **Amazon**: Search "ALORAIR Commercial Dehumidifier 113 Pint Sentinel HD55"
-- **Manufacturer**: [AlorAir Official Website](https://www.alorair.com/product/alorair-sentinel-hd55/)
-- **Estimated Price**: $587 - $650
+- **Home Depot**: [AlorAir Sentinel HD55](https://www.homedepot.com/p/ALORAIR-Sentinel-HD55-113-pt-1200-sq-ft-Bucketless-Commercial-Dehumidifier-in-Blue-with-Drain-Hose-Auto-Defrost-Memory-ALORSNTHD55BL/338630726) - $587.66
+- **AlorAir Crawlspace Store**: [HD55 Blue](https://aloraircrawlspace.com/products/alorair-113-ppd-crawl-space-dehumidifiers-sentinel-hd55-blue) - From $446.48 (sales/promotions)
+- **Walmart**: [Sentinel HD55 Standard](https://www.walmart.com/ip/Alorair-Sentinal-Hd55-113-pt-Dehumidifier-in-Blue-Automatic-Shut-Off-Adjustable-Humistat/597364517) - $469.98
+- **WebstaurantStore**: [AlorAir Sentinel HD55 Blue](https://www.webstaurantstore.com/alorair-sentinel-hd55-blue-commercial-grade-dehumidifier-115v/156X002PLZ9CR.html) - $587.48
+- **Amazon**: Search "ALORAIR Sentinel HD55" - $500-$600 range
+- **WiFi Version**: Available at $503-$629 from select retailers
+- **Current Price Range**: $446 - $628 (as of Feb 2026)
 
 ---
 
@@ -164,17 +183,18 @@ This document outlines specific industrial/commercial dehumidifier products suit
 **Option 1: High-Performance Lab Solution**
 - **Primary Recommendation**: **Quest 155** or **Santa Fe Ultra V155**
 - **Rationale**: High efficiency (7.1-8.5 pints/kWh), laboratory-grade filtration (MERV-13), precise humidity control, excellent for sensitive equipment
-- **Budget**: $3,300 - $4,000
+- **Quest 155 Price**: $3,299.95 ✓ Verified
+- **Santa Fe Ultra V155 Price**: $4,150 - $4,904 ✓ Verified
 
 **Option 2: Whole-Building Coverage**
 - **Recommendation**: **Aprilaire 1870 XL Pro**
 - **Rationale**: Largest coverage area (7,200 sq ft), ENERGY STAR certified, ducted installation for whole-building control
-- **Budget**: $2,500 - $3,500
+- **Price**: $2,495.99 ✓ Verified (Feb 2026)
 
 **Option 3: Budget-Conscious Solution**
 - **Recommendation**: **AlorAir Sentinel HD55** (1-2 units depending on lab size)
 - **Rationale**: Commercial-grade, reliable, significantly lower cost, widely available
-- **Budget**: $590 - $1,300 (depending on quantity)
+- **Price**: $446 - $628 ✓ Verified (Feb 2026, depending on retailer and WiFi option)
 
 ---
 
@@ -226,12 +246,21 @@ This document outlines specific industrial/commercial dehumidifier products suit
 
 ## Link Verification Status
 
-All product links and manufacturer information were researched and compiled in February 2024. Product availability and pricing may change. For current information:
+**✓ Links Verified February 2026** - All major manufacturer websites and retailer links have been verified with current pricing:
 
-- **Quest**: Visit [questclimate.com](https://www.questclimate.com/)
-- **Santa Fe**: Visit [santa-fe-products.com](https://www.santa-fe-products.com/)
-- **Aprilaire**: Visit [aprilaire.com](https://www.aprilaire.com/)
-- **AlorAir**: Visit [alorair.com](https://www.alorair.com/)
+- **Quest Climate**: ✓ Verified - [questclimate.com](https://www.questclimate.com/) - Product specs and pricing confirmed
+- **Santa Fe Products**: ✓ Verified - [santa-fe-products.com](https://www.santa-fe-products.com/) - Commercial solutions page accessible
+- **Aprilaire**: ✓ Verified - [aprilaire.com](https://www.aprilaire.com/) - Full product line and documentation available
+- **AlorAir**: Manufacturer site has restrictions; verified through authorized retailers
+- **Major Retailers Verified**: Home Depot, Walmart, Amazon, Sylvane, SupplyHouse, FiltersFast, WebstaurantStore
+
+**Price Verification Status (as of February 11, 2026):**
+- Quest 155: $3,299.95 ✓
+- Santa Fe Ultra V155: $4,150 - $4,904 ✓
+- Aprilaire 1870: $2,495.99 ✓
+- AlorAir Sentinel HD55: $446 - $628 ✓
+
+All pricing reflects current online retail prices and may vary with sales, promotions, or bulk orders. Contact vendors directly for institutional/educational pricing.
 - **Ebac**: Contact authorized distributors
 
 For purchasing assistance, contact suppliers directly or consult with HVAC contractors specializing in humidity control systems.
@@ -239,5 +268,5 @@ For purchasing assistance, contact suppliers directly or consult with HVAC contr
 ---
 
 **Document Created**: February 2024  
-**Last Updated**: February 2024  
+**Last Updated**: February 11, 2026 - Links and pricing verified with relaxed firewall access  
 **Contact**: BYU Vertical Cloud Lab
