@@ -5,16 +5,17 @@ This document outlines specific industrial/commercial dehumidifier products suit
 
 ## Quick Comparison Table (Verified Feb 2026)
 
-| Model | Capacity | Coverage | Verified Price | Efficiency | Power | Drainage | Annual Energy Cost* |
-|-------|----------|----------|----------------|------------|-------|----------|---------------------|
-| **Quest 155** ⭐ | 155 PPD | Commercial | $3,299.95 | **8.5 pints/kWh** | 750W | Continuous/pump | ~$394/yr |
-| **Santa Fe Ultra V155** | 155 PPD | 3,500 sq ft | $4,150-$4,904 | 7.1 pints/kWh | 1,144W | Continuous/pump | ~$600/yr |
-| **Aprilaire 1870** | 130 PPD | 7,200 sq ft | $2,495.99 | 2.9 L/kWh | ~1,000W | Continuous/pump | ~$525/yr |
-| **AlorAir HD55** 💰 | 113 PPD | 1,200 sq ft | $446-$628 | ~3.5 pints/kWh | ~850W | Continuous/pump | ~$446/yr |
-| **AlorAir HD90** | 90 PPD | Medium | $1,047 | ~3.2 pints/kWh | ~900W | Continuous/pump | ~$472/yr |
-| **Santa Fe Compact70** | 70 PPD | 1,800 sq ft | $1,500-$2,000 | 2.4 L/kWh | ~720W | Continuous/pump | ~$378/yr |
+| Model | Capacity | Coverage | New Price | Used/Refurb Price | Efficiency | Annual Energy* | 5-Yr Total** |
+|-------|----------|----------|-----------|-------------------|------------|----------------|--------------|
+| **Quest 155** ⭐ | 155 PPD | Commercial | $3,299.95 | **$1,000-1,500** | **8.5 pints/kWh** | ~$394/yr | $3,120-5,420 |
+| **Santa Fe Ultra V155** | 155 PPD | 3,500 sq ft | $4,150-$4,904 | N/A | 7.1 pints/kWh | ~$600/yr | $7,450 |
+| **Aprilaire 1870** | 130 PPD | 7,200 sq ft | $2,495.99 | N/A | 2.9 L/kWh | ~$525/yr | $5,271 |
+| **AlorAir HD55** 💰 | 113 PPD | 1,200 sq ft | $446-$628 | N/A | ~3.5 pints/kWh | ~$446/yr | $2,733 |
+| **AlorAir HD90** | 90 PPD | Medium | $1,047 | N/A | ~3.2 pints/kWh | ~$472/yr | N/A |
+| **Santa Fe Compact70** | 70 PPD | 1,800 sq ft | $1,500-$2,000 | N/A | 2.4 L/kWh | ~$378/yr | N/A |
 
-*Estimated at $0.12/kWh, 24/7 operation. ⭐ = Most efficient | 💰 = Best value
+*Estimated at $0.12/kWh, 24/7 operation. **Includes equipment + pump + 5 years energy.  
+⭐ = Most efficient | 💰 = Best value | **Used Quest 155 available on eBay ($1,000-1,500) and OfferUp ($695-900)**
 
 ---
 
@@ -245,12 +246,47 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 - **Compliance**: California Title 24, ETL/UL certified
 
 **Where to Buy:**
+
+**NEW:**
 - **Manufacturer**: [Quest Climate](https://www.questclimate.com/dehumidifiers/quest-155/) ✓ Verified - Full specs available
 - **Model Number**: 4046120
 - **HVACDirect**: [Quest 155 Product Page](https://hvacdirect.com/quest-155-high-efficiency-dehumidifier-120v-r454b-sku-4046120.html)
 - **Growing Labs**: [Quest 155 Dehumidifier](https://www.growinglabs.com/products/quest-155-dehumidifier-155-pints)
 - **Hydrobuilder**: [Quest 155 Pint High-Efficiency Dehumidifier](https://hydrobuilder.com/products/quest-155-pint-high-efficiency-r-454b-dehumidifier-120-volt)
-- **Price**: $3,299.95 (verified Feb 2026)
+- **New Price**: $3,299.95 (verified Feb 2026)
+
+**USED/REFURBISHED/OPEN BOX (Significant Savings):**
+- **eBay**: [Quest 155 Used Listings](https://www.ebay.com/sch/i.html?_nkw=quest+155+dehumidifier) - $1,000-$1,500
+  - Pre-owned units in working condition
+  - Some sellers offer returns
+  - Optional extended warranties available (Allstate)
+  - Check seller ratings and descriptions carefully
+- **OfferUp**: [Quest Dehumidifier Listings](https://offerup.com/explore/k/quest+dehumidifier) - $695-$900
+  - Local pickup often available
+  - Some units still under warranty
+  - Bulk discounts possible
+  - Test before purchase in some cases
+- **Commercial Equipment Resellers**: Contact Quest dealers for refurbished units
+  - May offer certified refurbished with limited warranty
+  - Professional inspection and testing
+  - Better warranty support than individual sellers
+
+**Buying Used/Refurbished Considerations:**
+- ✅ **Savings**: 50-70% off new price ($1,000-1,500 vs $3,300)
+- ✅ **Environmental**: Reuse commercial equipment
+- ✅ **Immediate availability**: Often ships faster than new
+- ⚠️ **Warranty**: Check if transferable (Quest offers 5-year sealed system warranty)
+- ⚠️ **Condition**: Ask for serial number to verify age with Quest
+- ⚠️ **History**: Confirm operational status, ask for test results
+- ⚠️ **Buyer protection**: Use platforms with return policies (eBay, PayPal)
+
+**Recommended if buying used:**
+1. Verify unit is complete with all components (filter, drain fittings, power cord)
+2. Check build date (serial number) - newer units preferred
+3. Confirm warranty status with Quest Climate using serial number
+4. Request photos of control panel and coils
+5. Ask about usage history (commercial grow room, lab, etc.)
+6. Use payment methods with buyer protection
 
 ---
 
@@ -441,7 +477,22 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 
 ### Alternative Options:
 
-**💰 BUDGET OPTION: AlorAir HD55 + Built-in Pump**
+**💰 BUDGET OPTION 1: Quest 155 USED/REFURBISHED**
+- **Price**: $1,000-$1,500 (used) + ~$150 pump = **$1,150-$1,650 total**
+- **Savings vs New**: ~$1,800-$2,300 (55-70% off)
+- **Energy Cost**: ~$394/year (same as new)
+- **Target Humidity**: **10-15% RH achievable** ✓ (same performance as new)
+- **5-Year Total Cost**: $1,150-1,650 + $1,970 (energy) = **$3,120-$3,620**
+- **Savings vs New Quest**: ~$1,800-$2,300 over 5 years
+- **Best for**: Budget-conscious but still need 10-15% RH for powders
+- **Where**: eBay ($1,000-1,500), OfferUp ($695-900)
+- **⚠️ Important**: 
+  - Verify warranty status with Quest using serial number
+  - Check unit condition and operational history
+  - Use buyer protection (eBay, PayPal)
+  - May have cosmetic wear but should be fully functional
+
+**💰 BUDGET OPTION 2: AlorAir HD55 + Built-in Pump (NEW)**
 - **Price**: ~$503 (WiFi model with pump) = **$503 total**
 - **Energy Cost**: ~$446/year
 - **Capacity**: 113 pints/day (14 gallons/day)
@@ -470,14 +521,18 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 
 | Model | Equipment | Pump | Year 1 | 5-Year Energy | **5-Year Total** | $/Year Avg |
 |-------|-----------|------|---------|---------------|------------------|------------|
-| **Quest 155** ⭐ | $3,300 | $150 | $3,844 | $1,970 | **$5,420** | $1,084 |
+| **Quest 155 (Used)** 💰 | $1,000-1,500 | $150 | $1,544-2,044 | $1,970 | **$3,120-$3,620** | $624-$724 |
+| **Quest 155 (New)** ⭐ | $3,300 | $150 | $3,844 | $1,970 | **$5,420** | $1,084 |
 | **Aprilaire 1870** | $2,496 | $150 | $3,171 | $2,625 | **$5,271** | $1,054 |
 | **Santa Fe Ultra V155** | $4,150 | $150 | $4,900 | $3,000 | **$7,450** | $1,490 |
-| **AlorAir HD55 (pump)** 💰 | $503 | $0 | $949 | $2,230 | **$2,733** | $547 |
+| **AlorAir HD55 (pump)** | $503 | $0 | $949 | $2,230 | **$2,733** | $547 |
 
 *Assumes $0.12/kWh, 24/7 operation*
 
-**Key Insight**: Quest 155 pays for itself in efficiency over 5 years compared to Santa Fe Ultra V155, despite higher upfront cost.
+**Key Insights**: 
+- **Used Quest 155** offers best value: 10-15% RH performance at 40% lower total cost than new
+- New Quest 155 pays for itself in efficiency over 5 years compared to Santa Fe Ultra V155
+- AlorAir HD55 has lowest total cost BUT may only achieve 18-22% RH (insufficient for sensitive powders)
 
 ---
 
