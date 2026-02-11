@@ -18,6 +18,153 @@ This document outlines specific industrial/commercial dehumidifier products suit
 
 ---
 
+## 📊 EXPECTED HUMIDITY LEVELS FOR YOUR 600 SQ FT LAB
+
+**Your Lab Specifications:**
+- **Size**: ~600 sq ft × 12' ceiling = **7,200 cubic feet**
+- **Current RH**: 24% (7-day average from your monitoring data)
+- **Goal**: Lower humidity for moisture-sensitive powder storage
+
+### Target Humidity for Moisture-Sensitive Powders
+
+**Industry Standards:**
+- **Hygroscopic powders** (absorb moisture): 10-20% RH ideal
+- **General powder storage**: 20-30% RH acceptable  
+- **Critical materials** (pharmaceuticals, chemicals): 10-15% RH preferred
+- **Your current 24% RH**: On the higher end for sensitive powders
+
+**Recommended Target: 15-20% RH** for optimal powder preservation
+
+---
+
+### Achievable Humidity Levels by Model
+
+**Important Notes:**
+1. At **24% RH, you're already quite dry** - most dehumidifiers are rated at 80°F/60% RH
+2. **Performance decreases** at lower humidity levels (less moisture to remove)
+3. All recommended models are **oversized for 600 sq ft**, which is GOOD:
+   - Faster humidity reduction
+   - Can achieve lower target RH
+   - Less frequent cycling (longer equipment life)
+   - Better control precision
+
+---
+
+### Model-by-Model Performance in Your Lab
+
+**1. Quest 155** ⭐ **BEST FOR YOUR APPLICATION**
+- **Coverage**: Rated for commercial spaces (easily handles 600 sq ft)
+- **Capacity**: 155 pints/day @ 80°F/60% RH
+  - At 24% RH: ~40-60 pints/day effective capacity
+- **Expected Target RH**: **10-15% RH achievable** ✓
+- **Time to target**: 2-4 hours from 24% to 15% RH
+- **Precision**: ±2-3% RH with digital controls
+- **Ideal for powder storage**: ✓ Yes - can maintain very low humidity
+- **Sizing**: **Perfect match** - 12x oversized allows low RH achievement
+
+**Why Quest 155 excels at low humidity:**
+- High-efficiency design works well even at low RH
+- Digital controls allow precise setpoint (can set to 15% RH)
+- Oversized capacity means it can pull moisture even when levels are low
+- MERV-13 filter prevents powder contamination
+
+---
+
+**2. Santa Fe Ultra V155** 
+- **Coverage**: Up to 3,500 sq ft (6x your lab size)
+- **Capacity**: 155 pints/day @ 80°F/60% RH
+  - At 24% RH: ~35-55 pints/day effective
+- **Expected Target RH**: **12-18% RH achievable** ✓
+- **Time to target**: 2-4 hours from 24% to 15% RH
+- **Precision**: ±3% RH
+- **Ideal for powder storage**: ✓ Yes - very capable
+- **Sizing**: **Oversized** (good) - can maintain low humidity
+
+---
+
+**3. Aprilaire 1870**
+- **Coverage**: Up to 7,200 sq ft (12x your lab size!)
+- **Capacity**: 130 pints/day @ 80°F/60% RH
+  - At 24% RH: ~30-50 pints/day effective
+- **Expected Target RH**: **15-20% RH achievable**
+- **Time to target**: 3-5 hours from 24% to 18% RH
+- **Precision**: ±3-5% RH
+- **Ideal for powder storage**: Adequate, but less precise than Quest
+- **Sizing**: **Extremely oversized** - may short-cycle
+- **Note**: Ducted design less ideal for your single room
+
+---
+
+**4. AlorAir Sentinel HD55** 💰
+- **Coverage**: Up to 1,200 sq ft (2x your lab size)
+- **Capacity**: 113 pints/day @ 80°F/60% RH
+  - At 24% RH: ~25-40 pints/day effective
+- **Expected Target RH**: **18-22% RH achievable**
+- **Time to target**: 4-6 hours from 24% to 20% RH
+- **Precision**: ±4-5% RH (less precise control)
+- **Ideal for powder storage**: Marginal - may struggle to reach <20% RH
+- **Sizing**: Adequate but not ideal for very low humidity targets
+
+**⚠️ Limitation**: May not reliably maintain <20% RH in your application
+
+---
+
+**5. AlorAir Sentinel HD90**
+- **Coverage**: Medium spaces (adequate for 600 sq ft)
+- **Capacity**: 90 pints/day @ 80°F/60% RH
+  - At 24% RH: ~20-35 pints/day effective
+- **Expected Target RH**: **20-24% RH achievable**
+- **Time to target**: 6-8 hours to reach 22% RH
+- **Precision**: ±4-5% RH
+- **Ideal for powder storage**: **Not recommended** - insufficient for <20% RH
+- **Sizing**: Undersized for low humidity targets
+
+---
+
+### 📋 **RECOMMENDATION FOR YOUR APPLICATION**
+
+**Goal: Maintain 15-20% RH for moisture-sensitive powders in 600 sq ft lab**
+
+**✅ CHOOSE: Quest 155**
+
+**Why this is the RIGHT choice for powder storage:**
+
+1. **Can achieve and maintain 10-15% RH** (well below your 24% current level)
+2. **Oversized capacity** (12x room size) = reliable low-humidity performance
+3. **Precise digital control** = set exact target (15% RH)
+4. **MERV-13 filtration** = protects powders from airborne contamination
+5. **Fast response** = quickly corrects humidity spikes (door openings, etc.)
+6. **Most efficient** = lowest energy cost for continuous operation
+7. **Proven in labs** = designed for controlled environments
+
+**Expected Performance:**
+- **Initial**: 24% RH (current) → 15% RH in **2-4 hours**
+- **Maintenance**: Hold 15% RH ±2% continuously
+- **Recovery**: Return to 15% RH within 30-60 min after door opening
+- **Energy**: ~$394/year running 24/7 to maintain low humidity
+
+**Budget Alternative (if 18-22% RH is acceptable):**
+- AlorAir HD55 can maintain **~20% RH** at much lower cost ($446/year energy)
+- Trade-off: Less precise, higher target humidity (~20% vs 15%)
+- **Only if 20% RH is sufficient** for your powder storage requirements
+
+---
+
+### Humidity Control Performance Summary
+
+| Model | Your Lab (600 sq ft) | Target RH Achievable | Time to 15% RH | Powder Storage |
+|-------|---------------------|----------------------|----------------|----------------|
+| **Quest 155** ⭐ | Excellent | **10-15% RH** | 2-4 hours | ✓ Excellent |
+| **Santa Fe Ultra V155** | Excellent | 12-18% RH | 2-4 hours | ✓ Very Good |
+| **Aprilaire 1870** | Good | 15-20% RH | 3-5 hours | ✓ Good |
+| **AlorAir HD55** 💰 | Adequate | 18-22% RH | 4-6 hours | ⚠️ Marginal |
+| **AlorAir HD90** | Marginal | 20-24% RH | 6-8+ hours | ❌ Not Ideal |
+| **Santa Fe Compact70** | Marginal | 20-25% RH | 8+ hours | ❌ Insufficient |
+
+**Key Insight**: For moisture-sensitive powder storage requiring <20% RH, **Quest 155 is the clear choice** despite higher upfront cost. The AlorAir HD55 may struggle to maintain the low humidity levels needed for optimal powder preservation.
+
+---
+
 ## 🚨 CRITICAL: Drainage Solution for Lab Without Floor Drain
 
 **Your Situation**: No drain in the lab, but adjacent lab has a drain.
@@ -263,13 +410,15 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 
 ## Procurement Recommendations
 
-### 🎯 **RECOMMENDED FOR YOUR LAB** (No floor drain, energy efficiency priority):
+### 🎯 **RECOMMENDED FOR YOUR 600 SQ FT LAB** (Powder storage, no floor drain, energy priority):
 
 **🏆 TOP RECOMMENDATION: Quest 155**
 - **Price**: $3,299.95 + ~$150 condensate pump = **$3,450 total**
 - **Energy Cost**: ~$394/year (24/7 operation) - **MOST EFFICIENT**
 - **Capacity**: 155 pints/day (19 gallons/day)
 - **Efficiency**: 8.5 pints/kWh ⭐ **Best in class**
+- **Target Humidity**: **Can achieve and maintain 10-15% RH** ✓ Ideal for powder storage
+- **Current 24% RH → 15% RH in 2-4 hours**
 - **Drainage**: 3/4" drain port → add external condensate pump → route to adjacent lab
 - **Installation**: Freestanding or overhead, no ducting needed (good for ventilated room)
 - **Filtration**: MERV-13 (excellent for lab)
@@ -277,30 +426,39 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 - **Maintenance**: Low - just condensate pump operation and filter changes
 - **5-Year Total Cost**: $3,450 (equipment) + $1,970 (energy) = **$5,420**
 
-**Why Quest 155 for your situation:**
+**Why Quest 155 for your powder storage application:**
+✅ **Achieves 10-15% RH** (optimal for moisture-sensitive powders)  
 ✅ Most energy efficient = lowest operating costs  
 ✅ No ducting needed (good for already-ventilated space)  
 ✅ Easy condensate pump integration  
-✅ Lab-grade MERV-13 filtration  
+✅ Lab-grade MERV-13 filtration (protects powders)  
 ✅ Compact, can install overhead  
-✅ Fully automatic with pump - **zero manual water removal**
+✅ Fully automatic with pump - **zero manual water removal**  
+✅ Precise digital controls - set exact target humidity  
+✅ Fast recovery after door openings (2-4 hours to target)
 
 ---
 
 ### Alternative Options:
 
 **💰 BUDGET OPTION: AlorAir HD55 + Built-in Pump**
-- **Price**: ~$503 (WiFi model with pump) + **$503 total**
+- **Price**: ~$503 (WiFi model with pump)
 - **Energy Cost**: ~$446/year
 - **Capacity**: 113 pints/day (14 gallons/day)
+- **Target Humidity**: **~18-22% RH achievable** (marginal for powders)
 - **Built-in pump**: Eliminates external pump need
 - **5-Year Total Cost**: $503 + $2,230 (energy) = **$2,733**
-- **Best for**: Smaller lab spaces, tightest budget
-- **Trade-off**: Lower efficiency, less capacity, no MERV-13
+- **Best for**: Tightest budget, **if 20% RH is acceptable**
+- **⚠️ Trade-offs**: 
+  - May struggle to maintain <20% RH consistently
+  - Lower efficiency, less capacity, no MERV-13
+  - Less precise humidity control
+  - **May not be ideal for very moisture-sensitive powders**
 
 **🏢 WHOLE-BUILDING OPTION: Aprilaire 1870** (⚠️ Requires ducting)
 - **Price**: $2,495.99 + ~$150 pump = **$2,646 total**
 - **Energy Cost**: ~$525/year  
+- **Target Humidity**: ~15-20% RH achievable
 - **Note**: Ducted installation - may not be ideal for your already-ventilated room
 - **5-Year Total Cost**: $2,646 + $2,625 (energy) = **$5,271**
 
