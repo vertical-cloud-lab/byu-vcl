@@ -5,17 +5,19 @@ This document outlines specific industrial/commercial dehumidifier products suit
 
 ## Quick Comparison Table (Verified Feb 2026)
 
-| Model | Capacity | Coverage | New Price | Used/Refurb Price | Efficiency | Annual Energy* | 5-Yr Total** |
-|-------|----------|----------|-----------|-------------------|------------|----------------|--------------|
+| Model | Capacity | Coverage | New Price | Used/Refurb Price | Efficiency (pints/kWh) | Annual Energy* | 5-Yr Total** |
+|-------|----------|----------|-----------|-------------------|------------------------|----------------|--------------|
 | **Quest 155** ⭐ | 155 PPD | Commercial | $3,299.95 | **$1,000-1,500** | **8.5 pints/kWh** | ~$394/yr | $3,120-5,420 |
 | **Santa Fe Ultra V155** | 155 PPD | 3,500 sq ft | $4,150-$4,904 | N/A | 7.1 pints/kWh | ~$600/yr | $7,450 |
-| **Aprilaire 1870** | 130 PPD | 7,200 sq ft | $2,495.99 | N/A | 2.9 L/kWh | ~$525/yr | $5,271 |
+| **Aprilaire 1870** | 130 PPD | 7,200 sq ft | $2,495.99 | N/A | ~6.1 pints/kWh | ~$525/yr | $5,271 |
 | **AlorAir HD55** 💰 | 113 PPD | 1,200 sq ft | $446-$628 | N/A | ~3.5 pints/kWh | ~$446/yr | $2,733 |
 | **AlorAir HD90** | 90 PPD | Medium | $1,047 | N/A | ~3.2 pints/kWh | ~$472/yr | N/A |
-| **Santa Fe Compact70** | 70 PPD | 1,800 sq ft | $1,500-$2,000 | N/A | 2.4 L/kWh | ~$378/yr | N/A |
+| **Santa Fe Compact70** | 70 PPD | 1,800 sq ft | $1,500-$2,000 | N/A | ~5.1 pints/kWh | ~$378/yr | N/A |
 
-*Estimated at $0.12/kWh, 24/7 operation. **Includes equipment + pump + 5 years energy.  
-⭐ = Most efficient | 💰 = Best value | **Used Quest 155 available on eBay ($1,000-1,500) and OfferUp ($695-900)**
+*Estimated at $0.12/kWh, assuming continuous 24/7 operation at the manufacturer's rated power draw. Annual energy cost = (rated watts ÷ 1000) × 24 hours/day × 365 days/year × $0.12/kWh. Adjust for your local $/kWh or apply a duty cycle factor (e.g., multiply by 0.5 for 50% runtime).  
+**Includes equipment + pump + 5 years energy.**  
+⭐ = Most efficient | 💰 = Best value | **Used Quest 155 available on eBay ($1,000-1,500) and OfferUp ($695-900)**  
+All efficiencies shown in pints/kWh; metric values from manufacturer specs (L/kWh) converted using 1 L ≈ 2.11 US pints. Ratings are typically based on AHAM test conditions (80°F/60% RH) unless otherwise noted.
 
 ---
 
@@ -194,7 +196,7 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 4. **No manual emptying required** ✅
 
 **⚠️ AVOID Manual Bucket Emptying**: At 100+ pints/day capacity:
-- **Quest 155**: 155 pints/day = **19 gallons/day** = Empty ~38 times/day with 1-gallon bucket
+- **Quest 155**: 155 pints/day = **19 gallons/day** = Empty ~19-20 times/day with 1-gallon bucket
 - Manual emptying is **NOT practical** for continuous operation
 
 ### Best Pumping Solutions by Model:
@@ -340,7 +342,7 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 **Where to Buy:**
 - **Home Depot**: [AlorAir Sentinel HD55](https://www.homedepot.com/p/ALORAIR-Sentinel-HD55-113-pt-1200-sq-ft-Bucketless-Commercial-Dehumidifier-in-Blue-with-Drain-Hose-Auto-Defrost-Memory-ALORSNTHD55BL/338630726) - $587.66
 - **AlorAir Crawlspace Store**: [HD55 Blue](https://aloraircrawlspace.com/products/alorair-113-ppd-crawl-space-dehumidifiers-sentinel-hd55-blue) - From $446.48 (sales/promotions)
-- **Walmart**: [Sentinel HD55 Standard](https://www.walmart.com/ip/Alorair-Sentinal-Hd55-113-pt-Dehumidifier-in-Blue-Automatic-Shut-Off-Adjustable-Humistat/597364517) - $469.98
+- **Walmart**: [AlorAir Sentinel HD55 Standard](https://www.walmart.com/ip/Alorair-Sentinal-Hd55-113-pt-Dehumidifier-in-Blue-Automatic-Shut-Off-Adjustable-Humistat/597364517) - $469.98
 - **WebstaurantStore**: [AlorAir Sentinel HD55 Blue](https://www.webstaurantstore.com/alorair-sentinel-hd55-blue-commercial-grade-dehumidifier-115v/156X002PLZ9CR.html) - $587.48
 - **Amazon**: Search "ALORAIR Sentinel HD55" - $500-$600 range
 - **WiFi Version**: Available at $503-$629 from select retailers
@@ -351,7 +353,7 @@ All commercial dehumidifiers can use a **condensate pump** to move water to a re
 ### 5. AlorAir Sentinel HD90 (Mid-Range Option)
 
 **Specifications:**
-- **Water Removal Capacity**: 198 PPD (90 pints/day at AHAM standards)
+- **Water Removal Capacity**: 90 pints/day at AHAM standards (198 PPD at saturation)
 - **Coverage Area**: Suitable for medium to large spaces
 - **Electrical Requirements**: 115V
 - **Features**: 
@@ -666,6 +668,6 @@ For purchasing assistance, contact suppliers directly or consult with HVAC contr
 
 ---
 
-**Document Created**: February 2024  
-**Last Updated**: February 11, 2026 - Links and pricing verified with relaxed firewall access  
+**Document Created**: February 2026  
+**Last Updated**: February 17, 2026 - Links and pricing verified with relaxed firewall access  
 **Contact**: BYU Vertical Cloud Lab
