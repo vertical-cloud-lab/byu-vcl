@@ -85,7 +85,7 @@ For the modular insert, design a cylindrical recess (e.g., 8 mm ID × 5 mm deep)
 ### 4. Print Orientation and Settings
 
 - **Print the socket vertically** (bore axis = Z axis) for best bore roundness.
-- **Layer height:** 0.12–0.16 mm for a smoother bore surface and tighter tolerance.
+- **Layer height:** 0.12–0.20 mm (use 0.12–0.16 mm if your printer supports it for a smoother bore surface; 0.20 mm is acceptable on most standard FDM printers with a 0.4 mm nozzle).
 - **No supports** inside the bore.
 - **100% infill** for the socket section (or at least 4+ perimeters).
 - Enable **hole compensation** in slicer if available (Bambu Studio: "Hole compensation" → +0.1 mm).
@@ -158,8 +158,8 @@ Based on the research and a conservative starting point, the recommended initial
      ║          OD: 8 mm, height: 2 mm            ║
      ╠════════════════════════════════════════════╣
      ║       mounting peg (for enclosure)         ║
-     ║     OD: 6 mm, length: 5 mm (press-fit      ║
-     ║     into enclosure recess)                  ║
+     ║  OD: 6 mm, length: 5 mm (press-fit into     ║
+     ║  enclosure recess)                          ║
      ╚════════════════════════════════════════════╝
 ```
 
