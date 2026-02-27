@@ -76,11 +76,20 @@ For the modular insert, design a cylindrical recess (e.g., 8 mm ID × 5 mm deep)
 
 ### 3. Material Selection
 
-| Material | Notes |
-|---|---|
-| **PLA** | Rigid, low shrinkage (~0.3%), good for precise interference fits. Preferred for prototyping. |
-| **PETG** | Slightly more flexible, better layer adhesion, more resistant to cracking from repeated insertion/removal. Good for final production. |
-| **Black filament** | Recommended for the final version to minimize stray light reaching the sensor (per issue discussion). |
+The BYU ME Prototyping Lab (EB 117) has Prusa and Bambu Lab FDM printers and supports a range of filaments. Materials confirmed available at BYU include:
+
+| Material | Available at BYU? | Notes |
+|---|---|---|
+| **PLA** | ✅ Yes (~$0.10/g) | Rigid, low shrinkage (~0.3%), good for precise interference fits. Good for initial prototyping. |
+| **PETG** | ✅ Yes (~$0.10/g) | Slightly more flexible, better layer adhesion, more resistant to cracking from repeated insertion/removal. **Recommended for the fake tip** due to many insert/de-insert cycles. |
+| **TPU** | ✅ Yes (~$0.14/g) | Flexible; not suitable for a rigid press-fit socket. |
+| **Nylon (PA)** | ✅ Yes (~$0.14/g) | High strength, good fatigue resistance, but harder to print accurately at small bore sizes. |
+| **ABS/ASA** | ✅ Yes (check with lab) | More heat/impact resistant; needs enclosed printer. Viable alternative to PETG. |
+| **Resin (SLA)** | ✅ Yes (Prusa SL1s) | Highest resolution for bore accuracy, but brittle — poor for repeated flex cycles. |
+
+**Recommendation:** Print in **PETG** (black) for the best combination of dimensional accuracy, flex durability, and light-blocking. PLA is acceptable for the initial test array if PETG is not loaded on the printer at the time.
+
+Sources: [BYU HBLL Makerspace](https://lib.byu.edu/services/3d-printers/), [ME Prototyping Lab](https://www.me.byu.edu/me-prototyping-lab), [BYU Prototyping Lab booking](https://byuprojectslab.simplybook.me/v2/)
 
 ### 4. Print Orientation and Settings
 
@@ -199,18 +208,70 @@ The original design positions the AS7341 sensor at the bottom of the enclosure. 
 
 For liquid sensing applications, consider adding a thin, translucent glass or plastic cover slide over the sensor aperture to protect it from solvent vapors.
 
-### Durability
+### Durability and Spring-Finger Slits (PETG)
 
-PLA can crack with repeated flex. If the press fit is very tight, PETG may last longer. Alternatively, add 2–3 thin axial slits (0.5 mm wide, ~5 mm long) to the socket wall to create spring fingers that flex slightly during insertion, distributing stress and improving durability.
+Since the fake tip will undergo many insert/de-insert cycles, PETG is recommended over PLA for its superior fatigue resistance. To further improve durability, add **3 axial spring-finger slits** spaced at 120° around the socket wall. These slits let each finger flex slightly outward during insertion rather than the full bore being forced to deform, dramatically reducing stress per cycle.
+
+**Spring-finger slit dimensions (for PETG, ~6 mm OD socket):**
+
+| Parameter | Value | Rationale |
+|---|---|---|
+| **Number of slits** | 3 | Evenly spaced at 120° for symmetric grip |
+| **Slit width** | 0.5 mm | Minimum reliably printable gap on FDM; wide enough to allow flex without fusing shut during printing |
+| **Slit depth (length)** | 6 mm | ~75% of the 8 mm socket depth — leaves a 2 mm solid ring at the base for structural integrity |
+| **Fillet at slit base** | 0.3 mm radius | Prevents stress concentration / crack initiation at the bottom of each slit |
+| **Finger wall thickness** | ~1.2 mm | Each of the 3 fingers is roughly (π × 6 mm OD / 3 − 0.5 mm slit) / 2 ≈ 1.2 mm thick per side — enough to grip without being too stiff |
 
 ```
-    Top view of socket with spring-finger slits:
+    Top view — socket with 3 spring-finger slits (PETG):
 
-         ┌──╱──┐
-        ╱       ╲
-       │    ○    │     ← 3 slits at 120° spacing
-        ╲       ╱        create compliant fingers
-         └──╱──┘
+              0.5 mm slit
+                 ↓
+         ┌───── ╱ ─────┐
+        ╱    finger 1    ╲
+       │                  │
+  slit ╱        ○         ╲ slit
+      │    (bore ~3.55)    │
+       │    finger 3      │
+        ╲    finger 2    ╱
+         └───── ╲ ─────┘
+                 ↑
+              0.5 mm slit
+
+    Slits at 0°, 120°, 240°
+
+    Side cross-section:
+
+    ┌──────────┐  ← entry chamfer
+    │ ╱      ╲ │
+    │╱ finger ╲│  ← slit depth: 6 mm
+    │╱        ╲│     (fingers can flex outward)
+    │          │
+    ├──────────┤  ← solid ring: 2 mm
+    │  (base)  │     (no slits here — structural)
+    └──────────┘
+```
+
+**Why these dimensions work for PETG:**
+- **0.5 mm slit width** is the practical minimum for FDM at 0.12–0.20 mm layer heights — narrow enough to maintain grip force, wide enough to actually print as an open gap.
+- **6 mm slit depth** gives each finger enough lever arm to flex ~0.1–0.2 mm outward during insertion without exceeding PETG's elastic limit (~3–4% elongation at yield). This keeps the fingers in the elastic regime over hundreds of cycles.
+- The **2 mm solid ring** at the base prevents the slits from propagating into the flange/shoulder and keeps the socket structurally sound.
+- **Fillets (0.3 mm)** at slit bases are critical — without them, sharp corners act as crack initiators under cyclic loading.
+
+```
+    Side cross-section of socket with spring-finger slits:
+
+         ┌─────────┐
+         │  ┌───┐  │  ← 0.5 mm entry chamfer
+         │  │   │  │
+         │  │ ┃ │  │  ← slit runs 6 mm deep
+         │  │ ┃ │  │     (finger flexes here)
+         │  │ ┃ │  │
+         │  │ ╰─│  │  ← 0.3 mm fillet at slit base
+         │  │   │  │
+         │  └───┘  │  ← 2 mm solid ring (no slit)
+         └────┬────┘
+              │        ← flange / shoulder
 ```
 
 ## References
