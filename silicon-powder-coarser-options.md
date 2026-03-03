@@ -9,13 +9,13 @@ The current silicon powder sourced from McMaster-Carr (Goodfellow, max. particle
 - **Electrostatic sticking** to the trickler tube and hopper walls
 - **Moisture uptake** via the native SiO₂ oxide layer that forms on silicon surfaces in ambient air
 
-Switching to a coarser particle size (100–300 µm) reduces these effects because gravity/inertia start to dominate over adhesive/cohesive surface forces.
+Switching to a coarser particle size in the ~75–150 µm range (−100 +200 mesh) reduces these effects because gravity/inertia start to dominate over adhesive/cohesive surface forces.
 
 ---
 
 ## Coarser Silicon Powder Options
 
-The following products offer silicon powder in the 100–200 µm (roughly −100 +200 mesh) range, which should flow substantially better in the autotrickler.
+The following products offer silicon powder in the ~75–150 µm (−100 +200 mesh) range, which should flow substantially better in the autotrickler.
 
 ### Option 1 — Thermo Scientific / Fisher Scientific (Alfa Aesar)
 - **Product**: Silicon powder, crystalline, −100 +200 mesh, 99.99% (metals basis)
