@@ -75,7 +75,7 @@ If ordering new silicon is not immediately possible, there are several approache
 ### 2. Wet Granulation + Drying
 - **What**: Disperse the fine silicon in a small amount of isopropanol (IPA) or ethanol, allow to settle into loose agglomerates, then gently dry and break up the cake.
 - **How**: Mix ~10 g of Si powder with ~2–5 mL of IPA in a glass beaker. Stir briefly, spread thinly on a glass plate, and dry in a desiccator or oven at ~50–70 °C. Gently crush the dried cake and sieve.
-- **Pros**: Low-cost; equipment available in most labs; IPA is safe to handle.
+- **Pros**: Low-cost; equipment available in most labs; IPA is a commonly used lab solvent—handle per SDS (flammable; use away from ignition sources / in a hood as appropriate).
 - **Cons**: IPA must be fully removed before use (residual solvent); some risk of oxidation during drying if moisture is present; particle size distribution will be broad without further sieving.
 
 ### 3. Sieving and Classifying
