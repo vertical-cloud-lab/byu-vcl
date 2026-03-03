@@ -36,7 +36,7 @@ The following products offer silicon powder in the 100–200 µm (roughly −100
 - **Approximate price**: ~$208 / 250 g; ~$461–$483 / 1 kg
 - **URL**: https://www.spectrumchemical.com/silicon-100-200-mesh-powder-s1031
 - **Also available via**: Fisher Scientific (catalog # 18613107), Thomas Scientific, Capitol Scientific
-- **Notes**: Lower purity than Alfa Aesar but less expensive per gram for larger quantities; HAZMAT shipping applies.
+- **Notes**: Lower purity than Alfa Aesar but less expensive per gram for larger quantities; may require special shipping and/or surcharges—check current vendor listing and SDS.
 
 ### Option 3 — Sigma-Aldrich / MilliporeSigma
 - **Standard offering**: −325 mesh (<44 µm) — not suitable for improved flow
