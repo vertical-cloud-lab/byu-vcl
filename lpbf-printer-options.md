@@ -71,7 +71,7 @@ Use these keywords on platforms like [Machinio](https://www.machinio.com/cat/pow
 
 3. **SLM 125 (~$75K–$150K refurbished)** — Available with warranty from Langer Engineering. Build volume (125 × 125 × 125 mm) fits sub-size specimens comfortably.
 
-4. **EOS M 290 (~$120K–$180K used)** — If full-size ASTM E8 specimens (200 mm gauge length) are required, this is the most cost-effective used option. Build plate of 250 × 250 mm easily accommodates full-size tensile bars.
+4. **EOS M 290 (~$120K–$180K used)** — If full-size ASTM E8 specimens (~200 mm overall length, 50 mm gauge length) are required, this is the most cost-effective used option. Build plate of 250 × 250 mm easily accommodates full-size tensile bars.
 
 ### Best Value (New, for Budget-Conscious Labs)
 
@@ -83,7 +83,7 @@ Use these keywords on platforms like [Machinio](https://www.machinio.com/cat/pow
 
 ### For Full-Size ASTM E8 Specimens
 
-If printing standard (not sub-size) ASTM E8 tensile bars (~200 mm gauge length, ~250 mm total length) is essential, look for machines with at least 250 mm in one build direction:
+If printing standard (not sub-size) ASTM E8 tensile bars (~200 mm overall length, 50 mm gauge length) is essential, look for machines with at least 200 mm in one build direction:
 
 - **EOS M 290** (250 × 250 × 325 mm) — used ~$120K–$180K
 - **SLM 280** (280 × 280 × 365 mm) — used ~$150K–$250K
