@@ -190,6 +190,56 @@ Both DoD DURIP and DOE EPSCoR are strong sole-PI options for an early career ass
 3. **When FY27 DURIP opens (~early 2027):** Submit DURIP proposal for specific equipment (e.g., LPBF printer or atomizer) framed for defense-relevant alloy research.
 4. **Fall 2026:** Consider NSF MRI for the full integrated pipeline if selected through BYU's internal limited-submission competition.
 
+## Program Manager Contacts
+
+Key contacts for the recommended programs. Reaching out to program managers before submitting is standard practice and strongly encouraged — send a short project abstract by email to gauge fit.
+
+### DOE EPSCoR
+
+| Role | Name | Email | Phone |
+|---|---|---|---|
+| Program Manager (Materials Sciences & Engineering, BES) | Dr. Tim Kidd | Timothy.Kidd@science.doe.gov | 240-723-5879 |
+
+- **Office:** SC-32.2, Germantown Building, Rm F-414, U.S. Department of Energy
+- **Staff page:** https://science.osti.gov/bes/mse/About/Staff/Dr-Tim-Kidd
+- **Note:** Dr. Kidd manages EPSCoR within the Materials Sciences and Engineering Division — directly relevant to alloy workflow proposals.
+
+### DoD DURIP
+
+DURIP proposals go to one of three service research offices. For alloy/materials research, ONR or AFOSR are the most natural fits.
+
+| Service | Contact | Email | Phone |
+|---|---|---|---|
+| **ONR** (Navy) | DURIP Program Office | onr.ncr.durip@us.navy.mil | 703-696-4200 |
+| **ONR** Materials PO | Dr. Michele Anderson (Code 332) | michele.l.anderson24.civ@us.navy.mil | — |
+| **AFOSR** (Air Force) | Katie Wisecarver (Program Coordinator) | afosr.rtb.durip@us.af.mil | 703-696-9544 |
+| **ARO** (Army) | DURIP Program Office | usarmy.rtp.devcom-arl.mbx.aro-durip@army.mil | — |
+| **ARO** Materials PO | Dr. Evan Runnerstrom (Materials Design) | *(via ARO DURIP email)* | — |
+
+- **ONR program officers:** https://www.onr.navy.mil/our-research/our-program-officers
+- **ARO DURIP page:** https://arl.devcom.army.mil/collaborate-with-us/opportunity/durip/
+- **Tip:** Contact the relevant "core technical program officer" before submission to confirm topic alignment. A PI may submit to more than one service but can only accept one award.
+
+### NSF MRI
+
+| Role | Contact | Email |
+|---|---|---|
+| MRI Program Office | *(multiple rotating program directors)* | mri@nsf.gov |
+
+- **Program page:** https://www.nsf.gov/funding/opportunities/mri-major-research-instrumentation-program
+- **Note:** Program directors rotate; email mri@nsf.gov for a referral to the current officer covering your research area. Next window expected Oct 15–Nov 16, 2026.
+
+### NSF Advanced Manufacturing / MEP
+
+| Role | Contact | Email |
+|---|---|---|
+| Program Director, AM | Dr. Khershed P. Cooper | AdvancedManufacturing@nsf.gov |
+| Program Director, AM | Andrew Wells | AdvancedManufacturing@nsf.gov |
+
+- **Shared program email:** AdvancedManufacturing@nsf.gov
+- **Division (CMMI):** https://www.nsf.gov/eng/cmmi
+- **Note:** NSF encourages prospective PIs to discuss ideas with AM program directors before submitting.
+
 ## Sole PI / Early Career Faculty Suitability
 
 Summary of which programs an assistant professor could apply to as sole PI vs. those requiring a team or coalition.
