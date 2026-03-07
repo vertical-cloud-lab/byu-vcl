@@ -19,6 +19,7 @@ US-based infrastructure grants relevant to the alloy research workflow at BYU VC
 - **Cost sharing:** Currently waived through 2026 (CHIPS and Science Act)
 - **Institutional limit:** Up to 4 proposals per institution per competition (2 Track 1, 1 Track 2, 1 Track 3)
 - **Deadline:** Next submission window expected Oct 15–Nov 16, 2026
+- **PI eligibility:** **Assistant professors can serve as sole PI**, but equipment must serve a broad multi-user base (not single-lab use). Proposals must describe multiple research projects and investigators. This is a limited-submission program — institutions run internal competitions to select up to 4 proposals.
 - **Relevance:** Well-suited for multi-user equipment like LPBF printers, atomizers, and indentation plastometry systems. Proposals emphasizing broad institutional impact and student training are competitive.
 - **Link:** https://www.nsf.gov/funding/opportunities/mri-major-research-instrumentation-program
 
@@ -26,28 +27,43 @@ US-based infrastructure grants relevant to the alloy research workflow at BYU VC
 
 - **Agency:** Department of Defense (Army, Navy, Air Force research offices)
 - **Award range:** $50K–$3M per instrument
+- **Cost sharing:** None required
 - **FY25 total:** $43M awarded to 112 researchers at 64 institutions
-- **FY26 deadline:** April 25, 2025
+- **FY26 deadline:** **April 25, 2025, 5:00 PM ET** (proposals to ONR, ARO, or AFOSR via Grants.gov)
+- **PI eligibility:** No rank restriction — **assistant professors can serve as sole PI**. PI must be eligible per their institution's policies (typically tenure-track faculty). A PI may submit to more than one DoD service but may only accept funding from one.
 - **Focus areas:** Novel materials, quantum, photonics, autonomy, and defense-relevant research
 - **Relevance:** LPBF printers and atomizers for defense-relevant alloy development (e.g., lightweight structural alloys, high-temperature materials). Equipment must support defense-relevant basic research.
 - **Note:** Cannot fund construction, building systems, fixed equipment (e.g., clean rooms), or salaries
-- **Link:** https://www.onr.navy.mil/work-with-us/funding-opportunities/fiscal-year-fy-2026-department-defense-dod-defense-university
+- **Links:**
+  - ONR: https://www.onr.navy.mil/work-with-us/funding-opportunities/fiscal-year-fy-2026-department-defense-dod-defense-university
+  - Grants.gov: https://simpler.grants.gov/opportunity/358449
 
 ### NSF EPSCoR (Utah is eligible)
 
 Utah is an [EPSCoR-eligible jurisdiction](https://utepscor.org/about.html) through at least FY2027 (frozen by CHIPS and Science Act).
 
-- **E-CORE (Collaborations for Optimizing Research Ecosystems):** Focuses on development of research infrastructure and sustainable research capacity
-- **RII-FEC (Focused EPSCoR Collaborations):** Multi-institutional, multi-state collaborations; requires at least two eligible jurisdictions
-- **Relevance:** Infrastructure improvement grants can include major equipment acquisition. EPSCoR status may provide additional proposal opportunities and favorable review considerations.
-- **Link:** https://www.nsf.gov/funding/opportunities/e-core-epscor-research-infrastructure-improvement-program-epscor
+- **E-CORE (Collaborations for Optimizing Research Ecosystems):**
+  - Focuses on development of research infrastructure and sustainable research capacity
+  - **Deadline:** July 15, 2025 (full proposal; annually on 3rd Tuesday in July)
+  - **PI eligibility:** Jurisdiction-driven, institutional proposals — **not suitable for sole PI**. Typically led by state EPSCoR offices or jurisdictional government units.
+  - **Link:** https://www.nsf.gov/funding/opportunities/e-core-epscor-research-infrastructure-improvement-program-epscor/nsf25-523/solicitation
+- **RII-FEC (Focused EPSCoR Collaborations):**
+  - Multi-institutional, multi-state collaborations; requires at least two EPSCoR-eligible jurisdictions
+  - **Deadline:** January 29, 2026 (full proposal; annually on 4th Tuesday in January)
+  - **PI eligibility:** Requires interjurisdictional teams — **not suitable for sole PI**. Must have PI/Co-PI from each jurisdiction. An investigator may serve as PI on only one active RII-FEC award.
+  - **Link:** https://www.nsf.gov/funding/opportunities/epscor-research-infrastructure-improvement-program-focused/nsf24-573/solicitation
+- **Relevance:** Infrastructure improvement grants can include major equipment acquisition. EPSCoR status may provide additional proposal opportunities and favorable review considerations. An assistant professor could participate as PI or Co-PI within a multi-institution team.
 
 ### DOE EPSCoR
 
 - **Agency:** Department of Energy, Office of Science
 - **Focus:** Build research infrastructure in EPSCoR-eligible states for energy-related research
+- **FY26 deadline (State/National Lab Partnerships):** Pre-application March 18, 2026; full application **May 21, 2026**
+- **PI eligibility:** Early career faculty (including assistant professors) are encouraged to apply. **Sole PI is permitted.** Collaboration with DOE National Laboratories encouraged.
 - **Relevance:** Alloy development for energy applications (e.g., fusion, nuclear, lightweight structures) aligns with DOE priorities. Equipment for powder production and materials characterization may qualify.
-- **Link:** https://science.osti.gov/bes/epscor
+- **Links:**
+  - Program: https://science.osti.gov/bes/epscor
+  - How to apply: https://science.osti.gov/bes/epscor/How-to-Apply
 
 ### NSF Advanced Manufacturing (AM)
 
@@ -129,3 +145,21 @@ Utah is an [EPSCoR-eligible jurisdiction](https://utepscor.org/about.html) throu
 - **ASTM E3499-25:** The recent ASTM standardization of PIP testing (2025) strengthens the case for PIP equipment in grant proposals.
 - **Multi-user access:** NSF MRI and similar programs favor equipment that serves multiple users, departments, and institutions. Emphasize cross-departmental and cross-institutional usage.
 - **Cost sharing:** While NSF MRI cost-sharing is waived through 2026, other programs may require cost-sharing or matching funds. Check individual solicitations.
+
+## Sole PI / Early Career Faculty Suitability
+
+Summary of which programs an assistant professor could apply to as sole PI vs. those requiring a team or coalition.
+
+| Program | Sole PI eligible? | Notes |
+|---|---|---|
+| **DoD DURIP** | ✅ Yes | No rank restriction. No cost sharing. Sole PI can submit to ONR, ARO, or AFOSR. |
+| **NSF MRI** | ✅ Yes | Must show multi-user access (not single-lab). Limited submission (internal competition at BYU). |
+| **DOE EPSCoR** | ✅ Yes | Early career faculty encouraged. Collaboration with DOE National Labs encouraged. |
+| **NSF AM / MEP** | ✅ Yes | Standard single-PI research grants. Equipment can be included in budget. |
+| **NSF DMR TMRP** | ✅ Yes | Standard single-PI research grants in metals/materials. |
+| **NSF FM** | ⚠️ Depends | Seed grants (~$500K) may suit a smaller team; full grants (~$3M) expect larger coalitions. |
+| **NSF EPSCoR E-CORE** | ❌ No | Jurisdiction-driven institutional proposals. |
+| **NSF EPSCoR RII-FEC** | ❌ No | Requires multi-state teams (≥2 EPSCoR jurisdictions). |
+| **America Makes** | ⚠️ Depends | Collaborative consortia preferred; universities can participate. |
+| **NIST OAM** | ⚠️ Depends | Often requires university-industry partnerships. |
+| **SBIR/STTR** | ❌ No (as PI) | Requires small business as lead; university participates via STTR subaward. |
