@@ -146,6 +146,50 @@ Utah is an [EPSCoR-eligible jurisdiction](https://utepscor.org/about.html) throu
 - **Multi-user access:** NSF MRI and similar programs favor equipment that serves multiple users, departments, and institutions. Emphasize cross-departmental and cross-institutional usage.
 - **Cost sharing:** While NSF MRI cost-sharing is waived through 2026, other programs may require cost-sharing or matching funds. Check individual solicitations.
 
+## Recommendation: DURIP vs. DOE EPSCoR for BYU VCL Alloy Workflow
+
+Both DoD DURIP and DOE EPSCoR are strong sole-PI options for an early career assistant professor. Here is how they compare for the specific BYU VCL alloy workflow (atomizer → LPBF → PIP).
+
+| Factor | DoD DURIP | DOE EPSCoR (State/National Lab) |
+|---|---|---|
+| **Award amount** | $50K–$3M (equipment only) | $600K–$1M over 4 years (research + equipment) |
+| **Funds equipment?** | ✅ Yes — entire purpose | ✅ Yes — within a research proposal |
+| **Funds personnel/research?** | ❌ No — equipment only, no salaries | ✅ Yes — supports students, postdocs, travel |
+| **Cost sharing** | None | None |
+| **Next deadline** | FY27 cycle (likely spring 2026; FY26 closed April 25, 2025) | Pre-app **March 18, 2026**; full app **May 21, 2026** |
+| **Early career emphasis** | No special preference, but no rank restriction | ✅ Explicitly encourages early career faculty |
+| **Utah EPSCoR advantage** | N/A | ✅ Utah is EPSCoR-eligible through FY2027 — limited window |
+| **Research framing** | Defense-relevant: lightweight structural alloys, high-temp materials, armor | Energy-relevant: alloys for nuclear/fusion, lightweight vehicles, grid/battery materials |
+| **Collaboration required** | None | DOE National Lab partnership encouraged |
+| **Est. success rate** | ~10–20% (112 awards from $43M in FY25) | Competitive (~39 awards from $36M in FY24) |
+| **Award duration** | 1 year (equipment purchase) | Up to 4 years |
+
+### Which to prioritize
+
+**DOE EPSCoR is the stronger near-term option** for the BYU VCL alloy workflow because:
+
+1. **Deadline is imminent** — pre-app March 18, 2026; full app May 21, 2026. DURIP FY26 has closed and FY27 is TBD.
+2. **Utah EPSCoR eligibility is time-limited** — frozen through FY2027 by CHIPS Act, but could change. This is a strategic advantage to use now.
+3. **Broader funding scope** — covers equipment, student support, and research costs in one proposal, vs. DURIP which is equipment-only with no personnel support.
+4. **Early career encouragement** — the program explicitly encourages early career faculty applications.
+5. **Natural energy framing** — the alloy workflow (custom powder → LPBF → rapid mechanical characterization) maps well to DOE priorities in advanced materials for energy (nuclear structural materials, lightweight transportation alloys, grid infrastructure).
+6. **Self-driving lab angle** — autonomous materials discovery and high-throughput characterization align with DOE's interest in accelerating the materials development cycle.
+7. **National Lab partnership** — collaboration with a DOE lab (e.g., ORNL MDF, Sandia, PNNL) strengthens the proposal and provides access to complementary capabilities.
+
+**DoD DURIP remains excellent as a complementary or follow-up option** because:
+
+1. **Larger equipment budgets** — up to $3M specifically for equipment, vs. equipment being a portion of a $600K–$1M DOE EPSCoR award.
+2. **No collaboration required** — sole PI, no National Lab partnership needed.
+3. **Strong defense framing** — alloy development for defense applications (lightweight armor, high-temp turbine materials, corrosion-resistant naval alloys) is a natural fit.
+4. **Can be submitted in parallel** — DURIP and DOE EPSCoR are from different agencies, so both can be pursued simultaneously when the DURIP FY27 cycle opens.
+
+### Recommended strategy
+
+1. **Now (March 2026):** Submit DOE EPSCoR pre-application by March 18, 2026. Frame alloy workflow as energy-relevant materials discovery pipeline with National Lab collaboration.
+2. **Spring 2026:** Develop full DOE EPSCoR proposal for May 21, 2026 deadline.
+3. **When FY27 DURIP opens (~early 2026/2027):** Submit DURIP proposal for specific equipment (e.g., LPBF printer or atomizer) framed for defense-relevant alloy research.
+4. **Fall 2026:** Consider NSF MRI for the full integrated pipeline if selected through BYU's internal limited-submission competition.
+
 ## Sole PI / Early Career Faculty Suitability
 
 Summary of which programs an assistant professor could apply to as sole PI vs. those requiring a team or coalition.
