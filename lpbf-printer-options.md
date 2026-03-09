@@ -209,4 +209,3 @@ When requesting quotes, mention:
 - [ ] Request quotes from OEMs (EOS, Xact Metal, One Click Metal) for new systems with academic pricing — include specs from the vendor checklist above
 - [ ] Request quotes for used/refurbished units — ask about laser hours, maintenance history, and included accessories
 - [ ] Monitor Machinio, eBay, and EOS Store for used/refurbished listings
-- [ ] Evaluate facility requirements (power, inert gas, ventilation, powder handling/safety)
