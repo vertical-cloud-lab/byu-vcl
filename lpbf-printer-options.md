@@ -48,7 +48,7 @@ Use these keywords on platforms like [Machinio](https://www.machinio.com/cat/pow
 | **Kurtz Ersa Alpha 140** | 140 mm build | Fiber | ~$150K–$200K (est.) | ~$40K–$80K (used) | Sub-size ✓ | Used units listed on eBay and Machinio |
 | **3D Systems DMP Flex 100** | 100 × 100 × 80 | 100 W fiber | ~$200K+ | ~$120K–$180K | Sub-size only | Entry-level DMP |
 | **2OneLab 2CREATE** | 110 mm dia × 100 | 250 W | ~$130K–$180K (est.) | Not common | Sub-size only | Open materials; compact; academic-focused |
-| **Mastrex MX-100** | Desktop-class | Fiber | ~$39K | Not common | Sub-size only | Desktop form factor; newest entrant |
+| **Mastrex MX-100** | 250 × 250 × 300 | 500 W fiber | ~$39K | Not common | Full-size ✓ | 500 W laser; open materials; argon atmosphere; real-time thermal monitoring |
 
 ### Full-Size / Industrial (New ~$250K+)
 
@@ -75,7 +75,7 @@ Use these keywords on platforms like [Machinio](https://www.machinio.com/cat/pow
 
 ### Best Value (New, for Budget-Conscious Labs)
 
-1. **Mastrex MX-100 (~$39K new)** — Lowest new price point. Desktop form factor. Best for initial exploration if sub-size specimens are acceptable.
+1. **Mastrex MX-100 (~$39K new)** — Lowest new price point with a surprisingly capable 250 × 250 × 300 mm build volume, 500 W laser, and support for full-size ASTM E8 specimens. Best for initial exploration.
 
 2. **One Click Metal BoldSeries (~$100K–$120K new)** — Safe powder cartridge system ideal for university labs. 150 × 150 × 150 mm build volume fits sub-size specimens.
 
@@ -85,6 +85,7 @@ Use these keywords on platforms like [Machinio](https://www.machinio.com/cat/pow
 
 If printing standard (not sub-size) ASTM E8 tensile bars (~200 mm overall length, 50 mm gauge length) is essential, look for machines with at least 200 mm in one build direction:
 
+- **Mastrex MX-100** (250 × 250 × 300 mm) — new ~$39K
 - **EOS M 290** (250 × 250 × 325 mm) — used ~$120K–$180K
 - **SLM 280** (280 × 280 × 365 mm) — used ~$150K–$250K
 - **Renishaw AM 250** (250 × 250 × 300 mm) — used ~$80K–$150K
@@ -103,6 +104,451 @@ If printing standard (not sub-size) ASTM E8 tensile bars (~200 mm overall length
 | Langer Engineering | https://langerengineering.com | Refurbished SLM Solutions with warranty |
 | Multistation | https://www.multistation.com/second-life/ | Used Renishaw, Concept Laser, and others |
 | Moov | https://moov.co | Used industrial equipment |
+
+## Publicly Available Specifications by Model
+
+The following tables compile publicly available specs for each recommended model. Items marked "TBD" or "—" should be confirmed with the vendor.
+
+### Concept Laser Mlab cusing 200R (Used/Refurb ~$44K–$46K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 100 × 100 × 100 mm (also 70 × 70 × 80 mm, 50 × 50 × 80 mm modules) |
+| **Laser** | 200 W Yb-fiber, CW |
+| **Spot size** | ~75 µm |
+| **Layer thickness** | 15–30 µm |
+| **Max scan speed** | 7 m/s |
+| **Build rate** | 1–9 cm³/h |
+| **Qualified alloys** | 316L SS, 17-4 PH, Ti-6Al-4V ELI, CP Ti Gr.2, CoCr, AlSi10Mg, AlSi12, Maraging 1.2709, IN718, Bronze |
+| **Open materials?** | Yes — CL WRX Parameter software allows full open parameter editing |
+| **Atmosphere** | Nitrogen or argon |
+| **Gas consumption** | ~0.6–0.8 L/min during build |
+| **Electrical** | 230 V AC single-phase, 16 A, 1.5 kW max |
+| **Machine dimensions** | 820 × 1410 × 1839 mm (W × D × H) |
+| **Machine weight** | ~700 kg |
+| **Handling station** | Separate unit: 729 × 628 × 1392 mm, ~100 kg |
+| **Chiller** | Not required (air-cooled) |
+| **Compressed air** | Not required |
+| **Software** | CL WRX Control (standard), CL WRX Parameter (open), Materialise Build Processor |
+| **Parameter access** | Full open parameters with CL WRX Parameter license |
+| **Sieving** | Separate handling station included |
+| **OEM status** | Discontinued (GE/Colibrium Additive); parts via Colibrium or third-party |
+
+### EOS M 100 (Refurb ~$75K–$100K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 100 mm dia × 95 mm (cylindrical) |
+| **Laser** | 200 W Yb-fiber |
+| **Spot size** | 40 µm |
+| **Layer thickness** | 20–30 µm typical |
+| **Positioning accuracy** | ±0.05 mm |
+| **Qualified alloys** | 316L SS, CoCr SP2, Ti64 (Grade 23); also Al, Maraging Steel, Ni alloys, Cu, Nb |
+| **Open materials?** | Semi-open with EOSPRINT Parameter Editor (258+ editable parameters) |
+| **Atmosphere** | Argon or nitrogen |
+| **Gas consumption** | 50 L/min flooding (up to 600 L); 2.5 L/min during build |
+| **Electrical** | 200–240 V AC single-phase, 13 A, 1.7 kW max (~0.6 kW avg) |
+| **Machine dimensions** | 800 × 950 × 2250 mm (W × D × H) |
+| **Machine weight** | ~580–600 kg |
+| **Installation space** | 1.0 × 3.0 × 2.5 m minimum |
+| **Chiller** | Not required (forced air cooling) |
+| **Compressed air** | Not explicitly required for core machine |
+| **Software** | EOSPRINT 2 (build prep), EOSTATE (monitoring) |
+| **Parameter access** | Open via EOSPRINT Parameter Editor |
+| **Sieving** | Closed powder/extraction system included |
+| **OEM support** | Active; refurbished units via [EOS Store](https://store.eos.info) with support |
+
+### SLM Solutions SLM 125 (Refurb ~$75K–$150K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 125 × 125 × 125 mm (also 50 × 50 × 50 mm reduced option) |
+| **Laser** | 1 × 400 W IPG fiber |
+| **Spot size** | 70–100 µm |
+| **Layer thickness** | 20–75 µm (1 µm increments) |
+| **Max scan speed** | 10 m/s |
+| **Qualified alloys** | 316L SS, 17-4 PH, CoCr, AlSi12, AlSi10Mg, Ti alloys, Ni alloys, Tool steels |
+| **Open materials?** | Yes — open software architecture for parameter/material flexibility |
+| **Atmosphere** | Argon |
+| **Gas consumption** | 0.6–2 L/min during process |
+| **Electrical** | 400 V 3-phase, 32 A, 3 kW |
+| **Machine dimensions** | 1400 × 900 × 2460 mm (L × W × H) |
+| **Machine weight** | ~700 kg (no powder) / ~750 kg (with powder) |
+| **Build plate heating** | Up to 200°C |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | — (confirm with vendor) |
+| **Software** | Open architecture; compatible with Materialise Magics |
+| **Parameter access** | Open |
+| **Sieving** | Closed-loop powder handling; rapid material change |
+| **Recoater** | Bidirectional |
+| **OEM support** | Nikon SLM Solutions (active); refurbished via [Langer Engineering](https://langerengineering.com) with warranty |
+
+### EOS M 290 (Used ~$120K–$180K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 250 × 250 × 325 mm |
+| **Laser** | 1 × 400 W Yb-fiber (1 kW option available) |
+| **Spot size** | ~100 µm |
+| **Layer thickness** | 20–80 µm (material-dependent) |
+| **Max scan speed** | 7.0 m/s |
+| **Qualified alloys** | AlSi10Mg, AlF357, Al2139, 20MnCr5, CoCr MP1/SP2, Cu, CuCrZr, CuNi30, IN625, IN718, HX, IN939, 316L, 17-4PH, CX, MS1/Maraging, Ti64, Ti64ELI, TiCP Gr.2, Tool steels (HCM, CM55) |
+| **Open materials?** | Semi-open via EOSPRINT Parameter Editor (258+ parameters) + EOS Open Architecture API |
+| **Atmosphere** | Nitrogen or argon |
+| **Gas consumption** | Compressed air: 7 bar, 20 m³/h |
+| **Electrical** | 400 V 3-phase, 32 A, 8.5 kW max (~2.4 kW typical, 3.2 kW with heating) |
+| **Machine dimensions** | 2500 × 1300 × 2190 mm (W × D × H) |
+| **Installation space** | 4800 × 3600 × 2900 mm recommended |
+| **Machine weight** | ~1250 kg |
+| **Build plate heating** | Yes (included) |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | Required: 7 bar, 20 m³/h |
+| **Software** | EOSPRINT 2, EOS ParameterEditor, EOSTATE monitoring suite; compatible with Materialise Magics, Siemens NX |
+| **Parameter access** | Open via EOSPRINT + EOS Open Architecture (Dyndrite API for vector-level control) |
+| **Sieving** | Separate sieving station typically required |
+| **OEM support** | Active (EOS); used units on Machinio, eBay; refurbished via [EOS Store](https://store.eos.info) |
+
+### Mastrex MX-100 (New ~$39K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 250 × 250 × 300 mm |
+| **Laser** | 500 W fiber, 1070 nm |
+| **Spot size** | 50 µm XY positioning |
+| **Layer thickness** | 20–120 µm |
+| **Qualified alloys** | Ti alloys, 316L SS, Al alloys, CoCr, Cu alloys |
+| **Open materials?** | Yes — supports custom powders |
+| **Atmosphere** | Argon (O₂ < 0.1%) |
+| **Gas consumption** | — (confirm with vendor) |
+| **Electrical** | — (confirm with vendor) |
+| **Machine dimensions** | Desktop form factor (confirm with vendor) |
+| **Machine weight** | — (confirm with vendor) |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | — (confirm with vendor) |
+| **Software** | — (confirm with vendor) |
+| **Parameter access** | — (confirm with vendor) |
+| **Monitoring** | Real-time thermal camera |
+| **Powder handling** | Closed-loop |
+| **OEM contact** | info@mastrex.com · (888) 471-6646 · [mastrex.com](https://mastrex.com) |
+
+### One Click Metal BoldSeries MPRINT+ (New ~$100K–$120K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 150 × 150 × 150 mm |
+| **Laser** | 200 W fiber |
+| **Spot size** | 70 µm (45 µm option) |
+| **Layer thickness** | 20–80 µm |
+| **Max scan speed** | 3000 mm/s |
+| **Qualified alloys** | Stainless steels, aluminum, tool steels; Ni and Ti with appropriate module |
+| **Open materials?** | — (confirm with vendor) |
+| **Atmosphere** | Nitrogen |
+| **Gas consumption** | — (confirm with vendor) |
+| **Electrical** | 230 V single-phase, 16 A |
+| **Machine dimensions** | 1100 × 790 × 1900 mm (W × D × H) |
+| **Machine weight** | 440 kg |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | — (confirm with vendor) |
+| **Software** | MONE monitoring platform |
+| **Powder handling** | Cartridge-based (4–5 cartridges, 8.5–11 kg each); MPURE unpacking/sieving station |
+| **Safety** | Cartridge system minimizes direct powder contact — ideal for university settings |
+| **OEM contact** | [oneclickmetal.com/contact](https://oneclickmetal.com/contact/) · US resellers: TriMech, Javelin, MasterGraphics, Select Additive |
+
+### Xact Metal XM200G (New ~$160K–$210K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 150 × 150 × 150 mm (up to 290 mm Z optional) |
+| **Laser** | 100–400 W Yb-fiber; single or dual laser |
+| **Spot size** | 50 or 100 µm (25 µm µHD option) |
+| **Layer thickness** | 20–100 µm |
+| **Qualified alloys** | 316L, 17-4 PH, 15-5, 400-series SS, AlSi10Mg, Ti64, IN718, IN625, CoCr F75, Hastelloy X, Maraging M300, Corrax, Bronze, Cu C18150 |
+| **Open materials?** | Yes — open material platform; custom parameter development |
+| **Atmosphere** | Argon |
+| **Gas consumption** | — (confirm with vendor) |
+| **Electrical** | 100–240 V AC single-phase, 50/60 Hz, 1.5–2.0 kW peak |
+| **Machine dimensions** | — (confirm with vendor; compact footprint) |
+| **Machine weight** | ~380 kg (single laser) / ~425 kg (dual laser) |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | — (confirm with vendor) |
+| **Software** | Included (touchscreen interface) |
+| **Parameter access** | Open platform for customized parameter settings |
+| **Powder handling** | Integrated; dual glovebox option |
+| **Optics** | Premium F-theta lens |
+| **OEM contact** | (814) 205-1505 · [xactmetal.com/contact](https://xactmetal.com/contact/) · 200 Innovation Blvd, Suite 257, State College, PA 16803 |
+
+### Renishaw AM 250 (Used ~$80K–$150K)
+
+| Spec | Value |
+|---|---|
+| **Build volume** | 250 × 250 × 300 mm (up to 360 mm Z depending on config) |
+| **Laser** | 200 W or 400 W fiber |
+| **Spot size** | ~70 µm |
+| **Layer thickness** | 20–100 µm |
+| **Qualified alloys** | 316L, 17-4PH, H13, AlSi10Mg, AlSi12, CP Ti, Ti-6Al-4V, Ti-7Nb, CoCr ASTM F75, IN718, IN625 |
+| **Open materials?** | — (confirm with vendor; Renishaw generally offers parameter sets) |
+| **Atmosphere** | Argon (ultra-low O₂ < 50 ppm) |
+| **Gas consumption** | — (confirm with vendor) |
+| **Electrical** | 3-phase industrial supply (confirm voltage/amperage with vendor) |
+| **Machine dimensions** | — (confirm with vendor; large industrial footprint) |
+| **Machine weight** | — (confirm with vendor) |
+| **Chiller** | — (confirm with vendor) |
+| **Compressed air** | — (confirm with vendor) |
+| **Software** | QuantAM (build prep) |
+| **Powder handling** | Removable hoppers; safe-change filter system; rapid material changeover |
+| **OEM contact** | usa@renishaw.com · +1 847-286-9953 · [renishaw.com/contact](https://www.renishaw.com/en/contact-us--45455) |
+
+## Draft Emails to OEMs
+
+Below are draft emails for requesting quotes from each recommended vendor. Customize the bracketed fields before sending.
+
+### Draft 1: EOS (M 100 and M 290)
+
+> **To:** info@eos-na.com
+>
+> **Subject:** Academic Quote Request — EOS M 100 and EOS M 290
+>
+> Dear EOS Sales Team,
+>
+> I am a researcher at Brigham Young University (BYU) in the Department of [Department Name]. We are establishing a metals additive manufacturing capability in our research lab and are interested in obtaining quotes for the following systems:
+>
+> 1. **EOS M 100** — new unit with academic pricing
+> 2. **EOS M 290** — new unit with academic pricing
+> 3. **Refurbished EOS M 100 or M 290** — if available through the EOS Store refurbished program
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 metallic tensile specimens (sub-size: 25 mm gauge length, ~100 mm overall; full-size: 50 mm gauge length, ~200 mm overall)
+> - **Target alloys:** 316L stainless steel and Ti-6Al-4V (at minimum); open to additional alloys
+> - **Parameter access:** We need the ability to develop and modify process parameters for research purposes (open parameter access via EOSPRINT Parameter Editor)
+> - **Software:** Please include licensing costs for EOSPRINT 2 and any monitoring software (EOSTATE)
+>
+> **Please include in your quote:**
+> - System price with academic/educational discount
+> - Software licensing model (perpetual vs. subscription) and annual costs
+> - Service contract options and annual cost
+> - Training package (duration, location, number of participants)
+> - Estimated delivery lead time
+> - Installation and facility requirements (electrical, gas, ventilation, floor space)
+> - Consumables pricing (build plates, recoater blades, filters)
+> - Availability of refurbished units with warranty
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds] and would appreciate any information on academic purchasing programs or partnerships.
+>
+> Thank you for your time. We look forward to hearing from you.
+>
+> Best regards,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 2: Xact Metal (XM200G)
+
+> **To:** [Submit via xactmetal.com/contact — select "Sales Inquiry"]
+>
+> **Subject:** Academic Quote Request — Xact Metal XM200G
+>
+> Dear Xact Metal Sales Team,
+>
+> I am a researcher at Brigham Young University (BYU) and we are evaluating LPBF metal 3D printers for our research lab. We are particularly interested in the **Xact Metal XM200G** due to its open material platform, single-phase power, and competitive price point.
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 sub-size metallic tensile specimens (25 mm gauge length, ~100 mm overall length)
+> - **Target alloys:** 316L stainless steel, Ti-6Al-4V, and potentially IN718
+> - **Parameter access:** Full open parameter access for research and new material development
+> - **Configuration of interest:** Single-laser 200W or 400W option; 150 × 150 × 150 mm build volume (or extended Z if available)
+>
+> **Please include in your quote:**
+> - System price with academic/educational discount
+> - Laser configuration options (100W/200W/400W, single/dual) and pricing for each
+> - Software licensing model and any annual costs
+> - Service contract options and annual cost
+> - Training package (duration, location, number of participants)
+> - Estimated delivery lead time
+> - Installation and facility requirements
+> - Consumables pricing (build plates, recoater blades, filters, gas)
+> - Powder supply options and pricing for 316L and Ti-6Al-4V
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds]. We would appreciate any information on demo/beta units or showroom models available at reduced cost.
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 3: One Click Metal (BoldSeries MPRINT+)
+
+> **To:** [Submit via oneclickmetal.com/contact or contact a US reseller: TriMech, Javelin, MasterGraphics, Select Additive Technologies]
+>
+> **Subject:** Academic Quote Request — One Click Metal BoldSeries MPRINT+
+>
+> Dear One Click Metal Sales Team,
+>
+> I am a researcher at Brigham Young University (BYU) and we are evaluating compact LPBF systems for our university research lab. The **BoldSeries MPRINT+** is of particular interest due to its cartridge-based powder handling system, which simplifies safety and training for a multi-user academic environment.
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 sub-size metallic tensile specimens (25 mm gauge length, ~100 mm overall length) within the 150 × 150 × 150 mm build volume
+> - **Target alloys:** Stainless steel (316L or similar) and aluminum (AlSi10Mg)
+> - **Safety:** The cartridge-based powder system is a significant advantage for our university EHS requirements
+>
+> **Please include in your quote:**
+> - MPRINT+ system price with academic/educational discount
+> - MPURE unpacking/sieving station price
+> - Available material cartridges and pricing
+> - Software licensing (MONE platform) — perpetual vs. subscription
+> - Service contract options and annual cost
+> - Training package (duration, location, number of participants)
+> - Estimated delivery lead time
+> - Installation requirements (electrical: 230V single-phase confirmed?)
+> - Inert gas requirements and estimated consumption
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds].
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 4: Mastrex (MX-100)
+
+> **To:** info@mastrex.com
+>
+> **Subject:** Academic Quote Request — Mastrex MX-100
+>
+> Dear Mastrex Sales Team,
+>
+> I am a researcher at Brigham Young University (BYU) and we are interested in the **Mastrex MX-100** as an affordable entry point for LPBF metal 3D printing in our research lab.
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 metallic tensile specimens — both sub-size (25 mm gauge, ~100 mm overall) and potentially full-size (50 mm gauge, ~200 mm overall) given the 250 × 250 × 300 mm build volume
+> - **Target alloys:** 316L stainless steel and Ti-6Al-4V
+> - **Parameter access:** Ability to develop and modify process parameters for research
+>
+> **Please include in your quote:**
+> - MX-100 system price with academic/educational discount (list price ~$39K)
+> - Any additional required peripherals (sieving station, chiller, etc.) and their costs
+> - Software details — what CAM/build prep software is included? Parameter access level?
+> - Service contract options and annual cost
+> - Training package
+> - Estimated delivery lead time
+> - Facility requirements (electrical, gas supply, ventilation, floor space, weight)
+> - Consumables pricing (build plates, filters, gas)
+> - Powder sourcing — do you supply powders, or can we use third-party?
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds].
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 5: Nikon SLM Solutions (SLM 125)
+
+> **To:** [Submit via nikon-slm-solutions.com/contact-sales]
+>
+> **Subject:** Academic Quote Request — Nikon SLM 125
+>
+> Dear Nikon SLM Solutions Sales Team,
+>
+> I am a researcher at Brigham Young University (BYU) and we are evaluating LPBF systems for our research lab. We are interested in the **SLM 125** for its compact size, 400W laser, and open software architecture.
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 sub-size metallic tensile specimens (25 mm gauge length, ~100 mm overall length)
+> - **Target alloys:** 316L stainless steel, Ti-6Al-4V, and potentially IN718
+> - **Parameter access:** Open parameter access for research and new material/parameter development
+>
+> **Please include in your quote:**
+> - New SLM 125 system price with academic/educational discount
+> - Availability of refurbished/pre-owned SLM 125 units with warranty
+> - Software licensing model and any annual costs
+> - Service contract options and annual cost
+> - Training package (duration, location, number of participants)
+> - Estimated delivery lead time
+> - Installation requirements (electrical: 400V 3-phase, 32A — please confirm)
+> - Consumables pricing (build plates, recoater blades, filters, gas)
+> - Powder supply options and pricing for 316L and Ti-6Al-4V
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds].
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 6: Renishaw (AM 250 — Used Market)
+
+> **To:** usa@renishaw.com
+>
+> **Subject:** Academic Inquiry — Renishaw AM 250 (New or Refurbished)
+>
+> Dear Renishaw Additive Manufacturing Team,
+>
+> I am a researcher at Brigham Young University (BYU) and we are evaluating LPBF metal 3D printers for our research lab. We are interested in the **Renishaw AM 250** due to its 250 × 250 × 300 mm build volume, which accommodates full-size ASTM E8 tensile specimens.
+>
+> **Our requirements:**
+> - **Primary application:** Printing ASTM E8 metallic tensile specimens — both sub-size and full-size (50 mm gauge length, ~200 mm overall length)
+> - **Target alloys:** 316L stainless steel, Ti-6Al-4V, and IN718
+> - **Parameter access:** Ability to modify or develop process parameters for research
+>
+> **We would like to know:**
+> - Does Renishaw offer refurbished or pre-owned AM 250 units directly?
+> - New system price with academic/educational discount
+> - Level of parameter access available (open vs. locked)
+> - Software licensing (QuantAM) — perpetual vs. subscription, annual cost
+> - Service contract options and annual cost
+> - Training package (duration, location, number of participants)
+> - Estimated delivery lead time for new units
+> - Facility requirements (electrical, gas, ventilation, compressed air, floor space, cooling)
+> - Consumables pricing
+>
+> We are also monitoring the secondary market for used AM 250 units and would appreciate any guidance on evaluating pre-owned Renishaw systems (laser hours, maintenance history, etc.).
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds].
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
+
+### Draft 7: Colibrium Additive / GE Additive (Concept Laser Mlab 200R — Used Market Support)
+
+> **To:** [Submit via colibriumadditive.com/contact or GE Additive contact form]
+>
+> **Subject:** Academic Inquiry — Concept Laser Mlab cusing 200R (Used Unit Support)
+>
+> Dear Colibrium Additive Team,
+>
+> I am a researcher at Brigham Young University (BYU). We are considering acquiring a **used Concept Laser Mlab cusing 200R** for our research lab and would like to understand what support options are available for pre-owned units.
+>
+> **Specific questions:**
+> 1. Does Colibrium/GE Additive still provide service, parts, and software updates for the Mlab 200R?
+> 2. Is it possible to purchase a CL WRX Parameter license for open process parameter development?
+> 3. What consumables and spare parts are available (recoater blades, build plates, filters, laser windows)?
+> 4. Can you provide pricing for an annual service contract for a used Mlab 200R?
+> 5. Is training still offered for this platform?
+> 6. Are there any known end-of-support dates for the Mlab 200R?
+>
+> **Our application:** Printing ASTM E8 sub-size metallic tensile specimens in 316L SS and Ti-6Al-4V.
+>
+> We anticipate funding through [NSF MRI / DoD DURIP / DOE EPSCoR / university funds].
+>
+> Thank you,
+> [Your Name]
+> [Title]
+> Brigham Young University
+> [Department]
+> [Email] · [Phone]
 
 ## Specifications to Discuss with Vendors
 
