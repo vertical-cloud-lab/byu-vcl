@@ -148,7 +148,15 @@ The OT-2 fits inside the P15 but with tighter clearance, especially on depth. Wi
 
 **Market context:** Used gloveboxes sell for $1,500–$15,000 at auction depending on brand, features, and condition. Basic gloveboxes: $1,500–$5,000. Inert-atmosphere gloveboxes (MBraun, Vacuum Atmospheres): $5,000–$15,000.
 
-**OT-2 fit:** The OT-2 footprint is 25 × 22.5 × 26 in (63 × 57 × 66 cm). Gloveboxes that could accommodate this need an internal working area of at least **28 × 25 × 28 in** (with minimal clearance) or ideally **32 × 28 × 30 in** for comfortable access and cable routing. Dimensions of this specific unit are unknown and **must be verified** before bidding.
+**OT-2 fit:** Dimensions of this specific glovebox are unknown and **must be verified** before bidding.
+
+| | OT-2 Footprint | Minimum Internal Required | Ideal Internal |
+|---|---|---|---|
+| Width | 25 in (630 mm) | 28 in (710 mm) | 32 in (810 mm) |
+| Depth | 22.5 in (570 mm) | 25 in (635 mm) | 28 in (710 mm) |
+| Height | 26 in (660 mm) | 28 in (710 mm) | 30 in (760 mm) |
+
+The "minimum" column adds ~3 in for cable routing; "ideal" adds ~6 in per dimension for comfortable access, ventilation, and glove reach.
 
 **Strategic fit:** A glovebox directly addresses [Issue #30](https://github.com/vertical-cloud-lab/byu-vcl/issues/30) and enables:
 - Inert-atmosphere powder handling for pyrophoric metal powders (aluminum, titanium)
