@@ -123,7 +123,7 @@ At 610 mm, the max focal length that still covers the full plate width (128 mm) 
 |-------------------|-------------------------|------------------------|--------------------|----------------------|
 | 16 mm | 240 mm | 180 mm | ✅ Yes | ~180 × 182 ≈ **33k** |
 | 25 mm | 153 mm | 115 mm | ✅ Yes | ~282 × 284 ≈ **80k** |
-| 28 mm | 137 mm | 103 mm | ✅ Yes (tight, 93% fill) | ~316 × 318 ≈ **101k** |
+| 28 mm | 137 mm | 103 mm | ✅ Yes (tight, 93% × 83% fill) | ~316 × 318 ≈ **101k** |
 | 35 mm | 110 mm | 82 mm | ❌ No (crops width) | — |
 | 50 mm | 77 mm | 58 mm | ❌ No (crops) | — |
 
@@ -252,7 +252,7 @@ Fixed-lens cameras (Camera Module 3, Arducam 64MP) have short focal lengths (4.7
 | Camera Module 3 | 4.74 mm | 716 × 403 mm | 18% × 21% | ~69 × 69 ≈ **5k** ❌ |
 | Arducam 64MP | 5.1 mm | 885 × 664 mm | 14% × 13% | ~110 × 112 ≈ **12k** ⚠️ |
 | **HQ Camera + 25 mm** | **25 mm** | **153 × 115 mm** | **83% × 75%** | **~282 × 284 ≈ 80k** ✅ |
-| **HQ Camera + 28 mm** | **28 mm** | **137 × 103 mm** | **93% × 84%** | **~316 × 318 ≈ 101k** ✅✅ |
+| **HQ Camera + 28 mm** | **28 mm** | **137 × 103 mm** | **93% × 83%** | **~316 × 318 ≈ 101k** ✅✅ |
 
 The RPi HQ Camera with a **25 mm C-mount telephoto lens** is the clear choice for this distance, delivering **80k pixels per well** — more than enough for precipitate detection and intensity measurement.
 
@@ -345,7 +345,7 @@ The RPi HQ Camera with a **25 mm C-mount telephoto lens** is the clear choice fo
 - **25 mm lens:** FOV 153 × 115 mm → full plate in frame → **~80k pixels/well** (96-well), ~20k (384-well)
 - **Zoom at 28 mm:** FOV 137 × 103 mm → plate fills 93% of frame → **~101k pixels/well** (96-well), ~25k (384-well)
 
-**Rationale:** This is the best approach for a fixed overhead camera at ~24" distance. The HQ Camera with a 25 mm telephoto provides excellent resolution (80k px/well) despite the large working distance — well above the 10k minimum needed for intensity measurement. The zoom lens option adds ~$40 more but gives the flexibility to fine-tune framing or zoom into individual wells. Manual focus is set once and left alone since the working distance is fixed. The RPi Zero 2W sits outside the OT-2 enclosure (no cable routing inside the robot), making setup simpler. Total cost stays well under the $500 budget.
+**Rationale:** This is the best approach for a fixed overhead camera at ~24" distance. The HQ Camera with a 25 mm telephoto provides excellent resolution (80k px/well) despite the large working distance — well above the ~10k minimum needed for intensity measurement (see Section 8 resolution requirements analysis). The zoom lens option adds ~$40 more but gives the flexibility to fine-tune framing or zoom into individual wells. Manual focus is set once and left alone since the working distance is fixed. The RPi Zero 2W sits outside the OT-2 enclosure (no cable routing inside the robot), making setup simpler. Total cost stays well under the $500 budget.
 
 ---
 
