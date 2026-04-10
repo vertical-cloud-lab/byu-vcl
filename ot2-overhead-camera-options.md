@@ -29,6 +29,7 @@ Understanding the geometry is critical for lens/camera selection.
 | Well plate footprint | 127.76 × 85.48 mm | ANSI/SLAS 1-2004 |
 | **Working distance (lid to plate surface)** | **~186 mm** | 200 mm − 14 mm plate height |
 | **Working distance (gantry-mounted camera to plate)** | **~150–180 mm** (estimate) | Depends on gantry z-position and camera mount depth |
+| **Working distance (fixed mount on external arm above OT-2)** | **~610 mm** (~24 in) | Camera on arm/bracket above the OT-2 lid, looking down through a plexiglass cutout |
 
 > **Note:** The gantry will be moved out of the way (to a home/park position) before capturing images. The "fake pipette" approach uses the second pipette slot, which has its own linear actuator for z-axis movement, giving some control over working distance.
 
@@ -113,6 +114,18 @@ Understanding the geometry is critical for lens/camera selection.
 | 8 mm | 134 mm | 100 mm | ✅ Yes (tight) | ~324 × 326 ≈ **106k** |
 | 12 mm | 89 mm | 67 mm | ❌ No (crops) | Higher per-well, but needs stitching |
 | 16 mm | 67 mm | 50 mm | ❌ No (crops) | Very high per-well, needs stitching |
+
+**Lens selection for fixed overhead mount (~610 mm / 24" working distance, full 96-well plate):**
+
+At 610 mm, the max focal length that still covers the full plate width (128 mm) is **~30 mm**. A 25 mm lens gives comfortable margin; 28 mm is near-optimal.
+
+| Lens Focal Length | Horizontal FOV at 610 mm | Vertical FOV at 610 mm | Covers Full Plate? | Pixels/Well (96-well) |
+|-------------------|-------------------------|------------------------|--------------------|----------------------|
+| 16 mm | 240 mm | 180 mm | ✅ Yes | ~180 × 182 ≈ **33k** |
+| 25 mm | 153 mm | 115 mm | ✅ Yes | ~282 × 284 ≈ **80k** |
+| 28 mm | 137 mm | 103 mm | ✅ Yes (tight, 93% fill) | ~316 × 318 ≈ **101k** |
+| 35 mm | 110 mm | 82 mm | ❌ No (crops width) | — |
+| 50 mm | 77 mm | 58 mm | ❌ No (crops) | — |
 
 > **Recommended lens:** **6 mm or 8 mm** CS-mount for full-plate imaging. The 8 mm lens provides a tighter framing with more pixels per well while still covering the plate footprint.
 
@@ -220,9 +233,57 @@ For the capture workflow, the existing [a1_cam architecture](https://ac-training
 
 ---
 
-## 6. Recommended Configuration
+## 5b. Alternative Mounting Approach — Fixed Overhead (Plexiglass Cutout)
 
-### Primary Recommendation: Camera Module 3 + RPi Zero 2W
+An alternative to the "fake pipette" approach is mounting the camera **above the OT-2** on an external arm or bracket, looking down through a small cutout in the plexiglass lid. The gantry is moved out of the way before each image capture.
+
+### Geometry
+
+The camera-to-plate distance depends on how high above the lid the camera is mounted. If mounted on an arm extending ~16–18" above the plexiglass top (with the internal deck-to-lid clearance of ~8"), the total distance from camera to plate surface is approximately **~610 mm (~24")**.
+
+> **Note:** If the camera is placed directly *on* the plexiglass (flush mount), the distance is only ~186 mm — in that case, the 6 mm or 8 mm lenses from Section 2c apply directly, and this is equivalent to the gantry-mount scenario in terms of optics.
+
+### Why the HQ Camera + Telephoto Lens Is Required at 24"
+
+Fixed-lens cameras (Camera Module 3, Arducam 64MP) have short focal lengths (4.7–5.1 mm), so at 610 mm the well plate occupies only ~15–18% of the frame. This wastes most of the sensor resolution:
+
+| Camera | Focal Length | FOV at 610 mm (H × V) | Plate % of Frame | Pixels/Well (96) |
+|--------|-------------|----------------------|-----------------|-----------------|
+| Camera Module 3 | 4.74 mm | 716 × 403 mm | 18% × 21% | ~69 × 69 ≈ **5k** ❌ |
+| Arducam 64MP | 5.1 mm | 885 × 664 mm | 14% × 13% | ~110 × 112 ≈ **12k** ⚠️ |
+| **HQ Camera + 25 mm** | **25 mm** | **153 × 115 mm** | **83% × 75%** | **~282 × 284 ≈ 80k** ✅ |
+| **HQ Camera + 28 mm** | **28 mm** | **137 × 103 mm** | **93% × 84%** | **~316 × 318 ≈ 101k** ✅✅ |
+
+The RPi HQ Camera with a **25 mm C-mount telephoto lens** is the clear choice for this distance, delivering **80k pixels per well** — more than enough for precipitate detection and intensity measurement.
+
+### Recommended Lens Options for 610 mm
+
+| Lens | Focal Length | Type | Min Focus | Price | Supplier |
+|------|-------------|------|-----------|-------|----------|
+| **Waveshare 25 mm C-mount** (recommended — simple) | 25 mm fixed | C-mount, F1.4, manual focus/iris | ~20–30 cm | **~$34** | [Waveshare ($34)](https://www.waveshare.com/25mm-telephoto-lens-for-pi.htm), [Amazon ($34)](https://www.amazon.com/dp/B08BRRKDCH) |
+| **Arducam 8–50 mm zoom** (recommended — versatile) | 8–50 mm varifocal | C-mount, F1.4, manual zoom/focus/iris | 50 cm (0.5 m) | **~$70–$80** | [Amazon ($75)](https://www.amazon.com/dp/B08PYMBX9T), [Welectron (€57)](https://www.welectron.com/Arducam-LN057-8-50mm-C-Mount-Zoom-Lens-for-IMX477-Raspberry-Pi-HQ-Camera_1) |
+| Arducam/Waveshare 16 mm C-mount | 16 mm fixed | C-mount, manual | ~20 cm | ~$30–$50 | Amazon, Waveshare |
+
+> **Best pick:** The **Arducam 8–50 mm zoom** (~$75) is the most versatile — dial it to ~25–28 mm to frame the full plate, or zoom further to inspect individual wells. Its 50 cm minimum focus distance is well within the 610 mm working distance. The **Waveshare 25 mm** (~$34) is the simpler/cheaper option if you don't need zoom.
+
+### Advantages of Fixed Overhead Mount
+- **No interference with gantry or pipettes** — camera is completely separate from the OT-2 mechanism
+- **Simpler integration** — no "fake pipette" software complexity; just park the gantry, trigger MQTT, capture
+- **Fixed focus** — once manually set, focus doesn't change (working distance is constant)
+- **Accessible** — easy to adjust lens, clean, or replace without opening the OT-2
+- **No ribbon cable routing inside the OT-2** — RPi sits outside, near the camera
+
+### Disadvantages
+- **Requires a small cutout** in the plexiglass lid (or removing the lid during imaging)
+- **Fixed position** — cannot reposition over different deck slots without moving the entire camera mount (unless the camera covers the full deck, which would reduce per-well resolution)
+- **External arm/bracket needed** — must be stable to avoid vibration/blur; 3D-printed or aluminum extrusion bracket recommended
+- **Manual focus only** — HQ Camera lenses are all manual focus (not autofocus); however, focus only needs to be set once since the distance is fixed
+
+---
+
+## 6. Recommended Configurations
+
+### 6a. Fake Pipette: Camera Module 3 + RPi Zero 2W
 
 | Component | Part | Est. Cost |
 |-----------|------|-----------|
@@ -236,7 +297,7 @@ For the capture workflow, the existing [a1_cam architecture](https://ac-training
 
 **Rationale:** This matches the proven a1_cam setup (same camera, same compute, same software stack). Autofocus eliminates the need for manual focus adjustment when the z-distance varies. The compact form factor fits easily in the pipette slot. The existing `device.py` codebase from [ac-dev-lab](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/a1_cam) can be reused with minimal modification.
 
-### Upgrade Option: Arducam 64MP + RPi 4B
+### 6b. Fake Pipette Upgrade: Arducam 64MP + RPi 4B
 
 | Component | Part | Est. Cost |
 |-----------|------|-----------|
@@ -250,7 +311,7 @@ For the capture workflow, the existing [a1_cam architecture](https://ac-training
 
 **Rationale:** If higher resolution is needed — especially for 384-well plates where wells are only 3.7 mm across — the 64MP sensor provides ~5× more pixels per well. The RPi 4B is required for full 64MP capture but also has 5 GHz WiFi for faster image uploads.
 
-### HQ Camera Option: Maximum Optical Quality
+### 6c. Fake Pipette: HQ Camera (Maximum Optical Quality)
 
 | Component | Part | Est. Cost |
 |-----------|------|-----------|
@@ -264,6 +325,27 @@ For the capture workflow, the existing [a1_cam architecture](https://ac-training
 | **Total** | | **~$109–$145** |
 
 **Rationale:** Best per-pixel image quality due to larger pixels (1.55 µm vs 1.4 µm) and interchangeable optics. The 8 mm lens provides a tight, well-framed view of the full plate. However, manual focus is a drawback — once set for a fixed working distance, it should remain in focus, but any change in z-height requires manual re-adjustment. Best suited if optical quality and upgradeability are priorities and the working distance will remain constant.
+
+### 6d. Fixed Overhead Mount: HQ Camera + 25 mm Telephoto + RPi Zero 2W ⭐ Best for Fixed Position
+
+| Component | Part | Est. Cost |
+|-----------|------|-----------|
+| Camera | Raspberry Pi HQ Camera (CS-mount) | ~$50–$70 |
+| Lens (option A — simple) | Waveshare 25 mm C-mount telephoto | ~$34 |
+| Lens (option B — versatile) | Arducam 8–50 mm C-mount zoom | ~$75 |
+| Compute | Raspberry Pi Zero 2W | ~$15–$20 |
+| CSI cable | Standard 15-pin or mini-to-standard adapter | ~$3–$5 |
+| SD card | 16 GB+ microSD | ~$8–$10 |
+| Power | USB micro cable + 5V supply | ~$5–$10 |
+| Mount | Aluminum extrusion arm or 3D-printed bracket + plexiglass cutout | ~$15–$30 |
+| **Total (25 mm lens)** | | **~$130–$179** |
+| **Total (zoom lens)** | | **~$171–$220** |
+
+**Performance at ~610 mm (24"):**
+- **25 mm lens:** FOV 153 × 115 mm → full plate in frame → **~80k pixels/well** (96-well), ~20k (384-well)
+- **Zoom at 28 mm:** FOV 137 × 103 mm → plate fills 93% of frame → **~101k pixels/well** (96-well), ~25k (384-well)
+
+**Rationale:** This is the best approach for a fixed overhead camera at ~24" distance. The HQ Camera with a 25 mm telephoto provides excellent resolution (80k px/well) despite the large working distance — well above the 10k minimum needed for intensity measurement. The zoom lens option adds ~$40 more but gives the flexibility to fine-tune framing or zoom into individual wells. Manual focus is set once and left alone since the working distance is fixed. The RPi Zero 2W sits outside the OT-2 enclosure (no cable routing inside the robot), making setup simpler. Total cost stays well under the $500 budget.
 
 ---
 
