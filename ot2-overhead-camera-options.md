@@ -1,0 +1,327 @@
+# OT-2 Overhead Camera — Camera Options & Integration Guide
+
+**Robot:** Opentrons OT-2 Liquid Handling Robot
+**Use Case:** Overhead well plate imaging (96-well and 384-well plates)
+**Mounting Approach:** "Fake pipette" — camera mounted in the second pipette slot on the OT-2 gantry
+**Compute:** Raspberry Pi Zero 2W (or RPi 4B) running RPi OS Lite (bookworm)
+**Software Stack:** `picamera2` / `libcamera` → Python capture → S3 upload → MQTT URI notification
+
+> **Related Issues & References:**
+> - [byu-vcl#34](https://github.com/vertical-cloud-lab/byu-vcl/issues/34) — This issue (overhead camera for OT-2)
+> - [byu-vcl#9](https://github.com/vertical-cloud-lab/byu-vcl/issues/9) — Set up picam (existing RPi camera experience)
+> - [a1_cam docs](https://ac-training-lab.readthedocs.io/en/latest/devices/a1_cam.html) — Reference implementation (MQTT + S3 + picamera2)
+> - [RAISE press-fit camera (arXiv:2510.06546)](https://arxiv.org/abs/2510.06546) — Press-fit camera tool for OT-2 from University of Toronto
+> - [RSC Digital Discovery camera tool](https://pubs.rsc.org/en/content/articlehtml/2025/dd/d4dd00334a) — Another OT-2 camera integration
+
+---
+
+## 1. OT-2 Internal Dimensions & Working Distance
+
+Understanding the geometry is critical for lens/camera selection.
+
+| Parameter | Value | Source |
+|-----------|-------|--------|
+| External dimensions (W × D × H) | 630 × 570 × 660 mm | [Opentrons specs](https://docs.opentrons.com/ot-2/system-description/specs/) |
+| Deck slots | 11 ANSI/SLAS-compliant slots | Opentrons docs |
+| Internal height (deck to lid) | ~200 mm | Community measurements, [Opentrons GitHub hardware files](https://github.com/Opentrons/ot2) |
+| 96-well plate height | ~14 mm | SBS standard |
+| 384-well plate height | ~14 mm | SBS standard |
+| Well plate footprint | 127.76 × 85.48 mm | ANSI/SLAS 1-2004 |
+| **Working distance (lid to plate surface)** | **~186 mm** | 200 mm − 14 mm plate height |
+| **Working distance (gantry-mounted camera to plate)** | **~150–180 mm** (estimate) | Depends on gantry z-position and camera mount depth |
+
+> **Note:** The gantry will be moved out of the way (to a home/park position) before capturing images. The "fake pipette" approach uses the second pipette slot, which has its own linear actuator for z-axis movement, giving some control over working distance.
+
+### Well Dimensions
+
+| Plate Type | Wells | Well Diameter | Well Spacing (center-to-center) | Well Depth |
+|------------|-------|---------------|--------------------------------|------------|
+| 96-well | 96 (12 × 8) | 6.86 mm | 9.0 mm | ~10–11 mm |
+| 384-well | 384 (24 × 16) | 3.7 mm | 4.5 mm | ~11 mm |
+
+---
+
+## 2. Camera Options Comparison
+
+### 2a. Raspberry Pi Camera Module 3 (Standard) ⭐ Recommended Baseline
+
+| Specification | Value |
+|---------------|-------|
+| Sensor | Sony IMX708, 12MP (4608 × 2592) |
+| Sensor size | 1/2.43" |
+| Pixel size | 1.4 µm |
+| Lens | Fixed, 4.74 mm focal length |
+| FoV (diagonal / horizontal / vertical) | 75° / 66° / 41° |
+| Focus | **Autofocus** (PDAF), 10 cm to ∞ |
+| Interface | MIPI CSI-2 (15-pin ribbon cable) |
+| Dimensions | 25 × 24 × 11.5 mm |
+| Price | **~$25–$28** |
+| Suppliers | [Raspberry Pi Store](https://www.raspberrypi.com/products/camera-module-3/), [PiShop US](https://www.pishop.us/), [CanaKit](https://www.canakit.com/) |
+
+**FOV calculation at 170 mm working distance:**
+- Horizontal FOV = 2 × 170 × tan(66°/2) ≈ **221 mm** ✅ covers full plate (128 mm)
+- Vertical FOV = 2 × 170 × tan(41°/2) ≈ **127 mm** ✅ covers full plate (86 mm)
+- Pixels per well (96-well, full plate in frame): ~223 × 219 px/well → **~49k pixels/well** ✅
+
+**Pros:** Cheapest option, autofocus (critical for hands-off operation), proven `picamera2` support, smallest form factor, direct drop-in for existing a1_cam codebase.
+**Cons:** Fixed lens (no optical zoom), moderate resolution per well for 384-well plates.
+
+---
+
+### 2b. Raspberry Pi Camera Module 3 Wide
+
+| Specification | Value |
+|---------------|-------|
+| Sensor | Sony IMX708, 12MP (4608 × 2592) |
+| FoV (diagonal / horizontal / vertical) | 120° / 102° / 67° |
+| Focus | **Autofocus** (PDAF), 5 cm to ∞ |
+| Dimensions | 25 × 24 × 12.4 mm |
+| Price | **~$35–$39** |
+| Suppliers | Same as Camera Module 3 |
+
+**FOV at 170 mm:**
+- Horizontal FOV ≈ **420 mm** (much wider than plate — plate would occupy ~30% of the frame)
+- Vertical FOV ≈ **225 mm**
+- Pixels per well (96-well): ~117 × 124 px/well → **~15k pixels/well**
+
+**Pros:** Closer minimum focus distance (5 cm), good if camera must be very close to the plate.
+**Cons:** Excessive FOV at typical working distances means the plate is small in the frame, wasting resolution. Not recommended for overhead use unless the camera is positioned very close (~50–80 mm) to the plate.
+
+---
+
+### 2c. Raspberry Pi HQ Camera (C/CS-Mount or M12 Mount) ⭐ Best Image Quality
+
+| Specification | Value |
+|---------------|-------|
+| Sensor | Sony IMX477, 12.3MP (4056 × 3040) |
+| Sensor size | 1/2.3" (6.287 × 4.712 mm) |
+| Pixel size | 1.55 µm |
+| Lens | **Interchangeable** — C/CS-mount or M12 mount |
+| FoV | Lens-dependent |
+| Focus | **Manual** (lens-dependent) |
+| Interface | MIPI CSI-2 (15-pin ribbon cable) |
+| Dimensions | 38 × 38 × 18.4 mm (body only, plus lens) |
+| Price (body only) | **~$50–$70** |
+| Lens pricing | 6 mm CS-mount: ~$25; 16 mm C-mount: ~$50; M12 lenses: ~$12–$25 each |
+| Suppliers | [Raspberry Pi Store](https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/), [Adafruit](https://www.adafruit.com/product/4561), [PiShop US](https://www.pishop.us/) |
+
+**Lens selection for OT-2 overhead imaging (170 mm working distance, full 96-well plate):**
+
+| Lens Focal Length | Horizontal FOV at 170 mm | Vertical FOV at 170 mm | Covers Full Plate? | Pixels/Well (96-well) |
+|-------------------|-------------------------|------------------------|--------------------|----------------------|
+| 6 mm | 178 mm | 134 mm | ✅ Yes | ~243 × 245 ≈ **60k** |
+| 8 mm | 134 mm | 100 mm | ✅ Yes (tight) | ~324 × 326 ≈ **106k** |
+| 12 mm | 89 mm | 67 mm | ❌ No (crops) | Higher per-well, but needs stitching |
+| 16 mm | 67 mm | 50 mm | ❌ No (crops) | Very high per-well, needs stitching |
+
+> **Recommended lens:** **6 mm or 8 mm** CS-mount for full-plate imaging. The 8 mm lens provides a tighter framing with more pixels per well while still covering the plate footprint.
+
+**Pros:** Best image quality (larger pixels, better low-light), interchangeable lenses allow fine-tuning of FOV and working distance, flat-field optics reduce edge distortion, upgradeable for future needs (e.g., macro lens for individual wells).
+**Cons:** Manual focus requires one-time physical adjustment (not autofocus), larger form factor, higher total cost (body + lens), lens protrudes and adds bulk to the "fake pipette" assembly.
+
+---
+
+### 2d. Arducam 64MP Hawk-eye ⭐ Highest Resolution
+
+| Specification | Value |
+|---------------|-------|
+| Sensor | Samsung/Sony IMX686 (via Arducam), **64MP** (9152 × 6944) |
+| Sensor size | 1/1.7" (7.4 × 5.55 mm) |
+| Pixel size | 0.8 µm |
+| Lens | Fixed, 5.1 mm focal length |
+| FoV (diagonal / horizontal / vertical) | 84° / ~72° / ~55° |
+| Focus | **Autofocus** (PDAF + CDAF), 8 cm to ∞ |
+| Interface | MIPI CSI-2 (22-pin to 15-pin adapter included) |
+| Dimensions | 25 × 24 mm (same as Camera Module 3) |
+| Price | **~$75–$110** |
+| Suppliers | [Amazon](https://www.amazon.com/dp/B0B63PCZM9), [The Pi Hut](https://thepihut.com/products/64mp-hawk-eye-autofocus-camera-module-for-raspberry-pi), [SparkFun](https://www.sparkfun.com/arducam-64mp-autofocus-camera-module.html) |
+
+**FOV at 170 mm:**
+- Horizontal FOV = 2 × 170 × tan(72°/2) ≈ **247 mm** ✅ covers full plate (128 mm)
+- Vertical FOV = 2 × 170 × tan(55°/2) ≈ **177 mm** ✅ covers full plate (86 mm)
+- Pixels per well (96-well, full plate in frame): ~395 × 422 ≈ **167k pixels/well** ✅✅
+
+**Pros:** Extremely high resolution (~3.4× more pixels per well than Camera Module 3), autofocus, same form factor as Camera Module 3, excellent for 384-well plates (still ~42k pixels/well).
+**Cons:** More expensive, smaller pixel size means worse low-light performance, full 64MP capture requires RPi 4B or 5 (falls back to 16MP on Zero 2W), `libcamera` support is good but Arducam-specific drivers may require additional setup.
+
+> **Important:** Full 64MP mode requires Raspberry Pi 4B or 5. On RPi Zero 2W, output is limited to 16MP (still 4× more than needed). If using RPi Zero 2W, this limitation should be verified.
+
+---
+
+### 2e. Raspberry Pi Global Shutter Camera
+
+| Specification | Value |
+|---------------|-------|
+| Sensor | Sony IMX296, 1.58MP (1456 × 1088) |
+| Price | ~$50 |
+
+**Not recommended** for this application. The global shutter is designed for fast-moving subjects and machine vision; its 1.58MP resolution is far too low for well plate imaging. Included here only for completeness.
+
+---
+
+## 3. Camera Comparison Summary
+
+| Feature | Camera Module 3 | Camera Module 3 Wide | HQ Camera (8 mm lens) | Arducam 64MP |
+|---------|-----------------|---------------------|----------------------|--------------|
+| Resolution | 12MP | 12MP | 12.3MP | 64MP |
+| Autofocus | ✅ Yes | ✅ Yes | ❌ Manual | ✅ Yes |
+| FOV at 170 mm (H × V) | 221 × 127 mm | 420 × 225 mm | 134 × 100 mm | 247 × 177 mm |
+| Covers 96-well plate? | ✅ Yes | ✅ Yes (overkill) | ✅ Yes (tight fit) | ✅ Yes |
+| Pixels per well (96-well) | ~49k | ~15k | ~106k | ~167k |
+| Pixels per well (384-well) | ~12k | ~4k | ~27k | ~42k |
+| Min focus distance | 10 cm | 5 cm | Lens-dependent | 8 cm |
+| Form factor | 25 × 24 mm | 25 × 24 mm | 38 × 38 mm + lens | 25 × 24 mm |
+| RPi Zero 2W compatible | ✅ Full | ✅ Full | ✅ Full | ⚠️ 16MP mode only |
+| `picamera2` support | ✅ Native | ✅ Native | ✅ Native | ✅ (with Arducam driver) |
+| Total cost (camera only) | **~$25** | **~$35** | **~$75–$95** (body + lens) | **~$75–$110** |
+| a1_cam codebase compatible | ✅ Drop-in | ✅ Drop-in | ✅ Minor config changes | ✅ Minor config changes |
+
+---
+
+## 4. Compute Module Options
+
+The camera requires a Raspberry Pi to drive it and handle MQTT/S3 communication.
+
+| Board | Price | WiFi | Camera Interface | Notes |
+|-------|-------|------|-----------------|-------|
+| **RPi Zero 2W** (recommended) | ~$15 (MSRP), ~$20–$35 (street) | ✅ 2.4 GHz | Mini CSI (needs adapter cable) | Proven in a1_cam setup; compact; sufficient for image capture + upload |
+| RPi 4B | ~$35–$55 | ✅ 2.4/5 GHz | Standard CSI | Required for full 64MP Arducam; overkill for Camera Module 3 |
+| RPi 5 | ~$60–$80 | ✅ 2.4/5 GHz | Standard CSI (new connector) | Most powerful; unnecessary for point-and-shoot |
+
+> **Recommendation:** RPi Zero 2W for Camera Module 3 or HQ Camera. RPi 4B if using Arducam 64MP at full resolution.
+
+---
+
+## 5. Mounting Approach — "Fake Pipette"
+
+The team has decided on a "fake pipette" approach where the camera occupies the second pipette slot on the OT-2 gantry.
+
+### Advantages
+- Uses the existing linear actuator in the second pipette slot for z-axis movement
+- Moves with the gantry in X-Y, allowing the camera to be positioned over any deck slot
+- Does not require cutting holes in the plexiglass lid
+- The gantry can be parked out of the way during liquid handling
+
+### Mounting Considerations
+1. **Press-fit adapter:** A 3D-printed adapter that fits into the pipette mount, similar to the [RAISE system (arXiv:2510.06546)](https://arxiv.org/abs/2510.06546) which uses a press-fit camera holder mimicking a pipette tip form factor
+2. **Mounting screws:** The OT-2 pipette mount has existing mounting holes that can be used to attach a 3D-printed camera bracket
+3. **Cable routing:** The MIPI CSI-2 ribbon cable from the camera needs to route back to the RPi, which can be mounted on the gantry frame or inside the OT-2 enclosure. Ribbon cable lengths up to 300 mm (or longer with extension cables) are available
+4. **Power:** The RPi Zero 2W can be powered via USB from the OT-2's internal USB ports, or via a separate 5V supply routed along the gantry
+
+### Software Integration
+The camera can be treated as a "fake pipette" in the OT-2 protocol — moving the gantry to position the camera over a target well plate, lowering via the z-axis for optimal focus distance, capturing an image, and then parking the camera out of the way for pipetting operations.
+
+For the capture workflow, the existing [a1_cam architecture](https://ac-training-lab.readthedocs.io/en/latest/devices/a1_cam.html) can be reused:
+1. Orchestrator sends `{"command": "capture_image"}` via MQTT to the camera's read topic
+2. RPi captures image using `picamera2` (with autofocus cycle if supported)
+3. RPi uploads JPEG to AWS S3 via `boto3`
+4. RPi publishes S3 URI back via MQTT on the camera's write topic
+5. Orchestrator downloads/stores the image URI
+
+---
+
+## 6. Recommended Configuration
+
+### Primary Recommendation: Camera Module 3 + RPi Zero 2W
+
+| Component | Part | Est. Cost |
+|-----------|------|-----------|
+| Camera | Raspberry Pi Camera Module 3 (Standard) | ~$25 |
+| Compute | Raspberry Pi Zero 2W | ~$15–$20 |
+| CSI cable | Mini-to-standard CSI adapter cable (for Zero) | ~$3–$5 |
+| SD card | 16 GB+ microSD | ~$8–$10 |
+| Power | USB micro cable (or tap OT-2 internal power) | ~$5 |
+| Mount | 3D-printed press-fit adapter (in-house) | ~$2–$5 (filament) |
+| **Total** | | **~$58–$65** |
+
+**Rationale:** This matches the proven a1_cam setup (same camera, same compute, same software stack). Autofocus eliminates the need for manual focus adjustment when the z-distance varies. The compact form factor fits easily in the pipette slot. The existing `device.py` codebase from [ac-dev-lab](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/a1_cam) can be reused with minimal modification.
+
+### Upgrade Option: Arducam 64MP + RPi 4B
+
+| Component | Part | Est. Cost |
+|-----------|------|-----------|
+| Camera | Arducam 64MP Hawk-eye | ~$75–$110 |
+| Compute | Raspberry Pi 4B (2GB) | ~$35–$45 |
+| CSI cable | Standard 15-pin CSI cable (included with Arducam) | ~$0 |
+| SD card | 32 GB+ microSD | ~$10–$12 |
+| Power | USB-C cable + 5V/3A supply | ~$10 |
+| Mount | 3D-printed press-fit adapter (in-house) | ~$2–$5 (filament) |
+| **Total** | | **~$132–$182** |
+
+**Rationale:** If higher resolution is needed — especially for 384-well plates where wells are only 3.7 mm across — the 64MP sensor provides ~5× more pixels per well. The RPi 4B is required for full 64MP capture but also has 5 GHz WiFi for faster image uploads.
+
+### HQ Camera Option: Maximum Optical Quality
+
+| Component | Part | Est. Cost |
+|-----------|------|-----------|
+| Camera | Raspberry Pi HQ Camera (CS-mount) | ~$50 |
+| Lens | 8 mm CS-mount lens | ~$25–$50 |
+| Compute | Raspberry Pi Zero 2W | ~$15–$20 |
+| CSI cable | Mini-to-standard CSI adapter cable (for Zero) | ~$3–$5 |
+| SD card | 16 GB+ microSD | ~$8–$10 |
+| Power | USB micro cable | ~$5 |
+| Mount | 3D-printed adapter (larger, for HQ Camera body + lens) | ~$3–$5 (filament) |
+| **Total** | | **~$109–$145** |
+
+**Rationale:** Best per-pixel image quality due to larger pixels (1.55 µm vs 1.4 µm) and interchangeable optics. The 8 mm lens provides a tight, well-framed view of the full plate. However, manual focus is a drawback — once set for a fixed working distance, it should remain in focus, but any change in z-height requires manual re-adjustment. Best suited if optical quality and upgradeability are priorities and the working distance will remain constant.
+
+---
+
+## 7. USB Microscope Alternatives
+
+USB microscopes were discussed as alternatives for higher magnification per-well imaging. While not the primary recommendation (the team has decided on RPi cameras), they remain a viable option for future close-up inspection.
+
+| Model | Resolution | Magnification | Working Distance | Focus | Price | Control |
+|-------|-----------|---------------|-----------------|-------|-------|---------|
+| Plugable USB2-MICRO-250X | 2MP | 10×–250× | 1–200 mm | Manual | ~$30–$40 | USB UVC, Python (OpenCV) |
+| Dino-Lite AM7915MZT | 5MP | 10×–220× | 11–300+ mm | **Motorized** | ~$600–$900 | USB, DinoCapture SDK, Python API |
+| Dino-Lite AM4113T | 1.3MP | 10×–50× | 5–300 mm | Manual | ~$300–$400 | USB, DinoCapture SDK |
+| Amscope MU300 | 3MP | 40×–2000× (with objectives) | Objective-dependent | Manual | ~$200–$400 | USB, AmScope driver |
+
+> **Note:** Dino-Lite models with programmable LED and motorized focus (e.g., AM7915MZT) offer the most control for automated imaging but are significantly more expensive. For basic well plate overview imaging, the RPi camera approach is far more cost-effective and integrates better with the existing MQTT/S3 stack.
+
+---
+
+## 8. Resolution Requirements Analysis
+
+What resolution do we actually need per well?
+
+| Target | Wells | Well Diameter | Min Useful Resolution/Well | Justification |
+|--------|-------|---------------|---------------------------|---------------|
+| Detect precipitate (yes/no) | 96 | 6.86 mm | ~50 × 50 px (2.5k) | Binary detection of turbidity |
+| Measure precipitate intensity | 96 | 6.86 mm | ~100 × 100 px (10k) | Grayscale/color intensity quantification |
+| Resolve precipitate morphology | 96 | 6.86 mm | ~200 × 200 px (40k) | Particle size estimation |
+| Detect precipitate (384-well) | 384 | 3.7 mm | ~50 × 50 px (2.5k) | Binary detection |
+
+All camera options above exceed the minimum useful resolution for precipitate detection and intensity measurement in 96-well plates. Even for 384-well plates, the Camera Module 3 provides ~12k pixels per well — sufficient for binary detection and basic intensity measurement. The HQ Camera and Arducam 64MP offer significantly more headroom for morphology analysis.
+
+---
+
+## 9. Next Steps
+
+1. **Order Camera Module 3 + RPi Zero 2W** as the primary setup (lowest cost, fastest to deploy, reuses existing a1_cam software)
+2. **Design and 3D-print** a press-fit camera mount for the second pipette slot — reference the [RAISE system design](https://arxiv.org/abs/2510.06546) for inspiration
+3. **Adapt the a1_cam `device.py`** for the OT-2 overhead camera, modifying:
+   - MQTT topics (e.g., `ot2/overhead-cam/request/{serial}` and `ot2/overhead-cam/response/{serial}`)
+   - Camera orientation/transform settings (may need `vflip` and/or `hflip` depending on mount orientation)
+   - Image quality/compression settings as needed
+4. **Integrate with OT-2 protocol** — add commands to move the gantry to position the camera over the well plate, trigger a capture via MQTT, and wait for the image URI response
+5. **Test and calibrate** — verify focus, FOV, and image quality at the actual working distance inside the OT-2
+6. **Consider Arducam 64MP upgrade** later if higher resolution is needed for 384-well plate experiments or morphology analysis
+
+---
+
+## 10. References
+
+- [Opentrons OT-2 Specifications](https://docs.opentrons.com/ot-2/system-description/specs/)
+- [Opentrons OT-2 Hardware Files (GitHub)](https://github.com/Opentrons/ot2)
+- [Raspberry Pi Camera Module 3 Product Page](https://www.raspberrypi.com/products/camera-module-3/)
+- [Raspberry Pi HQ Camera Product Page](https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/)
+- [Arducam 64MP Hawk-eye Wiki](https://docs.arducam.com/Raspberry-Pi-Camera/Native-camera/64MP-Hawkeye/)
+- [a1_cam Documentation (AC Training Lab)](https://ac-training-lab.readthedocs.io/en/latest/devices/a1_cam.html)
+- [a1_cam Source Code (ac-dev-lab)](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/a1_cam)
+- [RAISE: Press-fit Camera for OT-2 (arXiv:2510.06546)](https://arxiv.org/abs/2510.06546)
+- [RSC Digital Discovery Camera Tool](https://pubs.rsc.org/en/content/articlehtml/2025/dd/d4dd00334a)
+- [Camera Positioning Guide (raspberrypi-guide.github.io)](https://raspberrypi-guide.github.io/electronics/camera-positioning)
+- [Arducam Lens Guide for HQ Camera](https://blog.arducam.com/raspberry-pi-high-quality-camera-lens/)
+- [Seeed Studio HQ Camera Lens Guide](https://www.seeedstudio.com/blog/2020/06/18/a-complete-guide-to-help-you-choose-lenses-for-your-raspberry-pi-high-quality-camera-m/)
