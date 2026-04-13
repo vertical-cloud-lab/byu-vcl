@@ -202,6 +202,41 @@ At 610 mm, the max focal length that still covers the full plate width (128 mm) 
 
 ---
 
+## 3b. Lighting & Low-Light Performance
+
+The OT-2 interior has limited ambient lighting — the built-in LED ring provides some illumination, but depending on lid configuration and room lighting, the camera may need to perform well in moderate to low light. This matters especially for the fixed overhead approach where the camera is farther from the plate.
+
+### Sensor Low-Light Comparison
+
+| Camera | Sensor | Pixel Size | Lens Aperture | Relative Light per Pixel | Low-Light Rating | Notes |
+|--------|--------|-----------|---------------|-------------------------|-----------------|-------|
+| **HQ Camera** | IMX477 | **1.55 µm** | **F1.4** (C-mount lenses) | **Best** (1.55² × F1.4 = baseline) | ⭐⭐⭐⭐⭐ | Largest pixels + fastest available aperture. Best choice for low light. |
+| Camera Module 3 | IMX708 | 1.4 µm | F1.8 (fixed) | ~0.49× HQ | ⭐⭐⭐ | Good for moderate lighting. BSI sensor with Quad Bayer binning helps in low light. |
+| Camera Module 3 Wide | IMX708 | 1.4 µm | F2.2 (fixed) | ~0.33× HQ | ⭐⭐ | Wider FOV and slower aperture reduce per-pixel light. |
+| Arducam 64MP | IMX586 | **0.8 µm** | F1.8 (fixed) | ~0.13× HQ | ⭐⭐ | Tiny pixels collect much less light. Quad Bayer binning (to 16MP/1.6 µm effective) helps, but still noisier than HQ Camera. Indoor images can be dark without exposure adjustments. |
+
+> **Relative light per pixel** is proportional to (pixel_size)² / (F-number)². The HQ Camera with an F1.4 lens collects roughly **2× more light per pixel** than Camera Module 3, and **~8× more** than the Arducam 64MP at native resolution.
+
+### Practical Implications
+
+- **HQ Camera + F1.4 C-mount lens** is the clear winner for low light. The 25 mm and 8–50 mm zoom lenses recommended for the overhead mount are both F1.4, maximizing light collection at the ~24" working distance.
+- **Camera Module 3** performs well in moderate indoor lighting and can use longer exposure times (up to ~1 s with `picamera2`) to compensate. Since the plate and camera are stationary, motion blur is not a concern.
+- **Arducam 64MP** is the most challenging in low light due to 0.8 µm pixels. It benefits from Quad Bayer pixel binning (grouping 4 pixels → effective 1.6 µm at 16MP), but still lags behind the HQ Camera. Best suited for well-lit conditions.
+- **All cameras** support configurable exposure time, analog/digital gain, and white balance via `picamera2`. For a stationary well plate, exposures of 100–500 ms are practical and significantly improve low-light capture.
+
+### Lighting Recommendations
+
+| Scenario | Adequate? | Recommendation |
+|----------|-----------|----------------|
+| OT-2 LED ring on, room lights on | ✅ All cameras | Any camera works fine |
+| OT-2 LED ring on, room lights off | ✅ HQ Camera, ⚠️ Camera Module 3, ⚠️ Arducam 64MP | HQ Camera is best; others need longer exposure or supplemental light |
+| Lid closed, minimal ambient light | ⚠️ HQ Camera, ❌ Others without help | Add a small LED ring or strip near the camera/cutout (~$5–$15 for a USB-powered LED ring) |
+| Through plexiglass cutout at 24" | ✅ HQ Camera (F1.4 lens) | The F1.4 aperture on the recommended lenses is excellent for this distance; the OT-2's internal LEDs may be sufficient |
+
+> **Tip:** If lighting is insufficient, a USB-powered LED ring light (~$5–$15 on Amazon) can be mounted around the plexiglass cutout or on the camera bracket. This provides consistent, diffuse illumination and eliminates dependence on ambient light conditions. The `picamera2` library also supports auto-exposure and auto-white balance to adapt to varying lighting.
+
+---
+
 ## 4. Compute Module Options
 
 The camera requires a Raspberry Pi to drive it and handle MQTT/S3 communication.
@@ -420,3 +455,60 @@ All camera options above exceed the minimum useful resolution for precipitate de
 - [Camera Positioning Guide (raspberrypi-guide.github.io)](https://raspberrypi-guide.github.io/electronics/camera-positioning)
 - [Arducam Lens Guide for HQ Camera](https://blog.arducam.com/raspberry-pi-high-quality-camera-lens/)
 - [Seeed Studio HQ Camera Lens Guide](https://www.seeedstudio.com/blog/2020/06/18/a-complete-guide-to-help-you-choose-lenses-for-your-raspberry-pi-high-quality-camera-m/)
+
+---
+
+## 11. Sourcing Guide — DigiKey BOM for Fixed Overhead (Plexiglass) Configuration
+
+This bill of materials sources as much as possible from **DigiKey** for simplified procurement. The zoom lens is not available on DigiKey and must be ordered separately.
+
+### Primary Components (DigiKey)
+
+| # | Component | Mfr Part | DigiKey Part | Price (USD) | DigiKey Link |
+|---|-----------|----------|-------------|-------------|--------------|
+| 1 | **RPi HQ Camera** (IMX477, C-mount) | SC1220 | 2648-SC1220-ND | ~$50 | [DigiKey SC1220](https://www.digikey.com/en/products/detail/raspberry-pi/SC1220/12339164) |
+| 2 | **Raspberry Pi 5** (4 GB) | SC1111 | 2648-SC1111-ND | ~$60 | [DigiKey SC1111](https://www.digikey.com/en/products/detail/raspberry-pi/SC1111/21658261) |
+| 3 | **RPi 5 27W USB-C Power Supply** (US plug) | SC1153 | 2648-SC1153-ND | ~$12 | [DigiKey SC1153](https://www.digikey.com/en/products/detail/raspberry-pi/SC1153/21658276) |
+| 4 | **RPi 5 Camera Cable** (22-pin → 15-pin, 200 mm) | SC1189 | 2648-SC1189-ND | ~$2 | [DigiKey SC1189](https://www.digikey.com/en/products/detail/raspberry-pi/SC1189/22113927) |
+| 5 | **32 GB microSD** (Class A2, official RPi) | SC1628 | 2648-SC1628-ND | ~$12 | [DigiKey SC1628](https://www.digikey.com/en/products/detail/raspberry-pi/SC1628/24627139) |
+| | **DigiKey subtotal** | | | **~$136** | |
+
+> **Note on cable length:** The 200 mm cable (SC1189) works if the RPi 5 is mounted close to the camera on the external bracket. For longer runs, the 300 mm (SC1190) and 500 mm (SC1191) are also available on DigiKey. A 500 mm cable is recommended if the Pi is positioned on the table beside the OT-2.
+
+### Zoom Lens (not available on DigiKey — order separately)
+
+The 8–50 mm zoom lens is not stocked by DigiKey. Two sourcing options:
+
+| # | Component | Manufacturer | Price (USD) | Supplier | Link |
+|---|-----------|-------------|-------------|----------|------|
+| 6a | **Waveshare 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Waveshare | ~$35 | Waveshare direct | [Waveshare 8-50mm](https://www.waveshare.com/8-50mm-Zoom-Lens-for-Pi.htm) |
+| 6b | **Arducam 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Arducam (LN057) | ~$75 | Amazon | [Amazon LN057](https://www.amazon.com/dp/B08PYMBX9T) |
+
+> The Waveshare lens (~$35) is the budget option; the Arducam LN057 (~$75) has better build quality and smoother zoom action. Both are optically similar (F1.4, 8–50 mm varifocal, C-mount). The Waveshare lens was specifically linked by the PI — it has a 0.20 m minimum focus distance, which comfortably covers the ~610 mm working distance.
+
+### Optional Accessories
+
+| # | Component | Price (USD) | Supplier | Notes |
+|---|-----------|-------------|----------|-------|
+| 7 | USB LED ring light (for supplemental illumination) | ~$8–$15 | Amazon | Mount around plexiglass cutout; powered from RPi USB |
+| 8 | Mounting bracket (aluminum extrusion or 3D-printed) | ~$10–$30 | Amazon / in-house | 80/20 aluminum extrusion or 3D-printed arm to hold camera ~9" above lid |
+| 9 | RPi 5 case (optional, for dust protection) | ~$5–$15 | DigiKey or Amazon | Active cooler case recommended for RPi 5 |
+
+### Total Cost Summary
+
+| Configuration | DigiKey Total | Lens (separate) | Accessories | **Grand Total** |
+|---------------|--------------|-----------------|-------------|----------------|
+| With Waveshare 8–50 mm zoom | ~$136 | ~$35 | ~$18–$45 | **~$189–$216** |
+| With Arducam 8–50 mm zoom | ~$136 | ~$75 | ~$18–$45 | **~$229–$256** |
+
+Both configurations are well under the **$500 budget**. The RPi 5 provides 5 GHz WiFi (faster image uploads), dual CSI ports, and ample processing power for `picamera2` and any future image processing needs.
+
+### Why Raspberry Pi 5 Instead of Zero 2W
+
+For the fixed overhead configuration, the RPi 5 is recommended over the Zero 2W because:
+- **Dual CSI camera ports** — could add a second camera in the future without additional hardware
+- **5 GHz WiFi** — ~3–5× faster image uploads to S3 compared to Zero 2W's 2.4 GHz
+- **USB 3.0 ports** — can power LED lighting or connect USB peripherals directly
+- **More headroom** — can run on-device image processing (e.g., OpenCV well segmentation) if needed
+- **Still modest cost** — only ~$40 more than Zero 2W at street pricing
+- The RPi 5 sits outside the OT-2 on the bracket, so its larger size is not a constraint
