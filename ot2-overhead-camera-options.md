@@ -21,15 +21,15 @@ Understanding the geometry is critical for lens/camera selection.
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| External dimensions (W × D × H) | 630 × 570 × 660 mm | [Opentrons specs](https://docs.opentrons.com/ot-2/system-description/specs/) |
+| External dimensions (W × D × H) | 660 × 570 × 630 mm | [Opentrons specs](https://docs.opentrons.com/ot-2/system-description/specs/) — "66 cm × 57 cm × 63 cm (≈ 26" × 22.5" × 25")" |
 | Deck slots | 11 ANSI/SLAS-compliant slots | Opentrons docs |
-| Internal height (deck to lid) | ~200 mm | Community measurements, [Opentrons GitHub hardware files](https://github.com/Opentrons/ot2) |
+| Internal height (deck to lid) | **~400 mm** (~16 in) | Estimated from external height (630 mm) minus ~230 mm base/electronics; [Opentrons GitHub hardware files](https://github.com/Opentrons/ot2). **Verify by physical measurement.** |
 | 96-well plate height | ~14 mm | SBS standard |
 | 384-well plate height | ~14 mm | SBS standard |
 | Well plate footprint | 127.76 × 85.48 mm | ANSI/SLAS 1-2004 |
-| **Working distance (lid to plate surface)** | **~186 mm** | 200 mm − 14 mm plate height |
-| **Working distance (gantry-mounted camera to plate)** | **~150–180 mm** (estimate) | Depends on gantry z-position and camera mount depth |
-| **Working distance (fixed mount on external arm above OT-2)** | **~610 mm** (~24 in) | Camera on arm/bracket above the OT-2 lid, looking down through a plexiglass cutout |
+| **Working distance (lid to plate surface)** | **~386 mm** (~15 in) | ~400 mm lid height − 14 mm plate height |
+| **Working distance (gantry-mounted camera to plate)** | **~150–180 mm** (estimate) | Depends on gantry z-position and camera mount depth; gantry z-travel is ~218 mm |
+| **Working distance (fixed mount on lid or above OT-2)** | **~386–610 mm** (~15–24 in) | Flush on lid: ~386 mm; on arm/bracket ~9" above lid: ~610 mm (~24 in) |
 
 > **Note:** The gantry will be moved out of the way (to a home/park position) before capturing images. The "fake pipette" approach uses the second pipette slot, which has its own linear actuator for z-axis movement, giving some control over working distance.
 
@@ -115,6 +115,17 @@ Understanding the geometry is critical for lens/camera selection.
 | 12 mm | 89 mm | 67 mm | ❌ No (crops) | Higher per-well, but needs stitching |
 | 16 mm | 67 mm | 50 mm | ❌ No (crops) | Very high per-well, needs stitching |
 
+**Lens selection for flush mount on plexiglass lid (~386 mm / ~15" working distance, full 96-well plate):**
+
+At ~386 mm, the max focal length that covers the full plate width is ~19 mm. A 16 mm lens is optimal.
+
+| Lens Focal Length | Horizontal FOV at 386 mm | Vertical FOV at 386 mm | Covers Full Plate? | Pixels/Well (96-well) |
+|-------------------|-------------------------|------------------------|--------------------|----------------------|
+| 8 mm | 303 mm | 227 mm | ✅ Yes | ~143 × 144 ≈ **21k** |
+| 12 mm | 202 mm | 152 mm | ✅ Yes | ~214 × 216 ≈ **46k** |
+| 16 mm | 152 mm | 114 mm | ✅ Yes (84% × 76% fill) | ~285 × 287 ≈ **82k** |
+| 25 mm | 97 mm | 73 mm | ❌ No (crops) | — |
+
 **Lens selection for fixed overhead mount (~610 mm / 24" working distance, full 96-well plate):**
 
 At 610 mm, the max focal length that still covers the full plate width (128 mm) is **~30 mm**. A 25 mm lens gives comfortable margin; 28 mm is near-optimal.
@@ -127,7 +138,7 @@ At 610 mm, the max focal length that still covers the full plate width (128 mm) 
 | 35 mm | 110 mm | 82 mm | ❌ No (crops width) | — |
 | 50 mm | 77 mm | 58 mm | ❌ No (crops) | — |
 
-> **Recommended lens:** **6 mm or 8 mm** CS-mount for full-plate imaging. The 8 mm lens provides a tighter framing with more pixels per well while still covering the plate footprint.
+> **Recommended lens for gantry-mount (170 mm):** **6 mm or 8 mm** CS-mount for full-plate imaging. The 8 mm lens provides a tighter framing with more pixels per well while still covering the plate footprint. For flush-mount on lid (~386 mm), use **12–16 mm**. For 24" overhead (~610 mm), use **25 mm** (see Section 5b).
 
 **Pros:** Best image quality (larger pixels, better low-light), interchangeable lenses allow fine-tuning of FOV and working distance, flat-field optics reduce edge distortion, upgradeable for future needs (e.g., macro lens for individual wells).
 **Cons:** Manual focus requires one-time physical adjustment (not autofocus), larger form factor, higher total cost (body + lens), lens protrudes and adds bulk to the "fake pipette" assembly.
@@ -239,9 +250,11 @@ An alternative to the "fake pipette" approach is mounting the camera **above the
 
 ### Geometry
 
-The camera-to-plate distance depends on how high above the lid the camera is mounted. If mounted on an arm extending ~16–18" above the plexiglass top (with the internal deck-to-lid clearance of ~8"), the total distance from camera to plate surface is approximately **~610 mm (~24")**.
+The camera-to-plate distance depends on where the camera is positioned:
+- **Flush on plexiglass lid:** ~386 mm (~15 in) — the internal deck-to-lid clearance is ~400 mm, minus ~14 mm plate height
+- **On arm/bracket above lid:** If mounted on an arm extending ~9" (224 mm) above the plexiglass top, the total distance from camera to plate surface is approximately **~610 mm (~24")**
 
-> **Note:** If the camera is placed directly *on* the plexiglass (flush mount), the distance is only ~186 mm — in that case, the 6 mm or 8 mm lenses from Section 2c apply directly, and this is equivalent to the gantry-mount scenario in terms of optics.
+> **Note:** If the camera is placed directly *on* the plexiglass (flush mount), the distance is ~386 mm (~15 in). At this distance, the HQ Camera with a **12 mm lens** covers the full plate at 63% fill (~46k px/well), or a **16 mm lens** at 84% fill (~82k px/well). This is a viable simpler option if 24" is not required.
 
 ### Why the HQ Camera + Telephoto Lens Is Required at 24"
 
