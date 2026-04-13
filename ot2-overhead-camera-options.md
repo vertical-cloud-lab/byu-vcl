@@ -471,7 +471,8 @@ This bill of materials sources as much as possible from **DigiKey** for simplifi
 | 3 | **RPi 5 27W USB-C Power Supply** (US plug) | SC1153 | 2648-SC1153-ND | ~$12 | [DigiKey SC1153](https://www.digikey.com/en/products/detail/raspberry-pi/SC1153/21658276) |
 | 4 | **RPi 5 Camera Cable** (22-pin → 15-pin, 200 mm) | SC1189 | 2648-SC1189-ND | ~$2 | [DigiKey SC1189](https://www.digikey.com/en/products/detail/raspberry-pi/SC1189/22113927) |
 | 5 | **32 GB microSD** (Class A2, official RPi) | SC1628 | 2648-SC1628-ND | ~$12 | [DigiKey SC1628](https://www.digikey.com/en/products/detail/raspberry-pi/SC1628/24627139) |
-| | **DigiKey subtotal** | | | **~$136** | |
+| 6 | **RPi 5 Active Cooler** (heatsink + fan) | SC1148 | 2648-SC1148-ND | ~$5 | [DigiKey SC1148](https://www.digikey.com/en/products/detail/raspberry-pi/SC1148/21658255) |
+| | **DigiKey subtotal** | | | **~$141** | |
 
 > **Note on cable length:** The 200 mm cable (SC1189) works if the RPi 5 is mounted close to the camera on the external bracket. For longer runs, the 300 mm (SC1190) and 500 mm (SC1191) are also available on DigiKey. A 500 mm cable is recommended if the Pi is positioned on the table beside the OT-2.
 
@@ -481,8 +482,8 @@ The 8–50 mm zoom lens is not stocked by DigiKey. Two sourcing options:
 
 | # | Component | Manufacturer | Price (USD) | Supplier | Link |
 |---|-----------|-------------|-------------|----------|------|
-| 6a | **Waveshare 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Waveshare | ~$35 | Waveshare direct | [Waveshare 8-50mm](https://www.waveshare.com/8-50mm-Zoom-Lens-for-Pi.htm) |
-| 6b | **Arducam 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Arducam (LN057) | ~$75 | Amazon | [Amazon LN057](https://www.amazon.com/dp/B08PYMBX9T) |
+| 7a | **Waveshare 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Waveshare | ~$35 | Waveshare direct | [Waveshare 8-50mm](https://www.waveshare.com/8-50mm-Zoom-Lens-for-Pi.htm) |
+| 7b | **Arducam 8–50 mm C-mount Zoom** (F1.4, includes C-CS adapter) | Arducam (LN057) | ~$75 | Amazon | [Amazon LN057](https://www.amazon.com/dp/B08PYMBX9T) |
 
 > The Waveshare lens (~$35) is the budget option; the Arducam LN057 (~$75) has better build quality and smoother zoom action. Both are optically similar (F1.4, 8–50 mm varifocal, C-mount). The Waveshare lens was specifically linked by the PI — it has a 0.20 m minimum focus distance, which comfortably covers the ~610 mm working distance.
 
@@ -490,16 +491,15 @@ The 8–50 mm zoom lens is not stocked by DigiKey. Two sourcing options:
 
 | # | Component | Price (USD) | Supplier | Notes |
 |---|-----------|-------------|----------|-------|
-| 7 | USB LED ring light (for supplemental illumination) | ~$8–$15 | Amazon | Mount around plexiglass cutout; powered from RPi USB |
-| 8 | Mounting bracket (aluminum extrusion or 3D-printed) | ~$10–$30 | Amazon / in-house | 80/20 aluminum extrusion or 3D-printed arm to hold camera ~9" above lid |
-| 9 | RPi 5 case (optional, for dust protection) | ~$5–$15 | DigiKey or Amazon | Active cooler case recommended for RPi 5 |
+| 8 | USB LED ring light (for supplemental illumination) | ~$8–$15 | Amazon | Mount around plexiglass cutout; powered from RPi USB |
+| 9 | Mounting bracket (aluminum extrusion or 3D-printed) | ~$10–$30 | Amazon / in-house | 80/20 aluminum extrusion or 3D-printed arm to hold camera ~9" above lid |
 
 ### Total Cost Summary
 
 | Configuration | DigiKey Total | Lens (separate) | Accessories | **Grand Total** |
 |---------------|--------------|-----------------|-------------|----------------|
-| With Waveshare 8–50 mm zoom | ~$136 | ~$35 | ~$18–$45 | **~$189–$216** |
-| With Arducam 8–50 mm zoom | ~$136 | ~$75 | ~$18–$45 | **~$229–$256** |
+| With Waveshare 8–50 mm zoom | ~$141 | ~$35 | ~$18–$45 | **~$194–$221** |
+| With Arducam 8–50 mm zoom | ~$141 | ~$75 | ~$18–$45 | **~$234–$261** |
 
 Both configurations are well under the **$500 budget**. The RPi 5 provides 5 GHz WiFi (faster image uploads), dual CSI ports, and ample processing power for `picamera2` and any future image processing needs.
 
