@@ -30,6 +30,15 @@ This document compares the canopy-hood route with soft-wall / portable-cleanroom
 | Compatibility | Glovebox, VLM, atomizer hookups in the same work order |
 | Codes | NFPA 484, NFPA 652, BYU Chemical Hygiene Plan |
 
+### Lab Layout / Floorplan Reference
+
+Room **CB154** floorplans are checked into the repo at [`cb154.pdf`](./cb154.pdf) and [`cb154-annotated.pdf`](./cb154-annotated.pdf) (obtained via [pf.byu.edu/space](https://pf.byu.edu/space); see [issue #31 comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4292025463) and the earlier dimensions Gage captured in [issue #7 comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938)). Anyone sizing a canopy hood or softwall partition should cross-check the candidate footprint (6'×8', 8'×8', 10'×10', etc.) against the annotated plan before placing a quote, including:
+
+- Clearance for entry (≥3 ft on at least one open face of a softwall).
+- Aisle / egress paths that cannot be blocked by curtains.
+- Proximity to the glovebox ([#30](https://github.com/vertical-cloud-lab/byu-vcl/issues/30) / [#75](https://github.com/vertical-cloud-lab/byu-vcl/issues/75)), VLM ([#53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53)), atomizer, and the OT-2 so the high-emission bench sits inside the containment envelope.
+- Ceiling height for FFU / canopy-hood + duct (softwall frames are 8 ft; room ceiling must accommodate plus the FFU plenum on top).
+
 ## Option A — Canopy Hood (Recommended by Facilities)
 
 A canopy hood is an open exhaust hood suspended above the work surface. It is **not** a fume hood — it has no sash or enclosure — but it pulls air from the room and from above the workstation below, carrying fine particulates up through a duct to general exhaust.
@@ -138,8 +147,14 @@ The softwall-partition and canopy-hood paths are substantially different in both
 - 8'×8' Terra Universal ValuLine or Cleatech softwall + 1–2 HEPA FFUs + LED + antistatic curtains and grounding.
 - Pair with the existing explosion-proof vacuum ([`vacuum-accessories-options.md`](./vacuum-accessories-options.md)) and a Class D extinguisher for combustible-metal-dust handling.
 - No building ducting, no Phoenix valve, no general-exhaust rebalance — so it avoids the 3-month Facilities lead time altogether.
+- **Put the dehumidifier *inside* the softwall envelope** (per @sgbaird's [comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/76#issuecomment-4290810873)). This concentrates humidity control on the atomizer / powder-handling volume (~500 ft³ for an 8'×8'×8' room) instead of the full lab (~2,000+ ft³), which:
+  - Lets a modest consumer / small industrial dehumidifier reach the low-RH targets the atomizer and hygroscopic Al/Mg powders need.
+  - Reduces energy cost vs. dehumidifying the whole room.
+  - Adds a small internal heat load (~200–400 W dissipation typical) — confirm the FFU + softwall still runs net-negative once that heat is accounted for, and keep the dehumidifier exhaust/condensate routed so it doesn't re-humidify the envelope.
+  - Do not use a dehumidifier with an open brush-motor compressor inside the curtain envelope if fine combustible dust will be airborne — prefer a sealed / induction-motor unit and keep the intake filter clean.
+- **Footprint check** (per lab floorplan [`cb154-annotated.pdf`](./cb154-annotated.pdf) / [`cb154.pdf`](./cb154.pdf), referenced in [issue #31](https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4292025463)): confirm an 8'×8' softwall fits the intended bench area with the required ≥3 ft clearance on at least one open side for entry. If the available footprint is tight, the Terra Universal 6'×8' (~$4,723) is a fallback; if there's more room, 10'×10' (~$7,060 Cleatech) gives space for the dehumidifier + a staging cart + the OT-2 without crowding.
 - **Trade-off**: recirculated HEPA contains particulate but not vapors; not a substitute for point-source capture at the atomizer. If the atomizer outlet produces strong local plumes, add a single ductless snorkel (Option C/D) *inside* the partition.
-- Strong candidate if room-level powder sampling is acceptable, or as a **near-term / interim** solution before any permanent buildout.
+- Strong candidate if room-level powder sampling is acceptable, or as a **near-term / interim** solution before any permanent buildout. This is also the direction currently favored by @sgbaird per the PR discussion.
 
 ### Plan 2 — Canopy hood + snorkels (Facilities-integrated)
 
@@ -193,7 +208,9 @@ For comparison, the prior fume-hood route was **~$55K–$90K** depending on whet
 ## Next Steps
 
 - [ ] Share this document with Dave Laws and Barry Holman ahead of the next Facilities meeting.
-- [ ] **Decide between Plan 1 (softwall only, ~$7.5K–$13K, no Facilities work) and Plan 2 (canopy + snorkels, ~$25K–$30K Facilities + snorkels)** — or start with Plan 1 and layer in Plan 2 later.
+- [ ] **Decide between Plan 1 (softwall only, ~$7.5K–$13K, no Facilities work) and Plan 2 (canopy + snorkels, ~$25K–$30K Facilities + snorkels)** — or start with Plan 1 and layer in Plan 2 later. Per the PR discussion, Plan 1 with the dehumidifier placed *inside* the softwall is currently the favored direction.
+- [ ] Overlay the chosen footprint (6'×8' / 8'×8' / 10'×10') on [`cb154-annotated.pdf`](./cb154-annotated.pdf) before buying, using Gage's dimensions from [issue #7 comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938) and the layout discussion on [issue #31](https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4292025463).
+- [ ] Confirm the existing dehumidifier (make/model) fits inside the softwall footprint, verify its heat dissipation vs. FFU capacity, and check its motor/condenser type against NFPA 484 guidance before placing it inside a combustible-dust envelope.
 - [ ] Get written quotes from **Terra Universal** (ValuLine 8'×8' with antistatic curtains + 1–2 WhisperFlow FFUs + LED + grounding kit) and **Cleatech** (8'×8' softwall) to firm up Plan 1 pricing.
 - [ ] Ask Dave to itemize the ~$25K equipment-hookups estimate to isolate the canopy-hood + Phoenix-valve portion from the glovebox / atomizer / sink portions (needed to price Plan 2 accurately).
 - [ ] Get a written quote for the shop-built canopy hood (sized 2'×2' minimum, 3'×3' ideal) from Facilities, plus duct and blower.
