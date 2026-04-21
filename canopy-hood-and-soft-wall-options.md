@@ -128,29 +128,48 @@ A **snorkel arm** (aka extraction arm, elephant-trunk) is an articulated flex du
 
 > **Ideal pairing**: One snorkel at the atomizer outlet, one near the VLM door (addresses [issue #53](https://github.com/vertical-cloud-lab/byu-vcl/issues/53)), both teed into the same general-exhaust duct as the canopy hood. Facilities can bundle this duct work with the canopy-hood install.
 
-## Option E — Hybrid Recommendation
+## Option E — Two Paths Forward (Choose or Combine)
 
-Based on the options above and the current lab layout, the most cost-effective and code-compliant setup is a **layered** approach:
+The softwall-partition and canopy-hood paths are substantially different in both cost and what they deliver. It's worth treating them as **two separate candidate plans** rather than assuming both are needed up front.
 
-1. **Canopy hood (~2'×2')** above the main bench, shop-built by BYU Facilities and tied to general exhaust — the primary room-level extraction.
-2. **Snorkel arm** positioned directly over the ultrasonic atomizer (and optionally a second over the VLM / weighing station) — point-source capture for the highest-emission process steps.
-3. **Optional: 8'×8' softwall partition with antistatic curtains** around the atomizer + powder bench if testing shows the canopy hood alone doesn't keep the rest of the lab clean. This can be added later since it's modular and doesn't require Facilities work.
-4. **Keep using existing departmental fume hoods** for any rare, one-off chemistry work (per Scott's note in the issue).
+### Plan 1 — Softwall partition only (cheapest, no Facilities work)
+
+- **Total estimated cost: ~$7.5K–$13K** (one-time, no institutional work order).
+- 8'×8' Terra Universal ValuLine or Cleatech softwall + 1–2 HEPA FFUs + LED + antistatic curtains and grounding.
+- Pair with the existing explosion-proof vacuum ([`vacuum-accessories-options.md`](./vacuum-accessories-options.md)) and a Class D extinguisher for combustible-metal-dust handling.
+- No building ducting, no Phoenix valve, no general-exhaust rebalance — so it avoids the 3-month Facilities lead time altogether.
+- **Trade-off**: recirculated HEPA contains particulate but not vapors; not a substitute for point-source capture at the atomizer. If the atomizer outlet produces strong local plumes, add a single ductless snorkel (Option C/D) *inside* the partition.
+- Strong candidate if room-level powder sampling is acceptable, or as a **near-term / interim** solution before any permanent buildout.
+
+### Plan 2 — Canopy hood + snorkels (Facilities-integrated)
+
+- **Total estimated cost: ~$25K–$30K Facilities hookups + ~$2K–$4K snorkels** (bundled with glovebox + atomizer + sink hookups, so a lot of the $25K is shared infrastructure).
+- Shop-built 2'×2' canopy hood tied to general exhaust + 1–2 snorkel arms over the atomizer and VLM door.
+- Requires a Facilities work order and ≥3-month lead time; tied to BYU exhaust budget.
+- Delivers active source capture at emission points and continuous room-air turnover — a permanent solution.
+- **Can later be augmented** with a softwall partition if sampling still shows drift (adds ~$7K–$10K on top).
+
+### Recommendation
+
+1. If the priority is **lowest cost and fastest deployment**, start with **Plan 1 (softwall partition)** — ~$7.5K–$13K — and defer the canopy hood. Re-evaluate with air sampling after a few months of operation.
+2. If a permanent canopy + glovebox + atomizer hookup is already being done anyway, **Plan 2** is the natural scope since the marginal cost of adding the canopy to the same work order is small, and a softwall can still be layered on later.
+3. Either way, **keep using existing departmental fume hoods** for any rare, one-off chemistry work (per Scott's note in the issue).
 
 ## Cost Summary
 
 | Item | Estimated Cost | Notes |
 |---|---|---|
-| Shop-built 2'×2' canopy hood (BYU Facilities) | Included in ~$25K equipment-hookups estimate per Dave | Plus any Phoenix-valve / commissioning |
-| Vendor-supplied canopy hood (if needed) | ~$1,500–$5,000 hood + $3,000–$10,000 blower/ducting | Fallback |
-| Soft-wall cleanroom 8'×8' (Terra Universal ValuLine + 1–2 FFUs, LEDs) | ~$6,500–$10,000 | Plus ~$1K–$3K antistatic / grounding upgrades |
-| Ductless fume hood (Sentry / Air Science / Erlab) | ~$1,000–$8,000 | Backup / interim |
+| **Softwall cleanroom 8'×8'** (Terra Universal ValuLine + 1–2 FFUs, LEDs, antistatic curtains, grounding) | **~$7.5K–$13K** | Standalone; no Facilities work |
+| Ductless fume hood (Sentry / Air Science / Erlab) | ~$1,000–$8,000 | Backup / interim; optional inside softwall |
 | Snorkel arm (each) | ~$850–$2,200 | Pair with canopy or partition |
+| Shop-built 2'×2' canopy hood (BYU Facilities) | Included in ~$25K equipment-hookups estimate per Dave | Plus any Phoenix-valve / commissioning |
+| Vendor-supplied canopy hood (if needed) | ~$1,500–$5,000 hood + $3,000–$10,000 blower/ducting | Fallback if Facilities can't shop-build |
 | Installation / duct runs / balance damper (Facilities) | Folded into ~$25K estimate | Ask Dave to itemize |
-| **Hybrid (canopy + 2× snorkels) — baseline plan** | **~$25K–$30K total (Facilities hookups) + ~$2K–$4K snorkels** | |
-| **Hybrid + softwall partition — upgraded plan** | **+ ~$7K–$10K** | Add if air sampling shows room contamination |
+| **Plan 1 — Softwall only (cheapest)** | **~$7.5K–$13K** | No Facilities work; fastest to deploy |
+| **Plan 2 — Canopy + 2× snorkels (Facilities-integrated)** | **~$25K–$30K Facilities + ~$2K–$4K snorkels** | Shared with glovebox / atomizer hookups |
+| **Plan 1 + 2 layered (canopy + snorkels + softwall)** | **~$32K–$43K total** | Only if air sampling shows it's needed |
 
-For comparison, the prior fume-hood route was **~$55K–$90K** depending on whether we moved the old hood or bought a new one, and was ultimately ruled out by BYU liability policy.
+For comparison, the prior fume-hood route was **~$55K–$90K** depending on whether we moved the old hood or bought a new one, and was ultimately ruled out by BYU liability policy. **Even the fully-layered Plan 1 + 2 comes in well under the cheapest fume-hood option, and softwall alone is roughly an order of magnitude cheaper.**
 
 ## Safety Considerations (NFPA 484 / 652 and BYU CHP)
 
@@ -174,10 +193,11 @@ For comparison, the prior fume-hood route was **~$55K–$90K** depending on whet
 ## Next Steps
 
 - [ ] Share this document with Dave Laws and Barry Holman ahead of the next Facilities meeting.
-- [ ] Ask Dave to itemize the ~$25K equipment-hookups estimate to isolate the canopy-hood + Phoenix-valve portion.
+- [ ] **Decide between Plan 1 (softwall only, ~$7.5K–$13K, no Facilities work) and Plan 2 (canopy + snorkels, ~$25K–$30K Facilities + snorkels)** — or start with Plan 1 and layer in Plan 2 later.
+- [ ] Get written quotes from **Terra Universal** (ValuLine 8'×8' with antistatic curtains + 1–2 WhisperFlow FFUs + LED + grounding kit) and **Cleatech** (8'×8' softwall) to firm up Plan 1 pricing.
+- [ ] Ask Dave to itemize the ~$25K equipment-hookups estimate to isolate the canopy-hood + Phoenix-valve portion from the glovebox / atomizer / sink portions (needed to price Plan 2 accurately).
 - [ ] Get a written quote for the shop-built canopy hood (sized 2'×2' minimum, 3'×3' ideal) from Facilities, plus duct and blower.
-- [ ] Get written quotes from **Terra Universal** (ValuLine 8'×8' with antistatic curtains + 2× WhisperFlow FFUs + LED) and **Cleatech** (8'×8' softwall) as optional add-ons.
-- [ ] Get a quote for a **Nederman / Fume Dog / Cole-Parmer snorkel arm** × 2 (atomizer + weighing bench).
+- [ ] Get a quote for a **Nederman / Fume Dog / Cole-Parmer snorkel arm** × 2 (atomizer + weighing bench) for either plan.
 - [ ] Loop in Dave L. and Bryant B. on NFPA 484 compliance before committing to a design (static, grounding, extinguishing).
 - [ ] Verify scope overlap with [Issue #30 / #75 (glovebox)](https://github.com/vertical-cloud-lab/byu-vcl/issues/75) and [Issue #53 (VLM venting)](https://github.com/vertical-cloud-lab/byu-vcl/issues/53) so all hookups can be bundled in one work order to minimize commissioning / rebalance cost.
-- [ ] Confirm with PI whether the softwall partition is worth funding up front, or deferred until room-level powder sampling suggests it's needed.
+- [ ] Confirm with PI whether the softwall partition alone is sufficient for now, or whether a permanent canopy hood is worth funding up front.
