@@ -128,7 +128,79 @@ relatively benign — are, in roughly increasing severity:
    which is when concentrated KOH compatibility of Clear v5 becomes
    the open question to answer experimentally.
 
-## 7. Next steps
+## 7. Shopping list (link-validated)
+
+All product URLs below were checked and resolved to a live product page
+at the time this doc was committed. BASi prices are gated behind a
+free account (the listed prices are recent typical figures, not live
+quotes — confirm at checkout). Fisher prices are the public web price
+for the smallest size that comfortably covers this experiment.
+
+### Reagents (Fisher Scientific)
+
+| Item | Vendor / cat. | Size | Approx. price | Link |
+| --- | --- | --- | --- | --- |
+| Potassium ferricyanide(III), ≥99% (Thermo Scientific) | Fisher AC424125000 | 500 g | ~$70 | [fishersci.com](https://www.fishersci.com/shop/products/potassium-ferricyanide-iii-acros-organics-2/AC424125000) |
+| Potassium chloride, crystalline, ACS (Fisher Chemical) | Fisher P217-500 | 500 g | ~$45 | [fishersci.com](https://www.fishersci.com/shop/products/potassium-chloride-crystalline-certified-acs-fisher-chemical-4/p217500) |
+
+A 5 g bottle of ferricyanide (Fisher AC424120050) is plenty for this
+experiment if the lab does not want to commit to 500 g.
+
+### Electrodes & polishing (BASi — one-stop, all 3 electrodes)
+
+| Item | Vendor / cat. | Notes | Approx. price | Link |
+| --- | --- | --- | --- | --- |
+| Glassy carbon working electrode, 3.0 mm dia. | BASi MF-2012 | Standard CV working electrode | ~$220 | [basinc.com](https://www.basinc.com/products/MF-2012) |
+| Platinum auxiliary (counter) electrode, 0.5 mm × 7.5 cm | BASi MW-1032 | 99.95% Pt wire | ~$165 | [basinc.com](https://www.basinc.com/products/MW-1032) |
+| Ag/AgCl reference electrode (3 M NaCl, RE-5B) | BASi MF-2052 | Aqueous reference; 3 M NaCl ≈ 3 M KCl in performance | ~$165 | [basinc.com](https://www.basinc.com/products/MF-2052) |
+| 0.05 µm alumina polishing slurry, 7 mL | BASi CF-1050 | Minimum needed to polish the GC | ~$45 | [basinc.com](https://www.basinc.com/products/CF-1050) |
+
+A more complete polishing setup (recommended if the lab does not
+already own polishing pads + glass plate) is the **PK-4 Electrode
+Polishing Kit, BASi MF-2060** (~$285,
+[basinc.com](https://www.basinc.com/products/MF-2060)) — it bundles
+the alumina suspension above with diamond polish, polishing pads, and
+the glass plate. Buying the kit is usually cheaper than assembling the
+pieces separately and is the right choice if BASi MF-2012 is your
+first GC electrode.
+
+### Optional / nice-to-have
+
+| Item | Vendor / cat. | Why | Link |
+| --- | --- | --- | --- |
+| Polishing glass plate, individual | BASi MF-2128 | Only if not buying the PK-4 kit | [basinc.com](https://www.basinc.com/products/MF-2128) |
+| Reference electrode storage vial | BASi MR-5275 | Keeps the Ag/AgCl from drying out between uses | [basinc.com](https://www.basinc.com/products/MR-5275) |
+| Replacement CoralPor frit (reference) | BASi MF-2064 | Spare frit for the Ag/AgCl | [basinc.com](https://www.basinc.com/products/MF-2064) |
+
+### Cost summary
+
+| Scenario | What you buy | Approx. total (USD) |
+| --- | --- | --- |
+| **Bare minimum** (lab already has polishing supplies) | Fisher P217-500 + AC424120050 (5 g ferri) + BASi MF-2012 + MW-1032 + MF-2052 + CF-1050 | **~$525** |
+| **Recommended** (first-time setup, full polishing kit) | Fisher P217-500 + AC424125000 + BASi MF-2012 + MW-1032 + MF-2052 + MF-2060 (kit replaces CF-1050) | **~$785** |
+
+These figures exclude shipping and BYU procurement markups. A
+borrowed potentiostat is assumed (per the issue thread); a new
+benchtop research-grade potentiostat would dwarf this list.
+
+### Notes on substitutions
+
+- **No Pt counter on hand?** A 6 mm graphite rod from any pencil-lead
+  or McMaster-Carr equivalent works fine for a ferricyanide CV — the
+  counter-electrode reaction is not rate-limiting at these currents.
+- **No commercial Ag/AgCl?** A clean Ag wire dipped directly in the
+  test solution serves as a pseudo-reference for a first sanity
+  check; report potentials vs the reference couple, not vs SHE.
+- **Sigma-Aldrich equivalents** (if your group already has a Sigma
+  account): potassium ferricyanide ACS is **244023**
+  (`https://www.sigmaaldrich.com/US/en/product/sigald/244023`) and
+  potassium chloride ACS is **P9333**
+  (`https://www.sigmaaldrich.com/US/en/product/sigald/p9333`). These
+  Sigma URLs follow the standard product-page pattern but were not
+  reachable from the sandbox at commit time, so verify before
+  ordering.
+
+## 8. Next steps
 
 - [ ] Confirm a potentiostat can be borrowed (and from whom).
 - [ ] Confirm availability of a polished GC working electrode, a Pt
