@@ -149,7 +149,7 @@ At 610 mm, the max focal length that still covers the full plate width (128 mm) 
 
 | Specification | Value |
 |---------------|-------|
-| Sensor | Samsung/Sony IMX686 (via Arducam), **64MP** (9152 × 6944) |
+| Sensor | Sony IMX682 (via Arducam), **64MP** (9152 × 6944) |
 | Sensor size | 1/1.7" (7.4 × 5.55 mm) |
 | Pixel size | 0.8 µm |
 | Lens | Fixed, 5.1 mm focal length |
@@ -210,12 +210,12 @@ The OT-2 interior has limited ambient lighting — the built-in LED ring provide
 
 | Camera | Sensor | Pixel Size | Lens Aperture | Relative Light per Pixel | Low-Light Rating | Notes |
 |--------|--------|-----------|---------------|-------------------------|-----------------|-------|
-| **HQ Camera** | IMX477 | **1.55 µm** | **F1.4** (C-mount lenses) | **Best** (1.55² × F1.4 = baseline) | ⭐⭐⭐⭐⭐ | Largest pixels + fastest available aperture. Best choice for low light. |
+| **HQ Camera** | IMX477 | **1.55 µm** | **F1.4** (C-mount lenses) | **Best** (baseline; 1.55² / 1.4² ≈ 1.23) | ⭐⭐⭐⭐⭐ | Largest pixels + fastest available aperture. Best choice for low light. |
 | Camera Module 3 | IMX708 | 1.4 µm | F1.8 (fixed) | ~0.49× HQ | ⭐⭐⭐ | Good for moderate lighting. BSI sensor with Quad Bayer binning helps in low light. |
 | Camera Module 3 Wide | IMX708 | 1.4 µm | F2.2 (fixed) | ~0.33× HQ | ⭐⭐ | Wider FOV and slower aperture reduce per-pixel light. |
-| Arducam 64MP | IMX586 | **0.8 µm** | F1.8 (fixed) | ~0.13× HQ | ⭐⭐ | Tiny pixels collect much less light. Quad Bayer binning (to 16MP/1.6 µm effective) helps, but still noisier than HQ Camera. Indoor images can be dark without exposure adjustments. |
+| Arducam 64MP | IMX682 | **0.8 µm** | F1.8 (fixed) | ~0.16× HQ | ⭐⭐ | Tiny pixels collect much less light. Quad Bayer binning (to 16MP/1.6 µm effective) helps, but still noisier than HQ Camera. Indoor images can be dark without exposure adjustments. |
 
-> **Relative light per pixel** is proportional to (pixel_size)² / (F-number)². The HQ Camera with an F1.4 lens collects roughly **2× more light per pixel** than Camera Module 3, and **~8× more** than the Arducam 64MP at native resolution.
+> **Relative light per pixel** is proportional to (pixel_size)² / (F-number)². The HQ Camera with an F1.4 lens collects roughly **2× more light per pixel** than Camera Module 3, and **~6× more** than the Arducam 64MP at native resolution.
 
 ### Practical Implications
 
