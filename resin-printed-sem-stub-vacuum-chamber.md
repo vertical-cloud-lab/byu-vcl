@@ -82,6 +82,36 @@ top of the gasketed rim; atmospheric pressure clamps it down once a vacuum is
 drawn. We should keep that arrangement — it lets the user see inside and
 avoids printing the most sealing-critical surface.
 
+## 2a. Desiccant pocket
+
+If we also want to use the chamber for short-term *dry* storage of mounted
+stubs between pump-downs (not just a one-shot degassing vessel), we should
+reserve room for a small charge of desiccant. The simplest, lowest-risk
+option is to drop in a loose indicating silica-gel sachet
+(e.g. McMaster 2189K-series, 1–5 g packets, color-changing) — no
+geometry change required, and the same trick works in the catalog
+PELCO #16179.
+
+If we want to commit to it in the printed body, the cleanest integration
+is a shallow annular **well** machined into the floor *outside* the stub
+hole pattern:
+
+- Depth ~5–8 mm, width ~10–15 mm, capacity ~5–10 g of beads.
+- A printed **snap-in cover plate** with through-holes (or a thin
+  stainless-mesh disc retained by a step) keeps the beads from migrating
+  into the stub holes or being sucked toward the vacuum port when the
+  valve is opened.
+- Keep the well clear of the gasket land and of the bulkhead-fitting boss
+  so it does not compromise either seal.
+- Use **bead-form indicating silica gel**, not loose powder, to avoid
+  fines being pulled through the port. Regenerable in a 110–120 °C oven,
+  which is well within the post-cure temperature the printed body
+  already tolerates.
+
+Avoid molecular sieves or strong deliquescent desiccants (CaCl₂) in the
+printed chamber — the former generate heat on adsorption and the latter
+can release liquid water that would sit against the resin floor.
+
 ## 3. Resin selection
 
 The printed part is the **base / stub holder**, not the lid. Requirements:
@@ -239,6 +269,7 @@ above.
 | Mini ball valve, hose-barb to hose-barb                     | 1   | Commercial (reuse design in issue photo)        | $10–$25   |
 | Vacuum tubing to pump                                       | —   | Existing                                        | —         |
 | Vacuum grease (thin film on O-ring during install)          | 1   | Existing / Dow Corning High-Vacuum Grease       | —         |
+| Indicating silica-gel sachet (optional, see §2a)            | 1–2 | McMaster 2189K-series, 1–5 g color-changing     | $1–$3     |
 | **Estimated total parts cost**                              |     |                                                 | **~$30–$70** |
 
 For comparison, the catalog equivalent — **PELCO #16179** at
