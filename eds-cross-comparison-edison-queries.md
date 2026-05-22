@@ -1,4 +1,6 @@
-# AlSi10Mg EDS cross-comparison — Edison queries (pending)
+# AlSi10Mg EDS cross-comparison — Edison queries (complete)
+
+> **Status (2026-05-22):** All 6 queries completed; integrated findings + recommendations in **[`eds-cross-comparison-edison-results.md`](./eds-cross-comparison-edison-results.md)**. The original ANALYSIS task (`3beffe7c…`) failed because the data bundle was uploaded as separate files; per the [Edison file-management docs](https://docs.edisonscientific.com/edison-client/file-management), the Analysis crow expects a directory uploaded as a single zipped collection via `store_file_content(file_path=DIR, as_collection=True)`. Re-submitted as task `53f221ff-1bcb-4feb-a48b-e3d3c9cc6b95` and succeeded.
 
 Submitted in response to https://github.com/vertical-cloud-lab/byu-vcl/pull/93#issuecomment-4523029351 to compare three SEM-EDS measurement sets on the same nominal material (AlSi10Mg LPBF print, U of U Aconity MIDI) against ASTM E1078 / E1508 guidance.
 
@@ -24,14 +26,17 @@ Nominal AlSi10Mg: Si 9.0–11.0, Mg 0.20–0.45, Fe < 0.55, Al balance.
 
 Data bundle uploaded as `data_entry:23c00fbb-a03b-42e3-bcac-d924e5db41cf` (`/tmp/eds-bundle` — see README.md inside).
 
-| Job | Task ID | Purpose |
-|---|---|---|
-| ANALYSIS (with files) | `3beffe7c-1535-44ad-924a-ff4a5b8dfe82` | Independent expert review of the three datasets; verdict on whether we are on the right track; cause of high Mg; concrete recommendations; clarifying questions. |
-| LITERATURE_HIGH | `1c63284b-2f0a-415c-b51f-8c53fe6a4332` | eZAF / standardless quantification systematic bias for Mg in Al matrices; can it produce 3–7× overestimates? |
-| LITERATURE_HIGH | `21ba848f-8c6c-4db1-9830-35062b1d11a2` | Where does Mg actually reside in as-built LPBF AlSi10Mg microstructure? Mg2Si / MgAl2O4 / surface segregation post-polish. |
-| LITERATURE_HIGH | `afe8c121-9f8e-4444-abd2-31aa5c42c74e` | Amp-time / pulse-processor effect on SDD energy resolution and Mg Kα / Al Kα peak deconvolution; impact of 1.92 → 0.96 µs change. |
-| LITERATURE_HIGH | `53ed54dd-a61c-4074-8858-6c0da3e0d7c9` | "Small spheres" on polished LPBF AlSi10Mg cross-sections: artifact vs real microstructure; why melt-pool pattern is invisible in SEM. |
-| LITERATURE_HIGH | `705df51f-975c-48fa-8387-3a7e07389f47` | Concrete EDS acquisition SOP for AlSi10Mg per ASTM E1508 / E1078; kV, current, dead-time, live-time, amp-time, standards, ICP-OES cross-validation. |
+| Job | Task ID | Status | Purpose |
+|---|---|---|---|
+| ANALYSIS (with files) | `3beffe7c-1535-44ad-924a-ff4a5b8dfe82` | ❌ fail (bundle as individual files) | Independent expert review — see retry below. |
+| ANALYSIS (re-uploaded as collection) | `53f221ff-1bcb-4feb-a48b-e3d3c9cc6b95` | ✅ success | Independent expert review of the three datasets; verdict on whether we are on the right track; cause of high Mg; concrete recommendations; clarifying questions. |
+| LITERATURE_HIGH | `1c63284b-2f0a-415c-b51f-8c53fe6a4332` | ✅ success | eZAF / standardless quantification systematic bias for Mg in Al matrices; can it produce 3–7× overestimates? |
+| LITERATURE_HIGH | `21ba848f-8c6c-4db1-9830-35062b1d11a2` | ✅ success | Where does Mg actually reside in as-built LPBF AlSi10Mg microstructure? Mg2Si / MgAl2O4 / surface segregation post-polish. |
+| LITERATURE_HIGH | `afe8c121-9f8e-4444-abd2-31aa5c42c74e` | ✅ success | Amp-time / pulse-processor effect on SDD energy resolution and Mg Kα / Al Kα peak deconvolution; impact of 1.92 → 0.96 µs change. |
+| LITERATURE_HIGH | `53ed54dd-a61c-4074-8858-6c0da3e0d7c9` | ✅ success | "Small spheres" on polished LPBF AlSi10Mg cross-sections: artifact vs real microstructure; why melt-pool pattern is invisible in SEM. |
+| LITERATURE_HIGH | `705df51f-975c-48fa-8387-3a7e07389f47` | ✅ success | Concrete EDS acquisition SOP for AlSi10Mg per ASTM E1508 / E1078; kV, current, dead-time, live-time, amp-time, standards, ICP-OES cross-validation. |
+
+Slim bundle (raw MSA/CSV/XML + extracted README, no PDFs) for the successful ANALYSIS retry: `data_entry:0bddb41a-235a-4b1c-ad37-b60d24f22163`.
 
 ## Retrieving results
 
@@ -52,4 +57,4 @@ for tid in [
     print(r.answer)
 ```
 
-Results will be integrated into `eds-quantitative-analysis-alsi10mg.md` once retrieved.
+Results integrated into [`eds-cross-comparison-edison-results.md`](./eds-cross-comparison-edison-results.md).
