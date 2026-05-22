@@ -17,7 +17,7 @@ Acceleration Consortium reference):
 * The charging port labware is loaded in deck slot 10.
 * The sensor sits in well ``A2`` of the charging port (``A1`` is the empty
   parking well used by AC's reference setup).
-* A ``p20_single_gen2`` pipette is mounted on the right.
+* A ``p20_single_gen2`` pipette is mounted on the left.
 
 All public functions take the protocol object, the pipette, and the
 charging-port labware so they can be wired up to whatever objects the

@@ -105,11 +105,11 @@ def run(protocol):
         WCS_CHARGING_PORT_LABWARE, WCS_SLOT
     )
 
-    # p20 single-channel Gen2 pipette on the right mount, bound to the
+    # p20 single-channel Gen2 pipette on the left mount, bound to the
     # charging port so the WCS is picked up as if it were a tip.
     pipette = protocol.load_instrument(
         instrument_name="p20_single_gen2",
-        mount="right",
+        mount="left",
         tip_racks=[charging_port],
     )
 

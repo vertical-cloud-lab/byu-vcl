@@ -2,7 +2,7 @@
 
 Test protocols for driving the Acceleration Consortium-style wireless color
 sensor (WCS) on an Opentrons OT-2 using a `p20_single_gen2` pipette on the
-right mount.
+left mount.
 
 These scripts were derived from the Acceleration Consortium's
 [`ac-dev-lab`](https://github.com/AccelerationConsortium/ac-dev-lab/blob/e85dd45e19480068f9e8323dad1a6294dabe8075/src/ac_training_lab/ot-2/_scripts/prefect/device.py)
@@ -30,7 +30,7 @@ is left empty (matches the AC reference).
 
 ## Pipette
 
-* Right mount: `p20_single_gen2`
+* Left mount: `p20_single_gen2`
 
 ## Running
 
@@ -78,7 +78,7 @@ metadata = {"protocolName": "My WCS test", "apiLevel": "2.12"}
 def run(protocol):
     charging_port = load_wcs_charging_port(protocol, slot=10)
     pipette = protocol.load_instrument(
-        "p20_single_gen2", mount="right", tip_racks=[charging_port]
+        "p20_single_gen2", mount="left", tip_racks=[charging_port]
     )
     plate = protocol.load_labware("corning_96_wellplate_360ul_flat", 1)
 
