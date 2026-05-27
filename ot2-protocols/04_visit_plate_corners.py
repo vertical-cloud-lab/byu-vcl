@@ -7,6 +7,8 @@ can reach the extremes of the plate without collisions.
 Tunable variables
 -----------------
 PAUSE_SEC : Seconds to hover above each corner before moving on.
+CORNERS   : Tuple of well names to visit in order. Defaults to the four
+            corners of a 96-well plate, traversed clockwise from A1.
 """
 
 from opentrons import protocol_api
