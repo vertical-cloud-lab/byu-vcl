@@ -201,3 +201,86 @@ A conductive accessory kit ensures all contact surfaces are grounded, preventing
    - Verify/replace antistatic main filter if needed
 3. **Order HEPA filter and conductive attachments** for full capability
 4. **Run initial test** per issue requirements: vacuum AlSi10Mg or Si powder from a table surface with full video documentation (POV-style)
+
+---
+
+## 9. Collection Bag vs. Conductive Liner — Edison Scientific Literature Review
+
+**Question (per sgbaird, 2026-05-27):** With the antistatic main filter + upstream HEPA + downstream HEPA all installed, do we still need a disposable collection bag, or can an antistatic / conductive bin liner work? And if a true antistatic filter bag is required, what specific part fits the 118EXP?
+
+The full PaperQA `LITERATURE_HIGH` answer (Edison task `ce98952d-6e60-4ecf-a4eb-32df0e931d61`, ~34 KB, 24 cited refs) is summarized below. Citations refer to NFPA 484 (Combustible Metals), NFPA 652/77, and the combustible-dust safety literature (Britton, Comer, Cheremisinoff, Sun et al., Li et al., Reding & Shiflett).
+
+### 9.1 Bottom line
+
+**Bagless operation with a properly bonded conductive liner is defensible** under NFPA 484 / NFPA 652 / NFPA 77 — no provision in the reviewed NFPA 484 language expressly mandates a disposable filter bag as a distinct safety element. The standards instead require:
+
+- **NFPA 484 §15.3.1.1** — all fixed equipment grounded and bonded per NFPA 77
+- **NFPA 484 §15.3.1.2** — personnel grounded when manually filling/emptying containers of powders with MIE < 30 mJ
+- **NFPA 484 §15.3.1.5** — portable vacuums in AM operations shall comply with §13.4
+- **NFPA 652 §9.7.3.2** — explosion-protection systems (inerting, venting, containment, suppression, or dilution)
+
+So the safety question reduces to: *can we preserve the grounding chain and ignition-source control without a bag?* The literature says **yes, if the liner is truly conductive (10⁴–10⁶ Ω surface resistivity) and positively bonded to the grounded stainless bin.**
+
+### 9.2 Liner type comparison
+
+| Option | Surface resistivity | Static-control adequacy | NFPA-compliance position |
+|---|---|---|---|
+| **Conductive PE liner, bonded** (recommended) | 10⁴–10⁶ Ω | Best — avoids brush discharges across all humidities (<10⁸ Ω threshold); thin (~30 µm) PE has ~4 kV breakdown, below propagating-brush threshold | Most defensible alternative to a bag; aligns with NFPA 484 + NFPA 77 bonding/grounding intent |
+| **Static-dissipative liner** | 10⁶–10¹¹ Ω | Conditional — upper end too slow for charge relaxation; charge induction on adjacent ungrounded conductors remains a concern | Acceptable only with DHA support + positive bonding; inferior to conductive liner for metal-dust service |
+| **Standard non-antistatic paper/fleece bag** (Nilfisk 107413584, Grainger 4RYH6) | Insulating / unverified | Weakest — distributor-confirmed non-antistatic; bag can charge during handling | **Not recommended** for combustible metal powder |
+
+### 9.3 Safety margins for AlSi10Mg / Si
+
+- **AlSi10Mg MIE** = 80–350 mJ (Sun et al. 2020) — most sensitive at 1.667 kg/m³ → 80 mJ
+- **Typical bulking-brush-discharge energy** in containers ≈ 1–20 mJ
+- **Margin** is favorable (~4–17×) **for bulk 20–63 µm powder**
+- ⚠️ **Sub-micron fines** (generated during AM handling) can have MIE < 5 mJ (40 nm pure Al), which **erodes the margin substantially** — the bonded/grounded conductive-liner approach becomes essential, not optional, if appreciable fines are present
+- AlSi10Mg dust-cloud minimum ignition temperature = 680 °C (Al₂O₃ film)
+- Si is Hazard Class 1 dust (K_st ~200 bar·m/s), less explosive than Al (Class 3, K_st up to 1100 bar·m/s for fines); combined collection of AlSi10Mg + Si in same vacuum is acceptable, but DHA must use worst-case (AlSi10Mg with fines)
+
+### 9.4 Operational risks of going bagless (and how to mitigate)
+
+1. **Filter blinding** — fine metal powder directly contacts the antistatic main filter, accelerating loading. The main filter (99.7% @ 1.5 µm) → upstream HEPA → downstream HEPA train provides adequate filtration, but expect more frequent filter service.
+2. **Dust resuspension during emptying** — most significant operational hazard. Even a 1 mm dust layer can be re-dispersed above MEC (~100 g/m³) (Li et al. 2016). **Mitigation:** seal and lift the liner as a unit rather than dumping a bare bin.
+3. **Self-heating** — fluffy aluminum-alloy dust can self-ignite; minimize accumulation time, empty at least daily.
+4. **Never use water** on Al fines (H₂ generation).
+5. **Keep Class D extinguishers** (sand, soda ash, graphite, NaCl-based) nearby at all times.
+
+### 9.5 Recommended configuration
+
+1. **Conductive (carbon-loaded) PE liner**, 10⁴–10⁶ Ω surface resistivity, ≥3–4 mil thick, sized for the 118EXP bin (~12.5"/320 mm ID).
+2. **Electrical bond from liner to bin** using a conductive clip / tab / ring terminal at the rim. **Verify with a multimeter — target < 1 kΩ to ground through the full chain** (vacuum body → bin → liner). Ideally < 100 Ω for conductive objects near powder beds.
+3. Existing **antistatic main filter + upstream HEPA + downstream HEPA**.
+4. Existing OEM antistatic hose, grounded cuffs, conductive wand, building-earth grounding chain.
+5. **Emptying SOP:** turn off vacuum → allow settling → slowly gather and seal liner → lift into a **covered, grounded metal outer container** (steel pail with lid) → transport to disposal. Operator wears grounding wrist strap or grounded footwear (per §15.3.1.2, mandatory for Si fines with MIE < 30 mJ).
+6. **Frequency:** empty daily, or when bin reaches ~25% full.
+7. **Document in the facility DHA** (NFPA 652) — include rationale for liner approach, bonding-verification protocol, and emptying SOP. Ideally reviewed by a qualified fire-protection engineer or combustible-dust consultant.
+
+### 9.6 Sourcing conductive liners
+
+Conductive (carbon-loaded) polyethylene drum liners are a stock industrial item — much easier to source than a Nilfisk-specific antistatic bag. Spec to request: *carbon-loaded conductive PE, surface resistivity < 10⁶ Ω per square, ≥3–4 mil, with grounding tab*. Standards: **ANSI/ESD S541** or **MIL-PRF-81705 Type III** (conductive) — **not** Type II (static-dissipative), unless DHA-approved.
+
+| Supplier | Notes |
+|---|---|
+| **Uline** ([uline.com](https://www.uline.com/)) | Stock conductive (black, carbon-loaded) poly bags; search "conductive poly bags" — pick 15"×18" or similar to nest in the 320 mm bin and fold over the rim |
+| **Protective Packaging Corp.** ([protectivepackaging.net](https://www.protectivepackaging.net/)) | Custom-cut conductive PE liners |
+| **Daubert Cromwell** ([daubertcromwell.com](https://www.daubertcromwell.com/)) | Conductive + VCI liners for metal parts |
+| **International Plastics** | Conductive PE bags / liners |
+
+### 9.7 If a true antistatic filter bag is required (DHA / AHJ insistence)
+
+If the DHA or Authority Having Jurisdiction insists on a disposable filter bag (not a liner), the literature search did not identify a stock antistatic bag confirmed-fit for the 118EXP collection container. Approaches that may yield one:
+
+1. **Nilfisk direct** — explicitly request the *antistatic* variant of PN 107413584 or any antistatic bag listed for the A15EXP / 118EXP platform. Cite NFPA 484 §15.3.1.1 and the vacuum's CSA Class II Groups E/F/G rating.
+2. **Tiger-Vac** ([tiger-vac.com](https://www.tiger-vac.com/)) — antistatic collection bags for their EXP-series vacuums; ask about cross-compatibility with a ~320 mm ID container.
+3. **Ruwac** ([ruwac.com](https://www.ruwac.com/)) — DS-series EXP vacuums with antistatic/conductive bag accessories.
+4. **VAC-U-MAX** ([vac-u-max.com](https://www.vac-u-max.com/)) — combustible-dust-rated vacuums; can advise on antistatic bag accessories.
+5. **Custom fabrication** — industrial filter-media houses (American Fabric Filter, Midwesco Filter Resources, Gore) can sew a custom antistatic filter bag from carbon-loaded felt or SS-fiber media with a grounding strap. Provide bin dimensions.
+6. **Caliber Equipment**, **SweepScrub** — Nilfisk aftermarket distributors; ask if they stock or can source an antistatic variant.
+
+### 9.8 Recommendation for our test
+
+Given (a) NFPA 484 does not mandate a bag, (b) the OEM Nilfisk paper bag is non-antistatic and not appropriate for combustible metal dust, (c) a confirmed-fit antistatic filter bag does not appear to exist as a stock item for this 118EXP, and (d) a conductive PE liner from Uline-class suppliers is cheap (~$20–$40) and aligns with NFPA 484/77 bonding/grounding intent — **the recommended path is bagless operation with a bonded conductive liner**, with the configuration in §9.5 documented in the DHA and the grounding chain verified by multimeter before each use.
+
+> **Caveat:** This is a literature-and-standards-based recommendation, not a regulatory ruling. The DHA author / fire-protection engineer / AHJ has final say. Brand-new sub-micron-rich powder (e.g., post-atomization fines) warrants extra caution — sub-micron Al MIE can be < 5 mJ, which compresses the safety margin and elevates the importance of every link in the bonding/grounding chain.
+
