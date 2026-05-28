@@ -379,3 +379,43 @@ Replaces the relevant lines in §9.5 with:
    - **Interim pail → EHS:** transfer sealed liners from the steel pail to the EHS waste container every ≤ 2 weeks or at 50% pail fill, per EHS-agreed schedule.
 6. **Documentation:** log each emptying event (date, mass, initials) on a vacuum-station log sheet. Document the full SOP and DHA per NFPA 652. Class D extinguisher (Met-L-X / Lith-X / NaCl-based) within 10 ft. No water.
 
+---
+
+## 11. Hose-to-Wand Coupler (Hose 107413543 ↔ Wand 01768601)
+
+Per Nilfisk US Patient/Tech Support (PA specialty group, reachable only via redirect from main customer support; email **uspatechsupport@nilfisk.com**), the OEM coupler that mates the **Nilfisk antistatic hose 107413543** to the **Nilfisk 01768601 aluminum EXP wand** is:
+
+> **Hose cuff: Nilfisk OEM part 4072000343** — "Anti-Static Cuff, 38 mm threaded × 40 mm slip" (black, conductive, for the 38–40 mm hose family that 107413543 belongs to).
+
+### 11.1 Where to buy — validated links (HTTP-200 verified 2026-05-28)
+
+| Item | Part # | Supplier | Link | Notes |
+|---|---|---|---|---|
+| Anti-static hose cuff (38 mm thd × 40 mm slip) | 4072000343 | Monster Janitorial | https://shop.monsterjanitorial.com/nilfisk-4072000343-cuff-blk-as-38mm-thd-40mm-slip/ | Genuine OEM, 30-day returns, $16.95 flat-rate ship |
+| Anti-static hose cuff (38 mm thd × 40 mm slip) | 4072000343 | Grainger | https://www.grainger.com/product/NILFISK-Antistatic-Hose-Cuff-Nilfisk-116P12 | Grainger SKU 116P12; standard net-30 / PO terms |
+| Anti-static hose cuff (38 mm thd × 40 mm slip) | 4072000343 | ScrubberCity | https://www.scrubbercity.com/Part-Number-4072000343-p/4072000343.htm | OEM, confirms Nilfisk 118 compatibility on listing |
+| Aluminum EXP wand | 01768601 (L01768601) | Caliber Equipment | https://www.caliberequipment.com/01768601-wand-aluminum-exp1-7575a/ | $175.14, genuine OEM, 1-week return window (see §6 / §7 of their return policy) |
+| Aluminum EXP wand | 01768601 | Nilfisk Customer Service / CustomerZone | uspatechsupport@nilfisk.com / (800) 645-3475 | Direct OEM purchase; required if Caliber stock is out |
+
+**Recommended primary source:** Monster Janitorial for the cuff (best return policy + lowest published price tier) and Caliber Equipment for the wand (only verified live US stock of L01768601 found in this round). Order both with a corporate PO so they can be returned together if the hose/wand interface doesn't seat as expected.
+
+### 11.2 Will the wand fit the coupler that ships with the hose?
+
+The 107413543 hose ships from Nilfisk **already terminated with one anti-static cuff on each end** — the cuff is the 4072000343 family (38 mm threaded swivel × 40 mm slip-on the hose end). That **threaded swivel end is exactly what the 01768601 wand is designed to mate to** on the wand's lower (hose-side) socket. So in the normal install:
+
+1. The hose's factory cuff (4072000343 equivalent) threads onto the wand inlet — **no additional adapter needed at the hose-to-wand junction**.
+2. The wand's upper (tool-side) socket is the 38 mm female that accepts the crevice tool / floor nozzle / dust brush directly.
+
+The reason to order a **spare** 4072000343 is:
+- The factory cuff is field-replaceable and is the most common wear/loss item on a hose;
+- If the existing hose was previously fitted with a non-conductive or damaged cuff (likely given the auction-surplus history of this unit — see EquipNet tag 1085296-1-1), the spare gives a known-good OEM conductive cuff to swap in;
+- Per Ronnie's continuity test (multimeter, hose end-to-end), the existing hose **does not show continuity** even though the vacuum body does. A bad/non-conductive cuff is one of the two failure modes (the other being a non-wire-reinforced dissipative hose body — see §11.3 below). Replacing the cuff with a verified 4072000343 is the cheap first-cut diagnostic before condemning the whole hose.
+
+**Verification step before first powder use:** with cuff installed on hose and wand attached, measure resistance from the metal tip of the wand to the grounded vacuum inlet. Target **< 1 MΩ end-to-end** (NFPA 77 §15.3.1.1 bonding chain); ideally **< 100 kΩ** through the hose body. If the new cuff alone doesn't bring the hose into spec, the hose body itself is the problem — see §11.3.
+
+### 11.3 Cross-reference to the continuity-test finding
+
+Independent of the coupler question, Ronnie's bench continuity test (multimeter across the assembled hose) confirms what NFPA 77 §15.3.1 implies: **a carbon-loaded dissipative plastic hose (10⁶–10⁹ Ω/sq surface resistivity, no embedded ground wire) will not pass end-to-end DC continuity** even though it dissipates static fast enough to prevent brush-discharge accumulation on the wall. For our application (sub-micron Al/Si fines, MIE can be < 5 mJ — see §9.3) the conservative choice — and the one consistent with the OEM EXP rating on the 118EXP — is a **fully conductive, steel-wire-reinforced hose** (e.g., Nilfisk 01769218 listed in §1, ~$650–$1K, or the Tiger-Vac 383440D / Ruwac EXP151510CB alternatives in §4). The 4072000343 cuff is necessary on either hose type, but it is **not sufficient on its own** to make a dissipative hose pass continuity.
+
+> **Action item:** confirm with Nilfisk uspatechsupport@nilfisk.com whether 107413543 is the dissipative or the wire-reinforced variant for the 118EXP serial-number range, and whether a wire-reinforced hose with the 4072000343 cuff is the correct OEM combination before reordering.
+
