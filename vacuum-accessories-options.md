@@ -284,3 +284,98 @@ Given (a) NFPA 484 does not mandate a bag, (b) the OEM Nilfisk paper bag is non-
 
 > **Caveat:** This is a literature-and-standards-based recommendation, not a regulatory ruling. The DHA author / fire-protection engineer / AHJ has final say. Brand-new sub-micron-rich powder (e.g., post-atomization fines) warrants extra caution — sub-micron Al MIE can be < 5 mJ, which compresses the safety margin and elevates the importance of every link in the bonding/grounding chain.
 
+
+---
+
+## 10. Emptying Cadence, Outer Pail, and Validated Sourcing Links
+
+Follow-up to §9, prompted by practical-implementation questions from @sgbaird (PR review, 2026-05-27). Edison Scientific `LITERATURE_HIGH` follow-up task `8288144a-12bc-4f3a-84ad-a7eec45a58bb` (continuation of `ce98952d-…`, 14 cited refs).
+
+### 10.1 "Empty daily" — clarification
+
+The "daily emptying" wording in §9.4–§9.5 came from older NFPA / Aluminum Federation **wet-collector** sludge guidance (May & Berard 1987), where the daily cadence is driven by the Al + H₂O → H₂ hydrogen-generation hazard. **That driver does not apply to our dry vacuum.**
+
+What NFPA actually requires for combustible metal dust:
+- **NFPA 484** — metal dust shall "not be allowed to accumulate" (performance-based, not calendar-based; Myers & Ibarreta 2013).
+- **NFPA 654 §housekeeping** — surface dust must not exceed a **1/32" layer depth** at an assumed 75 lb/ft³ bulk density (Rodgers 2012). The 2013 edition lets you compute a custom threshold from dust properties + enclosure characteristics.
+- **NFPA Class D extinguisher inspection** — every two weeks in areas generating combustible metal powders (Cheremisinoff 2014).
+
+**Defensible cadence for our low-duty research lab** (tens of g/week of AlSi10Mg / Si, not continuous production):
+
+| Item | Cadence | Hard rule |
+|---|---|---|
+| **Conductive PE liner inside the vacuum bin** | Empty **after each vacuum-use session** (simplest, most conservative for student operators); a **weekly** schedule is also defensible if utilization is light | Bin must **never exceed ~25% volumetric capacity** between empties |
+| **Outer interim steel pail** (sealed liners in transit/storage) | Transfer to EHS waste stream on EHS-agreed schedule, **at minimum every 2 weeks** or at **50% pail capacity**, whichever first | Aligns with NFPA Class D extinguisher inspection cadence |
+| **Logging** | Date, approximate mass collected, operator initials per emptying event | Required by Rodgers 2012 recordkeeping recommendation; useful for EHS/AHJ audit |
+
+> **Net change to §9.5 SOP:** "empty daily" → **"empty the liner after each use (or weekly if used lightly), with a hard cap of 25% bin fill; transfer sealed liners from the interim steel pail to EHS waste at least every 2 weeks or at 50% pail fill."**
+
+### 10.2 Outer pail vs. existing EHS waste container
+
+**Is a dedicated grounded steel pail a hard NFPA requirement?** No — NFPA 484 requires powder waste to be "handled in covered containers" but does not specify material. However, NFPA 484 §15.3.1.1 (per NFPA 77) requires bonding/grounding everywhere static-sensitive dust may flow.
+
+**Can the sealed liner go directly into the existing EHS container?** Yes, with conditions:
+
+1. **Seal and clip the liner closed while it is still inside the grounded vacuum bin** (this is the critical step — any charge dissipates through the grounding chain before the liner moves).
+2. Transfer the sealed liner slowly into the EHS container (no shaking, no dumping of loose powder).
+3. Replace the EHS container lid immediately.
+4. The EHS container becomes the **final disposal endpoint**, not an interim staging point.
+
+**However**, typical EHS solid-waste drums are **HDPE or fiber** — non-conductive and cannot be grounded. For bulk AlSi10Mg (MIE ~80 mJ) this is moderate-risk; for sub-micron AM fines (potential MIE < 5 mJ) it becomes a genuine static-control gap (Britton 2010, pp. 222–225).
+
+**Recommended two-container approach** (most defensible):
+
+1. **Primary containment** — sealed conductive PE liner inside the grounded vacuum bin (bonded to bin during collection).
+2. **Interim staging** — a **dedicated 1–5 gal open-head carbon-steel pail with lever-lock lid**, located at the vacuum station, with a grounding tab/clip bonded to a verified building-earth point. Sealed liners go in here between vacuum sessions and the EHS pickup.
+3. **Final disposal** — at the EHS-agreed schedule, transfer the sealed liners from the steel pail into the EHS waste container per their procedures.
+
+The interim pail doesn't need UN rating (the liner is the primary containment) — it just needs to be conductive (steel), grounded, and closeable.
+
+### 10.3 Validated Uline links — interim steel pail
+
+URLs below were verified to resolve (HTTP 200 or 200-after-redirect-to-root-item) on 2026-05-28. Prices/quantity-discounts vary; check the page.
+
+| Item | Uline SKU | Verified URL | Notes |
+|---|---|---|---|
+| **5-gal carbon-steel pail, open-top, unlined, with lid (UN 1A2/Y2.2/100 rated)** | **S-7344** | [uline.com/Product/Detail/S-7344/…/5-Gallon-Steel-Pail-Open-Top-Unlined-with-Lid](https://www.uline.com/Product/Detail/S-7344/Open-Head-Pails/5-Gallon-Steel-Pail-Open-Top-Unlined-with-Lid) | All-in-one — pail + lid bundled. UN-rated is overkill for interim staging but harmless. Recommended for one-shot purchase simplicity. |
+| **3.5-gal carbon-steel pail, open-top, unlined** | **S-22507** | [uline.com/Product/Detail/S-22507](https://www.uline.com/Product/Detail/S-22507/Pails/35-Gallon-Steel-Pail-Open-Top-Unlined) | Smaller footprint; lid sold separately (S-21135 / S-21135BL). |
+| **Lever-lock lid for 3.5-gal pail (black)** | **S-21135BL** | [uline.com/Product/Detail/S-21135BL/…/Steel-Pail-Lever-Lock-Lid-Unlined-Black](https://www.uline.com/Product/Detail/S-21135BL/Pails/Steel-Pail-Lever-Lock-Lid-Unlined-Black) | Pairs with S-22507. Lever-lock = fast open/close, gasketed seal. |
+
+**Add-on for grounding:** drill or bolt-mount a **14 AWG ring terminal** under the pail-handle rivet or lid-band bolt, run a stranded copper bonding wire to a verified grounded point (building earth lug, grounded bench, etc.). Verify total resistance from liner → pail → ground is < 1 kΩ with a multimeter. Total cost: ~$10–15 from McMaster-Carr (ring terminals + bonding wire) or any electrical supplier.
+
+> **Note:** Uline's smallest open-head steel pail with a lever-lock lid is the 3.5-gal S-22507. They do not appear to carry a 1-gal steel pail with a lever-lock lid; for smaller sizes try McMaster-Carr (search `1 gallon steel pail open head with lid`) at $15–30.
+
+### 10.4 Validated Uline links — conductive PE bin liner
+
+**Important correction to §9.6:** A direct check of Uline's catalog (and the Edison literature follow-up) found that **Uline does not appear to stock true carbon-loaded conductive black PE bags in this size range**. What they do carry under "anti-static" / ESD branding is **pink dissipative PE** (10⁹–10¹¹ Ω, the wrong spec for our use) or **silver metal-in static-shield bags** (also dissipative, fragile, and the wrong form factor). The previous §9.6 recommendation of Uline for liner bags was based on a general expectation that did not hold up under direct verification.
+
+**Recommended liner sources (cross-checked, not Uline):**
+
+| Supplier | Product line / search | Notes |
+|---|---|---|
+| **McMaster-Carr** ([mcmaster.com](https://www.mcmaster.com/)) | Search `conductive polyethylene bag`; filter for 4 mil, ~18×24" | Stocks true carbon-loaded conductive (black) PE bags; ships next-day; ~$1–3 per bag in case-qty |
+| **SCS (Desco Industries)** via Digi-Key, Mouser, or direct authorized distributor | Product line: SCS Conductive Poly Bags (black, carbon-loaded, ANSI/ESD S541 compliant) | Verifiable spec sheets with stated surface resistivity 10³–10⁵ Ω/sq |
+| **Protective Packaging Corp.** ([protectivepackaging.net](https://www.protectivepackaging.net/)) | Contact for custom-sized conductive PE liners; specify 12.5" ID × ~12" depth bin (target finished bag ~18×18 to 20×24, 4 mil) | Best option if a standard catalog size doesn't fit |
+| **Daubert Cromwell** ([daubertcromwell.com](https://www.daubertcromwell.com/)) | Conductive + VCI liners for metal parts | Niche but valid |
+
+**Spec checklist when ordering** — listing must explicitly say:
+- ✅ **"conductive"** or **"carbon loaded"** / **"carbon filled"**
+- ✅ Surface resistivity stated as **< 10⁵ Ω/sq** or **< 10⁶ Ω/sq**
+- ✅ Material: **polyethylene** (PE or LDPE)
+- ✅ Color: **black** (carbon loading is opaque black)
+- ❌ Reject if listing says only **"antistatic"** or **"static dissipative"** or shows **pink** color — those are the wrong spec.
+
+### 10.5 Net updates to the SOP
+
+Replaces the relevant lines in §9.5 with:
+
+1. Carbon-loaded conductive (black) PE liner, ≤ 10⁶ Ω/sq, ≥ 3–4 mil, sized ~18×18" to 20×24" to nest in the 12.5" ID × ~10–12" deep bin with 4–6" of overhang. **Source from McMaster-Carr, SCS/Desco, or Protective Packaging Corp — not Uline.**
+2. **Electrical bond:** ring terminal + bonding clip pinching the liner fold-over to the bin rim; verify total resistance < 1 kΩ (ideally < 100 Ω) to building ground with a multimeter before each use.
+3. Existing antistatic main filter + upstream HEPA + downstream HEPA stays.
+4. Existing OEM conductive hose, conductive wand, full grounding chain to building earth.
+5. **Emptying SOP:**
+   - **Cadence:** empty the liner after each vacuum-use session (or weekly if used lightly); **never let the bin exceed 25% capacity**.
+   - **Procedure:** vacuum off → wait 30 s for settling → operator on grounding wrist strap → unclip bonding wire → fold liner closed → secure with conductive twist-tie or binder clip → lift sealed liner from bin → place in grounded interim steel pail (Uline S-7344 5-gal, or S-22507 3.5-gal + S-21135BL lid) → close pail lid → install fresh liner and re-bond.
+   - **Interim pail → EHS:** transfer sealed liners from the steel pail to the EHS waste container every ≤ 2 weeks or at 50% pail fill, per EHS-agreed schedule.
+6. **Documentation:** log each emptying event (date, mass, initials) on a vacuum-station log sheet. Document the full SOP and DHA per NFPA 652. Class D extinguisher (Met-L-X / Lith-X / NaCl-based) within 10 ft. No water.
+
