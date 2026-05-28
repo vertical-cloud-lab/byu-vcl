@@ -17,12 +17,14 @@ Finch `job-futurehouse-data-analysis-crow-high` agent.
 | `lit-small-spheres-fishscale__53ed54dd` | `53ed54dd-a61c-4074-8858-6c0da3e0d7c9` | LITERATURE_HIGH | "Small spheres" on polished LPBF AlSi10Mg cross-sections; missing melt-pool/fishscale pattern |
 | `lit-eds-sop-astm-e1508__705df51f` | `705df51f-975c-48fa-8387-3a7e07389f47` | LITERATURE_HIGH | Concrete EDS acquisition SOP for AlSi10Mg per ASTM E1508 / E1078 |
 | `lit-sem-eds-workflow-parameters__2c752db2` | `2c752db2-d735-4937-b1b2-dc35eb0cad88` | LITERATURE_HIGH | Standard SEM/EDS workflow parameters (magnification ladder, fixed vs tunable settings) for powders + printed parts |
+| `lit-chatgpt-sem-contrast-validation__c6c421de` | `c6c421de-6544-4902-9667-00b4010bc2cf` | LITERATURE_HIGH | Validation of ChatGPT's SEM-contrast explanation for LPBF AlSi10Mg (BSE vs ETD, Si Z-contrast, melt-pool ID at 25,000×, missing Mg) |
 
 The integrated, human-curated summaries of these artifacts live in:
 
 - `../eds-quantitative-analysis-alsi10mg.md` (uses `cd669bc0`)
 - `../eds-cross-comparison-edison-results.md` (uses `53f221ff` + the five LITERATURE_HIGH tasks above)
 - `../sem-eds-workflow-parameters-sop.md` (uses `2c752db2`)
+- `../chatgpt-sem-contrast-validation-results.md` (uses `c6c421de`)
 
 To re-fetch any task:
 
