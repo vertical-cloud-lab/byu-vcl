@@ -30,7 +30,7 @@ PAUSE_SEC = 3
 
 def run(protocol: protocol_api.ProtocolContext) -> None:
     # Tip rack is loaded so the deck layout is consistent across tests.
-    protocol.load_labware('opentrons_96_filtertiprack_200ul', 1)
+    protocol.load_labware('opentrons_96_filtertiprack_20ul', 1)
     plate = protocol.load_labware('corning_96_wellplate_360ul_flat', 2)
 
     pipette = protocol.load_instrument('p20_single_gen2', mount='left')

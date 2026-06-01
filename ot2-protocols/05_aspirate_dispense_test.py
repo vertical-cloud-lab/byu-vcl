@@ -34,7 +34,7 @@ VOLUME_UL = 10
 
 
 def run(protocol: protocol_api.ProtocolContext) -> None:
-    tiprack = protocol.load_labware('opentrons_96_filtertiprack_200ul', 1)
+    tiprack = protocol.load_labware('opentrons_96_filtertiprack_20ul', 1)
     plate = protocol.load_labware('corning_96_wellplate_360ul_flat', 2)
 
     pipette = protocol.load_instrument(

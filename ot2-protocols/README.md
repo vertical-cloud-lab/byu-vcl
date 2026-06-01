@@ -16,7 +16,7 @@ slots and the deck layout do not need to be re-checked between tests:
 | Robot             | OT-2                                               |
 | API level         | 2.15                                               |
 | Left pipette      | `p20_single_gen2` (20 µL single-channel, GEN2)     |
-| Tip rack          | `opentrons_96_filtertiprack_200ul` (slot 1)        |
+| Tip rack          | `opentrons_96_filtertiprack_20ul` (slot 1)        |
 | Labware           | `corning_96_wellplate_360ul_flat` (slot 2)         |
 
 Slot placements are arbitrary unless a protocol notes otherwise.

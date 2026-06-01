@@ -25,7 +25,7 @@ TIP_WELL = 'A1'
 
 
 def run(protocol: protocol_api.ProtocolContext) -> None:
-    tiprack = protocol.load_labware('opentrons_96_filtertiprack_200ul', 1)
+    tiprack = protocol.load_labware('opentrons_96_filtertiprack_20ul', 1)
     # Plate is loaded so the deck layout matches the other test protocols,
     # even though this protocol does not touch it.
     protocol.load_labware('corning_96_wellplate_360ul_flat', 2)

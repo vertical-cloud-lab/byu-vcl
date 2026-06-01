@@ -29,7 +29,7 @@ CORNERS = ('A1', 'A12', 'H12', 'H1')
 
 
 def run(protocol: protocol_api.ProtocolContext) -> None:
-    protocol.load_labware('opentrons_96_filtertiprack_200ul', 1)
+    protocol.load_labware('opentrons_96_filtertiprack_20ul', 1)
     plate = protocol.load_labware('corning_96_wellplate_360ul_flat', 2)
 
     pipette = protocol.load_instrument('p20_single_gen2', mount='left')
