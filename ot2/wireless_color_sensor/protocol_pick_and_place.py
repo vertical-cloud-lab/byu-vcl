@@ -72,6 +72,7 @@ WCS_CHARGING_PORT_LABWARE = json.loads(
         "quirks": ["centerMultichannelOnWells", "touchTipDisabled"],
         "isTiprack": true,
         "tipLength": 84,
+        "tipOverlap": 0,
         "isMagneticModuleCompatible": false,
         "loadName": "byu_color_sensor_charging_port"
     },
