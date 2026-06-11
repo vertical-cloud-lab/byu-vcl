@@ -1,14 +1,19 @@
 {
   "01_acid_digestion": {
     "task_id": "3904dd65-e42c-4d49-a80e-5929366d21a6",
-    "job": "job-futurehouse-paperqa3-high"
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "01_acid_digestion.md"
   },
   "02_icpms_measurement": {
     "task_id": "9846e0aa-5560-4bb3-9c90-5d0d6a8fc4c6",
-    "job": "job-futurehouse-paperqa3-high"
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "02_icpms_measurement.md"
   },
   "03_qaqc_calibration": {
     "task_id": "30976b66-ecc9-4e28-bf33-cb040d15dcb6",
-    "job": "job-futurehouse-paperqa3-high"
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "in progress"
   }
 }
