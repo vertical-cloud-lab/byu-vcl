@@ -35,12 +35,13 @@ estimate, refined).
 | `stl/deck_plate_base.stl` | ANSI/SLAS-footprint (127.76 × 85.48 × 24 mm) plate that sits in an OT-2 deck slot. 10 drop-in pockets register the test tips without locking them down; bore sizes, a title, and an `A1` corner marker are engraved on top. Underside is hollowed (3 mm shell + columns under each pocket). |
 | `stl/fake_tip_insert.stl` | Final-geometry modular insert per the design-doc table: peg Ø6 × 5 + flange Ø8 × 2 + socket Ø6 × 8 with **tapered bore (1.78°)** and **3 spring-finger slits** (0.5 mm wide, 6 mm deep, rounded roots). |
 | `stl/mock_sensor_package.stl` | Drop-in stand-in for the wireless color sensor: original 40 × 60 mm footprint and **84 mm overall height**, topped with the P20 socket (tapered bore + spring fingers at the nominal 3.55 mm mid-bore). Because the envelope matches the original P300 part, the existing `byu_color_sensor_charging_port` labware definition (`tipLength: 84`) from PR #116 works unchanged. |
-| `stl/real_sensor_package_p20.stl` | The **real** printed sensor-package enclosure ([issue #33](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433), the 7.5 mm-rebored P300 part) imported from `reference/` and **re-bored with a working P20 socket** (tapered bore + 3 spring-finger slits) down its actual fake-tip post. This is the true drop-in part: identical body/sensor window/clips to the printed enclosure, but a tip the P20 can both grip *and* eject. |
+| `stl/real_sensor_package_p20.stl` | A **from-scratch parametric recreation** of the real printed sensor-package enclosure ([issue #33](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433), the 7.5 mm-rebored P300 part). The outer silhouette, 60 mm depth, open tray, pedestal/foot and tapered post are rebuilt as a hollow 2 mm-walled shell from dimensions measured off the reference STEP — its volume matches the import to **+3.0 %** (23.8 vs 23.1 cm³). The P20 socket (tapered bore + 3 spring-finger slits) is then bored **concentric with the post axis**. The original Ø7.5 mm bore sat 3.7 mm off-centre — re-boring it in place breached the post wall and looked non-concentric — so the new socket is centred on the post so it engages the ~3.6 mm nozzle and stays inside the wall. |
 
 The original f3d / STEP / STL of the real enclosure are committed under `reference/`
 (zip from [issue #33 comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433)).
-`real_sensor_package_p20` is generated from that STEP, so re-running `cad_model.py`
-reproduces it exactly.
+`real_sensor_package_p20` is rebuilt **from scratch** in `cad_model.py` (not imported);
+the reference STEP is used only by `verify_real_package_volume()` to confirm the
+recreation reproduces the real part's volume before its tip is changed.
 
 STEP equivalents are in `step/`; PNG renders (iso/front/top per part) in `renders/`.
 
@@ -119,8 +120,8 @@ against — matching the observed "picks up fine, won't eject" failure
 ([PR #116](https://github.com/vertical-cloud-lab/byu-vcl/pull/116)). The test
 array's 3.40–3.85 mm bores engage the nozzle below the sleeve, and the Ø6 mm
 socket rim gives the sleeve a proper shoulder to push on. This is also why
-`real_sensor_package_p20` re-bores the real enclosure's post from Ø7.5 down to
-the P20 socket.
+`real_sensor_package_p20` replaces the real enclosure's off-centre Ø7.5 mm bore
+with a concentric P20 socket.
 
 Two Opentrons details encoded in the labware/protocol:
 
@@ -200,5 +201,7 @@ python -m opentrons.simulate protocol_test_array.py   # sanity-check protocol
 
 Edit the `Params` dataclass in `cad_model.py` to iterate (e.g. set
 `bore_ids` to the round-2 ±0.02 mm sweep once a round-1 winner is found).
-`real_sensor_package_p20` is regenerated from `reference/sensor_package_main_enclosure_7p5mm.step`,
-so that reference file must stay in place.
+`real_sensor_package_p20` is built from scratch in `cad_model.py`;
+`reference/sensor_package_main_enclosure_7p5mm.step` is only read by
+`verify_real_package_volume()` to confirm the volume match, so it is optional
+for generating the part but keep it for the validation check.

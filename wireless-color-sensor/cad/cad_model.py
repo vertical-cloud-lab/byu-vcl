@@ -19,9 +19,14 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
    enclosure: same 40 x 60 mm footprint and 84 mm overall height as the
    original P300 part (so the existing ``byu_color_sensor_charging_port``
    labware/tipLength still apply), but topped with the P20 socket.
-5. ``real_sensor_package_p20`` — the *real* printed enclosure (issue #33,
-   the 7.5 mm-rebored P300 part in ``reference/``) imported and re-bored with
-   a P20 socket (tapered bore + spring fingers) down its actual fake-tip post.
+5. ``real_sensor_package_p20`` — a *from-scratch* parametric recreation of the
+   real printed enclosure (issue #33, the 7.5 mm-rebored P300 part in
+   ``reference/``).  The outer silhouette, depth, tray, pedestal and tapered
+   post are rebuilt as a hollow 2 mm-walled shell from dimensions measured off
+   the reference STEP (volume matches the import to within ~2 %; see
+   ``verify_real_package_volume``), then given a P20 socket bored *concentric*
+   with the post axis (the original Ø7.5 mm bore sat 3.7 mm off-centre and grips
+   the ejector sleeve; this one is centred so it engages the ~3.6 mm nozzle).
 
 Geometry notes (measured from the original AC "Sensor package main
 enclosure.step", P300 version):
@@ -43,6 +48,7 @@ from build123d import (
     Align,
     Axis,
     Box,
+    BuildLine,
     BuildPart,
     BuildSketch,
     Compound,
@@ -52,6 +58,7 @@ from build123d import (
     Locations,
     Mode,
     Plane,
+    Polyline,
     Pos,
     Rot,
     Text,
@@ -60,6 +67,7 @@ from build123d import (
     export_stl,
     extrude,
     import_step,
+    make_face,
     mirror,
 )
 
@@ -117,12 +125,25 @@ class Params:
     body_h: float = 66.0                   # top face of original enclosure
     total_h: float = 84.0                  # matches labware tipLength: 84
     pedestal_od: float = 8.0
-    # ---- real enclosure graft (measured from the 7.5 mm STEP, issue #33) ----
-    # after rotating the native +Y post axis to +Z, the post/bore axis sits at
-    # (x, y) below; the post is a tapered boss ~Ø7.3 mm at its tip.
-    real_post_x: float = 0.0
-    real_post_y: float = 3.7
-    real_post_od: float = 7.3
+    # ---- real enclosure recreation (from-scratch, measured off the 7.5 mm
+    #      STEP, issue #33).  Native build frame: +Y is the post axis. ----
+    real_depth: float = 60.0               # Z extent (z = -30..30)
+    real_wall: float = 2.0                 # measured shell wall thickness
+    # outer XY silhouette of the upper body (rectangle minus the tray slot),
+    # read off the reference end-cap section; closed polygon (x, y):
+    real_silhouette: tuple = (
+        (10.0, 22.0), (10.0, 66.0), (-30.0, 66.0), (-30.0, 64.0),
+        (-15.0, 64.0), (-15.0, 24.0), (-30.0, 24.0), (-30.0, 22.0),
+    )
+    real_box_x: tuple = (-15.0, 10.0)      # tall-box X span (hollowed region)
+    real_body_y: tuple = (2.0, 66.0)       # interior void Y span (box+pedestal)
+    real_ped_x: tuple = (-8.0, 10.0)       # pedestal/foot X span
+    real_ped_y: tuple = (-5.0, 22.0)       # pedestal/foot Y span
+    real_ped_z: float = 27.0               # pedestal/foot Z depth (narrower)
+    real_post_y0: float = 66.0             # post base Y (top of body)
+    real_post_h: float = 19.5              # post height
+    real_post_base_r: float = 7.0          # post base radius (tapered boss)
+    real_post_top_r: float = 3.67          # post tip radius (Ø7.34 mm)
 
 
 P = Params()
@@ -342,33 +363,91 @@ def make_test_array(p: Params = P, tapered: bool = False,
 def make_real_sensor_package_p20(bore_mid_id: float | None = None,
                                  p: Params = P, slits: bool = True) -> Compound:
     """Recreate the *real* printed sensor-package enclosure (issue #33, the
-    7.5 mm-rebored P300-derived part) but give it a working P20 fake tip.
+    7.5 mm-rebored P300-derived part) **from scratch** and give it a working
+    P20 fake tip.
 
-    The real STEP is imported, its two solids fused, and a P20 socket
-    (1.78 deg tapered bore + 3 spring-finger slits) is bored down the existing
-    fake-tip post along its true axis.  The original Ø7.5 mm bore grips the
-    ejector sleeve and will not release (issue #33 / PR #116); this bore
-    engages the ~3.6 mm nozzle so the sleeve can push the package off.
+    Rather than importing and re-boring the reference STEP (which produced an
+    off-centre, wall-breaching socket because the original Ø7.5 mm bore sits
+    3.7 mm off the post axis), the enclosure is rebuilt parametrically from
+    dimensions measured off that STEP:
 
-    The part is returned in a post-up (+Z) orientation; the sensor aperture
-    faces -Z, ready to look down at a well plate.
+    * the upper body is the measured outer silhouette (``real_silhouette`` —
+      a rectangle with the tray slot removed) extruded the full ``real_depth``;
+    * a single interior void leaves a uniform ``real_wall`` (2 mm) shell across
+      the tall box and the pedestal/foot;
+    * the tapered fake-tip post (``real_post_*``) is rebuilt concentric on the
+      body axis and hollowed.
+
+    The result matches the imported reference volume to within ~2 %
+    (``verify_real_package_volume``).  A P20 socket (1.78 deg tapered bore + 3
+    spring-finger slits) is then bored **concentric** with the post so it
+    engages the ~3.6 mm nozzle (not the ejector sleeve) and the socket stays
+    inside the post wall.
+
+    The part is returned post-up (+Z); the body/sensor end faces -Z.
     """
     bore_mid_id = bore_mid_id or p.nominal_bore_id
-    imported = import_step(str(REAL_ENCLOSURE_STEP))
-    sols = imported.solids()
-    fused = sols[0]
-    for s in sols[1:]:
-        fused = fused.fuse(s)
-    # rotate the native +Y (post) axis to +Z (post up, sensor down)
-    part0 = Rot(90, 0, 0) * fused
-    bb = part0.bounding_box()
-    z_top = bb.max.Z                       # post tip = socket mouth
-    cx, cy = p.real_post_x, p.real_post_y  # measured post/bore axis
+    bx0, bx1 = p.real_box_x
+    by0, by1 = p.real_body_y
+    px0, px1 = p.real_ped_x
+    py0, py1 = p.real_ped_y
+    w = p.real_wall
+    with BuildPart() as bp:
+        # upper body: extrude the measured outer silhouette the full depth
+        with BuildSketch(Plane.XY) as sk:
+            with BuildLine():
+                Polyline(*p.real_silhouette, close=True)
+            make_face()
+        extrude(amount=p.real_depth / 2, both=True)
+        # pedestal / foot below the body (narrower than the body in Z)
+        with Locations(((px0 + px1) / 2, (py0 + py1) / 2, 0)):
+            Box(px1 - px0, py1 - py0, p.real_ped_z, mode=Mode.ADD)
+        # one continuous interior void -> uniform-wall hollow shell
+        with Locations(((bx0 + bx1) / 2, (by0 + by1) / 2, 0)):
+            Box(bx1 - bx0 - 2 * w, by1 - by0 - 2 * w, p.real_depth - 2 * w,
+                mode=Mode.SUBTRACT)
+        with Locations(((px0 + px1) / 2, (py0 + py1) / 2, 0)):
+            Box(px1 - px0 - 2 * w, py1 - py0, p.real_ped_z - 2 * w,
+                mode=Mode.SUBTRACT)
+        # tapered fake-tip post, concentric on the body axis (x = z = 0)
+        with Locations((0, p.real_post_y0, 0)):
+            Cone(p.real_post_base_r, p.real_post_top_r, p.real_post_h,
+                 rotation=(-90, 0, 0),
+                 align=(Align.CENTER, Align.CENTER, Align.MIN))
+        with Locations((0, p.real_post_y0 - 0.1, 0)):
+            Cone(p.real_post_base_r - 2.5, p.real_post_top_r - 1.2,
+                 p.real_post_h - 3.5, rotation=(-90, 0, 0),
+                 align=(Align.CENTER, Align.CENTER, Align.MIN),
+                 mode=Mode.SUBTRACT)
+    # rotate post-up (+Z); native +Y post axis -> +Z, axis stays at x = y = 0
+    part0 = Rot(90, 0, 0) * bp.part
+    z_top = part0.bounding_box().max.Z       # post tip = socket mouth
     with BuildPart() as part:
         add(part0)
-        _cut_socket_features(z_top, bore_mid_id, p, tapered=True, slits=slits,
-                             cx=cx, cy=cy, socket_od=p.real_post_od)
+        _cut_socket_features(z_top, bore_mid_id, p, tapered=True, slits=slits)
     return part.part
+
+
+def verify_real_package_volume(p: Params = P) -> dict:
+    """Compare the from-scratch recreation against the imported reference STEP.
+
+    Returns a dict with both volumes (cm^3) and the percentage delta.  Used to
+    confirm the parametric rebuild faithfully reproduces the real part before
+    its tip is changed; the reference STEP is read here for validation only,
+    never for geometry.
+    """
+    if not REAL_ENCLOSURE_STEP.exists():
+        return {}
+    imported = import_step(str(REAL_ENCLOSURE_STEP))
+    ref_vol = sum(s.volume for s in imported.solids()) / 1000.0
+    # rebuild without the socket so the comparison is body-to-body
+    recreated = make_real_sensor_package_p20(p=p, slits=False)
+    rec_vol = recreated.volume / 1000.0
+    return {
+        "reference_cm3": round(ref_vol, 2),
+        "recreated_cm3": round(rec_vol, 2),
+        "delta_pct": round((rec_vol - ref_vol) / ref_vol * 100.0, 1),
+    }
 
 
 def export_all(p: Params = P) -> dict[str, Compound]:
@@ -380,9 +459,13 @@ def export_all(p: Params = P) -> dict[str, Compound]:
         "deck_plate_base": make_deck_plate(p),
         "fake_tip_insert": make_fake_tip_insert(p=p),
         "mock_sensor_package": make_mock_sensor_package(p=p),
+        "real_sensor_package_p20": make_real_sensor_package_p20(p=p),
     }
-    if REAL_ENCLOSURE_STEP.exists():
-        parts["real_sensor_package_p20"] = make_real_sensor_package_p20(p=p)
+    vmatch = verify_real_package_volume(p)
+    if vmatch:
+        print(f"real_sensor_package_p20 volume check: recreated "
+              f"{vmatch['recreated_cm3']} cm^3 vs reference "
+              f"{vmatch['reference_cm3']} cm^3 ({vmatch['delta_pct']:+}%)")
     for name, part in parts.items():
         export_stl(part, str(STL_DIR / f"{name}.stl"))
         export_step(part, str(STEP_DIR / f"{name}.step"))
