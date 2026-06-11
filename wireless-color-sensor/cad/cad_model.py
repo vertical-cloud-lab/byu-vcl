@@ -6,6 +6,9 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
 1. ``fake_tip_test_array``  — 10 loose test tips (bore ID 3.40-3.85 mm in
    0.05 mm steps) laid out in the same 2 x 5 grid as the deck plate pockets.
    Print in one batch on a Bambu Lab A1 mini.
+1b. ``fake_tip_test_array_slit`` — same 10 tips but with the final socket
+   geometry (1.78 deg tapered bore + 3 spring-finger slits) for the round-2
+   cyclic-durability comparison.
 2. ``deck_plate_base``      — ANSI/SLAS-footprint (127.76 x 85.48 mm) base
    that sits in an OT-2 deck slot.  It has 10 drop-in pockets that register
    each test tip under the pipette without locking it down, plus engraved
@@ -16,6 +19,9 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
    enclosure: same 40 x 60 mm footprint and 84 mm overall height as the
    original P300 part (so the existing ``byu_color_sensor_charging_port``
    labware/tipLength still apply), but topped with the P20 socket.
+5. ``real_sensor_package_p20`` — the *real* printed enclosure (issue #33,
+   the 7.5 mm-rebored P300 part in ``reference/``) imported and re-bored with
+   a P20 socket (tapered bore + spring fingers) down its actual fake-tip post.
 
 Geometry notes (measured from the original AC "Sensor package main
 enclosure.step", P300 version):
@@ -53,12 +59,16 @@ from build123d import (
     export_step,
     export_stl,
     extrude,
+    import_step,
     mirror,
 )
 
 HERE = pathlib.Path(__file__).resolve().parent
 STL_DIR = HERE / "stl"
 STEP_DIR = HERE / "step"
+REF_DIR = HERE / "reference"
+# the real printed P300-derived enclosure, rebored to 7.5 mm (issue #33).
+REAL_ENCLOSURE_STEP = REF_DIR / "sensor_package_main_enclosure_7p5mm.step"
 
 FONT = "DejaVu Sans"  # available on Linux CI; build123d falls back if missing
 
@@ -107,6 +117,12 @@ class Params:
     body_h: float = 66.0                   # top face of original enclosure
     total_h: float = 84.0                  # matches labware tipLength: 84
     pedestal_od: float = 8.0
+    # ---- real enclosure graft (measured from the 7.5 mm STEP, issue #33) ----
+    # after rotating the native +Y post axis to +Z, the post/bore axis sits at
+    # (x, y) below; the post is a tapered boss ~Ø7.3 mm at its tip.
+    real_post_x: float = 0.0
+    real_post_y: float = 3.7
+    real_post_od: float = 7.3
 
 
 P = Params()
@@ -133,12 +149,67 @@ def _bore_radius(entry_id: float, depth: float, taper_half_angle_deg: float):
     return entry_id / 2, entry_id / 2 - dr
 
 
-def make_test_tip(bore_id: float, p: Params = P) -> Compound:
-    """Round-1 test piece: straight bore at ``bore_id``, no slits.
+def _cut_socket_features(z_top: float, bore_mid_id: float, p: Params = P,
+                         tapered: bool = True, slits: bool = False,
+                         cx: float = 0.0, cy: float = 0.0,
+                         socket_od: float | None = None) -> None:
+    """Cut the bore (+ chamfer, optional spring-finger slits) into whatever is
+    being built; call inside an active BuildPart context.
+
+    ``z_top`` is the socket-mouth Z, the bore opening downward into material.
+    ``tapered`` cuts the 1.78 deg conical nozzle bore (else a straight bore at
+    ``bore_mid_id``).  ``slits`` adds ``p.n_slits`` rounded-root axial slots.
+    ``socket_od`` bounds the slit length (defaults to ``p.socket_od``).
+    """
+    socket_od = socket_od or p.socket_od
+    if tapered:
+        dr = p.socket_depth / 2 * math.tan(
+            math.radians(p.nozzle_taper_half_angle_deg))
+        entry_r = bore_mid_id / 2 + dr
+        bottom_r = bore_mid_id / 2 - dr
+        with Locations((cx, cy, z_top)):
+            Cone(entry_r, bottom_r, p.socket_depth,
+                 align=(Align.CENTER, Align.CENTER, Align.MAX),
+                 mode=Mode.SUBTRACT)
+            Cone(entry_r + p.entry_chamfer, entry_r, p.entry_chamfer,
+                 align=(Align.CENTER, Align.CENTER, Align.MAX),
+                 mode=Mode.SUBTRACT)
+    else:
+        entry_r = bore_mid_id / 2
+        bore_depth = p.socket_depth + p.tip_bore_extra
+        with Locations((cx, cy, z_top)):
+            Cylinder(bore_mid_id / 2, bore_depth,
+                     align=(Align.CENTER, Align.CENTER, Align.MAX),
+                     mode=Mode.SUBTRACT)
+            Cone(bore_mid_id / 2 + p.entry_chamfer, bore_mid_id / 2,
+                 p.entry_chamfer,
+                 align=(Align.CENTER, Align.CENTER, Align.MAX),
+                 mode=Mode.SUBTRACT)
+    if slits:
+        for k in range(p.n_slits):
+            ang = 360 / p.n_slits * k
+            slot = Box(socket_od, p.slit_width, p.slit_depth,
+                       align=(Align.CENTER, Align.CENTER, Align.MAX),
+                       mode=Mode.PRIVATE)
+            root = Cylinder(p.slit_width / 2, socket_od,
+                            rotation=(0, 90, 0), mode=Mode.PRIVATE)
+            root = Pos(0, 0, -p.slit_depth) * root
+            cutter = slot + root
+            cutter = Pos(cx, cy, z_top) * Rot(0, 0, ang) * cutter
+            add(cutter, mode=Mode.SUBTRACT)
+
+
+def make_test_tip(bore_id: float, p: Params = P, tapered: bool = False,
+                  slits: bool = False) -> Compound:
+    """Round-1 test piece: straight bore at ``bore_id``, no slits by default.
 
     Stack (bottom -> top): body O8 x 10, flange O10 x 2, socket O6 x 8.
     Bore is blind (socket + 2 mm), leaving a solid base that carries an
     engraved 2-digit size code readable from below (e.g. '55' = 3.55 mm).
+
+    Set ``tapered``/``slits`` to build the round-2 final-geometry variant
+    (1.78 deg tapered bore + 3 spring-finger slits) for cyclic-durability
+    testing once a round-1 bore winner is chosen.
     """
     with BuildPart() as part:
         Cylinder(p.tip_body_od / 2, p.tip_body_h,
@@ -151,17 +222,7 @@ def make_test_tip(bore_id: float, p: Params = P) -> Compound:
             Cylinder(p.socket_od / 2, p.socket_depth,
                      align=(Align.CENTER, Align.CENTER, Align.MIN))
         z_top = z_flange_top + p.socket_depth
-        # straight blind bore
-        bore_depth = p.socket_depth + p.tip_bore_extra
-        with Locations((0, 0, z_top)):
-            Cylinder(bore_id / 2, bore_depth,
-                     align=(Align.CENTER, Align.CENTER, Align.MAX),
-                     mode=Mode.SUBTRACT)
-        # entry chamfer (45 deg) as a conical cut
-        with Locations((0, 0, z_top)):
-            Cone(bore_id / 2 + p.entry_chamfer, bore_id / 2, p.entry_chamfer,
-                 align=(Align.CENTER, Align.CENTER, Align.MAX),
-                 mode=Mode.SUBTRACT)
+        _cut_socket_features(z_top, bore_id, p, tapered=tapered, slits=slits)
         # engraved size code on the bottom face, mirrored so it reads
         # correctly when the tip is flipped over
         code = f"{round(bore_id * 100) % 100:02d}"
@@ -180,31 +241,7 @@ def _add_socket(plane_z: float, bore_mid_id: float, p: Params = P,
         Cylinder(p.socket_od / 2, p.socket_depth,
                  align=(Align.CENTER, Align.CENTER, Align.MIN))
     z_top = plane_z + p.socket_depth
-    dr = p.socket_depth / 2 * math.tan(
-        math.radians(p.nozzle_taper_half_angle_deg))
-    entry_r = bore_mid_id / 2 + dr
-    bottom_r = bore_mid_id / 2 - dr
-    with Locations((0, 0, z_top)):
-        Cone(entry_r, bottom_r, p.socket_depth,
-             align=(Align.CENTER, Align.CENTER, Align.MAX),
-             mode=Mode.SUBTRACT)
-    with Locations((0, 0, z_top)):
-        Cone(entry_r + p.entry_chamfer, entry_r, p.entry_chamfer,
-             align=(Align.CENTER, Align.CENTER, Align.MAX),
-             mode=Mode.SUBTRACT)
-    if slits:
-        for k in range(p.n_slits):
-            ang = 360 / p.n_slits * k
-            # radial slot from the top, rounded root (~R0.25 fillet)
-            slot = Box(p.socket_od, p.slit_width, p.slit_depth,
-                       align=(Align.CENTER, Align.CENTER, Align.MAX),
-                       mode=Mode.PRIVATE)
-            root = Cylinder(p.slit_width / 2, p.socket_od,
-                            rotation=(0, 90, 0), mode=Mode.PRIVATE)
-            root = Pos(0, 0, -p.slit_depth) * root
-            cutter = slot + root
-            cutter = Rot(0, 0, ang) * Pos(0, 0, z_top) * cutter
-            add(cutter, mode=Mode.SUBTRACT)
+    _cut_socket_features(z_top, bore_mid_id, p, tapered=True, slits=slits)
 
 
 def make_fake_tip_insert(bore_mid_id: float | None = None,
@@ -288,13 +325,50 @@ def make_deck_plate(p: Params = P) -> Compound:
     return part.part
 
 
-def make_test_array(p: Params = P) -> Compound:
-    """All 10 round-1 test tips, laid out in the pocket grid (one print)."""
+def make_test_array(p: Params = P, tapered: bool = False,
+                    slits: bool = False) -> Compound:
+    """All 10 test tips, laid out in the pocket grid (one print).
+
+    Default is the round-1 straight-bore array (clean press-fit measurement).
+    Pass ``tapered=True, slits=True`` for the round-2 array that mirrors the
+    final socket geometry (1.78 deg taper + 3 spring-finger slits)."""
     tips = []
     for (x, y, _name), bore in zip(grid_centers(p), p.bore_ids):
-        tip = make_test_tip(bore, p)
+        tip = make_test_tip(bore, p, tapered=tapered, slits=slits)
         tips.append(Location((x, y, 0)) * tip)
     return Compound(children=tips)
+
+
+def make_real_sensor_package_p20(bore_mid_id: float | None = None,
+                                 p: Params = P, slits: bool = True) -> Compound:
+    """Recreate the *real* printed sensor-package enclosure (issue #33, the
+    7.5 mm-rebored P300-derived part) but give it a working P20 fake tip.
+
+    The real STEP is imported, its two solids fused, and a P20 socket
+    (1.78 deg tapered bore + 3 spring-finger slits) is bored down the existing
+    fake-tip post along its true axis.  The original Ø7.5 mm bore grips the
+    ejector sleeve and will not release (issue #33 / PR #116); this bore
+    engages the ~3.6 mm nozzle so the sleeve can push the package off.
+
+    The part is returned in a post-up (+Z) orientation; the sensor aperture
+    faces -Z, ready to look down at a well plate.
+    """
+    bore_mid_id = bore_mid_id or p.nominal_bore_id
+    imported = import_step(str(REAL_ENCLOSURE_STEP))
+    sols = imported.solids()
+    fused = sols[0]
+    for s in sols[1:]:
+        fused = fused.fuse(s)
+    # rotate the native +Y (post) axis to +Z (post up, sensor down)
+    part0 = Rot(90, 0, 0) * fused
+    bb = part0.bounding_box()
+    z_top = bb.max.Z                       # post tip = socket mouth
+    cx, cy = p.real_post_x, p.real_post_y  # measured post/bore axis
+    with BuildPart() as part:
+        add(part0)
+        _cut_socket_features(z_top, bore_mid_id, p, tapered=True, slits=slits,
+                             cx=cx, cy=cy, socket_od=p.real_post_od)
+    return part.part
 
 
 def export_all(p: Params = P) -> dict[str, Compound]:
@@ -302,10 +376,13 @@ def export_all(p: Params = P) -> dict[str, Compound]:
     STEP_DIR.mkdir(parents=True, exist_ok=True)
     parts = {
         "fake_tip_test_array": make_test_array(p),
+        "fake_tip_test_array_slit": make_test_array(p, tapered=True, slits=True),
         "deck_plate_base": make_deck_plate(p),
         "fake_tip_insert": make_fake_tip_insert(p=p),
         "mock_sensor_package": make_mock_sensor_package(p=p),
     }
+    if REAL_ENCLOSURE_STEP.exists():
+        parts["real_sensor_package_p20"] = make_real_sensor_package_p20(p=p)
     for name, part in parts.items():
         export_stl(part, str(STL_DIR / f"{name}.stl"))
         export_step(part, str(STEP_DIR / f"{name}.step"))

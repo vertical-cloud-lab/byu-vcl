@@ -1,0 +1,124 @@
+{
+  "assumptions": {
+    "nozzle_od_mm": 3.7,
+    "package_mass_kg": 0.05,
+    "accel_z_mps2": 5.0,
+    "retention_sf": 3.0,
+    "mu": 0.3,
+    "eject_force_max_n": 20.0,
+    "required_axial_hold_n": 2.22
+  },
+  "rows": [
+    {
+      "bore_id": 3.4,
+      "interference_mm": 0.3,
+      "deflection_mm": 0.15,
+      "vmax_mpa": 58.9,
+      "grip_n": 49.5,
+      "axial_hold_n": 14.8,
+      "holds": true,
+      "ejectable": false,
+      "cycles": 1000.0
+    },
+    {
+      "bore_id": 3.45,
+      "interference_mm": 0.25,
+      "deflection_mm": 0.125,
+      "vmax_mpa": 49.3,
+      "grip_n": 40.6,
+      "axial_hold_n": 12.2,
+      "holds": true,
+      "ejectable": false,
+      "cycles": 1144.499254187871
+    },
+    {
+      "bore_id": 3.5,
+      "interference_mm": 0.2,
+      "deflection_mm": 0.1,
+      "vmax_mpa": 35.7,
+      "grip_n": 32.1,
+      "axial_hold_n": 9.6,
+      "holds": true,
+      "ejectable": false,
+      "cycles": 28377.087806213378
+    },
+    {
+      "bore_id": 3.55,
+      "interference_mm": 0.15,
+      "deflection_mm": 0.075,
+      "vmax_mpa": 26.3,
+      "grip_n": 23.5,
+      "axial_hold_n": 7.1,
+      "holds": true,
+      "ejectable": false,
+      "cycles": 601980.6879423859
+    },
+    {
+      "bore_id": 3.6,
+      "interference_mm": 0.1,
+      "deflection_mm": 0.05,
+      "vmax_mpa": 16.8,
+      "grip_n": 15.8,
+      "axial_hold_n": 4.7,
+      "holds": true,
+      "ejectable": true,
+      "cycles": null
+    },
+    {
+      "bore_id": 3.65,
+      "interference_mm": 0.05,
+      "deflection_mm": 0.025,
+      "vmax_mpa": 9.2,
+      "grip_n": 7.8,
+      "axial_hold_n": 2.3,
+      "holds": true,
+      "ejectable": true,
+      "cycles": null
+    },
+    {
+      "bore_id": 3.7,
+      "interference_mm": 0.0,
+      "deflection_mm": 0.0,
+      "vmax_mpa": 0.0,
+      "grip_n": 0.0,
+      "axial_hold_n": 0.0,
+      "holds": false,
+      "ejectable": true,
+      "cycles": null
+    },
+    {
+      "bore_id": 3.75,
+      "interference_mm": -0.05,
+      "deflection_mm": 0.0,
+      "vmax_mpa": 0.0,
+      "grip_n": 0.0,
+      "axial_hold_n": 0.0,
+      "holds": false,
+      "ejectable": true,
+      "cycles": null
+    },
+    {
+      "bore_id": 3.8,
+      "interference_mm": -0.1,
+      "deflection_mm": 0.0,
+      "vmax_mpa": 0.0,
+      "grip_n": 0.0,
+      "axial_hold_n": 0.0,
+      "holds": false,
+      "ejectable": true,
+      "cycles": null
+    },
+    {
+      "bore_id": 3.85,
+      "interference_mm": -0.15,
+      "deflection_mm": 0.0,
+      "vmax_mpa": 0.0,
+      "grip_n": 0.0,
+      "axial_hold_n": 0.0,
+      "holds": false,
+      "ejectable": true,
+      "cycles": null
+    }
+  ],
+  "recommended_bore_id": 3.6
+}

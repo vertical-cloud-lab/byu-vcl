@@ -208,4 +208,5 @@ __marimo__/
 ~$u-engineering-sop-template.docx
 
 # CalculiX/gmsh scratch outputs
-wireless-color-sensor/cad/fea/
+wireless-color-sensor/cad/fea/*
+!wireless-color-sensor/cad/fea/fit_study_results.json

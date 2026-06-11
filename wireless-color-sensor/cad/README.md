@@ -31,9 +31,16 @@ estimate, refined).
 | File | What it is |
 |---|---|
 | `stl/fake_tip_test_array.stl` | 10 round-1 test tips, bore ID 3.40–3.85 mm in 0.05 mm steps (straight bore, no slits). Each tip: body Ø8 × 10, flange Ø10 × 2, socket Ø6 × 8 mm; the 2-digit size code (e.g. `55` = 3.55 mm) is engraved on the underside. Laid out in the same 2 × 5 / 18 mm-pitch grid as the deck-plate pockets. |
+| `stl/fake_tip_test_array_slit.stl` | The **round-2** array: same 10 tips but with the final socket geometry — **1.78° tapered bore + 3 spring-finger slits**. Round-1 is deliberately straight-bored/slitless so the *bore diameter alone* is measured cleanly; round-2 adds the slits so the chosen winner can be re-checked for grip and ejection with the production geometry. |
 | `stl/deck_plate_base.stl` | ANSI/SLAS-footprint (127.76 × 85.48 × 24 mm) plate that sits in an OT-2 deck slot. 10 drop-in pockets register the test tips without locking them down; bore sizes, a title, and an `A1` corner marker are engraved on top. Underside is hollowed (3 mm shell + columns under each pocket). |
 | `stl/fake_tip_insert.stl` | Final-geometry modular insert per the design-doc table: peg Ø6 × 5 + flange Ø8 × 2 + socket Ø6 × 8 with **tapered bore (1.78°)** and **3 spring-finger slits** (0.5 mm wide, 6 mm deep, rounded roots). |
 | `stl/mock_sensor_package.stl` | Drop-in stand-in for the wireless color sensor: original 40 × 60 mm footprint and **84 mm overall height**, topped with the P20 socket (tapered bore + spring fingers at the nominal 3.55 mm mid-bore). Because the envelope matches the original P300 part, the existing `byu_color_sensor_charging_port` labware definition (`tipLength: 84`) from PR #116 works unchanged. |
+| `stl/real_sensor_package_p20.stl` | The **real** printed sensor-package enclosure ([issue #33](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433), the 7.5 mm-rebored P300 part) imported from `reference/` and **re-bored with a working P20 socket** (tapered bore + 3 spring-finger slits) down its actual fake-tip post. This is the true drop-in part: identical body/sensor window/clips to the printed enclosure, but a tip the P20 can both grip *and* eject. |
+
+The original f3d / STEP / STL of the real enclosure are committed under `reference/`
+(zip from [issue #33 comment](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433)).
+`real_sensor_package_p20` is generated from that STEP, so re-running `cad_model.py`
+reproduces it exactly.
 
 STEP equivalents are in `step/`; PNG renders (iso/front/top per part) in `renders/`.
 
@@ -41,10 +48,12 @@ STEP equivalents are in `step/`; PNG renders (iso/front/top per part) in `render
 
 | | iso | top |
 |---|---|---|
-| Test array | ![array iso](renders/fake_tip_test_array_iso.png) | ![array top](renders/fake_tip_test_array_top.png) |
+| Test array (round-1) | ![array iso](renders/fake_tip_test_array_iso.png) | ![array top](renders/fake_tip_test_array_top.png) |
+| Test array (round-2, slits) | ![array slit iso](renders/fake_tip_test_array_slit_iso.png) | ![array slit top](renders/fake_tip_test_array_slit_top.png) |
 | Deck plate | ![plate iso](renders/deck_plate_base_iso.png) | ![plate top](renders/deck_plate_base_top.png) |
 | Insert | ![insert iso](renders/fake_tip_insert_iso.png) | ![insert top](renders/fake_tip_insert_top.png) |
 | Mock package | ![mock iso](renders/mock_sensor_package_iso.png) | ![mock front](renders/mock_sensor_package_front.png) |
+| Real package + P20 tip | ![real iso](renders/real_sensor_package_p20_iso.png) | ![real top](renders/real_sensor_package_p20_top.png) |
 
 ## Printing (Bambu Lab A1 mini, 180 × 180 × 180 mm)
 
@@ -75,7 +84,30 @@ upload path as the working scripts in
    drop-off check. Record pass/fail per the evaluation criteria in the design doc.
 
 The mock sensor package needs no new script — it is a drop-in replacement for
-the real sensor in the existing PR #116 pick-and-place protocols.
+the real sensor in the existing PR #116 pick-and-place protocols. So is
+`real_sensor_package_p20` (the actual enclosure with a P20 tip).
+
+### What to send back after printing/testing
+
+The single most useful thing to report is, **per bore size, three pass/fail
+flags plus a note** — that is exactly what the protocol pauses for:
+
+1. **Picks up?** does the nozzle seat and lift the tip out of its pocket.
+2. **Holds inverted / through a move?** does it stay on during transit (this is
+   the retention check the FEA models against package weight).
+3. **Ejects cleanly?** does `drop_tip` release it without dragging.
+4. **Wear note** after ~10 insert/remove cycles (any whitening, cracks at the
+   slit roots, or loosening).
+
+A filled-in copy of the table below (just `Y`/`N` per column) pins down the
+real nozzle OD and lets us pick the round-2 ±0.02 mm sweep. If you have
+**calipers**, a measurement of an actual P20 nozzle OD and of one printed bore
+(to get the printer's hole-compensation error) would let us skip a round.
+Photos of any cracked slit roots are also directly actionable for the FEA.
+
+| bore (mm) | picks up | holds move | ejects | wear after 10× |
+|---|---|---|---|---|
+| 3.40 … 3.85 | | | | |
 
 ### Why the current 7.5 mm adapter can't eject (Opentrons mechanics)
 
@@ -86,7 +118,9 @@ A 7.5 mm bore grips the sleeve itself, so the ejector has nothing to push
 against — matching the observed "picks up fine, won't eject" failure
 ([PR #116](https://github.com/vertical-cloud-lab/byu-vcl/pull/116)). The test
 array's 3.40–3.85 mm bores engage the nozzle below the sleeve, and the Ø6 mm
-socket rim gives the sleeve a proper shoulder to push on.
+socket rim gives the sleeve a proper shoulder to push on. This is also why
+`real_sensor_package_p20` re-bores the real enclosure's post from Ø7.5 down to
+the P20 socket.
 
 Two Opentrons details encoded in the labware/protocol:
 
@@ -96,31 +130,75 @@ Two Opentrons details encoded in the labware/protocol:
 - `tipOverlap: 8.0` mirrors the stock 20 µL tip overlap (8.25 mm) so motion
   planning assumes a realistic nozzle engagement depth.
 
-## Spring-finger FEA (CalculiX)
+## Spring-finger FEA fit study (CalculiX) — which bore is best
 
-`fea_spring_finger.py` meshes one spring finger (annular 120° sector,
-r 1.78→3.0 mm, 6 mm long) with gmsh and runs a CalculiX static analysis:
-base fixed, tip band pushed **0.10 mm radially outward** (conservative —
-the full 0.05–0.15 mm design interference assigned to a single finger).
+`fea_spring_finger.py` meshes one spring finger (annular 120° sector, Ø6 mm
+socket OD, 6 mm long) with gmsh and runs a CalculiX static analysis: base
+fixed, the tip band pushed radially outward by the interference and the radial
+reaction force read back as the inward **grip**.
 
-Result: **peak von Mises ≈ 35 MPa vs ~50 MPa PETG yield (safety factor
-≈ 1.4)**, and the peak sits at the artificially constrained tip band, so the
-real finger stress is lower. The fingers stay elastic over repeated
-insertion/removal cycles, validating the slit dimensions in the design doc.
+`fea_fit_study.py` then runs that solve on **every bore in the array**, against
+a nominal **Ø3.70 mm** nozzle, and folds in the **real package weight** and
+ejectability:
+
+- *Deflection* per bore = (nozzle OD − bore ID)/2 (interference per side).
+- *Durability* = peak von Mises vs PETG yield (50 MPa) and a released-cycle
+  (R=0) endurance limit (~25 MPa); below the limit the finger lasts
+  effectively unlimited cycles.
+- *Retention* = friction grip `μ·F_grip` (μ≈0.30) vs the pull-off a 50 g
+  package needs while the OT-2 moves it, with safety factor 3
+  (≈ 2.2 N required).
+- *Ejectability* = grip below what the P20 ejector can overcome (~20 N).
+- *Repeated FEA* = a 3-cycle load→release→load run on the winner confirms the
+  stress repeats on insertion and returns to ~0 on release (elastic shakedown,
+  no ratcheting).
+
+Results (`fea/fit_study_results.json`, plot `renders/fea_fit_study.png`):
+
+![fit study](renders/fea_fit_study.png)
+
+| bore ID | interf. | defl. | peak vM | grip | axial hold | holds? | ejects? | est. cycles |
+|---|---|---|---|---|---|---|---|---|
+| 3.40 | +0.30 | 0.150 | 58.9 | 49.5 | 14.8 | Y | **no** | 1e3 |
+| 3.45 | +0.25 | 0.125 | 49.3 | 40.6 | 12.2 | Y | **no** | 1e3 |
+| 3.50 | +0.20 | 0.100 | 35.7 | 32.1 | 9.6 | Y | **no** | 3e4 |
+| 3.55 | +0.15 | 0.075 | 26.3 | 23.5 | 7.1 | Y | **no** | 6e5 |
+| **3.60** | **+0.10** | **0.050** | **16.8** | **15.8** | **4.7** | **Y** | **Y** | **∞** |
+| 3.65 | +0.05 | 0.025 | 9.2 | 7.8 | 2.3 | Y | Y | ∞ |
+| 3.70 | 0.00 | 0.000 | 0 | 0 | 0 | no | Y | ∞ |
+| 3.75–3.85 | −0.05…−0.15 | 0 | 0 | 0 | 0 | no | Y | ∞ |
+
+**Recommended bore ID ≈ 3.60 mm.** It is the *smallest* bore that still
+ejects (grip < 20 N) and stays under the endurance limit (16.8 MPa → unlimited
+cycles), so it grips hardest — best pull-off margin (4.7 N ≈ 2× the required
+2.2 N) and most tolerant of the unknown true nozzle OD — without being so tight
+that the ejector can't release it. Tighter bores (≤ 3.55) grip well but
+**won't eject** and accumulate fatigue; looser bores (≥ 3.70) don't grip at the
+nominal nozzle OD. The round-2 sweep should therefore center on **3.58–3.62 mm
+in 0.02 mm steps**.
+
+> These numbers assume nozzle OD = 3.70 mm and package mass = 50 g. Both are
+> easy to set at the top of `fea_fit_study.py`; once calipers give the real
+> nozzle OD (and a scale gives the real package mass) re-running prints an
+> updated recommendation.
 
 ```bash
 sudo apt-get install calculix-ccx && pip install gmsh
-python fea_spring_finger.py
+python fea_spring_finger.py   # single conservative case (3.55 mm, 0.10 mm)
+python fea_fit_study.py       # full sweep + retention + repeated-cycle + plot
 ```
 
 ## Regenerating
 
 ```bash
 pip install build123d trimesh matplotlib shapely networkx opentrons
-python cad_model.py        # exports stl/ + step/
+python cad_model.py        # exports stl/ + step/ (incl. real_sensor_package_p20)
 python render_views.py     # renders renders/*.png
+python fea_fit_study.py    # FEA sweep -> fea/fit_study_results.json + plot
 python -m opentrons.simulate protocol_test_array.py   # sanity-check protocol
 ```
 
 Edit the `Params` dataclass in `cad_model.py` to iterate (e.g. set
 `bore_ids` to the round-2 ±0.02 mm sweep once a round-1 winner is found).
+`real_sensor_package_p20` is regenerated from `reference/sensor_package_main_enclosure_7p5mm.step`,
+so that reference file must stay in place.

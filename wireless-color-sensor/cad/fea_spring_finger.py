@@ -1,13 +1,16 @@
-"""Lightweight CalculiX FEA of one PETG spring finger of the P20 socket.
+"""CalculiX FEA of one PETG spring finger of the P20 socket.
 
 Models a single finger (annular sector between two slits) as a cantilever
-fixed at the solid base ring, with a prescribed 0.10 mm radial deflection
-applied to the inner edge of the free (top) end — the worst-case interference
-during nozzle insertion (design interference 0.05-0.15 mm shared across the
-bore, so 0.10 mm per finger is conservative).
+fixed at the solid base ring, with a prescribed radial deflection applied to
+the inner edge of the free (top) end -- the interference during nozzle
+insertion.  Returns both the peak von Mises stress (durability) and the
+radial reaction force at the tip (the inward grip the finger provides, which
+sets how much package weight the press-fit can hold).
 
-Checks that peak von Mises stress stays below PETG yield (~50 MPa) so the
-fingers remain elastic over hundreds of insertion/removal cycles.
+This module is parametric and importable; ``fea_fit_study.py`` calls
+``run_case`` to sweep every bore size in the test array.  Running this file
+directly reproduces the original single conservative case (mid-bore 3.55 mm,
+0.10 mm deflection).
 
 Requires: gmsh (pip), calculix-ccx (apt).  Run: python fea_spring_finger.py
 """
@@ -17,48 +20,52 @@ from __future__ import annotations
 import math
 import pathlib
 import subprocess
+from dataclasses import dataclass
 
 import gmsh
 
 HERE = pathlib.Path(__file__).resolve().parent
 WORK = HERE / "fea"
 
-# geometry (matches cad_model.Params, mid-bore 3.55 mm)
-R_IN = 3.55 / 2          # socket bore radius at mid-depth (mm)
+# socket geometry (matches cad_model.Params)
 R_OUT = 6.0 / 2          # socket OD radius (mm)
 H = 6.0                  # slit depth = finger length (mm)
 SLIT_W = 0.5             # slit width (mm)
 N_FINGERS = 3
 
-# PETG, typical datasheet values
+# PETG, typical printed-part datasheet values
 E_MPA = 2100.0
 NU = 0.38
 YIELD_MPA = 50.0
+# Fatigue: printed PETG endurance ~50 % of yield for the released (R=0) cycle
+# seen here (finger goes 0 -> delta -> 0 each pick/place).  Below this the
+# finger should survive effectively unlimited insertion/removal cycles.
+ENDURANCE_MPA = 25.0
 
-DEFLECTION = 0.10        # prescribed radial deflection at finger tip (mm)
+
+@dataclass
+class CaseResult:
+    bore_id: float
+    deflection: float        # radial interference per side (mm)
+    vmax_mpa: float          # peak von Mises stress
+    grip_force_n: float      # total inward radial force from all fingers
 
 
-def build_mesh(msh_path: pathlib.Path) -> None:
+def build_mesh(msh_path: pathlib.Path, r_in: float) -> None:
     gmsh.initialize()
     gmsh.option.setNumber("General.Terminal", 0)
     gmsh.model.add("finger")
     occ = gmsh.model.occ
-    # annular sector: 120 deg minus the slit widths on each side
-    half_gap = math.degrees((SLIT_W / 2) / ((R_IN + R_OUT) / 2))
+    half_gap = math.degrees((SLIT_W / 2) / ((r_in + R_OUT) / 2))
     a0 = math.radians(half_gap)
     a1 = math.radians(360 / N_FINGERS - half_gap)
     outer = occ.addCylinder(0, 0, 0, 0, 0, H, R_OUT)
-    inner = occ.addCylinder(0, 0, 0, 0, 0, H, R_IN)
+    inner = occ.addCylinder(0, 0, 0, 0, 0, H, r_in)
     ring, _ = occ.cut([(3, outer)], [(3, inner)])
-    # wedge to keep only the sector a0..a1
-    pts = [occ.addPoint(0, 0, -1)]
-    wedge = occ.addWedge(0, 0, 0, 1, 1, 1)  # placeholder, replaced below
-    occ.remove([(3, wedge)], recursive=True)
-    # build cutting box approach: rotate two half-space boxes
     big = 4 * R_OUT
-    box1 = occ.addBox(0, -big, -1, big, big, H + 2)       # y < 0 half (x>0)
+    box1 = occ.addBox(0, -big, -1, big, big, H + 2)
     occ.rotate([(3, box1)], 0, 0, 0, 0, 0, 1, a0)
-    box2 = occ.addBox(0, 0, -1, big, big, H + 2)          # y > 0 half (x>0)
+    box2 = occ.addBox(0, 0, -1, big, big, H + 2)
     occ.rotate([(3, box2)], 0, 0, 0, 0, 0, 1, a1)
     sector, _ = occ.cut(ring, [(3, box1), (3, box2)])
     occ.synchronize()
@@ -70,7 +77,8 @@ def build_mesh(msh_path: pathlib.Path) -> None:
     gmsh.finalize()
 
 
-def msh_to_ccx(msh_path: pathlib.Path, inp_path: pathlib.Path) -> None:
+def msh_to_ccx(msh_path: pathlib.Path, inp_path: pathlib.Path,
+               r_in: float, deflection: float) -> None:
     """Convert gmsh .msh (v4 ASCII) tet10 mesh to a CalculiX input deck."""
     import numpy as np
 
@@ -94,9 +102,8 @@ def msh_to_ccx(msh_path: pathlib.Path, inp_path: pathlib.Path) -> None:
     conn_ccx = conn[:, [0, 1, 2, 3, 4, 5, 6, 7, 9, 8]]
 
     base = [t for t, c in nid.items() if abs(c[2]) < 1e-6]
-    # tip load band: inner surface nodes near the top
     tip = [t for t, c in nid.items()
-           if c[2] > H - 0.75 and math.hypot(c[0], c[1]) < R_IN + 0.10]
+           if c[2] > H - 0.75 and math.hypot(c[0], c[1]) < r_in + 0.10]
     assert base and tip
 
     with open(inp_path, "w") as f:
@@ -115,23 +122,30 @@ def msh_to_ccx(msh_path: pathlib.Path, inp_path: pathlib.Path) -> None:
         f.write("*SOLID SECTION, ELSET=EALL, MATERIAL=PETG\n")
         f.write("*BOUNDARY\nBASE, 1, 3, 0.0\n")
         f.write("*STEP\n*STATIC\n")
-        # push the tip band radially outward: the finger is centered around
-        # the bisector angle; apply displacement along that direction
+        # push the tip band radially outward along the finger bisector
         bis = math.radians(180 / N_FINGERS)
-        ux, uy = DEFLECTION * math.cos(bis), DEFLECTION * math.sin(bis)
+        ux, uy = deflection * math.cos(bis), deflection * math.sin(bis)
         f.write(f"*BOUNDARY\nTIP, 1, 1, {ux:.5f}\nTIP, 2, 2, {uy:.5f}\n")
         f.write("*EL PRINT, ELSET=EALL\nS\n")
+        f.write("*NODE PRINT, NSET=TIP\nRF\n")
         f.write("*NODE FILE\nU\n*EL FILE\nS\n*END STEP\n")
 
 
-def run_ccx(inp_path: pathlib.Path) -> float:
-    subprocess.run(["ccx", "-i", inp_path.stem], cwd=inp_path.parent,
-                   check=True, capture_output=True, text=True)
-    dat = inp_path.with_suffix(".dat").read_text()
+def _parse_results(dat: str) -> tuple[float, float]:
+    """Return (peak von Mises MPa, radial reaction magnitude N) from a .dat."""
     vmax = 0.0
+    rf_sum = [0.0, 0.0, 0.0]
+    section = None
     for line in dat.splitlines():
+        low = line.lower()
+        if "stress" in low:
+            section = "S"
+            continue
+        if "force" in low:
+            section = "RF"
+            continue
         parts = line.split()
-        if len(parts) == 8 and "E" in parts[-1]:
+        if section == "S" and len(parts) == 8 and "E" in parts[-1]:
             try:
                 sxx, syy, szz, sxy, sxz, syz = (float(v) for v in parts[2:8])
             except ValueError:
@@ -140,18 +154,50 @@ def run_ccx(inp_path: pathlib.Path) -> float:
                                   (szz - sxx) ** 2) +
                            3 * (sxy ** 2 + sxz ** 2 + syz ** 2))
             vmax = max(vmax, vm)
-    return vmax
+        elif section == "RF" and len(parts) == 4:
+            try:
+                fx, fy, fz = (float(v) for v in parts[1:4])
+            except ValueError:
+                continue
+            rf_sum[0] += fx
+            rf_sum[1] += fy
+            rf_sum[2] += fz
+    # the reaction opposes the imposed outward push; its radial (xy) magnitude
+    # is the inward grip this finger exerts on the nozzle.
+    grip_one = math.hypot(rf_sum[0], rf_sum[1])
+    return vmax, grip_one
+
+
+def run_ccx(inp_path: pathlib.Path) -> tuple[float, float]:
+    subprocess.run(["ccx", "-i", inp_path.stem], cwd=inp_path.parent,
+                   check=True, capture_output=True, text=True)
+    dat = inp_path.with_suffix(".dat").read_text()
+    return _parse_results(dat)
+
+
+def run_case(bore_id: float, deflection: float, r_in: float | None = None,
+             tag: str | None = None) -> CaseResult:
+    """Mesh + solve one finger at the given interference deflection.
+
+    ``r_in`` defaults to the mid-depth bore radius for ``bore_id``; the inward
+    grip force is reported for all ``N_FINGERS`` fingers combined.
+    """
+    WORK.mkdir(exist_ok=True)
+    r_in = (bore_id / 2) if r_in is None else r_in
+    tag = tag or f"{round(bore_id * 100):03d}"
+    msh = WORK / f"finger_{tag}.msh"
+    inp = WORK / f"finger_{tag}.inp"
+    build_mesh(msh, r_in)
+    msh_to_ccx(msh, inp, r_in, deflection)
+    vmax, grip_one = run_ccx(inp)
+    return CaseResult(bore_id, deflection, vmax, grip_one * N_FINGERS)
 
 
 if __name__ == "__main__":
-    WORK.mkdir(exist_ok=True)
-    msh = WORK / "finger.msh"
-    inp = WORK / "finger.inp"
-    build_mesh(msh)
-    msh_to_ccx(msh, inp)
-    vmax = run_ccx(inp)
-    print(f"Finger: r_in={R_IN:.2f} r_out={R_OUT:.2f} H={H:.1f} mm, "
-          f"deflection={DEFLECTION:.2f} mm")
-    print(f"Peak von Mises stress: {vmax:.1f} MPa "
+    res = run_case(3.55, 0.10)
+    print(f"Finger: r_in={res.bore_id / 2:.2f} r_out={R_OUT:.2f} "
+          f"H={H:.1f} mm, deflection={res.deflection:.2f} mm")
+    print(f"Peak von Mises stress: {res.vmax_mpa:.1f} MPa "
           f"(PETG yield ~{YIELD_MPA:.0f} MPa, "
-          f"safety factor {YIELD_MPA / vmax:.2f})")
+          f"safety factor {YIELD_MPA / res.vmax_mpa:.2f})")
+    print(f"Total inward grip (3 fingers): {res.grip_force_n:.2f} N")
