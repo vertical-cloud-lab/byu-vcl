@@ -14,6 +14,12 @@
   "03_qaqc_calibration": {
     "task_id": "30976b66-ecc9-4e28-bf33-cb040d15dcb6",
     "job": "job-futurehouse-paperqa3-high",
-    "status": "in progress"
+    "status": "success",
+    "answer_file": "03_qaqc_calibration.md"
+  },
+  "analysis": {
+    "task_id": "69e9da25-9011-4d5e-9f1b-c94597118348",
+    "job": "job-futurehouse-data-analysis-crow-high",
+    "data_entry": "3ac195c0-c659-4523-b875-1b1a063d59bd"
   }
 }
