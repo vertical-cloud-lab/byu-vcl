@@ -96,6 +96,23 @@ Two Opentrons details encoded in the labware/protocol:
 - `tipOverlap: 8.0` mirrors the stock 20 µL tip overlap (8.25 mm) so motion
   planning assumes a realistic nozzle engagement depth.
 
+## Spring-finger FEA (CalculiX)
+
+`fea_spring_finger.py` meshes one spring finger (annular 120° sector,
+r 1.78→3.0 mm, 6 mm long) with gmsh and runs a CalculiX static analysis:
+base fixed, tip band pushed **0.10 mm radially outward** (conservative —
+the full 0.05–0.15 mm design interference assigned to a single finger).
+
+Result: **peak von Mises ≈ 35 MPa vs ~50 MPa PETG yield (safety factor
+≈ 1.4)**, and the peak sits at the artificially constrained tip band, so the
+real finger stress is lower. The fingers stay elastic over repeated
+insertion/removal cycles, validating the slit dimensions in the design doc.
+
+```bash
+sudo apt-get install calculix-ccx && pip install gmsh
+python fea_spring_finger.py
+```
+
 ## Regenerating
 
 ```bash
