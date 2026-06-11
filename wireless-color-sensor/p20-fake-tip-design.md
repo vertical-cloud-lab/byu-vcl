@@ -80,6 +80,8 @@ Two options, in order of preference:
 
 For the modular insert, design a cylindrical recess (e.g., 8 mm ID × 5 mm deep) in the top of the sensor enclosure. The insert has a matching outer cylinder that press-fits or threads into this recess.
 
+For Option A, the **actual** printed 7.5 mm enclosure (from [issue #33](https://github.com/vertical-cloud-lab/byu-vcl/issues/33#issuecomment-4489837433)) has been recreated parametrically and re-bored with a P20 socket as `real_sensor_package_p20` (see `cad/`), giving a drop-in stand-in whose mass and envelope match the real part for pick/place testing.
+
 ### 3. Material Selection
 
 The BYU ME Prototyping Lab (EB 117) has Prusa and Bambu Lab FDM printers and supports a range of filaments. Materials confirmed available at BYU include:
@@ -153,6 +155,10 @@ Once the best bore ID from round 1 is identified (e.g., 3.55 mm), print a second
 | E | best + 0.04 |
 
 Also vary the **wall thickness** (1.0, 1.2, 1.5, 2.0 mm) and **socket depth** (6, 8, 10 mm) to find the combination that gives the best grip without making the part too bulky or hard to eject.
+
+### FEA-guided starting point
+
+A CalculiX fit study over all 10 round-1 bore IDs (see `cad/fea_fit_study.py` and `cad/README.md`) — using a nominal Ø3.70 mm nozzle, the ~50 g package weight, friction retention (μ≈0.30, safety factor 3), an ejectability cap (~20 N grip), and a released-cycle endurance limit (~25 MPa) — recommends a **starting bore ID of ≈3.60 mm**. It is the *smallest* bore that still ejects and stays under the PETG endurance limit (16.8 MPa, unlimited cycles), so it grips hardest (≈2× the required pull-off) while remaining ejectable; bores ≤3.55 mm grip well but won't eject, and bores ≥3.70 mm don't grip at the nominal nozzle OD. Center the round-2 sweep on **3.58–3.62 mm in 0.02 mm steps** and update the nozzle OD in the study once it is measured with calipers.
 
 ## Detailed Dimensions — Initial Prototype
 
