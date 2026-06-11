@@ -365,13 +365,13 @@ This SOP is based on video demonstration conducted and uploaded by the Vertical 
 ### Appendix B: Reference Safety Data Sheets
 
 The following SDS documents are available in the repository:
-1. Aluminum 1100 Wire - [aluminum-1100-wire-sds-0217200 SDS Alum 041116.pdf]
-2. Silicon Powder - [silicon-powder-mcmaster-carr-sds-2014400 SDS SI101 011020.pdf]
-3. Aluminum-Silicon 10Mg - [AlSi10Mg-sds-from-heegermaterials [not MSE supplies].pdf]
+1. [Aluminum 1100 Wire SDS](./aluminum-1100-wire-sds-0217200%20SDS%20Alum%20041116.pdf)
+2. [Silicon Powder SDS](./silicon-powder-mcmaster-carr-sds-2014400%20SDS%20SI101%20011020.pdf)
+3. [Aluminum-Silicon 10Mg SDS](./AlSi10Mg-sds-from-heegermaterials%20%5Bnot%20MSE%20supplies%5D.pdf)
 
 ### Appendix C: Associated Issues and References
-- **Issue #28:** Standard operating procedure for powder dispensing
-- **Issue #16:** Referenced test mixture (link needed)
+- **Issue #28:** [Standard operating procedure for powder dispensing](https://github.com/vertical-cloud-lab/byu-vcl/issues/28)
+- **Issue #16:** Test mixture videos (referenced as source material for this SOP)
 - **YouTube Channel:** [@vcl-sops](https://www.youtube.com/@vcl-sops)
 
 ### Appendix D: Lab Layout
