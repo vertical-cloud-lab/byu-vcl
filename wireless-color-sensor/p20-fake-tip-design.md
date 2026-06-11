@@ -1,5 +1,11 @@
 # Press-Fit "Fake Tip" Design for Wireless Color Sensor — OT-2 P20 Pipette
 
+> **CAD implementation:** parametric build123d models of the test array, deck
+> plate, modular insert, and a drop-in mock sensor package are in
+> [`cad/`](cad/README.md) (STL/STEP/renders + an OT-2 test protocol).
+> Measuring the original P300 `Sensor package main enclosure.step` gives a bore
+> taper half-angle of **1.78°**, which the CAD adopts for the P20 socket.
+
 ## Overview
 
 This document specifies the design approach for a 3D-printed press-fit "fake tip" that allows the OT-2 P20 single-channel GEN2 pipette to pick up, carry, and drop off the wireless color sensor package. The fake tip replaces a real pipette tip with a rigid, reusable 3D-printed socket that friction-fits onto the pipette nozzle and is permanently attached (or integrated) into the top of the sensor package enclosure.
