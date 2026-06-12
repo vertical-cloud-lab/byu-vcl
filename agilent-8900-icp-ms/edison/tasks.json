@@ -22,5 +22,9 @@
     "job": "job-futurehouse-data-analysis-crow-high",
     "data_entry": "3ac195c0-c659-4523-b875-1b1a063d59bd",
     "status": "success"
+  },
+  "04_hf_free_digestion": {
+    "task_id": "6f568f92-9062-4f90-96d7-b63c23859d9d",
+    "job": "job-futurehouse-paperqa3-high"
   }
 }

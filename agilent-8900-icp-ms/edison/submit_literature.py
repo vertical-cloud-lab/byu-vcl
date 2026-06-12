@@ -68,6 +68,29 @@ QUERIES = {
         "contamination control and labware cleaning (acid washing); and sources of "
         "systematic error specific to high-aluminum matrices."
     ),
+    "04_hf_free_digestion": (
+        CONTEXT
+        + "IMPORTANT CONSTRAINT: our lab wants to AVOID hydrofluoric acid (HF) entirely "
+        "if at all possible, for safety reasons. Provide a detailed, evidence-based "
+        "review of HF-FREE methods for getting silicon-bearing aluminum alloys "
+        "(especially AlSi10Mg, ~10 wt% Si, with eutectic Si and silicide phases) and "
+        "silicon powder into a clear, particle-free, water-soluble solution suitable "
+        "for ICP-MS. Evaluate and compare, with specific reagents, concentrations, "
+        "volumes, temperatures, times, and vessel types: (1) tetrafluoroboric acid "
+        "(HBF4) digestion and how its hazards/handling compare to free HF; (2) alkaline "
+        "fusion / sinter methods (e.g. NaOH, Na2O2, Na2CO3, LiBO2/Li2B4O7 lithium "
+        "metaborate/tetraborate fusion) followed by acid dissolution; (3) alkaline "
+        "dissolution (NaOH/KOH) of the aluminum matrix; (4) HNO3+HCl/aqua-regia-only "
+        "digestion and whether the Si-rich phases can be dissolved or must be filtered; "
+        "(5) pressurized/high-temperature microwave digestion without HF. For each "
+        "route, state whether silicon itself can be quantitatively recovered, what "
+        "happens to the undissolved silicon, the dissolved-solids/salt burden it adds "
+        "to the ICP-MS, boron/sodium/lithium spectral or matrix consequences, blank and "
+        "contamination implications, and which trace elements may be lost or "
+        "contaminated. Conclude with a recommended HF-free workflow for a university "
+        "lab: one route if silicon must be quantified, and one simpler route if silicon "
+        "does NOT need to be quantified (e.g. only the Al matrix and trace metals)."
+    ),
 }
 
 
