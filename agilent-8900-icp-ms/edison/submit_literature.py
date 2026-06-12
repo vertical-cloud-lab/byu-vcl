@@ -91,6 +91,34 @@ QUERIES = {
         "lab: one route if silicon must be quantified, and one simpler route if silicon "
         "does NOT need to be quantified (e.g. only the Al matrix and trace metals)."
     ),
+    "05_technique_selection": (
+        CONTEXT
+        + "We have a 16-element palette of interest (including aluminum as the "
+        "matrix/major element); any given alloy may contain any subset of these 16 "
+        "elements, and we PRIMARILY care about BULK (total) composition rather than "
+        "trace-level impurities. Our institution (BYU) has access to X-ray "
+        "fluorescence (XRF), and likely inductively coupled plasma optical emission "
+        "spectroscopy (ICP-OES), in addition to the Agilent 8900 ICP-MS. Provide a "
+        "detailed, evidence-based comparison of XRF (both wavelength-dispersive WDXRF "
+        "and energy-dispersive EDXRF, including handheld/benchtop) versus ICP-OES "
+        "versus ICP-MS for determining the bulk elemental composition of metallic "
+        "aluminum alloys. For each technique, address: (1) typical concentration "
+        "range / dynamic range and whether it suits major and minor (wt%) levels "
+        "versus only trace (ppm/ppb) levels; (2) accuracy and precision for bulk "
+        "quantification, and linearity at high concentrations; (3) sample preparation "
+        "burden - especially that XRF can often measure solid metal directly or as a "
+        "fused/pressed bead with NO acid digestion, whereas ICP-OES and ICP-MS both "
+        "require the sample to be digested into solution; (4) which of these 16-type "
+        "elements each technique can and cannot measure well, including light elements "
+        "and the aluminum matrix itself, and matrix/spectral interferences; (5) "
+        "standards, calibration, and certified reference material needs; (6) "
+        "throughput, cost per sample, and ease of use for a university lab. Conclude "
+        "with clear guidance on WHEN it makes sense to use XRF vs. ICP-OES vs. ICP-MS "
+        "when the goal is bulk composition of aluminum alloys, including whether XRF "
+        "(avoiding digestion entirely) is the better first-line bulk tool and where "
+        "ICP-OES or ICP-MS still add value (e.g. trace elements, light elements, "
+        "elements XRF measures poorly, or verification)."
+    ),
 }
 
 

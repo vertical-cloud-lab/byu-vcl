@@ -35,5 +35,9 @@
     "job": "job-futurehouse-data-analysis-crow-high",
     "data_entry": "0300822a-3420-4f5e-ab7c-03aa4e6693cd",
     "status": "success"
+  },
+  "05_technique_selection": {
+    "task_id": "54ea8cbb-209c-4c69-9dc6-e4f0cb6ec4e6",
+    "job": "job-futurehouse-paperqa3-high"
   }
 }
