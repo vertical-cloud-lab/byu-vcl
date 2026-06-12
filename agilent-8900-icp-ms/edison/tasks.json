@@ -45,6 +45,7 @@
   "alloy_discovery": {
     "task_id": "03933fb2-4987-4cb5-923a-54fd510bf3dd",
     "job": "job-futurehouse-paperqa3-high",
-    "answer_file": "alloy_discovery.md"
+    "answer_file": "alloy_discovery.md",
+    "status": "success"
   }
 }

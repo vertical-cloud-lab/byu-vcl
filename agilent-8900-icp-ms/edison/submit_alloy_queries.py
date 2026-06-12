@@ -13,6 +13,7 @@ resumable: re-running skips alloys that were already submitted.
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 from edison_client import EdisonClient, JobNames, TaskRequest
@@ -20,6 +21,12 @@ from edison_client import EdisonClient, JobNames, TaskRequest
 HERE = Path(__file__).resolve().parent
 ALLOYS = HERE / "alloys.json"
 ALLOY_TASKS = HERE / "alloy_tasks.json"
+
+# The Edison API rate-limits task creation (HTTP 429). Throttle submissions and
+# back off when we get rate-limited so the (resumable) run can finish.
+SUBMIT_DELAY = float(os.environ.get("EDISON_SUBMIT_DELAY", "10"))
+MAX_RETRIES = int(os.environ.get("EDISON_SUBMIT_RETRIES", "6"))
+BACKOFF = float(os.environ.get("EDISON_SUBMIT_BACKOFF", "60"))
 
 
 def get_client() -> EdisonClient:
@@ -75,8 +82,23 @@ def main() -> None:
         if tasks.get(key, {}).get("task_id"):
             print(f"[skip] {key} already submitted: {tasks[key]['task_id']}")
             continue
-        req = TaskRequest(name=JobNames.LITERATURE, query=build_query(alloy))
-        task_id = str(client.create_task(req))
+
+        task_id = None
+        for attempt in range(1, MAX_RETRIES + 1):
+            try:
+                req = TaskRequest(name=JobNames.LITERATURE, query=build_query(alloy))
+                task_id = str(client.create_task(req))
+                break
+            except Exception as exc:  # noqa: BLE001  (mostly HTTP 429 rate-limit)
+                wait = BACKOFF * attempt
+                print(f"[retry] {key} attempt {attempt}/{MAX_RETRIES} failed "
+                      f"({type(exc).__name__}); sleeping {wait:.0f}s")
+                time.sleep(wait)
+        if task_id is None:
+            print(f"[give-up] {key} not submitted after {MAX_RETRIES} attempts; "
+                  "re-run this script later to resume")
+            break
+
         print(f"[submit] {key} -> {task_id}")
         tasks[key] = {
             "task_id": task_id,
@@ -87,6 +109,7 @@ def main() -> None:
         }
         ALLOY_TASKS.write_text(json.dumps(tasks, indent=2))
         submitted += 1
+        time.sleep(SUBMIT_DELAY)
 
     print(f"\nSubmitted {submitted} new alloy queries; {len(tasks)} total in {ALLOY_TASKS}")
 

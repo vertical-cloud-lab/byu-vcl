@@ -14,7 +14,7 @@ HERE = Path(__file__).resolve().parent
 DISCOVERY = HERE / "artifacts" / "alloy_discovery.md"
 ALLOYS = HERE / "alloys.json"
 
-JSON_BLOCK = re.compile(r"```json\s*(.*?)```", re.DOTALL | re.IGNORECASE)
+JSON_BLOCK = re.compile(r"^```json[ \t]*\n(.*?)^```", re.DOTALL | re.MULTILINE)
 
 
 def extract_alloys(text: str) -> list[dict]:
