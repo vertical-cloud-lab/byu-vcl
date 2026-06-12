@@ -29,6 +29,10 @@ def main() -> None:
     tasks = json.loads(TASKS_FILE.read_text())
 
     for key, info in tasks.items():
+        # The ANALYSIS task has its own fetcher (fetch_analysis.py); skip it here
+        # so we don't write a duplicate artifact.
+        if key == "analysis":
+            continue
         task_id = info["task_id"]
         try:
             resp = client.get_task(task_id)

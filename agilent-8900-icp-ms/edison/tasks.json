@@ -21,10 +21,18 @@
     "task_id": "69e9da25-9011-4d5e-9f1b-c94597118348",
     "job": "job-futurehouse-data-analysis-crow-high",
     "data_entry": "3ac195c0-c659-4523-b875-1b1a063d59bd",
-    "status": "success"
+    "status": "success",
+    "answer_file": "analysis.md"
   },
   "04_hf_free_digestion": {
     "task_id": "6f568f92-9062-4f90-96d7-b63c23859d9d",
-    "job": "job-futurehouse-paperqa3-high"
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "04_hf_free_digestion.md"
+  },
+  "analysis_hf_free": {
+    "task_id": "ef0d43f6-883d-41be-bb5b-616fec4ee7b7",
+    "job": "job-futurehouse-data-analysis-crow-high",
+    "data_entry": "0300822a-3420-4f5e-ab7c-03aa4e6693cd"
   }
 }

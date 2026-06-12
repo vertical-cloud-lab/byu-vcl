@@ -16,7 +16,12 @@ from edison_client import EdisonClient
 
 HERE = Path(__file__).resolve().parent
 TASKS_FILE = HERE / "tasks.json"
-OUT = HERE / "artifacts" / "analysis_synthesis.md"
+
+# Map each analysis task key to the artifact it writes.
+OUTPUTS = {
+    "analysis": HERE / "artifacts" / "analysis_synthesis.md",
+    "analysis_hf_free": HERE / "artifacts" / "analysis_synthesis_hf_free.md",
+}
 
 
 def get_client() -> EdisonClient:
@@ -40,22 +45,26 @@ def extract_answer(resp) -> str | None:
 def main() -> None:
     client = get_client()
     tasks = json.loads(TASKS_FILE.read_text())
-    task_id = tasks["analysis"]["task_id"]
 
-    resp = client.get_task(task_id)
-    status = getattr(resp, "status", None)
-    print(f"[analysis] {task_id} status={status}")
+    for key, out in OUTPUTS.items():
+        info = tasks.get(key)
+        if not info or not info.get("task_id"):
+            continue
+        task_id = info["task_id"]
+        resp = client.get_task(task_id)
+        status = getattr(resp, "status", None)
+        print(f"[{key}] {task_id} status={status}")
 
-    answer = extract_answer(resp)
-    if answer:
-        OUT.parent.mkdir(parents=True, exist_ok=True)
-        OUT.write_text(answer)
-        print(f"wrote {OUT} ({len(answer)} chars)")
-    else:
-        print("No answer available yet.")
+        answer = extract_answer(resp)
+        if answer:
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(answer)
+            print(f"   wrote {out} ({len(answer)} chars)")
+        else:
+            print("   No answer available yet.")
 
-    tasks["analysis"]["status"] = str(status)
-    TASKS_FILE.write_text(json.dumps(tasks, indent=2))
+        info["status"] = str(status)
+        TASKS_FILE.write_text(json.dumps(tasks, indent=2))
 
 
 if __name__ == "__main__":
