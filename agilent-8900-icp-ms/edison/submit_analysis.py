@@ -5,12 +5,15 @@ The artifacts directory is uploaded as a single zipped collection
 (store_file_content(..., as_collection=True)); uploading individual files
 separately is known to make the ANALYSIS task fail silently.
 
-The resulting task_id is appended to tasks.json under the "analysis" key so it
-can be fetched in a later session if this run times out before it finishes.
+The resulting task_id is recorded in tasks.json (under "analysis" or
+"analysis_hf_free" depending on ANALYSIS_MODE) so it can be fetched in a later
+session if this run times out before it finishes.
 """
 
 import json
 import os
+import shutil
+import tempfile
 from pathlib import Path
 
 from edison_client import EdisonClient, JobNames
@@ -101,24 +104,22 @@ def main() -> None:
 
     # Upload only the numbered literature reviews; exclude any prior synthesis
     # output so the analysis agent synthesizes from primary reviews only.
-    files = sorted(f for f in ART.glob("[0-9]*.md"))
+    files = sorted(f for f in ART.glob("[0-9][0-9]_*.md"))
     if not files:
         raise SystemExit("No artifacts to upload")
 
-    import shutil
-    import tempfile
+    with tempfile.TemporaryDirectory(prefix="icpms_bundle_") as tmp:
+        tmpdir = Path(tmp)
+        print("Uploading artifacts as a zipped collection:")
+        for f in files:
+            shutil.copy2(f, tmpdir / f.name)
+            print(f"  - {f.name}")
 
-    tmpdir = Path(tempfile.mkdtemp(prefix="icpms_bundle_"))
-    print("Uploading artifacts as a zipped collection:")
-    for f in files:
-        shutil.copy2(f, tmpdir / f.name)
-        print(f"  - {f.name}")
-
-    resp = client.store_file_content(
-        name=bundle_name,
-        file_path=str(tmpdir),
-        as_collection=True,
-    )
+        resp = client.store_file_content(
+            name=bundle_name,
+            file_path=str(tmpdir),
+            as_collection=True,
+        )
     entry_id = resp.data_storage.id
     uri = f"data_entry:{entry_id}"
     print(f"Uploaded collection -> {uri}")

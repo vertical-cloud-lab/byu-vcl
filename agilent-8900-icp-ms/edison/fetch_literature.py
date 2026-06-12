@@ -29,9 +29,9 @@ def main() -> None:
     tasks = json.loads(TASKS_FILE.read_text())
 
     for key, info in tasks.items():
-        # The ANALYSIS task has its own fetcher (fetch_analysis.py); skip it here
-        # so we don't write a duplicate artifact.
-        if key == "analysis":
+        # ANALYSIS tasks have their own fetcher (fetch_analysis.py); skip any of
+        # them here so we don't write duplicate artifacts.
+        if key.startswith("analysis"):
             continue
         task_id = info["task_id"]
         try:
