@@ -38,6 +38,8 @@
   },
   "05_technique_selection": {
     "task_id": "54ea8cbb-209c-4c69-9dc6-e4f0cb6ec4e6",
-    "job": "job-futurehouse-paperqa3-high"
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "05_technique_selection.md"
   }
 }

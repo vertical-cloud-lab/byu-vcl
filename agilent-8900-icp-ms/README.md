@@ -20,10 +20,11 @@ water-soluble solution with no suspended particles** before it can be nebulized.
 
 ## How these notes were produced
 
-Four high-effort [Edison Scientific](https://edisonscientific.gitbook.io/edison-cookbook/edison-client)
+High-effort [Edison Scientific](https://edisonscientific.gitbook.io/edison-cookbook/edison-client)
 literature reviews were run, then synthesized with an Edison **Analysis** task that
-ingested all of them and produced one cohesive, deduplicated, HF-free-prioritized set
-of recommendations. The scripts and raw outputs are under [`edison/`](edison/):
+ingested them and produced one cohesive, deduplicated, HF-free-prioritized set
+of recommendations. A later review compares **XRF vs. ICP-OES vs. ICP-MS** for bulk
+composition. The scripts and raw outputs are under [`edison/`](edison/):
 
 | File | Content |
 | --- | --- |
@@ -31,6 +32,7 @@ of recommendations. The scripts and raw outputs are under [`edison/`](edison/):
 | [`edison/artifacts/02_icpms_measurement.md`](edison/artifacts/02_icpms_measurement.md) | ICP-MS/MS measurement: isotope selection, interferences, He/H₂/O₂/NH₃ cell modes, internal standards, plasma settings |
 | [`edison/artifacts/03_qaqc_calibration.md`](edison/artifacts/03_qaqc_calibration.md) | Calibration, matrix matching, CRMs, blanks, spike recovery, LOD/LOQ, contamination control |
 | [`edison/artifacts/04_hf_free_digestion.md`](edison/artifacts/04_hf_free_digestion.md) | **HF-free digestion options** for Si-bearing Al alloys (HBF₄, alkaline fusion, NaOH/KOH, aqua regia, HF-free microwave) and their ICP-MS trade-offs |
+| [`edison/artifacts/05_technique_selection.md`](edison/artifacts/05_technique_selection.md) | **XRF vs. ICP-OES vs. ICP-MS** for *bulk* composition of a 16-element Al-alloy palette: dynamic range, accuracy, sample-prep burden, element coverage, cost, and a scenario-based decision guide |
 | [`edison/artifacts/analysis_synthesis_hf_free.md`](edison/artifacts/analysis_synthesis_hf_free.md) | **HF-free-prioritized synthesis** (current recommendation): executive summary, two-route SOP, consolidated table, safety checklist, open decisions |
 | [`edison/artifacts/analysis_synthesis.md`](edison/artifacts/analysis_synthesis.md) | Earlier synthesis (includes HF-based routes; superseded by the HF-free synthesis above, kept for reference) |
 
@@ -79,3 +81,32 @@ for the full two-route SOP outline, the consolidated isotope/mode/internal-stand
 table, the HF-free safety checklist, and the open decisions the lab still needs to
 make (e.g. whether Si must be quantified at all, CRM selection, and whether major
 elements stay on ICP-MS or move to ICP-OES/XRF).
+
+## XRF vs. ICP-OES vs. ICP-MS for *bulk* composition
+
+If the goal is primarily **bulk (total) composition** across our 16-element palette
+(rather than trace impurities), the technique-selection review
+([`05_technique_selection.md`](edison/artifacts/05_technique_selection.md)) points to a
+**two-tier, mostly digestion-free workflow** — which also dovetails with the HF-free
+goal, since XRF needs no acid digestion at all:
+
+1. **XRF is the first-line bulk tool.** It measures solid metal directly (no digestion,
+   no HF), includes the Al matrix itself, and is accurate for major/minor elements at
+   wt% levels when calibrated with Al-alloy CRMs. Prefer **WDXRF** for accurate lab
+   quantification; **handheld/benchtop EDXRF** is great for fast screening/sorting but
+   less reliable for light elements (Mg, Si) in Al — EDXRF Mg errors of ~40% relative
+   have been reported.
+2. **ICP-OES is the solution-based workhorse** when you need it: accurate light-element
+   quantification (Mg, Na, Li, B) that XRF handles poorly, wet-chemistry verification of
+   XRF, or elements below the XRF floor. It tolerates high-matrix digests well, but does
+   require getting the sample into solution.
+3. **ICP-MS (the Agilent 8900) is best reserved for trace/ultra-trace impurities** (ppm–ppb),
+   interference-heavy elements where ICP-QQQ reaction-cell chemistry helps, and verification
+   below ICP-OES limits. For bulk wt% majors it is usually overkill: the high Al/Si matrix
+   forces heavy dilution, and major-element precision rarely beats ICP-OES.
+
+**Bottom line:** XRF every sample (no digestion needed), confirm periodically with ICP-OES
+on digested aliquots, and reserve the 8900 ICP-MS for trace impurities or disputed/spec
+samples. This minimizes both the digestion burden and the need for HF. Full dynamic-range,
+accuracy, element-coverage, cost, and scenario tables are in
+[`05_technique_selection.md`](edison/artifacts/05_technique_selection.md).
