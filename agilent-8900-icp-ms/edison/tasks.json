@@ -33,6 +33,7 @@
   "analysis_hf_free": {
     "task_id": "ef0d43f6-883d-41be-bb5b-616fec4ee7b7",
     "job": "job-futurehouse-data-analysis-crow-high",
-    "data_entry": "0300822a-3420-4f5e-ab7c-03aa4e6693cd"
+    "data_entry": "0300822a-3420-4f5e-ab7c-03aa4e6693cd",
+    "status": "success"
   }
 }

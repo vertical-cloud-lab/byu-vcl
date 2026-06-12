@@ -8,58 +8,74 @@ feedstock, 1100 aluminum wire) and **silicon powder**.
 - Related issue: [vertical-cloud-lab/byu-vcl#128](https://github.com/vertical-cloud-lab/byu-vcl/issues/128)
 - Initial training video: <https://youtu.be/yFkYrjH0SDE>
 
-Key constraint from the training: any sample must be **acid-digested into a clear,
+Key constraint from the training: any sample must be **digested into a clear,
 water-soluble solution with no suspended particles** before it can be nebulized.
+
+> **Lab safety decision: we avoid hydrofluoric acid (HF).** HF is the classical
+> reagent for dissolving silicon, but its acute toxicity is unacceptable for our lab.
+> The recommendations below are built around **HF-free** routes. Note that
+> **tetrafluoroboric acid (HBF₄) is *not* a true HF-free substitute** — it hydrolyzes
+> back to HF on heating/storage and requires HF-equivalent precautions — so it is
+> treated only as a last resort, not a primary method.
 
 ## How these notes were produced
 
-Three high-effort [Edison Scientific](https://edisonscientific.gitbook.io/edison-cookbook/edison-client)
+Four high-effort [Edison Scientific](https://edisonscientific.gitbook.io/edison-cookbook/edison-client)
 literature reviews were run, then synthesized with an Edison **Analysis** task that
-ingested all three reviews and produced one cohesive, deduplicated set of
-recommendations. The scripts and raw outputs are under [`edison/`](edison/):
+ingested all of them and produced one cohesive, deduplicated, HF-free-prioritized set
+of recommendations. The scripts and raw outputs are under [`edison/`](edison/):
 
 | File | Content |
 | --- | --- |
 | [`edison/artifacts/01_acid_digestion.md`](edison/artifacts/01_acid_digestion.md) | Acid digestion protocols (hot-plate vs. microwave; HNO₃/HCl/HF/HBF₄; HF safety & boric-acid complexation) |
 | [`edison/artifacts/02_icpms_measurement.md`](edison/artifacts/02_icpms_measurement.md) | ICP-MS/MS measurement: isotope selection, interferences, He/H₂/O₂/NH₃ cell modes, internal standards, plasma settings |
 | [`edison/artifacts/03_qaqc_calibration.md`](edison/artifacts/03_qaqc_calibration.md) | Calibration, matrix matching, CRMs, blanks, spike recovery, LOD/LOQ, contamination control |
-| [`edison/artifacts/analysis_synthesis.md`](edison/artifacts/analysis_synthesis.md) | **Cohesive synthesis: executive summary, SOP outline, consolidated table, safety checklist, open questions** |
+| [`edison/artifacts/04_hf_free_digestion.md`](edison/artifacts/04_hf_free_digestion.md) | **HF-free digestion options** for Si-bearing Al alloys (HBF₄, alkaline fusion, NaOH/KOH, aqua regia, HF-free microwave) and their ICP-MS trade-offs |
+| [`edison/artifacts/analysis_synthesis_hf_free.md`](edison/artifacts/analysis_synthesis_hf_free.md) | **HF-free-prioritized synthesis** (current recommendation): executive summary, two-route SOP, consolidated table, safety checklist, open decisions |
+| [`edison/artifacts/analysis_synthesis.md`](edison/artifacts/analysis_synthesis.md) | Earlier synthesis (includes HF-based routes; superseded by the HF-free synthesis above, kept for reference) |
 
 Reproduce / continue: `python edison/submit_literature.py` → `fetch_literature.py`
-→ `submit_analysis.py` → `fetch_analysis.py`. Task IDs are stored in
+→ `submit_analysis.py` → `fetch_analysis.py`. The analysis step defaults to the
+HF-free synthesis (`ANALYSIS_MODE=hf_free`). Task IDs are stored in
 `edison/tasks.json` so a run can be resumed in a later session. The scripts read the
 API key from `EDISON_API_KEY` (the secret value is never echoed).
 
 > These notes are AI-assisted literature syntheses for getting started, **not** a
 > validated SOP. Verify every protocol against instrument/vessel manuals, your CRMs,
-> and BYU EHS before running samples — especially anything involving HF.
+> and BYU EHS before running samples.
 
-## TL;DR — recommended starting workflow
+## TL;DR — recommended HF-free starting workflow
 
-1. **Triage by silicon content.**
-   - **1100 Al wire (low-Si):** simple **open-vessel** digestion in ~5% v/v HCl,
-     50–70 °C, 15–60 min. No HF needed.
-   - **AlSi10Mg and Si powder (Si-bearing):** require a **fluoride source** and
-     **closed-vessel microwave** digestion to fully dissolve Si phases.
-2. **Primary total-dissolution digest (AlSi10Mg, 50 mg):** 5 mL HNO₃ + 2 mL HCl +
-   1 mL HF, microwave to 180–200 °C, 20–30 min hold; then complex residual fluoride
-   with ~10 mL of 5% w/v **boric acid** before introduction to quartz hardware.
-   - **HF-deferred alternative:** swap HF for **HBF₄** during method development, but
-     validate against a CRM/HF method before routine use.
-   - **Silicon powder:** 5 mL HNO₃ + 2 mL HF, microwave ~180 °C, then boric acid.
-3. **Tame the high-Al matrix with dilution.** Keep TDS < ~0.1–0.2%; run **two
-   dilutions** per digest (high-dilution for majors Al/Si/Mg, lower-dilution for traces).
-4. **Run the 8900 as a multi-mode MS/MS method:** He KED (mid-mass), H₂ on-mass for
-   Si, O₂ mass-shift for Cr, NH₃ for Ti/V. Internal standards Sc/Ge/Rh/In/Bi at
-   ~50–100 µg/L.
-5. **QA/QC is mandatory:** matrix-matched external calibration + internal standards,
+No single HF-free method does everything HF does, so the practical answer is **two
+routes plus a triage step**. First decide: *does silicon itself need to be quantified,
+or only the aluminum matrix and trace metals?*
+
+1. **Low-Si aluminum (1100 wire):** simple **open-vessel** digestion in ~5% v/v HCl,
+   50–70 °C, 15–60 min. No HF, no fusion needed.
+2. **Route A — silicon MUST be quantified (AlSi10Mg, Si powder): lithium metaborate
+   (LiBO₂) fusion.** This is the strongest HF-free route to *total* silicon. Fuse
+   ~0.10–0.25 g sample with ~8× mass LiBO₂ (≥99.99%) in a Pt crucible at 950–1050 °C
+   for ~2–2.5 h, dissolve the melt in ~5% HNO₃ (or HCl), filter, then dilute heavily.
+   *Cost:* high Li/B salt burden → large dilution (degrades trace detection limits),
+   and B/Li can't be measured.
+3. **Route B — silicon NOT needed (matrix + trace metals only): aqua regia.** Digest
+   ~0.10–0.25 g in 5–7 mL HCl:HNO₃ (3:1), warm until the Al dissolves, then **filter
+   out the Si-rich residue** to get a clear solution. *Cost:* Si (and anything locked
+   in Si-rich phases) is excluded — fine for routine Cu/Fe/Mg/Mn/Zn/Ti/Cr/Ni QC.
+4. **Tame the high-Al matrix with dilution.** Keep TDS < ~0.1–0.2%; consider **two
+   dilutions** per digest (high-dilution for majors, lower-dilution for traces).
+5. **Run the 8900 as a multi-mode MS/MS method:** He KED (mid-mass), O₂ mass-shift for
+   Si (²⁸Si→²⁸Si¹⁶O⁺ at m/z 44) and Cr, NH₃ for Ti/V. Internal standards Sc/Ge/Rh/In/Bi
+   at ~50–100 µg/L for drift correction.
+6. **QA/QC is mandatory:** matrix-matched external calibration + internal standards,
    independent ICV, CCV every ~10 samples, method/reagent blanks, matrix spikes
    (75–125%), and a Si-bearing Al-alloy **CRM**.
-6. **HF safety first:** approved EHS SOP, buddy system, fume hood, PTFE/PFA only (no
-   glass), HF-rated PPE, and in-date **2.5% calcium gluconate gel** before any HF work.
+7. **HBF₄ is a last resort only.** It is corrosive, hydrolyzes to HF, and needs
+   HF-equivalent PPE/precautions — and it is unvalidated for AlSi10Mg. Prefer LiBO₂
+   fusion before considering it.
 
-See [`edison/artifacts/analysis_synthesis.md`](edison/artifacts/analysis_synthesis.md)
-for the full SOP outline, the consolidated isotope/mode/internal-standard table, the
-prioritized safety checklist, and the open decisions the lab still needs to make
-(e.g. HF-now vs. HBF₄-first, CRM selection, whether majors stay on ICP-MS or move to
-ICP-OES/XRF).
+See [`edison/artifacts/analysis_synthesis_hf_free.md`](edison/artifacts/analysis_synthesis_hf_free.md)
+for the full two-route SOP outline, the consolidated isotope/mode/internal-standard
+table, the HF-free safety checklist, and the open decisions the lab still needs to
+make (e.g. whether Si must be quantified at all, CRM selection, and whether major
+elements stay on ICP-MS or move to ICP-OES/XRF).
