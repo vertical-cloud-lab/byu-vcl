@@ -215,7 +215,9 @@ first GC electrode.
 
 These figures exclude shipping and BYU procurement markups. A
 borrowed potentiostat is assumed (per the issue thread); a new
-benchtop research-grade potentiostat would dwarf this list.
+benchtop research-grade potentiostat would dwarf this list. For a
+low-cost on-hand alternative — running the same CV on an IO Rodeo
+Rodeostat HC (~$240) — see section 8.
 
 ### Notes on substitutions
 
@@ -234,9 +236,49 @@ benchtop research-grade potentiostat would dwarf this list.
   reachable from the sandbox at commit time, so verify before
   ordering.
 
-## 8. Next steps
+## 8. Running on a Rodeostat HC (budget / bridge instrument)
 
-- [ ] Confirm a potentiostat can be borrowed (and from whom).
+If the only instrument available is an
+[IO Rodeo **Rodeostat HC**](https://iorodeo.com/products/rodeostat-hc)
+(~$240, open-hardware) rather than a borrowed research-grade
+potentiostat, the **ferricyanide CV in section 1 is still the right
+first experiment** — and is in fact an excellent match for the
+Rodeostat's envelope. This matters as a stop-gap while the
+research-grade potentiostat procurement plays out
+([#26](https://github.com/vertical-cloud-lab/byu-vcl/issues/26),
+[#57](https://github.com/vertical-cloud-lab/byu-vcl/issues/57)): a
+$240 board lets us validate the printed cell now without waiting on a
+Squidstat Plus / Cycler.
+
+### Why the Rodeostat HC fits this experiment
+
+| Rodeostat HC limitation | Impact on the ferricyanide CV |
+| --- | --- |
+| **No EIS** (DC voltammetry only: CV, LSV, chronoamperometry, constant-V) | **None.** This shakedown test never used EIS — CV alone gives E°′, ΔEₚ, peak-current ratio, and iₚ ∝ √v. |
+| **Current ranges ±10 µA / ±100 µA / ±1 mA / ±10 mA** (HC trades the standard unit's ±1 µA range for ±10 mA) | Fine. At 50 mV/s the ferricyanide peaks are ≈ 11 µA (1 mM) to ≈ 55 µA (5 mM), so run on the **±100 µA range**. Use **3–5 mM** probe so the signal fills ~30–60 % of full scale for good resolution; avoid 1 mM, which sits awkwardly between the ±10 µA and ±100 µA ranges. |
+| **3 electrodes (WE/CE/RE) via alligator clips, ±1/2/5/10 V output** | Matches the GC / Pt / Ag/AgCl set exactly. The ±0.2 → +0.6 V window is trivially within range. |
+| **No iR (uncompensated-resistance) compensation** | Keep the 0.1 M KCl electrolyte (conductive) and place the reference close to the working electrode; expect ΔEₚ at the higher end of the 60–90 mV band. If ΔEₚ is large, it is uncompensated R, not necessarily a bad cell. |
+| **~16-bit DAC/ADC, hobby-grade** | Adequate for a pass/fail cell shakedown; not for publication-grade kinetics. Defer quantitative k° work to the research-grade instrument. |
+
+### How it changes the shopping list
+
+| Change | Detail |
+| --- | --- |
+| **Potentiostat** | Add the Rodeostat HC (~$240) **only if the lab does not already own one** — the comment assumes it is already on hand, so the incremental instrument cost is $0. It ships with USB cable, 3 alligator-clip leads, and a 50 kΩ dummy cell. |
+| **Connectors** | The alligator-clip leads connect straight to the BASi/CHI electrode leads — no banana/BNC adapters needed. |
+| **Dummy cell** | Already included — run a CV on the bundled 50 kΩ dummy cell first to confirm the board and software before touching the printed cell. |
+| **Electrodes** | Unchanged set (GC / Pt / Ag/AgCl). Because the Rodeostat is not research-grade, the **cheaper CHI electrode set (~$200–270) is the better value here** than the ~$595 BASi set; precision beyond the CHI tier is wasted on a 16-bit hobby board. |
+| **Reagents** | Unchanged, but lean toward the **3–5 mM** end of the probe range (still a 5 g ferricyanide bottle is plenty). |
+
+**Net:** with a Rodeostat HC already in hand, a complete first-test
+kit is the **CHI 3-electrode set (~$200–270) + reagents (~$115) ≈
+$315–385**, no potentiostat line item — roughly half the BASi-based
+"recommended" scenario and a fraction of a research-grade instrument.
+
+## 9. Next steps
+
+- [ ] Confirm a potentiostat can be borrowed (and from whom), **or**
+      use an on-hand Rodeostat HC per section 8 as a bridge instrument.
 - [ ] Confirm availability of a polished GC working electrode, a Pt
       (or graphite) counter, and an Ag/AgCl reference.
 - [ ] Order or locate K₃[Fe(CN)₆] and KCl (both are typically already
