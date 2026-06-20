@@ -10,6 +10,11 @@ currents.
 
 Context for the parts and printing decisions is in
 [issue #27](https://github.com/vertical-cloud-lab/byu-vcl/issues/27).
+A literature-grounded critical review of this plan (probe chemistry,
+safety, sourcing, success criteria) generated with Edison Scientific
+is archived at
+[`echem-cell-initial-test-artifacts/edison-literature-review.md`](./echem-cell-initial-test-artifacts/edison-literature-review.md);
+the corrections it surfaced have been folded back into this doc.
 
 ## 1. Recommended system: ferricyanide / ferrocyanide in KCl
 
@@ -17,17 +22,23 @@ Context for the parts and printing decisions is in
 | --- | --- |
 | Redox probe | 1–5 mM K₃[Fe(CN)₆] (potassium ferricyanide) |
 | Supporting electrolyte | 0.1 M KCl in DI water |
-| Formal potential E°′ | ≈ +0.23 V vs Ag/AgCl (3 M KCl) |
-| Expected peak current (3 mm GC, 50 mV/s, 1 mM) | ≈ 10–30 µA |
+| Formal potential E°′ | ≈ +0.22 to +0.23 V vs Ag/AgCl (3 M KCl); ~5 mV more positive vs Ag/AgCl (3 M NaCl) |
+| Expected peak current (3 mm GC, 50 mV/s) | ≈ 11 µA at 1 mM, ≈ 55 µA at 5 mM (Randles–Ševčík, D ≈ 7.2 × 10⁻⁶ cm² s⁻¹) |
 | Reaction | [Fe(CN)₆]³⁻ + e⁻ ⇌ [Fe(CN)₆]⁴⁻ |
 
 Why this system:
 
 - It is the textbook "hello world" of electrochemistry — a fast,
-  reversible, one-electron outer-sphere redox couple used worldwide to
-  validate cell geometries, electrode preparation, and potentiostat
-  setups. Peak shapes and ΔEₚ tell you immediately if anything is
-  wrong (iR drop, reference drift, leaking joints, contamination).
+  reversible, one-electron redox couple used worldwide to validate
+  cell geometries, electrode preparation, and potentiostat setups.
+  Peak shapes and ΔEₚ tell you immediately if anything is wrong
+  (iR drop, reference drift, leaking joints, contamination). A 2023
+  review ([Cassidy et al., *Electrochem* **4**, 313–349](https://doi.org/10.3390/electrochem4030022))
+  argues hexacyanoferrate is better classified as "surface-sensitive"
+  rather than strictly outer-sphere — its kinetics depend on surface
+  chemistry, adsorbed films, cation identity, and double-layer
+  structure. That makes it *more* sensitive to cell condition, which
+  is exactly what we want for a shakedown test.
 - Currents are in the **µA range**, far below anything that could
   electrolyze the cell wall, heat the resin, or out-gas appreciably.
 - Both KCl and the ferri/ferrocyanide salts are low-hazard solids
@@ -85,6 +96,11 @@ millicoulombs — negligible.
   heat strongly — under those conditions they can release HCN. We are
   using neutral KCl, so this is not a realistic risk in the planned
   procedure, but it is the one thing to flag in the SOP.
+- **UV / sunlight:** hexacyanoferrate(II) slowly photodecomposes under
+  UV light, releasing free cyanide. Store stock solutions in amber
+  bottles or in a closed drawer, and do not leave waste in clear
+  containers on a sunny bench. At mM scale and mL volumes the total
+  cyanide inventory is sub-mg, but the rule is cheap to follow.
 - **KCl:** non-hazardous, common lab salt.
 - **Volumes:** keep total electrolyte volume to the minimum needed to
   cover the working electrode (tens of mL), so that any spill is
@@ -123,8 +139,8 @@ relatively benign — are, in roughly increasing severity:
 2. Dilute (e.g. 0.1 M) Na₂SO₄ water-splitting onset scan, very low
    current cutoff, to characterize the solvent window.
 3. Eventually: the actual target chemistry for the autonomous
-   electrochemistry workflow
-   ([vertical-cloud-lab #autonomous-electrochemistry](https://github.com/vertical-cloud-lab#autonomous-electrochemistry)),
+   electrochemistry workflow tracked in
+   [issue #27](https://github.com/vertical-cloud-lab/byu-vcl/issues/27),
    which is when concentrated KOH compatibility of Clear v5 becomes
    the open question to answer experimentally.
 
@@ -144,7 +160,25 @@ for the smallest size that comfortably covers this experiment.
 | Potassium chloride, crystalline, ACS (Fisher Chemical) | Fisher P217-500 | 500 g | ~$45 | [fishersci.com](https://www.fishersci.com/shop/products/potassium-chloride-crystalline-certified-acs-fisher-chemical-4/p217500) |
 
 A 5 g bottle of ferricyanide (Fisher AC424120050) is plenty for this
-experiment if the lab does not want to commit to 500 g.
+experiment if the lab does not want to commit to 500 g — at 5 mM in
+20 mL you use ~33 mg/run, so 5–25 g covers hundreds of CVs and keeps
+the cyanide-complex waste inventory small. Edison's literature review
+also flagged 500 g as overkill for this use case.
+
+### Cheaper alternative: CH Instruments
+
+CH Instruments (Austin, TX, [chinstruments.com](https://www.chinstruments.com/))
+is the most common low-cost source for academic CV electrodes and was
+the vendor used in the Petrovic (2000) undergraduate ferricyanide-CV
+reference cited by Edison. A typical CHI equivalent set (3 mm GC WE,
+Pt wire CE, Ag/AgCl 3 M KCl RE, alumina polish) usually totals
+roughly **$200–270**, vs ~$595 from BASi for the same three
+electrodes — a ~$300+ saving for a first-borrowed-potentiostat test.
+Catalog numbers change occasionally, so confirm with a current CHI
+quote before ordering; the part families are CHI104 (3 mm GC),
+CHI115 (Pt wire), CHI111 (Ag/AgCl 3 M KCl). ALS Co. (Japan, US
+distribution via BASi) is a similar mid-price option; Pine Research
+is high-quality but typically priced between CHI and BASi.
 
 ### Electrodes & polishing (BASi — one-stop, all 3 electrodes)
 
@@ -152,7 +186,7 @@ experiment if the lab does not want to commit to 500 g.
 | --- | --- | --- | --- | --- |
 | Glassy carbon working electrode, 3.0 mm dia. | BASi MF-2012 | Standard CV working electrode | ~$220 | [basinc.com](https://www.basinc.com/products/MF-2012) |
 | Platinum auxiliary (counter) electrode, 0.5 mm × 7.5 cm | BASi MW-1032 | 99.95% Pt wire | ~$165 | [basinc.com](https://www.basinc.com/products/MW-1032) |
-| Ag/AgCl reference electrode (3 M NaCl, RE-5B) | BASi MF-2052 | Aqueous reference; 3 M NaCl ≈ 3 M KCl in performance | ~$165 | [basinc.com](https://www.basinc.com/products/MF-2052) |
+| Ag/AgCl reference electrode (3 M NaCl, RE-5B) | BASi MF-2052 | **Filled with 3 M NaCl, not 3 M KCl** — measured E°′ will sit ~5 mV more negative than the +0.23 V quoted vs Ag/AgCl (3 M KCl); record which reference you used. | ~$165 | [basinc.com](https://www.basinc.com/products/MF-2052) |
 | 0.05 µm alumina polishing slurry, 7 mL | BASi CF-1050 | Minimum needed to polish the GC | ~$45 | [basinc.com](https://www.basinc.com/products/CF-1050) |
 
 A more complete polishing setup (recommended if the lab does not
