@@ -60,7 +60,7 @@ Then `sudo systemctl daemon-reload && sudo systemctl restart device.service`.
 
 > Tip: increase resolution/FPS in small steps and watch YouTube Studio "Stream
 > health". The stream hangs reported in #9 were dominated by the BYU **devices**
-> Wi‑Fi network dropping packets, not by VRAM. If health stays poor at higher
+> Wi-Fi network dropping packets, not by VRAM. If health stays poor at higher
 > bitrate, the bottleneck is the network (consider eduroam/wired), not the Pi.
 
 ## Diagnosis of the YouTube Studio symptoms reported in #9
@@ -107,7 +107,7 @@ so `token.pickle` goes stale and streams fail with `401 Unauthorized`.
 
 Fix: enable 2FA on the Google account that owns the OAuth client, regenerate
 `token.pickle`, and upload it to the S3 key the Lambda reads. Note that enabling
-live streaming on a fresh YouTube channel also imposes a one-time 24‑hour wait.
+live streaming on a fresh YouTube channel also imposes a one-time 24-hour wait.
 
 ## AWS / Lambda ownership (migration to the shared VCL org account)
 
