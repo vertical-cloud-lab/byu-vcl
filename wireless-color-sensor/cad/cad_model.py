@@ -217,6 +217,8 @@ def _cut_socket_features(z_top: float, bore_mid_id: float, p: Params = P,
                        mode=Mode.PRIVATE)
             root = Cylinder(p.slit_width / 2, socket_od,
                             rotation=(0, 90, 0),
+                            # Align.MIN puts the cylinder base at the bore axis
+                            # (X=0) after the 90 deg rotation, matching the slot
                             align=(Align.CENTER, Align.CENTER, Align.MIN),
                             mode=Mode.PRIVATE)
             root = Pos(0, 0, -p.slit_depth) * root
