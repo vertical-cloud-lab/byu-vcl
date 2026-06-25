@@ -7,14 +7,14 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
    0.05 mm steps) laid out in the same 2 x 5 grid as the deck plate pockets.
    Print in one batch on a Bambu Lab A1 mini.
 1b. ``fake_tip_test_array_slit`` — same 10 tips but with the final socket
-   geometry (1.78 deg tapered bore + 3 spring-finger slits) for the round-2
+   geometry (1.78 deg tapered bore + 6 spring-finger slits) for the round-2
    cyclic-durability comparison.
 2. ``deck_plate_base``      — ANSI/SLAS-footprint (127.76 x 85.48 mm) base
    that sits in an OT-2 deck slot.  It has 10 drop-in pockets that register
    each test tip under the pipette without locking it down, plus engraved
    bore-size labels next to every pocket.
 3. ``fake_tip_insert``      — final-geometry modular insert (tapered bore,
-   3 spring-finger slits) per p20-fake-tip-design.md.
+   6 spring-finger slits) per p20-fake-tip-design.md.
 4. ``mock_sensor_package``  — drop-in stand-in for the wireless color sensor
    enclosure: same 40 x 60 mm footprint and 84 mm overall height as the
    original P300 part (so the existing ``byu_color_sensor_charging_port``
@@ -91,7 +91,7 @@ class Params:
     socket_od: float = 6.0                 # top rim must sit under ejector sleeve
     entry_chamfer: float = 0.5
     # ---- spring-finger slits (final geometry only) ----
-    n_slits: int = 3
+    n_slits: int = 6                       # 6 fingers, evenly spaced 60 deg apart
     slit_width: float = 0.5
     slit_depth: float = 6.0                # 75 % of socket depth
     # ---- test tip (round-1 pieces: straight bore, no slits) ----
@@ -179,7 +179,8 @@ def _cut_socket_features(z_top: float, bore_mid_id: float, p: Params = P,
 
     ``z_top`` is the socket-mouth Z, the bore opening downward into material.
     ``tapered`` cuts the 1.78 deg conical nozzle bore (else a straight bore at
-    ``bore_mid_id``).  ``slits`` adds ``p.n_slits`` rounded-root axial slots.
+    ``bore_mid_id``).  ``slits`` adds ``p.n_slits`` single-wall rounded-root
+    axial slots (one per spring finger), evenly spaced around the socket.
     ``socket_od`` bounds the slit length (defaults to ``p.socket_od``).
     """
     socket_od = socket_od or p.socket_od
@@ -209,11 +210,15 @@ def _cut_socket_features(z_top: float, bore_mid_id: float, p: Params = P,
     if slits:
         for k in range(p.n_slits):
             ang = 360 / p.n_slits * k
+            # single radial slot from the bore axis out through one wall, so
+            # p.n_slits slots produce exactly p.n_slits spring fingers
             slot = Box(socket_od, p.slit_width, p.slit_depth,
-                       align=(Align.CENTER, Align.CENTER, Align.MAX),
+                       align=(Align.MIN, Align.CENTER, Align.MAX),
                        mode=Mode.PRIVATE)
             root = Cylinder(p.slit_width / 2, socket_od,
-                            rotation=(0, 90, 0), mode=Mode.PRIVATE)
+                            rotation=(0, 90, 0),
+                            align=(Align.CENTER, Align.CENTER, Align.MIN),
+                            mode=Mode.PRIVATE)
             root = Pos(0, 0, -p.slit_depth) * root
             cutter = slot + root
             cutter = Pos(cx, cy, z_top) * Rot(0, 0, ang) * cutter
@@ -229,7 +234,7 @@ def make_test_tip(bore_id: float, p: Params = P, tapered: bool = False,
     engraved 2-digit size code readable from below (e.g. '55' = 3.55 mm).
 
     Set ``tapered``/``slits`` to build the round-2 final-geometry variant
-    (1.78 deg tapered bore + 3 spring-finger slits) for cyclic-durability
+    (1.78 deg tapered bore + 6 spring-finger slits) for cyclic-durability
     testing once a round-1 bore winner is chosen.
     """
     with BuildPart() as part:
@@ -269,7 +274,7 @@ def make_fake_tip_insert(bore_mid_id: float | None = None,
                          p: Params = P) -> Compound:
     """Final-geometry modular insert per the design doc dimension table:
     peg O6 x 5 (press-fits enclosure recess) + flange O8 x 2 + socket
-    O6 x 8 with tapered bore and 3 spring-finger slits."""
+    O6 x 8 with tapered bore and 6 spring-finger slits."""
     bore_mid_id = bore_mid_id or p.nominal_bore_id
     with BuildPart() as part:
         Cylinder(p.insert_peg_od / 2, p.insert_peg_h,
@@ -352,7 +357,7 @@ def make_test_array(p: Params = P, tapered: bool = False,
 
     Default is the round-1 straight-bore array (clean press-fit measurement).
     Pass ``tapered=True, slits=True`` for the round-2 array that mirrors the
-    final socket geometry (1.78 deg taper + 3 spring-finger slits)."""
+    final socket geometry (1.78 deg taper + 6 spring-finger slits)."""
     tips = []
     for (x, y, _name), bore in zip(grid_centers(p), p.bore_ids):
         tip = make_test_tip(bore, p, tapered=tapered, slits=slits)

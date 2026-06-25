@@ -89,7 +89,7 @@ The BYU ME Prototyping Lab (EB 117) has Prusa and Bambu Lab FDM printers and sup
 | Material | Available at BYU? | Notes |
 |---|---|---|
 | **PLA** | ✅ Yes (~$0.10/g) | Rigid, low shrinkage (~0.3%), good for precise interference fits. Good for initial prototyping. |
-| **PETG** | ✅ Yes (~$0.10/g) | Slightly more flexible, better layer adhesion, more resistant to cracking from repeated insertion/removal. **Recommended for the fake tip** due to many insert/de-insert cycles. |
+| **PETG** | ✅ Yes (~$0.10/g) | Slightly more flexible, better layer adhesion, more resistant to cracking from repeated insertion/removal. **Recommended for the fake tip** due to many insertion/removal cycles. |
 | **TPU** | ✅ Yes (~$0.14/g) | Flexible; not suitable for a rigid press-fit socket. |
 | **Nylon (PA)** | ✅ Yes (~$0.14/g) | High strength, good fatigue resistance, but harder to print accurately at small bore sizes. |
 | **ABS/ASA** | ✅ Yes (check with lab) | More heat/impact resistant; needs enclosed printer. Viable alternative to PETG. |
@@ -222,35 +222,33 @@ For liquid sensing applications, consider adding a thin, translucent glass or pl
 
 ### Durability and Spring-Finger Slits (PETG)
 
-Since the fake tip will undergo many insert/de-insert cycles, PETG is recommended over PLA for its superior fatigue resistance. To further improve durability, add **3 axial spring-finger slits** spaced at 120° around the socket wall. These slits let each finger flex slightly outward during insertion rather than the full bore being forced to deform, dramatically reducing stress per cycle.
+Since the fake tip will undergo many insertion/removal cycles, PETG is recommended over PLA for its superior fatigue resistance. To further improve durability, add **6 axial spring-finger slits** spaced at 60° around the socket wall. These slits let each finger flex slightly outward during insertion rather than the full bore being forced to deform, dramatically reducing stress per cycle.
 
 **Spring-finger slit dimensions (for PETG, ~6 mm OD socket):**
 
 | Parameter | Value | Rationale |
 |---|---|---|
-| **Number of slits** | 3 | Evenly spaced at 120° for symmetric grip |
+| **Number of slits** | 6 | Evenly spaced at 60° for symmetric grip (one slit per finger) |
 | **Slit width** | 0.5 mm | Minimum reliably printable gap on FDM; wide enough to allow flex without fusing shut during printing |
 | **Slit depth (length)** | 6 mm | ~75% of the 8 mm socket depth — leaves a 2 mm solid ring at the base for structural integrity |
 | **Fillet at slit base** | 0.3 mm radius | Prevents stress concentration / crack initiation at the bottom of each slit |
-| **Finger wall thickness** | ~1.2 mm | Each of the 3 fingers is roughly (π × 6 mm OD / 3 − 0.5 mm slit) / 2 ≈ 1.2 mm thick per side — enough to grip without being too stiff |
+| **Finger radial wall thickness** | ~1.2 mm | (OD − ID)/2 = (6 − 3.55)/2 ≈ 1.2 mm radial wall — enough to grip without being too stiff; each of the 6 fingers also spans ~2.6 mm circumferentially (π × 6 mm OD / 6 − 0.5 mm slit) |
 
 ```
-    Top view — socket with 3 spring-finger slits (PETG):
+    Top view — socket with 6 spring-finger slits (PETG):
 
-              0.5 mm slit
-                 ↓
-         ┌───── ╱ ─────┐
-        ╱    finger 1    ╲
-       │                  │
-  slit ╱        ○         ╲ slit
-      │    (bore ~3.55)    │
-       │    finger 3      │
-        ╲    finger 2    ╱
-         └───── ╲ ─────┘
-                 ↑
-              0.5 mm slit
+                 slit
+                  ↓
+            ┌──── │ ────┐
+           ╱ f6   │   f1 ╲
+     slit→ ┤ f5   ○   f2 ├ ←slit
+           ╲ f4   │   f3 ╱
+            └──── │ ────┘
+                  ↑
+                 slit
+        (bore ~3.55 at centre ○)
 
-    Slits at 0°, 120°, 240°
+    6 fingers, slits at 0°, 60°, 120°, 180°, 240°, 300°
 
     Side cross-section:
 
