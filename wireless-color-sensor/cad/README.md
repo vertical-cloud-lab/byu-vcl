@@ -88,6 +88,54 @@ The mock sensor package needs no new script — it is a drop-in replacement for
 the real sensor in the existing PR #116 pick-and-place protocols. So is
 `real_sensor_package_p20` (the actual enclosure with a P20 tip).
 
+### Uploading without the Opentrons app (`run_robot.py`)
+
+`run_robot.py` pushes a protocol to the OT-2 over HTTP and starts the run — the
+same upload path @timothy-commins used, but with the robot address and protocol
+path factored out so nothing secret is committed:
+
+1. Copy `my_secrets.example.py` to `my_secrets.py` and set `ROBOT_IP` (from the
+   Opentrons app under *Robot Settings → Networking*). `my_secrets.py` is
+   git-ignored.
+2. `python run_robot.py` uploads `protocol_cyclic_loading.py` by default, or
+   pass a path: `python run_robot.py protocol_fake_tip_test.py`.
+3. Type `cancel` + Enter at any time to stop the robot.
+
+### Cyclic (fatigue) loading of the survivors (`protocol_cyclic_loading.py`)
+
+Once the single-pass sweep identifies which bores grip, this protocol repeats
+pick-up → transport → drop **many times** (default 1000 cycles/tip) on just the
+surviving wells to measure insert/remove cycle life. Edit `CYCLE_WELLS` and
+`NUM_CYCLES` at the top of the file to match what your print passed, then upload
+with `run_robot.py`. It prints progress every `COMMENT_EVERY` cycles and pauses
+for a wear inspection every `PAUSE_EVERY` cycles (the run log records the cycle
+number, so any failure is timestamped). At ~6 s/cycle, 1000 cycles/tip is
+~1.7 h, so budget run time before raising `NUM_CYCLES` into the thousands.
+
+Round-1 results (@timothy-commins,
+[comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4792616426)):
+**solid** bores 3.40–3.50 mm and **slitted** 3.40 mm held; those are the
+defaults in `CYCLE_WELLS`.
+
+### Recommendations
+
+- **Material: PETG, single material (no TPU).** PETG's higher elongation-at-yield
+  vs PLA is what lets the socket flex without micro-cracking over many cycles,
+  and the FEA endurance limit assumes PETG. A TPU insert would grip better but
+  needs a dual-nozzle printer (e.g. H2D); keeping the part pure PETG keeps it
+  printable on the A1 mini / Thumbelina single-extruder fleet. Reprint the
+  survivors in **PETG** before the cyclic test — round 1 appears to have been PLA.
+- **Run both designs through the cyclic test.** Solid bores grip on diameter
+  alone and over-stress with no compliance, so they whiten/loosen fastest;
+  slitted bores spread the strain across three spring fingers and should last
+  far longer, which is exactly what the cyclic test will quantify. Carry the
+  slitted **3.40 mm** and the solid **3.40–3.50 mm** survivors forward.
+- **Re-center round 2 on the FEA winner.** The fit study recommends a **3.60 mm**
+  bore against a Ø3.70 mm nozzle, but round 1 grip topped out at 3.50 mm —
+  strong evidence the real nozzle/printed-bore is smaller than the 3.70 mm
+  assumption. A **caliper measurement of the actual P20 nozzle OD and of one
+  printed bore** would let us re-anchor the FEA and skip a round.
+
 ### What to send back after printing/testing
 
 The single most useful thing to report is, **per bore size, three pass/fail

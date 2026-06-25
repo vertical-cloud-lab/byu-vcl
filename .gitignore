@@ -210,3 +210,7 @@ __marimo__/
 # CalculiX/gmsh scratch outputs
 wireless-color-sensor/cad/fea/*
 !wireless-color-sensor/cad/fea/fit_study_results.json
+
+# Local OT-2 robot connection secrets (copy my_secrets.example.py)
+my_secrets.py
+wireless-color-sensor/cad/my_secrets.py
