@@ -91,8 +91,9 @@ def run_protocol(protocol_path):
     print(f"Run created. ID: {run_id}")
 
     listener = threading.Thread(target=listen_for_cancel, daemon=True)
-    listener.start()
-    print(">> Type 'cancel' + Enter at any time to stop the robot.")
+    if sys.stdin and sys.stdin.isatty():
+        listener.start()
+        print(">> Type 'cancel' + Enter at any time to stop the robot.")
 
     print("Starting run...")
     response = requests.post(

@@ -55,6 +55,9 @@ PAUSE_EVERY = 250
 # sideways like a real move; set to 0 for a pure axial insert/remove test.
 TRANSPORT_DX = 40.0
 TRANSPORT_DZ = 60.0
+
+# Eject height above the pocket's well top (mm) so the tip drops back in.
+DROP_HEIGHT_Z = 2.0
 # --------------------------------------------------------------------------
 
 metadata = {
@@ -125,6 +128,12 @@ TEST_ARRAY_LABWARE = {
 }
 
 
+def point(x, y, z):
+    """Local import wrapper so the module imports without opentrons present."""
+    from opentrons.types import Point
+    return Point(x, y, z)
+
+
 def run(protocol):
     array = protocol.load_labware_from_definition(
         TEST_ARRAY_LABWARE, ARRAY_SLOT
@@ -151,7 +160,7 @@ def run(protocol):
                 )
                 pipette.move_to(well.top(z=TRANSPORT_DZ))
             # return over the pocket and eject
-            pipette.drop_tip(well.top(z=2))
+            pipette.drop_tip(well.top(z=DROP_HEIGHT_Z))
 
             if COMMENT_EVERY and cycle % COMMENT_EVERY == 0:
                 protocol.comment(
@@ -166,12 +175,6 @@ def run(protocol):
         protocol.comment(
             f"=== Tip {well_name} finished {NUM_CYCLES} cycles ==="
         )
-
-
-def point(x, y, z):
-    """Local import wrapper so the module imports without opentrons present."""
-    from opentrons.types import Point
-    return Point(x, y, z)
 
 
 if __name__ == "__main__":
