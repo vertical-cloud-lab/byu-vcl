@@ -33,8 +33,9 @@ H = 6.0                  # slit depth = finger length (mm)
 SLIT_W = 0.5             # slit width (mm)
 # 6 spring fingers (60 deg sectors): matches the printed/tested socket, where 3
 # single-wall slot cutters opened slots through both opposite walls -> 6 fingers
-# (see cad_model.Params.n_slits).  Thinner, more compliant fingers than the old
-# 3-finger model, so this is the tighter (less conservative) per-finger estimate.
+# (see cad_model.Params.n_slits).  Each 60 deg finger is narrower than the old
+# 120 deg one, but there are twice as many, so the socket grips stiffer overall
+# (~2x total grip); modeling all 6 is the accurate, as-built estimate.
 N_FINGERS = 6
 
 # PETG, typical printed-part datasheet values

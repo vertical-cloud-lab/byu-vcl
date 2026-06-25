@@ -220,10 +220,11 @@ Results (`fea/fit_study_results.json`, plot `renders/fea_fit_study.png`):
 **Recommended bore ID ≈ 3.65 mm.** It is the *smallest* bore that still
 ejects (grip < 20 N) and stays under the endurance limit (11.5 MPa → unlimited
 cycles), so it grips hardest — best pull-off margin (5.3 N ≈ 2.4× the required
-2.2 N) — without being so tight that the ejector can't release it. With the
-as-built **6-finger** geometry the socket is stiffer overall (≈2× the total grip
-of the earlier 3-finger model), so 3.60 mm now exceeds the 20 N eject cap and
-the winner moves up one step to 3.65 mm. Tighter bores (≤ 3.60) grip well but
+2.2 N) — without being so tight that the ejector can't release it. Each 60°
+finger of the as-built **6-finger** socket is narrower than a 120° one, but
+there are twice as many, so the socket grips stiffer overall (≈2× the total grip
+of the earlier 3-finger model); 3.60 mm therefore now exceeds the 20 N eject cap
+and the winner moves up one step to 3.65 mm. Tighter bores (≤ 3.60) grip well but
 **won't eject** and accumulate fatigue; looser bores (≥ 3.70) don't grip at the
 nominal nozzle OD. The round-2 sweep should therefore center on **3.63–3.67 mm
 in 0.02 mm steps**.
