@@ -31,7 +31,11 @@ WORK = HERE / "fea"
 R_OUT = 6.0 / 2          # socket OD radius (mm)
 H = 6.0                  # slit depth = finger length (mm)
 SLIT_W = 0.5             # slit width (mm)
-N_FINGERS = 3
+# 6 spring fingers (60 deg sectors): matches the printed/tested socket, where 3
+# single-wall slot cutters opened slots through both opposite walls -> 6 fingers
+# (see cad_model.Params.n_slits).  Thinner, more compliant fingers than the old
+# 3-finger model, so this is the tighter (less conservative) per-finger estimate.
+N_FINGERS = 6
 
 # PETG, typical printed-part datasheet values
 E_MPA = 2100.0
@@ -200,4 +204,4 @@ if __name__ == "__main__":
     print(f"Peak von Mises stress: {res.vmax_mpa:.1f} MPa "
           f"(PETG yield ~{YIELD_MPA:.0f} MPa, "
           f"safety factor {YIELD_MPA / res.vmax_mpa:.2f})")
-    print(f"Total inward grip (3 fingers): {res.grip_force_n:.2f} N")
+    print(f"Total inward grip (6 fingers): {res.grip_force_n:.2f} N")

@@ -130,7 +130,7 @@ defaults in `CYCLE_WELLS`.
   slitted bores spread the strain across six spring fingers and should last
   far longer, which is exactly what the cyclic test will quantify. Carry the
   slitted **3.40 mm** and the solid **3.40–3.50 mm** survivors forward.
-- **Re-center round 2 on the FEA winner.** The fit study recommends a **3.60 mm**
+- **Re-center round 2 on the FEA winner.** The fit study recommends a **3.65 mm**
   bore against a Ø3.70 mm nozzle, but round 1 grip topped out at 3.50 mm —
   strong evidence the real nozzle/printed-bore is smaller than the 3.70 mm
   assumption. A **caliper measurement of the actual P20 nozzle OD and of one
@@ -181,10 +181,10 @@ Two Opentrons details encoded in the labware/protocol:
 
 ## Spring-finger FEA fit study (CalculiX) — which bore is best
 
-`fea_spring_finger.py` meshes one spring finger (annular 120° sector, Ø6 mm
-socket OD, 6 mm long) with gmsh and runs a CalculiX static analysis: base
-fixed, the tip band pushed radially outward by the interference and the radial
-reaction force read back as the inward **grip**.
+`fea_spring_finger.py` meshes one spring finger (annular 60° sector — matching
+the as-built **6-finger** socket, Ø6 mm socket OD, 6 mm long) with gmsh and runs
+a CalculiX static analysis: base fixed, the tip band pushed radially outward by
+the interference and the radial reaction force read back as the inward **grip**.
 
 `fea_fit_study.py` then runs that solve on **every bore in the array**, against
 a nominal **Ø3.70 mm** nozzle, and folds in the **real package weight** and
@@ -208,22 +208,24 @@ Results (`fea/fit_study_results.json`, plot `renders/fea_fit_study.png`):
 
 | bore ID | interf. | defl. | peak vM | grip | axial hold | holds? | ejects? | est. cycles |
 |---|---|---|---|---|---|---|---|---|
-| 3.40 | +0.30 | 0.150 | 58.9 | 49.5 | 14.8 | Y | **no** | 1e3 |
-| 3.45 | +0.25 | 0.125 | 49.3 | 40.6 | 12.2 | Y | **no** | 1e3 |
-| 3.50 | +0.20 | 0.100 | 35.7 | 32.1 | 9.6 | Y | **no** | 3e4 |
-| 3.55 | +0.15 | 0.075 | 26.3 | 23.5 | 7.1 | Y | **no** | 6e5 |
-| **3.60** | **+0.10** | **0.050** | **16.8** | **15.8** | **4.7** | **Y** | **Y** | **∞** |
-| 3.65 | +0.05 | 0.025 | 9.2 | 7.8 | 2.3 | Y | Y | ∞ |
+| 3.40 | +0.30 | 0.150 | 65.1 | 117.3 | 35.2 | Y | **no** | 1e3 |
+| 3.45 | +0.25 | 0.125 | 52.9 | 95.4 | 28.6 | Y | **no** | 1e3 |
+| 3.50 | +0.20 | 0.100 | 40.0 | 76.3 | 22.9 | Y | **no** | 9e3 |
+| 3.55 | +0.15 | 0.075 | 28.6 | 56.6 | 17.0 | Y | **no** | 3e5 |
+| 3.60 | +0.10 | 0.050 | 20.0 | 36.6 | 11.0 | Y | **no** | ∞ |
+| **3.65** | **+0.05** | **0.025** | **11.5** | **17.8** | **5.3** | **Y** | **Y** | **∞** |
 | 3.70 | 0.00 | 0.000 | 0 | 0 | 0 | no | Y | ∞ |
 | 3.75–3.85 | −0.05…−0.15 | 0 | 0 | 0 | 0 | no | Y | ∞ |
 
-**Recommended bore ID ≈ 3.60 mm.** It is the *smallest* bore that still
-ejects (grip < 20 N) and stays under the endurance limit (16.8 MPa → unlimited
-cycles), so it grips hardest — best pull-off margin (4.7 N ≈ 2× the required
-2.2 N) and most tolerant of the unknown true nozzle OD — without being so tight
-that the ejector can't release it. Tighter bores (≤ 3.55) grip well but
+**Recommended bore ID ≈ 3.65 mm.** It is the *smallest* bore that still
+ejects (grip < 20 N) and stays under the endurance limit (11.5 MPa → unlimited
+cycles), so it grips hardest — best pull-off margin (5.3 N ≈ 2.4× the required
+2.2 N) — without being so tight that the ejector can't release it. With the
+as-built **6-finger** geometry the socket is stiffer overall (≈2× the total grip
+of the earlier 3-finger model), so 3.60 mm now exceeds the 20 N eject cap and
+the winner moves up one step to 3.65 mm. Tighter bores (≤ 3.60) grip well but
 **won't eject** and accumulate fatigue; looser bores (≥ 3.70) don't grip at the
-nominal nozzle OD. The round-2 sweep should therefore center on **3.58–3.62 mm
+nominal nozzle OD. The round-2 sweep should therefore center on **3.63–3.67 mm
 in 0.02 mm steps**.
 
 > These numbers assume nozzle OD = 3.70 mm and package mass = 50 g. Both are
