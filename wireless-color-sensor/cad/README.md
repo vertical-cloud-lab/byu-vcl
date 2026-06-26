@@ -32,6 +32,7 @@ estimate, refined).
 |---|---|
 | `stl/fake_tip_test_array.stl` | 10 round-1 test tips, bore ID 3.40–3.85 mm in 0.05 mm steps (straight bore, no slits). Each tip: body Ø8 × 10, flange Ø10 × 2, socket Ø6 × 8 mm; the 2-digit size code (e.g. `55` = 3.55 mm) is engraved on the underside. Laid out in the same 2 × 5 / 18 mm-pitch grid as the deck-plate pockets. |
 | `stl/fake_tip_test_array_slit.stl` | The **round-2** array: same 10 tips but with the final socket geometry — **1.78° tapered bore + 6 spring-finger slits**. Round-1 is deliberately straight-bored/slitless so the *bore diameter alone* is measured cleanly; round-2 adds the slits so the chosen winner can be re-checked for grip and ejection with the production geometry. |
+| `stl/fake_tip_test_array_slit_small.stl` | The **round-1.5** array: 10 slitted tips (same 1.78° tapered bore + 6 spring-finger slits) stepping **down** from 3.40 mm to **2.95 mm** in 0.05 mm steps — i.e. its largest bore equals the *smallest* bore of `fake_tip_test_array_slit`. Round-1 slitted testing only picked up the 3.40 mm tip, so this probes the smaller bores the (sub-3.70 mm) nozzle actually needs. Size codes engraved underneath are the bore ID in hundredths of a mm (`40` = 3.40, `00` = 3.00, `95` = 2.95). |
 | `stl/deck_plate_base.stl` | ANSI/SLAS-footprint (127.76 × 85.48 × 24 mm) plate that sits in an OT-2 deck slot. 10 drop-in pockets register the test tips without locking them down; bore sizes, a title, and an `A1` corner marker are engraved on top. Underside is hollowed (3 mm shell + columns under each pocket). |
 | `stl/fake_tip_insert.stl` | Final-geometry modular insert per the design-doc table: peg Ø6 × 5 + flange Ø8 × 2 + socket Ø6 × 8 with **tapered bore (1.78°)** and **6 spring-finger slits** (0.5 mm wide, 6 mm deep, rounded roots). |
 | `stl/mock_sensor_package.stl` | Drop-in stand-in for the wireless color sensor: original 40 × 60 mm footprint and **84 mm overall height**, topped with the P20 socket (tapered bore + spring fingers at the nominal 3.55 mm mid-bore). Because the envelope matches the original P300 part, the existing `byu_color_sensor_charging_port` labware definition (`tipLength: 84`) from PR #116 works unchanged. |
@@ -51,6 +52,7 @@ STEP equivalents are in `step/`; PNG renders (iso/front/top per part) in `render
 |---|---|---|
 | Test array (round-1) | ![array iso](renders/fake_tip_test_array_iso.png) | ![array top](renders/fake_tip_test_array_top.png) |
 | Test array (round-2, slits) | ![array slit iso](renders/fake_tip_test_array_slit_iso.png) | ![array slit top](renders/fake_tip_test_array_slit_top.png) |
+| Test array (round-1.5, smaller slits) | ![array slit small iso](renders/fake_tip_test_array_slit_small_iso.png) | ![array slit small top](renders/fake_tip_test_array_slit_small_top.png) |
 | Deck plate | ![plate iso](renders/deck_plate_base_iso.png) | ![plate top](renders/deck_plate_base_top.png) |
 | Insert | ![insert iso](renders/fake_tip_insert_iso.png) | ![insert top](renders/fake_tip_insert_top.png) |
 | Mock package | ![mock iso](renders/mock_sensor_package_iso.png) | ![mock front](renders/mock_sensor_package_front.png) |

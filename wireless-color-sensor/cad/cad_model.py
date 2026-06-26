@@ -9,6 +9,10 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
 1b. ``fake_tip_test_array_slit`` — same 10 tips but with the final socket
    geometry (1.78 deg tapered bore + 6 spring-finger slits) for the round-2
    cyclic-durability comparison.
+1c. ``fake_tip_test_array_slit_small`` — round-1.5 slitted array stepping
+   *down* from 3.40 mm (the smallest bore of the round-1 array) to 2.95 mm in
+   0.05 mm steps.  Round-1 slitted testing only picked up the 3.40 mm tip, so
+   this probes the smaller bores the real (sub-3.70 mm) nozzle needs.
 2. ``deck_plate_base``      — ANSI/SLAS-footprint (127.76 x 85.48 mm) base
    that sits in an OT-2 deck slot.  It has 10 drop-in pockets that register
    each test tip under the pipette without locking it down, plus engraved
@@ -85,6 +89,11 @@ FONT = "DejaVu Sans"  # available on Linux CI; build123d falls back if missing
 class Params:
     # ---- nozzle / bore (see p20-fake-tip-design.md) ----
     bore_ids: tuple = (3.40, 3.45, 3.50, 3.55, 3.60, 3.65, 3.70, 3.75, 3.80, 3.85)
+    # round-1 slitted testing only picked up the 3.40 mm tip, so the round-1.5
+    # slitted array steps *down* from 3.40 mm (the smallest of ``bore_ids``) in
+    # 0.05 mm steps to probe the smaller bores the real (sub-3.70 mm) nozzle needs.
+    bore_ids_small: tuple = (2.95, 3.00, 3.05, 3.10, 3.15, 3.20, 3.25, 3.30,
+                             3.35, 3.40)
     nominal_bore_id: float = 3.55          # round-1 best guess (mid-depth ID)
     nozzle_taper_half_angle_deg: float = 1.78  # measured from original P300 STEP
     socket_depth: float = 8.0
@@ -354,14 +363,21 @@ def make_deck_plate(p: Params = P) -> Compound:
 
 
 def make_test_array(p: Params = P, tapered: bool = False,
-                    slits: bool = False) -> Compound:
+                    slits: bool = False,
+                    bore_ids: tuple | None = None) -> Compound:
     """All 10 test tips, laid out in the pocket grid (one print).
 
     Default is the round-1 straight-bore array (clean press-fit measurement).
     Pass ``tapered=True, slits=True`` for the round-2 array that mirrors the
-    final socket geometry (1.78 deg taper + 6 spring-finger slits)."""
+    final socket geometry (1.78 deg taper + 6 spring-finger slits).
+
+    ``bore_ids`` overrides ``p.bore_ids`` (e.g. ``p.bore_ids_small`` for the
+    round-1.5 smaller-bore slitted array); it must have <= 10 entries to fit
+    the 2 x 5 grid.
+    """
+    bore_ids = bore_ids if bore_ids is not None else p.bore_ids
     tips = []
-    for (x, y, _name), bore in zip(grid_centers(p), p.bore_ids):
+    for (x, y, _name), bore in zip(grid_centers(p), bore_ids):
         tip = make_test_tip(bore, p, tapered=tapered, slits=slits)
         tips.append(Location((x, y, 0)) * tip)
     return Compound(children=tips)
@@ -463,6 +479,8 @@ def export_all(p: Params = P) -> dict[str, Compound]:
     parts = {
         "fake_tip_test_array": make_test_array(p),
         "fake_tip_test_array_slit": make_test_array(p, tapered=True, slits=True),
+        "fake_tip_test_array_slit_small": make_test_array(
+            p, tapered=True, slits=True, bore_ids=p.bore_ids_small),
         "deck_plate_base": make_deck_plate(p),
         "fake_tip_insert": make_fake_tip_insert(p=p),
         "mock_sensor_package": make_mock_sensor_package(p=p),
