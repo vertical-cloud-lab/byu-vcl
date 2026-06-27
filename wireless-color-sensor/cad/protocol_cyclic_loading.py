@@ -56,8 +56,12 @@ PAUSE_EVERY = 250
 TRANSPORT_DX = 40.0
 TRANSPORT_DZ = 60.0
 
-# Eject height above the pocket's well top (mm) so the tip drops back in.
-DROP_HEIGHT_Z = 2.0
+# Eject height above the seated (pocket-bottom) position, in mm. The tip is
+# released LOW in its pocket so the walls guide it back into the seat and it
+# barely falls -- essential for unattended cycling where no human repositions
+# missed tips. (Releasing above the pocket rim, e.g. well.top(z=2), dropped the
+# tip ~22 mm and it often missed the hole; see PR #60 testing videos.)
+DROP_RELEASE_Z = 2.0
 # --------------------------------------------------------------------------
 
 metadata = {
@@ -159,8 +163,8 @@ def run(protocol):
                     well.top(z=TRANSPORT_DZ).move(point(TRANSPORT_DX, 0, 0))
                 )
                 pipette.move_to(well.top(z=TRANSPORT_DZ))
-            # return over the pocket and eject
-            pipette.drop_tip(well.top(z=DROP_HEIGHT_Z))
+            # return over the pocket and eject low so the walls catch the tip
+            pipette.drop_tip(well.bottom(z=DROP_RELEASE_Z))
 
             if COMMENT_EVERY and cycle % COMMENT_EVERY == 0:
                 protocol.comment(

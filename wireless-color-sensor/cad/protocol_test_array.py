@@ -36,6 +36,14 @@ ARRAY_SLOT = 8
 TIP_SEAT_Z = 11.8
 TIP_HEIGHT = 20.0
 
+# Eject the tip near the BOTTOM of its pocket (a few mm above the seated
+# position) rather than above the pocket rim, so the pocket walls guide it
+# in and it barely falls.  ``well.top(z=2)`` released the tip ~22 mm up
+# (well top 31.8 + 2 vs. seated bottom 11.8), which is why tips missed their
+# holes; ``well.bottom(z=DROP_RELEASE_Z)`` releases it ~2 mm above the seat
+# with ~10 mm of the 20 mm tip still inside the 12.2 mm-deep pocket.
+DROP_RELEASE_Z = 2.0
+
 # Pocket grid: 2 rows x 5 cols, 18 mm pitch, centered on the SLAS footprint
 # (127.76 x 85.48 mm).  Labware coords measure from the front-left corner.
 _PITCH = 18.0
@@ -111,8 +119,8 @@ def run(protocol):
             f"Tip {well_name} (bore {bore:.2f} mm) lifted. Check retention "
             "(gently tug), then resume to eject it back into its pocket."
         )
-        # eject just above the pocket so the tip drops back in
-        pipette.drop_tip(well.top(z=2))
+        # eject low in the pocket so the walls guide the tip back into its seat
+        pipette.drop_tip(well.bottom(z=DROP_RELEASE_Z))
         protocol.pause(
             f"Did tip {well_name} eject cleanly and land in its pocket? "
             "Record the result, then resume."

@@ -83,8 +83,10 @@ upload path as the working scripts in
 1. Put the deck plate in **slot 8**, engraved `A1` marker at the **back-left**.
 2. Drop the 10 test tips into their pockets (sizes engraved next to each pocket).
 3. Run the protocol: for each pocket it picks the tip up, lifts, pauses for a
-   retention check, then ejects it back over its pocket and pauses for a
-   drop-off check. Record pass/fail per the evaluation criteria in the design doc.
+   retention check, then ejects it **low in the pocket** (release ~2 mm above
+   the seated position, not above the rim) so the pocket walls guide the tip
+   back into its hole, and pauses for a drop-off check. Record pass/fail per
+   the evaluation criteria in the design doc.
 
 The mock sensor package needs no new script — it is a drop-in replacement for
 the real sensor in the existing PR #116 pick-and-place protocols. So is
@@ -113,6 +115,10 @@ with `run_robot.py`. It prints progress every `COMMENT_EVERY` cycles and pauses
 for a wear inspection every `PAUSE_EVERY` cycles (the run log records the cycle
 number, so any failure is timestamped). At ~6 s/cycle, 1000 cycles/tip is
 ~1.7 h, so budget run time before raising `NUM_CYCLES` into the thousands.
+Each cycle ejects the tip **low in its pocket** (`DROP_RELEASE_Z` ≈ 2 mm above
+the seated position) so the walls catch it and it lands back in the hole — this
+is what makes unattended cycling possible (no human repositioning missed tips
+between cycles, per the [PR #60 drop-off videos](https://youtu.be/qi_fUC_InB8)).
 
 Round-1 results (@timothy-commins,
 [comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4792616426)):
