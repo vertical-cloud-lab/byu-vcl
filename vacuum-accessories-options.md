@@ -419,3 +419,23 @@ Independent of the coupler question, Ronnie's bench continuity test (multimeter 
 
 > **Action item:** confirm with Nilfisk uspatechsupport@nilfisk.com whether 107413543 is the dissipative or the wire-reinforced variant for the 118EXP serial-number range, and whether a wire-reinforced hose with the 4072000343 cuff is the correct OEM combination before reordering.
 
+
+---
+
+## 12. Powder Disposal SOP — Edison Scientific Literature Synthesis
+
+Ronnie's request ([PR #80 comment 4833708843](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-4833708843)) for an exact, citation-backed disposal procedure was answered with an Edison Scientific `LITERATURE_HIGH` query (task `56c08a19-eebc-477b-a627-bf82808189ec`, continuing the prior §9/§10 bag-vs-liner and emptying-cadence reviews; 15 cited refs). The full SOP lives in **[`edison/powder-disposal-sop/powder-disposal-sop.md`](edison/powder-disposal-sop/powder-disposal-sop.md)** (raw answer + task JSON archived under [`edison/powder-disposal-sop/`](edison/powder-disposal-sop/)). Direct Edison response link: <https://platform.edisonscientific.com/trajectories/56c08a19-eebc-477b-a627-bf82808189ec>.
+
+> ⚠️ AI-synthesized guidance — must be reviewed/approved by BYU EHS and the PI and rolled into a site-specific NFPA 652 DHA before live-powder use.
+
+Key answers to Ronnie's specific questions:
+
+- **Liner removal** — Power off, wait ≥ 60 s to settle; PPE + grounding wrist strap on; keep the liner's bonding clip attached, gooseneck-twist the liner above the powder and cinch with **two conductive cable ties**, *then* disconnect the bonding clip and lift the sealed liner into the grounded steel pail. Empty when the liner exceeds ~25% fill.
+- **Passivation (mineral oil?)** — **No.** Do not passivate. Adding mineral oil puts a Class IB flammable-liquid hazard onto an already-combustible solid, risks aerosolizing powder during mixing, and complicates RCRA classification; any moisture risks Al + H₂O → H₂. Gas-atomized AlSi10Mg already carries a native oxide layer. For tens-of-grams/week, dry + sealed + grounded containment is sufficient.
+- **Interim pail** — Grounded steel pail (Uline S-22507BL 3.5 gal + S-21135BL lever-lock lid), ≤ 50% fill, lid closed, kept dry and segregated from oxidizers/metal-oxide powders, labeled "Combustible Metal Powder Waste — NO WATER," within 75 ft of a Class D extinguisher.
+- **Transfer to EHS** — Transfer the sealed liner **intact** (do not open) into the BYU EHS unwanted-materials container; classify as RCRA **D001 (ignitable)** and likely **D003 (reactive)** per 40 CFR 261.21/261.23, generator determination per 262.11; coordinate pickup cadence with EHS.
+- **Dedicated pail per metal?** — Use a **dedicated liner + dedicated interim pail per alloy family.** AlSi10Mg ↔ Si (and other Al alloys) can share; **never** mix aluminum-family with iron-, copper-, or nickel-oxide-bearing powders (thermite precursors). Compatibility matrix is in the SOP.
+- **Cleaning between metals?** — Same alloy family → replace liner + dry-wipe + visual check. **Incompatible** family switch → replace the main filter and **both** HEPA filters (dispose as contaminated waste), clean bin/hose/wand, install fresh liner, re-verify ground continuity, and start a fresh interim pail.
+- **How to clean the vacuum** — Lint-free cloth lightly dampened with **isopropyl alcohol** (not water, not acetone, not chlorinated solvents); fine non-metallic Scotch-Brite on aluminum contact surfaces for continuity; **never** blow out filters or wash them. Re-verify continuity after any cleaning/reassembly (hose end-to-end < 10 Ω, bin-to-ground < 1 Ω, liner clip-to-bin < 1 kΩ).
+
+A master operator quick-reference checklist (before/after each session, weekly, and alloy-switch) and an "absolute prohibitions" table are included at the end of the SOP file.
