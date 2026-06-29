@@ -34,8 +34,23 @@ import fea_spring_finger as F
 HERE = pathlib.Path(__file__).resolve().parent
 
 # ---- nozzle / package / robot assumptions (documented; tune as measured) ----
-NOZZLE_OD = 3.70            # P20 GEN2 nozzle OD, mid of the 3.6-3.8 mm range
-BORE_IDS = (3.40, 3.45, 3.50, 3.55, 3.60, 3.65, 3.70, 3.75, 3.80, 3.85)
+# Tim measured the P20 nozzle OD with calipers at the *bottom face* of the
+# pipette (where a fake tip first meets the nozzle):
+#   https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4837845180
+NOZZLE_TIP_OD = 2.83       # measured OD at the very bottom of the P20 nozzle
+# The nozzle is tapered (~2-5 deg half-angle), so its OD grows above that bottom
+# face.  The OT-2 drives the fake tip *up* the nozzle to a fixed depth, so the
+# socket grips higher up the cone where the OD is larger than NOZZLE_TIP_OD --
+# not at the 2.83 mm tip.  Round-1 testing brackets that engagement OD: the
+# slitted socket gripped only at bore ID 3.40 mm (3.45+ slid off), so the
+# effective OD where the slitted socket seats is just above 3.40 mm.  We anchor
+# the study on that empirical engagement OD rather than the 2.83 mm tip OD or
+# the old 3.70 mm guess.
+NOZZLE_OD = 3.42           # effective engagement OD (round-1 slitted grip onset)
+# Sweep the actually-printed round-1.5 slitted array (fake_tip_test_array_slit_
+# small, Params.bore_ids_small): bore IDs step *down* from the 3.40 mm round-1
+# winner toward the 2.83 mm nozzle tip to probe tighter, lower-on-the-cone fits.
+BORE_IDS = (3.40, 3.35, 3.30, 3.25, 3.20, 3.15, 3.10, 3.05, 3.00, 2.95)
 
 PACKAGE_MASS_KG = 0.050    # assembled sensor package (~50 g, conservative)
 G = 9.81                   # gravity (m/s^2)
@@ -196,7 +211,8 @@ def main() -> None:
     req = required_axial_hold_n()
     rows = run_sweep()
 
-    print(f"Nozzle OD {NOZZLE_OD:.2f} mm | package {PACKAGE_MASS_KG*1000:.0f} g"
+    print(f"Nozzle OD {NOZZLE_OD:.2f} mm (engagement; tip OD {NOZZLE_TIP_OD:.2f} mm)"
+          f" | package {PACKAGE_MASS_KG*1000:.0f} g"
           f" | required axial hold {req:.2f} N (SF {RETENTION_SF:.0f})\n")
     hdr = ("bore  inter  defl   vMises  grip   axhold  holds  eject  cycles")
     print(hdr)
@@ -232,6 +248,7 @@ def main() -> None:
 
     # results artifacts
     out = {"assumptions": {
+        "nozzle_tip_od_mm": NOZZLE_TIP_OD,
         "nozzle_od_mm": NOZZLE_OD, "package_mass_kg": PACKAGE_MASS_KG,
         "accel_z_mps2": ACCEL_Z, "retention_sf": RETENTION_SF, "mu": MU,
         "eject_force_max_n": EJECT_FORCE_MAX_N,

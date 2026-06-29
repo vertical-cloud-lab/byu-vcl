@@ -138,11 +138,15 @@ defaults in `CYCLE_WELLS`.
   slitted bores spread the strain across six spring fingers and should last
   far longer, which is exactly what the cyclic test will quantify. Carry the
   slitted **3.40 mm** and the solid **3.40–3.50 mm** survivors forward.
-- **Re-center round 2 on the FEA winner.** The fit study recommends a **3.65 mm**
-  bore against a Ø3.70 mm nozzle, but round 1 grip topped out at 3.50 mm —
-  strong evidence the real nozzle/printed-bore is smaller than the 3.70 mm
-  assumption. A **caliper measurement of the actual P20 nozzle OD and of one
-  printed bore** would let us re-anchor the FEA and skip a round.
+- **Re-center round 2 on the FEA winner.** With the nozzle tip OD now measured
+  ([2.83 mm](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4837845180))
+  and the engagement OD anchored on round 1 (≈ 3.42 mm), the re-run fit study
+  recommends a **3.40 mm** bore — matching the round-1 slitted result exactly,
+  and confirming the real nozzle/printed-bore is much smaller than the original
+  3.70 mm assumption. Every bore tighter than 3.40 mm grips too hard to eject, so
+  center round 2 just **above 3.40 mm (3.38–3.44 mm in 0.02 mm steps)**. A
+  caliper reading of the nozzle OD a few mm **up from the tip** (where the socket
+  actually seats) would pin the engagement OD directly and tighten this further.
 
 ### What to send back after printing/testing
 
@@ -195,8 +199,8 @@ a CalculiX static analysis: base fixed, the tip band pushed radially outward by
 the interference and the radial reaction force read back as the inward **grip**.
 
 `fea_fit_study.py` then runs that solve on **every bore in the array**, against
-a nominal **Ø3.70 mm** nozzle, and folds in the **real package weight** and
-ejectability:
+the **empirically anchored engagement OD** (see note below), and folds in the
+**real package weight** and ejectability:
 
 - *Deflection* per bore = (nozzle OD − bore ID)/2 (interference per side).
 - *Durability* = peak von Mises vs PETG yield (50 MPa) and a released-cycle
@@ -210,37 +214,55 @@ ejectability:
   stress repeats on insertion and returns to ~0 on release (elastic shakedown,
   no ratcheting).
 
+**Nozzle OD — measured.** Tim measured the P20 nozzle OD with calipers at the
+**bottom face** of the pipette (where a fake tip first meets the nozzle):
+[**2.83 mm**](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4837845180).
+The nozzle is tapered, and the OT-2 drives the fake tip *up* the cone to a fixed
+depth, so the socket grips higher up where the OD is larger than the 2.83 mm
+tip — not at the tip itself. Round-1 brackets that **engagement OD**: the
+slitted socket gripped only at bore ID 3.40 mm (3.45 mm+ slid off), so the
+effective OD where the slitted socket seats is just above 3.40 mm. The study is
+therefore anchored on an engagement OD of **3.42 mm** (and swept over the
+actually-printed `fake_tip_test_array_slit_small` bores, 2.95–3.40 mm) rather
+than the old Ø3.70 mm guess.
+
 Results (`fea/fit_study_results.json`, plot `renders/fea_fit_study.png`):
 
 ![fit study](renders/fea_fit_study.png)
 
 | bore ID | interf. | defl. | peak vM | grip | axial hold | holds? | ejects? | est. cycles |
 |---|---|---|---|---|---|---|---|---|
-| 3.40 | +0.30 | 0.150 | 65.1 | 117.3 | 35.2 | Y | **no** | 1e3 |
-| 3.45 | +0.25 | 0.125 | 52.9 | 95.4 | 28.6 | Y | **no** | 1e3 |
-| 3.50 | +0.20 | 0.100 | 40.0 | 76.3 | 22.9 | Y | **no** | 9e3 |
-| 3.55 | +0.15 | 0.075 | 28.6 | 56.6 | 17.0 | Y | **no** | 3e5 |
-| 3.60 | +0.10 | 0.050 | 20.0 | 36.6 | 11.0 | Y | **no** | ∞ |
-| **3.65** | **+0.05** | **0.025** | **11.5** | **17.8** | **5.3** | **Y** | **Y** | **∞** |
-| 3.70 | 0.00 | 0.000 | 0 | 0 | 0 | no | Y | ∞ |
-| 3.75–3.85 | −0.05…−0.15 | 0 | 0 | 0 | 0 | no | Y | ∞ |
+| **3.40** | **+0.02** | **0.010** | **4.3** | **7.8** | **2.3** | **Y** | **Y** | **∞** |
+| 3.35 | +0.07 | 0.035 | 14.0 | 27.6 | 8.3 | Y | **no** | ∞ |
+| 3.30 | +0.12 | 0.060 | 24.5 | 48.2 | 14.4 | Y | **no** | ∞ |
+| 3.25 | +0.17 | 0.085 | 34.9 | 70.8 | 21.2 | Y | **no** | 4e4 |
+| 3.20 | +0.22 | 0.110 | 47.6 | 93.5 | 28.1 | Y | **no** | 2e3 |
+| 3.15 | +0.27 | 0.135 | 59.1 | 115.6 | 34.7 | Y | **no** | 1e3 |
+| 3.10 | +0.32 | 0.160 | 78.4 | 137.4 | 41.2 | Y | **no** | 1e3 |
+| 3.05 | +0.37 | 0.185 | 87.4 | 162.7 | 48.8 | Y | **no** | 1e3 |
+| 3.00 | +0.42 | 0.210 | 87.1 | 186.2 | 55.9 | Y | **no** | 1e3 |
+| 2.95 | +0.47 | 0.235 | 107.5 | 210.4 | 63.1 | Y | **no** | 1e3 |
 
-**Recommended bore ID ≈ 3.65 mm.** It is the *smallest* bore that still
-ejects (grip < 20 N) and stays under the endurance limit (11.5 MPa → unlimited
-cycles), so it grips hardest — best pull-off margin (5.3 N ≈ 2.4× the required
-2.2 N) — without being so tight that the ejector can't release it. Each 60°
-finger of the as-built **6-finger** socket is narrower than a 120° one, but
-there are twice as many, so the socket grips stiffer overall (≈2× the total grip
-of the earlier 3-finger model); 3.60 mm therefore now exceeds the 20 N eject cap
-and the winner moves up one step to 3.65 mm. Tighter bores (≤ 3.60) grip well but
-**won't eject** and accumulate fatigue; looser bores (≥ 3.70) don't grip at the
-nominal nozzle OD. The round-2 sweep should therefore center on **3.63–3.67 mm
-in 0.02 mm steps**.
+**Recommended bore ID ≈ 3.40 mm** — which matches the round-1 slitted result
+exactly (3.40 mm was the only slitted tip that gripped). At the 3.42 mm
+engagement OD it is the *largest* (loosest) bore in the small array and the only
+one that both holds (2.3 N ≈ the required 2.2 N) and stays under the 20 N eject
+cap. Every tighter bore (≤ 3.35 mm) grips far harder — 27–210 N — so it would
+hold strongly but **resist ejection** and, below ~3.25 mm, exceed the PETG
+endurance limit. In other words, for the slitted socket the binding constraint
+is **ejection, not hold**: stepping the bore down toward the 2.83 mm nozzle tip
+buys grip the design doesn't need and loses the ejectability it does. The
+smaller array's real value is to empirically map where grip crosses the eject
+threshold — the FEA puts that crossing right at the top of the sweep, so the
+round-2 sweep should center just **above 3.40 mm (3.38–3.44 mm in 0.02 mm
+steps)** to find the loosest reliable grip.
 
-> These numbers assume nozzle OD = 3.70 mm and package mass = 50 g. Both are
-> easy to set at the top of `fea_fit_study.py`; once calipers give the real
-> nozzle OD (and a scale gives the real package mass) re-running prints an
-> updated recommendation.
+> The model is anchored on the measured **2.83 mm nozzle-tip OD** plus the
+> round-1 grip onset (engagement OD ≈ 3.42 mm); both are set at the top of
+> `fea_fit_study.py`. The largest remaining unknown is the nozzle **taper**
+> (how fast OD grows above the tip) and the seating depth — a caliper reading of
+> the nozzle OD a few mm up from the tip would pin the engagement OD directly
+> and let the sweep tighten further.
 
 ```bash
 sudo apt-get install calculix-ccx && pip install gmsh

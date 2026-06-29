@@ -23,10 +23,13 @@ Opentrons does not publicly release precise nozzle drawings. The values below ar
 
 | Parameter | Estimated Value | Source |
 |---|---|---|
+| Nozzle tip outer diameter (OD, at bottom face) | **2.83 mm (measured)** | Caliper measurement on the actual P20 GEN2 ([PR #60 comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4837845180)) |
 | Nozzle shaft outer diameter (OD) | 3.6–3.8 mm | GenFollower tip specs, GMP Plastic fit guide |
 | Nozzle taper (half-angle) | ~2–5° | Industry standard for air-displacement pipettes |
 | Nozzle usable length (below plunger housing) | ~8–12 mm | Visual reference from Opentrons product images |
 | O-ring present on nozzle | Yes (adds ~0.1–0.2 mm effective OD) | Opentrons GEN2 user guide |
+
+The measured **2.83 mm** is the OD at the very *bottom* of the nozzle. Because the nozzle is tapered, its OD grows above that face, and the OT-2 drives the fake tip *up* the cone to a fixed depth — so the socket grips higher up where the OD is larger, not at the 2.83 mm tip. Round-1 testing brackets that **engagement OD** (the OD where the socket actually seats): the slitted socket gripped only at bore ID 3.40 mm, so the engagement OD is just above 3.40 mm. The FEA fit study is anchored on that engagement OD (≈3.42 mm); the 2.83 mm tip OD sets the *lower bound* on how small a bore can go before it bottoms out on the nozzle's end face.
 
 Compatible OT-2 20 µL tip reference dimensions (mount end):
 
@@ -158,7 +161,7 @@ Also vary the **wall thickness** (1.0, 1.2, 1.5, 2.0 mm) and **socket depth** (6
 
 ### FEA-guided starting point
 
-A CalculiX fit study over all 10 round-1 bore IDs (see `cad/fea_fit_study.py` and `cad/README.md`) — using a nominal Ø3.70 mm nozzle, the ~50 g package weight, friction retention (μ≈0.30, safety factor 3), an ejectability cap (~20 N grip), and a released-cycle endurance limit (~25 MPa) — recommends a **starting bore ID of ≈3.65 mm**. It is the *smallest* bore that still ejects and stays under the PETG endurance limit (11.5 MPa, unlimited cycles), so it grips hardest (≈2.4× the required pull-off) while remaining ejectable; bores ≤3.60 mm grip well but won't eject, and bores ≥3.70 mm don't grip at the nominal nozzle OD. The study models the as-built **6-finger** socket, which is stiffer overall (≈2× the total grip of a 3-finger socket), so the ejectability cap pushes the winner up one step from the earlier 3-finger estimate (3.60 mm). Center the round-2 sweep on **3.63–3.67 mm in 0.02 mm steps** and update the nozzle OD in the study once it is measured with calipers.
+A CalculiX fit study over the printed slitted bore IDs (see `cad/fea_fit_study.py` and `cad/README.md`) — now anchored on the **measured 2.83 mm nozzle-tip OD** plus the round-1 grip onset (engagement OD ≈3.42 mm), with the ~50 g package weight, friction retention (μ≈0.30, safety factor 3), an ejectability cap (~20 N grip), and a released-cycle endurance limit (~25 MPa) — recommends a **starting bore ID of ≈3.40 mm**, matching the round-1 slitted result (3.40 mm was the only slitted tip that gripped). At the 3.42 mm engagement OD, 3.40 mm is the only bore that both holds (2.3 N ≈ the required 2.2 N) and stays under the 20 N eject cap; every tighter bore (≤3.35 mm, stepping toward the 2.83 mm tip) grips far harder (27–210 N) so it holds strongly but **resists ejection**, and below ~3.25 mm also exceeds the PETG endurance limit. For the slitted socket the binding constraint is therefore **ejection, not hold** — so center the round-2 sweep just **above 3.40 mm (3.38–3.44 mm in 0.02 mm steps)**, and measure the nozzle OD a few mm up from the tip (where the socket seats) to pin the engagement OD directly. The study models the as-built **6-finger** socket (60° sectors), ≈2× stiffer overall than a 3-finger socket.
 
 ## Detailed Dimensions — Initial Prototype
 
