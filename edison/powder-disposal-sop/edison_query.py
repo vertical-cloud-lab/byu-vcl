@@ -3,7 +3,10 @@ from uuid import UUID
 from edison_client import EdisonClient, TaskRequest, JobNames
 from edison_client.models.app import RuntimeConfig
 
-key = (os.environ.get('EDISON_API_KEY') or os.environ.get('EDISON_PLATFORM_API_KEY')).strip()
+key = os.environ.get('EDISON_API_KEY') or os.environ.get('EDISON_PLATFORM_API_KEY')
+if not key:
+    raise SystemExit('Set EDISON_API_KEY (or EDISON_PLATFORM_API_KEY) in the environment.')
+key = key.strip()
 client = EdisonClient(api_key=key)
 
 PRIOR = "8288144a-12bc-4f3a-84ad-a7eec45a58bb"  # prior LITERATURE_HIGH continuation (emptying cadence)
