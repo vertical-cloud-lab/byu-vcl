@@ -206,9 +206,13 @@ the **empirically anchored engagement OD** (see note below), and folds in the
 - *Durability* = peak von Mises vs PETG yield (50 MPa) and a released-cycle
   (R=0) endurance limit (~25 MPa); below the limit the finger lasts
   effectively unlimited cycles.
-- *Retention* = friction grip `μ·F_grip` (μ≈0.30) vs the pull-off a 50 g
-  package needs while the OT-2 moves it, with safety factor 3
-  (≈ 2.2 N required).
+- *Retention* = friction grip `μ·F_grip` (μ≈0.30) vs the pull-off the loaded
+  package needs while the OT-2 moves it, with safety factor 3. The package mass
+  is built up from a documented **bill of materials** (`PACKAGE_BOM_G` in
+  `fea_fit_study.py`: Pico W, AS7341 sensor, LiPo SHIM, 500 mAh battery, Qi
+  receiver, cabling/screws, and the ~23 cm³ PETG enclosure) → **≈ 50 g**, the
+  conservative top of the repo's own ~40–50 g estimate (the mock package's ~8 %
+  infill is tuned to mass-match the real one). That gives ≈ **2.2 N required**.
 - *Ejectability* = grip below what the P20 ejector can overcome (~20 N).
 - *Repeated FEA* = a 3-cycle load→release→load run on the winner confirms the
   stress repeats on insertion and returns to ~0 on release (elastic shakedown,
@@ -247,7 +251,12 @@ Results (`fea/fit_study_results.json`, plot `renders/fea_fit_study.png`):
 exactly (3.40 mm was the only slitted tip that gripped). At the 3.42 mm
 engagement OD it is the *largest* (loosest) bore in the small array and the only
 one that both holds (2.3 N ≈ the required 2.2 N) and stays under the 20 N eject
-cap. Every tighter bore (≤ 3.35 mm) grips far harder — 27–210 N — so it would
+cap. That 2.3 N grip retains up to **~52 g** at SF 3 — only a thin margin over
+the ~50 g BOM, but round-1 testing independently confirms this bore held the
+real loaded package, so the conservative μ/SF assumptions are not over-stating
+the requirement. (If the assembled unit is heavier than ~52 g, the binding
+constraint flips back to *hold*, favouring a slightly tighter bore — worth a
+quick check on the connected scale.) Every tighter bore (≤ 3.35 mm) grips far harder — 27–210 N — so it would
 hold strongly but **resist ejection** and, below ~3.25 mm, exceed the PETG
 endurance limit. In other words, for the slitted socket the binding constraint
 is **ejection, not hold**: stepping the bore down toward the 2.83 mm nozzle tip
