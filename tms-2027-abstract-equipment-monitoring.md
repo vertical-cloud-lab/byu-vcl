@@ -19,8 +19,7 @@
 | 1 | Seth Leavitt | BYU Mechanical Engineering | Presenter |
 | 2 | Yanghuang Liu | Acceleration Consortium, University of Toronto | Co-author |
 | 3 | Jonathan Woo | Acceleration Consortium, University of Toronto | Co-author |
-| 4 | Kelvin Chow | Acceleration Consortium, University of Toronto | Co-author |
-| 5 | Sterling G. Baird | BYU Mechanical Engineering; Acceleration Consortium, University of Toronto | PI |
+| 4 | Sterling G. Baird | BYU Mechanical Engineering; Acceleration Consortium, University of Toronto | PI |
 
 ## Abstract
 
