@@ -31,10 +31,9 @@ underscored by recent calls for aviation-style "black box" recording in self-dri
 continuous livestreaming infrastructure for SDL operations. Unlike task-specific computer vision
 systems for real-time process control, our system provides passive, equipment-level monitoring:
 one dedicated camera per equipment module, with tunable frame rate and resolution and
-failsafe auto-restart mechanisms for sustained unattended operation. At the Acceleration
-Consortium we deployed dozens of modules across many distinct lab spaces, achieving >99%
+failsafe auto-restart mechanisms for sustained unattended operation. To date, we have deployed dozens of modules across many distinct lab spaces, achieving >99%
 uptime while collecting tens of thousands of hours of video of SDL workflows; the design has
-been replicated at BYU and is being implemented at several other locations. Recorded streams
+been replicated in multiple locations. Recorded streams
 are linked to timestamps and experiment metadata, providing a visual audit trail that
 complements structured experiment records. The same footage yields heuristic, non-invasive
 equipment utilization estimates (fraction of non-still frames), and post-processing workflows
