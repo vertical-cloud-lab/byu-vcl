@@ -23,26 +23,22 @@
 
 ## Abstract
 
-As laboratories move toward higher levels of autonomy, continuous equipment monitoring
-becomes essential for debugging, provenance, safety, and operational analytics — a need
-underscored by recent calls for aviation-style "black box" recording in self-driving laboratories
-(SDLs). We present a fully open, very low-cost (<$100 per module), many-camera, multi-site
-continuous livestreaming infrastructure for SDL operations. Unlike task-specific computer vision
-systems for real-time process control, our system provides passive, equipment-level monitoring:
-one dedicated camera per equipment module, with tunable frame rate and resolution and
-failsafe auto-restart mechanisms for sustained unattended operation. To date, we have deployed dozens of modules across many distinct lab spaces, achieving >99%
-uptime while collecting tens of thousands of hours of video of SDL workflows; the design has
-been replicated in multiple locations. Recorded streams
-are linked to timestamps and experiment metadata, providing a visual audit trail that
-complements structured experiment records. The same footage yields heuristic, non-invasive
-equipment utilization estimates (fraction of non-still frames), and post-processing workflows
-remove idle periods to accelerate review. Cameras are positioned so only operators' hands and
-forearms are captured, a privacy-by-design choice suited to shared facilities. The approach
-applies directly to materials workflows — furnaces, synthesis platforms, and characterization
-instruments — and complements ongoing efforts to democratize low-cost SDL infrastructure.
-Beyond monitoring, the accumulated footage is a potential source of training data for future
-robot-learning models. All hardware designs, firmware, and documentation are openly available
-(https://ac-training-lab.readthedocs.io/en/latest/devices/picam.html).
+*(Word limit: 150; current version: 147 words)*
+
+As laboratories move toward higher autonomy, continuous equipment monitoring becomes
+essential for debugging, provenance, and safety — echoing recent calls for aviation-style
+"black box" recording in self-driving laboratories (SDLs). We present a fully open, low-cost
+(<$100/module), many-camera, multi-site livestreaming infrastructure for SDL operations.
+Unlike task-specific computer vision for real-time process control, each equipment module
+receives a dedicated passive camera with tunable frame rate and resolution and failsafe
+auto-restart for unattended operation. Dozens of modules deployed across multiple
+institutions have achieved >99% uptime while collecting tens of thousands of hours of video.
+Streams linked to timestamps and experiment metadata provide a visual audit trail
+complementing structured records; the footage also yields heuristic utilization estimates
+and, prospectively, robot-learning training data. Cameras capture only operators' hands and
+forearms, a privacy-by-design choice for shared facilities housing furnaces, synthesis
+platforms, and characterization instruments. All hardware, firmware, and documentation are
+openly available (https://ac-training-lab.readthedocs.io/en/latest/devices/picam.html).
 
 <!-- Source references: byu-vcl issue #9; AC Training Lab picam docs; AccelerationConsortium/streamingLambda -->
 <!-- Framing informed by Edison Scientific feedback (PR #146): infrastructure novelty, visual audit trail,
