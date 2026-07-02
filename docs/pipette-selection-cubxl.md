@@ -86,5 +86,96 @@ For a **~300 µL, < $300, open-source** head closest to OT-2 P300 GEN2 behavior:
 - Pipettin-bot / OLA: gitlab.com/pipettin-bot, docs.openlabautomata.xyz
 - Science Jubilee pipette tool docs; Opentrons P300 GEN2 white paper & product page
 
-> An Edison Scientific literature query was submitted in parallel to expand and cross-check this
-> survey; its findings are appended below once available.
+## Edison Scientific cross-check (peer-reviewed literature)
+
+A high-effort Edison Scientific (FutureHouse PaperQA) literature query was run in parallel
+(task `becbd72a-0746-40ac-ba46-b8835b91b577`, `job-futurehouse-paperqa3-high`). Its answer is
+grounded in ~10 peer-reviewed sources and both **confirms** and **corrects** the survey above.
+
+### Key correction: the Digital Pipette is a *milliliter-scale* device, not 300 µL
+
+The most important finding. Edison's read of the primary papers is that **both Digital Pipette
+versions operate an order of magnitude above the 300 µL target**:
+
+- **v1** (Yoshikawa 2023, [10.1039/d3dd00115f](https://doi.org/10.1039/d3dd00115f)) — validated
+  around a **10 mL** syringe (~0.2% random error at 10 mL); syringe/Luer tips, **no disposable
+  200–300 µL tip support**.
+- **v2** (Yoshikawa 2026, [10.1039/d5dd00336a](https://doi.org/10.1039/d5dd00336a)) — ~**$270**
+  air-displacement redesign with robotic tip exchange, but its **validated range is 0.2–10 mL**,
+  using **BRAND 1–10 mL** tips. Gravimetric ISO 8655-6 testing was done at **1, 5, and 10 mL**
+  (systematic error −0.49% to −0.10%, CV 0.10–0.58%).
+
+So the earlier write-up's implication that the Digital Pipette v2 is a drop-in ~300 µL, OT-2-P300
+replacement is **not supported**: hitting 300 µL would require a smaller-syringe redesign and fresh
+validation, not an off-the-shelf build. It remains the **most Jubilee-ready** open design (a
+sub-$100 Jubilee mount is demonstrated in Pelkie 2025), just not at the target volume as published.
+
+### New option surfaced: FINDUS (best open-source volume-range match)
+
+Edison surfaced **FINDUS** (Barthels 2020, SLAS Technology,
+[10.1177/2472630319877374](https://doi.org/10.1177/2472630319877374)) — an open-source 3D-printable
+liquid handler (<$400 full system, ~50 h build) that drives **standard P200 (20–200 µL) / P1000
+(200–1000 µL)** pipettes with a NEMA 11 stepper, ESP8266 control, **<0.3% error, ISO 8655
+compliant**, and **standard disposable tips**. Its **P200 module is the closest volume-range match
+to the OT-2 P300 class** of any open-source design found, and the stepper drive is naturally
+Duet3D/RepRapFirmware-compatible. Catch: it's built into its own Cartesian gantry, so you'd extract
+and adapt the pipette subassembly for a Jubilee tool-changer (custom mechanical work).
+
+Other designs Edison flagged: **OTTO** (Florian 2020, ~$1,500, ~2.5% error — within budget but less
+accurate), **Sidekick** (Keesey 2022, ~$710, **dispense-only, no aspiration, no tips** — not a
+general pipette replacement), and **Pipettin-bot/OLA** (no validated pipette-head specs in the
+peer-reviewed literature).
+
+### Edison's ranked recommendation (300 µL, <$300, open-source, OT-2-like)
+
+1. **FINDUS pipette subassembly (P200 module)** — best volume match (20–200 µL), best documented
+   accuracy (<0.3%, ISO 8655), standard tips, stepper-based → Jubilee-friendly. Needs mechanical
+   adaptation off its native gantry.
+2. **AC Digital Pipette v2, redesigned downward** — best-documented low-cost open build with a
+   demonstrated Jubilee adapter, but 300 µL sits at the extreme bottom of its 0.2–10 mL validated
+   range (redesign + revalidation required).
+3. **Science Jubilee OT-2 P300 adapter** — closest to *true* OT-2 P300 behavior (~0.7% accuracy,
+   ~0.15% CV, standard Opentrons tips) via a demonstrated 3D-printed adapter (Pelkie 2025), but the
+   pipette itself is proprietary and hard to source standalone; effective cost likely above $300.
+4. **AC Digital Pipette v1** — cheapest (<$200), simplest, but Luer-syringe / no disposable tips and
+   a worse fit for 300 µL semantics than v2.
+
+### On "open-source AND commercially sold"
+
+Edison reaches the **same conclusion** as the survey but states it more starkly: **no design was
+found that is simultaneously (a) open-source hardware, (b) sold assembled or as a kit, (c) in the
+20–300 µL range, and (d) built to integrate with a custom motion platform.** The nearest
+"open + commercial" embodiment is still **Opentrons** — practically, an **OT-2 P300 mounted via the
+Science Jubilee adapter** — but the pipette remains proprietary. Edison explicitly calls this an
+**open-hardware gap / opportunity**.
+
+### Where Edison agrees with the survey
+
+- OT-2 P300 GEN2 is the accuracy/precision baseline (Edison cites ~0.7% accuracy, ~0.15% CV).
+- The Science Jubilee adapter is the cleanest OT-2-class-on-Jubilee route (Pelkie 2025 — note
+  S. Baird is a co-author).
+- The AC Digital Pipette is the most reproduced / Jubilee-ready open design.
+- No turnkey commercial version of the sub-$300 open designs exists.
+
+### Net effect on the recommendation
+
+- If you want the **closest published open-source match to OT-2 P300 volumes/specs at <$300**, the
+  strongest lead is now **adapting the FINDUS P200 pipette drive**, not the Digital Pipette.
+- If you want the **easiest Jubilee integration** and can tolerate a volume redesign, the
+  **Digital Pipette v2** is still attractive (existing Jubilee mount, active development).
+- If you want **guaranteed OT-2 accuracy** and can spend toward the ceiling, the **Science Jubilee +
+  OT-2 P300** hybrid remains the safest, at the cost of true openness and a higher price.
+
+### Additional peer-reviewed sources (from Edison)
+
+- FINDUS — Barthels et al., SLAS Technology 2020, [10.1177/2472630319877374](https://doi.org/10.1177/2472630319877374)
+- OTTO — Florian et al., Scientific Reports 2020, [10.1038/s41598-020-70465-5](https://doi.org/10.1038/s41598-020-70465-5)
+- Sidekick — Keesey et al., HardwareX 2022, [10.1016/j.ohx.2022.e00319](https://doi.org/10.1016/j.ohx.2022.e00319)
+- Digital Pipette v1 — Yoshikawa et al., Digital Discovery 2023, [10.1039/d3dd00115f](https://doi.org/10.1039/d3dd00115f)
+- Digital Pipette v2 — Yoshikawa et al., Digital Discovery 2026, [10.1039/d5dd00336a](https://doi.org/10.1039/d5dd00336a)
+- Science Jubilee / democratizing SDLs — Pelkie et al., ChemRxiv 2025, [10.26434/chemrxiv-2025-zhkrf](https://doi.org/10.26434/chemrxiv-2025-zhkrf)
+- Flexible pipette-based tool changes — Nazeri et al., HardwareX 2025, [10.1016/j.ohx.2025.e00653](https://doi.org/10.1016/j.ohx.2025.e00653)
+- Low-cost 3D printing for lab automation (review) — Doloi et al., Digital Discovery 2025, [10.1039/d4dd00411f](https://doi.org/10.1039/d4dd00411f)
+- Adapting a low-cost pipetting robot (nanoliter) — Councill et al., SLAS Technology 2021, [10.1177/2472630320973591](https://doi.org/10.1177/2472630320973591)
+- Robotic liquid-handling in genomics (commercial context) — Tegally et al., BMC Genomics 2020, [10.1186/s12864-020-07137-1](https://doi.org/10.1186/s12864-020-07137-1)
+- Open hardware review — Wenzel, PLOS Biology 2023, [10.1371/journal.pbio.3001931](https://doi.org/10.1371/journal.pbio.3001931)
