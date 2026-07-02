@@ -31,6 +31,12 @@ Parts generated (STL into ``stl/``, STEP into ``step/``):
    ``verify_real_package_volume``), then given a P20 socket bored *concentric*
    with the post axis (the original Ø7.5 mm bore sat 3.7 mm off-centre and grips
    the ejector sleeve; this one is centred so it engages the ~3.6 mm nozzle).
+6. ``real_enclosure_p20_tip`` — the *actual* enclosure imported from the
+   reference STEP with only its fake tip swapped: the old post solid is
+   dropped, the residual bore in the body top wall is plugged, and the tested
+   "best" tip (Ø6 x 8 mm socket, 3.40 mm bore, 6 spring-finger slits) is
+   grafted concentric on the old post axis at the same height
+   (``verify_real_enclosure_p20_tip`` checks all of this).
 
 Geometry notes (measured from the original AC "Sensor package main
 enclosure.step", P300 version):
@@ -95,6 +101,7 @@ class Params:
     bore_ids_small: tuple = (2.95, 3.00, 3.05, 3.10, 3.15, 3.20, 3.25, 3.30,
                              3.35, 3.40)
     nominal_bore_id: float = 3.55          # round-1 best guess (mid-depth ID)
+    best_bore_id: float = 3.40             # round-1 slitted winner + FEA rec.
     nozzle_taper_half_angle_deg: float = 1.78  # measured from original P300 STEP
     socket_depth: float = 8.0
     socket_od: float = 6.0                 # top rim must sit under ejector sleeve
@@ -451,6 +458,119 @@ def make_real_sensor_package_p20(bore_mid_id: float | None = None,
     return part.part
 
 
+def _split_real_enclosure_solids():
+    """Import the actual printed enclosure STEP and split it into
+    (body, old fake-tip post).
+
+    The reference file conveniently keeps the fake-tip post as its own solid
+    (base plane y = 66, top y = 85.5, outer cone + Ø7.5 -> 6.4 tapered bore,
+    all concentric on the part's Y axis at x = z = 0), so "lopping off" the
+    old tip is exact: drop that solid and keep the body untouched.
+    """
+    imported = import_step(str(REAL_ENCLOSURE_STEP))
+    solids = sorted(imported.solids(), key=lambda s: s.bounding_box().min.Y)
+    body, post = solids[0], solids[-1]
+    # sanity: the post solid sits entirely above the body top face
+    assert post.bounding_box().min.Y >= body.bounding_box().max.Y - 1e-3
+    return body, post
+
+
+def make_real_enclosure_p20_tip(bore_mid_id: float | None = None,
+                                p: Params = P, slits: bool = True) -> Compound:
+    """The **actual** printed enclosure (imported from the reference STEP,
+    body untouched) with its fake tip replaced by the tested "best" P20 tip.
+
+    Unlike ``make_real_sensor_package_p20`` (a from-scratch parametric
+    recreation), this edits the real part directly per PR #60: the old post
+    solid (Ø7.5 mm ejector-sleeve bore) is dropped, the residual ~2 mm of
+    bore that continued into the body top wall is plugged, and a new tip is
+    grafted **concentric on the old post axis** with the **same 19.5 mm
+    height** (top face stays at the original z), so nothing else about the
+    part changes.
+
+    New tip (bottom -> top), mirroring the round-1 winning test-tip stack:
+    base flare matching the old post's Ø14 base circumference, Ø8 stem,
+    45 deg chamfer into the Ø10 flange, then the Ø6 x 8 mm socket with the
+    1.78 deg tapered bore (mid-ID default ``p.best_bore_id`` = 3.40 mm, the
+    round-1 slitted winner and FEA recommendation) + 6 spring-finger slits.
+
+    Returned post-up (+Z), like ``make_real_sensor_package_p20``.
+    """
+    bore_mid_id = bore_mid_id or p.best_bore_id
+    body, old_post = _split_real_enclosure_solids()
+    # rotate to post-up: native +Y post axis -> +Z (axis stays at x = y = 0)
+    body = Rot(90, 0, 0) * body
+    old_post = Rot(90, 0, 0) * old_post
+    pb = old_post.bounding_box()
+    axis_x, axis_y = pb.center().X, pb.center().Y   # old post axis: (0, 0)
+    z_base, z_tip = pb.min.Z, pb.max.Z              # 66.0 .. 85.5
+    base_r = pb.size.X / 2                          # Ø14.04 base flare
+    stem_r = p.tip_body_od / 2
+    flange_r = p.tip_flange_od / 2
+    z_socket = z_tip - p.socket_depth
+    z_flange = z_socket - p.tip_flange_h
+    z_chamfer = z_flange - (flange_r - stem_r)      # 45 deg into the flange
+    with BuildPart() as part:
+        add(body)
+        with Locations((axis_x, axis_y, 0)):
+            # plug the residual Ø7.4 bore in the body top wall (part of the
+            # old tip's bore, so filling it belongs to the tip swap)
+            with Locations((0, 0, z_base)):
+                Cylinder(3.7, 2.0, align=(Align.CENTER, Align.CENTER,
+                                          Align.MAX))
+                # base flare: old base circumference down to the stem
+                Cone(base_r, stem_r, 3.5,
+                     align=(Align.CENTER, Align.CENTER, Align.MIN))
+            with Locations((0, 0, z_base + 3.5)):
+                Cylinder(stem_r, z_chamfer - (z_base + 3.5),
+                         align=(Align.CENTER, Align.CENTER, Align.MIN))
+            with Locations((0, 0, z_chamfer)):
+                Cone(stem_r, flange_r, z_flange - z_chamfer,
+                     align=(Align.CENTER, Align.CENTER, Align.MIN))
+            with Locations((0, 0, z_flange)):
+                Cylinder(flange_r, p.tip_flange_h,
+                         align=(Align.CENTER, Align.CENTER, Align.MIN))
+            with Locations((0, 0, z_socket)):
+                Cylinder(p.socket_od / 2, p.socket_depth,
+                         align=(Align.CENTER, Align.CENTER, Align.MIN))
+        _cut_socket_features(z_tip, bore_mid_id, p, tapered=True, slits=slits,
+                             cx=axis_x, cy=axis_y)
+    return part.part
+
+
+def verify_real_enclosure_p20_tip(p: Params = P) -> dict:
+    """Checks for ``make_real_enclosure_p20_tip``: the body is untouched,
+    the new tip is concentric with the old post circumference, the top face
+    height is preserved, and the socket is full depth."""
+    body, old_post = _split_real_enclosure_solids()
+    body, old_post = Rot(90, 0, 0) * body, Rot(90, 0, 0) * old_post
+    new = make_real_enclosure_p20_tip(p=p)
+    pb, nb, bb = (old_post.bounding_box(), new.bounding_box(),
+                  body.bounding_box())
+    z_base = pb.min.Z
+    # body untouched: below the post base the new part is exactly the body
+    box = Box(200, 200, 200, align=(Align.CENTER, Align.CENTER, Align.MAX),
+              mode=Mode.PRIVATE).moved(Location((0, 0, z_base)))
+    delta = (new & box).volume - body.volume
+    # new tip concentric with the old post axis (bbox-symmetry centres)
+    tip_box = Box(200, 200, 200,
+                  align=(Align.CENTER, Align.CENTER, Align.MIN),
+                  mode=Mode.PRIVATE).moved(Location((0, 0, z_base + 0.01)))
+    new_tip = new & tip_box
+    tc, pc = new_tip.bounding_box().center(), pb.center()
+    return {
+        "body_volume_delta_mm3": round(delta, 3),
+        "tip_axis_offset_mm": round(math.hypot(tc.X - pc.X, tc.Y - pc.Y), 4),
+        "old_top_z": round(pb.max.Z, 3),
+        "new_top_z": round(nb.max.Z, 3),
+        "bbox_xy_match": (abs(nb.min.X - bb.min.X) < 1e-6
+                          and abs(nb.max.X - bb.max.X) < 1e-6
+                          and abs(nb.min.Y - bb.min.Y) < 1e-6
+                          and abs(nb.max.Y - bb.max.Y) < 1e-6),
+        "n_solids": len(new.solids()),
+    }
+
+
 def verify_real_package_volume(p: Params = P) -> dict:
     """Compare the from-scratch recreation against the imported reference STEP.
 
@@ -485,7 +605,10 @@ def export_all(p: Params = P) -> dict[str, Compound]:
         "fake_tip_insert": make_fake_tip_insert(p=p),
         "mock_sensor_package": make_mock_sensor_package(p=p),
         "real_sensor_package_p20": make_real_sensor_package_p20(p=p),
+        "real_enclosure_p20_tip": make_real_enclosure_p20_tip(p=p),
     }
+    checks = verify_real_enclosure_p20_tip(p)
+    print(f"real_enclosure_p20_tip checks: {checks}")
     vmatch = verify_real_package_volume(p)
     if vmatch:
         print(f"real_sensor_package_p20 volume check: recreated "
