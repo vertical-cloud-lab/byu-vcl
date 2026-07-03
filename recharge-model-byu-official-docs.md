@@ -9,6 +9,14 @@
 > Machine) snapshots of the official pages; snapshot dates are given per source. Live
 > URLs are listed alongside archived ones — **verify against the live pages before acting**.
 >
+> **Verification update (2026-07-03).** @sgbaird attached a directly-downloaded copy of the
+> Recharge Center Policy & Procedures PDF to PR #107. Its full extracted text was compared
+> against the Wayback-derived findings below: **all quotes and provisions cited in this
+> document match the direct download verbatim** (10 pages; same June 2005 internal date,
+> OMB A-21 and PeopleSoft references). The direct copy is committed in this repo as
+> [`byu-recharge-center-policy-and-procedures.pdf`](byu-recharge-center-policy-and-procedures.pdf)
+> for durable provenance. Page numbers cited below (e.g. "p. 4") refer to that PDF.
+>
 > **Status:** Exploratory background research — **not policy or legal/tax advice.**
 > The controlling authority is BYU Regulatory Accounting / Financial Services, not this
 > document.
@@ -189,7 +197,8 @@ addresses it directly:
    not relax rate discipline: the moment any internal user pays with federal grant funds,
    the uniform-rate, cost-based, break-even, and unallowable-cost rules all apply to the
    rates charged. Startup funding removes constraints on the *cost pool inputs*
-   (depreciation), not on *rate conduct*.
+   (depreciation), not on *rate conduct*. (See §4 below for exactly what "rate conduct"
+   means and when each rule binds.)
 
 6. **Documentation to assemble now:** original purchase costs and funding source for each
    ≥$5,000 item, Equipment Inventory Office asset numbers, in-service dates, and
@@ -198,7 +207,76 @@ addresses it directly:
 
 ---
 
-## 4. Credit-card payments — the BYU-specific answer
+## 4. "Rate conduct rules" — clarified
+
+The phrase "rate conduct rules" in §3.5 was shorthand, and this section spells it out.
+The distinction being drawn is between two kinds of constraints in BYU's policy:
+
+- **Cost-pool rules** govern *what may go into the numerator* of
+  `Annual Rate = Annual Costs / Total Annual Usage` — e.g., whether equipment
+  depreciation is includable. This is where startup funding helps: because no federal
+  money bought the equipment, depreciation goes in (§3.1).
+- **Rate conduct rules** govern *how the center prices, bills, and settles* once the pool
+  is built. Startup funding does **not** relax any of these. Concretely, from the direct
+  PDF:
+
+  1. **Uniform internal pricing** — "All University users must be charged the same
+     rate(s) for the same level of service or products under the same circumstances"
+     (p. 4). The VCL cannot charge a grant-funded colleague more (or less) than a
+     startup-funded one for the same build; volume discounts must be equally available to
+     everyone who qualifies.
+  2. **Cost-based, break-even rates for internal users** — internal rates "must be based
+     upon costs" and designed to break even over 5 years (pp. 3, 5). No margin on
+     internal users, period.
+  3. **No asset accumulation through internal rates** — "Internal user rates cannot add
+     charges to accumulate assets. Funds to purchase equipment costing $5,000 or more, or
+     to accumulate inventory, cannot be included in internal user rates" (p. 5). New
+     equipment is funded through the depreciation-fed equipment reserve or the
+     external-user surcharge — never by padding internal rates.
+  4. **Only allowable costs in the pool** — no entertainment, interest, bad debt,
+     personal goods/services; no building depreciation/rent/O&M the center doesn't pay;
+     nothing already recovered through the F&A rate (p. 3).
+  5. **All usage in the denominator** — "Accurate logs must be kept of all usage, whether
+     billed or not" (p. 4). Comped or subsidized runs still count as usage, so paying
+     users' rates can't be inflated by shrinking the denominator.
+  6. **Consistent billing, no advance billing** — bill all customers "consistently and
+     accurately"; "Advanced billing for services or products is not allowed" (p. 2).
+  7. **Surplus/deficit roll-forward** — over- or under-recovery flows into the following
+     year's rates; irrecoverable deficits are the department's to fund (p. 6).
+  8. **External-user discipline** — externals pay cost + institutional overhead;
+     surcharges only on *non-federal* externals; externals who document federal funding
+     pay cost + overhead with no surcharge; external revenue tracked separately
+     (pp. 2, 5).
+  9. **Audit exposure** — records, operations, rates, and practices are "subject to audit
+     by Federal and Internal BYU auditors" (p. 3).
+
+**When do these rules bind?** Two layers:
+
+- **As BYU policy: from day one.** The policy states these rules unconditionally for all
+  recharge centers — none of them is written as contingent on federal money being
+  present. The moment the VCL is established as a recharge center, this is the operating
+  discipline, even if every internal user pays from startup or departmental funds.
+- **As federal compliance: when federal dollars pay a charge.** The federal cost
+  principles behind the policy (OMB A-21, now Uniform Guidance 2 CFR 200.468) attach to
+  charges made *to federal awards*. Once any internal user pays for a build with grant
+  money, a rate that over-recovers, discriminates among internal users, or embeds
+  unallowable costs stops being merely an internal-policy issue and becomes a federal
+  audit finding with disallowance risk. That is what §3.5's "the moment any internal user
+  pays with federal grant funds" refers to — the *stakes* escalate at that point, not the
+  rules themselves.
+
+**One genuine flexibility the direct read surfaced** (pp. 3–5): the center does *not*
+have to recover all its costs through rates. It may deliberately under-price by leaving
+costs out of the pool or by paying for specific users' services from "non-Federal,
+non-recharge center funds" (the policy's own example: students) — startup funds qualify.
+The conditions: the alternative funding source cannot be federal, unrecovered costs
+cannot be shifted to federal budgets, and they must be tracked so they can be excluded
+from any F&A proposal. So startup money can legitimately subsidize early internal usage
+below cost — what it cannot do is buy anyone a *different rate*.
+
+---
+
+## 5. Credit-card payments — the BYU-specific answer
 
 The generic analysis in `recharge-model-followup.md` §3 is confirmed and sharpened by
 BYU's official Treasury Services pages:
@@ -231,7 +309,7 @@ stay on journal-entry billing.
 
 ---
 
-## 5. Tax and nonprofit-intermediary touchpoints
+## 6. Tax and nonprofit-intermediary touchpoints
 
 - The **Tax Office** (part of Regulatory Accounting & Reporting) publishes the
   university's **501(c)(3) tax-exempt letter**, Utah sales-tax license and exemption
@@ -245,7 +323,7 @@ stay on journal-entry billing.
 
 ---
 
-## 6. Assessment vs. the earlier (generalized) research
+## 7. Assessment vs. the earlier (generalized) research
 
 | Topic | Followup doc predicted | BYU policy actually says |
 |-------|------------------------|--------------------------|
@@ -263,7 +341,7 @@ policy (10 pages) — they remain unattributed.
 
 ---
 
-## 7. Recommended next steps (verification, not policy)
+## 8. Recommended next steps (verification, not policy)
 
 1. Contact **Regulatory Accounting** (via Financial Services, finserve.byu.edu) to
    confirm the current version of the Recharge Center Policy, the current director, and
@@ -282,7 +360,7 @@ policy (10 pages) — they remain unattributed.
 
 ## References (official BYU sources)
 
-1. Brigham Young University, *Recharge Center Policy & Procedures* (PDF, internally dated June 2005). Sponsored Projects Office. Live: https://spo.byu.edu/00000190-3687-d777-a591-37af392d0001/rechargecenterpolicyprocedures-pdf · Archived: https://web.archive.org/web/20260307022648/https://spo.byu.edu/policies
+1. Brigham Young University, *Recharge Center Policy & Procedures* (PDF, internally dated June 2005). Sponsored Projects Office. Live: https://spo.byu.edu/00000190-3687-d777-a591-37af392d0001/rechargecenterpolicyprocedures-pdf · Archived: https://web.archive.org/web/20260307022648/https://spo.byu.edu/policies · Direct download (attached to PR #107 by @sgbaird, 2026-07-03) committed in this repo as `byu-recharge-center-policy-and-procedures.pdf`
 2. Brigham Young University, *Unallowable Costs – Guidelines* (PDF, April 1, 2014). Grants & Contracts Accounting. Live: https://spo.byu.edu/00000190-368d-d777-a591-37ad68b10000/unallowablecosts-pdf
 3. BYU Sponsored Projects, *Policies* page. https://spo.byu.edu/policies
 4. BYU Financial Services – Treasury, *Merchant Services*. https://finserve.byu.edu/treasury/merchant-services · Archived: https://web.archive.org/web/20251211125107/https://finserve.byu.edu/treasury/merchant-services
