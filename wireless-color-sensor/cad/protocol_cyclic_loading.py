@@ -38,6 +38,21 @@ CYCLE_WELLS = {
     "A3": 3.50,
 }
 
+# Well -> bore map for the LATEST printed array,
+# ``fake_tip_test_array_slit_small`` (round-1.5 slitted, 2.95-3.40 mm). Its
+# tips drop into the SAME deck-plate pockets, but the bore numbers engraved
+# on the PLATE no longer match — go by the 2-digit code under each tip
+# (``95`` = 2.95 ... ``40`` = 3.40):
+SLIT_SMALL_WELLS = {
+    "A1": 2.95, "A2": 3.00, "A3": 3.05, "A4": 3.10, "A5": 3.15,
+    "B1": 3.20, "B2": 3.25, "B3": 3.30, "B4": 3.35, "B5": 3.40,
+}
+# To cycle that array's round-1/FEA winner (3.40 mm, the only bore predicted
+# to both hold and eject), set:
+#   CYCLE_WELLS = {"B5": 3.40}
+# or cycle every tip that passes the single-pass sweep by copying its
+# entries from SLIT_SMALL_WELLS.
+
 # How many pick-up/drop cycles to run on EACH well. The goal is thousands;
 # start smaller (e.g. 50) to confirm motion, then raise. At ~6 s/cycle,
 # 1000 cycles per tip is ~1.7 h, so budget run time accordingly.

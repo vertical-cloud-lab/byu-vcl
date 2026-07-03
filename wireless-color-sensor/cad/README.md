@@ -125,7 +125,29 @@ between cycles, per the [PR #60 drop-off videos](https://youtu.be/qi_fUC_InB8)).
 Round-1 results (@timothy-commins,
 [comment](https://github.com/vertical-cloud-lab/byu-vcl/pull/60#issuecomment-4792616426)):
 **solid** bores 3.40–3.50 mm and **slitted** 3.40 mm held; those are the
-defaults in `CYCLE_WELLS`.
+defaults in `CYCLE_WELLS`. For the **latest** printed array
+(`fake_tip_test_array_slit_small`, 2.95–3.40 mm) the script includes the
+well→bore map `SLIT_SMALL_WELLS` (A1–A5 = 2.95–3.15, B1–B5 = 3.20–3.40 —
+note the plate's engraved numbers no longer match; go by the 2-digit code
+under each tip); its round-1/FEA winner is `{"B5": 3.40}`.
+
+### Repeated pickup cycles with the actual housing (`protocol_cyclic_housing.py`)
+
+`protocol_cyclic_housing.py` runs the same pick-up → transport → drop loop on
+the **real enclosure** (`stl/real_enclosure_p20_tip.stl`, the housing with the
+tested best 3.40 mm slitted P20 tip that was printed for PR #60) instead of
+the small test tips, so the joint is exercised at full package size and
+weight. Stand the housing upright in `HOUSING_SLOT` (default 8) with the
+**post** (not the body centre — the post is ~10 mm off-centre) at the slot
+centre; the protocol first hovers the nozzle over the target and pauses so
+you can slide the housing into alignment. Each cycle releases the housing
+**low** (`DROP_RELEASE_Z` ≈ 2 mm foot clearance) so it settles back onto its
+footprint — a tape outline or small fence around the foot adds margin for
+long unattended runs. If the housing sits in the PR #116 charging dock, add
+the dock's seat height to `SOCKET_MOUTH_Z` (default 90.5 mm, the housing's
+standing height). Upload with `python run_robot.py protocol_cyclic_housing.py`.
+Validated end-to-end with `opentrons.simulate` (note: simulate with
+`opentrons==8.8.2` — the 9.x pip package dropped OT-2 support).
 
 ### Recommendations
 
