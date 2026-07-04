@@ -9,7 +9,10 @@
 > [`byu-recharge-center-policy-and-procedures.pdf`](byu-recharge-center-policy-and-procedures.pdf)
 > (page cites refer to that PDF), BYU Financial Services pages, 2 CFR 200.1, and published
 > peer-facility rates (Northwestern CHiMaD Metals Processing Facility). Compiled
-> 2026-07-04.
+> 2026-07-04. **Sections 10–11 added 2026-07-04** in response to the follow-up questions
+> on research contracts vs. the recharge mechanism (without a center / with a center
+> before recovery / after recovery) and on what happens once the equipment is fully
+> "cost recovered."
 >
 > **Status:** Exploratory background research — **not policy or legal/tax advice.**
 > Controlling authority is BYU Regulatory Accounting / Financial Services.
@@ -300,15 +303,147 @@ and offers a non-proprietary tier, and (2) research-shaped engagements get route
 collaboration agreements rather than the rate sheet. Both are worth raising in the same
 conversation with Regulatory Accounting / Office of Research that establishes the center.
 
+## 10. Research contracts vs. the recharge mechanism
+
+"Research contract" here means a sponsored agreement negotiated through the Sponsored
+Programs Office (SPO) — a statement of work, a budget of direct costs plus F&A at the
+negotiated rate, deliverables/reporting, and negotiated IP/publication terms, with funds
+landing in a restricted BYU project account. The comparison splits into the three
+configurations asked about.
+
+### (a) Without a recharge center (the current state)
+
+A research contract is essentially the **only compliant channel** for external money tied
+to atomizer work today (short of gifts, which carry no deliverables, or personal outside
+consulting, which doesn't use university equipment). But it has two structural limits as
+a cost-recovery vehicle:
+
+1. **No auditable rate exists, so machine time cannot be priced.** The contract budget
+   can carry the *inputs* — operator effort, consumables, argon, feedstock — as direct
+   costs, but there is no approved per-run or per-hour figure to charge for the atomizer
+   itself. The machine effectively rides along at $0.
+2. **No capital recovery flows to the lab.** Depreciation on university-owned equipment
+   is recoverable on sponsored awards **only through the university's F&A rate** — it is
+   expressly barred from recharge-style direct billing *and* from ad hoc direct charges
+   (the policy: costs "already reimbursed through the Facilities and Administrative
+   (indirect) cost rate" can't be in rates, p. 3; the same consistency principle blocks
+   direct-charging it on awards). F&A recovery goes to central university administration,
+   not to the startup account. **Without a center there is no mechanism at all by which
+   contract dollars repay the $250k.**
+
+Also, using contracts as a *substitute* for a rate structure — repeatedly "contracting"
+what is really routine fee-for-service — is a compliance smell: the policy allows direct
+sale of goods/services only when "directly and substantially related to the mission"
+(p. 1), recurring sales without approved rates invite audit and sales-tax questions, and
+each engagement costs weeks of SPO negotiation that a posted rate would avoid.
+
+### (b) With the center, before the cost is recovered
+
+The two mechanisms **compose rather than compete** — and the center makes the contracts
+better:
+
+- **Inside a research contract, the BYU project account is an *internal* user.** Machine
+  time enters the contract budget as a priced line at the posted internal rate (the
+  uniform-rate rule makes this mandatory if the award is federal, and it is the
+  consistent treatment for any sponsored account). The sponsor also pays F&A on the
+  contract — recharge/service charges sit inside the MTDC base (2 CFR 200.1) — so the
+  sponsor's all-in cost per run ≈ internal rate × ~1.5.
+- **Contract-funded runs recover capital exactly like external sales.** The internal rate
+  carries the depreciation component, which flows into the equipment reserve and, via §8,
+  repays the startup account. So during the recovery period, *both* channels amortize the
+  $250k; they differ in who pays what on top.
+- **Choosing between them for a given external party:**
+
+| Dimension | Research contract (via SPO) | Direct external recharge sale |
+|---|---|---|
+| Scope | Open-ended research, intellectual contribution, unknowns | Defined deliverable (powder, runs, data) at posted rate |
+| Setup time | Weeks–months of negotiation | Immediate (rate sheet + service agreement) |
+| Price basis | Budgeted direct costs (incl. machine time at *internal* rate) + negotiated F&A (~51.5%) on MTDC | Cost + institutional overhead; **+ surcharge** if non-federal (pp. 2, 5) |
+| Above-cost margin | Fixed-price residuals *may* revert to the department after project close-out (confirm BYU practice with SPO); cost-reimbursable contracts have none | Surcharge on non-federal externals only — the center's one above-cost stream |
+| IP / publication | Negotiated per agreement | None by default; governed by the service-agreement template (§9) |
+| UBIT | Research income of a university is excluded under IRC §512(b)(8) — a genuine tax advantage for industry-funded *research* | Above-cost external sales must pass the three-part test (policy pp. 5–6) |
+| Student involvement | Expected — co-authorship, thesis work | Should be operational only; research-shaped work must be re-papered as a contract (§9b) |
+
+- **The routing rule (restating §9b):** if the engagement needs student intellectual
+  contribution, co-authorship, or negotiated IP, it is a contract; if it is a defined
+  service at a posted price, it is recharge. The center doesn't replace contracts — it
+  gives contracts an auditable machine-time price and gives routine work a channel that
+  doesn't burn SPO cycles.
+
+### (c) With the center, after the cost is recovered
+
+Contracts keep working identically, but the machine-time line **gets cheaper** — once
+depreciation exits the cost pool (§11), the internal rate drops toward
+operating-cost-only, which makes proposals more competitive. The flip side: contract
+volume **no longer repays capital**; it only covers operating costs. Whether that's good
+(cheaper science) or a problem (no replacement fund) depends on the §11 choices below.
+
+## 11. What happens once the equipment is "cost recovered"?
+
+"Cost recovered" needs one disambiguation first, because two ledgers run in parallel:
+(i) **depreciation charged into rates** accumulating in the equipment reserve, and
+(ii) **reimbursement of the startup account** under §8 drawing that reserve down (as free
+services or equipment purchases, capped at the amount invested, p. 7). Full recovery on
+ledger (i) does not automatically mean the startup account has been made whole on (ii).
+
+**The end of recovery is triggered by whichever comes first** (pp. 6–7):
+
+- cumulative depreciation charged into rates reaches the capitalized acquisition cost
+  (straight-line, cost less residual over useful life); or
+- **the useful life ends** — and there is no catch-up: "Equipment cannot be depreciated
+  beyond its useful life … even if the equipment wasn't depreciated for each of the five
+  years," and "Recharge rates cannot include depreciation from prior years." If billing
+  ran thin, the machine ages out with part of the $250k permanently unrecovered.
+
+Once triggered, five things follow:
+
+1. **The machine keeps running; nothing physical changes.** A fully depreciated atomizer
+   can stay in service indefinitely. Its usage is still logged and still sits in the
+   rate denominator — it just contributes $0 of capital cost to the numerator.
+2. **Rates must come down.** Internal rates are cost-based and break-even over 5 years
+   (pp. 3, 5); with depreciation out of the pool, continuing to charge the old rate
+   over-recovers, and surpluses are forced into the following year's rates (p. 6). There
+   is no "keep charging and pocket the difference" option on internal users — internal
+   rates "cannot add charges to accumulate assets" (p. 5). External rates fall too
+   (cost + overhead on a smaller cost base); only the **surcharge** on non-federal
+   externals may lawfully stay above cost.
+3. **§8 reimbursement hits its hard cap.** "Under no circumstances can the non-recharge
+   accounts that gave money to/invested in the Recharge Center be reimbursed for more
+   than the dollar amount given" (p. 7). Once the startup account has received $250k of
+   free services/equipment value, that channel closes permanently.
+4. **Replacement funding must come from outside internal rates.** The sanctioned sources:
+   whatever balance remains in the equipment reserve; **surcharges on non-federal
+   externals** (expressly usable "to finance equipment purchases," p. 5); proceeds from
+   selling the old machine (all sale proceeds and gain/loss are booked to the equipment
+   reserve, p. 7); or a fresh departmental/startup investment — which restarts the §8
+   cycle on the new asset. Note the strategic tension: **the reserve cannot both fully
+   repay the startup account and pre-fund the successor machine** unless external
+   surcharge volume covers the difference — and with the expected user mix (mostly
+   federally-funded academic externals, who pay cost + overhead with *no* surcharge),
+   the surcharge base is thin. That argues for deliberately leaving part of the reserve
+   unreimbursed, or courting some non-federal industry volume, if a successor machine is
+   the goal.
+5. **Buying the replacement restarts the cycle.** Equipment ≥$5k must be charged to the
+   equipment reserve (p. 7), a new Regulatory Accounting-approved depreciation schedule
+   is set up for the new asset number, depreciation re-enters the cost pool, and rates
+   step back up for the next recovery period.
+
+**Net:** "cost recovered" is not an end state where the center banks profit — it's a
+regime change where rates drop to operating cost, the capital-repayment channel closes,
+and the only lawful accumulation for the future runs through the equipment reserve and
+non-federal external surcharges. Planning the reserve-vs-reimbursement split *before*
+that point is the main strategic decision the policy leaves to the center.
+
 ---
 
 ## References
 
 1. BYU, *Recharge Center Policy & Procedures* — committed as [`byu-recharge-center-policy-and-procedures.pdf`](byu-recharge-center-policy-and-procedures.pdf); page cites above refer to this PDF.
 2. BYU Financial Services, *Budgeting FAQ* (budget year = Jan 1 – Dec 31). https://finserve.byu.edu/2024/budgeting-faq
-3. 2 CFR § 200.1, definition of "acquisition cost" (ancillary charges incl. taxes, duty, freight, installation). https://www.law.cornell.edu/cfr/text/2/200.1
+3. 2 CFR § 200.1, definitions of "acquisition cost" (ancillary charges incl. taxes, duty, freight, installation) and "modified total direct costs" (MTDC — services are in the F&A base; equipment/capital expenditures are excluded). https://www.law.cornell.edu/cfr/text/2/200.1
 4. Northwestern CHiMaD Metals Processing Facility, fee schedule (ultrasonic atomizer per-run rates: $1,075 NU / $1,720 external academic / $2,150 commercial). https://cmpf.northwestern.edu/fees/ and equipment page https://cmpf.northwestern.edu/equipment/amazemet-repowder-ultrasonic-atomizer-2/
 5. AMAZEMET, atomization-as-a-service (from €1,000 minimum). https://www.amazemet.com/amazemet-new-business-line-atomization-service/
 6. BYU Copyright Policy (Scholarly vs. Commercial Works; work-made-for-hire treatment). https://copyright.byu.edu/00000172-140d-dbd3-a3f3-5d9d9ed50000/exhibit-b-current-copyright-policy
 7. Georgia Tech Advanced Manufacturing Pilot Facility, AMAZEMET rePowder listing. https://ampf.research.gatech.edu/amazemet-repowder
-8. Companion documents in this repo: `recharge-model-byu-official-docs.md` (policy assessment), `recharge-model-followup.md` (approvals, admin, credit cards, nonprofit intermediary), `recharge-model-exploration.md` (compliance framework and rate-setting literature).
+8. IRC § 512(b)(8) — exclusion from unrelated business taxable income of research income of a college, university, or hospital "performed for any person." https://www.law.cornell.edu/uscode/text/26/512
+9. Companion documents in this repo: `recharge-model-byu-official-docs.md` (policy assessment), `recharge-model-followup.md` (approvals, admin, credit cards, nonprofit intermediary), `recharge-model-exploration.md` (compliance framework and rate-setting literature).
