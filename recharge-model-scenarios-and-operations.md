@@ -12,7 +12,11 @@
 > 2026-07-04. **Sections 10–11 added 2026-07-04** in response to the follow-up questions
 > on research contracts vs. the recharge mechanism (without a center / with a center
 > before recovery / after recovery) and on what happens once the equipment is fully
-> "cost recovered."
+> "cost recovered." **Sections 12–15 added 2026-07-04** in response to the follow-up
+> questions on the meaning of "non-federal external user"/"surcharge if non-federal",
+> embargo-tiered pricing in the service agreement (and its interaction with student
+> time), reinvesting recovered funds and payment-friction losses, and whether the
+> department/college-funded renovation tied to the equipment is recoverable.
 >
 > **Status:** Exploratory background research — **not policy or legal/tax advice.**
 > Controlling authority is BYU Regulatory Accounting / Financial Services.
@@ -434,6 +438,215 @@ and the only lawful accumulation for the future runs through the equipment reser
 non-federal external surcharges. Planning the reserve-vs-reimbursement split *before*
 that point is the main strategic decision the policy leaves to the center.
 
+## 12. What "surcharge if non-federal" and "non-federal external user" mean
+
+The policy prices a job by **whose money pays for it**, not by who the customer is. Three
+tiers (pp. 4–5):
+
+1. **Internal (BYU) users** — any job paid from a BYU account (speedtype). Uniform,
+   cost-based rate; no overhead, no surcharge.
+2. **External users who document federal funding** — "Rates to external users who
+   identify themselves as federally-funded and provide documentation should be set to
+   recover cost plus institutional overhead. Appropriate documentation includes a copy of
+   the federal award approval or award number that is paying for the services" (p. 5).
+   Cost + F&A, **no surcharge**.
+3. **Non-federal external users** — the policy's phrase is "non-University, non-Federal
+   agency users" (p. 5): anyone outside BYU whose payment is *not* traceable to a federal
+   award. This is where the optional **surcharge** lives: "'Surcharges' can be added to
+   rates charged to non-University, non-Federal agency users. These surcharges can be
+   used to reduce rates charged to users, build a working capital reserve, or to finance
+   equipment purchases" (p. 5).
+
+Key clarifications:
+
+- **"Non-federal" describes the funds, not the entity.** A state-university lab paying
+  with its NSF award (documented) is a *federal* external → cost + F&A, no surcharge.
+  The *same lab* paying from departmental funds, a foundation grant, or an industry
+  gift account is a *non-federal* external → surcharge permitted. Companies,
+  foundations, individuals, and (if allowed at all — export-control screening first)
+  foreign entities are non-federal externals by default.
+- **Why the line exists:** the federal cost principles let federal money be charged only
+  cost-based prices — the government does not pay a university service center a margin.
+  Non-federal payers face no such restriction, so the surcharge is the policy's one
+  sanctioned above-cost stream (with UBIT review once externals are charged above cost,
+  pp. 5–6).
+- **The burden of proof is the user's.** A workable menu is: posted external price =
+  cost + F&A + surcharge, with the surcharge *removed* when the user supplies the award
+  number/approval. Users who don't document federal funding simply pay the full external
+  price.
+
+## 13. Embargo-tiered pricing in the service agreement — and student time
+
+**Short answer: yes, an expiring data-release embargo is a normal contractual object, and
+a priced embargo menu is workable — but the *premium* must ride on the surcharge, which
+constrains who can buy it.**
+
+### Is an expiring embargo even possible in this kind of agreement?
+
+Yes — it's standard practice, not exotic. Sponsored-research agreements routinely carry
+publication-delay clauses (30–120 days for patent review, sometimes longer); DOE national
+user facilities run exactly a two-tier system (non-proprietary access with expected
+publication vs. proprietary access with confidentiality at full cost recovery); and
+journal/repository data embargoes of 6–24 months are commonplace. Nothing in the BYU
+recharge policy addresses data terms at all — that's the service agreement's job, and an
+"facility may publish run data after N months; customer may purchase a longer N" clause
+is well within it. A customer *lessening or waiving* their own embargo is trivially fine
+(unilateral relaxation in the facility's favor).
+
+### Can the price vary with embargo length?
+
+Split by user tier, because the pricing rules differ:
+
+- **Non-federal externals: yes, cleanly.** The embargo premium is exactly what a
+  surcharge is — an above-cost charge on non-University, non-federal users — and its
+  permitted uses (reduce rates, working capital, equipment purchases, p. 5) fit. A
+  posted menu (e.g., release at 30 days = base; +6 mo / +12 mo / +24 mo / indefinite at
+  increasing premiums) applied consistently to all non-federal externals is defensible.
+  The policy imposes uniformity on *University* users (p. 4), not on externals, but a
+  published, consistently applied menu is the right practice anyway (and keeps UBIT
+  accounting clean — embargo premiums are above-cost income, and an *indefinite*
+  embargo/proprietary tier is the hardest to defend as "substantially related" to the
+  educational mission, pp. 5–6).
+- **Documented-federal externals: only cost-based differences.** They pay cost + F&A
+  with no surcharge, so a non-cost embargo premium can't be charged to them. Two clean
+  designs: (a) give the federal tier one standard embargo term at no premium, sized to
+  cover normal patent/publication needs; or (b) adopt the DOE pattern — the
+  indefinite/proprietary tier simply *is* the full-cost-plus-surcharge product,
+  effectively unavailable to federal money (which typically shouldn't be buying
+  proprietary confidentiality anyway). A genuinely cost-based confidentiality charge
+  (secure storage, restricted-access handling labor) may be charged to anyone if it's in
+  the approved rate as a distinct service — but such costs are usually small.
+- **Internal users: fixed, cost-based, uniform.** Internal rates can't carry a non-cost
+  premium at all ("cannot add charges to accumulate assets," p. 5), so there is no
+  internal embargo *menu*. That matters less than it sounds: internal researchers' data
+  is their own research output — the embargo menu is really about the *facility's*
+  reserved right to publish operational/run data from external jobs (§9a).
+
+So: **not** a single fixed price with one immutable embargo for everyone — a tiered menu
+is fine — but the paid tiers live on the non-federal external side, and internal +
+federal-external tiers get standard terms.
+
+### Does this allow student time?
+
+Two senses, both favorable:
+
+1. **Student labor in the rate: yes, regardless of embargo.** Student operator/technician
+   wages are ordinary allowable costs of operating the center and belong in the cost pool
+   like any staff effort — embargoed jobs don't change that.
+2. **Student research/publication: an *expiring* embargo largely dissolves the §9
+   tension.** Every finite-embargo job eventually joins the publishable corpus, so the
+   students' infrastructure papers (throughput, reliability, remote-access architecture)
+   can draw on aggregate operational data immediately (reserve that right in the
+   template, §9a) and on run-level data as embargoes lapse. Publication is delayed, not
+   excluded. Design cautions: match embargo lengths to student timelines (a 24-month
+   embargo can outlive a Master's student — thesis chapters may need the
+   aggregate/anonymized layer instead; BYU's ETD process allows time-limited delayed
+   release, confirm current terms with Graduate Studies); keep the **indefinite** tier
+   operator-only (no student intellectual contribution — that work belongs in a
+   sponsored-research agreement per §9b, and standing confidential work can also erode
+   the fundamental-research posture relevant to export control); and note that heavy
+   proprietary volume weakens the UBIT "related to educational purpose" defense that
+   student involvement otherwise strengthens.
+
+## 14. Reinvesting recovered funds — and how much actually leaks
+
+### Can recovered funds buy new/upgraded equipment, long-term?
+
+**Yes — that's what the equipment reserve is for, and it's self-renewing.** Equipment
+purchases ≥ $5,000 *must* be charged to the reserve (p. 7); a ≥ $5,000 capital upgrade to
+an existing machine belongs there the same way. Each new/upgraded asset then gets its own
+Regulatory Accounting-approved depreciation schedule and depreciates into rates in turn
+(no double recovery — the reserve spent previously *recovered* depreciation; the new
+asset's cost was never itself in rates). That loop can run indefinitely: recover
+depreciation → reserve → replace/upgrade → depreciate the replacement → …
+
+Two structural limits on using it as a *growth* engine:
+
+- **Internal rates only return capital, they don't grow it.** Depreciation recovers
+  historical cost, and internal rates "cannot add charges to accumulate assets" (p. 5).
+  So internal volume can sustain the *existing* capital base (in nominal dollars), not
+  expand it.
+- **Expansion money comes from three places only:** the surcharge on non-federal
+  externals (expressly usable "to finance equipment purchases," p. 5), proceeds from
+  selling old equipment (booked to the reserve, p. 7), and fresh
+  departmental/startup investment (which opens a new §8 repayment claim). And the
+  reserve can't simultaneously repay the startup account in full *and* fund the next
+  machine (§11.4) — the reimbursement-vs-reinvestment split is a real allocation choice.
+
+### What's the net deficit to the base amount? Is it ~3% for credit cards?
+
+**No — card fees are not 3% of the invested base, and with sane design they net to ~0.**
+Where the money can actually leak:
+
+1. **Card/merchant fees: ~2–3% of card-paid revenue only, and recoverable.** Internal
+   users settle by journal entry (zero friction). Only external revenue collected by card
+   bears the fee, and the fee is an ordinary operating cost of the center: absorb it in
+   the non-federal surcharge (net leakage ≈ 0) or include it in the cost pool (recovered
+   through rates; spread across users). Large external jobs can be invoiced/ACH through
+   Accounts Receivable and skip card fees entirely. Worst case — the center chooses to
+   eat unrecovered fees — the loss is 3% × (card-collected revenue), which becomes a
+   deficit rolled into next year's rates (p. 6), not a haircut on the $250k claim.
+2. **The stub-year loss (§1): the one true haircut so far.** Depreciation before rates
+   are effective is permanently unrecoverable (~$2,083/month on a 10-year life until
+   rates start).
+3. **Under-utilization risk:** if billed volume runs thin over the useful life, the
+   machine ages out with the shortfall permanently unrecovered (§11) — recovery is
+   volume-dependent, not guaranteed.
+4. **Nominal-dollar recovery:** the §8 cap is "the dollar amount given" (p. 7) — no
+   interest or inflation adjustment, so a $250k recovered over ~10 years comes back
+   lighter in real terms, and straight-line on historical cost under-funds a
+   more-expensive successor machine.
+5. **F&A goes to central:** the institutional-overhead component collected from
+   externals is the university's, not the center's (§6.2) — it was never part of the
+   recoverable base, but don't count it as center revenue.
+
+**Net:** payment friction is a rounding error if priced in; the real erosion risks are
+timing (item 2), volume (item 3), and inflation (item 4).
+
+## 15. Is the department/college-funded renovation recoverable?
+
+**Default answer: not through recharge rates — with one genuine carve-out worth pursuing.**
+
+- **The policy excludes building costs from rates.** Unallowable: "Building depreciation,
+  rent, and operations and maintenance not paid by recharge center. (Only costs incurred
+  by the recharge center can be included in rates.)" (p. 3). A renovation is normally
+  capitalized as a building improvement, and the center didn't pay for it — doubly
+  excluded. The policy's lone exception (animal care facilities, p. 3) underlines that
+  facility costs are includable only by explicit exception.
+- **The F&A double-recovery bar is the deeper reason.** Capitalized building improvements
+  typically enter the university's building-depreciation pool inside the negotiated F&A
+  rate, and "any costs already reimbursed through the Facilities and Administrative
+  (indirect) cost rate" cannot also be in recharge rates (p. 3). So the university *does*
+  recover the renovation — through the ~51.5% overhead charged on federal awards and
+  external users — it just flows to central administration, not back to the department or
+  college. (Whether BYU has any F&A return/distribution that shares it with colleges is a
+  question for the Controller/Regulatory Accounting.)
+- **The carve-out: equipment installation costs.** 2 CFR 200.1 lets "ancillary charges
+  such as taxes, duty, protective in transit insurance, freight, and **installation**" be
+  capitalized into the *equipment's* acquisition cost per the institution's regular
+  practice — and BYU depreciates "acquisition cost … less residual value" (p. 7). Parts
+  of the renovation that exist only to install and operate this specific machine —
+  rigging, dedicated electrical service, inert-gas plumbing, equipment-specific
+  ventilation/exhaust — are candidates for capitalization into the atomizer's asset
+  record rather than the building's. Whatever lands on the equipment asset record
+  depreciates into rates like the rest of the $250k and becomes §8-reimbursable to the
+  accounts that paid. **The decisive fact is how Fixed Assets / the Equipment Inventory
+  Office booked the renovation** — if the equipment-specific portion sits on a building
+  asset today, raise reclassification with Regulatory Accounting *before* the
+  depreciation schedule is approved; after approval it's much harder.
+- **The §8 route doesn't rescue the rest.** Reimbursement is capped at "the dollar amount
+  given to the Recharge Center" (p. 7), and money spent on the *building* before any
+  center existed is not obviously an "investment in the Recharge Center." Even if
+  Regulatory Accounting entertained counting it, reimbursement value has to be generated
+  by costs that lawfully flow through rates — which circles back to the building-cost
+  exclusion. Treat general renovation spend (walls, general HVAC, finishes, code
+  upgrades) as sunk departmental investment recovered, if at all, via central F&A.
+
+**Action items:** get the renovation's accounting treatment (building asset vs. equipment
+asset vs. expensed) from Fixed Assets; inventory which line items are genuinely
+machine-specific installation; and put the capitalization question to Regulatory
+Accounting in the same conversation as the depreciation schedule (§1).
+
 ---
 
 ## References
@@ -446,4 +659,5 @@ that point is the main strategic decision the policy leaves to the center.
 6. BYU Copyright Policy (Scholarly vs. Commercial Works; work-made-for-hire treatment). https://copyright.byu.edu/00000172-140d-dbd3-a3f3-5d9d9ed50000/exhibit-b-current-copyright-policy
 7. Georgia Tech Advanced Manufacturing Pilot Facility, AMAZEMET rePowder listing. https://ampf.research.gatech.edu/amazemet-repowder
 8. IRC § 512(b)(8) — exclusion from unrelated business taxable income of research income of a college, university, or hospital "performed for any person." https://www.law.cornell.edu/uscode/text/26/512
-9. Companion documents in this repo: `recharge-model-byu-official-docs.md` (policy assessment), `recharge-model-followup.md` (approvals, admin, credit cards, nonprofit intermediary), `recharge-model-exploration.md` (compliance framework and rate-setting literature).
+9. DOE Office of Science, user facility user agreements — non-proprietary (publication expected) vs. proprietary (confidential, full cost recovery) access tiers. https://science.osti.gov/User-Facilities/Policies-and-Processes/Agreements
+10. Companion documents in this repo: `recharge-model-byu-official-docs.md` (policy assessment), `recharge-model-followup.md` (approvals, admin, credit cards, nonprofit intermediary), `recharge-model-exploration.md` (compliance framework and rate-setting literature).
