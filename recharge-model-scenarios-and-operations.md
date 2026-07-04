@@ -17,6 +17,9 @@
 > embargo-tiered pricing in the service agreement (and its interaction with student
 > time), reinvesting recovered funds and payment-friction losses, and whether the
 > department/college-funded renovation tied to the equipment is recoverable.
+> **Section 16 added 2026-07-04** in response to the follow-up question on total
+> customer-side revenue required to reach full cost recovery under single-payer-category
+> scenarios (internal / federal external / non-federal external / research contracts).
 >
 > **Status:** Exploratory background research — **not policy or legal/tax advice.**
 > Controlling authority is BYU Regulatory Accounting / Financial Services.
@@ -646,6 +649,106 @@ timing (item 2), volume (item 3), and inflation (item 4).
 asset vs. expensed) from Fixed Assets; inventory which line items are genuinely
 machine-specific installation; and put the capitalization question to Regulatory
 Accounting in the same conversation as the depreciation schedule (§1).
+
+## 16. Total revenue required for full cost recovery, by payer category
+
+The question: if 100% of usage were paid by a single payer category X, how much money
+must *customers* put in (gross, their side) for the center to reach full cost recovery?
+The categories price differently, and — critically — **not everything the customer pays
+counts toward recovery**: F&A goes to central administration (§6.2), card fees go to the
+processor (§14.1), and surcharge is above-cost extra. The center's recovery requirement
+is the same in every scenario — the cost pool — so the differences are pure gross-up.
+
+### (a) The per-dollar gross-up table
+
+Customer-side payment required per **$1.00 the center must keep** (using 51.5%
+institutional overhead† and ~2.9% card fees):
+
+| Payer category X | Customer pays | Center keeps | Central (F&A) | Processor |
+|---|---|---|---|---|
+| Internal BYU (journal entry) | **$1.00** | $1.00 | — | — |
+| Federal external, invoice/ACH | **~$1.52** | $1.00 | $0.515 | — |
+| Federal external, credit card‡ | **~$1.58** | $1.00 | ~$0.53 | ~$0.05 |
+| Non-federal external, invoice, no surcharge | **~$1.52** | $1.00 | $0.515 | — |
+| Non-federal external, card, fee-covering surcharge | **~$1.56** | $1.00 | $0.515 | ~$0.05 |
+| Non-federal external + 20% growth surcharge (invoice) | **~$1.72** | $1.20 | $0.515 | — |
+| Research contract, federal cost-reimbursable (per $1 of machine time) | **~$1.52** | $1.00 | $0.515 | — |
+| Research contract, industry fixed-price | negotiated ≥ ~$1.52 | $1.00 (+ possible residual) | $0.515 | — |
+
+† 51.5% is the negotiated research F&A figure surfaced earlier; whether external *sales*
+carry that exact rate (and on what base) is a Regulatory Accounting question — it is the
+single most sensitive number in this table. ‡ Federal externals can't be surcharged
+(p. 5), so their card fees must be absorbed as an ordinary cost of the center and
+recovered through everyone's rates — hence the gross-up: cost portion ×
+1/(1 − 0.029 × 1.515) ≈ ×1.046, i.e. customer-side ≈ 1.046 × 1.515 ≈ 1.58.
+
+Two structural takeaways: (1) internal dollars are ~34% more "efficient" at recovery than
+external dollars from the customer's perspective — external users pay ~$1.52–1.58 for
+every $1 that reaches the center; (2) research contracts behave *identically* to federal
+external sales for the machine-time line (internal rate + F&A on MTDC, §10b) — the
+contract just wraps other budget lines (student salaries, materials, each also bearing
+F&A) around it.
+
+### (b) Whole-life worked example (illustrative §2 assumptions)
+
+$250k machine, 10-year life, 300 runs/yr (single-shift), $15k/yr other fixed, $175/run
+variable → **lifetime cost pool ≈ $925k** ($250k capital + $150k fixed + $525k variable),
+3,000 runs, internal rate ≈ $308/run. Total customer-side revenue for full recovery if
+all usage were category X:
+
+| All usage paid by… | Lifetime gross revenue | Per run | Of which reaches the center |
+|---|---|---|---|
+| Internal BYU users | **$925k** | ~$308 | $925k |
+| Federal externals (invoice) | **~$1.40M** | ~$467 | $925k |
+| Federal externals (all card) | **~$1.47M** | ~$489 | $925k (≈$64k recycled fees) |
+| Non-federal externals (card + fee surcharge) | **~$1.44M** | ~$481 | $925k |
+| Non-federal externals (+20% surcharge, invoice) | **~$1.59M** | ~$529 | $1.11M ($185k growth funds) |
+| Federal research contracts (machine-time share) | **~$1.40M** | ~$467 | $925k |
+
+If you only care about the **$250k machine** (the depreciation slice of revenue): $250k
+of internal billings / ~$379k of federal-external gross (~$396k if all card) /
+~$379k+ of non-federal gross / ~$379k of contract machine-time gross — central keeps
+~$129k of F&A in every external case.
+
+**Scale caution (§2's Northwestern anchor):** if the honest cost pool lands near
+Northwestern's $1,075/run internal rate, multiply everything ≈3×: lifetime pool ≈$3.2M
+internal / ≈$4.9M federal-external gross — and the $250k machine is then only ~8% of
+lifetime revenue. "Full cost recovery" is mostly about recovering *operating* costs
+year-by-year; the capital piece is the small, slow slice.
+
+### (c) The timing constraint — volume can't accelerate the $250k
+
+Recovery of capital is **paced by the depreciation schedule, not by revenue**: $25k/yr
+enters rates on a 10-year life ($50k/yr on an approved 5-year life), and if volume runs
+hot the surplus rolls back into next year's rates (p. 6) rather than accelerating
+repayment (§7, §11). So under *any* payer mix, plan on the full useful life to recover
+the full $250k through rates. The only levers that move faster: a justified shorter
+useful life (prior approval, p. 7), the non-federal surcharge (above-cost by design), and
+§8 in-kind repayment via free services to the funding account (§3.3) — which trades
+billable revenue for repayment credit.
+
+### (d) Assumptions and variables to nail down
+
+1. **The external overhead rate and base** — is it the negotiated 51.5% research F&A,
+   applied to the full cost-based price? This swings external gross by hundreds of $k.
+2. **Exclusivity** — "all costs from X" assumes X is 100% of the *denominator*. Every
+   unbilled own-lab run (subsidized or §8 in-kind) removes its share of the pool from
+   what X's revenue can recover; the shortfall stays with you (§4).
+3. **True staffing costs** — the dominant unknown (Northwestern anchor, §2).
+4. **Card-fee rate and payment mix** — 2.5–3.5% depending on card type/eMarkets
+   schedule; large jobs invoiced via ACH eliminate the leak (§14.1).
+5. **Utah sales tax** on tangible product (powder) sold to industry — collected on top
+   via Avalara; a sticker-price increase, not revenue (Tax Office question).
+6. **UBIT** — ~21% federal tax on *net* surcharge income if the activity is unrelated
+   (§6.3, §13); shave the growth-surcharge stream accordingly unless the related-purpose
+   defense holds.
+7. **Bad debt is unallowable** in rates — a defaulting external is a straight loss the
+   pool can't absorb; require POs/prepay-at-delivery discipline (but no *advance*
+   billing, p. 2).
+8. **The stub-year loss** (~$14.6k, §1) and **nominal-dollar recovery** (§14.4) are
+   haircuts on the $250k that no payer category fixes.
+9. **Non-US users** — wire/currency costs plus export-control screening (§2); treat as
+   non-federal externals and price the friction into the surcharge.
 
 ---
 
