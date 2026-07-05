@@ -126,8 +126,11 @@ reimbursement under Policy §8. We request:
 
 ## 7. Own-lab usage and subsidy structure
 
-The PI's group's usage will be handled by one of the following (decision
-pending Regulatory Accounting guidance; all options keep the runs in the usage
+**In every option below, the approved internal rate remains the uniform,
+cost-based rate** (Policy p. 4); PI-group usage is recorded run-by-run at that
+gross rate, with the settlement (payment, subsidy, or §8 credit) shown
+alongside it — no zero or reduced rate is requested. The options (decision
+pending Regulatory Accounting guidance; all keep the runs in the usage
 denominator per Policy p. 4):
 
 - **Option A (preferred):** in-kind reimbursement under Policy §8 — the startup
@@ -135,15 +138,29 @@ denominator per Policy p. 4):
   against the documented investment, capped at the amount invested.
 - **Option B:** pay the uniform internal rate from startup (non-federal) funds.
 - **Option C:** center elects to cover specific internal usage from non-federal,
-  non-recharge funds (Policy p. 5), with unrecovered costs tracked and excluded
-  from F&A proposals.
+  non-recharge funds as a **documented subsidy against the gross rate**
+  (Policy p. 5), with unrecovered costs tracked and excluded from F&A
+  proposals.
 
 Any own-lab job charged to a **federal award** will be billed at the uniform
 internal rate (Options A/C apply only to non-federally-funded usage).
 
-## 8. Management and controls
+## 8. Management, safety, and controls
 
 - Faculty director: [PI NAME]. Day-to-day operation: [STAFF/STUDENT ROLES].
+- **Safety (gate to go-live):** operations are covered by EHS-reviewed SOPs
+  before any customer work — aluminum powder is a combustible dust (NFPA 484
+  review: dust control, grounding/bonding, PPE, storage limits), the argon
+  supply is an asphyxiation hazard (oxygen monitoring), and outbound powder
+  shipments require hazardous-materials classification. EHS sign-off is part of
+  the operational-readiness checklist.
+- **Export control:** restricted-party and country screening before any
+  non-US customer or remote observer (deemed-export review for remote access to
+  live process parameters), per Office of Research procedures.
+- **Segregation of duties:** order acceptance (facility manager), usage logging
+  (operator, reviewed monthly), billing and reconciliation (department finance,
+  separate from operations), rate changes (PI + Chair/Dean + Regulatory
+  Accounting), quarterly exception review.
 - Usage log maintained for **all** runs (billed or not) with user, funding
   source class, date, hours, and deliverable.
 - Billing: monthly journal entries (internal); AR invoices / eMarkets (external);

@@ -49,10 +49,16 @@ actually booked; raise any mismatch before the schedule is approved.**
 The department/college funded a renovation tied to this instrument. General
 building work (walls, general HVAC, finishes, code compliance) is **not**
 recoverable through rates (building costs excluded, Policy p. 3; recovered
-instead through the University's F&A rate). However, line items that exist
-solely to install/operate this machine are candidates for capitalization into
-the **equipment** asset record (2 CFR 200.1 "installation"), where they
-depreciate into rates and become §8-reimbursable to the accounts that paid.
+instead through the University's F&A rate). Line items that exist solely to
+install/operate this machine **may be included only if Fixed Assets and
+Regulatory Accounting determine the item is capitalized to the equipment asset
+under BYU's regular accounting practices and is excluded from building/F&A
+recovery** (2 CFR 200.1 "installation"; double-recovery bar, Policy p. 3 and
+2 CFR 200.468). Rigging and vendor installation are the strongest candidates;
+dedicated electrical, inert-gas plumbing, and ventilation may still be building
+systems even though they serve only this machine — that classification is
+Fixed Assets' call, not ours. Whatever is approved onto the equipment record
+depreciates into rates and becomes §8-reimbursable to the accounts that paid.
 
 Itemize from the renovation project ledger:
 
@@ -94,8 +100,11 @@ of the following arrangement:
 1. **Investment basis:** $[TOTAL from §2] contributed by [ACCOUNT #(s)],
    documented by the attached PO/invoice/ledger records.
 2. **Primary mechanism — in-kind services:** runs performed for the funding
-   account's research group without charge, valued at the then-approved
-   internal rate, logged per-run (see §6 ledger).
+   account's research group without charge, logged per-run (see §6 ledger).
+   **Valuation method requested as an explicit written ruling:** (a) full
+   approved internal rate, (b) depreciation component only, or (c) a documented
+   use-allowance. We do not assume full-rate credit (Edison A6); no repayment
+   timeline will be projected before this ruling.
 3. **Secondary mechanism:** equipment purchases (≥$5,000, benefiting the
    funding account) charged to the equipment reserve.
 4. **Cap and closure:** cumulative reimbursement value ≤ investment basis;
@@ -121,7 +130,7 @@ Required for **all** usage, billed or not (Policy p. 4). One row per run:
 ```
 run_id, date, operator, user_name, user_class(internal/fed-external/nonfed-external),
 funding_source(account # or award #), federal_award_documented(Y/N),
-material, machine_hours, runs_billed(Y/N), billing_ref, embargo_tier,
+material, machine_hours, runs_billed(Y/N), billing_ref, publication_tier,
 deliverable, notes(downtime/maintenance flags)
 ```
 

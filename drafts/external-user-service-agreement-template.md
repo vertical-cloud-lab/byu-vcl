@@ -29,9 +29,12 @@ Facility's cloud-lab interface under Facility supervision.]
 1. **Rate tier.** Orders are priced per the Facility's posted rate schedule in
    effect at order acceptance. The Customer is classified as:
    - **Federally funded external** — only upon providing the certification in
-     **Appendix A** (federal award number or copy of award approval). Price =
-     cost + institutional overhead; no surcharge; the embargo menu in §5 is not
-     available above the standard term.
+     **Appendix A** (federal award number or copy of award approval, plus
+     certification that the ordered services will be charged to that award and
+     that the Customer's institution permits the purchase). Price = cost +
+     institutional overhead; no surcharge; only the standard tier in §5.3 is
+     available. Orders paid from mixed or intermediary funds default to
+     non-federal classification pending documentation.
    - **Non-federal external** — default classification. Price = cost +
      institutional overhead + surcharge, including any selected embargo tier.
 2. **Reclassification.** If a certification is found inaccurate, the Customer
@@ -45,9 +48,11 @@ Facility's cloud-lab interface under Facility supervision.]
 1. Orders are accepted in writing (Order Form or Facility online store).
 2. **No advance billing.** Invoicing occurs at or after delivery of the ordered
    service/product (BYU policy). Payment net [30] days by check/ACH/wire to the
-   University, or by credit card through the University's eMarkets storefront.
-   [OPTIONAL: card payments accepted only for orders ≤ $[LIMIT]; larger orders
-   by invoice/ACH.]
+   University, or by credit card **only through the University's
+   Treasury-approved eMarkets storefront** — no other card channel, and no
+   separate card convenience fee unless Treasury Services confirms card-network,
+   state-law, and BYU policy compliance. [OPTIONAL: card payments accepted only
+   for orders ≤ $[LIMIT]; larger orders by invoice/ACH.]
 3. A **minimum fee** of $[150] applies to each initiated job, including jobs
    canceled after setup has begun.
 4. Late amounts bear the University's standard late charge; the Facility may
@@ -63,6 +68,11 @@ Facility's cloud-lab interface under Facility supervision.]
 3. Title and risk of loss to physical deliverables pass on delivery to carrier
    [FOB Provo, UT]. The Facility does not guarantee yield, particle-size
    outcomes, or suitability for any purpose (see §8).
+4. **Failed runs.** A run is billable once atomization begins. Runs that fail
+   due to Facility equipment or operator error are repeated at no additional
+   charge. Runs that fail due to Customer-supplied feedstock or inaccurate
+   Customer declarations are billable for hours consumed plus the §3.3 minimum
+   fee.
 
 ## 5. Data rights, embargo, and publication
 
@@ -70,22 +80,22 @@ Facility's cloud-lab interface under Facility supervision.]
    specific to its ordered jobs ("Run Data").
 2. **Facility operational data.** The Facility retains the right to use and
    **publish aggregate and anonymized operational data** — throughput, uptime,
-   queue/scheduling behavior, remote-access architecture performance, process
-   windows, and reliability statistics — at any time, with no release of
-   Customer identity or Customer-proprietary composition/parameters.
-3. **Run Data embargo menu.** The Facility may publish or include Run Data
-   (anonymized unless the Customer opts into attribution) in research outputs
-   **after the embargo selected on the Order Form**:
+   queue/scheduling behavior, remote-access architecture performance, and
+   reliability statistics — at any time, with no release of Customer identity
+   or Customer-proprietary composition/parameters/results.
+3. **Run Data publication tiers.** Customer-specific Run Data may be published
+   by the Facility **only with the Customer's written consent** or under a
+   separately agreed non-proprietary publication term:
 
-   | Tier | Facility may publish Run Data after | Availability |
-   |------|-------------------------------------|--------------|
-   | Standard | [30] days from delivery | all customers (default; no premium) |
-   | Extended | 6 / 12 / 24 months (per rate schedule premium) | non-federal external customers only |
-   | Proprietary | no publication of Run Data | non-federal external customers only; full cost + surcharge tier |
+   | Tier | Facility publication of Run Data | Availability |
+   |------|----------------------------------|--------------|
+   | Standard | aggregate/anonymized operational data only (§5.2); Customer-specific Run Data only with written consent | all customers (default; no premium) |
+   | Proprietary | no publication of any job-specific data | non-federal external customers only; full cost + surcharge tier |
 
-   The Customer may shorten or waive its selected embargo at any time in
-   writing. Premiums are surcharges and cannot be charged to federally
-   documented orders.
+   *(Timed embargo options — e.g., publication after 6/12/24 months at
+   premium — are deferred pending OGC and Regulatory Accounting approval and
+   are not offered in year one.)* Any premium is a surcharge and cannot be
+   charged to federally documented orders.
 4. **Acknowledgment.** Publications by the Customer using Facility-produced
    materials or data will acknowledge the Facility ["Powder produced at the BYU
    Vertical Cloud Lab"] and cite [FACILITY PAPER/DOI when available].
@@ -135,15 +145,19 @@ fee). Sections 5–8 survive.
 
 ## Appendix A — Federal Funding Certification (for federal-tier pricing)
 
-Customer certifies the services ordered will be charged to a federal award:
+Customer certifies that (a) the services ordered will be charged, directly or
+indirectly, to the federal award identified below; (b) the Customer's
+institution permits this purchase under that award; and (c) the funds are not
+mixed with non-federal or intermediary funds for this order:
 
 - Awarding agency: [  ] · Award number: [  ]
 - PI of record: [  ] · Institution administering the award: [  ]
 - Documentation attached: [copy of award approval / award number verification]
 
 Signature/date: ______________. The Facility applies cost + institutional
-overhead with no surcharge to certified orders; standard embargo terms apply
-(§5.3). Certification must be renewed [annually / per order].
+overhead with no surcharge to certified orders; the standard publication tier
+applies (§5.3). Certification must be renewed [annually / per order];
+inaccurate certifications trigger reclassification under §2.2.
 
 ## Appendix B — Export-control screening record *(Facility internal)*
 
@@ -156,7 +170,7 @@ deliverable; approver.]
 |-------|-------|
 | Services / # runs / feedstock | |
 | Rate tier & unit prices | |
-| Embargo tier selected (§5.3) | |
+| Publication tier selected (§5.3: standard / proprietary) | |
 | Estimated total (excl. tax) | |
 | Delivery terms | |
 | Signatures | |

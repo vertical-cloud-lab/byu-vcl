@@ -13,6 +13,8 @@
 
 | File | Purpose | Submit to |
 |------|---------|-----------|
+| [`recharge-plan-overview.md`](recharge-plan-overview.md) | **Version 1 — plain-language overview** with the suggested planning numbers and high-level justification (post-Edison-review) | Share with leadership / anyone new to the plan |
+| [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) | **Version 2 — full working notes**: all calculations, Edison point-by-point disposition, notes-to-self | Internal working document |
 | [`recharge-center-establishment-proposal.md`](recharge-center-establishment-proposal.md) | Proposal to establish the recharge center (policy §2) | Department Chair → Dean → Regulatory Accounting |
 | [`rate-proposal-cy2027.md`](rate-proposal-cy2027.md) | First-year rate proposal with cost pool, usage forecast, and full calculations | Regulatory Accounting (after Chair/Dean rate review) |
 | [`equipment-depreciation-and-reimbursement-package.md`](equipment-depreciation-and-reimbursement-package.md) | Depreciation schedule request, capitalized-cost checklist, §8 reimbursement plan, usage-log template | Regulatory Accounting / Equipment Inventory Office |
@@ -29,84 +31,94 @@ permanently forfeited (~$14.6k if the machine went in service ~June 2026 and rat
 start Jan 1, 2027). **The realistic target is rates effective January 1, 2027**,
 which caps the loss at the 2026 stub.
 
-## Sequenced next steps
+## Sequenced next steps *(resequenced per the Edison review — less finance-first; legal/EHS/operational controls pulled forward)*
 
-### Phase 0 — Now (July 2026): information gathering. No approvals needed.
+### Phase 0 — Now (July 2026): freeze, log, measure.
 
-1. **Equipment Inventory Office / Fixed Assets** — get the atomizer's asset number,
-   recorded in-service date, and **capitalized acquisition cost** (does it include
-   tariff/duty, freight, installation?). Ask how the renovation was booked (building
-   asset vs. equipment asset vs. expensed) and whether machine-specific line items
-   (rigging, dedicated electrical, inert-gas plumbing, ventilation) can be
-   reclassified to the equipment asset record — this must happen **before** the
-   depreciation schedule is approved. Use the checklist in
-   [`equipment-depreciation-and-reimbursement-package.md`](equipment-depreciation-and-reimbursement-package.md).
-2. **Regulatory Accounting** (via Financial Services) — short email: confirm the
-   June-2005 Recharge Center Policy is still current, get the current director's
-   name, and request a meeting to discuss establishing a center with rates effective
-   Jan 1, 2027. Attach nothing yet.
-3. **Sponsored Programs Office** (rao@byu.edu, 801-422-3841) — request the current
-   negotiated F&A rate agreement (research surfaced 51.5% effective 2022-01-01) and
-   ask what overhead rate/base applies to **external service-center sales**.
-4. **Start the usage log today** (template in the equipment package file). All usage
+1. **Freeze public price promises.** Quote no rate to anyone — internally or
+   externally — except as "illustrative, pending approval." The Northwestern
+   comparator ($1,075/run internal for the same instrument) says our early $306
+   figure is under-costed.
+2. **Start the usage log today** (template in the equipment package file). All usage
    must be logged whether billed or not (p. 4); a log that predates the proposal
    also strengthens the usage forecast.
+3. **Run the 2–4 week time-and-cost study** (protocol in
+   [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) §10): log all
+   staff minutes per run by task — scheduling, quoting, intake/SDS review, setup,
+   monitoring, powder recovery, cleaning, packaging, documentation, failed runs,
+   maintenance, training, remote-access support, billing, safety recordkeeping.
+   This determines the real rate; it matters more than polishing proposal text.
 
-### Phase 1 — August–September 2026: the Regulatory Accounting meeting and decisions.
+### Phase 1 — July–August 2026: one cross-functional kickoff, then the asset decision.
 
-5. Meet Regulatory Accounting with
-   [`questions-for-regulatory-accounting.md`](questions-for-regulatory-accounting.md).
-   The answers determine: useful life (10 yr assumed), first-year proration, whether
-   tariff/installation are in the depreciable base, external overhead rate,
-   surcharge design, and the §8 reimbursement mechanics.
-6. Make the three structural decisions the drafts currently carry as options:
-   (a) own-lab usage treatment — **§8 in-kind reimbursement** (recommended in the
-   research) vs. paying the internal rate from startup funds vs. zero-rate subsidy;
-   (b) whether to charge a per-build **minimum fee**; (c) initial embargo/pricing
-   menu for non-federal externals.
-7. Finalize the establishment proposal and rate proposal with real numbers.
+4. **Convene a single kickoff meeting** — Regulatory Accounting, Fixed Assets,
+   department business officer, **EHS**, OGC, Tax Office, Treasury Services, Export
+   Control, and Sponsored Programs — using
+   [`questions-for-regulatory-accounting.md`](questions-for-regulatory-accounting.md)
+   as the agenda. (The previous plan's serial office visits ending in December were
+   too late for a January 1 launch.) Confirm the June-2005 policy is current.
+5. **Get the asset decision first (August).** Fixed Assets must determine the
+   capitalized cost, in-service date, useful life, and whether any
+   tariff/installation/renovation line items belong on the equipment record —
+   the classification is **their** call under BYU's regular accounting practices
+   (checklist in
+   [`equipment-depreciation-and-reimbursement-package.md`](equipment-depreciation-and-reimbursement-package.md)).
+   Without this, the depreciation pool is provisional.
+6. **Begin EHS review immediately** (combustible aluminum powder / NFPA 484, argon
+   asphyxiation/oxygen monitoring, powder storage and shipping). EHS sign-off is a
+   go-live gate, not a formality.
 
-### Phase 2 — September–October 2026: approvals.
+### Phase 2 — August–September 2026: structure and submission.
 
-8. Submit the establishment proposal to the **Department Chair**; Chair forwards to
-   the **Dean's Office** (and VP office per the responsibilities table); Dean
-   forwards to **Regulatory Accounting** (policy §2). Chair or Dean must also review
-   and approve the **rate proposal** before it goes to Regulatory Accounting (p. 2).
-   Target: everything at Regulatory Accounting by **October 31** to leave review
-   time.
+7. **Choose one clean own-lab structure:** approved gross internal rate + §8
+   in-kind credit if Regulatory Accounting confirms the valuation **in writing**
+   (full rate vs. depreciation-only vs. use-allowance); fallback: gross rate +
+   explicit startup-fund subsidy. Never describe the rate as "zero."
+8. **Submit a conservative CY2027 rate proposal with two columns** — Column A:
+   minimum documented cost; Column B: staffed/realistic cost per the time study
+   (plan around $700–$1,100/run internal, not $306–$454) — via Department Chair →
+   Dean's Office (→ VP office) → Regulatory Accounting (policy §2; Chair/Dean rate
+   review required, p. 2). Target: at Regulatory Accounting by **September 30**.
 
-### Phase 3 — November–December 2026: setup.
+### Phase 3 — October–December 2026: approvals and operational readiness gate.
 
 9. Financial Accounting opens the **operating account** and **equipment reserve
-   account**; Regulatory Accounting approves the **depreciation schedule** (asset
-   numbers, useful life) and the **§8 reimbursement arrangement** (prior approval is
-   required — get it in writing now, not when the reserve has money).
-10. **Treasury Services** — request an **eMarkets Storefront** for external card
-    payments (Connor Brown, connor.brown@byu.edu; expect weeks: contract/legal
-    review, PCI training, GL config). Large jobs should be invoiced via Accounts
-    Receivable/ACH regardless.
-11. **Office of General Counsel** — review the external-user service agreement
-    template. Loop in the **Tax Office** (Paul Larsen, sales tax; UBIT) on powder
-    sales to industry, and the **Office of Research/Export Control** on non-US user
-    screening before accepting any.
-12. Post the CY2027 rate schedule; brief the lab on logging/billing discipline.
+   account**; Regulatory Accounting approves the **depreciation schedule** and the
+   **§8 reimbursement arrangement** (prior written approval — get it now, not when
+   the reserve has money).
+10. **Treasury Services** — eMarkets Storefront application (Connor Brown; expect
+    weeks: contract review, PCI training, GL config). Large jobs invoiced via
+    AR/ACH regardless. **OGC** — service agreement review (consent-based
+    publication §5, liability, insurance/product-liability with Risk Management).
+    **Tax Office** (Paul Larsen) — sales-tax characterization of powder sales;
+    UBIT screen. **Export Control** — screening workflow incl. deemed-export rules
+    for remote access.
+11. **Readiness gate (no-go until all pass):** approved SOPs + EHS sign-off, export
+    screening checklist, service agreement, billing workflow, customer intake form,
+    usage log running, posted rate schedule, §8 ledger, reserve-account journal
+    process. First-year menu: **standard + proprietary tiers only** (timed embargo
+    ladder deferred).
 
-### Phase 4 — January 1, 2027: go live.
+### Phase 4 — January 1, 2027: go live. Then review quarterly.
 
-13. Rates effective; journal-entry billing for internal users, invoices/eMarkets for
+12. Rates effective; journal-entry billing for internal users, invoices/eMarkets for
     externals; depreciation journal entries to the equipment reserve kept current.
-14. Calendar the **annual cycle**: rate true-up proposal to Regulatory Accounting
-    each fall (surplus/deficit rolls into the next year's rates); break-even is
-    judged over 5 years, so a year-one forecast miss is expected and non-fatal.
+13. **Quarterly actual-vs-forecast reviews in CY2027** (not just annual): trigger a
+    mid-year rate revision if labor per run differs >20% from forecast, utilization
+    differs >25%, or the external mix changes materially. Annual true-up each fall;
+    surplus/deficit rolls into next year's rates; break-even judged over 5 years,
+    so a year-one forecast miss is expected and non-fatal.
 
 ## The three biggest open numbers
 
 All drafts run on these assumptions — they are the ones to nail down first:
 
-1. **True staffing cost per run.** The illustrative pool ($175/run variable) yields
-   ~$310/run internal at 300 runs/yr; Northwestern's comparable facility charges
-   **$1,075 internal** per atomizer run, implying real pools are dominated by staff
-   effort. If honest staffing is added, expect rates 2–3× the illustration.
+1. **True staffing cost per run.** The bare-minimum pool yields ~$306/run internal
+   at 305 runs/yr; Northwestern's comparable facility charges **$1,075 internal**
+   per atomizer run, implying real pools are dominated by staff effort. The staffed
+   planning basis is now **~$836/run internal (2.0 FTE)** — see
+   [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) §3 — pending
+   the time study.
 2. **The capitalized acquisition cost** (invoice + tariff + freight + installation ±
    reclassified renovation items) — the depreciable base could be meaningfully more
    than $250k.
