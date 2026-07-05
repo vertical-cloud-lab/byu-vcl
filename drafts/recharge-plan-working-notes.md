@@ -476,7 +476,176 @@ external is supported by a documented ~600–1,000-run/yr forecast (or an F&A
 waiver), and (c) the embargo menu is sold to non-federal externals only. The
 quote freeze (§9) still applies to all of these numbers.
 
-## 13. Prior-art rate shelf (for the submission appendix)
+## 13. Own-lab funding, the leverage question, open-data default, upgrades (Sterling, 2026-07-05)
+
+Questions under analysis: (a) "I wouldn't have funds to pay for our own lab's
+usage → full subsidy → less leverage on costs recovered from non-lab sources";
+(b) what is the DOE binary (link wanted); (c) open-by-default data with a
+permissive license + short grace period, embargo only for non-federal externals
+at ~$5k/2 yr or ~$10k/4 yr; (d) can upgrades be capitalized on the non-federal
+surcharge, or "relax and set a normal internal price and look for alternatives."
+Analysis only — no draft numbers or agreement text changed yet (see 13.6).
+
+### 13.1 Own-lab usage does not require cash — or new money
+
+Three layers, in order of preference:
+
+1. **§8 in-kind credit is the no-cash channel.** Own-lab runs are delivered
+   without charge and credited against the $250k investment (pp. 7–8). That is
+   not a subsidy funded by new money; it is the center repaying a debt it
+   already owes the startup account. No invoice ever arrives. (Valuation ruling
+   still pending — §5.)
+2. **The "full subsidy" is mostly money already being spent.** The center's
+   cash costs are staff + consumables + maintenance. If startup-funded students
+   already operate the machine and startup funds already buy the argon and
+   sonotrodes, establishing the center creates **no new bill** — it converts
+   existing spending into a *documented* subsidy (tracked, excluded from F&A
+   proposals, pp. 3–5). The subsidy requirement is bookkeeping, not a second
+   outlay of the same dollars.
+3. **The real cash question is staffing, not the own-lab charge.** At 2.0 FTE
+   the pool's cash portion is ~$230k/yr against ~$95k of external cash in
+   (§3.2). If those FTEs are the people startup/department already pays, the
+   gap is absorbed; if they are new hires, *that* is the funding decision — and
+   it exists at any posted internal price whatsoever.
+
+### 13.2 Leverage runs the other way: a low *rate* cuts external recovery; a subsidized *price* doesn't
+
+Because federal externals pay internal rate × 1.515 with no surcharge (p. 5),
+the approved rate is the lever that sets what non-lab sources contribute:
+
+| World | Approved rate | Federal ext pays / center keeps (per run) | Own-lab cash cost |
+|---|---|---|---|
+| Honest staffed rate | $836 | $1,267 / **$836** | $0 (§8 credit or documented subsidy) |
+| Low-rate structure (§12) | ~$330 | $500 / **$330** | $0 (same) |
+
+Own-lab cash cost is identical in both worlds — under §8/subsidy you never pay
+cash either way. So the low-rate structure surrenders ~$500/run × 70 federal
+external runs ≈ **$35k/yr of external recovery in exchange for nothing**. The
+leverage-maximizing construction is exactly the compliant one: **highest
+defensible cost-based rate + §8 credit / documented subsidy for own-lab +
+surcharge on non-federal externals**. Two refinements:
+
+- **Uniformity does not require buying everyone else a cheap price.** The rate
+  must be uniform (p. 4); the *subsidy* may be scoped — the policy permits
+  paying for "specific users'" services from non-federal, non-recharge funds
+  (p. 5). Own-lab can ride §8/subsidy while other internal users pay the full
+  rate from their own accounts. "Consistent for myself and for others" lives at
+  the rate level, where it is automatic.
+- **Surcharge income may lawfully "reduce rates charged to users" (p. 5)** —
+  the one mechanism by which external money can, in effect, cover part of the
+  internal share of the pool.
+
+Confirmed: internal and federal-external differ only by F&A (p. 5), with the
+single escape hatch "unless Regulatory Accounting approves otherwise" — the F&A
+waiver stays on the kickoff agenda but is not planning-assumption material.
+
+### 13.3 The DOE binary, with links
+
+Two contract types chosen at intake, nothing more:
+
+- **Non-proprietary:** user intends to publish; results become public. At DOE,
+  "user fees are not charged for non-proprietary work if the user intends to
+  publish the research results in the open literature"
+  ([DOE Office of Science FAQ](https://science.osti.gov/User-Facilities/Frequently-Asked-Questions)) —
+  DOE can charge $0 because Congress funds the facilities; our analog is the
+  *standard tier at posted cost-based prices*, not free.
+- **Proprietary:** user keeps results confidential; "full cost recovery is
+  required for proprietary work" (same FAQ). Our analog: full cost + top
+  surcharge, non-federal only.
+
+Primary sources: [DOE Office of Science user agreements](https://science.osti.gov/User-Facilities/User-Resources/User-Agreements)
+(both IP class waivers); [APS explainer — "Differences between non-proprietary
+and proprietary research"](https://www.aps.anl.gov/Users-Information/Legal-Financial/Differences-between-non-proprietary-and-proprietary)
+(clearest side-by-side; note aps.anl.gov blocked this CI runner — verify in a
+browser); [ORNL user agreements](https://www.ornl.gov/content/user-agreements).
+The point of citing it as precedent: **open is the default; secrecy is the
+priced exception** — which is exactly the instinct behind the open-data design
+below.
+
+### 13.4 Open-by-default with permissive license + grace period (proposed redesign of §7 / agreement §5)
+
+Sterling's default (data goes public under a permissive license, facility
+claims no rights beyond the license, ~3-month grace period, customer may
+shorten/waive) is *cleaner* than both prior designs — closer to DOE than the
+consent-based Edison A5 version, and it dissolves several standing problems:
+
+- **Structure:** Run Data is deposited in [repository] under [license] upon
+  expiry of a [3-month] grace period running from data delivery; the customer
+  may shorten or waive. Facility asserts no ownership; everyone (including the
+  facility and its students) uses the data under the license like anyone else.
+  Contract mechanics: since the customer owns Run Data (agreement §5.1), the
+  clause is the customer *agreeing to the release* — one paragraph, all tiers.
+- **License note-to-self:** raw run data is largely facts (thin copyright), so
+  the license is mostly signaling + certainty. **CC0** = cleanest for data,
+  avoids attribution stacking; **CC BY 4.0** = citation credit for students.
+  Either defensible; OGC gets the final word. Repository choice (Zenodo /
+  Materials Data Facility / institutional) is a kickoff add-on.
+- **The free grace period is uniform and costs nothing** → no surcharge issue,
+  so federal externals get it too (p. 5 problem never arises).
+- **Paid embargo = surcharge = non-federal externals only** (p. 5) — agreed,
+  and now the *standard* tier already defaults to "publishable after the term,"
+  so the §12.5 design contradiction (consent-based default vs. paid embargo)
+  disappears.
+- **Ladder pricing ($5k/2 yr … $10k/4 yr):** compliance-wise free — surcharge
+  size is discretionary (p. 5) — so this is a *market* question with zero prior
+  art (§7). A late-program **business-school student** doing a
+  willingness-to-pay / pricing study is a genuinely good fit (capstone-sized,
+  also useful on the §12.2 demand-forecast problem). Cautions at 4 years:
+  outlives most student timelines (mitigated — the aggregate/anonymized
+  operational-data carve-out stays publishable immediately in **all** tiers,
+  and that is the corpus the infrastructure papers need); standing
+  confidentiality erodes the fundamental-research/export posture and the UBIT
+  related-purpose story if it becomes the norm rather than the exception.
+- **Kill the indefinite tier.** With a 4-yr rung available, drop "proprietary
+  /indefinite" entirely: every embargo expires. This solves the §12.5 menu-
+  coherence problem (nothing has to be priced above the top rung), strengthens
+  the open-facility posture, and anyone needing true perpetual secrecy is
+  routed to a sponsored-research agreement or declined.
+- **Federal externals get the grace period only** (can't buy extensions). If a
+  federal customer legitimately needs longer, the uniform no-cost standard term
+  can be set at whatever length policy chooses — or route to SPO. DOE-
+  consistent line unchanged: federal money doesn't buy confidentiality.
+
+### 13.5 Upgrades: the surcharge channel is real, and "relax to a normal internal price" costs you nothing you actually had
+
+- **Direct answer: yes.** Surcharge income may be used "to finance equipment
+  purchases" (p. 5); purchases/upgrades ≥$5k are charged to the equipment
+  reserve (p. 7), each capitalized upgrade gets its own depreciation schedule
+  and re-enters rates. Expressly permitted — no relaxation needed on this goal.
+- **The two decisions are decoupled.** Internal rates can *never* fund upgrades
+  at any price level ("cannot add charges to accumulate assets," p. 5). So
+  setting a normal (honest) internal rate sacrifices zero upgrade capacity —
+  upgrade money was only ever coming from: (1) the non-federal surcharge,
+  (2) gifts/philanthropy (opens a new §8 basis), (3) department/college/startup
+  investment (ditto), (4) sale proceeds of old equipment (p. 7), (5) residuals
+  on industry *fixed-price* contracts (confirm disposition with SPO). Per
+  §13.2, the honest rate actually *helps*: a higher rate base means a higher
+  surcharge-eligible price before market limits bite.
+- **The binding constraint is the thin non-federal base, not policy.** 30
+  non-federal runs × $233 surcharge ≈ $7k/yr; even × $1,500 ≈ $45k/yr gross
+  (UBIT on net). Embargo premiums stack on top for those customers only. Every
+  federal-academic customer contributes $0 to upgrades *by design* — courting
+  industry/non-federal volume is the only demand-side lever.
+- **And the §5 tension governs:** every dollar of §8 in-kind credit competes
+  with reserve accumulation. If upgrades matter more than repaying the startup
+  account, deliberately take less §8 credit (or bill own-lab in cash for some
+  years so the $82/run depreciation actually reaches the reserve).
+
+### 13.6 Decisions this queues (not yet made)
+
+1. Adopt open-by-default + grace period as the standard tier (flips Edison A5
+   consent-based design — deliberate, DOE-precedented). → rewrite agreement §5
+   and §7 above once confirmed.
+2. License (CC0 vs CC BY 4.0) and repository. → OGC + kickoff.
+3. Drop the indefinite/proprietary tier in favor of a capped ladder (top rung
+   2 or 4 yr). → with OGC; year-one menu could still launch binary (grace-only
+   vs. one paid rung) if the ladder feels premature.
+4. Ladder price points ($5k/2 yr, $10k/4 yr) → market study (business-school
+   student project).
+5. Own-lab settlement stays §8-in-kind-preferred; no blanket internal price cut
+   needed for "consistency" (§13.2).
+
+## 14. Prior-art rate shelf (for the submission appendix)
 
 | Facility | Instrument | Published rates |
 |---|---|---|
