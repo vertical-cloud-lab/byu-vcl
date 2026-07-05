@@ -49,7 +49,8 @@ Three reasons to do this:
 
 ## 3. Proposed rates
 
-Per run (~6 machine-hours), effective January 1, 2027:
+Per run (~6 machine-hours), effective **October 1, 2026** — matched to the
+atomizer's August 2026 installation and commissioning:
 
 | Who is paying | Rate |
 |---|---|
@@ -130,11 +131,15 @@ $5,000 or more and the §8 repayment described above.
 
 Three facts about how this works:
 
-1. **The clock is already running.** Rates "cannot include depreciation from
-   prior years" (p. 6). The machine went into service in mid-2026; with rates
-   effective January 1, 2027 (BYU budgets on the calendar year), the roughly
-   $29,000 of 2026 depreciation is simply not recovered. This is why the
-   timeline in §9 targets January 1 and not later.
+1. **The clock starts at installation.** Rates "cannot include depreciation
+   from prior years" (p. 6). The machine goes into service with its August
+   2026 installation and commissioning, and every month between then and the
+   rates' effective date forfeits about $4,200 of recoverable cost —
+   permanently. Starting the center with the machine, on October 1, holds the
+   loss to roughly $8,000; waiting for the calendar year (January 1, 2027)
+   would more than double it. The policy permits a mid-year start: a rate
+   proposal is filed when a center is "initially established" (p. 2), with
+   annual calendar-year proposals thereafter.
 2. **Volume cannot speed it up.** Busy years do not recover the machine
    faster — over-collection just lowers the next year's rate. Capital comes
    back on the depreciation schedule, period.
@@ -191,10 +196,10 @@ keeps student publication timelines independent of any customer's embargo.
 
 | When | What |
 |---|---|
-| **July 2026** | Start the permanent usage log (every run, billed or not, p. 4). Begin a 2–4 week time-and-cost study logging staff minutes per run to finalize the labor numbers behind §3. |
-| **July–August 2026** | One cross-functional kickoff with Regulatory Accounting, Fixed Assets, department finance, Environmental Health & Safety, General Counsel, Tax, Treasury, Export Control, and Sponsored Programs. |
-| **August 2026** | Asset record confirmed with Fixed Assets: capitalized cost (invoice + duty + freight + installation, including machine-specific renovation items), in-service date, five-year schedule. §8 repayment arrangement approved in writing. |
-| **September 2026** | Establishment proposal and CY2027 rate proposal submitted through Department Chair → Dean → Regulatory Accounting. |
-| **October–December 2026** | Accounts opened; EHS sign-off (combustible aluminum powder — NFPA 484 — and argon oxygen monitoring); service agreement through General Counsel; eMarkets storefront setup; export-control screening procedure in place. |
-| **January 1, 2027** | Rates effective; billing begins. |
-| **CY2027** | Quarterly actual-vs-forecast reviews, with a mid-year rate revision if labor per run or utilization drifts materially from forecast. |
+| **July 2026** | One cross-functional kickoff with Regulatory Accounting, Fixed Assets, department finance, Environmental Health & Safety, General Counsel, Tax, Treasury, Export Control, and Sponsored Programs. Usage-log and time-study procedures ready to run from the first commissioning run. |
+| **Late July – mid August 2026** | Atomizer installed and commissioned. The permanent usage log begins with the first run (every run, billed or not, p. 4). |
+| **August – mid September 2026** | Time-and-cost study on the commissioning runs finalizes the labor numbers behind §3. Asset record confirmed with Fixed Assets: capitalized cost (invoice + duty + freight + installation, including machine-specific renovation items), in-service date, five-year schedule. §8 repayment arrangement approved in writing. |
+| **Mid-September 2026** | Establishment proposal and rate proposal submitted through Department Chair → Dean → Regulatory Accounting, requesting rates effective October 1, 2026 (initial rate period through December 31, 2027). |
+| **October 1, 2026** | Rates effective; operating and equipment-reserve accounts open; internal billing and §8 repayment credit begin. |
+| **October–December 2026** | External on-ramp: EHS sign-off (combustible aluminum powder — NFPA 484 — and argon oxygen monitoring); service agreement through General Counsel; eMarkets storefront setup; export-control screening procedure. External billing begins as these complete. |
+| **CY2027** | First calendar-year rate proposal. Quarterly actual-vs-forecast reviews, with a mid-year rate revision if labor per run or utilization drifts materially from forecast. |

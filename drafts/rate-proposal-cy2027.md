@@ -1,8 +1,12 @@
-# DRAFT — Rate Proposal, Calendar Year 2027
+# DRAFT — Rate Proposal, Initial Rate Period (October 1, 2026 – December 31, 2027)
 
 **Center:** Vertical Cloud Lab (VCL) Materials Processing Recharge Center
 **Instrument:** Ultrasonic metal atomizer (AMAZEMET rePowder-class)
-**Rate period:** January 1 – December 31, 2027 (BYU budget year = calendar year)
+**Rate period:** Initial period **October 1, 2026 (requested effective date;
+first of the month following approval) – December 31, 2027**, then annual
+calendar-year proposals (BYU budget year = calendar year). Per-run rates are
+period-independent — the cost pool and usage scale together — so all figures
+below are stated on an annualized CY2027 basis.
 **Prepared:** [DATE] · **Chair/Dean rate review:** [NAME, DATE] (required before
 submission to Regulatory Accounting, Policy p. 2)
 
@@ -20,7 +24,7 @@ submission to Regulatory Accounting, Policy p. 2)
 |---|-----------|------------|-------------|
 | A1 | Capitalized acquisition cost (invoice + tariff + freight + installation; machine-specific renovation items if Fixed Assets capitalizes them to the equipment asset) | **$250,000** | Equipment Inventory Office / Fixed Assets |
 | A2 | Useful life | **5 years**, straight-line, no residual (prior approval requested — see §2) | Regulatory Accounting |
-| A3 | In-service date | **June 2026** | Equipment Inventory Office |
+| A3 | In-service date | **August 2026** (installation/commissioning) | Equipment Inventory Office |
 | A4 | First-year proration convention | monthly | Regulatory Accounting |
 | A5 | Institutional overhead on external sales | **51.5%** of cost-based price | SPO / Regulatory Accounting (rate *and* base) |
 | A6 | Run duration | **~6 machine-hours/run** | instrument log |
@@ -43,10 +47,12 @@ submission to Regulatory Accounting, Policy p. 2)
   includable in rates (Policy pp. 6–7); requires the approved depreciation
   schedule and equipment reserve account requested in the companion equipment
   package.
-- 2026 stub (in-service ~June 2026 → rates effective Jan 1, 2027): ~7 months ×
-  $4,167 ≈ **$29.2k of depreciation not recovered** ("rates cannot include
-  depreciation from prior years," p. 6). No catch-up is possible; this
-  proposal claims CY2027 depreciation only. The schedule ends mid-2031.
+- 2026 stub (in-service ~Aug 2026 → requested rates effective Oct 1, 2026):
+  ~2 months × $4,167 ≈ **$8.3k of depreciation not recovered** ("rates cannot
+  include depreciation from prior years," p. 6); the forfeit grows by ~$4,167
+  for each month the effective date slips (~$20.8k at a Jan 1, 2027 start).
+  No catch-up is possible; this proposal claims depreciation from the
+  effective date forward only. The schedule runs August 2026 – July 2031.
 - Depreciation component of each billed run (**$164**) is journaled to the
   **equipment reserve account** (Policy p. 7).
 

@@ -23,14 +23,18 @@
 
 ## Why the timeline matters
 
-BYU's budget year is the **calendar year**. Depreciation on the atomizer
-(~$4,167/month on the assumed $250k / **5-year** basis, per the PI's 2026-07-05
-directive) is recoverable **only** for periods with approved rates in effect —
-"recharge rates cannot include depreciation from prior years" (policy pp. 6–7).
-Every month before rates take effect is recoverable base permanently forfeited
-(~$29.2k if the machine went in service ~June 2026 and rates start Jan 1, 2027).
-**The realistic target is rates effective January 1, 2027**, which caps the loss
-at the 2026 stub.
+BYU's budget year is the **calendar year**, but the policy does not tie a new
+center to it: a rate proposal at initial establishment is expressly
+contemplated ("when they are initially established," p. 2), so first rates can
+take effect mid-year. Depreciation on the atomizer (~$4,167/month on the
+assumed $250k / **5-year** basis, per the PI's 2026-07-05 directive) is
+recoverable **only** for periods with approved rates in effect — "recharge
+rates cannot include depreciation from prior years" (policy pp. 6–7). With
+installation and commissioning in **August 2026**, every month between
+commissioning and the rates' effective date is recoverable base permanently
+forfeited: **~$8.3k with rates effective October 1, 2026 (the target, matched
+to commissioning); ~$20.8k if it slips to the January 1, 2027 fallback**
+(working notes §18).
 
 ## Sequenced next steps *(resequenced per the Edison review — less finance-first; legal/EHS/operational controls pulled forward)*
 
@@ -40,10 +44,12 @@ at the 2026 stub.
    externally — except as "illustrative, pending approval." The Northwestern
    comparator ($1,075/run internal for the same instrument) says the early
    bare-minimum figures ($306–$388) are under-costed.
-2. **Start the usage log today** (template in the equipment package file). All usage
-   must be logged whether billed or not (p. 4); a log that predates the proposal
-   also strengthens the usage forecast.
-3. **Run the 2–4 week time-and-cost study** (protocol in
+2. **Have the usage log ready to start with the first commissioning run**
+   (template in the equipment package file; installation/commissioning is late
+   July–mid August). All usage must be logged whether billed or not (p. 4); a
+   log that predates the proposal also strengthens the usage forecast.
+3. **Prepare the 2–4 week time-and-cost study now; run it on the commissioning
+   runs (August–mid September)** (protocol in
    [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) §10): log all
    staff minutes per run by task — scheduling, quoting, intake/SDS review, setup,
    monitoring, powder recovery, cleaning, packaging, documentation, failed runs,
@@ -57,7 +63,9 @@ at the 2026 stub.
    Control, and Sponsored Programs — using
    [`questions-for-regulatory-accounting.md`](questions-for-regulatory-accounting.md)
    as the agenda. (The previous plan's serial office visits ending in December were
-   too late for a January 1 launch.) Confirm the June-2005 policy is current.
+   too late even for a January 1 launch, let alone the October 1 target.) The
+   kickoff does not need the machine — hold it in July, before installation.
+   Confirm the June-2005 policy is current.
 5. **Get the asset decision first (August).** Fixed Assets must determine the
    capitalized cost, in-service date, useful life, and whether any
    tariff/installation/renovation line items belong on the equipment record —
@@ -80,9 +88,11 @@ at the 2026 stub.
    labor lines; the no-staffing floor of $388 documented but not proposed) —
    via Department Chair → Dean's Office (→ VP office) → Regulatory Accounting
    (policy §2; Chair/Dean rate review required, p. 2). Target: at Regulatory
-   Accounting by **September 30**.
+   Accounting by **mid-September**, requesting an initial rate period
+   **effective October 1, 2026 (first of the month following approval) through
+   December 31, 2027**, then calendar-year cycles (working notes §18.3).
 
-### Phase 3 — October–December 2026: approvals and operational readiness gate.
+### Phase 3 — October–December 2026: internal operation live; external readiness gate.
 
 9. Financial Accounting opens the **operating account** and **equipment reserve
    account**; Regulatory Accounting approves the **depreciation schedule** and the
@@ -101,10 +111,14 @@ at the 2026 stub.
     process. First-year menu: **standard + proprietary tiers only** (timed embargo
     ladder deferred).
 
-### Phase 4 — January 1, 2027: go live. Then review quarterly.
+### Phase 4 — Go live: target October 1, 2026 (fallback January 1, 2027). Then review quarterly.
 
-12. Rates effective; journal-entry billing for internal users, invoices/eMarkets for
-    externals; depreciation journal entries to the equipment reserve kept current.
+12. Rates effective the first of the month after approval — **target October 1,
+    2026**, matched to the August commissioning; internal journal-entry billing
+    and §8 credit accrual begin then, external billing as the readiness-gate
+    items in Phase 3 pass; depreciation journal entries to the equipment
+    reserve kept current. Each month of slip forfeits ~$4,167 of recoverable
+    depreciation (working notes §18.2).
 13. **Quarterly actual-vs-forecast reviews in CY2027** (not just annual): trigger a
     mid-year rate revision if labor per run differs >20% from forecast, utilization
     differs >25%, or the external mix changes materially. Annual true-up each fall;

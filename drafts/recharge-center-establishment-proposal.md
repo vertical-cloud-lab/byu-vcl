@@ -5,7 +5,10 @@
 **College:** [COLLEGE NAME — Ira A. Fulton College of Engineering?]
 **Faculty director:** [PI NAME], [TITLE]
 **Date:** [DATE]
-**Requested rate effective date:** January 1, 2027
+**Requested rate effective date:** **October 1, 2026** (first of the month
+following approval; matched to the atomizer's August 2026 installation and
+commissioning; fallback January 1, 2027). Initial rate period through
+December 31, 2027, then annual calendar-year proposals.
 
 > **Status: DRAFT for internal review — not yet submitted.** Prepared per the BYU
 > *Recharge Center Policy & Procedures* (the "Policy"), §2

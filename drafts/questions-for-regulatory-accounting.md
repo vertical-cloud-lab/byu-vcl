@@ -13,7 +13,13 @@
    version? Any post-Uniform-Guidance (2 CFR 200) updates, current forms, or a
    proposal template we should use instead of a memo?
 2. Who is the current Director of Regulatory Accounting, and what is the
-   realistic review timeline to have **rates effective January 1, 2027**?
+   realistic review timeline to have **rates effective October 1, 2026** —
+   matched to the atomizer's August installation/commissioning (fallback
+   January 1, 2027)? Are there any constraints on the effective date
+   (month/quarter boundaries, alignment to the calendar budget year)? May the
+   initial rate-setting period run **October 1, 2026 – December 31, 2027**
+   (15 months, then calendar-year cycles), or do you prefer a separate
+   Q4-2026 stub proposal plus a CY2027 proposal?
 3. Does the VP office sign the establishment proposal in practice (the
    responsibilities table mentions Chair, Dean's *and* VP's office; §2 narrates
    Chair → Dean → Regulatory Accounting)?
@@ -26,7 +32,10 @@
    documentation does approval require, and what is BYU's standard life for
    this class for comparison?
 5. First-year proration: monthly from the in-service date, or an annual
-   convention? (Determines exactly how much of 2026 is forfeited.)
+   convention? In-service is expected **August 2026** at installation/
+   commissioning — which event controls (delivery, installation-complete, or
+   acceptance)? (Together these determine exactly how much of 2026 is
+   forfeited.)
 6. Confirm the depreciable base = capitalized acquisition cost including
    **tariff/duty, freight, and installation** (2 CFR 200.1) as booked by Fixed
    Assets — and the process to fix the asset record if ancillary charges were

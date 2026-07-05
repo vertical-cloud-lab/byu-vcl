@@ -81,7 +81,7 @@ is approved; reclassification afterward is much harder.
 | Depreciable base | Total from §2 | less residual, if any |
 | Residual value | $[0 assumed] | |
 | Useful life | **5 years** | Prior approval requested (shorter than a typical class-standard life, p. 7). Justification: near-continuous duty cycle (~1,800+ machine-h/yr forecast), consumable-intensive ultrasonic hardware, and rapid technological change in metal-AM powder equipment |
-| Start | In-service date [DATE]; **first-year proration convention: [monthly — confirm]** | Policy silent on proration |
+| Start | In-service date [DATE — expected August 2026 at installation/commissioning; confirm with Fixed Assets which event controls: delivery, installation-complete, or acceptance]; **first-year proration convention: [monthly — confirm]** | Policy silent on proration |
 | Annual depreciation | $[50,000 at $250k/5 yr] | $[4,166.67]/month |
 | Journal entries | Monthly, operating account → **equipment reserve account** | kept current per p. 7 |
 

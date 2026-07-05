@@ -68,7 +68,7 @@ Adopted wholesale: quote freeze; July–Aug time study; single cross-functional 
 |---|---|---|---|
 | A1 | Capitalized acquisition cost (invoice + tariff + freight + installation; renovation items **only if Fixed Assets capitalizes them to the equipment asset and they are excluded from building/F&A recovery**) | **$250,000** placeholder | Fixed Assets / Equipment Inventory |
 | A2 | Useful life, straight-line, no residual | **5 yr** (PI directive 2026-07-05 — assumed directly; supersedes §15.4's take-the-standard recommendation; prior approval still required, p. 7) | Regulatory Accounting |
-| A3 | In-service date | ~June 2026 | Equipment Inventory |
+| A3 | In-service date | **~Aug 2026** (installation/commissioning late Jul–mid Aug per PI 2026-07-05; was ~June — see §18) | Equipment Inventory |
 | A4 | First-year proration | monthly | Regulatory Accounting (policy silent) |
 | A5 | External overhead | **51.5%**, base unconfirmed | SPO — *single most sensitive external assumption* |
 | A6 | Run duration | ~6 machine-h | instrument log |
@@ -343,17 +343,18 @@ federal and internal auditors (p. 3).
 
 | When | What | Gate/trigger |
 |---|---|---|
-| Now | Quote freeze; usage log starts | — |
-| Jul–Aug 2026 | **Time study** (see §10); **cross-functional kickoff** (Reg. Acctg, Fixed Assets, dept finance, EHS, OGC, Tax, Treasury, Export Control, SPO) | kickoff scheduled = Phase 1 open |
-| Aug 2026 | **Asset decision** (capitalized cost, in-service date, life, renovation items) | depreciation pool final |
+| Now | Quote freeze; usage-log + time-study procedures ready to run from the first commissioning run | — |
+| Jul 2026 | **Cross-functional kickoff** (Reg. Acctg, Fixed Assets, dept finance, EHS, OGC, Tax, Treasury, Export Control, SPO) — machine not needed for this | kickoff scheduled = Phase 1 open |
+| Late Jul–mid Aug 2026 | **Installation + commissioning**; usage log starts with run 1 | — |
+| Aug–mid Sep 2026 | **Time study on the commissioning runs** (see §10); **asset decision** (capitalized cost incl. installation, in-service date, life, renovation items — installation charges make this naturally post-installation) | depreciation pool final |
 | Aug–Sep 2026 | Own-lab structure + **written §8 valuation ruling** | no repayment projections before this |
-| Sep 2026 | Establishment + **two-column rate proposal** (floor / staffed) via Chair→Dean→Reg. Acctg (p. 2 requires Chair/Dean rate review) | time study complete |
-| Oct–Nov 2026 | Approvals; accounts opened; eMarkets application; OGC agreement review | |
-| Nov–Dec 2026 | **Readiness gate:** EHS sign-off, SOPs, export checklist, billing workflow, intake form, rate schedule posted, §8 ledger live, reserve journal process | all items or no-go |
-| Jan 1 2027 | Go live | |
+| Mid-Sep 2026 | Establishment + **two-column rate proposal** (floor / staffed), initial rate period **requested effective Oct 1, 2026 – Dec 31, 2027** via Chair→Dean→Reg. Acctg (p. 2 requires Chair/Dean rate review) | time study complete |
+| **Oct 1, 2026** | **Target go-live**: rates effective, accounts open, internal billing + §8 credit accrual begin (each month of slip forfeits ~$4,167 — §18.2) | Reg. Acctg approval |
+| Oct–Dec 2026 | **External-readiness gate:** EHS sign-off, SOPs, export checklist, OGC agreement, eMarkets, billing workflow, intake form, rate schedule posted, §8 ledger live, reserve journal process | external billing starts when all pass |
+| Jan 1 2027 | **Fallback effective date** if approvals slip past Q4 | |
 | CY2027 | **Quarterly** actual-vs-forecast | mid-year revision if labor/run > ±20%, utilization > ±25%, or external mix shifts materially |
 
-## 10. Time-study protocol (2–4 weeks, July–August)
+## 10. Time-study protocol (2–4 weeks, on the commissioning runs, August–mid September)
 
 Log per run, in minutes, by task: scheduling/customer comms; quoting; feedstock
 intake + SDS review; setup; attended monitoring; powder recovery; cleaning;
@@ -941,9 +942,10 @@ the four submission drafts:
    - Federal external **$1,391** (× 1.515)
    - Non-federal external **$1,650** ($259 surcharge)
    - Depreciation slice **$164/run**; reserve intake at 105 billed runs ≈
-     **$17.2k/yr** (was $8.6k); 2026 stub forfeit ≈ **$29.2k** (was $14.6k);
-     schedule ends mid-2031 — the recovery window is tight, which the Jan-1
-     start date protects.
+     **$17.2k/yr** (was $8.6k); 2026 stub forfeit ≈ **$29.2k** (was $14.6k) —
+     **superseded by §18**: with the ~Aug 2026 in-service date and the Oct 1,
+     2026 target effective date the stub is ≈ $8.3k; schedule runs
+     Aug 2026 – Jul 2031.
    - Own-lab unrecovered share: 200 × $918 ≈ **$183.6k/yr** documented
      subsidy / §8 quantum (was $167.3k).
 3. **Open-by-default data policy adopted** (decides §13.6 items 1, 3, 4):
@@ -967,3 +969,80 @@ the four submission drafts:
    near-continuous duty, earlier rate step-down) are real. If Regulatory
    Accounting refuses the 5-yr life, fall back to the class standard and
    rerun the §3 numbers (10-yr variant: internal $836).
+
+## 18. Installation-date update and effective-date analysis (PI directive 2026-07-05)
+
+PI: the atomizer will be **installed and commissioned late July – mid August
+2026** (not ~June, as A3 had assumed), and the center's commissioning should
+**match the installation date as closely as possible**. Question asked: what
+are the cycle constraints (e.g., 1st of the month)?
+
+### 18.1 What the policy actually constrains (answer: almost nothing)
+
+- Rate proposals are due "at least annually" **and additionally** "when they
+  are initially established" (p. 2) — initial establishment carries its own
+  rate proposal *whenever it happens*. Nothing in the policy ties
+  establishment or the first effective date to January 1 or to any month
+  boundary.
+- The rate-setting period is defined by the rates in force, not by the
+  calendar: depreciation JEs must be kept current "for the entire rate-setting
+  period (**e.g.** for the entire year the rates are in effect)" (p. 7) —
+  the year is an example, not a mandate.
+- The Jan-1-2027 framing in earlier sections was **our conservatism** (BYU's
+  calendar budget year + expected approval runway), not a policy requirement.
+- A 1st-of-month effective date is an administrative nicety (monthly
+  depreciation JEs land cleanly), not a rule. Practical request: "effective
+  the first of the month following approval," targeting **October 1, 2026**.
+- What *does* bind: Regulatory Accounting's actual review turnaround
+  (questions doc Q2) and the Chair/Dean rate review before submission (p. 2).
+
+### 18.2 Revised stub arithmetic (5-yr basis, $4,166.67/mo)
+
+In-service ~Aug 2026 → schedule runs **Aug 2026 – Jul 2031**. Forfeited base
+by effective date ("cannot include depreciation from prior years," p. 6):
+
+| Rates effective | Months forfeited | Base forfeited |
+|---|---|---|
+| Sep 1, 2026 | 1 | ~$4.2k |
+| **Oct 1, 2026 (target)** | 2 | **~$8.3k** |
+| Nov 1, 2026 | 3 | ~$12.5k |
+| Jan 1, 2027 (fallback) | 5 | ~$20.8k |
+
+Supersedes §17.2's "$29.2k stub" (computed on the ~June in-service guess).
+The later in-service date is *favorable* — it shrank the unavoidable loss.
+Exact figures depend on the recorded in-service date (which event controls —
+delivery, installation-complete, or acceptance — is Fixed Assets' call) and
+the proration convention (A4; questions doc Q5).
+
+### 18.3 Proposed period construction
+
+Single **initial rate period Oct 1, 2026 – Dec 31, 2027** (15 months), then
+calendar-year cycles. Per-run rates are period-independent — pool and usage
+scale together — so the CY2027 proposal's unit rates apply unchanged.
+Alternative if Regulatory Accounting prefers: a separate Q4-2026 stub
+proposal plus a CY2027 proposal at the same unit rates. Their call (folded
+into questions doc Q2).
+
+### 18.4 What actually gates an October 1 start (not the calendar)
+
+1. **The time study needs a running machine** — the commissioning runs *are*
+   the study window (Aug–mid Sep). The earlier July study window was
+   physically impossible; the timeline now reflects that.
+2. **The asset record can't finalize before installation** — installation
+   charges are part of the capitalized base, so the Fixed Assets decision
+   naturally lands right after commissioning. Sequencing fact, not a delay.
+3. **Regulatory Accounting turnaround** on a mid-September submission —
+   unknown; ask at the kickoff (Q2) and pre-socialize the draft there.
+4. **Two-stage go-live keeps EHS honest:** rates effective Oct 1 starts
+   internal billing and §8 credit accrual; *external* billing starts only
+   when the readiness gate passes (EHS/NFPA 484 sign-off, OGC agreement,
+   export screening, eMarkets). EHS governs operating the machine at all and
+   is not relaxed by the compressed center timeline.
+5. Note-to-self: commissioning runs made before rates are in effect earn **no
+   §8 credit** (there is no approved rate to value them against) — log them
+   anyway (denominator discipline + forecast evidence). One more reason each
+   month of slip costs more than the $4,167 of forfeited depreciation alone.
+
+Docs updated for this directive: README timeline; overview §§3, 6, 9;
+establishment proposal (requested effective date); rate proposal (title, A3,
+§2); equipment package §4; questions doc Q2/Q5.
