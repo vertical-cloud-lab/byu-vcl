@@ -645,7 +645,133 @@ consent-based Edison A5 version, and it dissolves several standing problems:
 5. Own-lab settlement stays §8-in-kind-preferred; no blanket internal price cut
    needed for "consistency" (§13.2).
 
-## 14. Prior-art rate shelf (for the submission appendix)
+## 14. How the three flows interact: free own-lab use × federal externals × non-federal externals (Sterling, 2026-07-05)
+
+Question under analysis: if own-lab uses the machine extensively "for free"
+(§8 in-kind) *at the same time as* heavy federal-external and non-federal-
+external billing, how do the streams interact for equipment-buying capacity?
+Does the surcharge-for-equipment ability change before vs. after cost recovery?
+Can the federal-external price cover depreciation, and what limits how that
+recovered depreciation is used?
+
+### 14.1 The four streams never mix — each run feeds fixed buckets
+
+Every run generates money (or credit) into at most four buckets, and the
+buckets have different rules. Per-run contributions at the §3 planning basis
+(305 total runs, $82/run depreciation slice, $836 internal rate):
+
+| Run settled as… | Depreciation → equipment reserve | Surcharge → growth funds | §8 credit → startup account | F&A → central |
+|---|---|---|---|---|
+| Own-lab, §8 in-kind (unbilled) | $0 — forfeited this year | $0 | **yes** (valuation ruling pending, §5) | $0 |
+| Internal, billed in cash | $82 | $0 | $0 | $0 |
+| **Federal external** | **$82** | $0 (no surcharge, p. 5) | $0 | ~$431 |
+| **Non-federal external** | **$82** | ~$233 std (embargo ladder stacks) | $0 | ~$431 |
+
+Interaction rules that fall out of the table:
+
+- **The streams are additive, not interfering.** Free own-lab runs do not
+  raise or lower what an external run deposits into the surcharge bucket;
+  federal-external runs feed the reserve but never the growth bucket;
+  non-federal runs feed both. "Both things happening at once" simply sums
+  the columns.
+- **The one true coupling is through the denominator.** The depreciation
+  slice is $25,000 ÷ total usage, and all usage counts billed or not (p. 4).
+  So the reserve's annual depreciation intake collapses to one formula:
+
+  > **Reserve intake = $25,000 × (billed runs ÷ total runs)**
+
+  Free own-lab runs don't just forfeit "their own" $82 — by enlarging the
+  denominator they shrink the slice collected on *every* billed run. At 105
+  billed / 305 total: 105 × $82 ≈ **$8.6k/yr**. Double own-lab to 400 free
+  runs (505 total): the slice drops to ~$50 and the same 105 billed runs
+  deposit only ~$5.2k. The forfeited remainder — $25,000 × (unbilled ÷ total)
+  — is gone for that year (no prior-year catch-up, p. 6–7), offset only by
+  the §8 credit accruing on those same runs. This is §5's reserve-vs-repayment
+  tension restated as a formula: **billed-fraction fills the reserve;
+  unbilled-fraction earns §8 credit; every run is one or the other.**
+
+### 14.2 The two thought experiments, and the mixed case
+
+- **"Only ever used it myself at zero fee → as if nothing happened."** Cash-
+  wise, essentially yes: no revenue, no reserve, no surcharge. But not quite
+  *nothing* — every run accrues §8 in-kind credit, so the center is steadily
+  repaying the startup account's $250k in machine time (at whatever valuation
+  the ruling sets), and the usage log + documented under-recovery still have
+  to be kept (pp. 3–5). It's a repayment engine with no accumulation engine.
+- **"Never used it myself, everything from non-federal externals → accumulate
+  a lot."** Correct, and it's the maximum-accumulation corner: reserve intake
+  = the full $25k/yr (billed fraction = 1) *plus* surcharge income on every
+  run, both usable for equipment (p. 5, p. 7). Two bounds: the depreciation
+  part is capped at the $250k capitalized cost over the useful life — it is
+  return *of* capital, not income — while the surcharge part is uncapped but
+  UBIT-relevant and market-limited. (An all-external center also stresses the
+  "primarily internal" recharge-center framing — standing kickoff question.)
+- **Both at once (the real plan):** sum the columns. At the CY2027 forecast
+  (200 own-lab free / 5 internal billed / 70 federal / 30 non-federal):
+  reserve ≈ $8.6k/yr + surcharge ≈ $7k/yr ≈ **$15.6k/yr of equipment-buying
+  capacity**, plus ~$16.4k/yr of §8 credit accruing on the free runs
+  (valuation pending). Versus: billing own-lab in cash would push the reserve
+  to $25k/yr but cost real cash; going all-external would add surcharge
+  breadth. The mix doesn't create any new constraint — it just splits the
+  $25k depreciation stream between "collected into reserve" and "converted
+  to §8 credit" in proportion to billing.
+
+### 14.3 Before vs. after "cost recovered" — which streams change
+
+- **Surcharge → equipment: does not change. Ever.** It is above-cost income
+  whose permitted uses ("reduce rates …, build a working capital reserve, or
+  … finance equipment purchases," p. 5) are independent of the depreciation
+  schedule's state. Before recovery, after recovery, on the current machine
+  or the next — the channel is permanent. Sterling's intuition is right.
+- **Depreciation → reserve: temporary and capped by construction.** It runs
+  only while (a) cumulative depreciation < capitalized cost and (b) the
+  useful life hasn't expired — whichever ends first ends the stream, with no
+  catch-up (pp. 6–7). Then depreciation exits the pool, rates step down, and
+  the reserve stops filling from this asset. The stream gives back the $250k
+  at most once.
+- **The loop restarts on new assets.** Anything ≥$5k bought from the reserve
+  or surcharge funds gets its own approved schedule and re-enters rates
+  (p. 7) — so "accumulate → buy → depreciate → accumulate" is the sanctioned
+  long-term engine. But note the asymmetry: *sustained* growth capacity comes
+  only from the surcharge (and new gifts/investment, each opening a fresh §8
+  basis); the depreciation stream on any one asset is a closed loop returning
+  its own cost.
+
+### 14.4 Federal externals and depreciation: yes, they pay it — and the limits on using it
+
+The federal-external price is cost × 1.515, and "cost" is the full approved
+rate including the $82 depreciation component — so **every federal-external
+run pushes $82 into the equipment reserve, identical to any other billed
+run**. What federal externals never contribute is the surcharge (p. 5). The
+F&A increment (~$431) is the university's recovery, not the center's.
+
+Limits on recovered depreciation (all from pp. 6–7 + §8):
+
+1. It must be deposited to the **equipment reserve account** — it can't
+   subsidize operations or sit in the operating account.
+2. Spendable only on **equipment ≥$5k** (purchase/replacement/upgrade — which
+   *must* be charged to the reserve) or **§8 reimbursement** of the accounts
+   that funded the center's equipment (prior Regulatory Accounting approval,
+   documented, hard-capped at the amount invested, cash never beyond it).
+3. Total collection is capped at the **capitalized acquisition cost**; the
+   collection window is capped at the **approved useful life**; skipped years
+   are unrecoverable.
+4. Each reserve-funded purchase starts a **new depreciation schedule** — no
+   double recovery on the same dollars.
+
+### 14.5 Net answer
+
+Funds available to buy the next piece of equipment at any moment =
+**equipment-reserve balance** (fed by $25k × billed-fraction per year, capped
+at $250k lifetime, competing with §8 draws) **+ accumulated surcharge income**
+(non-federal externals only, uncapped, permanent, UBIT-relevant). Free own-lab
+use slows only the first term — dollar-for-dollar, $82 per free run at current
+volume, while earning §8 credit instead — and touches the second term not at
+all. Federal externals feed only the first term; non-federal externals feed
+both; and after full recovery the first term ends while the second keeps
+running unchanged.
+
+## 15. Prior-art rate shelf (for the submission appendix)
 
 | Facility | Instrument | Published rates |
 |---|---|---|
