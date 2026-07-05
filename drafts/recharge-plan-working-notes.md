@@ -771,7 +771,141 @@ all. Federal externals feed only the first term; non-federal externals feed
 both; and after full recovery the first term ends while the second keeps
 running unchanged.
 
-## 15. Prior-art rate shelf (for the submission appendix)
+## 15. Staffing the center and the depreciation-life choice (Sterling, 2026-07-05)
+
+Two questions: (a) hire a full-time technician — and can that be a student, an
+RA, or does it need to be a non-student staff hire? (b) shorter vs. 5-year vs.
+longer depreciation schedule.
+
+### 15.1 The BYU employment options, mapped
+
+Three distinct employment vehicles exist at BYU, and they behave very
+differently as recharge-center staffing:
+
+| Vehicle | Hours | Cost | Recharge treatment | Friction |
+|---|---|---|---|---|
+| **Student hourly** (undergrad or grad, timecard) | ≤20 h/wk fall/winter (grads 20–28 w/ exception); 40 h/wk spring/summer; ACA annual avg ≤28 h/wk; internationals hard-capped 20 h/wk in session | ~$11–20/h undergrad; grad scale tops ~$20–33/h (2026 scale); no benefits load; FICA-exempt while enrolled | Wages paid from the center operating account are ordinary allowable direct costs in the rate (p. 3) | Low — normal student-job posting |
+| **Graduate RA/TA (contract)** | Contract basis; departmental | Grant/contract-funded | **Not a center staffing vehicle when grant-funded**: an RA paid by a sponsor for their own research cannot have center-operations time ride on that award; operator time must be paid by the center. FLSA note per BYU HR: a student **cannot hold hourly and contract employment simultaneously** — so a grant-funded RA can't concurrently moonlight as the hourly operator | The routing rule from §9 of the scenarios doc applies: research contribution → RA; operating the machine → employment |
+| **Non-student staff** (part- or full-time) | Full FTE possible; continuity | ~$90k/yr loaded (A12) | Salary (or a documented % of it) in the cost pool; the charged % must match actual center effort — costs must be assignable "relatively easily with a high degree of accuracy" (p. 3), so keep effort records | Highest — staff posting through BYU HR; since Jan 27 2022, LDS candidates need **ecclesiastical clearance (ECO)/temple-recommend standard** and non-member candidates a university-standards verification, which adds weeks–months to time-to-hire |
+
+So yes — a student *can* be hired into the operator role, and it is just a
+student hourly job (not an RA); the practical ceiling is ~0.5 FTE per student
+during semesters, so "1.5 FTE of students" means a bench of 3–4 trained
+operators with staggered schedules and semester/graduation churn.
+
+### 15.2 Should the first hire be a full-time technician? Recommendation: no — stage it
+
+The cash-walk arithmetic (§3.2) makes the trigger concrete: at planning rates
+and the CY2027 mix, **billed revenue reaching the center ≈ $94.8k/yr — almost
+exactly one loaded FTE**. That yields a clean staging rule:
+
+- **Phase 1 (now → ~mid-CY2027): student-operator bench + PI oversight.**
+  2–3 trained student hourly operators (≈1.0–1.5 FTE combined), paid from
+  startup/department funds, wages in the cost pool, all effort captured by the
+  §10 time study. This keeps the quasi-fixed pool small while the demand
+  forecast is still letters-of-interest rather than a queue — the §3 volume
+  sensitivity is the whole argument (at 2.0 FTE and 150 runs, the internal
+  rate balloons to $1,582 and the deficit is the department's to fund, pp. 6,
+  10).
+- **Phase 2 trigger: post the full-time staff technician / facility-manager
+  position when billed center-kept revenue sustains ≳$95k/yr for two
+  consecutive quarters** (≈110 billed external-mix runs/yr), i.e., when the
+  external book, not the assumption, covers the salary. Start the posting
+  early relative to need — the ECO-clearance pipeline makes staff hiring slow.
+- **Why not students-only forever:** hour caps, semester gaps, and 2–3-year
+  turnover sit badly with a customer-facing facility carrying uptime and
+  remote-session commitments and with NFPA 484 combustible-Al-powder training
+  depth (§8.1); Northwestern's $1,075 internal rate is what professionally
+  staffed operation of this instrument class actually costs. The steady state
+  is the classic core-facility hybrid: one staff anchor (continuity, EHS,
+  scheduling, QA) + student operators for attended hours — and the literature
+  is explicit that most cores are *not* fully self-sustaining; partial
+  institutional support of the anchor salary is normal, not failure.
+
+### 15.3 The salary bridge Sterling described is exactly the sanctioned mechanism
+
+"Use startup or department funds to secure initial salary with the assumption
+that enough will be generated" is precisely pp. 3–5's structure: the salary
+sits in the cost pool (and therefore in the rate) from day one; billed revenue
+covers a growing share; the unrecovered share is the documented subsidy from
+non-federal funds, tracked and excluded from F&A proposals, with the
+department the formal backstop for deficits (pp. 6, 10). Three cautions:
+
+1. **Quantify the bet before signing it.** Each loaded FTE ≈ $90k ≈ ~110
+   billed external-mix runs/yr. If the CY2027 external forecast (100 billed
+   external runs) slips by half, a pre-committed FTE is a ~$45k/yr
+   department-funded deficit — that is the same volume risk flagged in §3,
+   now with someone's job attached.
+2. **Split-funding is clean if effort-documented.** A staff hire can be, say,
+   50% center / 50% department (teaching-lab support, other instruments); only
+   the center % goes in the pool, and it must track actual effort (p. 3).
+3. **Do not put PI/faculty time in the pool** unless it passes the same
+   "relatively easily, high degree of accuracy" test — supervision that is
+   really departmental duty stays out (and its exclusion is a legitimate,
+   trackable subsidy).
+
+### 15.4 Depreciation life: recommendation and the trap in "shorter = better"
+
+Policy (p. 7): straight-line only; **BYU-standard life or longer is always
+allowed; shorter requires prior Regulatory Accounting approval** with
+justification from "the nature of the equipment, technological developments,
+renewal and replacement policies followed, and pattern of use."
+
+The arithmetic at 305 runs/yr:
+
+| Life | Depreciation/yr | $/run slice | Internal rate (2.0 FTE) |
+|---|---|---|---|
+| 5 yr | $50,000 | $164 | $918 |
+| **10 yr (A2 placeholder)** | $25,000 | $82 | $836 |
+| 15 yr | $16,667 | $55 | ~$809 |
+
+Because the pool is labor-dominated, life choice moves the rate only ~±10% —
+the rate is *not* the real stake. The real stakes:
+
+- **Life length mostly changes the *speed* of every stream, not the total.**
+  With a constant billed fraction, the reserve collects the same lifetime
+  total either way (billed-fraction × $250k), just faster on 5 years; a
+  depreciation-component-valued §8 credit likewise doubles per run but halves
+  in duration (max credited ≈ $164k on the current mix under either life,
+  §5).
+- **The trap: if the billed share *grows* — which is exactly our forecast
+  (own-lab-heavy ramp now, external queue building later) — a shorter life
+  collects *fewer* actual dollars,** because it front-loads depreciation into
+  the low-billing ramp years and the schedule is spent before the high-billing
+  years arrive. Worked example: billed share 40% in years 1–5 and 60% in years
+  6–10 → 10-yr life collects $25k×(0.4×5 + 0.6×5) = **$125k**; 5-yr life
+  collects $50k×0.4×5 = **$100k**, and years 6–10 contribute nothing.
+- What shorter genuinely buys: less nominal-dollar erosion (no inflation
+  adjustment exists anywhere in the mechanism, §14), protection against the
+  "equipment is still in use" condition (p. 6) stranding base if hard
+  near-continuous duty wears the machine out or supersedes it early, and an
+  earlier rate step-down once depreciation exits the pool.
+- What longer-than-standard buys: almost nothing here — it drags recovery
+  deeper into nominal erosion and past the horizon where an ultrasonic
+  atomizer plausibly remains front-line. **Rule out longer.**
+
+**Recommendation:**
+
+1. Get BYU's class-standard life at the kickoff (questions doc, Q4) — A2's
+   10 yr is a placeholder, and the standard decides whether "5-year" even
+   needs the prior-approval fight (if the standard *is* 5–7, take it and this
+   section collapses).
+2. If the standard is ~10 yr: **default to the standard life** at submission
+   unless the external demand outlook has hardened (signed letters, queue
+   depth) — the growing-billed-share trap outweighs the speed benefit on the
+   current forecast.
+3. Revisit at the first annual rate review: the justification for a shorter
+   life (documented near-continuous pattern of use at ~1,800+ machine-h/yr,
+   consumable-intensive ultrasonic hardware, AM technology pace) is *stronger
+   with a year of usage logs than with projections* — and prior approval
+   granted then still beats never. Note the asymmetry: you can argue shorter
+   later, but depreciation forfeited in low-billing early years under an
+   already-short schedule can never be re-collected (p. 7).
+4. Whatever the life, the stub-year rule stands: every month before approved
+   rates exist forfeits $2,083 (10-yr) / $4,167 (5-yr) of recoverable base —
+   the life decision changes the stub's size, not the urgency.
+
+## 16. Prior-art rate shelf (for the submission appendix)
 
 | Facility | Instrument | Published rates |
 |---|---|---|
