@@ -375,7 +375,108 @@ runs with full paperwork, or the admin overhead lines will read as zero.
   two-tier launch.
 - ~~30-day default publication right over customer Run Data~~ → consent-based.
 
-## 12. Prior-art rate shelf (for the submission appendix)
+## 12. Feasibility check: proposed low-rate structure (Sterling, 2026-07-05)
+
+Proposal under evaluation: internal **$100/run**, federal external **$500/run**,
+non-federal surcharge **$500–1,500**, embargo pricing (possibly any users)
+**$500 / 6 mo, $1,000 / 1 yr, $4,000 / 2 yr**. Verdict: buildable, with three
+corrections forced by the policy. This section records the conditions; it does
+**not** replace the §3 planning basis until the time study and Regulatory
+Accounting say so.
+
+### 12.1 The numbers are coupled — you only get to pick one of them
+
+Federal externals must pay cost + institutional overhead ("External rates must
+add institutional overhead (F&A) unless Regulatory Accounting approves
+otherwise," p. 5). So **$500 federal external ⟹ approved cost-based internal
+rate ≈ $330** ($500 / 1.515). You cannot post internal $836 and federal
+external $500 — the external price is built *from* the internal rate, and
+below-cost external pricing is not a thing the policy offers (the subsidy
+mechanism on p. 5 covers internal usage; BYU subsidizing outsiders would be a
+hard sell everywhere from Regulatory Accounting to UBIT posture). One lever:
+the "unless Regulatory Accounting approves otherwise" waiver on F&A — worth a
+kickoff question, but don't plan on it.
+
+### 12.2 What it takes for a ~$330 cost rate to be honest
+
+$100 can never be the approved rate — the non-labor variable cost alone is
+$115/run (A11), so `pool ÷ usage` can't reach $100 at any volume. But $330 is
+arithmetically reachable; solve `(40,000 + S×90,000)/N + 115 = 330`:
+
+| Staffing S | Runs/yr N needed | Machine-hours (6 h/run) | % of 8,760 h |
+|---|---|---|---|
+| 1.0 FTE | ~605 | ~3,630 | ~41% |
+| 1.5 FTE | ~814 | ~4,884 | ~56% |
+| 2.0 FTE | ~1,023 | ~6,138 | ~70% |
+
+I.e., **$500 federal external is precisely the "near-continuous" scenario**
+Sterling described — it is not achievable at the 305-run CY2027 forecast (A7).
+To propose it: the denominator needs documentary support (letters of interest,
+queue projections, own-lab commitment), because a padded forecast that doesn't
+materialize becomes a real deficit the department funds (p. 6), and the
+quarterly triggers (§9) would force a mid-year rate *increase* on customers —
+the worst commercial look. Note-to-self: Northwestern charges $1,075 internal
+on the same instrument; if $330 is proposable at all it's because of an
+unusually hot denominator, not a cheaper pool. Also sanity-check that S FTE can
+physically execute N runs (1,023 runs × even 2 h direct labor ≈ 2,046 h ≈ 1.2
+FTE of direct time alone before any admin/quoting/EHS overhead).
+
+### 12.3 Internal $100 — compliant, but as a *price*, not a *rate*
+
+Mechanism (p. 5, and Edison A4): approved internal rate stays cost-based;
+internal users are *charged* $100 and the gap (rate − $100; $230/run at the
+$330 scenario, $736/run at the $836 planning basis) is a documented subsidy
+from non-federal, non-recharge funds, tracked and excluded from F&A proposals
+(p. 4). "Startup money can legitimately subsidize early internal usage below
+cost — what it cannot do is buy anyone a different rate." Blanket $100 for all
+internal users preserves uniformity (p. 4). Internal users paying the $100 from
+federal grants is fine (under-charging federal money is allowed; over-charging
+is not) as long as the subsidy source is non-federal. Own-lab runs stay on the
+§5 structure (§8 in-kind credit preferred) — don't route them through the $100
+price without deciding what that does to the reimbursement claim.
+
+### 12.4 Non-federal surcharge $500–1,500 — cleanly allowed
+
+Expressly permitted, size discretionary (p. 5). At the $330-cost scenario the
+posted non-federal price is $1,000–$2,000/run, bracketing under Northwestern's
+$2,150 commercial — defensible. Net surcharge income remains the UBIT quantum.
+
+### 12.5 The embargo ladder — cannot be "for any users"
+
+- **Non-federal externals: yes.** An embargo premium is a surcharge; $500/6 mo,
+  $1,000/1 yr, $4,000/2 yr is a lawful posted menu for them.
+- **Federal externals: no.** No surcharge (p. 5) means no purchasable premium.
+  Give them one standard term at no charge (or the DOE binary), not the menu.
+- **Internal: no, and no need.** Internal rates carry only costs (p. 5), and
+  under the consent-based §7 design the facility asserts no publication right
+  over internal runs — there is nothing to sell them an embargo against.
+- **Design consequence:** a paid embargo presupposes the *standard* tier
+  defaults to "job-specific data becomes publishable after the term" —
+  re-flipping the consent-based default Edison A5 made us adopt. That's a
+  legitimate choice (DOE non-proprietary = publication expected), but make it
+  deliberately, and remember the ladder still has **zero prior art** (§7).
+- **Menu coherence:** price the proprietary/indefinite tier *above* the 2-yr
+  premium, or everyone rational buys proprietary at $633 and the ladder is
+  dead letter — at $4,000/2 yr the proprietary surcharge must exceed $4,000.
+  And decide whether the ladder **stacks** on the $500–1,500 base surcharge
+  (2 yr + top base = $6,000/run ≈ 3× Northwestern commercial — market check)
+  or replaces it.
+
+### 12.6 Capital-recovery consequence
+
+At N ≈ 1,000 runs the depreciation slice is only ~$25/run, but billed volume is
+huge, so the reserve fills at the same $25k/yr — capital recovery is unchanged
+in total (it's paced by the schedule, scenarios doc §16c). The real exposure is
+12.2's: if volume disappoints, the low rates under-recover *operating* cost and
+the deficit is the department's.
+
+**Bottom line:** the structure survives contact with the policy if (a) $100 is
+framed as subsidized price against a cost-based approved rate, (b) $500 federal
+external is supported by a documented ~600–1,000-run/yr forecast (or an F&A
+waiver), and (c) the embargo menu is sold to non-federal externals only. The
+quote freeze (§9) still applies to all of these numbers.
+
+## 13. Prior-art rate shelf (for the submission appendix)
 
 | Facility | Instrument | Published rates |
 |---|---|---|
