@@ -2,9 +2,9 @@
 
 > Agenda for the cross-functional kickoff (Regulatory Accounting, SPO, Treasury,
 > Tax Office, Fixed Assets, OGC/Office of Research, **EHS** — one meeting, not
-> serial visits, per the Edison review). Ordered so the answers unblock the
-> establishment and rate proposals. Page cites refer to the *Recharge Center
-> Policy & Procedures* PDF (June 2005) in this repo.
+> serial visits). Ordered so the answers unblock the establishment and rate
+> proposals. Page cites refer to the *Recharge Center Policy & Procedures*
+> (June 2005).
 
 ## For Regulatory Accounting (the decision authority)
 
@@ -19,9 +19,12 @@
    Chair → Dean → Regulatory Accounting)?
 
 **Depreciation schedule (time-sensitive)**
-4. BYU's standard useful life for this equipment class (ultrasonic metal
-   atomizer, ~$250k)? We assumed 10 years; would a 5-year life be entertained
-   with a technological-obsolescence justification (p. 7)?
+4. We are requesting a **5-year useful life** (straight-line), which likely
+   requires prior approval as shorter than the class standard (p. 7).
+   Justification: near-continuous duty cycle, consumable-intensive ultrasonic
+   hardware, and rapid technological change in metal-AM powder equipment. What
+   documentation does approval require, and what is BYU's standard life for
+   this class for comparison?
 5. First-year proration: monthly from the in-service date, or an annual
    convention? (Determines exactly how much of 2026 is forfeited.)
 6. Confirm the depreciable base = capitalized acquisition cost including
@@ -50,10 +53,12 @@
     something else? Where does collected overhead land (any return to
     college/department)?
 11. Any constraints on **surcharge magnitude/structure** for non-federal
-    externals? Year one we plan only a binary standard/proprietary distinction
-    (DOE user-facility pattern); if we later propose a posted **timed
-    embargo-tier menu** (premiums for 6/12/24-month embargoes) riding on the
-    surcharge, would that be approvable in principle?
+    externals? Our posted design: run data is released publicly under a
+    permissive license after a 3-month grace period (all users), and
+    non-federal externals may purchase a posted **data-embargo term**
+    (6/12/24/48 months at $1,000/$2,500/$5,000/$10,000) as part of the
+    surcharge; every embargo expires (no indefinite tier). Any objection to
+    embargo fees riding on the surcharge?
 12. Our expected mix is **majority-external billed usage** (internal own-lab use
     is large but mostly unbilled/§8). Does that affect the center's
     classification ("primarily to internal University operations," p. 1), UBIT
@@ -127,7 +132,7 @@
     remote-access facility (retention, access control, refusal of CUI/ITAR
     data)?
 
-## For Environmental Health & Safety *(added per Edison review — gate to go-live)*
+## For Environmental Health & Safety *(gate to go-live)*
 29. Review path for a **combustible aluminum-powder** operation serving external
     customers: NFPA 484 applicability, dust control/housekeeping,
     grounding/bonding, PPE, powder storage limits, spill/waste procedures, and

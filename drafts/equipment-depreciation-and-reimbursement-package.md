@@ -80,9 +80,9 @@ is approved; reclassification afterward is much harder.
 | Method | Straight-line | only method allowed (p. 7) |
 | Depreciable base | Total from §2 | less residual, if any |
 | Residual value | $[0 assumed] | |
-| Useful life | [10] years | BYU-standard life or longer without approval; shorter requires prior approval with obsolescence justification (p. 7) |
+| Useful life | **5 years** | Prior approval requested (shorter than a typical class-standard life, p. 7). Justification: near-continuous duty cycle (~1,800+ machine-h/yr forecast), consumable-intensive ultrasonic hardware, and rapid technological change in metal-AM powder equipment |
 | Start | In-service date [DATE]; **first-year proration convention: [monthly — confirm]** | Policy silent on proration |
-| Annual depreciation | $[25,000 at $250k/10 yr] | $[2,083.33]/month |
+| Annual depreciation | $[50,000 at $250k/5 yr] | $[4,166.67]/month |
 | Journal entries | Monthly, operating account → **equipment reserve account** | kept current per p. 7 |
 
 Reminder for planning, not for the schedule: depreciation for periods **before
@@ -103,8 +103,8 @@ of the following arrangement:
    account's research group without charge, logged per-run (see §6 ledger).
    **Valuation method requested as an explicit written ruling:** (a) full
    approved internal rate, (b) depreciation component only, or (c) a documented
-   use-allowance. We do not assume full-rate credit (Edison A6); no repayment
-   timeline will be projected before this ruling.
+   use-allowance. We do not assume full-rate credit; no repayment timeline
+   will be projected before this ruling.
 3. **Secondary mechanism:** equipment purchases (≥$5,000, benefiting the
    funding account) charged to the equipment reserve.
 4. **Cap and closure:** cumulative reimbursement value ≤ investment basis;

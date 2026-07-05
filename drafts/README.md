@@ -13,7 +13,7 @@
 
 | File | Purpose | Submit to |
 |------|---------|-----------|
-| [`recharge-plan-overview.md`](recharge-plan-overview.md) | **Version 1 — plain-language overview** with the suggested planning numbers and high-level justification (post-Edison-review) | Share with leadership / anyone new to the plan |
+| [`recharge-plan-overview.md`](recharge-plan-overview.md) | **Version 1 — standalone overview for university leadership.** Written for a first-time reader; final suggested numbers (5-yr depreciation, $918 internal); self-contained — no repo references, no pending-decision language | Share with leadership / anyone new to the plan |
 | [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) | **Version 2 — full working notes**: all calculations, Edison point-by-point disposition, notes-to-self | Internal working document |
 | [`recharge-center-establishment-proposal.md`](recharge-center-establishment-proposal.md) | Proposal to establish the recharge center (policy §2) | Department Chair → Dean → Regulatory Accounting |
 | [`rate-proposal-cy2027.md`](rate-proposal-cy2027.md) | First-year rate proposal with cost pool, usage forecast, and full calculations | Regulatory Accounting (after Chair/Dean rate review) |
@@ -24,12 +24,13 @@
 ## Why the timeline matters
 
 BYU's budget year is the **calendar year**. Depreciation on the atomizer
-(~$2,083/month on a $250k / 10-year basis) is recoverable **only** for periods with
-approved rates in effect — "recharge rates cannot include depreciation from prior
-years" (policy pp. 6–7). Every month before rates take effect is recoverable base
-permanently forfeited (~$14.6k if the machine went in service ~June 2026 and rates
-start Jan 1, 2027). **The realistic target is rates effective January 1, 2027**,
-which caps the loss at the 2026 stub.
+(~$4,167/month on the assumed $250k / **5-year** basis, per the PI's 2026-07-05
+directive) is recoverable **only** for periods with approved rates in effect —
+"recharge rates cannot include depreciation from prior years" (policy pp. 6–7).
+Every month before rates take effect is recoverable base permanently forfeited
+(~$29.2k if the machine went in service ~June 2026 and rates start Jan 1, 2027).
+**The realistic target is rates effective January 1, 2027**, which caps the loss
+at the 2026 stub.
 
 ## Sequenced next steps *(resequenced per the Edison review — less finance-first; legal/EHS/operational controls pulled forward)*
 
@@ -37,8 +38,8 @@ which caps the loss at the 2026 stub.
 
 1. **Freeze public price promises.** Quote no rate to anyone — internally or
    externally — except as "illustrative, pending approval." The Northwestern
-   comparator ($1,075/run internal for the same instrument) says our early $306
-   figure is under-costed.
+   comparator ($1,075/run internal for the same instrument) says the early
+   bare-minimum figures ($306–$388) are under-costed.
 2. **Start the usage log today** (template in the equipment package file). All usage
    must be logged whether billed or not (p. 4); a log that predates the proposal
    also strengthens the usage forecast.
@@ -74,11 +75,12 @@ which caps the loss at the 2026 stub.
    in-kind credit if Regulatory Accounting confirms the valuation **in writing**
    (full rate vs. depreciation-only vs. use-allowance); fallback: gross rate +
    explicit startup-fund subsidy. Never describe the rate as "zero."
-8. **Submit a conservative CY2027 rate proposal with two columns** — Column A:
-   minimum documented cost; Column B: staffed/realistic cost per the time study
-   (plan around $700–$1,100/run internal, not $306–$454) — via Department Chair →
-   Dean's Office (→ VP office) → Regulatory Accounting (policy §2; Chair/Dean rate
-   review required, p. 2). Target: at Regulatory Accounting by **September 30**.
+8. **Submit the CY2027 rate proposal** — proposed internal rate **$918/run**
+   (2.0 FTE-equivalent staffing + 5-yr depreciation; time study to confirm the
+   labor lines; the no-staffing floor of $388 documented but not proposed) —
+   via Department Chair → Dean's Office (→ VP office) → Regulatory Accounting
+   (policy §2; Chair/Dean rate review required, p. 2). Target: at Regulatory
+   Accounting by **September 30**.
 
 ### Phase 3 — October–December 2026: approvals and operational readiness gate.
 
@@ -113,12 +115,13 @@ which caps the loss at the 2026 stub.
 
 All drafts run on these assumptions — they are the ones to nail down first:
 
-1. **True staffing cost per run.** The bare-minimum pool yields ~$306/run internal
-   at 305 runs/yr; Northwestern's comparable facility charges **$1,075 internal**
-   per atomizer run, implying real pools are dominated by staff effort. The staffed
-   planning basis is now **~$836/run internal (2.0 FTE)** — see
-   [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) §3 — pending
-   the time study.
+1. **True staffing cost per run.** The bare-minimum pool yields ~$388/run internal
+   at 305 runs/yr (5-yr basis); Northwestern's comparable facility charges
+   **$1,075 internal** per atomizer run, implying real pools are dominated by
+   staff effort. The staffed planning basis is **$918/run internal (2.0 FTE,
+   5-yr depreciation)** — see
+   [`recharge-plan-working-notes.md`](recharge-plan-working-notes.md) §3 and §17 —
+   pending the time study.
 2. **The capitalized acquisition cost** (invoice + tariff + freight + installation ±
    reclassified renovation items) — the depreciable base could be meaningfully more
    than $250k.

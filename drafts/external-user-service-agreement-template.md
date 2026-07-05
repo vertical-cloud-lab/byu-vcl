@@ -32,11 +32,13 @@ Facility's cloud-lab interface under Facility supervision.]
      **Appendix A** (federal award number or copy of award approval, plus
      certification that the ordered services will be charged to that award and
      that the Customer's institution permits the purchase). Price = cost +
-     institutional overhead; no surcharge; only the standard tier in §5.3 is
-     available. Orders paid from mixed or intermediary funds default to
-     non-federal classification pending documentation.
+     institutional overhead; no surcharge; the embargo options in §5.3 are not
+     available (the standard §5.2 release terms apply). Orders paid from mixed
+     or intermediary funds default to non-federal classification pending
+     documentation.
    - **Non-federal external** — default classification. Price = cost +
-     institutional overhead + surcharge, including any selected embargo tier.
+     institutional overhead + surcharge, including any selected §5.3 embargo
+     term.
 2. **Reclassification.** If a certification is found inaccurate, the Customer
    owes the difference to the non-federal price for affected orders.
 3. **Taxes.** Prices exclude applicable sales/use taxes on tangible deliverables
@@ -74,32 +76,43 @@ Facility's cloud-lab interface under Facility supervision.]
    Customer declarations are billable for hours consumed plus the §3.3 minimum
    fee.
 
-## 5. Data rights, embargo, and publication
+## 5. Data rights, public release, and embargo
 
 1. **Customer data.** The Customer owns and receives the run data and results
    specific to its ordered jobs ("Run Data").
-2. **Facility operational data.** The Facility retains the right to use and
+2. **Public release (default).** The Customer agrees that Run Data is
+   deposited by the Facility in [REPOSITORY — e.g., Zenodo / Materials Data
+   Facility] under [CC0 / CC BY 4.0 — OGC to select] upon expiry of a
+   **three-month grace period** running from data delivery. The Customer may
+   shorten or waive the grace period on the Order Form. The Facility asserts
+   no ownership of Run Data and, once released, uses it only under the
+   license, like any other member of the public.
+3. **Embargo option (non-federal external Customers only).** The Customer may
+   delay the §5.2 release by purchasing a posted embargo term running from
+   data delivery:
+
+   | Embargo term | Added fee |
+   |---|---|
+   | 6 months | +$1,000 |
+   | 12 months | +$2,500 |
+   | 24 months | +$5,000 |
+   | 48 months | +$10,000 |
+
+   Embargo fees are surcharges and are **not available on federally
+   documented orders**, which receive the standard §5.2 terms. **Every
+   embargo expires**; no order under this Agreement carries indefinite
+   confidentiality — work requiring it is routed to a sponsored-research
+   agreement (§6).
+4. **Facility operational data.** The Facility retains the right to use and
    **publish aggregate and anonymized operational data** — throughput, uptime,
    queue/scheduling behavior, remote-access architecture performance, and
-   reliability statistics — at any time, with no release of Customer identity
-   or Customer-proprietary composition/parameters/results.
-3. **Run Data publication tiers.** Customer-specific Run Data may be published
-   by the Facility **only with the Customer's written consent** or under a
-   separately agreed non-proprietary publication term:
-
-   | Tier | Facility publication of Run Data | Availability |
-   |------|----------------------------------|--------------|
-   | Standard | aggregate/anonymized operational data only (§5.2); Customer-specific Run Data only with written consent | all customers (default; no premium) |
-   | Proprietary | no publication of any job-specific data | non-federal external customers only; full cost + surcharge tier |
-
-   *(Timed embargo options — e.g., publication after 6/12/24 months at
-   premium — are deferred pending OGC and Regulatory Accounting approval and
-   are not offered in year one.)* Any premium is a surcharge and cannot be
-   charged to federally documented orders.
-4. **Acknowledgment.** Publications by the Customer using Facility-produced
+   reliability statistics — at any time, in all cases (including during an
+   embargo), with no release of Customer identity or Customer-proprietary
+   composition/parameters/results before the §5.2/§5.3 release date.
+5. **Acknowledgment.** Publications by the Customer using Facility-produced
    materials or data will acknowledge the Facility ["Powder produced at the BYU
    Vertical Cloud Lab"] and cite [FACILITY PAPER/DOI when available].
-5. **Opt-in co-publication.** The parties may separately agree in writing to
+6. **Opt-in co-publication.** The parties may separately agree in writing to
    joint publication of Customer-specific results; absent that, nothing here
    obligates either party to co-author or to keep the other's contributions
    confidential beyond this §5.
@@ -155,8 +168,8 @@ mixed with non-federal or intermediary funds for this order:
 - Documentation attached: [copy of award approval / award number verification]
 
 Signature/date: ______________. The Facility applies cost + institutional
-overhead with no surcharge to certified orders; the standard publication tier
-applies (§5.3). Certification must be renewed [annually / per order];
+overhead with no surcharge to certified orders; the standard §5.2 data-release
+terms apply (no embargo purchase). Certification must be renewed [annually / per order];
 inaccurate certifications trigger reclassification under §2.2.
 
 ## Appendix B — Export-control screening record *(Facility internal)*
@@ -170,7 +183,7 @@ deliverable; approver.]
 |-------|-------|
 | Services / # runs / feedstock | |
 | Rate tier & unit prices | |
-| Publication tier selected (§5.3: standard / proprietary) | |
+| Data release (§5): standard 3-month grace [shortened/waived to: ___] or embargo term [6/12/24/48 mo] | |
 | Estimated total (excl. tax) | |
 | Delivery terms | |
 | Signatures | |

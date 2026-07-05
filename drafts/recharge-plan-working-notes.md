@@ -67,7 +67,7 @@ Adopted wholesale: quote freeze; July–Aug time study; single cross-functional 
 | # | Assumption | Value | Status / verify with |
 |---|---|---|---|
 | A1 | Capitalized acquisition cost (invoice + tariff + freight + installation; renovation items **only if Fixed Assets capitalizes them to the equipment asset and they are excluded from building/F&A recovery**) | **$250,000** placeholder | Fixed Assets / Equipment Inventory |
-| A2 | Useful life, straight-line, no residual | **10 yr** | Regulatory Accounting (BYU class standard) |
+| A2 | Useful life, straight-line, no residual | **5 yr** (PI directive 2026-07-05 — assumed directly; supersedes §15.4's take-the-standard recommendation; prior approval still required, p. 7) | Regulatory Accounting |
 | A3 | In-service date | ~June 2026 | Equipment Inventory |
 | A4 | First-year proration | monthly | Regulatory Accounting (policy silent) |
 | A5 | External overhead | **51.5%**, base unconfirmed | SPO — *single most sensitive external assumption* |
@@ -97,7 +97,7 @@ Internal rate = ($40,000 + S×$90,000 + $35,075) / 305:
 | Floor (old draft: 2 h student labor only, no staff) | ~$18k in variable | $93,375 | **$306** | $464 | **Document as floor; never quote** |
 | 1.0 FTE | 90,000 | 165,075 | **$541** | $820 | Edison's low anchor |
 | 1.5 FTE | 135,000 | 210,075 | **$689** | $1,044 | |
-| **2.0 FTE (planning basis)** | 180,000 | 255,075 | **$836** | $1,267 | Northwestern-consistent; headline in Version 1 |
+| **2.0 FTE (planning basis)** | 180,000 | 255,075 | **$836** | $1,267 | Northwestern-consistent; **10-yr basis — superseded by §17 (5-yr: $918)** |
 
 Depreciation component: $25,000 / 305 = **$82/run** → equipment reserve, billed runs only.
 
@@ -117,13 +117,14 @@ and for a conservative denominator at submission.
 
 **5-year-life variant** (if approved with obsolescence justification, p. 7):
 fixed non-staff $65,000 → 2.0 FTE internal = **$918/run**; doubles capital
-recovery to $50k/yr.
+recovery to $50k/yr. **← This is now the primary basis per §17 (PI directive
+2026-07-05); the 10-yr rows above are kept for the fallback rerun.**
 
 **Two-column submission format** (Edison D6): Column A = floor ($306, minimum
 documented cost); Column B = time-study-supported staffed rate (planning: $836).
 Submit B as the proposed rate; A exists to show the pool floor transparently.
 
-### 3.1 Suggested posted schedule (planning; final = exact pool ÷ usage)
+### 3.1 Suggested posted schedule (planning; final = exact pool ÷ usage) — **10-yr basis; superseded by §17 (5-yr: $918 / $1,391 / $1,650, proprietary tier dropped)**
 
 | Tier | Planning $/run | Construction |
 |---|---|---|
@@ -367,13 +368,20 @@ runs with full paperwork, or the admin overhead lines will read as zero.
 
 ## 11. Superseded numbers (do not reuse)
 
-- ~~$306/run internal as a proposable rate~~ → floor only (Column A).
-- ~~$464 federal external~~ → $1,267 planning.
+- ~~$306/run internal as a proposable rate~~ → floor only ($388 on the 5-yr
+  basis).
+- ~~$464 federal external~~ → superseded twice; now $1,391 planning (§17).
+- ~~$836 internal / $1,267 federal external / $1,500 standard / $1,900
+  proprietary (10-yr-life planning schedule)~~ → superseded by the 5-yr-life
+  schedule in §17 ($918 / $1,391 / $1,650; proprietary tier dropped).
 - ~~"$61,200/yr §8 credit → ~4 years to repay $250k"~~ → withdrawn pending
   valuation ruling (§5).
-- ~~6/12/24-month embargo price ladder ($775/$925/$1,225/$1,525)~~ → deferred;
-  two-tier launch.
-- ~~30-day default publication right over customer Run Data~~ → consent-based.
+- ~~6/12/24-month embargo price ladder ($775/$925/$1,225/$1,525)~~ → superseded
+  by §17's adopted ladder ($1,000/$2,500/$5,000/$10,000 for 6/12/24/48 mo).
+- ~~30-day default publication right over customer Run Data~~ → superseded by
+  open-by-default + 3-month grace (§13.4, adopted per §17).
+- ~~"Consent-based publication default"~~ (Edison A5 design) → superseded by
+  open-by-default + grace period (§17).
 
 ## 12. Feasibility check: proposed low-rate structure (Sterling, 2026-07-05)
 
@@ -915,3 +923,47 @@ the rate is *not* the real stake. The real stakes:
 | UMass ADDFab | EOS M290, Optomec LENS 450 | daily rates, campus vs. external/industry |
 | Michigan Tech; Georgia Tech AMPF | metal AM suites | internal/external columns, annual review |
 | DOE user facilities / APS | — | binary non-proprietary (publish, no fee) vs. proprietary (full cost recovery) — the embargo-precedent anchor |
+
+## 17. PI directives adopted 2026-07-05 (controls over earlier sections where in conflict)
+
+Sterling's directives from the PR-107 thread, now reflected in the overview and
+the four submission drafts:
+
+1. **Useful life: 5 years, assumed directly.** Supersedes A2 (was 10 yr) and
+   §15.4's take-the-standard recommendation. Prior approval is still required
+   for a shorter-than-standard life (p. 7); the justification (duty cycle,
+   consumable-intensive ultrasonic hardware, equipment-class obsolescence) is
+   now written into the rate proposal §2 and equipment package §4.
+2. **Planning schedule on the 5-yr basis** (2.0 FTE, 305 runs; pool
+   $280,075 = $50k depreciation + $10k maintenance + $5k admin + $180k staff
+   + $35,075 non-labor variable):
+   - Internal **$918/run** (was $836); floor $388 (was $306)
+   - Federal external **$1,391** (× 1.515)
+   - Non-federal external **$1,650** ($259 surcharge)
+   - Depreciation slice **$164/run**; reserve intake at 105 billed runs ≈
+     **$17.2k/yr** (was $8.6k); 2026 stub forfeit ≈ **$29.2k** (was $14.6k);
+     schedule ends mid-2031 — the recovery window is tight, which the Jan-1
+     start date protects.
+   - Own-lab unrecovered share: 200 × $918 ≈ **$183.6k/yr** documented
+     subsidy / §8 quantum (was $167.3k).
+3. **Open-by-default data policy adopted** (decides §13.6 items 1, 3, 4):
+   public release under permissive license after a **3-month grace period**
+   (shorten/waive allowed, uniform, free); paid embargo for **non-federal
+   externals only** at **$1,000 / $2,500 / $5,000 / $10,000 for 6 / 12 / 24 /
+   48 months**; **indefinite/proprietary tier dropped** — every embargo
+   expires; perpetual confidentiality routes to SPO or is declined. Service
+   agreement §5 and rate proposal §5 rewritten accordingly. License (CC0 vs
+   CC BY 4.0) and repository remain OGC/kickoff items; ladder price points are
+   planning numbers pending the market/WTP study (business-school student).
+4. **Version 1 rewritten as a standalone leadership document** (2026-07-05):
+   written for a first-time reader; no repo/markdown references, no
+   pending-decision provisos, no Edison mentions; final suggested numbers with
+   policy page cites. This file (Version 2) remains the only place for
+   notes-to-self, superseded numbers, and open questions.
+5. **Note-to-self on the 5-yr choice:** §15.4's growth-trap analysis still
+   holds (front-loading depreciation into low-billing ramp years collects less
+   into the reserve if the billed share grows later) — but the directive is
+   explicit, and the counterweights (inflation, wear-out risk at
+   near-continuous duty, earlier rate step-down) are real. If Regulatory
+   Accounting refuses the 5-yr life, fall back to the class standard and
+   rerun the §3 numbers (10-yr variant: internal $836).

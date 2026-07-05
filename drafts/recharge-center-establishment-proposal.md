@@ -8,7 +8,7 @@
 **Requested rate effective date:** January 1, 2027
 
 > **Status: DRAFT for internal review — not yet submitted.** Prepared per the BYU
-> *Recharge Center Policy & Procedures* (the "Policy"; PDF in repo), §2
+> *Recharge Center Policy & Procedures* (the "Policy"), §2
 > (Establishing a Recharge Center). Routing: Department Chair → Dean's Office
 > (→ VP office) → Director of Regulatory Accounting. All `[FIELDS]` and figures
 > marked *(assumption)* must be verified before submission.
@@ -102,6 +102,11 @@ Per Policy §4: **Annual Rate = Annual Costs ÷ Total Annual Usage.**
   capital, equipment purchases).
 - No advance billing (Policy p. 2). External invoices at/after delivery;
   optional card payment through Treasury Services' eMarkets program.
+- **Data release:** run data is released publicly under a permissive license
+  after a 3-month grace period (customer may shorten or waive). Non-federal
+  external users may purchase a posted data embargo (6–48 months, priced as
+  part of the surcharge); every embargo expires. Aggregate, anonymized
+  operational statistics are publishable by the facility in all cases.
 
 ## 5. Equipment and depreciation
 
@@ -112,7 +117,9 @@ reimbursement under Policy §8. We request:
 
 1. approval of the attached **depreciation schedule** (asset number
    [ASSET #], in-service date [DATE], capitalized cost $[AMOUNT], useful life
-   [10 *(assumption — confirm BYU standard)*] years, straight-line);
+   **5 years**, straight-line — prior approval requested per Policy p. 7, with
+   justification from duty cycle, consumable-intensive ultrasonic hardware,
+   and equipment-class obsolescence);
 2. establishment of an **equipment reserve account**;
 3. prior approval of the **§8 reimbursement arrangement** for the startup
    account(s) that funded the equipment (documentation plan attached).
@@ -129,13 +136,14 @@ reimbursement under Policy §8. We request:
 **In every option below, the approved internal rate remains the uniform,
 cost-based rate** (Policy p. 4); PI-group usage is recorded run-by-run at that
 gross rate, with the settlement (payment, subsidy, or §8 credit) shown
-alongside it — no zero or reduced rate is requested. The options (decision
-pending Regulatory Accounting guidance; all keep the runs in the usage
-denominator per Policy p. 4):
+alongside it — no zero or reduced rate is requested. All options keep the runs
+in the usage denominator per Policy p. 4:
 
-- **Option A (preferred):** in-kind reimbursement under Policy §8 — the startup
+- **Option A (elected):** in-kind reimbursement under Policy §8 — the startup
   account that funded the equipment receives services without charge, credited
-  against the documented investment, capped at the amount invested.
+  against the documented investment, capped at the amount invested. We request
+  prior approval of the arrangement, including a written determination of the
+  per-run credit value.
 - **Option B:** pay the uniform internal rate from startup (non-federal) funds.
 - **Option C:** center elects to cover specific internal usage from non-federal,
   non-recharge funds as a **documented subsidy against the gross rate**
@@ -172,11 +180,9 @@ internal rate (Options A/C apply only to non-federally-funded usage).
 
 ## 9. Attachments
 
-1. Rate proposal and calculations, CY2027 (`rate-proposal-cy2027.md`)
-2. Depreciation schedule request + equipment documentation + §8 plan
-   (`equipment-depreciation-and-reimbursement-package.md`)
-3. External user service agreement template (draft, pending OGC review)
-   (`external-user-service-agreement-template.md`)
+1. Rate Proposal and Calculations, Calendar Year 2027
+2. Equipment, Depreciation Schedule, and §8 Reimbursement Package
+3. External User Service Agreement (template; OGC review requested)
 
 ---
 
