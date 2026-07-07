@@ -1046,3 +1046,79 @@ into questions doc Q2).
 Docs updated for this directive: README timeline; overview §§3, 6, 9;
 establishment proposal (requested effective date); rate proposal (title, A3,
 §2); equipment package §4; questions doc Q2/Q5.
+
+## 19. Field intelligence: SEM-lab conversation (issue #106 comment, Gage Erickson, 2026-07-07)
+
+Gage spoke with Paul and the SEM lab director ("Dr. V") about setting up a
+cost-recovery program like the SEM lab's. Everything below is second-hand and
+unwritten — treat it as *posture* evidence about how BYU behaves in practice,
+not as policy. Reconciliation against the written policy and this dossier:
+
+### 19.1 Claim-by-claim reconciliation
+
+| Dr. V / Paul claim | Our prior finding | Verdict |
+|---|---|---|
+| Credit-card processing runs through a university partner; "not the issue" | Treasury Services merchant program, eMarkets/Square, department pays fees | Consistent — independently confirmed |
+| Externals must be charged **more than industry** so the university isn't undercutting industry with government-supported capacity | Non-federal externals pay cost + F&A + discretionary surcharge "up to market" (p. 5); UBIT three-part test (pp. 5–6); Northwestern $2,150 commercial anchor | Consistent in spirit; stated more absolutely than any written rule we found (see 19.3) |
+| Machine's primary purpose is student learning; external users must never inhibit it (U of U cited as the cautionary tale) | Standing "primarily internal" classification question (Q12); Edison gap B: queue-priority policy | Consistent — same tension, now with an on-campus witness. Helps that the CY2027 forecast is own-lab-dominant (200 of 305 runs) |
+| University-wide it is "highly discouraged"; the SEM lab is "grandfathered in" | The Recharge Center Policy is currently published on spo.byu.edu **with establishment procedures** (p. 2); no grandfather clause appears in the text | Posture, not policy. Resolve at the kickoff (19.4) |
+| The core risk is "how the government perceives the university's use of funds the government has given it" | Exactly the axis this dossier splits on — and federal money is absent from this asset (startup-funded) | This is where the PI's point lands — see 19.2 |
+| More common arrangement: company gives a **research grant** to the lab; overhead + student hours priced in; "some of that could be used for cost recovery" | §10: the research-contracts channel. Caveat: without an approved recharge rate, machine time rides in contracts at $0 and equipment depreciation reaches only *central* via F&A — contracts alone repay none of the $250k to the startup account | Consistent, but incomplete as a capital-recovery vehicle; the two mechanisms compose (§10.2) |
+| Talk to **Larry Howell** (Professor and Associate Academic VP) — the practical go/no-go | Matches the Dean's-office → **VP office** step in the policy's responsibilities table (Q3 already asks who signs in practice) | New and actionable — added to the questions doc (Q31) |
+| "Who owns the atomizer — the lab or the department?" | University-owned asset, department custody; the **startup account that funded it holds the §8 reimbursement claim** (pp. 7–8), hard-capped at the amount invested | Answered by the policy; the §8 claim is the part that matters |
+
+### 19.2 The PI's startup-funds point: right, with edges
+
+**Where it's right.** Dr. V's central objection — federal perception of how
+*granted* funds are used — does not attach to this machine: no federal dollars
+(and no federal cost-share) are in it. That is precisely why the dossier's
+design works at all: depreciation is includable in rates (p. 6), the §8
+repayment channel to the startup account exists (pp. 7–8), and there is no
+"federal money bought capacity that now undercuts industry" story to tell.
+On the undercutting concern specifically, the pricing design never sells below
+cost to commercial users anyway — non-federal externals pay cost + F&A + a
+surcharge that lands near or above market comparators.
+
+**Where startup funding doesn't help (unchanged from earlier sections):**
+
+1. **Rate-conduct rules** attach the moment any internal user pays a charge
+   with federal grant money — uniform cost-based rates, no over-recovery. How
+   the asset was purchased is irrelevant to this (official-docs §4).
+2. **UBIT** on above-cost external commercial sales attaches to the
+   *activity*, not to the asset's funding source.
+3. The **"primarily internal" classification** question (Q12) is a user-mix
+   question, unaffected by who bought the machine.
+4. The institution's federal nexus is broader than one asset: F&A-subsidized
+   buildings — including, likely, the renovation if it was capitalized to the
+   building (§6) — mean "no grant money in the atomizer" ≠ "no federal money
+   anywhere near the operation."
+
+Net: startup funding removes the sharpest version of Dr. V's objection and is
+the load-bearing fact for cost recovery; the political and classification
+hurdles he describes are real but were already on our books.
+
+### 19.3 One genuine discrepancy to resolve, not paper over
+
+Dr. V: external prices must exceed industry prices, full stop. The written
+policy: documented-federal externals pay cost + F&A with **no surcharge**
+(p. 5) — which can land *below* market. These reconcile if the "no
+undercutting" norm targets **commercial** customers only (the
+unfair-competition doctrine is about competing with taxable businesses;
+federally funded academic users aren't that). But if BYU applies an
+"above-market for all externals" norm in practice, it collides with the
+no-surcharge rule for federal externals. Kickoff question — don't guess.
+
+### 19.4 Actions taken / queued
+
+- **Taken:** questions doc gains Q31 (brief Larry Howell early; request an
+  intro via the SEM lab director) and Q32 (get the SEM lab's actual
+  arrangement: were their instruments federally funded? do they operate under
+  the 2005 policy? what does "grandfathered" mean concretely? — the closest
+  on-campus precedent and the likely source of the posture difference).
+- **Queued:** per Paul/Dr. V's explicit request, the PI (or another
+  "department ownership" representative) attends the next conversation, not
+  only students.
+- **Note-to-self:** "highly discouraged" from a facility director is exactly
+  the political-runway problem Edison's strategy critique predicted — one more
+  reason the cross-functional kickoff (with the Academic VP chain represented)
+  should happen before, not after, drafting rounds with Regulatory Accounting.

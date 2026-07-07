@@ -149,3 +149,16 @@
 30. Requirements for **shipping powder** to customers (DOT/IATA classification
     for fine aluminum powder, packaging, SDS provision) and for
     customer-supplied feedstock intake (SDS review, refusal criteria).
+
+## Stakeholders / precedent (added 2026-07-07, from the SEM-lab conversation)
+31. Brief **Larry Howell (Professor and Associate Academic Vice President)**
+    early — identified by the SEM lab director as the practical go/no-go
+    authority for opening equipment to external users (consistent with the VP
+    office step in the policy's responsibilities table; see Q3). Request an
+    introduction via the SEM lab director; a "department ownership"
+    representative (PI or chair), not only students, should attend.
+32. Obtain the **SEM lab's** actual cost-recovery arrangement as the closest
+    on-campus precedent: approved rates, external-user terms, whether their
+    instruments were federally funded (the likely source of the difference in
+    posture — the atomizer is startup-funded with no federal money), and what
+    "grandfathered in" means concretely relative to the June 2005 policy.
