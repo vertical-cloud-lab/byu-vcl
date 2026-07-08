@@ -379,6 +379,27 @@ Replaces the relevant lines in §9.5 with:
    - **Interim pail → EHS:** transfer sealed liners from the steel pail to the EHS waste container every ≤ 2 weeks or at 50% pail fill, per EHS-agreed schedule.
 6. **Documentation:** log each emptying event (date, mass, initials) on a vacuum-station log sheet. Document the full SOP and DHA per NFPA 652. Class D extinguisher (Met-L-X / Lith-X / NaCl-based) within 10 ft. No water.
 
+### 10.6 Liner sizing correction — lay-flat width ≥ 25" required (2026-07-08)
+
+**Field finding:** the 18×24" Poly Pak conductive bags were too small for the collection bin. Bag dimensions are quoted as **lay-flat width × length**, *not* opening diameter. A flat bag of width *W* opens to a circle of diameter 2*W*/π, so an 18"-wide bag only opens to ~11.5" — well under the ~16" bin diameter (with gasket). To fit the bin, the liner needs lay-flat width ≥ π × 16 / 2 ≈ **25.1"** (matching the supplier customer-service advice of ≥ 25"), and comfortably more to fold over the rim for the bonding clip. This also explains why the McMaster drum liner (sold by *diameter*: 18.5" ≈ 29" lay-flat equivalent) fit "with lots of room to spare."
+
+**Practical size window:** lay-flat width ~26–38". Stock flat conductive bags top out at 24" wide (opens to ~15.3" — marginal at best, no fold-over allowance), so the viable form factor is a **conductive drum liner**, not a flat bag.
+
+**Verified options (HTTP-200 checked 2026-07-08):**
+
+| Option | Size | Spec | Price | Link | Notes |
+|---|---|---|---|---|---|
+| **McMaster-Carr static-control drum liner** (proven fit — already purchased and tested in the bin) | 18.5" dia × 38" tall, 4 mil | Static-control black PE, < 10⁶ Ω/sq per §10.4 spec gate | ~$11.79 ea | [mcmaster.com drum liners](https://www.mcmaster.com/products/polyethylene-bags/drum-liners-1~/?s=polyethylene-bags) (filter: static-control, 18.5" dia) | Known-good; reorder in qty to cut per-unit shipping |
+| **BASCO CL55 conductive drum liner** | 55-gal, 60" tall (lay-flat width unlisted; std 55-gal is ~38" — confirm at 800-776-3786) | **Carbon-loaded black LDPE, 4 mil, surface resistivity 10³–10⁵ Ω/sq** (explicitly stated) | **$14.40 ea (qty 1+)**, $12.00 ea (100+) | [bascousa.com](https://bascousa.com/55-gallon-conductive-liner.html) | Best explicit spec; sold singly — cheap to test-fit one before bulk. Oversized; fold/trim excess height |
+| **SCI Containers** (same CL-series liner) | 55-gal, 38" × 65" lay-flat, 4 mil | Carbon-loaded black LDPE | ~$1,395 / case (bulk only) | [scicontainerstore.com](https://scicontainerstore.com/products/55-gallon-carbon-loaded-ldpe-black-straight-bottom-drum-liner-4-mil-conductive) | Case listing has internal inconsistencies (4 vs 6 mil, 50 vs 100/case) — verify before ordering |
+| **Armand Manufacturing** — custom-size black conductive bags | Custom (spec ~28–30" × 30") | Carbon-loaded PE, 4 mil standard, "conductivity does not depend on humidity" | Quote: (702) 565-7500 / sales@armandmfg.net | [armandmfg.com](https://armandmfg.com/product/black-conductive-bags/) | Right-sized custom run avoids folding excess material |
+| **Poly Pak Plastics** — custom RFQ | Custom | Carbon-impregnated LDPE, MIL-P-82646 | [RFQ form](https://www.polypakplastics.com/rfq) / 1-800-842-3113 | [polypakplastics.com](https://www.polypakplastics.com/static-control/black-conductive-bags) | Their stock line stops at 18×24" (the size that failed); ask for ≥ 26" width custom |
+| ~~Poly Bag Central 24×36" flat bag~~ | 24" wide → opens ~15.3" | Carbon-loaded LDPE, 4 mil | $279.57/100 | [polybagcentral.com](https://polybagcentral.com/product/4-mil-black-conductive-bags-24-x-36/) | **Not recommended** — largest stock flat bag anywhere, but width is below the 25" minimum |
+
+**Material note:** the industry-standard conductive liner material is carbon-loaded **polyethylene** (LDPE) — conductive *polypropylene* liners are not a stock item. All §10.4 spec-gate criteria still apply: listing must say "conductive"/"carbon-loaded," black, ≤ 10⁶ Ω/sq (BASCO's stated 10³–10⁵ Ω/sq is ideal); reject "antistatic"/pink/silver.
+
+**Recommendation:** buy **one BASCO CL55 ($14.40)** to test-fit alongside a **McMaster reorder** (proven fit); whichever handles better in the bin, buy in quantity — or get an Armand/Poly Pak custom quote at ~28–30" × 30" if the folded excess of a 55-gal liner is unwieldy during the gooseneck-seal step.
+
 ---
 
 ## 11. Hose-to-Wand Coupler (Hose 107413543 ↔ Wand 01768601)
