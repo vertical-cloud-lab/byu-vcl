@@ -93,6 +93,8 @@ A post-2020 wave of organizations funded by investors/philanthropists as alterna
 
 ## 5. BYU- and Utah-local programs
 
+> For BYU's own policy rules on VC money and faculty founder roles (arm's-length vs. co-founder vs. equity holder), see [BYU rules on VC money and founder involvement](byu-vc-founder-rules.md).
+
 - **BYU Technology Transfer Office** — IP protection, licensing, and startup formation for BYU inventions. ([techtransfer.byu.edu](https://techtransfer.byu.edu/about-us))
 - **BYU Sandbox** (Rollins Center) — two-semester startup-building program (2020–); companies collectively valued at ~$149M with six Y Combinator acceptances — evidence of a functioning venture pipeline at BYU, though software-centric so far. ([Sandbox](https://rollins.byu.edu/programs/sandbox))
 - **Crocker Innovation Fellows** — donor-funded (Gary & Ann Crocker) interdisciplinary innovation program; alumni built companies including Owlet. A precedent for *philanthropic* rather than corporate sponsorship of innovation training. ([Program overview](https://marriott.byu.edu/news/article?id=1827))
