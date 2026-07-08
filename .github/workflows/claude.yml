@@ -46,6 +46,10 @@ jobs:
           TAILNET_ID: ${{ secrets.TAILNET_ID }}
           TS_OAUTH_CLIENT_ID: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           TS_OAUTH_SECRET: ${{ secrets.TS_OAUTH_SECRET }}
+          RPI_STREAM_CAM_HOSTNAME: ${{ secrets.RPI_STREAM_CAM_HOSTNAME }}
+          RPI_STREAM_CAM_PASSWORD: ${{ secrets.RPI_STREAM_CAM_PASSWORD }}
+          RPI_STREAM_CAM_USERNAME: ${{ secrets.RPI_STREAM_CAM_USERNAME }}
+          HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
           
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
