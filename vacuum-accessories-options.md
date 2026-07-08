@@ -421,6 +421,41 @@ Follow-up request: 24" lay-flat width but shorter than the ubiquitous 36" length
 
 **Fit caveat (from §10.6 math):** a 24" lay-flat opens to a ~15.3"-dia circle (48" opening perimeter). Against a ~15" bin+gasket diameter (~47" circumference) that is skin-tight; against 16" (~50" circumference) it cannot reach over the rim at all — it can only line the interior the way the original 23×24" factory liner did. Test-fit a single bag (or the trimmed corner of one) before committing to a case, and confirm the bonding-clip attachment still works without a fold-over allowance.
 
+### 10.8 Stock 24×24" conductive liner FOUND — ESD trash-can liners (2026-07-08)
+
+**New field datapoint:** the 118EXP shipped from the factory with a **24×24" liner**, so that form factor is factory-proven for this bin (it lines the interior rather than folding over the rim — consistent with the §10.7 fit math).
+
+**Why §10.7 missed it:** the earlier sweep searched *conductive bag* catalogs (packaging/shipping lines), which genuinely stop at 20×30" → 24×36". The 24×24" size lives in a different product category: **ESD trash-can liners**. Same material (single-layer carbon-loaded black polyethylene), different catalog shelf.
+
+**The product: Transforming Technologies WBAS-LB** — manufacturer-confirmed specs ([product page](https://transforming-technologies.com/product/wbaslb-conductive-black-esd-trash-can-liner/)):
+
+- Size: **24" × 24"** lay-flat (7–10 gal / 28–40 qt capacity)
+- Material: single-layer **carbon-loaded polyethylene**, opaque **black**
+- Surface resistivity: **≤ 10⁴ Ω/sq** (well inside the §10.4 ≤ 10⁶ gate; matches the 10³–10⁵ industry standard from the 2026-06-11 research)
+- Static decay: < 2 s; meets/exceeds **ANSI/ESD S20.20** program requirements
+- Thickness: **3 mil** — meets the §10.5 "≥ 3–4 mil" minimum but is thinner than the 4-mil bags/drum liners considered so far; see caveat below
+- Pack: 100 liners
+
+**Verified suppliers (checked 2026-07-08):**
+
+| Supplier | Price (100-pack) | Link | Notes |
+|---|---|---|---|
+| **StaticTek** ⭐ cheapest live-verified | **$205.24** (~$2.05/liner) | [statictek.com](https://statictek.com/conductive-trash-liners-24-x-24-3mil-black-7-10-gallon/) | Listed as TT_WBAS-LB; 22-gal and 44-gal sizes on same page |
+| Transforming Technologies (manufacturer) | $236.25 | [transforming-technologies.com](https://transforming-technologies.com/product/wbaslb-conductive-black-esd-trash-can-liner/) | Authoritative spec sheet |
+| MTE Solutions | $236.25 | [mtesolutionsinc.com](https://mtesolutionsinc.com/products/conductive-trash-liners-24-x-24-3mil-black-7-10-gallon) | |
+| Mega Depot | Price in cart (list $236.25) | [megadepot.com](https://megadepot.com/product/transforming-technologies-wbas-lb-black-conductive-trash-liner) | "Typically in stock," 1–2 wk lead |
+| Zoro (SKU G7259324) | Not verifiable by automated check (site blocked the fetch) | [zoro.com](https://www.zoro.com/transforming-technologies-conductive-trash-liners-24-x-24-3mil-black-7-10-gallon-wbas-lb/i/G7259324/) | Lab has an existing Zoro purchase history (gasket, filter clamp) — may be the easiest PO route |
+| VWR | Quote/login | [vwr.com](https://www.vwr.com/us/en/product/25880072/conductive-esd-trash-can-liners-transforming-technologies) | University procurement channel |
+
+**Caveats:**
+
+1. **3 mil vs 4 mil.** The WBAS-LB is 3 mil where everything else specced so far is 4 mil. For tens-of-grams of 20–63 µm powder per session this is unlikely to matter (these liners are rated for cleanroom electronics waste with sharp edges), but handle the gooseneck/lift step with normal care, and double-bag if a liner ever shows abrasion from the bin.
+2. **Reject the pink variant.** The same series exists as **WBAS-LP** (pink, 2 mil, *dissipative* — 10⁹–10¹¹ Ω). Order suffix **-LB** (black conductive) only, per the §10.4 spec gate.
+3. **Interior-lining fit.** Same as the factory liner: the 24×24" opens to ~15.3" dia, so it lines the bin interior without fold-over. Confirm the bonding-clip/tab arrangement still gives < 1 kΩ liner-to-bin before first powder use (§10.5 item 2).
+4. **Larger sizes exist in the same series** if more overhang is ever wanted: WBAS 22-gal and 44-gal (WBAS44-LB, ~$560/100 at StaticTek pricing tiers) — but the 24×24" matches the factory liner and is the cheapest.
+
+**Recommendation:** order one 100-pack of **WBAS-LB from StaticTek ($205.24)** — or via Zoro (G7259324) if the existing Zoro account makes procurement easier. This supersedes the §10.7 conclusion that no stock 24×24" exists and the §10.6/§10.7 custom-run and trim-a-24×36" workarounds.
+
 ---
 
 ## 11. Hose-to-Wand Coupler (Hose 107413543 ↔ Wand 01768601)
