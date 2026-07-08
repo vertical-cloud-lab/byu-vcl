@@ -400,6 +400,27 @@ Replaces the relevant lines in §9.5 with:
 
 **Recommendation:** buy **one BASCO CL55 ($14.40)** to test-fit alongside a **McMaster reorder** (proven fit); whichever handles better in the bin, buy in quantity — or get an Armand/Poly Pak custom quote at ~28–30" × 30" if the folded excess of a 55-gal liner is unwieldy during the gooseneck-seal step.
 
+### 10.7 24"-width stock-bag search — shorter lengths (2026-07-08)
+
+Follow-up request: 24" lay-flat width but shorter than the ubiquitous 36" length (ideally 24×24", matching the 23×24" liner that shipped with the vacuum), under $383/case.
+
+**Finding: no stock 24×24" black conductive bag exists.** Ten catalogs checked (Correct Products, Interplas, Packaging Friends, Poly Bag Central, RKS Plastics, PackagingSupplies.com, Poly Pak Plastics, PlasticPolyBags.com, Danco, Simply Polybags) — every stock line jumps from 20×30" straight to 24×36". The only shorter 24"-wide SKU found anywhere is PlasticPolyBags.com's 24×30", currently out of stock.
+
+**Options, best-first (checked 2026-07-08):**
+
+| Option | Size | Price (case of 100) | Link / contact | Notes |
+|---|---|---|---|---|
+| Poly Bag Central 24×36" | 24×36", 4 mil | **$279.57** | [polybagcentral.com](https://polybagcentral.com/product/4-mil-black-conductive-bags-24-x-36/) | Cheapest 24"-wide case; site was unreachable during re-check (verified HTTP-200 earlier same day) — confirm before ordering |
+| PackagingSupplies.com 24×36" | 24×36", 4 mil | **$310.90** | [packagingsupplies.com](https://www.packagingsupplies.com/collections/black-conductive-poly-bags) | Live-verified; carbon-loaded black PE |
+| Interplas 24×36" | 24×36", 4 mil | **$341.50** | [interplas.com](https://www.interplas.com/anti-static/conductive-bag/24-x-36-p-spc2436) | Live-verified; MIL-P-82646 |
+| PlasticPolyBags.com 24×30" | 24×30", 4 mil | Out of stock ($0.00 shown) | [plasticpolybags.com](https://www.plasticpolybags.com/24-x-30-4-mil-conductive-black-poly-tubing/) | Only sub-36" 24"-wide SKU found; call for restock/lead time |
+| Custom 24×24" run | 24×24", 4 mil | Quote | RKS (info@rksplastics.com) · Correct Products (800-870-1199) · Armand (702-565-7500) · [Poly Pak RFQ](https://www.polypakplastics.com/rfq) | Case-quantity custom runs often price near stock; all four advertise custom sizes |
+| ~~24"×750' tubing roll~~ | Cut-to-length (375 × 24" liners) | $990.31/roll ([Poly Bag Central](https://polybagcentral.com/product/4-mil-black-conductive-tubing-24-x-750/)); $1,465.17 ([Correct Products](https://www.correctproducts.com/esd-packaging-shipping/esd-tubing-sheeting/black-conductive-film-tubing)) | — | Cheapest per-liner (~$2.64) but over budget as one order, and each liner's bottom must be sealed manually |
+
+**Practical note:** the extra 12" of a 24×36" bag costs nothing in fit — trim the *open* end to 24" with scissors (the factory bottom seal is untouched), or leave it long and use the excess for the fold-over and gooseneck seal.
+
+**Fit caveat (from §10.6 math):** a 24" lay-flat opens to a ~15.3"-dia circle (48" opening perimeter). Against a ~15" bin+gasket diameter (~47" circumference) that is skin-tight; against 16" (~50" circumference) it cannot reach over the rim at all — it can only line the interior the way the original 23×24" factory liner did. Test-fit a single bag (or the trimmed corner of one) before committing to a case, and confirm the bonding-clip attachment still works without a fold-over allowance.
+
 ---
 
 ## 11. Hose-to-Wand Coupler (Hose 107413543 ↔ Wand 01768601)
