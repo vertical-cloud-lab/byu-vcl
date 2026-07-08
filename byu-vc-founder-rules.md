@@ -13,7 +13,7 @@ What BYU's official policies actually say about faculty/staff interacting with v
 | [Intellectual Property Policy](https://policy.byu.edu/view/intellectual-property-policy) (approved 17 Jun 2019, revised 16 Dec 2024) | Public | IP ownership, 45/27.5/27.5 royalty split, university equity holding, founder forfeiture rule, board-seat limits |
 | [Sponsored Projects Handbook](https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook) (RAO, Oct 2025) | Public (PDF) | Who negotiates/signs, "line officer" rule, indirect cost rate, publication rights |
 | "Expectations of a Faculty Appointment" (Dec 1995) | Internal; quoted in a [Marriott School guidelines PDF](https://marriott.byu.edu/policies/wp-content/uploads/sites/25/2016/12/Marriott-School-Faculty-Expectation-Guidelines-and-Policy.pdf) | Area 1/2/3 activity framework, leave-of-absence model for founder-executives |
-| Intellectual Property Procedures (companion to IP Policy) | **Login-gated** (BYU netid required per [ipsinfo.byu.edu](https://ipsinfo.byu.edu/ips-information)) | Income-distribution mechanics |
+| [Intellectual Property Procedures](https://avp.byu.edu/intellectual-property-procedures) (17 Jun 2019, companion to IP Policy) | Public (PDF on avp.byu.edu; the [ipsinfo.byu.edu](https://ipsinfo.byu.edu/ips-information) copy is netid-gated) | Income-distribution mechanics, disclosure/assignment procedures |
 
 Federal overlays: [42 CFR 50 Subpart F](https://www.law.cornell.edu/cfr/text/42/50.603) (PHS/NIH) and [NSF PAPPG Ch. IX](https://www.nsf.gov/policies/pappg/24-1/ch-9-recipient-standards) set the disclosure floors BYU's research-COI policy implements.
 
@@ -74,7 +74,12 @@ Everything in posture 2, plus the financial-interest machinery:
 
 ## Access caveats
 
-Fetched live: the three policy.byu.edu policies. Fetched via Wayback Machine (byu.edu subdomains block automated clients with HTTP 403): Sponsored Projects Handbook, TTO site pages, capstone/IP services pages, BYU News. **Not accessible** (BYU netid required, no public archive): Intellectual Property Procedures, University Fund Raising Policy, Supplemental Compensation for Faculty Policy, Business Gifts and Entertainment Policy, and the HR conflict-of-interest procedure page. Nothing found suggests those gated documents contradict the public policies, but a real engagement should confirm with the TTO/RAO.
+Fetched live: the three policy.byu.edu policies and the [Intellectual Property Procedures PDF](https://avp.byu.edu/intellectual-property-procedures) (a public copy on avp.byu.edu; the ipsinfo.byu.edu portal copy is netid-gated). Fetched via Wayback Machine (byu.edu subdomains block automated clients with HTTP 403): Sponsored Projects Handbook, TTO site pages, capstone/IP services pages, BYU News. **Not accessible** (redirect to BYU CAS login, no public archive) — someone with a BYU netid should pull these to confirm nothing contradicts the public policies:
+
+- [University Fund Raising Policy](https://policy.byu.edu/view/university-fund-raising-policy) — governs whether/how VC or corporate money can arrive as a "gift" vs. sponsored funding
+- [Supplemental Compensation for Faculty Policy](https://policy.byu.edu/view/supplemental-compensation-for-faculty-policy) — pay-above-base rules that interact with consulting/secondary-employment limits
+- [Business Gifts and Entertainment Policy](https://policy.byu.edu/view/business-gifts-and-entertainment-policy) — limits on accepting things of value from vendors/sponsors
+- [Conflict of Interest and Time procedure (HR)](https://hrs.byu.edu/procedures/conflict-interest-time) — the implementing procedure (disclosure forms, approval workflow) for the Conflict of Time or Interest Policy
 
 ## Sources
 
