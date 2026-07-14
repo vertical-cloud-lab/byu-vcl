@@ -1,0 +1,702 @@
+{
+  "1100": {
+    "task_id": "1484deaa-856c-423f-b38c-2f38f3d35020",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "1100",
+    "nominal_composition": "Al-0.12Cu (\u226599.0 Al)",
+    "answer_file": "1100.md"
+  },
+  "1050": {
+    "task_id": "9f5208b7-aa92-484e-b278-639f13852129",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "1050",
+    "nominal_composition": "Al (\u226599.5 Al)",
+    "answer_file": "1050.md"
+  },
+  "1350": {
+    "task_id": "01f07b3c-8112-49c1-977d-540111ec8387",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "1350",
+    "nominal_composition": "Al (\u226599.5 Al, electrical)",
+    "answer_file": "1350.md"
+  },
+  "2024": {
+    "task_id": "1b7d19ff-80f7-4a43-85b4-427812d8a05a",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2024",
+    "nominal_composition": "Al-4.4Cu-1.5Mg-0.6Mn",
+    "answer_file": "2024.md"
+  },
+  "2014": {
+    "task_id": "36af5ef0-7f9c-4d7a-bebb-8181f597f2a3",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2014",
+    "nominal_composition": "Al-4.4Cu-0.8Si-0.8Mg-0.8Mn",
+    "answer_file": "2014.md"
+  },
+  "2219": {
+    "task_id": "c4fab53a-60cd-43d7-853c-a7004a64433d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2219",
+    "nominal_composition": "Al-6.3Cu-0.3Mn-0.06Ti-0.10V-0.18Zr",
+    "answer_file": "2219.md"
+  },
+  "2618": {
+    "task_id": "38c1a422-adfd-499f-9cdc-eec1340ec78d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2618",
+    "nominal_composition": "Al-2.3Cu-1.6Mg-1.0Ni-1.1Fe-0.18Si",
+    "answer_file": "2618.md"
+  },
+  "2011": {
+    "task_id": "5da3ff01-106e-4dbf-80d6-82c52c427328",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2011",
+    "nominal_composition": "Al-5.5Cu-0.4Pb-0.4Bi",
+    "answer_file": "2011.md"
+  },
+  "2017": {
+    "task_id": "e8a8fdb2-010b-4c4f-b5aa-79852b02f825",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2017",
+    "nominal_composition": "Al-4.0Cu-0.7Mg-0.7Mn-0.5Si",
+    "answer_file": "2017.md"
+  },
+  "2124": {
+    "task_id": "8110f0a8-7431-45d7-8590-ee3a2552ff42",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2124",
+    "nominal_composition": "Al-4.4Cu-1.5Mg-0.6Mn",
+    "answer_file": "2124.md"
+  },
+  "2519": {
+    "task_id": "439f9a05-f459-4a22-839f-e99d06e0d1bc",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2519",
+    "nominal_composition": "Al-5.8Cu-0.25Mg-0.3Mn-0.15V-0.15Zr",
+    "answer_file": "2519.md"
+  },
+  "2090": {
+    "task_id": "44285b79-f874-4901-b77a-e44a420dd3af",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2090",
+    "nominal_composition": "Al-2.6Li-3.0Cu-0.3Mg-0.1Zr",
+    "answer_file": "2090.md"
+  },
+  "2091": {
+    "task_id": "adbabeb1-fe27-4c78-aba8-83228ee60f78",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2091",
+    "nominal_composition": "Al-2.3Li-2.5Cu-1.9Mg-0.1Zr",
+    "answer_file": "2091.md"
+  },
+  "2195": {
+    "task_id": "d6c6b9b8-49d2-40c1-9a14-18ee206282e9",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2195",
+    "nominal_composition": "Al-1.0Li-4.0Cu-0.4Mg-0.4Ag-0.11Zr",
+    "answer_file": "2195.md"
+  },
+  "2099": {
+    "task_id": "f0437556-65f1-4584-90e7-bfca66cf01f7",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2099",
+    "nominal_composition": "Al-1.8Li-2.7Cu-0.3Mg-0.09Zr-0.3Zn-0.3Mn",
+    "answer_file": "2099.md"
+  },
+  "2050": {
+    "task_id": "0a2cc206-274e-45ad-ba8a-49dcd29f5065",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2050",
+    "nominal_composition": "Al-1.0Li-3.6Cu-0.4Mg-0.4Ag-0.11Zr",
+    "answer_file": "2050.md"
+  },
+  "2060": {
+    "task_id": "e9f0f942-ffc6-4e46-97f1-03384def40c4",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2060",
+    "nominal_composition": "Al-0.7Li-3.9Cu-0.8Mg-0.2Ag-0.11Zr-0.3Mn-0.4Zn",
+    "answer_file": "2060.md"
+  },
+  "2196": {
+    "task_id": "5f42ef1d-fb57-4941-ac50-a0bc2f638eab",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "2196",
+    "nominal_composition": "Al-1.8Li-2.9Cu-0.5Mg-0.4Ag-0.11Zr",
+    "answer_file": "2196.md"
+  },
+  "3003": {
+    "task_id": "a5f41139-2d7d-4711-8ca9-b85e2841a861",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "3003",
+    "nominal_composition": "Al-1.2Mn-0.12Cu",
+    "answer_file": "3003.md"
+  },
+  "3004": {
+    "task_id": "4c6e0d1c-b94b-4c4f-9645-8122cd2fb7a3",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "3004",
+    "nominal_composition": "Al-1.2Mn-1.0Mg",
+    "answer_file": "3004.md"
+  },
+  "3105": {
+    "task_id": "9c7613a1-6c37-442a-9cbe-5b012bfefd83",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "3105",
+    "nominal_composition": "Al-0.55Mn-0.5Mg",
+    "answer_file": "3105.md"
+  },
+  "4043": {
+    "task_id": "62c2844f-ee87-45d7-8bc8-9a24b79df3ad",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "4043",
+    "nominal_composition": "Al-5.2Si",
+    "answer_file": "4043.md"
+  },
+  "4047": {
+    "task_id": "375b0ebd-5f44-4429-94bf-d92d9ba541f0",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "4047",
+    "nominal_composition": "Al-12.0Si",
+    "answer_file": "4047.md"
+  },
+  "4032": {
+    "task_id": "a31d6ce8-d1c6-45f3-92d9-f564648bfdaf",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "4032",
+    "nominal_composition": "Al-12.2Si-1.0Mg-0.9Cu-0.9Ni",
+    "answer_file": "4032.md"
+  },
+  "4045": {
+    "task_id": "03ce1ee1-432b-4dc0-8c03-780446ff303a",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "4045",
+    "nominal_composition": "Al-10.0Si",
+    "answer_file": "4045.md"
+  },
+  "4343": {
+    "task_id": "48089381-9d91-429e-8bad-da9325d10555",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "4343",
+    "nominal_composition": "Al-7.5Si",
+    "answer_file": "4343.md"
+  },
+  "5052": {
+    "task_id": "44877411-405a-4f9a-9908-67c8ae8c5fd1",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5052",
+    "nominal_composition": "Al-2.5Mg-0.25Cr",
+    "answer_file": "5052.md"
+  },
+  "5083": {
+    "task_id": "14945267-55fb-4c42-84e5-45c7a3a9c2de",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5083",
+    "nominal_composition": "Al-4.4Mg-0.7Mn-0.15Cr",
+    "answer_file": "5083.md"
+  },
+  "5086": {
+    "task_id": "c8096eb5-3279-4275-ba1b-fb3139add845",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5086",
+    "nominal_composition": "Al-4.0Mg-0.45Mn-0.15Cr",
+    "answer_file": "5086.md"
+  },
+  "5182": {
+    "task_id": "c08d1952-ec40-4ba9-b97b-6dbac3906c73",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5182",
+    "nominal_composition": "Al-4.5Mg-0.35Mn",
+    "answer_file": "5182.md"
+  },
+  "5454": {
+    "task_id": "fa259adc-ca30-428e-99c9-6cee3d64f549",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5454",
+    "nominal_composition": "Al-2.7Mg-0.8Mn-0.12Cr",
+    "answer_file": "5454.md"
+  },
+  "5754": {
+    "task_id": "18d7f132-209f-4b31-a721-23026fdb055a",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5754",
+    "nominal_composition": "Al-3.1Mg-0.5Mn",
+    "answer_file": "5754.md"
+  },
+  "5056": {
+    "task_id": "4dad9f30-540f-4b83-9643-71a873d57aa5",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5056",
+    "nominal_composition": "Al-5.0Mg-0.12Mn-0.12Cr",
+    "answer_file": "5056.md"
+  },
+  "5154": {
+    "task_id": "34402be4-e022-4abb-bd0b-f008f41c049e",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5154",
+    "nominal_composition": "Al-3.5Mg-0.25Cr",
+    "answer_file": "5154.md"
+  },
+  "5356": {
+    "task_id": "4ae93081-a454-4f3a-9762-a39c90f6ecc9",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5356",
+    "nominal_composition": "Al-5.0Mg-0.12Mn-0.12Cr-0.12Ti",
+    "answer_file": "5356.md"
+  },
+  "5556": {
+    "task_id": "8c709479-f13e-4209-9434-9e4ec498cf39",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5556",
+    "nominal_composition": "Al-5.1Mg-0.8Mn-0.12Cr-0.12Ti",
+    "answer_file": "5556.md"
+  },
+  "5005": {
+    "task_id": "63f7fec1-e658-4524-a270-5bdf97e9d465",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "5005",
+    "nominal_composition": "Al-0.8Mg",
+    "answer_file": "5005.md"
+  },
+  "6061": {
+    "task_id": "39975deb-02ae-4eaf-a44a-d88f54346b6f",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6061",
+    "nominal_composition": "Al-1.0Mg-0.6Si-0.28Cu-0.20Cr",
+    "answer_file": "6061.md"
+  },
+  "6063": {
+    "task_id": "c3123784-ff9d-4578-ac4a-b2768855d5f2",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6063",
+    "nominal_composition": "Al-0.7Mg-0.4Si",
+    "answer_file": "6063.md"
+  },
+  "6082": {
+    "task_id": "6a6617a8-a908-4ab7-8bb7-8b52cc06c245",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6082",
+    "nominal_composition": "Al-0.9Mg-1.0Si-0.7Mn",
+    "answer_file": "6082.md"
+  },
+  "6013": {
+    "task_id": "51854193-1acd-4521-801f-19feeb61ef4b",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6013",
+    "nominal_composition": "Al-0.8Mg-0.8Si-0.9Cu-0.35Mn",
+    "answer_file": "6013.md"
+  },
+  "6201": {
+    "task_id": "ae8cb4ab-71fe-4084-b314-d8de04a2432b",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6201",
+    "nominal_composition": "Al-0.7Mg-0.7Si",
+    "answer_file": "6201.md"
+  },
+  "6111": {
+    "task_id": "da1e60c3-e480-4060-9072-23c50f515820",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6111",
+    "nominal_composition": "Al-0.8Mg-0.9Si-0.7Cu-0.2Mn",
+    "answer_file": "6111.md"
+  },
+  "6060": {
+    "task_id": "74ee42e5-fb35-4449-afe2-8d0aff6a75f6",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6060",
+    "nominal_composition": "Al-0.5Mg-0.4Si",
+    "answer_file": "6060.md"
+  },
+  "6005": {
+    "task_id": "f24efca2-179c-4a03-99d9-1ca42ea75d11",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6005",
+    "nominal_composition": "Al-0.5Mg-0.7Si-0.15Mn",
+    "answer_file": "6005.md"
+  },
+  "6351": {
+    "task_id": "f3cba931-2967-44b9-b3fc-df81c2930aec",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6351",
+    "nominal_composition": "Al-0.6Mg-1.0Si-0.6Mn",
+    "answer_file": "6351.md"
+  },
+  "6020": {
+    "task_id": "9e3465db-98ca-4e71-a64f-e5306d50311b",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6020",
+    "nominal_composition": "Al-0.8Mg-0.8Si-0.35Sn",
+    "answer_file": "6020.md"
+  },
+  "7075": {
+    "task_id": "88d60f4f-ca18-4098-ab3d-6dcb3359caf7",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7075",
+    "nominal_composition": "Al-5.6Zn-2.5Mg-1.6Cu-0.23Cr",
+    "answer_file": "7075.md"
+  },
+  "7050": {
+    "task_id": "5b11e439-6efd-4cd8-b871-64e0246da18b",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7050",
+    "nominal_composition": "Al-6.2Zn-2.25Mg-2.3Cu-0.12Zr",
+    "answer_file": "7050.md"
+  },
+  "7055": {
+    "task_id": "e10e2051-0df8-435d-a2c4-4cf90e1dd77d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7055",
+    "nominal_composition": "Al-8.0Zn-2.05Mg-2.3Cu-0.12Zr",
+    "answer_file": "7055.md"
+  },
+  "7475": {
+    "task_id": "7a827a4b-8a3a-470a-b174-bfc182c97e58",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7475",
+    "nominal_composition": "Al-5.7Zn-2.25Mg-1.6Cu-0.21Cr",
+    "answer_file": "7475.md"
+  },
+  "7178": {
+    "task_id": "d3d07fe2-3d7f-4c69-b26f-c2b2649d2151",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7178",
+    "nominal_composition": "Al-6.8Zn-2.7Mg-2.0Cu-0.26Cr",
+    "answer_file": "7178.md"
+  },
+  "7003": {
+    "task_id": "875c21ac-0661-46bc-8a8c-3760cd1d2c57",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7003",
+    "nominal_composition": "Al-6.0Zn-0.8Mg",
+    "answer_file": "7003.md"
+  },
+  "7020": {
+    "task_id": "0cb34e40-2913-4918-a920-f9c6416ad105",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7020",
+    "nominal_composition": "Al-4.5Zn-1.2Mg-0.35Mn-0.15Cr-0.12Zr",
+    "answer_file": "7020.md"
+  },
+  "7072": {
+    "task_id": "262add70-c9c9-4fdc-b15f-b6a2f72ac7f3",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7072",
+    "nominal_composition": "Al-1.0Zn",
+    "answer_file": "7072.md"
+  },
+  "7085": {
+    "task_id": "2b0e03f1-09a2-40ad-a5c5-fe0a5590a75e",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7085",
+    "nominal_composition": "Al-7.5Zn-1.5Mg-1.65Cu-0.12Zr",
+    "answer_file": "7085.md"
+  },
+  "7A04": {
+    "task_id": "64ce1c23-93bb-4709-ac4d-5e010b3dc9f7",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7A04",
+    "nominal_composition": "Al-6.0Zn-2.2Mg-1.7Cu-0.15Mn",
+    "answer_file": "7A04.md"
+  },
+  "8090": {
+    "task_id": "d86f8984-6fa6-4346-8a7e-ba81ecb4030b",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "8090",
+    "nominal_composition": "Al-2.4Li-1.2Cu-0.8Mg-0.11Zr",
+    "answer_file": "8090.md"
+  },
+  "8011": {
+    "task_id": "0d0f5a14-c1b7-4f1a-a4ec-ee52af97941e",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "8011",
+    "nominal_composition": "Al-0.7Fe-0.7Si",
+    "answer_file": "8011.md"
+  },
+  "8079": {
+    "task_id": "fb2cc7b2-f2f0-49f1-9b8a-3846bfba5d93",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "8079",
+    "nominal_composition": "Al-1.2Fe-0.1Si",
+    "answer_file": "8079.md"
+  },
+  "8176": {
+    "task_id": "0634aff0-7aae-496f-9595-a0d0e63d38cf",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "8176",
+    "nominal_composition": "Al-0.5Fe-0.1Si",
+    "answer_file": "8176.md"
+  },
+  "A356_0": {
+    "task_id": "01652ad5-efe8-44e6-985c-c0a4077ef32d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A356.0",
+    "nominal_composition": "Al-7.0Si-0.35Mg",
+    "answer_file": "A356_0.md"
+  },
+  "A357_0": {
+    "task_id": "2d8f59a9-24be-482c-8510-dac835c3f829",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A357.0",
+    "nominal_composition": "Al-7.0Si-0.55Mg-0.05Be",
+    "answer_file": "A357_0.md"
+  },
+  "356_0": {
+    "task_id": "b3486570-daec-4c07-b8c8-058e3e587dc5",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "356.0",
+    "nominal_composition": "Al-7.0Si-0.35Mg",
+    "answer_file": "356_0.md"
+  },
+  "A380_0": {
+    "task_id": "866b560e-6845-40cd-9a55-fe9272eb4532",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A380.0",
+    "nominal_composition": "Al-8.5Si-3.5Cu-0.5Ni",
+    "answer_file": "A380_0.md"
+  },
+  "A319_0": {
+    "task_id": "fa3317b5-1367-485d-8d29-c3b8471d69b0",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A319.0",
+    "nominal_composition": "Al-6.0Si-3.5Cu",
+    "answer_file": "A319_0.md"
+  },
+  "A390_0": {
+    "task_id": "11a92f47-3a1d-41ff-ab18-b51ca551db44",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A390.0",
+    "nominal_composition": "Al-17Si-4.5Cu-0.55Mg",
+    "answer_file": "A390_0.md"
+  },
+  "360_0": {
+    "task_id": "655f98d2-38c1-4df7-8e15-b7cba3d5fe08",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "360.0",
+    "nominal_composition": "Al-9.5Si-0.5Mg",
+    "answer_file": "360_0.md"
+  },
+  "332_0": {
+    "task_id": "f559365d-6e4d-40a0-894d-4949c4257c54",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "332.0",
+    "nominal_composition": "Al-9.5Si-3.0Cu-1.0Mg-0.5Ni",
+    "answer_file": "332_0.md"
+  },
+  "336_0": {
+    "task_id": "76bfd69f-0790-4e00-ba71-e072d3bb623d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "336.0",
+    "nominal_composition": "Al-12.0Si-1.0Cu-1.0Mg-2.5Ni",
+    "answer_file": "336_0.md"
+  },
+  "355_0": {
+    "task_id": "d2581cad-6bf6-4fd5-a261-c6f816515063",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "355.0",
+    "nominal_composition": "Al-5.0Si-1.25Cu-0.5Mg",
+    "answer_file": "355_0.md"
+  },
+  "413_0": {
+    "task_id": "34b4fb3f-74fe-4e40-bdc5-8ed7f1f4b4d6",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "413.0",
+    "nominal_composition": "Al-12.0Si",
+    "answer_file": "413_0.md"
+  },
+  "443_0": {
+    "task_id": "2cfa501a-12d0-4a1d-ac34-0055175ca317",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "443.0",
+    "nominal_composition": "Al-5.2Si",
+    "answer_file": "443_0.md"
+  },
+  "295_0": {
+    "task_id": "cc58e7ea-27c3-49c4-a93c-9a9ca1028b74",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "295.0",
+    "nominal_composition": "Al-4.5Cu-1.1Si",
+    "answer_file": "295_0.md"
+  },
+  "201_0": {
+    "task_id": "c22d3ee9-7fbf-422a-9151-90de27fee183",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "201.0",
+    "nominal_composition": "Al-4.6Cu-0.35Mg-0.7Ag-0.25Ti",
+    "answer_file": "201_0.md"
+  },
+  "242_0": {
+    "task_id": "a33e9655-0970-4002-be73-0e211aba2168",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "242.0",
+    "nominal_composition": "Al-4.0Cu-1.5Mg-2.0Ni",
+    "answer_file": "242_0.md"
+  },
+  "206_0": {
+    "task_id": "d8352eca-1979-415c-816f-3d1a64045a07",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "206.0",
+    "nominal_composition": "Al-4.6Cu-0.3Mg-0.3Mn-0.22Ti",
+    "answer_file": "206_0.md"
+  },
+  "520_0": {
+    "task_id": "cef6eda4-318d-4ffe-a2a3-f7f6444c08ba",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "520.0",
+    "nominal_composition": "Al-10.0Mg",
+    "answer_file": "520_0.md"
+  },
+  "535_0": {
+    "task_id": "18533854-d39a-429f-8ac7-25b554ed4814",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "535.0",
+    "nominal_composition": "Al-6.9Mg-0.18Mn-0.18Ti",
+    "answer_file": "535_0.md"
+  },
+  "713_0": {
+    "task_id": "b3fb8919-f9ae-476c-b729-205c05529569",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "713.0",
+    "nominal_composition": "Al-7.5Zn-0.35Mg-0.7Cu",
+    "answer_file": "713_0.md"
+  },
+  "771_0": {
+    "task_id": "461f68e3-42f7-45f4-a9be-8cabd0891da9",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "771.0",
+    "nominal_composition": "Al-7.0Zn-0.9Mg-0.13Cr-0.12Ti",
+    "answer_file": "771_0.md"
+  },
+  "850_0": {
+    "task_id": "769ee8a3-1667-4a92-8cc8-e8be6fbe9b49",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "850.0",
+    "nominal_composition": "Al-6.2Sn-1.0Cu-1.0Ni",
+    "answer_file": "850_0.md"
+  },
+  "851_0": {
+    "task_id": "59e9029c-fa1d-4d61-84e5-da5266a89ad2",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "851.0",
+    "nominal_composition": "Al-5.5Sn-2.5Si-1.0Cu-0.5Ni",
+    "answer_file": "851_0.md"
+  },
+  "1420": {
+    "task_id": "bd0e04e5-5571-41c4-909d-b896239a3cd6",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "1420",
+    "nominal_composition": "Al-2.2Li-6.2Mg-0.1Zr",
+    "answer_file": "1420.md"
+  },
+  "1441": {
+    "task_id": "e5624f55-503d-498b-8d81-c0a7cd128407",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "1441",
+    "nominal_composition": "Al-1.7Li-1.6Cu-0.9Mg-0.1Zr",
+    "answer_file": "1441.md"
+  },
+  "AlSi10Mg": {
+    "task_id": "9aab02dc-5c2f-43f7-890b-571d2c0b8480",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "AlSi10Mg",
+    "nominal_composition": "Al-10Si-0.4Mg",
+    "answer_file": "AlSi10Mg.md"
+  },
+  "Scalmalloy": {
+    "task_id": "df972a44-78bc-4bea-9715-896ce3529213",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Scalmalloy",
+    "nominal_composition": "Al-4.6Mg-0.7Sc-0.35Zr-0.5Mn",
+    "answer_file": "Scalmalloy.md"
+  },
+  "AlSi7Mg_A357_AM": {
+    "task_id": "4b3dcfde-94ec-4a4e-95fc-d5c1a5e5532c",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "AlSi7Mg (A357-AM)",
+    "nominal_composition": "Al-7Si-0.6Mg",
+    "answer_file": "AlSi7Mg_A357_AM.md"
+  },
+  "AlSi12": {
+    "task_id": "d399f231-b957-42f8-b321-d5431c25b048",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "AlSi12",
+    "nominal_composition": "Al-12Si",
+    "answer_file": "AlSi12.md"
+  },
+  "AlSi3_5Mg2_5": {
+    "task_id": "62f143af-fb00-4c70-a327-fb9419f8e2e0",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "AlSi3.5Mg2.5",
+    "nominal_composition": "Al-3.5Si-2.5Mg",
+    "answer_file": "AlSi3_5Mg2_5.md"
+  },
+  "Al_5Mg_2Si_0_7Mn_0_15Zr": {
+    "task_id": "1563bc9e-58e2-42a1-b71c-b692e51f032d",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-5Mg-2Si-0.7Mn-0.15Zr",
+    "nominal_composition": "Al-5Mg-2Si-0.7Mn-0.15Zr",
+    "answer_file": "Al_5Mg_2Si_0_7Mn_0_15Zr.md"
+  },
+  "A20X_Aeromet": {
+    "task_id": "2e53b532-a55c-4df8-911b-5a72183a5cc8",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "A20X (Aeromet)",
+    "nominal_composition": "Al-4.5Cu-0.25Mg-TiC",
+    "answer_file": "A20X_Aeromet.md"
+  },
+  "6061_RAM": {
+    "task_id": "97708e66-57d7-4ccd-a3be-71c6e99195a4",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "6061-RAM",
+    "nominal_composition": "Al-1.0Mg-0.6Si-0.28Cu",
+    "answer_file": "6061_RAM.md"
+  },
+  "7A77": {
+    "task_id": "6c854371-5595-4da4-bfec-f52d8b56559c",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "7A77",
+    "nominal_composition": "Al-7.7Zn-2.4Mg-1.5Cu-0.15Zr",
+    "answer_file": "7A77.md"
+  },
+  "Al_9_3Ce_0_11Sc_0_04Er_0_22Zr": {
+    "task_id": "d14de9bc-0836-455c-b231-49c4e538c848",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-9.3Ce-0.11Sc-0.04Er-0.22Zr",
+    "nominal_composition": "Al-9.3Ce-0.11Sc-0.04Er-0.22Zr",
+    "answer_file": "Al_9_3Ce_0_11Sc_0_04Er_0_22Zr.md"
+  },
+  "Al_8Ce_10Mg": {
+    "task_id": "1af3fe6f-e220-47be-b8ec-5a409fe3ffb4",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-8Ce-10Mg",
+    "nominal_composition": "Al-8Ce-10Mg",
+    "answer_file": "Al_8Ce_10Mg.md"
+  },
+  "Al_3_5Cu_1_5Mg_0_5Ag": {
+    "task_id": "c08769c2-6c28-43fe-8f76-88af9f31ee53",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-3.5Cu-1.5Mg-0.5Ag",
+    "nominal_composition": "Al-3.5Cu-1.5Mg-0.5Ag",
+    "answer_file": "Al_3_5Cu_1_5Mg_0_5Ag.md"
+  },
+  "Al_5_5Mg_0_3Mn_0_15Sc_0_1Zr": {
+    "task_id": "e809d156-438d-4a23-bc5c-44d539ffff0a",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-5.5Mg-0.3Mn-0.15Sc-0.1Zr",
+    "nominal_composition": "Al-5.5Mg-0.3Mn-0.15Sc-0.1Zr",
+    "answer_file": "Al_5_5Mg_0_3Mn_0_15Sc_0_1Zr.md"
+  },
+  "Al_33Cu": {
+    "task_id": "7d9986e7-c674-496d-8f4d-d151aef02f9c",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-33Cu",
+    "nominal_composition": "Al-33Cu",
+    "answer_file": "Al_33Cu.md"
+  },
+  "Al_5Mg_0_7Mn_0_15Sc_0_05Er_0_1Zr": {
+    "task_id": "ccbfd989-8b0d-40ab-97c3-2ec9413f643a",
+    "job": "job-futurehouse-paperqa3",
+    "designation": "Al-5Mg-0.7Mn-0.15Sc-0.05Er-0.1Zr",
+    "nominal_composition": "Al-5Mg-0.7Mn-0.15Sc-0.05Er-0.1Zr",
+    "answer_file": "Al_5Mg_0_7Mn_0_15Sc_0_05Er_0_1Zr.md"
+  }
+}
