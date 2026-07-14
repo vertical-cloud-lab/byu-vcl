@@ -5,7 +5,8 @@
 - **Meeting:** TMS 2027 Annual Meeting & Exhibition, Orlando World Center Marriott, Orlando, FL, March 14–18, 2027
 - **Abstract deadline:** July 15, 2026 (per ProgramMaster symposium listings; extended from July 1)
 - **Format:** plain text, ≤150-word body, submitted via ProgramMaster
-- **Target symposium:** AI-Enabled Materials Processing: Integrating Accelerated Experimental Workflows and Processing-Aware Machine Learning (Edison rank #1, fit 9.5/10; backup: From Mine to Refinery: An EPD Symposium Honoring Shijie Wang — see `edison-trajectories/tms-symposium-top10/`)
+- **Presentation type:** Poster (decision in vertical-cloud-lab/byu-vcl#160 — keep the aqueous SDL framing rather than the electrochemistry reframe)
+- **Target symposium:** AI-Enabled Materials Processing: Integrating Accelerated Experimental Workflows and Processing-Aware Machine Learning (Edison SDL rank #1, fit 9.5/10; SDL backups: AI/ML/Data Informatics for Materials Discovery, 8.8; AI-ICME, 8.4 — see `edison-trajectories/tms-symposium-top10/`. An electrochemistry-forward reframe was also analyzed and set aside — see `edison-trajectories/tms-symposium-electrochem/`)
 - **Authors:** TBD (Vertical Cloud Lab, BYU Mechanical Engineering; Sterling G. Baird, PI)
 - **Related issue:** vertical-cloud-lab/byu-vcl#159
 
