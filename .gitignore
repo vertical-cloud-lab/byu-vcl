@@ -206,3 +206,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 ~$u-engineering-sop-template.docx
+
+# Private/local notes not meant for the public repo (may contain PII)
+/private/
