@@ -53,6 +53,23 @@ The core-five list (Al 4N ≤45 µm, Mn 99.9%, Cr 99.5%, Zr 99.5% water-wet, Si 
 4. **Si:** 99.5% coarse Si is acceptable to start; move to 99.9% if Fe-bearing intermetallics show up in characterization.
 5. **Second-wave elements (Mg, Cu, Zn, Sn, Ni, Ti, Fe, Ce, Sc, Li, Er):** buy per the table in §1, favoring master alloys for Li (mandatory), Sc, Er, Ce, Zr, Ti.
 
+## 5. Which elements to buy as Al master alloys — safety/handling rationale
+
+Beyond Li (mandatory — elemental Li powder is pyrophoric), the elements below have a genuine safety or handling case for the master-alloy route, ranked by strength of case:
+
+| Element | Master alloy | Why |
+| --- | --- | --- |
+| **Zr** | Al-10Zr | **Safety + cost:** elemental Zr powder is pyrophoric (DG class 4.2), ships water-wet with $100–300 hazmat surcharges, and must be dried before an Al melt — a hazardous step in itself. The master alloy is a benign solid. |
+| **Ce** | Al-10Ce / Al-20Ce | **Safety:** finely divided Ce metal is pyrophoric (mischmetal is literally lighter-flint material) and Ce lumps tarnish/oxidize rapidly in air, carrying oxide into the melt. |
+| **Ti** | Al-5Ti-1B rod | **Safety + metallurgy:** fine Ti powder is combustible; Ti melts at 1668 °C and dissolves slowly in a 100 g Al melt — undissolved Ti particles become LPBF defects. Grain-refiner rod is the cheap, standard solution. |
+| **Sc** | Al-2Sc | **Cost + oxidation:** elemental Sc oxidizes readily (oxide poisons the Al₃Sc L1₂ chemistry) and costs thousands per kg. Al-2Sc is the industry standard; there is no good elemental route. |
+| **Er** | Al-5Er / Al-10Er | **Oxidation + cost:** rare-earth surface oxidation, same L1₂ argument as Sc. |
+| **Mg** | optional (Al-50Mg) | **Judgment call:** fine Mg powder is a dust-explosion hazard — never buy it — but coarse 99.99% Mg granules/turnings are safe, cheap, and easier to certify at 4N than a master alloy. Prefer elemental granules unless a 4N-basis Al-Mg master is quoted cheaply. |
+
+Elements with **no safety case for master alloys** — buy elemental in coarse form (granules/shot/lumps): Mn, Cr, Si, Cu, Zn, Ni, Fe, Sn. (Al-Mn/Al-Cr/Al-Fe/Al-Ni waffle masters exist as a dissolution convenience if melt temperature is capped ≤ ~850 °C, but they add cost and another certificate of analysis to chase.)
+
+**Purity caveat for the 4N-list elements (Zr, Er, Sc) bought as masters:** a single "99.99%" label doesn't apply to a two-component master alloy. What protects the precipitation chemistry is (1) a **4N Al base** in the master and (2) **low oxygen** — request certificates of analysis reporting O, Fe, and Si. A master made from 4N Al with 99.9%+ solute is metallurgically equivalent to, and lower-oxide than, blending 4N elemental powders, because the solute's surface oxide is already gone.
+
 ## Sources
 
 - [Edison Scientific full report with 26 literature citations](edison-lpbf-feedstock-purity-report.md) (task `a0bdf588-4bb1-4f75-8950-b069ac7bd154`, PaperQA high-effort, 2026-07-15)
