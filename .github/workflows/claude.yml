@@ -50,6 +50,7 @@ jobs:
           RPI_STREAM_CAM_PASSWORD: ${{ secrets.RPI_STREAM_CAM_PASSWORD }}
           RPI_STREAM_CAM_USERNAME: ${{ secrets.RPI_STREAM_CAM_USERNAME }}
           HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
+          AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
           
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
