@@ -41,8 +41,9 @@
 
 ## Notes & Troubleshooting:
 1. If the prints have too many bubbles, this is a humidity issue. Try printing at a drier temperature.
-2. For thinner prints, if there appears to be 'wobble' in the print when using 100% PLA supports, this can usually be remedied by the TPU filament preset changes.
+1. For thinner prints, if there appears to be 'wobble' in the print when using 100% PLA supports, this can usually be remedied by the TPU filament preset changes.
    When the min and max temperatures are too far apart, there can be 'skipping,' which causes wobble between 3D print layers as the filament takes extra time to adhere and misses the target point of adhesion.
+1. When using generated models, make sure to keep non-manifold edges even if Bambu Studio gives an error message. Otherwise, essential geometry may be eliminated by Bambu Studio's 'auto-repair' feature.
 
 
 
