@@ -77,10 +77,27 @@ buckle. Assign PLA to one nozzle and TPU to the other.
 - [ ] Correct filament loaded in the correct nozzle/slot, and the slicer's
       filament assignment matches physically what's loaded.
 - [ ] Filament is dry (especially TPU) and feeding freely without tangles.
+- [ ] For TPU, the filament has been dried appropriately; if humidity is not
+      below about 8% RH, run a dry cycle at 70–75 °C for 12 h (or until the
+      filament is dry) before printing.
 - [ ] Nozzles are clean; no stuck debris or "boogers" on the tips.
 - [ ] Firmware and Bambu Studio are reasonably up to date.
 - [ ] You have logged your print / reserved the machine per lab convention:
       _[sign-up sheet / calendar link]_.
+
+### TPU-specific setup on the H2D
+
+- Before switching to TPU, verify the active nozzle is clean and the filament
+  path is clear. If needed, heat the nozzle to about 180 °C, wipe away soft
+  residue, and allow it to cool before continuing.
+- Confirm TPU is loaded into the intended direct-drive nozzle and that the path
+  is feeding smoothly. Avoid routing TPU through the AMS unless the filament
+  profile specifically supports it.
+- If TPU is not already loaded, use the printer's Load function and feed the
+  filament through the rear loading path or TPU assist path until it begins to
+  extrude. If it was already loaded, verify that it still feeds freely.
+- For tall, thin, or small TPU parts, consider a raft or glue stick for better
+  adhesion and keep the print area clear of stray filament purge.
 
 ---
 
@@ -98,6 +115,17 @@ buckle. Assign PLA to one nozzle and TPU to the other.
    material transitions, seams, and any purge/wipe towers.
 5. **Estimate & sanity check.** Review time and filament estimates before
    committing to long prints.
+
+### TPU-oriented slicer notes
+
+- For tall, thin, or small TPU parts, generate a raft in Bambu Studio or use a
+  glue stick to improve first-layer adhesion.
+- If supports are necessary for TPU, prefer PLA-only support material, paint
+  supports manually, and keep them limited to the build plate when possible.
+- Disable TPU flushing into supports and avoid generating support interfaces on
+  the part itself unless there is no practical alternative.
+- If the print is tall or unstable, keep the print speed conservative and watch
+  for wobble or skipped layers during the first few layers.
 
 ### Suggested starting settings
 
