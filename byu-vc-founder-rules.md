@@ -74,6 +74,8 @@ Everything in posture 2, plus the financial-interest machinery:
 
 ## Precedents at BYU
 
+> For a fuller list of BYU faculty founders (especially in the College of Engineering) and the specific people worth contacting about their experiences, see [BYU faculty-founder precedents and contacts](byu-founder-contacts.md).
+
 - **NeuroID** — BYU patented Prof. Jeff Jenkins's research and licensed it to NeuroID, "a university spin-off company that Dr. Jenkins co-founded"; he held C-level/board roles at the company while remaining a BYU professor, through acquisition by Experian ([BYU Marriott directory](https://marriott.byu.edu/directory/details?id=26429)). The strongest on-point example of the equity-founder path working.
 - **Coreform** — built on Prof. Michael Scott's BYU-licensed research; he "serves as a senior advisor" (not an officer) — the advisory shape the policies favor ([BYU News, Nov 2020](https://news.byu.edu/byu-tech-leads-to-one-of-the-fastest-growing-companies-in-america)).
 - **Qualtrics** — conceived by marketing professor Scott Smith, who co-founded it while his son ran operations; Smith stayed on the faculty for decades ([Y Magazine](https://magazine.byu.edu/article/trics-of-the-trade/)). Founder-owned IP rather than a BYU license.
