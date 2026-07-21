@@ -58,6 +58,30 @@ People who took BYU engineering research out and built the company — useful fo
 - **BYU Technology Transfer Office** ([contact](https://techtransfer.byu.edu/contact)) and **Research Administration Office** (A-285 ASB; see the [Sponsored Projects Handbook](https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook)) — the two offices that would actually paper any VCL deal.
 - **University of Utah PIVOT Center** ([pivotcenter.utah.edu](https://pivotcenter.utah.edu/)) — the regional peer worth benchmarking; see the [precedents survey](enterprise-academic-precedents.md#5-byu--and-utah-local-programs).
 
+## Which of these precedents were VC-backed?
+
+Almost none of the engineering ones — and that pattern is itself informative. Funding model per company, from public sources (Crunchbase/Tracxn/PitchBook profiles, press releases; unverified against private cap tables):
+
+| Company (faculty) | Funding model | Detail |
+|---|---|---|
+| **NeuroID** (Jeff Jenkins, Marriott) | **Institutional VC — the only clear case** | [$7M Series A, Dec 2020](https://tracxn.com/d/companies/neuroid/__tZGowAKjMyqHaA9WK9yxw3jzey7QiV6m15GnmoYFw9o/funding-and-investors) and [$35M Series B, Nov 2021, led by Canapi Ventures](https://www.businesswire.com/news/home/20211104005681/en/Neuro-ID-Secures-$35M-in-Series-B-Funding-Led-by-Canapi-Ventures-to-Further-Capitalize-on-Expanding-Behavioral-Analytics-Market-Opportunity) with Fin VC and TTV Capital, before the Experian acquisition |
+| **Sonic Innovations** (Chabries/Christiansen, historic) | **VC → IPO** | 1990s venture rounds ([~$6M raised by 1996](https://www.fundinguniverse.com/company-histories/sonic-innovations-inc-history/)) plus Utah Centers of Excellence support; [IPO May 2000](https://www.deseret.com/2000/5/3/19504609/sonic-innovations-aims-to-help-world-hear-br-y-professors-new-hearing-aid-stocks-are-trading-well/) |
+| **Nexus Spine** (Howell/Bowden) | **Family-office patient capital, not a VC fund** | Sole institutional backer is [Crocker Ventures](https://www.crockerventures.com/about-2/) — Gary Crocker's internally funded firm with no limited partners, explicitly built to avoid VC-timeline pressure |
+| **Wavetronix** (Jensen/Arnold) | Bootstrapped | [No funding rounds on record](https://tracxn.com/d/companies/wavetronix/__sHSqpDf1sC1koHEaRw2AX45HcfqsTXLL2aUODxdlf5c); grew on revenue for 25 years |
+| **Sustainable Energy Solutions** (Baxter) | Federal/state grants → strategic acquisition | [ARPA-E, DOE/NETL, and State of Wyoming funding](https://www.osti.gov/biblio/1572908); sold to Chart Industries, a strategic, in 2020 |
+| **Coreform** (Scott) | SBIR/grants | [~$12.8M raised, primary "investor" is the U.S. Department of Energy](https://tracxn.com/d/companies/coreform/__ChW1iERkVau_jiolZEUUx1cWc9vbHVIuHaB1JNZU7fM) via SBIR awards |
+| **XO-NANO** (Merrell/Bowden/Fullwood) | SBIR/STTR | [NSF/DoD awards, ~$225K total raised](https://pitchbook.com/profiles/company/112564-18); deliberately diversified away from grant dependence ([Nucleus Institute profile](https://www.nucleusutah.org/newsroom/innovation-with-impact-xo-nanos-path-from-phd-research-to-defense-applications)) |
+| **Procerus** (Beard/McLain tech) | SBIR/defense revenue → strategic acquisition | [SBIR awardee](https://www.inknowvation.com/sbir/companies/procerus-technologies-lc); no VC on record before the [Lockheed Martin acquisition](https://investors.lockheedmartin.com/news-releases/news-release-details/lockheed-martin-acquires-procerus-technologies) |
+| **IMSAR** (Smith/Harris) | Privately held, contract-revenue funded | No VC rounds on record; ~114 employees on defense radar revenue |
+| **Aquaveo** (Jones/Nelson) | Bootstrapped LLC | Software licensing revenue; no outside rounds on record |
+
+**What the pattern says for VCL:**
+
+- **The engineering-precedent playbook at BYU is bootstrap/SBIR/strategic-acquisition, not venture rounds.** That's partly the nature of the tech (hardware, defense, niche software), but it also means most of the Tier 1–2 contacts can speak to BYU's rules under *low-stakes* cap tables — few of them ever faced a priced round, dilution negotiations, or investor board seats.
+- **The people who can actually speak to VC dynamics are Jeff Jenkins and Gary Crocker.** Jenkins is the only BYU faculty founder on this list who held equity through institutional VC rounds to a VC-style exit — his experience bears directly on the rules doc's [board-seat restriction](byu-vc-founder-rules.md#3-co-founder-with-monetary-ties--equity) (a company that has raised >$3M forecloses a faculty voting board seat, and both NeuroID rounds blew through that threshold). Crocker sits on the capital side but *deliberately structured his firm not to be a VC fund* — worth asking him whether that structure made the BYU interface easier.
+- **Sonic Innovations is the proof it's been done from engineering** — but it's a 1990s story under older policies, and its faculty founders are emeritus.
+- If VCL intends to raise institutional VC, the local precedent base is thin — which strengthens the case for also drawing on the non-BYU models in the [precedents survey](enterprise-academic-precedents.md) (The Engine, Osage, Oxford Science Enterprises, Arc/Arena), where VC-backing is the design rather than the exception.
+
 ## What to ask them
 
 1. **Structure:** advisory vs. officer vs. leave — what did they choose, and would they choose it again? (Arnold vs. Jensen at Wavetronix is a natural paired case study.)
