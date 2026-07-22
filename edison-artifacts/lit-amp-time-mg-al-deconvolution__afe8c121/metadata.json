@@ -1,0 +1,9 @@
+{
+  "task_id": "afe8c121-9f8e-4444-abd2-31aa5c42c74e",
+  "kind": "LITERATURE_HIGH",
+  "task_type": "PQATaskResponse",
+  "status": "success",
+  "job_name": "job-futurehouse-paperqa3-high",
+  "created_at": "2026-05-22 22:21:14.022344+00:00",
+  "query_summary": "For SEM-EDS using a silicon-drift detector (SDD) with nominal resolution 125-135 eV at Mn K\u03b1, what is the quantitative effect of pulse-processor amplifier time constant (\"amp time\", \"shaping time\", \"pulse-processing time\") on:\n1. Energy resolution (FWHM) at low energies (Mg K\u03b1 1.253 keV, Al K\u03b1 1.486"
+}
