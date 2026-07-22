@@ -214,3 +214,6 @@ wireless-color-sensor/cad/fea/*
 # Local OT-2 robot connection secrets (copy my_secrets.example.py)
 my_secrets.py
 wireless-color-sensor/cad/my_secrets.py
+
+# Private/local notes not meant for the public repo (may contain PII)
+/private/
