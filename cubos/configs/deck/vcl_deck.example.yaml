@@ -1,0 +1,65 @@
+labware:
+  vial_holder:
+    load_name: ursa_vial_holder
+    name: cubxl_multi_instrument_vial_holder_test_1
+    location:
+      x: 223.0
+      y: 159.0
+      z: 39.0
+    vials:
+      vial_1:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 25.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_2:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 58.5 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_3:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 92.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_4:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 125.5 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_5:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 159.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_6:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 192.5 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_7:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 226.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_8:
+        model_name: placeholder_20ml_vial
+        height: 57.0
+        diameter: 28.0
+        location: { x: 223.0, y: 259.5 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
