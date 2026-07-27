@@ -122,6 +122,16 @@ class Params:
     insert_flange_h: float = 2.0
     insert_peg_od: float = 6.0
     insert_peg_h: float = 5.0
+    # ---- enclosure-bore swap-in tip (array-tip base + the real enclosure's
+    #      pipette interface, measured off the reference STEP post) ----
+    encl_bore_entry_id: float = 7.499      # bore ID at the post mouth
+    encl_bore_taper_half_angle_deg: float = 1.589  # bore taper (sections 0-16 mm)
+    encl_wall: float = 1.5                 # constant post wall thickness
+    encl_section_h: float = 8.0            # exact-replica post height above flange
+    encl_bore_carry_depth: float = 10.0    # exact taper carried through the flange
+    encl_neck_id: float = 4.6              # nozzle-clearance hole below the taper
+    encl_neck_h: float = 2.0               # neck-down cone height
+    encl_bore_floor_z: float = 4.0         # blind-hole floor (keeps label solid)
     # ---- deck plate (ANSI/SLAS footprint) ----
     plate_x: float = 127.76
     plate_y: float = 85.48
@@ -275,6 +285,96 @@ def make_test_tip(bore_id: float, p: Params = P, tapered: bool = False,
             mirror(about=Plane.YZ, mode=Mode.REPLACE)
         extrude(sk.sketch, amount=p.label_depth, mode=Mode.SUBTRACT)
     return part.part
+
+
+def make_fake_tip_enclosure_bore(p: Params = P) -> Compound:
+    """Swap-in tip: the test-array tip base topped with the *real enclosure's*
+    pipette interface (PR #60, @timothy-commins request).
+
+    Bottom -> top: body O8 x 10 + flange O10 x 2 (identical to
+    ``make_test_tip``, so it drops into the deck-plate pockets and Tim's
+    lightweight housing exactly like the array tips), then an 8 mm exact
+    replica of the reference enclosure post's top section: tapered bore
+    entry ID 7.50 mm narrowing at 1.589 deg half-angle inside a constant
+    1.5 mm wall (both measured from
+    ``reference/sensor_package_main_enclosure_7p5mm.step``; the outer cone
+    widens toward the mouth because the wall tracks the bore).  Total height
+    20 mm, same as the array tips.
+
+    The exact bore taper is carried 10 mm below the mouth (through the
+    flange), then necks to a O4.6 nozzle-clearance blind hole so the P20
+    nozzle can't bottom out before the ejector sleeve wedges in the taper,
+    without thinning the O8 base wall below ~1.7 mm.  '7.5' is engraved on
+    the underside (bore entry ID in mm, distinguishing it from the 2-digit
+    3.xx-bore array codes).
+    """
+    slope = math.tan(math.radians(p.encl_bore_taper_half_angle_deg))
+    mouth_r = p.encl_bore_entry_id / 2
+    z_flange_top = p.tip_body_h + p.tip_flange_h
+    z_top = z_flange_top + p.encl_section_h
+    with BuildPart() as part:
+        Cylinder(p.tip_body_od / 2, p.tip_body_h,
+                 align=(Align.CENTER, Align.CENTER, Align.MIN))
+        with Locations((0, 0, p.tip_body_h)):
+            Cylinder(p.tip_flange_od / 2, p.tip_flange_h,
+                     align=(Align.CENTER, Align.CENTER, Align.MIN))
+        # exact replica of the reference post's top section
+        with Locations((0, 0, z_flange_top)):
+            Cone(mouth_r - slope * p.encl_section_h + p.encl_wall,
+                 mouth_r + p.encl_wall, p.encl_section_h,
+                 align=(Align.CENTER, Align.CENTER, Align.MIN))
+        # bore: exact taper from the mouth down through the flange
+        # (Cone takes bottom radius first, so the wide end sits at the mouth)
+        r_carry = mouth_r - slope * p.encl_bore_carry_depth
+        with Locations((0, 0, z_top)):
+            Cone(r_carry, mouth_r, p.encl_bore_carry_depth,
+                 align=(Align.CENTER, Align.CENTER, Align.MAX),
+                 mode=Mode.SUBTRACT)
+        z_neck_top = z_top - p.encl_bore_carry_depth
+        with Locations((0, 0, z_neck_top)):
+            Cone(p.encl_neck_id / 2, r_carry, p.encl_neck_h,
+                 align=(Align.CENTER, Align.CENTER, Align.MAX),
+                 mode=Mode.SUBTRACT)
+        z_cyl_top = z_neck_top - p.encl_neck_h
+        with Locations((0, 0, z_cyl_top)):
+            Cylinder(p.encl_neck_id / 2, z_cyl_top - p.encl_bore_floor_z,
+                     align=(Align.CENTER, Align.CENTER, Align.MAX),
+                     mode=Mode.SUBTRACT)
+        with BuildSketch(Plane.XY) as sk:
+            Text("7.5", font_size=3.2, font=FONT)
+            mirror(about=Plane.YZ, mode=Mode.REPLACE)
+        extrude(sk.sketch, amount=p.label_depth, mode=Mode.SUBTRACT)
+    return part.part
+
+
+def _section_radii(solid, z: float) -> list[float]:
+    """Sorted distinct edge radii of a solid's XY section at height ``z``."""
+    sec = solid.intersect(Plane.XY.offset(z))
+    return sorted(set(round(math.hypot(v.X, v.Y), 3)
+                      for e in sec.edges() for v in [e @ 0, e @ 0.5]))
+
+
+def verify_fake_tip_enclosure_bore(p: Params = P) -> dict:
+    """Section-by-section check that the new tip's post replicates the
+    reference enclosure post over the top ``encl_section_h`` mm."""
+    _body, post = _split_real_enclosure_solids()
+    post = Rot(90, 0, 0) * post
+    z_ref_tip = post.bounding_box().max.Z
+    tip = make_fake_tip_enclosure_bore(p)
+    bb = tip.bounding_box()
+    devs = []
+    for d in (0.05, 1.0, 2.0, 4.0, 6.0, 7.9):
+        ref_r = _section_radii(post, z_ref_tip - d)
+        new_r = _section_radii(tip, bb.max.Z - d)
+        devs.append(max(abs(a - b) for a, b in zip(ref_r, new_r)))
+    return {
+        "max_section_radius_dev_mm": round(max(devs), 4),
+        "total_h_mm": round(bb.size.Z, 3),
+        # base envelope identical to make_test_tip: O8 body, O10 flange
+        "body_od_mm": _section_radii(tip, p.tip_body_h / 2)[-1] * 2,
+        "flange_od_mm": _section_radii(
+            tip, p.tip_body_h + p.tip_flange_h / 2)[-1] * 2,
+    }
 
 
 def _add_socket(plane_z: float, bore_mid_id: float, p: Params = P,
@@ -603,12 +703,15 @@ def export_all(p: Params = P) -> dict[str, Compound]:
             p, tapered=True, slits=True, bore_ids=p.bore_ids_small),
         "deck_plate_base": make_deck_plate(p),
         "fake_tip_insert": make_fake_tip_insert(p=p),
+        "fake_tip_enclosure_bore": make_fake_tip_enclosure_bore(p=p),
         "mock_sensor_package": make_mock_sensor_package(p=p),
         "real_sensor_package_p20": make_real_sensor_package_p20(p=p),
         "real_enclosure_p20_tip": make_real_enclosure_p20_tip(p=p),
     }
     checks = verify_real_enclosure_p20_tip(p)
     print(f"real_enclosure_p20_tip checks: {checks}")
+    tip_checks = verify_fake_tip_enclosure_bore(p)
+    print(f"fake_tip_enclosure_bore checks: {tip_checks}")
     vmatch = verify_real_package_volume(p)
     if vmatch:
         print(f"real_sensor_package_p20 volume check: recreated "
