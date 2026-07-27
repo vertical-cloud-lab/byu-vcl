@@ -1,0 +1,38 @@
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 132.0
+  y_axis_motion: head
+  # Absolute deck-frame Z used for inter-labware travel and the entry
+  # approach to the first well of a scan.
+  safe_z: 85.0
+
+working_volume:
+  x_min: 0.0
+  x_max: 301.7
+  y_min: 0.0
+  y_max: 234.0
+  z_min: 0.0
+  z_max: 132.0
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  homing_enable: true
+  homing_dir_mask: 0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 301.7
+  max_travel_y: 234.0
+  max_travel_z: 132.0
+  soft_limits: true
+instruments:
+  potentiostat:
+    type: potentiostat
+    vendor: admiral
+    port: 'COM6'
+    channel: 0
+    offline: true
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -10.0
