@@ -147,7 +147,10 @@ you can slide the housing into alignment. Each cycle releases the housing
 footprint — a tape outline or small fence around the foot adds margin for
 long unattended runs. If the housing sits in the PR #116 charging dock, add
 the dock's seat height to `SOCKET_MOUTH_Z` (default 90.5 mm, the housing's
-standing height). Upload with `python run_robot.py protocol_cyclic_housing.py`.
+standing height). The press depth is set by the labware's `tipOverlap`
+(now 6.0 mm — see the press-depth note below; do not raise it back to the
+full 8 mm socket depth). Upload with `python run_robot.py
+protocol_cyclic_housing.py`.
 Validated end-to-end with `opentrons.simulate` (note: simulate with
 `opentrons==8.8.2` — the 9.x pip package dropped OT-2 support).
 
@@ -239,8 +242,13 @@ Two Opentrons details encoded in the labware/protocol:
 - During `pick_up_tip` the nozzle presses ~`tipLength + 4.5 mm` below the
   well top, so the plate is 24 mm tall (tip seat at z = 11.8 mm) to keep the
   press above the deck (verified with `opentrons.simulate`).
-- `tipOverlap: 8.0` mirrors the stock 20 µL tip overlap (8.25 mm) so motion
-  planning assumes a realistic nozzle engagement depth.
+- `tipOverlap` is the intended nozzle engagement depth and therefore the
+  press-depth knob. It was originally 8.0 mm (mirroring the stock 20 µL tip
+  overlap of 8.25 mm) but that equals the **full 8 mm socket depth**, so the
+  press bottomed the nozzle on the bore floor and pushed the whole part down
+  — Tim's 2026-07-28 feedback: "you are pushing down too much". All three
+  protocols now use **6.0 mm**, which engages the taper/slit region (the
+  grip is at the mouth ring) without bottoming out.
 
 ## Spring-finger FEA fit study (CalculiX) — which bore is best
 

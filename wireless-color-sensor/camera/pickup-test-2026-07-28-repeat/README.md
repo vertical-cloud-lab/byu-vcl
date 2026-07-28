@@ -59,5 +59,26 @@ Coordinates reused from 2026-07-28: crown/socket axis **X = 171**, **Y = 227**
   housing cleanly at this ~9 mm engagement.
 - The robot was left holding the gripped housing at (171, 227, 90.5) pending
   direction on whether to eject, reseat (base back in slot 8), or park/home.
+
+## Press-depth correction (2026-07-28, @timothy-commins)
+
+Tim's feedback after these runs: **"you are pushing down too much."** The
+Z = 90.5 "full press" (~9 mm engagement) used here and on 2026-07-28 — and
+carried between sessions as the verified-safe floor — is **too deep** and must
+not be reused. The bore tapers at 1.589° half-angle, so once the nozzle wedges,
+every additional commanded mm of Z converts almost entirely into downward force
+on the housing, its base, and the OT-2 Z-axis.
+
+New rule for any future camera-guided press (P300 frame, mouth Z ≈ 99.5):
+
+1. Press first to **Z = 93.5 (~6 mm engagement)** and do a lift test.
+2. Only if the lift comes up bare, step **0.5 mm deeper at a time**, with a
+   camera frame + lift test between steps.
+3. **Hard floor Z = 92.0 (~7.5 mm)** — do not go deeper without explicit human
+   approval in the PR thread. Z = 90.5 is retired.
+
+The array protocols' `tipOverlap` was likewise reduced 8.0 → 6.0 mm (8.0 was
+the full socket depth, i.e. guaranteed bottom-out before the press increment
+is even added).
 </content>
 </invoke>

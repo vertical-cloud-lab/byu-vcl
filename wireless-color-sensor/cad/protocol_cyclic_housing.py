@@ -109,7 +109,12 @@ HOUSING_LABWARE = {
         "quirks": ["touchTipDisabled"],
         "isTiprack": True,
         "tipLength": SOCKET_MOUTH_Z,
-        "tipOverlap": 8.0,      # socket engagement depth, like the arrays
+        # Intended nozzle engagement depth. Reduced from 8.0 per Tim's
+        # 2026-07-28 feedback ("you are pushing down too much"): 8.0 equals
+        # the FULL socket depth, so the press bottomed the nozzle on the
+        # bore floor and shoved the whole housing down. 6.0 mm engages the
+        # taper/slit region (grip is at the mouth ring) without bottoming.
+        "tipOverlap": 6.0,
         "isMagneticModuleCompatible": False,
         "loadName": "byu_wcs_real_housing_p20",
     },

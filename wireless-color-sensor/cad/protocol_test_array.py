@@ -86,7 +86,9 @@ TEST_ARRAY_LABWARE = {
         "quirks": ["touchTipDisabled"],
         "isTiprack": True,
         "tipLength": TIP_HEIGHT,
-        "tipOverlap": 8.0,
+        # Reduced from 8.0 (= full socket depth, which bottoms the nozzle on
+        # the bore floor) per PR #60 feedback "you are pushing down too much".
+        "tipOverlap": 6.0,
         "isMagneticModuleCompatible": False,
         "loadName": "byu_p20_fake_tip_test_array",
     },
