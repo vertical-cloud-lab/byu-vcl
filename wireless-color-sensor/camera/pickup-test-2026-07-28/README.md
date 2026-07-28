@@ -75,11 +75,12 @@ protocol coordinates portable again.
 
 - ~~Repeat the press with >9 mm engagement to find the depth where the bore
   reaches the ejector sleeve and ejection starts to fail.~~ **Retracted** —
-  Tim's 2026-07-28 feedback: 9 mm is already *too deep* ("you are pushing
-  down too much"). The next test should search **shallower** instead: find the
-  *minimum* engagement that still grips (start ~6 mm / Z = 93.5, step 0.5 mm
-  deeper only on a bare lift, hard floor Z = 92). See the press-depth
-  correction in `../pickup-test-2026-07-28-repeat/README.md`.
+  after a later session pressed to ~11.5 mm, Tim's feedback was "you are
+  pushing down too much". The next test should search **shallower** instead:
+  find the *minimum* engagement that still grips (measure the mouth Z fresh,
+  press to mouth − 7 mm, step 0.5–1 mm deeper only on a bare lift, hard floor
+  mouth − 9 mm). See the press-depth correction in
+  `../pickup-test-2026-07-28-repeat/README.md`.
 - Calibrate the P300 pipette offset, then re-express these coordinates.
 - The pickup was of the housing Tim loaded in slot 8 (lightweight holder +
   white swap-in tip). Weigh the assembled unit to update the FEA hold margin.

@@ -62,22 +62,30 @@ Coordinates reused from 2026-07-28: crown/socket axis **X = 171**, **Y = 227**
 
 ## Press-depth correction (2026-07-28, @timothy-commins)
 
-Tim's feedback after these runs: **"you are pushing down too much."** The
-Z = 90.5 "full press" (~9 mm engagement) used here and on 2026-07-28 — and
-carried between sessions as the verified-safe floor — is **too deep** and must
-not be reused. The bore tapers at 1.589° half-angle, so once the nozzle wedges,
-every additional commanded mm of Z converts almost entirely into downward force
-on the housing, its base, and the OT-2 Z-axis.
+Tim's live feedback across today's sessions bounds the press from both sides:
+first **"you need to pick it up much more"** (the 19:42 session's nozzle was
+hanging in mid-air at a stale Z, never touching the crown), then — after the
+takeover session pressed to z = 86, **~11.5 mm engagement** (see
+`../pickup-test-2026-07-28-deep-press/`) — **"you are pushing down too
+much."** The bore tapers at 1.589° half-angle, so once the nozzle wedges,
+every additional commanded mm of Z converts almost entirely into downward
+force on the housing, its base, and the OT-2 Z-axis.
 
-New rule for any future camera-guided press (P300 frame, mouth Z ≈ 99.5):
+Because the P300 has no stored offset calibration, **absolute Z values do not
+survive between sessions** (the mouth measured ≈ 99.5 this morning and ≈ 97.5
+after the next home — a 2 mm shift). The rule must be engagement-relative:
 
-1. Press first to **Z = 93.5 (~6 mm engagement)** and do a lift test.
-2. Only if the lift comes up bare, step **0.5 mm deeper at a time**, with a
+1. **Measure the mouth Z fresh each session** (camera-step the descent until
+   the tip meets the crown; never reuse a prior session's absolute Z).
+2. First press to **mouth − 7 mm** and do a lift test.
+3. Only if the lift comes up bare, step **0.5–1 mm deeper at a time**, with a
    camera frame + lift test between steps.
-3. **Hard floor Z = 92.0 (~7.5 mm)** — do not go deeper without explicit human
-   approval in the PR thread. Z = 90.5 is retired.
+4. **Hard floor: mouth − 9 mm** (the depth that gripped this morning) — do
+   not go deeper without explicit human approval in the PR thread. The
+   ~11.5 mm deep press is retired as a target; treat it only as an upper
+   bound showing ejection still works there.
 
-The array protocols' `tipOverlap` was likewise reduced 8.0 → 6.0 mm (8.0 was
+The OT-2 protocols' `tipOverlap` was likewise reduced 8.0 → 6.0 mm (8.0 was
 the full socket depth, i.e. guaranteed bottom-out before the press increment
 is even added).
 </content>

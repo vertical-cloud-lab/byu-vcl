@@ -49,6 +49,14 @@ Notably, **ejection still works at ~11.5 mm engagement** (deeper than the
 9 mm previously thought to be near the safe limit), so the deeper press both
 grips reliably and remains robot-releasable.
 
+> **Correction (2026-07-28, @timothy-commins): "you are pushing down too
+> much."** Do **not** reuse z = 86 / ~11.5 mm as a press target — it is an
+> upper bound only (proves ejection still works that deep). Future presses
+> follow the engagement-relative rule in
+> `../pickup-test-2026-07-28-repeat/README.md`: measure the mouth Z fresh,
+> press to mouth − 7 mm first, lift-test, and never exceed mouth − 9 mm
+> without human approval.
+
 ## Frames
 
 1. `00_stalled_session_nozzle_never_inserted.jpg` — the state Tim saw: nozzle
