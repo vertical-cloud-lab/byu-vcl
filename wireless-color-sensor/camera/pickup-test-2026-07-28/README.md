@@ -79,3 +79,26 @@ protocol coordinates portable again.
 - Calibrate the P300 pipette offset, then re-express these coordinates.
 - The pickup was of the housing Tim loaded in slot 8 (lightweight holder +
   white swap-in tip). Weigh the assembled unit to update the FEA hold margin.
+
+## Addendum — a second, concurrent session (19:20–20:10 UTC)
+
+Tim's "try again" comment launched a second agent session while the first
+(19:05) job was still alive and mid-test — both drove the robot at the same
+time, each interpreting the other's motions as a human in the lab. Two
+lessons and one useful datapoint came out of it:
+
+- **Off-center presses don't grip.** The second session pressed at the stale
+  Y = 233 (6 mm behind the calibrated Y = 227 crown axis): three presses 9,
+  14 and 18 mm past mouth height at 5–10 mm/s all lifted bare, and from the
+  camera's blind (depth) axis each descent *looked* like a clean entry
+  (`13_addendum_stale_y233_press_sequence.png`,
+  `14_addendum_stale_y233_deep_press_bare_lift.png`). Together with the main
+  test this brackets the press-fit's lateral tolerance: centered ⇒ grips,
+  6 mm off ⇒ misses the bore entirely while looking plausible on camera.
+  Always verify Y by occlusion/parallax before trusting an "insertion".
+- **Only one maintenance run can exist robot-wide.** Each session silently
+  deleted the other's run (`RunNotFound` mid-sequence); a stalled/obstructed
+  `moveToCoordinates` still reports `succeeded` and corrupts the Z reference
+  until the next home. Treat "no image change after a commanded move" as a
+  stall-or-stolen-run signal, and never start a second robot session while a
+  previous agent job may still be running.
