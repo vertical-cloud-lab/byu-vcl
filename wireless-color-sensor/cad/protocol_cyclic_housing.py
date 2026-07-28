@@ -57,14 +57,19 @@ PAUSE_EVERY = 50
 # Lateral transport during each cycle (mm). Loads the press-fit joint
 # sideways like a real move; 0 for a pure axial insert/remove test.
 TRANSPORT_DX = 40.0
-# Lift above the socket mouth during transport (mm). Kept modest because the
-# gantry carries the full 90.5 mm housing below the nozzle.
-TRANSPORT_DZ = 20.0
+# Lift above the socket mouth during transport (mm). Raised 20 -> 40 per
+# Tim's 2026-07-28 instruction to lift the housing at least 20 mm higher;
+# the 2026-07-28 live-driven cycle carried the housing at this extra height
+# with no detach (10 mm/s, segmented moves).
+TRANSPORT_DZ = 40.0
 
-# Release height of the housing's FOOT above the deck at drop, in mm. Low
-# release (the drop-off fix from PR #60) so the housing barely falls and
-# lands back on its footprint instead of toppling.
-DROP_RELEASE_Z = 2.0
+# Release height of the housing's FOOT above the deck at drop, in mm.
+# Raised 2 -> 12 per Tim's 2026-07-28 instruction to drop from 10 mm higher.
+# Live-verified 2026-07-28: ejecting with the foot ~10 mm up dropped the
+# housing into its base pocket and it seated upright (the base's registration
+# pocket guides the fall). Requires >= 7 mm nozzle engagement at pickup so the
+# ejector can push the socket off mid-air (see tipOverlap below).
+DROP_RELEASE_Z = 12.0
 # --------------------------------------------------------------------------
 
 metadata = {
@@ -109,12 +114,14 @@ HOUSING_LABWARE = {
         "quirks": ["touchTipDisabled"],
         "isTiprack": True,
         "tipLength": SOCKET_MOUTH_Z,
-        # Intended nozzle engagement depth. Reduced from 8.0 per Tim's
-        # 2026-07-28 feedback ("you are pushing down too much"): 8.0 equals
-        # the FULL socket depth, so the press bottomed the nozzle on the
-        # bore floor and shoved the whole housing down. 6.0 mm engages the
-        # taper/slit region (grip is at the mouth ring) without bottoming.
-        "tipOverlap": 6.0,
+        # Intended nozzle engagement depth. 8.0 (the full socket depth)
+        # bottomed the nozzle on the bore floor and shoved the housing down
+        # (Tim: "you are pushing down too much"). 6.0 gripped, but the
+        # 2026-07-28 live sessions found dropTipInPlace FAILS at 6 mm
+        # engagement and succeeds at 7 mm — and the raised DROP_RELEASE_Z
+        # ejects mid-air at exactly this hang engagement, so 7.0 is the
+        # minimum that both grips for the carry and ejects for the drop.
+        "tipOverlap": 7.0,
         "isMagneticModuleCompatible": False,
         "loadName": "byu_wcs_real_housing_p20",
     },
