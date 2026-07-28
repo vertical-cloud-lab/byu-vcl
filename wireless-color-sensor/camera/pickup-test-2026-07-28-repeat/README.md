@@ -32,6 +32,10 @@ Coordinates reused from 2026-07-28: crown/socket axis **X = 171**, **Y = 227**
   motion was stopped at that point: the housing was left gripped and the robot
   held position rather than ejecting the part onto a bare deck or moving while
   someone was reaching in.
+- The person then **pulled the housing off the nozzle by hand and reset the
+  whole assembly back into slot 8**. With the nozzle confirmed bare and the
+  deck restored, the gantry was homed and the maintenance run deleted, leaving
+  the robot in a clean parked state (`09_final_homed_deck_restored.jpg`).
 
 ## Frames
 
@@ -43,6 +47,7 @@ Coordinates reused from 2026-07-28: crown/socket axis **X = 171**, **Y = 227**
 6. `06_lift_gripped_z150.jpg` — lift: enclosure rides the nozzle, off its base.
 7. `07_sideways_carry_x205_hanging.jpg` — enclosure carried +34 mm, hanging.
 8. `08_base_removed_by_hand_paused.jpg` — hand removed the base; motion stopped.
+9. `09_final_homed_deck_restored.jpg` — bare nozzle homed, housing back in slot 8.
 
 ## Notes / follow-ups
 
