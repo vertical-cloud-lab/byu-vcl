@@ -430,7 +430,7 @@ Follow-up request: 24" lay-flat width but shorter than the ubiquitous 36" length
 |---|---|---|---|---|
 | Poly Bag Central 24×36" | 24×36", 4 mil | **$279.57** | [polybagcentral.com](https://polybagcentral.com/product/4-mil-black-conductive-bags-24-x-36/) | Cheapest 24"-wide case; site was unreachable during re-check (verified HTTP-200 earlier same day) — confirm before ordering |
 | PackagingSupplies.com 24×36" | 24×36", 4 mil | **$310.90** | [packagingsupplies.com](https://www.packagingsupplies.com/collections/black-conductive-poly-bags) | Live-verified; carbon-loaded black PE |
-| Interplas 24×36" | 24×36", 4 mil | **$341.50** | [interplas.com](https://www.interplas.com/anti-static/conductive-bag/24-x-36-p-spc2436) | Live-verified; MIL-P-82646 |
+| ~~Interplas 24×36"~~ | 24×36", 4 mil | ~~$341.50~~ | [interplas.com](https://www.interplas.com/anti-static/conductive-bag/24-x-36-p-spc2436) | **Discontinued** — page now states "This product has been discontinued" (re-checked 2026-07-29; see §10.9) |
 | PlasticPolyBags.com 24×30" | 24×30", 4 mil | Out of stock ($0.00 shown) | [plasticpolybags.com](https://www.plasticpolybags.com/24-x-30-4-mil-conductive-black-poly-tubing/) | Only sub-36" 24"-wide SKU found; call for restock/lead time |
 | Custom 24×24" run | 24×24", 4 mil | Quote | RKS (info@rksplastics.com) · Correct Products (800-870-1199) · Armand (702-565-7500) · [Poly Pak RFQ](https://www.polypakplastics.com/rfq) | Case-quantity custom runs often price near stock; all four advertise custom sizes |
 | ~~24"×750' tubing roll~~ | Cut-to-length (375 × 24" liners) | $990.31/roll ([Poly Bag Central](https://polybagcentral.com/product/4-mil-black-conductive-tubing-24-x-750/)); $1,465.17 ([Correct Products](https://www.correctproducts.com/esd-packaging-shipping/esd-tubing-sheeting/black-conductive-film-tubing)) | — | Cheapest per-liner (~$2.64) but over budget as one order, and each liner's bottom must be sealed manually |
@@ -473,6 +473,39 @@ Follow-up request: 24" lay-flat width but shorter than the ubiquitous 36" length
 4. **Larger sizes exist in the same series** if more overhang is ever wanted: WBAS 22-gal and 44-gal (WBAS44-LB, ~$560/100 at StaticTek pricing tiers) — but the 24×24" matches the factory liner and is the cheapest.
 
 **Recommendation:** order one 100-pack of **WBAS-LB from StaticTek ($205.24)** — or via Zoro (G7259324) if the existing Zoro account makes procurement easier. This supersedes the §10.7 conclusion that no stock 24×24" exists and the §10.6/§10.7 custom-run and trim-a-24×36" workarounds.
+
+### 10.9 24×36" 4-mil black conductive 100-packs under $383 — stock-verified re-check (2026-07-29)
+
+Follow-up request: re-verify the 24×36" candidates from §10.7 with explicit confirmation that each item is neither discontinued nor out of stock before recommending.
+
+**Status changes since §10.7 (2026-07-08):**
+
+- **Interplas SPC2436 is now DISCONTINUED** — the product page explicitly states "This product has been discontinued" (checked 2026-07-29). Removed from the candidate list; §10.7 entry struck through.
+- **stockpkg.com listing is dead** (HTTP 404).
+- New candidate found: **Staples** carries the same LADDAWN item **#6590** as Poly Bag Central, at a lower price.
+
+**Verified options under $383 (all checked 2026-07-29), best-first:**
+
+| Rank | Supplier | Price (case of 100) | Stock verification | Link |
+|---|---|---|---|---|
+| 1 ⭐ | **PackagingSupplies.com** — SKU L9BC24364 | **$310.90** | **Strongest verification:** page HTTP-200, and the product's storefront data explicitly shows `available: true` with a live add-to-cart for this exact variant | [packagingsupplies.com](https://www.packagingsupplies.com/products/24-x-36-4-mil-black-conductive-poly-bags) |
+| 2 | **Staples** — item #6590 (LADDAWN) | **$276.15** | Cheapest; listing live in search results 2026-07-29, but Staples' bot-wall blocked an automated stock check — **confirm in a normal browser before ordering** (30 s check). Same manufacturer item is actively distributed by ≥ 3 resellers, so the SKU itself is not discontinued | [staples.com](https://www.staples.com/24-x-36-conductive-layflat-poly-bags-4-mil-black-100-carton-6590/product_361419) |
+| 3 | **Poly Bag Central** — item 6590 | **$279.57** | Page loaded once (add-to-cart present, no explicit stock statement) but the site **timed out on two of three checks** — chronically flaky (same behavior 2026-07-08). Use only if 1–2 fall through | [polybagcentral.com](https://polybagcentral.com/product/4-mil-black-conductive-bags-24-x-36/) |
+
+**Checked and rejected:**
+
+| Supplier | Reason |
+|---|---|
+| Interplas SPC2436 ($341.50) | **Discontinued** (explicit on page) |
+| Correct Products CP14-2436 | $4.48/bag → ~$448/100 — over the $383 ceiling; no stock status shown |
+| Packaging Friends | No 24×36" SKU — their 4-mil conductive line stops at 20×30" (despite marketing copy mentioning 24×36") |
+| Plastic Bag Partners | Collection page returns no products |
+| stockpkg.com | Listing dead (HTTP 404) |
+| Danco, Hillas, Walmart marketplace | Bot-blocked — stock unverifiable by automated check; all resell the same LADDAWN 6590 item |
+
+**Spec note:** both the PackagingSupplies bag ("4 mil black carbon polyethylene") and the LADDAWN 6590 ("carbon-impregnated LDPE, MIL-P-82646 Rev. A") meet the §10.4 spec gate (conductive/carbon-loaded, black PE). The §10.7 fit caveat still applies — a 24" lay-flat opens to only ~15.3" diameter, so it lines the bin interior like the 24×24" factory liner rather than folding over the rim.
+
+**Recommendation:** order the **PackagingSupplies.com case ($310.90)** — it is the only candidate whose in-stock status could be positively verified today. If someone can spend 30 seconds confirming stock in a browser, **Staples at $276.15** is the same physical product for $35 less and the easiest return path.
 
 ---
 
