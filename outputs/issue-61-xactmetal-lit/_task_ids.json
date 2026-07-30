@@ -1,0 +1,10 @@
+{
+  "lit": {
+    "task_id": "d1b6e4d9-938d-41f3-968d-317221a564fa",
+    "query": "Find examples of peer-reviewed academic literature (journal articles, conference papers, theses) in which an Xact Metal laser powder bed fusion (LPBF) metal 3D printer was used to fabricate or study parts. Xact Metal models include the XM200C, XM200G, XM200S, and XM300 series. For each example found, report: the citation, the Xact Metal model used, the material(s) printed (e.g., 316L, 17-4PH, AlSi10Mg, Inconel 718, bronze, copper), the process parameters reported (laser power, scan speed, hatch spacing, layer thickness, hatch rotation angle), and what the study concluded about the machine's capabilities or limitations. Also note any papers describing use of Xact Metal machines in university teaching/education or with open/custom process parameters."
+  },
+  "analysis": {
+    "task_id": "ac4520f4-7a6f-4576-950f-5095e9dcd88c",
+    "query": "Search the academic literature and the web for research groups and universities that operate Xact Metal laser powder bed fusion printers (XM200C, XM200G, XM200S, XM300). Compile a table of: institution, machine model, application area (e.g., alloy development, process parameter studies, education), representative publications (with DOI where possible), and whether they report modifying process parameters (laser power, scan speed, hatch spacing, hatch rotation) beyond factory presets. Additionally, assess how the Xact Metal machines compare to other compact/entry-level LPBF systems used in academia (e.g., Aconity MIDI/MINI, SLM 125, EOS M 100, Coherent/OR Laser Creator, 2OneLab, TruPrint 1000) in terms of published research output and suitability for materials-development research."
+  }
+}
