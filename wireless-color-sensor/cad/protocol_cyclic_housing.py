@@ -70,6 +70,16 @@ TRANSPORT_DZ = 40.0
 # pocket guides the fall). Requires >= 7 mm nozzle engagement at pickup so the
 # ejector can push the socket off mid-air (see tipOverlap below).
 DROP_RELEASE_Z = 12.0
+
+# Lateral offset applied to the DROP location only, in mm. The loaded module
+# does not hang plumb -- its socket axis is offset from the body's centre of
+# mass, so it leans once it is off the base, and at the nominal drop x its
+# foot catches the base rim instead of entering the pocket (@timothy-commins,
+# 2026-07-31). Live-verified 2026-07-31: releasing 5 mm lower in x dropped the
+# fully loaded module back into its pocket, matching its pre-run seated
+# position to ~1 px in the overhead camera (see
+# ../camera/pickup-test-2026-07-31-drop-xminus5/).
+DROP_DX = -5.0
 # --------------------------------------------------------------------------
 
 metadata = {
@@ -169,8 +179,11 @@ def run(protocol):
                 well.top(z=TRANSPORT_DZ).move(point(TRANSPORT_DX, 0, 0))
             )
             pipette.move_to(well.top(z=TRANSPORT_DZ))
-        # release low so the housing settles back onto its footprint
-        pipette.drop_tip(well.bottom(z=DROP_RELEASE_Z))
+        # release low, and offset in x, so the leaning housing clears the base
+        # rim and settles back into its pocket (see DROP_DX)
+        pipette.drop_tip(
+            well.bottom(z=DROP_RELEASE_Z).move(point(DROP_DX, 0, 0))
+        )
 
         if COMMENT_EVERY and cycle % COMMENT_EVERY == 0:
             protocol.comment(f"  housing: {cycle}/{NUM_CYCLES} cycles done")
