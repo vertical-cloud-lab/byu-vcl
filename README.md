@@ -5,3 +5,4 @@ Vertical Cloud Lab @ BYU
 - [Precedents for enterprise/academic interactions](enterprise-academic-precedents.md)
 - [BYU rules on VC money and founder involvement](byu-vc-founder-rules.md)
 - [BYU faculty-founder precedents and contacts](byu-founder-contacts.md)
+- [BYU TTO technology catalog and process documents](byu-tto-technology-catalog.md)
