@@ -63,10 +63,37 @@ required.
 | `PRIVACY_STATUS` | `public` | |
 | `RESOLUTION` | `720p` | 1280×720 |
 | `FRAME_RATE` | `10` | |
-| `CAMERA_ROTATION` | `0` | landscape; revisit once the camera is on its final mount |
-| `CAMERA_VFLIP` / `CAMERA_HFLIP` | `False` / `False` | ditto |
+| `CAMERA_ROTATION` | `0` | rotation is done at the sensor instead — see [Orientation](#orientation) |
+| `CAMERA_VFLIP` / `CAMERA_HFLIP` | `True` / `True` | the camera is mounted inverted; together these are a 180° rotation |
 | `SENSOR_MODE` | `2304:1296` | imx708 otherwise auto-selects its cropped 1536×864 mode for ≤720p output and loses ~1/3 of the field of view |
 | `TIMESTAMP_OVERLAY` | `True` | also forces the libx264 path, which is what applies the 2 s keyframe interval |
+
+## Orientation
+
+The camera is mounted inverted, so the first broadcasts came out upside down.
+There are two ways to correct that, and they are **not** equivalent in cost:
+
+| | How | Cost |
+|---|---|---|
+| `CAMERA_VFLIP = True` + `CAMERA_HFLIP = True` | `rpicam-vid --vflip --hflip` — flipped during sensor readout, before encoding | free |
+| `CAMERA_ROTATION = 180` | appends an `hflip,vflip` filter to the ffmpeg chain in `device.py` | per-frame CPU on a Zero 2 W where ffmpeg already sits at ~130% of 400% |
+
+Use the sensor flips. `CAMERA_ROTATION` stays `0`. (`CAMERA_ROTATION` is still the
+right knob for 90°/270°, which the sensor cannot do.) The timestamp overlay is
+drawn after either transform, so it stays upright regardless.
+
+![OT-2 camera orientation, before and after the flip](images/ot2-stream-cam-orientation.jpg)
+
+Both frames are `rpicam-jpeg` stills at the same settings, taken minutes apart
+with the lab lights off and brightened for legibility. Verify the flip is
+actually live with:
+
+```bash
+tr '\0' ' ' < /proc/$(pgrep -f rpicam-vid)/cmdline    # expect --vflip --hflip
+```
+
+If the mount changes, re-check this — a mount that rotates the camera 90° needs
+`CAMERA_ROTATION`, not flips.
 
 ## Automatic startup and restart
 
@@ -160,17 +187,34 @@ they saturate the uplink and cause the very stalls being monitored for.
 ## First verified frame
 
 Grabbed from the live YouTube stream shortly after the first broadcast started
-(2026-07-31 00:05 MDT — the lab lights were off, and the camera was not yet on
-its final mount):
+(2026-07-31 00:05 MDT — the lab lights were off, and this predates the
+orientation fix above, so it is upside down):
 
 ![First frame off the live OT-2 stream](images/ot2-stream-cam-first-frame.jpg)
+
+## Changing the configuration
+
+Editing `my_secrets.py` takes effect on the next start of `device.service`, and
+every start runs Lambda `end` → `create`. So a config change **ends the current
+broadcast and produces a new video ID** — the previous one becomes a VOD. That is
+the intended chunking behaviour, not a fault, but any link you have shared goes
+stale. The current URL is always in the journal:
+
+```bash
+journalctl -u device.service --since -10min | grep -o 'watch?v=[A-Za-z0-9_-]*' | tail -1
+```
+
+Stop `stream-watchdog.timer` before any deliberate downtime longer than ~3 min
+(three stalled checks), and start it again afterwards. Do not leave a copy of
+`my_secrets.py` behind when editing — `cp` does not preserve the `600` mode.
 
 ## Known transient
 
 On `create`, YouTube occasionally returns `HttpError 409 SERVICE_UNAVAILABLE`
 when adding the fresh broadcast to its playlist (seen on this cam's first
-broadcast). The broadcast is created and streams fine; only the playlist-add
-fails. The retry belongs in the Lambda
+broadcast; the two subsequent `create` calls both returned
+`playlist_add_status: added`). The broadcast is created and streams fine; only
+the playlist-add fails, and a restart clears it. The retry belongs in the Lambda
 (`chalicelib/ytb_api_utils.py`), not on the Pi.
 
 ## Related
