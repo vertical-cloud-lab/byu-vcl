@@ -1,0 +1,27 @@
+# TipRack20uL (deck.labware.tip_rack.TipRack) — 20 uL variant of the Ursa
+# 2-column x 15-row Cub-XL tip rack, with straight 5.0 mm bores.
+#
+# Geometry, deck keys and the 8.5 mm grid are identical to `ursa_tip_rack`, so
+# `calibration`, `x_offset` and `y_offset` carry over unchanged.
+#
+# !! pickup_z / drop_z below are the UPSTREAM 300 uL values and are WRONG for
+# !! this rack: a 20 uL tip seats on the top face instead of partway down a
+# !! 16 mm taper, so it sits higher. Measure both against the actual tips and
+# !! pipette before running any hardware protocol. Same for tip_length, which
+# !! CubOS uses for collision safety.
+
+type: tip_rack
+name: byu_vcl_tip_rack_20ul
+model_name: panda_2x15_tip_rack_20ul
+rows: 15
+columns: 2
+length: 66.0
+width: 138.0
+height: 22.0
+pickup_z: 191.0   # PLACEHOLDER — inherited from ursa_tip_rack, must be measured
+drop_z: 174.8     # PLACEHOLDER — inherited from ursa_tip_rack, must be measured
+calibration:
+  a1: { x: 111.9, y: 2.7 }
+  a2: { x: 120.4, y: 2.7 }   # same y as a1 -> next column (a1.x + x_offset)
+x_offset: 8.5
+y_offset: 8.5
