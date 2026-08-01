@@ -54,9 +54,13 @@ instruments:
     # straight to the gantry -- outside working_volume (x_min = y_min = 0.0)
     # and, with grbl_settings.soft_limits: true, an immediate alarm. Neither
     # validate_setup nor run_protocol models capper motion, so this is not
-    # caught offline. [10.0, 10.0] keeps the same front-left corner intent
-    # while staying in bounds; retune to wherever the cap-staging area
-    # actually is.
+    # caught offline -- InstrumentedGantry.move only checks that the target
+    # is finite, so (-10, -10) goes straight to GRBL. [-10.0, -10.0] is not
+    # a measured value either: it is CAPPER_PARK_POSITION, the placeholder
+    # default in cubos/tools/panda_bear_import/constants.py that every
+    # imported capper config starts with. [10.0, 10.0] keeps the same
+    # front-left corner intent while staying in bounds; retune to wherever
+    # the cap-staging area actually is.
     park_position:
     - 10.0
     - 10.0
