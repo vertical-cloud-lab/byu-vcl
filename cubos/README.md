@@ -29,6 +29,20 @@ parked, and re-homed: 12 steps, started 20:51:19 UTC, completed 20:53:43 UTC.
 CSV exports for that campaign are in `results/campaign_2_20260727_205119/`
 (motion-only protocol, so the experiment/measurement tables are empty).
 
+## Capper/decapper test protocol (not yet run on hardware)
+
+`configs/protocol/vcl/capper_decapper_test.yaml` walks vial_1 → vial_6 doing
+decap → pipette insertion → cap on each, against
+`configs/gantry/cub_xl_ben_pipette_capper.yaml` +
+`configs/deck/sterling_deck.yaml` (both as attached to
+[PR #171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171), the gantry
+file with two documented safety edits). It passes `validate_setup` and a
+`run_protocol --mock` dry run for vials 2–6; **vial_1 currently fails bounds
+validation** because the pipette's `offset_y: 20.0` puts the required gantry Y
+at −15.0. See the protocol file's header for the fix options. Do not run on
+hardware until vial_1 is resolved and the capper's `park_position` is
+confirmed against the physical cap-staging area.
+
 ## Notes
 
 - The gantry enumerates as `/dev/ttyUSB0` on the Pi; the original config's

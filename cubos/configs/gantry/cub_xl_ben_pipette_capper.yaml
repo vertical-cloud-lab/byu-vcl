@@ -1,0 +1,75 @@
+# CubXL with an Opentrons P20 pipette + a Pawduino vial capper/decapper.
+#
+# As attached to PR #171 on 2026-07-31, with two safety edits (both marked
+# CHANGED below) needed to make protocol/vcl/capper_decapper_test.yaml pass
+# `cubos.tools.validate_setup` and run without a soft-limit alarm. Nothing
+# else was touched -- offsets, working volume, and GRBL settings are the
+# measured values from the attached file.
+
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 129.0
+  y_axis_motion: head
+  # CHANGED from 85.0. The pipette is mounted offset_x = +135.0, so at the
+  # homed corner its tip sits at deck X 515 -- inside CubOS's built-in
+  # "Cub XL right X-max rail" structure (X[480, 540] Y[0, 300] Z[0, 100]).
+  # Transiting there at Z 85 is a modeled collision, and `move` rejects any
+  # travel_z above safe_z, so no protocol can route the pipette over the rail
+  # while safe_z is 85. 105.0 clears the rail's Z 100 top and is still below
+  # working_volume.z_max = 111.0.
+  safe_z: 105.0
+  calibration_block_height_mm: 33.0
+working_volume:
+  x_min: 0.0
+  x_max: 380.0
+  y_min: 0.0
+  y_max: 235.0
+  z_min: 0.0
+  z_max: 111.0
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  homing_enable: true
+  homing_dir_mask: 0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 383.0
+  max_travel_y: 238.0
+  max_travel_z: 114.0
+  soft_limits: true
+  homing_pull_off: 3.0
+instruments:
+  vial_capper_decapper:
+    capture_retries: 2
+    capture_settle_s: 1.0
+    depth: -25.0
+    engage_depth_mm: -15.0
+    offline: true
+    offset_x: 0.0
+    offset_y: 0.0
+    # CHANGED from [-10.0, -10.0]. `decap`/`cap` park here after *every*
+    # operation, and the capper has zero XY offset, so -10 is commanded
+    # straight to the gantry -- outside working_volume (x_min = y_min = 0.0)
+    # and, with grbl_settings.soft_limits: true, an immediate alarm. Neither
+    # validate_setup nor run_protocol models capper motion, so this is not
+    # caught offline. [10.0, 10.0] keeps the same front-left corner intent
+    # while staying in bounds; retune to wherever the cap-staging area
+    # actually is.
+    park_position:
+    - 10.0
+    - 10.0
+    port: ''
+    type: capper
+    vendor: pawduino
+  pipette:
+    type: pipette
+    vendor: opentrons
+    pipette_model: p20_single_gen2
+    port: ''
+    baud_rate: 115200
+    offline: true
+    offset_x: 135.0
+    offset_y: 20.0
+    depth: 0.0
