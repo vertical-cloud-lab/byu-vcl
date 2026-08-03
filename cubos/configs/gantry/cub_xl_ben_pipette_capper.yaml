@@ -86,10 +86,26 @@ instruments:
     # depth can never be right for it -- -15.0 is CAPPER_ENGAGE_DEPTH_MM, the
     # never-measured placeholder in tools/panda_bear_import/constants.py.
     #
-    # If capture still fails, lower this in 2 mm steps (28 -> 26 -> 24); the
-    # failure is fail-closed (tool retracts, protocol aborts) so a too-high
-    # engage costs nothing, while a too-low one drives the head into the caps.
-    engage_depth_mm: 28.0
+    # MEASURED 2026-08-03 with cubos/tools/probe_cap_plane.py: stepping the
+    # head down over vial_2 at 1 mm with the magnet off, the head's own
+    # line-break sensor flipped to cap_present=True at gantry Z 48.0, i.e.
+    # capper deck Z 73.0. That is the plane at which the cap is seated in the
+    # head, so it is the engage plane regardless of what `depth` really is:
+    #
+    #   engage_depth_mm = 73.0 - 57.0 = 16.0   (beam-break plane)
+    #   15.0                                    (1 mm of seating margin)
+    #
+    # 28.0 was derived from Ben's 85 mm vial-top measurement assuming the
+    # capper socket face sits exactly at the modeled tool point. It does not:
+    # the sensor puts the seated cap 12 mm below where `depth: -25.0` says the
+    # tool point is, so the modeled point is ~12 mm low. `engage_depth_mm`
+    # absorbs that, which is why `depth` is left alone. A run at 28.0 (gantry
+    # Z 60) failed capture -- the head stopped 12 mm short of the cap.
+    #
+    # If capture fails, lower in 1 mm steps (15 -> 14 -> 13). The failure is
+    # fail-closed (tool retracts, protocol aborts) so a too-high engage costs
+    # nothing, while a too-low one presses the head into the caps.
+    engage_depth_mm: 15.0
     # CHANGED from true. `offline: true` stubs out the whole capper: in
     # instruments/capper/vendors/pawduino.py, capture_cap()/release_cap()
     # become no-ops that just flip an in-memory flag, and read_cap_present()

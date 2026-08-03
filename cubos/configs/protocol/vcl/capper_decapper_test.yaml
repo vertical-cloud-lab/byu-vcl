@@ -2,11 +2,12 @@
 #
 # For each vial:
 #   1. decap   - the capper approaches at safe_z, engages at engage_depth_mm
-#                (deck-frame Z 57.0 + 28.0 = 85.0, the measured cap top),
+#                (deck-frame Z 57.0 + 15.0 = 72.0, the sensor-measured
+#                cap-seat plane -- see probe_cap_plane.py),
 #                captures the cap, retracts to safe_z, and parks
 #   2. insert  - the pipette descends into the now-open vial to Z 60.0, i.e.
 #                25 mm below the measured vial top (deck-frame Z 85.0)
-#   3. retract - the pipette lifts back to the Z 105.0 transit plane
+#   3. retract - the pipette lifts back to the Z 111.0 transit plane
 #   4. cap     - the capper replaces the cap, retracts, and parks
 #
 # Config trio:
