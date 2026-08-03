@@ -108,6 +108,8 @@ sudo systemctl enable --now cubos
 
 ## Notes
 
+- **Local CubOS patches** — `~/CubOS` on the Pi carries local fixes that are not upstream. They're recorded in [`cubos/patches/`](../cubos/patches/) with the reason for each; `cd ~/CubOS && git diff --stat` shows what's currently applied. As of 2026-08-03 that's one patch, needed before the Pawduino capper can connect at all.
+- **Two serial devices** — on this Pi the GRBL controller is `/dev/ttyUSB0` (`1a86:7523` CH340) and the capper Arduino is `/dev/ttyACM0` (`2341:0043` Uno R3). Confirm with `lsusb` before trusting a config, since the numbering can move.
 - **One serial connection at a time** — if UGS, a calibration script, or anything else on the Pi holds the serial port, the API can't. If the server "fails to even connect to the gantry", check nothing else has the port open (and reseat any loose motor/limit-switch connectors).
 - **Tunnel vs. LAN exposure**: SSH tunneling is the recommended default. To make the UI reachable by multiple lab machines without tunnels, set `CUBOS_HOST=0.0.0.0`, add the Pi's hostname/IP to `CUBOS_TRUSTED_HOSTS`, and set a `CUBOS_API_TOKEN` — but skip that until there's a real need.
 - **Sharing the OT-2's RPi 5** (per the [#154](https://github.com/vertical-cloud-lab/byu-vcl/issues/154) plan) is fine — CubOS is just a Python venv + one port, so it coexists with the OT-2 tooling as long as port 8742 is free.
