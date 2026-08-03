@@ -66,19 +66,19 @@
 #     re-validate and re-check the insert plane if you do.
 
 positions:
-  park_position: [170.0, 170.0, 105.0]
+  park_position: [170.0, 170.0, 111.0]
   vial_2_insert: [162.0, 39.0, 47.0]
-  vial_2_retract: [162.0, 39.0, 105.0]
+  vial_2_retract: [162.0, 39.0, 111.0]
   vial_3_insert: [162.0, 73.0, 47.0]
-  vial_3_retract: [162.0, 73.0, 105.0]
+  vial_3_retract: [162.0, 73.0, 111.0]
   vial_4_insert: [162.0, 103.0, 47.0]
-  vial_4_retract: [162.0, 103.0, 105.0]
+  vial_4_retract: [162.0, 103.0, 111.0]
   vial_5_insert: [162.0, 134.0, 47.0]
-  vial_5_retract: [162.0, 134.0, 105.0]
+  vial_5_retract: [162.0, 134.0, 111.0]
   vial_6_insert: [162.0, 165.0, 47.0]
-  vial_6_retract: [162.0, 165.0, 105.0]
+  vial_6_retract: [162.0, 165.0, 111.0]
   vial_7_insert: [162.0, 196.0, 47.0]
-  vial_7_retract: [162.0, 196.0, 105.0]
+  vial_7_retract: [162.0, 196.0, 111.0]
 
 protocol:
   - home:
@@ -86,7 +86,7 @@ protocol:
   - move:
       instrument: pipette
       position: park_position
-      travel_z: 105.0
+      travel_z: 111.0
 
   # --- vial 2 ---
   - decap:
@@ -96,12 +96,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_2_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_2_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
@@ -115,12 +115,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_3_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_3_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
@@ -134,12 +134,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_4_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_4_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
@@ -153,12 +153,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_5_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_5_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
@@ -172,12 +172,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_6_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_6_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
@@ -191,12 +191,12 @@ protocol:
   - move:
       instrument: pipette
       position: vial_7_insert
-      travel_z: 105.0
+      travel_z: 111.0
 
   - move:
       instrument: pipette
       position: vial_7_retract
-      travel_z: 105.0
+      travel_z: 111.0
 
   - cap:
       instrument: vial_capper_decapper
