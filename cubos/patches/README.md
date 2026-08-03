@@ -66,6 +66,61 @@ Worth sending to `Ursa-Laboratories/CubOS`. Not filed yet.
 
 ---
 
+## `cap-release-confirm-after-retract.patch`
+
+**Applied 2026-08-03.** Required for `cap` to ever succeed on this head. With it,
+`capper_decapper_test.yaml` completed all 27 steps on the CubXL.
+
+### Symptom
+
+`decap` worked, the pipette entered the open vial, and then `cap` aborted every time:
+
+```
+ERROR during execution: cap failed for 'vial_holder.vial_2':
+  CapperError: cap: sensor did not confirm cap release after 3 attempt(s)
+  (last reading: cap_present=True, expected False).
+```
+
+The cap was in fact placed back on the vial correctly. Reading the sensor by hand
+right after the abort, with the head parked at `safe_z`, returned `cap_present=False`
+— nothing was stuck to the head. The release worked; only the confirmation failed.
+
+### Cause
+
+`_run_capper_sequence()` in `packages/core/src/cubos/protocol_engine/commands/capper.py`
+confirms **at the engage plane, before retracting**, for both directions:
+
+```python
+context.gantry.move(instrument, (x, y, engage_z))  # engage
+_confirm_capture_or_release(capper, capturing=capturing, ...)
+...
+context.gantry.move(instrument, (x, y, context.gantry.safe_z))  # retract
+```
+
+For a capture that is right — the cap must be at the head. For a release it can
+never pass: the line-break sensor reports a cap anywhere in the beam, held or not,
+so the cap that was just set down is still sitting in the beam directly under the
+head. Measured with [`cubos/tools/probe_cap_plane.py`](../tools/probe_cap_plane.py) —
+descending onto a cap that was merely *resting* on a vial, magnet off, flipped the
+sensor to `True` at exactly the engage plane.
+
+This also contradicts the vendor driver's own docstring in
+`instruments/capper/vendors/pawduino.py`: *"capping de-energizes the electromagnet
+before retracting, so success is confirmed by the sensor reporting no cap present"*
+— i.e. the source protocol confirmed **after** the retract.
+
+### Fix
+
+Split the two directions: capture confirms in place as before; release calls
+`release_cap()`, retracts to `safe_z`, and only then runs the sense-and-retry loop.
+The later "retract" move is then a no-op for the release path.
+
+### Upstream
+
+Worth sending to `Ursa-Laboratories/CubOS` alongside the boot-banner fix. Not filed yet.
+
+---
+
 ## Known upstream bugs found but *not* patched
 
 Recorded here so they are not rediscovered. Both were observed in the same run.

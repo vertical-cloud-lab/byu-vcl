@@ -1,109 +1,119 @@
 # capper_decapper_test on the CubXL — 2026-08-03
 
-Three hardware attempts at `cubos/configs/protocol/vcl/capper_decapper_test.yaml`
-against the lab CubXL. The last two were aborted by the capper's capture
-interlock at `decap` of `vial_holder.vial_2`.
+Six hardware attempts at `cubos/configs/protocol/vcl/capper_decapper_test.yaml`
+against the lab CubXL. **Attempt 6 completed all 27 steps**: six vials each
+decapped, entered with the pipette, and recapped.
 
-| attempt | time (UTC) | gantry config | outcome |
+| attempt | time (UTC) | change | outcome |
 |---|---|---|---|
-| 1 | 19:29 | `safe_z: 105.0` | died at capper connect — Pawduino boot-banner bug (fixed, see `cubos/patches/`); 0 steps, no motion |
-| 2 | 19:31 | `safe_z: 105.0`, `travel_z: 105.0` | homed, parked, approached vial_2, `decap` aborted — sensor did not confirm capture. Pipette nozzle brushed the cap tops during capper transit |
-| 3 | 19:47 | `safe_z: 115.0`, `travel_z: 111.0` | transit clearance fixed; `decap` aborted identically — sensor did not confirm capture |
+| 1 | 19:29 | `safe_z: 105.0` | died at capper connect — Pawduino boot-banner bug (patched, see `cubos/patches/`); 0 steps, no motion |
+| 2 | 19:31 | `travel_z: 105.0` | homed, parked, approached vial_2, `decap` aborted — capture not confirmed. Pipette nozzle brushed the cap tops during capper transit |
+| 3 | 19:47 | `safe_z: 115.0`, `travel_z: 111.0` | transit clearance fixed; `decap` aborted identically |
+| 4 | 20:11 | `engage_depth_mm: -15.0 → +28.0` | `decap` aborted identically — the head stopped 12 mm short |
+| — | 20:15 | `probe_cap_plane.py` | **measured** the engage plane with the head's own sensor: beam broke at gantry Z 48.0 |
+| 5 | 20:18 | `engage_depth_mm: +15.0` | **`decap` succeeded**, pipette entered vial_2 and retracted, `cap` aborted — release not confirmed |
+| 6 | 20:21 | `cap-release-confirm-after-retract.patch` | **PASS — 27/27 steps, vials 2–7 decapped, entered, recapped** |
 
-`run_hardware_attempt3.log` is attempt 3's full stdout/stderr. (It is
-force-added: the repo `.gitignore` has a blanket `*.log` rule, which is why
-the attempt-2 log referenced in commit `86ebf48` never actually landed.)
+Logs: `run_hardware_attempt{4,5,6}.log`, `probe_cap_plane.log`, and attempt 3's
+`run_hardware_attempt3.log`. All force-added — the repo `.gitignore` has a
+blanket `*.log` rule. Campaign CSVs for the successful run are in
+`cubos/results/campaign_11_20260803_202120/`.
 
-## Root cause of the decap failure: the engage plane is ~38 mm too low
+## What was actually wrong: the engage plane, and it could not be derived
 
-`decap` descends to `vial.location.z + capper.engage_depth_mm`
-(`protocol_engine/commands/capper.py:204`). With this deck and gantry that is:
+`decap`/`cap` descend to `vial.location.z + capper.engage_depth_mm`
+(`protocol_engine/commands/capper.py:204`). Both terms were wrong, in a way
+that no amount of reading configs could resolve:
 
 ```
 vial_holder.location.z                       39.0   (deck YAML)
 + labware_seat_height_from_bottom            18.0   (ursa_vial_holder/9VialHolder.yaml)
-= Vial.location.z  (resolve_coordinate)      57.0
+= Vial.location.z  (resolve_coordinate)      57.0   <- CubOS calls this "the vial rim"
 + engage_depth_mm                           -15.0
 = capper tool-plane target                   42.0   -> gantry Z 17.0
 ```
 
-The gantry Z is 25 mm lower than the capper tool plane because the capper is
-configured `depth: -25.0`, i.e. its socket sits 25 mm **above** the gantry
-datum. The pipette is `depth: 0.0`, so the pipette nozzle *is* the gantry
-datum and hangs 25 mm below the capper socket — which is why the pipette, not
-the capper, was the part that fouled the caps during capper transit.
+* **57.0 is not the rim.** Ben measured the vial tops at deck Z **85**, ~28 mm
+  higher. The deck YAML's Z column does not describe this machine.
+* **`depth: -25.0` is not the socket height either.** The sensor probe put the
+  seated cap at capper deck Z 73.0, i.e. gantry Z 48.0 — so the physical socket
+  face is ~12 mm *above* where `depth` says the tool point is.
 
-That gives an independent measurement of the cap height. On attempt 2
-(`safe_z: 105.0`) the capper transited at gantry Z 80, putting the pipette
-nozzle at deck Z 80, and the nozzle **brushed the cap tops**. At `safe_z:
-115.0` (gantry Z 90) it cleared. So the cap tops sit at roughly deck Z 80,
-while `decap` is driving the capper socket to deck Z 42 — about 38 mm past
-them.
+Because the two errors add, an estimate built from either number alone misses.
+Attempt 4 used Ben's 85 mm directly (`engage_depth_mm: +28.0`, gantry Z 60) and
+still failed, 12 mm short.
 
-`engage_depth_mm: -15.0` is not a measured value. It is
-`CAPPER_ENGAGE_DEPTH_MM`, the placeholder in
-`tools/panda_bear_import/constants.py`, whose own comment reads "never
-measured against real PANDA hardware; confirm/recalibrate before trusting
-physical motion." Same provenance as the `[-10.0, -10.0]` park position.
+### The measurement that settled it
 
-### The knob
+`cubos/tools/probe_cap_plane.py` steps the head down over one vial in 1 mm
+increments with **the magnet off**, polling the line-break sensor, and stops at
+the first beam break. That finds the plane at which a cap is seated in the head
+directly — independent of both `depth` and the deck YAML:
 
 ```
-capper socket target Z = vial_holder.location.z + 18.0 + engage_depth_mm
-gantry Z               = capper socket target Z - 25.0
+  gantry Z   49.0  (capper deck Z   74.0)  cap_present=False
+  gantry Z   48.0  (capper deck Z   73.0)  cap_present=True
+
+BEAM BROKE at gantry Z 48.0 (capper deck Z 73.0).
+  engage_depth_mm = 73.0 - 57.0 = 16.0
 ```
 
-Changing `engage_depth_mm` alone is the minimal fix and leaves the deck file
-describing physical geometry. To put the socket at deck Z *S*:
+`engage_depth_mm: 15.0` is that minus 1 mm of seating margin. The descent was
+bounded at gantry Z 17.0 — the lowest this machine had already been driven to
+over a vial, on attempts 2 and 3 — so the sweep stayed inside territory the
+machine had already traversed.
+
+The sign flip off the `-15.0` placeholder is expected: a magnet-on-top head
+engages *above* the vial, so a negative depth can never be right for it.
+`-15.0` is `CAPPER_ENGAGE_DEPTH_MM` from `tools/panda_bear_import/constants.py`,
+whose own comment reads "never measured against real PANDA hardware".
+
+## Second blocker: `cap` could never confirm a release
+
+With the engage plane right, `decap` worked on the first try and the pipette
+entered vial_2 — then `cap` aborted with `cap_present=True, expected False`.
+The cap had in fact been placed back correctly: reading the sensor by hand with
+the head parked at `safe_z` returned `False`, nothing held.
+
+`_run_capper_sequence()` confirms **before** retracting, for both directions.
+The line-break sensor reports a cap anywhere in the beam, held or not — the
+probe proved that by tripping it on a cap merely *resting* on a vial — so at
+the engage plane a just-released cap is still in the beam and `cap` can never
+pass. Patched locally
+(`cubos/patches/cap-release-confirm-after-retract.patch`); details there.
+
+## Still-open: `safe_z: 115.0` is 1 mm outside the machine's travel
+
+Read off the controller:
 
 ```
-engage_depth_mm = S - 57.0
-```
-
-e.g. `S = 78.0` (2 mm onto a cap topping out near 80) gives
-`engage_depth_mm: +21.0`. The sign flip is expected: a magnet-on-top capper
-engages *above* the vial rim, not below it, so a negative depth can never be
-right for this head. The exact number needs the measured cap-top height.
-
-## Z ceiling: `safe_z: 115.0` is 1 mm outside the machine's travel
-
-Read off the controller on 2026-08-03:
-
-```
-$20=1 (soft limits on)   $21=0   $23=0 (home to max)   $132=114.000
+$20=1 (soft limits on)   $23=0 (home to max)   $132=114.000
 <Alarm|WPos:383.000,238.000,114.000|WCO:-383.000,-238.000,-114.000>
 ```
 
-`WPos = MPos + 114`, and GRBL's reachable `MPos` Z is `[-114, 0]`, so the
-reachable deck-frame Z is **`[0, 114]`**. `working_volume.z_max: 115.0` and
-`cnc.safe_z: 115.0` are both above that.
+`WPos = MPos + 114` and GRBL's reachable `MPos` Z is `[-114, 0]`, so the
+reachable deck-frame Z is `[0, 114]`. `working_volume.z_max: 115.0` and
+`cnc.safe_z: 115.0` are both above it.
 
-This protocol still runs because every `safe_z` move belongs to the capper
-(`depth: -25.0` → gantry Z 90) and the pipette moves use an explicit
-`travel_z: 111.0`. The highest gantry Z actually commanded is 111.0. But:
+This protocol runs anyway because every `safe_z` move belongs to the capper
+(`depth: -25.0` → gantry Z 90) and the pipette moves carry an explicit
+`travel_z: 111.0`; the highest gantry Z commanded in the successful run is
+111.0. But any *pipette* move at `safe_z` — a deck-target `move`, `measure`,
+`aspirate`, `scan` — would command gantry Z 115 and trip a soft-limit alarm,
+and `z_max: 115.0` is what `validate_setup` bounds-checks against, so it can no
+longer catch that. Setting both to `114.0` restores the guard at the cost of
+1 mm of capper transit clearance.
 
-* any `move` of the **pipette** at `safe_z` (a deck-target `move`, `measure`,
-  `aspirate`, `scan` — anything routed through `move_to_labware`) commands
-  gantry Z 115 and will trip a soft-limit alarm;
-* `working_volume.z_max: 115.0` is what `validate_setup` bounds-checks
-  against, so it no longer catches that;
-* the post-failure retract in `protocol_engine/setup.py:377` would do exactly
-  that if the `PawduinoCapper` name bug noted in `cubos/patches/README.md`
-  were ever fixed.
-
-Setting `z_max` and `safe_z` to `114.0` restores the guard and costs 1 mm of
-capper transit clearance.
-
-## Machine state after the run
+## Machine state after attempt 6
 
 | | |
 |---|---|
-| Capper head | retracted to `safe_z` — last pose `(162.0, 39.0, 115.0)` → gantry `(162.0, 39.0, 90.0)` |
-| Electromagnet | off — `CMD_EMAG_OFF` sent, `OK:{"msg":"Electromagnet off"}` |
-| Cap sensor | `OK:{"value1":0}` — nothing held |
-| GRBL | `Alarm` (board resets when the port closes); re-home before the next run |
+| Protocol | completed, `home` as the final step |
+| Electromagnet | off — `release_cap()` sent explicitly after the run |
+| Cap sensor | `cap_present=False` — nothing held |
+| Caps | all six returned to vials 2–7 by the protocol's own `cap` steps |
+| GRBL | resets to `Alarm` when the port closes; `run_protocol` clears it and homes at startup |
 | Ports | `/dev/ttyUSB0` CH340 → gantry · `/dev/ttyACM0` Arduino Uno → capper |
 
-The Pawduino boot-banner patch (`cubos/patches/`) is still applied to
-`~/CubOS` on the Pi (CubOS `cbc33dc`); the capper connected cleanly on both
-runs.
+Both patches in `cubos/patches/` are applied to `~/CubOS` on the Pi (CubOS
+`cbc33dc`). Neither is upstreamed yet.
