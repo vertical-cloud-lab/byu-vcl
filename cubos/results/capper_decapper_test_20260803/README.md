@@ -1,8 +1,8 @@
 # capper_decapper_test on the CubXL — 2026-08-03
 
-Six hardware attempts at `cubos/configs/protocol/vcl/capper_decapper_test.yaml`
-against the lab CubXL. **Attempt 6 completed all 27 steps**: six vials each
-decapped, entered with the pipette, and recapped.
+Seven hardware attempts at `cubos/configs/protocol/vcl/capper_decapper_test.yaml`
+against the lab CubXL. **Attempts 6 and 7 completed all 27 steps**: six vials
+each decapped, entered with the pipette, and recapped.
 
 | attempt | time (UTC) | change | outcome |
 |---|---|---|---|
@@ -13,11 +13,12 @@ decapped, entered with the pipette, and recapped.
 | — | 20:15 | `probe_cap_plane.py` | **measured** the engage plane with the head's own sensor: beam broke at gantry Z 48.0 |
 | 5 | 20:18 | `engage_depth_mm: +15.0` | **`decap` succeeded**, pipette entered vial_2 and retracted, `cap` aborted — release not confirmed |
 | 6 | 20:21 | `cap-release-confirm-after-retract.patch` | **PASS — 27/27 steps, vials 2–7 decapped, entered, recapped** |
+| 7 | 20:50 | Ben's re-measured deck Y, `safe_z`/`z_max` 114.0, `engage_depth_mm: 13.0`, `park_position: [125, 50]`, insert Z 40.0 | **PASS — 27/27 steps, 6m 51s, campaign 13 `completed`** |
 
-Logs: `run_hardware_attempt{4,5,6}.log`, `probe_cap_plane.log`, and attempt 3's
-`run_hardware_attempt3.log`. All force-added — the repo `.gitignore` has a
-blanket `*.log` rule. Campaign CSVs for the successful run are in
-`cubos/results/campaign_11_20260803_202120/`.
+Logs: `run_hardware_attempt{3,4,5,6,7}.log` and `probe_cap_plane.log`. All
+force-added — the repo `.gitignore` has a blanket `*.log` rule. Campaign CSVs
+are in `cubos/results/campaign_11_20260803_202120/` (attempt 6) and
+`cubos/results/campaign_13_20260803_205035/` (attempt 7).
 
 ## What was actually wrong: the engage plane, and it could not be derived
 
@@ -82,7 +83,7 @@ the engage plane a just-released cap is still in the beam and `cap` can never
 pass. Patched locally
 (`cubos/patches/cap-release-confirm-after-retract.patch`); details there.
 
-## Still-open: `safe_z: 115.0` is 1 mm outside the machine's travel
+## Resolved in attempt 7: `safe_z: 115.0` was 1 mm outside the machine's travel
 
 Read off the controller:
 
@@ -104,7 +105,56 @@ and `z_max: 115.0` is what `validate_setup` bounds-checks against, so it can no
 longer catch that. Setting both to `114.0` restores the guard at the cost of
 1 mm of capper transit clearance.
 
-## Machine state after attempt 6
+Ben set both to `114.0` before attempt 7, which ran clean. The capper now
+transits with its tool point at deck Z 114 — see the next section for what
+that means for the pipette.
+
+## The pipette shadow — why the probe dragged the nozzle on the X rail
+
+Reported by Ben after attempt 6: `probe_cap_plane.py` dragged the pipette along
+the X rail. The cause is not specific to the probe. The two instruments are
+rigidly coupled on one head:
+
+| | `offset_x` | `offset_y` | `depth` |
+|---|---|---|---|
+| `vial_capper_decapper` | 0.0 | 0.0 | −25.0 |
+| `pipette` | +135.0 | +20.0 | 0.0 |
+
+`gantry = deck − offset` in XY and `gantry_z = deck_z + depth`, so whenever the
+capper's tool point is commanded to deck `(x, y, z)`, the pipette nozzle is at
+deck:
+
+```
+(x + 135, y + 20, z - 25)
+```
+
+The nozzle is the lowest thing on the head and it hangs 135 mm to +X of the
+capper. Every capper move therefore sweeps the nozzle through a plane 25 mm
+below the capper's own, a third of the bed away in X:
+
+| capper action | capper tool point | nozzle deck position |
+|---|---|---|
+| transit at `safe_z: 114.0` | Z 114 | Z **89** |
+| engage at `engage_depth_mm: 13.0` over vial_N (deck X 162) | Z 70 | (297, y+20, **45**) |
+| probe's deepest step (attempt 6) | Z 73 | (297, 56, **48**) |
+
+So the probe's lowest nozzle plane was Z 48, and **the protocol's own
+`decap`/`cap` steps go to Z 45 — 3 mm lower — twelve times per run.** Whatever
+the nozzle contacted during the probe, it contacts during a normal run too; the
+probe only made it visible by descending in 1 mm steps with a sensor poll (and
+a visible pause) at each one.
+
+Nothing offline models this. `validate_setup` bounds-checks the *commanded*
+instrument against the working volume and checks the built-in Cub XL rail
+boxes, but it has no model of a second instrument's swept volume, and deck
+X 297 is nowhere near the modeled `X[480, 540]` right-rail box.
+
+If deck X ≈ 297 is where the rail sits, the options are to raise
+`engage_depth_mm` (each +1 mm lifts the nozzle 1 mm), shorten the pipette's
+`offset_x`, or shim the pipette up so its `depth` is no longer 0.0 — the last
+being the only one that buys clearance without moving the engage plane.
+
+## Machine state after attempt 7
 
 | | |
 |---|---|

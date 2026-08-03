@@ -18,14 +18,14 @@ labware:
         model_name: placeholder_20ml_vial
         height: 50.0
         diameter: 28.0
-        location: { x: 162.0, y: 39.0 }
+        location: { x: 162.0, y: 36.0 }
         capacity_ul: 20000.0
         working_volume_ul: 20000.0
       vial_3:
         model_name: placeholder_20ml_vial
         height: 50.0
         diameter: 28.0
-        location: { x: 162.0, y: 73.0 }
+        location: { x: 162.0, y: 70.0 }
         capacity_ul: 20000.0
         working_volume_ul: 20000.0
       vial_4:
@@ -46,14 +46,14 @@ labware:
         model_name: placeholder_20ml_vial
         height: 50.0
         diameter: 28.0
-        location: { x: 162.0, y: 165.0 }
+        location: { x: 162.0, y: 167.0 }
         capacity_ul: 20000.0
         working_volume_ul: 20000.0
       vial_7:
         model_name: placeholder_20ml_vial
         height: 50.0
         diameter: 28.0
-        location: { x: 162.0, y: 196.0 }
+        location: { x: 162.0, y: 198.0 }
         capacity_ul: 20000.0
         working_volume_ul: 20000.0
       vial_8:

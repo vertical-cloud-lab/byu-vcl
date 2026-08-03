@@ -21,6 +21,19 @@ the engage plane, whatever ``depth`` really is.
 
 Safety
 ------
+* **Ask the machine's owner before running this.** It is deliberate
+  contact-seeking motion, not a validated protocol.
+* **It drags the pipette.** The two instruments share one head: with the
+  capper at ``offset (0, 0), depth -25`` and the pipette at
+  ``offset (+135, +20), depth 0``, commanding the capper's tool point to deck
+  ``(x, y, z)`` puts the pipette nozzle at deck ``(x + 135, y + 20, z - 25)``.
+  The nozzle is the lowest thing on the head and hangs a third of the bed away
+  in +X, so this sweep pulls it down through a plane 25 mm below the capper's
+  over whatever sits at deck X ≈ 297. On 2026-08-03 that dragged the nozzle
+  along the X rail. ``--floor-gantry-z`` bounds the *capper*; check what the
+  nozzle passes through at ``floor_gantry_z`` before starting. Note that a
+  normal ``decap``/``cap`` sweeps the same shadow — see
+  ``cubos/results/capper_decapper_test_20260803/README.md``.
 * Descends in ``--step`` mm increments, sensor-polled at every step, and stops
   the instant the beam breaks.
 * ``--floor-gantry-z`` bounds the descent. It defaults to 17.0, the lowest
