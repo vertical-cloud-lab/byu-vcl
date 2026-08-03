@@ -2,10 +2,10 @@
 #
 # For each vial:
 #   1. decap   - the capper approaches at safe_z, engages at engage_depth_mm
-#                (deck-frame Z 57.0 - 15.0 = 42.0), captures the cap,
-#                retracts to safe_z, and parks
-#   2. insert  - the pipette descends into the now-open vial to Z 47.0, i.e.
-#                10 mm below the vial rim (rim is at deck-frame Z 57.0)
+#                (deck-frame Z 57.0 + 28.0 = 85.0, the measured cap top),
+#                captures the cap, retracts to safe_z, and parks
+#   2. insert  - the pipette descends into the now-open vial to Z 60.0, i.e.
+#                25 mm below the measured vial top (deck-frame Z 85.0)
 #   3. retract - the pipette lifts back to the Z 105.0 transit plane
 #   4. cap     - the capper replaces the cap, retracts, and parks
 #
@@ -52,32 +52,45 @@
 #   * Positions below are deck-frame. CubOS subtracts the instrument's
 #     offset_x/offset_y to get gantry coordinates, so deck (162, 39) with the
 #     pipette becomes gantry (27, 19).
-#   * travel_z 105.0 == the gantry's safe_z. It must be > 100.0 so the pipette
+#   * travel_z 111.0 (safe_z is 115.0). It must be > 100.0 so the pipette
 #     clears the Cub XL right X-max rail on its first move out of the homed
-#     corner -- see the header of cub_xl_ben_pipette_capper.yaml. Note that
+#     corner, and high enough that the nozzle clears the caps: the nozzle
+#     rides 25 mm below the capper's tool point, and at safe_z 105 (nozzle at
+#     deck Z 80) it brushed the cap tops, which sit at ~85. See the header of
+#     cub_xl_ben_pipette_capper.yaml. Note that
 #     the FIRST move needs an explicit travel_z: without one, validate_setup
 #     does not model that transit at all and silently passes a path that
 #     clips the rail.
-#   * Insertion depth is deliberately shallow: the vial rim is at Z 57.0 and
-#     the vial is 50 mm tall, so the interior floor is near Z 7.0. Z 47.0 is
-#     10 mm in, enough to prove entry without risking a bottom strike. Lower
-#     vial_N_insert Z to go deeper once clearance is confirmed by eye.
+#   * Insert Z is 60.0, chosen to be safe under BOTH readings of the deck
+#     geometry (updated 2026-08-03 after Ben measured the vial tops at deck
+#     Z 85.0 -- the deck YAML's implied rim of 57.0 is ~28 mm too low, see
+#     the engage_depth_mm block in the gantry file):
+#       - if the measured 85.0 is the vial top and the vial is 50 mm tall
+#         (sterling_deck.yaml), the interior floor is near Z 35-37, so Z 60.0
+#         is ~25 mm of entry with ~23 mm of floor clearance;
+#       - if instead the deck YAML's 57.0 is a correct SEAT height and the
+#         vial only stands 28 mm proud of it, the interior floor is near
+#         Z 59 -- and Z 60.0 still does not strike it, where the previous
+#         Z 47.0 would have been 12 mm below the floor.
+#     Lower vial_N_insert Z once the vial bottom is confirmed by eye. Do not
+#     lower it below 60.0 on the strength of the deck YAML alone: that file's
+#     Z column disagrees with the physical machine by ~28 mm.
 #   * Bare nozzle -- no pick_up_tip. Adding tips changes the tip extension, so
 #     re-validate and re-check the insert plane if you do.
 
 positions:
   park_position: [170.0, 170.0, 111.0]
-  vial_2_insert: [162.0, 39.0, 47.0]
+  vial_2_insert: [162.0, 39.0, 60.0]
   vial_2_retract: [162.0, 39.0, 111.0]
-  vial_3_insert: [162.0, 73.0, 47.0]
+  vial_3_insert: [162.0, 73.0, 60.0]
   vial_3_retract: [162.0, 73.0, 111.0]
-  vial_4_insert: [162.0, 103.0, 47.0]
+  vial_4_insert: [162.0, 103.0, 60.0]
   vial_4_retract: [162.0, 103.0, 111.0]
-  vial_5_insert: [162.0, 134.0, 47.0]
+  vial_5_insert: [162.0, 134.0, 60.0]
   vial_5_retract: [162.0, 134.0, 111.0]
-  vial_6_insert: [162.0, 165.0, 47.0]
+  vial_6_insert: [162.0, 165.0, 60.0]
   vial_6_retract: [162.0, 165.0, 111.0]
-  vial_7_insert: [162.0, 196.0, 47.0]
+  vial_7_insert: [162.0, 196.0, 60.0]
   vial_7_retract: [162.0, 196.0, 111.0]
 
 protocol:

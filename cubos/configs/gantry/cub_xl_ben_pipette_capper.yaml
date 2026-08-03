@@ -59,7 +59,37 @@ instruments:
     capture_retries: 2
     capture_settle_s: 1.0
     depth: -25.0
-    engage_depth_mm: -15.0
+    # CHANGED from -15.0. `decap`/`cap` descend to
+    #   engage_z = vial.location.z + engage_depth_mm      (commands/capper.py:204)
+    # and `vial.location.z` for this deck resolves to 57.0, NOT the real rim:
+    #   vial_holder.location.z              39.0  (sterling_deck.yaml)
+    #   + labware_seat_height_from_bottom   18.0  (ursa_vial_holder/9VialHolder.yaml)
+    #   = 57.0
+    # CubOS documents that number as "the deck-frame Z of the vial rim"
+    # (deck/labware/vial.py) and it is the only Z decap/cap ever look at.
+    #
+    # Two independent measurements say the real cap top is ~28 mm higher:
+    #   * Ben, 2026-08-03: "the vials are 85mm above the deck".
+    #   * The brushing at safe_z 105 on the 2026-08-03 run. The capper is
+    #     depth: -25.0 and the pipette is depth: 0.0, so the nozzle is the
+    #     lowest thing on the head and sits 25 mm below the capper's tool
+    #     point. safe_z 105 -> gantry Z 80 -> nozzle at deck Z 80 brushed the
+    #     caps; safe_z 115 -> nozzle at deck Z 90 cleared them.
+    #
+    # -15.0 therefore put the capper's tool point at deck Z 42 -- roughly
+    # 43 mm BELOW the caps -- which is why the 2026-08-03 run aborted with
+    # "sensor did not confirm cap capture after 3 attempt(s)".
+    #
+    # +28.0 puts the tool point at deck Z 85.0 (gantry Z 60.0), i.e. exactly
+    # on the measured cap top, with no over-press. The sign flip is expected:
+    # this head grabs a cap from ABOVE with an electromagnet, so a negative
+    # depth can never be right for it -- -15.0 is CAPPER_ENGAGE_DEPTH_MM, the
+    # never-measured placeholder in tools/panda_bear_import/constants.py.
+    #
+    # If capture still fails, lower this in 2 mm steps (28 -> 26 -> 24); the
+    # failure is fail-closed (tool retracts, protocol aborts) so a too-high
+    # engage costs nothing, while a too-low one drives the head into the caps.
+    engage_depth_mm: 28.0
     # CHANGED from true. `offline: true` stubs out the whole capper: in
     # instruments/capper/vendors/pawduino.py, capture_cap()/release_cap()
     # become no-ops that just flip an in-memory flag, and read_cap_present()
