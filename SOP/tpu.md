@@ -7,14 +7,17 @@
 1. If printing a tall, thin, or small object, make sure to generate a raft in Bambu Studio before slicing or use the Bambu Glue Stick on the print plate for better adhesion.
 ### Support Settings
 1. If necessary, paint manual supports onto each part (MANUAL SUPPORTS VIDEO HERE).
-1. If printing a tall object with thin TPU elements, make sure to set support filament to PLA only (this will prevent wobbling during printing).
+1. If printing a tall object with thin TPU elements:
+   *    Make sure to set support filament to PLA only FOR EACH OBJECT (this will prevent wobbling during printing).
+   *    Change "Support/object xy distance" from 0.35 to 0.2 so the supports are close enough to have effect on such a small cross-section.
    Also, DENY any suggested preset adjustments from Bambu Studio that come from this decision:
    *    <img width="503" height="361" alt="Screenshot 2026-07-20 153644" src="https://github.com/user-attachments/assets/5e43e539-7391-4a15-8d03-c649f3a26070" />
 
-1. Additionally, make sure to disable flushing TPU into supports:
+1. Additionally, disable flushing TPU into supports:
    *    <img width="502" height="457" alt="Screenshot 2026-07-20 153945" src="https://github.com/user-attachments/assets/d8b73905-b70e-4154-be7b-97834b1b2476" />
 
-1. Make sure to select 'On build plate only,' so supports are not built on the object being printed unless there is no other option.
+1. Make sure to select 'On build plate only,' so supports are not built on the object being printed (unless there is no other possible orientation).
+
 
 ## Preparing the 3D Printer
 1. If humidity is not below 8%, run a TPU dry cycle at 70-75&deg;C for 12hr or until below 8% humidity.
@@ -41,9 +44,9 @@
 
 ## Notes & Troubleshooting:
 1. If the prints have too many bubbles, this is a humidity issue. Try printing at a drier temperature.
-1. For thinner prints, if there appears to be 'wobble' in the print when using 100% PLA supports, this can usually be remedied by the TPU filament preset changes.
+1. For thinner prints, if there appears to be 'wobble' in the print when using 100% PLA supports, this can usually be remedied by the TPU filament preset changes and additional supports on the edges of the part.
    When the min and max temperatures are too far apart, there can be 'skipping,' which causes wobble between 3D print layers as the filament takes extra time to adhere and misses the target point of adhesion.
-1. When using generated models, make sure to keep non-manifold edges even if Bambu Studio gives an error message. Otherwise, essential geometry may be eliminated by Bambu Studio's 'auto-repair' feature.
+1. When using generated models, make sure to **keep non-manifold edges** even if Bambu Studio gives an error message. Otherwise, essential geometry may be eliminated by Bambu Studio's 'auto-repair' feature.
 
 
 
