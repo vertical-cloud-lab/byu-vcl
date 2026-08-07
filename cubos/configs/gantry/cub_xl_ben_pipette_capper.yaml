@@ -1,109 +1,52 @@
-# CubXL with an Opentrons P20 pipette + a Pawduino vial capper/decapper.
-#
-# Based on the file attached to PR #171 on 2026-08-03, with three changes
-# (each marked CHANGED below) needed before this can be run on hardware.
-# Everything else -- offsets, working volume, GRBL settings -- is the
-# measured value from the attached file.
-#
-# Serial ports were confirmed against the lab Pi on 2026-08-03:
-#   /dev/ttyUSB0  1a86:7523 CH340 USB-serial  -> the GRBL controller (gantry)
-#   /dev/ttyACM0  2341:0043 Arduino Uno       -> the capper Arduino
-# Both were free (nothing else holding them).
-
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
   factory_z_travel_mm: 129.0
+  calibration_block_height_mm: 35.0
   y_axis_motion: head
-  # CHANGED from 100.0. With offset_x = +135.0 the pipette tip sits at deck
-  # X 515 in the homed corner -- inside CubOS's built-in "Cub XL right X-max
-  # rail" structure, X[480, 540] Y[0, 300] Z[0, 100]. The rail's top is
-  # Z 100, so transiting at Z 100 clips it; 101.0 is the first value that
-  # clears, and `move` rejects any travel_z above safe_z. 105.0 leaves a
-  # margin and is still under working_volume.z_max = 111.0.
-  #
-  # This did not show up in validate_setup on the attached file only because
-  # the first `move` out of home (to park_position) omitted `travel_z`, so
-  # its transit path was never modeled. Adding `travel_z: 100.0` to that one
-  # step surfaces it immediately:
-  #
-  #   step 1 (move): travel_z lift/lower segment from (515.0, 255.0, 111.0)
-  #     to (515.0, 255.0, 100.0) will hit the Cub XL right X-max rail
-  #
-  # Worth checking whether that rail box matches your machine -- it is a
-  # fixed constant assuming a 540 mm X span, and max_travel_x here is 383.
   safe_z: 114.0
-  calibration_block_height_mm: 33.0
 working_volume:
   x_min: 0.0
   x_max: 380.0
   y_min: 0.0
-  y_max: 235.0
+  y_max: 278.0
   z_min: 0.0
-  z_max: 114.0
+  z_max: 121.0
+origin_policy: deck_origin
 grbl_settings:
   dir_invert_mask: 1
   status_report: 0
+  soft_limits: true
   homing_enable: true
   homing_dir_mask: 0
+  homing_pull_off: 3.0
   steps_per_mm_x: 400.0
   steps_per_mm_y: 400.0
   steps_per_mm_z: 400.0
   max_travel_x: 383.0
-  max_travel_y: 238.0
-  max_travel_z: 114.0
-  soft_limits: true
-  homing_pull_off: 3.0
+  max_travel_y: 281.0
+  max_travel_z: 124.0
 instruments:
   vial_capper_decapper:
-    capture_retries: 2
-    capture_settle_s: 1.0
-    depth: -25.0
-    engage_depth_mm: 13.0
-    # CHANGED from true. `offline: true` stubs out the whole capper: in
-    # instruments/capper/vendors/pawduino.py, capture_cap()/release_cap()
-    # become no-ops that just flip an in-memory flag, and read_cap_present()
-    # returns that same flag. The gantry is NOT offline, so on a real run the
-    # machine still drives the capper head down onto each vial and reports
-    # "decap successful" -- while the electromagnet never fires and the cap
-    # never comes off. The pipette then descends 10 mm below the rim into a
-    # still-capped vial. `offline: true` is for --mock only.
-    offline: false
+    type: capper
+    vendor: pawduino
     offset_x: 0.0
     offset_y: 0.0
-    # CHANGED from [-10.0, -10.0]. decap/cap both end with
-    #   context.gantry.move(instrument, (park_x, park_y, safe_z))
-    # (protocol_engine/commands/capper.py) and the capper has zero XY offset,
-    # so -10 is passed through to GRBL verbatim -- to_machine_coordinates
-    # applies no sign flip. That is outside the working volume
-    # (x_min = y_min = 0.0) and, with soft_limits: true, an immediate alarm;
-    # 12 times in this protocol. Nothing catches it offline:
-    # InstrumentedGantry.move only checks that the target is finite, and
-    # --mock never opens a port.
-    #
-    # [-10.0, -10.0] is not a measured value -- it is CAPPER_PARK_POSITION,
-    # the placeholder default in tools/panda_bear_import/constants.py that
-    # every imported capper config starts with. [10.0, 10.0] keeps the same
-    # front-left-corner intent while staying in bounds. RETUNE THIS to the
-    # actual cap-staging spot before trusting it.
+    depth: -17.0
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 13
+    offline: false
     park_position:
     - 125
     - 50
-    # CHANGED from '/dev/ttyUSB2', which does not exist on the Pi. The
-    # capper Arduino enumerates as /dev/ttyACM0 (2341:0043 Arduino Uno);
-    # /dev/ttyUSB0 is the CH340 on the GRBL controller.
-    port: '/dev/ttyACM0'
-    type: capper
-    vendor: pawduino
+    port: /dev/ttyACM0
   pipette:
     type: pipette
     vendor: opentrons
+    offset_x: 135.0
+    offset_y: 13.0
+    depth: 0.0
     pipette_model: p20_single_gen2
     port: ''
-    # Left as-is. The pipette is never actuated in this protocol -- it is
-    # only a geometric reference for `move`, and gantry motion is real
-    # regardless of this flag.
     offline: true
-    offset_x: 135.0
-    offset_y: 20.0
-    depth: 0.0

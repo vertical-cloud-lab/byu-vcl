@@ -29,19 +29,25 @@ parked, and re-homed: 12 steps, started 20:51:19 UTC, completed 20:53:43 UTC.
 CSV exports for that campaign are in `results/campaign_2_20260727_205119/`
 (motion-only protocol, so the experiment/measurement tables are empty).
 
-## Capper/decapper test protocol (not yet run on hardware)
+## Capper/decapper test protocol (PASSED on hardware 2026-08-03)
 
-`configs/protocol/vcl/capper_decapper_test.yaml` walks vial_1 → vial_6 doing
-decap → pipette insertion → cap on each, against
-`configs/gantry/cub_xl_ben_pipette_capper.yaml` +
-`configs/deck/sterling_deck.yaml` (both as attached to
-[PR #171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171), the gantry
-file with two documented safety edits). It passes `validate_setup` and a
-`run_protocol --mock` dry run for vials 2–6; **vial_1 currently fails bounds
-validation** because the pipette's `offset_y: 20.0` puts the required gantry Y
-at −15.0. See the protocol file's header for the fix options. Do not run on
-hardware until vial_1 is resolved and the capper's `park_position` is
-confirmed against the physical cap-staging area.
+`configs/protocol/vcl/capper_decapper_test.yaml` (vials 2–7: decap → pipette
+insertion → cap) completed 27/27 steps on the CubXL on 2026-08-03 with the
+re-measured `cub_xl_ben_pipette_capper.yaml` + `sterling_deck.yaml`. Full
+attempt-by-attempt history in `results/capper_decapper_test_20260803/README.md`.
+
+## Tip-pickup capper test protocol (written 2026-08-06, NOT run)
+
+`configs/protocol/vcl/capper_decapper_tip_test.yaml` extends the above for the
+re-measured 6-vial deck (`configs/deck/sterling_6vials.yaml`, which adds a
+1×1 `tip_rack` at (255.5, 33.5), pickup Z 60, 35 mm tips): park → decap →
+`pick_up_tip` → insert (tip modeled by CubOS) → cap, for vials 1–6.
+**Currently blocked**: all six vials sit at deck X ≈ 113, but the pipette
+(`offset_x: 135.0`) cannot reach below deck X 135, so the 12 insert/retract
+moves fail `validate_setup` at gantry X −22. A +30 mm shift of every vial
+`location.x` (plus the matching protocol positions) validates PASS and
+mock-runs 28/28. See the protocol header for the full analysis, including the
+tip-shadow corridor the offline validator cannot see.
 
 ## Notes
 

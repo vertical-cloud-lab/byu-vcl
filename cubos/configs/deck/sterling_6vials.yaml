@@ -1,0 +1,118 @@
+# Sterling deck, re-measured 2026-08-06: six bare vials in a line at deck
+# X ~113 (no vial_holder nesting -- each vial's location.z IS the rim, per
+# cubos.deck.labware.vial.Vial). Attached by @benwhitney5463 to PR #171 on
+# 2026-08-06; vial entries are byte-identical to that attachment.
+#
+# ONE ADDITION vs. the attachment: the `tip_rack` entry at the bottom.
+# The requested protocol picks up a 35 mm pipette tip, and CubOS only
+# models an attached tip's extra length (for motion targets AND for
+# validate_setup bounds checking) through a TipRack labware + the
+# `pick_up_tip` command -- a raw `move` to the rack would leave the
+# validator blind to the 35 mm of extra tool hanging below the nozzle.
+# Position and pickup Z are exactly the numbers given in the request:
+# x 255.5, y 33.5, z 60 (nozzle presses down to deck-frame Z 60 to seat
+# the tip). Modeled as a 1x1 rack holding the single tip A1.
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 113
+      y: 44.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 113
+      y: 78.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_3:
+    type: vial
+    name: vial_3
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 112.5
+      y: 111.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_4:
+    type: vial
+    name: vial_4
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 112.5
+      y: 144.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_5:
+    type: vial
+    name: vial_5
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 112.5
+      y: 177.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_6:
+    type: vial
+    name: vial_6
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 112.5
+      y: 210.5
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  # Single-tip "rack" for the capper_decapper_tip_test protocol (see header).
+  # tip_length 35.0 is the value stated in the request ("the pipette tip adds
+  # 35mm to the pipette"); after pick_up_tip, every pipette deck-frame Z in a
+  # protocol means the TIP END, not the bare nozzle.
+  # calibration.a2 only fixes the rack's row orientation (required by the
+  # schema); with rows=1, columns=1 no second tip is generated from it.
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    rows: 1
+    columns: 1
+    pickup_z: 60.0
+    tip_length: 35.0
+    x_offset: 10.0
+    y_offset: 10.0
+    calibration:
+      a1:
+        x: 255.5
+        y: 33.5
+        z: 60.0
+      a2:
+        x: 265.5
+        y: 33.5
+        z: 60.0
