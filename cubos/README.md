@@ -49,6 +49,22 @@ moves fail `validate_setup` at gantry X −22. A +30 mm shift of every vial
 mock-runs 28/28. See the protocol header for the full analysis, including the
 tip-shadow corridor the offline validator cannot see.
 
+## Tip-pickup capper test, j_config_1 deck (written 2026-08-08, NOT run)
+
+`configs/protocol/vcl/capper_decapper_tip_test_j1.yaml` is the same
+park → decap → `pick_up_tip` → insert → cap sequence retargeted at
+@jarrettshupe's setup: the gantry was **re-calibrated and the pipette
+physically remounted** (offset 135/13 → 51.97/12 — which fixes the X-reach
+blocker above), and `configs/deck/j_config_1.yaml` uses a new measurement
+convention where each vial's `location.z` is the raw jog-widget WPos at which
+the capper engages the cap (paired with `engage_depth_mm: 17.248 = -depth` in
+the gantry config). The tip position was measured in the capper's reference
+frame and converted (+51.97, +12.0 in XY) in the deck's `tip_rack` entry.
+`validate_setup` PASS, `--mock` 28/28. **The older sterling configs/protocols
+no longer describe the machine** — their numbers predate the remount. See the
+protocol header for the passive-pipette corridor that must be eyeballed
+before any hardware run.
+
 ## Notes
 
 - The gantry enumerates as `/dev/ttyUSB0` on the Pi; the original config's
