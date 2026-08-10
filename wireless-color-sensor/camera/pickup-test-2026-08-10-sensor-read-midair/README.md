@@ -1,5 +1,13 @@
 # Pick up → sensor read mid-air → (return interrupted by RPi-5 outage) — 2026-08-10
 
+> **RESOLVED later the same day:** the module was reseated on its base by
+> running `cad/recover_reseat.py` once the RPi-5 link was restored — see
+> [`../pickup-test-2026-08-10-recovery/`](../pickup-test-2026-08-10-recovery/)
+> for the recovery session, the root cause of the link outage (USB-Ethernet
+> adapter stuck in CD-ROM mode), and its permanent fix. The "robot state"
+> and "to finish the cycle" sections below are kept for the record but no
+> longer describe the current state.
+
 Requested by @timothy-commins in PR #60: *"pick up, move, run the following
 google colab code, post here the results, and then return the enclosure to its
 housing"* (the Colab is `test_sensor.ipynb` from

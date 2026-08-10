@@ -1,5 +1,11 @@
 """Finish the interrupted 2026-08-10 cycle: reseat the module left gripped at z=110.
 
+STATUS: executed successfully on 2026-08-10 (see
+camera/pickup-test-2026-08-10-recovery/) — the module is back on its base.
+Kept as the template for any future stranded-grip recovery; the savePosition
+pre-check below will abort automatically if the robot isn't in the expected
+hold state.
+
 The 2026-08-10 session (camera/pickup-test-2026-08-10-sensor-read-midair/) ended
 with the sensor module still gripped on the P300 nozzle at (169.05, 225.0, 110)
 over slot 8, because the RPi-5 network bridge went down before the return leg.
