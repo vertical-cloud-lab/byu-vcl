@@ -93,3 +93,9 @@ module by hand while homing, then re-run the drop from the recipe.
 Alternatively, simply re-trigger `@claude` on PR #60 with "finish the
 interrupted cycle" — this README plus `/tmp/OT2_STATUS_READ_ME_FIRST.txt` on
 the RPi-5 (not updated this session — the Pi was down) has everything needed.
+
+The exact sequence above is now scripted as
+[`cad/recover_reseat.py`](../../cad/recover_reseat.py) — runnable from any
+machine with a link to the OT-2 (the RPi-5, or the Windows box if the OT-2's
+USB cable is moved there). It verifies the nozzle is still at the hold
+position before moving, and aborts if not.
