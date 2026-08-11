@@ -21,7 +21,7 @@ Prices are the PANDA-BEAR listed values (USD, mid-2026) — verify at order time
 | 9 | Jumper wires F–F, 200 mm ×40 | Wiring | 4447 | [Adafruit 4447](https://www.adafruit.com/product/4447) | 1 | 9.95 |
 | 10 | Jumper wires M–M, 200 mm ×40 | Wiring | 4482 | [Adafruit 4482](https://www.adafruit.com/product/4482) | 1 | 9.95 |
 | 11 | 20 mL clear VOA vials w/ septa caps | Stock vials the module services | 12-100-112 | [Fisher Sci](https://www.fishersci.com/shop/products/clear-voa-glass-vials-0-125in-septa/12-100-112) | 1 case | ~80 (case) |
-| 12 | Sylgard 184 PDMS kit (base + crosslinker) | Cap interior fill, 10:1 ratio | Sylgard 184 | [Electron Microscopy Sciences 24236-10](https://www.emsdiasum.com/sylgard-184-silicone-elastomer-kit) | 1 kit (1.1 lb) | ~60 |
+| 12 | Sylgard 184 PDMS kit (base + curing agent — the "Silicone Elastomer Curing Agent" is what the paper calls the crosslinker) | Cap interior fill, 10:1 by weight | Sylgard 184 | [Electron Microscopy Sciences 24236-10](https://www.emsdiasum.com/sylgard-184-silicone-elastomer-kit) | 1 kit (1.1 lb) | ~60 |
 | 13 | Steel discs (magnetic mild steel; size to the recessed cap top — verify dia./thickness against `cad/VialCap16mm.step`) | Magnetic pickup target on each cap | — | McMaster-Carr (e.g., low-carbon steel discs) | 1 per cap + spares | ~10 |
 | 14 | 3M double-sided adhesive (e.g., 3M VHB tape or 3M 468MP) | Affix steel disc to cap | — | McMaster/Amazon | 1 roll | ~15 |
 | 15 | M3–M6 bolt kit | Mount electromagnet holder to gantry head | — | [Amazon B0CLZC8SQ5](https://www.amazon.com/gp/product/B0CLZC8SQ5/) | 1 kit | 23.99 |
@@ -58,7 +58,8 @@ skip or adapt these if mounting the rack to a different deck.
 ## 3. Cap fabrication steps (per paper §3.1)
 
 1. Print cap bodies in PLA.
-2. Mix Sylgard 184 at 10:1 base:crosslinker; fill the cap interior; cure.
+2. Mix Sylgard 184 at 10:1 by weight, base : curing agent ("crosslinker"); fill the
+   cap interior (~2.6 mL ≈ 2.7 g per cap); cure ≥48 h at room temperature.
 3. Cut/punch steel discs to fit the recessed region on the cap top; attach with 3M adhesive.
 4. Validate: run decap/recap cycles over a range of approach heights — expect ~3 mm
    vertical tolerance (paper Figure 2C).

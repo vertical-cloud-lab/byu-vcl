@@ -25,8 +25,10 @@ Custom caps are fabricated by:
 
 1. 3D printing the cap body in **PLA** (the authors used a Bambu A1; any well-tuned FDM
    printer works) — [`cad/VialCap16mm.step`](cad/VialCap16mm.step)
-2. Filling the cap interior with **PDMS (Sylgard 184, 10:1 base:crosslinker)** for
-   chemical resistance and sealing
+2. Filling the cap interior with **PDMS (Sylgard 184, 10:1 by weight base:curing
+   agent)** for chemical resistance and sealing. The paper calls the second component
+   the "crosslinker"; on the Sylgard 184 kit itself it is labeled **Silicone Elastomer
+   Curing Agent** — same thing.
 3. Affixing a **steel disc with 3M adhesive** into the recessed region on top of the cap
 
 The electromagnet sits in a 3D-printed holder
