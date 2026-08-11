@@ -577,6 +577,8 @@ Ronnie's request ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80
 This section is the **operating** companion to the §12 **disposal** SOP. It consolidates the §7/§9/§10/§12 guidance with the **Risk Management / Waste Management simplifications from the 2026-07-06 meeting** (Bryant, Steve, Jill, Ed) into the actual sequence of a vacuuming session.
 
 > ⚠️ Same caveat as §12: this is a literature- and meeting-derived working procedure, not a regulatory ruling. Have BYU EHS and the PI sign off before the first live-powder run, and fold it into the site NFPA 652 DHA.
+>
+> ✅ **This section was independently verified** by an Edison Scientific `LITERATURE_HIGH` review (task `d7ff65b9-1211-4ced-934e-c3c402eddee0`, 2026-08-11) plus a cross-check against the repo SDS files — see **[§14](#14-verification-of-13-edison-scientific--documentation-cross-check-2026-08-11)**. All 12 checked claims came back **correct** or **correct-with-caveat** (none wrong), but §14 adds several safety-critical items — most importantly **bonding the source tray to ground**, an **operator ESD wrist strap** (open item vs. the Risk-Management PPE list), and an **IPA + metal-dust hybrid-mixture** precaution. The inline notes below marked "(→ §14)" carry those forward.
 
 ### 13.1 Reconciling three things we've learned since §9/§12 was written
 
@@ -584,7 +586,7 @@ Three field facts change the mechanics from what the earlier Edison sections des
 
 1. **No bonding clip on the 118EXP.** Nilfisk confirmed (Ronnie, 2026-06-29) that this unit has no liner bonding clip and doesn't need one. Liner grounding is by **contact of the conductive (carbon-loaded, black PE) liner against the grounded steel bin** — which is exactly what the continuity check verifies. Wherever §12 says "attach/disconnect the bonding clip," read it as "confirm the conductive liner is seated in contact with the bare metal bin, and verify liner-to-bin < 1 kΩ."
 2. **Sealing = gooseneck + conductive tape or steel zip ties** (ESD tape is the cheaper, easier-to-source substitute Ronnie found — [MECCANIXITY conductive tape](https://www.amazon.com/MECCANIXITY-Adhesive-Conductive-Electronics-Components/dp/B09VWWFW8V)). **Do not crimp the interim-pail lid** — set the lid on but leave it un-crimped (Waste Management said crimping raises the explosion hazard).
-3. **PPE per Risk Management:** N95 respirator, nitrile gloves, and a **cotton or antistatic lab coat** (the black VCL coat is 100% cotton ✅; the atomizer coat is antistatic ✅; the 80/20 poly-cotton white coat ❌ — it builds static, don't use it). Kimwipes are an acceptable lint-free wipe.
+3. **PPE per Risk Management:** N95 respirator, nitrile gloves, and a **cotton or antistatic lab coat** (the black VCL coat is 100% cotton ✅; the atomizer coat is antistatic ✅; the 80/20 poly-cotton white coat ❌ — it builds static, don't use it). Kimwipes are an acceptable lint-free wipe. **(→ §14) Open item:** the literature review flags that a strict reading of NFPA 484 §15.3.1.2 calls for the **operator to also wear an ESD grounding wrist strap** while vacuuming and sealing, because the sub-micron fines in the mix can have MIE < 30 mJ. This wasn't in the 2026-07-06 Risk-Management PPE list — reconcile with EHS before the first run (see §14, Claim 3).
 
 ### 13.2 Before the test run — setup checklist
 
@@ -595,7 +597,11 @@ Three field facts change the mechanics from what the earlier Edison sections des
 - [ ] **Grounded steel interim pail** staged nearby with its lid available (labeled per §12/§10).
 - [ ] **PPE on** (§13.1 item 3).
 - [ ] **No water/solvents/oxidizers** on the bench; nothing hot going into the vacuum.
+- [ ] **Bond the source tray/benchtop to ground. (→ §14, most critical addition)** The metal tray you vacuum from is itself a conductive object in contact with a charging powder; if it floats, it can spark to the grounded wand tip. Clip a bonding wire from the tray to the vacuum body (or the same building-ground point) and verify **< 10 Ω** before running powder.
 - [ ] **Start small.** For the very first run, put a **small, known amount** of AlSi10Mg (a few grams) on a **grounded metal tray or benchtop**, not a large pile — enough to confirm pickup, suction, sealing, and disposal end-to-end before scaling up. Have a second person record video (POV + a wide angle) as planned.
+- [ ] **Equalization touch. (→ §14)** Before the wand tip approaches the powder, briefly touch the grounded wand tip to the grounded tray *away from the powder* to equalize any residual charge.
+- [ ] **Area control. (→ §14)** Restrict the immediate area to trained, PPE-equipped personnel and post signage: "COMBUSTIBLE METAL POWDER IN USE — Authorized Personnel Only — NO Water, NO Compressed Air."
+- [ ] **Documented DHA on file (NFPA 652)** and EHS/PI sign-off before this first live run.
 
 ### 13.3 Running the crevice nozzle and dust brush safely
 
@@ -631,7 +637,7 @@ Follow §12 Section 1 with the §13.1 corrections:
 **For repeated use on the same alloy family (AlSi10Mg ↔ Si ↔ other Al alloys):** a **full IPA cleaning is not required every time.** Routine after-use care is enough:
 
 - Run the vacuum ~15–30 s with the tools attached to pull residual fines out of the hose/wand bores into the fresh liner.
-- **Dry-wipe** exterior surfaces with a Kimwipe/lint-free cloth; a **light IPA wipe** of the wand, crevice tool, and coupler exteriors/bores is good practice before storage to remove clinging residue.
+- **Dry-wipe FIRST**, then a **light IPA wipe.** **(→ §14, important)** IPA vapor over combustible metal dust forms a **hybrid mixture** whose ignition energy is *lower* than either the vapor or the dust alone. So always dry-wipe off all visible powder *before* introducing IPA, never apply IPA to a visibly powder-coated surface, prefer **70% IPA** (higher flash point than 99%), work with ventilation on, keep ignition sources away, and let the IPA **fully evaporate (≥ 5 min)** before reassembly or powder. Note the AlSi10Mg SDS (§10.5) also lists *alcohols* among incompatible materials — another reason to keep IPA use sparing and dry-wipe-first, not a soak.
 - **Never** use water, acetone, or chlorinated solvents; **never** blow out or wash the filters or attachments; **never** rinse anything.
 
 **A full IPA clean (§12 Section 7) IS required when:**
@@ -658,3 +664,52 @@ The concern with storage is that **any powder left inside the wand, crevice nozz
 ### 13.7 One-line summary
 
 Small first batch on a grounded surface, continuity verified, N95 + gloves + cotton/antistatic coat, Class D extinguisher out; slow brush-and-capture passes with the nozzle close and never blowing powder; power off and let it settle, gooseneck-seal the liner with ESD tape/steel ties into the un-crimped grounded pail; light IPA/dry wipe of tools each time (full IPA clean only on an alloy switch); and store the tools **clean, dry, capped/bagged, dedicated to the aluminum family, and segregated from oxidizers**.
+
+---
+
+## 14. Verification of §13 (Edison Scientific + documentation cross-check, 2026-08-11)
+
+Ronnie asked ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80)) to independently verify everything in the §13 first-test-run procedure with an Edison query and the available documentation.
+
+> **Provenance.** Edison Scientific `LITERATURE_HIGH` review, task **`d7ff65b9-1211-4ced-934e-c3c402eddee0`**, run as a continuation of the §12 disposal-SOP trajectory (`56c08a19-…`). 20 cited references (NFPA 484/652/654/77, OSHA 29 CFR 1910.157, and peer-reviewed combustible-dust / static-ignition / hybrid-mixture literature).
+> **Direct link:** <https://platform.edisonscientific.com/trajectories/d7ff65b9-1211-4ced-934e-c3c402eddee0>
+> Raw answer, references, task JSON, and the dispatch script are archived under [`edison/first-test-run-verification/`](edison/first-test-run-verification/).
+>
+> ⚠️ Same caveat: AI-synthesized literature review, not a regulatory ruling — reconcile with BYU EHS / the PI and fold into the NFPA 652 DHA.
+
+### 14.1 Bottom line
+
+**All 12 §13 claims were confirmed correct — none were found wrong.** Nine came back with a strengthening caveat rather than a correction. The verification did surface **six additions** that should be in the procedure before the first live run; the three safety-critical ones are already cross-linked into §13 above.
+
+### 14.2 Verdict table
+
+| # | §13 claim | Verdict | Load-bearing caveat |
+|---|---|---|---|
+| 1 | Continuity check before each use; hose ~4 Ω, wand/coupler < 0.1 Ω, bin-to-ground < 1 Ω, liner-to-bin < 1 kΩ | ✅ correct-with-caveat | All within NFPA 77 tiers (< 10 Ω for metal paths; < 1 kΩ for conductors near a powder bed per Britton 2010). Re-check the liner reading after **every** liner change. |
+| 2 | No bonding clip — conductive liner grounds by contact (verified < 1 kΩ) | ✅ correct-with-caveat | Acceptable, but a single point of failure: re-verify after any bump/reassembly; an optional alligator-clip jumper liner→bin rim is cheap insurance. |
+| 3 | PPE = N95 + nitrile gloves + cotton/antistatic coat; avoid 80/20 poly | ✅ correct-with-caveat | **Adds: operator ESD wrist strap** during vacuuming + sealing (strict NFPA 484 §15.3.1.2, sub-micron fines MIE < 30 mJ). This is an **open item** vs. the 2026-07-06 Risk-Management PPE list — reconcile with EHS. |
+| 4 | Slow, nozzle-close, brush-and-capture; on-before/off-after; never blow / no compressed air | ✅ correct | Fully consistent with NFPA 484 dust-cloud-minimization; a 1 mm Al-alloy layer can re-disperse to explosive concentration. |
+| 5 | Dust brush must be conductive-bristle EXP variant; include ferrule→wand→inlet in continuity | ✅ correct | Add an explicit target: **ferrule-to-wand < 10 Ω**. Isolated conductors are a documented ignition source. |
+| 6 | Gooseneck seal + ESD tape / steel ties; set pail lid on but **do not crimp** | ✅ correct-with-caveat | Sound for dry gram-scale powder (un-crimped lid vents trace H₂ instead of pressurizing). Tape must be **labeled "conductive"/"ESD"**, not ordinary electrical tape. |
+| 7 | No mineral-oil / no-water passivation at this scale | ✅ correct | Dry, sealed, grounded containment is the right call; gas-atomized AlSi10Mg already carries a native oxide layer. |
+| 8 | Power off + settle ≥ 60 s; bin < 25%; pail < 50% | ✅ correct (conservative) | Literature is silent on exact numbers — these are defensible SOP limits to document in the DHA. |
+| 9 | Same-family light clean; full IPA + main/both-HEPA replacement + fresh pail only on incompatible-family switch | ✅ correct | Thermite hazard (Al + Fe/Cu/Ni oxide) is the driver; AlSi10Mg ↔ Si are compatible. |
+| 10 | IPA-only cleaning; no water/acetone/chlorinated; Scotch-Brite on contacts; re-verify continuity | ✅ correct-with-caveat | **IPA + metal dust = hybrid mixture** (lower MIE than either alone): dry-wipe first, 70% IPA, ventilate, full evaporation before reassembly. |
+| 11 | Clean-before-store, dry, cap/bag in conductive black-PE, dedicate to Al family, segregate | ✅ correct-with-caveat | Add: keep the **storage area** itself clean to the NFPA 654 1/32-inch layer-depth criterion. |
+| 12 | Class D (Met-L-X/Lith-X/NaCl) required; no water/CO₂/ABC | ✅ correct | Quantify placement: **≤ 75 ft travel distance** per OSHA 1910.157 (ideally ≤ 25 ft in a single-room lab). |
+
+### 14.3 Additions the review flagged (fold into the SOP before the first run)
+
+- **A — Bond the source tray/benchtop to ground (< 10 Ω).** *Most critical.* An unbonded metal tray in contact with charging powder can spark to the grounded wand tip. Added to the §13.2 checklist.
+- **B — Documented DHA (NFPA 652)** and EHS/PI sign-off, even for a few-gram test. Added to §13.2.
+- **C — Spill-response plan:** never sweep (dust cloud); scoop visible piles with a non-sparking (plastic/brass) scoop into a conductive bag; re-vacuum after confirming the ground chain; for any visible floor layer, restrict access, ventilate, and call EHS.
+- **D — Bystander/area control + signage.** Added to §13.2.
+- **E — Cool-down check for hot powder** (standing rule for future runs off a laser/furnace/hot plate — not an issue for room-temp stock).
+- **F — Equalization touch:** wand tip to the grounded tray before approaching the powder. Added to §13.2.
+
+### 14.4 Documentation cross-check (repo files)
+
+Checked §13's claims against the repo SDS documents; nothing contradicted §13, and several points were reinforced:
+
+- **AlSi10Mg SDS** (`AlSi10Mg-sds-from-heegermaterials…pdf`): **H228** flammable solid, **H261** "in contact with water releases flammable gas" — confirms the no-water rule and the Al + H₂O → H₂ basis. §10.4 "Conditions to avoid: prevent dust clouds and accumulation of fines; static electricity, heat, or ignition source." §8.2 "Do not blow dust off … with compressed air" — confirms the no-compressed-air rule. Reactivity: reacts violently with **halogenated hydrocarbons** — confirms the no-chlorinated-solvents rule. **Note:** §10.5 lists **alcohols** among incompatible materials, which is why §13.5 now says to use IPA sparingly and dry-wipe first rather than soak (reinforces the hybrid-mixture caveat, Claim 10).
+- **118EXP user's manual** (astcanada.ca PDF): could not be machine-parsed here (compressed/encoded stream), so the "continuity check before each use" requirement rests on Ronnie's read of the manual plus the NFPA 77/484 basis above — worth confirming the exact manual wording by eye. The Nilfisk-confirmed hose spec (R ≤ 10⁴ Ω, ~4 Ω normal) is consistent with the < 10 Ω metal-path / conductive-hose criteria in the literature.
