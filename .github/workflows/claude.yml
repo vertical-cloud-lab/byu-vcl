@@ -54,6 +54,7 @@ jobs:
           OT2_STREAM_CAM_USERNAME: ${{ secrets.OT2_STREAM_CAM_USERNAME }}        
           HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
           AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
+          ONEDRIVE_EDIT_LINK_PASSWORD: ${{ secrets.ONEDRIVE_EDIT_LINK_PASSWORD }}
           
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
