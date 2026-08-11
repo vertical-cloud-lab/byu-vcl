@@ -567,3 +567,94 @@ Key answers to Ronnie's specific questions:
 - **How to clean the vacuum** — Lint-free cloth lightly dampened with **isopropyl alcohol** (not water, not acetone, not chlorinated solvents); fine non-metallic Scotch-Brite on aluminum contact surfaces for continuity; **never** blow out filters or wash them. Re-verify continuity after any cleaning/reassembly (hose end-to-end < 10 Ω, bin-to-ground < 1 Ω, liner clip-to-bin < 1 kΩ).
 
 A master operator quick-reference checklist (before/after each session, weekly, and alloy-switch) and an "absolute prohibitions" table are included at the end of the SOP file.
+
+---
+
+## 13. First Test Run (Crevice Nozzle + Dust Brush) + Post-Use Cleaning & Storage
+
+Ronnie's request ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80)): a safe way to do the first live test run vacuuming AlSi10Mg with the **crevice nozzle** and **dust brush**, plus how to store the wand/extensions after use on fine metal powder and whether an IPA wipedown is needed afterward.
+
+This section is the **operating** companion to the §12 **disposal** SOP. It consolidates the §7/§9/§10/§12 guidance with the **Risk Management / Waste Management simplifications from the 2026-07-06 meeting** (Bryant, Steve, Jill, Ed) into the actual sequence of a vacuuming session.
+
+> ⚠️ Same caveat as §12: this is a literature- and meeting-derived working procedure, not a regulatory ruling. Have BYU EHS and the PI sign off before the first live-powder run, and fold it into the site NFPA 652 DHA.
+
+### 13.1 Reconciling three things we've learned since §9/§12 was written
+
+Three field facts change the mechanics from what the earlier Edison sections describe — follow these:
+
+1. **No bonding clip on the 118EXP.** Nilfisk confirmed (Ronnie, 2026-06-29) that this unit has no liner bonding clip and doesn't need one. Liner grounding is by **contact of the conductive (carbon-loaded, black PE) liner against the grounded steel bin** — which is exactly what the continuity check verifies. Wherever §12 says "attach/disconnect the bonding clip," read it as "confirm the conductive liner is seated in contact with the bare metal bin, and verify liner-to-bin < 1 kΩ."
+2. **Sealing = gooseneck + conductive tape or steel zip ties** (ESD tape is the cheaper, easier-to-source substitute Ronnie found — [MECCANIXITY conductive tape](https://www.amazon.com/MECCANIXITY-Adhesive-Conductive-Electronics-Components/dp/B09VWWFW8V)). **Do not crimp the interim-pail lid** — set the lid on but leave it un-crimped (Waste Management said crimping raises the explosion hazard).
+3. **PPE per Risk Management:** N95 respirator, nitrile gloves, and a **cotton or antistatic lab coat** (the black VCL coat is 100% cotton ✅; the atomizer coat is antistatic ✅; the 80/20 poly-cotton white coat ❌ — it builds static, don't use it). Kimwipes are an acceptable lint-free wipe.
+
+### 13.2 Before the test run — setup checklist
+
+- [ ] **Continuity check passes** (this is required before *every* use per the manual). Using the marked test points and the multimeter SOP: hose end-to-end ~4 Ω (Nilfisk confirmed normal, spec R ≤ 10⁴ Ω), wand/coupler < 0.1 Ω, bin/body-to-building-ground < 1 Ω, and the conductive liner in contact with the bin reads < 1 kΩ to ground. If anything fails, stop and diagnose (§11) — don't run powder.
+- [ ] **Filters all installed:** antistatic main filter (+ clamp), upstream HEPA, downstream HEPA.
+- [ ] **Conductive liner** seated in the bin (24×36" or the 24×24" WBAS-LB per §10.8), interior-lining the bin.
+- [ ] **Class D extinguisher** (Met-L-X / Lith-X / NaCl-based) present and within reach — **not** a water/CO₂/ABC unit.
+- [ ] **Grounded steel interim pail** staged nearby with its lid available (labeled per §12/§10).
+- [ ] **PPE on** (§13.1 item 3).
+- [ ] **No water/solvents/oxidizers** on the bench; nothing hot going into the vacuum.
+- [ ] **Start small.** For the very first run, put a **small, known amount** of AlSi10Mg (a few grams) on a **grounded metal tray or benchtop**, not a large pile — enough to confirm pickup, suction, sealing, and disposal end-to-end before scaling up. Have a second person record video (POV + a wide angle) as planned.
+
+### 13.3 Running the crevice nozzle and dust brush safely
+
+General technique (goal: **keep powder out of the air** — sub-micron fines can have MIE < 5 mJ, §9.3):
+
+- **Move slowly.** Slow, deliberate passes; let airflow do the work. Fast motion and dropping/piling powder is what puts it airborne.
+- **Keep the nozzle close to the surface** so capture velocity is high right at the powder.
+- **Never blow powder toward the nozzle** and never use compressed air anywhere near this (NFPA 484 prohibition, §12).
+- Vacuum **on before** you approach the powder; lift the tool away from the powder **before** switching off, so you don't leave a loose pile at the tip.
+
+**Crevice nozzle** — for corners, seams, gasket grooves, around fittings, and small spills. Its small opening gives the highest tip velocity, which is what dense settled metal powder needs. Draw it steadily along the crevice rather than stabbing at piles.
+
+**Dust brush** — for adherent fines on flat/contoured surfaces (µm powder clings electrostatically and won't lift with suction alone). Use **brush-and-capture**: let the bristles just kiss the surface to release powder while the airflow at the ferrule takes it — don't sweep powder across the surface into the air. Two things to confirm first:
+
+1. **Bristles are the classic isolated-conductor gap.** Confirm the brush is the conductive-bristle EXP variant and include the bristle ferrule → wand tip → inlet path in the continuity check (§3c caveat 1).
+2. **Bristles retain powder** → dedicate the brush to the AlSi10Mg/Si family (§13.6).
+
+**During the run, watch for:** visible airborne dust (slow down / get the nozzle closer), bin fill (never exceed ~25%), and any warmth/odor (stop — never vacuum hot/glowing particles).
+
+### 13.4 Immediately after vacuuming (each session)
+
+Follow §12 Section 1 with the §13.1 corrections:
+
+1. Power off; **wait ≥ 60 s** for airborne powder to settle before opening anything.
+2. Check liner fill. If > ~25%, seal and remove now; otherwise it can stay for the next session (same alloy) unless you're switching metals.
+3. To empty: gently gather the liner above the powder, **gooseneck-twist 2–3 turns, secure with conductive/ESD tape or two steel zip ties**, lift the sealed liner into the grounded steel interim pail, **set the lid on (do not crimp)**.
+4. Install a fresh conductive liner (seated against the bare metal bin).
+5. **Log** date, operator, powder type, approximate mass.
+6. Contact BYU Waste Management for pickup when the pail warrants it; the pail itself is on a **1-year** clock once EHS tags it (§meeting notes). No mineral-oil passivation (§12 Section 2).
+
+### 13.5 Post-use cleaning — is an IPA wipedown needed?
+
+**For repeated use on the same alloy family (AlSi10Mg ↔ Si ↔ other Al alloys):** a **full IPA cleaning is not required every time.** Routine after-use care is enough:
+
+- Run the vacuum ~15–30 s with the tools attached to pull residual fines out of the hose/wand bores into the fresh liner.
+- **Dry-wipe** exterior surfaces with a Kimwipe/lint-free cloth; a **light IPA wipe** of the wand, crevice tool, and coupler exteriors/bores is good practice before storage to remove clinging residue.
+- **Never** use water, acetone, or chlorinated solvents; **never** blow out or wash the filters or attachments; **never** rinse anything.
+
+**A full IPA clean (§12 Section 7) IS required when:**
+
+- Switching to an **incompatible alloy family** (any iron/copper/nickel/Ti powder — see §12 compatibility matrix). That also means replacing the main + both HEPA filters and using a fresh dedicated pail.
+- Before maintenance, or if suction drops / visible buildup appears.
+
+**Method (from §12 Section 7):** lint-free cloth *lightly* dampened with IPA (70% or 99%) — dampened, not wet — on bin, wand, crevice tool, coupler, and hose bore. For the **dust brush**, don't soak the bristles: tap them out gently into the sealed liner with the vacuum running, then wipe the ferrule/body; reserve deeper IPA cleaning for an alloy switch. Fine non-metallic Scotch-Brite only on aluminum electrical-contact faces if oxide is interfering with continuity. **Re-verify continuity after any cleaning/reassembly.**
+
+### 13.6 Storing the wand and attachments after use on fine metal powder
+
+The concern with storage is that **any powder left inside the wand, crevice nozzle, or brush is itself an accumulation of combustible metal dust** — so the rules are (1) don't store them dirty, and (2) keep whatever residue remains contained, dry, and grounded-friendly.
+
+- **Clean first, then store.** Do the §13.5 wipe-down before putting tools away — don't store visibly powder-coated tools.
+- **Store dry.** No moisture near stored tools (damp Al fines can self-heat). Keep them away from sinks, eyewash, and water lines.
+- **Contain residual dust.** Cap or plug the wand/crevice-tool ends, or slip each tool into an individual **conductive (black, carbon-loaded PE) bag** — the same liner stock, small — so trace residue can't shake out onto benches or into other equipment, and so cross-contamination with other powders is prevented. Avoid pink "antistatic"/silver shield bags (wrong spec, §10.4).
+- **Dedicate to the AlSi10Mg/Si family.** Keep this hose/wand/crevice/brush set as the aluminum-family set; label it. If they're ever needed for an incompatible powder, do a full IPA clean first (§13.5). The **dust brush especially** holds powder in its bristles — dedicate it and don't share it across families.
+- **Segregate** stored tools from oxidizers and metal-oxide powders (thermite precursors) and from ignition sources — store them with/near the vacuum, not in a drawer with random chemicals.
+- **Keep them grounded-storable.** Storing metal tools on/near the grounded vacuum station is fine; the key hazard control is that they're clean and dust is contained.
+- **Don't leave sealed powder-loaded tools + full liners accumulating.** Storage is for cleaned tools; collected powder belongs in the sealed liner → interim pail → EHS stream, not lingering inside attachments.
+
+> If a tool can't be reasonably cleaned before storing (e.g., end of a long session), treat it as containing combustible dust: cap/bag it, keep it dry and grounded, and clean it before the next use — don't leave open powder-loaded tools on an open bench.
+
+### 13.7 One-line summary
+
+Small first batch on a grounded surface, continuity verified, N95 + gloves + cotton/antistatic coat, Class D extinguisher out; slow brush-and-capture passes with the nozzle close and never blowing powder; power off and let it settle, gooseneck-seal the liner with ESD tape/steel ties into the un-crimped grounded pail; light IPA/dry wipe of tools each time (full IPA clean only on an alloy switch); and store the tools **clean, dry, capped/bagged, dedicated to the aluminum family, and segregated from oxidizers**.
