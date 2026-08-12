@@ -122,6 +122,61 @@ Ordered to follow the talk narrative. Each works as one slide: the human prompt 
 
 **Outcome:** Copilot opened PR #136 (powder characterization campaign) **stacked onto a Claude branch** — Copilot and Claude handing work to each other. Sibling one-liner from tensegrity ([4713093337](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4713093337)): "@copilot send these results (scripts, data, figures) to edison analysis…, fetch, report back" — one coding agent commissioning, retrieving, and committing a second AI system's scientific review in 24 words.
 
+### G. Edison Scientific — the second AI scientist in the loop (added 2026-08-12, PR #176 follow-up)
+
+Edison is everywhere in this corpus: **223 human comments and 418 agent comments mention it** across the three repos. The pattern that emerges is a three-way loop — human → coding agent → Edison → back — with the coding agent composing, submitting, polling, fetching, and committing Edison's answers as versioned artifacts.
+
+**18. A student commissions a control-theory deep-dive** — williamulbz (undergrad), 2026-07-23 · [powder-doser#131](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5060801463)
+> @claude we want to run tests that will provide data helpful to integrating model predictive control in our powder doser… Send a high-effort Edison query in relation to MPC and how we could use it in the context of the powder doser. Outline what kind of data we need to collect in order to properly design a controller.
+
+**Outcome (42m 24s):** the agent grounded the query in the rig's *measured* behavior ("0.029 g/rev feed factor vs 0.5 assumed, per-rev pulsation, +162 mg in-flight powder on halt"), submitted it high-effort, polled ~36 minutes, and committed the full answer plus an experiment-battery table ([5060805804](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5060805804)). *One undergrad sentence → a literature-grounded controller-design brief with a data-collection plan.*
+
+**19. Students overrule the AI scientist** — williamulbz → XZaitzeff, 2026-07-28 · [powder-doser#131](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5108235557)
+> I am wary because this is just what we designed previously, and there is no cited research on doing it this way.
+
+XZaitzeff, nine minutes later ([5108326361](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5108326361)): "Edison seems bent on doing the 3 threshold solution so I think it would be best to ignore it when it talks about it. I am going to test some initial models between today and tomorrow." *Students treating an AI literature engine as a fallible colleague — spot the uncited claim, plan the experiment instead. Pairs with #3 as the critical-thinking arc.*
+
+**20. Edison hypothesis → hardware confirmation** — williamulbz, 2026-07-31 · [powder-doser#131](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5144892863)
+> @claude we would also like to characterize tap behavior to confirm what was hypothesized in the edison query… Remember, just one tap and measure, we don't want tap bursts at this time.
+
+**Outcome (20m 14s):** "✅ Tap characterization done — **120 single taps, 4 tilts × 3 replicates** — the lip-inventory hypothesis is confirmed on hardware" — script written, run on the physical rig, figures generated, data to MongoDB, salt ledger updated ([5144898440](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5144898440)). *The full arc on one slide: Edison predicts, the agent runs the physical experiment, the hypothesis survives.*
+
+**21. A regulatory-grade safety SOP nobody could find** — ronnie-guymon (student), 2026-06-29 · [byu-vcl#80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-4833708843)
+> Chat and Gemini and Claude keep giving different answers and providing new information, so it would be nice if Edison could create a disposal procedure with all details including all relevant information.
+
+**Outcome:** an Edison `LITERATURE_HIGH` query returned a full AlSi10Mg disposal SOP with **15 cited references (NFPA 484/652/654/77, OSHA 1910.157, 40 CFR 261/262)**, committed to the repo ([4836745045](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-4836745045)) — and the student *executed* it: labeled the interim pail, substituted ESD tape for unobtainable conductive cable ties, called Nilfisk about the bonding clip ([4837031320](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-4837031320)). The arc is still running on 2026-08-11: "@claude send an Edison query and search available documentation to verify everything from [the latest plan]… I just need to remember to bring pants." ([5256085012](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-5256085012)) *A student explicitly reaching for cited literature over chatbot consensus — safety story and epistemics story in one.*
+
+**22. Edison output as student reading material** — ronnie-guymon, 2026-05-29 · [byu-vcl#95](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4576977250)
+> I was reading through the lit-ezaf-standardless-mg-bias… edison file, it's super interesting, here are some initial thoughts after reading it.
+
+**Outcome:** the undergrad works through peak-deconvolution and normalization-amplification arguments from the Edison artifact and connects them to the lab's own pre-polish oxygen peak; a week later posts structured takeaways from a second artifact concluding ICP-MS beats EDS for their case ([4636169458](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4636169458)). *Committed Edison artifacts became the lab's journal club.*
+
+**23. An undergrad's first Edison round-trip, honest failure included** — ctrhjk (student), 2026-07-01 · [tensegrity#18](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/18#issuecomment-4859337905)
+> @claude Send the abstract to Edison Scientific for feedback
+
+**Outcome:** the agent replied "⚠️ I can't submit to Edison directly from here" (no API key in the Actions environment), committed a placeholder instead of pretending ([4859339653](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/18#issuecomment-4859339653)); the PI fixed the workflow — "try again with edison (I got the claude.yml file wrong)" ([4859625548](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/18#issuecomment-4859625548)) — and 90 minutes later the student closed the loop: "Fetch the summary of Edison results and report back to me" → two finished trajectories fetched, committed, and summarized in 3m 11s ([4860030619](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/18#issuecomment-4860030619)). *Infrastructure debugging happening inside the science thread, in public.*
+
+**24. "Don't get lazy" — auditing the Edison-built bibliography** — sgbaird, 2026-06-05 · [tensegrity#20](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/20#issuecomment-4634465491)
+> Yes, one-by-one for 592 references. Don't get lazy. Might take you your full hour.
+
+**Outcome:** the bibliography — synthesized from "every single branch and every edison query" ([4633805092](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/20#issuecomment-4633805092)) — got a reproducible verification script checking all **592 DOIs against their registered Crossref metadata: 581+ matched, 179 abstracts added, 1 wrong DOI caught and fixed** ([4634714047](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/20#issuecomment-4634714047)). *The answer to "how do you trust AI-gathered literature": you audit it, mechanically, at scale.*
+
+**Edison bench (more verified one-liners):** the agent asked to fact-check *itself* — "@claude send an edison query to corroborate or refute [your own PXRD answer]" → a 12-claim point-by-point corroboration task submitted in 4m 24s ([byu-vcl 4898202137](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4898202137) → [4898203477](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4898203477)); mock peer review with named personas — "send these to Edison scientific in separate queries (low effort literature) asking for personas from each of the target symposium organizers to get mock feedback" ([powder-doser 4861858994](https://github.com/vertical-cloud-lab/powder-doser/issues/78#issuecomment-4861858994)); Edison as a standing revision loop — "you were meant to get Edison feedback, implement the recommended changes, send back to Edison analysis, implement the changes, etc. in a loop" ([powder-doser 4699226101](https://github.com/vertical-cloud-lab/powder-doser/issues/97#issuecomment-4699226101)); and the PI pointing a student at raw Edison tasks to review — "@lbwinters when these complete, could you have a look at the responses and let me know your thoughts" ([powder-doser 4606920329](https://github.com/vertical-cloud-lab/powder-doser/issues/76#issuecomment-4606920329)).
+
+### H. HPC & compute (thin in these repos — one strong pair + honest framing)
+
+**25. The 2FA constraint that redesigned the architecture** — sgbaird, 2026-07-09 · [byu-vcl#95](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4926560214)
+> @claude Noting that HPC requires 2FA that can't be circumvented, so wouldn't be automated. Suggest specific "permanent headless mini-PC"-s
+
+**Outcome (2m 10s):** the agent agreed Duo on the supercomputer's SSH kills unattended transfers, dropped BYU's Office of Research Computing out of the pipeline entirely, and redesigned the microscope-data flow around a ~$190 always-on mini-PC gateway — with a five-model comparison table (dual-NIC Beelink EQ14 top pick, fanless option flagged for dusty labs) ([4926565110](https://github.com/vertical-cloud-lab/byu-vcl/pull/95#issuecomment-4926565110)). *A one-sentence operational constraint → a rearchitected data pipeline with a shopping list.*
+
+**26. "What does this simulation actually cost?"** — sgbaird, 2026-06-09 · [tensegrity#33](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4663414812)
+> @copilot+claude-opus-4.8 what is the cost of running these simulations? (i.e., CPU time for a given CPU architecture)
+
+**Outcome:** the agent benchmarked its own simulation stack empirically on the CI runner (AMD EPYC 7763): the MuJoCo tier the BO loop calls costs **~0.1–0.2 CPU-seconds per design** vs 50–60 s/run (plus a 25-minute build) for PolyFEM — "Effectively free versus a single print+drop" ([4663641407](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4663641407)). *The honest compute slide: the lab's optimization loops are so cheap they run inside free GitHub Actions runners — HPC hasn't been the bottleneck; atoms have.*
+
+⚠️ **HPC caveat (same flavor as the FLAIME caveat):** in these three repos, HPC proper appears only as open, prompt-stage issues with no agent outcomes yet — [byu-vcl#89](https://github.com/vertical-cloud-lab/byu-vcl/issues/89) "Set up rc.byu.edu HPC account & allocation" (2026-04-11) and [byu-vcl#123](https://github.com/vertical-cloud-lab/byu-vcl/issues/123) "Accessing Thermo-Calc on HPC" (2026-06-05, "@XZaitzeff could you get in contact with Shawn again (and maybe the RC folks…)"). The CALPHAD/HPC thread continues in `digital-alloy-lab-private`, so any "agent driving the supercomputer" claims need a separate pass over that repo.
+
 ---
 
 ## Failure & guardrails beats (the "challenges" promise)
@@ -152,5 +207,7 @@ Ordered to follow the talk narrative. Each works as one slide: the human prompt 
 
 *Verification note: the 17 shortlist quotes' comment IDs, authors, dates, and text were
 checked verbatim against the raw corpus (13 by automated string match, the rest during
-mining). Links use the `/issues/<n>#issuecomment-<id>` form, which GitHub auto-redirects
-for PRs.*
+mining). The addendum items 18–26 (Edison/HPC, added 2026-08-12 for the PR #176 follow-up)
+were verified the same way: every quoted prompt and outcome was pulled directly from the
+corpus JSONL by comment ID, including the reply immediately following each prompt. Links
+use the `/issues/<n>#issuecomment-<id>` form, which GitHub auto-redirects for PRs.*
