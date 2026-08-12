@@ -21,7 +21,7 @@ they read as authentic. Elisions marked with "…".
 
 ---
 
-## The shortlist — 16 slide-ready prompt → outcome pairs
+## The shortlist — 17 slide-ready prompt → outcome pairs
 
 Ordered to follow the talk narrative. Each works as one slide: the human prompt big, the outcome as the reveal.
 
@@ -93,26 +93,31 @@ Ordered to follow the talk narrative. Each works as one slide: the human prompt 
 
 **Outcome:** A fully parametric OpenSCAD T3-prism with sliced Bambu `.gcode.3mf` (PR #35) that grew into the multi-material variants that were printed and drop-tested. Companion one-liner for the BO brain: "use honegumi python package to help with this" ([tensegrity#29](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/29)) → a runnable Ax/BoTorch campaign scaffold. Closing beat months later from a student: "This was excellent. The .3mf file worked great." ([5184282874](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-5184282874))
 
-**13. The agent retracts its own finding** — sgbaird, 2026-07-31 · [tensegrity#94](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/94)
+**13. Dictating a Bayesian optimization campaign in plain English** — sgbaird, 2026-05-20 · [tensegrity#35](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-4503109338)
+> adapt the BO script in [PR #30]… Refer to Honegumi tutorials. Note that we're only generating a single batch, not running in a loop, and not reporting any measured objectives back yet (i.e., human-in-the-loop, one iteration). Fit as many as you can onto the single build plate.
+
+**Outcome (9 min):** [`bo/t3_prism_sobol_batch.py`](https://github.com/vertical-cloud-lab/tensegrity-optimization/blob/7d98451/bo/t3_prism_sobol_batch.py) — "Single-iteration, no `complete_trial(...)`, no closed loop — just Sobol → SCAD → STL → plate-preview PNG": a 5-variable T3-prism design box (R, H, twist, strut Ø, cable Ø) with 9 Sobol specimens packed 3×3 on the H2D plate, preview embedded for spot-checking. Those exact designs became the printed, drop-tested specimens (`yqpmx1`/`m6cyoq`/`n0jdwk`, [4523237745](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-4523237745)) and — regenerated with sensor housings plus the constant-mass and max-volume constraints ([5132983514](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-5132983514)) — the August T-3_01 print campaign ([#98](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/98)). *The BO methodology — sampler, batch size, stopping point, human-in-the-loop design — specified conversationally; the generated code fed the physical campaign.* Companion beat for the closed loop: "@copilot run a Bayesian optimization campaign as you see fit using only simulations as the objective functions. Mirror what's in #35" ([4759514616](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4759514616)) → **19 min later**, `simulations/sim_bo_campaign.py`: an Ax `Sobol → BOTORCH_MODULAR` qNEHVI loop, 86 MuJoCo-scored trials across both regimes with per-regime Pareto fronts — "No printer, no drop-tower — the objective function *is* the simulation." ([4759606831](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4759606831))
+
+**14. The agent retracts its own finding** — sgbaird, 2026-07-31 · [tensegrity#94](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/94)
 > @claude you've been doing a lot of analysis that has more or less been black-box to us… we'd like to better understand the analysis that you're taking with #86.
 
 **Outcome:** The agent commissioned an adversarial Edison review of its own drop-test analysis ("try to break this, not confirm it" — 10 named attack surfaces) — and the review **overturned its recommendation**: "The 20 ms exports contain ~0.39 ms of real pre-trigger data. My script's docstring asserts the opposite… no arrangement attenuates." *Scientific integrity, agent-style — the best "challenges" slide with a happy epistemic ending.*
 
 ### E. Manuscripts, proposals, admin
 
-**14. The most relatable academic moment** — sgbaird, 2026-07-01 · [byu-vcl#146](https://github.com/vertical-cloud-lab/byu-vcl/pull/146#issuecomment-4860708087)
+**15. The most relatable academic moment** — sgbaird, 2026-07-01 · [byu-vcl#146](https://github.com/vertical-cloud-lab/byu-vcl/pull/146#issuecomment-4860708087)
 > @claude aghh.. abstract limit is 150 words for TMS 2027. Fix this
 
 **Outcome (1m 33s):** "Abstract trimmed to the 150-word TMS limit… **147 words**", itemizing which approved claims survived. Same PR: Edison delivered a referee-style pre-review with real citations ("Camera-based lab monitoring is not new — Edison cites HeinSight2.0…", [4860402760](https://github.com/vertical-cloud-lab/byu-vcl/pull/146#issuecomment-4860402760)).
 
-**15. Admin at conversational speed** — sgbaird, 2026-07-27 · [byu-vcl#156](https://github.com/vertical-cloud-lab/byu-vcl/pull/156#issuecomment-5094167311)
+**16. Admin at conversational speed** — sgbaird, 2026-07-27 · [byu-vcl#156](https://github.com/vertical-cloud-lab/byu-vcl/pull/156#issuecomment-5094167311)
 > @claude based on above, what is a max 40-word email I could send to Larry Howell, beginning with 'Hi Larry, Sterling here…'
 
 **Outcome (31 s):** a 38-word draft plus a 40-word alternate, grounded in policy docs the agent had compiled earlier. Same PR, timestamped 3:36 AM: "Compile a list of contacts I could reach out to" → `byu-founder-contacts.md` in 5½ minutes ([5029877173](https://github.com/vertical-cloud-lab/byu-vcl/pull/156#issuecomment-5029877173)). *"Identifying key contacts" theme, verbatim — and the 3:36 AM timestamp shows the lifestyle.*
 
 ### F. Multi-agent, multi-tool (timeline node 5)
 
-**16. Agents launching agents** — sgbaird, 2026-07-29 · [powder-doser#131](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5122974511)
+**17. Agents launching agents** — sgbaird, 2026-07-29 · [powder-doser#131](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5122974511)
 > @copilot+mai-code-1-flash-picker open up a new PR that merges into this one
 
 **Outcome:** Copilot opened PR #136 (powder characterization campaign) **stacked onto a Claude branch** — Copilot and Claude handing work to each other. Sibling one-liner from tensegrity ([4713093337](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4713093337)): "@copilot send these results (scripts, data, figures) to edison analysis…, fetch, report back" — one coding agent commissioning, retrieving, and committing a second AI system's scientific review in 24 words.
@@ -133,6 +138,8 @@ Ordered to follow the talk narrative. Each works as one slide: the human prompt 
 
 **Students & teaching:** "@claude looks like you got stuck… do a quick and easy fix and move on" ([tensegrity 4900737266](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-4900737266)); the PI writing students' first prompt template ([tensegrity 4500807271](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/20#issuecomment-4500807271)); "for kicks and giggles, comment on the above issues…" ([tensegrity 5209814854](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/96#issuecomment-5209814854)); RFID "shower thought" — a student redesigning hardware around the agent's perception gap ([powder-doser 5074139529](https://github.com/vertical-cloud-lab/powder-doser/issues/131#issuecomment-5074139529)); precise scope-fencing: "this is not direction for what you should do…, this is a hypothetical question… Do not provide these files now" ([tensegrity 5184162394](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-5184162394)); undergrad EE debugging loop closed in 33 min ([byu-vcl 5049210314](https://github.com/vertical-cloud-lab/byu-vcl/issues/147#issuecomment-5049210314)).
 
+**BO code generation (more verified beats):** the origin one-liner behind PR #30's scaffold — "use honegumi python package to help with this. Make sure to run and ensure lack of errors. Consider all tutorials in https://honegumi.readthedocs.io/en/latest/" ([tensegrity#29](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/29)) → `bo/generate_scaffold.py` wrapping honegumi's Python API plus the hand-customized `bo/tensegrity_campaign.py` Ax MOO campaign; the PI steering the code's statistical structure in one sentence — "I'm guessing this probably needs to be treated as a hierarchical search space (see https://github.com/facebook/Ax/issues/140 for context)" → "Agreed — recast as an Ax `HierarchicalSearchSpace` in 89a2bd9" ([tensegrity 4500784347](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/24#issuecomment-4500784347)); pointing the agent at honegumi's multitask tutorial to propose sharing information across the crutch/lander campaigns ([4664686033](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4664686033)); "update the BO script(s) based on completing the hybrid approach. Refer to honegumi docs as needed (via context7 if you prefer)" ([4815305004](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4815305004)); and a student auditing the stack's provenance — "I thought we might be using AX but I would like to check these assumptions" → 4m 42s trace: "every piece of BO code in this repo uses Ax… auto-generated by honegumi… and hand-customized companions written by the GitHub Copilot coding agent" ([tensegrity#85](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/85#issuecomment-5108176759)).
+
 **Data & analysis:** "Can you do a video analysis?" → YouTube bot-wall improvisation → full frame-by-frame kinematics with fps hunted from a camera-spec comment ([tensegrity 5036908261](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/86#issuecomment-5036908261)); accelerometer discrepancy → SAE J211 forensics, DAQ software identified from a CSV header path ([tensegrity#71](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/71)); MongoDB time-series streaming designed in an issue body ([powder-doser#126](https://github.com/vertical-cloud-lab/powder-doser/issues/126)); "Claude can probably check the streams" — livestream as provenance ([powder-doser#125](https://github.com/vertical-cloud-lab/powder-doser/issues/125)); "I want to be able to comment 'claude, I've loaded Brown Rice Flour, run the test'" — the prompt *is* the API spec ([powder-doser 5123330037](https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5123330037)).
 
 **Design & figures:** "I want to see something cool here from these physics-based simulations" → animated MuJoCo/PolyFEM impact renders ([tensegrity 4427269438](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/33#issuecomment-4427269438)); placeholder manuscript figures driven by a *real* Ax BO loop ([tensegrity 4673509625](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/20#issuecomment-4673509625)); igloo accelerometer mount dictated in prose + caliper readings + phone screenshots ([tensegrity 4794790065](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/35#issuecomment-4794790065)); where AI CAD breaks down — agent asked to diagnose its own spatial-reasoning weakness ([powder-doser 4433787200](https://github.com/vertical-cloud-lab/powder-doser/issues/29#issuecomment-4433787200)); "you were meant to clone bambu slicer repo…" → genuine upstream CLI bug discovered ([tensegrity 4520389873](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/64#issuecomment-4520389873)).
@@ -143,7 +150,7 @@ Ordered to follow the talk narrative. Each works as one slide: the human prompt 
 
 ---
 
-*Verification note: the 16 shortlist quotes' comment IDs, authors, dates, and text were
-checked verbatim against the raw corpus (12 by automated string match, the rest during
+*Verification note: the 17 shortlist quotes' comment IDs, authors, dates, and text were
+checked verbatim against the raw corpus (13 by automated string match, the rest during
 mining). Links use the `/issues/<n>#issuecomment-<id>` form, which GitHub auto-redirects
 for PRs.*
