@@ -7,31 +7,31 @@
 
 ## OneDrive/SharePoint PowerPoint decks (remote access & editing)
 
-Applies to presentation files shared via OneDrive/SharePoint sharing links (e.g. the
-CNMS 2026 deck, `cnms-2026.pptx`). The full validated recipe with working code lives in
-[docs/cnms-2026-onedrive-access.md](docs/cnms-2026-onedrive-access.md) — read it before
-touching the deck. Summary of the rules and gotchas:
+Applies to any presentation file shared via an OneDrive/SharePoint sharing link. The
+full validated recipe with working code lives in
+[docs/onedrive-sharepoint-ppt-access.md](docs/onedrive-sharepoint-ppt-access.md) — read
+it before touching the file. Summary of the rules and gotchas:
 
-- **The link is password-protected.** The password is the workflow secret
-  `ONEDRIVE_EDIT_LINK_PASSWORD` — never echo/print it. Unlock by submitting the
+- **Password-protected links**: the link password is injected as a workflow secret
+  (e.g. `ONEDRIVE_EDIT_LINK_PASSWORD`) — never echo/print it. Unlock by submitting the
   `guestaccess.aspx` ASP.NET form postback (`__EVENTTARGET=btnSubmitPassword` + viewstate
   fields); success redirects to `Doc.aspx` and issues a guest `FedAuth` cookie that
   authorizes the SharePoint REST API as "Guest Contributor" (view + download + edit).
 - **Download** via `GET /_api/web/GetFileById(guid'<UniqueId>')/$value` with that cookie
   jar. (`GetFileByUniqueId` does not exist on this endpoint.)
-- **Two write paths — pick based on whether anyone has the deck open:**
+- **Two write paths — pick based on whether anyone has the file open:**
   1. *REST upload* (`POST .../$value` with `X-HTTP-Method: PUT` + `X-RequestDigest`
      from `/_api/contextinfo`): the clean path for substantive edits (download →
      modify with `python-pptx` → upload), but it is a **whole-file replace** and
-     returns **HTTP 423 `SPFileLockException` whenever anyone has the deck open**
+     returns **HTTP 423 `SPFileLockException` whenever anyone has the file open**
      (co-authoring lock, not a permission failure; it lingers ~10 min after they
      close). If retrying, re-download the latest copy and re-apply your changes
      before every attempt so you never clobber concurrent human edits. Do not sit in
      a retry loop for tens of minutes — switch to path 2.
   2. *Headless-browser co-authoring* — **the preferred/default path, and the only one
-     that works while the owner is editing.** There is no browser MCP tool in the
-     runner: `pip install playwright`, then launch with `channel="chrome"` to use the
-     system Chrome (no browser download). Inject the `FedAuth` cookie from the unlock
+     that works while the owner is editing.** If no browser tool is available in the
+     environment: `pip install playwright`, then launch with `channel="chrome"` to use
+     the system Chrome (no browser download). Inject the `FedAuth` cookie from the unlock
      step into the browser context to skip the password page, load the sharing link,
      and wait ~40 s for the Office WOPI editor iframe to boot — it opens directly in
      Editing mode and autosaves/merges with any live human session.
@@ -45,10 +45,10 @@ touching the deck. Summary of the rules and gotchas:
 - Precision drawing in the web editor (exact inch sizes via the Shape ribbon's numeric
   fields, pixel↔inch mapping, screenshot-verified drags, `%2B` encoding for `+` in key
   combos) is documented in the recipe doc — use those techniques rather than freehand.
-- This repo is **public**: don't commit the deck or its content; small derived
-  artifacts (screenshots, standalone shape-only pptx fallbacks) are fine. Make edits
-  reversible where possible (SharePoint version history exists) and label test edits
-  clearly.
+- If the repo is **public**, don't commit the presentation or its content; small
+  derived artifacts (screenshots, standalone shape-only pptx fallbacks) are fine. Make
+  edits reversible where possible (SharePoint version history exists) and label test
+  edits clearly.
 
 ## Edison Scientific
 
