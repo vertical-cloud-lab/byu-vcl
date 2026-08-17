@@ -18,6 +18,8 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
+    # Allow long waits (e.g., Edison polling) without hitting a job-level limit
+    timeout-minutes: 180
     permissions:
       contents: read
       pull-requests: read
@@ -29,6 +31,49 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
+
+      # Copilot-style model selector: @claude+<model>[:<effort>]
+      # Examples: @claude, @claude+opus-5, @claude+opus-4.8:max, @claude:high
+      # Model part: lowercased, dots -> dashes, "claude-" prefixed if missing.
+      # Effort part: low | medium | high | xhigh | max (anything else is ignored).
+      # The FULL tag is passed as the action's trigger phrase — required because
+      # the action only accepts whitespace/punctuation after the phrase, not "+".
+      - name: Parse model selector tag
+        id: select
+        env:
+          TRIGGER_TEXT: ${{ github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body) }}
+        run: |
+          # First tag in the text wins
+          TAG=$(grep -oiE '@claude(\+[a-z0-9.-]*[a-z0-9])?(:[a-z]+)?' <<<"$TRIGGER_TEXT" | head -n1)
+          TAG=${TAG:-@claude}
+          tag_lc=$(tr '[:upper:]' '[:lower:]' <<<"$TAG")
+          rest=${tag_lc#@claude}
+          effort=""
+          if [[ "$rest" == *:* ]]; then
+            effort=${rest##*:}
+            rest=${rest%:*}
+          fi
+          model_part=${rest#+}
+          if [[ -z "$model_part" ]]; then
+            # Default model for a bare @claude mention — edit this line to change it
+            model="claude-fable-5"
+          elif [[ "$model_part" != *[0-9]* ]]; then
+            # Unversioned family name (opus, sonnet, fable, haiku) -> pass through as a
+            # CLI alias, which resolves to the latest model of that family
+            model=${model_part#claude-}
+          else
+            model=${model_part//./-}
+            [[ "$model" == claude-* ]] || model="claude-$model"
+          fi
+          args="--model $model"
+          case "$effort" in
+            low|medium|high|xhigh|max) args="$args --effort $effort" ;;
+            "") args="$args --effort max" ;;   # no :effort suffix given -> default to max
+            *) echo "Ignoring unknown effort level ':$effort'" ;;
+          esac
+          echo "Tag: $TAG -> $args"
+          echo "phrase=$TAG" >> "$GITHUB_OUTPUT"
+          echo "model_args=$args" >> "$GITHUB_OUTPUT"
 
       - name: Connect to Tailscale
         uses: tailscale/github-action@v2
@@ -55,8 +100,13 @@ jobs:
           HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
           AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
           ONEDRIVE_EDIT_LINK_PASSWORD: ${{ secrets.ONEDRIVE_EDIT_LINK_PASSWORD }}
+          # Allow long-blocking foreground commands (e.g., Edison polling)
+          BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
+          BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
           
         with:
+          # The exact tag found in the trigger text (@claude, @claude+opus-5:max, ...)
+          trigger_phrase: ${{ steps.select.outputs.phrase }}
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
           # This is an optional setting that allows Claude to read CI results on PRs
@@ -66,10 +116,7 @@ jobs:
           # Optional: Give a custom prompt to Claude. If this is not specified, Claude will perform the instructions specified in the comment that tagged it.
           # prompt: 'Update the pull request description to include a summary of changes.'
 
-          # Optional: Add claude_args to customize behavior and configuration
-          # See https://github.com/anthropics/claude-code-action/blob/main/docs/usage.md
-          # or https://code.claude.com/docs/en/cli-reference for available options
-          # claude_args: '--allowed-tools Bash(gh pr *)'
+          # --model / --effort chosen by the "Parse model selector tag" step
           claude_args: |
-            --model claude-fable-5
+            ${{ steps.select.outputs.model_args }}
             --permission-mode bypassPermissions
