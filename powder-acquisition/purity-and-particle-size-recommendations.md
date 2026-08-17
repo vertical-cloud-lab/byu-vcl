@@ -1,5 +1,12 @@
 # Powder Purity & Particle-Size Recommendations for Atomizer Feedstock Acquisition
 
+> **Update 2026-08-17:** the plan has since fixed *all* feedstock as powder/granules ≤300 µm
+> (target 150–300 µm) for automated auger dosing, swapped the Al-5Ti-1B rod for elemental Ti
+> powder, and lost both original suppliers (MSE Supplies: "importation restrictions";
+> American Elements: unresponsive). Current sourcing lives in
+> [supplier-search-2026-08.md](supplier-search-2026-08.md) — the literature-based purity and
+> handling guidance below still stands.
+
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161). This note distills the [Edison Scientific literature report](edison-lpbf-feedstock-purity-report.md) into actionable purchasing guidance, and reconciles it with the shopping list drafted in [digital-alloy-lab-private PR #88](https://github.com/vertical-cloud-lab/digital-alloy-lab-private/pull/88).
 
 Workflow assumed: blend elemental feedstocks → melt → ultrasonic atomization (~100 g batches, Amazemet rePowder-type) → LPBF-usable Al-alloy powder. The base is Al with additions drawn from Mn, Cr, Zr, Mg, Si, Cu, Ti, Fe, Ni, Ce, Sc, Li, Er, Zn, Sn.

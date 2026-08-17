@@ -1,5 +1,11 @@
 # Purchase-Quantity Model — First Round: 20 × 100 g Atomizer Runs
 
+> **Update 2026-08-17:** the buy list has been simplified into the fixed shopping chart in
+> [issue #161](https://github.com/vertical-cloud-lab/byu-vcl/issues/161) (Al 2 kg; 100 g of
+> each 99.9% element; Ti 200 g; Al-20Ce 250 g, Al-2Sc 250 g, Al-10Zr 300 g, Al-10Er 100 g,
+> Al-10Li 100 g — all as ≤300 µm powder/granules). Supplier sourcing for that chart is in
+> [supplier-search-2026-08.md](supplier-search-2026-08.md).
+
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161). This model sizes the first feedstock purchase for **20 ultrasonic-atomization runs at 100 g each (2.0 kg total charge)**, using the purity and form decisions already settled in [purity-and-particle-size-recommendations.md](purity-and-particle-size-recommendations.md):
 
 - Al, Zr, Er, Sc, Mg → **99.99%** basis
