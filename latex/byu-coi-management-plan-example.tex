@@ -1,0 +1,731 @@
+% byu-coi-management-plan-example.tex
+%
+% LaTeX source for the PDF rendering of ../byu-coi-management-plan-example.md
+% (vertical-cloud-lab/byu-vcl). The Markdown file is canonical; if it changes,
+% update this file to match and recompile:
+%
+%   pdflatex byu-coi-management-plan-example.tex   (run twice, for TOC/LastPage)
+%
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[sc]{mathpazo}
+\linespread{1.06}
+\usepackage[letterpaper,margin=1in,headheight=15pt,headsep=18pt,footskip=32pt]{geometry}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{hyperref}
+
+% ------------------------------------------------------------------ colors --
+\definecolor{byunavy}{HTML}{002E5D}   % BYU brand navy
+\definecolor{byuroyal}{HTML}{0062B8}  % BYU royal (hyperlinks)
+\definecolor{metagray}{gray}{0.42}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=byunavy,
+  urlcolor=byuroyal,
+  pdftitle={Getting Approval at BYU: The Steps, and an Example COI Management Plan},
+  pdfauthor={Vertical Cloud Lab (vertical-cloud-lab/byu-vcl)},
+  pdfsubject={Example integrated conflict-of-interest management plan --- discussion draft, not an official BYU form},
+  pdfkeywords={BYU, conflict of interest, management plan, faculty founder, technology transfer}
+}
+
+% ------------------------------------------------------------------ layout --
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 1pt minus 1pt}
+\raggedbottom
+\widowpenalty=9000
+\clubpenalty=9000
+\emergencystretch=1.5em
+\setlist{itemsep=3pt,parsep=0pt,topsep=5pt,leftmargin=1.7em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\footnotesize\scshape\color{metagray} Example COI Management Plan --- Vertical Cloud Lab}
+\fancyhead[R]{\footnotesize\scshape\color{metagray} draft example --- not an official BYU form}
+\fancyfoot[C]{\footnotesize\color{metagray} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{{\color{metagray!50}\hrule width\headwidth height\headrulewidth}}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\footnotesize\color{metagray} Page \thepage\ of \pageref{LastPage}}%
+  \renewcommand{\headrulewidth}{0pt}}
+
+% ---------------------------------------------------------------- commands --
+\makeatletter
+% Top-level heading (Part 1, Part 2, closing section) with a navy rule.
+\newcommand{\parthead}[1]{%
+  \par\addvspace{22pt plus 6pt minus 4pt}%
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}%
+  \noindent{\color{byunavy}\Large\bfseries #1}%
+  \par\nobreak\addvspace{5pt}%
+  {\color{byunavy}\hrule height 1.1pt}%
+  \par\nobreak\addvspace{10pt}\@afterheading}
+% Second-level heading.
+\newcommand{\subhead}[1]{%
+  \par\addvspace{14pt plus 4pt minus 2pt}%
+  \phantomsection
+  \addcontentsline{toc}{subsection}{#1}%
+  \noindent{\color{byunavy}\large\bfseries #1}%
+  \par\nobreak\addvspace{6pt}\@afterheading}
+% Numbered section of the management plan itself (renders as "S:N. Title").
+\newcounter{psec}
+\newcommand{\psection}[1]{%
+  \par\addvspace{16pt plus 4pt minus 2pt}%
+  \stepcounter{psec}%
+  \phantomsection
+  \addcontentsline{toc}{subsection}{\S\thepsec.\ #1}%
+  \noindent{\color{byunavy}\large\bfseries \S\thepsec.\hspace{0.55em}#1}%
+  \par\nobreak\addvspace{6pt}\@afterheading}
+% A numbered clause ("3.1", "3.2", ...) with a hanging indent.
+\newcommand{\clause}[1]{%
+  \par\addvspace{5pt plus 1pt}%
+  \noindent\hangindent=2.5em\hangafter=1
+  {\color{byunavy}\bfseries #1}\hspace{0.7em}\ignorespaces}
+\makeatother
+
+% Placeholder marker, policy-source citation, signature line.
+\newcommand{\ph}{{[}\,\textbullet\,{]}}
+\newcommand{\policyref}[1]{{\small\itshape(#1)}}
+\newcommand{\sigline}{\raisebox{-1pt}{\rule{1.5in}{0.4pt}}}
+
+% Framed notice box.
+\newcommand{\noticebox}[1]{%
+  \par\medskip\noindent
+  {\setlength{\fboxsep}{11pt}\setlength{\fboxrule}{0.8pt}%
+   \fcolorbox{byunavy!45}{byunavy!4}{%
+     \begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+       \small #1
+     \end{minipage}}}%
+  \par\medskip}
+
+% Full-width DRAFT banner.
+\newcommand{\draftbanner}{%
+  \begin{center}
+    {\setlength{\fboxsep}{8pt}%
+     \colorbox{byunavy}{\parbox{\dimexpr\textwidth-2\fboxsep\relax}{\centering
+       \color{white}\small\bfseries\textls[120]{DRAFT --- FOR DISCUSSION --- NOT AN OFFICIAL BYU FORM}}}}%
+  \end{center}}
+
+\begin{document}
+
+% ================================================================== title ==
+\thispagestyle{plain}
+
+{\color{byunavy}\hrule height 2.4pt}
+\vspace{16pt}
+{\huge\bfseries\color{byunavy} Getting Approval at BYU}\\[9pt]
+{\LARGE The Steps, and an Example COI Management Plan}
+\vspace{10pt}
+
+{\color{metagray}\small Vertical Cloud Lab \,\textperiodcentered\, example discussion draft \,\textperiodcentered\, 18 August 2026}
+\vspace{6pt}
+
+{\color{byunavy}\hrule height 0.8pt}
+\vspace{14pt}
+
+How a faculty-founder arrangement actually gets approved at BYU --- who signs
+what, in what order --- and a drafted example of the central instrument, the
+\textbf{conflict-of-interest management plan}, written for the VCL scenario
+developed across \href{https://github.com/vertical-cloud-lab/byu-vcl/pull/156}{PR \#156}.
+Companion to
+\href{https://github.com/vertical-cloud-lab/byu-vcl/blob/claude/issue-155-20260708-0433/byu-vc-founder-rules.md}{BYU
+rules on VC money and founder involvement}, which holds the underlying policy
+analysis.
+
+\noticebox{\textbf{Not an official form, and not legal advice.} BYU does not
+publish its disclosure forms or management-plan template --- they are internal
+to the Faculty Profile System and the AAVP--Research office (this is
+documentation gap \#1 flagged in the
+\href{https://github.com/vertical-cloud-lab/byu-vcl/blob/claude/issue-155-20260708-0433/byu-vc-founder-rules.md\#can-the-founders-company-fund-research-in-the-founders-own-lab-the-10-equity-on-leave-case}{rules
+doc}). The draft in Part~2 is synthesized from the requirements and management
+tools BYU's own policies name, the TTO's process documents, and the elements
+peer-university plans (Stanford, UIC, UCLA) contain. Use it as a discussion
+draft to bring to the chair and to Larry Howell's office --- and ask them for
+the real template.}
+
+\renewcommand{\contentsname}{\normalsize\color{byunavy}Contents}
+{\setlength{\parskip}{0pt}\small\tableofcontents}
+
+% ================================================================= part 1 ==
+\parthead{Part 1 --- The approval sequence}
+
+Two clarifications up front, answering the questions as asked:
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{``Department approval'' is the first layer of a stack, not a
+single event.} What the department itself controls is steps 1--3 below: the
+disclosure, the chair/dean written authorization of the outside role, and the
+chair-written/dean-approved conflict management plan. Every transaction after
+that (license, sponsored research agreement, board seat, leave) adds
+university-level approvers on top --- but the chair and dean reappear as
+signatories inside almost all of them, which is why the informal chair briefing
+is step~0.
+\item \textbf{Yes, a management plan is involved --- in fact BYU's policies
+name two, and this scenario triggers both.} The
+\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy} (COTI) calls for a \textbf{conflict management
+plan} when a disclosed outside activity creates a conflict or its appearance:
+it is ``written with the chair, approved by the dean, and submitted through the
+[Faculty Profile System],'' and may include ``any actions sufficient to avoid,
+eliminate, or ensure against Conflicts or the appearance of Conflicts,
+including recusal from discussions or decisions if a potential Conflict
+exists.'' The
+\href{https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy}{Financial
+Conflict of Interest in Research Policy} (FCOI) calls for a \textbf{management
+plan} when the AAVP--Research determines a disclosed Significant Financial
+Interest is a conflict with respect to research; its named tools run from
+public disclosure in publications and an independent monitor up to
+disqualification from the project and ``reduction or elimination of the
+financial interest (e.g., sale of an equity interest).'' The COTI plan governs
+the \emph{role and time} (co-founder title, days per month, resource wall); the
+FCOI plan governs the \emph{research} (the company-sponsored work, the
+students, the data). For a founder whose company licenses BYU IP and sponsors
+research in their own lab, the sensible artifact is \textbf{one integrated plan
+approved by chair, dean, and AAVP--R together} --- which is what Part~2 drafts.
+\end{enumerate}
+
+\subhead{The steps in order}
+
+{\footnotesize
+\setlength{\extrarowheight}{2.5pt}
+\begin{longtable}{@{} >{\bfseries}p{0.24in} >{\RaggedRight\arraybackslash}p{1.02in} >{\RaggedRight\arraybackslash}p{1.32in} >{\RaggedRight\arraybackslash}p{2.06in} >{\RaggedRight\arraybackslash}p{1.06in} @{}}
+\toprule
+{\color{byunavy}\scshape\#} &
+{\color{byunavy}\scshape What happens} &
+{\color{byunavy}\scshape Instrument} &
+{\color{byunavy}\scshape Approver(s)} &
+{\color{byunavy}\scshape When} \\
+\midrule
+\endfirsthead
+\toprule
+{\color{byunavy}\scshape\#} &
+{\color{byunavy}\scshape What happens} &
+{\color{byunavy}\scshape Instrument} &
+{\color{byunavy}\scshape Approver(s)} &
+{\color{byunavy}\scshape When} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{5}{r@{}}{\itshape continued on next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+0 & Informal chair briefing & conversation + one-pager & --- & now, before the
+company takes further shape \\
+\addlinespace
+1 & Disclose the outside activity & Faculty Outside Activities Form (Annual
+Review section, Faculty Profile System) & filed, not approved & \textbf{before
+engaging} in the activity; re-filed annually \\
+\addlinespace
+2 & Authorize the role itself & prior \textbf{written} authorization &
+department chair, dean, or supervisor (consulting: chair) & before taking the
+co-founder/advisor role or signing anything company-side \\
+\addlinespace
+3 & COTI conflict management plan & plan \textbf{written with the chair} &
+\textbf{dean approves}; submitted via Faculty Profile System & as soon as a
+conflict or its appearance is identified --- realistically, at step~2 \\
+\addlinespace
+4 & FCOI disclosure $\rightarrow$ determination $\rightarrow$ management plan
+& SFI disclosure; written management plan & \textbf{AAVP--Research} (Larry
+Howell) determines and approves & disclosure \textbf{before proposal
+submission} and within 30 days of acquiring any new interest; plan before
+affected research proceeds \\
+\addlinespace
+5a & License / assignment of BYU IP & option $\rightarrow$ term sheet
+$\rightarrow$ license or assignment (TTO) & reviewed by chair, dean, TTO
+director, General Counsel; \textbf{decision by AAVP--R}; founder recused from
+negotiation & at deal time \\
+\addlinespace
+5b & Company-sponsored research in the lab & proposal + SRA (RAO) & chair +
+dean approve the proposal; \textbf{AAVP--R signs} before it leaves BYU; RAO
+negotiates opposite a non-founder company negotiator & when company money funds
+lab work \\
+\addlinespace
+5c & Voting board seat at the licensee & written approval & dean + AAVP--R +
+TTO --- and only if $\leq$\$3M raised, no non-accredited investors & rare; a
+priced round forecloses it \\
+\addlinespace
+5d & Exception to standard income distribution (the $\geq$10\% forfeiture) &
+written approval & dean + AAVP--R + TTO & if relief from the forfeiture/match
+collision is sought \\
+\addlinespace
+5e & Personal leave (only if the posture changes) & leave application + written
+leave agreement & chair $\rightarrow$ dean $\rightarrow$ AAVP--Faculty
+Development & before any officer role \\
+\addlinespace
+5f & Company equipment placed in the lab & loan/bailment agreement or SRA term
+& RAO signs (PI may not) & at placement \\
+\end{longtable}}
+
+Notes on the table:
+
+\begin{itemize}
+\item \textbf{Step 1 timing is a policy command, not advice:} Outside
+Activities ``must be disclosed \emph{before} engaging in them,'' then annually.
+Since the April 2025 rewrite, the disclosure workflow lives inside the COTI
+policy itself (Faculty Outside Activities Form; conflict management plans
+through the same system) --- there is no separate HR procedure to hunt down.
+\item \textbf{Step 2 is triggered by the role, not the money.} Written
+authorization is required to ``operate a business, serve as an officer (in
+title or in fact) of a business, or maintain employment with a business that
+requires attention during the employee's assigned work hours,'' and Secondary
+Employment (consulting) needs prior written chair approval within the
+4-days/month cap. The test the approver applies is written down: chairs and
+deans ``do not approve activities they believe would unduly limit a faculty
+member's availability to students or compromise\ldots\ teaching, scholarship,
+or citizenship performance'' --- which is why the one-pager for step~0 should
+lead with the time budget and the teaching/mentoring plan, not the cap table.
+\item \textbf{Steps 3 and 4 are where ``the management plan'' lives} --- see
+the two-plans clarification above. For the license-only route Howell
+recommended, it is possible the COTI layer resolves at step~2 with
+authorization plus disclosure alone, and the FCOI plan only comes into
+existence when the first proposal touching the company is submitted. But
+Howell's own advice from the July 2026 meeting cuts the other way: get the
+disclosures and the plan \textbf{dated early, while the stakes look small} ---
+an approved plan is the artifact that answers later scrutiny; a retroactive one
+is an admission.
+\item \textbf{Step 5a includes the founder's chair by design.} The IP Policy:
+``Any proposed transfer of Intellectual Property from the university will be
+reviewed by the chair, dean, director of the Technology Transfer Office or
+Creative Works Office, Office of General Counsel, and associate academic vice
+president -- research and graduate studies,'' with the final decision the
+AAVP--R's. The founder's sanctioned touchpoints during the deal are exactly
+three: share information with TTO about the company as a potential licensee,
+sign the license acknowledgment (``blue sheet''), and negotiate/sign the income
+\textbf{Distribution Agreement} --- the one contract that is between BYU and
+its own employee rather than with a third party, and therefore the founder's
+only legitimate seat at any table.
+\item \textbf{What to bring to step 0.} A one-page brief: what the company
+does; proposed personal role and title (advisory, non-officer); equity range
+and whether it will cross 10\%; what BYU touchpoints are contemplated
+(license/assignment, BYU-held equity, later SRA, equipment placements); the
+monthly time budget against the 4-day cap; how teaching, mentoring, and the
+proposal pipeline are unaffected; and a draft management plan (Part~2) showing
+the protections are already thought through. The chair's signature appears at
+steps 2, 3, 5a, and 5b --- the person who should never be surprised.
+\end{itemize}
+
+% ================================================================= part 2 ==
+\parthead{Part 2 --- Example integrated conflict-of-interest management plan}
+
+The draft below is written for the specific posture the PR \#156 thread
+converged on after the Howell meeting: \textbf{stay full-time faculty (no
+leave), listed co-founder with equity, advisory non-officer title, TTO license
+or assignment with BYU possibly taking equity, the company later sponsoring
+research in the founder's own lab, open-source-by-default outputs, possible
+company equipment in the lab, and students throughout.} Bracketed text is
+placeholder; provisions cite their policy source so approvers can check
+provenance. Provisions marked \emph{[snapshot]} rest on login-gated policies
+reviewed in the
+\href{https://github.com/vertical-cloud-lab/byu-vcl/pull/156\#issuecomment-5094216608}{July
+2026 full-policy-snapshot cross-check} rather than on publicly fetchable text.
+
+One structural point worth understanding before reading it: the snapshot
+cross-check found that \textbf{BYU has no default student-protection rule for
+faculty startups} (no analogue of Stanford's flat bar on involving current
+students in company activities). At BYU those protections exist \emph{only if a
+management plan creates them} --- which is why \S6 below is the longest
+section.
+
+% ------------------------------------------------- the plan document itself --
+\clearpage
+\draftbanner
+\vspace{6pt}
+
+\begin{center}
+{\LARGE\bfseries\color{byunavy} Conflict of Interest Management Plan}\\[7pt]
+{\normalsize\bfseries Brigham Young University --- Department of Mechanical
+Engineering / Ira A.\ Fulton College of Engineering}\\[10pt]
+{\color{byunavy}\hrule height 0.8pt}
+\end{center}
+\vspace{4pt}
+
+{\setlength{\extrarowheight}{3pt}
+\begin{tabular}{@{} >{\leavevmode\color{byunavy}\scshape}p{1.45in} >{\RaggedRight\arraybackslash}p{4.55in} @{}}
+Faculty member & [Sterling G. Baird], Assistant Professor, Department of
+Mechanical Engineering (the ``Faculty Member'') \\
+Outside entity & [NewCo, Inc.], a [Delaware C-corporation] commercializing
+automated (``cloud lab'') materials-experimentation technology (the
+``Company'') \\
+Governing policies & Conflict of Time or Interest Policy (7 Apr 2025);
+Financial Conflict of Interest in Research Policy (7 Apr 2025); Intellectual
+Property Policy (rev.\ 16 Dec 2024) and Intellectual Property Procedures;
+Sponsored Projects Handbook \\
+Plan effective date & [date] \\
+Review cycle & annual, with the Faculty Outside Activities Form \\
+\end{tabular}}
+
+\psection{Disclosed facts and interests}
+
+Per the Faculty Outside Activities Form dated \ph\ and the FCOI disclosure
+dated \ph:
+
+\clause{1.1} The Faculty Member is a \textbf{co-founder} of the Company.
+
+\clause{1.2} The Faculty Member holds an equity interest of \textbf{\ph\%
+fully diluted} ([below 10\% / exactly 10\% / above 10\%] --- the provisions of
+\S9 apply accordingly). No salary, consulting fees, or other remuneration are
+received from the Company (see \S3.4).
+
+\clause{1.3} The Faculty Member's role is \textbf{[co-founder and Chief
+Scientific Advisor]} --- an advisory role with no line-management authority, no
+employment relationship, and no officer title, in fact or in name.
+
+\clause{1.4} The Company [is negotiating / holds] a [license / assignment] to
+BYU-owned intellectual property arising from the Faculty Member's laboratory
+(TTO ref.\ \ph). BYU [holds / may accept] equity in the Company as partial
+consideration.
+
+\clause{1.5} The Company [intends to / may] sponsor research in the Faculty
+Member's BYU laboratory under a sponsored research agreement (``SRA'')
+negotiated by the Research Administration Office (``RAO'').
+
+\clause{1.6} The Company may place Company-owned equipment in the laboratory
+under a university-signed agreement (\S7.2).
+
+\clause{1.7} Students and postdoctoral researchers work in the laboratory;
+some may be funded under the SRA.
+
+\clause{1.8} The laboratory's stated policy is open-source release of outputs
+by default, subject to the TTO disclosure gate (\S7.3).
+
+\clause{1.9} The Faculty Member remains on a full-time faculty appointment and
+is not on leave. A change in any fact in this section is a plan-amendment
+trigger (\S10).
+
+\psection{Determinations}
+
+\clause{2.1} The department chair and dean have authorized the outside
+activity described in \S1.1--1.3 in writing, subject to this plan.
+\policyref{COTI: written authorization to ``operate a business, serve as an
+officer (in title or in fact) of a business\ldots''}
+
+\clause{2.2} The AAVP--Research has determined that the interests in \S1
+constitute a Financial Conflict of Interest with respect to [the SRA in \S1.5
+and any research related to the licensed IP], and that the conflict can be
+\textbf{managed} under this plan rather than requiring elimination.
+\policyref{FCOI: AAVP--R determination; management-plan tools.}
+
+\clause{2.3} This plan is intended to manage conflicts \textbf{and the
+appearance of conflicts}. \policyref{COTI management-plan standard.}
+
+\psection{Role, title, and time}
+
+\clause{3.1} The Faculty Member will hold \textbf{advisory titles only}
+(e.g., ``Chief Scientific Advisor,'' scientific advisory board chair) and will
+not serve as an officer of the Company, in title or in fact, nor as a line
+manager or employee, while a full-time faculty member not on leave.
+\policyref{COTI officer clause; Sponsored Projects Handbook: ``Faculty members
+not on leave are not to be line officers in outside companies.''}
+
+\clause{3.2} The Faculty Member will not hold a \textbf{voting board seat}.
+If the Company has raised $\leq$\$3{,}000{,}000 with no non-accredited
+investors and a voting seat is desired, it requires separate prior written
+approval of the dean, AAVP--R, and TTO; the parties acknowledge a priced
+venture round forecloses it, and a board-observer or advisory seat is the
+durable shape. \policyref{IP Policy board-seat rule.}
+
+\clause{3.3} Aggregate time on Company matters will not exceed \textbf{four
+days per month} while under contract, averaged as one day per week across all
+outside activities combined, with the expectation of equivalent compensating
+time on adjacent weekends/evenings for any workweek time. Hours are logged and
+reported with the annual disclosure. \policyref{COTI Secondary Employment cap;
+Expectations of a Faculty Appointment aggregation.}
+
+\clause{3.4} \textbf{No dual compensation channel.} While the Faculty Member
+participates in Company-sponsored research at BYU (\S5), the Faculty Member
+will receive \textbf{no consulting fees or other paid-services compensation
+from the Company} --- founder equity is the sole financial interest, managed
+under this plan. Any future paid consulting arrangement requires prior written
+chair approval and either (a) withdrawal from participation in
+Company-sponsored BYU research, or (b) a written AAVP--R exception under the
+rare-exception clause. \policyref{IP Policy: a faculty member ``may either act
+as a paid consultant to or participate in sponsored research for the same
+company but may not perform both at the same time,'' rare exceptions by
+approved management plan + written AAVP--R approval.}
+
+\psection{Contracting wall (recusal)}
+
+\clause{4.1} The Faculty Member will not \textbf{negotiate, influence, or
+attempt to influence} the negotiation of any contract or agreement between BYU
+and the Company --- including the license/assignment, any SRA, any equipment
+loan, and any gift --- \textbf{from either side of the table}. \policyref{COTI
+Related Party clause, applied as a plan term regardless of the \S9 threshold.}
+
+\clause{4.2} Company-side negotiations with BYU are conducted by [non-founder
+officer/business lead, name/title]; BYU-side negotiations only by RAO, TTO, or
+the Office of General Counsel per their signature authority.
+
+\clause{4.3} The Faculty Member will not advocate acceptance or terms of any
+BYU--Company agreement with the chair, dean, RAO, TTO, AAVP--R, or through
+colleagues.
+
+\clause{4.4} \textbf{Permitted activities} (the sanctioned channels,
+exhaustively): (a) sharing information with TTO about the Company as a
+potential licensee; (b) technical input to the SRA statement of work, submitted
+through RAO's designated contact; (c) serving as the Company's named technical
+contact after execution of an agreement; (d) reviewing and signing the license
+acknowledgment (``blue sheet''); (e) negotiating and signing the income
+\textbf{Distribution Agreement} with BYU, which is an internal BYU--employee
+contract outside the Related Party prohibition. \policyref{TTO ``Working with
+the Technology Transfer Office''; COTI.}
+
+\psection{Company-sponsored research in the laboratory}
+
+\clause{5.1} Any Company use of laboratory personnel, students, or facilities
+is converted to an \textbf{SRA with cost reimbursement} at BYU's standard terms
+(51.5\% MTDC indirect on the MTDC base; no permanent publication restrictions;
+TTO-reviewed IP terms). No Company work product, data generation, or product
+development occurs outside the SRA's statement of work. \policyref{COTI
+resource wall; Sponsored Projects Handbook.}
+
+\clause{5.2} \textbf{Project leadership:} [Option A --- Prof.\ \ph, who holds
+no Company interest, serves as PI of record; the Faculty Member participates as
+co-investigator.] [Option B --- the Faculty Member serves as PI, with the
+independent oversight of \S5.3 and enhanced monitoring of \S8.] If the Faculty
+Member ever takes leave, a genuinely independent interim PI holding a regular
+faculty appointment is mandatory (research associates and postdocs may not
+serve as PI \emph{[snapshot: Non-CFS Track Academic Appointments Policy]}), and
+the Faculty Member's residual role is limited to a disclosed advisory capacity
+named in the leave agreement.
+
+\clause{5.3} \textbf{Independent oversight of the science:} Prof.\ \ph\ (no
+Company interest) reviews the design, data integrity, and conclusions of
+Company-sponsored work [annually / prior to submission of each publication];
+disagreements are escalated to the chair. \policyref{FCOI management tools:
+independent monitor, modification of research plan.}
+
+\clause{5.4} Publications and presentations arising from Company-sponsored or
+license-related work disclose the Faculty Member's Company interest and, if
+applicable, BYU's equity position. \policyref{FCOI public-disclosure tool;
+institutional-COI practice.}
+
+\clause{5.5} Student publication rights and the no-permanent-restriction
+baseline are preserved in every SRA. Sponsor prepublication review is limited
+to short delays for proprietary-information and patent screening.
+
+\psection{Students and postdoctoral researchers}
+
+\clause{6.1} \textbf{Written notice.} Every member of the laboratory receives
+written notice of the Faculty Member's Company roles and interests (and BYU's,
+if BYU holds equity) at onboarding and annually; the notice is copied to the
+chair. Students assigned to Company-sponsored projects acknowledge it in
+writing.
+
+\clause{6.2} \textbf{Independent advocate.} The chair (or a designee holding
+no Company interest) meets each student working on Company-sponsored or
+license-related projects at least once per [semester], without the Faculty
+Member present, to review degree progress, topic independence, and any
+concerns; students may also raise concerns directly with the graduate
+coordinator or dean's office at any time.
+
+\clause{6.3} \textbf{No company work outside the SRA.} No student is directed
+to perform services for the Company except within the SRA's statement of work.
+Using students ``to perform services for an outside entity'' in which the
+investigator holds an interest is a listed FCOI conflict; this plan resolves it
+by containment within the SRA plus the protections of this section.
+
+\clause{6.4} \textbf{Company employment of students.} A student who wishes to
+intern with or join the Company is referred to the [chair/dean's office] for
+independent advice before any offer is accepted (the Stanford-model referral).
+The Faculty Member will not simultaneously supervise the same student at BYU
+and at the Company; if an exception is unavoidable, the student's thesis
+committee must carry a majority of members with no Company interest and the
+dual role is disclosed to the committee in writing. Combined BYU + Company
+employment respects student hour caps (20 hours/week during semesters), with
+particular attention to international students' visa limits. \emph{[snapshot:
+Student Hiring and Employment Policy]}
+
+\clause{6.5} \textbf{Theses and timing.} Thesis/dissertation scope and defense
+timing are set by the student and committee on academic grounds; no embargo
+(ADV Form 8e) or defense NDA is requested for the Company's commercial
+convenience --- where patent timing requires confidentiality, the default is a
+provisional filing before the defense, not securing the thesis.
+
+\clause{6.6} \textbf{IP and credit.} Lab participants sign the Employee and
+Student Assignment of Ownership and Non-Disclosure Agreement (TT-1089) at
+onboarding. Students are informed in writing that inventorship is a legal
+determination based on conception (made during prosecution, not by the lab),
+that ``Developer'' royalty status and Company compensation are separate
+questions, and how the lab recognizes contribution (authorship; Distribution
+Agreement shares where inventorship supports it).
+
+\psection{University resources, equipment, and intellectual property}
+
+\clause{7.1} \textbf{Resource wall.} No university resources, facilities, work
+time, personnel, or IT accounts are used for Company operations; Company work
+runs on Company accounts, devices, and premises from day one. \policyref{COTI:
+``University Personnel may not use university resources, facilities, or work
+time to engage in commercial activities, businesses, or `start-up'
+companies''; IT resources additionally require responsible-VP + CIO written
+authorization for any non-university commercial use [snapshot: Appropriate Use
+of IT Resources Policy].}
+
+\clause{7.2} \textbf{Equipment placements.} Company-owned equipment enters the
+laboratory only under a university-signed instrument --- an RAO equipment
+loan/bailment agreement or an SRA term --- settling title, insurance,
+maintenance, access, export-control screening, and permitted use before
+delivery. The Faculty Member signs nothing. Students operate such equipment
+only for BYU research or within the SRA. In-kind resources are reported on
+federal awards (Facilities \& Other Resources / Other Support) as required.
+
+\clause{7.3} \textbf{TTO gate before public release.} All potentially
+protectable laboratory outputs are disclosed to TTO \textbf{before any public
+disclosure} --- public repositories, preprints, demos, and public theses
+included --- and released after TTO either releases the rights or files a
+provisional. The laboratory maintains a standing pre-release checklist, and the
+parties will agree on a target turnaround with TTO so the open-source release
+cadence is plannable. \policyref{IP Policy disclosure-before-public-use; TTO
+``Preparing a Patent Application.''}
+
+\clause{7.4} \textbf{Open-source boundaries are set upstream, not at the
+table.} The laboratory's open-science policy is public, dated, and
+sponsor-agnostic; the Company's open/proprietary split lives in the Company's
+published licensing policy, adopted by the Company outside any BYU negotiation.
+The Faculty Member does not advocate particular IP or release terms in any
+BYU--Company negotiation (\S4).
+
+\clause{7.5} \textbf{Invention hygiene and the prong-(c) acknowledgment.}
+Records are maintained sufficient to distinguish BYU-side from Company-side
+conception; joint-inventorship questions go to TTO. The Faculty Member
+acknowledges the IP Policy's ownership claim over IP ``related to the current
+or demonstrably anticipated business, research, or development of the
+university'' and will obtain \textbf{written TTO releases or license
+carve-outs} for Company-side inventions rather than relying on
+time-and-resource records alone.
+
+\psection{Transparency, certification, and monitoring}
+
+\clause{8.1} The Company relationship is disclosed in proposals, in
+publications and presentations arising from affected research, to affected
+students (\S6.1), and to journals/conferences per venue policy.
+
+\clause{8.2} Annual re-disclosure via the Faculty Outside Activities Form;
+FCOI disclosure updates within \textbf{30 days} of any new or changed
+significant financial interest.
+
+\clause{8.3} The Faculty Member notifies the chair and AAVP--R within 30 days
+of: any Company financing event; any change in title or governance role; equity
+crossing the 10\% line in either direction (\S9.3); any new proposed
+BYU--Company agreement; any contemplated leave.
+
+\clause{8.4} An annual one-page compliance report under this plan goes to the
+chair, dean, and AAVP--R with the annual disclosure; the AAVP--R may direct an
+independent monitor at any time. \policyref{FCOI tools.}
+
+\clause{8.5} On PHS-funded research, the Faculty Member acknowledges BYU will
+respond within 5 business days to public requests for information about
+disclosed SFIs --- name, title, entity, nature, and approximate value.
+
+\psection{Equity-threshold provisions}
+
+\clause{9.1} If the Faculty Member's interest is \textbf{ten percent or more},
+the Developer distribution under the IP Policy (the 45\% share, and with it the
+research-account designation and college/IPS match) is forfeited by default;
+any relief requires a written \textbf{Exception to Standard Income
+Distribution} approved by the dean, AAVP--R, and TTO. The Faculty Member may
+request such an exception through the chair but will not lobby for it
+(\S4.3).
+
+\clause{9.2} If the interest \textbf{exceeds ten percent}, the Company is a
+``Related Party'' under COTI and the \S4 recusal is mandatory policy, not
+merely a plan term.
+
+\clause{9.3} The Faculty Member provides the AAVP--R an updated capitalization
+summary after each financing event, so threshold status is always current.
+
+\psection{Change-of-posture triggers (amend the plan \emph{before} the change)}
+
+Prior plan amendment and re-approval are required before:
+
+\begin{itemize}
+\item taking any officer title or board seat;
+\item taking any leave;
+\item becoming PI [or ceasing to use an independent PI] on Company-sponsored
+work;
+\item accepting any Company compensation beyond equity;
+\item the Company hiring any student currently supervised by the Faculty
+Member;
+\item BYU units becoming customers of the Company (which separately triggers
+the Employee-Vendor Policy's pre-approval machinery \emph{[snapshot]});
+\item any human-subjects research touching the Company relationship.
+\end{itemize}
+
+\psection{Duration, amendment, and remedies}
+
+\clause{11.1} This plan is reviewed annually by the AAVP--R with the chair and
+dean, and may be amended, strengthened (independent monitor, disqualification,
+divestiture), or terminated by the AAVP--R as circumstances change.
+\policyref{FCOI tools.}
+
+\clause{11.2} The plan terminates when the relationships and interests in \S1
+end or fall below disclosure thresholds, confirmed in writing by the AAVP--R.
+
+\clause{11.3} Noncompliance is handled under the governing policies, including
+retrospective review and reporting obligations on federally funded work.
+
+\psection{Acknowledgment and approvals}
+
+{\setlength{\extrarowheight}{3pt}
+\begin{tabularx}{\textwidth}{@{} >{\RaggedRight\arraybackslash}p{2.45in} >{\RaggedRight\arraybackslash}X >{\centering\arraybackslash}p{1.62in} @{}}
+\toprule
+{\color{byunavy}\scshape Party} &
+{\color{byunavy}\scshape Role under this plan} &
+{\color{byunavy}\scshape Signature / date} \\
+\midrule
+{[Sterling G. Baird]}, Faculty Member & subject of the plan & \sigline \\[1.6em]
+\ph, Department Chair, Mechanical Engineering & plan co-author (COTI); reviewer
+of IP transfers & \sigline \\[1.6em]
+\ph, Dean, Ira A.\ Fulton College of Engineering & plan approval (COTI);
+board-seat/income-exception approvals & \sigline \\[1.6em]
+{[Larry Howell]}, AAVP--Research \& Graduate Studies & FCOI determination and
+plan approval; final IP-transfer decision & \sigline \\[1.6em]
+{[Dave Brown]}, Director, Technology Transfer Office & for provisions touching
+the license/assignment (\S\S4, 7, 9) & \sigline \\[1.6em]
+\bottomrule
+\end{tabularx}}
+
+% ================================================================ closing ==
+\clearpage
+\parthead{Where this draft could be wrong, and how to find out}
+
+\begin{itemize}
+\item \textbf{BYU's real template may be organized differently} (it may split
+the COTI and FCOI plans, or be far shorter). The AAVP--R office and the Faculty
+Profile System hold the actual forms --- asking for them is the cheapest
+possible next step, and the Warnick/Linear Signal case is the precedent to ask
+the office to describe (rules-doc documentation gaps \#1 and \#3).
+\item \textbf{Some provisions cite gated policies} reviewed only in the July
+2026 policy-snapshot cross-check (marked \emph{[snapshot]}): the Non-CFS PI
+restriction, student hour caps, the IT commercial-use authorization, and the
+Employee-Vendor Policy. Verify current text with a BYU login before relying on
+the details.
+\item \textbf{The plan deliberately over-includes.} Provisions like \S5.3
+(independent science oversight) and parts of \S6 exceed what BYU's written
+policies strictly require --- they import the elements peer plans use and the
+FCOI policy's optional tools. That is intentional (Howell's
+protect-the-individual framing: the plan is the artifact that answers scrutiny
+when things go wildly well), but each one is negotiable with the approvers.
+\end{itemize}
+
+\vfill
+{\color{metagray}\footnotesize\noindent
+Typeset 18 August 2026 from
+\href{https://github.com/vertical-cloud-lab/byu-vcl/blob/claude/issue-155-20260708-0433/byu-coi-management-plan-example.md}{\texttt{byu-coi-management-plan-example.md}}
+(vertical-cloud-lab/byu-vcl, PR \#156). The Markdown version is canonical; this
+PDF is a formatted copy, not an official BYU document. LaTeX source:
+\texttt{latex/byu-coi-management-plan-example.tex} in the same repository.}
+
+\end{document}
