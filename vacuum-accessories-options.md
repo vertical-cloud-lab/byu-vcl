@@ -64,7 +64,7 @@ A conductive accessory kit ensures all contact surfaces are grounded, preventing
 
 | Item | Part Number | Description | Approx. Price | Suppliers |
 |------|-------------|-------------|---------------|-----------|
-| 11" Crevice Tool — Aluminum EXP | 01768900 | Aluminum crevice nozzle, conductive | $53–$56 | [Caliber Equipment ($56)](https://www.caliberequipment.com/01768900-nozzle-11-crevice-alum-exp/), [Monster Restoration ($53)](https://monsterrestorationequipment.com/advance-nilfisk-clarke-viper-oem-replacement-part-l01768900-nozzle-11-crevice-alum-exp/) |
+| 11" Crevice Tool — Aluminum EXP | 01768900 | Aluminum crevice nozzle, conductive bulk metal — but the outer finish is almost certainly **clear-anodized** (an insulating skin); bonds through the assembled joint, not its surface. See **§15**. | $53–$56 | [Caliber Equipment ($56)](https://www.caliberequipment.com/01768900-nozzle-11-crevice-alum-exp/), [Monster Restoration ($53)](https://monsterrestorationequipment.com/advance-nilfisk-clarke-viper-oem-replacement-part-l01768900-nozzle-11-crevice-alum-exp/) |
 | 14" Floor Brush — Aluminum | 01768902 | Aluminum floor nozzle/brush, conductive | ~$60–$100 (est.) | Contact suppliers above or Nilfisk |
 | Conductive Wand / Extension Tube | (varies) | Stainless steel or aluminum wand | ~$57–$65 each (est.) | Amazon, Cleanroom World, Nilfisk |
 | Conductive Dusting Brush | (varies) | Aluminum brush with conductive bristles | ~$20–$40 (est.) | Nilfisk, Cleanroom World |
@@ -712,4 +712,79 @@ Ronnie asked ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80)) t
 Checked §13's claims against the repo SDS documents; nothing contradicted §13, and several points were reinforced:
 
 - **AlSi10Mg SDS** (`AlSi10Mg-sds-from-heegermaterials…pdf`): **H228** flammable solid, **H261** "in contact with water releases flammable gas" — confirms the no-water rule and the Al + H₂O → H₂ basis. §10.4 "Conditions to avoid: prevent dust clouds and accumulation of fines; static electricity, heat, or ignition source." §8.2 "Do not blow dust off … with compressed air" — confirms the no-compressed-air rule. Reactivity: reacts violently with **halogenated hydrocarbons** — confirms the no-chlorinated-solvents rule. **Note:** §10.5 lists **alcohols** among incompatible materials, which is why §13.5 now says to use IPA sparingly and dry-wipe first rather than soak (reinforces the hybrid-mixture caveat, Claim 10).
-- **118EXP user's manual** (astcanada.ca PDF): could not be machine-parsed here (compressed/encoded stream), so the "continuity check before each use" requirement rests on Ronnie's read of the manual plus the NFPA 77/484 basis above — worth confirming the exact manual wording by eye. The Nilfisk-confirmed hose spec (R ≤ 10⁴ Ω, ~4 Ω normal) is consistent with the < 10 Ω metal-path / conductive-hose criteria in the literature.
+- **118EXP user's manual** (astcanada.ca PDF): now machine-parsed successfully (see **§15.1** for the extracted text). It confirms **"THE OPERATOR SHOULD TEST THE VACUUM MACHINE FOR GROUND CONTINUITY BEFORE EACH USE"** and sets a hard limit — the grounding-continuity path **"shall not exceed 0.1 ohm"** (UL 1213 par. 22), checked **"between each connection … tool to wand, wand to hose, hose to machine."** So the pre-use continuity check is an explicit OEM requirement, not just an NFPA-derived one — and the OEM threshold (0.1 Ω) is far stricter than the generic NFPA 77 < 1 MΩ bonding figure. The Nilfisk-confirmed hose spec (R ≤ 10⁴ Ω, ~4 Ω normal) is consistent with the < 10 Ω metal-path / conductive-hose criteria in the literature.
+
+---
+
+## 15. Is the 01768900 Crevice Tool Anodized Aluminum? (OEM manual + continuity implications)
+
+Ronnie's observation (2026-08-19): the crevice tool is a brand-new genuine Nilfisk part (**01768900**), is **definitely metal** (not plastic), and is the **same silvery color as the aluminum wand that measures extremely low resistance** — yet it behaves as though it fails the surface continuity check. The question: is 01768900 made of **anodized aluminum**, and if so, why would Nilfisk supply an anodized (insulating-skinned) tool for an explosion-proof vacuum?
+
+**Short answer:** The OEM manual documents 01768900 as **material = "Aluminium," finish unspecified — it never uses the word "anodized."** But a **clear/natural anodized** finish is the industry-standard skin for this class of aluminum tool, looks identical to the (also-aluminum) wand, and would fully explain a solid-metal part that reads open on a *surface* continuity probe. Anodize is aluminum oxide — an electrical **insulator** — so an anodized aluminum tool can be conductive in bulk yet read megohms across its skin. That is not automatically a defect or a contradiction with "EXP": the tool is meant to bond to ground **through its assembled mechanical joint**, and the manual's governing acceptance test is the **assembled** chain, not the bare surface. Confirm the finish with the bench test in §15.4, but the decision that actually matters is whether **tip-of-tool → wand → hose → machine ≤ 0.1 Ω** (the manual's limit).
+
+### 15.1 What the OEM manual actually says
+
+The astcanada 118EXP *Instructions for Use / Spare Parts* manual (the PDF Ronnie found, linked in the PR) was machine-parsed. Two parts are decisive.
+
+**(a) Accessories BOM 01760495 — 118EXP Dry Accessory Kit** lists a **Material** column:
+
+| Nilfisk P/N | Description | Material (per manual) |
+|---|---|---|
+| 01719401 | Dust Brush | Aluminium |
+| **01768601** | **Alum Wand** | **Aluminium / Stainless steel** |
+| 01768700 | 14" Floor Brush | Aluminium |
+| **01768900** | **11" Crevice Tool** | **Aluminium** |
+| 7 24190 | Hose | **Conductive** |
+| 01768507 | Accessory Coupling | — |
+
+So the manual calls the crevice tool **"Aluminium"** — a *material*, not a *finish*. It says nothing about anodizing (nor does it say "bare" or "mill"). Notably, only the **hose** is called out as **"Conductive"** in its own material row; the aluminum tools are listed by metal, and their conductivity is taken to come from being aluminum + bonded through the joint.
+
+**(b) Ground-continuity requirement** (verbatim, "TEST FOR GROUND CONTINUITY (UL 1213 par. 22)"):
+
+> "THE OPERATOR SHOULD TEST THE VACUUM MACHINE FOR GROUND CONTINUITY BEFORE EACH USE … The resistance of the grounding continuity path **shall not exceed 0.1 ohm**. WARNING: If unacceptable results are recorded, **DO NOT OPERATE THE CLEANER.** Using the tester, check for continuity between each connection of the vacuum cleaner (example: **tool to wand, wand to hose, hose to machine**, etc)."
+
+And on certification (page 12, "Tools and Attachments"):
+
+> "This equipment is only certified for explosion-proof operation if it is equipped with the proper conductive hose and tools. **Any alteration to this equipment by a third party will nullify its certification.**"
+
+**Takeaways:** (1) There is **no OEM statement that 01768900 is anodized** — only "Aluminium." (2) The manual's own pass/fail gate is **≤ 0.1 Ω, tool-to-wand, before each use** — much stricter than the generic NFPA 77 < 1 MΩ bonding figure this doc cited earlier, so use **0.1 Ω** as the acceptance limit. (3) Modifying a tool to "fix" continuity is formally an *alteration that voids certification* — relevant to the last-resort fix in §15.5.
+
+### 15.2 So is the physical part anodized? (why it very likely is, and why that matches the symptom)
+
+- **Finish, not material.** "Aluminium" in the manual is the alloy, not the surface. For aluminum vacuum tubes/nozzles like this, the default off-the-shelf finish is **clear (natural, sulfuric) anodize** — applied for corrosion and wear resistance and a uniform appearance. Clear anodize looks essentially **identical to bare aluminum** and to the (also-aluminum) wand, so Ronnie's "it's the same color as the wand" is exactly what clear anodize looks like. Color alone can't decide it — **bare, clear-anodized, and oil-passivated aluminum all look the same.**
+- **Why anodize explains "definitely metal but won't pass continuity."** Anodize is aluminum oxide (Al₂O₃), a hard **dielectric**: reported surface resistivity on the order of **10¹⁰ Ω·cm**, and it insulates to hundreds of volts. On a solid-aluminum part, a **surface-to-surface** probe reads **open / megohms even though the bulk metal is an excellent conductor.** That is precisely "brand-new, definitely metal, but fails a surface continuity probe."
+- **Rule out the benign alternative first.** A competing explanation is a **native oxide film or machining/passivation oil on *bare* aluminum.** Native oxide is only a few nanometers thick, self-limiting, and is **punctured by ordinary probe pressure** — it does *not* cause a persistent open circuit. This is why the earlier "clean it and the resistance drops" advice can work. The bench test in §15.4 distinguishes a thick engineered anodize (persistent open, needs a bare contact) from a thin native oxide/oil film (clears with pressure or a wipe).
+
+### 15.3 Why an anodized EXP tool is not automatically a contradiction
+
+- **"Non-sparking, conductive aluminum" refers to the bulk metal.** Aluminum doesn't throw sparks on impact the way steel does, and the solid body conducts. Anodizing adds a corrosion/wear skin without changing that the body is conductive aluminum. Nilfisk's "conductive accessories" marketing is about the metal + the bonded assembly, not a promise that every square millimeter of the outer skin is conductive.
+- **The bond path is the joint, not the skin.** The tool grounds by seating its socket onto the wand/coupling; metal-to-metal contact at that machined/press-fit interface (or contact pressure that punctures a thin clear anodize) carries the ground. The anodizing industry does the same thing deliberately when a part must be grounded: mask a contact pad before anodizing, or machine/scrape/star-washer through the oxide at one spot. (Refs: finishing.com "Electrical Grounding of Anodized Parts.")
+- **The ≤ 0.1 Ω pre-use test is the acceptance gate for exactly this.** Nilfisk's design assumes you verify the **assembled** chain before each use; a tool that can't bond through its joint is caught there. So an anodized skin is consistent with the design **as long as the assembled tool → wand → hose → machine chain still meets ≤ 0.1 Ω.**
+- **The hazard to avoid is the isolated conductor.** A fully-anodized tool with *no* bare contact anywhere is a conductive aluminum mass insulated from ground — it can accumulate static charge and produce an incendive spark. That is the failure mode NFPA 77/484 warn about, and it is exactly what the pre-use continuity check exists to detect. So the question isn't "anodized: yes/no?" but "**does it still bond to ground when assembled?**"
+
+### 15.4 Bench test — anodized vs bare vs oil/native-oxide
+
+Use the lab DMM (the low-Ω meter already discussed). Interpret:
+
+| Test | Bare / mill aluminum | Clear-anodized (insulating skin) | Native oxide / oil film on bare Al |
+|---|---|---|---|
+| **Surface-to-surface**, two probes ~1" apart on a flat outer face, firm pressure, several spots | ≈ 0–0.3 Ω everywhere | **OL / megohms** at most spots | High at first, but **drops toward 0 with pressure** |
+| **Machined socket bore / end face vs. outer body** | both ≈ 0 Ω | **bore ≈ 0 Ω, body open** → anodized-with-bare-contact (bonds through the joint) | both clear with pressure |
+| **Hard-press / light scratch** on a spot | no change (already ~0) | a scratch **suddenly drops OL → ~0** (you broke through a hard layer) | a wipe/scuff **permanently** fixes it (it was oil, not anodize) |
+| **Scribe on a hidden spot** | metal just burnishes | a **distinct hard layer** flakes off to expose brighter metal | nothing removed |
+
+- Persistent open across the skin that only clears where metal is exposed ⇒ **anodized.** A high reading that clears with pressure or a wipe ⇒ **oil / native oxide**, not anodize.
+- **The measurement that governs (do this one regardless):** assembled **tip-of-crevice-tool → wand → hose → vacuum inlet**. Manual limit **≤ 0.1 Ω** (§15.1). Ronnie already has the wand and coupling at < 0.1 Ω, so this isolates whether the crevice tool is the break.
+- *(Optional, destructive — skip in the lab)* a drop of dilute NaOH darkens bare aluminum quickly while anodize resists; not worth doing here.
+
+### 15.5 What to do
+
+1. **If the assembled chain is ≤ 0.1 Ω:** compliant per the manual **even if the tool is anodized.** Proceed; fold the crevice tool into the pre-use continuity SOP (§13.2) and mark standardized probe points with Sharpie so the reading is repeatable (per Ronnie's earlier note about probe placement sensitivity).
+2. **If the crevice tool is the break** (tool reads open to the wand when assembled):
+   - **Re-probe at the mating surfaces** (socket bore / seat) and with firm pressure — you may just be reading the anodized *skin*, not the *bond interface*. Also confirm the tool is fully/tightly seated on the wand.
+   - **Clean the contact interface** — fine Scotch-Brite or a plastic-safe contact cleaner on the **mating surfaces only** to ensure metal-to-metal at the joint (this is cleaning the contact, per the earlier Gemini/CRC discussion — not stripping the tool).
+   - **Confirm the finish/intent with Nilfisk PA tech support** (uspatechsupport@nilfisk.com, reachable only via redirect from main support, closes 3 pm MST): ask whether 01768900 ships **clear-anodized**, how it is intended to bond to the wand (through the socket vs. a designated bare contact), and whether a fully-anodized part meeting their spec should still pass tool-to-wand ≤ 0.1 Ω out of the box. Reference the serial with the **"L" prefix** as before.
+   - **Last resort — abrade a small bare contact band** at the wand/tool interface (not the whole tool) to guarantee bonding. Caveat: the manual says *"any alteration … will nullify its certification,"* so keep it minimal and at the joint only, **re-verify ≤ 0.1 Ω**, and get **EHS / DHA sign-off** first since it is a certified EXP tool. Prefer options 2b–2c over abrading.
+3. **Answer to the literal question:** there is **no OEM documentation calling 01768900 "anodized"** — the manual lists it as **"Aluminium."** A clear-anodized finish is the most likely explanation for a solid-metal part that fails a *surface* continuity probe and matches the wand's appearance, but only the §15.4 bench test confirms it on the actual part. Either way the part isn't "wrong" for being anodized; what governs safe use is whether the **assembled** chain meets the manual's **0.1 Ω** limit.
+
+> **Sources:** 118EXP *Instructions for Use / Spare Parts* manual (astcanada.ca PDF — Accessories BOM 01760495, "Test for Ground Continuity" UL 1213 par. 22, "Tools and Attachments"); [finishing.com — Electrical Grounding of Anodized Parts](https://www.finishing.com/30/31.shtml); [finishing.com — Anodizing for Electrical Resistance / Dielectric](https://www.finishing.com/69/03.shtml); Nilfisk industrial-vacuum accessories/marketing ("non-sparking, conductive accessories come standard").
