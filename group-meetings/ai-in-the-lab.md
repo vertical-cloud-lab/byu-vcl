@@ -28,7 +28,7 @@ with Edison Scientific, and Slurm jobs on a university supercomputer (CHPC at Ut
 
 Channel: <https://www.youtube.com/@BYUVerticalCloudLab>
 (channel ID `UCKC7WzMu6QEh7O55zZlT2lw`). Complete listing as of 2026-08-19:
-**117 videos, 30 Shorts, and 2 live streams** (149 total).
+**118 videos, 31 Shorts, and 2 live streams** (151 total).
 Publish dates were pulled from each video's watch page (stream dates from their titles).
 
 ### AI-discussion clips for this meeting (uploaded 2026-08-19)
@@ -44,6 +44,7 @@ recorded for this group meeting:
 | [Positive AI experiences with Gage and Ronnie](https://www.youtube.com/watch?v=s5ptE--EVIk) | Short |
 | [Discussion between Ben Whitney and Sterling Baird about lab culture with AI](https://www.youtube.com/watch?v=Ef0jl63-rLg) |  |
 | [Discussion between Ben Whitney and Sterling Baird about when AI has helped enhance learning](https://www.youtube.com/watch?v=I0jG2o6wthg) |  |
+| [Discussion between Xavier Zaitzeff and Sam Charles about experiences with AI in the lab](https://www.youtube.com/watch?v=rwoLhubyzZo) |  |
 
 ### AI-related highlights elsewhere on the channel
 
@@ -56,10 +57,11 @@ recorded for this group meeting:
 - 2026-06-09 — [Testing Generative AI in Zoo CAD software to design a simple part](https://www.youtube.com/watch?v=DwFI1eQ_3bI)
 - 2026-06-08 — [Trying out zoo design studio (with commentary)](https://www.youtube.com/watch?v=6YsOMIsOfkY)
 
-### Videos (117)
+### Videos (118)
 
 | Date | Video |
 |---|---|
+| 2026-08-19 | [Discussion between Xavier Zaitzeff and Sam Charles about experiences with AI in the lab](https://www.youtube.com/watch?v=rwoLhubyzZo) |
 | 2026-08-19 | [Super Ball Bot-style Tensegrity structure (tensologic), folding together and releasing](https://www.youtube.com/watch?v=y8KjBRH4Wis) |
 | 2026-08-19 | [Positive AI experiences with Andrew and Marcus](https://www.youtube.com/watch?v=ndbG_nHQljc) |
 | 2026-08-19 | [AI Lab Culture with Gage and Ronnie](https://www.youtube.com/watch?v=bIONIUZDsMk) |
@@ -178,10 +180,11 @@ recorded for this group meeting:
 | 2026-03-05 | [BaSO4 Experiments (Part 1)](https://www.youtube.com/watch?v=5YclrRKohhE) |
 | 2026-03-05 | [Autotrickler SOP with Silicon Powder (Part 2)](https://www.youtube.com/watch?v=2BOku0eveQo) |
 
-### Shorts (30)
+### Shorts (31)
 
 | Date | Video | Notes |
 |---|---|---|
+| 2026-08-19 | [Scale Tare Difficulties due to Fume Hood](https://www.youtube.com/watch?v=ZqFTj_WJ8to) |  |
 | 2026-08-19 | [Positive AI experiences with Gage and Ronnie](https://www.youtube.com/watch?v=s5ptE--EVIk) | Meeting clip (also listed above) |
 | 2026-08-03 | [Comparing T3 print defects](https://www.youtube.com/watch?v=n7wlCLvXLmI) |  |
 | 2026-07-30 | [Drop tower shock tests](https://www.youtube.com/watch?v=Jms6X5P0fGU) |  |
