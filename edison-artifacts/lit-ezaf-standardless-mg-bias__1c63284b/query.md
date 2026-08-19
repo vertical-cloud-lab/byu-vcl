@@ -1,0 +1,6 @@
+For SEM-EDS quantitative analysis of dilute Mg (0.2-0.45 wt%) in an Al matrix using EDAX TEAM's eZAF Smart Quant standardless Cliff-Lorimer routine on an SDD with ~130-135 eV resolution at Mn Kα: what is the documented systematic bias of standardless eZAF / standardless XPP / standardless φ(ρz) routines for Mg Kα (1.253 keV) when it sits on the low-energy tail of a dominant Al Kα (1.486 keV) peak? Specifically:
+1. What systematic absolute or relative error in measured Mg wt% has been reported in round-robin or proficiency tests for standardless EDS quantification of trace Mg in Al-Si-Mg alloys (e.g., AA6xxx, AlSi10Mg, AlSi7Mg, A356)?
+2. How does the eZAF standardless ZAF/φ(ρz) correction handle the absorption of soft Mg Kα by the surrounding Al matrix, and is there a known tendency to overestimate Mg?
+3. Could standardless EDS report Mg = 1.4-1.6 wt% on a polished AlSi10Mg cross-section whose true bulk composition is 0.3 wt% Mg? What conditions would cause that magnitude of error?
+4. What is the recommended correction (use a measured Mg standard, run WDS instead, switch to NIST DTSA-II, etc.)?
+Cite Goldstein/Newbury/Joy SEM textbook, NIST DTSA-II docs, Ritchie & Newbury proficiency test papers, and EDAX/Thermo white papers if available.

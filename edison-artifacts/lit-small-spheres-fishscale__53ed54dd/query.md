@@ -1,0 +1,7 @@
+What surface features are commonly observed on metallographically-polished cross-sections of LPBF/SLM AlSi10Mg samples that could appear as "small spheres covering the surface" under SEM at moderate magnification (1000-50000x)?
+1. Polishing-introduced artifacts: pulled-out eutectic Si particles, smeared Al, comet tails, embedded SiC/diamond/colloidal-silica particles, oxide scale from suspension.
+2. Sample-prep contamination: residue from Kapton tape, mounting epoxy bleed-out, ethanol residue, cleaning solvent residue.
+3. Real microstructure: intermetallic precipitates (Mg2Si, Al-Fe-Si intermetallics), eutectic Si network nodes appearing as bright BSE features, spatter particles incorporated during printing, partially-melted powder particles (PMP), gas porosity.
+4. Why would the fishscale melt-pool pattern visible under optical microscopy NOT be visible in SEM-BSE/SE imaging on the same polished surface? Does this suggest insufficient etching (no etchant used), a layer of polishing residue covering the surface, or a charging / contamination layer?
+5. What etchant or post-polish prep is recommended to reveal the melt-pool morphology and characterize Mg-rich phases in AlSi10Mg LPBF cross-sections?
+Cite metallography handbooks (ASM Vol. 9, Vander Voort), LPBF AlSi10Mg characterization papers, and ASTM E407 etchant guide.
