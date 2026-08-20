@@ -1,0 +1,77 @@
+GRBL is in Alarm state after connect. Home to clear. Status: <Alarm|WPos:383.000,238.000,114.000|FS:0,0>
+GRBL alarm detected before protocol run; unlocking controller. Status: <Alarm|WPos:383.000,238.000,114.000|FS:0,0>
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 380.0]  Y[0.0, 235.0]  Z[0.0, 114.0]
+
+[2/4] Loading deck config...
+  OK: sterling_deck.yaml
+  Labware (1):
+    vial_holder: VialHolder
+
+[3/4] Loading instruments...
+  OK: cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-25.0
+    pipette: offset=(135.0, 20.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: capper_decapper_test.yaml
+  Steps: 27
+    [0] home()
+    [1] move(instrument='pipette', position='park_position', travel_z=111.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_2')
+    [3] move(instrument='pipette', position='vial_2_insert', travel_z=111.0)
+    [4] move(instrument='pipette', position='vial_2_retract', travel_z=111.0)
+    [5] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_2')
+    [6] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_3')
+    [7] move(instrument='pipette', position='vial_3_insert', travel_z=111.0)
+    [8] move(instrument='pipette', position='vial_3_retract', travel_z=111.0)
+    [9] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_3')
+    [10] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_4')
+    [11] move(instrument='pipette', position='vial_4_insert', travel_z=111.0)
+    [12] move(instrument='pipette', position='vial_4_retract', travel_z=111.0)
+    [13] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_4')
+    [14] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_5')
+    [15] move(instrument='pipette', position='vial_5_insert', travel_z=111.0)
+    [16] move(instrument='pipette', position='vial_5_retract', travel_z=111.0)
+    [17] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_5')
+    [18] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_6')
+    [19] move(instrument='pipette', position='vial_6_insert', travel_z=111.0)
+    [20] move(instrument='pipette', position='vial_6_retract', travel_z=111.0)
+    [21] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_6')
+    [22] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_7')
+    [23] move(instrument='pipette', position='vial_7_insert', travel_z=111.0)
+    [24] move(instrument='pipette', position='vial_7_retract', travel_z=111.0)
+    [25] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_7')
+    [26] home()
+
+Validating protocol motion bounds...
+  OK (26 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol on hardware...
+------------------------------------------------------------
+
+
+------------------------------------------------------------
+Protocol complete — 27 steps executed.
+Measurement data store: /home/vcl/.cubos/panda_data.db
+Result CSV files:
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_13_20260803_205035/campaign.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_13_20260803_205035/experiments.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_13_20260803_205035/manifest.csv
+------------------------------------------------------------

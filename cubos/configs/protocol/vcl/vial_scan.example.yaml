@@ -1,0 +1,72 @@
+# VCL vial-position scan.
+#
+# This is a motion-only protocol: it visits the configured vial XY centers at a
+# high deck-frame Z plane without descending into the vials.
+# Order alternates from the front and back of the 8 configured vial positions:
+# 1, 8, 2, 7, 3, 6, 4, 5.
+
+positions:
+  park_position: [230.0, 230.0, 85.0]
+  vial_1_scan: [288.0, 0.0, 63.0]
+  vial_2_scan: [288.0, 33.5, 63.0]
+  vial_3_scan: [288.0, 67.0, 63.0]
+  vial_4_scan: [288.0, 100.5, 63.0]
+  vial_5_scan: [288.0, 134.0, 63.0]
+  vial_6_scan: [288.0, 167.5, 63.0]
+  vial_7_scan: [288.0, 211.0, 63.0]
+  vial_8_scan: [288.0, 230.0, 63.0]
+
+protocol:
+  - home:
+
+  - move:
+      instrument: potentiostat
+      position: park_position
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_1_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_8_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_2_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_7_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_3_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_6_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_4_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: vial_5_scan
+      travel_z: 85.0
+
+  - move:
+      instrument: potentiostat
+      position: park_position
+      travel_z: 85.0
+
+  - home:

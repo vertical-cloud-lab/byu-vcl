@@ -1,0 +1,205 @@
+# Capper/decapper + pipette-insertion test -- six vials, decap -> insert -> cap.
+#
+# For each vial:
+#   1. decap   - the capper approaches at safe_z, engages at engage_depth_mm
+#                (deck-frame Z 57.0 - 15.0 = 42.0), captures the cap,
+#                retracts to safe_z, and parks
+#   2. insert  - the pipette descends into the now-open vial to Z 47.0, i.e.
+#                10 mm below the vial rim (rim is at deck-frame Z 57.0)
+#   3. retract - the pipette lifts back to the Z 105.0 transit plane
+#   4. cap     - the capper replaces the cap, retracts, and parks
+#
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml
+#   deck:     ../../deck/sterling_deck.yaml
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>
+#
+# ---------------------------------------------------------------------------
+# WHY vial_2..vial_7 AND NOT vial_1..vial_6
+# ---------------------------------------------------------------------------
+# The pipette is mounted offset_y = +20.0, so its tip cannot reach anything at
+# deck Y < 20.0. vial_1 is at deck Y 5.0. Putting the tip on it needs the
+# gantry at Y -15.0 -- 15 mm past the machine's Y travel, not just past a soft
+# limit -- and validate_setup rejects it:
+#
+#   pipette -> vial_1_insert.location.target:
+#     gantry (27.0, -15.0, 47.0) violates y_min=0.0
+#
+# vial_2..vial_7 (deck Y 39/73/103/134/165/196) are all in reach, so this
+# gives the full decap -> insert -> cap on six vials with no hardware change.
+#
+# Do NOT "fix" vial_1 by pointing vial_1_insert at a different Y while the
+# decap/cap steps still say vial_holder.vial_1. The version attached on
+# 2026-08-03 did exactly that -- vial_1_insert/vial_1_retract at deck Y 196.0,
+# which is vial_7's slot -- so the sequence was: decap vial_1 at Y 5, drive the
+# pipette 191 mm away to vial_7 and descend 10 mm below the rim while vial_7 is
+# still capped, then recap vial_1. That is a tip strike on a cap. The bounds
+# check goes quiet because it only asks "is this coordinate reachable", never
+# "is it the vial you just opened". The capper target and the pipette target
+# must name the same vial.
+#
+# To use vial_1 instead, the fix is physical: shift the holder at least +15 mm
+# in +Y and re-measure the deck YAML (a uniform +15 mm on every vial's
+# location.y validates PASS), or re-measure offset_y if +20.0 is wrong.
+#
+# ---------------------------------------------------------------------------
+# NUMBERS
+# ---------------------------------------------------------------------------
+#   * Positions below are deck-frame. CubOS subtracts the instrument's
+#     offset_x/offset_y to get gantry coordinates, so deck (162, 39) with the
+#     pipette becomes gantry (27, 19).
+#   * travel_z 105.0 == the gantry's safe_z. It must be > 100.0 so the pipette
+#     clears the Cub XL right X-max rail on its first move out of the homed
+#     corner -- see the header of cub_xl_ben_pipette_capper.yaml. Note that
+#     the FIRST move needs an explicit travel_z: without one, validate_setup
+#     does not model that transit at all and silently passes a path that
+#     clips the rail.
+#   * Insertion depth is deliberately shallow: the vial rim is at Z 57.0 and
+#     the vial is 50 mm tall, so the interior floor is near Z 7.0. Z 47.0 is
+#     10 mm in, enough to prove entry without risking a bottom strike. Lower
+#     vial_N_insert Z to go deeper once clearance is confirmed by eye.
+#   * Bare nozzle -- no pick_up_tip. Adding tips changes the tip extension, so
+#     re-validate and re-check the insert plane if you do.
+
+positions:
+  park_position: [170.0, 170.0, 111.0]
+  vial_2_insert: [162.0, 36.0, 40.0]
+  vial_2_retract: [162.0, 36.0, 111.0]
+  vial_3_insert: [162.0, 70.0, 40.0]
+  vial_3_retract: [162.0, 70.0, 111.0]
+  vial_4_insert: [162.0, 103.0, 40.0]
+  vial_4_retract: [162.0, 103.0, 111.0]
+  vial_5_insert: [162.0, 134.0, 40.0]
+  vial_5_retract: [162.0, 134.0, 111.0]
+  vial_6_insert: [162.0, 167.0, 40.0]
+  vial_6_retract: [162.0, 167.0, 111.0]
+  vial_7_insert: [162.0, 198.0, 40.0]
+  vial_7_retract: [162.0, 198.0, 111.0]
+
+protocol:
+  - home:
+
+  - move:
+      instrument: pipette
+      position: park_position
+      travel_z: 111.0
+
+  # --- vial 2 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_2
+
+  - move:
+      instrument: pipette
+      position: vial_2_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_2_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_2
+
+  # --- vial 3 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_3
+
+  - move:
+      instrument: pipette
+      position: vial_3_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_3_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_3
+
+  # --- vial 4 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_4
+
+  - move:
+      instrument: pipette
+      position: vial_4_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_4_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_4
+
+  # --- vial 5 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_5
+
+  - move:
+      instrument: pipette
+      position: vial_5_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_5_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_5
+
+  # --- vial 6 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_6
+
+  - move:
+      instrument: pipette
+      position: vial_6_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_6_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_6
+
+  # --- vial 7 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_7
+
+  - move:
+      instrument: pipette
+      position: vial_7_insert
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_7_retract
+      travel_z: 111.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_holder.vial_7
+
+  - home:
