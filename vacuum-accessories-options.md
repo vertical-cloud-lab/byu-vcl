@@ -812,3 +812,38 @@ New bench results and a second Nilfisk call from Ronnie:
 - The manual says **"any alteration … will nullify its certification."** A diagnostic spot is minor; a permanent bare-contact band is an alteration — keep it **minimal, at the joint only, re-verify ≤ 0.1 Ω, and get EHS / DHA sign-off** first. If the tool can't be made to bond without defeating its finish, prefer a **replacement conductive / ESD crevice tool** (§3 / §4).
 
 > **Sources:** 118EXP *Instructions for Use / Spare Parts* manual (astcanada.ca PDF — Accessories BOM 01760495, "Test for Ground Continuity" UL 1213 par. 22, "Tools and Attachments"); [finishing.com — Electrical Grounding of Anodized Parts](https://www.finishing.com/30/31.shtml); [finishing.com — Anodizing for Electrical Resistance / Dielectric](https://www.finishing.com/69/03.shtml); Nilfisk industrial-vacuum accessories/marketing ("non-sparking, conductive accessories come standard").
+
+## 16. Verification of the crevice-tool continuity anomaly (Edison Scientific, 2026-08-20)
+
+The §15 measurement results — dust brush (01719401) bonding at **~0.03 Ω** tool-to-wand vs. the brand-new genuine Nilfisk crevice tool (01768900) reading **megohms across its skin, open at the wand joint, and unchanged after light scratching**, with Nilfisk saying "just aluminum" — were sent to Edison Scientific for an independent `LITERATURE_HIGH` review. This is a continuation of the §14 first-test-run verification trajectory (so Edison retained the full vacuum context).
+
+- **Direct Edison response:** https://platform.edisonscientific.com/trajectories/86586e0a-afe9-466e-86fe-81590fd46d2a
+- **Task:** `86586e0a-afe9-466e-86fe-81590fd46d2a` (continued from `d7ff65b9-…`) · **10 cited refs** (Al₂O₃ dielectric-breakdown, CCPS static-hazard, NFPA 484/77 combustible-metal literature)
+- **Archived artifacts:** [`edison/crevice-tool-continuity/`](./edison/crevice-tool-continuity/) — raw answer, formatted answer, references, full task JSON, dispatch + fetch scripts
+
+### 16.1 Bottom line
+
+**Edison confirms the §15 diagnosis on every point** and adds the quantitative physics §15 was missing. The anodize hypothesis is correct-by-exclusion; the meter reading is real; the governing gate is the manual's **≤ 0.1 Ω** assembled tool-to-wand; and the right fix is to **bond the joint, not strip the tool.** The one genuinely new safety conclusion is reassuring: **a thin anodized skin over *grounded* aluminum is not itself an ignition hazard** — the concern is purely the *isolated (floating) conductor*, which bonding the joint eliminates.
+
+### 16.2 Verdict table
+
+| # | Claim | Verdict | Key finding |
+|---|---|---|---|
+| 1 | Measurement interpretation | **CORRECT** | The "OL on REL-locked range → megohms on autorange" is a real ≥ 10⁶ Ω reading. Anodize (Al₂O₃) has resistivity **> 10¹² Ω·cm** and breakdown field **~4–5 MV/cm** ⇒ a 5–25 µm clear anodize withstands **~200–1,250 V**, far above a DMM's 0.5–3 V test voltage. A scratch fails because anodize is **Mohs ~9** (harder than the base metal) — pathognomonic of an engineered dielectric, not a few-nm native oxide/oil film (which probe pressure defeats). |
+| 2 | Is it anodized? | **CORRECT** (most likely; no P/N finish doc found) | Clear sulfuric-acid (Type II, MIL-A-8625F) anodize matches every symptom; bare mill Al, dissipative "metallic" plastic, and conductive platings are all excluded. Literature is silent on the 01768900 finish specifically. |
+| 3 | Anodized EXP tool a defect? | **CORRECT-WITH-CAVEAT** | Anodize over **grounded** metal is **not** a propagating-brush-discharge hazard: its breakdown voltage (~20–125 V) is far below the **4 kV Glor PBD threshold**, so charge punches through to the grounded substrate before it can spark. The real hazard is only the **isolated conductor** — a floating aluminum mass that accumulates charge. |
+| 3b | As-supplied joint failure | **CORRECT (non-conformance)** | An open socket joint fails the OEM's own ≤ 0.1 Ω gate ⇒ out-of-spec for an EXP-certified system. **Do not use the tool until remediated.** |
+| 4 | Governing acceptance criterion | **CORRECT-WITH-CAVEAT** | ≤ 0.1 Ω applies **per metal-to-metal connection**. The **~4 Ω conductive hose is a listed component**, not a "connection" — it's judged against its own spec (R ≤ 10⁴ Ω / NFPA 77 < 10 Ω bonded-system), so it **passes**. Every point passes except the crevice-tool joint. |
+| 5 | Remediation | **CORRECT-WITH-CAVEAT** | **Bond the joint** (abrade only the socket bore + wand tip to bright metal), document in the DHA as corrective; if it still won't reach ≤ 0.1 Ω, **replace** the tool. Don't strip the working surface. |
+| 6 | Diagnostic safety | **CORRECT** | Abrade **before** the tool touches powder, away from ignition sources, capture debris with an IPA-dampened wipe. |
+
+### 16.3 Refinements this review makes to §15.5 / §15.6
+
+- **Diagnose before you abrade.** Try, in order: (1) probe the **anodizing rack marks** — the small bare spots where the part hung during anodizing, often in the bore or at sharp edges — you may get continuity with *zero* abrasion; (2) push the tool **fully/tightly onto the wand** (the interference fit may scrape through the skin); (3) **plastic-safe contact cleaner** on the bore + wand tip; only then (4) fine non-metallic Scotch-Brite on the mating surfaces.
+- **Use gray or maroon Scotch-Brite, not green** (green is too aggressive), and **hand-abrade only — no Dremel/grinder** (revises the §15.6 "sandpaper/file/Dremel" wording: power tools generate far more combustible Al fines and gouge the seat). A hand-abraded ~5–10 mm contact band is the target.
+- **Gate the whole first run on continuity.** A single non-conforming tool blocks the run: the **crevice tool is out of service until it reads ≤ 0.1 Ω tool-to-wand.** The first live run **may proceed with the dust brush alone** if needed.
+- **File a formal Nilfisk product-quality inquiry** (in writing, not just the phone calls) with the P/N, the measured resistance, the UL 1213 par. 22 criterion, and the anodize hypothesis — requesting either a confirmed-conductive replacement or a written engineering statement that the tool is intended to bond through its socket. This creates an audit/incident record.
+- **Verify the dust brush *bristles* are the conductive/EXP variant**, not just the ferrule — a bonded ferrule with nylon/natural bristles is still an isolated-conductor path at the bristle tips. (0.03 Ω confirms the ferrule bond, not the bristles.)
+- **Mark standardized probe points** (paint dot / engraving) and record the **expected per-connection resistances** (the §16.2 Claim-4 table) in the SOP so any operator gets repeatable, comparable readings.
+
+> ⚠️ Same standing caveat as §12–§15: this is AI-synthesized literature guidance, not a regulatory ruling. Fold it into the site-specific NFPA 652 DHA and get EHS + PI sign-off — especially the socket-bore remediation, which the manual formally treats as an "alteration."
