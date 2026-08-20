@@ -3,11 +3,18 @@
 Compilation for the group meeting on high-level thoughts about the use of AI in the lab.
 Tracked in [issue #183](https://github.com/vertical-cloud-lab/byu-vcl/issues/183).
 YouTube links below were gathered 2026-08-19 via channel/playlist feeds and channel-page listings.
+Channel re-checked 2026-08-20: the only newer item is the unlisted meeting-recording upload
+(listed under [Meeting recording (2026-08-19)](#meeting-recording-2026-08-19), not in the public grab).
 
 ## Compilation status
 
-- [ ] OneDrive recording of the meeting — *link needed (owner)*
-- [ ] Tactiq transcript — *link or export needed (owner)*
+- [x] Meeting recording — [SharePoint/Stream share link](https://byu-my.sharepoint.com/:v:/g/personal/sbaird9_byu_edu/IQAhCotWVHEJQ4FQHXVHsz1VASzsf4iyN8yh_-5Clg94V58?e=au0TVR)
+      (original, 75:34) and [unlisted YouTube upload](https://youtu.be/f5_cQvuNKnA) (62:01) —
+      see [Meeting recording (2026-08-19)](#meeting-recording-2026-08-19) below
+- [x] Teams auto transcript + derived chapters — committed in
+      [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md)
+      (Stream has no auto-chapters for this video, so chapters were derived from the transcript)
+- [ ] Tactiq transcript — *link or export needed (owner)*; Tactiq was visibly running during the meeting
 - [x] Links to the various places on YouTube — this document
 - [x] All videos from the [BYU Vertical Cloud Lab channel](https://www.youtube.com/@BYUVerticalCloudLab) — see complete grab below
 
@@ -23,6 +30,22 @@ Taylor's video is the "Vibe Coding 101" tutorial referenced in
 agents inside GitHub Actions so anyone in a research group can assign tasks by opening an
 issue and typing "@claude do X", including literature search with Asta (Allen AI), analysis
 with Edison Scientific, and Slurm jobs on a university supercomputer (CHPC at Utah).
+
+## Meeting recording (2026-08-19)
+
+The Teams recording of this group meeting: 75:34 original on
+[SharePoint/Stream](https://byu-my.sharepoint.com/:v:/g/personal/sbaird9_byu_edu/IQAhCotWVHEJQ4FQHXVHsz1VASzsf4iyN8yh_-5Clg94V58?e=au0TVR)
+(anonymously accessible), uploaded to YouTube **unlisted** (62:01 trim) as
+[VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
+on 2026-08-20. Being unlisted, it is intentionally **not** counted in the public channel grab below.
+
+The online breakout — Audrey Christiansen & Carl Robison's 1:1 discussion, the eighth pair
+alongside the seven clips above — happened inside the meeting itself (00:40:41–01:01:07 of
+the recording) and has been extracted as a standalone 20:26 clip with captions and a
+suggested title, ready to upload to the channel. Transcript (VTT/JSON/TXT), derived chapter
+markers, clip captions, and the locations of the video artifacts (draft GitHub release +
+Raspberry Pi) are all documented in
+[`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md).
 
 ## BYU Vertical Cloud Lab channel — complete video grab
 
@@ -45,6 +68,10 @@ recorded for this group meeting:
 | [Discussion between Ben Whitney and Sterling Baird about lab culture with AI](https://www.youtube.com/watch?v=Ef0jl63-rLg) |  |
 | [Discussion between Ben Whitney and Sterling Baird about when AI has helped enhance learning](https://www.youtube.com/watch?v=I0jG2o6wthg) |  |
 | [Discussion between Xavier Zaitzeff and Sam Charles about experiences with AI in the lab](https://www.youtube.com/watch?v=rwoLhubyzZo) |  |
+
+An eighth pair discussion — **Audrey Christiansen & Carl Robison** — was recorded within the
+meeting itself (they joined remotely) and has been extracted as a standalone clip pending
+upload; see [Meeting recording (2026-08-19)](#meeting-recording-2026-08-19).
 
 ### AI-related highlights elsewhere on the channel
 
@@ -270,8 +297,13 @@ documented in [issue #172](https://github.com/vertical-cloud-lab/byu-vcl/issues/
 
 ## Open items
 
-- [ ] Add the OneDrive recording link (not accessible to the coding agent).
-- [ ] Add the Tactiq transcript (not accessible to the coding agent).
+- [x] ~~Add the OneDrive recording link~~ — done 2026-08-20; the share link turned out to be
+      anonymously accessible (see [Meeting recording (2026-08-19)](#meeting-recording-2026-08-19)).
+- [ ] Upload the extracted Audrey & Carl discussion clip to the channel (owner) and add it to
+      the clip table above once public — clip + captions in the draft release
+      `meeting-2026-08-19-recording` and on the Pi.
+- [ ] Add the Tactiq transcript (not accessible to the coding agent). The Teams auto
+      transcript is committed in [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md).
 - [ ] The "video from Will" mentioned in [issue #175](https://github.com/vertical-cloud-lab/byu-vcl/issues/175)
       (teaching students the @claude issue workflow) was not found on public YouTube — add the link if it belongs here.
 - [ ] Identify the **private** video `eTGH3Db0l6U` in the `coding-in-action` playlist (only visible to the owner)
