@@ -847,3 +847,38 @@ The §15 measurement results — dust brush (01719401) bonding at **~0.03 Ω** t
 - **Mark standardized probe points** (paint dot / engraving) and record the **expected per-connection resistances** (the §16.2 Claim-4 table) in the SOP so any operator gets repeatable, comparable readings.
 
 > ⚠️ Same standing caveat as §12–§15: this is AI-synthesized literature guidance, not a regulatory ruling. Fold it into the site-specific NFPA 652 DHA and get EHS + PI sign-off — especially the socket-bore remediation, which the manual formally treats as an "alteration."
+
+### 16.4 Clarification (2026-08-21): "connected to the wand" must mean *electrically* connected
+
+Reading of §16 raised on the PR: *"it doesn't seem like I even need to abrade the anodized skin off, it should conduct electricity just fine as long as it's connected to the Al wand."*
+
+**Half right — and the half that's wrong is the part that gates the run.**
+
+**Right:** you never need to abrade the tool's **outer/working surface**. That was never the recommendation, and §16 is the reason it isn't needed — a tens-of-µm anodized skin **over grounded aluminum** breaks down at ~20–125 V, far under Glor's **4 kV** propagating-brush-discharge threshold, so deposited charge punches through to the grounded substrate instead of building to an incendive PBD. Leave the finish on everything you can see.
+
+**Wrong:** that conclusion is **conditional on the tool body already being grounded**, and right now it isn't. Edison's sentence carries the condition explicitly:
+
+> "The only real requirement is that the assembled tool not float — i.e., the aluminum body must be bonded to ground through the socket joint."
+
+And, for the as-supplied part:
+
+> "If used as-supplied, the tool body would be an isolated conductor in the airstream — an ignition hazard in a Class II hazardous location."
+
+**Mechanical seating ≠ electrical bonding.** The 2026-08-19 bench result in §15.6 was *"probing where the crevice tool meets the wand → nothing (still open)."* An open joint is the evidence that **the socket bore is anodized too**. Slide an anodized-bore tool onto the wand and you get a part that is mechanically attached and electrically **floating** — a conductive aluminum mass insulated from ground, i.e. the textbook isolated conductor, which is the one static-ignition hazard in this whole analysis that the anodize *doesn't* excuse.
+
+**The dust brush is the control that proves the point.** 01719401 reads **0.03 Ω** tool-to-wand at the *same* interface on the *same* wand. So the wand tip and the joint geometry are fine; the difference is that the brush's bore makes bare metal contact and the crevice tool's does not.
+
+**Scale of what's being spent:** an isolated tool (plus operator) is roughly a 100–200 pF capacitor. Charged to ~10 kV that stores **~5–10 mJ**. Bulk AlSi10Mg (MIE 80–350 mJ, §9) shrugs that off — but the sub-micron fines this doc has flagged throughout can sit **< 5 mJ**, which is squarely inside that range. The bonded joint is what keeps that margin from mattering.
+
+**And independent of any physics argument, the OEM gate blocks the run:** UL 1213 par. 22 requires **≤ 0.1 Ω tool-to-wand before each use**, with *"if unacceptable results are recorded, DO NOT OPERATE THE CLEANER."* Open ≫ 0.1 Ω, so **the crevice tool stays out of service until it reads ≤ 0.1 Ω** regardless of how the PBD reasoning comes out. (The dust brush passes, so per §16.3 the first live run may proceed with the brush alone.)
+
+**So the correct version of the sentence:** *abrade nothing you can see — make bright metal only inside the socket bore where it grips the wand, and only if the free diagnostics fail first.*
+
+Order of operations (unchanged from §16.3, restated as a decision path):
+
+1. Probe the **anodizing rack marks** inside the bore / at sharp edges — bare-metal spots may already bond. **No abrasion.**
+2. Seat the tool **fully and tightly** on the wand and re-measure — an interference fit can scrape through the skin on its own. **No abrasion.**
+3. **Plastic-safe contact cleaner** (CRC QD) on the bore + wand tip, re-seat, re-measure. Clears oil; will not touch anodize. **No abrasion.**
+4. Only if 1–3 fail: **hand-abrade a ~5–10 mm contact band inside the socket bore and the mating band of the wand tip** with gray or maroon Scotch-Brite (not green; no Dremel/grinder — power tools make far more combustible Al fines and gouge the seat). Do it before the tool ever touches powder, away from ignition sources, and capture debris with an IPA-dampened wipe.
+5. Re-verify **≤ 0.1 Ω** assembled, record the value, and document the remediation in the DHA (wording template in the Edison answer, [`edison/crevice-tool-continuity/edison_answer.md`](./edison/crevice-tool-continuity/edison_answer.md)).
+6. If it still won't reach ≤ 0.1 Ω, **stop and replace** the tool with a confirmed-conductive crevice nozzle (§3 / §4) rather than escalating the abrasion.
