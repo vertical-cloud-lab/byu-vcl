@@ -4,7 +4,20 @@
 % Conflict-of-Interest Management Plan" (vertical-cloud-lab/byu-vcl).
 % This LaTeX file is the single source of truth; compile with
 %
-%   pdflatex byu-coi-management-plan-example.tex   (run twice, for TOC/LastPage)
+%   pdflatex byu-coi-management-plan-example.tex   (run THREE times)
+%
+% Three passes, not two: pass 1 writes the .toc, pass 2 typesets it (which
+% shifts the page count), pass 3 settles \pageref{LastPage}. From a clean
+% tree two passes leave a stale "Page N of N-1" in the footer. Verify with
+%   pdfinfo ...pdf | grep Pages   against the last page's footer.
+%
+% Then copy the PDF to the repo root (latex/.gitignore excludes *.pdf, so the
+% tracked artifact is ../byu-coi-management-plan-example.pdf) and regenerate
+% both previews:
+%   pdftoppm -png -r 110 -f 1 -l 1 -singlefile <pdf> preview/coi-plan-pdf-page1
+%   pdftoppm -png -r 110 -f N -l N -singlefile <pdf> preview/coi-plan-pdf-plan-title
+% where N is the page Part 2 opens on -- it moves as Part 1 changes, so find
+% it rather than assuming.
 %
 \documentclass[11pt]{article}
 
