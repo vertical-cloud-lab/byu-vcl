@@ -189,104 +189,344 @@ of learning the skills that having to do it for me and then applying it to it
 00:04:30.520 --> 00:04:33.875
 after that or with it. I just don't know where that balance sits.
 
-00:04:37.955 --> 00:04:40.911
+00:04:36.590 --> 00:04:38.540
+All right. Lab culture.
+
+00:04:40.440 --> 00:04:42.870
+Death and destruction. I can just film it all
+
+00:04:42.720 --> 00:04:43.430
+the time. Okay.
+
+00:04:44.480 --> 00:04:47.190
+So. Don't film me. All right.
+
+00:04:47.800 --> 00:04:50.570
+You know, it's a tool to be used, you know,
+
+00:04:51.240 --> 00:04:54.870
+like it says in the scriptures, we are,
+
+00:04:55.540 --> 00:04:59.090
+you know, we're supposed to be things that act
+
+00:04:58.940 --> 00:05:00.730
+and not to be acted upon.
+
+00:05:00.960 --> 00:05:04.050
+So if AI, if we start using AI too much, then
+
+00:05:03.900 --> 00:05:07.030
+start, then AI starts using us.
+
+00:05:07.450 --> 00:05:09.920
+That's pretty good. It's funny how bad AI's spatial
+
+00:05:09.770 --> 00:05:10.680
+reasoning is.
+
+00:05:11.450 --> 00:05:14.840
+Like, it really has no concept of, like, 3D space
+
+00:05:14.690 --> 00:05:16.920
+at all. I mean, it makes sense because it's just
+
+00:05:16.770 --> 00:05:17.480
+an algorithm.
+
+00:05:18.122 --> 00:05:21.072
+the best alloys we can get for the different
+
+00:05:20.922 --> 00:05:23.212
+elements that we're trying to bring into the
+
+00:05:23.062 --> 00:05:26.572
+lab because several of them are, it turns out
+
+00:05:26.422 --> 00:05:28.632
+they're like extremely explosive or reactive
+
+00:05:28.482 --> 00:05:31.792
+with oxygen in their, when they're just in their
+
+00:05:31.642 --> 00:05:34.092
+elemental form. Yeah. And so having them as aluminum
+
+00:05:33.942 --> 00:05:37.612
+alloys, um, stabilizes them significantly and
+
+00:05:37.462 --> 00:05:38.832
+they make them safer to handle.
+
+00:05:39.023 --> 00:05:40.532
+That's cool. And so that was something recently
+
+00:05:40.382 --> 00:05:41.412
+I learned about here.
+
+00:05:41.875 --> 00:05:43.645
+Have it critique your ideas.
+
+00:05:44.695 --> 00:05:46.665
+give it a baseline. Like, here's what I'm thinking.
+
+00:05:47.215 --> 00:05:48.805
+Is there something wrong with what I'm thinking?
+
+00:05:49.255 --> 00:05:50.525
+How could this be improved?
+
+00:05:51.535 --> 00:05:54.065
+And then once it gives you those, like,
+
+00:05:55.995 --> 00:05:58.545
+see, okay, is what it's telling me I can do better,
+
+00:05:58.635 --> 00:06:00.085
+actually going to make it better, or are there
+
+00:05:59.935 --> 00:06:01.785
+problems with what I see that it's doing?
+
+00:06:01.995 --> 00:06:03.725
+And that'll help you think as well while while
+
+00:06:03.575 --> 00:06:04.405
+you're using AI.
+
+00:06:04.910 --> 00:06:07.060
+Yeah. And I started from, like, the ground up
+
+00:06:06.910 --> 00:06:10.380
+where, like, I knew nothing and I was
+
+00:06:10.230 --> 00:06:13.220
+building something to where I feel like...
+
+00:06:13.070 --> 00:06:14.220
+Like you literally built the machine.
+
+00:06:14.070 --> 00:06:16.280
+Exactly. Yeah, I literally built the machine,
+
+00:06:16.230 --> 00:06:18.220
+and so I had to understand.
+
+00:06:18.230 --> 00:06:21.120
+I think, like, people coming into the lab
+
+00:06:20.970 --> 00:06:23.940
+in a semester when things have been built, I'm
+
+00:06:23.790 --> 00:06:27.170
+worried that they might fall into the flow where
+
+00:06:27.020 --> 00:06:29.290
+we are using high-level AI,
+
+00:06:29.780 --> 00:06:32.250
+and they're just kind of like, I never got the
+
+00:06:32.100 --> 00:06:33.210
+chance to learn any of this.
+
+00:06:33.140 --> 00:06:34.450
+Yeah. Yeah. And I don't know how we're going
+
+00:06:34.300 --> 00:06:35.570
+to balance that. Yeah.
+
+00:06:36.112 --> 00:06:38.782
+for the powder doser, it's been, um, Claude has
+
+00:06:38.632 --> 00:06:40.702
+been controlling the whole thing, writing the
+
+00:06:40.552 --> 00:06:43.082
+code that does the tests and running the tests.
+
+00:06:43.375 --> 00:06:45.110
+The scary part of that is that I,
+
+00:06:46.200 --> 00:06:49.490
+even if I think I could probably figure out somewhat
+
+00:06:49.340 --> 00:06:51.190
+quickly how to run the powder doser myself
+
+00:06:51.040 --> 00:06:51.810
+and write the code,
+
+00:06:52.260 --> 00:06:54.710
+I have not done that, and I don't currently know.
+
+00:06:54.640 --> 00:06:56.850
+Like, if you asked me to do it myself, I couldn't
+
+00:06:56.700 --> 00:06:58.170
+do it right now. It would take me a couple of
+
+00:07:01.700 --> 00:07:02.910
+yeah, that's scary.
+
+00:07:03.312 --> 00:07:05.898
+Sorry, yeah. Xavier was explaining the Bayesian
+
+00:07:05.748 --> 00:07:07.658
+optimization to Seth, and I was listening in,
+
+00:07:07.948 --> 00:07:10.038
+and I could tell that Xavier really understood,
+
+00:07:11.248 --> 00:07:13.698
+that he wasn't just using AI to do the learning
+
+00:07:13.548 --> 00:07:15.298
+that he really understood, and that he could
+
+00:07:15.148 --> 00:07:16.898
+give a presentation on Bayesian optimization.
+
+00:07:18.678 --> 00:07:21.468
+If we were able to have that confidence in everything,
+
+00:07:21.878 --> 00:07:23.768
+and every presentation we gave, that would be
+
+00:07:23.618 --> 00:07:24.500
+really good.
+
+00:07:24.773 --> 00:07:28.222
+We were talking about the idea that the human
+
+00:07:28.072 --> 00:07:30.222
+element is important in research, especially
+
+00:07:30.072 --> 00:07:31.422
+when you're putting your name on it.
+
+00:07:31.273 --> 00:07:34.362
+that if I'm doing research,
+
+00:07:35.512 --> 00:07:37.282
+if Claude is doing research, then anybody can
+
+00:07:37.132 --> 00:07:37.862
+push the button,
+
+00:07:38.332 --> 00:07:39.602
+and then Claude is doing research.
+
+00:07:40.072 --> 00:07:42.002
+If I'm doing research, it should have aspects
+
+00:07:41.852 --> 00:07:43.642
+of me in it, it should have that human element,
+
+00:07:43.653 --> 00:07:46.382
+that it's specific to me, and
+
+00:07:46.292 --> 00:07:48.482
+my ideas, and my work.
+
+00:07:53.267 --> 00:07:56.224
 Audrey: Yeah. And part of it is figuring out what is
 
-00:04:39.875 --> 00:04:41.155
+00:07:55.188 --> 00:07:56.468
 Alright, that was a rant.
 
-00:04:40.911 --> 00:04:45.181
+00:07:56.224 --> 00:08:00.494
 actually grunt work that it can manage too, right? Like, I mean,
 
-00:04:45.181 --> 00:04:50.370
+00:08:00.494 --> 00:08:05.682
 we spent months trying to get it to work with the CAD models and it's just not
 
-00:04:50.370 --> 00:04:52.275
+00:08:05.682 --> 00:08:07.588
 doing very well. And I think.
 
-00:04:53.635 --> 00:04:57.421
+00:08:08.948 --> 00:08:12.733
 I think that's okay because I think plenty of us actually enjoy doing CAD,
 
-00:04:58.915 --> 00:05:01.710
+00:08:14.227 --> 00:08:17.023
 And every CAD model is going to be different.
 
-00:05:01.710 --> 00:05:06.083
+00:08:17.023 --> 00:08:21.396
 It wouldn't be like recording data and sorting it and stuff like that's
 
-00:05:06.083 --> 00:05:08.755
+00:08:21.396 --> 00:08:24.068
 something that AI would be amazing for. But
 
-00:05:08.938 --> 00:05:10.535
+00:08:24.250 --> 00:08:25.847
 Carl: ...things like that.
 
-00:05:10.535 --> 00:05:14.733
+00:08:25.847 --> 00:08:30.046
 It does very good at image analysis, spatial analysis, things like that.
 
-00:05:14.425 --> 00:05:18.827
+00:08:29.738 --> 00:08:34.140
 Audrey: It just, it doesn't, yeah, it doesn't live in the 3D world with us.
 
-00:05:14.733 --> 00:05:15.825
+00:08:30.046 --> 00:08:31.137
 Carl: It's not there yet.
 
-00:05:18.827 --> 00:05:19.938
+00:08:34.140 --> 00:08:35.250
 It's all just code and stuff.
 
-00:05:21.550 --> 00:05:23.230
+00:08:36.863 --> 00:08:38.542
 Audrey: Okay, yeah, no, I can see that.
 
-00:05:23.790 --> 00:05:27.674
+00:08:39.102 --> 00:08:42.986
 Carl: As far as like the culture though, like I think there has to be a balance.
 
-00:05:27.674 --> 00:05:31.558
+00:08:42.986 --> 00:08:46.870
 Like we have to use it. We can't say, hey, we are not going to touch that.
 
-00:05:31.558 --> 00:05:34.510
+00:08:46.870 --> 00:08:49.823
 That being said, I'm probably overusing it to the extent
 
-00:05:34.190 --> 00:05:37.470
+00:08:49.502 --> 00:08:52.782
 Audrey: And probably under using it, so we just need to.
 
-00:05:34.510 --> 00:05:35.390
+00:08:49.823 --> 00:08:50.702
 Carl: where like I'm...
 
-00:05:41.240 --> 00:05:44.173
+00:08:56.552 --> 00:08:59.485
 We, we about to get YouTube famous, you know,
 
-00:05:44.173 --> 00:05:46.760
+00:08:59.485 --> 00:09:02.073
 with the content that's looking up, alright.
 
-00:05:48.425 --> 00:05:52.300
+00:09:03.738 --> 00:09:07.613
 we're changing our career.
 
-00:05:54.195 --> 00:05:58.327
+00:09:09.508 --> 00:09:13.640
 Sorry, I'm just wondering, would it be helpful like when new people
 
-00:05:58.327 --> 00:06:01.426
+00:09:13.640 --> 00:09:16.738
 come into the lab, we would run them through, hey,
 
-00:06:01.426 --> 00:06:05.983
+00:09:16.738 --> 00:09:21.296
 this is good ways to be using AI, like using it to teach you to do things,
 
-00:06:05.983 --> 00:06:07.062
+00:09:21.296 --> 00:09:22.375
 and using it to maybe like debug stuff.
 
-00:06:08.645 --> 00:06:13.188
+00:09:23.958 --> 00:09:28.500
 We need some kind of like tutorial to show people, I guess.
 
-00:06:14.540 --> 00:06:19.129
+00:09:29.852 --> 00:09:34.441
 Yeah, or maybe I misheard Audrey, but I think I heard her say real, so like,
 
-00:06:19.129 --> 00:06:21.930
+00:09:34.441 --> 00:09:37.242
 you know, we could make like a real of us like
 
-00:06:21.930 --> 00:06:25.744
+00:09:37.242 --> 00:09:41.057
 being, this is good, this is bad. Yeah, so some, yeah, so yeah,
 
-00:06:25.744 --> 00:06:29.260
+00:09:41.057 --> 00:09:44.573
 I think some examples would be would be really good, yeah.
 
-00:06:32.342 --> 00:06:34.670
+00:09:47.655 --> 00:09:49.982
 Okay, well, we'll probably call it good there. Thanks,
 
-00:06:34.670 --> 00:06:36.023
+00:09:49.982 --> 00:09:51.335
 Audrey, Carl. Thanks, everybody.

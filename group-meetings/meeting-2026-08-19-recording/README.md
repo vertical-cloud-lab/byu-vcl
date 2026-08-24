@@ -29,7 +29,7 @@ runner — no BYU sign-in or residential IP needed). To re-download the original
 | `transcript.txt` | Readable rendering, one line per utterance (`[HH:MM:SS] @speaker: text`) |
 | `chapters.txt` | Derived chapter markers in YouTube-description format (original 75:34 timeline) |
 | `audrey-carl-clip.vtt` | Captions re-timed for the extracted Audrey & Carl discussion clip |
-| [`highlights/`](highlights/) | Edited 6:41 highlights compilation — EDL, render script, captions, chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
+| [`highlights/`](highlights/) | Edited 9:57 highlights compilation of the meeting + all eight pair discussions — EDL, render script, captions (incl. whisper captions for the seven breakout clips), chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
 | `whisper-diarized-transcript.txt` | Whisper re-transcription with per-voice speaker attribution (`[HH:MM:SS] Name: text`) |
 | `whisper-diarized-transcript.vtt` | Same, as WebVTT captions with `<v Name>` voice tags |
 | `whisper-diarized-transcript.json` | Same, structured (display name, cluster id, times, text per utterance) |
@@ -79,6 +79,10 @@ Video files are deliberately **not** committed to git.
   `$RPI_STREAM_CAM_HOSTNAME` in the coding-agent workflow): `~/vcl-meeting-recordings/2026-08-19/`
   holds the full original MP4, the extracted clip, and copies of all transcript/chapter
   files (placed 2026-08-20; ~515 MB total, ~21.6 GB free on the card afterwards).
+  `~/vcl-ai-clips/` additionally holds the seven break-off pair-discussion clips
+  downloaded from YouTube (separate video+audio streams + SHA256SUMS, ~232 MB, placed
+  2026-08-24 — YouTube blocks datacenter IPs, so future sessions can reuse these instead
+  of re-downloading; a yt-dlp venv lives at `~/vcl-ai-clips/venv/`).
 - **Draft GitHub release** [`meeting-2026-08-19-recording`](https://github.com/vertical-cloud-lab/byu-vcl/releases)
   (visible to repo collaborators only while a draft): the extracted clip, its captions, and
   the chapters file — downloadable without touching the Pi.

@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
-"""Render the AI-in-the-lab highlights compilation from the 2026-08-19 meeting recording.
+"""Render the AI-in-the-lab highlights compilation from the 2026-08-19 meeting recording
+plus the seven break-off pair-discussion clips from the channel.
 
-Reads edl.json (clip boundaries on the original 75:34 timeline) plus the Teams
-transcript (../transcript.vtt for caption text, ../transcript.json for speaker IDs),
-then uses ffmpeg to cut each piece frame-accurately with burned captions, a source
-timecode bug, and two-pass loudness normalization; generates title cards; concatenates
-everything; and emits sidecar captions/chapters on the output timeline plus a 4x4
-contact-sheet preview.
+Reads edl.json (meeting-clip boundaries on the original 75:34 timeline; breakout-clip
+boundaries on each clip's own timeline) plus the Teams transcript (../transcript.vtt for
+caption text, ../transcript.json for speaker IDs) and per-clip whisper captions
+(sources/<id>.vtt), then uses ffmpeg to cut each piece frame-accurately with burned
+captions, a source bug (meeting timecode or youtu.be link), and two-pass loudness
+normalization; normalizes breakout footage to the 1920x1080 canvas (portrait phone
+clips pillarboxed on the card navy); generates title cards; concatenates everything;
+and emits sidecar captions/chapters on the output timeline.
 
 Usage:
-    python3 make_highlights.py --source /path/to/original.mp4 --workdir /tmp/build
+    python3 make_highlights.py --source /path/to/original.mp4 \
+        --clips-dir /path/to/clips --workdir /tmp/build
 
-The source MP4 is not in git — re-fetch it with `yt-dlp -f source "<share link>"`
-(see ../README.md).
+The meeting MP4 is not in git — re-fetch it with `yt-dlp -f source "<share link>"`
+(see ../README.md). The breakout clips are the YouTube uploads listed in
+edl.json["sources"], one <id>.mp4 per clip in --clips-dir (download recipe in
+README.md here; they also live on the stream-cam Pi under ~/vcl-ai-clips/).
 """
 
 import argparse
@@ -62,6 +68,21 @@ def load_cues(vtt_path, json_path, fixes):
             text = text.replace(old, new)
         spk = next((s for (a, b, s) in entries if a - 0.25 <= st and en <= b + 0.25), None)
         cues.append({"s": st, "e": en, "spk": spk, "text": text})
+    return sorted(cues, key=lambda c: c["s"])
+
+
+def load_simple_cues(vtt_path, fixes):
+    """Display cues from a plain WEBVTT (the whisper-generated breakout captions)."""
+    cues = []
+    for block in re.split(r"\n\n+", Path(vtt_path).read_text()):
+        m = re.search(r"(\d+:\d+:\d+\.\d+) --> (\d+:\d+:\d+\.\d+)", block)
+        if not m:
+            continue
+        text = block[m.end():].replace("\n", " ").strip()
+        for old, new in fixes:
+            text = text.replace(old, new)
+        cues.append({"s": parse_ts(m.group(1)), "e": parse_ts(m.group(2)),
+                     "spk": None, "text": text})
     return sorted(cues, key=lambda c: c["s"])
 
 
@@ -115,14 +136,24 @@ def render_piece(source, work, idx, piece, item, edl, cues):
     s, e = snap(piece["s"]), snap(piece["e"])
     piece = dict(piece, s=s, e=e)
     d = e - s
-    in_breakout = any(a <= s <= b for a, b in edl["breakout_ranges"])
+    in_breakout = not item.get("src") and any(a <= s <= b for a, b in edl["breakout_ranges"])
     caps = piece_captions(cues, piece, edl, in_breakout)
     srt = work / f"cap_{idx:02d}.srt"
     srt.write_text("".join(f"{i + 1}\n{fmt_srt(c['s'])} --> {fmt_srt(c['e'])}\n{c['text']}\n\n"
                            for i, c in enumerate(caps)) or "1\n00:00:00,000 --> 00:00:00,100\n\n\n")
 
-    vf = [f"fps={edl['video']['fps']}", f"subtitles=filename={srt}:force_style='{SUB_STYLE}'"]
-    if piece.get("bug"):  # source timecode, top right, first seconds only
+    vf = []
+    if item.get("src"):  # breakout clip: normalize to canvas (portrait -> navy pillarbox)
+        w, h = edl["video"]["width"], edl["video"]["height"]
+        vf += [f"scale={w}:{h}:force_original_aspect_ratio=decrease:force_divisible_by=2",
+               f"pad={w}:{h}:(ow-iw)/2:(oh-ih)/2:color={NAVY}"]
+    vf += [f"fps={edl['video']['fps']}", f"subtitles=filename={srt}:force_style='{SUB_STYLE}'"]
+    if piece.get("label"):  # pair + topic attribution, top left, first seconds only
+        lab = work / f"lab_{idx:02d}.txt"
+        lab.write_text(piece["label"])
+        vf.append(f"drawtext=fontfile={FONT}:textfile={lab}:x=44:y=40:fontsize=30:"
+                  f"fontcolor=white@0.85:box=1:boxcolor=black@0.45:boxborderw=10:enable='lte(t,4.0)'")
+    if piece.get("bug"):  # source timecode / clip link, top right, first seconds only
         bug = work / f"bug_{idx:02d}.txt"
         bug.write_text(piece["bug"])
         vf.append(f"drawtext=fontfile={FONT}:textfile={bug}:x=w-tw-44:y=40:fontsize=30:"
@@ -132,7 +163,7 @@ def render_piece(source, work, idx, piece, item, edl, cues):
     if piece.get("video_fade_out"):
         fo = piece["video_fade_out"]
         vf.append(f"fade=t=out:st={d - fo:.3f}:d={fo}")
-    vf.append("format=yuv420p")
+    vf += ["setsar=1", "format=yuv420p"]  # uniform SAR: scaled pieces must match at concat
 
     ln = "loudnorm=I=-16:TP=-1.5:LRA=11"
     meas = loudnorm_measure(source, s, e)
@@ -156,6 +187,62 @@ def render_piece(source, work, idx, piece, item, edl, cues):
 def drawtext(font, textfile, y, size, color="white", x="160"):
     return (f"drawtext=fontfile={font}:textfile={textfile}:x={x}:y={y}:"
             f"fontsize={size}:fontcolor={color}")
+
+
+def render_audio_piece(source, work, idx, piece, item, edl, cues):
+    """Audio-only breakout bite: navy card with pair names, topic, live waveform,
+    and burned captions. Most in-person pairs set the phone face-up while recording,
+    so their clips are audio with ceiling video -- this presents them honestly."""
+    s, e = snap(piece["s"]), snap(piece["e"])
+    piece = dict(piece, s=s, e=e)
+    d = e - s
+    caps = piece_captions(cues, piece, edl, False)
+    srt = work / f"cap_{idx:02d}.srt"
+    srt.write_text("".join(f"{i + 1}\n{fmt_srt(c['s'])} --> {fmt_srt(c['e'])}\n{c['text']}\n\n"
+                           for i, c in enumerate(caps)) or "1\n00:00:00,000 --> 00:00:00,100\n\n\n")
+
+    def tf(tag, text):
+        p = work / f"audio_{idx:02d}_{tag}.txt"
+        p.write_text(text)
+        return p
+
+    w, h, fps = edl["video"]["width"], edl["video"]["height"], edl["video"]["fps"]
+    vf = [drawtext(FONT, tf("k", item.get("kicker", "THE BREAKOUTS · AUDIO RECORDING")),
+                   356, 26, "white@0.62"),
+          drawtext(FONT_BOLD, tf("n", item["names"]), 408, 76),
+          "drawbox=x=164:y=540:w=130:h=3:color=white@0.5:t=fill",
+          drawtext(FONT, tf("t", item.get("topic", "")), 576, 34, "white@0.85"),
+          f"subtitles=filename={srt}:force_style='{SUB_STYLE}'"]
+    if piece.get("bug"):
+        bug = work / f"bug_{idx:02d}.txt"
+        bug.write_text(piece["bug"])
+        vf.append(f"drawtext=fontfile={FONT}:textfile={bug}:x=w-tw-44:y=40:fontsize=30:"
+                  f"fontcolor=white@0.85:box=1:boxcolor=black@0.45:boxborderw=10:enable='lte(t,3.2)'")
+    vf += ["setsar=1", "format=yuv420p"]
+
+    ln = "loudnorm=I=-16:TP=-1.5:LRA=11"
+    meas = loudnorm_measure(source, s, e)
+    if meas:
+        ln += (f":measured_I={meas['input_i']}:measured_TP={meas['input_tp']}"
+               f":measured_LRA={meas['input_lra']}:measured_thresh={meas['input_thresh']}"
+               f":offset={meas['target_offset']}:linear=true")
+    afade_out = 0.12
+    graph = (
+        f"[0:a]aresample={edl['audio']['rate']},asplit=2[aw][ao];"
+        f"[aw]showwaves=s={w}x200:mode=cline:rate={fps}:colors=0xFFFFFF@0.40[wv];"
+        f"[1:v][wv]overlay=0:660:eof_action=pass[v0];"
+        f"[v0]{','.join(vf)}[vout];"
+        f"[ao]{ln},aresample={edl['audio']['rate']},"
+        f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}[aout]")
+
+    out = work / f"piece_{idx:02d}.mp4"
+    run(["ffmpeg", "-y", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source,
+         "-f", "lavfi", "-i", f"color=c={NAVY}:s={w}x{h}:r={fps}:d={d:.4f}",
+         "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]",
+         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
+         "-video_track_timescale", "16000",
+         "-c:a", "aac", "-b:a", "96k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
+    return out, caps, d
 
 
 def render_card(work, idx, item, edl):
@@ -187,7 +274,8 @@ def render_card(work, idx, item, edl):
                                    y + 62 * i, 40 if bold else 32,
                                    "white" if bold else "white@0.8"))
     fade_out = 0.45 if item["kind"] != "end" else 0.8
-    vf += [f"fade=t=in:d=0.35", f"fade=t=out:st={d - fade_out:.2f}:d={fade_out}", "format=yuv420p"]
+    vf += [f"fade=t=in:d=0.35", f"fade=t=out:st={d - fade_out:.2f}:d={fade_out}",
+           "setsar=1", "format=yuv420p"]
 
     out = work / f"piece_{idx:02d}.mp4"
     run(["ffmpeg", "-y", "-nostdin",
@@ -204,6 +292,7 @@ def render_card(work, idx, item, edl):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--source", required=True, help="original meeting MP4 (75:34)")
+    ap.add_argument("--clips-dir", help="directory with the breakout clips (<id>.mp4)")
     ap.add_argument("--workdir", default="/tmp/meeting/build")
     args = ap.parse_args()
 
@@ -212,6 +301,9 @@ def main():
     work.mkdir(parents=True, exist_ok=True)
     cues = load_cues(HERE.parent / "transcript.vtt", HERE.parent / "transcript.json",
                      edl["caption_text_fixes"])
+    clip_cues = {key: load_simple_cues(HERE / "sources" / f"{key}.vtt",
+                                       edl["caption_text_fixes"])
+                 for key in (edl.get("sources") or {})}
 
     # pass 1: render every piece; remember captions/chapter anchors per piece index
     pieces, chapters_at, piece_caps = [], [], {}
@@ -225,11 +317,19 @@ def main():
         else:
             if item["id"] == "cold-open":
                 chapters_at.append((idx, "Cold open: anyone can use AI (Carl)"))
+            src_key = item.get("src")
+            if src_key and not args.clips_dir:
+                sys.exit(f"item {item['id']} needs --clips-dir (breakout clip {src_key})")
+            item_source = (Path(args.clips_dir) / f"{src_key}.mp4") if src_key else args.source
+            item_cues = clip_cues[src_key] if src_key else cues
             for j, piece in enumerate(item["pieces"]):
                 piece = dict(piece, bug=item.get("bug") if j == 0 else None,
+                             label=item.get("label") if j == 0 else None,
                              video_fade_in=item.get("video_fade_in") if j == 0 else None,
                              video_fade_out=item.get("video_fade_out") if j == len(item["pieces"]) - 1 else None)
-                p, caps, d = render_piece(args.source, work, idx, piece, item, edl, cues)
+                renderer = (render_audio_piece if item.get("visual") == "audio-card"
+                            else render_piece)
+                p, caps, d = renderer(item_source, work, idx, piece, item, edl, item_cues)
                 pieces.append(p)
                 piece_caps[idx] = caps
                 idx += 1
