@@ -43,7 +43,7 @@ The Teams recording of this group meeting: 75:34 original on
 [VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
 on 2026-08-20. Being unlisted, it is intentionally **not** counted in the public channel grab below.
 
-A **6:10 edited highlights compilation** of the meeting — 14 segments across six titled
+A **6:41 edited highlights compilation** of the meeting — 14 segments across six titled
 parts (the three questions, the `@claude` sensor-test exhibit, the e-bike debate, the
 Tony Stark/Jarvis framing, the Audrey & Carl breakout, and the wrap-up action items), with
 burned captions and chapter cards — lives in

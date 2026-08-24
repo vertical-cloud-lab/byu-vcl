@@ -29,7 +29,7 @@ runner — no BYU sign-in or residential IP needed). To re-download the original
 | `transcript.txt` | Readable rendering, one line per utterance (`[HH:MM:SS] @speaker: text`) |
 | `chapters.txt` | Derived chapter markers in YouTube-description format (original 75:34 timeline) |
 | `audrey-carl-clip.vtt` | Captions re-timed for the extracted Audrey & Carl discussion clip |
-| [`highlights/`](highlights/) | Edited 6:10 highlights compilation — EDL, render script, captions, chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
+| [`highlights/`](highlights/) | Edited 6:41 highlights compilation — EDL, render script, captions, chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
 | `whisper-diarized-transcript.txt` | Whisper re-transcription with per-voice speaker attribution (`[HH:MM:SS] Name: text`) |
 | `whisper-diarized-transcript.vtt` | Same, as WebVTT captions with `<v Name>` voice tags |
 | `whisper-diarized-transcript.json` | Same, structured (display name, cluster id, times, text per utterance) |

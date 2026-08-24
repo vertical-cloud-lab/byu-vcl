@@ -1,9 +1,9 @@
 0:00 Cold open: anyone can use AI (Carl)
-0:22 AI in the lab
-0:25 The three questions
-0:53 Exhibit A: @claude runs a sensor test
-1:12 The e-bike problem
-2:53 Jarvis, not autopilot
-4:17 Meanwhile, online: Audrey & Carl
-5:10 So what do we do?
-6:05 Where to watch more
+0:27 AI in the lab
+0:31 The three questions
+1:01 Exhibit A: @claude runs a sensor test
+1:23 The e-bike problem
+3:05 Jarvis, not autopilot
+4:33 Meanwhile, online: Audrey & Carl
+5:37 So what do we do?
+6:36 Where to watch more
