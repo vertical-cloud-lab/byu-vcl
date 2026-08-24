@@ -39,6 +39,13 @@ The Teams recording of this group meeting: 75:34 original on
 [VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
 on 2026-08-20. Being unlisted, it is intentionally **not** counted in the public channel grab below.
 
+A **6:10 edited highlights compilation** of the meeting — 14 segments across six titled
+parts (the three questions, the `@claude` sensor-test exhibit, the e-bike debate, the
+Tony Stark/Jarvis framing, the Audrey & Carl breakout, and the wrap-up action items), with
+burned captions and chapter cards — lives in
+[`meeting-2026-08-19-recording/highlights/`](meeting-2026-08-19-recording/highlights/README.md)
+(EDL + render script + preview; the MP4 itself is on the draft release and the Pi).
+
 The online breakout — Audrey Christiansen & Carl Robison's 1:1 discussion, the eighth pair
 alongside the seven clips above — happened inside the meeting itself (00:40:41–01:01:07 of
 the recording) and has been extracted as a standalone 20:26 clip with captions and a
