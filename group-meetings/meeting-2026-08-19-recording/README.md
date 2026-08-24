@@ -30,6 +30,15 @@ runner — no BYU sign-in or residential IP needed). To re-download the original
 | `chapters.txt` | Derived chapter markers in YouTube-description format (original 75:34 timeline) |
 | `audrey-carl-clip.vtt` | Captions re-timed for the extracted Audrey & Carl discussion clip |
 | [`highlights/`](highlights/) | Edited 6:10 highlights compilation — EDL, render script, captions, chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
+| `whisper-diarized-transcript.txt` | Whisper re-transcription with per-voice speaker attribution (`[HH:MM:SS] Name: text`) |
+| `whisper-diarized-transcript.vtt` | Same, as WebVTT captions with `<v Name>` voice tags |
+| `whisper-diarized-transcript.json` | Same, structured (display name, cluster id, times, text per utterance) |
+| `audrey-carl-clip.whisper-diarized.vtt` | Diarized captions re-timed for the Audrey & Carl clip |
+| `diarization.rttm` | Speaker turns in standard RTTM format (for diarization tooling) |
+| `diarization-timeline.png` | Who-spoke-when timeline chart |
+| `transcribe_diarize.py` | The pipeline that produced the above (reproducible; see below) |
+| `speaker-names.json` | Cluster-id → display-name mapping used for the final render |
+| `speaker-map-evidence.json` | Per-cluster evidence (talk time, Teams-speaker overlap, chapters, sample quotes) behind that mapping |
 
 Stream has **no auto-generated chapters** for this video (`tableOfContentsVisibility: none`),
 so `chapters.txt` was derived by hand from the transcript.
@@ -74,6 +83,66 @@ Video files are deliberately **not** committed to git.
   (visible to repo collaborators only while a draft): the extracted clip, its captions, and
   the chapters file — downloadable without touching the Pi.
 - The full recording can always be re-fetched from the share link above.
+
+## Whisper transcript with speaker diarization (2026-08-24)
+
+The Teams transcript separates *channels*, not *people* — everyone in the physical room
+comes through Sterling's account as `@3`. Since roughly ten people took part, the meeting
+was re-transcribed and diarized per voice (requested in
+[PR #184](https://github.com/vertical-cloud-lab/byu-vcl/pull/184)):
+
+- **ASR**: [faster-whisper](https://github.com/SYSTRAN/faster-whisper) 1.2.1,
+  `distil-large-v3` int8 on CPU (chosen by calibration: 3.3× realtime on the Actions
+  runner, near-large-v3 English accuracy), word timestamps, Silero VAD, participant
+  names as hotwords.
+- **Diarization**: 1.5 s / 0.75 s-hop windows over the speech regions → SpeechBrain
+  ECAPA-TDNN (`spkrec-ecapa-voxceleb`) embeddings → agglomerative clustering (cosine,
+  silhouette-selected k, then centroid reassignment + temporal smoothing). Level 1
+  recovers the four *Teams channels*; the room-mic cluster is then **sub-clustered**
+  after subtracting its mean embedding (removing the shared channel signature so
+  distances reflect voice, not mic). Words are attributed to turns by midpoint;
+  everything is deterministic from `speaker-names.json`.
+- **Naming**: clusters were mapped to people via overlap with the Teams `@n` speakers,
+  the chapter structure, and conversational anchors (who is addressed, who answers,
+  self-references). Highlights: Xavier self-identifies ("Something Sam and I talked
+  about…"); Gage's cluster contains both his early phone audio ("Carl, can you hear
+  me?" = `@1`) and his in-room remarks after he arrived — same voice, two channels.
+  Three clusters that split mid-sentence during fast exchanges were merged back into
+  Sterling.
+
+| Speaker row | Talk time | Confidence |
+|---|---|---|
+| Sterling Baird | 15.8 min | high (facilitation lines, screen-share reading, mid-sentence continuity across merged clusters) |
+| Carl Robison | 10.5 min | high (Teams `@2`) |
+| Andrew / Ronnie / Marcus | 7.9 min | the three are **not separable** on the shared room mic (opening prayer = Andrew, teacher/TA answer at 33:27 = Ronnie, equipment-troubleshooting answer at 37:11 = Marcus, all one cluster) |
+| Audrey Christiansen | 6.2 min | high (Teams `@4`) |
+| Cross-talk / far-field | 4.9 min | bucket of overlapping/distant speech; per-word text is unreliable here |
+| Xavier Zaitzeff | 3.3 min | high (self-ID; the 1:07–1:11 "SparkNotes" monologue) |
+| Gage | 2.0 min | medium (Teams `@1` + in-room education argument) |
+| In-room (unidentified) | 1.3 min | short banter fragments (donuts joke, national-lab story) |
+
+**Limitations**: no overlap-aware separation, so words during rapid multi-party banter
+(esp. the 1:01–1:03 reconvene) can land on the wrong row or in the cross-talk bucket;
+Ben Whitney and Sam Charles were not identifiable as distinct voices in the plenary
+audio; distil-Whisper word timestamps are approximate (±0.1–0.2 s). Per-speaker audio
+compilations (each row's turns concatenated, `voices/*.m4a`) are attached to the draft
+release `meeting-2026-08-19-recording` for quick verification/relabeling — corrections
+only need an edit to `speaker-names.json` and a re-run of the `render` stage.
+
+To reproduce (Python 3.12; `pip install faster-whisper speechbrain scikit-learn
+soundfile matplotlib` with CPU torch; ffmpeg):
+
+```
+ffmpeg -i meeting.mp4 -vn -ac 1 -ar 16000 work/audio.wav
+python transcribe_diarize.py --stage asr --model distil-large-v3   # ~23 min on 4 vCPU
+python transcribe_diarize.py --stage embed
+python transcribe_diarize.py --stage cluster            # picks k=4 = the Teams channels
+python transcribe_diarize.py --stage subcluster --parent 3 --force-k 7   # split room mic
+python transcribe_diarize.py --stage subcluster --parent 7 --force-k 2
+python transcribe_diarize.py --stage attribute
+python transcribe_diarize.py --stage map                # evidence for naming
+python transcribe_diarize.py --stage render --names speaker-names.json --voices voices
+```
 
 ## Transcript API recipe (for future sessions)
 

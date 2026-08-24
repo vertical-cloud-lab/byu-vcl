@@ -14,6 +14,10 @@ Channel re-checked 2026-08-20: the only newer item is the unlisted meeting-recor
 - [x] Teams auto transcript + derived chapters — committed in
       [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md)
       (Stream has no auto-chapters for this video, so chapters were derived from the transcript)
+- [x] Whisper re-transcription with per-voice speaker diarization (the Teams transcript
+      lumps everyone in the room into one `@3` channel) — transcript, RTTM, timeline chart,
+      and per-speaker audio documented in
+      [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md)
 - [ ] Tactiq transcript — *link or export needed (owner)*; Tactiq was visibly running during the meeting
 - [x] Links to the various places on YouTube — this document
 - [x] All videos from the [BYU Vertical Cloud Lab channel](https://www.youtube.com/@BYUVerticalCloudLab) — see complete grab below
