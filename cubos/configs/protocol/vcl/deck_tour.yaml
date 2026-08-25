@@ -1,0 +1,224 @@
+# deck_tour.yaml -- motion-only tour of the whole deck: the four reachable
+# corners, deck center, a hover over each of the six vials (with one gentle
+# descent over capped vial_1), and the two far corners of the tip rack.
+# CubXL, 2026-08-24 calibration. No tip pickup, no capper action, no liquid:
+# every step is a bare-nozzle pipette `move` plus pauses, so the tour can run
+# with caps on and an unmodified deck. Requested 2026-08-25 (issue #182).
+#
+# Config trio (same pair as pipette_test.yaml):
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml   (2026-08-24 rev)
+#   deck:     ../../deck/sterling_6vials_tiprack.yaml
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>
+#
+# Validated offline on 2026-08-25: validate_setup PASS and a full 26-step
+# `run_protocol --mock` run, against BOTH the Pi's CubOS checkout cbc33dc
+# and current CubOS main. NOT run on hardware.
+#
+# ---------------------------------------------------------------------------
+# Z HEADROOM ON THIS MACHINE (the "highest z without hitting a limit" answer)
+# ---------------------------------------------------------------------------
+# Per the 2026-08-24 calibration in cub_xl_ben_pipette_capper.yaml:
+#   * working_volume z_max = 122.0 is the highest commandable deck-frame Z --
+#     it is exactly where the head sits after homing (GRBL drives up until
+#     the Z switch clicks, then backs off homing_pull_off = 3.0 mm; that
+#     backed-off point reads Z 122.0). The switch itself trips ~3 mm higher,
+#     at the machine's max_travel_z = 125.0 ceiling.
+#   * CubOS bounds-checks every target against z_max BEFORE motion, and GRBL
+#     soft limits ($20=1, $132=125) back it up at the controller.
+#   * safe_z = 114.0 is the configured inter-labware transit plane; this file
+#     follows the house convention of travel_z 111.0 for bare-nozzle transit
+#     (8-11 mm below z_max).
+#   * All of the above is BARE-NOZZLE. With a 35 mm tip attached the usable
+#     tip-end ceiling drops to 122 - 35 = 87 (see pipette_test.yaml's header
+#     for why tipped engage commands at safe_z are rejected outright).
+#
+# ---------------------------------------------------------------------------
+# NUMBERS (deck-frame, bare-nozzle pipette frame: gantry x = deck x - 52.0,
+# gantry y = deck y - 12.0, gantry z = deck z exactly, since pipette depth
+# is 0.0 and no tip is ever attached in this file)
+# ---------------------------------------------------------------------------
+#   * Corner posts sit 1 mm inside the gantry travel bounds (working_volume
+#     386.333 x 232.0), so no waypoint rides exactly on a soft limit:
+#     deck (53, 13) / (437, 13) / (437, 243) / (53, 243) = gantry (1, 1) ..
+#     (385, 231). The entire corner circuit runs at Z 111 -- above the
+#     modeled Cub XL right X-max rail (top Z 100), which the pipette cannot
+#     enter anyway (rail box starts at deck x 480; nozzle x maxes out at
+#     438.3).
+#   * Vial hovers: x 187, y 26..191, Z 90 -- 20 mm above the cap tops
+#     (~68-70) and 35 mm above the Z 55 rims. vial_1_close descends to Z 78,
+#     still ~8-10 mm above the cap: vials stay CAPPED for this tour.
+#   * Tip-rack hovers: A1 (317, 13) and O2 (308.5, 132) at Z 90 -- 30 mm
+#     above the Z 60 pickup plane / tip tops. Pure hovers; no pick_up_tip,
+#     so the rack's tip inventory is untouched.
+#   * Hover-to-hover moves along the vial column and across the rack carry
+#     travel_z 90 (pure XY at constant Z); labware-to-labware transits lift
+#     to 111 first. The vial_1 descent/ascent carries NO travel_z on purpose
+#     -- straight vertical strokes at fixed XY.
+#   * Ends at the pipette_test park pose (170, 170, 111), then homes. Bare
+#     nozzle, so the final home pose (deck 438.3, 244, 122) is in bounds and
+#     clear of the rail box -- the tip-attached home hazard documented in
+#     capper_decapper_tip_test.yaml does not apply here.
+#
+# Eyeball before running (validate_setup never models the PASSIVE
+# instrument): the capper rides 52 mm in -X / 12 mm in -Y of the nozzle with
+# its tool end 15.935 mm below gantry Z. Worst cases this tour: deck Z 62.1
+# at (135, 14) during the vial_1 close approach, and Z 74.1 over the strips
+# x 135 (vial hovers) and x 256.5-265 (rack hovers). Those are the same
+# corridors pipette_test.yaml already requires clear (x ~118-135 and
+# ~225-265 free of anything tall); the corner circuit itself keeps the
+# capper at Z >= 95. Nothing taller than ~60 mm may sit anywhere the tour
+# crosses at its lowest transit (Z 78 over vial_1 only).
+
+positions:
+  # Corner circuit + center, all at Z 111 (gantry-frame corners in comments).
+  corner_back_right: [437.0, 243.0, 111.0]   # gantry (385, 231) -- homed side
+  corner_front_right: [437.0, 13.0, 111.0]   # gantry (385, 1)
+  corner_front_left: [53.0, 13.0, 111.0]     # gantry (1, 1)
+  corner_back_left: [53.0, 243.0, 111.0]     # gantry (1, 231)
+  deck_center: [245.0, 128.0, 111.0]         # gantry (193, 116)
+
+  # Vial column hovers (caps ON; Z 90 = ~20 mm above cap tops).
+  vial_1_hover: [187.0, 26.0, 90.0]
+  vial_2_hover: [187.0, 59.0, 90.0]
+  vial_3_hover: [187.0, 92.0, 90.0]
+  vial_4_hover: [187.0, 125.0, 90.0]
+  vial_5_hover: [187.0, 158.0, 90.0]
+  vial_6_hover: [187.0, 191.0, 90.0]
+
+  # One gentle capped-vial approach: ~8-10 mm above vial_1's cap top.
+  vial_1_close: [187.0, 26.0, 78.0]
+
+  # Tip-rack far corners, 30 mm above the pickup plane.
+  rack_a1_hover: [317.0, 13.0, 90.0]         # measured anchor tip (bottom-right)
+  rack_o2_hover: [308.5, 132.0, 90.0]        # derived far tip (top-left)
+
+  # End pose: pipette_test.yaml's park (gantry 118, 158, 111).
+  park_position: [170.0, 170.0, 111.0]
+
+protocol:
+  - home:
+
+  # --- Corner circuit at Z 111: out of the homed corner, then around the
+  #     perimeter counterclockwise, pausing at each post for a visual check.
+  - move:
+      instrument: pipette
+      position: corner_back_right
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "corner check: back-right (gantry 385, 231)"
+
+  - move:
+      instrument: pipette
+      position: corner_front_right
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "corner check: front-right (gantry 385, 1)"
+
+  - move:
+      instrument: pipette
+      position: corner_front_left
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "corner check: front-left (gantry 1, 1)"
+
+  - move:
+      instrument: pipette
+      position: corner_back_left
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "corner check: back-left (gantry 1, 231)"
+
+  - move:
+      instrument: pipette
+      position: deck_center
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "deck center (gantry 193, 116)"
+
+  # --- Vial column: hover over each capped vial at Z 90, with one slow
+  #     close approach over vial_1 (straight down / straight up, no
+  #     travel_z, same XY).
+  - move:
+      instrument: pipette
+      position: vial_1_hover
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: vial_1_close
+
+  - pause:
+      seconds: 2.0
+      reason: "close approach over capped vial_1 (Z 78, cap top ~68-70)"
+
+  - move:
+      instrument: pipette
+      position: vial_1_hover
+
+  - move:
+      instrument: pipette
+      position: vial_2_hover
+      travel_z: 90.0
+
+  - move:
+      instrument: pipette
+      position: vial_3_hover
+      travel_z: 90.0
+
+  - move:
+      instrument: pipette
+      position: vial_4_hover
+      travel_z: 90.0
+
+  - move:
+      instrument: pipette
+      position: vial_5_hover
+      travel_z: 90.0
+
+  - move:
+      instrument: pipette
+      position: vial_6_hover
+      travel_z: 90.0
+
+  - pause:
+      seconds: 2.0
+      reason: "end of vial column (over vial_6)"
+
+  # --- Tip rack: lift to 111 for the cross-deck transit, then trace the
+  #     rack diagonal at Z 90 (30 mm above the tips; no pickup).
+  - move:
+      instrument: pipette
+      position: rack_o2_hover
+      travel_z: 111.0
+
+  - move:
+      instrument: pipette
+      position: rack_a1_hover
+      travel_z: 90.0
+
+  - pause:
+      seconds: 2.0
+      reason: "over tip rack A1 (the measured anchor, gantry 265, 1)"
+
+  # --- Park mid-deck, then home. Bare nozzle throughout, so the final home
+  #     pose is safe (see header).
+  - move:
+      instrument: pipette
+      position: park_position
+      travel_z: 111.0
+
+  - home:
