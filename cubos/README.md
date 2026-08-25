@@ -89,6 +89,25 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (written 2026-08-25, NOT run)
+
+`configs/protocol/vcl/pipette_test.yaml` retargets the capper test at the
+2026-08-24 deck/gantry pair above: park → decap vial_1 → `pick_up_tip`
+tip_rack.A1 → three tip-frame mix strokes inside vial_1 (40↔48) → tipped
+move to the park position → `breakpoint` (tip comes off **by hand**; run
+from a foreground terminal — headless runs skip the stop) → cap vial_1 →
+decap+cap vials 2–6 → home. `validate_setup` PASS, `--mock` 27/27.
+
+Two requested commands are deliberately absent, with the full analysis in
+the protocol header: the literal `mix:` and `drop_tip:` commands travel at
+safe_z **in the tip frame** (114 + 35 = gantry Z 149 on a 122 mm machine),
+so `validate_setup` rejects them on this hardware and no protocol/deck edit
+can route around it — that needs a CubOS change (engage commands have no
+`travel_z`) plus an online pipette before the ejector/plunger are real. The
+tip rack's `drop_z` is read by **no command** at this CubOS version
+(`cbc33dc`); a runnable `drop_tip` targets a separate `tip_disposal` deck
+entry and uses that entry's own `location.z`.
+
 ## Notes
 
 - The gantry enumerates as `/dev/ttyUSB0` on the Pi; the original config's

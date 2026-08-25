@@ -1,0 +1,275 @@
+# pipette_test.yaml -- decap vial_1, pick up a tip, mix in vial_1, shed the
+# tip at the park position, then decap+cap vials 2..6. CubXL, 2026-08-24
+# calibration.
+#
+# Requested 2026-08-25 (PR #171): capper_decapper_test.yaml as the base, vial
+# positions moved to sterling_6vials_tiprack.yaml's column (x 187, y 26..191,
+# rim z 55), plus pick_up_tip at tip_rack.A1, a mix in vial_1, and dropping
+# the tip at the park position before the remaining vials. Written and
+# validated offline only -- NOT run on hardware.
+#
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml   (2026-08-24 rev)
+#   deck:     ../../deck/sterling_6vials_tiprack.yaml
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>
+#
+# >>> RUN THIS FROM A FOREGROUND TERMINAL ONLY (ssh session, not nohup/API
+# >>> server). Step 15 is a `breakpoint` that waits for Enter while you pull
+# >>> the tip off by hand. When stdin is not a terminal, CubOS LOGS A WARNING
+# >>> AND CONTINUES -- and the very next step is capper motion that must not
+# >>> happen with a tip still on the nozzle (see TIP-ON INVARIANT below).
+#
+# ---------------------------------------------------------------------------
+# WHY THERE IS NO LITERAL `mix:` OR `drop_tip:` COMMAND IN THIS FILE
+# ---------------------------------------------------------------------------
+# Every engage-based pipette command (mix, drop_tip, aspirate, blowout,
+# transfer) travels between labware at the gantry's safe_z APPLIED IN THE
+# INSTRUMENT-TIP FRAME (engage_at_labware -> move_to_labware -> gantry
+# z = safe_z + effective depth). With the 35 mm tip attached that is
+# 114 + 35 = gantry Z 149 on a machine whose working volume tops out at
+# 122 (z travel 125). validate_setup rejects it, verbatim:
+#
+#   step (mix): mix 'vial_1' safe_z gantry z=149.0 is outside working
+#     volume [0.0, 122.0] for instrument 'pipette'.
+#   step (drop_tip): drop_tip 'tip_disposal' safe_z gantry z=149.0 is
+#     outside working volume [0.0, 122.0] for instrument 'pipette'.
+#
+# (Confirmed against CubOS at the Pi's checkout cbc33dc AND current main --
+# the travel semantics are identical.) Nothing in the protocol or deck file
+# can route around it: engage commands take no travel_z. Lowering safe_z
+# does not work either: a tipped engage needs safe_z <= 87 (87 + 35 = 122),
+# but every capper transit rides at safe_z - 15.935, which at safe_z 87 is
+# deck Z 71.065 -- level with the cap tops (~68-70). The window is empty.
+#
+# So this file reproduces the requested PHYSICAL sequence with primitives
+# that do validate:
+#   * mix      -> explicit tip-frame Z strokes inside vial_1 (three gentle
+#                 40<->48 cycles, XY fixed). NOTE the pipette instrument is
+#                 offline: true / port '' in the gantry YAML, so a real
+#                 `mix:` would not have moved any liquid anyway -- its
+#                 plunger is simulated. Motion-wise this is the same test.
+#   * drop_tip -> move to the park position, then `breakpoint`: the machine
+#                 holds pose while you pull the tip off the nozzle by hand,
+#                 then press Enter. An offline pipette cannot fire its
+#                 ejector, so a real `drop_tip:` would have reported success
+#                 while leaving the tip physically on -- worse than manual.
+#
+# What a real mix/drop_tip needs (in order): (1) the pipette online --
+# offline: false plus a real port -- so plunger and ejector actually fire;
+# (2) a CubOS change so tipped engage travel fits low-headroom machines
+# (an explicit travel_z on engage commands, like `move` has, or travel
+# clamped to z_max - tip extension). Neither is a deck-file edit.
+#
+# ---------------------------------------------------------------------------
+# TIP-ON INVARIANT: no capper motion while the tip is on the nozzle
+# ---------------------------------------------------------------------------
+# Steps 4..14 (pickup -> park) are the only steps with the tip attached, and
+# they are all pipette moves. That is deliberate. Every decap/cap ends with
+# a park move to the capper's park_position [125, 50] at safe_z, i.e.
+# gantry Z 98.065, which puts the passive pipette nozzle at deck
+# (177, 62, 98.065) -- and a 35 mm tip's END at deck Z 63.065, BELOW the
+# cap tops (~68-70), only 10.4 mm from vial_2's axis at (187, 59). A capper
+# park move with the tip on laterally rams the tip into vial_2's cap. Bare
+# nozzle at 98 clears everything by ~28 mm. This is also why the breakpoint
+# (tip removal) comes BEFORE `cap vial_1`, and why vials 2..6 are
+# decap+cap only:
+#
+#   * After the hand removal the engine still models the tip as attached
+#     (there is no runnable drop_tip to clear it), so any later pipette Z
+#     would be computed in the tip frame while the nozzle is bare -- aimed
+#     35 mm high. Post-removal pipette-into-vial steps cannot be written
+#     honestly; the request's "decapping and capping the rest" is exactly
+#     what is safe. (Want tip-in-vial insertions for all six? That is a
+#     different structure -- keep the tip on all run, move the capper's
+#     park_position out of the vial column first, remove the tip at the
+#     end. Ask and it can be written.)
+#   * The final `home` runs with the modeled tip: validate_setup checks the
+#     home pose at tip-end (438.3, 244, 87) -- in bounds, clear of the
+#     modeled machine structures, and physically bare by then anyway.
+#
+# ---------------------------------------------------------------------------
+# NUMBERS (deck-frame, instrument-tip frame: gantry = deck - offset in XY,
+# gantry_z = deck_z + effective depth; pipette +52/+12 depth 0, +35 with
+# tip; capper 0/0 depth -15.935)
+# ---------------------------------------------------------------------------
+#   * Vial rim z 55.0; capper engage 55 + 13 = deck 68 -> gantry 52.065;
+#     capper transit/park at safe_z 114 -> gantry 98.065.
+#   * pick_up_tip tip_rack.A1: bare-nozzle travel at safe_z (gantry 114),
+#     descend to pickup_z 60 at deck (317, 13) = gantry (265, 1, 60) --
+#     Ben's measured anchor. pickup_z 60 is carried from 2026-08-06 and
+#     still UNVERIFIED by jog on this rack (see the deck header). The rack
+#     consumes A1: refill it or retarget before re-running.
+#   * Tipped positions are TIP-END Z: mix strokes 40<->48 (15 to 7 mm below
+#     the rim, gantry 75-83); tipped transits at travel_z 80 -> gantry 115
+#     (<= z_max 122, ~10 mm above cap tops). Strokes carry NO travel_z on
+#     purpose -- a travel_z would lift to 80 between strokes instead of
+#     stroking in place.
+#   * Bare pipette transits at travel_z 111 (gantry 111 <= safe_z 114).
+#   * Tip removal pose: (170, 170), tip end at deck 80, nozzle at 115.
+#     Pull the tip straight down; steppers hold position during the
+#     breakpoint.
+#
+# Eyeball before running (validate_setup never models the PASSIVE
+# instrument):
+#   * Capper head shadow during pipette work: deck x 118-135, y 2-170,
+#     down to deck Z ~59 (during the vial_1 strokes, at (135, 14+/-)).
+#   * Capper head during the tip pickup: descends to deck Z 44.1 over
+#     (256.5..265, 1) -- ~15 mm left of the rack body edge (x ~279.7).
+#   * Bare nozzle during capper engages: deck Z ~52 at (239, vial_y + 12).
+#   Keep the strips x ~ 118-135 and x ~ 225-265 free of anything tall.
+#
+# drop_z (Ben's question): NO deck-file change needed for this protocol.
+# At this CubOS version no command reads the tip rack's drop_z at all -- a
+# runnable drop_tip targets a separate `tip_disposal` deck entry and ejects
+# at THAT entry's own location.z. Leave drop_z: null; setting it today only
+# distorts the rack's modeled bounding box (height becomes
+# |pickup_z - drop_z|). Details in the PR comment.
+
+positions:
+  # Bare-nozzle park (gantry 118, 158, 111). Same spot later used for the
+  # tip removal, per the request "drop the tip at the park position".
+  park_position: [170.0, 170.0, 111.0]
+
+  # vial_1 work, TIP-END frame (35 mm tip attached from step 4 on).
+  vial_1_over: [187.0, 26.0, 80.0]
+  vial_1_mix_bottom: [187.0, 26.0, 40.0]   # 15 mm below the rim, gantry 75
+  vial_1_mix_top: [187.0, 26.0, 48.0]      #  7 mm below the rim, gantry 83
+  vial_1_retract: [187.0, 26.0, 80.0]
+
+  # Tip-removal pose at the park XY, TIP-END frame (gantry 115).
+  park_tip_removal: [170.0, 170.0, 80.0]
+
+protocol:
+  - home:
+
+  # 1. Park the pipette first (base-protocol convention): explicit travel_z
+  #    so the transit out of the homed corner is modeled, well away from the
+  #    vial column and the tip rack.
+  - move:
+      instrument: pipette
+      position: park_position
+      travel_z: 111.0
+
+  # 2. Open vial_1 while the nozzle is still bare.
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # 3. Tip on. Bare-nozzle engage: travel at safe_z 114, press to deck Z 60
+  #    at Ben's measured (gantry) anchor (265, 1). Tip frame from here on.
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  # 4. Mix in vial_1 -- motion equivalent of `mix: {position: vial_1,
+  #    volume_ul: 10, repetitions: 3}` (see header for why the literal
+  #    command cannot run). Approach above the open vial, descend, three
+  #    gentle strokes, retract.
+  - move:
+      instrument: pipette
+      position: vial_1_over
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_bottom
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_top
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_bottom
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_top
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_bottom
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_top
+
+  - move:
+      instrument: pipette
+      position: vial_1_mix_bottom
+
+  - move:
+      instrument: pipette
+      position: vial_1_retract
+
+  # 5. "Drop the tip at the park position": travel there tipped (tip end at
+  #    80, gantry 115), then hold while the tip comes off by hand. The
+  #    offline pipette has no working ejector, so manual removal is the only
+  #    real removal (header). FOREGROUND TERMINAL ONLY -- headless runs skip
+  #    this stop and proceed into capper motion with the tip still on.
+  - move:
+      instrument: pipette
+      position: park_tip_removal
+      travel_z: 80.0
+
+  - breakpoint:
+      message: "Pull the tip straight down off the nozzle, clear the deck, then press Enter to resume (capper motion follows immediately)."
+
+  # 6. Close vial_1, then decap+cap the remaining five vials (no pipette
+  #    insertion -- see TIP-ON INVARIANT in the header for why none can
+  #    honestly follow the hand removal).
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # --- vial 2 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # --- vial 3 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  # --- vial 4 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  # --- vial 5 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  # --- vial 6 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  # Modeled with the tip still attached (nothing runnable clears it); the
+  # home pose validates in-bounds, and the nozzle is physically bare by now.
+  - home:
