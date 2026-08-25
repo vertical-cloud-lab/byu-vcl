@@ -63,7 +63,31 @@ frame and converted (+51.97, +12.0 in XY) in the deck's `tip_rack` entry.
 `validate_setup` PASS, `--mock` 28/28. **The older sterling configs/protocols
 no longer describe the machine** — their numbers predate the remount. See the
 protocol header for the passive-pipette corridor that must be eyeballed
-before any hardware run.
+before any hardware run. **Superseded 2026-08-24:** the gantry was
+re-calibrated again (next section), so the j_config_1 numbers in turn no
+longer describe the machine.
+
+## Sterling 6-vial + Ursa tip rack deck (added 2026-08-24, NOT run)
+
+`configs/deck/sterling_6vials_tiprack.yaml` is @benwhitney5463's re-measured
+6-vial column (deck X 187, Y 26–191, rim Z 55) plus the CubXL docs' standard
+tip rack (`load_name: ursa_tip_rack`: 2 columns × 15 rows = 30 tips, 8.5 mm
+pitch, body 66 × 138 × 22 mm), anchored by one measured point — the
+bottom-right tip, jogged in the capper's reference frame to WPos (265, 1),
+converted to the pipette deck frame (317, 13) = tip `A1`. The second
+calibration point is derived from the docs' pitch, not measured (rack assumed
+square to the axes; see the deck header for the mirrored-rack fallback).
+`pickup_z: 60.0` is carried from Ben's 2026-08-06 measurement — confirm by
+jog before the first hardware pickup.
+
+The paired `configs/gantry/cub_xl_ben_pipette_capper.yaml` is Ben's
+2026-08-24 re-calibration (working volume 386.333 × 232.0 × 122.0, capper
+depth −15.935 / engage_depth 13, pipette offset 52.0 / 12.0, park [125, 50]),
+committed byte-identical to the attachment — it already carried
+`/dev/ttyUSB0`, so for the first time no port edit was needed. Offline
+checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
+`pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
+`tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
 ## Notes
 

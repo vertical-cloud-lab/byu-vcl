@@ -1,40 +1,4 @@
-# CubXL gantry config, re-calibrated 2026-08-06/07 with the multi-instrument
-# calibration flow (capper_decapper = reference instrument -> offset 0/0;
-# pipette = lowest instrument -> depth 0.0). Attached by @jarrettshupe to
-# PR #171 on 2026-08-08. The pipette was PHYSICALLY REMOUNTED since the
-# 2026-08-03 hardware runs: offset_x 135.0 -> 51.97, offset_y 13.0 -> 12.0,
-# which also resolves the old "pipette cannot reach deck X < 135" blocker
-# documented in capper_decapper_tip_test.yaml. Configs measured against the
-# OLD mount (sterling_deck.yaml / sterling_6vials.yaml protocols) no longer
-# describe this machine.
-#
-# THREE CHANGES vs. the attachment, each marked CHANGED inline:
-#   1. serial_port COM5 -> /dev/ttyUSB0 (Windows port name; the gantry
-#      enumerates as /dev/ttyUSB0 on the lab Pi -- same edit as every
-#      previous rev).
-#   2. engage_depth_mm 13 -> 17.248. j_config_1.yaml's vial location.z
-#      values are the RAW WPos readings at which the capper engages each
-#      cap (see that file's header). CubOS commands the engage at
-#      gantry_z = location.z + engage_depth_mm + depth, so
-#      engage_depth_mm = -depth = 17.248 makes the commanded gantry Z
-#      reproduce each vial's measured plane exactly. Leaving 13 would have
-#      engaged 4.25 mm BELOW the measured plane (13 was calibrated against
-#      sterling_6vials.yaml, whose location.z is the vial RIM -- a
-#      different measurement convention).
-#   3. capper park_position [125, 50] -> [212.143, 40.0] (= the vial
-#      column's own X). With the pipette now only 51.97 mm from the capper,
-#      a park off-column makes every decap/cap park/approach transit a
-#      DIAGONAL across the vial column, dragging the passive pipette --
-#      whose attached 35 mm tip end rides ~10 mm BELOW cap-top height
-#      during capper safe_z transits (gantry 96.75, tip end WPos 61.75,
-#      cap tops ~71.5) -- through capped-vial footprints. Parking on the
-#      column X makes all capper transits pure-Y moves: the passive
-#      pipette then holds constant X 264.1, clear of the vial column
-#      (max X 226) by 38 mm and of the tip rack (X 314.4) by 50 mm.
-#      No offline check models the passive instrument, so this cannot be
-#      caught by validate_setup (known blind spot, cubos/patches/README.md).
-
-serial_port: /dev/ttyUSB0  # CHANGED from COM5 (see header)
+serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
   factory_z_travel_mm: 129.0
@@ -43,11 +7,11 @@ cnc:
   safe_z: 114.0
 working_volume:
   x_min: 0.0
-  x_max: 386.693
+  x_max: 386.333
   y_min: 0.0
-  y_max: 278.218
+  y_max: 232.0
   z_min: 0.0
-  z_max: 120.99
+  z_max: 122.0
 origin_policy: deck_origin
 grbl_settings:
   dir_invert_mask: 1
@@ -59,28 +23,28 @@ grbl_settings:
   steps_per_mm_x: 400.0
   steps_per_mm_y: 400.0
   steps_per_mm_z: 400.0
-  max_travel_x: 389.693
-  max_travel_y: 281.218
-  max_travel_z: 123.99
+  max_travel_x: 389.333
+  max_travel_y: 235.0
+  max_travel_z: 125.0
 instruments:
   vial_capper_decapper:
     type: capper
     vendor: pawduino
     offset_x: 0.0
     offset_y: 0.0
-    depth: -17.248
+    depth: -15.935
     capture_retries: 2
     capture_settle_s: 1
-    engage_depth_mm: 17.248  # CHANGED from 13 (see header, item 2)
+    engage_depth_mm: 13
     offline: false
-    park_position:  # CHANGED from [125, 50] (see header, item 3)
-    - 212.143
-    - 40.0
+    park_position:
+    - 125
+    - 50
     port: /dev/ttyACM0
   pipette:
     type: pipette
     vendor: opentrons
-    offset_x: 51.97
+    offset_x: 52.0
     offset_y: 12.0
     depth: 0.0
     pipette_model: p20_single_gen2
