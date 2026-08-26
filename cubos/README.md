@@ -108,6 +108,13 @@ tip rack's `drop_z` is read by **no command** at this CubOS version
 (`cbc33dc`); a runnable `drop_tip` targets a separate `tip_disposal` deck
 entry and uses that entry's own `location.z`.
 
+**Update 2026-08-25:** the CubOS change now exists as
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` — offline-validated
+but **deliberately NOT applied to the Pi** (it changes motion planning for
+every protocol; see the patch entry in `patches/README.md` for what moves
+differently and the longer-tip caveat). With it applied, a tipped engage
+hovers at tip-end Z 87 / gantry 122 instead of being rejected at 149.
+
 ## Notes
 
 - The gantry enumerates as `/dev/ttyUSB0` on the Pi; the original config's
