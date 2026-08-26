@@ -1,0 +1,259 @@
+GRBL is in Alarm state after connect. Home to clear. Status: <Alarm|WPos:389.333,235.000,125.000|FS:0,0>
+GRBL alarm detected before protocol run; unlocking controller. Status: <Alarm|WPos:389.333,235.000,125.000|FS:0,0>
+2026-08-25 17:48:39,448&grbl_cnc_mill&ERROR&driver&execute_command&400&Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+Error moving gantry to (1.0, 1.0, 111.0): Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+Protocol run failed; last commanded pose: {'instrument': 'OpentronsPipette', 'instrument_position': (53.0, 13.0, 111.0), 'gantry_position': (1.0, 1.0, 111.0), 'travel_z': 111.0}
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 374, in execute_command
+    mill_response = self._wait_until_idle(
+        mill_response, suppress_errors=suppress_errors
+    )
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 565, in _wait_until_idle
+    raise StatusReturnError(
+        f"Command execution timed out after {timeout} seconds: {status}"
+    )
+cubos.gantry.gantry_driver.exceptions.StatusReturnError: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/move.py", line 62, in move
+    context.gantry.move(instrument, target, travel_z=travel_z)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 82, in move
+    self.controller.move_to(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        gantry_x, gantry_y, gantry_z, travel_z=gantry_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry.py", line 228, in move_to
+    self._mill.move_to(
+    ~~~~~~~~~~~~~~~~~~^
+        x_coordinate=machine_x,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        travel_z=machine_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 889, in move_to
+    self.execute_command(cmd)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 403, in execute_command
+    raise CommandExecutionError(
+        f"Error executing command {command}: {str(exep)}"
+    ) from exep
+cubos.gantry.gantry_driver.exceptions.CommandExecutionError: Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+Protocol failed; retracting OpentronsPipette at current XY to safe_z 114.000.
+Failure retract to safe_z failed; manual hardware check required: "Unknown instrument 'OpentronsPipette'. Available: pipette, vial_capper_decapper"
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 374, in execute_command
+    mill_response = self._wait_until_idle(
+        mill_response, suppress_errors=suppress_errors
+    )
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 565, in _wait_until_idle
+    raise StatusReturnError(
+        f"Command execution timed out after {timeout} seconds: {status}"
+    )
+cubos.gantry.gantry_driver.exceptions.StatusReturnError: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/move.py", line 62, in move
+    context.gantry.move(instrument, target, travel_z=travel_z)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 82, in move
+    self.controller.move_to(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        gantry_x, gantry_y, gantry_z, travel_z=gantry_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry.py", line 228, in move_to
+    self._mill.move_to(
+    ~~~~~~~~~~~~~~~~~~^
+        x_coordinate=machine_x,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        travel_z=machine_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 889, in move_to
+    self.execute_command(cmd)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 403, in execute_command
+    raise CommandExecutionError(
+        f"Error executing command {command}: {str(exep)}"
+    ) from exep
+cubos.gantry.gantry_driver.exceptions.CommandExecutionError: Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 377, in _best_effort_retract_to_safe_z
+    context.gantry.move(instrument, (x, y, safe_z), travel_z=safe_z)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 60, in move
+    instr = self._resolve_instrument(instrument)
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 167, in _resolve_instrument
+    raise KeyError(
+    ...<2 lines>...
+    )
+KeyError: "Unknown instrument 'OpentronsPipette'. Available: pipette, vial_capper_decapper"
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 374, in execute_command
+    mill_response = self._wait_until_idle(
+        mill_response, suppress_errors=suppress_errors
+    )
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 565, in _wait_until_idle
+    raise StatusReturnError(
+        f"Command execution timed out after {timeout} seconds: {status}"
+    )
+cubos.gantry.gantry_driver.exceptions.StatusReturnError: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/tools/run_protocol.py", line 134, in main
+    results = run_on_hardware(
+        gantry_path,
+    ...<6 lines>...
+        initial_fluids=args.initial_fluids,
+    )
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/move.py", line 62, in move
+    context.gantry.move(instrument, target, travel_z=travel_z)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 82, in move
+    self.controller.move_to(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        gantry_x, gantry_y, gantry_z, travel_z=gantry_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry.py", line 228, in move_to
+    self._mill.move_to(
+    ~~~~~~~~~~~~~~~~~~^
+        x_coordinate=machine_x,
+        ^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        travel_z=machine_travel_z,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 889, in move_to
+    self.execute_command(cmd)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/gantry_driver/driver.py", line 403, in execute_command
+    raise CommandExecutionError(
+        f"Error executing command {command}: {str(exep)}"
+    ) from exep
+cubos.gantry.gantry_driver.exceptions.CommandExecutionError: Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: sterling_6vials_tiprack.yaml
+  Labware (7):
+    vial_1: vial at (187.0, 26.0, 55.0)
+    vial_2: vial at (187.0, 59.0, 55.0)
+    vial_3: vial at (187.0, 92.0, 55.0)
+    vial_4: vial at (187.0, 125.0, 55.0)
+    vial_5: vial at (187.0, 158.0, 55.0)
+    vial_6: vial at (187.0, 191.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: deck_tour.yaml
+  Steps: 26
+    [0] home()
+    [1] move(instrument='pipette', position='corner_back_right', travel_z=111.0)
+    [2] pause(seconds=2.0, reason='corner check: back-right (gantry 385, 231)')
+    [3] move(instrument='pipette', position='corner_front_right', travel_z=111.0)
+    [4] pause(seconds=2.0, reason='corner check: front-right (gantry 385, 1)')
+    [5] move(instrument='pipette', position='corner_front_left', travel_z=111.0)
+    [6] pause(seconds=2.0, reason='corner check: front-left (gantry 1, 1)')
+    [7] move(instrument='pipette', position='corner_back_left', travel_z=111.0)
+    [8] pause(seconds=2.0, reason='corner check: back-left (gantry 1, 231)')
+    [9] move(instrument='pipette', position='deck_center', travel_z=111.0)
+    [10] pause(seconds=2.0, reason='deck center (gantry 193, 116)')
+    [11] move(instrument='pipette', position='vial_1_hover', travel_z=111.0)
+    [12] move(instrument='pipette', position='vial_1_close')
+    [13] pause(seconds=2.0, reason='close approach over capped vial_1 (Z 78, cap top ~68-70)')
+    [14] move(instrument='pipette', position='vial_1_hover')
+    [15] move(instrument='pipette', position='vial_2_hover', travel_z=90.0)
+    [16] move(instrument='pipette', position='vial_3_hover', travel_z=90.0)
+    [17] move(instrument='pipette', position='vial_4_hover', travel_z=90.0)
+    [18] move(instrument='pipette', position='vial_5_hover', travel_z=90.0)
+    [19] move(instrument='pipette', position='vial_6_hover', travel_z=90.0)
+    [20] pause(seconds=2.0, reason='end of vial column (over vial_6)')
+    [21] move(instrument='pipette', position='rack_o2_hover', travel_z=111.0)
+    [22] move(instrument='pipette', position='rack_a1_hover', travel_z=90.0)
+    [23] pause(seconds=2.0, reason='over tip rack A1 (the measured anchor, gantry 265, 1)')
+    [24] move(instrument='pipette', position='park_position', travel_z=111.0)
+    [25] home()
+
+Validating protocol motion bounds...
+  OK (30 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol on hardware...
+------------------------------------------------------------
+
+
+ERROR during execution: Error executing command G01 X1.0 F2000: Command execution timed out after 5 seconds: Grbl 1.1h ['$' for help]
+
+------------------------------------------------------------
+Protocol did not complete — 0 steps executed before exit.
+Measurement data store: /home/vcl/.cubos/panda_data.db
+Result CSV files:
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_15_20260825_234740/campaign.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_15_20260825_234740/experiments.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_15_20260825_234740/manifest.csv
+------------------------------------------------------------
