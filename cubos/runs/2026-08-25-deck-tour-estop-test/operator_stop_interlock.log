@@ -1,0 +1,2 @@
+2026-08-26 00:08:52 UTC  operator-stop interlock starting: will hold /dev/ttyUSB0 (TIOCEXCL) until ~02:53:52 UTC or until RELEASE_INTERLOCK_OPERATOR exists
+2026-08-26 00:08:55 UTC  acquired /dev/ttyUSB0 exclusively - all other opens now fail EBUSY; no protocol can drive the gantry

@@ -1,0 +1,307 @@
+# xy_square.yaml -- E-stop test fixture: the gantry walks a small square
+# around the centre of the deck, moving in X and Y ONLY.
+#
+# Requested 2026-08-26 by @jarrettshupe (issue #182): "a simple protocol to
+# have the gantry only move in the X and Y directions ... a small square
+# around the center of the deck ... I would like to keep testing the estop."
+#
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml   (2026-08-24 rev)
+#   deck:     ../../deck/sterling_6vials_tiprack.yaml
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>
+#
+# ---------------------------------------------------------------------------
+# WHY THIS IS X/Y ONLY (and where the one unavoidable Z move lives)
+# ---------------------------------------------------------------------------
+# CubOS's mill driver never interpolates diagonally -- `_build_direct_move`
+# and `_build_transit_move` (gantry_driver/driver.py) emit one G01 per
+# CHANGED axis, in X -> Y -> Z order, and prune any axis that is already at
+# its target. Every position in this file sits at the same Z (111.0) and
+# every move carries `travel_z: 111.0`, so from the second step onward the
+# driver emits nothing but `G01 X...` / `G01 Y...`: no Z word is ever sent.
+# Because consecutive square corners differ in exactly one axis, each edge
+# is a single, pure, single-axis move.
+#
+# The only Z motion in the run is the 11 mm descent from the post-home pose
+# (Z 122.0) down to the working plane (Z 111.0), which happens ONCE, at the
+# home corner, before any XY travel -- plus whatever the closing `home` does.
+# `travel_z` is specified (rather than omitted) precisely so that a lift to
+# 111 is always the FIRST command emitted if the driver's position read ever
+# fails and it has to emit the un-pruned sequence.
+#
+# ---------------------------------------------------------------------------
+# GEOMETRY (deck-frame, bare-nozzle pipette frame: gantry x = deck x - 52.0,
+# gantry y = deck y - 12.0, gantry z = deck z, since pipette depth is 0.0
+# and no tip is ever attached)
+# ---------------------------------------------------------------------------
+#   * Deck centre = deck (245, 128) = gantry (193, 116), i.e. the exact middle
+#     of the 386.333 x 232.0 travel envelope. Same waypoint deck_tour.yaml
+#     uses for "deck center".
+#   * The square is 80 x 80 mm, centred there: +/-40 mm on both axes, so
+#     gantry x 153..233 and gantry y 76..156 -- roughly the middle fifth of
+#     the envelope on each axis, nowhere near a travel end or a soft limit.
+#   * Z 111.0 throughout: the house bare-nozzle transit plane (safe_z is
+#     114.0, working_volume z_max is 122.0). Nothing on this deck comes close
+#     -- vial caps top out around 68-70, tips around 60.
+#   * 10 identical laps at the default F2000 (33 mm/s): each 80 mm edge takes
+#     ~2.4 s, each lap ~9.6 s of motion plus a 1 s pause, so the run offers
+#     ~100 s of nearly-continuous XY travel to press the E-stop into. Any
+#     press simply kills the run wherever it is -- there is nothing to
+#     collide with and nothing to spill.
+#
+# PASSIVE-INSTRUMENT CHECK (validate_setup never models the capper): the
+# capper rides 52 mm in -X / 12 mm in -Y of the nozzle with its tool end
+# 15.935 mm below gantry Z, so during the square it sweeps deck
+# x 153..233, y 76..156 at deck Z 95.1. That corridor crosses the vial
+# column (x 187) at vials 3 and 4 -- 25 mm above their cap tops. Confirm
+# nothing taller than ~90 mm is sitting inside that rectangle before the
+# first run; the vials, caps and tip rack are all far below it.
+#
+# Caps stay ON, the tip rack is untouched, no tip is picked up, no capper or
+# pipette action is ever commanded: every step is a bare-nozzle `move`.
+
+positions:
+  # 80 mm square centred on the deck centre, all at the Z 111 transit plane.
+  square_front_left: [205.0, 88.0, 111.0]    # gantry (153, 76)
+  square_front_right: [285.0, 88.0, 111.0]   # gantry (233, 76)
+  square_back_right: [285.0, 168.0, 111.0]   # gantry (233, 156)
+  square_back_left: [205.0, 168.0, 111.0]    # gantry (153, 156)
+
+  deck_center: [245.0, 128.0, 111.0]         # gantry (193, 116)
+
+protocol:
+  - home:
+
+  # --- The one and only Z move: drop from the post-home Z 122 to the Z 111
+  #     working plane at the home corner, then travel X, then Y, to the
+  #     square's front-left corner. Everything after this is pure XY.
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+
+  - pause:
+      seconds: 2.0
+      reason: "at square start (gantry 153, 76) -- Z 111 from here on"
+
+  # --- Lap 1 of 10: +X, +Y, -X, -Y. Each edge is one single-axis G01.
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 1/10 complete"
+
+  # --- Lap 2 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 2/10 complete"
+
+  # --- Lap 3 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 3/10 complete"
+
+  # --- Lap 4 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 4/10 complete"
+
+  # --- Lap 5 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 5/10 complete"
+
+  # --- Lap 6 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 6/10 complete"
+
+  # --- Lap 7 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 7/10 complete"
+
+  # --- Lap 8 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 8/10 complete"
+
+  # --- Lap 9 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 9/10 complete"
+
+  # --- Lap 10 of 10
+  - move:
+      instrument: pipette
+      position: square_front_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_right
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_back_left
+      travel_z: 111.0
+  - move:
+      instrument: pipette
+      position: square_front_left
+      travel_z: 111.0
+  - pause:
+      seconds: 1.0
+      reason: "lap 10/10 complete"
+
+  # --- Park at the deck centre (still pure XY at Z 111), then home.
+  - move:
+      instrument: pipette
+      position: deck_center
+      travel_z: 111.0
+
+  - home:

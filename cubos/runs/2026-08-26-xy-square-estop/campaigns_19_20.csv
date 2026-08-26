@@ -1,0 +1,3 @@
+id,description,deck_config,board_config,gantry_config,protocol_config,created_at,status,finished_at,fluid_state_id
+19,"Protocol run: gantry=cub_xl_ben_pipette_capper.yaml, deck=sterling_6vials_tiprack.yaml, protocol=xy_square.yaml",sterling_6vials_tiprack.yaml,,cub_xl_ben_pipette_capper.yaml,xy_square.yaml,2026-08-26 23:05:05,failed,2026-08-26 23:06:10,
+20,"Protocol run: gantry=cub_xl_ben_pipette_capper.yaml, deck=sterling_6vials_tiprack.yaml, protocol=xy_square.yaml",sterling_6vials_tiprack.yaml,,cub_xl_ben_pipette_capper.yaml,xy_square.yaml,2026-08-26 23:08:24,failed,2026-08-26 23:09:46,

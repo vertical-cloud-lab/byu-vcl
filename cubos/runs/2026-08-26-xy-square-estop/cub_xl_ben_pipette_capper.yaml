@@ -1,0 +1,52 @@
+serial_port: /dev/serial/by-id/usb-1a86_USB_Serial-if00-port0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 129.0
+  calibration_block_height_mm: 35.0
+  y_axis_motion: head
+  safe_z: 114.0
+working_volume:
+  x_min: 0.0
+  x_max: 386.333
+  y_min: 0.0
+  y_max: 232.0
+  z_min: 0.0
+  z_max: 122.0
+origin_policy: deck_origin
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  soft_limits: true
+  homing_enable: true
+  homing_dir_mask: 0
+  homing_pull_off: 3.0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 389.333
+  max_travel_y: 235.0
+  max_travel_z: 125.0
+instruments:
+  vial_capper_decapper:
+    type: capper
+    vendor: pawduino
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -15.935
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 13
+    offline: false
+    park_position:
+    - 125
+    - 50
+    port: /dev/ttyACM0
+  pipette:
+    type: pipette
+    vendor: opentrons
+    offset_x: 52.0
+    offset_y: 12.0
+    depth: 0.0
+    pipette_model: p20_single_gen2
+    port: ''
+    offline: true
