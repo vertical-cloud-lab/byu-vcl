@@ -1,5 +1,9 @@
 # RFQ Emails — Ready to Send (August 2026)
 
+> **Update 2026-08-26:** quotes are back from ESPI, Thermo Fisher (#M6449) and AEE. Line-by-line
+> purity, particle-size and dust-safety analysis of what came back — plus the revised order and
+> the three lines to strike — is in [quote-review-2026-08.md](quote-review-2026-08.md).
+
 Copy-paste quote-request emails implementing the sourcing plan in
 [supplier-search-2026-08.md](supplier-search-2026-08.md), consolidated down to the **fewest
 suppliers that cover the whole issue #161 shopping chart**: one Fisher/Thermo basket carries
@@ -91,7 +95,8 @@ Core items:
   5. 010579.22  Nickel powder, -60+170 mesh, 99.7%                     100 g  x1   (list $68.90)
   6. AA4262322  Copper powder, spherical, -100+325 mesh, 99.9%         100 g  x1   (list $57.80)
   7. AA0094122  Tin powder, -100 mesh, 99.85%                          100 g  x1   (list $68.00)
-  8. AA0001022  Aluminum powder, -40+325 mesh, 99.8%                   100 g  x1   (list $29.35)
+  8. AA0001022 (Alfa cat. 000010-22)  Aluminum powder, -40+325 mesh, 99.8%
+                                                            100 g  x1   (list $29.35)
 
 Optional items — please quote these two as separate lines (we have competing
 quotes pending and may drop them):
@@ -110,6 +115,14 @@ Ship to: [SHIPPING ADDRESS]
 
 *Core lines 1–8 ≈ $750 list. Line 8 is a small commissioning bridge for the auger while the
 2 kg aluminum order (Email 3) is in transit — drop it if not wanted.*
+
+> **⚠️ Line 8 — always give the description, not just the number.** On the 2026-08-24 RFQ,
+> Fisher's quote desk re-keyed `AA0001022` into Alfa catalog format as `000102-22`, which is a
+> **different product: Dysprosium ingot, 99.8% (REO), 100 g** — and quoted it at $368. Fisher
+> SKUs drop one leading zero, so Alfa **000010** → `AA0001022` (the aluminum) while Alfa
+> **000102** → `AA0010222` (the dysprosium). Quote both numbers plus the full description on
+> every line. See [quote-review-2026-08.md §1.1](quote-review-2026-08.md). Note this line also
+> ships UN 1396 Class 4.3 (dangerous when wet) — simplest to drop it, since AEE supplies the base.
 
 ---
 

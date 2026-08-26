@@ -1,5 +1,10 @@
 # Feedstock Supplier Search — August 2026
 
+> **Update 2026-08-26:** ESPI, Thermo Fisher (#M6449) and AEE have quoted. See
+> [quote-review-2026-08.md](quote-review-2026-08.md) for the line-by-line purity / particle-size /
+> dust-safety verdict, the revised ~$780 order, and the new Mg and coarse-Ti sourcing routes
+> (Luxfer Magtech, Coogee USA, AEE TI-109). Master alloys are now the critical path.
+
 **Compiled 2026-08-17** from four parallel live-web research sweeps plus direct product-page
 verification routed through the lab's Tailscale-connected Raspberry Pi (residential IP —
 Fisher/Thermo product pages price-verified this way; datacenter IPs get 403s).

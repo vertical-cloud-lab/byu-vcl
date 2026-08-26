@@ -1,5 +1,10 @@
 # Purchase-Quantity Model — First Round: 20 × 100 g Atomizer Runs
 
+> **Update 2026-08-26:** the quantities below were used to judge the returned quotes in
+> [quote-review-2026-08.md](quote-review-2026-08.md) — which concludes that Ti should drop from
+> 200 g to 25–50 g (it is no longer arriving as 5%-Ti rod) and that Ti/Ni/Fe/Sn, at 17.5 g
+> combined across all 20 runs, do not need auger-grade particle size at all.
+
 > **Update 2026-08-17:** the buy list has been simplified into the fixed shopping chart in
 > [issue #161](https://github.com/vertical-cloud-lab/byu-vcl/issues/161) (Al 2 kg; 100 g of
 > each 99.9% element; Ti 200 g; Al-20Ce 250 g, Al-2Sc 250 g, Al-10Zr 300 g, Al-10Er 100 g,

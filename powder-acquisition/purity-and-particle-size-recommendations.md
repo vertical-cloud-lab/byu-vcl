@@ -1,5 +1,10 @@
 # Powder Purity & Particle-Size Recommendations for Atomizer Feedstock Acquisition
 
+> **Update 2026-08-26:** quotes received. [quote-review-2026-08.md](quote-review-2026-08.md)
+> applies the guidance below to the actual lots offered — the headline is that the *aluminium
+> base* is the only line where purity matters (87% of the impurity budget), and that surface
+> oxide, which no "metals basis" certificate reports, dominates the trace-element lines.
+
 > **Update 2026-08-17:** the plan has since fixed *all* feedstock as powder/granules ≤300 µm
 > (target 150–300 µm) for automated auger dosing, swapped the Al-5Ti-1B rod for elemental Ti
 > powder, and lost both original suppliers (MSE Supplies: "importation restrictions";
