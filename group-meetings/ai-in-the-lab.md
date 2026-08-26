@@ -53,14 +53,20 @@ action items), with burned captions and chapter cards — lives in
 Most in-person pairs recorded audio-only (phone face-up — "Don't film me"), so those
 bites render as navy audio-cards with a live waveform.
 
-There is also a set of **seven vertical reels** (1080×1920, Shorts-ready) in a
-next-episode-preview style — the quote text appears on screen word-by-word in sync with
-the audio, with filler words, false starts, and dead air micro-edited out: one reel per
-breakout session, each under 60 seconds (Andrew & Marcus, Gage & Ronnie, Ben & Sterling,
-Xavier & Sam, Audrey & Carl), a 1:27 group-discussion reel, and a 2:45 "everything" reel
+There is also a set of **seven vertical reels** (1080×1920) in a next-episode-preview
+style — the quote text appears on screen word-by-word in sync with the audio, with filler
+words, false starts, and dead air micro-edited out: one reel per breakout session, each
+under 60 seconds and Shorts-eligible (Andrew & Marcus, Gage & Ronnie, Ben & Sterling,
+Xavier & Sam, Audrey & Carl), a 1:27 group-discussion reel, and a 4:33 "everything" reel
 covering the whole meeting. EDL, renderer, captions, and preview live in
 [`meeting-2026-08-19-recording/reels/`](meeting-2026-08-19-recording/reels/README.md);
-the MP4s are on the draft release and the Pi.
+the MP4s are on the draft release.
+
+The reels were revised on 2026-08-26 after review feedback (**v2**): source-level
+background-noise reduction, black canvas, larger type with line breaks that no longer
+reflow mid-quote, grayed-out speaker labels that follow the diarized speaker, no corner
+timecode, and an everything-reel re-cut to complete thoughts with the hard-cut
+interstitials removed (2:45 → 4:33).
 
 The online breakout — Audrey Christiansen & Carl Robison's 1:1 discussion, the eighth pair
 alongside the seven clips above — happened inside the meeting itself (00:40:41–01:01:07 of
