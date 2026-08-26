@@ -121,3 +121,30 @@ Edison's "claims that appear wrong or require verification" list, worked through
 ### Still deliberately not applied
 
 Nothing from the 25. Items 20 and 23 — the last two outstanding — are now applied.
+
+### Self-correction, 26 August 2026 — §8.4 formation documents
+
+The first version of §8.4 said the formation package "does not offer [cash] as an
+option," and that the stock purchase therefore had to be amended by counsel or the
+company formed elsewhere. Both halves were wrong, and reading the package's own
+materials settles it:
+
+- **Cash is already in the flow.** Founders "purchase their shares with a combination
+  of money and IP" ([Stripe's founder-equity guide](https://stripe.com/guides/atlas/equity)),
+  and the money is "cash equal to the purchase price of the shares," which is what
+  "ensures that the shares are fully paid" ([annotated legal guide](https://stripe.com/files/atlas/orrick-legal-guide.pdf)).
+  So an empty IP contribution does not leave the purchase short of consideration —
+  the shares are paid for regardless.
+- **The documents are editable within the service.** "You can work with them to edit
+  the documents you receive from Stripe Atlas," and the annotated templates are issued
+  on the same dashboard alongside the automated tool. Amending does not mean forming
+  elsewhere.
+- **The excluded-inventions schedule is not the operative clause.** Leaving it blank
+  changes nothing about the two provisions that bind: the assignment's forward reach,
+  and the representation that signing "does not and will not breach any agreement or
+  duty which the employee has with anyone else." That representation is the founder's
+  personal exposure under BYU's present assignment.
+
+§8.4 and `byu-vc-founder-rules.md` were rewritten accordingly. Same failure mode the
+rest of this pass documents: a confident claim about a third party's process, stated
+without reading the process's own text.
