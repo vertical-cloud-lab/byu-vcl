@@ -89,7 +89,23 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
-## pipette_test protocol (written 2026-08-25, NOT run)
+## pipette_test protocol (revised 2026-08-26, NOT run)
+
+`configs/protocol/vcl/pipette_test.yaml` and
+`configs/gantry/cub_xl_ben_pipette_capper.yaml` now hold @benwhitney5463's
+2026-08-26 revision, committed exactly as attached to PR #171 (comments added,
+no values changed). The revision swaps the `move`-stroke substitutions for
+literal `mix:`/`drop_tip:`, drops `safe_z` 114 -> 87 to make those validate,
+and brings the pipette online on the capper's `/dev/ttyACM0`.
+
+It was **not** run: the runner lost tailnet access when the `Connect to
+Tailscale` step was removed from `main`'s workflow. The offline audit —
+validation matrix across three CubOS versions, the ~3 mm cap clearance that
+`safe_z: 87` buys, the placeholder plunger constants, and the unarbitrated
+shared serial port — is in
+[`results/pipette_test_20260826/README.md`](results/pipette_test_20260826/README.md).
+
+## pipette_test protocol, original revision (written 2026-08-25, NOT run)
 
 `configs/protocol/vcl/pipette_test.yaml` retargets the capper test at the
 2026-08-24 deck/gantry pair above: park → decap vial_1 → `pick_up_tip`

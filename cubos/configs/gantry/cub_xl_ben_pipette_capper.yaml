@@ -1,10 +1,52 @@
+# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-08-26 rev.
+#
+# Committed exactly as attached to PR #171 on 2026-08-26; NOT run on hardware
+# (the runner lost tailnet access -- see cubos/results/pipette_test_20260826/).
+# Only comments were added below. Two values moved from the 2026-08-24 rev,
+# both marked CHANGED at the line, both with real consequences:
+#
+#   cnc.safe_z          114.0 -> 87.0    (see the block at that line)
+#   pipette.offline     true  -> false   (first time the plunger goes live)
+#
+# BEFORE THE NEXT HARDWARE RUN, check the controller settings. This file
+# expects $130/$131/$132 = 389.333 / 235.0 / 125.0; the last live read
+# (2026-08-20) was 389.693 / 281.218 / 123.99. Gantry._validate_grbl_settings
+# treats all three as critical with a 0.001 mm tolerance and raises
+# "Critical GRBL settings mismatch -- motion would be wrong" at connect, so
+# unless a recalibration rewrote the controller, a run stops there.
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
   factory_z_travel_mm: 129.0
   calibration_block_height_mm: 35.0
   y_axis_motion: head
-  safe_z: 114.0
+  # CHANGED 2026-08-26 (was 114.0). This is the only way to make a literal
+  # `mix:`/`drop_tip:` validate on the Pi's CubOS (cbc33dc): those commands
+  # hover at safe_z measured AT THE TOOL POINT, so with a 35 mm tip attached
+  # they need gantry Z = safe_z + 35, and 114 + 35 = 149 > z_max 122. At 87
+  # the tipped hover is 87 + 35 = 122 exactly -- it validates and it runs.
+  #
+  # THE COST, and it is not small: safe_z is shared with the capper. Every
+  # decap/cap leg travels at capper deck Z 87 -> gantry Z 87 - 15.935 =
+  # 71.065, and the pipette (depth 0.0) is the lowest thing on the head, so
+  # the bare nozzle rides at deck Z 71.065. Cap tops sit at about deck Z 68
+  # (the engage plane, rim 55 + engage_depth_mm 13) -- roughly 3 mm of
+  # clearance, unmeasured. Because park_position [125, 50] is off the vial
+  # column, each leg is a diagonal whose nozzle shadow crosses deck X 187:
+  # 20 of the 24 legs in pipette_test.yaml pass the nozzle directly over
+  # vial_2's or vial_3's cap, the closest within 0.9 mm of vial_2's centre.
+  # At safe_z 114 that same nozzle rides at deck 98 -- about 30 mm clear.
+  #
+  # Two ways to get the tipped commands without the 3 mm margin:
+  #   1. Apply cubos/patches/tipped-hover-clamp-and-ceiling-travel.patch on
+  #      the Pi and set safe_z back to 114.0. The tipped hover is then
+  #      clamped to gantry 122 (tip end at deck 87 -- the plane Ben verified
+  #      by eye) while capper legs return to gantry 98.065. Validated: PASS
+  #      + 19/19 mock.
+  #   2. Keep 87.0 but move the capper park_position onto the vial column's
+  #      own X (187) so every leg is a pure-Y move and the nozzle stays at
+  #      deck X 239, never over a cap. Needs an eyeball of the X ~239 strip.
+  safe_z: 87.0
 working_volume:
   x_min: 0.0
   x_max: 386.333
@@ -48,5 +90,25 @@ instruments:
     offset_y: 12.0
     depth: 0.0
     pipette_model: p20_single_gen2
-    port: ''
-    offline: true
+    # CHANGED 2026-08-26: was port '' / offline: true. Sharing the capper's
+    # /dev/ttyACM0 is right in principle -- upstream CubOS drives the
+    # Opentrons plunger from the same Pawduino Arduino ("the capper and
+    # lights share this Arduino via one link per port") -- but that sharing
+    # is arbitrated by PawduinoLink.acquire(), which does NOT exist at the
+    # Pi's checkout (cbc33dc). There, capper and pipette each open their own
+    # serial.Serial on the same device with no coordination: a second open
+    # can re-toggle DTR and reset the Arduino mid-session, a close resets it
+    # under the other driver, and the two share one reply stream. Update the
+    # Pi past 1a9987f (2026-08-20) before trusting the shared port.
+    #
+    # Also note the plunger geometry is entirely unmeasured. In
+    # instruments/pipette/models.py the p20_single_gen2 entry carries
+    # `# placeholder` on prime_position 5.0, blowout_position 7.0,
+    # drop_tip_position 10.0 and mm_to_ul 0.025 -- the same bucket as the old
+    # CAPPER_ENGAGE_DEPTH_MM. Consequences: a 20 uL mix moves the plunger
+    # 20 * 0.025 = 0.5 mm, and `drop_tip` drives to an ASSUMED eject
+    # position. Nothing verifies the tip actually left; the driver calls
+    # clear_attached_tip_extension() either way. Everything after step 6 of
+    # pipette_test.yaml assumes a bare nozzle.
+    port: /dev/ttyACM0
+    offline: false
