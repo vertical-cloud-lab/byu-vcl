@@ -58,7 +58,7 @@ jobs:
 
           if [[ -z "$model_part" ]]; then
             # Default model for a bare @claude mention — edit this line to change it
-            model="claude-fable-5"
+            model="claude-opus-5"
           elif [[ "$model_part" != *[0-9]* ]]; then
             # Unversioned family name (opus, sonnet, fable, haiku) -> pass through as a
             # CLI alias, which resolves to the latest model of that family
