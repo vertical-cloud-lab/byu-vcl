@@ -1,93 +1,93 @@
-# pipette_test.yaml -- decap vial_1, pick up a tip, mix in vial_1, drop the
-# tip back at the rack, then cap vial_1 and decap+cap vials 2..6.
-# CubXL, 2026-08-24 deck/gantry calibration.
+# pipette_test.yaml -- @benwhitney5463's 2026-08-27 revision, attached to
+# PR #171: "I changed the protocol so the pipette tip actually enters the vial."
 #
-# @benwhitney5463's 2026-08-26 revision, committed exactly as attached to
-# PR #171. NOT run on hardware -- the GitHub runner lost tailnet access to the
-# Pi (see cubos/results/pipette_test_20260826/README.md). Only this header was
-# rewritten; the previous one described the `move`-stroke substitutions this
-# revision replaces with literal `mix:` and `drop_tip:`.
+# Body committed exactly as attached (verified: parsed YAML identical to the
+# attachment). Only this header is ours. Three changes vs. the 2026-08-26 rev:
 #
-# Run it with:
-#   python -m cubos.tools.validate_setup      <gantry> <deck> <this>
-#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <this>
-#   python -m cubos.tools.run_protocol        <gantry> <deck> <this>
+#   positions.park_position   [170, 170, 80] -> [187, 170, 80]  (vial column X)
+#   step 1 `move` instrument  pipette -> vial_capper_decapper
+#   step 4 `mix`              + height: -15.0
+#   (park_tip_removal removed; the breakpoint/stroke substitutions replaced by
+#    literal `mix:` and `drop_tip:`)
 #
-# OFFLINE STATUS (2026-08-26, CubOS cbc33dc + the two patches on the Pi):
-#   validate_setup PASS (10 targets) - run_protocol --mock 19/19 steps.
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml
+#   deck:     ../../deck/sterling_6vials_tiprack.yaml
 #
-# ===========================================================================
-# THE ONE INVARIANT THIS PROTOCOL RESTS ON: the tip is off by step 7
-# ===========================================================================
-# Steps 3-6 are the only tipped steps. From step 7 (`cap vial_1`) onward every
-# move belongs to the capper and travels at capper deck Z 87 -> gantry 71.065.
-# With the tip gone that is the bare nozzle at deck 71.065, about 3 mm over
-# the caps. With the tip still on it is the TIP END at deck 36.065 -- 19 mm
-# below the vial rims and 32 mm below the cap tops -- sweeping across the vial
-# column on every park leg. That is a hard crash, 20 times.
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>
 #
-# Nothing in CubOS verifies the tip actually left. `drop_tip` drives the
-# plunger to p20_single_gen2's drop_tip_position, which models.py marks
-# `# placeholder`, and then calls clear_attached_tip_extension() whether or
-# not the tip came off. The engine believes the nozzle is bare from step 6 on.
+# Status 2026-08-27: validate_setup PASS (19 steps), --mock 19/19. Steps 0..5
+# RAN ON HARDWARE and completed (campaign 25, see
+# cubos/results/pipette_test_20260827/) as pipette_test_partA.yaml. Steps 6..18
+# were NOT run -- see the drop_tip block below.
 #
-# So for the FIRST run with the plunger live, do one of:
-#   * split this file after step 6 and eyeball the nozzle before running the
-#     capper half, or
-#   * put a `breakpoint:` between step 6 and step 7 AND run it from a
-#     foreground terminal -- a headless run logs "Breakpoint skipped because
-#     stdin is not interactive" and continues straight into the capper legs.
+# ---------------------------------------------------------------------------
+# WHAT WORKS: `height: -15.0` does what you intended
+# ---------------------------------------------------------------------------
+# `mix` engages by descending the TOOL POINT to `coord.z + height`. With the
+# rim at deck 55 that is deck Z 40.0 for the tip end, gantry Z 75.0 -- 15 mm
+# inside the vial, nozzle still 20 mm above the rim. Confirmed in the traced
+# mock and on hardware:
 #
-# ===========================================================================
-# TWO THINGS THAT ARE PROBABLY NOT WHAT WAS INTENDED
-# ===========================================================================
-# 1. `mix` never enters the vial. The command signature is
-#    mix(position, volume_ul, repetitions=3, speed=50.0, height=0.0), and
-#    engage_at_labware descends the tool point to coord.z + height. With
-#    height defaulted to 0.0 that is deck Z 55.0 -- the vial rim exactly, tip
-#    end level with the mouth. Add `height: -15.0` to reach deck Z 40 (gantry
-#    75), the same depth the previous revision's strokes used. Validated:
-#    PASS on both the Pi's CubOS and the patched one.
+#   @@MOUNT OpentronsPipette deck=(187.0, 26.0, 87.0) travel_z=87.0
+#   @@GANTRY x=135.000 y=14.000 z=122.000   <- tipped hover, exactly z_max
+#   @@MOUNT (187.0, 26.0, 40.0)
+#   @@GANTRY x=135.000 y=14.000 z= 75.000   <- tip 15 mm into the vial
 #
-# 2. The mix moves 0.5 mm of plunger, not 20 uL. The driver computes
-#    mm_travel = volume_ul * mm_to_ul, and mm_to_ul is 0.025 `# placeholder`
-#    for this pipette model. The plunger constants need measuring before any
-#    volume in this file means microlitres.
+# Without `height` the default 0.0 would have stopped the tip end level with
+# the rim. safe_z 87 is what makes the tipped hover legal: 87 + 35 = 122 = z_max
+# exactly. It validates, and it ran.
 #
-# Also: `drop_tip` ejects 35 mm above the rack. Its engage descends the TIP
-# END to the rack's pickup_z 60 (gantry 95), but the tip was seated with its
-# end at deck 25. The tip is released well above its hole and will not seat
-# back in it. A dedicated `tip_disposal` deck entry is the proper target once
-# the plunger is calibrated.
+# ---------------------------------------------------------------------------
+# >>> DO NOT RUN PAST STEP 5 UNTIL drop_tip IS FIXED <<<
+# ---------------------------------------------------------------------------
+# `drop_tip: tip_rack.A1` cannot return the tip to the rack, and everything
+# after it is planned as if the nozzle were bare.
 #
-# ===========================================================================
-# GEOMETRY AS RUN (from the --mock trace)
-# ===========================================================================
-#   step 1  pipette -> park           deck (170, 170, 80)  gantry (118, 158, 80)
-#   step 2  capper transit            deck Z 87            gantry Z 71.065
-#           capper engage vial_1      deck Z 68            gantry Z 52.065
-#   step 3  tip pickup (bare nozzle)  deck (317, 13, 60)   gantry (265, 1, 60)
-#   step 4  mix hover (tip end 87)                         gantry Z 122 (= z_max)
-#           mix engage (tip end 55)                        gantry Z 90
-#   step 5  tipped park (tip end 80)                       gantry Z 115
-#   step 6  drop hover (tip end 87)                        gantry Z 122
-#           drop engage (tip end 60)                       gantry Z 95
-#   steps 7-17  capper only           deck Z 87 / 68       gantry 71.065 / 52.065
+# 1. It ejects 35 mm in the air. drop_tip engages like any other pipette
+#    command: the TOOL POINT (= tip end, with a tip on) descends to the rack's
+#    pickup_z 60.0, i.e. gantry Z 95.0. A tip seated in A1 has its end at deck
+#    Z 25 (nozzle at 60, tip 35 long). Traced: `@@GANTRY x=265 y=1 z=95.000`.
+#    The tip is released one full tip-length above its slot.
+# 2. The eject position is a placeholder. instruments/pipette/models.py,
+#    p20_single_gen2: `drop_tip_position=10.0,  # placeholder`, alongside
+#    prime_position 5.0, blowout_position 7.0, mm_to_ul 0.025. Same bucket as
+#    the old CAPPER_ENGAGE_DEPTH_MM.
+# 3. Nothing checks the outcome. commands/pipette.py calls
+#    `pipette.clear_attached_tip_extension()` unconditionally after
+#    `pipette.drop_tip(speed)` returns, so from step 7 on CubOS plans in the
+#    bare-nozzle frame whatever physically happened.
 #
-# Eyeball before running (no offline check models the PASSIVE instrument):
-#   * deck X ~239, Y 14-203, above Z 71 -- the nozzle's shadow during every
-#     capper leg, including the crossings over vial_2/vial_3 noted in the
-#     gantry file.
-#   * deck X ~135, Y 14, down to Z 90 -- the capper's shadow during the mix.
-#   * deck X ~256.5-265, Y 1, down to Z ~44 -- the capper during tip pickup.
+# If the tip is still on the nozzle at step 7, the capper legs run at gantry
+# 71.065, which puts the TIP END at deck Z 36.065 -- 19 mm below the vial rims
+# (55) and 32 mm below the cap tops (~68) -- and with the capper parking at
+# [125, 50] every leg is a diagonal that crosses the vial column at deck X 187.
+# That is a lateral strike into a capped vial, about 20 times per run. There is
+# no camera on the CubXL deck, so it cannot be verified remotely.
 #
-# pickup_z 60.0 is still the un-re-verified 2026-08-06 number; worth a jog
-# check before the first real pickup. Each run consumes tip_rack.A1 in the
-# model -- refill the slot or retarget `pick_up_tip` before re-running.
-
+# The real fix is a `tip_disposal` deck entry (drop_tip's intended target,
+# ejecting at that entry's own location.z) plus a measured drop_tip_position --
+# neither is a protocol edit.
+#
+# ---------------------------------------------------------------------------
+# ALSO OPEN
+# ---------------------------------------------------------------------------
+#   * Capper park_position [125, 50] is off the vial column, so with safe_z 87
+#     each decap/cap leg walks the bare nozzle across cap tops at deck 71.065
+#     vs. ~68 -- about 3 mm, closest pass 0.9 mm from vial_2's axis. Setting it
+#     to [187.0, 50.0] makes every leg a pure-Y move at deck X 187 with the
+#     nozzle held at deck X 239, over ground the engages already sweep 19 mm
+#     lower. That is what the hardware run used.
+#   * The firmware reports max_vol 300.00 but the gantry config declares
+#     pipette_model: p20_single_gen2. Check which pipette is actually mounted;
+#     mm_to_ul 0.025 is the p20 number either way, so volume_ul is not yet
+#     microlitres (20 uL -> 0.5 mm of plunger).
+#   * pick_up_tip consumes A1 in the model. Refill the slot or retarget before
+#     re-running.
 positions:
-  park_position: [170.0, 170.0, 80.0]
-  park_tip_removal: [170.0, 170.0, 80.0]
+  park_position: [187.0, 170.0, 80.0]
 
 protocol:
   - home:
@@ -96,7 +96,7 @@ protocol:
   #    so the transit out of the homed corner is modeled, well away from the
   #    vial column and the tip rack.
   - move:
-      instrument: pipette
+      instrument: vial_capper_decapper
       position: park_position
       travel_z: 80.0
 
@@ -111,6 +111,7 @@ protocol:
   - mix:
       position: vial_1
       volume_ul: 20.0
+      height: -15.0
         
   - move:
       instrument: pipette

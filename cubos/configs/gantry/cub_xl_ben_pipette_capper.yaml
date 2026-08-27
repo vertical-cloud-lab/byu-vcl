@@ -8,12 +8,21 @@
 #   cnc.safe_z          114.0 -> 87.0    (see the block at that line)
 #   pipette.offline     true  -> false   (first time the plunger goes live)
 #
-# BEFORE THE NEXT HARDWARE RUN, check the controller settings. This file
-# expects $130/$131/$132 = 389.333 / 235.0 / 125.0; the last live read
-# (2026-08-20) was 389.693 / 281.218 / 123.99. Gantry._validate_grbl_settings
-# treats all three as critical with a 0.001 mm tolerance and raises
-# "Critical GRBL settings mismatch -- motion would be wrong" at connect, so
-# unless a recalibration rewrote the controller, a run stops there.
+# CONTROLLER SETTINGS -- resolved 2026-08-27. $130/$131/$132 now read
+# 389.333 / 235.0 / 125.0 on the controller, matching this file exactly, so
+# the travel mismatch flagged on 2026-08-26 is gone (a recalibration did
+# rewrite it).
+#
+# But that same recalibration left $20=0 -- SOFT LIMITS DISABLED. $20 is in
+# Gantry._validate_grbl_settings' critical set and `soft_limits: true` below
+# maps to $20=1 (gantry/grbl_settings.py:43), so every run would have aborted
+# at connect with "Critical GRBL settings mismatch". The cause is visible in
+# configure_soft_limits_from_spans (gantry.py:618-632): it writes $20=0, then
+# the travel extents, then $20=1. Interrupted in between -- an E-stop during
+# calibration will do it, and #182 was testing exactly that -- it leaves the
+# machine with no software limit protection at all ($21 hard limits are also
+# 0). Restored to $20=1 on 2026-08-27 and verified; re-check it after any
+# calibration that gets interrupted.
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
@@ -79,6 +88,14 @@ instruments:
     capture_settle_s: 1
     engage_depth_mm: 13
     offline: false
+    # [125, 50] is off the vial column, so with safe_z 87 every decap/cap leg
+    # is a diagonal: the passive nozzle rides at deck Z 71.065 and crosses the
+    # column at deck X 187, about 3 mm over the cap tops (~68), closest pass
+    # 0.9 mm from vial_2's axis. [187.0, 50.0] makes every leg a pure-Y move
+    # at deck X 187, holding the nozzle at deck X 239 -- ground the capper
+    # engages already sweep at deck Z 52.065, i.e. 19 mm lower. The
+    # 2026-08-27 hardware run used [187.0, 50.0]; see
+    # cubos/configs/protocol/vcl/pipette_test_partA.yaml.
     park_position:
     - 125
     - 50

@@ -1,0 +1,50 @@
+# pipette_test_partA.yaml -- steps 0..5 of @benwhitney5463's 2026-08-27
+# pipette_test.yaml, VERBATIM, stopping immediately before `drop_tip`.
+#
+# Why the split: `drop_tip: tip_rack.A1` ejects with the TIP END at deck Z 60
+# (gantry 95) while a seated tip's end is at deck Z 25 -- the tip is released
+# 35 mm in the air, driven to `drop_tip_position: 10.0`, which is a documented
+# placeholder in instruments/pipette/models.py. drop_tip then calls
+# clear_attached_tip_extension() unconditionally, so every later step is
+# planned as a bare nozzle. If the tip is in fact still on, the capper legs at
+# gantry 71.065 carry the tip END at deck 36.065 -- 19 mm below the vial rims --
+# straight through the vial column ~20 times. Nothing on this machine can
+# verify the tip left, and there is no camera on the CubXL deck, so the back
+# half is not runnable unattended. Steps 0..5 are.
+#
+# Run with the gantry file's capper park_position at [187.0, 50.0] so every
+# capper leg is a pure-Y move at deck X 187 and the passive nozzle holds deck
+# X 239 -- never over a cap. See the gantry header.
+#
+# ENDS WITH THE TIP ON THE NOZZLE and vial_1 open, its cap held by the
+# electromagnet. Pull the tip off by hand before any further capper motion.
+
+positions:
+  park_position: [187.0, 170.0, 80.0]
+
+protocol:
+  - home:
+
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 80.0
+
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  # The change under test: height -15.0 drives the tip END to deck Z 40,
+  # 15 mm below the rim (gantry 75).
+  - mix:
+      position: vial_1
+      volume_ul: 20.0
+      height: -15.0
+
+  - move:
+      instrument: pipette
+      position: park_position
+      travel_z: 80.0
