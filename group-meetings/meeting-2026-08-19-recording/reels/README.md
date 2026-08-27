@@ -29,6 +29,56 @@ Each breakout-session reel is **under 60 seconds** (Shorts-eligible). The group 
 1:27; the everything reel runs 4:33 — past the 3-minute Shorts cap, which is a deliberate
 trade (see *v2* below) and fine for Reels/TikTok and for a regular vertical YouTube upload.
 
+## v3 (2026-08-27) — the screen share is on screen
+
+Review question: *"wasn't I doing screen sharing for some of this?"* Yes — for **59 of the
+75 minutes**. Classifying every second of the original recording (mean luma of the main
+region, cross-checked on frames) gives:
+
+| Original timeline | What the recording shows |
+|---|---|
+| 0:00 – 5:37 | avatars / black, people joining |
+| 5:37 – **16:12** | the room camera, full frame |
+| **16:12 – 1:15:22** | Sterling's screen share — GitHub discussion [#178](https://github.com/vertical-cloud-lab/byu-vcl/discussions/178), the three questions in a 500 %-zoom editor, then his Teams window through the online breakout — with brief returns to camera at 20:21 and 33:32 |
+| 1:15:22 – 1:15:34 | the room camera again, for the closing lines |
+
+v1 and v2 played **every** meeting bite as text on black, so none of that was ever visible
+(the long-form [highlights](../highlights/) cut, which uses full-frame footage, always had
+it). v3 puts the recording back on screen where it carries information, cropped to the part
+of the 1920×1080 desktop being talked about — `"visual": "footage"` plus a `"crop"`
+(source coordinates; a per-segment list where the shot changes mid-bite):
+
+| Reel · item | What now plays instead of a waveform |
+|---|---|
+| 05 · `grunt-work` | **Audrey on camera** on the shared Teams stage, name plate and all, for her whole bite |
+| 06 · `thanks` | the **room camera** — the recording cuts back to it at 1:15:22 |
+| 07 · `three-questions` | the **three questions themselves**, in the editor, as he reads them |
+| 07 · `claude-run` | Tim's comment, then **PR #60 and the `@claude` comment** reporting the 42-minute autonomous sensor test — the evidence the bite is describing |
+| 07 · `thanks` | the shared Teams window, then the room camera |
+
+Everything else stays a text card **on purpose**: during the e-bike / Jarvis stretch the
+screen is a *static, unrelated* GitHub comment, and Carl was camera-off (a 900 px "CR"
+avatar), so footage there would mislead or bore rather than inform.
+
+### One redaction
+
+The Colab notebook opened at 18:37 of the recording has **live MQTT broker credentials**
+in the code cell and in its parameter form. Those ~3 s fall inside the `claude-run` bite,
+so the EDL carries a `redact` entry — a timed black box in source coordinates, applied
+before the crop — and the rendered reel shows `screen redacted` there instead. The rest of
+that bite (the discussion thread, the PR, Claude's run report) is public and untouched.
+**The credentials are still in the original recording and in the unlisted YouTube upload**;
+worth rotating regardless of what the reels show.
+
+### Nothing else moved
+
+No cut boundary, word list, caption or chapter changed in v3 — only which pixels fill the
+visual zone. Verified: the three re-rendered reels are the same length as the released v2
+files to the frame (47.57 s / 87.40 s / 272.97 s), their `.vtt` and `.chapters.txt`
+sidecars are byte-identical, and the decoded meeting audio cross-correlates with v2 at
+**1.000000** (pair-clip audio, which had to be recovered again, at 0.9958 — one extra AAC
+generation). So the v2 junction QA still stands and was not repeated.
+
 ## v2 (2026-08-26) — what changed and why
 
 Review feedback on the first set was: the audio is noisy, the on-screen text keeps
@@ -59,8 +109,8 @@ Video files are deliberately **not** committed to git (see [`../README.md`](../R
 
 - **Draft GitHub release** [`meeting-2026-08-19-recording`](https://github.com/vertical-cloud-lab/byu-vcl/releases):
   all seven MP4s + caption sidecars.
-- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — *not refreshed for v2*;
-  this runner had no tailnet (see below).
+- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — *not refreshed for v2
+  or v3*; neither runner had tailnet (see below). The release copies are current.
 
 ## Files here
 
@@ -97,7 +147,10 @@ To change a cut: edit the item's `segments`/`words` in `reels-edl.json` and re-r
 
 This runner had **no tailnet** (`tailscale` was not installed and no OAuth credentials were
 present) and YouTube bot-gates the runner's datacenter IP on every player client, so the
-seven pair clips were unreachable for v2. Instead, each pair item's media was recovered
+seven pair clips were unreachable for v2 — and again for v3, which recovered reel 07's four
+pair items from the **v2** release render the same way (timeline reproduced from the EDL to
+0.000 frames against the released duration; `"denoise": "none"` in the manifest so the
+already-denoised audio is not run through the chain twice). Instead, each pair item's media was recovered
 **frame-exactly from the v1 renders** on the draft release, by replaying the v1 renderer's
 offset arithmetic (validated: reconstructed reel durations matched the released files to
 0.000 s, and predicted card boundaries matched `silencedetect` to ≤1 frame); item audio was

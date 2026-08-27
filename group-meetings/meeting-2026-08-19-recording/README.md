@@ -20,6 +20,32 @@ The share link is anonymously accessible (verified 2026-08-20 from a GitHub Acti
 runner — no BYU sign-in or residential IP needed). To re-download the original file:
 `yt-dlp -f source "<share link>"` (the `source` format is the pristine MP4).
 
+## What the video actually shows
+
+Classifying every second of the original 75:34 recording by the mean luma of the main
+region (`ffmpeg ... signalstats`, cross-checked on frames) gives the shot list below.
+Sterling is screen sharing for **59 of the 75 minutes** — he announces it at 13:37
+("I'm just going to screen share the…"), 15:20 and 16:04, and the Chrome
+"teams.microsoft.com is sharing your screen" bar is visible along the bottom of the frame
+throughout.
+
+| Original timeline | On screen |
+|---|---|
+| 0:00 – 5:37 | avatar tiles / black — people joining |
+| 5:37 – 16:12 | room camera, full frame (the in-person half of the room) |
+| 16:12 – 20:21 | screen share: GitHub discussion [#178](https://github.com/vertical-cloud-lab/byu-vcl/discussions/178), then the three questions in a 500 %-zoom text editor (16:44 – 17:13), then the discussion thread and PR [#60](https://github.com/vertical-cloud-lab/byu-vcl/pull/60) with the `@claude` sensor-test run |
+| 20:21 – 20:36 | room camera |
+| 20:36 – 33:32 | screen share: the discussion thread (the powder-doser generative-CAD comment at 21:40), Tactiq at ~20:25 |
+| 33:32 – 34:17 | room camera |
+| 34:17 – 1:15:22 | screen share: his Teams window for the whole online breakout — Audrey on webcam when she speaks, Carl camera-off, the shared question text on the stage |
+| 1:15:22 – 1:15:34 | room camera again, for the closing lines |
+
+⚠️ **Credentials on screen.** At ~18:37 the shared screen shows a Colab notebook whose code
+cell and parameter form contain live MQTT broker credentials (host, user, password). They
+are in the original recording and therefore in the unlisted YouTube upload; the reels
+render a black `screen redacted` box over that window (see [`reels/README.md`](reels/README.md)),
+but the credentials are worth rotating regardless.
+
 ## Files in this directory
 
 | File | Description |

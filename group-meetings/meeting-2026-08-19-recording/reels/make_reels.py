@@ -13,6 +13,13 @@ v2 (2026-08-26), after review feedback on the first set:
   * the speaker is a single grayed-out "Name:" label, not a role caption;
   * every source is background-noise reduced before the cut (see AUDIO_DENOISE).
 
+v3 (2026-08-27): meeting items can carry "visual": "footage" with a "crop" (source
+coordinates) so the screen share Sterling ran for 16:12-1:15:22 of the recording -- the
+three questions, the GitHub thread where @claude reports the sensor test -- and the room
+camera actually appear, instead of every meeting bite being text on black. Items may also
+carry "redact": timed black boxes in source coordinates, for screen content that must not
+be published.
+
 Reads reels-edl.json. Every item carries its final keep-intervals ("segments", seconds
 on the source timeline, already word-aligned and filler-cut) and the kept words with
 their source-time onsets ("words", [start, end, text]) used for the burned text reveal
@@ -79,10 +86,13 @@ RNNOISE_URL = ("https://raw.githubusercontent.com/GregorR/rnnoise-models/master/
 
 
 def denoise_chain(mode="full"):
-    """mode="gentle" skips RNNoise. RNNoise buys ~11 dB of background suppression and
+    """mode="gentle" skips RNNoise; mode="none" is a no-op, for media recovered from an
+    already-denoised render (running the chain twice thins the voice). RNNoise buys ~11 dB of background suppression and
     leaves normal speech untouched (measured: identical ASR word counts and avg_logprob
     across three sample spans), but it can swallow a near-whispered aside it does not
     classify as speech -- so an item can opt out with "denoise": "gentle" in the EDL."""
+    if mode == "none":
+        return "anull"
     parts = ["highpass=f=85"]
     if mode != "gentle" and RNNOISE_MODEL.exists():
         parts.append(f"arnndn=m={RNNOISE_MODEL}")
@@ -222,7 +232,38 @@ def _fit_visual():
             f"force_divisible_by=2,fps={FPS}")
 
 
-def render_item_video(src, segs, work, iid, fade_in=0.0):
+def _crop_of(crop, k):
+    """crop: [w,h,x,y] for every segment, or a per-segment list of those (null = none).
+    Source coordinates, applied before the fit into the visual zone -- this is how a
+    1920x1080 screen share becomes legible on a 1080-wide phone frame: crop to the part
+    of the screen being talked about, then scale that up instead of the whole desktop."""
+    if not crop:
+        return None
+    if isinstance(crop[0], (list, type(None))):
+        crop = crop[k] if k < len(crop) else None
+    return f"crop={crop[0]}:{crop[1]}:{crop[2]}:{crop[3]}" if crop else None
+
+
+def _redactions_of(redact, s, e):
+    """Timed black boxes in source coordinates, applied before the crop. Used where the
+    screen share exposes something that must not be published (see the EDL's `why`)."""
+    out = []
+    for r in redact or []:
+        a, b = r["t"]
+        if b <= s or a >= e:
+            continue
+        w, h, x, y = r["rect"]
+        lo, hi = max(0.0, a - s), min(e - s, b - s)
+        en = f":enable='between(t,{lo:.3f},{hi:.3f})'"
+        out.append(f"drawbox=x={x}:y={y}:w={w}:h={h}:color=black:t=fill{en}")
+        if r.get("label"):
+            out.append(f"drawtext=fontfile={FONT_LABEL}:text='{r['label']}':"
+                       f"x={x}+({w}-text_w)/2:y={y}+({h}-text_h)/2:fontsize=34:"
+                       f"fontcolor=white@0.34{en}")
+    return out
+
+
+def render_item_video(src, segs, work, iid, fade_in=0.0, crop=None, redact=None):
     """Footage item: the source, fitted into the visual zone on black."""
     cmd = ["ffmpeg", "-y", "-nostdin", "-loglevel", "error"]
     graph, durs = [], []
@@ -230,7 +271,12 @@ def render_item_video(src, segs, work, iid, fade_in=0.0):
         d = snap(e) - snap(s)
         durs.append(d)
         cmd += ["-ss", f"{snap(s):.4f}", "-to", f"{snap(e) + 0.25:.4f}", "-i", src]
-        graph.append(f"[{k}:v]{_fit_visual()},setpts=PTS-STARTPTS,"
+        pre = _redactions_of(redact, snap(s), snap(e))
+        cs = _crop_of(crop, k)
+        if cs:
+            pre.append(cs)
+        pre = ",".join(pre) + "," if pre else ""
+        graph.append(f"[{k}:v]{pre}{_fit_visual()},setpts=PTS-STARTPTS,"
                      f"tpad=stop_mode=clone:stop_duration=0.3,trim=end={d:.6f}[v{k}]")
     total = sum(durs)
     graph.append("".join(f"[v{k}]" for k in range(len(segs))) +
@@ -549,8 +595,9 @@ def main():
             words, planned = item_words_local(item)
             if key in recovered:
                 rec = recovered[key]
-                wav = render_recovered_audio(rec["audio"], work, iid,
-                                             item.get("denoise", "full"))
+                wav = render_recovered_audio(
+                    rec["audio"], work, iid,
+                    rec.get("denoise", item.get("denoise", "full")))
                 if rec.get("video"):
                     video = render_recovered_video(rec["video"], rec["dur"], work, iid,
                                                    fade_in)
@@ -565,7 +612,8 @@ def main():
                 if item.get("visual", "card") == "card":
                     video = render_card_item_video(wav, planned, work, iid, fade_in)
                 else:
-                    video = render_item_video(src, segs, work, iid, fade_in)
+                    video = render_item_video(src, segs, work, iid, fade_in,
+                                              item.get("crop"), item.get("redact"))
             piece, dur = mux_item(video, wav, work, iid)
             if item.get("chapter"):
                 chapters.append((cursor, item["chapter"]))

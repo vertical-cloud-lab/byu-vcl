@@ -1,10 +1,11 @@
 {
- "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts.",
+ "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v3 (2026-08-27): meeting bites whose screen share or room camera actually shows what is being said now play as footage, cropped to the readable part of the 1920x1080 screen ('crop', source coordinates; a per-segment list where the shot changes mid-bite) with timed black boxes where the screen must not be published ('redact'). v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts.",
  "video": {
   "width": 1080,
   "height": 1920,
   "fps": 30,
-  "background": "black"
+  "background": "black",
+  "screen_share": "The original recording is the room camera 5:37-16:12 and 1:15:22-end, and Sterling's screen share (GitHub discussion #178, the three questions, then the Teams window during the online breakout) 16:12-1:15:22, with brief returns to camera at 20:21 and 33:32."
  },
  "audio": {
   "rate": 48000,
@@ -3478,7 +3479,14 @@
     {
      "id": "grunt-work",
      "src": "meeting",
-     "visual": "card",
+     "visual": "footage",
+     "crop": [
+      930,
+      390,
+      285,
+      400
+     ],
+     "visual_why": "Audrey is on camera on the shared Teams stage for this whole bite; the crop sits below the 'You've been muted' toast and holds her name plate.",
      "segments": [
       [
        2949.3,
@@ -5670,7 +5678,14 @@
     {
      "id": "thanks",
      "src": "meeting",
-     "visual": "card",
+     "visual": "footage",
+     "crop": [
+      1440,
+      810,
+      60,
+      120
+     ],
+     "visual_why": "The recording cuts back to the room camera at 1:15:22 for the closing lines.",
      "segments": [
       [
        4524.6,
@@ -6167,7 +6182,14 @@
      "id": "three-questions",
      "src": "meeting",
      "speaker": "Sterling Baird:",
-     "visual": "card",
+     "visual": "footage",
+     "crop": [
+      1670,
+      920,
+      0,
+      80
+     ],
+     "visual_why": "The three questions are on the screen share in 500%-zoom monospace while he reads them; the crop spans the whole editor viewport (the text starts at the top and ends at the bottom as he scrolls) and drops the participant strip and the taskbar.",
      "segments": [
       [
        1004.0,
@@ -6540,7 +6562,30 @@
      "id": "claude-run",
      "src": "meeting",
      "speaker": "Sterling Baird:",
-     "visual": "card",
+     "visual": "footage",
+     "crop": [
+      1670,
+      800,
+      0,
+      110
+     ],
+     "redact": [
+      {
+       "t": [
+        1116.8,
+        1120.6
+       ],
+       "rect": [
+        1580,
+        720,
+        90,
+        250
+       ],
+       "label": "screen redacted",
+       "why": "The Colab notebook he opens has live MQTT broker credentials in the code cell and in the parameter form; everything else in the bite (the GitHub thread, the PR, Claude's run report) is public."
+      }
+     ],
+     "visual_why": "The bite is him narrating the screen: Tim's comment, then PR #60 and the @claude comment reporting the 42-minute autonomous sensor test.",
      "segments": [
       [
        1092.7333333333333,
@@ -10146,7 +10191,22 @@
      "id": "thanks",
      "src": "meeting",
      "speaker": "Sterling Baird:",
-     "visual": "card",
+     "visual": "footage",
+     "crop": [
+      [
+       1670,
+       940,
+       0,
+       80
+      ],
+      [
+       1440,
+       810,
+       60,
+       120
+      ]
+     ],
+     "visual_why": "First segment is still the shared Teams window; the recording cuts back to the room camera at 1:15:22, which is where the second segment sits.",
      "segments": [
       [
        4520.966666666666,
