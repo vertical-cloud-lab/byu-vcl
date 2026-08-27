@@ -214,7 +214,19 @@ If the Pico W seems "bricked" or unresponsive:
 
 If the RPI-RP2 drive does not appear, see [Section 3](#3-bootsel-mode-and-rpi-rp2-drive-not-appearing) for additional troubleshooting steps.
 
-## 5. Useful References
+## 5. Why We Use MQTT Broker Instead of a Direct API Connection
+
+For this setup, the Pico W is a MicroPython edge device that reads sensor data and sends/receives small messages. We use MQTT because it is lightweight, resilient on unstable Wi-Fi, and works well with low-memory microcontrollers.
+
+The OT-2/terminal side still uses APIs, but those API calls are made from a host environment (e.g., local Python or Colab), not directly from the Pico W firmware. The message flow is:
+
+1. Host script/notebook publishes a command to MQTT (broker topic)
+2. Pico W subscribes, executes the sensor read, and publishes results back
+3. Host script consumes those results and can call other APIs (including OT-2 workflows) as needed
+
+This separation keeps microcontroller code simple and robust while preserving full API-based automation on the host side.
+
+## 6. Useful References
 
 - [MicroPython downloads for Pico W](https://micropython.org/download/rp2-pico-w/)
 - [MicroPython v1.22.0 release notes (SSL breaking changes)](https://github.com/micropython/micropython/releases/tag/v1.22.0)
