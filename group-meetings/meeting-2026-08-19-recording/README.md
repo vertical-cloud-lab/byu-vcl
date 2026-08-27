@@ -29,6 +29,8 @@ Sterling is screen sharing for **59 of the 75 minutes** — he announces it at 1
 "teams.microsoft.com is sharing your screen" bar is visible along the bottom of the frame
 throughout.
 
+![Room camera, the three questions on the screen share, PR #60 with Claude's run report, and the room camera again at the close](screen-share-map.jpg)
+
 | Original timeline | On screen |
 |---|---|
 | 0:00 – 5:37 | avatar tiles / black — people joining |
@@ -65,6 +67,7 @@ but the credentials are worth rotating regardless.
 | `diarization-timeline.png` | Who-spoke-when timeline chart |
 | `transcribe_diarize.py` | The pipeline that produced the above (reproducible; see below) |
 | `speaker-names.json` | Cluster-id → display-name mapping used for the final render |
+| `screen-share-map.jpg` | Four frames showing the shot changes: room camera, the three questions on the screen share, PR #60 with Claude's run report, room camera again |
 | `speaker-map-evidence.json` | Per-cluster evidence (talk time, Teams-speaker overlap, chapters, sample quotes) behind that mapping |
 
 Stream has **no auto-generated chapters** for this video (`tableOfContentsVisibility: none`),
