@@ -53,8 +53,13 @@ cnc:
   #      by eye) while capper legs return to gantry 98.065. Validated: PASS
   #      + 19/19 mock.
   #   2. Keep 87.0 but move the capper park_position onto the vial column's
-  #      own X (187) so every leg is a pure-Y move and the nozzle stays at
-  #      deck X 239, never over a cap. Needs an eyeball of the X ~239 strip.
+  #      own X so every leg is a pure-Y move and the nozzle stays 52 mm
+  #      clear of the column, never over a cap. Needs an eyeball of that
+  #      strip. THIS IS WHAT IS NOW DONE -- see park_position below; on the
+  #      2026-08-24 deck the column is X 206, so the park is [206, 50] and
+  #      the passive shadow rides deck X 258. With that in place the
+  #      2026-08-28 rev-2 protocol sweeps 0 interferences at safe_z 87 and
+  #      the hover-clamp patch is not required.
   safe_z: 87.0
 working_volume:
   x_min: 0.0
@@ -88,16 +93,39 @@ instruments:
     capture_settle_s: 1
     engage_depth_mm: 13
     offline: false
-    # [125, 50] is off the vial column, so with safe_z 87 every decap/cap leg
-    # is a diagonal: the passive nozzle rides at deck Z 71.065 and crosses the
-    # column at deck X 187, about 3 mm over the cap tops (~68), closest pass
-    # 0.9 mm from vial_2's axis. [187.0, 50.0] makes every leg a pure-Y move
-    # at deck X 187, holding the nozzle at deck X 239 -- ground the capper
-    # engages already sweep at deck Z 52.065, i.e. 19 mm lower. The
-    # 2026-08-27 hardware run used [187.0, 50.0]; see
-    # cubos/configs/protocol/vcl/pipette_test_partA.yaml.
+    # CHANGED 2026-08-28 (was [125, 50], Ben's attached value). This is the
+    # single change that makes safe_z 87 workable with a tip attached, and it
+    # is load-bearing -- do not put it back without re-running passive_shadow.
+    #
+    # `decap`/`cap` each end with a hardcoded park move at the capper's
+    # safe_z -> gantry 87 - 15.935 = 71.065. The pipette (depth 0.0) is the
+    # lowest thing on the head, so an attached 35 mm tip rides those legs
+    # with its end at deck Z 36.065: 19 mm below the vial rims (55), 32 mm
+    # below the cap tops (~68). Vertically there is no rescuing that; the
+    # only question is whether the legs ever pass laterally over a vial.
+    #
+    # [125, 50] is off the vial column (deck X 206), so every leg carries an
+    # X component and the tip's shadow walks straight across the column.
+    # passive_shadow on the 2026-08-28 rev-2 protocol, verbatim:
+    #
+    #   step 6 cap   -> vial_1: 12.0 mm from axis, Z 36.065 vs cap top 68.0
+    #                  (258.0, 39.0, 36.06) -> (177.0, 39.0, 36.06)
+    #   step 7 decap -> vial_2:  2.0 mm from axis, Z 36.065 vs cap top 68.0
+    #   step 7 decap -> vial_2: 12.0 mm from axis, Z 36.065 vs rim 55.0
+    #
+    # [206, 50] puts the park on the column's own X, so every capper leg
+    # becomes a pure-Y move and the tip holds deck X 258 -- 52 mm clear of
+    # the column, over ground the capper's own engages already sweep 19 mm
+    # lower. Re-swept: 0 interferences. (The 2026-08-27 run used [187, 50],
+    # the same trick against that day's column at X 187.)
+    #
+    # Note the capper itself then parks over vial_2's footprint (Y 46..74) at
+    # deck Z 87. Holding a cap that is ~13 mm deep, the cap's underside sits
+    # near deck 74 vs vial_2's cap top at 68 -- about 6 mm, unmeasured. If
+    # that looks tight by eye, [206, 5] or [206, 220] clears every footprint
+    # and also sweeps clean.
     park_position:
-    - 125
+    - 206
     - 50
     port: /dev/ttyACM0
   pipette:
