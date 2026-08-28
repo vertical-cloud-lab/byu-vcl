@@ -106,7 +106,7 @@ S9  PASS inserted wireless_color_sensor.sensor_readings reading_uid=cef45f71 (re
 Re-running the same input reports `updated` rather than `inserted` — the
 idempotency rule holds.
 
-![pipeline results](https://github.com/vertical-cloud-lab/byu-vcl/blob/5dd8776/wireless-color-sensor/sensor/renders/read_and_upload_pipeline.png?raw=true)
+![pipeline results](https://github.com/vertical-cloud-lab/byu-vcl/blob/f3d728f/wireless-color-sensor/sensor/renders/read_and_upload_pipeline.png?raw=true)
 
 **The pipeline does separate colours.** Seated in its base the module reads
 green (peak 550 nm, `#9FFF2D`, CCT ≈ 5400 K); lifted into the lab lighting it
