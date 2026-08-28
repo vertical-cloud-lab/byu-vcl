@@ -97,6 +97,31 @@ jobs:
           HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
           AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
           ONEDRIVE_EDIT_LINK_PASSWORD: ${{ secrets.ONEDRIVE_EDIT_LINK_PASSWORD }}
+          # MongoDB Atlas — org "Vertical Cloud Lab @ BYU", project byu-vcl, cluster alloy.
+          # MONGODB_BLINDED_URI keeps the literal <db_password> placeholder, matching the
+          # `blinded_connection_string` convention used by the OT-2-LCM Hugging Face Space.
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          MONGODB_BLINDED_URI: ${{ secrets.MONGODB_BLINDED_URI }}
+          MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
+          MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
+          MONGODB_DATABASE: ${{ secrets.MONGODB_DATABASE }}
+          # HiveMQ Cloud (free Serverless). MQTT_USERNAME/PASSWORD is the `vcl-agent`
+          # credential, meant for CI and debugging; the per-device credentials below are
+          # separate so any one of them can be rotated without disturbing the others.
+          MQTT_BROKER: ${{ secrets.MQTT_BROKER }}
+          MQTT_PORT: ${{ secrets.MQTT_PORT }}
+          MQTT_WEBSOCKET_PORT: ${{ secrets.MQTT_WEBSOCKET_PORT }}
+          MQTT_USERNAME: ${{ secrets.MQTT_USERNAME }}
+          MQTT_PASSWORD: ${{ secrets.MQTT_PASSWORD }}
+          MQTT_PICOW_USERNAME: ${{ secrets.MQTT_PICOW_USERNAME }}
+          MQTT_PICOW_PASSWORD: ${{ secrets.MQTT_PICOW_PASSWORD }}
+          MQTT_HF_SPACE_USERNAME: ${{ secrets.MQTT_HF_SPACE_USERNAME }}
+          MQTT_HF_SPACE_PASSWORD: ${{ secrets.MQTT_HF_SPACE_PASSWORD }}
+          MQTT_OT2_USERNAME: ${{ secrets.MQTT_OT2_USERNAME }}
+          MQTT_OT2_PASSWORD: ${{ secrets.MQTT_OT2_PASSWORD }}
+          # Hugging Face (byu-vcl account) and Zenodo (deposit:write + deposit:actions)
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          ZENODO_API_TOKEN: ${{ secrets.ZENODO_API_TOKEN }}
           # Allow long-blocking foreground commands (e.g., Edison polling)
           BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
           BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call

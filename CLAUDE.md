@@ -74,3 +74,63 @@ an outage or adding new monitoring. Restart services only when necessary and ver
 device's workload is healthy end-to-end afterwards, reporting failures as failures.
 Changes made on the Pi (systemd units, cron, scripts, config) do not live in this repo —
 record them in the repo's docs so they can be reproduced or upstreamed.
+
+## Secret inventory
+
+Names and purposes only — **never** echo, grep, or print the values. Every secret below is
+set on both `vertical-cloud-lab/byu-vcl` and `vertical-cloud-lab/digital-wetlab`, and is
+passed through the `env:` block of `.github/workflows/claude.yml`. Adding a new secret means
+editing that block too; the Claude GitHub App cannot modify `.github/workflows/`, so that
+step is always a human commit.
+
+**MongoDB Atlas** — org *Vertical Cloud Lab @ BYU*, project `byu-vcl`, cluster `alloy`
+(M0 free, AWS Oregon). The database user is scoped `readWrite` on the `digital-wetlab`
+database only, so it cannot read the alloy lab's data in the same cluster.
+
+| Secret | Purpose |
+| --- | --- |
+| `MONGODB_URI` | Full `mongodb+srv://` string with the password already substituted. |
+| `MONGODB_BLINDED_URI` | Same string but keeping the literal `<db_password>` placeholder. This is the `blinded_connection_string` convention the OT-2-LCM Hugging Face Space expects — pair it with `MONGODB_PASSWORD`. |
+| `MONGODB_USERNAME` | `digital-wetlab-rw`. |
+| `MONGODB_PASSWORD` | Substituted into `MONGODB_BLINDED_URI`. |
+| `MONGODB_DATABASE` | `digital-wetlab`. Collections: `sensor-data`, `ot2-runs`. |
+
+**HiveMQ Cloud** — free Serverless cluster, TLS on 8883 (WebSocket 8884). The free tier has
+no per-topic permissions: every credential is `PUBLISH_SUBSCRIBE` across all topics, so
+topic isolation is a convention, not an enforced boundary. Credentials are split per client
+only so that one can be rotated without disturbing the others.
+
+| Secret | Purpose |
+| --- | --- |
+| `MQTT_BROKER`, `MQTT_PORT`, `MQTT_WEBSOCKET_PORT` | Broker host and ports. |
+| `MQTT_USERNAME` / `MQTT_PASSWORD` | `vcl-agent` — CI and local debugging. |
+| `MQTT_PICOW_USERNAME` / `MQTT_PICOW_PASSWORD` | `picow-color-sensor` — goes in the Pico W's on-device `my_secrets.py`. |
+| `MQTT_HF_SPACE_USERNAME` / `MQTT_HF_SPACE_PASSWORD` | `hf-space` — the Hugging Face Space subscriber. |
+| `MQTT_OT2_USERNAME` / `MQTT_OT2_PASSWORD` | `ot2-robot`. |
+
+Topic scheme, matching `AccelerationConsortium/OT-2-LCM`:
+
+```
+command/picow/{PICO_ID}/as7341/read      # ask the sensor for a reading
+color-mixing/picow/{PICO_ID}/as7341      # sensor publishes readings here
+command/ot2/{OT2_SERIAL}/pipette         # OT-2 commands
+status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
+```
+
+**Other services**
+
+| Secret | Purpose |
+| --- | --- |
+| `HF_TOKEN` | Hugging Face `byu-vcl` account, fine-grained: read + write contents/settings of own repos. Enough to duplicate Spaces (`duplicate_space`), upload files, and set Space-side secrets (`add_space_secret`). |
+| `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
+
+**Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
+light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
+names: `blinded_connection_string`, `MONGODB_PASSWORD`, `MQTT_BROKER`, `MQTT_PORT`,
+`MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Set them with `add_space_secret` using
+`HF_TOKEN` so the two sides cannot drift.
+
+**Not yet provisioned** — `PICO_ID` and `OT2_SERIAL` (read them off the devices; they
+namespace every MQTT topic above), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without
+the link it unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token
+for tests that should not mint real DOIs.
