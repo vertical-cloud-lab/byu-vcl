@@ -51,7 +51,7 @@ for a 390–830 nm integral.
 
 ## What the numbers show
 
-![repeatability](https://github.com/vertical-cloud-lab/byu-vcl/blob/PLACEHOLDER/wireless-color-sensor/sensor/readings/2026-08-28-repowered/repeatability.png?raw=true)
+![repeatability](https://github.com/vertical-cloud-lab/byu-vcl/blob/c101030/wireless-color-sensor/sensor/readings/2026-08-28-repowered/repeatability.png?raw=true)
 
 **1. The instrument is repeatable across an 18-day power outage.** Same pose,
 same base, compared against the 2026-08-10 *reseated* reading:
