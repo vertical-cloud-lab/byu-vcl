@@ -158,3 +158,65 @@ python -m cubos.tools.validate_setup       $C/gantry/cub_xl_ben_pipette_capper_t
 python -m cubos.tools.run_protocol --mock  $C/gantry/cub_xl_ben_pipette_capper_tipsafe.yaml $C/deck/ben_6vials_tiprack.yaml $C/protocol/vcl/pipette_test.yaml
 python -m cubos.tools.passive_shadow       $C/gantry/cub_xl_ben_pipette_capper_tipsafe.yaml $C/deck/ben_6vials_tiprack.yaml $C/protocol/vcl/pipette_test.yaml --tip-stuck
 ```
+
+## Second blocker, found on the machine: the controller's travel extents moved
+
+The Pi came back on the tailnet at 01:19 UTC. Before commanding anything I
+read the controller (`grbl_settings_20260828.json`, full `$$` dump). Every
+setting in `grbl_settings` matches **except the three travel extents**, and
+all three are in `_validate_grbl_settings`' critical set, so `run_protocol`
+would abort at connect with *"Critical GRBL settings mismatch — motion would
+be wrong"* before any motion:
+
+| | config | controller | delta |
+|---|---|---|---|
+| `$130` `max_travel_x` | 389.333 | **409.000** | +19.667 |
+| `$131` `max_travel_y` | 235.000 | **309.000** | +74.000 |
+| `$132` `max_travel_z` | 125.000 | **124.000** | −1.000 |
+
+```
+<Alarm|WPos:409.000,309.000,124.000|FS:0,0|WCO:-409.000,-309.000,-124.000>
+$20=1  $21=0  $22=1  $23=0  $27=3  $100=$101=$102=400
+```
+
+`to_machine_coordinates` is a pass-through (`gantry/coordinate_translator.py`
+— it normalises, it does not translate), so the deck frame is defined
+entirely by the controller's WCO, and the WCO is `-max_travel` on each axis.
+**Changing `$131` from 235 to 309 therefore moved the deck's Y origin by
+74 mm**: the same physical point now reads 74 mm higher in WPos than it did
+before the recalibration.
+
+That is consistent with the X axis and *not* with the Y axis of the new deck
+file:
+
+* `$130` moved **+19.667** and every vial's `location.x` moved **187 → 206
+  (+19)**. That is the same holder re-read in the new frame. Consistent.
+* `$131` moved **+74** but every vial's `location.y` moved only **+1**
+  (26/59/92/125/158/191 → 27/60/93/126/159/192).
+
+So either the holder was physically moved ~73 mm in −Y at the same time, or
+the Y column was not re-measured in the new frame. If it is the latter, the
+vials are physically at deck Y ≈ 100/133/166/199/232/265 and every `decap`
+would descend 73 mm short of its vial — and vial_6 at 265 would be outside
+the config's `working_volume.y_max: 232` entirely.
+
+Not something to resolve by running it. **No motion was commanded.**
+
+Whatever the answer, `grbl_settings.max_travel_x/y/z` in the gantry file has
+to be updated to 409.0 / 309.0 / 124.0 before anything can connect. Note that
+`$132: 124` also means the reachable deck-frame Z is `[0, 124]`, so
+`working_volume.z_max: 122.0` still has 2 mm of headroom and the tipped hover
+at gantry 122 remains reachable.
+
+### Machine state — untouched
+
+| | |
+|---|---|
+| Motion | none commanded; no homing, no protocol run |
+| GRBL | `Alarm` (the board resets when the port is opened) — re-home before any run |
+| `$20` soft limits | `1` — still set, unlike 2026-08-27 |
+| Electromagnet / cap sensor | `OK:{"value1":0}` — nothing held at the head |
+| Pipette plunger | `OK:{"homed":0,"pos":0.00,"max_vol":300.00}` — reports 300 µL, config says `p20_single_gen2` |
+| Ports | `/dev/ttyUSB0` CH340 → gantry · `/dev/ttyACM0` Arduino Uno → capper+pipette; both free |
+| `~/CubOS` | `cbc33dc`, both Pi patches still applied; hover-clamp patch **not** applied |
+| Pi uptime | booted 2026-08-27 06:11 — the 00:26–01:19 dropout was the network, not a reboot |
