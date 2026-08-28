@@ -71,11 +71,13 @@ python request_over_mqtt.py --out reading.json
 
 Two limitations, both real:
 
-1. **Credentials.** `HIVEMQ_HOST` / `HIVEMQ_USERNAME` / `HIVEMQ_PASSWORD` /
-   `PICO_ID` live only on the Pico's own `my_secrets.py`. They are not in this
-   repo and not in the Actions secrets, so nobody (including `@claude`) can use
-   this path until they are provided. Adding them as repository secrets would
-   let a GitHub-comment-triggered run take a wireless reading directly.
+1. **Credentials.** These are *not* only on the Pico: host, username **and
+   password** are committed in the upstream demo's Colab notebook
+   ([`sensor_file/test_sensor.ipynb`](https://github.com/AccelerationConsortium/wireless-color-sensor/blob/main/sensor_file/test_sensor.ipynb)),
+   which is how the 2026-08-10 readings were taken. That also means anyone can
+   publish to this device's command topic, so they are worth rotating and
+   moving into Actions secrets (`HIVEMQ_PASSWORD`) rather than relied on as
+   published. `PICO_ID` is `test`.
 2. **The firmware returns less than the sensor can.** `main.py` calls the
    `Sensor` wrapper's `all_channels`, which returns only the 8 spectral
    channels — it discards `clear`/`nir` and never touches flicker detection.
@@ -91,6 +93,24 @@ Two limitations, both real:
 
    That keeps the MQTT contract identical while widening `sensor_data`.
 
+## Path 3 — read *and store* (`read_and_upload.py`)
+
+Paths 1 and 2 get a reading onto your screen. This one carries it the rest of
+the way to the VCL MongoDB, and — more usefully — tells you *which* system
+broke when it doesn't:
+
+```bash
+pip install paho-mqtt pymongo
+export HIVEMQ_PASSWORD=...   # broker
+export MONGODB_URI=...       # database
+python read_and_upload.py --n 3 --label "red dye, well A1" --upload
+```
+
+Nine numbered stages (S1 network → S9 verified upsert), each with its own exit
+code; readings are written to disk *before* any upload is attempted, so a
+database outage only costs a backfill. Full stage table, reproduced failure
+signatures and remedies: [`READ_AND_UPLOAD_RUNBOOK.md`](READ_AND_UPLOAD_RUNBOOK.md).
+
 ## Files
 
 | file | runs on | purpose |
@@ -98,6 +118,7 @@ Two limitations, both real:
 | `pico_read_intensity_flicker.py` | Pico W (MicroPython) | Drives `lib/as7341.py` directly for 8 channels + clear + NIR + flicker; prints `#WCS# {...}` JSON |
 | `collect_over_serial.py` | host (RPi-5 / laptop) | Raw-REPL client over USB; parses readings, writes JSON/CSV |
 | `request_over_mqtt.py` | host | HiveMQ request/response using the upstream topic contract |
+| `read_and_upload.py` | host | **Read → validate → derive colour → MongoDB**, split into numbered stages so a failure names the system that broke. See [`READ_AND_UPLOAD_RUNBOOK.md`](READ_AND_UPLOAD_RUNBOOK.md) |
 | `my_secrets.example.py` | host | Template for the MQTT credentials (`my_secrets.py` is git-ignored) |
 
 `pico_read_intensity_flicker.py` needs the upstream `lib/` folder
@@ -106,7 +127,17 @@ the demo board.
 
 ## Status
 
-Written from the upstream firmware/driver source; **not yet executed against
-the physical sensor**, because the Pico W is not currently connected to any
-machine reachable over the tailnet and the HiveMQ credentials are not
-available. Both paths are one command away once either of those is fixed.
+As of **2026-08-28**, tested end-to-end from a GitHub Actions runner:
+
+- **Broker path works** — DNS, TLS and MQTT auth all pass, and the reply topic
+  subscribes cleanly (S1–S3).
+- **The Pico W does not answer** (S4) — every read command is PUBACKed by the
+  broker and nothing comes back; a 45 s listen on `#` and `$SYS/#` saw zero
+  messages. The sensor has been offline since the 2026-08-10 session; a flat
+  LiPo is the leading hypothesis.
+- **The storage half is proven** (S5–S9) against a real MongoDB 7.0.40 server,
+  replaying the genuine 2026-08-10 readings, including idempotent re-upload
+  and read-back verification.
+
+The USB path (`collect_over_serial.py`) remains the way to test the AS7341
+itself without WiFi, and is still un-run against hardware.

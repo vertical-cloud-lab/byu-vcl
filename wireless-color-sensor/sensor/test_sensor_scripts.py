@@ -9,7 +9,10 @@ get wrong without a board on the bench:
 * that the LED is switched back off after a lit reading,
 * the MicroPython raw-REPL framing in ``collect_over_serial.py`` (this caught a
   real bug: a single read often returns the whole ``OK...\\x04...\\x04>`` frame,
-  so bytes past the first token must be carried over, not discarded).
+  so bytes past the first token must be carried over, not discarded),
+* ``read_and_upload.py``'s validation (S5), colour derivation (S6) and
+  document build -- the stages that decide whether a reply becomes a database
+  record, and the ones a broken sensor exercises hardest.
 
 The numbers here are synthetic. They prove the plumbing, not the optics.
 """
@@ -174,7 +177,113 @@ def test_collect_over_serial():
     print("[PASS] collect_over_serial(): raw-REPL framing and JSON parsing")
 
 
+
+
+def test_validate_rejects_unusable_readings():
+    """S5 is the gate between 'the Pico replied' and 'this is a reading'.
+
+    The firmware publishes whatever the driver returned, so a wedged I2C bus
+    produces a perfectly well-formed message full of zeros. Each of these
+    cases has been reproduced against the real script; they must stay
+    distinguishable so the runbook's failure table keeps meaning what it says.
+    """
+    import read_and_upload as rau
+
+    good = {"sensor_data": {c: 100 + i for i, c in enumerate(rau.CHANNELS)}}
+    counts, problems = rau.stage5_validate(good)
+    assert counts is not None and not problems, problems
+    assert len(counts) == 8
+
+    zeros = {"sensor_data": {c: 0 for c in rau.CHANNELS}}
+    counts, problems = rau.stage5_validate(zeros)
+    assert counts is not None
+    assert any("not answering on I2C" in p for p in problems), problems
+
+    saturated = {"sensor_data": {c: 65535 for c in rau.CHANNELS}}
+    _, problems = rau.stage5_validate(saturated)
+    assert any("saturated" in p for p in problems), problems
+
+    missing = {"sensor_data": {"ch410": 5}}
+    _, problems = rau.stage5_validate(missing)
+    assert any("missing channels" in p for p in problems), problems
+
+    # No sensor_data at all -> hard failure (None), not a warning: there is
+    # nothing to store.
+    counts, problems = rau.stage5_validate({"error": "I2C read failed"})
+    assert counts is None and problems
+
+    print("[PASS] stage5_validate(): zeros, saturation, missing, no-data")
+
+
+def test_color_separates_the_two_measured_poses():
+    """S6 must tell the seated reading from the mid-air one.
+
+    These are the real 2026-08-10 counts. Seated, the aperture is shaded by
+    the base and the spectrum peaks at 550 nm; lifted, it sees the warm lab
+    lighting and peaks at 620 nm. If the derivation cannot separate those two
+    it cannot separate two dye wells either, so this is the cheapest possible
+    end-to-end check that the colour maths is wired up correctly.
+    """
+    import read_and_upload as rau
+
+    seated = {"ch410": 9, "ch440": 9, "ch470": 17, "ch510": 180,
+              "ch550": 194, "ch583": 73, "ch620": 70, "ch670": 64}
+    midair = {"ch410": 75, "ch440": 273, "ch470": 296, "ch510": 671,
+              "ch550": 945, "ch583": 1063, "ch620": 1084, "ch670": 610}
+
+    seated_color = rau.stage6_color(seated)
+    midair_color = rau.stage6_color(midair)
+    assert seated_color["valid"] and midair_color["valid"]
+    assert seated_color["dominant_nm"] == 550
+    assert midair_color["dominant_nm"] == 620
+    # Lifting the module shifts it decisively toward red on the x chromaticity
+    # axis; the exact numbers are uncalibrated, the ordering is not.
+    assert midair_color["cie_x"] > seated_color["cie_x"]
+    assert seated_color["srgb_hex"] != midair_color["srgb_hex"]
+
+    dark = rau.stage6_color({c: 0 for c in rau.CHANNELS})
+    assert dark["valid"] is False
+
+    print("[PASS] stage6_color(): seated vs mid-air separate, dark is invalid")
+
+
+def test_document_is_idempotent_per_reading():
+    """The reading_uid is what makes re-uploading a backfill safe.
+
+    Same reply -> same uid (so S9 updates in place); different counts -> a new
+    uid (so a genuinely new reading is never silently overwritten).
+    """
+    import read_and_upload as rau
+
+    cfg = {"PICO_ID": "test", "HIVEMQ_HOST": "broker.example"}
+    counts = {c: 10 for c in rau.CHANNELS}
+    trip = {"reply": {"experiment_id": "abc", "command": {"R": 0, "Y": 0, "B": 0}},
+            "latency_s": 1.0, "sent_utc": None}
+
+    first = rau.build_document(trip, counts, [], rau.stage6_color(counts),
+                               cfg, "t", None)
+    second = rau.build_document(trip, counts, [], rau.stage6_color(counts),
+                                cfg, "t", None)
+    assert first["reading_uid"] == second["reading_uid"]
+
+    changed = dict(counts, ch550=999)
+    third = rau.build_document(trip, changed, [], rau.stage6_color(changed),
+                               cfg, "t", None)
+    assert third["reading_uid"] != first["reading_uid"]
+
+    # A document that failed validation must be flagged, not silently stored
+    # as if it were good.
+    flagged = rau.build_document(trip, counts, ["saturated"],
+                                 rau.stage6_color(counts), cfg, "t", None)
+    assert flagged["quality"]["ok"] is False
+
+    print("[PASS] build_document(): stable uid, change-sensitive, flags quality")
+
+
 if __name__ == "__main__":
     test_pico_measure()
     test_collect_over_serial()
+    test_validate_rejects_unusable_readings()
+    test_color_separates_the_two_measured_poses()
+    test_document_is_idempotent_per_reading()
     print("all tests passed")
