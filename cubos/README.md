@@ -89,6 +89,36 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (revised 2026-08-28, NOT run — do not run as attached)
+
+`configs/protocol/vcl/pipette_test.yaml` and
+`configs/deck/ben_6vials_tiprack.yaml` hold @benwhitney5463's 2026-08-28
+revision (bodies exactly as attached to PR #171; parsed YAML verified
+identical, headers rewritten). The deck follows a machine recalibration —
+vials moved to x 206, y 27..192 — and supersedes
+`sterling_6vials_tiprack.yaml`. The protocol adds a real `aspirate` in
+vial_1, `cap` vial_1, `decap` vial_2, `blowout` in vial_2, then `drop_tip`.
+
+It was **not** run: the Pi was off the tailnet all session (last seen
+2026-08-28 00:26 UTC). Independently, **the trio as attached must not be
+run.** It passes `validate_setup` and `--mock`, and it still shears the
+attached tip sideways out of vial_1 on step 5 — both offline gates only
+check the instrument a command names, never the other tool on the head.
+
+Use `configs/gantry/cub_xl_ben_pipette_capper_tipsafe.yaml` (`safe_z: 122`,
+capper `park_position: [206, 50]`) **together with**
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` applied on the Pi.
+Verified 0 interferences, including the case where the tip never leaves the
+nozzle. Neither half works without the other; the analysis, the geometric
+reason no value of `safe_z` can fix it, and the `drop_z` answer are in
+[`results/pipette_test_20260828/README.md`](results/pipette_test_20260828/README.md).
+
+`tools/passive_shadow.py` was added for this: it mock-runs a protocol,
+expands each pose into the driver's real per-axis G-code segments, and
+sweeps the *passive* instrument through them against the deck's labware.
+Run it alongside `validate_setup` on anything that mixes the capper and a
+tipped pipette.
+
 ## pipette_test protocol (revised 2026-08-26, NOT run)
 
 `configs/protocol/vcl/pipette_test.yaml` and

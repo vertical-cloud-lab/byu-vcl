@@ -1,0 +1,186 @@
+# ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the Ursa
+# 2x15 tip rack, for the CubXL as RE-CALIBRATED 2026-08-27.
+#
+# Attached to PR #171 on 2026-08-28 and committed with the body exactly as
+# sent (the parsed YAML is verified identical to the attachment; only this
+# header was added). Supersedes sterling_6vials_tiprack.yaml, which describes
+# the pre-recalibration deck -- do not mix them.
+#
+# WHAT MOVED vs. sterling_6vials_tiprack.yaml
+#   vials  x 187 -> 206, y 26/59/92/125/158/191 -> 27/60/93/126/159/192
+#   rack   unchanged anchor (a1 317, 13 / a2 308.5, 13 / pickup_z 60), but
+#          `load_name: ursa_tip_rack` was replaced by an inline geometry
+#          block (rows 15, columns 2, x_offset/y_offset 8.5, 66x138x22).
+#          Both forms resolve to the same 30-tip grid -- verified through
+#          the loader -- so this is a presentation change, not a geometry
+#          change.
+#
+# location.z 55 is the vial RIM (Ben's convention). A seated cap tops out at
+# about deck Z 68 = rim + the capper's engage_depth_mm 13, which is the plane
+# where the socket meets the cap.
+#
+# ---------------------------------------------------------------------------
+# drop_z: 60 -- DOES NOT DO WHAT IT LOOKS LIKE. Recommend reverting to null.
+# ---------------------------------------------------------------------------
+# Ben set this on 2026-08-28 so `drop_tip: tip_rack.A1` would return the tip
+# to its slot. At the Pi's CubOS (cbc33dc) and on current main, `drop_z` is
+# read in exactly ONE place -- deck/labware/tip_rack.py:158-160 -- and it is
+# not a motion target:
+#
+#     if pickup_z is not None and drop_z is not None:
+#         data["height"] = max(round(abs(pickup_z - drop_z), 3), 1.0)
+#
+# So the only effect of drop_z: 60 alongside pickup_z: 60 is to overwrite the
+# explicit `height: 22` below with abs(60 - 60) -> clamped to 1.0 mm,
+# shrinking the rack's modeled bounding box to a millimetre. No command reads
+# it for motion.
+#
+# Where drop_tip actually goes: it engages like every other pipette command,
+# descending the TOOL POINT -- the tip end, once a tip is attached -- to the
+# resolved coordinate's Z, i.e. the rack's location.z 60, gantry Z 95. A tip
+# seated in A1 has its end at deck Z 25 (nozzle at pickup_z 60, tip 35 mm
+# long), so the ejector fires one full tip-length ABOVE the slot and the tip
+# cannot seat. Confirmed in the mock trace: gantry (265.0, 1.0, 95.0).
+#
+# The supported way to discard a tip is a separate `tip_disposal` labware
+# entry, which drop_tip targets and ejects at THAT entry's own location.z.
+# Add one (a measured spot + a measured `drop_tip_position` on the pipette
+# model, which is still a documented placeholder in
+# instruments/pipette/models.py) and drop_tip becomes meaningful.
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 27
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 60
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_3:
+    type: vial
+    name: vial_3
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 93
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_4:
+    type: vial
+    name: vial_4
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 126
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_5:
+    type: vial
+    name: vial_5
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 159
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_6:
+    type: vial
+    name: vial_6
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 192
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 66
+    width: 138
+    height: 22
+    tip_length: 35
+    drop_z: 60
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 317
+        y: 13
+        z: 60
+      a2:
+        x: 308.5
+        y: 13
+    pickup_z: 60
+    location:
+      x: 317
+      y: 13
+      z: 60
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true
