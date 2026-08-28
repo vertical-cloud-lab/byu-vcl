@@ -220,3 +220,30 @@ at gantry 122 remains reachable.
 | Ports | `/dev/ttyUSB0` CH340 → gantry · `/dev/ttyACM0` Arduino Uno → capper+pipette; both free |
 | `~/CubOS` | `cbc33dc`, both Pi patches still applied; hover-clamp patch **not** applied |
 | Pi uptime | booted 2026-08-27 06:11 — the 00:26–01:19 dropout was the network, not a reboot |
+
+## Where the branch's trio stands now (rev 2 + both corrections)
+
+Re-verified independently against the Pi's exact CubOS after the rev-2
+corrections landed:
+
+| gantry config | CubOS | validate | mock | shadow | `--tip-stuck` |
+|---|---|---|---|---|---|
+| `cub_xl_ben_pipette_capper.yaml` (`safe_z 87`, park `[206, 50]`) | Pi's, stock | PASS | 20/20 | **0** | **3** |
+| `cub_xl_ben_pipette_capper_tipsafe.yaml` (`safe_z 122`, park `[206, 50]`) | + hover-clamp patch | PASS | 20/20 | **0** | **0** |
+
+The 3 residual ones are all step 10 (`cap vial_2`) against `tip_rack.A1`/`A2`:
+`drop_tip` clears the modeled tip extension unconditionally, so if the tip did
+not physically leave, the following capper approach drags it through the rack
+at deck Z 36.065 against tips topping out at 60. There is no config fix for
+that at `safe_z: 87`; the hover-clamp route removes it because capper
+transits then ride the ceiling.
+
+That matters here specifically because Ben asked not to gate the run on
+confirming the tip came off.
+
+### Why `grbl_settings` was deliberately left stale
+
+Updating `max_travel_x/y/z` to 409/309/124 is the one-line change that lets a
+run connect — and it is exactly the guard that is currently stopping a run
+whose deck Y frame is unresolved. Left as-is on purpose. Update it *after*
+the Y question above is settled, not before.
