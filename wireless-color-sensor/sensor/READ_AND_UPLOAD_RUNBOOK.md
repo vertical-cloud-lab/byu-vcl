@@ -39,7 +39,12 @@ Two design rules worth knowing:
 1. **S7 runs before S8/S9, always.** If you pass `--upload` without `--out`,
    the script picks a filename for you. A database outage therefore costs you
    nothing but a backfill — re-run later with `--replay` and the readings land
-   in Mongo unchanged.
+   in Mongo unchanged. (`--replay` reads both artifact shapes: the *documents*
+   S7 writes, and the raw single replies committed under `camera/`. Feeding it
+   an `--out` file used to crash, which meant the recovery path this rule
+   promises did not work; fixed and covered by
+   `test_backfill_reads_the_files_s7_writes` in
+   [`test_sensor_scripts.py`](test_sensor_scripts.py).)
 2. **S9 verifies by reading back.** A write that reports success but can't be
    queried is not an upload. Every document carries a `reading_uid`
    (SHA-1 of `experiment_id` + counts) and is **upserted** on it, so
@@ -63,11 +68,44 @@ python read_and_upload.py --replay 'readings/*.json' --upload
 python read_and_upload.py --self-test
 ```
 
-## Test results, 2026-08-28
+## Test results
 
 Run from a GitHub Actions runner. Reproduce with the commands above.
 
-### Acquisition half: S1–S3 pass, **S4 fails**
+### 2026-08-28, second run — **all nine stages pass**
+
+@timothy-commins found the cause of the outage below and fixed it: the Pico W
+was powered from a computer that had been switched off. With the host back on,
+the device answered on the first attempt — which retires the flat-LiPo
+hypothesis recorded in the first run.
+
+```
+[   0.20s] S1  PASS 248cc294...hivemq.cloud -> 20.79.70.109, tcp/8883 open
+[   1.00s] S2  PASS CONNACK=Success as user 'sgbaird'
+[   1.20s] S3  PASS subscribed color-mixing/picow/test/as7341 (Granted QoS 1)
+[   2.76s] S4  PASS reply in 1.4 s                      (6/6, all 1.4 s)
+[  26.58s] S5  PASS 8/8 channels, none saturated
+[  26.58s] S6  PASS #76FF20, dominant 550 nm
+[  26.58s] S7  PASS wrote 6 document(s)
+[  26.78s] S8  PASS connected to MongoDB 7.0.40
+[  26.79s] S9  PASS inserted ... reading_uid=8d36ed8d9b53 (read-back verified)
+EXIT=0
+```
+
+The six documents are committed under
+[`readings/2026-08-28-repowered/`](readings/2026-08-28-repowered/) with the
+full write-up. Headline numbers: the seated spectrum reproduces the
+2026-08-10 reseated reading to **2–3 %** after an 18-day gap, per-reading
+spread within the run is **≤1 count**, and the R/Y/B command still moves no
+channel by more than 1 count even at full contrast (255/0/0 vs 0/0/255) — the
+upstream firmware accepts the LED field and ignores it.
+
+`S8`/`S9` ran against a **local** MongoDB 7.0.40, not Atlas, because this
+repo's workflow still has no `MONGODB_URI` (see *Known gaps*). The readings
+are on disk, so `--replay ... --upload` lands them in Atlas unchanged once
+that secret exists.
+
+### 2026-08-28, first run — S1–S3 pass, **S4 fails** (the outage)
 
 ```
 [   0.21s] S1  PASS 248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud -> 20.79.70.109, tcp/8883 open
@@ -88,9 +126,13 @@ the credentials, broker, topics and this host's network are all fine.
 
 **The Pico W is offline.** The last successful reading was
 [2026-08-10](../camera/pickup-test-2026-08-10-full-cycle-sensor-read/), 18 days
-earlier, on a 500 mAh LiPo — a flat battery is the leading hypothesis.
+earlier, on a 500 mAh LiPo — a flat battery was the leading hypothesis.
+**It was not the battery**: the device was USB-powered from a computer that had
+been switched off, and came straight back when that host was turned on again.
+Worth remembering as a diagnosis — S4 says *the sensor side is down*, and
+"no power" covers the upstream host as well as the LiPo.
 
-### Storage half: S5–S9 all pass
+### Storage half: S5–S9 all pass (first run, replayed data)
 
 Verified end-to-end against a **real MongoDB 7.0.40 server**, replaying the
 four genuine 2026-08-10 readings:
@@ -140,10 +182,12 @@ hide exactly the intermittent faults this instrumentation exists to catch.
 
 ## Bringing the sensor back (S4)
 
-In order of likelihood:
+In order of likelihood — **1 is what the 2026-08-28 outage actually was**:
 
-1. **Charge/replace the LiPo.** Power-cycle and watch the onboard LED — it
-   blinks once `main.py` is running. Dark LED = no power.
+1. **Check what is powering it.** If the Pico is on USB, the host computer has
+   to be switched on; if it is on the LiPo, charge or replace it. Either way,
+   power-cycle and watch the onboard LED — it blinks once `main.py` is
+   running. Dark LED = no power.
 2. **Check WiFi.** `main.py` calls `connectWiFi(SSID, PASSWORD, country="CA")`
    and has *no retry* around the MQTT loop failing later — if the AP changed
    or the Pico booted out of range, it sits there doing nothing. Serial

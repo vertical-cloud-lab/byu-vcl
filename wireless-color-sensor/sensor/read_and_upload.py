@@ -532,18 +532,62 @@ def print_table(documents):
 # CLI
 # ---------------------------------------------------------------------------
 
+def _replay_record(entry, path):
+    """One captured item -> a round-trip record S5 can validate.
+
+    Two artifact shapes exist and the backfill path has to read both:
+
+    * a raw **reply** as the Pico published it (``sensor_data`` at the top
+      level) -- the ``sensor_reading_*.json`` files committed under
+      ``camera/``;
+    * a **document** this script itself wrote via ``--out`` (counts already
+      extracted into ``counts``, no ``sensor_data``).
+
+    The second is the one that matters after an outage: S7 always writes
+    documents, so ``--out`` files *are* the backfill input. Rebuilding a
+    synthetic reply from ``counts`` lets them re-enter at S5 unchanged, and
+    carrying ``experiment_id`` + ``counts`` through untouched keeps
+    ``reading_uid`` identical, so the backfill upserts rather than duplicates.
+    """
+    if not isinstance(entry, dict):
+        return None
+    reply = entry
+    sent_utc = None
+    latency_s = None
+    if "sensor_data" not in entry and isinstance(entry.get("counts"), dict):
+        reply = {"experiment_id": entry.get("experiment_id"),
+                 "command": entry.get("command"),
+                 "sensor_data": dict(entry["counts"])}
+        sent_utc = entry.get("sent_utc")
+        latency_s = entry.get("latency_s")
+    return {"request": {"command": reply.get("command")},
+            "reply": reply,
+            "latency_s": latency_s,
+            "sent_utc": sent_utc,
+            "_source": os.path.basename(path),
+            "_label": entry.get("_label") or entry.get("label"),
+            "_notes": entry.get("notes")}
+
+
 def load_replays(patterns):
-    """Rebuild round-trip records from previously captured reply JSON."""
+    """Rebuild round-trip records from previously captured JSON.
+
+    Accepts a single object per file or a JSON array of them, because
+    ``--out`` writes an array (one element per reading in the run).
+    """
     round_trips = []
     for pattern in patterns:
         for path in sorted(glob.glob(pattern)):
             with open(path) as handle:
-                reply = json.load(handle)
-            round_trips.append({"request": {"command": reply.get("command")},
-                                "reply": reply, "latency_s": None,
-                                "sent_utc": None,
-                                "_source": os.path.basename(path),
-                                "_label": reply.get("_label")})
+                loaded = json.load(handle)
+            entries = loaded if isinstance(loaded, list) else [loaded]
+            for entry in entries:
+                record = _replay_record(entry, path)
+                if record is None:
+                    log("S5", "WARN", "%s: skipped a non-object entry"
+                        % os.path.basename(path))
+                    continue
+                round_trips.append(record)
     return round_trips
 
 
@@ -651,7 +695,8 @@ def main(argv=None):
                 % (index + 1, color["srgb_hex"], color["dominant_nm"]))
         documents.append(build_document(
             round_trip, counts, problems, color, cfg,
-            round_trip.get("_label") or args.label or None, args.notes or None))
+            round_trip.get("_label") or args.label or None,
+            args.notes or round_trip.get("_notes") or None))
 
     if not documents:
         die("S5", "no usable readings", "see the S5 messages above")

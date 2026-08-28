@@ -280,10 +280,79 @@ def test_document_is_idempotent_per_reading():
     print("[PASS] build_document(): stable uid, change-sensitive, flags quality")
 
 
+def test_backfill_reads_the_files_s7_writes():
+    """``--replay`` must accept ``--out`` artifacts, not just raw replies.
+
+    This is the outage path the runbook promises: S7 writes documents to disk
+    before any upload is attempted, so after a database outage the *documents*
+    are the backfill input. They are a JSON **array** of built documents with
+    counts already extracted, not the single raw reply that the files under
+    ``camera/`` contain -- and loading them used to crash with
+    ``'list' object has no attribute 'get'``, i.e. the documented recovery
+    path did not work. Both shapes must round-trip to the same reading_uid,
+    or a backfill would duplicate rows instead of updating them.
+    """
+    import read_and_upload as rau
+
+    cfg = {"PICO_ID": "test", "HIVEMQ_HOST": "broker.example"}
+    counts = {c: 100 + i for i, c in enumerate(rau.CHANNELS)}
+    live_trip = {"reply": {"experiment_id": "xyz",
+                           "command": {"R": 0, "Y": 0, "B": 0},
+                           "sensor_data": dict(counts)},
+                 "latency_s": 1.4, "sent_utc": "2026-08-28T17:16:00Z"}
+    document = rau.build_document(live_trip, counts, [],
+                                  rau.stage6_color(counts), cfg,
+                                  "seated in base", "original notes")
+
+    directory = os.path.join(HERE, "_backfill_test")
+    os.makedirs(directory, exist_ok=True)
+    out_path = os.path.join(directory, "readings.json")
+    try:
+        rau.stage7_write([document], out_path)          # what a real run leaves
+        trips = rau.load_replays([out_path])            # what a backfill reads
+        assert len(trips) == 1, "an array of documents must expand to one trip each"
+
+        replayed_counts, problems = rau.stage5_validate(trips[0]["reply"])
+        assert replayed_counts == counts, replayed_counts
+        assert problems == []
+
+        # Acquisition time and latency belong to the reading, not to the
+        # moment of upload, so a backfilled document must still carry them.
+        assert trips[0]["sent_utc"] == "2026-08-28T17:16:00Z"
+        assert trips[0]["latency_s"] == 1.4
+
+        rebuilt = rau.build_document(
+            trips[0], replayed_counts, problems,
+            rau.stage6_color(replayed_counts), cfg,
+            trips[0].get("_label"), trips[0].get("_notes"))
+        assert rebuilt["reading_uid"] == document["reading_uid"], (
+            "backfill must upsert the same row, not create a new one")
+        assert rebuilt["label"] == "seated in base"
+        assert rebuilt["notes"] == "original notes"
+    finally:
+        if os.path.exists(out_path):
+            os.remove(out_path)
+        if os.path.isdir(directory):
+            os.rmdir(directory)
+
+    # The raw-reply shape (the files under camera/) must keep working too.
+    raw_path = os.path.join(HERE, os.pardir, "camera",
+                            "pickup-test-2026-08-10-full-cycle-sensor-read",
+                            "sensor_reading_seated_RYB50.json")
+    if os.path.exists(raw_path):
+        raw_trips = rau.load_replays([raw_path])
+        assert len(raw_trips) == 1
+        raw_counts, _ = rau.stage5_validate(raw_trips[0]["reply"])
+        assert raw_counts and len(raw_counts) == len(rau.CHANNELS)
+
+    print("[PASS] load_replays(): backfills --out documents and raw replies")
+
+
 if __name__ == "__main__":
     test_pico_measure()
     test_collect_over_serial()
     test_validate_rejects_unusable_readings()
     test_color_separates_the_two_measured_poses()
     test_document_is_idempotent_per_reading()
+    test_backfill_reads_the_files_s7_writes()
     print("all tests passed")
