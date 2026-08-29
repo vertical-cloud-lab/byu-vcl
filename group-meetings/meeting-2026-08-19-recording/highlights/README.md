@@ -1,6 +1,6 @@
 # AI-in-the-lab highlights compilation (2026-08-19 meeting)
 
-A 9:57 edited highlights video cut from the full 75:34 meeting recording **and the seven
+A 9:56 edited highlights video cut from the full 75:34 meeting recording **and the seven
 break-off pair-discussion clips** from the channel — high-density but breathable: 23
 segments across seven titled parts, with burned-in captions, source bugs (meeting
 timecode or youtu.be link), loudness-normalized audio (−16 LUFS), and title/end cards.
@@ -46,7 +46,7 @@ burned-in render does. The writer now clamps every cue to end before the next be
 to ≤ 42 characters over at most two lines, and emits `<v Name>` where the speaker is
 known — WCAG 1.2.2 requires captions to identify who is talking.
 
-The remaining finding on this cut is **length**: 9:57 is past the ~6 min median-engagement
+The remaining finding on this cut is **length**: 9:56 is past the ~6 min median-engagement
 ceiling. Chapters are the documented mitigation and this cut has had them from the start,
 so it is a managed trade rather than a defect; a ~6 min variant is a matter of dropping
 items from the EDL.

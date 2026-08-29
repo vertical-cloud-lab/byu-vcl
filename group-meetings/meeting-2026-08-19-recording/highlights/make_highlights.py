@@ -51,6 +51,7 @@ SUB_STYLE = ("FontName=DejaVu Sans,FontSize=13,PrimaryColour=&H00FFFFFF,"
 MIN_CAPTION_S = 0.7  # drop caption fragments shorter than this after clamping
 CAPTION_LINE = 42    # sidecar .vtt line limit (Netflix 42, BBC 37)
 CAPTION_GAP = 0.08   # minimum silence between consecutive sidecar cues
+CAPTION_HOLD = 1.2   # max seconds a sidecar cue may run past its transcript end
 
 # Background-noise reduction, ported from the reels renderer (../reels/make_reels.py):
 # 85 Hz high-pass -> RNNoise -> residual FFT denoise -> presence bell -> 12 kHz low-pass
@@ -84,6 +85,17 @@ def denoise_prefix(s):
     """Filter prefix that denoises the pre-rolled window and trims back to the cut."""
     lead = s - max(0.0, s - DENOISE_PREROLL)
     return f"{denoise_chain()},atrim=start={lead:.3f},asetpts=PTS-STARTPTS"
+
+
+SIDECARS_ONLY = False   # set by --sidecars-only: reuse the pieces already rendered
+                        # into the workdir and only re-emit the .vtt / chapters
+
+
+def encode(out, cmd):
+    """Run an encode unless we are only re-emitting the text sidecars."""
+    if SIDECARS_ONLY and Path(out).exists():
+        return
+    run(cmd)
 
 
 def run(cmd, **kw):
@@ -142,7 +154,7 @@ def fmt_vtt(t):
     return f"{ms // 3600000:02d}:{ms // 60000 % 60:02d}:{ms // 1000 % 60:02d}.{ms % 1000:03d}"
 
 
-def piece_captions(cues, piece, edl, in_breakout):
+def piece_captions(cues, piece, edl, in_breakout, default_spk=None):
     """Caption cues for one piece, clamped to it and shifted to piece-local time."""
     s, e = piece["s"], piece["e"]
     out, last_spk = [], None
@@ -158,10 +170,16 @@ def piece_captions(cues, piece, edl, in_breakout):
         if in_breakout and name and c["spk"] != last_spk:
             text = f"{name}: {text}"
         last_spk = c["spk"]
-        out.append({"s": cs - s, "e": ce - s, "text": text, "spk": name})
+        out.append({"s": cs - s, "e": ce - s, "text": text,
+                    "spk": name or default_spk})
     if out and piece.get("cap_last_text"):
         out[-1]["text"] = piece["cap_last_text"]
-    return out
+    # Teams cue spans overlap each other by up to 0.33 s. Burned in, that makes libass
+    # push the colliding cue off its line; in the sidecar it is undefined WebVTT. Clamp
+    # each cue to end before the next one starts, and drop anything left degenerate.
+    for a, b in zip(out, out[1:]):
+        a["e"] = min(a["e"], b["s"] - CAPTION_GAP)
+    return [c for c in out if c["e"] - c["s"] >= 0.25]
 
 
 def wrap_caption(text, limit=CAPTION_LINE):
@@ -211,7 +229,8 @@ def render_piece(source, work, idx, piece, item, edl, cues):
     piece = dict(piece, s=s, e=e)
     d = e - s
     in_breakout = not item.get("src") and any(a <= s <= b for a, b in edl["breakout_ranges"])
-    caps = piece_captions(cues, piece, edl, in_breakout)
+    caps = piece_captions(cues, piece, edl, in_breakout,
+                          default_spk=item.get("names"))
     srt = work / f"cap_{idx:02d}.srt"
     srt.write_text("".join(f"{i + 1}\n{fmt_srt(c['s'])} --> {fmt_srt(c['e'])}\n{c['text']}\n\n"
                            for i, c in enumerate(caps)) or "1\n00:00:00,000 --> 00:00:00,100\n\n\n")
@@ -251,7 +270,7 @@ def render_piece(source, work, idx, piece, item, edl, cues):
              f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}[aout]")
 
     out = work / f"piece_{idx:02d}.mp4"
-    run(["ffmpeg", "-y", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source,
+    encode(out, ["ffmpeg", "-y", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source,
          *audio_source_args(source, s, e),
          "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]", "-t", f"{d:.6f}",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
@@ -272,7 +291,8 @@ def render_audio_piece(source, work, idx, piece, item, edl, cues):
     s, e = snap(piece["s"]), snap(piece["e"])
     piece = dict(piece, s=s, e=e)
     d = e - s
-    caps = piece_captions(cues, piece, edl, False)
+    caps = piece_captions(cues, piece, edl, False,
+                          default_spk=item.get("names"))
     srt = work / f"cap_{idx:02d}.srt"
     srt.write_text("".join(f"{i + 1}\n{fmt_srt(c['s'])} --> {fmt_srt(c['e'])}\n{c['text']}\n\n"
                            for i, c in enumerate(caps)) or "1\n00:00:00,000 --> 00:00:00,100\n\n\n")
@@ -312,7 +332,7 @@ def render_audio_piece(source, work, idx, piece, item, edl, cues):
         f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}[aout]")
 
     out = work / f"piece_{idx:02d}.mp4"
-    run(["ffmpeg", "-y", "-nostdin", *audio_source_args(source, s, e),
+    encode(out, ["ffmpeg", "-y", "-nostdin", *audio_source_args(source, s, e),
          "-f", "lavfi", "-i", f"color=c={NAVY}:s={w}x{h}:r={fps}:d={d:.4f}",
          "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]", "-t", f"{d:.6f}",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
@@ -354,7 +374,7 @@ def render_card(work, idx, item, edl):
            "setsar=1", "format=yuv420p"]
 
     out = work / f"piece_{idx:02d}.mp4"
-    run(["ffmpeg", "-y", "-nostdin",
+    encode(out, ["ffmpeg", "-y", "-nostdin",
          "-f", "lavfi", "-i", f"color=c={NAVY}:s={w}x{h}:r={fps}:d={d}",
          "-f", "lavfi", "-t", str(d), "-i",
          f"anullsrc=r={edl['audio']['rate']}:cl=mono",
@@ -370,7 +390,12 @@ def main():
     ap.add_argument("--source", required=True, help="original meeting MP4 (75:34)")
     ap.add_argument("--clips-dir", help="directory with the breakout clips (<id>.mp4)")
     ap.add_argument("--workdir", default="/tmp/meeting/build")
+    ap.add_argument("--sidecars-only", action="store_true",
+                    help="do not encode anything: reuse the pieces already in --workdir "
+                         "and only re-emit the .vtt / chapters sidecars")
     args = ap.parse_args()
+    global SIDECARS_ONLY
+    SIDECARS_ONLY = args.sidecars_only
 
     edl = json.load(open(HERE / "edl.json"))
     work = Path(args.workdir)
@@ -439,7 +464,7 @@ def main():
             "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-profile:v", "high",
             "-c:a", "aac", "-b:a", "160k", "-ar", str(edl["audio"]["rate"]), "-ac", "1",
             "-movflags", "+faststart", final]
-    run(cmd)
+    encode(final, cmd)
 
     # timeline offsets from actual durations
     offsets, t = [], 0.0
@@ -459,9 +484,10 @@ def main():
     # WCAG 1.2.2 requires and the burned-in render already knows.
     vtt = ["WEBVTT", ""]
     for i, c in enumerate(out_caps):
-        end = c["e"]
-        if i + 1 < len(out_caps):
+        end = c["e"] + CAPTION_HOLD           # buy reading time out of the silence that
+        if i + 1 < len(out_caps):             # follows, never out of the next cue
             end = min(end, out_caps[i + 1]["s"] - CAPTION_GAP)
+        end = max(min(end, c["e"] + CAPTION_HOLD), c["s"] + 0.05)
         if end <= c["s"] + 0.15:
             continue
         text = c["text"]

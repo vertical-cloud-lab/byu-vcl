@@ -1,10 +1,10 @@
 0:00 Carl: we're going to have AI forever
-0:27 The three questions
-0:51 @claude runs a sensor test
-1:17 The e-bike problem
-1:32 …but you can't not buy it
-2:03 Jarvis, not autopilot
-2:36 Breakouts: four more pairs
-3:17 Where AI falls short
-3:45 The action item
-4:04 "We could make a reel of us"
+0:24 The three questions
+0:48 @claude runs a sensor test
+1:14 The e-bike problem
+1:29 …but you can't not buy it
+2:00 Jarvis, not autopilot
+2:33 Breakouts: four more pairs
+3:14 Where AI falls short
+3:42 The action item
+4:01 "We could make a reel of us"

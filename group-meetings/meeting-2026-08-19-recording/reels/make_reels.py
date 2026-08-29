@@ -137,6 +137,10 @@ def denoise_chain(mode="full"):
     return ",".join(parts)
 
 
+SIDECARS_ONLY = False    # set by --sidecars-only: reuse the pieces already rendered
+                         # into the workdir and only re-emit the text sidecars
+
+
 def run(cmd, **kw):
     proc = subprocess.run([str(c) for c in cmd], capture_output=True, text=True, **kw)
     if proc.returncode != 0:
@@ -360,8 +364,10 @@ def render_card_item_video(wav, dur, work, iid, fade_in=0.0):
 
 
 def mux_item(video, wav, work, iid):
-    nf = frames_of(video)
+    nf = frames_of(work / f"{iid}.mp4" if SIDECARS_ONLY else video)
     out = work / f"{iid}.mp4"
+    if SIDECARS_ONLY and out.exists():
+        return out, nf / FPS
     run(["ffmpeg", "-y", "-nostdin", "-loglevel", "error", "-i", video, "-i", wav,
          "-map", "0:v", "-map", "1:a",
          "-af", f"apad,atrim=end={nf / FPS:.6f},asetpts=PTS-STARTPTS",
@@ -519,12 +525,15 @@ def build_ass(layout, path, title=None):
         # the quote never changes size on screen inside a bite
         item_size = min((f[0] for f in fitted), default=QUOTE_SIZES[0])
         static = is_static(it)
-        for phrase in phrases:
+        for k, phrase in enumerate(phrases):
             texts = [w[2] for w in phrase]
             _, lines = wrap_phrase(texts, item_size)
             tag = f"{{\\fs{item_size}}}"
             last_end = phrase[-1][1]
-            nxt = next((w[0] for w in it["words"] if w[0] > last_end + 1e-6), None)
+            # a phrase must clear the screen before the NEXT PHRASE starts, not merely
+            # before the next word: ASR word spans can overlap by a few tens of ms, and
+            # two live Quote events make libass push the second block down the frame
+            nxt = phrases[k + 1][0][0] if k + 1 < len(phrases) else None
             close = min(dur, last_end + PHRASE_HOLD, nxt if nxt is not None else 9e9)
             if static:
                 # whole block at once: over footage the viewer is already reading the
@@ -550,8 +559,13 @@ def build_ass(layout, path, title=None):
                    esc(title["kicker"]), "{\\fad(300,520)}"))
         ev.append(("TitleMain", 0.20, TITLE_HOLD + 0.15,
                    esc(title["title"].replace("\n", " ")), "{\\fad(300,520)}"))
+    # belt and braces: no two Quote events may be live at the same instant
+    quotes = sorted([e for e in ev if e[0] == "Quote"], key=lambda e: e[1])
+    for a, b in zip(quotes, quotes[1:]):
+        if a[2] > b[1]:
+            ev[ev.index(a)] = (a[0], a[1], max(b[1] - 0.01, a[1] + 0.01), a[3], a[4])
     out = [ASS_HEAD]
-    for style, st, en, text, pre in ev:
+    for style, st, en, text, pre in sorted(ev, key=lambda e: e[1]):
         out.append(f"Dialogue: 0,{ass_time(st)},{ass_time(en)},{style},,0,0,0,{pre}{text}")
     Path(path).write_text("\n".join(out) + "\n")
 
@@ -612,7 +626,9 @@ def build_vtt(layout, path):
         c["s"] = max(c["s"] - CAPTION_LEAD, prev + CAPTION_GAP, 0.0)
     for i, c in enumerate(cues):
         nxt = cues[i + 1]["s"] if i + 1 < len(cues) else end_of_reel
-        c["e"] = max(c["s"] + 0.4, min(c["e"] + CAPTION_HOLD, nxt - CAPTION_GAP))
+        c["e"] = min(max(c["s"] + 0.4, min(c["e"] + CAPTION_HOLD, nxt - CAPTION_GAP)),
+                     max(nxt - CAPTION_GAP, c["s"] + 0.05))
+    cues = [c for c in cues if c["e"] > c["s"] + 0.04]
     out = ["WEBVTT", ""]
     for c in cues:
         body = "\n".join(wrap_caption(c["text"]))
@@ -701,8 +717,16 @@ def main():
     ap.add_argument("--workdir", default="/tmp/reels-build")
     ap.add_argument("--outdir", default=None, help="default: workdir")
     ap.add_argument("--only", default=None, help="render just this reel id")
+    ap.add_argument("--sidecars-only", action="store_true",
+                    help="do not encode anything: reuse the pieces already in --workdir "
+                         "and only re-emit the .vtt / .chapters.txt sidecars")
+    ap.add_argument("--reburn", action="store_true",
+                    help="reuse the pieces already in --workdir but redo the final burn-in "
+                         "and join (for a text-only change, ~10x faster than a re-render)")
     args = ap.parse_args()
 
+    global SIDECARS_ONLY
+    SIDECARS_ONLY = args.sidecars_only or args.reburn
     edl = json.load(open(HERE / "reels-edl.json"))
     recovered = json.load(open(args.recovered)) if args.recovered else {}
     outdir = Path(args.outdir or args.workdir)
@@ -739,7 +763,9 @@ def main():
             key = f"{reel['id']}__{item['id']}"
             fade_in = 0.25 if n == 0 else 0.0
             words, planned = item_words_local(item)
-            if key in recovered:
+            if SIDECARS_ONLY and (work / f"{iid}.mp4").exists():
+                wav = video = work / f"{iid}.mp4"        # nothing is encoded in this mode
+            elif key in recovered:
                 rec = recovered[key]
                 wav = render_recovered_audio(
                     rec["audio"], work, iid,
@@ -767,13 +793,18 @@ def main():
                              "part": item.get("part"), "words": words,
                              "visual": item.get("visual", "card")})
             print(f"  {reel['id']} {iid}: {dur:.2f}s ({len(words)} words)", flush=True)
-        p, d = render_card(work, "card_end", reel["end_card"], "end")
+        if SIDECARS_ONLY and (work / "card_end.mp4").exists():
+            p = work / "card_end.mp4"
+            d = frames_of(p) / FPS
+        else:
+            p, d = render_card(work, "card_end", reel["end_card"], "end")
         add(p, d)
 
         ass_path = work / f"{reel['id']}.ass"
         build_ass(layout, ass_path, title)
         final = outdir / f"{reel['output_basename']}.mp4"
-        join_reel(pieces, ass_path, final)
+        if not args.sidecars_only:
+            join_reel(pieces, ass_path, final)
 
         # sidecar captions (phrase-level) on the reel timeline
         build_vtt(layout, outdir / f"{reel['output_basename']}.vtt")

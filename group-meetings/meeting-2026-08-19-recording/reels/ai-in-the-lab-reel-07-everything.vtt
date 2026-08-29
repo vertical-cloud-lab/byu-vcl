@@ -1,241 +1,361 @@
 WEBVTT
 
-00:00:03.287 --> 00:00:07.887
-I think the biggest thing is just recognizing that we're going to have AI
+00:00:00.080 --> 00:00:02.407
+<v Carl Robison>I think the biggest thing
+is just recognizing that
 
-00:00:07.587 --> 00:00:08.427
-forever.
+00:00:02.487 --> 00:00:05.127
+<v Carl Robison>we're going to have AI forever.
 
-00:00:08.127 --> 00:00:13.527
-like there's no getting away from any of that we really need to find a way
+00:00:05.207 --> 00:00:09.407
+<v Carl Robison>like there's no getting away
+from any of that we really
 
-00:00:13.227 --> 00:00:19.767
-to harness the power that it has to make us more like effective and efficient
+00:00:09.487 --> 00:00:13.747
+<v Carl Robison>need to find a way to
+harness the power that it has
 
-00:00:20.020 --> 00:00:23.840
-you don't know how to use it you're going to fall behind that being said
+00:00:13.827 --> 00:00:16.590
+<v Carl Robison>to make us more like
+effective and efficient
 
-00:00:23.540 --> 00:00:27.533
-if that's all you use you're useless because anyone can use AI
+00:00:16.670 --> 00:00:18.780
+<v Carl Robison>you don't know how to use
+it you're going to fall
 
-00:00:27.873 --> 00:00:29.693
-these are the three questions we'll talk about.
+00:00:18.860 --> 00:00:22.440
+<v Carl Robison>behind that being said if
+that's all you use you're
 
-00:00:29.533 --> 00:00:32.173
-So kind of keep these in mind while we're going through.
+00:00:22.520 --> 00:00:24.533
+<v Carl Robison>useless because anyone can use AI
 
-00:00:32.493 --> 00:00:37.433
-Like an experience where use of AI has helped you learn something or has
+00:00:24.613 --> 00:00:26.133
+<v Sterling Baird>these are the three questions we'll talk
 
-00:00:37.133 --> 00:00:38.093
-been productive.
+00:00:26.213 --> 00:00:26.393
+<v Sterling Baird>about.
 
-00:00:38.406 --> 00:00:42.686
-A time when it's felt uneasy, unproductive, or crippling.
+00:00:26.473 --> 00:00:28.073
+<v Sterling Baird>So kind of keep these in mind while we're
 
-00:00:42.586 --> 00:00:47.126
-Maybe that's an extreme word, but I'm having trouble thinking of a synonym.
+00:00:28.153 --> 00:00:29.063
+<v Sterling Baird>going through.
 
-00:00:47.206 --> 00:00:51.066
-Then what kind of lab culture would you support establishing any specifics?
+00:00:29.143 --> 00:00:31.993
+<v Sterling Baird>Like an experience where
+use of AI has helped
 
-00:00:51.434 --> 00:00:54.654
-In this instance, AI was able to run a test for me and collect data.
+00:00:32.073 --> 00:00:34.976
+<v Sterling Baird>you learn something or
+has been productive.
 
-00:00:54.934 --> 00:00:59.884
-This will be very helpful because it can run 24 So Tim's on at Claude, can
+00:00:35.056 --> 00:00:37.446
+<v Sterling Baird>A time when it's felt uneasy,
 
-00:00:59.554 --> 00:01:03.774
-you pick up, move, run the following Google Cloud code, post here the results,
+00:00:37.526 --> 00:00:39.386
+<v Sterling Baird>unproductive, or crippling.
 
-00:01:03.714 --> 00:01:05.094
-and then return the enclosure.
+00:00:39.466 --> 00:00:40.586
+<v Sterling Baird>Maybe that's an extreme word,
 
-00:01:05.207 --> 00:01:09.627
-So it's giving it this code here.
+00:00:40.666 --> 00:00:43.826
+<v Sterling Baird>but I'm having trouble
+thinking of a synonym.
 
-00:01:09.927 --> 00:01:16.207
-And Claude took 42 minutes, picked it up, sensor test ran,
+00:00:43.906 --> 00:00:45.586
+<v Sterling Baird>Then what kind of lab culture would you
 
-00:01:17.047 --> 00:01:17.633
-went down mid
+00:00:45.666 --> 00:00:48.004
+<v Sterling Baird>support establishing any specifics?
 
-00:01:17.960 --> 00:01:23.326
-like, if I had an e -bike, I know myself well enough that I would probably
+00:00:48.084 --> 00:00:50.274
+<v Sterling Baird>In this instance, AI
+was able to run a test
 
-00:01:23.026 --> 00:01:27.366
-start relying on the e -bike intensively rather than getting a workout that
+00:00:50.354 --> 00:00:51.504
+<v Sterling Baird>for me and collect data.
 
-00:01:27.066 --> 00:01:31.440
-I need every day, And so it's so much easier to be complacent when the tool
+00:00:51.584 --> 00:00:53.574
+<v Sterling Baird>This will be very helpful because it can
 
-00:01:31.140 --> 00:01:32.000
-is there.
+00:00:53.654 --> 00:00:56.854
+<v Sterling Baird>run 24 So Tim's on at Claude, can you pick
 
-00:01:34.053 --> 00:01:40.133
-not like we can choose to not buy the e -bike right it's the yeah it's like
+00:00:56.934 --> 00:00:59.254
+<v Sterling Baird>up, move, run the following Google Cloud
 
-00:01:39.833 --> 00:01:44.913
-the e -bike is there yes and And like, oh, sorry, I bought it.
+00:00:59.334 --> 00:01:01.194
+<v Sterling Baird>code, post here the
+results, and then return
 
-00:01:44.653 --> 00:01:46.193
-Yeah, I bought it for all this.
+00:01:01.274 --> 00:01:01.794
+<v Sterling Baird>the enclosure.
 
-00:01:46.373 --> 00:01:48.493
-I literally bought it for everybody.
+00:01:01.874 --> 00:01:06.497
+<v Sterling Baird>So it's giving it this code here.
 
-00:01:48.927 --> 00:01:56.027
-And the question I ask is, how important is it for us as students going
+00:01:06.577 --> 00:01:11.517
+<v Sterling Baird>And Claude took 42 minutes, picked it up,
 
-00:01:55.727 --> 00:02:01.827
-into the professional world soon to be competent in not only using AI, but
+00:01:11.597 --> 00:01:14.634
+<v Sterling Baird>sensor test ran, went down mid
 
-00:02:01.527 --> 00:02:03.167
-using AI fruitfully,
+00:01:14.714 --> 00:01:18.506
+<v Sterling Baird>like, if I had an e -bike,
+I know myself well enough
 
-00:02:03.517 --> 00:02:10.097
-But, you know, he uses his AI Jarvis to also, you know, be his tool to,
+00:01:18.586 --> 00:01:21.606
+<v Sterling Baird>that I would probably start
+relying on the e -bike
 
-00:02:10.057 --> 00:02:16.837
-you know, be there to run the tests that he already worked out or to support
+00:01:21.686 --> 00:01:24.386
+<v Sterling Baird>intensively rather than
+getting a workout that I need
 
-00:02:16.537 --> 00:02:19.617
-his reasoning or stuff like that.
+00:01:24.466 --> 00:01:27.580
+<v Sterling Baird>every day, And so it's so
+much easier to be complacent
 
-00:02:19.777 --> 00:02:24.517
-So kind of like that way where Jarvis is a support to Tony Stark and not
+00:01:27.660 --> 00:01:30.300
+<v Sterling Baird>when the tool is there.
 
-00:02:24.217 --> 00:02:26.237
+00:01:30.703 --> 00:01:35.353
+<v In the room>not like we can choose to
+not buy the e -bike right
+
+00:01:35.433 --> 00:01:38.613
+<v In the room>it's the yeah it's like the
+e -bike is there yes and
+
+00:01:38.693 --> 00:01:41.613
+<v In the room>And like, oh, sorry, I bought it.
+
+00:01:41.693 --> 00:01:42.943
+<v Sterling Baird>Yeah, I bought it for all this.
+
+00:01:43.023 --> 00:01:45.497
+<v Sterling Baird>I literally bought it for everybody.
+
+00:01:45.577 --> 00:01:51.307
+<v Sterling Baird>And the question I ask is,
+how important is it for
+
+00:01:51.387 --> 00:01:54.807
+<v In the room>us as students going into
+the professional world soon
+
+00:01:54.887 --> 00:01:59.307
+<v In the room>to be competent in not
+only using AI, but using AI
+
+00:01:59.387 --> 00:02:00.087
+<v In the room>fruitfully,
+
+00:02:00.167 --> 00:02:04.407
+<v Carl Robison>But, you know, he uses
+his AI Jarvis to also,
+
+00:02:04.487 --> 00:02:08.957
+<v In the room>you know, be his tool to,
+you know, be there to run
+
+00:02:09.037 --> 00:02:13.537
+<v In the room>the tests that he already
+worked out or to support
+
+00:02:13.617 --> 00:02:16.347
+<v In the room>his reasoning or stuff like that.
+
+00:02:16.427 --> 00:02:20.237
+<v In the room>So kind of like that way
+where Jarvis is a support
+
+00:02:20.317 --> 00:02:23.234
+<v In the room>to Tony Stark and not
 doing Tony Stark's work.
 
-00:02:26.664 --> 00:02:29.824
-It relates a lot to how we've learned things in general,
+00:02:23.314 --> 00:02:26.674
+<v Gage Erickson>It relates a lot to how we've
+learned things in general,
 
-00:02:30.104 --> 00:02:35.564
-like all through school, we taught how to do math, and only after you understand
+00:02:26.754 --> 00:02:30.534
+<v Gage Erickson>like all through school,
+we taught how to do math,
 
-00:02:35.264 --> 00:02:36.433
-how to do that, then you get to calculate
+00:02:30.614 --> 00:02:32.904
+<v Gage Erickson>and only after you understand
+how to do that, then
 
-00:02:36.520 --> 00:02:42.113
-We're supposed to be things that act and not to be acted upon If we start
+00:02:32.984 --> 00:02:33.434
+<v Gage Erickson>you get to calculate
 
-00:02:41.813 --> 00:02:47.480
-using AI too much then AI starts using us and that should be the other way
+00:02:33.514 --> 00:02:37.300
+<v Andrew & Marcus>We're supposed to be things
+that act and not to be
 
-00:02:47.180 --> 00:02:47.767
-around
+00:02:37.380 --> 00:02:40.960
+<v Andrew & Marcus>acted upon If we start using
+AI too much then AI starts
 
-00:02:48.047 --> 00:02:49.067
-give it a baseline.
+00:02:41.040 --> 00:02:44.617
+<v Andrew & Marcus>using us and that should
+be the other way around
 
-00:02:48.987 --> 00:02:50.147
-Like, here's what I'm thinking.
+00:02:44.697 --> 00:02:45.767
+<v Gage & Ronnie>give it a baseline.
 
-00:02:50.607 --> 00:02:52.287
-Is there something wrong with what I'm thinking?
+00:02:45.847 --> 00:02:47.177
+<v Gage & Ronnie>Like, here's what I'm thinking.
 
-00:02:52.647 --> 00:02:54.007
-How could this be improved?
+00:02:47.257 --> 00:02:49.217
+<v Gage & Ronnie>Is there something wrong
+with what I'm thinking?
 
-00:02:54.247 --> 00:02:59.007
-I think like people coming into the lab in a semester when things have been
+00:02:49.297 --> 00:02:50.817
+<v Gage & Ronnie>How could this be improved?
 
-00:02:58.707 --> 00:03:02.660
-built, and they're just kind of like, I never got the chance to learn any
+00:02:50.897 --> 00:02:54.487
+<v Ben & Sterling>I think like people coming
+into the lab in a semester
 
-00:03:02.360 --> 00:03:02.733
-of this.
+00:02:54.567 --> 00:02:56.860
+<v Ben & Sterling>when things have been
+built, and they're just kind
 
-00:03:02.813 --> 00:03:06.413
-Claude has been controlling the whole thing writing the code that does the
+00:02:56.940 --> 00:02:59.680
+<v Ben & Sterling>of like, I never got the
+chance to learn any of this.
 
-00:03:06.113 --> 00:03:10.986
-tests and running the tests The scary part of that is I have not done that
+00:02:59.760 --> 00:03:01.653
+<v Xavier & Sam>Claude has been
+controlling the whole thing
 
-00:03:10.686 --> 00:03:14.506
-and I don't currently know like if you asked me to do it myself I couldn't
+00:03:01.733 --> 00:03:03.913
+<v Xavier & Sam>writing the code that does the tests and
 
-00:03:14.206 --> 00:03:16.246
-do it right now it would take me a couple days probably
+00:03:03.993 --> 00:03:06.026
+<v Xavier & Sam>running the tests The scary part of that
 
-00:03:16.500 --> 00:03:17.567
-that's scary
+00:03:06.106 --> 00:03:08.826
+<v Xavier & Sam>is I have not done that
+and I don't currently
 
-00:03:17.814 --> 00:03:23.214
-that's one of the limits I think that AI has is it's not very good at generating
+00:03:08.906 --> 00:03:10.646
+<v Xavier & Sam>know like if you asked me to do it myself
 
-00:03:22.914 --> 00:03:25.394
-those structures that we need.
+00:03:10.726 --> 00:03:12.086
+<v Xavier & Sam>I couldn't do it right now it would take
 
-00:03:25.134 --> 00:03:29.334
-Yeah, like generating images and like spatial awareness AI is very poor
+00:03:12.166 --> 00:03:14.384
+<v Xavier & Sam>me a couple days probably that's scary
 
-00:03:29.034 --> 00:03:29.594
-at.
+00:03:14.464 --> 00:03:17.714
+<v Audrey Christiansen>that's one of the limits I
+think that AI has is it's
 
-00:03:29.574 --> 00:03:33.454
-It does really well with like analyzing information and like things to do
+00:03:17.794 --> 00:03:21.694
+<v Audrey Christiansen>not very good at generating
+those structures that
 
-00:03:33.154 --> 00:03:35.314
-with like words and things like that.
+00:03:21.774 --> 00:03:22.094
+<v Audrey Christiansen>we need.
 
-00:03:35.260 --> 00:03:39.100
-It goes very good at image analysis, spatial analysis,
+00:03:22.174 --> 00:03:24.974
+<v Carl Robison>Yeah, like generating images
+and like spatial awareness
 
-00:03:39.140 --> 00:03:39.760
-things like that.
+00:03:25.054 --> 00:03:26.294
+<v Carl Robison>AI is very poor at.
 
-00:03:39.700 --> 00:03:40.800
-It's not there.
+00:03:26.374 --> 00:03:29.034
+<v Carl Robison>It does really well with
+like analyzing information
 
-00:03:41.240 --> 00:03:43.300
-Yeah, it doesn't live in the three.
+00:03:29.114 --> 00:03:31.794
+<v Carl Robison>and like things to do with
+like words and things like
 
-00:03:43.020 --> 00:03:44.200
-world with us.
+00:03:31.874 --> 00:03:32.014
+<v Carl Robison>that.
 
-00:03:44.060 --> 00:03:45.820
-It's all just code and stuff.
+00:03:32.094 --> 00:03:35.800
+<v Carl Robison>It goes very good at image
+analysis, spatial analysis,
 
-00:03:46.286 --> 00:03:49.166
-I'm just wondering, would it be helpful, like when new people come into
+00:03:35.880 --> 00:03:36.460
+<v Carl Robison>things like that.
 
-00:03:48.866 --> 00:03:53.466
-the lab, we would run them through, hey, this is good ways to be using AI?
+00:03:36.540 --> 00:03:37.810
+<v Carl Robison>It's not there.
 
-00:03:53.366 --> 00:03:58.546
-like using it to teach you to do things and using it to maybe like debug
+00:03:37.890 --> 00:03:40.000
+<v Carl Robison>Yeah, it doesn't live in the three.
 
-00:03:58.246 --> 00:04:04.367
-stuff like we need some kind of like tutorial to show people
+00:03:40.080 --> 00:03:40.900
+<v Audrey Christiansen>world with us.
 
-00:04:04.720 --> 00:04:06.130
-Yeah, I like that, Audrey.
+00:03:40.980 --> 00:03:42.856
+<v Audrey Christiansen>It's all just code and stuff.
 
-00:04:06.220 --> 00:04:11.020
-That gets me thinking, we can probably pull some of the things from this
+00:03:42.936 --> 00:03:45.026
+<v Audrey Christiansen>I'm just wondering, would
+it be helpful, like when
 
-00:04:10.720 --> 00:04:11.540
-discussion.
+00:03:45.106 --> 00:03:47.126
+<v Audrey Christiansen>new people come into the lab,
+we would run them through,
 
-00:04:11.820 --> 00:04:16.020
-I think I can add, probably add this in with one of those kind of like onboarding
+00:03:47.206 --> 00:03:50.166
+<v Audrey Christiansen>hey, this is good ways to be using AI?
 
-00:04:15.720 --> 00:04:16.360
-things.
+00:03:50.246 --> 00:03:54.026
+<v Audrey Christiansen>like using it to teach
+you to do things and using
 
-00:04:16.580 --> 00:04:19.720
-Or maybe I missed heard Audrey, but I think I heard her say real.
+00:03:54.106 --> 00:03:58.493
+<v Audrey Christiansen>it to maybe like debug
+stuff like we need some kind
 
-00:04:19.620 --> 00:04:23.840
-So like, you know, we could make like a real of us like being, this is good.
+00:03:58.573 --> 00:04:01.366
+<v Audrey Christiansen>of like tutorial to show people
 
-00:04:23.540 --> 00:04:24.833
-this is bad
+00:04:01.446 --> 00:04:02.830
+<v Sterling Baird>Yeah, I like that, Audrey.
 
-00:04:25.166 --> 00:04:27.786
-Okay, we'll probably call it good there.
+00:04:02.910 --> 00:04:07.240
+<v Sterling Baird>That gets me thinking, we
+can probably pull some of
 
-00:04:28.026 --> 00:04:29.866
-Thanks, Audrey Carl, everybody.
+00:04:07.320 --> 00:04:08.390
+<v Sterling Baird>the things from this discussion.
+
+00:04:08.470 --> 00:04:11.620
+<v Sterling Baird>I think I can add, probably
+add this in with one of
+
+00:04:11.700 --> 00:04:13.150
+<v Sterling Baird>those kind of like onboarding things.
+
+00:04:13.230 --> 00:04:15.840
+<v In the room>Or maybe I missed heard
+Audrey, but I think I heard
+
+00:04:15.920 --> 00:04:16.420
+<v In the room>her say real.
+
+00:04:16.500 --> 00:04:19.220
+<v In the room>So like, you know, we could
+make like a real of us
+
+00:04:19.300 --> 00:04:20.540
+<v In the room>like being, this is good.
+
+00:04:20.620 --> 00:04:21.834
+<v In the room>this is bad
+
+00:04:21.914 --> 00:04:24.596
+<v Sterling Baird>Okay, we'll probably call it good there.
+
+00:04:24.676 --> 00:04:26.887
+<v Sterling Baird>Thanks, Audrey Carl, everybody.

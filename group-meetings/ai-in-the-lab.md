@@ -43,7 +43,7 @@ The Teams recording of this group meeting: 75:34 original on
 [VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
 on 2026-08-20. Being unlisted, it is intentionally **not** counted in the public channel grab below.
 
-A **9:57 edited highlights compilation** of the meeting *and all eight pair discussions* —
+A **9:56 edited highlights compilation** of the meeting *and all eight pair discussions* —
 23 segments across seven titled parts (the three questions, the `@claude` sensor-test
 exhibit, the e-bike debate, the Tony Stark/Jarvis framing, **the breakouts** with bites
 from all seven break-off clips below, the Audrey & Carl online breakout, and the wrap-up
@@ -57,7 +57,7 @@ There is also a set of **seven vertical reels** (1080×1920) in a next-episode-p
 style — the quote text appears on screen word-by-word in sync with the audio, with filler
 words, false starts, and dead air micro-edited out: one reel per breakout session, each
 under 60 seconds and Shorts-eligible (Andrew & Marcus, Gage & Ronnie, Ben & Sterling,
-Xavier & Sam, Audrey & Carl), a 1:27 group-discussion reel, and a 4:33 "everything" reel
+Xavier & Sam, Audrey & Carl), a 1:25 group-discussion reel, and a 4:30 "everything" reel
 covering the whole meeting. EDL, renderer, captions, and preview live in
 [`meeting-2026-08-19-recording/reels/`](meeting-2026-08-19-recording/reels/README.md);
 the MP4s are on the draft release.
@@ -66,7 +66,20 @@ The reels were revised on 2026-08-26 after review feedback (**v2**): source-leve
 background-noise reduction, black canvas, larger type with line breaks that no longer
 reflow mid-quote, grayed-out speaker labels that follow the diarized speaker, no corner
 timecode, and an everything-reel re-cut to complete thoughts with the hard-cut
-interstitials removed (2:45 → 4:33).
+interstitials removed (2:45 → 4:33), and again on 2026-08-27 (**v3**) to put Sterling's
+screen share on screen where the bite is about what is on it.
+
+Both formats were revised again on 2026-08-29 (**v4**) to implement the evidence review in
+[`meeting-2026-08-19-recording/best-practices/`](meeting-2026-08-19-recording/best-practices/README.md):
+the long-form cut's delivery audio went from 16 kHz mono / 96 kbps undenoised to 48 kHz /
+160 kbps with noise reduction (the review's strongest experimental finding is that degraded
+audio costs credibility *and* recall); the reels now open on the quote rather than on a
+silent branded card; the on-screen text is kept clear of the platform UI overlays; quotes
+over footage are static blocks rather than word-by-word; and both sidecar caption files are
+now real caption tracks (no overlapping cues, ≤42-character lines, speaker tags). No quote
+or cut boundary changed. Who appears in what, and what still has to be asked before any of
+it is published, is recorded in
+[`meeting-2026-08-19-recording/CONSENT.md`](meeting-2026-08-19-recording/CONSENT.md).
 
 The online breakout — Audrey Christiansen & Carl Robison's 1:1 discussion, the eighth pair
 alongside the seven clips above — happened inside the meeting itself (00:40:41–01:01:07 of

@@ -17,17 +17,19 @@ word is still the speaker's own.
 
 | Reel | Length | Sources |
 |---|---|---|
-| `ai-in-the-lab-reel-01-andrew-marcus` | 0:51 | [`VwOiijuXEP8`](https://youtu.be/VwOiijuXEP8), [`ndbG_nHQljc`](https://youtu.be/ndbG_nHQljc) — "Don't film me" · act-not-acted-upon · spatial reasoning · "AI is not our equal / No. It is our tool." · the mental check |
-| `ai-in-the-lab-reel-02-gage-ronnie` | 0:50 | [`s5ptE--EVIk`](https://youtu.be/s5ptE--EVIk), [`bIONIUZDsMk`](https://youtu.be/bIONIUZDsMk) — learn-then-apply · explosive powders vs. aluminum alloys · pickleball · "have it critique your ideas" |
-| `ai-in-the-lab-reel-03-ben-sterling` | 0:53 | [`I0jG2o6wthg`](https://youtu.be/I0jG2o6wthg), [`Ef0jl63-rLg`](https://youtu.be/Ef0jl63-rLg) — "I literally built the machine" · the next-cohort worry · "that didn't work, try again" · AI-first-draft idea · Xavier praise |
-| `ai-in-the-lab-reel-04-xavier-sam` | 0:51 | [`rwoLhubyzZo`](https://youtu.be/rwoLhubyzZo) — BoTorch docs · Claude runs the powder doser · "I couldn't do it right now… that's scary" · the human element |
-| `ai-in-the-lab-reel-05-audrey-carl` | 0:48 | meeting recording (their breakout happened inside the call) — grunt work & months of CAD · "it doesn't live in the 3D world with us" · overusing/under-using |
-| `ai-in-the-lab-reel-06-group-discussion` | 1:27 | meeting recording — Carl's thesis · the e-bike problem & rebuttal · Jarvis, not autopilot · "YouTube famous" · "we could make a reel of us" · the close |
-| `ai-in-the-lab-reel-07-everything` | 4:33 | everything above — the whole meeting end to end: cold open, the three questions, `@claude` runs a sensor test, e-bike, Jarvis, one bite per pair, what-do-we-do, the close (chapters sidecar included) |
+| `ai-in-the-lab-reel-01-andrew-marcus` | 0:49 | [`VwOiijuXEP8`](https://youtu.be/VwOiijuXEP8), [`ndbG_nHQljc`](https://youtu.be/ndbG_nHQljc) — "Don't film me" · act-not-acted-upon · spatial reasoning · "AI is not our equal / No. It is our tool." · the mental check |
+| `ai-in-the-lab-reel-02-gage-ronnie` | 0:48 | [`s5ptE--EVIk`](https://youtu.be/s5ptE--EVIk), [`bIONIUZDsMk`](https://youtu.be/bIONIUZDsMk) — learn-then-apply · explosive powders vs. aluminum alloys · pickleball · "have it critique your ideas" |
+| `ai-in-the-lab-reel-03-ben-sterling` | 0:50 | [`I0jG2o6wthg`](https://youtu.be/I0jG2o6wthg), [`Ef0jl63-rLg`](https://youtu.be/Ef0jl63-rLg) — "I literally built the machine" · the next-cohort worry · "that didn't work, try again" · AI-first-draft idea · Xavier praise |
+| `ai-in-the-lab-reel-04-xavier-sam` | 0:49 | [`rwoLhubyzZo`](https://youtu.be/rwoLhubyzZo) — BoTorch docs · Claude runs the powder doser · "I couldn't do it right now… that's scary" · the human element |
+| `ai-in-the-lab-reel-05-audrey-carl` | 0:45 | meeting recording (their breakout happened inside the call) — grunt work & months of CAD · "it doesn't live in the 3D world with us" · overusing/under-using |
+| `ai-in-the-lab-reel-06-group-discussion` | 1:25 | meeting recording — Carl's thesis · the e-bike problem & rebuttal · Jarvis, not autopilot · "YouTube famous" · "we could make a reel of us" · the close |
+| `ai-in-the-lab-reel-07-everything` | 4:30 | everything above — the whole meeting end to end: cold open, the three questions, `@claude` runs a sensor test, e-bike, Jarvis, one bite per pair, what-do-we-do, the close (chapters sidecar included) |
 
 Each breakout-session reel is **under 60 seconds** (Shorts-eligible). The group reel is
-1:27; the everything reel runs 4:33 — past the 3-minute Shorts cap, which is a deliberate
+1:25; the everything reel runs 4:30 — past the 3-minute Shorts cap, which is a deliberate
 trade (see *v2* below) and fine for Reels/TikTok and for a regular vertical YouTube upload.
+Every reel is ~2.4 s shorter than in v3 because the silent title card in front of it is
+gone (see *v4* below); no cut inside any reel changed.
 
 ## v4 (2026-08-29) — implementing the evidence review
 
@@ -285,7 +287,12 @@ block reaching into the platform UI zones — were implemented in **v4**, above.
   the rendered output. If another quiet aside sounds thin, the same one-key override fixes it.
 - Some drawn-out fillers glued to the next word (e.g. a long "um" with no gap) were kept or
   only partially trimmed to avoid audible artifacts.
+- Sidecar caption cues still run above 17 characters per second on 114 of 233 cues
+  (median 16.8). That is the speech rate itself: once the fillers and pauses are cut, the
+  remaining words are genuinely dense, and the only ways to slow the captions down are to
+  put the pauses back or to drop words. Cue ends already borrow every bit of available
+  silence. The burned, word-synced text is unaffected.
 - Display text carries a few ASR patches ("clot" → "Claude", "Bow Torch" → "BoTorch"), all
   recorded in the EDL so display text stays auditable against the raw audio.
-- Reel 07 at 4:33 is past the 3-minute YouTube Shorts cap. The five pair reels remain
+- Reel 07 at 4:30 is past the 3-minute YouTube Shorts cap. The five pair reels remain
   Shorts-eligible; a shorter everything-cut is a matter of dropping items from the EDL.

@@ -1,532 +1,646 @@
 WEBVTT
 
-00:00:00.000 --> 00:00:02.838
-Carl: I think the biggest thing is just
+00:00:00.000 --> 00:00:02.758
+<v Carl>I think the biggest thing is just
 
-00:00:02.838 --> 00:00:04.850
-recognizing that we're going to have...
+00:00:02.838 --> 00:00:05.010
+<v Carl>recognizing that we're going to have...
 
-00:00:05.090 --> 00:00:09.322
-AI forever. Like, there's no getting away from any of that.
+00:00:05.090 --> 00:00:09.242
+<v Carl>AI forever. Like, there's no
+getting away from any of that.
 
-00:00:09.322 --> 00:00:14.822
-We really need to find a way to harness the power that it has to make us more
+00:00:09.322 --> 00:00:14.742
+<v Carl>We really need to find a way to harness
+the power that it has to make us more
 
-00:00:14.822 --> 00:00:19.265
-like effective and efficient. If you don't know how to use it,
+00:00:14.822 --> 00:00:19.185
+<v Carl>like effective and efficient.
+If you don't know how to use it,
 
-00:00:19.265 --> 00:00:24.130
-you're going to fall behind. That being said, if that's all you use.
+00:00:19.265 --> 00:00:24.210
+<v Carl>you're going to fall behind. That
+being said, if that's all you use.
 
-00:00:24.290 --> 00:00:26.770
-you're useless because anyone can use AI.
+00:00:24.290 --> 00:00:27.970
+<v Carl>you're useless because anyone can use AI.
 
-00:00:34.990 --> 00:00:38.080
-I'm sorry. These are the three questions we'll talk
+00:00:34.990 --> 00:00:38.000
+<v In the room>I'm sorry. These are the
+three questions we'll talk
 
-00:00:38.080 --> 00:00:40.992
-about. So kind of keep these in mind while we're
+00:00:38.080 --> 00:00:40.912
+<v In the room>about. So kind of keep
+these in mind while we're
 
-00:00:40.992 --> 00:00:44.200
-going through. Like an experience where use of AI has
+00:00:40.992 --> 00:00:44.120
+<v In the room>going through. Like an
+experience where use of AI has
 
-00:00:44.200 --> 00:00:47.230
-helped you learn something or has been productive.
+00:00:44.200 --> 00:00:48.430
+<v In the room>helped you learn something
+or has been productive.
 
-00:00:49.622 --> 00:00:52.795
-a time when it's felt uneasy, unproductive, or crippling.
+00:00:49.560 --> 00:00:52.653
+<v In the room>a time when it's felt uneasy,
+unproductive, or crippling.
 
-00:00:52.795 --> 00:00:56.570
-Maybe that's an extreme word, but I was having trouble thinking of a
+00:00:52.733 --> 00:00:56.427
+<v In the room>Maybe that's an extreme word, but
+I was having trouble thinking of a
 
-00:00:56.570 --> 00:00:59.249
-synonym. And then what kind of lab culture would
+00:00:56.507 --> 00:00:59.107
+<v In the room>synonym. And then what
+kind of lab culture would
 
-00:00:59.249 --> 00:01:01.382
-you support establishing any specifics?
+00:00:59.187 --> 00:01:02.520
+<v In the room>you support establishing any specifics?
 
-00:01:05.733 --> 00:01:08.261
-So Tim's on at Claude, can you pick up move,
+00:01:05.608 --> 00:01:08.056
+<v In the room>So Tim's on at Claude,
+can you pick up move,
 
-00:01:08.261 --> 00:01:11.630
-run the following Google Colab code, post here the results,
+00:01:08.136 --> 00:01:11.425
+<v In the room>run the following Google Colab
+code, post here the results,
 
-00:01:11.630 --> 00:01:14.125
-and then return the enclosure to its housing?
+00:01:11.504 --> 00:01:15.200
+<v In the room>and then return the
+enclosure to its housing?
 
-00:01:16.875 --> 00:01:23.625
-Claude took 42 minutes, picked it up, sensor test ran, went down mid-cycle.
+00:01:16.750 --> 00:01:24.700
+<v In the room>Claude took 42 minutes, picked it up,
+sensor test ran, went down mid-cycle.
 
-00:01:27.705 --> 00:01:34.512
-One of the reasons why I will try really hard to prevent myself from getting an
+00:01:27.580 --> 00:01:34.307
+<v In the room>One of the reasons why I will try really
+hard to prevent myself from getting an
 
-00:01:34.512 --> 00:01:35.500
-e-bike anytime in the near future is that. ..
+00:01:34.387 --> 00:01:36.575
+<v In the room>e-bike anytime in the
+near future is that. ..
 
-00:01:37.102 --> 00:01:40.293
-If I had an e-bike, I know myself well enough that I would
+00:01:36.915 --> 00:01:40.025
+<v In the room>If I had an e-bike, I know
+myself well enough that I would
 
-00:01:40.293 --> 00:01:44.563
-probably start relying on the e-bike intensively rather than getting a workout
+00:01:40.105 --> 00:01:44.296
+<v In the room>probably start relying on the e-bike
+intensively rather than getting a workout
 
-00:01:44.563 --> 00:01:48.131
-that I need every day, kind of going back and forth specifically.
+00:01:44.376 --> 00:01:47.864
+<v In the room>that I need every day, kind of
+going back and forth specifically.
 
-00:01:48.131 --> 00:01:51.969
-Well, I can get there faster, and then also I don't like being sweaty,
+00:01:47.944 --> 00:01:51.702
+<v In the room>Well, I can get there faster, and
+then also I don't like being sweaty,
 
-00:01:51.969 --> 00:01:54.996
-like it's distracting to me and all these other things,
+00:01:51.782 --> 00:01:54.729
+<v In the room>like it's distracting to me
+and all these other things,
 
-00:01:54.996 --> 00:01:58.943
-and so it's just so much easier to be complacent when the tool is there.
+00:01:54.809 --> 00:01:59.435
+<v In the room>and so it's just so much easier to
+be complacent when the tool is there.
 
-00:01:59.703 --> 00:02:04.697
-Whereas like some people will use e-bikes for mountain biking and they'll still get
+00:01:59.515 --> 00:02:04.429
+<v In the room>Whereas like some people will use e-bikes
+for mountain biking and they'll still get
 
-00:02:04.697 --> 00:02:08.263
-really good workouts out of it. And so there's kind of a...
+00:02:04.509 --> 00:02:09.275
+<v In the room>really good workouts out of
+it. And so there's kind of a...
 
-00:02:09.822 --> 00:02:13.870
-But they get less of some of the kind of tedious, grueling parts of it.
+00:02:09.635 --> 00:02:13.603
+<v In the room>But they get less of some of the kind
+of tedious, grueling parts of it.
 
-00:02:13.870 --> 00:02:16.062
-They get a little more of the fun part.
+00:02:13.683 --> 00:02:17.075
+<v In the room>They get a little more of the fun part.
 
-00:02:17.910 --> 00:02:21.270
-It's not like we can choose to not buy the e-bike.
+00:02:17.723 --> 00:02:22.082
+<v In the room>It's not like we can choose
+to not buy the e-bike.
 
-00:02:22.350 --> 00:02:28.288
-Like, yeah, it's like the e-bike is there, yes, and like, ohh, sorry, I bought it,
+00:02:22.162 --> 00:02:28.020
+<v In the room>Like, yeah, it's like the e-bike is there,
+yes, and like, ohh, sorry, I bought it,
 
-00:02:28.288 --> 00:02:33.010
-yeah, I bought it for, like, I literally bought it for everybody,
+00:02:28.100 --> 00:02:32.742
+<v In the room>yeah, I bought it for, like, I
+literally bought it for everybody,
 
-00:02:33.010 --> 00:02:36.659
-the world has to, and the question I ask is, yeah,
+00:02:32.822 --> 00:02:36.392
+<v In the room>the world has to, and the
+question I ask is, yeah,
 
-00:02:36.659 --> 00:02:42.310
-how important is it for us as students going into the professional world soon?
+00:02:36.472 --> 00:02:42.602
+<v In the room>how important is it for us as students
+going into the professional world soon?
 
-00:02:42.870 --> 00:02:46.966
-to be competent in not only using AI, but using AI fruitfully,
+00:02:42.682 --> 00:02:46.698
+<v In the room>to be competent in not only using
+AI, but using AI fruitfully,
 
-00:02:46.966 --> 00:02:52.363
-where we learn a lot from it and also we get effective results with AI and our own
+00:02:46.778 --> 00:02:52.096
+<v In the room>where we learn a lot from it and also we
+get effective results with AI and our own
 
-00:02:52.363 --> 00:02:55.418
-competency. And so just a little bit of, okay,
+00:02:52.176 --> 00:02:55.150
+<v In the room>competency. And so just
+a little bit of, okay,
 
-00:02:55.418 --> 00:03:00.554
-we do need to find the response because it's not like we could just say, okay,
+00:02:55.230 --> 00:03:00.287
+<v In the room>we do need to find the response because
+it's not like we could just say, okay,
 
-00:03:00.554 --> 00:03:05.040
-I'm not going to get this. I'm not going to use this AI because it's
+00:03:00.367 --> 00:03:06.052
+<v In the room>I'm not going to get this. I'm not
+going to use this AI because it's
 
-00:03:08.188 --> 00:03:09.561
-before? So, yeah, I was gonna say with that, like,
+00:03:07.938 --> 00:03:09.231
+<v In the room>before? So, yeah, I was
+gonna say with that, like,
 
-00:03:09.561 --> 00:03:13.209
-I think you know, even though it's fictional,
+00:03:09.311 --> 00:03:12.879
+<v In the room>I think you know, even
+though it's fictional,
 
-00:03:13.209 --> 00:03:16.302
-I think prime examples like Tony Stark.
+00:03:12.959 --> 00:03:16.532
+<v In the room>I think prime examples like Tony Stark.
 
-00:03:16.862 --> 00:03:22.948
-who, you know, he knows all the math, he knows everything that he needs to do,
+00:03:16.612 --> 00:03:22.617
+<v In the room>who, you know, he knows all the math,
+he knows everything that he needs to do,
 
-00:03:22.948 --> 00:03:27.262
-but, you know, he uses his AI Jarvis to also, you know,
+00:03:22.698 --> 00:03:26.932
+<v In the room>but, you know, he uses his
+AI Jarvis to also, you know,
 
-00:03:27.262 --> 00:03:32.498
-be his tool to, you know, be there to run the tests that he already
+00:03:27.012 --> 00:03:32.168
+<v In the room>be his tool to, you know, be there
+to run the tests that he already
 
-00:03:32.498 --> 00:03:35.503
-worked out or to support his reasoning.
+00:03:32.248 --> 00:03:35.972
+<v In the room>worked out or to support his reasoning.
 
-00:03:36.302 --> 00:03:41.488
-Stuff like that, so kind of like that, where where Jarvis is a support to Tony
+00:03:36.052 --> 00:03:41.158
+<v In the room>Stuff like that, so kind of like that,
+where where Jarvis is a support to Tony
 
-00:03:41.488 --> 00:03:43.983
-Stark and not doing Tony Stark's work.
+00:03:41.238 --> 00:03:44.045
+<v In the room>Stark and not doing Tony Stark's work.
 
-00:03:44.375 --> 00:03:48.302
-And I know the difference of myself
+00:03:44.125 --> 00:03:47.972
+<v In the room>And I know the difference of myself
 
-00:03:48.302 --> 00:03:49.970
-personally, like when I...
+00:03:48.052 --> 00:03:49.800
+<v In the room>personally, like when I...
 
-00:03:50.130 --> 00:03:53.405
-Write out whole paper. I really understand everything, yeah,
+00:03:49.880 --> 00:03:53.075
+<v In the room>Write out whole paper. I really
+understand everything, yeah,
 
-00:03:53.405 --> 00:03:57.539
-right, but when AI writes it for me, then I'm going like backtracking, okay,
+00:03:53.155 --> 00:03:57.209
+<v In the room>right, but when AI writes it for me,
+then I'm going like backtracking, okay,
 
-00:03:57.539 --> 00:04:01.243
-what does this mean? I don't know, can you see better? I don't know,
+00:03:57.289 --> 00:04:00.913
+<v In the room>what does this mean? I don't know,
+can you see better? I don't know,
 
-00:04:01.243 --> 00:04:05.216
-but there's so much going on here, but I think that happens a lot of data
+00:04:00.993 --> 00:04:04.886
+<v In the room>but there's so much going on here,
+but I think that happens a lot of data
 
-00:04:05.216 --> 00:04:08.115
-everywhere. It has so much output you're trying to go
+00:04:04.966 --> 00:04:07.785
+<v In the room>everywhere. It has so much
+output you're trying to go
 
-00:04:08.115 --> 00:04:09.562
-through, like, is this right? Is this right?
+00:04:07.865 --> 00:04:10.512
+<v In the room>through, like, is this
+right? Is this right?
 
-00:04:10.963 --> 00:04:14.315
-It's a sense of like, there's a vagueness to it.
+00:04:10.713 --> 00:04:13.985
+<v In the room>It's a sense of like,
+there's a vagueness to it.
 
-00:04:14.315 --> 00:04:19.927
-You don't know what the conclusions are coming from. And so like from personally,
+00:04:14.065 --> 00:04:19.597
+<v In the room>You don't know what the conclusions are
+coming from. And so like from personally,
 
-00:04:19.927 --> 00:04:21.842
-I want to find a balance of.
+00:04:19.677 --> 00:04:22.792
+<v In the room>I want to find a balance of.
 
-00:04:24.322 --> 00:04:30.520
-of learning the skills that having to do it for me and then applying it to it
+00:04:24.072 --> 00:04:30.190
+<v In the room>of learning the skills that having to
+do it for me and then applying it to it
 
-00:04:30.520 --> 00:04:33.875
-after that or with it. I just don't know where that balance sits.
+00:04:30.270 --> 00:04:34.825
+<v In the room>after that or with it. I just
+don't know where that balance sits.
 
-00:04:36.590 --> 00:04:38.540
+00:04:36.340 --> 00:04:39.490
 All right. Lab culture.
 
-00:04:40.440 --> 00:04:42.870
-Death and destruction. I can just film it all
+00:04:40.190 --> 00:04:42.390
+Death and destruction.
+I can just film it all
 
-00:04:42.720 --> 00:04:43.430
+00:04:42.470 --> 00:04:44.150
 the time. Okay.
 
-00:04:44.480 --> 00:04:47.190
+00:04:44.230 --> 00:04:47.408
 So. Don't film me. All right.
 
-00:04:47.800 --> 00:04:50.570
-You know, it's a tool to be used, you know,
+00:04:47.488 --> 00:04:50.848
+<v Andrew & Marcus>You know, it's a tool
+to be used, you know,
 
-00:04:51.240 --> 00:04:54.870
-like it says in the scriptures, we are,
+00:04:50.928 --> 00:04:55.148
+<v Andrew & Marcus>like it says in the scriptures, we are,
 
-00:04:55.540 --> 00:04:59.090
-you know, we're supposed to be things that act
+00:04:55.227 --> 00:04:58.548
+<v Andrew & Marcus>you know, we're supposed
+to be things that act
 
-00:04:58.940 --> 00:05:00.730
-and not to be acted upon.
+00:04:58.628 --> 00:05:00.568
+<v Andrew & Marcus>and not to be acted upon.
 
-00:05:00.960 --> 00:05:04.050
-So if AI, if we start using AI too much, then
+00:05:00.648 --> 00:05:03.508
+<v Andrew & Marcus>So if AI, if we start
+using AI too much, then
 
-00:05:03.900 --> 00:05:07.030
-start, then AI starts using us.
+00:05:03.588 --> 00:05:07.058
+<v Andrew & Marcus>start, then AI starts using us.
 
-00:05:07.450 --> 00:05:09.920
-That's pretty good. It's funny how bad AI's spatial
+00:05:07.138 --> 00:05:09.378
+<v Andrew & Marcus>That's pretty good. It's
+funny how bad AI's spatial
 
-00:05:09.770 --> 00:05:10.680
-reasoning is.
+00:05:09.458 --> 00:05:11.058
+<v Andrew & Marcus>reasoning is.
 
-00:05:11.450 --> 00:05:14.840
-Like, it really has no concept of, like, 3D space
+00:05:11.138 --> 00:05:14.298
+<v Andrew & Marcus>Like, it really has no
+concept of, like, 3D space
 
-00:05:14.690 --> 00:05:16.920
-at all. I mean, it makes sense because it's just
+00:05:14.378 --> 00:05:16.378
+<v Andrew & Marcus>at all. I mean, it makes
+sense because it's just
 
-00:05:16.770 --> 00:05:17.480
-an algorithm.
+00:05:16.458 --> 00:05:17.730
+<v Andrew & Marcus>an algorithm.
 
-00:05:18.122 --> 00:05:21.072
-the best alloys we can get for the different
+00:05:17.810 --> 00:05:20.530
+the best alloys we can
+get for the different
 
-00:05:20.922 --> 00:05:23.212
-elements that we're trying to bring into the
+00:05:20.610 --> 00:05:22.670
+elements that we're
+trying to bring into the
 
-00:05:23.062 --> 00:05:26.572
-lab because several of them are, it turns out
+00:05:22.750 --> 00:05:26.030
+lab because several of
+them are, it turns out
 
-00:05:26.422 --> 00:05:28.632
-they're like extremely explosive or reactive
+00:05:26.110 --> 00:05:28.090
+they're like extremely
+explosive or reactive
 
-00:05:28.482 --> 00:05:31.792
-with oxygen in their, when they're just in their
+00:05:28.170 --> 00:05:31.250
+with oxygen in their,
+when they're just in their
 
-00:05:31.642 --> 00:05:34.092
-elemental form. Yeah. And so having them as aluminum
+00:05:31.330 --> 00:05:33.550
+elemental form. Yeah. And
+so having them as aluminum
 
-00:05:33.942 --> 00:05:37.612
-alloys, um, stabilizes them significantly and
+00:05:33.630 --> 00:05:37.070
+alloys, um, stabilizes
+them significantly and
 
-00:05:37.462 --> 00:05:38.832
+00:05:37.150 --> 00:05:38.630
 they make them safer to handle.
 
-00:05:39.023 --> 00:05:40.532
-That's cool. And so that was something recently
+00:05:38.710 --> 00:05:39.990
+That's cool. And so that
+was something recently
 
-00:05:40.382 --> 00:05:41.412
+00:05:40.070 --> 00:05:41.482
 I learned about here.
 
-00:05:41.875 --> 00:05:43.645
-Have it critique your ideas.
+00:05:41.562 --> 00:05:44.302
+<v Gage & Ronnie>Have it critique your ideas.
 
-00:05:44.695 --> 00:05:46.665
-give it a baseline. Like, here's what I'm thinking.
+00:05:44.382 --> 00:05:46.823
+<v Gage & Ronnie>give it a baseline. Like,
+here's what I'm thinking.
 
-00:05:47.215 --> 00:05:48.805
-Is there something wrong with what I'm thinking?
+00:05:46.903 --> 00:05:48.862
+<v Gage & Ronnie>Is there something wrong
+with what I'm thinking?
 
-00:05:49.255 --> 00:05:50.525
-How could this be improved?
+00:05:48.942 --> 00:05:51.142
+<v Gage & Ronnie>How could this be improved?
 
-00:05:51.535 --> 00:05:54.065
-And then once it gives you those, like,
+00:05:51.222 --> 00:05:54.952
+<v Gage & Ronnie>And then once it gives you those, like,
 
-00:05:55.995 --> 00:05:58.545
-see, okay, is what it's telling me I can do better,
+00:05:55.682 --> 00:05:58.242
+<v Gage & Ronnie>see, okay, is what it's
+telling me I can do better,
 
-00:05:58.635 --> 00:06:00.085
-actually going to make it better, or are there
+00:05:58.322 --> 00:05:59.542
+<v Gage & Ronnie>actually going to make
+it better, or are there
 
-00:05:59.935 --> 00:06:01.785
-problems with what I see that it's doing?
+00:05:59.622 --> 00:06:01.602
+<v Gage & Ronnie>problems with what I see that it's doing?
 
-00:06:01.995 --> 00:06:03.725
-And that'll help you think as well while while
+00:06:01.682 --> 00:06:03.182
+<v Gage & Ronnie>And that'll help you
+think as well while while
 
-00:06:03.575 --> 00:06:04.405
-you're using AI.
+00:06:03.262 --> 00:06:04.518
+<v Gage & Ronnie>you're using AI.
 
-00:06:04.910 --> 00:06:07.060
-Yeah. And I started from, like, the ground up
+00:06:04.597 --> 00:06:06.518
+<v Ben & Sterling>Yeah. And I started
+from, like, the ground up
 
-00:06:06.910 --> 00:06:10.380
-where, like, I knew nothing and I was
+00:06:06.597 --> 00:06:09.838
+<v Ben & Sterling>where, like, I knew nothing and I was
 
-00:06:10.230 --> 00:06:13.220
-building something to where I feel like...
+00:06:09.918 --> 00:06:12.678
+<v Ben & Sterling>building something to where I feel like...
 
-00:06:13.070 --> 00:06:14.220
-Like you literally built the machine.
+00:06:12.758 --> 00:06:13.678
+<v Ben & Sterling>Like you literally built the machine.
 
-00:06:14.070 --> 00:06:16.280
-Exactly. Yeah, I literally built the machine,
+00:06:13.758 --> 00:06:15.838
+<v Ben & Sterling>Exactly. Yeah, I literally
+built the machine,
 
-00:06:16.230 --> 00:06:18.220
-and so I had to understand.
+00:06:15.918 --> 00:06:17.838
+<v Ben & Sterling>and so I had to understand.
 
-00:06:18.230 --> 00:06:21.120
-I think, like, people coming into the lab
+00:06:17.918 --> 00:06:20.578
+<v Ben & Sterling>I think, like, people coming into the lab
 
-00:06:20.970 --> 00:06:23.940
-in a semester when things have been built, I'm
+00:06:20.658 --> 00:06:23.398
+<v Ben & Sterling>in a semester when things
+have been built, I'm
 
-00:06:23.790 --> 00:06:27.170
-worried that they might fall into the flow where
+00:06:23.477 --> 00:06:26.628
+<v Ben & Sterling>worried that they might
+fall into the flow where
 
-00:06:27.020 --> 00:06:29.290
-we are using high-level AI,
+00:06:26.708 --> 00:06:29.388
+<v Ben & Sterling>we are using high-level AI,
 
-00:06:29.780 --> 00:06:32.250
-and they're just kind of like, I never got the
+00:06:29.468 --> 00:06:31.708
+<v Ben & Sterling>and they're just kind
+of like, I never got the
 
-00:06:32.100 --> 00:06:33.210
-chance to learn any of this.
+00:06:31.788 --> 00:06:32.748
+<v Ben & Sterling>chance to learn any of this.
 
-00:06:33.140 --> 00:06:34.450
-Yeah. Yeah. And I don't know how we're going
+00:06:32.828 --> 00:06:33.908
+<v Ben & Sterling>Yeah. Yeah. And I don't
+know how we're going
 
-00:06:34.300 --> 00:06:35.570
-to balance that. Yeah.
+00:06:33.988 --> 00:06:35.720
+<v Ben & Sterling>to balance that. Yeah.
 
-00:06:36.112 --> 00:06:38.782
-for the powder doser, it's been, um, Claude has
+00:06:35.800 --> 00:06:38.240
+for the powder doser,
+it's been, um, Claude has
 
-00:06:38.632 --> 00:06:40.702
-been controlling the whole thing, writing the
+00:06:38.320 --> 00:06:40.160
+been controlling the
+whole thing, writing the
 
-00:06:40.552 --> 00:06:43.082
-code that does the tests and running the tests.
+00:06:40.240 --> 00:06:42.982
+code that does the tests
+and running the tests.
 
-00:06:43.375 --> 00:06:45.110
+00:06:43.062 --> 00:06:45.808
 The scary part of that is that I,
 
-00:06:46.200 --> 00:06:49.490
-even if I think I could probably figure out somewhat
+00:06:45.888 --> 00:06:48.948
+even if I think I could
+probably figure out somewhat
 
-00:06:49.340 --> 00:06:51.190
+00:06:49.028 --> 00:06:50.648
 quickly how to run the powder doser myself
 
-00:06:51.040 --> 00:06:51.810
+00:06:50.727 --> 00:06:51.868
 and write the code,
 
-00:06:52.260 --> 00:06:54.710
-I have not done that, and I don't currently know.
+00:06:51.948 --> 00:06:54.248
+I have not done that, and
+I don't currently know.
 
-00:06:54.640 --> 00:06:56.850
-Like, if you asked me to do it myself, I couldn't
+00:06:54.328 --> 00:06:56.308
+Like, if you asked me to
+do it myself, I couldn't
 
-00:06:56.700 --> 00:06:58.170
-do it right now. It would take me a couple of
+00:06:56.388 --> 00:06:59.058
+do it right now. It
+would take me a couple of
 
-00:07:01.700 --> 00:07:02.910
+00:07:01.388 --> 00:07:02.858
 yeah, that's scary.
 
-00:07:03.312 --> 00:07:05.898
-Sorry, yeah. Xavier was explaining the Bayesian
+00:07:02.938 --> 00:07:05.292
+<v Ben & Sterling>Sorry, yeah. Xavier was
+explaining the Bayesian
 
-00:07:05.748 --> 00:07:07.658
-optimization to Seth, and I was listening in,
+00:07:05.372 --> 00:07:07.492
+<v Ben & Sterling>optimization to Seth,
+and I was listening in,
 
-00:07:07.948 --> 00:07:10.038
-and I could tell that Xavier really understood,
+00:07:07.572 --> 00:07:10.792
+<v Ben & Sterling>and I could tell that
+Xavier really understood,
 
-00:07:11.248 --> 00:07:13.698
-that he wasn't just using AI to do the learning
+00:07:10.872 --> 00:07:13.093
+<v Ben & Sterling>that he wasn't just using
+AI to do the learning
 
-00:07:13.548 --> 00:07:15.298
-that he really understood, and that he could
+00:07:13.172 --> 00:07:14.692
+<v Ben & Sterling>that he really understood,
+and that he could
 
-00:07:15.148 --> 00:07:16.898
-give a presentation on Bayesian optimization.
+00:07:14.772 --> 00:07:17.722
+<v Ben & Sterling>give a presentation on
+Bayesian optimization.
 
-00:07:18.678 --> 00:07:21.468
-If we were able to have that confidence in everything,
+00:07:18.302 --> 00:07:21.422
+<v Ben & Sterling>If we were able to have that
+confidence in everything,
 
-00:07:21.878 --> 00:07:23.768
-and every presentation we gave, that would be
+00:07:21.502 --> 00:07:23.162
+<v Ben & Sterling>and every presentation
+we gave, that would be
 
-00:07:23.618 --> 00:07:24.500
-really good.
+00:07:23.242 --> 00:07:24.318
+<v Ben & Sterling>really good.
 
-00:07:24.773 --> 00:07:28.222
-We were talking about the idea that the human
+00:07:24.398 --> 00:07:27.618
+We were talking about
+the idea that the human
 
-00:07:28.072 --> 00:07:30.222
-element is important in research, especially
+00:07:27.698 --> 00:07:29.618
+element is important
+in research, especially
 
-00:07:30.072 --> 00:07:31.422
+00:07:29.698 --> 00:07:30.818
 when you're putting your name on it.
 
-00:07:31.273 --> 00:07:34.362
+00:07:30.898 --> 00:07:35.058
 that if I'm doing research,
 
-00:07:35.512 --> 00:07:37.282
-if Claude is doing research, then anybody can
+00:07:35.138 --> 00:07:36.678
+if Claude is doing
+research, then anybody can
 
-00:07:37.132 --> 00:07:37.862
+00:07:36.758 --> 00:07:37.878
 push the button,
 
-00:07:38.332 --> 00:07:39.602
+00:07:37.958 --> 00:07:39.618
 and then Claude is doing research.
 
-00:07:40.072 --> 00:07:42.002
-If I'm doing research, it should have aspects
+00:07:39.698 --> 00:07:41.398
+If I'm doing research,
+it should have aspects
 
-00:07:41.852 --> 00:07:43.642
-of me in it, it should have that human element,
+00:07:41.477 --> 00:07:43.198
+of me in it, it should
+have that human element,
 
-00:07:43.653 --> 00:07:46.382
+00:07:43.278 --> 00:07:45.838
 that it's specific to me, and
 
-00:07:46.292 --> 00:07:48.482
+00:07:45.918 --> 00:07:49.308
 my ideas, and my work.
 
-00:07:53.267 --> 00:07:56.224
-Audrey: Yeah. And part of it is figuring out what is
+00:07:52.892 --> 00:07:54.732
+<v Audrey>Yeah. And part of it
+is figuring out what is
 
-00:07:55.188 --> 00:07:56.468
-Alright, that was a rant.
+00:07:54.812 --> 00:07:55.769
+<v Audrey>Alright, that was a rant.
 
-00:07:56.224 --> 00:08:00.494
-actually grunt work that it can manage too, right? Like, I mean,
+00:07:55.849 --> 00:08:00.039
+<v Audrey>actually grunt work that it can
+manage too, right? Like, I mean,
 
-00:08:00.494 --> 00:08:05.682
-we spent months trying to get it to work with the CAD models and it's just not
+00:08:00.119 --> 00:08:05.227
+<v Audrey>we spent months trying to get it to work
+with the CAD models and it's just not
 
-00:08:05.682 --> 00:08:07.588
-doing very well. And I think.
+00:08:05.307 --> 00:08:08.413
+<v Audrey>doing very well. And I think.
 
-00:08:08.948 --> 00:08:12.733
-I think that's okay because I think plenty of us actually enjoy doing CAD,
+00:08:08.573 --> 00:08:13.558
+<v Audrey>I think that's okay because I think
+plenty of us actually enjoy doing CAD,
 
-00:08:14.227 --> 00:08:17.023
-And every CAD model is going to be different.
+00:08:13.852 --> 00:08:16.568
+<v Audrey>And every CAD model is
+going to be different.
 
-00:08:17.023 --> 00:08:21.396
-It wouldn't be like recording data and sorting it and stuff like that's
+00:08:16.648 --> 00:08:20.941
+<v Audrey>It wouldn't be like recording data
+and sorting it and stuff like that's
 
-00:08:21.396 --> 00:08:24.068
-something that AI would be amazing for. But
+00:08:21.021 --> 00:08:23.732
+<v Audrey>something that AI would
+be amazing for. But
 
-00:08:24.250 --> 00:08:25.847
-Carl: ...things like that.
+00:08:23.812 --> 00:08:25.330
+<v Carl>...things like that.
 
-00:08:25.847 --> 00:08:30.046
-It does very good at image analysis, spatial analysis, things like that.
+00:08:25.410 --> 00:08:29.528
+<v Carl>It does very good at image analysis,
+spatial analysis, things like that.
 
-00:08:29.738 --> 00:08:34.140
-Audrey: It just, it doesn't, yeah, it doesn't live in the 3D world with us.
+00:08:29.608 --> 00:08:31.900
+<v Carl>It's not there yet.
 
-00:08:30.046 --> 00:08:31.137
-Carl: It's not there yet.
+00:08:33.702 --> 00:08:36.013
+<v Audrey>It's all just code and stuff.
 
-00:08:34.140 --> 00:08:35.250
-It's all just code and stuff.
+00:08:36.425 --> 00:08:38.585
+<v Audrey>Okay, yeah, no, I can see that.
 
-00:08:36.863 --> 00:08:38.542
-Audrey: Okay, yeah, no, I can see that.
+00:08:38.665 --> 00:08:42.469
+<v Carl>As far as like the culture though,
+like I think there has to be a balance.
 
-00:08:39.102 --> 00:08:42.986
-Carl: As far as like the culture though, like I think there has to be a balance.
+00:08:42.549 --> 00:08:46.353
+<v Carl>Like we have to use it. We can't say,
+hey, we are not going to touch that.
 
-00:08:42.986 --> 00:08:46.870
-Like we have to use it. We can't say, hey, we are not going to touch that.
+00:08:46.433 --> 00:08:49.305
+<v Carl>That being said, I'm probably
+overusing it to the extent
 
-00:08:46.870 --> 00:08:49.823
-That being said, I'm probably overusing it to the extent
+00:08:49.385 --> 00:08:51.465
+<v Carl>where like I'm...
 
-00:08:49.502 --> 00:08:52.782
-Audrey: And probably under using it, so we just need to.
+00:08:56.052 --> 00:08:58.905
+<v In the room>We, we about to get
+YouTube famous, you know,
 
-00:08:49.823 --> 00:08:50.702
-Carl: where like I'm...
+00:08:58.985 --> 00:09:02.773
+<v In the room>with the content that's
+looking up, alright.
 
-00:08:56.552 --> 00:08:59.485
-We, we about to get YouTube famous, you know,
+00:09:03.238 --> 00:09:08.313
+<v In the room>we're changing our career.
 
-00:08:59.485 --> 00:09:02.073
-with the content that's looking up, alright.
+00:09:08.945 --> 00:09:12.997
+<v Audrey>Sorry, I'm just wondering, would
+it be helpful like when new people
 
-00:09:03.738 --> 00:09:07.613
-we're changing our career.
+00:09:13.077 --> 00:09:16.096
+<v Audrey>come into the lab, we would
+run them through, hey,
 
-00:09:09.508 --> 00:09:13.640
-Sorry, I'm just wondering, would it be helpful like when new people
+00:09:16.176 --> 00:09:20.653
+<v Audrey>this is good ways to be using AI, like
+using it to teach you to do things,
 
-00:09:13.640 --> 00:09:16.738
-come into the lab, we would run them through, hey,
+00:09:20.733 --> 00:09:23.012
+<v Audrey>and using it to maybe like debug stuff.
 
-00:09:16.738 --> 00:09:21.296
-this is good ways to be using AI, like using it to teach you to do things,
+00:09:23.332 --> 00:09:29.075
+<v Audrey>We need some kind of like
+tutorial to show people, I guess.
 
-00:09:21.296 --> 00:09:22.375
-and using it to maybe like debug stuff.
+00:09:29.228 --> 00:09:33.736
+<v In the room>Yeah, or maybe I misheard Audrey, but
+I think I heard her say real, so like,
 
-00:09:23.958 --> 00:09:28.500
-We need some kind of like tutorial to show people, I guess.
+00:09:33.816 --> 00:09:36.537
+<v In the room>you know, we could make
+like a real of us like
 
-00:09:29.852 --> 00:09:34.441
-Yeah, or maybe I misheard Audrey, but I think I heard her say real, so like,
+00:09:36.617 --> 00:09:40.352
+<v In the room>being, this is good, this is bad.
+Yeah, so some, yeah, so yeah,
 
-00:09:34.441 --> 00:09:37.242
-you know, we could make like a real of us like
+00:09:40.432 --> 00:09:45.148
+<v In the room>I think some examples would
+be would be really good, yeah.
 
-00:09:37.242 --> 00:09:41.057
-being, this is good, this is bad. Yeah, so some, yeah, so yeah,
+00:09:46.967 --> 00:09:49.214
+<v In the room>Okay, well, we'll probably
+call it good there. Thanks,
 
-00:09:41.057 --> 00:09:44.573
-I think some examples would be would be really good, yeah.
-
-00:09:47.655 --> 00:09:49.982
-Okay, well, we'll probably call it good there. Thanks,
-
-00:09:49.982 --> 00:09:51.335
-Audrey, Carl. Thanks, everybody.
+00:09:49.294 --> 00:09:51.848
+<v In the room>Audrey, Carl. Thanks, everybody.
