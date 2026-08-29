@@ -1,12 +1,52 @@
 # AI-in-the-lab highlights compilation (2026-08-19 meeting)
 
-A 9:56 edited highlights video cut from the full 75:34 meeting recording **and the seven
+A 9:56 **landscape (1920×1080)** edited highlights video cut from the full 75:34 meeting recording **and the seven
 break-off pair-discussion clips** from the channel — high-density but breathable: 23
 segments across seven titled parts, with burned-in captions, source bugs (meeting
 timecode or youtu.be link), loudness-normalized audio (−16 LUFS), and title/end cards.
 Cut boundaries are word-aligned to faster-whisper word onsets (re-cut 2026-08-24 after
 the first version, placed from Teams cue times, clipped the start of most segments'
 opening sentence; the breakout bites were word-aligned from the start).
+
+## 2026-08-29 — this is the landscape cut, not a Short
+
+The videos in this project are meant to be **YouTube Shorts** — portrait, three minutes
+maximum. This compilation is neither: it is **1920×1080 and 9:56**, and it stays that way.
+It is the desktop/archive cut. The Shorts telling of the same material is the eight-file
+set in [`../reels/`](../reels/README.md), where the 4:30 "everything" reel became two
+Shorts-legal parts on the same date.
+
+That is a deliberate call rather than a gap, and it is measurable. Comparing this cut's
+segment spans against the reels' spans on the meeting timeline, **13 of the 14 meeting
+items here are already covered by the portrait set** (reels 05, 06, 07 and 08) — so a
+portrait series built from this EDL would be a second telling of the same story rather than
+new material. The one exception is `papers-balance` (original 31:44–32:41: writing the
+papers yourself, and learning the math first), which no reel covers; it is the obvious
+candidate if a ninth Short is wanted.
+
+A mechanical portrait re-frame of this cut would also be worse than it sounds: for most of
+its runtime the recording shows Sterling's screen share, and much of that is a *static,
+unrelated* GitHub comment (see the caveat under *Known limitations*). Scaled to fit a
+1080-wide portrait frame that desktop becomes an illegible 1080×608 band. The reels solve
+this per item — a cropped region of the desktop where the bite is about what is on screen,
+a text card where it is not — which is authoring, not a render flag.
+
+Reproduce the coverage comparison:
+
+```bash
+python3 - <<'EOF'
+import json
+h = json.load(open("edl.json")); r = json.load(open("../reels/reels-edl.json"))
+cov = [(s, e) for reel in r["reels"] for it in reel["items"]
+       if it["src"] == "meeting" for s, e in it["segments"]]
+for it in h["items"]:
+    if it.get("type") != "clip" or it.get("src"):
+        continue
+    a = min(p["s"] for p in it["pieces"]); b = max(p["e"] for p in it["pieces"])
+    hit = sum(max(0.0, min(b, e) - max(a, s)) for s, e in cov)
+    print(f"{it['id']:22s} {hit / (b - a) * 100:5.0f}% covered by the reels")
+EOF
+```
 
 ## 2026-08-29 — the audio, and the captions
 

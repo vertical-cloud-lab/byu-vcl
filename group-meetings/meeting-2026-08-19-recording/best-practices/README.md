@@ -1,8 +1,9 @@
 # Best practices for the AI-in-the-lab videos — evidence review and self-audit
 
 What the research literature actually supports for the two formats produced in
-[PR #184](https://github.com/vertical-cloud-lab/byu-vcl/pull/184) — the seven vertical
-[reels](../reels/) and the 9:57 long-form [highlights](../highlights/) cut — and how the
+[PR #184](https://github.com/vertical-cloud-lab/byu-vcl/pull/184) — the eight vertical
+[reels](../reels/), all of them Shorts-legal since 2026-08-29, and the 9:57 landscape
+long-form [highlights](../highlights/) cut — and how the
 current renders measure up against it.
 
 Two sources feed this:

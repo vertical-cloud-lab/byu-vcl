@@ -27,7 +27,8 @@
    "artifacts": [
     "reel-03",
     "reel-06",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage+card",
@@ -42,7 +43,8 @@
    "artifacts": [
     "reel-05",
     "reel-06",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "card",
@@ -56,7 +58,8 @@
    "name": "Audrey Christiansen",
    "artifacts": [
     "reel-05",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage+card",
@@ -70,7 +73,8 @@
    "name": "Xavier Zaitzeff",
    "artifacts": [
     "reel-04",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage",
@@ -84,7 +88,8 @@
    "name": "Sam Charles",
    "artifacts": [
     "reel-04",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage",
@@ -98,7 +103,8 @@
    "name": "Andrew",
    "artifacts": [
     "reel-01",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "audio+footage",
@@ -112,7 +118,8 @@
    "name": "Marcus",
    "artifacts": [
     "reel-01",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "audio",
@@ -126,7 +133,8 @@
    "name": "Gage Erickson",
    "artifacts": [
     "reel-02",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage+audio",
@@ -140,7 +148,8 @@
    "name": "Ronnie",
    "artifacts": [
     "reel-02",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "footage+audio",
@@ -154,7 +163,8 @@
    "name": "Ben Whitney",
    "artifacts": [
     "reel-03",
-    "reel-07",
+    "reel-07-part-1",
+    "reel-08-part-2",
     "highlights"
    ],
    "appears_as": "audio",

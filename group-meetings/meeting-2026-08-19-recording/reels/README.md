@@ -1,7 +1,7 @@
 # AI-in-the-lab reels (2026-08-19 meeting + breakouts)
 
-Seven vertical (1080×1920) quote-driven cuts of the 2026-08-19 meeting and its breakout
-pair discussions, in a **"next-episode preview" style** (the Frieren end-credits idea from
+Eight vertical (1080×1920) quote-driven cuts of the 2026-08-19 meeting and its breakout
+pair discussions — **every one of them a YouTube Short: portrait, and under three minutes** — in a **"next-episode preview" style** (the Frieren end-credits idea from
 [PR #184](https://github.com/vertical-cloud-lab/byu-vcl/pull/184)): snippets of the actual
 voices play while the quote text appears on screen **word-by-word in sync with the audio**,
 on a black frame with a live waveform — or over the footage itself for the clips with real
@@ -23,13 +23,66 @@ word is still the speaker's own.
 | `ai-in-the-lab-reel-04-xavier-sam` | 0:49 | [`rwoLhubyzZo`](https://youtu.be/rwoLhubyzZo) — BoTorch docs · Claude runs the powder doser · "I couldn't do it right now… that's scary" · the human element |
 | `ai-in-the-lab-reel-05-audrey-carl` | 0:45 | meeting recording (their breakout happened inside the call) — grunt work & months of CAD · "it doesn't live in the 3D world with us" · overusing/under-using |
 | `ai-in-the-lab-reel-06-group-discussion` | 1:25 | meeting recording — Carl's thesis · the e-bike problem & rebuttal · Jarvis, not autopilot · "YouTube famous" · "we could make a reel of us" · the close |
-| `ai-in-the-lab-reel-07-everything` | 4:30 | everything above — the whole meeting end to end: cold open, the three questions, `@claude` runs a sensor test, e-bike, Jarvis, one bite per pair, what-do-we-do, the close (chapters sidecar included) |
+| `ai-in-the-lab-reel-07-everything-part-1-of-2` | 2:36 | meeting recording — the meeting's argument: Carl's thesis · the three questions · `@claude` runs a sensor test · the e-bike problem · "I bought it for everybody" · Jarvis, not autopilot (chapters sidecar included) |
+| `ai-in-the-lab-reel-08-everything-part-2-of-2` | 1:56 | meeting recording + all four in-person pair clips — the pairs and the action item: one bite per pair · where AI falls short · the onboarding proposal · "we could make a reel of us" · the close (chapters sidecar included) |
 
-Each breakout-session reel is **under 60 seconds** (Shorts-eligible). The group reel is
-1:25; the everything reel runs 4:30 — past the 3-minute Shorts cap, which is a deliberate
-trade (see *v2* below) and fine for Reels/TikTok and for a regular vertical YouTube upload.
-Every reel is ~2.4 s shorter than in v3 because the silent title card in front of it is
-gone (see *v4* below); no cut inside any reel changed.
+Each breakout-session reel is **under 60 seconds**; the group reel is 1:25; the
+everything cut is two parts of 2:36 and 1:56. **All eight are portrait 1080×1920 and under
+the 3-minute Shorts cap** (see *v5* below). Every reel is ~2.4 s shorter than in v3 because
+the silent title card in front of it is gone (see *v4* below); no cut inside any reel
+changed.
+
+## v5 (2026-08-29) — everything is a Short
+
+These are meant to be **YouTube Shorts**: portrait, and no longer than three minutes.
+Seven of the eight already were; the "everything" cut at 4:30 was not. It is now **two
+Shorts** — part 1 of 2 (2:36) and part 2 of 2 (1:56) — split at the breakouts boundary,
+which is where the cut already changes subject and source:
+
+| | Part 1 of 2 · 2:36 | Part 2 of 2 · 1:56 |
+|---|---|---|
+| What it is | the meeting's argument | the pairs, and what to do about it |
+| Items | thesis · three questions · `@claude` runs a sensor test · e-bike · "I bought it for everybody" · Jarvis | four pairs · where AI falls short · onboarding · "we could make a reel of us" · the close |
+| Sources | meeting recording | meeting recording + the four in-person pair clips |
+
+**Nothing about the edit changed.** No bite, cut boundary, word list, caption text or
+chapter title is different from v4 — the 14 items are the same 14 items in the same order,
+and only which file each one lands in changed. What is genuinely new is per-part framing:
+each part gets its own title (`Part 1 of 2` / `Part 2 of 2`), its own chapter sidecar
+starting at 0:00, and part 1's end card points at part 2 instead of at the channel.
+
+This is an EDL-only change: `reels-edl.json` now carries `reel-07-everything-part-1` and
+`reel-08-everything-part-2` where it carried `reel-07-everything`, and `make_reels.py` is
+untouched — it renders one file per entry in `reels`, so splitting a reel is a matter of
+splitting its item list.
+
+### QA on the split
+
+The split cannot clip a word — no boundary moved — so instead of repeating v4's
+re-transcription pass this was verified against the **released v4 render** directly, on
+decoded audio:
+
+| Check | Result |
+|---|---|
+| Part 1 content vs. release `[0, 153.433 s)` | **r = 1.000000** |
+| Part 2 content vs. release `[153.433 s, +113.5 s)` | **r = 0.999874** (after a constant 16-sample / 0.33 ms AAC decoder-delay offset — measured per item, identical for all eight, so it is an offset and not drift) |
+| Every part-2 item located inside the release | all eight at base 153.433 s, local r = 0.982–1.000 |
+| A/V duration parity | part 1 v 156.4333 s / a 156.4330 s; part 2 v 116.5333 s / a 116.5330 s |
+| Portrait + Shorts cap, whole set | 8/8 at 1080×1920, longest 156.4 s |
+| Sidecars | part 1: 54 cues, 0 overlaps, longest line 42, 54/54 voice-tagged, median 15.5 CPS · part 2: 49 cues, 0 overlaps, longest line 41, 49/49 voice-tagged, median 17.8 CPS |
+| Safe areas (`qa_layout.py`) | PASS — widest line x = 834 px (action column ~860), lowest text y = 1426 px (TikTok ~1440) |
+
+### Why the long-form 9:57 cut was not converted
+
+The other artifact in this directory's neighbourhood, [`../highlights/`](../highlights/),
+is 9:57 and **landscape** — it is not a Short and this pass did not make it one. Measured
+against the reels' spans on the meeting timeline, 13 of its 14 meeting items are already
+covered by the portrait set (reels 05, 06, 07 and 08); a portrait series built from it
+would be a second telling of the same story. The one thing it has that the Shorts do not
+is `papers-balance` (original 31:44–32:41, the writing-papers-yourself and
+learn-the-math-first argument), which is the obvious candidate if a ninth Short is wanted.
+The long-form stays as the landscape desktop/archive cut. See
+[`../highlights/README.md`](../highlights/README.md).
 
 ## v4 (2026-08-29) — implementing the evidence review
 
@@ -212,12 +265,15 @@ never land inside a neighbouring word.
 Video files are deliberately **not** committed to git (see [`../README.md`](../README.md)).
 
 - **Draft GitHub release** [`meeting-2026-08-19-recording`](https://github.com/vertical-cloud-lab/byu-vcl/releases):
-  all seven MP4s + caption sidecars.
-- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — **current as of v4**
-  (2026-08-29), sha256-verified after a rate-capped transfer. It had been stale since v1,
-  because the v2 and v3 runners had no tailnet; this one did, which also means v4's pair
-  items were rendered from the original clips in `~/vcl-ai-clips/` rather than recovered
-  from a previous release render.
+  all eight MP4s + caption/chapter sidecars. The superseded 4:30
+  `ai-in-the-lab-reel-07-everything.*` assets were deleted there in v5, so nothing on the
+  release is over the Shorts cap.
+- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — **current as of v5**
+  (2026-08-29), sha256-verified after a rate-capped transfer; the superseded 4:30 files
+  were removed there too. The mirror had been stale from v1 through v3, because those
+  runners had no tailnet; v4 and v5 did, which also means their pair items were rendered
+  from the original clips in `~/vcl-ai-clips/` rather than recovered from a previous
+  release render.
 
 ## Files here
 
@@ -226,7 +282,7 @@ Video files are deliberately **not** committed to git (see [`../README.md`](../R
 | [`reels-edl.json`](reels-edl.json) | The whole edit: per item, the audio keep-intervals (source seconds, fillers/false-starts/dead-air already cut), the kept words with their source-time onsets (drives the on-screen text), `speaker`/`speaker_spans`, card copy, and a `why` per item |
 | [`make_reels.py`](make_reels.py) | Renders everything with ffmpeg + libass from the EDL: source-level denoise, micro-cut concat with 15 ms anti-click fades, per-item two-pass loudnorm (−14 LUFS), black frames with live waveform, pre-wrapped word-by-word ASS reveal, frame-exact joins |
 | `*.vtt` | Sidecar captions per reel (phrase-level, output timeline) — the text is also burned in |
-| `ai-in-the-lab-reel-07-everything.chapters.txt` | Chapter markers for the everything reel |
+| `ai-in-the-lab-reel-0{7,8}-everything-part-*.chapters.txt` | Chapter markers for the two everything parts |
 | [`asr_dump.py`](asr_dump.py) | Word-level ASR over padded windows of any source — regenerates the word-onset dumps the EDL was cut from |
 | [`qa_reels.py`](qa_reels.py) | Junction QA: re-transcribes each rendered reel and checks every item's first/last words survive at the planned offsets, plus loudness and A/V duration parity |
 | [`preview.jpg`](preview.jpg) | Contact sheet: one frame per segment of every reel |

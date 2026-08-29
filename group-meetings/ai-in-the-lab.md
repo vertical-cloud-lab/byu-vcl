@@ -53,12 +53,13 @@ action items), with burned captions and chapter cards — lives in
 Most in-person pairs recorded audio-only (phone face-up — "Don't film me"), so those
 bites render as navy audio-cards with a live waveform.
 
-There is also a set of **seven vertical reels** (1080×1920) in a next-episode-preview
+There is also a set of **eight vertical reels** (1080×1920) in a next-episode-preview
 style — the quote text appears on screen word-by-word in sync with the audio, with filler
 words, false starts, and dead air micro-edited out: one reel per breakout session, each
-under 60 seconds and Shorts-eligible (Andrew & Marcus, Gage & Ronnie, Ben & Sterling,
-Xavier & Sam, Audrey & Carl), a 1:25 group-discussion reel, and a 4:30 "everything" reel
-covering the whole meeting. EDL, renderer, captions, and preview live in
+under 60 seconds (Andrew & Marcus, Gage & Ronnie, Ben & Sterling, Xavier & Sam, Audrey &
+Carl), a 1:25 group-discussion reel, and the whole meeting end to end as two parts of 2:36
+and 1:56. **Every one is a YouTube Short — portrait, and under the three-minute cap.** EDL,
+renderer, captions, and preview live in
 [`meeting-2026-08-19-recording/reels/`](meeting-2026-08-19-recording/reels/README.md);
 the MP4s are on the draft release.
 
@@ -68,6 +69,12 @@ reflow mid-quote, grayed-out speaker labels that follow the diarized speaker, no
 timecode, and an everything-reel re-cut to complete thoughts with the hard-cut
 interstitials removed (2:45 → 4:33), and again on 2026-08-27 (**v3**) to put Sterling's
 screen share on screen where the bite is about what is on it.
+
+On 2026-08-29 (**v5**) the 4:30 "everything" reel was split in two at the breakouts
+boundary so that every reel is Shorts-legal (portrait, under three minutes); no bite, cut
+boundary, word list or caption changed, only which file each item lands in. The long-form
+9:57 compilation remains the landscape desktop/archive cut — 13 of its 14 meeting items are
+already covered by the portrait set.
 
 Both formats were revised again on 2026-08-29 (**v4**) to implement the evidence review in
 [`meeting-2026-08-19-recording/best-practices/`](meeting-2026-08-19-recording/best-practices/README.md):

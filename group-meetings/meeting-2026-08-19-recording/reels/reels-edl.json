@@ -1,5 +1,5 @@
 {
- "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v3 (2026-08-27): meeting bites whose screen share or room camera actually shows what is being said now play as footage, cropped to the readable part of the 1920x1080 screen ('crop', source coordinates; a per-segment list where the shot changes mid-bite) with timed black boxes where the screen must not be published ('redact'). v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts. v4 (2026-08-29) implements ../best-practices/: the branded title card is no longer a silent piece in front of the cut (its dur is 0 and the text is faded in over the first bite), the quote block is kept clear of the platform UI overlays, quotes over footage are shown as static blocks rather than word-by-word, and the sidecar .vtt files are real caption tracks (no overlaps, <=42-char lines, speaker tags).",
+ "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v3 (2026-08-27): meeting bites whose screen share or room camera actually shows what is being said now play as footage, cropped to the readable part of the 1920x1080 screen ('crop', source coordinates; a per-segment list where the shot changes mid-bite) with timed black boxes where the screen must not be published ('redact'). v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts. v4 (2026-08-29) implements ../best-practices/: the branded title card is no longer a silent piece in front of the cut (its dur is 0 and the text is faded in over the first bite), the quote block is kept clear of the platform UI overlays, quotes over footage are shown as static blocks rather than word-by-word, and the sidecar .vtt files are real caption tracks (no overlaps, <=42-char lines, speaker tags). 2026-08-29 shorts: every output is a YouTube Short -- portrait 1080x1920 and under 3:00. The 4:30 'everything' cut is split in two at the breakouts boundary (part 1 = the meeting's argument, part 2 = the pairs and the action item); no bite, boundary, word list or caption text changed, only which file each item lands in.",
  "video": {
   "width": 1080,
   "height": 1920,
@@ -5763,12 +5763,12 @@
    ]
   },
   {
-   "id": "reel-07-everything",
-   "output_basename": "ai-in-the-lab-reel-07-everything",
+   "id": "reel-07-everything-part-1",
+   "output_basename": "ai-in-the-lab-reel-07-everything-part-1-of-2",
    "title_card": {
     "kicker": "BYU VERTICAL CLOUD LAB · AUGUST 19, 2026",
     "title": "AI in\nthe lab",
-    "sub": "The whole meeting, end to end",
+    "sub": "The whole meeting · Part 1 of 2",
     "dur": 0.0,
     "rule_y": 990,
     "sub_y": 1030,
@@ -5777,14 +5777,17 @@
    "end_card": {
     "dur": 3.0,
     "bold": [
+     0,
      1
     ],
     "lines": [
-     "Full meeting (unlisted):",
-     "youtu.be/f5_cQvuNKnA",
+     "Part 2 of 2: the breakouts,",
+     "and what we do about it.",
      "",
      "All eight pair discussions:",
      "youtube.com/@BYUVerticalCloudLab",
+     "",
+     "Full meeting (unlisted): youtu.be/f5_cQvuNKnA",
      "",
      "github.com/vertical-cloud-lab/byu-vcl · #183"
     ]
@@ -8165,7 +8168,39 @@
        "Gage Erickson:"
       ]
      ]
-    },
+    }
+   ]
+  },
+  {
+   "id": "reel-08-everything-part-2",
+   "output_basename": "ai-in-the-lab-reel-08-everything-part-2-of-2",
+   "title_card": {
+    "kicker": "BYU VERTICAL CLOUD LAB · AUGUST 19, 2026",
+    "title": "AI in\nthe lab",
+    "sub": "The whole meeting · Part 2 of 2",
+    "dur": 0.0,
+    "rule_y": 990,
+    "sub_y": 1030,
+    "opened_over_first_bite": true
+   },
+   "end_card": {
+    "dur": 3.0,
+    "bold": [
+     1
+    ],
+    "lines": [
+     "Full meeting (unlisted):",
+     "youtu.be/f5_cQvuNKnA",
+     "",
+     "All eight pair discussions:",
+     "youtube.com/@BYUVerticalCloudLab",
+     "",
+     "github.com/vertical-cloud-lab/byu-vcl · #183"
+    ]
+   },
+   "chapters_sidecar": true,
+   "chapter0": "Breakouts: four more pairs",
+   "items": [
     {
      "id": "act-not-acted",
      "src": "VwOiijuXEP8",
