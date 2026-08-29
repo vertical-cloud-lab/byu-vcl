@@ -18,7 +18,23 @@ coordinates) so the screen share Sterling ran for 16:12-1:15:22 of the recording
 three questions, the GitHub thread where @claude reports the sensor test -- and the room
 camera actually appear, instead of every meeting bite being text on black. Items may also
 carry "redact": timed black boxes in source coordinates, for screen content that must not
-be published.
+be published (unused since 2026-08-29; see the EDL).
+
+v4 (2026-08-29), implementing the findings of ../best-practices/:
+  * the reel OPENS ON THE QUOTE. The branded title card is no longer a silent piece in
+    front of the cut; its kicker and title fade in over the first bite instead, so the
+    first voice is audible in frame 1 (finding 2);
+  * SAFE AREAS: the quote measure stops at x=846, clear of the right-hand action-button
+    column, and a full block bottoms out at y=1387 -- above the caption/handle strip on
+    Shorts (~1600), Reels (~1490) and TikTok (~1440). Three lines instead of four,
+    shorter phrases, so the type stays large inside the smaller measure (finding 5);
+  * TEXT OVER FOOTAGE is presented as static 1-3 line blocks, not word-by-word: reading
+    the screen share, reading a growing quote and listening at once is the split-attention
+    case the redundancy principle actually warns about. Word-by-word survives where it is
+    safe -- text on black, no competing visual (finding 7);
+  * the sidecar .vtt files are real caption tracks: cues never overlap, lines are wrapped
+    to <=42 characters, every cue carries a <v Speaker> tag, and cue ends are extended
+    into the following silence to bring the reading rate down (findings 3 and 4).
 
 Reads reels-edl.json. Every item carries its final keep-intervals ("segments", seconds
 on the source timeline, already word-aligned and filler-cut) and the kept words with
@@ -59,18 +75,35 @@ BG = "black"
 
 # ---- fixed layout. Every item uses the same geometry, so a cut between two items
 # ---- moves the words and nothing else -- which is most of what made v1 feel choppy.
+#
+# v4 keeps the whole composition inside the phone-safe rectangle. Vertically the platforms
+# put their own chrome over roughly the top 10 % and the bottom 20-25 % of the frame; the
+# lowest published overlay edge of the three targets is TikTok's at about y=1440, so the
+# quote block is sized to bottom out above that. Horizontally the like/comment/share column
+# starts around x=860-900 on Reels and TikTok, so the text measure stops at x=846 -- the
+# waveform and footage may run wider, since a clipped waveform edge costs nothing.
 SAFE_L = 78
-TEXT_W = W - 2 * SAFE_L          # 924 px of usable measure
-VIS_Y, VIS_H = 372, 566          # "visual zone": footage, or the waveform on text items
-SPEAKER_Y = 1078                 # grayed-out "Name:" label
-QUOTE_Y = 1158                   # top of the quote block (never moves)
-QUOTE_MAX_H = 566
+SAFE_R = 234
+TEXT_W = W - SAFE_L - SAFE_R     # 768 px of usable measure (x = 78 .. 846)
+VIS_Y, VIS_H, VIS_W = 326, 512, W   # "visual zone": footage, or the waveform on text items
+SPEAKER_Y = 866                  # grayed-out "Name:" label
+QUOTE_Y = 940                    # top of the quote block (never moves)
+QUOTE_BOTTOM = 1440              # lowest published platform-overlay edge of the three
 QUOTE_SIZES = (118, 110, 102, 94, 86, 79, 72, 66)
 LINE_H = 1.19                    # multiple of the font size
 MAX_LINES = 4
+QUOTE_MAX_H = QUOTE_BOTTOM - QUOTE_Y   # a 4-line phrase auto-fits to 102 px; a 3-line
+                                       # phrase keeps the full 118 px
+TITLE_KICKER_Y, TITLE_MAIN_Y = 176, 214   # the opening overlay, over the first bite
+TITLE_HOLD = 3.3                 # seconds the opening title stays up
 WAVE_W, WAVE_H = 924, 300
 PHRASE_HOLD = 1.15               # seconds a finished phrase lingers before clearing
+PHRASE_TARGET, PHRASE_HARD = 38, 50   # on-screen phrase length, in characters
 FIT_SLACK = 0.985                # libass vs. PIL metric safety margin
+CAPTION_LINE = 42                # sidecar .vtt line limit (Netflix 42, BBC 37)
+CAPTION_HOLD = 1.6               # max seconds a cue may run past its last word
+CAPTION_GAP = 0.08               # minimum silence between consecutive cues
+CAPTION_LEAD = 0.35              # a cue may come up slightly before its first word
 
 LOUDNORM = "loudnorm=I=-14:TP=-1.2:LRA=11"  # reels/Shorts level (highlights use -16)
 
@@ -228,7 +261,7 @@ def render_recovered_audio(pre_cut, work, iid, mode="full"):
 # ---------------------------------------------------------------- video per item
 def _fit_visual():
     """scale/pad expression placing any source inside the visual zone, centered."""
-    return (f"scale={TEXT_W + 156}:{VIS_H}:force_original_aspect_ratio=decrease:"
+    return (f"scale={VIS_W}:{VIS_H}:force_original_aspect_ratio=decrease:"
             f"force_divisible_by=2,fps={FPS}")
 
 
@@ -395,9 +428,11 @@ YCbCr Matrix: TV.709
 
 [V4+ Styles]
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
-Style: Speaker,Inter Medium,46,&H00A6A6A6,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,0,0,7,{SAFE_L},{SAFE_L},{SPEAKER_Y},1
+Style: Speaker,Inter Medium,46,&H00A6A6A6,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,0,0,7,{SAFE_L},{SAFE_R},{SPEAKER_Y},1
 Style: Part,Inter Medium,34,&H00787878,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,7,{SAFE_L},{SAFE_L},{VIS_Y - 74},1
-Style: Quote,Inter SemiBold,118,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,{SAFE_L},{SAFE_L},{QUOTE_Y},1
+Style: Quote,Inter SemiBold,118,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,{SAFE_L},{SAFE_R},{QUOTE_Y},1
+Style: TitleKicker,Inter Medium,30,&H008C8C8C,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,7,{SAFE_L},{SAFE_L},{TITLE_KICKER_Y},1
+Style: TitleMain,Inter Display SemiBold,58,&H00FFFFFF,&H000000FF,&H00000000,&H00000000,0,0,0,0,100,100,0,0,1,0,0,7,{SAFE_L},{SAFE_L},{TITLE_MAIN_Y},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Text
@@ -413,16 +448,39 @@ def esc(text):
     return text.replace("{", "(").replace("}", ")").replace("\n", "\\N")
 
 
-def chunk_phrases(words):
+def item_phrases(it):
+    """The on-screen phrases of one laid-out item. Footage items get shorter phrases:
+    they are shown as one static block rather than revealed word-by-word, and a short
+    block is what keeps the split-attention cost down when there is also something to
+    look at. Both the burned text and the sidecar captions come from this one function,
+    so the .vtt can never drift from what the viewer sees."""
+    static = is_static(it)
+    return chunk_phrases(it.get("words") or [],
+                         *((30, 40) if static else (PHRASE_TARGET, PHRASE_HARD)))
+
+
+def is_static(it):
+    """True where the frame already carries information -- footage, a screen share -- so
+    the quote is presented as a finished block instead of growing word by word."""
+    return it.get("visual", "card") != "card"
+
+
+def chunk_phrases(words, target=None, hard=None):
     """Split kept words into on-screen phrases: break at sentence enders, em-dashes,
-    or ~46 chars at a natural gap. words: [[out_t0, out_t1, text], ...]."""
+    or ~PHRASE_TARGET chars at a natural gap. words: [[out_t0, out_t1, text], ...].
+    v4 shortens the target from 54/72 to 38/50 characters: the safe-area measure is
+    768 px rather than 924 and the block is three lines rather than four, so a shorter
+    phrase is what keeps the auto-fit near the top of QUOTE_SIZES instead of shrinking
+    the type. It also lands most sidecar cues inside the 42-character caption limit."""
+    target = PHRASE_TARGET if target is None else target
+    hard = PHRASE_HARD if hard is None else hard
     phrases, cur, cur_len = [], [], 0
     for i, w in enumerate(words):
         cur.append(w)
         cur_len += len(w[2]) + 1
         gap = (words[i + 1][0] - w[1]) if i + 1 < len(words) else 99
         ender = w[2].rstrip('"”').endswith((".", "?", "!", "—", ":"))
-        if ender or (cur_len >= 54 and gap >= 0.26) or cur_len >= 72:
+        if ender or (cur_len >= target and gap >= 0.22) or cur_len >= hard:
             phrases.append(cur)
             cur, cur_len = [], 0
     if cur:
@@ -441,30 +499,41 @@ def reveal_text(words, lines, upto):
     return "\\N".join(parts)
 
 
-def build_ass(layout, path):
-    """layout: [{offset, dur, speakers, part, words:[[t0,t1,text] item-local]}]"""
+def build_ass(layout, path, title=None):
+    """layout: [{offset, dur, speakers, part, visual, words:[[t0,t1,text] item-local]}].
+    `title` (kicker + title) fades in over the FIRST item instead of being a silent card
+    in front of the cut, so the reel opens on a voice and a quote."""
     ev = []
-    for it in layout:
+    for n, it in enumerate(layout):
         off, dur = it["offset"], it["dur"]
         for a, b, lab in it.get("speakers") or []:
             ev.append(("Speaker", off + a + (0.10 if a == 0 else 0.0),
                        off + min(b, dur) - 0.04, esc(lab), ""))
-        if it.get("part"):
+        # the opening title occupies the part label's slot on item 0
+        if it.get("part") and not (n == 0 and title):
             ev.append(("Part", off + 0.10, off + min(3.4, dur),
                        esc(it["part"].upper()), "{\\fad(260,420)}"))
-        phrases = chunk_phrases(it.get("words") or [])
+        phrases = item_phrases(it)
         fitted = [wrap_phrase([w[2] for w in ph]) for ph in phrases]
         # one type size for the whole item: the smallest any of its phrases needs, so
         # the quote never changes size on screen inside a bite
         item_size = min((f[0] for f in fitted), default=QUOTE_SIZES[0])
+        static = is_static(it)
         for phrase in phrases:
             texts = [w[2] for w in phrase]
             _, lines = wrap_phrase(texts, item_size)
-            size = item_size
-            tag = f"{{\\fs{size}}}"
+            tag = f"{{\\fs{item_size}}}"
             last_end = phrase[-1][1]
             nxt = next((w[0] for w in it["words"] if w[0] > last_end + 1e-6), None)
             close = min(dur, last_end + PHRASE_HOLD, nxt if nxt is not None else 9e9)
+            if static:
+                # whole block at once: over footage the viewer is already reading the
+                # frame, and a growing line of text is the split-attention case
+                st, en = off + phrase[0][0], off + close
+                ev.append(("Quote", st, max(en, st + 0.02),
+                           esc(reveal_text(texts, lines, len(texts) - 1)),
+                           tag + "{\\fad(180,240)}"))
+                continue
             for i, w in enumerate(phrase):
                 st = off + w[0]
                 en = off + (phrase[i + 1][0] if i + 1 < len(phrase) else close)
@@ -476,10 +545,82 @@ def build_ass(layout, path):
                 if i == len(phrase) - 1:
                     pre += "{\\fad(0,240)}"
                 ev.append(("Quote", st, en, esc(reveal_text(texts, lines, i)), pre))
+    if title:
+        ev.append(("TitleKicker", 0.12, TITLE_HOLD,
+                   esc(title["kicker"]), "{\\fad(300,520)}"))
+        ev.append(("TitleMain", 0.20, TITLE_HOLD + 0.15,
+                   esc(title["title"].replace("\n", " ")), "{\\fad(300,520)}"))
     out = [ASS_HEAD]
     for style, st, en, text, pre in ev:
         out.append(f"Dialogue: 0,{ass_time(st)},{ass_time(en)},{style},,0,0,0,{pre}{text}")
     Path(path).write_text("\n".join(out) + "\n")
+
+
+# ------------------------------------------------------------------ sidecar captions
+def wrap_caption(text, limit=CAPTION_LINE):
+    """Balanced wrap of one cue to at most two lines of <= `limit` characters."""
+    if len(text) <= limit:
+        return [text]
+    words, best = text.split(), None
+    for k in range(1, len(words)):
+        a, b = " ".join(words[:k]), " ".join(words[k:])
+        if len(a) > limit or len(b) > limit:
+            continue
+        score = abs(len(a) - len(b))
+        if best is None or score < best[0]:
+            best = (score, [a, b])
+    if best:
+        return best[1]
+    lines, cur = [], ""                      # fall back to a greedy fill
+    for w in words:
+        if cur and len(cur) + 1 + len(w) > limit:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = f"{cur} {w}".strip()
+    if cur:
+        lines.append(cur)
+    return lines
+
+
+def speaker_at(it, t):
+    for a, b, lab in it.get("speakers") or []:
+        if a - 0.01 <= t < b:
+            return lab.rstrip(":").strip()
+    return None
+
+
+def build_vtt(layout, path):
+    """A real caption track, not a transcript dump. Cues are the same phrases that are
+    burned into the picture; each one is clamped so it ends before the next begins
+    (WebVTT leaves overlapping cues undefined and YouTube's ingest handles them
+    inconsistently), extended into any following silence to bring the reading rate
+    down, wrapped to <= CAPTION_LINE characters over at most two lines, and tagged with
+    the speaker -- WCAG 1.2.2 requires captions to identify who is talking, and the
+    burned render already knows."""
+    cues = []
+    for it in layout:
+        for phrase in item_phrases(it):
+            cues.append({"s": it["offset"] + phrase[0][0],
+                         "e": it["offset"] + phrase[-1][1],
+                         "text": " ".join(w[2] for w in phrase),
+                         "spk": speaker_at(it, phrase[0][0])})
+    cues.sort(key=lambda c: c["s"])
+    end_of_reel = layout[-1]["offset"] + layout[-1]["dur"] if layout else 0.0
+    for i, c in enumerate(cues):                     # a caption may lead its audio a
+        prev = cues[i - 1]["e"] if i else 0.0        # little; it may never lag it
+        c["s"] = max(c["s"] - CAPTION_LEAD, prev + CAPTION_GAP, 0.0)
+    for i, c in enumerate(cues):
+        nxt = cues[i + 1]["s"] if i + 1 < len(cues) else end_of_reel
+        c["e"] = max(c["s"] + 0.4, min(c["e"] + CAPTION_HOLD, nxt - CAPTION_GAP))
+    out = ["WEBVTT", ""]
+    for c in cues:
+        body = "\n".join(wrap_caption(c["text"]))
+        if c["spk"]:
+            body = f"<v {c['spk']}>{body}"
+        out += [f"{fmt_vtt(c['s'])} --> {fmt_vtt(c['e'])}", body, ""]
+    Path(path).write_text("\n".join(out))
+    return cues
 
 
 # ---------------------------------------------------------------- final join
@@ -586,8 +727,13 @@ def main():
                 layout.append(lay)
             cursor += dur
 
-        p, d = render_card(work, "card_title", reel["title_card"], "title")
-        add(p, d)
+        # v4: no silent branded card in front of the cut -- the title fades in over
+        # the first bite instead (see build_ass), so frame 1 already has a voice on it.
+        title = reel.get("title_card")
+        if title and title.get("dur"):
+            p, d = render_card(work, "card_title", title, "title")
+            add(p, d)
+            title = None
         for n, item in enumerate(reel["items"]):
             iid = f"i{n:02d}_{item['id']}"
             key = f"{reel['id']}__{item['id']}"
@@ -618,27 +764,21 @@ def main():
             if item.get("chapter"):
                 chapters.append((cursor, item["chapter"]))
             add(piece, dur, {"speakers": item_speakers_local(item, dur),
-                             "part": item.get("part"), "words": words})
+                             "part": item.get("part"), "words": words,
+                             "visual": item.get("visual", "card")})
             print(f"  {reel['id']} {iid}: {dur:.2f}s ({len(words)} words)", flush=True)
         p, d = render_card(work, "card_end", reel["end_card"], "end")
         add(p, d)
 
         ass_path = work / f"{reel['id']}.ass"
-        build_ass(layout, ass_path)
+        build_ass(layout, ass_path, title)
         final = outdir / f"{reel['output_basename']}.mp4"
         join_reel(pieces, ass_path, final)
 
         # sidecar captions (phrase-level) on the reel timeline
-        vtt = ["WEBVTT", ""]
-        for it in layout:
-            for phrase in chunk_phrases(it.get("words") or []):
-                s = it["offset"] + phrase[0][0]
-                e = min(it["offset"] + it["dur"], it["offset"] + phrase[-1][1] + 0.3)
-                vtt += [f"{fmt_vtt(s)} --> {fmt_vtt(e)}",
-                        " ".join(w[2] for w in phrase), ""]
-        (outdir / f"{reel['output_basename']}.vtt").write_text("\n".join(vtt))
+        build_vtt(layout, outdir / f"{reel['output_basename']}.vtt")
         if chapters and reel.get("chapters_sidecar"):
-            if chapters[0][0] <= snap(reel["title_card"]["dur"]) + 0.5:
+            if chapters[0][0] <= snap(reel["title_card"].get("dur", 0.0)) + 0.5:
                 chapters[0] = (0.0, chapters[0][1])   # first bite owns 0:00
             else:
                 chapters.insert(0, (0.0, reel.get("chapter0", "Cold open")))

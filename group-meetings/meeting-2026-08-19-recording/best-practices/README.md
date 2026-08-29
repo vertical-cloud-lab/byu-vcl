@@ -155,6 +155,25 @@ authenticity and social presence carry more of the value. Useful nuance for a la
 expertise buffers the credibility cost of disfluency, so the case for cutting a student's
 "um"s is stronger than for cutting a PI's.
 
+## What was done about them (2026-08-29)
+
+sgbaird: *"implement your findings"*. Every finding below was either implemented, or is
+recorded here with the reason it was not. The renders changed; **no quote, cut boundary,
+word list or chapter changed** in either format.
+
+| # | Finding | Status |
+|---|---|---|
+| 1 | Long-form ships 16 kHz mono / 96 kbps, undenoised | **Done** — 48 kHz / 160 kbps with the reels' denoise chain, loudness measured *after* denoising, 2 s pre-roll so the denoisers are settled before the cut. Between-word level −54.1 → −66.6 dBFS (room), −62.2 → −73.2 dBFS (Teams). [`make_highlights.py`](../highlights/make_highlights.py) |
+| 2 | Reels open on 2.4–3.0 s of silent title card | **Done** — the card is no longer a piece; its kicker and title fade in over the first bite and clear at 3.3 s. Each reel is ~2.4 s shorter and starts on a voice. [`make_reels.py`](../reels/make_reels.py) |
+| 3 | 53 % of caption cues overlap the previous cue | **Done** in both renderers — every cue is clamped to end before the next begins. Now **0 overlaps** across all eight sidecars |
+| 4 | Caption lines to 81 chars, 74/177 cues over 17 CPS, no speaker tags | **Done** — lines wrap at ≤ 42 characters over ≤ 2 lines, every cue carries `<v Speaker>`, and cues may lead 0.35 s and hold 1.6 s to buy reading time out of silence. The residual reading rate is the speech rate itself: micro-edited speech is genuinely dense, and the honest fix for that would be to un-cut it |
+| 5 | Quote block reaches into the platform UI zones | **Done** — measure narrowed to x = 78…846, block bounded at y = 1440. Widest line now x = 834, lowest text y = 1426; verified by [`qa_layout.py`](../reels/qa_layout.py) against all three platforms' overlay figures. Type got *larger*, not smaller: median 102 px (v3's auto-fit routinely fell below its 118 px base) |
+| 6 | Reel 03 never shows a person; reel 07 is 10/14 cards | **Not implementable from the sources.** Five of the seven pair clips are ceiling, wall or floor for their entire runtime — see [`../pair-clip-framing.jpg`](../pair-clip-framing.jpg), four frames sampled across each clip. The set already uses every second of real framing that exists. The review's mitigation (a still photo of the speaker) needs photos nobody has consented to, so it waits on [`../CONSENT.md`](../CONSENT.md) |
+| 7 | Text-over-footage is where redundancy actually bites | **Done** — footage and screen-share items show the phrase as a static 1–2 line block; word-by-word reveal is kept for text-on-black, which is the boundary condition where verbatim text is safe |
+| 8 | 9:57 long-form is past the engagement ceiling | **Accepted, with the documented mitigation.** Chapters have been on this cut from the start and lift median engagement to ~10.8 min. A ~6 min variant is a matter of dropping EDL items and is offered rather than assumed |
+| 9 | Consent has no recorded trail | **Done as far as it can be done unilaterally** — [`../CONSENT.md`](../CONSENT.md) and [`../consent-ledger.json`](../consent-ledger.json) record who is in what, how they appear, what the ask has to disclose (including that fillers are cut and voices are denoised), the tiers, and that the ask must come from someone other than the PI. Every row is `not yet asked`, which is the true state. Reel 01 carries an explicit publication hold: it opens on Andrew's "Don't film me", and using that line is his call, not ours |
+| 10 | Disfluency removal is genuinely contested | **Already the recommended split** — aggressive micro-editing in the reels, whole passages in the long-form. What was missing was disclosure, which `CONSENT.md` now carries |
+
 ## Reproducing the audit
 
 From this directory, against committed files only (no media needed):

@@ -1,5 +1,5 @@
 {
- "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v3 (2026-08-27): meeting bites whose screen share or room camera actually shows what is being said now play as footage, cropped to the readable part of the 1920x1080 screen ('crop', source coordinates; a per-segment list where the shot changes mid-bite) with timed black boxes where the screen must not be published ('redact'). v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts.",
+ "comment": "Reels EDL for the 2026-08-19 AI-in-the-lab meeting + breakout pair discussions. Vertical 1080x1920@30 'Frieren-preview' style: quote text revealed word-by-word in sync with the audio on a black frame (footage where a clip has real framing). Every item's `segments` are keep-intervals in source seconds with filler words, false starts, and dead air removed as micro-cuts; `words` are the kept words (source-timed) driving the burned text and sidecar captions; `speaker` is the grayed-out on-screen label. Word onsets from faster-whisper distil-large-v3 (asr_dump.py); boundaries sit >=0.25-0.4s clear of word onsets at item edges (15 ms audio fades at every junction). Meeting times are the ORIGINAL 75:34 recording timeline. v3 (2026-08-27): meeting bites whose screen share or room camera actually shows what is being said now play as footage, cropped to the readable part of the 1920x1080 screen ('crop', source coordinates; a per-segment list where the shot changes mid-bite) with timed black boxes where the screen must not be published ('redact'). v2 (2026-08-26): black canvas, no corner bug, pre-wrapped fixed-line-break text, larger auto-fit type, speaker labels instead of role captions, source-level noise reduction, no hard-cut interstitial cards, and a reel-07 re-cut to complete thoughts. v4 (2026-08-29) implements ../best-practices/: the branded title card is no longer a silent piece in front of the cut (its dur is 0 and the text is faded in over the first bite), the quote block is kept clear of the platform UI overlays, quotes over footage are shown as static blocks rather than word-by-word, and the sidecar .vtt files are real caption tracks (no overlaps, <=42-char lines, speaker tags).",
  "video": {
   "width": 1080,
   "height": 1920,
@@ -58,12 +58,13 @@
    "id": "reel-01-andrew-marcus",
    "output_basename": "ai-in-the-lab-reel-01-andrew-marcus",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 BREAKOUTS",
+    "kicker": "AI IN THE LAB · BREAKOUTS",
     "title": "Andrew\n& Marcus",
-    "sub": "Lab culture \u00b7 what AI still can't do",
-    "dur": 2.4,
+    "sub": "Lab culture · what AI still can't do",
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -198,7 +199,7 @@
      "why": "The cold open that explains the audio-cards: 'Don't film me' -- their phone spends the rest of the clip face-up.",
      "speaker": "Andrew & Marcus:",
      "denoise": "gentle",
-     "denoise_why": "RNNoise suppresses Andrew's near-whispered \u201cDon't film me\u201d laugh-line; FFT-only denoise keeps it audible."
+     "denoise_why": "RNNoise suppresses Andrew's near-whispered “Don't film me” laugh-line; FFT-only denoise keeps it audible."
     },
     {
      "id": "act-not-acted",
@@ -634,7 +635,7 @@
       [
        129.88,
        130.22,
-       "\u2014 it"
+       "— it"
       ],
       [
        130.22,
@@ -906,12 +907,13 @@
    "id": "reel-02-gage-ronnie",
    "output_basename": "ai-in-the-lab-reel-02-gage-ronnie",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 BREAKOUTS",
+    "kicker": "AI IN THE LAB · BREAKOUTS",
     "title": "Gage\n& Ronnie",
-    "sub": "Learning, safety \u00b7 make AI critique you",
-    "dur": 2.4,
+    "sub": "Learning, safety · make AI critique you",
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -1825,12 +1827,13 @@
    "id": "reel-03-ben-sterling",
    "output_basename": "ai-in-the-lab-reel-03-ben-sterling",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 BREAKOUTS",
+    "kicker": "AI IN THE LAB · BREAKOUTS",
     "title": "Ben\n& Sterling",
     "sub": "Learning from the ground up",
-    "dur": 2.4,
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -2595,12 +2598,13 @@
    "id": "reel-04-xavier-sam",
    "output_basename": "ai-in-the-lab-reel-04-xavier-sam",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 BREAKOUTS",
+    "kicker": "AI IN THE LAB · BREAKOUTS",
     "title": "Xavier\n& Sam",
     "sub": "When Claude runs the experiment",
-    "dur": 2.4,
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -3455,12 +3459,13 @@
    "id": "reel-05-audrey-carl",
    "output_basename": "ai-in-the-lab-reel-05-audrey-carl",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 BREAKOUTS \u00b7 ONLINE",
+    "kicker": "AI IN THE LAB · BREAKOUTS · ONLINE",
     "title": "Audrey\n& Carl",
-    "sub": "Grunt work \u00b7 the 3D world \u00b7 balance",
-    "dur": 2.4,
+    "sub": "Grunt work · the 3D world · balance",
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -4128,7 +4133,7 @@
       [
        3425.54,
        3425.54,
-       "\u2014 probably"
+       "— probably"
       ],
       [
        3425.54,
@@ -4277,12 +4282,13 @@
    "id": "reel-06-group-discussion",
    "output_basename": "ai-in-the-lab-reel-06-group-discussion",
    "title_card": {
-    "kicker": "AI IN THE LAB \u00b7 2026-08-19",
+    "kicker": "AI IN THE LAB · 2026-08-19",
     "title": "The group\ndiscussion",
     "sub": "E-bikes, Jarvis, and getting YouTube famous",
-    "dur": 2.4,
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 2.6,
@@ -5008,7 +5014,7 @@
       [
        1780.76,
        1780.94,
-       "\u2014 I"
+       "— I"
       ],
       [
        1780.94,
@@ -5557,7 +5563,7 @@
       [
        3949.72,
        3949.96,
-       "\u2014 so"
+       "— so"
       ],
       [
        3949.96,
@@ -5760,12 +5766,13 @@
    "id": "reel-07-everything",
    "output_basename": "ai-in-the-lab-reel-07-everything",
    "title_card": {
-    "kicker": "BYU VERTICAL CLOUD LAB \u00b7 AUGUST 19, 2026",
+    "kicker": "BYU VERTICAL CLOUD LAB · AUGUST 19, 2026",
     "title": "AI in\nthe lab",
     "sub": "The whole meeting, end to end",
-    "dur": 3.0,
+    "dur": 0.0,
     "rule_y": 990,
-    "sub_y": 1030
+    "sub_y": 1030,
+    "opened_over_first_bite": true
    },
    "end_card": {
     "dur": 3.0,
@@ -5779,7 +5786,7 @@
      "All eight pair discussions:",
      "youtube.com/@BYUVerticalCloudLab",
      "",
-     "github.com/vertical-cloud-lab/byu-vcl \u00b7 #183"
+     "github.com/vertical-cloud-lab/byu-vcl · #183"
     ]
    },
    "chapters_sidecar": true,
@@ -6569,22 +6576,6 @@
       0,
       110
      ],
-     "redact": [
-      {
-       "t": [
-        1116.8,
-        1120.6
-       ],
-       "rect": [
-        1580,
-        720,
-        90,
-        250
-       ],
-       "label": "screen redacted",
-       "why": "The Colab notebook he opens has live MQTT broker credentials in the code cell and in the parameter form; everything else in the bite (the GitHub thread, the PR, Claude's run report) is public."
-      }
-     ],
      "visual_why": "The bite is him narrating the screen: Tim's comment, then PR #60 and the @claude comment reporting the 42-minute autonomous sensor test.",
      "segments": [
       [
@@ -6970,7 +6961,8 @@
        1132.367,
        "Sterling Baird:"
       ]
-     ]
+     ],
+     "redact_note": "v3 blacked out the Colab MQTT broker credentials visible at ~18:37; removed 2026-08-29 -- sgbaird confirms those are deliberately publicized test credentials."
     },
     {
      "id": "e-bike",
@@ -7254,7 +7246,7 @@
        1800.1
       ]
      ],
-     "why": "The rebuttal now carries the question it sets up \u2014 competence *with* AI \u2014 instead of ending on the joke.",
+     "why": "The rebuttal now carries the question it sets up — competence *with* AI — instead of ending on the joke.",
      "words": [
       [
        1770.72,
@@ -7637,7 +7629,7 @@
        "fruitfully,"
       ]
      ],
-     "chapter": "\u2026but you can't not buy it",
+     "chapter": "…but you can't not buy it",
      "speaker_spans": [
       [
        1768.7666666666667,
@@ -9005,7 +8997,7 @@
        3008.633333333333
       ]
      ],
-     "why": "Carl's and Audrey's limits-of-AI exchange in full \u2014 the setup makes 'it doesn't live in the 3D world with us' mean something.",
+     "why": "Carl's and Audrey's limits-of-AI exchange in full — the setup makes 'it doesn't live in the 3D world with us' mean something.",
      "words": [
       [
        2980.58,

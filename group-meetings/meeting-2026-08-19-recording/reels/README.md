@@ -29,6 +29,108 @@ Each breakout-session reel is **under 60 seconds** (Shorts-eligible). The group 
 1:27; the everything reel runs 4:33 — past the 3-minute Shorts cap, which is a deliberate
 trade (see *v2* below) and fine for Reels/TikTok and for a regular vertical YouTube upload.
 
+## v4 (2026-08-29) — implementing the evidence review
+
+[`../best-practices/`](../best-practices/) paired an Edison literature review with a
+measured audit of these renders. This pass acts on the audit. **No quote, no cut boundary
+and no word list changed** — the edit is the same edit; what changed is how it is
+delivered.
+
+### The reel opens on the quote (finding 2)
+
+Every reel used to start with 2.4–3.0 s of silent branded title card — about 10 % of a
+47-second reel, spent on branding, in exactly the window where a viewer decides whether to
+stay. The card is gone as a *piece*: its kicker and title now fade in over the first bite,
+top-left, and clear after 3.3 s. Frame 1 has a voice and a quote on it. The end card is
+untouched — it comes after the content, where a "where to watch more" card belongs.
+
+`title_card` is still in the EDL with its text; `"dur": 0.0` and
+`"opened_over_first_bite": true` are what tell the renderer not to make a piece of it.
+
+### The text stays out of the platform UI (finding 5)
+
+| | v3 | v4 |
+|---|---|---|
+| Text measure | x = 78 … 1002 | **x = 78 … 846** |
+| Quote block top | y = 1158 | **y = 940** |
+| Lowest text across the set | y ≈ 1724 (4 lines @ 118 px) | **y = 1426** |
+| Visual zone | y 372–938 | y 326–838 |
+
+The right-hand like/comment/share column starts around x = 860–900 on Reels and TikTok, and
+the caption/handle strip starts around y = 1600 (Shorts), 1490 (Reels), 1440 (TikTok). v3's
+long lines ran under the buttons and a four-line quote ran under the captions. The measure
+is now 768 px and the block is bounded at y = 1440, which is the lowest of the three.
+
+Keeping the type large inside a smaller box took two changes: on-screen phrases are shorter
+(38/50 characters instead of 54/72), and the visual zone gave up 54 px of height. Measured
+across the whole set the quote now renders at **86–118 px, median 102 px** — v3's *base*
+was 118 px but its auto-fit routinely dropped below that on long phrases. [`qa_layout.py`](qa_layout.py)
+recomputes all of this from the EDL and the real font metrics, with no rendering:
+
+```
+$ python3 qa_layout.py
+quote type sizes used: [118, 110, 102, 94, 86]  (median 102 px)
+lines per phrase: max 4 (cap 4), mean 3.06
+widest line  x=834px   vs action column 860px  ->  OK (+26px)
+lowest text  y=1426px  vs TikTok       1440px  ->  OK (+14px)
+safe areas: PASS
+```
+
+Platform overlay extents are published industry figures rather than device measurements —
+worth confirming on a phone, and the constants are one edit away at the top of
+`make_reels.py` if they turn out to be wrong.
+
+### Quotes over footage are static blocks (finding 7)
+
+The redundancy principle (verbatim text + identical speech hurts comprehension, *d* = 0.86)
+has boundary conditions that our text-on-black bites sit comfortably inside: no competing
+visual, short chunks, synchronized to speech. The v3 items that put the screen share on
+screen do **not** — there the viewer is reading the screen share, reading a growing quote,
+and listening at once, which is the split-attention case.
+
+So footage and screen-share items now show the phrase as a **finished block** that fades in
+at the first word and holds, with shorter phrases (30/40 characters) to keep it to one or
+two lines. Word-by-word reveal — the Frieren look — survives everywhere it is safe, which
+is every text-on-black bite, still the majority of the set.
+
+### The sidecars are real caption tracks (findings 3 and 4)
+
+The `.vtt` files were a transcript dump wearing a caption extension. In v3, **93 of 177 cues
+(53 %) started before the previous cue ended**, lines ran to 81 characters, and no cue said
+who was talking. All three are fixed in the writer, not by hand:
+
+- each cue's end is clamped to the next cue's start (minus 80 ms) — no overlaps, at all;
+- a cue may lead its audio by up to 0.35 s and hold up to 1.6 s past its last word, which
+  is display time bought out of silence rather than out of the next line;
+- text wraps to **≤ 42 characters** over at most two lines, balanced;
+- every cue carries `<v Speaker>`, from the same diarized labels the burned render uses.
+
+The captions and the burned text come from one function (`item_phrases`), so the sidecar
+cannot drift from what is on screen.
+
+### The redaction is gone
+
+v3 blacked out ~3 s of the Colab notebook where MQTT broker credentials are on screen.
+sgbaird confirms those are deliberately publicized test credentials, so the black box and
+its `screen redacted` label are removed and the EDL records why.
+
+### What did not change, and why
+
+**Finding 6 — "reel 03 never shows a person"** — is not implementable from the sources.
+Five of the seven pair clips are ceiling, wall or floor for their entire runtime; the pairs
+set their phones face-up, which is the same fact the "Don't film me" cold open records.
+[`../pair-clip-framing.jpg`](../pair-clip-framing.jpg) samples four frames across each of
+the seven clips and shows it. The set already uses every second of real framing that
+exists: Xavier & Sam's clip, the Gage & Ronnie Short, the "Don't film me" opening, Audrey's
+Teams camera, the room camera at the close, and the screen share added in v3. The review's
+own mitigation for audio-only material — a still photo of the speaker — would need photos
+nobody has consented to yet, so it waits on [`../CONSENT.md`](../CONSENT.md).
+
+**Finding 10 — disfluency removal** — the review's split is "aggressive in the reels,
+conservative in the long-form". That is already the split: the reels micro-cut fillers, the
+long-form keeps whole passages. The one thing missing was disclosure, which
+[`../CONSENT.md`](../CONSENT.md) now carries.
+
 ## v3 (2026-08-27) — the screen share is on screen
 
 Review question: *"wasn't I doing screen sharing for some of this?"* Yes — for **59 of the
@@ -169,9 +271,9 @@ clips re-downloaded) will render those items from the originals with no change t
 measured audit of these renders against it. In short: no background music, chapters on the
 long cuts, speaker labels, a cut rate of 0.12–0.24 cuts/s (comfortably inside the studied
 band), and text-on-black for audio-only bites all land on the right side of the evidence.
-The findings worth acting on are the silent 2.4–3.0 s title card ahead of every hook, 53 %
-of sidecar caption cues overlapping their predecessor, caption lines up to 81 characters,
-and a quote block that reaches into the platform UI zones at four lines.
+The findings worth acting on — the silent title card ahead of every hook, 53 % of sidecar
+caption cues overlapping their predecessor, caption lines up to 81 characters, and a quote
+block reaching into the platform UI zones — were implemented in **v4**, above.
 
 ## Known limitations
 

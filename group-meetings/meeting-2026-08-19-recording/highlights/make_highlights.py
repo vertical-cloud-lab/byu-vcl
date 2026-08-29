@@ -15,6 +15,17 @@ Usage:
     python3 make_highlights.py --source /path/to/original.mp4 \
         --clips-dir /path/to/clips --workdir /tmp/build
 
+2026-08-29 (implementing ../best-practices/ finding 1): the delivered audio was
+16 kHz mono at 96 kbps and undenoised -- an 8 kHz bandwidth ceiling, telephone-grade,
+on the artifact most likely to be watched by someone outside the lab. Degraded audio is
+the single most costly thing in the whole evidence review: it lowers judged credibility
+and measurably impairs memory for the facts being stated, and listeners attribute the
+fault to the speaker rather than the microphone. Delivery is now 48 kHz at 160 kbps and
+the reels' noise-reduction chain runs ahead of the loudness normalization, with a
+DENOISE_PREROLL of source audio in front of every cut so the denoisers are settled
+before the first frame. The sidecar captions are also a real caption track now: cues
+never overlap, lines wrap at 42 characters, and speakers are tagged (findings 3 and 4).
+
 The meeting MP4 is not in git — re-fetch it with `yt-dlp -f source "<share link>"`
 (see ../README.md). The breakout clips are the YouTube uploads listed in
 edl.json["sources"], one <id>.mp4 per clip in --clips-dir (download recipe in
@@ -38,6 +49,41 @@ NAVY = "0x002E5D"  # BYU royal blue
 SUB_STYLE = ("FontName=DejaVu Sans,FontSize=13,PrimaryColour=&H00FFFFFF,"
              "OutlineColour=&H88000000,BorderStyle=1,Outline=1.2,Shadow=0.6,MarginV=24")
 MIN_CAPTION_S = 0.7  # drop caption fragments shorter than this after clamping
+CAPTION_LINE = 42    # sidecar .vtt line limit (Netflix 42, BBC 37)
+CAPTION_GAP = 0.08   # minimum silence between consecutive sidecar cues
+
+# Background-noise reduction, ported from the reels renderer (../reels/make_reels.py):
+# 85 Hz high-pass -> RNNoise -> residual FFT denoise -> presence bell -> 12 kHz low-pass
+# -> gentle compression. Applied to a window of continuous source audio that starts
+# DENOISE_PREROLL seconds before the cut, so the adaptive stages are settled by the time
+# the piece begins; the pre-roll is trimmed off before loudness normalization.
+RNNOISE_MODEL = Path("/tmp/rnnoise-sh.rnnn")
+RNNOISE_URL = ("https://raw.githubusercontent.com/GregorR/rnnoise-models/master/"
+               "somnolent-hogwash-2018-09-01/sh.rnnn")
+DENOISE_PREROLL = 2.0
+
+
+def denoise_chain():
+    parts = ["highpass=f=85"]
+    if RNNOISE_MODEL.exists():
+        parts += [f"arnndn=m={RNNOISE_MODEL}", "afftdn=nr=10:nf=-30:tn=1"]
+    else:                                    # ungated fallback: FFT denoise only
+        parts.append("afftdn=nr=8:nf=-32:tn=1")
+    parts += ["equalizer=f=3000:t=q:w=1.3:g=3", "lowpass=f=12000",
+              "acompressor=threshold=-22dB:ratio=2.5:attack=8:release=200"]
+    return ",".join(parts)
+
+
+def audio_source_args(source, s, e):
+    """Input args for a second, audio-only read of `source` carrying the pre-roll."""
+    return ["-ss", f"{max(0.0, s - DENOISE_PREROLL):.3f}", "-to", f"{e:.3f}",
+            "-i", str(source)]
+
+
+def denoise_prefix(s):
+    """Filter prefix that denoises the pre-rolled window and trims back to the cut."""
+    lead = s - max(0.0, s - DENOISE_PREROLL)
+    return f"{denoise_chain()},atrim=start={lead:.3f},asetpts=PTS-STARTPTS"
 
 
 def run(cmd, **kw):
@@ -112,16 +158,44 @@ def piece_captions(cues, piece, edl, in_breakout):
         if in_breakout and name and c["spk"] != last_spk:
             text = f"{name}: {text}"
         last_spk = c["spk"]
-        out.append({"s": cs - s, "e": ce - s, "text": text})
+        out.append({"s": cs - s, "e": ce - s, "text": text, "spk": name})
     if out and piece.get("cap_last_text"):
         out[-1]["text"] = piece["cap_last_text"]
     return out
 
 
+def wrap_caption(text, limit=CAPTION_LINE):
+    """Balanced wrap of one cue to at most two lines of <= `limit` characters."""
+    if len(text) <= limit:
+        return [text]
+    words, best = text.split(), None
+    for k in range(1, len(words)):
+        a, b = " ".join(words[:k]), " ".join(words[k:])
+        if len(a) <= limit and len(b) <= limit:
+            score = abs(len(a) - len(b))
+            if best is None or score < best[0]:
+                best = (score, [a, b])
+    if best:
+        return best[1]
+    lines, cur = [], ""
+    for w in words:
+        if cur and len(cur) + 1 + len(w) > limit:
+            lines.append(cur)
+            cur = w
+        else:
+            cur = f"{cur} {w}".strip()
+    if cur:
+        lines.append(cur)
+    return lines
+
+
 def loudnorm_measure(source, s, e):
+    """Measured on the DENOISED signal -- measuring the raw cut and then denoising it
+    would leave the correction pass working from the wrong numbers."""
     proc = subprocess.run(
-        ["ffmpeg", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source, "-vn",
-         "-af", "loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json", "-f", "null", "-"],
+        ["ffmpeg", "-nostdin", *audio_source_args(source, s, e), "-vn",
+         "-af", f"{denoise_prefix(s)},loudnorm=I=-16:TP=-1.5:LRA=11:print_format=json",
+         "-f", "null", "-"],
         capture_output=True, text=True)
     m = re.search(r"\{[^{}]+\}\s*$", proc.stderr)
     return json.loads(m.group(0)) if m else None
@@ -172,15 +246,17 @@ def render_piece(source, work, idx, piece, item, edl, cues):
                f":measured_LRA={meas['input_lra']}:measured_thresh={meas['input_thresh']}"
                f":offset={meas['target_offset']}:linear=true")
     afade_out = max(piece.get("video_fade_out") or 0.12, 0.12)
-    af = (f"{ln},aresample={edl['audio']['rate']},"
-          f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}")
+    graph = (f"[0:v]{','.join(vf)}[vout];"
+             f"[1:a]{denoise_prefix(s)},{ln},aresample={edl['audio']['rate']},"
+             f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}[aout]")
 
     out = work / f"piece_{idx:02d}.mp4"
     run(["ffmpeg", "-y", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source,
-         "-vf", ",".join(vf), "-af", af,
+         *audio_source_args(source, s, e),
+         "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]", "-t", f"{d:.6f}",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
          "-video_track_timescale", "16000",
-         "-c:a", "aac", "-b:a", "96k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
+         "-c:a", "aac", "-b:a", "160k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
     return out, caps, d
 
 
@@ -228,7 +304,7 @@ def render_audio_piece(source, work, idx, piece, item, edl, cues):
                f":offset={meas['target_offset']}:linear=true")
     afade_out = 0.12
     graph = (
-        f"[0:a]aresample={edl['audio']['rate']},asplit=2[aw][ao];"
+        f"[0:a]{denoise_prefix(s)},aresample={edl['audio']['rate']},asplit=2[aw][ao];"
         f"[aw]showwaves=s={w}x200:mode=cline:rate={fps}:colors=0xFFFFFF@0.40[wv];"
         f"[1:v][wv]overlay=0:660:eof_action=pass[v0];"
         f"[v0]{','.join(vf)}[vout];"
@@ -236,12 +312,12 @@ def render_audio_piece(source, work, idx, piece, item, edl, cues):
         f"afade=t=in:d=0.10,afade=t=out:st={d - afade_out:.3f}:d={afade_out}[aout]")
 
     out = work / f"piece_{idx:02d}.mp4"
-    run(["ffmpeg", "-y", "-nostdin", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", source,
+    run(["ffmpeg", "-y", "-nostdin", *audio_source_args(source, s, e),
          "-f", "lavfi", "-i", f"color=c={NAVY}:s={w}x{h}:r={fps}:d={d:.4f}",
-         "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]",
+         "-filter_complex", graph, "-map", "[vout]", "-map", "[aout]", "-t", f"{d:.6f}",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
          "-video_track_timescale", "16000",
-         "-c:a", "aac", "-b:a", "96k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
+         "-c:a", "aac", "-b:a", "160k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
     return out, caps, d
 
 
@@ -285,7 +361,7 @@ def render_card(work, idx, item, edl):
          "-vf", ",".join(vf), "-shortest",
          "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-profile:v", "high",
          "-video_track_timescale", "16000",
-         "-c:a", "aac", "-b:a", "96k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
+         "-c:a", "aac", "-b:a", "160k", "-ar", str(edl["audio"]["rate"]), "-ac", "1", out])
     return out
 
 
@@ -361,7 +437,8 @@ def main():
         cmd += ["-i", p]
     cmd += ["-filter_complex_script", graph_file, "-map", "[vout]", "-map", "[aout]",
             "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-profile:v", "high",
-            "-c:a", "aac", "-b:a", "96k", "-movflags", "+faststart", final]
+            "-c:a", "aac", "-b:a", "160k", "-ar", str(edl["audio"]["rate"]), "-ac", "1",
+            "-movflags", "+faststart", final]
     run(cmd)
 
     # timeline offsets from actual durations
@@ -370,14 +447,30 @@ def main():
         offsets.append(t)
         t += d
     timeline = t
-    out_caps = [{"s": offsets[i] + c["s"], "e": offsets[i] + c["e"], "text": c["text"]}
+    out_caps = [{"s": offsets[i] + c["s"], "e": offsets[i] + c["e"], "text": c["text"],
+                 "spk": c.get("spk")}
                 for i, caps in sorted(piece_caps.items()) for c in caps]
     chapters = [(offsets[i], name) for i, name in chapters_at]
 
-    # sidecar captions + chapters on the compilation timeline
+    # sidecar captions + chapters on the compilation timeline. The cues are a real
+    # caption track, not a transcript dump: no cue may overlap the next (WebVTT leaves
+    # that undefined and YouTube's ingest handles it inconsistently), lines wrap at
+    # CAPTION_LINE characters over at most two lines, and the speaker is tagged, which
+    # WCAG 1.2.2 requires and the burned-in render already knows.
     vtt = ["WEBVTT", ""]
-    for c in out_caps:
-        vtt += [f"{fmt_vtt(c['s'])} --> {fmt_vtt(c['e'])}", c["text"], ""]
+    for i, c in enumerate(out_caps):
+        end = c["e"]
+        if i + 1 < len(out_caps):
+            end = min(end, out_caps[i + 1]["s"] - CAPTION_GAP)
+        if end <= c["s"] + 0.15:
+            continue
+        text = c["text"]
+        if c.get("spk") and text.startswith(f"{c['spk']}: "):
+            text = text[len(c["spk"]) + 2:]
+        body = "\n".join(wrap_caption(text))
+        if c.get("spk"):
+            body = f"<v {c['spk']}>{body}"
+        vtt += [f"{fmt_vtt(c['s'])} --> {fmt_vtt(end)}", body, ""]
     (work / f"{edl['output_basename']}.vtt").write_text("\n".join(vtt))
     ch_lines = [f"{int(t // 60):d}:{int(t % 60):02d} {name}" for t, name in chapters]
     (work / "highlights-chapters.txt").write_text("\n".join(ch_lines) + "\n")

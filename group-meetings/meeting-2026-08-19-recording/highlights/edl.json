@@ -1,540 +1,542 @@
 {
-  "comment": "Edit decision list for the AI-in-the-lab highlights compilation. All clip times are seconds on the ORIGINAL 75:34 recording timeline (see ../README.md). Rendered by make_highlights.py. 2026-08-24 fix: boundaries are word-aligned to faster-whisper word onsets (>=0.3-0.5 s pre-roll before each opening word, cuts placed in real speech gaps) -- the original cut used Teams cue times, which lag the audio by ~0.5-1.2 s and clipped the start of most segments' first sentence. 2026-08-24 breakouts: adds Part 05 with bites from the seven break-off pair-discussion clips (edl['sources']); those piece times are seconds on each clip's own timeline. Most in-person pairs set the phone face-up while recording ('Don't film me'), so their bites render as navy audio-cards with a live waveform; captions come from whisper VTTs in sources/.",
-  "output_basename": "ai-in-the-lab-highlights-20260819",
-  "video": {
-    "width": 1920,
-    "height": 1080,
-    "fps": 16
-  },
-  "audio": {
-    "rate": 16000,
-    "channels": 1
-  },
-  "breakout_ranges": [
-    [
-      2440.8,
-      3666.6
-    ]
+ "comment": "Edit decision list for the AI-in-the-lab highlights compilation. All clip times are seconds on the ORIGINAL 75:34 recording timeline (see ../README.md). Rendered by make_highlights.py. 2026-08-24 fix: boundaries are word-aligned to faster-whisper word onsets (>=0.3-0.5 s pre-roll before each opening word, cuts placed in real speech gaps) -- the original cut used Teams cue times, which lag the audio by ~0.5-1.2 s and clipped the start of most segments' first sentence. 2026-08-24 breakouts: adds Part 05 with bites from the seven break-off pair-discussion clips (edl['sources']); those piece times are seconds on each clip's own timeline. Most in-person pairs set the phone face-up while recording ('Don't film me'), so their bites render as navy audio-cards with a live waveform; captions come from whisper VTTs in sources/. 2026-08-29: delivery audio raised from 16 kHz mono / 96 kbps undenoised to 48 kHz / 160 kbps with the reels' noise-reduction chain, and the sidecar captions made a real caption track (no overlaps, <=42-char lines, speaker tags) -- ../best-practices/ findings 1, 3 and 4.",
+ "output_basename": "ai-in-the-lab-highlights-20260819",
+ "video": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 16
+ },
+ "audio": {
+  "rate": 48000,
+  "channels": 1,
+  "bitrate": "160k",
+  "denoise": "highpass 85 Hz -> RNNoise (arnndn, sh.rnnn) -> afftdn -> 3 kHz presence -> lowpass 12 kHz -> gentle compression, applied to a 2 s pre-rolled window of continuous source ahead of each cut (ported from ../reels/ 2026-08-29)"
+ },
+ "breakout_ranges": [
+  [
+   2440.8,
+   3666.6
+  ]
+ ],
+ "speaker_names": {
+  "@1": "Gage",
+  "@2": "Carl",
+  "@4": "Audrey"
+ },
+ "caption_text_fixes": [
+  [
+   "1000 bikes on this, where it's on this,",
+   "1000 likes on this,"
   ],
-  "speaker_names": {
-    "@1": "Gage",
-    "@2": "Carl",
-    "@4": "Audrey"
-  },
-  "caption_text_fixes": [
-    [
-      "1000 bikes on this, where it's on this,",
-      "1000 likes on this,"
-    ],
-    [
-      "Cloud took 42 minutes",
-      "Claude took 42 minutes"
-    ],
-    [
-      "So I found that super interesting. I think the biggest thing",
-      "I think the biggest thing"
-    ],
-    [
-      "working on, it's all done by AI. And I know",
-      "And I know"
-    ],
-    [
-      "Hey, we, we about to get",
-      "We, we about to get"
-    ],
-    [
-      "information and like things to do with like words and things like that.",
-      "...things like that."
-    ],
-    [
-      "um, clot has",
-      "um, Claude has"
-    ],
-    [
-      "run the powder dust to myself",
-      "run the powder doser myself"
-    ],
-    [
-      "extrapolate. Yeah, have a critique your ideas.",
-      "Have it critique your ideas."
-    ],
-    [
-      "just using, yeah, to do the learning",
-      "just using AI to do the learning"
-    ],
-    [
-      "trying to create into the",
-      "trying to bring into the"
-    ],
-    [
-      "I learned about with there.",
-      "I learned about here."
-    ],
-    [
-      "people Well, coming",
-      "people coming"
-    ],
-    [
-      "high -level",
-      "high-level"
-    ],
-    [
-      "as well while while you're",
-      "as well while you're"
-    ],
-    [
-      "nice. The scary part",
-      "The scary part"
-    ],
-    [
-      "How could this be improved.",
-      "How could this be improved?"
-    ]
+  [
+   "Cloud took 42 minutes",
+   "Claude took 42 minutes"
   ],
-  "items": [
+  [
+   "So I found that super interesting. I think the biggest thing",
+   "I think the biggest thing"
+  ],
+  [
+   "working on, it's all done by AI. And I know",
+   "And I know"
+  ],
+  [
+   "Hey, we, we about to get",
+   "We, we about to get"
+  ],
+  [
+   "information and like things to do with like words and things like that.",
+   "...things like that."
+  ],
+  [
+   "um, clot has",
+   "um, Claude has"
+  ],
+  [
+   "run the powder dust to myself",
+   "run the powder doser myself"
+  ],
+  [
+   "extrapolate. Yeah, have a critique your ideas.",
+   "Have it critique your ideas."
+  ],
+  [
+   "just using, yeah, to do the learning",
+   "just using AI to do the learning"
+  ],
+  [
+   "trying to create into the",
+   "trying to bring into the"
+  ],
+  [
+   "I learned about with there.",
+   "I learned about here."
+  ],
+  [
+   "people Well, coming",
+   "people coming"
+  ],
+  [
+   "high -level",
+   "high-level"
+  ],
+  [
+   "as well while while you're",
+   "as well while you're"
+  ],
+  [
+   "nice. The scary part",
+   "The scary part"
+  ],
+  [
+   "How could this be improved.",
+   "How could this be improved?"
+  ]
+ ],
+ "items": [
+  {
+   "type": "clip",
+   "id": "cold-open",
+   "bug": "45:01",
+   "video_fade_in": 0.5,
+   "why": "Carl's thesis is the punchiest half-minute of the meeting, opened at the top of the thought: 'the biggest thing is just recognizing that we're going to have AI forever' through 'if that's all you use, you're useless, because anyone can use AI.'",
+   "pieces": [
     {
-      "type": "clip",
-      "id": "cold-open",
-      "bug": "45:01",
-      "video_fade_in": 0.5,
-      "why": "Carl's thesis is the punchiest half-minute of the meeting, opened at the top of the thought: 'the biggest thing is just recognizing that we're going to have AI forever' through 'if that's all you use, you're useless, because anyone can use AI.'",
-      "pieces": [
-        {
-          "s": 2701.0,
-          "e": 2728.75
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "title",
-      "dur": 3.4,
-      "kicker": "BYU VERTICAL CLOUD LAB \u00b7 GROUP MEETING \u00b7 AUGUST 19, 2026",
-      "title": "AI in the lab",
-      "sub": "Highlights from the discussion"
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "01",
-      "title": "The three questions",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "three-questions",
-      "bug": "16:41",
-      "why": "Sterling reads the three prompts that structure the whole meeting (screen share). Interior trim removes silent scrolling.",
-      "pieces": [
-        {
-          "s": 1001.9375,
-          "e": 1016.08
-        },
-        {
-          "s": 1019.8125,
-          "e": 1034.02
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "02",
-      "title": "Exhibit A: @claude runs a sensor test",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "claude-run",
-      "bug": "18:25",
-      "why": "Concrete artifact on screen: Tim's @claude comment that picked up the enclosure, ran the Colab test, and posted results. Interior trim removes silent scrolling.",
-      "pieces": [
-        {
-          "s": 1105.625,
-          "e": 1115.5625
-        },
-        {
-          "s": 1124.5,
-          "e": 1134.0
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "03",
-      "title": "The e-bike problem",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "e-bike",
-      "bug": "26:29",
-      "why": "The meeting's signature analogy: complacency vs. competency. Interior trim (26:39-27:15) drops an aside; kept through the mountain-biking landing.",
-      "pieces": [
-        {
-          "s": 1589.5625,
-          "e": 1599.125
-        },
-        {
-          "s": 1634.75,
-          "e": 1675.65
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "e-bike-rebuttal",
-      "bug": "29:29",
-      "why": "The counterpoint, with the laugh line 'sorry, I bought it for everybody': you cannot choose not to buy this e-bike, so competent-and-fruitful use is the real question.",
-      "pieces": [
-        {
-          "s": 1769.9375,
-          "e": 1819.33
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "04",
-      "title": "Jarvis, not autopilot",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "tony-stark",
-      "bug": "30:31",
-      "why": "The Tony Stark framing: Jarvis is a support to Tony Stark, not doing Tony Stark's work.",
-      "pieces": [
-        {
-          "s": 1831.375,
-          "e": 1867.57
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "papers-balance",
-      "bug": "31:44",
-      "why": "Writing the paper yourself vs. backtracking through AI output, from 'I know the difference of myself personally' to the rhetorical 'is this right? is this right?'. Interior trim removes a garbled aside.",
-      "pieces": [
-        {
-          "s": 1904.375,
-          "e": 1929.5625
-        },
-        {
-          "s": 1936.25,
-          "e": 1960.5625
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "05",
-      "title": "The breakouts: four more pairs",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "breakouts-open",
-      "src": "VwOiijuXEP8",
-      "bug": "youtu.be/VwOiijuXEP8",
-      "label": "Andrew & Marcus",
-      "why": "The eleven seconds that explain this whole section: villain fingertip-steeple, 'Lab culture. Death and destruction.' -- and 'Don't film me,' after which their phone spends the rest of the clip face-up on the table. Hence the audio-cards that follow.",
-      "pieces": [
-        {
-          "s": 2.7,
-          "e": 13.95
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "am-act-not-acted",
-      "src": "VwOiijuXEP8",
-      "bug": "youtu.be/VwOiijuXEP8",
-      "visual": "audio-card",
-      "names": "Andrew & Marcus",
-      "topic": "on lab culture",
-      "why": "The section thesis in their own words: 'we're supposed to be things that act and not to be acted upon -- if we start using AI too much, AI starts using us.'",
-      "pieces": [
-        {
-          "s": 74.0,
-          "e": 93.62
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "am-spatial",
-      "src": "ndbG_nHQljc",
-      "bug": "youtu.be/ndbG_nHQljc",
-      "visual": "audio-card",
-      "names": "Andrew & Marcus",
-      "topic": "on what AI still can't do",
-      "why": "Twelve-second limit report that rhymes with Audrey's 'it doesn't live in the 3D world with us' in the next part: 'it's funny how bad AI's spatial reasoning is.'",
-      "pieces": [
-        {
-          "s": 121.6,
-          "e": 132.3
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "gr-safety",
-      "src": "s5ptE--EVIk",
-      "bug": "youtu.be/s5ptE--EVIk",
-      "label": "Gage & Ronnie \u00b7 positive experiences",
-      "why": "Concrete win, on camera: AI taught them why elemental powders are explosion risks and aluminum alloys are the safer form -- learning, not delegating.",
-      "pieces": [
-        {
-          "s": 91.25,
-          "e": 115.3
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "gr-critique",
-      "src": "bIONIUZDsMk",
-      "bug": "youtu.be/bIONIUZDsMk",
-      "visual": "audio-card",
-      "names": "Gage & Ronnie",
-      "topic": "on making AI critique your ideas",
-      "why": "The most actionable pattern of the breakouts: give it a baseline and have it critique your ideas -- 'that will help you think as well while you're using AI.'",
-      "pieces": [
-        {
-          "s": 209.75,
-          "e": 232.55
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "bs-ground-up",
-      "src": "I0jG2o6wthg",
-      "bug": "youtu.be/I0jG2o6wthg",
-      "visual": "audio-card",
-      "names": "Ben & Sterling",
-      "topic": "on learning from the ground up",
-      "why": "Ben built the machine from the ground up and worries the next cohort won't get the chance -- sets up both the Xavier & Sam confession and Audrey's onboarding item.",
-      "pieces": [
-        {
-          "s": 112.7,
-          "e": 143.8
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "xs-scary",
-      "src": "rwoLhubyzZo",
-      "bug": "youtu.be/rwoLhubyzZo",
-      "label": "Xavier & Sam \u00b7 experiences with AI",
-      "why": "The worry made flesh, said out loud on camera: Claude runs the powder doser end to end; 'if you asked me to do it myself, I couldn't do it right now... that's scary.'",
-      "pieces": [
-        {
-          "s": 34.0,
-          "e": 41.55
-        },
-        {
-          "s": 63.4,
-          "e": 83.25
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "bs-xavier",
-      "src": "Ef0jl63-rLg",
-      "bug": "youtu.be/Ef0jl63-rLg",
-      "visual": "audio-card",
-      "names": "Ben & Sterling",
-      "topic": "on knowing it, not just generating it",
-      "why": "The antidote, observed in the wild: 'I could tell that Xavier really understood -- he wasn't just using AI to do the learning.'",
-      "pieces": [
-        {
-          "s": 303.9,
-          "e": 325.05,
-          "cap_last_text": "really good."
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "xs-human-element",
-      "src": "rwoLhubyzZo",
-      "bug": "youtu.be/rwoLhubyzZo",
-      "label": "Xavier & Sam \u00b7 experiences with AI",
-      "why": "Closes the section on the thesis that echoes Carl's cold open: 'if Claude is doing research, then anybody can push the button -- my research should have aspects of me in it.'",
-      "pieces": [
-        {
-          "s": 83.2,
-          "e": 107.9
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "06",
-      "title": "Meanwhile, online: Audrey & Carl",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "grunt-work-cad",
-      "bug": "49:04",
-      "why": "Audrey: figuring out what is actually grunt work -- months on generative CAD, 'and that's okay, plenty of us enjoy doing CAD.' Carl's 'that was a rant' lands underneath.",
-      "pieces": [
-        {
-          "s": 2944.5625,
-          "e": 2977.28
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "3d-world",
-      "bug": "49:57",
-      "why": "The exchange: Carl's 'very good at image analysis, spatial analysis ... it's not there yet' answered by Audrey's 'it doesn't live in the 3D world with us. It's all just code and stuff.'",
-      "pieces": [
-        {
-          "s": 2997.5625,
-          "e": 3008.5625,
-          "cap_last_text": "It's all just code and stuff."
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "balance-exchange",
-      "bug": "56:51",
-      "why": "The pair lands the culture question in two voices, entering on Audrey's 'okay, yeah, no, I can see that': 'I'm probably overusing it' / 'and probably under-using it, so we just need to...'",
-      "pieces": [
-        {
-          "s": 3411.4375,
-          "e": 3429.37
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "section",
-      "num": "07",
-      "title": "So what do we do?",
-      "dur": 2.3
-    },
-    {
-      "type": "clip",
-      "id": "youtube-famous",
-      "bug": "1:02:15",
-      "why": "Reconvene levity that explains where the channel clips came from: 'we are about to get YouTube famous.'",
-      "pieces": [
-        {
-          "s": 3735.5,
-          "e": 3742.31
-        },
-        {
-          "s": 3743.6875,
-          "e": 3749.3125,
-          "cap_last_text": "we're changing our career."
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "onboarding",
-      "bug": "1:04:55",
-      "why": "Audrey's concrete action item: teach good AI patterns during onboarding; 'we need some kind of tutorial to show people.'",
-      "pieces": [
-        {
-          "s": 3895.125,
-          "e": 3909.4375,
-          "cap_last_text": "and using it to maybe like debug stuff."
-        },
-        {
-          "s": 3920.25,
-          "e": 3926.3125
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "make-a-reel",
-      "bug": "1:05:45",
-      "why": "Sterling: 'we could make a reel of us -- this is good, this is bad.' This compilation is that artifact.",
-      "pieces": [
-        {
-          "s": 3945.9375,
-          "e": 3962.41
-        }
-      ]
-    },
-    {
-      "type": "clip",
-      "id": "thanks",
-      "bug": "1:15:22",
-      "video_fade_out": 0.7,
-      "why": "The natural close: 'Okay, we'll probably call it good there. Thanks, Audrey, Carl. Thanks, everybody.'",
-      "pieces": [
-        {
-          "s": 4522.9375,
-          "e": 4529.5
-        }
-      ]
-    },
-    {
-      "type": "card",
-      "kind": "end",
-      "dur": 5.0,
-      "lines": [
-        "All eight pair discussions:",
-        "youtube.com/@BYUVerticalCloudLab",
-        "",
-        "Full meeting (unlisted): youtu.be/f5_cQvuNKnA",
-        "github.com/vertical-cloud-lab/byu-vcl \u00b7 issue #183"
-      ]
+     "s": 2701.0,
+     "e": 2728.75
     }
-  ],
-  "sources": {
-    "VwOiijuXEP8": {
-      "title": "Thoughts of lab culture with Andrew and Marcus",
-      "pair": "Andrew & Marcus",
-      "format": "720x1280@30 portrait"
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "title",
+   "dur": 3.4,
+   "kicker": "BYU VERTICAL CLOUD LAB · GROUP MEETING · AUGUST 19, 2026",
+   "title": "AI in the lab",
+   "sub": "Highlights from the discussion"
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "01",
+   "title": "The three questions",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "three-questions",
+   "bug": "16:41",
+   "why": "Sterling reads the three prompts that structure the whole meeting (screen share). Interior trim removes silent scrolling.",
+   "pieces": [
+    {
+     "s": 1001.9375,
+     "e": 1016.08
     },
-    "ndbG_nHQljc": {
-      "title": "Positive AI experiences with Andrew and Marcus",
-      "pair": "Andrew & Marcus",
-      "format": "1280x720@30"
-    },
-    "bIONIUZDsMk": {
-      "title": "AI Lab Culture with Gage and Ronnie",
-      "pair": "Gage & Ronnie",
-      "format": "1920x1080@30"
-    },
-    "s5ptE--EVIk": {
-      "title": "Positive AI experiences with Gage and Ronnie",
-      "pair": "Gage & Ronnie",
-      "format": "1080x1920@30 portrait Short"
-    },
-    "Ef0jl63-rLg": {
-      "title": "Discussion between Ben Whitney and Sterling Baird about lab culture with AI",
-      "pair": "Ben & Sterling",
-      "format": "1080x1920@30 portrait"
-    },
-    "I0jG2o6wthg": {
-      "title": "Discussion between Ben Whitney and Sterling Baird about when AI has helped enhance learning",
-      "pair": "Ben & Sterling",
-      "format": "1080x1920@60 portrait"
-    },
-    "rwoLhubyzZo": {
-      "title": "Discussion between Xavier Zaitzeff and Sam Charles about experiences with AI in the lab",
-      "pair": "Xavier & Sam",
-      "format": "1920x1080@30"
+    {
+     "s": 1019.8125,
+     "e": 1034.02
     }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "02",
+   "title": "Exhibit A: @claude runs a sensor test",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "claude-run",
+   "bug": "18:25",
+   "why": "Concrete artifact on screen: Tim's @claude comment that picked up the enclosure, ran the Colab test, and posted results. Interior trim removes silent scrolling.",
+   "pieces": [
+    {
+     "s": 1105.625,
+     "e": 1115.5625
+    },
+    {
+     "s": 1124.5,
+     "e": 1134.0
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "03",
+   "title": "The e-bike problem",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "e-bike",
+   "bug": "26:29",
+   "why": "The meeting's signature analogy: complacency vs. competency. Interior trim (26:39-27:15) drops an aside; kept through the mountain-biking landing.",
+   "pieces": [
+    {
+     "s": 1589.5625,
+     "e": 1599.125
+    },
+    {
+     "s": 1634.75,
+     "e": 1675.65
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "e-bike-rebuttal",
+   "bug": "29:29",
+   "why": "The counterpoint, with the laugh line 'sorry, I bought it for everybody': you cannot choose not to buy this e-bike, so competent-and-fruitful use is the real question.",
+   "pieces": [
+    {
+     "s": 1769.9375,
+     "e": 1819.33
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "04",
+   "title": "Jarvis, not autopilot",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "tony-stark",
+   "bug": "30:31",
+   "why": "The Tony Stark framing: Jarvis is a support to Tony Stark, not doing Tony Stark's work.",
+   "pieces": [
+    {
+     "s": 1831.375,
+     "e": 1867.57
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "papers-balance",
+   "bug": "31:44",
+   "why": "Writing the paper yourself vs. backtracking through AI output, from 'I know the difference of myself personally' to the rhetorical 'is this right? is this right?'. Interior trim removes a garbled aside.",
+   "pieces": [
+    {
+     "s": 1904.375,
+     "e": 1929.5625
+    },
+    {
+     "s": 1936.25,
+     "e": 1960.5625
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "05",
+   "title": "The breakouts: four more pairs",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "breakouts-open",
+   "src": "VwOiijuXEP8",
+   "bug": "youtu.be/VwOiijuXEP8",
+   "label": "Andrew & Marcus",
+   "why": "The eleven seconds that explain this whole section: villain fingertip-steeple, 'Lab culture. Death and destruction.' -- and 'Don't film me,' after which their phone spends the rest of the clip face-up on the table. Hence the audio-cards that follow.",
+   "pieces": [
+    {
+     "s": 2.7,
+     "e": 13.95
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "am-act-not-acted",
+   "src": "VwOiijuXEP8",
+   "bug": "youtu.be/VwOiijuXEP8",
+   "visual": "audio-card",
+   "names": "Andrew & Marcus",
+   "topic": "on lab culture",
+   "why": "The section thesis in their own words: 'we're supposed to be things that act and not to be acted upon -- if we start using AI too much, AI starts using us.'",
+   "pieces": [
+    {
+     "s": 74.0,
+     "e": 93.62
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "am-spatial",
+   "src": "ndbG_nHQljc",
+   "bug": "youtu.be/ndbG_nHQljc",
+   "visual": "audio-card",
+   "names": "Andrew & Marcus",
+   "topic": "on what AI still can't do",
+   "why": "Twelve-second limit report that rhymes with Audrey's 'it doesn't live in the 3D world with us' in the next part: 'it's funny how bad AI's spatial reasoning is.'",
+   "pieces": [
+    {
+     "s": 121.6,
+     "e": 132.3
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "gr-safety",
+   "src": "s5ptE--EVIk",
+   "bug": "youtu.be/s5ptE--EVIk",
+   "label": "Gage & Ronnie · positive experiences",
+   "why": "Concrete win, on camera: AI taught them why elemental powders are explosion risks and aluminum alloys are the safer form -- learning, not delegating.",
+   "pieces": [
+    {
+     "s": 91.25,
+     "e": 115.3
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "gr-critique",
+   "src": "bIONIUZDsMk",
+   "bug": "youtu.be/bIONIUZDsMk",
+   "visual": "audio-card",
+   "names": "Gage & Ronnie",
+   "topic": "on making AI critique your ideas",
+   "why": "The most actionable pattern of the breakouts: give it a baseline and have it critique your ideas -- 'that will help you think as well while you're using AI.'",
+   "pieces": [
+    {
+     "s": 209.75,
+     "e": 232.55
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "bs-ground-up",
+   "src": "I0jG2o6wthg",
+   "bug": "youtu.be/I0jG2o6wthg",
+   "visual": "audio-card",
+   "names": "Ben & Sterling",
+   "topic": "on learning from the ground up",
+   "why": "Ben built the machine from the ground up and worries the next cohort won't get the chance -- sets up both the Xavier & Sam confession and Audrey's onboarding item.",
+   "pieces": [
+    {
+     "s": 112.7,
+     "e": 143.8
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "xs-scary",
+   "src": "rwoLhubyzZo",
+   "bug": "youtu.be/rwoLhubyzZo",
+   "label": "Xavier & Sam · experiences with AI",
+   "why": "The worry made flesh, said out loud on camera: Claude runs the powder doser end to end; 'if you asked me to do it myself, I couldn't do it right now... that's scary.'",
+   "pieces": [
+    {
+     "s": 34.0,
+     "e": 41.55
+    },
+    {
+     "s": 63.4,
+     "e": 83.25
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "bs-xavier",
+   "src": "Ef0jl63-rLg",
+   "bug": "youtu.be/Ef0jl63-rLg",
+   "visual": "audio-card",
+   "names": "Ben & Sterling",
+   "topic": "on knowing it, not just generating it",
+   "why": "The antidote, observed in the wild: 'I could tell that Xavier really understood -- he wasn't just using AI to do the learning.'",
+   "pieces": [
+    {
+     "s": 303.9,
+     "e": 325.05,
+     "cap_last_text": "really good."
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "xs-human-element",
+   "src": "rwoLhubyzZo",
+   "bug": "youtu.be/rwoLhubyzZo",
+   "label": "Xavier & Sam · experiences with AI",
+   "why": "Closes the section on the thesis that echoes Carl's cold open: 'if Claude is doing research, then anybody can push the button -- my research should have aspects of me in it.'",
+   "pieces": [
+    {
+     "s": 83.2,
+     "e": 107.9
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "06",
+   "title": "Meanwhile, online: Audrey & Carl",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "grunt-work-cad",
+   "bug": "49:04",
+   "why": "Audrey: figuring out what is actually grunt work -- months on generative CAD, 'and that's okay, plenty of us enjoy doing CAD.' Carl's 'that was a rant' lands underneath.",
+   "pieces": [
+    {
+     "s": 2944.5625,
+     "e": 2977.28
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "3d-world",
+   "bug": "49:57",
+   "why": "The exchange: Carl's 'very good at image analysis, spatial analysis ... it's not there yet' answered by Audrey's 'it doesn't live in the 3D world with us. It's all just code and stuff.'",
+   "pieces": [
+    {
+     "s": 2997.5625,
+     "e": 3008.5625,
+     "cap_last_text": "It's all just code and stuff."
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "balance-exchange",
+   "bug": "56:51",
+   "why": "The pair lands the culture question in two voices, entering on Audrey's 'okay, yeah, no, I can see that': 'I'm probably overusing it' / 'and probably under-using it, so we just need to...'",
+   "pieces": [
+    {
+     "s": 3411.4375,
+     "e": 3429.37
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "section",
+   "num": "07",
+   "title": "So what do we do?",
+   "dur": 2.3
+  },
+  {
+   "type": "clip",
+   "id": "youtube-famous",
+   "bug": "1:02:15",
+   "why": "Reconvene levity that explains where the channel clips came from: 'we are about to get YouTube famous.'",
+   "pieces": [
+    {
+     "s": 3735.5,
+     "e": 3742.31
+    },
+    {
+     "s": 3743.6875,
+     "e": 3749.3125,
+     "cap_last_text": "we're changing our career."
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "onboarding",
+   "bug": "1:04:55",
+   "why": "Audrey's concrete action item: teach good AI patterns during onboarding; 'we need some kind of tutorial to show people.'",
+   "pieces": [
+    {
+     "s": 3895.125,
+     "e": 3909.4375,
+     "cap_last_text": "and using it to maybe like debug stuff."
+    },
+    {
+     "s": 3920.25,
+     "e": 3926.3125
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "make-a-reel",
+   "bug": "1:05:45",
+   "why": "Sterling: 'we could make a reel of us -- this is good, this is bad.' This compilation is that artifact.",
+   "pieces": [
+    {
+     "s": 3945.9375,
+     "e": 3962.41
+    }
+   ]
+  },
+  {
+   "type": "clip",
+   "id": "thanks",
+   "bug": "1:15:22",
+   "video_fade_out": 0.7,
+   "why": "The natural close: 'Okay, we'll probably call it good there. Thanks, Audrey, Carl. Thanks, everybody.'",
+   "pieces": [
+    {
+     "s": 4522.9375,
+     "e": 4529.5
+    }
+   ]
+  },
+  {
+   "type": "card",
+   "kind": "end",
+   "dur": 5.0,
+   "lines": [
+    "All eight pair discussions:",
+    "youtube.com/@BYUVerticalCloudLab",
+    "",
+    "Full meeting (unlisted): youtu.be/f5_cQvuNKnA",
+    "github.com/vertical-cloud-lab/byu-vcl · issue #183"
+   ]
   }
+ ],
+ "sources": {
+  "VwOiijuXEP8": {
+   "title": "Thoughts of lab culture with Andrew and Marcus",
+   "pair": "Andrew & Marcus",
+   "format": "720x1280@30 portrait"
+  },
+  "ndbG_nHQljc": {
+   "title": "Positive AI experiences with Andrew and Marcus",
+   "pair": "Andrew & Marcus",
+   "format": "1280x720@30"
+  },
+  "bIONIUZDsMk": {
+   "title": "AI Lab Culture with Gage and Ronnie",
+   "pair": "Gage & Ronnie",
+   "format": "1920x1080@30"
+  },
+  "s5ptE--EVIk": {
+   "title": "Positive AI experiences with Gage and Ronnie",
+   "pair": "Gage & Ronnie",
+   "format": "1080x1920@30 portrait Short"
+  },
+  "Ef0jl63-rLg": {
+   "title": "Discussion between Ben Whitney and Sterling Baird about lab culture with AI",
+   "pair": "Ben & Sterling",
+   "format": "1080x1920@30 portrait"
+  },
+  "I0jG2o6wthg": {
+   "title": "Discussion between Ben Whitney and Sterling Baird about when AI has helped enhance learning",
+   "pair": "Ben & Sterling",
+   "format": "1080x1920@60 portrait"
+  },
+  "rwoLhubyzZo": {
+   "title": "Discussion between Xavier Zaitzeff and Sam Charles about experiences with AI in the lab",
+   "pair": "Xavier & Sam",
+   "format": "1920x1080@30"
+  }
+ }
 }

@@ -59,7 +59,7 @@ but the credentials are worth rotating regardless.
 | `audrey-carl-clip.vtt` | Captions re-timed for the extracted Audrey & Carl discussion clip |
 | [`highlights/`](highlights/) | Edited 9:57 highlights compilation of the meeting + all eight pair discussions — EDL, render script, captions (incl. whisper captions for the seven breakout clips), chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
 | [`reels/`](reels/) | Seven vertical (1080×1920) "reels": one <60 s cut per breakout session, a group-discussion reel, and an everything reel — filler-word micro-edits, word-synced on-screen text (next-episode-preview style); EDL + renderer + captions (MP4s on the draft release and the Pi) |
-| [`best-practices/`](best-practices/) | Evidence review of what the literature supports for these two formats (Edison `LITERATURE_HIGH`, 50 citations) plus a measured audit of the current renders against it — what holds up, and ten specific findings |
+| [`best-practices/`](best-practices/) | Evidence review of what the literature supports for these two formats (Edison `LITERATURE_HIGH`, 50 citations) plus a measured audit of the current renders against it — what holds up, ten specific findings, and what was done about each of them |
 | `whisper-diarized-transcript.txt` | Whisper re-transcription with per-voice speaker attribution (`[HH:MM:SS] Name: text`) |
 | `whisper-diarized-transcript.vtt` | Same, as WebVTT captions with `<v Name>` voice tags |
 | `whisper-diarized-transcript.json` | Same, structured (display name, cluster id, times, text per utterance) |
@@ -68,6 +68,9 @@ but the credentials are worth rotating regardless.
 | `diarization-timeline.png` | Who-spoke-when timeline chart |
 | `transcribe_diarize.py` | The pipeline that produced the above (reproducible; see below) |
 | `speaker-names.json` | Cluster-id → display-name mapping used for the final render |
+| [`CONSENT.md`](CONSENT.md) | Who appears in which artifact and how, what the publication ask has to disclose, the tiers, and the process — nothing is published and nobody has been asked yet |
+| `consent-ledger.json` | The same, machine-readable, for recording each answer as it comes in |
+| `pair-clip-framing.jpg` | Four frames sampled across each of the seven pair clips: five of the seven are ceiling/wall/floor throughout, which is why those bites render as audio cards |
 | `screen-share-map.jpg` | Four frames showing the shot changes: room camera, the three questions on the screen share, PR #60 with Claude's run report, room camera again |
 | `speaker-map-evidence.json` | Per-cluster evidence (talk time, Teams-speaker overlap, chapters, sample quotes) behind that mapping |
 

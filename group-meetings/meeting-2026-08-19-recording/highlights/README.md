@@ -8,6 +8,49 @@ Cut boundaries are word-aligned to faster-whisper word onsets (re-cut 2026-08-24
 the first version, placed from Teams cue times, clipped the start of most segments'
 opening sentence; the breakout bites were word-aligned from the start).
 
+## 2026-08-29 — the audio, and the captions
+
+Two of the findings in [`../best-practices/`](../best-practices/) landed on this cut, and
+both are fixed here. **No cut boundary, caption text or chapter moved** — this is a
+delivery change.
+
+**The audio was the worst in the set, on the artifact most likely to be watched by someone
+outside the lab** (finding 1). It shipped at **16 kHz mono, 96 kbps, undenoised**: a 16 kHz
+sample rate is an 8 kHz hard ceiling on bandwidth by Nyquist — telephone-grade, all
+sibilance gone — and the noise-reduction chain written for the [reels](../reels/) was never
+ported across. That sits directly on the strongest experimental result in the whole review:
+degraded audio lowers judged credibility (*d* = 0.32–0.55) and measurably impairs memory for
+the facts being stated (*d* = 0.44), with listeners attributing the fault to the speaker
+rather than to the microphone.
+
+Delivery is now **48 kHz, 160 kbps**, and the reels' chain (85 Hz high-pass → RNNoise →
+`afftdn` → 3 kHz presence → 12 kHz low-pass → gentle 2.5:1 compression) runs ahead of the
+loudness normalization. Two details that matter:
+
+- the loudness is **measured on the denoised signal**, not on the raw cut — measuring
+  before denoising leaves the correction pass working from the wrong numbers;
+- each piece reads a **2 s pre-roll** of continuous source audio ahead of its cut, trimmed
+  off before normalization, so the adaptive stages are settled before the first frame
+  instead of adapting inside the shot.
+
+Measured on this recording, between-word level:
+
+| | raw | denoised |
+|---|---|---|
+| room / group discussion (2701–2727 s) | −54.1 dBFS | **−66.6 dBFS** |
+| Teams side / Audrey (2949–2966 s) | −62.2 dBFS | **−73.2 dBFS** |
+
+**The sidecar captions were not usable as captions** (findings 3 and 4). Cues could overlap
+their predecessor, lines were unwrapped, and no cue identified the speaker although the
+burned-in render does. The writer now clamps every cue to end before the next begins, wraps
+to ≤ 42 characters over at most two lines, and emits `<v Name>` where the speaker is
+known — WCAG 1.2.2 requires captions to identify who is talking.
+
+The remaining finding on this cut is **length**: 9:57 is past the ~6 min median-engagement
+ceiling. Chapters are the documented mitigation and this cut has had them from the start,
+so it is a managed trade rather than a defect; a ~6 min variant is a matter of dropping
+items from the EDL.
+
 ![Contact sheet: one frame per segment](preview.jpg)
 
 ## Where the video lives
@@ -119,6 +162,10 @@ rather than airing 25-second ceiling shots; the two clips with real framing
 
 ## Known limitations
 
+- The cut keeps whole passages rather than micro-editing fillers out, which is deliberate:
+  the review's split is aggressive disfluency removal in the reels, conservative in the
+  long-form, where authenticity and social presence carry more of the value. How the
+  material is edited is disclosed in [`../CONSENT.md`](../CONSENT.md).
 - Parts 03–04 (e-bike / Jarvis, ~2:00–4:30) sit on the static GitHub-discussion screen
   share, because that is what the recording shows while the room talks; the room is only
   visible in the small webcam sidebar.
