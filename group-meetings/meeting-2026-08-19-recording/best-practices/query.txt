@@ -1,0 +1,93 @@
+I am producing two families of video derived from a single 75-minute research-group
+meeting recording (a materials-science lab discussing how its members use AI in their
+day-to-day lab work), and I want the evidence base for the editing and presentation
+choices. Please do a rigorous literature review and give me design principles with
+citations, effect sizes where they exist, and explicit notes where the evidence is weak,
+contested, or absent.
+
+The two formats:
+
+(A) Short vertical "reels" (1080x1920, 45-90 seconds, plus one 4.5-minute long one),
+    each built from tightly micro-edited soundbites of real people speaking. Filler words,
+    false starts and dead air are removed at word-level boundaries. The speaker's quote
+    appears on screen word-by-word, synchronized to their voice (a "karaoke"/kinetic-typography
+    reveal), on a black background, with a grayed-out speaker-name label. Some bites are
+    audio-only source, so they play as text on black with a waveform; others play real
+    footage or a cropped screen share.
+
+(B) A ~10-minute long-form highlights compilation of the same meeting, with titled
+    chapters, burned captions and full-frame footage.
+
+Audience: (1) internal - members of this lab and incoming students, watched on laptops and
+phones; (2) external - a public YouTube channel used for science communication and lab
+recruiting.
+
+Specific questions:
+
+1. VIDEO LENGTH AND ATTENTION. What does the empirical literature say about optimal length
+   and viewer retention for (a) educational/instructional video and (b) short-form vertical
+   social video? Guo, Kim & Rubin's MOOC engagement work and anything that has replicated,
+   extended or contradicted it. Is there evidence on where retention actually drops, and
+   whether "shorter is better" holds for informational (non-entertainment) content? What is
+   known about hooks / the first 3 seconds, and does that evidence come from platform
+   analytics or controlled study?
+
+2. ON-SCREEN TEXT AND THE REDUNDANCY PRINCIPLE. This is my biggest uncertainty. Mayer's
+   redundancy principle in the Cognitive Theory of Multimedia Learning suggests that
+   presenting identical spoken narration AND on-screen text can harm learning. But captions
+   and subtitles have their own literature showing comprehension and accessibility benefits
+   (Gernsbacher; work on same-language subtitling, L2 learners, deaf and hard-of-hearing
+   viewers, and sound-off mobile viewing). How is this tension resolved in current evidence?
+   Does the answer differ for (a) verbatim full-sentence captions, (b) progressive
+   word-by-word / kinetic-typography reveal synchronized to speech, (c) short keyword or
+   phrase emphasis? Is there direct experimental evidence on animated/kinetic captions
+   versus static blocks - do they help attention or add extraneous load? What about the
+   split-attention and spatial-contiguity principles when text sits over footage?
+
+3. SEGMENTING, SIGNALING, COHERENCE. Evidence for user-paced segmentation and chapter
+   markers in long-form video. Evidence on signaling cues (highlighting, titles, speaker
+   labels). The coherence principle argues for stripping "seductive details" - how does that
+   apply to decorative motion like a live audio waveform, or to background music? Is there
+   evidence that music helps or hurts comprehension of speech-dense informational video?
+
+4. MICRO-EDITING AND "JUMP CUT" DENSITY. Is there any research on the effect of high cut
+   rates, removal of disfluencies, and jump-cut-heavy editing on comprehension, perceived
+   credibility, and viewer fatigue? Note that filled pauses ("um", "uh") have a documented
+   role in speech comprehension and prediction (Fox Tree, Corley & Stewart, Brennan &
+   Schober) - what is the evidence that removing them helps or hurts a listener? Does it
+   change perceived speaker competence or authenticity?
+
+5. AUTHENTICITY, TALKING HEADS AND SOCIAL PRESENCE. Evidence on whether seeing a speaker's
+   face matters (image principle / embodiment principle / social agency), including the
+   findings that a talking head does not always help. For audio-only source where I can only
+   show text on black, what does the literature suggest I lose, and what mitigates it?
+   Evidence on informal, unpolished, "authentic" production versus high production value for
+   credibility and engagement, especially in science communication.
+
+6. SPEECH INTELLIGIBILITY AND AUDIO. Evidence on the effect of background noise, reverb and
+   SNR on comprehension and on perceived credibility of a speaker/message (including the
+   processing-fluency literature where poor audio quality lowers judgments of the research
+   itself). Guidance on target SNR and loudness normalization for speech-led video, and any
+   evidence on artifacts from aggressive noise suppression (e.g. RNNoise-style ML denoisers)
+   harming intelligibility of quiet speech.
+
+7. ACCESSIBILITY AND ETHICS. Current standards and evidence for caption legibility (size,
+   contrast, line length, reading rate in characters per second, safe areas on vertical
+   video), and for accessible video generally (WCAG 2.2 / EN 301 549). Also: the research
+   ethics and consent literature for recording and publishing identifiable people in an
+   academic group setting - what is considered good practice for consent to publish clips of
+   colleagues and students, especially where a power differential exists between a PI and
+   their students, and where one participant on the recording says "don't film me"? What is
+   good practice for quoting people accurately when disfluency removal and micro-cuts change
+   what a sentence sounds like?
+
+8. SCIENCE COMMUNICATION ON SHORT-FORM PLATFORMS. What is actually known about the
+   effectiveness of TikTok/Reels/Shorts for research dissemination, public engagement and
+   student recruitment? Evidence on credibility, misinformation risk, audience reached, and
+   whether short-form science content changes attitudes or knowledge. Any evidence specific
+   to universities or research labs posting internal-culture content.
+
+Please prioritize peer-reviewed empirical work and meta-analyses, distinguish clearly
+between controlled experimental evidence and platform/industry guidance or marketing
+claims, and flag any commonly repeated "best practice" that turns out to be unsupported.
+Where possible give me quantitative, actionable thresholds I can apply to an edit.

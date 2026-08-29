@@ -163,6 +163,16 @@ pre-cut media, where the manifest maps `"<reel-id>__<item-id>"` to `{audio, vide
 and pair-clip footage one extra H.264 generation. Re-running with the Pi attached (or the
 clips re-downloaded) will render those items from the originals with no change to the EDL.
 
+## How this set measures up against the literature
+
+[`../best-practices/`](../best-practices/) holds an evidence review of these formats and a
+measured audit of these renders against it. In short: no background music, chapters on the
+long cuts, speaker labels, a cut rate of 0.12–0.24 cuts/s (comfortably inside the studied
+band), and text-on-black for audio-only bites all land on the right side of the evidence.
+The findings worth acting on are the silent 2.4–3.0 s title card ahead of every hook, 53 %
+of sidecar caption cues overlapping their predecessor, caption lines up to 81 characters,
+and a quote block that reaches into the platform UI zones at four lines.
+
 ## Known limitations
 
 - The two voices within a pair are not name-distinguished (the label carries the pair);
