@@ -58,10 +58,11 @@ items from the EDL.
 Video files are deliberately **not** committed to git (see [`../README.md`](../README.md)).
 
 - **Draft GitHub release** [`meeting-2026-08-19-recording`](https://github.com/vertical-cloud-lab/byu-vcl/releases):
-  `ai-in-the-lab-highlights-20260819.mp4` (85 MB, 1920×1080@16fps) plus the sidecar
-  captions and chapters.
-- **Raspberry Pi** (stream-cam Pi): `~/vcl-meeting-recordings/2026-08-19/highlights/`;
-  the seven downloaded breakout clips also live there under `~/vcl-ai-clips/`.
+  `ai-in-the-lab-highlights-20260819.mp4` (86 MB, 1920×1080@16fps, 48 kHz/160 kbps audio)
+  plus the sidecar captions and chapters.
+- **Raspberry Pi** (stream-cam Pi): `~/vcl-meeting-recordings/2026-08-19/highlights/` —
+  refreshed 2026-08-29, sha256-verified; the seven downloaded breakout clips also live
+  there under `~/vcl-ai-clips/`.
 
 ## What's in the cut
 

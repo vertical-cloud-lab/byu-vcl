@@ -213,8 +213,11 @@ Video files are deliberately **not** committed to git (see [`../README.md`](../R
 
 - **Draft GitHub release** [`meeting-2026-08-19-recording`](https://github.com/vertical-cloud-lab/byu-vcl/releases):
   all seven MP4s + caption sidecars.
-- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — *not refreshed for v2
-  or v3*; neither runner had tailnet (see below). The release copies are current.
+- **Stream-cam Pi**: `~/vcl-meeting-recordings/2026-08-19/reels/` — **current as of v4**
+  (2026-08-29), sha256-verified after a rate-capped transfer. It had been stale since v1,
+  because the v2 and v3 runners had no tailnet; this one did, which also means v4's pair
+  items were rendered from the original clips in `~/vcl-ai-clips/` rather than recovered
+  from a previous release render.
 
 ## Files here
 
