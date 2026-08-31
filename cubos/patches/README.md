@@ -123,12 +123,35 @@ Worth sending to `Ursa-Laboratories/CubOS` alongside the boot-banner fix. Not fi
 
 ## `tipped-hover-clamp-and-ceiling-travel.patch`
 
-**Written and offline-validated 2026-08-25. NOT applied to the Pi** — unlike the two
-patches above it changes motion planning for *every* protocol, so applying it is a
-deliberate decision, not a bug fix to slip in. Apply it when you want literal
-`mix:` / `aspirate:` / `transfer:` / `drop_tip:` commands runnable with a tip on
-(they also need the pipette brought online — `offline: false` + a real port — before
-any liquid actually moves).
+**Written and offline-validated 2026-08-25. APPLIED to the Pi on 2026-08-31**, at
+@benwhitney5463's request on PR #171, after the campaign-33 video showed the head
+travelling ~16 mm lower than the jogged `safe_z` and knocking caps off the
+electromagnet. Unlike the two patches above it changes motion planning for *every*
+protocol, which is why it sat unapplied for six days.
+
+It is what makes `cnc.safe_z: 115.0` possible on this machine. Without it a tipped
+pipette must hover at `safe_z + 35`, so `safe_z` is capped at `z_max - 35 = 89`, and
+the capper — which shares `safe_z` — is dragged down with it. The clamp decouples
+them: capper legs ride at gantry 99.065 while the tipped hover clamps to gantry 124.
+
+Confirmed live in the rev-2 trio's mock trace, once per tipped engage:
+
+```
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the
+carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this
+plane clears all deck contents.
+```
+
+**⚠️ If this patch is ever reverted (`git apply -R`), `cnc.safe_z` in
+`configs/gantry/cub_xl_ben_pipette_capper.yaml` must go back to ≤ 89.0** or nothing
+with a tip attached will validate. The two numbers are coupled.
+
+It does *not* clamp an explicit `move` target or `travel_z` you wrote by hand — those
+stay hard requirements, deliberately. See the rev-2 `pipette_test.yaml` header for the
+one place that bites.
+
+Liquid still needs the pipette's plunger fixed independently: bench-tested 2026-08-31,
+the stepper only turns one way (`results/pipette_bench_20260831/`).
 
 ### Symptom
 

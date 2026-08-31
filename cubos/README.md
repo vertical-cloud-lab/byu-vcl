@@ -237,3 +237,29 @@ hovers at tip-end Z 87 / gantry 122 instead of being rejected at 149.
   `cubos` install suffices — no vendor SDK extra needed for motion-only runs.
 - The Pi's OT-2 overhead camera stream (port 8000) kept running throughout;
   CubOS's API port 8742 remains free for the Operator UI later.
+
+## 2026-08-31 (rev 2) — hover-clamp patch applied, plunger root-caused
+
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` is now **applied** to
+`~/CubOS` on the Pi (all three local patches live). That is what lets
+`cnc.safe_z` rise from 87 to **115**, which is the fix for both symptoms in
+the campaign-33 video: the bare nozzle now rides at deck 99.065 during
+capper legs instead of 71.065, and a gripped cap clears its neighbours by
+30 mm instead of 6. `passive_shadow` reports **0** interferences nominally
+*and* with `--tip-stuck` — the first time the tip-stuck case has been clean.
+
+**The plunger only turns one way.** Bench-tested directly against the
+Arduino: `MOVE_TO` executes only when the target is above the current
+position, any retraction returns `OK` in 0.11 s without moving, and `HOME`
+zeroes the counter rather than seeking the endstop. That is the complete
+explanation for campaign 33's blowout and drop_tip doing nothing — `aspirate`
+ran, left the plunger at pos 36, and every later command was a retraction.
+It is a DIR-line/firmware fault, not CubOS, not the shared `/dev/ttyACM0`,
+and no config change works around it. Full evidence and the command matrix:
+`results/pipette_bench_20260831/README.md`.
+
+The rev-2 trio fails validation on one number — a tipped `move` at
+`travel_z: 100` resolves to gantry 135, past `z_max` 124. `travel_z: 89` in
+the two places that name the pipette makes it PASS, 18 steps; the corrected
+copy is in that same results directory. Not run: Ben asked for the bench
+test only.

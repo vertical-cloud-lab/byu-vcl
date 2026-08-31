@@ -32,22 +32,34 @@ Usage
 
 Reading the output
 ------------------
-`--move` walks HOME -> MOVE_TO 5 -> MOVE_TO 10 -> MOVE_TO 0 -> ASPIRATE 1.0,
-printing the firmware's reported position and the wall-clock round trip for
-each. Compare the `dt` column against the commanded distance:
+`--move` tests DIRECTION explicitly, because that is what actually broke on
+this machine: it steps the plunger forward in small increments and then asks
+for the same positions back, comparing the round trips. Motion on this
+firmware costs a very consistent 0.673 s/mm, so a command that returns in
+~0.1 s did not move regardless of what it replied.
 
-  * dt roughly constant (~0.1 s) whatever the distance
-        -> the firmware is parsing and acking but not stepping. Look at the
-           STEP/DIR/ENABLE wiring, the driver's enable polarity, and motor
-           power (logic power comes over USB and will happily enumerate with
-           the motor supply off).
-  * HOME returns in a couple of seconds
-        -> a real homing pass is ~35 s of travel. A fast HOME means the
-           endstop is reading already-triggered: check the switch, its
-           pull-up, and whether the logic is inverted.
-  * dt scales with distance and `pos` tracks
-        -> the plunger is fine and the problem is upstream, in the
-           mm/uL calibration (see the max_vol note below).
+  * forward moves scale with distance, backward moves all return ~0.1 s
+        -> the stepper only turns one way. Check the DIR line from the MCU to
+           the driver, the driver's direction input, and the firmware's
+           retract path (a `if (target > pos)` guard or an unsigned step
+           count produces exactly this). MEASURED ON THE CubXL 2026-08-31.
+  * every round trip ~0.1 s whatever the distance
+        -> the firmware is parsing and acking but not stepping at all. Look
+           at STEP/ENABLE wiring, driver enable polarity, and motor power
+           (logic power comes over USB and will happily enumerate with the
+           motor supply off).
+  * HOME returns in ~0.5 s from a non-zero position
+        -> HOME is zeroing the counter, not seeking an endstop. A real
+           retraction of N mm cannot cost less than N * 0.673 s. Also check
+           the endstop switch, its pull-up, and whether the logic is inverted.
+  * everything scales with distance in both directions
+        -> the plunger is fine and the problem is upstream, in the mm/uL
+           calibration (see the max_vol note below).
+
+BOUNDED TRAVEL: this walks a total of +3 mm and asks for it back. It does NOT
+drive the plunger further and further out -- an earlier version did, and on a
+firmware that never retracts it walked the plunger ~85 mm into its mechanical
+stop before anyone noticed. Keep any edit to this sequence bounded.
 
 The `max_vol` field in the STATUS reply is the firmware's own idea of the
 pipette. If it disagrees with `pipette_model` in the gantry YAML, the
@@ -155,27 +167,49 @@ def main(argv=None) -> int:
 
         print()
         print("Commanding plunger motion. Watch the plunger, not the screen.")
-        print("A real HOME is ~35 s of travel; a 2 s HOME means the endstop")
-        print("is reading already-triggered.")
-        _step(link, "HOME", CMD_HOME)
-        d5 = _step(link, "MOVE_TO 5.0 mm", CMD_MOVE_TO, 5.0, FIRMWARE_DEFAULT_SPEED)
-        d10 = _step(link, "MOVE_TO 10.0 mm", CMD_MOVE_TO, 10.0, FIRMWARE_DEFAULT_SPEED)
-        d0 = _step(link, "MOVE_TO 0.0 mm", CMD_MOVE_TO, 0.0, FIRMWARE_DEFAULT_SPEED)
-        _step(link, "ASPIRATE 1.0 mm", CMD_ASPIRATE, 1.0, FIRMWARE_DEFAULT_SPEED)
-        _step(link, "DISPENSE 1.0 mm", CMD_DISPENSE, 1.0, FIRMWARE_DEFAULT_SPEED)
+        print("Bounded to +3 mm of forward travel, then asked for it back.")
+        print("This firmware moves at ~0.673 s/mm; ~0.1 s means it did not.")
+        print()
+
+        print("  -- HOME --")
+        home_cold = _step(link, "HOME (cold)", CMD_HOME)
+
+        print("  -- forward: does distance scale? --")
+        f1 = _step(link, "MOVE_TO 1.0 mm", CMD_MOVE_TO, 1.0, FIRMWARE_DEFAULT_SPEED)
+        _step(link, "MOVE_TO 3.0 mm", CMD_MOVE_TO, 3.0, FIRMWARE_DEFAULT_SPEED)
+
+        print("  -- HOME from a non-zero position: does it retract? --")
+        home_warm = _step(link, "HOME (from 3.0)", CMD_HOME)
+
+        print("  -- backward: the same positions, asked for in reverse --")
+        _step(link, "MOVE_TO 3.0 mm", CMD_MOVE_TO, 3.0, FIRMWARE_DEFAULT_SPEED)
+        b1 = _step(link, "MOVE_TO 1.0 mm (back)", CMD_MOVE_TO, 1.0, FIRMWARE_DEFAULT_SPEED)
+        b0 = _step(link, "MOVE_TO 0.0 mm (back)", CMD_MOVE_TO, 0.0, FIRMWARE_DEFAULT_SPEED)
+
+        moved = 0.4          # s -- anything below this did not turn the motor
+        fwd_ok = f1 > moved
+        back_ok = max(b1, b0) > moved
 
         print()
-        spread = max(d5, d10, d0) - min(d5, d10, d0)
-        if spread < 0.25:
-            print(f"VERDICT: MOVE_TO round trips differ by only {spread:.2f}s across")
-            print("  5 mm / 10 mm / 0 mm targets. The firmware is acking without")
-            print("  stepping -- look at STEP/DIR/ENABLE wiring, driver enable")
-            print("  polarity, and motor power, not at CubOS.")
+        if fwd_ok and not back_ok:
+            print("VERDICT: forward moves take {:.2f}s but every backward move".format(f1))
+            print("  returns in ~{:.2f}s. The stepper only turns ONE WAY.".format(max(b1, b0)))
+            print("  Check the DIR line to the driver and the firmware's retract")
+            print("  path -- not CubOS, and not the serial link.")
+        elif not fwd_ok and not back_ok:
+            print("VERDICT: nothing moved in either direction (all round trips")
+            print("  ~0.1 s). The firmware is acking without stepping -- look at")
+            print("  STEP/ENABLE wiring, driver enable polarity, and motor power.")
         else:
-            print(f"VERDICT: MOVE_TO round trips vary by {spread:.2f}s with distance,")
-            print("  so the stepper is being driven. If the pipette still does not")
-            print("  dispense, the problem is the mm/uL calibration or the")
-            print("  mechanical coupling to the plunger.")
+            print("VERDICT: the plunger moves in both directions. If it still")
+            print("  does not dispense, the problem is the mm/uL calibration or")
+            print("  the mechanical coupling to the plunger.")
+
+        if home_warm < moved < home_cold or home_warm < 0.9:
+            print()
+            print("ALSO: HOME returned in {:.2f}s from pos 3.0 -- too fast to".format(home_warm))
+            print("  retract 3 mm at 0.673 s/mm. HOME is zeroing the counter,")
+            print("  not seeking the endstop, so it is not a recovery path.")
         return 0
     finally:
         link.close()
