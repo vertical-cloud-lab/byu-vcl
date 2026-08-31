@@ -127,6 +127,36 @@ the vial column. `cub_xl_ben_pipette_capper_tipsafe.yaml` plus
 `patches/tipped-hover-clamp-and-ceiling-travel.patch` remain the alternative
 route (0 interferences even with a stuck tip) but were not needed.
 
+## Plunger + travel-height diagnosis (2026-08-31, read-only — nothing commanded)
+
+`results/pipette_diagnosis_20260831/` answers three things Ben raised after
+watching campaign 33 run.
+
+**The head travels below the `safe_z` you jog to, by `depth`.** CubOS commands
+`gantry_z = safe_z + depth`, and the jog widget shows raw WPos with no
+instrument offset. At `safe_z: 87` with the capper's `depth: -15.935`, every
+capper leg runs at gantry **71.065** — 15.935 mm lower than a jog to 87. The
+bare nozzle (`depth: 0.0`) is the lowest thing on the head and rides at that
+same deck Z. Held-cap clearance over neighbouring caps works out to
+`safe_z − 81`, so **lowering `safe_z` makes both the rail proximity and the
+cap knock-off worse**, not better.
+
+**`working_volume.z_max` must stay ≤ 124.** The controller still reports
+`$132 = 124.000` with `$20 = 1`; reachable deck-frame Z is `[0, 124]`. Unpatched,
+the tipped hover pins `safe_z ≤ z_max − 35`, so 89 is the ceiling. Going higher
+needs `patches/tipped-hover-clamp-and-ceiling-travel.patch`.
+
+**The plunger's absolute moves are no-ops.** `aspirate` and `blowout` share an
+identical preceding 47 mm descent; the aspirate step took 8.068 s and the
+blowout 2.216 s. Command 12 (relative ASPIRATE) runs the stepper; command 11
+(absolute MOVE_TO — which is what `blowout`, `drop_tip` and `pick_up_tip` all
+use) returns in ~0.1 s for targets of 0, 5, 7 and 10 mm alike. The plunger was
+also never homed: instrument connect took 12.4 s for both instruments against
+a ~35 s homing pass, and `OpentronsPipette.home()` sets `_is_homed = True`
+without re-reading the firmware. `tools/pipette_bench_check.py` isolates the
+plunger from the protocol engine to separate wiring from firmware; it is
+read-only unless given `--move`.
+
 ## pipette_test protocol (revised 2026-08-28, NOT run — do not run as attached)
 
 `configs/protocol/vcl/pipette_test.yaml` and
