@@ -1,52 +1,74 @@
-# ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the Ursa
-# 2x15 tip rack, for the CubXL as RE-CALIBRATED 2026-08-27.
+# ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the 2x15 tip
+# rack, for the CubXL as re-calibrated 2026-08-27/28.
 #
-# Attached to PR #171 on 2026-08-28 and committed with the body exactly as
-# sent (the parsed YAML is verified identical to the attachment; only this
-# header was added). Supersedes sterling_6vials_tiprack.yaml, which describes
-# the pre-recalibration deck -- do not mix them.
+# Attached to PR #171 on 2026-08-31 and committed with the body exactly as
+# sent EXCEPT the tip-rack anchor, which is converted from the reference
+# instrument's frame into the pipette's deck frame (below). Everything else
+# -- all six vials, the rack's geometry block, drop_z: null -- is byte-for-
+# byte Ben's. RUN ON HARDWARE 2026-08-31, 18/18 steps, campaign 33.
 #
-# WHAT MOVED vs. sterling_6vials_tiprack.yaml
-#   vials  x 187 -> 206, y 26/59/92/125/158/191 -> 27/60/93/126/159/192
-#   rack   unchanged anchor (a1 317, 13 / a2 308.5, 13 / pickup_z 60), but
-#          `load_name: ursa_tip_rack` was replaced by an inline geometry
-#          block (rows 15, columns 2, x_offset/y_offset 8.5, 66x138x22).
-#          Both forms resolve to the same 30-tip grid -- verified through
-#          the loader -- so this is a presentation change, not a geometry
-#          change.
+# ---------------------------------------------------------------------------
+# THE ONE CHANGE: tip-rack anchor (284, 25.5) -> (336.0, 37.5)
+# ---------------------------------------------------------------------------
+# Ben measured the anchor by jogging until the PIPETTE TIP hovered over the
+# rack's corner tip and reading the display -- but the display always reports
+# the REFERENCE instrument, and that is vial_capper_decapper, whose offsets
+# are 0/0. So (284, 25.5) is a raw work-coordinate (gantry) reading, not a
+# deck-frame coordinate. Deck coordinates are instrument-independent; CubOS
+# converts with `gantry = deck - offset`, so the deck-frame value is the
+# reading PLUS the pipette's offset:
+#
+#     (284 + 52.0, 25.5 + 12.0) = (336.0, 37.5)
+#
+# Verified through the loader rather than asserted -- with this anchor,
+# `pick_up_tip: tip_rack.A1` commands the gantry to exactly (284.0, 25.5,
+# 60.0), reproducing Ben's measured point to the millimetre. Left unconverted
+# it would command (232.0, 13.5): 52 mm and 12 mm short, which puts the
+# CAPPER over the rack and presses the pipette into bare deck. Note that
+# validate_setup PASSES either way -- it only asks whether a coordinate is
+# reachable, never whether it is the right one. Same conversion as the
+# 2026-08-08 (Jarrett) and 2026-08-24 anchors.
+#
+# Derived grid: column 1 at deck x 336.0, column 2 at 327.5, rows A..O at
+# deck y 37.5 -> 156.5 (8.5 mm pitch). All 30 tips in the working volume.
+#
+# ---------------------------------------------------------------------------
+# CONFIRMED ON HARDWARE 2026-08-31: the vial column is in the current frame
+# ---------------------------------------------------------------------------
+# This was the open question from 2026-08-28. The recalibration moved
+# $131 (max_travel_y) 235 -> 309, and since WCO = -max_travel on every axis,
+# that shifts the deck Y origin by 74 mm -- so a vial that read gantry Y 26
+# before should read Y 100 after, yet this file still says 27. Either the
+# holder had physically moved or the Y column was stale.
+#
+# The machine answered it: `decap vial_1` at deck (206, 27) captured its cap
+# on the FIRST attempt, and all five vials decapped and capped without a
+# single retry. If the column were stale by 73 mm the capper would have fired
+# the magnet over bare deck and the line-break interlock would have aborted
+# the run at step 2. It did not. These coordinates describe the machine.
 #
 # location.z 55 is the vial RIM (Ben's convention). A seated cap tops out at
-# about deck Z 68 = rim + the capper's engage_depth_mm 13, which is the plane
-# where the socket meets the cap.
+# about deck Z 68 = rim + the capper's engage_depth_mm 13.
 #
 # ---------------------------------------------------------------------------
-# drop_z: 60 -- DOES NOT DO WHAT IT LOOKS LIKE. Recommend reverting to null.
+# STILL UNVERIFIED
 # ---------------------------------------------------------------------------
-# Ben set this on 2026-08-28 so `drop_tip: tip_rack.A1` would return the tip
-# to its slot. At the Pi's CubOS (cbc33dc) and on current main, `drop_z` is
-# read in exactly ONE place -- deck/labware/tip_rack.py:158-160 -- and it is
-# not a motion target:
+#   * pickup_z 60 / location.z 60 carry forward from 2026-08-06 and were not
+#     re-measured with the new anchor. $132 also moved 125 -> 124, which
+#     shifts every deck Z reading down 1 mm, so a physically unmoved rack
+#     would now read 59. The 2026-08-31 pick_up_tip pressed to gantry 60 and
+#     the run completed, but pick_up_tip is a friction press with no sensor --
+#     it cannot report a miss. Worth a jog check.
+#   * a2 assumes the rack is square to the axes and its second column is one
+#     8.5 mm step in -X of the measured tip. If the rack is mirrored, the fix
+#     is one number: a2.x 327.5 -> 344.5.
+#   * tip_present lists all 30 tips loaded. A1 has now been consumed by at
+#     least one run; refill the slot or retarget before re-running.
 #
-#     if pickup_z is not None and drop_z is not None:
-#         data["height"] = max(round(abs(pickup_z - drop_z), 3), 1.0)
-#
-# So the only effect of drop_z: 60 alongside pickup_z: 60 is to overwrite the
-# explicit `height: 22` below with abs(60 - 60) -> clamped to 1.0 mm,
-# shrinking the rack's modeled bounding box to a millimetre. No command reads
-# it for motion.
-#
-# Where drop_tip actually goes: it engages like every other pipette command,
-# descending the TOOL POINT -- the tip end, once a tip is attached -- to the
-# resolved coordinate's Z, i.e. the rack's location.z 60, gantry Z 95. A tip
-# seated in A1 has its end at deck Z 25 (nozzle at pickup_z 60, tip 35 mm
-# long), so the ejector fires one full tip-length ABOVE the slot and the tip
-# cannot seat. Confirmed in the mock trace: gantry (265.0, 1.0, 95.0).
-#
-# The supported way to discard a tip is a separate `tip_disposal` labware
-# entry, which drop_tip targets and ejects at THAT entry's own location.z.
-# Add one (a measured spot + a measured `drop_tip_position` on the pipette
-# model, which is still a documented placeholder in
-# instruments/pipette/models.py) and drop_tip becomes meaningful.
+# drop_z is back to null, which is correct -- see the 2026-08-28 header note
+# and cubos/results/pipette_test_20260828/README.md. At this CubOS version no
+# command reads it for motion; setting it only shrinks the rack's modeled
+# bounding box to abs(pickup_z - drop_z), clamped to 1 mm.
 labware:
   vial_1:
     type: vial
@@ -136,21 +158,20 @@ labware:
     width: 138
     height: 22
     tip_length: 35
-    drop_z: 60
+    drop_z: null
     x_offset: 8.5
     y_offset: 8.5
     calibration:
       a1:
-        x: 317
-        y: 13
-        z: 60
+        x: 336.0        # CHANGED from 284   (Ben's raw jog reading + pipette offset_x 52)
+        y: 37.5         # CHANGED from 25.5  (               "        + pipette offset_y 12)
       a2:
-        x: 308.5
-        y: 13
+        x: 327.5        # CHANGED from 275.5 (same +52 conversion; one 8.5 mm column step -X of a1)
+        y: 37.5         # CHANGED from 25.5
     pickup_z: 60
     location:
-      x: 317
-      y: 13
+      x: 336.0          # CHANGED from 284   (follows calibration.a1)
+      y: 37.5           # CHANGED from 25.5
       z: 60
     slots: {}
     tip_present:

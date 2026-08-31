@@ -89,6 +89,44 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (revised 2026-08-31) — RAN ON HARDWARE, 18/18
+
+`configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`
+and `configs/gantry/cub_xl_ben_pipette_capper.yaml` hold @benwhitney5463's
+2026-08-31 revision, run on the CubXL that day: **18/18 steps, 4m 39s, campaign
+33, no retries.** First run in which the pipette's own `aspirate` / `blowout` /
+`drop_tip` executed on hardware. The protocol is the corrected 2026-08-28 rev-2
+with vial_6 removed; its body is verbatim, only the header was rewritten.
+
+Two edits were needed to make it runnable, both documented inline:
+
+* **Gantry** — `grbl_settings.max_travel_{x,y,z}` synced 389.333/235/125 →
+  **409/309/124** to match the controller. Those three are in
+  `Gantry._validate_grbl_settings`' critical set, so until they agreed every run
+  aborted at connect with *"Critical GRBL settings mismatch"*. `working_volume`
+  was deliberately left tighter.
+* **Deck** — the tip-rack anchor converted from the reference instrument's frame
+  into the pipette's deck frame, `(284, 25.5)` → **`(336.0, 37.5)`** (`+52/+12`).
+  The measurement was taken with the pipette tip hovering, but the jog display
+  reports the capper. Verified through the loader: `pick_up_tip: tip_rack.A1`
+  then commands gantry (284.0, 25.5, 60.0), the measured point exactly. Note
+  `validate_setup` passes either way — it checks reachability, not correctness.
+
+This run also settled the deck-frame ambiguity flagged on 2026-08-28: `decap
+vial_1` captured on the first attempt, so the vial column really is at
+y 27..192 in the post-recalibration frame. Had it been stale the sensor
+interlock would have aborted at step 2 over bare deck. Full write-up, the
+verification matrix and what remains open (`drop_tip` releasing 35 mm above the
+slot, unverified `pickup_z`, the `max_vol 300` vs `p20_single_gen2` mismatch) in
+[`results/pipette_test_20260831/README.md`](results/pipette_test_20260831/README.md).
+
+`safe_z: 87` with capper `park_position: [206, 50]` is what makes this work
+without patching CubOS: the tipped hover lands on gantry 122 (= `z_max`) and
+every capper leg is a pure-Y move that holds the passive pipette 52 mm clear of
+the vial column. `cub_xl_ben_pipette_capper_tipsafe.yaml` plus
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` remain the alternative
+route (0 interferences even with a stuck tip) but were not needed.
+
 ## pipette_test protocol (revised 2026-08-28, NOT run — do not run as attached)
 
 `configs/protocol/vcl/pipette_test.yaml` and

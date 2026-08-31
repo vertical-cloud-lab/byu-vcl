@@ -1,65 +1,70 @@
-# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-08-26 rev.
+# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-08-31 rev.
 #
-# Committed exactly as attached to PR #171 on 2026-08-26; NOT run on hardware
-# (the runner lost tailnet access -- see cubos/results/pipette_test_20260826/).
-# Only comments were added below. Two values moved from the 2026-08-24 rev,
-# both marked CHANGED at the line, both with real consequences:
+# Attached to PR #171 on 2026-08-31 with a body byte-identical to the
+# 2026-08-26 rev already on this branch (verified by parsed-YAML diff). The
+# ONLY edit is grbl_settings.max_travel_{x,y,z}, synced to the controller --
+# see the CHANGED block at those lines. RUN ON HARDWARE 2026-08-31 in this
+# exact form: 18/18 steps, 4m 39s, campaign 33, no retries.
 #
-#   cnc.safe_z          114.0 -> 87.0    (see the block at that line)
-#   pipette.offline     true  -> false   (first time the plunger goes live)
+# ---------------------------------------------------------------------------
+# WHY safe_z IS 87.0 AND MUST STAY THERE
+# ---------------------------------------------------------------------------
+# Engage-based pipette commands (aspirate, blowout, drop_tip, mix) travel at
+# safe_z measured AT THE TOOL POINT, and with a 35 mm tip attached the tool
+# point is the tip end -- so the carriage must reach safe_z + 35. At 87 that
+# is gantry 122, exactly working_volume.z_max. At the old 114 it would be
+# 149, 27 mm past the machine's travel, and validate_setup rejects it.
+# Engage commands accept no travel_z, so nothing in the protocol or deck can
+# route around it. Confirmed on hardware 2026-08-31: the tipped hover before
+# aspirate/blowout commanded gantry Z 122.000 and the run completed.
 #
-# CONTROLLER SETTINGS -- resolved 2026-08-27. $130/$131/$132 now read
-# 389.333 / 235.0 / 125.0 on the controller, matching this file exactly, so
-# the travel mismatch flagged on 2026-08-26 is gone (a recalibration did
-# rewrite it).
+# The cost is that safe_z is SHARED with the capper (depth -15.935), so every
+# decap/cap leg now rides at gantry 71.065 -- and the pipette is the lowest
+# thing on the head, so with a tip on, the tip end sweeps deck Z 36.065,
+# 19 mm below the vial rims. That is unfixable vertically at this safe_z,
+# which is what park_position is for:
 #
-# But that same recalibration left $20=0 -- SOFT LIMITS DISABLED. $20 is in
-# Gantry._validate_grbl_settings' critical set and `soft_limits: true` below
-# maps to $20=1 (gantry/grbl_settings.py:43), so every run would have aborted
-# at connect with "Critical GRBL settings mismatch". The cause is visible in
-# configure_soft_limits_from_spans (gantry.py:618-632): it writes $20=0, then
-# the travel extents, then $20=1. Interrupted in between -- an E-stop during
-# calibration will do it, and #182 was testing exactly that -- it leaves the
-# machine with no software limit protection at all ($21 hard limits are also
-# 0). Restored to $20=1 on 2026-08-27 and verified; re-check it after any
-# calibration that gets interrupted.
+# ---------------------------------------------------------------------------
+# park_position [206, 50] -- ON the vial column's X, on purpose
+# ---------------------------------------------------------------------------
+# decap/cap each end with a hardcoded park move at the capper's safe_z, and
+# _build_direct_move emits one G01 per changed axis (X, then Y, then Z -- the
+# mill never commands simultaneous multi-axis motion). Parking OFF the column
+# (the old [125, 50]) gives every leg an X component that walks the passive
+# pipette across the cap tops at ~3 mm clearance -- closest pass 0.9 mm from
+# vial_2's axis. Parking at the column's own X makes every leg a pure-Y move
+# with the pipette held at deck X 258, 52 mm clear of the vials. Verified in
+# the 2026-08-31 trace: every capper pose is x=206.000.
+#
+# Caveat unchanged: the capper then parks over vial_2's footprint at deck
+# Z 87. Holding a ~13 mm cap the underside sits near deck 74 vs vial_2's cap
+# top at 68 -- about 6 mm, unmeasured. [206, 5] or [206, 220] clears every
+# footprint and still sweeps clean, if that looks tight by eye.
+#
+# ---------------------------------------------------------------------------
+# CONTROLLER NOTES
+# ---------------------------------------------------------------------------
+# $20 (soft limits) was found at 0 on 2026-08-27 -- disabled -- because
+# configure_soft_limits_from_spans (gantry.py:618-632) writes $20=0, then the
+# travel extents, then $20=1, and an interrupted calibration leaves it off.
+# Restored then; verified $20=1 again on 2026-08-31. Re-check after any
+# calibration that gets interrupted. $21 (hard limits) is 0 by design.
+#
+# Both instruments share /dev/ttyACM0 (one Arduino firmware answers both:
+# cmd 7 is the capper's line-break sensor, cmd 14 the plunger). At this CubOS
+# checkout (cbc33dc) there is no PawduinoLink arbitration -- each driver
+# opens its own serial handle. It works in practice (three hardware runs now)
+# but it is fragile; updating the Pi past upstream 1a9987f fixes it properly.
+#
+# The plunger reports max_vol 300.00 while pipette_model says p20_single_gen2.
+# Worth settling which pipette is mounted: mm_to_ul 0.025 is the p20 number,
+# so volume_ul: 20.0 is 0.5 mm of plunger travel, not 20 microlitres.
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
   factory_z_travel_mm: 129.0
   calibration_block_height_mm: 35.0
   y_axis_motion: head
-  # CHANGED 2026-08-26 (was 114.0). This is the only way to make a literal
-  # `mix:`/`drop_tip:` validate on the Pi's CubOS (cbc33dc): those commands
-  # hover at safe_z measured AT THE TOOL POINT, so with a 35 mm tip attached
-  # they need gantry Z = safe_z + 35, and 114 + 35 = 149 > z_max 122. At 87
-  # the tipped hover is 87 + 35 = 122 exactly -- it validates and it runs.
-  #
-  # THE COST, and it is not small: safe_z is shared with the capper. Every
-  # decap/cap leg travels at capper deck Z 87 -> gantry Z 87 - 15.935 =
-  # 71.065, and the pipette (depth 0.0) is the lowest thing on the head, so
-  # the bare nozzle rides at deck Z 71.065. Cap tops sit at about deck Z 68
-  # (the engage plane, rim 55 + engage_depth_mm 13) -- roughly 3 mm of
-  # clearance, unmeasured. Because park_position [125, 50] is off the vial
-  # column, each leg is a diagonal whose nozzle shadow crosses deck X 187:
-  # 20 of the 24 legs in pipette_test.yaml pass the nozzle directly over
-  # vial_2's or vial_3's cap, the closest within 0.9 mm of vial_2's centre.
-  # At safe_z 114 that same nozzle rides at deck 98 -- about 30 mm clear.
-  #
-  # Two ways to get the tipped commands without the 3 mm margin:
-  #   1. Apply cubos/patches/tipped-hover-clamp-and-ceiling-travel.patch on
-  #      the Pi and set safe_z back to 114.0. The tipped hover is then
-  #      clamped to gantry 122 (tip end at deck 87 -- the plane Ben verified
-  #      by eye) while capper legs return to gantry 98.065. Validated: PASS
-  #      + 19/19 mock.
-  #   2. Keep 87.0 but move the capper park_position onto the vial column's
-  #      own X so every leg is a pure-Y move and the nozzle stays 52 mm
-  #      clear of the column, never over a cap. Needs an eyeball of that
-  #      strip. THIS IS WHAT IS NOW DONE -- see park_position below; on the
-  #      2026-08-24 deck the column is X 206, so the park is [206, 50] and
-  #      the passive shadow rides deck X 258. With that in place the
-  #      2026-08-28 rev-2 protocol sweeps 0 interferences at safe_z 87 and
-  #      the hover-clamp patch is not required.
   safe_z: 87.0
 working_volume:
   x_min: 0.0
@@ -79,9 +84,20 @@ grbl_settings:
   steps_per_mm_x: 400.0
   steps_per_mm_y: 400.0
   steps_per_mm_z: 400.0
-  max_travel_x: 389.333
-  max_travel_y: 235.0
-  max_travel_z: 125.0
+  # CHANGED 2026-08-31 from 389.333 / 235.0 / 125.0 to match what the
+  # controller actually reports. These three are in the CRITICAL set of
+  # Gantry._validate_grbl_settings, compared at 0.001 mm, so until they
+  # agreed EVERY hardware run aborted at connect with "Critical GRBL
+  # settings mismatch -- motion would be wrong", before any G-code. Read
+  # live off the board twice (2026-08-28 and 2026-08-31, identical):
+  #   <Alarm|WPos:409.000,309.000,124.000|WCO:-409.000,-309.000,-124.000>
+  # working_volume below is deliberately left TIGHTER than these (386.333 /
+  # 232 / 122 vs 409 / 309 / 124) -- it is the software envelope the whole
+  # protocol geometry was validated against, and shrinking the usable area
+  # is the conservative direction.
+  max_travel_x: 409.0
+  max_travel_y: 309.0
+  max_travel_z: 124.0
 instruments:
   vial_capper_decapper:
     type: capper
@@ -93,37 +109,6 @@ instruments:
     capture_settle_s: 1
     engage_depth_mm: 13
     offline: false
-    # CHANGED 2026-08-28 (was [125, 50], Ben's attached value). This is the
-    # single change that makes safe_z 87 workable with a tip attached, and it
-    # is load-bearing -- do not put it back without re-running passive_shadow.
-    #
-    # `decap`/`cap` each end with a hardcoded park move at the capper's
-    # safe_z -> gantry 87 - 15.935 = 71.065. The pipette (depth 0.0) is the
-    # lowest thing on the head, so an attached 35 mm tip rides those legs
-    # with its end at deck Z 36.065: 19 mm below the vial rims (55), 32 mm
-    # below the cap tops (~68). Vertically there is no rescuing that; the
-    # only question is whether the legs ever pass laterally over a vial.
-    #
-    # [125, 50] is off the vial column (deck X 206), so every leg carries an
-    # X component and the tip's shadow walks straight across the column.
-    # passive_shadow on the 2026-08-28 rev-2 protocol, verbatim:
-    #
-    #   step 6 cap   -> vial_1: 12.0 mm from axis, Z 36.065 vs cap top 68.0
-    #                  (258.0, 39.0, 36.06) -> (177.0, 39.0, 36.06)
-    #   step 7 decap -> vial_2:  2.0 mm from axis, Z 36.065 vs cap top 68.0
-    #   step 7 decap -> vial_2: 12.0 mm from axis, Z 36.065 vs rim 55.0
-    #
-    # [206, 50] puts the park on the column's own X, so every capper leg
-    # becomes a pure-Y move and the tip holds deck X 258 -- 52 mm clear of
-    # the column, over ground the capper's own engages already sweep 19 mm
-    # lower. Re-swept: 0 interferences. (The 2026-08-27 run used [187, 50],
-    # the same trick against that day's column at X 187.)
-    #
-    # Note the capper itself then parks over vial_2's footprint (Y 46..74) at
-    # deck Z 87. Holding a cap that is ~13 mm deep, the cap's underside sits
-    # near deck 74 vs vial_2's cap top at 68 -- about 6 mm, unmeasured. If
-    # that looks tight by eye, [206, 5] or [206, 220] clears every footprint
-    # and also sweeps clean.
     park_position:
     - 206
     - 50
@@ -135,25 +120,5 @@ instruments:
     offset_y: 12.0
     depth: 0.0
     pipette_model: p20_single_gen2
-    # CHANGED 2026-08-26: was port '' / offline: true. Sharing the capper's
-    # /dev/ttyACM0 is right in principle -- upstream CubOS drives the
-    # Opentrons plunger from the same Pawduino Arduino ("the capper and
-    # lights share this Arduino via one link per port") -- but that sharing
-    # is arbitrated by PawduinoLink.acquire(), which does NOT exist at the
-    # Pi's checkout (cbc33dc). There, capper and pipette each open their own
-    # serial.Serial on the same device with no coordination: a second open
-    # can re-toggle DTR and reset the Arduino mid-session, a close resets it
-    # under the other driver, and the two share one reply stream. Update the
-    # Pi past 1a9987f (2026-08-20) before trusting the shared port.
-    #
-    # Also note the plunger geometry is entirely unmeasured. In
-    # instruments/pipette/models.py the p20_single_gen2 entry carries
-    # `# placeholder` on prime_position 5.0, blowout_position 7.0,
-    # drop_tip_position 10.0 and mm_to_ul 0.025 -- the same bucket as the old
-    # CAPPER_ENGAGE_DEPTH_MM. Consequences: a 20 uL mix moves the plunger
-    # 20 * 0.025 = 0.5 mm, and `drop_tip` drives to an ASSUMED eject
-    # position. Nothing verifies the tip actually left; the driver calls
-    # clear_attached_tip_extension() either way. Everything after step 6 of
-    # pipette_test.yaml assumes a bare nozzle.
     port: /dev/ttyACM0
     offline: false
