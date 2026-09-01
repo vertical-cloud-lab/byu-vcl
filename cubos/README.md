@@ -89,7 +89,40 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
-## pipette_test protocol (shortened, 2026-09-01 rev 2) — NOT run, blocked at connect
+## pipette_test protocol (shortened, 2026-09-01 rev 2) — RAN ON HARDWARE, 12/12
+
+Campaign 69, `19:01:52 → 19:07:08` UTC (5 m 16 s), status `completed`.
+**The first run in which every plunger command actuated** — `blowout` and
+`drop_tip` had silently no-opped on every previous run.
+
+The trio is the one committed at `abd81d6`, run unchanged: @benwhitney5463's
+shortened protocol (vials 3–5 commented out, 18 → 12 steps, `height` on
+`aspirate`/`blowout` deepened from −15.0 to −35.0) with the deck and gantry
+files untouched.
+
+@benwhitney5463 rewired the pipette between the previous session's observed
+`USB disconnect` (18:26 UTC) and `/dev/ttyACM0` re-enumerating (18:50 UTC). The
+rewiring **kept** the direction fix and did **not** fix homing: `HOME` still
+fails after 26.35 s, identically from pos 0.0 and pos 3.0, so the limit switch
+never asserts anywhere in the plunger's travel.
+
+To run it, `patches/pipette-connect-tolerate-failed-home.patch` was **applied**
+to the Pi — it downgrades `OpentronsPipette.connect()`'s refusal to a warning
+and continues with an unreferenced plunger. Revert it once the switch works.
+
+Every plunger `MOVE_TO` in the run scaled at 0.663–0.666 s/mm, two of them
+backwards (`blowout` retracted 28.45 mm in 18.862 s; `drop_tip`'s second leg
+retracted 5.00 mm in 3.322 s). Offline gates on the Pi's exact CubOS:
+`validate_setup` PASS (12 steps), `--mock` 12/12, `passive_shadow` 0
+interferences nominal **and** tip-stuck.
+
+Open: `ASPIRATE 0.5` reported landing at 35.45 — 71× its argument, and a third
+different value for the same command — so `ASPIRATE`'s counter is not
+`MOVE_TO`'s counter and the blowout retraction may be overshooting into the
+stop. Full write-up:
+[`results/pipette_test_20260901c/README.md`](results/pipette_test_20260901c/README.md).
+
+## pipette_test protocol (shortened, 2026-09-01 rev 2) — offline analysis, before the run
 
 `configs/protocol/vcl/pipette_test.yaml` is @benwhitney5463's shortened revision:
 vials 3–5 commented out (18 → 12 steps) and `height` on `aspirate`/`blowout`
@@ -110,9 +143,9 @@ was commanded. The evidence points at the limit-switch **input** rather than the
 motor drive: before the rewiring `HOME` returned 0.52 s claiming success (switch
 reading permanently asserted); it now never asserts.
 
-`patches/pipette-connect-tolerate-failed-home.patch` (written, **not applied**)
-turns the refusal into a warning so motion testing can continue with an
-unreferenced plunger. Full write-up:
+`patches/pipette-connect-tolerate-failed-home.patch` was written here and left
+unapplied at the time; it was applied the same day for campaign 69 (above).
+Full write-up:
 [`results/pipette_test_20260901b/README.md`](results/pipette_test_20260901b/README.md).
 
 ## pipette_test protocol (revised 2026-09-01) — RAN ON HARDWARE, 18/18

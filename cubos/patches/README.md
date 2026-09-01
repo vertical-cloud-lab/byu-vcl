@@ -274,7 +274,10 @@ EOF
 
 ## `pipette-connect-tolerate-failed-home.patch`
 
-**Written 2026-09-01. NOT APPLIED — applying it is a deliberate trade-off, see below.**
+**Written 2026-09-01. APPLIED to the Pi 2026-09-01 19:01 UTC** so the shortened
+`pipette_test.yaml` could run after the rewiring left homing still broken
+(campaign 69, `cubos/results/pipette_test_20260901c/`). **Revert it the moment
+the limit switch works** — it is the one patch here that is not a bug fix.
 
 ### Symptom
 
@@ -317,4 +320,11 @@ cd ~/CubOS && git apply ~/byu-vcl/cubos/patches/pipette-connect-tolerate-failed-
 ```
 
 Verified with `git apply --check` against the Pi's tree (`cbc33dc` + the three
-applied patches) on 2026-09-01.
+applied patches) on 2026-09-01, then applied the same day.
+
+### What it looked like in practice (campaign 69, 2026-09-01)
+
+The run reached all 12 steps and every plunger command actuated. One side effect
+worth knowing: the exception is raised inside `self.home()`, **before**
+`self.prime()`, so `prime` never runs while this patch is carrying a failed home
+— the plunger starts the protocol at firmware counter 0 rather than 5.0.
