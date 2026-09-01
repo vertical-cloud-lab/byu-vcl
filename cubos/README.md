@@ -89,11 +89,45 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (shortened, 2026-09-01 rev 3) — RAN ON HARDWARE, 12/12
+
+Campaign 73, `19:23:23 → 19:28:39` UTC (5 m 16 s), status `completed`. Same
+trio as campaign 69, unchanged, run after another rewiring pass. Gantry and
+capper clean; `validate_setup` PASS, `--mock` 12/12, `passive_shadow` 0
+interferences nominal **and** tip-stuck.
+
+**The plunger did not move, and made no sound** — reported by
+@benwhitney5463 watching the machine. The trace is byte-for-byte the shape of
+campaign 69's: both directions scaling at ~0.665 s/mm. That is the finding:
+`stepMotor()` bit-bangs the STEP pin and counts, with **no feedback of any
+kind**, so those timings prove the *Arduino emitted the steps* and nothing
+about the motor. Everything upstream of STEP/DIR works; the TMC2209 is not
+driving the coils, and total silence means no coil current at all.
+
+Root cause found in the firmware source: the Cubware wiring diagram's four
+Arduino→TMC2209 signal lines are each **shifted one analog pin** from the pin
+map in [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino),
+and **A4 — the firmware's `ENABLE_PIN` — is connected to nothing**. Full
+analysis, corrected wiring table, the pipette's 10-pin mapping, and the
+knock-on effects on microstepping and volume units:
+[`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md). Run
+write-up: [`results/pipette_test_20260901d/README.md`](results/pipette_test_20260901d/README.md).
+
+Reading the firmware also closed several open questions: `ASPIRATE 0.5` →
+`35.45` is exact arithmetic (`aspirate()` primes to 36.0, clamps the argument
+up to `MIN_VOLUME 5.0` µL, targets `36.0 − 5×0.1098`); 0.673 s/mm is
+`MOVEMENT_VELOCITY 2500` × `STEPS_PER_MM 1592`; `HOME`'s 26.35 s is the
+50 000-step budget in `homePipette()`, so the seek ran to completion and D9
+never went HIGH; and `max_vol: 300.00` is `MAX_VOLUME 300.0` — the firmware is
+built for a P300.
+
 ## pipette_test protocol (shortened, 2026-09-01 rev 2) — RAN ON HARDWARE, 12/12
 
 Campaign 69, `19:01:52 → 19:07:08` UTC (5 m 16 s), status `completed`.
-**The first run in which every plunger command actuated** — `blowout` and
-`drop_tip` had silently no-opped on every previous run.
+The first run in which every plunger command was **issued and stepped** rather
+than declined — `blowout` and `drop_tip` had returned in a flat ~0.1 s on every
+previous run. (Read at the time as "actuated". Campaign 73 showed that the
+firmware stepping and the plunger moving are different things; see above.)
 
 The trio is the one committed at `abd81d6`, run unchanged: @benwhitney5463's
 shortened protocol (vials 3–5 commented out, 18 → 12 steps, `height` on
@@ -111,15 +145,14 @@ to the Pi — it downgrades `OpentronsPipette.connect()`'s refusal to a warning
 and continues with an unreferenced plunger. Revert it once the switch works.
 
 Every plunger `MOVE_TO` in the run scaled at 0.663–0.666 s/mm, two of them
-backwards (`blowout` retracted 28.45 mm in 18.862 s; `drop_tip`'s second leg
-retracted 5.00 mm in 3.322 s). Offline gates on the Pi's exact CubOS:
-`validate_setup` PASS (12 steps), `--mock` 12/12, `passive_shadow` 0
+backwards in the firmware's counter (`blowout` 28.45 mm in 18.862 s;
+`drop_tip`'s second leg 5.00 mm in 3.322 s). Offline gates on the Pi's exact
+CubOS: `validate_setup` PASS (12 steps), `--mock` 12/12, `passive_shadow` 0
 interferences nominal **and** tip-stuck.
 
-Open: `ASPIRATE 0.5` reported landing at 35.45 — 71× its argument, and a third
-different value for the same command — so `ASPIRATE`'s counter is not
-`MOVE_TO`'s counter and the blowout retraction may be overshooting into the
-stop. Full write-up:
+The `ASPIRATE 0.5` → 35.45 reading, flagged here as unexplained, is resolved:
+it is the firmware clamping the argument to `MIN_VOLUME 5.0` µL and priming to
+`PRIME_POSITION 36.0` first. Full write-up:
 [`results/pipette_test_20260901c/README.md`](results/pipette_test_20260901c/README.md).
 
 ## pipette_test protocol (shortened, 2026-09-01 rev 2) — offline analysis, before the run

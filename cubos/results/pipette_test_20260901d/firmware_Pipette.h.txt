@@ -1,0 +1,66 @@
+#ifndef PIPETTE_H
+#define PIPETTE_H
+
+#include <Arduino.h>
+#include <SoftwareSerial.h>
+#include <TMC2209.h>
+
+// Pin definitions
+#define PIPETTE_LIMIT_PIN 9 // Limit switch for homing
+#define RX_PIN 14           // SoftwareSerial RX pin (not connected but required)
+#define TX_PIN 15           // SoftwareSerial TX pin to TMC2209 RX
+#define STEP_PIN 16         // Step pin
+#define DIR_PIN 17          // Direction pin
+#define ENABLE_PIN 18       // Enable pin (optional)
+
+// Debounce time for limit switch in milliseconds
+#define DEBOUNCE_TIME 100
+
+// Pipette constants
+#define MAX_VOLUME 300.0       // Maximum volume in µL
+#define MIN_VOLUME 5.0        // Minimum volume in µL
+#define ZERO_POSITION 0.0      // Zero position in mm
+#define BLOWOUT_POSITION 44.0  // Blowout position in mm
+#define PRIME_POSITION 36.0    // Prime position in mm
+#define DROP_TIP_POSITION 55.0 // Drop tip position in mm
+#define UL_TO_MM 0.1098        // Conversion factor from µL to mm
+
+// Motor settings
+#define MICROSTEPPING 16         // Microstepping mode
+#define RUN_CURRENT_PERCENT 50   // Run current in percent (0-100)
+#define HOLD_CURRENT_PERCENT 30  // Hold current in percent (0-100)
+#define MAX_VELOCITY 2500.0      // Maximum velocity in steps/second
+#define HOMING_VELOCITY 1000.0   // Velocity for homing operation
+#define MOVEMENT_VELOCITY 2500.0 // Velocity for normal movements
+#define MAX_ACCELERATION 400.0   // Maximum acceleration in steps/s^2
+#define STEPS_PER_MM 1592.0      // Steps per mm
+
+// External declarations
+extern SoftwareSerial softSerial;
+extern TMC2209 stepperDriver;
+extern float currentPosition;
+extern float minPosition;
+extern float maxPosition;
+extern volatile bool limitSwitchTriggered;
+extern volatile unsigned long lastDebounceTime;
+
+// Pipette functions
+void setupPipette();
+bool homePipette();
+bool movePipetteTo(float position, int speed = 0);
+bool moveRelative(int direction, int steps, int velocity);
+bool aspirate(float volume, float rate = 0);
+bool dispense(float volume, float rate = 0);
+bool mixInPlace(int repetitions, float stroke_uL, float velocity, float dwell_ms = 20.0f);
+bool mix(int repetitions, float volume_uL, float velocity);
+
+bool getPipetteStatus(bool* isHomed, float* position, float* maxVolume);
+
+// Internal helper functions
+float getCurrentPosition();
+float stepsToMM(float steps);
+float mmToSteps(float mm);
+long stepMotor(long steps, float velocity = MOVEMENT_VELOCITY);
+float volumeToMM(float volume);
+
+#endif // PIPETTE_H

@@ -168,7 +168,12 @@ def main(argv=None) -> int:
         print()
         print("Commanding plunger motion. Watch the plunger, not the screen.")
         print("Bounded to +3 mm of forward travel, then asked for it back.")
-        print("This firmware moves at ~0.673 s/mm; ~0.1 s means it did not.")
+        print()
+        print("WHAT THE TIMINGS MEAN: stepMotor() in the PANDA firmware bit-bangs")
+        print("the STEP pin and counts, with no feedback of any kind. A round trip")
+        print("that scales at ~0.673 s/mm proves the ARDUINO emitted the steps -- it")
+        print("says nothing about whether the motor turned. Only your eyes can tell")
+        print("you that. A flat ~0.1 s means the firmware declined to step at all.")
         print()
 
         print("  -- HOME --")
@@ -186,24 +191,37 @@ def main(argv=None) -> int:
         b1 = _step(link, "MOVE_TO 1.0 mm (back)", CMD_MOVE_TO, 1.0, FIRMWARE_DEFAULT_SPEED)
         b0 = _step(link, "MOVE_TO 0.0 mm (back)", CMD_MOVE_TO, 0.0, FIRMWARE_DEFAULT_SPEED)
 
-        moved = 0.4          # s -- anything below this did not turn the motor
-        fwd_ok = f1 > moved
-        back_ok = max(b1, b0) > moved
+        stepped = 0.4        # s -- below this the firmware emitted no steps
+        fwd_ok = f1 > stepped
+        back_ok = max(b1, b0) > stepped
 
         print()
         if fwd_ok and not back_ok:
-            print("VERDICT: forward moves take {:.2f}s but every backward move".format(f1))
-            print("  returns in ~{:.2f}s. The stepper only turns ONE WAY.".format(max(b1, b0)))
-            print("  Check the DIR line to the driver and the firmware's retract")
-            print("  path -- not CubOS, and not the serial link.")
+            print("VERDICT: the firmware steps forward ({:.2f}s) but every backward".format(f1))
+            print("  request returns in ~{:.2f}s. It is DECLINING to step one".format(max(b1, b0)))
+            print("  way -- a firmware/DIR-readback problem, not a motor problem.")
         elif not fwd_ok and not back_ok:
-            print("VERDICT: nothing moved in either direction (all round trips")
-            print("  ~0.1 s). The firmware is acking without stepping -- look at")
-            print("  STEP/ENABLE wiring, driver enable polarity, and motor power.")
+            print("VERDICT: the firmware emitted no steps in either direction (all")
+            print("  round trips ~0.1 s). It is acking without stepping.")
         else:
-            print("VERDICT: the plunger moves in both directions. If it still")
-            print("  does not dispense, the problem is the mm/uL calibration or")
-            print("  the mechanical coupling to the plunger.")
+            print("VERDICT: the firmware emitted steps in BOTH directions, at the")
+            print("  expected ~0.673 s/mm. Everything upstream of the STEP/DIR pins")
+            print("  is working.")
+            print()
+            print("  This does NOT mean the plunger moved. If you saw and heard")
+            print("  nothing, the fault is downstream of the Arduino -- the TMC2209")
+            print("  is not driving the coils. In order of likelihood:")
+            print("    1. EN is not held LOW. The firmware's ENABLE is Arduino A4;")
+            print("       the Cubware diagram wires the driver's EN to A3, which the")
+            print("       firmware drives as DIR. Move that wire to A4.")
+            print("    2. No motor supply on the driver's +/- terminal (12 V). VDD")
+            print("       from the Arduino powers the logic only; STEP/DIR are")
+            print("       accepted silently with no coil current.")
+            print("    3. VREF potentiometer at zero. UART never configures the")
+            print("       current (firmware transmits on A1, diagram wires A0), so")
+            print("       the pot is the only thing setting it.")
+            print("  Total silence (no buzz, no holding torque) means no coil")
+            print("  current at all. A mixed-up coil pair buzzes instead.")
 
         if home_warm < moved < home_cold or home_warm < 0.9:
             print()

@@ -1,9 +1,13 @@
 """Run the protocol on hardware, recording every plunger command + timing.
 
 Behaviour is unchanged: this wraps OpentronsPipette._send_command to log
-(code, args, elapsed, reply) and calls straight through.  Motion on this
-firmware costs ~0.673 s/mm, so a round trip that does not scale with the
-commanded distance did not move the plunger.
+(code, args, elapsed, reply) and calls straight through.
+
+The firmware's stepMotor() bit-bangs the STEP pin at ~0.673 s/mm with no
+feedback, so a round trip that does NOT scale with the commanded distance
+proves the firmware emitted no steps.  The converse does not hold: a round
+trip that does scale only proves the Arduino stepped, not that the motor
+turned.  Whether the plunger physically moved needs a pair of eyes.
 """
 import sys, time, json, datetime
 
