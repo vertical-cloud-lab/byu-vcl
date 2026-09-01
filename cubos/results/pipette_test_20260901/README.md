@@ -98,16 +98,24 @@ constants are set from the real p20.
 ### Accumulated one-way travel — inspect the plunger
 
 Because retraction never works, every forward command is cumulative and
-nothing gives it back. This session added, in order: the bounded bench test
-(+3 mm, then +3 mm after a counter-zeroing `HOME`), a probe reproducing
-`connect()` + `aspirate` (+5 mm, then ~+11 mm), and the run itself (+5 mm
-prime, ~+9 mm aspirate) — roughly **35 mm of net forward travel**, against a
-`p20` plunger whose modeled range is 0–10 mm.
+nothing gives it back. Commanded forward travel this session, in order:
 
-The probe that reproduced `aspirate` in isolation was my call and accounts for
-about 16 mm of that. A stepper into its stop skips steps rather than breaking,
-but **the plunger and its coupling are worth an inspection** before reading
-anything into the mechanism.
+| pass | commands that moved | mm |
+|---|---|---|
+| bench direction test | `MOVE_TO 1.0` (+1), `MOVE_TO 3.0` (+2), `MOVE_TO 3.0` after a counter-zeroing `HOME` (+3) | **+6.0** |
+| `speed=50` probe | `MOVE_TO 5.0` (+5), `ASPIRATE 0.5` → 11.22 (+6.22) | **+11.2** |
+| the protocol run | prime `MOVE_TO 5.0` (+5), `ASPIRATE 0.5` at 5.963 s ÷ 0.673 s/mm (~+8.9) | **+13.9** |
+
+≈ **31 mm of commanded forward travel**, against a `p20` plunger whose modeled
+range is 0–10 mm. (Commanded, not necessarily physical: once the plunger is
+against its stop the stepper skips steps rather than advancing, which is the
+normal non-destructive failure — but it also means the true position is
+unknown.)
+
+The `speed=50` probe was my call and accounts for ~11 mm of that; the bench
+test is bounded by design and the run is what was asked for. **The plunger and
+its coupling are worth an inspection** before reading anything into the
+mechanism.
 
 ---
 
