@@ -1,89 +1,93 @@
 # pipette_test.yaml -- decap vial_1, pick up a tip, aspirate in vial_1, park
 # the pipette, recap vial_1, decap vial_2, blow out into vial_2, drop the tip,
-# then decap+cap vials 2..5. CubXL, 2026-08-31 rev 2.
+# then decap+cap vials 3..5. CubXL, 2026-09-01 rev.
 #
-# Attached to PR #171 on 2026-08-31. THE BODY BELOW IS BEN'S, VERBATIM.
-# NOT RUN -- Ben asked for the bench test only, no protocols.
+# Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM
+# (parsed YAML verified identical to the attachment).
 #
-# *** AS ATTACHED THIS TRIO FAILS VALIDATION. One number, one line. ***
+# *** RAN ON HARDWARE 2026-09-01: campaign 54, 18/18 steps, 5m 50s,        ***
+# *** status `completed`. No capper retries, no alarms, no warnings.       ***
+# *** See ../../../results/pipette_test_20260901/README.md.                ***
 #
-# ---------------------------------------------------------------------------
-# The blocker: pipette_park / travel_z 100 with a tip on = gantry 135
-# ---------------------------------------------------------------------------
-#   RESULT: FAIL - 4 violation(s) found
-#   - pipette -> pipette_park.location.target:  gantry (206.0, 170.0, 135.0)
-#       violates z_max=124.0
-#   - pipette -> pipette_park.location.travel_z: gantry (206.0, 170.0, 135.0)
-#       violates z_max=124.0
-#   - step 5 (move): move target 'pipette_park' gantry z=135.0 is outside
-#       working volume [0.0, 124.0] for instrument 'pipette'.
-#   - step 5 (move): move travel_z for 'pipette_park' gantry z=135.0 ...
-#
-# travel_z and a named position are both resolved IN THE MOVING INSTRUMENT'S
-# TOOL FRAME. Step 1 names the capper, so its 100 -> gantry 100 - 15.935 =
-# 84.065, fine. Step 5 names the pipette WITH A 35 mm TIP ATTACHED, so its
-# 100 -> gantry 100 + 35 = 135, which is 11 mm past z_max 124.
-#
-# The hover-clamp patch does NOT rescue this and is not meant to: it clamps
-# an unreachable *hover* (an engage command's implicit safe_z travel, which
-# you cannot otherwise influence). An explicit `move` target you wrote by
-# hand stays a hard requirement -- silently lowering it would be the wrong
-# behaviour for a coordinate the protocol author chose.
+# Changes vs. the rev committed at 77b8057 -- both are the travel_z fix I
+# asked for on 2026-08-31, and both were needed:
+#   positions.pipette_park  Z 100.0 -> 87.0
+#   step 5 move  travel_z     100   -> 87
 #
 # ---------------------------------------------------------------------------
-# The fix: 100 -> 89 in the two places that name the pipette
+# Why 87 and not 100: travel_z resolves in the MOVING instrument's tool frame
 # ---------------------------------------------------------------------------
-#   positions.pipette_park:  [258.0, 182.0, 100.0]  ->  [258.0, 182.0, 89.0]
-#   step 5 (move: instrument: pipette) travel_z: 100  ->  89
+# instrument_mount.py:71 -- gantry_travel_z = travel_z + depth. Step 1 names
+# the capper (depth -15.935), so its travel_z 100 -> gantry 84.065, fine and
+# unchanged. Step 5 names the PIPETTE with a 35 mm tip attached, so the tool
+# point rides 35 mm below the carriage and travel_z 100 -> gantry 135, which
+# is 11 mm past z_max 124. That was the 4-violation FAIL on the previous rev.
 #
-# 89 = z_max 124 - tip 35, the highest a tipped pipette can be commanded, and
-# it is exactly the plane the hover clamp picks for aspirate/blowout/drop_tip
-# -- so the whole tipped phase rides one consistent height. Tip end at deck
-# 89 clears the cap tops (70) by 19 mm. Leave step 1's travel_z at 100: it
-# names the capper and the nozzle is still bare there.
+# 87 + 35 = gantry 122, in bounds. (89 would be the ceiling, 124 - 35, and is
+# also the plane the hover-clamp patch picks for aspirate/blowout/drop_tip --
+# so 87 sits 2 mm under the clamped plane. Harmless: the two heights differ
+# only for this one explicit move, and lower is the conservative direction.)
 #
-# With only that change, on the Pi's CubOS (cbc33dc + all three patches):
-#     validate_setup                 PASS, 18 steps
-#     run_protocol --mock            18/18
-#     passive_shadow                 0 interferences
-#     passive_shadow --tip-stuck     0 interferences   <-- first time ever
-#
-# The corrected copy lives at ../../results/pipette_bench_20260831/ and the
-# body here is left as Ben sent it, on purpose, so the diff is his to make.
+# The hover-clamp patch deliberately does NOT rescue an explicit move: it
+# clamps the implicit hover inside an engage command, which the protocol
+# author has no other way to influence. Silently lowering a coordinate the
+# author wrote by hand would be the wrong behaviour.
 #
 # ---------------------------------------------------------------------------
-# Commanded geometry once corrected (from the coordinate trace)
+# Geometry, as actually commanded (from the run's own G-code)
 # ---------------------------------------------------------------------------
-#   capper transit / park           gantry  99.065   (safe_z 115 - 15.935)
-#   capper engage over a vial       gantry  54.065   (rim 55 + engage 15)
-#   bare-nozzle hover, tip rack     gantry 115.000
-#   pick_up_tip tip_rack.A1         gantry (314.0, 25.5, 57.0)
-#   tipped hover (CLAMPED)          gantry 124.000   (tip end deck 89)
-#   aspirate vial_1 / blowout v2    gantry  75.000   (tip end 15 mm in)
-#   drop_tip tip_rack.A1            gantry  92.000   (see the deck header)
+#   capper park_position, travel_z 100      gantry Z  84.065
+#   capper transit / park at safe_z 115     gantry Z  99.065   (x20)
+#   capper engage over a vial               gantry Z  54.065   (x10)
+#   bare-nozzle hover at safe_z             gantry Z 115.0
+#   pick_up_tip tip_rack.A1                 gantry (284.0, 25.5, 57.0)
+#   tipped hover, CLAMPED by the patch      gantry Z 124.0     (x14)
+#   pipette_park move, travel_z 87          gantry Z 122.0
+#   aspirate / blowout, height -15.0        gantry Z  75.0     (tip end 15 mm in)
+#   drop_tip tip_rack.A1                    gantry Z  92.0
+#
+# X only ever takes four values: 236 (capper park), 206 (vial column),
+# 284 (tip rack), 154 (pipette over the vial column, = 206 - offset_x 52).
 #
 # ---------------------------------------------------------------------------
-# What will still not work, and it is not this file's fault
+# Offline gates, all clean at this rev
 # ---------------------------------------------------------------------------
-# aspirate WILL actuate the plunger; blowout and drop_tip will NOT. The
-# firmware's MOVE_TO only executes when the target is above the current
-# plunger position, and ASPIRATE leaves it at pos 36, above every later
-# target. Bench evidence and the full command matrix are in
-# ../../results/pipette_bench_20260831/README.md. Fix the plunger direction
-# before reading anything into a liquid result from this protocol.
+#   validate_setup                  PASS, 18 steps, 12 targets
+#   run_protocol --mock             18/18
+#   passive_shadow                  0 interferences
+#   passive_shadow --tip-stuck      0 interferences
 #
-# Config trio:
-#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml   (2026-08-31 rev 2)
-#   deck:     ../../deck/ben_6vials_tiprack.yaml            (2026-08-31 rev 2)
-#   protocol: this file
+# The tip-stuck column is the one that matters here: drop_tip cannot confirm
+# the tip left (commands/pipette.py calls clear_attached_tip_extension()
+# unconditionally), so every step after 9 is planned bare-nozzle regardless of
+# what physically happened. At safe_z 115 with park_position [236, 175] that
+# no longer matters -- a stuck tip collides with nothing. This is the first
+# rev of this protocol for which that is true.
 #
-#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
-#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
-#   python -m cubos.tools.passive_shadow      <gantry> <deck> <protocol>
+# ---------------------------------------------------------------------------
+# THE PLUNGER DOES NOT DO WHAT THIS FILE SAYS -- firmware, not config
+# ---------------------------------------------------------------------------
+# Measured during this run (every plunger command was timed; motion costs a
+# consistent ~0.673 s/mm, so a round trip that does not scale with the
+# commanded distance did not move):
+#
+#   step         plunger command   dt        moved?
+#   connect      HOME              0.520 s   counter zeroed, no motion
+#   connect      MOVE_TO 5.0       3.355 s   YES  (5 mm forward)
+#   pick_up_tip  MOVE_TO 0.0       0.107 s   NO   (retraction)
+#   aspirate     ASPIRATE 0.5      5.963 s   YES
+#   blowout      MOVE_TO 7.0       0.108 s   NO   (7 < current 36)
+#   drop_tip     MOVE_TO 10.0      0.109 s   NO
+#   drop_tip     MOVE_TO 5.0       0.110 s   NO
+#
+# So `blowout:` and `drop_tip:` in this file are currently inert, and the
+# tip is not ejected. Until the plunger retracts, treat the protocol as
+# "decap / tip press / aspirate / recap" and remove the tip by hand.
+
 
 positions:
   park_position: [206.0, 170.0, 100.0]
-  pipette_park:  [258.0, 182.0, 100.0]
+  pipette_park:  [258.0, 182.0, 87.0]
 
 protocol:
   - home:
@@ -111,7 +115,7 @@ protocol:
   - move: 
       instrument: pipette
       position: pipette_park
-      travel_z: 100
+      travel_z: 87
 
 
 

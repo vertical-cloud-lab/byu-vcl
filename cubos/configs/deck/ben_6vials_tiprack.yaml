@@ -1,72 +1,63 @@
 # ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the 2x15 tip
-# rack, CubXL, 2026-08-31 rev 2.
+# rack, CubXL, 2026-09-01 rev.
 #
-# Attached to PR #171 on 2026-08-31. THE BODY BELOW IS BEN'S, VERBATIM --
-# no conversion was applied this time (see below for why, and for the one
-# thing to confirm by jog before the next hardware run).
+# Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM (parsed
+# YAML verified identical to the attachment). This is the rev that RAN as
+# campaign 54 -- 18/18 steps, 2026-09-01 18:17:41 -> 18:23:31 UTC.
+# See ../../results/pipette_test_20260901/README.md.
 #
-# Changes vs. the rev committed at 87c3c55 (which ran as campaign 33):
-#   tip_rack.calibration.a1.x   336.0 -> 366.0   (+30)
-#   tip_rack.calibration.a2.x   327.5 -> 357.5   (+30)
-#   tip_rack.location.x         336.5 -> 366.5   (+30)
-#   tip_rack.pickup_z            60   -> 57
-#   drop_z                       null (unchanged -- correct, see below)
-# All six vials are byte-for-byte unchanged.
+# Changes vs. the rev committed at 77b8057:
+#   tip_rack.calibration.a1.x   366.0 -> 336.0   (-30)
+#   tip_rack.calibration.a2.x   357.5 -> 327.5   (-30)
+#   tip_rack.location.x         366.5 -> 336.5   (-30)
+# Everything else -- all six vials, pickup_z 57, drop_z null -- is unchanged.
 #
 # ---------------------------------------------------------------------------
-# CONFIRM BEFORE RUNNING: is the anchor already in the pipette's deck frame?
+# The tip-rack frame question is settled: the anchor IS already converted
 # ---------------------------------------------------------------------------
-# Ben's note was that the coordinates were read with the pipette tip hovering
-# over the rack while the capper_decapper is the reference instrument, so the
-# +52/+12 conversion may be needed. I did NOT apply it, because the Y says it
-# already has been:
+# I flagged on 2026-08-31 that 366 might be a double-shifted value. Ben's
+# "I fixed the tip rack location" puts a1.x back to 336.0, which is the
+# 87c3c55 value, and 336.0 = the raw jog reading 284.0 + the pipette's
+# offset_x 52.0. The matching a1.y 37.5 = raw 25.5 + offset_y 12.0.
 #
-#   the rev at 87c3c55 has a1 = (336.0, 37.5). Its 37.5 is itself a CONVERTED
-#   value (measured 25.5, + the pipette's offset_y 12.0). This rev keeps
-#   37.5 and moves only X by +30. A fresh raw reading would not land on a
-#   previously-converted Y by coincidence.
-#
-# So this file reads as "the committed, already-converted rev with the rack
-# shifted 30 mm in +X", and applying the conversion a second time would put
-# the pickup 52/12 mm off. Taken at face value it commands the pipette to
-# gantry (314.0, 25.5, 57.0) -- verified through the loader.
-#
-# *** If instead you re-measured from scratch and pasted a raw reading, then
-# *** a1 must become (418.0, 49.5) and gantry X would be 366. One jog over
-# *** A1 settles it: the display should read 314.0, 25.5.
+# Confirmed on hardware: pick_up_tip commanded gantry (284.0, 25.5, 57.0),
+# straight out of the run's own G-code (gantry_command.log) -- exactly the
+# measured jog point. No further conversion is needed or wanted; applying
+# +52/+12 again would put the pickup 52 and 12 mm off.
 #
 # Note that validate_setup PASSES either way -- it only asks whether a
-# coordinate is reachable, never whether it is the right one. Both (314, 25.5)
-# and (366, 37.5) are inside the working volume.
+# coordinate is reachable, never whether it is the right one. Both (284, 25.5)
+# and (336, 37.5) are inside the working volume, which is why this had to be
+# settled by measurement rather than by a gate.
 #
 # ---------------------------------------------------------------------------
-# pickup_z 60 -> 57
+# pickup_z 57 -- ran, still unconfirmed by eye
 # ---------------------------------------------------------------------------
-# Ben lowered this because no tip was picked up in campaign 33. Sound
-# direction: $132 moving 125 -> 124 in the recalibration shifts every deck Z
-# reading by 1 mm, and 60 was carried unverified from the 2026-08-06
-# measurement. pick_up_tip is a friction press with NO sensor, so neither
-# CubOS nor the firmware can report a miss -- this needs an eyeball.
+# Lowered from 60 because no tip was picked up in campaign 33. The XY is now
+# proven correct, so if a tip still does not seat, Z is the only remaining
+# variable. pick_up_tip is a friction press with NO sensor, so neither CubOS
+# nor the firmware can report a miss -- this needs an eyeball.
 #
-# One thing it is NOT: the plunger. pick_up_tip's plunger command (MOVE_TO 0)
-# was a no-op in campaign 33, but on this pipette the tip is seated by
-# pressing the nozzle into the tip, not by the plunger, so the failed pickup
-# is a Z/XY question only. See ../../results/pipette_bench_20260831/README.md.
+# One thing it is NOT: the plunger. pick_up_tip's plunger command is
+# MOVE_TO 0.0, which is a retraction, and retractions are no-ops on this
+# firmware (2026-09-01 measurement: 0.107 s round trip, no motion). But the
+# tip is seated by pressing the nozzle into it, not by the plunger, so the
+# pickup is a Z/XY question only.
 #
 # ---------------------------------------------------------------------------
 # drop_z: null -- correct, leave it
 # ---------------------------------------------------------------------------
-# Reverted from the 60 tried on 2026-08-28. At this CubOS version drop_z is
-# read in exactly one place, deck/labware/tip_rack.py:158-160, as
-# max(abs(pickup_z - drop_z), 1.0) -- a bounding-box height, never a motion
-# target. Setting it equal to pickup_z collapses the rack's modeled height to
-# 1.0 mm and overrides the explicit `height: 66`.
+# At this CubOS version drop_z is read in exactly one place,
+# deck/labware/tip_rack.py:158-160, as max(abs(pickup_z - drop_z), 1.0) -- a
+# bounding-box height, never a motion target. Setting it equal to pickup_z
+# collapses the rack's modeled height to 1.0 mm and overrides `height: 66`.
 #
 # drop_tip still ejects a full tip-length above the slot: it engages the TIP
-# END to the rack's location.z 57 (gantry 92), while a seated tip's end is at
-# deck 22. The real fix is a `tip_disposal` deck entry -- that is what
-# drop_tip is meant to target, and it ejects at that entry's own location.z.
-# Give me a spot for used tips and I will add it.
+# END to the rack's location.z 57 (gantry 92 -- confirmed in this run's
+# G-code), while a seated tip's end is at deck 22. The real fix is a
+# `tip_disposal` deck entry -- that is what drop_tip is meant to target, and
+# it ejects at that entry's own location.z. Give me a spot for used tips and
+# I will add it.
 
 labware:
   vial_1:
@@ -162,14 +153,14 @@ labware:
     y_offset: 8.5
     calibration:
       a1:
-        x: 366
+        x: 336
         y: 37.5
       a2:
-        x: 357.5
+        x: 327.5
         y: 37.5
     pickup_z: 57
     location:
-      x: 366.5
+      x: 336.5
       y: 37.5
       z: 57
     slots: {}

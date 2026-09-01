@@ -89,6 +89,43 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (revised 2026-09-01) — RAN ON HARDWARE, 18/18
+
+`configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`
+and `configs/gantry/cub_xl_ben_pipette_capper.yaml` hold @benwhitney5463's
+2026-09-01 revision, run on the CubXL that day: **18/18 steps, 5m 50s,
+campaign 54, status `completed`**, no capper retries and no alarms.
+
+This is the first rev in which every offline gate is clean *including*
+`passive_shadow --tip-stuck` (0 interferences) — `safe_z: 115` lifts capper
+transits to gantry 99.065 and `park_position: [236, 175]` puts the passive
+pipette's sweep at deck X 288–336, clear of the vial column. The
+`travel_z` 100 → 87 fix on the tipped `move` is what made it validate:
+`travel_z` resolves in the moving instrument's tool frame, so 100 with a
+35 mm tip is gantry 135, past `z_max` 124.
+
+Two things it also settled by measurement rather than by argument:
+
+* **The tip-rack anchor is already in the pipette's deck frame.**
+  `pick_up_tip` commanded gantry (284.0, 25.5, 57.0) — exactly the measured
+  jog point — so a1 `(336.0, 37.5)` needs no further +52/+12 conversion.
+  `validate_setup` passes either way, so only the G-code could tell.
+* **The plunger's one-way fault survived the rewiring.** Every plunger
+  command was timed during the run: forward moves scale at 0.673 s/mm,
+  every retraction returns in ~0.11 s without moving. So `pick_up_tip`,
+  `blowout` and both `drop_tip` legs were no-ops; only the connect-time
+  prime and the `aspirate` actually turned the motor. The mounted pipette is
+  a p20 (confirmed by @benwhitney5463) while the Arduino firmware still
+  reports `max_vol: 300.00`.
+
+Full write-up, including the accumulated one-way plunger travel that needs an
+inspection:
+[`results/pipette_test_20260901/README.md`](results/pipette_test_20260901/README.md).
+
+`tools/run_with_plunger_trace.py` is the wrapper used to capture that trace —
+it wraps `OpentronsPipette._send_command` to record (code, args, elapsed,
+reply) and calls straight through, so run behaviour is unchanged.
+
 ## pipette_test protocol (revised 2026-08-31) — RAN ON HARDWARE, 18/18
 
 `configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`
