@@ -89,6 +89,32 @@ checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
 `pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
 `tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
 
+## pipette_test protocol (shortened, 2026-09-01 rev 2) — NOT run, blocked at connect
+
+`configs/protocol/vcl/pipette_test.yaml` is @benwhitney5463's shortened revision:
+vials 3–5 commented out (18 → 12 steps) and `height` on `aspirate`/`blowout`
+deepened from −15.0 to −35.0. The deck and gantry files are unchanged.
+
+Every offline gate passes on the Pi's exact CubOS — `validate_setup` PASS (12
+steps), `--mock` 12/12, `passive_shadow` 0 interferences nominal **and**
+tip-stuck — and the deeper insert clears the vial floor by ~45 mm (CubOS
+documents a vial's `height` as the outer rim→underside dimension, so
+`height: 83` with the rim at deck 55 puts the underside at deck −28).
+
+It did not run. **The plunger direction fault is fixed** — retractions move and
+round-trip time scales with distance both ways — but `HOME` now fails after
+26.35 s per attempt, identically on four attempts and independent of starting
+position, and `OpentronsPipette.connect()` refuses to connect without a plunger
+reference. That happens before the gantry is homed, so 0 steps ran and no motion
+was commanded. The evidence points at the limit-switch **input** rather than the
+motor drive: before the rewiring `HOME` returned 0.52 s claiming success (switch
+reading permanently asserted); it now never asserts.
+
+`patches/pipette-connect-tolerate-failed-home.patch` (written, **not applied**)
+turns the refusal into a warning so motion testing can continue with an
+unreferenced plunger. Full write-up:
+[`results/pipette_test_20260901b/README.md`](results/pipette_test_20260901b/README.md).
+
 ## pipette_test protocol (revised 2026-09-01) — RAN ON HARDWARE, 18/18
 
 `configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`

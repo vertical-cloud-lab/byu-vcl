@@ -1,92 +1,93 @@
-# pipette_test.yaml -- decap vial_1, pick up a tip, aspirate in vial_1, park
-# the pipette, recap vial_1, decap vial_2, blow out into vial_2, drop the tip,
-# then decap+cap vials 3..5. CubXL, 2026-09-01 rev.
+# pipette_test.yaml -- SHORTENED rev: decap vial_1, pick up a tip, aspirate in
+# vial_1, park the pipette, recap vial_1, decap vial_2, blow out into vial_2,
+# drop the tip, cap vial_2, home. CubXL, 2026-09-01 rev 2.
 #
 # Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM
 # (parsed YAML verified identical to the attachment).
 #
-# *** RAN ON HARDWARE 2026-09-01: campaign 54, 18/18 steps, 5m 50s,        ***
-# *** status `completed`. No capper retries, no alarms, no warnings.       ***
-# *** See ../../../results/pipette_test_20260901/README.md.                ***
+# *** NOT RUN ON HARDWARE. Every offline gate passes and the geometry is    ***
+# *** sound, but OpentronsPipette.connect() cannot establish a plunger      ***
+# *** reference: the limit switch never asserts, so run_protocol aborts     ***
+# *** before step 0 with no gantry motion at all. Measured, not predicted   ***
+# *** -- see ../../../results/pipette_test_20260901b/README.md.             ***
 #
-# Changes vs. the rev committed at 77b8057 -- both are the travel_z fix I
-# asked for on 2026-08-31, and both were needed:
-#   positions.pipette_park  Z 100.0 -> 87.0
-#   step 5 move  travel_z     100   -> 87
-#
-# ---------------------------------------------------------------------------
-# Why 87 and not 100: travel_z resolves in the MOVING instrument's tool frame
-# ---------------------------------------------------------------------------
-# instrument_mount.py:71 -- gantry_travel_z = travel_z + depth. Step 1 names
-# the capper (depth -15.935), so its travel_z 100 -> gantry 84.065, fine and
-# unchanged. Step 5 names the PIPETTE with a 35 mm tip attached, so the tool
-# point rides 35 mm below the carriage and travel_z 100 -> gantry 135, which
-# is 11 mm past z_max 124. That was the 4-violation FAIL on the previous rev.
-#
-# 87 + 35 = gantry 122, in bounds. (89 would be the ceiling, 124 - 35, and is
-# also the plane the hover-clamp patch picks for aspirate/blowout/drop_tip --
-# so 87 sits 2 mm under the clamped plane. Harmless: the two heights differ
-# only for this one explicit move, and lower is the conservative direction.)
-#
-# The hover-clamp patch deliberately does NOT rescue an explicit move: it
-# clamps the implicit hover inside an engage command, which the protocol
-# author has no other way to influence. Silently lowering a coordinate the
-# author wrote by hand would be the wrong behaviour.
+# Changes vs. the rev that ran as campaign 54 (commit 6758402):
+#   positions.park_position  Y 170.0 -> 100.0
+#   aspirate vial_1  height  -15.0  -> -35.0
+#   blowout  vial_2  height  -15.0  -> -35.0
+#   decap+cap of vials 3, 4, 5 commented out   (18 steps -> 12)
 #
 # ---------------------------------------------------------------------------
-# Geometry, as actually commanded (from the run's own G-code)
+# height: -35.0 -- checked against the vial geometry, and it clears
 # ---------------------------------------------------------------------------
-#   capper park_position, travel_z 100      gantry Z  84.065
-#   capper transit / park at safe_z 115     gantry Z  99.065   (x20)
-#   capper engage over a vial               gantry Z  54.065   (x10)
-#   bare-nozzle hover at safe_z             gantry Z 115.0
-#   pick_up_tip tip_rack.A1                 gantry (284.0, 25.5, 57.0)
-#   tipped hover, CLAMPED by the patch      gantry Z 124.0     (x14)
-#   pipette_park move, travel_z 87          gantry Z 122.0
-#   aspirate / blowout, height -15.0        gantry Z  75.0     (tip end 15 mm in)
+# `height` is a labware-relative offset from the vial RIM, and an engage
+# descends the moving instrument's TOOL POINT to `location.z + height`. With a
+# 35 mm tip attached the tool point is the tip end, so:
+#
+#   vial rim (location.z)                       deck Z  55.0
+#   + height                                          -35.0
+#   = tip end                                   deck Z  20.0   -> gantry Z 55.0
+#   nozzle (tip end + tip_length 35)            deck Z  55.0   == the rim
+#
+# Gantry Z 55 is the deepest pipette pose ever commanded on this machine (the
+# -15.0 rev commanded 75). It is safe on the deck model: CubOS documents a
+# vial's `height` as the OUTER height, rim -> underside (deck/labware/vial.py),
+# so `height: 83` with the rim at deck 55 puts the underside at deck -28 and
+# the tip end has ~45 mm of clearance to the floor.
+#
+# The number to eyeball is the nozzle, not the tip: it ends up at exactly rim
+# height, so the nozzle shoulder is level with the vial mouth rather than the
+# ~20 mm above it that the -15.0 rev gave. XY is proven correct (campaign 54's
+# G-code put pick_up_tip on Ben's measured jog point to the millimetre), so
+# this only matters if the rim Z is off or a tip fails to seat.
+#
+# ---------------------------------------------------------------------------
+# park_position Y 170 -> 100
+# ---------------------------------------------------------------------------
+# This is the protocol's own named position for step 1 (the capper's first
+# move out of the homed corner), not the capper's `park_position` in the
+# gantry file, which is unchanged at [236, 175] and is what decap/cap use.
+#
+# Deck (206, 100) sits inside vial_3's footprint (centre Y 93, diameter 28),
+# but at travel_z 100 the capper tool point rides deck Z 100 -- 30 mm above
+# the cap tops at deck 70 -- and the passive pipette nozzle is at deck
+# (258, 112), 52 mm clear of the column in X. passive_shadow: 0 interferences.
+#
+# ---------------------------------------------------------------------------
+# Geometry, as commanded (mock trace, cubos/results/pipette_test_20260901b/)
+# ---------------------------------------------------------------------------
+#   step 1 capper park, travel_z 100        gantry Z  84.065
+#   capper transit / park at safe_z 115     gantry Z  99.065
+#   capper engage (rim 55 + engage 15)      gantry Z  54.065
+#   bare-nozzle hover at safe_z 115         gantry Z 115.0
+#   pick_up_tip tip_rack.A1                 gantry   (284.0, 25.5, 57.0)
+#   tipped hover, CLAMPED by the patch      gantry Z 124.0
+#   aspirate vial_1 / blowout vial_2        gantry Z  55.0    <- tip end deck 20
+#   step 5 pipette_park, travel_z 87        gantry Z 122.0
 #   drop_tip tip_rack.A1                    gantry Z  92.0
 #
-# X only ever takes four values: 236 (capper park), 206 (vial column),
-# 284 (tip rack), 154 (pipette over the vial column, = 206 - offset_x 52).
+# Offline gates, on the Pi's exact CubOS (cbc33dc + all three local patches):
+#   validate_setup   PASS, 12 steps
+#   run_protocol --mock   12/12
+#   passive_shadow        0 interferences
+#   passive_shadow --tip-stuck   0 interferences
 #
 # ---------------------------------------------------------------------------
-# Offline gates, all clean at this rev
+# Why it did not run
 # ---------------------------------------------------------------------------
-#   validate_setup                  PASS, 18 steps, 12 targets
-#   run_protocol --mock             18/18
-#   passive_shadow                  0 interferences
-#   passive_shadow --tip-stuck      0 interferences
+# Nothing in these three files. `OpentronsPipette.connect()` sees the
+# firmware's `homed: 0`, calls `home()`, and both legs of home()'s built-in
+# retry return ERR:{"error":"Failed to home pipette"} after 26.35 s each. The
+# driver then closes the port and raises PipetteConnectionError, which happens
+# before the gantry is homed -- 0 steps, no motion.
 #
-# The tip-stuck column is the one that matters here: drop_tip cannot confirm
-# the tip left (commands/pipette.py calls clear_attached_tip_extension()
-# unconditionally), so every step after 9 is planned bare-nozzle regardless of
-# what physically happened. At safe_z 115 with park_position [236, 175] that
-# no longer matters -- a stuck tip collides with nothing. This is the first
-# rev of this protocol for which that is true.
+# The plunger DIRECTION fault from 2026-08-31 is fixed (retractions now move,
+# and round-trip time scales with distance both ways). The limit switch is the
+# new and only blocker.
 #
-# ---------------------------------------------------------------------------
-# THE PLUNGER DOES NOT DO WHAT THIS FILE SAYS -- firmware, not config
-# ---------------------------------------------------------------------------
-# Measured during this run (every plunger command was timed; motion costs a
-# consistent ~0.673 s/mm, so a round trip that does not scale with the
-# commanded distance did not move):
-#
-#   step         plunger command   dt        moved?
-#   connect      HOME              0.520 s   counter zeroed, no motion
-#   connect      MOVE_TO 5.0       3.355 s   YES  (5 mm forward)
-#   pick_up_tip  MOVE_TO 0.0       0.107 s   NO   (retraction)
-#   aspirate     ASPIRATE 0.5      5.963 s   YES
-#   blowout      MOVE_TO 7.0       0.108 s   NO   (7 < current 36)
-#   drop_tip     MOVE_TO 10.0      0.109 s   NO
-#   drop_tip     MOVE_TO 5.0       0.110 s   NO
-#
-# So `blowout:` and `drop_tip:` in this file are currently inert, and the
-# tip is not ejected. Until the plunger retracts, treat the protocol as
-# "decap / tip press / aspirate / recap" and remove the tip by hand.
-
 
 positions:
-  park_position: [206.0, 170.0, 100.0]
+  park_position: [206.0, 100.0, 100.0]
   pipette_park:  [258.0, 182.0, 87.0]
 
 protocol:
@@ -111,7 +112,7 @@ protocol:
   - aspirate:
       position: vial_1
       volume_ul: 20.0
-      height: -15.0
+      height: -35.0
   - move: 
       instrument: pipette
       position: pipette_park
@@ -133,7 +134,7 @@ protocol:
 
   - blowout:
       position: vial_2
-      height: -15.0
+      height: -35.0
 
   - drop_tip:
         position: tip_rack.A1
@@ -143,32 +144,32 @@ protocol:
       instrument: vial_capper_decapper
       vial: vial_2
 
-  # --- vial 3 ---
-  - decap:
-      instrument: vial_capper_decapper
-      vial: vial_3
+#   # --- vial 3 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_3
 
-  - cap:
-      instrument: vial_capper_decapper
-      vial: vial_3
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_3
 
-  # --- vial 4 ---
-  - decap:
-      instrument: vial_capper_decapper
-      vial: vial_4
+#   # --- vial 4 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_4
 
-  - cap:
-      instrument: vial_capper_decapper
-      vial: vial_4
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_4
 
-  # --- vial 5 ---
-  - decap:
-      instrument: vial_capper_decapper
-      vial: vial_5
+#   # --- vial 5 ---
+#   - decap:
+#       instrument: vial_capper_decapper
+#       vial: vial_5
 
-  - cap:
-      instrument: vial_capper_decapper
-      vial: vial_5
+#   - cap:
+#       instrument: vial_capper_decapper
+#       vial: vial_5
 
 
   # Modeled with the tip still attached (nothing runnable clears it); the

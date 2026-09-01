@@ -269,3 +269,52 @@ s.write(b"6\n"); s.flush(); print(s.readline())   # 6 = CMD_EMAG_OFF
 s.close()
 EOF
 ```
+
+---
+
+## `pipette-connect-tolerate-failed-home.patch`
+
+**Written 2026-09-01. NOT APPLIED — applying it is a deliberate trade-off, see below.**
+
+### Symptom
+
+Every `run_protocol` with the pipette live (`offline: false`) aborts at instrument
+connect, before the gantry is homed and before any G-code is sent:
+
+```
+CONNECT FAILED in 56.5s: PipetteConnectionError(
+  'Plunger home/prime after connect failed: Command 10 failed:
+   ERR:{"error":"Failed to home pipette"}')
+```
+
+### Cause
+
+`OpentronsPipette.connect()` sees the firmware's `homed: 0` after the port-open
+reset and calls `home()`, which already retries once — its own comment explains
+why: *"Firmware gives up after ~31 mm of upward travel per attempt, but full
+plunger travel is 55 mm: a plunger parked low needs a second leg to reach the
+limit switch."* On the CubXL **both** legs run their full budget, 26.35 s each,
+so ~62 mm is swept against a 55 mm range and the switch is never seen. Measured
+four times on 2026-09-01, identical to the centisecond and independent of the
+starting position — see `cubos/results/pipette_test_20260901b/README.md`.
+
+Upstream's refusal is **correct**: without a home the firmware's position counter
+is meaningless, so absolute `MOVE_TO` targets land somewhere unknown and a
+commanded volume is not a volume.
+
+### What the patch does
+
+Turns the refusal into a `logger.warning` and continues with `_is_homed = False`,
+so motion testing can proceed while the limit switch is being fixed. It does not
+make volumes real, and it should be reverted the moment homing works.
+
+This is the one patch here that is **not** a bug fix — the other three correct
+upstream defects. Apply it only for a deliberate motion test:
+
+```bash
+cd ~/CubOS && git apply ~/byu-vcl/cubos/patches/pipette-connect-tolerate-failed-home.patch
+# revert with: git apply -R ~/byu-vcl/cubos/patches/pipette-connect-tolerate-failed-home.patch
+```
+
+Verified with `git apply --check` against the Pi's tree (`cbc33dc` + the three
+applied patches) on 2026-09-01.
