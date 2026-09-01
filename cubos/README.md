@@ -1,0 +1,429 @@
+# CubOS on the VCL Raspberry Pi
+
+Provenance for the first CubOS install and hardware protocol run on the lab's
+Raspberry Pi 5 (the OT-2 / stream-camera Pi), performed 2026-07-27 via
+[issue #165](https://github.com/vertical-cloud-lab/byu-vcl/issues/165).
+
+## What lives where on the Pi
+
+- CubOS checkout: `~/CubOS` (clone of [Ursa-Laboratories/CubOS](https://github.com/Ursa-Laboratories/CubOS)), venv at `~/CubOS/.venv` with `packages/core` installed (`pip install -e packages/core`)
+- Configs (copies of `configs/` here, with `serial_port` set to `/dev/ttyUSB0`):
+  - `~/CubOS/packages/core/configs/gantry/cubxl_vcl_1_instrument.yaml`
+  - `~/CubOS/packages/core/configs/deck/vcl_deck.example.yaml`
+  - `~/CubOS/packages/core/configs/protocol/vcl/vial_scan.example.yaml`
+- Run data store: `~/.cubos/panda_data.db`; result CSV exports under
+  `~/CubOS/packages/core/src/cubos/data/results/`
+
+## How the protocol was run
+
+```bash
+cd ~/CubOS
+.venv/bin/python -m cubos.tools.validate_setup  <gantry> <deck> <protocol>  # offline check
+.venv/bin/python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>  # offline dry-run
+.venv/bin/python -m cubos.tools.run_protocol        <gantry> <deck> <protocol>  # hardware
+```
+
+with the three config paths above. The hardware run (campaign 2) homed the
+CubXL, visited all 8 vial scan positions at deck-frame Z 63 with travel Z 85,
+parked, and re-homed: 12 steps, started 20:51:19 UTC, completed 20:53:43 UTC.
+CSV exports for that campaign are in `results/campaign_2_20260727_205119/`
+(motion-only protocol, so the experiment/measurement tables are empty).
+
+## Capper/decapper test protocol (PASSED on hardware 2026-08-03)
+
+`configs/protocol/vcl/capper_decapper_test.yaml` (vials 2–7: decap → pipette
+insertion → cap) completed 27/27 steps on the CubXL on 2026-08-03 with the
+re-measured `cub_xl_ben_pipette_capper.yaml` + `sterling_deck.yaml`. Full
+attempt-by-attempt history in `results/capper_decapper_test_20260803/README.md`.
+
+## Tip-pickup capper test protocol (written 2026-08-06, NOT run)
+
+`configs/protocol/vcl/capper_decapper_tip_test.yaml` extends the above for the
+re-measured 6-vial deck (`configs/deck/sterling_6vials.yaml`, which adds a
+1×1 `tip_rack` at (255.5, 33.5), pickup Z 60, 35 mm tips): park → decap →
+`pick_up_tip` → insert (tip modeled by CubOS) → cap, for vials 1–6.
+**Currently blocked**: all six vials sit at deck X ≈ 113, but the pipette
+(`offset_x: 135.0`) cannot reach below deck X 135, so the 12 insert/retract
+moves fail `validate_setup` at gantry X −22. A +30 mm shift of every vial
+`location.x` (plus the matching protocol positions) validates PASS and
+mock-runs 28/28. See the protocol header for the full analysis, including the
+tip-shadow corridor the offline validator cannot see.
+
+## Tip-pickup capper test, j_config_1 deck (written 2026-08-08, NOT run)
+
+`configs/protocol/vcl/capper_decapper_tip_test_j1.yaml` is the same
+park → decap → `pick_up_tip` → insert → cap sequence retargeted at
+@jarrettshupe's setup: the gantry was **re-calibrated and the pipette
+physically remounted** (offset 135/13 → 51.97/12 — which fixes the X-reach
+blocker above), and `configs/deck/j_config_1.yaml` uses a new measurement
+convention where each vial's `location.z` is the raw jog-widget WPos at which
+the capper engages the cap (paired with `engage_depth_mm: 17.248 = -depth` in
+the gantry config). The tip position was measured in the capper's reference
+frame and converted (+51.97, +12.0 in XY) in the deck's `tip_rack` entry.
+`validate_setup` PASS, `--mock` 28/28. **The older sterling configs/protocols
+no longer describe the machine** — their numbers predate the remount. See the
+protocol header for the passive-pipette corridor that must be eyeballed
+before any hardware run. **Superseded 2026-08-24:** the gantry was
+re-calibrated again (next section), so the j_config_1 numbers in turn no
+longer describe the machine.
+
+## Sterling 6-vial + Ursa tip rack deck (added 2026-08-24, NOT run)
+
+`configs/deck/sterling_6vials_tiprack.yaml` is @benwhitney5463's re-measured
+6-vial column (deck X 187, Y 26–191, rim Z 55) plus the CubXL docs' standard
+tip rack (`load_name: ursa_tip_rack`: 2 columns × 15 rows = 30 tips, 8.5 mm
+pitch, body 66 × 138 × 22 mm), anchored by one measured point — the
+bottom-right tip, jogged in the capper's reference frame to WPos (265, 1),
+converted to the pipette deck frame (317, 13) = tip `A1`. The second
+calibration point is derived from the docs' pitch, not measured (rack assumed
+square to the axes; see the deck header for the mirrored-rack fallback).
+`pickup_z: 60.0` is carried from Ben's 2026-08-06 measurement — confirm by
+jog before the first hardware pickup.
+
+The paired `configs/gantry/cub_xl_ben_pipette_capper.yaml` is Ben's
+2026-08-24 re-calibration (working volume 386.333 × 232.0 × 122.0, capper
+depth −15.935 / engage_depth 13, pipette offset 52.0 / 12.0, park [125, 50]),
+committed byte-identical to the attachment — it already carried
+`/dev/ttyUSB0`, so for the first time no port edit was needed. Offline
+checks: `validate_setup` PASS and a 7-step `--mock` (corner-tip hovers +
+`pick_up_tip: tip_rack.A1` + a tipped move) pass; commanding the pipette to
+`tip_rack.A1` reproduces the measured WPos (265.0, 1.0) exactly.
+
+## pipette_test protocol (shortened, 2026-09-01 rev 3) — RAN ON HARDWARE, 12/12
+
+Campaign 73, `19:23:23 → 19:28:39` UTC (5 m 16 s), status `completed`. Same
+trio as campaign 69, unchanged, run after another rewiring pass. Gantry and
+capper clean; `validate_setup` PASS, `--mock` 12/12, `passive_shadow` 0
+interferences nominal **and** tip-stuck.
+
+**The plunger did not move, and made no sound** — reported by
+@benwhitney5463 watching the machine. The trace is byte-for-byte the shape of
+campaign 69's: both directions scaling at ~0.665 s/mm. That is the finding:
+`stepMotor()` bit-bangs the STEP pin and counts, with **no feedback of any
+kind**, so those timings prove the *Arduino emitted the steps* and nothing
+about the motor. Everything upstream of STEP/DIR works; the TMC2209 is not
+driving the coils, and total silence means no coil current at all.
+
+Root cause found in the firmware source: the Cubware wiring diagram's four
+Arduino→TMC2209 signal lines are each **shifted one analog pin** from the pin
+map in [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino),
+and **A4 — the firmware's `ENABLE_PIN` — is connected to nothing**. Full
+analysis, corrected wiring table, the pipette's 10-pin mapping, and the
+knock-on effects on microstepping and volume units:
+[`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md). Run
+write-up: [`results/pipette_test_20260901d/README.md`](results/pipette_test_20260901d/README.md).
+
+Reading the firmware also closed several open questions: `ASPIRATE 0.5` →
+`35.45` is exact arithmetic (`aspirate()` primes to 36.0, clamps the argument
+up to `MIN_VOLUME 5.0` µL, targets `36.0 − 5×0.1098`); 0.673 s/mm is
+`MOVEMENT_VELOCITY 2500` × `STEPS_PER_MM 1592`; `HOME`'s 26.35 s is the
+50 000-step budget in `homePipette()`, so the seek ran to completion and D9
+never went HIGH; and `max_vol: 300.00` is `MAX_VOLUME 300.0` — the firmware is
+built for a P300.
+
+## pipette_test protocol (shortened, 2026-09-01 rev 2) — RAN ON HARDWARE, 12/12
+
+Campaign 69, `19:01:52 → 19:07:08` UTC (5 m 16 s), status `completed`.
+The first run in which every plunger command was **issued and stepped** rather
+than declined — `blowout` and `drop_tip` had returned in a flat ~0.1 s on every
+previous run. (Read at the time as "actuated". Campaign 73 showed that the
+firmware stepping and the plunger moving are different things; see above.)
+
+The trio is the one committed at `abd81d6`, run unchanged: @benwhitney5463's
+shortened protocol (vials 3–5 commented out, 18 → 12 steps, `height` on
+`aspirate`/`blowout` deepened from −15.0 to −35.0) with the deck and gantry
+files untouched.
+
+@benwhitney5463 rewired the pipette between the previous session's observed
+`USB disconnect` (18:26 UTC) and `/dev/ttyACM0` re-enumerating (18:50 UTC). The
+rewiring **kept** the direction fix and did **not** fix homing: `HOME` still
+fails after 26.35 s, identically from pos 0.0 and pos 3.0, so the limit switch
+never asserts anywhere in the plunger's travel.
+
+To run it, `patches/pipette-connect-tolerate-failed-home.patch` was **applied**
+to the Pi — it downgrades `OpentronsPipette.connect()`'s refusal to a warning
+and continues with an unreferenced plunger. Revert it once the switch works.
+
+Every plunger `MOVE_TO` in the run scaled at 0.663–0.666 s/mm, two of them
+backwards in the firmware's counter (`blowout` 28.45 mm in 18.862 s;
+`drop_tip`'s second leg 5.00 mm in 3.322 s). Offline gates on the Pi's exact
+CubOS: `validate_setup` PASS (12 steps), `--mock` 12/12, `passive_shadow` 0
+interferences nominal **and** tip-stuck.
+
+The `ASPIRATE 0.5` → 35.45 reading, flagged here as unexplained, is resolved:
+it is the firmware clamping the argument to `MIN_VOLUME 5.0` µL and priming to
+`PRIME_POSITION 36.0` first. Full write-up:
+[`results/pipette_test_20260901c/README.md`](results/pipette_test_20260901c/README.md).
+
+## pipette_test protocol (shortened, 2026-09-01 rev 2) — offline analysis, before the run
+
+`configs/protocol/vcl/pipette_test.yaml` is @benwhitney5463's shortened revision:
+vials 3–5 commented out (18 → 12 steps) and `height` on `aspirate`/`blowout`
+deepened from −15.0 to −35.0. The deck and gantry files are unchanged.
+
+Every offline gate passes on the Pi's exact CubOS — `validate_setup` PASS (12
+steps), `--mock` 12/12, `passive_shadow` 0 interferences nominal **and**
+tip-stuck — and the deeper insert clears the vial floor by ~45 mm (CubOS
+documents a vial's `height` as the outer rim→underside dimension, so
+`height: 83` with the rim at deck 55 puts the underside at deck −28).
+
+It did not run. **The plunger direction fault is fixed** — retractions move and
+round-trip time scales with distance both ways — but `HOME` now fails after
+26.35 s per attempt, identically on four attempts and independent of starting
+position, and `OpentronsPipette.connect()` refuses to connect without a plunger
+reference. That happens before the gantry is homed, so 0 steps ran and no motion
+was commanded. The evidence points at the limit-switch **input** rather than the
+motor drive: before the rewiring `HOME` returned 0.52 s claiming success (switch
+reading permanently asserted); it now never asserts.
+
+`patches/pipette-connect-tolerate-failed-home.patch` was written here and left
+unapplied at the time; it was applied the same day for campaign 69 (above).
+Full write-up:
+[`results/pipette_test_20260901b/README.md`](results/pipette_test_20260901b/README.md).
+
+## pipette_test protocol (revised 2026-09-01) — RAN ON HARDWARE, 18/18
+
+`configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`
+and `configs/gantry/cub_xl_ben_pipette_capper.yaml` hold @benwhitney5463's
+2026-09-01 revision, run on the CubXL that day: **18/18 steps, 5m 50s,
+campaign 54, status `completed`**, no capper retries and no alarms.
+
+This is the first rev in which every offline gate is clean *including*
+`passive_shadow --tip-stuck` (0 interferences) — `safe_z: 115` lifts capper
+transits to gantry 99.065 and `park_position: [236, 175]` puts the passive
+pipette's sweep at deck X 288–336, clear of the vial column. The
+`travel_z` 100 → 87 fix on the tipped `move` is what made it validate:
+`travel_z` resolves in the moving instrument's tool frame, so 100 with a
+35 mm tip is gantry 135, past `z_max` 124.
+
+Two things it also settled by measurement rather than by argument:
+
+* **The tip-rack anchor is already in the pipette's deck frame.**
+  `pick_up_tip` commanded gantry (284.0, 25.5, 57.0) — exactly the measured
+  jog point — so a1 `(336.0, 37.5)` needs no further +52/+12 conversion.
+  `validate_setup` passes either way, so only the G-code could tell.
+* **The plunger's one-way fault survived the rewiring.** Every plunger
+  command was timed during the run: forward moves scale at 0.673 s/mm,
+  every retraction returns in ~0.11 s without moving. So `pick_up_tip`,
+  `blowout` and both `drop_tip` legs were no-ops; only the connect-time
+  prime and the `aspirate` actually turned the motor. The mounted pipette is
+  a p20 (confirmed by @benwhitney5463) while the Arduino firmware still
+  reports `max_vol: 300.00`.
+
+Full write-up, including the accumulated one-way plunger travel that needs an
+inspection:
+[`results/pipette_test_20260901/README.md`](results/pipette_test_20260901/README.md).
+
+`tools/run_with_plunger_trace.py` is the wrapper used to capture that trace —
+it wraps `OpentronsPipette._send_command` to record (code, args, elapsed,
+reply) and calls straight through, so run behaviour is unchanged.
+
+## pipette_test protocol (revised 2026-08-31) — RAN ON HARDWARE, 18/18
+
+`configs/protocol/vcl/pipette_test.yaml`, `configs/deck/ben_6vials_tiprack.yaml`
+and `configs/gantry/cub_xl_ben_pipette_capper.yaml` hold @benwhitney5463's
+2026-08-31 revision, run on the CubXL that day: **18/18 steps, 4m 39s, campaign
+33, no retries.** First run in which the pipette's own `aspirate` / `blowout` /
+`drop_tip` executed on hardware. The protocol is the corrected 2026-08-28 rev-2
+with vial_6 removed; its body is verbatim, only the header was rewritten.
+
+Two edits were needed to make it runnable, both documented inline:
+
+* **Gantry** — `grbl_settings.max_travel_{x,y,z}` synced 389.333/235/125 →
+  **409/309/124** to match the controller. Those three are in
+  `Gantry._validate_grbl_settings`' critical set, so until they agreed every run
+  aborted at connect with *"Critical GRBL settings mismatch"*. `working_volume`
+  was deliberately left tighter.
+* **Deck** — the tip-rack anchor converted from the reference instrument's frame
+  into the pipette's deck frame, `(284, 25.5)` → **`(336.0, 37.5)`** (`+52/+12`).
+  The measurement was taken with the pipette tip hovering, but the jog display
+  reports the capper. Verified through the loader: `pick_up_tip: tip_rack.A1`
+  then commands gantry (284.0, 25.5, 60.0), the measured point exactly. Note
+  `validate_setup` passes either way — it checks reachability, not correctness.
+
+This run also settled the deck-frame ambiguity flagged on 2026-08-28: `decap
+vial_1` captured on the first attempt, so the vial column really is at
+y 27..192 in the post-recalibration frame. Had it been stale the sensor
+interlock would have aborted at step 2 over bare deck. Full write-up, the
+verification matrix and what remains open (`drop_tip` releasing 35 mm above the
+slot, unverified `pickup_z`, the `max_vol 300` vs `p20_single_gen2` mismatch) in
+[`results/pipette_test_20260831/README.md`](results/pipette_test_20260831/README.md).
+
+`safe_z: 87` with capper `park_position: [206, 50]` is what makes this work
+without patching CubOS: the tipped hover lands on gantry 122 (= `z_max`) and
+every capper leg is a pure-Y move that holds the passive pipette 52 mm clear of
+the vial column. `cub_xl_ben_pipette_capper_tipsafe.yaml` plus
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` remain the alternative
+route (0 interferences even with a stuck tip) but were not needed.
+
+## Plunger + travel-height diagnosis (2026-08-31, read-only — nothing commanded)
+
+`results/pipette_diagnosis_20260831/` answers three things Ben raised after
+watching campaign 33 run.
+
+**The head travels below the `safe_z` you jog to, by `depth`.** CubOS commands
+`gantry_z = safe_z + depth`, and the jog widget shows raw WPos with no
+instrument offset. At `safe_z: 87` with the capper's `depth: -15.935`, every
+capper leg runs at gantry **71.065** — 15.935 mm lower than a jog to 87. The
+bare nozzle (`depth: 0.0`) is the lowest thing on the head and rides at that
+same deck Z. Held-cap clearance over neighbouring caps works out to
+`safe_z − 81`, so **lowering `safe_z` makes both the rail proximity and the
+cap knock-off worse**, not better.
+
+**`working_volume.z_max` must stay ≤ 124.** The controller still reports
+`$132 = 124.000` with `$20 = 1`; reachable deck-frame Z is `[0, 124]`. Unpatched,
+the tipped hover pins `safe_z ≤ z_max − 35`, so 89 is the ceiling. Going higher
+needs `patches/tipped-hover-clamp-and-ceiling-travel.patch`.
+
+**The plunger's absolute moves are no-ops.** `aspirate` and `blowout` share an
+identical preceding 47 mm descent; the aspirate step took 8.068 s and the
+blowout 2.216 s. Command 12 (relative ASPIRATE) runs the stepper; command 11
+(absolute MOVE_TO — which is what `blowout`, `drop_tip` and `pick_up_tip` all
+use) returns in ~0.1 s for targets of 0, 5, 7 and 10 mm alike. The plunger was
+also never homed: instrument connect took 12.4 s for both instruments against
+a ~35 s homing pass, and `OpentronsPipette.home()` sets `_is_homed = True`
+without re-reading the firmware. `tools/pipette_bench_check.py` isolates the
+plunger from the protocol engine to separate wiring from firmware; it is
+read-only unless given `--move`.
+
+## pipette_test protocol (revised 2026-08-28, NOT run — do not run as attached)
+
+`configs/protocol/vcl/pipette_test.yaml` and
+`configs/deck/ben_6vials_tiprack.yaml` hold @benwhitney5463's 2026-08-28
+revision (bodies exactly as attached to PR #171; parsed YAML verified
+identical, headers rewritten). The deck follows a machine recalibration —
+vials moved to x 206, y 27..192 — and supersedes
+`sterling_6vials_tiprack.yaml`. The protocol adds a real `aspirate` in
+vial_1, `cap` vial_1, `decap` vial_2, `blowout` in vial_2, then `drop_tip`.
+
+It was **not** run: the Pi was off the tailnet all session (last seen
+2026-08-28 00:26 UTC). Independently, **the trio as attached must not be
+run.** It passes `validate_setup` and `--mock`, and it still shears the
+attached tip sideways out of vial_1 on step 5 — both offline gates only
+check the instrument a command names, never the other tool on the head.
+
+Use `configs/gantry/cub_xl_ben_pipette_capper_tipsafe.yaml` (`safe_z: 122`,
+capper `park_position: [206, 50]`) **together with**
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` applied on the Pi.
+Verified 0 interferences, including the case where the tip never leaves the
+nozzle. Neither half works without the other; the analysis, the geometric
+reason no value of `safe_z` can fix it, and the `drop_z` answer are in
+[`results/pipette_test_20260828/README.md`](results/pipette_test_20260828/README.md).
+
+`tools/passive_shadow.py` was added for this: it mock-runs a protocol,
+expands each pose into the driver's real per-axis G-code segments, and
+sweeps the *passive* instrument through them against the deck's labware.
+Run it alongside `validate_setup` on anything that mixes the capper and a
+tipped pipette.
+
+## pipette_test protocol (revised 2026-08-26, NOT run)
+
+`configs/protocol/vcl/pipette_test.yaml` and
+`configs/gantry/cub_xl_ben_pipette_capper.yaml` now hold @benwhitney5463's
+2026-08-26 revision, committed exactly as attached to PR #171 (comments added,
+no values changed). The revision swaps the `move`-stroke substitutions for
+literal `mix:`/`drop_tip:`, drops `safe_z` 114 -> 87 to make those validate,
+and brings the pipette online on the capper's `/dev/ttyACM0`.
+
+It was **not** run: the runner lost tailnet access when the `Connect to
+Tailscale` step was removed from `main`'s workflow. The offline audit —
+validation matrix across three CubOS versions, the ~3 mm cap clearance that
+`safe_z: 87` buys, the placeholder plunger constants, and the unarbitrated
+shared serial port — is in
+[`results/pipette_test_20260826/README.md`](results/pipette_test_20260826/README.md).
+
+## pipette_test protocol, original revision (written 2026-08-25, NOT run)
+
+`configs/protocol/vcl/pipette_test.yaml` retargets the capper test at the
+2026-08-24 deck/gantry pair above: park → decap vial_1 → `pick_up_tip`
+tip_rack.A1 → three tip-frame mix strokes inside vial_1 (40↔48) → tipped
+move to the park position → `breakpoint` (tip comes off **by hand**; run
+from a foreground terminal — headless runs skip the stop) → cap vial_1 →
+decap+cap vials 2–6 → home. `validate_setup` PASS, `--mock` 27/27.
+
+Two requested commands are deliberately absent, with the full analysis in
+the protocol header: the literal `mix:` and `drop_tip:` commands travel at
+safe_z **in the tip frame** (114 + 35 = gantry Z 149 on a 122 mm machine),
+so `validate_setup` rejects them on this hardware and no protocol/deck edit
+can route around it — that needs a CubOS change (engage commands have no
+`travel_z`) plus an online pipette before the ejector/plunger are real. The
+tip rack's `drop_z` is read by **no command** at this CubOS version
+(`cbc33dc`); a runnable `drop_tip` targets a separate `tip_disposal` deck
+entry and uses that entry's own `location.z`.
+
+**Update 2026-08-25:** the CubOS change now exists as
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` — offline-validated
+but **deliberately NOT applied to the Pi** (it changes motion planning for
+every protocol; see the patch entry in `patches/README.md` for what moves
+differently and the longer-tip caveat). With it applied, a tipped engage
+hovers at tip-end Z 87 / gantry 122 instead of being rejected at 149.
+
+## Notes
+
+- The gantry enumerates as `/dev/ttyUSB0` on the Pi; the original config's
+  `serial_port: COM6` is Windows-specific and was the only edit needed.
+- The potentiostat instrument is configured `offline: true`, so the base
+  `cubos` install suffices — no vendor SDK extra needed for motion-only runs.
+- The Pi's OT-2 overhead camera stream (port 8000) kept running throughout;
+  CubOS's API port 8742 remains free for the Operator UI later.
+
+## 2026-08-31 (rev 2) — hover-clamp patch applied, plunger root-caused
+
+`patches/tipped-hover-clamp-and-ceiling-travel.patch` is now **applied** to
+`~/CubOS` on the Pi (all three local patches live). That is what lets
+`cnc.safe_z` rise from 87 to **115**, which is the fix for both symptoms in
+the campaign-33 video: the bare nozzle now rides at deck 99.065 during
+capper legs instead of 71.065, and a gripped cap clears its neighbours by
+30 mm instead of 6. `passive_shadow` reports **0** interferences nominally
+*and* with `--tip-stuck` — the first time the tip-stuck case has been clean.
+
+**The plunger only turns one way.** Bench-tested directly against the
+Arduino: `MOVE_TO` executes only when the target is above the current
+position, any retraction returns `OK` in 0.11 s without moving, and `HOME`
+zeroes the counter rather than seeking the endstop. That is the complete
+explanation for campaign 33's blowout and drop_tip doing nothing — `aspirate`
+ran, left the plunger at pos 36, and every later command was a retraction.
+It is a DIR-line/firmware fault, not CubOS, not the shared `/dev/ttyACM0`,
+and no config change works around it. Full evidence and the command matrix:
+`results/pipette_bench_20260831/README.md`.
+
+The rev-2 trio fails validation on one number — a tipped `move` at
+`travel_z: 100` resolves to gantry 135, past `z_max` 124. `travel_z: 89` in
+the two places that name the pipette makes it PASS, 18 steps; the corrected
+copy is in that same results directory. Not run: Ben asked for the bench
+test only.
+
+## 2026-09-01 (rev 3) — campaign 77, 12/12, and the plunger fault is ONE PIN
+
+Ben's rev-3 protocol (`park_position [206, 25, 115]`, step 1 `travel_z: 115`)
+ran on the CubXL as **campaign 77, 12/12 steps, 4m 3s, `completed`** — no
+capper retries, no alarms. `validate_setup` PASS, `--mock` 12/12, and
+`passive_shadow` **0 interferences nominal and 0 with the tip modeled as
+stuck**. The `travel_z` change did what it was meant to: step 1's transit
+rises from gantry 84.065 to **99.065**, the same plane every other capper leg
+rides. All three config files ran exactly as committed.
+
+**Correction to the 2026-08-31 and 2026-09-01 (b, c) write-ups: there is no
+plunger "direction fault".** Both symptoms — `HOME` returning instantly, and
+retractions being refused in ~0.11 s — come from a single reading of a single
+input, and `BU-KABlab/PANDA_Arduino` `src/Pipette.cpp` says so outright:
+`stepMotor()` aborts a move when `digitalRead(PIPETTE_LIMIT_PIN) == HIGH &&
+digitalRead(DIR_PIN) == LOW`, i.e. any *up* move, after 1 step + the 100 ms
+debounce; and `homePipette()` checks the same pin before its first step, so an
+asserted switch makes homing a 0.52 s no-seek back-off. D9 is `INPUT_PULLUP`
+and HIGH means "at the limit", so an **open switch circuit reads asserted**.
+
+That single table reproduces all four rewiring passes exactly, including this
+one, where the switch went back to asserted. The wire to check is pipette
+**pin 6 → Arduino GND** (the Cubware diagram labels it but draws no wire),
+then pin 7 → D9, then that the contact is normally *closed*.
+
+`EN` on A3 instead of A4 is still wrong and still worth fixing — it just is
+not what caused the one-way symptom, since the firmware never reads `EN` back.
+Corrected analysis in
+[`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md); run
+write-up in
+[`results/pipette_test_20260901e/README.md`](results/pipette_test_20260901e/README.md).
+
+`tools/pipette_bench_check.py` now reports the limit-switch verdict instead of
+the DIR-fault one (and no longer crashes with a `NameError` on that path).

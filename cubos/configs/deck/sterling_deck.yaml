@@ -1,0 +1,65 @@
+labware:
+  vial_holder:
+    load_name: ursa_vial_holder
+    name: sterling_vial_holder_test_1
+    location:
+      x: 162.0
+      y: 134.0
+      z: 39.0
+    vials:
+      vial_1:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 5.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_2:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 36.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_3:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 70.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_4:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 103.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_5:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 134.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_6:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 167.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_7:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 198.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0
+      vial_8:
+        model_name: placeholder_20ml_vial
+        height: 50.0
+        diameter: 28.0
+        location: { x: 162.0, y: 227.0 }
+        capacity_ul: 20000.0
+        working_volume_ul: 20000.0

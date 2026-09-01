@@ -1,0 +1,249 @@
+# Capper/decapper + tip-pickup + insertion test -- Jarrett's j_config_1 deck.
+#
+# Requested 2026-08-08 (PR #171, @jarrettshupe): same protocol as
+# capper_decapper_tip_test.yaml, retargeted at the re-calibrated gantry
+# (pipette remounted at offset 51.97/12.0) and the j_config_1 deck, with the
+# new tip position measured in the capper's reference frame. Written and
+# offline-validated only; NOT run on hardware.
+#
+# Sequence (28 steps):
+#   1. home, then move the pipette to a mid-deck park FIRST (requested), with
+#      an explicit travel_z, so the pipette never drops near the X rail.
+#   2. for each deck key vial_2..vial_7 (physical labels "vial 1".."vial 6" --
+#      the deck file's keys and name: fields are offset by one; protocol
+#      targets resolve by KEY): decap -> insert the pipette (35 mm tip,
+#      picked up once after the first decap) -> retract -> cap.
+#   3. end parked mid-deck with the tip still attached; remove it by hand,
+#      then home from the Operator UI.
+#
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml  (2026-08-08 rev)
+#   deck:     ../../deck/j_config_1.yaml   (+ tip_rack, see its header)
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#
+# ---------------------------------------------------------------------------
+# FRAMES: how the measured numbers became these targets
+# ---------------------------------------------------------------------------
+# All measurements were raw jog-widget work coordinates (WPos) taken with the
+# capper as reference instrument (offset 0/0, so capper deck XY == WPos XY).
+#   * Vial location.z = WPos where the capper engages the cap. The gantry
+#     config's engage_depth_mm: 17.248 (= -capper.depth) makes CubOS command
+#     exactly that plane; nothing in this file drives the capper's Z.
+#   * Tip position (262.460, 32.792, 59.152) was measured with the pipette
+#     pressed onto the tip but read in the capper frame, so the pipette
+#     deck-frame target is WPos + pipette offset: (314.430, 44.792), Z
+#     unchanged (pipette depth 0). That conversion lives in the deck file's
+#     tip_rack entry; step "pick_up_tip: tip_rack.A1" just uses it.
+#   * Vial XY for the inserts are used as-is from the deck file: deck-frame
+#     targets are instrument-independent (CubOS applies each instrument's
+#     offset), so the same (212.143, y) that the capper decaps is what the
+#     pipette inserts into.
+#
+# ---------------------------------------------------------------------------
+# NUMBERS (nozzle frame == WPos for the bare pipette; after pick_up_tip every
+# pipette deck-frame Z is the TIP END, 35 mm below the nozzle)
+# ---------------------------------------------------------------------------
+#   * Vial rim ~= WPos 58.5-59.0: not directly measured, derived from the
+#     hardware-verified 2026-08-03 relation rim = engage_WPos + 4.25
+#     (sterling: rim 55.0, engage 50.75; here engage 54.295-54.7).
+#   * Insert: tip end Z 44.0 -> gantry 79.0. ~14.5 mm below the derived rim;
+#     only the tip enters (nozzle stays ~20 mm above the rim). The vials are
+#     83 mm tall, so the floor is far below.
+#   * Tipped transit/retract: travel_z 82.0 (tip-end frame) -> gantry 117.0,
+#     under z_max 120.99 and ~10 mm above the ~71.5 cap-top plane (cap top =
+#     engage WPos + capper socket standoff 17.248).
+#   * Bare-pipette park move: travel_z 111.0 (gantry 111.0). With the new
+#     51.97 mm offset the pipette sits at deck X ~438.7 in the homed corner,
+#     clear of the modeled Cub XL right X-max rail box (X >= 480) that the
+#     old 135 mm mount used to clip.
+#   * Tip pickup: nozzle presses to (314.430, 44.792, 59.152) deck-frame ->
+#     gantry (262.460, 32.792, 59.152), exactly the measured WPos.
+#   * WITH THE TIP ATTACHED, never add pipette steps that travel at safe_z
+#     (deck-target `move`, `measure`, `aspirate`, `transfer`, `drop_tip`):
+#     safe_z is applied in the instrument-tip frame, so 114 + 35 = gantry
+#     149 -- 28 mm past the machine's Z travel. Named positions with an
+#     explicit travel_z (as below) are the only safe pattern.
+#   * No final home, same reasoning as the previous protocol: the tip stays
+#     attached (a drop_tip would travel at safe_z, see above), so end parked,
+#     pull the tip off by hand, then home. (With the new mount the homed
+#     corner itself now clears the modeled rail box, but hand-removing the
+#     tip at a reachable mid-deck pose is still the point.)
+#
+# ---------------------------------------------------------------------------
+# EYEBALL BEFORE ANY HARDWARE RUN: the passive pipette's corridor moved
+# ---------------------------------------------------------------------------
+# The instruments are rigidly coupled: whenever the CAPPER is at deck
+# (x, y), the pipette hangs at (x + 51.97, y + 12), and after step 4 its tip
+# end is 35 mm below the nozzle. During every capper engage the tip end
+# descends to WPos ~19.3 at deck X ~264.1 (vial X + 51.97) -- 31 mm LOWER
+# than anything the 2026-08-03 runs swept, and at a different X. No offline
+# check models the passive instrument. Before running:
+#   * confirm the strip x ~ 255-275, y ~ 40-290 is empty above deck Z ~15
+#     (tip end reaches WPos 19.3 there during engages, WPos 61.75 during
+#     safe_z transits). In particular the vial HOLDER must not extend
+#     ~52 mm in +X from the vial centers at that height, and the X-rail
+#     structure that dragged the old mount at deck X ~297 must be clear of
+#     X ~264.
+#   * the capper park was moved onto the vial column X (see the gantry
+#     header) so no capper transit crosses capped vials diagonally; do not
+#     "fix" the park back off-column without redoing that analysis.
+#   * cap-top clearance during tipped pipette travels is ~10.5 mm
+#     (travel_z 82 vs cap tops ~71.5) -- derived, not measured. If caps sit
+#     higher than derived, raise travel_z toward 85 (gantry 120, the
+#     ceiling) before running.
+
+positions:
+  pipette_park: [250.0, 150.0, 111.0]
+  # End pose, tip-end frame (tip attached): gantry (198.0, 138.0, 117.0).
+  pipette_end: [250.0, 150.0, 82.0]
+  # Deck key vial_2 = physical label "vial 1" (and so on through vial_7).
+  vial_2_insert: [212.143, 106.365, 44.0]
+  vial_2_retract: [212.143, 106.365, 82.0]
+  vial_3_insert: [212.143, 137.615, 44.0]
+  vial_3_retract: [212.143, 137.615, 82.0]
+  vial_4_insert: [212.143, 172.28, 44.0]
+  vial_4_retract: [212.143, 172.28, 82.0]
+  vial_5_insert: [212.143, 203.948, 44.0]
+  vial_5_retract: [212.143, 203.948, 82.0]
+  vial_6_insert: [212.143, 238.005, 44.0]
+  vial_6_retract: [212.143, 238.005, 82.0]
+  vial_7_insert: [212.143, 271.013, 44.0]
+  vial_7_retract: [212.143, 271.013, 82.0]
+
+protocol:
+  - home:
+
+  # Park the pipette first (requested): away from the X rail before any Z
+  # drop, and clear of the tip rack (deck X 314.4) and vial column (X 212).
+  - move:
+      instrument: pipette
+      position: pipette_park
+      travel_z: 111.0
+
+  # --- vial_2 (physical "vial 1") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # One tip, picked up once, kept for all six vials.
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  - move:
+      instrument: pipette
+      position: vial_2_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_2_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # --- vial_3 (physical "vial 2") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  - move:
+      instrument: pipette
+      position: vial_3_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_3_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  # --- vial_4 (physical "vial 3") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  - move:
+      instrument: pipette
+      position: vial_4_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_4_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  # --- vial_5 (physical "vial 4") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  - move:
+      instrument: pipette
+      position: vial_5_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_5_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  # --- vial_6 (physical "vial 5") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  - move:
+      instrument: pipette
+      position: vial_6_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_6_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  # --- vial_7 (physical "vial 6") ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_7
+
+  - move:
+      instrument: pipette
+      position: vial_7_insert
+      travel_z: 82.0
+
+  - move:
+      instrument: pipette
+      position: vial_7_retract
+      travel_z: 82.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_7
+
+  # End parked, tip still attached: remove it by hand, then home (see the
+  # NUMBERS section for why there is no drop_tip / final home here).
+  - move:
+      instrument: pipette
+      position: pipette_end
+      travel_z: 82.0

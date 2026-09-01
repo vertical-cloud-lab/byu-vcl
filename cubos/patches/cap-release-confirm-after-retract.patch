@@ -1,0 +1,35 @@
+diff --git a/packages/core/src/cubos/protocol_engine/commands/capper.py b/packages/core/src/cubos/protocol_engine/commands/capper.py
+index 059ef65..6c31694 100644
+--- a/packages/core/src/cubos/protocol_engine/commands/capper.py
++++ b/packages/core/src/cubos/protocol_engine/commands/capper.py
+@@ -203,9 +203,27 @@ def _run_capper_sequence(
+         context.gantry.move_to_labware(instrument, coord)  # approach
+         engage_z = vial_z + capper.engage_depth_mm
+         context.gantry.move(instrument, (x, y, engage_z))  # engage
+-        _confirm_capture_or_release(
+-            capper, capturing=capturing, command_label=command_label,
+-        )
++        if capturing:
++            _confirm_capture_or_release(
++                capper, capturing=True, command_label=command_label,
++            )
++        else:
++            # LOCAL PATCH (byu-vcl): confirm a RELEASE only after retracting.
++            # The line-break sensor sits at the tool head and reports a cap
++            # anywhere in the beam, held or not -- measured on the CubXL with
++            # cubos/tools/probe_cap_plane.py, where descending onto a cap that
++            # was merely resting on a vial flipped the sensor to True. So at
++            # the engage plane a just-released cap is still in the beam and
++            # `cap` can never confirm, no matter how well the release worked.
++            # Release, retract, then sense. This matches the vendor contract
++            # documented in instruments/capper/vendors/pawduino.py: "capping
++            # de-energizes the electromagnet before retracting, so success is
++            # confirmed by the sensor reporting no cap present".
++            capper.release_cap()
++            context.gantry.move(instrument, (x, y, context.gantry.safe_z))
++            _confirm_capture_or_release(
++                capper, capturing=False, command_label=command_label,
++            )
+     except BaseException as exc:
+         _safe_retract(context, instrument, x, y)
+         if operation_key is not None:

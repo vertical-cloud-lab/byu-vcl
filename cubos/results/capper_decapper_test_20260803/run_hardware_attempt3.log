@@ -1,0 +1,201 @@
+GRBL is in Alarm state after connect. Home to clear. Status: <Alarm|WPos:383.000,238.000,114.000|FS:0,0>
+GRBL alarm detected before protocol run; unlocking controller. Status: <Alarm|WPos:383.000,238.000,114.000|FS:0,0>
+Protocol run failed; last commanded pose: {'instrument': 'PawduinoCapper', 'instrument_position': (162.0, 39.0, 115.0), 'gantry_position': (162.0, 39.0, 90.0), 'travel_z': None}
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 206, in _run_capper_sequence
+    _confirm_capture_or_release(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capper, capturing=capturing, command_label=command_label,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 152, in _confirm_capture_or_release
+    raise CapperError(
+    ...<3 lines>...
+    )
+cubos.instruments.capper.exceptions.CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 274, in decap
+    _run_capper_sequence(context, instrument, vial, capturing=True, command_label="decap")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 213, in _run_capper_sequence
+    raise ProtocolExecutionError(
+    ...<3 lines>...
+    ) from exc
+cubos.protocol_engine.errors.ProtocolExecutionError: decap failed for 'vial_holder.vial_2': CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).. Tool retracted to safe_z; reconciliation is required before further liquid handling involving this vial.
+Protocol failed; retracting PawduinoCapper at current XY to safe_z 115.000.
+Failure retract to safe_z failed; manual hardware check required: "Unknown instrument 'PawduinoCapper'. Available: pipette, vial_capper_decapper"
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 206, in _run_capper_sequence
+    _confirm_capture_or_release(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capper, capturing=capturing, command_label=command_label,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 152, in _confirm_capture_or_release
+    raise CapperError(
+    ...<3 lines>...
+    )
+cubos.instruments.capper.exceptions.CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 274, in decap
+    _run_capper_sequence(context, instrument, vial, capturing=True, command_label="decap")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 213, in _run_capper_sequence
+    raise ProtocolExecutionError(
+    ...<3 lines>...
+    ) from exc
+cubos.protocol_engine.errors.ProtocolExecutionError: decap failed for 'vial_holder.vial_2': CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).. Tool retracted to safe_z; reconciliation is required before further liquid handling involving this vial.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 377, in _best_effort_retract_to_safe_z
+    context.gantry.move(instrument, (x, y, safe_z), travel_z=safe_z)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 60, in move
+    instr = self._resolve_instrument(instrument)
+  File "/home/vcl/CubOS/packages/core/src/cubos/gantry/instrument_mount.py", line 167, in _resolve_instrument
+    raise KeyError(
+    ...<2 lines>...
+    )
+KeyError: "Unknown instrument 'PawduinoCapper'. Available: pipette, vial_capper_decapper"
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 206, in _run_capper_sequence
+    _confirm_capture_or_release(
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        capper, capturing=capturing, command_label=command_label,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 152, in _confirm_capture_or_release
+    raise CapperError(
+    ...<3 lines>...
+    )
+cubos.instruments.capper.exceptions.CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/vcl/CubOS/packages/core/src/cubos/tools/run_protocol.py", line 134, in main
+    results = run_on_hardware(
+        gantry_path,
+    ...<6 lines>...
+        initial_fluids=args.initial_fluids,
+    )
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/setup.py", line 312, in run_on_hardware
+    return protocol.execute(context)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/protocol.py", line 86, in execute
+    result = step.execute(context)
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/runtime.py", line 85, in execute
+    return self.handler(context, **self.args)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 274, in decap
+    _run_capper_sequence(context, instrument, vial, capturing=True, command_label="decap")
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vcl/CubOS/packages/core/src/cubos/protocol_engine/commands/capper.py", line 213, in _run_capper_sequence
+    raise ProtocolExecutionError(
+    ...<3 lines>...
+    ) from exc
+cubos.protocol_engine.errors.ProtocolExecutionError: decap failed for 'vial_holder.vial_2': CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).. Tool retracted to safe_z; reconciliation is required before further liquid handling involving this vial.
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /home/vcl/run_20260803_1945/cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 380.0]  Y[0.0, 235.0]  Z[0.0, 115.0]
+
+[2/4] Loading deck config...
+  OK: /home/vcl/run_20260803_1945/sterling_deck.yaml
+  Labware (1):
+    vial_holder: VialHolder
+
+[3/4] Loading instruments...
+  OK: /home/vcl/run_20260803_1945/cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-25.0
+    pipette: offset=(135.0, 20.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: /home/vcl/run_20260803_1945/capper_decapper_test.yaml
+  Steps: 27
+    [0] home()
+    [1] move(instrument='pipette', position='park_position', travel_z=111.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_2')
+    [3] move(instrument='pipette', position='vial_2_insert', travel_z=111.0)
+    [4] move(instrument='pipette', position='vial_2_retract', travel_z=111.0)
+    [5] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_2')
+    [6] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_3')
+    [7] move(instrument='pipette', position='vial_3_insert', travel_z=111.0)
+    [8] move(instrument='pipette', position='vial_3_retract', travel_z=111.0)
+    [9] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_3')
+    [10] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_4')
+    [11] move(instrument='pipette', position='vial_4_insert', travel_z=111.0)
+    [12] move(instrument='pipette', position='vial_4_retract', travel_z=111.0)
+    [13] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_4')
+    [14] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_5')
+    [15] move(instrument='pipette', position='vial_5_insert', travel_z=111.0)
+    [16] move(instrument='pipette', position='vial_5_retract', travel_z=111.0)
+    [17] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_5')
+    [18] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_6')
+    [19] move(instrument='pipette', position='vial_6_insert', travel_z=111.0)
+    [20] move(instrument='pipette', position='vial_6_retract', travel_z=111.0)
+    [21] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_6')
+    [22] decap(instrument='vial_capper_decapper', vial='vial_holder.vial_7')
+    [23] move(instrument='pipette', position='vial_7_insert', travel_z=111.0)
+    [24] move(instrument='pipette', position='vial_7_retract', travel_z=111.0)
+    [25] cap(instrument='vial_capper_decapper', vial='vial_holder.vial_7')
+    [26] home()
+
+Validating protocol motion bounds...
+  OK (26 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol on hardware...
+------------------------------------------------------------
+
+
+ERROR during execution: decap failed for 'vial_holder.vial_2': CapperError: decap: sensor did not confirm cap capture after 3 attempt(s) (last reading: cap_present=False, expected True).. Tool retracted to safe_z; reconciliation is required before further liquid handling involving this vial.
+
+------------------------------------------------------------
+Protocol did not complete — 0 steps executed before exit.
+Measurement data store: /home/vcl/.cubos/panda_data.db
+Result CSV files:
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_7_20260803_194656/campaign.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_7_20260803_194656/experiments.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_7_20260803_194656/manifest.csv
+------------------------------------------------------------
