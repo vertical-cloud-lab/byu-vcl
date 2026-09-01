@@ -9,7 +9,8 @@ Channel re-checked 2026-08-20: the only newer item is the unlisted meeting-recor
 ## Compilation status
 
 - [x] Meeting recording — [SharePoint/Stream share link](https://byu-my.sharepoint.com/:v:/g/personal/sbaird9_byu_edu/IQAhCotWVHEJQ4FQHXVHsz1VASzsf4iyN8yh_-5Clg94V58?e=au0TVR)
-      (original, 75:34) and [unlisted YouTube upload](https://youtu.be/f5_cQvuNKnA) (62:01) —
+      (original, 75:34) and [unlisted YouTube upload](https://youtu.be/f5_cQvuNKnA) (1:15:35,
+      full recording — same timeline as the original) —
       see [Meeting recording (2026-08-19)](#meeting-recording-2026-08-19) below
 - [x] Teams auto transcript + derived chapters — committed in
       [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md)
@@ -18,6 +19,9 @@ Channel re-checked 2026-08-20: the only newer item is the unlisted meeting-recor
       lumps everyone in the room into one `@3` channel) — transcript, RTTM, timeline chart,
       and per-speaker audio documented in
       [`meeting-2026-08-19-recording/`](meeting-2026-08-19-recording/README.md)
+- [x] Topic pull: every excerpt that discusses **writing** (papers, manuscripts, abstracts,
+      proposals, AI disclosure) across the meeting, all eight pair discussions and the rest
+      of the channel grab — [`meeting-2026-08-19-recording/writing-excerpts.md`](meeting-2026-08-19-recording/writing-excerpts.md)
 - [ ] Tactiq transcript — *link or export needed (owner)*; Tactiq was visibly running during the meeting
 - [x] Links to the various places on YouTube — this document
 - [x] All videos from the [BYU Vertical Cloud Lab channel](https://www.youtube.com/@BYUVerticalCloudLab) — see complete grab below
@@ -39,7 +43,8 @@ with Edison Scientific, and Slurm jobs on a university supercomputer (CHPC at Ut
 
 The Teams recording of this group meeting: 75:34 original on
 [SharePoint/Stream](https://byu-my.sharepoint.com/:v:/g/personal/sbaird9_byu_edu/IQAhCotWVHEJQ4FQHXVHsz1VASzsf4iyN8yh_-5Clg94V58?e=au0TVR)
-(anonymously accessible), uploaded to YouTube **unlisted** (62:01 trim) as
+(anonymously accessible), uploaded to YouTube **unlisted** (1:15:35 — the full recording,
+on the same timeline as the original; re-measured 2026-09-01) as
 [VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
 on 2026-08-20. Being unlisted, it is intentionally **not** counted in the public channel grab below.
 

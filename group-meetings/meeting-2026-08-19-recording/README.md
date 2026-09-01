@@ -13,8 +13,14 @@ Recording of the weekly group meeting on high-level thoughts about the use of AI
   Recorded 2026-08-19 16:01–17:16 UTC.
 - **YouTube upload (unlisted)**:
   [VCL weekly group meeting - High-level thoughts about use of AI in the lab](https://youtu.be/f5_cQvuNKnA)
-  — 62:01, published 2026-08-20 on the BYU Vertical Cloud Lab channel. It is ~13.5 min
-  shorter than the original, so chapter times below (original timeline) shift accordingly.
+  — **1:15:35 (4535 s)**, published 2026-08-20 on the BYU Vertical Cloud Lab channel.
+  Re-measured 2026-09-01: the upload is the **full recording**, and its timeline matches the
+  original second-for-second, so the chapter times below apply to it as-is and
+  `https://youtu.be/f5_cQvuNKnA?t=<seconds>` links land on the original timestamps.
+  (Verified against the upload's own auto-captions: first cue "Carl, can you hear me?" at
+  00:04:52.9 vs. 00:04:52.7 in the original; last cue "…Thanks everybody." at 01:15:30.
+  An earlier note here described the upload as a 62:01 trim requiring a ~13.5 min shift —
+  that is not what is published.)
 
 The share link is anonymously accessible (verified 2026-08-20 from a GitHub Actions
 runner — no BYU sign-in or residential IP needed). To re-download the original file:
@@ -60,6 +66,7 @@ but the credentials are worth rotating regardless.
 | [`highlights/`](highlights/) | Edited 9:56 highlights compilation of the meeting + all eight pair discussions — EDL, render script, captions (incl. whisper captions for the seven breakout clips), chapters, contact-sheet preview (the MP4 itself is on the draft release and the Pi) |
 | [`reels/`](reels/) | Seven vertical (1080×1920) "reels": one <60 s cut per breakout session, a group-discussion reel, and an everything reel — filler-word micro-edits, word-synced on-screen text (next-episode-preview style); EDL + renderer + captions (MP4s on the draft release and the Pi) |
 | [`best-practices/`](best-practices/) | Evidence review of what the literature supports for these two formats (Edison `LITERATURE_HIGH`, 50 citations) plus a measured audit of the current renders against it — what holds up, ten specific findings, and what was done about each of them |
+| [`writing-excerpts.md`](writing-excerpts.md) | Every excerpt about **writing** — papers, manuscripts, abstracts, proposals, disclosure — across the meeting, all eight pair discussions and the rest of the channel grab, with speakers, timestamps and deep links (2026-09-01) |
 | `whisper-diarized-transcript.txt` | Whisper re-transcription with per-voice speaker attribution (`[HH:MM:SS] Name: text`) |
 | `whisper-diarized-transcript.vtt` | Same, as WebVTT captions with `<v Name>` voice tags |
 | `whisper-diarized-transcript.json` | Same, structured (display name, cluster id, times, text per utterance) |
