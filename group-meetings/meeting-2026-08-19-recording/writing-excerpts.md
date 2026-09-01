@@ -350,9 +350,12 @@ really good at finding relevant papers, but giving them out, it probably doesn't
 
 ### 4.4 Elsewhere on the channel
 
-The rest of the channel grab was swept by fetching each video's YouTube auto-captions (via
-the stream-cam Pi — YouTube bot-gates the runner's datacenter IP) and running the same
-keyword search. Three videos beyond the AI-in-the-lab set have real writing content:
+The rest of the grab was swept exhaustively: **all 164 catalogued video IDs** were run
+through `yt-dlp` on the stream-cam Pi (YouTube bot-gates the runner's datacenter IP), which
+returned **92 English auto-caption tracks** — the other 72 have no captions, being silent
+equipment, print and powder-handling clips. Every caption track was run through the same
+keyword search and every hit read in context. Beyond the AI-in-the-lab set, **five** videos
+have real writing content; three of them substantially:
 
 **[Are AI-generated scientific overview and workflow figures for manuscripts and proposals
 any good?](https://www.youtube.com/watch?v=Gb3Yymp_TOM)** (2026-04-01, 2:40) — the whole
@@ -409,6 +412,24 @@ clearest explanation of peer review anywhere on the channel
 The same session also works through **who counts as an author** on a Zenodo record versus on
 the paper (**46:24**, [watch](https://youtu.be/DwFI1eQ_3bI?t=2784)): *"not everybody that
 was listed here became a co-author on the paper."*
+
+Two more, from the two "featured" talks in the compilation rather than from the lab's own
+equipment clips:
+
+- **[So, you want to build a self-driving lab?](https://www.youtube.com/watch?v=hvY3WE0XEoY)**
+  (46:04) names the tension every one of these builds sits in, at **34:00**
+  ([watch](https://youtu.be/hvY3WE0XEoY?t=2035)): *"how do I manage the tension between what I
+  build — that infrastructural output — versus **my actual scientific output when I'm writing
+  publications**?"*
+- **[Your GitHub Repo Is Now a Research Robot](https://www.youtube.com/watch?v=U5sB19DLnOk)**
+  (Taylor Sparks, 37:14) touches writing only as plumbing: Asta's literature-grounded
+  hypothesis generation *"which you could use for things like **proposal background
+  research**, identifying prior work, or generating candidate research directions"*
+  (**22:54**, [watch](https://youtu.be/U5sB19DLnOk?t=1374)); *"did you finish your lit review?
+  Now provide me a summary and write it to somewhere"* (**18:53**); and Zenodo as
+  *"agent-driven FAIR data publishing — it'll push datasets, it'll even mint new DOIs"*
+  (**33:36**). Most of its `write`/`author` matches are **write access** and **OAuth**, not
+  writing.
 
 Everything else in the grab that matches the keywords matches them in a non-writing sense —
 "writing a file" during calibration, MQTT "published" messages, "the steps [are already]
