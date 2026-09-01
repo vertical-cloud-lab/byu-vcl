@@ -69,11 +69,17 @@ diagram**. What each one does if you build it as drawn:
 
 **`EN` on A3 ⇒ the direction bit switches the driver on and off.** TMC2209 `EN`
 is active-low. `moveTo()` does `digitalWrite(DIR_PIN, isMovingDown ? HIGH : LOW)`,
-so the driver is energised for one direction of travel and completely dead for the
-other. That is the exact shape of the one-way fault seen on 2026-08-31 and
-2026-09-01 — the plunger ran one way and was silent the other. (Which of the two
-directions works depends on which physical wire went where, so don't read the
-polarity off this paragraph.)
+so the driver would be energised for one direction of travel and completely dead
+for the other.
+
+> **Correction, 2026-09-01.** Earlier revisions of this document, and the PR
+> comments of 2026-08-31 and 2026-09-01, offered this as the explanation for the
+> plunger only moving one way. **It is not.** The one-way behaviour is a
+> *firmware* gate on the limit-switch reading — see §3 below, which quotes the
+> line — and it is visible at the serial port as a flat ~0.11 s refusal, which an
+> `EN` fault could never produce (the firmware does not read `EN` back). `EN` on
+> A3 is still wrong and still needs moving to A4; it just is not what caused the
+> one-way symptom.
 
 **`UART` on A0 ⇒ the driver is never configured.** The firmware's
 `setupMotor()` calls `setRunCurrent(50)`, `setHoldCurrent(30)`,
@@ -133,22 +139,63 @@ there is no buzzing at all, the coil wiring is not the current fault.
 
 ### Pin 6 — the wire the diagram forgets
 
-`setupPipette()` does `pinMode(PIPETTE_LIMIT_PIN, INPUT_PULLUP)` and both
-`homePipette()` and `stepMotor()` test `digitalRead(...) == HIGH` for *triggered*.
-So:
+`setupPipette()` does `pinMode(PIPETTE_LIMIT_PIN, INPUT_PULLUP)`, and D9 **HIGH
+means "at the limit"** — so an open switch circuit reads *asserted*.
 
-- **pin 6 must be connected to Arduino GND.** With it floating, D9 idles HIGH
-  through the pull-up, the firmware reads "already at the limit", and `HOME`
-  returns instantly having only zeroed the counter — which is precisely the
-  0.52 s fake home this machine did before 2026-09-01.
-- Because the pull-up idles HIGH and HIGH means triggered, the switch has to be
-  wired on a **normally-closed** contact: LOW (closed to GND) at rest, opening as
-  the plunger reaches the limit. A normally-open contact gives the instant fake
-  home above.
+**This one pin explains both plunger symptoms.** `stepMotor()` gates the upward
+direction on it:
 
-As of 2026-09-01 `HOME` runs its full step budget instead of returning instantly,
-so D9 is now reading LOW at rest — the pin 6 return and the NC contact look
-correct. It cannot reach the switch because the motor is not turning.
+```c
+// Check for limit switch when moving UP (DIR_PIN is LOW for UP)
+if (digitalRead(PIPETTE_LIMIT_PIN) == HIGH && digitalRead(DIR_PIN) == LOW)
+{
+    delay(DEBOUNCE_TIME);
+    if (digitalRead(PIPETTE_LIMIT_PIN) == HIGH) { errorOccurred = true; break; }
+}
+```
+
+and `homePipette()` checks it *before* its first step, so an asserted switch is
+an instant "success" that runs only the 796-step back-off:
+
+```c
+digitalWrite(DIR_PIN, LOW);            // seek upward
+while (!homingSuccessful && ...) {
+    if (digitalRead(PIPETTE_LIMIT_PIN) == HIGH) { ... homingSuccessful = true; break; }
+    ... step ...
+    if (stepsCount > 50000) return false;      // ~26 s of seek
+}
+digitalWrite(DIR_PIN, HIGH);           // back off 796 steps @ 510 us = 0.406 s
+```
+
+| D9 reads | `HOME` | UP / retract moves | DOWN / forward moves |
+|---|---|---|---|
+| **HIGH (asserted)** | "success" in **0.52 s** — back-off only, no seek | aborted after 1 step + 100 ms debounce → **~0.11 s** | unaffected |
+| **LOW (clear)** | full 50000-step budget, then `false` → **26.35 s** ERR | normal, scales with distance | unaffected |
+
+Both constants are exact: 796 × 510 µs + `DEBOUNCE_TIME 100` = **0.506 s** vs.
+0.52 s measured; 1 step + 100 ms = **~0.1 s** vs. 0.11 s measured.
+
+Consequences for the wiring:
+
+- **Pin 6 must be connected to Arduino GND.** With it floating or open, D9 idles
+  HIGH through the pull-up and you get the whole "HIGH" row above — a fake home
+  *and* a plunger that refuses to retract. The Cubware diagram labels pin 6 but
+  draws no wire for it.
+- The contact must be **normally closed**: LOW (closed to GND) at rest, opening
+  as the plunger reaches the limit. A normally-open contact gives the HIGH row.
+
+Observed history on this machine, all four rewiring passes:
+
+| date / pass | `HOME` | backward | ⇒ D9 |
+|---|---|---|---|
+| 2026-08-31, before any rewiring | 0.52 s | refused | HIGH |
+| 2026-09-01 18:33, rewire #1 | 26.35 s ERR | moves | LOW |
+| 2026-09-01 18:56, rewire #2 | 26.35 s ERR | moves | LOW |
+| 2026-09-01 19:13, rewire #3 | 26.35 s ERR | moves | LOW |
+| 2026-09-01 19:46, rewire #4 | 0.52 s | refused | HIGH |
+
+Nothing else in the plunger's behaviour changed across those passes. Treat this
+pin as the first thing to measure whenever the plunger misbehaves.
 
 ## 4. Two more things on that page
 

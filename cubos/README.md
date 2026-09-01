@@ -392,3 +392,38 @@ The rev-2 trio fails validation on one number — a tipped `move` at
 the two places that name the pipette makes it PASS, 18 steps; the corrected
 copy is in that same results directory. Not run: Ben asked for the bench
 test only.
+
+## 2026-09-01 (rev 3) — campaign 77, 12/12, and the plunger fault is ONE PIN
+
+Ben's rev-3 protocol (`park_position [206, 25, 115]`, step 1 `travel_z: 115`)
+ran on the CubXL as **campaign 77, 12/12 steps, 4m 3s, `completed`** — no
+capper retries, no alarms. `validate_setup` PASS, `--mock` 12/12, and
+`passive_shadow` **0 interferences nominal and 0 with the tip modeled as
+stuck**. The `travel_z` change did what it was meant to: step 1's transit
+rises from gantry 84.065 to **99.065**, the same plane every other capper leg
+rides. All three config files ran exactly as committed.
+
+**Correction to the 2026-08-31 and 2026-09-01 (b, c) write-ups: there is no
+plunger "direction fault".** Both symptoms — `HOME` returning instantly, and
+retractions being refused in ~0.11 s — come from a single reading of a single
+input, and `BU-KABlab/PANDA_Arduino` `src/Pipette.cpp` says so outright:
+`stepMotor()` aborts a move when `digitalRead(PIPETTE_LIMIT_PIN) == HIGH &&
+digitalRead(DIR_PIN) == LOW`, i.e. any *up* move, after 1 step + the 100 ms
+debounce; and `homePipette()` checks the same pin before its first step, so an
+asserted switch makes homing a 0.52 s no-seek back-off. D9 is `INPUT_PULLUP`
+and HIGH means "at the limit", so an **open switch circuit reads asserted**.
+
+That single table reproduces all four rewiring passes exactly, including this
+one, where the switch went back to asserted. The wire to check is pipette
+**pin 6 → Arduino GND** (the Cubware diagram labels it but draws no wire),
+then pin 7 → D9, then that the contact is normally *closed*.
+
+`EN` on A3 instead of A4 is still wrong and still worth fixing — it just is
+not what caused the one-way symptom, since the firmware never reads `EN` back.
+Corrected analysis in
+[`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md); run
+write-up in
+[`results/pipette_test_20260901e/README.md`](results/pipette_test_20260901e/README.md).
+
+`tools/pipette_bench_check.py` now reports the limit-switch verdict instead of
+the DIR-fault one (and no longer crashes with a `NameError` on that path).

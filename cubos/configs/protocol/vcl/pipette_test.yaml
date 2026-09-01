@@ -1,24 +1,37 @@
 # pipette_test.yaml -- SHORTENED rev: decap vial_1, pick up a tip, aspirate in
 # vial_1, park the pipette, recap vial_1, decap vial_2, blow out into vial_2,
-# drop the tip, cap vial_2, home. CubXL, 2026-09-01 rev 2.
+# drop the tip, cap vial_2, home. CubXL, 2026-09-01 rev 3.
 #
-# Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM
-# (parsed YAML verified identical to the attachment).
+# Attached to PR #171 on 2026-09-01 after Ben's fourth rewiring pass. THE BODY
+# BELOW IS BEN'S, VERBATIM (parsed YAML verified identical to the attachment).
 #
-# *** NOT RUN ON HARDWARE. Every offline gate passes and the geometry is    ***
-# *** sound, but OpentronsPipette.connect() cannot establish a plunger      ***
-# *** reference: the limit switch never asserts, so run_protocol aborts     ***
-# *** before step 0 with no gantry motion at all. Measured, not predicted   ***
-# *** -- see ../../../results/pipette_test_20260901b/README.md.             ***
+# *** RAN ON HARDWARE: campaign 77, 2026-09-01 19:50:49 -> 19:54:52 UTC,     ***
+# *** 12/12 steps, status `completed`. No capper retries, no alarms.        ***
+# *** See ../../../results/pipette_test_20260901e/README.md.                ***
 #
-# Changes vs. the rev that ran as campaign 54 (commit 6758402):
-#   positions.park_position  Y 170.0 -> 100.0
-#   aspirate vial_1  height  -15.0  -> -35.0
-#   blowout  vial_2  height  -15.0  -> -35.0
-#   decap+cap of vials 3, 4, 5 commented out   (18 steps -> 12)
+# Changes vs. the rev that ran as campaign 73 (commit 44f1d27):
+#   positions.park_position  [206.0, 100.0, 100.0] -> [206.0, 25.0, 115.0]
+#   step 1 move  travel_z    100 -> 115
 #
 # ---------------------------------------------------------------------------
-# height: -35.0 -- checked against the vial geometry, and it clears
+# park_position [206, 100, 100] -> [206, 25, 115]
+# ---------------------------------------------------------------------------
+# This is the protocol's OWN named position for step 1 (the capper's first move
+# out of the homed corner), not the capper's `park_position` in the gantry
+# file, which is unchanged at [236, 175] and is what decap/cap use.
+#
+# Deck (206, 25) sits essentially on vial_1 (centre Y 27), so step 1 is now the
+# approach to the vial it is about to decap rather than a detour. travel_z 115
+# names the capper, so it resolves to gantry 115 - 15.935 = 99.065 -- the same
+# plane every other capper leg rides, instead of the 84.065 that travel_z 100
+# gave. Confirmed in this run's G-code: the first three moves are
+#   G01 Z99.065 / G01 X206.0 / G01 Y25.0
+# Cap tops are at deck 70, so the transit clears them by 45 mm.
+#
+# passive_shadow: 0 interferences nominal AND 0 with the tip modeled as stuck.
+#
+# ---------------------------------------------------------------------------
+# height: -35.0 -- unchanged, and it clears
 # ---------------------------------------------------------------------------
 # `height` is a labware-relative offset from the vial RIM, and an engage
 # descends the moving instrument's TOOL POINT to `location.z + height`. With a
@@ -29,34 +42,14 @@
 #   = tip end                                   deck Z  20.0   -> gantry Z 55.0
 #   nozzle (tip end + tip_length 35)            deck Z  55.0   == the rim
 #
-# Gantry Z 55 is the deepest pipette pose ever commanded on this machine (the
-# -15.0 rev commanded 75). It is safe on the deck model: CubOS documents a
-# vial's `height` as the OUTER height, rim -> underside (deck/labware/vial.py),
-# so `height: 83` with the rim at deck 55 puts the underside at deck -28 and
-# the tip end has ~45 mm of clearance to the floor.
-#
-# The number to eyeball is the nozzle, not the tip: it ends up at exactly rim
-# height, so the nozzle shoulder is level with the vial mouth rather than the
-# ~20 mm above it that the -15.0 rev gave. XY is proven correct (campaign 54's
-# G-code put pick_up_tip on Ben's measured jog point to the millimetre), so
-# this only matters if the rim Z is off or a tip fails to seat.
+# CubOS documents a vial's `height` as the OUTER height, rim -> underside, so
+# `height: 83` with the rim at deck 55 puts the underside at deck -28 and the
+# tip end has ~45 mm of clearance to the floor.
 #
 # ---------------------------------------------------------------------------
-# park_position Y 170 -> 100
+# Geometry, as commanded (this run's own G-code)
 # ---------------------------------------------------------------------------
-# This is the protocol's own named position for step 1 (the capper's first
-# move out of the homed corner), not the capper's `park_position` in the
-# gantry file, which is unchanged at [236, 175] and is what decap/cap use.
-#
-# Deck (206, 100) sits inside vial_3's footprint (centre Y 93, diameter 28),
-# but at travel_z 100 the capper tool point rides deck Z 100 -- 30 mm above
-# the cap tops at deck 70 -- and the passive pipette nozzle is at deck
-# (258, 112), 52 mm clear of the column in X. passive_shadow: 0 interferences.
-#
-# ---------------------------------------------------------------------------
-# Geometry, as commanded (mock trace, cubos/results/pipette_test_20260901b/)
-# ---------------------------------------------------------------------------
-#   step 1 capper park, travel_z 100        gantry Z  84.065
+#   step 1 capper park, travel_z 115        gantry Z  99.065
 #   capper transit / park at safe_z 115     gantry Z  99.065
 #   capper engage (rim 55 + engage 15)      gantry Z  54.065
 #   bare-nozzle hover at safe_z 115         gantry Z 115.0
@@ -66,28 +59,26 @@
 #   step 5 pipette_park, travel_z 87        gantry Z 122.0
 #   drop_tip tip_rack.A1                    gantry Z  92.0
 #
-# Offline gates, on the Pi's exact CubOS (cbc33dc + all three local patches):
+# Offline gates, on the Pi's exact CubOS (cbc33dc + all four local patches):
 #   validate_setup   PASS, 12 steps
 #   run_protocol --mock   12/12
 #   passive_shadow        0 interferences
 #   passive_shadow --tip-stuck   0 interferences
 #
 # ---------------------------------------------------------------------------
-# Why it did not run
+# PLUNGER: half the commands were refused by the firmware, not by CubOS
 # ---------------------------------------------------------------------------
-# Nothing in these three files. `OpentronsPipette.connect()` sees the
-# firmware's `homed: 0`, calls `home()`, and both legs of home()'s built-in
-# retry return ERR:{"error":"Failed to home pipette"} after 26.35 s each. The
-# driver then closes the port and raises PipetteConnectionError, which happens
-# before the gantry is homed -- 0 steps, no motion.
-#
-# The plunger DIRECTION fault from 2026-08-31 is fixed (retractions now move,
-# and round-trip time scales with distance both ways). The limit switch is the
-# new and only blocker.
+# The pipette limit switch reads ASSERTED (Arduino D9 HIGH). In
+# BU-KABlab/PANDA_Arduino src/Pipette.cpp, stepMotor() aborts a move when
+#   digitalRead(PIPETTE_LIMIT_PIN) == HIGH && digitalRead(DIR_PIN) == LOW
+# i.e. any UP/retract move, after 1 step + the 100 ms debounce. So in this run
+# `pick_up_tip`, `blowout` and both `drop_tip` legs each returned OK in ~0.11 s
+# having emitted no steps, while the forward `prime` and `aspirate` stepped
+# normally. Nothing in this protocol can work around that; it is one input pin.
 #
 
 positions:
-  park_position: [206.0, 100.0, 100.0]
+  park_position: [206.0, 25.0, 115.0]
   pipette_park:  [258.0, 182.0, 87.0]
 
 protocol:
@@ -99,7 +90,7 @@ protocol:
   - move:
       instrument: vial_capper_decapper
       position: park_position
-      travel_z: 100
+      travel_z: 115
 
   # 2. Open vial_1 while the nozzle is still bare.
   - decap:

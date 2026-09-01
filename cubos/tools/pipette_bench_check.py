@@ -194,23 +194,62 @@ def main(argv=None) -> int:
         stepped = 0.4        # s -- below this the firmware emitted no steps
         fwd_ok = f1 > stepped
         back_ok = max(b1, b0) > stepped
+        home_seeks = home_cold > 5.0     # a real seek runs the 50000-step budget
 
         print()
-        if fwd_ok and not back_ok:
-            print("VERDICT: the firmware steps forward ({:.2f}s) but every backward".format(f1))
-            print("  request returns in ~{:.2f}s. It is DECLINING to step one".format(max(b1, b0)))
-            print("  way -- a firmware/DIR-readback problem, not a motor problem.")
+        # ------------------------------------------------------------------
+        # Both "HOME returns instantly" and "backward is refused" are the SAME
+        # fault, confirmed against BU-KABlab/PANDA_Arduino src/Pipette.cpp:
+        #
+        #   homePipette()  sets DIR LOW (up), then checks the switch BEFORE the
+        #                  first step; HIGH -> homingSuccessful immediately, so
+        #                  all that runs is the 796-step back-off (~0.41 s).
+        #   stepMotor()    aborts the move when
+        #                      digitalRead(PIPETTE_LIMIT_PIN) == HIGH
+        #                   && digitalRead(DIR_PIN) == LOW          <- up only
+        #                  i.e. 1 step + DEBOUNCE_TIME (100 ms) -> ~0.11 s.
+        #
+        # The pin is INPUT_PULLUP and HIGH means "at the limit", so a switch
+        # wire that is open/disconnected reads asserted and produces both.
+        # Downward moves are never gated, which is why forward always works.
+        # ------------------------------------------------------------------
+        if not home_seeks and not back_ok:
+            print("VERDICT: the limit switch is reading ASSERTED (D9 HIGH).")
+            print("  HOME returned in {:.2f}s -- that is only the 796-step".format(home_cold))
+            print("  back-off, no seek -- and every UP move was refused in")
+            print("  ~{:.2f}s (1 step + the 100 ms debounce, then abort).".format(max(b1, b0)))
+            print("  Both come from the same read: stepMotor() aborts when the")
+            print("  switch is HIGH and DIR is LOW, and homePipette() calls it")
+            print("  an instant success. This is NOT a DIR fault.")
+            print()
+            print("  D9 is INPUT_PULLUP and HIGH means 'at the limit', so an")
+            print("  open switch circuit reads asserted. Check, in order:")
+            print("    1. Pipette pin 6 -> Arduino GND (the switch return). The")
+            print("       Cubware diagram labels it but draws no wire.")
+            print("    2. Pipette pin 7 -> Arduino D9 (the switch signal).")
+            print("    3. The contact must be NORMALLY CLOSED: LOW at rest,")
+            print("       opening as the plunger reaches the limit.")
+        elif home_seeks and back_ok:
+            print("VERDICT: the limit switch is reading CLEAR (D9 LOW) and never")
+            print("  asserts. HOME ran its full {:.1f}s step budget and failed;".format(home_cold))
+            print("  moves work in BOTH directions ({:.2f}s / {:.2f}s).".format(f1, max(b1, b0)))
+            print("  Either the seek travels away from the switch, the switch")
+            print("  is unreachable, or its contact never opens.")
+            print("  WATCH WHICH WAY THE PLUNGER TRAVELS during HOME -- 26 s is")
+            print("  plenty of time, and it separates those cases in one look.")
         elif not fwd_ok and not back_ok:
             print("VERDICT: the firmware emitted no steps in either direction (all")
             print("  round trips ~0.1 s). It is acking without stepping.")
         else:
-            print("VERDICT: the firmware emitted steps in BOTH directions, at the")
-            print("  expected ~0.673 s/mm. Everything upstream of the STEP/DIR pins")
-            print("  is working.")
+            print("VERDICT: mixed signals -- HOME {:.2f}s, forward {:.2f}s,".format(home_cold, f1))
+            print("  backward {:.2f}s. Read the table above directly.".format(max(b1, b0)))
+
+        if fwd_ok:
             print()
-            print("  This does NOT mean the plunger moved. If you saw and heard")
-            print("  nothing, the fault is downstream of the Arduino -- the TMC2209")
-            print("  is not driving the coils. In order of likelihood:")
+            print("NOTE: forward moves DID emit steps ({:.2f}s for 1 mm). That".format(f1))
+            print("  proves the Arduino toggled STEP -- it says nothing about")
+            print("  whether the motor turned. If you saw and heard nothing, the")
+            print("  fault is downstream of the Arduino, in order of likelihood:")
             print("    1. EN is not held LOW. The firmware's ENABLE is Arduino A4;")
             print("       the Cubware diagram wires the driver's EN to A3, which the")
             print("       firmware drives as DIR. Move that wire to A4.")
@@ -222,12 +261,6 @@ def main(argv=None) -> int:
             print("       the pot is the only thing setting it.")
             print("  Total silence (no buzz, no holding torque) means no coil")
             print("  current at all. A mixed-up coil pair buzzes instead.")
-
-        if home_warm < moved < home_cold or home_warm < 0.9:
-            print()
-            print("ALSO: HOME returned in {:.2f}s from pos 3.0 -- too fast to".format(home_warm))
-            print("  retract 3 mm at 0.673 s/mm. HOME is zeroing the counter,")
-            print("  not seeking the endstop, so it is not a recovery path.")
         return 0
     finally:
         link.close()
