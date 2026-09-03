@@ -1,0 +1,14 @@
+{
+  "name": "md-to-pdf",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Render a repo Markdown document (e.g. an SOP) to a print-ready PDF using marked + headless Chrome.",
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "dependencies": {
+    "marked": "^15.0.0",
+    "puppeteer-core": "^23.11.1"
+  }
+}

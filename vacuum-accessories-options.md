@@ -554,6 +554,8 @@ Independent of the coupler question, Ronnie's bench continuity test (multimeter 
 
 Ronnie's request ([PR #80 comment 4833708843](https://github.com/vertical-cloud-lab/byu-vcl/pull/80#issuecomment-4833708843)) for an exact, citation-backed disposal procedure was answered with an Edison Scientific `LITERATURE_HIGH` query (task `56c08a19-eebc-477b-a627-bf82808189ec`, continuing the prior §9/§10 bag-vs-liner and emptying-cadence reviews; 15 cited refs). The full SOP lives in **[`edison/powder-disposal-sop/powder-disposal-sop.md`](edison/powder-disposal-sop/powder-disposal-sop.md)** (raw answer + task JSON archived under [`edison/powder-disposal-sop/`](edison/powder-disposal-sop/)). Direct Edison response link: <https://platform.edisonscientific.com/trajectories/56c08a19-eebc-477b-a627-bf82808189ec>.
 
+A **print-ready PDF** of the same SOP (US Letter, page-numbered, checklists as tick boxes) is committed alongside it as **[`edison/powder-disposal-sop/powder-disposal-sop.pdf`](edison/powder-disposal-sop/powder-disposal-sop.pdf)** — regenerate it after any edit to the `.md` with `node scripts/md-to-pdf/render.mjs edison/powder-disposal-sop/powder-disposal-sop.md` (see [`scripts/md-to-pdf/README.md`](scripts/md-to-pdf/README.md)).
+
 > ⚠️ AI-synthesized guidance — must be reviewed/approved by BYU EHS and the PI and rolled into a site-specific NFPA 652 DHA before live-powder use.
 
 Key answers to Ronnie's specific questions:

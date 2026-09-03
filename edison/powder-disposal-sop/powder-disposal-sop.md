@@ -15,6 +15,24 @@
 > Management and the faculty PI, and incorporated into a site-specific NFPA 652 Dust Hazard
 > Analysis (DHA), **before** use with live powder.
 
+> **Field updates since this SOP was synthesized — read first.** Three mechanics below were
+> superseded by later findings (Nilfisk tech support, and the 2026-07-06 BYU Risk
+> Management / Waste Management meeting). They are recorded in full in
+> [§13.1 of `vacuum-accessories-options.md`](../../vacuum-accessories-options.md#131-reconciling-three-things-weve-learned-since-912-was-written);
+> nothing else in this document changes.
+>
+> 1. **No liner bonding clip on the 118EXP.** Nilfisk confirmed this unit has none and needs
+>    none. Everywhere this SOP says "attach / disconnect the bonding clip," read it as
+>    "confirm the conductive liner is seated against the bare metal of the grounded bin, and
+>    verify liner-to-bin < 1 kΩ."
+> 2. **Sealing hardware:** gooseneck twist secured with **conductive (ESD) tape or steel zip
+>    ties** — conductive cable ties are hard to source. Set the interim-pail lid on but **do
+>    not crimp it** (Waste Management: crimping raises the explosion hazard).
+> 3. **PPE per Risk Management:** N95 respirator, nitrile gloves, and a cotton or antistatic
+>    lab coat (the 80/20 poly-cotton white coat is **not** acceptable). Whether the operator
+>    must *also* wear an ESD wrist strap is an open item with EHS — a strict reading of
+>    NFPA 484 §15.3.1.2 says yes for sub-micron fines with MIE < 30 mJ.
+
 ---
 
 # STANDARD OPERATING PROCEDURE: Safe Disposal of Collected Reactive Metal Powder from the Nilfisk CFM 118EXP Explosion-Proof Vacuum
