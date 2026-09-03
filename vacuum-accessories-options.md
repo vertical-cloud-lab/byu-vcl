@@ -882,3 +882,71 @@ Order of operations (unchanged from §16.3, restated as a decision path):
 4. Only if 1–3 fail: **hand-abrade a ~5–10 mm contact band inside the socket bore and the mating band of the wand tip** with gray or maroon Scotch-Brite (not green; no Dremel/grinder — power tools make far more combustible Al fines and gouge the seat). Do it before the tool ever touches powder, away from ignition sources, and capture debris with an IPA-dampened wipe.
 5. Re-verify **≤ 0.1 Ω** assembled, record the value, and document the remediation in the DHA (wording template in the Edison answer, [`edison/crevice-tool-continuity/edison_answer.md`](./edison/crevice-tool-continuity/edison_answer.md)).
 6. If it still won't reach ≤ 0.1 Ω, **stop and replace** the tool with a confirmed-conductive crevice nozzle (§3 / §4) rather than escalating the abrasion.
+
+---
+
+## 17. Pre-Run Review of the Operator's Test Procedure + IPA Handling (2026-09-03)
+
+Ronnie posted the exact six-step procedure he intends to run for the first live AlSi10Mg test, plus a question about decanting IPA into a spray bottle to dampen Kimwipes. This section records the review against §12–§16, the IPA-dispensing decision, and the 2026-09-03 Nilfisk phone call.
+
+> ⚠️ Same standing caveat as §12–§16: literature/standards-derived working guidance, not a regulatory ruling. EHS + PI sign-off and the NFPA 652 DHA still gate the first live run.
+
+### 17.1 Nilfisk status on the crevice tool (2026-09-03) — confirms the diagnosis, does not clear the tool
+
+Logan (Nilfisk tech support, by phone) **agrees the crevice nozzle is probably anodized** and said "we should be good to use the vacuum if everything else has the required low resistance."
+
+- **What it settles:** the §15/§16 anodize-by-exclusion diagnosis is now confirmed by the OEM. Good — that closes an open question.
+- **What it does *not* settle:** "everything else" excludes the one component that failed. Two things still conflict with a green light:
+  1. **Nilfisk's own written answer, 2026-08-31:** *"the crevice nozzle should be measuring close to 0 Ω, not in MΩ."* The phone call and the email say opposite things.
+  2. **The OEM manual's gate (UL 1213 par. 22)** requires continuity **"between each connection … tool to wand"** at **≤ 0.1 Ω**, with *"if unacceptable results are recorded, DO NOT OPERATE THE CLEANER."* The last bench measurement (2026-08-19) was that the **tool↔wand joint reads open**.
+- **Why the joint specifically matters (§16.4):** anodize *over grounded metal* is fine; an anodized tool whose socket bore doesn't bond is a **floating aluminum mass sitting directly in the powder stream** — the one static-ignition path in this whole analysis that the anodize argument does not excuse (~5–10 mJ stored at ~10 kV vs. sub-micron-fines MIE < 5 mJ).
+- **Resolution is a measurement, not an argument.** Before the run, measure the **assembled** path: crevice tip → wand → coupler → hose → vacuum inlet.
+  - **≤ 0.1 Ω → proceed** (anodized or not; this is the manual's own acceptance criterion).
+  - **Still open / MΩ →** run the §16.4 ladder (rack marks → seat fully → contact cleaner → hand-abrade a 5–10 mm band **inside the socket bore only**), re-measure, and **only then** run powder — or run the first test with the **dust brush alone** (0.03 Ω, passes), which §16.3 already permits.
+- **Get the clearance in writing.** Ask Logan to confirm by email, referencing the 8/31 message and the UL 1213 par. 22 criterion. Given the two answers conflict, the written record is what belongs in the DHA.
+
+### 17.2 Review of the six proposed steps
+
+| Step as proposed | Verdict | Correction / addition |
+|---|---|---|
+| 1. Black VCL lab coat, nitrile gloves, N95, safety glasses | ✅ on-SOP | Matches the 2026-07-06 Risk-Management list; black coat is the 100% cotton one. **Open item unchanged:** the ESD wrist strap (§14 Claim 3). SDS §2 also lists **H334** (respiratory sensitizer) — reinforces the N95. |
+| 2. Spread powder **on the ground** | 🔴 **change this** | A floor cannot be bonded, and epoxy/vinyl/sealed concrete is effectively insulating, so the powder bed charges freely — this defeats §14 addition A ("bond the source surface, < 10 Ω"), the review's *most critical* item. Spread fines also travel under equipment where recovery can't be confirmed against the NFPA 654 1/32" layer criterion. **Use a few grams inside a conductive liner sitting in the grounded steel bin, or on a grounded metal tray bonded < 10 Ω** — the 2026-08-19 plan was better. Add the §14-F equalization touch. Bench height also gives far better nozzle control than crouching. |
+| 3. Crevice nozzle; 30 s run-on to clear the bores | ⚠️ **gated by §17.1**; 30 s is on-SOP | 30 s is in the §13.5 15–30 s range ✅. Do the run-on with the tool **in clean air**, not sitting in the powder, and **lift the tool away from the powder before switching off** (§13.3) so no loose pile is left at the tip. |
+| 4. Remove wand; dry Kimwipe, then IPA-dampened Kimwipe | ✅ correct order | **Add: power off and wait ≥ 60 s before disassembling** (§13.4) — let airborne fines settle before opening the airflow path. Dampened, not wet. **See §17.5 for where the used wipes go** — this was missing. |
+| 5. Let dry, then store in a liner | ✅ on-SOP | Make "let dry" explicit: **≥ 5 min, until there is no IPA smell**, before bagging (§13.5). Sealing a solvent-damp tool into a conductive bag with metal fines is the hybrid-mixture case to avoid. Also **cap/plug the wand and crevice-tool openings** (§13.6) and use the black carbon-loaded PE stock, not pink/silver ESD bags. |
+| 6. "Same thing" with the dust brush; same storage liner | ⚠️ partly | **Do not wet the bristles.** §13.5: tap them out into the sealed liner with the vacuum running, then IPA the **ferrule/body only**; soaked bristles retain both solvent and fines and dry slowly. Deeper brush cleaning is for an alloy-family switch only. **Sharing one storage bag with the crevice tool is fine** (same alloy family, §13.6) — label it. |
+
+**Pre-run gates absent from the proposed list** (all from §13.2): pre-use continuity check (OEM: before *every* use); conductive liner seated against bare bin metal, liner-to-bin < 1 kΩ; all three filters + clamp installed; **Class D extinguisher staged** (≤ 75 ft per OSHA 1910.157, ideally ≤ 25 ft — still not confirmed procured anywhere in the thread); source-tray bond + equalization touch; area signage and a second person recording; spill response = **never sweep** (§14-C); log date/operator/powder/mass; EHS + PI sign-off covering the **operating** procedure, not only disposal.
+
+### 17.3 Do not decant IPA into a spray bottle
+
+Spraying IPA is routine lab practice almost everywhere — it is specifically wrong *here*, because the whole point of this SOP is that combustible metal fines are in the air and on the surfaces being cleaned.
+
+1. **Atomizing a flammable liquid over combustible metal dust is the hybrid-mixture case.** IPA flash points are at or below lab temperature (~12 °C / 53 °F for 99%; ~22 °C / 72 °F for 70%), so the headspace is already flammable, and a **mist ignites below the bulk flash point** because droplets present enormous surface area. Combined with suspended Al fines, §14 Claim 10 applies directly: vapor + dust has a **lower MIE than either alone**.
+2. **Static.** The liquid itself is not the problem (IPA is comparatively conductive at ~6 × 10³ pS/m), but the **insulating plastic bottle** charges as liquid flows through the nozzle, and the mist droplets carry charge (spray electrification). That reintroduces a charged insulator into an area where months of work went into eliminating exactly that.
+3. **Overspray lands on powder.** §13.5's hard rule is *never apply IPA to a visibly powder-coated surface*. A dampened wipe goes only where you put it; a spray does not.
+4. **The jet disperses powder.** The AlSi10Mg SDS §8.2 prohibits blowing dust off with compressed air; a spray bottle aimed at a dusty tool is a low-pressure version of the same action.
+5. **Your PPE does not cover it.** An N95 is particulate-only — no protection against solvent vapor — and spraying maximizes vapor right at the breathing zone.
+6. **A decanted bottle is a secondary container** requiring a GHS label under the BYU Chemical Hygiene Plan, and it must not be stored at the vacuum station (flammable liquid beside combustible-metal waste; SDS §10.5 lists **alcohols** as incompatible with the powder).
+
+### 17.4 Approved ways to get "damp, not wet"
+
+The underlying goal is right — a soaked wipe is wrong too. Better options, in order:
+
+| Option | Why it fits | Source (HTTP-200 verified 2026-09-03) |
+|---|---|---|
+| **Pre-saturated 70% IPA wipes** (best) | Exactly the damp-not-wet consistency, no bulk solvent at the bench, no aerosol, no dispensing static. Sealed pouches/canisters also keep the stock from evaporating. | Berkshire SatPax 1000, 70% IPA, 6×9", 100/canister, ~$29 — [berkshire.com](https://berkshire.com/shop/presaturated-cleanroom-wipes/ipa-wipes-isopropyl-alcohol/canister-wipes/satpax-1000-canister/satpax-1000-canister-70-ipa-canister-pack/) · Texwipe TechniSat TX1045, 70% IPA, 6×8", 100/canister — [cleanroomproducts.com](https://www.cleanroomproducts.com/texwipe-technisat-wipes.html) |
+| **Steel plunger dispensing can** | The industrial answer for wetting a wipe from bulk: press the wipe on the plunger, get a metered wet spot, no aerosol; the can is **metal and bondable**, and the perforated pan acts as a flame arrester (FM/UL listed). | Justrite 1-pt/1-qt plunger cans — [Fisher Scientific](https://www.fishersci.com/shop/products/justrite-plunger-safety-cans-5/17189C) · [CalPacLab (2 qt, 10218)](https://www.calpaclab.com/justrite-plunger-dispensing-can-2-quart-yellow-justrite/jp-10218) |
+| **Pour-and-dab, bottle closed** | Free. At a ventilated spot **away from the powder area**, tip a small amount onto the Kimwipe (or into a small dish), **re-cap immediately**, then carry the damp wipe to the tool. | — |
+
+Whichever is used: do the wetting **away from the powder**, with ventilation, and keep the bulk IPA in a flammables cabinet — not at the vacuum station.
+
+**Concentration.** §13.5 prefers **70%** for the higher flash point. The tension worth naming: 70% is 30% water, and the SDS lists both **water** and **alcohols** as incompatible (H261, Al + H₂O → H₂). That tension is resolved by the dry-wipe-first rule, not by the concentration — never put either grade on visible powder, on the collected powder in the liner, or on the filters. On a surface already dry-wiped clean, a barely-damp 70% wipe leaves a negligible water quantity that flashes off in minutes. 99% is also acceptable at this scale if faster dry-down is wanted, with stricter ventilation.
+
+### 17.5 Where the used Kimwipes go (missing from the proposed procedure)
+
+A Kimwipe loaded with AlSi10Mg **is** combustible metal dust — it cannot go in the regular trash — and an IPA-damp wipe adds a flammable liquid to metal fines, which is the same combination §12 rejects mineral-oil passivation over.
+
+- **Dry wipes** → straight into the vacuum's conductive liner (or a small conductive bag that goes into it) with the rest of the collected powder.
+- **IPA-damp wipes** → lay them out flat in a ventilated spot until the IPA has **fully flashed off (≥ 5 min, no smell)**, *then* bag them with the dry wipes. **Never** drop a solvent-wet wipe into the sealed liner or the interim pail — the pail lid is deliberately un-crimped for trace H₂ venting, not for solvent vapor.
+- Confirm the handling in one line with Jill/Ed at Waste Management, since the interim pail is on their tracking system (1-year clock from tagging).
