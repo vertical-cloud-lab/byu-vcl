@@ -162,11 +162,60 @@ its buffered `log.txt` is lost, so an empty log after a reset means "I interrupt
 stream instead. And the reference `main.py` calls `connectWiFi(..., country="CA")`; for US
 operation that should be `"US"`, since the country code governs the usable 2.4 GHz channels.
 
+**MicroPython 1.29.0 or newer is required.** On 1.26–1.28 the RP2040 hardware I2C driver has
+a regression: `i2c.scan()` ACKs the AS7341 at `0x39`, but every register read or write
+returns `OSError: [Errno 5] EIO`, at any bus speed, with or without a repeated START. It
+cost real time to find because it looks exactly like a wiring or power fault, and because it
+reproduces on *every* board — two different Pico Ws, two different sensors and two different
+base boards all failed identically. That cross-board consistency is the tell: a shared
+firmware bug, not a shared hardware fault. Bit-banged `SoftI2C` works on the same pins on the
+affected versions and is the fallback if an older build is ever unavoidable. See
+[micropython#19087](https://github.com/micropython/micropython/issues/19087) and
+[micropython#18257](https://github.com/micropython/micropython/issues/18257).
+
+**Do not judge the sensor from a board plugged into the Pi.** `main.py` prints continuously
+(`waiting for connection...`, `Elapsed: Ns`, `RAM free ...`). With USB enumerated but nothing
+reading the serial port, the RP2040 CDC TX buffer fills and `print()` blocks, so `main.py`
+starts and then wedges before it ever reaches the broker. Under `mpremote run` a host is
+draining the buffer, so the same code runs fine — which makes this look like an intermittent
+network problem. On mains or battery power with no USB host, MicroPython discards stdout and
+it behaves normally. Verify the MQTT path with the board on its own power, not on the Pi.
+
 Board backups (including the pre-existing `my_secrets.py`) are on the Pi under
 `~/pico-backups/<timestamp>/`, and the board keeps its own `my_secrets.py.bak`.
 
-**Not yet provisioned** — `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link
-it unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token for tests
-that should not mint real DOIs. Note that sandbox is a wholly separate instance with its own
+## Hugging Face Spaces
+
+`byu-vcl/OT-2-LCM` and `byu-vcl/light-mixing`, both **private**, `cpu-basic`, duplicated
+from the Acceleration Consortium originals. Their secrets live in the Space's own settings,
+not in GitHub, so the two places have to be kept in sync by hand — set them with
+`HfApi.add_space_secret` using `HF_TOKEN` rather than clicking through the UI.
+
+The Space reads `blinded_connection_string`, `MONGODB_PASSWORD`, `MONGODB_DATABASE`,
+`MQTT_BROKER`, `MQTT_PORT`, `MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Its MQTT
+credential is `hf-space`, deliberately separate from the device and CI credentials.
+
+Three edits were needed on top of the duplicate, and they will need re-applying if the
+Spaces are ever re-duplicated from upstream:
+
+- `app.py` — `OT2_SERIAL` and `PICO_ID` were hardcoded to the AC's own devices. They now
+  read from env, defaulting to ours.
+- `DB_utils.py` — every collection was opened on database `LCM-OT-2-SLD`. Our database user
+  is scoped `readWrite` on `digital-wetlab` alone, so left alone *every write would fail
+  authorization*. It now reads `MONGODB_DATABASE`.
+- `app.py` — the YouTube lookup is now fail-soft. `yt_utils.get_latest_video_id` calls
+  `raise_for_status()`, and `app.py` called it at import time, so a missing or invalid
+  `YT_API_KEY` took the **whole Space down at startup** rather than merely hiding the video.
+
+**YouTube.** Channel `UCZ5KNGkEEqDsRVn0Nlfn0IA` ("BYU VCL Hardware Streams"), OT-2 playlist
+`PLdKz1vXA-rfQ` ("OT-2 Livestreams Playlist"). Both are stored as Space *variables*, not
+secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed shown when
+the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
+truncation.
+
+**Not yet provisioned** — `YT_API_KEY` (a YouTube Data API v3 key from the Google Cloud
+console; until it exists the Space falls back to a fixed embed instead of tracking the
+current stream), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it
+unlocks), and a Box share link for image backup. Note that sandbox is a wholly separate instance with its own
 account, its own token, *and its own base URL* (`sandbox.zenodo.org/api`) — code that only
 swaps the token will still write to production.
