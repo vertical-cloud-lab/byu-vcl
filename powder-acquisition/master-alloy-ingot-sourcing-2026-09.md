@@ -114,8 +114,9 @@ is complete and the ordering rules are explicit:
 | Aluminum-Si 1 / 1.5 / 2 / 5 / 10 / 11 / 25 % pieces, 4N–5N | Knc6733, Knc9293, Knc9931, Knc6811, Knc6833, Knc6269, Knc6830 | Si | Al-Si11 % 5–10 mm 4N (Knc6269) is a near-eutectic lump that melts at 577 °C — the easiest way to bring 12 wt % Si into a 100 g melt. |
 | Aluminum-Sn15 % Pcs 5–12 mm 4N (Knc7919) · Aluminum-Zn alloy drops (Knd5066) · Aluminum-Ni pieces (Al₃Ni, Al₃Ni₂, AlNi, Al21Ni79) | — | Sn, Zn, Ni | Available if the powder lines fall through; not needed today. |
 
-**Not found at ESPI (searched "Aluminum-Mg/-Sc/-Ce/-Er/-Mn", "AlMg", "master alloy"):** Al-Mg,
-Al-Sc, Al-Er, Al-Ce, Al-Mn. The full shop search returned only the items above.
+**Not found at ESPI (searched "Aluminum-Mg/-Sc/-Ce/-Er/-Mn", "AlMg", "master alloy"):** Al-Mg
+(the research agent saw only an Al-1.5 % Mg *wire*), Al-Sc, Al-Er, Al-Ce, Al-Mn. The full shop
+search returned only the items above.
 
 ### 2.2 Magnesium, aluminium base, and rare-earth solid forms at ESPI
 
@@ -140,7 +141,7 @@ August).
 
 | Need | Thermo Fisher answer | Cat. no. | Pack / price (list, 2026-09-03) |
 | --- | --- | --- | --- |
-| Al-Mg or any Al master alloy | **None.** No Al-Mg, Al-Sc, Al-Zr, Al-Er, Al-Ce, Al-Li or Al-Ti alloy is catalogued — only pure Al forms and Ni-Al (Raney-type) powders. | — | — |
+| Al-Mg or any Al master alloy | **None.** No Al-Mg, Al-Sc, Al-Zr, Al-Er, Al-Ce, Al-Li or Al-Ti master alloy is catalogued. The only Al-Mg items are wrought shapes — 5052 plate (discontinued), 5056 gauze, 6061 foil/rod, and Sigma-resold Goodfellow Al97Mg3 / Al95Mg5 pieces (form not shown, ≈ $600+ each) — plus 99:1 and 96.5:3.5 Al-Si evaporation slugs (042322, 038492) and −325 mesh AlSi12 powder (088322). | — | — |
 | Mg solid forms | **Turnings, granules, rods, slugs, cube, foil — no ingot, no pieces/lumps, no chips of its own brand.** Turnings 99.8 % (010232: AA1023222 100 g; 2.5 kg $469) · turnings 99+ % (L08120: AAL0812022 100 g **$44.65**, list $57.80) · turnings −4 mesh 99.98 % (036193: AA3619318 50 g **$47.65**, list $63.00) · Acros 99.9+ % turnings (AC191085000 500 g $98.65) · **granules −4+30 mesh 99.8 % (000870: AA0087036 500 g $168.70)** · rod 7.9 mm × 25 mm 99.9 % (043355.KF, $46.50/pc) · rod 3.3 cm × 30 cm 99.8 % (010231, ≈ 450 g/pc) · 19 mm cube (045119.KF, $93.50) · 99.95 % slugs (043296–043299, $185/10 g and up) · AZ31B plate/rod (Mg-3Al-1Zn, not a master). Prices as read on fishersci.com by the research agent, 2026-09-03. | see left | see left |
 | Sc metal | *Scandium pieces, distilled dendritic, 99.9 % (REO)*, under Ar | [039996.04](https://www.thermofisher.com/order/catalog/product/039996.04) | **2 g, $615.00 list / $553.65 online** (Fisher list $788.65) ≈ $277–394/g |
 | | **Scandium arc-cast pellet, 15.9 mm dia, ≈ 5 g, total REO impurities ≤ 0.001 %** — the best certified $/g Sc found anywhere | [045118.KF](https://www.thermofisher.com/order/catalog/product/045118.KF) (Fisher AA45118KF) | **1 pc ≈ 5 g, $414.00 list / $351.65 online** (Fisher list $458.00) ≈ $70–92/g |
