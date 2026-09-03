@@ -140,6 +140,31 @@ wrapper over the maintenance-run API and is the quickest way to see the call pat
 `Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
 `/maintenance_runs` moves real hardware.
 
+**Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
+driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
+(1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches
+nothing system-wide; that Pi also runs CubOS gantry work, so keep changes to it contained.
+
+**Always address the board by USB serial, never by device path:**
+
+```bash
+~/.venvs/mpremote/bin/mpremote connect id:e6647c15673a2438 fs ls
+```
+
+An Arduino (`2341:0043`) already owns `/dev/ttyACM0` on that Pi, so the Pico comes up as
+`ttyACM1` — and `mpremote`'s bare auto-connect grabs the *first* ACM device. Targeting a
+path, or letting it auto-detect, opens a REPL against the Arduino instead, which may be
+driving real gantry hardware. Match on `2e8a` / the serial and nothing else.
+
+Two more gotchas. Connecting with `mpremote` interrupts whatever `main.py` is running and
+its buffered `log.txt` is lost, so an empty log after a reset means "I interrupted it", not
+"it never ran" — to watch a boot, `mpremote ... run <local copy of main.py>` and read the
+stream instead. And the reference `main.py` calls `connectWiFi(..., country="CA")`; for US
+operation that should be `"US"`, since the country code governs the usable 2.4 GHz channels.
+
+Board backups (including the pre-existing `my_secrets.py`) are on the Pi under
+`~/pico-backups/<timestamp>/`, and the board keeps its own `my_secrets.py.bak`.
+
 **Not yet provisioned** — `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link
 it unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token for tests
 that should not mint real DOIs. Note that sandbox is a wholly separate instance with its own
