@@ -123,6 +123,7 @@ status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
 | --- | --- |
 | `HF_TOKEN` | Hugging Face `byu-vcl` account, fine-grained: read + write contents/settings of own repos. Enough to duplicate Spaces (`duplicate_space`), upload files, and set Space-side secrets (`add_space_secret`). |
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
+| `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
@@ -130,7 +131,17 @@ names: `blinded_connection_string`, `MONGODB_PASSWORD`, `MQTT_BROKER`, `MQTT_POR
 `MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Set them with `add_space_secret` using
 `HF_TOKEN` so the two sides cannot drift.
 
-**Not yet provisioned** — `PICO_ID` and `OT2_SERIAL` (read them off the devices; they
-namespace every MQTT topic above), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without
-the link it unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token
-for tests that should not mint real DOIs.
+**Reaching the OT-2.** The robot is not on the tailnet. It is wired directly to the OT-2
+stream-cam Pi (`OT2_STREAM_CAM_HOSTNAME`) and answers only on the link-local address
+`http://169.254.51.252:31950`, so every OT-2 HTTP API call has to be made *from that Pi* —
+you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi is a thin
+wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
+`Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
+`/maintenance_runs` moves real hardware.
+
+**Not yet provisioned** — `PICO_ID` (read it off the Pico W; it namespaces the sensor
+topics above), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it
+unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token for tests that
+should not mint real DOIs. Note that sandbox is a wholly separate instance with its own
+account, its own token, *and its own base URL* (`sandbox.zenodo.org/api`) — code that only
+swaps the token will still write to production.

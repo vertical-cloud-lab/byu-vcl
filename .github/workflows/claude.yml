@@ -122,6 +122,9 @@ jobs:
           # Hugging Face (byu-vcl account) and Zenodo (deposit:write + deposit:actions)
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           ZENODO_API_TOKEN: ${{ secrets.ZENODO_API_TOKEN }}
+          # OT-2 robot serial, read from the robot's own /health endpoint. Namespaces the
+          # command/ot2/<serial>/pipette and status/ot2/<serial>/complete MQTT topics.
+          OT2_SERIAL: ${{ secrets.OT2_SERIAL }}
           # Allow long-blocking foreground commands (e.g., Edison polling)
           BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
           BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
