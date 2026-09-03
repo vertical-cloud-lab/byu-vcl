@@ -597,9 +597,9 @@ Three field facts change the mechanics from what the earlier Edison sections des
 - [ ] **Grounded steel interim pail** staged nearby with its lid available (labeled per §12/§10).
 - [ ] **PPE on** (§13.1 item 3).
 - [ ] **No water/solvents/oxidizers** on the bench; nothing hot going into the vacuum.
-- [ ] **Bond the source tray/benchtop to ground. (→ §14, most critical addition)** The metal tray you vacuum from is itself a conductive object in contact with a charging powder; if it floats, it can spark to the grounded wand tip. Clip a bonding wire from the tray to the vacuum body (or the same building-ground point) and verify **< 10 Ω** before running powder.
-- [ ] **Start small.** For the very first run, put a **small, known amount** of AlSi10Mg (a few grams) on a **grounded metal tray or benchtop**, not a large pile — enough to confirm pickup, suction, sealing, and disposal end-to-end before scaling up. Have a second person record video (POV + a wide angle) as planned.
-- [ ] **Equalization touch. (→ §14)** Before the wand tip approaches the powder, briefly touch the grounded wand tip to the grounded tray *away from the powder* to equalize any residual charge.
+- [ ] **Isolated-conductor sweep of the work zone. (→ §14-A, most critical addition; scoped in §17.6)** The hazard is *ungrounded metal*, not an unbonded floor. Walk the area and bond-or-remove every conductive object near the powder: metal tray or bench you vacuum from, cart, step stool, loose sheet-metal panel, metal trash can, and **the atomizer housing/frame itself**. Anything metal that stays gets a bonding wire to the vacuum body or the same building-ground point, verified **< 10 Ω**. Vacuuming off concrete/epoxy/vinyl **does not** require bonding the floor (§17.6).
+- [ ] **Start small.** For the very first run, use a **small, known amount** of AlSi10Mg (a few grams) over a **small, defined footprint you can verify clean afterward**, not a large or spread-out pile — enough to confirm pickup, suction, sealing, and disposal end-to-end before scaling up. A bonded metal tray or the bench is convenient and gives the best nozzle control; the real floor/housing surface is also acceptable and is more representative of the actual job (§17.6). Have a second person record video (POV + a wide angle) as planned.
+- [ ] **Equalization touch. (→ §14-F)** Before the wand tip approaches the powder, briefly touch the grounded wand tip to **any grounded metal point** — the bonded tray, the bonded housing frame, or the vacuum body — *away from the powder*, to equalize any residual charge.
 - [ ] **Area control. (→ §14)** Restrict the immediate area to trained, PPE-equipped personnel and post signage: "COMBUSTIBLE METAL POWDER IN USE — Authorized Personnel Only — NO Water, NO Compressed Air."
 - [ ] **Documented DHA on file (NFPA 652)** and EHS/PI sign-off before this first live run.
 
@@ -700,7 +700,7 @@ Ronnie asked ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80)) t
 
 ### 14.3 Additions the review flagged (fold into the SOP before the first run)
 
-- **A — Bond the source tray/benchtop to ground (< 10 Ω).** *Most critical.* An unbonded metal tray in contact with charging powder can spark to the grounded wand tip. Added to the §13.2 checklist.
+- **A — Bond the source tray/benchtop to ground (< 10 Ω).** *Most critical.* An unbonded metal tray in contact with charging powder can spark to the grounded wand tip. Added to the §13.2 checklist. **Scope (added 2026-09-03, see §17.6):** this is an **isolated-conductor** rule — it applies to *metal* objects that can float, and does **not** imply that an insulating floor must be made conductive before it can be vacuumed. Read it as "bond every ungrounded conductor in the work zone," which is how §13.2 now states it.
 - **B — Documented DHA (NFPA 652)** and EHS/PI sign-off, even for a few-gram test. Added to §13.2.
 - **C — Spill-response plan:** never sweep (dust cloud); scoop visible piles with a non-sparking (plastic/brass) scoop into a conductive bag; re-vacuum after confirming the ground chain; for any visible floor layer, restrict access, ventilate, and call EHS.
 - **D — Bystander/area control + signage.** Added to §13.2.
@@ -910,7 +910,7 @@ Logan (Nilfisk tech support, by phone) **agrees the crevice nozzle is probably a
 | Step as proposed | Verdict | Correction / addition |
 |---|---|---|
 | 1. Black VCL lab coat, nitrile gloves, N95, safety glasses | ✅ on-SOP | Matches the 2026-07-06 Risk-Management list; black coat is the 100% cotton one. **Open item unchanged:** the ESD wrist strap (§14 Claim 3). SDS §2 also lists **H334** (respiratory sensitizer) — reinforces the N95. |
-| 2. Spread powder **on the ground** | 🔴 **change this** | A floor cannot be bonded, and epoxy/vinyl/sealed concrete is effectively insulating, so the powder bed charges freely — this defeats §14 addition A ("bond the source surface, < 10 Ω"), the review's *most critical* item. Spread fines also travel under equipment where recovery can't be confirmed against the NFPA 654 1/32" layer criterion. **Use a few grams inside a conductive liner sitting in the grounded steel bin, or on a grounded metal tray bonded < 10 Ω** — the 2026-08-19 plan was better. Add the §14-F equalization touch. Bench height also gives far better nozzle control than crouching. |
+| 2. Spread powder **on the ground** | 🟡 **scope it, don't relocate it** — *verdict revised 2026-09-03, see §17.6* | ~~🔴 change this~~ — the original verdict misapplied §14 addition A, which is about a floating **metal tray** sparking to the wand, not about an insulating floor. Vacuuming off unbondable surfaces is the actual job, and the bonded wand→hose→vacuum chain is the control that makes it safe. **What survives, and is worth doing:** keep it to a few grams over a small, defined footprint you can verify clean against the NFPA 654 1/32" criterion (not spread where fines travel under equipment); **sweep the work zone for unbonded metal** — cart, loose panel, step stool, metal trash can, and the atomizer housing itself — and bond or remove it, because *that* is where §14-A actually applies; retarget the §14-F equalization touch to any **grounded metal point** instead of "the tray." Bench height still gives better nozzle control if the run allows it. |
 | 3. Crevice nozzle; 30 s run-on to clear the bores | ⚠️ **gated by §17.1**; 30 s is on-SOP | 30 s is in the §13.5 15–30 s range ✅. Do the run-on with the tool **in clean air**, not sitting in the powder, and **lift the tool away from the powder before switching off** (§13.3) so no loose pile is left at the tip. |
 | 4. Remove wand; dry Kimwipe, then IPA-dampened Kimwipe | ✅ correct order | **Add: power off and wait ≥ 60 s before disassembling** (§13.4) — let airborne fines settle before opening the airflow path. Dampened, not wet. **See §17.5 for where the used wipes go** — this was missing. |
 | 5. Let dry, then store in a liner | ✅ on-SOP | Make "let dry" explicit: **≥ 5 min, until there is no IPA smell**, before bagging (§13.5). Sealing a solvent-damp tool into a conductive bag with metal fines is the hybrid-mixture case to avoid. Also **cap/plug the wand and crevice-tool openings** (§13.6) and use the black carbon-loaded PE stock, not pink/silver ESD bags. |
@@ -950,3 +950,41 @@ A Kimwipe loaded with AlSi10Mg **is** combustible metal dust — it cannot go in
 - **Dry wipes** → straight into the vacuum's conductive liner (or a small conductive bag that goes into it) with the rest of the collected powder.
 - **IPA-damp wipes** → lay them out flat in a ventilated spot until the IPA has **fully flashed off (≥ 5 min, no smell)**, *then* bag them with the dry wipes. **Never** drop a solvent-wet wipe into the sealed liner or the interim pail — the pail lid is deliberately un-crimped for trace H₂ venting, not for solvent vapor.
 - Confirm the handling in one line with Jill/Ed at Waste Management, since the interim pail is on their tracking system (1-year clock from tagging).
+
+### 17.6 Correction — vacuuming an unbonded floor is the job, not a violation (2026-09-03)
+
+> Ronnie: *"I don't see why I should put the powder on a special surface, we will be cleaning powder off of the floor and other non-grounded areas when actually operating the vacuum in our atomizer housing."*
+
+**This objection is correct, and the §17.2 step-2 verdict was wrong.** It is downgraded from 🔴 to 🟡 above. The reasoning error and what replaces it:
+
+**1. §14 addition A is an isolated-conductor rule, and a floor is not an isolated conductor.** The Edison text ([`edison/first-test-run-verification/edison_formatted_answer.md`](edison/first-test-run-verification/edison_formatted_answer.md), Omission A) reads:
+
+> *"The metal tray or benchtop from which you are vacuuming powder **is itself a conductive object** … If it is not bonded … it can accumulate charge independently and **produce a spark discharge** when the grounded vacuum wand tip approaches it."*
+
+The hazard mechanism is capacitive: a *conductor* floats, stores charge, and dumps it in one spark. Concrete, epoxy, and vinyl are insulators — they can hold surface charge, but they cannot act as that capacitor, so there is nothing to "bond" and no spark to prevent. §17.2 took a rule scoped to metal and generalized it to any surface. §16.4 had already stated the correct scope for this document: *"What NFPA 77/484 flag is an **isolated (ungrounded) conductor**."*
+
+**2. The requirement, taken literally, would void the equipment's only purpose.** An explosion-proof vacuum with a bonded wand→coupler→hose→inlet chain exists precisely so powder can be picked up from surfaces that cannot be bonded — floors, housing interiors, equipment exteriors. **NFPA 484 §15.3.1.1 requires the *equipment* to be grounded and bonded, not the surface being cleaned.** Where the standards do speak to floors in combustible-metal areas, it is about being non-combustible, smooth, and cleanable — not conductive. If a bonded source surface were genuinely a precondition, the entire atomizer-housing cleanup task would be prohibited, which is the tell that the requirement was over-stated rather than the task being unsafe.
+
+**3. What is actually left on an insulating floor, with numbers.** Removing the isolated conductor leaves two mechanisms, both already analyzed elsewhere in this doc:
+
+| Mechanism | Applies here? | Energy vs. AlSi10Mg |
+|---|---|---|
+| **Brush discharge** from charged insulating surface → grounded wand tip | Possible | Literature caps effective brush-discharge energy at roughly **1–4 mJ**, against bulk AlSi10Mg **MIE 80–350 mJ** (§9) — a 20×+ margin. The exposure is the **sub-micron fines (MIE < 5 mJ)** flagged since §9, which is the *same* margin the bonded chain, close-nozzle technique, and personnel grounding already exist to cover. A grounded tray does not change that exposure; it only removes a mechanism the floor never had. |
+| **Propagating brush discharge (PBD)** | No | Needs a thin high-dielectric-strength layer over a grounded backing *and* charge density typical of pneumatic conveying — Glor's ~**4 kV** threshold. §16 already ruled PBD out at this scale; a few grams of gravity-deposited powder brushed by a grounded nozzle does not build it. |
+| **Isolated conductor** | **Yes — this is the real one** | ~100–200 pF at ~10 kV ≈ **5–10 mJ** (§16.4), i.e. inside the sub-micron-fines MIE band. Present on a floor only if ungrounded *metal* is in the zone. |
+
+**4. So the control transfers, retargeted.** On a floor, §14-A becomes an **isolated-conductor sweep** rather than a surface-bonding step — and this is a real, cheap action item, not a formality:
+
+- [ ] **Bond or remove every ungrounded conductor near the powder:** metal cart, step stool, loose sheet-metal panel, metal trash can, unattached ductwork stub, metal tray if one is used.
+- [ ] **Confirm the atomizer housing / frame is bonded to building ground (< 10 Ω).** This is exactly the §14-A case at full scale — a large metal enclosure in direct contact with charging powder — and it matters far more than what the powder is sitting on.
+- [ ] **Equalization touch (§14-F)** to any grounded metal point (bonded housing frame, bench ground, vacuum body) before the tip approaches powder.
+- [ ] **Wand-chain continuity unchanged** — OEM ≤ 0.1 Ω per joint before every use; the §17.1 crevice-tool gate still stands.
+
+**5. Personnel grounding matters more, not less.** The usual NFPA 77 path for grounding an operator is ESD footwear through a conductive floor — which an epoxy/vinyl coating breaks. Since the floor cannot be relied on for that, the open item worth closing is the **ESD wrist strap** (§14 Claim 3, still unreconciled with the 2026-07-06 Risk-Management PPE list), not the source surface.
+
+**6. What still stands from the original verdict.** Two things, both about recoverability rather than ignition:
+
+- **Keep the footprint small and verifiable.** A few grams over a defined area you can confirm clean against the NFPA 654 **1/32" layer-depth** criterion. Powder spread widely or driven under equipment can't be verified recovered, and §14-C's spill rule (**never sweep**) applies.
+- **Bench height gives better nozzle control** than crouching — worth using when the run allows it, but it is an ergonomics preference, not a safety gate.
+
+**7. Which parts of this are verified.** The isolated-conductor scoping, the NFPA 484 §15.3.1.1 equipment-grounding basis, the PBD threshold, and the MIE figures are all from the §9/§14/§16 Edison reviews already archived in this repo. The brush-discharge energy band and the "floors are specified as cleanable, not conductive" point are literature-typical values applied here as new reasoning — they have **not** been through an Edison run. Worth flagging in the DHA discussion; happy to send a dedicated `LITERATURE_HIGH` query if EHS wants it cited. The standing §12–§17 caveat is unchanged: EHS + PI sign-off and the NFPA 652 DHA still gate the first live run.
