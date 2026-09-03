@@ -1,5 +1,9 @@
 # Quote Review — ESPI Metals, Thermo Fisher #M6449, Atlantic Equipment Engineers (2026-08-26)
 
+> **Update 2026-09-03:** the Sc / Er / Mg / master-alloy gaps identified below are closed in
+> [master-alloy-ingot-sourcing-2026-09.md](master-alloy-ingot-sourcing-2026-09.md): 25 g is not an
+> ESPI minimum (sold by the gram), Thermo Fisher stocks a ≈ 5 g Sc arc-cast pellet ($352–458), Belmont
+> Metals sells brittle Al-50Mg lumps online, and ESPI stocks Al-10Zr / Al-10Ti pieces.
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161).
 Three quotes came back against the [shopping chart](https://github.com/vertical-cloud-lab/byu-vcl/issues/161#issuecomment-5417186399)
 and the [RFQ emails](rfq-emails-2026-08.md). This document answers the two questions asked:

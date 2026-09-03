@@ -1,5 +1,11 @@
 # Feedstock Supplier Search — August 2026
 
+> **Update 2026-09-03:** master alloys in ingot/chunk form (for in-house atomization) and small-lot
+> rare-earth options are re-sourced in
+> [master-alloy-ingot-sourcing-2026-09.md](master-alloy-ingot-sourcing-2026-09.md) — ESPI sells
+> Al-10Zr / Al-10Ti / Al-33Cr pieces by the gram, Belmont sells Al-50Mg lumps online, and a 5 g Sc
+> arc-cast pellet from Thermo Fisher replaces the $5,875 elemental-Sc line. The Kymera "cast + crush
+> all five" package is no longer the critical path.
 > **Update 2026-08-26:** ESPI, Thermo Fisher (#M6449) and AEE have quoted. See
 > [quote-review-2026-08.md](quote-review-2026-08.md) for the line-by-line purity / particle-size /
 > dust-safety verdict, the revised ~$780 order, and the new Mg and coarse-Ti sourcing routes
