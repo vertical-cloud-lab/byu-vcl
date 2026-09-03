@@ -13,6 +13,9 @@ CONTINGENCY = 1.25  # spillage, weighing losses, one re-run
 # (family name, number of runs, {element: max wt.% assumed for every run})
 CAMPAIGN = [
     ("Al-Mn-Cr-Zr", 8, {"Mn": 5.0, "Cr": 2.0, "Zr": 2.0, "Ti": 0.5}),
+    # NOTE 2026-09-03: the Er ceiling here is an unratified placeholder. The published
+    # ultrasonically atomized Al-Zr-Er-Ni optimum sits at 2.33 wt.% Er, so a 3.0 wt.%
+    # ceiling is recommended -- see erbium-bounds-and-lot-size.md before re-running.
     ("Al-Zr-Er-Sc", 4, {"Zr": 1.5, "Er": 1.0, "Sc": 0.8, "Ti": 0.5}),
     ("Al-Ce-Mg", 3, {"Ce": 10.0, "Mg": 6.0}),
     ("Al-Si-Mg-Cu", 2, {"Si": 12.0, "Mg": 0.5, "Cu": 4.0, "Fe": 1.0, "Sn": 1.0}),

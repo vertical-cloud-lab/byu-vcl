@@ -1,5 +1,12 @@
 # Quote Review — ESPI Metals, Thermo Fisher #M6449, Atlantic Equipment Engineers (2026-08-26)
 
+> **Update 2026-09-03 — the Er verdict in §1.2 is superseded.** That section's "campaign needs
+> 5.0 g of Er, so buy 100 g of Al-10Er instead" rests on a *placeholder* 1.0 wt.% Er ceiling that
+> nobody ratified. Against the published Al-Zr-Er-Ni optimum (2.33 wt.% Er, made by ultrasonic
+> atomization), a 25 g lot is correctly sized and the 5 g alternative would truncate the design
+> space below the known-good composition. See
+> [erbium-bounds-and-lot-size.md](erbium-bounds-and-lot-size.md). The Sc verdict in §1.2 stands.
+
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161).
 Three quotes came back against the [shopping chart](https://github.com/vertical-cloud-lab/byu-vcl/issues/161#issuecomment-5417186399)
 and the [RFQ emails](rfq-emails-2026-08.md). This document answers the two questions asked:
@@ -51,8 +58,11 @@ ESPI quoted 25 g of −40 mesh 3N Sc at **$235/g = $5,875**. Two problems:
    −40 mesh powder has a lot of surface. **250 g of Al-2Sc delivers the same 5 g of Sc** with the
    solute already dissolved and its oxide skin gone.
 
-The same argument applies with less force to **Er** ($800 for 25 g, campaign needs 5.0 g) — 100 g
-of Al-10Er covers it.
+~~The same argument applies with less force to **Er** ($800 for 25 g, campaign needs 5.0 g) — 100 g
+of Al-10Er covers it.~~ **Superseded 2026-09-03:** the 5.0 g figure came from an unratified
+1.0 wt.% Er ceiling. At the published 2.33 wt.% Er composition the 25 g lot is right-sized, and
+elemental Er is needed for the high-solute corner that dilute masters cannot reach —
+see [erbium-bounds-and-lot-size.md](erbium-bounds-and-lot-size.md).
 
 **Action:** hold both lines pending the Kymera/Reading master-alloy quote. Keep the ESPI lines as a
 *named fallback* — they are US-warehoused material, which has real option value given
