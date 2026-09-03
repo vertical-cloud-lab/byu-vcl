@@ -124,6 +124,7 @@ status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
 | `HF_TOKEN` | Hugging Face `byu-vcl` account, fine-grained: read + write contents/settings of own repos. Enough to duplicate Spaces (`duplicate_space`), upload files, and set Space-side secrets (`add_space_secret`). |
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
+| `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
@@ -139,9 +140,8 @@ wrapper over the maintenance-run API and is the quickest way to see the call pat
 `Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
 `/maintenance_runs` moves real hardware.
 
-**Not yet provisioned** — `PICO_ID` (read it off the Pico W; it namespaces the sensor
-topics above), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it
-unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token for tests that
-should not mint real DOIs. Note that sandbox is a wholly separate instance with its own
+**Not yet provisioned** — `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link
+it unlocks), a Box share link for image backup, and a `sandbox.zenodo.org` token for tests
+that should not mint real DOIs. Note that sandbox is a wholly separate instance with its own
 account, its own token, *and its own base URL* (`sandbox.zenodo.org/api`) — code that only
 swaps the token will still write to production.

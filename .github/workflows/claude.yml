@@ -125,6 +125,9 @@ jobs:
           # OT-2 robot serial, read from the robot's own /health endpoint. Namespaces the
           # command/ot2/<serial>/pipette and status/ot2/<serial>/complete MQTT topics.
           OT2_SERIAL: ${{ secrets.OT2_SERIAL }}
+          # Pico W machine.unique_id(), read off the board. Namespaces the
+          # command/picow/<id>/as7341/read and color-mixing/picow/<id>/as7341 topics.
+          PICO_ID: ${{ secrets.PICO_ID }}
           # Allow long-blocking foreground commands (e.g., Edison polling)
           BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
           BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
