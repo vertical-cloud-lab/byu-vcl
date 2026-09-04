@@ -574,6 +574,8 @@ A master operator quick-reference checklist (before/after each session, weekly, 
 
 ## 13. First Test Run (Crevice Nozzle + Dust Brush) + Post-Use Cleaning & Storage
 
+> 📄 **Printable standalone version:** §13 + §14 + §16 + §17 are consolidated into the operator-facing [`vacuum-operating-sop.md`](vacuum-operating-sop.md) / [`vacuum-operating-sop.pdf`](vacuum-operating-sop.pdf) — print that to follow at the machine.
+
 Ronnie's request ([PR #80](https://github.com/vertical-cloud-lab/byu-vcl/pull/80)): a safe way to do the first live test run vacuuming AlSi10Mg with the **crevice nozzle** and **dust brush**, plus how to store the wand/extensions after use on fine metal powder and whether an IPA wipedown is needed afterward.
 
 This section is the **operating** companion to the §12 **disposal** SOP. It consolidates the §7/§9/§10/§12 guidance with the **Risk Management / Waste Management simplifications from the 2026-07-06 meeting** (Bryant, Steve, Jill, Ed) into the actual sequence of a vacuuming session.
