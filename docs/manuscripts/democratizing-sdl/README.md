@@ -8,10 +8,13 @@ Self-Driving Labs" workshop Perspective. Tracked in
 
 | File | What it is |
 |---|---|
-| [`manuscript-v1.md`](manuscript-v1.md) | Editable markdown recreation of the ChemRxiv v1 text — **the working source**, since the original Google Doc is gone |
+| [`manuscript-v2.md`](manuscript-v2.md) | **The working source.** Restructured around a single thesis, with the labour-cost analysis, the per-claim evidence matrix and the documentation self-audit |
+| [`revision-notes-v2.md`](revision-notes-v2.md) | Changelog v1 → v2, the title shortlist, and the list of things only the co-authors can resolve |
+| [`analysis/`](analysis/) | Self-contained script deriving the break-even wage and labour shares from Table 1, plus its CSV outputs |
+| [`manuscript-v1.md`](manuscript-v1.md) | Editable markdown recreation of the ChemRxiv v1 text — kept as the baseline to diff against |
 | [`chemrxiv-2025-zhkrf.pdf`](chemrxiv-2025-zhkrf.pdf) | The ChemRxiv v1 PDF as posted (18 pp.) |
-| [`figures/`](figures/) | The six figures, extracted from the PDF at their embedded resolution |
-| [`revision-assessment.md`](revision-assessment.md) | Initial assessment against the editor's rejection points, plus a proposed restructure |
+| [`figures/`](figures/) | Seven figures: the six extracted from the PDF, renumbered into citation order, plus the new Figure 1 |
+| [`revision-assessment.md`](revision-assessment.md) | Initial assessment against the editor's rejection points, plus the proposed restructure that v2 implements |
 
 ## Provenance
 
@@ -48,14 +51,28 @@ original author list (Ethan Rajkumar's stray double comma; Sonya Vasquez's missi
 affiliation superscript) were normalised here — both are flagged in the assessment as
 things to fix properly.
 
-Figures were extracted at embedded resolution and renamed by figure number. Note that the
-v1 PDF presents them out of order (1, 2, **4**, **3**, 5, 6) as a Word float artefact; the
-markdown places each figure with its own project section, so the numbering reads out of
-order there too. Renumbering is deferred until the restructure settles. The rolling ball
-viscometer has no figure in v1.
+Figures were extracted at embedded resolution. The v1 PDF presented them out of order
+(1, 2, **4**, **3**, 5, 6) as a Word float artefact. **v2 renumbers them into citation
+order and the files were renamed to match**, so `figures/` no longer corresponds to v1's
+numbering — read `manuscript-v1.md` for the original placement. The rolling ball
+viscometer still has no figure; one is needed.
+
+## Reproducing the analysis
+
+```
+cd analysis && python labor_cost_analysis.py
+```
+
+Requires `matplotlib`. Reads nothing but the figures already published in v1's Table 1 —
+no new data — and rewrites `table1-derived.csv`, `sensitivity.csv` and
+`../figures/fig1-labour-vs-bom.png`.
 
 ## Status
 
-Not yet revised. See [`revision-assessment.md`](revision-assessment.md) for the plan; the
-blocking item is electronic supporting material (repos or Zenodo deposits) for the powder
-dispensing module, the rolling ball viscometer, and the electrochemical workflow.
+**Draft v2 complete and ready for co-author review.** See
+[`revision-notes-v2.md`](revision-notes-v2.md) §7 for everything still outstanding; each
+item is marked `[NEEDED]` in the manuscript itself.
+
+The blocking item is unchanged and is the one thing writing cannot fix: electronic
+supporting material (repositories or Zenodo deposits) for the powder dispensing module,
+the rolling ball viscometer, and the electrochemical workflow.
