@@ -1,0 +1,450 @@
+% byu-coi-plan.tex
+%
+% THE INSTRUMENT. This is the document that gets attached to BYU's Financial
+% Disclosure Form, approved, and signed. It states obligations only.
+%
+% The reasons, the approval sequence, the signing tiers, and the company
+% formation-document analysis live in byu-coi-briefing.tex, which is NOT
+% submitted. If you are about to add a sentence here that explains WHY a
+% clause is justified, it belongs in the briefing or in a footnote.
+%
+% Hard limits, both checked at build time:
+%   * six pages maximum
+%   * no em or en dashes (see the house rule in vcl-doc.sty)
+%
+% Compile with pdflatex, THREE times, then copy the PDF to the repo root
+% (latex/.gitignore excludes *.pdf, so the tracked artifact is ../*.pdf).
+%
+\documentclass[11pt]{article}
+\usepackage{vcl-doc}
+
+\hypersetup{
+  pdftitle={Conflict of Interest Management Plan},
+  pdfsubject={Conflict-of-interest management plan for a faculty co-founder},
+  pdfkeywords={BYU, conflict of interest, management plan, faculty founder}
+}
+\vclrunninghead{Conflict of Interest Management Plan, Vertical Cloud Lab}
+
+\begin{document}
+
+% ================================================================== title ==
+\thispagestyle{plain}
+
+{\color{byunavy}\hrule height 2.4pt}
+\vspace{12pt}
+{\LARGE\bfseries\color{byunavy} Conflict of Interest Management Plan}\\[6pt]
+{\normalsize\bfseries Brigham Young University}\\[2pt]
+{\normalsize Department of Mechanical Engineering, Ira A.\ Fulton College of
+Engineering}
+\vspace{8pt}
+
+{\color{byunavy}\hrule height 0.8pt}
+\vspace{9pt}
+
+{\setlength{\extrarowheight}{2pt}\small
+\begin{tabular}{@{} >{\leavevmode\color{byunavy}\scshape}p{1.3in} >{\RaggedRight\arraybackslash}p{5.15in} @{}}
+Faculty member & Sterling G.\ Baird, Assistant Professor, Mechanical
+Engineering (the ``Faculty Member'') \\
+Company & NewCo, Inc. (TBD), a Delaware corporation (the ``Company'') to be co-founded by the Faculty Member with Nate Sanders upon department approval of the outside activity \\
+Governing policies &
+\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest};
+\href{https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy}{Financial
+Conflict of Interest in Research};
+\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property};
+\href{https://spo.byu.edu/policies}{Financial Disclosure Form and
+Instructions};
+\href{https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook}{Sponsored
+Projects Handbook};
+\href{https://spo.byu.edu/00000190-3687-d777-a591-37af392d0001/rechargecenterpolicyprocedures-pdf}{Recharge
+Center Policy} \\
+Effective date & [date] \\
+Review & annual, with the Faculty Profile outside-activity disclosure \\
+\end{tabular}}
+
+\vspace{10pt}
+
+% ------------------------------------------------------------------- band A
+\planband{A. Role and principal duties of the Faculty Member}{}
+
+This activity is put forward because
+there is significant potential for benefits to the research group and its students. This includes potential for research students
+to have hands-on time on instruments that would otherwise be difficult to procure or access, potential for sponsored agreements that bring new research funding for
+student wages, equipment, and student travel, and potential for industry experience through internships, applied problems, and post-graduation employment. Because the Company strongly emphasizes open science, student work stays publishable, so
+a graduate thesis, a paper, or a conference talk is not delayed. In light of these potential benefits, a plan to manage potential conflicts that may arise from the Faculty Member's engagement in this outside activity is detailed below.
+
+\psection{The relationship and its limits}
+
+\clause{1.1} The Faculty Member will co-found the Company and hold \textbf{more
+than ten percent equity} while remaining on a full-time
+faculty appointment (as opposed to a personal leave).
+
+\clause{1.2} \textbf{Advisory roles only.} The only Company roles are
+stockholder and advisory roles such as \textbf{[Chief Scientific Advisor]}: advisory, with no officer
+title, no employment relationship, and no board vote.\footnote{\href{https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook}{Sponsored
+Projects Handbook}: ``Faculty members not on leave are not to be line officers
+in outside companies.'' Also
+\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy}.}
+
+\clause{1.3} \textbf{No pay from the Company}: no salary, consulting fees,
+bonuses, honoraria, or other compensation. Stock is the only financial
+interest.\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}: a faculty member may consult for a company or take part in
+research it sponsors, not both. Exceptions need chair, dean, and the written
+approval of the Associate Academic Vice President for Research (``the AAVP'').}
+
+\clause{1.4} \textbf{Travel is reimbursed at cost, and reported.} The Company
+may reimburse the Faculty Member's documented airfare, lodging, and meals for
+a trip whose purpose is Company business: actual cost, the Faculty Member
+alone, no per diem above cost, nothing else of more than nominal value. Those days count against the four-day allowance (2.1); no trip
+is paid twice, and university business, including conference travel to present
+BYU research, stays on BYU funds. Each reimbursed trip is reported on the
+\href{https://spo.byu.edu/policies}{annual financial disclosure} by sponsor,
+purpose, dates, and destination per the form's requirements.
+
+\clause{1.5} \textbf{The inventor's royalty share is forfeited.} At ten
+percent or more the Faculty Member is a ``principal equity owner'' and gives
+up the inventor's 45\% share of BYU's licensing income from the Company, with
+the matched research-account option per policy\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}: ``a principal equity owner is one who controls ten percent
+or more equity in the company,'' and such a developer ``will forfeit his or
+her distribution.''}
+
+\clause{1.6} \textbf{No voting board seat} if more than \$3M has been raised. Optionally, an observer seat may be offered at Company's discretion as an exception, given the Faculty Member notifies BYU in advance.\footnote{A voting seat is allowed only where the company ``has
+not raised more than \$3,000,000,'' and then only ``on rare occasions'' with
+the dean, the AAVP, and the Technology Transfer Office approving in writing
+(\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}).}
+
+\clause{1.7} \textbf{Neither role speaks for the other.} The Faculty Member
+does not represent BYU in any Company matter or the Company in any BYU matter,
+and commits neither to anything. The Company does not use BYU's name, logo, or
+facilities in its advertising or investor materials except as BYU authorizes in
+writing.\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}: ``The name of the university shall not be used\ldots\ in any
+advertising.''}
+
+% ------------------------------------------------------------------- band B
+\planband{B. Conditions of the plan}{}
+
+\psection{Time, teaching, and availability to students}
+
+\clause{2.1} All Company activity fits inside BYU's outside-activity
+allowance: \textbf{at most four days a month} across every outside activity
+combined, with the chair's prior written
+approval.\footnote{\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy}: ``up to four days per month.''} The Faculty
+Member keeps a count of the days used and reports the total to the chair with
+the annual disclosure.
+
+\clause{2.2} \textbf{Teaching and students come first.} Classes, class
+preparation, and office hours are held as scheduled, and student and
+research-group meetings go on the calendar before Company commitments. Company
+time taken during a workday is made up on evenings or weekends.\footnote{\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy}, compensating-time expectation.}
+
+\clause{2.3} The chair reviews that total at annual review against the policy's
+standard (availability to students; teaching, scholarship, and citizenship
+performance) and may require Company time to be reduced.
+
+\psection{Contracts: who negotiates and who signs}
+
+\clause{3.1} The Faculty Member takes \textbf{no part in negotiating,
+approving, or influencing any agreement between BYU and the Company, on either
+side of the table}: the license, every research agreement, every equipment
+placement, and any gift. The Company is represented by one of its officers
+([name/title]); BYU by the Research Administration Office, the Technology
+Transfer Office, or the Office of General
+Counsel.\footnote{\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy} lists as unmanageable ``negotiating, influencing,
+or attempting to influence the negotiations of contracts or agreements between
+the university and a third party for the benefit of the employee or a Related
+Party.''}
+
+\clause{3.2} The Faculty Member does not advocate for any such deal or its
+terms with the chair, dean, Research Administration Office, Technology
+Transfer Office, or the AAVP, directly or through colleagues.
+
+\clause{3.3} \textbf{Still permitted}, all ordinary faculty duties: technical
+input on scope of work through the Research Administration Office's designated
+contact; serving as named technical contact once an agreement is signed; and
+signing the inventor's acknowledgment of a license or a royalty Distribution
+Agreement.\footnote{Technology Transfer Office,
+\href{https://techtransfer.byu.edu/resources}{``Working with the Technology
+Transfer Office.''}}
+
+\clause{3.4} \textbf{If the Company sells to BYU}, the sale happens only after
+the Faculty Member is approved as an employee-vendor by Purchasing \& Travel,
+Compensation, and Regulatory Accounting, and the Faculty Member takes no part
+in the purchasing decision. An employee whose access to non-public BYU
+information would give their company an unfair advantage may not do business
+with the university at all.\footnote{Employee-Vendor Policy, in the sign-in
+policy library at \href{https://policy.byu.edu}{policy.byu.edu}.}
+
+\psection{Company-sponsored research and cost recovery}
+
+\clause{4.1} Any Company use of lab personnel, students, or facilities runs
+under a written agreement selected and signed by the authorized university
+office: a \textbf{sponsored research agreement} for research work (the
+default, at BYU's standard terms, with no lasting restrictions on
+publication), a cost-recovery account for instrument time (4.4), or an
+equipment agreement (6.4). No Company work happens in the lab outside a signed
+scope of work. Only faculty on regular appointments and certain research
+faculty may be principal investigators, so that responsibility cannot be
+delegated to students, postdoctoral fellows, or staff.\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}: such work ``must be administered as sponsored research
+projects when there is a substantial use of university resources or when BYU
+students are employed.''
+\href{https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook}{Sponsored
+Projects Handbook} for the principal-investigator rule.}
+
+\clause{4.2} \textbf{Independent review of the science.} A senior faculty
+member with no Company interest, designated by the dean (\ph), reviews each
+Company-sponsored project before work begins and at least annually after:
+funding, student roles, publication freedom, and the separation of Company
+from university work. The reviewer reports to the chair and the AAVP, and the
+chair may pause affected work while a concern is open.
+
+\clause{4.3} Publications and presentations from Company-sponsored or
+license-related work disclose the Faculty Member's Company interest, and BYU's
+stock position where BYU holds one. If BYU accepts Company stock, the
+university's own interest is reviewed by the AAVP with the Office of General
+Counsel, separately from this plan.
+
+\clause{4.4} \textbf{Cost recovery.} Sales of instrument time outside a
+research agreement run only through a cost-recovery account approved by the
+chair, dean, and Regulatory Accounting, with outside users billed at the
+external rate including overhead and the tax treatment settled before billing
+starts.\footnote{\href{https://spo.byu.edu/00000190-3687-d777-a591-37af392d0001/rechargecenterpolicyprocedures-pdf}{Recharge
+Center Policy and Procedures}. The published copy is dated 2005 and sits
+outside the university policy library; nothing in this clause is settled until
+Regulatory Accounting confirms which document governs.} That revenue is
+budgeted to student wages, equipment, and student travel. None of it funds the
+Faculty Member's salary, summer salary, or travel.
+
+\psection{Students}
+
+\clause{5.1} \textbf{Notice and an independent advocate.} Every lab member
+receives written notice of the Faculty Member's Company interest, and BYU's if
+BYU holds stock, on joining and annually after, with a copy to the chair. The
+graduate coordinator or associate chair, who has no Company interest, meets
+the students at least once a semester without the Faculty Member present, and
+students may go to them, the chair, or the dean's office at any time.
+
+\clause{5.2} \textbf{Participation is voluntary, and academic timelines
+govern.} No student is required to take Company-sponsored work, retaliation is
+prohibited, and the choice never affects grades, authorship, or letters. The
+Faculty Member will seek to keep enough non-Company funding available for
+students who decline, so far as the ordinary research duties of the position
+allow, which includes writing and winning grants. Company tasks exist only
+inside a signed scope of work, never as part of a BYU role. Graduate thesis
+topics, timelines, and publication schedules are set on academic grounds; no
+graduate thesis is embargoed and no defense placed under a confidentiality
+agreement. Where a patent filing has to come first, the lab files a provisional
+application before the defense.
+
+\clause{5.3} \textbf{One employer at a time.} A student works for BYU or for
+the Company, never both at once. A student taking Company work ends or suspends
+the BYU appointment first; a Company employee joining the lab payroll ends the
+Company employment first. Either way it is done in writing, with the chair
+told, and the student may return to the other side afterwards without
+prejudice. University employment stays inside BYU's caps: 20 hours a week in
+fall and winter semesters, with stricter limits for international students,
+whose visa status can be at stake.\footnote{Student Hiring and Employment
+Policy, and
+\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy}, which requires a student to disclose work done for
+BYU and a third party on the same subject.} A student supported other than by
+employment discloses any Company work on a related subject to the chair.
+
+\clause{5.4} \textbf{Company jobs and internships.} A student may work for the
+Company, a graduate student the Faculty Member supervises included. A student
+who wants Company work is referred to the advocate and the chair for advice
+independent of the Faculty Member; the advocate reviews the offer's terms
+(duties, hours, pay, invention-assignment and confidentiality obligations,
+visa implications) before it is accepted; the chair is told in writing
+beforehand; and the arrangement is reported on the annual
+disclosure.\footnote{No BYU policy bars this. The
+\href{https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy}{Financial
+Conflict of Interest in Research Policy} lists ``[u]sing university employees
+(e.g., students or staff) to perform services for an outside entity in which
+the Investigator \ldots\ has an equity ownership, managerial or consulting
+role'' among the interests a plan manages, and the
+\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy} has a student working ``on the same issue for BYU
+and a third-party'' disclose it, after which the supervisor and student
+``develop a written plan.'' The independent-advice step follows
+\href{https://web.stanford.edu/group/OTL/documents/bp_faculty_sus.pdf}{Stanford's
+Best Practices for Faculty Start-Ups}.}
+
+\clause{5.5} \textbf{Academic judgment stays separate from Company direction.}
+Where a supervised student also works for the Company, day-to-day direction
+and evaluation of the Company work sit with someone other than the Faculty
+Member if the Company has someone to do it, and the graduate committee is told
+either way.
+Graduate thesis scope, milestones, grades, authorship, and letters are decided
+on academic grounds, and the committee or the chair reviews any of them if the
+student, the advocate, or the chair asks. An internship taken for credit is
+arranged and graded by someone other than the Faculty Member. Company work is
+a separate engagement with an end date, and no graduate thesis depends on its
+continuing.
+
+\psection{Company people and university resources}
+
+\clause{6.1} \textbf{No university resources for Company work.} ``University
+Employees may not use university resources, facilities, or work time to engage
+in commercial activities, businesses, or `start-up'
+companies.''\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}. The \href{https://policy.byu.edu/view/appropriate-use-of-information-technology-resources-policy}{Appropriate
+Use of Information Technology Resources Policy} reaches ``all individuals and
+entities who maintain or use IT Resources,'' counts BYU's ``networks and
+networking systems'' among them, and bars use ``for non-university commercial
+purposes'' absent written authorization from the responsible vice president
+and the chief information officer.} All Company work runs on Company-owned
+laptops, accounts, software, and storage, and on campus Company business
+travels on the Company's own connection rather than a BYU network, guest
+access included. No Company data
+on BYU systems, and no non-public BYU information on Company systems.
+
+\clause{6.2} \textbf{Campus office, limited use.} Company use of the campus
+office is limited to occasional calls and correspondence on Company devices:
+incidental use that displaces no university work and puts no cost on the
+university. No Company equipment is kept there unless an equipment agreement
+covers it (6.4). This plan asks the \textbf{dean and the AAVP} to authorize
+that use in writing alongside the outside role.\footnote{\href{https://policy.byu.edu/view/conflict-of-time-or-interest-policy}{Conflict
+of Time or Interest Policy} defines ``Incidental Use'' as ``occasional or
+infrequent personal use that results in little or no cost to the university.'' The
+Expectations of a Faculty Appointment Policy requires ``the explicit written
+approval of the appropriate university supervisors'' to ``use his or her
+campus office for business purposes.'' A chair's signature alone does not clear
+the 6.1 prohibition, which carries no chair-level waiver.}
+
+\clause{6.3} \textbf{Company personnel.} Everyone working in the lab signs
+the Technology Transfer Office's existing Employee and Student Assignment of
+Ownership and Non-Disclosure Agreement, which BYU already requires as a
+condition of taking part in research, paid or unpaid.\footnote{Technology Transfer Office,
+\href{https://techtransfer.byu.edu/resources}{Resources and Forms}. It is
+signed ``in consideration of the opportunity to receive wages or financial
+support and/or training,'' so it reaches unpaid participants as well as
+employees.} Company employees never work in the lab informally or as
+``volunteers.''\footnote{Volunteer Policy: service must be ``in furtherance of
+the university's nonprofit objectives,'' ``unpaid service in furtherance of
+the university's commercial activities'' is prohibited to comply with federal
+law, and volunteers ``cannot, even on a temporary basis, displace employed
+workers.''} They come on campus only under a written agreement, whether a visiting
+appointment, the sponsored agreement, or a services contract, signed at the
+tier its value and term require. Before any of them starts work, the Company
+is told in writing that as a condition of taking part, BYU may claim a
+non-exclusive, perpetual, royalty-free license in whatever a person not
+employed by BYU makes under faculty supervision or with substantial university
+resources.\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}: where such a person works ``under the supervision and
+direction of a faculty member'' or ``uses substantial university resources,''
+BYU may claim ``a non-exclusive, perpetual, royalty-free, paid-up, irrevocable
+license to exploit, use, and sublicense the resulting Intellectual
+Property.''}
+
+\clause{6.4} \textbf{Equipment placements.} Company equipment enters the lab
+only under a university-signed agreement, an equipment loan or a term of the
+research agreement, settling ownership, insurance, maintenance, access,
+export-control screening, and removal before delivery. Students use placed
+equipment for university research or within
+the sponsored agreement, and it is reported as outside support on federal
+applications.
+
+\psection{Inventions and open-source release}
+
+\clause{7.1} \textbf{Open by default.} The lab releases its software and
+hardware openly, under the lab's published open-science policy and the
+Company's published licensing policy. Both are adopted in advance and outside
+any BYU negotiation, and both sides recognize them as governing what gets
+released. BYU's ownership of university inventions is unchanged by either.
+
+\clause{7.2} \textbf{Inventions those policies do not cover} go to the
+Technology Transfer Office, which decides whether the university pursues
+protection or releases the rights, and that decision is obtained in writing
+before such an invention is licensed, assigned, or contributed to the Company.
+Both sides keep records of where, when, and with what resources each invention
+was made. Because BYU's claim reaches inventions ``related to the current or
+demonstrably anticipated business, research, or development of the
+university,'' records alone do not settle ownership: a Company-side invention
+near the lab's field is disclosed and decided the same
+way.\footnote{\href{https://policy.byu.edu/view/intellectual-property-policy}{Intellectual
+Property Policy}. This plan cannot promise that a release or carve-out will be
+granted.}
+
+\clause{7.3} \textbf{Company assignment documents.} No Company
+invention-assignment or prior-inventions agreement is signed by the Faculty
+Member or any lab member without an express carve-out for BYU-owned and
+BYU-assignable work. That form goes to every employee and intern, not only to
+founders.
+
+% ------------------------------------------------------------------- band C
+\planband{C. How compliance is monitored}{}
+
+\psection{Reporting, review, and remedies}
+
+{\footnotesize
+\setlength{\extrarowheight}{2pt}
+\begin{tabularx}{\textwidth}{@{} >{\RaggedRight\arraybackslash}X >{\RaggedRight\arraybackslash}p{1.2in} >{\RaggedRight\arraybackslash}p{1.5in} @{}}
+\toprule
+{\color{byunavy}\scshape What} &
+{\color{byunavy}\scshape When} &
+{\color{byunavy}\scshape To whom} \\
+\midrule
+Outside-activity disclosure in
+\href{https://facultyprofile.byu.edu/}{Faculty Profile}, days used (2.1),
+advocate's student review (5.1), and independent reviewer's report (4.2) &
+annually & chair, and the AAVP for the reviewer's report \\
+Financial disclosure, including Company travel (1.4) & annually, updated
+within 30 days & Research Administration Office \\
+Company financing, ownership change, change of role or title, new proposed
+transaction with BYU, or contemplated leave & within 30 days & chair and
+Research Administration Office \\
+\bottomrule
+\end{tabularx}}
+
+\vspace{2pt}
+\clause{8.1} The chair monitors compliance through completion of the affected
+projects, not only at annual
+review.\footnote{\href{https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy}{Financial
+Conflict of Interest in Research Policy}. The 30-day update of
+\emph{financial} disclosures is required by that policy; the other 30-day
+triggers above are terms of this plan.}
+
+\clause{8.2} The AAVP reviews this plan annually with the chair and dean and
+may strengthen it at any time using the tools policy names (an independent
+monitor, removal from a project, reduction or elimination of the interest), or
+end it in writing when the interests in section 1 no longer exist.
+
+\clause{8.3} Commitments here about Company conduct are confirmed in a
+one-page acknowledgment signed by an authorized Company officer and attached:
+no unauthorized use of BYU's name (1.7), no informal approaches to students (5.4, 6.3), and
+no Company personnel or equipment in the lab outside signed agreements (6.3,
+6.4). Failure to follow this plan is handled under the governing policies,
+which provide for retrospective review.
+
+% ------------------------------------------------------------------- band D
+\planband{D. The investigator's agreement}{}
+
+\psection{Changes that require amending this plan first}
+
+Any officer title, employment relationship, or voting board role at the
+Company; any leave of absence; any paid consulting for the Company, which
+collides with taking part in research it sponsors and needs chair, dean, and
+written AAVP approval (1.3); the Company selling anything to BYU (3.4); any Company agreement
+asking the Faculty Member or a lab member to assign inventions or prior
+inventions (7.3); any research involving human subjects that touches the
+Company; and any change in the facts of section 1.
+
+{\small The Faculty Member agrees to be bound by these conditions and submits
+this plan with the \href{https://spo.byu.edu/policies}{Financial Disclosure
+Form}, whose signature block carries the approvals of the department chair, the
+dean or associate dean, the Research Administration Office, and the AAVP. The
+Technology Transfer Office, Regulatory Accounting, and the Office of General
+Counsel are routed for concurrence; their approvals attach to the transactions
+this plan governs rather than to the plan itself.}
+
+\end{document}

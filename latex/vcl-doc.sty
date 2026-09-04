@@ -1,0 +1,147 @@
+% vcl-doc.sty
+%
+% Shared preamble for the two BYU faculty-founder documents in
+% vertical-cloud-lab/byu-vcl:
+%
+%   byu-coi-plan.tex      the instrument that gets signed and filed
+%   byu-coi-briefing.tex  the background material that does not
+%
+% Compile either with pdflatex, THREE times. Pass 1 writes the .aux, pass 2
+% settles cross-references, pass 3 settles \pageref{LastPage}. Two passes
+% leave a stale "Page N of N-1" in the footer. Verify with
+%   pdfinfo <pdf> | grep Pages   against the last page's footer.
+%
+% HOUSE RULE, enforced by a build check: no em or en dashes anywhere in
+% either document. Not "---", not "--", not a literal U+2013 or U+2014.
+% Hyphens inside compound words are fine. Use a comma, a colon, parentheses,
+% or a second sentence instead. To verify:
+%   grep -vE '^[[:space:]]*%' *.tex | grep -nE '\-\-'      (must be empty)
+%   pdftotext <pdf> - | grep -nE '[^-]--[^-]'              (must be empty)
+%
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{vcl-doc}[2026/08/26 Vertical Cloud Lab document style]
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[sc]{mathpazo}
+\RequirePackage[letterpaper,margin=0.9in,headheight=15pt,headsep=16pt,footskip=30pt]{geometry}
+\RequirePackage{microtype}
+\RequirePackage{xcolor}
+\RequirePackage{array}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{longtable}
+\RequirePackage{ragged2e}
+\RequirePackage{enumitem}
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage{hyperref}
+
+\linespread{1.02}
+
+% A footnote-heavy page can exceed \textheight by a few points and trip an
+% "Overfull \vbox while \output is active" warning. A little slack plus a
+% tighter footnote separation keeps the build clean.
+\setlength{\footnotesep}{7pt}
+\addtolength{\textheight}{9pt}
+
+% ------------------------------------------------------------------ colors --
+\definecolor{byunavy}{HTML}{002E5D}   % BYU brand navy
+\definecolor{byuroyal}{HTML}{0062B8}  % BYU royal (hyperlinks)
+\definecolor{metagray}{gray}{0.42}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=byunavy,
+  urlcolor=byuroyal,
+  pdfauthor={Vertical Cloud Lab (vertical-cloud-lab/byu-vcl)},
+  hypertexnames=false
+}
+
+% ------------------------------------------------------------------ layout --
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3.5pt plus 1pt minus 1pt}
+\raggedbottom
+\widowpenalty=9000
+\clubpenalty=9000
+\emergencystretch=1.5em
+\setlist{itemsep=1.5pt,parsep=0pt,topsep=3pt,leftmargin=1.6em}
+
+% Footnotes carry the policy citations, so keep them tight and unobtrusive.
+\renewcommand{\footnotesize}{\fontsize{8.2}{9.7}\selectfont}
+\setlength{\skip\footins}{11pt plus 3pt}
+\renewcommand{\footnoterule}{\noindent{\color{metagray!45}\rule{2in}{0.4pt}}\vspace{3pt}}
+
+% Each document sets its own running head with \vclrunninghead{...}.
+\newcommand{\vclrunninghead}[1]{\fancyhead[L]{\footnotesize\scshape\color{metagray} #1}}
+\pagestyle{fancy}
+\fancyhf{}
+\vclrunninghead{Vertical Cloud Lab}
+\fancyfoot[C]{\footnotesize\color{metagray} Page \thepage\ of \pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\headrule}{{\color{metagray!50}\hrule width\headwidth height\headrulewidth}}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\footnotesize\color{metagray} Page \thepage\ of \pageref{LastPage}}%
+  \renewcommand{\headrulewidth}{0pt}}
+
+% ---------------------------------------------------------------- commands --
+% Top-level heading with a navy rule.
+\newcommand{\parthead}[1]{%
+  \par\addvspace{20pt plus 6pt minus 4pt}%
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}%
+  \noindent{\color{byunavy}\Large\bfseries #1}%
+  \par\nobreak\addvspace{5pt}%
+  {\color{byunavy}\hrule height 1.1pt}%
+  \par\nobreak\addvspace{9pt}\@afterheading}
+% Second-level heading.
+\newcommand{\subhead}[1]{%
+  \par\addvspace{13pt plus 4pt minus 2pt}%
+  \phantomsection
+  \addcontentsline{toc}{subsection}{#1}%
+  \noindent{\color{byunavy}\large\bfseries #1}%
+  \par\nobreak\addvspace{5pt}\@afterheading}
+% Numbered section of the management plan. Plain numbers, no section sign:
+% cross-references in the text read "(section 4.2)".
+\newcounter{psec}
+\newcommand{\psection}[1]{%
+  \par\addvspace{9pt plus 2pt minus 2pt}%
+  \stepcounter{psec}%
+  \phantomsection
+  \addcontentsline{toc}{subsection}{\thepsec.\ #1}%
+  \noindent{\color{byunavy}\large\bfseries \thepsec.\hspace{0.5em}#1}%
+  \par\nobreak\addvspace{3.5pt}\@afterheading}
+% Grouping band carrying the headings BYU itself must be able to report.
+\newcommand{\planband}[2]{%
+  \par\addvspace{10pt plus 3pt minus 3pt}%
+  \phantomsection
+  \addcontentsline{toc}{section}{#1}%
+  \noindent{\color{byunavy}\footnotesize\scshape\bfseries #1}%
+  \par\nobreak\addvspace{3pt}%
+  {\color{byunavy!40}\hrule height 0.6pt}%
+  \par\nobreak\addvspace{2pt}%
+  \if\relax\detokenize{#2}\relax\else
+    \noindent{\color{metagray}\footnotesize\itshape #2}%
+    \par\nobreak\addvspace{2pt}%
+  \fi
+  \@afterheading}
+% A numbered clause ("3.1", "3.2", ...) with a hanging indent.
+\newcommand{\clause}[1]{%
+  \par\addvspace{2.5pt plus 1pt}%
+  \noindent\hangindent=2.4em\hangafter=1
+  {\color{byunavy}\bfseries #1}\hspace{0.65em}\ignorespaces}
+
+% Placeholder marker, signature line, framed notice box.
+\newcommand{\ph}{{[}\,\textbullet\,{]}}
+\newcommand{\sigline}{\raisebox{-1pt}{\rule{1.5in}{0.4pt}}}
+\newcommand{\noticebox}[1]{%
+  \par\medskip\noindent
+  {\setlength{\fboxsep}{10pt}\setlength{\fboxrule}{0.8pt}%
+   \fcolorbox{byunavy!45}{byunavy!4}{%
+     \begin{minipage}{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+       \small #1
+     \end{minipage}}}%
+  \par\medskip}
+
+\endinput

@@ -1,0 +1,150 @@
+## Overall verdict
+
+The document is unusually thoughtful and materially stronger than a typical faculty-startup proposal, especially in its recusal language, separation of university and company resources, and attention to students. It is not yet ready to sign. Part 1 is clear but too long and advocacy-oriented for leadership: “What the university gains” sometimes reads as a case for approving the venture rather than a neutral risk brief, while unexplained terms such as CITI, SBIR/STTR, recharge, fully diluted, external rate, and in-kind support remain. Part 2 mixes a conflict-of-interest management plan with contract terms, technology-transfer decisions, tax/accounting determinations, and permissions that the signatories may not be able to grant. The largest substantive gaps are the absence of a named compliance monitor with ongoing duties, weak controls over research design/data/reporting, no process for BYU’s own equity conflict, incomplete financial-interest disclosure, and student protections that are commendable but lack voluntariness, non-retaliation, alternative supervision, milestone monitoring, and an enforceable complaint/remedy process. The cross-references themselves are intact, but several provisions conflict in substance. Current BYU policy assigns plan development to the investigator in consultation with the Research Administration Office, approval to the Associate Academic Vice President for Research, and compliance monitoring through project completion to the department chair; the draft does not reproduce that allocation cleanly.[^1]
+
+## Prioritized actionable edits
+
+1. **§§9.1, 11.1, and 12: designate the department chair as the plan’s ongoing compliance monitor, define quarterly or transaction-triggered checks, require documented findings, and name an alternate for chair recusal or absence.** BYU expressly makes the chair responsible for monitoring investigator compliance through project completion, whereas the draft gives the chair only an annual time-log role and assigns annual review ambiguously to the AAVP–Research.[^1]
+
+2. **§5.2: replace the annual “independent eyes” review with project-specific, prospective oversight of research design, personnel assignments, data integrity, analysis, publication, and reporting, followed by periodic review and authority to escalate or stop affected work.** An annual retrospective look is too weak to manage bias in the design, conduct, or reporting of company-sponsored research; federal guidance identifies an independent monitor with actual protective authority as a standard control.[^2]
+
+3. **§§1.1–1.5 and 9.2: expand the disclosed interest to include options, warrants, convertible rights, board-observer or information rights, compensation or reimbursed travel if later received, and relevant interests of immediate family members; state valuation where ascertainable rather than relying only on “fully diluted” ownership.** The existing disclosure is narrower than BYU’s financial-conflict policy, which reaches any equity in a non-public company and specified interests of immediate family members.[^1]
+
+4. **§§1.5, 5.3, and 12: add an institutional-conflict process if BYU accepts company equity, naming an official or committee independent of licensing, research contracting, and the conflicted laboratory to review the university’s interest and any required recusals.** Disclosure of BYU’s stock in papers does not manage the university’s own financial incentive; institutional and individual conflicts require separate review, especially if human participants are later involved.[^3]
+
+5. **§§6.2–6.5: state expressly that participation in company-sponsored projects or company employment is voluntary; provide a comparable non-company project, funding source, and supervisor without penalty; prohibit retaliation; and bar the professor from making admissions, funding, authorship, evaluation, or recommendation decisions affected by a student’s choice.** The current plan protects hours and publication but does not neutralize the professor’s leverage over trainees, which is the core coercion risk identified in startup guidance.[^4]
+
+6. **§§6.2 and 6.4: give the independent advocate a written mandate, confidential reporting route, recordkeeping duty, escalation path, and authority to require corrective action; add at least semesterly written degree milestones reviewed by an independent committee member or co-mentor.** A meeting twice a year is not credible protection unless concerns can produce action and delayed progress is measured against agreed milestones.
+
+7. **§6.5: require independent review of every company offer to a current lab member before acceptance, including duties, hours, pay/equity, intellectual-property and confidentiality terms, visa implications, and separation of university and company work; do not limit the amendment trigger to students the professor “currently supervises.”** Lab members and recently supervised students may still be vulnerable even if formal thesis supervision is shifted immediately before an offer.
+
+8. **§6.3 and §8.1: establish a fixed sponsor/invention review window, normally 30 days with a narrowly defined additional patent-filing period not exceeding 60 more days, and state that review cannot delay a defense, thesis deposit, graduation, or ordinary academic presentation.** “No lasting restrictions” and a negotiated Technology Transfer Office “turnaround time” are not enforceable enough; peer practice commonly permits limited review but not delay of academic completion.[^4]
+
+9. **§5.1: replace “any Company use” and “BYU’s standard terms” with a requirement that each activity use the agreement selected and signed by the authorized BYU office, such as sponsored-research, recharge/service-center, equipment-loan, visitor, or license documentation.** As written, §5.1 says all company use must be sponsored research, contradicting the separate recharge and equipment-loan routes in §§5.4 and 7.3, and it precommits the university to overhead, publication, and intellectual-property terms before negotiation.
+
+10. **§§4.1–4.3: narrow the permitted technical-input exception, require the university negotiator to request and document it, prohibit recommendations on price, exclusivity, milestones, field of use, ownership, publication, or other economic terms, and delete “negotiating” the Income Distribution Agreement.** That wording undercuts the otherwise categorical recusal and conflicts with §1.4’s statement that the professor receives no inventor distribution from this license; any inventor acknowledgment should be identified precisely and handled only at Technology Transfer’s request.
+
+11. **§7.2: delete the statement that signatures on this plan constitute campus-office-use approval; either prohibit company activity in the campus office or attach the separate authorization from the official and process required by the applicable policy.** A COI plan should not deem itself to satisfy a separate resource-use approval, and §7.2 is in tension with §7.1’s categorical statement that university facilities may not be used for startup activity.
+
+12. **§8.2: delete the claim that two “published policies” adopted outside negotiations fix open-source boundaries, and instead make every release subject to BYU ownership, sponsored-research, license, export-control, third-party-rights, and Technology Transfer determinations.** A faculty-authored laboratory policy and a company policy cannot bind BYU or predetermine license terms.
+
+13. **§8.3: replace the expectation of Technology Transfer Office “releases or license carve-outs” for nearby company inventions with a disclosure-and-determination procedure, including contemporaneous records and written ownership decisions when overlap arises.** The plan cannot promise advance releases, and records alone do not resolve ownership or contamination disputes.
+
+14. **§9.2: distinguish mandatory policy reporting from additional plan triggers.** BYU’s 30-day rule concerns discovery or acquisition of a new significant financial interest during an award; every financing round, contemplated leave, or new transaction may sensibly be a plan trigger, but should not be presented as the policy’s universal 30-day rule.[^1]
+
+15. **§9.3: narrow the five-business-day public-access statement to the circumstances covered by Public Health Service regulations and narrow retrospective review to an undisclosed, unreviewed, unmanaged, or noncompliant financial conflict affecting covered ongoing research.** “Federally funded health research” is overbroad, and neither every late disclosure nor every breach automatically produces the stated federal process.[^2]
+
+16. **§11.1: separate annual administrative review from remedies, identify who may impose each remedy, and add amendment, suspension, termination, survival, records-retention, and dispute-escalation mechanics.** A signed plan may record possible remedies but cannot itself give one official unlimited power to compel a stock sale unless governing policy and institutional authority support that action.
+
+17. **§5.4: recast the restriction on revenue use as a proposed budget control subject to sponsor terms and university approval, with account owner, approver, reconciliation frequency, and audit access specified.** The faculty member cannot unilaterally earmark institutional revenue, and “the tax question settled” is a prerequisite determination, not a protection supplied by this plan.
+
+18. **§10: add material changes in compensation, family financial interests, options or investor rights, company access to students or data, new sponsored projects, gifts, confidentiality arrangements, and use of company personnel or equipment as amendment or review triggers.** The present list misses changes that can alter the conflict without changing the professor’s title or percentage ownership.
+
+19. **§§5–7: add controls for data custody and access, company-provided data or materials, research-record retention, cybersecurity, export control, authorship, gifts, procurement, and selection of the company as licensee, sponsor, vendor, or service user.** These are recurring startup-management risks not fully covered by saying that contracts are arm’s length.
+
+20. **Part 1, “What the university gains”: cut this to a short, neutral “potential institutional benefits and corresponding safeguards” table, and remove claims that benefits will occur.** Instrument access, student jobs, lab revenue, and unrestricted publication are contingent on separate agreements; emphasizing them can itself suggest that institutional benefit is influencing the conflict determination.
+
+21. **Part 1, approval table, steps 3–9: label each entry as disclosure, authorization, COI determination, agreement approval, or signature authority, and verify every named approver rather than using “approves” generically.** Current BYU public policy says secondary employment needs prior written authorization from the chair and describes the outside-activity plan moving through chair and dean, while the research FCOI plan is developed with the Research Administration Office and approved by the AAVP–Research; the table blends these distinct tracks.[^1][^5]
+
+22. **Part 1 and §§2.2, 5.2, 5.4, and 7.3: define or remove CITI, SBIR/STTR, “external rate,” “fully diluted,” “in-kind support,” “principal investigator,” and “unrelated business income tax,” and move parenthetical staffing and tax notes to an implementation checklist.** This will reduce length and make the document usable by leaders who do not administer sponsored research daily.
+
+23. **§12: reduce signatures to officials who actually approve or accept duties under the final BYU process, and use separate concurrence or routing lines for Technology Transfer, Research Administration, accounting, information technology, and counsel when their transaction-specific approval is needed.** Extra signatures can imply authority, assent to future contracts, or permanent obligations that those offices did not intend.
+
+24. **§§1.2 and 2.1–2.2: attach or require review of the company’s governing documents and a written advisory-role description, with annual certification that the professor exercises no officer, managerial, hiring, budget, contracting, or supervisory authority.** “Chief Scientific Advisor” and a board-observer role can function as management despite non-officer labels; substance matters more than title.
+
+25. **Throughout Part 2: convert aspirational statements about company conduct into obligations acknowledged by an authorized company representative or into conditions of the relevant BYU–company agreement.** The professor cannot personally guarantee that the company will avoid BYU branding, keep particular policies, provide equipment access, or refrain from approaching students when the company is not a party to the plan.
+
+## Claims that appear wrong or require verification
+
+- **Part 1 step 3:** “department chair and dean” as joint approvers of the outside role needs confirmation. The public Conflict of Time or Interest Policy says prior written authorization from the employee’s “department chair, dean, or supervisor,” while the management-plan routing is a separate chair-to-dean process.[^5]
+- **Part 1 step 6:** mandatory CITI training “before approvals are requested” is not stated in the current public BYU FCOI policy. That policy lists immediate training triggers for new investigators, relevant policy changes, and noncompliance; confirm the Research Administration Office’s current course and timing.[^1]
+- **Part 1 steps 7–9 and §12:** the exact approval and signature roles of General Counsel, the AAVP–Research, the Research Administration Office director, and Technology Transfer director should be confirmed transaction by transaction. Public policy does not establish the entire routing chain shown.
+- **§§1.4 and 4.3:** the draft translates “principal stock holder” into a ten-percent threshold and complete forfeiture of the 45% developer share. The public Intellectual Property Policy excerpt identifies principal stockholders as excluded from the 45% distribution, but the exact definition, treatment of multiple inventors, and whether an Income Distribution Agreement is still required should be confirmed with Technology Transfer.[^6]
+- **§2.2:** raising more than $3 million makes the stated rare voting-board exception unavailable, but it does not by itself establish that a non-voting observer seat is permitted. Obtain express written approval before retaining an observer role.[^6]
+- **§5.2 staffing note:** the assertion that research associates and postdoctoral fellows may be co-investigators but not principal investigators appears to rely on a sign-in-only rule and needs Sponsored Projects confirmation.
+- **Part 1, “What the university gains,” item 2:** “none of it is federal money” and therefore it has “far fewer spending restrictions” is wrong for future Small Business Innovation Research or Small Business Technology Transfer subawards and overstates flexibility for sponsored and recharge funds.
+- **Part 1, item 5:** open-source defaults do not eliminate confidentiality review or publication delay. Patent review, sponsor-provided confidential information, export controls, third-party rights, and negotiated review periods may still apply.
+- **§7.2:** the claim that dean and AAVP–Research signatures supply the required campus-office permission is unverified and likely procedurally ineffective without the exact authorization required by the applicable resource-use rule.
+- **§9.3:** “federally funded health research” is not an accurate description of the five-business-day public-access rule; the federal rule applies to specified Public Health Service-funded circumstances and qualifying financial conflicts.[^2]
+- **Named officials and sign-in-only procedures:** verify all names, titles, employee-vendor routing, information-technology approval, student-hour rules, and the Recharge Center Policy version immediately before circulation. The document itself notes that several were checked only behind BYU authentication and that the published recharge policy may date to 2005.
+
+### Sources
+
+[^1]: Brigham Young University, [Financial Conflict of Interest in Research Policy](https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy), especially “Disclosure Requirements,” “Management Plans,” “Retrospective Review,” and “Investigator Training” (accessed August 19, 2026).
+[^2]: 42 C.F.R. § 50.605, [Management and reporting of financial conflicts of interest](https://www.ecfr.gov/current/title-42/chapter-I/subchapter-D/part-50/subpart-F/section-50.605).
+[^3]: Association of American Medical Colleges and Association of American Universities, [*Protecting Patients, Preserving Integrity, Advancing Health: Accelerating the Implementation of COI Policies in Human Subjects Research*](https://www.aau.edu/sites/default/files/AAU%20Files/Key%20Issues/Research%20Administration%20%26%20Regulation/AAMC-AAU-Report-on-Managing-Conflicts-of-Interest.pdf).
+[^4]: Stanford University, [Best Practices for Faculty Start-Ups](https://doresearch.stanford.edu/resources/tools-documents/best-practices-faculty-start-ups) and [Relationships Between Students (Including Postdoctoral Scholars) and Outside Entities](https://doresearch.stanford.edu/policies/research-policy-handbook/non-faculty-research-appointments/relationships-between-students-including-postdoctoral-scholars-and-outside-entities); University of Iowa, [Starting a Privately Held Company](https://coi.research.uiowa.edu/start-ups/starting-privately-held-company).
+[^5]: Brigham Young University, [Conflict of Time or Interest Policy](https://policy.byu.edu/view/conflict-of-time-or-interest-policy), approved April 7, 2025.
+[^6]: Brigham Young University, [Intellectual Property Policy](https://policy.byu.edu/view/intellectual-property-policy), especially “Miscellaneous Ownership Issues” and “Distribution of Income.”
+
+## Discretionary analytical decisions
+
+- Treated current public BYU policies as controlling and peer-university materials as nonbinding comparators.
+- Prioritized edits by likely approval risk, enforceability, research-integrity impact, and trainee vulnerability rather than by document order.
+- Evaluated the plan as both a general outside-activity plan and a research financial-conflict plan because the draft deliberately combines those functions.
+- Used Public Health Service regulations to test the federal claims in §9.3; did not assume those rules apply to every federal sponsor.
+- Recommended periodic, project-specific monitoring rather than annual review alone because the contemplated sponsored research creates continuing design, data, publication, and trainee risks.
+- Treated company employment by students as potentially permissible with safeguards rather than recommending a categorical prohibition.
+- Used a 30-day review plus up to 60 additional days for patent filing as a practical publication safeguard modeled on common university practice; BYU may select a different fixed period.
+- Did not assess enforceability under Utah contract or employment law; this is a research-administration and COI-process review, not legal advice.
+---
+
+## Verification pass (21 August 2026)
+
+Edison's "claims that appear wrong or require verification" list, worked through against public sources. Every item resolves as **corrected**, **confirmed**, or **office-only** (not settleable from published text — these moved into the plan's "Open items" as named questions).
+
+| Edison claim | Verdict | Source |
+|---|---|---|
+| Step 3 approver is "chair **and** dean" | **Corrected** → chair. Policy is disjunctive: "a full-time employee must receive written authorization from the employee's department chair, dean, or supervisor." The four-day allowance names the chair specifically ("with prior written approval of the department chair"). The chair→dean routing belongs to the *management plan*, not the role authorization — a distinct track the table had blended. | [COTI Policy](https://policy.byu.edu/view/conflict-of-time-or-interest-policy) |
+| Training required "before approvals are requested" | **Corrected.** The FCOI policy states no such timing and names no course; its triggers are policy revision, being new to research, or a compliance finding. The RAO training page *does* name CITI and requires it of "all faculty involved in sponsored research," refreshed "every 4 years." Step 6 now states the real triggers. | [FCOI Policy](https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy), [RCR/CITI page](https://spo.byu.edu/responsible-conduct-of-research) |
+| License/signature chain in steps 7–9 | **Confirmed.** Reviewers are "chair, dean, director of the Technology Transfer Office or Creative Works Office, Office of General Counsel, and associate academic vice president – research and graduate studies"; "The final decision concerning transfer will be made by the associate academic vice president – research and graduate studies." Research agreements: "negotiations of contractual terms and actual acceptance of grants or contracts is the responsibility of the [AAVP–R] through RAO." Per-transaction routing beyond this stays **office-only**. | [IP Policy](https://policy.byu.edu/view/intellectual-property-policy), [Sponsored Projects Handbook](https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook) |
+| 10% threshold and 45% forfeiture | **Confirmed — and one correction.** "A principal equity owner is one who controls ten percent or more equity in the company"; "the developer will forfeit his or her distribution." But the draft's claim that **a written exception is available with dean/AAVP–R/TTO approval does not exist in the policy** — it had been imported from the board-seat rule's approval requirements. Deleted from §1.4, the numbers section, and the §10 amendment triggers. Co-inventor treatment of a forfeited share is **office-only**. | [IP Policy](https://policy.byu.edu/view/intellectual-property-policy) |
+| Above $3M ⇒ observer seat available | **Corrected (logic).** The policy conditions only the *voting* seat ("has not raised more than $3,000,000", no non-accredited investors, written dean + AAVP–R approval) and is silent on observer seats. Silence is not permission; §2.2 and the numbers section now say so, and the question is listed as office-only. | [IP Policy](https://policy.byu.edu/view/intellectual-property-policy) |
+| Postdocs/research associates co-I but not PI | **Confirmed, and now publicly sourced** — this no longer rests on a sign-in-gated rule. "At BYU, only faculty on regular appointments and certain research faculty may be principal investigators… Graduate and undergraduate students, post-doctoral fellows, research associates and technicians are not eligible as PIs but may be involved with the research." | [Sponsored Projects Handbook](https://finserve.byu.edu/00000193-6566-d995-a9db-eff6a47a0001/sponsored-programs-handbook) |
+| "Not federal money ⇒ fewer restrictions" | **Corrected** — absorbed by the item-20 rewrite; each benefit now carries its condition. | — |
+| Open source ⇒ no confidentiality/delay | **Corrected** — same rewrite; export control, third-party rights, and sponsor-supplied confidential information are named as surviving the open-source default. | — |
+| §7.2 campus-office approval | **Was already fixed in the body**, but the signature table still assigned "office-use approval (§7.2)" to the chair and dean — reintroducing the self-approval. Removed with item 23. | — |
+| §9.3 five-day rule scope | **Confirmed**, and sharpened to the policy's actual framing: "Prior to the expenditure of any funds for research funded by the Public Health Service (PHS)…" The unverified retrospective-review panel composition was replaced with the policy's own wording. | [FCOI Policy](https://policy.byu.edu/view/financial-conflict-of-interest-in-research-policy) |
+| Named officials; Recharge Center Policy version | **Mixed.** Larry Howell (AAVP–R) and Dave Brown (TTO Director) confirmed current. **The RAO director is genuinely ambiguous** — the [2024 RAO org chart](https://rao.byu.edu/00000193-da93-dea2-ab9b-dab7a3300001/rao-organization-chart-2024) lists Gene Larson as Director, while the [FDP Clearinghouse profile](https://fdpclearinghouse.org/organizations/405) (updated 2026-04-24) lists Debbie Silversmith as Director and authorized signing official. Resolved by removing personal names from the plan entirely and using roles — names stay in `byu-founder-contacts.md`, which is maintained. **Recharge policy confirmed stale**: the published PDF names a Regulatory Accounting director "currently (June 2005)." | as linked |
+
+### Corroborations found along the way
+
+- The consulting-XOR-sponsored-research rule has a **second public source**: "faculty members that are employed as consultants to a sponsor may not also be the P.I. of a research project on campus doing the same work" (Sponsored Projects Handbook), alongside the IP Policy's version.
+- The recharge approval chain in §5.4 is confirmed by the policy PDF itself (chair → dean's office → Director of Regulatory Accounting), as is the external-rate rule: "Non-federal external or outside users may be billed at a higher rate than internal users. Revenues from external users must be tracked separately."
+- BYU's IP claim is a **present assignment**, not a promise to assign: employees "agree to assign and do hereby assign all right, title, and interest in any Intellectual Property, including future Intellectual Property." This is what makes §8.4 (company formation documents) necessary.
+
+### Corrections beyond Edison's list
+
+- §3.1 claimed an outside-activity allowance of "an average of one day a week, at most four days a month." The policy says only "up to four days per month," with the chair's prior written approval. One day a week exceeds four days a month; the gloss was both unsourced and inconsistent. Corrected.
+- The approval table conflated the two distinct plan tracks (COTI outside-activity plan → chair writes, dean approves; FCOI research plan → developed with RAO, approved by AAVP–R). Steps 4 and 5 now separate them. This was Edison item 21, which had been recorded as applied but was still blended.
+
+### Still deliberately not applied
+
+Nothing from the 25. Items 20 and 23 — the last two outstanding — are now applied.
+
+### Self-correction, 26 August 2026 — §8.4 formation documents
+
+The first version of §8.4 said the formation package "does not offer [cash] as an
+option," and that the stock purchase therefore had to be amended by counsel or the
+company formed elsewhere. Both halves were wrong, and reading the package's own
+materials settles it:
+
+- **Cash is already in the flow.** Founders "purchase their shares with a combination
+  of money and IP" ([Stripe's founder-equity guide](https://stripe.com/guides/atlas/equity)),
+  and the money is "cash equal to the purchase price of the shares," which is what
+  "ensures that the shares are fully paid" ([annotated legal guide](https://stripe.com/files/atlas/orrick-legal-guide.pdf)).
+  So an empty IP contribution does not leave the purchase short of consideration —
+  the shares are paid for regardless.
+- **The documents are editable within the service.** "You can work with them to edit
+  the documents you receive from Stripe Atlas," and the annotated templates are issued
+  on the same dashboard alongside the automated tool. Amending does not mean forming
+  elsewhere.
+- **The excluded-inventions schedule is not the operative clause.** Leaving it blank
+  changes nothing about the two provisions that bind: the assignment's forward reach,
+  and the representation that signing "does not and will not breach any agreement or
+  duty which the employee has with anyone else." That representation is the founder's
+  personal exposure under BYU's present assignment.
+
+§8.4 and `byu-vc-founder-rules.md` were rewritten accordingly. Same failure mode the
+rest of this pass documents: a confident claim about a third party's process, stated
+without reading the process's own text.
