@@ -463,3 +463,64 @@ Full derivation in [`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-w
 **No hardware access this session.** Nothing is on the Pi's USB bus: the GRBL
 CH340 last disconnected 2026-09-03 19:20 UTC and the capper/pipette Arduino
 2026-09-01 18:31 UTC. No measurements were possible; nothing was run.
+
+## 2026-09-08 (later) — CubXL replugged; campaign 83, 12/12, and the fault narrowed to the pipette connector
+
+The CubXL came back on the Pi's USB bus. Ports enumerated on the **same names**
+as before the unplug, so no config edit was needed: `/dev/ttyUSB0` (CH340 →
+GRBL) and `/dev/ttyACM0` (Arduino Uno → capper + pipette). Their `by-id` paths
+are in `results/pipette_test_20260908/README.md` and are the safer thing to
+reference if a third serial device is ever added.
+
+Ran the trio exactly as committed at `a0ccbb7`: `validate_setup` PASS, `--mock`
+12/12, `passive_shadow` 0 nominal and 0 tip-stuck, then **12/12 on hardware in
+4m 3s** (campaign 83, `21:22:52 → 21:26:55` UTC, status `completed`). Controller
+read live beforehand: `$130/$131/$132` = 409.000 / 309.000 / 124.000 and
+`$20=1`, matching the gantry file. Plunger trace byte-for-byte the shape of
+campaign 77 — the two forward moves (prime, aspirate) emitted steps, the four
+upward ones were refused.
+
+**New tool: [`tools/pipette_driver_probe.py`](tools/pipette_driver_probe.py).**
+It drives the firmware's `CMD_MOVE_RELATIVE` (code 16) in raw steps, which
+reports an aborted move *explicitly* rather than leaving it to be inferred from a
+round-trip time, and whose DOWN direction is not gated by the limit switch at
+all. Two readings:
+
+- limit switch **ASSERTED — the loop is open** (`ERR:{"error":"Failed to move relative"}`)
+- motor: **1592 steps down in 4.04 s against 4.00 s commanded**, at a deliberately
+  slow 400 steps/s. Everything upstream of the STEP pin works.
+
+So the fault is between the Arduino header and the motor windings, and one
+hypothesis covers both symptoms: the switch loop and both coils all arrive on the
+same FC-10P connector at the pipette, so a seat/crimp fault opens them together.
+Total silence (no buzz) means no coil current — a swapped coil *pair* buzzes
+instead. The switch reading has also flipped between rewiring passes, which is
+intermittent-contact behaviour, not a wrong pinout.
+
+Two hypotheses were **ruled out** by reading the pinned `janelia-arduino/TMC2209`
+v10.1.1 rather than assuming: the `SoftwareSerial` overload defaults to 9600 baud
+(not 115200), and `toff_` initialises to `TOFF_DEFAULT = 3` so `enable()` writes
+a live chopper config. The UART-disable path is still real but now needs
+*partially* landing writes, which is a narrower failure than a misrouted pin.
+
+Three firmware readings closed open questions: `aspirate()` moves down to
+`PRIME_POSITION 36.0` **first** and only then up to the volume target, so the
+36.00-vs-35.45 discrepancy is just that second (upward) leg being refused when
+the switch is asserted; `0.673 s/mm` is `MOVEMENT_VELOCITY 2500` steps/s against
+`STEPS_PER_MM 1592` plus loop overhead, arithmetic rather than a fit; and while
+the switch reads asserted **the plunger is a one-way ratchet** — every upward
+command is refused, `HOME` only zeroes the counter, and no other retract path
+exists, so each run drives it further out.
+
+On the supply: 12 V / 2 A into the driver's VM terminal is right, and the 2 A is
+a ceiling, not a setting — a stepper driver is a current source, so what needs to
+come down to the motor's 350–500 mA is `RUN_CURRENT_PERCENT`, not the supply.
+
+Full write-up in [`results/pipette_test_20260908/README.md`](results/pipette_test_20260908/README.md);
+wiring analysis updated in [`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §4, §5 and §6.
+
+**Not flashed:** the §4 bisect was not run as a firmware change. The Pi has no
+AVR toolchain (`avrdude`, `arduino-cli`, `pio` all absent), so it would mean an
+apt install on a production device plus reflashing the Arduino that also drives
+the capper. The meter check in `docs/opentrons-pipette-wiring.md` §6 settles the
+same question faster and without touching the board.

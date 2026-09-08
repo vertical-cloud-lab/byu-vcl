@@ -289,6 +289,24 @@ So the two wiring states behave very differently:
 | **A0** (the RX pin — the Cubware diagram) | nothing is ever transmitted. Chip stays in **standalone mode**: VREF pot sets current, MS1/MS2 straps set 1/8 microstepping, `CHOPCONF.toff` at its power-on default of 3 → **output stage enabled** |
 | **A1** (the TX pin — correct) | the first thing that lands is `i_scale_analog = 0`, **taking the current pot out of the circuit**, followed by `minimizeMotorCurrent()` and `disable()`. If any later write is dropped or garbled, the driver sits at **minimum current with its output stage off** — silent, no holding torque — while the Arduino happily bit-bangs STEP into it |
 
+### Two ways this could have failed that are now ruled out
+
+Measured against the pinned library on 2026-09-08 rather than assumed:
+
+- **SoftwareSerial baud is not marginal.** The `setup(SoftwareSerial &)` overload
+  defaults to **9600** (`TMC2209.h:67`), not the 115200 the `HardwareSerial`
+  overloads use. `setupMotor()` passes no baud, so 9600 is what runs — comfortable
+  on a 16 MHz ATmega328P.
+- **`enable()` does not write another zero.** `toff_` is initialised to
+  `TOFF_DEFAULT = 3` (`TMC2209.h:508-510`), so `enable()` restores a live chopper
+  config.
+
+So the UART path only strands the driver if the register writes **partially**
+land — `setOperationModeToSerial` + `minimizeMotorCurrent` + `disable` arriving
+while the later `setRunCurrent`/`enable` do not. That is a narrower failure than
+"UART is misrouted", and it needs a marginal connection rather than a wrong one.
+Worth keeping on the list, no longer at the top of it.
+
 ### The bisect: pull the UART wire off A1
 
 Nothing else changes. With the wire off, `setup()`'s writes go nowhere, the chip
@@ -328,12 +346,106 @@ first successful move, and fit the Adafruit `1515` heat sink to the driver
 **"120V/2A Power Supply" is a typo for 12 V.** The Adafruit 6121 breakout takes
 5–29 VDC on the motor terminal. Do not connect mains.
 
+**12 V at 2 A into the driver's VM terminal is the right supply, and 2 A is a
+ceiling rather than a setting.** A stepper driver is a current source: the coil
+current is whatever IRUN/VREF asks for, and the supply's amp rating only has to
+be at least that. It is the driver's *current setting* that needs to come down to
+the motor's 350–500 mA, not the supply. Two things to keep in mind: the supply
+must land on the driver's VM/GND screw terminal, not on VDD (VDD is logic only,
+and the board enumerates and acks every command happily with VM absent — silently);
+and 12 V into a 350 mA motor is a lot of headroom, so fit the heat sink and keep
+the current setting low.
+
 **The motor supply is separate from VDD.** The Arduino's 5 V on `VDD` powers the
 driver's logic only. With no voltage on the `+`/`-` terminal the board still
 accepts STEP/DIR and acknowledges everything, with zero coil current and total
 silence — indistinguishable at the serial port from a healthy run.
 
-## 6. Consequences that outlive the wiring fix
+## 6. What the 2026-09-08 measurements narrowed it to
+
+Both readings came from `cubos/tools/pipette_driver_probe.py`, which drives the
+firmware's `CMD_MOVE_RELATIVE` (code 16) in raw steps. That command reports an
+aborted move **explicitly** (`ERR:{"error":"Failed to move relative"}`) instead of
+leaving it to be inferred from a round-trip time, and its DOWN direction is not
+gated by the limit switch at all.
+
+```
+limit switch   ASSERTED (D9 HIGH, loop OPEN)   dt=0.11s  ERR:{"error":"Failed to move relative"}
+motor          DOWN 1.0 mm at 400 steps/s      dt=4.04s  expected 4.00s  OK
+```
+
+### The Arduino is not the problem
+
+1592 steps at exactly the commanded rate, deliberately slow so the motor makes
+its most torque and most noise. Everything upstream of the STEP pin works. The
+fault is between the Arduino header and the motor windings.
+
+### The one hypothesis that explains both symptoms at once
+
+D9 reading HIGH means the **switch loop is open**, and total silence with no
+buzzing means **no coil current** (a swapped coil *pair* buzzes and vibrates;
+open coils are silent). Both the switch loop and both coils arrive on the same
+FC-10P connector at the pipette. A connector that is not fully seated, or a bad
+crimp row, opens all of them together.
+
+The switch reading has also flipped between passes — asserted before 2026-09-01,
+clear for three passes on 2026-09-01, asserted again since — while the Arduino
+end was being rewired. An intermittent contact behaves exactly like that; a wrong
+pinout does not.
+
+So the meter check in §3 is now the first thing to do, not the last:
+
+```
+ribbon unplugged from the driver terminals, everything powered down
+
+blue–red     a few to a few tens of ohms      coil A
+black–green  a few to a few tens of ohms      coil B
+blue–black   open                             the coils are isolated from each other
+pin 6–pin 7  CLOSED at rest                   the limit switch, normally-closed
+```
+
+Both coil pairs open ⇒ the connector or the crimps, not the pinout. Pin 6–7 open
+at rest ⇒ the same loop, or a normally-*open* switch, which the firmware cannot
+use.
+
+### Holding torque is the test that ignores the mechanical stop
+
+`--motor-test` cannot tell "no coil current" from "the plunger is already against
+its stop" — and the plunger *is* being ratcheted outward, see below. Holding
+torque can: with the driver idle and powered, grab the plunger and try to turn or
+push it. Energized coils resist noticeably (`HOLD_CURRENT_PERCENT 30`). No
+resistance at all means no coil current, whatever position it is in.
+
+### ⚠️ While the switch reads asserted, the plunger only travels one way
+
+Every upward command is refused by the gate in `stepMotor()`, `HOME` only zeroes
+the counter, and there is no other retract path in the command set. So each run
+that reaches `aspirate` drives the plunger further out and nothing brings it
+back. Fixing the switch loop is what restores the ability to retract at all — it
+is not only a homing problem.
+
+### `ASPIRATE`'s reported positions, explained
+
+`aspirate()` clamps to `MIN_VOLUME 5.0`, moves **down to `PRIME_POSITION 36.0`
+first**, then up to `36.0 - volume * UL_TO_MM`. The second leg is upward, so the
+gate applies:
+
+- switch clear → both legs run → reports 35.45
+- switch asserted → second leg refused → reports 36.00
+
+Every value seen in the logs is one of those two. It also means aspirate is never
+a small move: it drives to 36.0 whatever volume is asked for. (`dispense()`
+ignores its volume argument entirely and moves to `BLOWOUT_POSITION 44.0`.)
+
+### Where 0.673 s/mm comes from
+
+`stepMotor()` sets `stepDelay = 1000000 / velocity` clamped to [100, 10000] µs.
+At `MOVEMENT_VELOCITY = 2500` steps/s that is 400 µs, plus ~23 µs of
+`digitalWrite`/`digitalRead`/loop overhead → ~423 µs per step, and at
+`STEPS_PER_MM 1592` that is **0.673 s/mm**. Arithmetic, not a fit — which is why
+a round trip that fails to scale with distance is conclusive.
+
+## 7. Consequences that outlive the wiring fix
 
 **Microstepping is almost certainly 1/8, not the 1/16 the firmware assumes.**
 `setMicrostepsPerStep(16)` is a UART write, so with UART unconfigured the chip
