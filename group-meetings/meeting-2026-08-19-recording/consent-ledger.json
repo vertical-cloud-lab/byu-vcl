@@ -1,0 +1,178 @@
+{
+ "comment": "Consent ledger for the AI-in-the-lab artifacts of the 2026-08-19 meeting. See CONSENT.md for the process. Nothing here is published: every render is on a DRAFT GitHub release. `asked` and `response` stay null until someone other than the PI has actually run the ask.",
+ "tiers": [
+  "public",
+  "internal-unlisted",
+  "audio-only",
+  "no"
+ ],
+ "destination_disclosed": "public YouTube / Shorts / Reels / TikTok on the BYU Vertical Cloud Lab channel, indefinitely, worldwide",
+ "editing_disclosed": [
+  "filler words, false starts and pauses cut inside sentences",
+  "background-noise reduction (changes voice timbre slightly)",
+  "loudness normalization to -14 LUFS (reels) / -16 LUFS (long-form)",
+  "verbatim burned quotes apart from display-only spelling fixes in the EDL",
+  "automated speaker labels, 'In the room:' where attribution is uncertain"
+ ],
+ "holds": [
+  {
+   "artifact": "reel-01-andrew-marcus",
+   "reason": "opens on Andrew's recorded 'Don't film me'; using the line is a separate decision from honouring it, and it is his to make",
+   "blocks_publication": true
+  }
+ ],
+ "people": [
+  {
+   "name": "Sterling Baird",
+   "artifacts": [
+    "reel-03",
+    "reel-06",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage+card",
+   "note": "PI; consent for his own material is not the constraint, but record it anyway",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Carl Robison",
+   "artifacts": [
+    "reel-05",
+    "reel-06",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "card",
+   "note": "camera-off in Teams; text cards only",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Audrey Christiansen",
+   "artifacts": [
+    "reel-05",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage+card",
+   "note": "on camera in Teams",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Xavier Zaitzeff",
+   "artifacts": [
+    "reel-04",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage",
+   "note": "clip rwoLhubyzZo has real framing",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Sam Charles",
+   "artifacts": [
+    "reel-04",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage",
+   "note": "clip rwoLhubyzZo has real framing",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Andrew",
+   "artifacts": [
+    "reel-01",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "audio+footage",
+   "note": "HOLD: reel 01 opens on his 'Don't film me'; needs his explicit yes to that item",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Marcus",
+   "artifacts": [
+    "reel-01",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "audio",
+   "note": "phone face-up; ceiling footage never used",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Gage Erickson",
+   "artifacts": [
+    "reel-02",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage+audio",
+   "note": "on camera in the Short s5ptE--EVIk",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Ronnie",
+   "artifacts": [
+    "reel-02",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "footage+audio",
+   "note": "on camera in the Short s5ptE--EVIk",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  },
+  {
+   "name": "Ben Whitney",
+   "artifacts": [
+    "reel-03",
+    "reel-07-part-1",
+    "reel-08-part-2",
+    "highlights"
+   ],
+   "appears_as": "audio",
+   "note": "phone face-up; ceiling footage never used",
+   "asked": null,
+   "asked_by": null,
+   "response": null,
+   "date": null
+  }
+ ]
+}

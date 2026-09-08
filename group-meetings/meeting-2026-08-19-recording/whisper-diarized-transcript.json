@@ -1,0 +1,5142 @@
+{
+ "source": "faster-whisper + ECAPA diarization (see transcribe_diarize.py)",
+ "names": {
+  "5": "Sterling Baird",
+  "9": "Sterling Baird",
+  "4": "Sterling Baird",
+  "2": "Carl Robison",
+  "1": "Audrey Christiansen",
+  "8": "Xavier Zaitzeff",
+  "6": "Gage",
+  "11": "Andrew / Ronnie / Marcus",
+  "12": "Andrew / Ronnie / Marcus",
+  "10": "In-room (unidentified)",
+  "0": "Cross-talk / far-field"
+ },
+ "utterances": [
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 292.66,
+   "end": 293.68,
+   "text": "Carl, can you hear me?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 299.56,
+   "end": 299.84,
+   "text": "Yep."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 303.54,
+   "end": 303.92,
+   "text": "How you doing?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 306.88,
+   "end": 308.7,
+   "text": "Yourself. You good?"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 312.95,
+   "end": 314.61,
+   "text": "Just driving down to BYU right now."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 317.54,
+   "end": 318.5,
+   "text": "I mean, we're from."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 320.78,
+   "end": 321.42,
+   "text": "What's that?"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 322.41,
+   "end": 322.93,
+   "text": "We're from."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 327.19,
+   "end": 328.01,
+   "text": "Saratoga Springs."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 329.21,
+   "end": 329.61,
+   "text": "There you go."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 330.5,
+   "end": 331.7,
+   "text": "Oh, so not like crazy far."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 332.8,
+   "end": 332.94,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 338.47,
+   "end": 339.27,
+   "text": "Is the meeting on yet?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 340.25,
+   "end": 341.45,
+   "text": "Hey, he's going. Yep."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 342.71,
+   "end": 344.43,
+   "text": "Sorry. Yeah, it's not."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 348.07,
+   "end": 348.69,
+   "text": "How's it going?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 351.03,
+   "end": 351.87,
+   "text": "Good, are you?"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 352.67,
+   "end": 356.21,
+   "text": "Great, I'm on my way, but I'll be digital until then."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 356.89,
+   "end": 357.91,
+   "text": "Okay, yeah, all good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 362.9,
+   "end": 363.64,
+   "text": "Carl, thanks for joining."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 366.38,
+   "end": 368.94,
+   "text": "How are you doing? Good, how about yourself?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 370.82,
+   "end": 371.32,
+   "text": "Can't complain."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 372.08,
+   "end": 372.22,
+   "text": "Okay."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 375.48,
+   "end": 376.74,
+   "text": "Internship going okay for you, Carl."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 377.68,
+   "end": 384.93,
+   "text": "Yeah, no, it's been really fun. It's been really good. I'll be up in Lehigh, so I'll just be online the whole time. Yeah, yeah."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 389.67,
+   "end": 391.52,
+   "text": "That makes"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 391.52,
+   "end": 398.44,
+   "text": "sense."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 408.61,
+   "end": 409.93,
+   "text": "Thanks for"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 409.93,
+   "end": 410.43,
+   "text": "making the time"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 410.43,
+   "end": 411.73,
+   "text": "to"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 422.93,
+   "end": 424.55,
+   "text": "jump on still."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 450.94,
+   "end": 453.0,
+   "text": "A number of times I've heard,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 453.66,
+   "end": 457.6,
+   "text": "oh yeah, I talked to Xavier and then things made so much more sense. So,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 459.76,
+   "end": 460.84,
+   "text": "I think we're doing."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 465.6,
+   "end": 466.1,
+   "text": "Hey,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 480.16,
+   "end": 480.32,
+   "text": "Audrey."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 487.07,
+   "end": 487.61,
+   "text": "Good morning."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 492.38,
+   "end": 493.32,
+   "text": "Good. It's"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 496.9,
+   "end": 500.76,
+   "text": "like, maybe just so that. We're weird. We're"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 500.76,
+   "end": 504.04,
+   "text": "twins. We can be too. That type we did? Yeah."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 505.02,
+   "end": 506.94,
+   "text": "No, that. Typically,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 508.14,
+   "end": 518.1,
+   "text": "we just say we're two to the park because we are. Huh? Did you ever like get that? Only on"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 518.1,
+   "end": 520.06,
+   "text": "the hike as a joke, so."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 520.56,
+   "end": 522.08,
+   "text": "Like a lot of the line were felt."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 522.32,
+   "end": 529.1,
+   "text": "What's funny is that the net IDs are so similar. For me, I'm just, like, it gets anything like, like, no."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 529.82,
+   "end": 530.72,
+   "text": "Same last name,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 530.92,
+   "end": 531.48,
+   "text": "like three different"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 531.48,
+   "end": 533.3,
+   "text": "letters. Yeah, like, hey, Chris,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 534.14,
+   "end": 536.64,
+   "text": "something, something. Um,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 537.91,
+   "end": 537.91,
+   "text": "uh,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 539.13,
+   "end": 539.13,
+   "text": "yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 544.01,
+   "end": 545.39,
+   "text": "let's extend."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 546.97,
+   "end": 548.27,
+   "text": "0 ,0 ,0, 3."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 552.18,
+   "end": 552.96,
+   "text": "When I'm going to stand?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 555.52,
+   "end": 556.12,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 564.49,
+   "end": 569.59,
+   "text": "if it was over a year, if it was over a year, that was when we first started, totally that,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 570.01,
+   "end": 571.59,
+   "text": "I was starting that man."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 575.18,
+   "end": 576.58,
+   "text": "I think, yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 579.3,
+   "end": 579.96,
+   "text": "that's so funny."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 581.18,
+   "end": 582.42,
+   "text": "It's so funny. It's so funny."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 584.52,
+   "end": 587.0,
+   "text": "It's so pretty. That's like,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 587.88,
+   "end": 598.26,
+   "text": "it's not a lot of it's hard. That's like one, I like a video. It's like we're sort of born in the same place where the key need the part and beholding right. So, you know,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 598.44,
+   "end": 601.22,
+   "text": "it's perfect."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 602.81,
+   "end": 606.51,
+   "text": "Both I last name, but he said, okay. You know she spelled it wrong."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 610.15,
+   "end": 613.97,
+   "text": "I don't know."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 619.44,
+   "end": 622.88,
+   "text": "Well, tactic transcription and I've heard it, so."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 625.5,
+   "end": 626.4,
+   "text": "That's recorded"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 626.4,
+   "end": 626.86,
+   "text": "now."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 637.48,
+   "end": 637.6,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 650.64,
+   "end": 651.04,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 653.14,
+   "end": 653.92,
+   "text": "Let's get started."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 658.46,
+   "end": 660.48,
+   "text": "Andrew, let me mind. Start us off the first off of."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 663.45,
+   "end": 680.81,
+   "text": "Dearly Father, we're grateful for the same. We're grateful to meet together as a rap. So I'm discussed by progression of different projects and how domestic continue to progress and bless this with a spirit with knowledge and"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 680.81,
+   "end": 683.35,
+   "text": "this time as we do not have to see forward,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 684.81,
+   "end": 688.06,
+   "text": "helping their work to help by"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 688.06,
+   "end": 691.16,
+   "text": "children. The name of Jesus Christ, you know. Thank you, thank"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 691.16,
+   "end": 692.94,
+   "text": "you, so. So"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 693.07,
+   "end": 694.09,
+   "text": "let's get"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 694.09,
+   "end": 694.85,
+   "text": "started. AI"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 694.85,
+   "end": 699.59,
+   "text": "discussion, lab culture. I asked Xavier the other day when we were meeting,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 702.24,
+   "end": 704.12,
+   "text": "so is the lab culture falling apart?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 706.38,
+   "end": 707.54,
+   "text": "And I think your response"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 707.54,
+   "end": 710.74,
+   "text": "was, well."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 713.78,
+   "end": 714.56,
+   "text": "The voice was,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 715.94,
+   "end": 717.08,
+   "text": "maybe, maybe that will."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 722.2,
+   "end": 724.94,
+   "text": "I think you said, Well, not all of this."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 727.12,
+   "end": 737.08,
+   "text": "So anyway, this topic is a bit on my mind a lot of just how we're using what is being termed AI and general of AI in the lab."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 740.51,
+   "end": 750.64,
+   "text": "What's the lab culture around it? And I think that this would be a good time to just talk about what we want that to look"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 750.64,
+   "end": 751.34,
+   "text": "like in the lab,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 751.46,
+   "end": 753.44,
+   "text": "what's gone well, what hasn't."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 755.82,
+   "end": 764.31,
+   "text": "I've appreciated people's willingness to take the conversations to GitHub,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 764.87,
+   "end": 766.19,
+   "text": "which does"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 766.89,
+   "end": 772.31,
+   "text": "a couple things, it gives me some visibility on how AI is being used in the lab."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 774.13,
+   "end": 785.61,
+   "text": "And maybe just kind of another point, even if Claude or co -pilot or any of these things didn't exist, my hope and expectation would still be to have that kind of interaction on GitHub."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 788.16,
+   "end": 791.88,
+   "text": "from kind of like this project management, like documentation perspective,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 793.46,
+   "end": 802.02,
+   "text": "and Claude getting injected into that is kind of a nice convenience, and along with that workflow too, like an extra benefit,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 803.29,
+   "end": 805.27,
+   "text": "but like hopefully a little extra motivation to"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 805.27,
+   "end": 805.91,
+   "text": "kind of"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 805.91,
+   "end": 806.49,
+   "text": "keep going with the"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 806.49,
+   "end": 809.01,
+   "text": "GitHub, some of the GitHub things there."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 810.57,
+   "end": 811.57,
+   "text": "There are"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 811.57,
+   "end": 812.81,
+   "text": "a"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 813.96,
+   "end": 820.7,
+   "text": "couple things I wanted to go through. One is I'm just going to screen share the,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 821.36,
+   "end": 823.08,
+   "text": "that"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 824.55,
+   "end": 828.59,
+   "text": "GitHub discussion and everybody's responses so far. I'll just kind of read through those."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 829.29,
+   "end": 830.27,
+   "text": "And then"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 830.27,
+   "end": 853.09,
+   "text": "we'll do some breakout discussions and then come back together. And I will actually have us find isolated spots to go chat. And I'm going to ask that one of you records it a video just because, videos are easiest to put on YouTube."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 854.45,
+   "end": 871.37,
+   "text": "So, like, just take a video to get the audio of the conversation, we'll come back, we'll discuss, and just like to all of that. And those videos will get uploaded to the BYUvCL channel. So I think I'm all kind of a discussion."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 872.57,
+   "end": 873.69,
+   "text": "Sounds okay,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 874.35,
+   "end": 874.47,
+   "text": "oops,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 875.66,
+   "end": 877.02,
+   "text": "Davy? Yeah. Yeah, okay."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 879.67,
+   "end": 880.61,
+   "text": "Sorry for thinking."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 880.61,
+   "end": 883.09,
+   "text": "picking on you the"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 883.09,
+   "end": 885.19,
+   "text": "instigator"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 885.19,
+   "end": 894.67,
+   "text": "yeah and then online Audrey gauge Carl does that sound okay for you guys who of the three of you who's able to"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 895.24,
+   "end": 896.6,
+   "text": "talk"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 896.6,
+   "end": 900.24,
+   "text": "like would would the three of you be able to have a conversation just online"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 903.35,
+   "end": 907.47,
+   "text": "I'm pulling up at BYU right now so I'll be in person just a minute oh that's right"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 907.47,
+   "end": 914.95,
+   "text": "that's right Audrey and Carl are you in Carl I think you said yes Audrey Are you in a position where you could unmute and chat with Carl? Yeah,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 915.61,
+   "end": 916.09,
+   "text": "I can talk."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 916.77,
+   "end": 917.83,
+   "text": "Okay, cool, cool, sounds good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 919.95,
+   "end": 923.05,
+   "text": "Okay, so let me go ahead and do a screen share. Any questions"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 923.05,
+   "end": 923.59,
+   "text": "before we"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 923.59,
+   "end": 925.49,
+   "text": "jump in? Okay,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 927.35,
+   "end": 929.33,
+   "text": "let me pull up that discussion."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 933.7,
+   "end": 954.95,
+   "text": "So the link was in Slack, but you can also get to it. So we've got BYUVCL discussions and those high level thoughts about use of the in the lab and to save my voice a little bit if you were the one who posted it, if I could ask you to read it also."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 957.45,
+   "end": 964.88,
+   "text": "So this is a space to journal our perception, oh, sorry, your folks online, let me actually screen share."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 974.21,
+   "end": 984.47,
+   "text": "So this is a space to journal our perceptions and observations of AI. Please include direct links to the specific get -up comments that are being discussed. I'll go and read, read Tins."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 994.19,
+   "end": 994.59,
+   "text": "So in"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 994.59,
+   "end": 1001.17,
+   "text": "regards in using AI for CAD modeling, AI was used to make tips for the wireless color sensor."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1002.72,
+   "end": 1002.88,
+   "text": "And sorry,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1004.27,
+   "end": 1014.35,
+   "text": "these are the three questions we'll talk about. So kind of keep these in mind while we're going through. Like an experience where use of AI has helped you learn something or has been productive,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1020.45,
+   "end": 1026.19,
+   "text": "a time when it's felt uneasy, unproductive, or crippling. Maybe that's an extreme. word but"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1026.19,
+   "end": 1026.73,
+   "text": "I"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1026.73,
+   "end": 1027.33,
+   "text": "was"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1027.33,
+   "end": 1032.51,
+   "text": "having trouble thinking of synonym. Then what kind of lab culture would you support establishing any specifics?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 1035.8,
+   "end": 1065.06,
+   "text": "So in regards to using, oh sorry, AI was used to make tips for the wireless color sensor. I actually did a good job with making tips for my specific usage, but it lacked in creating a part with a design that would be improved for ease of changing out the part. While we used AI for the purpose of documentation, I think I would have been able to make a part and eventually made a part that would fit our needs to be. more directly. I enjoy the process of thinking and pondering over how to improve a design, and currently AI does not come close to my capacity to ponder complex designs."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1069.46,
+   "end": 1102.0,
+   "text": "I think using AI as a tool to give a human some design suggestions is very helpful, but it takes away from the researcher if they don't improve their ability to reason, create, and learn from the process of thinking involved in the creative process. As shown here, AI's ability to automate tasks and make simple decisions is amazing and give the researcher more time to work on tasks that require higher level thinking. In this instance, AI was able to run a test for me and collect data. This will be very helpful because it can run 24 -7. And then I'll see if this pulls up."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1106.32,
+   "end": 1116.91,
+   "text": "So Tim's on EtClaude, can you pick up, move, run the following Google Cloud code, post here the results, and then return the enclosure to its housing. So I was giving it this"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1116.91,
+   "end": 1119.38,
+   "text": "code here."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1124.63,
+   "end": 1132.89,
+   "text": "And thought took 42 minutes, picked it up, sensor test ran, went down mid -cycle."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1137.09,
+   "end": 1139.57,
+   "text": "This was the one that you pointed out here."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1146.48,
+   "end": 1154.88,
+   "text": "Any thoughts before we jump on? We have, I think, five more at least to go through about kind of similar length, but any, anything jump out to you?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1156.03,
+   "end": 1156.29,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1161.01,
+   "end": 1183.64,
+   "text": "I get added to this because I haven't come here on this meeting on this discussion, but similarly, I think, and super, super helpful to me and just like giving up to speed and learning about the mechanical experience of what I'm doing in my specific area. But when it comes to doing complex things that's what"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1183.71,
+   "end": 1185.19,
+   "text": "I'm kind of well sure."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1185.53,
+   "end": 1198.99,
+   "text": "Whereas I'm able to do it with it. And it takes, say, I'm for a iteration to get a simple working 3D model, 1 hours of doing. I have just experienced is a very significant. Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1199.95,
+   "end": 1210.05,
+   "text": "yeah. Was that by chance with the pipette? Yeah, I'm like, let's make a dummy pipette. And then in the end, did you end up? I ended up"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1210.05,
+   "end": 1210.73,
+   "text": "this one."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1212.0,
+   "end": 1212.44,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1214.04,
+   "end": 1214.04,
+   "text": "yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1219.6,
+   "end": 1220.04,
+   "text": "second here."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1243.59,
+   "end": 1244.83,
+   "text": "Save that for later a little bit."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1256.68,
+   "end": 1257.12,
+   "text": "Sorry,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1258.71,
+   "end": 1261.17,
+   "text": "you didn't know that I was going to do that. But it"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1261.17,
+   "end": 1262.91,
+   "text": "was going to do that. Okay, yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1267.78,
+   "end": 1272.4,
+   "text": "Then, Gage, let's come back to Gages, just because you said you're on your way, parking."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1273.7,
+   "end": 1274.52,
+   "text": "So you can be here."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1276.34,
+   "end": 1277.76,
+   "text": "Let's jump to Sam's."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1279.77,
+   "end": 1280.27,
+   "text": "Yeah, go."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1280.89,
+   "end": 1282.13,
+   "text": "A little bit of a dough that."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1283.39,
+   "end": 1285.74,
+   "text": "Sorry. How did this project? You know,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1290.3,
+   "end": 1293.58,
+   "text": "I think you got a product at the time. At the day, everybody's five. Even though"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1293.58,
+   "end": 1295.26,
+   "text": "the signature of the only design"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1295.26,
+   "end": 1296.26,
+   "text": "of the cell. Of"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1296.52,
+   "end": 1299.66,
+   "text": "course, the area situation would be the engineers and the computer and that"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1299.66,
+   "end": 1303.18,
+   "text": "look at the same nature of understanding. So, and pretty how you can't get"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1303.18,
+   "end": 1306.4,
+   "text": "to six -seven to all the situation is where we probably"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1306.4,
+   "end": 1307.08,
+   "text": "shouldn't rely"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1307.08,
+   "end": 1310.38,
+   "text": "on it. It's never really good for a conditional. I have to"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1310.38,
+   "end": 1312.2,
+   "text": "pull that up"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1312.2,
+   "end": 1312.66,
+   "text": "real quick."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1314.36,
+   "end": 1324.5,
+   "text": "So this is from the Powder Doser Project where generative CAD was such a huge focus, especially initially. And so lots of comments here and discussion."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1326.92,
+   "end": 1330.52,
+   "text": "There were some fun ones here. Let's see, we can find one."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1332.39,
+   "end": 1332.87,
+   "text": "At"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1351.05,
+   "end": 1352.17,
+   "text": "least I remember there"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1352.17,
+   "end": 1352.79,
+   "text": "being some"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1352.79,
+   "end": 1354.49,
+   "text": "tough ones."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1365.16,
+   "end": 1366.16,
+   "text": "Okay, never mind. Sorry."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1369.76,
+   "end": 1370.24,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1372.4,
+   "end": 1376.64,
+   "text": "like YouTube, they're going to trench run, and what about the experience in."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1377.06,
+   "end": 1378.76,
+   "text": "So I think that's here. We see that"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1378.76,
+   "end": 1379.62,
+   "text": "we can't like it down."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1380.32,
+   "end": 1383.08,
+   "text": "But also, if you need, the client shift,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1385.04,
+   "end": 1387.62,
+   "text": "obviously, it's really we have this approach to be like to use the"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1387.62,
+   "end": 1392.72,
+   "text": "ads in the heart and the California particularly the skills that I can be able to do."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1393.78,
+   "end": 1396.98,
+   "text": "But this year is all just about here in time, you're going to study and a little business down the world"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1396.98,
+   "end": 1399.1,
+   "text": "for the world as to be able to have a lot of time. The language,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1399.7,
+   "end": 1403.1,
+   "text": "they're lacking"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1403.1,
+   "end": 1405.5,
+   "text": "in existence of privacy. For example,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1405.68,
+   "end": 1406.54,
+   "text": "in a case of the university,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1408.1,
+   "end": 1419.14,
+   "text": "which isn't far away what you do, by comparison, and they're going to be there with fear. It's been very much, and the various kinds of language. And then"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1420.65,
+   "end": 1422.95,
+   "text": "in that calibration test"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1430.12,
+   "end": 1433.46,
+   "text": "The same time, which is a fine The dispense of one gram of"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1433.46,
+   "end": 1441.64,
+   "text": "power that you can find those in the order which you get a supernames you need to be in a way now and"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1442.12,
+   "end": 1442.96,
+   "text": "how to you try to"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1442.96,
+   "end": 1444.16,
+   "text": "do it like right now it's"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1445.84,
+   "end": 1447.54,
+   "text": "Okay, yeah, yeah, I got to check to it"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1447.54,
+   "end": 1448.32,
+   "text": "right now. Okay, yeah,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1449.51,
+   "end": 1450.77,
+   "text": "yeah, I got to try it."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1457.34,
+   "end": 1457.64,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1464.64,
+   "end": 1467.78,
+   "text": "got to get new lab codes, though. So budget is a little tighter than what I"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1467.78,
+   "end": 1469.6,
+   "text": "ordered this initially."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1473.84,
+   "end": 1474.46,
+   "text": "Working for"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1477.21,
+   "end": 1481.49,
+   "text": "it. That's a very hard for the interesting as to background"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1481.49,
+   "end": 1486.31,
+   "text": "tasks of faculty. The other aspects of it is very helpful for the potential process of"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1489.51,
+   "end": 1493.53,
+   "text": "students series and even for the idea to make sense of course of the students and even for the idea to be in a request."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1493.53,
+   "end": 1497.35,
+   "text": "I also think that no longer best students with experience with experience with experience. I"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1497.35,
+   "end": 1499.27,
+   "text": "agree."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1506.45,
+   "end": 1509.87,
+   "text": "Yeah, any form? into the next one any oh thanks"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1510.67,
+   "end": 1511.75,
+   "text": "any"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1511.75,
+   "end": 1515.45,
+   "text": "any any thoughts or things that come to mind I"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1516.0,
+   "end": 1516.86,
+   "text": "think one thing that came"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 1516.86,
+   "end": 1518.06,
+   "text": "in mind doing"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1518.06,
+   "end": 1519.7,
+   "text": "this again was"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1519.7,
+   "end": 1520.68,
+   "text": "the"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1521.57,
+   "end": 1529.49,
+   "text": "workflows that we have are different than indigenous standards whereas for research if somebody asks you a question by your paper you're expected to"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1529.49,
+   "end": 1531.53,
+   "text": "know everything about what we just research"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1531.53,
+   "end": 1533.57,
+   "text": "like you are considered the expert"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1533.57,
+   "end": 1536.03,
+   "text": "and if there's some portion of your research"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1536.03,
+   "end": 1544.29,
+   "text": "that you're like oh i don't know I opted it to quad or whatever. In industry, they're like, ah, yeah, that's fine. Like,"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1545.11,
+   "end": 1547.01,
+   "text": "as long it's working, it's working. If you say"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1547.01,
+   "end": 1549.83,
+   "text": "that to another researcher, they're going to be, like, why are you qualified?"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1550.57,
+   "end": 1553.15,
+   "text": "Like, and the purpose of a master's or"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1553.15,
+   "end": 1559.97,
+   "text": "a PhD or a bachelor is to show that you have a certain level of confidence in the game skills. I was just"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1559.97,
+   "end": 1561.25,
+   "text": "talking to my brother a month"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1561.25,
+   "end": 1565.07,
+   "text": "ago, and he's talking about one of his co -workers in a national lab, and he's like,"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1565.91,
+   "end": 1568.53,
+   "text": "I came out of my PhD with no workable skills."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1568.55,
+   "end": 1569.09,
+   "text": "Like"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1569.28,
+   "end": 1570.04,
+   "text": "that"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1570.04,
+   "end": 1571.54,
+   "text": "was just like how is PhD in"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1571.54,
+   "end": 1572.96,
+   "text": "the development and"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1572.96,
+   "end": 1574.74,
+   "text": "he was like fortunately"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1574.74,
+   "end": 1575.26,
+   "text": "I was"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1575.26,
+   "end": 1576.4,
+   "text": "able to get a job, but"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1576.4,
+   "end": 1580.38,
+   "text": "you can come out of a whole education with no work"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1580.38,
+   "end": 1580.96,
+   "text": "to still."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1582.54,
+   "end": 1583.56,
+   "text": "AI is"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1584.29,
+   "end": 1586.21,
+   "text": "just a way that makes that"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1586.21,
+   "end": 1588.89,
+   "text": "easier to happen than that's a big."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1590.02,
+   "end": 1592.64,
+   "text": "One of the reasons why I"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1592.64,
+   "end": 1593.96,
+   "text": "will try"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1593.96,
+   "end": 1598.2,
+   "text": "really hard to prevent myself from getting an e -bike anytime in the near"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1598.2,
+   "end": 1601.62,
+   "text": "future is is that"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1602.33,
+   "end": 1607.94,
+   "text": "and a second car for as long as we, as long as we can, is that I know"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1607.94,
+   "end": 1609.04,
+   "text": "a"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1609.84,
+   "end": 1623.14,
+   "text": "bike is the only mode of transportation I have from my house to work. And so I take the 20, 25 -minute bike ride each way, every day, except for occasional times when"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1623.14,
+   "end": 1625.61,
+   "text": "it's raining"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1625.61,
+   "end": 1626.85,
+   "text": "ash, for example."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1632.59,
+   "end": 1634.03,
+   "text": "And so, like,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1635.26,
+   "end": 1669.6,
+   "text": "if I had an e -bike, I know myself well enough that I would probably start relying on the e -bike intensively rather than getting a workout that I need every day, kind of going back and forth for the same day. Well, I can get there faster, and then also I don't like being sweaty, like, it's distracting to me, and all these other things, and so it's so much easier to be complacent when the tool is there. Whereas, like, some people will use e -bikes for mountain biking, and they'll still get a really good workout. out of it and so there's kind of a but they get less of some of the"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1669.69,
+   "end": 1670.59,
+   "text": "kind"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1670.59,
+   "end": 1673.89,
+   "text": "of tedious grueling parts of it they get a little more of the fun"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1673.89,
+   "end": 1674.39,
+   "text": "part"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1675.74,
+   "end": 1677.5,
+   "text": "so I"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1677.62,
+   "end": 1679.92,
+   "text": "think some really good like the points"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1679.92,
+   "end": 1680.12,
+   "text": "there"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1680.12,
+   "end": 1682.44,
+   "text": "just"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1682.44,
+   "end": 1685.2,
+   "text": "by fact of being there it's easier to become complacent"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1685.2,
+   "end": 1685.48,
+   "text": "I"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1686.92,
+   "end": 1688.74,
+   "text": "don't if you have any other thoughts of your"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1688.74,
+   "end": 1689.78,
+   "text": "well this"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 1689.78,
+   "end": 1702.5,
+   "text": "is an education and that that should be the primary focus even as you enter graduate work yeah Your advisor might not care so much about your education necessarily, but you should be focused on yours."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1702.74,
+   "end": 1711.3,
+   "text": "Yes, yeah, I definitely took that approach for all of my degrees. If I wasn't learning something,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1712.98,
+   "end": 1717.48,
+   "text": "if there wasn't a challenge, something challenging for me to kind of wrap my head around,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1720.16,
+   "end": 1752.31,
+   "text": "I wasn't interested, and I didn't really, like, I would still try to meet expectations, but that also, cause some friction at times and overall I think things turned out pretty well but that was really important to me so anyone in the lap feels like they're getting that friction with me then I need to sit down and kind of reflect on my own actions and love to kind of chat about that and so I really valued that as I was going through research and I do not want to"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1753.52,
+   "end": 1756.74,
+   "text": "set a culture where that gets taken away."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1762.27,
+   "end": 1769.82,
+   "text": "My question is that I don't know if this are open, like people as well as well. But it's"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1770.71,
+   "end": 1772.07,
+   "text": "not like we can choose"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1772.07,
+   "end": 1773.07,
+   "text": "to not buy"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1773.07,
+   "end": 1773.71,
+   "text": "the e -bike."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1774.95,
+   "end": 1777.67,
+   "text": "Right? It's the, yeah, it's like the e -bike is there."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1778.53,
+   "end": 1779.63,
+   "text": "And like, oh,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1780.63,
+   "end": 1784.87,
+   "text": "sorry, I bought it, yeah, I bought it for almost. Like, I literally bought it for everybody."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1786.13,
+   "end": 1788.71,
+   "text": "And the question I ask is,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1789.05,
+   "end": 1793.13,
+   "text": "how important is it for us as students going into,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1793.21,
+   "end": 1794.73,
+   "text": "the professional world soon"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1794.73,
+   "end": 1801.15,
+   "text": "to be competent in not only using AI but using the AI for where we"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1801.15,
+   "end": 1803.03,
+   "text": "learn a lot from it and also we"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1803.03,
+   "end": 1804.25,
+   "text": "get we"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1804.25,
+   "end": 1814.19,
+   "text": "get effective results with AI and our own competency and and so just a little bit of okay we do need to find this because it's not like we can just"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1814.19,
+   "end": 1814.91,
+   "text": "say okay I'm not"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 1814.91,
+   "end": 1815.81,
+   "text": "going to get this I'm"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1815.81,
+   "end": 1817.97,
+   "text": "not going to use this AI because it's there"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1817.97,
+   "end": 1820.31,
+   "text": "and and so"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1820.31,
+   "end": 1824.81,
+   "text": "that that I think it is a more thing to this And who"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 1824.81,
+   "end": 1826.87,
+   "text": "of us has driven to the gym before?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1829.17,
+   "end": 1829.51,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1832.95,
+   "end": 1839.35,
+   "text": "I was going to say with that, I think, you know, even though it's fictional, I think prime examples like Tony Stark, who,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1839.57,
+   "end": 1840.31,
+   "text": "you"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1840.31,
+   "end": 1842.21,
+   "text": "know, he knows all the math, he knows everything"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1842.21,
+   "end": 1842.97,
+   "text": "that he needs to do."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1843.75,
+   "end": 1844.79,
+   "text": "But, you know, he uses"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1844.79,
+   "end": 1855.38,
+   "text": "his AI Jarvis to also, you know, be his tool to, you know, be there to run the tests that. he already worked out"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1855.38,
+   "end": 1857.56,
+   "text": "or to support his reasoning"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1857.56,
+   "end": 1858.6,
+   "text": "or"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1858.67,
+   "end": 1859.09,
+   "text": "stuff like"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1859.09,
+   "end": 1861.27,
+   "text": "that. So kind of"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1861.27,
+   "end": 1863.63,
+   "text": "like that, where Jarvis is a support to"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1863.63,
+   "end": 1866.21,
+   "text": "Tony Stark and not doing Tony Stark's work."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1868.34,
+   "end": 1898.88,
+   "text": "I guess I'm the guys with the idea that our education is super important. And I think there's a good relationship. It relates a lot to how we've learned things in general, like all through school. We taught how to do it. math and only after you understand how to that then you get to calculate and do things for you, right? And the reason for that is, I think it's powerful and helping us learn and understand and also build the ability to think. I think it comes a point when,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1899.36,
+   "end": 1900.26,
+   "text": "like,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1900.84,
+   "end": 1930.41,
+   "text": "for example, some of these research papers we've been working on, it's all done by AI, and I know the difference of myself, personally, like, when I write out whole paper, I really understand everything that's going to do with is it for me that I'm going back, you know, okay, what is this me? I don't know, there's so much going on here, but I think that happens a lot of day, it has so much output, you're trying to go through, like, is this right, is this right? There's so many"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 1930.41,
+   "end": 1931.75,
+   "text": "assumptions and the stuff that"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1931.75,
+   "end": 1933.81,
+   "text": "is you can construct yourself, yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1933.87,
+   "end": 1934.31,
+   "text": "there's a,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1936.68,
+   "end": 1937.74,
+   "text": "there's a sense of, like,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1938.12,
+   "end": 1938.88,
+   "text": "there's a vagueness to,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1939.18,
+   "end": 1939.8,
+   "text": "um,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1940.82,
+   "end": 1943.78,
+   "text": "you don't know what the conclusion they're coming from. Um,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1944.54,
+   "end": 1947.5,
+   "text": "and so like, from personally, I want to find a balance of"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1947.5,
+   "end": 1950.26,
+   "text": "learning"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1950.9,
+   "end": 1953.08,
+   "text": "the skills that I'm having it"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1953.08,
+   "end": 1953.74,
+   "text": "to do for me,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 1953.82,
+   "end": 1954.58,
+   "text": "and then"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1954.58,
+   "end": 1960.58,
+   "text": "applying the added to it after that or with it. I still know where that balance sits, you know,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1961.12,
+   "end": 1962.56,
+   "text": "because people"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 1962.97,
+   "end": 1969.57,
+   "text": "are going to write papers a lot faster than I will. If I don't use the ad, I'd write it, the first draft, or whatever it is,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1969.57,
+   "end": 1972.17,
+   "text": "that's option. Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 1973.85,
+   "end": 1979.17,
+   "text": "writing's been a pretty recurring theme. This might be a good... segue to,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1980.45,
+   "end": 1982.33,
+   "text": "you know, maybe jumping"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1984.92,
+   "end": 1988.56,
+   "text": "to..."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 1988.79,
+   "end": 1989.75,
+   "text": "Yeah. Yeah. The"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 1989.75,
+   "end": 1990.49,
+   "text": "part I"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 1990.49,
+   "end": 1993.23,
+   "text": "mentioned another, I mean, it's kind of..."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 1995.4,
+   "end": 1999.03,
+   "text": "That's great. This is a good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2003.48,
+   "end": 2006.36,
+   "text": "Ronnie, you had something, let's say, maybe jump in."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2007.02,
+   "end": 2008.14,
+   "text": "Oh, I guess..."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2009.87,
+   "end": 2012.33,
+   "text": "...wee going to ask you"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2012.72,
+   "end": 2016.0,
+   "text": "to learn and about that the user is offered. because"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2016.0,
+   "end": 2019.96,
+   "text": "there's"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2020.21,
+   "end": 2023.05,
+   "text": "a lot of things for my project that I don't understand."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2025.31,
+   "end": 2031.89,
+   "text": "So as in the project, probably understand the parts that I need to, instead of me having to go through,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2034.23,
+   "end": 2044.33,
+   "text": "filter through all this information from either a text of that I bought or whatever other still is that we find, if they just want to explain me and helps me not extended."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2045.17,
+   "end": 2046.43,
+   "text": "And then when I have,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2047.28,
+   "end": 2061.92,
+   "text": "um, I have, I is based up what it's taught me I can bounce my views off of it and then sometimes I'm asking questions they've given me something wrong with it like can be a false and"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2061.92,
+   "end": 2062.62,
+   "text": "so"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2062.68,
+   "end": 2070.32,
+   "text": "it's almost like a like a CA, a professor or teacher"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2070.32,
+   "end": 2071.94,
+   "text": "who has"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2071.94,
+   "end": 2082.0,
+   "text": "been doing nice and because it can seek me what I need to know is how we have to go and find things that able to talk to you online. I would just do the Google search now, but you're at any means, and that's"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2083.3,
+   "end": 2084.24,
+   "text": "someone to meet you."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2086.61,
+   "end": 2088.71,
+   "text": "And they really, it's nice to be able to,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2090.42,
+   "end": 2094.88,
+   "text": "how they, like, hold those in my ideas, and my opinion, what you're so you're getting, and something like,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2095.28,
+   "end": 2096.28,
+   "text": "it's such a good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2099.71,
+   "end": 2100.27,
+   "text": "I know,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2100.77,
+   "end": 2102.33,
+   "text": "yeah, yeah. This idea of,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2102.33,
+   "end": 2111.63,
+   "text": "and not the sense of the other, if you have different, and really assisting their robot, like different things, and that you"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2112.78,
+   "end": 2117.74,
+   "text": "get in the trouble is where it's doing extremely research, and research those roles, so having"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2117.74,
+   "end": 2118.44,
+   "text": "a system to"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2118.44,
+   "end": 2118.76,
+   "text": "be"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2118.76,
+   "end": 2120.7,
+   "text": "AI is doing work."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2122.53,
+   "end": 2124.21,
+   "text": "That means if you stop there too,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 2124.37,
+   "end": 2126.17,
+   "text": "like, yes. If you use"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2126.17,
+   "end": 2136.17,
+   "text": "that because that's not your goal, like, I don't really care about blank, I want to get over that so that I can focus on this part, but if you just, yeah,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2136.97,
+   "end": 2143.03,
+   "text": "yeah, but yes, if you have AI, like, do the research and write the paper about it, then we'd be able to conference to present that paper, and it's like, you"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2143.03,
+   "end": 2144.01,
+   "text": "know what that word means."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2146.61,
+   "end": 2147.01,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2147.73,
+   "end": 2151.57,
+   "text": "that's what you get into trouble and that's where we let it get broad things for us. As we say,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2153.04,
+   "end": 2154.88,
+   "text": "yeah, treating it like a TA, okay,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2155.16,
+   "end": 2156.22,
+   "text": "I want to do this thing, how"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2156.22,
+   "end": 2158.46,
+   "text": "we do this, I think, go forward,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2159.16,
+   "end": 2160.88,
+   "text": "especially if that context is"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2160.88,
+   "end": 2163.24,
+   "text": "for the paper"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2163.24,
+   "end": 2165.4,
+   "text": "for the communication or for the doing"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2165.4,
+   "end": 2167.02,
+   "text": "more research later on. Yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2170.4,
+   "end": 2185.07,
+   "text": "Could you have Gene Kwan record the presentation next week too? Yeah, you guys are. So Marcus will be giving the first oral talk of the group at a conference, I think, right? Am I?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2186.13,
+   "end": 2187.05,
+   "text": "Yeah, so."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2188.14,
+   "end": 2188.7,
+   "text": "The guinea pig."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 2189.32,
+   "end": 2191.02,
+   "text": "Yeah, Marcus is the guinea pig."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2191.64,
+   "end": 2191.76,
+   "text": "So,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2192.56,
+   "end": 2192.8,
+   "text": "yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2193.74,
+   "end": 2194.8,
+   "text": "and that's been a topic,"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 2195.0,
+   "end": 2195.3,
+   "text": "okay."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2195.88,
+   "end": 2199.72,
+   "text": "Let me make sure that you have the understanding that you need to be able to be able to."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2200.96,
+   "end": 2202.7,
+   "text": "And we'll see."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2203.86,
+   "end": 2205.88,
+   "text": "Time is, what I mean is, like,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2207.11,
+   "end": 2231.57,
+   "text": "the experimental timeline was delayed to the, you know, the unexpected delays that are, that should always be expected. There will be unexpected to the point where it's, you might be in the situation. Well, do I step back and take the time to dig into some of these things, or do I try to get, finish up the experimental campaign so that we have the results to present on? Like, you're probably in that, That's"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2231.57,
+   "end": 2232.35,
+   "text": "a huge"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 2232.35,
+   "end": 2233.17,
+   "text": "back"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2233.17,
+   "end": 2234.45,
+   "text": "and forth thing in the last few"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 2234.45,
+   "end": 2255.66,
+   "text": "weeks. It takes a lot of time to go through to troubleshoot the equipment, to read what AI thinks is wrong. Half the time with equipment, it has no idea what's going to all the equipment. And also to figure out, well, how is this experiment working? And what will the results mean when we get them, all of that stuff? Yeah, it's been back and forth between those two coming up to"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2255.66,
+   "end": 2255.84,
+   "text": "it."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2256.38,
+   "end": 2257.52,
+   "text": "Constant out. Yeah,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2257.8,
+   "end": 2258.16,
+   "text": "so I'm good."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 2259.64,
+   "end": 2260.96,
+   "text": "So maybe you've"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2260.96,
+   "end": 2262.44,
+   "text": "got about 20. 20 minutes left. Let's,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2269.24,
+   "end": 2271.42,
+   "text": "I'd like to save some time for"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2271.51,
+   "end": 2273.31,
+   "text": "discussion"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2273.31,
+   "end": 2276.98,
+   "text": "of wills."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2278.98,
+   "end": 2284.56,
+   "text": "So I guess my invitation would be to go back to this thread and look at"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2284.56,
+   "end": 2285.6,
+   "text": "some"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2286.72,
+   "end": 2290.06,
+   "text": "of the other comments from people, add your own replies in if you"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2290.32,
+   "end": 2291.76,
+   "text": "feel to."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2293.5,
+   "end": 2295.08,
+   "text": "Let's jump over to"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2295.08,
+   "end": 2296.22,
+   "text": "this."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2298.15,
+   "end": 2303.63,
+   "text": "So we are going to break. So we are going to break out a little bit, you could maybe find,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2306.78,
+   "end": 2316.68,
+   "text": "it might be best to go out into the hall and just find those space where you can talk without somebody else's conversation, right in your ear sort of thing."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2318.16,
+   "end": 2325.16,
+   "text": "But what's an experience where the use of AI has helped you learn in the lab or enhance productivity? And if one of you could take a video,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2327.82,
+   "end": 2329.42,
+   "text": "about"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2329.42,
+   "end": 2334.7,
+   "text": "five minutes. We'll come back. And then online, all mute."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2337.61,
+   "end": 2340.81,
+   "text": "So for those online, so Audrey and Carl,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2342.43,
+   "end": 2344.75,
+   "text": "I will, yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 2345.34,
+   "end": 2348.5,
+   "text": "just groups of, yeah, groups of two, oh, wait, do we have two? We have"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2348.5,
+   "end": 2349.0,
+   "text": "six,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2350.24,
+   "end": 2351.3,
+   "text": "okay. No,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2352.94,
+   "end": 2354.5,
+   "text": "no, I'll be, I'll be discussing with"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2354.5,
+   "end": 2355.18,
+   "text": "somebody's. Oh,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2355.9,
+   "end": 2355.9,
+   "text": "yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2357.02,
+   "end": 2359.36,
+   "text": "count me, count me. Yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2360.84,
+   "end": 2360.84,
+   "text": "eight,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2361.58,
+   "end": 2364.92,
+   "text": "yeah, so we've got even, even numbers. I'm gonna,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2367.54,
+   "end": 2375.98,
+   "text": "oh, I just realized my audio output, sorry Audrey and Carl, if you said something, I may have had that muted accidentally."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2378.62,
+   "end": 2380.08,
+   "text": "Can you hear it snobger?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2380.92,
+   "end": 2390.24,
+   "text": "I'm so sorry, yes. There's a button on my laptop that mutes, and I think I accidentally clicked it. I don't know"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2390.24,
+   "end": 2397.26,
+   "text": "if Carl was saying anything, but I was just finishing typing up my essay that I wrote."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 2398.02,
+   "end": 2402.08,
+   "text": "Awesome, awesome. I think I saw that I got those there just now. Oh, yeah."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2402.8,
+   "end": 2405.6,
+   "text": "It's so long. I didn't realize how long it was getting."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2407.96,
+   "end": 2414.58,
+   "text": "I'll get the audio here muted, and then I'll turn it back on after we all kind of come back to the other."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2415.85,
+   "end": 2421.33,
+   "text": "Like on my, on my computer, so it's not. Yeah. Okay. And then that way you guys can just chat."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2427.68,
+   "end": 2432.56,
+   "text": "That was actually not the case. Apparently pushing that button doesn't mute. everything."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 2435.92,
+   "end": 2441.12,
+   "text": "It's yeah like"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 2441.15,
+   "end": 2447.01,
+   "text": "an experience where it's helped you learn like a positive experience something that"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2447.2,
+   "end": 2453.56,
+   "text": "you should just give me like a quick rundown on what you just did because I have not already yeah"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2453.56,
+   "end": 2454.94,
+   "text": "okay"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 2458.24,
+   "end": 2459.62,
+   "text": "we're all going out"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2459.62,
+   "end": 2462.39,
+   "text": "you guys will get"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 2462.39,
+   "end": 2466.87,
+   "text": "the room to yourself to just chat for the entire"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 2466.87,
+   "end": 2468.73,
+   "text": "space. So"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2468.73,
+   "end": 2471.41,
+   "text": "I"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2473.2,
+   "end": 2474.88,
+   "text": "can't mute audio."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2478.3,
+   "end": 2479.22,
+   "text": "Andrew, you're still on me."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2489.2,
+   "end": 2489.2,
+   "text": "Okay,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2493.18,
+   "end": 2494.04,
+   "text": "sorry about that."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2496.62,
+   "end": 2499.12,
+   "text": "You can zoom calls me. Okay,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2500.86,
+   "end": 2502.68,
+   "text": "I kind of talked about how"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2503.77,
+   "end": 2517.73,
+   "text": "using it from model generation feels a little limiting because we can't directly edit those models. you could pull them into on shape and you could add a little bit to them, but it doesn't work very well."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2520.53,
+   "end": 2521.79,
+   "text": "Sorry, I feel like a little echo,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2522.55,
+   "end": 2522.69,
+   "text": "right?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2523.88,
+   "end": 2528.98,
+   "text": "You are, Sterling left this computer on. Oh. No worries, though."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2531.75,
+   "end": 2554.91,
+   "text": "And then I agree with these points that it doesn't feel like our skills are being utilized very well, with this model generation, it would be way easier to just make configurations on one cat model rather than having AI generate everything, having to tune every little structure that are curious."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2558.17,
+   "end": 2578.53,
+   "text": "And if you're making those models, you don't get to know those models as well, which means it is harder to fix them if they're having issues or sometimes they have geometry errors, the mess of things that if a human had made them, you know, would have been fine, because we wouldn't have done that right off the bat."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2581.34,
+   "end": 2581.9,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2586.14,
+   "end": 2587.52,
+   "text": "I'm really"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2587.52,
+   "end": 2612.36,
+   "text": "worried about the real things where we've got a lot of AI generate a lot of what we're writing to the point where, like, I spent a lot of time writing my abstract, and we ended up feeding it through AI, added a bunch of sources and like me afterward and I didn't really that was the way to go. I think that we should have read those sources."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2615.94,
+   "end": 2623.23,
+   "text": "And yeah, that's about the helpful is that it can teach you things and I think that's"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2623.23,
+   "end": 2625.05,
+   "text": "the"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2625.34,
+   "end": 2633.66,
+   "text": "best use of me as a resource. And so it was really helpful for debugging a 16 3D printer for me."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2634.53,
+   "end": 2636.37,
+   "text": "But I"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2637.84,
+   "end": 2642.54,
+   "text": "feel like it I feel like we're pushing other areas."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2644.27,
+   "end": 2644.83,
+   "text": "And"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2646.94,
+   "end": 2660.36,
+   "text": "I think AI has been super good as like, I've been thinking of it as like an assistant in a lot of ways where like I use AI a con for the lab and then for like my work and stuff."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2661.88,
+   "end": 2665.22,
+   "text": "Just to like help myself stay organized,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2666.8,
+   "end": 2669.14,
+   "text": "I have found that super useful."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2671.4,
+   "end": 2684.28,
+   "text": "I've also found it super useful to, like, be able to, like, write code and stuff with it, but when doing that, I think it's essential to, like, go back and actually understand what the code is doing. So, like, I'll use AI and generate a ton of code,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2685.6,
+   "end": 2717.38,
+   "text": "and then I'll go back through all of it and figure out what the heck it just did and what I want to change or what I need to optimize. Because it doesn't usually get it quite right. It might make it function, but it won't quite work exactly like I want or need it to. So I found that super interesting. I think the biggest thing is just recognizing that we're going to have AI forever. Like, there's no getting away from any of that. We really need to find a way to harness the power that it has to make us more, like, effective and efficient."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2718.74,
+   "end": 2728.06,
+   "text": "If you don't know how to use it, you're going to fall behind. That being said, if that's all you use, you're useless because anyone can use AI. Right."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2729.92,
+   "end": 2743.3,
+   "text": "That's kind of my thoughts. I don't know. As far as using it in the lab, I guess I don't know. Like, I use it a lot in the lab to, like, research stuff, just because it seems to do, it's a really quick way to, like, compare stuff that takes a lot of the grunt work out of it."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2743.9,
+   "end": 2746.6,
+   "text": "Yeah, and it's kind of finding information really fast,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2746.94,
+   "end": 2768.8,
+   "text": "too. Like, when I ask it to compare a mass amount of 3D metal printers, like, it's really good at going to websites and pulling data and giving me a table that displays most results. And that saves me a ton of time, right? I don't have to go track down all that information. Like, it's just giving to me. And it's right. You know, I mean, it's accurate. It pulled that from their site."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2770.37,
+   "end": 2789.93,
+   "text": "When I ask AI to do other things, sometimes it'll, like, just completely hallucinate. When I ask it for, like, how can I build this equation to optimize this process? It has no idea. And so it'll just spit something random. And if I run with it, like, I'm an idiot for trusting it completely and not trying to verify what it's doing. Yeah,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2792.95,
+   "end": 2804.39,
+   "text": "I agree with that, especially with finding sources. I think it's important to go and read through those ourselves, or at least skin, you know, make sure that we're talking about the right things."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2805.44,
+   "end": 2805.6,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2806.72,
+   "end": 2817.7,
+   "text": "and like, just from, like, my short internship work experience that I've seen, it's, it's everywhere. Like, literally half of my day is working with AI to optimize a process."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2818.88,
+   "end": 2820.92,
+   "text": "Oh, are you in internship right now?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2821.49,
+   "end": 2822.49,
+   "text": "Yeah, I am."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2823.15,
+   "end": 2824.15,
+   "text": "Oh, Max, what are you doing?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2825.12,
+   "end": 2828.5,
+   "text": "Like, structural engineering stuff. Cool."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2829.5,
+   "end": 2854.88,
+   "text": "So, not quite mechanical, but close enough, and it's a work experience. But I found it so, yeah, and I found it just so interesting, like, how often they use Gemmonin and Klaug and all these things. Like, they are into it really deep. And so a lot of, like, my internship has been, like, finding the limits of AI. for them and then saying, hey, this is as far as we can push this."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2858.3,
+   "end": 2867.52,
+   "text": "Like, lots of their tools are using AI to verify human work. And in the process, like, they will be able to really"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2867.52,
+   "end": 2868.68,
+   "text": "cut"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2868.87,
+   "end": 2878.07,
+   "text": "down in, like, the amount of man -hours and manpower that they need to do stuff because AIs are so effective at doing what I call the grant work."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2880.82,
+   "end": 2892.5,
+   "text": "And so I think that's super interesting to see it. It's like, this isn't going anywhere. Any business that's like wants to be strong is going to use this and then have someone verify it."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2894.49,
+   "end": 2906.27,
+   "text": "So I think it's really interesting to see what the world will become because all of a sudden you're, I don't know, I think it's really interesting. You just have to verify. You verify your sources, verify the work, verify the equations."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2908.47,
+   "end": 2939.76,
+   "text": "And once you kind of do that, like, it's the math, it usually does pretty well on. Especially where like a lot of the stuff I'm working with is kind of, of like our material, not material science, but mechanics and materials class. And so I think this applies to the lab to it. It does a lot of like easy grunt work very quickly and effectively. It just can't be allowed to make like core decisions or like core tat or else it'll just belly flop."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2942.75,
+   "end": 2943.79,
+   "text": "Yeah, I agree with that."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2946.02,
+   "end": 2947.46,
+   "text": "And part of it is figuring"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2947.46,
+   "end": 2948.58,
+   "text": "out that was a rant"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2949.32,
+   "end": 2959.32,
+   "text": "grunt work that it can manage too, right? Like, I mean, we've spent months trying to get it to work with the CAD models, and it's just not doing very well, and I"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2959.32,
+   "end": 2959.6,
+   "text": "think"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2960.28,
+   "end": 2965.26,
+   "text": "that's okay, because I think plenty of us actually enjoy doing CAD, you know?"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2966.59,
+   "end": 2975.39,
+   "text": "And every CAD model is going to be different. It wouldn't be, like, recording data and sorting it and stuff. Like, that's something that AI would be amazing for."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2975.95,
+   "end": 2976.51,
+   "text": "But, yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 2978.45,
+   "end": 2978.97,
+   "text": "it's a little,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 2979.51,
+   "end": 2987.88,
+   "text": "yeah. That's one of the limits I think that AI has is it's not very good at generating those structures that we need."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 2987.88,
+   "end": 3003.2,
+   "text": "Generating images and like spatial awareness AI is very poor at. It does really well with like analyzing information and like things to do with like words and things like that. It goes very good at image analysis, spatial analysis, things like that. It's not there."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3004.12,
+   "end": 3039.1,
+   "text": "Yeah, it doesn't live in the 3D world with us. It's all just code and stuff. And it can be super helpful for code. I mean, I've been a little more careful with generating so much code at once because often it'll come up with, like, a function or something that I haven't ever used before, and I'll be like, hey, what's that? And then it takes a little more time, but then you're still learning with it, but often it can feel a little like you're trying to catch up to where AI is at, and you're never going to get to that point. but you"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3039.54,
+   "end": 3041.14,
+   "text": "learn"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3041.14,
+   "end": 3041.64,
+   "text": "a lot,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3042.88,
+   "end": 3051.64,
+   "text": "but I think it's ultimately better writing my own code because then I know exactly how it works and how I want it to be working."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3054.25,
+   "end": 3055.81,
+   "text": "That's my opinion. If you"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3055.81,
+   "end": 3057.59,
+   "text": "have one of the subs."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3060.01,
+   "end": 3061.03,
+   "text": "We might,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3061.43,
+   "end": 3064.07,
+   "text": "I think we'll jump"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3064.07,
+   "end": 3065.81,
+   "text": "back together to,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3067.9,
+   "end": 3069.78,
+   "text": "yeah, let's jump to the next question."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3072.04,
+   "end": 3080.2,
+   "text": "So let's just kind of shift it over to lab culture. So like in the vertical cloud lab at BYU specifically,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3082.27,
+   "end": 3102.35,
+   "text": "what kind of things could we do? Like, what kind of conversations could we have to help out? Like, what kind of lab culture do we want? How do we set that kind of culture here? Especially as new people come in, as people graduate and then pass off the baton, you know, what is the lab culture? like that"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3102.35,
+   "end": 3104.55,
+   "text": "so regarding AI or just general"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3106.31,
+   "end": 3107.39,
+   "text": "AI"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3107.39,
+   "end": 3110.69,
+   "text": "yeah and then I think it would be good to in future what's"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3110.69,
+   "end": 3111.77,
+   "text": "a breakoff talk for me."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3112.53,
+   "end": 3114.85,
+   "text": "We'll do break off yeah another break off in the side."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3116.08,
+   "end": 3116.98,
+   "text": "Yeah, yeah, and we're"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3116.98,
+   "end": 3119.08,
+   "text": "going too."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3120.28,
+   "end": 3120.48,
+   "text": "Sorry,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3122.5,
+   "end": 3123.56,
+   "text": "you guys can keep going. Sorry,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3131.88,
+   "end": 3132.78,
+   "text": "you guys can keep going. What do you think, Audrey?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3135.79,
+   "end": 3136.23,
+   "text": "I"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3138.54,
+   "end": 3142.82,
+   "text": "don't know, I'm bad, I use AI a lot, like a lot, a lot, a lot."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3145.86,
+   "end": 3151.46,
+   "text": "As far as like the culture of it, I think that's very personal. I know, like, Xavier doesn't use it very much at all."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3154.06,
+   "end": 3154.44,
+   "text": "Yeah."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3155.48,
+   "end": 3160.78,
+   "text": "I mean, do you still feel like you're learning and that you're capable when you're using it, though?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3163.1,
+   "end": 3163.72,
+   "text": "Yes and no."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3164.99,
+   "end": 3189.17,
+   "text": "Yes and no. There are times, kind of like what you're saying at the end, I literally will chase AI through, like, tons of code trying to figure out how it's doing, what it's doing. I mean, at the end of the day, I come back to it and kind of just, like, look at it, And it's like, well, it's working. I have a kind of a grasp of what I think it's doing. Oh, it's doing it. I don't know how that function exactly works. Like, I really don't know."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3190.42,
+   "end": 3203.62,
+   "text": "But it works. And I think I know kind of what it's doing. Could I, like, teach someone else what it's doing? No. Yeah. And so I guess I trust it maybe too much in that sense."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3206.56,
+   "end": 3207.56,
+   "text": "That being sad,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3209.6,
+   "end": 3209.84,
+   "text": "like,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3211.71,
+   "end": 3227.45,
+   "text": "for me, it's kind of, of like the means to the end on like certain things. Like I would prefer not to be coding stuff my whole life and so that's not something that entreats me. And so maybe I'm short circuit, like short -circuiting my education in that aspect. But at the same time,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3228.7,
+   "end": 3231.32,
+   "text": "it's something that I don't hope to be doing my whole life."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3232.12,
+   "end": 3239.24,
+   "text": "Gotcha. So you're not worried about your coding skills. Yeah. So like, you don't see yourself using them very much."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3240.22,
+   "end": 3255.28,
+   "text": "Like long term, yeah, I'm not as worried about that. where I do spend, like, a lot more time understanding is things with, like, the 3D printers and, like, material science stuff. Like, that's just information that I need to know, like, forever. And so, like,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3256.96,
+   "end": 3264.86,
+   "text": "when it comes to those things and I'm using AI, like, even right now, like, the amount of times I say, okay, walk me through and teach me what you just did."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3267.07,
+   "end": 3268.22,
+   "text": "And it"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3268.22,
+   "end": 3271.86,
+   "text": "will take, I will spend a ton of time going down that wormhole,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3273.22,
+   "end": 3280.3,
+   "text": "but I think it's still valuable. and I think it helps me not short circuit the educational experience."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3281.74,
+   "end": 3294.27,
+   "text": "I think for me I'm using AI mostly as like a way to get out of things that I don't really want to spend a lot of time on. That makes sense, and I don't particularly see myself as like using them down the road."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3294.91,
+   "end": 3323.3,
+   "text": "Yeah, I think that's useful. I've definitely had semesters where I feel I'd maybe too much on AI, and that wasn't helpful for me, for my... learning, so I'm definitely a little more like, use it as little as possible, but like for things it can easily automate, that's so, so beneficial. I just, I think we're on two opposite episodes of the spectrum right now where you're relying on it like a lot right now, and I'm like, I don't want to touch this"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3323.3,
+   "end": 3325.7,
+   "text": "stuff, but. Yeah,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3327.08,
+   "end": 3343.12,
+   "text": "and it's been hard, because my internship, honestly, I thought it would be, like, showing me that, like, I need to not use AI as much, and then, like, I got here and I don't know if you're familiar with, like, Gemini notebooks and, like, Gemma, and, like, all of those new features."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3344.47,
+   "end": 3366.39,
+   "text": "I spent, I spent probably a quarter to a half of my day, every day, using those tools and either trying to break them, trying to make them work quicker, or trying to find ways to, like, share them on, like, a larger scale. Like, that's all I'm doing. And then, like, of course, going through as they work to, like, make sure they did the math right and they have the equations, right?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3368.25,
+   "end": 3392.44,
+   "text": "You know what I mean, that, like, their reasoning isn't flawed, but I don't think I've had, I can, I mean, I've been here since May. I can count on one hand. I think the times the AI has gotten, like, the equation wrong for something, like, engineering related in the sense that, like, it performed a calculation that was just false, or it was just wrong. You know what I mean? Like, maybe four times. Yeah."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3393.92,
+   "end": 3394.68,
+   "text": "and so"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3397.34,
+   "end": 3409.36,
+   "text": "just me knowing how to do it those four times was incredibly helpful but I think what it really has done is like really lowered the barrier to entry of like going in and deep diving into like specific things"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3410.34,
+   "end": 3411.36,
+   "text": "I don't know"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3411.55,
+   "end": 3414.47,
+   "text": "okay yeah no I can see that as"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3414.47,
+   "end": 3425.54,
+   "text": "far as like the culture though like I think there has to be a balance like we have to use it we can't say hey we're not going to touch that that being said I'm probably overusing it for the extent where like probably"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3425.54,
+   "end": 3427.68,
+   "text": "underusing it. So we just"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3427.68,
+   "end": 3428.4,
+   "text": "need to..."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3430.07,
+   "end": 3461.97,
+   "text": "You've got to find the balance where you use it, but you understand how you're using it and what it's doing. We're like, I'm, yeah, I'm definitely in this sense where, like, sometimes I don't understand everything of why it's happening. It just kind of does, and I just kind of accept that, like, it has done its job well and move on, especially for, like, coding things. When I plus run, and it runs, and it works like it's supposed to, I don't ask a ton of questions. and just if I, and once I kind of like understand it a little bit, because I just don't,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3463.44,
+   "end": 3484.74,
+   "text": "it's interesting, very interesting. When it comes back to, like, school, like, I feel like how I always use the AI is, like a better way where, like, I use it a lot to, like, study for things, but not necessarily to solve the exact problems I was solving, but maybe to solve other problems. It makes any sense, like, just create additional problems. So you can see the"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3484.74,
+   "end": 3486.8,
+   "text": "workflow so that you can go do your own."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3487.26,
+   "end": 3496.14,
+   "text": "Yeah, but it was also very interesting in my thermodynamics class, the teacher really encouraged AI research, although he's no longer teaching here."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3496.9,
+   "end": 3498.42,
+   "text": "Who was the teacher?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3499.82,
+   "end": 3501.26,
+   "text": "I forgot. He was an older,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3501.56,
+   "end": 3502.06,
+   "text": "bald man."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3503.95,
+   "end": 3505.79,
+   "text": "Okay, so it wasn't Magelby then, right?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3506.27,
+   "end": 3514.75,
+   "text": "No, thermodynamics was it wasn't Magelby, and it wasn't Dylan. It was someone else. I'd recommend taking it from Dr. Dylan."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3515.45,
+   "end": 3517.17,
+   "text": "I already took it, but thank you."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3517.77,
+   "end": 3518.93,
+   "text": "Who did you take it with?"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3518.99,
+   "end": 3520.41,
+   "text": "I took it with Dylan."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3521.4,
+   "end": 3522.24,
+   "text": "Did you? Okay, yeah."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3524.04,
+   "end": 3527.54,
+   "text": "I didn't like mine in the class, but it was a very interesting perspective on using AI to learn."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3528.38,
+   "end": 3536.52,
+   "text": "Yeah, where are you actually at in the program right now? Because I'm starting capstone, but it seems like I just took thermos, so."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3537.85,
+   "end": 3545.45,
+   "text": "I've got two more years still. Okay. I'm trying to do the program in four years, and so I've got two more."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3547.22,
+   "end": 3551.24,
+   "text": "Like, this is the semester I'm taking like manufacturing and mechatronet. things"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3551.24,
+   "end": 3551.92,
+   "text": "like"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3551.92,
+   "end": 3555.36,
+   "text": "that. Manufacturing is awesome. Mechatronics,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3557.23,
+   "end": 3560.93,
+   "text": "it can be awesome. You're not allowed to use AIMA to watch out."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3561.99,
+   "end": 3561.99,
+   "text": "But,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3563.79,
+   "end": 3563.93,
+   "text": "yeah,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3565.73,
+   "end": 3572.98,
+   "text": "but it can be so rewarding when something works and when it doesn't work, it's like, oh,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3580.04,
+   "end": 3580.78,
+   "text": "interesting class."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3585.81,
+   "end": 3587.55,
+   "text": "Manufacturing is so much fun, though."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3594.91,
+   "end": 3595.91,
+   "text": "What else were you in?"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3598.87,
+   "end": 3603.08,
+   "text": "Oh, I don't know offhand, but, you don't know. the writing class."
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3606.33,
+   "end": 3607.95,
+   "text": "Yeah, that one's just a work."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3610.87,
+   "end": 3614.9,
+   "text": "Is it fun or is it just kind of busy work? Well, like"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3614.9,
+   "end": 3637.62,
+   "text": "parts of it are fun. I mean, assuming every class has the same kind of flow, like the first project is like, you're going to write a set of instructions for someone and you need to make it really pretty easy to follow and stuff like that. And that's actually fun. And then you have like your assortment of papers that you have to do that are less fun. But you get you get to do. them done and it's right"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3638.16,
+   "end": 3648.44,
+   "text": "though yeah I feel like that's a good use of AI to like use it to write instructions like give it a bunch of data and processes and then have it write the instructions and then just verify that it was good"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3648.44,
+   "end": 3649.26,
+   "text": "I don't know okay"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3651.54,
+   "end": 3653.64,
+   "text": "maybe not I mean"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3653.64,
+   "end": 3665.12,
+   "text": "you also have to everything you submit you have to say what you used AI for and stuff like that so just make sure whatever you use it for you're comfortable declaring to the professor"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3668.54,
+   "end": 3670.14,
+   "text": "Or yeah, if you guys could take a second."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3670.66,
+   "end": 3671.1,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3675.56,
+   "end": 3676.64,
+   "text": "like we can, as long"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 3676.64,
+   "end": 3677.3,
+   "text": "as it's uploaded,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3677.64,
+   "end": 3678.46,
+   "text": "then, yeah, we can get everything."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3682.97,
+   "end": 3692.61,
+   "text": "And then, Audrey and Curl, you get, you get off easy because it's already, you know, recorded and stuff. So now I need to do the upload to the channel."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3694.67,
+   "end": 3695.11,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3710.81,
+   "end": 3711.73,
+   "text": "I've been putting..."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3714.51,
+   "end": 3720.2,
+   "text": "discussion between Ben Whitney and Sterling Baird about AI, like lab culture,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3721.1,
+   "end": 3723.84,
+   "text": "AI. Mostly the AI experience in between and Monk."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3724.16,
+   "end": 3724.7,
+   "text": "Yeah, yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3727.36,
+   "end": 3732.16,
+   "text": "That does sound like a, that's a great podcast, the podcast episode."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3733.18,
+   "end": 3733.28,
+   "text": "Hey,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3735.96,
+   "end": 3737.68,
+   "text": "we about to get YouTube famous."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3738.72,
+   "end": 3740.46,
+   "text": "Yeah, with the amount of content, yeah."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3744.16,
+   "end": 3747.84,
+   "text": "Alright, so we get a thousand bikes on this. We're changing our time."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3749.6,
+   "end": 3751.18,
+   "text": "I've been putting these ones as public."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3751.76,
+   "end": 3756.02,
+   "text": "I gotta make it public. You get my idea. But then we"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3756.02,
+   "end": 3756.64,
+   "text": "know what our"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3756.64,
+   "end": 3759.02,
+   "text": "future career is if"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3759.02,
+   "end": 3762.06,
+   "text": "we get some random person on our"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3762.06,
+   "end": 3762.86,
+   "text": "YouTube channels,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 3763.08,
+   "end": 3764.16,
+   "text": "be like, what is"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3764.16,
+   "end": 3764.56,
+   "text": "it? What is it?"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3766.44,
+   "end": 3766.92,
+   "text": "Okay."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3771.62,
+   "end": 3774.2,
+   "text": "Why did you do recommend me? I take"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3774.2,
+   "end": 3783.18,
+   "text": "it no one had a hard stop at 11 other ways you probably would have gone to. I won't go too much over, but I think just kind of coming back together,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3786.59,
+   "end": 3795.79,
+   "text": "action items, specific suggestions people had or thought of, then we can take things a little bit more asynchronously afterwards, like,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3798.17,
+   "end": 3804.77,
+   "text": "can we filter down those suggestions, kind of pick a few things that we that we focus on in the lab to kind of... We can use the transcript"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3804.77,
+   "end": 3805.67,
+   "text": "to"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3805.83,
+   "end": 3809.85,
+   "text": "compile them. That's what I will do after the session. Probably,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3809.99,
+   "end": 3811.59,
+   "text": "I build a charter and sign."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3813.29,
+   "end": 3818.3,
+   "text": "That would be an example of a specific suggestion, so thank you for offering"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 3818.3,
+   "end": 3818.64,
+   "text": "the"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3818.64,
+   "end": 3819.88,
+   "text": "you know,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3820.3,
+   "end": 3820.88,
+   "text": "the second one after."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3822.12,
+   "end": 3822.72,
+   "text": "Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3825.68,
+   "end": 3832.9,
+   "text": "we could also have the goal to have one lab meeting where we don't use the word AI a single time."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3835.8,
+   "end": 3839.58,
+   "text": "But yeah, one that came from struggling. What?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3842.56,
+   "end": 3843.92,
+   "text": "For most of them, you know,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3845.24,
+   "end": 3847.06,
+   "text": "it's probably. They're"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 3847.06,
+   "end": 3851.34,
+   "text": "more like highest, highest speaker has great donuts. Yeah,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3852.54,
+   "end": 3854.72,
+   "text": "yeah, I would probably be bringing donuts every week."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3855.08,
+   "end": 3855.74,
+   "text": "That's okay."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3857.02,
+   "end": 3857.9,
+   "text": "Just give the multiple shit."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3859.7,
+   "end": 3860.3,
+   "text": "Donuts are in third."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 9,
+   "start": 3861.04,
+   "end": 3863.2,
+   "text": "Audrey and Carl, did you guys want to start off with anything?"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3863.8,
+   "end": 3864.24,
+   "text": "Like,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3865.52,
+   "end": 3866.22,
+   "text": "they kind of stuck out?"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3868.14,
+   "end": 3869.62,
+   "text": "We just talked"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3869.62,
+   "end": 3883.8,
+   "text": "about having balance. and making sure that we were using AI for like good things and just kind of talk about where we personally were with using AI and how we can use it better in the lab and kind of set that culture, I think."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3890.09,
+   "end": 3890.81,
+   "text": "Sounds good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3892.09,
+   "end": 3893.63,
+   "text": "Yeah, agreed on balance. There was"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3893.63,
+   "end": 3895.91,
+   "text": "a... Sorry,"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3896.63,
+   "end": 3914.86,
+   "text": "I'm just wondering, would it be helpful? Like, when new people come into the lab, we would run them through, hey, this is good ways to be using AI, like using it to teach you to do. do things and using it to maybe like debug stuff and like I mean just like things that are helpful you know things that are"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3915.18,
+   "end": 3917.28,
+   "text": "borderline"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3917.28,
+   "end": 3919.26,
+   "text": "I don't know if this is right or not maybe"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3919.26,
+   "end": 3921.02,
+   "text": "like we"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 3921.02,
+   "end": 3925.31,
+   "text": "need some kind of like a tutorial to show people I guess"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3925.38,
+   "end": 3926.5,
+   "text": "yeah"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3926.5,
+   "end": 3945.4,
+   "text": "I like that Audrey that gets me thinking we can probably pull this some of the things from this discussion and when I am doing onboarding with people. You guys all kind of know I sent out a few links of videos to watch. I think I can add, probably add this in with one of those kind of like onboarding things. Like,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3946.46,
+   "end": 3949.7,
+   "text": "yeah. Or maybe I missed heard Audrey, but I think I heard her say real."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 3949.96,
+   "end": 3951.96,
+   "text": "So like, you know, we could make like a real of"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3951.96,
+   "end": 3953.48,
+   "text": "us like being, this is"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3953.48,
+   "end": 3955.2,
+   "text": "good. This is bad."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3955.42,
+   "end": 3956.94,
+   "text": "Yeah, so some, yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3957.28,
+   "end": 3961.0,
+   "text": "So yeah, I think some examples would be really good. Yeah,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 3963.85,
+   "end": 3964.71,
+   "text": "we'll go a few more minutes."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 3966.89,
+   "end": 3968.79,
+   "text": "with folks yeah there are specific"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3968.79,
+   "end": 3975.3,
+   "text": "thoughts or suggestions. I think just what we were talking about earlier, like, as an assistant and"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3975.49,
+   "end": 3975.67,
+   "text": "like,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3978.17,
+   "end": 3979.05,
+   "text": "treating it as,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 3980.4,
+   "end": 3981.28,
+   "text": "I don't know if it's clear"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 3981.28,
+   "end": 3982.32,
+   "text": "the right word,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3983.1,
+   "end": 3983.56,
+   "text": "but, um,"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 3985.69,
+   "end": 3986.89,
+   "text": "are you, yeah, it's cool,"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 3987.65,
+   "end": 4000.25,
+   "text": "like, can help you refine your, like something like you might help talk is that instead of saying, create this, we give it specific ideas, and then how they define out our ideas, in"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 4000.25,
+   "end": 4002.53,
+   "text": "four -sustness make for more and so let me do all the"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4002.53,
+   "end": 4011.33,
+   "text": "thinking. Yeah, yeah, the level of understanding some was talking about, so like, okay, this was our idea which you understand why the competition funds this idea."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4012.46,
+   "end": 4014.8,
+   "text": "AI is just helping us get"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4016.5,
+   "end": 4031.8,
+   "text": "rid of maybe some of the time we would have lost if part of our idea wasn't even going to have read any fruit for that wasn't going to enter the profit. Like they will just get rid of the time wasting. stuff, I guess."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4033.32,
+   "end": 4034.24,
+   "text": "Yeah, yeah."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4035.12,
+   "end": 4035.7,
+   "text": "Yeah, Zeta."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4036.52,
+   "end": 4039.02,
+   "text": "Something Sam and I talked about was"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4039.75,
+   "end": 4040.91,
+   "text": "making"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4040.91,
+   "end": 4044.53,
+   "text": "a bigger commitment to reading recent relevant research paper."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4046.25,
+   "end": 4076.57,
+   "text": "Something that's been useful for me is, and this point should be because of the nature of my research, it's like reading a few papers and I'm implementing them into these, you know, I'm coding them or adjusting them for our specific research. So I read them, I like, look at the code, and I'm like, okay, I think I need to do this, and I'm like, wait, this does make sense, and then I read them again, and I'm like, oh, I didn't read this closely enough, okay, this makes sense, and then I can go back and I have a better understanding and back and forth, and"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4076.57,
+   "end": 4078.13,
+   "text": "that has"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4078.13,
+   "end": 4109.52,
+   "text": "helped me understand exactly what then I know the code is doing, and it avoids me having, like a, if I can read that paper, that means I, can understand all the things that are relevant to it. And then I avoid having just a summary education of the topic, which is currently how we use AI, is, oh, this is, give me the Spark Notes version. And so then you get a Spark's Notes education of that."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4110.12,
+   "end": 4139.02,
+   "text": "But then you read another paper that would still be expected to understand, but because you only have a Sparks Note version of that, you don't know the details, you read a paper that's related and then you don't understand that again and so you ask for a spark note's education of that and so you miss out on having a good quality education of the topic broadly so then you can read many research papers and to be able to explain it to other people more effective."
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4140.17,
+   "end": 4141.11,
+   "text": "I think"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4141.11,
+   "end": 4143.05,
+   "text": "lab culture involving"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4143.66,
+   "end": 4145.1,
+   "text": "reading"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4145.1,
+   "end": 4147.62,
+   "text": "the source manuscript material and"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4147.62,
+   "end": 4148.76,
+   "text": "I"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4149.62,
+   "end": 4163.62,
+   "text": "don't know how you'd feel about this but maybe like spend time with the manuscripts, maybe say it's still okay if you're like pinging flawed to help with things, but while you're waiting, it's like keep reading, you know, try to,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4165.05,
+   "end": 4170.53,
+   "text": "yeah, but like have the PDF of the manuscripts that you're like the really core manuscripts that"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4170.53,
+   "end": 4171.93,
+   "text": "you want to understand in"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4171.93,
+   "end": 4172.37,
+   "text": "front of you."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4173.14,
+   "end": 4209.46,
+   "text": "As an anecdote for finishing my last math paper, we are on this last part of the group and the way that we had thought we were going to do it. ended up not working, you could figure it out. And so I just, there were three types of theorems that I was like, if you have anything related to these type of results, I need these. And so I had Claude, shirts them up, and it gave me, like, five for each type. And then I just, I clicked through the, and I read them. And I was like, oh, I found it. Yeah. Like, this theorem, as it was published, was able to work. And then we were able to make a proof off of that."
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4210.0,
+   "end": 4230.85,
+   "text": "rather than if I just said, okay, search and give me the results of these papers, it probably would not have, I would actually bet that it would not have found it, but because I was able to go through and read through these. Like, it is really good at finding relevant papers, but giving them out, it probably doesn't do as well as a job."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4231.62,
+   "end": 4232.68,
+   "text": "Like, summarizing."
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4234.01,
+   "end": 4237.95,
+   "text": "So in a similar way, like this, this idea of summary is dangerous with that."
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 4237.95,
+   "end": 4243.21,
+   "text": "If I do research and have AI writing, the science language, and get a paper, somebody takes that paper and"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4243.21,
+   "end": 4245.21,
+   "text": "summarize it out of science, you know,"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 4245.31,
+   "end": 4249.61,
+   "text": "it's like, why are we taking all these steps? You can be able to read the stuff and get right there, right?"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4250.21,
+   "end": 4251.79,
+   "text": "both the writing has been processed."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4252.97,
+   "end": 4253.77,
+   "text": "And if"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 4253.77,
+   "end": 4254.61,
+   "text": "we let"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 4254.61,
+   "end": 4255.03,
+   "text": "AI"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4255.03,
+   "end": 4259.69,
+   "text": "is talking to different AIs, I'm talking with different AIs about research, then that's a self -directing"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4259.69,
+   "end": 4261.17,
+   "text": "that's not between the research."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4262.65,
+   "end": 4263.65,
+   "text": "And why we"
+  },
+  {
+   "speaker": "Carl Robison",
+   "cluster": 2,
+   "start": 4263.65,
+   "end": 4264.43,
+   "text": "have to"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4264.43,
+   "end": 4267.57,
+   "text": "also the autonomy to stuff that we don't."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4268.23,
+   "end": 4269.17,
+   "text": "So that"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4269.17,
+   "end": 4274.61,
+   "text": "we can make the papers and write the papers and use the difference in this. Yeah,"
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 4277.89,
+   "end": 4278.75,
+   "text": "thanks everybody for"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4278.75,
+   "end": 4279.59,
+   "text": "joining"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4279.59,
+   "end": 4281.09,
+   "text": "the discussion and we'll get"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4281.09,
+   "end": 4285.41,
+   "text": "the good. Please make sure you get the videos uploaded and then the last"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4285.41,
+   "end": 4286.59,
+   "text": "two"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4288.54,
+   "end": 4293.4,
+   "text": "minutes. Does everybody have Slack? Can they get Slack open pretty quickly?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4298.82,
+   "end": 4300.34,
+   "text": "I would like you to"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4301.98,
+   "end": 4305.32,
+   "text": "so this is in the social channel"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4309.28,
+   "end": 4310.44,
+   "text": "name"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4310.44,
+   "end": 4313.02,
+   "text": "a couple animals for me just"
+  },
+  {
+   "speaker": "Xavier Zaitzeff",
+   "cluster": 8,
+   "start": 4313.28,
+   "end": 4314.62,
+   "text": "tiger"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4314.88,
+   "end": 4320.24,
+   "text": "lion zebra elephant"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4320.24,
+   "end": 4323.44,
+   "text": "okay we"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4325.1,
+   "end": 4325.74,
+   "text": "might only need"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4325.74,
+   "end": 4326.56,
+   "text": "four"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4326.56,
+   "end": 4328.04,
+   "text": "okay"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4371.43,
+   "end": 4372.91,
+   "text": "was"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4372.91,
+   "end": 4373.11,
+   "text": "that"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4373.11,
+   "end": 4374.35,
+   "text": "August 5th"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4385.97,
+   "end": 4387.29,
+   "text": "one more animal"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4395.66,
+   "end": 4397.98,
+   "text": "thank you"
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4397.98,
+   "end": 4403.67,
+   "text": "we're going to wait for man's good yeah"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4438.61,
+   "end": 4442.09,
+   "text": "So if you could put your"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4449.96,
+   "end": 4452.56,
+   "text": "availability in here,"
+  },
+  {
+   "speaker": "In-room (unidentified)",
+   "cluster": 10,
+   "start": 4452.82,
+   "end": 4454.02,
+   "text": "that would be much"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4454.02,
+   "end": 4455.06,
+   "text": "appreciated."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 4455.28,
+   "end": 4455.52,
+   "text": "I think"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 11,
+   "start": 4455.52,
+   "end": 4457.18,
+   "text": "it's like to work today."
+  },
+  {
+   "speaker": "Gage",
+   "cluster": 6,
+   "start": 4458.33,
+   "end": 4459.55,
+   "text": "Let me. If you do"
+  },
+  {
+   "speaker": "Audrey Christiansen",
+   "cluster": 1,
+   "start": 4459.55,
+   "end": 4462.03,
+   "text": "you want us to include"
+  },
+  {
+   "speaker": "Andrew / Ronnie / Marcus",
+   "cluster": 12,
+   "start": 4462.03,
+   "end": 4462.51,
+   "text": "those?"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4462.65,
+   "end": 4465.85,
+   "text": "Yeah, multiple times, just trying to find the one that works for everybody."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4467.09,
+   "end": 4467.73,
+   "text": "Yeah, you can."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4473.61,
+   "end": 4474.25,
+   "text": "So fourth."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4476.24,
+   "end": 4479.15,
+   "text": "Okay, thanks. Yeah, no bad."
+  },
+  {
+   "speaker": "Cross-talk / far-field",
+   "cluster": 0,
+   "start": 4483.91,
+   "end": 4484.27,
+   "text": "Oh,"
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4485.15,
+   "end": 4487.61,
+   "text": "sorry, Ronnie, if you could, yeah, just, oh, no, that's good."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4490.57,
+   "end": 4492.35,
+   "text": "Oh, meant to do an ad channel for that."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4511.14,
+   "end": 4512.32,
+   "text": "Wow, that's a lot of zebras."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4514.03,
+   "end": 4515.05,
+   "text": "Oh, and crocodust."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4517.91,
+   "end": 4518.55,
+   "text": "Okay, cool."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 5,
+   "start": 4524.64,
+   "end": 4528.12,
+   "text": "Okay, we'll probably call it good there. Thanks, Audrey, Carl. Thanks, everybody."
+  },
+  {
+   "speaker": "Sterling Baird",
+   "cluster": 4,
+   "start": 4529.87,
+   "end": 4530.85,
+   "text": "A little break."
+  }
+ ]
+}
