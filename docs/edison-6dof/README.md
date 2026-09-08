@@ -11,7 +11,8 @@ All traffic goes through `https://api.platform.edisonscientific.com` (the
 
 | Directory | Edison `task_id` | `job_name` | Status |
 |---|---|---|---|
-| `q1-sota-arms-in-sdls/` | `85b13938-c944-4f68-8dc8-f452a9a073a2` | `LITERATURE_HIGH` | submitted 2026-09-08 16:40 UTC, polling |
+| `q1-sota-arms-in-sdls/` | `85b13938-c944-4f68-8dc8-f452a9a073a2` | `job-futurehouse-paperqa3-high` | **success** (34 min) |
+| `q2-metrology-and-reliability-methods/` | `cbb5a078-5411-4391-a29b-902196894bc5` | `job-futurehouse-paperqa3-high` | submitted 2026-09-08 17:15 UTC, polling |
 
 The queries are deliberately **sequential**: each follow-up is written against the
 previous answer, so Q2 is not composed until Q1 returns.
@@ -22,9 +23,13 @@ previous answer, so Q2 is not composed until Q1 returns.
    manipulation layer of SDLs: what is deployed, arm-vs-gantry trade study, vision
    pipelines (fiducial vs. learned pose, transparent/specular labware), VLA foundation
    models for lab manipulation, reliability/remote operation, and a ranked list of
-   timely contributions for a small lab. *(submitted)*
-2. **Q2–Q5 — chosen from Q1's gap analysis.** Candidate axes, to be narrowed by what Q1
-   actually says is unsolved: (a) transparent/specular labware pose estimation and
+   timely contributions for a small lab. **(returned — see `q1-sota-arms-in-sdls/answer.md`)**
+2. **Q2 — metrology and reliability methods.** How to execute Q1's two top-ranked gaps
+   rigorously: ISO 9283 / ASME B89.4.22 pose-accuracy testing without a laser tracker,
+   thermal drift protocols, reliability statistics and failure taxonomies for autonomous
+   labs, existing manipulation benchmarks, venue strategy, and the minimum credible
+   paper. *(submitted, seeded by Q1's ranking)*
+3. **Q3–Q5 — remaining axes**, to be narrowed further: (a) transparent/specular labware pose estimation and
    grasping for glass vials, quartz crucibles, and metal powder; (b) hand-eye calibration
    and closed-loop visual servoing accuracy achievable on a sub-$5k arm with a custom
    wrist camera; (c) an arm as the sample-exchange layer closing the loop on an existing
