@@ -1,7 +1,22 @@
 # Opentrons pipette → TMC2209 → Arduino wiring, checked against the firmware
 
 Written 2026-09-01 while diagnosing "nothing happens on the pipette — no buzzing,
-the plunger never moves" on the CubXL.
+the plunger never moves" on the CubXL. Revised 2026-09-08: §3 corrected (pin 6 →
+GND *is* on the Cubware diagram) and extended with the connector-orientation
+check, and §4 added.
+
+**Where the Ursa documentation lives.** There is exactly one Ursa-authored
+pipette wiring source —
+[`Cubware/documentation/opentrons-pipette-setup.md`](https://github.com/Ursa-Laboratories/Cubware/blob/main/documentation/opentrons-pipette-setup.md)
+and its `images/PipetteControl.png`. (`images/ArduinoCircuitDiagram_v3.png` in the
+same folder is the capper/lights circuit, referenced from
+`vial-capper-decapper-build.md`; it has nothing to do with the pipette. Nothing in
+CubOS, PANDA-CUB, Zoo or BU-Configs documents this wiring.) That page delegates
+onward: *"The legacy PANDA-BEAR wiring docs point to the external
+BU-KABlab/PANDA_Arduino repository for firmware source, pin assignments, and
+installation instructions."* `PANDA_Arduino` in turn carries a vendored copy of
+the science-jubilee OT2 pipette tool doc at `src/pipette_tool.md`, and *that*
+project is where the authoritative 10-pin material actually is.
 
 The wiring diagram in Cubware
 ([`documentation/opentrons-pipette-setup.md`](https://github.com/Ursa-Laboratories/Cubware/blob/main/documentation/opentrons-pipette-setup.md)
@@ -18,6 +33,8 @@ Everything below is read out of source, not inferred from behaviour. Sources:
 | firmware step/home/aspirate logic | [`src/Pipette.cpp`](https://github.com/BU-KABlab/PANDA_Arduino/blob/main/src/Pipette.cpp) |
 | driver library | [`janelia-arduino/TMC2209`](https://github.com/janelia-arduino/TMC2209) `@^10.1.0`, pinned in `platformio.ini` |
 | OT-2 10-pin ribbon pinout | the Jubilee OT2 pipette tool doc, [`src/pipette_tool.md`](https://github.com/BU-KABlab/PANDA_Arduino/blob/main/src/pipette_tool.md) §"Wiring Harness Assembly" |
+| **which physical hole is pin 1** | [`science-jubilee` `tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf) — a photograph of the pipette's own header with each wire on its hole |
+| ribbon conductor numbering | [`_static/ribbon_to_hookup_wiring.png`](https://github.com/machineagency/science-jubilee/blob/main/docs/building/_static/ribbon_to_hookup_wiring.png) |
 | breakout | [Adafruit 6121](https://www.adafruit.com/product/6121) — motor supply 5–29 VDC, VDD 3–5 V, **current set by an onboard potentiometer** |
 
 Cubware's own text flags the whole page as provisional: *"the OT2 pipette hardware
@@ -128,7 +145,7 @@ coil 2 = ribbon 1+2):
 | 3 | stepper coil A | → TMC `1B` | ✅ |
 | 4 | stepper coil A | → TMC `1A` | ✅ |
 | 5 | unused | — | ✅ |
-| 6 | limit switch **return (GND)** | labelled, **no wire drawn** | ⚠️ must go to Arduino **GND** |
+| 6 | limit switch **return (GND)** | labelled `Limit switch GND` | ✅ |
 | 7 | limit switch signal | → Arduino D9 | ✅ |
 | 8, 9, 10 | unused | — | ✅ |
 
@@ -137,7 +154,38 @@ the two wires *within* a pair only reverses the direction of travel; **mixing th
 pairs** (e.g. 1 with 3) makes the motor buzz and vibrate without turning. Since
 there is no buzzing at all, the coil wiring is not the current fault.
 
-### Pin 6 — the wire the diagram forgets
+### Which physical hole is pin 1 — the thing neither Ursa source states
+
+Both Ursa-side sources give the *logical* pinout and neither says which end of
+the connector is pin 1. The only source that does is science-jubilee's
+[`OT2_Wiring_Diagram.pdf`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf),
+which is a **photograph of the pipette's own 10-pin header** with a coloured dot
+on each populated hole. Read off it:
+
+- the **top row of the header (9, 10) is empty**, and the two motor coils occupy
+  the **bottom two rows** — `1|2` bottom, `3|4` above it;
+- each coil is a **left-right pair within one row** (blue+red on `3|4`,
+  black+green on `1|2`), matching the JST housing order `[Blue/4, Red/3,
+  Green/1, Black/2]`;
+- the limit-switch pair is **7 and 6 — diagonal**, one hole in each of two
+  adjacent rows, not a same-row pair. Wiring it to 7+8 or 5+6 is the easy
+  mistake.
+
+If the populated rows are at the *other* end of the connector, the FC-10P is
+crimped 180° out and every pin maps `n → 11 − n`: all four coil wires land on
+unused pins 7–10 (silent motor, no buzzing) and the limit-switch pair lands on
+pin 4 (a coil) and pin 5 (no connect). That case is testable without a
+multimeter — see the D9 table below — and it is *excluded* on this machine,
+because D9 has read LOW (loop closed) in three of the five wiring passes, which
+a rotated connector could never produce.
+
+Two-minute meter check, ribbon off the driver's screw terminals, everything
+powered down: **blue–red** and **black–green** should each read a few to a few
+tens of ohms; **blue–black** should read open, because the two coils of a
+bipolar stepper are isolated. If both pairs read open, the fault is in the
+crimps or the solder joints, not in the pinout.
+
+### The limit-switch return, pin 6 → Arduino GND
 
 `setupPipette()` does `pinMode(PIPETTE_LIMIT_PIN, INPUT_PULLUP)`, and D9 **HIGH
 means "at the limit"** — so an open switch circuit reads *asserted*.
@@ -177,10 +225,10 @@ Both constants are exact: 796 × 510 µs + `DEBOUNCE_TIME 100` = **0.506 s** vs.
 
 Consequences for the wiring:
 
-- **Pin 6 must be connected to Arduino GND.** With it floating or open, D9 idles
-  HIGH through the pull-up and you get the whole "HIGH" row above — a fake home
-  *and* a plunger that refuses to retract. The Cubware diagram labels pin 6 but
-  draws no wire for it.
+- **Pin 6 must reach Arduino GND**, which is what the diagram's
+  `Limit switch GND` label means. Anywhere that loop is open — pin 6, pin 7, the
+  switch itself, a crimp — D9 idles HIGH through the pull-up and you get the
+  whole "HIGH" row above: a fake home *and* a plunger that refuses to retract.
 - The contact must be **normally closed**: LOW (closed to GND) at rest, opening
   as the plunger reaches the limit. A normally-open contact gives the HIGH row.
 
@@ -193,11 +241,89 @@ Observed history on this machine, all four rewiring passes:
 | 2026-09-01 18:56, rewire #2 | 26.35 s ERR | moves | LOW |
 | 2026-09-01 19:13, rewire #3 | 26.35 s ERR | moves | LOW |
 | 2026-09-01 19:46, rewire #4 | 0.52 s | refused | HIGH |
+| 2026-09-08, rewire #5 (Arduino pins corrected) | not measurable — hardware off the Pi | — | — |
 
 Nothing else in the plunger's behaviour changed across those passes. Treat this
 pin as the first thing to measure whenever the plunger misbehaves.
 
-## 4. Two more things on that page
+## 4. Fixing the UART pin opens a new way for the driver to be switched off
+
+Added 2026-09-08, after the Arduino-side pins were corrected and the plunger
+still did not move. This is a *software* failure mode, and it was not reachable
+while UART was on the wrong pin.
+
+`setupPipette()` → `setupMotor()` → `stepperDriver.setup(softSerial)` →
+[`TMC2209::initialize()`](https://github.com/janelia-arduino/TMC2209/blob/main/src/TMC2209/TMC2209.cpp):
+
+```cpp
+void TMC2209::initialize(long serial_baud_rate, SerialAddress serial_address)
+{
+  serial_baud_rate_ = serial_baud_rate;
+  setOperationModeToSerial(serial_address);   // i_scale_analog = 0  <- VREF pot out of circuit
+                                              // pdn_disable = 1, mstep_reg_select = 1
+  setRegistersToDefaults();
+  clearDriveError();
+  minimizeMotorCurrent();                     // IRUN / IHOLD -> minimum
+  disable();                                  // CHOPCONF.toff = 0 -> output stage OFF
+  disableAutomaticCurrentScaling();
+  disableAutomaticGradientAdaptation();
+}
+```
+
+`setupMotor()` then calls `setRunCurrent(50)`, `setHoldCurrent(30)`,
+`setMicrostepsPerStep(16)`, `enableStealthChop()`, `enableCoolStep()` and
+`enable()` to undo the last two lines.
+
+**Every one of those is a UART write, and the link is write-only.**
+`SoftwareSerial softSerial(RX_PIN, TX_PIN)` is `(A0, A1)`, and `Pipette.h` says of
+A0: *"SoftwareSerial RX pin (not connected but required)"*. The TMC2209's UART is
+single-wire half-duplex (PDN_UART); with only TX attached the Arduino can never
+read the driver back, and `setupMotor()` never calls
+`stepperDriver.isSetupAndCommunicating()`. Nothing anywhere verifies that a
+single register write landed.
+
+So the two wiring states behave very differently:
+
+| UART wire on | what the driver does |
+|---|---|
+| **A0** (the RX pin — the Cubware diagram) | nothing is ever transmitted. Chip stays in **standalone mode**: VREF pot sets current, MS1/MS2 straps set 1/8 microstepping, `CHOPCONF.toff` at its power-on default of 3 → **output stage enabled** |
+| **A1** (the TX pin — correct) | the first thing that lands is `i_scale_analog = 0`, **taking the current pot out of the circuit**, followed by `minimizeMotorCurrent()` and `disable()`. If any later write is dropped or garbled, the driver sits at **minimum current with its output stage off** — silent, no holding torque — while the Arduino happily bit-bangs STEP into it |
+
+### The bisect: pull the UART wire off A1
+
+Nothing else changes. With the wire off, `setup()`'s writes go nowhere, the chip
+never enters serial mode, and it runs on its power-on defaults with the pot back
+in charge of current.
+
+- **Plunger moves** → the fault is in the UART configuration path. (Distances will
+  come out 2× — standalone MS1/MS2 default to 1/8, not the 1/16 the firmware
+  assumes; see §6.)
+- **Plunger still silent** → it is power, current, or the coil circuit. §5 and the
+  meter check in §3.
+
+Either way, turn the VREF pot up before running the test.
+
+If you would rather instrument than unplug: tie A0 to the same PDN_UART line
+through a 1 kΩ resistor — that is how the janelia library's single-wire mode is
+meant to be wired — and then `isSetupAndCommunicating()` becomes meaningful and
+can be checked after `setup()`.
+
+### ⚠️ Turn the run current down before it works
+
+`RUN_CURRENT_PERCENT 50` maps to `IRUN = 15` of 31, with `CHOPPER_CONFIG_DEFAULT
+= 0x10000053` leaving `vsense = 0` (the high-current range) and the firmware never
+calling `enableVSense()`. On a breakout Adafruit rates to 2 A that is on the order
+of **0.9 A RMS / 1.2 A peak**.
+
+The same science-jubilee source this harness comes from specifies **350 mA peak
+for a gen1 OT-2 pipette motor and 500 mA for a gen2** (`M906 V350` / `M906 V500`).
+So the firmware asks for roughly 2–3× the motor's rating — and *that only starts
+mattering once the UART wire works*, because until then the pot was in charge.
+Drop `RUN_CURRENT_PERCENT` to ~20 and `HOLD_CURRENT_PERCENT` to ~10 before the
+first successful move, and fit the Adafruit `1515` heat sink to the driver
+(Cubware's setup page has a section on it).
+
+## 5. Two more things on that page
 
 **"120V/2A Power Supply" is a typo for 12 V.** The Adafruit 6121 breakout takes
 5–29 VDC on the motor terminal. Do not connect mains.
@@ -207,7 +333,7 @@ driver's logic only. With no voltage on the `+`/`-` terminal the board still
 accepts STEP/DIR and acknowledges everything, with zero coil current and total
 silence — indistinguishable at the serial port from a healthy run.
 
-## 5. Consequences that outlive the wiring fix
+## 6. Consequences that outlive the wiring fix
 
 **Microstepping is almost certainly 1/8, not the 1/16 the firmware assumes.**
 `setMicrostepsPerStep(16)` is a UART write, so with UART unconfigured the chip

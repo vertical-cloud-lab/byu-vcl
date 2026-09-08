@@ -427,3 +427,39 @@ write-up in
 
 `tools/pipette_bench_check.py` now reports the limit-switch verdict instead of
 the DIR-fault one (and no longer crashes with a `NameError` on that path).
+
+## 2026-09-08 — no hardware access; the wiring question answered from source
+
+Ben corrected the 2026-09-01 write-up: **pin 6 → GND is on the Cubware diagram
+and is wired**, so the "the diagram forgets it" framing above is wrong. What the
+diagram genuinely does not state — and neither does any other Ursa source — is
+*which physical hole is pin 1*. That is settled by science-jubilee's
+[`OT2_Wiring_Diagram.pdf`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf),
+a photograph of the pipette's own header: the top row (9, 10) is empty, the two
+coils occupy the bottom two rows as left-right pairs, and the limit switch is
+pins 7 and 6 — *diagonal*, not a same-row pair.
+
+Source inventory, since the question keeps coming up: Cubware's
+`documentation/opentrons-pipette-setup.md` + `images/PipetteControl.png` is the
+only Ursa-authored pipette wiring page (`ArduinoCircuitDiagram_v3.png` beside it
+is the capper/lights circuit); it delegates to `BU-KABlab/PANDA_Arduino`, which
+vendors the science-jubilee tool doc at `src/pipette_tool.md`.
+
+**New finding — correcting the UART pin opened a way for the driver to be left
+switched off.** `TMC2209::initialize()` runs `setOperationModeToSerial()`
+(`i_scale_analog = 0`, which takes the VREF pot out of circuit), then
+`minimizeMotorCurrent()` and `disable()` (`CHOPCONF.toff = 0`), and relies on the
+firmware's subsequent `setRunCurrent`/`enable()` writes to undo that. The link is
+write-only — `SoftwareSerial` RX is A0, documented in `Pipette.h` as "not
+connected" — and nothing calls `isSetupAndCommunicating()`. With UART on A0 the
+chip stayed in standalone mode and was enabled by default; with UART on A1 it is
+put into serial mode and disabled first. **Bisect: pull the UART wire off A1 and
+retry.** Also, `RUN_CURRENT_PERCENT 50` is ~0.9 A RMS against a motor rated
+350–500 mA peak, and that only became live when the UART wire started working.
+
+Full derivation in [`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md)
+§3 and §4.
+
+**No hardware access this session.** Nothing is on the Pi's USB bus: the GRBL
+CH340 last disconnected 2026-09-03 19:20 UTC and the capper/pipette Arduino
+2026-09-01 18:31 UTC. No measurements were possible; nothing was run.
