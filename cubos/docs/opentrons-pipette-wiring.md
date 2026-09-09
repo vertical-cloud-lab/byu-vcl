@@ -484,3 +484,274 @@ nothing more. (0.673 s/mm is itself just the firmware's arithmetic:
 `MOVEMENT_VELOCITY 2500` → 400 µs/step, × `STEPS_PER_MM 1592` ≈ 0.67 s/mm.)
 Likewise `HOME` failing after 26.35 s is the 50000-step budget in
 `homePipette()`, not the 60 s timeout.
+
+---
+
+## 8. The science-jubilee prior art
+
+`machineagency/science-jubilee` is the upstream of this whole pipette harness —
+`BU-KABlab/PANDA_Arduino` vendors a copy of its tool doc at `src/pipette_tool.md`,
+and Ursa's `Cubware/documentation/opentrons-pipette-setup.md` delegates to PANDA.
+It drives the same OT-2 pipette from a **Duet 3 / RepRapFirmware** V axis instead of
+an Arduino + TMC2209, so it is an independent implementation of the same mechanism —
+which makes it usable as a cross-check on every constant PANDA carries.
+
+Sources (MIT licensed):
+
+| what | where |
+| --- | --- |
+| Duet `config.g` recipe | [`tool_library/OT2_pipette/duet_configs/OT2_Pipette_Configuration.md`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/duet_configs/OT2_Pipette_Configuration.md) |
+| Python driver | [`src/science_jubilee/tools/Pipette.py`](https://github.com/machineagency/science-jubilee/blob/main/src/science_jubilee/tools/Pipette.py) |
+| Per-model constants | [`src/science_jubilee/tools/configs/P20_config.json`](https://github.com/machineagency/science-jubilee/blob/main/src/science_jubilee/tools/configs/P20_config.json) (also P300, P1000) |
+| Header photo | [`tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf) |
+| Tip-sensor holders | `tool_library/OT2_pipette/designs/3D_only/PipetteTool_Holder_{Mechanical,Dust-Proof}_Limit_Switch.stl` |
+
+### 8.1 The two systems agree on the pipette, and that validates PANDA's numbers
+
+RRF sets steps per axis unit with `M92`; the doc gives **48 (Gen1) / 200 (Gen2)** at
+`M350 V16 I1`. PANDA uses `STEPS_PER_MM 1592.0`, also at 16x. Those are not the same
+unit — the ratio is `1592 / 200 = 7.96`.
+
+Which one is a millimetre falls out of the motor arithmetic. At 16x on a 200-step
+motor:
+
+```
+PANDA  1592 / 16 =  99.5 full steps per unit  ->  2.01 mm of lead per revolution
+SJ      200 / 16 =  12.5 full steps per unit  ->  16.0 mm of lead per revolution
+```
+
+2 mm is an ordinary leadscrew lead; 16 mm is not. **PANDA's "mm" are real
+millimetres and science-jubilee's V units are ~7.96 mm each** — their `M92 V200`
+is steps-per-V-unit, and nothing in their stack ever needs it to be a millimetre
+because every position and volume constant is calibrated in those same units.
+
+That in turn makes PANDA's plunger constants physically sensible: `PRIME 36.0`,
+`BLOWOUT 44.0`, `DROP_TIP 55.0` mm, with `homePipette()`'s 50000-step budget being
+31.4 mm — i.e. a ~55 mm plunger stroke, which is what an OT-2 pipette has.
+
+The volume calibration cross-checks too. Converted to steps per microlitre — a
+property of the piston alone, independent of how either project mounts the tool:
+
+```
+science-jubilee P300:  0.91   units/uL x  200 steps/unit = 182.0 steps/uL
+PANDA           P300:  0.1098 mm/uL    x 1592 steps/mm   = 174.8 steps/uL
+                                                    agree to within 4%
+```
+
+Two independent projects, two different controllers, same answer. **PANDA's
+`UL_TO_MM 0.1098` is a real P300 calibration, not a placeholder.**
+
+### 8.2 ...which is exactly why the P20 numbers are not trustworthy on either side
+
+Upstream ships a `P20_config.json` for a "P20 Gen 2". Running the same consistency
+check on all three of their configs — full-scale volume against the axis travel that
+`zero_position` makes available:
+
+| model | `zero_position` | `mm_to_ul` | full-scale stroke | % of available travel |
+| --- | ---: | ---: | ---: | ---: |
+| P1000 | 310 | 0.31 | 310.0 | **100%** |
+| P300 | 310 | 0.91 | 273.0 | **88%** |
+| **P20** | 250 | **0.8531** | **17.1** | **6.8%** |
+
+P1000's value is exactly `zero_position / max_volume`; P300's sits 12% under it, which
+is what a gravimetric trim looks like. P20's is neither — a P20 whose full 20 µL used
+under 7% of the plunger travel would be a pipette that is 93% dead band. `0.8531` is
+within 6% of the P300's `0.91`, which is what a copied line looks like, not a
+calibration.
+
+Self-consistent values, for anyone picking this up:
+
+```
+science-jubilee units:   mm_to_ul ~ 250 / 20 = 12.5   (vs the shipped 0.8531)
+PANDA millimetres:       UL_TO_MM ~  36 / 20 =  1.8   (vs P300's 0.1098)
+CubOS p20_single_gen2:   mm_to_ul   0.025 is ~72x too small
+```
+
+All three are estimates from "full volume uses the full stroke" and need a
+gravimetric calibration before any number is a microlitre. The point is only that
+the shipped values are wrong by one to two orders of magnitude, not by a few percent.
+
+Also from that table: **`MIN_VOLUME`/`MAX_VOLUME` in the firmware are P300 values**
+(`5.0` / `300.0`); upstream's P20 entry is `min_volume: 1, max_volume: 20`. The
+firmware's `constrain(volume, MIN_VOLUME, MAX_VOLUME)` is why `ASPIRATE 0.5` has
+always landed at 35.45 — 0.5 clamps up to 5, and `36.0 - 5 x 0.1098 = 35.451`.
+
+### 8.3 Gen1 and Gen2 are 4.17x apart, and PANDA hardcodes one number
+
+`M92 V48` vs `M92 V200` — the two generations do not share a drive ratio. `M906`
+differs too: **350 mA peak for Gen1, 500 mA for Gen2**. PANDA has a single
+`STEPS_PER_MM` and a single current, so the generation printed on the pipette body
+(the diagram's own pipette reads `P300 GEN2`) has to be checked before any of these
+constants mean anything.
+
+### 8.4 Run current: PANDA asks for roughly 2.5x the motor's rating
+
+`M906 V500` is the Gen2 spec. `RUN_CURRENT_PERCENT 50` in the janelia library maps
+to `IRUN ~ 15/31`, and with `CHOPPER_CONFIG_DEFAULT = 0x10000053` leaving `vsense = 0`
+(and `enableVSense()` never called):
+
+```
+I_rms = ((CS+1)/32) x (0.325 / (R_sense + 0.02)) / sqrt(2)
+CS=15, R_sense=0.11:  884 mA rms = 1.25 A peak     vs. the 500 mA peak spec
+```
+
+Working backwards for the spec values (same assumptions):
+
+| target | CS | `RUN_CURRENT_PERCENT` |
+| --- | ---: | ---: |
+| 350 mA peak (Gen1) | ~4 | **~11** |
+| 500 mA peak (Gen2) | ~5 | **~17** |
+
+Scale if the Adafruit 6121's sense resistor is not 0.11 Ω, and prefer
+`enableVSense()` (0.18 V full scale) for usable resolution down here. Fit the
+Adafruit 1515 heat sink either way.
+
+### 8.5 The Duet can see why a driver isn't driving. This port cannot
+
+RRF reports `open_load_a/b`, `short_to_ground_a/b` and over-temperature per driver
+through `M122`. The same flags are on the TMC2209 and the janelia library exposes
+them — `getStatus()` returns a struct with `open_load_a`, `open_load_b`,
+`short_to_ground_a`, `short_to_ground_b`, `over_temperature_shutdown`, plus
+`isSetupAndCommunicating()`.
+
+**None of it is reachable here, because PANDA wires the UART one-way.**
+`SoftwareSerial softSerial(RX_PIN, TX_PIN)` with `RX_PIN 14` documented as
+"not connected but required". So the driver cannot report a fault, and
+`setupMotor()` never asks whether a single register write landed.
+
+The library's README gives the fix directly: *"the simplest way to connect the
+single TMC2209 serial signal to both the microcontroller TX pin and RX pin is to use
+a 1k resistor between the TX pin and the RX pin to separate them."* One resistor
+between **A0 and A1** turns the link bidirectional.
+
+That is worth doing before any more wiring passes. `open_load_a` / `open_load_b`
+answer "are the coils actually connected to the driver" without a meter, and
+`over_temperature_shutdown` and `short_to_ground_*` are both latching states that
+present as a silent motor and are invisible today.
+
+### 8.6 The header photo, and the check it supports
+
+![OT-2 pipette 10-pin header](_static/ot2-pipette-header-pinout.png)
+
+*Crop of `OT2_Wiring_Diagram.pdf`, machineagency/science-jubilee, MIT. Coloured dots
+mark the populated holes; tan and purple are the limit switch, blue/red/green/black
+are the motor.*
+
+This is the only source anywhere that shows which physical hole is which. Reading it
+against the ribbon table (`1` Green, `2` Black, `3` Red, `4` Blue on the motor;
+`6` Black, `7` Red on the switch; `5`, `8`, `9`, `10` unused) resolves the numbering
+completely and self-consistently:
+
+| row, from the pipette-tip end | left column | right column |
+| --- | --- | --- |
+| 1 (closest to the tip) | **2** black, coil B | **1** green, coil B |
+| 2 | **4** blue, coil A | **3** red, coil A |
+| 3 | **6** black, switch return | 5 — empty |
+| 4 | 8 — empty | **7** red, switch signal |
+| 5 (farthest from the tip) | 10 — empty | 9 — empty |
+
+Odd pins in one column, even in the other, pin 1 at the tip end. The
+viewing-independent form, which is what to check by eye:
+
+> **The two fully-populated rows are the two nearest the pipette tip. The four empty
+> holes are the far row plus one hole in each of the two rows next to it.**
+
+### 8.7 What a 180-degree connector flip would actually look like
+
+Worth writing down precisely, because the mapping is not intuitive. Under a flipped
+FC-10P, conductor `c` lands on header pin `11 - c`:
+
+```
+conductor 1 (green, coil B) -> header pin 10   unused inside the pipette
+conductor 2 (black, coil B) -> header pin  9   unused
+conductor 3 (red,   coil A) -> header pin  8   unused
+conductor 4 (blue,  coil A) -> header pin  7   the switch SIGNAL
+conductor 6 (switch return) -> header pin  5   unused
+conductor 7 (switch signal) -> header pin  4   one end of coil A
+```
+
+Both coils end up with at least one terminal on an unused pin, so **no coil current
+and no buzzing**. And D9 lands on coil A, whose other end is header pin 3, fed by
+conductor 8 — which is unconnected at the machine end. So D9 dead-ends and floats,
+and the pullup makes it **read asserted, permanently**.
+
+That "permanently" is the discriminator. A flip cannot produce the 2026-09-01
+sessions where `HOME` ran its full 26.35 s budget and retractions worked — those
+require D9 LOW. So a flip only explains the record if the FC-10P has been
+re-terminated since, which it has not. The **machine-end junction**, where four
+motor wires and two switch wires are soldered onto ten ribbon conductors, remains
+the better suspect: it is the one place a persistent coil fault and a
+rework-sensitive switch fault can coexist, and it is the least keyed, least
+documented joint in the chain.
+
+### 8.8 Two things upstream does that would close open items here
+
+**Homing has a direction check with a named failure mode.** `homev.g` is a coarse
+seek, a back-off, then a slow re-seek:
+
+```gcode
+G91
+G1 V-200 F800 H1   ; coarse seek toward the endstop
+G1 V1    F600      ; back off
+G1 V-10  F600 H1   ; slow re-seek
+G90
+G1 V0.5  F600
+```
+
+and the doc says to watch the drive shaft the first time: it must move *toward* the
+endstop, and **"if you notice the pipette tip ejector starts to engage"** the
+direction is inverted — stop it by pressing the endstop by hand (twice, once per
+seek) and flip `M569 S`. On this machine the equivalent knob is `DIR_PIN` polarity in
+`homePipette()`, which currently seeks with DIR LOW. The endstop convention matches
+PANDA's exactly: `M574 V1 S1 P"^pin"` enables the pullup and treats HIGH as
+triggered, so both projects expect a **normally-closed** switch to ground.
+
+**Tip pickup is sensed, not a friction press.** Upstream fits a *second*, external
+limit switch that trips when the nozzle seats into a tip, wires it as the machine's
+Z endstop, and picks up tips with `G1 ... H4` — move until the endstop trips, no
+error:
+
+```python
+self._machine.move_to(z=z, s=800, param="H4")
+```
+
+That is the open item on this branch: `pick_up_tip` here is an unsensed press, so
+`pickup_z` cannot be verified in software and a missed tip is silent. Printable
+holders for the switch are in `designs/3D_only/`
+(`PipetteTool_Holder_Mechanical_Limit_Switch.stl`, and a dust-proof variant), plus
+`endstop_attachment.STL` in the laser-cut set.
+
+### 8.9 The command semantics are the same, which is reassuring
+
+`Pipette.py` orders the plunger `aspirate < zero_position < blowout_position <
+drop_tip_position`, with `_aspirate` moving negative from `prime()` and `blowout()`
+returning to prime afterwards. PANDA is the same scheme (`ZERO 0 < PRIME 36 <
+BLOWOUT 44 < DROP_TIP 55`, `aspirate()` subtracting from `PRIME_POSITION`), so the
+port is faithful. Two divergences worth knowing:
+
+- PANDA's `dispense(float /*volume*/, ...)` **ignores its volume argument** and moves
+  to `BLOWOUT_POSITION`. Upstream's `_dispense` is a true relative move of
+  `vol * mm_to_ul`. PANDA does have relative equivalents — `aspirateRelative`,
+  `dispenseRelative`, `plungerMoveRelative` — which CubOS never calls.
+- CubOS's `drop_tip_position` for the p300 is `60.0`; the firmware's is `55.0`.
+  The firmware sets `maxPosition = DROP_TIP_POSITION` and `moveTo()` runs
+  `constrain(positionMM, minPosition, maxPosition)`, so a commanded `60.0` is
+  silently clamped to `55.0`. It lands on the real eject stop, but the CubOS
+  constant is fiction.
+- CubOS's `p300_single_gen2` carries `max_volume=200.0`. A P300 is 300 µL, and the
+  firmware agrees (`MAX_VOLUME 300.0`). Upstream's P300 config also says 300.
+
+### 8.10 Order of operations, given all of the above
+
+1. **The 1k resistor from A0 to A1**, and read `getStatus()`. `open_load_a/b` answers
+   the coil question without a meter, and `over_temperature_shutdown` /
+   `short_to_ground_*` are latching failures that look exactly like this one.
+2. **Check the generation** printed on the pipette body. Gen1 and Gen2 differ 4.17x
+   in steps per unit and 350 vs 500 mA in current.
+3. **Drop `RUN_CURRENT_PERCENT` to ~17** (Gen2) or ~11 (Gen1) before the first
+   successful move, and fit the heat sink.
+4. **Then** the volume constants: `MAX_VOLUME`/`MIN_VOLUME` for a p20 (20 / 1),
+   `UL_TO_MM` from a gravimetric calibration (~1.8 mm/µL as a starting estimate),
+   and `mm_to_ul: 1.0` on the CubOS side so `volume_ul` passes through as
+   microlitres instead of being converted twice.
+5. **The sensed tip pickup** (§8.8) whenever the tip-seating question comes back.

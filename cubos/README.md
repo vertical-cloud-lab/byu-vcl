@@ -524,3 +524,44 @@ AVR toolchain (`avrdude`, `arduino-cli`, `pio` all absent), so it would mean an
 apt install on a production device plus reflashing the Arduino that also drives
 the capper. The meter check in `docs/opentrons-pipette-wiring.md` §6 settles the
 same question faster and without touching the board.
+
+## 2026-09-09 — the science-jubilee prior art, read against this build
+
+No hardware run and no Pi connection this session. `machineagency/science-jubilee`
+is the upstream of this pipette harness (PANDA vendors its tool doc; Ursa delegates
+to PANDA), and it drives the same OT-2 pipette from a Duet instead of an
+Arduino + TMC2209 — so it is an independent implementation to cross-check against.
+Full analysis in [`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §8.
+
+The load-bearing results:
+
+- **PANDA's millimetres are real millimetres.** `STEPS_PER_MM 1592` at 16x is
+  99.5 full steps/mm — a 2.01 mm leadscrew lead. science-jubilee's `M92 V200`
+  works out to 16 mm/rev, so their V units are ~7.96 mm each, not millimetres.
+  Constants cannot be ported between the two without that factor.
+- **The P300 volume calibration is corroborated.** 0.91 units/µL × 200 steps/unit
+  = 182 steps/µL upstream, against 0.1098 mm/µL × 1592 steps/mm = 174.8 here.
+  Two controllers, 4% apart. `UL_TO_MM 0.1098` is real.
+- **Upstream's `P20_config.json` is not.** Its `mm_to_ul` puts full-scale volume at
+  6.8% of the plunger travel, where P1000 is at 100% and P300 at 88%. It reads as a
+  copied P300 line. A self-consistent p20 starting estimate is ~1.8 mm/µL in PANDA
+  units — against CubOS's placeholder `0.025`, which is ~72x too small.
+- **The run current is ~2.5x the motor's rating.** `M906` upstream is 350 mA peak
+  (Gen1) / 500 mA (Gen2); `RUN_CURRENT_PERCENT 50` here is ~1.25 A peak. Want ~11
+  and ~17 respectively. Gen1 and Gen2 also differ 4.17x in steps per unit, and this
+  firmware hardcodes one value.
+- **A Duet reports driver faults; this port cannot.** `open_load_a/b`,
+  `short_to_ground_*` and `over_temperature_shutdown` are all on the TMC2209 and
+  exposed by the janelia library, but PANDA wires the UART one-way (`RX_PIN 14`,
+  "not connected but required"). A 1 kΩ resistor between **A0 and A1** — the
+  library's own documented single-wire hookup — makes them readable, and
+  `open_load_a/b` answers the coil question without a meter.
+- **The header photo resolves the pin numbering**, and it is now redrawn as a table
+  plus a viewing-independent check (the two fully-populated rows are the two nearest
+  the pipette tip). Working the 180° flip through in full gives a sharper result than
+  before: it would leave D9 floating through a dead-ended coil and reading asserted
+  *permanently*, which the 2026-09-01 sessions rule out. The machine-end
+  ribbon-to-hookup junction remains the better suspect.
+- **Upstream senses tip pickup**, with a second limit switch on the tool and RRF's
+  `H4` stop-on-endstop move. That is the answer to this branch's long-standing
+  unsensed `pick_up_tip`; printable switch holders ship in the same tool library.
