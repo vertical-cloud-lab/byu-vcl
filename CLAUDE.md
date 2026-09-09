@@ -184,6 +184,48 @@ it behaves normally. Verify the MQTT path with the board on its own power, not o
 Board backups (including the pre-existing `my_secrets.py`) are on the Pi under
 `~/pico-backups/<timestamp>/`, and the board keeps its own `my_secrets.py.bak`.
 
+**The AS7341 payload hides three artefacts that are larger than any colour signal.** All
+three were found by re-analysing the committed `xscan-*.json` runs
+(`wireless-color-sensor/ot2/analyse_instrument_artefacts.py`); none needs hardware to check.
+
+- **A green LED is on inside the enclosure.** With the module closed on its base the sensor
+  reports 439 counts, peaked at 510/550 nm — 26 reads over 7 runs and ~8 h, with `ch410`
+  exactly `6` every single time. That stability rules out room light; the shape rules out
+  darkness. It is an indicator LED (Pico W onboard, or the breakout's power LED). It is a
+  fixed *additive* term, so its share of a channel rises as the signal falls: **36–47% of
+  `ch510` at read z 128, 18% at z 120.** Subtract the seated vector before normalising —
+  every run already records it twice.
+- **One reading is two integrations.** The AS7341 has 11 photodiodes and 6 ADCs, so F1–F4 and
+  F5–F8 are read in separate SMUX cycles. Repeat-read correlations break exactly there:
+  +0.970 within F1–F4, +0.978 within F5–F8, **+0.649 across**, and scanning all seven possible
+  split points peaks at 510|550 (+0.325, next best +0.157). 410↔510 correlate at 0.97 across
+  100 nm while 510↔550 correlate at 0.61 across 40 nm, so this is ADC scheduling and not
+  spectrum. Per-read half-to-half mismatch reaches 12.4%.
+- **That artefact is degenerate with the paint colours.** Cosine similarity of each pigment's
+  signature to the artefact's: **blue −0.954**, yellow +0.761, red +0.566. A blue vial and
+  "the first ADC cycle caught more light" are the same measurement. **This is the real reason
+  only yellow ever registers**, and unlike the ambient-light problem it would survive a
+  blacked-out room.
+
+Two fixes, both cheap. The AS7341 samples `Clear` and `NIR` in **both** SMUX cycles, so
+`clear_cycle2 / clear_cycle1` is exactly the factor needed to stitch the halves — the firmware
+measures it and discards it. And the payload reports neither gain nor integration time, so two
+runs cannot be checked for comparability; the largest count ever recorded is **3404 of 65535**,
+i.e. ~5% of range, so there is 20× of headroom to spend.
+
+**The OT-2's own rail lights are an untried, controllable illuminant.** `POST /robot/lights
+{"on": true}` on the robot server (`GET` reads state); the Python API spells the same thing
+`protocol.set_rail_lights(True)`. One HTTP call, no motion, no hardware work — and
+`ac-dev-lab#552` found them *too bright*, which given the 5%-of-range figure above is the
+good failure mode. Nothing in this repo has used them yet.
+
+**Sensor geometry, for planning read heights.** The AS7341 sees a ~±20° cone with no lens, so
+the spot on the deck is 21.5 mm at read z 120 (aperture 29.5 mm) and 27.3 mm at z 128
+(37.5 mm). A 3/4 in (19.05 mm) vial top therefore fills 79% of the spot at z 120 but only 49%
+at z 128 — the rest is bare deck. And a clear vial over the deck is a **double-pass filter,
+not a reflector**: contrast is `f·(1−T²)`, ≈18% at best, against a 7.69-point empty-slot
+artefact at z 128. Flat opaque targets at z 120 beat vials at z 128 on every term.
+
 ## Hugging Face Spaces
 
 `byu-vcl/OT-2-LCM` and `byu-vcl/light-mixing`, both **private**, `cpu-basic`, duplicated
