@@ -213,6 +213,36 @@ secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed 
 the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
 truncation.
 
+**Reading the livestream archive back.** Two things cost a session to find, both in
+`wireless-color-sensor/ot2/`:
+
+- **YouTube will not do player extraction from a GitHub Actions runner.** `yt-dlp` on a
+  runner returns *"Sign in to confirm you're not a bot"* for `--dump-json`, `-g` and any
+  download, with or without a JS runtime. The channel/playlist *listing* works fine from
+  anywhere — only the player is blocked. Run the fetching half from the stream-cam Pi's
+  residential IP: `~/.venvs/ytframes/bin/yt-dlp --js-runtimes node` (node is present; deno
+  is not), with a static ffmpeg in `~/ytframes/bin`. That ffmpeg **cannot resolve DNS** —
+  statically linked glibc has no NSS — so fetch HLS segments with urllib/curl and only ever
+  hand ffmpeg a local file. `~/ytframes/grab.py` does exactly that and is the thing to
+  reuse.
+- **The archive timeline is not wall clock.** `release_timestamp` is where video offset 0
+  sits at the very start, but for `bQDrYpT3vaE` everything from the third hour onward is
+  **67 s later** than `release + offset` — a step, not a drift, i.e. an archive
+  concatenated across a stall. At ~18 s per scan position that is more than one
+  measurement, so a link computed from the metadata alone points at the wrong reading.
+  Verify instead: the stream burns `%Y-%m-%d_%H-%M-%S` in **lab local time (UTC−6)** into
+  the top-left of every frame, so `frames_from_stream.py` grabs, OCRs the overlay
+  (`tesseract --psm 7`), and re-grabs shifted by the error. Treat that overlay as the
+  clock, not the metadata.
+
+**Sensor readings carry their own time now.** `sensor_read.read()` returns
+`t_request_utc`/`t_response_utc`; before 2026-09-09 the only recoverable instant was the
+epoch-ms that `experiment_id` happens to embed. The MongoDB `timestamp` field used to be
+`utcnow()` at *insert*, shared by every document of a run and up to three minutes after the
+reading it described; it is now the reading's own response time, with the write time kept
+separately as `stored_at`. Old documents in `digital-wetlab.sensor-data` still have the
+insert-time value — reconstruct from `experiment_id` instead.
+
 **Not yet provisioned** — `YT_API_KEY` (a YouTube Data API v3 key from the Google Cloud
 console; until it exists the Space falls back to a fixed embed instead of tracking the
 current stream), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it
