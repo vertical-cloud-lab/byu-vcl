@@ -153,6 +153,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `frames_from_stream.py` | pulls one frame per measurement and OCR-verifies it against the clock burned into the stream |
 | `plot_spectra.py` | 300 px spectra in the light-mixing `basic_plotting.py` style |
 | `build_gallery.py` | stitches frame + spectrum + link into `measurement-gallery.md` |
+| `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
 
