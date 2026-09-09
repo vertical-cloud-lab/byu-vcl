@@ -1,5 +1,13 @@
 # Al–Ti melt-temperature window for induction-heated ultrasonic atomization
 
+> **Update 2026-09-09 — two amendments from the [Edison corroboration](edison-corroboration-2026-09.md).**
+> (1) §5.1's conclusion that "Mn is not a volatility problem" holds for the *melt* but **not for the
+> atomization step**: three ultrasonic-atomization studies measure real Mn loss, worst in the finest
+> particles (316L Mn 1.08–3.88 wt.% across runs; HEA Mn 10 → 8.9 wt.%). Mn belongs on the over-charge list.
+> (2) A published UA rule of thumb runs at **1.3–1.5 × the absolute melting temperature**, which for
+> Al-1Ti would be 1210–1440 °C rather than the 968 °C this document recommends — unresolved, and a direct
+> question for AMAZEMET. The liquidus table itself is unchanged and independently supported.
+
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161),
 answering: *what is the minimum temperature required for induction-based ultrasonic atomization to handle
 Al and Ti together — or do we need Al/Ti as a master alloy?*

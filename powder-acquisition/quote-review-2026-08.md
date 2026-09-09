@@ -1,5 +1,13 @@
 # Quote Review — ESPI Metals, Thermo Fisher #M6449, Atlantic Equipment Engineers (2026-08-26)
 
+> **Update 2026-09-09 — the particle-size verdict is split by element.** The
+> [Edison corroboration](edison-corroboration-2026-09.md) finds that dissolution of refractory solutes in
+> molten Al is mass-transfer controlled through an intermetallic layer, so **coarse is wrong for Ti, Zr, Cr,
+> Fe, Ni and Mn** even though it is right for the Al base. The ESPI −325 mesh Cr and Ti lines rejected in §2
+> are metallurgically the better buy; the objection was flowability, which pre-weighing into the charge cup
+> resolves. Separately, if the Al base is adopted as a machined 4N cup (the 2026-09-09 charging strategy),
+> the 99.7 % AL-111 impurity problem in §1 disappears — buy 4N bar instead.
+
 > **Update 2026-09-03:** the Sc / Er / Mg / master-alloy gaps identified below are closed in
 > [master-alloy-ingot-sourcing-2026-09.md](master-alloy-ingot-sourcing-2026-09.md): 25 g is not an
 > ESPI minimum (sold by the gram), Thermo Fisher stocks a ≈ 5 g Sc arc-cast pellet ($352–458), Belmont

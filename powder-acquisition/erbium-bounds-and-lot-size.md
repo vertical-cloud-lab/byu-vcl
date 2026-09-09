@@ -1,5 +1,13 @@
 # Erbium: campaign bounds and lot sizing
 
+> **Update 2026-09-09 — [Edison corroboration](edison-corroboration-2026-09.md).**
+> The [0, 3] wt.% box is confirmed as correct for the **L1₂-precipitation** family (published optimum
+> 2.33 wt.% Er sits interior to it), but published LPBF Al-Er work also runs a **near-eutectic Al-10Er**
+> family. That family costs 10 g of Er per 100 g run, i.e. 2.5 runs out of a 25 g lot — it is not affordable
+> under the ~$1 k per-rare-earth cap and needs a separate decision. Note also that Edison's report gives Er
+> solubility as "~0.05 wt.%"; that is the at.% figure mislabelled, and **the 0.28 wt.% used here (0.046 at.%,
+> van Dalen 2009) is correct**.
+
 **Question (issue #161, @sgbaird, 2026-09-03):** *"What are our lower and upper bounds in our
 optimization campaign for erbium? Worth it to get all 25 g?"*
 

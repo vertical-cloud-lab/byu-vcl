@@ -1,5 +1,12 @@
 # Master Alloys in Ingot / Chunk Form for In-House Atomization, and Small-Lot Rare Earths (2026-09-03)
 
+> **Update 2026-09-09 — the scandium form recommendation in §7.1 is amended.**
+> The [Edison corroboration](edison-corroboration-2026-09.md) finds that **metallic Sc dissolves in molten Al
+> at 800 °C only over more than an hour for gram-size pellets**, which makes the Thermo `045118.KF` arc-cast
+> pellet the slowest-dissolving elemental form on offer. If Sc is bought elemental, buy **chips (ESPI
+> `Knc6313`) or −40 mesh powder (`Knd1178`)**, or melt an Al-2Sc master once and dose that. Commercial
+> practice adds Al-Sc master at ~900 °C then superheats to 1150 °C for 30 min.
+
 **Context:** [Issue #161 — Atomizer Powder Acquisition](https://github.com/vertical-cloud-lab/byu-vcl/issues/161).
 This document answers @sgbaird's 2026-09-03 questions:
 

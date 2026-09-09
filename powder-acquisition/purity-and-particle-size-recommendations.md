@@ -1,5 +1,12 @@
 # Powder Purity & Particle-Size Recommendations for Atomizer Feedstock Acquisition
 
+> **Update 2026-09-09.** Corroborated and amended by the
+> [Edison corroboration report](edison-corroboration-2026-09.md): the oxygen-over-metallic-impurity argument
+> is supported quantitatively (2–4 nm oxide film; 0.067 wt.% O on virgin 30 µm AlSi10Mg powder), the purity
+> tiers are plausible but have **no documented quantitative threshold** behind them, and the "buy the coarsest
+> cut" rule now applies **only to the aluminium base and the volatile/reactive elements** — refractory solutes
+> should be bought at the fine end of what the doser tolerates, because dissolution, not oxide, binds.
+
 > **Update 2026-08-26:** quotes received. [quote-review-2026-08.md](quote-review-2026-08.md)
 > applies the guidance below to the actual lots offered — the headline is that the *aluminium
 > base* is the only line where purity matters (87% of the impurity budget), and that surface
