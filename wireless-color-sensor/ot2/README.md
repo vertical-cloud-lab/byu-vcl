@@ -206,6 +206,12 @@ Also verified this session, from the Pi that would drive the run:
 - `--simulate` — 72 moves.
 - `check_reachability.py` — 28/28 coordinates in bounds, slot origins match the
   packaged deck definition.
+- **The maintenance-run command path, on the real robot.** Create run →
+  `loadPipette` → `home` → `savePosition` → delete, all succeeded: pipette
+  loaded in 2.4 s, home in 12.5 s, nozzle parked at (384.05, 349.93, 199.60).
+  This is the path every move in the test goes through, and it had never been
+  exercised before. Home was safe to run precisely because the deck was
+  photographed empty first.
 
 **The motion still did not run, for a different reason: the deck is bare.**
 `deck_photo.py` shows all eleven slots empty — no enclosure, no base in slot 10,
