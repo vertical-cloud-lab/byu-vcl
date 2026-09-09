@@ -1,0 +1,31 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after  3.80s: 'OK:Ready'
+  STATUS (read-only)       dt=   0.01s  reply=OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+      firmware max_vol = 300.0 uL -- must match pipette_model in the gantry YAML
+
+Commanding plunger motion. Watch the plunger, not the screen.
+Bounded to +3 mm of forward travel, then asked for it back.
+This firmware moves at ~0.673 s/mm; ~0.1 s means it did not.
+
+  -- HOME --
+  HOME (cold)              dt=   0.52s  reply=OK:{"msg":"Pipette homed"}                   pos=0.0 homed=1
+  -- forward: does distance scale? --
+  MOVE_TO 1.0 mm           dt=   0.68s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=1.0 homed=1
+  MOVE_TO 3.0 mm           dt=   1.35s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=1
+  -- HOME from a non-zero position: does it retract? --
+  HOME (from 3.0)          dt=   0.52s  reply=OK:{"msg":"Pipette homed"}                   pos=0.0 homed=1
+  -- backward: the same positions, asked for in reverse --
+  MOVE_TO 3.0 mm           dt=   2.02s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=1
+  MOVE_TO 1.0 mm (back)    dt=   0.11s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=3.0 homed=1
+  MOVE_TO 0.0 mm (back)    dt=   0.11s  reply=OK:{"msg":"Pipette moved"}                   pos=3.0 homed=1
+
+VERDICT: forward moves take 0.68s but every backward move
+  returns in ~0.11s. The stepper only turns ONE WAY.
+  Check the DIR line to the driver and the firmware's retract
+  path -- not CubOS, and not the serial link.
+
+ALSO: HOME returned in 0.52s from pos 3.0 -- too fast to
+  retract 3 mm at 0.673 s/mm. HOME is zeroing the counter,
+  not seeking the endstop, so it is not a recovery path.

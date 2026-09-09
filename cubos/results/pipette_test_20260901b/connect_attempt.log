@@ -1,0 +1,7 @@
+@@CMD code=14 args=() dt=  1.17s reply='OK:{"homed":0,"pos":0.00,"max_vol":300.00}'
+2026-09-01 12:45:39,761 INFO cubos.instruments.base_instrument.OpentronsPipette: Plunger not homed after connect; homing and priming
+@@CMD code=10 args=() dt= 26.35s RAISED PipetteCommandError('Command 10 failed: ERR:{"error":"Failed to home pipette"}')
+2026-09-01 12:46:06,109 INFO cubos.instruments.base_instrument.OpentronsPipette: Homing fell short of the limit switch; retrying
+@@CMD code=10 args=() dt= 26.35s RAISED PipetteCommandError('Command 10 failed: ERR:{"error":"Failed to home pipette"}')
+
+CONNECT FAILED in 56.5s: PipetteConnectionError('Plunger home/prime after connect failed: Command 10 failed: ERR:{"error":"Failed to home pipette"}')

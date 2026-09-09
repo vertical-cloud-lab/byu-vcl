@@ -1,0 +1,42 @@
+diff --git a/packages/core/src/cubos/instruments/capper/vendors/pawduino.py b/packages/core/src/cubos/instruments/capper/vendors/pawduino.py
+index 5eda948..61cff0b 100644
+--- a/packages/core/src/cubos/instruments/capper/vendors/pawduino.py
++++ b/packages/core/src/cubos/instruments/capper/vendors/pawduino.py
+@@ -59,6 +59,9 @@ _CMD_EMAG_OFF = 6
+ _CMD_LINE_BREAK = 7
+ 
+ _ARDUINO_SETTLE_TIME = 2.0
++# Upper bound on how long the Arduino may take to reset, run the
++# bootloader and print its "OK:Ready" boot banner after the port opens.
++_ARDUINO_BOOT_TIMEOUT = 10.0
+ 
+ 
+ class PawduinoCapper(CapperInstrument):
+@@ -116,8 +119,27 @@ class PawduinoCapper(CapperInstrument):
+                 f"Cannot open serial port {self._port}: {exc}"
+             ) from exc
+ 
++        # Opening the port toggles DTR, which resets the Arduino; it then
++        # prints an "OK:Ready" boot banner. Sleeping a fixed
++        # _ARDUINO_SETTLE_TIME is not enough on its own -- on the BYU VCL Pi
++        # the banner lands 3.76 s after open, and even when it does arrive in
++        # time it stays buffered. Because _send_command() returns the first
++        # line starting with "OK:", that banner gets consumed as the reply to
++        # the first real command, so connect() failed with
++        # "No value1 field in line-break sensor response OK:Ready".
++        # Wait for the banner explicitly, then drop anything still buffered.
+         time.sleep(_ARDUINO_SETTLE_TIME)
+ 
++        banner_deadline = time.monotonic() + _ARDUINO_BOOT_TIMEOUT
++        while time.monotonic() < banner_deadline:
++            try:
++                line = self._serial.readline().decode(errors="replace").strip()
++            except serial.SerialException:
++                break
++            if line.startswith("OK:") or line.startswith("ERR:"):
++                break
++        self._serial.reset_input_buffer()
++
+         try:
+             self.read_cap_present()
+         except (CapperCommandError, CapperTimeoutError, CapperSensorFault) as exc:

@@ -1,0 +1,2 @@
+id,description,deck_config,board_config,gantry_config,protocol_config,created_at,status,finished_at,fluid_state_id
+2,"Protocol run: gantry=packages/core/configs/gantry/cubxl_vcl_1_instrument.yaml, deck=packages/core/configs/deck/vcl_deck.example.yaml, protocol=packages/core/configs/protocol/vcl/vial_scan.example.yaml",packages/core/configs/deck/vcl_deck.example.yaml,,packages/core/configs/gantry/cubxl_vcl_1_instrument.yaml,packages/core/configs/protocol/vcl/vial_scan.example.yaml,2026-07-27 20:51:19,completed,2026-07-27 20:53:43,

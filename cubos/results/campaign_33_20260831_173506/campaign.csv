@@ -1,0 +1,2 @@
+id,description,deck_config,board_config,gantry_config,protocol_config,created_at,status,finished_at,fluid_state_id
+33,"Protocol run: gantry=/tmp/gantry_conv.yaml, deck=/tmp/deck_conv.yaml, protocol=/tmp/pipette_test.yaml",/tmp/deck_conv.yaml,,/tmp/gantry_conv.yaml,/tmp/pipette_test.yaml,2026-08-31 17:35:06,completed,2026-08-31 17:39:45,

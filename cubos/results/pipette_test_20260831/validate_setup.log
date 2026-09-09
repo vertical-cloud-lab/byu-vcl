@@ -1,0 +1,58 @@
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /tmp/gantry_conv.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: /tmp/deck_conv.yaml
+  Labware (7):
+    vial_1: vial at (206.0, 27.0, 55.0)
+    vial_2: vial at (206.0, 60.0, 55.0)
+    vial_3: vial at (206.0, 93.0, 55.0)
+    vial_4: vial at (206.0, 126.0, 55.0)
+    vial_5: vial at (206.0, 159.0, 55.0)
+    vial_6: vial at (206.0, 192.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: /tmp/gantry_conv.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: /tmp/pipette_test.yaml
+  Steps: 18
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position', travel_z=87.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] aspirate(position='vial_1', volume_ul=20.0, height=-15.0)
+    [5] move(instrument='pipette', position='pipette_park', travel_z=87.0)
+    [6] cap(instrument='vial_capper_decapper', vial='vial_1')
+    [7] decap(instrument='vial_capper_decapper', vial='vial_2')
+    [8] blowout(position='vial_2', height=-15.0)
+    [9] drop_tip(position='tip_rack.A1')
+    [10] cap(instrument='vial_capper_decapper', vial='vial_2')
+    [11] decap(instrument='vial_capper_decapper', vial='vial_3')
+    [12] cap(instrument='vial_capper_decapper', vial='vial_3')
+    [13] decap(instrument='vial_capper_decapper', vial='vial_4')
+    [14] cap(instrument='vial_capper_decapper', vial='vial_4')
+    [15] decap(instrument='vial_capper_decapper', vial='vial_5')
+    [16] cap(instrument='vial_capper_decapper', vial='vial_5')
+    [17] home()
+
+Validating protocol motion bounds...
+  OK (12 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------

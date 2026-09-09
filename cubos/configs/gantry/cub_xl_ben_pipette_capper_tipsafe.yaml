@@ -1,0 +1,113 @@
+# cub_xl_ben_pipette_capper_tipsafe.yaml -- the CubXL gantry config that
+# pipette_test.yaml (2026-08-28 revision) is verified against.
+#
+# This is @benwhitney5463's 2026-08-28 attachment with TWO values changed,
+# both marked CHANGED inline. It exists as a separate file rather than an
+# edit to cub_xl_ben_pipette_capper.yaml because it is only correct TOGETHER
+# WITH a CubOS patch that is not applied to the Pi by default:
+#
+#   cubos/patches/tipped-hover-clamp-and-ceiling-travel.patch
+#   cd ~/CubOS && git apply ~/byu-vcl/cubos/patches/tipped-hover-clamp-and-ceiling-travel.patch
+#   (reverse with `git apply -R` -- it is a working-tree patch, not a commit)
+#
+# WITHOUT THE PATCH THIS FILE IS WORSE THAN THE ORIGINAL: safe_z 122 makes
+# every tipped pipette engage (aspirate/blowout/mix/drop_tip) ask for gantry
+# 122 + 35 = 157, and validate_setup rejects it. Use the unmodified
+# cub_xl_ben_pipette_capper.yaml on an unpatched CubOS, and then only for
+# protocols that never touch the capper while a tip is attached.
+#
+# THE PROBLEM THIS SOLVES
+#   safe_z is one number shared by both tools and applied at each tool's own
+#   point. A 35 mm tip puts the pipette's tool point 50.935 mm below the
+#   capper's (35 + the capper's depth -15.935). So:
+#       tipped pipette hover needs   safe_z <= z_max - 35        = 87
+#       capper legs clear cap tops   safe_z >= 68 + 50.935       = 119
+#   A protocol that pipettes AND caps with the tip on needs both. The window
+#   is empty by 32 mm, and safe_z is additionally hard-capped at z_max, so no
+#   value of safe_z can satisfy it. The patch breaks the coupling: the tipped
+#   hover clamps to the highest carriage-reachable plane instead of tracking
+#   safe_z, and XY travel rides the working-volume ceiling so the passive
+#   tool clears the deck.
+#
+# VERIFIED 2026-08-28 against CubOS cbc33dc + all three local patches:
+#   validate_setup            PASS (19 targets, 19 steps)
+#   run_protocol --mock       19/19
+#   passive_shadow            0 interferences
+#   passive_shadow --tip-stuck 0 interferences
+# Logs in cubos/results/pipette_test_20260828/.
+#
+# NOT verified on hardware: no run has been made with this file. The Pi was
+# off the tailnet (last seen 2026-08-28 00:26 UTC) for the whole session.
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 129.0
+  calibration_block_height_mm: 35.0
+  y_axis_motion: head
+  # CHANGED (was 87.0). Only valid with tipped-hover-clamp-and-ceiling-travel
+  # applied; see the header. 87.0 was the only value that let a tipped
+  # aspirate/blowout validate on stock CubOS, because those commands hover at
+  # safe_z measured AT THE TOOL POINT (87 + 35 = 122 = z_max exactly). The
+  # cost was that every capper leg then travelled at gantry 87 - 15.935 =
+  # 71.065, carrying an attached tip's end at deck 36.065 -- 32 mm below the
+  # cap tops and 19 mm below the rims. With the patch the tipped hover no
+  # longer tracks safe_z, so safe_z is free to serve the capper: 122 puts
+  # capper transits at the ceiling (tip end at deck 87, 19 mm over the caps)
+  # while a tipped engage still clamps to gantry 122.
+  safe_z: 122.0
+working_volume:
+  x_min: 0.0
+  x_max: 386.333
+  y_min: 0.0
+  y_max: 232.0
+  z_min: 0.0
+  z_max: 122.0
+origin_policy: deck_origin
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  soft_limits: true
+  homing_enable: true
+  homing_dir_mask: 0
+  homing_pull_off: 3.0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 389.333
+  max_travel_y: 235.0
+  max_travel_z: 125.0
+instruments:
+  vial_capper_decapper:
+    type: capper
+    vendor: pawduino
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -15.935
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 13
+    offline: false
+    # CHANGED (was [125, 50]). Every decap/cap ends with a raw move to this
+    # point at safe_z -- a raw move, so it does NOT get the patch's ceiling
+    # travel and rides at gantry safe_z - 15.935 = 106.065. Off the vial
+    # column, that leg translates X across the column with the passive
+    # nozzle at deck Z 106.065 (tip end 71.065, ~3 mm over the caps).
+    # [206, 50] is the vial column's own X, which makes every capper leg a
+    # pure-Y move holding the passive nozzle at deck X 258 -- 38 mm clear of
+    # the vials (edge at 220) and 22 mm clear of the tip rack body (~280).
+    # Nothing crosses anything, so the 3 mm never matters.
+    # STILL NOT A MEASURED CAP-STAGING COORDINATE -- it is a safe transit
+    # point, and no cap is ever set down there by this protocol.
+    park_position:
+    - 206
+    - 50
+    port: /dev/ttyACM0
+  pipette:
+    type: pipette
+    vendor: opentrons
+    offset_x: 52.0
+    offset_y: 12.0
+    depth: 0.0
+    pipette_model: p20_single_gen2
+    port: /dev/ttyACM0
+    offline: false

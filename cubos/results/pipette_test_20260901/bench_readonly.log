@@ -1,0 +1,9 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after  3.80s: 'OK:Ready'
+  STATUS (read-only)       dt=   0.01s  reply=OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+      firmware max_vol = 300.0 uL -- must match pipette_model in the gantry YAML
+
+Read-only pass complete. Re-run with --move to exercise the
+plunger (it will physically move; tip off, nothing loaded).

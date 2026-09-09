@@ -1,0 +1,156 @@
+# sterling_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the
+# Ursa tip rack, for the CubXL as re-calibrated 2026-08-24.
+#
+# The six vial entries are byte-identical to the attachment on PR #171
+# (2026-08-24). They pair with cub_xl_ben_pipette_capper.yaml from the same
+# comment (capper_decapper = reference instrument, offset 0/0; pipette
+# offset_x 52.0 / offset_y 12.0 / depth 0.0). location.z 55 is the vial RIM
+# (Ben's convention, same as sterling_6vials.yaml -- NOT j_config_1.yaml's
+# engage-plane convention).
+#
+# tip_rack -- added per Ben's 2026-08-24 request. Geometry comes from the
+# CubXL docs' registered labware definition (docs/deck.md + deck-internals.md;
+# `load_name: ursa_tip_rack` -> deck/labware/definitions/ursa_tip_rack/
+# TipRack.yaml): 2 columns x 15 rows = 30 tips, 8.5 mm pitch on both axes,
+# body 66 x 138 x 22 mm. The deck file supplies only the measured anchor and
+# the Z numbers, exactly as the docs prescribe.
+#
+# Anchor derivation (the one measured point):
+#   Ben jogged the pipette to hover over the rack's BOTTOM-RIGHT tip; the jog
+#   display reads the reference instrument's frame (capper_decapper, offset
+#   0/0 = raw WPos): (265.0, 1.0). Pipette deck-frame coordinate = WPos +
+#   pipette offset:
+#       (265.0 + 52.0, 1.0 + 12.0) = (317.0, 13.0)   -> calibration.a1
+#   So the bottom-right tip is tip ID A1, and commanding the pipette to
+#   tip_rack.A1 sends the gantry to exactly the measured (265.0, 1.0).
+#
+#   calibration.a2 is NOT separately measured: it is a1 shifted one 8.5 mm
+#   column step in -X (308.5, 13.0), assuming (1) the rack sits square to the
+#   machine axes and (2) the rack's second column is LEFT (-X) of the measured
+#   tip -- "bottom-right" in Operator-UI orientation (+X right, +Y away).
+#   Columns advancing -X make rows advance +Y (legacy convention,
+#   deck-internals.md; TipRackYamlEntry has no row_direction field), so:
+#       column 1 x=317.0, column 2 x=308.5; rows A..O at y = 13.0..132.0
+#       A1 (317.0, 13.0) bottom-right ... O2 (308.5, 132.0) top-left
+#   If the rack is actually mirrored (measured tip is bottom-LEFT), the only
+#   edit needed is a2 x: 308.5 -> 325.5; the row direction stays +Y under the
+#   legacy convention.
+#
+# Reach (pipette over tips, gantry frame): x in {256.5, 265.0}, y in
+# [1.0, 120.0], z 60.0 -- all inside working_volume (386.333 / 232.0 / 122.0).
+# Note row A sits exactly 1.0 mm above the Y soft limit. The capper rides
+# 52.0 mm in -X of the pipette during pickups (head over the empty strip
+# x 256.5-265.0, ~15 mm left of the rack body edge at x ~279.7) at deck
+# Z 44.1 (= 60.0 + depth -15.935) -- eyeball that strip clear before the
+# first hardware pickup.
+#
+# Z values:
+#   pickup_z 60.0  -- Ben's measured pickup plane from 2026-08-06 ("drop down
+#       to z = 60"). Carried over because the vial rims read z=55 under both
+#       that calibration and the 2026-08-24 one, so the Z datum agrees; no
+#       fresh Z came with the (265, 1) anchor. CONFIRM with a jog before the
+#       first hardware pickup.
+#   tip_length 35.0 -- Ben's measured tip extension below the bare nozzle
+#       (2026-08-06). Overrides the definition's 59.3 placeholder, which the
+#       definition itself says to replace with a measured value.
+#   drop_z null    -- no measured discard plane on this deck; the definition's
+#       174.8 is a PANDA-frame number beyond this machine's Z travel. Tips
+#       come off by hand (see the capper_decapper_tip_test*.yaml headers for
+#       why a tipped pipette must never travel at safe_z).
+#
+# tip_present is left at the default (all 30 loaded). If slots are already
+# consumed on the physical rack, mark them `tip_present: {A1: false, ...}` or
+# refill before the first state-tracked run.
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 26
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 59
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_3:
+    type: vial
+    name: vial_3
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 92
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_4:
+    type: vial
+    name: vial_4
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 125
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_5:
+    type: vial
+    name: vial_5
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 158
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_6:
+    type: vial
+    name: vial_6
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 187
+      y: 191
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    load_name: ursa_tip_rack  # CubXL docs spec: 2 cols x 15 rows, 8.5 mm pitch
+    calibration:
+      a1:            # measured: pipette over the bottom-right tip at WPos
+        x: 317.0     #   (265.0, 1.0) in the capper's reference frame,
+        y: 13.0      #   + pipette offset (52.0, 12.0) -> deck (317.0, 13.0)
+        z: 60.0      # = pickup_z (rack reference surface)
+      a2:            # DERIVED, not measured: one 8.5 mm column step in -X
+        x: 308.5     #   (rack assumed square to the axes; see header)
+        y: 13.0
+    pickup_z: 60.0   # Ben's 2026-08-06 measured pickup plane -- confirm by jog
+    drop_z: null     # overrides the definition's PANDA-frame 174.8 (out of travel)
+    tip_length: 35.0 # measured tip extension (definition default 59.3 is a placeholder)

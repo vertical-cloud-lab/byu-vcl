@@ -1,0 +1,62 @@
+Read-only probe, 2026-08-31 ~18:2x UTC. No motion commanded to either board.
+
+========== GRBL /dev/ttyUSB0 ==========
+  $20 = 1
+  $21 = 0
+  $22 = 1
+  $23 = 0
+  $27 = 3.000
+  $100 = 400.000
+  $101 = 400.000
+  $102 = 400.000
+  $130 = 409.000
+  $131 = 309.000
+  $132 = 124.000
+  status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0|WCO:-409.000,-309.000,-124.000>
+
+Reachable deck-frame Z is [0, 124]: WCO = -max_travel on every axis and
+GRBL's reachable MPos Z is [-124, 0].  working_volume.z_max must not exceed
+124 while $20=1.
+
+========== Arduino /dev/ttyACM0 ==========
+  boot banner after 3.80s: 'OK:Ready'
+  cmd 14  (plunger STATUS)       -> OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+  cmd 7   (cap line-break sensor)-> OK:{"value1":0}
+  cmd 14  (plunger STATUS again) -> OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+
+The banner still lands at 3.80 s, past the drivers' 2.0 s _ARDUINO_SETTLE_TIME
+(the capper is patched for this; the pipette driver drains until quiet so it
+copes).  max_vol 300.00 contradicts pipette_model: p20_single_gen2.
+
+========== Instruments as loaded (connect() never called) ==========
+instrument connect order: ['vial_capper_decapper', 'pipette']
+--- vial_capper_decapper ---
+   class    : PawduinoCapper
+   _offline : False
+   port     : /dev/ttyACM0
+--- pipette ---
+   class    : OpentronsPipette
+   _offline : False
+   port     : /dev/ttyACM0
+   model    : p20_single_gen2 | max_volume 20.0
+   zero/prime/blowout/drop: 0.0 5.0 7.0 10.0
+   mm_to_ul : 0.025 -> 20 uL = 0.5 mm
+
+========== Campaign 33 plunger-command timings ==========
+from ~/.cubos/logs/gantry/mill_control.log, gaps between successive
+"Command sent:" lines (the plunger call happens in the gap).
+
+  11:35:15,645  $$              connect_instruments() begins
+  11:35:28,050  $H              protocol starts     -> 12.4 s for BOTH instruments
+                                (capper banner alone is 3.80 s; pipette
+                                connect() sleeps 2.0 s + drains >=0.6 s;
+                                a real plunger home is ~35 s -> no home ran)
+
+  11:36:33,996  G01 Z60.0   ->  11:36:36,211  G01 Z122.0   2.215 s  pick_up_tip  MOVE_TO 0.0
+  11:36:46,538  G01 Z75.0   ->  11:36:54,606  G01 Z122.0   8.068 s  aspirate     ASPIRATE 0.5 (relative)
+  11:37:36,269  G01 Z75.0   ->  11:37:38,485  G01 Z122.0   2.216 s  blowout      MOVE_TO 7.0
+  11:37:46,761  G01 Z95.0   ->  11:37:49,085  G01 Z71.065  2.324 s  drop_tip     MOVE_TO 10.0, MOVE_TO 5.0
+
+aspirate and blowout share an identical preceding move (Z122 -> Z75, 47 mm)
+and differ by 5.85 s.  Absolute MOVE_TO returns in ~0.1 s for targets of
+0, 5, 7 and 10 mm alike -- a round trip independent of distance.
