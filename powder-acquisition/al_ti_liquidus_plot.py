@@ -1,5 +1,8 @@
 """Annotated Al-rich Al-Ti liquidus plot for issue #161.
 
+SUPERSEDED 2026-09-03 by al_ti_melt_window_plot.py: the anchor points below are
+hand-estimated and read 20-55 degC low between 0.2 and 3 wt% Ti. Kept for provenance.
+
 Redrawn (approximate) from the assessed Al-Ti binary phase diagram:
 Schuster & Palm, J. Phase Equilib. Diffus. 27 (2006) 255-277, and
 Murray, Metall. Trans. A 19 (1988). Anchor points match the values
