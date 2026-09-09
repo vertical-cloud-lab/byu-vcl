@@ -45,7 +45,36 @@ If you are doing remote work with the physical Pi device (be very careful!) and 
 [Tailscale GitHub Action](https://tailscale.com/kb/1276/tailscale-github-action) (OAuth
 client + device tag) before you start. Run `tailscale status` to confirm — do **not**
 install Tailscale, mint auth keys via the API, or run `tailscale up` unless status
-genuinely shows you disconnected. Access to the Pi is
+genuinely shows you disconnected.
+
+**As of 2026-09-09 the `Connect to Tailscale` step is no longer in `claude.yml`,** so
+`tailscale status` reports `command not found` and you are genuinely disconnected. Until a
+human restores that step (the Claude GitHub App cannot edit `.github/workflows/`), bring up
+an ephemeral node yourself:
+
+```bash
+curl -fsSL https://tailscale.com/install.sh | sudo bash
+sudo tailscale up --authkey="${TS_OAUTH_SECRET}?ephemeral=true&preauthorized=true" \
+  --advertise-tags=tag:stream-cam-test --hostname=gh-runner-<issue>
+```
+
+The install script leaves `tailscaled` running as a systemd service with a real TUN device,
+so **there is no need to start `tailscaled` by hand** and no need for
+`--tun=userspace-networking`. With the service in charge, MagicDNS resolves and the plain
+`ssh` client works directly — `ssh "$RPI_STREAM_CAM_USERNAME@$RPI_STREAM_CAM_HOSTNAME"`
+(confirmed 2026-09-09). Only if you deliberately run `tailscaled` in userspace mode do you
+need the `tailscale ssh` / raw-`100.x`-address workaround.
+
+**The tag must be `tag:stream-cam-test`** — that is the only tag this OAuth client owns, and
+any other is rejected with `requested tags are invalid or not permitted`. The client is
+scoped `auth_keys` only, so the device- and ACL-listing API endpoints all return
+`calling actor does not have enough permissions`; you cannot discover the tag from the API.
+Run `tailscale logout` when done. Under userspace networking the plain `ssh` client fails
+with `Connection closed by UNKNOWN port 65535` and MagicDNS names do not resolve — use
+`tailscale ssh -- <ssh-args> "$USER@<100.x address>"`, taking the address from
+`tailscale status --json`.
+
+Access to the Pi is
 [Tailscale SSH](https://tailscale.com/kb/1193/tailscale-ssh), authorized by
 [tailnet ACLs](https://tailscale.com/kb/1018/acls) rather than SSH keys — there is no key
 to find or generate. The Pi's login username, hostname, and sudo password are injected as
@@ -132,13 +161,68 @@ names: `blinded_connection_string`, `MONGODB_PASSWORD`, `MQTT_BROKER`, `MQTT_POR
 `MQTT_USERNAME`, `MQTT_PASSWORD`, and `YT_API_KEY`. Set them with `add_space_secret` using
 `HF_TOKEN` so the two sides cannot drift.
 
-**Reaching the OT-2.** The robot is not on the tailnet. It is wired directly to the OT-2
-stream-cam Pi (`OT2_STREAM_CAM_HOSTNAME`) and answers only on the link-local address
-`http://169.254.51.252:31950`, so every OT-2 HTTP API call has to be made *from that Pi* —
-you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi is a thin
-wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
-`Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
-`/maintenance_runs` moves real hardware.
+**Reaching the OT-2.** The robot is not on the tailnet. It is wired directly to a Pi and
+answers only on the link-local address `http://169.254.51.252:31950`, so every OT-2 HTTP API
+call has to be made *from that Pi* — you cannot reach the robot from a runner or a laptop.
+Send `Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything
+under `/maintenance_runs` moves real hardware.
+
+**Which Pi, though — the name is misleading.** Despite the naming, the USB-Ethernet adapter
+is on `RPI_STREAM_CAM_HOSTNAME`, *not* `OT2_STREAM_CAM_HOSTNAME` (verified 2026-09-09): a
+Realtek RTL8153 on `eth1` holding `169.254.210.205/16`, alongside the Arduino and the
+`~/ot2ctl.py` wrapper and every past `~/run_*` directory. The `OT2_STREAM_CAM_HOSTNAME` Pi
+has no ethernet interface and no USB devices at all. Check `ip -4 -br addr` on both before
+concluding the robot is offline — a session in September 2026 reported the OT-2 dead when it
+was simply being probed from the wrong host.
+
+**`POST /camera/picture` shows you the deck.** The OT-2 has an onboard camera looking down at
+the deck, and it is the cheapest possible preflight: one HTTP call, no motion, and it answers
+"is the labware actually there?" before a protocol presses down on an empty slot. Note it is
+a **POST** — a GET returns 405, which is easy to misread as "no camera". The frame comes back
+640x480, rotated a quarter turn because the camera is mounted on its side.
+`wireless-color-sensor/ot2/deck_photo.py` wraps this.
+
+**The camera rides on the gantry, so it cannot show you its own nozzle tip.** The viewpoint
+shifts with every move, and when the gantry is parked over the slot you care about, the
+pipette body occludes exactly the spot you were trying to inspect. That makes the camera
+excellent for "is the labware present?" and useless for "is the nozzle centred on the
+socket?" — `run_xscan_test.py --align` plus a photo will not settle an alignment question,
+and a human has to eyeball it. What *does* verify engagement automatically is the script's
+grip check: seated counts vs lifted counts, which on 2026-09-09 read 436 -> 2253 = **5.2x**
+against a 2.0x threshold.
+
+**Ambient light dominates any reading taken off the base.** On 2026-09-09 the module was
+carried to three X positions 30 mm apart in an *empty* slot 8, same Y and Z at each. Totals
+came out 4489 / 3691 / 5401 — a **46% swing with nothing in the slot at all**. The deck is
+not evenly lit, so raw counts are not comparable between positions: a paint measurement has
+to be divided by an empty-slot reading taken at that same X, or the enclosure has to be
+light-tight. Do not read a colour difference out of two positions without that baseline.
+For scale, the module *seated on its base* reads only ~437, about 10x lower than any lifted
+reading, which is why the seated baseline is not a usable dark reference either.
+
+**Every scan on record so far was taken with the module's own LEDs off**, which is why
+ambient dominates. `run_xscan_test.py --rgb` defaults to `0,0,0` and `SensorLink.read()`
+publishes it straight through as `{"command": {"R": 0, "Y": 0, "B": 0}}`, so the counts are
+room and deck light leaking into the enclosure, not a controlled measurement. Before
+measuring anything real -- diluted paint included -- set `--rgb` and re-baseline; that also
+makes enclosure light-tightness, rather than a normalisation scheme, the thing worth fixing.
+
+**Slot 7 at read Z 120 is the best measurement pose found so far, and higher is worse.**
+Measured 2026-09-09 across four empty-slot scans:
+
+| pose | totals across the three X positions | read-to-read spread |
+| --- | --- | --- |
+| slot 7, z 120 | 7263 / 7084 / 6861 (-5.5% over 60 mm) | **0.03-0.07%** |
+| slot 7, z 125 | 4238 / 5144 / 6227 (+47%) | 1-11% |
+| slot 8, z 120 | 4489 / 3691 / 5401 (+46%, V-shaped) | 0.1-28% |
+
+Raising the nozzle 5 mm -- aperture 29.5 mm to 34.5 mm off the deck -- costs 9-42% of the
+signal and makes repeatability 30-300x worse, and it *reverses* the sign of the positional
+gradient. At the centre position the falloff matches inverse-square exactly
+(`(29.5/34.5)^2 = 0.731` predicted, 0.726 measured), but the off-centre positions do not, so
+the illumination only behaves like a point source directly under the slot centre. Slot 7
+also beats slot 8 outright on both signal and flatness. Default to slot 7 at z 120 and do
+not raise the aperture looking for a better view -- there isn't one.
 
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
@@ -161,6 +245,81 @@ its buffered `log.txt` is lost, so an empty log after a reset means "I interrupt
 "it never ran" — to watch a boot, `mpremote ... run <local copy of main.py>` and read the
 stream instead. And the reference `main.py` calls `connectWiFi(..., country="CA")`; for US
 operation that should be `"US"`, since the country code governs the usable 2.4 GHz channels.
+
+**The board has no controllable illumination — `--rgb` is inert.** `sensor_read.py`
+publishes `{"command": {"R":r,"Y":y,"B":b}}` and the board answers with a reading, so the
+message is understood, but nothing lights. Measured 2026-09-09 with the module seated in
+its closed base: `0,0,0`, `32,32,32`, `128,128,128`, `255,255,255`, and each channel alone
+at 255 all return 437–439 counts (`wireless-color-sensor/ot2/led_probe.py`, one MQTT round
+trip, no robot motion). **Every colour measurement is therefore ambient room light
+reflected off the sample**, and raw counts are comparable only against an empty reading at
+the same X, Y and Z. Do not plan a measurement around switching the LEDs on until someone
+has established that there are any.
+
+**An X-only scan crosses one row of the deck.** `run_xscan_test.py` varies X at a fixed
+`--scan-dy`, so labware laid out along Y is missed however fine the X pitch. `--scan-dy`
+takes a single float; a Y sweep would need a code change. Note that this was *wrongly*
+invoked on 2026-09-09 to explain a 10 mm sweep of slot 7 finding one of three vials — the
+re-analysis that evening showed two of the three could not have registered whether they were
+under the scan line or not, because red and blue produce no signal under ambient light.
+Rule out the physics before blaming the geometry.
+
+**The module can come off the nozzle during a long run.** The same sweep ended with the
+enclosure lying on the deck instead of on its base — the reseat-confirm read 15084 counts
+against a seated 440, which is the signature (~34x seated) and is why that check exists.
+Watch for it *during* a run too: the sweep's spatial profile changed shape, not just level,
+against two earlier runs at identical coordinates, which is what a tilting module looks
+like. Do not command more motion after this happens; re-seating by robot means pressing the
+nozzle onto an object whose position and orientation are unknown.
+
+**A deeper pickup press also raises the read height.** `--press-z` (added 2026-09-09)
+sets how far the nozzle is driven into the module's socket; lower is deeper and grips
+harder. But seating the nozzle further in makes the module ride that much higher on it, so
+the aperture ends up higher off the deck at the same `--read-z`. `--read-z 129 --press-z
+90.0` gives a 39.0 mm aperture against the 37.5 mm of `--read-z 128 --press-z 90.5` — 1.5 mm
+higher, not 1.0. **Compare `aperture_height_mm` in the run JSON across runs, never
+`--read-z`.** `--press-z` also shifts the release height by the same delta, so the module is
+set down from the height the proven recipe used rather than dropped from 0.5 mm up.
+
+**A grip ratio is not a measure of grip.** It is a light reading at the lift height, so it
+answers "did the module leave its base" and nothing more; changing the press depth moves the
+aperture and shifts the ratio for reasons unrelated to how tightly the module is held.
+Equally, **one clean cycle does not validate a grip fix** — on 2026-09-09 the three-position
+cycle completed cleanly and the module was then lost during the longer sweep that followed.
+Stress a fix before believing it.
+
+**Bare deck is not spectrally flat, and is not the same at every position.** At x = 93.88 in
+slot 7 the 620 nm share is 28.6% against 20.9% at the slot centre — in the empty-slot run and
+both paint runs alike. So a reddish-looking spectrum is not evidence of a red sample, and the
+only valid reference is an empty reading at the *same* X, Y and Z.
+
+**The empty-slot artefact is a strong function of aperture height, and above ~30 mm it
+swamps any sample.** Spread of the spectral shape across the three read stops of an *empty*
+slot 7, worst channel, in percentage points of share: **0.14 at z 120 (29.5 mm), 1.52 at
+z 125, 7.69 at z 128 (37.5 mm)** — 55x worse for an 8 mm rise, with nothing on the deck.
+Everything the 2026-09-09 sessions reported as a colour detection is ~1.3 points. **Read at
+z 120 and the instrument is excellent; read at z 128 and it cannot agree with itself about
+an empty slot.** This is the tension to design around: an aperture high enough to clear a
+~36 mm vial is an aperture too high to measure with. Prefer flat targets low down over tall
+labware high up. See `wireless-color-sensor/ot2/results-why-only-yellow-2026-09-09.md`.
+
+**Occlusion and yellow paint are the same spectrum, and without a light source you cannot
+tell them apart.** The room's white LEDs put ~4x more flux in 583+620+670 (54.7%) than in
+410+440+470 (13.6%), and 440/470 sit on the blue pump peak while 410 sits below where such a
+source emits at all. So "less cool light reaching the aperture" reads as 440/470 down, 410
+flat, red up — exactly a yellow absorber. Three consequences: **blue** samples have almost no
+incident flux to reflect and cannot register; **red** samples darken a background that is
+already red, which is the artefact's own signature; **yellow** is the only colour that can
+appear, and it appears whether or not it is there.
+
+**Test a claimed detection against absolute counts, not shares.** On 2026-09-09 the "yellow
+vial" at x = 33.88 was accompanied by the total *rising* 17% and 410 nm *rising* 12% while
+440 nm fell 25%. An absorber removes light, and yellow pigment's absorption edge is monotone
+below ~480 nm, so it must suppress 410 at least as hard as 440. That pattern is the
+illuminant changing between runs — the two runs were six minutes apart with a person at the
+open machine in between. **Two ambient readings taken minutes apart are not a controlled
+comparison.** The cheap way to settle any such claim is to move the sample and re-scan: if
+the feature follows the sample it is real, if it stays at the same X it is the machine.
 
 **MicroPython 1.29.0 or newer is required.** On 1.26–1.28 the RP2040 hardware I2C driver has
 a regression: `i2c.scan()` ACKs the AS7341 at `0x39`, but every register read or write

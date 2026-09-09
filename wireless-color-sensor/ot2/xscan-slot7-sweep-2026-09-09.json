@@ -1,0 +1,1271 @@
+{
+  "run": {
+    "started": "2026-09-09T01:56:52.922881+00:00",
+    "home_slot": 10,
+    "scan_slot": 7,
+    "plan": {
+      "pickup": {
+        "x": 36.55,
+        "y": 315.5,
+        "slot": 10,
+        "slot_margin_mm": 36.55
+      },
+      "drop_off": {
+        "x": 30.55,
+        "y": 315.5
+      },
+      "positions": [
+        {
+          "index": 1,
+          "dx": -60.0,
+          "x": 3.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 3.88
+        },
+        {
+          "index": 2,
+          "dx": -50.0,
+          "x": 13.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 13.88
+        },
+        {
+          "index": 3,
+          "dx": -40.0,
+          "x": 23.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 23.88
+        },
+        {
+          "index": 4,
+          "dx": -30.0,
+          "x": 33.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 33.88
+        },
+        {
+          "index": 5,
+          "dx": -20.0,
+          "x": 43.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 42.0
+        },
+        {
+          "index": 6,
+          "dx": -10.0,
+          "x": 53.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 42.0
+        },
+        {
+          "index": 7,
+          "dx": 0.0,
+          "x": 63.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 42.0
+        },
+        {
+          "index": 8,
+          "dx": 10.0,
+          "x": 73.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 42.0
+        },
+        {
+          "index": 9,
+          "dx": 20.0,
+          "x": 83.88,
+          "y": 225.0,
+          "z": 128.0,
+          "slot_margin_mm": 42.0
+        }
+      ],
+      "aperture_height_mm": 37.5
+    },
+    "rgb": {
+      "R": 0,
+      "Y": 0,
+      "B": 0
+    },
+    "reads_per_position": 2,
+    "dry_run": false,
+    "mongodb_ids": [
+      "6aa0bde7444f1d92a3003e56",
+      "6aa0bde7444f1d92a3003e57",
+      "6aa0bde7444f1d92a3003e58",
+      "6aa0bde7444f1d92a3003e59",
+      "6aa0bde7444f1d92a3003e5a",
+      "6aa0bde7444f1d92a3003e5b",
+      "6aa0bde7444f1d92a3003e5c",
+      "6aa0bde7444f1d92a3003e5d",
+      "6aa0bde7444f1d92a3003e5e",
+      "6aa0bde7444f1d92a3003e5f",
+      "6aa0bde7444f1d92a3003e60",
+      "6aa0bde7444f1d92a3003e61",
+      "6aa0bde7444f1d92a3003e62",
+      "6aa0bde7444f1d92a3003e63",
+      "6aa0bde7444f1d92a3003e64",
+      "6aa0bde7444f1d92a3003e65",
+      "6aa0bde7444f1d92a3003e66",
+      "6aa0bde7444f1d92a3003e67",
+      "6aa0bde7444f1d92a3003e68",
+      "6aa0bde7444f1d92a3003e69",
+      "6aa0bde7444f1d92a3003e6a",
+      "6aa0bde7444f1d92a3003e6b",
+      "6aa0bde7444f1d92a3003e6c",
+      "6aa0bde7444f1d92a3003e6d"
+    ]
+  },
+  "readings": [
+    {
+      "experiment_id": "seated-baseline-1-1788919013828",
+      "label": "seated-baseline-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 6,
+        "ch440": 4,
+        "ch470": 10,
+        "ch510": 169,
+        "ch550": 173,
+        "ch583": 39,
+        "ch620": 21,
+        "ch670": 18
+      },
+      "total": 440,
+      "latency_s": 1.564,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 39,
+          "ch670": 18,
+          "ch510": 169,
+          "ch410": 6,
+          "ch620": 21,
+          "ch470": 10,
+          "ch550": 173,
+          "ch440": 4
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "seated-baseline-1-1788919013828"
+      },
+      "position": null,
+      "stage": "seated-baseline"
+    },
+    {
+      "experiment_id": "seated-baseline-2-1788919015392",
+      "label": "seated-baseline-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 6,
+        "ch440": 4,
+        "ch470": 10,
+        "ch510": 168,
+        "ch550": 174,
+        "ch583": 39,
+        "ch620": 21,
+        "ch670": 18
+      },
+      "total": 440,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 39,
+          "ch670": 18,
+          "ch510": 168,
+          "ch410": 6,
+          "ch620": 21,
+          "ch470": 10,
+          "ch550": 174,
+          "ch440": 4
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "seated-baseline-2-1788919015392"
+      },
+      "position": null,
+      "stage": "seated-baseline"
+    },
+    {
+      "experiment_id": "grip-check-1-1788919059814",
+      "label": "grip-check-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 34,
+        "ch440": 124,
+        "ch470": 134,
+        "ch510": 364,
+        "ch550": 469,
+        "ch583": 427,
+        "ch620": 444,
+        "ch670": 290
+      },
+      "total": 2286,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 427,
+          "ch670": 290,
+          "ch510": 364,
+          "ch410": 34,
+          "ch620": 444,
+          "ch470": 134,
+          "ch550": 469,
+          "ch440": 124
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "grip-check-1-1788919059814"
+      },
+      "position": {
+        "x": 36.55,
+        "y": 315.5,
+        "z": 110.0
+      },
+      "stage": "grip-check"
+    },
+    {
+      "experiment_id": "grip-check-2-1788919061219",
+      "label": "grip-check-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 35,
+        "ch440": 125,
+        "ch470": 134,
+        "ch510": 364,
+        "ch550": 469,
+        "ch583": 426,
+        "ch620": 444,
+        "ch670": 290
+      },
+      "total": 2287,
+      "latency_s": 1.464,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 426,
+          "ch670": 290,
+          "ch510": 364,
+          "ch410": 35,
+          "ch620": 444,
+          "ch470": 134,
+          "ch550": 469,
+          "ch440": 125
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "grip-check-2-1788919061219"
+      },
+      "position": {
+        "x": 36.55,
+        "y": 315.5,
+        "z": 110.0
+      },
+      "stage": "grip-check"
+    },
+    {
+      "experiment_id": "pos1-dx-60-1-1788919084295",
+      "label": "pos1-dx-60-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 95,
+        "ch440": 346,
+        "ch470": 369,
+        "ch510": 820,
+        "ch550": 1183,
+        "ch583": 1375,
+        "ch620": 1370,
+        "ch670": 759
+      },
+      "total": 6317,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1375,
+          "ch670": 759,
+          "ch510": 820,
+          "ch410": 95,
+          "ch620": 1370,
+          "ch470": 369,
+          "ch550": 1183,
+          "ch440": 346
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos1-dx-60-1-1788919084295"
+      },
+      "position": {
+        "index": 1,
+        "dx": -60.0,
+        "x": 3.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 3.88
+      },
+      "stage": "pos1-dx-60"
+    },
+    {
+      "experiment_id": "pos1-dx-60-2-1788919085719",
+      "label": "pos1-dx-60-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 95,
+        "ch440": 345,
+        "ch470": 369,
+        "ch510": 820,
+        "ch550": 1182,
+        "ch583": 1375,
+        "ch620": 1370,
+        "ch670": 759
+      },
+      "total": 6315,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1375,
+          "ch670": 759,
+          "ch510": 820,
+          "ch410": 95,
+          "ch620": 1370,
+          "ch470": 369,
+          "ch550": 1182,
+          "ch440": 345
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos1-dx-60-2-1788919085719"
+      },
+      "position": {
+        "index": 1,
+        "dx": -60.0,
+        "x": 3.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 3.88
+      },
+      "stage": "pos1-dx-60"
+    },
+    {
+      "experiment_id": "pos2-dx-50-1-1788919098676",
+      "label": "pos2-dx-50-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 80,
+        "ch440": 260,
+        "ch470": 294,
+        "ch510": 697,
+        "ch550": 1021,
+        "ch583": 1179,
+        "ch620": 1204,
+        "ch670": 694
+      },
+      "total": 5429,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1179,
+          "ch670": 694,
+          "ch510": 697,
+          "ch410": 80,
+          "ch620": 1204,
+          "ch470": 294,
+          "ch550": 1021,
+          "ch440": 260
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos2-dx-50-1-1788919098676"
+      },
+      "position": {
+        "index": 2,
+        "dx": -50.0,
+        "x": 13.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 13.88
+      },
+      "stage": "pos2-dx-50"
+    },
+    {
+      "experiment_id": "pos2-dx-50-2-1788919100080",
+      "label": "pos2-dx-50-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 80,
+        "ch440": 260,
+        "ch470": 294,
+        "ch510": 697,
+        "ch550": 1021,
+        "ch583": 1179,
+        "ch620": 1204,
+        "ch670": 694
+      },
+      "total": 5429,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1179,
+          "ch670": 694,
+          "ch510": 697,
+          "ch410": 80,
+          "ch620": 1204,
+          "ch470": 294,
+          "ch550": 1021,
+          "ch440": 260
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos2-dx-50-2-1788919100080"
+      },
+      "position": {
+        "index": 2,
+        "dx": -50.0,
+        "x": 13.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 13.88
+      },
+      "stage": "pos2-dx-50"
+    },
+    {
+      "experiment_id": "pos3-dx-40-1-1788919113043",
+      "label": "pos3-dx-40-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 67,
+        "ch440": 109,
+        "ch470": 163,
+        "ch510": 563,
+        "ch550": 961,
+        "ch583": 1132,
+        "ch620": 1168,
+        "ch670": 672
+      },
+      "total": 4835,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1132,
+          "ch670": 672,
+          "ch510": 563,
+          "ch410": 67,
+          "ch620": 1168,
+          "ch470": 163,
+          "ch550": 961,
+          "ch440": 109
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos3-dx-40-1-1788919113043"
+      },
+      "position": {
+        "index": 3,
+        "dx": -40.0,
+        "x": 23.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 23.88
+      },
+      "stage": "pos3-dx-40"
+    },
+    {
+      "experiment_id": "pos3-dx-40-2-1788919114448",
+      "label": "pos3-dx-40-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 67,
+        "ch440": 111,
+        "ch470": 164,
+        "ch510": 565,
+        "ch550": 961,
+        "ch583": 1133,
+        "ch620": 1168,
+        "ch670": 672
+      },
+      "total": 4841,
+      "latency_s": 1.384,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1133,
+          "ch670": 672,
+          "ch510": 565,
+          "ch410": 67,
+          "ch620": 1168,
+          "ch470": 164,
+          "ch550": 961,
+          "ch440": 111
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos3-dx-40-2-1788919114448"
+      },
+      "position": {
+        "index": 3,
+        "dx": -40.0,
+        "x": 23.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 23.88
+      },
+      "stage": "pos3-dx-40"
+    },
+    {
+      "experiment_id": "pos4-dx-30-1-1788919127383",
+      "label": "pos4-dx-30-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 64,
+        "ch440": 106,
+        "ch470": 157,
+        "ch510": 539,
+        "ch550": 908,
+        "ch583": 1061,
+        "ch620": 1100,
+        "ch670": 639
+      },
+      "total": 4574,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1061,
+          "ch670": 639,
+          "ch510": 539,
+          "ch410": 64,
+          "ch620": 1100,
+          "ch470": 157,
+          "ch550": 908,
+          "ch440": 106
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos4-dx-30-1-1788919127383"
+      },
+      "position": {
+        "index": 4,
+        "dx": -30.0,
+        "x": 33.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 33.88
+      },
+      "stage": "pos4-dx-30"
+    },
+    {
+      "experiment_id": "pos4-dx-30-2-1788919128787",
+      "label": "pos4-dx-30-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 64,
+        "ch440": 107,
+        "ch470": 157,
+        "ch510": 538,
+        "ch550": 907,
+        "ch583": 1060,
+        "ch620": 1100,
+        "ch670": 638
+      },
+      "total": 4571,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1060,
+          "ch670": 638,
+          "ch510": 538,
+          "ch410": 64,
+          "ch620": 1100,
+          "ch470": 157,
+          "ch550": 907,
+          "ch440": 107
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos4-dx-30-2-1788919128787"
+      },
+      "position": {
+        "index": 4,
+        "dx": -30.0,
+        "x": 33.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 33.88
+      },
+      "stage": "pos4-dx-30"
+    },
+    {
+      "experiment_id": "pos5-dx-20-1-1788919141745",
+      "label": "pos5-dx-20-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 80,
+        "ch440": 244,
+        "ch470": 288,
+        "ch510": 675,
+        "ch550": 985,
+        "ch583": 1146,
+        "ch620": 1214,
+        "ch670": 735
+      },
+      "total": 5367,
+      "latency_s": 1.444,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1146,
+          "ch670": 735,
+          "ch510": 675,
+          "ch410": 80,
+          "ch620": 1214,
+          "ch470": 288,
+          "ch550": 985,
+          "ch440": 244
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos5-dx-20-1-1788919141745"
+      },
+      "position": {
+        "index": 5,
+        "dx": -20.0,
+        "x": 43.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos5-dx-20"
+    },
+    {
+      "experiment_id": "pos5-dx-20-2-1788919143189",
+      "label": "pos5-dx-20-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 80,
+        "ch440": 243,
+        "ch470": 287,
+        "ch510": 675,
+        "ch550": 985,
+        "ch583": 1147,
+        "ch620": 1213,
+        "ch670": 735
+      },
+      "total": 5365,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1147,
+          "ch670": 735,
+          "ch510": 675,
+          "ch410": 80,
+          "ch620": 1213,
+          "ch470": 287,
+          "ch550": 985,
+          "ch440": 243
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos5-dx-20-2-1788919143189"
+      },
+      "position": {
+        "index": 5,
+        "dx": -20.0,
+        "x": 43.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos5-dx-20"
+    },
+    {
+      "experiment_id": "pos6-dx-10-1-1788919156131",
+      "label": "pos6-dx-10-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 84,
+        "ch440": 261,
+        "ch470": 305,
+        "ch510": 708,
+        "ch550": 1033,
+        "ch583": 1208,
+        "ch620": 1272,
+        "ch670": 764
+      },
+      "total": 5635,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1208,
+          "ch670": 764,
+          "ch510": 708,
+          "ch410": 84,
+          "ch620": 1272,
+          "ch470": 305,
+          "ch550": 1033,
+          "ch440": 261
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos6-dx-10-1-1788919156131"
+      },
+      "position": {
+        "index": 6,
+        "dx": -10.0,
+        "x": 53.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos6-dx-10"
+    },
+    {
+      "experiment_id": "pos6-dx-10-2-1788919157555",
+      "label": "pos6-dx-10-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 84,
+        "ch440": 261,
+        "ch470": 305,
+        "ch510": 708,
+        "ch550": 1033,
+        "ch583": 1208,
+        "ch620": 1272,
+        "ch670": 765
+      },
+      "total": 5636,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1208,
+          "ch670": 765,
+          "ch510": 708,
+          "ch410": 84,
+          "ch620": 1272,
+          "ch470": 305,
+          "ch550": 1033,
+          "ch440": 261
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos6-dx-10-2-1788919157555"
+      },
+      "position": {
+        "index": 6,
+        "dx": -10.0,
+        "x": 53.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos6-dx-10"
+    },
+    {
+      "experiment_id": "pos7-dx+0-1-1788919170501",
+      "label": "pos7-dx+0-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 88,
+        "ch440": 278,
+        "ch470": 321,
+        "ch510": 738,
+        "ch550": 1079,
+        "ch583": 1267,
+        "ch620": 1330,
+        "ch670": 794
+      },
+      "total": 5895,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1267,
+          "ch670": 794,
+          "ch510": 738,
+          "ch410": 88,
+          "ch620": 1330,
+          "ch470": 321,
+          "ch550": 1079,
+          "ch440": 278
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos7-dx+0-1-1788919170501"
+      },
+      "position": {
+        "index": 7,
+        "dx": 0.0,
+        "x": 63.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos7-dx+0"
+    },
+    {
+      "experiment_id": "pos7-dx+0-2-1788919171926",
+      "label": "pos7-dx+0-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 87,
+        "ch440": 278,
+        "ch470": 321,
+        "ch510": 738,
+        "ch550": 1080,
+        "ch583": 1267,
+        "ch620": 1329,
+        "ch670": 794
+      },
+      "total": 5894,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1267,
+          "ch670": 794,
+          "ch510": 738,
+          "ch410": 87,
+          "ch620": 1329,
+          "ch470": 321,
+          "ch550": 1080,
+          "ch440": 278
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos7-dx+0-2-1788919171926"
+      },
+      "position": {
+        "index": 7,
+        "dx": 0.0,
+        "x": 63.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos7-dx+0"
+    },
+    {
+      "experiment_id": "pos8-dx+10-1-1788919184875",
+      "label": "pos8-dx+10-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 91,
+        "ch440": 294,
+        "ch470": 338,
+        "ch510": 768,
+        "ch550": 1125,
+        "ch583": 1324,
+        "ch620": 1384,
+        "ch670": 823
+      },
+      "total": 6147,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1324,
+          "ch670": 823,
+          "ch510": 768,
+          "ch410": 91,
+          "ch620": 1384,
+          "ch470": 338,
+          "ch550": 1125,
+          "ch440": 294
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos8-dx+10-1-1788919184875"
+      },
+      "position": {
+        "index": 8,
+        "dx": 10.0,
+        "x": 73.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos8-dx+10"
+    },
+    {
+      "experiment_id": "pos8-dx+10-2-1788919186279",
+      "label": "pos8-dx+10-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 91,
+        "ch440": 294,
+        "ch470": 337,
+        "ch510": 767,
+        "ch550": 1125,
+        "ch583": 1324,
+        "ch620": 1384,
+        "ch670": 822
+      },
+      "total": 6144,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1324,
+          "ch670": 822,
+          "ch510": 767,
+          "ch410": 91,
+          "ch620": 1384,
+          "ch470": 337,
+          "ch550": 1125,
+          "ch440": 294
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos8-dx+10-2-1788919186279"
+      },
+      "position": {
+        "index": 8,
+        "dx": 10.0,
+        "x": 73.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos8-dx+10"
+    },
+    {
+      "experiment_id": "pos9-dx+20-1-1788919199230",
+      "label": "pos9-dx+20-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 95,
+        "ch440": 307,
+        "ch470": 351,
+        "ch510": 792,
+        "ch550": 1162,
+        "ch583": 1372,
+        "ch620": 1433,
+        "ch670": 849
+      },
+      "total": 6361,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1372,
+          "ch670": 849,
+          "ch510": 792,
+          "ch410": 95,
+          "ch620": 1433,
+          "ch470": 351,
+          "ch550": 1162,
+          "ch440": 307
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos9-dx+20-1-1788919199230"
+      },
+      "position": {
+        "index": 9,
+        "dx": 20.0,
+        "x": 83.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos9-dx+20"
+    },
+    {
+      "experiment_id": "pos9-dx+20-2-1788919200654",
+      "label": "pos9-dx+20-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 94,
+        "ch440": 307,
+        "ch470": 351,
+        "ch510": 792,
+        "ch550": 1162,
+        "ch583": 1373,
+        "ch620": 1432,
+        "ch670": 848
+      },
+      "total": 6359,
+      "latency_s": 1.845,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 1373,
+          "ch670": 848,
+          "ch510": 792,
+          "ch410": 94,
+          "ch620": 1432,
+          "ch470": 351,
+          "ch550": 1162,
+          "ch440": 307
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos9-dx+20-2-1788919200654"
+      },
+      "position": {
+        "index": 9,
+        "dx": 20.0,
+        "x": 83.88,
+        "y": 225.0,
+        "z": 128.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos9-dx+20"
+    },
+    {
+      "experiment_id": "reseat-confirm-1-1788919267105",
+      "label": "reseat-confirm-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 233,
+        "ch440": 981,
+        "ch470": 961,
+        "ch510": 1951,
+        "ch550": 2810,
+        "ch583": 3403,
+        "ch620": 3202,
+        "ch670": 1540
+      },
+      "total": 15081,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3403,
+          "ch670": 1540,
+          "ch510": 1951,
+          "ch410": 233,
+          "ch620": 3202,
+          "ch470": 961,
+          "ch550": 2810,
+          "ch440": 981
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "reseat-confirm-1-1788919267105"
+      },
+      "position": null,
+      "stage": "reseat-confirm"
+    },
+    {
+      "experiment_id": "reseat-confirm-2-1788919268529",
+      "label": "reseat-confirm-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 234,
+        "ch440": 981,
+        "ch470": 961,
+        "ch510": 1950,
+        "ch550": 2812,
+        "ch583": 3404,
+        "ch620": 3204,
+        "ch670": 1540
+      },
+      "total": 15086,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3404,
+          "ch670": 1540,
+          "ch510": 1950,
+          "ch410": 234,
+          "ch620": 3204,
+          "ch470": 961,
+          "ch550": 2812,
+          "ch440": 981
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "reseat-confirm-2-1788919268529"
+      },
+      "position": null,
+      "stage": "reseat-confirm"
+    }
+  ]
+}
