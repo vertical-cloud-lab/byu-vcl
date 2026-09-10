@@ -154,6 +154,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `plot_spectra.py` | 300 px spectra in the light-mixing `basic_plotting.py` style |
 | `build_gallery.py` | stitches frame + spectrum + link into `measurement-gallery.md` |
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
+| `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
@@ -194,6 +195,90 @@ half runs over SSH on the stream-cam Pi (`~/ytframes/grab.py` there).
 
 `--simulate` prints the whole motion plan with no robot and no sensor — useful
 for checking a changed layout before taking it anywhere near hardware.
+
+## The background (blank) measurement
+
+A background — or blank — is **a reading of the empty well, taken at the same
+pose, under the same light, immediately before the sample goes in.** It is not a
+dark reading and it is not a calibration constant: it is the *same measurement
+with the sample removed*, so that dividing the sample by it cancels everything
+that is not the sample.
+
+The sensor never measures colour. It measures how many photons land in each of
+its eight bands, which is the product of four things:
+
+```
+counts(λ)  =  source(λ)  ×  path(λ)  ×  sample(λ)  ×  responsivity(λ)
+```
+
+Only `sample(λ)` is wanted. The blank contains the other three at that exact
+spot, so `sample / blank` leaves the sample's own spectrum — the room light's
+warm cast, the deck's colour, the enclosure's geometry and the AS7341's uneven
+per-channel sensitivity all divide out. Without one, a raw count is a statement
+about the room, not the liquid; every run before 2026-09-09 demonstrated that.
+
+**One blank per well, not one per plate.** The blank has to be taken where the
+sample will be, because this rig's background is strongly position-dependent.
+An *empty* slot 7 at read z 128 already disagrees with itself between its three
+stops — 620 nm is 23.1 % / 20.9 % / 28.6 % of the total with nothing on the deck
+at all. Borrowing a neighbour's blank injects a **37–92 %** error, against a
+largest-ever colour signal of about ±30 %.
+
+**Subtract before dividing.** About 439 counts of every reading are a fixed
+green glow inside the closed enclosure (`ch410` was exactly 6 on all 26 seated
+reads across seven runs and eight hours). Because it is *additive*, it must be
+removed from both numbers before the ratio:
+
+```
+             sample(λ) − offset(λ)
+ratio(λ)  =  ─────────────────────
+             blank(λ)  − offset(λ)
+```
+
+Dividing without subtracting drags ch510/ch550 toward 1.0 by up to 6 %, and at
+read z 128 that offset is 36–47 % of ch510 — against 18 % at z 120, which is
+another reason the lower read height is the better one.
+
+**Dry blank or solvent blank.** Both are useful and they answer different
+questions. A *dry* empty well is the background for everything that is not the
+liquid. A well holding the same volume of plain water is the stricter blank: it
+also cancels the meniscus, the refraction at the water surface and water's own
+weak absorption, leaving pigment alone. Take the dry one first — it is free —
+and the water one when comparing dilutions against each other.
+
+**Freshness matters more than it looks.** The blank and the sample must be
+minutes apart with nobody near the machine. The archived-stream frames showed a
+person in shot during 11 of the 27 readings on 2026-09-09, including the whole
+of the "empty-slot baseline at z 128" that the paint run was normalised
+against — so that pair was never a valid blank/sample pair.
+
+### Doing it with what is already here
+
+No new flag is needed. Run the *same* command twice, changing only the well's
+contents and the output file:
+
+```bash
+# 1. blank: the well is empty. Stand clear of the machine.
+python3 run_xscan_test.py --scan-slot 7 --read-z 120 --out blank.json
+
+# 2. add the sample, move nothing else, stand clear again.
+python3 run_xscan_test.py --scan-slot 7 --read-z 120 --out sample.json
+
+# 3. the ratio, with the additive offset removed and a per-position cross-check
+python3 blank_correction.py --blank blank.json --sample sample.json --cross-check
+```
+
+Positions are matched by the labels `run_xscan_test.py` writes (`pos1-dx-30` and
+so on), so both runs must use the same `--scan-dx`.
+
+**What a blank does not fix.** It cancels a *stable* background, so it cannot
+rescue a background that changed between the two reads — someone leaning over
+the deck, a light switched, the module reseated at a slightly different depth.
+It also cannot create signal that was never there: under warm ambient light a
+blue vial reflects in a band that barely exists, and blue's spectral signature
+is a −0.954 match for the sensor's own two-cycle readout artefact. A blank is
+necessary for this measurement to mean anything; it is not sufficient on its
+own, and a controlled light source still is the larger fix.
 
 ## What has been verified, and what has not
 
