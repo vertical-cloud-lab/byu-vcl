@@ -509,3 +509,47 @@ reproduce with `python3 analyse_person_effect.py`.
 - Caveats worth carrying: the 39.0 mm stratum contradicts the trend on n=1;
   person and object-being-placed are entangled at the position level (the 1.4 s
   step is not); and one frame per ~4.2 s position understates the effect.
+
+## 2026-09-10, post-move — rail lights on by default; the background moved
+
+The lab setup was moved and re-assembled. Full write-up:
+[`results-postmove-2026-09-10.md`](results-postmove-2026-09-10.md).
+
+- **The OT-2 has no network link.** Its USB-ethernet adapter is still on the
+  stream-cam Pi and the driver still loads, but `/sys/class/net/eth1/carrier`
+  is `0` — `NO-CARRIER` since boot, so nothing is plugged into it. Not a
+  wrong-Pi mix-up (the other Pi has no ethernet interface at all), not moved
+  onto Wi-Fi (port 31950 closed across the Pi's whole `/24`, no mDNS). **Check
+  `carrier` before assuming an address is stale**: with no carrier, no address
+  on that interface can work.
+- **The rail lights are now on by default.** `run_xscan_test.py --lights
+  {on,off,leave}`, default `on`, set *before* the seated baseline so the
+  baseline and the scan it references share one illuminant. If the robot cannot
+  be reached the run stops rather than producing a reading that is not
+  comparable with a lit one; `--lights leave` is the explicit opt-out. The
+  state is recorded as `run.lights` in the JSON and in every MongoDB document,
+  so two runs can finally be checked for comparability. `robot_lights.py` is
+  the standalone one-call version. **Untested against hardware** — the robot
+  was unreachable when this was written.
+- **The closed-enclosure background moved −5.9 %** (439.19 → 413.27 counts,
+  **10.9 sd** of the old spread; `background_baseline.py`, 30 seated reads).
+  Not a uniform dimming: the 510/550 nm core held (−2 to −3.5 %) while the
+  wings fell 8–32 %, so the indicator LED is steady and what has gone is
+  broadband room light that used to leak into the closed box. The new baseline
+  is *steadier* — total sd 1.34 against 2.39 — which fits. **Every offset
+  vector and blank from 2026-09-09 is stale.** `blank_correction.py` already
+  defaults to taking its offset from the blank and sample runs themselves, so a
+  fresh pair is self-consistent; do not reuse an old blank against a new sample.
+- **Run `background_baseline.py` after anything is unplugged, re-seated,
+  re-sited or re-batteried.** It needs no robot and no tailnet — MQTT only —
+  and it says outright whether the offset has moved beyond noise.
+- **`test_measurement_timestamps.py --live` is 44/44.** The sensor → reading
+  leg, untested on 2026-09-10 03:02 because the board was silent, now passes;
+  the fixed code has written its first real documents. Section 10's *"the fix
+  has never run for real"* marker was spent and is replaced by a check that no
+  post-fix document collapses its reading time onto its write time.
+- **A live frame can be pulled from the OT-2 stream when the camera is busy.**
+  The streamer holds the camera exclusively, so `rpicam-still` is not an
+  option on that Pi; `yt-dlp -g` on the channel's `/live` URL returns a URL
+  that is already a *media* playlist (segments, not variants), so fetch its
+  last segment and hand ffmpeg the local file.

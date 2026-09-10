@@ -498,14 +498,28 @@ def test_existing_documents_carry_the_old_bug():
         check("the xscan documents are there to check", len(docs) > 100,
               f"{len(docs)} documents from {len(set(d['run']['started'] for d in docs))} runs")
         post_fix = [d for d in docs if d.get("stored_at") is not None]
-        check("none of them were written by the fixed code -- it has never run for real",
-              not post_fix,
-              f"{len(post_fix)} carry stored_at; the fix landed after the last run")
+        pre_fix = [d for d in docs if d.get("stored_at") is None]
+        # Until 2026-09-10 this asserted ``not post_fix`` -- a deliberate marker
+        # that the fix had never executed against the real database. It has now,
+        # so the marker is spent and the useful question is the opposite one:
+        # do the documents the fixed code wrote actually keep the two instants
+        # apart? A post-fix document whose timestamp equals its stored_at would
+        # be the old bug wearing the new field's name.
+        collapsed = [d for d in post_fix if d["timestamp"] == d["stored_at"]]
+        check("the fixed code has now written real documents",
+              bool(post_fix),
+              f"{len(post_fix)} post-fix, {len(pre_fix)} pre-fix")
+        check("no post-fix document collapsed its reading time onto its write time",
+              not collapsed,
+              f"{len(collapsed)} of {len(post_fix)} collapsed")
 
         # How wrong was the old field? Recover each reading's true instant from
-        # the epoch-ms in its experiment_id and compare.
+        # the epoch-ms in its experiment_id and compare. Only the pre-fix
+        # documents belong here: a post-fix one differs from its experiment_id
+        # by the read latency (~1.4 s, t_response minus t_request), which is
+        # correct behaviour and would quietly drag the "always late" floor down.
         late = []
-        for d in docs:
+        for d in pre_fix:
             tail = d["experiment_id"].rsplit("-", 1)[-1]
             if not tail.isdigit():
                 continue
@@ -519,12 +533,12 @@ def test_existing_documents_carry_the_old_bug():
               f"median {sorted(late)[len(late) // 2]:.0f}s, worst {max(late):.0f}s late")
 
         runs = {}
-        for d in docs:
+        for d in pre_fix:
             runs.setdefault(d["run"]["started"], []).append(d["timestamp"])
-        collapsed = [k for k, v in runs.items() if len(v) > 1 and len(set(v)) <= 2]
+        collapsed_runs = [k for k, v in runs.items() if len(v) > 1 and len(set(v)) <= 2]
         check("every multi-reading run collapsed onto one write instant",
-              len(collapsed) == len([k for k, v in runs.items() if len(v) > 1]),
-              f"{len(collapsed)} runs; the one with two distinct values straddled a "
+              len(collapsed_runs) == len([k for k, v in runs.items() if len(v) > 1]),
+              f"{len(collapsed_runs)} runs; the one with two distinct values straddled a "
               "millisecond boundary while looping, which is the same defect")
     except Exception as e:  # noqa: BLE001
         check("query the existing documents", False, str(e)[:160])

@@ -83,6 +83,7 @@ SCAN_DX = (-30.0, 0.0, 30.0)   # X offsets from the scan slot's centre
 SCAN_DY = 44.0                 # same within-slot Y as the base, = y 225.0 in slot 8
 READ_Z = 120.0                 # nozzle Z at every read -> aperture ~29.5 mm off the deck
 SETTLE_S = 1.5                 # pause after arriving, before the first read
+LIGHT_SETTLE_S = 2.0           # pause after flipping the rail lights
 READS_PER_POSITION = 3
 GRIP_RATIO = 2.0               # lifted total counts must exceed seated x this
 
@@ -102,6 +103,29 @@ def stamp():
 
 def log(msg):
     print(f"[{stamp()}] {msg}", flush=True)
+
+
+def robot_lights(ip, on=None, timeout=10):
+    """Read or set the OT-2's deck rail lights.
+
+    ``/robot/lights`` is a top-level endpoint -- no maintenance run, no
+    pipette, no motion -- so it can be flipped before the run opens and while
+    the module is still closed on its base. Returns the state the robot
+    reports afterwards.
+
+    The rails are the only controllable light source this rig has: the
+    module's own LEDs are inert (led_probe.py, 2026-09-09), so with the lights
+    off every reading is a survey of the room, and the room is the largest
+    variable in the experiment.
+    """
+    base = f"http://{ip}:31950/robot/lights"
+    if on is None:
+        r = requests.get(base, headers=HEADERS, timeout=timeout)
+    else:
+        r = requests.post(base, headers={**HEADERS, "Content-Type": "application/json"},
+                          json={"on": bool(on)}, timeout=timeout)
+    r.raise_for_status()
+    return bool(r.json().get("on"))
 
 
 class Robot:
@@ -297,6 +321,11 @@ def parse_args(argv=None):
                         "socket = tighter friction fit (default %(default)s)")
     p.add_argument("--reads", type=int, default=READS_PER_POSITION)
     p.add_argument("--rgb", default="0,0,0", help="R,Y,B sent with each read command")
+    p.add_argument("--lights", choices=("on", "off", "leave"), default="on",
+                   help="OT-2 deck rail lights for the whole run (default: on). "
+                        "They are set before the seated baseline so every reading "
+                        "of a run shares one lighting condition, and left in that "
+                        "state afterwards. 'leave' touches nothing.")
     p.add_argument("--settle", type=float, default=SETTLE_S)
     p.add_argument("--grip-ratio", type=float, default=GRIP_RATIO)
     p.add_argument("--align", action="store_true",
@@ -439,6 +468,37 @@ def main(argv=None):
     mongo_uri = None if args.no_mongo else os.environ.get("MONGODB_URI")
     database = os.environ.get("MONGODB_DATABASE", "digital-wetlab")
 
+    # Rail lights first, before a single reading is taken. Setting them after
+    # the seated baseline would leave that baseline under a different
+    # illuminant from the scan it is the reference for, which is precisely the
+    # mistake blank_correction.py exists to avoid.
+    lights_before = None
+    lights_state = None
+    if args.lights == "leave":
+        log("rail lights: leaving them as they are (--lights leave)")
+    else:
+        want = args.lights == "on"
+        try:
+            lights_before = robot_lights(args.robot_ip)
+            lights_state = robot_lights(args.robot_ip, on=want)
+            log(f"rail lights: {'ON' if lights_before else 'off'} -> "
+                f"{'ON' if lights_state else 'off'}")
+            if lights_state != want:
+                raise RuntimeError(
+                    f"asked the robot for lights={'on' if want else 'off'} and it "
+                    f"reports {'on' if lights_state else 'off'}"
+                )
+            if lights_before != lights_state:
+                log(f"  settling {LIGHT_SETTLE_S:g} s after the change")
+                time.sleep(LIGHT_SETTLE_S)
+        except requests.RequestException as exc:
+            raise SystemExit(
+                f"could not reach the OT-2 at {args.robot_ip} to set the rail "
+                f"lights ({exc}). The lights are part of the measurement now, so "
+                "a run without them is not comparable with one that has them -- "
+                "pass --lights leave if you really want to proceed without."
+            ) from exc
+
     try:
         log("seated baseline read (module on its base)")
         seated = take_reads(link, "seated-baseline", max(2, args.reads // 2), rgb,
@@ -521,6 +581,8 @@ def main(argv=None):
         "scan_slot": args.scan_slot,
         "plan": plan,
         "rgb": {"R": rgb[0], "Y": rgb[1], "B": rgb[2]},
+        "lights": {"requested": args.lights, "before": lights_before,
+                   "during": lights_state},
         "reads_per_position": args.reads,
         "dry_run": bool(args.dry_run),
     }

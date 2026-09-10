@@ -39,7 +39,10 @@ CHANNELS = ("ch410", "ch440", "ch470", "ch510", "ch550", "ch583", "ch620", "ch67
 
 # A seated read is the module closed on its base. It is not darkness -- it is
 # whatever is lit inside the closed box, which is the offset we want.
-SEATED_LABELS = ("seated-baseline", "reseat")
+SEATED_LABELS = ("seated-baseline", "reseat", "background-baseline")
+# "background-baseline" is what background_baseline.py writes: a long burst
+# of seated reads taken on its own, so a run can borrow a freshly measured
+# offset via --offset-from instead of the four it took for itself.
 SEATED_MAX_TOTAL = 1000.0   # a dislodged module reads ~15000; that is not a baseline
 
 
