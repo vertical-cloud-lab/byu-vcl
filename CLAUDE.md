@@ -140,6 +140,47 @@ wrapper over the maintenance-run API and is the quickest way to see the call pat
 `Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
 `/maintenance_runs` moves real hardware.
 
+**Check `carrier` before diagnosing the OT-2 as dead.** The robot answers only on
+`169.254.51.252` over the RTL8153 USB-ethernet adapter on `RPI_STREAM_CAM_HOSTNAME`.
+After the 2026-09-10 lab move the adapter was still enumerated and its driver still
+loaded, but `/sys/class/net/eth1/carrier` read `0` (`NO-CARRIER` since boot) — nothing
+plugged into the RJ45. With no carrier no address on that interface can work, so
+`cat /sys/class/net/eth1/carrier` settles in one command what an address-level probe
+only hints at. The other Pi has no ethernet interface at all and cannot be holding
+the link.
+
+**The OT-2's rail lights are on by default now** (`run_xscan_test.py --lights`,
+`robot_lights.py`). `POST /robot/lights {"on": true}` is a top-level endpoint —
+no maintenance run, no pipette, no motion — so it is safe with the deck loaded.
+Set them *before* the seated baseline, or the baseline sits under a different
+illuminant from the scan it is the reference for. The state is recorded as
+`run.lights` in the run JSON and every MongoDB document.
+
+**The closed-enclosure background is not a constant across sessions.** It was
+439.19 ± 2.39 counts on 2026-09-09 and 413.27 ± 1.34 after the move — a 10.9 sd
+step, and not a uniform dimming (the 510/550 nm LED core held at −2 to −3.5 %
+while the wings fell 8–32 %, i.e. a broadband leak went away, the LED did not).
+It is the additive offset `blank_correction.py` subtracts, so **re-measure it with
+`background_baseline.py` after anything is unplugged, re-seated, re-sited or
+re-batteried**, and never reuse a blank across such a change. That script needs
+MQTT only — no robot, no tailnet.
+
+**Grabbing a live frame when the streamer owns the camera.** `device.py` on
+`OT2_STREAM_CAM_HOSTNAME` holds the camera exclusively, so `rpicam-still` fails
+there. Instead `yt-dlp --js-runtimes node -g` on
+`https://www.youtube.com/channel/<id>/live` returns a URL that is *already a media
+playlist* — segment URLs, not variant playlists — so fetch its last segment with
+urllib and hand ffmpeg the local file. Reading it as a master playlist and
+re-fetching the "variant" downloads a `.ts` and produces a garbage URL.
+
+**Tailscale is still not in `claude.yml`, and `tailscale up` leaks the key.** The
+runner has `TS_OAUTH_CLIENT_ID` / `TS_OAUTH_SECRET` but no `tailscale` binary;
+install it and bring up an ephemeral node with `--advertise-tags=tag:stream-cam-test`.
+Note that if any sticky flag from an earlier `tailscale up` disagrees, the CLI prints
+a "use the command below" hint **with `--auth-key=<the actual secret>` in it** — pass
+`--reset` and pipe output through `sed -E 's/tskey-[A-Za-z0-9_-]+/[REDACTED]/g'` so the
+key cannot reach the job log.
+
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
 (1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches
