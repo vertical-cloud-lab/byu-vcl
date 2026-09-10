@@ -181,6 +181,44 @@ a "use the command below" hint **with `--auth-key=<the actual secret>` in it** â
 `--reset` and pipe output through `sed -E 's/tskey-[A-Za-z0-9_-]+/[REDACTED]/g'` so the
 key cannot reach the job log.
 
+**The OT-2's overhead camera is mounted inverted, and its frames need a 180 degree
+turn.** `POST /camera/picture` returns 640x480 upside down; turned upright, slot 1 is
+front-left and the trash in slot 12 is back-right. `deck_photo.py --rotate` (the default)
+does it. Two bugs made this wrong for two days and both are worth remembering: the
+rotation was a *quarter* turn, and it silently returned the frame untouched when Pillow
+was missing -- and Pillow is not installed by default on the stream-cam Pi, which is the
+only host that can reach the robot. It is now in `~/.venvs/xscan`. `rotate()` raises and
+`deck_photo.py` exits 3 rather than shipping an unrotated frame; `--fix FILE` corrects a
+saved one elsewhere. An upside-down deck photo is worse than none: on 2026-09-10 one was
+read as "the vials are on the deck" when they were off it.
+
+**Rail lights on for every measurement, unless told otherwise (2026-09-10).**
+`run_xscan_test.py --lights on` is the default and is set *before* the seated baseline, so
+a run's baseline and its scan share one illuminant; the state is recorded as `run.lights`
+in the JSON and in every MongoDB document. Measured at slot 7 / read z 129 against an
+unlit control minutes apart: **5.6x more signal** (15224 vs 2724 counts), worst
+read-to-read spread 0.31 % vs 2.71 %, and the fixed internal green offset falls from
+14.9 % of the reading to 3.1 % (on ch510, 38.3 % to 8.3 %). Still only 4.9 % of full
+scale, so gain and integration time remain untried headroom. The honest cost: the rails
+are **not uniform over the deck** and add a 6.7 % gradient across 60 mm of X where the
+unlit deck had 2.2 %. Take it anyway -- a fixed lamp geometry is what a per-position blank
+divides out, whereas the room changing mid-run (which the unlit control caught) is what a
+blank cannot rescue. The rails also leak into the *closed* enclosure, so the seated offset
+is lights-dependent: 467 lit against 406 unlit. **A blank is only valid for the same pose
+and the same lights state.**
+
+**A release that fails to let go is recoverable; a module on the deck is not.** On
+2026-09-10 `dropTipInPlace` fired and the module stayed on the nozzle -- reseat-confirm
+1010 counts against a seated 406, gantry homed still carrying it. That is not the
+2026-09-09 failure, where it came off and lay on the deck reading 15084. Tell them apart
+with a deck photo, because the count alone cannot: on the nozzle the position is exactly
+known and `reseat_module.py` retries the release (it did, 1016 -> 419); on the deck the
+orientation is unknown and pressing the nozzle onto it is blind, so it needs hands. This
+is the other edge of the 0.5 mm deeper press: a fit tight enough not to shed the module in
+transit sometimes will not release it. The grip check read 3.2x on that cycle against
+4.6-5.3x on every clean one -- it is a light reading, not a force, but it flagged the one
+cycle that went wrong.
+
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
 (1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches

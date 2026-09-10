@@ -157,7 +157,11 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `analyse_person_effect.py` | whether somebody at the machine moves the readings; `--gate` screens a run for a background that shifted mid-position |
-| `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
+| `deck_photo.py` | one HTTP call to the OT-2's own overhead camera; turns the frame 180° upright, `--fix FILE` corrects a saved one |
+| `robot_lights.py` | read or set the deck rail lights; one HTTP call, no motion |
+| `analyse_rail_lights.py` | what the rail lights buy: precision, uniformity, colour self-consistency |
+| `reseat_module.py` | recovery when a release fires and the module stays on the nozzle; `--check` moves nothing |
+| `background_baseline.py` | seated background of the closed enclosure; says whether the offset has moved |
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
 
@@ -553,3 +557,38 @@ The lab setup was moved and re-assembled. Full write-up:
   option on that Pi; `yt-dlp -g` on the channel's `/live` URL returns a URL
   that is already a *media* playlist (segments, not variants), so fetch its
   last segment and hand ffmpeg the local file.
+
+## 2026-09-10, 19:50 — the background with the rail lights on
+
+Full write-up: [`results-background-lights-2026-09-10.md`](results-background-lights-2026-09-10.md).
+Two cycles at slot 7 / read z 129 / press z 90.0 with the vials off the deck,
+differing only in the rail lights.
+
+- **Rail lights on is now the standing default**, at the user's request on #197.
+  `--lights on` is already `run_xscan_test.py`'s default; `--lights leave` opts
+  out. Measured against an unlit control minutes apart: **5.6× more signal**
+  (15224 vs 2724 counts), worst read-to-read spread **0.31 % vs 2.71 %**, zero
+  positions over the 0.5 % stability gate against one, and the fixed internal
+  green offset down from 14.9 % of the reading to **3.1 %** (on ch510, 38.3 %
+  to 8.3 %). Still 4.9 % of full scale, so the gain and integration-time
+  registers are untouched headroom.
+- **The cost, stated plainly: the rails are not uniform over the deck.** They
+  add a 6.7 % gradient across 60 mm of X where the unlit deck had 2.2 %, and
+  the between-stop colour disagreement is 0.30 points lit against 0.11 unlit.
+  Both are fixed lamp geometry, which is what a per-position blank divides out;
+  the unlit run's 2.71 % was the room stepping mid-run, which a blank cannot
+  rescue.
+- **A blank is only valid for the same pose *and* the same lights state.** The
+  rails leak into the closed enclosure too — seated 467 lit against 406 unlit.
+- **The OT-2 camera is mounted inverted; frames need 180°, not 90°.** And the
+  old correction was a silent no-op whenever Pillow was missing, which it was
+  on the Pi — so every frame before today was raw. Fixed, loudly: `rotate()`
+  raises and `deck_photo.py` exits 3 rather than shipping an unrotated frame.
+  The 14 committed robot-camera frames have been turned upright in place, and
+  one earlier conclusion changes with them: the 19:41 frame showed the vials
+  **off** the deck, not on it.
+- **A release can fail to let go.** `dropTipInPlace` fired and the module
+  stayed on the nozzle (reseat-confirm 1010 vs seated 406). That is recoverable
+  — `reseat_module.py` retried it, 1016 → 419 — because the module's position
+  is known. A module lying on the *deck* is not; tell them apart with a photo.
+  This is the other edge of the 0.5 mm deeper press.
