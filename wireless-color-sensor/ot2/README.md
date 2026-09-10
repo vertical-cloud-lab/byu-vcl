@@ -156,6 +156,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
+| `analyse_person_effect.py` | whether somebody at the machine moves the readings; `--gate` screens a run for a background that shifted mid-position |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
@@ -435,3 +436,35 @@ regenerate the figure with `python3 plot_why_only_yellow.py`.
 
 The pre-fix documents still in `sensor-data` quantify what the fix removes:
 median **103 s** late, worst **258 s**, always late and never early.
+## 2026-09-10 — the reads police themselves; gate a blank before trusting it (no motion)
+
+Prompted by the push-back on #197 that the overhead camera is not the sensor.
+That is right, and the 2026-09-09 write-up was sloppy to say "a person in shot"
+as though the livestream did something — the frame is only evidence that
+somebody was at an open machine. Full write-up:
+[`results-person-effect-2026-09-10.md`](results-person-effect-2026-09-10.md);
+reproduce with `python3 analyse_person_effect.py`.
+
+- **The enclosure is sealed only while it is on its base.** Closed, it reads
+  **439.2 counts, sd 2.39** over 26 reads and ~8 h with people coming and going,
+  `ch410` exactly 6 every time. Lifted over a slot it reads 2134–7263, so
+  **79–94 % of every measurement is light that entered from outside.** During a
+  measurement it is a funnel pointed at a room-lit deck, not a dark box.
+- **A person at the machine moves the reading, and the sensor says so itself.**
+  The three reads at a position are 1.4 s apart with the gantry parked, so only
+  the light can change between them. Quiet: `7084, 7083, 7086` — 0.04 %, every
+  channel within one count. With somebody there, at the same aperture height:
+  `3431, 3298, 4345` — **+31.7 % in 1.4 s**, warm-weighted (583 nm +47 %, 410 nm
+  +8 %), which is light *added* by a large close skin-coloured reflector, not a
+  shadow. Across all 27 positions: spread over 1 % for 9 of 10 with somebody
+  there against 3 of 17 without, Fisher exact **p = 0.00075**; height-stratified
+  permutation **p = 0.0033**.
+- **Gate a run instead of watching the video.** A quiet position repeats to
+  0.03–0.13 %, so `analyse_person_effect.py --gate FILE` flags any position whose
+  reads disagree by more than **0.5 %**. It catches three positions the frames
+  called clear, because somebody just out of frame is invisible to the camera and
+  obvious to the sensor. **A blank whose own background moved cannot cancel the
+  sample's** — gate the blank before pipetting.
+- Caveats worth carrying: the 39.0 mm stratum contradicts the trend on n=1;
+  person and object-being-placed are entangled at the position level (the 1.4 s
+  step is not); and one frame per ~4.2 s position understates the effect.
