@@ -8,7 +8,7 @@ The module is seated in its closed base, so ambient is ~440 counts and any
 response is unambiguous.
 """
 import os, sys, json
-sys.path.insert(0, os.path.expanduser("~/xscan"))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from sensor_read import SensorLink, CHANNELS
 
 link = SensorLink(
