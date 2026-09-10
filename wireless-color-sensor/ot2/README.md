@@ -156,6 +156,8 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
+| `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
+| `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
 
 ## Lining a reading up against the livestream
 
@@ -333,3 +335,18 @@ regenerate the figure with `python3 plot_why_only_yellow.py`.
   two runs six minutes apart, not a sample.
 - **To settle it: move the sample, re-scan.** If the feature follows the vial it is
   real; if it stays at the same X it is the machine.
+
+## 2026-09-10 — testing PR #201's timestamp work (no motion)
+
+`test_measurement_timestamps.py`, **39 of 40 checks pass**. Full write-up in
+[`results-fix-verification-2026-09-10.md`](results-fix-verification-2026-09-10.md).
+
+| leg | how it was tested | result |
+| --- | --- | --- |
+| reading → timestamp | fake broker driving the real `SensorLink` | id, ISO strings and epoch fields agree to the ms and bracket an independent measurement |
+| reading → MongoDB | real driver, real Atlas cluster, scratch collection, cleaned up after | 0.0 ms drift through BSON; two readings 163 s apart stay 163 s apart; `stored_at` separate and later |
+| reading → livestream link | regenerate the committed index; cross-check all 27 frames | byte-identical, 114/114 linked, worst OCR-clock error 0.8 s |
+| **sensor → reading** | **not tested** | the board did not answer; it is on battery, not on the Pi's USB |
+
+The pre-fix documents still in `sensor-data` quantify what the fix removes:
+median **103 s** late, worst **258 s**, always late and never early.

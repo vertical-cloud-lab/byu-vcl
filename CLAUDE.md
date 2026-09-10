@@ -243,6 +243,27 @@ reading it described; it is now the reading's own response time, with the write 
 separately as `stored_at`. Old documents in `digital-wetlab.sensor-data` still have the
 insert-time value — reconstruct from `experiment_id` instead.
 
+Verified on 2026-09-10 by `wireless-color-sensor/ot2/test_measurement_timestamps.py`
+(39/40 checks; `--live` adds MQTT and Atlas, and **no part of it moves the robot**).
+Measured against the 122 pre-fix documents, the old `timestamp` was median **103 s** and
+worst **258 s** late, always late and never early. Two things worth carrying forward:
+the epoch in `experiment_id` and `t_request_epoch` used to differ by 1 ms (one truncated,
+the other rounded) and now come from a single truncated millisecond; and the −67 s archive
+correction in `stream_index.py` is a **per-segment constant that is only right past the
+step** — every 2026-09-09 reading sits well past it, but a reading in a stream's first
+hours needs its own shift, and nothing warns you if you get it wrong.
+
+**MQTT works straight from a GitHub Actions runner** — HiveMQ is a public broker, so a
+sensor read needs no Pi and no tailnet. Only the OT-2 HTTP API and the YouTube frame grabs
+need the Pi. If `check_delivery()` passes and the board still says nothing, the problem is
+the board: as of 2026-09-10 the Pico is **not** on the stream-cam Pi's USB (`lsusb` shows
+no `2e8a`, only the Arduino on `ttyACM0` and a CH340 on `ttyUSB0`), so it is running on
+battery in the enclosure and a long silence most likely means a flat one.
+
+**`ssh` prints the Pi's tailnet name into the job log** the first time it accepts a host
+key. Use `-o LogLevel=ERROR -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no`
+so the hostname stays out of Actions output.
+
 **Not yet provisioned** — `YT_API_KEY` (a YouTube Data API v3 key from the Google Cloud
 console; until it exists the Space falls back to a fixed embed instead of tracking the
 current stream), `ONEDRIVE_EDIT_LINK_URL` (the password is stored without the link it

@@ -171,7 +171,12 @@ class SensorLink:
         for attempt in range(1, retries + 2):
             # One clock read feeds both the id and the timestamp, so the epoch
             # baked into experiment_id and the explicit field cannot disagree.
-            started = time.time()
+            # Truncate to whole milliseconds once, and derive the id, the ISO
+            # string and the epoch field from that single value. Rounding one
+            # and truncating another let them disagree by 1 ms, which is
+            # harmless but makes the id and the field stop being interchangeable
+            # for anything matching on them.
+            started = int(time.time() * 1000) / 1000.0
             experiment_id = f"{label or 'read'}-{int(started * 1000)}"
             payload = {"command": {"R": r, "Y": y, "B": b},
                        "experiment_id": experiment_id}
@@ -190,7 +195,7 @@ class SensorLink:
                     data = body.get("sensor_data") or body
                     if not any(c in data for c in CHANNELS):
                         continue
-                    answered = time.time()
+                    answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {
                         "experiment_id": experiment_id,
@@ -205,8 +210,8 @@ class SensorLink:
                         # a precision the round trip does not have.
                         "t_request_utc": _iso(started),
                         "t_response_utc": _iso(answered),
-                        "t_request_epoch": round(started, 3),
-                        "t_response_epoch": round(answered, 3),
+                        "t_request_epoch": started,
+                        "t_response_epoch": answered,
                         "latency_s": round(answered - started, 3),
                         "attempt": attempt,
                         "raw": body,
