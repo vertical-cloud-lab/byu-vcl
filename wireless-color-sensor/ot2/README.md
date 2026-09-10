@@ -422,6 +422,47 @@ regenerate the figure with `python3 plot_why_only_yellow.py`.
 - **To settle it: move the sample, re-scan.** If the feature follows the vial it is
   real; if it stays at the same X it is the machine.
 
+## 2026-09-09, later — three instrument artefacts, none of them ambient light
+
+Asked on #197 whether ambient light is the whole story, given that our sample is a
+19 mm vial top rather than `ac-dev-lab#552`'s thin transparent columns. It is not.
+Full write-up:
+[`results-instrument-artefacts-2026-09-09.md`](results-instrument-artefacts-2026-09-09.md);
+regenerate with `python3 analyse_instrument_artefacts.py`. No hardware needed —
+it reads only the committed `xscan-*.json` files.
+
+- **A green LED is on inside the enclosure.** 26 seated reads across 7 runs and ~8 h
+  give 439 counts, `ch410` exactly 6 every time, peaked at 510/550 nm. That is an
+  indicator LED (Pico W or breakout), not room light and not darkness. It is a fixed
+  *additive* term nobody subtracts, and it is **36–47% of ch510 at read z 128** against
+  18% at z 120 — so its share moves with signal level, bending the normalised spectrum
+  position to position with an empty slot. **Subtract the seated vector before
+  normalising.**
+- **One reading is two measurements.** The AS7341 has 11 photodiodes and 6 ADCs, so
+  F1–F4 and F5–F8 are separate integrations. The repeat-read correlation matrix breaks
+  *exactly* there: **+0.970 within F1–F4, +0.978 within F5–F8, +0.649 across**, and a
+  scan over all seven possible split points peaks sharply at 510\|550 (+0.325 vs +0.157
+  next best). 410 and 510 are 100 nm apart and correlate at 0.97; 510 and 550 are 40 nm
+  apart and correlate at 0.61 — spectral adjacency does not predict that, ADC scheduling
+  does. Per-read half-to-half mismatch reaches 12.4%.
+- **That artefact is spectrally degenerate with yellow — and with blue inverted.**
+  Cosine similarity against the artefact: **blue −0.954**, yellow +0.761, red +0.566.
+  The x = 33.88 "yellow" feature matches real yellow pigment at +0.808 and a pure
+  readout half-step at +0.804. Indistinguishable. This is why yellow is the only colour
+  that has ever appeared, and it would still be true in a blacked-out room.
+- **A 19 mm vial fills 49% of the spot at z 128** (~±20° FOV, no lens; 79% at z 120),
+  and a clear vial over the deck is a double-pass filter, not a reflector, so contrast
+  is `f·(1−T²)` ≈ 18% best case against a 7.69-point empty-slot artefact.
+- **The sensor runs at 5% of full scale** — largest count on record 3404 of 65535.
+- **The payload returns 8 numbers and nothing else.** No gain, no integration time, so
+  two runs cannot be checked for comparability — and the AS7341 samples `Clear` in
+  *both* SMUX cycles, which is exactly the factor needed to stitch the halves together.
+  The firmware measures it and throws it away.
+- **Untried and free: the OT-2's own rail lights.** `POST /robot/lights {"on": true}`,
+  one HTTP call, no motion — a controllable source already on the machine. `#552` found
+  them too bright, which with 20× of ADC headroom is the good failure mode.
+
+
 ## 2026-09-10 — testing PR #201's timestamp work (no motion)
 
 `test_measurement_timestamps.py`, **39 of 40 checks pass**. Full write-up in
