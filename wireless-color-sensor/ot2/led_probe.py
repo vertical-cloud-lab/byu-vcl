@@ -30,4 +30,4 @@ for rgb in LEVELS:
           "  ".join(f"{c}={ch[c]:>6}" for c in CHANNELS) +
           f"  total={rd['total']:>7}", flush=True)
 link.close()
-json.dump(out, open(os.path.expanduser("~/xscan/led-probe.json"), "w"), indent=1)
+json.dump(out, open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "led-probe.json"), "w"), indent=1)
