@@ -5,6 +5,38 @@
 - If you mention files in your comment reply, add direct hyperlinks based on the shortened (7-character) commit hash
 - IMPORTANT: Never echo/grep/print environment secrets. These should never be exposed in your terminal history or other outputs
 
+## How to report back on this repo
+
+Asked for repeatedly on #33 and #197. This is a reading-time budget, not a style
+preference: the maintainer cannot read a full write-up as fast as an agent can
+produce one.
+
+**Structure every reply as short-then-long.**
+
+1. **A short section at the top, for a human to read.** The findings only, in as
+   few words as they can be said. No workings, no tables of raw data.
+2. **The full write-up below it, for the record.** This is what future sessions
+   grep, so it stays — it just stops being the first thing on the page.
+
+**Everything in the short section must be double-checked before it is written.**
+An earlier session reported "I can read colours" and "the hardware is probably
+bad" in the same reply, and another asserted a claim from an upside-down photo.
+If a claim has not been verified twice, or by two independent routes, it belongs
+in the long section flagged as unverified — not in the summary.
+
+**Always say what a percentage is a percentage of.** A number like "46 % swing"
+or "0.31 % spread" is unreadable without its denominator, and this repo mixes
+several: counts of a channel, counts of a whole reading, a channel's share of a
+reading, and a difference between two shares. Name the denominator inline, every
+time. Prefer the three units defined in
+`wireless-color-sensor/ot2/results-lights-and-offset-2026-09-10.md` — **counts**,
+**share** (a channel ÷ that same reading's total, ×100) and **share points** —
+and say which one is in play.
+
+**When suggesting what to do next, say why that suggestion and not another.**
+A bare list of next steps is not actionable; the reasoning is the part that lets
+the maintainer overrule it.
+
 ## Edison Scientific
 
 When waiting on an Edison task in GitHub Actions, NEVER run the polling script in the background (run_in_background, nohup, &, or the Monitor tool) — the runner is destroyed the moment you post your final comment, killing background processes; Monitor counts as background and dies the same way. Also be aware that the agent harness BLOCKS the shell `sleep` builtin in foreground Bash calls (the error message suggests Monitor — do NOT follow that suggestion, it recreates the background-death failure; this killed several past sessions). The pattern that works: put the wait INSIDE a single blocking Python call — Python-side `time.sleep` is not blocked — and run it as ONE foreground Bash call with an explicit long timeout (max 3600000 ms). Run exactly this (adjust only the task-id path):
@@ -206,6 +238,45 @@ divides out, whereas the room changing mid-run (which the unlit control caught) 
 blank cannot rescue. The rails also leak into the *closed* enclosure, so the seated offset
 is lights-dependent: 467 lit against 406 unlit. **A blank is only valid for the same pose
 and the same lights state.**
+
+**The green core of the sealed offset is a lamp, not leaked light (2026-09-10).** Across
+ten sealed conditions -- two rooms, rails on and off, ~24 h apart -- **ch510 and ch550 hold
+to 5 %** while every other channel swings 29-126 %; the cleanest single test, rails on
+minus rails off four minutes apart in the same enclosure, gives ch670 +55.8 % and ch620
++44.3 % against **ch510 +3.0 % and ch550 +4.7 %**. A self-emitting source inside a closed
+box does not care what the room does. Green core = **329 counts, 81 % of the darkest sealed
+reading (406.5)**, 0.62 % of full scale. Which physical LED it is cannot be established
+from this repo -- the firmware lives on the board.
+
+**That lamp is bias, never noise, so subtracting it is equivalent to removing it.** It is
+additive (`counts = lamp + leak + sample light`), so subtracting the seated baseline zeroes
+its effect exactly -- computed, not asserted, in `analyse_lights_and_offset.py` section 8.
+Noise: over 30 sealed reads in one unchanged condition every channel's sd is **0.18-0.54
+counts regardless of level**, 1.4-17 % of shot noise, so the counts are heavily integrated
+and the lamp's 329 contribute none of it. **Do not spend a session removing the LED for
+accuracy.** Its bias is 4.19 share points unlit and 0.75 lit if nobody subtracts, and 0.00
+if anybody does. And it can never help see colour: 81 % of its output is in two green
+channels, so it emits nothing at 410-470 or 583-670 to tell blue from red with. If it is
+the Pico W's onboard LED it is software-controllable, and **strobing it** -- read on, read
+off, subtract -- measures the offset at the exact pose and instant, which is strictly
+better than either removing it or leaving it.
+
+**The error budget, all in share points, against a largest-ever colour signal of 2.61.**
+Resolution floor rails-on **0.018**; lamp bias once subtracted **0.00**; a one-day-stale
+offset 0.037; a blank from the wrong X stop 0.295; **a person at the machine during the
+reading 1.40**; **a blank taken with the lights in the other state 2.55-2.80**; **a blank
+taken at a different read height 3.12-9.67**. The last two exceed the whole colour signal.
+The instrument is far better than the procedure around it -- rails on, per-position blank,
+same pose, same lights state, nobody near the machine gives SNR ~150. Full derivation in
+`wireless-color-sensor/ot2/results-lights-and-offset-2026-09-10.md`.
+
+**Reseat 2 mm right of where it used to go (2026-09-10).** The module was landing ~2 mm
+left of centre on its base, so `DROP_DX` moved from -6.0 to **-4.0** and is now the
+`--drop-dx` flag on both `run_xscan_test.py` and `reseat_module.py`. **The pickup X is
+deliberately unchanged** -- pickup has never missed, and the release column is the only
+half that was off. The new release column sits between the old one and the pickup, both
+already validated in-slot, so it cannot leave the slot; re-checked anyway at slot 10 ->
+slot 7, read z 129, press z 90.0: **28/28 points in bounds**. Untested on hardware.
 
 **A release that fails to let go is recoverable; a module on the deck is not.** On
 2026-09-10 `dropTipInPlace` fired and the module stayed on the nozzle -- reseat-confirm

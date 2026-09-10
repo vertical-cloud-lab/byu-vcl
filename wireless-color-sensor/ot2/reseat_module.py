@@ -65,6 +65,9 @@ def main(argv=None):
     p.add_argument("--home-slot", type=int, default=HOME_SLOT)
     p.add_argument("--base-dx", type=float, default=BASE_DX)
     p.add_argument("--base-dy", type=float, default=BASE_DY)
+    p.add_argument("--drop-dx", type=float, default=DROP_DX,
+                   help="X offset of the release column from the pickup column "
+                        "(default: %(default)s, matching run_xscan_test.py)")
     p.add_argument("--press-z", type=float, default=90.0,
                    help="press depth the failed run used (default: 90.0)")
     p.add_argument("--extra-press", type=float, default=0.0,
@@ -74,7 +77,7 @@ def main(argv=None):
     args = p.parse_args(argv)
 
     origin = deck.slot_origin(args.home_slot)
-    x = round(origin[0] + args.base_dx + DROP_DX, 2)
+    x = round(origin[0] + args.base_dx + args.drop_dx, 2)
     y = round(origin[1] + args.base_dy, 2)
     release_z = round(DROP_DESCENT[-1] + (args.press_z - PRESS_Z) - args.extra_press, 2)
 

@@ -70,7 +70,12 @@ HIGH_LIFT = [130.0, 150.0, 170.0]
 HIGH_LIFT_SPEED = 15.0
 CARRY_Z = 170.0                           # travel height with the module aboard
 CARRY_SEGMENT_MM, CARRY_SPEED = 8.5, 10.0  # segmented carry, proven not to shed the module
-DROP_DX = -6.0                            # anti-tilt offset applied to the drop-off X only
+# Anti-tilt offset applied to the drop-off X only. It started at -6.0; on
+# 2026-09-10 the module was observed landing ~2 mm left of centre on its base,
+# so the release column moved 2 mm right (-6.0 -> -4.0). The pickup X is
+# unchanged: pickup has never missed, and moving both would re-tune a socket
+# entry that is already proven.
+DROP_DX = -4.0
 DROP_DESCENT = [130.0, 110.0, 108.0, 101.0, 95.5]
 CLEAR_Z = 128.0                           # straight-up retreat after release
 DESCENT_SPEED = 10.0
@@ -309,6 +314,10 @@ def parse_args(argv=None):
                    help="slot the three readings are taken over (default: %(default)s)")
     p.add_argument("--base-dx", type=float, default=BASE_DX)
     p.add_argument("--base-dy", type=float, default=BASE_DY)
+    p.add_argument("--drop-dx", type=float, default=DROP_DX,
+                   help="X offset of the release column from the pickup column; "
+                        "more negative places the module further left "
+                        "(default: %(default)s)")
     p.add_argument("--scan-dx", default=",".join(str(v) for v in SCAN_DX),
                    help="comma-separated X offsets from the scan slot centre")
     p.add_argument("--scan-dy", type=float, default=SCAN_DY)
@@ -379,7 +388,8 @@ def build_plan(args):
     return {
         "pickup": {"x": round(pickup_x, 2), "y": round(pickup_y, 2),
                    "slot": args.home_slot, "slot_margin_mm": round(margin, 2)},
-        "drop_off": {"x": round(pickup_x + DROP_DX, 2), "y": round(pickup_y, 2)},
+        "drop_off": {"x": round(pickup_x + args.drop_dx, 2), "y": round(pickup_y, 2),
+                     "dx": args.drop_dx},
         "positions": positions,
         "press_z": args.press_z,
         # Pressing deeper seats the nozzle further into the socket, so the module
@@ -403,8 +413,11 @@ def print_plan(plan, args):
     print(f"    aperture sits ~{plan['aperture_height_mm']} mm above the deck at each read")
     print(f"    press to z={plan['press_z']:g}, release at z={plan['release_z']:g}"
           f"{'  (default recipe)' if plan['press_z'] == PRESS_Z else '  (deeper than the default recipe)'}")
+    drop_dx = plan["drop_off"]["dx"]
     print(f"    reseat at ({plan['drop_off']['x']}, {plan['drop_off']['y']}) "
-          f"-- {abs(DROP_DX):g} mm anti-tilt offset\n")
+          f"-- {abs(drop_dx):g} mm anti-tilt offset "
+          f"{'left' if drop_dx < 0 else 'right'} of the pickup column"
+          f"{'' if drop_dx == DROP_DX else '  (overridden)'}\n")
 
 
 def pick_up(robot, plan):

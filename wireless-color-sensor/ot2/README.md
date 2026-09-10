@@ -114,7 +114,7 @@ Only the start slot and the read positions are new.
 | High lift | z 130 → 150 → 170 @ 15 mm/s |
 | Carry | 8.5 mm segments @ 10 mm/s |
 | Read | descend to z = 120 @ 10 mm/s, settle 1.5 s, read ×3 |
-| Drop-off | pickup x − 6 mm (anti-tilt), staged descent 130 → 110 → 108 → 101 → 95.5 |
+| Drop-off | pickup x − 4 mm (anti-tilt, `--drop-dx`), staged descent 130 → 110 → 108 → 101 → 95.5 |
 | Eject | `dropTipInPlace`, clear to z = 128, home |
 
 The staged climbs and segmented carries are not decoration: on 2026-07-31 the
@@ -188,6 +188,7 @@ half runs over SSH on the stream-cam Pi (`~/ytframes/grab.py` there).
 ```
 --home-slot 10 --scan-slot 8      which slots to use
 --base-dx / --base-dy             where the socket sits within the home slot
+--drop-dx -4.0                    release column, as an X offset from the pickup column
 --scan-dx -30,0,30                X offsets from the scan slot's centre (any number of them)
 --scan-dy 44.0                    within-slot Y for the reads
 --read-z 120 --carry-z 170        heights
@@ -592,3 +593,54 @@ differing only in the rail lights.
   — `reseat_module.py` retried it, 1016 → 419 — because the module's position
   is known. A module lying on the *deck* is not; tell them apart with a photo.
   This is the other edge of the 0.5 mm deeper press.
+
+
+## 2026-09-10, 21:10 — the reseat moved 2 mm right, and the units got names
+
+No hardware and no motion: a code default, plus arithmetic on the committed
+JSON. [`analyse_lights_and_offset.py`](analyse_lights_and_offset.py) reproduces
+every number; the write-up is
+[`results-lights-and-offset-2026-09-10.md`](results-lights-and-offset-2026-09-10.md).
+
+- **The release column moved 2 mm right** — `DROP_DX` −6.0 → **−4.0**, now the
+  `--drop-dx` flag on `run_xscan_test.py` and `reseat_module.py`. The module had
+  been landing ~2 mm left of centre on its base. **The pickup X is unchanged:**
+  pickup has never missed, and re-tuning a proven socket entry to fix the *other*
+  half of the cycle would risk the half that works. The new column sits between
+  the old release column and the pickup, both already validated in-slot, so it
+  cannot leave the slot; re-checked anyway — 28/28 in bounds at slot 10 → slot 7,
+  read z 129, press z 90.0. **Untested on hardware.**
+
+- **Three units, and every percentage now names its denominator.** `counts` (raw
+  ADC, 0…65535), `share` (a channel ÷ *that same reading's* total, ×100), and
+  `share point` (one percentage point of share — the unit an error and a colour
+  signal are compared in). "Accuracy" is the **resolution floor**: 2 × the sd of
+  a channel's share across the repeat reads at one position, in share points.
+
+- **Rails on, decided on numbers rather than a hunch.** Resolution floor
+  **0.018** share points lit against **0.338** unlit — 19×, or 8× if you drop the
+  one unlit position whose room stepped mid-run. 5.6× the signal, and 4.9 % of
+  full scale, so the gain and integration-time registers are still untouched.
+
+- **The green core of the sealed offset is a lamp, not leaked light.** Across ten
+  sealed conditions ch510/ch550 hold to **5 %** while every other channel swings
+  **29–126 %**; rails-on minus rails-off gives ch670 +55.8 % against ch510 +3.0 %.
+  Green core = **329 counts, 81 %** of the darkest sealed reading.
+
+- **The lamp is bias, never noise — so subtracting it *is* removing it.** Over 30
+  sealed reads every channel's sd is **0.18–0.54 counts regardless of level**,
+  1.4–17 % of shot noise. Its bias is **4.19** share points unlit and **0.75** lit
+  if nobody subtracts, **0.00** if anybody does. It also can never help see
+  colour: 81 % of its output is in two green channels, so it emits nothing at
+  410–470 or 583–670 to tell blue from red with. **Not worth a session to remove
+  for accuracy.** If it is the Pico W's onboard LED, *strobing* it — read on,
+  read off, subtract — measures the offset at the exact pose and instant and is
+  strictly better than either option.
+
+- **The error budget, in share points, against a 2.61-point largest-ever colour
+  signal.** Resolution floor 0.018 · lamp bias once subtracted 0.00 · a
+  one-day-stale offset 0.037 · a blank from the wrong X stop 0.295 · **a person
+  at the machine during the reading 1.40** · **a blank taken with the lights in
+  the other state 2.55–2.80** · **a blank taken at a different read height
+  3.12–9.67**. The last two exceed the whole signal. The instrument is far better
+  than the procedure around it.
