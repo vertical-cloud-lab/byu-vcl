@@ -99,7 +99,7 @@ def main(argv=None):
     p.add_argument("--stages", default="pos",
                    help="'pos' for scan positions only, 'all' for every reading")
     p.add_argument("--per-position", type=int, default=1,
-                   help="which of the repeated reads at a position to photograph")
+                   help="1-based index of the repeated read at a position to photograph")
     args = p.parse_args(argv)
 
     index = json.load(open(args.index))
@@ -109,7 +109,7 @@ def main(argv=None):
         by_pos = {}
         for r in rows:
             by_pos.setdefault((r["run_file"], r["stage"]), []).append(r)
-        rows = [v[min(args.per_position, len(v) - 1)] for v in by_pos.values()]
+        rows = [v[min(max(args.per_position - 1, 0), len(v) - 1)] for v in by_pos.values()]
         rows.sort(key=lambda r: r["t_response_epoch"])
 
     release = {s["video_id"]: s["start_epoch"] for s in index["meta"]["streams"]}
