@@ -41,11 +41,20 @@ If using Edison Analysis, refer to https://docs.edisonscientific.com/edison-clie
 
 ## Tailscale → Raspberry Pi connection
 
-If you are doing remote work with the physical Pi device (be very careful!) and claude.yml pre-connects you to tailscale, this section is applicable. Regardless, **you are already on the tailnet for the Raspberry Pi device.** As this is connected to a locally owned machine, this is a high-risk activity. The workflow joins the runner via the official
+This section applies to remote work with the physical Pi devices (be very careful!).
+`claude.yml`'s `Connect to Tailscale` step pre-connects every session, so **you are
+already on the tailnet for the Raspberry Pi devices.** As this is connected to a locally
+owned machine, this is a high-risk activity. The workflow joins the runner via the official
 [Tailscale GitHub Action](https://tailscale.com/kb/1276/tailscale-github-action) (OAuth
 client + device tag) before you start. Run `tailscale status` to confirm — do **not**
 install Tailscale, mint auth keys via the API, or run `tailscale up` unless status
-genuinely shows you disconnected. Access to the Pi is
+genuinely shows you disconnected. If you ever must run `tailscale up` yourself, know that
+its sticky-flag hint can print `--auth-key=<the actual OAuth secret>` inline — guard with
+`--reset` and pipe output through a redaction filter. (On 2026-09-10 this echo was
+reported as having leaked the key into the public job log; a follow-up audit found it had
+not — `claude-code-action` writes no tool output to the Actions log, and the value is
+registered for masking regardless. The echo into a session's own transcript is real; the
+log leak was not.) Access to the Pi is
 [Tailscale SSH](https://tailscale.com/kb/1193/tailscale-ssh), authorized by
 [tailnet ACLs](https://tailscale.com/kb/1018/acls) rather than SSH keys — there is no key
 to find or generate. The Pi's login username, hostname, and sudo password are injected as
@@ -81,7 +90,26 @@ Names and purposes only — **never** echo, grep, or print the values. Every sec
 set on both `vertical-cloud-lab/byu-vcl` and `vertical-cloud-lab/digital-wetlab`, and is
 passed through the `env:` block of `.github/workflows/claude.yml`. Adding a new secret means
 editing that block too; the Claude GitHub App cannot modify `.github/workflows/`, so that
-step is always a human commit.
+step is always a human commit. Exception: `RPI_STREAM_CAM_USERNAME` and
+`OT2_STREAM_CAM_USERNAME` are repo **variables**, not secrets — one value is only 3
+characters, and GitHub masks a short secret everywhere it appears as a substring, which
+rewrote `byu-vcl` as `byu-***` throughout the logs.
+
+**Tailscale** — an [OAuth client](https://tailscale.com/kb/1215/oauth-clients) scoped to
+`tag:stream-cam-test` only. Consumed by the workflow's `Connect to Tailscale` step
+([official action](https://tailscale.com/kb/1276/tailscale-github-action)), which joins
+the runner as an ephemeral node that is removed when the job ends; the same values are
+also in the `env:` block for direct API use. A holder of the secret can mint auth keys
+and join `tag:stream-cam-test` nodes to the tailnet, but what those nodes can reach is
+governed by the tailnet [ACL policy](https://tailscale.com/kb/1018/acls). Rotation is a
+two-minute job: admin console → **Settings → OAuth clients** → revoke and regenerate with
+the same tag scope, then update the secrets on both repos.
+
+| Secret | Purpose |
+| --- | --- |
+| `TAILNET_ID` | The tailnet's identifier, for Tailscale API calls. |
+| `TS_OAUTH_CLIENT_ID` | OAuth client ID, paired with the secret below. |
+| `TS_OAUTH_SECRET` | OAuth client secret, scope limited to `tag:stream-cam-test`. Never pass it to `tailscale up` yourself — the CLI can echo it (see the Tailscale section above). |
 
 **MongoDB Atlas** — org *Vertical Cloud Lab @ BYU*, project `byu-vcl`, cluster `alloy`
 (M0 free, AWS Oregon). The database user is scoped `readWrite` on the `digital-wetlab`
