@@ -202,6 +202,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `background_baseline.py` | seated background of the closed enclosure; says whether the offset has moved |
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
+| `calibration_status.py` | read-only report of which OT-2 calibrations are present and which are missing |
 
 ## Lining a reading up against the livestream
 
@@ -761,6 +762,32 @@ well is *smaller* than the ~21 mm spot the aperture sees at z 120, so a 96-well
 plate makes the per-well blank ([#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197))
 mandatory rather than optional. The workflow history is
 [ac-dev-lab#552](https://github.com/AccelerationConsortium/ac-dev-lab/issues/552).
+
+## Calibrating in the Opentrons App
+
+Hand-tuning `--read-z`, `--drop-dx` and friends a millimetre at a time is not
+the intended way to position this rig. The Opentrons App calibrates once and the
+numbers follow the labware. See
+[`opentrons-calibration.md`](opentrons-calibration.md) for the full procedure;
+the short version:
+
+- **Four calibrations, in order: deck → tip length → pipette offset → Labware
+  Position Check.** Calibrating the deck *clears* the other two, so order is not
+  a suggestion. Only the first three live under Robot Settings; LPC exists only
+  inside a protocol run.
+- **The 96-well plate needs no import.** `corning_96_wellplate_360ul_flat` is a
+  stock definition. Only the sensor dock is custom (and the 6-tube paint
+  reservoir, if the robot is to dispense the paint itself).
+- **The sensor dock is declared `isTiprack: true`, so it needs its own tip
+  length calibration** with the attached pipette — a calibration against the
+  300 µL rack does not cover it. This is the step that is easy to miss.
+- **None of it reaches `run_xscan_test.py` as written.** That drives
+  `moveToCoordinates` inside a maintenance run, where no labware is loaded and
+  no LPC offset is applied. The payoff comes with the port to a real protocol.
+
+`python3 calibration_status.py --labware ac_color_sensor_charging_port.json`
+reports what is present and what is missing. It is read-only and moves nothing;
+run it from the Pi that holds the OT-2's ethernet link.
 
 ## Has this ever worked? — prior art and the accuracy ledger
 
