@@ -153,6 +153,7 @@ status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
+| `CUBXL_PI_HOSTNAME`, `CUBXL_PI_PASSWORD` | The Pi 5 that fronts the CubXL. Separate login and sudo password from the stream-cam Pis. `CUBXL_PI_USERNAME` is a repo **variable**, not a secret — its value is three characters and appears as a substring of `byu-vcl`, exactly the masking trap noted above. |
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
@@ -167,6 +168,22 @@ you cannot reach the robot from a runner or a laptop. `~/ot2ctl.py` on that Pi i
 wrapper over the maintenance-run API and is the quickest way to see the call pattern. Send
 `Opentrons-Version: 3` on every request. `GET /health` is read-only and safe; anything under
 `/maintenance_runs` moves real hardware.
+
+**Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
+Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access
+point Ben uses by commenting `@claude` on this repo — the runner joins the tailnet and SSHes
+in, so the tailnet ACL has to permit the runner's tag to reach this Pi's tag, not just
+`sgbaird@`. That Pi carries its own tag rather than `tag:tailscale-ssh`, so a rule written
+against `tag:tailscale-ssh` will not cover it. Because the source is a tagged node, the SSH
+rule must be `"action": "accept"` — [check mode cannot be used from a tagged
+device](https://tailscale.com/kb/1193/tailscale-ssh), since there is no human to
+re-authenticate.
+
+As of this writing the Pi is bare: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with
+`--ssh`, one `sudo`-capable user, and nothing CubXL-specific installed. It is joined over
+**wifi only** (`eth0` is down), so moving it out of range of that SSID takes it off the
+tailnet until it is given credentials for the new network. Its tailnet name and IP survive
+the move; nothing else does.
 
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`

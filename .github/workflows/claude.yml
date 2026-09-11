@@ -103,12 +103,17 @@ jobs:
           RPI_STREAM_CAM_PASSWORD: ${{ secrets.RPI_STREAM_CAM_PASSWORD }}
           OT2_STREAM_CAM_HOSTNAME: ${{ secrets.OT2_STREAM_CAM_HOSTNAME }}
           OT2_STREAM_CAM_PASSWORD: ${{ secrets.OT2_STREAM_CAM_PASSWORD }}
+          # The Pi 5 that fronts the CubXL. Its own login and sudo password,
+          # separate from the stream-cam Pis.
+          CUBXL_PI_HOSTNAME: ${{ secrets.CUBXL_PI_HOSTNAME }}
+          CUBXL_PI_PASSWORD: ${{ secrets.CUBXL_PI_PASSWORD }}
           # Usernames are repo *variables*, not secrets: one value is 3 characters,
           # and GitHub masks a short secret everywhere it appears as a substring —
           # it rewrote "byu-vcl" to "byu-***" throughout the logs. Set the values
           # under Settings → Secrets and variables → Actions → Variables.
           RPI_STREAM_CAM_USERNAME: ${{ vars.RPI_STREAM_CAM_USERNAME }}
           OT2_STREAM_CAM_USERNAME: ${{ vars.OT2_STREAM_CAM_USERNAME }}
+          CUBXL_PI_USERNAME: ${{ vars.CUBXL_PI_USERNAME }}
           HEALTHCHECKS_IO_URL: ${{ secrets.HEALTHCHECKS_IO_URL }}
           AIRGRADIENT_API_KEY: ${{ secrets.AIRGRADIENT_API_KEY }}
           ONEDRIVE_EDIT_LINK_PASSWORD: ${{ secrets.ONEDRIVE_EDIT_LINK_PASSWORD }}
