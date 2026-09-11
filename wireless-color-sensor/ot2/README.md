@@ -35,6 +35,43 @@ ethernet interface and no USB devices at all, so `169.254.51.252` times out from
 there — which is what "the OT-2 is not answering" looked like in the previous
 session. Check with `ip -4 -br addr` before concluding the robot is down.
 
+**`carrier` is not evidence.** On 2026-09-10 the adapter's USB interrupt
+endpoint died with `Stop submitting intr, status -71` and the robot went
+unreachable for eight hours while `eth1` still read `carrier=1`, `operstate=up`
+and held its `169.254.210.205/16` address. `ethtool` was no better — after the
+fault its register reads are garbage. **Judge this link by a ping to the robot
+and nothing else.** `ot2_link_recover.sh` does exactly that, and repairs it:
+
+```bash
+./ot2_link_recover.sh --check      # touches nothing, no root
+sudo ./ot2_link_recover.sh         # check, then repair if the robot is silent
+```
+
+Do **not** reach for `ip link set eth1 down/up`. It triggers a USB port reset
+the wedged adapter cannot complete, after which the driver reads chip version
+`0x0000`, refuses to bind, falls back to USB configuration 2 and `eth1`
+disappears entirely. See the header of `ot2_link_recover.sh` for the three
+stages that do work.
+
+Stage 2 needs `uhubctl`, installed on the `RPI_STREAM_CAM_HOSTNAME` Pi on
+2026-09-11 (`sudo apt-get install -y uhubctl`, binary at `/usr/sbin/uhubctl`).
+It is the only package this adds to that host.
+
+The root cause looks like USB 3 link power management: the boot log carries
+`usb 4-1: enable of device-initiated U2 failed.`, and `-EPROTO` on an RTL8153 at
+SuperSpeed is a well-worn symptom. Stage 0 of the script sets the `NO_LPM`
+usbcore quirk, which is **runtime-only** — `/sys/module/usbcore/parameters/quirks`
+resets on reboot. To make it permanent, append to `/boot/firmware/cmdline.txt`
+(one line, space-separated, and a typo there stops the Pi booting):
+
+```
+usbcore.quirks=0bda:8153:k
+```
+
+The durable fix is physical, and costs nothing: **move the adapter to one of the
+Pi's USB 2.0 ports**. 480 Mbps is about 48x what this link ever carries, and it
+sidesteps the SuperSpeed signalling entirely.
+
 The venv is already set up on that Pi at `~/.venvs/xscan` (`paho-mqtt`,
 `pymongo`, `requests`; the system Python 3.13 is externally managed, hence the
 venv). To rebuild it elsewhere:
@@ -154,6 +191,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `plot_spectra.py` | 300 px spectra in the light-mixing `basic_plotting.py` style |
 | `build_gallery.py` | stitches frame + spectrum + link into `measurement-gallery.md` |
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
+| `ot2_link_recover.sh` | checks the link by pinging the robot, and repairs a wedged USB-Ethernet adapter |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
 
