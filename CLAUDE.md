@@ -190,6 +190,37 @@ its buffered `log.txt` is lost, so an empty log after a reset means "I interrupt
 stream instead. And the reference `main.py` calls `connectWiFi(..., country="CA")`; for US
 operation that should be `"US"`, since the country code governs the usable 2.4 GHz channels.
 
+**The sensor firmware's own facts, read from source** (upstream
+[`wireless-color-sensor`](https://github.com/AccelerationConsortium/wireless-color-sensor),
+`sensor_file/`, which is what our Pico W runs). Three of these were guessed wrong on #197
+before anyone read the code:
+
+- **`R`/`Y`/`B` in the MQTT command payload are paint dispense volumes in microlitres, not
+  LED colours.** `OT2mqtt.py` aspirates them from vials `B1`/`B2`/`B3` with `R+Y+B <= 300`
+  because the pipette is a P300. The sensor board never reads them. So `sensor_read.read(
+  rgb=...)` controls nothing and never did.
+- **There is a controllable white LED on the AS7341** — `lib/as7341.py` `set_led_current()`,
+  4-20 mA, wrapped as a `Sensor.LED` property. It is off because `main.py`'s
+  `read_sensor_data()` has `# sensor.LED = True` / `# sensor.LED = False` commented out.
+  Do not "fix" this without reading
+  [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87) first: it
+  was tried upstream and rejected for saturating the enclosure walls and making similar
+  colours *less* distinguishable.
+- **One reading is two SMUX integrations**, `F1F4CN` then `F5F8CN`, and `Clear` is sampled
+  in both and discarded in both. At the shipped `Sensor(atime=200, astep=999, gain=128)`
+  that is 558.8 ms per cycle, 1.118 s per reading — about 80% of the measured ~1.42 s MQTT
+  round trip. Gain 128x against a 512x maximum, and the largest channel ever recorded here
+  is 3216 of 65535 full scale, so there is real headroom.
+
+**Prior art: this has worked before, upstream, twice.** See
+`wireless-color-sensor/ot2/accuracy-provenance.md` for the sourced ledger — the quantified
+success is a per-well white reference taking repeatability from 6-7% RSD to 1.2-2.3%
+([ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152)), and
+the second is a light panel under the plate plus per-well blank normalisation
+([ac-dev-lab#552](https://github.com/AccelerationConsortium/ac-dev-lab/issues/552)). Check
+that file before re-deriving an accuracy fix from scratch; #197 re-derived the per-position
+blank independently over several sessions.
+
 **MicroPython 1.29.0 or newer is required.** On 1.26–1.28 the RP2040 hardware I2C driver has
 a regression: `i2c.scan()` ACKs the AS7341 at `0x39`, but every register read or write
 returns `OSError: [Errno 5] EIO`, at any bus speed, with or without a repeated START. It
