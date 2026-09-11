@@ -333,3 +333,34 @@ regenerate the figure with `python3 plot_why_only_yellow.py`.
   two runs six minutes apart, not a sample.
 - **To settle it: move the sample, re-scan.** If the feature follows the vial it is
   real; if it stays at the same X it is the machine.
+
+---
+
+## Opentrons App protocols — `protocols/`
+
+Two protocols to run from the Opentrons App, replacing hand-tuned deck
+coordinates with labware the app can calibrate. See
+[`protocols/README.md`](protocols/README.md).
+
+- [`protocols/01_pickup_both_sides.py`](protocols/01_pickup_both_sides.py) —
+  can the P300 use **both** sockets of the charging base? Hover over each, pick
+  up in place, or shuttle the enclosure A1 → A2 → A1.
+- [`protocols/02_read_height_over_well.py`](protocols/02_read_height_over_well.py) —
+  carry the enclosure to one well of a 96-well plate and step through read
+  heights, expressed relative to the **well rim** rather than as an absolute
+  deck Z.
+
+Three constraints found by simulating against `opentrons==8.8.1`, the robot's
+own software version:
+
+- **`pick_up_tip` from the 2-well dock fails at `apiLevel` 2.14 and above** —
+  `InvalidStoredData: ... less dense than an SBS 96 standard`. The newer
+  tip-tracking code assumes a rack at least 12 wells wide and 8 tall. Both
+  protocols are pinned to **2.13**, which uses the older core. The cost is no
+  runtime parameters; Labware Position Check still works.
+- **Labware Position Check cannot separate A1 from A2** — one offset per
+  labware, so it slides both sockets together. A per-socket error has to be
+  fixed by editing `wells.A2.x` / `.y` in the definition.
+- **A bare P300 GEN2 on the left mount bottoms out at deck z 29.45 mm**, about
+  +15 mm over a 96-well plate rim. Dry runs can only rehearse the top of a
+  height ladder; the rest needs the 84 mm enclosure attached.
