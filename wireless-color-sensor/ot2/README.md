@@ -156,6 +156,33 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera |
+| `calibration_status.py` | read-only report of which OT-2 calibrations are present and which are missing |
+
+## Calibrating in the Opentrons App
+
+Hand-tuning `--read-z`, `--drop-dx` and friends a millimetre at a time is not
+the intended way to position this rig. The Opentrons App calibrates once and the
+numbers follow the labware. See
+[`opentrons-calibration.md`](opentrons-calibration.md) for the full procedure;
+the short version:
+
+- **Four calibrations, in order: deck → tip length → pipette offset → Labware
+  Position Check.** Calibrating the deck *clears* the other two, so order is not
+  a suggestion. Only the first three live under Robot Settings; LPC exists only
+  inside a protocol run.
+- **The 96-well plate needs no import.** `corning_96_wellplate_360ul_flat` is a
+  stock definition. Only the sensor dock is custom (and the 6-tube paint
+  reservoir, if the robot is to dispense the paint itself).
+- **The sensor dock is declared `isTiprack: true`, so it needs its own tip
+  length calibration** with the attached pipette — a calibration against the
+  300 µL rack does not cover it. This is the step that is easy to miss.
+- **None of it reaches `run_xscan_test.py` as written.** That drives
+  `moveToCoordinates` inside a maintenance run, where no labware is loaded and
+  no LPC offset is applied. The payoff comes with the port to a real protocol.
+
+`python3 calibration_status.py --labware ac_color_sensor_charging_port.json`
+reports what is present and what is missing. It is read-only and moves nothing;
+run it from the Pi that holds the OT-2's ethernet link.
 
 ## Lining a reading up against the livestream
 
