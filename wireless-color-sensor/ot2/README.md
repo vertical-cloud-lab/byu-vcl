@@ -333,3 +333,82 @@ regenerate the figure with `python3 plot_why_only_yellow.py`.
   two runs six minutes apart, not a sample.
 - **To settle it: move the sample, re-scan.** If the feature follows the vial it is
   real; if it stays at the same X it is the machine.
+
+## Calibrating with the Opentrons UI instead of hand-tuned offsets
+
+Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
+@sgbaird: rather than nudging constants like `--base-dx` / `--drop-dx` a
+millimetre at a time, let the robot own the geometry — calibrate in the
+Opentrons App and position against a labware definition.
+
+**Why none of that reaches this script today.** `run_xscan_test.py` drives the
+robot through `POST /maintenance_runs/.../commands` with `moveToCoordinates`
+and absolute deck numbers (`run_xscan_test.py:179`). There is no labware in the
+picture, so a Labware Position Check offset stored by the app is never applied
+— and `dropTipInPlace` bypasses Opentrons' own tip press/retract logic, which
+is the half that has twice mis-seated the module. Using the UI calibration
+means running a *protocol*, not a maintenance run.
+
+**The AC has already done this, and their definitions are public.** Both live
+in `src/ac_training_lab/ot-2/_scripts/` on `main`:
+
+| file | what |
+|---|---|
+| [`ac_color_sensor_charging_port.json`](https://github.com/AccelerationConsortium/ac-dev-lab/blob/main/src/ac_training_lab/ot-2/_scripts/ac_color_sensor_charging_port.json) | the sensor dock, as a 2-well "tiprack" in slot 10. Wells **A1 (36, 43)** and **A2 (91.95, 43)**, `z` 16, depth 84 |
+| [`ac_6_tuberack_15000ul.json`](https://github.com/AccelerationConsortium/ac-dev-lab/blob/main/src/ac_training_lab/ot-2/_scripts/ac_6_tuberack_15000ul.json) | the 3×2 paint-vial rack, slot 3 |
+
+Our hand-tuned pickup offset within slot 10 is (36.55, 44.0). Their A1 is
+(36, 43) — so the number this issue arrived at by trial is their definition to
+within 0.55 mm in X and 1.0 mm in Y. Worth adopting the file rather than
+re-deriving it.
+
+**The protocol pattern** —
+[`OT2mqtt.py`](https://github.com/AccelerationConsortium/ac-dev-lab/blob/main/src/ac_training_lab/ot-2/_scripts/OT2mqtt.py),
+run from the robot's own Jupyter notebook via `opentrons.execute`:
+
+```python
+protocol = opentrons.execute.get_protocol_api("2.18")   # see API-level note below
+dock  = protocol.load_labware_from_definition(json.load(open("ac_color_sensor_charging_port.json")), 10)
+plate = protocol.load_labware("corning_96_wellplate_360ul_flat", location=1)
+
+p300.pick_up_tip(dock["A2"])                 # Opentrons' own press + retract
+p300.move_to(plate[well].top(z=-1.3))        # 1.3 mm BELOW the well rim
+...
+p300.drop_tip(dock["A2"].top(z=-80))         # release, relative to the dock
+```
+
+`plate[well].top(z=-1.3)` is the whole point: the read height is expressed
+relative to the well, so "just above the liquid" survives a plate swap, a
+re-calibration and a slot change without anyone editing a Z constant. It is
+also how the AC got the sensor as close to the surface as #197 wants.
+
+**Calibration, in order:**
+
+1. Opentrons App ([download](https://opentrons.com/ot-app)) → *Robot Settings →
+   Calibration* — deck, pipette offset, tip length. Ours currently reports OK.
+2. *Labware* tab → import the two AC JSONs as custom labware
+   ([custom labware docs](https://docs.opentrons.com/v2/new_labware.html#custom-labware);
+   new definitions via the [Labware Creator](https://labware.opentrons.com/create/),
+   stock ones in the [Labware Library](https://labware.opentrons.com/)).
+3. Run the protocol from the app once and do
+   [**Labware Position Check**](https://docs.opentrons.com/v2/robot_position.html#using-labware-position-check)
+   — jog the pipette over each labware, and the app stores the offset. Robot
+   software 6.0.0+ reapplies it for the same labware type in the same slot,
+   across protocols.
+4. For the Jupyter/`opentrons.execute` path
+   ([docs](https://docs.opentrons.com/v2/new_advanced_running.html#from-jupyter-notebook))
+   the app's stored offsets do **not** apply automatically — read the LPC
+   numbers off the app and set them in code with
+   [`labware.set_offset(x, y, z)`](https://github.com/Opentrons/opentrons/blob/edge/api/src/opentrons/protocol_api/labware.py).
+
+⚠️ **API-level gotcha.** `set_offset()` raises at protocol API **2.14–2.17**,
+and the AC script requests `2.16`. Use **2.18 or later** (2.31 is the current
+maximum) if you want LPC offsets applied in a Jupyter protocol.
+
+Reference: well geometry for the stock plate is in
+[`corning_96_wellplate_360ul_flat/2.json`](https://github.com/Opentrons/opentrons/blob/edge/shared-data/labware/definitions/2/corning_96_wellplate_360ul_flat/2.json)
+— A1 at (14.38, 74.24), depth 10.67 mm, 6.86 mm diameter. Note that a 6.86 mm
+well is *smaller* than the ~21 mm spot the aperture sees at z 120, so a 96-well
+plate makes the per-well blank ([#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197))
+mandatory rather than optional. The workflow history is
+[ac-dev-lab#552](https://github.com/AccelerationConsortium/ac-dev-lab/issues/552).
