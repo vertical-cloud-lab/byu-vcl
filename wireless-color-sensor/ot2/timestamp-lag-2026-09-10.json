@@ -1,0 +1,791 @@
+{
+  "runs": [
+    {
+      "started": "2026-09-04T22:47:40.187707+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788562060875",
+          "true_epoch": 1788562060.875,
+          "stored_epoch": 1788562065.765,
+          "late_s": 4.890000104904175
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788562062382",
+          "true_epoch": 1788562062.382,
+          "stored_epoch": 1788562065.765,
+          "late_s": 3.383000135421753
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T00:58:48.492724+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788915530013",
+          "true_epoch": 1788915530.013,
+          "stored_epoch": 1788915534.399,
+          "late_s": 4.385999917984009
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788915531577",
+          "true_epoch": 1788915531.577,
+          "stored_epoch": 1788915534.399,
+          "late_s": 2.822000026702881
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:09:45.819942+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788916186784",
+          "true_epoch": 1788916186.784,
+          "stored_epoch": 1788916191.24,
+          "late_s": 4.456000089645386
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788916188409",
+          "true_epoch": 1788916188.409,
+          "stored_epoch": 1788916191.24,
+          "late_s": 2.8310000896453857
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:11:41.795923+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788916302852",
+          "true_epoch": 1788916302.852,
+          "stored_epoch": 1788916512.569,
+          "late_s": 209.7170000076294
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788916304416",
+          "true_epoch": 1788916304.416,
+          "stored_epoch": 1788916512.569,
+          "late_s": 208.15300011634827
+        },
+        {
+          "experiment_id": "grip-check-1-1788916354761",
+          "true_epoch": 1788916354.761,
+          "stored_epoch": 1788916512.569,
+          "late_s": 157.80800008773804
+        },
+        {
+          "experiment_id": "grip-check-2-1788916356165",
+          "true_epoch": 1788916356.165,
+          "stored_epoch": 1788916512.569,
+          "late_s": 156.40400004386902
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788916386614",
+          "true_epoch": 1788916386.614,
+          "stored_epoch": 1788916512.569,
+          "late_s": 125.95499992370605
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788916388039",
+          "true_epoch": 1788916388.039,
+          "stored_epoch": 1788916512.569,
+          "late_s": 124.52999997138977
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788916389443",
+          "true_epoch": 1788916389.443,
+          "stored_epoch": 1788916512.569,
+          "late_s": 123.12599992752075
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788916406265",
+          "true_epoch": 1788916406.265,
+          "stored_epoch": 1788916512.569,
+          "late_s": 106.30399990081787
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788916407689",
+          "true_epoch": 1788916407.689,
+          "stored_epoch": 1788916512.569,
+          "late_s": 104.88000011444092
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788916409093",
+          "true_epoch": 1788916409.093,
+          "stored_epoch": 1788916512.569,
+          "late_s": 103.4760000705719
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788916425925",
+          "true_epoch": 1788916425.925,
+          "stored_epoch": 1788916512.569,
+          "late_s": 86.64400005340576
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788916427350",
+          "true_epoch": 1788916427.35,
+          "stored_epoch": 1788916512.569,
+          "late_s": 85.21900010108948
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788916428774",
+          "true_epoch": 1788916428.774,
+          "stored_epoch": 1788916512.569,
+          "late_s": 83.79500007629395
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788916508224",
+          "true_epoch": 1788916508.224,
+          "stored_epoch": 1788916512.569,
+          "late_s": 4.3450000286102295
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788916509649",
+          "true_epoch": 1788916509.649,
+          "stored_epoch": 1788916512.569,
+          "late_s": 2.9200000762939453
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:27:23.697974+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788917244691",
+          "true_epoch": 1788917244.691,
+          "stored_epoch": 1788917249.279,
+          "late_s": 4.588000059127808
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788917246336",
+          "true_epoch": 1788917246.336,
+          "stored_epoch": 1788917249.279,
+          "late_s": 2.943000078201294
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:27:36.870138+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788917257818",
+          "true_epoch": 1788917257.818,
+          "stored_epoch": 1788917442.231,
+          "late_s": 184.41299986839294
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788917259503",
+          "true_epoch": 1788917259.503,
+          "stored_epoch": 1788917442.231,
+          "late_s": 182.7279999256134
+        },
+        {
+          "experiment_id": "grip-check-1-1788917305399",
+          "true_epoch": 1788917305.399,
+          "stored_epoch": 1788917442.231,
+          "late_s": 136.83200001716614
+        },
+        {
+          "experiment_id": "grip-check-2-1788917306824",
+          "true_epoch": 1788917306.824,
+          "stored_epoch": 1788917442.231,
+          "late_s": 135.40700006484985
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788917329497",
+          "true_epoch": 1788917329.497,
+          "stored_epoch": 1788917442.231,
+          "late_s": 112.73399996757507
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788917330922",
+          "true_epoch": 1788917330.922,
+          "stored_epoch": 1788917442.231,
+          "late_s": 111.30900001525879
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788917332326",
+          "true_epoch": 1788917332.326,
+          "stored_epoch": 1788917442.231,
+          "late_s": 109.90499997138977
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788917348136",
+          "true_epoch": 1788917348.136,
+          "stored_epoch": 1788917442.231,
+          "late_s": 94.09500002861023
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788917349560",
+          "true_epoch": 1788917349.56,
+          "stored_epoch": 1788917442.231,
+          "late_s": 92.6710000038147
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788917350965",
+          "true_epoch": 1788917350.965,
+          "stored_epoch": 1788917442.231,
+          "late_s": 91.26600003242493
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788917366789",
+          "true_epoch": 1788917366.789,
+          "stored_epoch": 1788917442.231,
+          "late_s": 75.44199991226196
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788917368213",
+          "true_epoch": 1788917368.213,
+          "stored_epoch": 1788917442.231,
+          "late_s": 74.01799988746643
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788917369638",
+          "true_epoch": 1788917369.638,
+          "stored_epoch": 1788917442.231,
+          "late_s": 72.59299993515015
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788917436531",
+          "true_epoch": 1788917436.531,
+          "stored_epoch": 1788917442.231,
+          "late_s": 5.700000047683716
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788917439299",
+          "true_epoch": 1788917439.299,
+          "stored_epoch": 1788917442.231,
+          "late_s": 2.931999921798706
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:31:14.490742+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788917475389",
+          "true_epoch": 1788917475.389,
+          "stored_epoch": 1788917667.765,
+          "late_s": 192.37600016593933
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788917478577",
+          "true_epoch": 1788917478.577,
+          "stored_epoch": 1788917667.765,
+          "late_s": 189.18800020217896
+        },
+        {
+          "experiment_id": "grip-check-1-1788917523158",
+          "true_epoch": 1788917523.158,
+          "stored_epoch": 1788917667.765,
+          "late_s": 144.60700011253357
+        },
+        {
+          "experiment_id": "grip-check-2-1788917524602",
+          "true_epoch": 1788917524.602,
+          "stored_epoch": 1788917667.765,
+          "late_s": 143.16300010681152
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788917553746",
+          "true_epoch": 1788917553.746,
+          "stored_epoch": 1788917667.765,
+          "late_s": 114.01900005340576
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788917555170",
+          "true_epoch": 1788917555.17,
+          "stored_epoch": 1788917667.765,
+          "late_s": 112.59500002861023
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788917556615",
+          "true_epoch": 1788917556.615,
+          "stored_epoch": 1788917667.765,
+          "late_s": 111.15000009536743
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788917573577",
+          "true_epoch": 1788917573.577,
+          "stored_epoch": 1788917667.765,
+          "late_s": 94.18800020217896
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788917575001",
+          "true_epoch": 1788917575.001,
+          "stored_epoch": 1788917667.765,
+          "late_s": 92.76400017738342
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788917576406",
+          "true_epoch": 1788917576.406,
+          "stored_epoch": 1788917667.765,
+          "late_s": 91.35900020599365
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788917593237",
+          "true_epoch": 1788917593.237,
+          "stored_epoch": 1788917667.765,
+          "late_s": 74.52800011634827
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788917594661",
+          "true_epoch": 1788917594.661,
+          "stored_epoch": 1788917667.765,
+          "late_s": 73.10400009155273
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788917596065",
+          "true_epoch": 1788917596.065,
+          "stored_epoch": 1788917667.765,
+          "late_s": 71.70000004768372
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788917663476",
+          "true_epoch": 1788917663.476,
+          "stored_epoch": 1788917667.765,
+          "late_s": 4.289000034332275
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788917664880",
+          "true_epoch": 1788917664.88,
+          "stored_epoch": 1788917667.765,
+          "late_s": 2.884999990463257
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:41:50.986226+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788918111936",
+          "true_epoch": 1788918111.936,
+          "stored_epoch": 1788918294.082,
+          "late_s": 182.14599990844727
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788918115225",
+          "true_epoch": 1788918115.225,
+          "stored_epoch": 1788918294.083,
+          "late_s": 178.85800004005432
+        },
+        {
+          "experiment_id": "grip-check-1-1788918160231",
+          "true_epoch": 1788918160.231,
+          "stored_epoch": 1788918294.083,
+          "late_s": 133.85199999809265
+        },
+        {
+          "experiment_id": "grip-check-2-1788918161695",
+          "true_epoch": 1788918161.695,
+          "stored_epoch": 1788918294.083,
+          "late_s": 132.3880000114441
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788918184302",
+          "true_epoch": 1788918184.302,
+          "stored_epoch": 1788918294.083,
+          "late_s": 109.78099989891052
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788918185727",
+          "true_epoch": 1788918185.727,
+          "stored_epoch": 1788918294.083,
+          "late_s": 108.35599994659424
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788918187131",
+          "true_epoch": 1788918187.131,
+          "stored_epoch": 1788918294.083,
+          "late_s": 106.95199990272522
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788918202346",
+          "true_epoch": 1788918202.346,
+          "stored_epoch": 1788918294.083,
+          "late_s": 91.73699998855591
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788918203771",
+          "true_epoch": 1788918203.771,
+          "stored_epoch": 1788918294.083,
+          "late_s": 90.31200003623962
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788918205175",
+          "true_epoch": 1788918205.175,
+          "stored_epoch": 1788918294.083,
+          "late_s": 88.9079999923706
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788918220446",
+          "true_epoch": 1788918220.446,
+          "stored_epoch": 1788918294.083,
+          "late_s": 73.63699984550476
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788918221871",
+          "true_epoch": 1788918221.871,
+          "stored_epoch": 1788918294.083,
+          "late_s": 72.21199989318848
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788918223275",
+          "true_epoch": 1788918223.275,
+          "stored_epoch": 1788918294.083,
+          "late_s": 70.80799984931946
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788918289814",
+          "true_epoch": 1788918289.814,
+          "stored_epoch": 1788918294.083,
+          "late_s": 4.269000053405762
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788918291238",
+          "true_epoch": 1788918291.238,
+          "stored_epoch": 1788918294.083,
+          "late_s": 2.8450000286102295
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:51:40.891220+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788918701773",
+          "true_epoch": 1788918701.773,
+          "stored_epoch": 1788918881.651,
+          "late_s": 179.87800002098083
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788918703398",
+          "true_epoch": 1788918703.398,
+          "stored_epoch": 1788918881.651,
+          "late_s": 178.25300002098083
+        },
+        {
+          "experiment_id": "grip-check-1-1788918747877",
+          "true_epoch": 1788918747.877,
+          "stored_epoch": 1788918881.651,
+          "late_s": 133.7739999294281
+        },
+        {
+          "experiment_id": "grip-check-2-1788918749301",
+          "true_epoch": 1788918749.301,
+          "stored_epoch": 1788918881.651,
+          "late_s": 132.34999990463257
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788918771627",
+          "true_epoch": 1788918771.627,
+          "stored_epoch": 1788918881.651,
+          "late_s": 110.0239999294281
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788918773031",
+          "true_epoch": 1788918773.031,
+          "stored_epoch": 1788918881.651,
+          "late_s": 108.62000012397766
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788918774455",
+          "true_epoch": 1788918774.455,
+          "stored_epoch": 1788918881.651,
+          "late_s": 107.19600009918213
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788918789706",
+          "true_epoch": 1788918789.706,
+          "stored_epoch": 1788918881.651,
+          "late_s": 91.9449999332428
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788918791110",
+          "true_epoch": 1788918791.11,
+          "stored_epoch": 1788918881.651,
+          "late_s": 90.54100012779236
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788918792514",
+          "true_epoch": 1788918792.514,
+          "stored_epoch": 1788918881.651,
+          "late_s": 89.13700008392334
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788918807847",
+          "true_epoch": 1788918807.847,
+          "stored_epoch": 1788918881.651,
+          "late_s": 73.80400013923645
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788918809272",
+          "true_epoch": 1788918809.272,
+          "stored_epoch": 1788918881.651,
+          "late_s": 72.37899994850159
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788918810696",
+          "true_epoch": 1788918810.696,
+          "stored_epoch": 1788918881.651,
+          "late_s": 70.95499992370605
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788918877395",
+          "true_epoch": 1788918877.395,
+          "stored_epoch": 1788918881.651,
+          "late_s": 4.25600004196167
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788918878819",
+          "true_epoch": 1788918878.819,
+          "stored_epoch": 1788918881.651,
+          "late_s": 2.8320000171661377
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T01:56:52.922881+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788919013828",
+          "true_epoch": 1788919013.828,
+          "stored_epoch": 1788919271.425,
+          "late_s": 257.59699988365173
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788919015392",
+          "true_epoch": 1788919015.392,
+          "stored_epoch": 1788919271.425,
+          "late_s": 256.0329999923706
+        },
+        {
+          "experiment_id": "grip-check-1-1788919059814",
+          "true_epoch": 1788919059.814,
+          "stored_epoch": 1788919271.425,
+          "late_s": 211.61100006103516
+        },
+        {
+          "experiment_id": "grip-check-2-1788919061219",
+          "true_epoch": 1788919061.219,
+          "stored_epoch": 1788919271.425,
+          "late_s": 210.2059998512268
+        },
+        {
+          "experiment_id": "pos1-dx-60-1-1788919084295",
+          "true_epoch": 1788919084.295,
+          "stored_epoch": 1788919271.425,
+          "late_s": 187.12999987602234
+        },
+        {
+          "experiment_id": "pos1-dx-60-2-1788919085719",
+          "true_epoch": 1788919085.719,
+          "stored_epoch": 1788919271.425,
+          "late_s": 185.7059998512268
+        },
+        {
+          "experiment_id": "pos2-dx-50-1-1788919098676",
+          "true_epoch": 1788919098.676,
+          "stored_epoch": 1788919271.425,
+          "late_s": 172.74899983406067
+        },
+        {
+          "experiment_id": "pos2-dx-50-2-1788919100080",
+          "true_epoch": 1788919100.08,
+          "stored_epoch": 1788919271.425,
+          "late_s": 171.34500002861023
+        },
+        {
+          "experiment_id": "pos3-dx-40-1-1788919113043",
+          "true_epoch": 1788919113.043,
+          "stored_epoch": 1788919271.425,
+          "late_s": 158.38199996948242
+        },
+        {
+          "experiment_id": "pos3-dx-40-2-1788919114448",
+          "true_epoch": 1788919114.448,
+          "stored_epoch": 1788919271.425,
+          "late_s": 156.97699999809265
+        },
+        {
+          "experiment_id": "pos4-dx-30-1-1788919127383",
+          "true_epoch": 1788919127.383,
+          "stored_epoch": 1788919271.425,
+          "late_s": 144.0420000553131
+        },
+        {
+          "experiment_id": "pos4-dx-30-2-1788919128787",
+          "true_epoch": 1788919128.787,
+          "stored_epoch": 1788919271.425,
+          "late_s": 142.6380000114441
+        },
+        {
+          "experiment_id": "pos5-dx-20-1-1788919141745",
+          "true_epoch": 1788919141.745,
+          "stored_epoch": 1788919271.425,
+          "late_s": 129.6800000667572
+        },
+        {
+          "experiment_id": "pos5-dx-20-2-1788919143189",
+          "true_epoch": 1788919143.189,
+          "stored_epoch": 1788919271.425,
+          "late_s": 128.23600006103516
+        },
+        {
+          "experiment_id": "pos6-dx-10-1-1788919156131",
+          "true_epoch": 1788919156.131,
+          "stored_epoch": 1788919271.425,
+          "late_s": 115.29399991035461
+        },
+        {
+          "experiment_id": "pos6-dx-10-2-1788919157555",
+          "true_epoch": 1788919157.555,
+          "stored_epoch": 1788919271.425,
+          "late_s": 113.86999988555908
+        },
+        {
+          "experiment_id": "pos7-dx+0-1-1788919170501",
+          "true_epoch": 1788919170.501,
+          "stored_epoch": 1788919271.425,
+          "late_s": 100.92400002479553
+        },
+        {
+          "experiment_id": "pos7-dx+0-2-1788919171926",
+          "true_epoch": 1788919171.926,
+          "stored_epoch": 1788919271.425,
+          "late_s": 99.49899983406067
+        },
+        {
+          "experiment_id": "pos8-dx+10-1-1788919184875",
+          "true_epoch": 1788919184.875,
+          "stored_epoch": 1788919271.425,
+          "late_s": 86.54999995231628
+        },
+        {
+          "experiment_id": "pos8-dx+10-2-1788919186279",
+          "true_epoch": 1788919186.279,
+          "stored_epoch": 1788919271.425,
+          "late_s": 85.14599990844727
+        },
+        {
+          "experiment_id": "pos9-dx+20-1-1788919199230",
+          "true_epoch": 1788919199.23,
+          "stored_epoch": 1788919271.425,
+          "late_s": 72.1949999332428
+        },
+        {
+          "experiment_id": "pos9-dx+20-2-1788919200654",
+          "true_epoch": 1788919200.654,
+          "stored_epoch": 1788919271.425,
+          "late_s": 70.77099990844727
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788919267105",
+          "true_epoch": 1788919267.105,
+          "stored_epoch": 1788919271.425,
+          "late_s": 4.319999933242798
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788919268529",
+          "true_epoch": 1788919268.529,
+          "stored_epoch": 1788919271.425,
+          "late_s": 2.8959999084472656
+        }
+      ]
+    },
+    {
+      "started": "2026-09-09T02:20:58.206026+00:00",
+      "readings": [
+        {
+          "experiment_id": "seated-baseline-1-1788920459149",
+          "true_epoch": 1788920459.149,
+          "stored_epoch": 1788920638.336,
+          "late_s": 179.18700003623962
+        },
+        {
+          "experiment_id": "seated-baseline-2-1788920460714",
+          "true_epoch": 1788920460.714,
+          "stored_epoch": 1788920638.336,
+          "late_s": 177.62199997901917
+        },
+        {
+          "experiment_id": "grip-check-1-1788920505268",
+          "true_epoch": 1788920505.268,
+          "stored_epoch": 1788920638.336,
+          "late_s": 133.0680000782013
+        },
+        {
+          "experiment_id": "grip-check-2-1788920506693",
+          "true_epoch": 1788920506.693,
+          "stored_epoch": 1788920638.336,
+          "late_s": 131.64299988746643
+        },
+        {
+          "experiment_id": "pos1-dx-30-1-1788920529065",
+          "true_epoch": 1788920529.065,
+          "stored_epoch": 1788920638.336,
+          "late_s": 109.27099990844727
+        },
+        {
+          "experiment_id": "pos1-dx-30-2-1788920530489",
+          "true_epoch": 1788920530.489,
+          "stored_epoch": 1788920638.336,
+          "late_s": 107.84699988365173
+        },
+        {
+          "experiment_id": "pos1-dx-30-3-1788920531914",
+          "true_epoch": 1788920531.914,
+          "stored_epoch": 1788920638.336,
+          "late_s": 106.42199993133545
+        },
+        {
+          "experiment_id": "pos2-dx+0-1-1788920546935",
+          "true_epoch": 1788920546.935,
+          "stored_epoch": 1788920638.336,
+          "late_s": 91.40100002288818
+        },
+        {
+          "experiment_id": "pos2-dx+0-2-1788920548359",
+          "true_epoch": 1788920548.359,
+          "stored_epoch": 1788920638.336,
+          "late_s": 89.97699999809265
+        },
+        {
+          "experiment_id": "pos2-dx+0-3-1788920549763",
+          "true_epoch": 1788920549.763,
+          "stored_epoch": 1788920638.336,
+          "late_s": 88.57299995422363
+        },
+        {
+          "experiment_id": "pos3-dx+30-1-1788920564785",
+          "true_epoch": 1788920564.785,
+          "stored_epoch": 1788920638.336,
+          "late_s": 73.55099987983704
+        },
+        {
+          "experiment_id": "pos3-dx+30-2-1788920566209",
+          "true_epoch": 1788920566.209,
+          "stored_epoch": 1788920638.336,
+          "late_s": 72.1269998550415
+        },
+        {
+          "experiment_id": "pos3-dx+30-3-1788920567653",
+          "true_epoch": 1788920567.653,
+          "stored_epoch": 1788920638.336,
+          "late_s": 70.68299984931946
+        },
+        {
+          "experiment_id": "reseat-confirm-1-1788920634086",
+          "true_epoch": 1788920634.086,
+          "stored_epoch": 1788920638.336,
+          "late_s": 4.25
+        },
+        {
+          "experiment_id": "reseat-confirm-2-1788920635510",
+          "true_epoch": 1788920635.51,
+          "stored_epoch": 1788920638.336,
+          "late_s": 2.8259999752044678
+        }
+      ]
+    }
+  ]
+}
