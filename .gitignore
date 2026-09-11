@@ -210,10 +210,20 @@ __marimo__/
 
 # Private/local notes not meant for the public repo (may contain PII)
 /private/
-my_secrets.py
 latex/byu-coi-briefing.aux
 latex/byu-coi-briefing.out
 latex/byu-coi-briefing.pdf
 latex/byu-coi-plan.aux
 latex/byu-coi-plan.out
 latex/byu-coi-plan.pdf
+
+# Device credential files — plaintext Wi-Fi and MQTT secrets for the Pico W.
+# Handed to whoever flashes the device; never committed.
+my_secrets.py
+**/my_secrets.py
+
+# Local Claude Code settings — plaintext credentials in an "env" block.
+# The global ~/.config/git/ignore also covers this, but that does not survive
+# a clone onto another machine, and this repo is public.
+.claude/settings.local.json
+.claude/settings.local.json.*
