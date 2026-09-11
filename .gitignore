@@ -210,3 +210,10 @@ __marimo__/
 
 # Private/local notes not meant for the public repo (may contain PII)
 /private/
+my_secrets.py
+latex/byu-coi-briefing.aux
+latex/byu-coi-briefing.out
+latex/byu-coi-briefing.pdf
+latex/byu-coi-plan.aux
+latex/byu-coi-plan.out
+latex/byu-coi-plan.pdf
