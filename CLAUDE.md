@@ -191,10 +191,31 @@ and `.claude/settings.local.json`. Two small console quirks cost real time: cred
 descriptions are capped at 50 characters and reject anything non-alphanumeric (no hyphens),
 and the same alphanumeric rule applies to auth-key descriptions created through the API.
 
-Note also that `grants` is currently `src: ["*"], dst: ["*"], ip: ["*"]` — every node can
-reach every other node on every port. The `ssh` block is therefore the only real boundary,
-and it governs Tailscale SSH alone; anything else listening on a Pi is reachable from
-anywhere on the tailnet.
+**The policy file lives in `vertical-cloud-lab/tailscale-policy`, not the console.**
+`policy.hujson` there is the source of truth: a pull request runs
+`tailscale/gitops-acl-action` in `test` mode to validate it, and merging to `main` runs
+`apply`, which replaces the live policy. Auth is OIDC workload identity, so there is no
+long-lived secret. Edit by PR; editing in the admin console just gets overwritten by the
+next merge.
+
+`grants` was `src: ["*"], dst: ["*"], ip: ["*"]` until 12 September 2026 — every node could
+reach every other node on every port, which made the `ssh` block the only real boundary
+despite governing Tailscale SSH alone. It now mirrors the `ssh` block: people reach
+everything, devices reach only their own tag group. Two things follow. Tailscale needs
+**both** a grant and an `ssh` rule for a connection, so `grants` must never be narrower than
+`ssh` or SSH breaks with no useful error. And ports are still `"*"` — the services on these
+Pis have never been inventoried, so pinning them to `tcp:22` would cut the streaming
+pipeline silently. Narrowing the ports is the unfinished half of this, and it wants
+`ss -tlnH` from each Pi first.
+
+**SSH rules are first-match-wins, and the general `check` rule sits at the top.** A specific
+`accept` rule further down does not override it: any `autogroup:member` reaching a device
+tagged `tag:tailscale-ssh` gets check mode, whatever later rules say. Adding
+`tag:tailscale-ssh` to a Pi that already had a user-scoped `accept` rule is therefore enough
+to put browser re-authentication back in front of it — which is what happened to the CubXL
+Pi. It also makes the `williamulbz@github` → `tag:tailscale-ssh` rule dead code. Tagged
+sources are unaffected, so CI never sees check mode. If a named user should skip the
+prompt, their rule has to move *above* the check rule.
 
 As of this writing the Pi is bare: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with
 `--ssh`, one `sudo`-capable user, and nothing CubXL-specific installed. It is joined over
