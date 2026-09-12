@@ -41,7 +41,12 @@ jobs:
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
-          tags: tag:stream-cam-test
+          # Two tags: the stream-cam devices, and the Pi that fronts the CubXL.
+          # The tailnet policy grants SSH within each tag, so the runner has to
+          # carry a tag to reach that tag's devices. The OAuth client must be
+          # authorized for BOTH or the join fails outright — see the Tailscale
+          # section of CLAUDE.md before changing either side.
+          tags: tag:stream-cam-test,tag:pi-5-des4
 
       # Copilot-style model selector: @claude+<model>[:<effort>]
       # Examples: @claude, @claude+opus-5, @claude+opus-4.8:max, @claude:high

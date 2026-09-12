@@ -171,13 +171,30 @@ wrapper over the maintenance-run API and is the quickest way to see the call pat
 
 **Reaching the CubXL Pi.** A Pi 5 on the tailnet at `CUBXL_PI_HOSTNAME`, reachable over
 Tailscale SSH as `CUBXL_PI_USERNAME` the same way the stream-cam Pis are. It is the access
-point Ben uses by commenting `@claude` on this repo — the runner joins the tailnet and SSHes
-in, so the tailnet ACL has to permit the runner's tag to reach this Pi's tag, not just
-`sgbaird@`. That Pi carries its own tag rather than `tag:tailscale-ssh`, so a rule written
-against `tag:tailscale-ssh` will not cover it. Because the source is a tagged node, the SSH
-rule must be `"action": "accept"` — [check mode cannot be used from a tagged
-device](https://tailscale.com/kb/1193/tailscale-ssh), since there is no human to
-re-authenticate.
+point Ben Whitney uses by commenting `@claude` on this repo: the runner joins the tailnet
+and SSHes in, so what matters is the *runner's* tag, not a user identity. The policy file
+grants SSH **within** each tag, so the runner has to carry the Pi's tag to reach the Pi.
+Because the source is a tagged node the rule is `"action": "accept"` — [check mode cannot be
+used from a tagged device](https://tailscale.com/kb/1193/tailscale-ssh), as there is no
+human to re-authenticate. Ben also has a direct user-scoped rule, which works the moment he
+joins the tailnet; that path needs no CI at all.
+
+**An OAuth client with several tags must request every one of them.** The CI credential is
+authorized for two tags, and asking for a subset is refused outright with `requested tags
+[...] are invalid or not permitted` — the same error you get for a tag the client does not
+own at all, which makes it look like a permissions problem rather than an all-or-nothing
+one. That is why `claude.yml` passes `tags: tag:stream-cam-test,tag:pi-5-des4` as a pair;
+dropping either one breaks the join for both. Tags are fixed when a client is created —
+the console offers only create, revoke and delete — so widening a client's reach means
+minting a **new** client and rotating `TS_OAUTH_CLIENT_ID`/`TS_OAUTH_SECRET` in both GitHub
+and `.claude/settings.local.json`. Two small console quirks cost real time: credential
+descriptions are capped at 50 characters and reject anything non-alphanumeric (no hyphens),
+and the same alphanumeric rule applies to auth-key descriptions created through the API.
+
+Note also that `grants` is currently `src: ["*"], dst: ["*"], ip: ["*"]` — every node can
+reach every other node on every port. The `ssh` block is therefore the only real boundary,
+and it governs Tailscale SSH alone; anything else listening on a Pi is reachable from
+anywhere on the tailnet.
 
 As of this writing the Pi is bare: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with
 `--ssh`, one `sudo`-capable user, and nothing CubXL-specific installed. It is joined over
