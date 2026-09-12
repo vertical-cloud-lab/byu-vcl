@@ -87,7 +87,6 @@ record them in the repo's docs so they can be reproduced or upstreamed.
 ## Secret inventory
 
 Names and purposes only — **never** echo, grep, or print the values. Every secret below is
-set on both `vertical-cloud-lab/byu-vcl` and `vertical-cloud-lab/digital-wetlab`, and is
 passed through the `env:` block of `.github/workflows/claude.yml`. Adding a new secret means
 editing that block too; the Claude GitHub App cannot modify `.github/workflows/`, so that
 step is always a human commit. Exception: `RPI_STREAM_CAM_USERNAME` and
