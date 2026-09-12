@@ -153,7 +153,7 @@ status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
-| `CUBXL_PI_HOSTNAME`, `CUBXL_PI_PASSWORD` | The Pi 5 that fronts the CubXL. Separate login and sudo password from the stream-cam Pis. `CUBXL_PI_USERNAME` is a repo **variable**, not a secret — its value is three characters and appears as a substring of `byu-vcl`, exactly the masking trap noted above. |
+| `CUBXL_PI_PASSWORD` | Sudo password for the Pi 5 that fronts the CubXL, separate from the stream-cam Pis. `CUBXL_PI_USERNAME` and `CUBXL_PI_HOSTNAME` are repo **variables**, not secrets. The username has to be, since its value is three characters and appears as a substring of `byu-vcl` — exactly the masking trap noted above. The hostname is one by choice: a tailnet name confers no access on its own, and it already appears in that Pi's tag name in `claude.yml`, so keeping it secret bought nothing but inconsistency. |
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact
