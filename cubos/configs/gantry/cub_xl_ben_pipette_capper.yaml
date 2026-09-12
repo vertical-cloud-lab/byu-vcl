@@ -133,7 +133,9 @@ instruments:
     offline: false
     park_position:
     - 236
-    - 175
+    - 25    # CHANGED 2026-09-08 (was 175): off the vial
+            # column in X (vials span x 192-220), so no capper leg
+            # carries the passive nozzle over a cap.
     port: /dev/ttyACM0
   pipette:
     type: pipette

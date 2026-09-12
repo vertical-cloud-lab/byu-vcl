@@ -565,3 +565,37 @@ The load-bearing results:
 - **Upstream senses tip pickup**, with a second limit switch on the tool and RRF's
   `H4` stop-on-endstop move. That is the answer to this branch's long-standing
   unsensed `pick_up_tip`; printable switch holders ship in the same tool library.
+
+## 2026-09-12 — the CubXL moved to a new Pi; cameras arrive, SSH does not
+
+See [`results/pipette_test_20260912/`](results/pipette_test_20260912/README.md).
+
+The CubXL was moved onto a new Raspberry Pi 5 with two cameras attached, and the
+2026-09-08 trio was to be run through it. It was not run: the new Pi is online on
+the tailnet but carries **`tag:pi-5-des4`** and no `tag:tailscale-ssh`, so
+Tailscale SSH from a CI runner tagged `tag:stream-cam-test` is refused. Five
+login names were refused identically, which rules out a `users`-field mismatch —
+the policy has no `dst` covering that tag. The OAuth client cannot read or write
+the policy (403 on both `/acl` and `/devices`), so this is an admin change.
+
+The CubXL genuinely left the old Pi: no `/dev/ttyUSB*` or `/dev/ttyACM*` there
+any more, and `lsusb` shows only an Ethernet adapter. There is no fallback host.
+
+Everything offline was done instead. Against CubOS `cbc33dc` + all four patches,
+the trio gives `validate_setup` PASS (12 steps), `--mock` 12/12, and
+`passive_shadow` **0 interferences both nominal and tip-stuck**. The only change
+in the trio is both park positions moving to the near-Y end of the deck; the
+capper park is now off the vial column in X (236 vs the column's 192–220), which
+holds the passive nozzle ≥ 38 mm clear of every cap and is what keeps the
+tip-stuck column at zero.
+
+New: [`tools/run_with_camera_capture.py`](tools/run_with_camera_capture.py) —
+wraps `run_protocol` and grabs frames at **step boundaries**, where the gantry is
+stationary and its pose is known, naming each file for the step it followed. Two
+properties were tested rather than asserted: with both cameras stubbed to fail
+the protocol still completed 12/12 and returned 0 (a camera cannot abort a run),
+and the default capture points for this protocol come out as steps 2, 4, 7, 9 —
+`decap vial_1`, `aspirate`, `decap vial_2`, `drop_tip`, which are precisely the
+four questions that have needed eyes on this branch. CSI cameras are found via
+`rpicam-still --list-cameras`, USB UVC via `ffmpeg` on capture-capable
+`/dev/videoN` nodes.

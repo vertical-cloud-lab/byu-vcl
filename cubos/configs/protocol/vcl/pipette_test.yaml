@@ -79,7 +79,10 @@
 
 positions:
   park_position: [206.0, 25.0, 115.0]
-  pipette_park:  [258.0, 182.0, 87.0]
+  pipette_park:  [258.0, 25.0, 87.0]   # CHANGED 2026-09-08 (was 182.0):
+                                       # Ben moved both parks to the near-Y
+                                       # end of the deck. Pipette frame, so
+                                       # gantry (206, 13, 122).
 
 protocol:
   - home:
