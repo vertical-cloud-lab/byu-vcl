@@ -232,11 +232,32 @@ Pi. It also makes the `williamulbz@github` → `tag:tailscale-ssh` rule dead cod
 sources are unaffected, so CI never sees check mode. If a named user should skip the
 prompt, their rule has to move *above* the check rule.
 
-As of this writing the Pi is bare: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with
-`--ssh`, one `sudo`-capable user, and nothing CubXL-specific installed. It is joined over
-**wifi only** (`eth0` is down), so moving it out of range of that SSID takes it off the
-tailnet until it is given credentials for the new network. Its tailnet name and IP survive
-the move; nothing else does.
+The Pi itself: Debian 13 (trixie) on arm64, Tailscale 1.86.2 with `--ssh`, one
+`sudo`-capable user (in `dialout`, so serial ports need no sudo). It is joined over **wifi
+only** (`eth0` is down), so moving it out of range of that SSID takes it off the tailnet
+until it is given credentials for the new network. Its tailnet name and IP survive the move;
+nothing else does.
+
+**The CubXL hardware is attached; the software is not (as of 12 September 2026).** Two USB
+serial devices, both part of the CubXL:
+
+| Device | USB ID | Stable path |
+| --- | --- | --- |
+| Arduino Uno R3, serial `03535343335351018130` | `2341:0043` | `/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00` |
+| CH340 USB–serial converter | `1a86:7523` | `/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0` |
+
+**Address them by the `by-id` path, never by `/dev/ttyACM0` or `/dev/ttyUSB0`.** Those names
+are assigned in enumeration order and swap if a board is re-plugged or a third device
+appears — the same trap CLAUDE.md already documents for the stream-cam Pi, where a bare
+`mpremote` auto-connect opened a REPL against the wrong board. The CH340 exposes no unique
+serial, so its `by-id` path stops being unique the moment a second CH340 is plugged in; if
+that ever happens, distinguish them by USB port path (`/dev/serial/by-path/`) instead.
+
+Nothing CubXL-specific is installed yet: no non-stock services, nothing listening beyond
+`sshd` and `tailscaled`, an empty home directory. When software does land, remember the
+tailnet grant to this Pi is `tcp:22` only — a control service bound to `0.0.0.0` is
+unreachable from CI until its port is added to the `tag:rpi-5-des4` grant, and the safer
+default is to bind it to `127.0.0.1` and reach it over SSH.
 
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
