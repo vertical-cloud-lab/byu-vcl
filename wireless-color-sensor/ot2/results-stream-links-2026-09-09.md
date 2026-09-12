@@ -90,6 +90,16 @@ anywhere; only the player does not.
 
 ## What the frames show: eleven of the 27 measurements had a person in shot
 
+> **Corrected 2026-09-10.** "In shot" throughout this section reads as though the
+> livestream were doing something to the measurement. It is not — the frame is
+> only evidence that somebody was standing at an open machine. The claim that it
+> mattered was then tested against the sensor's own numbers and holds, but for a
+> different reason and with a better detector than the video:
+> [`results-person-effect-2026-09-10.md`](results-person-effect-2026-09-10.md).
+> The sentence below — "it is not visible anywhere in the data" — is wrong. It is
+> plainly visible: a quiet position repeats to 0.03–0.13 % and a contaminated one
+> moved 31.7 % in 1.4 s.
+
 This is the part worth the effort, and it is not visible anywhere in the data.
 
 | run | positions | what the frames show |
