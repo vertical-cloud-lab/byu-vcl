@@ -1,0 +1,19 @@
+{
+  "sensor_data": {
+    "ch583": 916,
+    "ch670": 526,
+    "ch510": 591,
+    "ch410": 64,
+    "ch620": 936,
+    "ch470": 251,
+    "ch550": 834,
+    "ch440": 230
+  },
+  "command": {
+    "Y": 50,
+    "B": 50,
+    "R": 50
+  },
+  "experiment_id": "f878e53f-a565-4654-a6f8-72a35bbe43fc",
+  "_label": "midair_carry_RYB50"
+}

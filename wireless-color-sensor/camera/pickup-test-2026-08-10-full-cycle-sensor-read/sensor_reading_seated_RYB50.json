@@ -1,0 +1,19 @@
+{
+  "sensor_data": {
+    "ch583": 73,
+    "ch670": 64,
+    "ch510": 180,
+    "ch410": 9,
+    "ch620": 70,
+    "ch470": 17,
+    "ch550": 194,
+    "ch440": 9
+  },
+  "command": {
+    "Y": 50,
+    "B": 50,
+    "R": 50
+  },
+  "experiment_id": "b4ae99f7-8c04-481d-9b75-c15fd115aa77",
+  "_label": "seated_baseline_RYB50"
+}
