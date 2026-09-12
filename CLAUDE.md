@@ -201,12 +201,24 @@ next merge.
 `grants` was `src: ["*"], dst: ["*"], ip: ["*"]` until 12 September 2026 — every node could
 reach every other node on every port, which made the `ssh` block the only real boundary
 despite governing Tailscale SSH alone. It now mirrors the `ssh` block: people reach
-everything, devices reach only their own tag group. Two things follow. Tailscale needs
+everything, devices reach only their own tag group, and only on `tcp:22`. Tailscale needs
 **both** a grant and an `ssh` rule for a connection, so `grants` must never be narrower than
-`ssh` or SSH breaks with no useful error. And ports are still `"*"` — the services on these
-Pis have never been inventoried, so pinning them to `tcp:22` would cut the streaming
-pipeline silently. Narrowing the ports is the unfinished half of this, and it wants
-`ss -tlnH` from each Pi first.
+`ssh` or SSH breaks with no useful error.
+
+`tcp:22` is backed by an inventory, not a guess: `ss -tulnH` on every Pi (12 September 2026)
+found SSH to be the only service bound to a tailnet-facing address. The stream cams *push*
+RTMP to YouTube and serve nothing; CubOS listens on `127.0.0.1:8742` only; code-server on the
+powder doser likewise. So a service that starts listening on a Pi is **unreachable from
+other devices, CI runners included, until a port is added to that tag's grant** — deliberate,
+and the reason to bind new services to loopback unless they genuinely need the tailnet.
+Humans keep `"*"`. `cb154-01` was not inventoried (it refused the lab username), so its
+`tcp:22` pin rests on the Pis showing no connections to it.
+
+Check mode on the stream cams is per user, per device, for the policy's `checkPeriod`
+(default 12h): the first SSH prints a `login.tailscale.com/a/...` URL and holds the session
+open until it is approved in a browser, after which further sessions in the window go
+straight through. Running the SSH in the background with output to a file, then opening the
+URL from the file, is what makes that workable from an agent session.
 
 **SSH rules are first-match-wins, and the general `check` rule sits at the top.** A specific
 `accept` rule further down does not override it: any `autogroup:member` reaching a device
