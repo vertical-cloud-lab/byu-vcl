@@ -1,0 +1,51 @@
+{
+  "01_acid_digestion": {
+    "task_id": "3904dd65-e42c-4d49-a80e-5929366d21a6",
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "01_acid_digestion.md"
+  },
+  "02_icpms_measurement": {
+    "task_id": "9846e0aa-5560-4bb3-9c90-5d0d6a8fc4c6",
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "02_icpms_measurement.md"
+  },
+  "03_qaqc_calibration": {
+    "task_id": "30976b66-ecc9-4e28-bf33-cb040d15dcb6",
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "03_qaqc_calibration.md"
+  },
+  "analysis": {
+    "task_id": "69e9da25-9011-4d5e-9f1b-c94597118348",
+    "job": "job-futurehouse-data-analysis-crow-high",
+    "data_entry": "3ac195c0-c659-4523-b875-1b1a063d59bd",
+    "status": "success",
+    "answer_file": "analysis.md"
+  },
+  "04_hf_free_digestion": {
+    "task_id": "6f568f92-9062-4f90-96d7-b63c23859d9d",
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "04_hf_free_digestion.md"
+  },
+  "analysis_hf_free": {
+    "task_id": "ef0d43f6-883d-41be-bb5b-616fec4ee7b7",
+    "job": "job-futurehouse-data-analysis-crow-high",
+    "data_entry": "0300822a-3420-4f5e-ab7c-03aa4e6693cd",
+    "status": "success"
+  },
+  "05_technique_selection": {
+    "task_id": "54ea8cbb-209c-4c69-9dc6-e4f0cb6ec4e6",
+    "job": "job-futurehouse-paperqa3-high",
+    "status": "success",
+    "answer_file": "05_technique_selection.md"
+  },
+  "alloy_discovery": {
+    "task_id": "03933fb2-4987-4cb5-923a-54fd510bf3dd",
+    "job": "job-futurehouse-paperqa3-high",
+    "answer_file": "alloy_discovery.md",
+    "status": "success"
+  }
+}
