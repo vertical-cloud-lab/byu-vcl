@@ -210,8 +210,12 @@ RTMP to YouTube and serve nothing; CubOS listens on `127.0.0.1:8742` only; code-
 powder doser likewise. So a service that starts listening on a Pi is **unreachable from
 other devices, CI runners included, until a port is added to that tag's grant** — deliberate,
 and the reason to bind new services to loopback unless they genuinely need the tailnet.
-Humans keep `"*"`. `cb154-01` was not inventoried (it refused the lab username), so its
-`tcp:22` pin rests on the Pis showing no connections to it.
+Humans keep `"*"`. `cb154-01`, the CAEDM workstation in CB154, is deliberately outside all
+of this: it carries `tag:caedm`, which no `ssh` rule and no device grant reference, so
+Tailscale SSH to it is denied by policy even though the daemon still advertises it. Its
+accounts are personal and university-managed, and tailnet identity must not stand in for
+CAEDM's own login. `sudo tailscale set --ssh=false` on the machine itself is the remaining
+belt-and-braces step.
 
 Check mode on the stream cams is per user, per device, for the policy's `checkPeriod`
 (default 12h): the first SSH prints a `login.tailscale.com/a/...` URL and holds the session
