@@ -1,0 +1,9 @@
+{
+  "task_id": "53f221ff-1bcb-4feb-a48b-e3d3c9cc6b95",
+  "kind": "ANALYSIS",
+  "task_type": "FinchTaskResponse",
+  "status": "success",
+  "job_name": "job-futurehouse-data-analysis-crow-high",
+  "created_at": "2026-05-22 22:43:28.047296+00:00",
+  "query_summary": "Please analyze the attached BYU VCL SEM-EDS dataset (see README.md in the bundle for full context, acquisition parameters, and our cross-sample comparison table) and give us an independent expert assessment.\n\nThe dataset contains three measurement sets on the SAME nominal material \u2014 AlSi10Mg gas-ato"
+}
