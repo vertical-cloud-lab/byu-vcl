@@ -96,7 +96,11 @@ select the `.json` file:
 | sensor dock | `ac_color_sensor_charging_port` | 10 | **yes** |
 | paint reservoir, 6 × 15 mL tubes | `ac_6_tuberack_15000ul` | 3 | yes, *only if the robot dispenses the paint itself* |
 
-Both custom definitions are in
+The sensor dock is committed here as
+[`protocols/ac_color_sensor_charging_port.json`](protocols/ac_color_sensor_charging_port.json)
+— import *that* file, since the app's Import screen needs a standalone `.json`
+and the copies embedded in the protocol scripts cannot be selected. Both custom
+definitions are also upstream in
 [`ac-dev-lab/src/ac_training_lab/ot-2/_scripts/`](https://github.com/AccelerationConsortium/ac-dev-lab/tree/main/src/ac_training_lab/ot-2/_scripts).
 
 The tube rack is the **stock-solution reservoir** — six positions for 15 mL

@@ -785,7 +785,7 @@ the short version:
   `moveToCoordinates` inside a maintenance run, where no labware is loaded and
   no LPC offset is applied. The payoff comes with the port to a real protocol.
 
-`python3 calibration_status.py --labware ac_color_sensor_charging_port.json`
+`python3 calibration_status.py --labware protocols/ac_color_sensor_charging_port.json`
 reports what is present and what is missing. It is read-only and moves nothing;
 run it from the Pi that holds the OT-2's ethernet link.
 

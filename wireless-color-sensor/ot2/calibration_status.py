@@ -6,7 +6,7 @@ OT-2's ethernet link (see README) -- the robot answers only on its link-local
 address.
 
     python3 calibration_status.py
-    python3 calibration_status.py --labware ac_color_sensor_charging_port.json
+    python3 calibration_status.py --labware protocols/ac_color_sensor_charging_port.json
 
 The three robot calibrations must be done in order -- deck, tip length, pipette
 offset -- because calibrating the deck clears the other two. Labware Position
