@@ -67,6 +67,40 @@ over USB*, because changing Wi-Fi over Wi-Fi can strand the app.
 Leave the ethernet cable to the Pi alone either way — that link is what
 `run_xscan_test.py` and `deck_photo.py` use, and it is independent of the app.
 
+### What the USB-B port actually is
+
+The OT-2 has **both** a rear RJ45 jack and a rear USB-B port, but they are not
+two different protocols. Behind the USB-B port is an internal USB-to-Ethernet
+bridge — Opentrons ship a
+[replacement part](https://support.opentrons.com/s/article/Replacing-the-OT-2-s-internal-USB-to-Ethernet-adapter)
+for it — so the host sees a Realtek USB-Ethernet adapter appear and the robot
+self-assigns a `169.254/16` link-local address on it. That is the same kind of
+link the stream-cam Pi already has through its own RTL8153 dongle (`0bda:8153`)
+into the RJ45 jack; only the connector differs. The robot reports a single
+`eth0` either way, so whether the two rear ports can be live simultaneously is
+**untested here** — assume not, and unplug the Pi's cable if the app cannot see
+the robot over USB.
+
+### Which computer can run the app
+
+The Opentrons App ships for macOS, Windows and Linux, but the Linux build is an
+**x86-64 AppImage only** — `Opentrons-v9.1.2-linux-*.AppImage` has ELF
+`e_machine 0x3e`, and no arm64 asset is published. So it will **not** run on
+Raspberry Pi OS, and the stream-cam Pi cannot host it. Any x86-64 Linux laptop
+works; a Windows machine is not required.
+
+### Why not just do this over HTTP
+
+Protocol runs do not need the app at all — `run_xscan_test.py` already drives
+the robot over HTTP. Calibration is *also* reachable over HTTP: the app writes
+it by POSTing `calibration/moveToMaintenancePosition` and
+`calibration/calibratePipette` into `/maintenance_runs` (there is no
+`POST /calibration/...`; those routes are `get`/`delete` only). What is not
+automatable is the loop in the middle — a human jogs the pipette down and
+confirms by eye that the tip is touching the deck cross or the calibration
+block. Replacing the app means re-implementing its jog UI for a one-off, which
+is why the app is the recommended path here rather than a hard requirement.
+
 ## Step 1 — deck calibration
 
 Devices → select the OT-2 → ⋮ → **Robot Settings** → **Calibration** →
