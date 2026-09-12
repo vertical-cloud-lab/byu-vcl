@@ -182,7 +182,7 @@ joins the tailnet; that path needs no CI at all.
 authorized for two tags, and asking for a subset is refused outright with `requested tags
 [...] are invalid or not permitted` — the same error you get for a tag the client does not
 own at all, which makes it look like a permissions problem rather than an all-or-nothing
-one. That is why `claude.yml` passes `tags: tag:stream-cam-test,tag:pi-5-des4` as a pair;
+one. That is why `claude.yml` passes `tags: tag:stream-cam-test,tag:rpi-5-des4` as a pair;
 dropping either one breaks the join for both. Tags are fixed when a client is created —
 the console offers only create, revoke and delete — so widening a client's reach means
 minting a **new** client and rotating `TS_OAUTH_CLIENT_ID`/`TS_OAUTH_SECRET` in both GitHub
