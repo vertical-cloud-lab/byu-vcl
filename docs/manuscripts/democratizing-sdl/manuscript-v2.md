@@ -103,7 +103,7 @@ Table 1 summarizes the ten projects. Table 2 then states, in advance and for eve
 | P7 | Electrochemical workflow on science-jubilee | Yang Cao, Ethan Rajkumar, Ilya Yakavets | $20 K | 300 h | **[NEEDED — repository]** |
 | P8 | Digital pipette Jubilee integration | Chance Hattrick, Sterling Baird | $100 | 3 h | **[NEEDED — archival deposit; currently forum threads only]**<sup>†</sup> |
 | P9 | Public control of an OpenFlexure microscope | Kenzo Aspuru-Takata, Sterling Baird | $300 (microscope) | 30 h (incl. microscope build) | <https://ac-training-lab.readthedocs.io/> |
-| P10 | IvoryOS GUI control software | Wenyu Zhang, Lucy Hao, Jason E. Hein | $0 (software) | 0–1 h per new hardware integration | <https://gitlab.com/heingroup/ivoryos> |
+| P10 | IvoryOS GUI control software | Wenyu Zhang, Lucy Hao, Jason E. Hein | $0 (software) | 0–1 h per new hardware integration | <https://gitlab.com/heingroup/ivoryos>; Zenodo [10.5281/zenodo.15272617](https://doi.org/10.5281/zenodo.15272617) |
 
 <sup>†</sup> P8 is currently documented in two threads on the accelerated-discovery.org Discourse forum. Forum posts carry no persistent identifier and are not archival; by our own Claim 3 this does not count as documentation of a reproducible design, and we have marked it accordingly rather than quietly citing the threads.
 

@@ -115,10 +115,16 @@ no new data — and rewrites `table1-derived.csv`, `sensitivity.csv` and
 
 ## Status
 
-**Draft v2 complete and ready for co-author review.** See
-[`revision-notes-v2.md`](revision-notes-v2.md) §7 for everything still outstanding; each
-item is marked `[NEEDED]` in the manuscript itself.
+**Draft v2 complete and ready for co-author review.** Everything that can be done without
+the co-authors is done: the restructure, the labour analysis, the reference corrections,
+the figures. See [`revision-notes-v2.md`](revision-notes-v2.md) §7 for what is outstanding;
+each item is marked `[NEEDED]` in the manuscript itself.
 
 The blocking item is unchanged and is the one thing writing cannot fix: electronic
 supporting material (repositories or Zenodo deposits) for the powder dispensing module,
 the rolling ball viscometer, and the electrochemical workflow.
+
+Checked 2026-09-14: all eight project URLs in Table 1 return HTTP 200, and the analysis
+reproduces every headline number in §4 from a clean environment. Three findings from that
+check are recorded as §7 items 7–9 — P10 already has a Zenodo deposit, two repositories
+carry no licence, and P9's repository has been renamed.
