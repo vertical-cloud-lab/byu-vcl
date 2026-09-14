@@ -599,3 +599,55 @@ and the default capture points for this protocol come out as steps 2, 4, 7, 9 �
 four questions that have needed eyes on this branch. CSI cameras are found via
 `rpicam-still --list-cameras`, USB UVC via `ffmpeg` on capture-capable
 `/dev/videoN` nodes.
+
+## 2026-09-14 — CubOS installed on the new CubXL Pi; ready to run, not run
+
+Full record and evidence:
+[`results/pi5_des4_provision_20260914/`](results/pi5_des4_provision_20260914/).
+
+SSH to `rpi-5-des4` works now (the tag fix in [`0d8173e`](https://github.com/vertical-cloud-lab/byu-vcl/commit/0d8173e)),
+so the install that 2026-09-12 was blocked on is done. **The trio was deliberately not
+run** — @jarrettshupe asked for the Pi to be made ready for someone else to run it.
+
+`~/CubOS` is CubOS **`cbc33dc`** in a Python 3.13.5 venv with **all four** patches from
+[`patches/`](patches/) applied cleanly (9 files, 173 insertions), and `~/byu-vcl` is this
+branch. The only package that had to be installed on the Pi was **`git`** — `venv` already
+bundles pip, and `patch`, `gcc`, `v4l2-ctl` and `rpicam-still` were present. `ffmpeg` is
+absent and not needed, since both cameras are CSI. `apt upgrade` was deliberately not run.
+
+Five gates, all against the committed trio, all on the Pi:
+
+| gate | result |
+| --- | --- |
+| `validate_setup` | **PASS** |
+| `run_protocol --mock` | **12/12** |
+| `passive_shadow` | **0 interferences** |
+| `passive_shadow --tip-stuck` | **0 interferences** |
+| upstream test suite | **2020 passed, 3 failed, 17 skipped** |
+
+The 3 failures are the upstream tests for the three patches that intentionally change
+behaviour. That was proved, not assumed: the same three tests were run in a pristine
+`cbc33dc` worktree with `PYTHONPATH` pointed at its own `src`, and all three pass there.
+
+Hardware read read-only, nothing commanded. `$130/$131/$132` = 409.000 / 309.000 / 124.000
+and `$20=1` match the gantry file exactly, so the next run will **not** abort at connect
+with "Critical GRBL settings mismatch". The Arduino's boot banner lands at **3.76 s** —
+the same figure as the old Pi, and well past the stock 2.0 s settle time, so
+`pawduino-connect-boot-banner` is required here too. The capper sensor reads clear and the
+electromagnet was explicitly de-energized afterwards.
+
+Two findings for whoever runs it:
+
+- 🔴 **The cameras need re-aiming.** Both capture fine, but `cam1_csi1` is mounted rotated
+  90° and its frame is dominated by the machine's side panel and the room; neither test
+  frame clearly shows the vial holder or the tip rack. As aimed today the eight run frames
+  would not answer the questions the harness exists for.
+- ✅ **The pipette is a `P20 GEN2`** — legible on the body in `cam0`'s test frame, closing
+  the question left open on 2026-09-09. Gen2 means 500 mA peak and `M92 V200`, so PANDA's
+  `RUN_CURRENT_PERCENT` should be ~17; it is currently **50**, about 2.5× the motor's
+  rating.
+
+Also worth knowing: campaign numbering restarts at 1 on this Pi (the old one ended at 83),
+and mock runs consume numbers. No systemd unit, cron entry or API server was created —
+nothing starts on boot, and `sshd` is still the only thing listening on a tailnet-facing
+address, matching the `tcp:22`-only grant for `tag:rpi-5-des4`.

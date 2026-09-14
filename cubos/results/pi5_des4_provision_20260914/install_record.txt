@@ -1,0 +1,44 @@
+# CubOS install record - rpi-5-des4 - 2026-09-14
+
+## uname
+Linux rpi-5-des4 6.18.34+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.18.34-1+rpt1 (2026-06-09) aarch64 GNU/Linux
+
+## os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+NAME="Debian GNU/Linux"
+VERSION_ID="13"
+
+## python
+Python 3.13.5
+
+## CubOS HEAD
+cbc33dc Merge pull request #255 from Ursa-Laboratories/feat/4040-pro-max-seed-config
+
+## applied patches (git diff --stat)
+ packages/core/src/cubos/gantry/gantry_config.py    | 16 ++++++++
+ .../core/src/cubos/gantry/instrument_loader.py     | 19 +++++++++
+ packages/core/src/cubos/gantry/instrument_mount.py | 45 +++++++++++++++++++++-
+ .../cubos/instruments/capper/vendors/pawduino.py   | 22 +++++++++++
+ .../cubos/instruments/pipette/vendors/opentrons.py | 30 +++++++++++++--
+ .../src/cubos/protocol_engine/commands/capper.py   | 24 ++++++++++--
+ packages/core/src/cubos/validation/bounds.py       |  6 +--
+ .../src/cubos/validation/protocol_semantics.py     |  8 +++-
+ .../tests/validation/test_pipette_tip_state.py     | 22 ++++++++---
+ 9 files changed, 173 insertions(+), 19 deletions(-)
+
+## pip list
+cubos             0.1.0   /home/vcl/CubOS/packages/core
+pydantic          2.13.5
+pydantic_core     2.46.5
+pyserial          3.5
+pytest            9.1.1
+PyYAML            6.0.3
+
+## serial by-id
+total 0
+lrwxrwxrwx 1 root root 13 Sep 11 19:09 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB0
+lrwxrwxrwx 1 root root 13 Sep 11 19:09 usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00 -> ../../ttyACM0
+
+## cameras
+  cam0_csi0: imx708_wide  [csi]  csi index 0
+  cam1_csi1: imx708_wide  [csi]  csi index 1

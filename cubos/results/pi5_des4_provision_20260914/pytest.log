@@ -1,0 +1,138 @@
+................................................................ssssssss [  3%]
+ss.............................................sssssss.................. [  7%]
+........................................................................ [ 10%]
+........................................................................ [ 14%]
+........................................................................ [ 17%]
+........................................................................ [ 21%]
+................................................................ [ 24%]
+........................................................................ [ 27%]
+.................................................................. [ 31%]
+........................................................................ [ 34%]
+........................................................................ [ 38%]
+........................................................................ [ 41%]
+.........F.............................................................. [ 45%]
+.............................F.......................................... [ 48%]
+........................................................................ [ 52%]
+........................................................................ [ 55%]
+........................................................................ [ 59%]
+................F....................................................... [ 62%]
+........................................................................ [ 66%]
+........................................................................ [ 69%]
+........................................................................ [ 73%]
+........................................................................ [ 76%]
+........................................................................ [ 80%]
+........................................................................ [ 84%]
+........................................................................ [ 87%]
+........................................................................ [ 91%]
+........................................................................ [ 94%]
+........................................................................ [ 98%]
+......................................                                   [100%]
+=================================== FAILURES ===================================
+_______ TestPawduinoCapperSerial.test_connect_sends_line_break_handshake _______
+
+self = <tests.instruments.capper.test_capper.TestPawduinoCapperSerial object at 0x7ffeeb9eb9d0>
+mock_sleep = <MagicMock name='sleep' id='140732844650720'>
+mock_serial_cls = <MagicMock name='Serial' id='140732844651392'>
+
+    @patch("cubos.instruments.capper.vendors.pawduino.serial.Serial")
+    @patch("cubos.instruments.capper.vendors.pawduino.time.sleep")
+    def test_connect_sends_line_break_handshake(self, mock_sleep, mock_serial_cls):
+        mock_ser = self._make_mock_serial(['OK:{"value1":0}\n'])
+        mock_serial_cls.return_value = mock_ser
+    
+        capper = PawduinoCapper(
+            engage_depth_mm=-10.0, park_position=(0.0, 0.0), port="/dev/ttyUSB0",
+        )
+>       capper.connect()
+
+packages/core/tests/instruments/capper/test_capper.py:183: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+packages/core/src/cubos/instruments/capper/vendors/pawduino.py:144: in connect
+    self.read_cap_present()
+packages/core/src/cubos/instruments/capper/vendors/pawduino.py:188: in read_cap_present
+    response = self._send_command(_CMD_LINE_BREAK)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+packages/core/src/cubos/instruments/capper/vendors/pawduino.py:212: in _send_command
+    line = self._serial.readline().decode().strip()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/unittest/mock.py:1169: in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.13/unittest/mock.py:1173: in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <MagicMock name='Serial().readline' id='140732844650384'>, args = ()
+kwargs = {}
+
+    def _execute_mock_call(self, /, *args, **kwargs):
+        # separate from _increment_mock_call so that awaited functions are
+        # executed separately from their call, also AsyncMock overrides this method
+    
+        effect = self.side_effect
+        if effect is not None:
+            if _is_exception(effect):
+                raise effect
+            elif not _callable(effect):
+>               result = next(effect)
+                         ^^^^^^^^^^^^
+E               StopIteration
+
+/usr/lib/python3.13/unittest/mock.py:1230: StopIteration
+__________ TestPipetteLifecycle.test_connect_raises_when_homing_fails __________
+
+self = <tests.instruments.pipette.test_pipette.TestPipetteLifecycle object at 0x7ffeeb766d50>
+mock_sleep = <MagicMock name='sleep' id='140732808367472'>
+mock_serial_cls = <MagicMock name='Serial' id='140732808365792'>
+
+    @patch("cubos.instruments.pipette.vendors.opentrons.serial.Serial")
+    @patch("cubos.instruments.pipette.vendors.opentrons.time.sleep")
+    def test_connect_raises_when_homing_fails(self, mock_sleep, mock_serial_cls):
+        responses = [
+            'OK:{"homed":0,"pos":0.00,"max_vol":300.00}\n',
+            'ERR:{"error":"Failed to home pipette"}\n',
+            'ERR:{"error":"Failed to home pipette"}\n',
+        ]
+        mock_ser = self._make_mock_serial(responses)
+        mock_serial_cls.return_value = mock_ser
+    
+        pip = OpentronsPipette(pipette_model="p300_single_gen2", port="/dev/ttyUSB0")
+>       with pytest.raises(PipetteConnectionError, match="home/prime"):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE PipetteConnectionError
+
+packages/core/tests/instruments/pipette/test_pipette.py:304: Failed
+------------------------------ Captured log call -------------------------------
+WARNING  cubos.instruments.base_instrument.OpentronsPipette:opentrons.py:183 Plunger home/prime after connect FAILED (Command 10 failed: ERR:{"error":"Failed to home pipette"}). Continuing with an UNREFERENCED plunger: positions and volumes are meaningless and the plunger may drive into its stop.
+__________________ TestCapSequencing.test_exact_action_order ___________________
+
+self = <tests.protocol_engine.test_capper_commands.TestCapSequencing object at 0x7ffeeb6f02d0>
+
+    def test_exact_action_order(self):
+        capper = _make_capper()
+        capper.capture_cap()  # start "capped" so release has something to confirm
+        ctx, gantry = _untracked_context(capper=capper)
+        gantry.trace.clear()  # drop the priming capture_cap call above
+        cap(ctx, "capper", "vial_1")
+        engage_z = 30.0 + capper.engage_depth_mm
+>       assert gantry.trace == [
+            ("approach", Coordinate3D(x=10.0, y=20.0, z=30.0)),
+            ("move", (10.0, 20.0, engage_z)),
+            "release_cap",
+            "read_cap_present",
+            ("move", (10.0, 20.0, SAFE_Z)),
+            ("move", (1.0, 2.0, SAFE_Z)),
+        ]
+E       AssertionError: assert [('approach',...present', ...] == [('approach',... 2.0, 100.0))]
+E         
+E         At index 3 diff: ('move', (10.0, 20.0, 100.0)) != 'read_cap_present'
+E         Left contains 2 more items, first extra item: ('move', (10.0, 20.0, 100.0))
+E         Use -v to get more diff
+
+packages/core/tests/protocol_engine/test_capper_commands.py:150: AssertionError
+=========================== short test summary info ============================
+FAILED packages/core/tests/instruments/capper/test_capper.py::TestPawduinoCapperSerial::test_connect_sends_line_break_handshake
+FAILED packages/core/tests/instruments/pipette/test_pipette.py::TestPipetteLifecycle::test_connect_raises_when_homing_fails
+FAILED packages/core/tests/protocol_engine/test_capper_commands.py::TestCapSequencing::test_exact_action_order
+3 failed, 2020 passed, 17 skipped, 14 subtests passed in 18.17s
