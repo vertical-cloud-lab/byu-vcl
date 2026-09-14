@@ -1,0 +1,146 @@
+# Machine transcript --- "Conversation with Dr. Porter concerning Electrochemistry on the CubXL"
+# Video:    https://youtu.be/RKp4XslErJo  (BYU Vertical Cloud Lab, uploaded 2026-09-14, 14:30)
+# Speakers: Ben Whitney (BYU VCL) and Dr. Jason Porter (BYU), walking through Porter's lab.
+#
+# YouTube had no captions (auto or manual) for this video, so this was produced with
+# faster-whisper (small.en, int8, VAD) from the audio track. It is UNCORRECTED ASR and
+# contains known errors --- notably "potentiometer"/"tension stat" for POTENTIOSTAT,
+# "connectivity" for CONDUCTIVITY, "UV biz" for UV-VIS, and "a few mud" for FUME HOOD.
+# Key technical passages were re-checked against medium.en; see the notes document
+# docs/porter-electrochemistry-cubxl-2026-09-14.md for the corrected reading.
+#
+# Timestamps are [H:MM:SS] from the start of the video.
+
+[0:00:00] So yeah, we're trying to write a paper on the kind of capabilities of this machining,
+[0:00:09] how versatile it is and the limits of if we do throw a bunch of instruments on here, what
+[0:00:20] exactly can we do because there are instruments or there are robots like this that are doing
+[0:00:25] one thing, like they're doing liquid mixing, color matching, one thing, and we have a machine
+[0:00:31] doing that right now, but we want to explore the capabilities of a multi-faceted robot that
+[0:00:38] can do a lot of things like mix and check other tests, whatever we can fit on this basically.
+[0:00:49] And so we have an abstract currently and a presentation at TMS, so that's kind of the
+[0:01:02] time frame currently.
+[0:01:07] Yeah, I can tell you a little bit about, like so we've built a conductivity sensor, and
+[0:01:16] you can buy them for what you're doing, it probably makes sense because they have ones
+[0:01:20] that are designed to be dipped into a liquid, ours was designed for our syringe system so
+[0:01:24] it could flow like over it instead, so we can talk about that.
+[0:01:32] I do think like for my interests it would be great to do something where you do conductivity
+[0:01:38] and something optical, probably the easiest thing for optical would be like UV biz is super
+[0:01:45] modular and you can put that in and make a measurement of like if there's an optical
+[0:01:53] color change or UV color change absorption or something like that with conductivity.
+[0:02:00] The things I really want to do are more on conductivity and the infrared or maybe even
+[0:02:06] the Raman spectrum, Raman might be easier just because it's, again it's easier to
+[0:02:13] fiber comfortable and stuff for this setup, but I agree, I think yeah we could automate
+[0:02:20] making a bunch of solutions, but the real power in this is integrating the sensor network
+[0:02:28] with the audio collection, because you want to put that in the loop so you can then
+[0:02:32] say, oh what's the next mix you want to make.
+[0:02:34] Exactly, and that's kind of what our whole lab is focusing on is being able to run those
+[0:02:39] experiences or experiments and then optimizing the next step.
+[0:02:42] Yeah, and it makes sense for the kind of work we do because you know the materials I would
+[0:02:51] need to create the test matrix that I'm trying to demonstrate experiment right now, it's like
+[0:02:58] a thousand dollars worth of chemicals, right, so you can be more selective in which ones
+[0:03:02] you're doing to get to that, and it would help me, but if you think about scaling up
+[0:03:07] technology and like industry scale you make a big difference in cost, so that makes a lot of sense.
+[0:03:14] So yes, you've got a micro doser, you can get a connectivity sensor, and like you said I've seen
+[0:03:21] papers like that, people have done that, and there's even been some I think in the loop stuff
+[0:03:27] where they do the dosing and then predict the next mixture, if we can get some spectroscopy
+[0:03:33] into it, that would be where it gets really exciting for me, so I can think about what that
+[0:03:38] might look like, potentially write an internal proposal at BYU to get like 25k to buy the
+[0:03:47] hardware you would need to do something like that, you know, depending on the interest.
+[0:03:54] Yeah, that's probably like the next thing you want to do.
+[0:03:56] Okay, I think that sounds really cool, and from what I know, and I'll talk to
+[0:04:01] you about that more about it, but it sounds pretty in line with what we're trying to do.
+[0:04:10] Yeah, like I said, there's depends on the system you pick, right, so probably the
+[0:04:16] proof of concept make it easiest, you want something that's not sensitive to moisture,
+[0:04:20] yes, you want something that has some like a connectivity change you can measure, that's
+[0:04:25] that's the easy part, but then something where the spectroscopy correlates with that a bit
+[0:04:33] harder, but like trying to get those two together. I really want to do IR, we could
+[0:04:39] figure out a Raman way to do it. Yeah, let me look a little bit and see what we can come up with.
+[0:04:53] Yeah, but I think where I want to go eventually would be to get this all into a, you know,
+[0:05:00] glove box environment, so people measurements with little moisture content.
+[0:05:10] Great, I could open an issue on GitHub, because you're allowed to use GitHub.
+[0:05:15] Yeah, yeah, we don't we use it mostly just for code.
+[0:05:20] Like you guys do for everything.
+[0:05:21] Yeah, we use it just about everything. But I mean, I could open a
+[0:05:27] GitHub and send you the link and you can correspond on there, talk about possibilities,
+[0:05:32] look into Raman, think about IR. Yeah, so it's a combination of the chemical system you want to use,
+[0:05:43] that you can use, you know, out in the open. And I mean, you could you could do things out
+[0:05:49] in the open as a concept realizing that there's more contamination here that make the results not
+[0:05:56] like our college, it'd be a shame to do a big experiment. And I think we have a few glove boxes
+[0:06:07] that might be able to use. I need to expand. Okay. Yeah, there's a few mud in the glove box,
+[0:06:14] right? Okay. Yeah, a few mud is just kind of keeping chemicals away from your face.
+[0:06:19] Glove boxes, it's conditioned, either nitrogen or argon with no moisture and no oxygen.
+[0:06:26] Yeah, because those will all those will absorb on to like this, the powders we use, and just change
+[0:06:34] them. It changes the connectivity, it changes the chemical stability, all that stuff changes.
+[0:06:42] Yeah, so it's a bigger, it's a bigger lift than just,
+[0:06:45] remember something we were talking about, I've been filled with argon way back in the
+[0:06:50] center. So yeah, yeah, we might have to. Yeah. Yeah. Okay. Um, I think we can go from there,
+[0:07:00] in terms of action items, we can keep the channel open to see more if you have a potentiometer
+[0:07:07] that we could, we might be able to try testing things on, that would be great. And we could
+[0:07:12] jump forward with that. But yeah, yeah, we can buy one. Yeah, I can show you and walk over
+[0:07:18] and show you what we have. Again, it was designed for one particular experiment,
+[0:07:23] but you guys could design your own and print one pretty easily based on our approach.
+[0:07:28] Yeah, I can show you how we did it. Yeah, I'd love that. Or you can buy one.
+[0:07:33] Yeah. So good. Yeah, I'll go with it. This is basically what we had. Okay. So we had some
+[0:07:42] partners up at CU Boulder, and they made a four-electrode, they printed a four-electrode sensor.
+[0:07:53] And so what we do is we, actually there's like holes drilled in here too. And so we flow
+[0:08:00] our electrolyte over those four electrodes, and then we use our potentiometer to measure the
+[0:08:07] conductivity. So you have to calibrate it because everyone's different. So you first have
+[0:08:13] calibration solutions and then you can solve concentrations. You fill those over and say,
+[0:08:18] oh, we know at this concentration, this is the conductivity document. And then you build a
+[0:08:23] calibration curve, and then once you flow your new liquid over, you can do that. But that's
+[0:08:27] basically what those, all those commercial ones are. It's just like a four-electrode probe.
+[0:08:32] So two of the electrodes are for applying a fixed current, and two are for measuring the
+[0:08:38] current current. Okay. And then we hook it up with our tension stat.
+[0:08:47] Like the four electrodes to these leads, and then you can build a protocol in which we've
+[0:09:17] done all that work so we can share a little bit more with you guys. Anyway, if you want to do
+[0:09:21] it yourself, that's how you do it, or you can buy a conductivity probe and what's the time for.
+[0:09:26] Yeah. But we've got good results with this. That's awesome. Yeah, we could definitely
+[0:09:34] yeah. I'll open up the the issue and we'll, we can talk about that because I think we were
+[0:09:43] just thinking of doing like a probe potential stuff, but that might be overworked too.
+[0:09:49] Yeah, like I said, if you can buy something off the shelf for not too much money, then do it as well.
+[0:09:55] Yeah, because we spent, you know, quite a while then I read designing one of those. And again, we didn't,
+[0:10:00] we didn't do it with the probe because we were doing the dosing system. We wanted to flow it,
+[0:10:05] just, just continuously flow it, and at the same time measure the infrared spectrum as we're
+[0:10:11] measuring the conductivity. Oh, right, yes. We're trying to do that whole thing.
+[0:10:17] And the bent, so, so now you kind of get the context, right? Yeah. And here's the glove box.
+[0:10:22] Yes. So this is, you see moisture level at zero, parts per million, oxwell, 0.2 parts per million.
+[0:10:31] Let's just fill it with argon, argon's over there. So it's constantly purrs,
+[0:10:36] it's constantly generating and removing any moisture from the holes that come in the system.
+[0:10:41] It's determining, you're stealing it, so doing battery work, but at the end of it,
+[0:10:45] salt powders or the solvents, you have to use this and that. This is our sulfur glove box,
+[0:10:50] that's our non-sulfur glove box. But yeah, this is like all your value type research.
+[0:11:01] What we're doing over here, now you have a little more appreciation of the challenge, right?
+[0:11:05] Yeah. So the benefit of this is that you can keep the whole thing in close. So we have
+[0:11:10] syringes with our, they say two different, this is like high salt concentration, this is low salt
+[0:11:15] concentration, and then we can change the relative mixing to scale salt concentration over, let's say,
+[0:11:21] 15 examples, and automatically dose it. And then we're just, yeah, you're just flowing it directly,
+[0:11:28] and then we hooked it up directly on top of our ATR. So we had like the ATR crystal,
+[0:11:35] and then we put the electrodes on top of that. Then we flew, we have a gasket and electrodes,
+[0:11:40] and we flow the solution like through the gasket under the electrodes above the ATR,
+[0:11:46] and then we just make a measurement, and they automate the whole system. So it was like dose,
+[0:11:51] measure, dose, measure, you know. Really clean air flow. Yeah, now I was, this is some of the
+[0:11:59] earlier work that they did, some proof of concept for electrode probes. These are ones that you just
+[0:12:04] printed here. Anyway, we're thinking along similar lines, but it's hard. Yeah, it's a
+[0:12:12] challenge, which is why you don't see it very widely. Yeah, but I think if you could do
+[0:12:18] powders and liquids, that'd be really helpful for us. And then you have to build in stirring.
+[0:12:23] You guys talked a lot about that. We have, well, yeah, we actually briefly discussed that
+[0:12:28] with the magnet, because we already have magnet capabilities and so on, it wouldn't be too hard to
+[0:12:38] implement on there. We have limited mixing with the pipette itself. It can mix, but
+[0:12:49] but yeah, we have talked about that and the possibility of that. I've seen groups do that,
+[0:12:53] they seem to, they say they got pretty good results, just sort of pull it and push it.
+[0:12:57] And we also have a bigger pipette. That's a 20 microliter, but we have a 300 microliter that
+[0:13:04] also might be able to do better, or bigger applications. Yeah, yeah, yeah, okay, okay.
+[0:13:12] Yeah, no, this is definitely the area we want to play in, so we'll pick it up.
+[0:13:15] Sweet, yeah. Okay, well, we got the first proof of concept actually. Yeah, I like that.
+[0:13:22] Okay. Okay, yeah, we're doing, I'm doing another thing. This right now, this semester,
+[0:13:27] I've got three undergrads who are just going to manually make all this story, because I want
+[0:13:31] the data, I want the automation, because I have, I built a new like python model that can predict
+[0:13:42] all the species based on the spectrum. Cool. And it's a highly non-linear mixing problem,
+[0:13:47] so like traditional regression methods don't work well. Yeah. So anyway, that's working really
+[0:13:52] well, but I don't have enough data. Oh, so you just fill out the data to be more accurate. So I can
+[0:13:57] do actual blind studies to see how accurate it is. Yeah. Right now, I have enough data to train
+[0:14:02] the model well, but not enough data to then test the model on. Okay. So I need like a testing set.
+[0:14:08] That's awesome. But there's a bunch of cool science I can do once I've got the data set.
+[0:14:15] But there's, I got way more ideas and different chemical systems and stuff I'd like to play in,
+[0:14:19] so there's no shortage of things we could do once we have something simple. Cool. All right.
+[0:14:25] Look forward to it. Yeah. Well, thanks for coming by and taking a look.
