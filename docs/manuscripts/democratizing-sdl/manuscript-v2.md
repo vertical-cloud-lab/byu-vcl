@@ -28,7 +28,10 @@ Brenden Pelkie<sup>1</sup>, Sterling Baird<sup>2</sup>, Eunice Aissi<sup>3</sup>
          corrected to 2,5.
      (c) Basita Das is credited as a DiSCO author in Table 1 and is a co-author on
          refs 17-19, but does not appear in the v1 author list. CONFIRM whether this
-         is an intended omission or an error. Do not resolve without asking her.
+         is an intended omission or an error. Do not resolve without asking them.
+     (d) Ilya Yakavets is credited as a P7 author in Table 1 but likewise does not
+         appear in the v1 author list, and is not a co-author on any cited reference.
+         Same question, same answer: ask before changing anything.
 -->
 
 ## Abstract
@@ -137,29 +140,39 @@ Brief descriptions follow. Full project descriptions as contributed by their dev
 
 **P3 — Rolling ball viscometer.** Complete rheological characterization requires large, expensive equipment and is difficult to automate, particularly sample loading and cleaning. Low-fidelity proxies are common in end-use applications, such as timing drainage from a perforated cup,<sup>13</sup> and automated viscometry for Newtonian fluids has been demonstrated on pipetting robots by comparing set to actual dispense rates.<sup>14</sup> This project applies the rolling-ball principle and Stokes' law: a sample is loaded into a clear tube, the tube is rotated so a small ball rolls through the fluid, and the ball's motion is captured with a high-speed camera. The geometry permits automated loading and cleaning with peristaltic pumps.
 
-> **[NEEDED — figure.]** P3 is the only hardware project in this Perspective without a figure. Every other build is shown. Please supply a photograph or render.
+![Figure 4](figures/fig4-rolling-ball-viscometer.jpg)
+
+***Figure 4.*** *Rolling ball viscometer (P3). The tube assembly, left, is rotated so that a ball rolls through the loaded sample; the camera at right captures the ball's motion for the Stokes' law estimate of viscosity.*
+
+> **[NEEDED — confirm figure.]** Recovered from the DTU showcase slide deck (`figures/source/dtu-modules-slides.pptx`, slide 4), not supplied for the manuscript, so it has never been approved for publication. DTU should confirm this is the view they want — two CAD renders of the same module are in `figures/source/` and a two-panel photograph-plus-render figure would match the treatment P1 and P2 receive.
 
 ### End-to-end automation systems
 
 **P4 — Color mixing bot.** Implementing an SDL demands hardware engineering, software development, data science, domain science and system-wide debugging, and no conventional degree programme teaches that combination. Colour-matching experiments have become a standard entry point,<sup>15,16</sup> requiring automated preparation, characterization, ML-based design and orchestration while remaining visually legible and chemically safe. This project extends the classic demonstration into a multi-objective setting by adding a pH-matching objective. Peristaltic pumps mix coloured and pH-adjusted stock solutions in a measuring chamber; an RGB sensor and pH probe provide readout; multi-objective Bayesian optimization learns the stock ratio hitting a target colour and pH. Its low cost, portability and absence of chemical or mechanical hazards suit it to teaching.
 
-![Figure 4](figures/fig4-color-mixing-bot.jpg)
+![Figure 5](figures/fig5-color-mixing-bot.jpg)
 
-***Figure 4.*** *Color mixing bot (P4).*
+***Figure 5.*** *Color mixing bot (P4).*
 
 **P5 — DiSCO materials synthesis and characterization system.** Bringing an SDL to life requires stringing components together with sample transfer and orchestration. Many builders use robotic arms to shuttle samples between workstations, which permits re-use of human-centric steps but caps throughput and imports the cost and complexity of reliable robotics. DiSCO (Discovery, Synthesis, Characterization and Optimization) instead simplifies the physical integration itself, targeting high-dimensional materials search spaces such as perovskite semiconductor compositions with high-throughput, low-fidelity screening that flags regions worth expensive follow-up. It integrates Archerfish combinatorial printing extended to 10-dimensional rapid drop-cast synthesis,<sup>17</sup> automated optical and contact-based characterization,<sup>18,19</sup> and custom machine learning models for experimental control,<sup>20</sup> all arranged around a single linear rail so that sample positioning reduces to reliable motion along one axis. The modules are open-source apart from commercial components such as hyperspectral imagers.
 
-![Figure 5](figures/fig5-disco.png)
+![Figure 6](figures/fig6-disco.png)
 
-***Figure 5.*** *DiSCO materials synthesis and characterization platform (P5).*
+***Figure 6.*** *DiSCO materials synthesis and characterization platform (P5).*
 
 **P6 — Science-jubilee.** Where DiSCO brings samples to tools, science-jubilee brings tools to samples. It is an automation ecosystem of three parts: open-hardware experimental tools, software modules controlling them, and a community of contributing users. It builds on the Jubilee open-source tool-changing motion platform<sup>21</sup> — assembled from a kit of common off-the-shelf parts and a few commercially available custom components — by adding tools and capabilities for experimental automation. Tool changing lets researchers run multi-step workflows without moving samples between locations or machines. A growing library of open-hardware tools covers liquid handling, imaging and sonication; a Python library provides a high-level programming interface; documented tool and software interfaces make the platform extensible. Documentation describes building, provisioning and using the system step by step, and the developers host workshops, run a Discord server and travel to demonstrate the platform. It has supported work from sonochemical quantum dot synthesis to automated plant growth monitoring.<sup>22,23</sup>
 
-![Figure 6](figures/fig6-science-jubilee.jpg)
+![Figure 7](figures/fig7-science-jubilee.png)
 
-***Figure 6.*** *Science-jubilee platform elements: the base Jubilee motion platform, science-specific tools, control software, documentation, and support for a community of users. Jubilee drawing licensed CC BY 4.0, from <https://jubilee3d.com/>.*
+***Figure 7.*** *Science-jubilee platform elements: the base Jubilee motion platform, science-specific tools, control software, documentation, and support for a community of users. Jubilee drawing licensed CC BY 4.0, from <https://jubilee3d.com/>.*
 
 **P7 — Electrochemical workflow for redox-active compounds.** This project uses science-jubilee as baseline infrastructure for a workflow spanning synthesis, isolation and characterization of redox-active compounds. An Opentrons OT-2 P300 pipette is driven through the science-jubilee adapter for liquid handling, and a custom tool is being developed to integrate a commercial BluRev rotating disk electrode for automated electrochemical characterization. The science-jubilee Python control software supports programming both synthesis (for example metal–ligand coordination compounds) and characterization (cyclic voltammetry, kinetic analysis of redox events). The developers chose the platform for its extensibility, programmability and cost; comparable workflows are possible on commercial platforms at substantially higher price.
+
+![Figure 8](figures/fig8-electrochemical-workflow.png)
+
+***Figure 8.*** *Electrochemical workflow for redox-active compounds (P7). The Jubilee motion platform carries an Opentrons Gen 2 pipette for sample preparation and reaction, and a BluRev rotating disk electrode — whose science-jubilee tool is still in development — for cyclic voltammetry and kinetic analysis of redox events.*
+
+> **[NEEDED — confirm figure.]** Recovered from the figure set submitted with the original showcase form; it was not used in v1. Two things need the AC/UBC team: confirmation that the schematic is current, and a version with the institutional logos removed, which journals strip from figures.
 
 **P8 — Digital pipette integration for multiple platforms.** Integrating heterogeneous mounting, power and control connections is a recurring cost when building SDLs from existing equipment; devices with stand-alone packaging, power and control are far easier to adopt. This project modified the Digital Pipette<sup>24</sup> — a sub-$100 liquid handler with replaceable fluid-contacting components and luer-lock fluidic integration, built from a self-contained linear servo actuator, a syringe and 3D printed frame parts — so that it operates stand-alone. A 3D printed attachment allows mounting on motion platforms such as science-jubilee or robotic arms, and MQTT communication lets it operate in concert with other devices. The integration has been reproduced by several groups and science-jubilee users and is in active research use.
 
@@ -169,9 +182,9 @@ Brief descriptions follow. Full project descriptions as contributed by their dev
 
 **P10 — IvoryOS.** Hardware capability alone will not democratize SDLs; reliable orchestration and control software is equally critical infrastructure. It remains common for SDL developers to assemble control software from ad hoc scripts and notebooks, which gets an effort off the ground but imposes a steep learning curve on researchers without coding experience and creates maintainability, extensibility and reproducibility problems. Several frameworks address this, including ChemIDE and 𝜒DL,<sup>28,29</sup> AlabOS<sup>30</sup> and ChemOS 2.0,<sup>31</sup> but integration with existing software is hard given the heterogeneity of SDL components, and fluid research objectives make rigidly configured control software difficult to maintain. IvoryOS provides adaptable, easily integrated GUI interfaces to SDL platforms.<sup>32</sup> It works as an extension to existing Python scripts, capturing platform features at start-up by inspecting instances for available methods and parameter requirements and updating the web GUI accordingly, so no framework or layout constraint is imposed. The GUI additionally offers low-code workflow design, built-in iteration modes including high-throughput and adaptive experimentation, and a code-free interface for configuring optimization parameters and objectives.
 
-![Figure 7](figures/fig7-ivoryos.jpg)
+![Figure 9](figures/fig9-ivoryos.png)
 
-***Figure 7.*** *IvoryOS dynamically generated control interface (P10).*
+***Figure 9.*** *IvoryOS dynamically generated control interface (P10).*
 
 ---
 

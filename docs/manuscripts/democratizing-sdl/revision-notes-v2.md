@@ -82,8 +82,9 @@ Supporting numbers: median replication time 17 h; 8 of 10 projects reproducible 
 
 ## 6. Smaller fixes
 
-- **Figure order.** v1's figures printed 1, 2, **4**, **3**, 5, 6 — a Word float artefact. v2 renumbers into citation order and the files were renamed to match: the new Figure 1 is the labour analysis, and the old DiSCO/colour-bot pair is un-swapped. Figures now run 1–7 with no gaps, verified programmatically.
-- **Author list.** Sonya Vasquez's missing affiliation superscript provisionally set to 1 (University of Washington, per ref 21) — **confirm**. Ethan Rajkumar's stray double comma (`2,5,,`) corrected. Basita Das appears as a DiSCO author in Table 1 and on refs 17–19 but is absent from the author list; flagged in an HTML comment in the manuscript rather than resolved, because adding a person to an author list is not a formatting fix.
+- **Figure order.** v1's figures printed 1, 2, **4**, **3**, 5, 6 — a Word float artefact, confirmed in the as-submitted Word source where the Figure 4 caption precedes Figure 3. v2 renumbers into citation order and the files were renamed to match: the new Figure 1 is the labour analysis, and the old DiSCO/colour-bot pair is un-swapped. Figures now run 1–9 with no gaps, verified programmatically.
+- **Figures re-extracted at source resolution.** All six v1 figures were previously extracted from the ChemRxiv PDF; they are now taken from the Word source at roughly twice the linear resolution, and three that the PDF had degraded to JPEG are lossless again. **Two new figures** close the gaps: Figure 4 (rolling ball viscometer, P3) from the DTU showcase slide deck, and Figure 8 (electrochemical workflow, P7) from the original Google Form figure set. Both are marked `[NEEDED — confirm figure]`: recovering a figure is not the same as being given one.
+- **Author list.** Sonya Vasquez's missing affiliation superscript provisionally set to 1 (University of Washington, per ref 21) — **confirm**. Ethan Rajkumar's stray double comma (`2,5,,`) corrected. **Two contributors named in Table 1 are absent from the author list:** Basita Das (P5 DiSCO, also a co-author on refs 17–19) and Ilya Yakavets (P7 electrochemical workflow). Both are flagged in an HTML comment in the manuscript rather than resolved, because adding a person to an author list is not a formatting fix. Verified against the as-submitted Word source, so neither is a transcription artefact.
 - **Forum links demoted.** P8's two `accelerated-discovery.org` Discourse threads are no longer cited as documentation. Forum posts carry no persistent identifier and are not archival, and by the paper's own Claim 3 they do not qualify — so Table 1 marks P8 as needing an archival deposit and a footnote says why. Doing otherwise would have the paper violating its own thesis in its own evidence table.
 
 ## 7. What only the co-authors can resolve
@@ -100,11 +101,11 @@ Every one of these is marked `[NEEDED]` in the manuscript.
 
 4. **Survey material** (n = 58): the instrument verbatim, the full response distribution, the response rate, whether responses were collected before/during/after the showcase, and consent status. §2 is currently thin because only two results from it were ever reported.
 5. **Selection criterion for 10 of 14 projects.** A reviewer will ask, and unexplained it reads as selection bias.
-6. **A figure for P3**, the rolling ball viscometer — the only hardware project without one.
+6. ~~**A figure for P3**, the rolling ball viscometer.~~ **Provisionally closed** — recovered from slide 4 of the DTU showcase deck (`figures/source/dtu-modules-slides.pptx`) and placed as Figure 4. DTU still has to confirm the view; CAD alternatives are in `figures/source/`. The same applies to the new Figure 8 (P7), recovered from the original Google Form figure set, which additionally needs the institutional logos removed.
 7. **Zenodo DOIs** for all ten projects, so the cover letter can state that every contributed project is citable, versioned and archived. This answers objection 3 emphatically rather than minimally.
 8. **Author-contribution statement** updated for the §4 analysis and §6 audit, which are new to this version.
 9. **Brenden's "manifesto"**, referred to in the issue thread but not findable publicly — needed before it can be folded in.
-10. **Confirm ChemRxiv v1 is what was submitted.** The posted PDF was generated 2025-02-10, a month *after* the 2025-01-09 rejection, so it may already contain post-rejection edits. If it does, this changelog is measured against the wrong baseline.
+10. **Confirm ChemRxiv v1 is what was submitted.** *Half-answered.* The as-submitted Word source is now in `submitted/` and `manuscript-v1.md` matches it to 97.8 % of words, with every residual difference a typographic normalisation (see the README). So the ChemRxiv PDF and the arXiv submission are the same text. But that source was created 2025-02-04, nearly a month *after* the 2025-01-09 rejection, so it still does not establish that either matches the December 2024 manuscript the editor read. Only Brenden can settle that, from the submission record.
 
 ## 8. For the cover letter
 
