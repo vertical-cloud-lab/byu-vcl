@@ -651,3 +651,57 @@ Also worth knowing: campaign numbering restarts at 1 on this Pi (the old one end
 and mock runs consume numbers. No systemd unit, cron entry or API server was created —
 nothing starts on boot, and `sshd` is still the only thing listening on a tailnet-facing
 address, matching the `tcp:22`-only grant for `tag:rpi-5-des4`.
+
+## 2026-09-15 — CubOS `main` update audited; migration prepared, deliberately not taken
+
+Prompted by [Alex Chen's note on #200](https://github.com/vertical-cloud-lab/byu-vcl/issues/200#issuecomment-5666131265):
+CubOS `main` now moves the CubXL faster, and the Operator UI carries an **Update** button.
+Full write-up and evidence in
+[`cubos/results/cubos_update_audit_20260915/`](results/cubos_update_audit_20260915/README.md).
+Nothing on the Pi was changed and nothing was run on the CubXL.
+
+`main` is **226 commits** ahead of the Pi's `cbc33dc`, and three of those commits matter
+here.
+
+**The speed change is real and silent for us.** `7ff4d7f` adds
+`cnc.default_feed_rate_mm_min` and raises the module default 2000 → 3000 mm/min; every
+`G01` previously hardcoded `F2000` regardless of `$110/$111/$112`. Upstream pinned all of
+*its* configs to an explicit 3000. `cub_xl_ben_pipette_capper.yaml` is ours and carries no
+such field, so it would inherit 3000 without anyone choosing it. Worth pinning to 2000 and
+taking the speed as its own watched run — but the pin has to land **with** the update, not
+before: `CncYaml` at `cbc33dc` is `extra="forbid"`, so adding the field today breaks
+loading on the Pi as it stands.
+
+**The capper park leg is gone, and that helps the cap-clearance problem.** `b39988b` makes
+every XY move without an explicit `travel_z` lift to the multi-tool ceiling first, and drops
+`decap`/`cap`'s trailing park entirely (`park_position` now loads with a warning and is
+ignored). Concretely: a gripped cap used to be carried on the park leg at carriage Z 99.065
+and is now carried on the next command's ceiling travel at Z 124 — about 9 mm more clearance
+over neighbouring caps, which is the symptom Ben filmed on 2026-08-31.
+
+**Two of our four patches are fixed upstream, better than ours** — `3a7f4ab` for the
+cap-sensor confirm (it re-engages per retry, ours did not) and `88bf226`'s `PawduinoLink`
+for the boot banner (a `CMD_HELLO` resync rather than a longer sleep; also fixes the
+unarbitrated shared `/dev/ttyACM0`). The other two are re-ported as
+`cubos/patches/*-main.patch`.
+
+🔴 **As-is, `main` fails Ben's committed trio with 6 violations.** Upstream took the
+ceiling-travel half of our hover patch but not the clamp, so a 35 mm tip still demands
+carriage Z 150 against `z_max` 124. With both ports applied: `validate_setup` PASS,
+`--mock` 12/12, `passive_shadow` 0 both ways, and `pytest` **2544 passed / 0 failed** —
+identical to pristine `main`. Diffing commanded poses between the two revisions on the same
+trio shows six removed poses (the four capper park legs plus two redundant retracts),
+nothing added and nothing moved.
+
+🔴 **The Update button cannot work on this Pi.** `deploy/pi/update.sh` runs
+`git checkout --detach`, which any applied patch makes git refuse (it aborts cleanly, before
+the rollback path arms). Independently, this Pi has no `cubos_api`, no API server, no
+`cubos` systemd service and no `npm`, so the button does not exist on it yet. A gitops
+updater and a locally patched appliance are mutually exclusive — the durable fix is
+upstreaming the clamp so we carry no patches.
+
+**Recommendation: hold.** The plunger fault Ben and Jarrett are chasing is entirely below
+CubOS, so the update buys nothing for it and adds a variable; Ben's outstanding 2026-09-12
+ask (run the trio, capture 8 frames) was validated against `cbc33dc` and should happen on
+the known-good tree first. The migration recipe is written down and reversible whenever
+they want it.

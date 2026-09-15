@@ -1,0 +1,225 @@
+diff --git a/packages/core/src/cubos/gantry/gantry_config.py b/packages/core/src/cubos/gantry/gantry_config.py
+index ca65f36..9332d29 100644
+--- a/packages/core/src/cubos/gantry/gantry_config.py
++++ b/packages/core/src/cubos/gantry/gantry_config.py
+@@ -130,3 +130,19 @@ class GantryConfig:
+     def resolved_safe_z(self) -> float:
+         """Effective safe travel Z: explicit ``safe_z`` or ``working_volume.z_max``."""
+         return self.safe_z if self.safe_z is not None else self.working_volume.z_max
++
++    def hover_z(self, instrument: str, tip_extension: float = 0.0) -> float:
++        """Highest tool-frame plane *instrument* can hover/travel at.
++
++        ``resolved_safe_z``, unless the instrument's tool point rides so far
++        below the carriage (``depth`` plus an attached-tip extension) that
++        putting it at ``resolved_safe_z`` would need gantry Z above
++        ``working_volume.z_max``; then the highest plane the carriage can
++        actually reach. Mirrors ``InstrumentedGantry.move_to_labware``.
++        """
++        config = self.instruments.get(instrument)
++        depth = config.get("depth", 0.0) if isinstance(config, dict) else 0.0
++        if isinstance(depth, bool) or not isinstance(depth, (int, float)):
++            depth = 0.0
++        reach_limit = self.working_volume.z_max - float(depth) - float(tip_extension)
++        return min(self.resolved_safe_z, reach_limit)
+diff --git a/packages/core/src/cubos/gantry/instrument_loader.py b/packages/core/src/cubos/gantry/instrument_loader.py
+index fd6b443..436d98d 100644
+--- a/packages/core/src/cubos/gantry/instrument_loader.py
++++ b/packages/core/src/cubos/gantry/instrument_loader.py
+@@ -164,6 +164,25 @@ def load_instrumented_gantry_from_config(
+         )
+     expected_grbl_settings = getattr(config, "expected_grbl_settings", None)
+     safe_z = getattr(config, "resolved_safe_z", None)
++    # Offline/mock paths construct `Gantry(offline=True)` with no raw
++    # config, which would blind InstrumentedGantry._gantry_z_ceiling() and
++    # let dry-run travel planes diverge from hardware. Seed the controller's
++    # working volume from the loaded machine config so mock and hardware
++    # plan the same motion.
++    working_volume = getattr(config, "working_volume", None)
++    if (
++        isinstance(gantry.config, dict)
++        and "working_volume" not in gantry.config
++        and working_volume is not None
++    ):
++        gantry.config["working_volume"] = {
++            "x_min": working_volume.x_min,
++            "x_max": working_volume.x_max,
++            "y_min": working_volume.y_min,
++            "y_max": working_volume.y_max,
++            "z_min": working_volume.z_min,
++            "z_max": working_volume.z_max,
++        }
+     return build_instrumented_gantry(
+         instrument_configs,
+         gantry,
+diff --git a/packages/core/src/cubos/gantry/instrument_mount.py b/packages/core/src/cubos/gantry/instrument_mount.py
+index 81903b2..a7363a0 100644
+--- a/packages/core/src/cubos/gantry/instrument_mount.py
++++ b/packages/core/src/cubos/gantry/instrument_mount.py
+@@ -120,7 +120,34 @@ class InstrumentedGantry:
+         instr = self._resolve_instrument(instrument)
+         x, y, z = self._resolve_position(labware)
+         self._validate_finite_xyz(x, y, z, instr.name)
+-        self.move(instr, (x, y, self.safe_z), travel_z=self.multi_tool_safe_travel_z(instr))
++        travel_z = self.multi_tool_safe_travel_z(instr)
++        hover_z = float(self.safe_z)
++        ceiling = self._gantry_z_ceiling()
++        if ceiling is not None:
++            reach_limit = ceiling - self._effective_depth(instr)
++            if reach_limit < hover_z:
++                # A deep tool point (a pipette carrying a disposable tip)
++                # can sit so far below the carriage that putting it at
++                # safe_z would need gantry Z above working_volume.z_max.
++                # Hover at the highest plane the carriage can actually
++                # reach instead of commanding an out-of-travel Z. Warn
++                # loudly: the tool point then crosses the deck BELOW
++                # safe_z, and offline validation models only the machine's
++                # fixed structures, not labware heights.
++                self.logger.warning(
++                    "%s cannot reach safe_z %.3f (tool point rides %.3f "
++                    "below the carriage; ceiling %.3f). Hovering/traveling "
++                    "at %.3f instead - confirm this plane clears all deck "
++                    "contents.",
++                    instr.name, hover_z, self._effective_depth(instr),
++                    ceiling, reach_limit,
++                )
++                hover_z = reach_limit
++                if travel_z is not None:
++                    travel_z = min(travel_z, reach_limit)
++                else:
++                    travel_z = reach_limit
++        self.move(instr, (x, y, hover_z), travel_z=travel_z)
+ 
+     def multi_tool_safe_travel_z(
+         self, instrument: str | BaseInstrument,
+diff --git a/packages/core/src/cubos/validation/bounds.py b/packages/core/src/cubos/validation/bounds.py
+index 1226fb7..242b948 100644
+--- a/packages/core/src/cubos/validation/bounds.py
++++ b/packages/core/src/cubos/validation/bounds.py
+@@ -177,7 +177,7 @@ def _append_engage_targets(
+         instrument=instrument,
+         x=coord.x,
+         y=coord.y,
+-        z=gantry.resolved_safe_z,
++        z=gantry.hover_z(instrument, tip_extension=tip_extension),
+         tip_extension=tip_extension,
+     )
+     _append_target(
+@@ -265,7 +265,7 @@ def _append_move_targets(
+             instrument=instrument,
+             x=coord.x,
+             y=coord.y,
+-            z=gantry.resolved_safe_z,
++            z=gantry.hover_z(instrument, tip_extension=tip_ext),
+             tip_extension=tip_ext,
+         )
+         return
+@@ -388,7 +388,7 @@ def _append_rinse_targets(
+         return
+     coord = deck.resolve_coordinate(vial)
+     for suffix in ("safe_z", "action_z"):
+-        z = gantry.resolved_safe_z if suffix == "safe_z" else coord.z + float(height)
++        z = gantry.hover_z(instrument) if suffix == "safe_z" else coord.z + float(height)
+         _append_target(
+             targets, target=vial, suffix=suffix, instrument=instrument,
+             x=coord.x, y=coord.y, z=z,
+@@ -440,7 +440,7 @@ def _append_scan_targets(
+                 instrument=instrument,
+                 x=well.x,
+                 y=well.y,
+-                z=gantry.resolved_safe_z,
++                z=gantry.hover_z(instrument, tip_extension=tip_ext),
+                 tip_extension=tip_ext,
+             )
+         _append_target(
+diff --git a/packages/core/src/cubos/validation/protocol_semantics.py b/packages/core/src/cubos/validation/protocol_semantics.py
+index ed0aa1e..323ec11 100644
+--- a/packages/core/src/cubos/validation/protocol_semantics.py
++++ b/packages/core/src/cubos/validation/protocol_semantics.py
+@@ -432,6 +432,10 @@ def _validate_pipette_engage(
+     action = (coord.x, coord.y, action_abs)
+     safe_z = _resolved_safe_z(gantry)
+     if safe_z is not None:
++        # Mirror InstrumentedGantry.move_to_labware: a tip-extended pipette
++        # hovers/travels at the highest carriage-reachable plane when
++        # safe_z itself is out of reach.
++        safe_z = gantry.hover_z("pipette", tip_extension=tip_extension)
+         safe_pose = (coord.x, coord.y, safe_z)
+         violations.extend(_validate_gantry_waypoint(
+             step_index=step_index,
+@@ -887,6 +891,7 @@ def _validate_measure_command(
+     action = (coord.x, coord.y, action_abs)
+     safe_z = _resolved_safe_z(gantry)
+     if safe_z is not None:
++        safe_z = gantry.hover_z(instrument, tip_extension=tip_ext)
+         safe_pose = (coord.x, coord.y, safe_z)
+         violations.extend(_validate_gantry_waypoint(
+             step_index=step_index,
+@@ -1136,6 +1141,7 @@ def _validate_move_waypoints(
+                 "to be configured.",
+             ))
+             return violations
++        safe_z = gantry.hover_z(instrument, tip_extension=tip_ext)
+         target = (coord.x, coord.y, safe_z)
+         target_label = f"move safe_z for {position!r}"
+         transit_z = safe_z
+diff --git a/packages/core/tests/validation/test_pipette_tip_state.py b/packages/core/tests/validation/test_pipette_tip_state.py
+index c5216f7..dfcf772 100644
+--- a/packages/core/tests/validation/test_pipette_tip_state.py
++++ b/packages/core/tests/validation/test_pipette_tip_state.py
+@@ -263,7 +263,7 @@ def test_pickup_requires_explicit_tip_slot():
+     assert any("must include an explicit tip slot" in v.message for v in violations)
+ 
+ 
+-def test_attached_tip_extension_is_checked_against_working_volume_by_semantics():
++def test_attached_tip_extension_clamps_hover_in_semantics():
+     protocol = _protocol(
+         _step(0, "pick_up_tip", position="tips.A1"),
+         _step(
+@@ -276,7 +276,11 @@ def test_attached_tip_extension_is_checked_against_working_volume_by_semantics()
+     )
+ 
+     # Cub XL Sterling-like Z geometry: safe_z 85 plus mounted pipette
+-    # depth -17 plus a 59.3 mm attached tip requires gantry z=127.3.
++    # depth -17 plus a 59.3 mm attached tip would need gantry z=127.3.
++    # LOCAL PATCH (hover-clamp): rather than flag that as unreachable, the
++    # hover is clamped to the highest carriage-reachable plane, so an
++    # otherwise-valid protocol stays runnable on a machine whose Z travel
++    # cannot lift a tipped tool point all the way to safe_z.
+     violations = validate_protocol_semantics(
+         protocol,
+         _board(depth=-17.0),
+@@ -284,10 +288,13 @@ def test_attached_tip_extension_is_checked_against_working_volume_by_semantics()
+         _gantry(z_max=127.0, safe_z=85.0, x_max=293.0, y_max=264.0),
+     )
+ 
+-    assert any("safe_z" in v.message and "outside working volume" in v.message for v in violations)
++    assert not any(
++        "safe_z" in v.message and "outside working volume" in v.message
++        for v in violations
++    )
+ 
+ 
+-def test_attached_tip_extension_is_checked_by_protocol_motion_bounds():
++def test_attached_tip_extension_clamps_hover_in_protocol_motion_bounds():
+     protocol = _protocol(
+         _step(0, "pick_up_tip", position="tips.A1"),
+         _step(
+@@ -299,6 +306,8 @@ def test_attached_tip_extension_is_checked_by_protocol_motion_bounds():
+         ),
+     )
+ 
++    # LOCAL PATCH (hover-clamp): same geometry as the semantics test above;
++    # the clamped hover is in bounds, so nothing is flagged on z_max.
+     violations = validate_protocol_motion_bounds(
+         _gantry(z_max=127.0, safe_z=85.0, x_max=293.0, y_max=264.0),
+         protocol,
+@@ -306,7 +315,7 @@ def test_attached_tip_extension_is_checked_by_protocol_motion_bounds():
+         _board(depth=-17.0),
+     )
+ 
+-    assert any(
++    assert not any(
+         violation.instrument_name == "pipette"
+         and violation.axis == "z"
+         and violation.bound_name == "z_max"

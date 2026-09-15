@@ -14,6 +14,14 @@ git apply /path/to/byu-vcl/cubos/patches/<name>.patch
 
 Check what is currently applied with `cd ~/CubOS && git diff --stat`.
 
+> **Two sets of patches live here.** The four without a suffix are written against
+> `cbc33dc`, the revision the Pi runs today, and are what `git diff --stat` on the
+> Pi should show. The two `*-main.patch` files are the same fixes rebased onto
+> upstream `main` (`496819c`), prepared but **not applied** — see
+> [the update audit](../results/cubos_update_audit_20260915/README.md) for why the
+> migration is ready but deliberately not taken yet. The other two patches are
+> genuinely fixed upstream and simply disappear on `main`.
+
 ---
 
 ## `pawduino-connect-boot-banner.patch`
@@ -328,3 +336,71 @@ The run reached all 12 steps and every plunger command actuated. One side effect
 worth knowing: the exception is raised inside `self.home()`, **before**
 `self.prime()`, so `prime` never runs while this patch is carrying a failed home
 — the plunger starts the protocol at firmware counter 0 rather than 5.0.
+
+
+---
+
+# Rebased onto upstream `main` — prepared, **not applied**
+
+Both apply cleanly to `496819c` and together produce **2544 passed, 0 failed** on
+`packages/core/tests` — the same count as pristine `main`, because each patch
+rewrites the upstream tests whose behaviour it changes. Full evidence and the
+migration recipe: [`cubos/results/cubos_update_audit_20260915/`](../results/cubos_update_audit_20260915/README.md).
+
+## `tipped-hover-clamp-main.patch`
+
+The `main` port of `tipped-hover-clamp-and-ceiling-travel.patch`, and much smaller
+than it, because upstream took the ceiling-travel half at `b39988b` (2026-09-02):
+`InstrumentedGantry.move()` now lifts to `multi_tool_safe_travel_z` before any XY
+change without an explicit `travel_z`, and `decap`/`cap` no longer park at all.
+
+What upstream did **not** take is the hover clamp, and without it Ben's committed
+trio fails on `main` with six violations:
+
+```
+- pipette -> tip_rack.A1.safe_z: gantry (284.0, 25.5, 150.0) violates z_max=124.0
+- step 4 (aspirate): safe_z gantry z=150.0 is outside working volume [0.0, 124.0]
+```
+
+`move_to_labware` still ends at `safe_z` measured *at the tool point*, so a 35 mm
+tip needs the carriage at `115 + 35 = 150` on a machine whose Z tops out at 124.
+`multi_tool_safe_travel_z` cannot help — it is a `max()`, so it never clamps down.
+
+The patch adds `GantryConfig.hover_z(instrument, tip_extension=...)`, clamps the
+hover target in `move_to_labware` (logging a WARNING each time), mirrors the clamp
+at four call sites in `validation/bounds.py` and three in
+`validation/protocol_semantics.py`, and seeds the mock controller's working volume
+from the loaded config so dry runs plan the same motion as hardware.
+
+## `pipette-connect-tolerate-failed-home-main.patch`
+
+The `main` port of `pipette-connect-tolerate-failed-home.patch`, rebased onto the
+new `PawduinoLink` connect path (`self._release_link()` replaced
+`self._close_serial()`). Upstream's refusal is unchanged at `main`, so the escape
+hatch is still needed while the plunger limit switch does not assert.
+
+**Still the one patch here that is not a bug fix.** Revert it the moment the switch
+works; it is inert whenever `home()` succeeds.
+
+## Two patches that `main` makes unnecessary
+
+- **`pawduino-connect-boot-banner.patch`** — superseded by `PawduinoLink`
+  (`88bf226`, 2026-08-20), which drains the port and then does a `CMD_HELLO`
+  round-trip with `expect="Hello"` that skips stale lines. That is a resync rather
+  than a longer sleep, so it is robust to our measured 3.76 s banner. Verified that
+  `CMD_HELLO = 0` exists in the firmware this machine runs (`BU-KABlab/PANDA_Arduino`,
+  `src/Interface.cpp:143` → `"Hello from Pawduino!"`). `PawduinoLink` also fixes the
+  unarbitrated shared `/dev/ttyACM0` flagged on 2026-08-26.
+- **`cap-release-confirm-after-retract.patch`** — fixed upstream at `3a7f4ab`
+  (2026-08-28), and better than ours: it re-engages before re-actuating on each
+  retry, which ours did not.
+
+## Why the Operator UI's Update button will not work here
+
+`deploy/pi/update.sh` runs `git checkout --detach <target>` against the live tree.
+Any applied patch makes git refuse, and the abort happens before `ROLLBACK_READY=1`,
+so it fails clean and leaves the machine where it was — but it can never succeed
+while a patch is applied. Independently, this Pi has no `cubos_api` install, no API
+server, no `cubos` systemd service and no `npm`, so the button does not exist on it
+yet. A gitops updater and a locally patched appliance are mutually exclusive; the
+durable fix is upstreaming the clamp so we carry no patches at all.

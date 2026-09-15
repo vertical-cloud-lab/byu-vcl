@@ -1,0 +1,19 @@
+0a1,2
+> Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ignored (decap/cap no longer park; delete this key).
+> Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ignored (decap/cap no longer park; delete this key).
+5d6
+< Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+7a9
+> OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead - confirm this plane clears all deck contents.
+14,15d15
+< Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+< Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+19c19
+< Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+---
+> OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead - confirm this plane clears all deck contents.
+21a22
+> OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead - confirm this plane clears all deck contents.
+27,28d27
+< Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+< Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)

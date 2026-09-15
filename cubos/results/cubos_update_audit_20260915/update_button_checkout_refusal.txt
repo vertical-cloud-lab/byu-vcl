@@ -1,0 +1,19 @@
+# Simulated Update-button checkout against the Pi's patched tree (cbc33dc + 4 patches)
+# replica of ~/CubOS on rpi-5-des4; deploy/pi/update.sh runs: git checkout --detach <target>
+
+$ git checkout --detach 496819c
+error: Your local changes to the following files would be overwritten by checkout:
+	packages/core/src/cubos/gantry/gantry_config.py
+	packages/core/src/cubos/gantry/instrument_loader.py
+	packages/core/src/cubos/gantry/instrument_mount.py
+	packages/core/src/cubos/instruments/capper/vendors/pawduino.py
+	packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
+	packages/core/src/cubos/protocol_engine/commands/capper.py
+	packages/core/src/cubos/validation/bounds.py
+	packages/core/src/cubos/validation/protocol_semantics.py
+	packages/core/tests/validation/test_pipette_tip_state.py
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+$ git rev-parse --short HEAD
+cbc33dc
