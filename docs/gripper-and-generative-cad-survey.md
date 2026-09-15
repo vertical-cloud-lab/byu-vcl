@@ -145,6 +145,41 @@ ran a high-effort Edison query on digital-twin / physics simulation for design i
 - **Nobody simulates the measurement chain** — no published work puts a balance in the loop
   (settling time, tapper vibration, stable-reading logic). Cheap gap, ours to take.
 
+## 5b. `tensegrity-optimization` already solved the fabrication half of a printed compliant gripper
+
+This was the biggest surprise of the org-wide pass. Issue
+[#38](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/38) /
+PR [#39](https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/39) ran a
+multi-phase study of **printed-in-place rigid + TPU-85A joints on the Bambu H2D**, which is
+precisely the manufacturing route a printed compliant gripper finger would take. The
+transferable conclusions:
+
+- **Do not rely on chemical adhesion.** The thread states plainly that *no peer-reviewed
+  PETG–TPU bond data exists*, so every surviving design is **material-agnostic mechanical
+  interlock** rather than a bonded interface. Designs were ranked on a **pull-through
+  ratio** (far-face OD vs. bore OD): the Phase-3 anchor-bulb reaches **1.71×** with a 1.0 mm
+  radial bearing annulus; the Design-F **captive TPU core** (Ø7 mm core inside a Ø12 mm
+  shell with an Ø8 mm cavity, 0.5 mm print-in-place radial gap) reaches **2.5×**.
+- **Layer-interlock teeth**: two staggered rings of 8 radial teeth at the cavity equator,
+  rigid inward at z = +0.6 mm and TPU outward at z = −0.6 mm, rotated by half a sector
+  (22.5°). They print past each other with no fused contact, and radial overlap blocks ±Z
+  translation unless the teeth shear. An interlock that is independent of bond chemistry.
+- **Upset-shape vocabulary already worked out** — sphere, truncated cone / rivet head (flat
+  bearing face, cleanest top-layer finish), countersunk conical (flush and self-centering),
+  mushroom / tee-head with a radiused undercut (maximum interlock per gram of TPU) — all
+  modelled in OpenSCAD at `cad/joint-design/A_variants/` with the pull-through ratio held
+  constant so only shape varies.
+- **A reuse metric already exists**: Bruceton n ≥ 20 drops, with the observation that
+  printed-in-place TPU bulbs degrade more gracefully than FDM dovetail teeth.
+
+Read against the arm-side scan, this is the missing half. Q2 says a credible reliability
+claim needs 500–1,500 operations with structured failure logging; this thread already has
+the fabrication route, the interlock geometry, the failure metric, and the cycling protocol
+for the *compliant* part of a gripper. The same repo's PR
+[#33](https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/33) also stood up
+runnable MuJoCo / PyBullet / PyChrono / Newton / DiffPD / PolyFEM+IPC demos — the
+simulation substrate a morphology co-design loop would need, already installed and working.
+
 ## 6. What the arm changes about all of this
 
 The PiPER is not a new subject; it is the missing actuator for problems this org has already
