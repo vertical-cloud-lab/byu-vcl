@@ -33,6 +33,10 @@ Usage:
     # Choose the moments yourself (indices are validate_setup's step numbers)
     python run_with_camera_capture.py --at 2,4,9,10 --outdir ... -- <trio>
 
+    # A camera whose mount is upside down: flip it at capture time, so the
+    # file on disk is already the right way up
+    python run_with_camera_capture.py --vflip cam1_csi1 --outdir ... -- <trio>
+
 Backends are detected, not assumed: CSI ribbon cameras via rpicam-still /
 libcamera-still, USB UVC devices via ffmpeg on /dev/videoN.  `--list` prints
 exactly what was found and which backend each will use.
@@ -118,21 +122,36 @@ def _label(cam, i):
 # --------------------------------------------------------------------------
 # capture
 # --------------------------------------------------------------------------
-def capture(cam, path, width=1920, height=1080):
+def capture(cam, path, width=1920, height=1080, vflip=False, hflip=False):
     """Grab one frame. Returns None on success, or an error string.
 
     Never raises: the caller is a protocol run and must not be interrupted
     by a camera.
+
+    vflip/hflip are applied by the capture backend itself (rpicam-still's
+    --vflip, ffmpeg's vflip filter), so the file on disk is already the right
+    way up.  A camera whose mount is upside down or sideways should be fixed
+    here rather than in whoever looks at the pictures later.
     """
     try:
         if cam["kind"] == "csi":
             cmd = [cam["binary"], "--camera", str(cam["index"]),
                    "--width", str(width), "--height", str(height),
-                   "--nopreview", "--immediate", "-o", path]
+                   "--nopreview", "--immediate"]
+            if vflip:
+                cmd.append("--vflip")
+            if hflip:
+                cmd.append("--hflip")
+            cmd += ["-o", path]
         else:
+            filters = ([] + (["vflip"] if vflip else [])
+                          + (["hflip"] if hflip else []))
             cmd = ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
                    "-f", "v4l2", "-video_size", f"{width}x{height}",
-                   "-i", cam["device"], "-frames:v", "1", path]
+                   "-i", cam["device"], "-frames:v", "1"]
+            if filters:
+                cmd += ["-vf", ",".join(filters)]
+            cmd.append(path)
         proc = subprocess.run(cmd, capture_output=True, text=True,
                               timeout=CAPTURE_TIMEOUT_S)
         if proc.returncode != 0:
@@ -144,14 +163,19 @@ def capture(cam, path, width=1920, height=1080):
         return repr(exc)
 
 
-def capture_all(cams, outdir, tag, manifest):
+def capture_all(cams, outdir, tag, manifest, transforms=None):
+    transforms = transforms or {}
     for i, cam in enumerate(cams):
-        name = f"{tag}__{_label(cam, i)}.jpg"
+        label = _label(cam, i)
+        tf = transforms.get(label, {})
+        name = f"{tag}__{label}.jpg"
         path = os.path.join(outdir, name)
         t0 = time.time()
-        err = capture(cam, path)
-        rec = {"tag": tag, "camera": _label(cam, i), "name": cam["name"],
+        err = capture(cam, path, vflip=tf.get("vflip", False),
+                      hflip=tf.get("hflip", False))
+        rec = {"tag": tag, "camera": label, "name": cam["name"],
                "file": name, "dt_s": round(time.time() - t0, 2),
+               "vflip": tf.get("vflip", False), "hflip": tf.get("hflip", False),
                "t": datetime.datetime.now().isoformat(timespec="seconds"),
                "error": err}
         manifest.append(rec)
@@ -175,6 +199,11 @@ def main():
                          "Default: 4 boundaries spread across the protocol.")
     ap.add_argument("--shots", type=int, default=4,
                     help="How many frames per camera when --at is not given")
+    ap.add_argument("--vflip", default="",
+                    help="Comma-separated camera labels to flip vertically "
+                         "(e.g. cam1_csi1), or 'all'. Applied at capture time.")
+    ap.add_argument("--hflip", default="",
+                    help="Same, but a horizontal flip.")
     ap.add_argument("--width", type=int, default=1920)
     ap.add_argument("--height", type=int, default=1080)
     ap.add_argument("rest", nargs=argparse.REMAINDER,
@@ -187,16 +216,40 @@ def main():
     if not cams:
         print("No cameras detected (looked for rpicam-still/libcamera-still "
               "CSI devices and ffmpeg-capable /dev/video* nodes).")
+    labels = [_label(cam, i) for i, cam in enumerate(cams)]
+
+    def _sel(spec):
+        spec = (spec or "").strip()
+        if not spec:
+            return set()
+        if spec == "all":
+            return set(labels)
+        want = {x.strip() for x in spec.split(",") if x.strip()}
+        unknown = want - set(labels)
+        if unknown:
+            print(f"  WARNING: unknown camera label(s) {sorted(unknown)}; "
+                  f"known labels are {labels}")
+        return want & set(labels)
+
+    transforms = {}
+    for lbl in _sel(args.vflip):
+        transforms.setdefault(lbl, {})["vflip"] = True
+    for lbl in _sel(args.hflip):
+        transforms.setdefault(lbl, {})["hflip"] = True
+
     for i, cam in enumerate(cams):
         where = cam.get("device", f"csi index {cam.get('index')}")
-        print(f"  {_label(cam, i)}: {cam['name']}  [{cam['kind']}]  {where}")
+        tf = transforms.get(_label(cam, i), {})
+        flips = " ".join(k for k, v in sorted(tf.items()) if v)
+        print(f"  {_label(cam, i)}: {cam['name']}  [{cam['kind']}]  {where}"
+              + (f"  [{flips}]" if flips else ""))
 
     if args.list:
         return 0
 
     manifest = []
     if args.test_shot:
-        capture_all(cams, args.outdir, "testshot", manifest)
+        capture_all(cams, args.outdir, "testshot", manifest, transforms)
         with open(os.path.join(args.outdir, "frames.json"), "w") as fh:
             json.dump(manifest, fh, indent=2)
         return 0 if all(r["error"] is None for r in manifest) else 1
@@ -247,7 +300,7 @@ def main():
         result = _orig_execute(self, context)
         if self.index in state["points"]:
             tag = f"step{self.index:02d}_{self.command_name}"
-            capture_all(cams, args.outdir, tag, manifest)
+            capture_all(cams, args.outdir, tag, manifest, transforms)
         return result
 
     _rt.ProtocolStep.execute = execute

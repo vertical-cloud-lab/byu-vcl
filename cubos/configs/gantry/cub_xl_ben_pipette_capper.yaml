@@ -142,24 +142,26 @@ instruments:
     capture_settle_s: 1
     engage_depth_mm: 15
     offline: false
-    # IGNORED as of the 2026-09-15 CubOS migration, and deliberately KEPT.
-    # Upstream b39988b dropped decap/cap's trailing park move, so this key now
-    # loads with a warning and has no effect:
+    # park_position DELETED 2026-09-15 on Ben's say-so (was [236, 25]).
+    # Upstream b39988b dropped decap/cap's trailing park move, so CubOS main
+    # ignores the key and loads it with a warning telling you to remove it:
     #   "YAML field 'park_position' is no longer used and was ignored
     #    (decap/cap no longer park; delete this key)."
-    # Not deleted, because PawduinoCapper.__init__ at cbc33dc takes
-    # park_position as a REQUIRED argument -- removing it would break a
-    # rollback, and the importer's fallback is the placeholder [-10, -10],
-    # which is outside the working volume and alarms GRBL on every decap/cap.
-    # Delete it only once rollback to cbc33dc is off the table.
-    # NOTE this is the *capper instrument's* park, NOT the protocol's
-    # `positions: park_position:` in pipette_test.yaml -- that one is a named
-    # protocol position, is still used, and step 1 still moves to it.
-    park_position:
-    - 236
-    - 25    # CHANGED 2026-09-08 (was 175): off the vial
-            # column in X (vials span x 192-220), so no capper leg
-            # carries the passive nozzle over a cap.
+    # The work it used to do has moved upward, not away: a cap gripped after
+    # decap used to be carried on the park leg at carriage Z 99.065, and is
+    # now carried on the NEXT command's ceiling travel at carriage Z 124 --
+    # about 9 mm more clearance over the caps it traverses.
+    #
+    # Rollback cost, now that it is gone: PawduinoCapper.__init__ at cbc33dc
+    # takes park_position as a REQUIRED argument, so reverting CubOS to
+    # cbc33dc means putting `park_position: [236, 25]` back here first.  The
+    # importer's fallback is the placeholder [-10, -10], outside the working
+    # volume, which alarms GRBL on every decap/cap.
+    #
+    # NOTE this was the *capper instrument's* park, NOT the protocol's
+    # `positions: park_position:` / `pipette_park:` in pipette_test.yaml.
+    # Those are named protocol positions, are still used by steps 1 and 5,
+    # and deleting either would remove real motion from the run.
     port: /dev/ttyACM0
   pipette:
     type: pipette
