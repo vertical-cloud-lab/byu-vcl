@@ -1,0 +1,101 @@
+{
+  "10.48550/arxiv.1909.03600": {
+    "doi": "10.48550/arxiv.1909.03600",
+    "source": "datacite",
+    "found": true,
+    "title": "Cost-aware Multi-objective Bayesian optimisation",
+    "year": 2019,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/1909.03600",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2011.11456": {
+    "doi": "10.48550/arxiv.2011.11456",
+    "source": "datacite",
+    "found": true,
+    "title": "Pareto-efficient Acquisition Functions for Cost-Aware Bayesian Optimization",
+    "year": 2020,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2011.11456",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2606.17233": {
+    "doi": "10.48550/arxiv.2606.17233",
+    "source": "datacite",
+    "found": true,
+    "title": "Uncertainty Quantification of Engineering Structures by Polynomial Chaos Expansion and Multivariate Active Learning",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2606.17233",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2607.23896": {
+    "doi": "10.48550/arxiv.2607.23896",
+    "source": "datacite",
+    "found": true,
+    "title": "Cost-Aware Recovery-Pathway Identification and Bayesian Optimization for Autonomous Materials Discovery",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2607.23896",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2608.13341": {
+    "doi": "10.48550/arxiv.2608.13341",
+    "source": "datacite",
+    "found": true,
+    "title": "Simulation-to-real transfer learning for infrared spectroscopic chemical sensing and analysis from molecules to complex samples",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2608.13341",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2608.15073": {
+    "doi": "10.48550/arxiv.2608.15073",
+    "source": "datacite",
+    "found": true,
+    "title": "BOCoDe: Engineering-Centered Benchmarking for Bayesian Optimization",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2608.15073",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2608.23039": {
+    "doi": "10.48550/arxiv.2608.23039",
+    "source": "datacite",
+    "found": true,
+    "title": "Beyond FAIR Data: Instrument Traces for Active and Autonomous Scientific Experimentation",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2608.23039",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2608.26016": {
+    "doi": "10.48550/arxiv.2608.26016",
+    "source": "datacite",
+    "found": true,
+    "title": "Bayesian Optimization for Self-Driving Materials Laboratories: From Algorithms to Physics-Informed Workflows",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2608.26016",
+    "arxiv_found": false
+  },
+  "10.48550/arxiv.2609.04564": {
+    "doi": "10.48550/arxiv.2609.04564",
+    "source": "datacite",
+    "found": true,
+    "title": "La Agente \u00d3ptima: Towards Agentic Self-Driving Laboratories",
+    "year": 2026,
+    "publisher": "arXiv",
+    "url": "https://arxiv.org/abs/2609.04564",
+    "arxiv_found": false
+  },
+  "10.4233/uuid:9fa27d25-1e58-473e-828a-b219bf465438": {
+    "doi": "10.4233/uuid:9fa27d25-1e58-473e-828a-b219bf465438",
+    "source": "datacite",
+    "found": true,
+    "title": "In-line monitoring of solvents during CO2 absorption using multivariate data analysis",
+    "year": 2016,
+    "publisher": "Delft University of Technology",
+    "url": "http://resolver.tudelft.nl/uuid:9fa27d25-1e58-473e-828a-b219bf465438"
+  }
+}

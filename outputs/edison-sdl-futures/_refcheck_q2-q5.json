@@ -1,0 +1,4613 @@
+{
+  "10.1002/aidi.202500067": {
+    "crossref": {
+      "found": true,
+      "title": "The Necessity of Dynamic Workflow Managers for Advancing Self\u2010Driving Labs and Optimizers",
+      "authors": [
+        "Simon K. Steensen",
+        "Patrick W. V. Butler",
+        "Jesper R. Pedersen",
+        "Nis Fisker\u2010B\u00f8dker",
+        "Tejs Vegge",
+        "Jin Hyun Chang",
+        "Ivano E. Castelli"
+      ],
+      "n_authors": 7,
+      "year": 2025,
+      "container": "Advanced Intelligent Discovery",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 4,
+      "url": "https://doi.org/10.1002/aidi.202500067"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067",
+      "landing": "https://doi.org/10.1002/aidi.202500067",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "The Necessity of Dynamic Workflow Managers for Advancing Self\u2010Driving Labs and Optimizers",
+      "year": 2025,
+      "cited_by_count": 4,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067",
+          "source": "Advanced Intelligent Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "5d437499b825efcf535f9b20b0d2c026b75582ef",
+      "externalIds": {
+        "DOI": "10.1002/aidi.202500067",
+        "CorpusId": 280197441
+      },
+      "title": "The Necessity of Dynamic Workflow Managers for Advancing Self\u2010Driving Labs and Optimizers",
+      "venue": "Advanced Intelligent Discovery",
+      "year": 2025,
+      "citationCount": 4,
+      "openAccessPdf": {
+        "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500067",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1002/aidi.202500067",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1002/aidi.202500087": {
+    "crossref": {
+      "found": true,
+      "title": "Advanced Experiment Design Strategies for Drug Development",
+      "authors": [
+        "Fanjin Wang",
+        "Anthony Harker",
+        "Mohan Edirisinghe",
+        "Maryam Parhizkar"
+      ],
+      "n_authors": 4,
+      "year": 2025,
+      "container": "Advanced Intelligent Discovery",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 3,
+      "url": "https://doi.org/10.1002/aidi.202500087"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087",
+      "landing": "https://doi.org/10.1002/aidi.202500087",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Advanced Experiment Design Strategies for Drug Development",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087",
+          "source": "Advanced Intelligent Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "dd6bacf2b270b49d814358a1c763b0d255aa5153",
+      "externalIds": {
+        "DOI": "10.1002/aidi.202500087",
+        "CorpusId": 281008936
+      },
+      "title": "Advanced Experiment Design Strategies for Drug Development",
+      "venue": "Advanced Intelligent Discovery",
+      "year": 2025,
+      "citationCount": 4,
+      "openAccessPdf": {
+        "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/aidi.202500087",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1002/aidi.202500087",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1002/aisy.202400986": {
+    "crossref": {
+      "found": true,
+      "title": "Applied Artificial Intelligence in Materials Science and Material Design",
+      "authors": [
+        "Emigdio Ch\u00e1vez\u2010Angel",
+        "Martin B\u00f8rstad Eriksen",
+        "Alejandro Castro\u2010Alvarez",
+        "Jose H. Garcia",
+        "Marc Botifoll",
+        "Oscar Avalos\u2010Ovando",
+        "Jordi Arbiol",
+        "Aitor Mugarza"
+      ],
+      "n_authors": 8,
+      "year": 2025,
+      "container": "Advanced Intelligent Systems",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 74,
+      "url": "https://doi.org/10.1002/aisy.202400986"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1002/aisy.202400986",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://repositorio.ufro.cl/files/original/7419205467e421684b472379bf3e94d6bce209ec.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Applied Artificial Intelligence in Materials Science and Material Design",
+      "year": 2025,
+      "cited_by_count": 71,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1002/aisy.202400986",
+          "source": "Advanced Intelligent Systems",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "http://hdl.handle.net/10261/410090",
+          "source": "DIGITAL.CSIC (Spanish National Research Council (CSIC))",
+          "version": "acceptedVersion"
+        },
+        {
+          "pdf": "https://repositorio.ufro.cl/files/original/7419205467e421684b472379bf3e94d6bce209ec.pdf",
+          "source": "Omeka S (Universidad de La Frontera)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://ddd.uab.cat/record/328102",
+          "source": "Dip\u00f2sit Digital de Documents de la UAB (Universitat Aut\u00f2noma de Barcelona)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/e7fdbd320889451383fcd3454a31e004",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "259b5e05d0106dcb1d921005e61ba8166dccc830",
+      "externalIds": {
+        "DBLP": "journals/aisy/ChavezAngelECGBAAM25",
+        "DOI": "10.1002/aisy.202400986",
+        "CorpusId": 276943404
+      },
+      "title": "Applied Artificial Intelligence in Materials Science and Material Design",
+      "venue": "Advanced Intelligent Systems",
+      "year": 2025,
+      "citationCount": 61,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1002/aisy.202400986",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1002-aisy-202400986.pdf",
+    "attempts": [
+      [
+        "unpaywall_alt_pdf",
+        "https://repositorio.ufro.cl/files/original/7419205467e421684b472379bf3e94d6bce209ec.pdf",
+        200,
+        3845026
+      ]
+    ]
+  },
+  "10.1002/anie.202506588": {
+    "crossref": {
+      "found": true,
+      "title": "Advancing Organic Chemistry Using High\u2010Throughput Experimentation",
+      "authors": [
+        "Reem Nsouli",
+        "Gaurav Galiyan",
+        "Laura K. G. Ackerman\u2010Biegasiewicz"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "Angewandte Chemie International Edition",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 26,
+      "url": "https://doi.org/10.1002/anie.202506588"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202506588",
+      "landing": "https://doi.org/10.1002/anie.202506588",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202506588"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC12462754",
+      "pmid": "40899616",
+      "isOpenAccess": "Y",
+      "title": "Advancing Organic Chemistry Using High-Throughput Experimentation."
+    },
+    "openalex": {
+      "title": "Advancing Organic Chemistry Using High\u2010Throughput Experimentation",
+      "year": 2025,
+      "cited_by_count": 25,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202506588",
+          "source": "Angewandte Chemie International Edition",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/12462754",
+          "source": "Europe PMC (PubMed Central)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12462754/",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "c05534a137425cf5d0155591f0cdd2d7579fcefd",
+      "externalIds": {
+        "PubMedCentral": "12462754",
+        "DOI": "10.1002/anie.202506588",
+        "CorpusId": 281086171,
+        "PubMed": "40899616"
+      },
+      "title": "Advancing Organic Chemistry Using High\u2010Throughput Experimentation",
+      "venue": "Angewandte Chemie",
+      "year": 2025,
+      "citationCount": 22,
+      "openAccessPdf": {
+        "url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/anie.202506588",
+        "status": "HYBRID",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1002-anie-202506588.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12462754/fullTextXML",
+        200,
+        287272
+      ]
+    ]
+  },
+  "10.1002/asmb.2701": {
+    "crossref": {
+      "found": true,
+      "title": "<scp>Self</scp>\u2010supervised cross validation using data generation structure",
+      "authors": [
+        "Ron S. Kenett",
+        "Chris Gotwalt",
+        "Laura Freeman",
+        "Xinwei Deng"
+      ],
+      "n_authors": 4,
+      "year": 2022,
+      "container": "Applied Stochastic Models in Business and Industry",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 15,
+      "url": "https://doi.org/10.1002/asmb.2701"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Self \u2010supervised cross validation using data generation structure",
+      "year": 2022,
+      "cited_by_count": 15,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "6aec4851e176b9aa2238c20cb4981bc26747e4c7",
+      "externalIds": {
+        "DOI": "10.1002/asmb.2701",
+        "CorpusId": 250103332
+      },
+      "title": "Self\n \u2010supervised cross validation using data generation structure",
+      "venue": "Applied Stochastic Models in Business and Industry",
+      "year": 2022,
+      "citationCount": 12,
+      "openAccessPdf": {
+        "url": "",
+        "status": "CLOSED",
+        "license": null
+      }
+    },
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1002/bit.27997": {
+    "crossref": {
+      "found": true,
+      "title": "Comparison of partial least square, artificial neural network, and support vector regressions for real\u2010time monitoring of CHO cell culture processes using in situ near\u2010infrared spectroscopy",
+      "authors": [
+        "Daniel A. Zavala\u2010Ortiz",
+        "Aur\u00e9lia Denner",
+        "Maria G. Aguilar\u2010Uscanga",
+        "Annie Marc",
+        "Bruno Ebel",
+        "Emmanuel Guedon"
+      ],
+      "n_authors": 6,
+      "year": 2021,
+      "container": "Biotechnology and Bioengineering",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 35,
+      "url": "https://doi.org/10.1002/bit.27997"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://hal.science/hal-03844328",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "34821379",
+      "isOpenAccess": "N",
+      "title": "Comparison of partial least square, artificial neural network, and support vector regressions for real-time monitoring of CHO cell culture processes using in situ near-infrared spectroscopy."
+    },
+    "openalex": {
+      "title": "Comparison of partial least square, artificial neural network, and support vector regressions for real\u2010time monitoring of CHO cell culture processes using in situ near\u2010infrared spectroscopy",
+      "year": 2021,
+      "cited_by_count": 35,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://hal.science/hal-03844328",
+          "source": "HAL (Le Centre pour la Communication Scientifique Directe)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "8ef5a23b6834728c0ad7986027e0e9a1381c72fe",
+      "externalIds": {
+        "DOI": "10.1002/bit.27997",
+        "CorpusId": 244671589,
+        "PubMed": "34821379"
+      },
+      "title": "Comparison of partial least square, artificial neural network, and support vector regressions for real\u2010time monitoring of CHO cell culture processes using in situ near\u2010infrared spectroscopy",
+      "venue": "Biotechnology and Bioengineering",
+      "year": 2021,
+      "citationCount": 29,
+      "openAccessPdf": {
+        "url": "https://hal.science/hal-03844328",
+        "status": "GREEN",
+        "license": "other-oa"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://hal.science/hal-03844328",
+        200,
+        12598
+      ],
+      [
+        "unpaywall_landing",
+        "https://hal.science/hal-03844328",
+        200,
+        12598
+      ]
+    ]
+  },
+  "10.1007/s00216-026-06781-y": {
+    "crossref": {
+      "found": true,
+      "title": "Towards the digital analytical sciences in chemistry and biochemistry: from FAIR data ecosystems to artificial intelligence",
+      "authors": [
+        "Darina Storozhuk",
+        "Jawad Kamran",
+        "Ravi Teja Vulchi",
+        "Rodrigo Escobar D\u00edaz Guerrero",
+        "Thomas Bocklitz"
+      ],
+      "n_authors": 5,
+      "year": 2026,
+      "container": "Analytical and Bioanalytical Chemistry",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.1007/s00216-026-06781-y"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://link.springer.com/content/pdf/10.1007/s00216-026-06781-y.pdf",
+      "landing": "https://doi.org/10.1007/s00216-026-06781-y",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://link.springer.com/content/pdf/10.1007/s00216-026-06781-y.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "42704371",
+      "isOpenAccess": "N",
+      "title": "Towards the digital analytical sciences in chemistry and biochemistry: from FAIR data ecosystems to artificial intelligence."
+    },
+    "openalex": {
+      "title": "Towards the digital analytical sciences in chemistry and biochemistry: from FAIR data ecosystems to artificial intelligence",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://link.springer.com/content/pdf/10.1007/s00216-026-06781-y.pdf",
+          "source": "Analytical and Bioanalytical Chemistry",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "30c693c126bbe92ad650b4aa5e0eca9df1a80d95",
+      "externalIds": {
+        "DOI": "10.1007/s00216-026-06781-y",
+        "CorpusId": 291833483,
+        "PubMed": "42704371"
+      },
+      "title": "Towards the digital analytical sciences in chemistry and biochemistry: from FAIR data ecosystems to artificial intelligence.",
+      "venue": "Analytical and Bioanalytical Chemistry",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://link.springer.com/content/pdf/10.1007/s00216-026-06781-y.pdf",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1007-s00216-026-06781-y.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://link.springer.com/content/pdf/10.1007/s00216-026-06781-y.pdf",
+        200,
+        1962128
+      ]
+    ]
+  },
+  "10.1007/s10845-025-02597-2": {
+    "crossref": {
+      "found": true,
+      "title": "Structured sampling strategies in Bayesian optimization: evaluation in mathematical and real-world scenarios",
+      "authors": [
+        "Lucas Greif",
+        "Niklas H\u00fcbschle",
+        "Andreas Kimmig",
+        "Simon Kreuzwieser",
+        "Anatole Martenne",
+        "Jivka Ovtcharova"
+      ],
+      "n_authors": 6,
+      "year": 2025,
+      "container": "Journal of Intelligent Manufacturing",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 13,
+      "url": "https://doi.org/10.1007/s10845-025-02597-2"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1007/s10845-025-02597-2",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Structured sampling strategies in Bayesian optimization: evaluation in mathematical and real-world scenarios",
+      "year": 2025,
+      "cited_by_count": 11,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1007/s10845-025-02597-2",
+          "source": "Journal of Intelligent Manufacturing",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://hdl.handle.net/10419/338874",
+          "source": "Econstor (Econstor)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "421ba3cb58861ca1ea2787c11140b5f7b6de5544",
+      "externalIds": {
+        "DBLP": "journals/jim/GreifHKKMO26",
+        "DOI": "10.1007/s10845-025-02597-2",
+        "CorpusId": 277487333
+      },
+      "title": "Structured sampling strategies in Bayesian optimization: evaluation in mathematical and real-world scenarios",
+      "venue": "Journal of Intelligent Manufacturing",
+      "year": 2025,
+      "citationCount": 20,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1007/s10845-025-02597-2",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1007-s10845-025-02597-2.html",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1007/s10845-025-02597-2",
+        200,
+        553733
+      ]
+    ]
+  },
+  "10.1007/s11831-026-10552-4": {
+    "crossref": {
+      "found": true,
+      "title": "Surrogates for Physics-Based and Data-Driven Modelling of Parametric Systems: Review and New Perspectives",
+      "authors": [
+        "Matteo Giacomini",
+        "Pedro D\u00edez"
+      ],
+      "n_authors": 2,
+      "year": 2026,
+      "container": "Archives of Computational Methods in Engineering",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 8,
+      "url": "https://doi.org/10.1007/s11831-026-10552-4"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1007/s11831-026-10552-4",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://upcommons.upc.edu/bitstreams/77155538-f119-4d9a-a3c3-7b691b62fd46/download"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Surrogates for Physics-Based and Data-Driven Modelling of Parametric Systems: Review and New Perspectives",
+      "year": 2026,
+      "cited_by_count": 6,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1007/s11831-026-10552-4",
+          "source": "Archives of Computational Methods in Engineering",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://upcommons.upc.edu/bitstreams/77155538-f119-4d9a-a3c3-7b691b62fd46/download",
+          "source": "UPCommons institutional repository (Universitat Polit\u00e8cnica de Catalunya)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "64e24ae9fca4bb5e70c57b7378231b0500e6a07c",
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2603-12870",
+        "ArXiv": "2603.12870",
+        "DOI": "10.1007/s11831-026-10552-4",
+        "CorpusId": 286517396
+      },
+      "title": "Surrogates for Physics-based and Data-driven Modelling of Parametric Systems: Review and New Perspectives",
+      "venue": "Archives of Computational Methods in Engineering",
+      "year": 2026,
+      "citationCount": 8,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1007/s11831-026-10552-4",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1007-s11831-026-10552-4.pdf",
+    "attempts": [
+      [
+        "unpaywall_alt_pdf",
+        "https://upcommons.upc.edu/bitstreams/77155538-f119-4d9a-a3c3-7b691b62fd46/download",
+        200,
+        4520906
+      ]
+    ]
+  },
+  "10.1016/b978-0-444-63663-8.00023-9": {
+    "crossref": {
+      "found": true,
+      "title": "Online Analysis for Industrial Bioprocesses",
+      "authors": [
+        "A.C. Veloso",
+        "E.C. Ferreira"
+      ],
+      "n_authors": 2,
+      "year": 2017,
+      "container": "Current Developments in Biotechnology and Bioengineering",
+      "type": "book-chapter",
+      "publisher": "Elsevier",
+      "is_referenced_by_count": 7,
+      "url": "https://doi.org/10.1016/b978-0-444-63663-8.00023-9"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://hdl.handle.net/1822/46294",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Online Analysis for Industrial Bioprocesses",
+      "year": 2016,
+      "cited_by_count": 11,
+      "type": "book-chapter",
+      "locations": [
+        {
+          "landing": "https://hdl.handle.net/1822/46294",
+          "source": "Reposit\u00f3riUM (Universidade do Minho)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "a4a78afc6ffbb0798140facb6daa7e8fb152b19b",
+      "externalIds": {
+        "MAG": "2522096406",
+        "DOI": "10.1016/B978-0-444-63663-8.00023-9",
+        "CorpusId": 113838761
+      },
+      "title": "Online analysis for industrial bioprocesses: Broth analysis",
+      "venue": "",
+      "year": 2017,
+      "citationCount": 12,
+      "openAccessPdf": {
+        "url": "https://hdl.handle.net/1822/46294",
+        "status": "GREEN",
+        "license": "other-oa"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1016-b978-0-444-63663-8-00023-9.html",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://hdl.handle.net/1822/46294",
+        200,
+        533603
+      ]
+    ]
+  },
+  "10.1016/j.ohx.2025.e00653": {
+    "crossref": {
+      "found": true,
+      "title": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms",
+      "authors": [
+        "Mohammad Nazeri",
+        "Jeffrey Watchorn",
+        "Sheldon Mei",
+        "Alex Zhang",
+        "Christine Allen",
+        "Frank Gu"
+      ],
+      "n_authors": 6,
+      "year": 2025,
+      "container": "HardwareX",
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "is_referenced_by_count": 3,
+      "url": "https://doi.org/10.1016/j.ohx.2025.e00653"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.hardware-x.com/article/S2468-0672(25)00031-8/pdf",
+      "landing": "https://doi.org/10.1016/j.ohx.2025.e00653",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.hardware-x.com/article/S2468-0672(25)00031-8/pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC12181777",
+      "pmid": "40546787",
+      "isOpenAccess": "Y",
+      "title": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms."
+    },
+    "openalex": {
+      "title": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.hardware-x.com/article/S2468-0672(25)00031-8/pdf",
+          "source": "HardwareX",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/12181777",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/e54fd83068d04be69539a85546d0f344",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "67fd2210a34553acfe36f1dfca7999b226b37fa8",
+      "externalIds": {
+        "PubMedCentral": "12181777",
+        "DOI": "10.1016/j.ohx.2025.e00653",
+        "CorpusId": 278294071,
+        "PubMed": "40546787"
+      },
+      "title": "Leveraging flexible pipette-based tool changes to transform liquid handling systems into dual-function sample preparation and imaging platforms",
+      "venue": "HardwareX",
+      "year": 2025,
+      "citationCount": 3,
+      "openAccessPdf": {
+        "url": "https://www.hardware-x.com/article/S2468-0672(25)00031-8/pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1016-j-ohx-2025-e00653.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12181777/fullTextXML",
+        200,
+        107713
+      ]
+    ]
+  },
+  "10.1016/s0169-7439(99": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1016/s0169-7439(99)00048-9": {
+    "crossref": {
+      "found": true,
+      "title": "NIR calibration in non-linear systems: different PLS approaches and artificial neural networks",
+      "authors": [
+        "M Blanco",
+        "J Coello",
+        "H Iturriaga",
+        "S Maspoch",
+        "J Pag\u00e8s"
+      ],
+      "n_authors": 5,
+      "year": 2000,
+      "container": "Chemometrics and Intelligent Laboratory Systems",
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "is_referenced_by_count": 155,
+      "url": "https://doi.org/10.1016/s0169-7439(99)00048-9"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "NIR calibration in non-linear systems: different PLS approaches and artificial neural networks",
+      "year": 2000,
+      "cited_by_count": 176,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "e75e0a94727f270f2b49bc6e21f401d6b9124d54",
+      "externalIds": {
+        "MAG": "1984016719",
+        "DOI": "10.1016/S0169-7439(99)00048-9",
+        "CorpusId": 119384261
+      },
+      "title": "NIR calibration in non-linear systems: different PLS approaches and artificial neural networks",
+      "venue": "",
+      "year": 2000,
+      "citationCount": 159,
+      "openAccessPdf": {
+        "url": "",
+        "status": "CLOSED",
+        "license": null
+      }
+    },
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1021/acs.accounts.2c00220": {
+    "crossref": {
+      "found": true,
+      "title": "Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab",
+      "authors": [
+        "Martin Seifrid",
+        "Robert Pollice",
+        "Andr\u00e9s Aguilar-Granda",
+        "Zamyla Morgan Chan",
+        "Kazuhiro Hotta",
+        "Cher Tian Ser",
+        "Jenya Vestfrid",
+        "Tony C. Wu",
+        "Al\u00e1n Aspuru-Guzik"
+      ],
+      "n_authors": 9,
+      "year": 2022,
+      "container": "Accounts of Chemical Research",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 279,
+      "url": "https://doi.org/10.1021/acs.accounts.2c00220"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1021/acs.accounts.2c00220",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": "PMC9454899",
+      "pmid": "35948428",
+      "isOpenAccess": "Y",
+      "title": "Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab."
+    },
+    "openalex": {
+      "title": "Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab",
+      "year": 2022,
+      "cited_by_count": 301,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1021/acs.accounts.2c00220",
+          "source": "Accounts of Chemical Research",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/9454899",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "1acfb6ed129bc4ae7c2fe432e7db1ea4efd8265a",
+      "externalIds": {
+        "PubMedCentral": "9454899",
+        "DOI": "10.1021/acs.accounts.2c00220",
+        "CorpusId": 251494007,
+        "PubMed": "35948428"
+      },
+      "title": "Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab",
+      "venue": "Accounts of Chemical Research",
+      "year": 2022,
+      "citationCount": 256,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1021/acs.accounts.2c00220",
+        "status": "HYBRID",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acs-accounts-2c00220.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9454899/fullTextXML",
+        200,
+        142897
+      ]
+    ]
+  },
+  "10.1021/acs.analchem.0c04225": {
+    "crossref": {
+      "found": true,
+      "title": "Enabling Microscale Processing: Combined Raman and Absorbance Spectroscopy for Microfluidic On-Line Monitoring",
+      "authors": [
+        "Gilbert L. Nelson",
+        "Hope E. Lackey",
+        "Job M. Bello",
+        "Heather M. Felmy",
+        "Hannah B. Bryan",
+        "Fabrice Lamadie",
+        "Samuel A. Bryan",
+        "Amanda M. Lines"
+      ],
+      "n_authors": 8,
+      "year": 2020,
+      "container": "Analytical Chemistry",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 23,
+      "url": "https://doi.org/10.1021/acs.analchem.0c04225"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://www.osti.gov/servlets/purl/1783814",
+      "landing": "https://www.osti.gov/biblio/1783814",
+      "host": "repository",
+      "all_pdfs": [
+        "https://www.osti.gov/servlets/purl/1783814"
+      ]
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "33337856",
+      "isOpenAccess": "N",
+      "title": "Enabling Microscale Processing: Combined Raman and Absorbance Spectroscopy for Microfluidic On-Line Monitoring."
+    },
+    "openalex": {
+      "title": "Enabling Microscale Processing: Combined Raman and Absorbance Spectroscopy for Microfluidic On-Line Monitoring",
+      "year": 2020,
+      "cited_by_count": 23,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.osti.gov/servlets/purl/1783814",
+          "source": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://cea.hal.science/cea-04736172",
+          "source": "HAL (Le Centre pour la Communication Scientifique Directe)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "0b14f81855568eec2e9130a8f7b7166061ce4dca",
+      "externalIds": {
+        "DOI": "10.1021/acs.analchem.0c04225",
+        "CorpusId": 229323758,
+        "PubMed": "33337856"
+      },
+      "title": "Enabling Microscale Processing: Combined Raman and Absorbance Spectroscopy for Microfluidic On-Line Monitoring.",
+      "venue": "Analytical Chemistry",
+      "year": 2020,
+      "citationCount": 21,
+      "openAccessPdf": {
+        "url": "https://www.osti.gov/servlets/purl/1783814",
+        "status": "GREEN",
+        "license": null
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acs-analchem-0c04225.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.osti.gov/servlets/purl/1783814",
+        200,
+        5218187
+      ]
+    ]
+  },
+  "10.1021/acs.chemrev.4c00055": {
+    "crossref": {
+      "found": true,
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "authors": [
+        "Gary Tom",
+        "Stefan P. Schmid",
+        "Sterling G. Baird",
+        "Yang Cao",
+        "Kourosh Darvish",
+        "Han Hao",
+        "Stanley Lo",
+        "Sergio Pablo-Garc\u00eda",
+        "Ella M. Rajaonson",
+        "Marta Skreta",
+        "Naruki Yoshikawa",
+        "Samantha Corapi"
+      ],
+      "n_authors": 16,
+      "year": 2024,
+      "container": "Chemical Reviews",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 663,
+      "url": "https://doi.org/10.1021/acs.chemrev.4c00055"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1021/acs.chemrev.4c00055",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": "PMC11363023",
+      "pmid": "39137296",
+      "isOpenAccess": "Y",
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science."
+    },
+    "openalex": {
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "year": 2024,
+      "cited_by_count": 628,
+      "type": "review",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1021/acs.chemrev.4c00055",
+          "source": "Chemical Reviews",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/11363023",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "8afe5a5b28e37496bb24d5575d0348e7df663737",
+      "externalIds": {
+        "PubMedCentral": "11363023",
+        "DOI": "10.1021/acs.chemrev.4c00055",
+        "CorpusId": 271864611,
+        "PubMed": "39137296"
+      },
+      "title": "Self-Driving Laboratories for Chemistry and Materials Science",
+      "venue": "Chemical Reviews",
+      "year": 2024,
+      "citationCount": 626,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1021/acs.chemrev.4c00055",
+        "status": "HYBRID",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acs-chemrev-4c00055.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11363023/fullTextXML",
+        200,
+        1260870
+      ]
+    ]
+  },
+  "10.1021/acs.iecr.5b00691": {
+    "crossref": {
+      "found": true,
+      "title": "Real-Time Process Monitoring of CO<sub>2</sub> Capture by Aqueous AMP-PZ Using Chemometrics: Pilot Plant Demonstration",
+      "authors": [
+        "Alexandr Kachko",
+        "Leen V. van der Ham",
+        "Leon F. G. Geers",
+        "Arjen Huizinga",
+        "Alexander Rieder",
+        "Mohammad R. M. Abu-Zahra",
+        "Thijs J. H. Vlugt",
+        "Earl L. V. Goetheer"
+      ],
+      "n_authors": 8,
+      "year": 2015,
+      "container": "Industrial &amp; Engineering Chemistry Research",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 22,
+      "url": "https://doi.org/10.1021/acs.iecr.5b00691"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Real-Time Process Monitoring of CO2 Capture by Aqueous AMP-PZ Using Chemometrics: Pilot Plant Demonstration",
+      "year": 2015,
+      "cited_by_count": 24,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "513a948845fea64aa9efa0c1549ecbe022dae93c",
+      "externalIds": {
+        "MAG": "2316610565",
+        "DOI": "10.1021/ACS.IECR.5B00691",
+        "CorpusId": 101057676
+      },
+      "title": "Real-Time Process Monitoring of CO2 Capture by Aqueous AMP-PZ Using Chemometrics: Pilot Plant Demonstration",
+      "venue": "",
+      "year": 2015,
+      "citationCount": 25,
+      "openAccessPdf": {
+        "url": "",
+        "status": "CLOSED",
+        "license": null
+      }
+    },
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1021/acs.jpcc.4c06002": {
+    "crossref": {
+      "found": true,
+      "title": "The Challenge of Characterizing High-Concentration Electrolytes at the Molecular Level: A Perspective",
+      "authors": [
+        "Orlando Carrillo-Boh\u00f3rquez",
+        "Revati Kumar",
+        "Daniel G. Kuroda"
+      ],
+      "n_authors": 3,
+      "year": 2024,
+      "container": "The Journal of Physical Chemistry C",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 14,
+      "url": "https://doi.org/10.1021/acs.jpcc.4c06002"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://repository.lsu.edu/chemistry_pubs/3940",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "The Challenge of Characterizing High-Concentration Electrolytes at the Molecular Level: A Perspective",
+      "year": 2024,
+      "cited_by_count": 14,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://repository.lsu.edu/chemistry_pubs/3940",
+          "source": "Civil War Book Review",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "1a63c00a7796679204f8f31f47d9014b1284992d",
+      "externalIds": {
+        "DOI": "10.1021/acs.jpcc.4c06002",
+        "CorpusId": 273666524
+      },
+      "title": "The Challenge of Characterizing High-Concentration Electrolytes at the Molecular Level: A Perspective",
+      "venue": "Journal of Physical Chemistry C",
+      "year": 2024,
+      "citationCount": 14,
+      "openAccessPdf": {
+        "url": "",
+        "status": "CLOSED",
+        "license": null
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acs-jpcc-4c06002.html",
+    "attempts": [
+      [
+        "openalex_landing_Civil_War_Book_Review",
+        "https://repository.lsu.edu/chemistry_pubs/3940",
+        200,
+        33628
+      ]
+    ]
+  },
+  "10.1021/acs.jpclett.5c02150": {
+    "crossref": {
+      "found": true,
+      "title": "A Perspective into\n                    <i>Operando</i>\n                    Methods for Probing Catalytic Interfaces",
+      "authors": [
+        "Olivia J. Alley",
+        "Yue Liu",
+        "Francesca M. Toma"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "The Journal of Physical Chemistry Letters",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 10,
+      "url": "https://doi.org/10.1021/acs.jpclett.5c02150"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1021/acs.jpclett.5c02150",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": "PMC12794182",
+      "pmid": "41466557",
+      "isOpenAccess": "Y",
+      "title": "A Perspective into &lt;i&gt;Operando&lt;/i&gt; Methods for Probing Catalytic Interfaces."
+    },
+    "openalex": {
+      "title": "A Perspective into Operando Methods for Probing Catalytic Interfaces",
+      "year": 2025,
+      "cited_by_count": 10,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1021/acs.jpclett.5c02150",
+          "source": "The Journal of Physical Chemistry Letters",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12794182/",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "01c9797c8d5146aa8860ecd8a0f0ab8db32b419a",
+      "externalIds": {
+        "PubMedCentral": "12794182",
+        "DOI": "10.1021/acs.jpclett.5c02150",
+        "CorpusId": 284336745,
+        "PubMed": "41466557"
+      },
+      "title": "A Perspective into Operando Methods for Probing Catalytic Interfaces",
+      "venue": "Journal of Physical Chemistry Letters",
+      "year": 2025,
+      "citationCount": 9,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1021/acs.jpclett.5c02150",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acs-jpclett-5c02150.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC12794182/fullTextXML",
+        200,
+        218760
+      ]
+    ]
+  },
+  "10.1021/acsenergylett.1c02391": {
+    "crossref": {
+      "found": true,
+      "title": "Beyond Local Solvation Structure: Nanometric Aggregates in Battery Electrolytes and Their Effect on Electrolyte Properties",
+      "authors": [
+        "Zhou Yu",
+        "Nitash P. Balsara",
+        "Oleg Borodin",
+        "Andrew A. Gewirth",
+        "Nathan T. Hahn",
+        "Edward J. Maginn",
+        "Kristin A. Persson",
+        "Venkat Srinivasan",
+        "Michael F. Toney",
+        "Kang Xu",
+        "Kevin R. Zavadil",
+        "Larry A. Curtiss"
+      ],
+      "n_authors": 13,
+      "year": 2021,
+      "container": "ACS Energy Letters",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 227,
+      "url": "https://doi.org/10.1021/acsenergylett.1c02391"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Beyond Local Solvation Structure: Nanometric Aggregates in Battery Electrolytes and Their Effect on Electrolyte Properties",
+      "year": 2021,
+      "cited_by_count": 235,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "c3d84e6f2516077c8f3b7410a8f986c20d10aa49",
+      "externalIds": {
+        "DOI": "10.1021/acsenergylett.1c02391",
+        "CorpusId": 245574962
+      },
+      "title": "Beyond Local Solvation Structure: Nanometric Aggregates in Battery Electrolytes and Their Effect on Electrolyte Properties",
+      "venue": "ACS Energy Letters",
+      "year": 2021,
+      "citationCount": 170,
+      "openAccessPdf": {
+        "url": "",
+        "status": null,
+        "license": null
+      }
+    },
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1021/acsmaterialsau.4c00096": {
+    "crossref": {
+      "found": true,
+      "title": "From Sunlight to Solutions: Closing the Loop on Halide Perovskites",
+      "authors": [
+        "Elham Foadian",
+        "Sheryl Sanchez",
+        "Sergei V. Kalinin",
+        "Mahshid Ahmadi"
+      ],
+      "n_authors": 4,
+      "year": 2024,
+      "container": "ACS Materials Au",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 3,
+      "url": "https://doi.org/10.1021/acsmaterialsau.4c00096"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.acs.org/doi/pdf/10.1021/acsmaterialsau.4c00096?ref=article_openPDF",
+      "landing": "https://doi.org/10.1021/acsmaterialsau.4c00096",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.acs.org/doi/pdf/10.1021/acsmaterialsau.4c00096?ref=article_openPDF"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC11718539",
+      "pmid": "39802149",
+      "isOpenAccess": "Y",
+      "title": "From Sunlight to Solutions: Closing the Loop on Halide Perovskites."
+    },
+    "openalex": {
+      "title": "From Sunlight to Solutions: Closing the Loop on Halide Perovskites",
+      "year": 2024,
+      "cited_by_count": 3,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.acs.org/doi/pdf/10.1021/acsmaterialsau.4c00096?ref=article_openPDF",
+          "source": "ACS Materials Au",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/11718539",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "cba354256ecfe58c4b2fe793660542b994440b08",
+      "externalIds": {
+        "PubMedCentral": "11718539",
+        "DOI": "10.1021/acsmaterialsau.4c00096",
+        "CorpusId": 273629015,
+        "PubMed": "39802149"
+      },
+      "title": "From Sunlight to Solutions: Closing the Loop on Halide Perovskites",
+      "venue": "ACS Materials Au",
+      "year": 2024,
+      "citationCount": 4,
+      "openAccessPdf": {
+        "url": "",
+        "status": null,
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1021-acsmaterialsau-4c00096.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11718539/fullTextXML",
+        200,
+        179775
+      ]
+    ]
+  },
+  "10.1038/s41467-022-32938-1": {
+    "crossref": {
+      "found": true,
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "authors": [
+        "Adarsh Dave",
+        "Jared Mitchell",
+        "Sven Burke",
+        "Hongyi Lin",
+        "Jay Whitacre",
+        "Venkatasubramanian Viswanathan"
+      ],
+      "n_authors": 6,
+      "year": 2022,
+      "container": "Nature Communications",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 200,
+      "url": "https://doi.org/10.1038/s41467-022-32938-1"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+      "landing": "https://doi.org/10.1038/s41467-022-32938-1",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+        "https://arxiv.org/pdf/2111.14786"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC9515088",
+      "pmid": "36167832",
+      "isOpenAccess": "Y",
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling."
+    },
+    "openalex": {
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "year": 2022,
+      "cited_by_count": 211,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+          "source": "Nature Communications",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://arxiv.org/pdf/2111.14786",
+          "source": "arXiv (Cornell University)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/9515088",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/1fa1bd2e07cc4d6ab9c1815e17331386",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "c0ba72e6cefb5c1a02d29b68591d9853c9f21f7a",
+      "externalIds": {
+        "PubMedCentral": "9515088",
+        "DBLP": "journals/corr/abs-2111-14786",
+        "ArXiv": "2111.14786",
+        "DOI": "10.1038/s41467-022-32938-1",
+        "CorpusId": 252547985,
+        "PubMed": "36167832"
+      },
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "venue": "Nature Communications",
+      "year": 2021,
+      "citationCount": 172,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41467-022-32938-1.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9515088/fullTextXML",
+        200,
+        93243
+      ]
+    ]
+  },
+  "10.1038/s41467-026-74425-x": {
+    "crossref": {
+      "found": true,
+      "title": "An autonomous lab for data-driven homogeneous catalysis",
+      "authors": [
+        "J. A. Bennett",
+        "N. Orouji",
+        "A. Velayati",
+        "Eamon F. Reynolds",
+        "Matthew E. Porowski",
+        "M. Saha",
+        "D. Billodeaux",
+        "Alexander J. M. Miller",
+        "M. Abolhasani"
+      ],
+      "n_authors": 9,
+      "year": 2026,
+      "container": "Nature Communications",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.1038/s41467-026-74425-x"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41467-026-74425-x_reference.pdf",
+      "landing": "https://doi.org/10.1038/s41467-026-74425-x",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41467-026-74425-x_reference.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC13439374/pdf/41467_2026_Article_74425.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC13439374",
+      "pmid": "42323294",
+      "isOpenAccess": "Y",
+      "title": "An autonomous lab for data-driven homogeneous catalysis."
+    },
+    "openalex": {
+      "title": "An autonomous lab for data-driven homogeneous catalysis",
+      "year": 2026,
+      "cited_by_count": 1,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41467-026-74425-x_reference.pdf",
+          "source": "Nature Communications",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC13439374/pdf/41467_2026_Article_74425.pdf",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "a3ab51bbaf05a7b5afc5c94054fa29a69b693a4d",
+      "externalIds": {
+        "PubMedCentral": "13439374",
+        "DOI": "10.1038/s41467-026-74425-x",
+        "CorpusId": 289460172,
+        "PubMed": "42323294"
+      },
+      "title": "An autonomous lab for data-driven homogeneous catalysis",
+      "venue": "Nature Communications",
+      "year": 2026,
+      "citationCount": 2,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41467-026-74425-x_reference.pdf",
+        "status": "GOLD",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41467-026-74425-x.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC13439374/fullTextXML",
+        200,
+        142278
+      ]
+    ]
+  },
+  "10.1038/s41524-020-00431-2": {
+    "crossref": {
+      "found": true,
+      "title": "Active learning of deep surrogates for PDEs: application to metasurface design",
+      "authors": [
+        "Rapha\u00ebl Pestourie",
+        "Youssef Mroueh",
+        "Thanh V. Nguyen",
+        "Payel Das",
+        "Steven G. Johnson"
+      ],
+      "n_authors": 5,
+      "year": 2020,
+      "container": "npj Computational Materials",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 91,
+      "url": "https://doi.org/10.1038/s41524-020-00431-2"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41524-020-00431-2.pdf",
+      "landing": "https://doi.org/10.1038/s41524-020-00431-2",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41524-020-00431-2.pdf",
+        "https://arxiv.org/pdf/2008.12649"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Active learning of deep surrogates for PDEs: application to metasurface design",
+      "year": 2020,
+      "cited_by_count": 98,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41524-020-00431-2.pdf",
+          "source": "npj Computational Materials",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://arxiv.org/pdf/2008.12649",
+          "source": "arXiv (Cornell University)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://hdl.handle.net/1721.1/128369",
+          "source": "DSpace@MIT (Massachusetts Institute of Technology)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "1317906efd972572ddf7900e782b04393bfd0013",
+      "externalIds": {
+        "MAG": "3097352266",
+        "ArXiv": "2008.12649",
+        "DBLP": "journals/corr/abs-2008-12649",
+        "DOI": "10.1038/s41524-020-00431-2",
+        "CorpusId": 221370841
+      },
+      "title": "Active learning of deep surrogates for PDEs: application to metasurface design",
+      "venue": "npj Computational Materials",
+      "year": 2020,
+      "citationCount": 111,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41524-020-00431-2.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41524-020-00431-2.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.nature.com/articles/s41524-020-00431-2.pdf",
+        200,
+        1328404
+      ]
+    ]
+  },
+  "10.1038/s41524-021-00656-9": {
+    "crossref": {
+      "found": true,
+      "title": "Benchmarking the performance of Bayesian optimization across multiple experimental materials science domains",
+      "authors": [
+        "Qiaohao Liang",
+        "Aldair E. Gongora",
+        "Zekun Ren",
+        "Armi Tiihonen",
+        "Zhe Liu",
+        "Shijing Sun",
+        "James R. Deneault",
+        "Daniil Bash",
+        "Flore Mekki-Berrada",
+        "Saif A. Khan",
+        "Kedar Hippalgaonkar",
+        "Benji Maruyama"
+      ],
+      "n_authors": 15,
+      "year": 2021,
+      "container": "npj Computational Materials",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 205,
+      "url": "https://doi.org/10.1038/s41524-021-00656-9"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41524-021-00656-9.pdf",
+      "landing": "https://doi.org/10.1038/s41524-021-00656-9",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41524-021-00656-9.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Benchmarking the performance of Bayesian optimization across multiple experimental materials science domains",
+      "year": 2021,
+      "cited_by_count": 228,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41524-021-00656-9.pdf",
+          "source": "npj Computational Materials",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://scholarbank.nus.edu.sg/handle/10635/231899",
+          "source": "National University of Singapore",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/bfc6d1e9f14b4b8bbc093f32c3360b8c",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "b52d120b7a105f31590efc403e9afcdcfb397f1e",
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2106-01309",
+        "ArXiv": "2106.01309",
+        "DOI": "10.1038/s41524-021-00656-9",
+        "CorpusId": 231717724
+      },
+      "title": "Benchmarking the performance of Bayesian optimization across multiple experimental materials science domains",
+      "venue": "npj Computational Materials",
+      "year": 2021,
+      "citationCount": 227,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41524-021-00656-9.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41524-021-00656-9.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.nature.com/articles/s41524-021-00656-9.pdf",
+        200,
+        1922333
+      ]
+    ]
+  },
+  "10.1038/s41524-026-02248-x": {
+    "crossref": {
+      "found": true,
+      "title": "Quality-controlled active learning via Gaussian processes for robust structure\u2013property learning in autonomous microscopy",
+      "authors": [
+        "Jawad Chowdhury",
+        "Ganesh Narasimha",
+        "Jan-Chi Yang",
+        "Hiroshi Funakubo",
+        "Yoshitaka Ehara",
+        "Yongtao Liu",
+        "Rama Vasudevan"
+      ],
+      "n_authors": 7,
+      "year": 2026,
+      "container": "npj Computational Materials",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.1038/s41524-026-02248-x"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41524-026-02248-x_reference.pdf",
+      "landing": "https://doi.org/10.1038/s41524-026-02248-x",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41524-026-02248-x_reference.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Quality-controlled active learning via Gaussian processes for robust structure\u2013property learning in autonomous microscopy",
+      "year": 2026,
+      "cited_by_count": 1,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41524-026-02248-x_reference.pdf",
+          "source": "npj Computational Materials",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doi.org/10.48550/arxiv.2603.29135",
+          "source": "arXiv (Cornell University)",
+          "version": null
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41524-026-02248-x.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.nature.com/articles/s41524-026-02248-x_reference.pdf",
+        200,
+        4068637
+      ]
+    ]
+  },
+  "10.1038/s41598-026-68034-3": {
+    "crossref": {
+      "found": true,
+      "title": "Comparative machine-learning modelling of effective thermal conductivity in nano-enhanced phase change materials",
+      "authors": [
+        "Faris Alqurashi",
+        "Muhammed Anaz Khan"
+      ],
+      "n_authors": 2,
+      "year": 2026,
+      "container": "Scientific Reports",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.1038/s41598-026-68034-3"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41598-026-68034-3_reference.pdf",
+      "landing": "https://doi.org/10.1038/s41598-026-68034-3",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41598-026-68034-3_reference.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Comparative machine-learning modelling of effective thermal conductivity in nano-enhanced phase change materials",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41598-026-68034-3_reference.pdf",
+          "source": "Scientific Reports",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "41f7ff1e8b5507a51a456140d9a303363f2cb362",
+      "externalIds": {
+        "DOI": "10.1038/s41598-026-68034-3",
+        "CorpusId": 291399363
+      },
+      "title": "Comparative machine-learning modelling of effective thermal conductivity in nano-enhanced phase change materials",
+      "venue": "Scientific Reports",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41598-026-68034-3_reference.pdf",
+        "status": "GOLD",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s41598-026-68034-3.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.nature.com/articles/s41598-026-68034-3_reference.pdf",
+        200,
+        3257284
+      ]
+    ]
+  },
+  "10.1038/s42004-026-02153-w": {
+    "crossref": {
+      "found": true,
+      "title": "High-throughput solid microsampling through stochastic robotic automation",
+      "authors": [
+        "Adam Lisowski",
+        "Henryk \u017bo\u0142nowski",
+        "Keyan Villat",
+        "Alec Schmidt",
+        "Edy Mariano",
+        "Jean-Charles Cousty",
+        "J\u00e9r\u00f4me Gu\u00e9rin",
+        "Ashley Stark",
+        "Fr\u00e9d\u00e9ric Vasserot",
+        "Achim Ammon",
+        "David Gueller",
+        "Florian de Nanteuil"
+      ],
+      "n_authors": 17,
+      "year": 2026,
+      "container": "Communications Chemistry",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.1038/s42004-026-02153-w"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s42004-026-02153-w_reference.pdf",
+      "landing": "https://doi.org/10.1038/s42004-026-02153-w",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s42004-026-02153-w_reference.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "High-throughput solid microsampling through stochastic robotic automation",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s42004-026-02153-w_reference.pdf",
+          "source": "Communications Chemistry",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "3896ca68723f45fb8f3a09f659898a9d1ab2a95b",
+      "externalIds": {
+        "DOI": "10.1038/s42004-026-02153-w",
+        "CorpusId": 290787436
+      },
+      "title": "High-throughput solid microsampling through stochastic robotic automation",
+      "venue": "Communications Chemistry",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s42004-026-02153-w_reference.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1038-s42004-026-02153-w.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.nature.com/articles/s42004-026-02153-w_reference.pdf",
+        200,
+        1753823
+      ]
+    ]
+  },
+  "10.1039/d1dd00027f": {
+    "crossref": {
+      "found": true,
+      "title": "Machine learning enhanced spectroscopic analysis: towards autonomous chemical mixture characterization for rapid process optimization",
+      "authors": [
+        "Andrea Angulo",
+        "Lankun Yang",
+        "Eray S. Aydil",
+        "Miguel A. Modestino"
+      ],
+      "n_authors": 4,
+      "year": 2022,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 38,
+      "url": "https://doi.org/10.1039/d1dd00027f"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f",
+      "landing": "https://doi.org/10.1039/d1dd00027f",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Machine learning enhanced spectroscopic analysis: towards autonomous chemical mixture characterization for rapid process optimization",
+      "year": 2021,
+      "cited_by_count": 40,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "0d5de3826af5d6b4c7373011ad50147686e4e761",
+      "externalIds": {
+        "DOI": "10.1039/d1dd00027f",
+        "CorpusId": 245471287
+      },
+      "title": "Machine Learning Enhanced Spectroscopic Analysis: Towards Autonomous Chemical Mixture Characterization for Rapid Process Optimization",
+      "venue": "Digital Discovery",
+      "year": 2022,
+      "citationCount": 25,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2022/dd/d1dd00027f",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d1dd00027f",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d3dd00223c": {
+    "crossref": {
+      "found": true,
+      "title": "Review of low-cost self-driving laboratories in chemistry and materials science: the \u201cfrugal twin\u201d concept",
+      "authors": [
+        "Stanley Lo",
+        "Sterling G. Baird",
+        "Joshua Schrier",
+        "Ben Blaiszik",
+        "Nessa Carson",
+        "Ian Foster",
+        "Andr\u00e9s Aguilar-Granda",
+        "Sergei V. Kalinin",
+        "Benji Maruyama",
+        "Maria Politi",
+        "Helen Tran",
+        "Taylor D. Sparks"
+      ],
+      "n_authors": 13,
+      "year": 2024,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 94,
+      "url": "https://doi.org/10.1039/d3dd00223c"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c",
+      "landing": "https://doi.org/10.1039/d3dd00223c",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Review of low-cost self-driving laboratories in chemistry and materials science: the \u201cfrugal twin\u201d concept",
+      "year": 2024,
+      "cited_by_count": 87,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "c358b3757aae28917a841086e43b4f031cb00ebb",
+      "externalIds": {
+        "DOI": "10.1039/d3dd00223c",
+        "CorpusId": 267712149
+      },
+      "title": "Review of Low-cost Self-driving Laboratories in Chemistry and Materials Science: The \"Frugal Twin\" Concept",
+      "venue": "Digital Discovery",
+      "year": 2024,
+      "citationCount": 41,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2024/dd/d3dd00223c",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d3dd00223c",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d3sc07012c": {
+    "crossref": {
+      "found": true,
+      "title": "Automation and machine learning augmented by large language models in a catalysis study",
+      "authors": [
+        "Yuming Su",
+        "Xue Wang",
+        "Yuanxiang Ye",
+        "Yibo Xie",
+        "Yujing Xu",
+        "Yibin Jiang",
+        "Cheng Wang"
+      ],
+      "n_authors": 7,
+      "year": 2024,
+      "container": "Chemical Science",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 105,
+      "url": "https://doi.org/10.1039/d3sc07012c"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1039/d3sc07012c",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC11304797/pdf/SC-015-D3SC07012C.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC11304797",
+      "pmid": "39118602",
+      "isOpenAccess": "Y",
+      "title": "Automation and machine learning augmented by large language models in a catalysis study."
+    },
+    "openalex": {
+      "title": "Automation and machine learning augmented by large language models in a catalysis study",
+      "year": 2024,
+      "cited_by_count": 102,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1039/d3sc07012c",
+          "source": "Chemical Science",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11304797/pdf/SC-015-D3SC07012C.pdf",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "6411492b38e22eb96eb9e115ed85554a28d57dd6",
+      "externalIds": {
+        "PubMedCentral": "11304797",
+        "DOI": "10.1039/d3sc07012c",
+        "CorpusId": 270786925,
+        "PubMed": "39118602"
+      },
+      "title": "Automation and machine learning augmented by large language models in a catalysis study",
+      "venue": "Chemical Science",
+      "year": 2024,
+      "citationCount": 62,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1039/d3sc07012c",
+        "status": "GOLD",
+        "license": "CCBYNC"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1039-d3sc07012c.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC11304797/fullTextXML",
+        200,
+        343540
+      ]
+    ]
+  },
+  "10.1039/d4dd00411f": {
+    "crossref": {
+      "found": true,
+      "title": "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation",
+      "authors": [
+        "Sayan Doloi",
+        "Maloy Das",
+        "Yujia Li",
+        "Zen Han Cho",
+        "Xingchi Xiao",
+        "John V. Hanna",
+        "Matthew Osvaldo",
+        "Leonard Ng Wei Tat"
+      ],
+      "n_authors": 8,
+      "year": 2025,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 29,
+      "url": "https://doi.org/10.1039/d4dd00411f"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f",
+      "landing": "https://doi.org/10.1039/d4dd00411f",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation",
+      "year": 2025,
+      "cited_by_count": 23,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "3492ed8ae3740d547a86114e5171bb0767b862c6",
+      "externalIds": {
+        "DOI": "10.1039/d4dd00411f",
+        "CorpusId": 278799552
+      },
+      "title": "Democratizing Self-Driving Labs: Advances in Low-Cost 3D Printing for Laboratory Automation",
+      "venue": "Digital Discovery",
+      "year": 2025,
+      "citationCount": 16,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d4dd00411f",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d4dd00411f",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5cs00962f": {
+    "crossref": {
+      "found": true,
+      "title": "Bayesian optimization for chemical reactions",
+      "authors": [
+        "Stefan Desimpel",
+        "Matthieu Dorbec",
+        "Kevin M. Van Geem",
+        "Christian V. Stevens"
+      ],
+      "n_authors": 4,
+      "year": 2026,
+      "container": "Chemical Society Reviews",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 17,
+      "url": "https://doi.org/10.1039/d5cs00962f"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1039/d5cs00962f",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "41664868",
+      "isOpenAccess": "N",
+      "title": "Bayesian optimization for chemical reactions."
+    },
+    "openalex": {
+      "title": "Bayesian optimization for chemical reactions",
+      "year": 2026,
+      "cited_by_count": 17,
+      "type": "review",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1039/d5cs00962f",
+          "source": "Chemical Society Reviews",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://biblio.ugent.be/publication/01KH5TH90ERCNKSF2MR5VN6DVV",
+          "source": "Ghent University Academic Bibliography (Ghent University)",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "3a7c5b9b787d98fc4160e2756ece8e6710d38021",
+      "externalIds": {
+        "DOI": "10.1039/d5cs00962f",
+        "CorpusId": 285461044,
+        "PubMed": "41664868"
+      },
+      "title": "Bayesian optimization for chemical reactions.",
+      "venue": "Chemical Society Reviews",
+      "year": 2026,
+      "citationCount": 8,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1039/d5cs00962f",
+        "status": "HYBRID",
+        "license": "CCBYNC"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1039-d5cs00962f.html",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1039/d5cs00962f",
+        403,
+        0
+      ],
+      [
+        "openalex_landing_Ghent_University_Academic_Bibl",
+        "https://biblio.ugent.be/publication/01KH5TH90ERCNKSF2MR5VN6DVV",
+        200,
+        37851
+      ]
+    ]
+  },
+  "10.1039/d5dd00175g": {
+    "crossref": {
+      "found": true,
+      "title": "SEARS: a lightweight FAIR platform for multi-lab materials experiments and closed-loop optimization",
+      "authors": [
+        "Ronak Tali",
+        "Ankush Kumar Mishra",
+        "Devesh Lohia",
+        "Jacob Paul Mauthe",
+        "Justin Scott Neu",
+        "Sung-Joo Kwon",
+        "Yusuf Olanrewaju",
+        "Aditya Balu",
+        "Goce Trajcevski",
+        "Franky So",
+        "Wei You",
+        "Aram Amassian"
+      ],
+      "n_authors": 13,
+      "year": 2025,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 2,
+      "url": "https://doi.org/10.1039/d5dd00175g"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1039/d5dd00175g",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "SEARS: a lightweight FAIR platform for multi-lab materials experiments and closed-loop optimization",
+      "year": 2025,
+      "cited_by_count": 1,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1039/d5dd00175g",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "cd8b5da38f13b85fd19af8ed3a3e10dea2050df0",
+      "externalIds": {
+        "DOI": "10.1039/d5dd00175g",
+        "CorpusId": 281896885
+      },
+      "title": "SEARS: A Lightweight FAIR Platform for Multi-Lab Materials Experiments and Closed-Loop Optimization",
+      "venue": "Digital Discovery",
+      "year": 2025,
+      "citationCount": 2,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1039/d5dd00175g",
+        "status": "GOLD",
+        "license": "CCBYNC"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1039/d5dd00175g",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5dd00175g",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5dd00180c": {
+    "crossref": {
+      "found": true,
+      "title": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation",
+      "authors": [
+        "Nis Fisker-B\u00f8dker",
+        "Daniel Persaud",
+        "Yang Bai",
+        "Mark Kozdras",
+        "Tejs Vegge",
+        "Jason Hattrick-Simpers",
+        "Jin Hyun Chang"
+      ],
+      "n_authors": 7,
+      "year": 2025,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 6,
+      "url": "https://doi.org/10.1039/d5dd00180c"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c",
+      "landing": "https://doi.org/10.1039/d5dd00180c",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation",
+      "year": 2025,
+      "cited_by_count": 5,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "f4fc0cf43877946732915a11f208cbfd9274dd97",
+      "externalIds": {
+        "DOI": "10.1039/d5dd00180c",
+        "CorpusId": 280588780
+      },
+      "title": "AMPERE-2: an open-hardware, robotic platform for automated electrodeposition and electrochemical validation",
+      "venue": "Digital Discovery",
+      "year": 2025,
+      "citationCount": 1,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00180c",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5dd00180c",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5dd00297d": {
+    "crossref": {
+      "found": true,
+      "title": "A FAIR research data infrastructure for high-throughput digital chemistry",
+      "authors": [
+        "Alice Gauthier",
+        "Laure Vancauwenberghe",
+        "Jean-Charles Cousty",
+        "Cyril Matthey-Doret",
+        "Robin Franken",
+        "Sabine Maennel",
+        "Pascal Mi\u00e9ville",
+        "Oksana Riba Grognuz"
+      ],
+      "n_authors": 8,
+      "year": 2025,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.1039/d5dd00297d"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1039/d5dd00297d",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "A FAIR research data infrastructure for high-throughput digital chemistry",
+      "year": 2025,
+      "cited_by_count": 1,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1039/d5dd00297d",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "240036e61ee25df8a681584e6a73d81eb4d6f755",
+      "externalIds": {
+        "DOI": "10.1039/d5dd00297d",
+        "CorpusId": 282803778
+      },
+      "title": "A FAIR research data infrastructure for high-throughput digital chemistry",
+      "venue": "Digital Discovery",
+      "year": 2025,
+      "citationCount": 2,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1039/d5dd00297d",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1039/d5dd00297d",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5dd00297d",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5dd00337g": {
+    "crossref": {
+      "found": true,
+      "title": "Benchmarking self-driving labs",
+      "authors": [
+        "Adedire D. Adesiji",
+        "Jiashuo Wang",
+        "Cheng-Shu Kuo",
+        "Keith A. Brown"
+      ],
+      "n_authors": 4,
+      "year": 2026,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 14,
+      "url": "https://doi.org/10.1039/d5dd00337g"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00337g",
+      "landing": "https://doi.org/10.1039/d5dd00337g",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00337g"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Benchmarking self-driving labs",
+      "year": 2025,
+      "cited_by_count": 10,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00337g",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://hdl.handle.net/2144/52888",
+          "source": "OpenBU (Boston University)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00337g",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00337g",
+        403,
+        0
+      ],
+      [
+        "openalex_landing_OpenBU_Boston_University_",
+        "https://hdl.handle.net/2144/52888",
+        200,
+        755
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5dd00337g",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5mh01984b": {
+    "crossref": {
+      "found": true,
+      "title": "Toward self-driving laboratory 2.0 for chemistry and materials discovery",
+      "authors": [
+        "Heeseung Lee",
+        "Hyuk Jun Yoo",
+        "Hye Su Jang",
+        "Byeongho Park",
+        "Yang Jeong Park",
+        "Sang Soo Han"
+      ],
+      "n_authors": 6,
+      "year": 2026,
+      "container": "Materials Horizons",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 13,
+      "url": "https://doi.org/10.1039/d5mh01984b"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b",
+      "landing": "https://doi.org/10.1039/d5mh01984b",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b"
+      ]
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "41804871",
+      "isOpenAccess": "N",
+      "title": "Toward self-driving laboratory 2.0 for chemistry and materials discovery."
+    },
+    "openalex": {
+      "title": "Toward self-driving laboratory 2.0 for chemistry and materials discovery",
+      "year": 2026,
+      "cited_by_count": 10,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b",
+          "source": "Materials Horizons",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "dd06f9d0459da9d8166a2be24a2aaf6a1d108c2b",
+      "externalIds": {
+        "DOI": "10.1039/d5mh01984b",
+        "CorpusId": 286290239,
+        "PubMed": "41804871"
+      },
+      "title": "Toward self-driving laboratory 2.0 for chemistry and materials discovery.",
+      "venue": "Materials Horizons",
+      "year": 2026,
+      "citationCount": 12,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b",
+        "status": "HYBRID",
+        "license": "CCBYNC"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2026/mh/d5mh01984b",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5mh01984b",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1063/5.0259851": {
+    "crossref": {
+      "found": true,
+      "title": "Materials discovery in combinatorial and high-throughput synthesis and processing: A new Frontier for SPM",
+      "authors": [
+        "Boris N. Slautin",
+        "Yongtao Liu",
+        "Kamyar Barakati",
+        "Yu Liu",
+        "Reece Emery",
+        "Seungbum Hong",
+        "Astita Dubey",
+        "Vladimir V. Shvartsman",
+        "Doru C. Lupascu",
+        "Sheryl L. Sanchez",
+        "Mahshid Ahmadi",
+        "Yunseok Kim"
+      ],
+      "n_authors": 16,
+      "year": 2025,
+      "container": "Applied Physics Reviews",
+      "type": "journal-article",
+      "publisher": "AIP Publishing",
+      "is_referenced_by_count": 9,
+      "url": "https://doi.org/10.1063/5.0259851"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf",
+      "landing": "https://doi.org/10.1063/5.0259851",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Materials discovery in combinatorial and high-throughput synthesis and processing: A new Frontier for SPM",
+      "year": 2025,
+      "cited_by_count": 9,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf",
+          "source": "Applied Physics Reviews",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "d2d6714c72eac56988e135b30e09a56ce1d3a791",
+      "externalIds": {
+        "ArXiv": "2501.02503",
+        "DOI": "10.1063/5.0259851",
+        "CorpusId": 275336420
+      },
+      "title": "Materials discovery in combinatorial and high-throughput synthesis and processing: A new Frontier for SPM",
+      "venue": "Applied Physics Reviews",
+      "year": 2025,
+      "citationCount": 8,
+      "openAccessPdf": {
+        "url": "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf",
+        "status": "HYBRID",
+        "license": "CCBYNC"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.aip.org/aip/apr/article-pdf/doi/10.1063/5.0259851/20670782/031321_1_5.0259851.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1063/5.0259851",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1063/5.0309809": {
+    "crossref": {
+      "found": true,
+      "title": "An automated system for electrodeposition of polymer thin films and their wetting analysis",
+      "authors": [
+        "Harley Quinn",
+        "Gregory A. Robben",
+        "Zhaoyi Zheng",
+        "Jin Yan",
+        "Yuanzhi Li",
+        "Zhaoji Yang",
+        "Maria Politi",
+        "Nadya Peek",
+        "Lilo Pozzo",
+        "J\u00f6rg G. Werner",
+        "Keith A. Brown"
+      ],
+      "n_authors": 11,
+      "year": 2026,
+      "container": "Review of Scientific Instruments",
+      "type": "journal-article",
+      "publisher": "AIP Publishing",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.1063/5.0309809"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "41718649",
+      "isOpenAccess": "N",
+      "title": "An automated system for electrodeposition of polymer thin films and their wetting analysis."
+    },
+    "openalex": {
+      "title": "An automated system for electrodeposition of polymer thin films and their wetting analysis",
+      "year": 2026,
+      "cited_by_count": 1,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "0ca531513ba345a96e6100b00d790174f19828c0",
+      "externalIds": {
+        "DOI": "10.1063/5.0309809",
+        "CorpusId": 285812786,
+        "PubMed": "41718649"
+      },
+      "title": "An automated system for electrodeposition of polymer thin films and their wetting analysis.",
+      "venue": "Review of Scientific Instruments",
+      "year": 2026,
+      "citationCount": 1,
+      "openAccessPdf": {
+        "url": "",
+        "status": null,
+        "license": null
+      }
+    },
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.1088/2632-2153/ada47d": {
+    "crossref": {
+      "found": true,
+      "title": "Accelerated development of multi-component alloys in discrete design space using Bayesian multi-objective optimisation",
+      "authors": [
+        "Osman Mamun",
+        "Markus Bause",
+        "Bhuiyan Shameem Mahmood Ebna Hai"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "Machine Learning: Science and Technology",
+      "type": "journal-article",
+      "publisher": "IOP Publishing",
+      "is_referenced_by_count": 5,
+      "url": "https://doi.org/10.1088/2632-2153/ada47d"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1088/2632-2153/ada47d",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Accelerated development of multi-component alloys in discrete design space using Bayesian multi-objective optimisation",
+      "year": 2024,
+      "cited_by_count": 6,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1088/2632-2153/ada47d",
+          "source": "Machine Learning Science and Technology",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/d980312ed541452f94120c4888f6db31",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "ce26c915689fb9778f6147c21983b564e58f6cb3",
+      "externalIds": {
+        "ArXiv": "2401.06106",
+        "DBLP": "journals/mlst/MamunBH25",
+        "DOI": "10.1088/2632-2153/ada47d",
+        "CorpusId": 266933445
+      },
+      "title": "Accelerated development of multi-component alloys in discrete design space using Bayesian multi-objective optimisation",
+      "venue": "Machine Learning: Science and Technology",
+      "year": 2024,
+      "citationCount": 5,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1088/2632-2153/ada47d",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1088-2632-2153-ada47d.html",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1088/2632-2153/ada47d",
+        200,
+        235663
+      ]
+    ]
+  },
+  "10.1109/access.2020.2966228": {
+    "crossref": {
+      "found": true,
+      "title": "Bayesian Optimization for Adaptive Experimental Design: A Review",
+      "authors": [
+        "Stewart Greenhill",
+        "Santu Rana",
+        "Sunil Gupta",
+        "Pratibha Vellanki",
+        "Svetha Venkatesh"
+      ],
+      "n_authors": 5,
+      "year": 2020,
+      "container": "IEEE Access",
+      "type": "journal-article",
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "is_referenced_by_count": 502,
+      "url": "https://doi.org/10.1109/access.2020.2966228"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1109/access.2020.2966228",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Bayesian Optimization for Adaptive Experimental Design: A Review",
+      "year": 2020,
+      "cited_by_count": 523,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1109/access.2020.2966228",
+          "source": "IEEE Access",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/af3a4e9a0f7c4510bbaad39b2be7b22c",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://figshare.com/articles/journal_contribution/Bayesian_optimization_for_adaptive_experimental_design_a_review/20713003",
+          "source": "Figshare",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "9c2feda6ec5df0161e2cbeac5e46e6f0ce735424",
+      "externalIds": {
+        "DBLP": "journals/access/GreenhillRGVV20",
+        "MAG": "2998788451",
+        "DOI": "10.1109/ACCESS.2020.2966228",
+        "CorpusId": 210970589
+      },
+      "title": "Bayesian Optimization for Adaptive Experimental Design: A Review",
+      "venue": "IEEE Access",
+      "year": 2020,
+      "citationCount": 422,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1109/access.2020.2966228",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1109/access.2020.2966228",
+        202,
+        2055
+      ],
+      [
+        "openalex_landing_DOAJ_DOAJ_Directory_of_Open_Ac",
+        "https://doaj.org/article/af3a4e9a0f7c4510bbaad39b2be7b22c",
+        403,
+        0
+      ],
+      [
+        "openalex_landing_Figshare",
+        "https://figshare.com/articles/journal_contribution/Bayesian_optimization_for_adaptive_experimental_design_a_review/20713003",
+        202,
+        2009
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1109/access.2020.2966228",
+        202,
+        2055
+      ]
+    ]
+  },
+  "10.1137/19m1303125": {
+    "crossref": {
+      "found": true,
+      "title": "Bayesian Optimization with Expensive Integrands",
+      "authors": [
+        "Saul Toscano-Palmerin",
+        "Peter I. Frazier"
+      ],
+      "n_authors": 2,
+      "year": 2022,
+      "container": "SIAM Journal on Optimization",
+      "type": "journal-article",
+      "publisher": "Society for Industrial & Applied Mathematics (SIAM)",
+      "is_referenced_by_count": 12,
+      "url": "https://doi.org/10.1137/19m1303125"
+    },
+    "unpaywall": {
+      "is_oa": false,
+      "oa_status": "closed",
+      "pdf": null,
+      "landing": null,
+      "host": null,
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Bayesian Optimization with Expensive Integrands",
+      "year": 2022,
+      "cited_by_count": 39,
+      "type": "article",
+      "locations": []
+    },
+    "semanticscholar": {
+      "paperId": "fc47649df11d761ebe1c1f7a1c26adc28de4ec36",
+      "externalIds": {
+        "DBLP": "journals/corr/abs-1803-08661",
+        "MAG": "2794754002",
+        "ArXiv": "1803.08661",
+        "DOI": "10.1137/19m1303125",
+        "CorpusId": 4352692
+      },
+      "title": "Bayesian Optimization with Expensive Integrands",
+      "venue": "SIAM Journal on Optimization",
+      "year": 2018,
+      "citationCount": 57,
+      "openAccessPdf": {
+        "url": "https://arxiv.org/pdf/1803.08661",
+        "status": "GREEN",
+        "license": null
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-1137-19m1303125.pdf",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://arxiv.org/pdf/1803.08661",
+        200,
+        1588895
+      ]
+    ]
+  },
+  "10.20944/preprints202608.0273.v1": {
+    "crossref": {
+      "found": true,
+      "title": "Towards Human-Led, Agent-Driven Autonomous Laboratories for the Life Sciences",
+      "authors": [
+        "Wenduo Cheng",
+        "Mingqian Ma",
+        "Shuaike Shen",
+        "Anna Hupalowska",
+        "Jennifer E. Rood",
+        "Yang Zhang",
+        "Gaurav Agrawal",
+        "Christine Bakan",
+        "Michelle A. Lee",
+        "Aviv Regev",
+        "Jian Ma"
+      ],
+      "n_authors": 11,
+      "year": 2026,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "MDPI AG",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.20944/preprints202608.0273.v1"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://doi.org/10.20944/preprints202608.0273.v1",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": null,
+      "isOpenAccess": "N",
+      "title": "Towards Human-Led, Agent-Driven Autonomous Laboratories for the Life Sciences"
+    },
+    "openalex": {
+      "title": "Towards Human-Led, Agent-Driven Autonomous Laboratories for the Life Sciences",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "preprint",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.20944/preprints202608.0273.v1",
+          "source": "Preprints.org",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "openalex_landing_Preprints_org",
+        "https://doi.org/10.20944/preprints202608.0273.v1",
+        200,
+        2671
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.20944/preprints202608.0273.v1",
+        200,
+        2671
+      ]
+    ]
+  },
+  "10.2172/3377973": {
+    "crossref": {
+      "found": true,
+      "title": "Toward Trustworthy Autonomous Science: A Two-Year Community Roadmap",
+      "authors": [
+        "",
+        "Rafael Ferreira Da Silva",
+        "",
+        "Milad Abolhasani",
+        "Peter Beaucage",
+        "Laura Biven",
+        "Michael Bussmann",
+        "Kyle Chard",
+        "Ryan Coffee",
+        "Stephen DeWitt",
+        "Sagar Dolas",
+        "Carrie Eckert"
+      ],
+      "n_authors": 30,
+      "year": 2026,
+      "container": "",
+      "type": "report",
+      "publisher": "Office of Scientific and Technical Information (OSTI)",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.2172/3377973"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.osti.gov/servlets/purl/3377973",
+      "landing": "https://doi.org/10.2172/3377973",
+      "host": null,
+      "all_pdfs": [
+        "https://www.osti.gov/servlets/purl/3377973"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Toward Trustworthy Autonomous Science: A Two-Year Community Roadmap",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "report",
+      "locations": [
+        {
+          "pdf": "https://www.osti.gov/servlets/purl/3377973",
+          "source": null,
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "714bfcaebc96a45dec0606f5d0158121564053ea",
+      "externalIds": {
+        "DBLP": "journals/corr/abs-2607-12113",
+        "ArXiv": "2607.12113",
+        "DOI": "10.2172/3377973",
+        "CorpusId": 290148934
+      },
+      "title": "Toward Trustworthy Autonomous Science: A Two-Year Community Roadmap",
+      "venue": "arXiv.org",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://www.osti.gov/servlets/purl/3377973",
+        "status": "GOLD",
+        "license": null
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-2172-3377973.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.osti.gov/servlets/purl/3377973",
+        200,
+        1092098
+      ]
+    ]
+  },
+  "10.2533/chimia.2025.600": {
+    "crossref": {
+      "found": true,
+      "title": "Bridging Innovation and Efficiency: The Promises and Challenges of Self-Driving Labs as Sustainable Drivers for Chemistry",
+      "authors": [
+        "Florian A. Formica",
+        "Edlyn Wu",
+        "Lucien Brey",
+        "Daniel Pacheco Guti\u00e9rrez",
+        "Riccardo Barbano",
+        "Hermann Tribukait",
+        "Jos\u00e9 Miguel Hern\u00e1ndez-Lobato",
+        "Paco Laveille",
+        "Lo\u00efc M. Roch"
+      ],
+      "n_authors": 9,
+      "year": 2025,
+      "container": "CHIMIA",
+      "type": "journal-article",
+      "publisher": "Swiss Chemical Society",
+      "is_referenced_by_count": 2,
+      "url": "https://doi.org/10.2533/chimia.2025.600"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.chimia.ch/chimia/article/download/2025_600/2025_600",
+      "landing": "https://doi.org/10.2533/chimia.2025.600",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.chimia.ch/chimia/article/download/2025_600/2025_600"
+      ]
+    },
+    "europepmc": {
+      "pmcid": null,
+      "pmid": "40936235",
+      "isOpenAccess": "N",
+      "title": "Bridging Innovation and Efficiency: The Promises and Challenges of Self-Driving Labs as Sustainable Drivers for Chemistry."
+    },
+    "openalex": {
+      "title": "Bridging Innovation and Efficiency: The Promises and Challenges of Self-Driving Labs as Sustainable Drivers for Chemistry",
+      "year": 2025,
+      "cited_by_count": 2,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.chimia.ch/chimia/article/download/2025_600/2025_600",
+          "source": "CHIMIA International Journal for Chemistry",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/0d3f83363436495d819092ea9f045776",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "c50a8ca63940c27d43beae74a361b6ef7deffa9e",
+      "externalIds": {
+        "DOI": "10.2533/chimia.2025.600",
+        "CorpusId": 281257209,
+        "PubMed": "40936235"
+      },
+      "title": "Bridging Innovation and Efficiency: The Promises and Challenges of Self-Driving Labs as Sustainable Drivers for Chemistry.",
+      "venue": "Chimia (Basel)",
+      "year": 2025,
+      "citationCount": 2,
+      "openAccessPdf": {
+        "url": "https://www.chimia.ch/chimia/article/download/2025_600/2025_600",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-2533-chimia-2025-600.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.chimia.ch/chimia/article/download/2025_600/2025_600",
+        200,
+        3520564
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2023-6z9mq": {
+    "crossref": {
+      "found": true,
+      "title": "Review of Low-cost Self-driving Laboratories: The \"Frugal Twin\" Concept",
+      "authors": [
+        "Stanley Lo",
+        "Sterling Baird",
+        "Joshua Schrier",
+        "Ben Blaiszik",
+        "Sergei Kalinin",
+        "Helen Tran",
+        "Taylor Sparks",
+        "Al\u00e1n Aspuru-Guzik"
+      ],
+      "n_authors": 8,
+      "year": 2023,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 3,
+      "url": "https://doi.org/10.26434/chemrxiv-2023-6z9mq"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64f94d43dd1a73847f598050/original/review-of-low-cost-self-driving-laboratories-the-frugal-twin-concept.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2023-6z9mq",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64f94d43dd1a73847f598050/original/review-of-low-cost-self-driving-laboratories-the-frugal-twin-concept.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Review of Low-cost Self-driving Laboratories: The \"Frugal Twin\" Concept",
+      "year": 2023,
+      "cited_by_count": 3,
+      "type": "preprint",
+      "locations": [
+        {
+          "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64f94d43dd1a73847f598050/original/review-of-low-cost-self-driving-laboratories-the-frugal-twin-concept.pdf",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64f94d43dd1a73847f598050/original/review-of-low-cost-self-driving-laboratories-the-frugal-twin-concept.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/64f94d43dd1a73847f598050/original/review-of-low-cost-self-driving-laboratories-the-frugal-twin-concept.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2023-6z9mq",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2024-mqb6s-v3": {
+    "crossref": {
+      "found": true,
+      "title": "Accelerating Aqueous Electrolyte Design with Automated Full-Cell Battery Experimentation and Bayesian Optimization",
+      "authors": [
+        "Jackie T. Yik",
+        "Carl Hvarfner",
+        "Jens Sj\u00f6lund",
+        "Erik J. Berg",
+        "Leiting Zhang"
+      ],
+      "n_authors": 5,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.26434/chemrxiv-2024-mqb6s-v3"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://doi.org/10.26434/chemrxiv-2024-mqb6s-v3",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Accelerating Aqueous Electrolyte Design with Automated Full-Cell Battery Experimentation and Bayesian Optimization",
+      "year": 2025,
+      "cited_by_count": 0,
+      "type": "preprint",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.26434/chemrxiv-2024-mqb6s-v3",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "openalex_landing_ChemRxiv",
+        "https://doi.org/10.26434/chemrxiv-2024-mqb6s-v3",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2024-mqb6s-v3",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2025-73xqf": {
+    "crossref": {
+      "found": true,
+      "title": "A Flexible and Affordable Self-Driving Laboratory for Automated Reaction Optimization",
+      "authors": [
+        "Simone Pilon",
+        "Elia Savino",
+        "Oliver Bayley",
+        "Michael Vanzella",
+        "Miguel Claros",
+        "Petros Siasiaridis",
+        "Junsong Liu",
+        "Florian Lukas",
+        "Matteo Damian",
+        "Vasilis Tseliou",
+        "Niccolo Intini",
+        "Aidan Slattery"
+      ],
+      "n_authors": 18,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.26434/chemrxiv-2025-73xqf"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/686d106b9f3a716b54a2f8b0/original/a-flexible-and-affordable-self-driving-laboratory-for-automated-reaction-optimization.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2025-73xqf",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/686d106b9f3a716b54a2f8b0/original/a-flexible-and-affordable-self-driving-laboratory-for-automated-reaction-optimization.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/686d106b9f3a716b54a2f8b0/original/a-flexible-and-affordable-self-driving-laboratory-for-automated-reaction-optimization.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/686d106b9f3a716b54a2f8b0/original/a-flexible-and-affordable-self-driving-laboratory-for-automated-reaction-optimization.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2025-73xqf",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2025-fk3r7": {
+    "crossref": {
+      "found": true,
+      "title": "Autonomous Materials Synthesis Laboratories: Integrating Artificial Intelligence with Advanced Robotics for Accelerated Discovery",
+      "authors": [
+        "Yuze Hao",
+        "Lan Duo",
+        "Jinlu He"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 2,
+      "url": "https://doi.org/10.26434/chemrxiv-2025-fk3r7"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2025-fk3r7",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Autonomous Materials Synthesis Laboratories: Integrating Artificial Intelligence with Advanced Robotics for Accelerated Discovery",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "preprint",
+      "locations": [
+        {
+          "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2025-fk3r7",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2025-nnfcl-v2": {
+    "crossref": {
+      "found": true,
+      "title": "BRINE: a cost-effective electrochemical self-driving laboratory for accelerated discovery of high-performance electrolytes",
+      "authors": [
+        "Mohamadreza Ramezani",
+        "Poulomi Nandi",
+        "Pablo De La Fuente-Moreno",
+        "Majid Beidaghi"
+      ],
+      "n_authors": 4,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.26434/chemrxiv-2025-nnfcl-v2"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": null,
+      "landing": "https://doi.org/10.26434/chemrxiv-2025-nnfcl-v2",
+      "host": "repository",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "BRINE: a cost-effective electrochemical self-driving laboratory for accelerated discovery of high-performance electrolytes",
+      "year": 2025,
+      "cited_by_count": 0,
+      "type": "preprint",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.26434/chemrxiv-2025-nnfcl-v2",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "openalex_landing_ChemRxiv",
+        "https://doi.org/10.26434/chemrxiv-2025-nnfcl-v2",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2025-nnfcl-v2",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.3390/app15137324": {
+    "crossref": {
+      "found": true,
+      "title": "Multi-Sensing Monitoring of the Microalgae Biomass Cultivation Systems for Biofuels and Added Value Products Synthesis\u2014Challenges and Opportunities",
+      "authors": [
+        "Marcin D\u0119bowski",
+        "Joanna Kazimierowicz",
+        "Marcin Zieli\u0144ski"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "Applied Sciences",
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "is_referenced_by_count": 28,
+      "url": "https://doi.org/10.3390/app15137324"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734",
+      "landing": "https://doi.org/10.3390/app15137324",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Multi-Sensing Monitoring of the Microalgae Biomass Cultivation Systems for Biofuels and Added Value Products Synthesis\u2014Challenges and Opportunities",
+      "year": 2025,
+      "cited_by_count": 26,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734",
+          "source": "Applied Sciences",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/fc8f99c93a984ca888b01e83eef1552e",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "2d99b5086d35487db726b9762287cda98ba7e211",
+      "externalIds": {
+        "DOI": "10.3390/app15137324",
+        "CorpusId": 279811410
+      },
+      "title": "Multi-Sensing Monitoring of the Microalgae Biomass Cultivation Systems for Biofuels and Added Value Products Synthesis\u2014Challenges and Opportunities",
+      "venue": "Applied Sciences",
+      "year": 2025,
+      "citationCount": 24,
+      "openAccessPdf": {
+        "url": "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734",
+        200,
+        2314
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://www.mdpi.com/2076-3417/15/13/7324/pdf?version=1751189734",
+        200,
+        2314
+      ],
+      [
+        "openalex_landing_DOAJ_DOAJ_Directory_of_Open_Ac",
+        "https://doaj.org/article/fc8f99c93a984ca888b01e83eef1552e",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.3390/app15137324",
+        200,
+        2216
+      ]
+    ]
+  },
+  "10.3390/catal13040690": {
+    "crossref": {
+      "found": true,
+      "title": "Application of Spectroscopy Techniques for Monitoring (Bio)Catalytic Processes in Continuously Operated Microreactor Systems",
+      "authors": [
+        "Tamara Jurina",
+        "Tea Soka\u010d Cvetni\u0107",
+        "Anita \u0160ali\u0107",
+        "Maja Benkovi\u0107",
+        "Davor Valinger",
+        "Jasenka Gajdo\u0161 Kljusuri\u0107",
+        "Bruno Zeli\u0107",
+        "Ana Jurinjak Tu\u0161ek"
+      ],
+      "n_authors": 8,
+      "year": 2023,
+      "container": "Catalysts",
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "is_referenced_by_count": 23,
+      "url": "https://doi.org/10.3390/catal13040690"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514",
+      "landing": "https://doi.org/10.3390/catal13040690",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Application of Spectroscopy Techniques for Monitoring (Bio)Catalytic Processes in Continuously Operated Microreactor Systems",
+      "year": 2023,
+      "cited_by_count": 24,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514",
+          "source": "Catalysts",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "6e3a5b0d0ac95d5bd7f34a34c78ade5a40f22e18",
+      "externalIds": {
+        "DOI": "10.3390/catal13040690",
+        "CorpusId": 257945156
+      },
+      "title": "Application of Spectroscopy Techniques for Monitoring (Bio)Catalytic Processes in Continuously Operated Microreactor Systems",
+      "venue": "Catalysts",
+      "year": 2023,
+      "citationCount": 19,
+      "openAccessPdf": {
+        "url": "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514",
+        200,
+        2303
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://www.mdpi.com/2073-4344/13/4/690/pdf?version=1680512514",
+        200,
+        2309
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.3390/catal13040690",
+        200,
+        2208
+      ]
+    ]
+  },
+  "10.3390/ijms24032026": {
+    "crossref": {
+      "found": true,
+      "title": "Artificial Intelligence and Machine Learning Technology Driven Modern Drug Discovery and Development",
+      "authors": [
+        "Chayna Sarkar",
+        "Biswadeep Das",
+        "Vikram Singh Rawat",
+        "Julie Birdie Wahlang",
+        "Arvind Nongpiur",
+        "Iadarilang Tiewsoh",
+        "Nari M. Lyngdoh",
+        "Debasmita Das",
+        "Manjunath Bidarolli",
+        "Hannah Theresa Sony"
+      ],
+      "n_authors": 10,
+      "year": 2023,
+      "container": "International Journal of Molecular Sciences",
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "is_referenced_by_count": 323,
+      "url": "https://doi.org/10.3390/ijms24032026"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.mdpi.com/1422-0067/24/3/2026/pdf?version=1675066963",
+      "landing": "https://doi.org/10.3390/ijms24032026",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.mdpi.com/1422-0067/24/3/2026/pdf?version=1675066963",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9916967/pdf/ijms-24-02026.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC9916967",
+      "pmid": "36768346",
+      "isOpenAccess": "Y",
+      "title": "Artificial Intelligence and Machine Learning Technology Driven Modern Drug Discovery and Development."
+    },
+    "openalex": {
+      "title": "Artificial Intelligence and Machine Learning Technology Driven Modern Drug Discovery and Development",
+      "year": 2023,
+      "cited_by_count": 338,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.mdpi.com/1422-0067/24/3/2026/pdf?version=1675066963",
+          "source": "International Journal of Molecular Sciences",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9916967/pdf/ijms-24-02026.pdf",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": "/home/vcl/refcheck/10-3390-ijms24032026.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9916967/fullTextXML",
+        200,
+        399209
+      ]
+    ]
+  },
+  "10.3390/s22249764": {
+    "crossref": {
+      "found": true,
+      "title": "A Review of Machine Learning for Near-Infrared Spectroscopy",
+      "authors": [
+        "Wenwen Zhang",
+        "Liyanaarachchi Chamara Kasun",
+        "Qi Jie Wang",
+        "Yuanjin Zheng",
+        "Zhiping Lin"
+      ],
+      "n_authors": 5,
+      "year": 2022,
+      "container": "Sensors",
+      "type": "journal-article",
+      "publisher": "MDPI AG",
+      "is_referenced_by_count": 263,
+      "url": "https://doi.org/10.3390/s22249764"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.mdpi.com/1424-8220/22/24/9764/pdf?version=1670918952",
+      "landing": "https://doi.org/10.3390/s22249764",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.mdpi.com/1424-8220/22/24/9764/pdf?version=1670918952"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC9784128",
+      "pmid": "36560133",
+      "isOpenAccess": "Y",
+      "title": "A Review of Machine Learning for Near-Infrared Spectroscopy."
+    },
+    "openalex": {
+      "title": "A Review of Machine Learning for Near-Infrared Spectroscopy",
+      "year": 2022,
+      "cited_by_count": 266,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.mdpi.com/1424-8220/22/24/9764/pdf?version=1670918952",
+          "source": "Sensors",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://doi.org/10.3390/s22249764",
+          "source": "DR-NTU (Nanyang Technological University)",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/9784128",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/2d26125044df484497722652861473a7",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "3dd37fd910ae97a5a1e4be6ab67780332653d743",
+      "externalIds": {
+        "DBLP": "journals/sensors/ZhangKWZL22",
+        "PubMedCentral": "9784128",
+        "DOI": "10.3390/s22249764",
+        "CorpusId": 254668315,
+        "PubMed": "36560133"
+      },
+      "title": "A Review of Machine Learning for Near-Infrared Spectroscopy",
+      "venue": "Italian National Conference on Sensors",
+      "year": 2022,
+      "citationCount": 237,
+      "openAccessPdf": {
+        "url": "https://www.mdpi.com/1424-8220/22/24/9764/pdf?version=1670918952",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-3390-s22249764.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9784128/fullTextXML",
+        200,
+        316068
+      ]
+    ]
+  },
+  "10.4208/cicc.2025.90.03": {
+    "crossref": {
+      "found": true,
+      "title": "Recent Progress in Autonomous Laboratories for Chemical Synthesis",
+      "authors": [
+        "Zhenyu Jiang",
+        "Yubang Liu",
+        "Zhuofeng Ke"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "Communications in Computational Chemistry",
+      "type": "journal-article",
+      "publisher": "Global Science Press",
+      "is_referenced_by_count": 3,
+      "url": "https://doi.org/10.4208/cicc.2025.90.03"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://global-sci.com/index.php/cicc/article/download/22828/35408",
+      "landing": "https://doi.org/10.4208/cicc.2025.90.03",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://global-sci.com/index.php/cicc/article/download/22828/35408"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Recent Progress in Autonomous Laboratories for Chemical Synthesis",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://global-sci.com/index.php/cicc/article/download/22828/35408",
+          "source": "Communications in Computational Chemistry",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "4d2aabf8f4850a3d7450c534b3a6e6d68dc8f57e",
+      "externalIds": {
+        "DOI": "10.4208/cicc.2025.90.03",
+        "CorpusId": 280687048
+      },
+      "title": "Recent Progress in Autonomous Laboratories for Chemical Synthesis",
+      "venue": "Communications in Computational Chemistry",
+      "year": 2025,
+      "citationCount": 3,
+      "openAccessPdf": {
+        "url": "https://global-sci.com/index.php/cicc/article/download/22828/35408",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-4208-cicc-2025-90-03.html",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://global-sci.com/index.php/cicc/article/download/22828/35408",
+        200,
+        170417
+      ]
+    ]
+  },
+  "10.4233/uuid:9fa27d25-1e58-473e-828a-b219bf465438": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.1909.03600": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2011.11456": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2606.17233": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2607.23896": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2608.13341": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2608.15073": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2608.23039": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2608.26016": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.48550/arxiv.2609.04564": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  },
+  "10.51847/i178allztd": {
+    "crossref": {
+      "found": true,
+      "title": "Do Self-Driving Laboratories Accelerate Discovery or Automate Uncertainty, Bias, and Irreproducible Decisions?",
+      "authors": [
+        "Chen Hao",
+        "Liu Fang",
+        "Zhao Lin",
+        "Wei Zhang"
+      ],
+      "n_authors": 4,
+      "year": 2026,
+      "container": "Pharmacophore",
+      "type": "journal-article",
+      "publisher": "Polaris",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.51847/i178allztd"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf",
+      "landing": "https://doi.org/10.51847/i178allztd",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Do Self-Driving Laboratories Accelerate Discovery or Automate Uncertainty, Bias, and Irreproducible Decisions?",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf",
+          "source": "Pharmacophore",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "7af1341782e6b5b3acc6621cba3d6c813ec056f0",
+      "externalIds": {
+        "DOI": "10.51847/i178allztd",
+        "CorpusId": 291205005
+      },
+      "title": "Do Self-Driving Laboratories Accelerate Discovery or Automate Uncertainty, Bias, and Irreproducible Decisions?",
+      "venue": "Pharmacophore",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf",
+        "status": "HYBRID",
+        "license": "CCBYNCSA"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-51847-i178allztd.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf",
+        200,
+        665882
+      ]
+    ]
+  },
+  "10.53964/jmn.2025002": {
+    "crossref": {
+      "found": true,
+      "title": "The Bright Future of Materials Science with AI: Self-Driving Laboratories and Closed-Loop Discovery",
+      "authors": [
+        "Dilshod Nematov",
+        "Iskandar Raufov",
+        "Saidjaafar Murodzoda",
+        "Anushervon Ashurov",
+        "Sakhidod Sattorzoda"
+      ],
+      "n_authors": 5,
+      "year": 2025,
+      "container": "Journal of Modern Nanotechnology",
+      "type": "journal-article",
+      "publisher": "Innovation Forever Publishing Group Limited",
+      "is_referenced_by_count": 4,
+      "url": "https://doi.org/10.53964/jmn.2025002"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://image.innovationforever.com//file/20251103/220e9838b9b1466081f2d0c9a2f4a9a7/JMN20250136.pdf",
+      "landing": "https://doi.org/10.53964/jmn.2025002",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://image.innovationforever.com//file/20251103/220e9838b9b1466081f2d0c9a2f4a9a7/JMN20250136.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "The Bright Future of Materials Science with AI: Self-Driving Laboratories and Closed-Loop Discovery",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://image.innovationforever.com//file/20251103/220e9838b9b1466081f2d0c9a2f4a9a7/JMN20250136.pdf",
+          "source": "Journal of Modern Nanotechnology",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "4468443f086de6a48cbbd91077b2669e65753bd7",
+      "externalIds": {
+        "DOI": "10.53964/jmn.2025002",
+        "CorpusId": 281326102
+      },
+      "title": "The Bright Future of Materials Science with AI: Self-Driving Laboratories and Closed-Loop Discovery",
+      "venue": "Journal of Modern Nanotechnology",
+      "year": 2025,
+      "citationCount": 5,
+      "openAccessPdf": {
+        "url": "https://image.innovationforever.com//file/20251103/220e9838b9b1466081f2d0c9a2f4a9a7/JMN20250136.pdf",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-53964-jmn-2025002.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://image.innovationforever.com//file/20251103/220e9838b9b1466081f2d0c9a2f4a9a7/JMN20250136.pdf",
+        200,
+        3579696
+      ]
+    ]
+  },
+  "10.5821/dissertation-2117-349568": {
+    "crossref": {
+      "found": true,
+      "title": "A contribution to chemical process operation support: new machine learning and surrogate models based approaches for process optimization, supervision and control",
+      "authors": [
+        "Ahmed Shokry Abdelaleem Taha Zied"
+      ],
+      "n_authors": 1,
+      "year": null,
+      "container": "",
+      "type": "dissertation",
+      "publisher": "Universitat Polit\u00e8cnica de Catalunya",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.5821/dissertation-2117-349568"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://upcommons.upc.edu/bitstream/2117/349568/1/TASATZ1de1.pdf",
+      "landing": "https://doi.org/10.5821/dissertation-2117-349568",
+      "host": null,
+      "all_pdfs": [
+        "https://upcommons.upc.edu/bitstream/2117/349568/1/TASATZ1de1.pdf",
+        "http://hdl.handle.net/2117/349568",
+        "http://hdl.handle.net/10803/672136"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "A contribution to chemical process operation support: new machine learning and surrogate models based approaches for process optimization, supervision and control",
+      "year": 2021,
+      "cited_by_count": 1,
+      "type": "dissertation",
+      "locations": [
+        {
+          "pdf": "https://upcommons.upc.edu/bitstream/2117/349568/1/TASATZ1de1.pdf",
+          "source": null,
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "http://hdl.handle.net/2117/349568",
+          "source": "UPCommons institutional repository (Universitat Polit\u00e8cnica de Catalunya)",
+          "version": "submittedVersion"
+        },
+        {
+          "pdf": "http://hdl.handle.net/10803/672136",
+          "source": "Tesis Doctorals en Xarxa (Consorci de Serveis Universitaris de Catalunya)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "ab95308de2b4719dba29f4ad54ae6dfcaeea3398",
+      "externalIds": {
+        "DOI": "10.5821/dissertation-2117-349568",
+        "CorpusId": 261647574
+      },
+      "title": "A contribution to chemical process operation support: new machine learning and surrogate models based approaches for process optimization, supervision and control",
+      "venue": "",
+      "year": 2021,
+      "citationCount": 1,
+      "openAccessPdf": {
+        "url": "https://upcommons.upc.edu/bitstream/2117/349568/1/TASATZ1de1.pdf",
+        "status": "GOLD",
+        "license": "public-domain"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-5821-dissertation-2117-349568.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://upcommons.upc.edu/bitstream/2117/349568/1/TASATZ1de1.pdf",
+        200,
+        12344465
+      ]
+    ]
+  },
+  "10.69709/caic.2026.133382": {
+    "crossref": {
+      "found": true,
+      "title": "AI-Guided Self-Driving Laboratories for Advanced Materials Discovery",
+      "authors": [
+        "Bernard Mallia",
+        "Rossana Caputo"
+      ],
+      "n_authors": 2,
+      "year": 2026,
+      "container": "Computing&amp;AI Connect",
+      "type": "journal-article",
+      "publisher": "Scifiniti Publishing",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.69709/caic.2026.133382"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.scifiniti.com/uploads/source/articles/computingai_connect/2026/volume3/20260043/article.pdf",
+      "landing": "https://doi.org/10.69709/caic.2026.133382",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.scifiniti.com/uploads/source/articles/computingai_connect/2026/volume3/20260043/article.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "AI-Guided Self-Driving Laboratories for Advanced Materials Discovery",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.scifiniti.com/uploads/source/articles/computingai_connect/2026/volume3/20260043/article.pdf",
+          "source": "Computing&AI Connect",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "245f6b86016b2c4dff009df83c0abe776006f18b",
+      "externalIds": {
+        "DOI": "10.69709/caic.2026.133382",
+        "CorpusId": 291639257
+      },
+      "title": "AI-Guided Self-Driving Laboratories for Advanced Materials Discovery",
+      "venue": "Computing&amp;AI Connect",
+      "year": 2026,
+      "citationCount": 0,
+      "openAccessPdf": {
+        "url": "https://www.scifiniti.com/uploads/source/articles/computingai_connect/2026/volume3/20260043/article.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck/10-69709-caic-2026-133382.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://www.scifiniti.com/uploads/source/articles/computingai_connect/2026/volume3/20260043/article.pdf",
+        200,
+        687305
+      ]
+    ]
+  }
+}

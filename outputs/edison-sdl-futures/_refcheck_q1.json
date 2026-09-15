@@ -1,0 +1,1015 @@
+{
+  "10.1002/adfm.202508438": {
+    "crossref": {
+      "found": true,
+      "title": "Artificial Intelligence\u2010Driven Development in Rechargeable Battery Materials: Progress, Challenges, and Future Perspectives",
+      "authors": [
+        "Qingyun Hu",
+        "Junyuan Lu",
+        "Jian Hui",
+        "Ziyuan Rao",
+        "Yang Ren",
+        "Hong Wang"
+      ],
+      "n_authors": 6,
+      "year": 2025,
+      "container": "Advanced Functional Materials",
+      "type": "journal-article",
+      "publisher": "Wiley",
+      "is_referenced_by_count": 48,
+      "url": "https://doi.org/10.1002/adfm.202508438"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1002/adfm.202508438",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Artificial Intelligence\u2010Driven Development in Rechargeable Battery Materials: Progress, Challenges, and Future Perspectives",
+      "year": 2025,
+      "cited_by_count": 48,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1002/adfm.202508438",
+          "source": "Advanced Functional Materials",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://scholars.cityu.edu.hk/en/publications/488cded1-c3e0-4c12-b4d6-a193412fc26a",
+          "source": "CityU Scholars",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "a6892a9d23a463ca03e3daaf0a3e0fc83fb1a872",
+      "externalIds": {
+        "DOI": "10.1002/adfm.202508438",
+        "CorpusId": 279974345
+      },
+      "title": "Artificial Intelligence\u2010Driven Development in Rechargeable Battery Materials: Progress, Challenges, and Future Perspectives",
+      "venue": "Advanced Functional Materials",
+      "year": 2025,
+      "citationCount": 48,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1002/adfm.202508438",
+        "status": "HYBRID",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1002-adfm-202508438.html",
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1002/adfm.202508438",
+        403,
+        0
+      ],
+      [
+        "openalex_landing_CityU_Scholars",
+        "https://scholars.cityu.edu.hk/en/publications/488cded1-c3e0-4c12-b4d6-a193412fc26a",
+        200,
+        79493
+      ]
+    ]
+  },
+  "10.1016/j.device.2023.100103": {
+    "crossref": {
+      "found": true,
+      "title": "The Electrolab: An open-source, modular platform for automated characterization of redox-active electrolytes",
+      "authors": [
+        "Inkyu Oh",
+        "Michael A. Pence",
+        "Nikita G. Lukhanin",
+        "Oliver Rodr\u00edguez",
+        "Charles M. Schroeder",
+        "Joaqu\u00edn Rodr\u00edguez-L\u00f3pez"
+      ],
+      "n_authors": 6,
+      "year": 2023,
+      "container": "Device",
+      "type": "journal-article",
+      "publisher": "Elsevier BV",
+      "is_referenced_by_count": 45,
+      "url": "https://doi.org/10.1016/j.device.2023.100103"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": null,
+      "landing": "https://doi.org/10.1016/j.device.2023.100103",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "The Electrolab: An open-source, modular platform for automated characterization of redox-active electrolytes",
+      "year": 2023,
+      "cited_by_count": 47,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1016/j.device.2023.100103",
+          "source": "Device",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "6f8eb6daa73cd37b1e0228507904bae4fff9b8ee",
+      "externalIds": {
+        "DOI": "10.1016/j.device.2023.100103",
+        "CorpusId": 263843583
+      },
+      "title": "The Electrolab: An open-source, modular platform for automated characterization of redox-active electrolytes",
+      "venue": "Device",
+      "year": 2023,
+      "citationCount": 36,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1016/j.device.2023.100103",
+        "status": "HYBRID",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "semanticscholar_pdf",
+        "https://doi.org/10.1016/j.device.2023.100103",
+        200,
+        2722
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1016/j.device.2023.100103",
+        200,
+        2722
+      ]
+    ]
+  },
+  "10.1021/acsengineeringau.3c00037": {
+    "crossref": {
+      "found": true,
+      "title": "Semiautomated Experiments to Accelerate the Design of Advanced Battery Materials: Combining Speed, Low Cost, and Adaptability",
+      "authors": [
+        "Eric McCalla"
+      ],
+      "n_authors": 1,
+      "year": 2023,
+      "container": "ACS Engineering Au",
+      "type": "journal-article",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 22,
+      "url": "https://doi.org/10.1021/acsengineeringau.3c00037"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": null,
+      "landing": "https://doi.org/10.1021/acsengineeringau.3c00037",
+      "host": "publisher",
+      "all_pdfs": []
+    },
+    "europepmc": {
+      "pmcid": "PMC10739616",
+      "pmid": "38144679",
+      "isOpenAccess": "Y",
+      "title": "Semiautomated Experiments to Accelerate the Design of Advanced Battery Materials: Combining Speed, Low Cost, and Adaptability."
+    },
+    "openalex": {
+      "title": "Semiautomated Experiments to Accelerate the Design of Advanced Battery Materials: Combining Speed, Low Cost, and Adaptability",
+      "year": 2023,
+      "cited_by_count": 21,
+      "type": "article",
+      "locations": [
+        {
+          "landing": "https://doi.org/10.1021/acsengineeringau.3c00037",
+          "source": "ACS Engineering Au",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/10739616",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/6e092ab38d22411bb7cb3a23be964d07",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "632d645f12437e204fe177168cd721fa89b39cee",
+      "externalIds": {
+        "PubMedCentral": "10739616",
+        "DOI": "10.1021/acsengineeringau.3c00037",
+        "CorpusId": 265021718,
+        "PubMed": "38144679"
+      },
+      "title": "Semiautomated Experiments to Accelerate the Design of Advanced Battery Materials: Combining Speed, Low Cost, and Adaptability",
+      "venue": "ACS Engineering Au",
+      "year": 2023,
+      "citationCount": 17,
+      "openAccessPdf": {
+        "url": "https://doi.org/10.1021/acsengineeringau.3c00037",
+        "status": "GOLD",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1021-acsengineeringau-3c00037.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10739616/fullTextXML",
+        200,
+        139460
+      ]
+    ]
+  },
+  "10.1038/s41467-022-32938-1": {
+    "crossref": {
+      "found": true,
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "authors": [
+        "Adarsh Dave",
+        "Jared Mitchell",
+        "Sven Burke",
+        "Hongyi Lin",
+        "Jay Whitacre",
+        "Venkatasubramanian Viswanathan"
+      ],
+      "n_authors": 6,
+      "year": 2022,
+      "container": "Nature Communications",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 200,
+      "url": "https://doi.org/10.1038/s41467-022-32938-1"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+      "landing": "https://doi.org/10.1038/s41467-022-32938-1",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+        "https://arxiv.org/pdf/2111.14786"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC9515088",
+      "pmid": "36167832",
+      "isOpenAccess": "Y",
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling."
+    },
+    "openalex": {
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "year": 2022,
+      "cited_by_count": 211,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+          "source": "Nature Communications",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://arxiv.org/pdf/2111.14786",
+          "source": "arXiv (Cornell University)",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://www.ncbi.nlm.nih.gov/pmc/articles/9515088",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/1fa1bd2e07cc4d6ab9c1815e17331386",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "c0ba72e6cefb5c1a02d29b68591d9853c9f21f7a",
+      "externalIds": {
+        "PubMedCentral": "9515088",
+        "DBLP": "journals/corr/abs-2111-14786",
+        "ArXiv": "2111.14786",
+        "DOI": "10.1038/s41467-022-32938-1",
+        "CorpusId": 252547985,
+        "PubMed": "36167832"
+      },
+      "title": "Autonomous optimization of non-aqueous Li-ion battery electrolytes via robotic experimentation and machine learning coupling",
+      "venue": "Nature Communications",
+      "year": 2021,
+      "citationCount": 172,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41467-022-32938-1.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1038-s41467-022-32938-1.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9515088/fullTextXML",
+        200,
+        93243
+      ]
+    ]
+  },
+  "10.1038/s41467-024-47070-5": {
+    "crossref": {
+      "found": true,
+      "title": "An integrated high-throughput robotic platform and active learning approach for accelerated discovery of optimal electrolyte formulations",
+      "authors": [
+        "Juran Noh",
+        "Hieu A. Doan",
+        "Heather Job",
+        "Lily A. Robertson",
+        "Lu Zhang",
+        "Rajeev S. Assary",
+        "Karl Mueller",
+        "Vijayakumar Murugesan",
+        "Yangang Liang"
+      ],
+      "n_authors": 9,
+      "year": 2024,
+      "container": "Nature Communications",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 83,
+      "url": "https://doi.org/10.1038/s41467-024-47070-5"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41467-024-47070-5.pdf",
+      "landing": "https://doi.org/10.1038/s41467-024-47070-5",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41467-024-47070-5.pdf",
+        "https://www.osti.gov/servlets/purl/2471574",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC10980761/pdf/41467_2024_Article_47070.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC10980761",
+      "pmid": "38553488",
+      "isOpenAccess": "Y",
+      "title": "An integrated high-throughput robotic platform and active learning approach for accelerated discovery of optimal electrolyte formulations."
+    },
+    "openalex": {
+      "title": "An integrated high-throughput robotic platform and active learning approach for accelerated discovery of optimal electrolyte formulations",
+      "year": 2024,
+      "cited_by_count": 82,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41467-024-47070-5.pdf",
+          "source": "Nature Communications",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://www.osti.gov/servlets/purl/2471574",
+          "source": "OSTI OAI (U.S. Department of Energy Office of Scientific and Technical Information)",
+          "version": "submittedVersion"
+        },
+        {
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10980761/pdf/41467_2024_Article_47070.pdf",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "fc1aa63b693ce7e60ec99e7f7b19fa1fdc0d35c4",
+      "externalIds": {
+        "PubMedCentral": "10980761",
+        "DOI": "10.1038/s41467-024-47070-5",
+        "CorpusId": 268751746,
+        "PubMed": "38553488"
+      },
+      "title": "An integrated high-throughput robotic platform and active learning approach for accelerated discovery of optimal electrolyte formulations",
+      "venue": "Nature Communications",
+      "year": 2024,
+      "citationCount": 77,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41467-024-47070-5.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1038-s41467-024-47070-5.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC10980761/fullTextXML",
+        200,
+        115820
+      ]
+    ]
+  },
+  "10.1038/s41597-023-01936-3": {
+    "crossref": {
+      "found": true,
+      "title": "Conductivity experiments for electrolyte formulations and their automated analysis",
+      "authors": [
+        "Fuzhan Rahmanian",
+        "Monika Vogler",
+        "Christian W\u00f6lke",
+        "Peng Yan",
+        "Stefan Fuchs",
+        "Martin Winter",
+        "Isidora Cekic-Laskovic",
+        "Helge S\u00f6ren Stein"
+      ],
+      "n_authors": 8,
+      "year": 2023,
+      "container": "Scientific Data",
+      "type": "journal-article",
+      "publisher": "Springer Science and Business Media LLC",
+      "is_referenced_by_count": 16,
+      "url": "https://doi.org/10.1038/s41597-023-01936-3"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://www.nature.com/articles/s41597-023-01936-3.pdf",
+      "landing": "https://doi.org/10.1038/s41597-023-01936-3",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://www.nature.com/articles/s41597-023-01936-3.pdf",
+        "https://pmc.ncbi.nlm.nih.gov/articles/PMC9852460/pdf/41597_2023_Article_1936.pdf"
+      ]
+    },
+    "europepmc": {
+      "pmcid": "PMC9852460",
+      "pmid": "36658233",
+      "isOpenAccess": "Y",
+      "title": "Conductivity experiments for electrolyte formulations and their automated analysis."
+    },
+    "openalex": {
+      "title": "Conductivity experiments for electrolyte formulations and their automated analysis",
+      "year": 2023,
+      "cited_by_count": 18,
+      "type": "data-paper",
+      "locations": [
+        {
+          "pdf": "https://www.nature.com/articles/s41597-023-01936-3.pdf",
+          "source": "Scientific Data",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9852460/pdf/41597_2023_Article_1936.pdf",
+          "source": "PubMed Central",
+          "version": "submittedVersion"
+        },
+        {
+          "landing": "https://doaj.org/article/db8dc1fb980c4092823f787f3fd32de3",
+          "source": "DOAJ (DOAJ: Directory of Open Access Journals)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "eab1968beadf1d9ca291903110fb2d28a0b6dedd",
+      "externalIds": {
+        "PubMedCentral": "9852460",
+        "DOI": "10.1038/s41597-023-01936-3",
+        "CorpusId": 256030740,
+        "PubMed": "36658233"
+      },
+      "title": "Conductivity experiments for electrolyte formulations and their automated analysis",
+      "venue": "Scientific Data",
+      "year": 2023,
+      "citationCount": 14,
+      "openAccessPdf": {
+        "url": "https://www.nature.com/articles/s41597-023-01936-3.pdf",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1038-s41597-023-01936-3.xml",
+    "attempts": [
+      [
+        "europepmc_xml",
+        "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC9852460/fullTextXML",
+        200,
+        95491
+      ]
+    ]
+  },
+  "10.1039/d3dd00058c": {
+    "crossref": {
+      "found": true,
+      "title": "Automated electrolyte formulation and coin cell assembly for high-throughput lithium-ion battery research",
+      "authors": [
+        "Jackie T. Yik",
+        "Leiting Zhang",
+        "Jens Sj\u00f6lund",
+        "Xu Hou",
+        "Per H. Svensson",
+        "Kristina Edstr\u00f6m",
+        "Erik J. Berg"
+      ],
+      "n_authors": 7,
+      "year": 2023,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 34,
+      "url": "https://doi.org/10.1039/d3dd00058c"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+      "landing": "https://doi.org/10.1039/d3dd00058c",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Automated electrolyte formulation and coin cell assembly for high-throughput lithium-ion battery research",
+      "year": 2023,
+      "cited_by_count": 33,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        },
+        {
+          "landing": "http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-516859",
+          "source": "KTH Publication Database DiVA (KTH Royal Institute of Technology)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "fea1ce86e3215cf24fc12e7e1fb4064740b2ad11",
+      "externalIds": {
+        "DOI": "10.1039/d3dd00058c",
+        "CorpusId": 258515799
+      },
+      "title": "Automated electrolyte formulation and coin cell assembly for high-throughput lithium-ion battery research",
+      "venue": "Digital Discovery",
+      "year": 2023,
+      "citationCount": 17,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2023/dd/d3dd00058c",
+        403,
+        0
+      ],
+      [
+        "openalex_landing_KTH_Publication_Database_DiVA_",
+        "http://urn.kb.se/resolve?urn=urn:nbn:se:uu:diva-516859",
+        200,
+        7531
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d3dd00058c",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1039/d5dd00516g": {
+    "crossref": {
+      "found": true,
+      "title": "SALSA: a low-cost self-driving lab modular add-on for salt solubility assessment for battery electrolytes",
+      "authors": [
+        "Tianyi Zhang",
+        "Hongyi Lin",
+        "Yuhan Chen",
+        "Venkatasubramanian Viswanathan"
+      ],
+      "n_authors": 4,
+      "year": 2026,
+      "container": "Digital Discovery",
+      "type": "journal-article",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.1039/d5dd00516g"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "gold",
+      "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g",
+      "landing": "https://doi.org/10.1039/d5dd00516g",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "SALSA: a low-cost self-driving lab modular add-on for salt solubility assessment for battery electrolytes",
+      "year": 2026,
+      "cited_by_count": 0,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g",
+          "source": "Digital Discovery",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "1dd77b1a699f862017cc58cdb1a21aad317b7b5c",
+      "externalIds": {
+        "DOI": "10.1039/d5dd00516g",
+        "CorpusId": 287047398
+      },
+      "title": "SALSA: A low-cost self-driving lab modular add-on for salt solubility assessment for battery electrolytes",
+      "venue": "Digital Discovery",
+      "year": 2025,
+      "citationCount": 1,
+      "openAccessPdf": {
+        "url": "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g",
+        "status": "GOLD",
+        "license": "CCBY"
+      }
+    },
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://pubs.rsc.org/en/content/articlepdf/2025/dd/d5dd00516g",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.1039/d5dd00516g",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.1149/2.0142001jes": {
+    "crossref": {
+      "found": true,
+      "title": "Benchmarking Conductivity Predictions of the Advanced Electrolyte Model (AEM) for Aqueous Systems",
+      "authors": [
+        "Adarsh Dave",
+        "Kevin L. Gering",
+        "Jared M. Mitchell",
+        "Jay Whitacre",
+        "Venkatasubramanian Viswanathan"
+      ],
+      "n_authors": 5,
+      "year": 2019,
+      "container": "Journal of The Electrochemical Society",
+      "type": "journal-article",
+      "publisher": "The Electrochemical Society",
+      "is_referenced_by_count": 21,
+      "url": "https://doi.org/10.1149/2.0142001jes"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "hybrid",
+      "pdf": "https://iopscience.iop.org/article/10.1149/2.0142001JES/pdf",
+      "landing": "https://doi.org/10.1149/2.0142001jes",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://iopscience.iop.org/article/10.1149/2.0142001JES/pdf",
+        "https://arxiv.org/pdf/1906.06426"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Benchmarking Conductivity Predictions of the Advanced Electrolyte Model (AEM) for Aqueous Systems",
+      "year": 2019,
+      "cited_by_count": 23,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://iopscience.iop.org/article/10.1149/2.0142001JES/pdf",
+          "source": "Journal of The Electrochemical Society",
+          "version": "publishedVersion"
+        },
+        {
+          "pdf": "https://arxiv.org/pdf/1906.06426",
+          "source": "arXiv (Cornell University)",
+          "version": "submittedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {
+      "paperId": "ef52a17fcdcb0cfef17e2e87f9a71b580be4eb4f",
+      "externalIds": {
+        "MAG": "3104348457",
+        "ArXiv": "1906.06426",
+        "DOI": "10.1149/2.0142001JES",
+        "CorpusId": 189928412
+      },
+      "title": "Benchmarking Conductivity Predictions of the Advanced Electrolyte Model (AEM) for Aqueous Systems",
+      "venue": "Journal of the Electrochemical Society",
+      "year": 2019,
+      "citationCount": 12,
+      "openAccessPdf": {
+        "url": "https://iopscience.iop.org/article/10.1149/2.0142001JES/pdf",
+        "status": "HYBRID",
+        "license": "CCBYNCND"
+      }
+    },
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1149-2-0142001jes.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://iopscience.iop.org/article/10.1149/2.0142001JES/pdf",
+        200,
+        1451222
+      ]
+    ]
+  },
+  "10.1149/2.0521916jes": {
+    "crossref": {
+      "found": true,
+      "title": "An Autonomous Electrochemical Test Stand for Machine Learning Informed Electrolyte Optimization",
+      "authors": [
+        "Jay F. Whitacre",
+        "Jared Mitchell",
+        "Adarsh Dave",
+        "Wei Wu",
+        "Sven Burke",
+        "Venkatasubramanian Viswanathan"
+      ],
+      "n_authors": 6,
+      "year": 2019,
+      "container": "Journal of The Electrochemical Society",
+      "type": "journal-article",
+      "publisher": "The Electrochemical Society",
+      "is_referenced_by_count": 34,
+      "url": "https://doi.org/10.1149/2.0521916jes"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "bronze",
+      "pdf": "https://iopscience.iop.org/article/10.1149/2.0521916jes/pdf",
+      "landing": "https://doi.org/10.1149/2.0521916jes",
+      "host": "publisher",
+      "all_pdfs": [
+        "https://iopscience.iop.org/article/10.1149/2.0521916jes/pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "An Autonomous Electrochemical Test Stand for Machine Learning Informed Electrolyte Optimization",
+      "year": 2019,
+      "cited_by_count": 38,
+      "type": "article",
+      "locations": [
+        {
+          "pdf": "https://iopscience.iop.org/article/10.1149/2.0521916jes/pdf",
+          "source": "Journal of The Electrochemical Society",
+          "version": "publishedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": "/home/vcl/refcheck_q1/10-1149-2-0521916jes.pdf",
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://iopscience.iop.org/article/10.1149/2.0521916jes/pdf",
+        200,
+        1333807
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2022-nmmd4": {
+    "crossref": {
+      "found": true,
+      "title": "Learning the laws of lithium-ion electrolyte transport using symbolic regression",
+      "authors": [
+        "Eibar Flores",
+        "Christian W\u00f6lke",
+        "Peng Yan",
+        "Martin Winter",
+        "Tejs Vegge",
+        "Isidora Cekic-Laskovic",
+        "Arghya Bhowmik"
+      ],
+      "n_authors": 7,
+      "year": 2022,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 1,
+      "url": "https://doi.org/10.26434/chemrxiv-2022-nmmd4"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6218d3f8c3e9dac5b9771e6a/original/learning-the-laws-of-lithium-ion-electrolyte-transport-using-symbolic-regression.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2022-nmmd4",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6218d3f8c3e9dac5b9771e6a/original/learning-the-laws-of-lithium-ion-electrolyte-transport-using-symbolic-regression.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Learning the laws of lithium-ion electrolyte transport using symbolic regression",
+      "year": 2022,
+      "cited_by_count": 3,
+      "type": "preprint",
+      "locations": [
+        {
+          "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6218d3f8c3e9dac5b9771e6a/original/learning-the-laws-of-lithium-ion-electrolyte-transport-using-symbolic-regression.pdf",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6218d3f8c3e9dac5b9771e6a/original/learning-the-laws-of-lithium-ion-electrolyte-transport-using-symbolic-regression.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/6218d3f8c3e9dac5b9771e6a/original/learning-the-laws-of-lithium-ion-electrolyte-transport-using-symbolic-regression.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2022-nmmd4",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2025-fk3r7": {
+    "crossref": {
+      "found": true,
+      "title": "Autonomous Materials Synthesis Laboratories: Integrating Artificial Intelligence with Advanced Robotics for Accelerated Discovery",
+      "authors": [
+        "Yuze Hao",
+        "Lan Duo",
+        "Jinlu He"
+      ],
+      "n_authors": 3,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 2,
+      "url": "https://doi.org/10.26434/chemrxiv-2025-fk3r7"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2025-fk3r7",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {
+      "title": "Autonomous Materials Synthesis Laboratories: Integrating Artificial Intelligence with Advanced Robotics for Accelerated Discovery",
+      "year": 2025,
+      "cited_by_count": 3,
+      "type": "preprint",
+      "locations": [
+        {
+          "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+          "source": "ChemRxiv",
+          "version": "acceptedVersion"
+        }
+      ]
+    },
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/688b6f49fc5f0acb521303cc/original/autonomous-materials-synthesis-laboratories-integrating-artificial-intelligence-with-advanced-robotics-for-accelerated-discovery.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2025-fk3r7",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.26434/chemrxiv-2025-tg9rn": {
+    "crossref": {
+      "found": true,
+      "title": "Accelerated Development of Energy Materials through Automation and Artificial Intelligence",
+      "authors": [
+        "Abhishek Soni",
+        "Shipeng Jia",
+        "Corson Chao",
+        "Iwnetim Abate"
+      ],
+      "n_authors": 4,
+      "year": 2025,
+      "container": "",
+      "type": "posted-content",
+      "publisher": "American Chemical Society (ACS)",
+      "is_referenced_by_count": 0,
+      "url": "https://doi.org/10.26434/chemrxiv-2025-tg9rn"
+    },
+    "unpaywall": {
+      "is_oa": true,
+      "oa_status": "green",
+      "pdf": "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/68164b07e561f77ed4eae2d2/original/accelerated-development-of-energy-materials-through-automation-and-artificial-intelligence.pdf",
+      "landing": "https://doi.org/10.26434/chemrxiv-2025-tg9rn",
+      "host": "repository",
+      "all_pdfs": [
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/68164b07e561f77ed4eae2d2/original/accelerated-development-of-energy-materials-through-automation-and-artificial-intelligence.pdf"
+      ]
+    },
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": [
+      [
+        "unpaywall_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/68164b07e561f77ed4eae2d2/original/accelerated-development-of-energy-materials-through-automation-and-artificial-intelligence.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_alt_pdf",
+        "https://chemrxiv.org/engage/api-gateway/chemrxiv/assets/orp/resource/item/68164b07e561f77ed4eae2d2/original/accelerated-development-of-energy-materials-through-automation-and-artificial-intelligence.pdf",
+        403,
+        0
+      ],
+      [
+        "unpaywall_landing",
+        "https://doi.org/10.26434/chemrxiv-2025-tg9rn",
+        403,
+        0
+      ]
+    ]
+  },
+  "10.48550/arxiv.2608.26016": {
+    "crossref": {
+      "found": false,
+      "http": 404
+    },
+    "unpaywall": {},
+    "europepmc": {},
+    "openalex": {},
+    "semanticscholar": {},
+    "fulltext_path": null,
+    "attempts": []
+  }
+}
