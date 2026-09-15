@@ -207,6 +207,36 @@ Prices in **bold** are actual quotes received; others are list/asking prices or 
 3. **#4 (Vigor, $14K) is now the best capability-per-dollar** among the purifier-equipped systems — 47" chamber, purifier, PLC, pump, and antechamber included — but carries the most condition risk (5 years idle, recent outdoor storage, battery-research residue, no warranty).
 4. **The staged path through #8 got relatively more attractive.** $2,999 now for powder storage and dosing, plus a new [AtmosPure Re-Gen purifier](https://www.labconco.com/product/atmospure-re-gen-gas-purifiers) (~$6K–$7K) and monitors later, lands near $12K–$16K for 0.4 ppm O₂ / 2 ppm H₂O — roughly half the ALT quote. The trade-off is the fiberglass liner, which is not inherently groundable (mitigate with grounded stainless work trays and bonded dosing hardware — see [Safety Considerations](#safety-considerations)).
 
+## Robotic-Arm Integration (Edison Literature Survey, 2026-09-15)
+
+An [Edison Scientific](https://api.platform.edisonscientific.com) deep-literature task
+(`job-futurehouse-paperqa3-high`, task `c623503e-0b50-4a1c-84ff-13a364e8e5fd`) was run to find published
+precedent for gloveboxes integrated with robotic arms. Full trajectory artifacts are committed under
+[`outputs/edison/glovebox-robot-arm-integration/`](outputs/edison/glovebox-robot-arm-integration/) —
+see [`answer.md`](outputs/edison/glovebox-robot-arm-integration/answer.md),
+[`references.md`](outputs/edison/glovebox-robot-arm-integration/references.md), and the two generated tables
+([platform survey](outputs/edison/glovebox-robot-arm-integration/artifact-00_robot-integrated-glovebox-platforms.md),
+[decision matrix](outputs/edison/glovebox-robot-arm-integration/artifact-01_decision-matrix.md)).
+
+Headline findings:
+
+- **Recommended architecture is the arm *outside* the box**, with the powder doser inside a
+  purifier-equipped glovebox and automated sealed-carrier transfer through the antechamber. Keeping the arm
+  out of the recirculation loop removes its outgassing, gearbox particulate, and heat load from the purifier,
+  and means arm service never breaks atmosphere — the single biggest practical complaint in the glovebox
+  automation literature.
+- **The closest published precedent is A-Lab GPSS** (Fei *et al.*, arXiv 2026,
+  [10.48550/arXiv.2604.11957](https://doi.org/10.48550/arXiv.2604.11957)): two floor-mounted arms plus a
+  transfer rail in a *customized double-glovebox* under N₂, 352 air-sensitive samples. Notably the authors
+  still chose **semi-automated** post-synthesis handling for cost and robustness reasons.
+- **Argon is required, not optional.** Mg burns in N₂, and Al dust minimum ignition energy can be **below
+  10 mJ** (St3). Sub-ppm H₂O also removes the surface moisture film that normally bleeds off triboelectric
+  charge, so grounding and antistatic containment matter more inside the box than outside it.
+- **Robot-arm outgassing in sub-ppm atmospheres is essentially unpublished.** Use PFPE greases
+  (Fomblin/Krytox); treat hydrocarbon greases as incompatible. Put drivers, supplies, and PCs outside.
+- **Triboelectric dosing error in dry argon is also unquantified in the literature** — validate dosing
+  accuracy under actual argon conditions rather than assuming bench numbers transfer.
+
 ## Safety Considerations
 
 Handling flammable metal powders (Al, Mg) in a glovebox requires:
