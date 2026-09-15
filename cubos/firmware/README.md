@@ -19,8 +19,15 @@ Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino
 **The backup proved the provenance.** Parsed and compared byte-for-byte, the
 16 308 program bytes read off the board were **identical** to a local build of
 upstream `228615b` — so the board really was running stock upstream, and the
-VCL image is a provably minimal delta from it. A fresh rebuild of the patch on
-a different machine produces a bit-identical 17 370-byte image.
+VCL image is a provably minimal delta from it.
+
+`panda_vcl_p20_20260915.hex` is the exact 17 370-byte image that was written and
+verified by avrdude. A rebuild reproduced it bit-for-bit in one environment, but
+**the build is not reproducible in general**: `platformio.ini` pins its library
+dependencies with `^` ranges, so a clone that resolves a different minor version
+builds a slightly different image (17 364 bytes in one such case). Flash the
+committed hex if you want exactly what was on the board; rebuild from the patch
+if you want the source of truth.
 
 ## Upstream `main` does not compile
 
