@@ -131,3 +131,85 @@ payloads with a documented thermal warm-up protocol and a real uncertainty budge
 ≥500-cycle reliability campaign with structured failure logging. ~2–3 weeks of lab time and
 $5–10k of measurement equipment. It would be the first paper with both metrology and real
 MTBI for a low-cost arm in an SDL.
+
+## What Q3 established (end effectors + generative CAD)
+
+**The one sentence that matters:** *no published system autonomously closes the loop from
+laboratory-object requirements through editable, manufacturable gripper CAD, FDM
+fabrication, and measured manipulation performance on a real SDL arm.* Every existing
+system closes a subset:
+
+- **Fit2Form** (Ha, Agrawal & Song 2020) — object shape → generated parallel-jaw fingers →
+  printed → physically tested on a WSG50 (5 N grasp, 15 cm lift, X/Y shake, ~30 N poke).
+  Closest prior art, but it emits geometry rather than editable parametric CAD, has no
+  controller or material co-optimization, does not feed results back into redesign, and
+  never touches laboratory objects.
+- **Yi et al. 2025** — block-wise finger stiffness co-optimized with grasp pose through a
+  differentiable neural surrogate, printed and tested. Real co-design, but over a
+  predefined flexure family.
+- **IterCAD, Text2CAD-Bench, CADIR, CME-CAD, CAD-Recode, DeepCAD** — all optimize digital
+  similarity. IterCAD reaches 0.64% invalid / median Chamfer 0.10 on Text2CAD; **none
+  report a functional fabrication test.**
+- **Omaisan 2026** — robot-aware computational design of object-specific *passive* grippers
+  with contact zones, insertion sweeps, FEA and topology optimization. Four designs passed
+  the digital gates; coupon calibration and the proposed 100-cycle physical tests were
+  **explicitly still pending**.
+- **MATTERIX** — simulates workflows (75% real pick-and-place, 90% pouring) but generates
+  no grippers, and its position-based-dynamics powder is explicitly unvalidated for cohesive
+  AlSi10Mg or Si.
+
+### Absences Q3 states outright
+
+- No published SDL reports MTBI for the arm or the end effector.
+- **No study quantifies how much compliant capture envelope compensates for a given arm
+  repeatability error** on a lab peg-in-hole task. RCC devices, standard in industrial
+  assembly, have *no* published laboratory-automation application.
+- **No lightweight tool changer exists for a sub-1.5 kg payload arm.** Commercial changers
+  (ATI, Stäubli) weigh 0.5–1.5 kg and target 5–50 kg arms — a 0.5 kg changer would eat a
+  third of the PiPER's payload. Precision kinematic couplings reach 0.3–1.4 µm (3σ) and
+  ±5 µm for split-groove vs. ±50 µm for dowel pins, but steel-on-steel fretting degrades
+  that to ~10 µm after several hundred cycles.
+- **No robotic DSC crucible press-fit lid system** has been published with insertion force,
+  compliance, or success-rate data.
+- **No open-source SDL powder scoop reports cross-contamination, cleaning efficacy, or
+  triboelectric charging.**
+- **No published work uses a Raspberry Pi HQ fixed-focus camera for manipulation.** Q3's
+  own estimate — f/1.6, 6 mm lens, 100 mm working distance → roughly ±5 mm depth of field —
+  is flagged as extrapolation, and it is tight enough to need a stopping-down or refocus
+  strategy.
+
+### Numbers worth keeping
+
+- Compliant lab fingers (Zwirnmann 2023): microtube top-grasp wrest force **5.0(5) → 14.9(22) N**
+  moving from rigid to dual-material construction; pinch 20 N, power grasp 100 N conditions.
+- InstaGrasp TPU tendons survived **>86,000 stress cycles**; Tough PLA fatigue data reaches
+  **42,000 cycles** — but never in a gripper geometry at operational strain, which Q3 flags
+  as the extrapolation.
+- GelSight Mini: three-axis force to ~**4% MAE up to 15 N** when calibrated. DIGIT is
+  **$15–50**. A real F/T sensor (BOTA SensONE / ATI Nano17) is **$1,500–5,000** and
+  50–100 g — characterization-only at a 1.5 kg payload. Motor-current force estimation on
+  this arm class is **unpublished**.
+- Low-cost eye-in-hand grasping reports **85–93%** success; one monocular 5-DOF system hit
+  90% with ±3 mm residual, failures concentrated at field-of-view edges where error
+  exceeded 5 mm. Typical working distance 15–20 cm.
+
+### Q3's ranked projects, in our terms
+
+1. **Closed-loop generative end-effector design** — specification → CadQuery → FDM → robot
+   test → redesign, beating expert-designed universal *and* object-specific fingers across
+   vials, SEM stubs, well plates, and coupons. Needs ≥1,000 cycles per finalist and
+   ablations of kernel checks, VLM judging, and physical feedback. **Strongly de-risked by
+   CADSmith.** *Additive Manufacturing* / RA-L / *Digital Discovery*, 9–18 months.
+2. **Compliance-versus-precision map** — impose lateral/axial/angular error deliberately and
+   map success probability vs. clearance for rigid chamfer, TPU pad, flexure, Fin-Ray, RCC.
+   RA-L / RCIM / JMR, 6–12 months.
+3. **End-effector reliability benchmark** — thousands of pick/place/seat operations with
+   MTBI, recovery rate, and a failure taxonomy. *HardwareX* + dataset, 6–12 months.
+4. **Printed kinematic tool changer for a 1.5 kg arm** — mass, 6-DOF redocking repeatability
+   over ≥1,000 cycles, wear and powder-debris sensitivity. Geometry strongly de-risked by
+   CADSmith; tribology is new. *HardwareX* / *Precision Engineering*, 6–10 months.
+5. **Robotic DSC crucible + press-fit lid station.** 6. **Fixed-focus wrist vision for
+   last-centimeter servoing.** 7. **Open powder scoop with quantified decontamination.**
+
+**Crowded, stay out:** general text-to-CAD benchmarking, dexterous multi-finger hand design,
+GelSight/DIGIT tactile hardware, general grasp synthesis.
