@@ -94,3 +94,12 @@ SDL-specific angle on the last one is viable.
   metal powders, benchmarked against the 1.93 mg result.
 - **`caliber`** and the OT-2/`digital-wetlab` stack give a second workflow to measure
   MTBI on, with different failure modes.
+
+## Follow-on documents
+
+- [`6dof-verification-and-ecosystem.md`](6dof-verification-and-ecosystem.md) — Edison's
+  claims checked against the full text of the sources, plus the GitHub/Hugging Face survey
+  a literature-only agent cannot do. **Read this before citing anything above.**
+- [`6dof-q3-sandbox-plan.md`](6dof-q3-sandbox-plan.md) — Q3: perception for specular,
+  transparent and thin labware; how far fiducials get you; the honest LeRobot assessment;
+  contact tasks without an F/T sensor; and the eight-primitive sandbox.
