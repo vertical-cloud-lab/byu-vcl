@@ -1,0 +1,28 @@
+=== MIGRATION  2026-09-15T21:34:10Z ===
+
+--- 1. revert the four cbc33dc-era patches (reproducible from ~/byu-vcl/cubos/patches) ---
+worktree clean of tracked mods: 0 line(s) of diff
+
+--- 2. detach at the audited commit 496819c ---
+Previous HEAD position was cbc33dc Merge pull request #255 from Ursa-Laboratories/feat/4040-pro-max-seed-config
+HEAD is now at 496819c Merge pull request #339 from Ursa-Laboratories/feat/potentiostat-rinse
+496819c Merge pull request #339 from Ursa-Laboratories/feat/potentiostat-rinse
+
+--- 3. apply the two ported patches ---
+  tipped-hover-clamp-main ... applied clean
+  pipette-connect-tolerate-failed-home-main ... applied clean
+
+--- resulting local diff ---
+ packages/core/src/cubos/gantry/gantry_config.py    | 16 ++++++++++++
+ .../core/src/cubos/gantry/instrument_loader.py     | 19 ++++++++++++++
+ packages/core/src/cubos/gantry/instrument_mount.py | 29 ++++++++++++++++++++-
+ .../cubos/instruments/pipette/vendors/opentrons.py | 30 +++++++++++++++++++---
+ packages/core/src/cubos/validation/bounds.py       |  8 +++---
+ .../src/cubos/validation/protocol_semantics.py     |  6 +++++
+ .../core/tests/instruments/pipette/test_pipette.py | 16 +++++++++---
+ .../tests/validation/test_pipette_tip_state.py     | 19 ++++++++++----
+ 8 files changed, 125 insertions(+), 18 deletions(-)
+
+--- confirm no cbc33dc-era patch is still in the tree ---
+APPLIED : pipette-connect-tolerate-failed-home-main.patch
+APPLIED : tipped-hover-clamp-main.patch

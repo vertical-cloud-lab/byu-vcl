@@ -1,0 +1,48 @@
+=== POST-MIGRATION STATE  2026-09-15T21:39:48Z ===
+host        : rpi-5-des4
+HEAD        : 496819cec06a83fb97ef75734249809c16dc6fa9  (496819c)
+HEAD subject: Merge pull request #339 from Ursa-Laboratories/feat/potentiostat-rinse
+detached at : 496819c  (== origin/main at migration time)
+
+--- applied patches (reverse-apply check against ~/byu-vcl/cubos/patches) ---
+  not applied : cap-release-confirm-after-retract.patch
+  not applied : pawduino-connect-boot-banner.patch
+  APPLIED     : pipette-connect-tolerate-failed-home-main.patch
+  not applied : pipette-connect-tolerate-failed-home.patch
+  not applied : tipped-hover-clamp-and-ceiling-travel.patch
+  APPLIED     : tipped-hover-clamp-main.patch
+
+--- local diff ---
+ packages/core/src/cubos/gantry/gantry_config.py    | 16 ++++++++++++
+ .../core/src/cubos/gantry/instrument_loader.py     | 19 ++++++++++++++
+ packages/core/src/cubos/gantry/instrument_mount.py | 29 ++++++++++++++++++++-
+ .../cubos/instruments/pipette/vendors/opentrons.py | 30 +++++++++++++++++++---
+ packages/core/src/cubos/validation/bounds.py       |  8 +++---
+ .../src/cubos/validation/protocol_semantics.py     |  6 +++++
+ .../core/tests/instruments/pipette/test_pipette.py | 16 +++++++++---
+ .../tests/validation/test_pipette_tip_state.py     | 19 ++++++++++----
+ 8 files changed, 125 insertions(+), 18 deletions(-)
+
+--- venv ---
+Python 3.13.5
+Name: cubos
+Version: 0.1.0
+Summary: 
+ERROR: Pipe to stdout was broken
+
+--- serial devices (by-id, stable) ---
+  total 0
+  lrwxrwxrwx 1 root root 13 Sep 11 19:09 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB0
+  lrwxrwxrwx 1 root root 13 Sep 11 19:09 usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00 -> ../../ttyACM0
+
+--- nothing listening beyond sshd on the tailnet ---
+  tcp 0.0.0.0:22
+  tcp 100.82.126.90:53086
+  tcp [::]:22
+  tcp [fd7a:115c:a1e0::512c:7e5b]:47762
+  udp *:41641
+  udp *:5353
+  udp *:57968
+  udp 0.0.0.0:41641
+  udp 0.0.0.0:45064
+  udp 0.0.0.0:5353

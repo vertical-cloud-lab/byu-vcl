@@ -99,6 +99,17 @@ cnc:
   calibration_block_height_mm: 35.0
   y_axis_motion: head
   safe_z: 115.0
+  # ADDED 2026-09-15, with the CubOS main migration. Upstream 7ff4d7f made the
+  # feed rate configurable and raised the *module default* from 2000 to 3000
+  # mm/min; before that every G01 hardcoded F2000 regardless of $110-$112.
+  # This file carried no such field, so the migration would have silently made
+  # every move 1.5x faster. Pinned to 2000.0 so the migrated tree reproduces
+  # campaign 83's motion exactly and the speed-up is its own watched run.
+  # To take the speed: change this to 3000.0 (or delete the line). Upstream
+  # pins 3000.0 in all of its own configs.
+  # NB: this field does not exist at CubOS cbc33dc -- CncYaml there is
+  # extra="forbid", so this line must be removed before any rollback.
+  default_feed_rate_mm_min: 2000.0
 working_volume:
   x_min: 0.0
   x_max: 386.333
@@ -131,6 +142,19 @@ instruments:
     capture_settle_s: 1
     engage_depth_mm: 15
     offline: false
+    # IGNORED as of the 2026-09-15 CubOS migration, and deliberately KEPT.
+    # Upstream b39988b dropped decap/cap's trailing park move, so this key now
+    # loads with a warning and has no effect:
+    #   "YAML field 'park_position' is no longer used and was ignored
+    #    (decap/cap no longer park; delete this key)."
+    # Not deleted, because PawduinoCapper.__init__ at cbc33dc takes
+    # park_position as a REQUIRED argument -- removing it would break a
+    # rollback, and the importer's fallback is the placeholder [-10, -10],
+    # which is outside the working volume and alarms GRBL on every decap/cap.
+    # Delete it only once rollback to cbc33dc is off the table.
+    # NOTE this is the *capper instrument's* park, NOT the protocol's
+    # `positions: park_position:` in pipette_test.yaml -- that one is a named
+    # protocol position, is still used, and step 1 still moves to it.
     park_position:
     - 236
     - 25    # CHANGED 2026-09-08 (was 175): off the vial

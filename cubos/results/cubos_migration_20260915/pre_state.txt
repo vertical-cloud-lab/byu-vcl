@@ -1,0 +1,35 @@
+=== PRE-MIGRATION STATE  2026-09-15T21:33:50Z ===
+HEAD: cbc33dcaf1f3f07b2cb2720bb8b24185ae20c9b9  (cbc33dc)
+
+--- applied patches (git diff --stat) ---
+ packages/core/src/cubos/gantry/gantry_config.py    | 16 ++++++++
+ .../core/src/cubos/gantry/instrument_loader.py     | 19 +++++++++
+ packages/core/src/cubos/gantry/instrument_mount.py | 45 +++++++++++++++++++++-
+ .../cubos/instruments/capper/vendors/pawduino.py   | 22 +++++++++++
+ .../cubos/instruments/pipette/vendors/opentrons.py | 30 +++++++++++++--
+ .../src/cubos/protocol_engine/commands/capper.py   | 24 ++++++++++--
+ packages/core/src/cubos/validation/bounds.py       |  6 +--
+ .../src/cubos/validation/protocol_semantics.py     |  8 +++-
+ .../tests/validation/test_pipette_tip_state.py     | 22 ++++++++---
+ 9 files changed, 173 insertions(+), 19 deletions(-)
+
+--- which of the repo patch files are applied (reverse-apply check) ---
+APPLIED : cap-release-confirm-after-retract.patch
+APPLIED : pawduino-connect-boot-banner.patch
+not applied: pipette-connect-tolerate-failed-home-main.patch
+APPLIED : pipette-connect-tolerate-failed-home.patch
+APPLIED : tipped-hover-clamp-and-ceiling-travel.patch
+not applied: tipped-hover-clamp-main.patch
+
+--- installed cubos ---
+Name: cubos
+Version: 0.1.0
+Summary: 
+Home-page: 
+Author: 
+Author-email: 
+
+--- campaign dirs present ---
+11
+--- last campaign ---
+packages/core/src/cubos/data/results/campaign_9_20260914_175233

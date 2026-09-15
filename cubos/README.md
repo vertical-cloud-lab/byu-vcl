@@ -705,3 +705,55 @@ CubOS, so the update buys nothing for it and adds a variable; Ben's outstanding 
 ask (run the trio, capture 8 frames) was validated against `cbc33dc` and should happen on
 the known-good tree first. The migration recipe is written down and reversible whenever
 they want it.
+
+## 2026-09-15 (later) — migration executed: the Pi now runs upstream `main` + two patches
+
+Ben asked for it, so the migration prepared in the audit above was executed on
+`rpi-5-des4`. Full record, evidence and rollback recipe in
+[`results/cubos_migration_20260915/`](results/cubos_migration_20260915/README.md).
+**No protocol was run and no motion was commanded** — both ports were opened
+read-only and the electromagnet was de-energized afterwards.
+
+| | before | after |
+|---|---|---|
+| `~/CubOS` HEAD | `cbc33dc` | **`496819c`** (detached; `== origin/main`) |
+| patches applied | 4 | **2** — `tipped-hover-clamp-main`, `pipette-connect-tolerate-failed-home-main` |
+| local diff | 9 files, 173 insertions | 8 files, 125 insertions |
+| `validate_setup` / `--mock` | PASS / 12·12 | **PASS / 12·12** |
+| `passive_shadow` nominal / tip-stuck | 0 / 0, 28 poses | **0 / 0, 22 poses** |
+| `pytest` | 2020 passed, **3 failed** | **2544 passed, 0 failed** |
+
+`origin/main` was still exactly the audited `496819c`, so the verified recipe
+applied verbatim and both ports went on clean.
+
+**The one thing that needed hardware, not reasoning:** dropping
+`pawduino-connect-boot-banner` hands the Arduino handshake to upstream's
+`PawduinoLink` (`CMD_HELLO` round-trip with `expect="Hello"`, which skips stale
+lines). Our patch existed because this board's boot banner lands at 3.76 s, past
+the 2 s settle. Tested against the board: `connect()` returned **OK in 3.77 s**,
+then the capper sensor, plunger status and electromagnet-off all answered
+normally. A resync, not a longer sleep — and it works here.
+
+**The commanded geometry is byte-identical to the audit**: 22 poses, down from
+28. The six removed are the capper's park legs, which upstream `b39988b`
+deleted; a gripped cap is now carried on the next command's ceiling travel at
+carriage Z 124 instead of the park leg's 99.065 — about **9 mm more clearance**
+over the caps it traverses, which is the symptom in Ben's 2026-08-31 video.
+
+Two config decisions came with it, both in
+[`configs/gantry/cub_xl_ben_pipette_capper.yaml`](configs/gantry/cub_xl_ben_pipette_capper.yaml):
+
+- **`cnc.default_feed_rate_mm_min: 2000.0` added.** Upstream raised the module
+  default 2000 → 3000, and our file carried no such field, so the migration would
+  silently have made every move 1.5× faster. Pinned so the next run differs from
+  campaign 83 in exactly one intended way. One line to `3000.0` takes the speed.
+- **The capper's `park_position` kept, not deleted.** Upstream ignores it with a
+  warning and says to delete it; `PawduinoCapper.__init__` at `cbc33dc` takes it
+  as a *required* argument, so deleting it breaks rollback and the fallback is the
+  out-of-bounds `[-10, -10]` placeholder. Note this is **not** the protocol's own
+  `positions: park_position:`, which is still used.
+
+All ten settings in the connect-time critical GRBL set match the controller
+(`409 / 309 / 124`, `$20=1`), so a run will connect. Unchanged by any of this:
+the plunger still will not actuate — that fault is below CubOS, in the
+Arduino → TMC2209 → motor chain.

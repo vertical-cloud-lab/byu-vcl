@@ -1,9 +1,8 @@
 # Local CubOS patches applied on the lab Raspberry Pi
 
 These are changes made to the **upstream CubOS clone** at `~/CubOS` on the lab Pi
-(`Ursa-Laboratories/CubOS`, currently `main` @ `cbc33dc`). They do not live in that
-repo, so they are recorded here to keep the Pi reproducible and to give us something
-to upstream.
+(`Ursa-Laboratories/CubOS`). They do not live in that repo, so they are recorded
+here to keep the Pi reproducible and to give us something to upstream.
 
 Apply with:
 
@@ -12,15 +11,33 @@ cd ~/CubOS
 git apply /path/to/byu-vcl/cubos/patches/<name>.patch
 ```
 
-Check what is currently applied with `cd ~/CubOS && git diff --stat`.
+Check what is currently applied with `cd ~/CubOS && git diff --stat`, or per file:
 
-> **Two sets of patches live here.** The four without a suffix are written against
-> `cbc33dc`, the revision the Pi runs today, and are what `git diff --stat` on the
-> Pi should show. The two `*-main.patch` files are the same fixes rebased onto
-> upstream `main` (`496819c`), prepared but **not applied** — see
-> [the update audit](../results/cubos_update_audit_20260915/README.md) for why the
-> migration is ready but deliberately not taken yet. The other two patches are
-> genuinely fixed upstream and simply disappear on `main`.
+```bash
+for p in ~/byu-vcl/cubos/patches/*.patch; do
+  git apply --reverse --check "$p" 2>/dev/null && echo "APPLIED: $(basename $p)"
+done
+```
+
+## What is on the Pi right now
+
+**`rpi-5-des4`, `~/CubOS` detached at `496819c` (upstream `main`), two patches
+applied** — migrated 2026-09-15, record in
+[`results/cubos_migration_20260915/`](../results/cubos_migration_20260915/README.md).
+
+| patch | state | why |
+|---|---|---|
+| `tipped-hover-clamp-main.patch` | **APPLIED** | load-bearing. Without it Ben's trio fails validation with 6 violations; a 35 mm tip would need carriage Z 150 on a machine whose Z tops out at 124. |
+| `pipette-connect-tolerate-failed-home-main.patch` | **APPLIED** | workaround, not a fix. Revert the moment the plunger limit switch works. |
+| `pawduino-connect-boot-banner.patch` | superseded | fixed upstream by `88bf226` (`PawduinoLink`), and **verified against this board**: `connect()` handles the 3.76 s banner in 3.77 s. |
+| `cap-release-confirm-after-retract.patch` | superseded | fixed upstream by `3a7f4ab`, and better — upstream re-engages on each retry; ours did not. |
+| `tipped-hover-clamp-and-ceiling-travel.patch` | split | upstream took the ceiling-travel half (`0cc5028`/`b39988b`); the clamp is re-ported as `tipped-hover-clamp-main.patch`. |
+| `pipette-connect-tolerate-failed-home.patch` | rebased | the `cbc33dc` form, kept only for rollback. |
+
+The four files **without** a `-main` suffix are written against `cbc33dc` and are
+only needed to roll back. The migration record has the rollback recipe; note it
+also requires removing `cnc.default_feed_rate_mm_min` from the gantry file, which
+`CncYaml` at `cbc33dc` rejects.
 
 ---
 

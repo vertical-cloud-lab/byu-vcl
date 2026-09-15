@@ -1,0 +1,20 @@
+=== GRBL /dev/ttyUSB0 (read-only) ===
+  $3     = 1
+  $20    = 1
+  $21    = 0
+  $22    = 1
+  $23    = 0
+  $100   = 400.000
+  $101   = 400.000
+  $102   = 400.000
+  $130   = 409.000
+  $131   = 309.000
+  $132   = 124.000
+  status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0|WCO:-409.000,-309.000,-124.000> ok
+
+=== Pawduino /dev/ttyACM0 via upstream PawduinoLink ===
+  connect() with CMD_HELLO handshake: 3.77 s -> OK
+  cmd 7  capper line-break sensor   -> OK:{"value1":0}
+  cmd 14 pipette STATUS             -> OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+  cmd 6  electromagnet OFF          -> OK:{"msg":"Electromagnet off"}
+  link released; port free

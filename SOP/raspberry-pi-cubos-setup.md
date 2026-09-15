@@ -109,7 +109,7 @@ sudo systemctl enable --now cubos
 ## Notes
 
 - **Remote access needs the Tailscale step in the workflow** — the Pi is reachable only over Tailscale SSH (residential NAT), and the GitHub runner gets onto the tailnet from a `Connect to Tailscale` step in `.github/workflows/claude.yml`. `issue_comment` events run the **default branch's** workflow, so removing that step from `main` (as [`429fe34`](https://github.com/vertical-cloud-lab/byu-vcl/commit/429fe34) did on 2026-08-26) leaves every `@claude` job with no `tailscale` binary and no route to the Pi — `tailscale status` returns `command not found`. The OAuth secrets are still passed to the job; only the step that consumes them is gone. Re-adding the four-line step restores hardware access.
-- **Local CubOS patches** — `~/CubOS` on the Pi carries local fixes that are not upstream. They're recorded in [`cubos/patches/`](../cubos/patches/) with the reason for each; `cd ~/CubOS && git diff --stat` shows what's currently applied. As of 2026-09-14 that's four patches (9 files, 173 insertions): two the Pawduino capper cannot work without, one that lets a tipped pipette travel on a machine whose Z ceiling is below `safe_z + tip_length`, and one escape hatch that is **not** a bug fix — see the warning in the patches README before leaving it applied.
+- **Local CubOS patches** — `~/CubOS` on the Pi carries local fixes that are not upstream. They're recorded in [`cubos/patches/`](../cubos/patches/) with the reason for each; `cd ~/CubOS && git diff --stat` shows what's currently applied. As of the **2026-09-15 migration to upstream `main` (`496819c`)** that's **two** patches (8 files, 125 insertions): the tipped-hover clamp, which lets a tipped pipette travel on a machine whose Z ceiling is below `safe_z + tip_length`, and one escape hatch that is **not** a bug fix — see the warning in the patches README before leaving it applied. The two capper patches the Pi used to need are now fixed upstream. Migration record: [`cubos/results/cubos_migration_20260915/`](../cubos/results/cubos_migration_20260915/README.md).
 - **Two serial devices** — on this Pi the GRBL controller is `/dev/ttyUSB0` (`1a86:7523` CH340) and the capper Arduino is `/dev/ttyACM0` (`2341:0043` Uno R3). Confirm with `lsusb` before trusting a config, since the numbering can move. Better still, name the stable `by-id` paths: `/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0` and `/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00`.
 - **One serial connection at a time** — if UGS, a calibration script, or anything else on the Pi holds the serial port, the API can't. If the server "fails to even connect to the gantry", check nothing else has the port open (and reseat any loose motor/limit-switch connectors).
 - **Tunnel vs. LAN exposure**: SSH tunneling is the recommended default. To make the UI reachable by multiple lab machines without tunnels, set `CUBOS_HOST=0.0.0.0`, add the Pi's hostname/IP to `CUBOS_TRUSTED_HOSTS`, and set a `CUBOS_API_TOKEN` — but skip that until there's a real need.
@@ -139,7 +139,7 @@ sudo apt-get install -y --no-install-recommends git
 # CubOS at the commit every geometry number on this branch was validated against.
 # Blobless clone keeps the transfer small; the Pi is on residential wifi (eth0 is down).
 cd ~ && git clone --filter=blob:none https://github.com/Ursa-Laboratories/CubOS.git
-cd ~/CubOS && git checkout cbc33dc
+cd ~/CubOS && git checkout --detach 496819c   # upstream main as of 2026-09-15
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 python3 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
@@ -150,26 +150,41 @@ cd ~ && git clone --filter=blob:none --single-branch \
   --branch <branch> https://github.com/vertical-cloud-lab/byu-vcl.git
 
 cd ~/CubOS
-for p in pawduino-connect-boot-banner cap-release-confirm-after-retract \
-         tipped-hover-clamp-and-ceiling-travel pipette-connect-tolerate-failed-home; do
+for p in tipped-hover-clamp-main pipette-connect-tolerate-failed-home-main; do
   git apply ~/byu-vcl/cubos/patches/$p.patch
 done
 ```
 
+> Before 2026-09-15 this Pi ran `cbc33dc` with **four** patches. That form is still
+> reproducible — `git checkout --detach cbc33dc` plus the four files without a `-main`
+> suffix — and is the rollback path. It also needs `cnc.default_feed_rate_mm_min`
+> removed from the gantry file, since `CncYaml` at `cbc33dc` is `extra="forbid"`.
+
 Things worth knowing when you repeat it:
 
-- **Don't take CubOS `main`.** The four patches are written against `cbc33dc`, and so is
-  every validated coordinate on this branch. Upgrading means re-validating the geometry and
-  re-basing the patches — a deliberate exercise, not a `git pull`.
+- **Upgrading CubOS is a deliberate exercise, not a `git pull`.** Patches are written
+  against a specific revision and so is every validated coordinate on this branch, so an
+  upgrade means re-basing the patches *and* re-validating the geometry. The 2026-09-15
+  migration is the worked example: audit first
+  ([`cubos_update_audit_20260915`](../cubos/results/cubos_update_audit_20260915/README.md)),
+  then execute against the verified recipe
+  ([`cubos_migration_20260915`](../cubos/results/cubos_migration_20260915/README.md)).
+  Pin the exact commit (`git checkout --detach <sha>`) rather than `origin/main`, so a
+  later fetch cannot silently change what is installed.
+- **Check the feed rate after any upgrade.** `cnc.default_feed_rate_mm_min` was added
+  upstream in `7ff4d7f` with a module default of 3000 mm/min, up from a hardcoded 2000.
+  A gantry file that omits the field inherits whatever the installed version defaults to
+  — i.e. an upgrade can silently change how fast the machine moves. Ours pins it.
 - **The tools in this repo are run by path**, not as `-m cubos.tools.X`. They are
   deliberately *not* copied into the CubOS tree so that `cd ~/CubOS && git diff --stat`
   stays a truthful report of exactly which patches are applied and nothing else.
-- **Three upstream tests fail on the patched tree, and that is correct** — they are the
-  tests for the three patches that intentionally change behaviour. Expect
-  `2020 passed, 3 failed, 17 skipped`. If you want to confirm they are patch-induced rather
-  than an install problem, run them in a pristine worktree:
-  `git worktree add --detach /tmp/cubos-pristine cbc33dc` with
-  `PYTHONPATH=/tmp/cubos-pristine/packages/core/src`; all three pass there.
+- **The suite should be all green.** On `496819c` + the two `-main` patches, expect
+  `2544 passed, 17 skipped, 14 subtests passed` — the ports rewrite the upstream tests
+  whose behaviour they change, so nothing is left red. (The old `cbc33dc` + four-patch
+  tree reported `2020 passed, 3 failed`; those three were the patch-induced failures. If
+  you ever need to prove a failure is patch-induced rather than an install problem, run it
+  in a pristine worktree: `git worktree add --detach /tmp/cubos-pristine <sha>` with
+  `PYTHONPATH=/tmp/cubos-pristine/packages/core/src`.)
 - **Verify the GRBL settings before trusting a run.** `$130/$131/$132` and `$20` are in
   `Gantry._validate_grbl_settings`' critical set and are compared at 0.001 mm, so a gantry
   file that disagrees with the controller aborts at connect before any motion. Reading
