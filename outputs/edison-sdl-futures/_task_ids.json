@@ -1,0 +1,27 @@
+{
+  "q1_sota_electrolyte_sdl": {
+    "task_id": "b4e503af-ee20-4415-9e33-06487352a720",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "State of the art: which self-driving laboratories / autonomous experimentation platforms have been demonstrated for LIQUID ELECTROLYTE FORMULATION, where an automated liquid-dosing system mixes multi-component solutions and IONIC CONDUCTIVITY is measured in a closed loop to select the next composition? Name the specific platforms (e.g. Clio/Dragonfly, Otto Chemistry, AMANDA/Autonomous Energy Materials Discovery, ChemOS, Chemspeed-based electrolyte platforms, A-Lab, Argonne/NREL electrolyte robots) with DOIs and publication years. For each: what was dosed (liquid only, or powders/salts too), how conductivity was measured (dip probe, flow cell, four-electrode, impedance/potentiostat), how many compositions per campaign, what optimizer was used, and what the reported speedup or sample-count reduction versus grid/one-factor-at-a-time was. Distinguish clearly between aqueous and non-aqueous (glovebox) systems."
+  },
+  "q2_inline_spectroscopy_sensor_fusion": {
+    "task_id": "1ec657cd-8753-4bd0-9fc1-e89ef2bda194",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "State of the art in coupling IN-LINE / IN-SITU VIBRATIONAL SPECTROSCOPY (ATR-FTIR, Raman, NIR, UV-Vis) to automated liquid-handling or flow systems as a real-time composition sensor, and in SENSOR FUSION where spectroscopy is measured SIMULTANEOUSLY with a physical property such as ionic conductivity on the same sample. Cite specific papers with DOIs. Cover: (a) combined ATR-FTIR + conductivity flow cells for electrolyte speciation; (b) chemometrics (PLS, MCR-ALS, classical least squares) versus neural-network / nonlinear models for predicting concentrations of all species from a spectrum of a concentrated multicomponent electrolyte where ion pairing makes the spectral mixing NONLINEAR and Beer-Lambert additivity fails; (c) how much training data those models needed and how they were validated on held-out or blind test sets; (d) Raman versus IR practicality for fiber-coupled integration into a robot."
+  },
+  "q3_future_directions_open_problems": {
+    "task_id": "a359926f-8817-45da-bb7d-bb2b04e0d3fe",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "What do recent (2023-2026) reviews, perspectives and roadmap papers identify as the OPEN PROBLEMS and FUTURE DIRECTIONS for self-driving laboratories, specifically in materials chemistry and electrochemistry? Give DOIs. I want the concrete, named challenges rather than generalities: orchestration/interoperability standards (SiLA2, LabOP, AnIML, Bluesky, Chemputer/chi), FAIR data and metadata capture, reproducibility and round-robin benchmarking between labs, the shortage of negative results, closing the loop with multiple ORTHOGONAL characterization modalities rather than a single scalar objective, multi-fidelity and multi-objective optimization, transfer/meta-learning across chemistries, human-in-the-loop and error recovery, and cost/accessibility. Which of these are described as still unsolved as of 2026?"
+  },
+  "q4_low_cost_open_hardware_sdl": {
+    "task_id": "b0f84550-c7d8-465a-8015-d3d7259510b5",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "State of the art in LOW-COST, OPEN-SOURCE, MODULAR self-driving lab hardware: Cartesian-gantry and 3D-printer-derived platforms, Opentrons OT-2 based SDLs, and 'science jubilee' style toolchanger systems. Cite specific published platforms with DOIs and their approximate build cost. Emphasise papers whose contribution is the VERSATILITY or MODULARITY of one platform across several different measurement modalities (i.e. the same robot reconfigured for optical, electrochemical, thermal, rheological tasks) rather than a single-purpose demonstrator - what is the strongest published precedent for a 'one platform, many instruments' claim, and how did those papers quantify or demonstrate versatility? Also: which of them handle POWDER dosing as well as liquids, and how is mixing/stirring implemented?"
+  },
+  "q5_active_learning_formulation_data_efficiency": {
+    "task_id": "9a191a11-b836-4120-a733-cd0b9b37b96b",
+    "job": "job-futurehouse-paperqa3-high",
+    "query": "State of the art and future directions in ACTIVE LEARNING / BAYESIAN OPTIMIZATION for MULTICOMPONENT LIQUID FORMULATION where experiments are expensive in reagent cost, including the case where the measurement is a full SPECTRUM (a high-dimensional observation) rather than a scalar. Give DOIs. Cover: batch and constrained BO on mixture/simplex design spaces, cost-aware and reagent-budget-aware acquisition functions, how many experiments real published electrolyte or formulation campaigns actually needed, benchmark evidence on whether BO beats random search and Latin-hypercube/DoE on these problems and by how much, active learning targeted at improving a SURROGATE SPECTRAL MODEL (optimal experimental design / D-optimality / uncertainty sampling for training data acquisition) rather than optimizing a property, and best practice for held-out blind validation of such models."
+  }
+}
