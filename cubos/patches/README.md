@@ -27,6 +27,7 @@ applied** — migrated 2026-09-15, record in
 
 | patch | state | why |
 |---|---|---|
+| `p20-mm-to-ul-passthrough.patch` | **APPLIED** 2026-09-15 | stops `volume_ul` being converted to mm twice — once here and again inside the firmware. See below. |
 | `tipped-hover-clamp-main.patch` | **APPLIED** | load-bearing. Without it Ben's trio fails validation with 6 violations; a 35 mm tip would need carriage Z 150 on a machine whose Z tops out at 124. |
 | `pipette-connect-tolerate-failed-home-main.patch` | **APPLIED** | workaround, not a fix. Revert the moment the plunger limit switch works. |
 | `pawduino-connect-boot-banner.patch` | superseded | fixed upstream by `88bf226` (`PawduinoLink`), and **verified against this board**: `connect()` handles the 3.76 s banner in 3.77 s. |
@@ -38,6 +39,61 @@ The four files **without** a `-main` suffix are written against `cbc33dc` and ar
 only needed to roll back. The migration record has the rollback recipe; note it
 also requires removing `cnc.default_feed_rate_mm_min` from the gantry file, which
 `CncYaml` at `cbc33dc` rejects.
+
+---
+
+## `p20-mm-to-ul-passthrough.patch`
+
+One line of `instruments/pipette/models.py`: the `p20_single_gen2` entry's
+`mm_to_ul`, `0.025` → `1.0`.
+
+### Symptom
+
+Commanded volumes were not microlitres, by a factor nobody could name.
+
+### Cause
+
+Both ends convert. `OpentronsPipette.aspirate`/`dispense`/`mix` each do
+
+```python
+mm_travel = volume_ul * self._config.mm_to_ul
+```
+
+and send `mm_travel` as the `ASPIRATE` argument — but the PANDA firmware's
+`aspirate(float volume, ...)` takes **microlitres** and applies its own
+`UL_TO_MM` internally. So `volume_ul: 20.0` became `20 × 0.025 = 0.5`, which the
+firmware then clamped up to `MIN_VOLUME` and converted again.
+
+`mm_to_ul` is read in exactly those three places and nowhere else, so 1.0 makes
+this side a pass-through and leaves the single conversion in the firmware, where
+the calibration constant belongs.
+
+### Chain, end to end
+
+```
+protocol volume_ul  20.0
+  x mm_to_ul 1.0    -> ASPIRATE 20.0          (CubOS, this patch)
+  x UL_TO_MM 1.8    -> 36.0 mm of plunger     (firmware, ../firmware/)
+                    = PRIME_POSITION, so a full-scale 20 uL lands at 0.0
+```
+
+### Still wrong, and deliberately left alone
+
+`prime_position: 5.0`, `blowout_position: 7.0` and `drop_tip_position: 10.0` in
+the same entry are all still marked `# placeholder`, and unlike `mm_to_ul` they
+are sent to the firmware as **absolute** `MOVE_TO` targets. The firmware's own
+positions are 36.0 / 44.0 / 55.0 — which is exactly what CubOS's
+`p300_single_gen2` entry carries, marked "calibrated from PANDA-BEAR". So a
+`blowout` asks the plunger to go to 7.0 while the firmware's blowout plane is
+44.0.
+
+Matching them to the firmware (36.0 / 44.0 / 55.0) is the obvious next step, but
+it changes real motion and was not asked for, so it has not been done.
+
+### Upstream
+
+Not filed. Upstream's whole `p20_single_gen2` entry is placeholders; the fix
+worth sending is the p20 row once it has been gravimetrically calibrated.
 
 ---
 

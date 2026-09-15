@@ -755,3 +755,86 @@ port is faithful. Two divergences worth knowing:
    and `mm_to_ul: 1.0` on the CubOS side so `volume_ul` passes through as
    microlitres instead of being converted twice.
 5. **The sensed tip pickup** (§8.8) whenever the tip-seating question comes back.
+
+---
+
+## 9. 2026-09-15: the resistor went in, the firmware was taught to listen, and the driver said nothing
+
+Ben fitted a **10 kΩ** bridge between A0 (`RX_PIN`) and A1 (`TX_PIN`) — the
+single-wire UART arrangement §8.10 step 1 asked for. 10 kΩ rather than 1 kΩ is
+electrically fine: the driver has to pull the line low against the Arduino's
+idle-high push-pull output, which is 0.5 mA at 5 V, and at 9600 baud
+(104 µs/bit) the RC of 10 kΩ against tens of picofarads is not close to
+mattering.
+
+### 9.1 The resistor alone changes nothing, and campaign 26 proved it
+
+The trio ran that day with the bridge in place and produced a plunger trace
+**byte-for-byte identical** to campaigns 77 and 83: `HOME` back in 0.520 s
+(back-off only), the two downward commands stepping, all four upward commands
+refused in ~0.107 s.
+
+That is expected rather than disappointing. `setupMotor()` only ever *writes*
+TMC2209 registers and checks none of them, and no command in `Interface.cpp`
+exposed driver state — so the readback path the bridge creates had nothing
+asking it a question. **The bridge is necessary and was not sufficient.**
+
+### 9.2 So the firmware was taught to ask
+
+`CMD_PIPETTE_DRIVER_STATUS = 29`, added in the same reflash as the p20
+constants (see [`../firmware/README.md`](../firmware/README.md)), returns
+`comm` / `flags` / `current_scaling`. Five consecutive reads, immediately after
+the flash:
+
+```
+OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+```
+
+`comm = 0` is unambiguous — the library's `isCommunicating()` is
+`getVersion() == VERSION`, so 0 means the driver did not return a valid version
+byte. Not "replied but unconfigured"; **no reply at all**.
+
+### 9.3 What that rules in and out
+
+Every register write `setupMotor()` makes has therefore never landed, on any
+run since this rig was built. The driver has been running on power-on defaults
+throughout. Two consequences, pulling in opposite directions:
+
+* **`setOperationModeToSerial()` never landed either**, so `i_scale_analog` is
+  still 1 and the **VREF potentiometer is in circuit**. The §4 worry — that
+  correcting the UART pin would strand the driver at minimum current with its
+  output stage off — is therefore *not* what is happening. That hypothesis is
+  now dead.
+* `setMicrostepsPerStep(16)` never landed, so MS1/MS2 straps decide. Their
+  default is 1/8, which is half of what `STEPS_PER_MM 1592.0` assumes — the
+  same 2× the firmware already contradicts itself about in
+  `int backOffSteps = 796; // this is equal to 1mm`. **Check the first
+  successful move against a ruler.**
+
+### 9.4 The discriminator, and it takes two minutes
+
+With the driver idle and powered, try to turn the plunger by hand.
+
+| holding torque | reading | next |
+| --- | --- | --- |
+| **none** | no coil current at all | VM at the driver's screw terminal (12 V; VDD from the Arduino is logic only and the board enumerates happily without VM), then the VREF pot, then coil continuity |
+| **present** | the driver is powered and energised, so `comm = 0` is the UART path alone | confirm PDN_UART really lands on **A1**, and the bridge |
+
+The new `flags` word reports `open_load_a`/`open_load_b` directly, which would
+settle the coil question without a meter — but those bits come back *in a
+reply*, so they only mean anything once `comm` is non-zero. Fix `comm` first.
+
+### 9.5 What is now closed
+
+| §8.10 step | state |
+| --- | --- |
+| 1. bridge + `getStatus()` | **done** — bridge fitted, firmware reads it, answer is `comm = 0` |
+| 2. generation | **done** — `P20 GEN2`, off the body in `../results/pi5_des4_provision_20260914/pipette_label_p20_gen2.jpg` |
+| 3. `RUN_CURRENT_PERCENT` → 17 | **done** (and `HOLD_CURRENT_PERCENT` → 10, which is forced: the library maps hold independently of run, so 30 against 17 would draw more standing still than moving). Heat sink still to fit. |
+| 4. volume constants | **done** — `MAX_VOLUME` 20, `MIN_VOLUME` 1, `UL_TO_MM` 1.8 in firmware; `mm_to_ul: 1.0` in CubOS. `UL_TO_MM` is a starting estimate awaiting a gravimetric calibration. |
+| 5. sensed tip pickup | still open |
+
+One more thing settled in passing: the P300-shaped `ASPIRATE` behaviour is
+gone. `MIN_VOLUME` 5.0 was why `ASPIRATE 0.5` always landed at 35.45
+(0.5 clamped up to 5, then `36.0 − 5 × 0.1098`). With the p20 constants a
+commanded 20 µL is `ASPIRATE 20.0` → 36.0 mm → plunger at 0.0, full scale.

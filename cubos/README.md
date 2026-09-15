@@ -757,3 +757,58 @@ All ten settings in the connect-time critical GRBL set match the controller
 (`409 / 309 / 124`, `$20=1`), so a run will connect. Unchanged by any of this:
 the plunger still will not actuate — that fault is below CubOS, in the
 Arduino → TMC2209 → motor chain.
+
+## 2026-09-15 (later still) — campaign 26, the p20 firmware, and the TMC2209 finally answers
+
+Ben fitted a 10 kΩ bridge between A0 and A1, asked for the trio to be run, for
+the dead park position to go, and for the p20 constants to be set — then for the
+machine to be left alone until he says otherwise.
+
+**Run:** campaign 26, `21:51:38 → 21:56:41` UTC, **12/12**, `validate_setup`
+PASS, `--mock` 12/12, `passive_shadow` 0 interferences nominal and tip-stuck.
+Full write-up in
+[`results/pipette_test_20260915/`](results/pipette_test_20260915/README.md).
+
+**The headline.** The bridge is the right hardware change and was inert on its
+own — the firmware only ever wrote TMC2209 registers and never read one back, so
+campaign 26's plunger trace is byte-for-byte campaigns 77 and 83. Adding
+`CMD_PIPETTE_DRIVER_STATUS = 29` in the same reflash as the p20 constants got an
+answer, stable over five reads:
+
+```
+OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}       comm = 0
+```
+
+**The driver returns nothing.** So none of `setupMotor()`'s six register writes
+has ever landed, and the chip has been on power-on defaults throughout. That
+kills the §4 hypothesis in
+[`docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) — with
+serial mode never entered, the VREF pot is still in circuit rather than bypassed.
+The discriminator is holding torque by hand: none ⇒ no coil current (VM, VREF,
+coils, in that order); present ⇒ the UART path alone.
+
+**Firmware.** The board's flash was backed up first and proved byte-for-byte
+identical to a local build of upstream `228615b`, so the VCL image is a provably
+minimal delta; a rebuild elsewhere reproduces it bit-for-bit. `MAX_VOLUME` 300→20,
+`MIN_VOLUME` 5→1, `UL_TO_MM` 0.1098→1.8, `RUN_CURRENT_PERCENT` 50→17,
+`HOLD_CURRENT_PERCENT` 30→10, plus the new command. `STATUS` now reports
+`max_vol: 20.00`. Patch, hex, backup and restore recipe in
+[`firmware/`](firmware/README.md).
+
+Upstream `main` **does not compile** — a duplicate default argument on
+`mixInPlace`. The patch carries the one-line fix.
+
+**CubOS.** `p20-mm-to-ul-passthrough.patch`: `mm_to_ul` 0.025 → 1.0, so
+`volume_ul` stops being converted to mm on both sides. 2544 tests pass.
+`prime_position` / `blowout_position` / `drop_tip_position` are still
+placeholders (5/7/10 against the firmware's 36/44/55) and were deliberately left
+alone — they change real motion and were not asked for.
+
+**Config.** The capper's `park_position` is deleted; upstream `b39988b` ignores
+it and the clearance it used to give moved upward, not away. Rolling CubOS back
+to `cbc33dc` now needs it put back first.
+
+**Cameras.** 7 of 12 frames. `cam0_csi0` got all six; `cam1_csi1` timed out on
+five, most likely buffer contention on a 1 GB Pi 5 running two 4608×2592 sensors
+alongside CubOS. No camera failure touched the protocol — that rule held.
+`run_with_camera_capture.py` gained `--vflip`/`--hflip`.
