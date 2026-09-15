@@ -29,7 +29,7 @@ previous answer, so Q2 is not composed until Q1 returns.
    rigorously: ISO 9283 / ASME B89.4.22 pose-accuracy testing without a laser tracker,
    thermal drift protocols, reliability statistics and failure taxonomies for autonomous
    labs, existing manipulation benchmarks, venue strategy, and the minimum credible
-   paper. *(submitted, seeded by Q1's ranking)*
+   paper. **(returned — see `q2-metrology-and-reliability-methods/answer.md`)**
 3. **Q3 — custom gripper and end-effector design, plus generative CAD / generative systems
    design.** SOTA end effectors in lab automation (custom 3D-printed grippers, labware-specific
    jaws, compliant/underactuated fingers, suction/magnetic, tool changers at a 1.5 kg payload
