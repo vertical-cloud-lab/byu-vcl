@@ -59,6 +59,8 @@ def wait(slug: str, interval: int = 60, budget: int = 3300) -> None:
 
 
 def _dump(obj):
+    if isinstance(obj, (dict, list)):
+        return obj
     for attr in ("model_dump", "dict"):
         if hasattr(obj, attr):
             try:
@@ -68,27 +70,40 @@ def _dump(obj):
     return {k: v for k, v in vars(obj).items()} if hasattr(obj, "__dict__") else {"repr": repr(obj)}
 
 
+def _answer_obj(task):
+    """The full answer payload lives inside the environment frame, not on the task."""
+    ef = _dump(getattr(task, "environment_frame", None) or {})
+    try:
+        return ef["state"]["state"]["response"]["answer"]
+    except (KeyError, TypeError):
+        return {}
+
+
+# Keys of the Edison answer object written out verbatim as .md; the rest go to .json.
+_TEXT_KEYS = ("answer", "raw_answer", "formatted_answer", "references")
+
+
 def fetch(slug: str) -> None:
     d = OUT / slug
     task_id = json.loads((d / "_task_id.json").read_text())["task_id"]
     task = client().get_task(task_id=task_id, verbose=True)
     print("status:", task.status, flush=True)
 
-    for name in ("answer", "formatted_answer"):
-        val = getattr(task, name, None)
-        if val:
-            (d / f"{name}.md").write_text(str(val))
-            print("wrote", name, len(str(val)), flush=True)
-
     raw = _dump(task)
     (d / "task.json").write_text(json.dumps(raw, indent=2, default=str))
+    (d / "environment_frame.json").write_text(
+        json.dumps(_dump(getattr(task, "environment_frame", None)), indent=2, default=str)
+    )
 
-    # environment_frame / trajectory artifacts, when the API exposes them
-    for name in ("environment_frame", "trajectory", "steps", "metadata"):
-        val = getattr(task, name, None)
-        if val is not None:
-            (d / f"{name}.json").write_text(json.dumps(_dump(val), indent=2, default=str))
-            print("wrote", name, flush=True)
+    answer = _answer_obj(task)
+    for key, val in answer.items():
+        if key in ("id", "question"):
+            continue
+        if key in _TEXT_KEYS:
+            (d / f"{key}.md").write_text(str(val or ""))
+        else:
+            (d / f"{key}.json").write_text(json.dumps(val, indent=2, default=str))
+        print("wrote", key, flush=True)
     print("fetched ->", d, flush=True)
 
 

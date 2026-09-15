@@ -12,7 +12,8 @@ All traffic goes through `https://api.platform.edisonscientific.com` (the
 | Directory | Edison `task_id` | `job_name` | Status |
 |---|---|---|---|
 | `q1-sota-arms-in-sdls/` | `85b13938-c944-4f68-8dc8-f452a9a073a2` | `job-futurehouse-paperqa3-high` | **success** (34 min) |
-| `q2-metrology-and-reliability-methods/` | `cbb5a078-5411-4391-a29b-902196894bc5` | `job-futurehouse-paperqa3-high` | submitted 2026-09-08 17:15 UTC, polling |
+| `q2-metrology-and-reliability-methods/` | `cbb5a078-5411-4391-a29b-902196894bc5` | `job-futurehouse-paperqa3-high` | **success**, fetched 2026-09-15 |
+| `q3-grippers-and-end-effectors/` | `bccdc402-47d0-44c0-955c-85bca64f182d` | `job-futurehouse-paperqa3-high` | submitted 2026-09-15 08:55 UTC |
 
 The queries are deliberately **sequential**: each follow-up is written against the
 previous answer, so Q2 is not composed until Q1 returns.
@@ -29,7 +30,15 @@ previous answer, so Q2 is not composed until Q1 returns.
    thermal drift protocols, reliability statistics and failure taxonomies for autonomous
    labs, existing manipulation benchmarks, venue strategy, and the minimum credible
    paper. *(submitted, seeded by Q1's ranking)*
-3. **Q3–Q5 — remaining axes**, to be narrowed further: (a) transparent/specular labware pose estimation and
+3. **Q3 — custom gripper and end-effector design, plus generative CAD / generative systems
+   design.** SOTA end effectors in lab automation (custom 3D-printed grippers, labware-specific
+   jaws, compliant/underactuated fingers, suction/magnetic, tool changers at a 1.5 kg payload
+   budget, powder-specific tooling, force/tactile sensing on low-cost hardware, wrist-camera
+   placement), then a careful read on topology optimization / DfAM / LLM-driven CAD /
+   generative grasp synthesis / morphology co-design / layout synthesis — grounded against
+   `CADSmith` and against `powder-doser`'s in-house generative-CAD work. *(submitted, seeded by
+   Q1+Q2)*
+4. **Q4–Q5 — remaining axes**, to be narrowed further: (a) transparent/specular labware pose estimation and
    grasping for glass vials, quartz crucibles, and metal powder; (b) hand-eye calibration
    and closed-loop visual servoing accuracy achievable on a sub-$5k arm with a custom
    wrist camera; (c) an arm as the sample-exchange layer closing the loop on an existing

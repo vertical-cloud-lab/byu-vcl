@@ -94,3 +94,40 @@ SDL-specific angle on the last one is viable.
   metal powders, benchmarked against the 1.93 mg result.
 - **`caliber`** and the OT-2/`digital-wetlab` stack give a second workflow to measure
   MTBI on, with different failure modes.
+
+## What Q2 established (metrology and reliability methods)
+
+**Verifying the PiPER's claimed 0.1 mm repeatability needs a reference 3–5× better — so
+≤0.02–0.03 mm expanded uncertainty (k=2).** Very little cheap equipment clears that bar, and
+Q2 is blunt about which does:
+
+| Method | Cost | Expanded uncertainty (k≈2) | Verdict for a 0.1 mm claim |
+|---|---|---|---|
+| Three-probe LVDT / comparator kinematic nest | $1.5–8k | 0.003–0.02 mm per channel; 0.01–0.05 mm reconstructed | **primary instrument** — directly measures return-to-point scatter |
+| Laser tracker, rented | $1–3k/day | 0.006–0.03 mm | gold standard; 2–3 days covers a near-complete ISO 9283 campaign |
+| Dial indicator in a ballbar-style fixture | $0.3–3k | 0.005–0.03 mm per axis | good for repeatability/backlash, not full 6-D pose |
+| Photogrammetry, coded targets | $1–10k | 0.03–0.15 mm | secondary, for workspace maps |
+| OptiTrack/Vicon | $8–50k | 0.05–0.3 mm static | marginal — cannot certify 0.1 mm alone |
+| 3D-printed task board | $50–500 | 0.2–1 mm as printed | task success only; **0.1 mm insertion clearance is not 0.1 mm uncertainty** |
+| RealSense/ZED/Kinect | $0.25–2.5k | 1–5 mm commodity depth | inadequate for the claim |
+
+Recommended combination: an LVDT nest as the primary instrument plus 1–2 laser-tracker
+rental days for absolute accuracy across the workspace, everything validated against
+traceable gauge blocks.
+
+**The reliability sample sizes are the number to plan around.** With zero observed failures,
+a 95% one-sided lower bound needs n ≥ log(0.05)/log(p):
+
+- **118 operations** to support p ≥ 0.975 (Ada's level)
+- **1,497 operations** to support p ≥ 0.998 (the level an overnight campaign actually needs)
+
+Any observed failure pushes both up, so a publishable claim means **500–1,500 operations**.
+Report cause-specific MTBI via competing-risks survival analysis (Kaplan–Meier /
+Nelson–Aalen with right censoring), and use Weibull β to separate infant mortality (β < 1)
+from wear-out (β > 1).
+
+**Minimum credible paper, per Q2:** ISO 9283-aligned characterization at 5 poses and 2
+payloads with a documented thermal warm-up protocol and a real uncertainty budget, plus a
+≥500-cycle reliability campaign with structured failure logging. ~2–3 weeks of lab time and
+$5–10k of measurement equipment. It would be the first paper with both metrology and real
+MTBI for a low-cost arm in an SDL.
