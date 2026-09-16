@@ -1,10 +1,68 @@
 # Glovebox Options for Robotic Arm Integration
 
-Follow-up research to [`glovebox-options.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/8979061/glovebox-options.md) (added in [PR #78](https://github.com/vertical-cloud-lab/byu-vcl/pull/78)), narrowed to one question: **which gloveboxes can house a robotic arm without a custom build?**
+Follow-up research to [`glovebox-options.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/8979061/glovebox-options.md) (added in [PR #78](https://github.com/vertical-cloud-lab/byu-vcl/pull/78)), narrowed to two questions: **which gloveboxes can house a robotic arm without a custom build**, and **is any of it sold turnkey?**
 
 The earlier document optimized for a human working through glove ports, with the powder doser as the largest thing inside. This one assumes a robot arm is a first-class occupant of the box. That changes which specifications actually bind, and it changes the shortlist.
 
-Prices below were gathered on **2026-09-15**. See [How pricing was gathered](#how-pricing-was-gathered) for provenance and caveats.
+Prices below were gathered on **2026-09-15**, with a second pass on **2026-09-16** answering a follow-up question: *is there a turnkey system that advertises robotic integration, rather than a box you retrofit?* See [How pricing was gathered](#how-pricing-was-gathered) for provenance and caveats.
+
+The literature side of this question was answered separately by an Edison/PaperQA survey in [PR #78](https://github.com/vertical-cloud-lab/byu-vcl/pull/78) — see [`answer.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/answer.md), the [published-precedent table](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/artifact-00_robot-integrated-glovebox-platforms.md), and the [decision matrix](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/artifact-01_decision-matrix.md). That survey found **no paper anywhere that reports a feedthrough specification for a specific arm in a specific glovebox** — published robot-in-glovebox work is custom engineering every time. This document is the commercial counterpart: what can be *bought*.
+
+## Turnkey systems that advertise robotic integration
+
+**Short answer: yes — one vendor sells a catalogue of them, and its store data carries numbers. Everyone else advertises robot integration as a standing capability and quotes per project.**
+
+### The catalogue with numbers attached: MTI Corporation
+
+MTI ships complete robot-plus-glovebox platforms as single line items. These are not "gloveboxes that can take an arm" — the arm, the stations it serves, the PLC, and the purifier are one purchase.
+
+| System | Store-data price | What actually ships | Robot | Atmosphere |
+|---|---|---|---|---|
+| **[AM-SP02-GB — automated solid-phase synthesis *in a glovebox*](https://www.mtixtl.com/products/high-throughput-am-sp02-gb)** | **$428,571** | **Three-chamber glovebox** containing a 10-channel automatic powder doser, a 6-jar centrifugal dry mixer/ball mill (15 mL each), a vibrating station that moves mixed powder into the die, and an 8 T pellet press with 6 × Ø10 mm dies including automatic demolding; optional tube furnace on the left box for sintering | Arm moves the sample from station to station | Glovebox, sold for sulfide/halide electrolytes and other air-sensitive materials |
+| **[MSK-HTBA-D — 64-cell coin-cell assembly](https://www.mtixtl.com/products/msk-htba-d)** | **$399,985** | Dual-chamber glovebox, 8 × 8 = 64 loading stations, vision-based placement verification, peristaltic electrolyte injection, sealing, tray output, ~50 cells/hour. Main chamber 1950 × 1200 × 2050 mm; whole system 3950 mm wide; ~1.5 t | **3-axis (XYZ) arm with vacuum suction** | **< 1 ppm O₂ and H₂O** |
+| **[UHS-6 — ultrafast sintering with a robot arm in the glovebox](https://www.mtixtl.com/products/uhs6)** | **$185,000** | 2400 °C carbon-felt ultrafast sintering furnace (200 °C/s), automatic sample load/unload, the whole system inside a purifier glovebox | Arm loads and unloads samples | **< 1 ppm** |
+| **[AM-PD16R — 16-channel automated powder dispensing](https://www.mtixtl.com/products/am-pd16)** | **$149,985** | 16 × 500 mL stirred feed containers, 16 glass feeders, precision balance, 16-container tray; 10 mg–100 g, 0.1 mg resolution, ±1 mg accuracy; described as "compact, glovebox-friendly" | Arm moves each container to the balance and back | Enclosure **not** included |
+| **[KSL-AM-GB2 — automated dual furnace in a dual-chamber glovebox](https://www.mtixtl.com/products/ksl-am-gb2)** | **$111,985** | Two bottom-loading muffle furnaces (120 mm cube, 500–1700 °C), touchscreen temperature *and robot* control, 50 stored programs, data logging, DB9 port for robot operation, water-cooled gas filter | Arm loads and unloads both furnaces | **< 1 ppm**, purifier included; **optional air conditioning to hold the interior below 30 °C** |
+| [AM-PD6 — 6-channel powder dispensing](https://www.mtixtl.com/products/am-pd6) | $59,998 | Same architecture with 6 feeders; "glovebox-friendly" | Arm | Enclosure not included |
+| [AM-PS01 — autonomous powder-metallurgic sample prep with **closed-loop XRD**](https://www.mtixtl.com/products/amps01) | $1,655,000 | Robot-assisted loading and retrieval, pump-purge cycles, steady gas flow, heat/dwell/cool, with XRD feedback adjusting parameters run to run | Arm | Purge/flow atmosphere in the furnace, **not** a glovebox |
+| [AM-SP02 — autonomous solid-state materials synthesis](https://www.mtixtl.com/products/amsp02) | $1,150,000 | 6-powder dosing (±2 mg, 10 mg minimum), 6-station centrifugal mill at 2000 rpm, 8 T press with 12 dies, 1700 °C bottom-loading furnace | Arm | Open-lab base configuration; the `-GB` variant above is the glovebox one |
+
+> **How to read those numbers.** Every one of those pages renders **"Price: RFQ"**. The figures come from the store's own product JSON (`/products/<handle>.json`) — the same store-data channel that carries **$4,698** for the MTI VGB-1 elsewhere in this document. Treat them as a budget scale, not a quote. Two tells that the field is not curated on every SKU: `AM-SS01` (automated synthesis platform for solid-state reactions) carries **$0.00**, and `AMPA15` (15-channel pellet dosing) carries **$999,999,999,999**. MTI also runs a site-wide *"Tariff Caused Price Adjustment"* notice, so even a good number is a moving one.
+
+### MTI's own enclosures, from the same store data
+
+The platform prices set a ceiling; MTI's bare boxes set the floor, and one of them is architecturally interesting:
+
+| Glovebox | Store-data price | Chamber | Purifier |
+|---|---|---|---|
+| [VGB-6-LD](https://www.mtixtl.com/products/vgb6), single chamber, hinged window | $25,998 | — | < 1 ppm |
+| [VGB-6-II-LD](https://www.mtixtl.com/products/vgb-6-ii-ld), dual chamber | $39,998 | 2400 × 800 × 930 mm | < 1 ppm |
+| **[VGB8IILD](https://www.mtixtl.com/products/vgb8iild), integrated dual glovebox, 8 gloves** | **$65,996** | Two chambers of **1220 × 1000 × 900 mm each**, two large (Ø360 × 600 mm) and two small antechambers, **plus a Ø360 × 600 mm interconnection chamber**, two purifier sets, HEPA filtration > 0.3 µm | < 1 ppm per chamber |
+| [VGB-6-III-LD](https://www.mtixtl.com/products/vgb-6-iii-ld), triple chamber | $69,980 | — | < 1 ppm |
+
+**Two purifier chambers joined by a transfer chamber is the A-Lab GPSS double-glovebox architecture**, and the VGB8IILD is the only place in this search where that architecture has a number on it at all.
+
+### Vendors that advertise robot integration but quote only
+
+| Vendor | What they advertise | Status |
+|---|---|---|
+| **[Jacomex — "Robots for Glove Box"](https://www.jacomex.com/equipment/robots-glove-box/)** | A standing equipment category for robot integration in gloveboxes and isolators, spanning battery, nuclear, OLED/OPV, pharmaceutical and research | Listed **"on demand"** — a named product line, no models, no prices |
+| **[MBraun — "Engineering & Robotics"](https://www.mbraun.com/us/products/engineering-robotics.html)** | A top-level product category on the US site: semi-automation for process development through full automation for production, cleanroom Class 2 with laminar flow, tact-time expandability, tracking and tracing | Custom engineering; no named robot products, no prices |
+| **[Inert — turnkey nuclear glovebox and isolator solutions](https://www.inertcorp.com/system-applications-overview/inert-solutions-nuclear/)** | Explicitly "turnkey" project delivery, and marketing copy that covers enclosing customer robotic equipment; [PureLab HE](https://www.inertcorp.com/gloveboxes/purelab/) is the modular platform (Siemens SIMATIC S7-1200 PLC + HMI) | RFQ |
+| **[Allum Corp — Robot-Integrated Glovebox](https://www.allumcorp.com/products/robot-integrated-glovebox/)** | A 3-axis arm that **divides, mixes and weighs** — the closest catalogue match anywhere to our powder-dosing workflow | Storefront shows "out of stock" at $0.00 with no specifications published. RFQ, and a thin page to RFQ from |
+| **[Labman Automation — formulation system with glovebox](https://www.labmanautomation.com/portfolio/custom-system/formulation-system-with-glovebox/)** | HEPA-extracted glovebox enclosure, seven dispenser types (powders, liquids, resins, pastes, slurries) at ±1 mg to ±50 mg, **two robot arms plus robotic axes** moving pots between modules | Bespoke turnkey. Labman built A-Lab's precursor dosing station, so this is the integrator *behind* the published precedent |
+| **[Chemspeed](https://www.chemspeed.com/configurable-solutions/)** | SWING XL / ISYNTH workflows configured inside two-chamber gloveboxes: solids and liquids dispensing, capping and uncapping, shear mixing, centrifugation, all under inert atmosphere | Modular-to-turnkey, RFQ, and the published FAU precedent ([Salaheldin *et al.*](https://doi.org/10.1016/j.cej.2017.02.154)) is a Chemspeed Swing XL inside an MBraun box |
+| **[Stäubli Stericlean / Stericlean+](https://www.staubli.com/global/en/robotics/products/industrial-robots/pharmaceutical/stericlean-plus.html)** | Not a glovebox — the **arm** built to live inside a sealed enclosure: wiring and pneumatics encapsulated in a hollow wrist, sealed construction, special surface coatings, developed with isolator maker SKAN and documented for qualification | The answer to "is any arm actually *designed* for this?" is yes, and it comes from pharma. It is validated against H₂O₂ decontamination, **not** dry argon — that still has to be asked. **Caveat:** `staubli.com` returned HTTP 403 to both the runner and the Pi, so this row is from vendor summaries rather than a direct read of the page |
+
+**Correction to the first draft of this document.** Etelux's ["robotic arm inside a glove box"](https://www.etelux-glovebox.com/robotic-arm-inside-a-glove-box/) page, fetched in full from the Pi, is a **marketing article**, not a product listing: it argues the general case for arms in gloveboxes and then describes the Chinese space station's manipulator. Their product navigation carries no robot SKU. Etelux belongs on the RFQ list with everyone else rather than ahead of it, and the earlier claim that they are "the only vendor that advertises robotic arm integration as a product" was wrong — MTI does, with prices; Jacomex does, by name.
+
+### What turnkey buys, and what it costs
+
+- **It bundles exactly the parts this document calls hard.** Feedthroughs, floor mounting, and the thermal path stop being our problem. KSL-AM-GB2's *optional air conditioning to keep the box under 30 °C* is the vendor-catalogue version of A-Lab GPSS's 24 °C ± 1 °C — independent confirmation that cooling a sealed box with a robot in it is a designed subsystem, not a detail.
+- **It bundles a particulate answer too:** HEPA filtration down to 0.3 µm inside the VGB enclosures, and a water-cooled gas filter ahead of the purifier on KSL-AM-GB2.
+- **It does not bundle transparency.** No turnkey vendor found publishes the arm's make, model, lubricant, or outgassing rate. The only arm MTI lists on its own — the [MTI-MG400](https://www.mtixtl.com/products/mtimg400) desktop cobot, 4 axes, 750 g maximum payload, 440 mm reach, rated 0–40 °C, and marked *"not sold separately, only for MTI automated kit"* — suggests these platforms are built around **small desktop arms, not UR5e-class cobots**. Reach and payload must be checked against the actual powder doser before assuming a turnkey platform can hold our workflow.
+- **The price gap is the decision.** The cheapest turnkey robot-inside-a-<1 ppm-box with any published figure is **$111,985**, and its job is sintering rather than dosing. The one that matches the VCL workflow — dose, mix, press, air-sensitive — is **$428,571**. The build-it-ourselves scenarios later in this document land at **$21K–$35K**. Turnkey is roughly **4–20× the parts cost**, and what the premium buys is integration, warranty, and someone else owning the question of whether the arm survives in argon.
+- **One architectural tension is worth naming.** Every turnkey system here puts the arm **inside** the box, while the literature survey in [PR #78](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/artifact-01_decision-matrix.md) concluded that the lowest-risk architecture is the arm **outside**, with an automated antechamber transfer. The vendors answer the contamination objection with filtration and optional cooling rather than by moving the arm out. Both positions can hold: a vendor is selling a closed system it has validated as a whole, while the survey was reasoning about a lab assembling one from parts and servicing it itself.
 
 ## Why this is a different specification
 
@@ -35,7 +93,7 @@ That layout rule should be treated as a hard constraint on any box we buy: **the
 
 Other relevant precedent:
 
-- **[Etelux](https://www.etelux-glovebox.com/robotic-arm-inside-a-glove-box/)** sells robotic-arm-in-glovebox as a catalogue solution
+- **[MTI](https://www.mtixtl.com/products/high-throughput-am-sp02-gb)** sells the closest commercial equivalent of A-Lab GPSS as a catalogue item — a three-chamber glovebox with an arm, doser, mill and press inside (see the [turnkey section](#turnkey-systems-that-advertise-robotic-integration))
 - **[Allum Corp](https://www.allumcorp.com/products/robot-integrated-glovebox/)** offers a robot-integrated glovebox with a 3-axis arm for dividing, mixing, and weighing — very close to our powder-dosing use case
 - Nuclear glovebox robotics is a mature field worth borrowing from: the [Sellafield robotic arm retrofit](https://www.world-nuclear-news.org/articles/robotic-arm-improves-glovebox-safety-at-sellafield), AtkinsRéalis' **ARGO** drop-in arm for *existing* gloveboxes, and a Los Alamos-partnered UR5 integration. The retrofit path — buy a good box, add the arm later — is a proven pattern, not a compromise
 
@@ -46,10 +104,15 @@ Vendor and reseller pages routinely block GitHub Actions runners. Fetching the s
 | URL | From CI runner | From the Pi |
 |---|---|---|
 | `terrauniversal.com/glove-boxes-isolators.php` | **HTTP 403** | **HTTP 200** |
+| `etelux-glovebox.com/robotic-arm-inside-a-glove-box/` | **HTTP 403** | **HTTP 200** (read in full from the Pi — it is an article, not a product) |
 | `msesupplies.com/...` | HTTP 200 | HTTP 200 |
+| `mtixtl.com/...` | HTTP 200 | — |
+| `allumcorp.com/products/robot-integrated-glovebox/` | HTTP 200 | — |
+| `jacomex.com`, `mbraun.com`, `labmanautomation.com`, `chemspeed.com` | HTTP 200 | — |
+| `staubli.com/...stericlean-plus.html` | **HTTP 403** | **HTTP 403** — blocked from both; described from vendor summaries, not a direct read |
 | `robotshop.com/...` | — | HTTP 403 (Cloudflare — blocked from both) |
 
-Several vendors also show "Price: RFQ" in the page body while carrying a real number in the structured product data. Those are reported below as store-data prices and flagged as such — treat them as indicative, not as a quote.
+Several vendors also show "Price: RFQ" in the page body while carrying a real number in the structured product data. Those are reported below as store-data prices and flagged as such — treat them as indicative, not as a quote. **MTI's entire automation catalogue behaves this way**: every platform page renders `Price: RFQ`, while `https://www.mtixtl.com/products/<handle>.json` returns a figure. Two SKUs in that store carry obvious placeholders (`$0.00`, `$999,999,999,999`), which is the reason to treat the rest as a budget scale rather than a price list.
 
 **Everything below is a list/asking price, not a quote.** Academic discounts, freight, and installation are not included.
 
@@ -97,8 +160,12 @@ VTI's Universal series states attainable purity of **< 1 ppm O₂ and < 1 ppm H�
 | **[LC Technologies](https://lctechinc.com/)** | LC-100 / LC-180 / LC-200 | **Already quoting us** (~$34K–$54K with the 25% academic discount) and recommended by Drs. Porter and Rappleye. No published robot-integration offering — but a US manufacturer mid-quote is the cheapest possible place to ask for extra KF flanges and a removable panel. **Ask before comparing anything else** |
 | **[Inert Corp](https://www.inertcorp.com/gloveboxes/purelab/)** | PureLab HE (2GB/3GB/4GB) | Explicitly "fully automated platform allowing for easy integration of OEM equipment"; modular; Siemens SIMATIC S7-1200 PLC + HMI. Internal dims: **2GB 1250 × 780 × 900 mm**, **3GB 1500 × 780 × 900 mm** |
 | **[MBraun](https://www.mbraun.com/products/glovebox-workstations/unilab-pro-glovebox/)** | UNIlab Pro / LABmaster Pro | Modular, 2/3/4 gloves, single or double sided, housings combinable; markets integration with third-party devices and fully automated processing lines |
-| **[Etelux](https://www.etelux-glovebox.com/robotic-arm-inside-a-glove-box/)** | Standard / Lab2000 series | The only vendor found that advertises **robotic arm integration as a product**. Lab2000 comes in 1200/1500/1800/2400 mm. Chinese-made, typically quotes well under MBraun — useful as a negotiating lever |
+| **[Etelux](https://www.etelux-glovebox.com/)** | Standard / Lab2000 series | Lab2000 comes in 1200/1500/1800/2400 mm. Chinese-made, typically quotes well under MBraun — useful as a negotiating lever. Their "robotic arm inside a glove box" page is **an article, not a product** (see the [turnkey section](#turnkey-systems-that-advertise-robotic-integration)) |
 | **[Allum Corp](https://www.allumcorp.com/products/robot-integrated-glovebox/)** | Robot-integrated glovebox | 3-axis arm that divides, mixes, and weighs — closest catalogue match to powder dosing. Storefront carries no price (structured data shows `0`); RFQ only |
+| **[Jacomex](https://www.jacomex.com/equipment/robots-glove-box/)** | "Robots for Glove Box" | A named equipment line for robot integration, listed "on demand". French manufacturer, strong nuclear and battery history |
+| **[Labman](https://www.labmanautomation.com/portfolio/custom-system/formulation-system-with-glovebox/)** | Formulation system with glovebox | Two robot arms, seven dispenser types, ±1 mg dosing inside a HEPA-extracted glovebox. The integrator that built A-Lab's precursor station |
+| **[Chemspeed](https://www.chemspeed.com/configurable-solutions/)** | SWING XL / ISYNTH | Automation platforms configured to run inside two-chamber gloveboxes under fully inert atmosphere |
+| **[MTI](https://www.mtixtl.com/products/high-throughput-am-sp02-gb)** | AM-SP02-GB, MSK-HTBA-D, UHS-6, KSL-AM-GB2 | **The only vendor with catalogue robot-in-glovebox SKUs and numbers in its store data** — $111,985 to $428,571. Full table in the [turnkey section](#turnkey-systems-that-advertise-robotic-integration) |
 
 ## Robot arms: real prices and glovebox suitability
 
@@ -126,24 +193,25 @@ VTI's Universal series states attainable purity of **< 1 ppm O₂ and < 1 ppm H�
 
 Enclosure + arm only. Freight, installation, tooling, and grippers excluded.
 
-| | Scenario 1 — Staged | Scenario 2 — Used, purifier-equipped | Scenario 3 — New, turnkey |
-|---|---|---|---|
-| Box | MSE PRO GBV-3 + frame + pump | VTI Universal 1800/750/900 (item 25-319, 20 × KF-40) | LC Technologies LC-100/LC-180, robot options added |
-| Box cost | **$13,168.85** (verified list) | **RFQ** — estimate $15K–$25K by comparison to MB200MOD ($12.3K) and PurgeLab 1250 ($40K) | **~$34K–$54K** (existing quotes, 25% academic discount) |
-| Arm | igus ReBeL — **$7,499** | UFACTORY xArm 6 — **$9,500** | UR5e-class — **$35K–$48K** |
-| Subtotal | **~$20.7K** | **~$25K–$35K** (est.) | **~$70K–$100K** (est.) |
-| Atmosphere | Purge only, 100s of ppm until a purifier is added | **< 1 ppm O₂ / < 1 ppm H₂O** | **< 1 ppm O₂ / H₂O** |
-| Feedthroughs | Would need to be added | **Already present (20 × KF-40)** | Spec them into the quote |
-| Warranty | New | 90 days on several listings | 2 yr + free install/training |
-| Main risk | No purifier; ppm-level work needs a later upgrade | Condition unknown until inspected; price unknown until RFQ | Cost |
+| | Scenario 1 — Staged | Scenario 2 — Used, purifier-equipped | Scenario 3 — New box, arm added | Scenario 4 — **Turnkey robot platform** |
+|---|---|---|---|---|
+| Box | MSE PRO GBV-3 + frame + pump | VTI Universal 1800/750/900 (item 25-319, 20 × KF-40) | LC Technologies LC-100/LC-180, robot options added | MTI **AM-SP02-GB** (arm + doser + mill + press in a 3-chamber box); cheap entry is **KSL-AM-GB2** (arm + 2 furnaces in a dual-chamber box) |
+| Box cost | **$13,168.85** (verified list) | **RFQ** — estimate $15K–$25K by comparison to MB200MOD ($12.3K) and PurgeLab 1250 ($40K) | **~$34K–$54K** (existing quotes, 25% academic discount) | **$428,571** store data; **$111,985** for KSL-AM-GB2 |
+| Arm | igus ReBeL — **$7,499** | UFACTORY xArm 6 — **$9,500** | UR5e-class — **$35K–$48K** | **Included** — make and model not published; MTI's listed arm is MG400-class (4-axis, 750 g, 440 mm) |
+| Subtotal | **~$20.7K** | **~$25K–$35K** (est.) | **~$70K–$100K** (est.) | **~$112K–$429K** (store data) |
+| Atmosphere | Purge only, 100s of ppm until a purifier is added | **< 1 ppm O₂ / < 1 ppm H₂O** | **< 1 ppm O₂ / H₂O** | **< 1 ppm O₂ / H₂O**, purifier and HEPA included; AC option on KSL-AM-GB2 |
+| Feedthroughs | Would need to be added | **Already present (20 × KF-40)** | Spec them into the quote | Not our problem — integrated |
+| Warranty | New | 90 days on several listings | 2 yr + free install/training | 1 yr stated on MTI's dosing SKUs; confirm for platforms |
+| Main risk | No purifier; ppm-level work needs a later upgrade | Condition unknown until inspected; price unknown until RFQ | Cost | Price is store data, not a quote; desktop-class arm may not reach our doser; imported, under an active tariff-adjustment notice; least flexible if the workflow changes |
 
 ## Recommendation
 
-1. **Ask LC Technologies first, this week.** We are mid-quote with a US manufacturer that BYU faculty already recommend. Adding **extra KF-40 feedthroughs and a removable side panel** to an LC-100/LC-180 quote is a cheap question with a potentially decisive answer — a robot-ready new box with a 2-year warranty and free installation would collapse most of the trade-offs in this document. Nothing else should be decided before that answer arrives.
-2. **In parallel, RFQ UsedGlovebox.com items 25-319 and 25-322.** The 1800 mm VTI with **20 × KF-40 feedthroughs** is the best-matched hardware found anywhere in this search, purifier included and < 1 ppm rated. Its only unknown is price. Item 25-322 (2440 mm) is the one that comfortably fits an arm, the doser, and a linear rail in the A-Lab pattern.
-3. **Treat the MSE PRO GBV-3 at $13,168.85 as the fallback, not the target.** It is the cheapest credible *stainless* enclosure with a door an arm fits through, and it is groundable — a real advantage over the fiberglass-lined Labconco path for Al/Mg work. But it ships without a purifier, so it buys a robot cell at purge-level atmosphere, and the ppm-grade upgrade is a separate later purchase.
-4. **Start with the igus ReBeL at $7,499 for arm-side de-risking.** Grease-free polymer gearing is the lowest-contamination option available, an ESD variant exists for the powder hazard, and at 10–20% of a UR5e the cost of learning that a sealed argon box needs more thermal management than expected is small. Move up to an xArm 6 or UR-class arm once the enclosure and thermal design are proven. If we instead want to replicate A-Lab GPSS directly, the UR5e is the arm to match — and its discontinuation means used units should be tracked.
-5. **Do not put a robot in an acrylic box.** The Cleatech and MSE acrylic options remain fine for human powder storage; they are groundable by no one, and a moving arm generating static next to Al/Mg powder is the specific scenario NFPA 484 exists for.
+1. **Ask LC Technologies first, this week.** We are mid-quote with a US manufacturer that BYU faculty already recommend. Adding **extra KF-40 feedthroughs and a removable side panel** to an LC-100/LC-180 quote is a cheap question with a potentially decisive answer — a robot-ready new box with a 2-year warranty and free installation would collapse most of the trade-offs in this document. Nothing else should be decided before that answer arrives. Sharpen the ask with what we now know exists: *"MTI sells a three-chamber glovebox with a robot arm, doser, mill and press integrated — can you quote something in that shape, or a box prepared for it?"*
+2. **Get a real quote from MTI on AM-SP02-GB and KSL-AM-GB2.** They are the only vendor found that sells robot-in-glovebox as a catalogue item, and their store data says **$428,571** and **$111,985** — but both pages display `Price: RFQ`, so those numbers are indicative only and the quote is the whole point. Ask what arm is inside, whether the air-conditioning option extends to the platform SKUs, and what the workflow limits are for Al/Mg/Si powders rather than sulfide electrolytes. **This is the single cheapest way to find out what a turnkey system really costs**, and it prices the alternative to everything else in this document.
+3. **In parallel, RFQ UsedGlovebox.com items 25-319 and 25-322.** The 1800 mm VTI with **20 × KF-40 feedthroughs** is the best-matched hardware found anywhere in this search, purifier included and < 1 ppm rated. Its only unknown is price. Item 25-322 (2440 mm) is the one that comfortably fits an arm, the doser, and a linear rail in the A-Lab pattern.
+4. **Treat the MSE PRO GBV-3 at $13,168.85 as the fallback, not the target.** It is the cheapest credible *stainless* enclosure with a door an arm fits through, and it is groundable — a real advantage over the fiberglass-lined Labconco path for Al/Mg work. But it ships without a purifier, so it buys a robot cell at purge-level atmosphere, and the ppm-grade upgrade is a separate later purchase.
+5. **Start with the igus ReBeL at $7,499 for arm-side de-risking.** Grease-free polymer gearing is the lowest-contamination option available, an ESD variant exists for the powder hazard, and at 10–20% of a UR5e the cost of learning that a sealed argon box needs more thermal management than expected is small. Move up to an xArm 6 or UR-class arm once the enclosure and thermal design are proven. If we instead want to replicate A-Lab GPSS directly, the UR5e is the arm to match — and its discontinuation means used units should be tracked.
+6. **Do not put a robot in an acrylic box.** The Cleatech and MSE acrylic options remain fine for human powder storage; they are groundable by no one, and a moving arm generating static next to Al/Mg powder is the specific scenario NFPA 484 exists for.
 
 ## Questions to put to vendors
 
@@ -153,6 +221,16 @@ Enclosure + arm only. Freight, installation, tooling, and grippers excluded.
 - What is the floor load rating, and can it take bolt-down mounting?
 - Is a chiller or air-conditioning option offered for continuous internal heat load?
 - Have you supplied a box with a customer-installed robot before, and what did it need?
+
+**To turnkey platform vendors (MTI first, then Jacomex, Labman, Chemspeed, Allum):**
+- Which arm is inside — make, model, number of axes, payload, reach — and who supports it?
+- What lubricant does it use, and has the platform been run at < 1 ppm O₂/H₂O with that arm for an extended period?
+- Is the platform validated for **reactive metal powders** (Al, Mg, Si), or only for the electrolyte chemistries in the marketing copy? What grounding and ESD provisions exist inside the box?
+- Does the quoted price include the glovebox, purifier, analyzers, pump, installation, and training, or are those separate line items?
+- Is the air-conditioning / interior-cooling option available on this SKU, and what interior temperature does it hold under continuous robot duty?
+- Can the platform be **reprogrammed for our own workflow**, or is the sequence fixed in the delivered PLC program? Who can modify it later, and at what cost?
+- What is the warranty, what is the service response model in the US, and what are the lead time and crated dimensions?
+- For imported systems: how is the current tariff adjustment applied to the quoted figure, and for how long is the quote valid?
 
 **To used-box sellers (items 25-319, 25-320, 25-322):**
 - Price, and what is included (pump, gloves, sensors, purifier media age)
@@ -171,6 +249,9 @@ Enclosure + arm only. Freight, installation, tooling, and grippers excluded.
 
 ## Next steps
 
+- [ ] **RFQ MTI on AM-SP02-GB and KSL-AM-GB2** — the only catalogue robot-in-glovebox systems found, and the only way to convert store data ($428,571 / $111,985) into a real number
+- [ ] RFQ **Jacomex** ("Robots for Glove Box") and **Labman** (formulation system with glovebox) — both advertise the capability by name and neither publishes anything
+- [ ] Decide explicitly whether a turnkey platform at **4–20× the parts cost** is worth the integration risk it removes, before spending more time on either path
 - [ ] Ask LC Technologies about feedthroughs, removable panels, floor load rating, and thermal options on the LC-100/LC-180 quotes already in flight
 - [ ] RFQ UsedGlovebox.com items **25-319** (1800 mm, 20 × KF-40) and **25-322** (2440 mm) — the only real unknown on these is price
 - [ ] Measure CB154: door width, ceiling height, and available floor footprint, against an 1800 mm and a 2440 mm box ([cb154-annotated.pdf](https://github.com/vertical-cloud-lab/byu-vcl/blob/e127103/cb154-annotated.pdf) is in this repo)
@@ -181,7 +262,11 @@ Enclosure + arm only. Freight, installation, tooling, and grippers excluded.
 
 ## Sources
 
-Glovebox and automation: [A-Lab GPSS (arXiv 2604.11957)](https://arxiv.org/abs/2604.11957) · [Etelux robotic arm in a glovebox](https://www.etelux-glovebox.com/robotic-arm-inside-a-glove-box/) · [Allum Corp robot-integrated glovebox](https://www.allumcorp.com/products/robot-integrated-glovebox/) · [Inert PureLab HE](https://www.inertcorp.com/gloveboxes/purelab/) · [MBraun UNIlab Pro](https://www.mbraun.com/products/glovebox-workstations/unilab-pro-glovebox/) · [LC Technologies](https://lctechinc.com/) · [Sellafield robotic arm retrofit](https://www.world-nuclear-news.org/articles/robotic-arm-improves-glovebox-safety-at-sellafield)
+Glovebox and automation: [A-Lab GPSS (arXiv 2604.11957)](https://arxiv.org/abs/2604.11957) · [Etelux robotic arm in a glovebox (article, not a product)](https://www.etelux-glovebox.com/robotic-arm-inside-a-glove-box/) · [Allum Corp robot-integrated glovebox](https://www.allumcorp.com/products/robot-integrated-glovebox/) · [Inert PureLab HE](https://www.inertcorp.com/gloveboxes/purelab/) · [MBraun UNIlab Pro](https://www.mbraun.com/products/glovebox-workstations/unilab-pro-glovebox/) · [LC Technologies](https://lctechinc.com/) · [Sellafield robotic arm retrofit](https://www.world-nuclear-news.org/articles/robotic-arm-improves-glovebox-safety-at-sellafield)
+
+Turnkey robot-integrated systems: [MTI AM-SP02-GB (glovebox synthesis platform)](https://www.mtixtl.com/products/high-throughput-am-sp02-gb) · [MTI MSK-HTBA-D (coin cell, dual-chamber glovebox)](https://www.mtixtl.com/products/msk-htba-d) · [MTI UHS-6 (sintering with arm in glovebox)](https://www.mtixtl.com/products/uhs6) · [MTI KSL-AM-GB2 (dual furnace, dual-chamber glovebox)](https://www.mtixtl.com/products/ksl-am-gb2) · [MTI AM-PD16R (16-channel powder dispensing)](https://www.mtixtl.com/products/am-pd16) · [MTI VGB8IILD (integrated dual glovebox)](https://www.mtixtl.com/products/vgb8iild) · [MTI-MG400 desktop cobot](https://www.mtixtl.com/products/mtimg400) · [Jacomex robots for glove box](https://www.jacomex.com/equipment/robots-glove-box/) · [MBraun Engineering & Robotics](https://www.mbraun.com/us/products/engineering-robotics.html) · [Inert turnkey nuclear solutions](https://www.inertcorp.com/system-applications-overview/inert-solutions-nuclear/) · [Labman formulation system with glovebox](https://www.labmanautomation.com/portfolio/custom-system/formulation-system-with-glovebox/) · [Chemspeed configurable solutions](https://www.chemspeed.com/configurable-solutions/) · [Stäubli Stericlean+ for isolators](https://www.staubli.com/global/en/robotics/products/industrial-robots/pharmaceutical/stericlean-plus.html)
+
+Literature survey (PR #78): [Edison answer](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/answer.md) · [published-precedent table](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/artifact-00_robot-integrated-glovebox-platforms.md) · [decision matrix](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/artifact-01_decision-matrix.md) · [references](https://github.com/vertical-cloud-lab/byu-vcl/blob/2aa265b/outputs/edison/glovebox-robot-arm-integration/references.md)
 
 Pricing: [UsedGlovebox.com inventory](https://usedglovebox.com/gloveboxes) · [MSE PRO GBV-3](https://www.msesupplies.com/products/mse-pro-gbv-3-798l-stainless-steel-vacuum-glove-box) · [MSE PRO glove boxes](https://www.msesupplies.com/collections/mse-pro-glove-boxes) · [Cleatech vacuum glovebox](https://www.cleatech.com/product/vacuum-glovebox-with-airlock/) · [MTI VGB-1](https://www.mtixtl.com/products/vgb1) · [LabX PurgeLab 1250](https://www.labx.com/item/innovative-technology-purgelab-1250-glove-box/DIS-101429-1098696)
 
