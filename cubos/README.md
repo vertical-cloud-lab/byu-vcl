@@ -812,3 +812,55 @@ to `cbc33dc` now needs it put back first.
 five, most likely buffer contention on a 1 GB Pi 5 running two 4608×2592 sensors
 alongside CubOS. No camera failure touched the protocol — that rule held.
 `run_with_camera_capture.py` gained `--vflip`/`--hflip`.
+
+## 2026-09-16 — campaign 36: 11 of 12 steps, then the closing `home` failed
+
+Requested: run the trio again with `RUN_CURRENT_PERCENT` at 17. Full write-up in
+[`results/pipette_test_20260916/`](results/pipette_test_20260916/README.md).
+
+**The current change is inert.** The 17 is in the flashed image (`STATUS` returns
+`max_vol: 20.00`, so the VCL p20 build is unambiguously live), but
+`setRunCurrent()` is a UART register write and the driver still answers `comm = 0`
+— no reply at all. The chip is on power-on defaults with the VREF pot in charge,
+exactly as it was at 50, so this run is electrically identical to campaign 26.
+Note `flags = 0` in that reply is **not** "no faults": `getDriverDiagnostics()`
+only reads the status register when `comm > 0`, so the `open_load_a/b` coil bits
+carry no information yet.
+
+🔴 **The closing `home` (step 11) failed and the machine was left in `Alarm`.**
+GRBL reports `Pn:X` — the X limit switch asserted — persistently, where the same
+read before the run carried no `Pn:` field at all. Homing alarmed on all five
+attempts. Reading it against `$23=0` (home to max) and stock GRBL's cycle order:
+Z homed and pulled off 3 mm, X reached its switch and is still holding it, and
+**Y never reached its own** — GRBL aborts once an axis exceeds `1.5 × $131` =
+463 mm, ~28 s at `$25`, which fits the observed ~41 s attempts.
+
+This is the first homing failure ever recorded on this Pi; the opening `home` of
+the *same run* succeeded 2.5 minutes earlier. The protocol only visits deck
+x 154–284, y 13–60 — `home` is the only command that drives to the far corner
+(409, 309), which is why 11 steps of normal motion can pass and the closing home
+still fail. Two candidate obstructions are in the camera frames and want ruling
+out first: the p20 is **on the bench, tethered into the moving head by its
+FC-10P ribbon** (its body reads `P20 GEN2` in `step10_cap__cam0_csi0.jpg`), and a
+hand was in the work area. `Alarm` is the safe state, so it was left there rather
+than driving Y into whatever stopped it a sixth time.
+
+Everything else was left clean: both caps returned by the protocol's own `cap`
+steps, electromagnet off, cap sensor clear, both ports free.
+
+**The volume chain now carries real microlitres.** `mm_to_ul: 1.0` + `UL_TO_MM
+1.8` + `MIN_VOLUME 1.0` mean CubOS sends `ASPIRATE 20.0` and the firmware echoes
+`v:[20.00, 36.00]` — where every earlier trace sent `0.5`, had it clamped up to
+the P300's `MIN_VOLUME 5.0`, and landed at 35.45. The 36.00 is `PRIME_POSITION`
+and is the plunger limit switch, not a conversion error: `aspirate()` drives down
+to 36.0 first, then *up* to 0.0, and upward strokes are still refused.
+
+**Cameras: 10 of 10 frames, all under 0.7 s** — against 7 of 12 with five 20 s
+timeouts last time. `cam1_csi1` frames are committed **cropped**: that camera
+looks across the bench into the room and a lab member is in frame in every shot.
+
+One incidental find: `_best_effort_retract_to_safe_z()` still raises
+`KeyError: "Unknown instrument 'PawduinoCapper'"` at `496819c` — it passes an
+instrument object where a name is expected, so the outer safety retract is dead
+code upstream. It did not matter here (the failing step was `home`), but it is
+worth filing.
