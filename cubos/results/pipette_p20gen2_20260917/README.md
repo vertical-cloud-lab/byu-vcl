@@ -236,3 +236,43 @@ unlocks and homes.
 
 The built image is `cubos/firmware/panda_vcl_p20gen2_20260917.hex`. It has
 **not** been programmed onto the board.
+
+---
+
+## Addendum, same day, later: the link recovered on a USB replug
+
+Both `/dev/ttyACM0` and `/dev/ttyUSB0` re-enumerated at **16:45 lab-local**
+and a read-only probe straight afterwards returned **8 clean `STATUS`
+round-trips out of 8**, against 0 of 25 above:
+
+```
+banner: b'OK:Ready\r\n'
+  [0..7] OK  dt=0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+```
+
+The first of the four candidate causes listed above — *unplug and replug the
+USB cable; a `USBDEVFS_RESET` from the Pi is not a power cycle, since neither
+the 16U2 nor the 328P loses state* — was the fix.
+
+`max_vol: 20.00` confirms the **2026-09-15** image is still running, so the
+P20 GEN2 image built here was never flashed. **The reflash and the trio are
+both unblocked**, and neither was done: the P20 GEN2 plunger planes move
+`prime`/`blowout`/`drop_tip` by 8–9 mm and they are sent as absolute targets,
+so that is a real motion change and wants an explicit go-ahead.
+
+`CMD 29` still reports `comm = 0` — expected, and still uninformative: the
+running image does not carry the SoftwareSerial read fix, so the read cannot
+succeed whatever the wiring does.
+
+Machine state at the end of the check, all read-only:
+
+| | |
+|---|---|
+| GRBL | `<Alarm\|WPos:409,309,124\|Pn:X>` — the expected resting state (`$22=1` boots into Alarm; `Pn:X` is the carriage parked on X's max switch with `$23=0`) |
+| Cap sensor | `OK:{"value1":0}` — nothing held at the head |
+| Electromagnet | off — `CMD_EMAG_OFF` confirmed |
+| Plunger | `homed: 0`, `pos: 0.00` — **not actuated**, no travel accumulated |
+| Ports | both free before and after |
+
+See `cubos/docs/opentrons-pipette-wiring.md` §11 for the `F`-LED and
+current-pot findings that came out of the same exchange.

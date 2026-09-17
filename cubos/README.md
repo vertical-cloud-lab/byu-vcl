@@ -940,3 +940,39 @@ One P20 GEN2 number was deliberately **not** propagated: Opentrons implies a
 **35.0 mm** Ben measured and that every piece of validated tipped Z geometry on
 this branch depends on. A caliper check is worth doing, but it is not a
 one-line change.
+
+## 2026-09-17 (later) — the `F` light is a direction indicator; the serial link came back
+
+Ben asked three bench questions on PR #171. Answers, with the derivations in
+[`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §11:
+
+- **`F` is *Forward*, not *Fault*.** The Adafruit 6121 carries three LEDs and
+  all three are on logic pins the Arduino drives: green `F` and red `B` on
+  `DIR`, yellow `S` on `STEP`. `DIAG` — the pin that would report a short, an
+  open load or a thermal shutdown — has no LED and no wire, so **this board
+  cannot show a driver fault at all.** The green light blinking bright/dim was
+  almost certainly the `avrdude` attempts resetting the ATmega328P: the
+  bootloader leaves `A3` floating (dim) and `setupPipette()` drives it LOW
+  (bright), one transition per reset. What the LEDs *do* give for free is the
+  commanded direction, which makes the long-open "does `HOME` seek toward the
+  switch?" question answerable by eye.
+- **The current pot is eliminated as a suspect, and should be left alone for
+  now.** It is fully clockwise — Adafruit's ~2 A maximum — and `i_scale_analog`
+  is still 1, so the pot is the *only* thing setting coil current. Maximum pot
+  with zero holding torque means VREF is zero, which means `5VOUT` is dead,
+  which means `VM` is missing. Turning it down can only muddy that. Once there
+  is torque: in standalone mode aim for **VREF ≈ 0.55 V** (~1.0 A peak on the
+  real 0.05 Ω sense resistors, matching Opentrons' `plungerCurrent`), and once
+  UART works the pot drops out of circuit entirely.
+- **How to measure `VM`:** DMM on DC volts across the `+`/`−` motor screw
+  terminals, probing the screw heads rather than the brick or the insulation,
+  expecting 11.4–12.6 V — plus a tug test on every terminal, a continuity
+  check back to the supply, and a second reading under load. Full procedure
+  and a reading-to-cause table in §11.4.
+
+Separately, the serial corruption that blocked the previous session **cleared
+on a USB replug** — 8 clean `STATUS` round-trips out of 8, against 0 of 25
+before. The reflash of the P20 GEN2 image and the trio are both unblocked;
+neither was done, since the new plunger planes are a real motion change.
+Details in
+[`cubos/results/pipette_p20gen2_20260917/README.md`](results/pipette_p20gen2_20260917/README.md).

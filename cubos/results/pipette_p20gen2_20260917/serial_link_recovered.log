@@ -1,0 +1,46 @@
+2026-09-17, later the same day. Read-only probe of the capper + pipette
+Arduino after the ports re-enumerated. No motion was commanded; the only
+hardware actuated was an explicit CMD_EMAG_OFF at the end.
+
+$ ls -l /dev/ttyUSB* /dev/ttyACM*
+crw-rw---- 1 root dialout 166, 0 Sep 17 16:45 /dev/ttyACM0
+crw-rw---- 1 root dialout 188, 0 Sep 17 16:45 /dev/ttyUSB0
+    -- both re-enumerated at 16:45 lab-local
+
+$ lsusb
+ID 1a86:7523 QinHeng Electronics CH340 serial converter      <- GRBL gantry
+ID 2341:0043 Arduino SA Uno R3 (CDC ACM)                     <- capper + pipette
+
+=== raw serial probe on /dev/ttyACM0 (read-only, no motion) ===
+banner bytes: b'OK:Ready\r\n'
+  [0] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [1] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [2] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [3] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [4] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [5] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [6] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  [7] OK  dt= 0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+
+STATUS round-trips: 8 clean / 8 attempted
+    -- compare serial_link_diagnostics.txt from earlier the same day: 0 of 25
+
+=== TMC2209 driver status via CMD 29 (read-only) ===
+   OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+   OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+   OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+    -- comm=0, flags=0, current_scaling=-1 (the unread sentinel).
+    -- Expected and uninformative: the running image predates the
+    -- SoftwareSerial read fix, so this read cannot succeed regardless
+    -- of the wiring. See wiring doc section 10.1.
+
+=== capper sensor + magnet state ===
+   cmd  7 line-break sensor    -> OK:{"value1":0}
+   cmd  6 electromagnet OFF    -> OK:{"msg":"Electromagnet off"}
+
+=== GRBL status (read-only) ===
+   <Alarm|WPos:409.000,309.000,124.000|FS:0,0|Pn:X|WCO:-409.000,-309.000,-124.000> | ok
+   <Alarm|WPos:409.000,309.000,124.000|FS:0,0|Pn:X|Ov:100,100,100> | ok
+   <Alarm|WPos:409.000,309.000,124.000|FS:0,0|Pn:X> | ok
+    -- Expected resting state: $22=1 boots GRBL into Alarm until homed,
+    -- and Pn:X is the carriage parked on X's max switch with $23=0.

@@ -1022,4 +1022,165 @@ be re-derived — it is not a one-line change.
 | 🔴 No coil current | Ben's hand test on 2026-09-17: the plunger moves freely with the driver powered. **Measure 12 V at the `VM` screw terminal first** — §10.3 explains why that one fault produces every symptom |
 | 🔴 UART readback | needs the library patch *and* the resistor moved to the TX side |
 | 🔴 Limit-switch loop | independent fault. Until D9 reads LOW the plunger cannot retract, whatever the motor does |
-| 🔴 Serial link to the Arduino | **new, and blocking** — see `cubos/results/pipette_p20gen2_20260917/` |
+| ✅ Serial link to the Arduino | was blocking; **recovered on a USB replug**, 8/8 clean round-trips — see §11.5 |
+| ✅ The `F` light | a *direction* indicator, not a fault light. There is no fault LED on this board — see §11.1 |
+| ✅ The current pot | eliminated: it is at maximum and there is still no torque, which is what makes `VM` the prime suspect — see §11.3 |
+
+---
+
+## 11. 2026-09-17 (later): the `F` light is not a fault light, and the pot is not the problem
+
+Three bench observations from Ben, and they move the diagnosis forward more
+than anything since the hand test.
+
+### 11.1 🔴 `F` on the 6121 means *Forward*, not *Fault*
+
+There is **no fault LED on this board.** Adafruit's guide lists exactly three,
+and all three are on logic pins the Arduino drives:
+
+| silk | colour | tied to | lit when |
+|---|---|---|---|
+| **`F`** | green | **`DIR`** | "the motor is being driven counterclockwise when the DIR pin is low" |
+| **`B`** | red | **`DIR`** | "the motor is being driven clockwise when the DIR pin is high" |
+| **`S`** | yellow | **`STEP`** | "the motor driver is being moved" |
+
+`DIAG` — the pin that *would* report a short, an open load or an
+over-temperature shutdown — is broken out on header pin 7 and has **no LED**
+and no wire. So the only way to see a driver fault on this build remains the
+UART readback of §10.1, which needs both the library patch and the resistor
+moved to the TX side.
+
+**What the LEDs do give, for free, is the commanded direction.** The firmware
+sets `DIR` once per move and holds it:
+
+| firmware action | `DIR` | LED |
+|---|---|---|
+| `homePipette()` seek (upward) | LOW | **green `F`** |
+| `homePipette()` back-off (796 steps) | HIGH | red `B` |
+| `moveTo()` / `aspirate()` descending | HIGH | red `B` |
+| `moveTo()` retracting | LOW | **green `F`** |
+
+That turns the 2026-09-01 open question — *does `HOME` seek toward the switch
+or away from it?* — into something answerable by eye without a meter, and it
+gives a second confirmation that `STEP` pulses arrive (`S` flickers) to sit
+alongside the raw-step probe of §6.
+
+### 11.2 The green `F` blinking bright/dim was almost certainly the reflash attempts
+
+Green `F` is lit by the Arduino **sinking** the `DIR` net, so its brightness
+tracks the state of pin `A3`:
+
+| `A3` | green `F` |
+|---|---|
+| driven LOW by the running sketch | **bright** |
+| high-impedance — during reset, and while the bootloader runs | **dim** (leakage only) |
+| driven HIGH | off, red `B` lit instead |
+
+The observation was made during the session that spent several minutes
+running `avrdude` at four different baud rates. Every `avrdude` attempt
+toggles `DTR`, which **resets the ATmega328P**; the bootloader does not touch
+`A3`, so the pin floats until `setupPipette()` runs `pinMode(DIR_PIN, OUTPUT)`
+and drives it LOW. One reset cycle = one dim/bright transition. No plunger
+motion was commanded in that session at all, so `DIR` was never deliberately
+changed — the resets are the only mechanism available.
+
+Benign, and not a fault report. The alternative reading — a `VDD` rail sagging
+under load and modulating the LED — is worth ruling out, and the test is
+trivial: **watch `F` while nothing is being sent to the board.** Steady
+brightness means the rail is fine.
+
+### 11.3 The pot is at maximum, and that makes the no-torque result much stronger
+
+Ben reports the trimmer turned fully clockwise, which Adafruit describes as
+*"when all the way to the right we can get to up to 2A max."*
+
+Combined with the hand test, the two facts are far more informative than
+either alone. `i_scale_analog` is still 1 (no UART write has ever been
+confirmed to land), so **the pot is the only thing setting coil current** —
+and it is at its maximum. At maximum VREF this motor should have obvious
+holding torque. It has none. Since VREF is fed from the chip's own `5VOUT`,
+and `5VOUT` is generated from `VM` alone (§10.3), zero torque at maximum pot
+means **VREF is zero, which means `5VOUT` is dead, which means `VM` is
+missing** — or the chip is dead. The pot has been eliminated as a suspect by
+being at the wrong end of its range to explain anything.
+
+**So: do not change it yet.** It is currently the setting most likely to
+reveal torque, and turning it down can only muddy the measurement. Two
+caveats for once there *is* torque:
+
+- **In standalone mode, back it off before any sustained move.** Full scale on
+  this board's real 0.05 Ω sense resistors is ~3.3 A rms, well past both the
+  breakout's 2 A rating and the P20 GEN2's `plungerCurrent: 1.0 A`. Set it by
+  measuring, not by counting turns: **VREF ≈ 0.55 V gives ~1.0 A peak**
+  (`I_rms = (VREF / 2.5) x 3.283 A`, so 0.72 A rms = 1.02 A peak — the same
+  current `RUN_CURRENT_PERCENT 20` asks for). Note `VREF` is not broken out on
+  the 10-pin header, so this means probing the trimmer's wiper. If full
+  clockwise measures below 0.55 V, the pot cannot over-current the motor and
+  the question is moot.
+- **Once UART works the pot stops mattering entirely.** The first register
+  write is `setOperationModeToSerial()`, which clears `i_scale_analog` and
+  takes the pot out of circuit; `RUN_CURRENT_PERCENT` governs from then on.
+
+⚠️ Fit the Adafruit 1515 heat sink before running at any of these currents.
+
+### 11.4 How to measure `VM` — the one measurement that settles it
+
+Any multimeter, DC volts (`V⎓`), 20 V range or autoranging. The driver and the
+Pi stay powered.
+
+1. **Black probe on the `−` screw terminal, red probe on the `+` screw
+   terminal** of the two-pin motor-supply block. Probe the **screw heads or
+   the bare wire clamped under them** — not the insulation, not the barrel
+   jack, and not the brick's own output, because the whole point is to find out
+   whether 12 V survives the journey.
+2. Expect **11.4–12.6 V**.
+
+| reading | meaning |
+|---|---|
+| ~12 V | `VM` present. The fault is downstream — VREF, or the coils. |
+| **0 V** | nothing reaching the board: supply off, broken wire, or a screw clamped on insulation rather than copper |
+| ~−12 V | polarity reversed |
+| a few volts, or collapses when a move is commanded | bad joint, or a supply that cannot hold up under step load |
+
+Three checks that cost nothing while the meter is out:
+
+- **Tug each wire in the terminal block.** A screw tightened onto insulation
+  is the single most common cause of a 0 V reading, and it looks perfectly
+  installed.
+- **Continuity** (Ω or the beeper) from the supply's output conductor to the
+  matching screw terminal: under ~1 Ω.
+- **Measure again while a bounded move is commanded**, to catch a rail that
+  reads 12 V at idle and collapses under load.
+- **The same tug test on the four coil terminals** (`1A/1B/2A/2B`). If `VM` is
+  good and there is still no torque, an insulation-clamped coil screw does
+  exactly that. Then the coil resistance check of §8.6 applies: blue–red and
+  black–green a few to a few tens of ohms, blue–black open.
+
+Safety: 12 V is not a shock hazard, but do not let the probe tips bridge `+`
+to `−` or to an adjacent pad — that is a dead short through the supply. With
+no meter to hand, the crude substitute is to put a known 12 V load (a fan, an
+LED strip) on the same leads and see whether it runs; that tests the supply
+and the wiring but not the terminal block itself.
+
+### 11.5 The Arduino serial link recovered on a replug
+
+The corruption recorded in `cubos/results/pipette_p20gen2_20260917/` is gone.
+Both `/dev/ttyACM0` and `/dev/ttyUSB0` re-enumerated at 2026-09-17 16:45
+lab-local, and a read-only probe immediately afterwards returned **8 clean
+`STATUS` round-trips out of 8**, against 0 of 25 earlier the same day:
+
+```
+banner: b'OK:Ready\r\n'
+  [0..7] OK  dt=0.01s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+```
+
+So of the four candidate causes listed at the time, the first — *unplug and
+replug the USB cable; a `USBDEVFS_RESET` from the Pi is not a power cycle* —
+was the fix. `max_vol: 20.00` confirms the 2026-09-15 p20 image is still what
+is running; the P20 GEN2 image of §10.4 was never flashed, because `avrdude`
+could not sync while the link was broken. **That reflash is now unblocked.**
+
+`CMD 29` still reports `comm = 0`, exactly as §10.1 predicts: the running
+image does not carry the SoftwareSerial read fix, so the read cannot succeed
+regardless of the wiring. It stays uninformative until the reflash *and* the
+resistor move are both done.
