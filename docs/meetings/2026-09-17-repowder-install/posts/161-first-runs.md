@@ -1,4 +1,4 @@
-Posting for Sterling from the 9/17 call with Bartosz ([corrected transcript]({{TRANSCRIPT}})).
+From the 9/17 call with Bartosz ([corrected transcript]({{TRANSCRIPT}})).
 
 Two runs to try while Bartosz is here (a trial is ~1 h; he's bringing extra Al 4047 benchmark rods):
 

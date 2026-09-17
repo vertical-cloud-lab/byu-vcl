@@ -17,6 +17,12 @@ Placeholders in bodies:
   {{<KEY>}}      "#N" of a new issue created earlier in the same queue
                  (so create issues first, then comments that reference them)
 
+Conditional blocks, decided by the TRIGGER_OK env var (true when the token is
+a GitHub App token whose events start workflows, so "@claude" pings work):
+
+    <!-- if-trigger --> ... <!-- end-if-trigger -->        kept only if TRIGGER_OK
+    <!-- if-no-trigger --> ... <!-- end-if-no-trigger -->  kept only if not
+
 Every body must end with "<!-- queue:<id> -->". The script looks for that
 marker on the target before posting, so a re-run never double-posts.
 """
@@ -25,6 +31,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import subprocess
 import sys
 import tempfile
@@ -45,6 +52,8 @@ def main() -> int:
     repo = os.environ["GH_REPO"]
     sha = os.environ.get("GITHUB_SHA", "")[:7]
     dry_run = os.environ.get("DRY_RUN", "true").lower() == "true"
+    trigger_ok = os.environ.get("TRIGGER_OK", "false").lower() == "true"
+    print(f"token can trigger workflows: {trigger_ok}")
     queue_path = Path(os.environ["QUEUE"])
     queue = json.loads(queue_path.read_text(encoding="utf-8"))
     base = queue_path.parent
@@ -54,6 +63,10 @@ def main() -> int:
         subs[key] = f"https://github.com/{repo}/blob/{sha}/{path}"
 
     def render(text: str) -> str:
+        drop, keep = ("no-trigger", "trigger") if trigger_ok else ("trigger", "no-trigger")
+        text = re.sub(rf"<!-- if-{drop} -->.*?<!-- end-if-{drop} -->\n?", "", text,
+                      flags=re.DOTALL)
+        text = re.sub(rf"<!-- (?:end-)?if-{keep} -->\n?", "", text)
         for key, value in subs.items():
             text = text.replace("{{" + key + "}}", value)
         leftover = [w for w in text.split("{{")[1:] if "}}" in w]

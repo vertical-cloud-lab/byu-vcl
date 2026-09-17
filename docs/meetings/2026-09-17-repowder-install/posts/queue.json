@@ -4,6 +4,14 @@
   },
   "posts": [
     {
+      "id": "2026-09-17-new-software",
+      "type": "issue",
+      "key": "ISSUE_SOFTWARE",
+      "title": "rePowder computer control, software, and integration requirements",
+      "assignees": ["sgbaird", "gage-erickson"],
+      "body_file": "new-software-control.md"
+    },
+    {
       "id": "2026-09-17-new-al-rods",
       "type": "issue",
       "key": "ISSUE_AL_RODS",
@@ -29,6 +37,7 @@
     },
     { "id": "2026-09-17-124", "type": "comment", "issue": 124, "body_file": "124-install-logistics.md" },
     { "id": "2026-09-17-161", "type": "comment", "issue": 161, "body_file": "161-first-runs.md" },
+    { "id": "2026-09-17-198", "type": "comment", "issue": 198, "body_file": "198-enclosure-cameras.md" },
     { "id": "2026-09-17-30",  "type": "comment", "issue": 30,  "body_file": "30-glovebox-storage.md" },
     { "id": "2026-09-17-42",  "type": "comment", "issue": 42,  "body_file": "42-dehumidifier.md" },
     { "id": "2026-09-17-126", "type": "comment", "issue": 126, "body_file": "126-training-docs.md" },

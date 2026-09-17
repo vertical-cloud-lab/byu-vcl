@@ -1,4 +1,4 @@
-Posting for Sterling from the 9/17 call with Bartosz ([corrected transcript]({{TRANSCRIPT}})).
+From the 9/17 call with Bartosz ([corrected transcript]({{TRANSCRIPT}})).
 
 Bartosz will add us to AMAZEMET's online database (operation videos, assembly, part lists). @gage-erickson worth going through those before the Tue–Wed training. Day 1 of training is the induction unit, day 2 is flexible. We'll also record the install for internal use.
 

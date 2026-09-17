@@ -1,4 +1,4 @@
-Posting for Sterling from the 9/17 call with Bartosz and Dave ([corrected transcript]({{TRANSCRIPT}})). Install is **Mon Sep 28**, training **Tue–Wed Sep 29–30**. Bartosz arrives Saturday and is flexible on hours.
+From the 9/17 call with Bartosz and Dave ([corrected transcript]({{TRANSCRIPT}})). Install is **Mon Sep 28**, training **Tue–Wed Sep 29–30**. Bartosz arrives Saturday and is flexible on hours.
 
 @gage-erickson things to have ready before the 28th:
 
@@ -9,5 +9,7 @@ Posting for Sterling from the 9/17 call with Bartosz and Dave ([corrected transc
 - **Tacky mats** at the enclosure exit for powder on shoes.
 
 Day of: ~2–3 h to place, hook up, test, and unpack consumables, then theory. Gage is free ~1–4 pm Monday, so hookups in the morning with Dave (runner for parts) and a longer session in the afternoon.
+
+Also for Bartosz while he's here: computer control and software requirements ({{ISSUE_SOFTWARE}}). Cameras inside the enclosure before the 28th: #198.
 
 <!-- queue:2026-09-17-124 -->
