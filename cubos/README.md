@@ -976,3 +976,42 @@ before. The reflash of the P20 GEN2 image and the trio are both unblocked;
 neither was done, since the new plunger planes are a real motion change.
 Details in
 [`cubos/results/pipette_p20gen2_20260917/README.md`](results/pipette_p20gen2_20260917/README.md).
+
+## 2026-09-17 (evening) — trio blocked at step 0: two gantry limit-switch faults
+
+Asked to run the trio again. It did not run — **`home` (step 0) failed and the
+protocol executed 0 steps.** No deck motion, no capper motion, no vial
+approached. The offline gates were all green first (`validate_setup` PASS,
+`--mock` 12/12, `passive_shadow` 0 both ways), so the configs are not at fault.
+
+The failure is **`ALARM:9` on Z**, not the Y failure from campaign 36. Two
+numbers identify the axis: the Z counter ran +186 mm (exactly `1.5 × $132`,
+GRBL's search distance) and it failed at t+11.46 s (186 mm at `$25 = 1000`
+mm/min is 11.2 s). GRBL homes Z first, so the cycle never reached X or Y.
+
+Both gantry limit switches are faulty, and both were measured rather than
+inferred:
+
+- **Z moves fine, its switch never asserts.** Jogged ±25 mm smoothly at
+  commanded feed; `Pn:Z` never appeared, including right after homing had driven
+  Z 186 mm up into its physical top. `$5 = 0`, so an **open** circuit reads
+  *not triggered* — which is what GRBL sees.
+- **X's switch is stuck asserted.** The carriage jogged 20 mm away from it and
+  `Pn:X` never cleared. That is a stuck-closed switch or a shorted signal line,
+  not a carriage parked on a switch. It blocks nothing today (`$21 = 0`), but
+  homing reads the limit pins, so once Z is repaired X will raise **`ALARM:8`**
+  on pull-off. **Both need fixing before homing can succeed.**
+
+Both changed state *during* campaign 36, in the 2.5 minutes between a successful
+opening home and a failed closing one — so a single disturbance to the
+limit-switch harness (the drag chain being the obvious common path) would
+account for both.
+
+One thing did improve: the **pipette** limit switch flipped back to reading
+CLEAR. `HOME` now runs its full 50 000-step budget (26.345 s, `ERR`) instead of
+fake-succeeding in 0.520 s, which un-gates the upward direction in `stepMotor()`
+— `blowout` and both `drop_tip` legs would execute for the first time. The
+TMC2209 still reads `comm = 0`, as expected for the running image.
+
+Full write-up, frames and logs in
+[`cubos/results/pipette_test_20260917/README.md`](results/pipette_test_20260917/README.md).
