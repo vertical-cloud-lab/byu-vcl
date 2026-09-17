@@ -37,12 +37,15 @@ permissions:
 jobs:
   post:
     runs-on: ubuntu-latest
+    env:
+      # `secrets` can't be read in a step-level `if`, so decide here.
+      HAVE_APP: ${{ secrets.VCL_BOT_APP_ID != '' && secrets.VCL_BOT_PRIVATE_KEY != '' }}
     steps:
       - uses: actions/checkout@v4
 
       - name: Mint an app token (only if the app secrets exist)
         id: app
-        if: ${{ secrets.VCL_BOT_APP_ID != '' && secrets.VCL_BOT_PRIVATE_KEY != '' }}
+        if: ${{ env.HAVE_APP == 'true' }}
         uses: actions/create-github-app-token@v1
         with:
           app-id: ${{ secrets.VCL_BOT_APP_ID }}
