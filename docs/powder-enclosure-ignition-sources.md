@@ -27,7 +27,7 @@ originally given.
 
 | Original reason | Status |
 |---|---|
-| NFPA 484 → NEC Art. 500 Class II, wants dusttight enclosures | Direction right, detail wrong. Dusttight is the **Division 2** allowance. For Group E metal dust present in hazardous quantity, the NEC puts you in **Division 1**, where dusttight alone is not the standard. |
+| NFPA 484 → NEC Art. 500 Class II, wants dusttight enclosures | Direction right, detail incomplete. Dusttight is the **Division 2** allowance. The *interior* of the enclosure during operation is Division 1 by default, where dusttight alone is not the standard — but the **room** outside it is very likely unclassified if housekeeping is decent (§2). That distinction is the whole design lever. |
 | The PM sensor's laser diode is an ignition source | Weakest of the arguments. IEC 60079-28 treats sub-15 mW / Class 1 optical sources as the benign case; the PMS5003T laser is a few mW inside a sealed optical chamber. |
 | ASA weatherproof ≠ dusttight in the NEC sense | Correct, and NEC 110.28 says so directly: *"IP ratings are not a substitute for Enclosure Type."* |
 | "It's an unrated board with a fan" | This is the real argument, and it's stronger than stated — see below. |
@@ -88,6 +88,32 @@ has to use metal-specific explosibility data and address extinguishing-agent inc
 15–45 µm feedstock is an order of magnitude below that line, and the atomizer's fines/condensate
 tail is below *that*.
 
+### The quantitative criteria: it's dust-layer thickness, not inventory
+
+Classification turns on accumulation and frequency, not on how many kilograms you own. The
+practitioner-standard reading of NFPA 499/654 (Rodgers 2011, *Practical issues with electrical area
+classification*):
+
+| Layer thickness | Accumulation | Result |
+|---|---|---|
+| ≥ 1/8 in (3.2 mm) | continuous / frequent | **Class II, Division 1** |
+| ≥ 1/8 in | infrequent | **Class II, Division 2** |
+| 1/32–1/8 in (0.8–3.2 mm) | continuous / frequent | **Division 2**, if housekeeping holds the average below 1/16 in |
+| 1/32–1/8 in | infrequent, cleaned up same shift | **Unclassified** — dusttight enclosures still recommended |
+| < 1/32 in (0.8 mm) | — | Generally **unclassified** |
+
+Plus the housekeeping trigger already noted: a 0.4 mm layer over ≥ 5% of the floor area demands
+immediate cleaning and can move the classification.
+
+Two consequences worth internalising:
+
+- **Housekeeping is a design control, not just hygiene.** It is literally the variable that decides
+  whether your room is a classified location — and therefore whether an ordinary Raspberry Pi in
+  the room is legal.
+- **Scale does not exempt you.** There is no documented de minimis or small-quantity exemption in
+  NFPA 484, 652, 654 or 660. Gram-scale R&D goes through the same DHA; what small scale changes is
+  the *consequence*, and often the *extent* of any classified area, not the applicability.
+
 ### The Division question, and why Group E is different
 
 NEC 500.5(C)(1) defines Class II Division 1, and subpart (c) is the one that matters:
@@ -115,6 +141,13 @@ Consequences:
 - NFPA 499 notes the NEC **zone** system is not to be used for metal dusts, and that combustible
   metal dust is **Group IIIC** regardless of particle size
   ([NFPA 484 TIA](https://docinfofiles.nfpa.org/files/AboutTheCodes/484/TIA_484_22_1.pdf)).
+  NFPA 484 likewise treats metal dust as Class II Group E *regardless of particle size*, because the
+  NEC's generic combustible-dust definition carries size limits that don't match the metal hazard.
+- **The enclosure interior is Division 1 by default.** Where metal dust is normally present during
+  operation — atomising, sieving, transferring — the inside of the enclosure classifies as Class II
+  Division 1 Group E. The significant exception: if the volume is **inerted below the limiting
+  oxygen concentration**, a DHA may support a different conclusion. That is AHJ-dependent, and it
+  is the single most valuable thing the rePowder's argon atmosphere buys you.
 
 ### The IEC/ATEX framing is more intuitive for an enclosure
 
@@ -171,7 +204,13 @@ If a **flashlight** is called out by name, a Raspberry Pi is not a borderline ca
 | MIE, Al nanopowder (40 nm) | < 5 mJ | [IJAME 15(2)](https://ijame.umpsa.edu.my/images/Vol%2015%20Issue%202%20June%202018/10%200407.pdf) |
 | MIT, dust cloud, micron Al | ~690 °C | [as above](https://www.sciencedirect.com/science/article/abs/pii/S0950423019309386) |
 | Self-ignition, Al–Mg powder **layer** | 310–320 °C | [Moisture/accumulated-dust ignition study](https://www.sciencedirect.com/science/article/abs/pii/S0950423023002395) |
-| MEC, aluminum | 0.040 oz/ft³ ≈ **40 g/m³** (USBM RI-6516) | [Aluminum Association F-1](https://www.aluminum.org/sites/default/files/2021-11/Safe_Handling-Aluminum_Fine_Particles.pdf) |
+| MIE, Al at 40 µm (i.e. our coarse end) | 59.7 mJ; MEC 35 g/m³, K<sub>St</sub> 77 (St 1), P<sub>max</sub> 5.9 bar | Wu et al. 2010, via Edison |
+| MIE, Al nanopowder 35–100 nm | **< 1 mJ**; K<sub>St</sub> 296–673, P<sub>max</sub> 7.3–12.5 bar | Wu et al. 2010 / Bouillard et al. 2010, via Edison |
+| MIE, Al **flake** | as low as ~0.1 mJ in sensitive reports | Benson 2012 / Reding 2018, via Edison |
+| MIT, dust cloud, 6 µm Al | **420 °C** — far below the 650–690 °C coarse value | Benson 2012, via Edison |
+| LIT, Al flake **layer** | 320–326 °C | Cadwallader 2003 / Reding 2018, via Edison |
+| K<sub>St</sub>, Al 5–15 µm fines | 220 (St 2), vs. 77 for the same material at 40 µm | Benson 2012, via Edison |
+| MEC, aluminum | 0.040 oz/ft³ ≈ **40 g/m³** (USBM RI-6516); literature range 35–170 g/m³ | [Aluminum Association F-1](https://www.aluminum.org/sites/default/files/2021-11/Safe_Handling-Aluminum_Fine_Particles.pdf) |
 | K<sub>St</sub> class, aluminum | **St 3 (strong)**, K<sub>St</sub> > 300 bar·m/s | [SAND2014-19158PE](https://www.osti.gov/servlets/purl/1242062) |
 | P<sub>max</sub> / (dP/dt)<sub>max</sub>, Al | 7–8 bar / 1170 bar·s⁻¹ | [ALM alloys paper](https://www.sciencedirect.com/science/article/abs/pii/S0950423017303765) |
 | P<sub>max</sub> / (dP/dt)<sub>max</sub>, Al alloys | 5–7 bar / 250–360 bar·s⁻¹ | same |
@@ -187,6 +226,17 @@ Against those, the candidate ignition sources:
 | Raspberry Pi SoC hot surface | 60–85 °C | Far below 310 °C. Not the issue. |
 | PMS5003T laser diode | few mW, sealed chamber; IEC 60079-28 benign threshold 15 mW / Class 1 | Not the issue. |
 | ESP32 / Pi Wi-Fi | ~0.1 W vs. IEC 60079-0 threshold 6 W | Not the issue. |
+
+**A caveat on the AlSi10Mg row.** The 11–14 mJ figures come from one peer-reviewed study of ALM
+aluminium alloys. An independent deep-literature search found *no reliably transferable published
+MIE/MIT/MEC/K<sub>St</sub> dataset for AlSi10Mg* and recommended treating generic aluminium bounds
+as the conservative stand-in until the actual lot is tested. Take 11–14 mJ as an order-of-magnitude
+anchor, not a design value.
+
+Note also how strongly the numbers track the **fines tail** rather than the nominal cut: the same
+aluminium goes from K<sub>St</sub> 77 (St 1) at 40 µm to 220 (St 2) at 5–15 µm, and cloud MIT drops
+from ~650 °C to 420 °C at 6 µm. Your 15–45 µm product is the benign part; the atomiser's condensate
+and fines are the hazard, and they are also the fraction the AirGradient can actually see.
 
 A caution that applies to every row above, from ASTM via Sandia: *"The values obtained are specific
 to the sample tested, the method used and the test equipment used. The values are not to be
@@ -224,6 +274,20 @@ Decision table:
 | Inside the enclosure, and the DHA concludes the enclosure is **not** a classified location | Defensible with care | Fully sealed IP6X/NEMA 12+, **no fan, no vents**, glanded entries, conformal-coated board, surface temp ≪ 310 °C, exterior conductive or static-dissipative and **bonded to the enclosure ground**, on a GFCI/fused supply, inspected and cleaned on a schedule. This is risk reduction, not compliance. |
 | Inside, and it **is** a classified Class II Div 1 / Zone 20–21 location | No — a case is not enough | Listed Class II Div 1 equipment, or IEC Ex tb IIIC (IEC 60079-31), or a purged/pressurized enclosure per NFPA 496 ([Type Z / Ex pzc reduces the interior to unclassified](https://www.pepperl-fuchs.com/en/products/hazardous-area-products-and-solutions/purge-and-pressurization-systems/ex-pzc-purge-and-pressurization-systems-gp32722)). Pressurization is the standard answer for computers too large for flameproof and too power-hungry for intrinsic safety. Expect 10–100× the cost of the Pi, plus a continuous clean-air or inert supply. |
 
+**Costs, roughly.** A small NEMA 12 / IP66 enclosure suitable for an SBC is $100–500 bare, before
+certified glands and breathers. An NFPA 496 purged/pressurised enclosure starts around $500–2000+
+plus a continuous clean-gas supply and purge controller. Intrinsically safe barriers run $50–200
+per channel. Against a $40 Pi, the arithmetic argues for itself.
+
+**The one control that beats all of them: inert the volume.** If the enclosure atmosphere is held
+below the limiting oxygen concentration (~5% O₂ is the figure usually quoted for aluminium, but
+test yours), there is no deflagration to initiate, and the DHA may reach a different classification
+altogether. The rePowder already works under argon. Extending that logic to the downstream powder
+enclosure — with O₂ monitoring, alarms and interlocks, and the monitoring recorded, since an
+unmonitored inerting system is exactly what OSHA cited Powderpart for — is a far better investment
+than hardening a Pi. Caveats: inerting de-passivates powder, and magnesium burns in N₂ and CO₂, so
+argon is the only safe choice across your element list.
+
 **The design move that makes all of this go away:** split the volumes. Compute, power supplies,
 drivers and radios live outside; only the minimum passive sensing element goes inside, on a glanded
 cable. A stepper motor inside and its driver outside is a different risk profile from a Pi inside.
@@ -241,6 +305,11 @@ Ex-rated housing — exactly the "minimum element inside" pattern. The alternati
 sampling: probe inside, instrument outside, conductive grounded sample line (ordinary plastic
 tubing here would be its own ignition source).
 
+There is also a cheap third option specific to the PMS5003T: put it in the **exhaust stream
+downstream of filtration**, where dust concentration is negligible by design. You lose the
+in-enclosure number and gain a filter-breakthrough alarm, which is arguably the more actionable
+signal anyway.
+
 ---
 
 ## 5. "Are there other things like this?"
@@ -250,10 +319,11 @@ bite this project.
 
 | Thing | Why it's a problem | What to do instead |
 |---|---|---|
+| **Extension cords, power strips, wall warts** | Not dusttight; unplugging arcs; internal contacts. Mundane and therefore invisible. Powderpart was cited for open electrical boxes. | Hardwired or dusttight fittings, or keep them outside the classified zone entirely. |
 | **Ordinary shop vac / lab vacuum** | The single most-documented ignition source in metal AM. A dust cloud forms *inside* the vacuum, static builds from particle motion, and the filter is a fuel bed. This is what injured the Powderpart employee. | Immersion-separator wet vacuum or a vacuum certified for Group E dusts; conductive hose and tools; everything bonded and grounded; maintained and liquid-level-checked (Powderpart's *was* explosion-proof but poorly maintained). |
 | **Compressed-air blow-down** | Turns a layer into a cloud. Prohibited by NFPA 484 practice. | Don't. Ever. |
 | **Synthetic brushes, plastic scoops** | TR-2/F-1 are explicit: they *"accumulate strong static charges."* | Natural-fiber bristle brushes; conductive, non-sparking, grounded scoops. No plastic, no ferrous metal (impact sparks). |
-| **Unbonded containers during transfer** | Pouring is a tribocharging operation. | *"Both containers should be bonded together and provided with a grounding strap"* (TR-2). Applies to the atomizer's airlock containers too. |
+| **Unbonded containers during transfer** | Pouring is a tribocharging operation. In a documented Italian incident, compressed air into an ungrounded transfer hose produced a ~150 mJ discharge that ignited aluminium dust with an MIE of ~50 mJ — a 3× margin over the ignition threshold from an operation that looks routine. | *"Both containers should be bonded together and provided with a grounding strap"* (TR-2). Applies to the atomizer's airlock containers too. |
 | **Water, and sprinklers overhead** | Al + H₂O → H₂ + heat. A water stream also raises a dust cloud. Damp powder is *more* hazardous, not less. Powderpart was cited for failing to assess "water sprinklers & metal powders." | Class D agent or dry sand, applied gently, aimed *above* the fire so it settles by gravity. No water, no halon/halogenated agents, no CO₂. Confirm what suppression is over the bench with EHS. |
 | **Reactive metal pairs / thermites** | Your element list is a thermite catalogue: Al+Ni, Al+Ti, Ti+B, Zr+B, Si–Zr, Ce–Si, Ni–Si, Mn–Si, Si–Ti are all named in the Sandia deck. These need **no oxygen** and generally react to completion. Li is an alkali metal — a separate regime again. | Segregate storage. Never co-mix or co-collect swarf/fines from different elements. Think hard before a mixed-powder doser. |
 | **Atomizer fines and condensate** | The sub-10 µm fraction has the lowest MIE and is what escapes containment. Processing under inert gas can **de-passivate** powder, which can then auto-ignite on air exposure (Sandia). | Controlled passivation / slow air bleed before opening; treat the collector as the most hazardous vessel in the system. |
@@ -285,13 +355,26 @@ bite this project.
 5. **Get a DHA started with EHS**, referencing NFPA 660 Ch. 22. Ask specifically about: the fume
    hood, overhead suppression, and whether the enclosure interior will be treated as a classified
    location. That answer determines whether anything electrical may go inside at all.
-6. **Consider testing your own powder.** ASTM E1226 (explosibility), E1515 (MEC), E2019 (MIE),
-   E1491 (cloud MIT), E2021 (layer hot-surface ignition). Since the atomizer is itself the
-   variable under study, the fines fraction differs run to run, and a measured MIE for *your*
-   powder converts most of the argument above from literature to fact.
-7. **If in-enclosure monitoring is genuinely required**, price a Sintrol DUMO EXG A or an
-   extractive setup rather than trying to harden a consumer device.
-8. **Run the AirGradient for a week before any powder work** to establish the quiet baseline.
+6. **Ask about inerting the powder enclosure, not just the atomiser.** Argon below the LOC, with
+   O₂ monitoring, alarms and interlocks, plus a logged record that the monitoring works. This is
+   the control with the best ratio of risk reduction to cost, and it is what every commercial LPBF
+   OEM does. Argon specifically — Mg burns in N₂ and CO₂.
+7. **Treat the fines and condensate as a separate, more hazardous material** from the screened
+   15–45 µm product: passivate under inert gas before air exposure, store sealed, grounded and
+   isolated, and test them separately.
+8. **Consider testing your own powder.** ASTM E1226 (explosibility), E1515 (MEC), E2019 (MIE),
+   E1491 (cloud MIT), E2021 (layer hot-surface ignition), E2931 (LOC). Since the atomizer is
+   itself the variable under study, the fines fraction differs run to run, and a measured MIE for
+   *your* powder converts most of the argument above from literature to fact. Test three things:
+   virgin powder, reused powder, and the collected fines/condensate.
+9. **If in-enclosure monitoring is genuinely required**, price a Sintrol DUMO EXG A, an extractive
+   setup, or a post-filter position in the exhaust — rather than trying to harden a consumer device.
+10. **Run the AirGradient for a week before any powder work** to establish the quiet baseline.
+
+For scale: the CSB recorded 281 combustible-dust incidents in the US between 1980 and 2005 —
+119 deaths, 718 injuries — with metal dust accounting for about 20%. The recurring causes are
+inadequate housekeeping, uncontrolled ignition sources, improper grounding and non-rated equipment.
+That is a short list, and every item on it is cheap to fix before the powder arrives.
 
 ---
 
@@ -311,3 +394,10 @@ bite this project.
 - [Dust Safety Science: continuous dust monitoring / Sintrol DUMO EXG A](https://dustsafetyscience.com/continuous-dust-monitoring/)
 - [Pepperl+Fuchs Ex pzc purge and pressurization](https://www.pepperl-fuchs.com/en/products/hazardous-area-products-and-solutions/purge-and-pressurization-systems/ex-pzc-purge-and-pressurization-systems-gp32722)
 - [Metal AM: safety management in metal additive manufacturing](https://www.metal-am.com/articles/safety-management-in-metal-3d-printing/)
+- ISO/ASTM 52931 (AM environmental/health/safety principles) and ISO/ASTM 52928 (powder life-cycle management)
+
+An Edison Scientific deep-literature search (`LITERATURE_HIGH`, task `31a6b617-43eb-4af2-a605-9cc4a8ccea65`)
+was run against the same questions; its full answer, reference list and artifacts are committed
+under [`outputs/issue-219-ignition-sources/`](../outputs/issue-219-ignition-sources/). Where this
+document cites "via Edison", the underlying primary references are listed in
+[`edison_references.md`](../outputs/issue-219-ignition-sources/edison_references.md).

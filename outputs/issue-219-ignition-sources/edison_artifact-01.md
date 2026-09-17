@@ -1,0 +1,23 @@
+| Equipment / Practice | Specific Hazard | Required Mitigation / Standard |
+|---|---|---|
+| Vacuum cleaners | Ordinary shop vacs are ignition sources due to non-rated motors and static buildup. | Use combustible-dust-rated vacuums with conductive hoses, no-spark motors, HEPA filtration, or immersion separation for highly reactive metals. (pqac-00000030) |
+| Compressed air blow-down | Resuspends dust and creates highly explosive dust clouds. | NFPA 484 generally prohibits this; if unavoidable, non-rated electrical equipment must be de-energized before blow-down. (pqac-00000016, pqac-00000027) |
+| Brushes and brooms | Sweeping can generate static electricity and localized dust clouds. | Use conductive, non-sparking tools and damp wiping methods where safe and compatible with the metal. (pqac-00000016, pqac-00000018) |
+| Extension cords and power strips | Not dusttight; subject to unplugging arcs and internal sparks. | Use hardwired connections, dusttight fittings, or locate outside the classified dust zone. (pqac-00000062, pqac-00000065) |
+| Switch-mode power supplies | Internal electrical arcing and fan-driven dust ingress. | Locate outside the classified area or house within NEMA-rated dusttight enclosures. (pqac-00000062, pqac-00000065) |
+| Cooling fans | Drives conductive metal dust directly onto sensitive electronics, bridging contacts. | Use completely sealed, dusttight enclosures with fanless, passive-cooling heatsink designs. (pqac-00000062) |
+| 3D-printed plastics & PTFE tubing | Triboelectric charging leading to propagating brush discharges or high-energy sparks. | Ground all applicable surfaces, use dissipative materials, and limit insulating surface areas per NFPA 77 and IEC 60079-32. (pqac-00000029, pqac-00000074) |
+| Unbonded metal containers | Charge accumulation on isolated conductors leading to high-energy capacitive sparks. | Bond and ground all metal equipment, containers, and scoops to <10 ohms to ground per NFPA 77 during transfer. (pqac-00000016, pqac-00000018) |
+| Ball-bearing motors and belt drives | Friction hot spots and mechanically generated sparks. | Use enclosed, dusttight (e.g., TEFC) motors, or physically locate motors and drives outside the powder enclosure. (pqac-00000017, pqac-00000027) |
+| Cameras with flash | Incendive spark energy from the flash discharge mechanism. | Use sealed, intrinsically safe cameras without flash capabilities, or locate outside viewing windows. (pqac-00000017) |
+| Lasers (PM sensors, LIBS) | Optical or thermal ignition of a suspended dust cloud. | Assess optical ignition hazards per IEC standards; use sealed optical paths and prevent beam focus on static dust layers. (pqac-00000017) |
+| Hot plates / Ovens | Surface temperatures can easily exceed the Minimum Ignition Temperature (MIT) of powder layers. | Keep heating equipment strictly away from powder-handling areas and verify T-code limits. (pqac-00000018, pqac-00000037) |
+| Water and standard sprinklers | Violent reactions with Al/Mg fines generating explosive hydrogen gas. | Water systems are contraindicated; use Class D extinguishers (Met-L-X, dry sand, specific salts). (pqac-00000054, pqac-00000055, pqac-00000057) |
+| Fines disposal and passivation | Pyrophoric atomizer condensate and sub-10 µm fines can auto-ignite in air. | Perform wet-down passivation (if strictly controlled) or inert-gas passivation before disposal; store in isolated fireproof containers. (pqac-00000039, pqac-00000048) |
+| Glovebox / enclosure oxygen | Air exposure provides the oxidizer for a dust deflagration. | Maintain oxygen concentrations below the Limiting Oxygen Concentration (LOC) using argon or nitrogen inerting. (pqac-00000047, pqac-00000048) |
+| HEPA/cartridge dust collectors | Metal dust trapped in filter media can auto-ignite or explode if ignited. | Use metal-dust-rated collectors with spark arrestors, proper venting, and safe clean-out procedures. (pqac-00000029, pqac-00000037) |
+| Mixed metal/organic dust | Hybrid mixtures have lower MIEs and unpredictable severe explosion dynamics. | Keep combustible metal dusts strictly isolated from organic dusts (e.g., plastics, paper) in collection systems. (pqac-00000037) |
+| Cell phones and laptops | Not rated for Class II hazardous locations; internal batteries and unsealed contacts. | Keep outside the classified dust zone unless specifically evaluated and permitted by the Dust Hazard Analysis (DHA). (pqac-00000065) |
+
+
+*Table: A comprehensive table cataloging specific equipment hazards and required mitigation strategies for metal powder handling in a laboratory automation context.*
