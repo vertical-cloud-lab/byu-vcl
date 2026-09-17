@@ -1,0 +1,43 @@
+name: Post queued comments
+
+# Posts a reviewed batch of issue comments / new issues as github-actions[bot].
+# The batch is a queue.json checked into the repo (see docs/meetings/*/posts/),
+# so the exact text is reviewable in a PR before anything is posted.
+#
+# Notes:
+# - Comments made with GITHUB_TOKEN do not trigger other workflows, so an
+#   "@claude" inside a queued body will NOT start a Claude run.
+# - @mentions still notify. Each body carries a "<!-- queue:<id> -->" marker and
+#   the script skips anything already posted, so re-running is safe.
+# - workflow_dispatch only appears once this file is on the default branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      queue:
+        description: Path to queue.json, relative to the repo root
+        required: true
+        default: docs/meetings/2026-09-17-repowder-install/posts/queue.json
+      dry_run:
+        description: Print what would be posted instead of posting
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Post the queue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          QUEUE: ${{ inputs.queue }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: python3 .github/scripts/post_queue.py
