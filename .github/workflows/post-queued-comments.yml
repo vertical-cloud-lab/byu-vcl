@@ -1,0 +1,58 @@
+name: Post queued comments
+
+# Posts a reviewed batch of issue comments / new issues as a bot.
+# The batch is a queue.json checked into the repo (see docs/meetings/*/posts/),
+# so the exact text is reviewable in a PR before anything is posted.
+#
+# Which bot, and whether "@claude" inside a body does anything:
+# - With the VCL_BOT_APP_ID / VCL_BOT_PRIVATE_KEY secrets set, posts go out as
+#   that GitHub App's bot. App-token events DO trigger claude.yml, provided the
+#   app's bot login is in claude.yml's `allowed_bots`. Bodies keep their
+#   <!-- if-trigger --> blocks, so queued @claude pings run.
+# - Without them, posts go out as github-actions[bot] via GITHUB_TOKEN. GitHub
+#   never starts workflows from GITHUB_TOKEN events, so an @claude in a body is
+#   dead text; the script drops <!-- if-trigger --> blocks and keeps
+#   <!-- if-no-trigger --> ones instead.
+# - @mentions notify either way. Each body carries "<!-- queue:<id> -->" and
+#   the script skips anything already posted, so re-running is safe.
+# - workflow_dispatch only appears once this file is on the default branch.
+
+on:
+  workflow_dispatch:
+    inputs:
+      queue:
+        description: Path to queue.json, relative to the repo root
+        required: true
+        default: docs/meetings/2026-09-17-repowder-install/posts/queue.json
+      dry_run:
+        description: Print what would be posted instead of posting
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mint an app token (only if the app secrets exist)
+        id: app
+        if: ${{ secrets.VCL_BOT_APP_ID != '' && secrets.VCL_BOT_PRIVATE_KEY != '' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.VCL_BOT_APP_ID }}
+          private-key: ${{ secrets.VCL_BOT_PRIVATE_KEY }}
+
+      - name: Post the queue
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token || github.token }}
+          TRIGGER_OK: ${{ steps.app.outputs.token != '' }}
+          GH_REPO: ${{ github.repository }}
+          QUEUE: ${{ inputs.queue }}
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: python3 .github/scripts/post_queue.py

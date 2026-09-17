@@ -1,0 +1,623 @@
+# rePowder BYU Installation Details
+
+  Meeting started: 9/17/2026, 8:00:06 AM
+  Duration: 56 minutes
+  Participants: Bartosz Kalicki, Dave, Gage Erickson, Sterling Baird
+
+  [View original transcript](https://app.tactiq.io/api/2/u/m/r/cCdF7Qvts5v2gaqYv9ED?o=txt)
+
+    ## Detailed summary with citation
+
+# Meeting: rePowder BYU Installation Details  
+Date: 2026-09-17  
+Start time: 14:00:06Z  
+Participants: Dave, Sterling Baird, Bartosz Kalicki, Gage Erickson
+
+Below are topic-based summaries with one or more timestamp citations [mm:ss] pointing to when the topic was discussed in the transcript.
+
+- Installation date and logistics
+  - Bartosz confirmed traveling and preferring the 28th for installation; he may arrive earlier or adjust for other site visits. [00:20], [57:10]
+  - Dave apologized for scheduling delays and noted campus constraints affecting timing. [01:00]
+  - Bartosz expects the onsite work (setting machine in place, hookups, basic testing) to take ~2–3 hours if everything is ready. He plans to follow with training during his stay. [01:40], [41:30]
+
+- Site readiness and room/enclosure
+  - BYU has constructed an enclosure in the room; dehumidifier and ductwork/exhaust are installed to control environment for powder work. Recommendation: keep the enclosure slightly enclosed and use floor stickers at the entry to capture powder tracked out on shoes. [12:30], [13:50], [14:10]
+  - Sterling proposed getting the dehumidifier running ahead of install to reach steady state. [59:30]
+
+- Power / electrical connections
+  - The atomizer and chiller come with 32A male plugs; options are either to provide a matching female receptacle or hardwire. Hardwiring is commonly recommended and sometimes required by local code. [03:30], [04:10], [05:10]
+  - Bartosz advised he will measure voltage on-site before connecting (verify phases/voltage). Ensure access to 400 V and 230 V where needed. [22:00], [22:40]
+  - Action: confirm correct plug/adapters or plan to hardwire. [04:40], [18:00]
+
+- Cooling (chiller / heat exchanger / hoses)
+  - The system uses a heat exchanger; there are different connector sizes (standard large connection vs. modified smaller 30 mm / ~3/4" or half-inch) and hoses supplied. The facility supply to the heat exchanger may require a one-inch connection/adapter to match facility coolant lines. [08:40], [10:10], [11:40]
+  - Action: inspect supplied connectors on the wrapped heat exchanger, verify hose sizes, and obtain appropriate adapters/hose (BYU can supply or staff can go to hardware stores if needed). Bartosz offered to bring parts if missing. [09:00], [11:56], [15:10]
+
+- Compressed air / gas connections
+  - Compressed airline for the optimizer uses 6 mm (6/4 mm) tubing and push-fit connections; confirm regulator fittings and have push fittings/adapters available. [10:50], [16:00]
+  - Argon: Bartosz recommended high-purity argon (5N, 99.999%) although 4.5N can be usable depending on material; system requires up to 8 bar (regulator capable of 0–10 bar recommended). Ensure regulator is adjustable to 8 bar and proper adapter from regulator to the 6 mm tubing is available. [16:20], [17:10], [17:50]
+  - Action: Gage to confirm argon order purity with Nick and procure an appropriate regulator and adapters. [18:00], [59:00]
+
+- Tools, consumables, and parts logistics
+  - BYU (Dave) can assist as runner to obtain hoses, adapters, and fittings; Home Depot/Ace Hardware ok for small parts but some plug types cost more in certain regions. [06:20], [15:40]
+  - Bartosz will bring some spare fittings (e.g., T-piece for gas lines) to cover minor missing items. [17:40]
+
+- Installation sequence & training schedule
+  - Installation: place machine, connect power/coolant/air, basic testing — 2–3 hours. Immediate theoretical briefing can follow; full hands-on training spans additional days (one day induction-specific + flexible second day), with Bartosz available and flexible on timing. [01:40], [43:10], [44:10]
+  - Gage’s availability constraints were discussed (limited class windows on Monday); Bartosz will adapt schedule and can split activities across days. [45:40], [46:20]
+
+- Machine details and internal capacities
+  - Heat exchanger and optimizer connection design: a single connection area was modified to simplify hookup (one connection for the whole optimizer). The optimizer draw is ~60 A (so the plug is sufficient for both chiller and atomizer if wired appropriately). [08:10], [09:40]
+  - Crucible and furnace dimensions: inner crucible height ~10–12 cm, usable diameter space ~20 mm between ceiling rod and crucible edge; material can slightly exceed crucible height but avoid overfilling. There is a ceiling rod; in some cases operation without ceiling rods is possible after discussion. [25:50], [26:20], [26:50]
+  - Furnace operation: can start melting with the furnace open, but the locking bolt will not fully seal until closed; opening during operation is possible with modifications but not recommended for oxidation-prone materials (e.g., aluminum). [27:10], [28:00], [28:30]
+
+- Recommended safety and powder handling
+  - Anti-static apron and gloves are provided; Bartosz will supply an extra anti-static apron. Major risks require visible suspended powder for severe discharge events; standard PPE and conservative handling are recommended. [56:00], [56:40]
+  - Powder storage recommendations: keep powders in sealed containers with desiccant packets (silica gel), vacuum bagging for shipping, or vacuum storage for more sensitive materials. Consider glovebox only for specific tasks; many customers operate without a glovebox if the handling area is kept clean. [58:00], [58:30], [59:40]
+
+- Powder processing, alloying, and experiment planning
+  - Bartosz supplied benchmark rods of Al 4047 for initial demonstrations; standard trial run duration ~1 hour. He suggested starting with aluminum as benchmark due to melting/flow behavior. [41:50], [43:50]
+  - Powder in-crucible behavior: pure powder can appear not fully melted (individual particles persist). Better performance when some melted feedstock is present or when using pre-alloyed/master alloy. Use of master alloys or pre-melted feedstock is recommended for homogenous results. [31:50], [34:20], [35:20]
+  - Mixing: induction causes some melt motion (pulsation) that provides mixing, but not a substitute for master alloy/additions. For high-melting additives or difficult-to-dissolve materials, pre-alloying (e.g., arc melter) is preferred. [33:10], [34:40]
+  - Proposed experiments: (1) atomize high-purity solid Al rod feedstock, (2) test a bored-out Al rod packed with powder (press-fit cap) to attempt full melt/atomization. If packed powder fails to fully melt, options include pre-alloying via arc melting or other consolidation (vacuum press, hot pressing) before atomization. [52:20], [53:50], [54:20]
+
+- Materials and procurement actions
+  - Sterling/Gage plan to order two sizes of high-purity Al rods (20 mm O.D. and a smaller diameter for press-fit cap); suggest McMaster or alternate suppliers to get highest purity available. Gage to research and order via BYU procurement (McMaster credentials). [60:10], [61:00], [62:00]
+  - Consider procuring master alloy by arc melting powders (Taylor Sparks / University of Utah arc melter discussed). Action: Gage to contact Taylor Sparks (cc Sterling) to ask about feasibility/scheduling and possible student assistance for arc melting before the install so a prepped sample can be atomized while Bartosz is onsite. [68:00], [69:20], [71:00]
+  - Consider buying commercial powders (Valent or similar) to compare commercial ALS I10MG powder to in-house-prepared alloys. Discussed possible road trip/visit to local industry (Valmet/Valent) for powder handling and safety best practices; lab funds would cover travel. [77:10], [78:10], [80:00]
+
+- Action items and assignments (explicit)
+  - Gage: walk the site with phone to show electrical, chiller, transformer location; confirm hoses/adapters and argon purity/regulator; coordinate with Nick for argon/regulator and with Kevin for push fittings. [06:40], [17:50], [18:40]
+  - Dave/BYU: act as runner for parts and supplies, confirm available hoses and adapters on campus. [15:30], [16:00]
+  - Bartosz: will bring spare fittings (e.g., T-piece), supply training videos and access to the online database, conduct installation and training, measure plug voltage on arrival. [11:56], [41:30], [22:00]
+  - Sterling: arrange dehumidifier startup, order/approve purchase of high-purity Al rods, procure extra desiccant, and review glovebox/enclosure options (budget up to ~$4–5k discussed). [59:30], [60:50], [63:40]
+  - Gage: research/purchase McMaster Al rods and desiccants, email Taylor Sparks re: arc melting (cc Sterling), and coordinate with Barry/Kevin/Nick for hoses, fittings, and gas. [61:00], [69:20], [18:40]
+
+- Training resources and documentation
+  - Bartosz will add BYU staff to his database/website with operation videos and documentation covering assembly, operation, and part lists. Those resources should be reviewed in advance of hands-on training. [73:00], [74:10]
+  - Sterling/Gage plan to capture installation videos for internal use and to watch supplier training videos if needed. [74:50]
+
+- Scheduling constraints & next steps
+  - Bartosz prefers 28th arrival and will adapt schedule; installation on 28th with subsequent training over next two days is preferred but flexible depending on travel/other visits. [00:20], [57:10]
+  - Gage notified class constraints (limited windows on Monday); all agreed to coordinate precise start times (morning vs. afternoon) and split training across days as needed. [45:40], [46:20]
+  - Next immediate tasks: confirm argon order/purity and regulator; verify onsite power plug or plan hardwire; inspect heat exchanger connectors and identify required hose/adapters; start dehumidifier; order high-purity Al rods; contact University of Utah (Taylor Sparks) about arc-melt assistance. [16:20], [22:00], [11:40], [59:30], [61:00], [69:20]
+
+If you want, I can extract the exact transcript timestamps in mm:ss for each quoted snippet or produce a compact checklist of open items with owners and due dates for follow-up.
+
+  
+
+  
+    ## Highlights
+
+    > 12:49 Gage Erickson: OK OK, perfect. I I talked to Nick about getting argon. So that should be coming in tomorrow or the next day.
+> 13:44 Bartosz Kalicki: But if you were to want to process copper, then it's not going to be such an issue for you.
+> 14:25 Bartosz Kalicki: You know, as long as it gives us the 400 volts and 230 volts, we are fine. What is important is definitely that when I will get on site I will first measure the voltage in the plug before we get everything connected, just in case, just to make sure nothing was swapped because you know we use different a bit different colors.
+> 30:30 Bartosz Kalicki: I mean we are using like gloves. We have the anti static aprons. But in order to have the real issue, you would need to have the powder suspended in the air.
+> 40:24 Sterling Baird: Yeah. Yeah, so. We. If it becomes a big issue with the powders not I mean like.
+> 54:13 Gage Erickson: I'll talk to Nick about making sure we get five in argon. I'll work with Dave for I'll work with Dave for the pipe hookups and all that. If you'll send me the important part of the transcript for that.
+> 54:53 Gage Erickson: Good. That's an important skill, especially in running a business.
+
+  ## Transcript
+
+  00:00 Dave: Hi, sterling.
+00:02 Sterling Baird: Hey, how's it going?
+00:04 Dave: Good morning Good morning.
+00:06 Bartosz Kalicki: Hi.
+00:07 Sterling Baird: Winning and hey, bartaj. It's good It's good to put It's good to put a face to the to the name. Thanks for all your help so far bartaj on getting this getting all this going. It's been really helpful.
+00:21 Bartosz Kalicki: No problem. Yeah. Also, at this point, it seems that I can confirm that we will go with the 28th.
+00:29 Sterling Baird: OK.
+00:30 Bartosz Kalicki: I'm checking if I will have to squeeze a visit to New York on Thursday, Friday, depending on how they will be able to and so on.
+00:36 Sterling Baird: OK.
+00:42 Bartosz Kalicki: But 2028, there definitely would be too soon, so I will go first to.
+00:45 Sterling Baird: OK.
+00:47 Bartosz Kalicki: Salt Lake City, then.
+00:49 Sterling Baird: OK, great.
+00:55 Bartosz Kalicki: Is everything? Mm-hmm.
+00:57 Dave: Is, is, is Gage joining us, sterling.
+00:59 Sterling Baird: I I just messaged him. It looks like, oh, he's typing back to me, so just a second.
+01:06 Dave: OK.
+01:14 Sterling Baird: Based on that, I'm guessing the answer is yes, yes. Yeah, he's turning. And then thanks to Dave and Gage and and many others, all renovations are are done. It sounds like in terms of like just everything that needs to happen for. The The atomizer, if I'm correct there, Dave. I'll put you there.
+01:47 Dave: Yeah, I I'm I apologize for the length of time this has taken Bartos. I know we were hoping to. Get it done very quickly, but we're kind of at the mercy of the. People here on campus, and we can only push so hard.
+02:04 Bartosz Kalicki: Mm-hmm.
+02:07 Dave: So sorry about the delay.
+02:08 Sterling Baird: While
+02:08 Bartosz Kalicki: I fully understand we had one more system that was shipped around the same time, but right now it seems that the installation will be more like in December because because of how much work is actually needed and how they need to do stuff that they do not really.
+02:08 Sterling Baird: While still remaining friends. OK. Gotcha.
+02:26 Bartosz Kalicki: Want to do and it just keeps being pushed further all the time. So So.
+02:33 Sterling Baird: I'm sorry.
+02:33 Bartosz Kalicki: It it It it all happens It it all happens. Or waiting times, especially electrical work is always. A
+02:39 Sterling Baird: Mm-hmm.
+02:39 Bartosz Kalicki: A nightmare. That's why we usually to have for the transformer that we normally use because they allow it to be delivered within a week. They always have everything in stock. It's a. They have also a good quality to money. Perspective. So it helps a lot, but in general still it always takes a long long time. Perspective so
+02:56 Sterling Baird: Mm-hmm.
+03:03 Bartosz Kalicki: So right now, because so in this case I understand we have for the power for the optimizer. So for the induction model here we have the power for the chiller. The question is do you? Do you want to hardwire it or do you have any plugs already? Do you know what's the plan on that?
+03:22 Dave: I think right now the main power for the machine actually has a plug. And we can make sure that we have the correct plug. The The the The the male plug to hook to the machine or when if we decide we we could also hardwire it.
+03:39 Bartosz Kalicki: Mm-hmm. OK.
+03:44 Dave: So.
+03:45 Bartosz Kalicki: I'm in both that. Yeah, both the chiller and the atomizer. They come with the 32 amper male plaque already. So in this case you can either go for the female plag as a direct connection or something to put on the wall, but to be honest, hardwiring it is probably the most common. It saves money because the plaques, especially if you know in here I get the plaque for.
+04:11 Bartosz Kalicki: 30 $30. $40 in states I did sell them for hundreds just because of some additional certification and so on.
+04:14 Gage Erickson: 3rd.
+04:21 Bartosz Kalicki: So So most people
+04:21 Dave: Yeah.
+04:21 Bartosz Kalicki: So most people actually just hardwire. See directly and in some states like New York, it's even the low that if the system is going to be permanently there, it has to be hardwired.
+04:29 Dave: Yeah.
+04:32 Bartosz Kalicki: So this is actually something I would recommend to do.
+04:37 Dave: Gage, since you're since you are down there, you could go and point your camera at the electrical that we have set up for it and also show the chiller. Drop Drop drops are Drop drops are in place and show what we have and then I think that might be a good idea. And then Bartos can comment on what he thinks we should do.
+05:02 Gage Erickson: Sure. Let me. Let me join from my my phone and then I'll walk over there.
+05:06 Dave: OK, OK.
+05:07 Bartosz Kalicki: Yeah, yeah.
+05:08 Gage Erickson: Let's see.
+05:10 Sterling Baird: W.
+05:10 Bartosz Kalicki: So in terms of power, the only thing is, depending on the regulation at your place, if we will see that we will need to swap the phases.
+05:19 Gage Erickson: If we will see, sorry.
+05:26 Dave: OK. So Gage, let's just kind of show the outside of when you get on your phone, just kind of pan and show them what we're doing. Let's just give him an overall mental picture here of of what he will be doing.
+05:43 Gage Erickson: Yeah, so here's our. Yeah, so here's our. Just gotta switch off. Just got to switch over.
+05:49 Dave: Yeah. Turn off your. You need to turn off your computer one. That's all we're seeing right now.
+05:54 Gage Erickson: Computer.
+05:57 Dave: Yeah. Now, now we have no audio or visual from you.
+06:13 Sterling Baird: Oh, I see, I'm seeing.
+06:13 Bartosz Kalicki: I I mean, I see. I see from the phone so I have. Yeah.
+06:16 Dave: OK. I I am not, but that's fine as long as you guys are.
+06:20 Bartosz Kalicki: Yeah, I see the view from the phone. So OK and we lost.
+06:29 Dave: So just Bartos to bring it up to speed in the space where we have, we actually constructed an enclosure within the room. There we go.
+06:40 Gage Erickson: Can you hear me now?
+06:40 Dave: There we go. Yeah, that's great.
+06:42 Gage Erickson: OK.
+06:43 Sterling Baird: Yep.
+06:43 Bartosz Kalicki: Yes.
+06:44 Gage Erickson: Alright
+06:44 Dave: So we've got this enclosure, go for it.
+06:44 Gage Erickson: Alright so here.
+06:46 Bartosz Kalicki: I see. OK. That's perfect.
+06:55 Gage Erickson: So here's the atomizer kind of draped in. The wrapping still. So here's here's the yeah go ahead, Dave.
+07:04 Dave: And. No, you explain as you go.
+07:07 Gage Erickson: OK. So here's the the chilled water and return type's there, and this is a compressed air. And then here's our electrical down at the bottom here.
+07:19 Bartosz Kalicki: OK, so you have for that plug directly on the wall, OK. Perfect. Yeah. OK, now I sorry. Now I remember that we did the modification for you to make it all easier. So you have the heat exchanger, you have the additional plug on the back for it so that we have one connection for the whole optimizer.
+07:35 Sterling Baird: Good.
+07:41 Bartosz Kalicki: In general, it's fine because the optimizer takes up to, I think 60 number by itself. So the plug So the plug is enough easily enough for both. OK then. Yeah, we will use that chilled water. So in this case, it's always about the small details. For example, what kind of holes right now can we connect to the chilled water? Because with the with the heat exchanger in, let's say the standard is a pretty large connection.
+08:03 Sterling Baird: Mm-hmm.
+08:09 Gage Erickson: I.
+08:11 Bartosz Kalicki: But I think it was changed to the smaller one, so the 30mm. Hose.
+08:18 Dave: Not something Gage that's something Not something Gage. That's something we need to look at and make sure that we have these are going to be SAE standards and so. I think I think those are probably three quarter threads, so we'll we'll make sure that we have appropriate adapters to hook the chilled water to the heat exchanger.
+08:40 Gage Erickson: This is on the the heat exchanger.
+08:42 Bartosz Kalicki: I I mean he no, I mean heat exchanger should already have the connectors.
+08:45 Dave: OK.
+08:46 Bartosz Kalicki: So you can easily unwrap it just to take a look on the on the outlets that are currently there. If something will be missing, I can just take it with me.
+08:49 Dave: OK.
+08:51 Sterling Baird: Hmm.
+08:56 Bartosz Kalicki: But it should have both options. An option for a large 25 millimeter hose as we are using normally and the smaller one for 30mm. So in this case it's probably set for 30mm.
+09:09 Dave: OK
+09:09 Bartosz Kalicki: If not, we will just have to do the swap, but that can be on me, so the best will be probably to use 1/2 inch hoses to for everything. We will use the 30mm connections, it will fit well.
+09:10 Dave: OK. OK.
+09:23 Bartosz Kalicki: And it should be fine on both ends.
+09:24 Dave: OK.
+09:24 Bartosz Kalicki: And it should be fine on both ends
+09:30 Dave: He's gonna. Yeah, take that apart. We Gage. We probably need to make sure that we've got some hoses.
+09:38 Gage Erickson: Thank you.
+09:38 Dave: So. We'll need to have a chat with Barry to make sure we have the hoses.
+09:47 Bartosz Kalicki: Yeah Yeah you can check how much Yeah, you can check how much was supplied with the atomizer itself, because there should be already a bit of the extra hose in there. You know, in the worst case scenario anything will be needed like small parts which may be a nightmare sometimes on your end I will.
+09:52 Gage Erickson: Hello.
+09:52 Dave: Yeah.
+09:52 Gage Erickson: Go ahead.
+09:55 Dave: OK.
+10:04 Bartosz Kalicki: Drive to Ace Hardware or Home Depot, then get it.
+10:07 Dave: We OK, we we can help with that as well and we have pretty good supply. Things Things here at BYU, so that shouldn't be a problem. My my plan. For my purposes, being there will be to kind of be a runner for you to make sure we can get all the things that we need for hookups as as far as hoses go, is there AI mean, do we need to do high quality industrial hose it doesn?
+10:31 Bartosz Kalicki: Of course.
+10:38 Dave: Feel like we should put. Garden hose Garden hose on there for example, but.
+10:43 Bartosz Kalicki: No No, definitely not a garden hose, OK? So I see what it is right now about. So we have them. So we will need to hook up the facility to the main coolant in and out. So this is in a one inch, so we will probably need to put an adapter on your side to go from what size you have.
+11:02 Dave: OK.
+11:02 Bartosz Kalicki: To the one inch and put a one inch holes in between OK.
+11:05 Dave: Oh. OK.
+11:08 Bartosz Kalicki: Yeah, there is nothing right now. So we will need to connect the one inch and you can see that on my side already. It was fitted to half inch. So the same size as is in the induction module and there should be that holes included with the system.
+11:12 Dave: OK.
+11:24 Bartosz Kalicki: Right now, the fitting that was kind of like empty. In another package, yeah. Exactly.
+11:32 Dave: Also that that hoses intended for the for the coolant loop.
+11:34 Bartosz Kalicki: On my. Yeah, I mean, so this is the smaller one. So this is the half inch. This one will be between the exchanger and the optimizer.
+11:45 Dave: OK.
+11:46 Bartosz Kalicki: So as a supply and return. So it seems only what we need is a bit of one inch holes to connect between the heat exchanger and the facility.
+11:48 Dave: OK. OK. We we will. We will make sure that we have stuff for that.
+12:05 Bartosz Kalicki: OK, so coolant is fine.
+12:06 Dave: And then the compress compressed airline, same thing we can, it's right there on the wall next to the heat exchanger lines, so.
+12:16 Bartosz Kalicki: OK. Yeah, same thing. Just to make sure that we can connect the 6mm line directly to the back of the optimizer so you can see that the six per 4mm tubing is already included.
+12:25 Dave: OK.
+12:31 Bartosz Kalicki: It's just to make sure that you have the right connector, otherwise it will be a nightmare to get. And yeah, I even know that you can get those on Amazon if needed.
+12:42 Dave: Gage, I think we need to chat with Kevin. I think Kevin's got all the push fittings that we need to hook up to the compressed air there.
+12:49 Gage Erickson: OK OK, perfect. I I talked to Nick about getting argon. So that should be coming in tomorrow or the next day.
+12:56 Dave: OK. OK.
+12:59 Gage Erickson: Although Bartos the we we had an option between like 100% argon and research grade argon. Do you know if? If it matters so much, as long I mean, as long as there's not octane. Right, it's fine.
+13:12 Bartosz Kalicki: We yeah, we are using usually the five N so 99.999.
+13:18 Gage Erickson: Uh.
+13:18 Bartosz Kalicki: But it all will depends at the end about the material that you are using, because it's just that with even with many pages we will just be able to reach certain level of oxygen. That will depend on the purity of the argan that you have. But even if. It will be like 4.5 N it still will be usable. It depends on the material. For aluminium magnesium we definitely want to go with as little oxygen as possible.
+13:42 Gage Erickson: Good evening.
+13:44 Bartosz Kalicki: But if you were to want to process copper, then it's not going to be such an issue for you.
+13:49 Gage Erickson: OK.
+13:50 Sterling Baird: Yeah. So probably we do five and then just given the aluminum.
+13:55 Gage Erickson: Then I'll I'll check with. Nick again about Nick again about the purity level of the argon we order.
+14:02 Dave: OK. Gage while you're there
+14:04 Bartosz Kalicki: Yeah. So.
+14:05 Dave: Gage. While you're there, let's flip your phone again. Gage while you're there let's FL Let's show Bartos, the transformer and maybe step up the ladder there. Show him what's up on top. So there there's our transformer location.
+14:17 Bartosz Kalicki: Mm-hmm.
+14:22 Dave: Next to the room and then.
+14:25 Bartosz Kalicki: You know, as long as it gives us the 400 volts and 230 volts, we are fine. What is important is definitely that when I will get on site I will first measure the voltage in the plug before we get everything connected, just in case, just to make sure nothing was swapped because you know we use different a bit different colors.
+14:40 Dave: OK, OK. OK.
+14:47 Bartosz Kalicki: Yeah, that should be fine.
+14:50 Dave: And then yeah, this is up on top. So we've got the dehumidifier. And all of the ductwork and and this isn't specific for you, but this is so that we can do proper exhaust in that room for everything we're doing inside.
+15:07 Bartosz Kalicki: I mean in case of work with powder, that's definitely something that is recommended if possible, is recommended to have it slightly enclosed. The powder will always have the tendency to just move around. If If you want, my only recommendation would be that if you know where it's going to be a puff out from the enclosure, you can put this kind of like stickers on the floor that when they get dirty you just remove one. You have one underneath, and anybody that's leaving the room has some powder on like the shoes is going to leave the. It's on the sticker.
+15:39 Sterling Baird: OK.
+15:40 Gage Erickson: Good idea.
+15:41 Dave: Oh, I like that.
+15:42 Bartosz Kalicki: So if
+15:42 Dave: OK.
+15:42 Bartosz Kalicki: So if you have such a good enclosure, that's that's the last recommendation I would do there. Yeah. In case of argon, my only thing is that it has to be 8 bars.
+15:47 Sterling Baird: OK. Thanks.
+15:54 Bartosz Kalicki: So what? You need to make sure that when you have the regulator is the one that allows you to change the pressure. For example, in the range of zero to 10 bars. But for example, if you have a already in regulator, but it's a welding regulator, they are usually set.
+15:54 Sterling Baird: Hmm.
+16:07 Bartosz Kalicki: To free bars and you can only set the flow. But this system has quite But this system has quite a lot of. Nomadic systems inside which allow the higher pressure to be available.
+16:18 Dave: OK.
+16:20 Sterling Baird: That's 116 P, SII think.
+16:20 Dave: Gauge that. Gage, do we already have the regulator for the argon?
+16:25 Bartosz Kalicki: Steve.
+16:31 Gage Erickson: No I don't think No I don't think so No, I don't think so.
+16:33 Sterling Baird: Yeah, this doesn't sound familiar.
+16:33 Dave: OK.
+16:34 Sterling Baird: Yeah this doesn't sound familiar
+16:34 Dave: That's a. That's a, that's a question to ask Nick when you ask him about the argon. Let's make sure that we've got a proper regulator by the time he Bartos gets here.
+16:47 Gage Erickson: A. An 8 bar regulator.
+16:50 Dave: Usually like. Like Barto says we we can get an adjustable 1. Nick will be our best source of knowledge there of where? But yeah, like like he says, minimum of eight bar.
+16:57 Sterling Baird: Mm.
+16:59 Gage Erickson: Show me.
+17:00 Sterling Baird: Yeah. Mm-hmm.
+17:04 Gage Erickson: OK.
+17:05 Bartosz Kalicki: Yep, it's usually going to be zero to 10. I guess when you have this kind of range, but we just need to make sure that we can set 8.
+17:09 Dave: Yeah.
+17:10 Gage Erickson: OK. Sounds good.
+17:15 Bartosz Kalicki: OK. Yeah. So in case of so that would cover argon.
+17:22 Gage Erickson: OK.
+17:22 Bartosz Kalicki: Same thing is just to make sure that we have the right connection, the right tube getting us from the tonic to the system. So prob So probably you will also need to find the right adapter to put on the regulator there.
+17:36 Gage Erickson: Is that go directly into the atomizer?
+17:40 Bartosz Kalicki: I I it should if you can take a look on the back, it should have.
+17:43 Gage Erickson: Yes.
+17:46 Bartosz Kalicki: There should be AT for that. I need to see what was the last OK. Yeah, you can see the 22646 per 4mm connections. This is where we are going to connect argon and with the parts there should be AT used for it.
+18:06 Dave: OK.
+18:10 Bartosz Kalicki: Yeah Yeah, but one. There was just like one is pressurizing the furnace itself. The other one goes to a valve that allows us to feel the Chamber.
+18:20 Dave: OK
+18:20 Bartosz Kalicki: But both are 6 per four and I will just make a comment to make sure that maybe I will bring an extra tea.
+18:21 Dave: OK.
+18:27 Bartosz Kalicki: We'll meet just in case.
+18:28 Dave: OK. And then and then Gage will work to make sure that we have all the correct adapters to get from the argon tank to the 6mm. It's the plastic tube.
+18:41 Gage Erickson: Sounds good.
+18:42 Dave: So OK.
+18:46 Bartosz Kalicki: All right, so we have enough space. Everything is planned, the installation if everything will be kind of like a plaque play. The installation will take two hours, maybe three hours top just to set it in a position connected to some basic testing, and then we will be able to just start the operation. So we. Will go through some theoretical training. I will add you then to our database system where you will be have access to some videos on the operation of the system and with the system we have supplied roads of aluminium 4047 which is kind of like a benchmark material which we use for the.
+19:28 Sterling Baird: Hmm.
+19:29 Bartosz Kalicki: Showcase of the machine. It's if we don't want to like for example in case of copper you need to wait longer for cooling it for heating up in case of. Teen and low melting Teen and low Mel Teen and low melting point. It's just going too quickly. So we usually use aluminium. And I added some extra rods so that we can make more trials. One trail is usually taking one hour, but if you will have something in mind that you would like to maybe test it together, we can plan time for it.
+19:52 Sterling Baird: OK OK. OK. Yeah, actually, yeah, that would engage. We should probably chat about what we might want to try out and maybe get a get a sample ready.
+20:10 Gage Erickson: Yeah.
+20:12 Bartosz Kalicki: Yeah, you can see if if you open the furnace part you will see exactly the area where we can fit the material.
+20:14 Gage Erickson: Yep.
+20:21 Bartosz Kalicki: So in case of like maximum diameter is 20mm on the on the right you have the lock. Yeah. And if you just move the foam out, you can see the Crucible. So we have a Crucible. Inside is a ceiling rod and you can fit the material in this space in between.
+20:40 Gage Erickson: OK. OK. Hmm.
+20:45 Bartosz Kalicki: So it should be around 20mm between the ceiling rod and. The The edge The edge of the Crucible. In some cases it is possible to work without the ceiling rods if it will have. If it will be necessary, but we will have to discuss it and but once you get a little bit of knowledge, it is possible to operate that way too. So if you have a feedstock that is really hard to put otherwise like some chunks, you need to just drop it.
+21:13 Sterling Baird: Hmm. What? What's the height that we could? I'm I know the Crucible dimensions.
+21:21 Bartosz Kalicki: 1212 centimeters, I would say.
+21:24 Sterling Baird: OK.
+21:24 Bartosz Kalicki: The mater The material can slightly even
+21:26 Gage Erickson: And.
+21:26 Bartosz Kalicki: The material can slightly even be higher than the Crucible. I would say the inner height is around 1011 centimeters, but we can go a bit higher than that.
+21:32 Sterling Baird: OK. Yeah. OK.
+21:36 Bartosz Kalicki: You just need to make sure that it will not over fill the Crucible once everything melts.
+21:41 Gage Erickson: Do you?
+21:41 Sterling Baird: OK.
+21:43 Gage Erickson: Do you? Do you only turn on the heat once? This is closed. Or can you start melting it with it open?
+21:51 Bartosz Kalicki: You can. You can start melting it with it open, but I would say there is no reason to unless it is a very specific kind of research that you want to perform once you close the fairness and you change the pressure in the furnace, it automatically locks there is like.
+22:04 Gage Erickson: Catcher.
+22:11 Bartosz Kalicki: A A bolt coming and locking the furnace. But if you start with it fully open. The bolt will get in, but it will not be able to block anything. The bolt will get in but it will not be able to block any
+22:19 Gage Erickson: Yeah. Gotcha. OK.
+22:25 Bartosz Kalicki: But it is possible there are like also some additions of like different flavors or some additions to the flap that allow to open the furnace in the middle of operation just a little bit to like place some more material inside.
+22:25 Gage Erickson: And.
+22:39 Bartosz Kalicki: It is fine, but it's fine. More like for gold. Silver maybe copper materials that do not oxidize so easily. Otherwise I would try to avoid it. In case of aluminium it can affect the flow.
+22:54 Gage Erickson: Gotcha. Makes sense.
+22:55 Dave: OK. OK. Looking forward to seeing you Bartos. Looking forward to seeing
+23:04 Sterling Baird: I.
+23:05 Dave: I need to go to another meeting, so I'm gonna let you guys go and I will be there on the 28th to help wherever I can.
+23:07 Sterling Baird: OK.
+23:08 Bartosz Kalicki: No problem.
+23:15 Dave: Make sure we facilitate a smooth transition here, so we will see you on the 28th Bartos. Thank you.
+23:23 Sterling Baird: Could you stay on for a second bartosh?
+23:23 Bartosz Kalicki: Yeah. Thank you a lot.
+23:24 Gage Erickson: OK.
+23:26 Sterling Baird: Thank you, Dave. Yeah, appreciate it.
+23:27 Bartosz Kalicki: Yeah, of course.
+23:28 Gage Erickson: Thanks, Liv.
+23:31 Sterling Baird: Awesome Awesome and Awesome. And then pronunciation of your name is A is a. How do you pronounce your name? Just so I don't.
+23:38 Gage Erickson: But.
+23:38 Bartosz Kalicki: Bartos.
+23:40 Sterling Baird: Bart Bart those OK Bart, those OK, cool. The The there were two other things just kind of a quick note to gauge. It might be worth getting trying to get the dehumidifier running in advance of. Well actually I think it would be really good to try to get the dehumidifier going. Before. Installation and have it like just kinda see what our steady state is gonna be.
+24:05 Gage Erickson: Mm-hmm.
+24:05 Sterling Baird: For things For things and then also get the I think I'll order another error gradient like monitor that we install inside the enclosure and then and then bhartaj one of the things that we've been kind of. For things and then also get the One of the things we've been kind of behind on is. Glovebox handling of of the powders.
+24:27 Bartosz Kalicki: No worries.
+24:30 Sterling Baird: In your. In your experience, and I guess what you see at different different places, like if we went with one of the. Cheaper plexiglass style glove boxes that still has a antechamber or like bringing things in and out. Does that seem sufficient? I'm I'm usually work used to working in a battery glove box.
+24:48 Bartosz Kalicki: I would say it is.
+24:50 Sterling Baird: Yeah, go ahead.
+24:51 Bartosz Kalicki: I would say it is I would say it is. It all depends what you actually are going to work with, but to be honest, most of the customers, most people that we work with, they do not operate with the globe box. If you have an area that can be kept clean and where you can handle the pow.
+25:03 Sterling Baird: OK OK. OK.
+25:10 Bartosz Kalicki: That's going to be generally enough That's going to be generally enough if you definitely don't store it in like a, you know, just a plastic box.
+25:12 Sterling Baird: OK.
+25:19 Bartosz Kalicki: Have some containers and it's just good to put some silica gel pockets in the container for storage of the powder. That helps a lot.
+25:20 Gage Erickson: And.
+25:22 Sterling Baird: OK. OK.
+25:28 Bartosz Kalicki: Otherwise, it may clump a lot or even oxidize over time.
+25:29 Sterling Baird: Yeah. Gotcha. Yeah.
+25:33 Gage Erickson: It's like the.
+25:34 Sterling Baird: OK. Yeah. So to put those in the in the container itself, yeah.
+25:36 Gage Erickson: Oh, is it called death certificate? Like this can happen.
+25:40 Bartosz Kalicki: Yeah, but glove box sometimes we operated. But, but only when we like pack a samples that we are shipping. But very often when we pack the sample, we just then put it into a, let's say, a vacuum bag that we, you know, vacuum and keep that way even if even if there is a little.
+25:52 Sterling Baird: Goodnight. Yeah. OK.
+26:03 Bartosz Kalicki: Bit of air. If the powder is already like, well passivated, it will not be a problem at all.
+26:06 Sterling Baird: Yeah. OK. That makes a lot of sense.
+26:13 Gage Erickson: So you should.
+26:14 Sterling Baird: Oh, so yeah, go ahead, Gage. OK.
+26:17 Gage Erickson: Bartow, she said that on the 20 on the 28th, you'll do the installation. That'll take like two or three hours, and then how how? How many hours of training is there after that?
+26:24 Bartosz Kalicki: Yeah. Let's see. I mean, two more so we can still work that first day already on the theoretical side and general work and then for the two more days full hours, I'm just going to be with you and we will handle the training. So more or less when I will final. My part we can just do whatever you would like to work with.
+26:53 Gage Erickson: OK
+26:54 Bartosz Kalicki: And usually the training is one day for the induction year, so one day will be probably more around the necessary parts and one day can be more flexible.
+26:54 Gage Erickson: OK. Awesome. Do you? Do you know? Do you have any kind of like a hourly schedule yet for the 28th? What? What time you plan on being here?
+27:17 Bartosz Kalicki: I I do not have my flight yet as I'm just trying to, let's say, organize everything, but I will probably arrive a little bit earlier just to maybe be on Saturday just to have a little bit of rest and then we can just start early. Whatever time is comfort. For you, we can start and same in case of what time we will finish, I will finish on that time.
+27:42 Bartosz Kalicki: No no problems No, no problems.
+27:45 Sterling Baird: Yeah.
+27:45 Gage Erickson: Yeah, the I've got. I've got. Classes Classes at my university for majority of of the day on Monday. Classes at my university So like there'd be there'd be like maybe two or three hours that I could be there, but intimately throughout the day, you know? So I won't be.
+27:54 Bartosz Kalicki: Mm-hmm.
+28:02 Gage Erickson: I won't I I won't. I won't be like available for majority of that day, so.
+28:07 Bartosz Kalicki: It's OK. I mean, most of the work will be done in the two next days if you know the schedule, we can kind of just like plan the day. That way I can, you know, I can just we can do the installation then we can make a longer.
+28:12 Gage Erickson: OK.
+28:22 Bartosz Kalicki: Break and we can even meet in the afternoon. In my case, I'm really flexible on that. In my case I
+28:29 Gage Erickson: OK.
+28:30 Bartosz Kalicki: So whatever schedule is going to be comfortable on those three days, I will keep to that.
+28:37 Gage Erickson: Yeah. I mean, at least, at least for me, sterling, I don't know what your schedule is like that day, but probably from 1:00 to 4:00 is? I I I I could I I could on Monday I could use I I could on Monday I could use that time. Here at the atomizer but Here at the atomizer but outside of one to four I
+28:52 Sterling Baird: Oh, OK.
+28:52 Gage Erickson: Here at the atomizer, but outside of one to four, I'd be kinda busy so.
+28:54 Sterling Baird: Yeah, I mean, I teach. I teach at noon Monday, Wednesday, Friday. That's my only part constraint on things so.
+29:01 Gage Erickson: OK.
+29:03 Sterling Baird: Yeah, so I think. I think we should be OK in terms of. Scheduling Scheduling in time
+29:08 Bartosz Kalicki: As I said, if if you will want if we'll see that OK, we need to wait like working to be longer, it's fine.
+29:08 Sterling Baird: Scheduling in time 10%. OK.
+29:18 Bartosz Kalicki: It's for me. It's perfectly fine. We can start as early as you want and then the idea is just to make sure that we finish everything during the my stay with you.
+29:29 Gage Erickson: Mm-hmm.
+29:31 Bartosz Kalicki: So that's all.
+29:31 Sterling Baird: Yeah. Yeah, one. And I guess a couple couple more things that come to mind. One is that we did a test of our vacuum. It seems like we're OK on the like our explosion proof vacuum side things. So we've got we've got that. Anti this was kind of another maybe another question of based on what you've seen like. Anti Anti static. Like.
+30:03 Bartosz Kalicki: So what? What you get with this system?
+30:05 Sterling Baird: Shoes and Shoes and other things yeah go Yeah. Good.
+30:08 Bartosz Kalicki: What you get with the system is an anti static apron.
+30:13 Sterling Baird: Yeah.
+30:13 Bartosz Kalicki: You're. I'm also having one more of those for you.
+30:15 Sterling Baird: OK. Thank you. Yeah.
+30:16 Bartosz Kalicki: You just put, you know, the strap you put it on the hand. So in general this is kind of like a it's advice to use, especially when handling large amount of powder. But to be honest we are not really doing that.
+30:20 Sterling Baird: Yeah. Yeah. OK.
+30:30 Bartosz Kalicki: I mean we are using like gloves. We have the anti static aprons. But in order to have the real issue, you would need to have the powder suspended in the air.
+30:39 Bartosz Kalicki: You will have to have a like a real visible discharge, so it's not something that can happen so easily.
+30:46 Sterling Baird: OK. So precaution. Yeah, like precaution.
+30:49 Bartosz Kalicki: Yeah, definitely. Let's make sure that we don't handle the powder well, but that's it.
+30:50 Sterling Baird: And then wait a minute. Yeah, yeah, that makes sense. Alright. And then for one of the samples that we want to test, actually we probably wanna run two tests. One is that we'd have some high purity aluminum rod that we would try atomizing and then another sample that's a high purity aluminum rod that kinda has a is bored out. So it's sort of like a intercruciable that we. Pack powder into.
+31:23 Sterling Baird: Like other other types of powders to get Like other other types of powders to get our. Are other elements in there and then the thought was that we would kind of cap it or or use like a press fit?
+31:27 Bartosz Kalicki: Mm-hmm.
+31:34 Sterling Baird: And like And like the inner board And like the inner board, so like compress some of the powder down. And And try atomizing that and getting kind of the full melt pool.
+31:45 Bartosz Kalicki: I I mean, as long as you don't put like pure powder in the Crucible, it should be fine.
+31:51 Gage Erickson: OK.
+31:52 Bartosz Kalicki: The problem with the pure powder is that very often it's kind of like melted, but each single particle doesn't really fully melt. It stays in form of a particle, so it's kind of like you have it all centered. Even though you are much higher in case of temperature than you should be. And still you don't really see the melt. But if you have some of the material already melted and. Then. How they can dissolve in the melt? It should work properly.
+32:18 Sterling Baird: OK. OK. Gotcha. So we'll I think we'd like to try having the at least try one run where the powder is in the is in the Crucible, right. Like in this kind of like powder in this aluminum percible to see how that goes.
+32:32 Bartosz Kalicki: Sure.
+32:35 Sterling Baird: But if it doesn't like we can. We'd have to force that to work, but I.
+32:37 Bartosz Kalicki: Yeah, yeah, we can use the extra time just to to run those kinds of experiments.
+32:41 Sterling Baird: OK. Yeah. And then for mixing like I'm trying to, I should probably know the answer to this question, but. Is there induction mixing that happens?
+32:58 Bartosz Kalicki: Yeah, in most in some. It's still nice to have.
+32:58 Sterling Baird: Of the Of the yeah, yeah, I'll try.
+33:03 Bartosz Kalicki: Master alloy whenever possible, but you can see that there is the mixing when we reach the temperature material is melted. It doesn't cut like heat up or continuously. It's going to kind of make this pulsation. That causes the whole whole melt to mix a bit. Master alloy whenever
+33:06 Sterling Baird: Yeah. OK. OK. That makes sense That makes sense OK That makes sense OK I think That makes sense. OK, I think that.
+33:23 Bartosz Kalicki: It's not something that I love to rely on, so like whenever possible I would say that having master alloy is generally better.
+33:24 Sterling Baird: I think that covers my Oh yeah. Yeah. OK.
+33:32 Bartosz Kalicki: But But if it's not like some, you know, critical addition of small amount that may melt may. If it's something with much higher melting point, there is a chance that it will kind of just like clump in one spot you know and not really get dissolved that well and.
+33:33 Gage Erickson: And.
+33:38 Sterling Baird: OK.
+33:49 Bartosz Kalicki: So well mixed.
+33:50 Sterling Baird: OK
+33:51 Bartosz Kalicki: So maybe if you have like.
+33:51 Sterling Baird: OK.
+33:53 Bartosz Kalicki: Aluminium plus a bit of the master alloy that will definitely mix well.
+33:58 Sterling Baird: Yeah. And would you recommend a general casting? Like, if we're gonna make our own master alloy from maybe stock powders. To do like a casting process for that.
+34:12 Bartosz Kalicki: I mean, depending on what what you have available, you know using plasmark will usually be better even in case of powders that that if you have like an arc melter that is suitable for powders that would probably be easier because you could basically mix anything that way.
+34:19 Sterling Baird: OK. OK. OK. OK. Yeah, that makes sense. Cool.
+34:34 Bartosz Kalicki: Even if there was like a large melting point difference with the arc, you will have everything melted so.
+34:43 Sterling Baird: OK, sounds good. I think that covers all my all my extra extra questions. So we're looking forward to having you.
+34:50 Gage Erickson: So
+34:51 Bartosz Kalicki: What?
+34:52 Gage Erickson: So.
+34:52 Sterling Baird: Oh yeah, good. Go ahead.
+34:53 Gage Erickson: Just just on over the, the schedule again, was there a specific reason we decided to start on the 28th?
+34:59 Sterling Baird: Oh, that New York.
+35:02 Bartosz Kalicki: Yeah
+35:02 Sterling Baird: He's.
+35:02 Bartosz Kalicki: Yeah I Yeah, I mean, so as I understand, this is even better for you to go start 128 if possible. I hope just to make sure that I have the, you know, the two days free afterwards, because I may need to visit one more place on my way. So So that would definitely be preferable to go with 28 nine when 35 and then I may be able to squeeze something else on my trip.
+35:32 Gage Erickson: You have. You're saying you have another responsibility like after the 30th on the 1st?
+35:39 Bartosz Kalicki: But it would seem so that if I'm already in the states, I may have to visit one.
+35:40 Sterling Baird: Pretty likely, yeah.
+35:43 Bartosz Kalicki: I'm trying just to get the details but it seems that I may have to visit one more place on the way.
+35:47 Gage Erickson: Yeah. OK, got you. OK, sounds good.
+35:52 Bartosz Kalicki: But yeah, in case of your schedule, I will just adjust myself. So that
+35:58 Gage Erickson: Yeah. So if it's not a big deal for me to be there on Monday, that's fine.
+35:59 Bartosz Kalicki: So that.
+36:02 Gage Erickson: I'm I'm completely open the whole rest of the week, so if if if it came down to that we did start on the the 29th and 30th and maybe the 1st. That I I'm completely free all those days. But if it's a big deal for me to be there on the 28th, then that's fine. You 20th to 30th.
+36:18 Bartosz Kalicki: Yes. We will just cover the installation, put everything in place. I will do a very full training, prepare everything for for the I mean I will do the testing and prepare everything for the training. Take all the consumables from the boxes and just organize everything. It's mostly going to be this kind of work. I will want to make sure that it heats up fully. That's the coolant flow works.
+36:48 Bartosz Kalicki: So So it's nothing very critical.
+36:50 Sterling Baird: And.
+36:51 Gage Erickson: OK, sounds good.
+36:51 Sterling Baird: I think we'll I think we'll take videos and then Gage, you can if there are any videos that is like, oh, it'd be really good for you to see this before the Tuesday training. Then maybe that evening if you have time, then we watch some of those.
+37:03 Gage Erickson: Yeah.
+37:04 Bartosz Kalicki: Yeah, but you will also get access to like a website where we have videos.
+37:05 Sterling Baird: That's. Yeah.
+37:09 Bartosz Kalicki: Which just tell about Which just tell about the operation about like how to put assembly everything together, so you will also have access to that. So no worries.
+37:19 Gage Erickson: Sounds good.
+37:21 Sterling Baird: Yeah. Yeah. Thanks very much.
+37:22 Bartosz Kalicki: OK then.
+37:23 Sterling Baird: Looking forward to having Looking forward to having you here.
+37:24 Bartosz Kalicki: Sure Sure Yep Sure. Yep. Let me know if you have any questions, anything to add extra things that you would like to cover and I will make sure that I'm ready for it.
+37:34 Gage Erickson: Sounds good. Appreciate your bhartosh.
+37:36 Sterling Baird: OK OK OK
+37:37 Bartosz Kalicki: Hey
+37:37 Sterling Baird: OK thanks
+37:37 Bartosz Kalicki: Hey, thank you for the meeting.
+37:38 Sterling Baird: OK. OK. Thanks for that. See you.
+37:39 Bartosz Kalicki: That helps a lot.
+37:40 Sterling Baird: Yeah
+37:41 Bartosz Kalicki: See you.
+37:41 Sterling Baird: Yeah, yeah.
+37:42 Gage Erickson: You have a moment staring.
+37:44 Sterling Baird: Yeah, yeah, I can sail. Yeah.
+37:47 Gage Erickson: So. Was this? Was this was Was this the aluminum you were referring to that you Was this the aluminum you were referring to that you wanted to test?
+37:52 Sterling Baird: No, we'll get some. Oh, actually, that's a good point. I was thinking of ordering from McMaster.
+37:59 Gage Erickson: Uh.
+38:01 Sterling Baird: Doing. A A. Either McMahon, probably McMaster to start out with and just trying to order some high the highest purity aluminum rod that we can from there. And then I guess the outer diameter would be 20. 20mm and then we'll probably it'll probably be good to talk with the machine shop folks if 20mm and then we'll probably it'll probably be good to talk with the machine shop folks if to see whether it. Is reasonable. Actually, no, I think. I think we should be fine, like going about 3 inches. About 3 inches deep into one of these.
+38:36 Sterling Baird: One of these One of these rods. And then I guess we'll want to order.
+38:42 Gage Erickson: OK.
+38:43 Sterling Baird: Ideally a. The right size of rod that could be press fit into it. So I guess trying to get 2 diameters of of rods.
+38:54 Gage Erickson: You're saying two different, two different diameters of aluminum rods. SO11 large 20mm diameter, one that could fit within the drill hole.
+39:03 Sterling Baird: Yeah yeah that's right the drilled out The drilled out portion, yeah.
+39:07 Gage Erickson: What's what's 002 cap it after you put the powder inside?
+39:11 Sterling Baird: Basically, yeah.
+39:11 Gage Erickson: Gotcha
+39:12 Sterling Baird: And to compress the powder down to make it hopefully easier to easier to melt.
+39:12 Gage Erickson: Gotcha. Yeah.
+39:19 Sterling Baird: So.
+39:20 Gage Erickson: Is that some? Is that something you'd like me to do? Is to find that or.
+39:24 Sterling Baird: Actually, yeah, yeah. If you wouldn't mind.
+39:27 Gage Erickson: OK.
+39:27 Sterling Baird: One of my things is One of my things is I think we have some McMaster credentials on BYU VCL. And so you can just think about and say, hey, look at McMaster using the Raspberry Pi and find us the highest purity aluminum rods that are there and also. Like look at other suppliers in case there's something that's higher purity than that, so. Like look at other suppliers in case there's something that
+39:51 Gage Erickson: Yeah.
+39:53 Sterling Baird: I think that'll be it.
+39:53 Gage Erickson: Sounds good Sounds good. I'll I'll query that.
+39:56 Sterling Baird: OK.
+39:56 Gage Erickson: It's saying that he said that powders don't mix very well within the atomizer. It's saying that he said that powders Don That's kinda. I was asking if. If, like we could, we could start melting it with the furnace open. In order to like stir it with something you know. But then I I didn't think about the fact that. The whole point of the enclosure is keep the oxygen out while you're melting it.
+40:24 Sterling Baird: Yeah. Yeah, so. We. If it becomes a big issue with the powders not I mean like.
+40:39 Gage Erickson: Can you hear me?
+40:39 Sterling Baird: I I I I think we'll like. We'll see. Like we'll kinda see how things go if we need a. Like I I I think there's some options for US. One is that we we look at doing a vacuum.
+40:53 Gage Erickson: Yeah.
+40:55 Sterling Baird: Like a like doing a vacuum press. And so we actually really like press fit this thing and we're putting like a lot of hydraulic pressure to try to compact the powders and then potentially like a heated vacuum press. So we're actually like. Like we're not Like, we're not melting it, but we're like.
+41:14 Gage Erickson: Ceiling it.
+41:16 Sterling Baird: Yeah. Like kind of getting the particles to to adhere to each other a little bit more there's also.
+41:21 Gage Erickson: Wonder if you do like friction.
+41:23 Sterling Baird: Sorry, go ahead.
+41:23 Gage Erickson: Stir welding friction. Stir welding something.
+41:28 Sterling Baird: Yeah, or trying to get an arc mount to.
+41:29 Gage Erickson: I I I I just know in that process. Oh yeah.
+41:32 Sterling Baird: Oh sorry Oh, sorry. What were you saying?
+41:34 Gage Erickson: Oh, I just say. I know in that section friction stir welding that it doesn't melt the metal, it just like heats it up enough that the molecules connect but anyways.
+41:43 Sterling Baird: OK. Yeah, yeah, yeah. So. And then And then our backup plan would probably be going to. I guess there I guess there's a couple. Maybe a couple backup things we could do, but one would be going to University of Utah and barring some of the arc melting equipment there and trying to make our master alloys there with the powder mixture and then bringing it back, it would be really nice if we.
+42:02 Gage Erickson: Hello.
+42:12 Sterling Baird: Could get it to work out with powders. I think it would be.
+42:17 Gage Erickson: Yeah, for real, well, I think. You know, if we, especially if we got like a high purity feedstock like this like if I know this isn't high purity, but if it was then I mean that's the that's the that's the the base of our allies are like majority of the allies gonna be like. Aluminum anyways.
+42:34 Sterling Baird: Yeah.
+42:35 Gage Erickson: And so you could you could put this in. Clip off for the amount you want and then have Clip off for the amount you want and then have pour the powder in after that. Instead of 'cause I mean like we got. We gotta. You saw the e-mail about the the quote from valent 2 kilograms of aluminum powder.
+42:51 Sterling Baird: Oh no. How much was it?
+42:53 Gage Erickson: Well then send me an actual number yet, because they wanted a bunch of papers signed.
+42:57 Sterling Baird: Oh. Oh yeah. Yeah, sorry.
+43:01 Gage Erickson: So but anyways, like maybe maybe we wouldn't wanna buy 2 kilograms of aluminum powder because we'd rather have a more solid-state. Version Version you know.
+43:11 Sterling Baird: Oh yes, which means, yeah, yeah. And that. Yeah. So there's there's definitely some. I I think there's gonna be some I I think there's gonna be some trial and error and I think that's part of why it would be nice to have to do some of that trial and error while bartash's here.
+43:27 Gage Erickson: Yeah.
+43:28 Sterling Baird: It's kinda like with the expert.
+43:31 Gage Erickson: We we got, we got all that stainless steel powder too. We could maybe test something with that. Oh, but we can't melt stainless steel, can we? I can't.
+43:38 Sterling Baird: No, no. Yeah. Yeah, it's really.
+43:40 Gage Erickson: I can't that.
+43:41 Sterling Baird: It's really only copper and aluminum that we'd be doing with the induction induction Prunus, I think.
+43:47 Gage Erickson: Gotcha. Well, copper has a pretty high melting point I think, but I guess not relative to most other things.
+43:53 Sterling Baird: Yeah, it's lower than aluminum.
+43:55 Gage Erickson: Oh really?
+43:56 Sterling Baird: Feel it? That's basically, yeah, pretty sure. Yeah, all. So I'll go ahead and I'll probably get some issues either issues updated. Sorry, I got a bit too late. Got up way too early. Sorry I got a
+44:16 Gage Erickson: Correct.
+44:19 Sterling Baird: Yeah I'll probably get you tagged on some Yeah, I'll probably get you tagged on some issues. But I think the main things were not not in like in this order of priority, but just the things that come to mind like the dehumidifier if we could try to get that running. Ordering the two high purity aluminum rods, like trying to find find the ones that we want and and ordering those. You'll talk with. Sorry. With Nick about gas. Like enter gas stuff.
+44:55 Sterling Baird: I think I think they'll still it. It would still be good to try to look into like the glove box, like enclosure stuff. See if maybe there's one that we can get for a few grand.
+45:05 Gage Erickson: Uh-huh.
+45:05 Sterling Baird: Up Up to like Up to like four or five Up to like four or five grand for that. And. Excuse me. Yeah. Anyway, I think both. Thanks Thanks for managing all of this so so many things to get it going.
+45:23 Gage Erickson: What? Yeah. Yeah, no worries. Maybe. I I'll make sure I understood Bartos properly.
+45:37 Sterling Baird: Mm-hmm.
+45:38 Gage Erickson: For. Our connect Our connection Our connection, it sounded like. From what I understand, these these are half inch and these are going to connect the heat exchanger my cameras and turn around with it. These half inch tubes we're gonna use to connect to the back of the heat exchanger here.
+45:57 Sterling Baird: Oh.
+46:02 Gage Erickson: And so we need to. I'll work with Dave to get.
+46:04 Sterling Baird: Mm-hmm yeah Yeah.
+46:08 Gage Erickson: What do they
+46:08 Sterling Baird: Yes.
+46:09 Gage Erickson: What do they? What conversions or whatever?
+46:11 Sterling Baird: Yeah. Adapters. Yeah, just some some adapters.
+46:13 Gage Erickson: And adapters and then also to adapters for that.
+46:17 Sterling Baird: Yeah.
+46:18 Gage Erickson: But it sounded like Bartos was bringing a a tube or pipe for another part. I just I just can't remember what. That was.
+46:27 Sterling Baird: Yeah, I have. I I have I have a transcript so I could try to link the transcript to see if we.
+46:37 Gage Erickson: That's a good idea.
+46:37 Sterling Baird: Track that what he was talking about there. I didn't record the meeting, but I anyway this there's a transcript here so.
+46:47 Gage Erickson: Herbert.
+46:48 Sterling Baird: And then I'm now that I'm thinking about it. It might. I think it would also be worth maybe trying to have somebody go up to University of Utah with one of these powder mixtures and try to make a make a master alloy. Or or sorry me. Yeah, like arc melts. Some of the powders with. With some aluminum and kinda make like just make our own like or even if we just took the ALS I10MG and just put that powder in and arc melted it just to see you like kind of what our options are like it would be really cool.
+47:29 Sterling Baird: If If before Barta left. Bartosh left. That we had a. Some sample that we prepped get atomized. That if that makes sense. So kinda like our first half like our first experiment.
+47:48 Gage Erickson: Yeah. And I think it'd be good too. You know, since we already had the ALS I10MG to to, to melt that into an alloy and then atomize ourselves to compare. You know what? What does that look like versus what we can do with ours?
+48:01 Sterling Baird: Yeah, yeah.
+48:04 Gage Erickson: Was there another? Was there another specific alloy you wanted to do that with it at the University of Utah?
+48:10 Sterling Baird: You know, honestly, if we get some of that scandium and Oh no, no, the scandium's gonna take a while. So not on the scanium, but maybe.
+48:16 Gage Erickson: Yeah.
+48:19 Sterling Baird: So actually that that's it, if we if we do get everything we need to make ALS site. Sorry ALS I10MG on our own, not from the like the commercial powder for ALS I10MG that would be. That would be cool. So like.
+48:39 Gage Erickson: Yeah.
+48:39 Sterling Baird: Yeah. So maybe maybe in some sense it's like. Yeah, I think. I think it's her to university I think it's her to University of Utah seeing if we can use one of their arc filters. This would be through Taylor Sparks. I know it has an an arc melter. I'm trying to get that. As some stock As some stock material to bring in that could be related and then we'll probably we might just be making a lot of trips to the chem store for containers and stuff and Potter, but oh that's right.
+49:16 Gage Erickson: We got those, those chemical, those blue chemical cabinet things that we could put powders in if you want.
+49:23 Sterling Baird: Oh, yeah. Yeah, that's right. And I think we probably we wanna get a whole bunch of desiccant. Including desiccant, that's meant like kind of kosher to throw in a container as well.
+49:37 Gage Erickson: I I've got, so I bought a package like some small desk and bags. Can you see that?
+49:44 Sterling Baird: OK. Oh, I see. OK.
+49:47 Gage Erickson: This is for master McMaster, so here's like one packets. I don't know if that's big enough, but we've got several of these.
+49:50 Sterling Baird: Oh that's right OK Oh, that's right. OK. Yeah. And then I think we just wanna make sure that what like 'cause, it's usually silica gel. Make sure that that's not. Contaminating the like, we might just wanna look a couple cloud pings on like silica or or like sorry desiccants that. Don't like, wouldn't contaminate the powders that we're working with, like in the container. We might wanna do a little bit. Look into that. As well so but I think.
+50:29 Gage Erickson: Ping.
+50:31 Sterling Baird: Yeah, I think that maybe covers comes our basis.
+50:32 Gage Erickson: Yeah, go ahead. God forbid. Uh. So ping cloud to check if silicon desk can. Will contain our Will contain our patterns.
+50:49 Sterling Baird: Oh yeah, and silica, silicon oxide. It's usually what the.
+50:53 Gage Erickson: So.
+50:56 Sterling Baird: Yeah, the desk is.
+51:03 Gage Erickson: Powers. It be really nice if we could like go to somewhere like valenet or somewhere in industry to see how they handle their powders and procedures they have, because then we could then we could copy or mimic those and then we're not just like guessing if we're doing too.
+51:16 Sterling Baird: Yeah.
+51:22 Gage Erickson: Much or not enough or not paying attention specifically.
+51:23 Sterling Baird: Yeah. Yeah, yeah. I agree with a development would be pretty good I agree with a development would be pretty good I think.
+51:31 Gage Erickson: Is Valmet the closest one? That's like in the industry.
+51:35 Sterling Baird: Yeah, especially for aluminum. Which Which there are so many things about the workflow like safety and handling wise that would be specific to aluminum that that would be. That That would probably be our best bet That would probably be our best bet to go over there.
+51:51 Gage Erickson: Yeah. How would how would organize a trip like that? Work. Would that be universally funded, or that come from lab funds or?
+52:00 Sterling Baird: Oh, yeah, yeah, it would be. It would be lab funded. It would come from lab funds and it could be like you could honestly be a road trip or or flight, you know it's. With like a car rental from BYU, depending on how many people like if we're gonna have like three to five people go down and I think doing a car rental would make the most sense. Otherwise, like a flight would be be fine too. It was just like one or two people.
+52:33 Gage Erickson: OK. Is that is that something you wanna think about right now or come back to in like a month from now or?
+52:35 Sterling Baird: Hold on.
+52:36 Gage Erickson: Is
+52:41 Sterling Baird: Probably probably like a month from now, but I I I think it's well. It it might be worth just getting on a on a call with them initially to say just to kind of walk them through our procedures of what we're doing and and in fact like a kind like a video, maybe like a prerecorded video that we send to them. It it might be worth just getting on a on a call with them initially And just say like, hey, you know, could you look through what we're kinda thinking in terms of our our workflows and just let us know if anything seems kind of out of place or overkill or? I think I think I I think I think that would be a good. Starting point.
+53:19 Sterling Baird: For that and pretty good use of use of time, just like. If we had kind of our like our safety video. You will
+53:28 Gage Erickson: Yeah.
+53:29 Sterling Baird: You will or just start like our workflow. Workflow described. Workfl Workflow descri So that or.
+53:42 Gage Erickson: Call with them. Remind this all down South? Forget.
+53:47 Sterling Baird: Yeah.
+53:53 Gage Erickson: Talk about safety. And. OK, cool. Very good. OK. So I'll I'll talk to Barry to figure out how we get this dehumidifier on because I don't know.
+54:13 Sterling Baird: Yeah.
+54:13 Gage Erickson: I'll talk to Nick about making sure we get five in argon. I'll work with Dave for I'll work with Dave for the pipe hookups and all that. If you'll send me the important part of the transcript for that.
+54:21 Sterling Baird: Yeah.
+54:26 Gage Erickson: And then.
+54:26 Sterling Baird: Yeah.
+54:29 Gage Erickson: Do you have a specific like is there a? Do you know? Do you want me to reach out to Taylor Sparks or? Oh do
+54:36 Sterling Baird: Oh, for the arc melting.
+54:36 Gage Erickson: Oh do you want Oh, do you want to?
+54:38 Sterling Baird: Actually, yeah, yeah. If you wouldn't mind, just make sure to CC me, like, hey, you know.
+54:43 Gage Erickson: Just send him an e-mail.
+54:45 Sterling Baird: Yeah, yeah.
+54:46 Gage Erickson: OK.
+54:48 Sterling Baird: Good Good I
+54:49 Gage Erickson: And I'll just ask him.
+54:49 Sterling Baird: Good. I'm getting better at delegating this ever so slightly ever so slightly better.
+54:53 Gage Erickson: Good. That's an important skill, especially in running a business.
+54:58 Sterling Baird: Yeah. Yeah, no kidding. So. Yeah Yeah.
+55:03 Gage Erickson: So yeah, I'll just. I'll just e-mail them saying, hey Sterling and I want to do some arc melting of some ALS I10MG powder. This could This could. We could we talk about that? What your thoughts are on that? I'm doing something like that maybe?
+55:19 Sterling Baird: Yeah, like is there. Is there a student like? Does it seem feasible you know to to do by the like 28 or 29th so we could test it with our atomizer. If so, like is there a student we could get connected with to to help us do that run within? Something like that. And then basically whatever e-mail you send don't be like I might just reply as well and just like add any extra bits of FOI think is text.
+55:52 Gage Erickson: OK, perfect. That makes it easy.
+55:57 Sterling Baird: Yeah.
+55:58 Gage Erickson: Student see. OK. So that and then I'll ask Claude about the. McMaster high purity aluminum rods 20mm and then a smaller one.
+56:17 Sterling Baird: Mm-hmm.
+56:18 Gage Erickson: I'll figure out a good ratio for that and then also ask Claud about the silica oxide that you can't for this little containment contaminator powders. Yeah. Is that everything?
+56:27 Sterling Baird: Yeah. Yeah yeah I think that's everything Yeah. Yeah, I think that's everything.
+56:31 Gage Erickson: Sweet. What is the productive meeting?
+56:34 Sterling Baird: Yeah, yeah, I agreed. OK, OK. Thanks Gage.
+56:38 Gage Erickson: OK. Thank you see ya
+56:40 Sterling Baird: I appreciate it. Thanks for that
+  

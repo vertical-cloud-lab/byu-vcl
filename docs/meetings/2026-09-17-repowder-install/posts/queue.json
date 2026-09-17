@@ -1,0 +1,47 @@
+{
+  "links": {
+    "TRANSCRIPT": "docs/meetings/2026-09-17-repowder-install/transcript.md"
+  },
+  "posts": [
+    {
+      "id": "2026-09-17-new-software",
+      "type": "issue",
+      "key": "ISSUE_SOFTWARE",
+      "title": "rePowder computer control, software, and integration requirements",
+      "assignees": ["sgbaird", "gage-erickson"],
+      "body_file": "new-software-control.md"
+    },
+    {
+      "id": "2026-09-17-new-al-rods",
+      "type": "issue",
+      "key": "ISSUE_AL_RODS",
+      "title": "Order high-purity Al rod (20 mm OD + press-fit plug) for the first atomizer runs",
+      "assignees": ["gage-erickson"],
+      "body_file": "new-al-rods.md"
+    },
+    {
+      "id": "2026-09-17-new-arc-melt",
+      "type": "issue",
+      "key": "ISSUE_ARC_MELT",
+      "title": "Arc-melt AlSi10Mg at U of Utah (Taylor Sparks) before the atomizer install",
+      "assignees": ["gage-erickson"],
+      "body_file": "new-arc-melt-utah.md"
+    },
+    {
+      "id": "2026-09-17-new-valimet",
+      "type": "issue",
+      "key": "ISSUE_VALIMET",
+      "title": "Call/visit an aluminum powder producer (Valimet) to sanity-check our powder handling",
+      "assignees": ["gage-erickson"],
+      "body_file": "new-valimet-visit.md"
+    },
+    { "id": "2026-09-17-124", "type": "comment", "issue": 124, "body_file": "124-install-logistics.md" },
+    { "id": "2026-09-17-161", "type": "comment", "issue": 161, "body_file": "161-first-runs.md" },
+    { "id": "2026-09-17-198", "type": "comment", "issue": 198, "body_file": "198-enclosure-cameras.md" },
+    { "id": "2026-09-17-30",  "type": "comment", "issue": 30,  "body_file": "30-glovebox-storage.md" },
+    { "id": "2026-09-17-42",  "type": "comment", "issue": 42,  "body_file": "42-dehumidifier.md" },
+    { "id": "2026-09-17-126", "type": "comment", "issue": 126, "body_file": "126-training-docs.md" },
+    { "id": "2026-09-17-104", "type": "comment", "issue": 104, "body_file": "104-fallbacks.md" },
+    { "id": "2026-09-17-32",  "type": "comment", "issue": 32,  "body_file": "32-esd-coat.md" }
+  ]
+}
