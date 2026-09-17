@@ -63,6 +63,27 @@ Two details worth keeping:
   `03535343335351018130` with interleaved NULs — arriving on the *data*
   endpoint. That is pathological at the USB layer, not the sketch's output.
 
+### ⚠️ It is intermittent, and that makes it worse
+
+A final check at the end of the session got *further*:
+
+```
+PawduinoLink.connect(): OK
+  cmd 7   capper line-break sensor   -> OK:Ready
+  cmd 14  pipette STATUS             -> RAISED UnicodeDecodeError: 0x8d at position 13
+```
+
+`connect()` succeeded — but `cmd 7` came back as **`OK:Ready`**, the board's
+stale boot banner, not `OK:{"value1":0}`. That is the stream running one reply
+behind itself: the resync that `PawduinoLink` performs on connect did not hold.
+
+So the failure is not a clean refusal every time. A run could get past
+instrument connect and *then* mis-read the cap sensor — and the capper's
+interlock is precisely what has kept the pipette out of a capped vial since
+2026-08-03. A sensor read that returns the wrong string is worse than one that
+raises. This is the concrete reason not to attempt the trio until a `STATUS`
+round-trip parses reliably.
+
 ### This predates the session
 
 `dmesg` shows the Arduino re-enumerating at kernel timestamp **510334**
