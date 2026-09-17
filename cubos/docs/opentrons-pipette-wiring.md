@@ -838,3 +838,188 @@ One more thing settled in passing: the P300-shaped `ASPIRATE` behaviour is
 gone. `MIN_VOLUME` 5.0 was why `ASPIRATE 0.5` always landed at 35.45
 (0.5 clamped up to 5, then `36.0 − 5 × 0.1098`). With the p20 constants a
 commanded 20 µL is `ASPIRATE 20.0` → 36.0 mm → plunger at 0.0, full scale.
+
+---
+
+## 10. 2026-09-17: Ursa's review, two retractions, and the P20 GEN2 numbers
+
+Alex Carlson reviewed sections 1–9 against Cubware, `PANDA_Arduino`, the
+janelia TMC2209 source, CubOS `origin/main`, Opentrons `shared-data`, the
+Opentrons OT-2 open-hardware schematics and the Adafruit 6121 schematic
+([byu-vcl issue #133, 2026-09-17][ursa-review]). Two of the conclusions in
+this document do not survive that review. Both are corrected in place below
+rather than edited out, because the reasoning that produced them is the
+reasoning to avoid repeating.
+
+[ursa-review]: https://github.com/vertical-cloud-lab/byu-vcl/issues/133#issuecomment-5719634392
+
+### 10.1 🔴 RETRACTED: `comm = 0` was never evidence of anything
+
+Sections 9.2–9.5 treated `CMD_PIPETTE_DRIVER_STATUS` returning `comm = 0` as
+proof that *none of `setupMotor()`'s register writes had ever landed*, and
+built on that to retract the section-4 hypothesis. **That inference is
+unsound.** A read over `SoftwareSerial` on an AVR cannot succeed with this
+library at all, whatever the wiring:
+
+- AVR `SoftwareSerial::write()` runs `cli()` for the duration of each
+  transmitted byte, so the Arduino never receives its own transmission back.
+  The janelia README says software serial "should only be used for
+  unidirectional communication" for exactly this reason.
+- `TMC2209::sendDatagramBidirectional()` waits up to
+  `ECHO_DELAY_MAX_MICROSECONDS` (4000) for `datagram_size` bytes and then
+  **discards them as echo**. With no echo, the bytes that arrive in that
+  window are the driver's 8-byte reply: the first 4 are thrown away,
+  `readReply()` then waits for 8 more, times out, retries 5x, and
+  `isCommunicating()` — which is `getVersion() == 0x21` — reports false.
+
+So `comm = 0` is the *structural* outcome on an Uno. It says nothing about
+whether the driver is powered, configured, or wired. **Writes need no echo
+and may have been landing the whole time**, which means
+`RUN_CURRENT_PERCENT`, `setMicrostepsPerStep(16)` and `enable()` may all
+have been in effect, and the section-4 hypothesis is *not* excluded after
+all.
+
+The lesson worth keeping: a diagnostic that cannot return a positive result
+is not a diagnostic. `getDriverDiagnostics()` was added in good faith and
+then trusted without first asking whether its success path was reachable.
+
+Two changes are needed before that reading means anything:
+
+1. **`tmc2209-softwareserial-read.patch`** (in `cubos/patches/`) — skips the
+   echo wait-and-discard block when `software_serial_ptr_` is set. Written and
+   built; see §10.4 for why it is not yet on the board.
+2. **The bridge resistor has to move to the TX side.** Per TMC2209 datasheet
+   §4.3 fig 4.1 and the janelia "coupled" wiring diagram: `A1 -> 1k -> node`,
+   with `A0` and `PDN_UART` connected *directly* to the node. With `A1` wired
+   straight to `PDN_UART` and the resistor only on the `A0` leg, the
+   Arduino's push-pull TX shorts out the driver's reply. **This is a bench
+   change, and the library patch alone will not produce a valid read without
+   it.**
+
+### 10.2 🔴 CORRECTED: the sense resistor is 0.05 Ω, not 0.11 Ω
+
+§8.4 assumed 0.11 Ω "the common value" and scaled every current figure from
+it. Ursa read the actual value off the Adafruit 6121 schematic: `R1`, `R2` =
+**0.05 Ω / 0.25 W**. Recomputing, with `vsense = 0` (`enableVSense()` is
+never called) and the library's `CS = map(percent, 0, 100, 0, 31)`:
+
+```
+I_rms = ((CS+1)/32) * (0.325 / (0.05 + 0.02)) / sqrt(2) = ((CS+1)/32) * 3.283 A
+```
+
+| `RUN_CURRENT_PERCENT` | CS | I_rms | I_peak | |
+|---|---|---|---|---|
+| 50 | 15 | 1.64 A | **2.32 A** | BU original — over the board's 2 A rating |
+| 17 | 5 | 0.62 A | 0.87 A | VCL 2026-09-15 |
+| **20** | **6** | **0.72 A** | **1.02 A** | **matches Opentrons `plungerCurrent` 1.0 A** |
+| 5 | 1 | 0.21 A | 0.29 A | matches Opentrons `idleCurrent` 0.3 A |
+
+So the 50 that shipped from BU was worse than §8.4 said — over the
+*breakout's* rating, not merely over the motor's. And the 500 mA peak figure
+§8.4 used as the target is **science-jubilee's Duet choice, not Opentrons'**.
+Opentrons' own `p20_single_v2.x` definition runs the plunger at
+`plungerCurrent: 1.0 A` and idles at `idleCurrent: 0.3 A`. Those are the
+numbers to match for this pipette, and 17 was conservative rather than
+correct.
+
+### 10.3 Other facts from the 6121 schematic worth recording
+
+- Header order: `1 VDD, 2 GND, 3 DIR, 4 STEP, 5 MS1, 6 MS2, 7 DIAG, 8 INDEX,
+  9 UART, 10 EN`.
+- **`EN` has a 20 kΩ pull-down**, so the driver is enabled even with the `EN`
+  wire absent. Moving `EN` from A3 to A4 was still right, but §3's claim that
+  a mis-landed `EN` would leave the driver dead does not hold for this board.
+- `MS1`/`MS2` have no board pulls and the chip pulls them down internally →
+  **1/8 microstepping and UART address 0**. Address 0 matches the library
+  default, so addressing was never the problem. 1/8 does mean a commanded
+  millimetre travels two, if the microstep write never lands — the open
+  question of §7.
+- **The VREF pot is fed from the chip's own `5VOUT` through 33 kΩ, and
+  `5VOUT` is generated from `VM` only.** `VCCIO` does not power the analogue
+  side.
+
+That last point is the important one, and it is why **`VM` remains the first
+thing to measure**. With `VM` absent: `5VOUT` is dead, so VREF is zero, so
+coil current is zero; the driver cannot reply on UART; and every `STEP`/`DIR`
+command is still accepted and acked by the Arduino. One cause, every symptom
+— including Ben's 2026-09-17 bench result that **the plunger moves freely by
+hand with the driver powered and idle**, i.e. no holding torque, i.e. no coil
+current.
+
+### 10.4 The pipette is a P20 GEN2, and the numbers now agree in all three places
+
+Ben confirmed the model on 2026-09-17 (and the label is legible in campaign
+36's `cam0_csi0` frame). Ursa's records said P300 GEN2, and the flashed
+2026-09-15 image was a hybrid — P300 plunger planes with P20 volume limits.
+Resolved in favour of the P20 GEN2.
+
+Authority is Opentrons `shared-data/pipette/definitions/1/pipetteModelSpecs.json`,
+keys `p20_single_v2.0`/`2.1`/`2.2` (all three carry identical positions).
+Opentrons states plunger planes as signed offsets in a frame whose `top` is
+the home reference; both CubOS and the PANDA firmware measure distance
+*downward* from home, so each value is `top - <field>` with `top = 19.5`:
+
+| | Opentrons field | P20 GEN2 | → firmware / CubOS | was (a P300 value) |
+|---|---|---|---|---|
+| prime / bottom | `bottom` −8.5 | | **28.0** | 36.0 firmware, 5.0 CubOS |
+| blowout | `blowout` −13 | | **32.5** | 44.0 firmware, 7.0 CubOS |
+| drop tip | `dropTip` −27 | | **46.5** | 55.0 firmware, 10.0 CubOS |
+| mm per µL | `ulPerMm` → 0.746 µL/mm | | **1.34** | 1.8 firmware |
+| max / min volume | | 20 / 1 µL | **20.0 / 1.0** | 300 / 5 before 2026-09-15 |
+
+Two cross-checks that the 1.34 is real rather than assumed:
+
+- `1 / 0.746 = 1.34`, and 0.746 µL/mm is the asymptote of Opentrons' own
+  `ulPerMm` table for `p20_single_v2.1`. The same arithmetic on the P300 gives
+  9.1 µL/mm, which is where the old `UL_TO_MM 0.1098` came from — so the
+  method reproduces the one number in this file that was independently
+  calibrated.
+- A full-scale 20 µL aspirate travels `20 * 1.34 = 26.8 mm` up from
+  `PRIME_POSITION 28.0`, landing the plunger at **1.2 mm** — inside the 28 mm
+  top-to-bottom stroke with a small dead band, which is how Opentrons has it.
+  The old 1.8 was just `36.0 / 20`, i.e. derived from a P300 plane.
+
+**Every one of the three planes moved down, so every commanded plunger travel
+is now shorter than before** — the safe direction — and the ordering
+`0 < prime < blowout < drop_tip` that `aspirate`, `dispense` and `moveTo`
+rely on is preserved.
+
+The CubOS-side placeholders mattered more than a mis-scaling: `prime 5.0`,
+`blowout 7.0` and `drop_tip 10.0` are sent to the firmware as **absolute
+`MOVE_TO` targets**, so they were aiming 23–36 mm short of the planes a P20
+GEN2 plunger actually uses. Those are corrected in
+`cubos/patches/p20-gen2-plunger-constants.patch` (which replaces
+`p20-mm-to-ul-passthrough.patch` and keeps its `mm_to_ul = 1.0`
+pass-through), and the firmware side in
+`cubos/firmware/panda-arduino-p20-and-driver-status.patch`. The two now carry
+the same three numbers.
+
+⚠️ **Still nominal, not calibrated.** These are Opentrons' figures for the
+model, not a measurement of this unit. `UL_TO_MM` needs a gravimetric check
+once liquid actually moves.
+
+⚠️ **One P20 GEN2 number was deliberately *not* propagated.** Opentrons gives
+`tipLength: 31.15` and `tipOverlap: 8.25`, i.e. a **22.9 mm** tip extension
+below the nozzle for their 10/20 µL tips — against the **35.0 mm** in
+`ben_6vials_tiprack.yaml`, which Ben measured on the tip actually in the rack
+on 2026-08-06. The 35 is a measurement of a possibly different tip and every
+piece of validated tipped geometry on this branch depends on it (the hover
+clamp's 89/124 planes, the `height: -35.0` insert, `travel_z: 87`). It was
+left alone. If a caliper check ever says 22.9, all of that Z geometry has to
+be re-derived — it is not a one-line change.
+
+### 10.5 What is now closed, and what is not
+
+| | |
+|---|---|
+| ✅ Pipette identity | P20 GEN2, confirmed by Ben and by the label in campaign 36's frame |
+| ✅ Plunger planes | agree in the firmware and in CubOS, both from Opentrons |
+| ✅ Volume conversion | single conversion, in the firmware; `mm_to_ul = 1.0` on the CubOS side |
+| ✅ Run/hold current | set to Opentrons' `plungerCurrent` / `idleCurrent`, on the real 0.05 Ω |
+| ✅ `comm = 0` | explained, and no longer read as evidence |
+| ✅ Limit-switch convention | Opentrons `pipette-endstop.sch` shows an Omron D2F-L-A wired COM→signal, NC→GND, so the firmware's `INPUT_PULLUP` + `HIGH == triggered` is right and **D9 reading HIGH really does mean the loop is open** |
+| ✅ 10-pin coil pairing | corroborated by Opentrons `pipette-main.sch`. Ribbon pin 5 is the EEPROM's 5 V input — leave it unconnected |
+| 🔴 No coil current | Ben's hand test on 2026-09-17: the plunger moves freely with the driver powered. **Measure 12 V at the `VM` screw terminal first** — §10.3 explains why that one fault produces every symptom |
+| 🔴 UART readback | needs the library patch *and* the resistor moved to the TX side |
+| 🔴 Limit-switch loop | independent fault. Until D9 reads LOW the plunger cannot retract, whatever the motor does |
+| 🔴 Serial link to the Arduino | **new, and blocking** — see `cubos/results/pipette_p20gen2_20260917/` |

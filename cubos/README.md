@@ -864,3 +864,79 @@ One incidental find: `_best_effort_retract_to_safe_z()` still raises
 instrument object where a name is expected, so the outer safety retract is dead
 code upstream. It did not matter here (the failing step was `home`), but it is
 worth filing.
+
+## 2026-09-17 — P20 GEN2 alignment landed; the trio blocked by the Arduino's serial link
+
+Ben asked for three things: run the trio again (the homing obstruction was
+fixed), address [Ursa's review][ursa200], and make the values match in all
+locations for the **P20 GEN2**. He also reported the bench result that settles
+the driver question — *pulling the plunger by hand, with the driver plugged in
+and on, it moves freely*, i.e. no holding torque, i.e. no coil current.
+
+[ursa200]: https://github.com/vertical-cloud-lab/byu-vcl/issues/133#issuecomment-5719634392
+
+🔴 **The trio did not run and the firmware was not flashed.** Both are blocked
+by the same fault: `/dev/ttyACM0` corrupts serial data in both directions.
+`PawduinoLink.connect()` — the exact gate `run_protocol` hits, before the
+gantry port is opened — fails. 0 of 25 `STATUS` round-trips parse; `avrdude`
+will not sync at any baud or with either programmer; and replies arrive valid
+but truncated (`OK:{"homed":0,"pos":0.00,"max_vol":2`). The board re-enumerated
+five minutes before this session made contact, so the fault predates it, and
+the USB serial number is unchanged — same board. Full evidence, and the bench
+checks (power-cycle first, then the 5 V rail, then anything on `D0`/`D1` or
+near `RESET`) in
+[`results/pipette_p20gen2_20260917/`](results/pipette_p20gen2_20260917/README.md).
+
+✅ **P20 GEN2 values now agree in all three places** — the firmware, CubOS's
+`p20_single_gen2`, and the docs — taken from Opentrons
+`shared-data/.../pipetteModelSpecs.json` rather than derived:
+
+| | Opentrons | P20 GEN2 | firmware was | CubOS was |
+|---|---|---|---|---|
+| prime | `bottom` −8.5 | **28.0** | 36.0 | 5.0 *(placeholder)* |
+| blowout | `blowout` −13 | **32.5** | 44.0 | 7.0 *(placeholder)* |
+| drop tip | `dropTip` −27 | **46.5** | 55.0 | 10.0 *(placeholder)* |
+| mm per µL | `ulPerMm` → 0.746 µL/mm | **1.34** | 1.8 | — |
+
+The CubOS placeholders were worse than a mis-scaling: they are sent as
+**absolute `MOVE_TO` targets**, so `5/7/10` aimed 23–36 mm short of the planes
+a P20 GEN2 plunger uses. All three planes moved *down*, so every commanded
+travel is now shorter — the safe direction. Run current went 17 → **20**
+(CS 6, 1.02 A peak = Opentrons `plungerCurrent`) and hold 10 → **5** (0.29 A
+peak = `idleCurrent`), recomputed on the **0.05 Ω** sense resistor Ursa read
+off the Adafruit schematic; this repo had assumed 0.11 Ω.
+
+🔴 **Two conclusions in `docs/opentrons-pipette-wiring.md` were retracted**,
+in place, in a new §10:
+
+- **`comm = 0` was never evidence.** A read over `SoftwareSerial` on an AVR
+  cannot succeed with the janelia library whatever the wiring — `write()` runs
+  `cli()` so no echo is received, and `sendDatagramBidirectional()` then
+  discards the first four bytes of the driver's real reply as if they were
+  that echo. So "none of `setupMotor()`'s writes ever landed" is unproven, and
+  the §4 hypothesis is no longer excluded. A diagnostic whose success path is
+  unreachable is not a diagnostic.
+- **The sense resistor is 0.05 Ω**, so the stock `RUN_CURRENT_PERCENT 50` was
+  2.32 A peak — over the *breakout's* 2 A rating, not merely the motor's.
+
+`patches/tmc2209-softwareserial-read.patch` fixes the read path, vendored into
+`lib/TMC2209/` so a `pio pkg` refresh cannot drop it — proven with a sentinel
+`#error`, not assumed. ⚠️ It is **not sufficient alone**: the bridge resistor
+has to move to the TX side (`A1 -> 1k -> node`, `A0` and `PDN_UART` on the
+node), or the push-pull TX shorts out the driver's reply.
+
+**`VM` is still the first thing to measure.** The VREF pot is fed from the
+chip's `5VOUT`, which is generated from `VM` alone — so a missing `VM` gives
+zero coil current, no UART reply, and every `STEP`/`DIR` still acked. One
+cause, every symptom, including Ben's hand test.
+
+Gates, all against the installed tree: `pytest` **2544 passed / 0 failed**,
+`validate_setup` **PASS**, `--mock` **12/12**, `passive_shadow` **0
+interferences** nominal and `--tip-stuck`. Firmware builds clean; both patches
+verified with `git apply --check` against fresh clones.
+
+One P20 GEN2 number was deliberately **not** propagated: Opentrons implies a
+**22.9 mm** tip extension (`tipLength 31.15` − `tipOverlap 8.25`) against the
+**35.0 mm** Ben measured and that every piece of validated tipped Z geometry on
+this branch depends on. A caliper check is worth doing, but it is not a
+one-line change.

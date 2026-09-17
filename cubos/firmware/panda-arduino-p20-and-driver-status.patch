@@ -14,44 +14,92 @@ index d214fe9..1b5932a 100644
  
  // Response codes are kept for backward compatibility and internal use
 diff --git a/include/Pipette.h b/include/Pipette.h
-index c8272c2..4908ce2 100644
+index c8272c2..0f508a5 100644
 --- a/include/Pipette.h
 +++ b/include/Pipette.h
-@@ -17,18 +17,28 @@
+@@ -17,18 +17,72 @@
  #define DEBOUNCE_TIME 100
  
  // Pipette constants
 -#define MAX_VOLUME 300.0       // Maximum volume in µL
 -#define MIN_VOLUME 5.0        // Minimum volume in µL
-+#define MAX_VOLUME 20.0        // Maximum volume in uL   [VCL: was 300.0, a P300 value]
-+#define MIN_VOLUME 1.0         // Minimum volume in uL   [VCL: was 5.0, a P300 value]
- #define ZERO_POSITION 0.0      // Zero position in mm
- #define BLOWOUT_POSITION 44.0  // Blowout position in mm
- #define PRIME_POSITION 36.0    // Prime position in mm
- #define DROP_TIP_POSITION 55.0 // Drop tip position in mm
+-#define ZERO_POSITION 0.0      // Zero position in mm
+-#define BLOWOUT_POSITION 44.0  // Blowout position in mm
+-#define PRIME_POSITION 36.0    // Prime position in mm
+-#define DROP_TIP_POSITION 55.0 // Drop tip position in mm
 -#define UL_TO_MM 0.1098        // Conversion factor from µL to mm
-+#define UL_TO_MM 1.8           // uL -> mm               [VCL: was 0.1098 (P300).
-+                               // 1.8 = PRIME_POSITION 36.0 / 20 uL, i.e. a full-scale
-+                               // 20 uL aspirate lands the plunger at 0.0. STARTING
-+                               // ESTIMATE ONLY -- needs a gravimetric calibration.]
++#define MAX_VOLUME 20.0        // uL   [VCL] P20 GEN2.  Was 300.0 (a P300 value).
++#define MIN_VOLUME 1.0         // uL   [VCL] P20 GEN2.  Was 5.0 (a P300 value).
++// ---------------------------------------------------------------------------
++// [VCL] Plunger planes, P20 GEN2, from Opentrons shared-data
++// (shared-data/pipette/definitions/1/pipetteModelSpecs.json, p20_single_v2.x;
++// all three v2 revisions carry identical positions).
++//
++// Opentrons expresses these as signed offsets in a frame whose `top` is the
++// plunger home reference.  This firmware measures distance DOWNWARD from
++// home, so each value below is (top - <opentrons field>):
++//
++//     opentrons field  value  ->  this firmware        was (a P300 value)
++//     top               19.5      ZERO_POSITION   0.0    0.0
++//     bottom            -8.5      PRIME_POSITION 28.0   36.0
++//     blowout          -13        BLOWOUT_POS    32.5   44.0
++//     dropTip          -27        DROP_TIP_POS   46.5   55.0
++//
++// All three moved DOWN, so every commanded plunger travel is now SHORTER
++// than before -- the safe direction.  Ordering is still monotonic
++// (0 < prime < blowout < drop_tip), which aspirate/dispense/moveTo rely on.
++// ---------------------------------------------------------------------------
++#define ZERO_POSITION 0.0      // mm   Opentrons `top`, the home reference
++#define BLOWOUT_POSITION 32.5  // mm   [VCL] P20 GEN2.  Was 44.0.
++#define PRIME_POSITION 28.0    // mm   [VCL] P20 GEN2.  Was 36.0.
++#define DROP_TIP_POSITION 46.5 // mm   [VCL] P20 GEN2.  Was 55.0.
++// [VCL] P20 GEN2 = 1.34 mm/uL.  Opentrons' own ulPerMm table for
++// p20_single_v2.1 is asymptotically 0.746 uL/mm, and 1 / 0.746 = 1.34.
++// Cross-check: a full-scale 20 uL aspirate travels 20 * 1.34 = 26.8 mm up
++// from PRIME_POSITION 28.0, landing the plunger at 1.2 mm -- inside the
++// 28.0 mm top-to-bottom stroke with a small dead band, exactly as Opentrons
++// has it.  Was 1.8, which was just PRIME_POSITION 36.0 / 20 uL, i.e. derived
++// from a P300 plunger plane rather than from the P20.
++// STILL NOT GRAVIMETRIC: this is Opentrons' nominal figure for the model,
++// not a calibration of this particular unit.
++#define UL_TO_MM 1.34          // uL -> mm  [VCL] P20 GEN2.  Was 1.8.
  
  // Motor settings
  #define MICROSTEPPING 16         // Microstepping mode
 -#define RUN_CURRENT_PERCENT 50   // Run current in percent (0-100)
 -#define HOLD_CURRENT_PERCENT 30  // Hold current in percent (0-100)
-+#define RUN_CURRENT_PERCENT 17   // Run current percent   [VCL: was 50 (~1.25 A peak).
-+                                 // The pipette is a P20 GEN2 -- science-jubilee specs
-+                                 // 500 mA peak (M906 V500) for a Gen2 OT-2 pipette
-+                                 // motor, so 50 was ~2.5x its rating.]
-+#define HOLD_CURRENT_PERCENT 10  // Hold current percent  [VCL: was 30. This is an
-+                                 // INDEPENDENT 0-100 -> IHOLD 0-31 map, not a percent
-+                                 // OF the run current, so leaving it at 30 with run at
-+                                 // 17 would draw MORE current standing still than
-+                                 // moving. 10 keeps the original 0.6 hold/run ratio.]
++// ---------------------------------------------------------------------------
++// [VCL] Driver current, P20 GEN2, corrected for the real sense resistor
++// ---------------------------------------------------------------------------
++// The janelia library maps percent -> CS as map(p, 0, 100, 0, 31), i.e.
++// CS = p * 31 / 100 truncated.  With the Adafruit 6121 breakout's ACTUAL
++// sense resistor of 0.05 ohm -- NOT the 0.11 ohm assumed here on 2026-09-09;
++// Ursa read it off the breakout schematic, see
++// byu-vcl cubos/docs/opentrons-pipette-wiring.md -- and vsense = 0 (the
++// library default; enableVSense() is never called):
++//
++//     I_rms = ((CS+1)/32) * (0.325 / (0.05 + 0.02)) / sqrt(2)
++//           = ((CS+1)/32) * 3.283 A
++//
++//     percent  CS   I_rms    I_peak
++//          50  15   1.64 A   2.32 A   BU original -- OVER the board's 2 A
++//          17   5   0.62 A   0.87 A   VCL 2026-09-15, from a science-jubilee
++//                                     Duet figure that is not Opentrons'
++//          20   6   0.72 A   1.02 A   matches Opentrons plungerCurrent 1.0 A
++//           5   1   0.21 A   0.29 A   matches Opentrons idleCurrent 0.3 A
++//
++// Opentrons' own p20_single_v2.x definition runs the plunger at
++// plungerCurrent 1.0 A and idles at idleCurrent 0.3 A, so those are the
++// numbers to match for a P20 GEN2.  Note vsense = 0 gives roughly 0.1 A of
++// resolution per CS step down here; enableVSense() would give finer control
++// if that ever matters.
++// FIT THE HEAT SINK (Adafruit 1515) before running at this current.
++#define RUN_CURRENT_PERCENT 20   // -> CS 6, 1.02 A peak  [VCL] was 17
++#define HOLD_CURRENT_PERCENT 5   // -> CS 1, 0.29 A peak  [VCL] was 10
  #define MAX_VELOCITY 2500.0      // Maximum velocity in steps/second
  #define HOMING_VELOCITY 1000.0   // Velocity for homing operation
  #define MOVEMENT_VELOCITY 2500.0 // Velocity for normal movements
-@@ -56,6 +66,33 @@ bool mix(int repetitions, float volume_uL, float velocity);
+@@ -56,6 +110,33 @@ bool mix(int repetitions, float volume_uL, float velocity);
  
  bool getPipetteStatus(bool* isHomed, float* position, float* maxVolume);
  
@@ -85,6 +133,19 @@ index c8272c2..4908ce2 100644
  // Internal helper functions
  float getCurrentPosition();
  float stepsToMM(float steps);
+diff --git a/platformio.ini b/platformio.ini
+index 5595986..be8e9db 100644
+--- a/platformio.ini
++++ b/platformio.ini
+@@ -12,7 +12,7 @@
+ platform = atmelavr
+ board = uno
+ framework = arduino
+-lib_extra_dirs = ~/Documents/Arduino/libraries
++
+ lib_deps = 
+ 	adafruit/Adafruit NeoPixel@^1.12.5
+ 	arduinogetstarted/ezButton@^1.0.6
 diff --git a/src/Interface.cpp b/src/Interface.cpp
 index 1f563ee..77f47af 100644
 --- a/src/Interface.cpp

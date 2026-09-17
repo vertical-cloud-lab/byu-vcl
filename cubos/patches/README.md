@@ -27,13 +27,18 @@ applied** — migrated 2026-09-15, record in
 
 | patch | state | why |
 |---|---|---|
-| `p20-mm-to-ul-passthrough.patch` | **APPLIED** 2026-09-15 | stops `volume_ul` being converted to mm twice — once here and again inside the firmware. See below. |
+| `p20-gen2-plunger-constants.patch` | **APPLIED** 2026-09-17 | the `p20_single_gen2` plunger planes and volume conversion, from Opentrons' own P20 GEN2 definition. Replaces `p20-mm-to-ul-passthrough.patch`, whose `mm_to_ul = 1.0` it keeps. See below. |
 | `tipped-hover-clamp-main.patch` | **APPLIED** | load-bearing. Without it Ben's trio fails validation with 6 violations; a 35 mm tip would need carriage Z 150 on a machine whose Z tops out at 124. |
 | `pipette-connect-tolerate-failed-home-main.patch` | **APPLIED** | workaround, not a fix. Revert the moment the plunger limit switch works. |
 | `pawduino-connect-boot-banner.patch` | superseded | fixed upstream by `88bf226` (`PawduinoLink`), and **verified against this board**: `connect()` handles the 3.76 s banner in 3.77 s. |
 | `cap-release-confirm-after-retract.patch` | superseded | fixed upstream by `3a7f4ab`, and better — upstream re-engages on each retry; ours did not. |
 | `tipped-hover-clamp-and-ceiling-travel.patch` | split | upstream took the ceiling-travel half (`0cc5028`/`b39988b`); the clamp is re-ported as `tipped-hover-clamp-main.patch`. |
 | `pipette-connect-tolerate-failed-home.patch` | rebased | the `cbc33dc` form, kept only for rollback. |
+
+`tmc2209-softwareserial-read.patch` is the odd one out in this directory: it
+patches the **janelia TMC2209 Arduino library**, not CubOS, and belongs to the
+firmware build on `~/panda_fw_vcl`. It is filed here because it is a local
+third-party patch like the rest. See below.
 
 The four files **without** a `-main` suffix are written against `cbc33dc` and are
 only needed to roll back. The migration record has the rollback recipe; note it
@@ -42,18 +47,22 @@ also requires removing `cnc.default_feed_rate_mm_min` from the gantry file, whic
 
 ---
 
-## `p20-mm-to-ul-passthrough.patch`
+## `p20-gen2-plunger-constants.patch`
 
-One line of `instruments/pipette/models.py`: the `p20_single_gen2` entry's
-`mm_to_ul`, `0.025` → `1.0`.
+The `p20_single_gen2` entry of `instruments/pipette/models.py`: four numbers,
+from Opentrons' own definition of the pipette that is physically on the head.
+Supersedes `p20-mm-to-ul-passthrough.patch` (2026-09-15), which changed only
+`mm_to_ul` and is kept verbatim inside this one.
 
 ### Symptom
 
-Commanded volumes were not microlitres, by a factor nobody could name.
+Two, with different causes. Commanded volumes were not microlitres by a factor
+nobody could name; and `blowout`/`drop_tip` aimed the plunger at planes 23–36 mm
+away from the ones a P20 GEN2 actually uses.
 
-### Cause
+### Cause 1 — both ends converted
 
-Both ends convert. `OpentronsPipette.aspirate`/`dispense`/`mix` each do
+`OpentronsPipette.aspirate`/`dispense`/`mix` each do
 
 ```python
 mm_travel = volume_ul * self._config.mm_to_ul
@@ -64,36 +73,131 @@ and send `mm_travel` as the `ASPIRATE` argument — but the PANDA firmware's
 `UL_TO_MM` internally. So `volume_ul: 20.0` became `20 × 0.025 = 0.5`, which the
 firmware then clamped up to `MIN_VOLUME` and converted again.
 
-`mm_to_ul` is read in exactly those three places and nowhere else, so 1.0 makes
-this side a pass-through and leaves the single conversion in the firmware, where
-the calibration constant belongs.
+`mm_to_ul` is read in exactly those three places and nowhere else, so `1.0`
+makes this side a pass-through and leaves the single conversion in the firmware,
+where the calibration constant belongs.
+
+### Cause 2 — the plunger planes were placeholders, and they are absolute
+
+`prime_position: 5.0`, `blowout_position: 7.0` and `drop_tip_position: 10.0`
+were all marked `# placeholder`, and unlike `mm_to_ul` they are sent to the
+firmware as **absolute `MOVE_TO` targets**. So they did not mis-scale a move —
+they named the wrong destination.
+
+The fix is Opentrons
+`shared-data/pipette/definitions/1/pipetteModelSpecs.json`, keys
+`p20_single_v2.0`/`2.1`/`2.2` (identical positions in all three). Opentrons
+states plunger planes as signed offsets in a frame whose `top` is the home
+reference; CubOS and the firmware both measure *downward* from home, so each
+value is `top - <field>` with `top = 19.5`:
+
+| | Opentrons field | P20 GEN2 | was |
+|---|---|---|---|
+| `prime_position` | `bottom` −8.5 | **28.0** | 5.0 |
+| `blowout_position` | `blowout` −13 | **32.5** | 7.0 |
+| `drop_tip_position` | `dropTip` −27 | **46.5** | 10.0 |
+| `mm_to_ul` | — | **1.0** (pass-through) | 0.025 |
+
+`max_volume` 20.0, `min_volume` 1.0 and `zero_position` 0.0 were already right.
+
+All three planes moved **down**, so every commanded plunger travel is shorter
+than before, and the ordering `0 < prime < blowout < drop_tip` that
+`aspirate`/`dispense`/`moveTo` rely on is preserved.
 
 ### Chain, end to end
 
 ```
 protocol volume_ul  20.0
-  x mm_to_ul 1.0    -> ASPIRATE 20.0          (CubOS, this patch)
-  x UL_TO_MM 1.8    -> 36.0 mm of plunger     (firmware, ../firmware/)
-                    = PRIME_POSITION, so a full-scale 20 uL lands at 0.0
+  x mm_to_ul 1.0     -> ASPIRATE 20.0            (CubOS, this patch)
+  x UL_TO_MM 1.34    -> 26.8 mm of plunger       (firmware, ../firmware/)
+                        from PRIME 28.0, landing at 1.2 mm -- inside the
+                        28 mm stroke with a small dead band, as Opentrons
+                        has it
 ```
 
-### Still wrong, and deliberately left alone
+The firmware side carries the same three planes; the two files agree by
+construction. See [`../firmware/README.md`](../firmware/README.md) and
+§10.4 of [`../docs/opentrons-pipette-wiring.md`](../docs/opentrons-pipette-wiring.md).
 
-`prime_position: 5.0`, `blowout_position: 7.0` and `drop_tip_position: 10.0` in
-the same entry are all still marked `# placeholder`, and unlike `mm_to_ul` they
-are sent to the firmware as **absolute** `MOVE_TO` targets. The firmware's own
-positions are 36.0 / 44.0 / 55.0 — which is exactly what CubOS's
-`p300_single_gen2` entry carries, marked "calibrated from PANDA-BEAR". So a
-`blowout` asks the plunger to go to 7.0 while the firmware's blowout plane is
-44.0.
+### Still not calibrated
 
-Matching them to the firmware (36.0 / 44.0 / 55.0) is the obvious next step, but
-it changes real motion and was not asked for, so it has not been done.
+These are Opentrons' figures for the **model**, not a measurement of this unit.
+`UL_TO_MM` needs a gravimetric check once liquid actually moves. Until then a
+commanded microlitre is nominal, not verified.
 
 ### Upstream
 
-Not filed. Upstream's whole `p20_single_gen2` entry is placeholders; the fix
-worth sending is the p20 row once it has been gravimetrically calibrated.
+Not filed. Worth sending: upstream's `p20_single_gen2` entry is entirely
+placeholders, and these four numbers come from Opentrons rather than from this
+machine, so they are correct for anyone with a P20 GEN2 — not VCL-specific.
+The same is true of the `p300_single_gen2` entry, which carries 36.0 / 46.0 /
+60.0 against Opentrons' 34.0 / 38.5 / 56.5. That one was **left alone**: it is
+not the pipette on this machine, and changing an unused model adds risk without
+being asked for.
+
+---
+
+## `tmc2209-softwareserial-read.patch`
+
+**Not a CubOS patch.** It patches the janelia TMC2209 Arduino library, vendored
+into `~/panda_fw_vcl/lib/TMC2209/` for the firmware build.
+
+### Symptom
+
+`CMD_PIPETTE_DRIVER_STATUS` (command 29, added 2026-09-15) always returned
+`comm = 0`, which this repo read as proof that no TMC2209 register write had
+ever landed. **That conclusion was wrong** — see §10.1 of
+[`../docs/opentrons-pipette-wiring.md`](../docs/opentrons-pipette-wiring.md).
+
+### Cause
+
+A read over `SoftwareSerial` on an AVR cannot succeed with this library at all,
+whatever the wiring. `SoftwareSerial::write()` runs `cli()` for the duration of
+each transmitted byte, so the Arduino never receives its own transmission back
+on the shared single-wire link. But `sendDatagramBidirectional()` waits for
+`datagram_size` bytes and then **discards them as echo** — and with no echo, the
+bytes that arrive in that window are the driver's 8-byte reply. The first four
+are thrown away, `readReply()` waits for eight more, times out, retries 5×, and
+`isCommunicating()` reports false.
+
+Diagnosed by Ursa (Alex Carlson), byu-vcl issue #133, 2026-09-17. The janelia
+README says software serial "should only be used for unidirectional
+communication" for exactly this reason.
+
+### Fix
+
+Skip the echo wait-and-discard block when `software_serial_ptr_` is set. Writes
+are unaffected either way — they need no echo — so this changes only the read
+path.
+
+### ⚠️ Not sufficient on its own
+
+The bridge resistor must also move to the **TX side**: `A1 -> 1k -> node`, with
+`A0` and `PDN_UART` connected directly to the node, per TMC2209 datasheet §4.3
+fig 4.1 and the janelia "coupled" diagram. With `A1` wired straight to
+`PDN_UART` and the resistor only on the `A0` leg, the Arduino's push-pull TX
+shorts out the driver's reply. **That is a bench change.**
+
+### Why it is vendored rather than applied in `.pio/libdeps/`
+
+`.pio/libdeps/` is PlatformIO's dependency cache and can be re-resolved at any
+time, which would silently drop the patch. `lib/` is the project-local private
+library directory and takes precedence. **Verified rather than assumed:**
+inserting a sentinel `#error` into the `lib/` copy fails the build, so that copy
+is provably the one being compiled.
+
+```bash
+# how it was created, and how to recreate it after a library bump
+cd ~/panda_fw_vcl
+cp -r .pio/libdeps/uno/TMC2209 lib/
+git apply --directory=lib/TMC2209 ~/byu-vcl/cubos/patches/tmc2209-softwareserial-read.patch
+```
+
+### Upstream
+
+Not filed. Worth sending to `janelia-arduino/TMC2209` — the library already
+documents that reads do not work over software serial, so the honest fix is
+either this guard or a compile-time error.
 
 ---
 
