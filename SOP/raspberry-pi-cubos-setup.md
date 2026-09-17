@@ -197,3 +197,29 @@ Things worth knowing when you repeat it:
   `tag:rpi-5-des4` grant, which is `tcp:22` only — a service bound to `0.0.0.0` would be
   unreachable from CI until its port is added to that grant, so bind new services to
   loopback and reach them over SSH.
+
+## Appendix: check the stepper supply before diagnosing a motion fault
+
+`WPos` in GRBL's `?` response is the controller's **internal step counter**, not a
+measurement. With the stepper supply switched off, GRBL accepts every `G01`, emits the
+steps, and reports a perfectly plausible position while the machine stands still. Jogging
+"successfully" therefore proves nothing about whether anything moved.
+
+This cost two sessions on 2026-09-16/17: an unpowered gantry was diagnosed as two
+independent limit-switch faults, because `$H` failing with `ALARM:9` plus an axis that
+"jogged smoothly" looks exactly like a dead switch.
+
+Two power-independent checks, both free:
+
+- **`Pn:`** in the status response is driven by the limit switch inputs, not the step
+  generator. If an axis really travelled to its switch, `Pn:` names it. If a carriage
+  really moved off a switch, `Pn:` loses it.
+- **Any instrument with a sensor.** The capper's `decap` is an interlocked probe: it only
+  confirms if a cap is physically at the head. A clean capture is proof the gantry moved.
+
+So before concluding a switch is faulty, confirm the supply is on and that some *sensor*
+— not the counter — agrees that motion happened.
+
+⚠️ On `rpi-5-des4` the Pi shares power with the gantry: switching the gantry supply
+reboots the Pi and takes it off the tailnet for several minutes. Do not power-cycle while
+a protocol is running.

@@ -977,7 +977,13 @@ neither was done, since the new plunger planes are a real motion change.
 Details in
 [`cubos/results/pipette_p20gen2_20260917/README.md`](results/pipette_p20gen2_20260917/README.md).
 
-## 2026-09-17 (evening) — trio blocked at step 0: two gantry limit-switch faults
+## 2026-09-17 (evening) — trio blocked at step 0 — ⚠️ RETRACTED, see the next section
+
+> **The two "limit-switch faults" below are wrong.** The gantry's stepper
+> supply was switched off. `WPos` is GRBL's internal step counter, not a
+> measurement, so every "the axis jogged smoothly" observation here is
+> counter motion with a stationary machine. Superseded by the 2026-09-17
+> (late evening) section.
 
 Asked to run the trio again. It did not run — **`home` (step 0) failed and the
 protocol executed 0 steps.** No deck motion, no capper motion, no vial
@@ -1015,3 +1021,56 @@ TMC2209 still reads `comm = 0`, as expected for the running image.
 
 Full write-up, frames and logs in
 [`cubos/results/pipette_test_20260917/README.md`](results/pipette_test_20260917/README.md).
+
+
+## 2026-09-17 (late evening) — the gantry was unpowered; homing works, `decap vial_1` does not confirm
+
+Ben switched the gantry's stepper supply on. Campaign 50 **homed on the first
+attempt in 18.1 s** (`Homing completed`), moved to the vial column and attempted
+a real decap. It then failed at step 2:
+
+```
+decap failed for 'vial_1': sensor did not confirm cap capture after 3 attempt(s)
+  (last reading: cap_present=False, expected True)
+```
+
+### The retraction
+
+The previous section's "two independent limit-switch faults" were both artifacts
+of the missing motor power, and the reasoning that produced them was wrong.
+`WPos` is GRBL's **internal step counter**: with no motor power the controller
+emits every step and reports a plausible position while nothing moves. So "Z
+jogged ±25 mm smoothly" was 50 mm of counter and 0 mm of carriage, and `Pn:X`
+"failing to clear after 20 mm" was the same mistake — the carriage never left the
+switch. `Pn:X` is **absent from every status read** now that the supply is on.
+
+It also re-explains campaign 36, filed at the time as a separate Y fault: steps
+0–10 ran with the capper's sensor confirming a real cap capture, then the closing
+`home` failed 2.5 minutes later — consistent with the supply dropping out around
+2026-09-16 22:24 UTC.
+
+**`?` reports the counter; only a limit pin or an instrument sensor reports
+reality.** `Pn:` is driven by the switches rather than the step generator and was
+a free power-independent discriminator throughout.
+
+### Why the decap failed
+
+The commanded geometry is **byte-identical** to campaign 36, which decapped
+vial_1 successfully on the first attempt with the same configs:
+
+```
+c36  $H  Z99.065  X206.0  Y25.0  Z124.0  Y27.0  Z99.065  Z54.065  Z99.065  Z124.0  X284.0 ...
+c50  $H  Z99.065  X206.0  Y25.0  Z124.0  Y27.0  Z99.065  Z54.065  Z99.065  Z54.065  Z99.065  Z54.065  Z99.065
+```
+
+Same X, same Y, same engage plane. So position is not the cause. Ranked
+candidates: no vial/cap in slot 1; the electromagnet's coil supply being on a
+different switch that is still off (the Arduino acks the pin either way); or a
+cap too tight, as Ben observed on 2026-08-03 for one wider vial.
+
+The pipette limit switch continues to read CLEAR — `HOME` ran its full
+50 000-step budget twice (26.33 s each) rather than fake-succeeding in 0.52 s.
+`prime()` never ran, so no plunger travel was commanded.
+
+Full write-up, logs, deck frame and campaign CSVs in
+[`cubos/results/pipette_test_20260917b/README.md`](results/pipette_test_20260917b/README.md).
