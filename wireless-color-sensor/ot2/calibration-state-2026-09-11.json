@@ -1,0 +1,43 @@
+{
+  "captured_utc": "2026-09-11T17:44:01Z",
+  "robot": "OT2CEP20210722R13",
+  "note": "Read-only snapshot of the OT-2's stored calibration data. No motion. Addresses, hostnames and MACs deliberately omitted.",
+  "attached_pipettes": {
+    "left": { "model": "p300_single_v2.1", "id": "P3HSV212021083111" },
+    "right": { "model": null, "id": null }
+  },
+  "deck_calibration": {
+    "status": "OK",
+    "lastModified": "2026-01-27T18:14:57.794838Z",
+    "pipetteCalibratedWith": "P20SV202020030408",
+    "comment": "Stale: predates the 2026-09-10 lab move, and was performed with a pipette that is no longer attached."
+  },
+  "tip_length_calibration_count_total": 17,
+  "tip_length_uris_present": [
+    "opentrons/opentrons_96_filtertiprack_1000ul/1",
+    "opentrons/opentrons_96_filtertiprack_200ul/1",
+    "opentrons/opentrons_96_filtertiprack_20ul/1",
+    "opentrons/opentrons_96_tiprack_1000ul/1",
+    "opentrons/opentrons_96_tiprack_20ul/1",
+    "opentrons/opentrons_96_tiprack_300ul/1"
+  ],
+  "tip_length_for_attached_left": [],
+  "pipette_offset_entries": [
+    {
+      "pipette": "P20SV202020030408",
+      "mount": "left",
+      "lastModified": "2026-01-27T18:38:07.023266Z",
+      "tiprackUri": "opentrons/opentrons_96_tiprack_20ul/1"
+    }
+  ],
+  "pipette_offset_for_attached_left": [],
+  "labware_offsets_stored": 0,
+  "networking": {
+    "status": "limited",
+    "interfaces": {
+      "wlan0": { "state": "disconnected", "type": "wifi", "has_ip": false, "has_gateway": false },
+      "eth0": { "state": "connected", "type": "ethernet", "has_ip": true, "has_gateway": false }
+    },
+    "comment": "Only link is the direct cable to the stream-cam Pi (link-local, no gateway). The Opentrons App on a laptop cannot reach the robot in this state."
+  }
+}
