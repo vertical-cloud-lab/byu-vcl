@@ -223,3 +223,35 @@ So before concluding a switch is faulty, confirm the supply is on and that some 
 ⚠️ On `rpi-5-des4` the Pi shares power with the gantry: switching the gantry supply
 reboots the Pi and takes it off the tailnet for several minutes. Do not power-cycle while
 a protocol is running.
+
+### After a failed `$H`, recover by hand — never `$X` and jog
+
+The counter lesson above has a second half, learned the hard way on 2026-09-18:
+it is not only unsafe to *read* `WPos` as a position, it is unsafe to *command*
+against it.
+
+When the serial port opens or closes, the GRBL board resets and its counter
+re-initialises to the homed corner (`409, 309, 124` on this machine) regardless
+of where the carriage actually is. `$X` clears the resulting `Alarm` and lets
+motion through **without** fixing that reference. A relative jog then moves the
+carriage by the commanded distance from wherever it really is, while GRBL
+validates the target against a number that may be hundreds of millimetres out.
+
+That is exactly what drove Y 33 mm past its minimum: physical Y 27, counter
+Y 309, `G01 Y-60` in `G91` → counter 249 (inside soft limits, accepted) →
+physical −33. Write-up in `cubos/results/y_overrun_20260918/`.
+
+Two guards that do **not** help:
+
+- **`$20=1` (soft limits)** checks the target against the counter, so on an
+  unhomed machine it validates a fiction.
+- **`$21=0` (hard limits, the current setting)** means the physical switch in
+  the path cannot stop the move either. Enabling `$21` would add a real
+  backstop, at the cost of GRBL alarming on electrical noise — a deliberate
+  trade-off, not a free win.
+
+So: if `$H` fails, stop. Move the carriage by hand or power-cycle and re-home;
+do not jog to "find out where it is". If a diagnostic genuinely needs motion on
+an unhomed machine, jog only in the direction of the homed corner — that is the
+one direction guaranteed to have travel available no matter how wrong the
+counter is.

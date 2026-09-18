@@ -1074,3 +1074,55 @@ The pipette limit switch continues to read CLEAR — `HOME` ran its full
 
 Full write-up, logs, deck frame and campaign CSVs in
 [`cubos/results/pipette_test_20260917b/README.md`](results/pipette_test_20260917b/README.md).
+
+## 2026-09-18 — Y driven past its minimum by a diagnostic jog, and `VM` measures 13 V
+
+Two things, unrelated to each other.
+
+### The Y overrun was mine, not a machine fault
+
+An ad-hoc motion test run late on 2026-09-17 drove Y **33 mm past its physical
+minimum**. Ben stopped it and reset the machine by hand. No protocol was
+involved and no limit switch is implicated.
+
+The script did `$X` (unlock) and then **relative** jogs on an **unhomed**
+machine. The board had reset when the serial port closed at the end of campaign
+50, re-initialising the counter to the homed corner while the carriage stood at
+(206, 27):
+
+```
+counter says   Y 309        G01 Y-60 (G91)  ->  counter 249   accepted by soft limits
+carriage at    Y  27                        ->  physical -33  = 33 mm past Y min
+```
+
+`$20=1` validated the target against the counter, which is a fiction until a
+homing cycle succeeds; `$21=0` meant the physical switch in the path could not
+stop it either. X survived only because 206 − 60 = 146 happens to be in bounds.
+
+**The rule:** after a failed `$H`, the machine's position is unknown — recover
+by hand, never `$X` and jog. Recorded in
+[`SOP/raspberry-pi-cubos-setup.md`](../SOP/raspberry-pi-cubos-setup.md); full
+forensics, the script as executed, and before/after frames in
+[`cubos/results/y_overrun_20260918/README.md`](results/y_overrun_20260918/README.md).
+
+This is the second half of the 2026-09-16/17 lesson. That one was about
+*reading* `WPos` as a position; this one is about *commanding against* it, and
+it was not drawn at the time.
+
+### `VM` = 13 V — the leading pipette hypothesis is retired
+
+The driver's motor supply is present, so "missing `VM`" no longer explains the
+silent plunger. With `VM` up, the pot at full clockwise and `i_scale_analog`
+still at its power-on default, a healthy TMC2209 should hold the plunger — and
+it does not.
+
+Three candidates remain, all settled with a multimeter: **coil continuity at
+the driver's own terminals** (power off), **`EN` measured at the driver pin**
+(and confirmed to land on A4, not A3), and **VREF at the trimmer wiper**.
+Reasoning, expected readings and the order to take them in are in
+[`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md)
+§12.
+
+The coil question can also be answered by the chip itself — but only once the
+P20 GEN2 image is flashed *and* the bridge resistor moves to the TX side.
+Until both are done, `comm = 0` carries no information.

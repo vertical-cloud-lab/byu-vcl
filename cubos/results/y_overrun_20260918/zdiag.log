@@ -1,0 +1,26 @@
+=== 0. before anything ===
+   <Alarm|WPos:409.000,309.000,124.000|FS:0,0|WCO:-409.000,-309.000,-124.000> Pn= ''
+=== 1. unlock + home (timed) ===
+   ['[MSG:Caution: Unlocked]', 'ok']
+   t+ 11.31s  ALARM:9
+  homing cycle 11.31s ok=False
+  after home: <Alarm|WPos:409.000,309.000,310.000|FS:0,0|WCO:-409.000,-309.000,-124.000> Pn= ''
+=== 2. BASELINE: at the homed position, is a 4mm up-jog enough to reach the Z switch? ===
+     (homing pulls off $27=3.000mm, so the switch is 3mm above us)
+     up 4mm  @F300 -> <Alarm|WPos:409.000,309.000,310.000|FS:0,0|Ov:100,100,100> Pn= ''
+     down 4mm @F300 -> <Alarm|WPos:409.000,309.000,310.000|FS:0,0> Pn= ''
+=== 3. THE TEST: the protocol's own 45mm descent at F2000, then re-probe the switch ===
+  [camera] A_top_before -> 513964 bytes
+  G01 Z76.0 F2000 (45mm down) -> <Alarm|WPos:409.000,309.000,310.000|FS:0,0>  dt=0.58s
+  [camera] B_after_45mm_descent -> 513637 bytes
+  RE-PROBE up 4mm @F300 -> <Alarm|WPos:409.000,309.000,310.000|FS:0,0> Pn= ''
+
+  ###############################################################
+  baseline (Z at top):       up 4mm -> Pn=''
+  after commanded 45mm down: up 4mm -> Pn=''
+  VERDICT: INCONCLUSIVE -- baseline up-jog never reached the switch
+  ###############################################################
+
+=== 4. return to top ===
+  back up -> <Alarm|WPos:409.000,309.000,310.000|FS:0,0> Pn= ''
+  [camera] C_back_at_top -> 510999 bytes

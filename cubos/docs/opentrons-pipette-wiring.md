@@ -1184,3 +1184,117 @@ could not sync while the link was broken. **That reflash is now unblocked.**
 image does not carry the SoftwareSerial read fix, so the read cannot succeed
 regardless of the wiring. It stays uninformative until the reflash *and* the
 resistor move are both done.
+
+## 12. 2026-09-18: `VM` measures 13 V — the leading hypothesis is dead
+
+Ben measured the stepper driver's motor-supply screw heads: **13 V**. That
+retires the hypothesis §11.3 put at the top of the list, and it is the single
+most useful measurement taken on this problem so far, because of what it
+combines with.
+
+### 12.1 What it rules out
+
+The TMC2209 generates its own internal logic and reference supplies from `VM`
+through an on-chip regulator; `VCC_IO` (the Arduino's 5 V) powers only the pin
+drivers. On the Adafruit 6121 the VREF trimmer is fed from that internal
+`5VOUT`, so **everything analogue on the chip hangs off `VM`**. A missing `VM`
+was the one fault that explained silence, no holding torque and `comm = 0`
+simultaneously.
+
+13 V at the terminal means that story is finished. Three of its consequences
+should now be true, and can be checked:
+
+- the chip's internal `5VOUT` should be up,
+- VREF should be live, and with the pot at **full clockwise** it should be near
+  its maximum,
+- with `i_scale_analog` still `1` (power-on default — no UART write has been
+  confirmed to land) VREF *is* what sets coil current, so it should be high.
+
+A healthy TMC2209 in that state also has a default hold current: power-on
+`IHOLD = 16`, `IRUN = 31`, `toff = 3` (output stage enabled). It should hold
+the plunger noticeably.
+
+**It does not.** Ben's hand test on 2026-09-17 — *"pulling the plunger
+manually, it moves freely when plugged in and on"* — still stands. So something
+between the powered chip and the motor windings is broken.
+
+⚠️ Two caveats on the reading itself. First, confirm it was the **2-pin motor
+supply block**, not a coil pair. Second, 13 V measured with no current flowing
+confirms the supply is *present*, not that it can *hold up* — but that cannot
+be tested until current actually flows, so it is not worth chasing now.
+
+### 12.2 What is left, and how to tell them apart
+
+Three candidates remain. All three are settled with a multimeter; none needs
+the machine running.
+
+**A — the coil path is open.** Terminal screws clamped on insulation, a bad
+crimp at the pipette's FC-10P, or a broken ribbon conductor. This has been the
+standing suspicion since §6 and the §8 review supports it (silence with *no*
+buzzing is open coils; mis-*paired* coils buzz and vibrate).
+
+> **Power off.** Probe the driver's own coil terminals, so the measurement
+> covers the whole path driver → ribbon → pipette motor:
+> ```
+> 1A – 1B      a few to a few tens of ohms      coil A
+> 2A – 2B      a few to a few tens of ohms      coil B
+> 1A – 2A      open                             the coils are isolated
+> ```
+> Both pairs open ⇒ the connector or the crimps, not the pinout. One pair open
+> ⇒ that pair's path. Tug each wire in the terminal block while you are there;
+> a screw tightened onto insulation looks perfectly installed.
+
+**B — `EN` is held high.** The output stage is off whenever `EN` is high,
+whatever `VM` and VREF do.
+
+> **Power on, sketch running.** Measure `EN` **at the driver pin**, not at the
+> Arduino header — it must be ≈ 0 V. And confirm the wire lands on **A4**.
+> §2 found Cubware's diagram puts `EN` on A3, which is the `DIR` pin: wired
+> that way the driver is energised for one direction of travel and dead for
+> the other. The board's 20 kΩ pull-down means an *absent* `EN` wire is
+> harmless; a *wrong* one is not.
+
+**C — the driver chip is dead.** Its internal regulator, or the output stage.
+
+> **Power on.** Measure **VREF at the trimmer wiper**. With `VM` = 13 V it
+> should be well above zero and near maximum with the pot fully clockwise. If
+> VREF reads ≈ 0 V, the internal `5VOUT` is not being generated and the chip
+> should be replaced. A weak corroborating check: a TMC2209 with `VM` applied
+> draws a little even idle, so a chip that is stone cold after minutes powered
+> is consistent with a dead regulator.
+
+Order: **A, then B, then C** — A is power-off and needs no live probing, and it
+is the hypothesis with the most independent support.
+
+### 12.3 The software half is now worth doing for its own sake
+
+Candidate A can be answered *without the meter*, by the chip itself. The
+janelia library exposes `open_load_a` / `open_load_b` in the driver status
+register, and `CMD_PIPETTE_DRIVER_STATUS` (29) already returns them — but the
+read cannot succeed until two things are done together:
+
+1. **Flash the P20 GEN2 image** at `cubos/firmware/panda_vcl_p20gen2_20260917.hex`,
+   which carries `tmc2209-softwareserial-read.patch`. Without it a
+   `SoftwareSerial` read on an AVR is structurally impossible (§10.1), which
+   is why `comm = 0` has been uninformative every time it has been reported.
+2. **Move the bridge resistor to the TX side** — `A1 → 1 kΩ → node`, with `A0`
+   and `PDN_UART` directly on the node. On the RX side the Arduino's push-pull
+   TX shorts out the driver's reply.
+
+With both done, `comm > 0` becomes meaningful and `flags` answers A directly.
+Until then neither number carries information.
+
+### 12.4 Status after this measurement
+
+| | |
+|---|---|
+| Arduino STEP output | ✅ proven — 1592 steps at the commanded rate (§6) |
+| Arduino pin map | ✅ corrected 2026-09-01 (§2); `EN` on A4 **still unverified electrically** |
+| 10-pin header layout | ✅ agrees across three sources (§3, §8) |
+| `VM` at the driver | ✅ **13 V, measured 2026-09-18** |
+| VREF / `5VOUT` | ❓ unmeasured — §12.2 C |
+| `EN` at the driver pin | ❓ unmeasured — §12.2 B |
+| coil continuity | ❓ unmeasured — §12.2 A |
+| coil current | 🔴 none — no holding torque, no buzzing |
+| TMC2209 UART readback | 🔴 `comm = 0`, uninformative until §12.3 |
+| pipette limit switch | ✅ reading **clear** as of 2026-09-17 (26.3 s seek, not the 0.52 s fake success) |
