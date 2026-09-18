@@ -1367,3 +1367,108 @@ and fixes exactly this (`PRIME_POSITION 28.0`, `UL_TO_MM 1.34`,
 
 This was harmless while the up-leg was refused — the plunger never came back, so
 the descent was the only motion. Now that both legs run, it matters.
+
+---
+
+## 14. 2026-09-18: the LEDs corroborate the trace, and `DIAG`/`INDEX` are the way in
+
+Ben watched the driver board during campaign 54:
+
+> *"B red for the majority while the Pipette was running commands, then F green
+> after the drop tip."*
+
+### 14.1 That matches the trace command-for-command
+
+`B` and `F` are both on the **DIR** net (§11.1), and `moveTo()` latches DIR at the
+start of a move and holds it until the next one. Against campaign 54's timings:
+
+| UTC | protocol step | command | direction | DIR | LED |
+|---|---|---|---|---|---|
+| 00:39:08 / 00:39:35 | connect | `HOME` ×2, 26.3 s each | up (seek) | LOW | `F` green |
+| 00:41:21 | 3 `pick_up_tip` | `MOVE_TO 0.0`, 0 mm | none | unchanged | unchanged |
+| 00:41:48 | 4 `aspirate` | `ASPIRATE 20.0`, 36 down then 36 up | both | HIGH→LOW | red → green |
+| 00:43:13 | 8 `blowout` | `MOVE_TO 32.5`, **+32.5 mm** | down | HIGH | **`B` red** |
+| 00:43:34 | 9 `drop_tip` | `MOVE_TO 46.5`, **+14.0 mm** | down | HIGH | **`B` red** |
+| 00:43:47 | 9 `drop_tip` | `MOVE_TO 28.0`, **−18.5 mm** | **up** | **LOW** | **`F` green** |
+
+Red spans `blowout` and `drop_tip`'s first leg — 00:43:13 → 00:43:44, 30.8 s of the
+last 47 s of plunger activity. Green begins at 00:43:47, `drop_tip`'s **second**
+leg, the only upward `MOVE_TO` in the protocol, and latches to the end of the run.
+
+So the observation is an independent, human-eye confirmation of the serial trace,
+down to which command flipped the pin.
+
+**But be precise about what it proves.** Both LEDs are driven by the *Arduino's*
+pins. They establish that STEP and DIR arrive at the board's input pins with the
+right polarity and timing. Nothing on the chip's side of those pins drives them,
+so they say nothing about whether the TMC2209 is alive.
+
+### 14.2 The running image, now proven rather than inferred
+
+`avrdude -U flash:v:` against all three candidates, 2026-09-18:
+
+| image | verify |
+|---|---|
+| `panda_vcl_p20_20260915.hex` | ✅ **17370 bytes of flash verified** |
+| `flash_20260915T220346Z.hex` (stock backup) | ❌ mismatch at byte `0x0e` |
+| `panda_vcl_p20gen2_20260917.hex` | ❌ mismatch at byte `0x0e` |
+
+§13.3's reading was right: the P20 GEN2 image is not flashed, so the firmware's
+`PRIME_POSITION 36.0` / `UL_TO_MM 1.8` are still live while CubOS sends the
+Opentrons planes as absolute targets.
+
+### 14.3 🔑 `DIAG` and `INDEX` answer this without UART
+
+Both are broken out on the [Adafruit 6121](https://learn.adafruit.com/adafruit-tmc2209-stepper-motor-driver-breakout-board/pinouts),
+neither has an LED, and neither has ever been looked at:
+
+- **`DIAG`** — *"driven high if there is a problem causing the motor driver to not
+  be able to work properly."* A fault flag the chip raises on its own.
+- **`INDEX`** — *"driven high when the microstep counter is in it's zero
+  position."* It therefore **pulses as the chip consumes STEP pulses**,
+  independently of whether any current reaches the coils.
+
+`INDEX` is precisely the discriminator the UART readback was wanted for:
+
+| STEP arriving | `INDEX` | reading |
+|---|---|---|
+| yes | **changing** | the chip is alive and counting → the fault is downstream: the coil path, or current set to zero |
+| yes | **dead flat** | the chip is not processing STEP → dead, disabled, or STEP not landing on its pin |
+
+`EN` is broken out too — *"Pull this pin high to disable the output to the
+motors"* — and should measure ~0 V at the **driver's** pin, not at the Arduino
+header. §12.2 B has wanted that measurement since 2026-09-18 morning; it is
+unchanged, and these two join it.
+
+[`cubos/tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py) opens
+a bounded, direction-labelled stepping window — 6 mm out and 6 mm back at 200
+steps/s, ~48 s per leg — so all three can be probed while the plunger is actually
+being driven. It refuses to open the window if the limit switch reads asserted,
+since the return leg would be refused and the plunger would ratchet outward.
+
+### 14.4 `comm = 0`, read three more times
+
+```
+cmd 29 DRIVER_STATUS  dt=0.209s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}   (×3)
+```
+
+Still carries no information, and §14.2 supplies the second independent reason
+why: the running image predates `tmc2209-softwareserial-read.patch`, and without
+it the janelia library's read path cannot succeed on an AVR at all — `write()`
+runs `cli()` so the Arduino never hears its own transmission, and
+`sendDatagramBidirectional()` then discards the first four bytes of the driver's
+*real* reply as if they were that echo. The bridge-resistor topology (§12.3) is
+the first reason. Both have to be fixed before `comm > 0` is even possible.
+
+### 14.5 Order to work in
+
+1. **`EN` at the driver pin** — ~0 V expected; ~5 V means the output stage is off.
+2. **`DIAG`** — ~0 V expected; high means the chip has a fault it is reporting.
+3. **`INDEX` during a driven leg** — must change. This is the split in §14.3.
+4. **Coil resistance at the four screw terminals**, ribbon attached, power off:
+   `1A`–`1B` and `2A`–`2B` a few to a few tens of ohms, `1A`–`2A` open. This tests
+   the whole path including crimps and screw clamping.
+5. **The yellow `S` LED**, free while the rest is happening: at 2500 steps/s it
+   reads as a steady dim glow rather than a flicker, but it must look *different*
+   during a move. If it never changes, STEP is not reaching the board and the
+   fault is one wire.

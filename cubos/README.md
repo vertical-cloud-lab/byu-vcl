@@ -1167,3 +1167,29 @@ the flags were set. On a 1 GB Pi 5 with two 4608×2592 sensors and CubOS residen
 that starves the second camera: `cam1_csi1` timed out on all four in-run frames
 after capturing a pre-run test shot in 0.59 s. Both call sites now forward the
 requested size.
+
+### The LEDs corroborate campaign 54, and `DIAG`/`INDEX` are the next measurement
+
+Ben watched the driver board during campaign 54: *"B red for the majority while
+the Pipette was running commands, then F green after the drop tip."* Both LEDs sit
+on the **DIR** net, and the sequence matches the plunger trace command-for-command
+— red spans `blowout` and `drop_tip`'s first leg, green begins at `drop_tip`'s
+second leg, the only upward `MOVE_TO` in the protocol, and latches to the end of
+the run. An independent, human-eye confirmation of the serial timings.
+
+It confirms the **Arduino** side, though: both LEDs are driven by the Arduino's
+pins, so nothing on the chip's side of them contributes. Together with `VM` at
+13 V, the fault is confined to the segment between the TMC2209's input pins and
+the motor windings.
+
+`avrdude -U flash:v:` also settles which image is running — `panda_vcl_p20_20260915.hex`
+verifies; the stock backup and the P20 GEN2 build both mismatch at byte `0x0e`.
+
+**`DIAG` and `INDEX` are the way in.** Both are broken out on the Adafruit 6121 and
+neither needs UART. `INDEX` pulses as the chip consumes STEP pulses, independently
+of whether current reaches the coils, so it separates *the chip is not running*
+from *the coils are open* — which is what the UART readback was wanted for.
+[`cubos/tools/pipette_driver_measure.py`](tools/pipette_driver_measure.py) opens a
+bounded, direction-labelled stepping window to probe them;
+[`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §14
+has the expected readings and the order to take them in.
