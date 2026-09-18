@@ -1297,4 +1297,73 @@ Until then neither number carries information.
 | coil continuity | ❓ unmeasured — §12.2 A |
 | coil current | 🔴 none — no holding torque, no buzzing |
 | TMC2209 UART readback | 🔴 `comm = 0`, uninformative until §12.3 |
-| pipette limit switch | ✅ reading **clear** as of 2026-09-17 (26.3 s seek, not the 0.52 s fake success) |
+| pipette limit switch | ✅ reading **clear** — confirmed twice over (26.3 s seek, and retractions now execute; §13) |
+| up-direction gate | ✅ **open** as of campaign 54 — `MOVE_TO` retractions emit steps (§13) |
+| firmware aspirate constants | 🔴 still the 2026-09-15 image (`PRIME 36.0`, `UL_TO_MM 1.8`); P20 GEN2 hex built, not flashed (§13.3) |
+
+---
+
+## 13. 2026-09-18 (campaign 54): the up-direction gate is open — retractions execute
+
+First run in which **every** plunger command produced a distance-scaling round
+trip, including a retraction. Full trace in
+[`cubos/results/pipette_test_20260918/`](../results/pipette_test_20260918/README.md).
+
+### 13.1 The measurement
+
+| command | dt | commanded distance | implied rate |
+|---|---|---|---|
+| `MOVE_TO 0.0` (from 0.0) | 0.006 s | 0 mm | correct no-op |
+| `ASPIRATE 20.0` | 13.131 s | down 36 + **up 36** | — |
+| `MOVE_TO 32.5` | 21.546 s | **+32.5 mm** | 0.663 s/mm |
+| `MOVE_TO 46.5` | 9.288 s | **+14.0 mm** | 0.663 s/mm |
+| `MOVE_TO 28.0` | 12.267 s | **−18.5 mm** | 0.663 s/mm |
+
+The three `MOVE_TO` commands reproduce their commanded distances to within
+0.01 mm at one consistent rate, and the last of them is a **retraction**. In
+every run from 2026-09-15 to 2026-09-17 a retraction returned a flat ~0.107 s
+having emitted no steps — the `stepMotor()` up-direction gate firing on
+`digitalRead(PIPETTE_LIMIT_PIN) == HIGH`.
+
+`ASPIRATE` corroborates independently: `aspirate()` descends to
+`PRIME_POSITION` and then ascends by `volume × UL_TO_MM`, and the ascent is the
+gated leg. Campaigns 26 and 36 measured **5.962 s** (descent only); campaign 54
+measured **13.131 s** — both legs. Which is also why `MOVE_TO 32.5` measured
+exactly 32.5 mm of travel: the aspirate landed back at 0.0 as the arithmetic
+says it should.
+
+### 13.2 What it proves, and what it does not
+
+`stepMotor()` bit-bangs STEP and counts loop iterations. No encoder, no current
+sense, **no feedback**. A distance-scaling round trip proves the **Arduino
+emitted the steps**; it says nothing about whether the motor turned. §12's three
+multimeter checks — coil continuity, `EN` at the driver pin, VREF at the wiper —
+are unchanged and are still the critical path.
+
+What *has* changed is the firmware gate, and therefore the diagnostic value of
+`HOME`. D9 reads **LOW** (loop closed): retractions are no longer refused, and
+`HOME` runs its full 50 000-step (≈31.4 mm) budget — 26.346 s and 26.348 s on
+two attempts, identical to the centisecond, which is a seek that exhausts its
+budget rather than one that terminates on a switch.
+
+**So `HOME` is now a live test of the motor.** If the motor is turning, a 31 mm
+seek should reach the switch; it does not. The `F`/`B` LEDs give the direction
+for free (§11: green `F` = DIR LOW = the homing direction) and `HOME` runs for
+26 s, so one observed `HOME` distinguishes *motor not turning* from *seeking
+away from the switch*.
+
+### 13.3 🔴 The firmware's aspirate constants are now the weak link
+
+`MOVE_TO` targets come from CubOS — `p20-gen2-plunger-constants` supplies prime
+28.0, blowout 32.5, drop_tip 46.5, and all three appear verbatim in the trace.
+But `ASPIRATE` is computed **inside the firmware**, and the running 2026-09-15
+image still has `PRIME_POSITION 36.0` (a P300 plane) and `UL_TO_MM 1.8` (an
+estimate). A P20 GEN2's bottom is 28.0.
+
+So *if* the motor is turning, `aspirate` drives the plunger 8 mm past its
+bottom on every call. `cubos/firmware/panda_vcl_p20gen2_20260917.hex` is built
+and fixes exactly this (`PRIME_POSITION 28.0`, `UL_TO_MM 1.34`,
+`RUN_CURRENT_PERCENT 20`, `HOLD_CURRENT_PERCENT 5`). It is **not flashed**.
+
+This was harmless while the up-leg was refused — the plunger never came back, so
+the descent was the only motion. Now that both legs run, it matters.

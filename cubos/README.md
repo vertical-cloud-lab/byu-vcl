@@ -1126,3 +1126,44 @@ Reasoning, expected readings and the order to take them in are in
 The coil question can also be answered by the chip itself — but only once the
 P20 GEN2 image is flashed *and* the bridge resistor moves to the TX side.
 Until both are done, `comm = 0` carries no information.
+
+## 2026-09-18 — campaign 54: 12/12 on hardware, and the plunger retracts
+
+Full write-up: [`cubos/results/pipette_test_20260918/`](results/pipette_test_20260918/README.md).
+
+The trio ran end to end — 12/12 steps, `completed`, no capper retries, no
+alarms — with the committed configs unchanged. Both homing cycles succeeded on
+the first attempt (18.1 s and 23.6 s), and `decap vial_1` captured first try at
+the same coordinates campaign 50 had failed at, so that failure was the
+machine's power state, not the deck or the geometry.
+
+**The plunger result is the new one.** Every command produced a
+distance-scaling round trip, including a **retraction** (`MOVE_TO 28.0` from
+46.5 — 18.5 mm in 12.267 s at the firmware's own 0.663 s/mm). Every run since
+2026-09-15 had returned a flat ~0.107 s in that direction, emitting no steps.
+The `stepMotor()` up-direction gate is open, i.e. D9 reads LOW. This proves the
+**Arduino emitted the steps**, not that the motor turned — that still needs
+eyes, and the three multimeter checks in
+[`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md)
+§12 are unchanged.
+
+`HOME` is now a live test of the motor rather than a test of the switch: it runs
+its full 31.4 mm seek (26.3 s, twice, identical) and never finds the limit.
+
+### 🔴 `$20=0` was found on the controller
+
+Soft limits were switched off — so the machine had neither soft (`$20`) nor hard
+(`$21`) limit protection, and no run could have started (`$20` is in CubOS's
+critical settings set). Restored to `$20=1` and verified. Same cause as
+2026-08-27: an interrupted `configure_soft_limits_from_spans`, which writes
+`$20=0` → travels → `$20=1`. **Check `$20` after any interrupted calibration,
+E-stop or manual reset.**
+
+### Also fixed
+
+`cubos/tools/run_with_camera_capture.py` did not forward `--width`/`--height` to
+the in-run capture path, so every in-run frame was grabbed at 1920×1080 however
+the flags were set. On a 1 GB Pi 5 with two 4608×2592 sensors and CubOS resident
+that starves the second camera: `cam1_csi1` timed out on all four in-run frames
+after capturing a pre-run test shot in 0.59 s. Both call sites now forward the
+requested size.

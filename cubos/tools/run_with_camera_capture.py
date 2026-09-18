@@ -163,7 +163,8 @@ def capture(cam, path, width=1920, height=1080, vflip=False, hflip=False):
         return repr(exc)
 
 
-def capture_all(cams, outdir, tag, manifest, transforms=None):
+def capture_all(cams, outdir, tag, manifest, transforms=None,
+                width=1920, height=1080):
     transforms = transforms or {}
     for i, cam in enumerate(cams):
         label = _label(cam, i)
@@ -171,7 +172,8 @@ def capture_all(cams, outdir, tag, manifest, transforms=None):
         name = f"{tag}__{label}.jpg"
         path = os.path.join(outdir, name)
         t0 = time.time()
-        err = capture(cam, path, vflip=tf.get("vflip", False),
+        err = capture(cam, path, width=width, height=height,
+                      vflip=tf.get("vflip", False),
                       hflip=tf.get("hflip", False))
         rec = {"tag": tag, "camera": label, "name": cam["name"],
                "file": name, "dt_s": round(time.time() - t0, 2),
@@ -249,7 +251,8 @@ def main():
 
     manifest = []
     if args.test_shot:
-        capture_all(cams, args.outdir, "testshot", manifest, transforms)
+        capture_all(cams, args.outdir, "testshot", manifest, transforms,
+                    width=args.width, height=args.height)
         with open(os.path.join(args.outdir, "frames.json"), "w") as fh:
             json.dump(manifest, fh, indent=2)
         return 0 if all(r["error"] is None for r in manifest) else 1
@@ -300,7 +303,8 @@ def main():
         result = _orig_execute(self, context)
         if self.index in state["points"]:
             tag = f"step{self.index:02d}_{self.command_name}"
-            capture_all(cams, args.outdir, tag, manifest, transforms)
+            capture_all(cams, args.outdir, tag, manifest, transforms,
+                        width=args.width, height=args.height)
         return result
 
     _rt.ProtocolStep.execute = execute

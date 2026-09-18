@@ -255,3 +255,33 @@ do not jog to "find out where it is". If a diagnostic genuinely needs motion on
 an unhomed machine, jog only in the direction of the homed corner — that is the
 one direction guaranteed to have travel available no matter how wrong the
 counter is.
+
+### Check `$20` after any interrupted calibration, E-stop or manual reset
+
+`Gantry.configure_soft_limits_from_spans` writes `$20=0`, then
+`$130/$131/$132`, then `$20=1`. Interrupted anywhere in between — an E-stop, a
+power cut, a cancelled calibration — the controller is left with **soft limits
+off**, and `$21` (hard limits) is `0` as a matter of standing configuration, so
+the machine ends up with no limit protection at all.
+
+It is not silent: `$20` is in `Gantry._validate_grbl_settings`' critical set, so
+`run_protocol` refuses to start with *"Critical GRBL settings mismatch"*. But
+the refusal names the mismatch, not the danger, and anything driving GRBL
+directly gets no warning whatsoever.
+
+Found in this state on 2026-08-27 and again on 2026-09-18. Read it before a run:
+
+```bash
+cd ~/CubOS && .venv/bin/python - <<'PY'
+import serial, time
+p = serial.Serial("/dev/ttyUSB0", 115200, timeout=1); time.sleep(2.5)
+p.reset_input_buffer(); p.write(b"$$\n"); time.sleep(1.5)
+for l in p.read_all().decode(errors="replace").splitlines():
+    if l.strip().startswith(("$20=", "$21=", "$130=", "$131=", "$132=")):
+        print(l.strip())
+p.close()
+PY
+```
+
+`$20=1` is the wanted value. Restore with a single `$20=1\n` written to the same
+port; it persists in EEPROM.
