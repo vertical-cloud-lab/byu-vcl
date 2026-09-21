@@ -1,0 +1,265 @@
+# Capper/decapper + tip-pickup + insertion test -- six vials.
+#
+# Requested 2026-08-06 (PR #171): park first, then for each of vial_1..vial_6
+# decap -> insert the pipette (with a 35 mm tip, picked up once after vial_1's
+# decap) -> retract -> cap. Written only; NOT run on hardware.
+#
+# Sequence:
+#   1. home, then move the pipette to a mid-deck park position FIRST, with an
+#      explicit travel_z, so the pipette never drops near the X rail at the
+#      homed corner (pipette sits at deck X ~518 there).
+#   2. decap vial_1
+#   3. pick_up_tip tip_rack.A1 -- nozzle travels at safe_z (114), descends to
+#      deck Z 60.0 over (255.5, 33.5) and presses onto the tip. From this step
+#      on the pipette carries a 35 mm tip: CubOS adds the rack's tip_length to
+#      the pipette's effective depth, so every later pipette deck-frame Z in
+#      this file is the TIP END, not the nozzle.
+#   4. insert into vial_1 (tip end to Z 40.0 = 15 mm below the Z 55.0 rim; the
+#      tip is 35 mm long, so only the tip enters -- the nozzle stays 20 mm
+#      above the rim), retract to the Z 80.0 transit plane, cap vial_1.
+#   5. repeat decap -> insert -> retract -> cap for vial_2..vial_6, then end
+#      parked mid-deck (NOT homed -- see the last NUMBERS bullet).
+#
+# Config trio:
+#   gantry:   ../../gantry/cub_xl_ben_pipette_capper.yaml   (2026-08-06 rev)
+#   deck:     ../../deck/sterling_6vials.yaml  (+ tip_rack, see its header)
+#   protocol: this file
+#
+#   python -m cubos.tools.validate_setup      <gantry> <deck> <protocol>
+#   python -m cubos.tools.run_protocol --mock <gantry> <deck> <protocol>
+#
+# ---------------------------------------------------------------------------
+# BLOCKER: the pipette cannot reach ANY of the six vials (deck X ~113)
+# ---------------------------------------------------------------------------
+# The pipette is mounted offset_x = +135.0, so the lowest deck X its tip can
+# reach is 135.0 (gantry X 0). Every vial is at deck X 112.5-113.0, so each
+# insert needs the gantry at X -22.0 / -22.5 -- past the physical X travel,
+# not just a soft limit. validate_setup reports exactly this on all 12
+# insert/retract moves:
+#
+#   pipette -> vial_1_insert.location.target:
+#     gantry (-22.0, 31.5, 75.0) violates x_min=0.0
+#
+# The decap/cap steps are fine (the capper has zero XY offset), and the tip
+# pickup is fine (rack at deck X 255.5 -> gantry X 120.5). Only the six
+# insertions are out of reach. Fix options, same shape as the old vial_1
+# Y-reach problem:
+#   * shift the vial holder >= +22.5 mm in +X and re-measure the deck. A
+#     uniform +30 mm on every vial's location.x (deck X ~143, gantry X ~8)
+#     validates PASS and mock-runs all 28 steps -- tested on a shifted copy
+#     of the deck file.
+#   * or remount the pipette closer to the capper and re-measure offset_x.
+# After the physical change, update BOTH the deck vials' location.x AND the
+# matching vial_N_insert / vial_N_retract X values below.
+#
+# ---------------------------------------------------------------------------
+# READ BEFORE RUNNING ON HARDWARE: the tip sweeps a corridor 35 mm below
+# every capper move
+# ---------------------------------------------------------------------------
+# The two instruments are rigidly coupled. Whenever the CAPPER's tool point
+# is commanded to deck (x, y, z), the pipette hangs at deck (x+135, y+13),
+# and after step 3 its TIP END is 35 mm below the nozzle:
+#
+#   capper action                    capper Z   nozzle Z   tip-end Z
+#   transit / park at safe_z 114      114        97         62
+#   engage a vial (rim 55 + 13)        68        51         16
+#
+# So every decap/cap AFTER the tip is attached drags the tip end through
+# deck Z ~16 in the corridor x = vial_x + 135 (~248 as measured), y =
+# vial_y + 13 (57.5..223.5), and through Z 62 across x ~248-260 during
+# transit/park. validate_setup CANNOT see any of this -- it only models the
+# commanded instrument, never the passive one (that blind spot is already
+# documented in cubos/patches/README.md from the 2026-08-03 runs, where the
+# bare nozzle dragged on the X rail during capper engages).
+#
+# Before the first hardware run, physically confirm the strip
+# x ~ 240-275, y ~ 20-240 is empty above deck Z ~10 apart from the tip rack
+# itself. The tip rack (255.5, 33.5) sits INSIDE that corridor in X; the
+# closest engage shadow passes at (248, 57.5) -- 24 mm away in Y -- so a
+# single tip / small rack clears, but anything extending >= ~20 mm in +Y
+# from the tip position gets hit at tip-end height. Relocating the rack out
+# of the corridor (e.g. deck X >= 300) removes the hazard entirely.
+#
+# ---------------------------------------------------------------------------
+# NUMBERS
+# ---------------------------------------------------------------------------
+#   * Positions are deck-frame, instrument-tip frame: CubOS subtracts
+#     offset_x/offset_y and adds the effective depth (pipette depth 0.0
+#     + 35.0 tip after pickup; capper depth -17.0).
+#   * Vial rim Z 55.0 (bare-vial location.z IS the rim). Insert Z 40.0 puts
+#     the tip 15 mm in; the vial is 83 mm tall so the floor is far below.
+#   * Transit plane for tip-attached pipette moves: travel_z 80.0 (tip-end
+#     frame) -> gantry Z 115.0, inside working_volume z_max 121.0 and above
+#     cap tops (~rim 55 + cap height).
+#   * Bare-pipette park move uses travel_z 111.0 (gantry 111.0), which
+#     clears the modeled Cub XL right X-max rail (top Z 100) on the way out
+#     of the homed corner.
+#   * WITH THE TIP ATTACHED, never add pipette steps that travel at safe_z
+#     (deck-target `move`, `measure`, `aspirate`, `transfer`, `drop_tip`):
+#     safe_z is applied in the instrument-tip frame, so 114 + 35 = gantry
+#     149 -- 25 mm past the machine's Z travel. Named positions with an
+#     explicit travel_z (as below) are the only safe way to move a tipped
+#     pipette under the current CubOS safe_z semantics.
+#   * The tip stays on the nozzle at the end of the run (no drop_tip step,
+#     deliberately -- see the safe_z point above). Remove it by hand.
+#   * The protocol ends PARKED mid-deck, not homed. A final `home` with the
+#     tip attached puts the tip end at deck (515, 291, 86) -- inside the
+#     Cub XL right X-max rail box (Z top 100) -- and validate_setup flags
+#     exactly that:
+#       step 27 (home): home pose instrument point (515.0, 291.0, 86.0)
+#         will hit the Cub XL right X-max rail
+#     Pull the tip off by hand at the park pose, then home from the
+#     Operator UI / next protocol.
+
+positions:
+  pipette_park: [250.0, 150.0, 111.0]
+  # End pose, tip-end frame (tip attached): gantry (115, 137, 115).
+  pipette_end: [250.0, 150.0, 80.0]
+  vial_1_insert: [113.0, 44.5, 40.0]
+  vial_1_retract: [113.0, 44.5, 80.0]
+  vial_2_insert: [113.0, 78.5, 40.0]
+  vial_2_retract: [113.0, 78.5, 80.0]
+  vial_3_insert: [112.5, 111.5, 40.0]
+  vial_3_retract: [112.5, 111.5, 80.0]
+  vial_4_insert: [112.5, 144.5, 40.0]
+  vial_4_retract: [112.5, 144.5, 80.0]
+  vial_5_insert: [112.5, 177.5, 40.0]
+  vial_5_retract: [112.5, 177.5, 80.0]
+  vial_6_insert: [112.5, 210.5, 40.0]
+  vial_6_retract: [112.5, 210.5, 80.0]
+
+protocol:
+  - home:
+
+  # Park the pipette first (requested): away from the X rail before any Z
+  # drop, and clear of the tip rack / vial row.
+  - move:
+      instrument: pipette
+      position: pipette_park
+      travel_z: 111.0
+
+  # --- vial 1 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # One tip, picked up once, kept for all six vials.
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  - move:
+      instrument: pipette
+      position: vial_1_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_1_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # --- vial 2 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - move:
+      instrument: pipette
+      position: vial_2_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_2_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # --- vial 3 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  - move:
+      instrument: pipette
+      position: vial_3_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_3_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  # --- vial 4 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  - move:
+      instrument: pipette
+      position: vial_4_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_4_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  # --- vial 5 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  - move:
+      instrument: pipette
+      position: vial_5_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_5_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  # --- vial 6 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  - move:
+      instrument: pipette
+      position: vial_6_insert
+      travel_z: 80.0
+
+  - move:
+      instrument: pipette
+      position: vial_6_retract
+      travel_z: 80.0
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_6
+
+  # No final home: with the 35 mm tip attached, the home pose puts the tip
+  # end inside the X-max rail box (see header). Park mid-deck instead;
+  # remove the tip by hand, then home.
+  - move:
+      instrument: pipette
+      position: pipette_end
+      travel_z: 80.0

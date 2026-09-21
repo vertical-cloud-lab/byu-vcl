@@ -1,0 +1,47 @@
+### Arduino serial link diagnostics -- rpi-5-des4, 2026-09-17T22:16:12Z
+
+## USB inventory (same board, serial ...8130)
+Bus 001 Device 007: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+Bus 003 Device 003: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+total 0
+lrwxrwxrwx 1 root root 13 Sep 17 15:52 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB0
+lrwxrwxrwx 1 root root 13 Sep 17 16:11 usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00 -> ../../ttyACM0
+
+## dmesg: the board re-enumerated BEFORE this session connected
+[510334.429157] usb 3-2: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+[510334.429160] usb 3-2: Manufacturer: Arduino (www.arduino.cc)
+[510334.429166] usb 3-2: SerialNumber: 03535343335351018130
+[510334.580225] cdc_acm 3-2:1.0: ttyACM0: USB ACM device
+[511323.812155] usb 3-2: reset full-speed USB device number 3 using xhci-hcd
+[511324.198225] cdc_acm 3-2:1.0: ttyACM0: USB ACM device
+[511513.262144] usb 3-2: reset full-speed USB device number 3 using xhci-hcd
+[511513.648218] cdc_acm 3-2:1.0: ttyACM0: USB ACM device
+   (pi uptime 511786 s, so kernel ts 510334 is ~5 min before first contact)
+
+## avrdude cannot sync -- any baud, any programmer
+  -c arduino   -b 115200 : not in sync: resp=0x00 not in sync: resp=0x04 not in sync: resp=0x00 
+  -c arduino   -b 57600  : not in sync: resp=0x00 not in sync: resp=0xb4 not in sync: resp=0x00 
+  -c arduino   -b 19200  : not in sync: resp=0x00 not in sync: resp=0x00 not in sync: resp=0x00 
+  -c stk500v1  -b 115200 : not in sync: resp=0x24 not in sync: resp=0xe1 not in sync: resp=0x04 
+
+## application-level integrity: 25 x STATUS (command 14, read-only)
+STATUS round-trips: 0 clean / 25 attempted  -> error rate 100%
+    nonascii b'$\xe1\xe1\xe1\xe1\xe1\xe1\xe1\xe1\xe1\xe1\x04\xe1b\x98\x06\x00\x10\x00\r\xe1%/\x01\x00\xe1\x00\xe1\x00\x80\x00\x00\x00\x00\x00\x00\x00\x00\x14\t'
+    nonascii b'\x00\x00\xe1\x03\x00\x01\x812\x80\x00\x00I\x0c\x00\x00\xe1\xe1\xe1\xe1\xe1\x00\x02\xe1\xe1\xe1\xe1\x00\x03@\x00\x00\x04@\x00\x00\x02\x08\x00\x00\x03'
+    noreply_or_err 
+    badjson OK:{"homed":0,"pos":0.00,"max_vol":2
+    badjson OK:{"homed":0,"pos":0.00,"max_vol":2
+    nonascii b'\x90\x01\x9b\x15\x16 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 '
+    noreply_or_err 
+    noreply_or_err 
+
+## passive capture -- nothing sent
+unsolicited bytes in 8 s: 10  (1 B/s)
+occurrences of 'Pawduino': 0
+occurrences of 'OK:':      0
+top bytes: [('0x0', 4), ('0xe1', 3), ('0x84', 1), ('0xfd', 1), ('0x4', 1)]
+printable: 0%
+--- attempt 1 ---
+PawduinoLink.connect(): FAILED -> UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe1 in position 1: invalid continuation byte
+--- attempt 2 ---
+PawduinoLink.connect(): FAILED -> PawduinoLinkConnectionError: Pawduino on /dev/ttyACM0 did not answer hello: Timed out (5.0s) waiting for response to command 0

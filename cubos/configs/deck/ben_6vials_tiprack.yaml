@@ -1,0 +1,197 @@
+# ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the 2x15 tip
+# rack, CubXL, 2026-09-01 rev.
+#
+# Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM (parsed
+# YAML verified identical to the attachment). This is the rev that RAN as
+# campaign 54 -- 18/18 steps, 2026-09-01 18:17:41 -> 18:23:31 UTC.
+# See ../../results/pipette_test_20260901/README.md.
+#
+# Changes vs. the rev committed at 77b8057:
+#   tip_rack.calibration.a1.x   366.0 -> 336.0   (-30)
+#   tip_rack.calibration.a2.x   357.5 -> 327.5   (-30)
+#   tip_rack.location.x         366.5 -> 336.5   (-30)
+# Everything else -- all six vials, pickup_z 57, drop_z null -- is unchanged.
+#
+# ---------------------------------------------------------------------------
+# The tip-rack frame question is settled: the anchor IS already converted
+# ---------------------------------------------------------------------------
+# I flagged on 2026-08-31 that 366 might be a double-shifted value. Ben's
+# "I fixed the tip rack location" puts a1.x back to 336.0, which is the
+# 87c3c55 value, and 336.0 = the raw jog reading 284.0 + the pipette's
+# offset_x 52.0. The matching a1.y 37.5 = raw 25.5 + offset_y 12.0.
+#
+# Confirmed on hardware: pick_up_tip commanded gantry (284.0, 25.5, 57.0),
+# straight out of the run's own G-code (gantry_command.log) -- exactly the
+# measured jog point. No further conversion is needed or wanted; applying
+# +52/+12 again would put the pickup 52 and 12 mm off.
+#
+# Note that validate_setup PASSES either way -- it only asks whether a
+# coordinate is reachable, never whether it is the right one. Both (284, 25.5)
+# and (336, 37.5) are inside the working volume, which is why this had to be
+# settled by measurement rather than by a gate.
+#
+# ---------------------------------------------------------------------------
+# pickup_z 57 -- ran, still unconfirmed by eye
+# ---------------------------------------------------------------------------
+# Lowered from 60 because no tip was picked up in campaign 33. The XY is now
+# proven correct, so if a tip still does not seat, Z is the only remaining
+# variable. pick_up_tip is a friction press with NO sensor, so neither CubOS
+# nor the firmware can report a miss -- this needs an eyeball.
+#
+# One thing it is NOT: the plunger. pick_up_tip's plunger command is
+# MOVE_TO 0.0, which is a retraction, and retractions are no-ops on this
+# firmware (2026-09-01 measurement: 0.107 s round trip, no motion). But the
+# tip is seated by pressing the nozzle into it, not by the plunger, so the
+# pickup is a Z/XY question only.
+#
+# ---------------------------------------------------------------------------
+# drop_z: null -- correct, leave it
+# ---------------------------------------------------------------------------
+# At this CubOS version drop_z is read in exactly one place,
+# deck/labware/tip_rack.py:158-160, as max(abs(pickup_z - drop_z), 1.0) -- a
+# bounding-box height, never a motion target. Setting it equal to pickup_z
+# collapses the rack's modeled height to 1.0 mm and overrides `height: 66`.
+#
+# drop_tip still ejects a full tip-length above the slot: it engages the TIP
+# END to the rack's location.z 57 (gantry 92 -- confirmed in this run's
+# G-code), while a seated tip's end is at deck 22. The real fix is a
+# `tip_disposal` deck entry -- that is what drop_tip is meant to target, and
+# it ejects at that entry's own location.z. Give me a spot for used tips and
+# I will add it.
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 27
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 60
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_3:
+    type: vial
+    name: vial_3
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 93
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_4:
+    type: vial
+    name: vial_4
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 126
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_5:
+    type: vial
+    name: vial_5
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 159
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_6:
+    type: vial
+    name: vial_6
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 206
+      y: 192
+      z: 55
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 138
+    width: 20
+    height: 66
+    tip_length: 35
+    drop_z: null
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 336
+        y: 37.5
+      a2:
+        x: 327.5
+        y: 37.5
+    pickup_z: 57
+    location:
+      x: 336.5
+      y: 37.5
+      z: 57
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true

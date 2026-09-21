@@ -1,0 +1,75 @@
+diff --git a/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py b/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
+index 3496ee0..097027c 100644
+--- a/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
++++ b/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
+@@ -150,10 +150,32 @@ class OpentronsPipette(PipetteInstrument):
+                 self.home()
+                 self.prime()
+             except (PipetteCommandError, PipetteTimeoutError) as exc:
+-                self._release_link()
+-                raise PipetteConnectionError(
+-                    f"Plunger home/prime after connect failed: {exc}"
+-                ) from exc
++                # LOCAL PATCH (byu-vcl): continue with an UNREFERENCED plunger
++                # instead of refusing to connect.
++                #
++                # Upstream is right to refuse: without a successful home the
++                # firmware's position counter is meaningless, so every absolute
++                # MOVE_TO lands somewhere unknown and a commanded volume is not
++                # a volume. That is the correct default, and this patch should
++                # be reverted the moment the plunger limit switch works.
++                #
++                # On the CubXL the switch never asserts anywhere in the
++                # plunger's travel (2026-09-01: both legs of home()'s built-in
++                # retry ran their full ~31 mm budget -- 26.35 s each -- so
++                # ~62 mm was swept against a 55 mm range). That blocks EVERY
++                # protocol at instrument connect, before any gantry motion,
++                # which makes it impossible to test anything else on the
++                # machine. This patch trades the reference for the ability to
++                # keep testing motion while the switch is being fixed. It does
++                # NOT make volumes real.
++                self.logger.warning(
++                    "Plunger home/prime after connect FAILED (%s). Continuing "
++                    "with an UNREFERENCED plunger: positions and volumes are "
++                    "meaningless and the plunger may drive into its stop.",
++                    exc,
++                )
++                self._is_homed = False
++                self._is_primed = False
+ 
+         self.logger.info(
+             "Connected to %s on %s", self._config.name, self._port
+diff --git a/packages/core/tests/instruments/pipette/test_pipette.py b/packages/core/tests/instruments/pipette/test_pipette.py
+index 08f2465..6726350 100644
+--- a/packages/core/tests/instruments/pipette/test_pipette.py
++++ b/packages/core/tests/instruments/pipette/test_pipette.py
+@@ -293,7 +293,14 @@ class TestPipetteLifecycle:
+ 
+     @patch("cubos.instruments.controllers.pawduino.serial.Serial")
+     @patch("cubos.instruments.controllers.pawduino.time.sleep")
+-    def test_connect_raises_when_homing_fails(self, mock_sleep, mock_serial_cls):
++    def test_connect_warns_and_continues_when_homing_fails(
++        self, mock_sleep, mock_serial_cls,
++    ):
++        # LOCAL PATCH (pipette-connect-tolerate-failed-home): upstream raises
++        # PipetteConnectionError here. On the CubXL the plunger limit switch
++        # does not assert, which would block every protocol at instrument
++        # connect before any gantry motion. Revert this patch (and restore
++        # this test) once the switch is fixed.
+         responses = [
+             'OK:{"homed":0,"pos":0.00,"max_vol":300.00}\n',
+             'ERR:{"error":"Failed to home pipette"}\n',
+@@ -303,9 +310,10 @@ class TestPipetteLifecycle:
+         mock_serial_cls.return_value = mock_ser
+ 
+         pip = OpentronsPipette(pipette_model="p300_single_gen2", port="/dev/ttyUSB0")
+-        with pytest.raises(PipetteConnectionError, match="home/prime"):
+-            pip.connect()
+-        mock_ser.close.assert_called_once()
++        pip.connect()
++        assert pip._is_homed is False
++        assert pip._is_primed is False
++        mock_ser.close.assert_not_called()
+ 
+     @patch("cubos.instruments.controllers.pawduino.serial.Serial")
+     @patch("cubos.instruments.controllers.pawduino.time.sleep")

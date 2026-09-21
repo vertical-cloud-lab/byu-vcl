@@ -1,0 +1,133 @@
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /tmp/trio/cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 124.0]
+
+[2/4] Loading deck config...
+  OK: /tmp/trio/ben_6vials_tiprack.yaml
+  Labware (7):
+    vial_1: vial at (206.0, 27.0, 55.0)
+    vial_2: vial at (206.0, 60.0, 55.0)
+    vial_3: vial at (206.0, 93.0, 55.0)
+    vial_4: vial at (206.0, 126.0, 55.0)
+    vial_5: vial at (206.0, 159.0, 55.0)
+    vial_6: vial at (206.0, 192.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: /tmp/trio/cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: /tmp/trio/pipette_test.yaml
+  Steps: 12
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position', travel_z=115.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] aspirate(position='vial_1', volume_ul=20.0, height=-35.0)
+    [5] move(instrument='pipette', position='pipette_park', travel_z=87.0)
+    [6] cap(instrument='vial_capper_decapper', vial='vial_1')
+    [7] decap(instrument='vial_capper_decapper', vial='vial_2')
+    [8] blowout(position='vial_2', height=-35.0)
+    [9] drop_tip(position='tip_rack.A1')
+    [10] cap(instrument='vial_capper_decapper', vial='vial_2')
+    [11] home()
+
+Validating protocol motion bounds...
+  OK (12 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol in explicit offline mock mode...
+------------------------------------------------------------
+
+cubos.gantry.instrument_mount.InstrumentedGantry: Connecting instrument: vial_capper_decapper
+cubos.instruments.base_instrument.PawduinoCapper: Capper connected (offline)
+cubos.gantry.instrument_mount.InstrumentedGantry: Connecting instrument: pipette
+cubos.instruments.base_instrument.OpentronsPipette: Pipette connected (offline)
+cubos.protocol_engine.protocol.Protocol: Running protocol (12 steps) from /tmp/trio/pipette_test.yaml
+protocol: Step 0: home()
+protocol: home: homing gantry
+protocol: Step 1: move(instrument='vial_capper_decapper', position='park_position', travel_z=115.0)
+protocol: move: vial_capper_decapper -> (206.0, 25.0, 115.0) (named: park_position, travel_z=115.0)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 25.000, 115.000) -> gantry (206.000, 25.000, 99.065)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 25.0, 99.065) via travel_z=99.065
+protocol: Step 2: decap(instrument='vial_capper_decapper', vial='vial_1')
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 27.0, 99.065) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 70.000) -> gantry (206.000, 27.000, 54.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+protocol: Step 3: pick_up_tip(position='tip_rack.A1')
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (336.000, 37.500, 115.000) -> gantry (284.000, 25.500, 115.000)
+cubos.gantry.gantry.Gantry: Offline move to (284.0, 25.5, 115.0) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (336.000, 37.500, 57.000) -> gantry (284.000, 25.500, 57.000)
+protocol: Step 4: aspirate(position='vial_1', volume_ul=20.0, height=-35.0)
+cubos.gantry.instrument_mount.InstrumentedGantry: OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (206.000, 27.000, 89.000) -> gantry (154.000, 15.000, 124.000)
+cubos.gantry.gantry.Gantry: Offline move to (154.0, 15.0, 124.0) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (206.000, 27.000, 20.000) -> gantry (154.000, 15.000, 55.000)
+protocol: Step 5: move(instrument='pipette', position='pipette_park', travel_z=87.0)
+protocol: move: pipette -> (258.0, 25.0, 87.0) (named: pipette_park, travel_z=87.0)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (258.000, 25.000, 87.000) -> gantry (206.000, 13.000, 122.000)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 13.0, 122.0) via travel_z=122.0
+protocol: Step 6: cap(instrument='vial_capper_decapper', vial='vial_1')
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 27.0, 99.065) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 70.000) -> gantry (206.000, 27.000, 54.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 27.000, 115.000) -> gantry (206.000, 27.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+protocol: Step 7: decap(instrument='vial_capper_decapper', vial='vial_2')
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 60.0, 99.065) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 70.000) -> gantry (206.000, 60.000, 54.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+protocol: Step 8: blowout(position='vial_2', height=-35.0)
+cubos.gantry.instrument_mount.InstrumentedGantry: OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (206.000, 60.000, 89.000) -> gantry (154.000, 48.000, 124.000)
+cubos.gantry.gantry.Gantry: Offline move to (154.0, 48.0, 124.0) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (206.000, 60.000, 20.000) -> gantry (154.000, 48.000, 55.000)
+protocol: Step 9: drop_tip(position='tip_rack.A1')
+cubos.gantry.instrument_mount.InstrumentedGantry: OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (336.000, 37.500, 89.000) -> gantry (284.000, 25.500, 124.000)
+cubos.gantry.gantry.Gantry: Offline move to (284.0, 25.5, 124.0) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving OpentronsPipette to (336.000, 37.500, 57.000) -> gantry (284.000, 25.500, 92.000)
+protocol: Step 10: cap(instrument='vial_capper_decapper', vial='vial_2')
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+cubos.gantry.gantry.Gantry: Offline move to (206.0, 60.0, 99.065) via travel_z=124.0
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 70.000) -> gantry (206.000, 60.000, 54.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (206.000, 60.000, 115.000) -> gantry (206.000, 60.000, 99.065)
+cubos.gantry.instrument_mount.InstrumentedGantry: Moving PawduinoCapper to (236.000, 25.000, 115.000) -> gantry (236.000, 25.000, 99.065)
+protocol: Step 11: home()
+protocol: home: homing gantry
+cubos.protocol_engine.protocol.Protocol: Protocol complete.
+cubos.gantry.instrument_mount.InstrumentedGantry: Disconnecting instrument: vial_capper_decapper
+cubos.instruments.base_instrument.PawduinoCapper: Capper disconnected (offline)
+cubos.gantry.instrument_mount.InstrumentedGantry: Disconnecting instrument: pipette
+cubos.instruments.base_instrument.OpentronsPipette: Pipette disconnected (offline)
+
+------------------------------------------------------------
+Protocol complete — 12 steps executed.
+Measurement data store: /home/runner/.cubos/panda_data.db
+Result CSV files:
+  /tmp/CubOS/packages/core/src/cubos/data/results/campaign_8_20260912_011944/campaign.csv
+  /tmp/CubOS/packages/core/src/cubos/data/results/campaign_8_20260912_011944/experiments.csv
+  /tmp/CubOS/packages/core/src/cubos/data/results/campaign_8_20260912_011944/manifest.csv
+------------------------------------------------------------

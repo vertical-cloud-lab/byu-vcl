@@ -1,0 +1,27 @@
+2026-09-18 — read-only probe after campaign 54 (no motion commanded)
+
+CubOS HEAD: 496819c (+ 3 local patches)
+byu-vcl HEAD at probe time: d96e5e5
+
+  cmd  14 STATUS         dt= 0.009s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  cmd  29 DRIVER_STATUS  dt= 0.209s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  cmd  29 DRIVER_STATUS  dt= 0.209s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  cmd  29 DRIVER_STATUS  dt= 0.212s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  cmd   6 CMD_EMAG_OFF   sent
+
+  v = [comm, flags, current_scaling];  current_scaling = -1 is the "unread" sentinel,
+  and flags carries no information while comm = 0.
+
+avrdude flash verification (read-only, -U flash:v:) against every candidate image:
+
+  panda_vcl_p20_20260915.hex        avrdude: 17370 bytes of flash verified
+  flash_20260915T220346Z.hex        avrdude: verification error, first mismatch at byte 0x000e
+  panda_vcl_p20gen2_20260917.hex    avrdude: verification error, first mismatch at byte 0x000e
+
+  => the board is running the 2026-09-15 p20 image. The P20 GEN2 build, which
+     carries both the Opentrons plunger planes and tmc2209-softwareserial-read,
+     is NOT flashed.
+
+  avrdude lives at ~/.platformio/packages/tool-avrdude@1.60300.200527/bin/avrdude
+  with its conf one level up at .../tool-avrdude@1.60300.200527/avrdude.conf
+  (not in an etc/ subdirectory, which is where -C defaults to looking).

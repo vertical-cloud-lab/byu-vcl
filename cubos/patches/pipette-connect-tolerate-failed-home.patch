@@ -1,0 +1,46 @@
+diff --git a/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py b/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
+--- a/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
++++ b/packages/core/src/cubos/instruments/pipette/vendors/opentrons.py
+@@ -159,16 +159,38 @@
+         if not status.is_homed:
+             self.logger.info("Plunger not homed after connect; homing and priming")
+             try:
+                 self.home()
+                 self.prime()
+             except (PipetteCommandError, PipetteTimeoutError) as exc:
+-                self._close_serial()
+-                raise PipetteConnectionError(
+-                    f"Plunger home/prime after connect failed: {exc}"
+-                ) from exc
++                # LOCAL PATCH (byu-vcl): continue with an UNREFERENCED plunger
++                # instead of refusing to connect.
++                #
++                # Upstream is right to refuse: without a successful home the
++                # firmware's position counter is meaningless, so every absolute
++                # MOVE_TO lands somewhere unknown and a commanded volume is not
++                # a volume. That is the correct default, and this patch should
++                # be reverted the moment the plunger limit switch works.
++                #
++                # On the CubXL the switch never asserts anywhere in the
++                # plunger's travel (2026-09-01: both legs of home()'s built-in
++                # retry ran their full ~31 mm budget -- 26.35 s each, four
++                # attempts running -- so ~62 mm was swept against a 55 mm
++                # range). That blocks EVERY protocol at instrument connect,
++                # before any gantry motion, which makes it impossible to test
++                # anything else on the machine. This patch trades the reference
++                # for the ability to keep testing motion while the switch is
++                # being fixed. It does NOT make volumes real.
++                self.logger.warning(
++                    "Plunger home/prime after connect FAILED (%s). Continuing "
++                    "with an UNREFERENCED plunger: positions and volumes are "
++                    "meaningless and the plunger may drive into its stop.",
++                    exc,
++                )
++                self._is_homed = False
++                self._is_primed = False
+ 
+         self.logger.info(
+             "Connected to %s on %s", self._config.name, self._port
+         )
+ 
+     def disconnect(self) -> None:

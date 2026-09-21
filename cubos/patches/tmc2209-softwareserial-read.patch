@@ -1,0 +1,67 @@
+--- a/src/TMC2209/TMC2209.cpp
++++ b/src/TMC2209/TMC2209.cpp
+@@ -883,24 +883,49 @@
+   // Wait for the transmission of outgoing serial data to complete
+   serialFlush();
+ 
+-  // wait for bytes sent out on TX line to be echoed on RX line
+-  uint32_t echo_delay = 0;
+-  while ((serialAvailable() < datagram_size) and
+-    (echo_delay < ECHO_DELAY_MAX_MICROSECONDS))
++  // -------------------------------------------------------------------------
++  // [VCL] SoftwareSerial never echoes its own transmission on AVR.
++  // -------------------------------------------------------------------------
++  // AVR SoftwareSerial::write() runs cli() for the duration of each byte, so
++  // the half-duplex single-wire echo that this block waits for is never
++  // received.  The bytes that DO arrive in the window are the driver's 8-byte
++  // reply -- so the loop below would fall through on the reply's first 4
++  // bytes and then discard them as "echo", leaving readReply() waiting for 8
++  // more bytes that never come.  Every read therefore times out and
++  // isCommunicating() reports false regardless of wiring, which is why
++  // CMD_PIPETTE_DRIVER_STATUS returned comm = 0 on 2026-09-15 and 2026-09-16.
++  // Diagnosed by Ursa (byu-vcl issue #133, 2026-09-17); the janelia README
++  // says software serial "should only be used for unidirectional
++  // communication" for exactly this reason.
++  //
++  // Writes are unaffected either way -- they need no echo -- so this changes
++  // only the read path.
++  //
++  // NOTE: this alone is not sufficient.  The bridge resistor must also sit on
++  // the TX side (A1 -> 1k -> node; A0 and PDN_UART directly on the node), per
++  // TMC2209 datasheet section 4.3 fig 4.1.  With A1 wired straight to
++  // PDN_UART the push-pull TX shorts out the driver's reply.
++  if (software_serial_ptr_ == nullptr)
+   {
+-    delayMicroseconds(ECHO_DELAY_INC_MICROSECONDS);
+-    echo_delay += ECHO_DELAY_INC_MICROSECONDS;
+-  }
++    // wait for bytes sent out on TX line to be echoed on RX line
++    uint32_t echo_delay = 0;
++    while ((serialAvailable() < datagram_size) and
++      (echo_delay < ECHO_DELAY_MAX_MICROSECONDS))
++    {
++      delayMicroseconds(ECHO_DELAY_INC_MICROSECONDS);
++      echo_delay += ECHO_DELAY_INC_MICROSECONDS;
++    }
+ 
+-  if (echo_delay >= ECHO_DELAY_MAX_MICROSECONDS)
+-  {
+-    return;
+-  }
++    if (echo_delay >= ECHO_DELAY_MAX_MICROSECONDS)
++    {
++      return;
++    }
+ 
+-  // clear RX buffer of echo bytes
+-  for (uint8_t i=0; i<datagram_size; ++i)
+-  {
+-    byte = serialRead();
++    // clear RX buffer of echo bytes
++    for (uint8_t i=0; i<datagram_size; ++i)
++    {
++      byte = serialRead();
++    }
+   }
+ }
+ 
