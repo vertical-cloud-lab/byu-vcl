@@ -1193,3 +1193,19 @@ from *the coils are open* — which is what the UART readback was wanted for.
 bounded, direction-labelled stepping window to probe them;
 [`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §14
 has the expected readings and the order to take them in.
+
+### "Could the stepper driver be causing this?" — which one?
+
+The machine has **two independent stepper systems that share no signal path**:
+the gantry's X/Y/Z drivers live on the GRBL controller board (`/dev/ttyUSB0`),
+and the plunger's single TMC2209 lives on an Adafruit 6121 breakout commanded by
+the Arduino (`/dev/ttyACM0`). The TMC2209 has no electrical connection to any
+gantry axis, so it cannot make an axis move, refuse to move, overshoot a limit,
+or miss a switch — and every gantry symptom on this branch already has a
+different, established cause (supply switched off, `$20=0`, or a relative jog
+against a stale counter).
+
+For the **plunger** it is one of only two remaining candidates, the other being
+the coil path downstream of its output terminals. The one route by which the
+driver could affect the gantry is shared power, not signals — see
+[`cubos/docs/opentrons-pipette-wiring.md`](docs/opentrons-pipette-wiring.md) §15.

@@ -1472,3 +1472,74 @@ the first reason. Both have to be fixed before `comm > 0` is even possible.
    reads as a steady dim glow rather than a flicker, but it must look *different*
    during a move. If it never changes, STEP is not reaching the board and the
    fault is one wire.
+
+---
+
+## 15. Which stepper driver? The gantry and the plunger are separate systems
+
+Asked on 2026-09-21 ([#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171)):
+*could the stepper driver have anything to do with the issues above?* The
+answer depends on which motion is meant, because this machine has **two
+independent stepper systems that share no signal path**.
+
+| | gantry X / Y / Z | pipette plunger |
+|---|---|---|
+| commanded by | GRBL controller board | Arduino Uno R3 `2341:0043` |
+| serial port | `/dev/ttyUSB0` (CH340 `1a86:7523`) | `/dev/ttyACM0` |
+| stepper drivers | on the GRBL board, one per axis | **Adafruit 6121 TMC2209 breakout**, one |
+| step generation | GRBL firmware | `stepMotor()` bit-banging `STEP` (A2) / `DIR` (A3) |
+| scaling | `$100`–`$102` = 400 steps/mm | `STEPS_PER_MM 1592` |
+| limits | `$130`–`$132` = 409 / 309 / 124, switches on `Pn:` | one switch on D9 |
+| config | `serial_port:` + `grbl_settings:` | `instruments.pipette.port:` |
+
+Both ports are listed side by side in
+[`cub_xl_ben_pipette_capper.yaml`](../configs/gantry/cub_xl_ben_pipette_capper.yaml);
+`/dev/ttyACM0` also carries the capper's electromagnet and line-break sensor.
+
+**The TMC2209 has no electrical connection to any gantry axis.** It cannot make
+an axis move, refuse to move, overshoot a limit, or miss a switch. So for the
+gantry symptoms the answer is no, and in each case the cause is already
+established and is something else:
+
+| symptom | cause | written up in |
+|---|---|---|
+| campaign 46 — `ALARM:9`, capper never descended | gantry stepper supply switched off | §appendix of the [SOP](../../SOP/raspberry-pi-cubos-setup.md) |
+| campaign 50 — `decap vial_1` failed 3× | same power state; campaign 54 captured first try at byte-identical coordinates | [`pipette_test_20260917b/`](../results/pipette_test_20260917b/README.md) |
+| Y driven 33 mm past its stop | `$X` + `G91` jog against a counter 282 mm stale | [`y_overrun_20260918/`](../results/y_overrun_20260918/README.md) |
+| campaign 36 — closing `home` failed | same supply dropout | [`pipette_test_20260916/`](../results/pipette_test_20260916/README.md) |
+| no run could start (2026-09-18) | `$20=0` on the controller | [`pipette_test_20260918/`](../results/pipette_test_20260918/README.md) |
+
+### 15.1 For the plunger the answer is yes, and it is now one of two things
+
+Campaign 54 (§13) and the LED observation (§14) closed out everything upstream
+of the driver's input pins, and Ben's 13 V measurement (§12) closed out its
+supply. What remains, in full:
+
+```
+  Arduino STEP/DIR output    PROVEN  1592 steps at the commanded rate (§6)
+  polarity and timing        PROVEN  B/F LEDs match the trace command-for-command (§14.1)
+  limit-switch gate          OPEN    retractions emit steps (§13)
+  VM at the screw terminal   13 V    (§12)
+  ---------------------------------- everything above this line is eliminated
+  TMC2209 chip / EN / VREF   ?       candidates B and C
+  coil path to the windings  ?       candidate A
+```
+
+Only candidates **B** (`EN` held high, output stage off) and **C** (dead chip or
+dead internal regulator) are the driver itself; **A** is the wiring downstream
+of its output terminals. §14.5 is the order to work in, and `DIAG` / `INDEX` on
+the 6121 split B+C from A without needing the UART readback to work.
+
+### 15.2 The one way the driver could touch the gantry: shared power
+
+Not through signals — through the supply. `rpi-5-des4` already shares power
+with the gantry (switching the gantry supply reboots the Pi, observed
+2026-09-17), so if the driver's 12 V comes off that same brick or strip, a
+short or a latched fault at the driver could brown out the gantry and present
+as a motion fault.
+
+**Unverified, and worth confirming**: whether the TMC2209's motor supply is the
+same source as the gantry's. Two things argue against it mattering today — the
+terminal read a healthy 13 V, and campaign 54 ran 12/12 clean with the driver
+connected — but a supply shared with a suspect board is worth knowing about
+before the next fault is diagnosed.
