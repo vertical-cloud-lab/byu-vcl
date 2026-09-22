@@ -1,0 +1,142 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.090
+One of the things that's been helpful with AI
+
+00:00:02.940 --> 00:00:06.290
+is finding documentation or
+
+00:00:06.140 --> 00:00:09.490
+explanations of code for Bow
+
+00:00:09.340 --> 00:00:12.230
+Torch, which is very underdeveloped and doesn't
+
+00:00:12.080 --> 00:00:13.810
+have a lot of documentation for it.
+
+00:00:14.320 --> 00:00:17.470
+And so it does a really good job of finding explanations
+
+00:00:17.320 --> 00:00:20.850
+for what functions do or how to organize,
+
+00:00:21.220 --> 00:00:24.830
+like how to call functions and use data because
+
+00:00:24.680 --> 00:00:28.370
+it's hard to find good examples of how
+
+00:00:28.220 --> 00:00:30.070
+I can use them in my own code.
+
+00:00:32.620 --> 00:00:33.810
+For us, I think,
+
+00:00:34.300 --> 00:00:36.970
+for the powder doser, it's been, um, clot has
+
+00:00:36.820 --> 00:00:38.890
+been controlling the whole thing, writing the
+
+00:00:38.740 --> 00:00:41.270
+code that does the tests and running the tests.
+
+00:00:41.900 --> 00:00:44.710
+And it's been really nice in a lot of ways, particularly
+
+00:00:44.560 --> 00:00:46.510
+that it can also record the data.
+
+00:00:46.500 --> 00:00:48.750
+So it runs the test and it records all the data
+
+00:00:48.600 --> 00:00:50.930
+in a really good way. And it's the primary one
+
+00:00:50.780 --> 00:00:52.650
+looking back at the data, so it knows where everything
+
+00:00:52.500 --> 00:00:52.970
+is.
+
+00:00:53.640 --> 00:00:55.810
+And they can automatically draw conclusions on
+
+00:00:55.660 --> 00:00:58.310
+the data, and like the data analysis part of
+
+00:00:58.160 --> 00:00:59.470
+it as we're, um,
+
+00:01:00.040 --> 00:01:00.550
+like,
+
+00:01:01.640 --> 00:01:02.950
+concurrently running tests, it's been really
+
+00:01:02.800 --> 00:01:05.110
+nice. The scary part of that is that I,
+
+00:01:06.200 --> 00:01:09.490
+even if I think I could probably figure out somewhat
+
+00:01:09.340 --> 00:01:11.190
+quickly how to run the powder dust to myself
+
+00:01:11.040 --> 00:01:11.810
+and write the code,
+
+00:01:12.260 --> 00:01:14.710
+I have not done that, and I don't currently know.
+
+00:01:14.640 --> 00:01:16.850
+Like, if you asked me to do it myself, I couldn't
+
+00:01:16.700 --> 00:01:18.170
+do it right now. It would take me a couple of
+
+00:01:18.020 --> 00:01:18.610
+days, probably.
+
+00:01:19.240 --> 00:01:19.750
+Um,
+
+00:01:21.700 --> 00:01:22.910
+yeah, that's scary.
+
+00:01:23.460 --> 00:01:26.910
+We were talking about the idea that the human
+
+00:01:26.760 --> 00:01:28.910
+element is important in research, especially
+
+00:01:28.760 --> 00:01:30.110
+when you're putting your name on it.
+
+00:01:29.960 --> 00:01:33.050
+that if I'm doing research,
+
+00:01:33.580 --> 00:01:33.730
+like,
+
+00:01:34.200 --> 00:01:35.970
+if Claude is doing research, then anybody can
+
+00:01:35.820 --> 00:01:36.550
+push the button,
+
+00:01:37.020 --> 00:01:38.290
+and then Claude is doing research.
+
+00:01:38.760 --> 00:01:40.690
+If I'm doing research, it should have aspects
+
+00:01:40.540 --> 00:01:42.330
+of me in it, it should have that human element,
+
+00:01:42.340 --> 00:01:45.070
+that it's specific to me, and
+
+00:01:44.980 --> 00:01:47.170
+my ideas, and my work.

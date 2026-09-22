@@ -1,0 +1,832 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:00.320
+<v Andrew / Ronnie / Marcus>It's yeah like</v>
+
+00:00:00.350 --> 00:00:06.210
+<v Sterling Baird>an experience where it's helped you learn like a positive experience something that</v>
+
+00:00:06.400 --> 00:00:12.480
+<v Carl Robison>you should just give me like a quick rundown on what you just did because I have not already</v>
+
+00:00:12.480 --> 00:00:12.760
+<v Carl Robison>yeah</v>
+
+00:00:12.760 --> 00:00:14.140
+<v Cross-talk / far-field>okay</v>
+
+00:00:17.440 --> 00:00:18.820
+<v Sterling Baird>we're all going out</v>
+
+00:00:18.820 --> 00:00:21.590
+<v In-room (unidentified)>you guys will get</v>
+
+00:00:21.590 --> 00:00:26.070
+<v Sterling Baird>the room to yourself to just chat for the entire</v>
+
+00:00:26.070 --> 00:00:27.930
+<v In-room (unidentified)>space. So</v>
+
+00:00:27.930 --> 00:00:30.610
+<v Cross-talk / far-field>I</v>
+
+00:00:32.400 --> 00:00:34.080
+<v Cross-talk / far-field>can't mute audio.</v>
+
+00:00:37.500 --> 00:00:38.420
+<v Cross-talk / far-field>Andrew, you're still on me.</v>
+
+00:00:52.380 --> 00:00:53.240
+<v Cross-talk / far-field>sorry about that.</v>
+
+00:00:55.820 --> 00:00:58.320
+<v Audrey Christiansen>You can zoom calls me. Okay,</v>
+
+00:01:00.060 --> 00:01:01.880
+<v Cross-talk / far-field>I kind of talked about how</v>
+
+00:01:02.970 --> 00:01:08.850
+<v Audrey Christiansen>using it from model generation feels a little limiting because we can't directly edit those</v>
+
+00:01:08.850 --> 00:01:15.570
+<v Audrey Christiansen>models. you could pull them into on shape and you could add a little bit to them, but</v>
+
+00:01:15.570 --> 00:01:16.930
+<v Audrey Christiansen>it doesn't work very well.</v>
+
+00:01:19.730 --> 00:01:20.990
+<v Audrey Christiansen>Sorry, I feel like a little echo,</v>
+
+00:01:21.750 --> 00:01:21.890
+<v Cross-talk / far-field>right?</v>
+
+00:01:23.080 --> 00:01:28.180
+<v Carl Robison>You are, Sterling left this computer on. Oh. No worries, though.</v>
+
+00:01:30.950 --> 00:01:38.630
+<v Audrey Christiansen>And then I agree with these points that it doesn't feel like our skills</v>
+
+00:01:38.630 --> 00:01:45.110
+<v Audrey Christiansen>are being utilized very well, with this model generation, it would be way easier to just</v>
+
+00:01:45.110 --> 00:01:51.650
+<v Audrey Christiansen>make configurations on one cat model rather than having AI generate everything, having</v>
+
+00:01:51.650 --> 00:01:54.110
+<v Audrey Christiansen>to tune every little structure that are curious.</v>
+
+00:01:57.370 --> 00:02:02.410
+<v Audrey Christiansen>And if you're making those models, you don't get to know those models as well, which means</v>
+
+00:02:02.410 --> 00:02:08.890
+<v Audrey Christiansen>it is harder to fix them if they're having issues or sometimes they have geometry errors,</v>
+
+00:02:08.890 --> 00:02:15.030
+<v Audrey Christiansen>the mess of things that if a human had made them, you know, would have been fine, because</v>
+
+00:02:15.030 --> 00:02:17.730
+<v Audrey Christiansen>we wouldn't have done that right off the bat.</v>
+
+00:02:20.540 --> 00:02:21.100
+<v Cross-talk / far-field>Yeah,</v>
+
+00:02:25.340 --> 00:02:26.720
+<v Cross-talk / far-field>I'm really</v>
+
+00:02:26.720 --> 00:02:33.420
+<v Audrey Christiansen>worried about the real things where we've got a lot of AI generate a lot of what we're</v>
+
+00:02:33.420 --> 00:02:41.000
+<v Audrey Christiansen>writing to the point where, like, I spent a lot of time writing my abstract, and we ended</v>
+
+00:02:41.000 --> 00:02:47.520
+<v Audrey Christiansen>up feeding it through AI, added a bunch of sources and like me afterward and I didn't really</v>
+
+00:02:48.420 --> 00:02:51.560
+<v Audrey Christiansen>that was the way to go. I think that we should have read those sources.</v>
+
+00:02:55.140 --> 00:03:01.710
+<v Audrey Christiansen>And yeah, that's about the helpful is that it can teach you things and</v>
+
+00:03:01.710 --> 00:03:02.430
+<v Audrey Christiansen>I think that's</v>
+
+00:03:02.430 --> 00:03:04.250
+<v Cross-talk / far-field>the</v>
+
+00:03:04.540 --> 00:03:11.260
+<v Audrey Christiansen>best use of me as a resource. And so it was really helpful for debugging</v>
+
+00:03:11.260 --> 00:03:12.860
+<v Audrey Christiansen>a 16 3D printer for me.</v>
+
+00:03:13.730 --> 00:03:15.570
+<v Cross-talk / far-field>But I</v>
+
+00:03:17.040 --> 00:03:21.740
+<v Audrey Christiansen>feel like it I feel like we're pushing other areas.</v>
+
+00:03:23.470 --> 00:03:24.030
+<v Cross-talk / far-field>And</v>
+
+00:03:26.140 --> 00:03:32.650
+<v Carl Robison>I think AI has been super good as like, I've been thinking of it as like an assistant</v>
+
+00:03:33.440 --> 00:03:39.560
+<v Carl Robison>in a lot of ways where like I use AI a con for the lab and then for like my work and stuff.</v>
+
+00:03:41.080 --> 00:03:44.420
+<v Carl Robison>Just to like help myself stay organized,</v>
+
+00:03:46.000 --> 00:03:48.340
+<v Carl Robison>I have found that super useful.</v>
+
+00:03:50.600 --> 00:03:54.640
+<v Carl Robison>I've also found it super useful to, like, be able to, like, write code and stuff with it,</v>
+
+00:03:54.700 --> 00:04:00.240
+<v Carl Robison>but when doing that, I think it's essential to, like, go back and actually understand what</v>
+
+00:04:00.240 --> 00:04:03.480
+<v Carl Robison>the code is doing. So, like, I'll use AI and generate a ton of code,</v>
+
+00:04:04.800 --> 00:04:08.880
+<v Carl Robison>and then I'll go back through all of it and figure out what the heck it just did and what</v>
+
+00:04:08.880 --> 00:04:13.400
+<v Carl Robison>I want to change or what I need to optimize. Because it doesn't usually get it quite right.</v>
+
+00:04:13.840 --> 00:04:18.920
+<v Carl Robison>It might make it function, but it won't quite work exactly like I want or need it to. So</v>
+
+00:04:18.920 --> 00:04:23.340
+<v Carl Robison>I found that super interesting. I think the biggest thing is just recognizing that we're</v>
+
+00:04:23.340 --> 00:04:29.600
+<v Carl Robison>going to have AI forever. Like, there's no getting away from any of that. We really need</v>
+
+00:04:29.600 --> 00:04:36.160
+<v Carl Robison>to find a way to harness the power that it has to make us more, like, effective and</v>
+
+00:04:36.160 --> 00:04:36.580
+<v Carl Robison>efficient.</v>
+
+00:04:37.940 --> 00:04:42.300
+<v Carl Robison>If you don't know how to use it, you're going to fall behind. That being said, if that's</v>
+
+00:04:42.300 --> 00:04:47.260
+<v Carl Robison>all you use, you're useless because anyone can use AI. Right.</v>
+
+00:04:49.120 --> 00:04:53.600
+<v Carl Robison>That's kind of my thoughts. I don't know. As far as using it in the lab, I guess I don't</v>
+
+00:04:53.600 --> 00:04:57.720
+<v Carl Robison>know. Like, I use it a lot in the lab to, like, research stuff, just because it seems to</v>
+
+00:04:57.720 --> 00:05:02.180
+<v Carl Robison>do, it's a really quick way to, like, compare stuff that takes a lot of the grunt work out</v>
+
+00:05:02.180 --> 00:05:02.500
+<v Carl Robison>of it.</v>
+
+00:05:03.100 --> 00:05:05.800
+<v Audrey Christiansen>Yeah, and it's kind of finding information really fast,</v>
+
+00:05:06.140 --> 00:05:11.760
+<v Carl Robison>too. Like, when I ask it to compare a mass amount of 3D metal printers, like, it's really</v>
+
+00:05:11.760 --> 00:05:18.640
+<v Carl Robison>good at going to websites and pulling data and giving me a table that displays most results.</v>
+
+00:05:19.140 --> 00:05:23.260
+<v Carl Robison>And that saves me a ton of time, right? I don't have to go track down all that information.</v>
+
+00:05:23.460 --> 00:05:26.880
+<v Carl Robison>Like, it's just giving to me. And it's right. You know, I mean, it's accurate. It pulled</v>
+
+00:05:26.880 --> 00:05:28.000
+<v Carl Robison>that from their site.</v>
+
+00:05:29.570 --> 00:05:33.690
+<v Carl Robison>When I ask AI to do other things, sometimes it'll, like, just completely hallucinate. When</v>
+
+00:05:33.690 --> 00:05:39.810
+<v Carl Robison>I ask it for, like, how can I build this equation to optimize this process? It has no idea.</v>
+
+00:05:40.190 --> 00:05:45.650
+<v Carl Robison>And so it'll just spit something random. And if I run with it, like, I'm an idiot for trusting</v>
+
+00:05:45.650 --> 00:05:49.130
+<v Carl Robison>it completely and not trying to verify what it's doing. Yeah,</v>
+
+00:05:52.150 --> 00:05:57.030
+<v Audrey Christiansen>I agree with that, especially with finding sources. I think it's important to go and read</v>
+
+00:05:57.030 --> 00:06:02.870
+<v Audrey Christiansen>through those ourselves, or at least skin, you know, make sure that we're talking about the</v>
+
+00:06:02.870 --> 00:06:03.590
+<v Audrey Christiansen>right things.</v>
+
+00:06:04.640 --> 00:06:04.800
+<v Cross-talk / far-field>Yeah,</v>
+
+00:06:05.920 --> 00:06:11.360
+<v Carl Robison>and like, just from, like, my short internship work experience that I've seen, it's, it's</v>
+
+00:06:11.360 --> 00:06:16.900
+<v Carl Robison>everywhere. Like, literally half of my day is working with AI to optimize a process.</v>
+
+00:06:18.080 --> 00:06:20.120
+<v Audrey Christiansen>Oh, are you in internship right now?</v>
+
+00:06:20.690 --> 00:06:21.690
+<v Carl Robison>Yeah, I am.</v>
+
+00:06:22.350 --> 00:06:23.350
+<v Audrey Christiansen>Oh, Max, what are you doing?</v>
+
+00:06:24.320 --> 00:06:27.700
+<v Cross-talk / far-field>Like, structural engineering stuff. Cool.</v>
+
+00:06:28.700 --> 00:06:35.200
+<v Carl Robison>So, not quite mechanical, but close enough, and it's a work experience. But I found it so,</v>
+
+00:06:35.580 --> 00:06:42.400
+<v Carl Robison>yeah, and I found it just so interesting, like, how often they use Gemmonin and Klaug</v>
+
+00:06:42.400 --> 00:06:47.020
+<v Carl Robison>and all these things. Like, they are into it really deep. And so a lot of, like, my internship</v>
+
+00:06:47.020 --> 00:06:53.180
+<v Carl Robison>has been, like, finding the limits of AI. for them and then saying, hey, this is as far as</v>
+
+00:06:53.180 --> 00:06:54.080
+<v Carl Robison>we can push this.</v>
+
+00:06:57.500 --> 00:07:04.160
+<v Carl Robison>Like, lots of their tools are using AI to verify human work. And in the process, like, they</v>
+
+00:07:04.160 --> 00:07:06.720
+<v Carl Robison>will be able to really</v>
+
+00:07:06.720 --> 00:07:07.880
+<v Cross-talk / far-field>cut</v>
+
+00:07:08.070 --> 00:07:14.010
+<v Carl Robison>down in, like, the amount of man-hours and manpower that they need to do stuff because AIs</v>
+
+00:07:14.010 --> 00:07:17.270
+<v Carl Robison>are so effective at doing what I call the grant work.</v>
+
+00:07:20.020 --> 00:07:24.580
+<v Carl Robison>And so I think that's super interesting to see it. It's like, this isn't going anywhere.</v>
+
+00:07:25.140 --> 00:07:31.160
+<v Carl Robison>Any business that's like wants to be strong is going to use this and then have someone verify</v>
+
+00:07:31.160 --> 00:07:31.700
+<v Carl Robison>it.</v>
+
+00:07:33.690 --> 00:07:38.250
+<v Carl Robison>So I think it's really interesting to see what the world will become because all of a sudden</v>
+
+00:07:38.250 --> 00:07:42.910
+<v Carl Robison>you're, I don't know, I think it's really interesting. You just have to verify. You verify</v>
+
+00:07:42.910 --> 00:07:45.470
+<v Carl Robison>your sources, verify the work, verify the equations.</v>
+
+00:07:47.670 --> 00:07:54.820
+<v Carl Robison>And once you kind of do that, like, it's the math, it usually does pretty well on. Especially</v>
+
+00:07:54.820 --> 00:08:01.200
+<v Carl Robison>where like a lot of the stuff I'm working with is kind of, of like our material, not material</v>
+
+00:08:01.200 --> 00:08:07.160
+<v Carl Robison>science, but mechanics and materials class. And so I think this applies to the lab to it.</v>
+
+00:08:07.340 --> 00:08:13.360
+<v Carl Robison>It does a lot of like easy grunt work very quickly and effectively. It just can't be allowed</v>
+
+00:08:13.360 --> 00:08:18.960
+<v Carl Robison>to make like core decisions or like core tat or else it'll just belly flop.</v>
+
+00:08:21.950 --> 00:08:22.990
+<v Audrey Christiansen>Yeah, I agree with that.</v>
+
+00:08:25.220 --> 00:08:26.660
+<v Audrey Christiansen>And part of it is figuring</v>
+
+00:08:26.660 --> 00:08:27.780
+<v Carl Robison>out that was a rant</v>
+
+00:08:28.520 --> 00:08:34.000
+<v Audrey Christiansen>grunt work that it can manage too, right? Like, I mean, we've spent months trying to get</v>
+
+00:08:34.000 --> 00:08:38.520
+<v Audrey Christiansen>it to work with the CAD models, and it's just not doing very well, and I</v>
+
+00:08:38.520 --> 00:08:38.800
+<v Cross-talk / far-field>think</v>
+
+00:08:39.480 --> 00:08:44.460
+<v Audrey Christiansen>that's okay, because I think plenty of us actually enjoy doing CAD, you know?</v>
+
+00:08:45.790 --> 00:08:51.050
+<v Audrey Christiansen>And every CAD model is going to be different. It wouldn't be, like, recording data and sorting</v>
+
+00:08:51.050 --> 00:08:54.590
+<v Audrey Christiansen>it and stuff. Like, that's something that AI would be amazing for.</v>
+
+00:08:55.150 --> 00:08:55.710
+<v Cross-talk / far-field>But, yeah,</v>
+
+00:08:57.650 --> 00:08:58.170
+<v Cross-talk / far-field>it's a little,</v>
+
+00:08:58.710 --> 00:09:05.160
+<v Audrey Christiansen>yeah. That's one of the limits I think that AI has is it's not very good at generating those</v>
+
+00:09:05.160 --> 00:09:07.080
+<v Audrey Christiansen>structures that we need.</v>
+
+00:09:07.080 --> 00:09:12.580
+<v Carl Robison>Generating images and like spatial awareness AI is very poor at. It does really well with</v>
+
+00:09:12.580 --> 00:09:17.160
+<v Carl Robison>like analyzing information and like things to do with like words and things like that. It</v>
+
+00:09:17.160 --> 00:09:22.400
+<v Carl Robison>goes very good at image analysis, spatial analysis, things like that. It's not there.</v>
+
+00:09:23.320 --> 00:09:29.680
+<v Audrey Christiansen>Yeah, it doesn't live in the 3D world with us. It's all just code and stuff. And it can be</v>
+
+00:09:29.680 --> 00:09:36.280
+<v Audrey Christiansen>super helpful for code. I mean, I've been a little more careful with generating so much</v>
+
+00:09:36.280 --> 00:09:41.240
+<v Audrey Christiansen>code at once because often it'll come up with, like, a function or something that I haven't</v>
+
+00:09:41.240 --> 00:09:45.700
+<v Audrey Christiansen>ever used before, and I'll be like, hey, what's that? And then it takes a little more time,</v>
+
+00:09:45.760 --> 00:09:51.580
+<v Audrey Christiansen>but then you're still learning with it, but often it can feel a little like you're trying</v>
+
+00:09:51.580 --> 00:09:58.300
+<v Audrey Christiansen>to catch up to where AI is at, and you're never going to get to that point. but you</v>
+
+00:09:58.740 --> 00:10:00.340
+<v Cross-talk / far-field>learn</v>
+
+00:10:00.340 --> 00:10:00.840
+<v Audrey Christiansen>a lot,</v>
+
+00:10:02.080 --> 00:10:08.720
+<v Audrey Christiansen>but I think it's ultimately better writing my own code because then I know exactly how</v>
+
+00:10:08.720 --> 00:10:10.840
+<v Audrey Christiansen>it works and how I want it to be working.</v>
+
+00:10:13.450 --> 00:10:15.010
+<v Audrey Christiansen>That's my opinion. If you</v>
+
+00:10:15.010 --> 00:10:16.790
+<v Cross-talk / far-field>have one of the subs.</v>
+
+00:10:19.210 --> 00:10:20.230
+<v Sterling Baird>We might,</v>
+
+00:10:20.630 --> 00:10:23.270
+<v In-room (unidentified)>I think we'll jump</v>
+
+00:10:23.270 --> 00:10:25.010
+<v Sterling Baird>back together to,</v>
+
+00:10:27.100 --> 00:10:28.980
+<v Sterling Baird>yeah, let's jump to the next question.</v>
+
+00:10:31.240 --> 00:10:37.780
+<v Sterling Baird>So let's just kind of shift it over to lab culture. So like in the vertical cloud</v>
+
+00:10:37.780 --> 00:10:39.400
+<v Sterling Baird>lab at BYU specifically,</v>
+
+00:10:41.470 --> 00:10:46.590
+<v Sterling Baird>what kind of things could we do? Like, what kind of conversations could we have to help out?</v>
+
+00:10:46.910 --> 00:10:51.870
+<v Sterling Baird>Like, what kind of lab culture do we want? How do we set that kind of culture here? Especially</v>
+
+00:10:51.870 --> 00:10:59.130
+<v Sterling Baird>as new people come in, as people graduate and then pass off the baton, you know, what</v>
+
+00:10:59.130 --> 00:11:01.550
+<v Sterling Baird>is the lab culture? like that</v>
+
+00:11:01.550 --> 00:11:03.750
+<v Andrew / Ronnie / Marcus>so regarding AI or just general</v>
+
+00:11:05.510 --> 00:11:06.590
+<v In-room (unidentified)>AI</v>
+
+00:11:06.590 --> 00:11:09.890
+<v Sterling Baird>yeah and then I think it would be good to in future what's</v>
+
+00:11:09.890 --> 00:11:10.970
+<v Andrew / Ronnie / Marcus>a breakoff talk for me.</v>
+
+00:11:11.730 --> 00:11:14.050
+<v Sterling Baird>We'll do break off yeah another break off in the side.</v>
+
+00:11:15.280 --> 00:11:16.180
+<v Andrew / Ronnie / Marcus>Yeah, yeah, and we're</v>
+
+00:11:16.180 --> 00:11:18.280
+<v Sterling Baird>going too.</v>
+
+00:11:19.480 --> 00:11:19.680
+<v Andrew / Ronnie / Marcus>Sorry,</v>
+
+00:11:21.700 --> 00:11:22.760
+<v Cross-talk / far-field>you guys can keep going. Sorry,</v>
+
+00:11:31.080 --> 00:11:31.980
+<v Cross-talk / far-field>you guys can keep going. What do you think, Audrey?</v>
+
+00:11:34.990 --> 00:11:35.430
+<v Cross-talk / far-field>I</v>
+
+00:11:37.740 --> 00:11:42.020
+<v Carl Robison>don't know, I'm bad, I use AI a lot, like a lot, a lot, a lot.</v>
+
+00:11:45.060 --> 00:11:49.520
+<v Carl Robison>As far as like the culture of it, I think that's very personal. I know, like, Xavier doesn't</v>
+
+00:11:49.520 --> 00:11:50.660
+<v Carl Robison>use it very much at all.</v>
+
+00:11:53.260 --> 00:11:53.640
+<v Cross-talk / far-field>Yeah.</v>
+
+00:11:54.680 --> 00:11:59.560
+<v Audrey Christiansen>I mean, do you still feel like you're learning and that you're capable when you're using</v>
+
+00:11:59.560 --> 00:11:59.980
+<v Audrey Christiansen>it, though?</v>
+
+00:12:02.300 --> 00:12:02.920
+<v Carl Robison>Yes and no.</v>
+
+00:12:04.190 --> 00:12:08.750
+<v Carl Robison>Yes and no. There are times, kind of like what you're saying at the end, I literally will</v>
+
+00:12:08.750 --> 00:12:12.990
+<v Carl Robison>chase AI through, like, tons of code trying to figure out how it's doing, what it's doing.</v>
+
+00:12:13.450 --> 00:12:17.290
+<v Carl Robison>I mean, at the end of the day, I come back to it and kind of just, like, look at it, And</v>
+
+00:12:17.290 --> 00:12:24.310
+<v Carl Robison>it's like, well, it's working. I have a kind of a grasp of what I think it's doing. Oh, it's</v>
+
+00:12:24.310 --> 00:12:28.370
+<v Carl Robison>doing it. I don't know how that function exactly works. Like, I really don't know.</v>
+
+00:12:29.620 --> 00:12:35.700
+<v Carl Robison>But it works. And I think I know kind of what it's doing. Could I, like, teach someone else</v>
+
+00:12:35.700 --> 00:12:42.240
+<v Carl Robison>what it's doing? No. Yeah. And so I guess I trust it maybe too much in</v>
+
+00:12:42.240 --> 00:12:42.820
+<v Carl Robison>that sense.</v>
+
+00:12:45.760 --> 00:12:46.760
+<v Cross-talk / far-field>That being sad,</v>
+
+00:12:48.800 --> 00:12:49.040
+<v Cross-talk / far-field>like,</v>
+
+00:12:50.910 --> 00:12:56.690
+<v Carl Robison>for me, it's kind of, of like the means to the end on like certain things. Like I would prefer</v>
+
+00:12:56.690 --> 00:13:00.990
+<v Carl Robison>not to be coding stuff my whole life and so that's not something that entreats me. And so</v>
+
+00:13:00.990 --> 00:13:06.210
+<v Carl Robison>maybe I'm short circuit, like short-circuiting my education in that aspect. But at the same</v>
+
+00:13:06.210 --> 00:13:06.650
+<v Carl Robison>time,</v>
+
+00:13:07.900 --> 00:13:10.520
+<v Carl Robison>it's something that I don't hope to be doing my whole life.</v>
+
+00:13:11.320 --> 00:13:17.080
+<v Audrey Christiansen>Gotcha. So you're not worried about your coding skills. Yeah. So like, you don't see yourself</v>
+
+00:13:17.080 --> 00:13:18.440
+<v Audrey Christiansen>using them very much.</v>
+
+00:13:19.420 --> 00:13:25.300
+<v Carl Robison>Like long term, yeah, I'm not as worried about that. where I do spend, like, a lot more time</v>
+
+00:13:25.300 --> 00:13:29.760
+<v Carl Robison>understanding is things with, like, the 3D printers and, like, material science stuff. Like,</v>
+
+00:13:30.120 --> 00:13:34.480
+<v Carl Robison>that's just information that I need to know, like, forever. And so, like,</v>
+
+00:13:36.160 --> 00:13:41.100
+<v Carl Robison>when it comes to those things and I'm using AI, like, even right now, like, the amount of</v>
+
+00:13:41.100 --> 00:13:44.060
+<v Carl Robison>times I say, okay, walk me through and teach me what you just did.</v>
+
+00:13:46.270 --> 00:13:47.420
+<v Cross-talk / far-field>And it</v>
+
+00:13:47.420 --> 00:13:51.060
+<v Carl Robison>will take, I will spend a ton of time going down that wormhole,</v>
+
+00:13:52.420 --> 00:13:58.800
+<v Carl Robison>but I think it's still valuable. and I think it helps me not short circuit the educational</v>
+
+00:13:58.800 --> 00:13:59.500
+<v Carl Robison>experience.</v>
+
+00:14:00.940 --> 00:14:05.800
+<v Carl Robison>I think for me I'm using AI mostly as like a way to get out of things that I don't really</v>
+
+00:14:05.800 --> 00:14:12.170
+<v Carl Robison>want to spend a lot of time on. That makes sense, and I don't particularly see myself as</v>
+
+00:14:12.170 --> 00:14:13.470
+<v Carl Robison>like using them down the road.</v>
+
+00:14:14.110 --> 00:14:19.910
+<v Audrey Christiansen>Yeah, I think that's useful. I've definitely had semesters where I feel I'd maybe too much</v>
+
+00:14:19.910 --> 00:14:26.470
+<v Audrey Christiansen>on AI, and that wasn't helpful for me, for my... learning, so I'm definitely a</v>
+
+00:14:26.470 --> 00:14:31.370
+<v Audrey Christiansen>little more like, use it as little as possible, but like for things it can easily automate,</v>
+
+00:14:31.610 --> 00:14:37.280
+<v Audrey Christiansen>that's so, so beneficial. I just, I think we're on two opposite episodes of the spectrum</v>
+
+00:14:37.280 --> 00:14:41.960
+<v Audrey Christiansen>right now where you're relying on it like a lot right now, and I'm like, I don't want to</v>
+
+00:14:41.960 --> 00:14:42.500
+<v Audrey Christiansen>touch this</v>
+
+00:14:42.500 --> 00:14:44.900
+<v Cross-talk / far-field>stuff, but. Yeah,</v>
+
+00:14:46.280 --> 00:14:50.820
+<v Carl Robison>and it's been hard, because my internship, honestly, I thought it would be, like, showing</v>
+
+00:14:50.820 --> 00:14:57.160
+<v Carl Robison>me that, like, I need to not use AI as much, and then, like, I got here and I don't know</v>
+
+00:14:57.160 --> 00:15:01.740
+<v Carl Robison>if you're familiar with, like, Gemini notebooks and, like, Gemma, and, like, all of those</v>
+
+00:15:01.740 --> 00:15:02.320
+<v Carl Robison>new features.</v>
+
+00:15:03.670 --> 00:15:10.410
+<v Carl Robison>I spent, I spent probably a quarter to a half of my day, every day, using those tools</v>
+
+00:15:10.410 --> 00:15:15.430
+<v Carl Robison>and either trying to break them, trying to make them work quicker, or trying to find ways</v>
+
+00:15:15.430 --> 00:15:21.050
+<v Carl Robison>to, like, share them on, like, a larger scale. Like, that's all I'm doing. And then, like,</v>
+
+00:15:21.330 --> 00:15:24.650
+<v Carl Robison>of course, going through as they work to, like, make sure they did the math right and they</v>
+
+00:15:24.650 --> 00:15:25.590
+<v Carl Robison>have the equations, right?</v>
+
+00:15:27.450 --> 00:15:32.390
+<v Carl Robison>You know what I mean, that, like, their reasoning isn't flawed, but I don't think I've had,</v>
+
+00:15:32.490 --> 00:15:37.690
+<v Carl Robison>I can, I mean, I've been here since May. I can count on one hand. I think the times the AI</v>
+
+00:15:37.690 --> 00:15:44.200
+<v Carl Robison>has gotten, like, the equation wrong for something, like, engineering related in</v>
+
+00:15:44.200 --> 00:15:48.260
+<v Carl Robison>the sense that, like, it performed a calculation that was just false, or it was just wrong.</v>
+
+00:15:49.400 --> 00:15:51.640
+<v Carl Robison>You know what I mean? Like, maybe four times. Yeah.</v>
+
+00:15:53.120 --> 00:15:53.880
+<v Carl Robison>and so</v>
+
+00:15:56.540 --> 00:16:01.280
+<v Carl Robison>just me knowing how to do it those four times was incredibly helpful but I think what it</v>
+
+00:16:01.280 --> 00:16:06.620
+<v Carl Robison>really has done is like really lowered the barrier to entry of like going in and deep diving</v>
+
+00:16:06.620 --> 00:16:08.560
+<v Carl Robison>into like specific things</v>
+
+00:16:09.540 --> 00:16:10.560
+<v Cross-talk / far-field>I don't know</v>
+
+00:16:10.750 --> 00:16:13.670
+<v Audrey Christiansen>okay yeah no I can see that as</v>
+
+00:16:13.670 --> 00:16:17.310
+<v Carl Robison>far as like the culture though like I think there has to be a balance like we have to use</v>
+
+00:16:17.310 --> 00:16:22.330
+<v Carl Robison>it we can't say hey we're not going to touch that that being said I'm probably overusing</v>
+
+00:16:22.330 --> 00:16:24.740
+<v Carl Robison>it for the extent where like probably</v>
+
+00:16:24.740 --> 00:16:26.880
+<v Audrey Christiansen>underusing it. So we just</v>
+
+00:16:26.880 --> 00:16:27.600
+<v Cross-talk / far-field>need to...</v>
+
+00:16:29.270 --> 00:16:33.550
+<v Carl Robison>You've got to find the balance where you use it, but you understand how you're using it and</v>
+
+00:16:33.550 --> 00:16:38.730
+<v Carl Robison>what it's doing. We're like, I'm, yeah, I'm definitely in this sense where, like, sometimes</v>
+
+00:16:38.730 --> 00:16:44.090
+<v Carl Robison>I don't understand everything of why it's happening. It just kind of does, and I just kind</v>
+
+00:16:44.090 --> 00:16:49.510
+<v Carl Robison>of accept that, like, it has done its job well and move on, especially for, like, coding</v>
+
+00:16:49.510 --> 00:16:54.070
+<v Carl Robison>things. When I plus run, and it runs, and it works like it's supposed to, I don't ask a ton</v>
+
+00:16:54.070 --> 00:17:00.030
+<v Carl Robison>of questions. and just if I, and once I kind of like understand it a little bit, because</v>
+
+00:17:00.030 --> 00:17:01.170
+<v Carl Robison>I just don't,</v>
+
+00:17:02.640 --> 00:17:06.940
+<v Carl Robison>it's interesting, very interesting. When it comes back to, like, school, like, I feel like</v>
+
+00:17:06.940 --> 00:17:12.280
+<v Carl Robison>how I always use the AI is, like a better way where, like, I use it a lot to, like, study</v>
+
+00:17:12.280 --> 00:17:18.900
+<v Carl Robison>for things, but not necessarily to solve the exact problems I was solving, but maybe to solve</v>
+
+00:17:18.900 --> 00:17:23.820
+<v Carl Robison>other problems. It makes any sense, like, just create additional problems. So you can see</v>
+
+00:17:23.820 --> 00:17:23.940
+<v Carl Robison>the</v>
+
+00:17:23.940 --> 00:17:26.000
+<v Audrey Christiansen>workflow so that you can go do your own.</v>
+
+00:17:26.460 --> 00:17:32.600
+<v Carl Robison>Yeah, but it was also very interesting in my thermodynamics class, the teacher really encouraged</v>
+
+00:17:32.600 --> 00:17:35.340
+<v Carl Robison>AI research, although he's no longer teaching here.</v>
+
+00:17:36.100 --> 00:17:37.620
+<v Audrey Christiansen>Who was the teacher?</v>
+
+00:17:39.020 --> 00:17:40.460
+<v Carl Robison>I forgot. He was an older,</v>
+
+00:17:40.760 --> 00:17:41.260
+<v Cross-talk / far-field>bald man.</v>
+
+00:17:43.150 --> 00:17:44.990
+<v Audrey Christiansen>Okay, so it wasn't Magelby then, right?</v>
+
+00:17:45.470 --> 00:17:52.150
+<v Carl Robison>No, thermodynamics was it wasn't Magelby, and it wasn't Dylan. It was someone else.</v>
+
+00:17:52.310 --> 00:17:53.950
+<v Carl Robison>I'd recommend taking it from Dr. Dylan.</v>
+
+00:17:54.650 --> 00:17:56.370
+<v Audrey Christiansen>I already took it, but thank you.</v>
+
+00:17:56.970 --> 00:17:58.130
+<v Carl Robison>Who did you take it with?</v>
+
+00:17:58.190 --> 00:17:59.610
+<v Audrey Christiansen>I took it with Dylan.</v>
+
+00:18:00.600 --> 00:18:01.440
+<v Carl Robison>Did you? Okay, yeah.</v>
+
+00:18:03.240 --> 00:18:06.500
+<v Carl Robison>I didn't like mine in the class, but it was a very interesting perspective on using AI to</v>
+
+00:18:06.500 --> 00:18:06.740
+<v Carl Robison>learn.</v>
+
+00:18:07.580 --> 00:18:12.720
+<v Audrey Christiansen>Yeah, where are you actually at in the program right now? Because I'm starting capstone,</v>
+
+00:18:12.860 --> 00:18:15.720
+<v Audrey Christiansen>but it seems like I just took thermos, so.</v>
+
+00:18:17.050 --> 00:18:23.590
+<v Carl Robison>I've got two more years still. Okay. I'm trying to do the program in four years, and so</v>
+
+00:18:23.590 --> 00:18:24.650
+<v Carl Robison>I've got two more.</v>
+
+00:18:26.420 --> 00:18:30.440
+<v Carl Robison>Like, this is the semester I'm taking like manufacturing and mechatronet. things</v>
+
+00:18:30.440 --> 00:18:31.120
+<v Cross-talk / far-field>like</v>
+
+00:18:31.120 --> 00:18:34.560
+<v Audrey Christiansen>that. Manufacturing is awesome. Mechatronics,</v>
+
+00:18:36.430 --> 00:18:40.130
+<v Audrey Christiansen>it can be awesome. You're not allowed to use AIMA to watch out.</v>
+
+00:18:42.990 --> 00:18:43.130
+<v Cross-talk / far-field>yeah,</v>
+
+00:18:44.930 --> 00:18:51.500
+<v Audrey Christiansen>but it can be so rewarding when something works and when it doesn't work, it's like,</v>
+
+00:18:52.000 --> 00:18:52.180
+<v Audrey Christiansen>oh,</v>
+
+00:18:59.240 --> 00:18:59.980
+<v Audrey Christiansen>interesting class.</v>
+
+00:19:05.010 --> 00:19:06.750
+<v Audrey Christiansen>Manufacturing is so much fun, though.</v>
+
+00:19:14.110 --> 00:19:15.110
+<v Cross-talk / far-field>What else were you in?</v>
+
+00:19:18.070 --> 00:19:22.280
+<v Carl Robison>Oh, I don't know offhand, but, you don't know. the writing class.</v>
+
+00:19:25.530 --> 00:19:27.150
+<v Audrey Christiansen>Yeah, that one's just a work.</v>
+
+00:19:30.070 --> 00:19:34.100
+<v Carl Robison>Is it fun or is it just kind of busy work? Well, like</v>
+
+00:19:34.100 --> 00:19:40.080
+<v Audrey Christiansen>parts of it are fun. I mean, assuming every class has the same kind of flow, like the first</v>
+
+00:19:40.080 --> 00:19:44.300
+<v Audrey Christiansen>project is like, you're going to write a set of instructions for someone and you need to</v>
+
+00:19:44.300 --> 00:19:50.280
+<v Audrey Christiansen>make it really pretty easy to follow and stuff like that. And that's actually fun. And then</v>
+
+00:19:50.280 --> 00:19:55.540
+<v Audrey Christiansen>you have like your assortment of papers that you have to do that are less fun. But you get</v>
+
+00:19:55.540 --> 00:19:56.820
+<v Audrey Christiansen>you get to do. them done and it's right</v>
+
+00:19:57.360 --> 00:20:01.600
+<v Carl Robison>though yeah I feel like that's a good use of AI to like use it to write instructions like</v>
+
+00:20:01.600 --> 00:20:05.540
+<v Carl Robison>give it a bunch of data and processes and then have it write the instructions and then just</v>
+
+00:20:05.540 --> 00:20:07.640
+<v Carl Robison>verify that it was good</v>
+
+00:20:07.640 --> 00:20:08.460
+<v Cross-talk / far-field>I don't know okay</v>
+
+00:20:10.740 --> 00:20:12.840
+<v Cross-talk / far-field>maybe not I mean</v>
+
+00:20:12.840 --> 00:20:18.100
+<v Audrey Christiansen>you also have to everything you submit you have to say what you used AI for and stuff like</v>
+
+00:20:18.100 --> 00:20:24.320
+<v Audrey Christiansen>that so just make sure whatever you use it for you're comfortable declaring to the professor</v>
