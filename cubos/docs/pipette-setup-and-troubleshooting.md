@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-21**. This is the map; the detail is in
+Status as of **2026-09-22**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -41,33 +41,52 @@ command-for-command.
   Arduino pin map              FIXED    Cubware's diagram is shifted one pin
   10-pin pipette header        VERIFIED across three sources; 180 deg flip excluded
   limit-switch gate            OPEN     retractions execute
-  VM at the screw terminal     13 V     measured by Ben, 2026-09-17
+  VM at the screw terminal     13 V     measured 2026-09-17
+  EN at the driver pin         0 V      candidate B ELIMINATED, 2026-09-21
   serial link to the Pi        HEALTHY  10/10 clean round-trips
   ------------------------------------- everything above is ruled out
-  EN at the driver pin         ?        candidate B — output stage held off
-  TMC2209 chip / regulator     ?        candidate C — dead
-  coil path to the windings    ?        candidate A — crimp, screw, or ribbon
+  coil path to the windings    OPEN     candidate A CONFIRMED — both pairs read
+                                        kOhms where a winding reads ohms
+  TMC2209 DIAG                 5 V      candidate C LIVE — the chip is
+                                        reporting a driver error
 ```
 
-### The next four measurements
+Two faults, and plausibly one story: an open coil path that the driver has been
+chopping into at a VREF-pot setting worth ~3.3 A rms, for many sessions. See
+§16 of the wiring doc.
 
-They need hands and a meter at the machine; none can be done remotely.
-[`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py) opens a
-bounded, direction-labelled stepping window (6 mm out, 6 mm back) so the first
-three can be probed while the plunger is actually being driven. It refuses to
-open the window if the limit switch reads asserted.
+### What to do next, cheapest first
 
-1. **`EN` at the driver's pin** — ~0 V expected. ~5 V means the output stage is off.
-2. **`DIAG`** — ~0 V expected. High means the chip is reporting a fault.
-3. **`INDEX` during a driven leg** — must change. This is the split: changing
-   means the chip is alive and counting, so the fault is downstream in the coil
-   path or current is set to zero; dead flat means the chip is not processing STEP.
-4. **Coil resistance at the four screw terminals**, ribbon attached, power off:
-   `1A`–`1B` and `2A`–`2B` a few to a few tens of ohms, `1A`–`2A` open. This tests
-   the whole path including crimps and screw clamping.
+The four measurements landed on 2026-09-21 and are worked through in §16 of the
+wiring doc. What they leave:
 
-`DIAG` and `INDEX` are the reason this no longer depends on the UART readback
-working — they are pins, not registers.
+1. 🔑 **Look at the colours in the two screw-terminal blocks.** No meter needed.
+   **Blue and red belong together in one block; black and green in the other.**
+   Blue+black in one and red+green in the other splits each coil *across* the
+   blocks — the driver then sees an open circuit on both phases, the motor is
+   silent with no buzzing, and both `1A`–`1B` and `2A`–`2B` read high. That is
+   every symptom this pipette has, with nothing actually broken. Confirm with
+   the meter, power off: if **`1A`–`2A`** or **`1B`–`2B`** reads a few to a few
+   tens of ohms, swap two wires and it is fixed.
+2. **If not that, take the ribbon out of the driver's terminals and re-measure.**
+   In-circuit readings have the output stage in parallel and cannot localise a
+   break. Blue–red and black–green at the loose ends; then at the pipette's own
+   10-pin header (coil A = pins 3–4, coil B = pins 1–2) to split the ribbon from
+   the motor. **Reseat the FC-10P first** — the limit switch on pins 6/7 works,
+   and those sit in the two rows *furthest* from the tip while all four coil
+   conductors sit in the two rows nearest it.
+3. 🔴 **Turn the VREF pot down before the driver is powered again.** This is the
+   step that protects a replacement. Target ≈ 0.55 V at the wiper for ~1.0 A
+   peak; wind it well below that for a first re-test. Fit the 1515 heat sink.
+4. **Then re-check `DIAG`.** Clear, with a real load and sane current ⇒ the chip
+   survived. Still 5 V ⇒ replace the board.
+5. **`VREF` at the trimmer wiper** — still unmeasured, and now the most valuable
+   remaining probe. Healthy ⇒ the internal regulator is fine and `DIAG` is a
+   latched output-stage fault. ≈ 0 V ⇒ the chip is dead.
+6. **`INDEX` during a driven leg.** The 0 V reading is not yet usable — it is
+   not recorded whether steps were being consumed at the time.
+   [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
+   opens a bounded, direction-labelled window for exactly this.
 
 ### Two things queued behind the first real movement
 
@@ -78,8 +97,13 @@ working — they are pins, not registers.
   is absolute so `blowout` and `drop_tip` land where CubOS asks; **`aspirate` does
   not**, because it is computed inside the firmware. Flashing
   [`../firmware/panda_vcl_p20gen2_20260917.hex`](../firmware/panda_vcl_p20gen2_20260917.hex)
-  closes that, and drops run current from ~2.3 A to ~1.02 A peak — Opentrons'
-  own `plungerCurrent` — which matters for a motor rated 500 mA peak.
+  closes that, and carries `tmc2209-softwareserial-read.patch`, without which
+  `DRV_STATUS` — and with it the specific cause behind `DIAG` — cannot be read
+  at all. ⚠️ **Correction:** this was previously described as also dropping run
+  current from ~2.3 A to ~1.02 A peak. It does not, until UART works:
+  `RUN_CURRENT_PERCENT` is applied by a UART register write and `comm = 0` means
+  none has ever landed, so the VREF pot is still the only thing setting current.
+  Turning the pot down is the action; see §16.7 of the wiring doc.
 - **Check the first successful move against a ruler.** `setMicrostepsPerStep(16)`
   is a UART write that has never been confirmed to land, so the MS1/MS2 straps
   decide and their default is 1/8 — half what `STEPS_PER_MM 1592` assumes. The

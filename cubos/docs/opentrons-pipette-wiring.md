@@ -1543,3 +1543,256 @@ same source as the gantry's. Two things argue against it mattering today — the
 terminal read a healthy 13 V, and campaign 54 ran 12/12 clean with the driver
 connected — but a supply shared with a suspect board is worth knowing about
 before the next fault is diagnosed.
+
+---
+
+## 16. 2026-09-21: the four measurements land — the coils are open and the chip is flagging a fault
+
+Ben took the §14.5 measurements. All four, verbatim:
+
+```
+EN     = 0 V
+INDEX  = 0 V
+DIAG   = 5 V
+
+1A-1B = 4.5 kOhm    2A-2B = 7.6 kOhm     driver connected, Arduino not powering it
+                                          (unchanged when the Arduino is connected)
+1A-1B = 0.55 kOhm   2A-2B = 5 kOhm       nothing powered
+```
+
+Plus an LED observation: *"While only plugged into the Arduino, F is bright
+green. While only plugged into the wall, F is dimmer."*
+
+Two of these settle things. Taken together they move the diagnosis from
+"one of three candidates" to "**A is confirmed and C is now live**."
+
+### 16.1 ✅ `EN` = 0 V — candidate B is eliminated
+
+The output stage is not being held off. §12.2 B is closed.
+
+One thing it does **not** prove: §10.3 found `EN` carries a **20 kΩ pull-down on
+the board**, so 0 V is what an *absent* `EN` wire reads too. The measurement
+rules out "held high"; it does not confirm the wire landed on A4. That
+distinction does not matter while the pin reads 0 V, and it is recorded so
+nobody re-derives it.
+
+### 16.2 🔴 The resistance readings are not coil readings — and that is conclusive
+
+Every value is in the hundreds of ohms to kilohms. **A stepper coil is a few
+ohms to a few tens of ohms.** The lowest reading here, 550 Ω, is still one to
+two orders of magnitude too high.
+
+The reason that is conclusive rather than merely suspicious is the direction of
+the in-circuit error. Probing at the driver's own terminals leaves the
+TMC2209's output stage permanently in parallel with whatever the coil path
+contributes, and **parallel paths can only pull a reading down, never up**:
+
+```
+measured = R_coil_path  ||  R_everything_else   <=  min(R_coil_path, R_everything_else)
+```
+
+So a measured 550 Ω puts a **floor** of 550 Ω on the real path. A 10–30 Ω
+winding across those terminals would have dragged the reading to 10–30 Ω no
+matter what else was in parallel. **There is no coil across either terminal
+pair.**
+
+Two corroborating details in the same data:
+
+- **The readings move with power state** — 1A–1B goes 0.55 kΩ → 4.5 kΩ when the
+  supply is on. A copper winding does not change resistance by 8× because a
+  power supply was switched on. What is being measured is semiconductor
+  junctions and leakage on the driver board, not a motor.
+- **Therefore only the unpowered readings are even valid.** An ohmmeter injects
+  a known current and measures the resulting voltage; an external supply
+  corrupts that outright. Use 0.55 kΩ and 5 kΩ, and they are still both far too
+  high.
+
+⚠️ **The §12.2 A / §14.5 instruction was imprecise and this is where it shows.**
+"Probe the driver's own coil terminals, ribbon attached" was written to cover
+the whole path in one measurement, and it does — but only in the *open*
+direction. Had it read low, the reading could have been the driver's own output
+stage rather than the coil, and it would have proved nothing. It also cannot
+localise the break. §16.4 has the corrected procedure.
+
+### 16.3 🔑 The cheapest explanation is a terminal-block swap, and it is free to check
+
+Before assuming anything is broken: **coil pairs split across the two terminal
+blocks produce exactly this measurement, with a perfectly healthy motor.**
+
+If the wires landed as `1A`/`2A` = coil A's two ends and `1B`/`2B` = coil B's,
+then the driver's phase-1 output sees one end of coil A and one end of coil B
+with nothing between them — an open circuit — and phase 2 sees the same. Both
+`1A`–`1B` and `2A`–`2B` read high; the motor is fine; and the machine is
+**silent with no buzzing**, which is the signature this pipette has had all
+along. §8 noted that mis-*paired* coils buzz and vibrate — that is true of
+coils swapped *within* the driver's view, and it is a different fault from a
+pair split *across* the blocks, which the driver simply cannot energise.
+
+Two ways to check, neither needing the machine:
+
+**By eye.** From §2 and §8.6, the correct grouping is:
+
+```
+1A <- blue  (pin 4) ]  coil A      2A <- black (pin 2) ]  coil B
+1B <- red   (pin 3) ]              2B <- green (pin 1) ]
+```
+
+**Blue and red belong in one terminal block; black and green in the other.**
+Blue+black in one and red+green in the other is the fault, and it is visible
+without a meter.
+
+**With the meter, power off.** Measure the two cross pairs, which §12.2 asked
+for and this round did not report:
+
+| pair | if it reads a few to a few tens of ohms |
+|---|---|
+| `1A`–`2A` | the pairs are split across the blocks — **swap two wires and it is fixed** |
+| `1B`–`2B` | same conclusion |
+| both high, and `1A`–`1B` / `2A`–`2B` high | the break is upstream: ribbon, crimps, FC-10P, or the motor → §16.4 |
+
+### 16.4 If it is not the terminal block: where the break is, narrowed
+
+**Take the ribbon out of the driver's screw terminals first.** That removes the
+output stage from the measurement and makes the numbers mean what they say.
+Then, power off:
+
+1. **At the loose ribbon ends** — covers ribbon + FC-10P + motor. Blue–red and
+   black–green each a few to a few tens of ohms.
+2. **If (1) is open, at the pipette's own 10-pin header** — splits "the ribbon
+   and its crimps" from "the motor". Per §8.6's map, coil A is header pins
+   **3–4** and coil B is pins **1–2**. Header good + ribbon ends open ⇒ the
+   ribbon, its crimps or the FC-10P. Header open ⇒ the motor or its internal
+   connection.
+
+🔑 **One narrowing the existing data already supplies for free.** The limit
+switch shares the same FC-10P and the same ribbon, and it currently reads
+**closed** — D9 is LOW, confirmed twice over by the 26.3 s full-budget seek and
+by campaign 54's retractions executing (§13). So the connector is **not** wholly
+unseated; at least two conductors are making contact. And those two are pins 6
+and 7, which §8.6 places in rows 3 and 4, while all four coil conductors are in
+**rows 1 and 2, the two nearest the pipette tip**. A connector lifted or
+mis-seated at the tip end reproduces precisely this split. **Reseat the FC-10P
+and re-measure** before condemning anything.
+
+### 16.5 🔴 `DIAG` = 5 V — the chip is reporting a fault
+
+Expected ~0 V. Adafruit's own description of the pin: *"driven high if there is
+a problem causing the motor driver to not be able to work properly."* On the
+TMC2209 `DIAG` is the driver-error output, asserted by the same conditions that
+shut the output stage down — overtemperature, a short to ground or to supply on
+either phase, or charge-pump undervoltage. Note that **open load is not one of
+them**: `ola`/`olb` are informational bits in `DRV_STATUS` and do not drive
+`DIAG`. So this is saying something beyond §16.2's open coils.
+
+`INDEX` = 0 V supports reading it as a real assertion rather than a floating
+pin: `DIAG` and `INDEX` are adjacent outputs of the same chip, and two pins
+sitting at **opposite rails** is what driven outputs look like. A floating pair
+would not reliably split that way.
+
+Which specific error bit it is cannot be read without the UART path working —
+that is exactly what `DRV_STATUS` would say, and it needs both the P20 GEN2
+flash and the bridge resistor moved to the TX side (§12.3). But the flag alone
+promotes candidate **C** from theoretical to live.
+
+### 16.6 The two findings are plausibly one story, and it sets the repair order
+
+The board has been running with the VREF pot **fully clockwise** since at least
+2026-09-17, and in standalone mode — which it has always been in, because no
+UART write has ever landed — the pot is the only thing setting current. §11.3
+puts full scale on this board's 0.05 Ω sense resistors at **~3.3 A rms**, past
+the breakout's own 2 A rating.
+
+Chopping at that current into an **open** load, repeatedly, across many
+sessions, is a well-known way to damage a stepper driver's output stage: the
+chopper drives toward a current it can never reach, the outputs swing to the
+rails, and flyback energy has nowhere to go. So the likely sequence is **open
+coil path first, damaged driver as a consequence** — which makes the order
+matter:
+
+1. **Fix the coil path** (§16.3, then §16.4). Confirm with the meter, ribbon out
+   of the terminals.
+2. **Turn the VREF pot down before powering the driver again.** See §16.7 —
+   this is the step that protects a *replacement* driver.
+3. **Re-check `DIAG`.** Clear, with a real load and sane current ⇒ the chip
+   survived. Still high ⇒ replace the board.
+4. **Do not do 3 before 1.** Powering a suspect driver back into an open load is
+   how the replacement gets destroyed too.
+
+### 16.7 🔴 CORRECTION: flashing the P20 GEN2 image does *not* lower the run current
+
+This has been stated as a benefit of the flash in the firmware README, in
+[`pipette-setup-and-troubleshooting.md`](./pipette-setup-and-troubleshooting.md)
+and in PR #228's description: *"drops run current from ~2.3 A to ~1.02 A peak."*
+
+**That only holds once UART works.** `RUN_CURRENT_PERCENT` reaches the chip
+through `setRunCurrent()`, which is a UART register write, and `comm = 0` means
+no register write has ever been confirmed to land. `i_scale_analog` is still at
+its power-on default of 1, so **the VREF trimmer is the only thing setting coil
+current** — and it is at maximum.
+
+So the action that actually reduces the current is **turning the pot down**, not
+flashing. §11.3 has the target: **VREF ≈ 0.55 V at the wiper gives ~1.0 A
+peak**, matching Opentrons' `plungerCurrent`. For a first re-test after a repair
+there is no reason to start there — wind it well down, confirm the motor turns
+at all, and creep up. ⚠️ Fit the Adafruit 1515 heat sink before any sustained
+move.
+
+The flash is still worth doing, for the two reasons it was always worth doing:
+the firmware's `aspirate` constants are still P300-derived (§13.3), and it
+carries `tmc2209-softwareserial-read.patch` without which `DRV_STATUS` — and
+with it the specific `DIAG` cause — cannot be read at all.
+
+### 16.8 `INDEX` = 0 V, and what it is still missing
+
+§14.3 made `INDEX` the discriminator, on the basis that it pulses as the chip
+consumes STEP pulses regardless of coil current. The reading as reported is
+**not yet usable**, because it is not recorded whether it was taken *during a
+driven leg*. At rest, 0 V is the expected and uninformative value — the
+microstep counter simply is not at its zero position.
+
+[`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py) exists
+for this: it opens a bounded, direction-labelled stepping window so the pin can
+be watched while steps are being consumed. On a DMM a changing `INDEX` reads as
+a fluctuating mid-scale value rather than a clean 0 or 5 V.
+
+It has also dropped in importance. It was the way to split "chip alive, fault
+downstream" from "chip not processing STEP" — and §16.2 has now answered the
+downstream half directly, while §16.5 has the chip telling us about itself.
+
+### 16.9 The `F` LED observation is benign, and mildly informative
+
+*"Only plugged into the Arduino, F is bright green. Only plugged into the wall,
+F is dimmer."*
+
+Consistent with §11.1: `F` sits on the `DIR` net and lights when the Arduino
+**sinks** A3 low. Arduino connected with the sketch running ⇒ A3 actively driven
+LOW ⇒ bright. Arduino absent ⇒ `DIR` floats ⇒ leakage only ⇒ dim. Nothing
+anomalous.
+
+The mildly useful part: the LED glows *at all* on wall power alone, which
+requires a live rail on its anode side. If that rail is derived from the chip's
+own `5VOUT` — generated from `VM`, per §10.3 — then the internal regulator is
+working and the chip is not stone dead, which would favour "alive but in a
+latched error state" over "completely dead." ⚠️ **Weak evidence**: the 6121's
+LED supply source is not established here, and a dim LED is a poor instrument.
+**VREF at the trimmer wiper** (§12.2 C) is the measurement that settles it, and
+it is now the most valuable one still outstanding: healthy VREF ⇒ the regulator
+is fine and `DIAG` is flagging a latched output-stage fault; VREF ≈ 0 ⇒ replace
+the board.
+
+### 16.10 Status after these four measurements
+
+| | |
+|---|---|
+| Arduino STEP/DIR output | ✅ proven (§6), polarity corroborated by the LEDs (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ **0 V — candidate B eliminated** |
+| coil path to the windings | 🔴 **OPEN, both pairs — candidate A confirmed** (§16.2) |
+| ↳ split across terminal blocks? | ❓ **check first** — `1A`–`2A` / `1B`–`2B` unmeasured (§16.3) |
+| ↳ ribbon / crimps / FC-10P / motor | ❓ needs the ribbon out of the terminals (§16.4) |
+| TMC2209 `DIAG` | 🔴 **asserted — the chip is reporting a driver error** (§16.5) |
+| VREF / `5VOUT` | ❓ still unmeasured — now the most valuable remaining probe (§16.9) |
+| `INDEX` | ❓ 0 V, but not known to have been taken during a driven leg (§16.8) |
+| VREF pot | 🔴 **at maximum, ~3.3 A rms full scale.** Turn it down before re-powering (§16.7) |
+| TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
+| limit-switch loop | ✅ closed — and it proves the FC-10P is not wholly unseated (§16.4) |

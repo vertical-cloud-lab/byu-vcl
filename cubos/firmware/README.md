@@ -143,6 +143,17 @@ library, not as a percentage *of* it — so the two rows have to be chosen
 together. ⚠️ **Fit the Adafruit 1515 heat sink before running at this
 current.**
 
+🔴 **None of this table is in force yet, and flashing does not put it in force.**
+`RUN_CURRENT_PERCENT` reaches the chip through `setRunCurrent()`, which is a
+UART register write, and `comm = 0` means no register write has ever been
+confirmed to land. `i_scale_analog` is therefore still at its power-on default
+of 1, so **the board's VREF trimmer is the only thing setting coil current** —
+and as of 2026-09-21 it is fully clockwise, i.e. ~3.3 A rms full scale. Until
+the UART path works (the vendored patch below **and** the bridge resistor moved
+to the TX side), the way to reduce the current is to **turn the pot down**:
+≈ 0.55 V at the wiper gives ~1.0 A peak. See §16.7 of
+[`../docs/opentrons-pipette-wiring.md`](../docs/opentrons-pipette-wiring.md).
+
 ### The TMC2209 library is now vendored and patched
 
 `lib/TMC2209/` in the firmware project holds a patched copy of the janelia
