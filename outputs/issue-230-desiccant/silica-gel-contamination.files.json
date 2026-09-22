@@ -1,0 +1,81 @@
+{
+  "data": [
+    {
+      "id": 28858676,
+      "data_storage_id": "c872bfa7-b72c-4859-861c-3ea23780fc31",
+      "operation": "create",
+      "actor_id": "74d48c32-93d1-4b78-8af1-6528dccc68eb",
+      "actor_type": "trajectory",
+      "timestamp": "2026-09-22T23:28:24.623794Z",
+      "data_storage": {
+        "name": "pqa:docs:74d48c32-93d1-4b78-8af1-6528dccc68eb",
+        "description": null,
+        "is_collection": false,
+        "status": "active",
+        "content": null,
+        "embedding": null,
+        "user_id": "UxTMERa8SbeYkryBDMlwEgoJNF53",
+        "label": "10186e7384a3",
+        "parent_id": null,
+        "dataset_id": "9fa4315b-d0f3-468d-bcc9-0359f28f2685",
+        "project_id": null,
+        "share_status": "private",
+        "short_alias": null,
+        "id": "c872bfa7-b72c-4859-861c-3ea23780fc31",
+        "path": "10186e7384a3",
+        "created_at": "2026-09-22T23:28:24.509567Z",
+        "modified_at": "2026-09-22T23:28:27.383513Z",
+        "tags": null,
+        "file_path": "/tmp/tmppdf266fh.pkl",
+        "metadata": {
+          "size": 81448953
+        },
+        "trajectory_id": null,
+        "project_name": null,
+        "project_description": null,
+        "is_kosmos_project": null
+      }
+    },
+    {
+      "id": 28858673,
+      "data_storage_id": "6c107cb8-2bf6-4907-9fab-3e232049b6ce",
+      "operation": "create",
+      "actor_id": "74d48c32-93d1-4b78-8af1-6528dccc68eb",
+      "actor_type": "trajectory",
+      "timestamp": "2026-09-22T23:25:43.939350Z",
+      "data_storage": {
+        "name": "Reactive-Powder Desiccant Comparison",
+        "description": "Comparison of drying performance, capacity, compatibility, and failure modes for candidate desiccants. Molecular sieve 3A in isolated secondary containment is the preferred option; deliquescent chlorides and P\u2082O\u2085 should be avoided.",
+        "is_collection": false,
+        "status": "active",
+        "content": null,
+        "embedding": null,
+        "user_id": "UxTMERa8SbeYkryBDMlwEgoJNF53",
+        "label": "46b67573b449",
+        "parent_id": null,
+        "dataset_id": "1ee352a2-abb0-4b13-835a-68e3ce89455a",
+        "project_id": null,
+        "share_status": "private",
+        "short_alias": null,
+        "id": "6c107cb8-2bf6-4907-9fab-3e232049b6ce",
+        "path": "46b67573b449",
+        "created_at": "2026-09-22T23:25:43.894012Z",
+        "modified_at": "2026-09-22T23:25:43.894012Z",
+        "tags": null,
+        "file_path": null,
+        "metadata": {
+          "session_id": "74d48c32-93d1-4b78-8af1-6528dccc68eb",
+          "artifact_id": "1015f024-a7f7-41b8-bea0-c9f69921a70e",
+          "state_artifact_id": "artifact-00",
+          "artifact_type": "table",
+          "artifact_title": "Reactive-Powder Desiccant Comparison",
+          "artifact_caption": "Comparison of drying performance, capacity, compatibility, and failure modes for candidate desiccants. Molecular sieve 3A in isolated secondary containment is the preferred option; deliquescent chlorides and P\u2082O\u2085 should be avoided."
+        },
+        "trajectory_id": null,
+        "project_name": null,
+        "project_description": null,
+        "is_kosmos_project": null
+      }
+    }
+  ]
+}
