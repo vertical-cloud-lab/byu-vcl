@@ -60,17 +60,23 @@ chopping into at a VREF-pot setting worth ~3.3 A rms, for many sessions. See
 The four measurements landed on 2026-09-21 and are worked through in §16 of the
 wiring doc. What they leave:
 
-1. 🔑 **Look at the colours in the two screw-terminal blocks.** No meter needed.
-   **Blue and red belong together in one block; black and green in the other.**
-   Blue+black in one and red+green in the other splits each coil *across* the
-   blocks — the driver then sees an open circuit on both phases, the motor is
-   silent with no buzzing, and both `1A`–`1B` and `2A`–`2B` read high. That is
-   every symptom this pipette has, with nothing actually broken. Confirm with
-   the meter, power off: if **`1A`–`2A`** or **`1B`–`2B`** reads a few to a few
-   tens of ohms, swap two wires and it is fixed.
+1. 🔑 **Check the *grouping* in the driver's `1A`/`1B`/`2A`/`2B` terminals.**
+   The rule, independent of wire colour: **both ends of one winding must land in
+   `1A`+`1B`, and both ends of the other in `2A`+`2B`.** Trace by pipette header
+   pin, not by colour — pins **3 and 4** are one winding, pins **1 and 2** are
+   the other (§8.6 of the wiring doc). Which winding goes to which block, and
+   which way round inside a block, only reverse the direction of travel; a
+   winding *split across* the blocks leaves the driver seeing an open circuit on
+   both phases — silent, no buzzing, both `1A`–`1B` and `2A`–`2B` high. That is
+   every symptom this pipette has, with nothing actually broken. ⚠️ The
+   `blue`/`red`/`black`/`green` colours are science-jubilee's motor-lead
+   convention and only reach the terminals if the harness carries them end to
+   end — Cubware names no colours at all. Confirm with the meter, power off: if
+   **`1A`–`2A`** or **`1B`–`2B`** reads a few to a few tens of ohms, swap two
+   wires and it is fixed.
 2. **If not that, take the ribbon out of the driver's terminals and re-measure.**
    In-circuit readings have the output stage in parallel and cannot localise a
-   break. Blue–red and black–green at the loose ends; then at the pipette's own
+   break. The two winding pairs at the loose ends; then at the pipette's own
    10-pin header (coil A = pins 3–4, coil B = pins 1–2) to split the ribbon from
    the motor. **Reseat the FC-10P first** — the limit switch on pins 6/7 works,
    and those sit in the two rows *furthest* from the tip while all four coil

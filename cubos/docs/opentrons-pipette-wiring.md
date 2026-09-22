@@ -1630,16 +1630,30 @@ pair split *across* the blocks, which the driver simply cannot energise.
 
 Two ways to check, neither needing the machine:
 
-**By eye.** From §2 and §8.6, the correct grouping is:
+**By grouping — the form of the check that does not depend on wire colour.**
+Only one thing has to be true:
 
-```
-1A <- blue  (pin 4) ]  coil A      2A <- black (pin 2) ]  coil B
-1B <- red   (pin 3) ]              2B <- green (pin 1) ]
-```
+> **Both ends of one winding land in `1A`+`1B`, and both ends of the other
+> land in `2A`+`2B`.**
 
-**Blue and red belong in one terminal block; black and green in the other.**
-Blue+black in one and red+green in the other is the fault, and it is visible
-without a meter.
+Which winding goes to which block, and which way round within a block, change
+only the direction the plunger travels. **Splitting one winding across the two
+blocks is the fault**, and it is what produces an open circuit on both phases.
+
+Trace by **pipette header pin**, which §8.6 fixes unambiguously: pins **3 and
+4** are one winding, pins **1 and 2** are the other. The two wires coming from
+3 and 4 must sit in the same block as each other. On the Adafruit 6121 the
+positions are silkscreened `1A`, `1B`, `2A`, `2B` — however many physical
+blocks that is on the board, the labels are what matter.
+
+⚠️ **Colour is a hint, not the test.** `blue`+`red` = coil A and `black`+`green`
+= coil B is the JST housing order of the OT-2 motor's **own four leads inside
+the pipette**, recorded by science-jubilee's photograph (§8.6). Cubware's page
+gives pin numbers only and **names no wire colours at all**. So those colours
+appear at the driver's terminals only if the harness happens to carry them end
+to end; across a rainbow ribbon, a re-crimped FC-10P or a re-terminated run
+they mean nothing. When the colours are not traceable, go straight to the
+meter row below — it is a 30-second check and it is the authoritative one.
 
 **With the meter, power off.** Measure the two cross pairs, which §12.2 asked
 for and this round did not report:
