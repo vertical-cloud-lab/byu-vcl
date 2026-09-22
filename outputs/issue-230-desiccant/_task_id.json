@@ -1,0 +1,7 @@
+{
+  "job": "job-futurehouse-paperqa3-high",
+  "tasks": {
+    "silica-gel-contamination": "74d48c32-93d1-4b78-8af1-6528dccc68eb",
+    "no-glovebox-preservation": "b44fa395-5d25-4e4e-975e-aeec456eb3c4"
+  }
+}
