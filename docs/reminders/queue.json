@@ -1,0 +1,14 @@
+{
+  "links": {
+    "TRANSCRIPT": "docs/meetings/2026-09-17-repowder-install/transcript.md"
+  },
+  "posts": [
+    {
+      "id": "2026-10-22-224-valimet-reminder",
+      "type": "comment",
+      "issue": 224,
+      "not_before": "2026-10-22",
+      "body_file": "224-valimet-followup.md"
+    }
+  ]
+}

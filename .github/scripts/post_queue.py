@@ -7,9 +7,15 @@ Queue format (paths in body_file are relative to the queue file):
       "posts": [
         {"id": "…", "type": "issue", "key": "ISSUE_FOO", "title": "…",
          "assignees": ["…"], "body_file": "new-foo.md"},
-        {"id": "…", "type": "comment", "issue": 124, "body_file": "124.md"}
+        {"id": "…", "type": "comment", "issue": 124, "body_file": "124.md",
+         "not_before": "2026-10-22"}
       ]
     }
+
+A post with "not_before" is skipped until that date (UTC) arrives, so a queue
+can be run on a cron and stay a no-op until something comes due. Combined with
+the already-posted check below, a daily run posts each reminder exactly once.
+Set REMINDERS_TODAY=YYYY-MM-DD to test a future date without editing the queue.
 
 Placeholders in bodies:
   {{SHA}}        short commit hash of the checked-out ref
@@ -35,6 +41,7 @@ import re
 import subprocess
 import sys
 import tempfile
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 
@@ -85,9 +92,16 @@ def main() -> int:
                    "--jq", ".[].number").strip()
         return bool(found)
 
+    today = date.fromisoformat(os.environ["REMINDERS_TODAY"]) \
+        if os.environ.get("REMINDERS_TODAY") else datetime.now(timezone.utc).date()
+
     failures = 0
     for post in queue["posts"]:
         pid = post["id"]
+        due = post.get("not_before")
+        if due and today < date.fromisoformat(due):
+            print(f"[{pid}] not due until {due} (today is {today}); skipping")
+            continue
         marker = f"<!-- queue:{pid} -->"
         body = render((base / post["body_file"]).read_text(encoding="utf-8"))
         if marker not in body:

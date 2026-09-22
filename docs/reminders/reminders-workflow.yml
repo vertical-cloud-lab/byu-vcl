@@ -1,0 +1,67 @@
+name: Post due reminders
+
+# Daily pass over docs/reminders/queue.json. post_queue.py skips any post whose
+# "not_before" date hasn't arrived, and any post whose <!-- queue:<id> --> marker
+# is already on the target issue, so this is a no-op on almost every run and
+# posts each reminder exactly once on the day it comes due.
+#
+# THIS FILE IS NOT LIVE. The Claude GitHub App cannot write to .github/workflows/,
+# so it has to be moved into place by a human commit:
+#
+#     git mv docs/reminders/reminders-workflow.yml .github/workflows/reminders.yml
+#     git commit -m "Add the reminders cron"
+#
+# Two things to know once it is live:
+#   - schedule: only fires from the default branch, and GitHub disables scheduled
+#     workflows in a repo with 60 days of no activity. This repo is active, but a
+#     long quiet stretch is the failure mode to watch for.
+#   - Without VCL_BOT_APP_ID / VCL_BOT_PRIVATE_KEY the post goes out as
+#     github-actions[bot] via GITHUB_TOKEN, and GitHub never starts workflows from
+#     GITHUB_TOKEN events — so an "@claude" in a reminder body is dead text. The
+#     bodies wrap those pings in <!-- if-trigger --> blocks, which post_queue.py
+#     strips in that case. Same tradeoff as post-queued-comments.yml.
+
+on:
+  schedule:
+    - cron: "0 16 * * *" # 16:00 UTC = 10:00 lab local (UTC-6)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Print what would be posted instead of posting
+        type: boolean
+        default: true
+      today:
+        description: Override today's date (YYYY-MM-DD) to test a future reminder
+        required: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    env:
+      # `secrets` can't be read in a step-level `if`, so decide here.
+      HAVE_APP: ${{ secrets.VCL_BOT_APP_ID != '' && secrets.VCL_BOT_PRIVATE_KEY != '' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Mint an app token (only if the app secrets exist)
+        id: app
+        if: ${{ env.HAVE_APP == 'true' }}
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.VCL_BOT_APP_ID }}
+          private-key: ${{ secrets.VCL_BOT_PRIVATE_KEY }}
+
+      - name: Post anything due
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token || github.token }}
+          TRIGGER_OK: ${{ steps.app.outputs.token != '' }}
+          GH_REPO: ${{ github.repository }}
+          QUEUE: docs/reminders/queue.json
+          # On a schedule event `inputs` is empty, so this posts for real.
+          DRY_RUN: ${{ inputs.dry_run || 'false' }}
+          REMINDERS_TODAY: ${{ inputs.today }}
+        run: python3 .github/scripts/post_queue.py
