@@ -1998,3 +1998,205 @@ skew at the tip end looks like. **Reseat the FC-10P before condemning anything.*
 | `INDEX` | ❓ 0 V, not known to have been taken during a driven leg (§16.8) |
 | TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
 | whether the chip survived | ❓ unanswerable until the short is cleared (§17.4) |
+
+## 18. 2026-09-23: the ribbon comes out and the windings appear — the motor is fine
+
+Reported by Ben. The pipette had always reached the driver board through a
+10-pin ribbon and its FC-10P connector. He bypassed that entirely and wired the
+pipette to the driver's screw terminals **directly**:
+
+```
+1A - 1B    4.3 Ohm
+2A - 2B    3.7 Ohm
+```
+
+### 18.1 🔑 Those are real stepper windings, and they are the first ever measured
+
+§17.5 step 3 set the expected band as *"a few to a few tens of ohms"* for a
+healthy winding. Both readings land in it. Every previous measurement of the
+same two pairs was kΩ to MΩ — two to five orders of magnitude out — and that is
+what "the coil path is open" meant.
+
+Nothing about the motor changed between the two sets of readings. The only thing
+that changed is that the harness is no longer in the path. So:
+
+> **The motor is healthy. The entire coil fault was in the ribbon harness —
+> the ribbon, its crimps, the FC-10P, or the machine-end solder junction.**
+
+That is §17.6's favoured outcome, reached by substitution rather than by the
+localisation sequence of §17.5. It is the good ending: no motor to replace, and
+the suspect is a part that can be rebuilt.
+
+**The in-circuit caveat now argues for the reading rather than against it.**
+§16.2 made the point that probing at the driver's own terminals leaves the
+TMC2209's output stage permanently in parallel with the coil path, and that
+parallel paths can only pull a reading *down*, never up — which is why a high
+reading was conclusive and a low one would not have been. A 4.3 Ω reading with
+the driver still attached is exactly what a real winding looks like through that
+parallel path: the winding dominates, as it must.
+
+The 0.6 Ω spread between the two pairs is not a concern. A DMM's own leads are
+typically 0.1–0.5 Ω, and contact resistance at a screw terminal varies by more
+than that between probings; low-ohms accuracy near zero is the worst part of a
+handheld meter's range. If a precise figure is ever wanted, zero the leads (or
+subtract a probes-touched reading) and measure at the pipette's header.
+
+### 18.2 ❓ The one reading still missing: is the short gone too?
+
+§17.2's `1A`–`2A` = 0 Ω is the other half of the fault, and the new set does not
+speak to it. **Both cross pairs need re-measuring on the direct wiring, power
+off:**
+
+| pair | expect | if it instead reads ≈ 0 Ω |
+| --- | --- | --- |
+| `1A` – `2A` | **open** | the short is not in the harness — it is on the driver board itself |
+| `1B` – `2B` | **open** | same |
+
+The short was almost certainly in the harness and has left with it — a
+phase-to-phase bridge inside a motor would have shown as a low resistance across
+the shorted pair rather than the megohms §17.2 recorded. But this is the
+measurement that decides whether the driver board is still a suspect or is now
+the *only* suspect, and it costs ten seconds.
+
+### 18.3 🔴 The VREF pot is dangerous now in a way it has never been before
+
+Until today the driver's load was either open or shorted. A chopper driving an
+open load delivers no current no matter what VREF asks for, and a shorted one
+latches the protection off. **With ~4 Ω windings actually attached, the chopper
+can finally deliver the current the pot is asking for**, and the pot has been at
+full clockwise since at least 2026-09-17 — ~3.3 A rms full scale on this board's
+0.05 Ω sense resistors (§11.3), into a motor Opentrons runs at
+`plungerCurrent: 1.0 A` peak and whose breakout is rated 2 A.
+
+> 🔴 **Turn the pot down before the driver is powered up again.** This is no
+> longer a tidiness item. It is the first power-up at which the setting can do
+> damage, and the thing it would damage is the motor that has just been proven
+> good.
+
+§11.3 has the target: **VREF ≈ 0.55 V at the wiper gives ~1.0 A peak**
+(`I_rms = (VREF / 2.5) × 3.283 A`). For a first re-test wind it well below
+that — enough to confirm the shaft turns at all — then creep up. Fit the
+Adafruit 1515 heat sink. The pot remains the only thing setting current until
+UART works (§16.7); `RUN_CURRENT_PERCENT` in the firmware does not apply.
+
+### 18.4 🔴 Power-cycle `VM` before reading `DIAG`, or the verdict will be wrong
+
+The TMC2209's short-circuit protection **latches** the output stage off; it is
+cleared by disabling and re-enabling the driver — a `CHOPCONF.toff` write over
+UART, which is unavailable here (§12.3) — or by removing and restoring `VM`.
+
+So a `DIAG` read taken without a full 12 V power cycle may be reporting a latch
+set days ago by a short that no longer exists. That would read as "the chip is
+dead" when the chip is fine.
+
+**Order:**
+
+1. Confirm both cross pairs are open (§18.2). Power off.
+2. Turn the VREF pot well down (§18.3).
+3. **Fully power-cycle the 12 V** — off, a few seconds, on.
+4. *Then* read `DIAG`. ≈ 0 V ⇒ the chip survived. Still 5 V ⇒ replace the board.
+
+### 18.5 ⚠️ The limit switch probably went out with the ribbon
+
+Pins **6 and 7** — the switch return and its signal — rode the same ribbon and
+the same FC-10P as the four coil conductors (§8.6). If only the coil wires were
+direct-wired, D9 is now unconnected, and `setupPipette()` configures it
+`INPUT_PULLUP` with **HIGH meaning triggered** (§1, §6.2). An unconnected pin
+idles HIGH, so the firmware will read the switch as **asserted**, and:
+
+- `stepMotor()`'s gate closes on the **up** direction — every retraction is
+  refused in ~0.107 s having emitted no steps
+- `HOME` returns a fake success in ~0.52 s, running only its 796-step back-off
+
+That is the pre-2026-09-18 signature, and it would look like a regression rather
+than a wiring consequence. It is checkable in seconds:
+
+```bash
+~/CubOS/.venv/bin/python ~/byu-vcl/cubos/tools/pipette_driver_probe.py /dev/ttyACM0 --switch
+```
+
+`pipette_driver_measure.py` also refuses to open its stepping window while the
+switch reads asserted — by design, since the return leg would be refused and the
+plunger would ratchet outward — so that refusal is itself the answer.
+
+**Reconnecting pins 6 and 7 is part of the direct-wire job**, not an optional
+extra: without them the plunger is a one-way ratchet again.
+
+### 18.6 ⚠️ Direction may have inverted, and homing is how it shows
+
+Swapping the two ends *within* a pair reverses which way the plunger travels.
+Mechanically that is harmless and `DIR` handles it — but `homePipette()` seeks
+with `DIR` LOW (green `F` lit, §11.1), and if that direction is now *away* from
+the switch, `HOME` can never reach it however many 26 s legs it runs.
+
+science-jubilee's own homing instructions give the tell, and it is a visual one:
+watch the drive shaft during the seek, and **if the tip ejector starts to
+engage, the direction is inverted** (§8.9). The fix is to swap the two wires of
+one pair — either pair, not both.
+
+### 18.7 🔴 Flash the P20 GEN2 image before any `aspirate` — this just became blocking
+
+§10.4's reflash has been queued behind "the first real movement" since
+2026-09-17. A turning motor makes it a prerequisite rather than a nicety.
+
+`MOVE_TO` targets come from CubOS, which already carries the Opentrons P20 GEN2
+planes, so `blowout` and `drop_tip` land where CubOS asks. **`aspirate` does
+not** — it is computed inside the firmware, and `aspirate()` drives *down* to
+`PRIME_POSITION` before its metered ascent. The running 2026-09-15 image still
+carries the P300-derived `PRIME_POSITION 36.0`; a P20 GEN2's bottom is **28.0**.
+
+While the plunger was silent that discrepancy cost nothing. With a motor that
+turns, **every `aspirate` call drives the plunger 8 mm past its mechanical
+bottom**, stalling against the stop for the rest of the move.
+
+So: no protocol `aspirate` on the current image. Flashing
+`cubos/firmware/panda_vcl_p20gen2_20260917.hex` closes it and also carries
+`tmc2209-softwareserial-read.patch`, without which `DRV_STATUS` — and the
+specific bit behind `DIAG` — cannot be read at all. ⚠️ It does **not** lower the
+run current while UART is down; only the pot does (§16.7).
+
+### 18.8 The first-movement test, and what it finally unlocks
+
+A bounded bench move is the right first test — no gantry motion, no protocol,
+nothing that needs the pipette mounted:
+
+```bash
+~/CubOS/.venv/bin/python ~/byu-vcl/cubos/tools/pipette_driver_measure.py --move
+```
+
+6 mm out, 6 mm back at 200 steps/s, direction-labelled, always returning to
+where it started. What to watch for, in order of how much each one settles:
+
+| observation | meaning |
+| --- | --- |
+| **the shaft turns** | the hunt is over — everything from §1 onward was correct and the harness was the fault |
+| **holding torque at rest** | coil current is flowing; the two-minute discriminator of §11.2 finally passes |
+| yellow `S` LED changes during the move | STEP pulses reaching the board (free confirmation) |
+| `INDEX` fluctuating mid-scale on a DMM | the microstep counter is running — §16.8's reading becomes usable at last |
+| **measure the 6 mm with a ruler** | 🔑 `setMicrostepsPerStep(16)` is a UART write that has never landed, so MS1/MS2 decide and their default is 1/8 — **half** what `STEPS_PER_MM 1592` assumes. Expect a possible 2× error, and this is the moment to catch it |
+
+⚠️ **The direct wiring is a bench configuration, not a machine one.** The ribbon
+was also the flexible tether that let the pipette ride the moving head. Solid
+wire into screw terminals will not survive gantry motion, and pulling a terminal
+out mid-run recreates exactly the open circuit that has cost the last three
+weeks. Bench-test on the direct wiring; rebuild or repair the harness before the
+pipette goes back on the gantry.
+
+### 18.9 Status after the direct-wire measurement
+
+| | |
+|---|---|
+| Arduino STEP/DIR output | ✅ proven (§6), polarity corroborated by the LEDs (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V (§16.1) |
+| coil grouping in the terminals | ✅ correct (§17.1) |
+| **the motor windings** | ✅ **4.3 Ω / 3.7 Ω — HEALTHY (§18.1)** |
+| **the ribbon harness** | 🔴 **condemned — it carried the open coil path** |
+| `1A`–`2A` / `1B`–`2B` on the direct wiring | ❓ **the next measurement (§18.2)** |
+| VREF pot | 🔴 at maximum, and now into a real load — **turn it down first** (§18.3) |
+| TMC2209 `DIAG` | ❓ 5 V, but **power-cycle `VM` before believing it** (§18.4) |
+| limit switch / D9 | ⚠️ likely unconnected with the ribbon out (§18.5) |
+| plunger direction | ⚠️ may have inverted; homing is the tell (§18.6) |
+| firmware `aspirate` planes | 🔴 **flash the GEN2 image before any aspirate** (§18.7) |
+| microstepping vs. `STEPS_PER_MM` | ❓ ruler check, available for the first time (§18.8) |
+| TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |

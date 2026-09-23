@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-22**. This is the map; the detail is in
+Status as of **2026-09-23**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,7 +13,8 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-**The motion half works. The plunger has never physically turned.**
+**The motion half works. The plunger has never physically turned — but as of
+2026-09-23 the reason is known, and it is a cable.**
 
 Every software and geometry problem between a protocol and the plunger is
 solved and verified on hardware:
@@ -26,7 +27,8 @@ solved and verified on hardware:
 | volume conversion | **single conversion** — `mm_to_ul: 1.0` in CubOS, the calibration constant in the firmware |
 | plunger retraction | **un-gated** since 2026-09-18 — the limit-switch loop reads closed |
 | passive-instrument sweep | **0 interferences**, nominal and tip-stuck |
-| the plunger itself | 🔴 **silent. No coil current, no holding torque, no sound.** |
+| the motor windings | ✅ **4.3 Ω / 3.7 Ω on direct wiring — healthy** |
+| the ribbon harness | 🔴 **condemned — it carried the open coil path** |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
 time every plunger command — including the two retractions — emitted its steps
@@ -40,95 +42,94 @@ command-for-command.
   polarity and timing          PROVEN   B/F LEDs match the trace, per command
   Arduino pin map              FIXED    Cubware's diagram is shifted one pin
   10-pin pipette header        VERIFIED across three sources; 180 deg flip excluded
-  limit-switch gate            OPEN     retractions execute
+  limit-switch gate            OPEN     retractions execute (via the ribbon)
   VM at the screw terminal     13 V     measured 2026-09-17
   EN at the driver pin         0 V      candidate B ELIMINATED, 2026-09-21
   coil grouping in terminals   CORRECT  1A+1B = one winding, 2A+2B = the other
   serial link to the Pi        HEALTHY  10/10 clean round-trips
+  motor windings               HEALTHY  4.3 / 3.7 Ohm once the ribbon is bypassed
   ------------------------------------- everything above is ruled out
-  coil path to the windings    OPEN     both pairs read kOhm-MOhm where a
-                                        winding reads ohms
-  1A - 2A                      0 Ohm    DEAD SHORT between the two bridges
-  TMC2209 DIAG                 5 V      asserted — and the short explains it
-  motor windings at the header  ?       the measurement that decides whether
-                                        the motor itself is any good
+  the ribbon harness           FAULTY   it is the only thing that changed
+  1A - 2A on direct wiring      ?       was 0 Ohm through the ribbon; re-measure
+  TMC2209 DIAG                  ?       5 V, but the latch may be stale
+  VREF pot                     MAXIMUM  dangerous for the first time — real load
 ```
 
-As of 2026-09-22 the two symptoms collapse into **one mechanism**: `1A`–`2A`
-measures 0 Ω, so the driver's two bridge outputs are shorted together, and that
-is one of the exact conditions that latches `DIAG` high and turns the output
-stage off. It is also how such an output stage is destroyed — the VREF pot has
-been at maximum (~3.3 A rms full scale) and chopping into that short for every
-session since. See §17 of the wiring doc.
+On **2026-09-23** Ben bypassed the 10-pin ribbon and its FC-10P and wired the
+pipette straight to the driver's screw terminals. `1A`–`1B` read **4.3 Ω** and
+`2A`–`2B` **3.7 Ω** — real stepper windings, and the first ever measured on this
+machine. Every earlier reading of the same two pairs was kΩ to MΩ. Nothing about
+the motor changed; only the harness left the path. **The motor is healthy and
+the coil fault was in the ribbon, its crimps, the FC-10P, or the machine-end
+solder junction.** See §18 of the wiring doc.
 
-> 🔴 **Do not power the driver again until the short is cleared and the pot is
-> turned down.** A bridge-to-bridge short at a maxed current setting will take a
-> brand new replacement board out within seconds.
+> 🔴 **Turn the VREF pot down before the driver is powered up again.** Until now
+> the load was open or shorted, so the pot could not do damage. With real ~4 Ω
+> windings attached the chopper can finally deliver what it is asking for —
+> ~3.3 A rms full scale into a motor Opentrons runs at 1.0 A peak.
 
 ### What to do next, cheapest first
 
-The cross-pair measurements landed on 2026-09-22 and are worked through in §17
-of the wiring doc. The order below is a **safety** order, not just a convenience
-one — step 4 before step 1 destroys a replacement driver.
+The order below is a **safety** order. Steps 1–3 come before power for a reason.
 
-0. **Sanity-check the meter** — probes together should read the leads' own
-   resistance, probes apart open. Five seconds, and it rules out a stuck range
-   or continuity mode behind the flat `0`.
-1. 🔑 **Find and clear the `1A`–`2A` short, power off throughout.** In order:
-   **(a)** loosen only red and green, lift them clear of the block, re-measure
-   red–green — clears ⇒ a stray strand or over-stripped insulation at the
-   terminal; **(b)** unplug the FC-10P at the pipette and re-measure at the
-   harness end — still 0 Ω ⇒ the short is in the ribbon, the crimps, the
-   connector body, or the machine-end solder junction (§8.7's standing suspect);
-   **(c)** clears ⇒ it is at the header or inside the motor.
-   **Reseat the FC-10P before condemning anything** — the limit switch on pins
-   6/7 works and sits in the rows *furthest* from the tip, while all four coil
-   conductors sit in the two rows nearest it, so a lift or skew at the tip end
-   fits every reading.
-2. 🔑 **Measure the windings at the pipette's own 10-pin header, FC-10P off** —
-   the single most valuable measurement remaining, because it removes every
-   crimp, the ribbon and the connector and tests the motor alone. Coil A =
-   pins **3–4**, coil B = pins **1–2**, each a few to a few tens of ohms;
-   pins **1–3** open. Both in range ⇒ the motor is healthy and the whole fault
-   is in the harness, which is what the evidence currently favours.
-3. 🔴 **Turn the VREF pot well down before the driver is powered again.** Target
-   ≈ 0.55 V at the wiper for ~1.0 A peak; wind it below that for a first
-   re-test and creep up. Fit the 1515 heat sink.
-4. **Then power up and re-check `DIAG`.** Clear, with a real load and sane
-   current ⇒ the chip survived. Still 5 V ⇒ replace the board. This cannot be
-   answered before step 1.
-5. **`VREF` at the trimmer wiper**, once the pot has been set — healthy ⇒ the
-   internal regulator is fine; ≈ 0 V ⇒ the chip is dead.
-6. **`INDEX` during a driven leg.** The 0 V reading is not yet usable — it is
-   not recorded whether steps were being consumed at the time.
+1. **Re-measure the cross pairs on the direct wiring, power off** — `1A`–`2A`
+   and `1B`–`2B` must both read **open**. They were 0 Ω through the ribbon
+   (§17.2), which is what latched `DIAG`. Still 0 Ω with the ribbon gone ⇒ the
+   short is on the driver board itself, and it is then the only remaining
+   suspect. Ten seconds, and it decides that.
+2. **Reconnect the limit switch** — pins **6** and **7** rode the same ribbon.
+   Left unconnected, D9 idles HIGH through its pull-up, the firmware reads the
+   switch as *asserted*, every retraction is refused in ~0.107 s and `HOME` fake-
+   succeeds in ~0.52 s. That is the pre-2026-09-18 signature and it would look
+   like a regression. Check with
+   [`../tools/pipette_driver_probe.py`](../tools/pipette_driver_probe.py)
+   `--switch`; `pipette_driver_measure.py` also refuses to run while it reads
+   asserted, so the refusal is itself the answer.
+3. 🔴 **Turn the VREF pot well down.** Target ≈ 0.55 V at the wiper for ~1.0 A
+   peak; wind it below that for a first re-test and creep up. Fit the 1515 heat
+   sink. The pot is still the only thing setting current — `RUN_CURRENT_PERCENT`
+   does not apply until UART works (§16.7).
+4. **Power-cycle the 12 V, then read `DIAG`.** The short-circuit protection
+   *latches*, and clearing it needs either a UART write (unavailable) or `VM`
+   removed and restored. A `DIAG` read without the power cycle may be reporting
+   a latch set days ago. ≈ 0 V ⇒ the chip survived. Still 5 V after a clean
+   power cycle into a good load ⇒ replace the board.
+5. 🔑 **Run a bounded bench move** —
    [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
-   opens a bounded, direction-labelled window for exactly this. It has dropped
-   in importance now that §17.3 has a mechanism for `DIAG`.
+   `--move`, 6 mm out and 6 mm back, no gantry motion. Watch for the shaft
+   turning, holding torque at rest, the yellow `S` LED changing, and `INDEX`
+   fluctuating mid-scale. **Measure the 6 mm with a ruler** — `setMicrostepsPerStep(16)`
+   has never landed, so MS1/MS2 decide at 1/8 and a commanded millimetre may
+   travel two.
+6. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
+   `homePipette()` seeks with `DIR` LOW. If the tip ejector starts to engage,
+   the direction is inverted — swap the two wires of one pair.
+7. **Rebuild or repair the harness before the pipette goes back on the gantry.**
+   The ribbon was also the flexible tether. Solid wire into screw terminals will
+   not survive gantry motion, and a terminal pulled out mid-run recreates exactly
+   the open circuit that cost the last three weeks.
 
-**Retired:** the terminal-block swap that §16.3 led with. Ben's wire-to-terminal
-map puts both ends of coil A in `1A`+`1B` and both ends of coil B in `2A`+`2B` —
-correctly grouped, so there is no two-wire fix (§17.1).
+**Retired:** the terminal-block swap that §16.3 led with (§17.1), and the
+localisation sequence of §17.5 — the substitution answered it first.
 
 ### Two things queued behind the first real movement
 
-- 🔴 **The board is running the 2026-09-15 image, not the P20 GEN2 one.** Proven
-  by `avrdude -U flash:v:` against all three candidates. CubOS carries the
-  Opentrons planes (prime 28.0 / blowout 32.5 / drop_tip 46.5) while the firmware
-  still carries the P300-derived 36.0 / 44.0 / 55.0 and `UL_TO_MM 1.8`. `MOVE_TO`
-  is absolute so `blowout` and `drop_tip` land where CubOS asks; **`aspirate` does
-  not**, because it is computed inside the firmware. Flashing
+- 🔴 **Flash the P20 GEN2 image before any `aspirate` — this is now blocking,
+  not queued.** The board runs the 2026-09-15 image, proven by
+  `avrdude -U flash:v:` against all three candidates. `MOVE_TO` is absolute, so
+  `blowout` and `drop_tip` land where CubOS asks; **`aspirate` is computed inside
+  the firmware** and drives down to `PRIME_POSITION` first. The running image
+  carries the P300-derived **36.0**; a P20 GEN2's bottom is **28.0**. That cost
+  nothing while the plunger was silent — with a turning motor it drives the
+  plunger 8 mm past its mechanical bottom on every call. Flashing
   [`../firmware/panda_vcl_p20gen2_20260917.hex`](../firmware/panda_vcl_p20gen2_20260917.hex)
-  closes that, and carries `tmc2209-softwareserial-read.patch`, without which
-  `DRV_STATUS` — and with it the specific cause behind `DIAG` — cannot be read
-  at all. ⚠️ **Correction:** this was previously described as also dropping run
-  current from ~2.3 A to ~1.02 A peak. It does not, until UART works:
-  `RUN_CURRENT_PERCENT` is applied by a UART register write and `comm = 0` means
-  none has ever landed, so the VREF pot is still the only thing setting current.
-  Turning the pot down is the action; see §16.7 of the wiring doc.
-- **Check the first successful move against a ruler.** `setMicrostepsPerStep(16)`
-  is a UART write that has never been confirmed to land, so the MS1/MS2 straps
-  decide and their default is 1/8 — half what `STEPS_PER_MM 1592` assumes. The
-  firmware already contradicts itself about this.
+  closes it and carries `tmc2209-softwareserial-read.patch`, without which
+  `DRV_STATUS` — and with it the specific cause behind `DIAG` — cannot be read at
+  all. ⚠️ It does **not** lower the run current until UART works; only the pot
+  does (§16.7).
+- **Check the first successful move against a ruler**, as in step 5 above. The
+  firmware already contradicts itself about this: `STEPS_PER_MM 1592.0` against
+  a homing back-off commented `796; // this is equal to 1mm`.
 
 ## What is in this PR
 
