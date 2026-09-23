@@ -146,35 +146,127 @@ Establish whether it is a *network* problem or an *app* problem before touching
 either. From the laptop, with the Ethernet cable in:
 
 ```
-ipconfig                                  # Windows: the Ethernet adapter should show an
+ipconfig /all                             # Windows: the Ethernet adapter should show an
                                           # "Autoconfiguration IPv4 Address" of 169.254.x.x
 ping 169.254.51.252                       # the address this robot has been using
-ping OT2CEP20210722R13.local              # mDNS, if Windows resolves it
+ping OT2CEP20210722R13.local              # mDNS; Windows 10 1703+ resolves .local natively
 ```
 
 Then open **`http://169.254.51.252:31950/health`** in a browser. It should
 return JSON naming `OT2CEP20210722R13`. That single test splits the problem:
 
-- **JSON comes back, app still shows nothing** → app-side. Add the robot by
-  hand: App Settings → **Advanced** → **Connect to a Robot via IP Address** →
-  *Set up connection* → enter the IP. The string is
-  `"connect_ip": "Connect to a Robot via IP Address"` in the app's own
-  localisation, and `"ip_description_first": "Enter an IP address or hostname to
-  connect to a robot."`
-- **No JSON** → link-side. Check the adapter has an APIPA address (Windows can
-  take ~60 s to fall back after DHCP fails), disable Wi-Fi so the app is not
-  offered a better-looking interface, and allow the app through Windows Firewall
-  on *Private* networks.
+- **JSON comes back, app still shows nothing** → app-side, i.e. discovery. Skip
+  straight to *Add the robot by IP* below; everything else on this page is then
+  optional.
+- **No JSON** → link-side. The adapter has no usable address, or nothing is on
+  the other end of the cable. See *When the link itself is the problem*.
 
-Two further notes. The robot's link-local address is self-assigned, so
-`169.254.51.252` is what it has used, not a guarantee — if the ping fails but
-the link is up, get the current one from Robot Settings → **Networking** once
-connected, or from `arp -a`. And the app **caches robots it cannot reach**: a
-greyed-out entry reading *"Robot must be on the network to see connected
-instruments, modules, and peripherals"* means the app knows the robot but its
-HTTP API did not answer — that is the app's `offline_instruments_and_modules`
-string, not an instrument-detection failure. Do not read it as "the pipette is
-missing".
+#### Discovery is mDNS, and it backs off to one query every two minutes
+
+The app does not poll the network for robots. Each OT-2 advertises itself over
+multicast DNS as `<name>._http._tcp.local`, and the app runs an `mdns-js`
+browser that listens for it and keeps services whose port is `31950`
+([`discovery-client/src/mdns-browser/index.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/index.ts)).
+Two constants in that file explain almost every "I plugged it in and nothing
+happened":
+
+```ts
+const IFACE_POLL_INTERVAL_MS = 5000
+const QUERY_INTERVAL_MS = [4000, 8000, 16000, 32000, 64000, 128000]
+```
+
+`repeatCall` walks that array and then **holds the last value forever**
+([`repeat-call.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/repeat-call.ts)),
+so an app that has been open for more than about four minutes is asking **once
+every 128 seconds**. Waiting 30 seconds and concluding it failed is too quick.
+
+The redeeming detail is `pollNetworkInterfaces`: every 5 s the app compares its
+browser's bound interfaces against the system's and, on any mismatch, tears the
+browser down and starts a new one — which re-queries **immediately**
+(`callImmediately: true`) and resets the backoff to 4 s. So:
+
+> **Unplugging and replugging the USB-Ethernet adapter is the fastest way to
+> force a fresh scan** — faster and more reliable than restarting the app,
+> because it is a *guaranteed* interface change.
+
+The comparison is on `{name, address}` pairs, so the moment Windows finishes its
+APIPA fallback and the adapter goes from no address to `169.254.x.x`, that too
+counts as a change and restarts discovery on its own. Which means the honest
+reading of a Devices tab that has said **"No robots found"** for several minutes
+is: *the adapter never got a link-local address*, or *the mDNS packets are not
+arriving*.
+
+#### Add the robot by IP — the reliable way past all of it
+
+Gear icon (bottom-left) → **Advanced** → **Connect to a Robot via IP Address** →
+*Set up connection* → enter `169.254.51.252` → **Add**. The strings are
+`"connect_ip": "Connect to a Robot via IP Address"` and
+`"ip_description_first": "Enter an IP address or hostname to connect to a
+robot."` in the app's own localisation.
+
+This bypasses mDNS entirely: the app polls `GET /health` on the address you gave
+it. If the browser test above returned JSON, this will work. It is worth doing
+**first**, not last — a working connection is more useful than a diagnosis, and
+the entry is remembered.
+
+#### Things that break mDNS while leaving HTTP working
+
+Each of these produces exactly "No robots found" *and* a `/health` that answers
+fine in a browser:
+
+- **Windows Firewall profile.** A wired network that appears for the first time
+  is classified **Public**, where inbound UDP 5353 is blocked. Settings →
+  Network & Internet → Ethernet → set the profile to **Private**, and in Windows
+  Defender Firewall → *Allow an app through firewall* tick **Opentrons OT-2**
+  for both Private and Public.
+- **Both Opentrons apps running at once.** The Flex app and the OT-2 app each
+  create their own mDNS browser on UDP 5353. Quit the Flex app fully, system
+  tray included, and check Task Manager for a leftover `Opentrons.exe`.
+- **More than one active network interface.** Discovery has a history of failing
+  outright when several adapters — particularly several USB-to-Ethernet ones —
+  are present, the robot appearing only once the extra adapter is removed. Turn
+  Wi-Fi off on the laptop for the duration; fewest interfaces wins.
+
+#### When the link itself is the problem
+
+If `ipconfig /all` shows the adapter as *Media disconnected*, or with no
+`169.254.x.x` address after a full minute, no amount of app configuration will
+help. In order of likelihood:
+
+- **Wait 60 s.** Windows only falls back to APIPA after DHCP has timed out, and
+  nothing on this cable serves DHCP — the robot is link-local too. `ipconfig
+  /release` then `ipconfig /renew` restarts that clock.
+- **Suspect the dongle, especially if it came off the Pi.** The Pi's RTL8153
+  (`0bda:8153`) is a known-bad part here: on 2026-09-23 it collapsed with
+  `Stop submitting intr, status -71` within 18 s of each repair, and only a hard
+  port power cycle recovered it. See [`ot2_link_recover.sh`](ot2_link_recover.sh)
+  and the README. On Windows the same fault looks like an adapter that appears
+  and then drops its link. Move it to a **black USB 2.0 port** rather than a blue
+  USB 3 one — `-EPROTO` on an RTL8153 at SuperSpeed is the classic signature —
+  or use the dongle Opentrons shipped with the robot instead.
+- **Swap the Ethernet cable.** Cheapest test on the list.
+
+#### Two things that are *not* the cause
+
+- **Prior SSH access does not lock the robot out of the app.** SSH is TCP 22;
+  discovery is UDP 5353 and control is HTTP on TCP 31950 — different daemons,
+  different ports. The OT-2 has no concept of an exclusive client session, and
+  enabling SSH only appends a public key to the robot's `authorized_keys`. The
+  proof is in this repo's own history: on 2026-09-23 the app found
+  `OT2CEP20210722R13` on a robot that had been SSH'd into for weeks, and HTTP
+  calls from the Pi (`/health`, `/pipettes`, `POST /camera/picture`) all returned
+  200 during the same period.
+- **A greyed-out robot card is not a hardware fault.** The app **caches robots it
+  cannot reach**, and *"Robot must be on the network to see connected
+  instruments, modules, and peripherals"* is its `offline_instruments_and_modules`
+  string — the HTTP API did not answer. It is not reporting that the pipette is
+  undetected. Note this is a *different* screen from "No robots found": cached
+  robot vs. nothing discovered at all.
+
+Finally, the robot's link-local address is self-assigned, so `169.254.51.252` is
+what it has used rather than a guarantee. If the ping fails but the link is up,
+get the current one from Robot Settings → **Networking** once connected, or from
+`arp -a` after pinging.
 
 ### Putting the robot on Wi-Fi instead
 
@@ -311,4 +403,5 @@ made impossible.
 - [Using Labware Position Check](https://docs.opentrons.com/v2/robot_position.html#using-labware-position-check)
 - [Custom labware](https://docs.opentrons.com/v2/new_labware.html#custom-labware) · [Labware Creator](https://labware.opentrons.com/create/) · [Labware Library](https://labware.opentrons.com/)
 - [Connect to the OT-2 over USB](https://support.opentrons.com/s/article/Get-started-Connect-to-your-OT-2-over-USB) · [Connect over Wi-Fi](https://support.opentrons.com/s/article/Get-started-Connect-to-your-OT-2-over-Wi-Fi-optional)
+- Discovery source: [`mdns-browser/index.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/index.ts) (`QUERY_INTERVAL_MS` backoff, `IFACE_POLL_INTERVAL_MS`, port filter) · [`repeat-call.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/repeat-call.ts) (the interval array holds its last value) · [`interfaces.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/interfaces.ts) (`{name, address}` comparison) · [`base-browser.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/base-browser.ts) (`createBrowser(tcp('http'))`)
 - App source: [`useRunPipetteInfoByMount.ts`](https://github.com/Opentrons/opentrons/blob/edge/app/src/resources/runs/useRunPipetteInfoByMount.ts) (tip-length cal is matched per tiprack URI × pipette serial) · [`ChooseTipRack.tsx`](https://github.com/Opentrons/opentrons/blob/edge/app/src/organisms/Desktop/CalibrationPanels/ChooseTipRack.tsx) (custom tip racks are concatenated into the picker)

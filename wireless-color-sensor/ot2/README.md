@@ -796,6 +796,14 @@ the short version:
 - **None of it reaches `run_xscan_test.py` as written.** That drives
   `moveToCoordinates` inside a maintenance run, where no labware is loaded and
   no LPC offset is applied. The payoff comes with the port to a real protocol.
+- **"No robots found" is almost always discovery, not the cable.** The app finds
+  robots only by mDNS, and its query interval backs off to **one every 128 s**,
+  so a fresh plug-in can take over two minutes to register. Replugging the
+  USB-Ethernet adapter forces an immediate re-scan; adding the robot by IP under
+  App Settings → Advanced skips discovery altogether. Prior SSH use to the robot
+  is *not* a factor — different port, different daemon, no session lock. Full
+  decision tree in
+  [`opentrons-calibration.md`](opentrons-calibration.md#if-the-app-still-cannot-find-the-robot).
 
 `python3 calibration_status.py --labware protocols/ac_color_sensor_charging_port.json`
 reports what is present and what is missing. It is read-only and moves nothing;
