@@ -142,8 +142,10 @@ def main() -> int:
         f"{name}={iface.get('state')}" for name, iface in sorted(interfaces.items())))
     if not reachable_off_pi:
         problems.append("no routable network: the Opentrons App cannot reach the robot. "
-                        "Connect a USB-B cable to the computer running the app, or put "
-                        "the robot on the lab network")
+                        "This robot has one RJ45 jack and no USB-B port, so move the "
+                        "ethernet cable from the Pi to the computer running the app "
+                        "(or put both on a switch), and use the separate Opentrons "
+                        "OT-2 App -- the main app dropped OT-2 support in v9.1.1")
 
     print()
     if problems:

@@ -16,8 +16,12 @@ labware that has been imported into its labware list.
 
 ## Running them
 
-1. **Connect the app to the robot.** USB-B from the OT-2 to the computer. The
-   ethernet cable to the Pi is a separate link and can stay as it is.
+1. **Connect the app to the robot.** Ethernet, from the OT-2's rear RJ45 jack to
+   the computer — this robot has no USB-B port, and one jack, so the Pi's
+   RTL8153 dongle has to come out for the duration (or both go on a switch).
+   Use the **Opentrons OT-2 App** from <https://opentrons.com/app>: the main
+   Opentrons App stopped listing OT-2 robots at v9.1.1. See
+   [`../opentrons-calibration.md`](../opentrons-calibration.md) for the details.
 2. **Import** `ac_color_sensor_charging_port.json` — sidebar → *Labware* →
    *Import*.
 3. **Calibrate**, in this order, because deck calibration wipes the other two:

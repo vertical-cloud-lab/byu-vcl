@@ -54,40 +54,136 @@ Three things follow from that:
   OT-2 is the stream-cam Pi it is cabled to. Calibration happens in the
   Opentrons App, which runs on a computer — so this has to be solved first.
 
-## Step 0 — let the app reach the robot
+## Step 0 — get an app that still supports the OT-2
 
-Plug a **USB-B** cable from the OT-2's rear USB-B port into the computer running
-the Opentrons App, wait a few seconds, then open the app. This is Opentrons' own
-recommended path and needs no network change.
+**Download the separate Opentrons OT-2 App, not the Opentrons App.** Since
+**v9.1.1** (24 June 2026) the main Opentrons App is Flex-only. Opentrons' own
+release notes for that version:
 
-If you would rather put the robot on Wi-Fi: Devices → ⋮ → **Robot Settings** →
-**Networking**. Opentrons specifically recommend doing that *while connected
-over USB*, because changing Wi-Fi over Wi-Fi can strand the app.
+> **"OT-2 robots will no longer appear in the Opentrons App."** v9.1.1 will
+> prompt you to get the separate Opentrons OT-2 App, or you can download it
+> directly from <https://opentrons.com/app>.
+> — [`app-shell/build/release-notes.md`](https://github.com/Opentrons/opentrons/blob/edge/app-shell/build/release-notes.md)
 
-Leave the ethernet cable to the Pi alone either way — that link is what
-`run_xscan_test.py` and `deck_photo.py` use, and it is independent of the app.
+So updating the app to "the current version" is what makes an OT-2 *disappear*
+from the Devices tab. The Devices screen shows **"No robots found"** and no
+amount of cable-checking will change it.
 
-### What the USB-B port actually is
+<https://opentrons.com/app> now offers two separate downloads:
 
-The OT-2 has **both** a rear RJ45 jack and a rear USB-B port, but they are not
-two different protocols. Behind the USB-B port is an internal USB-to-Ethernet
-bridge — Opentrons ship a
-[replacement part](https://support.opentrons.com/s/article/Replacing-the-OT-2-s-internal-USB-to-Ethernet-adapter)
-for it — so the host sees a Realtek USB-Ethernet adapter appear and the robot
-self-assigns a `169.254/16` link-local address on it. That is the same kind of
-link the stream-cam Pi already has through its own RTL8153 dongle (`0bda:8153`)
-into the RJ45 jack; only the connector differs. The robot reports a single
-`eth0` either way, so whether the two rear ports can be live simultaneously is
-**untested here** — assume not, and unplug the Pi's cable if the app cannot see
-the robot over USB.
+| app | for | direct link | build seen 2026-09-23 |
+| --- | --- | --- | --- |
+| Opentrons App | **Flex only** | `builds.opentrons.com/Opentrons.{exe,dmg,AppImage}` | v9.1.2 |
+| **Opentrons OT-2 App** | **OT-2** | `ot2.builds.opentrons.com/Opentrons-OT2.{exe,dmg,AppImage}` | **v26.6.0** (b10562, 2026-06-24) |
 
-### Which computer can run the app
+The OT-2 App is calendar-versioned (`v26.6.0`) and is a different product from
+the `v9.x` line, so the two version numbers cannot be compared. Installing it
+alongside the Flex app is fine.
 
-The Opentrons App ships for macOS, Windows and Linux, but the Linux build is an
-**x86-64 AppImage only** — `Opentrons-v9.1.2-linux-*.AppImage` has ELF
-`e_machine 0x3e`, and no arm64 asset is published. So it will **not** run on
-Raspberry Pi OS, and the stream-cam Pi cannot host it. Any x86-64 Linux laptop
-works; a Windows machine is not required.
+The same architecture limit applies to it: the Linux build
+`Opentrons OT-2-v26.6.0-linux-b10562.AppImage` is ELF `e_machine 0x3e`, i.e.
+**x86-64 only**, with no arm64 asset. It will **not** run on Raspberry Pi OS, so
+the stream-cam Pi cannot host it. Any x86-64 Linux laptop works; a Windows
+machine is not required.
+
+### There is no USB-B port on this robot
+
+An earlier revision of this file said to connect the app over USB-B. **That was
+wrong for this machine.** Its rear panel carries an RJ45 Ethernet jack and a
+power connector, and nothing else — confirmed at the machine on 2026-09-23, and
+consistent with Opentrons' current documentation, which lists the side panel as
+carrying only the "on/off switch, an Ethernet port, and the power port"
+([Robot Components](https://docs.opentrons.com/ot-2/system-description/robot/)).
+The four USB-A ports are *inside* the enclosure, behind the gantry, and are for
+Opentrons modules, not for a host computer.
+
+Opentrons' own first-run instructions are Ethernet-only and say so plainly:
+
+> "Connect the Ethernet cable to the OT-2 and your computer. If your computer
+> does not have an Ethernet port, use the provided Ethernet-to-USB dongle."
+> — [OT-2 First Run](https://docs.opentrons.com/ot-2/installation/first-run/)
+
+Note which end that dongle is for: the **computer's**, not the robot's. That is
+the source of the confusion. Opentrons do sell an
+[internal USB-to-Ethernet adapter](https://support.opentrons.com/s/article/Replacing-the-OT-2-s-internal-USB-to-Ethernet-adapter)
+as a replacement part, but it lives *inside* the robot, bridging the Compute
+Module to the rear RJ45 jack. Older OT-2s additionally exposed a rear USB-B port
+backed by that same bridge — the app still ships a Realtek driver-version check
+for it (`usb_to_ethernet_adapter_info_description`: *"Some OT-2s have an
+internal USB-to-Ethernet adapter"*). **This unit is not one of them.**
+
+### One RJ45 jack, two things that want it
+
+The robot has exactly **one** Ethernet jack, and the Pi's RTL8153 dongle
+(`0bda:8153`) normally occupies it. So connecting a laptop means unplugging the
+Pi, and that takes the robot off the tailnet: `run_xscan_test.py`,
+`deck_photo.py`, `calibration_status.py` and every CI check stop working until
+the cable goes back. This is visible in the Pi's journal as a plain USB
+disconnect — on 2026-09-23 the dongle was live from 09:47:36 MDT and pulled at
+10:09:14:
+
+```
+r8152-cfgselector 2-1: USB disconnect, device number 2
+device (eth1): state change: activated -> unmanaged (reason 'unmanaged-link-not-init')
+```
+
+After that `lsusb` on the Pi lists no Realtek device at all and `eth1` is gone —
+which is the honest signature of "somebody unplugged it", as distinct from the
+`status -71` wedge that
+[`ot2_link_recover.sh`](ot2_link_recover.sh) exists for, where `eth1` survives
+and lies about `carrier`.
+
+**Plug the dongle back into the Pi when calibration is done.** Better, put a
+cheap unmanaged Ethernet switch between them: link-local addressing (IPv4LL)
+works normally across a switch, each host self-assigns a unique `169.254/16`
+address with ARP conflict detection, and the Pi and a laptop can then both hold
+the robot at once. Untested here, but it is ordinary Ethernet behaviour and it
+removes the unplug/replug dance.
+
+### If the app still cannot find the robot
+
+Establish whether it is a *network* problem or an *app* problem before touching
+either. From the laptop, with the Ethernet cable in:
+
+```
+ipconfig                                  # Windows: the Ethernet adapter should show an
+                                          # "Autoconfiguration IPv4 Address" of 169.254.x.x
+ping 169.254.51.252                       # the address this robot has been using
+ping OT2CEP20210722R13.local              # mDNS, if Windows resolves it
+```
+
+Then open **`http://169.254.51.252:31950/health`** in a browser. It should
+return JSON naming `OT2CEP20210722R13`. That single test splits the problem:
+
+- **JSON comes back, app still shows nothing** → app-side. Add the robot by
+  hand: App Settings → **Advanced** → **Connect to a Robot via IP Address** →
+  *Set up connection* → enter the IP. The string is
+  `"connect_ip": "Connect to a Robot via IP Address"` in the app's own
+  localisation, and `"ip_description_first": "Enter an IP address or hostname to
+  connect to a robot."`
+- **No JSON** → link-side. Check the adapter has an APIPA address (Windows can
+  take ~60 s to fall back after DHCP fails), disable Wi-Fi so the app is not
+  offered a better-looking interface, and allow the app through Windows Firewall
+  on *Private* networks.
+
+Two further notes. The robot's link-local address is self-assigned, so
+`169.254.51.252` is what it has used, not a guarantee — if the ping fails but
+the link is up, get the current one from Robot Settings → **Networking** once
+connected, or from `arp -a`. And the app **caches robots it cannot reach**: a
+greyed-out entry reading *"Robot must be on the network to see connected
+instruments, modules, and peripherals"* means the app knows the robot but its
+HTTP API did not answer — that is the app's `offline_instruments_and_modules`
+string, not an instrument-detection failure. Do not read it as "the pipette is
+missing".
+
+### Putting the robot on Wi-Fi instead
+
+Devices → ⋮ → **Robot Settings** → **Networking**. Opentrons recommend doing
+this *while connected by cable*, because changing Wi-Fi over Wi-Fi can strand
+the app. It would let the laptop and the Pi coexist without a switch, but it is
+not a sure thing here: the lab's wireless is a campus network, and client
+isolation on such networks blocks the mDNS the app discovers robots with. The
+switch is the more predictable fix.
 
 ### Why not just do this over HTTP
 
