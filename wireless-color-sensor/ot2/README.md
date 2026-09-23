@@ -72,6 +72,18 @@ The durable fix is physical, and costs nothing: **move the adapter to one of the
 Pi's USB 2.0 ports**. 480 Mbps is about 48x what this link ever carries, and it
 sidesteps the SuperSpeed signalling entirely.
 
+**2026-09-23 — stop treating that move as optional.** The adapter was re-plugged
+into the same SuperSpeed port (`/sys/bus/usb/devices/2-1`, `speed=5000`) at
+12:50:47 and wedged at 12:53:36. Across one session the interval between a
+successful repair and the next `-71` collapsed **2m42s → 90s → 18s**, and the
+`NO_LPM` quirk was set for the middle two — it does not prevent the fault, so
+stage 0 is worth keeping but is not a fix. Stage 1 stopped working entirely
+(`r8152 failed probe after 3 tries; giving up`); only the stage 2 power cycle
+still recovers it, and a **15 s** off period worked where the script's default
+6 s did not. A link that survives 18 seconds cannot carry an X-scan, so the
+adapter now has to move to a black USB 2.0 port before any further automated
+run is attempted.
+
 The venv is already set up on that Pi at `~/.venvs/xscan` (`paho-mqtt`,
 `pymongo`, `requests`; the system Python 3.13 is externally managed, hence the
 venv). To rebuild it elsewhere:
