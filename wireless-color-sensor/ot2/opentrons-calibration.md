@@ -143,23 +143,41 @@ removes the unplug/replug dance.
 ### If the app still cannot find the robot
 
 Establish whether it is a *network* problem or an *app* problem before touching
-either. From the laptop, with the Ethernet cable in:
+either. [`find_ot2.ps1`](find_ot2.ps1) answers that in one command — copy it to
+the Windows machine that has the robot's cable, then in Command Prompt:
 
 ```
-ipconfig /all                             # Windows: the Ethernet adapter should show an
+powershell -ExecutionPolicy Bypass -File find_ot2.ps1
+```
+
+It is read-only and needs no administrator rights. It lists every adapter and
+its address, sends the same `_http._tcp.local` mDNS query the app's Devices tab
+sends, collects every candidate address it can (mDNS responders, the ARP table,
+`<name>.local`, the previously-seen address), tries `GET /health` on each, and
+prints a verdict. Doing it by hand instead:
+
+```
+ipconfig /all                             # the Ethernet adapter should show an
                                           # "Autoconfiguration IPv4 Address" of 169.254.x.x
 ping 169.254.51.252                       # the address this robot has been using
 ping OT2CEP20210722R13.local              # mDNS; Windows 10 1703+ resolves .local natively
 ```
 
-Then open **`http://169.254.51.252:31950/health`** in a browser. It should
-return JSON naming `OT2CEP20210722R13`. That single test splits the problem:
+Then open **`http://169.254.51.252:31950/health`** in a browser — typing the
+`http://` prefix explicitly, because an address with a port and no scheme can
+go to the search engine instead. It should return JSON naming
+`OT2CEP20210722R13`. That single test splits the problem:
 
 - **JSON comes back, app still shows nothing** → app-side, i.e. discovery. Skip
   straight to *Add the robot by IP* below; everything else on this page is then
   optional.
 - **No JSON** → link-side. The adapter has no usable address, or nothing is on
   the other end of the cable. See *When the link itself is the problem*.
+
+**A blank page is not evidence that the robot is down.** Three different faults
+give it — this machine has no link-local address of its own, the robot's address
+is not the one you typed, or the cable/adapter is dead — and they need opposite
+fixes. Do not skip to the next step until you know which.
 
 #### Discovery is mDNS, and it backs off to one query every two minutes
 
@@ -231,20 +249,63 @@ fine in a browser:
 
 If `ipconfig /all` shows the adapter as *Media disconnected*, or with no
 `169.254.x.x` address after a full minute, no amount of app configuration will
-help. In order of likelihood:
+help. Work through these in order; each one is a different fault.
+
+**1. Is the robot itself up?** The front button should be lit, and
+`robot-server` takes about three minutes after power-on before it answers
+anything. A robot that was power-cycled a minute ago looks exactly like a dead
+cable.
+
+**2. Does the adapter exist and have a link?** In `ipconfig /all`, find the
+entry whose *Description* names the USB adapter (Realtek, ASIX, and so on).
+
+- Not listed at all → driver or hardware. Check Device Manager for a
+  *Network adapters* entry, or an unknown device with a warning triangle.
+- *Media State . . . : Media disconnected* → nothing is on the other end. Check
+  both plugs, and swap the Ethernet cable — cheapest test on the list.
+
+**3. Does *this machine* have a `169.254.x.x` address?** This is the step most
+often missed, and it is the one that makes a browser show a blank page while the
+robot is perfectly healthy. Both ends have to be link-local; the robot cannot
+route to a machine that has no address on its subnet.
 
 - **Wait 60 s.** Windows only falls back to APIPA after DHCP has timed out, and
   nothing on this cable serves DHCP — the robot is link-local too. `ipconfig
   /release` then `ipconfig /renew` restarts that clock.
-- **Suspect the dongle, especially if it came off the Pi.** The Pi's RTL8153
-  (`0bda:8153`) is a known-bad part here: on 2026-09-23 it collapsed with
-  `Stop submitting intr, status -71` within 18 s of each repair, and only a hard
-  port power cycle recovered it. See [`ot2_link_recover.sh`](ot2_link_recover.sh)
-  and the README. On Windows the same fault looks like an adapter that appears
-  and then drops its link. Move it to a **black USB 2.0 port** rather than a blue
-  USB 3 one — `-EPROTO` on an RTL8153 at SuperSpeed is the classic signature —
-  or use the dongle Opentrons shipped with the robot instead.
-- **Swap the Ethernet cable.** Cheapest test on the list.
+- **Or set it by hand, and stop depending on the timing.** Settings → Network &
+  Internet → Ethernet → the robot's adapter → **IP assignment: Edit** →
+  **Manual** → **IPv4 on**, then
+
+  | field | value |
+  | --- | --- |
+  | IP address | `169.254.51.100` |
+  | Subnet mask | `255.255.0.0` |
+  | Gateway | *leave blank* |
+  | Preferred DNS | *leave blank* |
+
+  A static address inside `169.254.0.0/16` is unusual but legal, and it removes
+  the APIPA wait entirely. Leave the gateway blank — this link goes nowhere else,
+  and filling it in can hijack the machine's default route. **Set the adapter
+  back to *Automatic (DHCP)* if that cable is ever plugged into a real network**,
+  or it will not work there.
+
+**4. Is the robot's address still the one you typed?** It is self-assigned, and
+Opentrons warn that it ["will change periodically, especially after the OT-2 is
+restarted or reconnected"](https://support.opentrons.com/ot-2/getting-started-software-setup/networking-requirements-for-the-ot-2).
+`169.254.51.252` has held across every reconnect on the Pi's cable since
+2026-09-09, so it is a good first guess and nothing more. To find the current
+one without guessing, use [`find_ot2.ps1`](find_ot2.ps1), or `ping
+OT2CEP20210722R13.local`, or read *Robot Settings → Networking* in the app once
+it is connected by any means.
+
+**5. Suspect the dongle, especially if it came off the Pi.** The Pi's RTL8153
+(`0bda:8153`) is a known-bad part here: on 2026-09-23 it collapsed with
+`Stop submitting intr, status -71` within 18 s of each repair, and only a hard
+port power cycle recovered it. See [`ot2_link_recover.sh`](ot2_link_recover.sh)
+and the README. On Windows the same fault looks like an adapter that appears
+and then drops its link. Move it to a **black USB 2.0 port** rather than a blue
+USB 3 one — `-EPROTO` on an RTL8153 at SuperSpeed is the classic signature —
+or use the dongle Opentrons shipped with the robot instead.
 
 #### Two things that are *not* the cause
 
@@ -263,10 +324,11 @@ help. In order of likelihood:
   undetected. Note this is a *different* screen from "No robots found": cached
   robot vs. nothing discovered at all.
 
-Finally, the robot's link-local address is self-assigned, so `169.254.51.252` is
-what it has used rather than a guarantee. If the ping fails but the link is up,
-get the current one from Robot Settings → **Networking** once connected, or from
-`arp -a` after pinging.
+Finally, none of the above needs administrator rights, and none of it changes a
+setting on the robot. If it is still stuck, run [`find_ot2.ps1`](find_ot2.ps1)
+and keep its whole output — it records the adapter list, the mDNS result and the
+`/health` result together, which is what distinguishes these faults from each
+other after the fact.
 
 ### Putting the robot on Wi-Fi instead
 

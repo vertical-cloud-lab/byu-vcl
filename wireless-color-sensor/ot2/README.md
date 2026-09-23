@@ -205,6 +205,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `ot2_link_recover.sh` | checks the link by pinging the robot, and repairs a wedged USB-Ethernet adapter |
+| `find_ot2.ps1` | run on the *Windows* machine holding the robot's cable: lists adapters, sends the app's own mDNS query, finds the robot's current address, prints a verdict |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `analyse_person_effect.py` | whether somebody at the machine moves the readings; `--gate` screens a run for a background that shifted mid-position |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera; turns the frame 180° upright, `--fix FILE` corrects a saved one |
@@ -804,6 +805,13 @@ the short version:
   is *not* a factor — different port, different daemon, no session lock. Full
   decision tree in
   [`opentrons-calibration.md`](opentrons-calibration.md#if-the-app-still-cannot-find-the-robot).
+- **`http://169.254.51.252:31950/health` loading nothing does not mean the robot
+  is down.** It equally means *this* machine has no `169.254.x.x` address of its
+  own — both ends of a link-local cable need one, and Windows only self-assigns
+  after DHCP times out, up to 60 s. It also equally means the robot's
+  self-assigned address is no longer that one. Run
+  [`find_ot2.ps1`](find_ot2.ps1) on the Windows machine rather than guessing
+  between them; it separates the three cases in one pass.
 
 `python3 calibration_status.py --labware protocols/ac_color_sensor_charging_port.json`
 reports what is present and what is missing. It is read-only and moves nothing;
