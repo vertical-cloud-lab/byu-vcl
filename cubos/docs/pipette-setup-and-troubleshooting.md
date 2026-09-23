@@ -43,56 +43,71 @@ command-for-command.
   limit-switch gate            OPEN     retractions execute
   VM at the screw terminal     13 V     measured 2026-09-17
   EN at the driver pin         0 V      candidate B ELIMINATED, 2026-09-21
+  coil grouping in terminals   CORRECT  1A+1B = one winding, 2A+2B = the other
   serial link to the Pi        HEALTHY  10/10 clean round-trips
   ------------------------------------- everything above is ruled out
-  coil path to the windings    OPEN     candidate A CONFIRMED — both pairs read
-                                        kOhms where a winding reads ohms
-  TMC2209 DIAG                 5 V      candidate C LIVE — the chip is
-                                        reporting a driver error
+  coil path to the windings    OPEN     both pairs read kOhm-MOhm where a
+                                        winding reads ohms
+  1A - 2A                      0 Ohm    DEAD SHORT between the two bridges
+  TMC2209 DIAG                 5 V      asserted — and the short explains it
+  motor windings at the header  ?       the measurement that decides whether
+                                        the motor itself is any good
 ```
 
-Two faults, and plausibly one story: an open coil path that the driver has been
-chopping into at a VREF-pot setting worth ~3.3 A rms, for many sessions. See
-§16 of the wiring doc.
+As of 2026-09-22 the two symptoms collapse into **one mechanism**: `1A`–`2A`
+measures 0 Ω, so the driver's two bridge outputs are shorted together, and that
+is one of the exact conditions that latches `DIAG` high and turns the output
+stage off. It is also how such an output stage is destroyed — the VREF pot has
+been at maximum (~3.3 A rms full scale) and chopping into that short for every
+session since. See §17 of the wiring doc.
+
+> 🔴 **Do not power the driver again until the short is cleared and the pot is
+> turned down.** A bridge-to-bridge short at a maxed current setting will take a
+> brand new replacement board out within seconds.
 
 ### What to do next, cheapest first
 
-The four measurements landed on 2026-09-21 and are worked through in §16 of the
-wiring doc. What they leave:
+The cross-pair measurements landed on 2026-09-22 and are worked through in §17
+of the wiring doc. The order below is a **safety** order, not just a convenience
+one — step 4 before step 1 destroys a replacement driver.
 
-1. 🔑 **Check the *grouping* in the driver's `1A`/`1B`/`2A`/`2B` terminals.**
-   The rule, independent of wire colour: **both ends of one winding must land in
-   `1A`+`1B`, and both ends of the other in `2A`+`2B`.** Trace by pipette header
-   pin, not by colour — pins **3 and 4** are one winding, pins **1 and 2** are
-   the other (§8.6 of the wiring doc). Which winding goes to which block, and
-   which way round inside a block, only reverse the direction of travel; a
-   winding *split across* the blocks leaves the driver seeing an open circuit on
-   both phases — silent, no buzzing, both `1A`–`1B` and `2A`–`2B` high. That is
-   every symptom this pipette has, with nothing actually broken. ⚠️ The
-   `blue`/`red`/`black`/`green` colours are science-jubilee's motor-lead
-   convention and only reach the terminals if the harness carries them end to
-   end — Cubware names no colours at all. Confirm with the meter, power off: if
-   **`1A`–`2A`** or **`1B`–`2B`** reads a few to a few tens of ohms, swap two
-   wires and it is fixed.
-2. **If not that, take the ribbon out of the driver's terminals and re-measure.**
-   In-circuit readings have the output stage in parallel and cannot localise a
-   break. The two winding pairs at the loose ends; then at the pipette's own
-   10-pin header (coil A = pins 3–4, coil B = pins 1–2) to split the ribbon from
-   the motor. **Reseat the FC-10P first** — the limit switch on pins 6/7 works,
-   and those sit in the two rows *furthest* from the tip while all four coil
-   conductors sit in the two rows nearest it.
-3. 🔴 **Turn the VREF pot down before the driver is powered again.** This is the
-   step that protects a replacement. Target ≈ 0.55 V at the wiper for ~1.0 A
-   peak; wind it well below that for a first re-test. Fit the 1515 heat sink.
-4. **Then re-check `DIAG`.** Clear, with a real load and sane current ⇒ the chip
-   survived. Still 5 V ⇒ replace the board.
-5. **`VREF` at the trimmer wiper** — still unmeasured, and now the most valuable
-   remaining probe. Healthy ⇒ the internal regulator is fine and `DIAG` is a
-   latched output-stage fault. ≈ 0 V ⇒ the chip is dead.
+0. **Sanity-check the meter** — probes together should read the leads' own
+   resistance, probes apart open. Five seconds, and it rules out a stuck range
+   or continuity mode behind the flat `0`.
+1. 🔑 **Find and clear the `1A`–`2A` short, power off throughout.** In order:
+   **(a)** loosen only red and green, lift them clear of the block, re-measure
+   red–green — clears ⇒ a stray strand or over-stripped insulation at the
+   terminal; **(b)** unplug the FC-10P at the pipette and re-measure at the
+   harness end — still 0 Ω ⇒ the short is in the ribbon, the crimps, the
+   connector body, or the machine-end solder junction (§8.7's standing suspect);
+   **(c)** clears ⇒ it is at the header or inside the motor.
+   **Reseat the FC-10P before condemning anything** — the limit switch on pins
+   6/7 works and sits in the rows *furthest* from the tip, while all four coil
+   conductors sit in the two rows nearest it, so a lift or skew at the tip end
+   fits every reading.
+2. 🔑 **Measure the windings at the pipette's own 10-pin header, FC-10P off** —
+   the single most valuable measurement remaining, because it removes every
+   crimp, the ribbon and the connector and tests the motor alone. Coil A =
+   pins **3–4**, coil B = pins **1–2**, each a few to a few tens of ohms;
+   pins **1–3** open. Both in range ⇒ the motor is healthy and the whole fault
+   is in the harness, which is what the evidence currently favours.
+3. 🔴 **Turn the VREF pot well down before the driver is powered again.** Target
+   ≈ 0.55 V at the wiper for ~1.0 A peak; wind it below that for a first
+   re-test and creep up. Fit the 1515 heat sink.
+4. **Then power up and re-check `DIAG`.** Clear, with a real load and sane
+   current ⇒ the chip survived. Still 5 V ⇒ replace the board. This cannot be
+   answered before step 1.
+5. **`VREF` at the trimmer wiper**, once the pot has been set — healthy ⇒ the
+   internal regulator is fine; ≈ 0 V ⇒ the chip is dead.
 6. **`INDEX` during a driven leg.** The 0 V reading is not yet usable — it is
    not recorded whether steps were being consumed at the time.
    [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
-   opens a bounded, direction-labelled window for exactly this.
+   opens a bounded, direction-labelled window for exactly this. It has dropped
+   in importance now that §17.3 has a mechanism for `DIAG`.
+
+**Retired:** the terminal-block swap that §16.3 led with. Ben's wire-to-terminal
+map puts both ends of coil A in `1A`+`1B` and both ends of coil B in `2A`+`2B` —
+correctly grouped, so there is no two-wire fix (§17.1).
 
 ### Two things queued behind the first real movement
 

@@ -1810,3 +1810,191 @@ the board.
 | VREF pot | 🔴 **at maximum, ~3.3 A rms full scale.** Turn it down before re-powering (§16.7) |
 | TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
 | limit-switch loop | ✅ closed — and it proves the FC-10P is not wholly unseated (§16.4) |
+
+## 17. 2026-09-22: the cross pairs land — one short explains `DIAG`, and the terminal-block hypothesis is dead
+
+Reported by Ben, with the wire-to-terminal map §16.3 asked for:
+
+```
+1B <- Blue      1A - 1B    2.7  kOhm
+1A <- Red       2A - 2B    2.7  MOhm
+2A <- Green     1A - 2A    0    Ohm      <-- dead short
+2B <- Black     1B - 2B    3.6  MOhm
+```
+
+Two findings, and the second is the first measurement in this whole hunt that
+*explains* a previously unexplained one.
+
+### 17.1 ✅ The grouping is correct — §16.3's leading hypothesis is eliminated
+
+Against §8.6's header map — coil A = pins 3 (red) + 4 (blue), coil B = pins 1
+(green) + 2 (black):
+
+| driver terminal | wire | header pin | winding | lands in |
+| --- | --- | --- | --- | --- |
+| `1A` | red | 3 | A | block 1 |
+| `1B` | blue | 4 | A | block 1 |
+| `2A` | green | 1 | B | block 2 |
+| `2B` | black | 2 | B | block 2 |
+
+Both ends of coil A are in `1A`+`1B`; both ends of coil B are in `2A`+`2B`.
+That is exactly the rule §16.3 set out, so **the coil pairs are *not* split
+across the two blocks** and the cheap "swap two wires" fix does not apply. The
+hypothesis §16.3 led with is retired on Ben's own colour map, without needing
+the meter to settle it.
+
+### 17.2 🔴 `1A`–`2A` = 0 Ω is a dead short between the two driver bridges
+
+`1A` and `2A` are outputs of two independent DMOS bridges driving two isolated
+windings. §12.2 predicted them **open**. Zero ohms means red (header pin 3) and
+green (header pin 1) are joined by a near-zero-resistance path — one end of
+coil A tied to one end of coil B, which the driver sees as `OA1` shorted to
+`OA2`.
+
+**All four readings are self-consistent with exactly that one topology.** Taking
+red ≡ green:
+
+| pair | predicted if red ≡ green | measured |
+| --- | --- | --- |
+| red–blue (`1A`–`1B`) | whatever the blue path is | 2.7 kΩ |
+| green–black (`2A`–`2B`) | whatever the black path is | 2.7 MΩ |
+| blue–black (`1B`–`2B`) | blue–red + red–black ≈ 2.7 k + 2.7 M ≈ 2.7 MΩ | 3.6 MΩ |
+| red–green (`1A`–`2A`) | ≈ 0 | **0 Ω** |
+
+The blue–black row closing to the right order of magnitude is the check that
+matters; megohm readings on a DMM are range-dependent and noisy, so 2.7 M vs
+3.6 M is agreement, not a discrepancy.
+
+**And no winding appears in any measurement.** A stepper coil is a few to a few
+tens of ohms. The lowest reading here is 2.7 kΩ — two orders of magnitude out —
+so §16.2's conclusion stands: the coil path is open *as well as* shorted.
+
+⚠️ **Do not read the specific kΩ/MΩ values as resistances.** `2A`–`2B` was
+5 kΩ on 2026-09-21 and 2.7 MΩ now; `1A`–`1B` went 0.55 kΩ → 2.7 kΩ. Copper does
+not change by 540× between sessions. Those numbers are leakage and semiconductor
+junction paths on the driver board, and the only information in them is "far too
+high to be a winding."
+
+### 17.3 🔑 The short explains `DIAG` = 5 V
+
+§16.5 established that `DIAG` is asserted by overtemperature, a short to ground
+or to supply on either phase, or charge-pump undervoltage — and explicitly *not*
+by open load. It had no candidate cause. It does now.
+
+With `OA1` shorted to `OA2`, the instant bridge 1 pulls its output toward `VM`
+while bridge 2 pulls its output toward GND, `VM` is connected to ground through
+two conducting MOSFETs and nothing else. That is the short-circuit condition the
+TMC2209's protection exists to catch: it latches the output stage off and raises
+`DIAG`, and the latch holds until the driver is reset.
+
+So the two symptoms collapse into one mechanism. **This also means `DIAG` may
+clear once the short is gone** — which is why the repair order below puts the
+wiring before any verdict on the chip.
+
+### 17.4 🔴 It is also how the output stage dies — so the order is now a safety matter
+
+The VREF pot has been at full clockwise since at least 2026-09-17, and in
+standalone mode (which this board has always been in, §16.7) the pot is the only
+thing setting current — full scale on the 6121's 0.05 Ω sense resistors is
+~3.3 A rms. The chopper has been driving into a phase-to-phase short at that
+setting, repeatedly, across every session since.
+
+> 🔴 **Do not power the driver again until the short is cleared and the pot is
+> turned down.** A bridge-to-bridge short with a maxed current setting is the
+> textbook way to destroy a stepper driver's output stage — including a brand
+> new replacement, within seconds of powering it up.
+
+**Repair order:**
+
+1. **Find and clear the short** (§17.5). Power off throughout.
+2. **Confirm both windings read a few to a few tens of ohms.**
+3. **Turn the VREF pot well down** — below the ≈ 0.55 V wiper target for ~1.0 A
+   peak for a first re-test, then creep up. Fit the 1515 heat sink.
+4. **Then power up and re-check `DIAG`.** Clear ⇒ the chip survived the abuse.
+   Still 5 V ⇒ replace the board.
+
+Doing 4 before 1 is how the replacement joins the first one.
+
+### 17.5 Where the short is, cheapest first
+
+**0. Sanity-check the meter.** Probes touched together should read the leads'
+own resistance (typically 0.1–0.5 Ω, or 0.0 on a meter that zeroes them);
+probes apart should read open. This takes five seconds and it matters, because
+a flat `0` through a length of harness is suspiciously perfect — an accidental
+bridge normally shows a fraction of an ohm, and a meter left in continuity mode
+or with a stuck range reads 0 everywhere. `1B`–`2B` reading 3.6 MΩ argues the
+meter is fine, so this is a formality rather than a doubt.
+
+**1. The screw terminals.** Loosen *only* red and green, lift them clear of the
+block so they cannot touch anything, and re-measure red–green at the wire ends.
+
+- **Clears** ⇒ the short was at the block: a stray strand, over-stripped
+  insulation, or the two wires touching above the terminal. Re-strip, re-seat,
+  done.
+- **Still 0 Ω** ⇒ downstream of the block. Go to 2.
+
+**2. Unplug the FC-10P at the pipette** and measure red–green at the harness
+end (connector body included on the harness side).
+
+- **Still 0 Ω** ⇒ the short is in the harness — ribbon, crimps, the connector
+  body, or the machine-end junction. §8.7 already nominates that junction, where
+  four motor wires and two switch wires are soldered onto ten ribbon conductors,
+  as the least keyed and least documented joint in the chain; a solder bridge
+  there between the red and green conductors is exactly this reading.
+- **Clears** ⇒ the short is at the pipette's header or inside the motor. Go to 3.
+
+**3. 🔑 Measure at the pipette's own 10-pin header, FC-10P off.** This is the
+single most valuable measurement remaining, because it removes every crimp, the
+ribbon and the connector from the picture and tests the motor alone. Per §8.6:
+
+| pins | expect |
+| --- | --- |
+| **3 – 4** (coil A) | a few to a few tens of ohms |
+| **1 – 2** (coil B) | a few to a few tens of ohms |
+| **1 – 3** | open |
+
+Both windings in range and 1–3 open ⇒ **the motor is healthy and the entire
+fault is in the harness**, which is the good outcome and the one the evidence
+currently favours (see §17.6).
+
+### 17.6 A single mechanical cause is available, and the motor is probably fine
+
+A winding-to-winding short *inside* the motor is a poor fit for this data: it
+would show low resistances across the shorted pair, not megohms. What fits is an
+external fault, and there is a coherent single-cause story for both the short
+and the opens.
+
+§8.6 puts the odd pins in one column of the header and the even pins in the
+other, with pin 1 at the tip end. So **green (1) and red (3) are adjacent
+contacts in one column, and black (2) and blue (4) are adjacent contacts in the
+other** — and all four sit in the two rows nearest the pipette tip. A connector
+mis-seated or skewed at that end can bridge two adjacent contacts in one column
+while the other column makes no contact at all: green–red shorted, black–blue
+open. Equally, one bad rework at the machine-end solder junction gives a red–green
+bridge alongside cold joints on blue and black.
+
+🔑 **And the limit switch is the reason to suspect the tip end specifically.** It
+shares the same ribbon and the same FC-10P, and it reads **closed** (D9 LOW,
+confirmed by the 26.3 s full-budget seek and by campaign 54's retractions
+executing, §13). Its two conductors are pins 6 and 7, which §8.6 places in rows
+3 and 4 — the rows *furthest* from the tip. So the connector is making good
+contact at one end and failing at the other, which is precisely what a lift or
+skew at the tip end looks like. **Reseat the FC-10P before condemning anything.**
+
+### 17.7 Status after the cross pairs
+
+| | |
+|---|---|
+| Arduino STEP/DIR output | ✅ proven (§6), polarity corroborated by the LEDs (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V — candidate B eliminated (§16.1) |
+| coil grouping in the terminals | ✅ **correct — §16.3's hypothesis retired** (§17.1) |
+| coil path to the windings | 🔴 **OPEN, both pairs** (§16.2, §17.2) |
+| `1A`–`2A` | 🔴 **0 Ω — dead short between the two bridges** (§17.2) |
+| TMC2209 `DIAG` | 🔴 asserted — **now explained by the short** (§17.3) |
+| motor windings at the header | ❓ **the measurement to take next** (§17.5 step 3) |
+| where the short is | ❓ block → harness → header, in that order (§17.5) |
+| VREF / `5VOUT` | ❓ still unmeasured (§16.9) — but the pot must come **down** first (§17.4) |
+| `INDEX` | ❓ 0 V, not known to have been taken during a driven leg (§16.8) |
+| TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
+| whether the chip survived | ❓ unanswerable until the short is cleared (§17.4) |
