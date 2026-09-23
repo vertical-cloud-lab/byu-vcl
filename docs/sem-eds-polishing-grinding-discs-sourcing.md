@@ -9,7 +9,7 @@ SOP ([issue #110](https://github.com/vertical-cloud-lab/byu-vcl/issues/110)), an
 ## The spec is not a guess
 
 It is read off the boxes in
-[Gage's shelf photo](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issue-3068064968):
+[Gage's shelf photo](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issue-4471024294):
 **12″ dia (305 mm), plain back, silicon carbide, wet or dry, 100/box.** Plain back — *not* PSA — is
 what the SOP's "metal sand paper holding ring" clamps. One of those boxes is hand-labelled
 "Fullwood On[ly]", which is the reason for buying our own.

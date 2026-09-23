@@ -19,7 +19,7 @@ Not guessed. These come from the photos in the issue thread:
 
 | Item | Brand & part no. | Size | Where it appears |
 | --- | --- | --- | --- |
-| Black Bakelite mounting powder | **LECO `811-110`** | 1 lb (454 g) | [issue photo 1](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issue-3068064968) |
+| Black Bakelite mounting powder | **LECO `811-110`** | 1 lb (454 g) | [issue photo 1](https://github.com/vertical-cloud-lab/byu-vcl/issues/110#issue-4471024294) |
 | SiC grinding papers, plain back | **LECO `810-295/296/297-PRM`, `810-856-100`, `810-857-100`** | 12″ (305 mm), 100/box | issue photo 2 |
 | Polishing cloth | **Allied `50-150-505`** — Imperial Adhesive Back Disc | 12″/300 mm, **Pk/10** | issue photo 3 |
 | 1 µm alumina suspension | **Allied** — De-Agglomerated, refill bottle (`90-187550` = 32 oz) | 32 oz | issue photo 4 |
