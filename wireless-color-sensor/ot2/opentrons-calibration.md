@@ -83,8 +83,43 @@ alongside the Flex app is fine.
 The same architecture limit applies to it: the Linux build
 `Opentrons OT-2-v26.6.0-linux-b10562.AppImage` is ELF `e_machine 0x3e`, i.e.
 **x86-64 only**, with no arm64 asset. It will **not** run on Raspberry Pi OS, so
-the stream-cam Pi cannot host it. Any x86-64 Linux laptop works; a Windows
+the stream-cam Pi cannot host it. Any x86-64 Linux machine works; a Windows
 machine is not required.
+
+### Installing it on Ubuntu
+
+The lab computer runs Ubuntu, and the Linux build is an **AppImage** — one
+executable file, not a `.deb`. There is no apt repository and nothing to
+install; it needs a permission bit and, usually, one library.
+
+```bash
+uname -m                        # must print x86_64
+cd ~/Downloads
+curl -L -o Opentrons-OT2.AppImage https://ot2.builds.opentrons.com/Opentrons-OT2.AppImage
+chmod +x Opentrons-OT2.AppImage
+./Opentrons-OT2.AppImage
+```
+
+**If it exits at once with `dlopen(): error loading libfuse.so.2`, that is the
+one Ubuntu-specific trap.** This is a **type 2** AppImage — byte `0x0A` of the
+download is `0x02`, checked on 2026-09-23 — and type 2 mounts itself with FUSE
+**2**, which Ubuntu stopped shipping when it moved to FUSE 3:
+
+```bash
+sudo apt install libfuse2t64     # Ubuntu 24.04 "noble"
+sudo apt install libfuse2        # Ubuntu 22.04 "jammy" — the package was renamed in 24.04
+```
+
+It installs alongside the system's FUSE 3 and conflicts with nothing
+([AppImage docs](https://docs.appimage.org/user-guide/troubleshooting/fuse.html)).
+If installing it is genuinely not an option,
+`./Opentrons-OT2.AppImage --appimage-extract-and-run` unpacks to a temporary
+directory and runs from there — slow and wasteful, so a fallback rather than the
+plan.
+
+One smaller thing: an AppImage does not add itself to the Activities menu, so
+**launch it from a terminal** the first time. Any error it hits on startup goes
+to that terminal and nowhere else, which is the whole reason to start there.
 
 ### There is no USB-B port on this robot
 
@@ -143,29 +178,35 @@ removes the unplug/replug dance.
 ### If the app still cannot find the robot
 
 Establish whether it is a *network* problem or an *app* problem before touching
-either. [`find_ot2.ps1`](find_ot2.ps1) answers that in one command — copy it to
-the Windows machine that has the robot's cable, then in Command Prompt:
+either. [`find_ot2.sh`](find_ot2.sh) answers that in one command — copy it to
+the Ubuntu machine that has the robot's cable, then:
 
-```
-powershell -ExecutionPolicy Bypass -File find_ot2.ps1
-```
-
-It is read-only and needs no administrator rights. It lists every adapter and
-its address, sends the same `_http._tcp.local` mDNS query the app's Devices tab
-sends, collects every candidate address it can (mDNS responders, the ARP table,
-`<name>.local`, the previously-seen address), tries `GET /health` on each, and
-prints a verdict. Doing it by hand instead:
-
-```
-ipconfig /all                             # the Ethernet adapter should show an
-                                          # "Autoconfiguration IPv4 Address" of 169.254.x.x
-ping 169.254.51.252                       # the address this robot has been using
-ping OT2CEP20210722R13.local              # mDNS; Windows 10 1703+ resolves .local natively
+```bash
+chmod +x find_ot2.sh
+./find_ot2.sh
 ```
 
-Then open **`http://169.254.51.252:31950/health`** in a browser — typing the
-`http://` prefix explicitly, because an address with a port and no scheme can
-go to the search engine instead. It should return JSON naming
+It is read-only and needs no root. It lists every interface and its address,
+asks `avahi-browse` what it can see, *and* sends the same `_http._tcp.local`
+mDNS query the app's Devices tab sends (so it works whether or not
+`avahi-utils` is installed), collects every candidate address it can (mDNS
+responders, the neighbour table, `<name>.local`, the previously-seen address),
+tries `GET /health` on each, and prints a verdict. On a Windows machine use
+[`find_ot2.ps1`](find_ot2.ps1) instead — same three questions, same output
+shape. Doing it by hand instead:
+
+```bash
+ip -4 addr show                       # the wired interface should hold a 169.254.x.x address
+nmcli device status                   # and NetworkManager should call it "connected"
+ping -c3 169.254.51.252               # the address this robot has been using
+avahi-resolve -n OT2CEP20210722R13.local     # mDNS name lookup; apt install avahi-utils
+curl -s http://169.254.51.252:31950/health
+```
+
+That last line is the decisive one, and a browser at
+**`http://169.254.51.252:31950/health`** does the same thing — type the
+`http://` prefix explicitly, because an address with a port and no scheme can go
+to the search engine instead. It should return JSON naming
 `OT2CEP20210722R13`. That single test splits the problem:
 
 - **JSON comes back, app still shows nothing** → app-side, i.e. discovery. Skip
@@ -207,12 +248,13 @@ browser down and starts a new one — which re-queries **immediately**
 > force a fresh scan** — faster and more reliable than restarting the app,
 > because it is a *guaranteed* interface change.
 
-The comparison is on `{name, address}` pairs, so the moment Windows finishes its
-APIPA fallback and the adapter goes from no address to `169.254.x.x`, that too
-counts as a change and restarts discovery on its own. Which means the honest
-reading of a Devices tab that has said **"No robots found"** for several minutes
-is: *the adapter never got a link-local address*, or *the mDNS packets are not
-arriving*.
+The comparison is on `{name, address}` pairs, so the moment the adapter goes
+from no address to `169.254.x.x`, that too counts as a change and restarts
+discovery on its own. On Ubuntu that transition does not happen on its own —
+see step 3 of *When the link itself is the problem* — but when you do make it
+happen, the app notices within 5 s. Which means the honest reading of a Devices
+tab that has said **"No robots found"** for several minutes is: *the adapter
+never got a link-local address*, or *the mDNS packets are not arriving*.
 
 #### Add the robot by IP — the reliable way past all of it
 
@@ -230,82 +272,142 @@ the entry is remembered.
 #### Things that break mDNS while leaving HTTP working
 
 Each of these produces exactly "No robots found" *and* a `/health` that answers
-fine in a browser:
+fine from `curl` or a browser. The Ubuntu list is shorter than the Windows one,
+because the usual Windows culprit — a new wired network auto-classified
+**Public**, where inbound UDP 5353 is blocked — has no counterpart here.
+**Ubuntu Desktop ships `ufw` inactive** and has no per-network firewall
+profiles, so there is nothing to reclassify.
 
-- **Windows Firewall profile.** A wired network that appears for the first time
-  is classified **Public**, where inbound UDP 5353 is blocked. Settings →
-  Network & Internet → Ethernet → set the profile to **Private**, and in Windows
-  Defender Firewall → *Allow an app through firewall* tick **Opentrons OT-2**
-  for both Private and Public.
+- **A firewall, only if somebody enabled one.** `sudo ufw status`. If it reports
+  `inactive`, this is not the problem and nothing needs changing. If it reports
+  `active`, allow the multicast port: `sudo ufw allow 5353/udp`.
 - **Both Opentrons apps running at once.** The Flex app and the OT-2 app each
-  create their own mDNS browser on UDP 5353. Quit the Flex app fully, system
-  tray included, and check Task Manager for a leftover `Opentrons.exe`.
+  create their own mDNS browser. `pgrep -af -i opentrons` finds a stray one.
+  This is *less* likely to bite on Linux than on Windows: the browser's socket is
+  created with `reuseAddr: true`
+  ([`node-mdns-js/lib/networking.js`](https://github.com/mdns-js/node-mdns-js/blob/master/lib/networking.js)),
+  which is what lets it share UDP 5353 with Ubuntu's own `avahi-daemon` instead
+  of failing to bind. Still worth ruling out.
 - **More than one active network interface.** Discovery has a history of failing
   outright when several adapters — particularly several USB-to-Ethernet ones —
-  are present, the robot appearing only once the extra adapter is removed. Turn
-  Wi-Fi off on the laptop for the duration; fewest interfaces wins.
+  are present, the robot appearing only once the extra adapter is removed.
+  `nmcli device status` lists them and `nmcli radio wifi off` takes Wi-Fi out of
+  the picture for the duration; fewest interfaces wins. Note a `docker0` bridge
+  or a `tailscale0` counts as an interface too.
 
 #### When the link itself is the problem
 
-If `ipconfig /all` shows the adapter as *Media disconnected*, or with no
-`169.254.x.x` address after a full minute, no amount of app configuration will
-help. Work through these in order; each one is a different fault.
+If `ip -4 addr show` shows no `169.254.x.x` address on the wired interface, no
+amount of app configuration will help. Work through these in order; each one is
+a different fault, and **step 3 is the one that bites on Ubuntu.**
 
 **1. Is the robot itself up?** The front button should be lit, and
 `robot-server` takes about three minutes after power-on before it answers
 anything. A robot that was power-cycled a minute ago looks exactly like a dead
 cable.
 
-**2. Does the adapter exist and have a link?** In `ipconfig /all`, find the
-entry whose *Description* names the USB adapter (Realtek, ASIX, and so on).
+**2. Does the adapter exist, and does it have a link?**
 
-- Not listed at all → driver or hardware. Check Device Manager for a
-  *Network adapters* entry, or an unknown device with a warning triangle.
-- *Media State . . . : Media disconnected* → nothing is on the other end. Check
-  both plugs, and swap the Ethernet cable — cheapest test on the list.
+```bash
+lsusb                      # the dongle itself, e.g. 0bda:8153 Realtek RTL8153
+ip link show               # the interface it created, and whether it is UP
+sudo dmesg | tail -30      # which driver bound it, e.g. r8152
+sudo ethtool enp0s20u1     # "Link detected: yes" — the Media-State equivalent
+```
+
+- **Nothing in `lsusb`** → the dongle is not enumerating at all. Another USB
+  port, another USB cable, then suspect the dongle.
+- **Present in `lsusb` but no matching interface in `ip link`** → the driver did
+  not bind. `dmesg` says why, usually in the last few lines.
+- **`Link detected: no`** → nothing on the other end of the Ethernet cable.
+  Check both plugs and swap the cable: cheapest test on the list.
+
+⚠️ **One caveat on `ethtool`, specific to the RTL8153 this lab owns.** Once that
+adapter hits its `Stop submitting intr, status -71` fault its register reads are
+garbage — it has reported `Link detected: yes` for a link carrying nothing, and
+`/sys/class/net/*/carrier` freezes at its last value. **Judge this link by a ping
+to the robot, never by `carrier` or `ethtool`.**
+[`ot2_link_recover.sh`](ot2_link_recover.sh) exists for that fault; it locates
+the adapter by USB ID (`0bda:8153`) rather than by hostname or interface name,
+so it should run on any Linux host holding that dongle, the Ubuntu lab computer
+included — though it has only ever been exercised on the Pi.
 
 **3. Does *this machine* have a `169.254.x.x` address?** This is the step most
-often missed, and it is the one that makes a browser show a blank page while the
-robot is perfectly healthy. Both ends have to be link-local; the robot cannot
-route to a machine that has no address on its subnet.
+often missed, it is the one that makes a browser show a blank page while the
+robot is perfectly healthy, and **on Ubuntu it will not happen by itself.** Both
+ends have to be link-local; the robot cannot route to a machine that has no
+address on its subnet.
 
-- **Wait 60 s.** Windows only falls back to APIPA after DHCP has timed out, and
-  nothing on this cable serves DHCP — the robot is link-local too. `ipconfig
-  /release` then `ipconfig /renew` restarts that clock.
-- **Or set it by hand, and stop depending on the timing.** Settings → Network &
-  Internet → Ethernet → the robot's adapter → **IP assignment: Edit** →
-  **Manual** → **IPv4 on**, then
+Windows falls back to APIPA when DHCP times out, so on Windows this is a matter
+of waiting 60 s. **Ubuntu has no equivalent.** NetworkManager's
+`ipv4.link-local` defaults to `default`, which falls through to the global
+default of `auto`, and `auto` means *"assign a link-local address only if
+`ipv4.method` is itself `link-local`"*
+([NetworkManager `ipv4` settings](https://networkmanager.dev/docs/api/latest/settings-ipv4.html)).
+A wired connection left on DHCP with nothing serving DHCP therefore ends up with
+**no IPv4 address at all**, indefinitely — there is no timer that rescues it.
+NetworkManager 1.52 added an `ipv4.link-local=fallback` value that would do the
+Windows thing; **Ubuntu 24.04 ships 1.46**, so it is not available here.
 
-  | field | value |
-  | --- | --- |
-  | IP address | `169.254.51.100` |
-  | Subnet mask | `255.255.0.0` |
-  | Gateway | *leave blank* |
-  | Preferred DNS | *leave blank* |
+So set it explicitly. In the GUI: **Settings → Network → the wired connection's
+⚙ → IPv4 → Link-Local Only → Apply**, then toggle that connection off and on.
+Or:
 
-  A static address inside `169.254.0.0/16` is unusual but legal, and it removes
-  the APIPA wait entirely. Leave the gateway blank — this link goes nowhere else,
-  and filling it in can hijack the machine's default route. **Set the adapter
-  back to *Automatic (DHCP)* if that cable is ever plugged into a real network**,
-  or it will not work there.
+```bash
+nmcli device status                                    # find the wired device
+nmcli -g GENERAL.CONNECTION device show enp0s20u1      # its connection name
+sudo nmcli connection modify "Wired connection 1" ipv4.method link-local
+sudo nmcli connection up "Wired connection 1"
+ip -4 addr show enp0s20u1                              # now shows 169.254.x.x/16
+```
+
+**Link-Local Only is better than a hand-picked static address**, because
+NetworkManager then runs real IPv4LL: it ARP-probes before claiming an address
+and moves off one that collides, which matters on a link where the robot is
+self-assigning too. If you would rather pin it anyway — Method **Manual**,
+address `169.254.51.100`, netmask `255.255.0.0`, gateway and DNS **blank** — or:
+
+```bash
+sudo nmcli connection modify "Wired connection 1" \
+    ipv4.method manual ipv4.addresses 169.254.51.100/16 \
+    ipv4.gateway "" ipv4.dns ""
+```
+
+Leave the gateway blank either way: this link goes nowhere else, and filling it
+in can hijack the machine's default route. ⚠️ **Set the connection back with
+`sudo nmcli connection modify "Wired connection 1" ipv4.method auto` if that
+cable is ever plugged into a real network**, or it will not work there.
+
+On a server-style install using **netplan** with `systemd-networkd` rather than
+NetworkManager, the equivalent is `link-local: [ ipv4 ]` on that interface in
+`/etc/netplan/*.yaml` followed by `sudo netplan apply`. Ubuntu Desktop uses
+NetworkManager, so reach for `nmcli` first — `nmcli device status` printing
+something rather than erroring is the quickest way to tell which you have.
 
 **4. Is the robot's address still the one you typed?** It is self-assigned, and
 Opentrons warn that it ["will change periodically, especially after the OT-2 is
 restarted or reconnected"](https://support.opentrons.com/ot-2/getting-started-software-setup/networking-requirements-for-the-ot-2).
 `169.254.51.252` has held across every reconnect on the Pi's cable since
 2026-09-09, so it is a good first guess and nothing more. To find the current
-one without guessing, use [`find_ot2.ps1`](find_ot2.ps1), or `ping
-OT2CEP20210722R13.local`, or read *Robot Settings → Networking* in the app once
-it is connected by any means.
+one without guessing, use [`find_ot2.sh`](find_ot2.sh), or
+`avahi-resolve -n OT2CEP20210722R13.local`, or read *Robot Settings →
+Networking* in the app once it is connected by any means.
 
 **5. Suspect the dongle, especially if it came off the Pi.** The Pi's RTL8153
 (`0bda:8153`) is a known-bad part here: on 2026-09-23 it collapsed with
 `Stop submitting intr, status -71` within 18 s of each repair, and only a hard
 port power cycle recovered it. See [`ot2_link_recover.sh`](ot2_link_recover.sh)
-and the README. On Windows the same fault looks like an adapter that appears
-and then drops its link. Move it to a **black USB 2.0 port** rather than a blue
-USB 3 one — `-EPROTO` on an RTL8153 at SuperSpeed is the classic signature —
-or use the dongle Opentrons shipped with the robot instead.
+and the README. It fails the same way on any Linux host, `r8152` being the same
+driver on Ubuntu as on Raspberry Pi OS, so watch for it in `sudo dmesg -w`:
+
+```
+r8152 2-1:1.0 enp0s20u1: Stop submitting intr, status -71
+```
+
+Move the dongle to a **black USB 2.0 port** rather than a blue USB 3 one —
+`-EPROTO` on an RTL8153 at SuperSpeed is the classic signature — or use the
+dongle Opentrons shipped with the robot instead. `lsusb -t` shows which speed a
+device actually negotiated (`5000M` is USB 3, `480M` is USB 2).
 
 #### Two things that are *not* the cause
 
@@ -324,11 +426,11 @@ or use the dongle Opentrons shipped with the robot instead.
   undetected. Note this is a *different* screen from "No robots found": cached
   robot vs. nothing discovered at all.
 
-Finally, none of the above needs administrator rights, and none of it changes a
-setting on the robot. If it is still stuck, run [`find_ot2.ps1`](find_ot2.ps1)
-and keep its whole output — it records the adapter list, the mDNS result and the
-`/health` result together, which is what distinguishes these faults from each
-other after the fact.
+Finally, only step 3 needs `sudo`, and none of this changes a setting on the
+robot. If it is still stuck, run [`find_ot2.sh`](find_ot2.sh) and keep its whole
+output — it records the interface list, the mDNS result and the `/health` result
+together, which is what distinguishes these faults from each other after the
+fact.
 
 ### Putting the robot on Wi-Fi instead
 
@@ -465,5 +567,6 @@ made impossible.
 - [Using Labware Position Check](https://docs.opentrons.com/v2/robot_position.html#using-labware-position-check)
 - [Custom labware](https://docs.opentrons.com/v2/new_labware.html#custom-labware) · [Labware Creator](https://labware.opentrons.com/create/) · [Labware Library](https://labware.opentrons.com/)
 - [Connect to the OT-2 over USB](https://support.opentrons.com/s/article/Get-started-Connect-to-your-OT-2-over-USB) · [Connect over Wi-Fi](https://support.opentrons.com/s/article/Get-started-Connect-to-your-OT-2-over-Wi-Fi-optional)
+- Ubuntu side: [NetworkManager `ipv4` settings](https://networkmanager.dev/docs/api/latest/settings-ipv4.html) (`link-local` defaults to `auto`, i.e. off unless `method=link-local`; `fallback` only since 1.52) · [AppImage and FUSE](https://docs.appimage.org/user-guide/troubleshooting/fuse.html) (type 2 needs FUSE 2; `libfuse2` → `libfuse2t64` in 24.04) · [`node-mdns-js/lib/networking.js`](https://github.com/mdns-js/node-mdns-js/blob/master/lib/networking.js) (`reuseAddr: true`, so it shares 5353 with `avahi-daemon`)
 - Discovery source: [`mdns-browser/index.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/index.ts) (`QUERY_INTERVAL_MS` backoff, `IFACE_POLL_INTERVAL_MS`, port filter) · [`repeat-call.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/repeat-call.ts) (the interval array holds its last value) · [`interfaces.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/interfaces.ts) (`{name, address}` comparison) · [`base-browser.ts`](https://github.com/Opentrons/opentrons/blob/edge/discovery-client/src/mdns-browser/base-browser.ts) (`createBrowser(tcp('http'))`)
 - App source: [`useRunPipetteInfoByMount.ts`](https://github.com/Opentrons/opentrons/blob/edge/app/src/resources/runs/useRunPipetteInfoByMount.ts) (tip-length cal is matched per tiprack URI × pipette serial) · [`ChooseTipRack.tsx`](https://github.com/Opentrons/opentrons/blob/edge/app/src/organisms/Desktop/CalibrationPanels/ChooseTipRack.tsx) (custom tip racks are concatenated into the picker)

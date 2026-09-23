@@ -205,7 +205,8 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `stream_grab_pi.py` | the Pi-side half of the frame grab (lives there as `~/ytframes/grab.py`) |
 | `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `ot2_link_recover.sh` | checks the link by pinging the robot, and repairs a wedged USB-Ethernet adapter |
-| `find_ot2.ps1` | run on the *Windows* machine holding the robot's cable: lists adapters, sends the app's own mDNS query, finds the robot's current address, prints a verdict |
+| `find_ot2.sh` | run on the *Ubuntu* machine holding the robot's cable: lists interfaces, asks avahi and sends the app's own mDNS query, finds the robot's current address, prints a verdict |
+| `find_ot2.ps1` | the same thing for a Windows machine |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `analyse_person_effect.py` | whether somebody at the machine moves the readings; `--gate` screens a run for a background that shifted mid-position |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera; turns the frame 180° upright, `--fix FILE` corrects a saved one |
@@ -807,11 +808,24 @@ the short version:
   [`opentrons-calibration.md`](opentrons-calibration.md#if-the-app-still-cannot-find-the-robot).
 - **`http://169.254.51.252:31950/health` loading nothing does not mean the robot
   is down.** It equally means *this* machine has no `169.254.x.x` address of its
-  own — both ends of a link-local cable need one, and Windows only self-assigns
-  after DHCP times out, up to 60 s. It also equally means the robot's
-  self-assigned address is no longer that one. Run
-  [`find_ot2.ps1`](find_ot2.ps1) on the Windows machine rather than guessing
-  between them; it separates the three cases in one pass.
+  own — both ends of a link-local cable need one. It also equally means the
+  robot's self-assigned address is no longer that one. Run
+  [`find_ot2.sh`](find_ot2.sh) on the Ubuntu machine
+  ([`find_ot2.ps1`](find_ot2.ps1) on Windows) rather than guessing between them;
+  it separates the three cases in one pass.
+- **On Ubuntu that address does not appear by itself, and this is the trap.**
+  Windows falls back to APIPA when DHCP times out; NetworkManager does not.
+  `ipv4.link-local` defaults to `auto`, which assigns a link-local address only
+  when `ipv4.method` is *itself* `link-local`, so a wired connection left on DHCP
+  with nothing serving DHCP ends up with **no IPv4 address at all**, forever. Set
+  the connection to **Link-Local Only** (Settings → Network → ⚙ → IPv4, or
+  `nmcli connection modify "Wired connection 1" ipv4.method link-local`). The
+  `fallback` value that would behave like Windows arrived in NetworkManager 1.52;
+  Ubuntu 24.04 ships 1.46.
+- **The Opentrons OT-2 App on Ubuntu is an AppImage, and it needs FUSE 2.**
+  `chmod +x` it, then `sudo apt install libfuse2t64` on 24.04 (`libfuse2` on
+  22.04) or it exits at once with `error loading libfuse.so.2`. Launch it from a
+  terminal the first time — that is the only place its startup errors go.
 
 `python3 calibration_status.py --labware protocols/ac_color_sensor_charging_port.json`
 reports what is present and what is missing. It is read-only and moves nothing;

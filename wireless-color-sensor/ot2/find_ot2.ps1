@@ -1,6 +1,7 @@
 <#
 .SYNOPSIS
     Find an OT-2 on a directly-cabled Windows machine, and say why it is missing.
+    Ubuntu equivalent: find_ot2.sh (the lab computer runs Ubuntu).
 
 .DESCRIPTION
     Run this on the Windows computer that has the Ethernet cable from the OT-2,
