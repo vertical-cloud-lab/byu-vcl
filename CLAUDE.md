@@ -5,6 +5,49 @@
 - If you mention files in your comment reply, add direct hyperlinks based on the shortened (7-character) commit hash
 - IMPORTANT: Never echo/grep/print environment secrets. These should never be exposed in your terminal history or other outputs
 
+## OneDrive/SharePoint PowerPoint decks (remote access & editing)
+
+Applies to any presentation file shared via an OneDrive/SharePoint sharing link. The
+full validated recipe with working code lives in
+[docs/onedrive-sharepoint-ppt-access.md](docs/onedrive-sharepoint-ppt-access.md) — read
+it before touching the file. Summary of the rules and gotchas:
+
+- **Password-protected links**: the link password is injected as a workflow secret
+  (e.g. `ONEDRIVE_EDIT_LINK_PASSWORD`) — never echo/print it. Unlock by submitting the
+  `guestaccess.aspx` ASP.NET form postback (`__EVENTTARGET=btnSubmitPassword` + viewstate
+  fields); success redirects to `Doc.aspx` and issues a guest `FedAuth` cookie that
+  authorizes the SharePoint REST API as "Guest Contributor" (view + download + edit).
+- **Download** via `GET /_api/web/GetFileById(guid'<UniqueId>')/$value` with that cookie
+  jar. (`GetFileByUniqueId` does not exist on this endpoint.)
+- **Two write paths — pick based on whether anyone has the file open:**
+  1. *Headless-browser co-authoring* — **the preferred/default path, and the only one
+     that works while the owner is editing.** If no browser tool is available in the
+     environment: `pip install playwright`, then launch with `channel="chrome"` to use
+     the system Chrome (no browser download). Inject the `FedAuth` cookie from the unlock
+     step into the browser context to skip the password page, load the sharing link,
+     and wait ~40 s for the Office WOPI editor iframe to boot — it opens directly in
+     Editing mode and autosaves/merges with any live human session.
+  2. *REST upload* (`POST .../$value` with `X-HTTP-Method: PUT` + `X-RequestDigest`
+     from `/_api/contextinfo`): a backup, only if explicitly requested by the user or required (download →
+     modify with `python-pptx` → upload), but it is a **whole-file replace** and
+     returns **HTTP 423 `SPFileLockException` whenever anyone has the file open**
+     (co-authoring lock, not a permission failure; it lingers ~10 min after they
+     close). If retrying, re-download the latest copy and re-apply your changes
+     before every attempt so you never clobber concurrent human edits. Do not sit in
+     a retry loop for tens of minutes — switch to path 2.
+- **Verify persistence by re-downloading the stored blob** (and checking the pptx XML)
+  1–2 minutes after editing. Never trust the editor's "Saved" indicator or an
+  apparently-successful upload alone — a prior run believed an upload had landed when
+  it hadn't.
+- **PowerPoint for the web cannot edit slide masters/layouts** (no Slide Master view —
+  a Microsoft limitation, not a permissions issue). Master/layout work requires
+  `python-pptx` + REST upload while the file is closed, or desktop PowerPoint.
+- Precision drawing in the web editor (exact inch sizes via the Shape ribbon's numeric
+  fields, pixel↔inch mapping, screenshot-verified drags, `%2B` encoding for `+` in key
+  combos) is documented in the recipe doc — use those techniques rather than freehand.
+- Make edits reversible where possible (SharePoint version history exists) and label test
+  edits clearly.
+
 ## Edison Scientific
 
 When waiting on an Edison task in GitHub Actions, NEVER run the polling script in the background (run_in_background, nohup, &, or the Monitor tool) — the runner is destroyed the moment you post your final comment, killing background processes; Monitor counts as background and dies the same way. Also be aware that the agent harness BLOCKS the shell `sleep` builtin in foreground Bash calls (the error message suggests Monitor — do NOT follow that suggestion, it recreates the background-death failure; this killed several past sessions). The pattern that works: put the wait INSIDE a single blocking Python call — Python-side `time.sleep` is not blocked — and run it as ONE foreground Bash call with an explicit long timeout (max 3600000 ms). Run exactly this (adjust only the task-id path):
