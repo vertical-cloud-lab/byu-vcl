@@ -2200,3 +2200,262 @@ pipette goes back on the gantry.
 | firmware `aspirate` planes | 🔴 **flash the GEN2 image before any aspirate** (§18.7) |
 | microstepping vs. `STEPS_PER_MM` | ❓ ruler check, available for the first time (§18.8) |
 | TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
+
+## 19. 2026-09-24: the coil path is clean — and `DIAG` survives a power cycle
+
+Reported by Ben, on the direct wiring of §18:
+
+```
+1A - 2A    megohms          <- was 0 Ohm through the ribbon (S17.2)
+1B - 2B    megohms
+pot        turned down
+DIAG       5 V, still, after cutting the power and plugging it back in
+```
+
+### 19.1 ✅ The short left with the ribbon — the driver board is exonerated as its source
+
+§18.2 asked for exactly these two readings and set the criterion: open means
+the short was in the harness, ≈ 0 Ω means it is on the driver board and the
+board becomes the only suspect. **They are open.**
+
+Put beside §18.1's 4.3 Ω and 3.7 Ω windings, the coil side is now completely
+healthy for the first time since this began:
+
+| pair | through the ribbon | direct |
+| --- | --- | --- |
+| `1A` – `1B` | 0.55 kΩ → 2.7 kΩ | **4.3 Ω** ✅ winding |
+| `2A` – `2B` | 5 kΩ → 2.7 MΩ | **3.7 Ω** ✅ winding |
+| `1A` – `2A` | **0 Ω** 🔴 | **MΩ** ✅ isolated |
+| `1B` – `2B` | 3.6 MΩ | **MΩ** ✅ isolated |
+
+Two windings, correct resistance, properly isolated from each other. The
+ribbon harness carried **both** faults — the open coil path *and* the
+phase-to-phase short — and both left with it. §17's localisation sequence and
+§16.3's terminal-block hypothesis are now fully retired; the substitution
+answered everything they were built to find.
+
+> The entire coil-side diagnosis is closed. The motor is good, the terminals
+> are good, and the harness is condemned.
+
+### 19.2 🔴 And that makes a damaged output stage the *leading* explanation for `DIAG`
+
+§16.6 offered "open coil path first, damaged driver as a consequence" as a
+plausible story. §17.2's 0 Ω made it a concrete mechanism, and §19.1 now
+confirms that mechanism was real and present for weeks:
+
+- the ribbon presented a **phase-to-phase short** at the driver's outputs
+- the VREF pot has been at **full clockwise** since at least 2026-09-17 —
+  ~3.3 A rms full scale on this board's 0.05 Ω sense resistors (§11.3)
+- `EN` has been at 0 V (§16.1), so the chip was **enabled** and chopping into
+  that short every time the board was powered
+- across many sessions
+
+Driving a chopper into a bridge-to-bridge short at a maxed current setting is a
+textbook way to destroy a stepper driver's output stage. This is no longer a
+long shot; it is the hypothesis the evidence most supports. **A replacement
+Adafruit 6121 is worth ordering now regardless of how the tests below come
+out** — every remaining question about this pipette needs a known-good driver
+to answer, and the part is inexpensive next to another week of sessions.
+
+### 19.3 ❓ But five things can hold `DIAG` high that are not a dead chip
+
+§18.4 said "still 5 V after a clean power cycle ⇒ replace the board." That is
+still the destination, but the criterion was written loosely and the power
+cycle Ben performed does not yet satisfy all of it. Five candidates, each cheap
+to eliminate, roughly in order of how likely they are to be the answer.
+
+#### (a) 🔑 The documented reset is `ENN`, not power
+
+The TMC2209's `DIAG` is the driver-error output, and the datasheet's stated
+recovery is **the error condition is reset by `ENN` = high** — not by a supply
+interruption. Here `EN` is driven LOW continuously by the Arduino on A4
+(§2, §16.1), so if the Arduino stayed powered across the 12 V cycle, **the
+chip's enable input never went high and the prescribed reset never happened.**
+
+To perform it: lift the `EN` wire off A4 and jumper it to **5 V** for about a
+second, then remove the jumper. The breakout's 20 kΩ pull-down re-enables the
+driver on its own (§12.4), so the wire can go back to A4 afterwards or be left
+off for the test. Re-read `DIAG` immediately after.
+
+#### (b) The power cycle may have been partial
+
+Two rails feed this chip: `VM` (12 V, to the screw terminals) and `VCC_IO`
+(5 V, from the Arduino). Cutting only `VM` leaves the digital side partly
+powered from USB. **Cut both together** — unplug the Arduino's USB *and* the
+12 V, wait ten seconds, restore. Combined with (a), this is the most likely
+reason a genuine latch would have survived.
+
+#### (c) 🔑 A short type never measured: output to ground, output to supply
+
+The TMC2209 protects against three distinct short conditions, and only one of
+them is phase-to-phase. `s2ga`/`s2gb` (short to **ground**) and
+`s2vsa`/`s2vsb` (short to **supply**) are separate flags, and **neither has
+ever been measured on this machine.** Power off, probe each of `1A`, `1B`,
+`2A`, `2B` against `GND` and against `VM+`:
+
+⚠️ Do not expect a clean "open." The driver's internal body diodes conduct in
+one polarity, so an ohmmeter will read *something* on every one of these. The
+tell is a hard near-zero in **both** probe polarities. Cleaner still: use the
+meter's **diode-test** mode and look for ≈ 0.00 V rather than a normal
+0.3–0.7 V drop.
+
+And there is an obvious mechanical candidate now that the ribbon is gone: **is
+the pipette's metal body tied to supply ground, and is a bare direct-wire lead
+resting against it?** The ribbon insulated the whole run; four bare wires
+draped from screw terminals to a metal pipette body with no strain relief are
+exactly how a coil-to-chassis short appears. Look before probing.
+
+#### (d) Overtemperature, which is self-holding
+
+`ot` shutdown asserts `DIAG` and holds it until the chip cools **and** is
+reset. With `EN` low and real ~4 Ω windings now attached, the chip holds
+`IHOLD` current in both coils continuously at rest — at a pot near maximum
+that is real standing dissipation with no heat sink fitted.
+
+**Touch the chip with the board powered and nothing commanded.** Warm is
+expected; too hot to keep a finger on means it is dissipating heavily at
+standstill, which is both a cause of `DIAG` and a reason to turn the pot down
+before anything else. ⚠️ It could be hot enough to burn — approach briefly.
+Then leave it unpowered for several minutes before attempting (a) or (b).
+
+#### (e) The cheapest check of all: is `DIAG` even being driven?
+
+§16.5 argued that `DIAG` at 5 V beside `INDEX` at 0 V looks like two driven
+outputs, because a floating pair would not reliably split to opposite rails.
+That is a reasonable inference and it has never been checked. It can be
+replaced with a fact in thirty seconds:
+
+> **Everything unpowered, measure the resistance from `DIAG` to the 5 V /
+> `VCC_IO` pin on the header.**
+>
+> - A few kΩ to tens of kΩ ⇒ there is a pull-up on the breakout, and 5 V on
+>   that pin may mean nothing at all. Every `DIAG` reading in this document
+>   would need re-reading.
+> - Open / megohms ⇒ nothing is holding it high, the chip really is driving
+>   it, and §16.5's inference was right.
+
+### 19.4 How to measure VREF with a multimeter
+
+Ben's direct question. `VREF` is **not** broken out on the 10-pin header
+(§11.3), so this means probing the trimmer itself.
+
+#### Step 1 — find the wiper, power off
+
+A three-terminal trimmer has two ends of a resistive track and one wiper. On
+this board the track ends go to the chip's internal `5VOUT` and to `GND`, and
+the wiper goes to the chip's `VREF` pin. The unambiguous way to tell them
+apart, with the board **unpowered**:
+
+> Put the black probe on board `GND` and touch each of the three terminals in
+> turn while turning the pot. **The wiper is the terminal whose resistance to
+> `GND` changes as you turn it.** One of the other two reads a constant ~0 Ω
+> (that is the track end tied to `GND`); the third reads a constant full-track
+> value.
+
+An equivalent check without moving to `GND`: measure all three pairs among the
+terminals. The pair whose reading does *not* change as you turn the pot is the
+two track ends; the remaining terminal is the wiper.
+
+Faster but less certain: on many trimmers the **metal adjustment screw is
+electrically the wiper**, so touching a probe to the screw head works. Worth
+trying first — but confirm it against the resistance test before trusting a
+number from it, and do not press hard or you will turn the pot while measuring.
+
+#### Step 2 — 🔴 turn the pot fully counter-clockwise *before* powering up
+
+Measuring `VREF` requires `VM` present, which means the chip will be energising
+real windings the moment power is applied — at whatever the pot currently says.
+Adafruit: fully clockwise is maximum. So wind it fully **counter-clockwise**
+first, so the first powered moment with a real load is at minimum current, then
+bring it up while watching the meter.
+
+#### Step 3 — measure
+
+| | |
+| --- | --- |
+| meter | **DC volts**, 2 V range or autoranging |
+| black probe | board `GND` — the header `GND` pin, or the `−` of the motor supply block |
+| red probe | the trimmer's **wiper** |
+| power | **12 V must be on.** `VREF` is derived from the chip's internal `5VOUT`, which is generated from `VM` alone (§10.3) — with `VM` off it reads 0 V whatever the pot says |
+| expect | somewhere in 0 – ~2.5 V, stable, unaffected by whether the motor is stepping |
+
+**The target is `VREF` ≈ 0.55 V for ~1.0 A peak** — the P20 GEN2's
+`plungerCurrent`. From §11.3, `I_rms = (VREF / 2.5) × 3.283 A`, so 0.55 V gives
+0.72 A rms = 1.02 A peak. For a first movement test wind it well below that;
+enough to confirm the shaft turns is enough.
+
+⚠️ Use a fine-tipped probe, or solder a short wire to the wiper and clip onto
+it. 12 V is no shock hazard, but a probe that slips and bridges the wiper to an
+adjacent pad while powered will destroy the chip.
+
+#### 🔑 Step 4 — the reading is itself a verdict on the chip
+
+This is why `VREF` has been the most valuable outstanding measurement since
+§16.9, and it now reads as a clean binary. With `VM` = 13 V and the pot turned
+**up**:
+
+| `VREF` | meaning |
+| --- | --- |
+| clearly non-zero, rising toward ~2.5 V as the pot turns up | the internal `5VOUT` regulator is **alive** — the chip is not wholly dead, and `DIAG` is reporting a latched or live fault in the output stage. §19.3's resets are worth trying |
+| ≈ 0 V at full clockwise | `5VOUT` is **dead** — the chip's internal regulator has failed. **Replace the board**; nothing else needs testing |
+
+If the board breaks out `5VOUT` anywhere, measuring it directly (≈ 5 V to
+`GND`, `VM` on) answers the same question one step earlier.
+
+#### If the wiper turns out to be unreachable
+
+Two ways to set the current without ever measuring `VREF`, both entirely
+adequate here:
+
+- **Empirical.** Pot fully counter-clockwise, then creep up until the plunger
+  moves reliably, then give it a small margin. On a ~4 Ω motor spec'd at 1.0 A
+  peak, "just moves reliably" sits well below anything harmful. This is how
+  drivers without a `VREF` pad get set routinely.
+- **Supply current as a bound.** Meter in DC amps (10 A jack) in series with
+  the 12 V `+` lead, motor at rest and holding. It is not the coil current, but
+  it answers "is this 0.1 A or 1.5 A" directly. ⚠️ Never leave a meter in amps
+  mode across a voltage.
+- **Temperature as a proxy.** With the current set sanely and the motor idle,
+  the driver should be warm at most. Too hot to hold a finger on is too much.
+
+### 19.5 The order, and what it is blocked on
+
+The plunger cannot turn while `DIAG` is asserted — the output stage is latched
+off — so §18.8's first-movement test waits on this.
+
+1. **Look** for a bare direct-wire lead touching the pipette body (§19.3c).
+2. **Power off:** `DIAG`-to-5 V resistance (§19.3e), then each coil terminal to
+   `GND` and to `VM+` in diode mode (§19.3c).
+3. **Power off:** identify the trimmer wiper, and wind the pot fully
+   counter-clockwise (§19.4 steps 1–2).
+4. **Cut both rails together** — 12 V and the Arduino's USB — wait, let the
+   chip cool, restore (§19.3b, §19.3d).
+5. **Measure `VREF`**, turning the pot up from minimum (§19.4 step 3). ≈ 0 V at
+   full clockwise ⇒ replace the board and stop here.
+6. **Toggle `ENN` high for a second, then low** (§19.3a). Re-read `DIAG`.
+7. **If `DIAG` is still 5 V** after all of the above, with the coils connected
+   and no rail short found — **replace the driver board.**
+8. Only then: set `VREF` to ~0.55 V, fit the 1515 heat sink, reconnect the
+   limit switch (§18.5), and run the bench move (§18.8).
+
+### 19.6 Status after the cross-pair measurement
+
+| | |
+|---|---|
+| Arduino STEP/DIR output | ✅ proven (§6), polarity corroborated by the LEDs (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V (§16.1) |
+| coil grouping in the terminals | ✅ correct (§17.1) |
+| motor windings | ✅ 4.3 Ω / 3.7 Ω (§18.1) |
+| **phase-to-phase isolation** | ✅ **MΩ on the direct wiring — the short left with the ribbon (§19.1)** |
+| the ribbon harness | 🔴 condemned — it carried **both** faults |
+| **TMC2209 `DIAG`** | 🔴 **5 V, survives a `VM` cycle. A damaged output stage is now the leading explanation (§19.2)** |
+| `ENN` reset attempted | ❓ **not yet — this is the documented recovery, not a power cycle (§19.3a)** |
+| both rails cycled together | ❓ not yet (§19.3b) |
+| coil terminal → `GND` / `VM+` | ❓ **never measured — a short type we have not looked for (§19.3c)** |
+| `DIAG` → 5 V pull-up check | ❓ never measured; decides whether the pin is driven at all (§19.3e) |
+| VREF at the wiper | ❓ **the binary verdict on the chip's internal regulator (§19.4)** |
+| limit switch / D9 | ⚠️ likely unconnected with the ribbon out (§18.5) |
+| plunger direction | ⚠️ may have inverted; homing is the tell (§18.6) |
+| firmware `aspirate` planes | 🔴 flash the GEN2 image before any aspirate (§18.7) |
+| TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |

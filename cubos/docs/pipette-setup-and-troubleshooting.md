@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-23**. This is the map; the detail is in
+Status as of **2026-09-24**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,8 +13,8 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-**The motion half works. The plunger has never physically turned — but as of
-2026-09-23 the reason is known, and it is a cable.**
+**The motion half works. The plunger has never physically turned — the cable
+that caused it has been removed, and the remaining suspect is the driver chip.**
 
 Every software and geometry problem between a protocol and the plunger is
 solved and verified on hardware:
@@ -28,7 +28,9 @@ solved and verified on hardware:
 | plunger retraction | **un-gated** since 2026-09-18 — the limit-switch loop reads closed |
 | passive-instrument sweep | **0 interferences**, nominal and tip-stuck |
 | the motor windings | ✅ **4.3 Ω / 3.7 Ω on direct wiring — healthy** |
-| the ribbon harness | 🔴 **condemned — it carried the open coil path** |
+| phase-to-phase isolation | ✅ **MΩ on direct wiring — the short left with the ribbon** |
+| the ribbon harness | 🔴 **condemned — it carried both the open coil path and the short** |
+| the TMC2209 `DIAG` pin | 🔴 **5 V, survives a `VM` power cycle** |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
 time every plunger command — including the two retractions — emitted its steps
@@ -48,11 +50,14 @@ command-for-command.
   coil grouping in terminals   CORRECT  1A+1B = one winding, 2A+2B = the other
   serial link to the Pi        HEALTHY  10/10 clean round-trips
   motor windings               HEALTHY  4.3 / 3.7 Ohm once the ribbon is bypassed
-  ------------------------------------- everything above is ruled out
-  the ribbon harness           FAULTY   it is the only thing that changed
-  1A - 2A on direct wiring      ?       was 0 Ohm through the ribbon; re-measure
-  TMC2209 DIAG                  ?       5 V, but the latch may be stale
-  VREF pot                     MAXIMUM  dangerous for the first time — real load
+  phase-to-phase isolation     HEALTHY  1A-2A and 1B-2B are megohms on direct wire
+  the ribbon harness           FAULTY   it carried BOTH faults, and both left with it
+  ------------------------------------- the whole coil side is now ruled out
+  TMC2209 DIAG                 5 V      survives a VM cycle; damaged output stage
+                                        is now the LEADING explanation
+  ENN reset (the documented one)  ?      not attempted — a power cycle is not it
+  coil terminal to GND / VM+      ?      a short type never measured
+  VREF at the trimmer wiper       ?      the binary verdict on the internal regulator
 ```
 
 On **2026-09-23** Ben bypassed the 10-pin ribbon and its FC-10P and wired the
@@ -63,54 +68,91 @@ the motor changed; only the harness left the path. **The motor is healthy and
 the coil fault was in the ribbon, its crimps, the FC-10P, or the machine-end
 solder junction.** See §18 of the wiring doc.
 
+On **2026-09-24** the two cross pairs came back at **megohms** on the same
+direct wiring. §17.2's `1A`–`2A` = 0 Ω was the other half of the fault, and it
+has gone with the ribbon too. Two windings, correct resistance, properly
+isolated — **the coil-side diagnosis is closed.** What that also does is make a
+**damaged output stage the leading explanation for `DIAG`**: the ribbon
+presented a phase-to-phase short at the driver's outputs, the pot has been at
+full clockwise (~3.3 A rms full scale) since 2026-09-17, and `EN` has been at
+0 V, so the chip was enabled and chopping into that short across many sessions.
+That is a textbook way to destroy a driver. **A replacement Adafruit 6121 is
+worth ordering now regardless of how the tests below come out.** See §19.
+
 > 🔴 **Turn the VREF pot down before the driver is powered up again.** Until now
 > the load was open or shorted, so the pot could not do damage. With real ~4 Ω
 > windings attached the chopper can finally deliver what it is asking for —
 > ~3.3 A rms full scale into a motor Opentrons runs at 1.0 A peak.
 
-### What to do next, cheapest first
+### What to do next
 
-The order below is a **safety** order. Steps 1–3 come before power for a reason.
+The plunger cannot turn while `DIAG` is asserted — the output stage is latched
+off — so the first-movement test waits on the sequence below. Steps 1–4 come
+before power for a reason.
 
-1. **Re-measure the cross pairs on the direct wiring, power off** — `1A`–`2A`
-   and `1B`–`2B` must both read **open**. They were 0 Ω through the ribbon
-   (§17.2), which is what latched `DIAG`. Still 0 Ω with the ribbon gone ⇒ the
-   short is on the driver board itself, and it is then the only remaining
-   suspect. Ten seconds, and it decides that.
-2. **Reconnect the limit switch** — pins **6** and **7** rode the same ribbon.
+1. **Look** before probing: with the ribbon gone, four bare leads run from the
+   screw terminals to the pipette. **Is one resting against the metal body?**
+   If the body is tied to supply ground that is a coil-to-ground short, which
+   is a `DIAG` condition and one the ribbon's insulation used to prevent.
+2. **Power off — is `DIAG` even driven?** Measure resistance from `DIAG` to the
+   5 V / `VCC_IO` pin. A few kΩ to tens of kΩ means a pull-up and every `DIAG`
+   reading in this record needs re-reading; open means the chip really is
+   driving it. Thirty seconds, never done (§19.3e).
+3. **Power off — the short type never measured.** Each of `1A`, `1B`, `2A`,
+   `2B` against `GND` and against `VM+`. `s2ga`/`s2gb` (short to ground) and
+   `s2vsa`/`s2vsb` (short to supply) are separate protections from a
+   phase-to-phase bridge, and only phase-to-phase has ever been checked.
+   ⚠️ Body diodes conduct in one polarity, so expect a reading either way — use
+   **diode-test mode** and look for ≈ 0.00 V, not a normal 0.3–0.7 V drop (§19.3c).
+4. 🔴 **Wind the VREF pot fully counter-clockwise** and find the trimmer's wiper
+   while the power is off. The wiper is the terminal whose resistance to `GND`
+   *changes* as you turn the pot (§19.4 step 1).
+5. **Cut both rails together** — the 12 V *and* the Arduino's USB — wait ten
+   seconds, let the chip cool, restore. Cutting only `VM` leaves the digital
+   side powered from USB (§19.3b). While it is powered, **touch the chip**:
+   too hot to hold a finger on at standstill is an overtemperature cause for
+   `DIAG` in its own right (§19.3d).
+6. **Measure `VREF`** at the wiper, DC volts, black probe on `GND`, 12 V on,
+   turning the pot up from minimum. 🔑 **This is a verdict, not just a setting:**
+   `VREF` ≈ 0 V at full clockwise means the chip's internal `5VOUT` regulator
+   is dead — **replace the board and stop here.** A reading that rises toward
+   ~2.5 V means the regulator is alive and `DIAG` is a fault in the output
+   stage. Target for running is **≈ 0.55 V for ~1.0 A peak** (§19.4).
+7. 🔑 **Toggle `ENN` high, then low** — this is the datasheet's documented reset
+   for a driver error, and **a power cycle is not it.** `EN` is driven LOW
+   continuously by the Arduino on A4, so if the Arduino stayed up across the
+   12 V cycle the enable input never went high. Lift the wire off A4, jumper it
+   to 5 V for a second, remove the jumper (the 20 kΩ pull-down re-enables).
+   Re-read `DIAG` (§19.3a).
+8. **If `DIAG` is still 5 V** after all of that, with the coils connected and no
+   rail short found — **replace the driver board.**
+9. **Reconnect the limit switch** — pins **6** and **7** rode the same ribbon.
    Left unconnected, D9 idles HIGH through its pull-up, the firmware reads the
-   switch as *asserted*, every retraction is refused in ~0.107 s and `HOME` fake-
-   succeeds in ~0.52 s. That is the pre-2026-09-18 signature and it would look
-   like a regression. Check with
+   switch as *asserted*, every retraction is refused in ~0.107 s and `HOME`
+   fake-succeeds in ~0.52 s. That is the pre-2026-09-18 signature and it would
+   look like a regression. Check with
    [`../tools/pipette_driver_probe.py`](../tools/pipette_driver_probe.py)
    `--switch`; `pipette_driver_measure.py` also refuses to run while it reads
    asserted, so the refusal is itself the answer.
-3. 🔴 **Turn the VREF pot well down.** Target ≈ 0.55 V at the wiper for ~1.0 A
-   peak; wind it below that for a first re-test and creep up. Fit the 1515 heat
-   sink. The pot is still the only thing setting current — `RUN_CURRENT_PERCENT`
-   does not apply until UART works (§16.7).
-4. **Power-cycle the 12 V, then read `DIAG`.** The short-circuit protection
-   *latches*, and clearing it needs either a UART write (unavailable) or `VM`
-   removed and restored. A `DIAG` read without the power cycle may be reporting
-   a latch set days ago. ≈ 0 V ⇒ the chip survived. Still 5 V after a clean
-   power cycle into a good load ⇒ replace the board.
-5. 🔑 **Run a bounded bench move** —
+10. 🔑 **Run a bounded bench move** —
    [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
    `--move`, 6 mm out and 6 mm back, no gantry motion. Watch for the shaft
    turning, holding torque at rest, the yellow `S` LED changing, and `INDEX`
    fluctuating mid-scale. **Measure the 6 mm with a ruler** — `setMicrostepsPerStep(16)`
    has never landed, so MS1/MS2 decide at 1/8 and a commanded millimetre may
-   travel two.
-6. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
+   travel two. Fit the 1515 heat sink first.
+11. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
    `homePipette()` seeks with `DIR` LOW. If the tip ejector starts to engage,
    the direction is inverted — swap the two wires of one pair.
-7. **Rebuild or repair the harness before the pipette goes back on the gantry.**
+12. **Rebuild or repair the harness before the pipette goes back on the gantry.**
    The ribbon was also the flexible tether. Solid wire into screw terminals will
    not survive gantry motion, and a terminal pulled out mid-run recreates exactly
    the open circuit that cost the last three weeks.
 
-**Retired:** the terminal-block swap that §16.3 led with (§17.1), and the
-localisation sequence of §17.5 — the substitution answered it first.
+**Retired:** the terminal-block swap that §16.3 led with (§17.1); the
+localisation sequence of §17.5, which the substitution answered first; and
+§18.4's "power-cycle `VM` then read `DIAG`" as a *sufficient* test — it is
+necessary but the documented reset is `ENN` (§19.3a).
 
 ### Two things queued behind the first real movement
 
