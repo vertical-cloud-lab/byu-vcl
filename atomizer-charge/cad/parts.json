@@ -1,0 +1,122 @@
+{
+  "solid_slug": {
+    "volume_cm3": 18.084,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g_6063": 48.65
+  },
+  "std_cup": {
+    "volume_cm3": 11.888,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g_6063": 31.98
+  },
+  "std_plug": {
+    "volume_cm3": 1.186,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      9.52
+    ],
+    "mass_g_6063": 3.19
+  },
+  "std_powder": {
+    "volume_cm3": 4.987,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      41.92
+    ]
+  },
+  "thin_cup": {
+    "volume_cm3": 3.378,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      31.75
+    ],
+    "mass_g_6063": 9.09
+  },
+  "thin_plug": {
+    "volume_cm3": 0.922,
+    "bbox_mm": [
+      15.88,
+      15.88,
+      4.76
+    ],
+    "mass_g_6063": 2.48
+  },
+  "thin_powder": {
+    "volume_cm3": 4.713,
+    "bbox_mm": [
+      15.88,
+      15.88,
+      23.81
+    ]
+  },
+  "support_sleeve": {
+    "volume_cm3": 110.375,
+    "bbox_mm": [
+      50.8,
+      50.8,
+      63.5
+    ],
+    "mass_g_steel": 866.4
+  },
+  "ring_cup": {
+    "volume_cm3": 60.455,
+    "bbox_mm": [
+      50.0,
+      50.0,
+      60.0
+    ],
+    "mass_g_6063": 162.62
+  },
+  "ring_plug": {
+    "volume_cm3": 8.024,
+    "bbox_mm": [
+      42.0,
+      42.0,
+      8.0
+    ],
+    "mass_g_6063": 21.58
+  },
+  "ring_powder": {
+    "volume_cm3": 37.196,
+    "bbox_mm": [
+      42.0,
+      42.0,
+      37.0
+    ]
+  },
+  "crucible": {
+    "volume_cm3": 237.318,
+    "bbox_mm": [
+      70.0,
+      70.0,
+      120.0
+    ]
+  },
+  "sealing_rod": {
+    "volume_cm3": 17.411,
+    "bbox_mm": [
+      12.0,
+      12.0,
+      157.95
+    ]
+  },
+  "coil": {
+    "volume_cm3": 118.857,
+    "bbox_mm": [
+      102.0,
+      102.0,
+      107.99
+    ]
+  }
+}
