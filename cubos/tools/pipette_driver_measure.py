@@ -52,6 +52,14 @@ CMD_DRIVER_STATUS = 29
 
 STEPS_PER_MM = 1592.0
 
+# CMD_MOVE_RELATIVE takes THREE arguments -- direction, steps, velocity -- and
+# PawduinoLink.send_command(code, *args) is varargs, not a list.  Passing a list
+# as one argument serialises its repr, and the firmware's comma tokenizer then
+# reads atof("[0") == 0, so `direction` silently parses as 0 whatever you asked
+# for.  Measured on hardware 2026-09-24; it walked 14 mm one way before it showed.
+DIR_RETRACT = 0  # pos decreases; this is the direction gated by the limit switch
+DIR_ADVANCE = 1  # pos increases; ungated
+
 
 def _send(link, code: int, *args, timeout: float = 120.0):
     t0 = time.time()
@@ -97,7 +105,7 @@ def main(argv: list[str] | None = None) -> int:
         # A refused retract returns almost instantly; a real one scales with distance.
         # One 1 mm probe upward says whether the return leg would actually happen.
         steps = int(round(STEPS_PER_MM))
-        dt, _, err = _send(link, CMD_MOVE_RELATIVE, -steps, args.rate, timeout=60)
+        dt, _, err = _send(link, CMD_MOVE_RELATIVE, DIR_RETRACT, steps, args.rate, timeout=60)
         expected = steps / args.rate
         gated = dt < expected * 0.25
         print(
@@ -111,7 +119,7 @@ def main(argv: list[str] | None = None) -> int:
                 "pin 7 -> D9, contact normally CLOSED)."
             )
             return 1
-        _send(link, CMD_MOVE_RELATIVE, steps, args.rate, timeout=60)  # undo the probe
+        _send(link, CMD_MOVE_RELATIVE, DIR_ADVANCE, steps, args.rate, timeout=60)  # undo the probe
 
         if not args.move:
             print("\nRead-only pass. Re-run with --move to open the measurement window.")
@@ -126,11 +134,11 @@ def main(argv: list[str] | None = None) -> int:
         )
 
         _stamp(f"DOWN begins  (DIR high -> RED 'B' lit)   ~{window:.0f}s")
-        dt, reply, err = _send(link, CMD_MOVE_RELATIVE, span_steps, args.rate, timeout=window * 3 + 60)
+        dt, reply, err = _send(link, CMD_MOVE_RELATIVE, DIR_ADVANCE, span_steps, args.rate, timeout=window * 3 + 60)
         _stamp(f"DOWN ends    dt={dt:.2f}s  {reply or err}")
 
         _stamp(f"UP begins    (DIR low -> GREEN 'F' lit)  ~{window:.0f}s")
-        dt, reply, err = _send(link, CMD_MOVE_RELATIVE, -span_steps, args.rate, timeout=window * 3 + 60)
+        dt, reply, err = _send(link, CMD_MOVE_RELATIVE, DIR_RETRACT, span_steps, args.rate, timeout=window * 3 + 60)
         _stamp(f"UP ends      dt={dt:.2f}s  {reply or err}")
 
         _, reply, _ = _send(link, CMD_STATUS, timeout=10)

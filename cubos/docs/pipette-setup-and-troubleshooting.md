@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-24**. This is the map; the detail is in
+Status as of **2026-09-24** (second update that day). This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -25,12 +25,14 @@ solved and verified on hardware:
 | `pick_up_tip` XY | **works** — commands the measured jog point to the millimetre, three runs running |
 | `aspirate` / `blowout` / `drop_tip` | **execute**, reach the right planes, and the firmware emits the steps |
 | volume conversion | **single conversion** — `mm_to_ul: 1.0` in CubOS, the calibration constant in the firmware |
-| plunger retraction | **un-gated** since 2026-09-18 — the limit-switch loop reads closed |
+| plunger retraction | **un-gated** — 14 mm of retraction ran at the commanded rate on the direct wiring, 2026-09-24 |
+| firmware plunger planes | ✅ **P20 GEN2 image flashed and verified 2026-09-24** — prime 28.0 / blowout 32.5 / drop_tip 46.5, `UL_TO_MM` 1.34 |
 | passive-instrument sweep | **0 interferences**, nominal and tip-stuck |
 | the motor windings | ✅ **4.3 Ω / 3.7 Ω on direct wiring — healthy** |
 | phase-to-phase isolation | ✅ **MΩ on direct wiring — the short left with the ribbon** |
 | the ribbon harness | 🔴 **condemned — it carried both the open coil path and the short** |
 | the TMC2209 `DIAG` pin | 🔴 **5 V, survives a `VM` power cycle** |
+| the TMC2209 UART readback | 🔴 **`comm = 0` with the read fix now live — the RX-side bridge resistor alone** |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
 time every plunger command — including the two retractions — emitted its steps
@@ -44,7 +46,7 @@ command-for-command.
   polarity and timing          PROVEN   B/F LEDs match the trace, per command
   Arduino pin map              FIXED    Cubware's diagram is shifted one pin
   10-pin pipette header        VERIFIED across three sources; 180 deg flip excluded
-  limit-switch gate            OPEN     retractions execute (via the ribbon)
+  limit-switch gate            OPEN     retractions execute on the DIRECT wiring too
   VM at the screw terminal     13 V     measured 2026-09-17
   EN at the driver pin         0 V      candidate B ELIMINATED, 2026-09-21
   coil grouping in terminals   CORRECT  1A+1B = one winding, 2A+2B = the other
@@ -52,9 +54,12 @@ command-for-command.
   motor windings               HEALTHY  4.3 / 3.7 Ohm once the ribbon is bypassed
   phase-to-phase isolation     HEALTHY  1A-2A and 1B-2B are megohms on direct wire
   the ribbon harness           FAULTY   it carried BOTH faults, and both left with it
+  firmware aspirate planes     FIXED    GEN2 image flashed and verified 2026-09-24
   ------------------------------------- the whole coil side is now ruled out
   TMC2209 DIAG                 5 V      survives a VM cycle; damaged output stage
                                         is now the LEADING explanation
+  UART readback              comm=0   read fix now LIVE; only the RX-side bridge
+                                      resistor is left. One resistor from DRV_STATUS.
   ENN reset (the documented one)  ?      not attempted — a power cycle is not it
   coil terminal to GND / VM+      ?      a short type never measured
   VREF at the trimmer wiper       ?      the binary verdict on the internal regulator
@@ -85,6 +90,22 @@ worth ordering now regardless of how the tests below come out.** See §19.
 > ~3.3 A rms full scale into a motor Opentrons runs at 1.0 A peak.
 
 ### What to do next
+
+> 🔑 **Changed 2026-09-24:** the GEN2 image is flashed, so the read fix is live
+> and `comm = 0` now has exactly one cause left — the 10 kΩ bridge is still on
+> the **RX** side. Moving it to `A1 —1 kΩ— NODE` (with `A0` *and* `PDN_UART`
+> directly on `NODE`) makes `DRV_STATUS` readable, and that reports
+> `open_load_a/b`, `s2ga/s2gb`, `s2vsa/s2vsb` and `ot` — **the specific bit
+> behind `DIAG` = 5 V**. That is now the highest-value bench job, ahead of the
+> meter sequence below, because it answers several of its questions at once and
+> without probing a live board.
+
+> ⚠️ **Also changed 2026-09-24:** the trio was cut by a power loss about a
+> minute in, so **the machine state is unknown** — check whether the capper is
+> holding a cap and whether a vial is open before the next run, recover the
+> position by hand or a successful `$H` rather than `$X` + jog, and re-check
+> `$20`. See §20.6 of the wiring doc.
+
 
 The plunger cannot turn while `DIAG` is asserted — the output stage is latched
 off — so the first-movement test waits on the sequence below. Steps 1–4 come

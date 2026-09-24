@@ -2459,3 +2459,162 @@ off — so §18.8's first-movement test waits on this.
 | plunger direction | ⚠️ may have inverted; homing is the tell (§18.6) |
 | firmware `aspirate` planes | 🔴 flash the GEN2 image before any aspirate (§18.7) |
 | TMC2209 UART readback | 🔴 `comm = 0`; needs the GEN2 flash **and** the TX-side bridge (§12.3) |
+
+---
+
+## 20. 2026-09-24: the GEN2 image goes on the board, and `comm = 0` becomes a one-line diagnosis
+
+Ben asked for the trio now that the coils measure healthy. The firmware
+prerequisite from §18.7 was done first; the protocol run itself was cut about a
+minute in by a power loss.
+
+### 20.1 The flash
+
+`avrdude -U flash:v:` against all three candidate images, read-only, before
+anything else:
+
+```
+panda_vcl_p20_20260915     : MATCH  17370 bytes of flash verified
+flash_20260915T220346Z     : no     flash verification mismatch
+panda_vcl_p20gen2_20260917 : no     flash verification mismatch
+```
+
+So the board was still on the 2026-09-15 image, as §14.3 found. `sha256` of the
+GEN2 hex agreed between the repo and the Pi before writing it. After:
+
+```
+panda_vcl_p20gen2_20260917 : MATCH  17382 bytes of flash verified
+panda_vcl_p20_20260915     : no
+flash_20260915T220346Z     : no
+```
+
+Both instrument paths were re-checked on the reflashed board — the capper
+shares this Arduino — and both answer: `OK:{"homed":0,"pos":0.00,"max_vol":20.00}`
+and `OK:{"value1":0}`.
+
+**Why it had to come before the trio.** `MOVE_TO` is absolute millimetres, so
+CubOS's patched `blowout` (32.5) and `drop_tip` (46.5) land where CubOS asks on
+either image. **`aspirate` does not** — it is computed inside the firmware and
+descends to `PRIME_POSITION` before its metered ascent. The 09-15 image carries
+`PRIME_POSITION 36.0`, a P300 plane; a P20 GEN2's bottom is **28.0**. With the
+coils open that cost nothing. With windings that now measure 4.3 Ω and 3.7 Ω it
+would drive the plunger **8 mm past its mechanical bottom on every call**.
+
+### 20.2 🔑 `comm = 0` with the read fix live isolates the bridge
+
+The GEN2 image carries `tmc2209-softwareserial-read.patch`, without which a
+TMC2209 read over `SoftwareSerial` on an AVR is structurally impossible (§10.2).
+Five consecutive reads immediately after flashing:
+
+```
+OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}      x5
+      comm = 0      flags = 0      current_scaling = -1 (unread)
+```
+
+That is not a disappointment — it is the isolation. §12.3 listed two
+independent reasons `comm = 0` could not be trusted. **One of them is now
+gone.** The remaining one is the hardware bridge: the 10 kΩ resistor is still
+on the **RX** side, so `SoftwareSerial::begin()` leaves the Arduino's TX a
+push-pull output idling HIGH on the shared node and the driver cannot pull it
+down to reply. It has to be:
+
+```
+A1 --[1 kOhm]-- NODE        with A0 and PDN_UART both directly on NODE
+```
+
+**One resistor now stands between this machine and `DRV_STATUS`** — which
+reports `open_load_a/b`, `s2ga`/`s2gb`, `s2vsa`/`s2vsb` and `ot` directly, i.e.
+the specific bit behind §19.2's `DIAG` = 5 V. That makes it the single
+highest-value bench job outstanding, ahead of the meter work in §19.3, because
+it answers several of those questions at once and without probing a live board.
+
+### 20.3 The limit switch reads CLEAR on the direct wiring
+
+§18.5 warned that pins 6 and 7 rode the ribbon that came out, and that with D9
+floating the firmware would read the switch as asserted and refuse every
+retraction. **It does not.** 14 mm of retraction — the gated direction — ran to
+completion at the commanded rate without being refused, which is the D9-LOW
+signature. So the switch loop survived the rewiring.
+
+### 20.4 🔴 `CMD_MOVE_RELATIVE` takes three varargs, and getting that wrong is silent
+
+`CMD_MOVE_RELATIVE` (16) takes **`direction, steps, velocity`**, and
+`PawduinoLink.send_command(code, *args)` is **varargs, not a list**. Passing
+`[d, steps, rate]` as one argument serialises the list's `repr` onto the wire;
+the firmware's comma tokenizer then reads `atof("[0") == 0`, so **`direction`
+parses as 0 whatever you asked for**. The reply echoes `v[0] = 0.00` in both
+cases, which is the tell — and the only one, because a wrong direction still
+returns a well-formed `OK`.
+
+Measured semantics, with the correct call form:
+
+| `direction` | counter | travel | LED |
+|---|---|---|---|
+| **0** | decreases | retract / up — **the direction gated by D9** | green `F` |
+| **1** | increases | advance / down — ungated | red `B` |
+
+These agree with `pipette_driver_probe.py`'s `DIR_UP = 0` / `DIR_DOWN = 1`,
+which was written against the raw serial port in §6 and had it right all along.
+`pipette_driver_measure.py` sent two arguments instead of three and is fixed.
+
+### 20.5 The bench window
+
+Plunger only — `/dev/ttyUSB0` was never opened, so no gantry motion was
+commanded.
+
+```
+  direction=0  1.00 mm at 800 steps/s   dt= 2.031s  (commanded 1.99s)
+  direction=1  1.00 mm at 800 steps/s   dt= 2.032s  (commanded 1.99s)
+  advance     14.00 mm at 800 steps/s   dt=28.339s  (commanded 27.9s)
+  ADVANCE      4.00 mm at 200 steps/s   dt=32.121s  (commanded 31.8s)
+  RETRACT      4.00 mm at 200 steps/s   dt=32.118s  (commanded 31.8s)
+```
+
+Every leg ran at the commanded rate in **both** directions, to about 1%. Net
+commanded travel for the session is **zero** — the 14 mm the mis-formed call
+walked was restored, and the ±4 mm window balances.
+
+⚠️ As always (§6.1): this proves the **Arduino emitted the steps**.
+`stepMotor()` bit-bangs `STEP` and counts loop iterations, with no encoder, no
+current sense and no feedback of any kind. Whether the motor turned needs eyes
+on the machine, and `DIAG` = 5 V says the output stage is latched off, so the
+prior is that it did not.
+
+### 20.6 🔴 The run was cut, and the machine state is unknown
+
+The protocol started at about 22:19 UTC. The Pi dropped off the tailnet at
+**22:20:00 UTC**. The Pi shares power with the gantry (§13 session notes), so a
+supply interruption takes both — the run was cut at an arbitrary point with no
+closing `home` and no `CMD_EMAG_OFF`.
+
+**Check by eye before the next run:**
+
+- **Is the capper holding a cap, and is a vial open?** Step 2 is
+  `decap vial_1`; anything between there and `cap vial_1` leaves a cap either
+  on the electromagnet or dropped where the coil de-energised.
+- **Where is the head?** GRBL's counter resets to the homed corner on port open
+  regardless of where the carriage is, so `WPos` after a power cut is fiction
+  (§15). Recover by hand or by a successful `$H` — do **not** `$X` and jog.
+- **Re-check `$20`.** It read `1` before this run, but an interrupted
+  calibration leaves it at `0`, and it has been found off twice (2026-08-27,
+  2026-09-18).
+
+### 20.7 Status
+
+| | |
+|---|---|
+| Arduino STEP/DIR output | ✅ proven (§6), LEDs corroborate (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V (§16.1) |
+| coil grouping / windings / isolation | ✅ correct, 4.3 Ω / 3.7 Ω, MΩ (§17.1, §18.1, §19.1) |
+| limit switch / D9 | ✅ **CLEAR on the direct wiring (§20.3)** — §18.5's warning did not bite |
+| firmware `aspirate` planes | ✅ **GEN2 image flashed and verified (§20.1)** |
+| the ribbon harness | 🔴 condemned — it carried **both** faults |
+| **TMC2209 `DIAG`** | 🔴 **5 V, survives a `VM` cycle (§19.2)** |
+| **TMC2209 UART readback** | 🔴 **`comm = 0` with the read fix live — now the TX-side bridge alone (§20.2)** |
+| `ENN` reset attempted | ❓ not yet — the documented recovery, not a power cycle (§19.3a) |
+| both rails cycled together | ❓ not yet (§19.3b) |
+| coil terminal → `GND` / `VM+` | ❓ never measured (§19.3c) |
+| `DIAG` → 5 V pull-up check | ❓ never measured (§19.3e) |
+| VREF at the wiper | ❓ the binary verdict on the internal regulator (§19.4) |
+| machine state after the cut | ⚠️ **unknown — needs eyes (§20.6)** |
