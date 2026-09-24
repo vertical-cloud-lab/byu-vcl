@@ -2618,3 +2618,220 @@ closing `home` and no `CMD_EMAG_OFF`.
 | `DIAG` → 5 V pull-up check | ❓ never measured (§19.3e) |
 | VREF at the wiper | ❓ the binary verdict on the internal regulator (§19.4) |
 | machine state after the cut | ⚠️ **unknown — needs eyes (§20.6)** |
+
+## 21. 2026-09-24 (third): the bench move showed nothing — which was predicted, and is not a verdict
+
+Reported by Ben:
+
+```
+bench test      no movement seen on the plunger
+the run         cut when the gantry travelled far enough from the outlet to
+                unplug the Pi's power cable; E-stopped before it continued
+where it sits   above vial 1, capper/decapper has NOT engaged
+question        does that mean the board is broken?
+```
+
+**No.** The bench move of §20.5 was run with two independent reasons to see
+nothing, and it was run out of order — it is step 10 of the §19.3 sequence,
+executed while steps 1–8 were still outstanding. It was never capable of
+deciding this.
+
+### 21.1 The first reason: a latched output stage produces no coil current by design
+
+§20.5 said so in advance — *"`DIAG` = 5 V says the output stage is latched off,
+so the prior is that it did not [turn]."* That is what an asserted driver error
+*means* on a TMC2209: the chip disables its own output bridges and holds them
+disabled until it is reset. Zero coil current, zero torque, a silent motor, and
+the Arduino still bit-banging `STEP` into it at exactly the commanded rate —
+which is precisely what §20.5's timings recorded.
+
+So "no movement" is the **predicted consequence of a fault already on the
+books**, not a new observation. It cannot distinguish:
+
+| | |
+| --- | --- |
+| a **healthy** chip sitting in a latched error state | fixable by the `ENN` reset of §19.3a |
+| a chip whose output stage is **destroyed** | needs a new board |
+
+Both give the same silence. The whole point of §19.3 is that the latch has never
+been cleared by the documented method, so the silence was always going to be
+uninformative until it is.
+
+### 21.2 The second reason: the pot was turned down, and VREF is still unmeasured
+
+This one is entirely benign and is the cheaper of the two to undo.
+
+No UART register write has ever been confirmed to land (§9.2, §20.2), so
+`i_scale_analog` is still at its power-on default of 1 and **the VREF trimmer is
+the only thing setting coil current.** Ben turned it down on 2026-09-24 — as
+§18.3 asked, and correctly, because with real ~4 Ω windings finally attached a
+full-clockwise pot can deliver what it is asking for. But *how far* down is not
+recorded, and VREF has never been measured at the wiper.
+
+> A healthy TMC2209 at VREF ≈ 0 V produces no torque and no motion, and is
+> indistinguishable on the bench from a destroyed one.
+
+So the bench move ran with an unknown-and-possibly-zero current setting into an
+output stage that was independently latched off. Two reasons, either sufficient.
+
+### 21.3 What the two pot settings *do* eliminate
+
+One thing the data now settles for free. `DIAG` has been measured at 5 V at
+**both** ends of the pot's range:
+
+| date | pot | `DIAG` |
+| --- | --- | --- |
+| 2026-09-21 (§16.1) | full clockwise | 5 V |
+| 2026-09-24 (§19) | turned down | 5 V |
+
+**The pot setting is not what is holding `DIAG` high.** Worth knowing, because
+it means turning the pot back up will not clear the error, and the `ENN` reset
+and the rail-short checks of §19.3 remain the path regardless.
+
+### 21.4 🔑 The test that would split it: `INDEX` during a driven leg
+
+`INDEX` is broken out on the 6121, has no LED, and is still the one measurement
+that reaches inside the chip without the UART (§14.4). It pulses as the chip's
+microstep counter advances — i.e. as the chip **consumes** `STEP` pulses —
+which happens on the chip's digital side, upstream of the output bridges.
+
+Re-running the same bench window with a meter on `INDEX` is therefore worth
+doing, but note the asymmetry before spending time on it:
+
+| `INDEX` during a driven leg | conclusion |
+| --- | --- |
+| **changing** — a fluctuating mid-scale value on a DMM | 🔑 **conclusive:** the chip is alive and processing `STEP`. The fault is confined to the output stage — a latch or damage — and nothing else |
+| **dead flat** at 0 V or 5 V | **ambiguous.** Could be a non-functioning chip; could equally be that a latched driver error halts the counter too. Do not read it as a death sentence |
+
+That asymmetry is the same shape as §16.2's resistance argument: the measurement
+is decisive in one direction only, and it is worth taking for the direction in
+which it *is* decisive. A changing `INDEX` would be the first positive evidence
+in this entire investigation that the TMC2209 itself is functional.
+
+⚠️ `INDEX` = 0 V **at rest** — the value reported on 2026-09-21 — carries no
+information at all. The microstep counter simply is not at its zero position.
+It only discriminates while steps are being consumed.
+
+### 21.5 Holding torque is free, more sensitive than watching, and not yet re-taken
+
+Watching for motion is a poor detector: a motor at low current can be turning
+imperceptibly, or stalling silently against friction. **Holding torque detects
+coil current with nothing commanded at all** — grip the plunger and try to move
+it by hand while the board is powered and idle.
+
+It was the discriminator that produced the §12 breakthrough, and the last
+reading was *"moves freely"* on 2026-09-17 — **before** the ribbon came out,
+before the windings were healthy, and before the pot was touched. It is worth
+re-taking now that the coil path is real:
+
+- **no resistance at all** ⇒ still no coil current, consistent with the latch
+  and/or a VREF near zero
+- **noticeable resistance** ⇒ 🔑 current *is* flowing, the chip is not dead, and
+  the problem becomes current level or mechanical binding rather than the driver
+
+Turn the pot up a little first, or this test inherits §21.2's ambiguity.
+
+### 21.6 So: is the board broken? The honest answer
+
+**Unknown, and the bench move did not move that needle.** But the *prior* is
+unchanged from §19.2 and it is not a comfortable one — the mechanism that would
+have destroyed this chip is documented to have been present, at full current,
+across many sessions:
+
+- the ribbon presented a phase-to-phase short at the driver's outputs (§17.2)
+- the pot was at full clockwise, ~3.3 A rms full scale (§11.3)
+- `EN` was at 0 V, so the chip was enabled and chopping into that short (§16.1)
+
+`DIAG` = 5 V is consistent with that having happened. It is also consistent with
+an uncleared latch from the same event, which is *not* damage. The two are
+separated by the `ENN` reset (§19.3a) and by VREF at the wiper (§19.4), and by
+nothing else available.
+
+> **Order a replacement 6121 now.** Not because the verdict is in — it is not —
+> but because the expected value is obviously positive: it is an inexpensive
+> part, the leading hypothesis says it is needed, and every remaining question
+> about this pipette is answered faster against a known-good driver. If the
+> `ENN` reset clears `DIAG` the spare becomes a spare, which is a good outcome
+> for a lab machine either way.
+
+**Do not re-run the bench move until §19.3 steps 1–8 are done.** Repeating a
+test whose negative result was predicted spends plunger travel and session time
+to learn nothing, and it risks the wrong conclusion being drawn from it — which
+is what prompted this section.
+
+### 21.7 🔴 The gantry's travel envelope reaches the Pi's power cable
+
+The run was cut because **the gantry moved far enough from the outlet to unplug
+the Pi.** That is a mechanical fault with an obvious fix, and it will recur on
+the very next run if nothing changes, because:
+
+> **Step 0 of every protocol is `home`, which drives to the far corner
+> (409, 309) — the longest travel the machine ever makes, and the extreme that
+> reached the cable.**
+
+So re-routing has to happen **before** the recovery re-home, not after.
+
+It is also worse than a gantry stop, because the Pi is the controller host:
+
+| | |
+| --- | --- |
+| the run log, plunger trace and camera frames | **lost** — they were being written on the Pi when it died. Nothing from this run survives |
+| the closing `home` | never ran — the position reference is gone |
+| `CMD_EMAG_OFF` | never ran — a held cap would have dropped where the coil de-energised |
+| `$20` | an interrupted session is exactly how it has twice been found at `0` (2026-08-27, 2026-09-18) |
+
+Two fixes, and the second is the durable one:
+
+1. **Route the Pi's mains lead so no point in the gantry's travel can reach it**,
+   with strain relief at the Pi end. Cable ties and a service loop.
+2. 🔑 **Give the Pi its own supply, ideally a small UPS.** The Pi sharing power
+   with the gantry has been on the record since 2026-09-17 and has now cost
+   three sessions. A host that outlives a gantry supply interruption keeps its
+   logs, closes the port cleanly, and de-energises the magnet — which is the
+   difference between a stopped run and an unknown machine state.
+
+### 21.8 ✅ Machine state: the best place it could have stopped
+
+Ben E-stopped it above vial 1 with the capper **not yet engaged**. That resolves
+§20.6's first and most important bullet favourably:
+
+- **No cap was ever captured**, so the electromagnet was never energised for a
+  capture and **nothing was dropped**. Every vial is still capped and the deck
+  is intact. The cut landed in the window between `home` and `decap vial_1`,
+  which is the only stretch of this protocol where an interruption costs nothing
+  physical.
+- **The head is mid-deck**, not against a hard stop, so nothing is loaded.
+
+Recovery, in order:
+
+1. **Re-route the power cable first** (§21.7). The recovery home is the motion
+   that pulled it.
+2. **Restore the Pi's power** and confirm it is back on the tailnet.
+3. **Re-home** — `$H`, not `$X` + a jog. The E-stop and the power cut both left
+   GRBL's counter meaningless, and `$X` + relative jog against a stale counter is
+   exactly what drove Y 33 mm past its stop on 2026-09-18 (§15 session notes).
+4. **Re-check `$20`** before the next run.
+
+### 21.9 Status
+
+| | |
+| --- | --- |
+| Arduino STEP/DIR output | ✅ proven (§6), LEDs corroborate (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V (§16.1) |
+| coil windings / isolation | ✅ 4.3 Ω / 3.7 Ω, MΩ (§18.1, §19.1) |
+| limit switch / D9 | ✅ clear on the direct wiring (§20.3) |
+| firmware `aspirate` planes | ✅ GEN2 image flashed and verified (§20.1) |
+| deck state after the cut | ✅ **intact — no cap was captured (§21.8)** |
+| the ribbon harness | 🔴 condemned — it carried **both** faults |
+| **TMC2209 `DIAG`** | 🔴 5 V at **both** ends of the pot's range (§21.3) |
+| **TMC2209 UART readback** | 🔴 `comm = 0` — the TX-side bridge alone (§20.2) |
+| the Pi's power path | 🔴 **within the gantry's reach; third session lost (§21.7)** |
+| plunger movement | ❓ **not disproven — the test was incapable (§21.1, §21.2)** |
+| `ENN` reset attempted | ❓ not yet — the documented recovery (§19.3a) |
+| both rails cycled together | ❓ not yet (§19.3b) |
+| coil terminal → `GND` / `VM+` | ❓ never measured (§19.3c) |
+| `DIAG` → 5 V pull-up check | ❓ never measured (§19.3e) |
+| VREF at the wiper | ❓ **now doubly load-bearing (§19.4, §21.2)** |
+| `INDEX` during a driven leg | ❓ decisive if it changes, ambiguous if not (§21.4) |
+| holding torque, post-repair | ❓ last taken before the ribbon came out (§21.5) |

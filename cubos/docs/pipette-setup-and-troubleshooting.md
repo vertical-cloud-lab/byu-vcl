@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-24** (second update that day). This is the map; the detail is in
+Status as of **2026-09-24** (third update that day). This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -31,8 +31,10 @@ solved and verified on hardware:
 | the motor windings | ✅ **4.3 Ω / 3.7 Ω on direct wiring — healthy** |
 | phase-to-phase isolation | ✅ **MΩ on direct wiring — the short left with the ribbon** |
 | the ribbon harness | 🔴 **condemned — it carried both the open coil path and the short** |
-| the TMC2209 `DIAG` pin | 🔴 **5 V, survives a `VM` power cycle** |
+| the TMC2209 `DIAG` pin | 🔴 **5 V at both ends of the pot's range, survives a `VM` power cycle** |
 | the TMC2209 UART readback | 🔴 **`comm = 0` with the read fix now live — the RX-side bridge resistor alone** |
+| the first bench move | ❓ **no movement seen — but the test was incapable of showing any; see below** |
+| the Pi's power path | 🔴 **inside the gantry's travel envelope — three sessions lost to it** |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
 time every plunger command — including the two retractions — emitted its steps
@@ -62,7 +64,11 @@ command-for-command.
                                       resistor is left. One resistor from DRV_STATUS.
   ENN reset (the documented one)  ?      not attempted — a power cycle is not it
   coil terminal to GND / VM+      ?      a short type never measured
-  VREF at the trimmer wiper       ?      the binary verdict on the internal regulator
+  VREF at the trimmer wiper       ?      the binary verdict on the internal regulator,
+                                         and the pot is now turned down by an
+                                         unrecorded amount — doubly load-bearing
+  INDEX during a driven leg       ?      decisive IF it changes; ambiguous if not
+  holding torque, post-repair     ?      last taken before the ribbon came out
 ```
 
 On **2026-09-23** Ben bypassed the 10-pin ribbon and its FC-10P and wired the
@@ -100,16 +106,34 @@ worth ordering now regardless of how the tests below come out.** See §19.
 > meter sequence below, because it answers several of its questions at once and
 > without probing a live board.
 
-> ⚠️ **Also changed 2026-09-24:** the trio was cut by a power loss about a
-> minute in, so **the machine state is unknown** — check whether the capper is
-> holding a cap and whether a vial is open before the next run, recover the
-> position by hand or a successful `$H` rather than `$X` + jog, and re-check
-> `$20`. See §20.6 of the wiring doc.
+> ⚠️ **Also changed 2026-09-24:** a first bench move was run and **no plunger
+> movement was seen. That is not evidence the board is broken** — an asserted
+> `DIAG` disables the output bridges by design, and the VREF pot had just been
+> turned down by an unrecorded amount, so the test had two independent reasons
+> to show nothing and was run before steps 1–8 below. **Do not re-run it until
+> they are done.** See §21 of the wiring doc.
+
+> ✅ **And the deck is intact.** The trio was cut when the gantry travelled far
+> enough from the outlet to unplug the Pi; Ben E-stopped it above vial 1 with
+> the capper **not yet engaged**, so no cap was ever captured and nothing was
+> dropped. The cut landed in the only stretch of this protocol where an
+> interruption costs nothing physical (§21.8). The position reference is still
+> gone — recover with `$H`, never `$X` + a jog — and re-check `$20`.
+
+> 🔴 **Re-route the Pi's mains lead before the recovery re-home.** Step 0 of
+> every protocol drives to the far corner (409, 309), the longest travel the
+> machine makes and the extreme that reached the cable — so re-homing without
+> re-routing repeats the failure immediately. The durable fix is to give the Pi
+> its own supply, ideally a small UPS: it has shared power with the gantry since
+> 2026-09-17 and that has now cost three sessions, and because the Pi is the
+> host, losing it loses the run log, the plunger trace, the camera frames, the
+> closing `home` and `CMD_EMAG_OFF` (§21.7).
 
 
 The plunger cannot turn while `DIAG` is asserted — the output stage is latched
 off — so the first-movement test waits on the sequence below. Steps 1–4 come
-before power for a reason.
+before power for a reason, and step 10 has already been attempted early and
+wasted: it is the last step, not a shortcut.
 
 1. **Look** before probing: with the ribbon gone, four bare leads run from the
    screw terminals to the pipette. **Is one resting against the metal body?**
@@ -139,6 +163,12 @@ before power for a reason.
    is dead — **replace the board and stop here.** A reading that rises toward
    ~2.5 V means the regulator is alive and `DIAG` is a fault in the output
    stage. Target for running is **≈ 0.55 V for ~1.0 A peak** (§19.4).
+   🔑 **This got more load-bearing on 2026-09-24:** the pot has since been turned
+   down by an unrecorded amount, and a healthy chip at VREF ≈ 0 V is
+   indistinguishable on the bench from a destroyed one — which is half of why the
+   first bench move proved nothing (§21.2). Note also that `DIAG` reads 5 V at
+   *both* ends of the pot's range, so turning it back up will not clear the
+   error (§21.3).
 7. 🔑 **Toggle `ENN` high, then low** — this is the datasheet's documented reset
    for a driver error, and **a power cycle is not it.** `EN` is driven LOW
    continuously by the Arduino on A4, so if the Arduino stayed up across the
@@ -157,11 +187,25 @@ before power for a reason.
    asserted, so the refusal is itself the answer.
 10. 🔑 **Run a bounded bench move** —
    [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
-   `--move`, 6 mm out and 6 mm back, no gantry motion. Watch for the shaft
-   turning, holding torque at rest, the yellow `S` LED changing, and `INDEX`
-   fluctuating mid-scale. **Measure the 6 mm with a ruler** — `setMicrostepsPerStep(16)`
-   has never landed, so MS1/MS2 decide at 1/8 and a commanded millimetre may
-   travel two. Fit the 1515 heat sink first.
+   `--move`, 6 mm out and 6 mm back, no gantry motion. ⚠️ **This was attempted
+   on 2026-09-24 and showed nothing, which was predicted and is not a verdict
+   (§21.1). It is the last step for a reason — it only means something once
+   1–9 are done.** When it is time, do not just watch the shaft:
+   - 🔑 **`INDEX` on a meter during a driven leg.** It pulses as the chip's
+     microstep counter advances, upstream of the output bridges. **Changing ⇒
+     conclusive: the chip is alive and the fault is confined to the output
+     stage.** Dead flat ⇒ **ambiguous**, since a latched error may halt the
+     counter too — do not read it as a death sentence (§21.4). `INDEX` at
+     *rest* carries no information at all.
+   - **Holding torque with nothing commanded** — free, and a better detector
+     than watching for motion. The last reading was *"moves freely"* on
+     2026-09-17, before the ribbon came out and before the pot was touched, so
+     it is stale. Turn the pot up a little first, or it inherits §21.2's
+     ambiguity (§21.5).
+   - the yellow `S` LED changing, which confirms `STEP` reaching the board.
+   - **Measure the 6 mm with a ruler** — `setMicrostepsPerStep(16)` has never
+     landed, so MS1/MS2 decide at 1/8 and a commanded millimetre may travel
+     two. Fit the 1515 heat sink first.
 11. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
    `homePipette()` seeks with `DIR` LOW. If the tip ejector starts to engage,
    the direction is inverted — swap the two wires of one pair.
@@ -246,3 +290,15 @@ GRBL board resets when the port opens and comes up in `Alarm`.
   moving for real. That is how a capper came to press onto six still-capped vials.
 - **`validate_setup` asks whether a coordinate is reachable, never whether it is
   the right one.** A tip-rack anchor 52 mm out passes it.
+- **A test whose negative result is already predicted is not a test.** The first
+  bench move was run with `DIAG` asserted — which disables the output bridges by
+  definition — *and* with the VREF pot freshly turned down to an unrecorded
+  value. It showed nothing, as it had to, and the risk was that "no movement"
+  got read as "the board is dead" (§21). Before spending hardware time, ask what
+  each outcome of the test would rule out; if one of them rules out nothing, fix
+  the ordering first.
+- **The Pi is the host, so losing its power loses the evidence.** The run log,
+  the plunger trace and the camera frames are all written on the Pi, and the
+  closing `home` and `CMD_EMAG_OFF` are commands *from* it. A gantry that can
+  reach the Pi's mains lead is therefore a data-integrity and machine-state
+  problem, not just an interrupted run (§21.7).
