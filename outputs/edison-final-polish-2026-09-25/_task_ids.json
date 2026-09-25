@@ -1,0 +1,22 @@
+{
+  "issue": 110,
+  "submitted_utc": "2026-09-25T21:30Z",
+  "job_type": "LITERATURE",
+  "tasks": [
+    {
+      "slug": "q1-alumina-vs-silica-final-polish-al",
+      "task_id": "f572c923-2721-4280-867e-7602556bc247",
+      "query": "For the final metallographic polish of aluminum alloys (especially Al-Si alloys such as additively manufactured AlSi10Mg, or cast A356/A357) intended for EBSD and quantitative SEM-EDS, how does a 0.05 um alumina suspension (alpha or gamma alumina, including sol-gel alumina such as Buehler MasterPrep) compare with alkaline colloidal silica (0.02-0.06 um), when used on a vibratory polisher (e.g., Buehler VibroMet 2) or a rotary polisher? Compare residual deformation layer depth, EBSD indexing rate or pattern quality, relief between the Al matrix and eutectic Si, chemo-mechanical action, and abrasive residue left on the surface. Are there published quantitative comparisons? What silicon-free final-polishing routes (alumina, fine diamond 0.25-0.05 um, electropolishing, broad argon ion beam milling) give EBSD-quality surfaces on Al-Si alloys, and what are their drawbacks (e.g., preferential attack of the Si network in electropolishing, diamond embedding in soft aluminum)?"
+    },
+    {
+      "slug": "q2-diamond-carbon-residue",
+      "task_id": "0305fa08-3596-4b1c-9904-35fd7e2214fd",
+      "query": "When soft metals such as aluminum alloys are metallographically polished with fine diamond suspensions (1, 0.25, 0.1 um; polycrystalline or monocrystalline; water- or glycol/oil-based carriers), how much diamond becomes embedded in the surface and how much carbon contamination remains after standard cleaning, as measured by SEM/EDS, EPMA, XPS, or Auger analysis? Please give quantitative values (e.g., embedded particle areal density, surface carbon atomic % or wt% by EDS at 5-15 kV). For comparison, what is the typical carbon signal on clean metal surfaces in SEM-EDS due to adventitious hydrocarbon and electron-beam-induced contamination, and how does it grow with dwell time? Does residual carbon of this magnitude bias quantitative EDS of Al, Si, Mg, or O (e.g., through absorption of soft X-rays), and how is it handled in quantification (excluding C from the fit, coating correction, plasma cleaning)?"
+    },
+    {
+      "slug": "q3-silica-alumina-residue-removal-eds",
+      "task_id": "70fbcddf-cac9-436e-a37b-12644fe8e445",
+      "query": "After final polishing of aluminum alloys with colloidal silica or fine alumina suspensions, how much abrasive residue typically remains on the surface after cleaning, and how does such residue bias quantitative SEM-EDS or EPMA results for Si, Al, and O, especially at low accelerating voltages (5 kV) where the X-ray generation depth is only about 0.3 um? What cleaning procedures are documented to remove colloidal silica residue most effectively from aluminum without etching or corroding it (e.g., flushing with water on the cloth at the end of the polishing cycle, detergent solutions, cotton swabbing, ultrasonic cleaning in water, ethanol, or alkaline detergents, plasma cleaning)? Does colloidal silica chemically bond to or redeposit on aluminum surfaces, and can it be dissolved without attacking aluminum?"
+    }
+  ]
+}
