@@ -259,6 +259,61 @@ Two things to know before trusting a link:
 YouTube refuses player extraction from a GitHub Actions runner; the fetching
 half runs over SSH on the stream-cam Pi (`~/ytframes/grab.py` there).
 
+## When the livestream restarts, and why the archive has gaps
+
+The OT-2 livestream runs on a Pi Zero 2 W (`OT2_STREAM_CAM_HOSTNAME`), set up
+from the Acceleration Consortium's
+[picam README](https://github.com/AccelerationConsortium/ac-training-lab/blob/87a3ccb/src/ac_training_lab/picam/README.md#L255-L303)
+plus one local watchdog. Read from the Pi on 2026-09-25 (read-only, nothing
+changed), it restarts the stream at three levels:
+
+| what restarts | when | details |
+| --- | --- | --- |
+| the whole Pi | 5 am, 1 pm, 9 pm lab time | root crontab `0 5,13,21 * * * /sbin/shutdown -r now`. Each boot ends the YouTube broadcast and starts a new one, hence the ~8 h videos; YouTube only [archives streams under 12 h](https://support.google.com/youtube/answer/6247592) |
+| the stream program | 10 s after it exits | `device.service`, `Restart=always`. **At most 3 starts per hour, the boot's included** (`StartLimitBurst=3`, `StartLimitIntervalSec=3600`) |
+| the stream program | YouTube acknowledges no new bytes for 3 one-minute checks | `stream-watchdog.timer` → `/usr/local/bin/stream-watchdog.sh`, at most 6 restarts a day. Local, not in the upstream README |
+
+**Once the service gives up, the stream stays down until the next scheduled
+reboot.** The watchdog exits early unless `systemctl is-active` passes, so it
+never restarts a service that the start limit has stopped. A few minutes
+without network is enough. It happened five times in the ten days on record,
+about 20 h of missing footage in all:
+
+| service gave up | next start |
+| --- | --- |
+| 09-16 12:35 | 13:00 reboot |
+| 09-18 15:35 | 21:00 reboot |
+| 09-19 23:04 | 05:00 reboot |
+| 09-24 12:06 | 13:00 reboot |
+| 09-24 13:28 | 21:00 reboot |
+
+The 09-24 pair came from the Pi's DNS lookups failing from 11:59 until the
+9 pm reboot.
+
+**Power cuts are the other cause.** The Pi has no power switch. It runs while
+its micro-USB cable has power, and boots and resumes streaming on its own
+about a minute after power returns. A cut shows up in `journalctl -b -1` as a
+log that stops mid-task, with none of the `Shutting down` … `Journal stopped`
+lines a reboot writes. Two are on record:
+
+| power lost | stream back | notes |
+| --- | --- | --- |
+| 09-23 ~12:34 | 13:15 | cron then rebooted it once more at 13:16 (below) |
+| 09-25 ~13:10 | 14:58 | plugged into the lab computer's USB port. The 13:00 video, `9XQqOj42GLw`, is only 9 min long |
+
+No boot on record logged an under-voltage warning, so the supply was adequate
+while it was on. It should be on a wall adapter rated 5 V 2.5 A, the figure in
+the [product brief](https://datasheets.raspberrypi.com/rpizero2/raspberry-pi-zero-2-w-product-brief.pdf),
+not a computer's USB port.
+
+**After a cut, early log timestamps are wrong.** The Pi has no real-time clock,
+so for the ~45 s until network time arrives it runs on the last time it saved,
+and `journalctl --list-boots` shows a boot starting before the previous one
+ended. Both times the stream started a few seconds after the sync, so the
+burned-in overlay was right from its first frame. But cron reads the clock jump
+as time that passed: if the jump is under 3 hours and crosses 5 am, 1 pm or
+9 pm, it runs that reboot at once. That was the extra 13:16 restart on 09-23.
+
 ## Options
 
 ```
