@@ -1,0 +1,866 @@
+[
+ {
+  "method": "GET",
+  "path": "/api/v10/users/sessioninfo",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/documents",
+  "body": {
+   "name": "OT-2 lid camera mount (824c490)",
+   "isPublic": false
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID",
+  "body": {
+   "name": "Base (native features)"
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMSketch-151",
+    "featureType": "newSketch",
+    "name": "Plate sketch",
+    "parameters": [
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "sketchPlane",
+      "queries": [
+       {
+        "btType": "BTMIndividualQuery-138",
+        "deterministicIds": [
+         "JDC"
+        ]
+       }
+      ]
+     }
+    ],
+    "entities": [
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "pb",
+      "startPointId": "pb.start",
+      "endPointId": "pb.end",
+      "startParam": 0.0,
+      "endParam": 0.112,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.056,
+       "pntY": -0.056,
+       "dirX": 1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "pr",
+      "startPointId": "pr.start",
+      "endPointId": "pr.end",
+      "startParam": 0.0,
+      "endParam": 0.112,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.056,
+       "pntY": -0.056,
+       "dirX": 0.0,
+       "dirY": 1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "pt",
+      "startPointId": "pt.start",
+      "endPointId": "pt.end",
+      "startParam": 0.0,
+      "endParam": 0.112,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.056,
+       "pntY": 0.056,
+       "dirX": -1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "pl",
+      "startPointId": "pl.start",
+      "endPointId": "pl.end",
+      "startParam": 0.0,
+      "endParam": 0.112,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.056,
+       "pntY": 0.056,
+       "dirX": 0.0,
+       "dirY": -1.0
+      }
+     }
+    ],
+    "constraints": []
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMFeature-134",
+    "featureType": "extrude",
+    "name": "Plate",
+    "parameters": [
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "bodyType",
+      "enumName": "ExtendedToolBodyType",
+      "value": "SOLID"
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "operationType",
+      "enumName": "NewBodyOperationType",
+      "value": "NEW"
+     },
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "entities",
+      "queries": [
+       {
+        "btType": "BTMIndividualSketchRegionQuery-140",
+        "featureId": "F4"
+       }
+      ]
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "endBound",
+      "enumName": "BoundingType",
+      "value": "BLIND"
+     },
+     {
+      "btType": "BTMParameterQuantity-147",
+      "parameterId": "depth",
+      "expression": "6 mm",
+      "isInteger": false
+     }
+    ]
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMSketch-151",
+    "featureType": "newSketch",
+    "name": "Collar sketch",
+    "parameters": [
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "sketchPlane",
+      "queries": [
+       {
+        "btType": "BTMIndividualQuery-138",
+        "deterministicIds": [
+         "JDC"
+        ]
+       }
+      ]
+     }
+    ],
+    "entities": [
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "c",
+      "centerId": "c.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.026000000000000002,
+       "xCenter": 0.0,
+       "yCenter": 0.0,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     }
+    ],
+    "constraints": []
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMFeature-134",
+    "featureType": "extrude",
+    "name": "Collar",
+    "parameters": [
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "bodyType",
+      "enumName": "ExtendedToolBodyType",
+      "value": "SOLID"
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "operationType",
+      "enumName": "NewBodyOperationType",
+      "value": "ADD"
+     },
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "entities",
+      "queries": [
+       {
+        "btType": "BTMIndividualSketchRegionQuery-140",
+        "featureId": "F6"
+       }
+      ]
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "endBound",
+      "enumName": "BoundingType",
+      "value": "BLIND"
+     },
+     {
+      "btType": "BTMParameterQuantity-147",
+      "parameterId": "depth",
+      "expression": "20 mm",
+      "isInteger": false
+     },
+     {
+      "btType": "BTMParameterBoolean-144",
+      "parameterId": "defaultScope",
+      "value": true
+     }
+    ]
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMSketch-151",
+    "featureType": "newSketch",
+    "name": "Posts sketch",
+    "parameters": [
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "sketchPlane",
+      "queries": [
+       {
+        "btType": "BTMIndividualQuery-138",
+        "deterministicIds": [
+         "JDC"
+        ]
+       }
+      ]
+     }
+    ],
+    "entities": [
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q0b",
+      "startPointId": "q0b.start",
+      "endPointId": "q0b.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.052000000000000005,
+       "pntY": -0.052000000000000005,
+       "dirX": 1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q0r",
+      "startPointId": "q0r.start",
+      "endPointId": "q0r.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.042,
+       "pntY": -0.052000000000000005,
+       "dirX": 0.0,
+       "dirY": 1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q0t",
+      "startPointId": "q0t.start",
+      "endPointId": "q0t.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.042,
+       "pntY": -0.042,
+       "dirX": -1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q0l",
+      "startPointId": "q0l.start",
+      "endPointId": "q0l.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.052000000000000005,
+       "pntY": -0.042,
+       "dirX": 0.0,
+       "dirY": -1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q1b",
+      "startPointId": "q1b.start",
+      "endPointId": "q1b.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.052000000000000005,
+       "pntY": 0.042,
+       "dirX": 1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q1r",
+      "startPointId": "q1r.start",
+      "endPointId": "q1r.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.042,
+       "pntY": 0.042,
+       "dirX": 0.0,
+       "dirY": 1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q1t",
+      "startPointId": "q1t.start",
+      "endPointId": "q1t.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.042,
+       "pntY": 0.052000000000000005,
+       "dirX": -1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q1l",
+      "startPointId": "q1l.start",
+      "endPointId": "q1l.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": -0.052000000000000005,
+       "pntY": 0.052000000000000005,
+       "dirX": 0.0,
+       "dirY": -1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q2b",
+      "startPointId": "q2b.start",
+      "endPointId": "q2b.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.042,
+       "pntY": -0.052000000000000005,
+       "dirX": 1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q2r",
+      "startPointId": "q2r.start",
+      "endPointId": "q2r.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.052000000000000005,
+       "pntY": -0.052000000000000005,
+       "dirX": 0.0,
+       "dirY": 1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q2t",
+      "startPointId": "q2t.start",
+      "endPointId": "q2t.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.052000000000000005,
+       "pntY": -0.042,
+       "dirX": -1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q2l",
+      "startPointId": "q2l.start",
+      "endPointId": "q2l.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.042,
+       "pntY": -0.042,
+       "dirX": 0.0,
+       "dirY": -1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q3b",
+      "startPointId": "q3b.start",
+      "endPointId": "q3b.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.042,
+       "pntY": 0.042,
+       "dirX": 1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q3r",
+      "startPointId": "q3r.start",
+      "endPointId": "q3r.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.052000000000000005,
+       "pntY": 0.042,
+       "dirX": 0.0,
+       "dirY": 1.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q3t",
+      "startPointId": "q3t.start",
+      "endPointId": "q3t.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.052000000000000005,
+       "pntY": 0.052000000000000005,
+       "dirX": -1.0,
+       "dirY": 0.0
+      }
+     },
+     {
+      "btType": "BTMSketchCurveSegment-155",
+      "entityId": "q3l",
+      "startPointId": "q3l.start",
+      "endPointId": "q3l.end",
+      "startParam": 0.0,
+      "endParam": 0.01,
+      "geometry": {
+       "btType": "BTCurveGeometryLine-117",
+       "pntX": 0.042,
+       "pntY": 0.052000000000000005,
+       "dirX": 0.0,
+       "dirY": -1.0
+      }
+     }
+    ],
+    "constraints": []
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMFeature-134",
+    "featureType": "extrude",
+    "name": "Posts",
+    "parameters": [
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "bodyType",
+      "enumName": "ExtendedToolBodyType",
+      "value": "SOLID"
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "operationType",
+      "enumName": "NewBodyOperationType",
+      "value": "ADD"
+     },
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "entities",
+      "queries": [
+       {
+        "btType": "BTMIndividualSketchRegionQuery-140",
+        "featureId": "F8"
+       }
+      ]
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "endBound",
+      "enumName": "BoundingType",
+      "value": "BLIND"
+     },
+     {
+      "btType": "BTMParameterQuantity-147",
+      "parameterId": "depth",
+      "expression": "99.66 mm",
+      "isInteger": false
+     },
+     {
+      "btType": "BTMParameterBoolean-144",
+      "parameterId": "defaultScope",
+      "value": true
+     }
+    ]
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMSketch-151",
+    "featureType": "newSketch",
+    "name": "Holes sketch",
+    "parameters": [
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "sketchPlane",
+      "queries": [
+       {
+        "btType": "BTMIndividualQuery-138",
+        "deterministicIds": [
+         "JDC"
+        ]
+       }
+      ]
+     }
+    ],
+    "entities": [
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "ap",
+      "centerId": "ap.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.023,
+       "xCenter": 0.0,
+       "yCenter": 0.0,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     },
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "b0",
+      "centerId": "b0.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.0022500000000000003,
+       "xCenter": -0.033,
+       "yCenter": -0.033,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     },
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "b1",
+      "centerId": "b1.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.0022500000000000003,
+       "xCenter": -0.033,
+       "yCenter": 0.033,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     },
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "b2",
+      "centerId": "b2.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.0022500000000000003,
+       "xCenter": 0.033,
+       "yCenter": -0.033,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     },
+     {
+      "btType": "BTMSketchCurve-4",
+      "entityId": "b3",
+      "centerId": "b3.center",
+      "geometry": {
+       "btType": "BTCurveGeometryCircle-115",
+       "radius": 0.0022500000000000003,
+       "xCenter": 0.033,
+       "yCenter": 0.033,
+       "xDir": 1.0,
+       "yDir": 0.0,
+       "clockwise": false
+      }
+     }
+    ],
+    "constraints": []
+   }
+  }
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/partstudios/d/DID/w/WID/e/EID/features",
+  "body": {
+   "btType": "BTFeatureDefinitionCall-1406",
+   "feature": {
+    "btType": "BTMFeature-134",
+    "featureType": "extrude",
+    "name": "Aperture and bolt holes",
+    "parameters": [
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "bodyType",
+      "enumName": "ExtendedToolBodyType",
+      "value": "SOLID"
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "operationType",
+      "enumName": "NewBodyOperationType",
+      "value": "REMOVE"
+     },
+     {
+      "btType": "BTMParameterQueryList-148",
+      "parameterId": "entities",
+      "queries": [
+       {
+        "btType": "BTMIndividualSketchRegionQuery-140",
+        "featureId": "F10"
+       }
+      ]
+     },
+     {
+      "btType": "BTMParameterEnum-145",
+      "parameterId": "endBound",
+      "enumName": "BoundingType",
+      "value": "THROUGH_ALL"
+     },
+     {
+      "btType": "BTMParameterBoolean-144",
+      "parameterId": "defaultScope",
+      "value": true
+     }
+    ]
+   }
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/documents/d/DID/w/WID/elements",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/translations/d/DID/w/WID",
+  "body": {
+   "form": {
+    "formatName": "",
+    "translate": "true",
+    "flattenAssemblies": "true",
+    "yAxisIsUp": "false",
+    "storeInDocument": "false"
+   },
+   "file": "base.step"
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/translations/TID13",
+  "body": null
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/documents/d/DID/w/WID/elements",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/translations/d/DID/w/WID",
+  "body": {
+   "form": {
+    "formatName": "",
+    "translate": "true",
+    "flattenAssemblies": "true",
+    "yAxisIsUp": "false",
+    "storeInDocument": "false"
+   },
+   "file": "deck.step"
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/translations/TID16",
+  "body": null
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/documents/d/DID/w/WID/elements",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/translations/d/DID/w/WID",
+  "body": {
+   "form": {
+    "formatName": "",
+    "translate": "true",
+    "flattenAssemblies": "true",
+    "yAxisIsUp": "false",
+    "storeInDocument": "false"
+   },
+   "file": "drill_template.step"
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/translations/TID19",
+  "body": null
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/documents/d/DID/w/WID/elements",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/translations/d/DID/w/WID",
+  "body": {
+   "form": {
+    "formatName": "",
+    "translate": "true",
+    "flattenAssemblies": "true",
+    "yAxisIsUp": "false",
+    "storeInDocument": "false"
+   },
+   "file": "spacers.step"
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/translations/TID22",
+  "body": null
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/documents/d/DID/w/WID/elements",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/translations/d/DID/w/WID",
+  "body": {
+   "form": {
+    "formatName": "",
+    "translate": "true",
+    "flattenAssemblies": "true",
+    "yAxisIsUp": "false",
+    "storeInDocument": "false"
+   },
+   "file": "assembly.step"
+  }
+ },
+ {
+  "method": "GET",
+  "path": "/api/v10/translations/TID25",
+  "body": null
+ },
+ {
+  "method": "POST",
+  "path": "/api/v10/documents/DID/share",
+  "body": {
+   "documentId": "DID",
+   "workspaceId": "WID",
+   "entries": [
+    {
+     "email": "collaborator@example.com",
+     "entryType": 0
+    }
+   ],
+   "permissionSet": [
+    "READ",
+    "WRITE",
+    "COPY",
+    "EXPORT",
+    "COMMENT",
+    "LINK"
+   ],
+   "message": "OT-2 lid camera mount (generated by onshape_api.py)"
+  }
+ }
+]
