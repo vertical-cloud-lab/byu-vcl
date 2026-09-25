@@ -84,6 +84,29 @@ still recovers it, and a **15 s** off period worked where the script's default
 adapter now has to move to a black USB 2.0 port before any further automated
 run is attempted.
 
+**2026-09-25 — retire the adapter; the Pi's own port is ready.** The Pi had been
+off the tailnet since 2026-09-24 11:59 and was power-cycled at about 14:24. The
+adapter was back in the same SuperSpeed port (`2-1`) for that cold boot and
+never came up at all: `Failed to read 4 bytes at 0xe040/0x0133 (-71)`, then
+`r8152 failed probe after 3 tries; giving up`, so no `eth1` and nothing for
+`ot2_link_recover.sh` to repair. It was unplugged at 14:39:39. Rather than keep
+nursing it, the Pi's built-in `eth0` now has a link-local profile of its own,
+the twin of `ot2-usb`:
+
+```bash
+sudo nmcli connection add type ethernet con-name ot2-eth0 ifname eth0 \
+  ipv4.method link-local ipv6.method ignore \
+  connection.autoconnect yes connection.autoconnect-priority 10
+```
+
+It is inert until a cable is in `eth0`. The priority of 10 is what makes it win
+over the stock `netplan-eth0` (DHCP, priority 0), which on a robot-only link
+would never get an address. So the robot's cable goes straight into the Pi's
+own RJ45 jack, with no adapter in between. If `eth0` is ever wanted on a real
+network again, `sudo nmcli connection delete ot2-eth0` puts DHCP back. Why the
+Pi went quiet on 2026-09-24 cannot be recovered: journald there is
+`Storage=volatile`, so the power cycle wiped the previous boot's log.
+
 The venv is already set up on that Pi at `~/.venvs/xscan` (`paho-mqtt`,
 `pymongo`, `requests`; the system Python 3.13 is externally managed, hence the
 venv). To rebuild it elsewhere:

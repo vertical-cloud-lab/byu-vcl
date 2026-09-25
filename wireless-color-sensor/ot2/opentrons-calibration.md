@@ -206,7 +206,11 @@ check (2026-09-23), so the switch lets the failing dongle retire in the same
 move. Before pulling the dongle, make sure `eth0` gets a `169.254` address the
 way `eth1` did — `nmcli -f NAME,DEVICE connection show`, then that profile's
 `ipv4.method`. A profile left on DHCP never gets one; it is the same trap as
-[on Ubuntu](#when-the-link-itself-is-the-problem).
+[on Ubuntu](#when-the-link-itself-is-the-problem). **Done 2026-09-25:** the
+stock `netplan-eth0` profile was DHCP, so a link-local `ot2-eth0` profile now
+outranks it (command and undo in [`README.md`](README.md)). The dongle failed
+to probe at all on that day's boot, so this holds with or without the switch:
+the robot's cable can go straight into the Pi's own jack today.
 
 ### If the app still cannot find the robot
 
