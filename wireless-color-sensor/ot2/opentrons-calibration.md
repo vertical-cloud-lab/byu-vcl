@@ -229,8 +229,10 @@ mDNS query the app's Devices tab sends (so it works whether or not
 `avahi-utils` is installed), collects every candidate address it can (mDNS
 responders, the neighbour table, `<name>.local`, the previously-seen address),
 tries `GET /health` on each, and prints a verdict. On a Windows machine use
-[`find_ot2.ps1`](find_ot2.ps1) instead — same three questions, same output
-shape. Doing it by hand instead:
+[`find_ot2.ps1`](find_ot2.ps1) instead. It asks the same questions plus one
+that matters only there: which adapter Windows actually sends `169.254` traffic
+out of (see [*On Windows*](#on-windows-the-address-and-the-adapter-that-steals-its-traffic)).
+Doing it by hand instead:
 
 ```bash
 ip -4 addr show                       # the wired interface should hold a 169.254.x.x address
@@ -375,8 +377,11 @@ robot is perfectly healthy, and **on Ubuntu it will not happen by itself.** Both
 ends have to be link-local; the robot cannot route to a machine that has no
 address on its subnet.
 
-Windows falls back to APIPA when DHCP times out, so on Windows this is a matter
-of waiting 60 s. **Ubuntu has no equivalent.** NetworkManager's
+Windows normally falls back to a self-assigned address when DHCP times out, but
+do not wait for it: on the lab's Windows 11 machine on 2026-09-25 the robot's
+adapter sat `Up` with **no IPv4 address at all**. The Windows steps are
+[below](#on-windows-the-address-and-the-adapter-that-steals-its-traffic).
+**Ubuntu has no fallback at all.** NetworkManager's
 `ipv4.link-local` defaults to `default`, which falls through to the global
 default of `auto`, and `auto` means *"assign a link-local address only if
 `ipv4.method` is itself `link-local`"*
@@ -421,12 +426,58 @@ NetworkManager, the equivalent is `link-local: [ ipv4 ]` on that interface in
 NetworkManager, so reach for `nmcli` first — `nmcli device status` printing
 something rather than erroring is the quickest way to tell which you have.
 
+##### On Windows: the address, and the adapter that steals its traffic
+
+Two separate problems, and fixing only the first changes nothing:
+
+1. **The cable's adapter needs an address.** That is the *wired* one, e.g.
+   `Ethernet 2`, "Realtek USB GbE Family Controller". Tailscale, Bluetooth
+   and Wi-Fi Direct ("Local Area Connection\* 1") adapters show `169.254`
+   addresses too. None of them is the cable, and the first version of
+   `find_ot2.ps1` wrongly said they were.
+2. **Windows has to send robot traffic out of that adapter.** Every adapter
+   holding a `169.254` address gets its own `169.254.0.0/16` route, and the
+   lowest route-plus-interface metric wins. When Tailscale is installed but
+   logged out, its adapter stays up with a self-assigned address. Its Wintun
+   driver reports a 100 Gb/s link
+   ([`TUN_LINK_SPEED`](https://github.com/WireGuard/wintun/blob/master/driver/wintun.c)),
+   and Windows' automatic metric turns that into **5**, against **25** for a
+   1 Gb/s port
+   ([Microsoft's table](https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/automatic-metric-for-ipv4-routes)).
+   So robot traffic goes into Tailscale and is lost, however right the
+   address is. The lab machine had exactly this on 2026-09-25.
+
+In PowerShell **as administrator**, with the adapter's own name:
+
+```powershell
+netsh interface ipv4 set address "Ethernet 2" static 169.254.51.100 255.255.0.0
+Set-NetIPInterface -InterfaceAlias 'Ethernet 2' -AddressFamily IPv4 -InterfaceMetric 1
+Find-NetRoute -RemoteIPAddress 169.254.51.252 | Select-Object -First 1 InterfaceAlias   # must print Ethernet 2
+```
+
+Leave the gateway off, as on Ubuntu. Metric 1 only reorders routes that exist
+on that adapter, and with no gateway it has no default route, so internet
+traffic still goes over Wi-Fi. Tailscale drops its own metric to 0 only while
+using an exit node
+([`ifconfig_windows.go`](https://github.com/tailscale/tailscale/blob/main/wgengine/router/osrouter/ifconfig_windows.go)).
+In that case metric 1 cannot win, and `find_ot2.ps1` prints a `/32` route
+instead. It prints all of these commands with the adapter's real name filled
+in, and [`test_find_ot2/run.sh`](test_find_ot2/run.sh) replays the 2026-09-25
+adapter list against it. To undo, before plugging that adapter into a normal
+network:
+
+```powershell
+netsh interface ipv4 set address "Ethernet 2" dhcp
+Set-NetIPInterface -InterfaceAlias 'Ethernet 2' -AddressFamily IPv4 -AutomaticMetric Enabled
+```
+
 **4. Is the robot's address still the one you typed?** It is self-assigned, and
 Opentrons warn that it ["will change periodically, especially after the OT-2 is
 restarted or reconnected"](https://support.opentrons.com/ot-2/getting-started-software-setup/networking-requirements-for-the-ot-2).
 `169.254.51.252` has held across every reconnect on the Pi's cable since
 2026-09-09, so it is a good first guess and nothing more. To find the current
-one without guessing, use [`find_ot2.sh`](find_ot2.sh), or
+one without guessing, use [`find_ot2.sh`](find_ot2.sh) ([`find_ot2.ps1`](find_ot2.ps1)
+on Windows), or
 `avahi-resolve -n OT2CEP20210722R13.local`, or read *Robot Settings →
 Networking* in the app once it is connected by any means.
 
@@ -464,8 +515,8 @@ device actually negotiated (`5000M` is USB 3, `480M` is USB 2).
   robot vs. nothing discovered at all.
 
 Finally, only step 3 needs `sudo`, and none of this changes a setting on the
-robot. If it is still stuck, run [`find_ot2.sh`](find_ot2.sh) and keep its whole
-output — it records the interface list, the mDNS result and the `/health` result
+robot. If it is still stuck, run [`find_ot2.sh`](find_ot2.sh) (or
+[`find_ot2.ps1`](find_ot2.ps1) on Windows) and keep its whole output — it records the interface list, the mDNS result and the `/health` result
 together, which is what distinguishes these faults from each other after the
 fact.
 

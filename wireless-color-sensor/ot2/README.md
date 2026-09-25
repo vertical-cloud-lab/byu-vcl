@@ -229,7 +229,8 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `blank_correction.py` | divides a sample run by a blank run per position, offset removed |
 | `ot2_link_recover.sh` | checks the link by pinging the robot, and repairs a wedged USB-Ethernet adapter |
 | `find_ot2.sh` | run on the *Ubuntu* machine holding the robot's cable: lists interfaces, asks avahi and sends the app's own mDNS query, finds the robot's current address, prints a verdict |
-| `find_ot2.ps1` | the same thing for a Windows machine |
+| `find_ot2.ps1` | the same thing for a Windows machine, plus which adapter Windows actually routes `169.254` traffic out of |
+| `test_find_ot2/run.sh` | replays real Windows adapter lists against `find_ot2.ps1`, with a stand-in robot in a network namespace (needs `pwsh` and `sudo`) |
 | `led_probe.py` | zero-motion check of whether the module's LEDs respond (they do not) |
 | `analyse_person_effect.py` | whether somebody at the machine moves the readings; `--gate` screens a run for a background that shifted mid-position |
 | `deck_photo.py` | one HTTP call to the OT-2's own overhead camera; turns the frame 180° upright, `--fix FILE` corrects a saved one |
@@ -891,6 +892,15 @@ the short version:
   [`find_ot2.sh`](find_ot2.sh) on the Ubuntu machine
   ([`find_ot2.ps1`](find_ot2.ps1) on Windows) rather than guessing between them;
   it separates the three cases in one pass.
+- **On Windows, the robot adapter needs an address *and* the best route.**
+  Tailscale, Bluetooth and Wi-Fi Direct adapters hold `169.254` addresses too.
+  A logged-out Tailscale's `169.254.0.0/16` route outranks a 1 Gb/s port's
+  (metric 5 against 25, because Wintun reports 100 Gb/s), so robot traffic goes
+  into Tailscale even after the cable's adapter has a static address. Give that
+  adapter `-InterfaceMetric 1` as well. The 2026-09-25 lab machine had both
+  problems at once: `Ethernet 2` was `Up` with no IPv4 address, and Tailscale
+  held `169.254.83.107`. Commands in
+  [`opentrons-calibration.md`](opentrons-calibration.md#on-windows-the-address-and-the-adapter-that-steals-its-traffic).
 - **On Ubuntu that address does not appear by itself, and this is the trap.**
   Windows falls back to APIPA when DHCP times out; NetworkManager does not.
   `ipv4.link-local` defaults to `auto`, which assigns a link-local address only
