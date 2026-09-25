@@ -75,6 +75,15 @@ datacenter IPs). The Pi is typically on constrained residential Wi‑Fi and may 
 live workloads, so rate-cap any large transfer (`--limit-rate` or equivalent) and never
 run full-bandwidth speed tests on it.
 
+**To browse from a Pi's IP, keep the browser on the runner.** For sites that refuse
+datacenter IPs or scripted clients (eBay, YouTube's player), run a headed Chrome under Xvfb
+on the runner and tunnel its traffic through the Pi with `ssh -D`, which Tailscale SSH
+allows. The Pi then only relays bytes and nothing is installed on it. That matters because
+the OT-2 stream-cam Pi is a 512 MB Pi Zero 2 W carrying a livestream. It exits through BYU's
+campus network (AS6510), not a residential ISP. `tools/headed-browser/` has the rate-capped
+tunnel, the launcher and an `xdotool` point/click/drag helper. Its README records what trips
+eBay's bot check (fast `view-source:` fetches) and what doesn't (a headed browser).
+
 **Treat the Pi as a live production device.** Inspect read-only first (`systemctl status`,
 `journalctl`, `crontab -l` as root) before changing state: scheduled reboots, watchdog
 timers, and `Restart=` policies may already exist, so an unreachable or restarting device
