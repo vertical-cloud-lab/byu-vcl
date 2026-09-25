@@ -227,14 +227,14 @@ def hero(parts):
     pl.camera.parallel_scale = 104
     ri, ro = cad.CRUCIBLE_ID / 2, cad.CRUCIBLE_ID / 2 + cad.CRUCIBLE_WALL
     callouts = [
-        ("Charge may stand to ~120 mm\n(must not overflow once molten)", (-ri, 0, cad.CRUCIBLE_MAX_FILL), (0.04, 0.22), "left"),
-        ("Graphite crucible, 105 mm deep\n≈ 225 ml (AMAZEMET's smaller size)", (-(ri + ro) / 2, 0, 70), (0.04, 0.47), "left"),
-        ("Induction coil (schematic)", (-cad.COIL_RADIUS, 0, 27), (0.04, 0.70), "left"),
-        ("Nozzle → melt stream → sonotrode", (0, 0, -cad.CRUCIBLE_FLOOR), (0.04, 0.92), "left"),
-        ("Sealing rod Ø12\nlifts to start the pour", (2.5, 0, 145), (0.66, 0.17), "left"),
-        ("1/2\" press-fit plug\nwith Ø1 mm vent", (r + 4.5, 0, 59), (0.73, 0.37), "left"),
-        ("AlSi10Mg powder", (r + 2.5, 0, 38), (0.73, 0.52), "left"),
-        ("3/4\" × 2.5\" 6063 cup\n4 fit around the rod; 2 per run", (r + 8.8, 0, 22), (0.73, 0.67), "left"),
+        ("don't fill past here", (-ri, 0, cad.CRUCIBLE_MAX_FILL), (0.045, 0.23), "left"),
+        ("graphite crucible,\n105 mm deep", (-(ri + ro) / 2, 0, 72), (0.045, 0.48), "left"),
+        ("induction coil", (-cad.COIL_RADIUS, 0, 27), (0.045, 0.71), "left"),
+        ("melt pours out here", (0, 0, -cad.CRUCIBLE_FLOOR), (0.045, 0.92), "left"),
+        ("the rod lifts to\nstart the pour", (2.5, 0, 145), (0.67, 0.17), "left"),
+        ("lid, with the air hole", (r + 4.5, 0, 59), (0.74, 0.38), "left"),
+        ("powder", (r + 2.5, 0, 38), (0.74, 0.53), "left"),
+        ("cup: 3/4 in bar, 2.5 in long\nfour fit; two per run", (r + 8.8, 0, 22), (0.74, 0.68), "left"),
     ]
     dims = [
         dict(p1=(-ri, 0, 90), p2=(-cad.SEALING_ROD_D / 2, 0, 90), text="20", off=(0, -9)),
@@ -242,8 +242,8 @@ def hero(parts):
              ext=[((-ri, 0, 106), (-ri, 0, 131)), ((ri, 0, 106), (ri, 0, 131))]),
     ]
     finish(pl, OUT / "crucible_cutaway.png", callouts, dims,
-           title="rePowder induction crucible with 4 standard cups (section)",
-           subtitle="Crucible, rod and coil are schematic: sized from AMAZEMET's 225 ml option + Bartosz's 20 mm gap and 10–11 cm depth. Measure before machining.")
+           title="Where the cups go, cut in half",
+           subtitle="The crucible is drawn from AMAZEMET's 225 ml size and Bartosz's 20 mm gap. Measure ours before anything is cut.")
 
 
 def plan(parts, n, path, title, callouts, dims=()):
@@ -279,8 +279,8 @@ def top_view(parts):
     d45 = math.radians(45)
     d135 = math.radians(135)
     c4 = [
-        ("Sealing rod Ø12", (rr * 0.7, -rr * 0.7, z), (0.80, 0.93), "left"),
-        (f"3/4\" (Ø19.05) slugs: ≥{gap4:.1f} mm apart\nat 600 °C, however they lean", (mid4 * math.cos(d45), mid4 * math.sin(d45), z), (0.55, 0.10), "left"),
+        ("the sealing rod", (rr * 0.7, -rr * 0.7, z), (0.80, 0.93), "left"),
+        (f"3/4 in cups stay ≥{gap4:.1f} mm apart,\neven hot and however they lean", (mid4 * math.cos(d45), mid4 * math.sin(d45), z), (0.55, 0.10), "left"),
     ]
     dims4 = [
         dict(p1=(-ri * math.cos(d45), -ri * math.sin(d45), z), p2=(ri * math.cos(d45), ri * math.sin(d45), z),
@@ -292,14 +292,14 @@ def top_view(parts):
     mid5 = rc5 * math.cos(math.radians(36))  # where neighbouring slugs nearly touch
     a = math.radians(90 + 36)
     c5 = [
-        (f"Even against the wall: {gap5c:.2f} mm apart\ncold, {gap5h:.2f} mm at 600 °C, so they jam\n(Al grows ~1.4 %, graphite ~0.3 %)",
+        (f"pushed right against the wall they are\n{gap5c:.2f} mm apart cold, and jam once hot:\naluminium grows faster than graphite",
          (mid5 * math.cos(a), mid5 * math.sin(a), z), (0.04, 0.10), "left"),
-        ("At the +0.014\" bar tolerance\n(Ø19.41) they overlap cold",
+        ("a bar at the top of its size\ntolerance overlaps even cold",
          (0, -mid5, z), (0.52, 0.95), "left"),
     ]
     p4, p5 = OUT / "_plan4.png", OUT / "_plan5.png"
-    plan(parts, 4, p4, "4 slugs fit around the rod", c4, dims4)
-    plan(parts, 5, p5, "5 do not", c5)
+    plan(parts, 4, p4, "Four cups fit around the rod", c4, dims4)
+    plan(parts, 5, p5, "Five do not", c5)
     a4, a5 = plt.imread(p4), plt.imread(p5)
     fig = plt.figure(figsize=((a4.shape[1] + a5.shape[1]) / 100, a4.shape[0] / 100), dpi=100)
     ax = fig.add_axes([0, 0, 1, 1])

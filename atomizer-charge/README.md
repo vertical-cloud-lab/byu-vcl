@@ -9,6 +9,19 @@ regenerate from it.
 
 ![Crucible cutaway with four standard cups](cad/renders/crucible_cutaway.png)
 
+## How the parts get made
+
+Three clips, generated from the same CAD by [`cad/machining.py`](cad/machining.py). Drilling is shown cut in half so
+the hole is visible; the tool positions are the real ones, and each frame re-revolves the profile with the cut taken
+so far.
+
+| Turn the cup | Turn the lid | Load it and pump down |
+| --- | --- | --- |
+| ![Machining the cup](cad/anim/machining_cup.gif) | ![Machining the lid](cad/anim/machining_plug.gif) | ![Filling the cup and venting it](cad/anim/fill_and_vent.gif) |
+
+The vent, in one line: **the chamber is pumped down before melting, so air shut under a solid lid has to leave through
+the powder.** A Ø1 mm hole through the lid gives it somewhere else to go (#104).
+
 **Before anyone cuts metal, measure the crucible** ([what to measure](#measure-before-machining)). The bore and
 sealing-rod diameters below are inferred, not measured.
 
@@ -140,4 +153,5 @@ cd atomizer-charge/cad
 python charge_cad.py          # step/, stl/, parts.json, experiments.json (masses, compositions, bar budget)
 xvfb-run -a python render.py  # renders/ (VTK needs a display; xvfb-run on a headless machine)
 python drawings.py            # drawings/charge_parts.pdf + .png
+xvfb-run -a python machining.py  # anim/*.gif (also needs pillow)
 ```
