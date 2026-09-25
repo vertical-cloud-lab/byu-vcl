@@ -48,7 +48,8 @@ Z_PART = STICK - CUP_L  # parting plane, from the chuck face
 
 INK, INK2 = rr.INK, rr.INK2
 STEEL = ("#46525f", "#77828e")  # cutting tools: dark, so they read against the aluminium
-TOOL = ("#41505f", "#7b8794")
+TOOL = ("#3d4a57", "#76828e")  # holders and blades
+CARBIDE = ("#b8912f", "#d8b969")  # the tip itself, so you can see where the cut is
 CHUCK_C = ("#6d737b", "#a7adb5")
 JAW_C = ("#98a0a8", "#c2c8ce")
 
@@ -80,23 +81,76 @@ def lay(shape):
     return Rot(0, 90, 0) * shape
 
 
-def bar_profile(stick=STICK, face=0.0, bore_d=cad.CUP_BORE_D, bore=0.0, groove_z=None, groove_r=None,
-                groove_w=1.8, step_z=None, step_r=None, lead=0.0):
-    """Half-profile of the bar with the cuts taken so far.
+def lay_rev(shape):
+    """Same, but local +Z points back at the chuck - for a part cut nose-outward."""
+    return Rot(0, -90, 0) * shape
 
-    face     how much has come off the free end
-    bore     depth of the hole drilled into the free end
-    groove_* parting groove at `groove_z` (from the chuck) down to `groove_r`
-    step_*   OD turned down to `step_r`, from `step_z` out to the free end
-    lead     length of the 15 deg lead-in on that step
+
+def _clean(pts, eps=1e-6):
+    """Drop repeated points - a zero-length edge makes the revolve fail outright."""
+    out = [pts[0]]
+    for q in pts[1:]:
+        if abs(q[0] - out[-1][0]) > eps or abs(q[1] - out[-1][1]) > eps:
+            out.append(q)
+    return out
+
+
+GROOVE_W = 2.8  # parting groove: a hair wider than the 2.2 mm blade, so nothing overlaps
+
+
+def bar_profile(stick=STICK, face=0.0, face_r=None, bore_d=cad.CUP_BORE_D, bore=0.0,
+                groove_z=None, groove_r=None, groove_w=GROOVE_W, step_z=None, step_r=None,
+                lead=0.0, chamf_z=None, chamf=0.0):
+    """Half-profile (r, z) of the bar with the cuts taken so far, z always increasing.
+
+    face / face_r  facing cut `face` deep, reached in as far as radius `face_r`
+    bore           hole `bore` deep, diameter `bore_d`, drilled into the free end
+    step_z/step_r  OD turned down to `step_r`, from `step_z` out to the free end
+    lead           15 deg lead-in of that length on the very end of the step
+    chamf_z/chamf  45 deg break of size `chamf` on the +z side of a notch at `chamf_z`
+    groove_*       parting groove `groove_w` wide, centred on `groove_z`, down to `groove_r`
+
+    A groove is always cut at whatever the bar's diameter is *there*, which is what the
+    earlier version got wrong: it grooved at full diameter inside a turned-down section,
+    so the profile doubled back on itself and the revolve came out self-intersecting.
     """
     end = stick - face
+    stepped = step_z is not None and step_r is not None and step_r < R
+
+    def od(z):
+        return step_r if stepped and z >= step_z - 1e-9 else R
+
+    if face_r is not None and 0.05 < face_r < R - 0.02:  # part way through facing
+        return _clean([(0.0, 0.0), (R, 0.0), (R, end), (face_r, end), (face_r, stick), (0.0, stick)])
+    if face_r is not None and face_r >= R - 0.02:  # tool has only just touched
+        return _clean([(0.0, 0.0), (R, 0.0), (R, stick), (0.0, stick)])
+
     pts = [(0.0, 0.0), (R, 0.0)]
-    if groove_z is not None and groove_r is not None and groove_r < R:
-        pts += [(R, groove_z - groove_w / 2), (groove_r, groove_z - groove_w / 2),
-                (groove_r, groove_z + groove_w / 2), (R, groove_z + groove_w / 2)]
-    if step_z is not None and step_r is not None and step_r < R:
-        pts += [(R, step_z), (step_r, step_z)]
+    events = []
+    if stepped:
+        events.append((step_z, 0, "step"))
+    if groove_z is not None and groove_r is not None:
+        events.append((groove_z - groove_w / 2, 1, "groove"))
+    if chamf_z is not None and chamf > 0:
+        events.append((chamf_z, 2, "chamf"))
+    # a chamfer sitting on the groove's far wall is one corner, not two features
+    on_groove = (chamf_z is not None and chamf > 0 and groove_z is not None
+                 and groove_r is not None and abs(groove_z + groove_w / 2 - chamf_z) < 1e-6)
+
+    for _, _, kind in sorted(events):
+        if kind == "step":
+            pts += [(R, step_z), (step_r, step_z)]
+        elif kind == "groove":
+            r0 = od(groove_z)
+            g0, g1 = groove_z - groove_w / 2, groove_z + groove_w / 2
+            if groove_r < r0:
+                pts += [(r0, g0), (groove_r, g0), (groove_r, g1)]
+                pts += [(r0 - chamf, g1), (r0, g1 + chamf)] if on_groove else [(r0, g1)]
+        elif not on_groove:
+            r0 = od(chamf_z)
+            pts += [(r0, chamf_z), (r0 - chamf, chamf_z), (r0, chamf_z + chamf)]
+
+    if stepped:
         if lead > 0:
             pts += [(step_r, end - lead), (step_r - lead * math.tan(math.radians(15)), end)]
         else:
@@ -108,7 +162,8 @@ def bar_profile(stick=STICK, face=0.0, bore_d=cad.CUP_BORE_D, bore=0.0, groove_z
         pts += [(rb, end), (rb, end - bore), (0.0, end - bore - cad.drill_point_h(bore_d))]
     else:
         pts += [(0.0, end)]
-    return pts
+
+    return _clean(pts)
 
 
 def drill(d, length, flute=None):
@@ -128,16 +183,24 @@ def drill(d, length, flute=None):
 
 
 def parting_blade():
-    """Thin blade, cutting edge at the origin, body running back toward the viewer."""
-    return Box(2.2, 44, 21, align=(Align.CENTER, Align.MAX, Align.CENTER))
+    """Thin blade, cutting edge at the origin, body running back toward the operator."""
+    return Box(2.2, 34, 19, align=(Align.CENTER, Align.MAX, Align.CENTER))
 
 
-def turning_tool():
-    """Diamond insert on a shank, nose at the origin, pointing at the chuck."""
-    dia = [(1.4, 0.0), (-6.0, -3.6), (-14.5, -0.5), (-7.0, 3.1)]
-    insert = extrude(Plane.XY * make_face(Polyline(*dia, close=True)), 4.0)
-    shank = Pos(-12, -12, -5.5) * Box(26, 15, 8, align=(Align.MAX, Align.CENTER, Align.MIN))
-    return Rot(0, 0, -18) * (insert + shank)
+def turning_tool_insert():
+    """The carbide tip only, nose at the origin, cutting edges facing the work (+Y)."""
+    dia = [(0.0, 0.0), (8.2, -0.7), (8.9, -8.9), (0.7, -8.2)]  # 80 deg rhombic
+    return Pos(0, 0, -1.8) * extrude(Plane.XY * make_face(Polyline(*dia, close=True)), 3.6)
+
+
+def turning_tool_holder():
+    """The shank the tip sits in, leaving toward +X and -Y - clear of the work.
+
+    The previous version pointed the shank at the chuck along -X, so on any frame where
+    the bar was bigger than the cut, the holder and tip were drawn buried inside it.
+    """
+    body = [(6.4, -1.6), (30.0, -15.6), (24.6, -24.7), (1.0, -10.7)]
+    return Pos(0, 0, -3.4) * extrude(Plane.XY * make_face(Polyline(*body, close=True)), 6.8)
 
 
 def chuck_body():
@@ -218,7 +281,7 @@ class Scene:
         self.pl.set_background("white")
         self.pl.enable_parallel_projection()
         self.frames: list[np.ndarray] = []
-        self.holds: list[int] = []
+        self.holds: list[float] = []
 
     def camera(self, focal, direction, scale):
         d = np.array(direction, float)
@@ -268,12 +331,12 @@ class Scene:
         plt.close(fig)
         return np.asarray(Image.fromarray(arr).resize((self.w, self.h), Image.LANCZOS))
 
-    def save(self, name, ms=100, tail_ms=1600, colours=128):
+    def save(self, name, ms=200, tail_ms=2400, colours=128):
         imgs = [Image.fromarray(f) for f in self.frames]
         sample = Image.fromarray(np.vstack(self.frames[:: max(1, len(self.frames) // 10)]))
         pal = sample.quantize(colors=colours, method=Image.MEDIANCUT)
         q = [im.quantize(palette=pal, dither=Image.NONE) for im in imgs]
-        durations = [h * ms for h in self.holds]
+        durations = [max(20, int(round(h * ms))) for h in self.holds]
         durations[-1] = tail_ms
         path = OUT / name
         q[0].save(path, save_all=True, append_images=q[1:], duration=durations, loop=0, optimize=True, disposal=2)
@@ -309,71 +372,89 @@ def lathe_frame(sc, profile, phase, tools=(), cut=False, stick=STICK, focal=CAM_
 # ---------------------------------------------------------------------------
 # 1. The cup
 # ---------------------------------------------------------------------------
+def cutter(x, y, z=0.0):
+    """Tip and holder, placed with the cutting point at (x, y, z)."""
+    pos = (x, y, z)
+    return [(cached("tip", turning_tool_insert), CARBIDE, pos),
+            (cached("holder", turning_tool_holder), TOOL, pos)]
+
+
 def cup_gif():
     sc = Scene()
     spin = 0.0
-    tool = cached("tool", turning_tool)
     blade = cached("blade", parting_blade)
     bit = cached("bit", lambda: drill(cad.CUP_BORE_D, 40))
     depth = cad.CUP_BORE_DEPTH
     cap = "3/4 in 6063 bar. Two cups per run, so this is done twice."
+    cut_face = 0.6  # how much comes off the end
 
-    for i in range(5):  # face the end
-        t = ease(i, 5)
-        lathe_frame(sc, bar_profile(face=0.6 * min(1, 1.6 * t)), spin,
-                    tools=[(tool, TOOL, (STICK + 1.2, -(R * (1 - t) + 1.2), 0))],
+    for i in range(4):  # bring the tool in, still clear of the bar
+        t = ease(i, 4)
+        lathe_frame(sc, bar_profile(), spin, hold=0.8,
+                    tools=cutter(STICK + 1.4, -(R + 9 - 8.4 * t), 0),
                     title="Face the end", step="1 of 4", caption=cap)
         spin += RPM
 
-    for i in range(16):  # drill
-        t = ease(i, 16)
+    for i in range(9):  # sweep in from the OD to the centre
+        t = ease(i, 9)
+        fr = R * (1 - t)
+        lathe_frame(sc, bar_profile(face=cut_face, face_r=fr), spin, hold=1 if i < 8 else 3.5,
+                    stripe_to=STICK - cut_face,
+                    tools=cutter(STICK - cut_face, -fr, 0),
+                    title="Face the end", step="1 of 4", caption=cap)
+        spin += RPM
+
+    for i in range(12):  # drill
+        t = ease(i, 12)
         d = depth * t
-        lathe_frame(sc, bar_profile(face=0.6, bore=d), spin, cut=True,
-                    tools=[(bit, STEEL, (STICK - 0.6 - d, 0, 0))],
+        lathe_frame(sc, bar_profile(face=cut_face, bore=d), spin, cut=True, stripe_to=STICK - cut_face,
+                    tools=[(bit, STEEL, (STICK - cut_face - d, 0, 0))],
                     title="Drill the pocket", step="2 of 4", note="cut in half so you can see in",
                     caption=f"1/2 in hole, {depth / IN:.2f} in deep - three quarters of the way down.")
         spin += RPM
-    lathe_frame(sc, bar_profile(face=0.6, bore=depth), spin, cut=True,
-                tools=[(bit, STEEL, (STICK - 0.6 - depth, 0, 0))],
-                title="Then ream it", step="2 of 4", note="cut in half so you can see in", hold=7,
+    lathe_frame(sc, bar_profile(face=cut_face, bore=depth), spin, cut=True, stripe_to=STICK - cut_face,
+                tools=[(bit, STEEL, (STICK - cut_face - depth, 0, 0))],
+                title="Then ream it", step="2 of 4", note="cut in half so you can see in", hold=6,
                 caption="A reamer follows the drill, so the hole is round and on size for the lid.")
     spin += RPM
 
-    for i in range(13):  # part off
-        t = ease(i, 13)
-        r = max(R - (R + 0.5) * t, 0.0)
-        lathe_frame(sc, bar_profile(face=0.6, bore=depth, groove_z=Z_PART, groove_r=r), spin,
-                    tools=[(blade, TOOL, (Z_PART, -r, 0))],
+    gz = Z_PART - GROOVE_W / 2  # blade on the scrap side, so the cup comes out 2.5 in long
+    for i in range(11):  # part off
+        t = ease(i, 11)
+        r = max(R - (R + 0.4) * t, 0.2)
+        lathe_frame(sc, bar_profile(face=cut_face, bore=depth, groove_z=gz, groove_r=r), spin,
+                    stripe_to=STICK - cut_face,
+                    tools=[(blade, TOOL, (gz, -r, 0))], hold=1 if i < 10 else 2.5,
                     title="Cut it off at 2.5 in", step="3 of 4",
                     caption="A parting blade drops in and the cup comes free.")
         spin += RPM
 
-    for i in range(5):  # the cup comes free
-        t = ease(i, 5)
+    for i in range(6):  # the cup comes free
+        t = ease(i, 6)
         pl = sc.pl
         pl.clear()
         show(pl, cached("chuck", chuck_body), CHUCK_C, lw=0.7, spin=spin)
         show(pl, cached("jaws", chuck_jaws), JAW_C, lw=0.7, spin=spin)
-        show(pl, tessellate(lay(turned(bar_profile(stick=Z_PART - 0.9)))), rr.MAT["al"], lw=1.1)
+        show(pl, tessellate(lay(turned(bar_profile(stick=Z_PART - GROOVE_W)))), rr.MAT["al"], lw=1.1)
         show(pl, cached("cup_lathe", lambda: lay(cad.build()["std_cup"])), rr.MAT["al"], lw=1.1,
-             move=(Z_PART + 0.9 + 16 * t, 0, -20 * t * t))
-        marks = stripes(2.0, Z_PART - 1.0, spin)
+             move=(Z_PART + 14 * t, 0, -18 * t * t))
+        marks = stripes(2.0, Z_PART - GROOVE_W - 0.4, spin)
         if marks is not None:
             pl.add_mesh(marks, color=STRIPE, line_width=2.0 * SS)
         sc.camera(CAM_FOCAL, CAM_DIR, CAM_SCALE)
-        sc.grab(title="Cut it off at 2.5 in", step="3 of 4",
+        sc.grab(title="Cut it off at 2.5 in", step="3 of 4", hold=0.9,
                 caption="A parting blade drops in and the cup comes free.")
         spin += RPM
 
     cup = cad.build()["std_cup"]
     wall = (cad.STOCK_D - cad.CUP_BORE_D) / 2
-    n = 20
+    n = 16
     for i in range(n):
         sc.pl.clear()
         last = i == n - 1
         show(sc.pl, cached(f"cup{i}", lambda i=i: Rot(0, 0, 360 / n * i) * cup, cut=last), rr.MAT["al"], lw=1.2)
         sc.camera((10, 5.5, CUP_L / 2), (0.55, -1.0, 0.42), 41)
-        sc.grab(title="The cup", step="4 of 4", hold=1 if last else 2,
+        sc.grab(title="The cup", step="4 of 4", hold=0.7 if not last else 1,
                 note="cut in half so you can see in" if last else None,
                 caption="6063 for the trial runs; the same part in 4N or 5N aluminium for the real ones.",
                 callouts=[("1/2 in hole, 1.9 in deep", (RB - 1, 0, CUP_L - 12), (0.70, 0.30), "left"),
@@ -389,83 +470,112 @@ def cup_gif():
 def plug_gif():
     sc = Scene()
     spin = 0.0
-    tool = cached("tool", turning_tool)
     blade = cached("blade", parting_blade)
     vent_bit = cached("vent", lambda: drill(cad.VENT_D, 30, flute=13))
     S = STICK_PLUG
-    step_len = 15.0
+    step_len = 16.0
     z_step = S - step_len
-    frame = dict(stick=S, focal=CAM_FOCAL_PLUG, scale=CAM_SCALE_PLUG, stripe_to=z_step)
+    z_cut = S - cad.PLUG_L  # the lid's top face
+    gz = z_cut - GROOVE_W / 2
+    frame = dict(stick=S, focal=CAM_FOCAL_PLUG, scale=CAM_SCALE_PLUG)
+    cap1 = "Measure that cup's hole first, then turn this end one thou bigger, so it presses in."
 
-    for i in range(14):  # turn the OD down
-        t = ease(i, 14)
-        r = R - (R - RB) * t
-        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=r), spin, **frame,
-                    tools=[(tool, TOOL, (S - step_len * min(1.0, 1.15 * t), -r, 0))],
-                    title="Turn the lid to size", step="1 of 4",
-                    caption="Measure that cup's hole first, then turn this end one thou bigger, so it presses in.")
+    for i in range(4):  # in to depth, clear of the end
+        t = ease(i, 4)
+        lathe_frame(sc, bar_profile(S), spin, **frame, stripe_to=S, hold=0.8,
+                    tools=cutter(S + 2.5, -(R + 8 - 8 * t - 1.6), 0),
+                    title="Turn the lid to size", step="1 of 5", caption=cap1)
         spin += RPM
 
-    for i in range(6):  # lead-in
-        t = ease(i, 6)
-        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=RB, lead=cad.PLUG_LEADIN_L * t), spin, **frame,
-                    tools=[(tool, TOOL, (S + 1.0, -RB * 0.8, 0))],
-                    title="Break the front edge", step="2 of 4",
-                    caption="A small taper on the nose, so the lid starts square instead of jamming.")
-        spin += RPM
-
-    for i in range(11):  # vent
+    for i in range(11):  # feed toward the chuck; the step follows the tool
         t = ease(i, 11)
+        zt = S - step_len * t
+        lathe_frame(sc, bar_profile(S, step_z=zt, step_r=RB), spin, **frame, stripe_to=zt,
+                    tools=cutter(zt, -RB, 0), hold=1 if i < 10 else 3,
+                    title="Turn the lid to size", step="1 of 5", caption=cap1)
+        spin += RPM
+
+    for i in range(6):  # lead-in on the nose
+        t = ease(i, 6)
+        lead = cad.PLUG_LEADIN_L * t
+        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=RB, lead=lead), spin, **frame,
+                    stripe_to=z_step, hold=1 if i < 5 else 3,
+                    tools=cutter(S - lead / 2, -(RB - lead * math.tan(math.radians(15)) / 2), 0),
+                    title="Taper the nose", step="2 of 5",
+                    caption="1.5 mm at 15 deg. This is the end that goes in - it starts the lid square.")
+        spin += RPM
+
+    for i in range(9):  # vent
+        t = ease(i, 9)
         d = 14.0 * t
-        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=RB, lead=cad.PLUG_LEADIN_L, bore_d=cad.VENT_D, bore=d),
-                    spin, cut=True, **frame, tools=[(vent_bit, STEEL, (S - d, 0, 0))],
-                    title="Drill the air hole", step="3 of 4", note="cut in half so you can see in",
+        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=RB, lead=cad.PLUG_LEADIN_L, bore_d=cad.VENT_D,
+                                    bore=d), spin, cut=True, **frame, stripe_to=z_step,
+                    tools=[(vent_bit, STEEL, (S - d, 0, 0))], hold=1 if i < 8 else 3.5,
+                    title="Drill the air hole", step="3 of 5", note="cut in half so you can see in",
                     caption="1 mm hole, all the way through. The last clip shows why it is there.")
         spin += RPM
 
-    z_cut = S - cad.PLUG_L
-    for i in range(11):  # part off
-        t = ease(i, 11)
-        r = max(RB - (RB + 0.4) * t, 0.0)
-        lathe_frame(sc, bar_profile(S, step_z=z_step, step_r=RB, lead=cad.PLUG_LEADIN_L, bore_d=cad.VENT_D,
-                                    bore=14.0, groove_z=z_cut, groove_r=r, groove_w=1.4), spin, **frame,
-                    tools=[(blade, TOOL, (z_cut, -r, 0))],
-                    title="Cut the lid off", step="4 of 4",
+    base = dict(step_z=z_step, step_r=RB, lead=cad.PLUG_LEADIN_L, bore_d=cad.VENT_D, bore=14.0)
+    # 0.3 mm is nothing at the wide view, so this step is a close-up.  No tool in shot: the
+    # tip is wider than the whole feature at this zoom and would sit right on top of it.
+    close = dict(stick=S, focal=(z_cut + 1.0, 0, 0), scale=10, stripe_to=2.5)
+    for i in range(7):
+        t = ease(i, 7)
+        c = cad.PLUG_TOP_CHAMFER * max(0.0, 1.35 * t - 0.35)
+        lathe_frame(sc, bar_profile(S, **base, chamf_z=z_cut, chamf=c), spin, **close,
+                    hold=1 if i < 6 else 4,
+                    title="Break the top edge", step="4 of 5", note="close up - this corner is 0.3 mm",
+                    callouts=[("sharp, as turned" if c < 0.05 else "0.3 mm break",
+                               (z_cut, 0, RB), (0.60, 0.26), "left")],
+                    caption="The tool corner takes it off at the part line, before parting. Deburr only "
+                            "- it plays no part in the fit.")
+        spin += RPM
+
+    for i in range(10):  # part off
+        t = ease(i, 10)
+        r = max((RB - cad.PLUG_TOP_CHAMFER) * (1 - t), 0.2)
+        lathe_frame(sc, bar_profile(S, **base, chamf_z=z_cut, chamf=cad.PLUG_TOP_CHAMFER, groove_z=gz, groove_r=r),
+                    spin, **frame, stripe_to=z_step, hold=1 if i < 9 else 2.5,
+                    tools=[(blade, TOOL, (gz, -r, 0))],
+                    title="Cut the lid off", step="5 of 5",
                     caption="3/8 in long. Keep each lid bagged with the cup it was measured from.")
         spin += RPM
 
-    for i in range(5):  # the lid comes free
-        t = ease(i, 5)
+    for i in range(6):  # the lid comes free, nose still pointing at the tailstock
+        t = ease(i, 6)
         pl = sc.pl
         pl.clear()
         show(pl, cached("chuck", chuck_body), CHUCK_C, lw=0.7, spin=spin)
         show(pl, cached("jaws", chuck_jaws), JAW_C, lw=0.7, spin=spin)
         show(pl, tessellate(lay(turned(bar_profile(S, step_z=z_step, step_r=RB, bore_d=cad.VENT_D, bore=14.0,
-                                                   face=cad.PLUG_L + 0.7)))), rr.MAT["al"], lw=1.1)
-        show(pl, cached("plug_lathe", lambda: lay(cad.build()["std_plug"])), rr.MAT["al"], lw=1.1,
-             move=(z_cut + 0.7 + 9 * t, 0, -13 * t * t))
+                                                   face=cad.PLUG_L + GROOVE_W)))), rr.MAT["al"], lw=1.1)
+        show(pl, cached("plug_lathe", lambda: lay_rev(cad.build()["std_plug"])), rr.MAT["al"], lw=1.1,
+             move=(S + 8 * t, 0, -11 * t * t))
         marks = stripes(2.0, z_step, spin)
         if marks is not None:
             pl.add_mesh(marks, color=STRIPE, line_width=2.0 * SS)
         sc.camera(CAM_FOCAL_PLUG, CAM_DIR, CAM_SCALE_PLUG)
-        sc.grab(title="Cut the lid off", step="4 of 4",
+        sc.grab(title="Cut the lid off", step="5 of 5", hold=0.9,
                 caption="3/8 in long. Keep each lid bagged with the cup it was measured from.")
         spin += RPM
 
     plug = cad.build()["std_plug"]
-    n = 20
+    n = 16
     for i in range(n):
         sc.pl.clear()
         last = i == n - 1
         show(sc.pl, cached(f"plug{i}", lambda i=i: Rot(0, 0, 360 / n * i) * plug, cut=last), rr.MAT["al"], lw=1.2)
-        sc.camera((2.6, 1.4, cad.PLUG_L / 2), (0.55, -1.0, 0.78), 10.5)
-        sc.grab(title="The lid", step="4 of 4", hold=1 if last else 2,
+        sc.camera((0.0, 0.0, cad.PLUG_L / 2 - 1.4), (0.55, -1.0, 0.78), 11.5)
+        sc.grab(title="The lid", step="5 of 5", hold=0.7 if not last else 1,
                 note="cut in half so you can see in" if last else None,
                 caption="One per cup, turned to that cup's measured hole. Shown about 4x the size of the cup clip.",
-                callouts=[("1 mm air hole,\nstraight through", (RV, 0, cad.PLUG_L - 1.5), (0.66, 0.24), "left"),
-                          ("taper, so it starts square", (RB - 0.3, 0, 0.8), (0.66, 0.76), "left")] if last else [],
-                dims=[dict(p1=(-RB, 0, cad.PLUG_L + 3.4), p2=(RB, 0, cad.PLUG_L + 3.4),
-                           text="cup's hole + .001 in", off=(0, -15))] if last else [])
+                callouts=[("1 mm air hole,\nstraight through", (RV, 0, cad.PLUG_L - 1.5), (0.68, 0.26), "left"),
+                          ("0.3 mm break - deburr only,\nnot part of the fit",
+                           (cad.CUP_BORE_D / 2 - 0.15, 0, cad.PLUG_L - 0.15), (0.68, 0.50), "left"),
+                          ("1.5 mm taper - this end goes in", (RB - 0.3, 0, 0.8), (0.68, 0.80), "left")]
+                if last else [],
+                dims=[dict(p1=(-RB, 0, cad.PLUG_L + 2.2), p2=(RB, 0, cad.PLUG_L + 2.2),
+                           text="cup's hole + .001 in", off=(0, -14))] if last else [])
     sc.save("machining_plug.gif")
 
 
@@ -556,7 +666,7 @@ def fill_gif():
                           ("1 mm hole in the lid", (RV, 0, CUP_L - 4), (0.62, 0.38), "left"),
                           ("powder stays where you put it", (RB / 2, 0, z_top - 14), (0.62, 0.62),
                            "left")] if last else [])
-    sc.save("fill_and_vent.gif", ms=110, tail_ms=2400)
+    sc.save("fill_and_vent.gif", ms=210, tail_ms=3000)
 
 
 def main():

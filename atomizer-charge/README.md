@@ -92,7 +92,7 @@ plugs 3:1), with a [PNG preview](cad/drawings/charge_parts.png). STEP: [`cad/ste
 | --- | --- | --- | ---: | ---: | ---: |
 | <img src="cad/renders/insets/P_solid_slug.png" width="72"> | **P1** Solid slug | Ø.750 as received × 2.500 [63.5], .02 × 45° ends | 2 | — | 48.7 g |
 | <img src="cad/renders/insets/P_std_cup.png" width="72"> | **P2** Standard cup | Ø.750 × 2.500; Ø.500 reamed bore 1.875 [47.6] deep to full Ø (118° point OK); 1/8" wall | 4 + 1 spare | 6 | 32.0 g |
-| <img src="cad/renders/insets/P_std_plug.png" width="72"> | **P3** Plug for P2 (shown ~3×) | Ø = **that cup's measured bore + .0005–.001**; .375 [9.5] long; Ø1 mm vent through; 15° lead-in | 4 + 1 spare | 6 | 3.2 g |
+| <img src="cad/renders/insets/P_std_plug.png" width="72"> | **P3** Plug for P2 (shown ~3×) | Ø = **that cup's measured bore + .0005–.001**; .375 [9.5] long; Ø1 mm vent through; 15° lead-in on the nose; .012 [0.3] break on the top, deburr only | 4 + 1 spare | 6 | 3.2 g |
 | <img src="cad/renders/insets/P_thin_cup.png" width="72"> | **P4** Thin-wall cup | Ø.750 × 1.250 [31.75]; Ø.625 flat-bottom bore 1.125 deep; 1/16" wall, 1/8" floor | — | 2 | 9.1 g |
 | <img src="cad/renders/insets/P_thin_plug.png" width="72"> | **P5** Plug for P4 (shown ~3×) | Ø = measured P4 bore + .0005; .1875 [4.76] long; vent; lead-in | — | 2 | 2.5 g |
 | <img src="cad/renders/insets/F_support_sleeve.png" width="72"> | **F1** Press support sleeve (mild steel) | Ø2.000 × 2.500; bore = measured P2 OD + .001–.002 (slip fit) | — | 1 | 0.87 kg |

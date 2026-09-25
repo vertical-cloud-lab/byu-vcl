@@ -99,6 +99,7 @@ RIM_CHAMFER = 0.3
 PLUG_L = 0.375 * IN
 PLUG_LEADIN_L = 1.5  # 15 deg lead-in: 1.5 mm long, 0.4 mm deep
 PLUG_LEADIN_R = 0.4
+PLUG_TOP_CHAMFER = 0.3  # break on the parted face - deburr only, no part in the fit
 VENT_D = 1.0  # through-vent: never seal gas in with the powder (#104, #134)
 
 THIN_L = 1.250 * IN
@@ -181,8 +182,8 @@ def plug_profile(d=CUP_BORE_D, length=PLUG_L):
         (rv, 0),
         (r - PLUG_LEADIN_R, 0),
         (r, PLUG_LEADIN_L),
-        (r, length - 0.3),
-        (r - 0.3, length),
+        (r, length - PLUG_TOP_CHAMFER),
+        (r - PLUG_TOP_CHAMFER, length),
         (rv, length),
     ]
 
