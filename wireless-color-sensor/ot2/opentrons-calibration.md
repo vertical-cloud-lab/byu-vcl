@@ -175,6 +175,27 @@ address with ARP conflict detection, and the Pi and a laptop can then both hold
 the robot at once. Untested here, but it is ordinary Ethernet behaviour and it
 removes the unplug/replug dance.
 
+**Which switch** (checked 2026-09-25, from a stream-cam Pi since Amazon blocks
+datacenter IPs): a TP-Link [TL-SG105](https://www.amazon.com/dp/B00A128S24),
+5-port gigabit, metal, unmanaged, sold by Amazon at $12.99 on a limited-time
+deal (list $19.79). The Netgear [GS305](https://www.amazon.com/dp/B07S98YLHM)
+at $15.99 is the like-for-like alternative. Avoid the `TL-SG105E` and `GS305E`
+— "Easy Smart" means managed. It ships with a power adapter but no cables, so
+plan on an outlet and two patch cables on top of the robot's own. The BYU Store
+carries no switch and no USB-Ethernet adapter, only Xavier Cat6 cables (3 ft,
+$6.99, in stock). The TL-SG105's IGMP snooping does not get in
+the way of discovery: mDNS goes to `224.0.0.251`, and
+[RFC 4541 §2.1.2](https://www.rfc-editor.org/rfc/rfc4541#section-2.1.2) has a
+snooping switch forward all of `224.0.0.x` on every port.
+
+**Cable the Pi through its built-in port, not the RTL8153.** The
+`RPI_STREAM_CAM_HOSTNAME` Pi's own `eth0` was `DOWN` and unused at the last
+check (2026-09-23), so the switch lets the failing dongle retire in the same
+move. Before pulling the dongle, make sure `eth0` gets a `169.254` address the
+way `eth1` did — `nmcli -f NAME,DEVICE connection show`, then that profile's
+`ipv4.method`. A profile left on DHCP never gets one; it is the same trap as
+[on Ubuntu](#when-the-link-itself-is-the-problem).
+
 ### If the app still cannot find the robot
 
 Establish whether it is a *network* problem or an *app* problem before touching
