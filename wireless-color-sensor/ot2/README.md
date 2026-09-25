@@ -241,6 +241,8 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
 | `calibration_status.py` | read-only report of which OT-2 calibrations are present and which are missing |
+| `livestream-pi/stream-watchdog.{sh,service,timer}` | copies of the livestream Pi's watchdog, which restarts a stalled or given-up stream |
+| `livestream-pi/test-stream-watchdog.sh` | runs the watchdog against a throwaway unit (needs `sudo`; safe on the Pi) |
 
 ## Lining a reading up against the livestream
 
@@ -263,22 +265,27 @@ half runs over SSH on the stream-cam Pi (`~/ytframes/grab.py` there).
 ## When the livestream restarts, and why the archive has gaps
 
 The OT-2 livestream runs on a Pi Zero 2 W (`OT2_STREAM_CAM_HOSTNAME`), set up
+in [#172](https://github.com/vertical-cloud-lab/byu-vcl/issues/172#issuecomment-5139754959)
 from the Acceleration Consortium's
-[picam README](https://github.com/AccelerationConsortium/ac-training-lab/blob/87a3ccb/src/ac_training_lab/picam/README.md#L255-L303)
-plus one local watchdog. Read from the Pi on 2026-09-25 (read-only, nothing
-changed), it restarts the stream at three levels:
+[picam README](https://github.com/AccelerationConsortium/ac-dev-lab/blob/87a3ccb/src/ac_training_lab/picam/README.md#L255-L303)
+plus one local watchdog. As of 2026-09-25 it restarts the stream at three
+levels:
 
 | what restarts | when | details |
 | --- | --- | --- |
-| the whole Pi | 5 am, 1 pm, 9 pm lab time | root crontab `0 5,13,21 * * * /sbin/shutdown -r now`. Each boot ends the YouTube broadcast and starts a new one, hence the ~8 h videos; YouTube only [archives streams under 12 h](https://support.google.com/youtube/answer/6247592) |
-| the stream program | 10 s after it exits | `device.service`, `Restart=always`. **At most 3 starts per hour, the boot's included** (`StartLimitBurst=3`, `StartLimitIntervalSec=3600`) |
-| the stream program | YouTube acknowledges no new bytes for 3 one-minute checks | `stream-watchdog.timer` → `/usr/local/bin/stream-watchdog.sh`, at most 6 restarts a day. Local, not in the upstream README |
+| the whole Pi | 5 am, 1 pm, 9 pm lab time | root crontab `0 5,13,21 * * * /sbin/shutdown -r now`, from [ac-dev-lab#231](https://github.com/AccelerationConsortium/ac-dev-lab/issues/231#issuecomment-3091508574). Each boot ends the YouTube broadcast and starts a new one, hence the ~8 h videos; YouTube only [archives streams under 12 h](https://support.google.com/youtube/answer/6247592) |
+| the stream program | 10 s after it exits | `device.service`, `Restart=always`. **At most 3 starts per hour, the boot's included** (`StartLimitBurst=3`, `StartLimitIntervalSec=3600`), the guard against a crash loop from [ac-dev-lab#72](https://github.com/AccelerationConsortium/ac-dev-lab/issues/72#issuecomment-2735038969) |
+| the stream program | YouTube acknowledges no new bytes for 3 one-minute checks, or systemd has given up on it for 10 min | `stream-watchdog.timer` → `/usr/local/bin/stream-watchdog.sh`, at most 6 restarts a day. Local, not in the upstream README. Designed in [streamingLambda#2](https://github.com/vertical-cloud-lab/streamingLambda/pull/2#issuecomment-4898600779); copies of all three files are in [`livestream-pi/`](livestream-pi/) |
 
-**Once the service gives up, the stream stays down until the next scheduled
-reboot.** The watchdog exits early unless `systemctl is-active` passes, so it
-never restarts a service that the start limit has stopped. A few minutes
-without network is enough. It happened five times in the ten days on record,
-about 20 h of missing footage in all:
+### When systemd gives up on the stream
+
+`device.py` exits whenever its Lambda call fails, for instance while DNS is
+down. Three such exits within an hour hit the start limit, and systemd marks
+`device.service` failed. **Until 2026-09-25 the stream then stayed down until
+the next scheduled reboot.** The watchdog skipped any unit that was not active.
+That was deliberate: in streamingLambda#2 it was one of three limits stacked
+against "hundreds of streams for very short amounts of time". It happened five
+times in the ten days on record, about 20 h of missing footage in all:
 
 | service gave up | next start |
 | --- | --- |
@@ -288,19 +295,64 @@ about 20 h of missing footage in all:
 | 09-24 12:06 | 13:00 reboot |
 | 09-24 13:28 | 21:00 reboot |
 
-The 09-24 pair came from the Pi's DNS lookups failing from 11:59 until the
-9 pm reboot.
+**Since 2026-09-25 the watchdog starts it again.** Once `device.service` has
+been failed for 10 minutes, the watchdog tries a TCP connection to
+`a.rtmp.youtube.com:1935`, where the stream goes. If that connects, it runs
+`systemctl reset-failed` (which also clears the start limit) and
+`systemctl start`, and counts that against the same 6-a-day budget as a stall
+restart. If it doesn't connect, the watchdog logs
+`… is unreachable - waiting for the network` and tries again a minute later
+without spending budget. A service stopped by hand is `inactive`, not `failed`,
+so it is left alone.
 
-**Power cuts are the other cause.** The Pi has no power switch. It runs while
-its micro-USB cable has power, and boots and resumes streaming on its own
-about a minute after power returns. A cut shows up in `journalctl -b -1` as a
-log that stops mid-task, with none of the `Shutting down` … `Journal stopped`
-lines a reboot writes. Two are on record:
+The daily ceiling on starts is unchanged, which is what keeps this from
+producing the pile of repeat broadcasts seen upstream in
+[ac-dev-lab#231](https://github.com/AccelerationConsortium/ac-dev-lab/issues/231#issuecomment-2898447847).
+Every start follows either a boot or one of the watchdog's 6 daily restarts,
+and the start limit caps each of those at 3 starts, itself included. That is
+at most (3 reboots + 6) × 3 = 27 starts a day, plus 3 per power cut, the same
+ceiling as before. Only a start whose Lambda call gets through creates a
+broadcast, and while DNS is down none do.
+
+**It would not have helped on 09-24.** The Pi's DNS was down from about 12:00
+until the 9 pm reboot, apart from 20 minutes after the 1 pm reboot: `tailscaled`
+logged about 150 failed lookups in every 10 minutes of it. DHCP renewals kept
+succeeding every 30 minutes, so the Wi-Fi link itself stayed up; what failed
+was reaching the campus DNS servers. The new check would have waited all
+afternoon, as intended. The journal no longer goes back to 09-16–09-19, so
+whether those three were short outages that this now covers can't be checked.
+
+What changed on the Pi, and how to undo it:
+
+- `/usr/local/bin/stream-watchdog.sh` was replaced by
+  [`livestream-pi/stream-watchdog.sh`](livestream-pi/stream-watchdog.sh); the
+  diff is [`5c6b417`](https://github.com/vertical-cloud-lab/byu-vcl/commit/5c6b417).
+  The service and timer are unchanged.
+- The old script is at `/var/backups/stream-watchdog.sh.2026-09-25`. To undo:
+  `sudo install -m 755 /var/backups/stream-watchdog.sh.2026-09-25 /usr/local/bin/stream-watchdog.sh`.
+  The timer runs whichever version is in place at its next check, so nothing
+  needs restarting.
+- `sudo ./test-stream-watchdog.sh`, in [`livestream-pi/`](livestream-pi/),
+  runs the script against a throwaway unit with the same start limit, never
+  `device.service`, so it is safe on the Pi. All 24 checks passed there and on
+  a GitHub runner.
+
+The powder-doser camera got the same watchdog in streamingLambda#2 and was not
+changed.
+
+### Power cuts
+
+The Pi has no power switch. It runs while its micro-USB cable has power, and
+boots and resumes streaming on its own about a minute after power returns. A
+cut shows up in `journalctl -b -1` as a log that stops mid-task, with none of
+the `Shutting down` … `Journal stopped` lines a reboot writes. Three are on
+record:
 
 | power lost | stream back | notes |
 | --- | --- | --- |
 | 09-23 ~12:34 | 13:15 | cron then rebooted it once more at 13:16 (below) |
 | 09-25 ~13:10 | 14:58 | plugged into the lab computer's USB port. The 13:00 video, `9XQqOj42GLw`, is only 9 min long |
+| 09-25 ~15:17 | 15:20 | likely the planned move off that USB port. New video `3rBdrVeUvlk` |
 
 No boot on record logged an under-voltage warning, so the supply was adequate
 while it was on. It should be on a wall adapter rated 5 V 2.5 A, the figure in
@@ -310,7 +362,7 @@ not a computer's USB port.
 **After a cut, early log timestamps are wrong.** The Pi has no real-time clock,
 so for the ~45 s until network time arrives it runs on the last time it saved,
 and `journalctl --list-boots` shows a boot starting before the previous one
-ended. Both times the stream started a few seconds after the sync, so the
+ended. Each time the stream started a few seconds after the sync, so the
 burned-in overlay was right from its first frame. But cron reads the clock jump
 as time that passed: if the jump is under 3 hours and crosses 5 am, 1 pm or
 9 pm, it runs that reboot at once. That was the extra 13:16 restart on 09-23.
