@@ -144,15 +144,45 @@ command/ot2/{OT2_SERIAL}/pipette         # OT-2 commands
 status/ot2/{OT2_SERIAL}/complete         # OT-2 completion status
 ```
 
+**Batch-posting comments as a bot.** `post-queued-comments.yml` (`workflow_dispatch`, dry-run
+by default) posts a reviewed `queue.json` of comments and new issues, so meeting follow-ups can
+go out under a bot identity rather than a person's. Bodies live next to the queue under
+`docs/meetings/<date>-<topic>/posts/`. With no extra secrets it posts as `github-actions[bot]`,
+and GitHub never starts workflows from `GITHUB_TOKEN` events, so an `@claude` in such a
+comment is dead text (the script drops `<!-- if-trigger -->` blocks in that case). To make
+pings work, the workflow mints an installation token for the lab's own GitHub App when the
+secrets below exist; App-token events do trigger `claude.yml`, whose `allowed_bots` names that
+App. Bots on `allowed_bots` skip the write-permission check, so keep the list to that one App.
+These two secrets are read by `post-queued-comments.yml` directly, not the `claude.yml` env block.
+
+| Secret | Purpose |
+| --- | --- |
+| `VCL_BOT_APP_ID` | App ID of the lab-owned GitHub App (slug `vcl-bot`), installed on this repo with Issues and Pull requests read/write only. |
+| `VCL_BOT_PRIVATE_KEY` | Its private key (PEM). Regenerate from the App's settings page to rotate. |
+
 **Other services**
 
 | Secret | Purpose |
 | --- | --- |
 | `HF_TOKEN` | Hugging Face `byu-vcl` account, fine-grained: read + write contents/settings of own repos. Enough to duplicate Spaces (`duplicate_space`), upload files, and set Space-side secrets (`add_space_secret`). |
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
+| `ONSHAPE_ACCESS_KEY` / `ONSHAPE_SECRET_KEY` | Onshape REST API key pair (dev-portal.onshape.com), the same pair `tensegrity-optimization` uses. Prefer these for anything the API can do. |
+| `ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD` | Onshape account login, for the browser path (sketching by mouse clicks and drags) only. |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
 | `PICO_ID` | `e6647c15673a2438`, the Pico W's `machine.unique_id()`. Namespaces the `command/picow/<id>/as7341/read` and `color-mixing/picow/<id>/as7341` topics. Must match the `PICO_ID` in that board's `my_secrets.py`, or the Space and the sensor talk past each other in silence. |
 | `CUBXL_PI_PASSWORD` | Sudo password for the Pi 5 that fronts the CubXL, separate from the stream-cam Pis. `CUBXL_PI_USERNAME` and `CUBXL_PI_HOSTNAME` are repo **variables**, not secrets. The username has to be, since its value is three characters and appears as a substring of `byu-vcl` — exactly the masking trap noted above. The hostname is one by choice: a tailnet name confers no access on its own, and it already appears in that Pi's tag name in `claude.yml`, so keeping it secret bought nothing but inconsistency. |
+
+**Onshape browser work will probably need to be screen automation on a Pi, over SSH.**
+Headless Chrome on the runner reaches the sign-in page, but a datacenter IP and a headless
+browser are exactly what login bot-checks look for, and Onshape's CAD canvas is WebGL, so
+DOM-level Playwright selectors do not reach sketch geometry anyway — it takes real pointer
+clicks and drags at screen coordinates. Plan on a real (or virtual, e.g. Xvfb) display on a
+Pi, driven over Tailscale SSH with something like `xdotool` or Playwright's `mouse` API in
+headed mode, taking screenshots to locate things between moves. That uses the Pi's
+residential IP as well. Pick a Pi with headroom: the stream-cam Pis are carrying live
+streams, and the OT-2 one also runs CubOS gantry work. Pass the credentials to the Pi over
+stdin or an env var in the SSH command, never as a command-line argument or a file left on
+disk.
 
 **Hugging Face Space secrets are a separate place to keep in sync.** A duplicated
 light-mixing / OT-2-LCM Space reads its own settings, not GitHub's, and expects these exact

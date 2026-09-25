@@ -149,6 +149,12 @@ jobs:
           # Hugging Face (byu-vcl account) and Zenodo (deposit:write + deposit:actions)
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           ZENODO_API_TOKEN: ${{ secrets.ZENODO_API_TOKEN }}
+          # Onshape REST API key pair (dev-portal.onshape.com), same pair as tensegrity-optimization
+          ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
+          ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
+          # Onshape account login, for browser sign-in (screen automation on a Pi, see CLAUDE.md)
+          ONSHAPE_USERNAME: ${{ secrets.ONSHAPE_USERNAME }}
+          ONSHAPE_PASSWORD: ${{ secrets.ONSHAPE_PASSWORD }}
           # OT-2 robot serial, read from the robot's own /health endpoint. Namespaces the
           # command/ot2/<serial>/pipette and status/ot2/<serial>/complete MQTT topics.
           OT2_SERIAL: ${{ secrets.OT2_SERIAL }}
@@ -163,6 +169,13 @@ jobs:
 
           # The exact tag found in the trigger text (@claude, @claude+opus-5:max, ...)
           trigger_phrase: ${{ steps.select.outputs.phrase }}
+
+          # The lab's own GitHub App, used by post-queued-comments.yml to post
+          # reviewed batches of comments. Listing it here lets an "@claude" in
+          # one of those comments start a run. The action strips "[bot]" and
+          # ignores case, so this must match the App's slug. Nothing else is
+          # allowed: bots on this list bypass the write-permission check.
+          allowed_bots: vcl-bot
 
           # # Optional (riskier): Print the full turn-by-turn JSON execution log in the step output
           # show_full_output: true
