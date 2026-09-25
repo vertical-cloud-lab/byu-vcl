@@ -107,6 +107,22 @@ network again, `sudo nmcli connection delete ot2-eth0` puts DHCP back. Why the
 Pi went quiet on 2026-09-24 cannot be recovered: journald there is
 `Storage=volatile`, so the power cycle wiped the previous boot's log.
 
+**2026-09-25, 15:51 — the adapter can be put on USB 2.0 without touching it.**
+After that power cycle the cable went back into the dongle, not `eth0`. The
+dongle was on the other blue port (`4-1`) and wedged 8 minutes after boot.
+Switching off only the SuperSpeed half of that port made it re-enumerate at
+once on the port's USB 2.0 companion (`3-1`, 480 Mbit/s). That is exactly the
+move to a black port asked for above, and it answered 2 787 pings in a row
+afterwards:
+
+```bash
+echo 1 | sudo tee /sys/bus/usb/devices/4-0:1.0/usb4-port1/disable   # 2-0:1.0/usb2-port1 for the other blue port
+```
+
+It is runtime only. A reboot puts the port back to USB 3, and writing `0`
+undoes it sooner. Check `lsusb -t` after a reboot: if the dongle is back at
+`5000M`, run the line again before an automated run.
+
 The venv is already set up on that Pi at `~/.venvs/xscan` (`paho-mqtt`,
 `pymongo`, `requests`; the system Python 3.13 is externally managed, hence the
 venv). To rebuild it elsewhere:
@@ -241,6 +257,10 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
 | `calibration_status.py` | read-only report of which OT-2 calibrations are present and which are missing |
+| `enclosure_height_cal.py` | runs on the Pi, one step per command: align over a socket, press in photographed steps, carry, step down over the plate. Silence for 10 min sets the enclosure down. **Dropped the enclosure on its only carry**: see below |
+| `camera_model.py` | fits how each camera sees a 1 mm move in X/Y/Z; reads the nozzle's true height from its shoulder, which is how a jammed press shows up |
+| `live_frame.py` | newest livestream frame (~3 s behind), fetched on the Pi |
+| `livestream_replay.py` | frames from the stream's last ~15 minutes, by lab clock time |
 | `livestream-pi/stream-watchdog.{sh,service,timer}` | copies of the livestream Pi's watchdog, which restarts a stalled or given-up stream |
 | `livestream-pi/test-stream-watchdog.sh` | runs the watchdog against a throwaway unit (needs `sudo`; safe on the Pi) |
 
@@ -828,6 +848,27 @@ every number; the write-up is
   the other state 2.55–2.80** · **a blank taken at a different read height
   3.12–9.67**. The last two exceed the whole signal. The instrument is far better
   than the procedure around it.
+
+## 2026-09-25 — enclosure height over the plate: not calibrated; the enclosure fell
+
+Asked for on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
+set the enclosure just above the 96-well plate in slot 1. Full write-up in
+[`results-enclosure-height-2026-09-25.md`](results-enclosure-height-2026-09-25.md).
+
+- **The enclosure is in the base's *right* socket now (A2), not the left (A1)
+  every September run used.** It had moved by 2026-09-12. The pick-up that
+  works there is **(92.8, 316.5)**: A1 + (56.25, 1.0), not the definition's
+  A1 + (55.95, 0).
+- **A press can jam without the robot noticing.** The first press into A2 stalled
+  ~2.3 mm in; the Z motor skipped 7 mm of steps and the nozzle came up empty.
+  Only a photo showed it, and only a home clears it.
+  `enclosure_height_cal.py` now presses in ≤ 2 mm steps and
+  `camera_model.py press` reads the nozzle's real height from each photo.
+- **The grip check passed at 10.7× and the enclosure still fell**, ~85 mm to
+  the deck about 6 s into the carry, as on 2026-09-09. Someone in the lab put it
+  back within 30 s, and it still reads 440 counts seated. The grip check
+  measures light, not grip. **No carry should run unattended until something
+  that tests the grip is in place.**
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
