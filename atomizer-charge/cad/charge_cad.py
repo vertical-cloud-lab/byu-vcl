@@ -554,7 +554,8 @@ def bar_budget(exps: list, ids: list[str]) -> float:
 # ---------------------------------------------------------------------------
 E_AL = 69000.0  # MPa
 YIELD_6063_T52 = 110.0  # MPa, 16 ksi minimum per ASTM B221; ~145 MPa typical
-MU_AL_AL = (0.4, 1.2)  # dry Al on Al, clean to galling
+MU_AL_AL = (1.05, 1.35)  # dry Al on Al, STATIC.  Edison's correction: 0.4 is the
+# sliding value, and it is breakaway that sets the press you need to reserve.
 
 
 def fit_check(bore: float, od: float, engage_l: float, interference_in: float) -> dict:
@@ -565,23 +566,32 @@ def fit_check(bore: float, od: float, engage_l: float, interference_in: float) -
     # radial closure = hub growth + solid-plug compression = (p r / E)(k + nu) + (p r / E)(1 - nu)
     p = delta_r * E_AL / (r * (k + 1.0))
     area = math.pi * bore * engage_l
+    # At the bore the stress state is (sigma_r, sigma_th, sigma_z) = (-p, p k, 0).
+    # Yield is von Mises, not hoop alone - checking hoop against Sy understates it by
+    # ~24 % here, which is Edison's correction and the reason the ceiling is .0008".
+    vm = p * math.sqrt(k**2 + k + 1)
     return {
         "interference_in": interference_in,
         "contact_pressure_MPa": round(p, 1),
         "bore_hoop_stress_MPa": round(p * k, 1),
-        "frac_of_min_yield": round(p * k / YIELD_6063_T52, 2),
+        "bore_von_mises_MPa": round(vm, 1),
+        "frac_of_min_yield": round(vm / YIELD_6063_T52, 2),
         "press_force_t": [round(p * area * mu / 9806.65, 2) for mu in MU_AL_AL],
-        # how far the cup OD grows before its bore reaches yield - this is all the
-        # clearance the E4 support sleeve is allowed, or it never takes any load
+        "max_elastic_interference_in": round(
+            interference_in * YIELD_6063_T52 / vm, 5
+        ),
+        # how far the cup OD grows before the bore yields - this is all the clearance
+        # the E4 support sleeve is allowed, or it never takes any load
         "od_growth_at_yield_in": round(
-            2 * (YIELD_6063_T52 / k) * r**2 * b / (E_AL * (b**2 - r**2)) * 2 / IN, 5
+            2 * (YIELD_6063_T52 / math.sqrt(k**2 + k + 1)) * r**2 * b
+            / (E_AL * (b**2 - r**2)) * 2 / IN, 5
         ),
     }
 
 
 def fits() -> dict:
     return {
-        "std_cup_P2_P3": [fit_check(CUP_BORE_D, STOCK_D, PLUG_L, i) for i in (0.0005, 0.001, 0.002)],
+        "std_cup_P2_P3": [fit_check(CUP_BORE_D, STOCK_D, PLUG_L, i) for i in (0.0005, 0.0008, 0.001, 0.002)],
         "thin_cup_P4_P5": [
             fit_check(THIN_BORE_D, STOCK_D, THIN_PLUG_L, i) for i in (0.0005, 0.001)
         ],

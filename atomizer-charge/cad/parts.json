@@ -125,34 +125,53 @@
         "interference_in": 0.0005,
         "contact_pressure_MPa": 19.2,
         "bore_hoop_stress_MPa": 49.8,
-        "frac_of_min_yield": 0.45,
+        "bore_von_mises_MPa": 61.7,
+        "frac_of_min_yield": 0.56,
         "press_force_t": [
-          0.3,
-          0.89
+          0.78,
+          1.0
         ],
-        "od_growth_at_yield_in": 0.00074
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
+      },
+      {
+        "interference_in": 0.0008,
+        "contact_pressure_MPa": 30.7,
+        "bore_hoop_stress_MPa": 79.7,
+        "bore_von_mises_MPa": 98.7,
+        "frac_of_min_yield": 0.9,
+        "press_force_t": [
+          1.25,
+          1.6
+        ],
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
       },
       {
         "interference_in": 0.001,
         "contact_pressure_MPa": 38.3,
         "bore_hoop_stress_MPa": 99.7,
-        "frac_of_min_yield": 0.91,
+        "bore_von_mises_MPa": 123.4,
+        "frac_of_min_yield": 1.12,
         "press_force_t": [
-          0.59,
-          1.78
+          1.56,
+          2.01
         ],
-        "od_growth_at_yield_in": 0.00074
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
       },
       {
         "interference_in": 0.002,
         "contact_pressure_MPa": 76.7,
         "bore_hoop_stress_MPa": 199.3,
-        "frac_of_min_yield": 1.81,
+        "bore_von_mises_MPa": 246.8,
+        "frac_of_min_yield": 2.24,
         "press_force_t": [
-          1.19,
-          3.57
+          3.12,
+          4.01
         ],
-        "od_growth_at_yield_in": 0.00074
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
       }
     ],
     "thin_cup_P4_P5": [
@@ -160,23 +179,27 @@
         "interference_in": 0.0005,
         "contact_pressure_MPa": 8.4,
         "bore_hoop_stress_MPa": 46.8,
-        "frac_of_min_yield": 0.43,
+        "bore_von_mises_MPa": 51.5,
+        "frac_of_min_yield": 0.47,
         "press_force_t": [
-          0.08,
-          0.25
+          0.21,
+          0.28
         ],
-        "od_growth_at_yield_in": 0.00098
+        "max_elastic_interference_in": 0.00107,
+        "od_growth_at_yield_in": 0.00089
       },
       {
         "interference_in": 0.001,
         "contact_pressure_MPa": 16.9,
         "bore_hoop_stress_MPa": 93.5,
-        "frac_of_min_yield": 0.85,
+        "bore_von_mises_MPa": 103.0,
+        "frac_of_min_yield": 0.94,
         "press_force_t": [
-          0.16,
-          0.49
+          0.43,
+          0.55
         ],
-        "od_growth_at_yield_in": 0.00098
+        "max_elastic_interference_in": 0.00107,
+        "od_growth_at_yield_in": 0.00089
       }
     ]
   }

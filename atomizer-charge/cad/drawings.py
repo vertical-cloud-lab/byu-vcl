@@ -158,7 +158,7 @@ def main() -> None:
     v.hdim(-ro, ro, cad.SLEEVE_L, 0.2, "\u00d8" + fmt(cad.SLEEVE_OD))
     v.hdim(-rs, rs, cad.SLEEVE_L, 0.48, "\u00d8 = measured P2 OD + .0005 max")
     v.vdim(0, cad.SLEEVE_L, ro, 0.3, fmt(cad.SLEEVE_L) + "\n= P2 length")
-    v.title(T1, "F1  Press sleeve", ["mild steel \u00b7 qty 1 \u00b7 only for E4",
+    v.title(T1, "F1  Press sleeve", ["1018 cold-finished (A108) \u00b7 qty 1 \u00b7 only for E4",
                                      "stops the cup wall bulging under the press"])
 
     # --- Row 2: the lids, 3:1, and the small cup ---------------------------
@@ -173,7 +173,7 @@ def main() -> None:
 
     v = View(ax, 4.55, ROW_LID, scale=3.0)
     plug_view(ax, v, cad.plug_profile(), rb, cad.PLUG_L, cad.VENT_D)
-    v.hdim(-rb, rb, cad.PLUG_L, 0.34, "\u00d8 = that cup's measured hole + .0005\u2013.001")
+    v.hdim(-rb, rb, cad.PLUG_L, 0.34, "\u00d8 = that cup's measured hole + .0005\u2013.0008")
     v.vdim(0, cad.PLUG_L, rb, 0.62, fmt(cad.PLUG_L))
     v.title(T2, "P3  Lid for P2   (3:1)", ["6063-T52 \u00b7 qty 10 \u00b7 one per cup, not interchangeable"])
 
@@ -187,8 +187,8 @@ def main() -> None:
         "NOTES",
         "1  All parts from the 3/4\" 6063-T52 bar on hand (McMaster 1640T16). Inches [mm].",
         "2  Break the outside edges .020 \u00d7 45\u00b0 and deburr the holes. No marker, no stamping.",
-        "3  Make a cup, measure its hole, then turn that cup's lid .0005\u2013.001\" bigger, so it",
-        "    presses in. No more than .001\": that is already 99 MPa hoop, 0.9 of 6063-T52 yield.",
+        "3  Make a cup, measure its hole, then turn that cup's lid .0005\u2013.0008\" bigger, so it",
+        "    presses in. No more than .0008\": at .001\" the bore is past yield (von Mises 123 MPa).",
         "    Bag each lid with the cup it was made for - they are not interchangeable.",
     ]
     notes_r = [
