@@ -188,6 +188,18 @@ the way of discovery: mDNS goes to `224.0.0.251`, and
 [RFC 4541 §2.1.2](https://www.rfc-editor.org/rfc/rfc4541#section-2.1.2) has a
 snooping switch forward all of `224.0.0.x` on every port.
 
+**Which cables** (checked the same way, same day): Cable Matters Cat 6, 10 ft,
+snagless, 24 AWG stranded bare copper. The
+[5-pack](https://www.amazon.com/dp/B00C2CA3N8) is $19.99, only $2 more than two
+[singles](https://www.amazon.com/dp/B0B57T23M3) at $8.99, so the spares cost
+almost nothing. Both ship from Amazon and are sold by Cable Matters. Ten feet is
+sized for the lab-computer run, likely the longer one; if that machine sits more
+than about 8 ft from the switch, the same 5-pack comes in
+[14 ft](https://www.amazon.com/dp/B00C2DLRV4) for $23.99. The Pi sits by the
+robot, so coil its slack. Skip anything listed as CCA (copper-clad aluminium),
+and skip "Cat 7"/"Cat 8": every port on this link is gigabit or slower, so they
+buy nothing but a stiffer, shielded cable.
+
 **Cable the Pi through its built-in port, not the RTL8153.** The
 `RPI_STREAM_CAM_HOSTNAME` Pi's own `eth0` was `DOWN` and unused at the last
 check (2026-09-23), so the switch lets the failing dongle retire in the same
