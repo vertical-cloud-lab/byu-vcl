@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-25",
+  "cadquery_reference": {
+    "what": "the same simplified base (plate, collar, aperture, posts, bolt holes; no tabs, fillets or nut traps) built in CadQuery from lid_mount.Params",
+    "volume_mm3": 108840.279
+  },
+  "rest_api": {
+    "script": "onshape_api.py",
+    "account": "Sterling's (the ONSHAPE_ACCESS_KEY pair; plan group EDU Educator)",
+    "document": "https://cad.onshape.com/documents/443cb9b65c87663ba09bfe83/w/c9a919c669b084a190eb18cd",
+    "native_part_studio": "Base (native features): 4 sketches + 4 extrudes, all regenerated OK on the first run",
+    "native_volume_mm3": 108840.279,
+    "native_bbox_mm": {
+      "lowX": -56.0,
+      "lowY": -56.0,
+      "lowZ": 0.0,
+      "highX": 56.0,
+      "highY": 56.0,
+      "highZ": 99.66
+    },
+    "step_imports": {
+      "assembly": "eb1eab9f731f6d8eefa2f195",
+      "drill_template": "f2dc4994dca7e1e15199eda5",
+      "deck": "d650f171f51c45e02f0e8059",
+      "base": "772191a817dd4501a15463f0",
+      "spacers": "6163945a5eaa4570738a2ae5"
+    },
+    "first_run_failure": "all 5 STEP imports: HTTP 400 'An illegal argument was provided' with storeInDocument/yAxisIsUp in the form; fixed by sending only Onshape's documented fields",
+    "api_calls_used": "about 38 in total, including the failed first import attempts, two single-file tests, verification (elements, mass properties, bounding box) and two shaded views"
+  },
+  "browser_ui": {
+    "script": "onshape_ui.py --cdp http://127.0.0.1:9222",
+    "account": "BYU VCL (ONSHAPE_USERNAME), classroom 'Vertical Cloud Lab'",
+    "browser": "Chromium 152, headed on a user-space Xvfb display on a Raspberry Pi 5 (residential IP), WebGL2 via SwiftShader; driven from the GitHub runner over an SSH tunnel to DevTools",
+    "sign_in": "email + password typed into the form; no CAPTCHA, 2FA or bot check; navigator.webdriver false",
+    "document": "https://cad.onshape.com/documents/06611d6444078e2169084ea3/w/09bfb4bb4f461af09394b634/e/3f433fd9557d805ee224455e",
+    "document_name": "OT-2 lid camera mount (UI build, scripted, 2026-09-25)",
+    "features": [
+      "Sketch 1",
+      "Extrude 1",
+      "Sketch 2",
+      "Extrude 2",
+      "Sketch 3",
+      "Extrude 3",
+      "Sketch 4",
+      "Extrude 4",
+      "Mirror 1",
+      "Mirror 2",
+      "Sketch 5",
+      "Extrude 5",
+      "Mirror 3",
+      "Mirror 4"
+    ],
+    "volume_mm3_from_mass_properties_panel": 108840.279,
+    "surface_area_mm2": 44827.197,
+    "duration": "8 min 7 s (22:38:02-22:46:09 UTC), first attempt; 3 dimension picks needed the built-in retry",
+    "exploratory_document": "an earlier, interactive build of the same base (same volume) was sent to the account's Trash afterwards; restore it from Trash if wanted",
+    "signed_out_after": true
+  }
+}

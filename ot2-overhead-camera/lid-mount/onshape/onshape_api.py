@@ -22,6 +22,7 @@ Credentials come from the environment, never the command line:
     python onshape_api.py --share someone@byu.edu  # ...and share it (edit rights)
     python onshape_api.py --skip-native            # STEP import only
     python onshape_api.py --public                 # Free plans can only create public documents
+    python onshape_api.py --document URL --skip-native --step deck   # add one STEP to an existing document
 
 A run costs about 40 API calls. Free, Standard and EDU Student plans get 2,500 a
 year (https://onshape-public.github.io/docs/auth/limits/), so polling is kept slow.
@@ -31,6 +32,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import subprocess
 import sys
 import time
@@ -45,6 +47,7 @@ from lid_mount import EXPORTS, Params, corners  # noqa: E402
 API = "/api/v10"           # any explicit version works; v17 is current as of 2026-09
 TOP_PLANE = "JDC"          # deterministic id of the Top plane in every new Part Studio
 M = 0.001                  # sketch geometry is in metres
+STEPS = ("base", "deck", "drill_template", "spacers", "assembly")   # files in ../exports, .step
 
 
 class Onshape:
@@ -105,9 +108,10 @@ class Onshape:
             tr = self.call("POST", f"/translations/d/{did}/w/{wid}", files={
                 "file": (path.name, fh, "application/octet-stream"),
             }, data={
-                # formatName left empty: Onshape detects STEP from the extension.
-                "formatName": "", "translate": "true", "flattenAssemblies": "true",
-                "yAxisIsUp": "false", "storeInDocument": "false",
+                # Exactly the fields of Onshape's documented example. An empty formatName
+                # means "import to Onshape". Adding storeInDocument and yAxisIsUp got
+                # HTTP 400 "illegal argument" from the live API (2026-09-25).
+                "formatName": "", "flattenAssemblies": "true", "translate": "true",
             })
         tid = tr["id"]
         for _ in range(60):                      # every poll counts against the yearly limit
@@ -247,6 +251,9 @@ def main() -> None:
     ap.add_argument("--skip-native", action="store_true", help="only import the STEP files")
     ap.add_argument("--skip-import", action="store_true", help="only build the native base")
     ap.add_argument("--public", action="store_true", help="create a public document (needed on Free plans)")
+    ap.add_argument("--document", metavar="URL", help="work in an existing document instead of creating one")
+    ap.add_argument("--step", action="append", choices=STEPS, metavar="NAME",
+                    help=f"import only this STEP file (repeatable; default all of: {', '.join(STEPS)})")
     ap.add_argument("--dry-run", action="store_true",
                     help="no network: run the whole flow against a stub and save every request to dry_run.json")
     args = ap.parse_args()
@@ -261,7 +268,13 @@ def main() -> None:
         api = Onshape(os.environ.get("ONSHAPE_BASE_URL", "https://cad.onshape.com"), access, secret)
     print("signed in as", api.whoami().get("name", "?"))
 
-    did, wid = api.create_document(args.name, args.public)
+    if args.document:
+        m = re.search(r"/documents/(\w+)/w/(\w+)", args.document)
+        if not m:
+            raise SystemExit(f"not a workspace URL: {args.document}")
+        did, wid = m.groups()
+    else:
+        did, wid = api.create_document(args.name, args.public)
     url = f"{api.base}/documents/{did}/w/{wid}"
     print("document:", url)
     failures = []
@@ -274,7 +287,7 @@ def main() -> None:
             failures.append(f"native build: {exc}")
             print("  !", exc)
     if not args.skip_import:
-        for name in ("base", "deck", "drill_template", "spacers", "assembly"):
+        for name in args.step or STEPS:
             path = EXPORTS / f"{name}.step"
             try:
                 ids = api.import_step(did, wid, path)

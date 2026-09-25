@@ -8,7 +8,7 @@
   "method": "POST",
   "path": "/api/v10/documents",
   "body": {
-   "name": "OT-2 lid camera mount (824c490)",
+   "name": "OT-2 lid camera mount (50bf9da)",
    "isPublic": false
   }
  },
@@ -731,10 +731,8 @@
   "body": {
    "form": {
     "formatName": "",
-    "translate": "true",
     "flattenAssemblies": "true",
-    "yAxisIsUp": "false",
-    "storeInDocument": "false"
+    "translate": "true"
    },
    "file": "base.step"
   }
@@ -755,10 +753,8 @@
   "body": {
    "form": {
     "formatName": "",
-    "translate": "true",
     "flattenAssemblies": "true",
-    "yAxisIsUp": "false",
-    "storeInDocument": "false"
+    "translate": "true"
    },
    "file": "deck.step"
   }
@@ -779,10 +775,8 @@
   "body": {
    "form": {
     "formatName": "",
-    "translate": "true",
     "flattenAssemblies": "true",
-    "yAxisIsUp": "false",
-    "storeInDocument": "false"
+    "translate": "true"
    },
    "file": "drill_template.step"
   }
@@ -803,10 +797,8 @@
   "body": {
    "form": {
     "formatName": "",
-    "translate": "true",
     "flattenAssemblies": "true",
-    "yAxisIsUp": "false",
-    "storeInDocument": "false"
+    "translate": "true"
    },
    "file": "spacers.step"
   }
@@ -827,10 +819,8 @@
   "body": {
    "form": {
     "formatName": "",
-    "translate": "true",
     "flattenAssemblies": "true",
-    "yAxisIsUp": "false",
-    "storeInDocument": "false"
+    "translate": "true"
    },
    "file": "assembly.step"
   }

@@ -2,21 +2,24 @@
 """Path B2: build the lid-mount base in Onshape through the browser.
 
 Drives the Onshape web UI the way a person would, with Playwright. It signs in,
-creates a document, draws sketches with mouse clicks and drags, types the
-dimensions, and extrudes, cuts and mirrors features. A screenshot is saved after
-every step to ./screenshots, so a failed run shows exactly where it stopped.
+creates a document, draws sketches with mouse drags, picks edges with the mouse,
+types every dimension, and extrudes, cuts and mirrors features. A screenshot is
+saved after every step to ./screenshots, so a failed run shows where it stopped.
 
 > Onshape's Terms of Use, section 4(a)(ix), forbid "any robot, spider, scraper or
 > other automated means to access the Service". The REST API (onshape_api.py) is
 > the sanctioned route; run this only on an account whose owner accepts that.
 
-    ONSHAPE_EMAIL, ONSHAPE_PASSWORD   an Onshape login (email + password, no 2FA)
+    ONSHAPE_USERNAME, ONSHAPE_PASSWORD   an Onshape login (email + password, no 2FA)
 
-    python onshape_ui.py --signin-only          # load the sign-in page and stop (no login)
-    python onshape_ui.py --save-state s.json    # sign in, build, keep the session
-    python onshape_ui.py --state s.json         # reuse a saved session (avoids repeated logins)
-    python onshape_ui.py --document-url https://cad.onshape.com/documents/...   # reuse a document
-    xvfb-run -a python onshape_ui.py --headed --slow 300                         # watch it
+    python onshape_ui.py --signin-only                 # load the sign-in page and stop (no login)
+    python onshape_ui.py --cdp http://127.0.0.1:9222   # drive a browser that is already running
+    python onshape_ui.py --headed --slow 300           # launch one here and watch it
+    python onshape_ui.py --document-url URL            # build in an existing, empty Part Studio
+
+The run of 2026-09-25 drove a headed Chromium on a Raspberry Pi's virtual display,
+so that it signed in from the Pi's residential IP, attached over an SSH tunnel with
+--cdp. pi/README.md has that setup.
 
 It builds the geometry that meets the lid, as native features on the Top plane
 with every dimension typed in mm:
@@ -29,19 +32,34 @@ with every dimension typed in mm:
     Sketch 5 / Extrude 5   one O4.5 bolt hole at (33, 33), cut through all
     Mirror 3, Mirror 4     the bolt hole, the same way
 
-The deck, nut traps, tabs and fillets come in with the STEP import in onshape_api.py.
+then reads the part's volume back from Onshape's mass properties panel. The same
+base built over the REST API, and in CadQuery, is 108,840.3 mm^3.
 
 How it knows where to click. With the view square to the Top plane and zoomed to
 fit a model that is symmetric about the origin, the origin sits at the centre of
-the canvas. Each sketch entity is then drawn with a drag of a known number of
-pixels, and when its dimension box opens, Onshape pre-fills the length it
-actually drew. That gives pixels per millimetre for the current view, without
-reading the WebGL canvas at all.
+the canvas. Each sketch entity is drawn with a drag of a known number of pixels,
+and when a dimension box opens, Onshape pre-fills the length it actually drew.
+That gives pixels per millimetre for the current view, without reading the WebGL
+canvas at all. What the live run added:
+
+  * Hover before clicking. Onshape picks what it has pre-selected under the
+    cursor, and with software WebGL that takes most of a second.
+  * Never pick on the axes. Seen from the Top, the Right and Front planes are
+    edge-on as the two axis lines, so a click on an edge's midpoint picks a plane.
+  * Those lines are also how sketches are located: an edge or a centre point is
+    dimensioned to the Right and Front planes, picked on the canvas inside the lens
+    aperture where nothing else is. The dimension tool ignores a plane, or the
+    Origin, picked from the feature list.
+  * A through-all cut from the Top plane has to be Symmetric. Remove flips the
+    default direction, away from the part.
+  * Place dimensions clear of other geometry, or the placement click becomes a
+    second pick.
 """
 from __future__ import annotations
 
 import argparse
 import asyncio
+import math
 import os
 import re
 import sys
@@ -58,11 +76,11 @@ SHOTS = HERE / "screenshots"
 BASE_URL = os.environ.get("ONSHAPE_BASE_URL", "https://cad.onshape.com")
 
 # Default shortcuts from https://cad.onshape.com/help/Content/Home/keyboard_shortcuts_and_hotkeys.htm
-# (checked 2026-09). Kept in one place so a change on Onshape's side is a one-line fix.
+# (all used live on 2026-09-25). Kept in one place so a change on Onshape's side is a one-line fix.
 KEYS = {
     "sketch": "Shift+S",          # new sketch; inside an open sketch Shift+S is Point instead
     "extrude": "Shift+E",
-    "center_rectangle": "r",
+    "center_rectangle": "r",      # "g" is the corner rectangle
     "circle": "c",
     "dimension": "d",
     "top_view": "Shift+5",
@@ -72,7 +90,7 @@ KEYS = {
     "escape": "Escape",
 }
 
-# Selectors from Onshape's web client (2026-09); the sign-in ones were checked live.
+# Selectors from Onshape's web client, all checked live on 2026-09-25.
 SEL = {
     "email": "input[name='username']",
     "continue": "button.continue-button",
@@ -86,7 +104,8 @@ SEL = {
     "canvas": "#viewerdiv canvas#canvas",
     "tree_item": ".os-list-item-name",
     "dialog_ok": ".ns-dialog-button-ok",
-    "dimension_box": ".dimension-dialog input",
+    "dimension_box": ".quantity-autocomplete-holder input.os-param-number",
+    "mass_properties": "button.mass-properties",
 }
 
 
@@ -114,9 +133,20 @@ class Ui:
 
     async def click(self, x: float, y: float) -> None:
         await self.page.mouse.move(x, y)
-        await self.wait(250)                # Onshape selects what the cursor hovers
+        await self.wait(250)
         await self.page.mouse.click(x, y)
         await self.wait(250)
+
+    async def pick(self, x: float, y: float, settle: int = 900) -> None:
+        """Click on the canvas. Onshape picks what it has pre-selected under the
+        cursor, so approach the point and hover until the pre-selection catches up."""
+        m = self.page.mouse
+        await m.move(x - 12, y + 6)
+        await self.wait(250)
+        await m.move(x, y)
+        await self.wait(settle)
+        await m.click(x, y)
+        await self.wait(600)
 
     async def drag(self, x0: float, y0: float, x1: float, y1: float) -> None:
         m = self.page.mouse
@@ -127,52 +157,71 @@ class Ui:
             await m.move(x0 + (x1 - x0) * i / 12, y0 + (y1 - y0) * i / 12)
             await self.page.wait_for_timeout(25)
         await m.up()
-        await self.wait(350)
+        await self.wait(500)
 
     async def tree(self, name: str):
-        """A feature-list row (Top, Front, Right, Origin, Sketch 1, Extrude 3, ...)."""
+        """A feature-list row (Top, Front, Right, Sketch 1, Extrude 3, Part 1, ...)."""
         loc = self.page.locator(SEL["tree_item"], has_text=re.compile(rf"^\s*{re.escape(name)}\s*$"))
         await loc.first.wait_for(state="visible", timeout=20000)
         return loc.first
 
+    async def click_tree(self, name: str) -> None:
+        box = await (await self.tree(name)).bounding_box()
+        await self.click(box["x"] + 15, box["y"] + box["height"] / 2)
+
     async def accept(self) -> None:
         """Click the green check of the open sketch or feature dialog. Enter does
         not close a sketch, so this always clicks."""
-        ok = self.page.locator(SEL["dialog_ok"])
-        await ok.first.click()
-        await self.wait(1200)
+        box = await self.page.locator(SEL["dialog_ok"]).first.bounding_box()
+        await self.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+        await self.wait(1500)
 
     async def centre_on_origin(self) -> None:
         """Square to the Top plane and zoom to fit. With a model symmetric about
         the origin, that puts the origin at the canvas centre."""
         await self.key("top_view")
+        await self.wait(800)
         await self.key("zoom_fit")
-        await self.wait(1200)
+        await self.wait(1500)
         box = await self.page.locator(SEL["canvas"]).bounding_box()
         self.cx, self.cy = box["x"] + box["width"] / 2, box["y"] + box["height"] / 2
         self.span = min(box["width"], box["height"])
 
-    def at(self, x_mm: float, y_mm: float, ppm: float) -> tuple[float, float]:
-        return self.cx + x_mm * ppm, self.cy - y_mm * ppm
+    def right_plane(self) -> tuple[float, float]:
+        """A point on the Right plane, seen edge-on, inside the lens aperture."""
+        return self.cx, self.cy + 0.1 * self.span
 
-    async def dimension(self, picks: list, place: tuple[float, float], value_mm: float) -> float:
-        """Dimension the picked entities, return the length Onshape pre-filled
-        (mm), then set it to value_mm. A pick is (x, y) on the canvas or a
-        feature-list name such as "Origin"."""
+    def front_plane(self) -> tuple[float, float]:
+        return self.cx + 0.1 * self.span, self.cy
+
+    async def dimension(self, picks: list, place: tuple[float, float], value_mm: float, tries: int = 3) -> float:
+        """Dimension the entities under the canvas points in picks, placing the
+        dimension at place; return the length Onshape pre-filled (mm), then set it
+        to value_mm. The first pick after drawing is often dropped while Onshape
+        solves the sketch, hence the pause and the retries."""
+        await self.wait(1500)
         await self.key("dimension")
-        for pk in picks:
-            if isinstance(pk, str):
-                await (await self.tree(pk)).click()
-                await self.wait()
-            else:
-                await self.click(*pk)
-        await self.click(*place)
+        await self.wait(400)
         box = self.page.locator(SEL["dimension_box"]).first
-        await box.wait_for(state="visible", timeout=10000)
+        for attempt in range(tries):
+            for x, y in picks:
+                await self.pick(x, y)
+            await self.pick(*place, settle=500)
+            try:
+                await box.wait_for(state="visible", timeout=3000)
+                break
+            except PWTimeout:
+                if attempt == tries - 1:
+                    raise RuntimeError(f"no dimension box after {tries} tries (see the screenshots)")
+                print(f"  no dimension box, try {attempt + 1}; picking again", flush=True)
+                # Start clean, or a half-made selection pairs with the next pick.
+                await self.key("escape")
+                await self.key("dimension")
         drawn = parse_mm(await box.input_value())
-        await box.fill(f"{value_mm:g} mm")
-        await box.press("Enter")
-        await self.wait(700)
+        await box.press("Control+a")
+        await self.page.keyboard.type(f"{value_mm:g} mm", delay=40)
+        await self.page.keyboard.press("Enter")
+        await self.wait(900)
         await self.key("escape")
         return drawn
 
@@ -190,11 +239,15 @@ def parse_mm(text: str) -> float:
 async def sign_in(ui: Ui, email: str, password: str) -> None:
     page = ui.page
     await page.goto(f"{BASE_URL}/signin", wait_until="domcontentloaded")
-    await page.locator(SEL["email"]).fill(email)
+    field = page.locator(SEL["email"])
+    await field.wait_for(state="visible", timeout=30000)
+    await field.click()
+    await page.keyboard.type(email, delay=70)
     await page.locator(SEL["continue"]).click()
     pw = page.locator(SEL["password"])
     await pw.wait_for(state="visible", timeout=30000)
-    await pw.fill(password)
+    await pw.click()
+    await page.keyboard.type(password, delay=60)
     await page.locator(SEL["signin"]).click()
     try:
         await page.wait_for_url(re.compile(r"/documents"), timeout=60000)
@@ -203,7 +256,14 @@ async def sign_in(ui: Ui, email: str, password: str) -> None:
         if await page.locator(SEL["totp"]).count():
             raise RuntimeError("the account has two-factor auth on; sign in by hand once and pass --state")
         raise RuntimeError("sign-in did not reach /documents (wrong password? reCAPTCHA? see screenshot)")
+    await ui.wait(4000)
     await ui.shot("signed in")
+
+
+async def signed_in(ui: Ui) -> bool:
+    await ui.page.goto(f"{BASE_URL}/documents", wait_until="domcontentloaded")
+    await ui.wait(5000)
+    return "/signin" not in ui.page.url
 
 
 async def create_document(ui: Ui, name: str) -> str:
@@ -211,7 +271,10 @@ async def create_document(ui: Ui, name: str) -> str:
     await page.goto(f"{BASE_URL}/documents", wait_until="domcontentloaded")
     await page.locator(SEL["create"]).click()
     await page.locator(SEL["create_document"]).click()
-    await page.locator(SEL["document_name"]).fill(name)
+    box = page.locator(SEL["document_name"])
+    await box.wait_for(state="visible", timeout=20000)
+    await box.click(click_count=3)
+    await page.keyboard.type(name, delay=40)
     await ui.shot("new document dialog")
     await page.locator(SEL["document_ok"]).click()
     await page.wait_for_url(re.compile(r"/documents/\w+/w/\w+/e/\w+"), timeout=60000)
@@ -219,7 +282,8 @@ async def create_document(ui: Ui, name: str) -> str:
 
 
 async def open_part_studio(ui: Ui, url: str) -> None:
-    await ui.page.goto(url, wait_until="domcontentloaded")
+    if ui.page.url != url:
+        await ui.page.goto(url, wait_until="domcontentloaded")
     await ui.page.locator(SEL["canvas"]).wait_for(state="visible", timeout=90000)
     await ui.tree("Top")
     await ui.wait(8000)                     # WebSockets never go idle; give the graphics time
@@ -228,22 +292,78 @@ async def open_part_studio(ui: Ui, url: str) -> None:
 
 async def new_sketch_on_top(ui: Ui) -> None:
     await ui.key("escape")
-    await (await ui.tree("Top")).click()
+    await ui.click_tree("Top")
     await ui.key("sketch")
-    await ui.wait(800)
+    await ui.wait(1200)
     await ui.centre_on_origin()
 
 
-async def circle_on_origin(ui: Ui, diameter: float, label: str) -> float:
-    """Drag a circle out from the origin, then set its diameter. Returns px/mm."""
+async def circle_on_origin(ui: Ui, diameter: float, label: str) -> None:
+    """Drag a circle out from the origin, then set its diameter."""
     await ui.key("circle")
     r = 0.12 * ui.span
     await ui.drag(ui.cx, ui.cy, ui.cx + r, ui.cy)
     await ui.key("escape")
-    edge = (ui.cx + r * 0.7071, ui.cy - r * 0.7071)
-    drawn = await ui.dimension([edge], (ui.cx + r + 60, ui.cy - r - 40), diameter)
+    a = math.radians(40)                    # off both axis lines
+    edge = (ui.cx + r * math.cos(a), ui.cy - r * math.sin(a))
+    await ui.dimension([edge], (ui.cx + r + 60, ui.cy - r - 40), diameter)
     await ui.shot(f"{label} sketch")
-    return 2 * r / drawn
+
+
+async def square_on_origin(ui: Ui, side: float, label: str) -> None:
+    """A centre-point rectangle dragged out from the origin, side x side."""
+    await ui.key("center_rectangle")
+    h = 0.1 * ui.span
+    await ui.drag(ui.cx, ui.cy, ui.cx + h, ui.cy - h)
+    await ui.key("escape")
+    # Top edge, picked right of centre (its midpoint is on the Right plane).
+    drawn = await ui.dimension([(ui.cx + h / 2, ui.cy - h)], (ui.cx + h / 2, ui.cy - h - 45), side)
+    ppm = 2 * h / drawn
+    x = ui.cx + side / 2 * ppm              # the width changed about the centre
+    await ui.dimension([(x, ui.cy - h / 2)], (x + 50, ui.cy - h / 2), side)
+    await ui.shot(f"{label} sketch")
+
+
+async def square_at(ui: Ui, side: float, x: float, y: float, label: str) -> None:
+    """A side x side centre-point rectangle centred at (x, y) mm, both non-zero.
+    Drawn small in that quadrant, sized, then moved by dimensioning its inner
+    edges to the Right and Front planes."""
+    sx, sy = (1 if x > 0 else -1), (1 if y > 0 else -1)
+    h = 0.06 * ui.span
+    c = (ui.cx + sx * 0.2 * ui.span, ui.cy - sy * 0.2 * ui.span)
+    await ui.key("center_rectangle")
+    await ui.drag(c[0], c[1], c[0] + h, c[1] - h)
+    await ui.key("escape")
+    drawn = await ui.dimension([(c[0] + h / 3, c[1] - h)], (c[0] + h / 3, c[1] - h - 45), side)   # top edge
+    half = side / 2 * (2 * h / drawn)
+    await ui.dimension([(c[0] + half, c[1] + 2)], (c[0] + half + 45, c[1] + 2), side)             # right edge
+    ex = c[0] - sx * half                   # the edge nearer the Right plane
+    d = await ui.dimension([(ex, c[1] + 0.4 * half), ui.right_plane()],
+                           ((ex + ui.cx) / 2, c[1] - sy * 70), abs(x) - side / 2)
+    ppm = abs(ex - ui.cx) / d               # a long baseline: better than the small square's
+    c = (ui.cx + x * ppm, c[1])
+    ey = c[1] + sy * half                   # the edge nearer the Front plane
+    await ui.dimension([(c[0] + 0.4 * half, ey), ui.front_plane()],
+                       (c[0] + sx * 80, (ey + ui.cy) / 2), abs(y) - side / 2)
+    await ui.shot(f"{label} sketch")
+
+
+async def circle_at(ui: Ui, diameter: float, x: float, y: float, label: str) -> None:
+    """A circle centred at (x, y) mm, both non-zero, located by its centre point."""
+    sx, sy = (1 if x > 0 else -1), (1 if y > 0 else -1)
+    c = (ui.cx + sx * 0.2 * ui.span, ui.cy - sy * 0.2 * ui.span)
+    r = 0.03 * ui.span
+    await ui.key("circle")
+    await ui.drag(c[0], c[1], c[0] + r, c[1])
+    await ui.key("escape")
+    a = math.radians(40)
+    await ui.dimension([(c[0] + r * math.cos(a), c[1] - r * math.sin(a))],
+                       (c[0] - sx * (r + 40), c[1] + sy * (r + 30)), diameter)
+    d = await ui.dimension([c, ui.right_plane()], ((c[0] + ui.cx) / 2, c[1] - sy * 60), abs(x))
+    ppm = abs(c[0] - ui.cx) / d
+    c = (ui.cx + x * ppm, c[1])
+    await ui.dimension([c, ui.front_plane()], (c[0] + sx * 60, (c[1] + ui.cy) / 2), abs(y))
+    await ui.shot(f"{label} sketch")
 
 
 async def extrude(ui: Ui, sketch: str, op: str, depth_mm: float | None, label: str) -> None:
@@ -252,19 +372,29 @@ async def extrude(ui: Ui, sketch: str, op: str, depth_mm: float | None, label: s
     page = ui.page
     await ui.key("escape")
     await ui.key("extrude")
-    await (await ui.tree(sketch)).click()
+    await ui.wait(800)
+    await ui.click_tree(sketch)
     await ui.wait()
     if op != "New":
         await page.locator("[data-parameter-id='operationType']").get_by_text(op, exact=True).first.click()
+        await ui.wait()
     if depth_mm is None:
-        await page.locator("[data-parameter-id='endBound']").get_by_text("Blind", exact=True).first.click()
+        await page.locator("[data-parameter-id='endBound']").first.click()
+        await ui.wait()
         await page.get_by_text("Through all", exact=True).first.click()
+        await ui.wait()
+        # Remove flips the default direction, which from the Top plane points away from
+        # the part ("Selected tools and targets do not intersect"). Symmetric cuts both ways.
+        await page.locator("[data-parameter-id='symmetric']").get_by_text("Symmetric", exact=True).first.click()
     else:
         depth = page.locator("[data-parameter-id='depth'] input").first
-        await depth.fill(f"{depth_mm:g} mm")
-        await depth.press("Tab")
-    await ui.wait()
+        await depth.click(click_count=3)
+        await page.keyboard.type(f"{depth_mm:g} mm", delay=40)
+        await page.keyboard.press("Tab")
+    await ui.wait(1500)
     await ui.shot(f"{label}: extrude {op.lower()} {'through all' if depth_mm is None else f'{depth_mm:g} mm'}")
+    if await page.get_by_text("do not intersect").count():
+        raise RuntimeError(f"{label}: the extrude misses the part")
     await ui.accept()
 
 
@@ -275,48 +405,29 @@ async def mirror_twice(ui: Ui, feature: str, first: int) -> None:
     for plane, picks in (("Right", [feature]), ("Front", [feature, f"Mirror {first}"])):
         await ui.key("escape")
         await ui.key("search_tools")
-        await page.keyboard.type("Mirror", delay=40)
-        await ui.wait(700)
-        await page.keyboard.press("Enter")
+        await ui.wait(600)
+        await page.keyboard.type("Mirror", delay=60)
         await ui.wait(1000)
-        await page.locator("[data-parameter-id='patternType']").get_by_text("Part mirror").first.click()
-        await page.get_by_text("Feature mirror", exact=True).first.click()
+        await page.keyboard.press("Enter")
+        await ui.wait(1600)
+        await page.locator("[data-parameter-id='patternType']").first.click()
         await ui.wait()
+        await page.get_by_text("Feature mirror", exact=True).first.click()
+        await ui.wait(800)
         for f in picks:
-            await (await ui.tree(f)).click()
-        await page.locator("[data-parameter-id='mirrorPlane']").click()
-        await (await ui.tree(plane)).click()
-        await ui.shot(f"mirror {feature} across {plane}")
+            await ui.click_tree(f)
+        await page.locator("[data-parameter-id='mirrorPlane']").first.click()
+        await ui.wait()
+        await ui.click_tree(plane)
+        await ui.wait(1200)
+        await ui.shot(f"mirror {' and '.join(picks)} across {plane}")
         await ui.accept()
-
-
-async def square_at(ui: Ui, side: float, x: float, y: float, label: str, anchored: bool) -> None:
-    """A centre-point rectangle side x side with its centre at (x, y) mm. When
-    anchored, it is dragged out from the origin itself."""
-    await ui.key("center_rectangle")
-    h = 0.1 * ui.span
-    if anchored:
-        c = (ui.cx, ui.cy)
-    else:                                   # anywhere in the right quadrant; dimensions move it
-        c = (ui.cx + 0.25 * ui.span * (1 if x > 0 else -1), ui.cy - 0.25 * ui.span * (1 if y > 0 else -1))
-    await ui.drag(c[0], c[1], c[0] + h, c[1] - h)
-    await ui.key("escape")
-    drawn = await ui.dimension([(c[0], c[1] - h)], (c[0], c[1] - h - 40), side)       # top edge
-    ppm = 2 * h / drawn
-    # The width changed about the centre; the right edge is now side / 2 away.
-    await ui.dimension([(c[0] + side / 2 * ppm, c[1])], (c[0] + side / 2 * ppm + 40, c[1]), side)
-    if not anchored:
-        # Centre point to the origin: horizontal (placed below), then vertical (placed left).
-        await ui.dimension([c, "Origin"], ((c[0] + ui.cx) / 2, max(c[1], ui.cy) + 60), abs(x))
-        c = (ui.cx + x * ppm, c[1])
-        await ui.dimension([c, "Origin"], (min(c[0], ui.cx) - 60, (c[1] + ui.cy) / 2), abs(y))
-    await ui.shot(f"{label} sketch")
 
 
 async def build_base(ui: Ui, p: Params) -> None:
     # 1. Plate
     await new_sketch_on_top(ui)
-    await square_at(ui, p.base_size, 0, 0, "plate", anchored=True)
+    await square_on_origin(ui, p.base_size, "plate")
     await ui.accept()
     await extrude(ui, "Sketch 1", "New", p.base_t, "plate")
     # 2. Collar, as a solid disc; the aperture cut turns it into a ring.
@@ -331,53 +442,72 @@ async def build_base(ui: Ui, p: Params) -> None:
     await extrude(ui, "Sketch 3", "Remove", None, "aperture")
     # 4. One post, then mirror it into four.
     await new_sketch_on_top(ui)
-    await square_at(ui, p.post_w, p.post_c, p.post_c, "post", anchored=False)
+    await square_at(ui, p.post_w, p.post_c, p.post_c, "post")
     await ui.accept()
     await extrude(ui, "Sketch 4", "Add", round(p.z_deck, 2), "post")
     await mirror_twice(ui, "Extrude 4", first=1)
     # 5. One bolt hole, then mirror it into four.
     await new_sketch_on_top(ui)
-    await ui.key("circle")
-    d = 0.1 * ui.span
-    c = (ui.cx + 0.25 * ui.span, ui.cy - 0.25 * ui.span)
-    await ui.drag(c[0], c[1], c[0] + d, c[1])
-    await ui.key("escape")
-    drawn = await ui.dimension([(c[0] + d, c[1])], (c[0] + d + 50, c[1] - 30), p.bolt_clear_d)
-    ppm = 2 * d / drawn
-    await ui.dimension([c, "Origin"], ((c[0] + ui.cx) / 2, ui.cy + 60), p.bolt_xy)
-    c = (ui.cx + p.bolt_xy * ppm, c[1])
-    await ui.dimension([c, "Origin"], (ui.cx - 60, (c[1] + ui.cy) / 2), p.bolt_xy)
-    await ui.shot("bolt hole sketch")
+    await circle_at(ui, p.bolt_clear_d, p.bolt_xy, p.bolt_xy, "bolt hole")
     await ui.accept()
     await extrude(ui, "Sketch 5", "Remove", None, "bolt hole")
     await mirror_twice(ui, "Extrude 5", first=3)
     await ui.key("isometric")
     await ui.key("zoom_fit")
-    await ui.wait(1500)
+    await ui.wait(2000)
+    await ui.page.mouse.move(ui.cx + 0.45 * ui.span, ui.cy + 0.45 * ui.span)   # hover off the model
+    await ui.wait(600)
     await ui.shot("base finished")
+
+
+async def read_volume(ui: Ui) -> float:
+    """Select Part 1 and read its volume (mm^3) from the mass properties panel."""
+    await ui.key("escape")
+    await ui.click_tree("Part 1")
+    box = await ui.page.locator(SEL["mass_properties"]).first.bounding_box()
+    await ui.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
+    await ui.wait(4000)
+    text = await ui.page.evaluate("""() => {
+        for (const row of document.querySelectorAll('.os-parameter-list-item'))
+            if (row.innerText.trim() === 'Volume') { const i = row.querySelector('input'); return i && i.value; }
+        return null; }""")
+    await ui.shot("mass properties")
+    m = re.match(r"\s*([\d.]+)\s*mm", text or "")
+    if not m:
+        raise RuntimeError(f"can't read the volume from the mass properties panel: {text!r}")
+    return float(m.group(1))
 
 
 async def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--cdp", metavar="URL",
+                    help="attach to a running Chrome/Chromium's DevTools endpoint instead of launching one")
     ap.add_argument("--chrome", help="Chrome/Chromium binary to use instead of Playwright's own")
     ap.add_argument("--headed", action="store_true")
     ap.add_argument("--slow", type=int, default=0, help="extra ms after every action")
     ap.add_argument("--state", type=Path, help="reuse a saved session (Playwright storage state)")
     ap.add_argument("--save-state", type=Path, help="save the session here after signing in")
-    ap.add_argument("--document-url", help="work in an existing Part Studio instead of creating a document")
+    ap.add_argument("--document-url", help="work in an existing, empty Part Studio instead of creating a document")
     ap.add_argument("--name", default=f"OT-2 lid camera mount (UI build {time.strftime('%Y-%m-%d %H:%M')})")
     ap.add_argument("--signin-only", action="store_true", help="load the sign-in page, screenshot it, stop")
     args = ap.parse_args()
 
     async with async_playwright() as pw:
-        browser = await pw.chromium.launch(
-            executable_path=args.chrome, headless=not args.headed,
-            # Onshape needs WebGL. Without a GPU, SwiftShader provides it; Chrome 137+
-            # no longer falls back to it on its own.
-            args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
-        context = await browser.new_context(viewport={"width": 1600, "height": 1000},
-                                            storage_state=str(args.state) if args.state else None)
-        ui = Ui(await context.new_page(), args.slow)
+        if args.cdp:
+            browser = await pw.chromium.connect_over_cdp(args.cdp)
+            context = browser.contexts[0]
+            pages = [pg for pg in context.pages if not pg.url.startswith(("devtools:", "chrome:"))]
+            page = pages[-1] if pages else await context.new_page()
+        else:
+            browser = await pw.chromium.launch(
+                executable_path=args.chrome, headless=not args.headed,
+                # Onshape needs WebGL. Without a GPU, SwiftShader provides it; Chrome 137+
+                # no longer falls back to it on its own.
+                args=["--use-gl=angle", "--use-angle=swiftshader", "--enable-unsafe-swiftshader"])
+            context = await browser.new_context(viewport={"width": 1600, "height": 1000},
+                                                storage_state=str(args.state) if args.state else None)
+            page = await context.new_page()
+        ui = Ui(page, args.slow)
         try:
             if args.signin_only:
                 await ui.page.goto(f"{BASE_URL}/signin", wait_until="domcontentloaded")
@@ -388,10 +518,13 @@ async def main() -> None:
                 await ui.shot("sign-in page, no credentials used")
                 print(f"sign-in form found; WebGL2 available: {webgl}")
                 return
-            if not args.state:
-                email, password = os.environ.get("ONSHAPE_EMAIL"), os.environ.get("ONSHAPE_PASSWORD")
+            if await signed_in(ui):
+                print("already signed in")
+            else:
+                email = os.environ.get("ONSHAPE_USERNAME") or os.environ.get("ONSHAPE_EMAIL")
+                password = os.environ.get("ONSHAPE_PASSWORD")
                 if not (email and password):
-                    raise SystemExit("set ONSHAPE_EMAIL and ONSHAPE_PASSWORD, or pass --state (see the README)")
+                    raise SystemExit("set ONSHAPE_USERNAME and ONSHAPE_PASSWORD, or pass --state (see the README)")
                 await sign_in(ui, email, password)
                 if args.save_state:
                     await context.storage_state(path=str(args.save_state))
@@ -399,12 +532,14 @@ async def main() -> None:
             print("document:", url)
             await open_part_studio(ui, url)
             await build_base(ui, Params())
-            print("done:", ui.page.url)
+            volume = await read_volume(ui)
+            print(f"done: {ui.page.url}\nvolume of Part 1: {volume:.3f} mm^3 (REST API and CadQuery: 108840.3)")
         except Exception:
             await ui.shot("failed here")
             raise
         finally:
-            await browser.close()
+            if not args.cdp:                # an attached browser is left running
+                await browser.close()
 
 
 if __name__ == "__main__":

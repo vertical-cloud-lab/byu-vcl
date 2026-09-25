@@ -17,7 +17,7 @@ It was built along two paths, as requested in
 | Path | What | Status |
 |---|---|---|
 | **A: programmatic CAD** | [`cad/lid_mount.py`](cad/lid_mount.py), a parametric CadQuery model with automated clearance checks; [`cad/ot2_context.py`](cad/ot2_context.py), which checks it against Opentrons' own OT-2 model; renders; a 1:1 drill template | Built, checked, exported |
-| **B: Onshape** | [`onshape/onshape_api.py`](onshape/onshape_api.py) (REST API: native sketch/extrude features plus a STEP import) and [`onshape/onshape_ui.py`](onshape/onshape_ui.py) (Playwright, working the Part Studio with mouse clicks, drags and typed dimensions) | Written, but **not run past the sign-in page**, because CI has no Onshape credentials. See [Path B](#7-path-b-onshape). |
+| **B: Onshape** | [`onshape/onshape_api.py`](onshape/onshape_api.py) (REST API: native sketch/extrude features plus a STEP import) and [`onshape/onshape_ui.py`](onshape/onshape_ui.py) (Playwright, working the Part Studio with mouse clicks, drags and typed dimensions in a headed browser on a Pi) | **Both run against the live service** (2026-09-25). Each built the base to the same volume as the CadQuery model, 108,840.279 mm³. See [Path B](#7-path-b-onshape). |
 
 ---
 
@@ -238,47 +238,73 @@ Drop `xvfb-run ...` on a machine with a display.
 
 ## 7. Path B: Onshape
 
-**There are no Onshape credentials in CI**, so nothing below has touched an Onshape
-account yet. No `ONSHAPE_*` variable reaches the runner, and `claude.yml` passes none.
-What could be tested without an account, was:
+Both scripts were run against the live service on 2026-09-25, with the credentials that
+`claude.yml` now passes (`ONSHAPE_ACCESS_KEY`/`ONSHAPE_SECRET_KEY` for the API,
+`ONSHAPE_USERNAME`/`ONSHAPE_PASSWORD` for the browser). Every route gives the same base.
+The volume below is for the simplified base, without tabs, fillets or nut traps:
 
-| Script | Tested here | Still untested |
+| Route | Account | Result | Volume of the base |
+|---|---|---|---|
+| CadQuery, the same simplified geometry | — | reference | 108,840.279 mm³ |
+| [`onshape_api.py`](onshape/onshape_api.py), REST API | Sterling's (the API key's owner) | [document](https://cad.onshape.com/documents/443cb9b65c87663ba09bfe83/w/c9a919c669b084a190eb18cd): native "Base (native features)" Part Studio (4 sketches, 4 extrudes) plus all 5 STEP files imported | **108,840.279 mm³**, bounding box ±56 × ±56 × 0–99.66 mm |
+| [`onshape_ui.py`](onshape/onshape_ui.py), mouse and keyboard in a headed browser on a Pi | BYU VCL | [document](https://cad.onshape.com/documents/06611d6444078e2169084ea3/w/09bfb4bb4f461af09394b634/e/3f433fd9557d805ee224455e): 5 sketches, 5 extrudes, 4 feature mirrors, first attempt, 8 minutes | **108,840.279 mm³**, from Onshape's own mass properties panel |
+
+Both documents are private to their accounts. Share one from Onshape, or with
+`onshape_api.py --share EMAIL` if the key has the Share scope. The full record is in
+[`evidence/runs.json`](onshape/evidence/runs.json).
+
+| REST: native features | REST: imported assembly | UI: the Pi's screen at the end of the run |
 |---|---|---|
-| [`onshape_api.py`](onshape/onshape_api.py): REST API. It creates a document, builds the base as native sketch and extrude features in a "Base (native features)" Part Studio, imports every STEP file, and optionally shares the document | The whole flow against a stub (`--dry-run`): **27 requests**, and every payload is in [`dry_run.json`](onshape/dry_run.json) | The real API |
-| [`onshape_ui.py`](onshape/onshape_ui.py): Playwright. It signs in, creates a document, then draws, dimensions, extrudes and mirrors the base with mouse clicks, drags and typed values | From a GitHub runner, the sign-in page loads and its selectors resolve ([screenshot](onshape/evidence/signin-page.png)). Onshape's own [browser check](onshape/evidence/onshape-browser-check.png) passes in headless Chrome 153 with SwiftShader WebGL: WebGL, WebSockets, and 1.5 M triangles/s | Everything after sign-in |
+| ![](onshape/evidence/api-native-base.png) | ![](onshape/evidence/api-assembly.png) | ![](onshape/evidence/ui-pi-display.png) |
 
-> ⚠️ **Onshape's [Terms of Use](https://www.onshape.com/en/legal/terms-of-use), section 4(a)(ix), forbid
-> "any robot, spider, scraper or other automated means to access the Service."** The REST
-> API is the sanctioned route, so use `onshape_api.py` for real work. Run `onshape_ui.py`
-> only if the account owner accepts that; otherwise treat it as the manual recipe below.
-
-### Turning it on (human steps)
-
-1. On the Onshape account that should own the documents, go to **My Account → Developer →
-   API keys** and create a key with the **Read** and **Write** scopes, plus **Share** if the
-   script should share documents. Individual accounts get at most two keys.
-2. Add repo secrets `ONSHAPE_ACCESS_KEY` and `ONSHAPE_SECRET_KEY`. For the UI script, also
-   add `ONSHAPE_EMAIL` and `ONSHAPE_PASSWORD`, for an email-and-password login without 2FA
-   (not Google or Microsoft sign-in).
-3. Pass them through the `env:` block of `.github/workflows/claude.yml`. The Claude app
-   can't edit workflows, so this has to be a human commit:
-   ```yaml
-             ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
-             ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
-             ONSHAPE_EMAIL: ${{ secrets.ONSHAPE_EMAIL }}          # UI script only
-             ONSHAPE_PASSWORD: ${{ secrets.ONSHAPE_PASSWORD }}    # UI script only
-   ```
-   and list them in CLAUDE.md's secret inventory.
-4. Ask `@claude` to run it:
-   ```bash
-   pip install -r onshape/requirements.txt
-   python onshape/onshape_api.py --share someone@byu.edu     # add --public on a Free plan
-   python onshape/onshape_ui.py --chrome /usr/bin/google-chrome
-   ```
-
-Budget: a run of `onshape_api.py` costs about 30–50 calls, depending on how long each
-import takes to finish. Free, Standard and EDU Student plans get
+**What the live API changed.** The first run built all 8 native features, but every STEP
+import failed with HTTP 400 "An illegal argument was provided". The cause was the
+`storeInDocument` and `yAxisIsUp` form fields. The script now sends exactly the fields
+of Onshape's
+[documented example](https://onshape-public.github.io/docs/api-adv/translation/)
+(`formatName` empty, `flattenAssemblies`, `translate`), and imports finish in under 10 s
+each. `--document URL` and `--step NAME` add files to an existing document. The whole
+session used about 38 API calls. Free, Standard and EDU Student plans get
 [2,500 a year](https://onshape-public.github.io/docs/auth/limits/).
+
+**What the live UI changed.** The browser runs headed on a Raspberry Pi's virtual display,
+so the sign-in comes from a residential IP. The runner drives it through an SSH tunnel to
+Chromium's DevTools (`--cdp`). [`onshape/pi/README.md`](onshape/pi/README.md) has the
+setup, which needs no `apt` and no `sudo`. Sign-in met no CAPTCHA or 2FA. The first
+version of the script would have stopped at its first dimension. It had six problems,
+all fixed and described in the script's docstring:
+
+- It used the wrong selector for the dimension box.
+- It clicked on an edge's midpoint. Seen from the Top, the Right plane runs edge-on
+  through that point, so the click picks the plane
+  ([screenshot](onshape/evidence/pitfall-midpoint-pick-selects-right-plane.png)).
+- It clicked the canvas without hovering first. Onshape needs most of a second to
+  pre-select under software WebGL.
+- It cut Through all without **Symmetric**. Remove flips the default direction, which
+  from the Top plane points away from the part
+  ([screenshot](onshape/evidence/pitfall-remove-through-all-misses.png)).
+- It dimensioned to the Origin picked from the feature list, which the dimension tool
+  ignores. The sketches are now located from the Right and Front planes, picked on the
+  canvas ([post sketch](onshape/evidence/ui-09-post-sketch.png)).
+- It took pixels per millimetre from a small shape, while zoom-to-fit changes as the
+  part grows. The scale now comes from each positional dimension's pre-filled value.
+
+> ⚠️ **Onshape's [Terms of Use](https://www.onshape.com/en/legal/terms-of-use), section 4(a)(ix),
+> forbid "any robot, spider, scraper or other automated means to access the Service."**
+> The REST API is the sanctioned route, so use `onshape_api.py` for real work. The UI run
+> above was made at the account owner's request in
+> [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234). Otherwise, treat
+> `onshape_ui.py` as the manual recipe below.
+
+### Running them again
+
+```bash
+pip install -r onshape/requirements.txt
+python onshape/onshape_api.py                          # new document; add --share EMAIL, or --public on a Free plan
+python onshape/onshape_api.py --document URL --skip-native --step deck   # one more STEP into an existing document
+python onshape/onshape_ui.py --cdp http://127.0.0.1:9222   # a browser on a Pi, see onshape/pi/README.md
+python onshape/onshape_ui.py --headed --slow 300           # or launch one here and watch it
+```
 
 ### Manual recipe
 
@@ -289,9 +315,9 @@ plane, and it takes about ten minutes by hand:
 |---|---|---|
 | 1 | Centre-point rectangle on the origin, 112 × 112 | Extrude 6 mm, **New** |
 | 2 | Circle on the origin, Ø52 | Extrude 20 mm, **Add** |
-| 3 | Circle on the origin, Ø46 | Extrude **Through all**, **Remove** |
+| 3 | Circle on the origin, Ø46 | Extrude **Through all**, **Remove**, **Symmetric** (Remove flips the default direction away from the part) |
 | 4 | Centre-point rectangle 10 × 10, centre 47 mm right of and 47 mm above the origin | Extrude 99.66 mm, **Add**; then **Mirror** (Feature mirror) across *Right*, then the extrude and that mirror across *Front* |
-| 5 | Circle Ø4.5, centre at (33, 33) | Extrude **Through all**, **Remove**; mirror the same way |
+| 5 | Circle Ø4.5, centre at (33, 33) | Extrude **Through all**, **Remove**, **Symmetric**; mirror the same way |
 
 To check it, import [`exports/base.step`](exports/base.step) into the same document. The
 two should coincide apart from the nut traps, tape tabs, fillets and engraved arrow,
