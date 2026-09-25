@@ -8,13 +8,13 @@
       "fixture": null,
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 35.2,
+        "al_g": 35.1,
         "powder_g": {
           "AlSi10Mg": 7.98
         },
         "total_g": 43.1
       },
-      "run_g": 86.3,
+      "run_g": 86.2,
       "powder_frac_pct": 18.5,
       "si_wt_pct": 2.18,
       "mg_wt_pct": 0.61,
@@ -53,15 +53,15 @@
       "fixture": null,
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 35.2,
+        "al_g": 35.1,
         "powder_g": {
           "Si": 3.75,
-          "AlSi10Mg": 2.52
+          "AlSi10Mg": 2.53
         },
         "total_g": 41.4
       },
-      "run_g": 82.9,
-      "powder_frac_pct": 15.1,
+      "run_g": 82.8,
+      "powder_frac_pct": 15.2,
       "si_wt_pct": 10.0,
       "mg_wt_pct": 0.59,
       "melt_depth_mm": 17.4,
@@ -78,13 +78,13 @@
       "fixture": "support_sleeve",
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 35.2,
+        "al_g": 35.1,
         "powder_g": {
           "AlSi10Mg": 9.91
         },
-        "total_g": 45.1
+        "total_g": 45.0
       },
-      "run_g": 90.2,
+      "run_g": 90.1,
       "powder_frac_pct": 22.0,
       "si_wt_pct": 2.51,
       "mg_wt_pct": 0.6,
@@ -102,13 +102,13 @@
       "fixture": null,
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 35.2,
+        "al_g": 35.1,
         "powder_g": {
-          "Si": 4.64
+          "Si": 4.63
         },
         "total_g": 39.8
       },
-      "run_g": 79.6,
+      "run_g": 79.5,
       "powder_frac_pct": 11.6,
       "si_wt_pct": 12.0,
       "mg_wt_pct": 0.6,
@@ -126,13 +126,13 @@
       "fixture": null,
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 35.2,
+        "al_g": 35.1,
         "powder_g": {
           "Al_UA": 8.23
         },
         "total_g": 43.4
       },
-      "run_g": 86.8,
+      "run_g": 86.7,
       "powder_frac_pct": 19.0,
       "si_wt_pct": 0.4,
       "mg_wt_pct": 0.68,
@@ -150,7 +150,7 @@
       "fixture": null,
       "slugs_per_run": 2,
       "per_slug": {
-        "al_g": 11.6,
+        "al_g": 11.5,
         "powder_g": {
           "AlSi10Mg": 7.54
         },

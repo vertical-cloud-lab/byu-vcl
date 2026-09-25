@@ -103,7 +103,7 @@ def plug_view(ax, v, profile, r, length, vent_d):
                 arrowprops=dict(arrowstyle="-|>", color="#2a78d6", lw=0.9, mutation_scale=6))
     ax.text(x1 + 0.06, y1 + 0.13, "air out", fontsize=FS, color="#2a78d6", ha="left", va="center")
     (xl, yl), (xr, _) = v.p(-rv, length / 2), v.p(rv, length / 2)
-    ax.annotate("\u00d81 mm hole,\nright through", xy=((xl + xr) / 2, yl), xytext=(xr + 0.55, yl),
+    ax.annotate("\u00d81/16 hole,\nright through", xy=((xl + xr) / 2, yl), xytext=(xr + 0.55, yl),
                 fontsize=FS, color=INK, ha="left", va="center", linespacing=1.2,
                 arrowprops=dict(arrowstyle="-", color=INK2, lw=0.45, shrinkA=2, shrinkB=2))
     (xa, ya) = v.p(-r, 0.25)
@@ -147,16 +147,16 @@ def main() -> None:
     v.section(cad.std_cup_profile())
     v.centreline(0, L)
     v.hdim(-R, R, L, 0.2, "\u00d8" + fmt(cad.STOCK_D))
-    v.hdim(-rb, rb, L, 0.48, "\u00d8" + fmt(cad.CUP_BORE_D) + " reamed")
+    v.hdim(-rb, rb, L, 0.48, "\u00d8" + fmt(cad.CUP_BORE_D) + " bored")
     v.vdim(0, L, R, 0.3, fmt(L))
     v.vdim(L - depth, L, -R, -0.3, fmt(depth) + "\ndeep")
-    v.title(T1, "P2  Cup", ["6063-T52 \u00b7 qty 10 (E1, E3\u2013E6)", "drill then ream \u00b7 118\u00b0 bottom is fine"])
+    v.title(T1, "P2  Cup", ["6063-T52 \u00b7 qty 10 (E1, E3\u2013E6)", "drill 31/64, bore or ream \u00b7 118\u00b0 bottom is fine"])
 
     v = View(ax, 7.5, ROW1)
     v.section(cad.sleeve_profile(), hatch="\\\\")
     v.centreline(0, cad.SLEEVE_L)
     v.hdim(-ro, ro, cad.SLEEVE_L, 0.2, "\u00d8" + fmt(cad.SLEEVE_OD))
-    v.hdim(-rs, rs, cad.SLEEVE_L, 0.48, "\u00d8 = measured P2 OD + .001\u2013.002 (slip fit)")
+    v.hdim(-rs, rs, cad.SLEEVE_L, 0.48, "\u00d8 = measured P2 OD + .0005 max")
     v.vdim(0, cad.SLEEVE_L, ro, 0.3, fmt(cad.SLEEVE_L) + "\n= P2 length")
     v.title(T1, "F1  Press sleeve", ["mild steel \u00b7 qty 1 \u00b7 only for E4",
                                      "stops the cup wall bulging under the press"])
@@ -186,14 +186,14 @@ def main() -> None:
     notes_l = [
         "NOTES",
         "1  All parts from the 3/4\" 6063-T52 bar on hand (McMaster 1640T16). Inches [mm].",
-        "2  Break the outside edges .02 [0.5] \u00d7 45\u00b0 and deburr the holes. No marker, no stamping.",
+        "2  Break the outside edges .020 \u00d7 45\u00b0 and deburr the holes. No marker, no stamping.",
         "3  Make a cup, measure its hole, then turn that cup's lid .0005\u2013.001\" bigger, so it",
-        "    presses in. No more than .001\": the 1/8\" wall splits at about twice that.",
+        "    presses in. No more than .001\": that is already 99 MPa hoop, 0.9 of 6063-T52 yield.",
         "    Bag each lid with the cup it was made for - they are not interchangeable.",
     ]
     notes_r = [
         "",
-        "4  Every lid gets the \u00d81 mm hole. The chamber is pumped down before melting, and air",
+        "4  Every lid gets the \u00d81/16 hole. The chamber is pumped down before melting, and air",
         "    shut under a solid lid has to escape through the powder instead (see #104).",
         "5  E4 only: stand the filled cup inside F1 and press the lid flush. F1 is the same length",
         "    as the cup, so the press bottoms out at flush. Push the cup out with a 5/8\" drift.",

@@ -20,7 +20,7 @@ so far.
 | ![Machining the cup](cad/anim/machining_cup.gif) | ![Machining the lid](cad/anim/machining_plug.gif) | ![Filling the cup and venting it](cad/anim/fill_and_vent.gif) |
 
 The vent, in one line: **the chamber is pumped down before melting, so air shut under a solid lid has to leave through
-the powder.** A Ø1 mm hole through the lid gives it somewhere else to go (#104).
+the powder.** A Ø1/16" hole through the lid gives it somewhere else to go (#104).
 
 **Before anyone cuts metal, measure the crucible** ([what to measure](#measure-before-machining)). The bore and
 sealing-rod diameters below are inferred, not measured.
@@ -91,11 +91,11 @@ plugs 3:1), with a [PNG preview](cad/drawings/charge_parts.png). STEP: [`cad/ste
 | | Part | Key dimensions, inches [mm] | E1–E3 (bar on hand) | E4–E7 | Mass |
 | --- | --- | --- | ---: | ---: | ---: |
 | <img src="cad/renders/insets/P_solid_slug.png" width="72"> | **P1** Solid slug | Ø.750 as received × 2.500 [63.5], .02 × 45° ends | 2 | — | 48.7 g |
-| <img src="cad/renders/insets/P_std_cup.png" width="72"> | **P2** Standard cup | Ø.750 × 2.500; Ø.500 reamed bore 1.875 [47.6] deep to full Ø (118° point OK); 1/8" wall | 4 + 1 spare | 6 | 32.0 g |
-| <img src="cad/renders/insets/P_std_plug.png" width="72"> | **P3** Plug for P2 (shown ~3×) | Ø = **that cup's measured bore + .0005–.001**; .375 [9.5] long; Ø1 mm vent through; 15° lead-in on the nose; .012 [0.3] break on the top, deburr only | 4 + 1 spare | 6 | 3.2 g |
+| <img src="cad/renders/insets/P_std_cup.png" width="72"> | **P2** Standard cup | Ø.750 × 2.500; Ø.500 bore 1.875 [47.6] deep to full Ø (118° point OK); drill 31/64, then bore or ream; 1/8" wall | 4 + 1 spare | 6 | 32.0 g |
+| <img src="cad/renders/insets/P_std_plug.png" width="72"> | **P3** Plug for P2 (shown ~3×) | Ø = **that cup's measured bore + .0005–.001**; .375 [9.5] long; Ø1/16" vent through; 15° lead-in on the nose; .015 break on the top, deburr only | 4 + 1 spare | 6 | 3.1 g |
 | <img src="cad/renders/insets/P_thin_cup.png" width="72"> | **P4** Thin-wall cup | Ø.750 × 1.250 [31.75]; Ø.625 flat-bottom bore 1.125 deep; 1/16" wall, 1/8" floor | — | 2 | 9.1 g |
 | <img src="cad/renders/insets/P_thin_plug.png" width="72"> | **P5** Plug for P4 (shown ~3×) | Ø = measured P4 bore + .0005; .1875 [4.76] long; vent; lead-in | — | 2 | 2.5 g |
-| <img src="cad/renders/insets/F_support_sleeve.png" width="72"> | **F1** Press support sleeve (mild steel) | Ø2.000 × 2.500; bore = measured P2 OD + .001–.002 (slip fit) | — | 1 | 0.87 kg |
+| <img src="cad/renders/insets/F_support_sleeve.png" width="72"> | **F1** Press support sleeve (1018 CRS) | Ø1.250 × 2.500; bore = **measured P2 OD + .0005 max** | — | 1 | 252 g |
 
 **Bar budget.** Each piece uses its length plus ~3 mm for kerf and facing, and ~25 mm is left as a chucking
 remnant. E1–E3 plus a spare cup set take 528 of the 585 usable mm of the bar on hand. E4–E7 need 559 mm, so order
@@ -105,16 +105,46 @@ slug per run, all seven runs fit in the bar on hand (504 mm).
 **Machining rules that matter** (also on the drawing):
 
 1. **Cup first, then plug.** Measure each cup's bore and turn its own plug to +.0005–.001" over it. Never go above
-   .001": at that interference P2's 1/8" wall already sees ~100 MPa hoop stress, and 6063-T52 yields at 16 ksi
-   (110 MPa) minimum, ~21 ksi typical. The press force at .001" is ~0.5–1.5 t, depending on how much the Al galls:
-   a soft-jaw vise or an arbor press.
-2. **Every plug is vented** (Ø1 mm through the axis). Gas sealed in with the powder has nowhere to go until the cup
+   .001". `fit_check()` in [`charge_cad.py`](cad/charge_cad.py) works this out from Lamé rather than asserting it,
+   and lands in `parts.json`: at .001" the contact pressure is 38.3 MPa and P2's 1/8" wall sees **99.7 MPa hoop at
+   the bore, 0.91 of 6063-T52's 110 MPa minimum yield**. At .002" it is 199 MPa, 1.8× yield. Press force at .001"
+   is **0.6 t clean to 1.8 t galling** (µ 0.4–1.2): a soft-jaw vise or an arbor press. The thin cup P4 at .0005"
+   only reaches 47 MPa, so it has margin to .001" if a plug comes out loose.
+2. **Every plug is vented** (Ø1/16" through the axis). Gas sealed in with the powder has nowhere to go until the cup
    melts, which is the melt-ejection risk flagged in #104 and PR #134. The chamber is also pumped down before melting.
 3. **Slug OD ≤ measured rod-to-wall gap − 0.7 mm**, because Al outgrows graphite on heating. A max-tolerance bar
    (Ø.764) needs a 20.1 mm gap; otherwise skim the ODs. This matters even more for the 5N Ø20.0 rods: **a Ø20.0 bar
    in a 20 mm gap has to be turned down** before it goes in.
 4. No marker ink, scribing, or stamping on the parts. Degrease in IPA, dry, weigh each part to 0.01 g, and label the
    bag.
+
+## Every size is a stock size
+
+Checked on 2026-09-25, because a drawing that calls out a size nobody stocks turns a two-day job into a two-week
+one. Three dimensions were not standard and were changed; the rest were already right.
+
+| Dimension | Standard? | Governing standard |
+| --- | --- | --- |
+| Ø3/4" 6063 bar | ✅ stock, on hand | ASTM B221 extruded bar |
+| Ø.500 bore, Ø.625 bore | ✅ both standard chucking-reamer sizes | ASME B94.2 |
+| 31/64 pilot drill before the Ø.500 bore | ✅ fractional; leaves .0156" total stock, which is Machinery's Handbook practice for a 1/2" reamer | ASME B94.11M |
+| 118° drill point left in the cup bottom | ✅ general-purpose point | ASME B94.11M |
+| Lengths 2.500 / 1.875 / 1.250 / .375 / .1875 | ✅ all on the inch scale | — |
+| 15° press-fit lead-in | ✅ 10–15° is the recommended lead-in | ANSI B4.2 |
+| .0005–.001" interference on a Ø.500 bore | ✅ top of **FN1**, the class ANSI B4.1 designates for *"thin sections or long fits"* — which is exactly a 1/8" wall | ANSI B4.1 |
+| ~~Ø1 mm vent~~ → **Ø1/16"** | ⚠️ changed. A metric bit isn't in a US fractional/number index, and at .375" deep a 1 mm bit is 9.5×D where 1/16" is 6×D. #60 (.040") is the alternate if 1/16" looks too big | ASME B94.11M |
+| ~~0.5 / 0.3 mm chamfers~~ → **.020 / .015"** | ⚠️ changed. The sheet was mixing mm and inch callouts, which is how a part gets made wrong | — |
+| ~~Ø2.000" F1 sleeve, bore +.001–.002"~~ → **Ø1.250", bore +.0005" max** | ⚠️ changed, see below | 1018 CRS stock size |
+
+**Why F1 shrank, and why its bore got tighter.** The cup's OD grows only **.00074"** before its bore reaches
+yield (same Lamé calculation, in `fit_check()`). A .001–.002" slip fit therefore never touches the sleeve until
+after the cup has already started to yield — the sleeve was decorative. Bored to +.0005" it actually takes load.
+And it doesn't need to be 2": .25" of 1018 over a .750" bore sees ~30 MPa hoop at 100 MPa bore pressure, nowhere
+near its ~370 MPa yield. Ø1.250" is a stock size, weighs 252 g instead of 870 g, and is less boring.
+
+**One thing to watch, not a change.** A 1/2" chucking reamer's flute is 2.000" (ASME B94.2) and the bore is
+1.875" deep, so a standard reamer only just reaches, with no room for chips. Single-point boring has no such limit
+and gives a measured bore, which is what the plug is matched to anyway. The drawing now says *bore or ream*.
 
 ## Filling a cup
 
@@ -123,8 +153,9 @@ slug per run, all seven runs fit in the bar on hand (504 mm).
 3. Weigh the powder into the cup, tapping as you go. Stop at the target mass or the plug line, whichever comes first,
    and record the actual mass.
 4. Press the plug flush in the soft-jaw vise or arbor press. For E4, stand the cup in F1 on a flat plate and use the
-   hydraulic press, ~3–4 t. F1 is the cup's length, so the platen bottoms out at flush. Push the cup out through F1
-   with a 5/8" drift. Don't clear the vent with compressed air (#126).
+   hydraulic press, ~3–4 t (≈1.3 t to compact the powder plus ≈0.6–1.8 t of press fit). F1 is the cup's length, so
+   the platen bottoms out at flush. Push the cup out through F1 with a 5/8" drift. Don't clear the vent with
+   compressed air (#126).
 5. Weigh the loaded cup: that mass balance gives the true powder fraction. Store sealed with desiccant (#30, #230).
 
 ## Measure before machining

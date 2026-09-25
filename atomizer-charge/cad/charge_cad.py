@@ -91,16 +91,20 @@ STOCK_D = 0.750 * IN
 SLUG_L = 2.500 * IN  # Gage: "cut it down to about 2.5 in"
 EDGE_CHAMFER = 0.5
 
-CUP_BORE_D = 0.500 * IN  # 1/2" drill + 0.500" reamer
+CUP_BORE_D = 0.500 * IN  # drill 31/64 (PILOT_DRILL_D), then bore or ream to 1/2"
+PILOT_DRILL_D = 31 / 64 * IN  # leaves .0156" total stock - Machinery's Handbook for a 1/2" reamer
 CUP_BORE_DEPTH = 1.875 * IN  # "to about 3/4 the length", full-diameter depth
-DRILL_POINT_DEG = 118.0
-RIM_CHAMFER = 0.3
+DRILL_POINT_DEG = 118.0  # ASME B94.11M general-purpose point
+RIM_CHAMFER = 0.015 * IN  # .015 break, the standard "break sharp edges" callout
 
 PLUG_L = 0.375 * IN
-PLUG_LEADIN_L = 1.5  # 15 deg lead-in: 1.5 mm long, 0.4 mm deep
-PLUG_LEADIN_R = 0.4
-PLUG_TOP_CHAMFER = 0.3  # break on the parted face - deburr only, no part in the fit
-VENT_D = 1.0  # through-vent: never seal gas in with the powder (#104, #134)
+PLUG_LEADIN_DEG = 15.0  # standard press-fit lead-in (ANSI B4.2 recommends 10-15 deg)
+PLUG_LEADIN_L = 0.060 * IN
+PLUG_LEADIN_R = PLUG_LEADIN_L * math.tan(math.radians(PLUG_LEADIN_DEG))
+PLUG_TOP_CHAMFER = 0.015 * IN  # break on the parted face - deburr only, no part in the fit
+VENT_D = 1 / 16 * IN  # through-vent: never seal gas in with the powder (#104, #134).
+# 1/16" not 1 mm: fractional drills are in every US shop's index (ASME B94.11M), and at
+# .375" deep a 1 mm bit is 9.5xD while 1/16" is 6xD.  #60 (.040") is the small alternate.
 
 THIN_L = 1.250 * IN
 THIN_BORE_D = 0.625 * IN
@@ -108,8 +112,8 @@ THIN_FLOOR = 0.125 * IN  # flat-bottom bore
 THIN_PLUG_L = 0.1875 * IN
 TALL_THIN_L = 100.0  # only for the ring comparison: a thin-wall cup standing full depth
 
-SLEEVE_OD = 2.000 * IN
-SLEEVE_BORE_D = STOCK_D + 0.03  # slip fit; bore to the actual bar diameter
+SLEEVE_OD = 1.250 * IN  # 1018 CRS round, a stock size; .25" of steel is ~10x the cup wall
+SLEEVE_BORE_D = STOCK_D + 0.0005 * IN  # bore to the measured cup OD +.0005 - see fit_check()
 SLEEVE_L = SLUG_L  # same length as the cup, so the press bottoms out flush
 
 # Annular "ring over the sealing rod" concept
@@ -544,6 +548,46 @@ def bar_budget(exps: list, ids: list[str]) -> float:
     return total
 
 
+# ---------------------------------------------------------------------------
+# Press fit, from Lame's thick-walled-cylinder solution rather than asserted.
+# Plug and cup are the same alloy, so E and nu cancel out of the ratio.
+# ---------------------------------------------------------------------------
+E_AL = 69000.0  # MPa
+YIELD_6063_T52 = 110.0  # MPa, 16 ksi minimum per ASTM B221; ~145 MPa typical
+MU_AL_AL = (0.4, 1.2)  # dry Al on Al, clean to galling
+
+
+def fit_check(bore: float, od: float, engage_l: float, interference_in: float) -> dict:
+    """Interference fit of a solid plug in a cup: contact pressure, hoop stress, force."""
+    r, b = bore / 2, od / 2
+    k = (b**2 + r**2) / (b**2 - r**2)  # hoop-stress multiplier at the bore
+    delta_r = interference_in * IN / 2
+    # radial closure = hub growth + solid-plug compression = (p r / E)(k + nu) + (p r / E)(1 - nu)
+    p = delta_r * E_AL / (r * (k + 1.0))
+    area = math.pi * bore * engage_l
+    return {
+        "interference_in": interference_in,
+        "contact_pressure_MPa": round(p, 1),
+        "bore_hoop_stress_MPa": round(p * k, 1),
+        "frac_of_min_yield": round(p * k / YIELD_6063_T52, 2),
+        "press_force_t": [round(p * area * mu / 9806.65, 2) for mu in MU_AL_AL],
+        # how far the cup OD grows before its bore reaches yield - this is all the
+        # clearance the E4 support sleeve is allowed, or it never takes any load
+        "od_growth_at_yield_in": round(
+            2 * (YIELD_6063_T52 / k) * r**2 * b / (E_AL * (b**2 - r**2)) * 2 / IN, 5
+        ),
+    }
+
+
+def fits() -> dict:
+    return {
+        "std_cup_P2_P3": [fit_check(CUP_BORE_D, STOCK_D, PLUG_L, i) for i in (0.0005, 0.001, 0.002)],
+        "thin_cup_P4_P5": [
+            fit_check(THIN_BORE_D, STOCK_D, THIN_PLUG_L, i) for i in (0.0005, 0.001)
+        ],
+    }
+
+
 def export(parts: dict) -> None:
     STEP_DIR.mkdir(exist_ok=True)
     STL_DIR.mkdir(exist_ok=True)
@@ -606,11 +650,13 @@ def main() -> None:
         },
         "gap_5_slugs_max_tol_bar_cold_mm": round(packing(5, d=0.764 * IN), 2),
     }
+    part_info["fits"] = fits()
     (HERE / "parts.json").write_text(json.dumps(part_info, indent=2) + "\n")
     (HERE / "experiments.json").write_text(
         json.dumps({"experiments": exps, "bar_budget": budget, "geometry": geometry}, indent=2) + "\n"
     )
     print(json.dumps(geometry, indent=2))
+    print(json.dumps(fits(), indent=2))
     print(json.dumps(budget, indent=2))
     for e in exps:
         print(
