@@ -1,0 +1,222 @@
+{
+  "solid_slug": {
+    "volume_cm3": 18.084,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g_6063": 48.65
+  },
+  "std_cup": {
+    "volume_cm3": 11.887,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g_6063": 31.98
+  },
+  "std_plug": {
+    "volume_cm3": 1.173,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      9.52
+    ],
+    "mass_g_6063": 3.15
+  },
+  "std_powder": {
+    "volume_cm3": 4.987,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      41.92
+    ]
+  },
+  "thin_cup": {
+    "volume_cm3": 3.378,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      31.75
+    ],
+    "mass_g_6063": 9.09
+  },
+  "thin_plug": {
+    "volume_cm3": 0.914,
+    "bbox_mm": [
+      15.88,
+      15.88,
+      4.76
+    ],
+    "mass_g_6063": 2.46
+  },
+  "thin_powder": {
+    "volume_cm3": 4.713,
+    "bbox_mm": [
+      15.88,
+      15.88,
+      23.81
+    ]
+  },
+  "support_sleeve": {
+    "volume_cm3": 32.039,
+    "bbox_mm": [
+      31.75,
+      31.75,
+      63.5
+    ],
+    "mass_g_steel": 251.5
+  },
+  "ring_cup": {
+    "volume_cm3": 60.455,
+    "bbox_mm": [
+      50.0,
+      50.0,
+      60.0
+    ],
+    "mass_g_6063": 162.62
+  },
+  "ring_plug": {
+    "volume_cm3": 7.995,
+    "bbox_mm": [
+      42.0,
+      42.0,
+      8.0
+    ],
+    "mass_g_6063": 21.51
+  },
+  "ring_powder": {
+    "volume_cm3": 37.196,
+    "bbox_mm": [
+      42.0,
+      42.0,
+      37.0
+    ]
+  },
+  "crucible": {
+    "volume_cm3": 286.696,
+    "bbox_mm": [
+      75.3,
+      75.3,
+      115.3
+    ]
+  },
+  "filling_cone": {
+    "volume_cm3": 140.347,
+    "bbox_mm": [
+      120.0,
+      120.0,
+      18.8
+    ]
+  },
+  "sealing_rod": {
+    "volume_cm3": 14.501,
+    "bbox_mm": [
+      12.6,
+      12.6,
+      118.39
+    ]
+  },
+  "rod_holder": {
+    "volume_cm3": 30.996,
+    "bbox_mm": [
+      69.54,
+      69.54,
+      48.5
+    ]
+  },
+  "coil": {
+    "volume_cm3": 118.857,
+    "bbox_mm": [
+      102.0,
+      102.0,
+      107.99
+    ]
+  },
+  "fits": {
+    "std_cup_P2_P3": [
+      {
+        "interference_in": 0.0005,
+        "contact_pressure_MPa": 19.2,
+        "bore_hoop_stress_MPa": 49.8,
+        "bore_von_mises_MPa": 61.7,
+        "frac_of_min_yield": 0.56,
+        "press_force_t": [
+          0.78,
+          1.0
+        ],
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
+      },
+      {
+        "interference_in": 0.0008,
+        "contact_pressure_MPa": 30.7,
+        "bore_hoop_stress_MPa": 79.7,
+        "bore_von_mises_MPa": 98.7,
+        "frac_of_min_yield": 0.9,
+        "press_force_t": [
+          1.25,
+          1.6
+        ],
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
+      },
+      {
+        "interference_in": 0.001,
+        "contact_pressure_MPa": 38.3,
+        "bore_hoop_stress_MPa": 99.7,
+        "bore_von_mises_MPa": 123.4,
+        "frac_of_min_yield": 1.12,
+        "press_force_t": [
+          1.56,
+          2.01
+        ],
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
+      },
+      {
+        "interference_in": 0.002,
+        "contact_pressure_MPa": 76.7,
+        "bore_hoop_stress_MPa": 199.3,
+        "bore_von_mises_MPa": 246.8,
+        "frac_of_min_yield": 2.24,
+        "press_force_t": [
+          3.12,
+          4.01
+        ],
+        "max_elastic_interference_in": 0.00089,
+        "od_growth_at_yield_in": 0.00059
+      }
+    ],
+    "thin_cup_P4_P5": [
+      {
+        "interference_in": 0.0005,
+        "contact_pressure_MPa": 8.4,
+        "bore_hoop_stress_MPa": 46.8,
+        "bore_von_mises_MPa": 51.5,
+        "frac_of_min_yield": 0.47,
+        "press_force_t": [
+          0.21,
+          0.28
+        ],
+        "max_elastic_interference_in": 0.00107,
+        "od_growth_at_yield_in": 0.00089
+      },
+      {
+        "interference_in": 0.001,
+        "contact_pressure_MPa": 16.9,
+        "bore_hoop_stress_MPa": 93.5,
+        "bore_von_mises_MPa": 103.0,
+        "frac_of_min_yield": 0.94,
+        "press_force_t": [
+          0.43,
+          0.55
+        ],
+        "max_elastic_interference_in": 0.00107,
+        "od_growth_at_yield_in": 0.00089
+      }
+    ]
+  }
+}
