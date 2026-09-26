@@ -482,11 +482,15 @@ async def read_volume(ui: Ui) -> float:
     await ui.click_tree("Part 1")
     box = await ui.page.locator(SEL["mass_properties"]).first.bounding_box()
     await ui.click(box["x"] + box["width"] / 2, box["y"] + box["height"] / 2)
-    await ui.wait(4000)
-    text = await ui.page.evaluate("""() => {
-        for (const row of document.querySelectorAll('.os-parameter-list-item'))
-            if (row.innerText.trim() === 'Volume') { const i = row.querySelector('input'); return i && i.value; }
-        return null; }""")
+    text = None
+    for _ in range(60):                     # the panel fills in when Onshape's calculation returns
+        await ui.wait(500)
+        text = await ui.page.evaluate("""() => {
+            for (const row of document.querySelectorAll('.os-parameter-list-item'))
+                if (row.innerText.trim() === 'Volume') { const i = row.querySelector('input'); return i && i.value; }
+            return null; }""")
+        if text:
+            break
     await ui.shot("mass properties")
     m = re.match(r"\s*([\d.]+)\s*mm", text or "")
     if not m:
