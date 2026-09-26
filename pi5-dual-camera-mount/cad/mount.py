@@ -19,6 +19,14 @@ Every camera is fitted "cable up": its ribbon leaves the top edge of the board, 
 through a slot near the top of the upright and drops to the Pi 5's camera connectors,
 keeping the cable clear of the Active Cooler. Flip the image 180 degrees in software.
 
+An HQ Camera also gets a C-mount collar, a second printed part. A C lens is held only by its
+C-CS adapter, which screws into the camera's back-focus ring, which screws into a housing on
+the camera's 38 mm board. So a 134 g, 50 mm lens hangs off four M2.5 screws at the board's
+corners. The collar surrounds the adapter and stands on four legs on those same four corners.
+The camera's screws, lengthened to M2.5 x 25, go through the collar too, so the board is
+clamped between the legs and the bosses, and the lens is held all round at its root. The
+lens's rings stay free to turn.
+
 Coordinates: X to the right as seen from the front, Y backwards (the cameras look along -Y),
 Z up. Z = 0 is the underside of the base and Y = 0 is the front face of the upright.
 
@@ -97,6 +105,22 @@ class Params:
     slot_w: float = 18.0            # ribbon slot: the 15-way camera cable is 16 mm wide
     slot_h: float = 2.5
     slot_above_board: float = 4.5   # slot centre above the HQ board's top edge
+
+    # --- C-mount collar (HQ Camera only; a separate printed part) ------------------------
+    # A plate round the C-CS adapter, on four legs that stand on the HQ board's corners. The
+    # HQ Camera's own M2.5 screws, lengthened, run through it, so the board is clamped between
+    # the legs and the bosses and the lens is held all round at its root. Distances are in
+    # front of the HQ board's front face.
+    collar_front: float = 16.65     # 0.53 short of a C lens's back (the C flange, 17.18)
+    collar_t: float = 4.6           # back face 0.5 in front of the back-focus ring (11.55)
+    collar_half: float = 21.0
+    collar_corner_r: float = 5.0
+    collar_bore_d: float = 31.4     # the C-CS adapter's knurl is 30.75
+    collar_rib_tip_d: float = 30.6  # six crush ribs take up the print's hole tolerance
+    collar_rib_d: float = 1.0
+    collar_leg_d: float = 5.2       # 0.6 clear of the 36 mm ring, 0.8 of the tripod foot's skirt
+    collar_cbore_d: float = 5.0     # M2.5 socket heads sit below the face, clear of the lens
+    collar_cbore_h: float = 3.4     # deep enough for an M2.5 x 25 to reach through the nut
 
     # ------------------------------------------------------------------------------------
     @property
@@ -335,8 +359,19 @@ def usb_c_plug(p: Params) -> cq.Workplane:
     return pi_box(p, 11.2 - 6.5, 11.2 + 6.5, -32.0, -1.2, 0.34 - 1.5, 4.6 + 1.5)
 
 
-# HQ Camera, fitted "cable up" (tripod foot up). Dimensions from Raspberry Pi's CS-mount
-# drawing; the foot and skirt outlines are estimates from the drawing and photos.
+# HQ Camera, fitted "cable up" (tripod foot up), from Raspberry Pi's CS-mount drawing, which
+# shows it with the C-CS adapter fitted. Distances are in front of the board's front face.
+# The labelled lengths are used; the housing's diameter and the tripod foot's skirt were read
+# off the drawing's own geometry (it is drawn to scale, 6.66 pt/mm).
+HQ_HOUSING = (34.5, 10.35)       # main housing on the board: diameter, length
+HQ_RING = (36.0, 1.2)            # knurled flange of the back-focus adjustment ring, in front of it
+HQ_ADAPTER_D = 30.75             # C-CS adapter's knurl, from the ring to the C flange
+HQ_C_FLANGE = 18.58 - 1.4        # the drawing's 18.58 runs from the C flange to the board's back
+HQ_CS_FLANGE = HQ_C_FLANGE - 5.0  # a CS lens screws straight into the ring, 5 mm further back
+# Half outline (u, v) of the tripod foot's skirt, mirrored about u = 0; it comes within 3.37 mm
+# of the two mounting holes beside it.
+HQ_SKIRT = [(9.88, 13.54), (12.04, 16.62), (11.44, 19.96), (8.85, 21.18), (6.985, 24.1), (6.985, 30.3)]
+
 
 def station_to_mount(p: Params, xc: float, u: float, v: float) -> tuple[float, float]:
     return xc + u, p.axis_z + v
@@ -346,39 +381,88 @@ def cam_box(p: Params, xc, u0, u1, v0, v1, y0, y1) -> cq.Workplane:
     return box_span(xc + u0, xc + u1, min(y0, y1), max(y0, y1), p.axis_z + v0, p.axis_z + v1)
 
 
+def y_poly(pts, y0, y1, xc, zc) -> cq.Workplane:
+    """Prism along Y from y0 to y1 of a polygon given as (u, v) about (xc, zc)."""
+    lo, hi = min(y0, y1), max(y0, y1)
+    return (cq.Workplane("XZ").polyline([(xc + u, zc + v) for u, v in pts]).close()
+            .extrude(hi - lo).translate((0, hi, 0)))
+
+
+def hq_front_y(p: Params) -> float:
+    """Y of the HQ board's front face."""
+    return -p.hq_boss_h - p.hq_pcb_t
+
+
 def make_hq_camera(p: Params, xc: float) -> dict[str, cq.Workplane]:
     yb = -p.hq_boss_h                  # back of the PCB
-    yf = yb - p.hq_pcb_t               # front of the PCB
+    yf = hq_front_y(p)                 # front of the PCB
     h = p.hq_board / 2
+    z = p.axis_z
     pcb = cam_box(p, xc, -h, h, -h, h, yb, yf).edges("|Y").fillet(1.0)
     for u, v in hq_holes(p):
-        pcb = pcb.cut(y_cyl(2.5, yb + 1, yf - 1, xc + u, p.axis_z + v))
+        pcb = pcb.cut(y_cyl(2.5, yb + 1, yf - 1, xc + u, z + v))
     conn = cam_box(p, xc, -9.8, 9.8, h - 5.71, h, yb, yb + 2.75)          # FPC connector (back)
-    ring_front = yf - 14.43
-    mount = y_cyl(30.75, yf, ring_front + 5.8, xc, p.axis_z)             # housing
-    mount = mount.union(y_cyl(36.0, ring_front + 5.8, ring_front, xc, p.axis_z))  # back-focus ring
-    mount = mount.union(cam_box(p, xc, -6.985, 6.985, 12.0, h + 11.0, yb, yb - 12.04))  # skirt + tripod foot
-    mount = mount.union(cam_box(p, xc, -5.08, 5.08, -h - 2.7, -12.0, yf - 5.3, yf - 10.32))  # back-focus lock
-    return {"pcb": pcb, "conn": conn, "mount": mount, "ring_front_y": ring_front}
+    hd, hl = HQ_HOUSING
+    y_ring = yf - hl
+    mount = y_cyl(hd, yf, y_ring, xc, z)                                   # main housing
+    mount = mount.union(y_cyl(HQ_RING[0], y_ring, y_ring - HQ_RING[1], xc, z))  # back-focus ring
+    skirt = HQ_SKIRT + [(-u, v) for u, v in reversed(HQ_SKIRT)]
+    mount = mount.union(y_poly(skirt, yf, y_ring, xc, z))                  # tripod foot and skirt
+    mount = mount.union(cam_box(p, xc, -6.985, 6.985, h, 30.3, yb, yf))    # ...back to the board's back
+    mount = mount.union(cam_box(p, xc, -5.08, 5.08, -h - 2.55, -16.0, yf - 5.33, y_ring))  # back-focus lock
+    adapter = y_cyl(HQ_ADAPTER_D, y_ring - HQ_RING[1], yf - HQ_C_FLANGE, xc, z)
+    return {"pcb": pcb, "conn": conn, "mount": mount, "adapter": adapter, "yf": yf}
 
 
 # Lenses as simple envelopes: (outer diameter, length in front of the flange, needs C-CS adapter).
 LENSES = {
     "6mm_CS": (30.0, 30.0, False),         # official 6 mm wide angle: 30 x 34 mm incl. thread
-    "16mm_C": (39.0, 45.5, True),          # official 16 mm telephoto: 39 x 50 mm incl. thread
+    "16mm_C": (39.0, 45.5, True),          # official 16 mm telephoto: 39 x 50 mm incl. thread, 134 g
     "8-50mm_C_zoom": (40.0, 63.8, True),   # Waveshare 8-50 mm zoom used on the OT-2 lid mount
 }
 
 
-def make_hq_lens(p: Params, xc: float, ring_front_y: float, lens: str) -> cq.Workplane:
-    d, length, adapter = LENSES[lens]
-    y = ring_front_y
-    out = None
-    if adapter:
-        out = y_cyl(31.0, y, y - 5.03, xc, p.axis_z)
-        y -= 5.03
-    body = y_cyl(d, y, y - length, xc, p.axis_z)
-    return body if out is None else out.union(body)
+def lens_back_y(p: Params, lens: str) -> float:
+    """Y of the lens's flange: the C-CS adapter's front for a C lens, the ring's for CS."""
+    return hq_front_y(p) - (HQ_C_FLANGE if LENSES[lens][2] else HQ_CS_FLANGE)
+
+
+def make_hq_lens(p: Params, xc: float, lens: str) -> cq.Workplane:
+    d, length, _ = LENSES[lens]
+    y = lens_back_y(p, lens)
+    return y_cyl(d, y, y - length, xc, p.axis_z)
+
+
+# C-mount collar: a separate printed part for each HQ Camera (see Params).
+
+def collar_ribs(p: Params) -> list[tuple[float, float]]:
+    """Crush-rib centres (u, v): six, 60 degrees apart, one at the top."""
+    r = p.collar_rib_tip_d / 2 + p.collar_rib_d / 2
+    return [(r * math.cos(math.radians(a)), r * math.sin(math.radians(a))) for a in range(30, 360, 60)]
+
+
+def make_collar(p: Params, xc: float) -> cq.Workplane:
+    """The collar in place at the station centred on xc."""
+    yf = hq_front_y(p)
+    y_front = yf - p.collar_front
+    y_back = y_front + p.collar_t
+    z, hw = p.axis_z, p.collar_half
+    c = box_span(xc - hw, xc + hw, y_front, y_back, z - hw, z + hw).edges("|Y").fillet(p.collar_corner_r)
+    for u, v in hq_holes(p):
+        c = c.union(y_cyl(p.collar_leg_d, y_back - 0.5, yf, xc + u, z + v))
+    c = c.cut(y_cyl(p.collar_bore_d, y_back + 1, y_front - 1, xc, z))
+    for u, v in collar_ribs(p):
+        c = c.union(y_cyl(p.collar_rib_d, y_back, y_front, xc + u, z + v))
+    for u, v in hq_holes(p):
+        c = c.cut(y_cyl(p.m25_clear_d, yf + 1, y_front - 1, xc + u, z + v))
+        c = c.cut(y_cyl(p.collar_cbore_d, y_front + p.collar_cbore_h, y_front - 1, xc + u, z + v))
+    return c
+
+
+def collar_print(p: Params) -> cq.Workplane:
+    """The collar as printed: front face on the bed, legs up, bore centred on the origin."""
+    y_front = hq_front_y(p) - p.collar_front
+    return make_collar(p, 0.0).translate((0, -y_front, -p.axis_z)).rotate((0, 0, 0), (1, 0, 0), 90)
 
 
 # Camera Module 3, fitted cable up. Board, holes and connector from the official drawing and
@@ -421,8 +505,10 @@ def view_frustum(p: Params, xc: float, y_front: float, hfov: float, vfov: float,
 
 # --- configurations and checks -----------------------------------------------------------
 
-def build_config(p: Params, cams: list[str], lens: str = "16mm_C", cm3_variant: str = "standard") -> dict:
-    """cams[i] is "hq" or "cm3" for the left (-X) and right (+X) stations."""
+def build_config(p: Params, cams: list[str], lens: str = "16mm_C", cm3_variant: str = "standard",
+                 collar: bool = True) -> dict:
+    """cams[i] is "hq" or "cm3" for the left (-X) and right (+X) stations. Every HQ Camera gets
+    a C-mount collar unless collar=False; a C lens also gets its C-CS adapter."""
     parts: dict[str, cq.Workplane] = {}
     meta = []
     for i, (kind, xc) in enumerate(zip(cams, p.stations)):
@@ -432,8 +518,12 @@ def build_config(p: Params, cams: list[str], lens: str = "16mm_C", cm3_variant: 
             parts[f"hq_pcb_{tag}"] = hq["pcb"]
             parts[f"hq_conn_{tag}"] = hq["conn"]
             parts[f"hq_mount_{tag}"] = hq["mount"]
-            parts[f"hq_lens_{tag}"] = make_hq_lens(p, xc, hq["ring_front_y"], lens)
-            meta.append({"station": tag, "camera": "HQ", "lens": lens})
+            if LENSES[lens][2]:
+                parts[f"hq_adapter_{tag}"] = hq["adapter"]
+            parts[f"hq_lens_{tag}"] = make_hq_lens(p, xc, lens)
+            if collar:
+                parts[f"collar_{tag}"] = make_collar(p, xc)
+            meta.append({"station": tag, "camera": "HQ", "lens": lens, "collar": collar})
         else:
             c = make_cm3(p, xc, cm3_variant)
             parts[f"cm3_pcb_{tag}"] = c["pcb"]
@@ -454,9 +544,10 @@ def gap(a: cq.Workplane, b: cq.Workplane) -> float:
 
 
 def fov_intrusion(p: Params, lens: str, cm3_variant: str, depth: float = 400.0) -> float:
-    """Volume of the HQ lens (left station) inside the view pyramid of a Module 3 (right)."""
+    """Volume of the HQ lens, camera and collar (left station) inside the view pyramid of a
+    Module 3 (right)."""
     hq = make_hq_camera(p, p.stations[0])
-    obstacle = make_hq_lens(p, p.stations[0], hq["ring_front_y"], lens).union(hq["mount"])
+    obstacle = make_hq_lens(p, p.stations[0], lens).union(hq["mount"]).union(make_collar(p, p.stations[0]))
     c = make_cm3(p, p.stations[1], cm3_variant)
     fr = view_frustum(p, p.stations[1], c["lens_front_y"], c["hfov"], c["vfov"], depth)
     return overlap(fr, obstacle)
@@ -465,8 +556,8 @@ def fov_intrusion(p: Params, lens: str, cm3_variant: str, depth: float = 400.0) 
 def clear_pitch(p: Params, lens: str, cm3_variant: str) -> float:
     """Smallest station pitch at which the HQ lens stays out of the Module 3's view
     (horizontal edge of the view, to the lens barrel's far rim)."""
-    d, length, adapter = LENSES[lens]
-    hq_front = -p.hq_boss_h - p.hq_pcb_t - 14.43 - (5.03 if adapter else 0) - length
+    d, length, _ = LENSES[lens]
+    hq_front = lens_back_y(p, lens) - length
     c = make_cm3(p, 0, cm3_variant)
     reach = c["lens_front_y"] - hq_front
     return d / 2 + reach * math.tan(math.radians(c["hfov"] / 2))
@@ -476,8 +567,21 @@ def screw_stacks(p: Params) -> dict:
     return {
         "Pi 5: M2.5 x 12 (PCB + boss + base)": round(PI_PCB_T + p.pi_boss_h + p.base_t, 2),
         "HQ: M2.5 x 12 (PCB + boss + upright)": round(p.hq_pcb_t + p.hq_boss_h + p.upright_t, 2),
+        "HQ with the collar: M2.5 x 25 (counterbore floor + PCB + boss + upright)": round(
+            p.collar_front - p.collar_cbore_h + p.hq_pcb_t + p.hq_boss_h + p.upright_t, 2),
         "Module 3: M2 x 10 (PCB + boss + upright)": round(p.cm3_pcb_t + p.cm3_boss_h + p.upright_t, 2),
     }
+
+
+def collar_legs(p: Params, xc: float) -> cq.Workplane:
+    """Just the collar's legs, for their clearance to the camera."""
+    yf = hq_front_y(p)
+    y_back = yf - p.collar_front + p.collar_t
+    out = None
+    for u, v in hq_holes(p):
+        leg = y_cyl(p.collar_leg_d, y_back, yf, xc + u, p.axis_z + v)
+        out = leg if out is None else out.union(leg)
+    return out
 
 
 def run_checks(p: Params, mount: cq.Workplane) -> dict:
@@ -487,13 +591,27 @@ def run_checks(p: Params, mount: cq.Workplane) -> dict:
     ov["mount vs Pi 5"] = overlap(mount, pi)
     ov["mount vs Active Cooler (incl. push pins)"] = overlap(mount, cooler)
     ov["mount vs USB-C plug"] = overlap(mount, usb_c_plug(p))
+    press = res["press_fit_mm3"] = {}
     for name, cams in (("HQ + Module 3", ["hq", "cm3"]), ("Module 3 + HQ", ["cm3", "hq"]),
                        ("2 x Module 3", ["cm3", "cm3"]), ("2 x HQ (6 mm lenses)", ["hq", "hq"])):
         cfg = build_config(p, cams, lens="6mm_CS" if cams == ["hq", "hq"] else "16mm_C")
+        parts = cfg["parts"]
         cam_all = None
-        for k, v in cfg["parts"].items():
+        for k, v in parts.items():
             ov[f"{name}: mount vs {k}"] = overlap(mount, v)
             cam_all = v if cam_all is None else cam_all.union(v)
+        # Each collar against every other part on the camera side. Its crush ribs are meant to
+        # bite into its own camera's C-CS adapter, so that pair is reported on its own.
+        for k, v in parts.items():
+            if not k.startswith("collar_"):
+                continue
+            for k2, v2 in parts.items():
+                if k2 == k:
+                    continue
+                if k2 == f"hq_adapter_{k[-1]}":
+                    press[f"{name}: {k} crush ribs in {k2}"] = round(overlap(v, v2), 2)
+                else:
+                    ov[f"{name}: {k} vs {k2}"] = overlap(v, v2)
         ov[f"{name}: cameras vs Pi 5 + cooler"] = overlap(cam_all, pi.union(cooler))
     # How close each camera gets to the other camera's bosses.
     hq = make_hq_camera(p, p.stations[0])
@@ -506,6 +624,14 @@ def run_checks(p: Params, mount: cq.Workplane) -> dict:
     gp["Pi 5 underside to base (at the bosses)"] = p.pi_boss_h
     gp["Active Cooler push pins to base"] = round(gap(cooler, mount), 2)
     gp["USB-C plug to mount"] = round(gap(usb_c_plug(p), mount), 2)
+    gp["Collar back face to the back-focus ring"] = round(
+        p.collar_front - p.collar_t - HQ_HOUSING[1] - HQ_RING[1], 2)
+    gp["Collar front face to a C lens"] = round(HQ_C_FLANGE - p.collar_front, 2)
+    gp["Collar legs to the camera's lens mount (ring, tripod foot and skirt)"] = round(
+        gap(collar_legs(p, p.stations[0]), hq["mount"]), 2)
+    gp["Collar to the camera's lens mount"] = round(gap(make_collar(p, p.stations[0]), hq["mount"]), 2)
+    gp["Crush ribs into the C-CS adapter's knurl, per side"] = round((HQ_ADAPTER_D - p.collar_rib_tip_d) / 2, 3)
+    gp["6 mm CS lens to the crush ribs, per side"] = round((p.collar_rib_tip_d - LENSES["6mm_CS"][0]) / 2, 2)
     res["fov_intrusion_mm3"] = {}
     for lens in LENSES:
         for var in CM3_LENS:
@@ -517,8 +643,16 @@ def run_checks(p: Params, mount: cq.Workplane) -> dict:
     res["mount"] = {
         "size_mm": [round(bb.xlen, 1), round(bb.ylen, 1), round(bb.zlen, 1)],
         "volume_cm3": round(mount.val().Volume() / 1000, 1),
+        "volume_mm3": round(mount.val().Volume(), 3),
         "optical_axes": [[x, 0.0, p.axis_z] for x in p.stations],
         "stand_stud_xy": list(p.stand_xy),
+    }
+    col = collar_print(p).val()
+    cb = col.BoundingBox()
+    res["collar"] = {
+        "size_mm": [round(cb.xlen, 1), round(cb.ylen, 1), round(cb.zlen, 1)],
+        "volume_cm3": round(col.Volume() / 1000, 2),
+        "volume_mm3": round(col.Volume(), 3),
     }
     tol = 1e-3
     res["pass"] = all(v <= tol for v in ov.values())
@@ -529,8 +663,8 @@ def run_checks(p: Params, mount: cq.Workplane) -> dict:
 COLORS = {
     "mount": (0.36, 0.42, 0.48), "pi5": (0.18, 0.55, 0.34), "cooler": (0.72, 0.74, 0.78),
     "hq_pcb": (0.12, 0.48, 0.25), "hq_conn": (0.85, 0.85, 0.80), "hq_mount": (0.13, 0.13, 0.14),
-    "hq_lens": (0.08, 0.08, 0.09), "cm3_pcb": (0.12, 0.48, 0.25), "cm3_back": (0.85, 0.85, 0.80),
-    "cm3_lens": (0.10, 0.10, 0.11),
+    "hq_lens": (0.08, 0.08, 0.09), "hq_adapter": (0.18, 0.18, 0.19), "cm3_pcb": (0.12, 0.48, 0.25),
+    "cm3_back": (0.85, 0.85, 0.80), "cm3_lens": (0.10, 0.10, 0.11), "collar": (0.90, 0.50, 0.15),
 }
 
 
@@ -542,6 +676,9 @@ def export(p: Params, mount: cq.Workplane, checks: dict, out: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
     cq.exporters.export(mount, str(out / "mount.step"))
     cq.exporters.export(mount, str(out / "mount.stl"), tolerance=0.02, angularTolerance=0.1)
+    collar = collar_print(p)
+    cq.exporters.export(collar, str(out / "collar.step"))
+    cq.exporters.export(collar, str(out / "collar.stl"), tolerance=0.02, angularTolerance=0.1)
     for name, cams in (("assembly_hq_cm3", ["hq", "cm3"]), ("assembly_2x_cm3", ["cm3", "cm3"])):
         assy = cq.Assembly(name=name)
         assy.add(mount, name="mount", color=cq.Color(*COLORS["mount"]))

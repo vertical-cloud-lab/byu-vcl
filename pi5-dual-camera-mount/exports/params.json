@@ -44,5 +44,15 @@
   "m2_nut_depth": 1.9,
   "slot_w": 18.0,
   "slot_h": 2.5,
-  "slot_above_board": 4.5
+  "slot_above_board": 4.5,
+  "collar_front": 16.65,
+  "collar_t": 4.6,
+  "collar_half": 21.0,
+  "collar_corner_r": 5.0,
+  "collar_bore_d": 31.4,
+  "collar_rib_tip_d": 30.6,
+  "collar_rib_d": 1.0,
+  "collar_leg_d": 5.2,
+  "collar_cbore_d": 5.0,
+  "collar_cbore_h": 3.4
 }
