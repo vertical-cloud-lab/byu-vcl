@@ -33,6 +33,7 @@ built from Raspberry Pi's drawings.
 | [`exports/checks.json`](exports/checks.json), [`params.json`](exports/params.json) | Check results and the parameters they came from |
 | [`cad/mount.py`](cad/mount.py) | Parametric CadQuery model; builds, checks and exports everything above |
 | [`cad/render.py`](cad/render.py), [`cad/fetch_models.py`](cad/fetch_models.py) | Renders, and the download of Raspberry Pi's models they use |
+| [`slice/`](slice/) | A1 mini PLA slice (3MF + report) and the script that makes it |
 
 ```bash
 pip install -r cad/requirements.txt
@@ -48,6 +49,18 @@ xvfb-run -a -s "-screen 0 1920x1080x24" python render.py
 with no supports. The bosses on the front have 45° teardrop undersides, the nut pockets in the upright have pointed
 roofs, and the cable slots are short bridges. It fits an A1 mini bed (180 × 180 mm). PLA or PETG both work, and
 black keeps reflections out of the lenses.
+
+**Sliced for an A1 mini** ([`slice/pi5_dual_camera_mount_A1mini_PLA.3mf`](slice/pi5_dual_camera_mount_A1mini_PLA.3mf),
+[`report.json`](slice/report.json)): **1 h 33 min and 44.6 g of PLA**. It used the Bambu Studio 02.08.02.61 CLI with
+Bambu's own A1 mini / 0.20 mm Standard / PLA Basic presets, 3 walls, 25 % infill and the Textured PEI plate at 65 °C.
+The results:
+
+- No slicer warnings, no toolpaths off the bed, and Bambu's support check flags nothing.
+- The only G-code warning is `not_support_traditional_timelapse`, which every single-colour A1 mini print carries.
+  Leave timelapse off.
+- [`slice/slice_a1mini.py`](slice/slice_a1mini.py) and [`flatten_presets.py`](slice/flatten_presets.py) are the OT-2
+  lid mount's scripts ([PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)), pointed at `mount.stl`.
+- On Ubuntu the CLI also needs `libwebkit2gtk-4.1-0`, `libgstreamer-plugins-base1.0-0` and `libwayland-server0`.
 
 **Hardware** (nylon or steel; the M2 parts are the same as the Zero 2 W mount's):
 
@@ -145,9 +158,8 @@ hardware H.264 encoder, so two simultaneous streams are encoded on the CPU.
 
 - **Nothing has been printed.** The boss and nut-pocket fits use the same allowances as the OT-2 lid mount: +0.4 mm
   across the nut flats, and clearance holes of Ø2.4 (M2) and Ø2.8 (M2.5).
-- **Not sliced yet.** The OT-2 lid mount's Bambu Studio CLI setup
-  ([PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234), `slice/slice_a1mini.py`) should take
-  `mount.stl` as-is.
+- **The 3MF has no plate thumbnail.** Headless, the CLI needs the OpenGL workaround described in PR #234's slice
+  README for that. It doesn't affect the print.
 - **Image orientation** with the cables up hasn't been checked on hardware; see *Image orientation* above.
 - **The HQ Camera's back** isn't in any Raspberry Pi model. The 2.5 mm between its board and the Module 3 bosses
   assumes nothing on its back is taller than that apart from the connector, which is modelled.
