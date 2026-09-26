@@ -1,0 +1,9 @@
+# vendor CAD (AgileX, Opentrons) is fetched at run time, not redistributed
+cad/.cache/
+exports/onshape/
+# aggregates that build.py regenerates in a minute; they live in Onshape
+exports/labware_lineup.step
+exports/sandbox_layout.step
+exports/labware/plate_384_flat.step
+renders/tiles/
+__pycache__/
