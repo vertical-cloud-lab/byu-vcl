@@ -209,8 +209,9 @@ def main() -> None:
 
     ax.text(0.45, 8.08, "rePowder first runs: parts for the prototyping lab", fontsize=12.5, weight="bold",
             color=INK, va="center")
-    ax.text(0.45, 7.87, "Every part is shown cut through the middle; hatching is metal. The cup has to fit the crucible \u2013 "
-            "confirm that before cutting \u00b7 issue #222", fontsize=7.0, color=INK2, va="center")
+    ax.text(0.45, 7.87, "Every part is shown cut through the middle; hatching is metal. Make one P1 first and check it gets "
+            "past the sealing rod's adapter into the crucible before making cups (README) \u00b7 issue #222",
+            fontsize=7.0, color=INK2, va="center")
 
     for ext in ("pdf", "png"):
         fig.savefig(OUT / f"charge_parts.{ext}", dpi=200 if ext == "png" else None)

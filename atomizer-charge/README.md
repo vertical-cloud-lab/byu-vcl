@@ -5,7 +5,8 @@ for the first atomizer runs (#161), all turned from the 3/4" 6063-T52 bar that a
 (McMaster [1640T16](https://www.mcmaster.com/1640T16/), 2 ft). The CAD is parametric
 ([build123d](https://github.com/gumyr/build123d), OpenCascade B-rep): change a dimension in
 [`cad/charge_cad.py`](cad/charge_cad.py) and the STEP files, renders, masses, compositions, and shop drawing all
-regenerate from it.
+regenerate from it. The furnace, crucible, and sealing-rod specs it draws on, restated from AMAZEMET's and
+Indutherm's manuals, are in [`repowder-reference/`](repowder-reference/README.md).
 
 ![Crucible cutaway with four standard cups](cad/renders/crucible_cutaway.png)
 
@@ -22,48 +23,97 @@ so far.
 The vent, in one line: **the chamber is pumped down before melting, so air shut under a solid lid has to leave through
 the powder.** A Ø1/16" hole through the lid gives it somewhere else to go (#104).
 
-**Before anyone cuts metal, measure the crucible** ([what to measure](#measure-before-machining)). The bore and
-sealing-rod diameters below are inferred, not measured.
+**Before anyone makes cups, cut one P1 slug and try it in the crucible with the sealing rod fitted**
+([why](#getting-a-slug-past-the-rods-adapter)), **and measure the crucible** ([what to measure](#measure-before-machining)).
+The crucible dimensions below are scaled from a drawing, not measured.
 
-## The crucible: documented vs. inferred
+## The crucible: documented vs. scaled
+
+No vendor document dimensions the crucible. Indutherm's section of the same furnace (GU500 manual Fig. 61) is a CAD
+drawing, though, so its proportions can be measured and scaled by one known length
+([working](repowder-reference/crucible_proportions.py), [figure](repowder-reference/figures/crucible-proportions.png)).
+Scaled to the quoted 225 cm³, it lands on all three numbers Bartosz gave on 9/17, so that is what the model uses.
 
 | Quantity | Value in the model | Status | Source |
 | --- | --- | --- | --- |
-| Crucible material | graphite | documented | AMAZEMET, [induction melting](https://www.amazemet.com/induction-melting-principle/) |
-| Melt delivery | nozzle in the floor, sealed by the sealing rod; melt is pushed out by a pressure differential | documented | same page; [9/17 call](../docs/meetings/2026-09-17-repowder-install/transcript.md) (20:12, 17:40) |
-| Crucible sizes | 225 ml and 400 ml, interchangeable | documented options. **Which one we have is not confirmed.** | AMAZEMET, [TUM case study](https://www.amazemet.com/technical-university-of-munich-amazemet-case-study/) |
-| Rod-to-wall gap | 20 mm (= max feedstock Ø) | documented, verbal | Bartosz, 9/17 call, 20:12 |
-| Inner depth | 105 mm (10–11 cm); charge may stand to ~120 mm | documented, verbal | Bartosz, 9/17 call, 21:21 |
-| Bore | **Ø52 mm** | inferred: 225 ml at 105 mm deep is Ø52.2 | — |
-| Sealing rod | **Ø12 mm** | inferred: 52 − 2 × 20 | — |
-| Nozzle | **Ø0.7 mm hBN orifice** | documented, published | Ge et al. 2025, a rePowder induction-module study |
-| Melt push | **200 mbar Ar over-pressure**, after 3 evacuation/Ar cycles to <50 ppm O₂; system pumps to 4×10⁻¹ mbar | documented, published | Ge et al. 2025; Ukabhai et al. 2025 |
-| Crucible coating | **BN spray on the graphite** is published rePowder practice | documented, published | Ge et al. 2025 |
+| Crucible | graphite, **225 cm³**. The 400 cm³ one is a separate upgrade that wasn't quoted | documented | AMAZEMET's quote ([reference §2](repowder-reference/README.md#2-answers-for-byu-vcl222)) |
+| Melt delivery | pour hole in the floor, sealed by the sealing rod; melt is pushed out by a pressure differential | documented | AMAZEMET, [induction melting](https://www.amazemet.com/induction-melting-principle/); [9/17 call](../docs/meetings/2026-09-17-repowder-install/transcript.md) (20:12, 17:40) |
+| Loading order | rod fitted and seated **first**, then the metal is weighed and filled around it. Never run without the rod | documented | GU500 pp. 15, 47–51 ([reference §4.2](repowder-reference/README.md#42-assembly-and-loading-order)) |
+| Bore | **Ø57 mm** (was Ø52, inferred assuming a flat floor) | scaled | GU500 Fig. 61 at 225 cm³ |
+| Sealing rod | **Ø12.6 mm**, ball tip seated round the pour hole (was Ø12) | scaled | same |
+| Rod-to-wall gap | 22 mm | scaled; Bartosz said "around 20 mm" | same; 9/17 call, 20:12 |
+| Floor | **a ~36° cone** down to a ~Ø7 pour hole, not flat | scaled | same |
+| Depth | 81 mm of straight bore, 102 mm rim to the floor's apex. A charge may stand ~19 mm up into the filling cone on the rim, ~120 mm above the apex | scaled; Bartosz said "10–11 cm" and "12 cm" | same; 9/17 call, 21:21 |
+| Rod adapter and arm | adapter ≈Ø22 over the axis, its bottom ≈18 mm above the rim; arm ≈47 mm above the rim | scaled, and the **least certain** number: the drawing shows the adapter's width along the arm only | same ([reference §4.3](repowder-reference/README.md#43-loading-clearance)) |
+| Nozzle | **Not known for our unit.** The consumable pack lists "nozzles" with no size. Published rePowder work used a Ø0.7 mm hBN orifice; Indutherm's micro plates are 0.3, 0.5, and 1 mm, and 2 mm is its water-granulation hole | open | Ge et al. 2025; GU500 pp. 41, 48, 55 |
+| Melt push | **200 mbar Ar over-pressure**, after 3 evacuation/Ar cycles to <50 ppm O₂; system pumps to 4×10⁻¹ mbar. The furnace allows −1 to +0.5 bar, and the pour pressure is programmed as a begin → end ramp | published; range documented | Ge et al. 2025; Ukabhai et al. 2025; GU500 pp. 18, 36 |
+| Temperature | Type N thermocouple in a hole in the crucible wall, to 1300 °C. The furnace controls on the wall, so **the metal lags the reading** on heat-up | documented | GU500 pp. 18, 36 |
+| Crucible coating | **BN spray on the graphite** is published rePowder practice. The vendor documents don't mention it | published | Ge et al. 2025 |
+| Most Al it holds | ≈0.5 kg: the model gives 499 g to the rim, and the price list's 0.9 kg for 400 cm³ pro-rates to the same | derived | PL-2024 ([reference §2](repowder-reference/README.md#2-answers-for-byu-vcl222)) |
 | Published charge sizes | 100 g Al/Cu pellets; 400–500 g discs + arc-melted bars | documented, published | Ukabhai et al. 2025; Ge et al. 2025 |
-| Seat, wall, coil | schematic | not documented | — |
+| Coil | 10 kW, 7 kHz; drawn schematically | power documented | GU500 p. 18 |
 
-The 225 ml option fits the rest of the numbers. A 400 ml crucible at the same depth would be ~Ø70 mm, which with a
-20 mm gap implies a ~30 mm sealing rod. That seems unlikely, but a caliper settles it.
+**Why Ø57 and not Ø52.** Ø52 came from putting 225 ml in a flat-floored cylinder 105 mm deep. The drawing's floor is a
+cone, which holds less than a cylinder of the same depth, so the bore has to be wider to hold the same 225 cm³. Scaled
+instead so the gap is exactly 20 mm, the drawing holds only 163 cm³.
+
+## Getting a slug past the rod's adapter
+
+The rod is seated before any metal goes in, and its adapter hangs over the middle of the crucible down to about the top
+of the filling cone. Everything has to get past it, and that, not the rod-to-wall gap, is what limits the slug
+diameter.
+
+![Plan view: four cups fit around the rod, but the rod's adapter is in the way](cad/renders/crucible_top.png)
+
+| Part | Straight down | Tipped in |
+| --- | ---: | ---: |
+| P1 / P2, 3/4" × 2.5" | −1.35 mm | **−0.09 mm** (−2.1 to +0.5) |
+| the same, bar at its +.014" tolerance | −1.71 | −0.44 |
+| P4, 3/4" × 1.25" | −1.35 | +1.08 (−1.2 to +1.8) |
+| 5/8" × 2.5", for comparison | +1.83 | +3.10 |
+| 1/2" × 2.5" | +5.00 | +6.28 |
+| 5N Ø20 mm rod, 2.5" long | −2.30 | −1.04 |
+
+*Room to spare; negative means it doesn't fit. From `loading_margin()` in [`charge_cad.py`](cad/charge_cad.py), the
+same model as the reference's. Ranges in brackets span its three scalings of the drawing (20 mm gap, 225 cm³,
+245 cm³).*
+
+- **Straight down, no 3/4" part fits.** The band between the adapter and the wall is ≈17.7 mm, and the bar is 19.05.
+- **Tipped in, it's too close to call.** With its foot against the rod and its top leaning away from the adapter, the
+  tight moment is when the slug is ~45 mm into the bore. It misses by 0.09 mm, far inside the error of a scaled drawing.
+- **So try one.** Cut a P1 first; E2 needs two anyway. With the furnace cold, the bell open, and the rod fitted and
+  closed, hold the slug by its top and tip it in from the side away from the arm and the wall thermocouple. Once it is
+  ~45 mm in and its top is below the adapter, it is past the tight spot; lift it back out the same way. Gloves (#126).
+- **If it won't go in:** ask AMAZEMET whether the rod can stand in the pour hole on its own, with the adapter pinned on
+  after loading, or be pulled and re-seated after loading. Either clears the mouth, but both are outside the documented
+  order. Failing that, 5/8" bar goes straight in with 0–2.3 mm to spare, but the cups would need resizing.
+- **AMAZEMET's 4047 benchmark rods** are their own answer to what fits: note their diameter, and how they load them.
+
+The documented sequence, for the first run (GU500 pp. 34, 42, 47–51): crucible, filling cone, wall thermocouple, then
+the rod fitted and seated; metal in around it; close the bell; evacuate and backfill (Indutherm says one cycle for
+usual alloys, the published rePowder work did three); heat under argon. Open the bell only below 500 °C.
 
 ## Rods around the piston, or one ring over it?
 
-![Plan view: four slugs fit, five do not](cad/renders/crucible_top.png)
-
-- **Four 3/4" slugs fit around the rod, and a fifth does not.** Four sit 2.9–4.3 mm apart depending on which way they
-  lean, and still ≥2.8 mm apart at 600 °C. Five, even pushed against the wall, sit 0.32 mm apart cold and interfere
-  once hot: Al grows ~1.4 % by 600 °C, graphite ~0.3 %. At the bar's +0.014" tolerance, five don't fit even cold.
+- **Four 3/4" slugs fit around the rod, with room to spare.** They sit 3.3–7.9 mm apart depending on which way they
+  lean, and still ≥3.2 mm apart at 600 °C: Al grows ~1.4 % by then, graphite ~0.3 %. Five fit too, 3.3 mm apart
+  pushed out to the wall, though they can't all touch the rod at once; six overlap even cold. (In the old Ø52 model,
+  five didn't fit.) The floor cone rises towards the wall, so each slug stands on the outer edge of its base and leans
+  a degree or so onto the rod.
 - **You don't need a full crucible.** AMAZEMET's [FAQ](https://www.amazemet.com/faq/) puts the input at "a few to a
   few hundred grams". What limits the charge is the minimum melt for a steady pour, not crucible volume. Two slugs make
   80–100 g, which is the 100 g/run basis of the #161 purchase model. Four slugs make ~175 g. The crucible would hold
   ~500 g of liquid Al.
-- **The ring over the rod** ([render](cad/renders/ring_concept.png)) only works if the sealing rod can be pulled and
-  re-seated after loading. The ring has to pass over the whole rod, including whatever grips its top. It also doesn't
+- **The ring over the rod** ([render](cad/renders/ring_concept.png)) is now ruled out by the documented procedure, not
+  just by cost. The rod is seated before the metal goes in, the ring's Ø16 hole can't pass the ≈Ø22 adapter, and the
+  furnace must never run without the rod. It would need AMAZEMET to allow fitting the rod after loading. It also doesn't
   add capacity. Powder capacity comes from wall thickness, not from ring vs. rods: the ring holds 37 cm³ of powder,
   while four 3/4" × 100 mm thin-wall cups would hold 73 cm³. On top of that, the ring needs a 2" bar (a 5N Ø50 bar
   costs far more than Ø20), a trepanning cut, and a rotary stage to dose into. Identical slugs stand in a rack and dose
   like vials.
 - **So: repeat slugs.** Separate slugs also cover Bartosz's caveat. If a powder cup doesn't fully melt, rerun it as one
-  cup plus one solid slug, so that part of the charge is already molten when the powder is released.
+  cup plus one solid slug, so that part of the charge is already molten when the powder is released. Indutherm's own
+  charge is short cut pieces dropped in around the seated rod ([photo](repowder-reference/README.md#43-loading-clearance)).
 
 ## Experiments
 
@@ -81,9 +131,17 @@ tapped densities (AlSi10Mg 1.60, Si 1.10, re-atomized 6063 1.65 g/cm³). **Weigh
 | <img src="cad/renders/insets/E6_al_powder_cup.png" width="80"> | **E6** Re-atomize our 6063 powder | handy | 2 × P2 + P3 | 8.2 g of E2's powder | 87 g | 19 % | 6063 | Powder melting with no composition change. Also O pickup per pass |
 | <img src="cad/renders/insets/E7_thin_cup.png" width="80"> | **E7** Small batch, thin-wall cup | later | 1–2 × P4 + P5 | 7.5 g AlSi10Mg | 19 g per cup | 39.5 % | Al-4.2Si-0.55Mg | How small a charge still pours. Thin wall = less oxide skin ([#161 Edison note](https://github.com/vertical-cloud-lab/byu-vcl/issues/161#issuecomment-5593664416)) |
 
-Cups stand **plug up**, so the powder drops into metal that is already liquid and the vent points up. With two slugs,
-the melt is 17–20 mm deep in the annulus, assuming the floor is flat. E1, E3, E5, and E6 use the plug to close the
-cup, not to compact it: the powder is tapped to the plug line first. E4 is the compaction test.
+Cups stand **plug up**, so the powder drops into metal that is already liquid and the vent points up. E1, E3, E5, and
+E6 use the plug to close the cup, not to compact it: the powder is tapped to the plug line first. E4 is the compaction
+test.
+
+**The pour runs on the argon over-pressure, not on the melt's weight.** The melt fills the floor cone first, so two
+slugs stand 28–31 mm over the pour hole (`melt_depth_mm` in [`experiments.json`](cad/experiments.json)). That is only
+~7 mbar of head. Pushing liquid Al into a 0.7 mm hole it doesn't wet takes ~50 mbar (2γ/r, ignoring the oxide skin,
+which only adds to it; 35 mbar at 1 mm, 70 at 0.5). Even a full ~0.5 kg charge gives only 23 mbar, so with any
+sub-millimetre nozzle the charge size doesn't change this, and the published 200 mbar does the work. The same 2γ/r
+reproduces Indutherm's own start pressures for bronze (reference [§4.5](repowder-reference/README.md#45-nozzle-and-flow)).
+The cone helps small charges: E7's 38 g still stands 21 mm over the hole.
 
 ## Parts for the prototyping lab
 
@@ -117,9 +175,10 @@ slug per run, all seven runs fit in the bar on hand (504 mm).
    value and it is breakaway that sizes the press). Reserve 2 t. The thin cup P4 is elastic to .0011".
 2. **Every plug is vented** (Ø1/16" through the axis). Gas sealed in with the powder has nowhere to go until the cup
    melts, which is the melt-ejection risk flagged in #104 and PR #134. The chamber is also pumped down before melting.
-3. **Slug OD ≤ measured rod-to-wall gap − 0.7 mm**, because Al outgrows graphite on heating. A max-tolerance bar
-   (Ø.764) needs a 20.1 mm gap; otherwise skim the ODs. This matters even more for the 5N Ø20.0 rods: **a Ø20.0 bar
-   in a 20 mm gap has to be turned down** before it goes in.
+3. **Slug OD ≤ measured rod-to-wall gap − 0.7 mm**, because Al outgrows graphite on heating, **and it has to get past
+   the rod's adapter**, which is the tighter limit ([above](#getting-a-slug-past-the-rods-adapter)). The gap now
+   looks like ~22 mm, which the 3/4" bar clears, and so would the 5N Ø20.0 rods. The adapter is what may force
+   either to be turned down.
 4. No marker ink, scribing, or stamping on the parts. Degrease in IPA, dry, weigh each part to 0.01 g, and label the
    bag.
 
@@ -141,9 +200,10 @@ one. Three dimensions were not standard and were changed; the rest were already 
 | ~~0.5 / 0.3 mm chamfers~~ → **.020 / .015"** | ⚠️ changed. The sheet was mixing mm and inch callouts, which is how a part gets made wrong | — |
 | ~~Ø2.000" F1 sleeve, bore +.001–.002"~~ → **Ø1.250", bore +.0005" max** | ⚠️ changed, see below | 1018 CRS stock size |
 
-**Why F1 shrank, and why its bore got tighter.** The cup's OD grows only **.00074"** before its bore reaches
-yield (same Lamé calculation, in `fit_check()`). A .001–.002" slip fit therefore never touches the sleeve until
-after the cup has already started to yield — the sleeve was decorative. Bored to +.0005" it actually takes load.
+**Why F1 shrank, and why its bore got tighter.** The cup's OD grows only **.00059"** before its bore reaches
+yield (same Lamé calculation, in `fit_check()`, with the von Mises check; hoop stress alone gives .00074"). A
+.001–.002" slip fit therefore never touches the sleeve until after the cup has already started to yield — the sleeve
+was decorative. Bored to +.0005" it actually takes load, just.
 And it doesn't need to be 2": .25" of 1018 over a .750" bore sees ~30 MPa hoop at 100 MPa bore pressure, nowhere
 near its ~370 MPa yield. Ø1.250" is a stock size, weighs 252 g instead of 870 g, and is less boring.
 
@@ -159,8 +219,9 @@ crow on the arithmetic. Raw answers and task ids are in
 
 **Confirmed, unchanged:** the Lamé contact pressure and hoop stress; the 0.00074" hoop-only OD growth; every
 standard size above; the 2.000" reamer flute; four slugs fit and five do not (five need a 16.205 mm pitch radius
-cold and 16.432 mm hot, against 16.420 mm available — 0.012 mm interference even pushed outward); Al ≈1.4 % and
-graphite ≈0.3 % linear growth to 600 °C; BN wash on graphite is published rePowder practice.
+cold and 16.432 mm hot, against 16.420 mm available — 0.012 mm interference even pushed outward) — in the Ø52 model
+it was given, since superseded by the Ø57 scaling above; Al ≈1.4 % and graphite ≈0.3 % linear growth to 600 °C; BN
+wash on graphite is published rePowder practice.
 
 **Corrected, and now in the files:**
 
@@ -183,7 +244,10 @@ Ranked by how much they would change the plan:
    mass-transfer limited. Measured: Si cylinders at 738 °C were only **29–44 % dissolved after 2–3.5 min**.
    Raising superheat 40→80 °C bought ~30 % on the mass-transfer coefficient; stirring bought more. Edison's
    recommendation is **AlSi50 master alloy** instead, or coarse clean granules added below the surface with a
-   validated hold. Undissolved Si in front of a **Ø0.7 mm nozzle** is the failure mode.
+   validated hold. Undissolved Si in front of a **Ø0.7 mm nozzle** is the failure mode. The furnace maker's own rule,
+   written for water granulation but the nearest thing to vendor guidance: at least 50–80 °C of superheat, and a hold
+   of ≥5 min once fully molten, **10 min when alloying in the furnace** (GU500 pp. 42–45). The reading is the
+   crucible wall's, so while it heats the metal is cooler than the display says.
 2. **Powder inside a cup melts, but not necessarily clean (E1, E4, E6, E7).** Every particle carries an alumina
    skin that does not dissolve in the melt; opposed skins make Campbell bifilms. Gas-atomised powder also holds Ar
    and adsorbed moisture, and liquid Al dissolves ~15× the hydrogen that solid Al does. Standard practice is
@@ -196,16 +260,20 @@ Ranked by how much they would change the plan:
 4. **The cup is most of the charge.** At ~35 g of 6063 around 8–10 g of powder the cup is ~80 % of the slug, so it
    sets Si, Mg, Fe and Cu. Already in the mass balance here, but Mg also *leaves*: it oxidises and evaporates
    above ~700 °C (−7.8 % over ten LPBF cycles for AlSi7Mg, and worse in a small melt). Treat the designed Mg as an
-   upper bound.
+   upper bound. The furnace melts under argon above 500 °C (it starts flushing the crucible with protective gas there
+   by default), which keeps that loss slow; a melt held hot under vacuum would lose its Mg far faster.
 5. **Don't pre-specify a re-atomisation pass count (E6).** No Al-specific per-pass oxygen number exists. Proxies:
    AlSi10Mg LPBF reuse adds ~0.005 pp O per build against a 0.2 wt % limit; ultrasonic atomisation of Ti chips
    added ~220 ppm. Full remelt makes fresh droplet surface, so expect more. Measure O by inert-gas fusion each pass.
 6. **Sequencing.** Run AMAZEMET's own solid **Al 4047 benchmark rods first**, then the solid control (E2), then
-   one powder cup with full post-run chemistry — before E3–E7 add variables.
+   one powder cup with full post-run chemistry — before E3–E7 add variables. Watching the 4047 rods go in past the
+   rod's adapter answers the loading question as well.
 7. **E7's 1.6 mm wall** may melt through or collapse before its powder has melted. Unverified.
 8. **Crucible geometry is still unverified.** Edison searched and found **no** published rePowder crucible bore,
-   sealing-rod diameter, or 4047 rod dimensions. Ø52 / Ø12 remain inferred. It also notes that a Ø19.05 cup in a
-   20 mm gap leaves almost nothing for expansion and gas flow — the same point as machining rule 3.
+   sealing-rod diameter, or 4047 rod dimensions, and the vendor documents don't dimension it either. The model now
+   uses Indutherm's drawing scaled to 225 cm³ (Ø57 / Ø12.6, a ~22 mm gap). That answers Edison's other point, that a
+   Ø19.05 cup in a 20 mm gap leaves almost nothing for expansion and gas flow, but puts the rod's adapter in the way
+   ([above](#getting-a-slug-past-the-rods-adapter)).
 
 ## Filling a cup
 
@@ -214,7 +282,7 @@ Ranked by how much they would change the plan:
 3. Weigh the powder into the cup, tapping as you go. Stop at the target mass or the plug line, whichever comes first,
    and record the actual mass.
 4. Press the plug flush in the soft-jaw vise or arbor press. For E4, stand the cup in F1 on a flat plate and use the
-   hydraulic press, ~3–4 t (≈1.3 t to compact the powder plus ≈0.6–1.8 t of press fit). F1 is the cup's length, so
+   hydraulic press, ~3–4 t (≈1.3 t to compact the powder plus ≈1.3–1.6 t of press fit). F1 is the cup's length, so
    the platen bottoms out at flush. Push the cup out through F1 with a 5/8" drift. Don't clear the vent with
    compressed air (#126).
 5. Weigh the loaded cup: that mass balance gives the true powder fraction. Store sealed with desiccant (#30, #230).
@@ -224,18 +292,25 @@ Ranked by how much they would change the plan:
 The crucible is reachable now: Bartosz: "if you move the foam out you can see the crucible" (9/17 call, 20:12). Wear
 gloves (#126).
 
-1. **Crucible bore** at the rim and near the floor (graphite crucibles are often tapered).
-2. **Sealing-rod OD**, and whether its tip sits in a conical seat. How much flat floor is there beside it?
-3. **Depth** from the rim to the floor beside the rod, and the clearance above the rim with the lid closed. Is ~120 mm
-   really available?
-4. **Which crucible we have**, 225 or 400 ml: part number or packing list.
-5. **The Al 4047 benchmark rods** AMAZEMET shipped: diameter, length, and how many make a run. That is AMAZEMET's own
-   answer to both "what fits" and "what's the minimum charge".
-6. **For Bartosz:** the minimum charge for a steady pour; whether the rod can be pulled and re-seated after loading
-   (the ring concept depends on it); and whether a BN wash on the graphite is standard for Al (#161 Edison note).
+1. **Try a P1 slug past the rod's adapter** ([how](#getting-a-slug-past-the-rods-adapter)). If it goes in, the rest
+   of this list refines the model. If it doesn't, stop before making cups.
+2. **With the rod fitted and closed:** the adapter's width both ways, the heights of its bottom and of the arm's
+   underside above the filling cone, and where the arm and the wall thermocouple sit around the mouth.
+3. **Crucible bore** at the rim and just above the floor cone (graphite crucibles are often tapered).
+4. **Sealing-rod OD**, and its tip: a ball, or a cone, and how it seats in the pour hole.
+5. **Depth** from the rim down to the floor cone beside the rod; the filling cone's thickness; and the height from its
+   top to the closed bell. Is ~120 mm above the floor really available?
+6. **Which nozzle shipped**, and what is in the "Induction 225 cm³ consumable pack": how many crucibles and rods, and
+   the nozzle sizes. AMAZEMET's quote settles 225 vs. 400 ml; the packing list confirms it.
+7. **The Al 4047 benchmark rods** AMAZEMET shipped: diameter, length, how many make a run, and how they are meant to go
+   in past the adapter. That is AMAZEMET's own answer to "what fits" and "what's the minimum charge".
+8. **For AMAZEMET or Bartosz:** the minimum charge for a steady pour; whether the rod can be seated with the adapter
+   pinned on after loading, or pulled and re-seated (a 3/4" fallback and the ring concept both depend on it); whether
+   a BN wash on the graphite is standard for Al (#161 Edison note); and the superheat they use for Al. The reference
+   lists the documents to ask for at the same time ([§13](repowder-reference/README.md#13-documents-to-request)).
 
-Change `CRUCIBLE_ID`, `SEALING_ROD_D`, `CRUCIBLE_DEPTH`, or `STOCK_D` in `charge_cad.py` and re-run to update
-everything.
+Change `CRUCIBLE_ID`, `SEALING_ROD_D`, `BORE_STRAIGHT`, `FLOOR_CONE_H`, `ROD_ADAPTER_D`, `ROD_ADAPTER_ABOVE_RIM`, or
+`STOCK_D` in `charge_cad.py` and re-run to update everything.
 
 ## Regenerating
 

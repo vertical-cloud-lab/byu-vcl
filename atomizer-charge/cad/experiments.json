@@ -18,7 +18,8 @@
       "powder_frac_pct": 18.5,
       "si_wt_pct": 2.18,
       "mg_wt_pct": 0.61,
-      "melt_depth_mm": 18.1,
+      "melt_depth_mm": 29.1,
+      "head_mbar": 6.8,
       "pieces": {
         "std_cup": 2,
         "std_plug": 2
@@ -40,7 +41,8 @@
       "powder_frac_pct": 0.0,
       "si_wt_pct": 0.4,
       "mg_wt_pct": 0.67,
-      "melt_depth_mm": 20.4,
+      "melt_depth_mm": 31.0,
+      "head_mbar": 7.2,
       "pieces": {
         "solid_slug": 2
       }
@@ -64,7 +66,8 @@
       "powder_frac_pct": 15.2,
       "si_wt_pct": 10.0,
       "mg_wt_pct": 0.59,
-      "melt_depth_mm": 17.4,
+      "melt_depth_mm": 28.5,
+      "head_mbar": 6.6,
       "pieces": {
         "std_cup": 2,
         "std_plug": 2
@@ -88,7 +91,8 @@
       "powder_frac_pct": 22.0,
       "si_wt_pct": 2.51,
       "mg_wt_pct": 0.6,
-      "melt_depth_mm": 18.9,
+      "melt_depth_mm": 29.8,
+      "head_mbar": 6.9,
       "pieces": {
         "std_cup": 2,
         "std_plug": 2
@@ -112,7 +116,8 @@
       "powder_frac_pct": 11.6,
       "si_wt_pct": 12.0,
       "mg_wt_pct": 0.6,
-      "melt_depth_mm": 16.7,
+      "melt_depth_mm": 28.0,
+      "head_mbar": 6.5,
       "pieces": {
         "std_cup": 2,
         "std_plug": 2
@@ -136,7 +141,8 @@
       "powder_frac_pct": 19.0,
       "si_wt_pct": 0.4,
       "mg_wt_pct": 0.68,
-      "melt_depth_mm": 18.2,
+      "melt_depth_mm": 29.2,
+      "head_mbar": 6.8,
       "pieces": {
         "std_cup": 2,
         "std_plug": 2
@@ -160,7 +166,8 @@
       "powder_frac_pct": 39.5,
       "si_wt_pct": 4.19,
       "mg_wt_pct": 0.55,
-      "melt_depth_mm": 8.0,
+      "melt_depth_mm": 20.8,
+      "head_mbar": 4.8,
       "pieces": {
         "thin_cup": 2,
         "thin_plug": 2
@@ -176,9 +183,49 @@
     "all_runs_one_slug_each_mm": 504.1
   },
   "geometry": {
-    "annulus_area_mm2": 2010.6,
-    "annulus_volume_cm3": 211.1,
-    "cavity_volume_cm3_225ml_check": 223.0,
+    "crucible_bore_mm": 57.1,
+    "sealing_rod_mm": 12.6,
+    "rod_to_wall_gap_mm": 22.25,
+    "floor_cone_deg": 35.7,
+    "rim_to_floor_apex_mm": 101.6,
+    "annulus_area_mm2": 2436.0,
+    "annulus_volume_cm3": 197.6,
+    "cavity_volume_cm3_225ml_check": 225.2,
+    "max_al_charge_g_to_rim": 499.0,
+    "slug_base_below_cone_top_mm": 1.46,
+    "band_beside_rod_adapter_mm": 17.7,
+    "loading_margin_mm": {
+      "P1_P2_3/4in_x_2.5in": {
+        "straight_down_mm": -1.35,
+        "tipped_in_mm": -0.09
+      },
+      "P1_P2_max_tol_bar_0.764in": {
+        "straight_down_mm": -1.71,
+        "tipped_in_mm": -0.44
+      },
+      "P4_3/4in_x_1.25in": {
+        "straight_down_mm": -1.35,
+        "tipped_in_mm": 1.08
+      },
+      "5/8in_x_2.5in": {
+        "straight_down_mm": 1.83,
+        "tipped_in_mm": 3.1
+      },
+      "1/2in_x_2.5in": {
+        "straight_down_mm": 5.0,
+        "tipped_in_mm": 6.28
+      },
+      "5N_20mm_x_2.5in": {
+        "straight_down_mm": -2.3,
+        "tipped_in_mm": -1.04
+      }
+    },
+    "breakthrough_mbar_by_nozzle_mm": {
+      "0.5": 69.6,
+      "0.7": 49.7,
+      "1.0": 34.8,
+      "2.0": 17.4
+    },
     "std_cavity_cm3": 4.987,
     "std_full_bore_cm3": 6.194,
     "thin_cavity_cm3": 4.713,
@@ -186,17 +233,21 @@
     "four_tall_thin_cups_powder_cm3": 72.9,
     "std_cup_wall_mm": 3.175,
     "thin_cup_wall_mm": 1.587,
-    "slug_clearance_to_rod_mm": 0.48,
+    "slug_clearance_to_rod_mm": 1.6,
     "gap_between_slugs_mm": {
-      "4_wall_cold": 4.25,
-      "4_wall_hot": 3.87,
-      "4_rod_cold": 2.91,
-      "4_rod_hot": 2.85,
-      "5_wall_cold": 0.32,
-      "5_wall_hot": -0.04,
-      "5_rod_cold": -0.8,
-      "5_rod_hot": -0.89
+      "4_wall_cold": 7.86,
+      "4_wall_hot": 7.49,
+      "4_rod_cold": 3.33,
+      "4_rod_hot": 3.27,
+      "5_wall_cold": 3.32,
+      "5_wall_hot": 2.96,
+      "5_rod_cold": -0.45,
+      "5_rod_hot": -0.54,
+      "6_wall_cold": -0.02,
+      "6_wall_hot": -0.37,
+      "6_rod_cold": -3.22,
+      "6_rod_hot": -3.35
     },
-    "gap_5_slugs_max_tol_bar_cold_mm": -0.25
+    "gap_5_slugs_max_tol_bar_cold_mm": 2.75
   }
 }

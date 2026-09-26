@@ -43,6 +43,7 @@ MAT = {
     "rod": ("#dcd6c8", "#f3efe6"),
     "copper": ("#b87333", "#e0a672"),
     "steel": ("#8e9aa8", "#c3ccd7"),
+    "insulation": ("#e9e4d8", "#f6f3ec"),
 }
 # Powders are the categorical data: validated palette (all-pairs CVD pass)
 POWDER = {
@@ -206,100 +207,126 @@ def cup_with_fill(pl, parts, powder_key, powder_solid=None, loc=None, cut=True, 
 
 def context(pl, parts, lw=1.0):
     add_solid(pl, parts["crucible"], MAT["graphite"], lw=lw)
+    add_solid(pl, parts["filling_cone"], MAT["insulation"], lw=lw)
     add_solid(pl, parts["sealing_rod"], MAT["rod"], lw=lw)
+    add_solid(pl, parts["rod_holder"], MAT["steel"], lw=lw)
     add_solid(pl, parts["coil"], MAT["copper"], lw=lw * 0.5, tol=0.05)
-    rim = pv.Circle(radius=cad.CRUCIBLE_ID / 2, resolution=160).extract_feature_edges()
-    halfring = rim.translate((0, 0, cad.CRUCIBLE_MAX_FILL)).clip("y", origin=(0, 0, 0), invert=False)
-    pl.add_mesh(halfring, color=INK2, line_width=0.9 * SS)
 
 
-CAM_3D = [(185, -430, 257), (0, 0, 62), (0, 0, 1)]
+FOCAL_Z = 60
+CAM_3D = [(185, -430, 195 + FOCAL_Z), (0, 0, FOCAL_Z), (0, 0, 1)]
+RIM = cad.BORE_STRAIGHT
+ADAPTER_Z = RIM + cad.ROD_ADAPTER_ABOVE_RIM
+
+
+def coil_z_left(k):
+    """Height of the k-th coil turn where it crosses the section plane on the left (x < 0)."""
+    return cad.COIL_Z0 + cad.COIL_PITCH * (k + 0.5)
 
 
 def hero(parts):
     pl = new_plotter(1500, 1080)
     context(pl, parts)
-    r = cad.SLUG_CIRCLE_R
+    r, zb = cad.SLUG_CIRCLE_R, cad.slug_base_z()
     for ang in (0, 90, 180):  # the 270 deg cup is in the cut-away front half
-        cup_with_fill(pl, parts, "AlSi10Mg", loc=Rot(0, 0, ang) * Pos(r, 0, 0), cut=(ang != 90))
+        cup_with_fill(pl, parts, "AlSi10Mg", loc=Rot(0, 0, ang) * Pos(r, 0, zb), cut=(ang != 90))
     pl.enable_parallel_projection()
     pl.camera_position = CAM_3D
-    pl.camera.parallel_scale = 104
+    pl.camera.parallel_scale = 110
     ri, ro = cad.CRUCIBLE_ID / 2, cad.CRUCIBLE_ID / 2 + cad.CRUCIBLE_WALL
+    cone_deg = math.degrees(math.atan(cad.FLOOR_CONE_H / ri))
     callouts = [
-        ("don't fill past here", (-ri, 0, cad.CRUCIBLE_MAX_FILL), (0.045, 0.23), "left"),
-        ("graphite crucible,\n105 mm deep", (-(ri + ro) / 2, 0, 72), (0.045, 0.48), "left"),
-        ("induction coil", (-cad.COIL_RADIUS, 0, 27), (0.045, 0.71), "left"),
-        ("melt pours out here", (0, 0, -cad.CRUCIBLE_FLOOR), (0.045, 0.92), "left"),
-        ("the rod lifts to\nstart the pour", (2.5, 0, 145), (0.67, 0.17), "left"),
-        ("lid, with the air hole", (r + 4.5, 0, 59), (0.74, 0.38), "left"),
-        ("powder", (r + 2.5, 0, 38), (0.74, 0.53), "left"),
-        ("cup: 3/4 in bar, 2.5 in long\nfour fit; two per run", (r + 8.8, 0, 22), (0.74, 0.68), "left"),
+        ("the rod's adapter and its arm stay\nover the crucible while it is filled",
+         (-cad.ROD_ADAPTER_D / 2 + 1.5, 0, ADAPTER_Z + 38), (0.045, 0.115), "left"),
+        ("don't fill past here", (-0.8 * cad.CRUCIBLE_ID, 0, cad.CRUCIBLE_MAX_FILL), (0.045, 0.235), "left"),
+        (f"graphite crucible: {cad.BORE_STRAIGHT:.0f} mm straight,\nthen a {cone_deg:.0f}° cone to the pour hole",
+         (-(ri + ro) / 2, 0, 45), (0.045, 0.45), "left"),
+        ("induction coil", (-cad.COIL_RADIUS, 0, coil_z_left(2)), (0.045, 0.66), "left"),
+        ("melt pours out here", (0, 0, -cad.FLOOR_CONE_H - cad.CRUCIBLE_BOTTOM), (0.045, 0.92), "left"),
+        ("sealing rod: seated before\nloading, lifts to pour", (2.5, 0, RIM - 6), (0.67, 0.28), "left"),
+        ("lid, with the air hole", (r + 4.5, 0, 59 + zb), (0.74, 0.41), "left"),
+        ("powder", (r + 2.5, 0, 38 + zb), (0.74, 0.55), "left"),
+        ("cup: 3/4 in bar, 2.5 in long\ntwo per run; four fit", (r + 8.8, 0, 22 + zb), (0.74, 0.69), "left"),
+        ("cups stand on the floor cone", (r + 9.3, 0, zb + 0.3), (0.74, 0.83), "left"),
     ]
     dims = [
-        dict(p1=(-ri, 0, 90), p2=(-cad.SEALING_ROD_D / 2, 0, 90), text="20", off=(0, -9)),
-        dict(p1=(-ri, 0, 128), p2=(ri, 0, 128), text="Ø52", t=0.27, off=(0, -10),
-             ext=[((-ri, 0, 106), (-ri, 0, 131)), ((ri, 0, 106), (ri, 0, 131))]),
+        dict(p1=(-ri, 0, 71), p2=(-cad.SEALING_ROD_D / 2, 0, 71), text=f"{(cad.CRUCIBLE_ID - cad.SEALING_ROD_D) / 2:.0f}",
+             off=(0, -9)),
+        dict(p1=(-ri, 0, ADAPTER_Z + 9), p2=(ri, 0, ADAPTER_Z + 9), text=f"Ø{cad.CRUCIBLE_ID:.0f}", t=0.2, off=(0, -10),
+             ext=[((-ri, 0, RIM + 7), (-ri, 0, ADAPTER_Z + 12)), ((ri, 0, RIM + 7), (ri, 0, ADAPTER_Z + 12))]),
     ]
     finish(pl, OUT / "crucible_cutaway.png", callouts, dims,
            title="Where the cups go, cut in half",
-           subtitle="The crucible is drawn from AMAZEMET's 225 ml size and Bartosz's 20 mm gap. Measure ours before anything is cut.")
+           subtitle="The crucible is Indutherm's section drawing scaled to AMAZEMET's 225 cm³ (repowder-reference). "
+                    "Measure ours before anything is cut.")
 
 
-def plan(parts, n, path, title, callouts, dims=()):
-    """Plan view of n slugs evenly spaced in the gap."""
+def plan(parts, cups, path, title, callouts, dims=(), holder=False, outlines=()):
+    """Plan view looking down into the crucible: cups at the given (x, y) centres,
+    and red (x, y, radius) outlines drawn over everything."""
     pl = new_plotter(820, 860)
-    add_solid(pl, parts["crucible"], MAT["graphite"], cut=False)
+    add_solid(pl, parts["crucible"], MAT["graphite"], cut=False)  # filling cone left off, for clarity
     add_solid(pl, parts["sealing_rod"], MAT["rod"], cut=False)
-    ri = cad.CRUCIBLE_ID / 2
-    r = ri - cad.STOCK_D / 2 if n > 4 else cad.SLUG_CIRCLE_R
-    jam = cad.packing(n, hot=True) < 0
-    for k in range(n):
-        ang = math.radians(360 / n * k + 90)
-        c = (r * math.cos(ang), r * math.sin(ang))
-        loc = Pos(*c, 0)
+    if holder:
+        add_solid(pl, parts["rod_holder"], MAT["steel"], cut=False)
+    zb = cad.slug_base_z()
+    for c in cups:
+        loc = Pos(*c, zb)
         add_solid(pl, loc * parts["std_cup"], MAT["al"], cut=False)
         add_solid(pl, loc * Pos(0, 0, cad.SLUG_L - cad.PLUG_L) * parts["std_plug"], MAT["al"], cut=False)
-        if jam:
-            ring = pv.Circle(radius=cad.STOCK_D / 2 + 0.25, resolution=90).extract_feature_edges()
-            pl.add_mesh(ring.translate((*c, 170)), color=ALERT, line_width=1.8 * SS)
+    for x, y, rad in outlines:
+        ring = pv.Circle(radius=rad, resolution=120).extract_feature_edges()
+        pl.add_mesh(ring.translate((x, y, 200)), color=ALERT, line_width=1.8 * SS)
     pl.enable_parallel_projection()
     pl.camera_position = [(0, 0, 400), (0, 0, 0), (0, 1, 0)]
     pl.camera.parallel_scale = 47
     finish(pl, path, callouts, dims, title=title, fontsize=12)
 
 
+def polar(r, deg, z):
+    return (r * math.cos(math.radians(deg)), r * math.sin(math.radians(deg)), z)
+
+
 def top_view(parts):
-    ri, rr = cad.CRUCIBLE_ID / 2, cad.SEALING_ROD_D / 2
+    ri, rr, rs = cad.CRUCIBLE_ID / 2, cad.SEALING_ROD_D / 2, cad.STOCK_D / 2
+    ra = cad.ROD_ADAPTER_D / 2
     rc = cad.SLUG_CIRCLE_R
-    mid4 = rc * math.cos(math.radians(45))  # midway between neighbouring slugs
     gap4 = cad.packing(4, hot=True, lean="rod")  # tightest case
-    gap5c, gap5h = cad.packing(5), cad.packing(5, hot=True)
-    z = 175
-    d45 = math.radians(45)
-    d135 = math.radians(135)
+    z = 205
+    gap = (cad.CRUCIBLE_ID - cad.SEALING_ROD_D) / 2
     c4 = [
-        ("the sealing rod", (rr * 0.7, -rr * 0.7, z), (0.80, 0.93), "left"),
-        (f"3/4 in cups stay ≥{gap4:.1f} mm apart,\neven hot and however they lean", (mid4 * math.cos(d45), mid4 * math.sin(d45), z), (0.55, 0.10), "left"),
+        ("the sealing rod", polar(rr * 0.99, -45, z), (0.80, 0.93), "left"),
+        (f"3/4 in cups stay ≥{math.floor(gap4 * 10) / 10:.1f} mm apart,\neven hot and however they lean",
+         polar(rc * math.cos(math.radians(45)), 45, z), (0.55, 0.10), "left"),
     ]
     dims4 = [
-        dict(p1=(-ri * math.cos(d45), -ri * math.sin(d45), z), p2=(ri * math.cos(d45), ri * math.sin(d45), z),
-             text="Ø52", t=0.18, off=(0, 0)),
-        dict(p1=(rr * math.cos(d135), rr * math.sin(d135), z), p2=(ri * math.cos(d135), ri * math.sin(d135), z),
-             text="20", t=0.5, off=(0, 0)),
+        dict(p1=polar(ri, 225, z), p2=polar(ri, 45, z), text=f"Ø{cad.CRUCIBLE_ID:.0f}", t=0.18, off=(0, 0)),
+        dict(p1=polar(rr, 135, z), p2=polar(ri, 135, z), text=f"{gap:.0f}", t=0.5, off=(0, 0)),
     ]
-    rc5 = ri - cad.STOCK_D / 2
-    mid5 = rc5 * math.cos(math.radians(36))  # where neighbouring slugs nearly touch
-    a = math.radians(90 + 36)
+    # One 3/4" cup dropped straight down against the wall, away from the arm
+    ang = 225.0
+    rw = ri - rs
+    cup = polar(rw, ang, 0)[:2]
+    fit = cad.loading_margin(cad.STOCK_D, cad.SLUG_L)
+    s, t = fit["straight_down_mm"], fit["tipped_in_mm"]
+    straight = f"still reaches {-s:.2f} mm under the adapter" if s < 0 else f"clears the adapter by {s:.2f} mm"
+    tipped = f"it is {-t:.2f} mm too big" if t < 0 else f"it clears by {t:.2f} mm"
+    band = ri - ra
     c5 = [
-        (f"pushed right against the wall they are\n{gap5c:.2f} mm apart cold, and jam once hot:\naluminium grows faster than graphite",
-         (mid5 * math.cos(a), mid5 * math.sin(a), z), (0.04, 0.10), "left"),
-        ("a bar at the top of its size\ntolerance overlaps even cold",
-         (0, -mid5, z), (0.52, 0.95), "left"),
+        ("the rod's adapter hangs over the\nmiddle, and hides the rod from above",
+         polar(ra * 0.55, 100, z), (0.04, 0.10), "left"),
+        ("its arm", polar(ra + 22, cad.ARM_ANGLE, z), (0.80, 0.10), "left"),
+        (f"dropped straight in against the wall, a 3/4 in cup\n{straight}.\nTipped in, {tipped}: too close to call, so try one",
+         polar(ri - 2 * rs, ang, z), (0.04, 0.92), "left"),
+    ]
+    dims5 = [
+        dict(p1=polar(ra, 135, z), p2=polar(ri, 135, z), text=f"{band:.1f}", t=0.5, off=(0, 0)),
+        dict(p1=polar(ri - 2 * rs, ang, z), p2=polar(ri, ang, z), text=f"{cad.STOCK_D:.2f}", t=0.55, off=(12, 9)),
     ]
     p4, p5 = OUT / "_plan4.png", OUT / "_plan5.png"
-    plan(parts, 4, p4, "Four cups fit around the rod", c4, dims4)
-    plan(parts, 5, p5, "Five do not", c5)
+    plan(parts, [polar(rc, 90 * k + 90, 0)[:2] for k in range(4)], p4, "Four cups fit around the rod", c4, dims4)
+    plan(parts, [cup], p5, "…if they can get past its adapter", c5, dims5, holder=True,
+         outlines=[(*cup, rs)])
     a4, a5 = plt.imread(p4), plt.imread(p5)
     fig = plt.figure(figsize=((a4.shape[1] + a5.shape[1]) / 100, a4.shape[0] / 100), dpi=100)
     ax = fig.add_axes([0, 0, 1, 1])
@@ -315,23 +342,28 @@ def top_view(parts):
 def ring_concept(parts):
     pl = new_plotter(1500, 1080)
     context(pl, parts)
-    add_solid(pl, parts["ring_cup"], MAT["al"])
-    add_solid(pl, Pos(0, 0, cad.RING_H - cad.RING_PLUG_L) * parts["ring_plug"], MAT["al"])
-    add_solid(pl, parts["ring_powder"], POWDER["AlSi10Mg"], lw=0.6, powder=True)
+    zr = cad.ring_base_z()
+    add_solid(pl, Pos(0, 0, zr) * parts["ring_cup"], MAT["al"])
+    add_solid(pl, Pos(0, 0, zr + cad.RING_H - cad.RING_PLUG_L) * parts["ring_plug"], MAT["al"])
+    add_solid(pl, Pos(0, 0, zr) * parts["ring_powder"], POWDER["AlSi10Mg"], lw=0.6, powder=True)
     pl.enable_parallel_projection()
     pl.camera_position = CAM_3D
-    pl.camera.parallel_scale = 104
+    pl.camera.parallel_scale = 110
     ro = cad.RING_OD / 2
+    wall = (cad.CRUCIBLE_ID - cad.RING_OD) / 2
     callouts = [
-        ("Has to slide over the whole rod, including\nwhatever grips its top: only possible if the\nrod can be pulled and re-seated after loading", (2.5, 0, 140), (0.66, 0.17), "left"),
-        ("Washer plug, vented", ((cad.RING_GROOVE_ID + cad.RING_GROOVE_OD) / 4, 0, cad.RING_H - 3), (0.73, 0.37), "left"),
-        ("Annular groove: 37 cm³ of powder\n(~60 g AlSi10Mg), 244 g charge", ((cad.RING_GROOVE_ID + cad.RING_GROOVE_OD) / 4, 0, 30), (0.73, 0.52), "left"),
-        ("Ring Ø50 × Ø16 × 60 from 2\" bar;\n1 mm/side to the wall because Al\ngrows ~1.2 % more than graphite", (ro - 1, 0, 8), (0.73, 0.70), "left"),
-        ("Four thin-wall 3/4\" × 100 mm cups\nwould hold ~2× this powder\n(73 vs 37 cm³)", (-ro + 2, 0, 45), (0.04, 0.47), "left"),
+        (f"Would have to go in before the rod, which is\nseated before loading: the ring's Ø{cad.RING_ID:.0f} hole "
+         f"can't\npass the Ø{cad.ROD_ADAPTER_D:.0f} adapter, and the furnace must\nnever run without the rod",
+         (-cad.ROD_ADAPTER_D / 2 + 1.5, 0, ADAPTER_Z + 38), (0.045, 0.14), "left"),
+        ("Washer plug, vented", ((cad.RING_GROOVE_ID + cad.RING_GROOVE_OD) / 4, 0, zr + cad.RING_H - 3), (0.73, 0.37), "left"),
+        ("Annular groove: 37 cm³ of powder\n(~60 g AlSi10Mg), 244 g charge", ((cad.RING_GROOVE_ID + cad.RING_GROOVE_OD) / 4, 0, zr + 30), (0.73, 0.52), "left"),
+        (f"Ring Ø{cad.RING_OD:.0f} × Ø{cad.RING_ID:.0f} × {cad.RING_H:.0f} from 2\" bar;\n{wall:.1f} mm/side to the wall",
+         (ro - 1, 0, zr + 8), (0.73, 0.70), "left"),
+        ("Four thin-wall 3/4\" × 100 mm cups\nwould hold ~2× this powder\n(73 vs 37 cm³)", (-ro + 2, 0, zr + 45), (0.04, 0.47), "left"),
     ]
     finish(pl, OUT / "ring_concept.png", callouts,
            title="Concept only: one annular cup over the sealing rod",
-           subtitle="Same schematic crucible and rod as the cutaway. Not in the BOM.")
+           subtitle="Same crucible, rod and holder as the cutaway. Not in the BOM.")
 
 
 # ---------------------------------------------------------------------------

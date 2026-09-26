@@ -19,9 +19,10 @@ Concept only (not for machining, answers the "annulus over the piston" idea):
 
 * ``ring_cup`` / ``ring_plug``
 
-Context only (schematic, for the renders): the graphite crucible, the sealing
-rod and the induction coil.  See ``../README.md`` for what is documented and
-what is inferred.
+Context only (for the renders and the loading check): the graphite crucible,
+the sealing rod with its adapter and holder arm, the insulating filling cone on
+the rim, and the induction coil.  See ``../README.md`` for what is documented
+and what is scaled or inferred.
 
 Run:  python charge_cad.py      (writes step/, stl/, parts.json, experiments.json)
 """
@@ -44,6 +45,7 @@ from build123d import (
     Polyline,
     Pos,
     Rot,
+    Sphere,
     export_step,
     export_stl,
     make_face,
@@ -60,29 +62,47 @@ IN = 25.4  # mm per inch
 # ---------------------------------------------------------------------------
 # rePowder induction crucible - context geometry, NOT for machining.
 #
-# Documented:
-#   * graphite crucible; melt is pushed through a bottom nozzle by argon
-#     over-pressure once the sealing rod lifts (AMAZEMET)
-#   * the induction module ships with interchangeable 225 ml and 400 ml
-#     crucibles (AMAZEMET TUM case study)
-#   * ~20 mm between sealing rod and crucible wall = max feedstock diameter;
-#     inner height ~10-11 cm, charge may stand to ~12 cm (Bartosz, 9/17 call)
-# Inferred, to be measured: a 225 ml cavity 105 mm deep is 52.2 mm across,
-# and 52 - 2 x 20 = 12 mm sealing rod.  Nozzle/seat detail is schematic.
+# Documented (vendor documents, ../repowder-reference/README.md):
+#   * one graphite crucible, 225 cm^3 (AMAZEMET's quote); the melt leaves
+#     through a pour hole in the floor, sealed by the sealing rod, and is pushed
+#     out by argon over-pressure
+#   * the rod is fitted and seated BEFORE the metal goes in, and the metal is
+#     filled around it (Indutherm GU500 manual pp. 47-51).  Never run without it
+# Verbal (Bartosz, 9/17 call): ~20 mm rod to wall, 10-11 cm deep, and a charge
+# may stand to ~12 cm.
+# Nothing dimensions the crucible, but Indutherm's section of the same furnace
+# (GU500 Fig. 61) is a CAD drawing, so its proportions scale.  Scaled to the
+# quoted 225 cm^3 it also lands on all three of Bartosz's numbers (a 22 mm gap,
+# 102 mm deep, 120 mm to the top of the insulation), so that is the scaling used
+# here; repowder-reference/crucible_proportions.py has the working.  The floor is
+# a ~36 deg cone, not flat, which is why the old flat-floor inference (225 ml at
+# 105 mm deep) came out at 52 mm.  Measure.
+#
+# z = 0 is where the straight bore ends and the floor cone begins.
 # ---------------------------------------------------------------------------
-CRUCIBLE_ID = 52.0
-CRUCIBLE_DEPTH = 105.0
-CRUCIBLE_MAX_FILL = 120.0  # Bartosz: charge may stand proud to ~12 cm
-CRUCIBLE_WALL = 9.0
-CRUCIBLE_FLOOR = 15.0
-SEALING_ROD_D = 12.0
-NOZZLE_D = 2.0
-SEAT_D = 16.0  # 90 deg conical seat at the floor
+CRUCIBLE_ID = 57.1
+BORE_STRAIGHT = 81.1  # rim down to the floor cone
+FLOOR_CONE_H = 20.5  # floor cone, down to its apex on the axis: 101.6 rim to apex
+CRUCIBLE_WALL = 9.1
+CRUCIBLE_BOTTOM = 13.7  # graphite below the apex
+POUR_HOLE_D = 6.9  # the nozzle screws in below; ours is not yet identified
+SEALING_ROD_D = 12.6  # ball-tipped, seated on the floor cone round the pour hole
+FILLING_CONE_H = 18.8  # insulating "filling cone" (C020) on the rim
+FILLING_CONE_OD = 120.0  # schematic, as is the shape of its mouth
+CRUCIBLE_MAX_FILL = BORE_STRAIGHT + FILLING_CONE_H  # a charge may stand up into the filling cone
+# The rod hangs from an adapter (C018) pinned to a holder arm (C017) that reaches in
+# from one side.  Both stay over the crucible while it is filled, so a charge has to
+# get past them: see loading_margin().  The adapter's size is the least certain
+# number in the drawing, which shows only its width along the arm.
+ROD_ADAPTER_D = 21.7
+ROD_ADAPTER_ABOVE_RIM = 18.3  # its lower end, about level with the top of the filling cone
+ARM_ABOVE_RIM = 46.8  # underside of the holder arm
+ARM_D, ARM_L, ARM_ANGLE = 16.0, 75.0, 45.0  # schematic; the arm comes in from the back right
 
 COIL_RADIUS = 47.0  # centreline of the copper tube
 COIL_TUBE_D = 8.0
 COIL_PITCH = 12.5
-COIL_Z0, COIL_Z1 = 2.0, 102.0
+COIL_Z0, COIL_Z1 = -28.0, 72.0
 
 # ---------------------------------------------------------------------------
 # Charge parts - 3/4" 6063-T52 bar (McMaster 1640T16, +/-0.014" on diameter)
@@ -117,14 +137,14 @@ SLEEVE_BORE_D = STOCK_D + 0.0005 * IN  # bore to the measured cup OD +.0005 - se
 SLEEVE_L = SLUG_L  # same length as the cup, so the press bottoms out flush
 
 # Annular "ring over the sealing rod" concept
-RING_OD = CRUCIBLE_ID - 2.0  # 1 mm/side: Al grows ~1.4 % more than graphite
-RING_ID = SEALING_ROD_D + 4.0
+RING_OD = 50.0  # from 2" bar
+RING_ID = 16.0
 RING_H = 60.0
 RING_GROOVE_ID, RING_GROOVE_OD = 22.0, 42.0
 RING_GROOVE_DEPTH = 45.0
 RING_PLUG_L = 8.0
 
-# Where the slugs stand in the crucible: centred in the 20 mm gap
+# Where the slugs stand in the crucible: centred in the rod-to-wall gap
 SLUG_CIRCLE_R = (SEALING_ROD_D / 2 + CRUCIBLE_ID / 2) / 2
 
 # ---------------------------------------------------------------------------
@@ -254,13 +274,35 @@ def ring_plug_profile():
     return [(gi, 0), (go, 0), (go, RING_PLUG_L), (gi, RING_PLUG_L)]
 
 
+def floor_z(r: float) -> float:
+    """Height of the conical floor at radius r (z = 0 where the straight bore ends)."""
+    return -(CRUCIBLE_ID / 2 - r) * FLOOR_CONE_H / (CRUCIBLE_ID / 2)
+
+
+def rest_z(r_out: float, chamfer: float = 0.0) -> float:
+    """Base height of a flat-bottomed part standing on the floor cone.
+
+    The cone rises towards the wall, so the part sits on the outer edge of its base
+    (radius r_out from the crucible axis, less the edge break).
+    """
+    return floor_z(r_out - chamfer) + 0.05
+
+
+def slug_base_z(rc: float = SLUG_CIRCLE_R) -> float:
+    """Where a 3/4" slug centred rc from the axis stands: a millimetre or so below z = 0."""
+    return rest_z(rc + STOCK_D / 2, EDGE_CHAMFER)
+
+
+def ring_base_z() -> float:
+    return rest_z(RING_OD / 2, EDGE_CHAMFER)
+
+
 def crucible_profile():
     ro, ri = CRUCIBLE_ID / 2 + CRUCIBLE_WALL, CRUCIBLE_ID / 2
-    rn, rs = NOZZLE_D / 2, SEAT_D / 2
-    zb, zt = -CRUCIBLE_FLOOR, CRUCIBLE_DEPTH
-    seat_depth = rs - rn  # 90 deg included seat
+    rh = POUR_HOLE_D / 2
+    zb, zt = -FLOOR_CONE_H - CRUCIBLE_BOTTOM, BORE_STRAIGHT
     return [
-        (rn, zb),
+        (rh, zb),
         (ro - 2, zb),
         (ro, zb + 2),
         (ro, zt - 2),
@@ -268,17 +310,48 @@ def crucible_profile():
         (ri + 1, zt),
         (ri, zt - 1),
         (ri, 0),
-        (rs, 0),
-        (rn, -seat_depth),
+        (rh, floor_z(rh)),
     ]
 
 
-def sealing_rod_profile(top=150.0):
+def filling_cone_profile():
+    """Insulating ring on the rim; its mouth narrows down to the bore (proportions as drawn)."""
+    ri, ro, z0 = CRUCIBLE_ID / 2, FILLING_CONE_OD / 2, BORE_STRAIGHT
+    return [
+        (ri, z0),
+        (ro, z0),
+        (ro, z0 + FILLING_CONE_H),
+        (0.8 * CRUCIBLE_ID, z0 + FILLING_CONE_H),
+        (ri, z0 + 0.1 * CRUCIBLE_ID),
+    ]
+
+
+def rod_ball_z() -> float:
+    """Centre of the rod's ball tip, seated on the floor cone (0.05 mm proud)."""
     r = SEALING_ROD_D / 2
-    seat_depth = SEAT_D / 2 - NOZZLE_D / 2
-    # 90 deg conical tip resting on the seat, 0.05 mm proud to avoid coincident faces
-    z_full = -seat_depth + (r - NOZZLE_D / 2) + 0.05
-    return [(0, z_full - r), (r, z_full), (r, top), (0, top)]
+    half_angle = math.atan((CRUCIBLE_ID / 2) / FLOOR_CONE_H)  # cone half-angle, from the axis
+    return -FLOOR_CONE_H + r / math.sin(half_angle) + 0.05
+
+
+def sealing_rod():
+    """Graphite rod with a ball tip, from its seat up to the adapter."""
+    r, zc = SEALING_ROD_D / 2, rod_ball_z()
+    top = BORE_STRAIGHT + ROD_ADAPTER_ABOVE_RIM
+    shank = Cylinder(r, top - zc, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    return Pos(0, 0, zc) * (Sphere(r) + shank)
+
+
+def rod_holder():
+    """The rod's adapter over the axis, and the arm it is pinned to (schematic)."""
+    z_ad = BORE_STRAIGHT + ROD_ADAPTER_ABOVE_RIM
+    z_arm = BORE_STRAIGHT + ARM_ABOVE_RIM + ARM_D / 2
+    adapter = Pos(0, 0, z_ad) * Cylinder(
+        ROD_ADAPTER_D / 2, z_arm + ARM_D / 2 + 4 - z_ad, align=(Align.CENTER, Align.CENTER, Align.MIN)
+    )
+    arm = Pos(0, 0, z_arm) * Rot(0, 0, ARM_ANGLE) * Rot(0, 90, 0) * Cylinder(
+        ARM_D / 2, ARM_L, align=(Align.CENTER, Align.CENTER, Align.MIN)
+    )
+    return adapter + arm
 
 
 # ---------------------------------------------------------------------------
@@ -328,7 +401,9 @@ def build() -> dict:
             ]
         ),
         "crucible": turned(crucible_profile()),
-        "sealing_rod": turned(sealing_rod_profile()),
+        "filling_cone": turned(filling_cone_profile()),
+        "sealing_rod": sealing_rod(),
+        "rod_holder": rod_holder(),
         "coil": coil(),
     }
 
@@ -345,7 +420,9 @@ def powder_column(fill_mass_g: float, rho: float, bore: float, z_bottom: float, 
 
 # ---------------------------------------------------------------------------
 # Experiments (issue #222, 2026-09-24).  2 slugs per run by default (~80-100 g,
-# the 100 g/run basis of the #161 purchase model); 4 is the most that fits.
+# the 100 g/run basis of the #161 purchase model).  Four fit however they lean,
+# five only standing off the rod (packing()) - if they can get in at all
+# (loading_margin()).
 # ---------------------------------------------------------------------------
 EXPERIMENTS = [
     {
@@ -488,6 +565,63 @@ def annulus_area_mm2() -> float:
     return math.pi / 4 * (CRUCIBLE_ID**2 - SEALING_ROD_D**2)
 
 
+def cavity_volume_crucible_cm3() -> float:
+    """Straight bore plus floor cone, rod not subtracted: compare with the quoted 225 cm^3."""
+    area = math.pi / 4 * CRUCIBLE_ID**2
+    return (area * BORE_STRAIGHT + area * FLOOR_CONE_H / 3) / 1000
+
+
+def melt_depth_mm(volume_cm3: float, dz: float = 0.01) -> float:
+    """Height of a melt above the floor apex: it fills the floor cone round the rod's
+    ball tip first, then the bore round the rod."""
+    R, r = CRUCIBLE_ID / 2, SEALING_ROD_D / 2
+    zc = rod_ball_z()
+    half_angle = math.atan(R / FLOOR_CONE_H)
+    z, vol = zc - r * math.sin(half_angle), 0.0  # start at the ring where the ball seals
+    while vol < volume_cm3 * 1000:
+        r_cav = R if z >= 0 else R * (z + FLOOR_CONE_H) / FLOOR_CONE_H
+        r_rod = r if z >= zc else math.sqrt(max(r**2 - (z - zc) ** 2, 0.0))
+        vol += math.pi * max(r_cav**2 - r_rod**2, 0.0) * dz
+        z += dz
+    return z + FLOOR_CONE_H
+
+
+def head_mbar(depth_mm: float) -> float:
+    return RHO["Al_liquid"] * 1000 * 9.80665 * depth_mm / 1000 / 100
+
+
+# Liquid Al surface tension, N/m; the oxide skin, ignored here, only adds to it
+GAMMA_AL = 0.87
+
+
+def breakthrough_mbar(nozzle_d_mm: float) -> float:
+    """Pressure to push liquid Al into a hole it doesn't wet: 2 gamma / r (Laplace)."""
+    return 2 * GAMMA_AL / (nozzle_d_mm / 2 / 1000) / 100
+
+
+def loading_margin(d: float, length: float, step: float = 0.1) -> dict:
+    """Room (mm) for a round part to get past the rod adapter into the bore, the rod
+    seated as documented.  Negative means it doesn't fit.
+
+    Straight down, the part has to fit the band between the adapter and the bore
+    wall.  Tipped in, its bottom rides against the rod and its top leans away from
+    the adapter just enough to clear the adapter's lower end; at every depth until
+    its top is below the adapter, it has to stay inside the bore at the rim.  The
+    same model as repowder-reference/crucible_proportions.py.  It checks at the rim:
+    if the filling cone's hole runs straight for a few mm above it, as drawn, the
+    tipped-in figure is up to ~0.4 mm worse.
+    """
+    r_rod, r_bore, r_ad = SEALING_ROD_D / 2, CRUCIBLE_ID / 2, ROD_ADAPTER_D / 2
+    h = ROD_ADAPTER_ABOVE_RIM
+    worst = r_bore - r_rod - d  # a part shorter than h passes beside the adapter: just the gap
+    if length > h:
+        n = int((length - h) / step)
+        for depth in [k * step for k in range(n + 1)] + [length - h]:
+            tilt = (r_ad - r_rod) / (h + depth)  # tan of the least tilt that clears the adapter
+            worst = min(worst, r_bore - (r_rod + d * math.hypot(1, tilt) + depth * tilt))
+    return {"straight_down_mm": round(r_bore - r_ad - d, 2), "tipped_in_mm": round(worst, 2)}
+
+
 def packing(n: int, d: float = STOCK_D, hot: bool = False, lean: str = "wall") -> float:
     """Gap (mm) between neighbouring slugs, n evenly spaced in the rod-to-wall gap.
 
@@ -517,7 +651,7 @@ def summarise(parts: dict) -> tuple[dict, list]:
     for e in EXPERIMENTS:
         c = charge(e, parts)
         run_g = c["slug_g"] * SLUGS_PER_RUN
-        melt_cm3 = run_g / RHO["Al_liquid"]
+        depth = melt_depth_mm(run_g / RHO["Al_liquid"])
         exps.append(
             {
                 **{k: e[k] for k in ("id", "title", "tier", "cup")},
@@ -532,7 +666,9 @@ def summarise(parts: dict) -> tuple[dict, list]:
                 "powder_frac_pct": round(100 * c["powder_frac"], 1),
                 "si_wt_pct": round(c["si_wt"], 2),
                 "mg_wt_pct": round(c["mg_wt"], 2),
-                "melt_depth_mm": round(melt_cm3 * 1000 / annulus_area_mm2(), 1),
+                # over the pour hole, i.e. above the floor apex
+                "melt_depth_mm": round(depth, 1),
+                "head_mbar": round(head_mbar(depth), 1),
                 "pieces": pieces(e),
             }
         )
@@ -606,16 +742,17 @@ def export(parts: dict) -> None:
         export_step(parts[name], STEP_DIR / f"{name}.step")
         export_stl(parts[name], STL_DIR / f"{name}.stl", tolerance=0.01, angular_tolerance=0.1)
 
-    # Context assembly: crucible + sealing rod + coil + four standard cups with plugs + powder
+    # Context assembly: crucible + filling cone + sealing rod and holder + coil
+    # + four standard cups with plugs + powder, standing on the floor cone
     cups = []
     for k in range(MAX_SLUGS):
-        loc = Rot(0, 0, 90 * k) * Pos(SLUG_CIRCLE_R, 0, 0)
+        loc = Rot(0, 0, 90 * k) * Pos(SLUG_CIRCLE_R, 0, slug_base_z())
         cups += [
             loc * parts["std_cup"],
             loc * Pos(0, 0, SLUG_L - PLUG_L) * parts["std_plug"],
             loc * parts["std_powder"],
         ]
-    context = [parts["crucible"], parts["sealing_rod"], parts["coil"], *cups]
+    context = [parts[k] for k in ("crucible", "filling_cone", "sealing_rod", "rod_holder", "coil")] + cups
     export_step(Compound(children=context), STEP_DIR / "crucible_context_4x_std_cup.step")
     # Same assembly cut through the axis, for GitHub's in-browser STL viewer
     front = Box(400, 200, 600, align=(Align.CENTER, Align.MAX, Align.CENTER))
@@ -638,9 +775,30 @@ def main() -> None:
         "all_runs_one_slug_each_mm": round(bar_budget(exps, [e["id"] for e in exps]) / SLUGS_PER_RUN, 1),
     }
     geometry = {
+        "crucible_bore_mm": CRUCIBLE_ID,
+        "sealing_rod_mm": SEALING_ROD_D,
+        "rod_to_wall_gap_mm": round((CRUCIBLE_ID - SEALING_ROD_D) / 2, 2),
+        "floor_cone_deg": round(math.degrees(math.atan(FLOOR_CONE_H / (CRUCIBLE_ID / 2))), 1),
+        "rim_to_floor_apex_mm": round(BORE_STRAIGHT + FLOOR_CONE_H, 1),
         "annulus_area_mm2": round(annulus_area_mm2(), 1),
-        "annulus_volume_cm3": round(annulus_area_mm2() * CRUCIBLE_DEPTH / 1000, 1),
-        "cavity_volume_cm3_225ml_check": round(math.pi / 4 * CRUCIBLE_ID**2 * CRUCIBLE_DEPTH / 1000, 1),
+        "annulus_volume_cm3": round(annulus_area_mm2() * BORE_STRAIGHT / 1000, 1),
+        "cavity_volume_cm3_225ml_check": round(cavity_volume_crucible_cm3(), 1),
+        "max_al_charge_g_to_rim": round(
+            RHO["Al_liquid"] * (cavity_volume_crucible_cm3() - parts["sealing_rod"].volume / 1000), 0
+        ),
+        "slug_base_below_cone_top_mm": round(-slug_base_z(), 2),
+        # the band beside the rod adapter, and how a part gets past it, rod seated
+        "band_beside_rod_adapter_mm": round((CRUCIBLE_ID - ROD_ADAPTER_D) / 2, 2),
+        "loading_margin_mm": {
+            "P1_P2_3/4in_x_2.5in": loading_margin(STOCK_D, SLUG_L),
+            "P1_P2_max_tol_bar_0.764in": loading_margin(0.764 * IN, SLUG_L),
+            "P4_3/4in_x_1.25in": loading_margin(STOCK_D, THIN_L),
+            "5/8in_x_2.5in": loading_margin(0.625 * IN, SLUG_L),
+            "1/2in_x_2.5in": loading_margin(0.500 * IN, SLUG_L),
+            "5N_20mm_x_2.5in": loading_margin(20.0, SLUG_L),
+        },
+        # Laplace pressure against the melt's head: the pour runs on over-pressure
+        "breakthrough_mbar_by_nozzle_mm": {str(d): round(breakthrough_mbar(d), 1) for d in (0.5, 0.7, 1.0, 2.0)},
         "std_cavity_cm3": round(cavity_volume_cm3("std"), 3),
         "std_full_bore_cm3": round(full_bore_volume_cm3(), 3),
         "thin_cavity_cm3": round(cavity_volume_cm3("thin"), 3),
@@ -654,7 +812,7 @@ def main() -> None:
         "slug_clearance_to_rod_mm": round(SLUG_CIRCLE_R - STOCK_D / 2 - SEALING_ROD_D / 2, 2),
         "gap_between_slugs_mm": {
             f"{n}_{lean}_{state}": round(packing(n, hot=(state == "hot"), lean=lean), 2)
-            for n in (4, 5)
+            for n in (4, 5, 6)
             for lean in ("wall", "rod")
             for state in ("cold", "hot")
         },
@@ -672,7 +830,7 @@ def main() -> None:
         print(
             f'{e["id"]:3} {e["run_g"]:6.1f} g/run  per slug {e["per_slug"]}  '
             f'powder {e["powder_frac_pct"]:4.1f} %  Si {e["si_wt_pct"]:5.2f}  Mg {e["mg_wt_pct"]:4.2f}  '
-            f'melt {e["melt_depth_mm"]} mm'
+            f'melt {e["melt_depth_mm"]} mm = {e["head_mbar"]} mbar'
         )
 
 
