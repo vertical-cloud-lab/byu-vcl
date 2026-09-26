@@ -36,16 +36,35 @@
   "m3_nut_af": 5.8,
   "m3_nut_depth": 3.0,
   "clamp_screw_len": 16.0,
-  "plate_t": 6.0,
-  "plate_x0": -93.0,
-  "plate_x1": -37.4,
-  "plate_z0": -34.0,
-  "plate_z1": 49.0,
+  "pad_t": 6.0,
   "web_x0": -51.0,
-  "web_z": 16.0,
+  "web_x1_rear": -38.0,
+  "web_z": 20.0,
   "access_d": 7.0,
   "tab_screw_len": 12.0,
-  "hq_x": -71.0,
+  "toe_deg": 17.0,
+  "hq_front_x": -68.0,
+  "hq_front_y": 12.0,
+  "hq_roll": 90.0,
+  "pod_t": 6.0,
+  "pod_x_out": -25.0,
+  "pod_z0": -24.0,
+  "pod_z1": 57.0,
+  "tongue_x0": 18.0,
+  "tongue_x1": 40.0,
+  "tongue_z": 21.0,
+  "pod_screws": [
+    [
+      34.0,
+      15.0
+    ],
+    [
+      34.0,
+      -15.0
+    ]
+  ],
+  "pod_screw_len": 16.0,
+  "pod_nut_y": -18.3,
   "hq_dz": 0.0,
   "hq_standoff": 4.0,
   "hq_board": 38.0,
@@ -59,7 +78,7 @@
   "lens_len": 34.0,
   "lens_thread": 4.0,
   "lens_f": 6.0,
-  "cm_x": -71.0,
+  "cm_gap": 10.5,
   "cm_standoff": 2.5,
   "cm_w": 25.0,
   "cm_h": 23.862,
@@ -75,5 +94,7 @@
   "pi_standoff": 5.0,
   "m25_nut_af": 5.3,
   "m25_nut_h": 2.3,
-  "toe_deg": 0.0
+  "tag_size": 5.0,
+  "tag_y": -60.0,
+  "tag_tilt": 35.0
 }

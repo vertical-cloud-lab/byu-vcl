@@ -1,6 +1,7 @@
 {
   "overlap_mm3": {
     "bracket vs gripper fingers (closed)": 0.0,
+    "pod vs gripper fingers (closed)": 0.0,
     "carrier vs gripper fingers (closed)": 0.0,
     "hq_pcb vs gripper fingers (closed)": 0.0,
     "hq_mount vs gripper fingers (closed)": 0.0,
@@ -10,6 +11,7 @@
     "pi5 vs gripper fingers (closed)": 0.0,
     "pi_spacers vs gripper fingers (closed)": 0.0,
     "bracket vs gripper fingers (fully open)": 0.0,
+    "pod vs gripper fingers (fully open)": 0.0,
     "carrier vs gripper fingers (fully open)": 0.0,
     "hq_pcb vs gripper fingers (fully open)": 0.0,
     "hq_mount vs gripper fingers (fully open)": 0.0,
@@ -19,6 +21,7 @@
     "pi5 vs gripper fingers (fully open)": 0.0,
     "pi_spacers vs gripper fingers (fully open)": 0.0,
     "bracket vs gripper body": 0.0,
+    "pod vs gripper body": 0.0,
     "carrier vs gripper body": 0.0,
     "hq_pcb vs gripper body": 0.0,
     "hq_mount vs gripper body": 0.0,
@@ -27,58 +30,116 @@
     "cm_module vs gripper body": 0.0,
     "pi5 vs gripper body": 0.0,
     "pi_spacers vs gripper body": 0.0,
+    "bracket vs pod": 0.0,
     "bracket vs carrier": 0.0,
+    "pod vs carrier": 0.0,
     "bracket vs hq_pcb": 0.0,
     "bracket vs hq_mount": 0.0,
     "bracket vs hq_lens": 0.0,
     "bracket vs cm_pcb": 0.0,
     "bracket vs cm_module": 0.0,
+    "pod vs hq_pcb": 0.0,
+    "pod vs hq_mount": 0.0,
+    "pod vs hq_lens": 0.0,
+    "pod vs cm_pcb": 0.0,
+    "pod vs cm_module": 0.0,
     "carrier vs pi_spacers": 0.0,
     "carrier vs pi5": 0.0,
     "pi_spacers vs pi5": 0.0,
     "hq_mount vs cm_module": 0.0,
-    "hq_pcb vs cm_pcb": 0.0
+    "hq_pcb vs cm_pcb": 0.0,
+    "hq_mount vs cm_pcb": 0.0
   },
   "gap_mm": {
     "mount to fingers (closed)": 15.647206365269476,
+    "finger tag wedges to the mount (closed)": 72.50470010131617,
     "mount to fingers (fully open)": 17.81303531463741,
+    "finger tag wedges to the mount (fully open)": 72.18062204899908,
     "bracket to gripper body": 0.017795977517479855,
+    "pod to gripper body": 3.4041675550824166,
     "carrier to gripper body": 0.14871025849202518,
-    "collar halves (split)": 0.9999999999999964
+    "collar halves (split)": 0.9999999999999964,
+    "HQ lens to the bracket": 2.6554286605544704,
+    "HQ lens to the finger plate": 4.449533705398304
   },
   "view": {
-    "hq view vs fingers (closed), mm3": 0.0,
-    "cm3w view vs fingers (closed), mm3": 18163.7,
-    "hq view vs fingers (fully open), mm3": 0.0,
-    "cm3w view vs fingers (fully open), mm3": 9564.5,
-    "HQ field of view (deg, H x V)": [
+    "HQ field of view (deg, across x up the image)": [
       55.3,
       42.9
     ],
-    "gripper axis enters the HQ view this far past the fingertips (mm)": 63.0,
-    "HQ lens front behind the fingertips (mm)": 57.6,
-    "optical axes off the gripper axis (mm)": 63.1
+    "HQ toe-in (deg)": 17.0,
+    "HQ lens front behind the fingertips (mm)": 89.5,
+    "HQ lens front behind the finger plate's front face (mm)": 16.5,
+    "HQ lens front, off the gripper axis (mm)": 60.1,
+    "gripper axis enters the HQ view this far past the fingertips (mm)": 0.0,
+    "in the HQ view, by opening": {
+      "0 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": true,
+        "lower fingertip": true,
+        "upper finger tag": true,
+        "lower finger tag": true
+      },
+      "20 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": true,
+        "lower fingertip": true,
+        "upper finger tag": true,
+        "lower finger tag": true
+      },
+      "40 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": true,
+        "lower fingertip": true,
+        "upper finger tag": true,
+        "lower finger tag": true
+      },
+      "60 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": true,
+        "lower fingertip": true,
+        "upper finger tag": true,
+        "lower finger tag": true
+      },
+      "80 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": true,
+        "lower fingertip": true,
+        "upper finger tag": false,
+        "lower finger tag": false
+      },
+      "100 mm open": {
+        "centre between the fingertips": true,
+        "upper fingertip": false,
+        "lower fingertip": false,
+        "upper finger tag": false,
+        "lower finger tag": false
+      }
+    }
   },
   "extent_mm": {
     "rearmost point (must be < flange face 64.98)": 64.5,
-    "max radius from the J6 axis": 98.2,
+    "frontmost point": 7.5,
+    "max radius from the J6 axis": 111.5,
     "x": [
-      -93.0,
+      -103.7,
       53.6
     ],
     "y": [
-      -19.9,
+      7.5,
       64.5
     ],
     "z": [
       -42.1,
-      50.9
+      58.9
     ]
   },
   "printed_volume_cm3": {
-    "bracket": 45.4,
-    "carrier": 52.4,
-    "spacers": 0.4
+    "bracket": 36.31,
+    "pod": 18.36,
+    "carrier": 52.39,
+    "spacers": 0.44,
+    "tag_wedge": 0.12
   },
   "pass": true
 }

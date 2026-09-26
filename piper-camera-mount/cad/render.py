@@ -15,10 +15,13 @@ import numpy as np
 import pyvista as pv
 
 import reference
-from piper_mount import (ASSEMBLY, CM3W_FOV, COLORS, Params, build, hq_fov, optical_axes,
+from piper_mount import (ASSEMBLY, CM3W_FOV, COLORS, Params, build, hq_fov, optical_axes, place_tag_wedges,
                          print_orientation, view_pyramid)
 
 RENDERS = Path(__file__).resolve().parent.parent / "renders"
+# Where each printed part's centre sits on the A1 mini's 180 x 180 mm bed (slice/slice_a1mini.py uses these too).
+PRINT_LAYOUT = {"bracket": (27, 50), "carrier": (50, 128), "pod": (133, 133), "spacers": (75, 14),
+                "tag_wedge#1": (70, 45), "tag_wedge#2": (85, 45)}
 ALU, DARK, PAD = (0.78, 0.79, 0.81), (0.20, 0.20, 0.22), (0.35, 0.35, 0.37)
 
 
@@ -64,12 +67,17 @@ def add_cones(pl, p, depth=160.0):
                 color=(0.3, 0.6, 1.0), opacity=0.15)
 
 
+def add_wedges(pl, p, opening):
+    pl.add_mesh(mesh(place_tag_wedges(p, opening)), color=COLORS["tag_wedge"], smooth_shading=False, specular=0.15)
+
+
 def render_assembly(p, parts, out):
     for tag, cam in (("assembly", [(-420, -330, 260), (-20, 0, 5), (0, 0, 1)]),
                      ("assembly_pi_side", [(420, 260, 230), (0, 20, 5), (0, 0, 1)])):
         pl = plotter()
         add_gripper(pl)
         add_parts(pl, parts)
+        add_wedges(pl, p, 60.0)
         if tag == "assembly":
             add_cones(pl, p)
         pl.camera_position = cam
@@ -85,6 +93,7 @@ def render_front(p, parts, out):
     pl = plotter((1400, 1100))
     add_gripper(pl, opening=100.0)
     add_parts(pl, parts)
+    add_wedges(pl, p, 100.0)
     pl.camera_position = [(p.ax_x, -600, p.ax_z), (p.ax_x - 15, 0, p.ax_z + 5), (0, 0, 1)]
     pl.enable_parallel_projection()
     pl.add_text("Looking back from the fingertips (fingers fully open, 100 mm)", font_size=12, color="black")
@@ -93,59 +102,30 @@ def render_front(p, parts, out):
 
 
 def render_exploded(p, parts, out):
-    off = {"bracket": (-40, 0, 0), "hq_pcb": (-40, -35, 0), "hq_mount": (-40, -35, 0), "hq_lens": (-40, -70, 0),
-           "cm_pcb": (-40, -35, 0), "cm_module": (-40, -35, 0), "carrier": (40, 0, 0), "pi_spacers": (60, 0, 0),
-           "pi5": (85, 0, 0)}
+    off = {"bracket": (-30, 0, 0), "pod": (-70, 30, 0), "hq_pcb": (-70, 55, 0), "hq_mount": (-70, 55, 0),
+           "hq_lens": (-70, 20, 0), "cm_pcb": (-70, 55, 0), "cm_module": (-70, 55, 0), "carrier": (40, 0, 0),
+           "pi_spacers": (60, 0, 0), "pi5": (85, 0, 0)}
     pl = plotter((1700, 1100))
     add_gripper(pl, opacity=0.35)
     add_parts(pl, parts, offset=off)
     pl.camera_position = [(-250, -520, 420), (0, 0, 0), (0, 0, 1)]
-    pl.add_text("Exploded: bracket and cameras (-X), carrier, spacers and Pi 5 (+X)", font_size=12, color="black")
+    add_wedges(pl, p, 60.0)
+    pl.add_text("Exploded: bracket, camera pod and cameras (-X); carrier, spacers and Pi 5 (+X); tag wedges on the fingers",
+                font_size=12, color="black")
     pl.screenshot(out / "exploded.png")
-    pl.close()
-
-
-def render_camera_view(p, parts, out, which: str, depth_to_target=120.0):
-    """What each camera sees: the gripper, a vial between the fingers, and a 10 mm grid
-    `depth_to_target` past the fingertips (square to the approach axis)."""
-    o, d = optical_axes(p)[which]
-    if which == "hq":
-        hf, vf = hq_fov(p)
-        size = (1600, int(1600 * 3040 / 4056))
-    else:
-        hf, vf = CM3W_FOV
-        size = (1600, 900)
-    pl = plotter(size)
-    add_gripper(pl, opening=40.0)
-    y_t = -77.52 - depth_to_target
-    grid = pv.Plane(center=(p.ax_x, y_t, p.ax_z), direction=(0, 1, 0), i_size=1000, j_size=1000,
-                    i_resolution=100, j_resolution=100)
-    pl.add_mesh(grid, color=(0.97, 0.97, 0.95), show_edges=True, edge_color=(0.6, 0.6, 0.6))
-    pl.add_mesh(pv.Cylinder(center=(p.ax_x, -62.0, p.ax_z), direction=(0, 1, 0), radius=6.0, height=40),
-                color=(0.55, 0.75, 0.95), opacity=0.8)      # a 12 mm vial held by the fingertips
-    pl.add_mesh(pv.Sphere(radius=3.0, center=(p.ax_x, y_t + 0.5, p.ax_z)), color="red")
-    pl.camera.position = tuple(o)
-    pl.camera.focal_point = tuple(o + d * 200)
-    pl.camera.up = (0, 0, 1)   # the HQ hangs connector-down, so rotate its image 180 deg in software
-    pl.camera.view_angle = vf
-    pl.camera.clipping_range = (1.0, 2000.0)
-    label = ("HQ Camera + 6 mm lens" if which == "hq" else "Camera Module 3 Wide")
-    pl.add_text(f"{label}: simulated view ({hf:.0f} x {vf:.0f} deg). Grid: 10 mm squares, "
-                f"{depth_to_target:.0f} mm past the fingertips; red dot on the gripper axis", font_size=10,
-                color="black")
-    pl.screenshot(out / f"view_{which}.png")
     pl.close()
 
 
 def render_print_layout(p, parts, out):
     pl = plotter((1700, 900))
-    for name, dx in (("bracket", -70.0), ("carrier", 60.0), ("spacers", 150.0)):
-        wp = print_orientation(name, parts[name]).translate((dx, 0, 0))
+    for name, (dx, dy) in PRINT_LAYOUT.items():
+        k = name.split("#")[0]
+        wp = print_orientation(k, parts[k], p).translate((dx - 90, dy - 90, 0))
         pl.add_mesh(mesh(wp), color=(0.93, 0.45, 0.13), smooth_shading=False, specular=0.15)
-    pl.add_mesh(pv.Plane(center=(20, 0, -0.2), direction=(0, 0, 1), i_size=330, j_size=180), color=(0.25, 0.25, 0.27))
-    pl.camera_position = [(20, -420, 330), (20, 0, 20), (0, 0, 1)]
-    pl.add_text("Printed parts as they sit on the bed: bracket camera-plate down, carrier Pi-plate down",
-                font_size=12, color="black")
+    pl.add_mesh(pv.Plane(center=(0, 0, -0.2), direction=(0, 0, 1), i_size=180, j_size=180), color=(0.25, 0.25, 0.27))
+    pl.camera_position = [(0, -330, 300), (0, 0, 10), (0, 0, 1)]
+    pl.add_text("One A1 mini plate (180 x 180 mm): bracket pad-down, pod plate-down, carrier Pi-plate-down,\n"
+                "4 spacers and 2 tag wedges", font_size=12, color="black")
     pl.screenshot(out / "print_layout.png")
     pl.close()
 
@@ -157,8 +137,6 @@ def main() -> None:
     render_assembly(p, parts, RENDERS)
     render_front(p, parts, RENDERS)
     render_exploded(p, parts, RENDERS)
-    render_camera_view(p, parts, RENDERS, "hq")
-    render_camera_view(p, parts, RENDERS, "cm3w")
     render_print_layout(p, parts, RENDERS)
     print(f"renders written to {RENDERS}")
 
