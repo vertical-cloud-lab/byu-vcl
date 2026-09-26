@@ -1,0 +1,140 @@
+{
+  "bambu_studio": "02.08.02.61",
+  "presets": {
+    "machine": "Bambu Lab A1 mini 0.4 nozzle",
+    "process": "0.20mm Standard @BBL A1M",
+    "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "overrides": {
+    "wall_loops": "3",
+    "sparse_infill_density": "25%"
+  },
+  "filament_colour": "#000000",
+  "return_code": 0,
+  "error_string": "Success.",
+  "support_necessity_checks_run": 4,
+  "thumbnails_embedded": [],
+  "plates": [
+    {
+      "plate": 1,
+      "name": "Base",
+      "objects": [
+        "base_1"
+      ],
+      "print_time_s": 8921,
+      "filament_g": 80.54,
+      "filament_m": 26.57,
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 368,
+        "Bridge": 580,
+        "Custom": 346,
+        "Flush": 28,
+        "Gap infill": 93,
+        "Inner wall": 1553,
+        "Internal solid infill": 981,
+        "Outer wall": 1100,
+        "Sparse infill": 1901,
+        "Top surface": 310,
+        "Travel": 1675,
+        "Undefined": 1659
+      }
+    },
+    {
+      "plate": 2,
+      "name": "Deck + spacers",
+      "objects": [
+        "deck_1",
+        "spacers_1"
+      ],
+      "print_time_s": 4049,
+      "filament_g": 43.39,
+      "filament_m": 14.32,
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 351,
+        "Bridge": 542,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 18,
+        "Inner wall": 361,
+        "Internal solid infill": 838,
+        "Outer wall": 302,
+        "Overhang wall": 16,
+        "Sparse infill": 657,
+        "Top surface": 245,
+        "Travel": 360,
+        "Undefined": 342
+      }
+    },
+    {
+      "plate": 3,
+      "name": "Drill template",
+      "objects": [
+        "drill_template_1"
+      ],
+      "print_time_s": 3092,
+      "filament_g": 31.87,
+      "filament_m": 10.51,
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 386,
+        "Bridge": 530,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 9,
+        "Inner wall": 120,
+        "Internal solid infill": 995,
+        "Outer wall": 81,
+        "Sparse infill": 99,
+        "Top surface": 370,
+        "Travel": 145,
+        "Undefined": 127
+      }
+    }
+  ],
+  "total_print_time_s": 16062,
+  "total_filament_g": 155.8
+}
