@@ -1,0 +1,118 @@
+# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-09-26 rev:
+# the gantry recalibrated on its new bench.
+#
+# Attached to PR #228 on 2026-09-26. THE BODY BELOW IS BEN'S, VERBATIM (parsed
+# YAML verified identical to the attachment) with ONE line added back:
+# cnc.default_feed_rate_mm_min, below.
+#
+# It matches the controller. Read-only from the Pi, 2026-09-26 01:17 UTC, eight
+# minutes after the GRBL board came back onto the Pi's USB at 01:09:56 UTC. It
+# had been off the Pi since 00:53:37, the window this calibration fits:
+#   $130 / $131 / $132   391.000 / 236.665 / 124.000
+#   G54                  -391.000, -236.665, -124.000
+#   $3=1 $10=0 $20=1 $22=1 $23=0 $27=3 $100-$102=400   every critical value
+# so CubOS's connect-time settings check passes. Snapshot in
+# ../../results/pipette_test_20260926b/grbl_settings_20260926b.json.
+#
+# Changes vs. the previous committed rev (2026-09-15; 409 / 309 / 124):
+#   grbl max_travel x / y / z        409 / 309 / 124  ->  391 / 236.665 / 124
+#   working_volume x / y / z max     386.333 / 232 / 124  ->  388 / 233.665 / 121
+#                                    (= max_travel minus the 3 mm pull-off, i.e.
+#                                    the homed pose: no move ends on a limit
+#                                    switch now, as the 124 hover used to on Z)
+#   capper depth                     -15.935  ->  -17.0
+#   pipette offset_x / offset_y      52.0 / 12.0  ->  54.0 / 12.999
+#   capper park_position             deleted 2026-09-15  ->  [236, 25] again
+#   cnc.default_feed_rate_mm_min     2000.0  ->  absent  ->  KEPT at 2000.0
+#
+# ---------------------------------------------------------------------------
+# default_feed_rate_mm_min: kept at 2000.0
+# ---------------------------------------------------------------------------
+# Ben's file descends from his own local copy (it has park_position, which the
+# branch deleted on 2026-09-15, and none of the branch's comments), so the
+# missing line is lineage rather than a decision. Without it every G01 goes out
+# at F3000 instead of the F2000 that every run on this machine has used. To take
+# the speed-up on purpose, delete the line or set 3000.0, and watch that run.
+#
+# ---------------------------------------------------------------------------
+# park_position: harmless, kept as sent
+# ---------------------------------------------------------------------------
+# CubOS 496819c ignores it and warns on every load: "YAML field 'park_position'
+# is no longer used and was ignored (decap/cap no longer park; delete this
+# key)." It is also what a rollback to cbc33dc would need back.
+#
+# ---------------------------------------------------------------------------
+# z_max 121 lowers the tipped ceiling by 3 mm
+# ---------------------------------------------------------------------------
+# safe_z 115 still needs the hover-clamp patch (applied on the Pi): a tipped
+# engage cannot reach safe_z, so it hovers at the highest carriage-reachable
+# plane, now gantry 121 = tip end at deck 86 (was 124 / 89). Cap tops are at
+# deck 54 + 15 = 69, so that is 17 mm of clearance. The clamp does NOT touch an
+# explicit travel_z, which must now be <= 121 - 35 = 86 whenever it names the
+# tipped pipette. pipette_test.yaml's step 5 still says 87 and fails
+# validation on it: gantry z 122 > z_max 121.
+#
+# ---------------------------------------------------------------------------
+# The pipette's reach
+# ---------------------------------------------------------------------------
+# CubOS commands gantry = deck - offset, so with offset (54.0, 12.999) the
+# pipette cannot reach below deck x 54.0 or deck y 12.999 (gantry 0). The
+# capper (offset 0/0) can. See the deck file's header for what that means for
+# vial_1.
+
+serial_port: /dev/ttyUSB0
+gantry_type: cub_xl
+cnc:
+  factory_z_travel_mm: 124.0
+  calibration_block_height_mm: 35.0
+  y_axis_motion: head
+  safe_z: 115.0
+  # NOT in Ben's 2026-09-26 attachment; kept deliberately (see the header).
+  # Absent, CubOS 496819c falls back to its module default of 3000 mm/min
+  # (gantry_driver/driver.py DEFAULT_FEED_RATE), 1.5x every run to date.
+  default_feed_rate_mm_min: 2000.0
+working_volume:
+  x_min: 0.0
+  x_max: 388.0
+  y_min: 0.0
+  y_max: 233.665
+  z_min: 0.0
+  z_max: 121.0
+origin_policy: deck_origin
+grbl_settings:
+  dir_invert_mask: 1
+  status_report: 0
+  soft_limits: true
+  homing_enable: true
+  homing_dir_mask: 0
+  homing_pull_off: 3.0
+  steps_per_mm_x: 400.0
+  steps_per_mm_y: 400.0
+  steps_per_mm_z: 400.0
+  max_travel_x: 391.0
+  max_travel_y: 236.665
+  max_travel_z: 124.0
+instruments:
+  vial_capper_decapper:
+    type: capper
+    vendor: pawduino
+    offset_x: 0.0
+    offset_y: 0.0
+    depth: -17.0
+    capture_retries: 2
+    capture_settle_s: 1
+    engage_depth_mm: 15
+    offline: false
+    park_position:
+    - 236
+    - 25
+    port: /dev/ttyACM0
+  pipette:
+    type: pipette
+    vendor: opentrons
+    offset_x: 54.0
+    offset_y: 12.999
+    depth: 0.0
+    pipette_model: p20_single_gen2
+    port: /dev/ttyACM0
+    offline: false

@@ -1,0 +1,89 @@
+# WHAT-IF, NOT A CONFIG. The committed deck with both vials moved up one seat
+# (seat 2 = the y 33.0 already measured for vial_2; seat 3 = 33.0 + the 33 mm
+# pitch, NOT measured). Used only to show the trio's remaining problems are the
+# two in README.md. Jog seat 3 before using anything like this for real.
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 189
+      y: 33
+      z: 54
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 189
+      y: 66
+      z: 54
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 138
+    width: 20
+    height: 66
+    tip_length: 35
+    drop_z:
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 319.0
+        y: 45.664
+      a2:
+        x: 310.5
+        y: 45.664
+    pickup_z: 57
+    location:
+      x: 319.5
+      y: 45.664
+      z: 57
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true

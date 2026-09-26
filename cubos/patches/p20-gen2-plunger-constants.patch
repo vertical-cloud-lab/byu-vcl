@@ -1,0 +1,45 @@
+diff --git a/packages/core/src/cubos/instruments/pipette/models.py b/packages/core/src/cubos/instruments/pipette/models.py
+index efde55e..4ff2b35 100644
+--- a/packages/core/src/cubos/instruments/pipette/models.py
++++ b/packages/core/src/cubos/instruments/pipette/models.py
+@@ -96,11 +96,36 @@ PIPETTE_MODELS: dict[str, PlungerPipetteConfig] = {
+         channels=1,
+         max_volume=20.0,
+         min_volume=1.0,
++        # ── byu-vcl: P20 GEN2, from Opentrons shared-data ───────────────────
++        # Source: shared-data/pipette/definitions/1/pipetteModelSpecs.json,
++        # keys p20_single_v2.0/2.1/2.2 (all three carry identical positions).
++        # Opentrons states these as signed offsets in a frame whose `top` is
++        # the plunger home reference; CubOS and the PANDA firmware both
++        # measure distance DOWNWARD from home, so each value is
++        # (top - <opentrons field>) with top = 19.5:
++        #
++        #     bottom  -8.5  ->  prime_position     28.0   (was 5.0)
++        #     blowout -13   ->  blowout_position   32.5   (was 7.0)
++        #     dropTip -27   ->  drop_tip_position  46.5   (was 10.0)
++        #
++        # These are sent to the firmware as ABSOLUTE MOVE_TO targets, so the
++        # 5/7/10 placeholders did not merely mis-scale -- they aimed at the
++        # wrong planes entirely, ~23 to ~36 mm short of where a P20 GEN2
++        # plunger primes, blows out and ejects.  They now agree with
++        # include/Pipette.h in the VCL PANDA firmware, which carries the same
++        # three numbers; see cubos/firmware/README.md.
+         zero_position=0.0,
+-        prime_position=5.0,       # placeholder
+-        blowout_position=7.0,     # placeholder
+-        drop_tip_position=10.0,   # placeholder
+-        mm_to_ul=0.025,           # placeholder
++        prime_position=28.0,
++        blowout_position=32.5,
++        drop_tip_position=46.5,
++        # byu-vcl: was 0.025 (placeholder).  aspirate/dispense/mix send
++        # volume_ul * mm_to_ul to the firmware as the ASPIRATE argument, but
++        # the PANDA firmware's aspirate(volume, ...) takes MICROLITRES and
++        # applies its own UL_TO_MM internally -- so the conversion was
++        # happening twice.  1.0 makes this side a pass-through and leaves the
++        # single conversion in the firmware, where the calibration constant
++        # lives (UL_TO_MM 1.34 for a P20 GEN2).
++        mm_to_ul=1.0,
+     ),
+     "p300_single_gen2": PlungerPipetteConfig(
+         name="p300_single_gen2",

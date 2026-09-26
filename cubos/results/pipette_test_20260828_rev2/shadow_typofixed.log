@@ -1,0 +1,16 @@
+passive-instrument sweep [nominal]: 64 commanded poses, 36 deck obstacles
+
+4 INTERFERENCE(S):
+
+  step  5 move      moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (206.0, 27.0, 36.06) -> (258.0, 27.0, 36.06)
+  step  6 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_1: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 39.0, 36.06) -> (177.0, 39.0, 36.06)
+  step  7 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step  7 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 72.0, 36.06) -> (177.0, 72.0, 36.06)

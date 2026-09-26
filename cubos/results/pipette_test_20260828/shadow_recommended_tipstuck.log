@@ -1,0 +1,3 @@
+passive-instrument sweep [tip stuck on nozzle]: 63 commanded poses, 36 deck obstacles
+
+No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and are not modeled.)

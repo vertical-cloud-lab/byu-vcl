@@ -1,0 +1,56 @@
+Failed to load protocol from pipette_test_new.yaml
+Traceback (most recent call last):
+  File "/tmp/CubOS/packages/core/src/cubos/protocol_engine/setup_validator.py", line 187, in run_setup_validation
+    protocol = load_protocol_from_yaml(protocol_path)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/CubOS/packages/core/src/cubos/protocol_engine/loader.py", line 115, in load_protocol_from_yaml
+    schema = ProtocolYamlSchema.model_validate(raw)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/cubvenv/lib/python3.12/site-packages/pydantic/main.py", line 732, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for ProtocolYamlSchema
+protocol.5.instrument
+  Field required [type=missing, input_value={'instrumet': 'vial_cappe...sition', 'travel_z': 87}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+protocol.5.instrumet
+  Extra inputs are not permitted [type=extra_forbidden, input_value='vial_capper_decapper', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: gantry.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: deck.yaml
+  Labware (7):
+    vial_1: vial at (206.0, 27.0, 55.0)
+    vial_2: vial at (206.0, 60.0, 55.0)
+    vial_3: vial at (206.0, 93.0, 55.0)
+    vial_4: vial at (206.0, 126.0, 55.0)
+    vial_5: vial at (206.0, 159.0, 55.0)
+    vial_6: vial at (206.0, 192.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: gantry.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  ERROR: ValidationError: 2 validation errors for ProtocolYamlSchema
+protocol.5.instrument
+  Field required [type=missing, input_value={'instrumet': 'vial_cappe...sition', 'travel_z': 87}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.13/v/missing
+protocol.5.instrumet
+  Extra inputs are not permitted [type=extra_forbidden, input_value='vial_capper_decapper', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.13/v/extra_forbidden
+
+------------------------------------------------------------
+RESULT: ERROR - could not load protocol
+------------------------------------------------------------

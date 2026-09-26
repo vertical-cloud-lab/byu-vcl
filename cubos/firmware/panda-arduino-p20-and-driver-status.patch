@@ -1,0 +1,245 @@
+diff --git a/include/Interface.h b/include/Interface.h
+index d214fe9..1b5932a 100644
+--- a/include/Interface.h
++++ b/include/Interface.h
+@@ -34,7 +34,9 @@ enum CommandCodes
+     CMD_CONTACT_ON_20 = 25,
+     CMD_CONTACT_ON_10 = 26,
+     CMD_CONTACT_ON_5 = 27,
+-    CMD_EMAG_ON_GRAB = 28
++    CMD_EMAG_ON_GRAB = 28,
++    CMD_PIPETTE_DRIVER_STATUS = 29  // [VCL] TMC2209 fault flags, read back
++                                    // over the single-wire UART
+ };
+ 
+ // Response codes are kept for backward compatibility and internal use
+diff --git a/include/Pipette.h b/include/Pipette.h
+index c8272c2..0f508a5 100644
+--- a/include/Pipette.h
++++ b/include/Pipette.h
+@@ -17,18 +17,72 @@
+ #define DEBOUNCE_TIME 100
+ 
+ // Pipette constants
+-#define MAX_VOLUME 300.0       // Maximum volume in µL
+-#define MIN_VOLUME 5.0        // Minimum volume in µL
+-#define ZERO_POSITION 0.0      // Zero position in mm
+-#define BLOWOUT_POSITION 44.0  // Blowout position in mm
+-#define PRIME_POSITION 36.0    // Prime position in mm
+-#define DROP_TIP_POSITION 55.0 // Drop tip position in mm
+-#define UL_TO_MM 0.1098        // Conversion factor from µL to mm
++#define MAX_VOLUME 20.0        // uL   [VCL] P20 GEN2.  Was 300.0 (a P300 value).
++#define MIN_VOLUME 1.0         // uL   [VCL] P20 GEN2.  Was 5.0 (a P300 value).
++// ---------------------------------------------------------------------------
++// [VCL] Plunger planes, P20 GEN2, from Opentrons shared-data
++// (shared-data/pipette/definitions/1/pipetteModelSpecs.json, p20_single_v2.x;
++// all three v2 revisions carry identical positions).
++//
++// Opentrons expresses these as signed offsets in a frame whose `top` is the
++// plunger home reference.  This firmware measures distance DOWNWARD from
++// home, so each value below is (top - <opentrons field>):
++//
++//     opentrons field  value  ->  this firmware        was (a P300 value)
++//     top               19.5      ZERO_POSITION   0.0    0.0
++//     bottom            -8.5      PRIME_POSITION 28.0   36.0
++//     blowout          -13        BLOWOUT_POS    32.5   44.0
++//     dropTip          -27        DROP_TIP_POS   46.5   55.0
++//
++// All three moved DOWN, so every commanded plunger travel is now SHORTER
++// than before -- the safe direction.  Ordering is still monotonic
++// (0 < prime < blowout < drop_tip), which aspirate/dispense/moveTo rely on.
++// ---------------------------------------------------------------------------
++#define ZERO_POSITION 0.0      // mm   Opentrons `top`, the home reference
++#define BLOWOUT_POSITION 32.5  // mm   [VCL] P20 GEN2.  Was 44.0.
++#define PRIME_POSITION 28.0    // mm   [VCL] P20 GEN2.  Was 36.0.
++#define DROP_TIP_POSITION 46.5 // mm   [VCL] P20 GEN2.  Was 55.0.
++// [VCL] P20 GEN2 = 1.34 mm/uL.  Opentrons' own ulPerMm table for
++// p20_single_v2.1 is asymptotically 0.746 uL/mm, and 1 / 0.746 = 1.34.
++// Cross-check: a full-scale 20 uL aspirate travels 20 * 1.34 = 26.8 mm up
++// from PRIME_POSITION 28.0, landing the plunger at 1.2 mm -- inside the
++// 28.0 mm top-to-bottom stroke with a small dead band, exactly as Opentrons
++// has it.  Was 1.8, which was just PRIME_POSITION 36.0 / 20 uL, i.e. derived
++// from a P300 plunger plane rather than from the P20.
++// STILL NOT GRAVIMETRIC: this is Opentrons' nominal figure for the model,
++// not a calibration of this particular unit.
++#define UL_TO_MM 1.34          // uL -> mm  [VCL] P20 GEN2.  Was 1.8.
+ 
+ // Motor settings
+ #define MICROSTEPPING 16         // Microstepping mode
+-#define RUN_CURRENT_PERCENT 50   // Run current in percent (0-100)
+-#define HOLD_CURRENT_PERCENT 30  // Hold current in percent (0-100)
++// ---------------------------------------------------------------------------
++// [VCL] Driver current, P20 GEN2, corrected for the real sense resistor
++// ---------------------------------------------------------------------------
++// The janelia library maps percent -> CS as map(p, 0, 100, 0, 31), i.e.
++// CS = p * 31 / 100 truncated.  With the Adafruit 6121 breakout's ACTUAL
++// sense resistor of 0.05 ohm -- NOT the 0.11 ohm assumed here on 2026-09-09;
++// Ursa read it off the breakout schematic, see
++// byu-vcl cubos/docs/opentrons-pipette-wiring.md -- and vsense = 0 (the
++// library default; enableVSense() is never called):
++//
++//     I_rms = ((CS+1)/32) * (0.325 / (0.05 + 0.02)) / sqrt(2)
++//           = ((CS+1)/32) * 3.283 A
++//
++//     percent  CS   I_rms    I_peak
++//          50  15   1.64 A   2.32 A   BU original -- OVER the board's 2 A
++//          17   5   0.62 A   0.87 A   VCL 2026-09-15, from a science-jubilee
++//                                     Duet figure that is not Opentrons'
++//          20   6   0.72 A   1.02 A   matches Opentrons plungerCurrent 1.0 A
++//           5   1   0.21 A   0.29 A   matches Opentrons idleCurrent 0.3 A
++//
++// Opentrons' own p20_single_v2.x definition runs the plunger at
++// plungerCurrent 1.0 A and idles at idleCurrent 0.3 A, so those are the
++// numbers to match for a P20 GEN2.  Note vsense = 0 gives roughly 0.1 A of
++// resolution per CS step down here; enableVSense() would give finer control
++// if that ever matters.
++// FIT THE HEAT SINK (Adafruit 1515) before running at this current.
++#define RUN_CURRENT_PERCENT 20   // -> CS 6, 1.02 A peak  [VCL] was 17
++#define HOLD_CURRENT_PERCENT 5   // -> CS 1, 0.29 A peak  [VCL] was 10
+ #define MAX_VELOCITY 2500.0      // Maximum velocity in steps/second
+ #define HOMING_VELOCITY 1000.0   // Velocity for homing operation
+ #define MOVEMENT_VELOCITY 2500.0 // Velocity for normal movements
+@@ -56,6 +110,33 @@ bool mix(int repetitions, float volume_uL, float velocity);
+ 
+ bool getPipetteStatus(bool* isHomed, float* position, float* maxVolume);
+ 
++// Read the TMC2209's own fault flags back over the single-wire UART.
++// Requires the 1k-10k resistor between RX_PIN (A0) and TX_PIN (A1): the
++// driver replies on the same wire it is addressed on, and without that
++// bridge the Arduino can transmit but never listen.  See
++// byu-vcl cubos/docs/opentrons-pipette-wiring.md.
++//   comm:           0 = not communicating, 1 = communicating but not set up
++//                   (driver power was lost and defaults reloaded), 2 = set up
++//   flags:          bitmask, see DRVSTATUS_* below
++//   currentScaling: the driver's actual CS value, 0-31
++bool getDriverDiagnostics(float* comm, float* flags, float* currentScaling);
++
++#define DRVSTATUS_OT_WARNING     (1UL << 0)
++#define DRVSTATUS_OT_SHUTDOWN    (1UL << 1)
++#define DRVSTATUS_SHORT_GND_A    (1UL << 2)
++#define DRVSTATUS_SHORT_GND_B    (1UL << 3)
++#define DRVSTATUS_LOW_SIDE_A     (1UL << 4)
++#define DRVSTATUS_LOW_SIDE_B     (1UL << 5)
++#define DRVSTATUS_OPEN_LOAD_A    (1UL << 6)
++#define DRVSTATUS_OPEN_LOAD_B    (1UL << 7)
++#define DRVSTATUS_OT_120C        (1UL << 8)
++#define DRVSTATUS_OT_143C        (1UL << 9)
++#define DRVSTATUS_OT_150C        (1UL << 10)
++#define DRVSTATUS_OT_157C        (1UL << 11)
++#define DRVSTATUS_STEALTH_CHOP   (1UL << 12)
++#define DRVSTATUS_STANDSTILL     (1UL << 13)
++#define DRVSTATUS_HW_DISABLED    (1UL << 14)
++
+ // Internal helper functions
+ float getCurrentPosition();
+ float stepsToMM(float steps);
+diff --git a/platformio.ini b/platformio.ini
+index 5595986..be8e9db 100644
+--- a/platformio.ini
++++ b/platformio.ini
+@@ -12,7 +12,7 @@
+ platform = atmelavr
+ board = uno
+ framework = arduino
+-lib_extra_dirs = ~/Documents/Arduino/libraries
++
+ lib_deps = 
+ 	adafruit/Adafruit NeoPixel@^1.12.5
+ 	arduinogetstarted/ezButton@^1.0.6
+diff --git a/src/Interface.cpp b/src/Interface.cpp
+index 1f563ee..77f47af 100644
+--- a/src/Interface.cpp
++++ b/src/Interface.cpp
+@@ -330,6 +330,21 @@ void processCommands()
+             }
+             break;
+             
++        case CMD_PIPETTE_DRIVER_STATUS:
++            {
++                // [VCL] Ask the TMC2209 what is wrong with it, instead of
++                // inferring from serial round-trip timing.  Only meaningful
++                // once RX_PIN (A0) is bridged to TX_PIN (A1).
++                float comm, flags, currentScaling;
++                if (getDriverDiagnostics(&comm, &flags, &currentScaling)) {
++                    sendJsonResponse(true, "Driver status", comm, flags,
++                                     currentScaling);
++                } else {
++                    sendJsonErrorResponse("Failed to read driver status");
++                }
++            }
++            break;
++
+         case CMD_PIPETTE_MIX:
+             // Usage:
+             //   CMD_PIPETTE_MIX,<repetitions>,<volume_uL>[,<velocity>]
+diff --git a/src/Pipette.cpp b/src/Pipette.cpp
+index a04aa9d..b4c8d95 100644
+--- a/src/Pipette.cpp
++++ b/src/Pipette.cpp
+@@ -316,6 +316,57 @@ bool dispense(float /*volume*/, float velocity)
+ 
+ 
+ // Get current pipette status
++// [VCL 2026-09-15] Read the TMC2209's own fault flags back over the
++// single-wire UART.  Ben bridged RX_PIN (A0) to TX_PIN (A1) with 10k on
++// 2026-09-15, which is what makes this possible: PDN_UART is half duplex,
++// so the driver answers on the wire it was addressed on, and without the
++// bridge the Arduino can only ever talk.  setupMotor() writes six registers
++// and checks none of them, so before this there was no way to tell a healthy
++// driver from one sitting at minimum current with its output stage off.
++bool getDriverDiagnostics(float* comm, float* flags, float* currentScaling)
++{
++    if (!comm || !flags || !currentScaling) {
++        return false;
++    }
++
++    if (stepperDriver.isSetupAndCommunicating()) {
++        *comm = 2.0;
++    } else if (stepperDriver.isCommunicatingButNotSetup()) {
++        *comm = 1.0;   // powered up after setup(): defaults reloaded
++    } else {
++        *comm = 0.0;   // no reply at all: check VDD, the bridge, the pins
++    }
++
++    uint32_t bits = 0;
++    if (*comm > 0.0) {
++        TMC2209::Status st = stepperDriver.getStatus();
++        if (st.over_temperature_warning)  bits |= DRVSTATUS_OT_WARNING;
++        if (st.over_temperature_shutdown) bits |= DRVSTATUS_OT_SHUTDOWN;
++        if (st.short_to_ground_a)         bits |= DRVSTATUS_SHORT_GND_A;
++        if (st.short_to_ground_b)         bits |= DRVSTATUS_SHORT_GND_B;
++        if (st.low_side_short_a)          bits |= DRVSTATUS_LOW_SIDE_A;
++        if (st.low_side_short_b)          bits |= DRVSTATUS_LOW_SIDE_B;
++        if (st.open_load_a)               bits |= DRVSTATUS_OPEN_LOAD_A;
++        if (st.open_load_b)               bits |= DRVSTATUS_OPEN_LOAD_B;
++        if (st.over_temperature_120c)     bits |= DRVSTATUS_OT_120C;
++        if (st.over_temperature_143c)     bits |= DRVSTATUS_OT_143C;
++        if (st.over_temperature_150c)     bits |= DRVSTATUS_OT_150C;
++        if (st.over_temperature_157c)     bits |= DRVSTATUS_OT_157C;
++        if (st.stealth_chop_mode)         bits |= DRVSTATUS_STEALTH_CHOP;
++        if (st.standstill)                bits |= DRVSTATUS_STANDSTILL;
++        *currentScaling = (float)st.current_scaling;
++    } else {
++        *currentScaling = -1.0;
++    }
++
++    if (stepperDriver.hardwareDisabled()) {
++        bits |= DRVSTATUS_HW_DISABLED;
++    }
++
++    *flags = (float)bits;
++    return true;
++}
++
+ bool getPipetteStatus(bool* isHomedOut, float* positionOut, float* maxVolumeOut)
+ {
+     // Fill out the parameters with current values
+@@ -352,7 +403,7 @@ bool dispenseRelative(float volume_uL, float velocity)  { return plungerMoveRela
+ 
+ // Mix in place by symmetric plunger strokes around the current position.
+ // 'stroke_uL' is the peak-to-peak volume of each cycle.
+-bool mixInPlace(int repetitions, float stroke_uL, float velocity, float dwell_ms = 20) {
++bool mixInPlace(int repetitions, float stroke_uL, float velocity, float dwell_ms) {  // [VCL] default arg removed: it is already declared in Pipette.h, and giving it twice is a hard C++ error -- upstream 228615b does not compile without this
+     if (repetitions <= 0 || stroke_uL <= 0) return true;
+ 
+     // Make sure we have headroom to swing ±halfStroke around center

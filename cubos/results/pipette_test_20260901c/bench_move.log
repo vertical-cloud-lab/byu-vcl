@@ -1,0 +1,26 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after  3.80s: 'OK:Ready'
+  STATUS (read-only)       dt=   0.01s  reply=OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+      firmware max_vol = 300.0 uL -- must match pipette_model in the gantry YAML
+
+Commanding plunger motion. Watch the plunger, not the screen.
+Bounded to +3 mm of forward travel, then asked for it back.
+This firmware moves at ~0.673 s/mm; ~0.1 s means it did not.
+
+  -- HOME --
+  HOME (cold)              dt=  26.35s  reply=ERR:{"error":"Failed to home pipette"}       pos=0.0 homed=0
+  -- forward: does distance scale? --
+  MOVE_TO 1.0 mm           dt=   0.67s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=1.0 homed=0
+  MOVE_TO 3.0 mm           dt=   1.33s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=0
+  -- HOME from a non-zero position: does it retract? --
+  HOME (from 3.0)          dt=  26.35s  reply=ERR:{"error":"Failed to home pipette"}       pos=3.0 homed=0
+  -- backward: the same positions, asked for in reverse --
+  MOVE_TO 3.0 mm           dt=   0.01s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=0
+  MOVE_TO 1.0 mm (back)    dt=   1.33s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=1.0 homed=0
+  MOVE_TO 0.0 mm (back)    dt=   0.67s  reply=OK:{"msg":"Pipette moved"}                   pos=0.0 homed=0
+
+VERDICT: the plunger moves in both directions. If it still
+  does not dispense, the problem is the mm/uL calibration or
+  the mechanical coupling to the plunger.

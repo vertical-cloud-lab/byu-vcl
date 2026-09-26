@@ -1,0 +1,13 @@
+passive-instrument sweep [tip stuck on nozzle]: 64 commanded poses, 36 deck obstacles
+
+3 INTERFERENCE(S):
+
+  step 10 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 60.0) -> (317.0, 13.0, 36.06)
+  step 10 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 36.06) -> (258.0, 13.0, 36.06)
+  step 10 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A2: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 36.06) -> (258.0, 13.0, 36.06)

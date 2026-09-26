@@ -1,0 +1,59 @@
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/gantry/cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/deck/ben_6vials_tiprack.yaml
+  Labware (7):
+    vial_1: vial at (206.0, 27.0, 55.0)
+    vial_2: vial at (206.0, 60.0, 55.0)
+    vial_3: vial at (206.0, 93.0, 55.0)
+    vial_4: vial at (206.0, 126.0, 55.0)
+    vial_5: vial at (206.0, 159.0, 55.0)
+    vial_6: vial at (206.0, 192.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/gantry/cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: /home/runner/work/byu-vcl/byu-vcl/cubos/configs/protocol/vcl/pipette_test.yaml
+  Steps: 19
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position')
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] aspirate(position='vial_1', volume_ul=20.0, height=-15.0)
+    [5] cap(instrument='vial_capper_decapper', vial='vial_1')
+    [6] decap(instrument='vial_capper_decapper', vial='vial_2')
+    [7] blowout(position='vial_2', height=-15.0)
+    [8] drop_tip(position='tip_rack.A1')
+    [9] cap(instrument='vial_capper_decapper', vial='vial_2')
+    [10] decap(instrument='vial_capper_decapper', vial='vial_3')
+    [11] cap(instrument='vial_capper_decapper', vial='vial_3')
+    [12] decap(instrument='vial_capper_decapper', vial='vial_4')
+    [13] cap(instrument='vial_capper_decapper', vial='vial_4')
+    [14] decap(instrument='vial_capper_decapper', vial='vial_5')
+    [15] cap(instrument='vial_capper_decapper', vial='vial_5')
+    [16] decap(instrument='vial_capper_decapper', vial='vial_6')
+    [17] cap(instrument='vial_capper_decapper', vial='vial_6')
+    [18] home()
+
+Validating protocol motion bounds...
+  OK (9 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------

@@ -1,0 +1,79 @@
+passive-instrument sweep [tip stuck on nozzle]: 63 commanded poses, 36 deck obstacles
+
+25 INTERFERENCE(S):
+
+  step  2 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_1: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 39.0, 36.06) -> (177.0, 39.0, 36.06)
+  step  5 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (206.0, 27.0, 36.06) -> (258.0, 27.0, 36.06)
+  step  5 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_1: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 39.0, 36.06) -> (177.0, 39.0, 36.06)
+  step  6 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step  6 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 72.0, 36.06) -> (177.0, 72.0, 36.06)
+  step  9 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 60.0) -> (317.0, 13.0, 36.06)
+  step  9 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A1: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 36.06) -> (258.0, 13.0, 36.06)
+  step  9 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> tip_rack.A2: 0.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 60.0
+       (317.0, 13.0, 36.06) -> (258.0, 13.0, 36.06)
+  step  9 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 72.0, 36.06) -> (177.0, 72.0, 36.06)
+  step 10 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 10 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_3: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 105.0, 36.06) -> (177.0, 105.0, 36.06)
+  step 11 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 11 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_3: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 105.0, 36.06) -> (177.0, 105.0, 36.06)
+  step 12 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 12 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_4: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 138.0, 36.06) -> (177.0, 138.0, 36.06)
+  step 13 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 13 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_4: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 138.0, 36.06) -> (177.0, 138.0, 36.06)
+  step 14 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 14 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_5: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 171.0, 36.06) -> (177.0, 171.0, 36.06)
+  step 15 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 15 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_5: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 171.0, 36.06) -> (177.0, 171.0, 36.06)
+  step 16 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 16 decap     moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_6: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 55.0
+       (258.0, 204.0, 36.06) -> (177.0, 204.0, 36.06)
+  step 17 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_2: 2.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (177.0, 62.0, 36.06) -> (258.0, 62.0, 36.06)
+  step 17 cap       moving=PawduinoCapper   passive=pipette (tip=on)
+       -> vial_6: 12.0 mm from its axis, tool point down to Z 36.065 vs obstacle top 68.0
+       (258.0, 204.0, 36.06) -> (177.0, 204.0, 36.06)

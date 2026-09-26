@@ -1,0 +1,17 @@
+# Arduino (capper + pipette) link probe, read-only
+# port: /dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00
+connect: OK in 3.77s
+cmd  7 capper cap sensor        dt=0.004s -> OK:{"value1":0}
+cmd 14 pipette STATUS [0]       dt=0.008s -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+cmd 14 pipette STATUS [1]       dt=0.009s -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+cmd 14 pipette STATUS [2]       dt=0.008s -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+cmd 14 pipette STATUS [3]       dt=0.008s -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+cmd 14 pipette STATUS [4]       dt=0.008s -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+cmd 29 driver status [0]        dt=0.156s -> OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+cmd 29 driver status [1]        dt=0.156s -> OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+cmd 29 driver status [2]        dt=0.155s -> OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+cmd  6 electromagnet OFF        dt=0.008s -> OK:{"msg":"Electromagnet off"}
+
+# avrdude -U flash:v: against panda_vcl_p20gen2_20260917.hex (sha256 first line)
+1960c35486742da77c356ebac936fe6adc9f9e58a37ea1f2992a8c6eac7fe027
+17382 bytes of flash verified

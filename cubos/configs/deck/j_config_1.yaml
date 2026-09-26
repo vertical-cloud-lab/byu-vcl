@@ -1,0 +1,128 @@
+# Jarrett's 6-vial deck ("j_config_1"), measured 2026-08-06/07 with the
+# multi-instrument-calibrated gantry (capper = reference instrument, i.e.
+# offset 0/0). Attached by @jarrettshupe to PR #171 on 2026-08-08; the six
+# vial entries below are byte-identical to that attachment.
+#
+# COORDINATE SEMANTICS (differs from sterling_6vials.yaml!): every vial's
+# location.z is NOT the rim -- it is the raw jog-widget work coordinate
+# (WPos) at which the capper_decapper engages the cap ("the z coordinate
+# where the capper_decapper should be engaging with the vial caps"). The
+# Operator UI's position widget displays raw WPos with no instrument offset
+# or depth applied (GantryPositionWidget shows work_x/y/z, .toFixed(3) --
+# hence the 3-decimal values). The gantry config pairs with this via
+# engage_depth_mm: 17.248 = -capper.depth, which makes CubOS's commanded
+# engage gantry Z equal location.z exactly. Do NOT reuse these z values as
+# rim heights: the rim is ~4.25 mm ABOVE location.z in WPos terms (from the
+# 2026-08-03 hardware-verified sterling numbers: rim 55.0, engage 50.75).
+#
+# NOTE the key/name offset: deck KEYS are vial_2..vial_7 (protocol targets
+# resolve by key), while the display `name:` fields say vial_1..vial_6.
+# So `decap: vial: vial_2` opens the physical vial labeled "vial 1".
+#
+# ONE ADDITION vs. the attachment: the `tip_rack` entry at the bottom.
+# The measured tip position (262.460, 32.792, 59.152) was taken with the
+# pipette pressed onto the tip but read from the SAME raw-WPos widget, so
+# it is a gantry coordinate, not a pipette deck target. CubOS converts a
+# pipette deck target to gantry via gantry = deck - offset (XY) and
+# gantry_z = deck_z + depth (pipette depth 0), so the deck-frame numbers
+# entered here are WPos + pipette offset (51.97, 12.0), Z unchanged:
+#   x = 262.460 + 51.97 = 314.430
+#   y =  32.792 + 12.00 =  44.792
+#   z =  59.152 (pipette depth 0.0 -> deck Z == WPos Z)
+# Modeled as a 1x1 rack holding the single tip A1; tip_length 35.0 is from
+# the 2026-08-06 request ("the pipette tip adds 35mm to the pipette").
+# calibration.a2 only fixes the row orientation required by the schema.
+
+labware:
+  vial_2:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 106.365
+      z: 54.7
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  vial_3:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 137.615
+      z: 54.295
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  vial_4:
+    type: vial
+    name: vial_3
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 172.28
+      z: 54.295
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  vial_5:
+    type: vial
+    name: vial_4
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 203.948
+      z: 54.295
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  vial_6:
+    type: vial
+    name: vial_5
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 238.005
+      z: 54.295
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  vial_7:
+    type: vial
+    name: vial_6
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 212.143
+      y: 271.013
+      z: 54.295
+    capacity_ul: 1500
+    working_volume_ul: 1200
+  # Single-tip "rack" -- see the header for the frame conversion from the
+  # measured (262.460, 32.792, 59.152) WPos reading.
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    rows: 1
+    columns: 1
+    pickup_z: 59.152
+    tip_length: 35.0
+    x_offset: 10.0
+    y_offset: 10.0
+    calibration:
+      a1:
+        x: 314.43
+        y: 44.792
+        z: 59.152
+      a2:
+        x: 324.43
+        y: 44.792
+        z: 59.152

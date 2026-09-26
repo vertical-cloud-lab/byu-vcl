@@ -1,0 +1,42 @@
+{
+  "session": "2026-09-18 (lab local 2026-09-17 18:35-18:50, UTC-6)",
+  "campaign": 54,
+  "grbl_settings_read_before_the_run": {
+    "$5": "0", "$20": "0  <-- SOFT LIMITS OFF, restored to 1 before the run",
+    "$21": "0", "$22": "1", "$23": "0", "$27": "3.000",
+    "$100": "400.000", "$101": "400.000", "$102": "400.000",
+    "$110": "5000.000", "$111": "5000.000", "$112": "5000.000",
+    "$130": "409.000", "$131": "309.000", "$132": "124.000",
+    "status": "<Alarm|WPos:409.000,309.000,124.000|FS:0,0>  (no Pn: field -- no limit pin asserted)"
+  },
+  "grbl_settings_after_the_run": {
+    "$5": "0", "$20": "1", "$21": "0", "$22": "1", "$23": "0", "$27": "3.000",
+    "$130": "409.000", "$131": "309.000", "$132": "124.000",
+    "status": "<Alarm|WPos:409.000,309.000,124.000|FS:0,0>"
+  },
+  "homing": {
+    "step_0":  "18:39:37.113 $H -> 18:39:55.203 Homing completed  (18.1 s)",
+    "step_11": "18:44:23.434 $H -> 18:44:47.078 Homing completed  (23.6 s)"
+  },
+  "arduino_before_the_run": {
+    "PawduinoLink.connect": "3.77 s OK (CMD_HELLO handshake)",
+    "clean_STATUS_round_trips": "10/10",
+    "plunger STATUS": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}",
+    "cap sensor": "OK:{\"value1\":0}",
+    "TMC2209 driver (cmd 29)": "OK:{\"msg\":\"Driver status\",\"v\":[0.00,0.00,-1.00]}  comm=0",
+    "electromagnet": "OK:{\"msg\":\"Electromagnet off\"}"
+  },
+  "arduino_after_the_run": {
+    "plunger STATUS": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}  (counter reset by the port-open board reset)",
+    "cap sensor": "OK:{\"value1\":0}  -- nothing held at the head",
+    "TMC2209 driver (cmd 29)": "OK:{\"msg\":\"Driver status\",\"v\":[0.00,0.00,-1.00]}  comm=0",
+    "electromagnet": "OK:{\"msg\":\"Electromagnet off\"}"
+  },
+  "ports": {
+    "/dev/ttyUSB0": "1a86:7523 CH340 -> GRBL gantry (by-id usb-1a86_USB_Serial-if00-port0)",
+    "/dev/ttyACM0": "2341:0043 Uno R3 -> capper + pipette (by-id usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00)",
+    "free_after": true
+  },
+  "cubos": "496819c + tipped-hover-clamp-main + pipette-connect-tolerate-failed-home-main + p20-gen2-plunger-constants",
+  "firmware": "the 2026-09-15 p20 image (MAX_VOLUME 20, MIN_VOLUME 1, UL_TO_MM 1.8, PRIME_POSITION 36.0). NOT reflashed this session."
+}
