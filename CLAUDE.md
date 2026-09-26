@@ -166,6 +166,8 @@ These two secrets are read by `post-queued-comments.yml` directly, not the `clau
 | --- | --- |
 | `HF_TOKEN` | Hugging Face `byu-vcl` account, fine-grained: read + write contents/settings of own repos. Enough to duplicate Spaces (`duplicate_space`), upload files, and set Space-side secrets (`add_space_secret`). |
 | `ZENODO_API_TOKEN` | Zenodo personal access token, scopes `deposit:write` + `deposit:actions`. |
+| `YOUTUBE_UPLOAD_TOKEN_PICKLE_B64` | Base64 `token.pickle` for the **BYU Vertical Cloud Lab** channel (`UCKC7WzMu6QEh7O55zZlT2lw`), scopes `youtube.upload` + `youtube.readonly` only — can upload, cannot delete or edit. Use via `youtube/yt_service.py`. |
+| `YOUTUBE_TOKEN_PICKLE_B64` | Full-control token for the same channel. **Not** in `claude.yml`: an environment secret of `youtube-admin`, used only by `claude-youtube.yml` (`@claude-youtube`, sgbaird only, each run approved by sgbaird). See `youtube/README.md`. |
 | `ONSHAPE_ACCESS_KEY` / `ONSHAPE_SECRET_KEY` | Onshape REST API key pair (dev-portal.onshape.com), the same pair `tensegrity-optimization` uses. Prefer these for anything the API can do. |
 | `ONSHAPE_USERNAME` / `ONSHAPE_PASSWORD` | Onshape account login, for the browser path (sketching by mouse clicks and drags) only. |
 | `OT2_SERIAL` | `OT2CEP20210722R13`. Namespaces the `command/ot2/<serial>/pipette` and `status/ot2/<serial>/complete` topics. Read from the robot's own `/health` endpoint, where `robot_serial` and `name` agree. |
