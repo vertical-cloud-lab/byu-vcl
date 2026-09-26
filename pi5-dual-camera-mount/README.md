@@ -81,17 +81,18 @@ The desk-clamp stand and 7/16" nut driver are the same as the Zero 2 W setup's
 
 1. **Stand nut.** Drop the 1/4"-20 thin nut into the hex collar on the base, behind the upright. The collar stops the
    nut turning, so the mount screws straight onto the stand's stud; a 7/16" nut driver still reaches it.
-2. **Pi 5.** Put M2.5 nuts in the four hex pockets under the base. Fit the Active Cooler to the Pi first, then screw
-   the Pi down with its microSD edge towards the upright. The USB-C and HDMI ports then face right (seen from the
-   front) and Ethernet/USB face the back. The holes would also fit the Pi turned round, but then the ports face the
-   upright and the camera cables have to cross the whole board.
-3. **Cables first.** Push each camera's Standard–Mini cable, 15-way end first, through the slot at the top of its
-   station from behind, and connect it to the camera.
-4. **Cameras, cable up.** Mount each camera with its ribbon connector at the **top**:
+2. **Cables through the slots.** Push each camera's Standard–Mini cable, 15-way end first, through the slot at the
+   top of its station from behind, and connect it to the camera.
+3. **Cameras, cable up**, before the Pi goes on, so the nut pockets in the back of the upright are easy to reach.
+   Mount each camera with its ribbon connector at the **top**:
    - An **HQ Camera** goes on the four tall (6.5 mm) bosses. Its tripod foot points up, clear of everything.
    - A **Module 3** goes on the four short (4 mm) bosses. The HQ bosses stand beside it and don't touch it.
 
-   Nuts go into the pockets in the back of the upright. Hold each one with a finger while you turn the screw.
+   Hold each nut in its pocket with a finger while you turn the screw.
+4. **Pi 5.** Put M2.5 nuts in the four hex pockets under the base. Fit the Active Cooler to the Pi first, then screw
+   the Pi down with its microSD edge towards the upright. The USB-C and HDMI ports then face right (seen from the
+   front) and Ethernet/USB face the back. The holes would also fit the Pi turned round, but then the ports face the
+   upright and the camera cables have to cross the whole board.
 5. **Pi end.** Lead each ribbon back over the Pi and down into one of the two camera connectors (CAM/DISP 0 and 1,
    between the micro HDMI ports and the Ethernet jack), with the contacts facing away from the latch. The modelled
    routes are 114–125 mm long, so a 200 mm cable leaves spare length for a loose loop. A ribbon can twist to make up
@@ -138,7 +139,7 @@ hardware H.264 encoder, so two simultaneous streams are encoded on the CPU.
 - **Interference: 35 pairs, all 0 mm³.** The mount was checked against the Pi 5, the Active Cooler with its push
   pins, a USB-C plug, and every camera part. Four layouts were checked: HQ + Module 3, Module 3 + HQ, two Module 3s,
   and two HQ Cameras with 6 mm lenses.
-- **Closest approaches:** Active Cooler push pins to a Pi boss 1.0 mm; USB-C plug to the base 1.85 mm; HQ connector to
+- **Closest approaches:** Active Cooler push pins to a Pi boss 1.0 mm; USB-C plug to the mount 1.85 mm; HQ connector to
   the nearest boss 2.45 mm; Module 3 connector to its own lens-side boss 0.57 mm.
 - **Screw stacks:** Pi 5 and HQ 12.0 / 11.9 mm, which an M2.5 × 12 spans with the nut fully engaged. Module 3 9.1 mm,
   for an M2 × 10.
