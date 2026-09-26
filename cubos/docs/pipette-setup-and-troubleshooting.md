@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-24** (third update that day). This is the map; the detail is in
+Status as of **2026-09-26**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -14,7 +14,8 @@ the wiring doc, because conflating the two has cost real time.
 ## Where it stands
 
 **The motion half works. The plunger has never physically turned — the cable
-that caused it has been removed, and the remaining suspect is the driver chip.**
+that caused it has been removed, and the driver board it damaged is now
+condemned. Replace the Adafruit 6121.**
 
 Every software and geometry problem between a protocol and the plunger is
 solved and verified on hardware:
@@ -30,11 +31,12 @@ solved and verified on hardware:
 | passive-instrument sweep | **0 interferences**, nominal and tip-stuck |
 | the motor windings | ✅ **4.3 Ω / 3.7 Ω on direct wiring — healthy** |
 | phase-to-phase isolation | ✅ **MΩ on direct wiring — the short left with the ribbon** |
+| VREF at the trimmer wiper | ✅ **0.586 V ≈ 1.09 A peak — matched to `RUN_CURRENT_PERCENT 20`, so it no longer matters which one is in force** |
 | the ribbon harness | 🔴 **condemned — it carried both the open coil path and the short** |
-| the TMC2209 `DIAG` pin | 🔴 **5 V at both ends of the pot's range, survives a `VM` power cycle** |
-| the TMC2209 UART readback | 🔴 **`comm = 0` with the read fix now live — the RX-side bridge resistor alone** |
-| the first bench move | ❓ **no movement seen — but the test was incapable of showing any; see below** |
-| the Pi's power path | 🔴 **inside the gantry's travel envelope — three sessions lost to it** |
+| **the Adafruit 6121 driver board** | 🔴 **condemned 2026-09-26 — `DIAG` survives a power-on reset *and* an `ENN` reset with a clean load. Replace it** |
+| the TMC2209 UART readback | 🔴 **`comm = 0` with the read fix now live — the RX-side bridge resistor alone; move it during the swap** |
+| the first bench move | ❓ **no movement seen — expected with the output stage off; re-run on the replacement** |
+| the Pi | ✅ **back on the tailnet 2026-09-25 23:37 UTC, 5.13 V input, no under-voltage since boot** — ⚠️ keep its lead out of the gantry's reach (§21.7) |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
 time every plunger command — including the two retractions — emitted its steps
@@ -58,18 +60,28 @@ command-for-command.
   the ribbon harness           FAULTY   it carried BOTH faults, and both left with it
   firmware aspirate planes     FIXED    GEN2 image flashed and verified 2026-09-24
   ------------------------------------- the whole coil side is now ruled out
-  TMC2209 DIAG                 5 V      survives a VM cycle; damaged output stage
-                                        is now the LEADING explanation
-  UART readback              comm=0   read fix now LIVE; only the RX-side bridge
-                                      resistor is left. One resistor from DRV_STATUS.
-  ENN reset (the documented one)  ?      not attempted — a power cycle is not it
-  coil terminal to GND / VM+      ?      a short type never measured
-  VREF at the trimmer wiper       ?      the binary verdict on the internal regulator,
-                                         and the pot is now turned down by an
-                                         unrecorded amount — doubly load-bearing
-  INDEX during a driven leg       ?      decisive IF it changes; ambiguous if not
-  holding torque, post-repair     ?      last taken before the ribbon came out
+  VREF at the trimmer wiper    0.586 V  the chip's 5 V regulator is alive
+  DIAG pull-up                 NONE     0.5 MOhm; the schematic has nothing on DIAG
+  outputs to GND / VM+         NO SHORT ~1.5 V in diode mode, all four alike
+  header solder bridges        NONE
+  ------------------------------------- everything outside the chip is ruled out
+  ENN reset                    DONE     DIAG still high afterwards (4.2 V)
+  power-on reset (2026-09-24)  DONE     DIAG still high afterwards (5 V)
+  Adafruit 6121 / TMC2209      CONDEMNED  re-detects a fault on every enable
+  UART readback              comm=0   read fix LIVE; only the RX-side bridge
+                                      resistor is left. Move it during the swap.
 ```
+
+On **2026-09-26** the last three outside causes came back clean — no pull-up on
+`DIAG`, no output shorted to either rail, no solder bridges — and `DIAG` survived
+the `ENN` reset, having already survived a power-on reset on 2026-09-24. The
+TMC2209's short detection explains how that happens with nothing wrong outside:
+it compares the voltage across each output MOSFET while it is switched on, so a
+MOSFET or gate driver that no longer switches properly is, to the chip, a short
+— re-detected about a microsecond after every enable, whatever is connected. A
+meter from outside finds shorted MOSFETs, not weak ones. **The board is
+condemned.** See §22 of the wiring doc, which pulls the TMC2209 datasheet and the
+6121 schematic for the first time.
 
 On **2026-09-23** Ben bypassed the 10-pin ribbon and its FC-10P and wired the
 pipette straight to the driver's screw terminals. `1A`–`1B` read **4.3 Ω** and
@@ -84,159 +96,113 @@ direct wiring. §17.2's `1A`–`2A` = 0 Ω was the other half of the fault, and 
 has gone with the ribbon too. Two windings, correct resistance, properly
 isolated — **the coil-side diagnosis is closed.** What that also does is make a
 **damaged output stage the leading explanation for `DIAG`**: the ribbon
-presented a phase-to-phase short at the driver's outputs, the pot has been at
-full clockwise (~3.3 A rms full scale) since 2026-09-17, and `EN` has been at
-0 V, so the chip was enabled and chopping into that short across many sessions.
-That is a textbook way to destroy a driver. **A replacement Adafruit 6121 is
-worth ordering now regardless of how the tests below come out.** See §19.
+presented a phase-to-phase short at the driver's outputs, the pot had been at
+full clockwise since 2026-09-17, and `EN` has been at 0 V, so the chip was
+enabled and driving into that short across many sessions. That is a textbook way
+to destroy a driver. See §19.
 
-> 🔴 **Turn the VREF pot down before the driver is powered up again.** Until now
-> the load was open or shorted, so the pot could not do damage. With real ~4 Ω
-> windings attached the chopper can finally deliver what it is asking for —
-> ~3.3 A rms full scale into a motor Opentrons runs at 1.0 A peak.
+> ✅ **VREF is set: 0.586 V at the wiper (2026-09-26), ≈ 1.09 A peak.** Full
+> clockwise on this board is ~1.5 A rms / 2.2 A peak — the trimmer is fed from
+> `5VOUT` through 33 kΩ, so VREF tops out near 1.16 V, not the 2.5 V behind the
+> "~3.3 A rms" quoted here until now (§22.5a). Still twice what a P20 GEN2 wants,
+> so turning it down was right. Do not go below ~0.5 V: the datasheet calls that
+> "not recommended" for current precision (§22.4).
 
 ### What to do next
 
-> 🔑 **Changed 2026-09-24:** the GEN2 image is flashed, so the read fix is live
-> and `comm = 0` now has exactly one cause left — the 10 kΩ bridge is still on
-> the **RX** side. Moving it to `A1 —1 kΩ— NODE` (with `A0` *and* `PDN_UART`
-> directly on `NODE`) makes `DRV_STATUS` readable, and that reports
-> `open_load_a/b`, `s2ga/s2gb`, `s2vsa/s2vsb` and `ot` — **the specific bit
-> behind `DIAG` = 5 V**. That is now the highest-value bench job, ahead of the
-> meter sequence below, because it answers several of its questions at once and
-> without probing a live board.
+> 🔴 **Changed 2026-09-26: replace the driver board.** The 2026-09-24 meter
+> sequence is complete (§19.5 of the wiring doc, results in §22), and its last
+> step's condition is met: `DIAG` still high after the `ENN` reset, with the coils
+> connected and no rail short found — and it had already survived a power-on
+> reset. Keep the old board, labelled; it is a known-bad reference.
 
-> ⚠️ **Also changed 2026-09-24:** a first bench move was run and **no plunger
-> movement was seen. That is not evidence the board is broken** — an asserted
-> `DIAG` disables the output bridges by design, and the VREF pot had just been
-> turned down by an unrecorded amount, so the test had two independent reasons
-> to show nothing and was run before steps 1–8 below. **Do not re-run it until
-> they are done.** See §21 of the wiring doc.
+> ✅ **The deck is intact.** The 2026-09-24 trio was cut when the gantry
+> travelled far enough from the outlet to unplug the Pi; Ben E-stopped it above
+> vial 1 with the capper **not yet engaged**, so no cap was captured and nothing
+> was dropped (§21.8). The position reference is still gone — recover with `$H`,
+> never `$X` + a jog — and re-check `$20` before the next protocol run.
 
-> ✅ **And the deck is intact.** The trio was cut when the gantry travelled far
-> enough from the outlet to unplug the Pi; Ben E-stopped it above vial 1 with
-> the capper **not yet engaged**, so no cap was ever captured and nothing was
-> dropped. The cut landed in the only stretch of this protocol where an
-> interruption costs nothing physical (§21.8). The position reference is still
-> gone — recover with `$H`, never `$X` + a jog — and re-check `$20`.
+> ⛔ **But the trio cannot run as committed.** A read-only check on 2026-09-26
+> found the controller recalibrated since 2026-09-24 — `$130/$131/$132` now
+> 410 / 281 / 125.003 against the committed 409 / 309 / 124 — and the camera shows
+> the machine on a different bench. CubOS refuses at connect on the mismatch, and
+> the deck's jog readings are in the old frame, so the deck needs **re-jogging,
+> not converting**, before the gantry file is synced. See
+> [`../results/pipette_test_20260926/`](../results/pipette_test_20260926/README.md).
+> None of this touches the plunger work below, which needs no gantry motion.
 
-> 🔴 **Re-route the Pi's mains lead before the recovery re-home.** Step 0 of
-> every protocol drives to the far corner (409, 309), the longest travel the
-> machine makes and the extreme that reached the cable — so re-homing without
-> re-routing repeats the failure immediately. The durable fix is to give the Pi
-> its own supply, ideally a small UPS: it has shared power with the gantry since
-> 2026-09-17 and that has now cost three sessions, and because the Pi is the
-> host, losing it loses the run log, the plunger trace, the camera frames, the
-> closing `home` and `CMD_EMAG_OFF` (§21.7).
+> 🔴 **Keep the Pi's mains lead out of the gantry's reach.** Step 0 of every
+> protocol drives to the far corner (409, 309), the extreme that pulled the plug
+> on 2026-09-24. The Pi is back (2026-09-25 23:37 UTC, 5.13 V in, no
+> under-voltage since boot), but whether the lead has been re-routed is not
+> recorded. The durable fix is a supply of its own, ideally a small UPS (§21.7).
 
+**Optional, before binning the old board** — neither changes the action (§22.7):
 
-The plunger cannot turn while `DIAG` is asserted — the output stage is latched
-off — so the first-movement test waits on the sequence below. Steps 1–4 come
-before power for a reason, and step 10 has already been attempted early and
-wasted: it is the last step, not a shortcut.
+- **Holding torque.** Board powered, `EN` low, nothing commanded: gently push the
+  plunger. Moves freely, as on 2026-09-17 ⇒ neither bridge is driving ⇒ bin it.
+  Resists ⇒ say so before binning it.
+- **Let the chip name its fault.** Do step 2 below first, then read `CMD 29`:
+  `s2ga`/`s2gb`/`s2vsa`/`s2vsb`/`ot` name the failed bridge. It also proves the
+  readback path on a board known to have flags, before the new board's "no
+  flags" is trusted.
 
-1. **Look** before probing: with the ribbon gone, four bare leads run from the
-   screw terminals to the pipette. **Is one resting against the metal body?**
-   If the body is tied to supply ground that is a coil-to-ground short, which
-   is a `DIAG` condition and one the ribbon's insulation used to prevent.
-2. **Power off — is `DIAG` even driven?** Measure resistance from `DIAG` to the
-   5 V / `VCC_IO` pin. A few kΩ to tens of kΩ means a pull-up and every `DIAG`
-   reading in this record needs re-reading; open means the chip really is
-   driving it. Thirty seconds, never done (§19.3e).
-3. **Power off — the short type never measured.** Each of `1A`, `1B`, `2A`,
-   `2B` against `GND` and against `VM+`. `s2ga`/`s2gb` (short to ground) and
-   `s2vsa`/`s2vsb` (short to supply) are separate protections from a
-   phase-to-phase bridge, and only phase-to-phase has ever been checked.
-   ⚠️ Body diodes conduct in one polarity, so expect a reading either way — use
-   **diode-test mode** and look for ≈ 0.00 V, not a normal 0.3–0.7 V drop (§19.3c).
-4. 🔴 **Wind the VREF pot fully counter-clockwise** and find the trimmer's wiper
-   while the power is off. The wiper is the terminal whose resistance to `GND`
-   *changes* as you turn the pot (§19.4 step 1).
-5. **Cut both rails together** — the 12 V *and* the Arduino's USB — wait ten
-   seconds, let the chip cool, restore. Cutting only `VM` leaves the digital
-   side powered from USB (§19.3b). While it is powered, **touch the chip**:
-   too hot to hold a finger on at standstill is an overtemperature cause for
-   `DIAG` in its own right (§19.3d).
-6. **Measure `VREF`** at the wiper, DC volts, black probe on `GND`, 12 V on,
-   turning the pot up from minimum. 🔑 **This is a verdict, not just a setting:**
-   `VREF` ≈ 0 V at full clockwise means the chip's internal `5VOUT` regulator
-   is dead — **replace the board and stop here.** A reading that rises toward
-   ~2.5 V means the regulator is alive and `DIAG` is a fault in the output
-   stage. Target for running is **≈ 0.55 V for ~1.0 A peak** (§19.4).
-   🔑 **This got more load-bearing on 2026-09-24:** the pot has since been turned
-   down by an unrecorded amount, and a healthy chip at VREF ≈ 0 V is
-   indistinguishable on the bench from a destroyed one — which is half of why the
-   first bench move proved nothing (§21.2). Note also that `DIAG` reads 5 V at
-   *both* ends of the pot's range, so turning it back up will not clear the
-   error (§21.3).
-7. 🔑 **Toggle `ENN` high, then low** — this is the datasheet's documented reset
-   for a driver error, and **a power cycle is not it.** `EN` is driven LOW
-   continuously by the Arduino on A4, so if the Arduino stayed up across the
-   12 V cycle the enable input never went high. Lift the wire off A4, jumper it
-   to 5 V for a second, remove the jumper (the 20 kΩ pull-down re-enables).
-   Re-read `DIAG` (§19.3a).
-8. **If `DIAG` is still 5 V** after all of that, with the coils connected and no
-   rail short found — **replace the driver board.**
-9. **Reconnect the limit switch** — pins **6** and **7** rode the same ribbon.
-   Left unconnected, D9 idles HIGH through its pull-up, the firmware reads the
-   switch as *asserted*, every retraction is refused in ~0.107 s and `HOME`
-   fake-succeeds in ~0.52 s. That is the pre-2026-09-18 signature and it would
-   look like a regression. Check with
-   [`../tools/pipette_driver_probe.py`](../tools/pipette_driver_probe.py)
-   `--switch`; `pipette_driver_measure.py` also refuses to run while it reads
-   asserted, so the refusal is itself the answer.
-10. 🔑 **Run a bounded bench move** —
+**Bringing up the replacement** (§22.8):
+
+1. **Power off** — the 12 V *and* the Arduino's USB — whenever a motor or supply
+   wire is touched. Same header wiring; same terminal colours (`1A` red, `1B`
+   blue, `2A` green, `2B` black). Fit the 1515 heat sink now.
+2. **Move the bridge resistor to the TX side**: `A1 —R— NODE`, with `A0` and
+   `PDN_UART` directly on `NODE`. 1 kΩ is the library's recommendation; the
+   10 kΩ already fitted works at 9600 baud. The GEN2 firmware carries the read
+   fix, so `CMD 29` then reads the new chip from its first power-up.
+3. **Strain-relieve the four bare motor leads.** A lead pulling out of its
+   terminal under current is the textbook way to kill a stepper driver.
+4. **First power-up with `EN` jumpered to 5 V**, so no coil current flows
+   whatever the new trimmer is set to. Bring the 12 V up by switching the supply
+   on, not by pushing a live lead into the terminal — the datasheet wants `VS`
+   slopes below 1 V/µs or the charge-pump capacitor can pass destructive
+   currents.
+5. **Set VREF to 0.55–0.59 V** at the new trimmer's wiper.
+6. 🔑 **Go/no-go: `DIAG` ≈ 0 V with `EN` at 5 V, and still ≈ 0 V after `EN` goes
+   low.** The old board never passed this. 🔴 If `DIAG` jumps high the moment
+   `EN` goes low, **power off and stop** — something external is tripping the
+   new chip, and re-enabling into it is how the first one probably died.
+7. **Holding torque** with `EN` low and nothing commanded — it should now resist.
+8. **First motion: 1 mm down and back.** From the Pi,
    [`../tools/pipette_driver_measure.py`](../tools/pipette_driver_measure.py)
-   `--move`, 6 mm out and 6 mm back, no gantry motion. ⚠️ **This was attempted
-   on 2026-09-24 and showed nothing, which was predicted and is not a verdict
-   (§21.1). It is the last step for a reason — it only means something once
-   1–9 are done.** When it is time, do not just watch the shaft:
-   - 🔑 **`INDEX` on a meter during a driven leg.** It pulses as the chip's
-     microstep counter advances, upstream of the output bridges. **Changing ⇒
-     conclusive: the chip is alive and the fault is confined to the output
-     stage.** Dead flat ⇒ **ambiguous**, since a latched error may halt the
-     counter too — do not read it as a death sentence (§21.4). `INDEX` at
-     *rest* carries no information at all.
-   - **Holding torque with nothing commanded** — free, and a better detector
-     than watching for motion. The last reading was *"moves freely"* on
-     2026-09-17, before the ribbon came out and before the pot was touched, so
-     it is stale. Turn the pot up a little first, or it inherits §21.2's
-     ambiguity (§21.5).
-   - the yellow `S` LED changing, which confirms `STEP` reaching the board.
-   - **Measure the 6 mm with a ruler** — `setMicrostepsPerStep(16)` has never
-     landed, so MS1/MS2 decide at 1/8 and a commanded millimetre may travel
-     two. Fit the 1515 heat sink first.
-11. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
+   `--move`; or from any laptop's Arduino Serial Monitor at 115200 baud with
+   Newline endings, `16,1,1592,400` then `16,0,1592,400` — no CubOS, no Pi, no
+   gantry (§22.9). Then 10 mm against a ruler: standalone `MS1`/`MS2` give 1/8
+   stepping where the firmware assumes 1/16, so if the UART writes are not
+   landing, a commanded millimetre travels two.
+9. **Watch which way `HOME` seeks.** Direct wiring may have reversed a pair, and
    `homePipette()` seeks with `DIR` LOW. If the tip ejector starts to engage,
    the direction is inverted — swap the two wires of one pair.
-12. **Rebuild or repair the harness before the pipette goes back on the gantry.**
-   The ribbon was also the flexible tether. Solid wire into screw terminals will
-   not survive gantry motion, and a terminal pulled out mid-run recreates exactly
-   the open circuit that cost the last three weeks.
+10. **Rebuild or repair the harness before the pipette goes back on the
+   gantry.** The ribbon was also the flexible tether. Solid wire into screw
+   terminals will not survive gantry motion, and a terminal pulled out mid-run
+   recreates exactly the open circuit that cost the last three weeks.
 
-**Retired:** the terminal-block swap that §16.3 led with (§17.1); the
-localisation sequence of §17.5, which the substitution answered first; and
-§18.4's "power-cycle `VM` then read `DIAG`" as a *sufficient* test — it is
-necessary but the documented reset is `ENN` (§19.3a).
+**Retired:** the terminal-block swap that §16.3 led with (§17.1); §17.5's
+localisation sequence, which the substitution answered first; the whole
+2026-09-24 meter sequence, now complete (§22.1); "cut both rails together",
+because `VCC_IO` does not power the chip's logic and a `VM` cycle is a full reset
+(§22.5c); `INDEX` during a driven leg, superseded by the verdict; and
+reconnecting the limit switch, which reads clear on the direct wiring (§20.3).
 
-### Two things queued behind the first real movement
+### Queued behind the first real movement
 
-- 🔴 **Flash the P20 GEN2 image before any `aspirate` — this is now blocking,
-  not queued.** The board runs the 2026-09-15 image, proven by
-  `avrdude -U flash:v:` against all three candidates. `MOVE_TO` is absolute, so
-  `blowout` and `drop_tip` land where CubOS asks; **`aspirate` is computed inside
-  the firmware** and drives down to `PRIME_POSITION` first. The running image
-  carries the P300-derived **36.0**; a P20 GEN2's bottom is **28.0**. That cost
-  nothing while the plunger was silent — with a turning motor it drives the
-  plunger 8 mm past its mechanical bottom on every call. Flashing
-  [`../firmware/panda_vcl_p20gen2_20260917.hex`](../firmware/panda_vcl_p20gen2_20260917.hex)
-  closes it and carries `tmc2209-softwareserial-read.patch`, without which
-  `DRV_STATUS` — and with it the specific cause behind `DIAG` — cannot be read at
-  all. ⚠️ It does **not** lower the run current until UART works; only the pot
-  does (§16.7).
-- **Check the first successful move against a ruler**, as in step 5 above. The
+- ✅ **The P20 GEN2 image is flashed and verified** (2026-09-24, §20.1), so
+  `aspirate` descends to the P20's 28.0 rather than the P300's 36.0. Whether its
+  `RUN_CURRENT_PERCENT 20` or the trimmer sets the coil current depends on
+  whether the boot-time UART writes reach a powered chip; with VREF at 0.586 V
+  the two agree, so it does not matter (§22.5b).
+- **Check the first successful move against a ruler**, as in step 8 above. The
   firmware already contradicts itself about this: `STEPS_PER_MM 1592.0` against
   a homing back-off commented `796; // this is equal to 1mm`.
+- **`UL_TO_MM` 1.34 is Opentrons' nominal figure**, not a calibration of this
+  unit — a gravimetric check once liquid actually moves.
 
 ## What is in this PR
 
@@ -302,3 +268,12 @@ GRBL board resets when the port opens and comes up in `Alarm`.
   closing `home` and `CMD_EMAG_OFF` are commands *from* it. A gantry that can
   reach the Pi's mains lead is therefore a data-integrity and machine-state
   problem, not just an interrupted run (§21.7).
+- **A clean short test from outside does not clear a driver.** The TMC2209
+  detects a short by the voltage across a MOSFET it has switched on, so a MOSFET
+  or gate driver that no longer switches properly *is* a short as far as the chip
+  is concerned — re-detected a microsecond after every enable, whatever is
+  connected. A meter finds shorted MOSFETs, not weak ones (§22.2).
+- **Read the schematic and the datasheet before quoting a limit.** "~3.3 A rms
+  full scale" was repeated for a week on the assumption that the trimmer could
+  reach 2.5 V; the 6121 feeds it through 33 kΩ and it tops out near 1.16 V
+  (§22.5a). Both documents were a download away the whole time.

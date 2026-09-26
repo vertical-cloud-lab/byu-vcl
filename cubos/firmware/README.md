@@ -143,15 +143,20 @@ library, not as a percentage *of* it — so the two rows have to be chosen
 together. ⚠️ **Fit the Adafruit 1515 heat sink before running at this
 current.**
 
-🔴 **None of this table is in force yet, and flashing does not put it in force.**
-`RUN_CURRENT_PERCENT` reaches the chip through `setRunCurrent()`, which is a
-UART register write, and `comm = 0` means no register write has ever been
-confirmed to land. `i_scale_analog` is therefore still at its power-on default
-of 1, so **the board's VREF trimmer is the only thing setting coil current** —
-and as of 2026-09-21 it is fully clockwise, i.e. ~3.3 A rms full scale. Until
-the UART path works (the vendored patch below **and** the bridge resistor moved
-to the TX side), the way to reduce the current is to **turn the pot down**:
-≈ 0.55 V at the wiper gives ~1.0 A peak. See §16.7 of
+⚠️ **Whether this table is in force depends on power-up order, and cannot be
+read back yet.** `RUN_CURRENT_PERCENT` reaches the chip through
+`setRunCurrent()`, a UART *write*. `UART` runs straight from A1 to `PDN_UART`,
+writes need no reply, and SoftwareSerial's 9600 baud clears the datasheet's
+9000 minimum — so whenever the Arduino boots with the 12 V already up (including
+every time a host opens the port, which resets it), `setOperationModeToSerial()`
+very probably lands, takes the VREF trimmer out of circuit, and this table
+governs. If the Arduino boots before the 12 V, the writes reach an unpowered chip
+and the trimmer governs until the next reset. So **keep the two matched**: VREF
+at 0.55–0.59 V on the wiper gives 1.02–1.09 A peak, the same as the 20 row; it
+has been at 0.586 V since 2026-09-26. Full clockwise on the Adafruit 6121 is
+~1.5 A rms / 2.2 A peak — its 10 kΩ trimmer is fed from `5VOUT` through 33 kΩ —
+not the ~3.3 A rms stated here until 2026-09-26. `IFCNT` will settle the
+question once the bridge resistor is on the TX side. See §22.4–22.5 of
 [`../docs/opentrons-pipette-wiring.md`](../docs/opentrons-pipette-wiring.md).
 
 ### The TMC2209 library is now vendored and patched

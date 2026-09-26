@@ -36,6 +36,8 @@ Everything below is read out of source, not inferred from behaviour. Sources:
 | **which physical hole is pin 1** | [`science-jubilee` `tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf`](https://github.com/machineagency/science-jubilee/blob/main/tool_library/OT2_pipette/assembly_docs/OT2_Wiring_Diagram.pdf) — a photograph of the pipette's own header with each wire on its hole |
 | ribbon conductor numbering | [`_static/ribbon_to_hookup_wiring.png`](https://github.com/machineagency/science-jubilee/blob/main/docs/building/_static/ribbon_to_hookup_wiring.png) |
 | breakout | [Adafruit 6121](https://www.adafruit.com/product/6121) — motor supply 5–29 VDC, VDD 3–5 V, **current set by an onboard potentiometer** |
+| breakout schematic | [`adafruit/Adafruit-TMC2209-Breakout-PCB`](https://github.com/adafruit/Adafruit-TMC2209-Breakout-PCB) — Eagle `.sch`; read directly from 2026-09-26 (§22) |
+| driver datasheet | [TMC2209 rev 1.09](https://github.com/janelia-arduino/TMC2209/blob/main/datasheet/TMC2209_datasheet_rev1.09.pdf) (janelia mirror of Analog Devices' PDF) — `DIAG` logic §15.4, short detection §15.2 and §20.2 |
 
 Cubware's own text flags the whole page as provisional: *"the OT2 pipette hardware
 path has not yet been validated on the physical machine in this checkout. Treat
@@ -1123,6 +1125,13 @@ caveats for once there *is* torque:
 
 ⚠️ Fit the Adafruit 1515 heat sink before running at any of these currents.
 
+> ⚠️ **Corrected 2026-09-26 (§22.5a, §22.5b).** Full scale is not ~3.3 A rms:
+> the 6121's 10 kΩ trimmer is fed from `5VOUT` through 33 kΩ, so VREF tops out
+> near 1.16 V — ~1.5 A rms / 2.2 A peak, Adafruit's "up to 2A". And "the pot is
+> the only thing setting coil current" holds only if the firmware's UART writes
+> have not landed, which was never shown; they very probably land whenever the
+> Arduino boots with the 12 V up.
+
 ### 11.4 How to measure `VM` — the one measurement that settles it
 
 Any multimeter, DC volts (`V⎓`), 20 V range or autoranging. The driver and the
@@ -1732,6 +1741,12 @@ matter:
 4. **Do not do 3 before 1.** Powering a suspect driver back into an open load is
    how the replacement gets destroyed too.
 
+> ⚠️ **Corrected 2026-09-26 (§22.5d).** The open-load mechanism above does not
+> hold: with no coil connected no current flows, so there is no flyback energy,
+> and the datasheet treats open load as informational only. The phase-to-phase
+> short found next (§17.2) is the mechanism. The ~3.3 A rms figure is also wrong
+> (§22.5a).
+
 ### 16.7 🔴 CORRECTION: flashing the P20 GEN2 image does *not* lower the run current
 
 This has been stated as a benefit of the flash in the firmware README, in
@@ -1755,6 +1770,13 @@ The flash is still worth doing, for the two reasons it was always worth doing:
 the firmware's `aspirate` constants are still P300-derived (§13.3), and it
 carries `tmc2209-softwareserial-read.patch` without which `DRV_STATUS` — and
 with it the specific `DIAG` cause — cannot be read at all.
+
+> ⚠️ **This correction is itself corrected, 2026-09-26 (§22.5b).** It assumed no
+> UART write had ever landed, which `comm = 0` cannot show (§10.1). `UART` runs
+> straight from A1 to `PDN_UART`, so whenever the Arduino boots with the 12 V up
+> the writes very probably land and `RUN_CURRENT_PERCENT` governs. With VREF now
+> at 0.586 V (1.09 A peak) against `RUN_CURRENT_PERCENT 20` (1.02 A peak), the
+> two agree and it no longer matters which is in force.
 
 ### 16.8 `INDEX` = 0 V, and what it is still missing
 
@@ -2284,6 +2306,11 @@ Two rails feed this chip: `VM` (12 V, to the screw terminals) and `VCC_IO`
 powered from USB. **Cut both together** — unplug the Arduino's USB *and* the
 12 V, wait ten seconds, restore. Combined with (a), this is the most likely
 reason a genuine latch would have survived.
+
+> ⚠️ **Retired 2026-09-26 (§22.5c).** The datasheet says `VCC_IO` *"does not
+> supply IC logic part"* — the logic runs from `5VOUT`, which comes from `VM`,
+> and the chip is held in reset below about 3.5 V on `5VOUT`. Cutting `VM` alone
+> is a full reset, so the 2026-09-24 power cycle counted.
 
 #### (c) 🔑 A short type never measured: output to ground, output to supply
 
@@ -2835,3 +2862,314 @@ Recovery, in order:
 | VREF at the wiper | ❓ **now doubly load-bearing (§19.4, §21.2)** |
 | `INDEX` during a driven leg | ❓ decisive if it changes, ambiguous if not (§21.4) |
 | holding torque, post-repair | ❓ last taken before the ribbon came out (§21.5) |
+
+---
+
+## 22. 2026-09-26: `DIAG` survives the `ENN` reset — the driver board is the fault
+
+Reported by Ben, on the direct wiring of §18:
+
+```
+VREF               turned down to 0.586 V, measured at the trimmer wiper
+DIAG - VDD         0.5 MOhm, unpowered
+coil terminals     ~1.5 V in diode mode, each of 1A/1B/2A/2B to GND and to VM+
+solder bridges     none -- resistance checked between every header pin
+EN -> 5 V -> GND   DIAG still 4.2 V afterwards
+```
+
+> **Verdict: replace the Adafruit 6121.** Every cause of `DIAG` that lives
+> outside the chip has now been measured and excluded, and the error has
+> survived both of the chip's resets — the power-on reset of 2026-09-24 (§19)
+> and the `ENN` reset of §19.3a — with a clean load attached. What is left is
+> inside the board.
+
+Two primary sources were pulled for this section and are cited throughout, so
+the reasoning no longer rests on the pinout page alone: the **TMC2209 datasheet
+rev 1.09** ([janelia-arduino mirror][tmc2209-ds]; analog.com was unreachable
+from the runner) and the **Adafruit 6121 Eagle schematic**
+([adafruit/Adafruit-TMC2209-Breakout-PCB][ada-6121-pcb]).
+
+[tmc2209-ds]: https://github.com/janelia-arduino/TMC2209/blob/main/datasheet/TMC2209_datasheet_rev1.09.pdf
+[ada-6121-pcb]: https://github.com/adafruit/Adafruit-TMC2209-Breakout-PCB
+
+### 22.1 What each reading settles
+
+| reading | criterion set in advance | verdict |
+| --- | --- | --- |
+| VREF = 0.586 V | non-zero ⇒ the chip's internal `5VOUT` regulator is alive (§19.4 step 4) | ✅ **alive** — the chip's internal regulator is running (§22.7 on checking it is at a full 5 V). It is also a good setting (§22.4) |
+| `DIAG` → `VDD` = 0.5 MΩ | tens of kΩ ⇒ a pull-up; MΩ ⇒ the chip drives the pin (§19.3e) | ✅ **no pull-up.** The schematic agrees: the `DIAG` net is the chip's pin 11 and header pin 7 and nothing else. 0.5 MΩ is leakage through the unpowered chip's input protection — ten to a hundred times too high for a pull-up |
+| each coil terminal → `GND` and → `VM+`, ~1.5 V in diode mode | ≈ 0.00 V ⇒ a shorted output (§19.3c) | ✅ **no output shorted to either rail**, and all four terminals behave alike (§22.7 on why ~1.5 V rather than ~0.5 V) |
+| no solder bridges between header pins | — | ✅ |
+| `EN` → 5 V → `GND`, then `DIAG` = 4.2 V | still high after the documented reset ⇒ replace (§19.5 step 7) | 🔴 **survives** |
+
+Together with the windings (4.3 Ω / 3.7 Ω, §18.1), the cross pairs (MΩ, §19.1),
+`EN` = 0 V (§16.1), `VM` = 13 V (§12) and the two pot settings (§21.3), that is
+every external cause the datasheet gives for `DIAG`. None is present.
+
+### 22.2 How `DIAG` stays high with nothing wrong outside the board
+
+Datasheet §15.4, figure 15.1, is what drives the pin:
+
+```
+DIAG  =  drv_err  OR  uv_cp  OR  stall
+           |            |          `- StallGuard; needs TCOOLTHRS > 0 and SGTHRS > 0,
+           |            |             both 0 at reset and never set by this firmware
+           |            `- charge-pump undervoltage. NOT latched -- ENN cannot clear it
+           `- SR latch. SET by a short (s2g, s2vs) or overtemperature (ot);
+              RESET by "power stage disable (e.g. pin ENN)", and by power-on reset
+```
+
+So the `ENN` toggle cleared `drv_err`, and the 2026-09-24 power cycle cleared
+everything. A `DIAG` that is high again the moment the driver is enabled means
+the chip is **re-detecting** a short or overtemperature within microseconds of
+enable, or reporting **charge-pump undervoltage**.
+
+How the short detection works is the whole explanation. It does not measure
+current directly; it checks the voltage across each output MOSFET while that
+MOSFET is switched on (datasheet §20.2):
+
+| flag | trips when | threshold | delay |
+| --- | --- | --- | --- |
+| `s2g` | high side on, output still more than this far below `VS` | 2.0 / **2.5** / 3.0 V | 0.8 / **1.3** / 2 µs |
+| `s2vs` | low side on, output still more than this far above `GND` | 1.6 / **2.0** / 2.3 V | |
+
+A MOSFET that no longer switches the output properly — a damaged die, a fused
+bond wire, a gate driver that can no longer drive it, or a charge pump that can
+no longer lift the high-side gates (which is also `uv_cp`) — produces exactly
+that voltage. **To the chip it is indistinguishable from a short.** It is
+re-detected about a microsecond after every enable, whatever is connected, and
+no reset clears it, because the fault is the output stage itself. A diode test
+from outside cannot see any of this: it finds *shorted* MOSFETs, not weak or
+open ones. That is how §22.1's clean readings and a persistent `DIAG` are both
+true at once.
+
+`ot` is not a credible alternative at power-up — the die is not at 120–143 °C
+seconds after switch-on, and §15.1 has `ot` release once it cools below the
+pre-warning level.
+
+### 22.3 How it got that way
+
+§19.2 laid out the mechanism; the datasheet adds the scale. With 170 mΩ high-side
+MOSFETs (typ., datasheet front page), the 2.5 V `s2g` threshold is not reached
+until roughly **15 A — about five times the chip's 2.8 A peak rating** — and
+the detector *"retr[ies] three times before switching off the motor"* (§15.2)
+so that ESD does not trip it. The ribbon's `1A`–`2A` short (§17.2) put the chip
+through that on every enable while the ribbon was in place — and, if the firmware's UART writes
+land (§22.5b), on every Arduino boot as well, because the janelia library's
+`initialize()` writes `toff = 0` and `setupMotor()` writes it back, which is the
+software form of the same disable/re-enable. The datasheet's own caveat:
+*"short protection cannot protect the system and the power stages for all
+possible short events."*
+
+### 22.4 VREF 0.586 V, and what it means for current
+
+The standalone formula (datasheet §9), with the 6121's 0.05 Ω sense resistors:
+
+```
+I_rms = 325 mV / (R_sense + 20 mOhm) / sqrt(2) * VREF / 2.5 V  =  3.283 A * VREF / 2.5 V
+
+VREF 0.586 V  ->  0.77 A rms = 1.09 A peak     ~9% over the P20 GEN2's plungerCurrent 1.0 A
+VREF 0.55  V  ->  0.72 A rms = 1.02 A peak     §11.3's target, = RUN_CURRENT_PERCENT 20
+```
+
+Leave it there or trim it to 0.55 V — **but do not go lower.** The datasheet
+advises against VREF below about 0.5 V (*"<0.5V: not recommended"*, §9)
+because analogue noise then dominates the chopper's current reference. So the
+"wind it well below that for a first test" of §16.7 and §18.3 was poor advice:
+~0.55 V is the floor, not a ceiling to start under.
+
+### 22.5 🔴 Four corrections
+
+**(a) Full scale on this board is ~1.5 A rms, not ~3.3 A rms.** §11.3 assumed
+the trimmer could put 2.5 V on `VREF`, and every section since has repeated the
+3.3 A. The schematic shows it cannot: `VR1` is a **10 kΩ** trimmer whose top end
+is fed from `5VOUT` through **`R4` = 33 kΩ**, so
+
+```
+VREF_max = 5.0 V * 10k / (33k + 10k) = 1.16 V   ->   1.53 A rms = 2.16 A peak
+```
+
+— which is Adafruit's own *"up to 2A max"*. Still twice the P20 GEN2's 1.0 A, so
+turning it down was right; §19.2's mechanism overstated the current by about
+2×, not the conclusion. 0.586 V is about halfway round the trimmer.
+
+**(b) "The pot is the only thing setting coil current" was never established.**
+§10.1 retracted the evidence for it — `comm = 0` says nothing about *writes* —
+and §11.3, §16.6, §16.7, §19.2 and §21.2 then asserted it anyway. What is
+actually known: `UART` runs straight from A1 to `PDN_UART` with no resistor in
+that leg (§10.1); SoftwareSerial runs at 9600 baud against the datasheet's 9000
+minimum (§4.1.1); and a write needs no reply. So **whenever the Arduino boots with
+the 12 V already up** — which includes every time CubOS or a tool opens the
+port, since that resets the board — `setOperationModeToSerial()` very probably
+lands, clears `i_scale_analog` and takes the trimmer out of circuit, and
+`RUN_CURRENT_PERCENT` governs. If the Arduino boots before the 12 V, the writes
+reach an unpowered chip and the trimmer governs until the next reset. Which one
+was in force in any given session cannot be known without readback. Three
+consequences:
+
+- §16.7's "correction" — that flashing did not change the run current — rested
+  on the same assumption. If the writes land, the firmware's value has governed
+  in every session a host opened the port: 17 (0.87 A peak) from the 2026-09-15
+  image, 20 (1.02 A peak) from the 2026-09-24 GEN2 image.
+- **With VREF at 0.586 V (1.09 A peak) and `RUN_CURRENT_PERCENT 20` (1.02 A
+  peak), the two agree within 7%, so it stops mattering.** Keep them matched on
+  the replacement board.
+- Once readback works (§22.8 step 2), `IFCNT` — a counter the chip increments on
+  every successful UART write (datasheet register `0x02`) — answers it directly.
+
+**(c) §19.3b is retired: cutting only `VM` *is* a full reset.** The datasheet's
+pin table says `VCC_IO` *"does not supply IC logic part"*; the logic runs from
+the internal `5VOUT` regulator, and the chip is held in reset while `5VOUT` is
+below about 3.5 V (§20.2). So Ben's 2026-09-24 `VM` cycle was a valid reset, and today's
+`ENN` result is the *second* reset `DIAG` has survived, not the first. §19.3a's
+"the documented reset is `ENN`, not power" was too strong for the same reason.
+
+**(d) §16.6's open-load mechanism does not hold.** "Chopping into an open load
+... flyback energy has nowhere to go" — with no coil connected no current
+flows, so there is no flyback energy, and the datasheet treats open load as
+informational only (`ola`/`olb` *"do not cause any action of the driver"*,
+§15.3). The phase-to-phase short of §17.2 is the mechanism; the open coil path
+was harmless to the chip.
+
+### 22.6 The 4.2 V
+
+`DIAG` read 5 V on 2026-09-21 and 2026-09-24, and 4.2 V today. A driven-high
+output sits within 0.2 V of `VCC_IO` (datasheet §20.2: `VOUTHI` ≥ `VVIO` − 0.2 V
+at 2 mA), so the next time it is read, read `VDD` at the same moment. `VDD`
+near 4.3 V ⇒ nothing has changed. `VDD` near 5 V ⇒ the `DIAG` output itself is
+no longer healthy either. Neither rescues the board, which is why §22.7's check
+tests *function* rather than the pin.
+
+### 22.7 Confirming it, if you want it confirmed rather than inferred
+
+**Holding torque — free, thirty seconds, no meter.** Board powered (12 V and the
+Arduino), `EN` low, VREF where it is, nothing commanded: gently push the plunger.
+*Gently* — spinning the motor fast by hand makes it a generator into `VS`, which
+the datasheet warns about (§3.1).
+
+| result | meaning |
+| --- | --- |
+| **moves freely**, as on 2026-09-17 | no coil current, with a proven-good motor, proven-good wiring and a ~1 A setting ⇒ neither bridge is driving ⇒ the board is dead. This holds whatever the `DIAG` pin says |
+| **resists** | at least one bridge is driving, so `DIAG` is overstating it. Do not bin it yet; a 1 mm move is next — turning ⇒ the board works; buzzing without turning ⇒ one phase is out, which is still a dead board |
+
+(One bridge can hold while the other is off: §15.2 switches off only *"the
+corresponding driver bridge (A or B)"*.)
+
+**If you want the chip to name its fault:** move the bridge resistor to the TX
+side (§22.8 step 2 — the new board wants it anyway, and it lives on the Arduino
+side, not on the 6121), then read `CMD 29`. `s2ga`/`s2gb`/`s2vsa`/`s2vsb`/`ot`
+name the failed bridge; none of them set with `DIAG` still high points at the
+charge pump (`uv_cp` is in `GSTAT`, which `CMD 29` does not read). Doing it on
+the dead board first has a second use: a readback path that reports flags on a
+board known to have them is proven before the new board's "no flags" is trusted.
+
+Three more readings that locate the failure without the UART — none changes the
+action:
+
+- **`DIAG` while `EN` is held at 5 V.** The `drv_err` latch is held in reset
+  while the driver is disabled, so a `DIAG` that drops to ~0 V with `EN` high and
+  returns the instant `EN` goes low is the output stage failing its own short
+  check on every enable. One that stays high while disabled points at `uv_cp` or
+  at the pin itself. ⚠️ The datasheet does not say whether the charge pump runs
+  while `ENN` is high, so take the same reading on the **new** board as the
+  baseline before interpreting the old one.
+- **The diode test with the probes reversed, motor wires lifted.** The ~1.5 V of
+  §22.1 is most likely what the natural probe habit gives — black on `GND` for the `GND`
+  check, red on `VM+` for the `VM+` check — because that reverse-biases each
+  output MOSFET's body diode and the meter's current goes the long way round,
+  through the chip's supply side and the 22 µF on `VM`. Reversed (red on each
+  terminal with black on `VM+`; black on each terminal with red on `GND`), each
+  body diode is forward-biased directly: expect ~0.4–0.6 V on all eight. A
+  terminal reading open or far higher has lost a MOSFET. Lift the four motor
+  wires first — with a 4 Ω winding across `1A`–`1B`, the partner terminal's
+  diode would mask a dead one.
+- **`5VOUT`'s actual voltage, read off the trimmer.** VREF adjusting proves
+  `5VOUT` is up, not that it is at 5 V. The trimmer's top terminal — the one that
+  is neither `GND` nor the wiper — sits at `5VOUT × 10k / 43k`, so ~1.16 V means
+  `5VOUT` ≈ 5 V. Well under 1 V means `5VOUT` is sagging, and the charge pump
+  runs from it (`VCP − VS` ≈ `5VOUT` − 0.22 V against a 3.6 V undervoltage
+  threshold, §20.2) — which would be `uv_cp`. 12 V on, DC volts, black on
+  `GND`: the same probe points as §19.4.
+
+### 22.8 Bringing up the replacement without repeating this
+
+1. **Power off** — 12 V *and* the Arduino's USB — and keep it off whenever a
+   motor or supply wire is touched. Swap the board: same header wiring, same
+   terminal colours (`1A` red, `1B` blue, `2A` green, `2B` black), 12 V on the
+   motor-supply block. Fit the 1515 heat sink now.
+2. **While the header is off, move the bridge resistor to the TX side**:
+   `A1 —R— NODE`, with `A0` and `PDN_UART` directly on `NODE` (§10.1). 1 kΩ is
+   the library's recommendation; the 10 kΩ already fitted also works at
+   9600 baud. The GEN2 firmware carries the read fix (§20.2), so `CMD 29` then
+   reads the new chip's status from its first power-up — the one command that
+   would have named this fault.
+3. **Strain-relieve the four bare motor leads.** A lead that pulls out of its
+   terminal while current flows is the textbook way to kill a stepper driver, and
+   the ribbon used to prevent it.
+4. **First power-up with `EN` jumpered to 5 V**, so no coil current flows
+   whatever the new trimmer is set to (full clockwise ≈ 2.2 A peak, §22.5a).
+   Bring the 12 V up by switching the supply on, not by pushing a live 12 V lead
+   into the terminal: the datasheet wants `VS` slopes below 1 V/µs, *"failure to
+   do so could result in destructive currents via the charge pump capacitor"*
+   (§3.1).
+5. **Set VREF to 0.55–0.59 V** at the new trimmer's wiper (§22.4).
+6. **The go/no-go: `DIAG` ≈ 0 V with `EN` at 5 V, and still ≈ 0 V after `EN`
+   moves to `GND` or back to A4.** This board never passed it. 🔴 If `DIAG` jumps
+   high the moment `EN` goes low, **power off and stop** — something external is
+   tripping the new chip, and enabling into it over and over is how the first
+   one probably died.
+7. **Holding torque** with `EN` low and nothing commanded — it should now
+   resist.
+8. **First motion:** 1 mm down and back (§22.9), then 10 mm against a ruler.
+   Standalone `MS1`/`MS2` give 1/8 stepping and the firmware assumes 1/16
+   (`STEPS_PER_MM 1592`), so if the UART writes are not landing the plunger
+   travels twice what was commanded (§7).
+
+### 22.9 The first motion test needs neither CubOS nor the Pi
+
+`pipette_driver_probe.py` needs only Python and `pyserial`, and the firmware's
+protocol is one line of text per command. From any laptop with the Arduino on
+USB — the Arduino IDE's Serial Monitor is enough, at **115200 baud** with
+**Newline** line endings:
+
+```
+14              STATUS
+16,1,1592,400   CMD_MOVE_RELATIVE: advance (down), 1592 steps at 400 steps/s, ~4 s
+16,0,1592,400   ...and back up -- the direction gated by the limit switch (§20.4)
+```
+
+1592 steps is 1 mm at the firmware's assumed 1/16 stepping. Opening the port
+resets the Arduino and drops the capper's electromagnet, so do it with no cap
+held. Nothing here reaches the gantry, which is on the other serial port. From
+the Pi, `pipette_driver_measure.py --move` does the same as a bounded,
+timestamped ±6 mm window (§20.5).
+
+### 22.10 On swapping in the P300, or checking the P20 on the OT-2
+
+Both were suggested on 2026-09-25. The P300 on this driver would be silent for
+the same reason and teach nothing; after the swap it becomes a useful
+cross-check. Checking the P20 on the OT-2 would confirm its mechanics
+independently, but electrically it has already passed — 4.3 Ω / 3.7 Ω windings,
+isolated from each other (§18.1, §19.1). The driver is the part to change.
+
+### 22.11 Status
+
+| | |
+| --- | --- |
+| Arduino STEP/DIR output | ✅ proven (§6), LEDs corroborate (§14.1) |
+| `VM` at the driver | ✅ 13 V (§12) |
+| `EN` at the driver pin | ✅ 0 V (§16.1) |
+| coil windings / isolation | ✅ 4.3 Ω / 3.7 Ω, MΩ (§18.1, §19.1) |
+| outputs to `GND` / `VM+` | ✅ **no short, all four alike (§22.1)** |
+| `DIAG` pull-up | ✅ **none — the schematic and the 0.5 MΩ agree (§22.1)** |
+| TMC2209 `5VOUT` regulator | ✅ **alive — VREF adjusts (§22.1)** |
+| VREF | ✅ **0.586 V ≈ 1.09 A peak, matched to `RUN_CURRENT_PERCENT 20` (§22.4)** |
+| limit switch / D9 | ✅ clear on the direct wiring (§20.3) |
+| firmware `aspirate` planes | ✅ GEN2 image flashed and verified (§20.1) |
+| the Pi | ✅ **back on the tailnet 2026-09-25 23:37 UTC — `EXT5V` 5.13 V, `throttled=0x0`, both USB devices enumerated** |
+| the ribbon harness | 🔴 condemned — it carried both faults |
+| **the Adafruit 6121 driver board** | 🔴 **condemned — `DIAG` survives a power-on reset and an `ENN` reset with a clean load (§22.2)** |
+| TMC2209 UART readback | 🔴 `comm = 0` — the RX-side bridge; move it during the swap (§22.8 step 2) |
+| holding torque | ❓ optional confirmation on the old board (§22.7); the go/no-go on the new one (§22.8) |
+| the Pi's power lead | ⚠️ not recorded whether it has been re-routed out of the gantry's reach (§21.7) |
+| the gantry frame | ⛔ recalibrated since 2026-09-24 (410 / 281 / 125.003) and apparently on a new bench — the deck needs re-jogging before any protocol run ([`results/pipette_test_20260926/`](../results/pipette_test_20260926/README.md)). The plunger bench work of §22.8–22.9 needs no gantry motion |
