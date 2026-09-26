@@ -1,187 +1,187 @@
-"""CB154, roughly: the room shell from BYU Facilities Planning's plan (cb154.pdf and the
-annotated copy, 1" = 25'-0"), with the equipment placed where the lab's photos and threads put it.
+"""CB154, roughly: the room shell and what is in it, in compass coordinates.
 
-Frame: the plan as printed (north is to the page's left). x runs left to right across the page,
-y runs up the page, both from the inside corner at the page's bottom left; z is up from the floor.
-Room 154 is 25.78 x 31.38 ft (7.858 x 9.565 m) inside, as dimensioned on the annotated plan. Door,
-pillar and inner-room positions were read off the plan at ~27.7 mm/px and are good to +-0.1 m.
-The usable ceiling is ~103 in (2.62 m, #7). Placements marked PLACED below are where the
-equipment is (photos or threads); GUESS marks a plausible spot that nobody has confirmed.
+Frame (the one in sources/cb154_room.json): origin at the inside south-west corner at floor level,
++x east along the long walls (0 -> 9601 mm), +y north (0 -> 7874 mm), +z up. The plan's north arrow
+points to the page's left, so on cb154.pdf page-top is east.
+
+Sources, cross-checked in sources/cb154_room.json:
+  - BYU Facilities Planning's plan (cb154.pdf, 1" = 25'-0", and the annotated copy: 25.78 x 31.38 ft);
+  - Gage's tape-measured sketch in #7 (310 x 378 in), which is used for the size;
+  - the #229 render and photos (counters, spot D), #31 (outlets, clean room), and room photos.
+Each placement below says how sure it is. The usable ceiling is 103 in (2616 mm) to the ducts.
 """
 from __future__ import annotations
 
 import cadquery as cq
 
-from common import Model, box, cyl, rbox
+from common import Model, box, rbox
 
-W, D, H = 7858.0, 9565.0, 2620.0     # room 154, inside
-T = 150.0                            # wall thickness (assumed)
+W, D, H = 9601.0, 7874.0, 2616.0     # inside, x (E-W) by y (N-S), to the lowest ducts
+T = 190.0                            # 8 in concrete block
+COUNTER_H = 910.0
 
-# (wall, start, end) of each opening, mm along the wall from the page-left / page-bottom corner
+# doors: (wall, centre along the wall, width, head height)
 DOORS = {
-    "entrance": ("bottom", 3000.0, 4180.0),    # 3.86 ft leaf, swings in
-    "154-1": ("left", 4950.0, 5850.0),         # locked (#229)
-    "154-2": ("top", 6000.0, 6950.0),
-    "to 154A": ("right", 5100.0, 6000.0),
+    "entrance": ("W", 4060.0, 1150.0, 2080.0),      # from corridor 101, swings in
+    "154-2": ("E", 1340.0, 914.0, 2080.0),          # to room 123
+    "154-1": ("N", 4820.0, 1220.0, 2080.0),         # to the neighbouring lab, kept sealed
+    "to 154A": ("S", 5525.0, 914.0, 2080.0),        # swings out into 154A
 }
-PILLAR = (1490.0, 6060.0, 1950.0, 6520.0)      # x0, y0, x1, y1
-ROOM_158 = (0.0, 0.0, 2600.0, 4100.0)          # 8.53 ft wide, in the page-bottom-left corner
-CLEAN_ROOM = (0.0, D - 3140.0, 4270.0, D)      # atomizer clean room, 14 x 10.29 ft from the top-left corner (#31)
-SPOT_D = (1250.0, 4370.0, 2540.0, 5730.0)      # 1.29 x 1.36 m, arm centred (#229)
-SPOT_E = (3330.0, 2530.0, 4690.0, 3820.0)      # 1.36 x 1.29 m (#229)
-BENCH_H = 900.0
+WINDOW = ("W", 1350.0, 1200.0, 950.0, 2150.0)       # roll-up steel shutter to corridor 101: sill, top
+ROOM_158 = (0.0, 5274.0, 4090.0, D)                 # a separate room cut into the NW corner
+PILLAR = (6245.0, 6100.0, 490.0)                    # centre x, y and side (19 in square)
+CLEAN_ROOM = (6550.0, 3607.0, W, D, 2743.0)         # hard steel walls, 14 x 10 x 9 ft, NE corner
+SPOT_D = (4981.0, 6052.0, 1360.0, 1290.0)           # centre x, y; E-W and N-S size (#229)
 
 
-def _wall(x0, y0, x1, y1, openings=(), axis="x") -> cq.Workplane:
+def _wall_with_openings(x0, y0, x1, y1, openings, along: str) -> cq.Workplane:
     w = box(x0, y0, 0, x1, y1, H)
-    for a, b, top in openings:
-        if axis == "x":
-            w = w.cut(box(a, y0 - 1, 0, b, y1 + 1, top))
-        else:
-            w = w.cut(box(x0 - 1, a, 0, x1 + 1, b, top))
+    for c, width, z0, z1 in openings:
+        a, b = c - width / 2, c + width / 2
+        w = w.cut(box(a, y0 - 1, z0, b, y1 + 1, z1) if along == "x" else box(x0 - 1, a, z0, x1 + 1, b, z1))
     return w
 
 
 def shell() -> Model:
-    m = Model("cb154_shell", "CB154 room shell", source="BYU Facilities Planning plan (cb154.pdf)")
+    m = Model("cb154_shell", "CB154 room shell", source="plan + #7 tape measurements")
     m.add("floor", box(-T, -T, -20, W + T, D + T, 0), "floor")
-    op = {k: [] for k in ("bottom", "top", "left", "right")}
-    for wall, a, b in DOORS.values():
-        op[wall].append((a, b, 2100.0))
-    m.add("wall bottom", _wall(-T, -T, W + T, 0, op["bottom"], "x"), "wall")
-    m.add("wall top", _wall(-T, D, W + T, D + T, op["top"], "x"), "wall")
-    m.add("wall left", _wall(-T, 0, 0, D, op["left"], "y"), "wall")
-    m.add("wall right", _wall(W, 0, W + T, D, op["right"], "y"), "wall")
+    op = {"W": [], "E": [], "N": [], "S": []}
+    for wall, c, width, head in DOORS.values():
+        op[wall].append((c, width, 0.0, head))
+    wall, c, width, sill, top = WINDOW
+    op[wall].append((c, width, sill, top))
+    m.add("wall S", _wall_with_openings(-T, -T, W + T, 0, op["S"], "x"), "wall")
+    m.add("wall N", _wall_with_openings(-T, D, W + T, D + T, op["N"], "x"), "wall")
+    m.add("wall W", _wall_with_openings(-T, 0, 0, D, op["W"], "y"), "wall")
+    m.add("wall E", _wall_with_openings(W, 0, W + T, D, op["E"], "y"), "wall")
     x0, y0, x1, y1 = ROOM_158
-    m.add("room 158 walls", box(x1, y0, 0, x1 + T, y1 + T, H).union(box(x0, y1, 0, x1 + T, y1 + T, H)), "wall")
-    x0, y0, x1, y1 = PILLAR
-    m.add("pillar", box(x0, y0, 0, x1, y1, H), "wall")
-    for name, (wall, a, b) in DOORS.items():       # door leaves, shown shut
-        if wall in ("bottom", "top"):
-            yy = -T / 2 if wall == "bottom" else D + T / 2
-            m.add(f"door {name}", box(a, yy - 20, 0, b, yy + 20, 2100), "door")
+    m.add("room 158 walls", box(x1 - T, y0, 0, x1, y1, H).union(box(x0, y0, 0, x1, y0 + T, H)), "wall")
+    px, py, s = PILLAR
+    m.add("pillar", box(px - s / 2, py - s / 2, 0, px + s / 2, py + s / 2, H), "wall")
+    m.add("pilaster", box(6233 - 250, 0, 0, 6233 + 250, 320, H), "wall")
+    m.add("corner column", box(0, 0, 0, 370, 300, H), "wall")
+    for name, (wall, c, width, head) in DOORS.items():       # leaves, shown shut
+        a, b = c - width / 2, c + width / 2
+        if wall in ("N", "S"):
+            yy = -T / 2 if wall == "S" else D + T / 2
+            m.add(f"door {name}", box(a, yy - 20, 0, b, yy + 20, head), "door")
         else:
-            xx = -T / 2 if wall == "left" else W + T / 2
-            m.add(f"door {name}", box(xx - 20, a, 0, xx + 20, b, 2100), "door")
+            xx = -T / 2 if wall == "W" else W + T / 2
+            m.add(f"door {name}", box(xx - 20, a, 0, xx + 20, b, head), "door")
+    wall, c, width, sill, top = WINDOW
+    m.add("window shutter", box(-T / 2 - 10, c - width / 2, sill, -T / 2 + 10, c + width / 2, top), "paint_white")
     return m
 
 
 def clean_room() -> Model:
-    """The atomizer's softwall enclosure (#31): a frame with curtain walls, open at the front."""
-    x0, y0, x1, y1 = CLEAN_ROOM
-    m = Model("atomizer_clean_room", "Atomizer clean-room enclosure, 14 x 10 ft (#31)", source="#31 / #229 plan position")
-    hh = 2400.0
-    frame = []
-    for x in (x0 + 30, x1 - 30):
-        for y in (y0 + 30, y1 - 30):
-            frame.append(box(x - 25, y - 25, 0, x + 25, y + 25, hh))
-    frame.append(box(x0, y0, hh - 50, x1, y0 + 50, hh))
-    frame.append(box(x1 - 50, y0, hh - 50, x1, y1, hh))
-    m.add("frame", cq.Workplane("XY").add(cq.Compound.makeCompound([f.val() for f in frame])), "extrusion")
-    m.add("curtain front", box(x0 + 60, y0, 300, x1 - 900, y0 + 6, hh - 50), "acrylic")
-    m.add("curtain right", box(x1 - 6, y0 + 60, 300, x1, y1 - 60, hh - 50), "acrylic")
+    """The atomizer's hard-wall enclosure, with strip-curtain doorways on its west and south faces."""
+    x0, y0, x1, y1, h = CLEAN_ROOM
+    m = Model("atomizer_clean_room", "Atomizer clean room, 14 x 10 x 9 ft, steel walls (#31)", source="#31 / #124 photos")
+    t = 60.0
+    west = box(x0, y0, 0, x0 + t, y1, h).cut(box(x0 - 1, 4350 - 600, 0, x0 + t + 1, 4350 + 600, 2100))
+    south = box(x0, y0, 0, x1, y0 + t, h).cut(box(7300 - 600, y0 - 1, 0, 7300 + 600, y0 + t + 1, 2100))
+    m.add("steel walls", west.union(south), "paint_grey")
+    m.add("curtain, west doorway", box(x0 + t / 2 - 3, 4350 - 600, 0, x0 + t / 2 + 3, 4350 + 600, 2100), "acrylic")
+    m.add("curtain, south doorway", box(7300 - 600, y0 + t / 2 - 3, 0, 7300 + 600, y0 + t / 2 + 3, 2100), "acrylic")
+    m.add("roof", box(x0, y0, h - 40, x1, y1, h), "paint_grey")
     return m
 
 
-def bench(x0, y0, x1, y1, name="bench", h=BENCH_H) -> Model:
-    m = Model(name, name, source="assumed")
-    m.add("top", box(x0, y0, h - 30, x1, y1, h), "benchtop")
-    m.add("base cabinets", box(x0 + 20, y0 + 40, 0, x1 - 20, y1 - 20, h - 30), "wood")
+def counter(x0, y0, x1, y1, name, top="wood", h=COUNTER_H, wall_hung=True) -> Model:
+    m = Model(name, name, source="#229 / #7")
+    m.add("top", box(x0, y0, h - 40, x1, y1, h), top)
+    if not wall_hung:
+        m.add("cabinets", box(x0 + 20, y0 + 20, 0, x1 - 20, y1 - 20, h - 40), "wood")
     return m
 
 
-def table(x0, y0, x1, y1, name="table", h=BENCH_H) -> Model:
+def table(cx, cy, w, d, name, h=COUNTER_H, top="wood") -> Model:
     m = Model(name, name, source="assumed")
-    m.add("top", box(x0, y0, h - 25, x1, y1, h), "wood")
-    for x in (x0 + 30, x1 - 70):
-        for y in (y0 + 30, y1 - 70):
+    x0, y0, x1, y1 = cx - w / 2, cy - d / 2, cx + w / 2, cy + d / 2
+    m.add("top", box(x0, y0, h - 25, x1, y1, h), top)
+    for x in (x0 + 20, x1 - 60):
+        for y in (y0 + 20, y1 - 60):
             m.add(f"leg {x:.0f} {y:.0f}", box(x, y, 0, x + 40, y + 40, h - 25), "extrusion")
     return m
 
 
-def _window(x0: float, x1: float) -> Model:
-    """The pass-through window in the top wall, its roll-down shutter shut."""
-    m = Model("window", "pass-through window", source="#7 photos")
-    m.add("shutter", box(x0, D - 5.0, 1000.0, x1, D, 1900.0), "paint_white")
-    m.add("coil hood", box(x0 - 40, D - 160.0, 1900.0, x1 + 40, D, 2080.0), "paint_white")
-    return m
-
-
-def island(x0, y0, x1, y1, h=BENCH_H) -> Model:
-    m = Model("island", "black epoxy island", source="#7 photos")
-    m.add("top", box(x0, y0, h - 25, x1, y1, h), "benchtop")
-    m.add("cabinets", box(x0 + 30, y0 + 30, 0, x1 - 30, y1 - 30, h - 25), "wood")
-    return m
-
-
-def glovebox() -> Model:
-    """A benchtop glove box (the doser's Shadow box, #30), about 900 x 600 x 650 mm (assumed)."""
-    m = Model("glovebox", "glove box", source="assumed")
-    shell = rbox(900.0, 600.0, 650.0, 20.0).faces(">Z").shell(-8.0)
-    for x in (-200.0, 200.0):
-        shell = shell.cut(cq.Workplane("XZ").circle(100.0).extrude(-30).translate((x, -300.0 - 5, 330.0)))
-    m.add("box", shell, "acrylic")
-    m.add("base", rbox(920.0, 620.0, 40.0, 20.0, z=-5.0), "printer_grey")
-    for x in (-200.0, 200.0):
-        m.add(f"glove port {x:+.0f}", cq.Workplane("XZ").circle(110.0).circle(95.0).extrude(40.0).translate((x, -300.0 + 10, 330.0)), "printer_black")
-    return m
-
-
 def envelope(key: str, title: str, dims, x, y, z=0.0, rz=0.0, material="printer_white") -> Model:
-    """A labelled box standing in for vendor geometry that stays out of the repo (OT-2, PiPER)."""
+    """A box standing in for vendor geometry that stays out of the repo (OT-2, PiPER)."""
     m = Model(key, title, source="envelope of the vendor STEP")
     m.add(title, rbox(dims[0], dims[1], dims[2], 20.0), material)
     return m.moved(x, y, z, rz)
 
 
 def cb154(eq: dict[str, Model], vendor_models: dict[str, Model] | None = None) -> Model:
-    """The room with its equipment. vendor_models (OT-2, PiPER) are used when given, otherwise
+    """The room with what is in it. vendor_models (OT-2) are used when given, otherwise
     envelopes, so the committed STEP holds no vendor geometry."""
-    m = Model("cb154_room", "CB154 with equipment (rough)", source="plan + photos; see room.py")
+    vendor_models = vendor_models or {}
+    m = Model("cb154_room", "CB154 with equipment (rough)", source="see room.py and sources/cb154_room.json")
     parts: list[tuple[str, Model]] = [("shell", shell()), ("clean room", clean_room())]
-    # PLACED: the atomizer stands against a painted cinderblock wall inside its softwall clean room
-    # in the page-top-left corner (#31, #124, the 2026-09-03 "Placing the Atomizer" short).
-    parts.append(("atomizer", eq["amazemet_repowder"].moved(2100.0, D - 480.0, 0.0, 0.0)))
-    # PLACED: a wood-grain counter runs along the top wall under the pass-through window, and the
-    # OT-2 sits at its right end with door 154-2 immediately to its right and cinderblock behind it
-    # (#7 photos; the OT-2 livestream after the 2026-09-10 move).
-    parts.append(("counter top wall", bench(4400.0, D - 760.0, 5990.0, D, "counter, top wall")))
-    parts.append(("pass-through window", _window(4600.0, 5500.0)))
-    if vendor_models and "opentrons_ot2" in vendor_models:
-        parts.append(("ot2", vendor_models["opentrons_ot2"].moved(5640.0, D - 330.0, BENCH_H, 180.0)))
+    # SURE (plan, #7 tape, #229): the wall-hung L-counter in the SW corner, 800 deep, top ~910;
+    # west leg B under the roll-up window, south leg A with black shelves above it
+    parts.append(("counter B (west)", counter(0, 0, 800, 3251, "counter B, west leg")))
+    parts.append(("counter A (south)", counter(800, 0, 2781, 800, "counter A, south leg")))
+    shelves = Model("shelves", "black shelves over counter A", source="#229 photo")
+    shelves.add("shelves", box(300, 0, 1500, 2500, 330, 2150), "printer_black")
+    parts.append(("shelves over A", shelves))
+    # SURE (Jul-Aug 2026 photos): sink + eyewash casework, SE corner to the pilaster, wood upper over it
+    parts.append(("sink casework", counter(6560, 0, W, 745, "sink casework", top="benchtop", wall_hung=False)))
+    upper = Model("upper", "upper cabinet over the sink", source="2026-08-19 photo")
+    upper.add("cabinet", box(6600, 0, 1450, 7500, 330, 2150), "wood")
+    parts.append(("upper cabinet", upper))
+    # PLACED (livestream, #229): the OT-2 at the north end of counter B, facing east, the
+    # entrance door just north of it
+    if "opentrons_ot2" in vendor_models:
+        parts.append(("ot2", vendor_models["opentrons_ot2"].moved(330.0, 2790.0, COUNTER_H, 90.0)))
     else:
-        parts.append(("ot2", envelope("ot2_env", "OT-2 (envelope)", (624, 567, 662), 5640.0, D - 330.0, BENCH_H, 180.0)))
-    # GUESS: the CubXL on the same counter, left of the OT-2 (it moved into CB154, #133; the photo
-    # shows a dark wood bench like this one)
-    parts.append(("cubxl", eq["cubxl"].moved(4800.0, D - 400.0, BENCH_H, 180.0)))
-    # PLACED (position approximate): the black epoxy island with the glove box on it (#7 photos,
-    # the 2026-08-26 multi-doser pitch)
-    parts.append(("island", island(2950.0, 3900.0, 4150.0, 6250.0)))
-    parts.append(("glovebox", glovebox().moved(3550.0, 5050.0, BENCH_H, 90.0)))
-    # spot D: the PiPER sandbox table (#229)
-    x0, y0, x1, y1 = SPOT_D
-    parts.append(("spot D table", table(x0, y0, x1, y1, "spot D table")))
-    cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
-    if vendor_models and "agilex_piper" in vendor_models:
-        parts.append(("piper", vendor_models["agilex_piper"].moved(cx, cy, BENCH_H, 0.0)))
+        parts.append(("ot2", envelope("ot2_env", "OT-2 (envelope)", (624, 567, 662), 330.0, 2790.0, COUNTER_H, 90.0)))
+    # PLACED (moved in 2026-09-22): the CubXL on counter A, facing north, controller to its east
+    parts.append(("cubxl", eq["cubxl"].moved(1900.0, 420.0, COUNTER_H, 180.0)))
+    # PLACED (#229): spot D, the PiPER tables against room 158's east wall; the arm is planned
+    cx, cy, w, d = SPOT_D
+    parts.append(("spot D", table(cx, cy, w, d, "spot D tables")))
+    if "agilex_piper" in vendor_models:
+        parts.append(("piper", vendor_models["agilex_piper"].moved(cx, cy, COUNTER_H, 0.0)))
     else:
-        parts.append(("piper", envelope("piper_env", "PiPER (envelope)", (145, 550, 466), cx, cy + 180.0, BENCH_H)))
-    # GUESS: white tables along the right wall (#7 photos show them with blue bins), printers on them
-    parts.append(("bench right", table(W - 760.0, 700.0, W, 4900.0, "tables, right wall")))
-    parts.append(("h2d", eq["bambu_h2d"].moved(W - 380.0, 1400.0, BENCH_H, -90.0)))
-    parts.append(("a1 mini", eq["bambu_a1_mini"].moved(W - 380.0, 2200.0, BENCH_H, -90.0)))
-    # the drop tower is used by the tensegrity project in another lab (#27, #28): modelled, not placed
+        parts.append(("piper", envelope("piper_env", "PiPER (envelope)", (145, 550, 466), cx, cy + 180.0, COUNTER_H)))
+    # APPROXIMATE (+-500, #229 render and Feb photos): island E, mobile black-top benches
+    parts.append(("island", counter(3050 - 750, 3900 - 750, 3050 + 750, 3900 + 750, "island E", top="benchtop",
+                                    wall_hung=False)))
+    # GUESS: the atomizer is still crated; AMAZEMET places it on install day (2026-09-28)
+    parts.append(("atomizer", eq["amazemet_repowder"].moved(8700.0, D - 520.0, 0.0, 0.0)))
+    # LOW CONFIDENCE (photos): gray storage cabinet by 158's SE corner, whiteboard on the south wall,
+    # the transformer north of the pillar (size assumed)
+    cab = Model("cabinet", "gray storage cabinet", source="Feb photos")
+    cab.add("cabinet", box(3850 - 450, 5050 - 225, 0, 3850 + 450, 5050 + 225, 1980), "paint_grey")
+    parts.append(("gray cabinet", cab))
+    wb = Model("whiteboard", "whiteboard", source="photos")
+    wb.add("board", box(2900, 0, 900, 4500, 20, 2100), "paint_white")
+    parts.append(("whiteboard", wb))
+    tr = Model("transformer", "transformer", source="#229 description, size assumed")
+    tr.add("transformer", box(6000 - 350, 7450 - 275, 0, 6000 + 350, 7450 + 275, 900), "paint_grey")
+    parts.append(("transformer", tr))
+    # not in CB154: the drop tower (tensegrity, another lab), the printers, and the glove box (not bought yet)
     for label, model in parts:
         for p in model.parts:
             m.add(f"{label} - {p.name}", p.shape, p.material)
-    m.notes = {"room_inside_mm": [W, D, H], "north": "page left (-x)"}
+    m.notes = {"room_inside_mm": [W, D, H], "frame": "origin inside SW corner, +x east, +y north"}
     return m
 
 
+LABELS = {
+    "atomizer (crated; spot TBD)": (8700.0, D - 520.0, 1750.0), "clean room": (7300.0, 3700.0, 2900.0),
+    "OT-2": (330.0, 2790.0, 1650.0), "CubXL": (1900.0, 420.0, 1500.0), "counter B": (400.0, 1400.0, 1000.0),
+    "spot D: PiPER sandbox": (SPOT_D[0], SPOT_D[1], 1500.0), "island E": (3050.0, 3900.0, 1100.0),
+    "room 158": (2000.0, 6600.0, 2800.0), "pillar": (6245.0, 6100.0, 2800.0), "sink": (8080.0, 372.0, 1200.0),
+    "entrance": (0.0, 4060.0, 2300.0), "154-2": (W, 1340.0, 2300.0), "154-1": (4820.0, D, 2300.0),
+    "to 154A": (5525.0, 0.0, 2300.0), "window": (0.0, 1350.0, 2300.0),
+}
+
+
 def render_room(model: Model) -> None:
-    """Cutaway renders: the ceiling is open and the near walls are dropped for the views."""
+    """Cutaway renders: no ceiling, and the near walls dropped for the 3D view."""
     import numpy as np
-    import pyvista as pv
 
     from common import MATERIALS, RENDERS
     from render import caption, plotter, to_mesh
@@ -197,28 +197,21 @@ def render_room(model: Model) -> None:
             pl.add_mesh(mesh, color=(r, g, b), opacity=a, specular=spec, smooth_shading=True, split_sharp_edges=True)
 
     views = {
-        "cb154_iso": (("wall bottom", "wall right", "door entrance", "door to 154A"), (0.8, -1.0, 1.25), 1.3,
-                      "CB154, rough model (cutaway from the entrance corner)"),
-        "cb154_top": ((), (0, 0, 1), 1.15, "CB154 from above (north is to the left)"),
+        "cb154_iso": (("wall S", "wall W", "door entrance", "door to 154A", "window shutter", "shelves",
+                       "whiteboard", "clean room - roof"), (-0.8, -1.0, 1.25), (0, 0, 1), 1.3,
+                      "CB154, rough model (cutaway from the south-west corner)"),
+        "cb154_top": (("clean room - roof",), (0, 0, 1), (0, 1, 0), 1.15, "CB154 from above (north up)"),
     }
-    labels = {                                  # where each thing is, for the captions on the renders
-        "atomizer (clean room)": (2100.0, D - 700.0, 1700.0), "OT-2": (5640.0, D - 330.0, 1650.0),
-        "CubXL": (4800.0, D - 400.0, 1500.0), "island + glove box": (3550.0, 5050.0, 1650.0),
-        "spot D: PiPER sandbox": ((SPOT_D[0] + SPOT_D[2]) / 2, (SPOT_D[1] + SPOT_D[3]) / 2, 1500.0),
-        "H2D": (W - 380.0, 1400.0, 1650.0), "A1 mini": (W - 380.0, 2200.0, 1400.0),
-        "room 158": (1300.0, 2000.0, 2800.0), "pillar": (1720.0, 6290.0, 2800.0),
-        "entrance": (3590.0, 0.0, 2300.0), "154-2": (6475.0, D, 2300.0),
-    }
-    for name, (hide, direction, zoom, title) in views.items():
+    for name, (hide, direction, up, zoom, title) in views.items():
         pl = plotter((1800, 1400))
         draw(pl, hide)
-        pl.add_point_labels(np.array(list(labels.values())), list(labels), font_size=18, point_size=1,
+        pl.add_point_labels(np.array(list(LABELS.values())), list(LABELS), font_size=18, point_size=1,
                             shape_opacity=0.75, shape_color="white", text_color="black", always_visible=True,
                             show_points=False, margin=4)
         c = np.array([W / 2, D / 2, 600.0])
         d = np.array(direction, float)
         d /= np.linalg.norm(d)
-        pl.camera_position = [tuple(c + d * 20000), tuple(c), (0, 1, 0) if name == "cb154_top" else (0, 0, 1)]
+        pl.camera_position = [tuple(c + d * 20000), tuple(c), up]
         pl.camera.view_angle = 30
         if name == "cb154_top":
             pl.enable_parallel_projection()
@@ -229,5 +222,5 @@ def render_room(model: Model) -> None:
         out = RENDERS / f"{name}.png"
         pl.screenshot(str(out))
         pl.close()
-        caption(out, title, "Shell from BYU Facilities' plan; equipment from photos and threads, positions partly guessed "
-                            "(see lab-models/README.md)")
+        caption(out, title, "Shell: BYU's plan + Gage's tape (#7). Contents: #229, #31, photos. "
+                            "Atomizer spot is a guess (install 2026-09-28)")

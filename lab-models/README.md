@@ -97,26 +97,37 @@ Printables turned out to be a loose Y-up likeness at 219 × 272 × 346 mm, so it
 
 ![CB154](renders/cb154_iso.png)
 
-**The shell is from BYU Facilities Planning's plan** ([`cb154.pdf`](../cb154.pdf), annotated copy
-[`cb154-annotated.pdf`](../cb154-annotated.pdf)):
+**Frame:** compass coordinates. The origin is the inside south-west corner, +x points east along the long
+walls and +y points north. The plan's north arrow points to the page's left, so on
+[`cb154.pdf`](../cb154.pdf) page-top is east.
 
-- 25.78 × 31.38 ft (7.86 × 9.57 m) inside, 2.62 m to the usable ceiling (#7).
-- The doors, pillar and room 158 were read off the plan at about 27.7 mm/px, to about ±0.1 m.
-- The atomizer's 14 × 10 ft clean room is in the page's top-left corner (#31).
-- Spots D and E are from #229.
+**The shell** is 9601 × 7874 mm (378 × 310 in) inside, with 2.62 m to the lowest ducts:
 
-**The equipment positions are the rough part.** They come from photos and threads, and
-[`cad/room.py`](cad/room.py) marks each one:
+- **The size is Gage's tape measurement in #7.** BYU Facilities' plan and its annotated copy
+  (25.78 × 31.38 ft) agree with it to within 0.5%.
+- **Room 158** is cut into the NW corner.
+- **Doors:** the entrance is in the west wall, 154-2 in the east wall, 154-1 in the north wall and the
+  door to 154A in the south wall.
+- **Other features:** the roll-up service window in the west wall, the pillar, the pilaster, and the
+  steel-walled 14 × 10 × 9 ft clean room in the NE corner.
 
-- **Placed from evidence:**
-  - The atomizer, inside its clean room against a cinderblock wall (#31, #124, the 2026-09-03 "Placing the Atomizer" short).
-  - The OT-2, at the right end of the wood counter under the pass-through window, with door 154-2
-    immediately to its right. This comes from the OT-2 livestream after the 2026-09-10 move and the #7 photos.
-  - The black island with the glove box (#7 photos, the 2026-08-26 multi-doser short).
-  - Spot D (#229).
-- **Guessed:** the CubXL beside the OT-2 (it moved into CB154 in #133, onto a dark wood bench like
-  this one), and the printers on the right-wall tables.
-- **Not placed:** the drop tower, which the tensegrity project uses in another lab (#27, #28).
+**What's in it** is from [`sources/cb154_room.json`](sources/cb154_room.json). A research pass built
+that file by checking the plan against the #7 sketch, the #229 render, #31 and the room photos:
+
+- **Sure:**
+  - The wall-hung L-counter in the SW corner: leg B along the west wall under the window, leg A along
+    the south wall with black shelves above.
+  - The sink and eyewash casework from the SE corner to the pilaster.
+- **Placed:**
+  - The OT-2, at the north end of counter B next to the entrance, where the livestream shows it.
+  - The CubXL on counter A, moved in on 2026-09-22.
+  - Spot D, the PiPER tables against room 158's east wall (#229).
+- **Approximate (±0.5 m):** island E.
+- **A guess:** the atomizer. It is still crated in the clean room, and AMAZEMET places it at install
+  (2026-09-28).
+- **Low confidence:** the grey cabinet and the transformer. The transformer's size is assumed.
+- **Not in CB154:** the drop tower (the tensegrity project uses it in another lab), the printers, and
+  a glove box, which hasn't been bought yet.
 
 ![CB154 from above](renders/cb154_top.png)
 
@@ -130,7 +141,7 @@ the API key owner's account.
 |---|---|
 | [Sandbox objects (48a9e11)](https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29) | `labware_lineup`, every sandbox object in one Part Studio, part names prefixed by object. `sandbox_layout`, spot D. AgileX's PiPER. An assembly, *Sandbox with PiPER*, with the arm on its plate |
 | [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, Lansmont M23 drop tower, rePowder atomizer |
-| [CB154 room (48a9e11)](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here |
+| [CB154 room](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here. The tab was replaced after the layout was corrected (see below) |
 
 These are Onshape's own shaded views, from the API:
 

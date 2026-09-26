@@ -843,18 +843,18 @@
   },
   "cb154_room": {
     "title": "CB154 with equipment (rough)",
-    "source": "plan + photos; see room.py",
-    "parts": 125,
+    "source": "see room.py and sources/cb154_room.json",
+    "parts": 93,
     "bbox_mm": [
-      8158.0,
-      9865.0,
-      2640.0
+      9981.0,
+      8254.0,
+      2763.0
     ],
     "room_inside_mm": [
-      7858.0,
-      9565.0,
-      2620.0
+      9601.0,
+      7874.0,
+      2616.0
     ],
-    "north": "page left (-x)"
+    "frame": "origin inside SW corner, +x east, +y north"
   }
 }
