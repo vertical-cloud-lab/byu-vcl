@@ -1,0 +1,84 @@
+{
+  "source": "McMaster-Carr product pages, CAD dropdown option '3-D STEP' (with modeled threads)",
+  "retrieved_utc": "2026-09-26",
+  "method": "Headless Chromium on a tailnet Raspberry Pi (residential IP), driven over the DevTools protocol; the STEP path is the value of the dropdown <li> (role=option) '3-D STEP', fetched in-page with the site's cookies. Plain curl to /mvC/Library/CAD2/... returns 403.",
+  "parts": [
+    {
+      "pn": "92095A194",
+      "role": "A: M4x16 button head (priority)",
+      "title": "18-8 Stainless Steel Button Head Hex-Drive Screw, M4 x 0.7 mm Thread Size, 16 mm Long | McMaster-Carr",
+      "url": "https://www.mcmaster.com/92095A194/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260625/41833795/92095A194_18-8%20Stainless%20Steel%20Button%20Head%20Hex-Drive%20Screw.STEP",
+      "file": "92095A194.step",
+      "size_bytes": 724618,
+      "sha256": "fdc81eda54f7a87f4d2b6ae1baae083738ff17d42d8ff561c1a4c43ff51bdb67"
+    },
+    {
+      "pn": "92095A192",
+      "role": "A: M4x12 button head (alternative length)",
+      "title": "18-8 Stainless Steel Button Head Hex-Drive Screw, M4 x 0.7 mm Thread Size, 12 mm Long | McMaster-Carr",
+      "url": "https://www.mcmaster.com/92095A192/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260625/E6EED718/92095A192_18-8%20Stainless%20Steel%20Button%20Head%20Hex-Drive%20Screw.STEP",
+      "file": "92095A192.step",
+      "size_bytes": 574350,
+      "sha256": "32c2779e7547da2abd2ed11f77c63c03b52559e81b1d1a23e73a75e0b8c01921"
+    },
+    {
+      "pn": "91828A231",
+      "role": "B: M4 hex nut, 18-8 SS",
+      "title": "Corrosion-Resistant 18-8 Stainless Steel Hex Nut, M4 x 0.7 mm Thread Size | McMaster-Carr",
+      "url": "https://www.mcmaster.com/91828A231/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260729/1F02F212/91828A231_Corrosion-Resistant%2018-8%20Stainless%20Steel%20Hex%20Nut.STEP",
+      "file": "91828A231.step",
+      "size_bytes": 237697,
+      "sha256": "027333a5d2f9d304008d50354021b9c37d5db970395f9c33eafcb9b5ab9bc9a8"
+    },
+    {
+      "pn": "95610A550",
+      "role": "C: nylon washer for M4",
+      "title": "Nylon Plastic Washers, for M4 Screw Size, 4.3 mm ID, 9 mm OD | McMaster-Carr",
+      "url": "https://www.mcmaster.com/95610A550/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260110/300035C8/95610A550_Nylon%20Plastic%20Washers.STEP",
+      "file": "95610A550.step",
+      "size_bytes": 17318,
+      "sha256": "8a8deef6b1a67681cffc6517de2882ceaaff0a64efbfa37747058371ce59d5be"
+    },
+    {
+      "pn": "91292A018",
+      "role": "D: M2.5x16 socket head screw",
+      "title": "18-8 Stainless Steel Socket Head Screw, M2.5 x 0.45 mm Thread Size, 16 mm Long, Fully Threaded | McMaster-Carr",
+      "url": "https://www.mcmaster.com/91292A018/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260205/167CEA83/91292A018_18-8%20Stainless%20Steel%20Socket%20Head%20Screw.STEP",
+      "file": "91292A018.step",
+      "size_bytes": 962919,
+      "sha256": "8f94bd9a9c400a9498e0b678e3abe668609d398fc0173a245841ece54c4eec12"
+    },
+    {
+      "pn": "91828A113",
+      "role": "D: M2.5 hex nut, 18-8 SS",
+      "title": "Corrosion-Resistant 18-8 Stainless Steel Hex Nut, M2.5 x 0.45 mm Thread Size | McMaster-Carr",
+      "url": "https://www.mcmaster.com/91828A113/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260729/0D86AEAD/91828A113_Corrosion-Resistant%2018-8%20Stainless%20Steel%20Hex%20Nut.STEP",
+      "file": "91828A113.step",
+      "size_bytes": 231033,
+      "sha256": "a338f082d7798a6242d996c711fcd05483bcec0c7f97b4f252ee37d2941d016d"
+    },
+    {
+      "pn": "92095A184",
+      "role": "D: M3x16 button head",
+      "title": "18-8 Stainless Steel Button Head Hex-Drive Screw, M3 x 0.5 mm Thread Size, 16 mm Long | McMaster-Carr",
+      "url": "https://www.mcmaster.com/92095A184/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260625/C63211BE/92095A184_18-8%20Stainless%20Steel%20Button%20Head%20Hex-Drive%20Screw.STEP",
+      "file": "92095A184.step",
+      "size_bytes": 982910,
+      "sha256": "126458543fd7f2634325abec04d3785b3f1633b90fc734d3bafac82f18008665"
+    }
+  ]
+}

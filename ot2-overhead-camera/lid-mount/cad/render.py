@@ -12,10 +12,12 @@ from pathlib import Path
 import numpy as np
 import pyvista as pv
 
+import hardware
 from lid_mount import ASSEMBLY, COLORS, Params, box, build, make_view_cone, print_orientation
 
 RENDERS = Path(__file__).resolve().parent.parent / "renders"
 PRINTED = ("base", "deck", "drill_template", "spacers")
+STEEL, NYLON = (0.74, 0.75, 0.78), (0.96, 0.95, 0.90)
 
 
 def mesh(wp, tol=0.05) -> pv.PolyData:
@@ -37,6 +39,16 @@ def add(pl, wp, name, opacity=1.0, color=None):
                 smooth_shading=False, specular=0.15)
 
 
+def add_fasteners(pl, p: Params, lift: dict | None = None) -> None:
+    """McMaster-Carr screws, nuts and washers (see hardware.py), optionally lifted per group."""
+    shapes, _ = hardware.placed(p)
+    for name, group in shapes.items():
+        dz = (lift or {}).get(name, 0.0)
+        for s in group:
+            pl.add_mesh(mesh(s.translate((0, 0, dz))), color=NYLON if name == "m4_washers" else STEEL,
+                        smooth_shading=False, specular=0.3)
+
+
 def clip_lid(p, parts, size=180.0):
     return parts["lid"].intersect(box(size, size, 40, z0=-20))
 
@@ -46,6 +58,7 @@ def render_assembly(p: Params, parts: dict, out: Path) -> None:
     add(pl, clip_lid(p, parts), "lid", opacity=0.35)
     for name in ASSEMBLY[1:]:
         add(pl, parts[name], name)
+    add_fasteners(pl, p)
     add(pl, make_view_cone(p, 25.0, 90.0), "cone", opacity=0.25, color=(1.0, 0.8, 0.2))
     pl.camera_position = [(330, -420, 260), (0, 0, 45), (0, 0, 1)]
     pl.add_text("OT-2 lid camera mount: HQ Camera + 8-50 mm zoom + Pi 5", font_size=12, color="black")
@@ -60,8 +73,11 @@ def render_exploded(p: Params, parts: dict, out: Path) -> None:
     for name, dz in lift.items():
         wp = clip_lid(p, parts) if name == "lid" else parts[name]
         add(pl, wp.translate((0, 0, dz)), name, opacity=0.35 if name == "lid" else 1.0)
-    pl.camera_position = [(420, -520, 330), (0, 0, 110), (0, 0, 1)]
-    pl.add_text("Exploded: lid, base, lens, C-CS adapter, camera, deck, Pi 5", font_size=11, color="black")
+    add_fasteners(pl, p, {"m4_screws": -75, "m4_washers": -58, "m4_nuts": 14, "cam_screws": 60, "cam_nuts": 124,
+                          "m3_screws": 132, "pi_nuts": 96, "pi_screws": 178})
+    pl.camera_position = [(500, -620, 400), (0, 0, 100), (0, 0, 1)]
+    pl.add_text("Exploded: lid, base, lens, C-CS adapter, camera, deck, Pi 5,\n"
+                "and the McMaster-Carr screws, nuts and washers", font_size=11, color="black")
     pl.screenshot(out / "exploded.png")
     pl.close()
 

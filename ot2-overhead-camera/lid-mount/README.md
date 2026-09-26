@@ -69,19 +69,24 @@ warning concerns timelapse mode. See [`slice/README.md`](slice/README.md).
 
 | Qty | Part | Where |
 |---|---|---|
-| 4 | M2.5 × 16 mm screw + M2.5 nut | camera → deck (nuts sit in traps on the deck top) |
-| 4 | M2.5 × 16 mm screw + M2.5 nut | Pi 5 → spacers → deck (nuts in traps on the deck underside) |
-| 4 | M3 × 16 mm screw | deck → posts (self-tapping into Ø2.6 pilots; set `post_pilot_d = 4.0` for heat-set inserts) |
-| 4 | **M4 × 16 button-head (ISO 7380)** + M4 nut + thin nylon washer | base → lid, **phase 2 only**. The low 2.2 mm head keeps the screw clear of the pipette head underneath. M4 × 12 also works; it just reaches through the nut |
-| – | Painter's or gaffer tape, or removable double-sided mounting strips | **phase 1** |
+| 4 | M2.5 × 16 mm screw + M2.5 nut ([91292A018](https://www.mcmaster.com/91292A018/), [91828A113](https://www.mcmaster.com/91828A113/)) | camera → deck (nuts sit in traps on the deck top) |
+| 4 | M2.5 × 16 mm screw + M2.5 nut (same) | Pi 5 → spacers → deck (nuts in traps on the deck underside) |
+| 4 | M3 × 16 mm screw ([92095A184](https://www.mcmaster.com/92095A184/)) | deck → posts (self-tapping into Ø2.6 pilots; set `post_pilot_d = 4.0` for heat-set inserts) |
+| 4 | **M4 × 16 button-head (ISO 7380)** + M4 nut + thin nylon washer ([92095A194](https://www.mcmaster.com/92095A194/), [91828A231](https://www.mcmaster.com/91828A231/), [95610A550](https://www.mcmaster.com/95610A550/)) | base → lid, **phase 2 only**. The low 2.2 mm head keeps the screw clear of the pipette head underneath. M4 × 12 ([92095A192](https://www.mcmaster.com/92095A192/)) also works; it just reaches through the nut |
+| – | Painter's or gaffer tape, Command strips, or 3M Dual Lock SJ3560 | **phase 1** (see [§4](#4-install-phase-1-tape-no-cutting)) |
 | – | Optional: 1–2 mm black adhesive foam | light seal under the base, around the aperture |
 
 The camera, lens, C–CS adapter, Pi 5, Active Cooler and 200 mm Pi 5 camera cable are the
-parts already bought on ME order 12704 (see #84).
+parts already bought on ME order 12704 (see #84). The fasteners are McMaster-Carr parts, and
+the renders use McMaster's own STEP models of them; see [`hardware/`](hardware/README.md).
 
 ---
 
 ## 2. Assemble
+
+![Assembly, step by step](renders/assembly_steps.gif)
+
+The GIF comes from [`cad/animate.py`](cad/animate.py), with the McMaster fasteners.
 
 1. Drop four **M4 nuts** into the hex traps on the base.
 2. Drop four **M2.5 nuts** into the traps on the top of the deck. Hang the camera under the
@@ -143,7 +148,42 @@ At this stage it images **through the window**. The collar keeps room light off 
 of window under the lens, which is where reflections would come from. If the images are
 good enough like this, the cutout is optional.
 
+**Holes are optional.** The mount sits on top of the lid, so the adhesive only has to stop
+it sliding when the gantry moves; it never hangs from anything. Three ways to hold it
+without drilling:
+
+| Holding method | Good for | Notes |
+|---|---|---|
+| Painter's or gaffer tape over the four tabs | finding the spot | Re-tape as often as you like. |
+| Command strips (large, stretch-release) | "done moving it" | Made for smooth surfaces. They pull off with no residue, but each pair is single-use. |
+| **3M Dual Lock SJ3560** ([data sheet](https://multimedia.3m.com/mws/media/2366353O/3m-dual-lock-reclosable-fastener-sj3560.pdf)) | **repositionable, semi-permanent** | Clear acrylic adhesive, rated for acrylic and polycarbonate. It keeps about half its grip after ~1000 open/close cycles. Put one pad under each tab and its mate on the lid, and the base snaps on and off. The lid pads can be moved if the slot changes. |
+
+Avoid PVC suction cups, whose plasticizer can stress-crack both plastics, and any
+solvent-based adhesive, primer or remover, which can craze them. Clean the lid with soap
+and water first.
+
 ## 5. Install, phase 2: cutout and bolts
+
+![Cutting the full-size window](renders/window_cutting.gif)
+
+**Which tool, and where.** The window is small enough for a bench: 564.9 × 455.1 × 5 mm,
+about 1.5 kg, and it comes off with four screws. A waterjet isn't needed. It would also be
+the riskiest option for acrylic, which can chip or crack where the jet pierces it. Work out
+the material first ([§0](#0-the-ot-2-lid-from-opentrons-cad)); the edge-on colour is a quick
+check (a polycarbonate edge tends to look bluish, an acrylic one clear).
+
+| Window is… | Best | Also fine |
+|---|---|---|
+| **Acrylic** (2018 drawing) | **Laser cutter**, all five holes in one job with polished edges. The ME Prototyping Lab (117 EB) has a 40 × 28 in laser, so the panel fits. The HBLL makerspace laser's 24 × 18 in bed leaves only ~2 mm to spare | 5 mm holes with an acrylic bit (60–90° point, zero rake) in a hand drill. For the Ø50.8 mm hole use a drill press, with a hole saw or circle cutter at low speed over a backer. Acrylic makers advise against hand-held hole saws |
+| **Polycarbonate** (current spec) | **Hand drill** for the four 5 mm holes: ordinary HSS bits work. For the 2 in hole, a bi-metal hole saw with a pilot bit, low speed (~300 rpm), clamped over scrap MDF | The ISM-408 CNC router in 117 EB. **Never laser polycarbonate**: it chars amber and gives off fumes, and the HBLL makerspace prohibits it |
+
+At BYU: the **Project Support Center** (EB 107) lends hand and power tools, and the **ME
+Prototyping Lab** (117 EB, [booking](https://byuprojectslab.simplybook.me/v2/), Mon–Fri
+8–5) has the laser and the CNC router, and the ECE shop has a drill press (training through
+ytrain). The Manufacturing Engineering waterjet
+in CTB 108 (byuwaterjet@byu.edu) is staff-run and quoted; it isn't worth it for five holes.
+A step bit is **not** a good choice for the lens hole: common ones stop at 1⅛ in, and
+acrylic makers limit step bits to sheet up to 3 mm.
 
 1. With the mount in its final spot, **trace the base outline and the four tab notches**
    onto the window with a fine marker, then lift the mount off.
@@ -155,8 +195,12 @@ good enough like this, the cutout is optional.
    five marks.
 4. Drill the four **Ø5 mm** bolt holes. The extra 1 mm over M4 gives the panel room to
    expand. Clamp the panel over a wooden backer board, leave any protective film on, and
-   use a sharp plastic-cutting or step drill at low speed with light pressure.
-5. Cut the lens hole with a **2 in (50.8 mm) hole saw** at low speed and deburr it.
+   drill a pilot first, at low speed with light pressure. Use an acrylic bit (60–90° point)
+   on acrylic; an ordinary sharp HSS bit is fine on polycarbonate. A step bit leaves a
+   stepped hole in 5 mm sheet.
+5. Cut the lens hole with a **2 in (50.8 mm) hole saw** and its pilot bit at ~300 rpm, into
+   the backer, then deburr both edges. Use a drill press for acrylic, or have acrylic
+   laser-cut instead. On polycarbonate a hand drill with a side handle also works.
 6. Put the window back so it presses the safety switch again. Bolt the base down with
    the M4 button-heads from **inside** the robot, up into the trapped nuts, with the
    nylon washer under the head. Tighten them snug and no more; over-tightening cracks
