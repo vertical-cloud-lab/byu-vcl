@@ -41,7 +41,7 @@ The groups follow [`docs/sandbox-object-set.md`](../docs/sandbox-object-set.md):
 
 - **Tier 1:** all 15 core objects, with their fill states.
 - **Tier 2:** most of the extension list.
-- **Extras:** vials, plates and tubes that list dropped as redundant but the lab still uses.
+- **Extras:** vials, plates and tubes that the object list dropped as redundant, kept because they're common.
 - **Stations:** the stations and printed holders.
 
 ![Tier 1](renders/labware_tier1.png)
@@ -76,17 +76,22 @@ not the 15 a tight grid would fit.
 | Model | Envelope, W × D × H mm | Basis |
 |---|---|---|
 | Bambu A1 mini | 347 × 315 × 365 | Bambu spec. The layout follows Bambu's own outline drawing, read at 1.615 px/mm: Z column on the right toward the back, X arm cantilevered left, screen on the column base, 183 mm plate |
-| Bambu H2D | 492 × 514 × 626 | Bambu spec: 350 × 320 × 325 mm build volume, glass door and lid, dual toolhead |
+| Bambu H2D | 492 × 514 × 626 | Bambu spec: 325 × 320 × 325 mm build volume with one nozzle (350 mm wide across both), glass door and lid, dual toolhead |
 | Opentrons OT-2 | 624 × 567 × 662 | Opentrons' reference STEP ([github.com/Opentrons/ot2](https://github.com/Opentrons/ot2), "Detailed"). Official size is 63 × 57 × 66 cm |
 | AgileX PiPER | 626.75 mm reach | AgileX's arm-plus-gripper STEP, in the pose it ships in. 0–70 mm gripper |
 | CubXL | 740 × 605 × 488 | The frame is a **Genmitsu PROVerXL 4030 V2**: the badge is in the #133 and #200 photos, and the [SainSmart spec](https://www.sainsmart.com/products/proverxl-4030-v2) gives 400 × 300 × 110 mm travel. The slotted acrylic deck, tool plate, six-vial rack and control box are from photos |
 | Lansmont M23 drop tower | 533 × 610 × 2440 | Lansmont data sheet: 21 × 24 in envelope, 96–120 in tall, 9.06 × 9.06 in table, 60 in max drop |
-| AMAZEMET rePowder | 1000 × 800 × 1600 | O&MM p. 42 and Facility Guide p. 7, via `repowder-reference.zip`: ≈300 kg on four feet at 714 × 600 mm. Layout from the #124 crate photo and AMAZEMET's render |
+| AMAZEMET rePowder | 1000 × 800 × 1600 | O&MM p. 42 and Facility Guide p. 7, as restated in the `repowder-reference.zip` uploaded to PR #232 ([unpacked here](https://github.com/vertical-cloud-lab/byu-vcl/tree/323adba/atomizer-charge/repowder-reference)): ≈300 kg on four feet at 714 × 600 mm. Layout from the #124 crate photo and AMAZEMET's render |
 
 **The H2D and A1 mini have no usable vendor CAD.** Bambu publishes none. The best leads are a measured
-H2 enclosure STEP on MakerWorld and GrabCAD models, and all of them need an account to download. A
-Pi's residential IP doesn't get past a login, so they stay rough until someone with an account
-fetches one. The URLs are in [`sources/equipment.json`](sources/equipment.json).
+H2 enclosure STEP on MakerWorld and GrabCAD models, and all of them need an account to download.
+MakerWorld returns HTTP 403 even from the CubXL Pi's residential IP. So they stay spec-based until
+someone with an account fetches one. The URLs are in [`sources/equipment.json`](sources/equipment.json).
+
+**The Pi did get Bambu's own spec pages.** bambulab.com returns 403 to the runner and 200 through the
+CubXL Pi, which confirmed 347 × 315 × 365 mm (5.5 kg) and 492 × 514 × 626 mm (31 kg)
+([`sources/bambu_specs_via_pi.json`](sources/bambu_specs_via_pi.json)). A community A1 mini STEP on
+Printables turned out to be a loose Y-up likeness at 219 × 272 × 346 mm, so it isn't used.
 
 ## CB154
 
@@ -101,15 +106,47 @@ fetches one. The URLs are in [`sources/equipment.json`](sources/equipment.json).
 - Spots D and E are from #229.
 
 **The equipment positions are the rough part.** They come from photos and threads, and
-[`cad/room.py`](cad/room.py) marks each one as either confirmed or a guess.
+[`cad/room.py`](cad/room.py) marks each one:
+
+- **Placed from evidence:**
+  - The atomizer, inside its clean room against a cinderblock wall (#31, #124, the 2026-09-03 "Placing the Atomizer" short).
+  - The OT-2, at the right end of the wood counter under the pass-through window, with door 154-2
+    immediately to its right. This comes from the OT-2 livestream after the 2026-09-10 move and the #7 photos.
+  - The black island with the glove box (#7 photos, the 2026-08-26 multi-doser short).
+  - Spot D (#229).
+- **Guessed:** the CubXL beside the OT-2 (it moved into CB154 in #133, onto a dark wood bench like
+  this one), and the printers on the right-wall tables.
+- **Not placed:** the drop tower, which the tensegrity project uses in another lab (#27, #28).
 
 ![CB154 from above](renders/cb154_top.png)
 
 ## Onshape
 
-Every document is in vcl-shared › **Lab Models**, owned by the Vertical Cloud Lab team.
+Every document is in vcl-shared › **[Lab Models](https://cad.onshape.com/documents?nodeId=4213db40f9a2525e7c715685&resourceType=folder)**,
+owned by the Vertical Cloud Lab team. Each was created straight into the folder, so nothing is left in
+the API key owner's account.
 
-*(filled in after the import)*
+| Document | Tabs |
+|---|---|
+| [Sandbox objects (48a9e11)](https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29) | `labware_lineup`, every sandbox object in one Part Studio, part names prefixed by object. `sandbox_layout`, spot D. AgileX's PiPER. An assembly, *Sandbox with PiPER*, with the arm on its plate |
+| [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, Lansmont M23 drop tower, rePowder atomizer |
+| [CB154 room (48a9e11)](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here |
+
+These are Onshape's own shaded views, from the API:
+
+| Sandbox assembly | CB154 |
+|---|---|
+| ![](onshape/onshape_sandbox_assembly.png) | ![](onshape/onshape_cb154_room.png) |
+
+**The tabs keep their STEP file names.** The public API has no element rename: `POST /elements/...` is
+HTTP 405. The run spent 11 calls finding that out before the rename step was dropped.
+
+**A whole-Part-Studio insert makes one assembly instance per part.** For AgileX's arm that is 74
+instances, so they all have to be moved together. My first transform moved one, which left the arm
+lying on the table. It took 2 more calls to fix.
+
+**The A1 mini's screen changed after the import.** In the Onshape copies it stands 25 mm proud of the
+column base. The repo's STEP, made after the import, has it flush.
 
 **API keys *can* create folders.** `POST /folders` works when the body names the owner (`ownerId` of the
 team, `ownerType: 1`), and returns HTTP 400 without them. Documents can likewise be created straight
@@ -118,7 +155,14 @@ still web-app only (#234).
 
 The plan allows 2,500 calls a year, so
 [`onshape/onshape_import.py`](onshape/onshape_import.py) waits once before polling rather than polling
-fast. The run record, including how many calls it used, is in `onshape/run_<date>.json`.
+fast. This session used **49 calls**, recorded in [`onshape/run_2026-09-26.json`](onshape/run_2026-09-26.json):
+
+- 3 to make the folder;
+- 41 for the import, including the 11 failed renames;
+- 5 for the shaded views and the arm fix.
+
+A research sub-agent also searched Onshape's public documents for H2D CAD with the same key, read-only.
+That search found only a crude block model, and it spent a few more calls.
 
 The imported parts are solids, not native Onshape features. To edit one, change the numbers in the
 CadQuery source and re-import.

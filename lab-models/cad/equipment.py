@@ -34,7 +34,7 @@ def a1_mini(gantry_z: float | None = None, bed_y: float = 0.0) -> Model:
     m.add("base rail", rbox(82, p["D"] - 20, p["base_h"], 8, x=X(152), y=0), "printer_white")
     m.add("column base", rbox(75, 170, p["base_h"], 8, x=X(278.5), y=35), "printer_white")
     m.add("base cross", box(X(185), -40, 0, X(245), 40, 28), "printer_grey")
-    m.add("screen", box(X(252), -75.4, 10, X(305), -74.6, 42), "screen")
+    m.add("screen", box(X(252), -50.6, 10, X(305), -49.8, 42), "screen")    # on the column base's front face
     # bed: heatbed with the PEI sheet, sliding along y
     bw = 191.0
     m.add("bed carriage", box(X(152) - 38, bed_y - 70, p["base_h"], X(152) + 38, bed_y + 70, p["bed_top"] - 12), "printer_grey")
@@ -73,7 +73,8 @@ def a1_mini(gantry_z: float | None = None, bed_y: float = 0.0) -> Model:
 
 
 # --- Bambu Lab H2D ----------------------------------------------------------------------------
-# Envelope 492 x 514 x 626 mm; build volume 350 x 320 x 325 mm with both nozzles (spec page).
+# Envelope 492 x 514 x 626 mm, 31 kg; build volume 325 x 320 x 325 mm with one nozzle, 350 mm wide
+# across both (bambulab.com spec page, fetched through the CubXL Pi).
 H2D = dict(W=492.0, D=514.0, H=626.0, bed_w=350.0, bed_d=320.0)
 
 
@@ -100,7 +101,7 @@ def h2d(bed_z: float = 260.0) -> Model:
         m.add(f"y rail {'LR'[sx > 0]}", box(sx * (W / 2 - 22) - 6, -D / 2 + 30, gz + 5, sx * (W / 2 - 22) + 6, D / 2 - 25, gz + 25), "aluminium")
     m.add("toolhead", rbox(110, 70, 110, 8, x=15, y=-50, z=gz - 70), "printer_black")
     m.add("nozzles", cyl(8, 10, x=-10, y=-50, z=gz - 80).union(cyl(8, 10, x=40, y=-50, z=gz - 80)), "brass")
-    m.notes = {"envelope_mm": [W, D, H], "build_volume_mm": [350, 320, 325]}
+    m.notes = {"envelope_mm": [W, D, H], "build_volume_single_nozzle_mm": [325, 320, 325]}
     return m
 
 

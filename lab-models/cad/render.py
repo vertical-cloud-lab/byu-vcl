@@ -18,19 +18,23 @@ from common import MATERIALS, Model
 BG = "#fcfcfb"
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
 FONT_B = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-_cache: dict[int, pv.PolyData] = {}
+_cache: dict[tuple[int, float], tuple[object, pv.PolyData]] = {}
 
 
 def to_mesh(shape, tol: float = 0.1) -> pv.PolyData:
-    key = id(shape)
-    if key not in _cache:
+    """Tessellate once per shape. The cache holds the shape itself, so its id can't be reused by a
+    new object and hand back someone else's mesh."""
+    key = (id(shape), tol)
+    hit = _cache.get(key)
+    if hit is None or hit[0] is not shape:
         verts, tris = shape.tessellate(tol, 0.25)
         if not tris:
-            _cache[key] = pv.PolyData()
+            mesh = pv.PolyData()
         else:
             pts = np.array([(v.x, v.y, v.z) for v in verts])
-            _cache[key] = pv.PolyData(pts, np.hstack([[3, *t] for t in tris]))
-    return _cache[key]
+            mesh = pv.PolyData(pts, np.hstack([[3, *t] for t in tris]))
+        _cache[key] = (shape, mesh)
+    return _cache[key][1]
 
 
 def plotter(size=(1400, 1050)) -> pv.Plotter:
@@ -137,6 +141,8 @@ def contact_sheet(tiles: list[tuple[Path, str, str]], out: Path, cols: int = 5, 
     for i, (im, label, sublabel) in enumerate(ims):
         x0, y0 = (i % cols) * tile_w, head + (i // cols) * th
         sheet.paste(im, (x0 + (tile_w - im.width) // 2, y0 + (int(tile_w * 0.78) - im.height) // 2))
+        while fl.getlength(label) > tile_w - 20 and len(label) > 4:
+            label = label[:-2].rstrip() + "…" if not label.endswith("…") else label[:-2] + "…"
         dr.text((x0 + 12, y0 + int(tile_w * 0.78) + 4), label, fill=(20, 20, 20), font=fl)
         dr.text((x0 + 12, y0 + int(tile_w * 0.78) + 27), sublabel, fill=(95, 95, 92), font=fs)
     sheet.save(out)

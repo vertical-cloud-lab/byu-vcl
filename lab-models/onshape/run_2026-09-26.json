@@ -1,0 +1,142 @@
+{
+  "date": "2026-09-26",
+  "commit": "48a9e11",
+  "folder": "4213db40f9a2525e7c715685",
+  "documents": {
+    "sandbox": {
+      "name": "Sandbox objects (48a9e11)",
+      "document": "https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29",
+      "parentId": "4213db40f9a2525e7c715685",
+      "owner": "Vertical Cloud Lab",
+      "tabs": {
+        "Labware lineup": {
+          "state": "DONE",
+          "elements": [
+            "9c9c4a169ac1676eb3f9ca81"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29/e/9c9c4a169ac1676eb3f9ca81 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "Sandbox layout (spot D)": {
+          "state": "DONE",
+          "elements": [
+            "f830bb5bac1d59ce90b2e5db"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29/e/f830bb5bac1d59ce90b2e5db -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "AgileX PiPER with gripper (AgileX STEP)": {
+          "state": "DONE",
+          "elements": [
+            "8a15460fa2eeb012c3394d66"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29/e/8a15460fa2eeb012c3394d66 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        }
+      },
+      "assembly": "994d64b6634514271c212ff9"
+    },
+    "equipment": {
+      "name": "Lab equipment (48a9e11)",
+      "document": "https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff",
+      "parentId": "4213db40f9a2525e7c715685",
+      "owner": "Vertical Cloud Lab",
+      "tabs": {
+        "Bambu A1 mini": {
+          "state": "DONE",
+          "elements": [
+            "1018933798d5386eb1ffa4a6"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/1018933798d5386eb1ffa4a6 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "Bambu H2D": {
+          "state": "DONE",
+          "elements": [
+            "28181012fb437c817a68e5be"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/28181012fb437c817a68e5be -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "Opentrons OT-2 (Opentrons STEP)": {
+          "state": "DONE",
+          "elements": [
+            "f5d9cf988e152f6fce610803"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/f5d9cf988e152f6fce610803 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "AgileX PiPER with gripper (AgileX STEP)": {
+          "state": "DONE",
+          "elements": [
+            "f413cbe4d9175688482ebfad"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/f413cbe4d9175688482ebfad -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "CubXL": {
+          "state": "DONE",
+          "elements": [
+            "9bd9cea79e229458843f6997"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/9bd9cea79e229458843f6997 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "Lansmont M23 drop tower": {
+          "state": "DONE",
+          "elements": [
+            "7793ec207b0ce3609b77b841"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/7793ec207b0ce3609b77b841 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "AMAZEMET rePowder atomizer": {
+          "state": "DONE",
+          "elements": [
+            "3148aa4803db4658a1b507f7"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/3148aa4803db4658a1b507f7 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        }
+      }
+    },
+    "room": {
+      "name": "CB154 room (48a9e11)",
+      "document": "https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc",
+      "parentId": "4213db40f9a2525e7c715685",
+      "owner": "Vertical Cloud Lab",
+      "tabs": {
+        "CB154 with equipment": {
+          "state": "DONE",
+          "elements": [
+            "5d4f19dbeeaebba029f5dff1"
+          ],
+          "failure": null,
+          "rename_error": "POST /elements/d/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc/e/5d4f19dbeeaebba029f5dff1 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        }
+      }
+    }
+  },
+  "api_calls_used": 41,
+  "followups": [
+    {
+      "what": "folder vcl-shared > Lab Models made over the API, before the import",
+      "calls": 3,
+      "note": "1st POST /folders without ownerId/ownerType -> HTTP 400; GET /folders/{vcl-shared} for the owner; POST with owner -> 200"
+    },
+    {
+      "what": "shaded views (shaded_views.py)",
+      "calls": 2
+    },
+    {
+      "what": "arm fix: GET the assembly, then one occurrencetransforms POST for all 74 PiPER part instances",
+      "calls": 2
+    },
+    {
+      "what": "shaded view of the fixed assembly",
+      "calls": 1
+    }
+  ],
+  "session_calls_total": 49,
+  "tab_renames": "all 11 failed with HTTP 405 (no public element-rename endpoint); tabs keep the STEP file names"
+}

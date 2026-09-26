@@ -6,7 +6,9 @@ For each document in DOCS:
     1. create the document straight into the target folder, owned by the lab's team
        (ownerType 1 + ownerId), so nothing is left behind in the API key owner's account,
     2. import each STEP as its own tab (Onshape flattens each file into one Part Studio),
-    3. wait once, then poll each import until it is done, and name the tabs.
+    3. wait once, then poll each import until it is done (tabs keep the STEP file names: the
+       public API can't rename an element),
+    4. for the sandbox, add an assembly with AgileX's arm placed on the layout.
 
 The folder itself was made over the API too (`make_folder`): POST /folders works for API keys
 when the body carries the owner (`ownerId`, `ownerType`); without them it is HTTP 400. Moving
@@ -101,9 +103,10 @@ def sandbox_assembly(api: Api, did: str, wid: str, layout_eid: str, piper_eid: s
         api.call("POST", f"/assemblies/d/{did}/w/{wid}/e/{eid}/instances",
                  json={"documentId": did, "elementId": ps, "isWholePartStudio": True})
     asm = api.call("GET", f"/assemblies/d/{did}/w/{wid}/e/{eid}")
-    inst = {i.get("elementId"): i["id"] for i in asm["rootAssembly"]["instances"]}
+    # A whole-Part-Studio insert makes one instance per part (74 for AgileX's arm), so move them all
+    arm = [i["id"] for i in asm["rootAssembly"]["instances"] if i.get("elementId") == piper_eid]
     api.call("POST", f"/assemblies/d/{did}/w/{wid}/e/{eid}/occurrencetransforms",
-             json={"occurrences": [{"path": [inst[piper_eid]]}], "transform": PIPER_IN_SANDBOX, "isRelative": False})
+             json={"occurrences": [{"path": [a]} for a in arm], "transform": PIPER_IN_SANDBOX, "isRelative": False})
     return eid
 
 
@@ -135,7 +138,7 @@ def main() -> None:
             title, tabs = DOCS[k]
             print(f"{title} ({sha}): " + ", ".join(f"{t} [{p.stat().st_size / 1e6:.1f} MB]" for t, p in tabs))
         n = sum(len(DOCS[k][1]) for k in keys)
-        print(f"about {len(keys) + 3 * n} calls (create, then upload, poll and rename per tab)")
+        print(f"about {len(keys) + 2 * n + 5} calls (create, then upload and poll per tab, plus the sandbox assembly)")
         return
     api = Api()
     record = {"date": time.strftime("%Y-%m-%d"), "commit": sha, "folder": args.folder, "documents": {}}
@@ -161,13 +164,8 @@ def main() -> None:
             rec["tabs"][tab] = {"state": st["requestState"], "elements": st.get("resultElementIds"),
                                 "failure": st.get("failureReason")}
             print(f"  {tab}: {st['requestState']}", flush=True)
-        # name the tabs after the models rather than the file names
-        for tab, info in rec["tabs"].items():
-            for eid in info.get("elements") or []:
-                try:
-                    api.call("POST", f"/elements/d/{did}/w/{wid}/e/{eid}", json={"name": tab})
-                except RuntimeError as exc:
-                    info["rename_error"] = str(exc)[:200]
+        # Tabs keep their STEP file names: the public API has no element rename (POST /elements/...
+        # is HTTP 405, tried 2026-09-26), so the files are named for what they hold instead.
         if k == "sandbox":
             els = {t: (i.get("elements") or [None])[0] for t, i in rec["tabs"].items()}
             layout = next((e for t, e in els.items() if t.startswith("Sandbox layout")), None)

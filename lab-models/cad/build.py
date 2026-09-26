@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import time
 
 import cadquery as cq
@@ -89,7 +90,10 @@ def main() -> None:
         # The room gets Opentrons' OT-2. AgileX's arm stays an envelope there: re-exported, its
         # 42 MB STEP grows to ~100 MB, so in Onshape it goes into the sandbox as an assembly instead.
         export(room.cb154(eq, {"opentrons_ot2": vendor.ot2()}), EXPORTS / "onshape")
-    write_json(EXPORTS / "models.json", index)
+    old = EXPORTS / "models.json"               # --only rebuilds merge into the existing index
+    if args.only and old.exists():
+        index = {**json.loads(old.read_text()), **index}
+    write_json(old, index)
     print(f"exported {len(index)} models in {time.time() - t0:.0f} s")
     if args.render:
         import renders

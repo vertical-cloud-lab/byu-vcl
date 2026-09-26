@@ -99,6 +99,34 @@ def table(x0, y0, x1, y1, name="table", h=BENCH_H) -> Model:
     return m
 
 
+def _window(x0: float, x1: float) -> Model:
+    """The pass-through window in the top wall, its roll-down shutter shut."""
+    m = Model("window", "pass-through window", source="#7 photos")
+    m.add("shutter", box(x0, D - 5.0, 1000.0, x1, D, 1900.0), "paint_white")
+    m.add("coil hood", box(x0 - 40, D - 160.0, 1900.0, x1 + 40, D, 2080.0), "paint_white")
+    return m
+
+
+def island(x0, y0, x1, y1, h=BENCH_H) -> Model:
+    m = Model("island", "black epoxy island", source="#7 photos")
+    m.add("top", box(x0, y0, h - 25, x1, y1, h), "benchtop")
+    m.add("cabinets", box(x0 + 30, y0 + 30, 0, x1 - 30, y1 - 30, h - 25), "wood")
+    return m
+
+
+def glovebox() -> Model:
+    """A benchtop glove box (the doser's Shadow box, #30), about 900 x 600 x 650 mm (assumed)."""
+    m = Model("glovebox", "glove box", source="assumed")
+    shell = rbox(900.0, 600.0, 650.0, 20.0).faces(">Z").shell(-8.0)
+    for x in (-200.0, 200.0):
+        shell = shell.cut(cq.Workplane("XZ").circle(100.0).extrude(-30).translate((x, -300.0 - 5, 330.0)))
+    m.add("box", shell, "acrylic")
+    m.add("base", rbox(920.0, 620.0, 40.0, 20.0, z=-5.0), "printer_grey")
+    for x in (-200.0, 200.0):
+        m.add(f"glove port {x:+.0f}", cq.Workplane("XZ").circle(110.0).circle(95.0).extrude(40.0).translate((x, -300.0 + 10, 330.0)), "printer_black")
+    return m
+
+
 def envelope(key: str, title: str, dims, x, y, z=0.0, rz=0.0, material="printer_white") -> Model:
     """A labelled box standing in for vendor geometry that stays out of the repo (OT-2, PiPER)."""
     m = Model(key, title, source="envelope of the vendor STEP")
@@ -111,29 +139,38 @@ def cb154(eq: dict[str, Model], vendor_models: dict[str, Model] | None = None) -
     envelopes, so the committed STEP holds no vendor geometry."""
     m = Model("cb154_room", "CB154 with equipment (rough)", source="plan + photos; see room.py")
     parts: list[tuple[str, Model]] = [("shell", shell()), ("clean room", clean_room())]
-    # atomizer inside its clean room, against the top wall (PLACED: #31, #124)
-    parts.append(("atomizer", eq["amazemet_repowder"].moved(2000.0, D - 480.0, 0.0, 0.0)))
-    # spot D: the PiPER sandbox table against room 158's wall (GUESS for the arm: #229 spots D/E)
+    # PLACED: the atomizer stands against a painted cinderblock wall inside its softwall clean room
+    # in the page-top-left corner (#31, #124, the 2026-09-03 "Placing the Atomizer" short).
+    parts.append(("atomizer", eq["amazemet_repowder"].moved(2100.0, D - 480.0, 0.0, 0.0)))
+    # PLACED: a wood-grain counter runs along the top wall under the pass-through window, and the
+    # OT-2 sits at its right end with door 154-2 immediately to its right and cinderblock behind it
+    # (#7 photos; the OT-2 livestream after the 2026-09-10 move).
+    parts.append(("counter top wall", bench(4400.0, D - 760.0, 5990.0, D, "counter, top wall")))
+    parts.append(("pass-through window", _window(4600.0, 5500.0)))
+    if vendor_models and "opentrons_ot2" in vendor_models:
+        parts.append(("ot2", vendor_models["opentrons_ot2"].moved(5640.0, D - 330.0, BENCH_H, 180.0)))
+    else:
+        parts.append(("ot2", envelope("ot2_env", "OT-2 (envelope)", (624, 567, 662), 5640.0, D - 330.0, BENCH_H, 180.0)))
+    # GUESS: the CubXL on the same counter, left of the OT-2 (it moved into CB154, #133; the photo
+    # shows a dark wood bench like this one)
+    parts.append(("cubxl", eq["cubxl"].moved(4800.0, D - 400.0, BENCH_H, 180.0)))
+    # PLACED (position approximate): the black epoxy island with the glove box on it (#7 photos,
+    # the 2026-08-26 multi-doser pitch)
+    parts.append(("island", island(2950.0, 3900.0, 4150.0, 6250.0)))
+    parts.append(("glovebox", glovebox().moved(3550.0, 5050.0, BENCH_H, 90.0)))
+    # spot D: the PiPER sandbox table (#229)
     x0, y0, x1, y1 = SPOT_D
     parts.append(("spot D table", table(x0, y0, x1, y1, "spot D table")))
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     if vendor_models and "agilex_piper" in vendor_models:
         parts.append(("piper", vendor_models["agilex_piper"].moved(cx, cy, BENCH_H, 0.0)))
     else:
-        parts.append(("piper", envelope("piper_env", "PiPER (envelope)", (145, 550, 466), cx, cy, BENCH_H)))
-    # benches along the right wall and the bottom wall (GUESS from the #124 cabinet photos)
-    parts.append(("bench right", bench(W - 760, 700, W, 4900, "bench right")))
-    parts.append(("bench bottom", bench(4400, 0, W - 800, 760, "bench bottom")))
-    # OT-2 on the right bench (GUESS), CubXL beside it (PLACED in CB154: #133)
-    if vendor_models and "opentrons_ot2" in vendor_models:
-        parts.append(("ot2", vendor_models["opentrons_ot2"].moved(W - 380, 3900, BENCH_H, -90.0)))
-    else:
-        parts.append(("ot2", envelope("ot2_env", "OT-2 (envelope)", (624, 567, 662), W - 380, 3900, BENCH_H, -90.0)))
-    parts.append(("cubxl", eq["cubxl"].moved(W - 380, 2250, BENCH_H, -90.0)))
-    # printers on the bottom bench (GUESS): H2D and A1 mini
-    parts.append(("h2d", eq["bambu_h2d"].moved(5000, 380, BENCH_H, 180.0)))
-    parts.append(("a1 mini", eq["bambu_a1_mini"].moved(5750, 380, BENCH_H, 180.0)))
-    # the drop tower is in the tensegrity lab, not here; it is modelled but not placed
+        parts.append(("piper", envelope("piper_env", "PiPER (envelope)", (145, 550, 466), cx, cy + 180.0, BENCH_H)))
+    # GUESS: white tables along the right wall (#7 photos show them with blue bins), printers on them
+    parts.append(("bench right", table(W - 760.0, 700.0, W, 4900.0, "tables, right wall")))
+    parts.append(("h2d", eq["bambu_h2d"].moved(W - 380.0, 1400.0, BENCH_H, -90.0)))
+    parts.append(("a1 mini", eq["bambu_a1_mini"].moved(W - 380.0, 2200.0, BENCH_H, -90.0)))
+    # the drop tower is used by the tensegrity project in another lab (#27, #28): modelled, not placed
     for label, model in parts:
         for p in model.parts:
             m.add(f"{label} - {p.name}", p.shape, p.material)
@@ -160,13 +197,24 @@ def render_room(model: Model) -> None:
             pl.add_mesh(mesh, color=(r, g, b), opacity=a, specular=spec, smooth_shading=True, split_sharp_edges=True)
 
     views = {
-        "cb154_iso": (("wall bottom", "wall left", "door entrance", "door 154-1"), (-0.55, -1.0, 1.1), 1.35,
-                      "CB154, rough model (cutaway from the entrance side)"),
-        "cb154_top": (("",), (0, 0, 1), 1.15, "CB154 from above (north is to the left)"),
+        "cb154_iso": (("wall bottom", "wall right", "door entrance", "door to 154A"), (0.8, -1.0, 1.25), 1.3,
+                      "CB154, rough model (cutaway from the entrance corner)"),
+        "cb154_top": ((), (0, 0, 1), 1.15, "CB154 from above (north is to the left)"),
+    }
+    labels = {                                  # where each thing is, for the captions on the renders
+        "atomizer (clean room)": (2100.0, D - 700.0, 1700.0), "OT-2": (5640.0, D - 330.0, 1650.0),
+        "CubXL": (4800.0, D - 400.0, 1500.0), "island + glove box": (3550.0, 5050.0, 1650.0),
+        "spot D: PiPER sandbox": ((SPOT_D[0] + SPOT_D[2]) / 2, (SPOT_D[1] + SPOT_D[3]) / 2, 1500.0),
+        "H2D": (W - 380.0, 1400.0, 1650.0), "A1 mini": (W - 380.0, 2200.0, 1400.0),
+        "room 158": (1300.0, 2000.0, 2800.0), "pillar": (1720.0, 6290.0, 2800.0),
+        "entrance": (3590.0, 0.0, 2300.0), "154-2": (6475.0, D, 2300.0),
     }
     for name, (hide, direction, zoom, title) in views.items():
         pl = plotter((1800, 1400))
-        draw(pl, hide if name != "cb154_top" else ())
+        draw(pl, hide)
+        pl.add_point_labels(np.array(list(labels.values())), list(labels), font_size=18, point_size=1,
+                            shape_opacity=0.75, shape_color="white", text_color="black", always_visible=True,
+                            show_points=False, margin=4)
         c = np.array([W / 2, D / 2, 600.0])
         d = np.array(direction, float)
         d /= np.linalg.norm(d)

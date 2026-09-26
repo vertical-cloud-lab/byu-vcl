@@ -744,8 +744,8 @@
       514.0,
       626.0
     ],
-    "build_volume_mm": [
-      350,
+    "build_volume_single_nozzle_mm": [
+      325,
       320,
       325
     ]
@@ -844,7 +844,7 @@
   "cb154_room": {
     "title": "CB154 with equipment (rough)",
     "source": "plan + photos; see room.py",
-    "parts": 114,
+    "parts": 125,
     "bbox_mm": [
       8158.0,
       9865.0,
