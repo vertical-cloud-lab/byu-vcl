@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="215.9mm" height="279.4mm" viewBox="0 0 215.9 279.4">
+  <path d="M 51.950,162.000 L 51.950,127.000 L 38.950,127.000 L 38.365,126.942 L 37.802,126.772 L 37.283,126.494 L 36.829,126.121 L 36.456,125.667 L 36.178,125.148 L 36.008,124.585 L 35.950,124.000 L 35.950,114.400 L 39.950,112.000 L 35.950,109.600 L 35.950,100.000 L 36.008,99.415 L 36.178,98.852 L 36.456,98.333 L 36.829,97.879 L 37.283,97.506 L 37.802,97.228 L 38.365,97.058 L 38.950,97.000 L 51.950,97.000 L 51.950,62.000 L 51.976,61.446 L 52.052,60.898 L 52.179,60.358 L 52.355,59.833 L 52.579,59.326 L 52.849,58.841 L 53.162,58.384 L 53.516,57.958 L 53.908,57.566 L 54.334,57.212 L 54.791,56.899 L 55.276,56.629 L 55.783,56.405 L 56.308,56.229 L 56.848,56.102 L 57.396,56.026 L 57.950,56.000 L 92.950,56.000 L 92.950,43.000 L 93.008,42.415 L 93.178,41.852 L 93.456,41.333 L 93.829,40.879 L 94.283,40.506 L 94.802,40.228 L 95.365,40.058 L 95.950,40.000 L 105.550,40.000 L 107.950,44.000 L 110.350,40.000 L 119.950,40.000 L 120.535,40.058 L 121.098,40.228 L 121.617,40.506 L 122.071,40.879 L 122.444,41.333 L 122.722,41.852 L 122.892,42.415 L 122.950,43.000 L 122.950,56.000 L 157.950,56.000 L 158.504,56.026 L 159.053,56.102 L 159.592,56.229 L 160.117,56.405 L 160.624,56.629 L 161.109,56.899 L 161.566,57.212 L 161.992,57.566 L 162.384,57.958 L 162.738,58.384 L 163.051,58.841 L 163.321,59.326 L 163.545,59.833 L 163.721,60.358 L 163.848,60.898 L 163.924,61.446 L 163.950,62.000 L 163.950,97.000 L 176.950,97.000 L 177.535,97.058 L 178.098,97.228 L 178.617,97.506 L 179.071,97.879 L 179.444,98.333 L 179.722,98.852 L 179.892,99.415 L 179.950,100.000 L 179.950,109.600 L 175.950,112.000 L 179.950,114.400 L 179.950,124.000 L 179.892,124.585 L 179.722,125.148 L 179.444,125.667 L 179.071,126.121 L 178.617,126.494 L 178.098,126.772 L 177.535,126.942 L 176.950,127.000 L 163.950,127.000 L 163.950,162.000 L 163.924,162.554 L 163.848,163.102 L 163.721,163.642 L 163.545,164.167 L 163.321,164.674 L 163.051,165.159 L 162.738,165.616 L 162.384,166.042 L 161.992,166.434 L 161.566,166.788 L 161.109,167.101 L 160.624,167.371 L 160.117,167.595 L 159.592,167.771 L 159.053,167.898 L 158.504,167.974 L 157.950,168.000 L 122.950,168.000 L 122.950,181.000 L 122.892,181.585 L 122.722,182.148 L 122.444,182.667 L 122.071,183.121 L 121.617,183.494 L 121.098,183.772 L 120.535,183.942 L 119.950,184.000 L 110.350,184.000 L 107.950,180.000 L 105.550,184.000 L 95.950,184.000 L 95.365,183.942 L 94.802,183.772 L 94.283,183.494 L 93.829,183.121 L 93.456,182.667 L 93.178,182.148 L 93.008,181.585 L 92.950,181.000 L 92.950,168.000 L 57.950,168.000 L 57.396,167.974 L 56.848,167.898 L 56.308,167.771 L 55.783,167.595 L 55.276,167.371 L 54.791,167.101 L 54.334,166.788 L 53.908,166.434 L 53.516,166.042 L 53.162,165.616 L 52.849,165.159 L 52.579,164.674 L 52.355,164.167 L 52.179,163.642 L 52.052,163.102 L 51.976,162.554 Z" fill="none" stroke="#000" stroke-width="0.3"/>
+  <line x1="31.95" y1="112.00" x2="183.95" y2="112.00" stroke="#666" stroke-width="0.15" stroke-dasharray="6 1.5 1 1.5"/>
+  <line x1="107.95" y1="188.00" x2="107.95" y2="36.00" stroke="#666" stroke-width="0.15" stroke-dasharray="6 1.5 1 1.5"/>
+  <circle cx="107.95" cy="112.0" r="25.4" fill="none" stroke="#c00000" stroke-width="0.35" stroke-dasharray="3 1.5"/>
+  <circle cx="107.95" cy="112.0" r="0.8" fill="#c00000"/>
+  <circle cx="74.95" cy="145.00" r="2.5" fill="none" stroke="#000" stroke-width="0.3"/>
+  <path d="M 70.95,145.00 H 78.95 M 74.95,141.00 V 149.00" stroke="#000" stroke-width="0.15"/>
+  <circle cx="74.95" cy="79.00" r="2.5" fill="none" stroke="#000" stroke-width="0.3"/>
+  <path d="M 70.95,79.00 H 78.95 M 74.95,75.00 V 83.00" stroke="#000" stroke-width="0.15"/>
+  <circle cx="140.95" cy="145.00" r="2.5" fill="none" stroke="#000" stroke-width="0.3"/>
+  <path d="M 136.95,145.00 H 144.95 M 140.95,141.00 V 149.00" stroke="#000" stroke-width="0.15"/>
+  <circle cx="140.95" cy="79.00" r="2.5" fill="none" stroke="#000" stroke-width="0.3"/>
+  <path d="M 136.95,79.00 H 144.95 M 140.95,75.00 V 83.00" stroke="#000" stroke-width="0.15"/>
+  <path d="M 102.95,146.00 L 112.95,146.00 L 107.95,156.00 Z" fill="none" stroke="#000" stroke-width="0.25"/>
+  <text x="107.95" y="14.00" font-family="Helvetica, Arial, sans-serif" font-size="5.0" text-anchor="middle" font-weight="bold" fill="#000">OT-2 lid camera mount — drill template, ACTUAL SIZE</text>
+  <text x="107.95" y="20.50" font-family="Helvetica, Arial, sans-serif" font-size="3.2" text-anchor="middle" font-weight="normal" fill="#000">Print at 100% / “Actual size”, then check both scale bars below before drilling.</text>
+  <text x="51.95" y="45.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="start" font-weight="normal" fill="#c00000">lens cutout (red):</text>
+  <text x="51.95" y="49.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="start" font-weight="normal" fill="#c00000">Ø50.8 mm = 2 in hole saw</text>
+  <text x="163.95" y="45.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="end" font-weight="normal" fill="#000">4 × Ø5.0 mm bolt holes</text>
+  <text x="163.95" y="49.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="end" font-weight="normal" fill="#000">for M4 screws + nylon washers</text>
+  <text x="163.95" y="175.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="end" font-weight="normal" fill="#000">X axis → plate columns 1–12</text>
+  <text x="163.95" y="179.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="end" font-weight="normal" fill="#000">(sensor long axis)</text>
+  <text x="51.95" y="175.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="start" font-weight="normal" fill="#000">▽ = cable side (−Y),</text>
+  <text x="51.95" y="179.00" font-family="Helvetica, Arial, sans-serif" font-size="2.8" text-anchor="start" font-weight="normal" fill="#000">matches the arrow on the base</text>
+  <text x="109.95" y="116.20" font-family="Helvetica, Arial, sans-serif" font-size="2.4" text-anchor="start" font-weight="normal" fill="#c00000">pilot / centre punch</text>
+  <line x1="30.0" y1="196.0" x2="80.0" y2="196.0" stroke="#0050d0" stroke-width="0.6"/>
+  <line x1="30.0" y1="194.0" x2="30.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="40.0" y1="194.0" x2="40.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="50.0" y1="194.0" x2="50.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="60.0" y1="194.0" x2="60.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="70.0" y1="194.0" x2="70.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="80.0" y1="194.0" x2="80.0" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <text x="30.00" y="202.00" font-family="Helvetica, Arial, sans-serif" font-size="3.0" text-anchor="start" font-weight="normal" fill="#0050d0">50 mm</text>
+  <line x1="110.0" y1="196.0" x2="160.8" y2="196.0" stroke="#0050d0" stroke-width="0.6"/>
+  <line x1="110.000" y1="194.0" x2="110.000" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="116.350" y1="195.0" x2="116.350" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="122.700" y1="195.0" x2="122.700" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="129.050" y1="195.0" x2="129.050" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="135.400" y1="194.0" x2="135.400" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="141.750" y1="195.0" x2="141.750" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="148.100" y1="195.0" x2="148.100" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="154.450" y1="195.0" x2="154.450" y2="197.0" stroke="#0050d0" stroke-width="0.3"/>
+  <line x1="160.800" y1="194.0" x2="160.800" y2="198.0" stroke="#0050d0" stroke-width="0.3"/>
+  <text x="110.00" y="202.00" font-family="Helvetica, Arial, sans-serif" font-size="3.0" text-anchor="start" font-weight="normal" fill="#0050d0">2 in</text>
+  <text x="18.00" y="212.00" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">1. Tape the mount down first and position it with the live preview (preview_server.py) until the plate is</text>
+  <text x="23.00" y="217.40" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">centred and square. Trace the base outline and the four tab notches onto the lid with a fine marker.</text>
+  <text x="18.00" y="222.80" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">2. Line this sheet (or the printed drill template) up with the tracing and centre-punch the five marks.</text>
+  <text x="18.00" y="228.20" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">3. Take the window off (4 screws, slide, lift). Clamp it over a wooden backer board, keep any film on, and</text>
+  <text x="23.00" y="233.60" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">use a sharp plastic or step drill at low speed with light pressure; ease off before breaking through.</text>
+  <text x="18.00" y="239.00" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">4. Cut the lens hole with a 50.8 mm (2 in) hole saw at low speed; deburr every edge.</text>
+  <text x="18.00" y="244.40" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">5. Bolt with M4 button-head screws from inside the robot into the nuts trapped in the base,</text>
+  <text x="23.00" y="249.80" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">with a nylon washer under each head: the pipette head passes ~9 mm below the window.</text>
+  <text x="23.00" y="255.20" font-family="Helvetica, Arial, sans-serif" font-size="2.9" text-anchor="start" font-weight="normal" fill="#000">Snug only: acrylic cracks from over-tightening and from holes drilled near an edge.</text>
+  <text x="107.95" y="269.40" font-family="Helvetica, Arial, sans-serif" font-size="2.4" text-anchor="middle" font-weight="normal" fill="#666">vertical-cloud-lab/byu-vcl · ot2-overhead-camera/lid-mount · generated by cad/template.py</text>
+</svg>

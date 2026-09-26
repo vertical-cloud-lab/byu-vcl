@@ -1,0 +1,50 @@
+{
+  "overlap_mm3": {
+    "base vs lens": 0,
+    "base vs ring/thumbscrew sweep": 0,
+    "base vs camera": 0,
+    "deck vs camera": 0,
+    "deck vs lens": 0,
+    "deck vs Pi 5": 0,
+    "base vs lid": 0,
+    "base vs deck (posts in their sockets)": 0,
+    "view cone at 7.5 mm vs base": 0,
+    "view cone at 7.5 mm vs lid": 0,
+    "view cone at 25 mm vs lid": 0,
+    "deck vs Pi spacers": 0,
+    "Pi spacers vs Pi 5": 0
+  },
+  "gap_mm": {
+    "lens front barrel to collar": 2.9999999999999982,
+    "lens front above lid top": 9.0,
+    "thumbscrews to nearest post": 32.84534959096617,
+    "camera to base": 33.562445840513924,
+    "Pi 5 board to deck screw heads (plan)": 4.25,
+    "post to socket wall, per side": 0.2,
+    "M3 screw tip below its nut": 6.599999999999994
+  },
+  "heights_mm": {
+    "lens front (Z)": 9.0,
+    "lens flange": 72.8,
+    "CS seat": 77.83,
+    "camera PCB back": 93.66,
+    "deck underside": 99.66,
+    "post top (in the deck's sockets)": 102.16,
+    "M3 nut slot, floor": 94.66,
+    "deck top": 104.66,
+    "Pi 5 board underside": 109.66,
+    "overall height above lid (approx.)": 127.25999999999999,
+    "post height": 96.16
+  },
+  "optics": {
+    "shortest vignette-free focal length (mm)": 7.5,
+    "cutout diameter (mm)": 50.8
+  },
+  "printed_volume_cm3": {
+    "base": 111.2,
+    "deck": 60.7,
+    "drill_template": 28.4,
+    "spacers": 1.0
+  },
+  "pass": true
+}

@@ -1,0 +1,228 @@
+{
+  "bambu_studio": "02.08.02.61",
+  "presets": {
+    "machine": "Bambu Lab A1 mini 0.4 nozzle",
+    "process": "0.20mm Standard @BBL A1M",
+    "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "overrides": {
+    "wall_loops": "3",
+    "sparse_infill_density": "25%",
+    "curr_bed_type": "Textured PEI Plate",
+    "enable_circle_compensation": "1"
+  },
+  "filament_colour": "#000000",
+  "return_code": 0,
+  "error_string": "Success.",
+  "support_necessity_checks_run": 5,
+  "thumbnails_embedded": [
+    "Metadata/pick_1.png",
+    "Metadata/pick_2.png",
+    "Metadata/pick_3.png",
+    "Metadata/pick_4.png",
+    "Metadata/plate_1.png",
+    "Metadata/plate_1_small.png",
+    "Metadata/plate_2.png",
+    "Metadata/plate_2_small.png",
+    "Metadata/plate_3.png",
+    "Metadata/plate_3_small.png",
+    "Metadata/plate_4.png",
+    "Metadata/plate_4_small.png",
+    "Metadata/plate_no_light_1.png",
+    "Metadata/plate_no_light_2.png",
+    "Metadata/plate_no_light_3.png",
+    "Metadata/plate_no_light_4.png",
+    "Metadata/top_1.png",
+    "Metadata/top_2.png",
+    "Metadata/top_3.png",
+    "Metadata/top_4.png"
+  ],
+  "plates": [
+    {
+      "plate": 1,
+      "name": "Base",
+      "objects": [
+        "base_1"
+      ],
+      "print_time_s": 9133,
+      "filament_g": 81.12,
+      "filament_m": 26.77,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 368,
+        "Bridge": 588,
+        "Custom": 346,
+        "Flush": 28,
+        "Gap infill": 113,
+        "Inner wall": 1600,
+        "Internal solid infill": 1046,
+        "Outer wall": 1139,
+        "Overhang wall": 18,
+        "Sparse infill": 1833,
+        "Top surface": 319,
+        "Travel": 1750,
+        "Undefined": 1734
+      }
+    },
+    {
+      "plate": 2,
+      "name": "Deck + spacers",
+      "objects": [
+        "deck_1",
+        "spacers_1"
+      ],
+      "print_time_s": 4189,
+      "filament_g": 43.5,
+      "filament_m": 14.35,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 352,
+        "Bridge": 555,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 91,
+        "Inner wall": 286,
+        "Internal solid infill": 924,
+        "Outer wall": 326,
+        "Overhang wall": 13,
+        "Sparse infill": 647,
+        "Top surface": 258,
+        "Travel": 379,
+        "Undefined": 361
+      }
+    },
+    {
+      "plate": 3,
+      "name": "Drill template",
+      "objects": [
+        "drill_template_1"
+      ],
+      "print_time_s": 3092,
+      "filament_g": 31.84,
+      "filament_m": 10.51,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 386,
+        "Bridge": 529,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 10,
+        "Inner wall": 121,
+        "Internal solid infill": 994,
+        "Outer wall": 81,
+        "Sparse infill": 99,
+        "Top surface": 369,
+        "Travel": 146,
+        "Undefined": 128
+      }
+    },
+    {
+      "plate": 4,
+      "name": "Fit coupon",
+      "objects": [
+        "fit_coupon_1"
+      ],
+      "print_time_s": 931,
+      "filament_g": 2.46,
+      "filament_m": 0.81,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 16,
+        "Bridge": 12,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 13,
+        "Inner wall": 147,
+        "Internal solid infill": 66,
+        "Outer wall": 96,
+        "Overhang wall": 5,
+        "Sparse infill": 50,
+        "Top surface": 21,
+        "Travel": 148,
+        "Undefined": 129
+      }
+    }
+  ],
+  "total_print_time_s": 17345,
+  "total_filament_g": 158.92
+}

@@ -1,0 +1,386 @@
+{
+  "source": "lid_mount_A1mini_PLA.3mf",
+  "design": {
+    "socket_clear": 0.2,
+    "socket_corner_r": 1.0,
+    "m3_nut_slot_w": 5.8,
+    "m3_nut_slot_h": 3.0,
+    "m25_nut_af": 5.3,
+    "m4_nut_af": 7.3,
+    "m3_clear_d": 3.4,
+    "m25_clear_d": 2.8,
+    "bolt_clear_d": 4.5
+  },
+  "bambu_model": {
+    "hole": {
+      "c1": 0.0,
+      "c2": -0.008,
+      "c3": 0.23415,
+      "lo": 0.088,
+      "hi": 0.22
+    },
+    "contour": {
+      "c1": 0.0,
+      "c2": 0.008,
+      "c3": -0.041,
+      "lo": -0.035,
+      "hi": 0.033
+    }
+  },
+  "as_sliced": {
+    "layers": {
+      "post (base, Z)": 100.81,
+      "nut slot (base, Z)": 96.16,
+      "socket (deck, print Z)": 3.8499999999999943
+    },
+    "posts": [
+      {
+        "post": [
+          -47.0,
+          -47.0
+        ],
+        "post_w_xy": [
+          9.998,
+          9.995
+        ],
+        "socket_w_xy": [
+          10.399,
+          10.396
+        ],
+        "clear_per_side_xy": [
+          0.2,
+          0.2
+        ],
+        "corner_clear_min": 0.334,
+        "socket_centre_vs_nominal": [
+          0.0,
+          0.001
+        ]
+      },
+      {
+        "post": [
+          -47.0,
+          47.0
+        ],
+        "post_w_xy": [
+          9.998,
+          9.995
+        ],
+        "socket_w_xy": [
+          10.399,
+          10.396
+        ],
+        "clear_per_side_xy": [
+          0.2,
+          0.2
+        ],
+        "corner_clear_min": 0.334,
+        "socket_centre_vs_nominal": [
+          0.0,
+          0.001
+        ]
+      },
+      {
+        "post": [
+          47.0,
+          -47.0
+        ],
+        "post_w_xy": [
+          9.998,
+          9.995
+        ],
+        "socket_w_xy": [
+          10.399,
+          10.396
+        ],
+        "clear_per_side_xy": [
+          0.2,
+          0.2
+        ],
+        "corner_clear_min": 0.334,
+        "socket_centre_vs_nominal": [
+          -0.0,
+          0.001
+        ]
+      },
+      {
+        "post": [
+          47.0,
+          47.0
+        ],
+        "post_w_xy": [
+          9.998,
+          9.995
+        ],
+        "socket_w_xy": [
+          10.399,
+          10.396
+        ],
+        "clear_per_side_xy": [
+          0.2,
+          0.2
+        ],
+        "corner_clear_min": 0.334,
+        "socket_centre_vs_nominal": [
+          0.0,
+          0.001
+        ]
+      }
+    ],
+    "nut_slots": [
+      {
+        "post": [
+          -47.0,
+          -47.0
+        ],
+        "slot_w": 5.8
+      },
+      {
+        "post": [
+          -47.0,
+          47.0
+        ],
+        "slot_w": 5.8
+      },
+      {
+        "post": [
+          47.0,
+          -47.0
+        ],
+        "slot_w": 5.8
+      },
+      {
+        "post": [
+          47.0,
+          47.0
+        ],
+        "slot_w": 5.8
+      }
+    ],
+    "nut_slot_z": {
+      "floor": 94.6,
+      "roof": 97.6,
+      "height": 3.0,
+      "design": [
+        94.66,
+        97.66
+      ]
+    },
+    "holes": {
+      "M3 clearance, deck (design 3.4)": {
+        "d_equiv": 3.809,
+        "af_y": 3.81
+      },
+      "M2.5 clearance, camera boss (design 2.8)": {
+        "d_equiv": 3.221,
+        "af_y": 3.222
+      },
+      "M4 clearance, base (design 4.5)": {
+        "d_equiv": 4.893,
+        "af_y": 4.894
+      }
+    },
+    "nut_traps": {
+      "M2.5 camera trap, first layer (design AF 5.3)": {
+        "d_equiv": 6.196,
+        "af_y": 5.9
+      },
+      "M2.5 camera trap, layer 6 (design AF 5.3)": {
+        "d_equiv": 5.565,
+        "af_y": 5.3
+      },
+      "M2.5 Pi trap (design AF 5.3)": {
+        "d_equiv": 5.565,
+        "af_y": 5.3
+      },
+      "M4 trap (design AF 7.3)": {
+        "d_equiv": 7.666,
+        "af_y": 7.3
+      }
+    }
+  },
+  "predicted": {
+    "M3 clearance, deck (design 3.4)": {
+      "as_sliced": 3.809,
+      "predicted": 3.402
+    },
+    "M2.5 clearance, camera boss (design 2.8)": {
+      "as_sliced": 3.221,
+      "predicted": 2.804
+    },
+    "M4 clearance, base (design 4.5)": {
+      "as_sliced": 4.893,
+      "predicted": 4.503
+    },
+    "M2.5 camera trap, first layer (design AF 5.3)": {
+      "as_sliced_af": 5.9,
+      "predicted_af": 5.724
+    },
+    "M2.5 camera trap, layer 6 (design AF 5.3)": {
+      "as_sliced_af": 5.3,
+      "predicted_af": 5.124
+    },
+    "M2.5 Pi trap (design AF 5.3)": {
+      "as_sliced_af": 5.3,
+      "predicted_af": 5.124
+    },
+    "M4 trap (design AF 7.3)": {
+      "as_sliced_af": 7.3,
+      "predicted_af": 7.124
+    }
+  },
+  "monte_carlo": {
+    "post_in_socket": {
+      "flats, per side (as sliced)": 0.2,
+      "corners (as sliced)": 0.334,
+      "flats, per side (predicted median)": 0.145,
+      "flats, per side (5th-95th percentile)": [
+        0.075,
+        0.215
+      ],
+      "corners (predicted median)": 0.099,
+      "P(post top fits its socket)": 0.99,
+      "P(fits, and all four drop in without flexing a post)": 0.382,
+      "P(tight: pushes in with up to 0.05 mm interference)": 0.01,
+      "P(needs trimming: over 0.05 mm interference)": 0.0
+    },
+    "m3_nut_in_slot": {
+      "slot width (as sliced)": 5.8,
+      "slot width (predicted median)": 5.624,
+      "P(nut slides in)": 0.998,
+      "P(nut pressed in: up to 0.1 mm interference)": 0.002,
+      "P(nut won't go)": 0.0,
+      "P(loose: gap over 0.3)": 0.145
+    }
+  },
+  "sweep": {
+    "socket_clear": [
+      0.05,
+      0.075,
+      0.1,
+      0.125,
+      0.15,
+      0.175,
+      0.2,
+      0.225,
+      0.25,
+      0.275,
+      0.3,
+      0.325,
+      0.35,
+      0.375,
+      0.4
+    ],
+    "P_fits": {
+      "corners concentric (r = 1.5 + clear)": [
+        0.0,
+        0.0,
+        0.001,
+        0.008,
+        0.037,
+        0.12,
+        0.286,
+        0.515,
+        0.739,
+        0.895,
+        0.968,
+        0.992,
+        0.999,
+        1.0,
+        1.0
+      ],
+      "corners relieved (r = 1.0)": [
+        0.013,
+        0.071,
+        0.243,
+        0.528,
+        0.799,
+        0.946,
+        0.991,
+        0.999,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "flats_median": {
+      "corners concentric (r = 1.5 + clear)": [
+        -0.005,
+        0.02,
+        0.045,
+        0.07,
+        0.095,
+        0.12,
+        0.145,
+        0.17,
+        0.195,
+        0.22,
+        0.245,
+        0.27,
+        0.295,
+        0.32,
+        0.345
+      ],
+      "corners relieved (r = 1.0)": [
+        -0.005,
+        0.02,
+        0.045,
+        0.07,
+        0.095,
+        0.12,
+        0.145,
+        0.17,
+        0.195,
+        0.22,
+        0.245,
+        0.27,
+        0.295,
+        0.32,
+        0.345
+      ]
+    },
+    "m3_nut_slot_w": [
+      5.5,
+      5.55,
+      5.6,
+      5.65,
+      5.7,
+      5.75,
+      5.8,
+      5.85,
+      5.9,
+      5.95,
+      6.0
+    ],
+    "P_nut_slides": [
+      0.144,
+      0.332,
+      0.573,
+      0.789,
+      0.924,
+      0.983,
+      0.998,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "P_nut_loose": [
+      0.0,
+      0.0,
+      0.0,
+      0.001,
+      0.007,
+      0.043,
+      0.144,
+      0.332,
+      0.573,
+      0.789,
+      0.924
+    ]
+  }
+}
