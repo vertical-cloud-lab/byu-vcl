@@ -1,0 +1,94 @@
+{
+  "overlap_mm3": {
+    "mount vs Pi 5": 0,
+    "mount vs Active Cooler (incl. push pins)": 0,
+    "mount vs USB-C plug": 0,
+    "HQ + Module 3: mount vs hq_pcb_L": 0,
+    "HQ + Module 3: mount vs hq_conn_L": 0,
+    "HQ + Module 3: mount vs hq_mount_L": 0,
+    "HQ + Module 3: mount vs hq_lens_L": 0,
+    "HQ + Module 3: mount vs cm3_pcb_R": 0,
+    "HQ + Module 3: mount vs cm3_back_R": 0,
+    "HQ + Module 3: mount vs cm3_lens_R": 0,
+    "HQ + Module 3: cameras vs Pi 5 + cooler": 0,
+    "Module 3 + HQ: mount vs cm3_pcb_L": 0,
+    "Module 3 + HQ: mount vs cm3_back_L": 0,
+    "Module 3 + HQ: mount vs cm3_lens_L": 0,
+    "Module 3 + HQ: mount vs hq_pcb_R": 0,
+    "Module 3 + HQ: mount vs hq_conn_R": 0,
+    "Module 3 + HQ: mount vs hq_mount_R": 0,
+    "Module 3 + HQ: mount vs hq_lens_R": 0,
+    "Module 3 + HQ: cameras vs Pi 5 + cooler": 0,
+    "2 x Module 3: mount vs cm3_pcb_L": 0,
+    "2 x Module 3: mount vs cm3_back_L": 0,
+    "2 x Module 3: mount vs cm3_lens_L": 0,
+    "2 x Module 3: mount vs cm3_pcb_R": 0,
+    "2 x Module 3: mount vs cm3_back_R": 0,
+    "2 x Module 3: mount vs cm3_lens_R": 0,
+    "2 x Module 3: cameras vs Pi 5 + cooler": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_pcb_L": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_conn_L": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_mount_L": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_lens_L": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_pcb_R": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_conn_R": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_mount_R": 0,
+    "2 x HQ (6 mm lenses): mount vs hq_lens_R": 0,
+    "2 x HQ (6 mm lenses): cameras vs Pi 5 + cooler": 0
+  },
+  "gap_mm": {
+    "HQ board back to Module 3 boss tops": 2.5,
+    "HQ connector to nearest boss": 2.45,
+    "Module 3 board to HQ bosses": 1.3,
+    "Module 3 connector to upright": 0.57,
+    "Pi 5 underside to base (at the bosses)": 6.7,
+    "Active Cooler push pins to base": 1.0,
+    "USB-C plug to mount": 1.85
+  },
+  "fov_intrusion_mm3": {
+    "6mm_CS HQ lens in a Module 3 standard's view": 0,
+    "6mm_CS HQ lens in a Module 3 wide's view": 0,
+    "16mm_C HQ lens in a Module 3 standard's view": 0,
+    "16mm_C HQ lens in a Module 3 wide's view": 9918.9,
+    "8-50mm_C_zoom HQ lens in a Module 3 standard's view": 728.1,
+    "8-50mm_C_zoom HQ lens in a Module 3 wide's view": 32564.3
+  },
+  "pitch_for_no_intrusion_mm": {
+    "6mm_CS beside Module 3 standard": 41.1,
+    "6mm_CS beside Module 3 wide": 63.0,
+    "16mm_C beside Module 3 standard": 59.0,
+    "16mm_C beside Module 3 wide": 92.9,
+    "8-50mm_C_zoom beside Module 3 standard": 71.3,
+    "8-50mm_C_zoom beside Module 3 wide": 116.0
+  },
+  "screw_stack_mm": {
+    "Pi 5: M2.5 x 12 (PCB + boss + base)": 12.0,
+    "HQ: M2.5 x 12 (PCB + boss + upright)": 11.9,
+    "Module 3: M2 x 10 (PCB + boss + upright)": 9.12
+  },
+  "mount": {
+    "size_mm": [
+      108.0,
+      114.5,
+      51.8
+    ],
+    "volume_cm3": 50.3,
+    "optical_axes": [
+      [
+        -32.0,
+        0.0,
+        24.0
+      ],
+      [
+        32.0,
+        0.0,
+        24.0
+      ]
+    ],
+    "stand_stud_xy": [
+      0.0,
+      13.439528095680696
+    ]
+  },
+  "pass": true
+}
