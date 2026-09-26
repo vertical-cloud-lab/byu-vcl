@@ -772,24 +772,25 @@
     "frame": "Genmitsu PROVerXL 4030 V2"
   },
   "lansmont_m23_drop_tower": {
-    "title": "Lansmont M23 drop tower",
-    "source": "modelled from Lansmont's data sheet and photos (#27, #28)",
-    "parts": 14,
+    "title": "Lansmont M23 shock test system (drop tower)",
+    "source": "Lansmont's data sheet (envelope, table) and lab photos (frame)",
+    "parts": 13,
     "bbox_mm": [
-      533.0,
-      610.0,
-      2600.0
+      480.0,
+      550.0,
+      2770.0
     ],
     "envelope_mm": [
       533.0,
       610.0,
-      2440.0
+      2800.0
     ],
     "table_mm": [
       230.0,
       230.0
     ],
-    "max_drop_height_mm": 1524
+    "standard_drop_in": 60,
+    "location": "CB 152A (SMASH Lab), not CB154"
   },
   "amazemet_repowder": {
     "title": "AMAZEMET rePowder induction module (atomizer)",

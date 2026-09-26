@@ -97,22 +97,35 @@
           ],
           "failure": null,
           "rename_error": "POST /elements/d/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff/e/3148aa4803db4658a1b507f7 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+        },
+        "Lansmont M23 drop tower (refined from photos)": {
+          "state": "DONE",
+          "elements": [
+            "e87b015790ef015f64f5ecc6"
+          ],
+          "failure": null
         }
       }
     },
     "room": {
-      "name": "CB154 room (48a9e11)",
+      "name": "CB154 room (968a35d)",
       "document": "https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc",
       "parentId": "4213db40f9a2525e7c715685",
       "owner": "Vertical Cloud Lab",
       "tabs": {
-        "CB154 with equipment": {
+        "CB154 with equipment (corrected, 968a35d)": {
+          "state": "DONE",
+          "elements": [
+            "2d470cf2c84b4d2aae14046e"
+          ],
+          "failure": null
+        },
+        "CB154 with equipment (superseded, 48a9e11)": {
           "state": "DONE",
           "elements": [
             "5d4f19dbeeaebba029f5dff1"
           ],
-          "failure": null,
-          "rename_error": "POST /elements/d/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc/e/5d4f19dbeeaebba029f5dff1 -> HTTP 405: {\n  \"message\" : \"Method not allowed.\",\n  \"moreInfoUrl\" : \"\",\n  \"status\" : 405,\n  \"code\" : 0"
+          "failure": null
         }
       }
     }
@@ -135,8 +148,23 @@
     {
       "what": "shaded view of the fixed assembly",
       "calls": 1
+    },
+    {
+      "what": "room tab re-imported after the layout correction (968a35d)",
+      "state": "DONE",
+      "new_element": "2d470cf2c84b4d2aae14046e",
+      "old_element": "5d4f19dbeeaebba029f5dff1",
+      "old_element_delete": "HTTP 403 'Invalid API key state' (the key has no delete scope); the old tab stays and is superseded",
+      "renamed_to": "CB154 room (968a35d)",
+      "calls": 6
+    },
+    {
+      "what": "drop tower re-imported after the photo-based refinement, as a new tab (lansmont_m23_drop_tower_from_photos); the key can't delete the old one",
+      "state": "DONE",
+      "new_element": "e87b015790ef015f64f5ecc6",
+      "calls": 2
     }
   ],
-  "session_calls_total": 49,
+  "session_calls_total": 57,
   "tab_renames": "all 11 failed with HTTP 405 (no public element-rename endpoint); tabs keep the STEP file names"
 }

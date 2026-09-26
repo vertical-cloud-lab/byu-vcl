@@ -205,27 +205,34 @@ def cubxl(x: float = 0.45, y: float = 0.5, z: float = 0.6) -> Model:
 
 
 # --- Lansmont M23 drop tower -------------------------------------------------------------------
-# Machine envelope 21 x 24 in (53 x 61 cm), 96-120 in (244-305 cm) tall; table 9.06 x 9.06 in
-# (23 x 23 cm); max drop height 60 in (Lansmont M23 and Model 23 data sheets, #28).
-M23 = dict(W=533.0, D=610.0, H=2440.0, table=230.0)
+# In Jeff Hill's SMASH Lab (CB 152A), not CB154 (#90). Official: envelope 21 x 24 in (53 x 61 cm),
+# 96-120 in (244-305 cm) tall, table 9.06 x 9.06 in (23 x 23 cm) (Lansmont M23 data sheet, #27/#28).
+# The frame inside that envelope is read off the lab's photos (sources/drop_tower.json): two ~25 mm
+# chrome rods ~280 mm apart, one rear column, a latch head under the chain hoist, ~2.8 m as set up.
+M23 = dict(W=533.0, D=610.0, H=2800.0, table=230.0, rod_d=25.0, rod_gap=280.0)
 
 
-def drop_tower(carriage_z: float = 900.0) -> Model:
+def drop_tower(carriage_z: float = 1500.0) -> Model:
     p = M23
     W, D, H = p["W"], p["D"], p["H"]
-    m = Model("lansmont_m23_drop_tower", "Lansmont M23 drop tower", source="modelled from Lansmont's data sheet and photos (#27, #28)")
-    m.add("base plate", box(-W / 2, -D / 2, 0, W / 2, D / 2, 40), "steel")
-    m.add("seismic base", box(-200, -230, 40, 200, 170, 330), "printer_black")
-    m.add("anvil", box(-p["table"] / 2, -p["table"] / 2 - 30, 330, p["table"] / 2, p["table"] / 2 - 30, 360), "steel")
+    m = Model("lansmont_m23_drop_tower", "Lansmont M23 shock test system (drop tower)",
+              source="Lansmont's data sheet (envelope, table) and lab photos (frame)")
+    m.add("base slab", box(-240, -270, 0, 240, 270, 90), "steel")
+    m.add("seismic block", box(-140, -160, 90, 140, 160, 430), "printer_black")
+    m.add("mat stack", box(-115, -115, 430, 115, 115, 470), "pp_white")
     for sx in (-1, 1):
-        m.add(f"guide rod {'LR'[sx > 0]}", cyl(38, H - 200, x=sx * 170, y=-30, z=360), "steel")
-        m.add(f"column {'LR'[sx > 0]}", box(sx * (W / 2 - 40) - 30, 120, 40, sx * (W / 2 - 40) + 30, 200, H - 120), "paint_grey")
-    m.add("crosshead", box(-W / 2 + 10, -120, H - 160, W / 2 - 10, 200, H - 40), "paint_grey")
-    m.add("hoist", cyl(160, 260, x=120, y=40, z=0).rotate((0, 0, 0), (0, 1, 0), 90).translate((-130, 40, H - 40 + 80)), "paint_blue")
-    m.add("hoist box", box(-160, -60, H - 40, 60, 160, H + 60), "printer_black")
-    m.add("drop carriage", box(-215, -110, carriage_z, 215, 50, carriage_z + 90), "aluminium")
-    m.add("drop table", box(-p["table"] / 2, -p["table"] / 2 - 30, carriage_z - 25, p["table"] / 2, p["table"] / 2 - 30, carriage_z), "aluminium")
-    m.add("hoist cable", cyl(6, H - carriage_z - 130, x=0, y=-30, z=carriage_z + 90), "steel")
-    m.add("height scale", box(W / 2 - 18, -40, 400, W / 2 - 10, -20, 2000), "pp_yellow")
-    m.notes = {"envelope_mm": [W, D, H], "table_mm": [p["table"], p["table"]], "max_drop_height_mm": 1524}
+        m.add(f"guide rod {'LR'[sx > 0]}", cyl(p["rod_d"], H - 330 - 90, x=sx * p["rod_gap"] / 2, y=0, z=90), "steel")
+    m.add("rear column", box(-40, 200, 0, 40, 280, H - 250), "printer_black")
+    m.add("crosshead", box(-W / 2 + 60, -60, H - 330, W / 2 - 60, 280, H - 250), "paint_grey")
+    m.add("chain hoist", cyl(160, 220, x=0, y=60, z=H - 250), "paint_blue")     # near the ceiling
+    m.add("latch head", box(-110, -70, carriage_z + 140, 110, 70, carriage_z + 230), "paint_grey")
+    for sx in (-1, 1):                               # the table's rod housings with the brake pads
+        m.add(f"rod housing {'LR'[sx > 0]}", cyl(60, 140, x=sx * p["rod_gap"] / 2, y=0, z=carriage_z), "aluminium")
+    table = box(-p["table"] / 2, -p["table"] / 2, carriage_z, p["table"] / 2, p["table"] / 2, carriage_z + 140)
+    holes = cq.Workplane("XY").pushPoints([(-76.2 + 38.1 * i, -76.2 + 38.1 * j) for i in range(5) for j in range(5)]) \
+        .circle(6.35).extrude(12).translate((0, 0, carriage_z + 128.01))
+    m.add("drop table", table.cut(holes), "aluminium")
+    m.add("hoist chain", cyl(10, H - 330 - (carriage_z + 230), x=0, y=0, z=carriage_z + 230), "steel")
+    m.notes = {"envelope_mm": [W, D, H], "table_mm": [p["table"], p["table"]], "standard_drop_in": 60,
+               "location": "CB 152A (SMASH Lab), not CB154"}
     return m

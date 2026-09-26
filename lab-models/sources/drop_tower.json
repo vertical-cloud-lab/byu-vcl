@@ -1,0 +1,709 @@
+{
+ "droptower": {
+  "what_it_is": "Lansmont Model 23 (M23) Shock Test System ('drop tower'): a programmable guided free-fall mechanical shock machine - an aluminium drop table (9.06 x 9.06 in top, 5x5 tapped-hole grid) with side bushing/brake housings rides on two chrome-plated steel guide rods, is lifted by an electric chain hoist via a solenoid latch head, and falls onto a pulse programmer / mat stack on a steel seismic base block; pneumatic brake pistons clamp the guide rods after rebound to prevent a second impact. Controlled by a Lansmont TouchTest Shock II table-top console with a Lansmont Test Partner 4 DAQ; fitted with the bungee acceleration kit. Belongs to Jeff Hill's SMASH Lab, BYU Clyde Building room CB 152A (not CB154); used by the tensegrity-optimization project for 60 in drops of ~0.1 m 3D-printed T3-prism tensegrity specimens.",
+  "dims": {
+   "overall_height": {
+    "value_mm": [
+     2438,
+     3048
+    ],
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf ; vertical-cloud-lab/tensegrity-optimization#27 (https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/27#issuecomment-4408498939, attachment Lansmont_M23_Shock.pdf rev 4.6.20; copy in PR #28 branch copilot/add-drop-tower-picture: equipment/lansmont-m23/Lansmont_M23_Shock.pdf)",
+    "quote_or_basis": "\"MACHINE ENVELOPE DIMENSIONS Height 96 – 120 in. (244 – 305 cm)\" (96 in x 25.4 = 2438 mm; 120 in x 25.4 = 3048 mm). Height is a configurable range; the lab unit's configured height is not documented anywhere in the repos."
+   },
+   "overall_height_lab_unit_estimate": {
+    "value_mm": [
+     2650,
+     2950
+    ],
+    "source": "photos: yt_Jms6X5P0fGU_short_full_tower_*.jpg, repo_supp_deck_room_view_image18.jpg, lab_video_room_tower_*.png; #36 comment 4606191756",
+    "quote_or_basis": "ESTIMATE. Hoist top nearly touches the room's drop ceiling in every full-tower view; Jeff says the tower can drop up to ~77 in without bungees, i.e. ~17 in more than the 60 in max of the 96-in-tall Lansmont Model 23 cushion tester, suggesting a ~110-115 in (2.8-2.9 m) build; pixel proportions (landed table block ~100 px = ~140 mm vs ~1780 px floor-to-top, with perspective compression at the top) give ~2.5-2.9 m. Best guess ~2.8 m."
+   },
+   "overall_width_side_to_side": {
+    "value_mm": 533.4,
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf",
+    "quote_or_basis": "\"Side to Side 21 in. (53 cm)\" (21 x 25.4 = 533.4 mm). Envelope incl. protruding cylinders/pulleys."
+   },
+   "overall_depth_front_to_back": {
+    "value_mm": 609.6,
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf",
+    "quote_or_basis": "\"Front to Back 24 in. (61 cm)\" (24 x 25.4 = 609.6 mm)."
+   },
+   "table_or_carriage_w": {
+    "value_mm": 230.1,
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf ; vertical-cloud-lab/tensegrity-optimization#27 (https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/27#issuecomment-4408498939, attachment Lansmont_M23_Shock.pdf rev 4.6.20; copy in PR #28 branch copilot/add-drop-tower-picture: equipment/lansmont-m23/Lansmont_M23_Shock.pdf)",
+    "quote_or_basis": "\"TABLE DIMENSIONS Side to Side 9.06 in. (23 cm)\" (9.06 x 25.4 = 230.1 mm). Top face of the aluminium drop table."
+   },
+   "table_or_carriage_d": {
+    "value_mm": 230.1,
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf",
+    "quote_or_basis": "\"Front to Back 9.06 in. (23 cm)\" (9.06 x 25.4 = 230.1 mm)."
+   },
+   "table_block_height": {
+    "value_mm": [
+     125,
+     180
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_prc1kn_frontal_carriage_falling.jpg ; /tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg",
+    "quote_or_basis": "ESTIMATE. Near-frontal 960-fps frame: table front face ~540 px tall vs ~905 px for the 230 mm table front edge -> ~137 mm; front-left view in lab_video_hook_carriage_latchhead_front.jpg corrected for ~45 deg foreshortening gives ~145 mm. Best ~140 mm; aluminium block with chamfered vertical corners."
+   },
+   "table_top_hole_grid_pitch": {
+    "value_mm": 38.1,
+    "source": "/tmp/research/img/droptower/pr67_IMG_6081_0b828674_1600.jpg (PR #67 comment 4804858562, IMG_6081)",
+    "quote_or_basis": "ESTIMATE. Top-down photo: 5 x 5 grid of tapped holes, centred, pitch = 150 of the 910 display px spanning the 230 mm table -> 37.9 mm, i.e. 1.5 in (38.1 mm); outer holes ~1.5 in from the table edges. Four corner holes carry socket-head anchor bolts with ~18-19 mm heads (consistent with 1/2 in SHCS - estimate)."
+   },
+   "table_tapped_hole_thread_nominal": {
+    "value_mm": 12.7,
+    "source": "#36 comment 4521516377 + whiteboard photo i36_photo_dd236566.jpg",
+    "quote_or_basis": "LOW-CONFIDENCE ESTIMATE. Lab had to use rods '>10.5 mm' to cut threads matching 'the bolts we need for the drop tower', consistent with 1/2-13 UNC (12.7 mm) table holes; not confirmed."
+   },
+   "carriage_overall_width_incl_side_housings": {
+    "value_mm": [
+     340,
+     420
+    ],
+    "source": "/tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg ; /tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg ; /tmp/research/img/droptower/pr67_IMG_6081_0b828674_1600.jpg",
+    "quote_or_basis": "ESTIMATE. Guide-rod bushing/brake housings are bolted to the left and right sides of the 230 mm table; rod axes ~140 mm either side of centre and housings extend ~40-60 mm beyond the rod axes."
+   },
+   "carriage_side_housing_width": {
+    "value_mm": [
+     60,
+     80
+    ],
+    "source": "/tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg ; /tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg",
+    "quote_or_basis": "ESTIMATE: each guide-rod bushing/brake housing bolted to a side of the table is ~60-80 mm wide (side to side)."
+   },
+   "carriage_side_housing_depth": {
+    "value_mm": [
+     170,
+     210
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg",
+    "quote_or_basis": "ESTIMATE: housing outer face spans most of the table depth (~190 mm) in the front-left view after ~45 deg foreshortening correction."
+   },
+   "carriage_side_housing_height": {
+    "value_mm": [
+     160,
+     200
+    ],
+    "source": "/tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg ; /tmp/research/img/droptower/pr67_IMG_6079_2e1da381_1600.jpg",
+    "quote_or_basis": "ESTIMATE: housing top stands ~30-50 mm above the table top; bottom roughly flush with the table underside."
+   },
+   "brake_cover_disc_diameter": {
+    "value_mm": [
+     85,
+     105
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg ; /tmp/research/img/droptower/pr67_IMG_6079_2e1da381_1600.jpg",
+    "quote_or_basis": "ESTIMATE: round aluminium cover with 4 screws on each housing's outer face (brake piston), ~95 mm dia relative to the ~140 mm table block height."
+   },
+   "guide_rod_count": {
+    "value_mm": 2,
+    "source": "/tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg ; /tmp/research/img/droptower/lab_video_prc1kn_frontal_rods_stack_grid.jpg ; https://www.lansmont.com/sites/default/files/2022-11/LANS_14000_Spec_SHOCK_performance10.13.14.pdf",
+    "quote_or_basis": "COUNT, not mm. Two main chrome guide rods, one through each carriage side housing (left/right, at mid-depth). Photos also show one or two thinner auxiliary rods/bars at the right-rear (in Lansmont's design these carry the brake-trigger / instrument-trigger cams; HMI shows 'BRAKE TRIG' and 'INST TRIG') and one dark square-tube column at the right-rear. Lansmont: 'it travels on solid steel, chrome-plated Guide Rods ... also the surfaces that the shock table brake pistons act against'."
+   },
+   "guide_rod_diameter": {
+    "value_mm": [
+     22,
+     28
+    ],
+    "source": "/tmp/research/img/droptower/pr67_IMG_6075_8c870cc7_1600.jpg ; /tmp/research/img/droptower/i92_body_2_cc23b3b5.jpg ; /tmp/research/img/droptower/lab_video_prc1kn_frontal_rods_stack_grid.jpg",
+    "quote_or_basis": "ESTIMATE, best 25.4 mm (1 in). (a) Tape measure standing beside the rod (PR #67 IMG_6075): ~325 px/cm on the tape, rod ~790 px wide -> ~24 mm; (b) rod cross-hole for the 3/16 in (4.76 mm) locking pin is ~40-44 px vs rod ~190 px -> 22-27 mm; (c) frontal frame: spacing/diameter = 949/82 px = 11.6 -> ~24-26 mm for a ~280-300 mm spacing. No official figure found."
+   },
+   "guide_rod_spacing_center_to_center": {
+    "value_mm": [
+     265,
+     300
+    ],
+    "source": "/tmp/research/img/droptower/pr67_IMG_6081_0b828674_1600.jpg ; /tmp/research/img/droptower/lab_video_prc1kn_frontal_rods_stack_grid.jpg",
+    "quote_or_basis": "ESTIMATE, best ~280 mm, side to side. Top-down photo scaled by the 230 mm table: rod axes appear ~31 mm outboard of each table edge (-> 292 mm), minus ~5-10 % perspective because the bushing tops sit above the table top; frontal 960-fps frame with perspective correction gives ~290 mm."
+   },
+   "guide_rod_locking_pin_diameter": {
+    "value_mm": 4.76,
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/92#issuecomment-5246077145",
+    "quote_or_basis": "\"I believe the diameter is 3/16 in, the same as the other one we used measured\" (3/16 x 25.4 = 4.76 mm); pins are Klein 601-6 / 601-10 cabinet-screwdriver shanks with the tip cut off, inserted through a cross-hole in each guide rod below the carriage during mat changes and stowed in a white 2-hole interlock 'park station' box on the bench."
+   },
+   "max_drop_height": {
+    "value_mm": 1956,
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/36#issuecomment-4606191756",
+    "quote_or_basis": "\"Jeff mentioned we could remove the bungees and let it freefall from a taller height. It could go up to about 77\\\" drop\" (77 x 25.4 = 1956 mm). Lab statement, not a Lansmont spec; Lansmont gives no max drop height for the M23 (only max velocity change 24-32 ft/s = 7.3-9.7 m/s, which includes rebound)."
+   },
+   "max_equivalent_drop_height_Model23C_cushion_tester_only": {
+    "value_mm": 1524,
+    "source": "https://www.lansmont.com/sites/default/files/2022-12/Lansmont_Model23_cushion_tester.pdf",
+    "quote_or_basis": "\"Max. Equivalent Drop Height 60 in. (152 cm)\" / \"Min. Equivalent Drop Height 1 in. (2.5 cm)\" for the Model 23 CUSHION TESTER (platen machine, 96 in tall, 18 x 18 in envelope) - a different product; shown only for context, do not attribute to the lab's M23."
+   },
+   "standard_drop_height_used": {
+    "value_mm": 1524,
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/94#issuecomment-5210055872 ; PR #86 data/drop-tests/pu-configs/README.md (branch copilot/add-drop-test-protocol-again)",
+    "quote_or_basis": "\"The plate + specimen falls 60 in and arrives at dv ~ 5.47 m/s\"; pu-configs README: \"bungees removed ... 60 in drop height\" (60 x 25.4 = 1524 mm). Standard for the July-Sept 2026 validation/BO campaigns (free fall)."
+   },
+   "other_drop_heights_used": {
+    "value_mm": [
+     127,
+     762
+    ],
+    "source": "PR #67 / #74 / #82 comments (e.g. https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/67#issuecomment-4918818168)",
+    "quote_or_basis": "Earlier campaigns used 5, 10, 13, 15, 20 and 30 in (127-762 mm); 13 in was the June/early-July default (HMI shows 'DH: 13.00'); at 5 in the 1000 G trigger did not fire."
+   },
+   "min_drop_height": {
+    "value_mm": null,
+    "source": "https://www.lansmont.com/sites/default/files/2022-12/Lansmont_Model23_cushion_tester.pdf",
+    "quote_or_basis": "No M23 figure published. Only the Model 23 cushion tester lists 'Min. Equivalent Drop Height 1 in. (2.5 cm)'. Lab has run 5 in (127 mm) drops."
+   },
+   "brake_catch_height_above_stack": {
+    "value_mm": [
+     130,
+     150
+    ],
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/86#issuecomment-5038474732",
+    "quote_or_basis": "\"the carriage rebounds at ~0.4x impact speed and is braked at ~2.1-2.4 g to a dead stop 130-150 mm above the felt\" (+86 to +89 ms after impact). Derived from 960-fps video scaled on free-fall speed, so approximate."
+   },
+   "seismic_base_w": {
+    "value_mm": [
+     240,
+     330
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_landed.jpg ; /tmp/research/img/droptower/repo_m23_lansmont_datasheet_photo.png ; /tmp/research/img/droptower/auburn_emrl_M23_image-27.png",
+    "quote_or_basis": "ESTIMATE, best ~280 mm. Dark grey steel/cast-iron block (Auburn: 'cast iron seismic base with dampers'); ~1.3-1.45x the 230 mm table width in the Lansmont M23 photo and ~1.2x the table block in the landed-carriage frame; the guide rods run down beside/in front of it to the base slab, so it is probably no wider than the rod spacing."
+   },
+   "seismic_base_d": {
+    "value_mm": [
+     280,
+     380
+    ],
+    "source": "same photos as seismic_base_w",
+    "quote_or_basis": "ESTIMATE, best ~320 mm; roughly as deep as wide (cube-like in every view)."
+   },
+   "seismic_base_h": {
+    "value_mm": [
+     300,
+     400
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_landed.jpg ; /tmp/research/img/droptower/lab_video_room_tower_carriage_landed.png ; /tmp/research/img/droptower/repo_m23_lansmont_datasheet_photo.png",
+    "quote_or_basis": "ESTIMATE, best ~340 mm. ~250 px tall vs ~100 px for the ~140 mm table block in the landed frame; ~0.12 of the tower height in two independent full-tower views; Lansmont M23 photo (96 in machine) scales to ~400 mm."
+   },
+   "base_plate_w": {
+    "value_mm": [
+     450,
+     510
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_landed.jpg ; /tmp/research/img/droptower/pr67_IMG_6079_2e1da381_1600.jpg ; /tmp/research/img/droptower/auburn_emrl_M23_image-27.png",
+    "quote_or_basis": "ESTIMATE: dark steel base slab under the seismic block, extending ~80-100 mm beyond it on each side; must fit the 533 mm envelope with pulleys/cylinders."
+   },
+   "base_plate_d": {
+    "value_mm": [
+     500,
+     570
+    ],
+    "source": "same photos as base_plate_w",
+    "quote_or_basis": "ESTIMATE: must fit the 610 mm front-to-back envelope."
+   },
+   "base_plate_thickness": {
+    "value_mm": [
+     75,
+     110
+    ],
+    "source": "same photos as base_plate_w",
+    "quote_or_basis": "ESTIMATE: ~0.03-0.04 of tower height in the full-tower views. Base carries 2 white nylon bungee pulleys (~50-60 mm dia) at the front, silver pneumatic cylinders and dark grey hydraulic dampers beside the block, and a small white caster/roller at the front-left."
+   },
+   "impact_surface_height_above_floor": {
+    "value_mm": [
+     420,
+     520
+    ],
+    "source": "same full-tower photos",
+    "quote_or_basis": "ESTIMATE: base plate + seismic block (~0.16-0.17 of tower height). A round black rubber pad (~100 mm dia, estimate) with a centre hole sits on the seismic-block top; the lab stacks 4 felt sheets + 1 cardboard (later 1/4 in and 1/2 in PU sheets, 6.35/12.7 mm) on it."
+   },
+   "rear_column_square_tube": {
+    "value_mm": [
+     50,
+     75
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg ; /tmp/research/img/droptower/lab_video_pu_sheet_stuck_under_carriage.jpg ; /tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_landed.jpg",
+    "quote_or_basis": "ESTIMATE: one dark grey square steel tube (~65 mm) at the right-rear running floor-to-head, with a black slotted plastic strip (cable duct or height-encoder strip) on its front face; appears ~1.6-2.7x the guide-rod width. Not in Lansmont's stock M23 photo, so this may be a newer/older frame variant."
+   },
+   "top_head_plate_height_above_floor": {
+    "value_mm": [
+     2450,
+     2750
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_top.jpg ; /tmp/research/img/droptower/lab_video_room_tower_carriage_raised.png",
+    "quote_or_basis": "ESTIMATE: dark top plate/head where the rods and rear column end, ~150-250 mm below the hoist top (~2.8 m est.)."
+   },
+   "hoist_body_length": {
+    "value_mm": [
+     400,
+     500
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_top.jpg",
+    "quote_or_basis": "ESTIMATE: grey electric chain hoist lying horizontally across the top head (Lansmont: 'Lansmont Shock Test Systems utilize electric hoists for lifting and positioning the shock table'), ~1.6-2x the table width."
+   },
+   "hoist_body_diameter": {
+    "value_mm": [
+     180,
+     220
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_top.jpg",
+    "quote_or_basis": "ESTIMATE."
+   },
+   "hoist_chain_container_diameter": {
+    "value_mm": [
+     130,
+     170
+    ],
+    "source": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_top.jpg ; /tmp/research/img/droptower/lab_video_room_tower_carriage_raised.png",
+    "quote_or_basis": "ESTIMATE: grey conical chain bucket ~150 mm dia x ~250 mm tall hanging below the front-left of the hoist; chain runs down to the latch head."
+   },
+   "latch_head_width": {
+    "value_mm": [
+     330,
+     400
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg ; /tmp/research/img/droptower/lab_video_hook_latchhead_raised_carriage_low.jpg",
+    "quote_or_basis": "ESTIMATE: aluminium cross-bar riding on the guide rods, hung from the hoist chain; round solenoid (~100 mm dia) on the left end, MS circular connector on the right; pivoting hook engages an upstanding hook plate on the carriage; stays up when the carriage drops."
+   },
+   "latch_head_height": {
+    "value_mm": [
+     100,
+     130
+    ],
+    "source": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg",
+    "quote_or_basis": "ESTIMATE."
+   },
+   "max_payload_kg": {
+    "value_mm": 36.3,
+    "source": "https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf ; vertical-cloud-lab/tensegrity-optimization#27 (https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/27#issuecomment-4408498939, attachment Lansmont_M23_Shock.pdf rev 4.6.20; copy in PR #28 branch copilot/add-drop-tower-picture: equipment/lansmont-m23/Lansmont_M23_Shock.pdf)",
+    "quote_or_basis": "VALUE IN kg, not mm. \"MAXIMUM PAYLOAD 80 lbs. (36 kg)\" (80 x 0.4536 = 36.3 kg)."
+   },
+   "tp4_daq_8ch_box_w": {
+    "value_mm": 233.7,
+    "source": "TP4 User's Guide W20000-98-14 Rev A, Table 1 (#36 attachment https://github.com/user-attachments/files/28125775/TP4_User.s.Guide_W20000-98-14_Rev.A.PDF)",
+    "quote_or_basis": "\"8-CH ... Dimensions (W x D x H) 9.2\\\" x 7.9\\\" x 3.7\\\"\" (9.2 x 25.4 = 233.7 mm); 16/24/32-CH units are 13.9 x 10.6 x 6.3 in. Bench equipment next to the tower; lab unit's channel count not confirmed (sessions in PR #67 use CH1-CH8)."
+   },
+   "tp4_daq_8ch_box_d": {
+    "value_mm": 200.7,
+    "source": "same TP4 User's Guide",
+    "quote_or_basis": "7.9 in x 25.4 = 200.7 mm."
+   },
+   "tp4_daq_8ch_box_h": {
+    "value_mm": 94.0,
+    "source": "same TP4 User's Guide",
+    "quote_or_basis": "3.7 in x 25.4 = 94.0 mm."
+   },
+   "specimen_max_height_T3_prism": {
+    "value_mm": 104,
+    "source": "vertical-cloud-lab/byu-vcl docs/sandbox-object-set.md ; tensegrity-optimization bo/t3-prism-bo-round1.json",
+    "quote_or_basis": "\"Tensegrity T3 prism | <=81 x 79 x 104 mm, 18-23 g\"; BO bounds R 25-40 mm, H 60-110 mm before print scaling. Specimens are ~0.1 m (not ~1 m) - useful scale reference in table-top photos."
+   },
+   "specimen_max_footprint_T3_prism": {
+    "value_mm": [
+     79,
+     81
+    ],
+    "source": "vertical-cloud-lab/byu-vcl docs/sandbox-object-set.md",
+    "quote_or_basis": "<=81 x 79 mm footprint."
+   },
+   "carriage_underside_height_above_floor_at_60in": {
+    "value_mm": [
+     1940,
+     2050
+    ],
+    "source": "derived: standard_drop_height_used + impact_surface_height_above_floor",
+    "quote_or_basis": "ESTIMATE: 1524 mm drop + ~420-520 mm mat/seismic top height; use to pose the raised carriage."
+   },
+   "lab_cage_threaded_rod_length": {
+    "value_mm": 457,
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/36#issuecomment-4521516377",
+    "quote_or_basis": "\"cutting it to the right length (~18 in we are thinking), and then adding threads\" (18 x 25.4 = 457 mm); lab-built fixture of two acrylic plates + 4 threaded rods screwed into the table (used May-July 2026)."
+   },
+   "calibration_grid_square": {
+    "value_mm": 20,
+    "source": "https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/86#issuecomment-5039978703",
+    "quote_or_basis": "\"The vertical measurement of each black and white segment is 20mm\" - checkerboard placed behind the tower for 960-fps video; distance from the tower varies, so it is not a direct scale for the tower."
+   }
+  },
+  "images": [
+   {
+    "path": "/tmp/research/img/droptower/repo_m23_lansmont_datasheet_photo.png",
+    "shows": "OFFICIAL Lansmont M23 product photo from the M23 data sheet (greyscale, 429x1620): full machine - Lansmont chain hoist on top plate, 4 vertical chrome rods (2 guide rods + 2 trigger rods with black-knob clamps), white aluminium table with hole grid and two T-handles, large 'Lansmont' programmer cylinder on the dark seismic block, base plate with pneumatic cylinders/dampers. Best official proportions reference (stock config differs from lab unit: lab has no big programmer cylinder, has a dark square rear column and bungee pulleys)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_Lansmont_M23_Shock.pdf",
+    "shows": "Jeff's M23 brochure (rev 4.6.20) attached to #27 - the identification document: table 9.06x9.06 in, envelope 96-120 x 21 x 24 in, 5000 g, 80 lb."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_Lansmont_M23_Shock_page-1.png",
+    "shows": "Render of Jeff's M23 brochure page (specs table + photo)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_M23_Data_Sheet_official.pdf",
+    "shows": "Lansmont M23 data sheet (rev 5.12.14) as served at https://www.lansmont.com/sites/default/files/2025-10/M23%20Data%20Sheet.pdf (byte-identical re-download); same specs as the brochure."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_M23_Data_Sheet_official_page-1.png",
+    "shows": "Render of the M23 data sheet page."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_M23D_Shock.pdf",
+    "shows": "Lansmont Model 23D data sheet (variant: magnesium multi-sided carriage, 2000 g, 40 lb, top face 6.0x9.06 in; same 96-120x21x24 in envelope)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_M23D_Shock_page-1.png",
+    "shows": "Render of the 23D data sheet page."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_M23D_datasheet_photo.png",
+    "shows": "Official 23D photo: tall frame with a full-height aluminium column/scale on the left, magnesium carriage mid-height, black seismic block at bottom, hoist on top - variant, not the lab unit."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Model23_cushion_tester.pdf",
+    "shows": "Lansmont Model 23 Cushion Tester data sheet (different product: platen machine, 96 in tall, 18x18 in envelope, 1-60 in equivalent drop height, 12.8 lb 9.06 in platen)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Model23_cushion_tester_page-1.png",
+    "shows": "23C data sheet page 1 (specs, cushion curve)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Model23_cushion_tester_page-2.png",
+    "shows": "23C data sheet page 2 (features/options)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Model23_cushion_tester_page-3.png",
+    "shows": "23C page 3: SYSTEM DRAWING side view with 96 in (244 cm) height and 18 in (46 cm) width dimension lines - the only dimensioned Lansmont drawing found for a Model 23-family frame."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Model23C_datasheet_photo.png",
+    "shows": "Official Model 23 cushion tester photo (black background): hoist, rods, platen, base."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_Model23.png",
+    "shows": "Image from Lansmont's 'Model 23 Cushion shock test system' web page (older Model 23 with LoadStar hoist, 4 rods, finned platen, foam block on base)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_Model23_trim.png",
+    "shows": "Trimmed copy of lansmont_web_Model23.png."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_Model23D.png",
+    "shows": "Model 23D web product image (same as 23D data-sheet photo)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_Model23D_trim.png",
+    "shows": "Trimmed copy of lansmont_web_Model23D.png."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_P23.png",
+    "shows": "Lansmont P23 (performance variant) web image: tall frame with left aluminium scale column, aluminium table between rods, black seismic block, bungee pulleys at the base - visually close to the lab unit's layout."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_web_P23_trim.png",
+    "shows": "Trimmed copy of lansmont_web_P23.png."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_P30_performance_brochure_photo.png",
+    "shows": "P30 performance shock tester photo from the 2014 performance brochure (similar frame family)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lansmont_Performance_Shock_Test_Systems_2014.pdf",
+    "shows": "Lansmont performance shock systems brochure (10.14.14): generic descriptions of guide rods, electric hoist, seismic base, acceleration (bungee) kits; P23 spec 98-146 x 18.1 x 21.3 in, 110 lb."
+   },
+   {
+    "path": "/tmp/research/img/droptower/auburn_emrl_M23_image-26.png",
+    "shows": "Auburn EMRL's Lansmont Model 23 (same model, another university): left panel full tower against a CMU wall with EXIT sign (hoist, chrome rods, chain, table with green PCB, seismic block, base with white pulleys; panel looks horizontally squeezed - do not use for proportions); right panel base close-up."
+   },
+   {
+    "path": "/tmp/research/img/droptower/auburn_emrl_M23_image-27.png",
+    "shows": "Auburn M23 base close-up: aluminium table with hole grid and side housings with round brake covers, dark seismic block, silver pneumatic cylinders, dark side damper, base slab with two white bungee pulleys - same generation as the lab's unit; good for modelling base details."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_top.jpg",
+    "shows": "LAB UNIT, best full-height view (portrait 1080x1920, YouTube short 'Drop tower shock tests'): floor to ceiling, carriage raised up under the latch head just below the hoist; seismic block with cardboard on top; dark square rear column on the right; wall electrical box, air FRL panel; blue shaker stand left, stainless cabinet right. Hoist nearly touches the drop ceiling."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_raised_midhigh.jpg",
+    "shows": "LAB UNIT, same short, carriage raised to a mid-high position."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_Jms6X5P0fGU_short_full_tower_landed.jpg",
+    "shows": "LAB UNIT, same short, carriage landed on the stack with a specimen on top (latch head stays up by the hoist) - used for seismic block/base proportions."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_supp_deck_room_view_image18.jpg",
+    "shows": "LAB UNIT in its room (1280x720, from IDETC supplement deck, branch claude/issue-83-20260715-2018): tower against the back wall right of the wooden workbench holding PC/monitors/TP4, blue Modal Shop shaker stand in front-left, stainless/blue cabinet at right, drop ceiling. Shows placement and approximate scale vs bench."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_15-1805-drop-tower-slide.jpg",
+    "shows": "Slide 'We use a drop tower to measure the mechanical shock response' with the same room view."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_33-3312-drop-tower-slide.jpg",
+    "shows": "PowerPoint editor screenshot showing the same room-view slide (low detail)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_room_tower_carriage_raised.png",
+    "shows": "Frame 4 of the deck's real-time room video (1280x720): whole tower, carriage raised high, latch head on chain."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_room_tower_carriage_landed.png",
+    "shows": "Frame 175 of the same video: carriage landed on the felt stack with specimen; latch head still up near the hoist."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_hook_carriage_latchhead_front.jpg",
+    "shows": "LAB UNIT close front-left view (frame of PR #86 hook-sticking video): latch/release head (aluminium bar, round solenoid left, MS connector right) on the hoist chain engaged with the carriage; carriage table block with left side housing and round brake cover (4 screws); two chrome guide rods; dark square rear column right; felt/cardboard stack on seismic block below. Best view of carriage + latch geometry."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_hook_latchhead_raised_carriage_low.jpg",
+    "shows": "Same video: latch head raised on the chain with hook hanging open between the rods, carriage with specimen resting low on the stack."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_prc1kn_frontal_carriage_falling.jpg",
+    "shows": "Near-frontal 960-fps Sony RX100 IV frame (60 in drop, specimen prc1kn): carriage front face (used for ~140 mm block height vs 230 mm table), anchor bolts and specimen on the table, 20 mm checkerboard behind, guide rod at left edge."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_prc1kn_frontal_rods_stack_grid.jpg",
+    "shows": "Same camera before the carriage enters: the two chrome guide rods at left/right edges (~82 px wide, ~949 px apart -> spacing/diameter ~11.6), felt stack top at bottom, checkerboard."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_pu_sheet_stuck_under_carriage.jpg",
+    "shows": "Frame from #88 video: black PU sheet stuck to the underside of the raised carriage; seismic-block top with round black rubber pad; guide rods; dark rear column with black slotted strip; carriage side housing with brake cover."
+   },
+   {
+    "path": "/tmp/research/img/droptower/lab_video_pu_tower_midview.jpg",
+    "shows": "Same video, lower/mid tower view: carriage near the stack, rods, column, wall-mounted air filter-regulator and electrical box."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6081_0b828674_1600.jpg",
+    "shows": "LAB UNIT top-down view of the table (PR #67): 230 mm aluminium table top with centred 5x5 grid of tapped holes at ~1.5 in pitch, 4 corner anchor bolts with elastic cords, 4 lab cage threaded rods, specimen, and the left guide rod's linear-bushing housing at the image edge. Used for hole pitch and rod spacing."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6068_872bf9dc_1600.jpg",
+    "shows": "LAB UNIT oblique view of the carriage: chamfered aluminium table block, lab acrylic cage (lower plate, 4 threaded rods, upper plate with clamps), right side housing with guide-rod bushing on top and brake cover below, bungee cords, felt under the carriage. Best 3D-shape reference for the carriage."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6075_8c870cc7_1600.jpg",
+    "shows": "Tape measure (in/cm) standing on the acrylic plate beside a chrome guide rod and a cage rod with a clip at 1.5 in - used to estimate rod diameter (~24 mm)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6079_2e1da381_1600.jpg",
+    "shows": "LAB UNIT base close-up: carriage resting on felt atop the grey seismic block; left housing with round brake cover; chrome guide rod down to the base slab; bungee cord looping over a white pulley on the base plate; silver pneumatic cylinder and dark grey damper at the left; base slab edge and floor."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6083_63a4a16a_1600.jpg",
+    "shows": "Similar base/carriage close-up from front-left (brake cover, housing, rod, seismic block, damper, pulley)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6082_78588152_1600.jpg",
+    "shows": "Oblique close-up of the table top: tapped holes, cage rods threaded into the table, chrome guide rod top-left, T3 specimen with tri-axis accelerometer (specimen ~0.1 m for scale)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/pr67_IMG_6067_c60547e0_1600.jpg",
+    "shows": "Top-down view of specimen in the acrylic cage on the table with spring clamps; hole grid visible."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_2_cc23b3b5.jpg",
+    "shows": "Chrome guide rod below the carriage side housing showing the cross-drilled locking-pin hole (pin 3/16 in); housing underside and brake cover above; air FRL panel behind. Used for rod-diameter estimate. (upright view copy: i92_body_2_cc23b3b5_1600.jpg)"
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_2_cc23b3b5_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_body_2."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_1_6b68f408.jpg",
+    "shows": "Snapped Klein screwdriver shaft (improvised guide-rod locking pin) on the bench after being struck by the table (#92)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_1_6b68f408_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_body_1."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_3_8bc800a3.jpg",
+    "shows": "Klein Tools screwdriver handle (pin handle) in hand; keyboard behind."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_body_3_8bc800a3_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_body_3."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0804_1_c92e80f5.jpg",
+    "shows": "Lansmont TouchTest Shock II tabletop console (grey, Beijer X2 base touchscreen, keyed switch, tag 'DO NOT OPERATE (safety non-functional)') on the Lansmont control cabinet; on the shelf above: white pin park-station box and Lansmont Test Partner 4 DAQ; checkerboard and tower rods behind."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0804_1_c92e80f5_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0804_1."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0804_2_e6263daf.jpg",
+    "shows": "Pin park-station box (white enclosure, two rubber-grommeted holes) unbolted on the bench next to the TP4 unit."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0804_2_e6263daf_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0804_2."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0805_1_ad831bb3.jpg",
+    "shows": "Replacement Klein screwdrivers and a cut shaft (pin stock)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0805_1_ad831bb3_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0805_1."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0805_2_dbd295ef.jpg",
+    "shows": "Two Klein 601 screwdrivers, one with shaft cut, plus the cut 3/16 in shaft."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0805_2_dbd295ef_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0805_2."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0810_249b80b4.jpg",
+    "shows": "Screwdriver end cap reading '601-10' (Klein 601-10, 3/16 in shank)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0810_249b80b4_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0810."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0812_1_714fe42f.jpg",
+    "shows": "Finished locking pin (Klein 601-6 with tip removed) on the workbench."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0812_1_714fe42f_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0812_1."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0812_2_17d1edae.jpg",
+    "shows": "Park-station box with both pins stowed (commissioned interlock), bench shelf, TouchTest/cabinet at right, tower checkerboard and rods behind, cable coils below."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i92_c0812_2_17d1edae_1600.jpg",
+    "shows": "Upright 1600-px copy of i92_c0812_2."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i90_c0805_2_c449ae3e.jpg",
+    "shows": "Back of the drop-tower PC (HP small-form-factor) with the TP-Link Wi-Fi dongle - the PC #90 places in room CB 152A."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i90_c0805_2_c449ae3e_1600.jpg",
+    "shows": "1600-px copy of i90_c0805_2."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i90_c0805_1_18e5ee8f.jpg",
+    "shows": "Boxes of a Sony RM-VPR1 camera remote and TP-Link Archer T3U adapter (not the tower)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i90_c0805_1_18e5ee8f_1600.jpg",
+    "shows": "1600-px copy of i90_c0805_1."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i88_felt_stack_compressed_4d631bba_1600.jpg",
+    "shows": "Felt/cardboard impact pad (~table-sized square) with circular compaction imprint from repeated impacts."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i88_pu_sheet_on_seismic_top_5da70125_1600.jpg",
+    "shows": "Looking down into the tower: black polyurethane sheet (lint-covered) lying on the seismic-block top between the guide rods; pneumatic fittings/brake parts below."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_1_cbca1c5f.png",
+    "shows": "Screenshot from Jeff's 'Drop Machine Training' video (RNjpAmWWmkQ): table top with tapped holes and a bolted black steel plate, chrome guide rod entering its side housing, bungee cords, hoist chain/latch, small accelerometer."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_2_0fb6672a.png",
+    "shows": "Same video: table with black plate and a threaded cylindrical fixture; rod, housing, bungee."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_3_92a6bae3.png",
+    "shows": "Same video: carriage from the front with red annotation of the table and a lower plate region; side housing and rods."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_4_faa26cfe.png",
+    "shows": "Same video: hands showing plate-on-specimen idea with a tensegrity specimen; console behind."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_5_a9551e6a.png",
+    "shows": "Same video: specimen on the electrodynamic shaker (not the tower)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_6_3b2ad99f.png",
+    "shows": "Same video: pneumatic 'slug gun' impact rig on blue stand (separate machine); tower rods at far left."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_7_58da05b3.png",
+    "shows": "Same video: Ingersoll Rand air compressor (for the slug gun; not the tower)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_8_34fd643c.png",
+    "shows": "Same video: Polytec laser vibrometer head on tripod (not the tower)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_yt_9_38604621.png",
+    "shows": "Same video: tower PC desktop icons (SMASHGun, TP4 software, TP4 PDFs) - confirms SMASH Lab PC."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_RNjpAmWWmkQ_thumb_maxresdefault.jpg",
+    "shows": "Thumbnail of 'Drop Machine Training - May 19, 2026': Jeff Hill (a person, useful scale) at the bench in front of the tower's rods/hoist, TouchTest console and monitors."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_RNjpAmWWmkQ_thumb_maxres2.jpg",
+    "shows": "Training-video frame: person gesturing beside the bench; tower column/rods in background."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_RNjpAmWWmkQ_thumb_maxres3.jpg",
+    "shows": "Training-video frame: person at the bench, monitor, tower rods at right."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_TXerxMYEsDM_hmi_touchtest_panel.jpg",
+    "shows": "TouchTest Shock II HMI 'MAIN CONTROL PANEL': TABLE POSITION [inches] 2.80, DH: 13.00, HOIST UP/DN, AUTO DROP, STOP (Beijer X2 base) - drop height is set in inches."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_W2-wyqP9DH8_hands_on_carriage_block.jpg",
+    "shows": "Hands on the aluminium carriage block edge (fingers give scale ~18-20 mm) - block corner and side housing bolts."
+   },
+   {
+    "path": "/tmp/research/img/droptower/yt_dL2djikfJFE_single_drop_setup.jpg",
+    "shows": "Student holding a T3 specimen and an acrylic cage plate (specimen scale)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_figures_photos_drop-tower.jpg",
+    "shows": "Manuscript crop of the training-video table-top frame (plate, accelerometer, rod, bungee)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_poster-our-drop.jpg",
+    "shows": "Poster frame: specimen on the table in front of the checkerboard."
+   },
+   {
+    "path": "/tmp/research/img/droptower/repo_supp_deck_prc1kn_impact_sequence_image22.png",
+    "shows": "7-frame 959-fps montage of a 60-in drop (entry, contact, turnaround, rebound, brake catch +79 ms, hold)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_cage_60f09def.png",
+    "shows": "Sketch of the lab's two-plate acrylic cage fixture (bottom/top plates with hole patterns and 4 rods) that bolts onto the table."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_photo_dd236566.jpg",
+    "shows": "Whiteboard: cage threaded-rod plan (~18 in long, ~1 in added thread, rod '>10.5 mm big enough to add thread')."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_photo_dd236566_1600.jpg",
+    "shows": "1600-px copy of i36_photo."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_rods_11829137.jpg",
+    "shows": "The four finished lab-made ~18 in threaded cage rods and a hex bolt on a bench (filter box for scale)."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_rods_11829137_1600.jpg",
+    "shows": "1600-px copy of i36_rods."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_bungee_f5f81e7c.jpg",
+    "shows": "Whiteboard sketches of test ideas (drop, cyclic, crush, vibrational base); no tower dimensions."
+   },
+   {
+    "path": "/tmp/research/img/droptower/i36_bungee_f5f81e7c_1600.jpg",
+    "shows": "1600-px copy of i36_bungee."
+   }
+  ],
+  "notes": "MODEL: Lansmont Model 23 (M23) Shock Test System, confirmed by Jeff Hill's brochure in #27 and PR #28 (equipment/lansmont-m23/); lab photos show the TouchTest Shock II table-top console named in that brochure (Beijer X2 base HMI) and a Lansmont Test Partner 4 DAQ (brochure: 'communicate seamlessly with Test Partner Data Acquisition Systems'). It is a guided free-fall shock machine (table on 2 guide rods, electric chain hoist, solenoid latch, pneumatic rod brakes, seismic base), NOT a Lansmont PDT package drop tester, and not the 23C cushion tester, 23D (magnesium carriage) or HC23. The lab unit carries the bungee 'acceleration kit' (white elastic cords over pulleys on the base) - 'bungee assisted' per docs/drop-test-protocol.md - but bungees were removed for the 60-in free-fall campaigns. The frame differs from Lansmont's stock M23 photo (dark square column at right-rear with slotted strip; no large programmer cylinder - the lab drops onto felt/PU mat stacks on a rubber pad on the seismic block), so it may be a different vintage or configuration; the P23 web image looks similar but nothing in the repos says P23. LOCATION: Jeff Hill's SMASH Lab, BYU Clyde Building room CB 152A (#90 comment 5198260416: 'installed into the drop tower computer in CB 152A'; PC desktop shows 'SMASH Lab'/'SMASHGun'). It is NOT in the VCL's CB154; byu-vcl lab-models/README.md already notes it is modelled but not placed. In the room it stands against a wall right of a wooden workbench (PC, TP4, TouchTest console), with a blue Modal Shop shaker stand in front-left and a stainless/blue cabinet (the slug-gun impact enclosure) to the right; hoist top is just under the drop ceiling. USE: tensegrity-optimization drop tests of 3D-printed T3-prism specimens (<=81 x 79 x 104 mm, 18-23 g) bolted/tied onto the table (lab acrylic plate/cage, key-seat accelerometer mounts); standard 60 in (1524 mm) free-fall onto 4 felt + 1 cardboard, later 1/4 or 1/2 in PU sheets; ~3,660 physical drops through 2026-08-19 per #101. Impact speed ~5.47 m/s at 60 in. Falling (carriage) mass has never been weighed (#88/#94). OFFICIAL SPECS (M23 data sheet / brochure 4.6.20): table 9.06 x 9.06 in (23 x 23 cm); envelope H 96-120 in (244-305 cm) x 21 in (53 cm) side-to-side x 24 in (61 cm) front-to-back; max acceleration 5000 g; min pulse 0.25 ms half-sine; max velocity change 24-32 ft/s (7.3-9.7 m/s); max payload 80 lb (36 kg); half-sine standard, trapezoidal and terminal-peak sawtooth with optional programmers; machine power 200-240 VAC 3-phase >=4 A or 380-480 VAC 3-phase >=2 A; controller 100-120 or 200-240 VAC 1-phase >=1 A; plant air 90 psi (6.2 bar); nitrogen 1000-2000 psi only for the optional DB programmer. Generic Lansmont features (2014 brochure): solid steel chrome-plated guide rods that also serve as brake surfaces, electric hoist, steel seismic base (Auburn's M23: 'cast iron seismic base with dampers'); TouchTest Shock 2 auto-cycle up to 32,000 drops and programmable safety interlocks. NOT FOUND anywhere public: machine weight, seismic-mass weight, guide-rod diameter/spacing, table/carriage mass, dimensioned M23 drawing (lansmont.com product pages return 403 to WebFetch; no usable Wayback snapshot of the M23 product page; the only dimensioned drawing is the 23C cushion tester's 96 x 18 in side view). CONTEXT: P23 (performance) is 98-146 x 18.1 x 21.3 in with 110 lb payload; 23D shares the 96-120 x 21 x 24 in envelope but has 40 lb payload. MODELLING TIPS: origin at floor centre; base slab ~480 x 540 x 90 mm; seismic block ~280 x 320 x 340 mm on it; round rubber pad and mat stack on top (impact surface ~0.45-0.5 m above floor); 2 chrome rods ~25 mm dia at ~+/-140 mm from centre running from the base slab to a top head at ~2.6-2.7 m; dark ~65 mm square column at right-rear full height; carriage = 230 x 230 x ~140 mm aluminium block with two side housings (~70 x 190 x 180 mm) carrying bushings on the rods and round ~95 mm brake covers on their outer faces; latch head bar (~360 x 110 mm) above it on the hoist chain; electric chain hoist + conical chain bucket on the head; 2 white pulleys + bungee cords at the front of the base; for a 60 in drop the table underside sits 1524 mm above the mat. EXISTING MODEL: byu-vcl lab-models/cad/equipment.py drop_tower() uses 533 x 610 x 2440 mm, guide rods 38 mm dia at +/-170 mm, two side columns and a crosshead; the photos suggest thinner (~25 mm) rods closer together (~280 mm c-c), one dark rear column, a taller build (~2.8 m) and a latch head - consider updating if accuracy matters. UNCERTAINTIES: exact configured height (96-120 in range; ~2.8 m estimated), rod diameter/spacing (photo estimates), seismic block and base sizes (photo estimates +/-20 %), whether a second (left) column exists, table thread size."
+ }
+}

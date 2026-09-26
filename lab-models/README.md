@@ -80,7 +80,7 @@ not the 15 a tight grid would fit.
 | Opentrons OT-2 | 624 × 567 × 662 | Opentrons' reference STEP ([github.com/Opentrons/ot2](https://github.com/Opentrons/ot2), "Detailed"). Official size is 63 × 57 × 66 cm |
 | AgileX PiPER | 626.75 mm reach | AgileX's arm-plus-gripper STEP, in the pose it ships in. 0–70 mm gripper |
 | CubXL | 740 × 605 × 488 | The frame is a **Genmitsu PROVerXL 4030 V2**: the badge is in the #133 and #200 photos, and the [SainSmart spec](https://www.sainsmart.com/products/proverxl-4030-v2) gives 400 × 300 × 110 mm travel. The slotted acrylic deck, tool plate, six-vial rack and control box are from photos |
-| Lansmont M23 drop tower | 533 × 610 × 2440 | Lansmont data sheet: 21 × 24 in envelope, 96–120 in tall, 9.06 × 9.06 in table, 60 in max drop |
+| Lansmont M23 drop tower | 533 × 610 × 2800 | Lansmont data sheet: 21 × 24 in envelope, 96–120 in tall, 9.06 × 9.06 in table. The frame is from the lab's photos ([`sources/drop_tower.json`](sources/drop_tower.json)): two ~25 mm rods ~280 mm apart, one rear column, a latch head, ~2.8 m as set up. It lives in the SMASH Lab, CB 152A |
 | AMAZEMET rePowder | 1000 × 800 × 1600 | O&MM p. 42 and Facility Guide p. 7, as restated in the `repowder-reference.zip` uploaded to PR #232 ([unpacked here](https://github.com/vertical-cloud-lab/byu-vcl/tree/323adba/atomizer-charge/repowder-reference)): ≈300 kg on four feet at 714 × 600 mm. Layout from the #124 crate photo and AMAZEMET's render |
 
 **The H2D and A1 mini have no usable vendor CAD.** Bambu publishes none. The best leads are a measured
@@ -140,8 +140,8 @@ the API key owner's account.
 | Document | Tabs |
 |---|---|
 | [Sandbox objects (48a9e11)](https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29) | `labware_lineup`, every sandbox object in one Part Studio, part names prefixed by object. `sandbox_layout`, spot D. AgileX's PiPER. An assembly, *Sandbox with PiPER*, with the arm on its plate |
-| [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, Lansmont M23 drop tower, rePowder atomizer |
-| [CB154 room](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here. The tab was replaced after the layout was corrected (see below) |
+| [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, rePowder atomizer, and the drop tower twice. `lansmont_m23_drop_tower_from_photos` is current; `lansmont_m23_drop_tower` is the earlier data-sheet-only model |
+| [CB154 room (968a35d)](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here. It has two `cb154_room` tabs: the **newer** one is the corrected layout, and the older one has walls in the wrong places |
 
 These are Onshape's own shaded views, from the API:
 
@@ -156,6 +156,9 @@ HTTP 405. The run spent 11 calls finding that out before the rename step was dro
 instances, so they all have to be moved together. My first transform moved one, which left the arm
 lying on the table. It took 2 more calls to fix.
 
+**The API key has no delete scope.** `DELETE /elements/...` returns HTTP 403 "Invalid API key state", so
+the superseded room and drop tower tabs have to be deleted in the web app.
+
 **The A1 mini's screen changed after the import.** In the Onshape copies it stands 25 mm proud of the
 column base. The repo's STEP, made after the import, has it flush.
 
@@ -166,11 +169,12 @@ still web-app only (#234).
 
 The plan allows 2,500 calls a year, so
 [`onshape/onshape_import.py`](onshape/onshape_import.py) waits once before polling rather than polling
-fast. This session used **49 calls**, recorded in [`onshape/run_2026-09-26.json`](onshape/run_2026-09-26.json):
+fast. This session used **57 calls**, recorded in [`onshape/run_2026-09-26.json`](onshape/run_2026-09-26.json):
 
 - 3 to make the folder;
 - 41 for the import, including the 11 failed renames;
-- 5 for the shaded views and the arm fix.
+- 5 for the shaded views and the arm fix;
+- 8 to re-import the corrected room and the refined drop tower, including one refused delete.
 
 A research sub-agent also searched Onshape's public documents for H2D CAD with the same key, read-only.
 That search found only a crude block model, and it spent a few more calls.
