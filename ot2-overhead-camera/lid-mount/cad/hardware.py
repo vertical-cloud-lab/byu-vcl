@@ -4,14 +4,12 @@ Every screw comes back in one pose: axis on Z, the underside of the head at Z = 
 below it (Z < 0) and the shank running up +Z. Nuts and washers sit on Z = 0 and rise +Z.
 Callers flip or translate them into place.
 
-The McMaster files live in ../hardware/mcmaster/<part number>.step with a parts.json next
-to them (fetched by hand from mcmaster.com; see ../hardware/README.md). If a file is
-missing, the ISO dimensions below stand in for it, so the renders never depend on the
-download.
+The McMaster files go in ../hardware/mcmaster/<part number>.step. They aren't committed;
+../hardware/README.md says how to fetch them. If a file is missing, the ISO dimensions below
+stand in for it, so the renders never depend on the download.
 """
 from __future__ import annotations
 
-import json
 import math
 from pathlib import Path
 
@@ -110,11 +108,6 @@ def mcmaster(pn: str, kind: str, major: float = 0.0) -> cq.Workplane | None:
     if not path.exists():
         return None
     return _normalise(cq.importers.importStep(str(path)), kind, major)
-
-
-def catalogue() -> dict:
-    path = MCMASTER / "parts.json"
-    return json.loads(path.read_text()) if path.exists() else {}
 
 
 def fasteners() -> dict[str, tuple[cq.Workplane, str]]:

@@ -2,7 +2,13 @@
 
 The screws, nuts and washers in the renders and GIFs are McMaster-Carr's own 3-D STEP
 models (with modelled threads). They were downloaded on 2026-09-26. `cad/hardware.py` loads
-them from `mcmaster/`, and falls back to ISO nominal shapes if a file is missing.
+them from `mcmaster/<PN>.step`, and falls back to ISO nominal shapes if a file is missing.
+
+**The STEP files aren't committed.** McMaster's CAD comes with no licence to redistribute it,
+and this repo is public, so they are handled like Opentrons' STEP in `cad/ot2_context.py`:
+fetch them, don't commit them (`.gitignore` has `hardware/mcmaster/*.step`). They were in
+commit `e9b1911` briefly. If the lab decides committing them is fine, restore them with
+`git checkout e9b1911 -- hardware/mcmaster/` and drop the ignore line.
 
 | Qty | Role | McMaster PN | Part |
 |---|---|---|---|
@@ -25,9 +31,17 @@ login. [`mcmaster/fetch/`](mcmaster/fetch/) has the two scripts,
 which also live on that Pi in `~/mcm/lid`:
 
 ```bash
-bash run.sh title 92095A194          # print the product page's title (checks the PN)
-bash run.sh step  92095A194 91828A231  # download the 3-D STEP for each PN into dl/
+# on the Pi, in ~/mcm/lid
+bash run.sh title 92095A194                # print the product page's title (checks the PN)
+bash run.sh step  92095A194 91828A231      # download <PN>.step (+ <PN>.meta.json) for each PN
+
+# then, from the runner or a laptop on the tailnet
+u=RPI_STREAM_CAM_USERNAME; h=RPI_STREAM_CAM_HOSTNAME
+scp "${!u}@${!h}:~/mcm/lid/*.step" hardware/mcmaster/
 ```
+
+Each file's SHA-256 is in `parts.json`, so a fresh download can be checked against the one
+the renders used.
 
 `run.sh` starts Chromium (niced, DevTools on loopback only) and always kills it on exit.
 `cdp.js` runs under the Pi's Node 20 with `--experimental-websocket`, so nothing had to be
