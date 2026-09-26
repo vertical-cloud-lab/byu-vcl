@@ -14,8 +14,9 @@ from pathlib import Path
 import numpy as np
 import pyvista as pv
 
-from mount import (COLORS, Params, build_config, color_for, make_active_cooler, make_cm3, make_mount,
-                   make_pi5, view_frustum)
+from mount import (COLORS, Params, box_span, build_config, collar_print, color_for, hex_prism, hq_front_y, hq_holes,
+                   make_active_cooler, make_cm3, make_collar, make_hq_camera, make_hq_lens, make_mount, make_pi5,
+                   view_frustum, y_cyl)
 
 HERE = Path(__file__).resolve().parent
 RENDERS = HERE.parent / "renders"
@@ -145,7 +146,8 @@ def render_hq_cm3(p: Params, mount_mesh, out: Path) -> None:
     add(pl, fr, (1.0, 0.8, 0.2), opacity=0.18)
     pl.camera_position = [(-200, -250, 150), (8, -10, 26), (0, 0, 1)]
     pl.add_text("HQ Camera + 16 mm lens (left) and Camera Module 3 (right) on a Pi 5\n"
-                "yellow: the Module 3's field of view, clear of the HQ lens", font_size=12, color="black")
+                "orange: the C-mount collar; yellow: the Module 3's field of view, clear of the HQ lens",
+                font_size=12, color="black")
     pl.screenshot(out / "hq_cm3.png")
     pl.close()
 
@@ -224,6 +226,92 @@ def render_station(p: Params, mount_mesh, out: Path) -> None:
     pl.close()
 
 
+def screws_and_nuts(p: Params, xc: float) -> tuple:
+    """The collar's four M2.5 x 25 socket-head screws and their nuts, as simple solids."""
+    yf = hq_front_y(p)
+    y_head = yf - p.collar_front + p.collar_cbore_h          # the head seats on the counterbore floor
+    screws = nuts = None
+    for u, v in hq_holes(p):
+        x, z = xc + u, p.axis_z + v
+        s = y_cyl(4.5, y_head, y_head - 2.5, x, z).union(y_cyl(2.5, y_head, y_head + 25.0, x, z))
+        n = (hex_prism(p.m25_nut_af - 0.4, 2.0).rotate((0, 0, 0), (0, 0, 1), 30).rotate((0, 0, 0), (1, 0, 0), -90)
+             .translate((x, p.upright_t - p.m25_nut_depth, z)))
+        screws = s if screws is None else screws.union(s)
+        nuts = n if nuts is None else nuts.union(n)
+    return screws, nuts
+
+
+def render_collar(p: Params, mount_mesh, out: Path) -> None:
+    """The collar as printed, and on the camera before the lens goes on."""
+    xc = p.stations[0]
+    pl = pv.Plotter(off_screen=True, window_size=(1800, 800), shape=(1, 2))
+    pl.set_background("white")
+    pl.enable_anti_aliasing("ssaa")
+    hq = make_hq_camera(p, xc)
+    screws, _ = screws_and_nuts(p, xc)
+
+    pl.subplot(0, 0)
+    add(pl, collar_print(p), COLORS["collar"])
+    pl.camera_position = [(-60, -75, 70), (0, 0, 5), (0, 0, 1)]
+    pl.add_text(f"C-mount collar as printed: {2 * p.collar_half:.0f} x {2 * p.collar_half:.0f} x "
+                f"{p.collar_front:.1f} mm, legs up,\nsix crush ribs in the bore", font_size=12, color="black")
+
+    pl.subplot(0, 1)
+    pl.add_mesh(mount_mesh, color=(0.45, 0.5, 0.56), smooth_shading=False, specular=0.2)
+    for k in ("pcb", "conn", "mount", "adapter"):
+        add(pl, hq[k], color_for(f"hq_{k}"))
+    add(pl, make_collar(p, xc), COLORS["collar"])
+    add(pl, screws, (0.62, 0.64, 0.68))
+    pl.camera_position = [(xc - 75, -125, p.axis_z + 55), (xc, -8, p.axis_z), (0, 0, 1)]
+    pl.add_text("On the HQ Camera, round the C-CS adapter, before the lens goes on.\n"
+                "Its screws replace the camera's own.", font_size=12, color="black")
+    pl.screenshot(out / "collar.png")
+    pl.close()
+
+
+def render_collar_section(p: Params, out: Path) -> None:
+    """Section on the diagonal plane through the lens axis and two of the collar's screws."""
+    xc = p.stations[0]
+    z = p.axis_z
+    hq = make_hq_camera(p, xc)
+    screws, nuts = screws_and_nuts(p, xc)
+    d = np.array([1.0, 0.0, -1.0]) / np.sqrt(2)             # cut plane's normal; the far half is kept
+    origin = np.array([xc, 0.0, z])
+    pl = plotter((1500, 1150))
+    upright = make_mount(p).intersect(box_span(xc - 32, xc + 32, -10, p.upright_t + 1, -1, p.upright_top + 1))
+    for wp, color in ((upright, (0.45, 0.5, 0.56)), (hq["pcb"], COLORS["hq_pcb"]),
+                      (hq["conn"], COLORS["hq_conn"]), (hq["mount"], (0.22, 0.22, 0.24)),
+                      (hq["adapter"], (0.34, 0.34, 0.36)), (make_hq_lens(p, xc, "16mm_C"), COLORS["hq_lens"]),
+                      (make_collar(p, xc), COLORS["collar"]), (screws, (0.62, 0.64, 0.68)),
+                      (nuts, (0.80, 0.80, 0.82))):
+        m = mesh(wp, tol=0.02).clean()
+        cut = m.clip_closed_surface(normal=tuple(d), origin=tuple(origin))   # keeps the half d points to
+        if cut.n_points:
+            pl.add_mesh(cut, color=color, smooth_shading=False, specular=0.1)
+    s = 21.2                                                  # the screws' distance from the axis
+    e = np.array([1.0, 0.0, 1.0]) / np.sqrt(2)               # up the cut plane, towards the top screw
+    at = lambda y, r: origin + np.array([0.0, y, 0.0]) + e * r  # noqa: E731
+    yf = hq_front_y(p)
+    labels = {
+        "16 mm lens": at(yf - 24, 0), "C-CS adapter": at(yf - 14.4, 13.5),
+        "collar": at(yf - 14.4, 24.5), "HQ board": at(yf + 0.7, -12.5),
+        "M2.5 x 25": at(-12.0, -s), "boss": at(-3.2, -s - 3.5), "upright": at(2.0, -s - 8.5),
+        "nut": at(2.7, s + 3.2), "back-focus ring": at(yf - 10.9, 17.5),
+    }
+    pl.add_point_labels(np.array(list(labels.values())), list(labels.keys()), font_size=18, point_size=8,
+                        point_color="red", shape_opacity=0.85, always_visible=True)
+    pl.enable_parallel_projection()
+    focus = at(-20.0, -4.0)
+    pl.camera_position = [tuple(focus - 200 * d), tuple(focus), (0, 0, 1)]
+    pl.camera.parallel_scale = 34
+    pl.add_text("C-mount collar in section, through the lens axis and two of its four screws.\n"
+                "Each M2.5 x 25 clamps collar leg, HQ board, boss and upright against a nut; the collar's\n"
+                "bore holds the C-CS adapter, 0.5 mm clear of the back-focus ring and of the lens.",
+                position="lower_left", font_size=12, color="black")
+    pl.screenshot(out / "collar_section.png")
+    pl.close()
+
+
 def main() -> None:
     RENDERS.mkdir(parents=True, exist_ok=True)
     p = Params()
@@ -233,6 +321,8 @@ def main() -> None:
     render_two_cm3(p, mm, RENDERS)
     render_mount(p, mm, RENDERS)
     render_station(p, mm, RENDERS)
+    render_collar(p, mm, RENDERS)
+    render_collar_section(p, RENDERS)
     print(f"renders written to {RENDERS}")
 
 

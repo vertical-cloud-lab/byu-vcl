@@ -14,18 +14,19 @@
   "filament_colour": "#000000",
   "return_code": 0,
   "error_string": "Success.",
-  "support_necessity_checks_run": 1,
+  "support_necessity_checks_run": 2,
   "thumbnails_embedded": [],
   "plates": [
     {
       "plate": 1,
-      "name": "Mount",
+      "name": "Mount and C-mount collar",
       "objects": [
-        "mount_1"
+        "mount_1",
+        "collar_1"
       ],
-      "print_time_s": 5559,
-      "filament_g": 44.56,
-      "filament_m": 14.7,
+      "print_time_s": 6266,
+      "filament_g": 49.26,
+      "filament_m": 16.25,
       "bed_type": "Textured PEI Plate",
       "bed_temp_c": [
         65,
@@ -48,22 +49,22 @@
         }
       ],
       "feature_time_s": {
-        "Bottom surface": 228,
-        "Bridge": 300,
+        "Bottom surface": 265,
+        "Bridge": 324,
         "Custom": 349,
         "Flush": 28,
-        "Gap infill": 187,
-        "Inner wall": 1048,
-        "Internal solid infill": 631,
-        "Outer wall": 810,
-        "Overhang wall": 20,
-        "Sparse infill": 879,
-        "Top surface": 200,
-        "Travel": 901,
-        "Undefined": 882
+        "Gap infill": 247,
+        "Inner wall": 1137,
+        "Internal solid infill": 701,
+        "Outer wall": 956,
+        "Overhang wall": 31,
+        "Sparse infill": 961,
+        "Top surface": 231,
+        "Travel": 1056,
+        "Undefined": 1038
       }
     }
   ],
-  "total_print_time_s": 5559,
-  "total_filament_g": 44.56
+  "total_print_time_s": 6266,
+  "total_filament_g": 49.26
 }

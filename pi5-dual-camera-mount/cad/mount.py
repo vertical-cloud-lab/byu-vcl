@@ -368,6 +368,7 @@ HQ_RING = (36.0, 1.2)            # knurled flange of the back-focus adjustment r
 HQ_ADAPTER_D = 30.75             # C-CS adapter's knurl, from the ring to the C flange
 HQ_C_FLANGE = 18.58 - 1.4        # the drawing's 18.58 runs from the C flange to the board's back
 HQ_CS_FLANGE = HQ_C_FLANGE - 5.0  # a CS lens screws straight into the ring, 5 mm further back
+HQ_BORE_D = 22.4                 # the ring's bore
 # Half outline (u, v) of the tripod foot's skirt, mirrored about u = 0; it comes within 3.37 mm
 # of the two mounting holes beside it.
 HQ_SKIRT = [(9.88, 13.54), (12.04, 16.62), (11.44, 19.96), (8.85, 21.18), (6.985, 24.1), (6.985, 30.3)]
@@ -410,7 +411,9 @@ def make_hq_camera(p: Params, xc: float) -> dict[str, cq.Workplane]:
     mount = mount.union(y_poly(skirt, yf, y_ring, xc, z))                  # tripod foot and skirt
     mount = mount.union(cam_box(p, xc, -6.985, 6.985, h, 30.3, yb, yf))    # ...back to the board's back
     mount = mount.union(cam_box(p, xc, -5.08, 5.08, -h - 2.55, -16.0, yf - 5.33, y_ring))  # back-focus lock
+    mount = mount.cut(y_cyl(HQ_BORE_D, yf - 2.0, y_ring - HQ_RING[1] - 1, xc, z))    # bore, down to the sensor
     adapter = y_cyl(HQ_ADAPTER_D, y_ring - HQ_RING[1], yf - HQ_C_FLANGE, xc, z)
+    adapter = adapter.cut(y_cyl(25.4, y_ring, yf - HQ_C_FLANGE - 1, xc, z))          # 1"-32 C thread
     return {"pcb": pcb, "conn": conn, "mount": mount, "adapter": adapter, "yf": yf}
 
 

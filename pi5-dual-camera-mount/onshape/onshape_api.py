@@ -49,6 +49,9 @@ API = "/api/v10"
 PLANE_IDS = {"Front": "JCC", "Top": "JDC", "Right": "JEC"}   # deterministic ids of the default planes
 M = 0.001                      # sketch geometry is in metres
 STEPS = ("mount", "collar", "assembly_hq_cm3", "assembly_2x_cm3")   # files in ../exports, .step
+# The native part studios: tab name, key in features.check(), part name, shaded views to save.
+NATIVE = (("Mount (native features)", "mount", "Pi 5 dual-camera mount", ("front_left", "rear_right")),
+          ("C-mount collar (native features)", "collar", "C-mount collar", ("top_iso",)))
 NAME_PROPERTY = "57f3fb8efa3416c06701d60d"                          # Onshape's "Name" metadata property
 # 3 x 4 view matrices, row-major (screen right, screen up, towards the viewer).
 VIEWS = {
@@ -92,8 +95,9 @@ class Onshape:
     def create_part_studio(self, did: str, wid: str, name: str) -> str:
         return self.call("POST", f"/partstudios/d/{did}/w/{wid}", json={"name": name})["id"]
 
-    def delete_element(self, did: str, wid: str, eid: str) -> None:
-        self.call("DELETE", f"/elements/d/{did}/w/{wid}/e/{eid}")
+    def name_element(self, did: str, wid: str, eid: str, name: str) -> None:
+        self.call("POST", f"/metadata/d/{did}/w/{wid}/e/{eid}",
+                  json={"properties": [{"propertyId": NAME_PROPERTY, "value": name}]})
 
     # --- features ------------------------------------------------------------------
     def add_feature(self, did: str, wid: str, eid: str, feature: dict) -> str:
@@ -118,8 +122,25 @@ class Onshape:
         self.call("POST", f"/metadata/d/{did}/w/{wid}/e/{eid}/p/{pid}",
                   json={"properties": [{"propertyId": NAME_PROPERTY, "value": name}]})
 
-    def shaded_view(self, did: str, wid: str, eid: str, view: str, out: Path, w: int = 1000, h: int = 700) -> None:
-        r = self.call("GET", f"/partstudios/d/{did}/w/{wid}/e/{eid}/shadedviews", params={
+    # --- assembly ------------------------------------------------------------------
+    def create_assembly(self, did: str, wid: str, name: str) -> str:
+        return self.call("POST", f"/assemblies/d/{did}/w/{wid}", json={"name": name})["id"]
+
+    def insert_part(self, did: str, wid: str, asm: str, part_studio: str, pid: str) -> None:
+        self.call("POST", f"/assemblies/d/{did}/w/{wid}/e/{asm}/instances", json={
+            "documentId": did, "elementId": part_studio, "partId": pid, "isAssembly": False,
+            "isWholePartStudio": False})
+
+    def instances(self, did: str, wid: str, asm: str) -> list[dict]:
+        return self.call("GET", f"/assemblies/d/{did}/w/{wid}/e/{asm}")["rootAssembly"]["instances"]
+
+    def place(self, did: str, wid: str, asm: str, instance: str, matrix: list[float]) -> None:
+        self.call("POST", f"/assemblies/d/{did}/w/{wid}/e/{asm}/occurrencetransforms", json={
+            "isRelative": False, "occurrences": [{"path": [instance]}], "transform": matrix})
+
+    def shaded_view(self, did: str, wid: str, eid: str, view: str, out: Path, w: int = 1000, h: int = 700,
+                    kind: str = "partstudios") -> None:
+        r = self.call("GET", f"/{kind}/d/{did}/w/{wid}/e/{eid}/shadedviews", params={
             "viewMatrix": VIEWS[view], "outputWidth": w, "outputHeight": h, "pixelSize": 0,
             "edges": "show", "showAllParts": "true", "useAntiAliasing": "true"})
         images = r.get("images") or []
@@ -158,6 +179,7 @@ class DryRun(Onshape):
         self.base = "https://cad.onshape.com"
         self.log: list[dict] = []
         self.n = 0
+        self.inserted: list[str] = []
 
     def call(self, method: str, path: str, **kw) -> dict:
         self.n += 1
@@ -186,11 +208,20 @@ class DryRun(Onshape):
         if path.startswith("/translations/"):
             return {"requestState": "DONE", "resultElementIds": [f"E{self.n}"]}
         if path.endswith("/elements"):
-            return [{"id": "DEFAULT", "name": "Part Studio 1", "elementType": "PARTSTUDIO"}]
+            return [{"id": "DEFAULT", "name": "Part Studio 1", "elementType": "PARTSTUDIO"},
+                    {"id": "ASSEMBLY", "name": "Assembly 1", "elementType": "ASSEMBLY"}]
+        if path.endswith("/instances"):
+            self.inserted.append(body["elementId"])
+        if path.startswith("/assemblies/") and method == "POST" and path.count("/") == 5:
+            return {"id": "ASM"}
         return {}
 
-    def shaded_view(self, did, wid, eid, view, out, w=1000, h=700) -> None:
-        self.call("GET", f"/partstudios/d/{did}/w/{wid}/e/{eid}/shadedviews", params={"viewMatrix": VIEWS[view]})
+    def shaded_view(self, did, wid, eid, view, out, w=1000, h=700, kind="partstudios") -> None:
+        self.call("GET", f"/{kind}/d/{did}/w/{wid}/e/{eid}/shadedviews", params={"viewMatrix": VIEWS[view]})
+
+    def instances(self, did, wid, asm) -> list[dict]:
+        self.call("GET", f"/assemblies/d/{did}/w/{wid}/e/{asm}")
+        return [{"id": f"I{i}", "elementId": e} for i, e in enumerate(self.inserted)]
 
 
 # --- feature JSON ---------------------------------------------------------------------
@@ -268,6 +299,27 @@ def extrude_json(x: F.Extrude, sketch_id: str) -> dict:
     return {"btType": "BTMFeature-134", "featureType": "extrude", "name": x.name, "parameters": params}
 
 
+def collar_placement(p) -> list[float]:
+    """4 x 4 transform, row-major and in metres, from the collar's print frame (front face on
+    the Top plane, legs up +Z) to its place on the left station, in the mount's frame."""
+    y_front = F.m.hq_front_y(p) - p.collar_front
+    return [1, 0, 0, p.stations[0] * M,
+            0, 0, 1, y_front * M,
+            0, -1, 0, p.axis_z * M,
+            0, 0, 0, 1]
+
+
+def assemble(api: Onshape, did: str, wid: str, asm: str, mount_eid: str, collar_eid: str, evidence: Path) -> dict:
+    """The two native parts in an assembly, the collar where it sits on an HQ Camera."""
+    for eid in (mount_eid, collar_eid):
+        api.insert_part(did, wid, asm, eid, api.parts(did, wid, eid)[0]["partId"])
+    by_element = {i["elementId"]: i["id"] for i in api.instances(did, wid, asm)}
+    api.place(did, wid, asm, by_element[collar_eid], collar_placement(F.m.Params()))
+    out = evidence / "api-assembly-native.png"
+    api.shaded_view(did, wid, asm, "front_left", out, 1200, 800, kind="assemblies")
+    return {"element": asm, "instances": 2, "shaded_view": out.name}
+
+
 def build(api: Onshape, did: str, wid: str, eid: str, features: list) -> None:
     ids: dict[str, str] = {}
     for f in features:
@@ -301,6 +353,7 @@ def main() -> None:
     ap.add_argument("--document", metavar="URL", help="work in an existing document instead of creating one")
     ap.add_argument("--skip-native", action="store_true", help="only import the STEP files")
     ap.add_argument("--skip-import", action="store_true", help="only build the native features")
+    ap.add_argument("--skip-assembly", action="store_true", help="no assembly of the two native parts")
     ap.add_argument("--step", action="append", choices=STEPS, metavar="NAME",
                     help=f"import only this STEP file (repeatable; default all of: {', '.join(STEPS)})")
     ap.add_argument("--dry-run", action="store_true",
@@ -323,43 +376,73 @@ def main() -> None:
             raise SystemExit(f"not a workspace URL: {args.document}")
         did, wid = mt.groups()
         default = []
+        assemblies = [e["id"] for e in api.elements(did, wid)
+                      if e.get("elementType") == "ASSEMBLY" and re.fullmatch(r"Assembly \d+", e.get("name", ""))]
     else:
         did, wid = api.create_document(args.name, args.parent, args.owner_id, args.owner_type)
-        default = [e["id"] for e in api.elements(did, wid) if e.get("elementType") == "PARTSTUDIO"]
+        els = api.elements(did, wid)
+        default = [e["id"] for e in els if e.get("elementType") == "PARTSTUDIO"]
+        assemblies = [e["id"] for e in els if e.get("elementType") == "ASSEMBLY"]
     url = f"{api.base}/documents/{did}/w/{wid}"
     print("document:", url)
     summary: dict = {"document": url, "name": args.name, "part_studios": {}, "imports": {}, "failures": []}
     evidence = HERE / "evidence"
     evidence.mkdir(exist_ok=True)
-    if not args.skip_native:
-        reference = F.check()                    # CadQuery: the same features, and mount.py
-        p = F.m.Params()
-        for label, feats, part_name, views in (
-                ("Mount (native features)", F.mount_features(p), "Pi 5 dual-camera mount", ("front_left", "rear_right")),
-                ("C-mount collar (native features)", F.collar_features(p), "C-mount collar", ("top_iso",))):
-            eid = api.create_part_studio(did, wid, label)
-            print(f"building {label!r}")
-            key = "mount" if label.startswith("Mount") else "collar"
-            rec = {"element": eid, "features": len(feats),
-                   "cadquery_volume_mm3": reference[key]["volume_mount_py_mm3"]}
+    reference = F.check()                        # CadQuery: the same features, and mount.py
+    p = F.m.Params()
+    feats = {"mount": F.mount_features(p), "collar": F.collar_features(p)}
+    tabs = {e["name"]: e["id"] for e in api.elements(did, wid)} if args.document else {}
+    for label, key, part_name, views in NATIVE:
+        rec = {"features": len(feats[key]), "cadquery_volume_mm3": reference[key]["volume_mount_py_mm3"]}
+        try:
+            if args.skip_native:                 # re-measure tabs an earlier run built
+                eid = tabs.get(label)
+                if eid is None:
+                    continue
+            else:
+                eid = None
+                if default:                      # a new document's empty "Part Studio 1": reuse it
+                    try:
+                        api.name_element(did, wid, default[0], label)
+                        eid = default.pop(0)
+                    except RuntimeError as exc:
+                        print("  (could not rename the default part studio, adding a tab instead:", str(exc)[:120], ")")
+                        default.clear()
+                eid = eid or api.create_part_studio(did, wid, label)
+                print(f"building {label!r}")
+                build(api, did, wid, eid, feats[key])
+            rec["element"] = eid
             summary["part_studios"][label] = rec
-            try:
-                build(api, did, wid, eid, feats)
-                rec.update(measure(api, did, wid, eid))
-                rec["volume_difference_mm3"] = round(rec["volume_mm3"] - rec["cadquery_volume_mm3"], 3)
+            rec.update(measure(api, did, wid, eid))
+            rec["volume_difference_mm3"] = round(rec["volume_mm3"] - rec["cadquery_volume_mm3"], 3)
+            if not args.skip_native:
                 parts = api.parts(did, wid, eid)
                 if len(parts) == 1:
                     api.name_part(did, wid, eid, parts[0]["partId"], part_name)
                 rec["parts"] = len(parts)
-                for view in views:
-                    out = evidence / f"api-{key}-{view.replace('_', '-')}.png"
+            for view in views:
+                out = evidence / f"api-{key}-{view.replace('_', '-')}.png"
+                if not args.skip_native or not out.exists():
                     api.shaded_view(did, wid, eid, view, out)
-                    rec.setdefault("shaded_views", []).append(out.name)
-            except Exception as exc:              # keep going: the STEP imports still give a full model
-                summary["failures"].append(f"{label}: {exc}")
-                print("  !", exc)
-        for eid in default:                       # the empty "Part Studio 1" every new document starts with
-            api.delete_element(did, wid, eid)
+                rec.setdefault("shaded_views", []).append(out.name)
+        except Exception as exc:                  # keep going: the STEP imports still give a full model
+            summary["failures"].append(f"{label}: {exc}")
+            print("  !", exc)
+    studios = {k: v["element"] for k, v in summary["part_studios"].items() if "element" in v}
+    if not args.skip_assembly and len(studios) == 2:
+        label = "Mount + C-mount collar (native parts)"
+        try:
+            asm = assemblies[0] if assemblies else api.create_assembly(did, wid, label)
+            if assemblies:                       # a new document's empty "Assembly 1": reuse it
+                try:
+                    api.name_element(did, wid, asm, label)
+                except RuntimeError as exc:
+                    print("  (could not rename the assembly:", str(exc)[:120], ")")
+            print(f"assembling {label!r}")
+            summary["assembly"] = assemble(api, did, wid, asm, studios[NATIVE[0][0]], studios[NATIVE[1][0]], evidence)
+        except Exception as exc:
+            summary["failures"].append(f"assembly: {exc}")
+            print("  !", exc)
     if not args.skip_import:
         exports = HERE.parent / "exports"
         for name in args.step or STEPS:

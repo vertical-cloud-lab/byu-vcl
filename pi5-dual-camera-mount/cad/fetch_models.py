@@ -30,7 +30,9 @@ def main() -> None:
             print(f"{stl}: already there")
             continue
         print(f"{stl}: downloading {url}")
-        data = urllib.request.urlopen(url, timeout=300).read()
+        # Raspberry Pi's server answers Python's default User-Agent with HTTP 403.
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (fetch_models.py)"})
+        data = urllib.request.urlopen(req, timeout=300).read()
         with zipfile.ZipFile(io.BytesIO(data)) as z:
             name = next(n for n in z.namelist() if n.endswith(member) and "__MACOSX" not in n)
             step = CACHE / member

@@ -9,8 +9,9 @@ process "0.20mm Standard @BBL A1M", filament "Bambu PLA Basic @BBL A1M"), flatte
 flatten_presets.py, then 3 walls, 25 % infill, black filament, the Textured PEI plate (left
 alone the CLI picks "Cool Plate" and a 35 C bed) and Bambu's circle compensation, so the
 M2 / M2.5 clearance holes print at their drawn sizes. One plate: mount.stl, centred, as
-exported. Writes pi5_dual_camera_mount_A1mini_PLA.3mf and report.json here. Thumbnails need
-an OpenGL context; see the lid mount's slice README for the Weston + glxshim.c route.
+exported, and collar.stl (the HQ Camera's C-mount collar) beside it, front face down. Writes
+pi5_dual_camera_mount_A1mini_PLA.3mf and report.json here. Thumbnails need an OpenGL context;
+see the lid mount's slice README for the Weston + glxshim.c route.
 """
 from __future__ import annotations
 
@@ -40,7 +41,10 @@ FILAMENT_COLOUR = "#000000"
 
 # (plate name, [(stl, x, y)]) -- x, y are where the STL origin lands on the 180 mm bed.
 PLATES = [
-    ("Mount", [("mount", 90, 39.25)]),   # the STL spans Y -6.5..108, so this centres it on the bed
+    ("Mount and C-mount collar", [
+        ("mount", 90, 39.25),     # the STL spans Y -6.5..108, so this centres it on the bed
+        ("collar", 30, 120),      # 42 mm square, origin on its bore: beside the Pi 5's arm of the base
+    ]),
 ]
 
 def write_presets(resources: Path, build: Path) -> dict[str, Path]:
