@@ -32,7 +32,7 @@ Needs `ffmpeg`, `Xvfb`, Google Chrome, `playwright`, `cadquery` (for `lid_mount.
 
 ## 2026-09-26
 
-It took three takes; [`../evidence/recording-2026-09-26.json`](../evidence/recording-2026-09-26.json)
+It took four takes; [`../evidence/recording-2026-09-26.json`](../evidence/recording-2026-09-26.json)
 has the details of each.
 
 1. **Take 1** built all 14 features, but Mirror 1 and Mirror 3 had nothing to mirror, and the
@@ -41,10 +41,15 @@ has the details of each.
    picks were lost. `Ui.pick_into` in `onshape_ui.py` now waits for each pick to show up in the
    field.
 2. **Take 2** built the right part, but a 0.01 mm³ tolerance was tighter than Onshape's own noise.
-3. **Take 3** is on YouTube (unlisted). It has **no pointer or captions**. Run as an init script,
-   `overlay.js` threw before the page had any elements, so the overlay vanished at the new
-   document's full page load. That is fixed now. The video's description still says the overlay
-   is there, and the upload-only token can't edit it.
+3. **Take 3** ([AL11cyBySeE](https://www.youtube.com/watch?v=AL11cyBySeE), unlisted) has **no
+   pointer or captions**. Run as an init script, `overlay.js` threw before the page had any
+   elements, so the overlay vanished at the new document's full page load. That is fixed now.
+   Its description still says the overlay is there, and the upload-only token can't edit or
+   delete it. It should be deleted.
+4. **Take 4** ([UqWTBlqvQ0g](https://www.youtube.com/watch?v=UqWTBlqvQ0g), unlisted) is the one
+   to keep: pointer, key badges and captions throughout. Its recording stops as the mass
+   properties panel opens, because a fixed 4 s wait read an empty Volume field. `read_volume`
+   now polls. The volume, read a moment later, was 108,840.264 mm³.
 
 **Unlisted uploads stay unlisted.** The upload-only token requested `unlisted`, and the video
 came back unlisted, with no unaudited-project lock. That answers the open question in #236.
