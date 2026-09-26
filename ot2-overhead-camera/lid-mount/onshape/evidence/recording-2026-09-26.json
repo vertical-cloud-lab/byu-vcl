@@ -51,7 +51,48 @@
      "Check: volume from Onshape's mass properties"
     ]
    ],
-   "known_problem": "no pointer, key badges or captions: overlay.js threw when run as an init script (no document element yet), so it was missing after the new document's full page load. The description's sentence about the overlay is wrong for this video; the upload-only token cannot edit it. Fixed in overlay.js."
+   "known_problem": "no pointer, key badges or captions: overlay.js threw when run as an init script (no document element yet), so it was missing after the new document's full page load. The description's sentence about the overlay is wrong for this video; the upload-only token cannot edit it. Fixed in overlay.js. Superseded by take 4; delete it with the full token or in Studio."
+  },
+  {
+   "take": 4,
+   "result": "uploaded; the one to keep",
+   "video": "https://www.youtube.com/watch?v=UqWTBlqvQ0g",
+   "privacy": "unlisted",
+   "overlay": "pointer, key badges and captions present (checked on a frame after upload)",
+   "document": "https://cad.onshape.com/documents/a80d99ff55b9c1cb2129a983/w/670ac0efd52829e16b9c57af/e/6173b35d7be9bdc997305432",
+   "recorded_s": 445.88,
+   "volume_mm3_read_after_recording": 108840.264,
+   "known_problem": "the recording stops as the mass properties panel opens: the fixed 4 s wait read an empty Volume field and the script stopped. read_volume now polls.",
+   "chapters": [
+    [
+     0.0,
+     "New document in vcl-shared › OT-2 Overhead Camera"
+    ],
+    [
+     34.75,
+     "Plate, 112 × 112 × 6 mm"
+    ],
+    [
+     90.75,
+     "Light collar, Ø52 mm"
+    ],
+    [
+     141.59,
+     "Lens aperture, Ø46 mm through"
+    ],
+    [
+     197.73,
+     "Posts: one drawn, three mirrored"
+    ],
+    [
+     310.64,
+     "Bolt holes: one drawn, three mirrored"
+    ],
+    [
+     443.37,
+     "Check: volume from Onshape's mass properties"
+    ]
+   ]
   }
  ]
 }
