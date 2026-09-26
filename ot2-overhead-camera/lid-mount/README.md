@@ -333,9 +333,12 @@ imports into the lab-owned copy of the REST document in **vcl-shared › OT-2 Ov
 ([document](https://cad.onshape.com/documents/b861aa8c20186efe903944e2/w/92e2f78805c144a49d3ac0a0)):
 *base v2 (M3 nut slots in the posts)*, *deck v2 (post sockets)* and *assembly v2 (nut slots and
 sockets)*. Before importing them, the document was saved as the version *Before M3 nut slots and
-deck sockets*, so the older tabs can still be compared against it. That took 11 API calls. The
-native features still build the earlier simplified base: posts that stop at the deck's
-underside (99.66 mm), with no slots, which is what the volumes below were measured on.
+deck sockets*, so the older tabs can still be compared against it. Onshape's mass properties
+match CadQuery to the thousandth: 111,243.380 mm³ for the base and 60,669.349 mm³ for the deck
+([base](onshape/evidence/api-v2-base.png), [deck from below](onshape/evidence/api-v2-deck.png)).
+That took 16 API calls in all. The native features still build the earlier simplified base:
+posts that stop at the deck's underside (99.66 mm), with no slots, which is what the volumes
+below were measured on.
 
 Both documents are private to their accounts. Share one from Onshape, or with
 `onshape_api.py --share EMAIL` if the key has the Share scope. The full record is in

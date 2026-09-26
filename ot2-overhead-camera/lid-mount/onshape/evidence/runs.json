@@ -56,5 +56,37 @@
     "duration": "8 min 7 s (22:38:02-22:46:09 UTC), first attempt; 3 dimension picks needed the built-in retry",
     "exploratory_document": "an earlier, interactive build of the same base (same volume) was sent to the account's Trash afterwards; restore it from Trash if wanted",
     "signed_out_after": true
+  },
+  "rest_api_v2_imports": {
+    "date": "2026-09-26",
+    "why": "posts gained side-entry M3 nut slots and the deck gained post sockets (PR #234)",
+    "account": "Sterling's API key, working in the lab-owned copy of the REST document (owner: Vertical Cloud Lab)",
+    "folder": "vcl-shared > OT-2 Overhead Camera",
+    "document": "https://cad.onshape.com/documents/b861aa8c20186efe903944e2/w/92e2f78805c144a49d3ac0a0",
+    "version_saved_before_import": {
+      "id": "8d7f822131efbdacc464c2f0",
+      "name": "Before M3 nut slots and deck sockets"
+    },
+    "new_tabs": {
+      "base v2 (M3 nut slots in the posts)": "0b2e0a222449439e6fdca241",
+      "deck v2 (post sockets)": "e622733cabdc5fe81650817e",
+      "assembly v2 (nut slots and sockets)": "324c16e376db8f4e469f3a9c"
+    },
+    "volumes_mm3": {
+      "base v2": {
+        "onshape_volume_mm3": 111243.38,
+        "cadquery_volume_mm3": 111243.38
+      },
+      "deck v2": {
+        "onshape_volume_mm3": 60669.349,
+        "cadquery_volume_mm3": 60669.349
+      }
+    },
+    "shaded_views": [
+      "api-v2-base.png",
+      "api-v2-deck.png"
+    ],
+    "api_calls_used": 16,
+    "note": "1 document search, 1 version, 3 imports (tab list, upload, one status poll each), 1 tab list, 2 mass properties, 2 shaded views"
   }
 }
