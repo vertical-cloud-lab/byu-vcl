@@ -14,7 +14,8 @@ All traffic goes through `https://api.platform.edisonscientific.com` (the
 | `q1-sota-arms-in-sdls/` | `85b13938-c944-4f68-8dc8-f452a9a073a2` | `job-futurehouse-paperqa3-high` | **success** (34 min) |
 | `q2-metrology-and-reliability-methods/` | `cbb5a078-5411-4391-a29b-902196894bc5` | `job-futurehouse-paperqa3-high` | **success**, fetched 2026-09-15 |
 | `q3-grippers-and-end-effectors/` | `bccdc402-47d0-44c0-955c-85bca64f182d` | `job-futurehouse-paperqa3-high` | **success** (22 min) |
-| `q4-closed-loop-design-protocol/` | `80856303-053c-4b8c-b450-ccc0808273a7` | `job-futurehouse-paperqa3-high` | submitted 2026-09-15 09:23 UTC |
+| `q4-closed-loop-design-protocol/` | `80856303-053c-4b8c-b450-ccc0808273a7` | `job-futurehouse-paperqa3-high` | **success**, fetched 2026-09-26 |
+| `q5-sandbox-object-set/` | `c1c66197-fee2-4c28-bde1-2bb4f2ad1433` | `job-futurehouse-paperqa3-high` | **success** (31 min) |
 
 The queries are deliberately **sequential**: each follow-up is written against the
 previous answer, so Q2 is not composed until Q1 returns.
@@ -44,8 +45,16 @@ previous answer, so Q2 is not composed until Q1 returns.
    variables and how to separate the finger's contribution from the arm's, statistical power
    for high-baseline binary success, fatigue protocols for FDM flexures, what feedback signal
    to return to the generator, ablations a referee will demand, how to run a fair human-expert
-   control, and pre-registration/reporting standards. *(submitted, seeded by Q3)*
-5. **Q5 — remaining axes**, to be narrowed further: (a) transparent/specular labware pose estimation and
+   control, and pre-registration/reporting standards. **(returned — see
+   `q4-closed-loop-design-protocol/answer.md`)**
+5. **Q5 — the sandbox object set.** Q4 found that no physical laboratory-object manipulation
+   benchmark exists, so Q5 asks for one: a census of what published SDL arms actually handle,
+   per-object specifications and governing standards, a property-axis coverage matrix, how
+   YCB-style sets were chosen, fill surrogates, fixtures, and a tiered buy list. **(returned —
+   see `q5-sandbox-object-set/answer.md`, and
+   [`../sandbox-object-set.md`](../sandbox-object-set.md) for the list checked against the
+   lab's own parts, where Q5 invented the atomizer-charge geometry)**
+6. **Q6 — remaining axes**, to be narrowed further: (a) transparent/specular labware pose estimation and
    grasping for glass vials, quartz crucibles, and metal powder; (b) hand-eye calibration
    and closed-loop visual servoing accuracy achievable on a sub-$5k arm with a custom
    wrist camera; (c) an arm as the sample-exchange layer closing the loop on an existing
