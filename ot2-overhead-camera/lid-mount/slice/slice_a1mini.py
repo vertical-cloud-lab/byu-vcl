@@ -3,20 +3,27 @@
 
     python slice_a1mini.py --bambu ~/bambu/squashfs-root   # an extracted Bambu Studio AppImage
 
-Three plates, each part square to the bed and centred on it:
+Three plates, every part square to the bed:
 
-    1  base            144 x 144 x 99.7 mm
-    2  deck + spacers  112 x 112 x 11 mm, spacers in front
+    1  base            144 x 144 x 99.7 mm, centred
+    2  deck + spacers  112 x 112 x 11 mm, 10 mm back from centre, spacers in front of it
     3  drill template  144 x 144 x 2 mm (optional; the paper PDF does the same job)
 
 Presets are Bambu's own system presets (machine "Bambu Lab A1 mini 0.4 nozzle",
 process "0.20mm Standard @BBL A1M", filament "Bambu PLA Basic @BBL A1M"),
 flattened by flatten_presets.py, with the README's print settings on top:
 3 walls and 25 % infill (the stock preset has 2 walls and 15 %), and black
-filament. Writes lid_mount_A1mini_PLA.3mf and report.json next to this file.
+filament. The build plate is set explicitly to the Textured PEI plate the A1 mini
+ships with: left alone, the CLI falls back to "Cool Plate" (which the A1 mini's
+own profile lists as unsupported) and heats the bed to 35 °C instead of 65 °C,
+without a warning. Writes lid_mount_A1mini_PLA.3mf and report.json here.
 
-The CLI only fills the 3MF's plate thumbnails when it can open an OpenGL
-context; see README.md in this folder for the headless setup.
+Plate thumbnails (the picture the printer's screen shows) and Bambu's own plate
+renders need an OpenGL context. On Linux the CLI asks GLFW for an OSMesa context
+on a Wayland display, and its GLX-only GLEW then refuses to start; glxshim.c
+works around that. With WAYLAND_DISPLAY set (a headless Weston is enough) and
+libOSMesa installed, the shim is compiled and preloaded automatically; without
+them the slice still works, just with no thumbnails. See README.md here.
 """
 from __future__ import annotations
 
@@ -35,7 +42,8 @@ from flatten_presets import PRESETS, flatten
 HERE = Path(__file__).resolve().parent
 EXPORTS = HERE.parent / "exports"
 OUT_3MF = HERE / "lid_mount_A1mini_PLA.3mf"
-OVERRIDES = {"wall-loops": "3", "sparse-infill-density": "25%"}
+OVERRIDES = {"wall-loops": "3", "sparse-infill-density": "25%", "curr-bed-type": "Textured PEI Plate"}
+OSMESA = Path("/usr/lib/x86_64-linux-gnu/libOSMesa.so.8")
 FILAMENT_COLOUR = "#000000"
 
 # (plate name, [(stl, x, y)]) -- x, y are where the STL origin lands on the 180 mm bed.
@@ -67,7 +75,20 @@ def write_assemble_list(build: Path) -> Path:
     return path
 
 
-def run_cli(bambu: Path, presets: dict[str, Path], assemble: Path, build: Path) -> str:
+def gl_env(build: Path) -> dict[str, str]:
+    """Environment for the CLI, with the OSMesa shim preloaded when it can work."""
+    env = os.environ.copy()
+    if not (env.get("WAYLAND_DISPLAY") and OSMESA.exists() and shutil.which("gcc")):
+        print("no Wayland display or libOSMesa: slicing without thumbnails")
+        return env
+    shim = build / "libglxshim.so"
+    subprocess.run(["gcc", "-shared", "-fPIC", "-O2", "-o", str(shim), str(HERE / "glxshim.c"),
+                    f"-l:{OSMESA.name}"], check=True)
+    env["LD_PRELOAD"] = f"{shim}:{OSMESA}"
+    return env
+
+
+def run_cli(bambu: Path, presets: dict[str, Path], assemble: Path, build: Path, env: dict) -> str:
     cmd = [str(bambu / "AppRun"), "--debug", "3",
            "--load-settings", f"{presets['machine']};{presets['process']}",
            "--load-filaments", str(presets["filament"]),
@@ -75,7 +96,7 @@ def run_cli(bambu: Path, presets: dict[str, Path], assemble: Path, build: Path) 
     for k, v in OVERRIDES.items():
         cmd += [f"--{k}", v]
     cmd += ["--slice", "0", "--outputdir", str(build), "--export-3mf", OUT_3MF.name]
-    proc = subprocess.run(cmd, capture_output=True, text=True, env=os.environ.copy())
+    proc = subprocess.run(cmd, capture_output=True, text=True, env=env)
     log = proc.stdout + proc.stderr
     (build / "cli.log").write_text(log)
     if proc.returncode != 0:
@@ -83,11 +104,22 @@ def run_cli(bambu: Path, presets: dict[str, Path], assemble: Path, build: Path) 
     return log
 
 
+def export_png(bambu: Path, build: Path, env: dict) -> None:
+    """Bambu's own iso render of every plate, for render_preview.py."""
+    if "LD_PRELOAD" not in env:
+        return
+    (build / "png").mkdir()
+    subprocess.run([str(bambu / "AppRun"), "--export-png", "0", "--camera-view", "0",
+                    "--outputdir", str(build / "png"), str(build / OUT_3MF.name)],
+                   capture_output=True, env=env, check=True)
+
+
 def report(build: Path, log: str) -> dict:
     result = json.loads((build / "result.json").read_text())
     with zipfile.ZipFile(build / OUT_3MF.name) as z:
         info = ET.fromstring(z.read("Metadata/slice_info.config"))
         names = z.namelist()
+        gcode = {n: z.read(f"Metadata/plate_{n}.gcode").decode() for n in range(1, len(PLATES) + 1)}
     version = re.search(r"Current BambuStudio Version (\S+)", log)
     slicing_warnings = re.findall(r"plate (\d+): found (?:NON_CRITICAL )?slicing warnings: (.*)", log)
     support_checks = len(re.findall(r"is_support_necessary takes", log))
@@ -100,6 +132,8 @@ def report(build: Path, log: str) -> dict:
             "objects": [o["name"] for o in sliced["objects"]],
             "print_time_s": round(sliced["total_predication"]),
             "filament_g": float(fil.get("used_g")), "filament_m": float(fil.get("used_m")),
+            "bed_type": re.search(r"^; curr_bed_type = (.*)$", gcode[sliced["id"]], re.M).group(1),
+            "bed_temp_c": [int(t) for t in re.findall(r"^M1[49]0 S(\d+)", gcode[sliced["id"]], re.M)],
             "toolpath_outside_bed": meta.get("outside") == "true",
             "support_used": meta.get("support_used") == "true",
             "slicer_warnings": [w for p, w in slicing_warnings if int(p) == sliced["id"]],
@@ -128,8 +162,10 @@ def main() -> None:
     shutil.rmtree(args.build, ignore_errors=True)
     args.build.mkdir(parents=True)
     presets = write_presets(args.bambu / "resources", args.build)
-    log = run_cli(args.bambu, presets, write_assemble_list(args.build), args.build)
+    env = gl_env(args.build)
+    log = run_cli(args.bambu, presets, write_assemble_list(args.build), args.build, env)
     rep = report(args.build, log)
+    export_png(args.bambu, args.build, env)
     shutil.copy(args.build / OUT_3MF.name, OUT_3MF)
     (HERE / "report.json").write_text(json.dumps(rep, indent=2) + "\n")
     print(json.dumps(rep, indent=2))

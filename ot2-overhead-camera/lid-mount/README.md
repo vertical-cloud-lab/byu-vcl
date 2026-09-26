@@ -60,6 +60,11 @@ STEP files for every printed part sit next to the STLs. The drill template also 
 3–4 walls (the screw bosses need them) and 20–30 % infill. Every STL is already in print
 orientation, and **none needs supports** (see [`renders/print_layout.png`](renders/print_layout.png)).
 
+**Bambu Lab A1 mini:** [`slice/lid_mount_A1mini_PLA.3mf`](slice/lid_mount_A1mini_PLA.3mf) is
+already sliced for PLA on three plates: 4 h 28 min and 156 g in all. It uses these settings
+and the Textured PEI plate. Bambu's support check and slicer both came back clean; the only
+warning concerns timelapse mode. See [`slice/README.md`](slice/README.md).
+
 ### Hardware
 
 | Qty | Part | Where |
