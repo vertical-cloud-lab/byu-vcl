@@ -261,9 +261,11 @@ async def main() -> None:
             await rec.caption("Check: select Part 1 and open Onshape's mass properties", chapter="check")
             volume = await ou.read_volume(ui)
             result["volume_mm3"] = volume
-            result["volume_ok"] = abs(volume - ou.EXPECTED_MM3) < 0.01
+            # Onshape's figure varies by a few hundredths between runs; the smallest
+            # feature, one bolt hole, is 95 mm^3.
+            result["volume_ok"] = abs(volume - ou.EXPECTED_MM3) < 1
             await rec.caption(f"Volume {volume:,.3f} mm³: " + (
-                "the same as the CadQuery model and the REST API build" if result["volume_ok"]
+                f"the CadQuery model's {ou.EXPECTED_MM3:,.3f}, to Onshape's numerical tolerance" if result["volume_ok"]
                 else f"expected {ou.EXPECTED_MM3:,.3f}, so a feature went wrong"))
             await ui.wait(9000)
             if not result["volume_ok"]:
@@ -295,7 +297,8 @@ async def main() -> None:
         "",
         f"The part has 14 features: a 112 mm plate, a light collar, a 46 mm lens aperture, four "
         f"99.66 mm posts and four M4 bolt holes. Onshape's mass properties give "
-        f"{result['volume_mm3']:,.3f} mm³, the same volume as the CadQuery model it was specified from.",
+        f"{result['volume_mm3']:,.3f} mm³; the CadQuery model it was specified from is "
+        f"{ou.EXPECTED_MM3:,.3f} mm³, the same to within Onshape's numerical tolerance.",
         "",
         "The browser ran headed on a virtual display. Playwright's input does not move the system "
         "cursor, so the pointer, the key badges and the captions are drawn over the page for "

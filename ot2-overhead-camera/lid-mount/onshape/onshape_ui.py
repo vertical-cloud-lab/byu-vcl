@@ -550,7 +550,7 @@ async def main() -> None:
             await build_base(ui, Params())
             volume = await read_volume(ui)
             print(f"done: {ui.page.url}\nvolume of Part 1: {volume:.3f} mm^3 (REST API and CadQuery: {EXPECTED_MM3})")
-            if abs(volume - EXPECTED_MM3) > 0.01:
+            if abs(volume - EXPECTED_MM3) > 1:        # noise is ~0.02; one bolt hole is 95
                 raise SystemExit("the volume is wrong: a feature failed or was mis-picked (see the screenshots)")
         except Exception:
             await ui.shot("failed here")

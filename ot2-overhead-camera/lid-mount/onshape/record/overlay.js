@@ -47,7 +47,8 @@
 
   let root = make();
   const q = (s) => root.querySelector(s);
-  const attach = () => { if (!root.isConnected) (document.body || document.documentElement).appendChild(root); };
+  // As an init script this runs before the document has any elements; the interval attaches it later.
+  const attach = () => { const at = document.body || document.documentElement; if (at && !root.isConnected) at.appendChild(root); };
   // Onshape rebuilds large parts of the DOM as it moves between pages; put the overlay back if it goes.
   setInterval(attach, 500);
   attach();
