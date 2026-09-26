@@ -1,0 +1,1737 @@
+{
+ "_meta": {
+  "generated": "2026-09-26",
+  "units": "mm unless value_kg/value given",
+  "conventions": "dims[*].derived=True means computed by us from the cited file/drawing, not stated verbatim; community=True means forum/user measurement.",
+  "tools": "bounding boxes via OCP (OpenCascade) STEP import; DXF displayed dims via ezdxf dimension blocks; URDF FK via numpy"
+ },
+ "a1mini": {
+  "cad_files": [
+   {
+    "url": "https://files.printables.com/media/prints/685475/stls/5384625_38839343-7e1b-436a-9fe9-590b9430f8ab_6b0638ed-ddcf-4935-8f47-06804624c7bb/bambu-labs-a1-mini-almost-full-scale-v5.step",
+    "path": "/tmp/cad_src/a1mini/printables685475_bambu-labs-a1-mini-almost-full-scale-v5.step",
+    "bytes": 15739156,
+    "sha256": "7e7679b5bdcb952d832c72220393d9420068096c985c405ed448756c10dd8cec",
+    "licence": "CC BY-NC-SA 4.0 (Printables model 685475 by JesusLovesYou101, remix of Master Gadget's CC BY-NC-ND model 590682)",
+    "model_page": "https://www.printables.com/model/685475-bambu-lab-a1-mini-step-and-fusion-360-files",
+    "verified": "ISO-10303-21; 4 solids; bbox 219.0 x 272.3 x 346.3 mm vs real 347 x 315 x 365",
+    "quality": "LOW: author says 'Its not 1 to 1 detail for detail but for mocking up ideas its perfect'; scaled so the bed is 180 mm; overall proportions do not match the real printer. Visual placeholder only.",
+    "how_obtained": "Printables web page is Cloudflare-challenged from the runner; file link obtained from Printables' public GraphQL getDownloadLink on the runner (no other machine)"
+   },
+   {
+    "url": "https://files.printables.com/media/prints/685475/stls/5384678_8248e03a-698b-4fed-9778-715b26e4df5b_2240f9b4-e191-412b-a586-afe5e36211a5/bambu-labs-a1-mini-almost-full-scale-v5.3mf",
+    "path": "/tmp/cad_src/a1mini/printables685475_bambu-labs-a1-mini-almost-full-scale-v5.3mf",
+    "bytes": 202927,
+    "sha256": "ff5c34d0e0bb259973e1ff2aacc8912cd228bf8e5c9f72a8058f759b6280bca7",
+    "licence": "CC BY-NC-SA 4.0 (Printables model 685475 by JesusLovesYou101, remix of Master Gadget's CC BY-NC-ND model 590682)",
+    "quality": "same low-fidelity model as the STEP"
+   },
+   {
+    "url": "https://files.printables.com/media/prints/685475/stls/5384626_c1b5a0f4-1aa0-47c4-ab5f-b834b7e3166d_04f2774b-895c-430a-b306-3907055f98e6/bambu-labs-a1-mini-almost-full-scale-v5.f3d",
+    "path": "/tmp/cad_src/a1mini/printables685475_bambu-labs-a1-mini-almost-full-scale-v5.f3d",
+    "bytes": 7595494,
+    "sha256": "a3c33c14d9af685bad3fff4ec8b2b11a212cc648b359c799d6e798c44acae42c",
+    "licence": "CC BY-NC-SA 4.0 (Printables model 685475 by JesusLovesYou101, remix of Master Gadget's CC BY-NC-ND model 590682)",
+    "quality": "same low-fidelity model (Fusion 360 archive)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/bbl-3dp-A1M.stl",
+    "path": "/tmp/cad_src/a1mini/bambustudio/bbl-3dp-A1M.stl",
+    "bytes": 48084,
+    "sha256": "00a4ce7dc29cbb2559a54c9a9a392352d9fe6b591da53be46eec180f3c6cde0c",
+    "licence": "AGPL-3.0 (bambulab/BambuStudio)",
+    "verified": "official Bambu slicer bed/plate mesh, 960 faces; X -2..182, Y -9.13..188, Z -0.6..0 in slicer bed coords (plate ~184 x 197.1 incl. front tab; printable 180 x 180 at origin)"
+   }
+  ],
+  "reference_files": [
+   {
+    "url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "path": "/tmp/cad_src/a1mini/official_drawings/a1-mini-en.png",
+    "bytes": 252196,
+    "sha256": "8c5e90db58fbe913be6637177a2ebfaca59f9a687d8e94ab8b2c8a4a5157e19b",
+    "licence": "Bambu Lab wiki image (all rights reserved)",
+    "kind": "official front-view outline: printer 358 mm wide, +AMS lite 612 mm wide, 483 mm high, 50 mm gap; approximately to scale (~1.63 px/mm)"
+   },
+   {
+    "url": "https://wiki.bambulab.com/n1/manual/unboxing-a1-mini-urey/space1.png",
+    "path": "/tmp/cad_src/a1mini/official_drawings/space1.png",
+    "bytes": 34330,
+    "sha256": "8f10ac3afb4565bfcacb162692f6bf82f73c9270f1cb7f18814f1131d0e2b45c",
+    "licence": "Bambu Lab wiki image",
+    "kind": "official top view with 390 mm heatbed Y-sweep (~1.505 px/mm)"
+   },
+   {
+    "url": "https://wiki.bambulab.com/n1/manual/faq/ams-lite%E6%91%86%E6%94%BE%E4%BD%8D%E7%BD%AE.png",
+    "path": "/tmp/cad_src/a1mini/official_drawings/ams-lite-placement.png",
+    "bytes": 87828,
+    "sha256": "b6ac864e2ca573e29d859f861b0303640ca8c6db6953fd709b8c35c146461380",
+    "licence": "Bambu Lab wiki image",
+    "kind": "official front view, AMS lite 50 mm from printer"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/machine/Bambu%20Lab%20A1%20mini.json",
+    "path": "/tmp/cad_src/a1mini/bambustudio/Bambu Lab A1 mini.json",
+    "bytes": 885,
+    "sha256": "1ca393576f933ec39bad8e17b6fd72b7b4363ba97a8bfc396560389544ceae32",
+    "licence": "AGPL-3.0",
+    "kind": "slicer printer model (bed_model)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/machine/Bambu%20Lab%20A1%20mini%200.4%20nozzle.json",
+    "path": "/tmp/cad_src/a1mini/bambustudio/Bambu Lab A1 mini 0.4 nozzle.json",
+    "bytes": 2412,
+    "sha256": "5073967857bfbdc3f7745c3d1dda0962386f313bea9fe187f6b011889d7a2a36",
+    "licence": "AGPL-3.0",
+    "kind": "slicer machine profile (printable_area/height, clearances)"
+   }
+  ],
+  "blocked_urls": [
+   {
+    "url": "https://bambulab.com/en/a1-mini/tech-specs",
+    "status": "HTTP 403 (bambulab.com blocks runner)",
+    "what": "official A1 mini tech specs (same numbers available from the store page)"
+   },
+   {
+    "url": "https://grabcad.com/library/bambu-lab-a1-mini-2",
+    "status": "HTTP 403 (CloudFront) + GrabCAD login required",
+    "what": "community A1 mini CAD, quality unknown",
+    "files_page": "https://grabcad.com/library/bambu-lab-a1-mini-2/files"
+   },
+   {
+    "url": "https://grabcad.com/library/bambu-lab-ams-lite-1",
+    "status": "HTTP 403 + login",
+    "what": "community AMS lite CAD (a MakerWorld author says its dimensions were inaccurate)"
+   },
+   {
+    "url": "https://makerworld.com/en/models/1593125-ams-lite-body-3d-model-cad-file-and-cutout-parts",
+    "status": "Cloudflare challenge 403 + MakerWorld login for download",
+    "what": "AMS lite body CAD by Rio, Standard Digital File License, 'most of the dimensions are acurate'"
+   },
+   {
+    "url": "https://makerworld.com/en/models/81247-bambulab-a1-mini-build-plate-cad-file",
+    "status": "Cloudflare 403 + login",
+    "what": "A1 mini build plate DXF by sagat, CC BY-NC"
+   },
+   {
+    "url": "https://sketchfab.com/3d-models/3d-printer-bambu-lab-a1-mini-407fb64c44be4e1888db246b447f811b",
+    "status": "download API 401 (sign-in)",
+    "what": "CC-BY artistic mesh (823k faces) modelled from photos, not measured"
+   },
+   {
+    "url": "https://sketchfab.com/3d-models/bambu-labs-a1-mini-d4c7411f43e54db780ed96a91defe660",
+    "status": "download API 401 (sign-in)",
+    "what": "CC-BY low-poly mesh (16k faces)"
+   }
+  ],
+  "dims": {
+   "overall_WxDxH_printer_only": {
+    "value_mm": [
+     347,
+     315,
+     365
+    ],
+    "source_url": "https://us.store.bambulab.com/products/a1-mini",
+    "quote": "A1 mini : 347*315*365 mm³ , Package size : 385*430*460 mm³ , Net weight 5.5 kg , Gross weight 8.2 kg",
+    "note": "official spec page https://bambulab.com/en/a1-mini/tech-specs returns 403 to the runner; store page carries the same spec table. Excludes spool holder/spool and bed overtravel."
+   },
+   "build_volume": {
+    "value_mm": [
+     180,
+     180,
+     180
+    ],
+    "source_url": "https://us.store.bambulab.com/products/a1-mini",
+    "quote": "Build Volume(W*D*H) 180*180*180 mm³"
+   },
+   "net_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://us.store.bambulab.com/products/a1-mini",
+    "quote": "Net weight 5.5 kg",
+    "value_kg": 5.5
+   },
+   "printer_space_width_front_view": {
+    "value_mm": 358,
+    "source_url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "quote": "Printer space width 358 mm",
+    "note": "from left end of X-beam/purge wiper to right side of X-motor/camera box; page https://wiki.bambulab.com/en/a1-mini/manual/faq"
+   },
+   "printer_plus_ams_lite_width": {
+    "value_mm": 612,
+    "source_url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "quote": "Printer + AMS lite space width 612 mm"
+   },
+   "printer_plus_ams_lite_height": {
+    "value_mm": 483,
+    "source_url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "quote": "Printer + AMS lite space height 483 mm",
+    "note": "includes the PTFE-tube holder on top of the Z column"
+   },
+   "ams_lite_gap": {
+    "value_mm": 50,
+    "source_url": "https://wiki.bambulab.com/en/a1-mini/manual/faq",
+    "quote": "The diagram shows that the recommended distance between the A1 mini and AMS lite is 50mm."
+   },
+   "heatbed_Y_sweep_space": {
+    "value_mm": 390,
+    "source_url": "https://wiki.bambulab.com/en/a1-mini/manual/faq",
+    "quote": "As shown in the diagram, when placing the printer, please leave sufficient, safe space for the heatbed to move in the Y direction, approximately 390 mm."
+   },
+   "build_plate_outline": {
+    "value_mm": [
+     184.0,
+     197.13,
+     0.6
+    ],
+    "source_url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/bbl-3dp-A1M.stl",
+    "quote": "bbl-3dp-A1M.stl bounds X -2..182, Y -9.13..188 (bed coords); machine JSON: \"printable_area\": [\"0x0\", \"180x0\", \"180x180\", \"0x180\"], \"printable_height\": \"180\"",
+    "derived": true
+   },
+   "bed_Y_travel_estimate": {
+    "value_mm": 193,
+    "source_url": "https://wiki.bambulab.com/en/a1-mini/manual/faq",
+    "quote": "390 mm sweep (official) minus ~197 mm plate depth (BambuStudio mesh) = ~193 mm of bed travel; printable Y = 180 mm",
+    "derived": true
+   },
+   "z_column_position_estimate": {
+    "value_mm": {
+     "side": "right-hand side viewed from front, toward the rear",
+     "column_width": 52,
+     "column_x_from_left_extreme": [
+      250,
+      302
+     ],
+     "base_x_from_left_extreme": [
+      110,
+      314
+     ],
+     "bed_x_from_left_extreme": [
+      57,
+      247
+     ],
+     "x_beam_centre_from_rear_edge": 119
+    },
+    "source_url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "quote": "measured on official front view (358 mm = 583 px) and top view (390 mm = 587 px); diagrams are ~2% consistent, treat as ±5 mm",
+    "derived": true
+   },
+   "bed_top_height_estimate": {
+    "value_mm": 83,
+    "source_url": "https://wiki.bambulab.com/n1/manual/faq/a1-mini-en.png",
+    "quote": "front-view diagram: plate top ~137 px above floor line at ~1.64 px/mm",
+    "derived": true
+   },
+   "base_footprint_community": {
+    "value_mm": [
+     188,
+     310
+    ],
+    "source_url": "https://forum.bambulab.com/t/exact-size-when-set-up-and-printing-no-ams/38528",
+    "quote": "Physical base that sitting on the table is about 188 mm wide and 310 mm deep. Total height of Z tower is 365 mm. Total width of X axis including the whole bar and all attachments on both ends(the purge wiper on the left & the Box on the right with the camera in it & the ext spool filament guide). is about 360 mm.",
+    "community": true
+   },
+   "depth_with_stock_spool_holder_community": {
+    "value_mm": 485,
+    "source_url": "https://forum.bambulab.com/t/exact-size-when-set-up-and-printing-no-ams/38528",
+    "quote": "(Q: Do you know the depth with an external Spool?) Approx 485 mm total.",
+    "community": true
+   },
+   "spool_holder_mounting": {
+    "value_mm": null,
+    "source_url": "https://us.store.bambulab.com/products/spool-holder-a1-mini",
+    "quote": "The Spool holder used in A1 mini is attached to the Z-axis column and is compatible with most commonly used filament spools.",
+    "note": "wiki unboxing step 7 photo (https://wiki.bambulab.com/en/a1-mini/manual/unboxing-a1-mini) shows it on the rear face of the column, spool hanging behind; holder package 120*80*65 mm"
+   },
+   "power_supply": {
+    "value_mm": null,
+    "source_url": "https://wiki.bambulab.com/en/a1-mini/maintenance/power-supply-replacement-guide",
+    "quote": "There are three screws holding the power supply attached to the printer frame",
+    "note": "PSU is INTERNAL (inside the base, under the 16-screw bottom cover); no external power brick. AC cord + rocker switch on the base next to the column."
+   },
+   "ams_lite_size": {
+    "value_mm": [
+     397,
+     208,
+     342
+    ],
+    "source_url": "https://us.store.bambulab.com/products/ams-lite",
+    "quote": "Product Size | 397*208*342 mm³",
+    "note": "In Bambu's side-by-side diagram the 208 mm side faces the printer (358 + 50 + ~204 = 612), so 397 runs front-to-back"
+   },
+   "ams_lite_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://us.store.bambulab.com/products/ams-lite",
+    "quote": "Product Weight | 1.6 kg",
+    "value_kg": 1.6
+   },
+   "ams_lite_ptfe_tubes": {
+    "value_mm": [
+     580,
+     700
+    ],
+    "source_url": "https://wiki.bambulab.com/en/a1-mini/manual/acc-in-the-box",
+    "quote": "PTFE tubes (580 mm *2, 700 mm *2)"
+   }
+  },
+  "notes": "No official A1 mini CAD exists (confirmed by the Printables author's note and forum). Only downloadable body CAD is the low-fidelity Printables STEP (NOT to scale: 219 x 272 x 346 mm bbox vs real 347 x 315 x 365), so build a parametric model from the official numbers: 347 W x 315 D x 365 H printer; 358 mm wide front envelope incl. X-motor/camera box; Z column on the RIGHT (viewed from front) toward the rear; bed-slinger with ~184 x 197 mm plate sweeping a 390 mm Y envelope; internal PSU (no brick); spool holder hangs off the REAR face of the Z column (depth ~485 mm with spool, community). AMS lite 397 x 208 x 342 mm stands 50 mm to the right of the printer (612 mm total width, 483 mm total height). Printables files were fetched through the site's public GraphQL download-link API from the runner because the HTML page is Cloudflare-challenged."
+ },
+ "h2d": {
+  "cad_files": [
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/bbl-3dp-H2D.stl",
+    "path": "/tmp/cad_src/h2d/bambustudio/bbl-3dp-H2D.stl",
+    "bytes": 17484,
+    "sha256": "f4dfc8f4effadbfb3f8ee9a38a9532e23fc7459a91d94c08754df165cfacead3",
+    "licence": "AGPL-3.0 (bambulab/BambuStudio)",
+    "verified": "official Bambu slicer bed/plate mesh, 348 faces; X -2.5..352.5, Y -18.5..328, Z -0.7..0 (plate ~355 x 346.5 incl. tabs; printable 350 x 320)",
+    "note": "only the build plate; no downloadable H2D body CAD reachable from the runner (see blocked_urls)"
+   }
+  ],
+  "reference_files": [
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/machine/Bambu%20Lab%20H2D.json",
+    "path": "/tmp/cad_src/h2d/bambustudio/Bambu Lab H2D.json",
+    "bytes": 732,
+    "sha256": "9ede2673c374c8222c9a1d68771f75d33c9c1a27a0cc2b4e98eca36a81dbdcd4",
+    "licence": "AGPL-3.0",
+    "kind": "slicer printer model"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/machine/Bambu%20Lab%20H2D%200.4%20nozzle.json",
+    "path": "/tmp/cad_src/h2d/bambustudio/Bambu Lab H2D 0.4 nozzle.json",
+    "bytes": 9179,
+    "sha256": "31ed516115f94b47411a48fe740c9193e1ead49aa23c5130f0517ded0708e903",
+    "licence": "AGPL-3.0",
+    "kind": "slicer machine profile: printable_area 350x320, extruder_printable_area left 0..325 / right 25..350"
+   },
+   {
+    "url": "https://wiki.bambulab.com/h2/manual/unboxing-ams-and-laser-full-combo/h2d-unbox-71.png",
+    "path": "/tmp/cad_src/h2d/official_drawings/h2d-unbox-71.png",
+    "bytes": 745901,
+    "sha256": "a6a80fdbcf7504ee62f3a9810427a590052c6384e9218d526db2142b75f3cb8c",
+    "licence": "Bambu Lab wiki image",
+    "kind": "photo: AMS 2 Pro placed on top of the H2D (front view)"
+   },
+   {
+    "url": "https://wiki.bambulab.com/h2/manual/unboxing-ams-and-laser-full-combo/h2d-unbox-66.png",
+    "path": "/tmp/cad_src/h2d/official_drawings/h2d-unbox-66.png",
+    "bytes": 798799,
+    "sha256": "351f08ebc36931c0b8624e5365280421706e4e2a72a6242a1a4c7eec2e8239f6",
+    "licence": "Bambu Lab wiki image",
+    "kind": "photo: top cover placement"
+   },
+   {
+    "url": "https://wiki.bambulab.com/h2/manual/max-printable-area/h2d-%E6%95%B4%E6%9C%BA-en.jpg",
+    "path": "/tmp/cad_src/h2d/official_drawings/h2d-full-en.jpg",
+    "bytes": 147749,
+    "sha256": "a5dc22b9c5af511bfd9f09443268693fdebba21379e9b9d7f5a725eb545226e8",
+    "licence": "Bambu Lab wiki image",
+    "kind": "350 x 320 plate map"
+   },
+   {
+    "url": "https://wiki.bambulab.com/h2/manual/max-printable-area/h2d-common-en.jpg",
+    "path": "/tmp/cad_src/h2d/official_drawings/h2d-common-en.jpg",
+    "bytes": 151171,
+    "sha256": "6a8965d4a51da6c013ec0f334be3428a39cdc7629508cbb81f4d633903d24732",
+    "licence": "Bambu Lab wiki image",
+    "kind": "common-area plate map"
+   }
+  ],
+  "blocked_urls": [
+   {
+    "url": "https://makerworld.com/en/models/2296542-h2c-d-s-cad-step-model",
+    "status": "Cloudflare 403 + MakerWorld login",
+    "what": "BEST LEAD: H2C/D/S body STEP by Martin Rayleigh, CC BY-NC-SA; glass/window panels, LCD, back plate, side panels, feet; measured with tape/calipers on an H2C (may have small inaccuracies; corners modelled R32)"
+   },
+   {
+    "url": "https://makerworld.com/en/models/2650118-h2s-cad",
+    "status": "Cloudflare 403 + login",
+    "what": "H2S CAD by DC, CC BY-NC; caliper-measured back panel, side panels, part of glass; notes 'Add 15mm to the underside face of the side panels to get the FFL'"
+   },
+   {
+    "url": "https://makerworld.com/en/models/1283144-bambu-ams-2-pro-cad-model-stp-file",
+    "status": "Cloudflare 403 + login",
+    "what": "AMS 2 Pro STEP by Engineered Reality, CC BY-NC-SA, measured"
+   },
+   {
+    "url": "https://grabcad.com/library/bambu-h2d-1",
+    "status": "HTTP 403 (CloudFront) + login",
+    "what": "community 'Bambu H2D' model, quality unknown"
+   },
+   {
+    "url": "https://bambulab.com/en/h2d/tech-specs",
+    "status": "HTTP 403",
+    "what": "official tech specs (numbers taken from store page instead)"
+   },
+   {
+    "url": "https://bambulab.com/en/support/buying-guide?page=2&id=904389439320043520",
+    "status": "HTTP 403",
+    "what": "official buying guide; search snippet says H2D height with AMS 2 Pro = 865 mm"
+   }
+  ],
+  "dims": {
+   "enclosure_outer_WxDxH": {
+    "value_mm": [
+     492,
+     514,
+     626
+    ],
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "Physical Dimensions | 492*514*626 mm³(Package Size: 580*605*750mm); 700*700*1100 mm³ (Recommended Space for Printer)",
+    "note": "official tech-spec page https://bambulab.com/en/h2d/tech-specs returns 403 to the runner; same table on the store page and in the H2D Pro spec PDF (https://www.dynamism.com/learn/wp-content/uploads/2025/10/Bambu-Lab-H2D-Pro-Tech-Spec.pdf: 'Physical Dimensions 492*514*626 mm3')"
+   },
+   "recommended_space": {
+    "value_mm": [
+     700,
+     700,
+     1100
+    ],
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "700*700*1100 mm³ (Recommended Space for Printer)"
+   },
+   "build_volume_single_nozzle": {
+    "value_mm": [
+     325,
+     320,
+     325
+    ],
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "Single Nozzle Printing: 325*320*325 mm³"
+   },
+   "build_volume_dual_nozzle": {
+    "value_mm": [
+     300,
+     320,
+     325
+    ],
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "Dual Nozzle Printing: 300*320*325 mm³"
+   },
+   "build_volume_total_two_nozzles": {
+    "value_mm": [
+     350,
+     320,
+     325
+    ],
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "Total Volume for Two Nozzles: 350*320*325 mm³"
+   },
+   "heatbed_print_area": {
+    "value_mm": [
+     350,
+     320
+    ],
+    "source_url": "https://wiki.bambulab.com/en/h2/manual/h2d-intro",
+    "quote": "The maximum printing area of the heatbed surface is 350 x 320 mm."
+   },
+   "nozzle_x_ranges": {
+    "value_mm": {
+     "left": [
+      0,
+      325
+     ],
+     "right": [
+      25,
+      350
+     ],
+     "left_max_z": 320,
+     "right_max_z": 325
+    },
+    "source_url": "https://wiki.bambulab.com/en/h2/manual/printable-range-for-dual-nozzles",
+    "quote": "Left nozzle only: printable area coordinates (0,0) to (325,320) / Right nozzle only: printable area coordinates (25,0) to (350,320)"
+   },
+   "build_plate_outline": {
+    "value_mm": [
+     355.0,
+     346.5,
+     0.7
+    ],
+    "source_url": "https://raw.githubusercontent.com/bambulab/BambuStudio/f977235e6d736c4c0b650520ac5a5b72cbfe9244/resources/profiles/BBL/bbl-3dp-H2D.stl",
+    "quote": "bbl-3dp-H2D.stl bounds X -2.5..352.5, Y -18.5..328 (bed coords)",
+    "derived": true
+   },
+   "net_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://us.store.bambulab.com/products/h2d",
+    "quote": "Net Weight | 31 kg",
+    "value_kg": 31
+   },
+   "ams_2_pro_size": {
+    "value_mm": [
+     372,
+     280,
+     226
+    ],
+    "source_url": "https://us.store.bambulab.com/products/ams-2-pro",
+    "quote": "Dimensions | 372*280*226 mm³"
+   },
+   "ams_2_pro_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://us.store.bambulab.com/products/ams-2-pro",
+    "quote": "Net Weight | 2.5 kg",
+    "value_kg": 2.5
+   },
+   "ams_2_pro_sits_on_top": {
+    "value_mm": null,
+    "source_url": "https://wiki.bambulab.com/en/h2/manual/unboxing-ams-combo-and-laser-full-combo",
+    "quote": "Step 27. Place the AMS 2 Pro on top of the printer."
+   },
+   "height_with_ams_2_pro_community": {
+    "value_mm": 865,
+    "source_url": "https://forum.bambulab.com/t/real-h2d-dimensions-with-ams-and-side-filament-holder/169918",
+    "quote": "Height: 865 mm (incl. AMS 2 Pro) Width: 585 mm (incl. spoolholder) Depth: 560 mm (incl. spoolholder and poop chute)",
+    "community": true,
+    "note": "626 + 226 = 852 by spec addition; a Bambu buying-guide page reportedly states 865 mm but is 403 to the runner"
+   },
+   "height_with_ams_lid_open_community": {
+    "value_mm": 1010,
+    "source_url": "https://forum.bambulab.com/t/anyone-can-tell-me-how-tall-it-has-to-have-if-you-put-ams-pro2/163432",
+    "quote": "With the AMS Pro lid open mine is 1010mm high",
+    "community": true,
+    "also": "985 mm with lid held part-open (same thread 169918)"
+   },
+   "width_with_side_spool_holder_community": {
+    "value_mm": 585,
+    "source_url": "https://forum.bambulab.com/t/real-h2d-dimensions-with-ams-and-side-filament-holder/169918",
+    "quote": "Width: 585 mm (incl. spoolholder)",
+    "community": true
+   },
+   "depth_with_spool_holder_and_chute_community": {
+    "value_mm": 560,
+    "source_url": "https://forum.bambulab.com/t/real-h2d-dimensions-with-ams-and-side-filament-holder/169918",
+    "quote": "Depth: 560 mm (incl. spoolholder and poop chute)",
+    "community": true
+   },
+   "front_door_glass_upper_bound": {
+    "value_mm": [
+     448,
+     568
+    ],
+    "source_url": "https://us.store.bambulab.com/products/front-glass-door-h2-series",
+    "quote": "Packaging Size | 448*55*568 mm",
+    "note": "Door/lid opening is NOT published by Bambu. The spare-part packaging only bounds the glass (<448 x 568). Door is fixed by 4 x M3x3 screws on hinges (2 top, 2 bottom) per https://wiki.bambulab.com/en/h2/maintenance/replace-front-glass-door"
+   }
+  },
+  "notes": "No official H2D CAD; nothing body-level downloadable from the runner. Parametric model: 492 W x 514 D x 626 H enclosure (31 kg), AMS 2 Pro 372 x 280 x 226 on top (~865 mm total, ~1010 mm lid open). Door/lid opening dimensions are not published anywhere official; get them from MakerWorld 2296542 (fetch from a residential IP with a MakerWorld login) or measure the lab's unit. An Onshape public doc 'Bambu H2D:13' (https://cad.onshape.com/documents/70322479c4899cbc09504816) exists but is an inch-rounded block model (19 x 25 x 20.5 in body), not useful."
+ },
+ "piper": {
+  "cad_files": [
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPER_Robotic_Arm-1-STP.zip?v=1782225362",
+    "path": "/tmp/cad_src/piper/AgileX_PiPER_Robotic_Arm-1-STP.zip",
+    "bytes": 15960832,
+    "sha256": "92edfecc15af7d6394155c5c4f7093b9e1540a161510b5b479adffe100ccc7dd",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "mirror_urls": [
+     "https://robotopian.com/cdn/shop/files/agilex-piper-robotic-arm-agilex-piper-robotic-arm-stp.zip?v=14929516168888156522"
+    ],
+    "listed_on": [
+     "https://aifitlab.com/products/agilex-piper-robotic-arm",
+     "https://robotopian.com/products/agilex-piper-robotic-arm"
+    ],
+    "note": "zip containing 'AgileX PiPER Robotic Arm-1-STP.STEP' (full arm, no gripper). Mirror is byte-identical."
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPER_Robotic_Arm-1-STP.zip?v=1782225362 (extracted)",
+    "path": "/tmp/cad_src/piper/step/AgileX PiPER Robotic Arm-1-STP.STEP",
+    "bytes": 54763704,
+    "sha256": "ddf6174c538ece4b4e1ccf617e88ae8b8faabac3ec5c14e11cde5515749e657e",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "format": "STEP AP214, SolidWorks 2021, internal FILE_NAME 'PIPER对外加贴纸20250106.STEP' (external release w/ stickers, 2025-01-06)",
+    "verified": "ISO-10303-21; 29 solids in 7 top-level occurrences (products incl. J12, J42, J52); zero/rest pose; bbox 97.0 x 241.6 x 371.6 mm",
+    "frame": "+Y up, origin on J1 axis at TOP face of the 4 mm base plate; arm forward = -Z. URDF(x,y,z) = (-Z, -X, Y+4)"
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPER_with_Gripper-1-STP.zip?v=1782225359",
+    "path": "/tmp/cad_src/piper/AgileX_PiPER_with_Gripper-1-STP.zip",
+    "bytes": 11766299,
+    "sha256": "c30a96e2883dee9569a74969ab23f26fb7bcb0d5cac2ec32ab06e9b770589158",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "mirror_urls": [
+     "https://robotopian.com/cdn/shop/files/agilex-piper-robotic-arm-agilex-piper-with-gripper-stp.zip?v=813725198853119418"
+    ],
+    "note": "zip containing 'AgileX PiPER with Gripper-1-STP.STEP'. Mirror is byte-identical."
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPER_with_Gripper-1-STP.zip?v=1782225359 (extracted)",
+    "path": "/tmp/cad_src/piper/step/AgileX PiPER with Gripper-1-STP.STEP",
+    "bytes": 42515268,
+    "sha256": "91a23674f202c7736183a2134ec0144067d8c447212a7f0881680172196e6919",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "format": "STEP AP203, SolidWorks 2019, internal FILE_NAME 'PIPER 夹爪 对外0820.STEP' (PiPER + gripper, external release)",
+    "verified": "ISO-10303-21; 80 solids / 86 part occurrences with part numbers M-JXB2-1300xx; gripper uses 'MGN7.145' rail; fingers shown fully open, pad-to-pad 70.0 mm; bbox 145.0 x 466.0 x 549.4 mm (non-zero pose)"
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_Gripper-1-STP.STEP?v=1782224095",
+    "path": "/tmp/cad_src/piper/AgileX_Gripper-1-STP.STEP",
+    "bytes": 2859847,
+    "sha256": "6e6c9bb04d7e4b3c7ebcd452dd5e730a4eba2af08b1b80f1e1d2607956a5815d",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "format": "STEP AP203, SolidWorks 2019, internal FILE_NAME '100夹爪.STEP' (= '100 gripper'), 2025-07-02",
+    "verified": "ISO-10303-21; 13 solids; bbox 75.0 x 142.5 x 164.0 mm; shown with 58.4 mm between finger pads. This is the newer 0-100 mm gripper, not the 70 mm one in the arm+gripper STEP"
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_Flange-1-STP.STEP?v=1782223956",
+    "path": "/tmp/cad_src/piper/AgileX_Flange-1-STP.STEP",
+    "bytes": 155704,
+    "sha256": "29785ea96bdee0e08ebed69854b8590c23ca3eef53faf64d635b604549bebfb1",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "format": "STEP AP203, internal name 'M-JXB2-130103-E.STEP'",
+    "verified": "Ø57 x 10.5 mm adapter flange; 6 x Ø3.4 thru on PCD 27 (at 30+60k deg); 4 x Ø3.4 radial holes; Ø40/Ø44/Ø55.5 steps"
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_Teach_pendant-1-STP.STEP?v=1782224283",
+    "path": "/tmp/cad_src/piper/AgileX_Teach_pendant-1-STP.STEP",
+    "bytes": 5226023,
+    "sha256": "ee9a3a1363d1e413afa79604b7bb781f0a13e84579627bda7b4fe229de03f87d",
+    "licence": "No licence stated. Offered as a free 'Developer Support' download on AgileX reseller product pages (AIFITLAB, Robotopian); vendor reference model, all rights presumably reserved by AgileX Robotics.",
+    "format": "STEP AP203, internal name '示教器对外1202.STEP' (teach pendant / leader gripper)",
+    "verified": "26 solids; bbox 170.5 x 84.0 x 145.0 mm"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/LICENSE",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/LICENSE",
+    "bytes": 1065,
+    "sha256": "e32d78fd3761052ab0b2bb42fef8a7a9ad3f298d315d305333c349d2aff1f134",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/package.xml",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/package.xml",
+    "bytes": 901,
+    "sha256": "307ddcda650974988726809436f3aeb63d19db55174ac5976d4869ddbd994177",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/base_link.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/base_link.STL",
+    "bytes": 607384,
+    "sha256": "fd4a3d6d0266205fe3f725f048645be66592c23564db22e08b0807d5569b2c64",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/gripper_base.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/gripper_base.STL",
+    "bytes": 649484,
+    "sha256": "2895bfa6f1eef2d0ad2cb9dfdedd5f6c760ec07388bcde2b4d1e412e1189c9cb",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link1.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link1.STL",
+    "bytes": 447784,
+    "sha256": "9ee6e1d67c0241f42a0dbaf5c676d19230375ed078ee1943bb8c4c37ab303d14",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link2.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link2.STL",
+    "bytes": 3658384,
+    "sha256": "0d37675b699b643f2e15348de99aed535fac10dc5f09a79b8e4b0acfaf4e0378",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link3.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link3.STL",
+    "bytes": 1845784,
+    "sha256": "e8ae51f17c0c7f6d67b753922e2cc269f5e8372a65734f859231639a64fe8fad",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link4.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link4.STL",
+    "bytes": 877984,
+    "sha256": "efa33022976218f246f736a6133494b5d0e5486e8b50b52900c42f285ae85558",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link5.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link5.STL",
+    "bytes": 833684,
+    "sha256": "a1c69d1c7f6f8c60e2c82331c0f444725200ed4053d3e5ec23aa82cb5db5b29f",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link6.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link6.STL",
+    "bytes": 58884,
+    "sha256": "88374973bc3bd9e7389b5853cd6e555af9731c30b658b1ee6f85be34a126cb92",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link7.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link7.STL",
+    "bytes": 104384,
+    "sha256": "475a7d8db056524d7659fadf5a2c307d62791047b6214d733dfc7846ed1c613d",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/link8.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/link8.STL",
+    "bytes": 104384,
+    "sha256": "3f88d534a85e28a33ef7d2061adacbd1d25214aa9325f9e464aad0f9e4b74606",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/teach_base.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/teach_base.STL",
+    "bytes": 880184,
+    "sha256": "d0efe182e85ef2f5ca391cda8edf1a1f23f951c26b394eed5332351f6cf6ba00",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/teach_link7.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/teach_link7.STL",
+    "bytes": 142584,
+    "sha256": "9b321da9cdee7fea92c389c91e2577e36ff4f3f6cc2c8adb435191b293b44be0",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/meshes/teach_link8.STL",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/meshes/teach_link8.STL",
+    "bytes": 150184,
+    "sha256": "e9e890a8b6c2591f5442b86c1fc6c524b9ac5173f542ac2ce6bcc1602f197c29",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/mujoco_model/piper_description.xml",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/mujoco_model/piper_description.xml",
+    "bytes": 6423,
+    "sha256": "3c2e4bf29dd7fc80acfbb056ad711548bdd57f5c26f2e0fcb43f179b8e02f726",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/mujoco_model/piper_no_gripper_description.xml",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/mujoco_model/piper_no_gripper_description.xml",
+    "bytes": 4630,
+    "sha256": "0a7d86958c3e998ab92a9ed491b488e4c9a25575509a147a466f0dacdc70998c",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description.urdf",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_description.urdf",
+    "bytes": 12339,
+    "sha256": "22c15f95e50003b01713bae158638f7d19cdb71b1bd1095289865b835067002b",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description.xacro",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_description.xacro",
+    "bytes": 14709,
+    "sha256": "b6f5ac9ccfa36ea7018ce549499af083978f8e5c2bfd1d5c445d340971fb991a",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description_gazebo.xacro",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_description_gazebo.xacro",
+    "bytes": 16877,
+    "sha256": "2976420a721b87c63255ce2a641ca83ffba074de97338632ae3c4731df13a71c",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description_old.urdf",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_description_old.urdf",
+    "bytes": 12232,
+    "sha256": "818656c69a7db8067db5cd4a65fa7d3d6ee66549899c5d67548626c21eaaf435",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description_with_teach.urdf",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_description_with_teach.urdf",
+    "bytes": 12278,
+    "sha256": "d0ae0f256e036260f3fd7433cdced63a0bf3962cacc011527b6bb27e8c6cf300",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_no_gripper_description.urdf",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_no_gripper_description.urdf",
+    "bytes": 8527,
+    "sha256": "5e593d2feb3c583a41ec16eab8b22448016b93e95eb3169a466803092ec95e95",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_no_gripper_description.xacro",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_no_gripper_description.xacro",
+    "bytes": 9837,
+    "sha256": "5b7dd9e68a7810693610e711fff19c2a55faf3bf974400cd2b51e5067cecd2c6",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_no_gripper_description_gazebo.xacro",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_no_gripper_description_gazebo.xacro",
+    "bytes": 12081,
+    "sha256": "d49814680642dade4c5def323d74b08f1ec8490d99769a5299c2ee3f82d685d6",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_no_gripper_description_old.urdf",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/urdf/piper_no_gripper_description_old.urdf",
+    "bytes": 8420,
+    "sha256": "7aeef5f000053d2f1aa8aefa83b953218843ae6bbcc9ceb9be4f73665a69717b",
+    "licence": "MIT (agilexrobotics/piper_ros, branch humble; 'Copyright (c) 2024 RosenYin')"
+   }
+  ],
+  "reference_files": [
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "path": "/tmp/cad_src/piper/AgileX_PIPER_Product_User_Manual.pdf",
+    "bytes": 5763612,
+    "sha256": "5c89a6587b448d2d5935a7662d488c6364e8e4fecba63f09794f3bed2182ade8",
+    "licence": "AgileX document (all rights reserved)",
+    "kind": "official user manual V1.0 2025.06, 60 pp; dimensional drawings on pp. 55-60"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/CMakeLists.txt",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/CMakeLists.txt",
+    "bytes": 1156,
+    "sha256": "cd97f8dc8916fb2a0817893cb7af48745b272ede3965be14d68bf7a312acfadd",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_with_teach/display_with_teach_urdf.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_with_teach/display_with_teach_urdf.launch.py",
+    "bytes": 2494,
+    "sha256": "1be2348654ec1ce91fa7d4c0632e110bbfc37e4383f3e34c5da4a2cba315512d",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_no_gripper/display_no_gripper_urdf.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_no_gripper/display_no_gripper_urdf.launch.py",
+    "bytes": 2500,
+    "sha256": "dd94a90803ca23ee2a204dee8c7b9ae1ef00eca2909842916615d26fbfd9237a",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_no_gripper/display_no_gripper_urdf_follow.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_no_gripper/display_no_gripper_urdf_follow.launch.py",
+    "bytes": 1699,
+    "sha256": "d9c423d22bf78dab7dd4377b858b84ae43eea69996c1c37a648ba919cda62029",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_no_gripper/display_no_gripper_xacro.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_no_gripper/display_no_gripper_xacro.launch.py",
+    "bytes": 2501,
+    "sha256": "8ad60f3e8310c836c222c283a78a1cd3828f1641a55601f2e3cdda79d09597d4",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_with_gripper/display_urdf.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_with_gripper/display_urdf.launch.py",
+    "bytes": 2522,
+    "sha256": "311007c0c7eb39b05f17c637d95027109ec1c81fb6bb328674c8196fae225bd7",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_with_gripper/display_urdf_follow.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_with_gripper/display_urdf_follow.launch.py",
+    "bytes": 1688,
+    "sha256": "0728e7b14bf25a09d9241353f2ea05d3fa5f7988f5f4c2eb662abeee78d4b7a7",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/launch/piper_with_gripper/display_xacro.launch.py",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/launch/piper_with_gripper/display_xacro.launch.py",
+    "bytes": 2523,
+    "sha256": "4dd3d6b65d89d35c446f6318d74e5251f9f48e07f97ac3c729414b20b58024c2",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/rviz/piper_ctrl.rviz",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/rviz/piper_ctrl.rviz",
+    "bytes": 6672,
+    "sha256": "aff13e146f3e33c058dae591f05f13058e31ffb3279f595581f9803b93c99469",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/agilexrobotics/piper_ros/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/rviz/piper_no_gripper.rviz",
+    "path": "/tmp/cad_src/piper/piper_ros_humble/src/piper_description/rviz/piper_no_gripper.rviz",
+    "bytes": 6243,
+    "sha256": "9c6d1964cbf5e4fc03bc714a0bd1916de46f00825bc76366cfc5f8344fc19a81",
+    "licence": "MIT",
+    "kind": "ROS package support file"
+   }
+  ],
+  "blocked_urls": [],
+  "dims": {
+   "reach_official": {
+    "value_mm": 626,
+    "source_url": "https://global.agilex.ai/products/piper",
+    "quote": "626 MM / Reach"
+   },
+   "working_radius_manual": {
+    "value_mm": 626.75,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "Working Radius 626.75mm"
+   },
+   "payload_kg": {
+    "value_mm": null,
+    "source_url": "https://global.agilex.ai/products/piper",
+    "quote": "1.5 KG / Payload",
+    "value_kg": 1.5
+   },
+   "arm_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "Weight 4.2KG",
+    "value_kg": 4.2
+   },
+   "repeatability": {
+    "value_mm": 0.1,
+    "source_url": "https://global.agilex.ai/products/piper",
+    "quote": "0.1 MM / Repeatability"
+   },
+   "base_mounting_holes": {
+    "value_mm": {
+     "count": 4,
+     "spacing": [
+      70,
+      70
+     ],
+     "hole_dia": 5.4,
+     "type": "through (M5 clearance) per drawing; manual text says M5 threaded",
+     "urdf_base_link_xy_mm": [
+      [
+       30,
+       35
+      ],
+      [
+       30,
+       -35
+      ],
+      [
+       -40,
+       35
+      ],
+      [
+       -40,
+       -35
+      ]
+     ]
+    },
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "The base has four pre-drilled M5 threaded holes. The accessory kit includes four M5 screws, which can be tightened using the provided hex tool. The hole spacing is 70mm. (drawing: 'Ø5.4 贯穿' = Ø5.4 through)"
+   },
+   "base_mounting_holes_spec_table": {
+    "value_mm": [
+     70,
+     70
+    ],
+    "source_url": "https://aifitlab.com/products/agilex-piper-robotic-arm",
+    "quote": "Base installation dimensions | 70 mm × 70 mm × M5 × 4"
+   },
+   "base_plate": {
+    "value_mm": {
+     "size_xy": [
+      95,
+      80
+     ],
+     "thickness": 4,
+     "corner_radius": 5,
+     "urdf_x_range": [
+      -55,
+      40
+     ],
+     "urdf_y_range": [
+      -40,
+      40
+     ],
+     "hole_edge_offsets": "5 mm from each side edge; front row 10 mm from front edge, rear row 15 mm from rear edge"
+    },
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "Section 2.4.1 drawing: 80 (width), 95 (depth), 70 x 70 hole spacing, 5 (side edge), 10 (edge to near row); STEP base plate solid: X -40..40, Z -40..55, 4 mm thick, R5 corners, Ø5.4 holes at (±35,-30) and (±35,+40)"
+   },
+   "base_housing_above_plate": {
+    "value_mm": [
+     90.8,
+     72.0,
+     82.0
+    ],
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPER_with_Gripper-1-STP.zip?v=1782225359",
+    "quote": "STEP solid #23: X -36..36, Y 0..82, Z -36..54.83 (depth x width x height, sits on the 4 mm plate)",
+    "derived": true
+   },
+   "J2_axis_height_above_mounting_face": {
+    "value_mm": 123,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "drawing 9.4 vertical stack: 123 / 285 / 250.75 / 91 / 140; URDF joint1 origin xyz=\"0 0 0.123\" (base_link origin = plate underside)"
+   },
+   "upper_arm_J2_to_J3": {
+    "value_mm": 285.03,
+    "source_url": "https://github.com/agilexrobotics/piper_sdk/blob/c9e8a28174e71eeaac448593cb65f8ab258a92fe/piper_sdk/kinematics/piper_fk.py",
+    "quote": "self._a = [0, 0, 285.03, -21.98, 0, 0]; URDF joint3 xyz=\"0.28503 0 0\"; drawing 285"
+   },
+   "forearm_offset_J3_to_J4_axis": {
+    "value_mm": 21.98,
+    "source_url": "https://github.com/agilexrobotics/piper_sdk/blob/c9e8a28174e71eeaac448593cb65f8ab258a92fe/piper_sdk/kinematics/piper_fk.py",
+    "quote": "self._a = [0, 0, 285.03, -21.98, 0, 0]; URDF joint4 xyz=\"-0.021984 -0.25075 0\"; drawing 22"
+   },
+   "forearm_length_J3_to_wrist_center": {
+    "value_mm": 250.75,
+    "source_url": "https://github.com/agilexrobotics/piper_sdk/blob/c9e8a28174e71eeaac448593cb65f8ab258a92fe/piper_sdk/kinematics/piper_fk.py",
+    "quote": "self._d = [123, 0, 0, 250.75, 0, 91]; drawing 250.75"
+   },
+   "wrist_J5_to_flange_face": {
+    "value_mm": 91,
+    "source_url": "https://github.com/agilexrobotics/piper_sdk/blob/c9e8a28174e71eeaac448593cb65f8ab258a92fe/piper_sdk/kinematics/piper_fk.py",
+    "quote": "self._d = [123, 0, 0, 250.75, 0, 91]; URDF joint6 xyz=\"8.8259E-05 -0.091 0\"; drawing 91"
+   },
+   "mdh_parameters": {
+    "value_mm": {
+     "a": [
+      0,
+      0,
+      285.03,
+      -21.98,
+      0,
+      0
+     ],
+     "alpha_rad": [
+      "0",
+      "-pi/2",
+      "0",
+      "pi/2",
+      "-pi/2",
+      "pi/2"
+     ],
+     "theta_offset_deg": [
+      0,
+      -172.22,
+      -102.78,
+      0,
+      0,
+      0
+     ],
+     "d": [
+      123,
+      0,
+      0,
+      250.75,
+      0,
+      91
+     ]
+    },
+    "source_url": "https://github.com/agilexrobotics/piper_sdk/blob/c9e8a28174e71eeaac448593cb65f8ab258a92fe/piper_sdk/kinematics/piper_fk.py",
+    "quote": "self._theta = [0, -self.PI * 172.22 / 180, -102.78 / 180 * self.PI, 0, 0, 0]  (default dh_is_offset=0x01, 'if j2, j3 offset 2°')"
+   },
+   "zero_pose_flange_position": {
+    "value_mm": [
+     56.128,
+     0,
+     213.266
+    ],
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "The zero point coordinates are:X = 56.128 , Y = 0 , Z = 213.266 , RX = 0 ,RY = 85.0 , RZ = 0. (URDF FK gives 56.14, 0, 213.19)"
+   },
+   "height_arm_straight_up_with_follower_gripper": {
+    "value_mm": 889.75,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "drawing 9.4: 123 + 285 + 250.75 + 91 + 140 (flange to fingertip) = 889.75; 626.75 = J2 axis to flange",
+    "derived": true
+   },
+   "upper_arm_width": {
+    "value_mm": 97,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "drawing 9.4 front view: 97"
+   },
+   "follower_gripper_envelope": {
+    "value_mm": {
+     "flange_to_fingertip": 140,
+     "width": 145,
+     "body_height": 56
+    },
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "drawing 9.4: 140 / 56 / 145"
+   },
+   "leader_gripper_envelope": {
+    "value_mm": {
+     "flange_to_top": 77,
+     "width": 145
+    },
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "drawing 9.3 (teach pendant): 77 / 56 / 145"
+   },
+   "end_flange_J6_output": {
+    "value_mm": {
+     "outer_dia": 57,
+     "outer_bolts": "6 x M3 depth 5 on PCD 50 (90+60k deg)",
+     "outer_dowels": "2 x Ø3 +0.02/+0.04 depth 5 on PCD 50, 15 deg from vertical",
+     "boss_dia": 35,
+     "inner_bolts": "6 x M3 depth 5 on PCD 27 (0+60k deg)",
+     "inner_dowels": "3 x Ø4 +0.02/+0.04 on PCD 24.3 (30/150/270 deg)"
+    },
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "9.6 End of the arm: Ø57, Ø50, Ø35, Ø27, Ø24.3, 6*M3↓5, 6*M3↓5, 2*Ø3 +0.04/+0.02 ↓5, 3*Ø4 +0.04/+0.02, 15°"
+   },
+   "gripper_stroke_standard_70mm": {
+    "value_mm": 70,
+    "source_url": "https://static.generation-robots.com/media/agilex-piper-user-manual.pdf",
+    "quote": "Optional follower Gripper Specifications: ... Opening Distance 0-70mm / Rated Clamping Force 40N / Max Clamping Force 50N (manual dated 2024-11-06); URDF joint7/joint8 prismatic 0..0.035 m each"
+   },
+   "gripper_stroke_new_100mm": {
+    "value_mm": 100,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "Two-Finger Gripper Specifications (Optional) Weight 500g Accuracy ±0.5mm Opening and closing distance 0-100mm (manual V1.0 2025.06)",
+    "also": "https://www.generationrobots.com/en/404354-gripper-for-piper-robotic-arm-agilex.html: 'Opening range: 0 to 100 mm'"
+   },
+   "gripper_weight_kg": {
+    "value_mm": null,
+    "source_url": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PIPER_Product_User_Manual.pdf?v=1782228874",
+    "quote": "Weight 500g",
+    "value_kg": 0.5
+   },
+   "joint_limits_urdf_rad": {
+    "value_mm": {
+     "j1": [
+      -2.618,
+      2.618
+     ],
+     "j2": [
+      0,
+      3.14
+     ],
+     "j3": [
+      -2.967,
+      0
+     ],
+     "j4": [
+      -1.745,
+      1.745
+     ],
+     "j5": [
+      -1.22,
+      1.22
+     ],
+     "j6": [
+      -2.0944,
+      2.0944
+     ],
+     "j7_finger_m": [
+      0,
+      0.035
+     ],
+     "j8_finger_m": [
+      -0.035,
+      0
+     ]
+    },
+    "source_url": "https://github.com/agilexrobotics/piper_ros/blob/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description.urdf",
+    "quote": "<limit lower=\"-2.618\" upper=\"2.618\" .../> (joint1) etc."
+   },
+   "joint_limits_manual_deg": {
+    "value_mm": {
+     "j1": [
+      -154,
+      154
+     ],
+     "j2": [
+      0,
+      195
+     ],
+     "j3": [
+      -175,
+      0
+     ],
+     "j4": [
+      -106,
+      106
+     ],
+     "j5": [
+      -75,
+      75
+     ],
+     "j6": [
+      -100,
+      100
+     ]
+    },
+    "source_url": "https://static.generation-robots.com/media/agilex-piper-user-manual.pdf",
+    "quote": "Joint Motion Range J1:±154° J2:0°~195° J3:-175°~0° J4:-106°~106° J5:-75°~75° J6:±100° (2025.06 manual: J4 -102°.., J6 ±120°)"
+   },
+   "urdf_joint_origins": {
+    "value_mm": {
+     "joint1": {
+      "xyz_m": [
+       0,
+       0,
+       0.123
+      ],
+      "rpy": [
+       0,
+       0,
+       0
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint2": {
+      "xyz_m": [
+       0,
+       0,
+       0
+      ],
+      "rpy": [
+       1.5708,
+       -0.1359,
+       -3.1416
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint3": {
+      "xyz_m": [
+       0.28503,
+       0,
+       0
+      ],
+      "rpy": [
+       0,
+       0,
+       -1.7939
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint4": {
+      "xyz_m": [
+       -0.021984,
+       -0.25075,
+       0
+      ],
+      "rpy": [
+       1.5708,
+       0,
+       0
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint5": {
+      "xyz_m": [
+       0,
+       0,
+       0
+      ],
+      "rpy": [
+       -1.5708,
+       0,
+       0
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint6": {
+      "xyz_m": [
+       8.8259e-05,
+       -0.091,
+       0
+      ],
+      "rpy": [
+       1.5708,
+       0,
+       0
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint6_to_gripper_base": {
+      "type": "fixed",
+      "xyz_m": [
+       0,
+       0,
+       0
+      ],
+      "rpy": [
+       0,
+       0,
+       0
+      ]
+     },
+     "joint7": {
+      "type": "prismatic",
+      "xyz_m": [
+       0,
+       0,
+       0.1358
+      ],
+      "rpy": [
+       1.5708,
+       0,
+       0
+      ],
+      "axis": [
+       0,
+       0,
+       1
+      ]
+     },
+     "joint8": {
+      "type": "prismatic",
+      "xyz_m": [
+       0,
+       0,
+       0.1358
+      ],
+      "rpy": [
+       1.5708,
+       0,
+       -3.1416
+      ],
+      "axis": [
+       0,
+       0,
+       -1
+      ]
+     }
+    },
+    "source_url": "https://github.com/agilexrobotics/piper_ros/blob/017ffefa64511bc6325bd77ddc4e16065c152051/src/piper_description/urdf/piper_description.urdf",
+    "quote": "humble branch piper_description.urdf (piper_description_old.urdf uses joint2 rpy pitch -0.10095 and joint3 yaw -1.759, i.e. without the 2° J2/J3 offset)"
+   }
+  },
+  "notes": "Full-arm STEP obtained (AIFITLAB Shopify CDN = same store as the known gripper URL; identical copy on Robotopian). The AgileX download centre (https://global.agilex.ai/pages/download-manual) lists no PiPER files; AgileX GitHub has URDF/STL meshes (piper_ros) and DH parameters (piper_sdk) only. Arm-only STEP is in the rest/zero pose; arm+gripper STEP is in a different (extended) pose, so pose from the URDF (meshes in the link frames) or re-mate joints. Gripper stroke: the ORIGINAL/standard PiPER gripper (Nov-2024 manual, piper_ros URDF 2 x 35 mm prismatic, 'PiPER with Gripper' STEP measuring exactly 70.0 mm pad-to-pad, MGN7-145 rail) is 0-70 mm; AgileX's June-2025 manual and current resellers list a redesigned 0-100 mm gripper (shared with NERO), and the standalone 'AgileX_Gripper' STEP (internal name '100夹爪') is that 100 mm version. Check which one the lab owns. Base mounting: 4 x Ø5.4 through holes on 70 x 70 mm, pattern centre 5 mm behind the J1 axis (URDF x = +30 and -40, y = ±35). Also in the zip set but not downloaded: PiPER X arm (https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_PiPERX_Robotic_Arm-1-STP.zip?v=1782225359)."
+ },
+ "ot2": {
+  "cad_files": [
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Detailed.STEP",
+    "bytes": 3943530,
+    "sha256": "f8bf145b878683337ec0f89b74668bd7e350d674777762fab9befbcd014b42d4",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "STEP AP214 (SolidWorks 2016, header FILE_NAME 'Stripped Down MegaModel.STEP', 2018-04-17)",
+    "verified": "header ISO-10303-21; 26 solids; bbox 624.30 x 662.00 x 567.45 mm (X width, Y up incl. 15 mm feet, Z depth; +Z = front)",
+    "repo_size_bytes": 3943530
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Basic.STEP",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Basic.STEP",
+    "bytes": 407446,
+    "sha256": "525edbd90078ebfe3b973df5a250bab0c8e627ef098f11a2882294be285bc46d",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "STEP AP214 (SolidWorks 2016)",
+    "verified": "header ISO-10303-21; 1 solid; same bbox as Detailed",
+    "repo_size_bytes": 407446
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STL/OT-2%20Reference%20Model%20Detailed.STL",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Detailed.STL",
+    "bytes": 2108684,
+    "sha256": "547f4866956b28fa0b6757572e1e36944a4a4127ca75ad25cc20e60edf339089",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "binary STL",
+    "repo_size_bytes": 2108684
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STL/OT-2%20Reference%20Model%20Basic.STL",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Basic.STL",
+    "bytes": 164884,
+    "sha256": "f5c2c02bd1b7575f4dea9af8233e13bdec715f6b790cba3970e2fa85282d4919",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "binary STL",
+    "repo_size_bytes": 164884
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/deck/CNC_DECK_RevA2.DXF",
+    "path": "/tmp/cad_src/ot2/CNC_DECK_RevA2.DXF",
+    "bytes": 1167094,
+    "sha256": "a0ff2e3c564904f9aeedf5652725f0e0b1af1a82f9211a6acecd46f65bd6a5d8",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF (AC1015) drawing sheet of the removable deck, SCALE 1:6.5, DIMLFAC 6.5 (displayed dims are true mm; raw geometry is 1/6.5 scale)",
+    "repo_size_bytes": 1167094
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/WINDOW_FRONT-TOP_RevA.DXF",
+    "path": "/tmp/cad_src/ot2/WINDOW_FRONT-TOP_RevA.DXF",
+    "bytes": 126911,
+    "sha256": "f1199badb538ecdb7a23dbc93598db4c7e77636647d5d98c71e4c5cbc14365de",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF drawing sheet 'DOOR TOP' dwg 2216, SCALE 1:5, DIMLFAC 5",
+    "repo_size_bytes": 126911
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/WINDOW_FRONT-BOTTOM_RevA.DXF",
+    "path": "/tmp/cad_src/ot2/WINDOW_FRONT-BOTTOM_RevA.DXF",
+    "bytes": 114335,
+    "sha256": "b47098c1eed158f3a157ba5161b057841d1de3b9d50156471bd0546697f839ab",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF drawing sheet 'DOOR BOTTOM' dwg 2215, SCALE 1:5, DIMLFAC 5",
+    "repo_size_bytes": 114335
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/SIDE_WINDOW_RevA1.DXF",
+    "path": "/tmp/cad_src/ot2/SIDE_WINDOW_RevA1.DXF",
+    "bytes": 132634,
+    "sha256": "f7d6e7a7946b8050ef25711b71f6ce611f5fe26955a4610f0af0d1774ae5dc9b",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF drawing sheet 'SIDE WINDOW' dwg 2218, SCALE 1:5",
+    "repo_size_bytes": 132634
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/TOP_WINDOW_RevA2.DXF",
+    "path": "/tmp/cad_src/ot2/TOP_WINDOW_RevA2.DXF",
+    "bytes": 130324,
+    "sha256": "310e9904c824fb4b99bf3a557f2aff1e9a332c0c4df52e71306ce027b7d54ad9",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF drawing sheet 'TOP WINDOW' dwg 2217, SCALE 1:5",
+    "repo_size_bytes": 130324
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/REAR_WINDOW_RevA.DXF",
+    "path": "/tmp/cad_src/ot2/REAR_WINDOW_RevA.DXF",
+    "bytes": 135887,
+    "sha256": "b65bf772ac6c223a52334608e3f2a0e962b57d33d5a0e449aefecd24cbd757c0",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "format": "DXF drawing sheet 'REAR WINDOW' dwg 2219, SCALE 1:5",
+    "repo_size_bytes": 135887
+   }
+  ],
+  "reference_files": [
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/README.md",
+    "path": "/tmp/cad_src/ot2/README.md",
+    "bytes": 1054,
+    "sha256": "7739fce0228747fd387ca3ab0ffc3d2070bf0ccb9118a26bd5636028eebbc5bc",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "kind": "repo README (only rights statement)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/JPG/OT-2%20Reference%20Model%20Detailed.jpg",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Detailed.jpg",
+    "bytes": 168095,
+    "sha256": "44af6bd63b884464b3e2cbc8a79a17e62f8e53e0918ce749aa59b84602424413",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "kind": "render"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/ot2/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/JPG/OT-2%20Reference%20Model%20Basic.jpg",
+    "path": "/tmp/cad_src/ot2/OT-2 Reference Model Basic.jpg",
+    "bytes": 107549,
+    "sha256": "7f5b62d0a7e7e79a494d1e68a847f65a480e92e7ae6bb06a59ffe7465d7c879f",
+    "licence": "No licence file in github.com/Opentrons/ot2 (GitHub API reports license: null). The only rights statement is the README: \"we are providing these hardware files for our community to modify their OT-2 robots however they choose.\" Default copyright (Opentrons) otherwise applies; the DXF title blocks also carry the SolidWorks template text 'PROPRIETARY AND CONFIDENTIAL'.",
+    "kind": "render"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/opentrons/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "path": "/tmp/cad_src/ot2/ot2_standard_deck_v3.json",
+    "bytes": 27384,
+    "sha256": "f9bde02d43314e42c64d12f1a0d6d4f4aceb448371d37def27de76ff8a308e90",
+    "licence": "Apache-2.0 (Opentrons/opentrons monorepo)",
+    "kind": "official deck definition (explicit per-slot positions)"
+   },
+   {
+    "url": "https://raw.githubusercontent.com/Opentrons/opentrons/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/5/ot2_standard.json",
+    "path": "/tmp/cad_src/ot2/ot2_standard_deck_v5.json",
+    "bytes": 11983,
+    "sha256": "fb14c9de584e6eda4196daf1640c7e417638730c63bfa49858e40cfa97a7326c",
+    "licence": "Apache-2.0 (Opentrons/opentrons monorepo)",
+    "kind": "official deck definition (cutouts + fixed trash)"
+   },
+   {
+    "url": "https://opentrons.com/wp-content/uploads/2023/03/SPECSOT2.png",
+    "path": "/tmp/cad_src/ot2/SPECSOT2.png",
+    "bytes": 30994,
+    "sha256": "6a3505a9711f07794791723e8eda0540e3ddefb5e77be5bdcd7c15800e654253",
+    "licence": "Opentrons marketing image (all rights reserved)",
+    "kind": "official outline sketch with 63/57/66 cm callouts and deck outline"
+   }
+  ],
+  "blocked_urls": [],
+  "dims": {
+   "outer_WxDxH_official": {
+    "value_mm": [
+     630,
+     570,
+     660
+    ],
+    "source_url": "https://opentrons.com/products/ot-2-robot",
+    "quote": "63 cm x 57 cm x 66 cm / 25 in x 22.5 in x 26 in (W,D,H)"
+   },
+   "outer_WxDxH_reference_model": {
+    "value_mm": [
+     624.3,
+     567.45,
+     662.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "Measured bbox of 'OT-2 Reference Model Detailed.STEP': X 624.30, Y(up) 662.00 (frame 647 + 15 mm feet), Z(depth) 567.45 (frame 565.2 + door panels proud by 2.25)",
+    "derived": true
+   },
+   "frame_footprint_deck_definition": {
+    "value_mm": [
+     624.3,
+     565.2
+    ],
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "\"cornerOffsetFromOrigin\": [-115.65, -68.03, 0], \"dimensions\": [624.3, 565.2, 0]"
+   },
+   "feet": {
+    "value_mm": {
+     "count": 4,
+     "diameter": 30.0,
+     "height": 15.0,
+     "centres_step_xz": [
+      [
+       286.55,
+       202.79
+      ],
+      [
+       -286.55,
+       202.79
+      ],
+      [
+       286.55,
+       -202.79
+      ],
+      [
+       -286.55,
+       -202.79
+      ]
+     ],
+     "spacing_x_z": [
+      573.1,
+      405.58
+     ]
+    },
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "Sections of frame solid #14 at Y=-7 and Y=-1: four 30 x 30 circular wires centred at X ±286.55, Z ±202.79; frame body starts at Y=0, bbox bottom Y=-15.0",
+    "derived": true
+   },
+   "weight_kg": {
+    "value_mm": null,
+    "source_url": "https://opentrons.com/products/ot-2-robot",
+    "quote": "48 kg or 105.8 lb",
+    "value_kg": 48
+   },
+   "deck_slot_count": {
+    "value_mm": null,
+    "source_url": "https://docs.opentrons.com/v2/deck_slots.html",
+    "quote": "OT-2 uses a numeric labeling system for slots 1 (front left) through 11 (back center). The back right slot is occupied by the fixed trash.",
+    "value": 12
+   },
+   "deck_slot_pitch_x": {
+    "value_mm": 132.5,
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "\"id\": \"2\", \"position\": [132.5, 0.0, 0.0] ... \"id\": \"3\", \"position\": [265.0, 0.0, 0.0]"
+   },
+   "deck_slot_pitch_y": {
+    "value_mm": 90.5,
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "\"id\": \"4\", \"position\": [0.0, 90.5, 0.0] ... \"id\": \"10\", \"position\": [0.0, 271.5, 0.0]"
+   },
+   "deck_slot_size": {
+    "value_mm": [
+     128.0,
+     86.0
+    ],
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "\"boundingBox\": {\"xDimension\": 128.0, \"yDimension\": 86.0, \"zDimension\": 0}"
+   },
+   "deck_slot_origins": {
+    "value_mm": {
+     "1": [
+      0,
+      0
+     ],
+     "2": [
+      132.5,
+      0
+     ],
+     "3": [
+      265,
+      0
+     ],
+     "4": [
+      0,
+      90.5
+     ],
+     "5": [
+      132.5,
+      90.5
+     ],
+     "6": [
+      265,
+      90.5
+     ],
+     "7": [
+      0,
+      181
+     ],
+     "8": [
+      132.5,
+      181
+     ],
+     "9": [
+      265,
+      181
+     ],
+     "10": [
+      0,
+      271.5
+     ],
+     "11": [
+      132.5,
+      271.5
+     ],
+     "12": [
+      265,
+      271.5
+     ]
+    },
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "slot positions = front-left corner of each 128 x 86 slot in deck coords (x right, y toward the back, origin = front-left of slot 1)"
+   },
+   "fixed_trash_slot12": {
+    "value_mm": [
+     107.11,
+     165.67,
+     82
+    ],
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/5/ot2_standard.json",
+    "quote": "\"id\": \"fixedTrash\", ... \"position\": [29.285, -2.835, 0], \"boundingBox\": {\"xDimension\": 107.11, \"yDimension\": 165.67, \"zDimension\": 82}"
+   },
+   "deck_calibration_crosses": {
+    "value_mm": {
+     "1BLC": [
+      12.13,
+      9.0
+     ],
+     "3BRC": [
+      380.87,
+      9.0
+     ],
+     "7TLC": [
+      12.13,
+      258.0
+     ]
+    },
+    "source_url": "https://github.com/Opentrons/opentrons/blob/11662cf7e96642d8c6353172f42cc97b014ed76d/shared-data/deck/definitions/3/ot2_standard.json",
+    "quote": "{\"id\": \"1BLC\", \"position\": [12.13, 9.0, 0.0], \"displayName\": \"Slot 1 Bottom Left Cross\"}"
+   },
+   "removable_deck_plate": {
+    "value_mm": [
+     482.0,
+     467.3,
+     10.1
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "Detailed STEP solid #1: X -241..241, Y 46.95..57.05, Z -187.48..279.85 (deck top surface 57.05 above frame bottom, 72.05 above table)",
+    "derived": true
+   },
+   "deck_front_edge_to_slot_row1": {
+    "value_mm": 65.325,
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/deck/CNC_DECK_RevA2.DXF",
+    "quote": "CNC_DECK_RevA2.DXF displayed dims: 65.325 / 155.825 / 246.325 / 336.825 / 427.325 (90.5 pitch); deck depth 467.33; 44.500 (deck side edge to slot column 1)"
+   },
+   "deck_to_reference_STEP_transform": {
+    "value_mm": null,
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "STEP_X = deck_x - 196.5; STEP_Z = 214.57 - deck_y; deck surface at STEP_Y = 57.05 (from cornerOffsetFromOrigin [-115.65,-68.03] vs STEP frame X -312.15, Z +282.6; cross-checked with DXF 44.5 and 65.325 mm edge offsets)",
+    "derived": true
+   },
+   "door_top_panel": {
+    "value_mm": [
+     519.4,
+     261.42,
+     5.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/WINDOW_FRONT-TOP_RevA.DXF",
+    "quote": "DOOR TOP dwg 2216: displayed dims 519.40, 261.42, (5.00); 2X Ø5.00 THRU ALL Ø9.40 X 90° (countersunk hinge holes)"
+   },
+   "door_bottom_panel": {
+    "value_mm": [
+     519.4,
+     294.7,
+     5.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/WINDOW_FRONT-BOTTOM_RevA.DXF",
+    "quote": "DOOR BOTTOM dwg 2215: displayed dims 519.40, 294.70, (5)"
+   },
+   "door_panels_in_frame": {
+    "value_mm": {
+     "bottom_y": [
+      54.55,
+      349.25
+     ],
+     "top_y": [
+      350.75,
+      612.17
+     ],
+     "x": [
+      -259.7,
+      259.7
+     ],
+     "z": [
+      279.85,
+      284.85
+     ]
+    },
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "Detailed STEP solids #6 (519.4 x 294.7 x 5) and #7 (519.4 x 261.4 x 5) on the front face; door stack 557.6 mm tall (Y 54.55-612.17)",
+    "derived": true
+   },
+   "front_door_clear_opening": {
+    "value_mm": [
+     523.9,
+     553.8
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/reference-model/STEP/OT-2%20Reference%20Model%20Detailed.STEP",
+    "quote": "Section of frame solid #14: front posts leave X -261.95..261.95 (523.9 wide) at the door plane; frame ring behind the door is open X -306.65..306.65, Y 46.25..600.05 (613.3 x 553.8)",
+    "derived": true
+   },
+   "side_window": {
+    "value_mm": [
+     479.1,
+     406.25,
+     5.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/SIDE_WINDOW_RevA1.DXF",
+    "quote": "SIDE WINDOW dwg 2218: displayed dims 479.10, 406.25, (5.00)"
+   },
+   "top_window": {
+    "value_mm": [
+     564.9,
+     455.1,
+     5.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/TOP_WINDOW_RevA2.DXF",
+    "quote": "TOP WINDOW dwg 2217: displayed dims 2X 564.90, 2X 455.10, (5)"
+   },
+   "rear_window": {
+    "value_mm": [
+     543.9,
+     534.9,
+     5.0
+    ],
+    "source_url": "https://github.com/Opentrons/ot2/blob/ef9ede131ed1d64daf9a0df5b2140a0a8e56b632/windows/REAR_WINDOW_RevA.DXF",
+    "quote": "REAR WINDOW dwg 2219: displayed dims 543.90, 534.90, Ø30.0, (5.00)"
+   }
+  },
+  "notes": "Official Opentrons reference model (SolidWorks 2016 export, 2018): 'OT-2 Reference Model Detailed.STEP' 3,943,530 B and 'OT-2 Reference Model Basic.STEP' 407,446 B, plus STLs, deck DXF and 5 window DXFs, from github.com/Opentrons/ot2 @ ef9ede1 (last commit 2018-05-09). Repo has no licence file; README grants use 'to modify their OT-2 robots however they choose'. STEP frame: X = width (centred), Y = up (0 = frame bottom, feet to -15), Z = depth (+Z = front/door). Door = two 5 mm panels (519.4 x 294.7 bottom, 519.4 x 261.42 top) stacked 54.55-612.17 mm above frame bottom with a 1.5 mm gap at ~350 mm (hinge line); the Opentrons spec sketch (SPECSOT2.png) shows a door panel swung outward and upward from that mid-height line. Hinge mechanics are not documented in the repo. Deck: 3 x 4 grid of 128 x 86 mm slots at 132.5 x 90.5 mm pitch; slot 12 = fixed trash."
+ }
+}

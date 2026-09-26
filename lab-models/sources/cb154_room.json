@@ -1,0 +1,950 @@
+{
+ "room": {
+  "what_it_is": "BYU Clyde Building (CB) room 154, 1st floor, Provo UT: the Vertical Cloud Lab's lab (Sterling Baird's group; formerly 'the old projects lab'). An L-shaped interior of about 9.60 m E-W x 7.87 m N-S (378\" x 310\") minus a 4.09 x 2.60 m notch (room 158) in the NW corner. That is about 65 m^2 / 700 ft^2 with painted CMU walls, a bare concrete floor, and an exposed ceiling (usable height ~2.62 m). Main entrance is on the west wall from corridor 101. It holds a 14x10x9 ft steel clean room in the NE corner for the AMAZEMET rePowder atomizer, new sink/eyewash casework on the south wall, and a wall-hung L-counter in the SW corner carrying the CubXL and the OT-2.",
+  "dims": {
+   "room_length": {
+    "value_mm": 9601,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cross-check cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "E-W interior (along north/south walls). Gage sketch: '378\"' (=9601 mm). Annotated PDF: '31.38 ft' (9565). Plan pixels at 600 dpi: 376\" (9550). Plan scale verified: sheet prints at 1\"=25'-0\" (all three agree within 0.5%)."
+   },
+   "room_width": {
+    "value_mm": 7874,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cross-check cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "N-S interior (along east/west walls). Gage: '310\"' (=7874). Annotated PDF: '25.78 ft' (7858). Plan pixels: 308.5\" (7836)."
+   },
+   "notch_158_ew": {
+    "value_mm": [
+     4064,
+     4124
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Room 158 cuts the NW corner. E-W depth from west wall to 158's east face: Gage '160\"' (4064); plan 161.5\" (4102-4124). Use 4090."
+   },
+   "notch_158_ns": {
+    "value_mm": [
+     2591,
+     2604
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "N-S width from north wall to 158's south face: Gage '102\"' (2591); annotated '8.53 ft' (2600); plan 102.5\". Use 2600."
+   },
+   "west_wall_exposed_length": {
+    "value_mm": [
+     5182,
+     5233
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "SW corner to 158's south face along west wall: Gage '204\"' (5182); plan 206\" (5233)."
+   },
+   "north_wall_exposed_length": {
+    "value_mm": [
+     5448,
+     5486
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "NE corner to 158's east face along north wall: Gage '216\"' (5486); plan 214.5\" (5448)."
+   },
+   "ceiling_height": {
+    "value_mm": 2616,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "quote_or_basis": "Gage: 'usable height ~ 103\"' = clear height to underside of the lowest exposed services (no dropped ceiling; ducts, pipes and hung LED strips are exposed)."
+   },
+   "structure_height_est": {
+    "value_mm": [
+     3900,
+     4500
+    ],
+    "source": "img/room/room_2026-01-20_north-wall_door154-1_pillar.jpg (#12)",
+    "quote_or_basis": "Estimate only: CMU coursing (8\" courses, ~57 px each) on the north wall continues to ~12-13 ft before the pipes/deck; low confidence."
+   },
+   "light_fixture_height_est": {
+    "value_mm": [
+     2600,
+     2900
+    ],
+    "source": "Jan-Feb 2026 photos (#7, #12)",
+    "quote_or_basis": "Hung linear LED strips, estimated from CMU coursing; roughly at the 103\" usable height."
+   },
+   "wall_thickness_north": {
+    "value_mm": 184,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Plan double-line wall 14.5 px at 600 dpi = 7.25\" (8\" nominal CMU)."
+   },
+   "wall_thickness_south": {
+    "value_mm": 197,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Plan 15.5 px = 7.75\" (8\" CMU)."
+   },
+   "wall_thickness_east": {
+    "value_mm": 184,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Plan 14.5 px = 7.25\" (8\" CMU)."
+   },
+   "wall_thickness_west": {
+    "value_mm": 248,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Plan 19.5 px = 9.75\"; corridor-101 side is face brick (photos), room side painted CMU."
+   },
+   "wall_thickness_room158": {
+    "value_mm": 190,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Plan 15 px = 7.5\"."
+   },
+   "door_entrance_width": {
+    "value_mm": [
+     1130,
+     1219
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Main door from corridor 101 (west wall): Gage 'Entrance Door 48\"' (frame, 1219); annotated '3.86 ft' (1177); plan clear opening 44.5\" (1130), leaf arc ~45.5\"."
+   },
+   "door_entrance_height": {
+    "value_mm": [
+     2030,
+     2090
+    ],
+    "source": "img/room/crop_2026-02-04_counter-height_CMU-courses_entrance-jamb.jpg (#7)",
+    "quote_or_basis": "Frame head ~10.2 CMU courses (~82\") above floor; i.e. 6'-8\" leaf. Estimate."
+   },
+   "door_154_1_width": {
+    "value_mm": [
+     1143,
+     1321
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "North-wall door to the neighbouring lab: Gage 'Locked Door 52\"' (frame, 1321); plan opening 45\" (1143), leaf arc ~49\"; photo: frame ~52\" wide x ~78-83\" tall."
+   },
+   "door_154_2_width": {
+    "value_mm": [
+     842,
+     1016
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "East-wall door to room 123: Gage '40\" Door' (frame, 1016); plan opening 33\" (842), leaf arc ~35\" (3'-0\" leaf)."
+   },
+   "door_154A_width": {
+    "value_mm": [
+     817,
+     914
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "South-wall door to 154A: Gage 'Door 36\"'; plan opening 32\" (817)."
+   },
+   "door_height_typical": {
+    "value_mm": [
+     2030,
+     2090
+    ],
+    "source": "photo CMU coursing (#7, #12)",
+    "quote_or_basis": "All four doors look like 6'-8\" leaves in ~82\" frames (estimate)."
+   },
+   "window_width": {
+    "value_mm": [
+     1000,
+     1350
+    ],
+    "source": "img/room/crop_2026-02-04_west-wall_rollup-window_CMU.jpg (#7)",
+    "quote_or_basis": "Roll-up steel shutter service window in west wall; ~3 CMU blocks (16\" each) wide between the black guides. Estimate."
+   },
+   "window_opening_height": {
+    "value_mm": [
+     1050,
+     1250
+    ],
+    "source": "same photo",
+    "quote_or_basis": "Guide-top to shutter-bottom ~670 px at ~115 px per 8\" course. Sill ~0.95 m, head ~2.15 m; roller housing protrudes to ~2.35 m."
+   },
+   "window_sill_height": {
+    "value_mm": [
+     900,
+     1000
+    ],
+    "source": "img/room/crop_2026-02-04_west-wall_rollup-window_CMU.jpg",
+    "quote_or_basis": "Shutter bottom sits ~70-90 mm above the ~910 mm counter, behind a ~210 mm wooden ledge. Estimate."
+   },
+   "window_head_height": {
+    "value_mm": [
+     2050,
+     2250
+    ],
+    "source": "same",
+    "quote_or_basis": "Top of the shutter guides; the roller housing above protrudes into the room to ~2350. Estimate."
+   },
+   "counter_height": {
+    "value_mm": [
+     880,
+     940
+    ],
+    "source": "img/room/crop_2026-02-04_counter-height_CMU-courses_entrance-jamb.jpg",
+    "quote_or_basis": "Wall-hung wood counter top ~4.46 CMU courses above floor (~36\" = 914 mm); switch plate at ~48\" checks the scale."
+   },
+   "L_counter_depth": {
+    "value_mm": 800,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo A/B labels)",
+    "quote_or_basis": "Gage '31.5\"' (800); #229 photo labels '800' on both legs; usable 590 in front of the window ledge ('B: a shelf behind the metal window limits space')."
+   },
+   "L_counter_west_leg_length": {
+    "value_mm": 3251,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "quote_or_basis": "Gage '128\"' along the west wall from the SW corner toward the entrance door."
+   },
+   "L_counter_south_leg_length": {
+    "value_mm": 2781,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "quote_or_basis": "Gage '109.5\"' along the south wall from the SW corner (then '89\"' of bare wall to the 154A door)."
+   },
+   "sink_counter_length": {
+    "value_mm": [
+     2900,
+     3100
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5346737429; https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo C)",
+    "quote_or_basis": "New casework (Jul-Aug 2026) on south wall from SE corner to the pilaster; photo C: free top '1840' mm left of the eyewash + sink section."
+   },
+   "sink_counter_depth": {
+    "value_mm": [
+     660,
+     745
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo C)",
+    "quote_or_basis": "Photo C label '745-660' (full depth / depth to the outlets)."
+   },
+   "pillar_size": {
+    "value_mm": [
+     483,
+     495
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Gage '19\" x 19\"'; plan 19.5\" square."
+   },
+   "pillar_to_north_wall": {
+    "value_mm": [
+     1416,
+     1638
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "North wall to pillar's north face: annotated '4.67 ft' (1423) / plan 55.75\" (1416); Gage '64.5\"' (1638). Unresolved ~9\" disagreement; used 1527."
+   },
+   "pillar_to_east_wall": {
+    "value_mm": [
+     3099,
+     3136
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "East wall to pillar's east face: annotated '10.29 ft' (3136); plan 122.25\" (3105); Gage '122\"' (3099)."
+   },
+   "pilaster_south_wall": {
+    "value_mm": [
+     483,
+     521
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Engaged column on south wall, 19-20.5\" long x 12-13\" deep, 123\" from the east wall (Gage '123\"', '19\"', '13\"')."
+   },
+   "sw_corner_column": {
+    "value_mm": [
+     356,
+     389
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Column in SW corner: Gage '14\" x 11\"' hatched square; plan 15.25\" (E-W) x 12.25\" (N-S)."
+   },
+   "structural_grid": {
+    "value_mm": 6096,
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\")",
+    "quote_or_basis": "Pillar, pilaster, SW-corner column and a column in 158's west wall sit on a ~20'-0\" x 20'-0\" grid (measured 239-241\")."
+   },
+   "clean_room_ns": {
+    "value_mm": 4267,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4290374869; https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4354124451",
+    "quote_or_basis": "'The area to the pillar and over to the edge of the red line is about 14' W x 10' D'; work order: 'hard wall clean room 14x10x9 with 2 vinyl slated doorways'. 14 ft along east wall from NE corner."
+   },
+   "clean_room_ew": {
+    "value_mm": 3048,
+    "source": "same",
+    "quote_or_basis": "10 ft deep from east wall, west face ~at the pillar's east face (3.1 m)."
+   },
+   "clean_room_height": {
+    "value_mm": 2743,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4292377647",
+    "quote_or_basis": "'enough room for a 9ft tall clean room'; built with a galvanized-steel ceiling and two LED fixtures (Jul 2026 video)."
+   },
+   "clean_room_doorway": {
+    "value_mm": [
+     1100,
+     1300
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124 (2026-06-18 and 2026-08-19 photos)",
+    "quote_or_basis": "Vinyl strip-curtain openings ~1.2 m wide x ~2.1 m, steel header above. Width estimated from photos."
+   },
+   "corridor_101_width": {
+    "value_mm": 2420,
+    "source": "cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "'7.94 ft' (move-in path outside the entrance door)."
+   },
+   "corridor_east_width": {
+    "value_mm": 2405,
+    "source": "cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "'7.89 ft' corridor beyond room 123 (top of sheet)."
+   },
+   "double_door_to_123": {
+    "value_mm": 1789,
+    "source": "cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28)",
+    "quote_or_basis": "'5.87 ft' double-door opening from that corridor into 123 (alternate move-in path via door 154-2)."
+   },
+   "transformer_keepout": {
+    "value_mm": 190,
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5827165807",
+    "quote_or_basis": "'nothing can be within 7.5\" of the transformer or above it'."
+   },
+   "spot_D_tables": {
+    "value_mm": [
+     1290,
+     1360
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo D, comment 5825688393)",
+    "quote_or_basis": "Cart top '1290' x '680' + a second table -> 1.29 x 1.36 m for the 6DOF-arm quarter-dome enclosure."
+   },
+   "spot_E_island_free_area": {
+    "value_mm": [
+     1290,
+     1360
+    ],
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo E)",
+    "quote_or_basis": "'1360' x '1290' free top on the central island."
+   }
+  },
+  "images": [
+   {
+    "path": "/tmp/research/img/room/cb154_p150-1.png",
+    "shows": "Full 17x11 sheet of cb154.pdf at 150 dpi: BYU 'CB 1st Floor' plan, everything but 154/123/corridors whited out; title block, north arrow (points page-left), 1\"=25'-0\"."
+   },
+   {
+    "path": "/tmp/research/img/room/cb154-annotated_p150-1.png",
+    "shows": "Full sheet of cb154-annotated.pdf: same plan plus red measure callouts (room 25.78x31.38 ft, pillar 10.29/4.67 ft, 158 8.53 ft, door 3.86 ft, corridors 7.94/7.89 ft, double door 5.87 ft)."
+   },
+   {
+    "path": "/tmp/research/img/room/plan_cb154_room154_600dpi_crop.png",
+    "shows": "600 dpi crop of room 154 (0.5 in/px at plan scale): walls, 158 notch, pillar, south pilaster, SW-corner column, doors 154-1/154-2/entrance/154A with swings. Page-top = east."
+   },
+   {
+    "path": "/tmp/research/img/room/plan_annotated_crop_200dpi.png",
+    "shows": "Crop of the annotated plan around 154/123 with all red callouts readable."
+   },
+   {
+    "path": "/tmp/research/img/room/plan_north_arrow_points_page-left.png",
+    "shows": "North arrow from the sheet: points to the page's left."
+   },
+   {
+    "path": "/tmp/research/img/room/plan_scale_1in-25ft.png",
+    "shows": "Scale note '1\" = 25'-0\"' from the sheet."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_gage_measurements.jpg",
+    "shows": "Gage's tape-measured sketch (#7, Jan 22 2026), drawn with west at the top (plan rotated 180 degrees). Readings: 378\" x 310\"; 204\"/102\"/160\"/216\" around the 158 notch; entrance door 48\" 24\" from the notch; 40\" door (154-2) 32\" from the SE corner; south wall 123\"+19\" pilaster+36\" door+89\"+109.5\"; locked door 52\"; pillar 19x19 at 64.5\" (N) and 122\" (E); SW column 14x11; L-counter 128\" and 31.5\" deep; usable height ~103\"."
+   },
+   {
+    "path": "/tmp/research/img/room/i031_outlet_map.png",
+    "shows": "Gage's outlet map (#31, Feb 27 2026) on the annotated plan: 7 yellow stars = duplex outlets (3 east wall, 1 north, 2 south, 1 west)."
+   },
+   {
+    "path": "/tmp/research/img/room/i031_body_plan.png",
+    "shows": "Annotated plan as posted in #31 (larger render of the callouts)."
+   },
+   {
+    "path": "/tmp/research/img/room/i229_lab154_locations.png",
+    "shows": "Josh's candidate spots A-E for the 6DOF arm (#229, Sep 22 2026). A: counter A (south leg; CubXL at its left end; labels 800/500/1300/255). B: counter B at the roll-up window (1000/800/590). C: new sink casework (1840, 745-660, outlets). D: cart 1290x680 by the wired-glass door 154-1 with the Nilfisk vacuum. E: central island (1360x1290); background shows clean-room curtains, door 154-2, sink/eyewash, door to carpeted 154A, whiteboard."
+   },
+   {
+    "path": "/tmp/research/img/room/branch229_cb154-arm-locations.png",
+    "shows": "Claude's to-scale overlay from branch claude/issue-229-20260925-0253 (fc1bc5a): clean room 14x10 ft in the NE corner, spot D against 158, E at the centre, pillar, entrance; plus height budget (103\" usable)."
+   },
+   {
+    "path": "/tmp/research/img/room/i229_enclosure_sizes.png",
+    "shows": "Quarter/half/full-dome enclosure sizes for the PiPER arm (<=0.93 m / 1.86 m, 1.10 m tall) - footprints to model on spot D (quarter dome chosen)."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0204_a.jpg",
+    "shows": "Feb 4 2026 room photo (from #7 fly-by set)."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0204_b.jpg",
+    "shows": "Feb 4 2026, looking SW: south wall (smooth) with black upper cabinets over counter A; west wall (CMU) with roll-up window, OT-2 on counter B, fire strobe, thermostat, switch, and the open entrance doorway with corridor-101 brick and VCT beyond; mobile black-top island in the foreground."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0204_c.jpg",
+    "shows": "Feb 4 2026, looking north: locked door 154-1 (wired glass), free-standing pillar, gray cabinet, CMU north wall, exposed ducts and hung LED strips."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0204_d.jpg",
+    "shows": "Feb 4 2026 wide shot from near the pillar looking west/south-west: island, gray desks, tall gray cabinet, door 154-2 open (far left), whiteboard, gray box, door to 154A and extinguisher (left wall), L-counter/window/OT-2/entrance (far wall)."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0209_tc_a.jpg",
+    "shows": "Feb 9 2026: SW-corner L-counter (45-degree chamfered corner) with black upper cabinets and the roll-up window ('COLTER')."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0209_tc_b.jpg",
+    "shows": "Feb 9 2026: inside a black upper cabinet (AirGradient ONE, gloves)."
+   },
+   {
+    "path": "/tmp/research/img/room/i007_0209_tc_c.jpg",
+    "shows": "Feb 9 2026: tall gray steel cabinet, gray desk, and the entrance door (wired glass showing the corridor brick)."
+   },
+   {
+    "path": "/tmp/research/img/room/room_2026-01-12_through-entrance-door.jpg",
+    "shows": "Jan 12 2026 (#2): looking into 154 through the entrance door, before furnishing."
+   },
+   {
+    "path": "/tmp/research/img/room/room_2026-01-20_north-wall_door154-1_pillar.jpg",
+    "shows": "Jan 20 2026 (#12): north wall head-on, showing door 154-1 (52\" frame, wired glass) against 158's wall, the pillar, a wood cabinet, and a black workbench/acrylic box in the NE corner (before the clean room). Used for CMU-course height estimates."
+   },
+   {
+    "path": "/tmp/research/img/room/room_2026-01-21_view-along-room_exposed-ceiling.jpg",
+    "shows": "Jan 21 2026 (#12): long view along the room with the exposed ceiling (ducts, insulated pipes, LED strips) and bare concrete floor."
+   },
+   {
+    "path": "/tmp/research/img/room/room_2026-05-15_NE-corner_quest-dehumidifier_floor-tape.jpg",
+    "shows": "May 15 2026 (#42): Quest dehumidifier on a white table in the NE corner area, with orange/green wall tape and red floor tape marking the planned layout; explosion-proof vacuum behind."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_body1.jpg",
+    "shows": "Jun 11 2026 (#124): atomizer accessory crate in 154 (Quest dehumidifier behind)."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_body2.jpg",
+    "shows": "Jun 11 2026: atomizer crate (wrapped) - context only."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_body3.jpg",
+    "shows": "Jun 11 2026: atomizer crate (wrapped) - context only."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0612_front.jpg",
+    "shows": "Jun 12 2026: AMAZEMET rePowder (blue frame, 'Blue Power' furnace) in its open crate in 154; CMU wall and extinguisher behind."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0618_a.jpg",
+    "shows": "Jun 18 2026: clean-room steel walls going up; doorway opening."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0618_b.jpg",
+    "shows": "Jun 18 2026: clean room seen from the west - steel face with a ~1.2 m doorway at its south end, pillar at far left, door 154-2 on the east wall beyond (right)."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0618_c.jpg",
+    "shows": "Jun 18 2026: looking north into the clean room - steel west wall and ceiling, CMU north/east walls with orange/red/green tape marks, red floor-tape outline; outside at left: gray cabinet and wired-glass door."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0717_cabinets.jpg",
+    "shows": "Jul 17 2026: base-cabinet plinths going onto the south wall (sink casework), surface-conduit outlets; atomizer crate marked 'CB154 STERLING'; red floor tape."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0819_a.jpg",
+    "shows": "Aug 19 2026: clean-room vinyl strip-curtain doorway with the atomizer crate inside; Quest dehumidifier table, vacuum, whiteboard outside."
+   },
+   {
+    "path": "/tmp/research/img/room/i124_c0819_b.jpg",
+    "shows": "Aug 19 2026: new wood base cabinets + upper cabinet on the south wall from the SE corner (door 154-2 at left, hinged on the corner side) to the pilaster (gray box at right)."
+   },
+   {
+    "path": "/tmp/research/img/room/video_2026-07-07_cleanroom-interior_frames.jpg",
+    "shows": "Frames from the Jul 7 2026 video (#124): clean-room interior - steel ceiling with 2 LED fixtures, CMU north/east walls with conduit and outlets, taped equipment outlines."
+   },
+   {
+    "path": "/tmp/research/img/room/video_2026-07-07_emergency-disconnects_frames.jpg",
+    "shows": "Frames from the same video: two Square D heavy-duty fused emergency disconnects (Bussmann FRS-R-40 fuses) on the clean-room steel wall."
+   },
+   {
+    "path": "/tmp/research/img/room/video_2026-02-04_flyby_frames.jpg",
+    "shows": "Frames from Gage's Feb 4 2026 fly-by video (#7): walk-in from corridor 101, then pan of the room (OT-2 on counter B, island, desks, workbench with blue bins, pillar, gray cabinet)."
+   },
+   {
+    "path": "/tmp/research/img/room/crop_2026-02-04_counter-height_CMU-courses_entrance-jamb.jpg",
+    "shows": "Crop used for heights: CMU courses (~147 px per 8\") next to the entrance jamb -> counter top ~36\", switch ~48\", thermostat ~60\"; corridor brick and VCT beyond."
+   },
+   {
+    "path": "/tmp/research/img/room/crop_2026-02-04_west-wall_rollup-window_CMU.jpg",
+    "shows": "Crop used for the window: roll-up shutter with roller housing, CMU blocks for scale, fire strobe, plaque, thermostat, entrance-door frame."
+   },
+   {
+    "path": "/tmp/research/img/room/derived_layout_schematic.png",
+    "shows": "THIS RESEARCH: to-scale plot of every feature in room.json (origin at the inside SW corner, +x east, +y north), used to check the coordinates for overlaps. Colours: walls grey-black, openings blue, casework orange, equipment aqua; dashed = planned or uncertain."
+   },
+   {
+    "path": "/tmp/research/img/room/i133_cubxl_moved_to_cb154.jpg",
+    "shows": "Sep 22 2026 (#133): CubXL (Genmitsu PROVerXL 4030 V2 + controller box) on counter A under open black shelves, whiteboard at left (east)."
+   },
+   {
+    "path": "/tmp/research/img/room/i033_0910_ot2_placed.jpg",
+    "shows": "Sep 10 2026 (#33): OT-2 ('Gary the Gantry') on the west-wall wood counter against CMU, roll-up window frame at left, TALON room sensor at upper right, stream-cam on a clamp arm."
+   }
+  ],
+  "notes": "HOW DERIVED: cb154.pdf and cb154-annotated.pdf are raster prints (Microsoft Print-to-PDF, 17x11 in, author sgbaird, 2026-01-28) of BYU Facilities Planning's 'CB 1st Floor' sheet (Revit database 12/6/2024) with everything except CB154, the hallways and part of CB123 whited out (issue #31). Stated scale 1\"=25'-0\". Measured at 600 dpi, room 154 is 308.5\" x 376\", against Gage's tape (310\" x 378\") and the annotation callouts (25.78 x 31.38 ft); they agree within 0.5%, so the sheet is to scale. Positions come from plan pixels (scaled to Gage's envelope) cross-checked with Gage's sketch, which is the plan rotated 180 degrees. The ANNOTATED PDF carries dimension callouts only: 25.78/31.38 ft room, 10.29 ft east wall->pillar, 4.67 ft north wall->pillar, 8.53 ft north wall->158, 3.86 ft entrance door, and move-in path widths 7.94 ft (corridor 101), 7.89 ft (east corridor), 5.87 ft (double door into 123). NO EQUIPMENT IS ANNOTATED on it. Equipment-annotated versions exist elsewhere: Gage's outlet-star map (#31), Josh's A-E photo board (#229), and Claude's cb154-arm-locations.png render (branch claude/issue-229-20260925-0253, which also derived 7.8 x 9.6 m). WALL-BY-WALL: West = corridor wall (brick outside), with the L-counter leg B, the roll-up service window, the OT-2, a thermostat/switch, and the 48\" entrance door about 0.5-0.6 m south of 158. South = counter A with black upper storage and the CubXL, a whiteboard, the 154A door (swings out), a pilaster, and the new sink/eyewash casework to the SE corner (the west part of this wall is smooth plaster, the rest CMU). East = door 154-2 near the SE corner, then the clean room's back wall. North = clean room, the transformer pocket, the free-standing pillar ~1.4-1.6 m off the wall, and locked door 154-1 hard against 158. UNCERTAINTIES: pillar distance to the north wall (plan 1416 vs Gage 1638 mm); entrance-door centre +/-150 mm; window position +/-250 mm and size; clean-room doorway positions; atomizer placement inside the enclosure is undocumented (install Mon Sep 28, 2026, 2 days after this research); transformer size unknown; furniture (island, desks, gray cabinet, dehumidifier, vacuum) is mobile. Ceiling: no dropped ceiling. Whether the room is sprinklered was not confirmed. Floor: bare/sealed concrete with no tiles, so there is no floor-tile scale; corridor 101 has 12\" VCT. NOT IN CB154: the Lansmont drop tower (tensegrity-optimization project; Jeff Hill's lab, described as 'pretty close to CB 154'). The glovebox is not bought yet; the vertical lift module and the Mastrex metal printer are planned only. No record places the powder doser or the induction furnace in 154. Adjacent spaces: 158 (NW notch), 123 (east, via 154-2), 154A (south, carpeted lab of another group), 148 (south-west), and the neighbouring lab north of 154-1 (sealed). Utilities per #31/#124/#24: new 40 A-fused disconnects, chilled water (1\" to the heat exchanger; wall drops ~3/4\"), compressed air run along the south wall with a T to the east wall, argon (5N, 8 bar at the machine), exhaust hookup, ethernet, an O2 detector, and HEPA/dehumidifier air feeding the clean room.",
+  "features": [
+   {
+    "type": "notch",
+    "label": "Room 158 (separate room cut into NW corner; not part of 154)",
+    "x_mm": 2045.0,
+    "y_mm": 6574.0,
+    "w_mm": 4090,
+    "d_mm": 2600,
+    "wall": "NW corner",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "x 0-4090, y 5274-7874; 190 mm CMU walls face 154. Its own door opens to corridor 101."
+   },
+   {
+    "type": "column",
+    "label": "Free-standing structural pillar (19\" sq.)",
+    "x_mm": 6245,
+    "y_mm": 6100,
+    "w_mm": 490,
+    "d_mm": 490,
+    "wall": "none (free-standing, near north wall)",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "Centre x from east-wall offsets (plan 122.25\"/annot. 10.29 ft/Gage 122\"); y = average of plan (N face 1416 from north wall) and Gage (1638). +/-110 mm in y."
+   },
+   {
+    "type": "column",
+    "label": "Pilaster (engaged column) on south wall",
+    "x_mm": 6233,
+    "y_mm": 160,
+    "w_mm": 500,
+    "d_mm": 320,
+    "wall": "S",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "Plan 20.5\" x 12.25\"; Gage 19\" x 13\"; on the same grid line as the pillar; a gray paper-towel box hangs on its east face (photos)."
+   },
+   {
+    "type": "column",
+    "label": "Column in SW corner",
+    "x_mm": 185,
+    "y_mm": 150,
+    "w_mm": 370,
+    "d_mm": 300,
+    "wall": "SW corner",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "Plan 15.25\" (E-W) x 12.25\" (N-S); Gage 14\" x 11\". Full height."
+   },
+   {
+    "type": "door",
+    "label": "Main entrance door from corridor 101 (single leaf ~1150, frame 1219; hinge N jamb, swings in)",
+    "x_mm": -124.0,
+    "y_mm": 4060,
+    "w_mm": 248,
+    "d_mm": 1150,
+    "wall": "W",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); cb154-annotated.pdf (same sheet + red measure-tool callouts by sgbaird, 2026-01-28); cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); photos #7",
+    "basis": "Centre y is the mean of three estimates: photo block-count ~3.9 m, Gage (48\" door, 24\" from 158) 4.06 m, plan 4.18 m; +/-150. Wood leaf with narrow wired-glass vision panel; opens against 158's south wall."
+   },
+   {
+    "type": "door",
+    "label": "Door 154-2 to room 123 (3'-0\" leaf; hinge S jamb, swings in)",
+    "x_mm": 9693.0,
+    "y_mm": 1340,
+    "w_mm": 184,
+    "d_mm": 914,
+    "wall": "E",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "Plan opening y 932-1774; Gage 32\" from SE corner, 40\" frame. Open leaf lies ~0.9 m north of the south wall, just clear of the sink casework."
+   },
+   {
+    "type": "door",
+    "label": "Door 154-1 to neighbouring lab (~4'-0\" leaf, 52\" frame; hinge W jamb, swings in) - kept locked/sealed",
+    "x_mm": 4820,
+    "y_mm": 7966.0,
+    "w_mm": 1220,
+    "d_mm": 184,
+    "wall": "N",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5827668940",
+    "basis": "Frame starts ~0.1-0.2 m east of 158's east face. Wired-glass vision panel. Sterling: 'meant and fully intended to be sealed at all times, since that's a separate laboratory'."
+   },
+   {
+    "type": "door",
+    "label": "Door to 154A (adjacent carpeted lab, Fullwood/Johnson) (3'-0\"; hinge E jamb, swings OUT into 154A)",
+    "x_mm": 5525,
+    "y_mm": -98.5,
+    "w_mm": 914,
+    "d_mm": 197,
+    "wall": "S",
+    "source": "cb154.pdf (repo root, BYU Facilities Planning 'CB 1st Floor', Revit database 12/6/2024, 1\" = 25'-0\"); https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22)",
+    "basis": "Plan opening x 5107-5924; Gage: begins right after the pilaster, 142\" from east wall, 36\" wide."
+   },
+   {
+    "type": "window",
+    "label": "Roll-up steel-shutter service window to corridor 101 (sill ~950, head ~2150, roller housing to ~2350)",
+    "x_mm": -124.0,
+    "y_mm": 1350,
+    "w_mm": 248,
+    "d_mm": 1200,
+    "wall": "W",
+    "source": "photos #7 (2026-02-04, 2026-02-09), #229 photo A/B",
+    "basis": "Position +/-250 from CMU block count; sits above the L-counter's west leg with a ~210 mm wooden ledge in front ('COLTER' label on shutter). No exterior windows in the room."
+   },
+   {
+    "type": "bench",
+    "label": "L-counter west leg 'B' (wall-hung wood top on brackets, top ~910)",
+    "x_mm": 400,
+    "y_mm": 1625,
+    "w_mm": 800,
+    "d_mm": 3251,
+    "wall": "W",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); https://github.com/vertical-cloud-lab/byu-vcl/issues/229",
+    "basis": "Gage 128\" long, 31.5\" deep; #229 photo labels 800 / 590 / 1000."
+   },
+   {
+    "type": "bench",
+    "label": "L-counter south leg 'A' (wall-hung wood top, top ~910; shares SW corner with west leg)",
+    "x_mm": 1790,
+    "y_mm": 400,
+    "w_mm": 1981,
+    "d_mm": 800,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/7#issuecomment-3787027938 (Gage Erickson tape-measured sketch, 2026-01-22); https://github.com/vertical-cloud-lab/byu-vcl/issues/229",
+    "basis": "Leg runs x 0-2781 (Gage 109.5\"); drawn from x=800 to avoid double-counting the corner. #229 'A: cabinets limit space', labels 800/500/1300/'255'."
+   },
+   {
+    "type": "cabinet",
+    "label": "Black upper cabinets / open shelves above counter A (bottom ~1450-1560, top ~2150)",
+    "x_mm": 1400,
+    "y_mm": 165,
+    "w_mm": 2200,
+    "d_mm": 330,
+    "wall": "S",
+    "source": "photos #7 (Feb), #229 photo A, #133 CubXL photo",
+    "basis": "Heights estimated; #229 label '255' next to the counter-to-shelf gap is ambiguous (photo scale suggests ~575-650 mm clear)."
+   },
+   {
+    "type": "sink",
+    "label": "New lab casework with large sink + faucet-mounted eyewash, black top ~910 (installed Jul-Aug 2026)",
+    "x_mm": 8080,
+    "y_mm": 372,
+    "w_mm": 3041,
+    "d_mm": 745,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4354124451; https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5346737429; https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo C)",
+    "basis": "SE corner to the pilaster. Big sink + eyewash at the west end (~x 6700-7600), free top 1840 mm, a small sink at the east end. Surface-conduit outlets ~1.1 m. Dehumidifier condensate drains here."
+   },
+   {
+    "type": "cabinet",
+    "label": "Wood upper cabinet over sink (2-door, ~1450-2150 high)",
+    "x_mm": 7050,
+    "y_mm": 165,
+    "w_mm": 900,
+    "d_mm": 330,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5346737429",
+    "basis": "From the 2026-08-19 photo; width estimated."
+   },
+   {
+    "type": "bench",
+    "label": "Central island 'E' (mobile black-top lab benches on casters, ~910 high)",
+    "x_mm": 3050,
+    "y_mm": 3900,
+    "w_mm": 1500,
+    "d_mm": 1500,
+    "wall": "none",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo E); robot-arm/enclosure/render_figures.py on branch claude/issue-229-20260925-0253 (fc1bc5a)",
+    "basis": "Position from the #229 render (approximate) and Feb photos; +/-500. #7 lists 4 mobile chemical-top cabinets; free area 1360 x 1290."
+   },
+   {
+    "type": "bench",
+    "label": "Spot 'D': cart (1290 x 680) + second table against 158's east wall - chosen for the 6DOF arm",
+    "x_mm": 4981,
+    "y_mm": 6052,
+    "w_mm": 1360,
+    "d_mm": 1290,
+    "wall": "notch east face",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5825688393; render_figures.py (fc1bc5a)",
+    "basis": "Render: 1.29 m (N-S) x 1.36 m (E-W) placed south of door 154-1's swing; photo D confirms the cart sits by door 154-1. +/-200."
+   },
+   {
+    "type": "cabinet",
+    "label": "Tall gray 2-door steel storage cabinet",
+    "x_mm": 3850,
+    "y_mm": 5050,
+    "w_mm": 900,
+    "d_mm": 450,
+    "wall": "notch SE corner",
+    "source": "photos #7 (2026-02-04 wide shot, 2026-02-09), #229 photo D",
+    "basis": "Low confidence: appears just south/east of 158's SE corner near the entrance."
+   },
+   {
+    "type": "whiteboard",
+    "label": "Wall-mounted whiteboard (~900-2100 high)",
+    "x_mm": 3700,
+    "y_mm": 10,
+    "w_mm": 1600,
+    "d_mm": 20,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/133 (CubXL photo); https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo E)",
+    "basis": "Seen immediately east of the CubXL end of counter A; extent estimated."
+   },
+   {
+    "type": "equipment",
+    "label": "Hard-wall powder clean room / atomizer enclosure, 14 x 10 x 9 ft (galvanized steel panels + ceiling, 2 vinyl strip-curtain doorways)",
+    "x_mm": 8075,
+    "y_mm": 5740,
+    "w_mm": 3051,
+    "d_mm": 4267,
+    "wall": "NE corner (N and E walls are its back walls)",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4290374869; #issuecomment-4354124451; https://github.com/vertical-cloud-lab/byu-vcl/issues/124 (Jun-Aug photos); render_figures.py",
+    "basis": "x 6550-9601, y 3607-7874, h 2743. One doorway on the west face near its south end (Jun-18 photo), one on the south face (position uncertain). Contains 2 Square D fused emergency disconnects (40 A FRS-R fuses), outlets on surface conduit, chilled-water drops, compressed air (T off the south-wall line), argon, exhaust; floor-tape equipment outlines."
+   },
+   {
+    "type": "door",
+    "label": "Clean-room vinyl strip-curtain doorway B (west face, near south end; ~1.2 m x ~2.1 m)",
+    "x_mm": 6550,
+    "y_mm": 4350,
+    "w_mm": 100,
+    "d_mm": 1200,
+    "wall": "clean-room west face",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124 (2026-06-18 photo from the west; 2026-08-19 photo)",
+    "basis": "Seen at the south (right) end of the west face with a ~0.3 m steel pier at the corner and the pillar at far left. y +/-300."
+   },
+   {
+    "type": "door",
+    "label": "Clean-room vinyl strip-curtain doorway A (south face, west part; ~1.2 m x ~2.1 m)",
+    "x_mm": 7300,
+    "y_mm": 3607,
+    "w_mm": 1200,
+    "d_mm": 100,
+    "wall": "clean-room south face",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124 (2026-06-18 photo looking north into the enclosure)",
+    "basis": "Photo shows the CMU north/east walls inside with outside visible through the adjacent west doorway, so both openings are near the enclosure's SW corner. x +/-400. Work order: '2 vinyl slated doorways'."
+   },
+   {
+    "type": "equipment",
+    "label": "AMAZEMET rePowder ultrasonic atomizer (+ chiller/heat exchanger) - crated inside the clean room; install/commissioning Sep 28-30 2026",
+    "x_mm": 8700,
+    "y_mm": 6600,
+    "w_mm": null,
+    "d_mm": null,
+    "wall": "inside clean room",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5717430696; https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5346737429",
+    "basis": "Exact placement not documented (Bartosz places it on install day). Best guess against the north/east CMU walls where the drops are; anywhere within x 6700-9500, y 3750-7750."
+   },
+   {
+    "type": "equipment",
+    "label": "High-voltage transformer (floor-standing) - keep 7.5\" clear, nothing above",
+    "x_mm": 6000,
+    "y_mm": 7450,
+    "w_mm": 700,
+    "d_mm": 550,
+    "wall": "N (between north wall, pillar, clean room and door 154-1 swing)",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5827165807",
+    "basis": "Location from Josh's description; SIZE ASSUMED (typical dry-type unit), not documented."
+   },
+   {
+    "type": "equipment",
+    "label": "CubXL liquid-handling gantry (Genmitsu PROVerXL 4030 V2 + controller box; ~600 tall) on counter A, east end",
+    "x_mm": 2000,
+    "y_mm": 420,
+    "w_mm": 1070,
+    "d_mm": 620,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/133 (comment 5769300117, 2026-09-22); https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo A)",
+    "basis": "Moved from the SMASH lab 2026-09-22; controller box sits east of the gantry; open black shelves just above it. +/-300 in x."
+   },
+   {
+    "type": "equipment",
+    "label": "Opentrons OT-2 ('Gary the Gantry', ~630 W x 570 D x 660 H) on counter B, north end + stream-cam on clamp arm",
+    "x_mm": 330,
+    "y_mm": 2790,
+    "w_mm": 570,
+    "d_mm": 630,
+    "wall": "W",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/33 (comment 5625025097, 2026-09-10); photos #7 (Feb)",
+    "basis": "Between the roll-up window and the entrance door, left of the thermostat. OT-2 dims are nominal, not verified here. +/-200 in y."
+   },
+   {
+    "type": "equipment",
+    "label": "Desktop PC + monitor at spot 'B' (likely the cb154-01 CAEDM workstation)",
+    "x_mm": 400,
+    "y_mm": 1400,
+    "w_mm": 600,
+    "d_mm": 900,
+    "wall": "W",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo A/B)",
+    "basis": "In front of the roll-up window; identification as cb154-01 is an inference."
+   },
+   {
+    "type": "equipment",
+    "label": "6DOF arm (AgileX PiPER) + planned quarter-dome enclosure (PVC frame + drop cloth, ~0.93 x 0.93 x 1.10 m) on spot D",
+    "x_mm": 4981,
+    "y_mm": 6052,
+    "w_mm": 930,
+    "d_mm": 930,
+    "wall": "notch east face",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (body sketch + comment 5825688393)",
+    "basis": "Planned (Sep 25 2026); arm centred on the D tables per the render recommendation."
+   },
+   {
+    "type": "equipment",
+    "label": "Quest Dual 155 dehumidifier on a white table (mobile; current spot unknown)",
+    "x_mm": null,
+    "y_mm": null,
+    "w_mm": 1500,
+    "d_mm": 750,
+    "wall": "none",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/42; https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-5346737429",
+    "basis": "Aug 19 photo: on a ~1.5 x 0.75 m white table just north of the clean room's west doorway (about x 5000-6500, y 5000-5800), before spot D was set up. It is meant to feed dried air into the enclosure (hookup planned before Sep 28), so it may now sit on or at the enclosure. May 15: in the NE corner before the enclosure was built."
+   },
+   {
+    "type": "equipment",
+    "label": "Explosion-proof vacuum (Nilfisk 118 EXP, mobile)",
+    "x_mm": 4800,
+    "y_mm": 7250,
+    "w_mm": 600,
+    "d_mm": 600,
+    "wall": "N",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/229 (photo D)",
+    "basis": "Parked in front of door 154-1 on Sep 22; mobile."
+   },
+   {
+    "type": "equipment",
+    "label": "Emergency disconnect switches x2 (Square D heavy-duty fused, 40 A)",
+    "x_mm": null,
+    "y_mm": null,
+    "w_mm": null,
+    "d_mm": null,
+    "wall": "clean-room steel wall",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/124#issuecomment-4906903051 (video)",
+    "basis": "Atomizer and chiller ship with 32 A plugs; exact mounting spot not recoverable from the video."
+   },
+   {
+    "type": "equipment",
+    "label": "Glovebox (future) - power + argon hookups planned 'along the East wall, in the back of the plenum'",
+    "x_mm": null,
+    "y_mm": null,
+    "w_mm": null,
+    "d_mm": null,
+    "wall": "E (inside clean room)",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/30#issuecomment-5007273265; https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-4354124451",
+    "basis": "Not purchased yet as of Sep 2026."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 1 (Feb-2026 map) - now inside clean room",
+    "x_mm": 9601,
+    "y_mm": 7087,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "E",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 2 (Feb-2026 map) - now inside clean room",
+    "x_mm": 9601,
+    "y_mm": 4851,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "E",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 3 (Feb-2026 map)",
+    "x_mm": 9601,
+    "y_mm": 2692,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "E",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 4 (Feb-2026 map) - now inside clean room",
+    "x_mm": 7086,
+    "y_mm": 7874,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "N",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 5 (Feb-2026 map) - under counter A",
+    "x_mm": 2911,
+    "y_mm": 0,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 6 (Feb-2026 map) - under counter A",
+    "x_mm": 1245,
+    "y_mm": 0,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "S",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "outlet",
+    "label": "Duplex outlet 7 (Feb-2026 map) - under counter B",
+    "x_mm": 0,
+    "y_mm": 2101,
+    "w_mm": 100,
+    "d_mm": 100,
+    "wall": "W",
+    "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/31#issuecomment-3970009050",
+    "basis": "Star positions on Gage's map, +/-300. '14 total plug in spots + 12 on the black work table'; more added on conduit in the clean room and at the sink (2026)."
+   },
+   {
+    "type": "switch",
+    "label": "Light switch (~1240 high)",
+    "x_mm": 0,
+    "y_mm": 3300,
+    "w_mm": 40,
+    "d_mm": 80,
+    "wall": "W",
+    "source": "photo #7 2026-02-04",
+    "basis": "Just south of the entrance-door frame."
+   },
+   {
+    "type": "thermostat",
+    "label": "Room sensor / thermostat (~1520 high)",
+    "x_mm": 0,
+    "y_mm": 3150,
+    "w_mm": 40,
+    "d_mm": 90,
+    "wall": "W",
+    "source": "photo #7 2026-02-04",
+    "basis": "Above the switch, right of the OT-2."
+   },
+   {
+    "type": "fire_alarm",
+    "label": "Fire-alarm horn/strobe (~2200 high)",
+    "x_mm": 0,
+    "y_mm": 2900,
+    "w_mm": 40,
+    "d_mm": 120,
+    "wall": "W",
+    "source": "photo #7 2026-02-04",
+    "basis": "Between window and entrance door."
+   },
+   {
+    "type": "fire_extinguisher",
+    "label": "Fire extinguisher",
+    "x_mm": 4950,
+    "y_mm": 150,
+    "w_mm": 200,
+    "d_mm": 200,
+    "wall": "S",
+    "source": "photo #7 2026-02-04; #124 2026-08-19",
+    "basis": "West of the 154A door in Feb; one also stood at the sink's west end in Aug."
+   }
+  ],
+  "origin_convention": "Origin (0,0,0) = inside SW corner of room 154 at floor level: intersection of the inner face of the SOUTH wall (shared with 154A/148) and the inner face of the WEST wall (corridor-101 wall with the main entrance), ignoring the corner column. +x = east along the long north/south walls (0 -> 9601), +y = north along the east/west walls (0 -> 7874), +z = up from the bare concrete floor. Compass follows the plan's north arrow, which points to PAGE-LEFT on cb154.pdf (page-top = east). Gage's hand sketch in #7 is the plan rotated 180 degrees. Feature x_mm/y_mm = footprint centre; w_mm = extent along x (E-W), d_mm = extent along y (N-S). Doors/windows are centred on the wall mid-thickness (x<0 is inside the west wall, y<0 inside the south wall, etc.) with the wall thickness as the across-wall extent. Room 158 occupies x 0-4090, y 5274-7874 and is not part of 154. Imperial values converted at 25.4 mm/in."
+ }
+}

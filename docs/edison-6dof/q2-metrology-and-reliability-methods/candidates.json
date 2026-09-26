@@ -1,0 +1,3797 @@
+{
+  "toolu_01Sy6PCCaNpdgdXDA9s7FTVK": [],
+  "toolu_01J4mKQpcxcoU9LhpXSPurAf": [],
+  "toolu_014nHEdX3a18UECcdqZcu2Vb": [
+    {
+      "embedding": null,
+      "docname": "danole2026designcontroland",
+      "dockey": "230e5f8ad33572a2",
+      "citation": "SHRUTIKA DANOLE, Dr.MANVIJAY SINGH, Dr.MOHINI DWIVEDI, and Dr. O.P GUPTA. Design, control, and performance evaluation of a low-cost industrial robotic arm for sme automation. JANOLI International Journal of Applied Engineering and Management, 3(3):8-14, Aug 2026. URL: https://doi.org/10.64758/zbpd4h91, doi:10.64758/zbpd4h91.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "danole2026designcontroland",
+      "bibtex": "@article{danole2026designcontroland,\n    author = \"DANOLE, SHRUTIKA and SINGH, Dr.MANVIJAY and DWIVEDI, Dr.MOHINI and GUPTA, Dr. O.P\",\n    title = \"DESIGN, CONTROL, AND PERFORMANCE EVALUATION OF A LOW-COST INDUSTRIAL ROBOTIC ARM FOR SME AUTOMATION\",\n    volume = \"3\",\n    issn = \"3048-6939\",\n    url = \"https://doi.org/10.64758/zbpd4h91\",\n    doi = \"10.64758/zbpd4h91\",\n    number = \"3\",\n    journal = \"JANOLI International Journal of Applied Engineering and Management\",\n    publisher = \"Shanti Education Research Foundation\",\n    year = \"2026\",\n    month = \"Aug\",\n    pages = \"8-14\",\n    issue = \"3\"\n}\n",
+      "authors": [
+        "SHRUTIKA DANOLE",
+        "Dr.MANVIJAY SINGH",
+        "Dr.MOHINI DWIVEDI",
+        "Dr. O.P GUPTA"
+      ],
+      "publication_date": "2026-08-18T00:00:00Z",
+      "year": 2026,
+      "volume": "3",
+      "issue": "3",
+      "issn": "3048-6939",
+      "pages": "8-14",
+      "journal": "JANOLI International Journal of Applied Engineering and Management",
+      "publisher": "Shanti Education Research Foundation",
+      "url": "https://doi.org/10.64758/zbpd4h91",
+      "title": "DESIGN, CONTROL, AND PERFORMANCE EVALUATION OF A LOW-COST INDUSTRIAL ROBOTIC ARM FOR SME AUTOMATION",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.64758/zbpd4h91",
+      "doi_url": "https://doi.org/10.64758/zbpd4h91",
+      "doc_id": "230e5f8ad33572a2",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "SHRUTIKA DANOLE, Dr.MANVIJAY SINGH, Dr.MOHINI DWIVEDI, and Dr. O.P GUPTA. Design, control, and performance evaluation of a low-cost industrial robotic arm for sme automation. JANOLI International Journal of Applied Engineering and Management, 3(3):8-14, Aug 2026. URL: https://doi.org/10.64758/zbpd4h91, doi:10.64758/zbpd4h91. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "ugwugabriel2026autonomousaquaculturenet",
+      "dockey": "6bb8f1529d61f76c",
+      "citation": "Godsfavour Ugwu-Gabriel, Salvador L\u00f3pez Barajajas, Alejandro Sol\u00eds, Ra\u00fal Mar\u00edn, and Pedro J Sanz. Autonomous aquaculture net inspection and patching on a low-cost rov. Sep 2026. URL: https://doi.org/10.17979/ja-cea.2026.47.13753, doi:10.17979/ja-cea.2026.47.13753.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "ugwugabriel2026autonomousaquaculturenet",
+      "bibtex": "@misc{ugwugabriel2026autonomousaquaculturenet,\n    author = \"Ugwu-Gabriel, Godsfavour and Barajajas, Salvador L\u00f3pez and Sol\u00eds, Alejandro and Mar\u00edn, Ra\u00fal and Sanz, Pedro J\",\n    title = \"Autonomous Aquaculture Net Inspection and Patching on a Low-Cost ROV\",\n    year = \"2026\",\n    journal = \"Jornadas de Autom\u00e1tica\",\n    month = \"Sep\",\n    doi = \"10.17979/ja-cea.2026.47.13753\",\n    url = \"https://doi.org/10.17979/ja-cea.2026.47.13753\",\n    publisher = \"Universidade da Coruna\",\n    issue = \"47\",\n    issn = \"3045-4093\"\n}\n",
+      "authors": [
+        "Godsfavour Ugwu-Gabriel",
+        "Salvador L\u00f3pez Barajajas",
+        "Alejandro Sol\u00eds",
+        "Ra\u00fal Mar\u00edn",
+        "Pedro J Sanz"
+      ],
+      "publication_date": "2026-09-01T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": "47",
+      "issn": "3045-4093",
+      "pages": null,
+      "journal": "Jornadas de Autom\u00e1tica",
+      "publisher": "Universidade da Coruna",
+      "url": "https://doi.org/10.17979/ja-cea.2026.47.13753",
+      "title": "Autonomous Aquaculture Net Inspection and Patching on a Low-Cost ROV",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.17979/ja-cea.2026.47.13753",
+      "doi_url": "https://doi.org/10.17979/ja-cea.2026.47.13753",
+      "doc_id": "6bb8f1529d61f76c",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://revistas.udc.gal/index.php/JA_CEA/article/download/13753/9789",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Godsfavour Ugwu-Gabriel, Salvador L\u00f3pez Barajajas, Alejandro Sol\u00eds, Ra\u00fal Mar\u00edn, and Pedro J Sanz. Autonomous aquaculture net inspection and patching on a low-cost rov. Sep 2026. URL: https://doi.org/10.17979/ja-cea.2026.47.13753, doi:10.17979/ja-cea.2026.47.13753. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "pour2026acomparativestudy",
+      "dockey": "41cf6e731f7251db",
+      "citation": "A comparative study on the accuracy\\&repeatability of mobile robotic platforms for the delivery of precision NDE measurement",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "pour2026acomparativestudy",
+      "bibtex": "@inproceedings{pour2026acomparativestudy,\n    author = \"Pour, SeyedMohammadAmin Nabi and Pierce, S. Gareth and Vithanage, Randika and Mohseni, Ehsan and Carswell, David and Shields, Matthew\",\n    title = \"A comparative study on the accuracy\\&repeatability of mobile robotic platforms for the delivery of precision NDE measurement\",\n    year = \"2026\",\n    journal = \"ArXiv\",\n    month = \"Sep\",\n    doi = \"10.48550/arxiv.2609.03794\",\n    url = \"https://doi.org/10.48550/arxiv.2609.03794\"\n}\n",
+      "authors": [
+        "SeyedMohammadAmin Nabi Pour",
+        "S. Gareth Pierce",
+        "Randika Vithanage",
+        "Ehsan Mohseni",
+        "David Carswell",
+        "Matthew Shields"
+      ],
+      "publication_date": "2026-09-03T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "A comparative study on the accuracy&repeatability of mobile robotic platforms for the delivery of precision NDE measurement",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2609.03794",
+      "doi_url": "https://doi.org/10.48550/arxiv.2609.03794",
+      "doc_id": "41cf6e731f7251db",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "A comparative study on the accuracy\\&repeatability of mobile robotic platforms for the delivery of precision NDE measurement This article has 0 citations."
+    }
+  ],
+  "toolu_011FoKVUDnCXAteeoNy97TyZ": [
+    {
+      "embedding": null,
+      "docname": "zou2026lightweightmultitasknetwork",
+      "dockey": "abaa08ed474bdc94",
+      "citation": "Mao-Ning Zou. Lightweight multi-task network for synchronous fatigue detection and ankle instability gait analysis in football training with edge deployment. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-65579-1, doi:10.1038/s41598-026-65579-1.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "zou2026lightweightmultitasknetwork",
+      "bibtex": "@article{zou2026lightweightmultitasknetwork,\n    author = \"Zou, Mao-Ning\",\n    title = \"Lightweight multi-task network for synchronous fatigue detection and ankle instability gait analysis in football training with edge deployment\",\n    issn = \"2045-2322\",\n    url = \"https://doi.org/10.1038/s41598-026-65579-1\",\n    doi = \"10.1038/s41598-026-65579-1\",\n    journal = \"Scientific Reports\",\n    publisher = \"Springer Science and Business Media LLC\",\n    year = \"2026\",\n    month = \"Aug\"\n}\n",
+      "authors": [
+        "Mao-Ning Zou"
+      ],
+      "publication_date": "2026-08-06T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": "2045-2322",
+      "pages": null,
+      "journal": "Scientific Reports",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s41598-026-65579-1",
+      "title": "Lightweight multi-task network for synchronous fatigue detection and ankle instability gait analysis in football training with edge deployment",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1038/s41598-026-65579-1",
+      "doi_url": "https://doi.org/10.1038/s41598-026-65579-1",
+      "doc_id": "abaa08ed474bdc94",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s41598-026-65579-1_reference.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Mao-Ning Zou. Lightweight multi-task network for synchronous fatigue detection and ankle instability gait analysis in football training with edge deployment. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-65579-1, doi:10.1038/s41598-026-65579-1. This article has 0 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "beladjine2026designandexperimental",
+      "dockey": "7c1d6dc84fa9ef56",
+      "citation": "Djamel Eddine Beladjine, Djamel Boudana, Abdelhafidh Moualdia, Ahmed Hasan Mujammal Mujammal, Muneera Altayeb, and Mykhailo Panchyk. Design and experimental validation of a deterministic wireless field-oriented control system for induction motors using low-cost 2.4 ghz transceivers. Jul 2026. URL: https://doi.org/10.1038/s41598-026-62253-4, doi:10.1038/s41598-026-62253-4.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "beladjine2026designandexperimental",
+      "bibtex": "@misc{beladjine2026designandexperimental,\n    author = \"Beladjine, Djamel Eddine and Boudana, Djamel and Moualdia, Abdelhafidh and Mujammal, Ahmed Hasan Mujammal and Altayeb, Muneera and Panchyk, Mykhailo\",\n    title = \"Design and experimental validation of a deterministic wireless field-oriented control system for induction motors using low-cost 2.4 GHz transceivers\",\n    year = \"2026\",\n    journal = \"Scientific Reports\",\n    month = \"Jul\",\n    doi = \"10.1038/s41598-026-62253-4\",\n    url = \"https://doi.org/10.1038/s41598-026-62253-4\",\n    publisher = \"Springer Science and Business Media LLC\",\n    issn = \"2045-2322\"\n}\n",
+      "authors": [
+        "Djamel Eddine Beladjine",
+        "Djamel Boudana",
+        "Abdelhafidh Moualdia",
+        "Ahmed Hasan Mujammal Mujammal",
+        "Muneera Altayeb",
+        "Mykhailo Panchyk"
+      ],
+      "publication_date": "2026-07-31T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": "2045-2322",
+      "pages": null,
+      "journal": "Scientific Reports",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s41598-026-62253-4",
+      "title": "Design and experimental validation of a deterministic wireless field-oriented control system for induction motors using low-cost 2.4 GHz transceivers",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1038/s41598-026-62253-4",
+      "doi_url": "https://doi.org/10.1038/s41598-026-62253-4",
+      "doc_id": "7c1d6dc84fa9ef56",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s41598-026-62253-4_reference.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Djamel Eddine Beladjine, Djamel Boudana, Abdelhafidh Moualdia, Ahmed Hasan Mujammal Mujammal, Muneera Altayeb, and Mykhailo Panchyk. Design and experimental validation of a deterministic wireless field-oriented control system for induction motors using low-cost 2.4 ghz transceivers. Jul 2026. URL: https://doi.org/10.1038/s41598-026-62253-4, doi:10.1038/s41598-026-62253-4. This article has 0 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "poonyapak2010predictivemodelfor",
+      "dockey": "732668d897aee02d",
+      "citation": "Pranchalee Poonyapak. Predictive model for temperature-induced deformation of robot mechanical systems. ArXiv, 2010. URL: https://doi.org/10.22215/etd/2010-09686, doi:10.22215/etd/2010-09686.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "poonyapak2010predictivemodelfor",
+      "bibtex": "@article{poonyapak2010predictivemodelfor,\n    author = \"Poonyapak, Pranchalee\",\n    title = \"Predictive Model for Temperature-Induced Deformation of Robot Mechanical Systems\",\n    year = \"2010\",\n    journal = \"ArXiv\",\n    doi = \"10.22215/etd/2010-09686\",\n    url = \"https://doi.org/10.22215/etd/2010-09686\",\n    publisher = \"Carleton University\"\n}\n",
+      "authors": [
+        "Pranchalee Poonyapak"
+      ],
+      "publication_date": null,
+      "year": 2010,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": "Carleton University",
+      "url": "https://doi.org/10.22215/etd/2010-09686",
+      "title": "Predictive Model for Temperature-Induced Deformation of Robot Mechanical Systems",
+      "citation_count": 1,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.22215/etd/2010-09686",
+      "doi_url": "https://doi.org/10.22215/etd/2010-09686",
+      "doc_id": "732668d897aee02d",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://carleton.scholaris.ca/bitstreams/511bc095-f91a-42b5-a540-2b354f9a6511/download",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Pranchalee Poonyapak. Predictive model for temperature-induced deformation of robot mechanical systems. ArXiv, 2010. URL: https://doi.org/10.22215/etd/2010-09686, doi:10.22215/etd/2010-09686. This article has 1 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "treu2026immersivedatavisualization",
+      "dockey": "c39494ec29a35367",
+      "citation": "MM Treu. Immersive data visualization and llm-supported decision-making in digital twins for predictive maintenance of industrial robots. Unknown journal, 2026.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "treu2026immersivedatavisualization",
+      "bibtex": "@article{treu2026immersivedatavisualization,\n    author = \"Treu, MM\",\n    title = \"Immersive data visualization and LLM-supported decision-making in digital twins for predictive maintenance of industrial robots\",\n    year = \"2026\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "MM Treu"
+      ],
+      "publication_date": null,
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://reposit.haw-hamburg.de/bitstream/20.500.12738/19947/1/MA_Immersive_data_visualization.pdf",
+      "title": "Immersive data visualization and LLM-supported decision-making in digital twins for predictive maintenance of industrial robots",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "c39494ec29a35367",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://reposit.haw-hamburg.de/bitstream/20.500.12738/19947/1/MA_Immersive_data_visualization.pdf",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "MM Treu. Immersive data visualization and llm-supported decision-making in digital twins for predictive maintenance of industrial robots. Unknown journal, 2026."
+    },
+    {
+      "embedding": null,
+      "docname": "giannelli2012designofa",
+      "dockey": "923167de4e6e837d",
+      "citation": "Pietro Giannelli. Design of a signal conditioner for the fermilab magnet test facility. ArXiv, Jan 2012. URL: https://doi.org/10.2172/1433881, doi:10.2172/1433881.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "giannelli2012designofa",
+      "bibtex": "@article{giannelli2012designofa,\n    author = \"Giannelli, Pietro\",\n    title = \"Design of a signal conditioner for the Fermilab Magnet Test Facility\",\n    year = \"2012\",\n    journal = \"ArXiv\",\n    doi = \"10.2172/1433881\",\n    url = \"https://doi.org/10.2172/1433881\",\n    month = \"Jan\",\n    publisher = \"Office of Scientific and Technical Information (OSTI)\"\n}\n",
+      "authors": [
+        "Pietro Giannelli"
+      ],
+      "publication_date": "2012-01-01T00:00:00Z",
+      "year": 2012,
+      "volume": "",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": "Office of Scientific and Technical Information (OSTI)",
+      "url": "https://doi.org/10.2172/1433881",
+      "title": "Design of a signal conditioner for the Fermilab Magnet Test Facility",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.2172/1433881",
+      "doi_url": "https://doi.org/10.2172/1433881",
+      "doc_id": "923167de4e6e837d",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://s3.cern.ch/inspire-prod-files-f/fc540640384da45a3a4eefeb7422e650",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Pietro Giannelli. Design of a signal conditioner for the fermilab magnet test facility. ArXiv, Jan 2012. URL: https://doi.org/10.2172/1433881, doi:10.2172/1433881. This article has 0 citations."
+    }
+  ],
+  "toolu_01NGBLKdSqc5BmqePGLCtJd9": [
+    {
+      "embedding": null,
+      "docname": "maffettone2023selfdrivingmultimodalstudies",
+      "dockey": "10d85f36a3c1c796",
+      "citation": "Phillip M. Maffettone, Daniel B. Allan, Stuart I. Campbell, Matthew R. Carbone, Thomas A. Caswell, Brian L. DeCost, Dmitri Gavrilov, Marcus D. Hanwell, Howie Joress, Joshua Lynch, Bruce Ravel, Stuart B. Wilkins, Jakub Wlodek, and Daniel Olds. Self-driving multimodal studies at user facilities. ArXiv, Jan 2023. URL: https://doi.org/10.48550/arxiv.2301.09177, doi:10.48550/arxiv.2301.09177.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "maffettone2023selfdrivingmultimodalstudies",
+      "bibtex": "@article{maffettone2023selfdrivingmultimodalstudies,\n    author = \"Maffettone, Phillip M. and Allan, Daniel B. and Campbell, Stuart I. and Carbone, Matthew R. and Caswell, Thomas A. and DeCost, Brian L. and Gavrilov, Dmitri and Hanwell, Marcus D. and Joress, Howie and Lynch, Joshua and Ravel, Bruce and Wilkins, Stuart B. and Wlodek, Jakub and Olds, Daniel\",\n    title = \"Self-driving Multimodal Studies at User Facilities\",\n    year = \"2023\",\n    journal = \"ArXiv\",\n    volume = \"abs/2301.09177\",\n    month = \"Jan\",\n    doi = \"10.48550/arxiv.2301.09177\",\n    url = \"https://doi.org/10.48550/arxiv.2301.09177\",\n    publisher = \"arXiv\"\n}\n",
+      "authors": [
+        "Phillip M. Maffettone",
+        "Daniel B. Allan",
+        "Stuart I. Campbell",
+        "Matthew R. Carbone",
+        "Thomas A. Caswell",
+        "Brian L. DeCost",
+        "Dmitri Gavrilov",
+        "Marcus D. Hanwell",
+        "Howie Joress",
+        "Joshua Lynch",
+        "Bruce Ravel",
+        "Stuart B. Wilkins",
+        "Jakub Wlodek",
+        "Daniel Olds"
+      ],
+      "publication_date": "2023-01-22T00:00:00Z",
+      "year": 2023,
+      "volume": "abs/2301.09177",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": "arXiv",
+      "url": "https://arxiv.org/abs/2301.09177",
+      "title": "Self-driving Multimodal Studies at User Facilities",
+      "citation_count": 13,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2301.09177",
+      "doi_url": "https://doi.org/10.48550/arxiv.2301.09177",
+      "doc_id": "10d85f36a3c1c796",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://arxiv.org/pdf/2301.09177",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "datacite",
+          "semantic_scholar",
+          "datacite",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Phillip M. Maffettone, Daniel B. Allan, Stuart I. Campbell, Matthew R. Carbone, Thomas A. Caswell, Brian L. DeCost, Dmitri Gavrilov, Marcus D. Hanwell, Howie Joress, Joshua Lynch, Bruce Ravel, Stuart B. Wilkins, Jakub Wlodek, and Daniel Olds. Self-driving multimodal studies at user facilities. ArXiv, Jan 2023. URL: https://doi.org/10.48550/arxiv.2301.09177, doi:10.48550/arxiv.2301.09177. This article has 13 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "seifrid2022autonomouschemicalexperiments",
+      "dockey": "3c17cf3cbf4121c0",
+      "citation": "Martin Seifrid, Robert Pollice, Andr\u00e9s Aguilar-Granda, Zamyla Morgan Chan, Kazuhiro Hotta, Cher Tian Ser, Jenya Vestfrid, Tony C. Wu, and Al\u00e1n Aspuru-Guzik. Autonomous chemical experiments: challenges and perspectives on establishing a self-driving lab. Accounts of Chemical Research, 55:2454-2466, Aug 2022. URL: https://doi.org/10.1021/acs.accounts.2c00220, doi:10.1021/acs.accounts.2c00220.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "seifrid2022autonomouschemicalexperiments",
+      "bibtex": "@article{seifrid2022autonomouschemicalexperiments,\n    author = \"Seifrid, Martin and Pollice, Robert and Aguilar-Granda, Andr\u00e9s and Chan, Zamyla Morgan and Hotta, Kazuhiro and Ser, Cher Tian and Vestfrid, Jenya and Wu, Tony C. and Aspuru-Guzik, Al\u00e1n\",\n    title = \"Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab\",\n    year = \"2022\",\n    journal = \"Accounts of Chemical Research\",\n    volume = \"55\",\n    pages = \"2454-2466\",\n    month = \"Aug\",\n    doi = \"10.1021/acs.accounts.2c00220\",\n    url = \"https://doi.org/10.1021/acs.accounts.2c00220\",\n    publisher = \"American Chemical Society (ACS)\",\n    issue = \"17\",\n    issn = \"0001-4842\"\n}\n",
+      "authors": [
+        "Martin Seifrid",
+        "Robert Pollice",
+        "Andr\u00e9s Aguilar-Granda",
+        "Zamyla Morgan Chan",
+        "Kazuhiro Hotta",
+        "Cher Tian Ser",
+        "Jenya Vestfrid",
+        "Tony C. Wu",
+        "Al\u00e1n Aspuru-Guzik"
+      ],
+      "publication_date": "2022-08-10T00:00:00Z",
+      "year": 2022,
+      "volume": "55",
+      "issue": "17",
+      "issn": "0001-4842",
+      "pages": "2454-2466",
+      "journal": "Accounts of Chemical Research",
+      "publisher": "American Chemical Society (ACS)",
+      "url": "https://doi.org/10.1021/acs.accounts.2c00220",
+      "title": "Autonomous Chemical Experiments: Challenges and Perspectives on Establishing a Self-Driving Lab",
+      "citation_count": 379,
+      "bibtex_type": "article",
+      "source_quality": 2,
+      "is_retracted": null,
+      "doi": "10.1021/acs.accounts.2c00220",
+      "doi_url": "https://doi.org/10.1021/acs.accounts.2c00220",
+      "doc_id": "3c17cf3cbf4121c0",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://pubs.acs.org/achre4/article-pdf/55/17/2454/17802147/ar2c00220.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Martin Seifrid, Robert Pollice, Andr\u00e9s Aguilar-Granda, Zamyla Morgan Chan, Kazuhiro Hotta, Cher Tian Ser, Jenya Vestfrid, Tony C. Wu, and Al\u00e1n Aspuru-Guzik. Autonomous chemical experiments: challenges and perspectives on establishing a self-driving lab. Accounts of Chemical Research, 55:2454-2466, Aug 2022. URL: https://doi.org/10.1021/acs.accounts.2c00220, doi:10.1021/acs.accounts.2c00220. This article has 379 citations and is from a domain leading peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "lo2023reviewoflowcost",
+      "dockey": "7d166df059e83663",
+      "citation": "Stanley Lo, Sterling Baird, Joshua Schrier, Ben Blaiszik, Sergei Kalinin, Helen Tran, Taylor Sparks, and Al\u00e1n Aspuru-Guzik. Review of low-cost self-driving laboratories: the \"frugal twin\" concept. Sep 2023. URL: https://doi.org/10.26434/chemrxiv-2023-6z9mq, doi:10.26434/chemrxiv-2023-6z9mq.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "lo2023reviewoflowcost",
+      "bibtex": "@misc{lo2023reviewoflowcost,\n    author = \"Lo, Stanley and Baird, Sterling and Schrier, Joshua and Blaiszik, Ben and Kalinin, Sergei and Tran, Helen and Sparks, Taylor and Aspuru-Guzik, Al\u00e1n\",\n    title = {Review of Low-cost Self-driving Laboratories: The \"Frugal Twin\" Concept},\n    year = \"2023\",\n    journal = \"ChemRxiv\",\n    month = \"Sep\",\n    doi = \"10.26434/chemrxiv-2023-6z9mq\",\n    url = \"https://doi.org/10.26434/chemrxiv-2023-6z9mq\",\n    publisher = \"American Chemical Society (ACS)\"\n}\n",
+      "authors": [
+        "Stanley Lo",
+        "Sterling Baird",
+        "Joshua Schrier",
+        "Ben Blaiszik",
+        "Sergei Kalinin",
+        "Helen Tran",
+        "Taylor Sparks",
+        "Al\u00e1n Aspuru-Guzik"
+      ],
+      "publication_date": "2023-09-08T00:00:00Z",
+      "year": 2023,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ChemRxiv",
+      "publisher": "American Chemical Society (ACS)",
+      "url": "https://doi.org/10.26434/chemrxiv-2023-6z9mq",
+      "title": "Review of Low-cost Self-driving Laboratories: The \"Frugal Twin\" Concept",
+      "citation_count": 4,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.26434/chemrxiv-2023-6z9mq",
+      "doi_url": "https://doi.org/10.26434/chemrxiv-2023-6z9mq",
+      "doc_id": "7d166df059e83663",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://chemrxiv.org/doi/pdf/10.26434/chemrxiv-2023-6z9mq",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Stanley Lo, Sterling Baird, Joshua Schrier, Ben Blaiszik, Sergei Kalinin, Helen Tran, Taylor Sparks, and Al\u00e1n Aspuru-Guzik. Review of low-cost self-driving laboratories: the \"frugal twin\" concept. Sep 2023. URL: https://doi.org/10.26434/chemrxiv-2023-6z9mq, doi:10.26434/chemrxiv-2023-6z9mq. This article has 4 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "doloi2025democratizingselfdrivinglabs",
+      "dockey": "168947edd4caaee8",
+      "citation": "Sayan Doloi, Maloy Das, Yujia Li, Zen Han Cho, Xingchi Xiao, John V. Hanna, Matthew Osvaldo, and Leonard Ng Wei Tat. Democratizing self-driving labs: advances in low-cost 3d printing for laboratory automation. Digital Discovery, 4:1685-1721, Jan 2025. URL: https://doi.org/10.1039/d4dd00411f, doi:10.1039/d4dd00411f.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "doloi2025democratizingselfdrivinglabs",
+      "bibtex": "@article{doloi2025democratizingselfdrivinglabs,\n    author = \"Doloi, Sayan and Das, Maloy and Li, Yujia and Cho, Zen Han and Xiao, Xingchi and Hanna, John V. and Osvaldo, Matthew and Tat, Leonard Ng Wei\",\n    title = \"Democratizing Self-Driving Labs: Advances in Low-Cost 3D Printing for Laboratory Automation\",\n    year = \"2025\",\n    journal = \"Digital Discovery\",\n    doi = \"10.1039/d4dd00411f\",\n    url = \"https://doi.org/10.1039/d4dd00411f\",\n    volume = \"4\",\n    pages = \"1685-1721\",\n    month = \"Jan\",\n    publisher = \"Royal Society of Chemistry (RSC)\",\n    issue = \"7\",\n    issn = \"2635-098X\"\n}\n",
+      "authors": [
+        "Sayan Doloi",
+        "Maloy Das",
+        "Yujia Li",
+        "Zen Han Cho",
+        "Xingchi Xiao",
+        "John V. Hanna",
+        "Matthew Osvaldo",
+        "Leonard Ng Wei Tat"
+      ],
+      "publication_date": "2025-01-01T00:00:00Z",
+      "year": 2025,
+      "volume": "4",
+      "issue": "7",
+      "issn": "2635-098X",
+      "pages": "1685-1721",
+      "journal": "Digital Discovery",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "url": "https://doi.org/10.1039/d4dd00411f",
+      "title": "Democratizing Self-Driving Labs: Advances in Low-Cost 3D Printing for Laboratory Automation",
+      "citation_count": 43,
+      "bibtex_type": "article",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1039/d4dd00411f",
+      "doi_url": "https://doi.org/10.1039/d4dd00411f",
+      "doc_id": "168947edd4caaee8",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://pubs.rsc.org/dd/article-pdf/4/7/1685/9681432/d4dd00411f.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Sayan Doloi, Maloy Das, Yujia Li, Zen Han Cho, Xingchi Xiao, John V. Hanna, Matthew Osvaldo, and Leonard Ng Wei Tat. Democratizing self-driving labs: advances in low-cost 3d printing for laboratory automation. Digital Discovery, 4:1685-1721, Jan 2025. URL: https://doi.org/10.1039/d4dd00411f, doi:10.1039/d4dd00411f. This article has 43 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "giaimo2017designcriteriato",
+      "dockey": "131a97cc161c5978",
+      "citation": "Federico Giaimo and Christian Berger. Design criteria to architect continuous experimentation for self-driving vehicles. 2017 IEEE International Conference on Software Architecture (ICSA), pages 203-210, Apr 2017. URL: https://doi.org/10.48550/arxiv.1705.05170, doi:10.48550/arxiv.1705.05170.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "giaimo2017designcriteriato",
+      "bibtex": "@article{giaimo2017designcriteriato,\n    author = \"Giaimo, Federico and Berger, Christian\",\n    title = \"Design Criteria to Architect Continuous Experimentation for Self-Driving Vehicles\",\n    year = \"2017\",\n    journal = \"2017 IEEE International Conference on Software Architecture (ICSA)\",\n    pages = \"203-210\",\n    month = \"Apr\",\n    doi = \"10.48550/arxiv.1705.05170\",\n    url = \"https://doi.org/10.48550/arxiv.1705.05170\",\n    publisher = \"IEEE\"\n}\n",
+      "authors": [
+        "Federico Giaimo",
+        "Christian Berger"
+      ],
+      "publication_date": "2017-04-03T00:00:00Z",
+      "year": 2017,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": "203-210",
+      "journal": "2017 IEEE International Conference on Software Architecture (ICSA)",
+      "publisher": "IEEE",
+      "url": "http://arxiv.org/pdf/1705.05170",
+      "title": "Design Criteria to Architect Continuous Experimentation for Self-Driving Vehicles",
+      "citation_count": 36,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.1705.05170",
+      "doi_url": "https://doi.org/10.48550/arxiv.1705.05170",
+      "doc_id": "131a97cc161c5978",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://arxiv.org/pdf/1705.05170",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Federico Giaimo and Christian Berger. Design criteria to architect continuous experimentation for self-driving vehicles. 2017 IEEE International Conference on Software Architecture (ICSA), pages 203-210, Apr 2017. URL: https://doi.org/10.48550/arxiv.1705.05170, doi:10.48550/arxiv.1705.05170. This article has 36 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "tiedemann2022miniatureautonomyas",
+      "dockey": "3ff805cd6e0106b9",
+      "citation": "Tim Tiedemann, Luk Schwalb, Markus Kasten, Robin Grotkasten, and Stephan Pareigis. Miniature autonomy as means to find new approaches in reliable autonomous driving ai method design. Frontiers in Neurorobotics, Jul 2022. URL: https://doi.org/10.3389/fnbot.2022.846355, doi:10.3389/fnbot.2022.846355.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "tiedemann2022miniatureautonomyas",
+      "bibtex": "@article{tiedemann2022miniatureautonomyas,\n    author = \"Tiedemann, Tim and Schwalb, Luk and Kasten, Markus and Grotkasten, Robin and Pareigis, Stephan\",\n    title = \"Miniature Autonomy as Means to Find New Approaches in Reliable Autonomous Driving AI Method Design\",\n    year = \"2022\",\n    journal = \"Frontiers in Neurorobotics\",\n    volume = \"16\",\n    month = \"Jul\",\n    doi = \"10.3389/fnbot.2022.846355\",\n    url = \"https://doi.org/10.3389/fnbot.2022.846355\",\n    publisher = \"Frontiers Media SA\",\n    issn = \"1662-5218\"\n}\n",
+      "authors": [
+        "Tim Tiedemann",
+        "Luk Schwalb",
+        "Markus Kasten",
+        "Robin Grotkasten",
+        "Stephan Pareigis"
+      ],
+      "publication_date": "2022-07-01T00:00:00Z",
+      "year": 2022,
+      "volume": "16",
+      "issue": null,
+      "issn": "1662-5218",
+      "pages": null,
+      "journal": "Frontiers in Neurorobotics",
+      "publisher": "Frontiers Media SA",
+      "url": "https://doi.org/10.3389/fnbot.2022.846355",
+      "title": "Miniature Autonomy as Means to Find New Approaches in Reliable Autonomous Driving AI Method Design",
+      "citation_count": 13,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.3389/fnbot.2022.846355",
+      "doi_url": "https://doi.org/10.3389/fnbot.2022.846355",
+      "doc_id": "3ff805cd6e0106b9",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2022.846355/pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Tim Tiedemann, Luk Schwalb, Markus Kasten, Robin Grotkasten, and Stephan Pareigis. Miniature autonomy as means to find new approaches in reliable autonomous driving ai method design. Frontiers in Neurorobotics, Jul 2022. URL: https://doi.org/10.3389/fnbot.2022.846355, doi:10.3389/fnbot.2022.846355. This article has 13 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "secci2020onfailuresof",
+      "dockey": "dcc84be17373fd99",
+      "citation": "On failures of RGB cameras and their effects in autonomous driving applications",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "secci2020onfailuresof",
+      "bibtex": "@inproceedings{secci2020onfailuresof,\n    author = \"Secci, Francesco and Ceccarelli, Andrea\",\n    title = \"On failures of RGB cameras and their effects in autonomous driving applications\",\n    year = \"2020\",\n    journal = \"2020 IEEE 31st International Symposium on Software Reliability Engineering (ISSRE)\",\n    pages = \"13-24\",\n    month = \"Oct\",\n    doi = \"10.1109/issre5003.2020.00011\",\n    url = \"https://doi.org/10.1109/issre5003.2020.00011\",\n    publisher = \"IEEE\"\n}\n",
+      "authors": [
+        "Francesco Secci",
+        "Andrea Ceccarelli"
+      ],
+      "publication_date": "2020-10-01T00:00:00Z",
+      "year": 2020,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": "13-24",
+      "journal": "2020 IEEE 31st International Symposium on Software Reliability Engineering (ISSRE)",
+      "publisher": "IEEE",
+      "url": "https://doi.org/10.1109/issre5003.2020.00011",
+      "title": "On failures of RGB cameras and their effects in autonomous driving applications",
+      "citation_count": 65,
+      "bibtex_type": "inproceedings",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.1109/issre5003.2020.00011",
+      "doi_url": "https://doi.org/10.1109/issre5003.2020.00011",
+      "doc_id": "dcc84be17373fd99",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://ieeexplore.ieee.org/abstract/document/9251080/",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "On failures of RGB cameras and their effects in autonomous driving applications This article has 65 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "wang2026labrobfailabenchmark",
+      "dockey": "d1cfdcff99218969",
+      "citation": "Haobo Wang, Baoli Sun, Anqi Zou, Dongsheng Huang, Zelin Lv, Ning Wang, Rui Li, Dongzhan Zhou, Weiyu Guo, Zhihui Wang, and Wanli Ouyang. Labrobfail: a benchmark for robotic failure analysis in chemical self-driving laboratory. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.23704, doi:10.48550/arxiv.2607.23704.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "wang2026labrobfailabenchmark",
+      "bibtex": "@article{wang2026labrobfailabenchmark,\n    author = \"Wang, Haobo and Sun, Baoli and Zou, Anqi and Huang, Dongsheng and Lv, Zelin and Wang, Ning and Li, Rui and Zhou, Dongzhan and Guo, Weiyu and Wang, Zhihui and Ouyang, Wanli\",\n    booktitle = \"arXiv.org\",\n    journal = \"ArXiv\",\n    title = \"LabRobFail: A Benchmark for Robotic Failure Analysis in Chemical Self-driving Laboratory\",\n    volume = \"abs/2607.23704\",\n    year = \"2026\",\n    month = \"Jul\",\n    doi = \"10.48550/arxiv.2607.23704\",\n    url = \"https://doi.org/10.48550/arxiv.2607.23704\"\n}\n",
+      "authors": [
+        "Haobo Wang",
+        "Baoli Sun",
+        "Anqi Zou",
+        "Dongsheng Huang",
+        "Zelin Lv",
+        "Ning Wang",
+        "Rui Li",
+        "Dongzhan Zhou",
+        "Weiyu Guo",
+        "Zhihui Wang",
+        "Wanli Ouyang"
+      ],
+      "publication_date": "2026-07-26T00:00:00Z",
+      "year": 2026,
+      "volume": "abs/2607.23704",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "LabRobFail: A Benchmark for Robotic Failure Analysis in Chemical Self-driving Laboratory",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2607.23704",
+      "doi_url": "https://doi.org/10.48550/arxiv.2607.23704",
+      "doc_id": "d1cfdcff99218969",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "Haobo Wang, Baoli Sun, Anqi Zou, Dongsheng Huang, Zelin Lv, Ning Wang, Rui Li, Dongzhan Zhou, Weiyu Guo, Zhihui Wang, and Wanli Ouyang. Labrobfail: a benchmark for robotic failure analysis in chemical self-driving laboratory. ArXiv, Jul 2026. URL: https://doi.org/10.48550/arxiv.2607.23704, doi:10.48550/arxiv.2607.23704. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "cheng2026towardshumanledagentdriven",
+      "dockey": "c72bf06cf151ccd6",
+      "citation": "Wenduo Cheng, Mingqian Ma, Shuaike Shen, Anna Hupalowska, Jennifer E. Rood, Yang Zhang, Gaurav Agrawal, Christine Bakan, Michelle A. Lee, Aviv Regev, and Jian Ma. Towards human-led, agent-driven autonomous laboratories for the life sciences. Unknown journal, Aug 2026. URL: https://doi.org/10.20944/preprints202608.0273.v1, doi:10.20944/preprints202608.0273.v1.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "cheng2026towardshumanledagentdriven",
+      "bibtex": "@article{cheng2026towardshumanledagentdriven,\n    author = \"Cheng, Wenduo and Ma, Mingqian and Shen, Shuaike and Hupalowska, Anna and Rood, Jennifer E. and Zhang, Yang and Agrawal, Gaurav and Bakan, Christine and Lee, Michelle A. and Regev, Aviv and Ma, Jian\",\n    title = \"Towards Human-Led, Agent-Driven Autonomous Laboratories for the Life Sciences\",\n    url = \"https://doi.org/10.20944/preprints202608.0273.v1\",\n    doi = \"10.20944/preprints202608.0273.v1\",\n    publisher = \"MDPI AG\",\n    year = \"2026\",\n    month = \"Aug\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "Wenduo Cheng",
+        "Mingqian Ma",
+        "Shuaike Shen",
+        "Anna Hupalowska",
+        "Jennifer E. Rood",
+        "Yang Zhang",
+        "Gaurav Agrawal",
+        "Christine Bakan",
+        "Michelle A. Lee",
+        "Aviv Regev",
+        "Jian Ma"
+      ],
+      "publication_date": "2026-08-05T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": "MDPI AG",
+      "url": "https://doi.org/10.20944/preprints202608.0273.v1",
+      "title": "Towards Human-Led, Agent-Driven Autonomous Laboratories for the Life Sciences",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": "10.20944/preprints202608.0273.v1",
+      "doi_url": "https://doi.org/10.20944/preprints202608.0273.v1",
+      "doc_id": "c72bf06cf151ccd6",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.preprints.org/frontend/manuscript/a4fcd31e1ea4ba117d3a53161100d681/download_pub",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Wenduo Cheng, Mingqian Ma, Shuaike Shen, Anna Hupalowska, Jennifer E. Rood, Yang Zhang, Gaurav Agrawal, Christine Bakan, Michelle A. Lee, Aviv Regev, and Jian Ma. Towards human-led, agent-driven autonomous laboratories for the life sciences. Unknown journal, Aug 2026. URL: https://doi.org/10.20944/preprints202608.0273.v1, doi:10.20944/preprints202608.0273.v1."
+    },
+    {
+      "embedding": null,
+      "docname": "hao2026doselfdrivinglaboratories",
+      "dockey": "05924b2302842e77",
+      "citation": "Chengxin Hao, L. Fang, Zhao Lin, and Wei Zhang. Do self-driving laboratories accelerate discovery or automate uncertainty, bias, and irreproducible decisions? Pharmacophore, 17(4):146-156, Jan 2026. URL: https://doi.org/10.51847/i178allztd, doi:10.51847/i178allztd.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "hao2026doselfdrivinglaboratories",
+      "bibtex": "@article{hao2026doselfdrivinglaboratories,\n    author = \"Hao, Chengxin and Fang, L. and Lin, Zhao and Zhang, Wei\",\n    title = \"Do Self-Driving Laboratories Accelerate Discovery or Automate Uncertainty, Bias, and Irreproducible Decisions?\",\n    volume = \"17\",\n    issn = \"2229-5402\",\n    url = \"https://doi.org/10.51847/i178allztd\",\n    doi = \"10.51847/i178allztd\",\n    number = \"4\",\n    journal = \"Pharmacophore\",\n    publisher = \"Polaris\",\n    year = \"2026\",\n    pages = \"146-156\",\n    month = \"Jan\",\n    issue = \"4\"\n}\n",
+      "authors": [
+        "Chengxin Hao",
+        "L. Fang",
+        "Zhao Lin",
+        "Wei Zhang"
+      ],
+      "publication_date": "2026-01-01T00:00:00Z",
+      "year": 2026,
+      "volume": "17",
+      "issue": "4",
+      "issn": "2229-5402",
+      "pages": "146-156",
+      "journal": "Pharmacophore",
+      "publisher": "Polaris",
+      "url": "https://doi.org/10.51847/i178allztd",
+      "title": "Do Self-Driving Laboratories Accelerate Discovery or Automate Uncertainty, Bias, and Irreproducible Decisions?",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.51847/i178allztd",
+      "doi_url": "https://doi.org/10.51847/i178allztd",
+      "doc_id": "05924b2302842e77",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://pharmacophorejournal.com/storage/files/article/71f5a837-a7f6-43a0-90d6-5c4150a59186-pzzZ57JKc4tjbgw7/DNPbpEewKNOaWdP.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Chengxin Hao, L. Fang, Zhao Lin, and Wei Zhang. Do self-driving laboratories accelerate discovery or automate uncertainty, bias, and irreproducible decisions? Pharmacophore, 17(4):146-156, Jan 2026. URL: https://doi.org/10.51847/i178allztd, doi:10.51847/i178allztd. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "fox2026automatedbiomedicalresearch",
+      "dockey": "308e33ad4eab6dc4",
+      "citation": "Jay W. Fox and Jeffery R. Martens. Automated biomedical research laboratories: development, current state, and a roadmap for adaptation into shared research resources. Sep 2026. URL: https://doi.org/10.7171/001c.167609, doi:10.7171/001c.167609.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "fox2026automatedbiomedicalresearch",
+      "bibtex": "@misc{fox2026automatedbiomedicalresearch,\n    author = \"Fox, Jay W. and Martens, Jeffery R.\",\n    title = \"Automated Biomedical Research Laboratories: Development, Current State, and a Roadmap for Adaptation into Shared Research Resources\",\n    year = \"2026\",\n    journal = \"Journal of Biomolecular Techniques\",\n    volume = \"37\",\n    month = \"Sep\",\n    doi = \"10.7171/001c.167609\",\n    url = \"https://doi.org/10.7171/001c.167609\",\n    publisher = \"Association of Biomolecular Resource Facilities\",\n    issue = \"3\",\n    issn = \"1524-0215\",\n    pages = \"18-26\"\n}\n",
+      "authors": [
+        "Jay W. Fox",
+        "Jeffery R. Martens"
+      ],
+      "publication_date": "2026-09-01T00:00:00Z",
+      "year": 2026,
+      "volume": "37",
+      "issue": "3",
+      "issn": "1524-0215",
+      "pages": "18-26",
+      "journal": "Journal of Biomolecular Techniques",
+      "publisher": "Association of Biomolecular Resource Facilities",
+      "url": "https://doi.org/10.7171/001c.167609",
+      "title": "Automated Biomedical Research Laboratories: Development, Current State, and a Roadmap for Adaptation into Shared Research Resources",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.7171/001c.167609",
+      "doi_url": "https://doi.org/10.7171/001c.167609",
+      "doc_id": "308e33ad4eab6dc4",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://jbt.abrf.org/article/167609.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Jay W. Fox and Jeffery R. Martens. Automated biomedical research laboratories: development, current state, and a roadmap for adaptation into shared research resources. Sep 2026. URL: https://doi.org/10.7171/001c.167609, doi:10.7171/001c.167609. This article has 0 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "chauhan2026closedloopformulationdevelopment",
+      "dockey": "42a077d9dc73cf46",
+      "citation": "V Chauhan. Closed-loop formulation development through artificial intelligence: bayesian optimization, robotics, and self-driving laboratories in pharmaceutics. Unknown journal, 2026.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "chauhan2026closedloopformulationdevelopment",
+      "bibtex": "@article{chauhan2026closedloopformulationdevelopment,\n    author = \"Chauhan, V\",\n    title = \"Closed-Loop Formulation Development Through Artificial Intelligence: Bayesian Optimization, Robotics, and Self-Driving Laboratories in Pharmaceutics\",\n    year = \"2026\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "V Chauhan"
+      ],
+      "publication_date": null,
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://japsnp.com/index.php/japsnp/article/download/73/39",
+      "title": "Closed-Loop Formulation Development Through Artificial Intelligence: Bayesian Optimization, Robotics, and Self-Driving Laboratories in Pharmaceutics",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "42a077d9dc73cf46",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://japsnp.com/index.php/japsnp/article/download/73/39",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "V Chauhan. Closed-loop formulation development through artificial intelligence: bayesian optimization, robotics, and self-driving laboratories in pharmaceutics. Unknown journal, 2026."
+    }
+  ],
+  "toolu_017TWeHVgkZWLKubZFVFichU": [
+    {
+      "embedding": null,
+      "docname": "delgado2026peginbenchamodular",
+      "dockey": "9e40b4e2ab8cb541",
+      "citation": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "delgado2026peginbenchamodular",
+      "bibtex": "@inproceedings{delgado2026peginbenchamodular,\n    author = \"Delgado, Y. and Buenaventura-Carre\u00f3n, Jos\u00e9 G. and Erich, Floris and Mykhailyshyn, R. and Motoda, Tomohiro and Makihara, Koshi and Domae, Y.\",\n    title = \"Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion\",\n    year = \"2026\",\n    journal = \"ArXiv\",\n    month = \"Sep\",\n    doi = \"10.48550/arxiv.2609.00906\",\n    url = \"https://doi.org/10.48550/arxiv.2609.00906\"\n}\n",
+      "authors": [
+        "Y. Delgado",
+        "Jos\u00e9 G. Buenaventura-Carre\u00f3n",
+        "Floris Erich",
+        "R. Mykhailyshyn",
+        "Tomohiro Motoda",
+        "Koshi Makihara",
+        "Y. Domae"
+      ],
+      "publication_date": "2026-09-01T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2609.00906",
+      "doi_url": "https://doi.org/10.48550/arxiv.2609.00906",
+      "doc_id": "9e40b4e2ab8cb541",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "Peg-in-Bench: A Modular Benchmark for High-Precision Robotic Insertion This article has 0 citations."
+    }
+  ],
+  "toolu_01ACJDUHe52bawYWMqxXXfG4": [
+    {
+      "embedding": null,
+      "docname": "puggelli2020alowcostcharucobased",
+      "dockey": "f7ff4d95f0cf0784",
+      "citation": "Luca Puggelli, Rocco Furferi, Yary Volpe, and Lapo Governi. A low-cost charuco-based 3d scanner for cultural heritage. IOP Conference Series: Materials Science and Engineering, 949:012033, Nov 2020. URL: https://doi.org/10.1088/1757-899x/949/1/012033, doi:10.1088/1757-899x/949/1/012033.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "puggelli2020alowcostcharucobased",
+      "bibtex": "@article{puggelli2020alowcostcharucobased,\n    author = \"Puggelli, Luca and Furferi, Rocco and Volpe, Yary and Governi, Lapo\",\n    title = \"A low-cost ChArUco-based 3D scanner for cultural heritage\",\n    year = \"2020\",\n    journal = \"IOP Conference Series: Materials Science and Engineering\",\n    volume = \"949\",\n    month = \"Nov\",\n    doi = \"10.1088/1757-899x/949/1/012033\",\n    url = \"https://doi.org/10.1088/1757-899x/949/1/012033\",\n    pages = \"012033\",\n    publisher = \"IOP Publishing\",\n    issue = \"1\",\n    issn = \"1757-8981\"\n}\n",
+      "authors": [
+        "Luca Puggelli",
+        "Rocco Furferi",
+        "Yary Volpe",
+        "Lapo Governi"
+      ],
+      "publication_date": "2020-11-01T00:00:00Z",
+      "year": 2020,
+      "volume": "949",
+      "issue": "1",
+      "issn": "1757-8981",
+      "pages": "012033",
+      "journal": "IOP Conference Series: Materials Science and Engineering",
+      "publisher": "IOP Publishing",
+      "url": "https://doi.org/10.1088/1757-899x/949/1/012033",
+      "title": "A low-cost ChArUco-based 3D scanner for cultural heritage",
+      "citation_count": 1,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.1088/1757-899x/949/1/012033",
+      "doi_url": "https://doi.org/10.1088/1757-899x/949/1/012033",
+      "doc_id": "f7ff4d95f0cf0784",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://iopscience.iop.org/article/10.1088/1757-899X/949/1/012033/pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Luca Puggelli, Rocco Furferi, Yary Volpe, and Lapo Governi. A low-cost charuco-based 3d scanner for cultural heritage. IOP Conference Series: Materials Science and Engineering, 949:012033, Nov 2020. URL: https://doi.org/10.1088/1757-899x/949/1/012033, doi:10.1088/1757-899x/949/1/012033. This article has 1 citations."
+    }
+  ],
+  "toolu_017jdeoa3SHk1y38jm65TzyC": [
+    {
+      "embedding": null,
+      "docname": "shamim2022electricalandmechanical",
+      "dockey": "7ff81f8cc76ef1d4",
+      "citation": "Md Mahamudur Rahaman Shamim. Electrical and mechanical troubleshooting in medical and diagnostic device manufacturing: a systematic review of industry safety and performance protocols. American Journal of Scholarly Research and Innovation, 01:295-318, Mar 2022. URL: https://doi.org/10.63125/d68y3590, doi:10.63125/d68y3590.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "shamim2022electricalandmechanical",
+      "bibtex": "@article{shamim2022electricalandmechanical,\n    author = \"Shamim, Md Mahamudur Rahaman\",\n    title = \"ELECTRICAL AND MECHANICAL TROUBLESHOOTING IN MEDICAL AND DIAGNOSTIC DEVICE MANUFACTURING: A SYSTEMATIC REVIEW OF INDUSTRY SAFETY AND PERFORMANCE PROTOCOLS\",\n    year = \"2022\",\n    journal = \"American Journal of Scholarly Research and Innovation\",\n    month = \"Mar\",\n    doi = \"10.63125/d68y3590\",\n    url = \"https://doi.org/10.63125/d68y3590\",\n    volume = \"01\",\n    pages = \"295-318\",\n    publisher = \"American Scholarly Publishing Group Inc\",\n    issue = \"01\",\n    issn = \"3067-2163\"\n}\n",
+      "authors": [
+        "Md Mahamudur Rahaman Shamim"
+      ],
+      "publication_date": "2022-03-01T00:00:00Z",
+      "year": 2022,
+      "volume": "01",
+      "issue": "01",
+      "issn": "3067-2163",
+      "pages": "295-318",
+      "journal": "American Journal of Scholarly Research and Innovation",
+      "publisher": "American Scholarly Publishing Group Inc",
+      "url": "https://doi.org/10.63125/d68y3590",
+      "title": "ELECTRICAL AND MECHANICAL TROUBLESHOOTING IN MEDICAL AND DIAGNOSTIC DEVICE MANUFACTURING: A SYSTEMATIC REVIEW OF INDUSTRY SAFETY AND PERFORMANCE PROTOCOLS",
+      "citation_count": 50,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.63125/d68y3590",
+      "doi_url": "https://doi.org/10.63125/d68y3590",
+      "doc_id": "7ff81f8cc76ef1d4",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://researchinnovationjournal.com/index.php/AJSRI/article/download/50/39",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Md Mahamudur Rahaman Shamim. Electrical and mechanical troubleshooting in medical and diagnostic device manufacturing: a systematic review of industry safety and performance protocols. American Journal of Scholarly Research and Innovation, 01:295-318, Mar 2022. URL: https://doi.org/10.63125/d68y3590, doi:10.63125/d68y3590. This article has 50 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "tarek2024quantitativeassessmentof",
+      "dockey": "d5550f33071c284e",
+      "citation": "Jabed Hasan Tarek and Mohammad Shah Paran. Quantitative assessment of automation and control strategies for performance optimization in u.s. industrial plants. ASRC Procedia: Global Perspectives in Science and Scholarship, 04(01):169-205, Jan 2024. URL: https://doi.org/10.63125/eqfz8220, doi:10.63125/eqfz8220.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "tarek2024quantitativeassessmentof",
+      "bibtex": "@article{tarek2024quantitativeassessmentof,\n    author = \"Tarek, Jabed Hasan and Paran, Mohammad Shah\",\n    title = \"QUANTITATIVE ASSESSMENT OF AUTOMATION AND CONTROL STRATEGIES FOR PERFORMANCE OPTIMIZATION IN U.S. INDUSTRIAL PLANTS\",\n    volume = \"04\",\n    url = \"https://doi.org/10.63125/eqfz8220\",\n    doi = \"10.63125/eqfz8220\",\n    number = \"01\",\n    journal = \"ASRC Procedia: Global Perspectives in Science and Scholarship\",\n    publisher = \"American Scholarly Publishing Group Inc\",\n    year = \"2024\",\n    month = \"Jan\",\n    pages = \"169-205\",\n    issue = \"01\"\n}\n",
+      "authors": [
+        "Jabed Hasan Tarek",
+        "Mohammad Shah Paran"
+      ],
+      "publication_date": "2024-01-01T00:00:00Z",
+      "year": 2024,
+      "volume": "04",
+      "issue": "01",
+      "issn": null,
+      "pages": "169-205",
+      "journal": "ASRC Procedia: Global Perspectives in Science and Scholarship",
+      "publisher": "American Scholarly Publishing Group Inc",
+      "url": "https://doi.org/10.63125/eqfz8220",
+      "title": "QUANTITATIVE ASSESSMENT OF AUTOMATION AND CONTROL STRATEGIES FOR PERFORMANCE OPTIMIZATION IN U.S. INDUSTRIAL PLANTS",
+      "citation_count": 26,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.63125/eqfz8220",
+      "doi_url": "https://doi.org/10.63125/eqfz8220",
+      "doc_id": "d5550f33071c284e",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://global.asrcconference.com/index.php/asrc/article/download/67/68",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Jabed Hasan Tarek and Mohammad Shah Paran. Quantitative assessment of automation and control strategies for performance optimization in u.s. industrial plants. ASRC Procedia: Global Perspectives in Science and Scholarship, 04(01):169-205, Jan 2024. URL: https://doi.org/10.63125/eqfz8220, doi:10.63125/eqfz8220. This article has 26 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "sanbhi2026hybridmarkov\u2013montecarlo",
+      "dockey": "6d3b3a77ec578a0a",
+      "citation": "CVS Sanbhi. Hybrid markov\u2013monte carlo ram modelling for multi\u2011state assets with non\u2011exponential failure/repair distribution. Unknown journal, 2026.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "sanbhi2026hybridmarkov\u2013montecarlo",
+      "bibtex": "@article{sanbhi2026hybridmarkov\u2013montecarlo,\n    author = \"Sanbhi, CVS\",\n    title = \"HYBRID MARKOV\u2013MONTE CARLO RAM MODELLING FOR MULTI\u2011STATE ASSETS WITH NON\u2011EXPONENTIAL FAILURE/REPAIR DISTRIBUTION\",\n    year = \"2026\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "CVS Sanbhi"
+      ],
+      "publication_date": null,
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://pspac.info/index.php/dlbh/article/download/379/313",
+      "title": "HYBRID MARKOV\u2013MONTE CARLO RAM MODELLING FOR MULTI\u2011STATE ASSETS WITH NON\u2011EXPONENTIAL FAILURE/REPAIR DISTRIBUTION",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "6d3b3a77ec578a0a",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://pspac.info/index.php/dlbh/article/download/379/313",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "CVS Sanbhi. Hybrid markov\u2013monte carlo ram modelling for multi\u2011state assets with non\u2011exponential failure/repair distribution. Unknown journal, 2026."
+    },
+    {
+      "embedding": null,
+      "docname": "lee2017centreformaintenance",
+      "dockey": "e51dc01604698b34",
+      "citation": "CG Lee. Centre for maintenance optimization and reliability engineering. Unknown journal, 2017.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "lee2017centreformaintenance",
+      "bibtex": "@article{lee2017centreformaintenance,\n    author = \"Lee, CG\",\n    title = \"CENTRE FOR MAINTENANCE OPTIMIZATION AND RELIABILITY ENGINEERING\",\n    year = \"2017\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "CG Lee"
+      ],
+      "publication_date": null,
+      "year": 2017,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://cmore.mie.utoronto.ca/wp-content/uploads/Progress-Report-June-2020.pdf",
+      "title": "CENTRE FOR MAINTENANCE OPTIMIZATION AND RELIABILITY ENGINEERING",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "e51dc01604698b34",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://cmore.mie.utoronto.ca/wp-content/uploads/Progress-Report-June-2020.pdf",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "CG Lee. Centre for maintenance optimization and reliability engineering. Unknown journal, 2017."
+    }
+  ],
+  "toolu_01CJkg6at6qz6W1ugeuQzcsv": [
+    {
+      "embedding": null,
+      "docname": "zhang2026validationsandapplications",
+      "dockey": "153c7debf556426d",
+      "citation": "Xiaochen Zhang, Dunkai Mao, Haonan Shang, Liuchen Ma, Juncheng Jia, Jia Yu, and Ming Zhang. Validations and applications of markerless motion capture using opencap: a scoping review. Jul 2026. URL: https://doi.org/10.3389/fdgth.2026.1882536, doi:10.3389/fdgth.2026.1882536.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "zhang2026validationsandapplications",
+      "bibtex": "@misc{zhang2026validationsandapplications,\n    author = \"Zhang, Xiaochen and Mao, Dunkai and Shang, Haonan and Ma, Liuchen and Jia, Juncheng and Yu, Jia and Zhang, Ming\",\n    title = \"Validations and applications of markerless motion capture using OpenCap: a scoping review\",\n    year = \"2026\",\n    journal = \"Frontiers in Digital Health\",\n    volume = \"8\",\n    month = \"Jul\",\n    doi = \"10.3389/fdgth.2026.1882536\",\n    url = \"https://doi.org/10.3389/fdgth.2026.1882536\",\n    publisher = \"Frontiers Media SA\",\n    issn = \"2673-253X\"\n}\n",
+      "authors": [
+        "Xiaochen Zhang",
+        "Dunkai Mao",
+        "Haonan Shang",
+        "Liuchen Ma",
+        "Juncheng Jia",
+        "Jia Yu",
+        "Ming Zhang"
+      ],
+      "publication_date": "2026-07-30T00:00:00Z",
+      "year": 2026,
+      "volume": "8",
+      "issue": null,
+      "issn": "2673-253X",
+      "pages": null,
+      "journal": "Frontiers in Digital Health",
+      "publisher": "Frontiers Media SA",
+      "url": "https://doi.org/10.3389/fdgth.2026.1882536",
+      "title": "Validations and applications of markerless motion capture using OpenCap: a scoping review",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.3389/fdgth.2026.1882536",
+      "doi_url": "https://doi.org/10.3389/fdgth.2026.1882536",
+      "doc_id": "153c7debf556426d",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.frontiersin.org/journals/digital-health/articles/10.3389/fdgth.2026.1882536/pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Xiaochen Zhang, Dunkai Mao, Haonan Shang, Liuchen Ma, Juncheng Jia, Jia Yu, and Ming Zhang. Validations and applications of markerless motion capture using opencap: a scoping review. Jul 2026. URL: https://doi.org/10.3389/fdgth.2026.1882536, doi:10.3389/fdgth.2026.1882536. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "senthivasan2020highthroughputkinematictracking",
+      "dockey": "ae145f062ad3aeb1",
+      "citation": "Shreeram Senthivasan. High-throughput kinematic tracking of bird wings using inertial sensor arrays. ArXiv, Jan 2020. URL: https://doi.org/10.14288/1.0392340, doi:10.14288/1.0392340.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "senthivasan2020highthroughputkinematictracking",
+      "bibtex": "@article{senthivasan2020highthroughputkinematictracking,\n    author = \"Senthivasan, Shreeram\",\n    title = \"High-throughput kinematic tracking of bird wings using inertial sensor arrays\",\n    year = \"2020\",\n    journal = \"ArXiv\",\n    doi = \"10.14288/1.0392340\",\n    url = \"https://doi.org/10.14288/1.0392340\",\n    month = \"Jan\",\n    publisher = \"University of British Columbia\"\n}\n",
+      "authors": [
+        "Shreeram Senthivasan"
+      ],
+      "publication_date": "2020-01-01T00:00:00Z",
+      "year": 2020,
+      "volume": "",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": "University of British Columbia",
+      "url": "https://doi.library.ubc.ca/10.14288/1.0392340",
+      "title": "High-throughput kinematic tracking of bird wings using inertial sensor arrays",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.14288/1.0392340",
+      "doi_url": "https://doi.org/10.14288/1.0392340",
+      "doc_id": "ae145f062ad3aeb1",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://open.library.ubc.ca/media/stream/pdf/24/1.0392340/3",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "datacite",
+          "semantic_scholar",
+          "datacite",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Shreeram Senthivasan. High-throughput kinematic tracking of bird wings using inertial sensor arrays. ArXiv, Jan 2020. URL: https://doi.org/10.14288/1.0392340, doi:10.14288/1.0392340. This article has 0 citations."
+    }
+  ],
+  "toolu_01VxuNk3eCjX84T8LkijF1MP": [
+    {
+      "embedding": null,
+      "docname": "shamim2023applyingleanand",
+      "dockey": "1f97f2849f57e6b3",
+      "citation": "Md Mahamudur Rahaman Shamim and Rezwanul Ashraf Ruddro. Applying lean and six sigma in the maintenance of medical imaging equipment manufacturing lines. Review of Applied Science and Technology, Dec 2023. URL: https://doi.org/10.63125/6varjp35, doi:10.63125/6varjp35.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "shamim2023applyingleanand",
+      "bibtex": "@article{shamim2023applyingleanand,\n    author = \"Shamim, Md Mahamudur Rahaman and Ruddro, Rezwanul Ashraf\",\n    title = \"APPLYING LEAN AND SIX SIGMA IN THE MAINTENANCE OF MEDICAL IMAGING EQUIPMENT MANUFACTURING LINES\",\n    year = \"2023\",\n    journal = \"Review of Applied Science and Technology\",\n    month = \"Dec\",\n    doi = \"10.63125/6varjp35\",\n    url = \"https://doi.org/10.63125/6varjp35\"\n}\n",
+      "authors": [
+        "Md Mahamudur Rahaman Shamim",
+        "Rezwanul Ashraf Ruddro"
+      ],
+      "publication_date": "2023-12-01T00:00:00Z",
+      "year": 2023,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "Review of Applied Science and Technology",
+      "publisher": null,
+      "url": "https://rast-journal.org/index.php/RAST/article/download/28/28",
+      "title": "APPLYING LEAN AND SIX SIGMA IN THE MAINTENANCE OF MEDICAL IMAGING EQUIPMENT MANUFACTURING LINES",
+      "citation_count": 24,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.63125/6varjp35",
+      "doi_url": "https://doi.org/10.63125/6varjp35",
+      "doc_id": "1f97f2849f57e6b3",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://rast-journal.org/index.php/RAST/article/download/28/28",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Md Mahamudur Rahaman Shamim and Rezwanul Ashraf Ruddro. Applying lean and six sigma in the maintenance of medical imaging equipment manufacturing lines. Review of Applied Science and Technology, Dec 2023. URL: https://doi.org/10.63125/6varjp35, doi:10.63125/6varjp35. This article has 24 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "corrales2020overallequipmenteffectiveness",
+      "dockey": "e5ffa13844e09e30",
+      "citation": "Lisbeth del Carmen Ng Corrales, Mar\u00eda Pilar Lamb\u00e1n, Mario Enrique Hernandez Korner, and Jes\u00fas Royo. Overall equipment effectiveness: systematic literature review and overview of different approaches. Applied Sciences, 10:6469, Sep 2020. URL: https://doi.org/10.3390/app10186469, doi:10.3390/app10186469.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "corrales2020overallequipmenteffectiveness",
+      "bibtex": "@article{corrales2020overallequipmenteffectiveness,\n    author = \"del Carmen Ng Corrales, Lisbeth and Lamb\u00e1n, Mar\u00eda Pilar and Korner, Mario Enrique Hernandez and Royo, Jes\u00fas\",\n    title = \"Overall Equipment Effectiveness: Systematic Literature Review and Overview of Different Approaches\",\n    year = \"2020\",\n    journal = \"Applied Sciences\",\n    month = \"Sep\",\n    doi = \"10.3390/app10186469\",\n    url = \"https://doi.org/10.3390/app10186469\",\n    volume = \"10\",\n    pages = \"6469\",\n    publisher = \"MDPI AG\",\n    issue = \"18\",\n    issn = \"2076-3417\"\n}\n",
+      "authors": [
+        "Lisbeth del Carmen Ng Corrales",
+        "Mar\u00eda Pilar Lamb\u00e1n",
+        "Mario Enrique Hernandez Korner",
+        "Jes\u00fas Royo"
+      ],
+      "publication_date": "2020-09-17T00:00:00Z",
+      "year": 2020,
+      "volume": "10",
+      "issue": "18",
+      "issn": "2076-3417",
+      "pages": "6469",
+      "journal": "Applied Sciences",
+      "publisher": "MDPI AG",
+      "url": "https://www.mdpi.com/2076-3417/10/18/6469/pdf",
+      "title": "Overall Equipment Effectiveness: Systematic Literature Review and Overview of Different Approaches",
+      "citation_count": 223,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.3390/app10186469",
+      "doi_url": "https://doi.org/10.3390/app10186469",
+      "doc_id": "e5ffa13844e09e30",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.mdpi.com/2076-3417/10/18/6469",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Lisbeth del Carmen Ng Corrales, Mar\u00eda Pilar Lamb\u00e1n, Mario Enrique Hernandez Korner, and Jes\u00fas Royo. Overall equipment effectiveness: systematic literature review and overview of different approaches. Applied Sciences, 10:6469, Sep 2020. URL: https://doi.org/10.3390/app10186469, doi:10.3390/app10186469. This article has 223 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "nadeem2026aiandnanotechnology",
+      "dockey": "3c72a6bdc0b15411",
+      "citation": "Amjid Nadeem, Brajesh Kumar Mishra, J. Raja, Indu Shukla, Vikash Kumar Sonu, and Manju Sanghi. Ai and nanotechnology revolutionize towards advancing innovation based nanomaterials. Jul 2026. URL: https://doi.org/10.70917/ijcisim-2026-3785, doi:10.70917/ijcisim-2026-3785.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "nadeem2026aiandnanotechnology",
+      "bibtex": "@misc{nadeem2026aiandnanotechnology,\n    author = \"Nadeem, Amjid and Mishra, Brajesh Kumar and Raja, J. and Shukla, Indu and Sonu, Vikash Kumar and Sanghi, Manju\",\n    title = \"AI and Nanotechnology Revolutionize Towards Advancing Innovation Based Nanomaterials\",\n    year = \"2026\",\n    journal = \"International Journal of Computer Information Systems and Industrial Management Applications\",\n    volume = \"18\",\n    pages = \"758-781\",\n    month = \"Jul\",\n    doi = \"10.70917/ijcisim-2026-3785\",\n    url = \"https://doi.org/10.70917/ijcisim-2026-3785\",\n    publisher = \"Cerebration Science Publishing Co., Limited\",\n    issue = \"11s\",\n    issn = \"2150-7988\"\n}\n",
+      "authors": [
+        "Amjid Nadeem",
+        "Brajesh Kumar Mishra",
+        "J. Raja",
+        "Indu Shukla",
+        "Vikash Kumar Sonu",
+        "Manju Sanghi"
+      ],
+      "publication_date": "2026-07-27T00:00:00Z",
+      "year": 2026,
+      "volume": "18",
+      "issue": "11s",
+      "issn": "2150-7988",
+      "pages": "758-781",
+      "journal": "International Journal of Computer Information Systems and Industrial Management Applications",
+      "publisher": "Cerebration Science Publishing Co., Limited",
+      "url": "https://doi.org/10.70917/ijcisim-2026-3785",
+      "title": "AI and Nanotechnology Revolutionize Towards Advancing Innovation Based Nanomaterials",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.70917/ijcisim-2026-3785",
+      "doi_url": "https://doi.org/10.70917/ijcisim-2026-3785",
+      "doc_id": "3c72a6bdc0b15411",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://cspub-ijcisim.org/index.php/ijcisim/article/download/3785/3033",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Amjid Nadeem, Brajesh Kumar Mishra, J. Raja, Indu Shukla, Vikash Kumar Sonu, and Manju Sanghi. Ai and nanotechnology revolutionize towards advancing innovation based nanomaterials. Jul 2026. URL: https://doi.org/10.70917/ijcisim-2026-3785, doi:10.70917/ijcisim-2026-3785. This article has 0 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "akanbi2026anendtoendmaterial",
+      "dockey": "0bcaf8e4db55a768",
+      "citation": "Olasubomi Akanbi, Evans Abiodun Sunday, and Olaitan Shakirat Ganiu. An end-to-end material flow strategy framework for heavy-duty electric vehicle powertrain production. Jun 2026. URL: https://doi.org/10.65770/jmjw4287, doi:10.65770/jmjw4287.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "akanbi2026anendtoendmaterial",
+      "bibtex": "@misc{akanbi2026anendtoendmaterial,\n    author = \"Akanbi, Olasubomi and Sunday, Evans Abiodun and Ganiu, Olaitan Shakirat\",\n    title = \"An End-to-End Material Flow Strategy Framework for Heavy-Duty Electric Vehicle Powertrain Production\",\n    year = \"2026\",\n    journal = \"World Scientific News\",\n    pages = \"160\",\n    month = \"Jun\",\n    doi = \"10.65770/jmjw4287\",\n    url = \"https://doi.org/10.65770/jmjw4287\",\n    publisher = \"Uroczysko Rados\u0142aw Pokuty\u0144ski\",\n    issn = \"2392-2192\"\n}\n",
+      "authors": [
+        "Olasubomi Akanbi",
+        "Evans Abiodun Sunday",
+        "Olaitan Shakirat Ganiu"
+      ],
+      "publication_date": "2026-06-01T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": "2392-2192",
+      "pages": "160",
+      "journal": "World Scientific News",
+      "publisher": "Uroczysko Rados\u0142aw Pokuty\u0144ski",
+      "url": "https://doi.org/10.65770/jmjw4287",
+      "title": "An End-to-End Material Flow Strategy Framework for Heavy-Duty Electric Vehicle Powertrain Production",
+      "citation_count": 1,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.65770/jmjw4287",
+      "doi_url": "https://doi.org/10.65770/jmjw4287",
+      "doc_id": "0bcaf8e4db55a768",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Olasubomi Akanbi, Evans Abiodun Sunday, and Olaitan Shakirat Ganiu. An end-to-end material flow strategy framework for heavy-duty electric vehicle powertrain production. Jun 2026. URL: https://doi.org/10.65770/jmjw4287, doi:10.65770/jmjw4287. This article has 1 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "smith2026aconceptualframework",
+      "dockey": "d78d7f9daeb3d88d",
+      "citation": "A Conceptual Framework for Enhancing Workforce Readiness for Smart Manufacturing in the AI Era",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "smith2026aconceptualframework",
+      "bibtex": "@inproceedings{smith2026aconceptualframework,\n    author = \"Smith, D. and Whittington, W. and Martinez, Alejandro and Duncan, Aidan and Li, Gan\",\n    title = \"A Conceptual Framework for Enhancing Workforce Readiness for Smart Manufacturing in the AI Era\",\n    year = \"2026\",\n    journal = \"ArXiv\",\n    month = \"Aug\",\n    doi = \"10.48550/arxiv.2608.11540\",\n    url = \"https://doi.org/10.48550/arxiv.2608.11540\"\n}\n",
+      "authors": [
+        "D. Smith",
+        "W. Whittington",
+        "Alejandro Martinez",
+        "Aidan Duncan",
+        "Gan Li"
+      ],
+      "publication_date": "2026-08-12T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "A Conceptual Framework for Enhancing Workforce Readiness for Smart Manufacturing in the AI Era",
+      "citation_count": 0,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2608.11540",
+      "doi_url": "https://doi.org/10.48550/arxiv.2608.11540",
+      "doc_id": "d78d7f9daeb3d88d",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "A Conceptual Framework for Enhancing Workforce Readiness for Smart Manufacturing in the AI Era This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "sousaUnknownyearorkfor",
+      "dockey": "618ed0483002df46",
+      "citation": "JPR de Sousa. Ork for. Unknown journal, Unknown year.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "sousaUnknownyearorkfor",
+      "bibtex": "@article{sousaUnknownyearorkfor,\n    author = \"de Sousa, JPR\",\n    title = \"ork for\",\n    year = \"Unknown year\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "JPR de Sousa"
+      ],
+      "publication_date": null,
+      "year": null,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://repositorium.uminho.pt/bitstreams/3c12f7d2-9ea7-42d7-8019-fbd257eb6cad/download",
+      "title": "ork for",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "618ed0483002df46",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://repositorium.uminho.pt/bitstreams/3c12f7d2-9ea7-42d7-8019-fbd257eb6cad/download",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "JPR de Sousa. Ork for. Unknown journal, Unknown year."
+    },
+    {
+      "embedding": null,
+      "docname": "alaa2024unifiedinspectionplan",
+      "dockey": "0d9e7c0b709ea8d9",
+      "citation": "H Alaa. Unified inspection plan. Unknown journal, 2024.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "alaa2024unifiedinspectionplan",
+      "bibtex": "@article{alaa2024unifiedinspectionplan,\n    author = \"Alaa, H\",\n    title = \"Unified inspection plan\",\n    year = \"2024\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "H Alaa"
+      ],
+      "publication_date": null,
+      "year": 2024,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://theses.fr/api/v1/document/2024ENAME053",
+      "title": "Unified inspection plan",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "0d9e7c0b709ea8d9",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://theses.fr/api/v1/document/2024ENAME053",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "H Alaa. Unified inspection plan. Unknown journal, 2024."
+    },
+    {
+      "embedding": null,
+      "docname": "baulch2020advancedassetmanagement",
+      "dockey": "c1b71ecd30fb69b4",
+      "citation": "Advanced Asset Management Using Simulation Methods",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "baulch2020advancedassetmanagement",
+      "bibtex": "@phdthesis{baulch2020advancedassetmanagement,\n    author = \"Baulch, James\",\n    title = \"Advanced Asset Management Using Simulation Methods\",\n    year = \"2020\",\n    journal = \"Dissertation\",\n    month = \"Jan\",\n    doi = \"10.26190/unsworks/22057\",\n    url = \"https://doi.org/10.26190/unsworks/22057\",\n    publisher = \"UNSW Sydney\"\n}\n",
+      "authors": [
+        "James Baulch"
+      ],
+      "publication_date": "2020-01-01T00:00:00Z",
+      "year": 2020,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "Dissertation",
+      "publisher": "UNSW Sydney",
+      "url": "http://hdl.handle.net/1959.4/70067",
+      "title": "Advanced Asset Management Using Simulation Methods",
+      "citation_count": 1,
+      "bibtex_type": "phdthesis",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.26190/unsworks/22057",
+      "doi_url": "https://doi.org/10.26190/unsworks/22057",
+      "doc_id": "c1b71ecd30fb69b4",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://unsworks.unsw.edu.au/bitstreams/97dff1e9-29a5-484d-8ffa-c32aafce913c/download",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "datacite",
+          "datacite",
+          "datacite",
+          "datacite"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Advanced Asset Management Using Simulation Methods This article has 1 citations."
+    }
+  ],
+  "toolu_01RGLV2Wki5wti2qL58niwpx": [],
+  "toolu_018vrMf3AraHpp8pdcScHpeg": [],
+  "toolu_01GMsHzGzjTc48gK3KupAo7U": [
+    {
+      "embedding": null,
+      "docname": "wu2019gravitysurveysusing",
+      "dockey": "415ad1037917851e",
+      "citation": "Xuejian Wu, Zachary Pagel, Bola S. Malek, Timothy H. Nguyen, Fei Zi, Daniel S. Scheirer, and Holger M\u00fcller. Gravity surveys using a mobile atom interferometer. Sep 2019. URL: https://doi.org/10.1126/sciadv.aax0800, doi:10.1126/sciadv.aax0800.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "wu2019gravitysurveysusing",
+      "bibtex": "@misc{wu2019gravitysurveysusing,\n    author = \"Wu, Xuejian and Pagel, Zachary and Malek, Bola S. and Nguyen, Timothy H. and Zi, Fei and Scheirer, Daniel S. and M\u00fcller, Holger\",\n    title = \"Gravity surveys using a mobile atom interferometer\",\n    year = \"2019\",\n    journal = \"Science Advances\",\n    volume = \"5\",\n    month = \"Sep\",\n    doi = \"10.1126/sciadv.aax0800\",\n    url = \"https://doi.org/10.1126/sciadv.aax0800\",\n    publisher = \"American Association for the Advancement of Science (AAAS)\",\n    issue = \"9\",\n    issn = \"2375-2548\"\n}\n",
+      "authors": [
+        "Xuejian Wu",
+        "Zachary Pagel",
+        "Bola S. Malek",
+        "Timothy H. Nguyen",
+        "Fei Zi",
+        "Daniel S. Scheirer",
+        "Holger M\u00fcller"
+      ],
+      "publication_date": "2019-09-06T00:00:00Z",
+      "year": 2019,
+      "volume": "5",
+      "issue": "9",
+      "issn": "2375-2548",
+      "pages": null,
+      "journal": "Science Advances",
+      "publisher": "American Association for the Advancement of Science (AAAS)",
+      "url": "https://doi.org/10.1126/sciadv.aax0800",
+      "title": "Gravity surveys using a mobile atom interferometer",
+      "citation_count": 368,
+      "bibtex_type": "misc",
+      "source_quality": 3,
+      "is_retracted": null,
+      "doi": "10.1126/sciadv.aax0800",
+      "doi_url": "https://doi.org/10.1126/sciadv.aax0800",
+      "doc_id": "415ad1037917851e",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.science.org/doi/pdf/10.1126/sciadv.aax0800",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Xuejian Wu, Zachary Pagel, Bola S. Malek, Timothy H. Nguyen, Fei Zi, Daniel S. Scheirer, and Holger M\u00fcller. Gravity surveys using a mobile atom interferometer. Sep 2019. URL: https://doi.org/10.1126/sciadv.aax0800, doi:10.1126/sciadv.aax0800. This article has 368 citations and is from a highest quality peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "andersson2021physiologicalresponsesand",
+      "dockey": "c0c226e2f2382341",
+      "citation": "Erik P. Andersson, Irina H\u00e4mberg, Paulo Cesar Do Nascimento Salvador, and Kerry McGawley. Physiological responses and cycle characteristics during double-poling versus diagonal-stride roller-skiing in junior cross-country skiers. European Journal of Applied Physiology, 121:2229-2241, Apr 2021. URL: https://doi.org/10.1007/s00421-021-04689-2, doi:10.1007/s00421-021-04689-2.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "andersson2021physiologicalresponsesand",
+      "bibtex": "@article{andersson2021physiologicalresponsesand,\n    author = \"Andersson, Erik P. and H\u00e4mberg, Irina and Salvador, Paulo Cesar Do Nascimento and McGawley, Kerry\",\n    title = \"Physiological responses and cycle characteristics during double-poling versus diagonal-stride roller-skiing in junior cross-country skiers\",\n    year = \"2021\",\n    journal = \"European Journal of Applied Physiology\",\n    volume = \"121\",\n    pages = \"2229-2241\",\n    month = \"Apr\",\n    doi = \"10.1007/s00421-021-04689-2\",\n    url = \"https://doi.org/10.1007/s00421-021-04689-2\",\n    publisher = \"Springer Science and Business Media LLC\",\n    issue = \"8\",\n    issn = \"1439-6319\"\n}\n",
+      "authors": [
+        "Erik P. Andersson",
+        "Irina H\u00e4mberg",
+        "Paulo Cesar Do Nascimento Salvador",
+        "Kerry McGawley"
+      ],
+      "publication_date": "2021-04-24T00:00:00Z",
+      "year": 2021,
+      "volume": "121",
+      "issue": "8",
+      "issn": "1439-6319",
+      "pages": "2229-2241",
+      "journal": "European Journal of Applied Physiology",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1007/s00421-021-04689-2",
+      "title": "Physiological responses and cycle characteristics during double-poling versus diagonal-stride roller-skiing in junior cross-country skiers",
+      "citation_count": 16,
+      "bibtex_type": "article",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1007/s00421-021-04689-2",
+      "doi_url": "https://doi.org/10.1007/s00421-021-04689-2",
+      "doc_id": "c0c226e2f2382341",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://link.springer.com/content/pdf/10.1007/s00421-021-04689-2.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Erik P. Andersson, Irina H\u00e4mberg, Paulo Cesar Do Nascimento Salvador, and Kerry McGawley. Physiological responses and cycle characteristics during double-poling versus diagonal-stride roller-skiing in junior cross-country skiers. European Journal of Applied Physiology, 121:2229-2241, Apr 2021. URL: https://doi.org/10.1007/s00421-021-04689-2, doi:10.1007/s00421-021-04689-2. This article has 16 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "masilamani2026continuousnoninvasivephysiological",
+      "dockey": "023c0c41434f6899",
+      "citation": "Continuous Non-Invasive Physiological Monitoring via Skin-Emitted Volatile Organic Compounds: A Novel Wearable for Long-Duration Spaceflight",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "masilamani2026continuousnoninvasivephysiological",
+      "bibtex": "@inproceedings{masilamani2026continuousnoninvasivephysiological,\n    author = \"Masilamani, Ashok Prabhu and Abadi, Mojtaba Khomami and Hooper, Jayden K. and Kandathil, Jayan Ozhi and Kaushik, Palash and Yockell-Leli\u00e8vre, H\u00e9l\u00e8ne and Homer, Margie L.\",\n    title = \"Continuous Non-Invasive Physiological Monitoring via Skin-Emitted Volatile Organic Compounds: A Novel Wearable for Long-Duration Spaceflight\",\n    year = \"2026\",\n    journal = \"55th International Conference on Environmental Systems\",\n    month = \"Jul\",\n    doi = \"10.32865/2346/109154\",\n    url = \"https://doi.org/10.32865/2346/109154\",\n    publisher = \"International Conference on Environmental Systems\"\n}\n",
+      "authors": [
+        "Ashok Prabhu Masilamani",
+        "Mojtaba Khomami Abadi",
+        "Jayden K. Hooper",
+        "Jayan Ozhi Kandathil",
+        "Palash Kaushik",
+        "H\u00e9l\u00e8ne Yockell-Leli\u00e8vre",
+        "Margie L. Homer"
+      ],
+      "publication_date": "2026-07-12T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "55th International Conference on Environmental Systems",
+      "publisher": "International Conference on Environmental Systems",
+      "url": "https://doi.org/10.32865/2346/109154",
+      "title": "Continuous Non-Invasive Physiological Monitoring via Skin-Emitted Volatile Organic Compounds: A Novel Wearable for Long-Duration Spaceflight",
+      "citation_count": 0,
+      "bibtex_type": "inproceedings",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.32865/2346/109154",
+      "doi_url": "https://doi.org/10.32865/2346/109154",
+      "doc_id": "023c0c41434f6899",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://ttu-ir.tdl.org/bitstreams/09bdeead-feca-4f34-b5e0-20a77482b7b9/download",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Continuous Non-Invasive Physiological Monitoring via Skin-Emitted Volatile Organic Compounds: A Novel Wearable for Long-Duration Spaceflight This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "noorgostar2026multiobjectivedeepreinforcement",
+      "dockey": "8b617ae06cdb09e0",
+      "citation": "Navid Noorgostar. Multi-objective deep reinforcement learning of dynamic movement primitives for robotic manipulation. EngRxiv, Aug 2026. URL: https://doi.org/10.31224/7992, doi:10.31224/7992.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "noorgostar2026multiobjectivedeepreinforcement",
+      "bibtex": "@article{noorgostar2026multiobjectivedeepreinforcement,\n    author = \"Noorgostar, Navid\",\n    title = \"Multi-objective Deep Reinforcement Learning of Dynamic Movement Primitives for Robotic Manipulation\",\n    url = \"https://doi.org/10.31224/7992\",\n    doi = \"10.31224/7992\",\n    publisher = \"Open Engineering Inc\",\n    year = \"2026\",\n    month = \"Aug\",\n    journal = \"EngRxiv\"\n}\n",
+      "authors": [
+        "Navid Noorgostar"
+      ],
+      "publication_date": "2026-08-17T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "EngRxiv",
+      "publisher": "Open Engineering Inc",
+      "url": "https://doi.org/10.31224/7992",
+      "title": "Multi-objective Deep Reinforcement Learning of Dynamic Movement Primitives for Robotic Manipulation",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.31224/7992",
+      "doi_url": "https://doi.org/10.31224/7992",
+      "doc_id": "8b617ae06cdb09e0",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://engrxiv.org/preprint/download/7992/12962",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Navid Noorgostar. Multi-objective deep reinforcement learning of dynamic movement primitives for robotic manipulation. EngRxiv, Aug 2026. URL: https://doi.org/10.31224/7992, doi:10.31224/7992. This article has 0 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "bai2026trisensorsynergisticperception",
+      "dockey": "b6f6a80a5bfefc0d",
+      "citation": "Wei Bai, Dongpo Ban, Junguang Gao, and Chao Zhen. Tri-sensor synergistic perception for aerial inspection of transmission assets via stacked attention and pareto-aware co-optimization. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-66308-4, doi:10.1038/s41598-026-66308-4.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "bai2026trisensorsynergisticperception",
+      "bibtex": "@article{bai2026trisensorsynergisticperception,\n    author = \"Bai, Wei and Ban, Dongpo and Gao, Junguang and Zhen, Chao\",\n    title = \"Tri-sensor synergistic perception for aerial inspection of transmission assets via stacked attention and Pareto-aware co-optimization\",\n    issn = \"2045-2322\",\n    url = \"https://doi.org/10.1038/s41598-026-66308-4\",\n    doi = \"10.1038/s41598-026-66308-4\",\n    journal = \"Scientific Reports\",\n    publisher = \"Springer Science and Business Media LLC\",\n    year = \"2026\",\n    month = \"Aug\"\n}\n",
+      "authors": [
+        "Wei Bai",
+        "Dongpo Ban",
+        "Junguang Gao",
+        "Chao Zhen"
+      ],
+      "publication_date": "2026-08-12T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": "2045-2322",
+      "pages": null,
+      "journal": "Scientific Reports",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s41598-026-66308-4",
+      "title": "Tri-sensor synergistic perception for aerial inspection of transmission assets via stacked attention and Pareto-aware co-optimization",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1038/s41598-026-66308-4",
+      "doi_url": "https://doi.org/10.1038/s41598-026-66308-4",
+      "doc_id": "b6f6a80a5bfefc0d",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s41598-026-66308-4_reference.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Wei Bai, Dongpo Ban, Junguang Gao, and Chao Zhen. Tri-sensor synergistic perception for aerial inspection of transmission assets via stacked attention and pareto-aware co-optimization. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-66308-4, doi:10.1038/s41598-026-66308-4. This article has 0 citations and is from a peer-reviewed journal."
+    }
+  ],
+  "toolu_01NM9q4aRvjKUXWG19Xv1mWw": [
+    {
+      "embedding": null,
+      "docname": "suarez2020benchmarksforaerial",
+      "dockey": "10bee9baf37da327",
+      "citation": "Alejandro Suarez, Victor M. Vega, Manuel Fernandez, Guillermo Heredia, and Anibal Ollero. Benchmarks for aerial manipulation. IEEE Robotics and Automation Letters, 5:2650-2657, Apr 2020. URL: https://doi.org/10.1109/lra.2020.2972870, doi:10.1109/lra.2020.2972870.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "suarez2020benchmarksforaerial",
+      "bibtex": "@article{suarez2020benchmarksforaerial,\n    author = \"Suarez, Alejandro and Vega, Victor M. and Fernandez, Manuel and Heredia, Guillermo and Ollero, Anibal\",\n    title = \"Benchmarks for Aerial Manipulation\",\n    year = \"2020\",\n    journal = \"IEEE Robotics and Automation Letters\",\n    volume = \"5\",\n    pages = \"2650-2657\",\n    month = \"Apr\",\n    doi = \"10.1109/lra.2020.2972870\",\n    url = \"https://doi.org/10.1109/lra.2020.2972870\",\n    publisher = \"Institute of Electrical and Electronics Engineers (IEEE)\",\n    issue = \"2\",\n    issn = \"2377-3766\"\n}\n",
+      "authors": [
+        "Alejandro Suarez",
+        "Victor M. Vega",
+        "Manuel Fernandez",
+        "Guillermo Heredia",
+        "Anibal Ollero"
+      ],
+      "publication_date": "2020-04-01T00:00:00Z",
+      "year": 2020,
+      "volume": "5",
+      "issue": "2",
+      "issn": "2377-3766",
+      "pages": "2650-2657",
+      "journal": "IEEE Robotics and Automation Letters",
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "url": "https://zenodo.org/record/3817072/files/Benchmarking_Aerial_Manipualtors-PREPRINT.pdf",
+      "title": "Benchmarks for Aerial Manipulation",
+      "citation_count": 88,
+      "bibtex_type": "article",
+      "source_quality": 2,
+      "is_retracted": null,
+      "doi": "10.1109/lra.2020.2972870",
+      "doi_url": "https://doi.org/10.1109/lra.2020.2972870",
+      "doc_id": "10bee9baf37da327",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://ieeexplore.ieee.org/abstract/document/8990026/",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Alejandro Suarez, Victor M. Vega, Manuel Fernandez, Guillermo Heredia, and Anibal Ollero. Benchmarks for aerial manipulation. IEEE Robotics and Automation Letters, 5:2650-2657, Apr 2020. URL: https://doi.org/10.1109/lra.2020.2972870, doi:10.1109/lra.2020.2972870. This article has 88 citations and is from a domain leading peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "mannayee2026visionguidedroboticpickandplace",
+      "dockey": "d615491f19e898ac",
+      "citation": "Giriraj Mannayee, Kalaiarassan G., and Moulika Grandhi. Vision-guided robotic pick-and-place with variable focal length optics: mathematical modelling, illumination optimisation, and sub-millimetre accuracy assessment. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-66638-3, doi:10.1038/s41598-026-66638-3.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "mannayee2026visionguidedroboticpickandplace",
+      "bibtex": "@article{mannayee2026visionguidedroboticpickandplace,\n    author = \"Mannayee, Giriraj and G., Kalaiarassan and Grandhi, Moulika\",\n    title = \"Vision-guided robotic pick-and-place with variable focal length optics: mathematical modelling, illumination optimisation, and sub-millimetre accuracy assessment\",\n    issn = \"2045-2322\",\n    url = \"https://doi.org/10.1038/s41598-026-66638-3\",\n    doi = \"10.1038/s41598-026-66638-3\",\n    journal = \"Scientific Reports\",\n    publisher = \"Springer Science and Business Media LLC\",\n    year = \"2026\",\n    month = \"Aug\"\n}\n",
+      "authors": [
+        "Giriraj Mannayee",
+        "Kalaiarassan G.",
+        "Moulika Grandhi"
+      ],
+      "publication_date": "2026-08-19T00:00:00Z",
+      "year": 2026,
+      "volume": null,
+      "issue": null,
+      "issn": "2045-2322",
+      "pages": null,
+      "journal": "Scientific Reports",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s41598-026-66638-3",
+      "title": "Vision-guided robotic pick-and-place with variable focal length optics: mathematical modelling, illumination optimisation, and sub-millimetre accuracy assessment",
+      "citation_count": 0,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1038/s41598-026-66638-3",
+      "doi_url": "https://doi.org/10.1038/s41598-026-66638-3",
+      "doc_id": "d615491f19e898ac",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s41598-026-66638-3_reference.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Giriraj Mannayee, Kalaiarassan G., and Moulika Grandhi. Vision-guided robotic pick-and-place with variable focal length optics: mathematical modelling, illumination optimisation, and sub-millimetre accuracy assessment. Scientific Reports, Aug 2026. URL: https://doi.org/10.1038/s41598-026-66638-3, doi:10.1038/s41598-026-66638-3. This article has 0 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "jedrzejakUnknownyeareuspens26thinternational",
+      "dockey": "3e5f038e5add0b97",
+      "citation": "P J\u0119drzejak, S K\u0105kol, K Stro\u0144ski, \u0141 Giza, and K Kobiela. Euspen's 26th international conference & exhibition, krakow, pl, june 2026. Unknown journal, Unknown year.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "jedrzejakUnknownyeareuspens26thinternational",
+      "bibtex": "@article{jedrzejakUnknownyeareuspens26thinternational,\n    author = \"J\u0119drzejak, P and K\u0105kol, S and Stro\u0144ski, K and Giza, \u0141 and Kobiela, K\",\n    title = \"euspen's 26th International Conference \\& Exhibition, Krakow, PL, June 2026\",\n    year = \"Unknown year\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "P J\u0119drzejak",
+        "S K\u0105kol",
+        "K Stro\u0144ski",
+        "\u0141 Giza",
+        "K Kobiela"
+      ],
+      "publication_date": null,
+      "year": null,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://www.euspen.eu/knowledge-base/ICE26248.pdf",
+      "title": "euspen's 26th International Conference & Exhibition, Krakow, PL, June 2026",
+      "citation_count": 0,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "3e5f038e5add0b97",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.euspen.eu/knowledge-base/ICE26248.pdf",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "P J\u0119drzejak, S K\u0105kol, K Stro\u0144ski, \u0141 Giza, and K Kobiela. Euspen's 26th international conference & exhibition, krakow, pl, june 2026. Unknown journal, Unknown year."
+    }
+  ],
+  "toolu_01LbhpAGNZBWzeohWScKn3e9": [
+    {
+      "embedding": null,
+      "docname": "he2026spinewaveharnessingfish",
+      "dockey": "7fb6a27366997efc",
+      "citation": "Qu He, Weikun Li, Guangmin Dai, Hao Chen, Qimeng Liu, Xiaoqing Tian, Jie You, Weicheng Cui, Michael S. Triantafyllou, and Dixia Fan. Spinewave: harnessing fish rigid\u2013flexible spinal kinematics for enhancing biomimetic robotic locomotion. Soft Robotics, 13(4):689-705, Feb 2026. URL: https://doi.org/10.1177/21695172261417752, doi:10.1177/21695172261417752.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "he2026spinewaveharnessingfish",
+      "bibtex": "@article{he2026spinewaveharnessingfish,\n    author = \"He, Qu and Li, Weikun and Dai, Guangmin and Chen, Hao and Liu, Qimeng and Tian, Xiaoqing and You, Jie and Cui, Weicheng and Triantafyllou, Michael S. and Fan, Dixia\",\n    title = \"SpineWave: Harnessing Fish Rigid\u2013Flexible Spinal Kinematics for Enhancing Biomimetic Robotic Locomotion\",\n    volume = \"13\",\n    issn = \"2169-5172\",\n    url = \"https://doi.org/10.1177/21695172261417752\",\n    doi = \"10.1177/21695172261417752\",\n    number = \"4\",\n    journal = \"Soft Robotics\",\n    publisher = \"SAGE Publications\",\n    year = \"2026\",\n    month = \"Feb\",\n    pages = \"689-705\",\n    issue = \"4\"\n}\n",
+      "authors": [
+        "Qu He",
+        "Weikun Li",
+        "Guangmin Dai",
+        "Hao Chen",
+        "Qimeng Liu",
+        "Xiaoqing Tian",
+        "Jie You",
+        "Weicheng Cui",
+        "Michael S. Triantafyllou",
+        "Dixia Fan"
+      ],
+      "publication_date": "2026-02-04T00:00:00Z",
+      "year": 2026,
+      "volume": "13",
+      "issue": "4",
+      "issn": "2169-5172",
+      "pages": "689-705",
+      "journal": "Soft Robotics",
+      "publisher": "SAGE Publications",
+      "url": "https://doi.org/10.1177/21695172261417752",
+      "title": "SpineWave: Harnessing Fish Rigid\u2013Flexible Spinal Kinematics for Enhancing Biomimetic Robotic Locomotion",
+      "citation_count": 5,
+      "bibtex_type": "misc",
+      "source_quality": 2,
+      "is_retracted": null,
+      "doi": "10.1177/21695172261417752",
+      "doi_url": "https://doi.org/10.1177/21695172261417752",
+      "doc_id": "7fb6a27366997efc",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Qu He, Weikun Li, Guangmin Dai, Hao Chen, Qimeng Liu, Xiaoqing Tian, Jie You, Weicheng Cui, Michael S. Triantafyllou, and Dixia Fan. Spinewave: harnessing fish rigid\u2013flexible spinal kinematics for enhancing biomimetic robotic locomotion. Soft Robotics, 13(4):689-705, Feb 2026. URL: https://doi.org/10.1177/21695172261417752, doi:10.1177/21695172261417752. This article has 5 citations and is from a domain leading peer-reviewed journal."
+    }
+  ],
+  "toolu_01M9zD7XkUnEvyHucehPqjt1": [],
+  "toolu_01JBqH8qGPstdsGxzujVatGy": [],
+  "toolu_01GfWmaKofY44CjPZF85LLye": [],
+  "toolu_01VWUcfA6WYAyqcoKRoXKE2v": [],
+  "toolu_014SdQS7qUz1ri7fbULzNYV4": [
+    {
+      "embedding": null,
+      "docname": "canty2025scienceaccelerationand",
+      "dockey": "91d4caafa087e816",
+      "citation": "Richard B. Canty, Jeffrey A. Bennett, Keith A. Brown, Tonio Buonassisi, Sergei V. Kalinin, John R. Kitchin, Benji Maruyama, Robert G. Moore, Joshua Schrier, Martin Seifrid, Shijing Sun, Tejs Vegge, and Milad Abolhasani. Science acceleration and accessibility with self-driving labs. Nature Communications, Apr 2025. URL: https://doi.org/10.1038/s41467-025-59231-1, doi:10.1038/s41467-025-59231-1.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "canty2025scienceaccelerationand",
+      "bibtex": "@article{canty2025scienceaccelerationand,\n    author = \"Canty, Richard B. and Bennett, Jeffrey A. and Brown, Keith A. and Buonassisi, Tonio and Kalinin, Sergei V. and Kitchin, John R. and Maruyama, Benji and Moore, Robert G. and Schrier, Joshua and Seifrid, Martin and Sun, Shijing and Vegge, Tejs and Abolhasani, Milad\",\n    title = \"Science acceleration and accessibility with self-driving labs\",\n    year = \"2025\",\n    journal = \"Nature Communications\",\n    volume = \"16\",\n    month = \"Apr\",\n    doi = \"10.1038/s41467-025-59231-1\",\n    url = \"https://doi.org/10.1038/s41467-025-59231-1\",\n    publisher = \"Springer Science and Business Media LLC\",\n    issue = \"1\",\n    issn = \"2041-1723\"\n}\n",
+      "authors": [
+        "Richard B. Canty",
+        "Jeffrey A. Bennett",
+        "Keith A. Brown",
+        "Tonio Buonassisi",
+        "Sergei V. Kalinin",
+        "John R. Kitchin",
+        "Benji Maruyama",
+        "Robert G. Moore",
+        "Joshua Schrier",
+        "Martin Seifrid",
+        "Shijing Sun",
+        "Tejs Vegge",
+        "Milad Abolhasani"
+      ],
+      "publication_date": "2025-04-24T00:00:00Z",
+      "year": 2025,
+      "volume": "16",
+      "issue": "1",
+      "issn": "2041-1723",
+      "pages": null,
+      "journal": "Nature Communications",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s41467-025-59231-1",
+      "title": "Science acceleration and accessibility with self-driving labs",
+      "citation_count": 130,
+      "bibtex_type": "article",
+      "source_quality": 3,
+      "is_retracted": null,
+      "doi": "10.1038/s41467-025-59231-1",
+      "doi_url": "https://doi.org/10.1038/s41467-025-59231-1",
+      "doc_id": "91d4caafa087e816",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s41467-025-59231-1.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Richard B. Canty, Jeffrey A. Bennett, Keith A. Brown, Tonio Buonassisi, Sergei V. Kalinin, John R. Kitchin, Benji Maruyama, Robert G. Moore, Joshua Schrier, Martin Seifrid, Shijing Sun, Tejs Vegge, and Milad Abolhasani. Science acceleration and accessibility with self-driving labs. Nature Communications, Apr 2025. URL: https://doi.org/10.1038/s41467-025-59231-1, doi:10.1038/s41467-025-59231-1. This article has 130 citations and is from a highest quality peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "carvalho2025aperformanceevaluation",
+      "dockey": "05b736efff31bbf2",
+      "citation": "Marcus Vin\u00edcius Leal De Carvalho, Roberto Simoni, Leopoldo Rideki Yoshioka, Jo\u00e3o Francisco Justo Filho, and Bruno M. K. Kawakami. A performance evaluation of open source autonomous driving frameworks: case studies of apollo and autoware. IEEE Access, 13:44294-44316, Jan 2025. URL: https://doi.org/10.1109/access.2025.3549649, doi:10.1109/access.2025.3549649.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "carvalho2025aperformanceevaluation",
+      "bibtex": "@article{carvalho2025aperformanceevaluation,\n    author = \"Carvalho, Marcus Vin\u00edcius Leal De and Simoni, Roberto and Yoshioka, Leopoldo Rideki and Filho, Jo\u00e3o Francisco Justo and Kawakami, Bruno M. K.\",\n    title = \"A Performance Evaluation of Open Source Autonomous Driving Frameworks: Case Studies of Apollo and Autoware\",\n    year = \"2025\",\n    journal = \"IEEE Access\",\n    volume = \"13\",\n    pages = \"44294-44316\",\n    doi = \"10.1109/access.2025.3549649\",\n    url = \"https://doi.org/10.1109/access.2025.3549649\",\n    month = \"Jan\",\n    publisher = \"Institute of Electrical and Electronics Engineers (IEEE)\",\n    issn = \"2169-3536\"\n}\n",
+      "authors": [
+        "Marcus Vin\u00edcius Leal De Carvalho",
+        "Roberto Simoni",
+        "Leopoldo Rideki Yoshioka",
+        "Jo\u00e3o Francisco Justo Filho",
+        "Bruno M. K. Kawakami"
+      ],
+      "publication_date": "2025-01-01T00:00:00Z",
+      "year": 2025,
+      "volume": "13",
+      "issue": null,
+      "issn": "2169-3536",
+      "pages": "44294-44316",
+      "journal": "IEEE Access",
+      "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+      "url": "https://doi.org/10.1109/access.2025.3549649",
+      "title": "A Performance Evaluation of Open Source Autonomous Driving Frameworks: Case Studies of Apollo and Autoware",
+      "citation_count": 11,
+      "bibtex_type": "article",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1109/access.2025.3549649",
+      "doi_url": "https://doi.org/10.1109/access.2025.3549649",
+      "doc_id": "05b736efff31bbf2",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://ieeexplore.ieee.org/iel8/6287639/6514899/10918696.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Marcus Vin\u00edcius Leal De Carvalho, Roberto Simoni, Leopoldo Rideki Yoshioka, Jo\u00e3o Francisco Justo Filho, and Bruno M. K. Kawakami. A performance evaluation of open source autonomous driving frameworks: case studies of apollo and autoware. IEEE Access, 13:44294-44316, Jan 2025. URL: https://doi.org/10.1109/access.2025.3549649, doi:10.1109/access.2025.3549649. This article has 11 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "houx2601benchmarkingautonomyin",
+      "dockey": "2b890ed0871c4b6e",
+      "citation": "James Le Houx. Benchmarking autonomy in scientific experiments: a hierarchical taxonomy for autonomous large-scale facilities. ArXiv, Jan 2601. URL: https://doi.org/10.48550/arxiv.2601.06978, doi:10.48550/arxiv.2601.06978.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "houx2601benchmarkingautonomyin",
+      "bibtex": "@article{houx2601benchmarkingautonomyin,\n    author = \"Houx, James Le\",\n    booktitle = \"arXiv.org\",\n    journal = \"ArXiv\",\n    title = \"Benchmarking Autonomy in Scientific Experiments: A Hierarchical Taxonomy for Autonomous Large-Scale Facilities\",\n    volume = \"abs/2601.06978\",\n    year = \"2601\",\n    month = \"Jan\",\n    doi = \"10.48550/arxiv.2601.06978\",\n    url = \"https://doi.org/10.48550/arxiv.2601.06978\"\n}\n",
+      "authors": [
+        "James Le Houx"
+      ],
+      "publication_date": "2026-01-11T00:00:00Z",
+      "year": 2601,
+      "volume": "abs/2601.06978",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "Benchmarking Autonomy in Scientific Experiments: A Hierarchical Taxonomy for Autonomous Large-Scale Facilities",
+      "citation_count": 2,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2601.06978",
+      "doi_url": "https://doi.org/10.48550/arxiv.2601.06978",
+      "doc_id": "2b890ed0871c4b6e",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "James Le Houx. Benchmarking autonomy in scientific experiments: a hierarchical taxonomy for autonomous large-scale facilities. ArXiv, Jan 2601. URL: https://doi.org/10.48550/arxiv.2601.06978, doi:10.48550/arxiv.2601.06978. This article has 2 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "chen2026agenticaifor",
+      "dockey": "fbbf18d05f806a76",
+      "citation": "Xuanzhou Chen, Audrey X. Wang, S. Yin, Hanyang Jiang, and Dong Zhang. Agentic ai for self-driving laboratories in soft matter: taxonomy, benchmarks,and open challenges. ArXiv, Jan 2026. URL: https://doi.org/10.48550/arxiv.2601.17920, doi:10.48550/arxiv.2601.17920.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "chen2026agenticaifor",
+      "bibtex": "@article{chen2026agenticaifor,\n    author = \"Chen, Xuanzhou and Wang, Audrey X. and Yin, S. and Jiang, Hanyang and Zhang, Dong\",\n    booktitle = \"arXiv.org\",\n    journal = \"ArXiv\",\n    title = \"Agentic AI for Self-Driving Laboratories in Soft Matter: Taxonomy, Benchmarks,and Open Challenges\",\n    volume = \"abs/2601.17920\",\n    year = \"2026\",\n    month = \"Jan\",\n    doi = \"10.48550/arxiv.2601.17920\",\n    url = \"https://doi.org/10.48550/arxiv.2601.17920\"\n}\n",
+      "authors": [
+        "Xuanzhou Chen",
+        "Audrey X. Wang",
+        "S. Yin",
+        "Hanyang Jiang",
+        "Dong Zhang"
+      ],
+      "publication_date": "2026-01-25T00:00:00Z",
+      "year": 2026,
+      "volume": "abs/2601.17920",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "Agentic AI for Self-Driving Laboratories in Soft Matter: Taxonomy, Benchmarks,and Open Challenges",
+      "citation_count": 3,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2601.17920",
+      "doi_url": "https://doi.org/10.48550/arxiv.2601.17920",
+      "doc_id": "fbbf18d05f806a76",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "Xuanzhou Chen, Audrey X. Wang, S. Yin, Hanyang Jiang, and Dong Zhang. Agentic ai for self-driving laboratories in soft matter: taxonomy, benchmarks,and open challenges. ArXiv, Jan 2026. URL: https://doi.org/10.48550/arxiv.2601.17920, doi:10.48550/arxiv.2601.17920. This article has 3 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "lo2024reviewoflowcost",
+      "dockey": "c6a566f0f91adc86",
+      "citation": "Stanley Lo, Sterling G. Baird, Joshua Schrier, B. Blaiszik, Nessa Carson, Ian T. Foster, Andr\u00e9s Aguilar-Granda, Sergei V. Kalinin, Benji Maruyama, Maria Politi, Helen Tran, Taylor D. Sparks, and Al\u00e1n Aspuru-Guzik. Review of low-cost self-driving laboratories in chemistry and materials science: the \"frugal twin\" concept. Digital Discovery, 3:842-868, Jan 2024. URL: https://doi.org/10.1039/d3dd00223c, doi:10.1039/d3dd00223c.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "lo2024reviewoflowcost",
+      "bibtex": "@article{lo2024reviewoflowcost,\n    author = \"Lo, Stanley and Baird, Sterling G. and Schrier, Joshua and Blaiszik, B. and Carson, Nessa and Foster, Ian T. and Aguilar-Granda, Andr\u00e9s and Kalinin, Sergei V. and Maruyama, Benji and Politi, Maria and Tran, Helen and Sparks, Taylor D. and Aspuru-Guzik, Al\u00e1n\",\n    title = {Review of Low-cost Self-driving Laboratories in Chemistry and Materials Science: The \"Frugal Twin\" Concept},\n    year = \"2024\",\n    journal = \"Digital Discovery\",\n    doi = \"10.1039/d3dd00223c\",\n    url = \"https://doi.org/10.1039/d3dd00223c\",\n    volume = \"3\",\n    pages = \"842-868\",\n    month = \"Jan\",\n    publisher = \"Royal Society of Chemistry (RSC)\",\n    issue = \"5\",\n    issn = \"2635-098X\"\n}\n",
+      "authors": [
+        "Stanley Lo",
+        "Sterling G. Baird",
+        "Joshua Schrier",
+        "B. Blaiszik",
+        "Nessa Carson",
+        "Ian T. Foster",
+        "Andr\u00e9s Aguilar-Granda",
+        "Sergei V. Kalinin",
+        "Benji Maruyama",
+        "Maria Politi",
+        "Helen Tran",
+        "Taylor D. Sparks",
+        "Al\u00e1n Aspuru-Guzik"
+      ],
+      "publication_date": "2024-01-01T00:00:00Z",
+      "year": 2024,
+      "volume": "3",
+      "issue": "5",
+      "issn": "2635-098X",
+      "pages": "842-868",
+      "journal": "Digital Discovery",
+      "publisher": "Royal Society of Chemistry (RSC)",
+      "url": "https://doi.org/10.1039/d3dd00223c",
+      "title": "Review of Low-cost Self-driving Laboratories in Chemistry and Materials Science: The \"Frugal Twin\" Concept",
+      "citation_count": 121,
+      "bibtex_type": "article",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1039/d3dd00223c",
+      "doi_url": "https://doi.org/10.1039/d3dd00223c",
+      "doc_id": "c6a566f0f91adc86",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://pubs.rsc.org/dd/article-pdf/3/5/842/9050697/d3dd00223c.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref",
+          "semantic_scholar",
+          "crossref",
+          "crossref",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "self_generated"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Stanley Lo, Sterling G. Baird, Joshua Schrier, B. Blaiszik, Nessa Carson, Ian T. Foster, Andr\u00e9s Aguilar-Granda, Sergei V. Kalinin, Benji Maruyama, Maria Politi, Helen Tran, Taylor D. Sparks, and Al\u00e1n Aspuru-Guzik. Review of low-cost self-driving laboratories in chemistry and materials science: the \"frugal twin\" concept. Digital Discovery, 3:842-868, Jan 2024. URL: https://doi.org/10.1039/d3dd00223c, doi:10.1039/d3dd00223c. This article has 121 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "koubaa2602towardselfdrivinguniversities",
+      "dockey": "51eb6e42f36e1780",
+      "citation": "Anis Koubaa. Toward self-driving universities: can universities drive themselves with agentic ai? ArXiv, Feb 2602. URL: https://doi.org/10.48550/arxiv.2602.18461, doi:10.48550/arxiv.2602.18461.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "koubaa2602towardselfdrivinguniversities",
+      "bibtex": "@article{koubaa2602towardselfdrivinguniversities,\n    author = \"Koubaa, Anis\",\n    booktitle = \"arXiv.org\",\n    journal = \"ArXiv\",\n    title = \"Toward Self-Driving Universities: Can Universities Drive Themselves with Agentic AI?\",\n    volume = \"abs/2602.18461\",\n    year = \"2602\",\n    month = \"Feb\",\n    doi = \"10.48550/arxiv.2602.18461\",\n    url = \"https://doi.org/10.48550/arxiv.2602.18461\"\n}\n",
+      "authors": [
+        "Anis Koubaa"
+      ],
+      "publication_date": "2026-02-06T00:00:00Z",
+      "year": 2602,
+      "volume": "abs/2602.18461",
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": "ArXiv",
+      "publisher": null,
+      "url": "",
+      "title": "Toward Self-Driving Universities: Can Universities Drive Themselves with Agentic AI?",
+      "citation_count": 2,
+      "bibtex_type": "article",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.48550/arxiv.2602.18461",
+      "doi_url": "https://doi.org/10.48550/arxiv.2602.18461",
+      "doc_id": "51eb6e42f36e1780",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar"
+        ]
+      },
+      "formatted_citation": "Anis Koubaa. Toward self-driving universities: can universities drive themselves with agentic ai? ArXiv, Feb 2602. URL: https://doi.org/10.48550/arxiv.2602.18461, doi:10.48550/arxiv.2602.18461. This article has 2 citations."
+    },
+    {
+      "embedding": null,
+      "docname": "salazarvillacis2026theadeptframework",
+      "dockey": "59453c2c556d5c4a",
+      "citation": "Pablo Salazar-Villacis and Brahim Benyahia. The adept framework for assessing autonomous laboratory robotics. Communications Chemistry, Feb 2026. URL: https://doi.org/10.1038/s42004-026-01932-9, doi:10.1038/s42004-026-01932-9.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "salazarvillacis2026theadeptframework",
+      "bibtex": "@article{salazarvillacis2026theadeptframework,\n    author = \"Salazar-Villacis, Pablo and Benyahia, Brahim\",\n    title = \"The ADePT framework for assessing autonomous laboratory robotics\",\n    volume = \"9\",\n    issn = \"2399-3669\",\n    url = \"https://doi.org/10.1038/s42004-026-01932-9\",\n    doi = \"10.1038/s42004-026-01932-9\",\n    number = \"1\",\n    journal = \"Communications Chemistry\",\n    publisher = \"Springer Science and Business Media LLC\",\n    year = \"2026\",\n    month = \"Feb\",\n    issue = \"1\"\n}\n",
+      "authors": [
+        "Pablo Salazar-Villacis",
+        "Brahim Benyahia"
+      ],
+      "publication_date": "2026-02-20T00:00:00Z",
+      "year": 2026,
+      "volume": "9",
+      "issue": "1",
+      "issn": "2399-3669",
+      "pages": null,
+      "journal": "Communications Chemistry",
+      "publisher": "Springer Science and Business Media LLC",
+      "url": "https://doi.org/10.1038/s42004-026-01932-9",
+      "title": "The ADePT framework for assessing autonomous laboratory robotics",
+      "citation_count": 9,
+      "bibtex_type": "misc",
+      "source_quality": 1,
+      "is_retracted": null,
+      "doi": "10.1038/s42004-026-01932-9",
+      "doi_url": "https://doi.org/10.1038/s42004-026-01932-9",
+      "doc_id": "59453c2c556d5c4a",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.nature.com/articles/s42004-026-01932-9.pdf",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Pablo Salazar-Villacis and Brahim Benyahia. The adept framework for assessing autonomous laboratory robotics. Communications Chemistry, Feb 2026. URL: https://doi.org/10.1038/s42004-026-01932-9, doi:10.1038/s42004-026-01932-9. This article has 9 citations and is from a peer-reviewed journal."
+    },
+    {
+      "embedding": null,
+      "docname": "kootbally2024standardsandperformance",
+      "dockey": "84ab2a4601430043",
+      "citation": "Standards and performance metrics for on-road automated vehicles",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "kootbally2024standardsandperformance",
+      "bibtex": "@techreport{kootbally2024standardsandperformance,\n    author = \"Kootbally, Zeid Suzanne and Rachakonda, Prem and Lightman, Suzanne and Vassilev, Apostol and Wollman, David A and Griffor, Edward\",\n    title = \"Standards and performance metrics for on-road automated vehicles\",\n    year = \"2024\",\n    journal = \"Unknown journal\",\n    month = \"Jun\",\n    doi = \"10.6028/nist.ir.8527\",\n    url = \"https://doi.org/10.6028/nist.ir.8527\",\n    publisher = \"National Institute of Standards and Technology (U.S.)\"\n}\n",
+      "authors": [
+        "Zeid Suzanne Kootbally",
+        "Prem Rachakonda",
+        "Suzanne Lightman",
+        "Apostol Vassilev",
+        "David A Wollman",
+        "Edward Griffor"
+      ],
+      "publication_date": "2024-06-04T00:00:00Z",
+      "year": 2024,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": "National Institute of Standards and Technology (U.S.)",
+      "url": "https://doi.org/10.6028/nist.ir.8527",
+      "title": "Standards and performance metrics for on-road automated vehicles",
+      "citation_count": 14,
+      "bibtex_type": "techreport",
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": "10.6028/nist.ir.8527",
+      "doi_url": "https://doi.org/10.6028/nist.ir.8527",
+      "doc_id": "84ab2a4601430043",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://doi.org/10.6028/nist.ir.8527",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "semantic_scholar",
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Standards and performance metrics for on-road automated vehicles"
+    },
+    {
+      "embedding": null,
+      "docname": "nematov2025thebrightfuture",
+      "dockey": "41c8b0b0d2dd54af",
+      "citation": "Dilshod Nematov and Iskandar Raufov. The bright future of materials science with ai: self-driving laboratories and closed-loop discovery. Sep 2025. URL: https://doi.org/10.20944/preprints202509.1369.v1, doi:10.20944/preprints202509.1369.v1.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "nematov2025thebrightfuture",
+      "bibtex": "@misc{nematov2025thebrightfuture,\n    author = \"Nematov, Dilshod and Raufov, Iskandar\",\n    title = \"The Bright Future of Materials Science with AI: Self-Driving Laboratories and Closed-Loop Discovery\",\n    year = \"2025\",\n    journal = \"Unknown journal\",\n    month = \"Sep\",\n    doi = \"10.20944/preprints202509.1369.v1\",\n    url = \"https://doi.org/10.20944/preprints202509.1369.v1\",\n    publisher = \"MDPI AG\"\n}\n",
+      "authors": [
+        "Dilshod Nematov",
+        "Iskandar Raufov"
+      ],
+      "publication_date": "2025-09-16T00:00:00Z",
+      "year": 2025,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": "MDPI AG",
+      "url": "https://doi.org/10.20944/preprints202509.1369.v1",
+      "title": "The Bright Future of Materials Science with AI: Self-Driving Laboratories and Closed-Loop Discovery",
+      "citation_count": 16,
+      "bibtex_type": "misc",
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": "10.20944/preprints202509.1369.v1",
+      "doi_url": "https://doi.org/10.20944/preprints202509.1369.v1",
+      "doc_id": "41c8b0b0d2dd54af",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=5480608",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "Dilshod Nematov and Iskandar Raufov. The bright future of materials science with ai: self-driving laboratories and closed-loop discovery. Sep 2025. URL: https://doi.org/10.20944/preprints202509.1369.v1, doi:10.20944/preprints202509.1369.v1."
+    }
+  ],
+  "toolu_01X4fMBis7y4aSS6GDqa71fb": [],
+  "toolu_01X53oHQHmGC46A8kwti3xZz": [],
+  "toolu_01ProNer5xXiabnueAnYHH5y": [
+    {
+      "embedding": null,
+      "docname": "rascon2024ecosystemvisualizationand",
+      "dockey": "79521bd4b25ea23e",
+      "citation": "Ecosystem Visualization and Diversity Analysis of the Fourth Digital Age in Architecture",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "rascon2024ecosystemvisualizationand",
+      "bibtex": "@inproceedings{rascon2024ecosystemvisualizationand,\n    author = \"Rasc\u00f3n, Aar\u00f3n Tadeo Onchi and Cruz, Jorge Alberto Cid and Mena, Camilo Caraveo and Medina, David Abdel Mej\u00eda and Morales, Gonzalo Boj\u00f3rquez\",\n    title = \"Ecosystem Visualization and Diversity Analysis of the Fourth Digital Age in Architecture\",\n    year = \"2024\",\n    journal = \"Blucher Design Proceedings\",\n    pages = \"1170-1181\",\n    month = \"Jun\",\n    doi = \"10.5151/sigradi2023-222\",\n    url = \"https://doi.org/10.5151/sigradi2023-222\",\n    publisher = \"Editora Blucher\"\n}\n",
+      "authors": [
+        "Aar\u00f3n Tadeo Onchi Rasc\u00f3n",
+        "Jorge Alberto Cid Cruz",
+        "Camilo Caraveo Mena",
+        "David Abdel Mej\u00eda Medina",
+        "Gonzalo Boj\u00f3rquez Morales"
+      ],
+      "publication_date": "2024-06-01T00:00:00Z",
+      "year": 2024,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": "1170-1181",
+      "journal": "Blucher Design Proceedings",
+      "publisher": "Editora Blucher",
+      "url": "https://doi.org/10.5151/sigradi2023-222",
+      "title": "Ecosystem Visualization and Diversity Analysis of the Fourth Digital Age in Architecture",
+      "citation_count": 0,
+      "bibtex_type": "inproceedings",
+      "source_quality": -1,
+      "is_retracted": null,
+      "doi": "10.5151/sigradi2023-222",
+      "doi_url": "https://doi.org/10.5151/sigradi2023-222",
+      "doc_id": "79521bd4b25ea23e",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://doi.org/10.5151/sigradi2023-222",
+      "other": {
+        "client_source": [
+          "paper_search",
+          "semantic_scholar",
+          "semantic_scholar",
+          "crossref",
+          "crossref"
+        ],
+        "bibtex_source": [
+          "self_generated",
+          "semantic_scholar",
+          "self_generated",
+          "semantic_scholar",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ],
+          "self_generated",
+          [
+            "self_generated"
+          ],
+          [
+            "crossref"
+          ]
+        ]
+      },
+      "formatted_citation": "Ecosystem Visualization and Diversity Analysis of the Fourth Digital Age in Architecture This article has 0 citations."
+    }
+  ],
+  "toolu_01P1NAPTbXw5gcay53Y1hsYk": [],
+  "toolu_01LGUQsYa5NZ16EDYLCoBW22": [
+    {
+      "embedding": null,
+      "docname": "lepe2014contributiontomicromilling",
+      "dockey": "f74973a5dcdde0f2",
+      "citation": "E V\u00e1zquez Lepe. Contribution to micro-milling process parameters selection for process planning operations. Unknown journal, 2014.",
+      "content_hash": null,
+      "fields_to_overwrite_from_metadata": [
+        "citation",
+        "content_hash",
+        "doc_id",
+        "dockey",
+        "docname",
+        "key"
+      ],
+      "key": "lepe2014contributiontomicromilling",
+      "bibtex": "@article{lepe2014contributiontomicromilling,\n    author = \"Lepe, E V\u00e1zquez\",\n    title = \"Contribution to micro-milling process parameters selection for process planning operations\",\n    year = \"2014\",\n    journal = \"Unknown journal\"\n}\n",
+      "authors": [
+        "E V\u00e1zquez Lepe"
+      ],
+      "publication_date": null,
+      "year": 2014,
+      "volume": null,
+      "issue": null,
+      "issn": null,
+      "pages": null,
+      "journal": null,
+      "publisher": null,
+      "url": "https://www.tdx.cat/bitstream/handle/10803/145377/tevvl.pdf?sequence=2",
+      "title": "Contribution to micro-milling process parameters selection for process planning operations",
+      "citation_count": 1,
+      "bibtex_type": null,
+      "source_quality": null,
+      "is_retracted": null,
+      "doi": null,
+      "doi_url": null,
+      "doc_id": "f74973a5dcdde0f2",
+      "file_location": null,
+      "license": null,
+      "pdf_url": "https://www.tdx.cat/bitstream/handle/10803/145377/tevvl.pdf?sequence=2",
+      "other": {
+        "client_source": [
+          "paper_search"
+        ],
+        "bibtex_source": [
+          "self_generated"
+        ]
+      },
+      "formatted_citation": "E V\u00e1zquez Lepe. Contribution to micro-milling process parameters selection for process planning operations. Unknown journal, 2014."
+    }
+  ],
+  "toolu_01Lqwac2hvk6LKPM2DhnKGVA": [],
+  "toolu_01CESLQYSUQKprPhfZ4X1Jsj": [],
+  "toolu_01UAfdXYtPm24qN31EMMJRNT": []
+}

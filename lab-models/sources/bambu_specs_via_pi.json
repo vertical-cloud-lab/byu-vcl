@@ -1,0 +1,8 @@
+{
+  "fetched": "2026-09-26, through the CubXL Pi's residential IP (the runner gets HTTP 403 from bambulab.com)",
+  "a1_mini": {"url": "https://bambulab.com/en/a1-mini/tech-specs", "http": 200,
+              "physical_dimensions": "347mm*315mm*365mm", "build_volume": "180mm*180mm*180mm", "net_weight": "5.5 kg"},
+  "h2d": {"url": "https://bambulab.com/en/h2d/tech-specs", "http": 200,
+          "physical_dimensions": "492mm*514mm*626mm", "net_weight": "31 kg",
+          "build_volume": {"single_nozzle": "325mm*320mm*325mm", "dual_nozzle": "300mm*320mm*320mm"}}
+}

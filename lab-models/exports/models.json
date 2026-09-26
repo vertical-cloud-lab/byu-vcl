@@ -1,0 +1,861 @@
+{
+  "charge_cup_empty": {
+    "title": "Atomizer charge cup (P2), empty",
+    "source": "lab CAD (#222 STEP)",
+    "parts": 1,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g": 32.0,
+    "group": "tier1"
+  },
+  "charge_cup_charged": {
+    "title": "Atomizer charge cup (P2), charged with powder, plug pressed in",
+    "source": "lab CAD (#222 STEP)",
+    "parts": 3,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "mass_g": "40-45",
+    "group": "tier1"
+  },
+  "charge_plug": {
+    "title": "Vented press-fit plug (P3)",
+    "source": "lab CAD (#222 STEP)",
+    "parts": 1,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      9.53
+    ],
+    "group": "tier1"
+  },
+  "solid_slug": {
+    "title": "Solid slug (P1), the reference object",
+    "source": "lab CAD (#222 STEP)",
+    "parts": 1,
+    "bbox_mm": [
+      19.05,
+      19.05,
+      63.5
+    ],
+    "group": "tier1"
+  },
+  "press_sleeve": {
+    "title": "Press sleeve (F1), 1018 steel",
+    "source": "lab CAD (#222 STEP)",
+    "parts": 1,
+    "bbox_mm": [
+      31.75,
+      31.75,
+      63.5
+    ],
+    "group": "tier1"
+  },
+  "griffin_beaker_100ml": {
+    "title": "100 mL Griffin beaker (low form)",
+    "source": "modelled from specs (~50 x 70 mm)",
+    "parts": 1,
+    "bbox_mm": [
+      52.4,
+      57.2,
+      70.0
+    ],
+    "group": "tier1"
+  },
+  "auger_module": {
+    "title": "Powder-doser auger module (PLA, 48T gear)",
+    "source": "modelled from powder-doser#128/#131 dims",
+    "parts": 2,
+    "bbox_mm": [
+      250.0,
+      49.99,
+      49.99
+    ],
+    "group": "tier1"
+  },
+  "sem_stub_12_7": {
+    "title": "SEM pin stub, 12.7 mm (Ted Pella 16111), with sample",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      12.7,
+      12.7,
+      12.85
+    ],
+    "head_d_mm": 12.7,
+    "overall_h_mm": 11.2,
+    "group": "tier1"
+  },
+  "vial_20ml_empty": {
+    "title": "20 mL vial, 24-400 cap, empty",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      28.0,
+      28.0,
+      60.0
+    ],
+    "od_mm": 28.0,
+    "height_with_cap_mm": 60.0,
+    "fill": "empty",
+    "group": "tier1"
+  },
+  "vial_20ml_powder": {
+    "title": "20 mL vial, 24-400 cap, powder",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      28.0,
+      28.0,
+      60.0
+    ],
+    "od_mm": 28.0,
+    "height_with_cap_mm": 60.0,
+    "fill": "powder",
+    "group": "tier1"
+  },
+  "vial_20ml_water": {
+    "title": "20 mL vial, 24-400 cap, water",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      28.0,
+      28.0,
+      60.0
+    ],
+    "od_mm": 28.0,
+    "height_with_cap_mm": 60.0,
+    "fill": "water",
+    "group": "tier1"
+  },
+  "vial_2ml_empty": {
+    "title": "2 mL autosampler vial, 9 mm screw cap, empty",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      12.0,
+      12.0,
+      34.5
+    ],
+    "od_mm": 11.6,
+    "height_with_cap_mm": 34.5,
+    "fill": "empty",
+    "group": "tier1"
+  },
+  "conical_15ml": {
+    "title": "15 mL conical tube (Falcon)",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      22.98,
+      22.98,
+      120.75
+    ],
+    "group": "tier1"
+  },
+  "plate_96_nest": {
+    "title": "96-well plate, 200 uL flat (NEST, the OT-2 plate in use)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      14.3
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 14.3,
+    "wells": 96,
+    "group": "tier1"
+  },
+  "plate_96_nest_sealed": {
+    "title": "96-well plate, 200 uL flat (NEST, the OT-2 plate in use), sealed with water",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      14.4
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 14.3,
+    "wells": 96,
+    "group": "tier1"
+  },
+  "tiprack_20ul": {
+    "title": "Opentrons 96 tip rack, 20 uL (the P20 rack in slot 2)",
+    "source": "modelled from specs (Opentrons labware definition)",
+    "parts": 2,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      64.69
+    ],
+    "group": "tier1"
+  },
+  "coupon_lpbf_dogbone": {
+    "title": "Tensile coupon, PETG replica of the LPBF dog-bone (100 x 10 x 6)",
+    "source": "modelled from #77",
+    "parts": 1,
+    "bbox_mm": [
+      100.0,
+      10.0,
+      6.0
+    ],
+    "group": "tier1"
+  },
+  "coupon_d638_type_v": {
+    "title": "Tensile coupon, ASTM D638 Type V",
+    "source": "ASTM D638 Type V",
+    "parts": 1,
+    "bbox_mm": [
+      63.5,
+      9.53,
+      3.2
+    ],
+    "group": "tier1"
+  },
+  "weigh_boat_41mm": {
+    "title": "Anti-static weigh boat, 41 x 41 x 8 mm",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      41.0,
+      41.0,
+      8.0
+    ],
+    "group": "tier1"
+  },
+  "spoonula": {
+    "title": "Spoonula / micro-spatula, stainless, 180 mm",
+    "source": "modelled from specs (assumed)",
+    "parts": 1,
+    "bbox_mm": [
+      179.0,
+      13.0,
+      3.0
+    ],
+    "group": "tier1"
+  },
+  "media_bottle_gl45": {
+    "title": "100 mL media bottle, GL45 cap (WetRobo cap task)",
+    "source": "modelled from specs (assumed ~56 x 105 mm)",
+    "parts": 4,
+    "bbox_mm": [
+      56.0,
+      56.0,
+      113.0
+    ],
+    "group": "tier2"
+  },
+  "petri_90mm": {
+    "title": "90 mm Petri dish with lid (WetRobo lid task)",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      92.4,
+      92.4,
+      16.1
+    ],
+    "group": "tier2"
+  },
+  "headspace_vial_10ml": {
+    "title": "10 mL crimp-top headspace vial, 20 mm crimp",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      22.5,
+      22.5,
+      46.5
+    ],
+    "group": "tier2"
+  },
+  "alumina_crucible_10ml": {
+    "title": "Alumina crucible, 10 mL, with lid (22 x 33 mm)",
+    "source": "modelled from specs (CoorsTek/AdValue)",
+    "parts": 2,
+    "bbox_mm": [
+      22.0,
+      22.0,
+      35.0
+    ],
+    "group": "tier2"
+  },
+  "dsc_pan_tzero": {
+    "title": "TA Tzero Al DSC pan + lid (901683.901 + 901671.901)",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      15.4,
+      7.3,
+      2.6
+    ],
+    "group": "tier2"
+  },
+  "al_weigh_dish_57mm": {
+    "title": "Aluminium weighing dish, 57 mm, with tab",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      71.75,
+      63.5,
+      15.0
+    ],
+    "group": "tier2"
+  },
+  "mini_lpbf_build_plate": {
+    "title": "Mini LPBF build plate, 26 x 25 x 1 mm",
+    "source": "#61",
+    "parts": 1,
+    "bbox_mm": [
+      26.0,
+      25.0,
+      1.0
+    ],
+    "group": "tier2"
+  },
+  "furnace_sample_stack": {
+    "title": "Induction-furnace sample stack (graphite cup, alumina disc, lid, sapphire window)",
+    "source": "custom-induction-furnace SI",
+    "parts": 4,
+    "bbox_mm": [
+      20.3,
+      20.3,
+      24.5
+    ],
+    "group": "tier2"
+  },
+  "cuvette": {
+    "title": "Cuvette, PS, 12.5 x 12.5 x 45 mm (BRAND 759075D)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      12.5,
+      12.5,
+      45.0
+    ],
+    "group": "tier2"
+  },
+  "xrf_cup": {
+    "title": "XRF sample cup (Chemplex 1330), 30.7 x 22.9 mm",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      32.5,
+      32.5,
+      22.95
+    ],
+    "group": "tier2"
+  },
+  "si_zero_bg_plate": {
+    "title": "Zero-background Si plate, 32 x 2 mm (use a printed dummy first)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      32.0,
+      32.0,
+      2.0
+    ],
+    "group": "tier2"
+  },
+  "metallographic_mount_32mm": {
+    "title": "Metallographic mount, 1.25 in, with AlSi10Mg sample",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      31.75,
+      31.75,
+      20.0
+    ],
+    "group": "tier2"
+  },
+  "wireless_colour_sensor": {
+    "title": "Wireless colour sensor (AS7341 + Pico W), ~40 x 60 x 84 mm",
+    "source": "#197 (assumed shape)",
+    "parts": 3,
+    "bbox_mm": [
+      40.0,
+      60.0,
+      104.4
+    ],
+    "group": "tier2"
+  },
+  "tensegrity_t3_prism": {
+    "title": "Tensegrity T3 prism (PLA struts, TPU tendons), ~80 x 80 x 100 mm",
+    "source": "tensegrity-optimization (assumed geometry)",
+    "parts": 3,
+    "bbox_mm": [
+      82.64,
+      82.64,
+      101.57
+    ],
+    "group": "tier2"
+  },
+  "coin_cell_cr2032": {
+    "title": "CR2032 coin cell, 20 x 3.2 mm",
+    "source": "IEC 60086",
+    "parts": 2,
+    "bbox_mm": [
+      20.0,
+      20.0,
+      3.2
+    ],
+    "group": "tier2"
+  },
+  "vial_8ml_empty": {
+    "title": "8 mL vial, 15-425 cap, empty",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      17.5,
+      17.5,
+      63.0
+    ],
+    "od_mm": 16.75,
+    "height_with_cap_mm": 63.0,
+    "fill": "empty",
+    "group": "extra"
+  },
+  "vial_4ml_empty": {
+    "title": "4 mL vial, 13-425 cap, empty",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      15.5,
+      15.5,
+      48.0
+    ],
+    "od_mm": 14.75,
+    "height_with_cap_mm": 48.0,
+    "fill": "empty",
+    "group": "extra"
+  },
+  "vial_2ml_water": {
+    "title": "2 mL autosampler vial, 9 mm screw cap, water",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      12.0,
+      12.0,
+      34.5
+    ],
+    "od_mm": 11.6,
+    "height_with_cap_mm": 34.5,
+    "fill": "water",
+    "group": "extra"
+  },
+  "plate_96_flat_lid": {
+    "title": "96-well plate, flat (Corning 3370), with lid",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      129.36,
+      87.08,
+      17.72
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 14.22,
+    "wells": 96,
+    "group": "extra"
+  },
+  "plate_384_flat": {
+    "title": "384-well plate (Corning 3701)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      14.22
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 14.22,
+    "wells": 384,
+    "group": "extra"
+  },
+  "plate_24_flat": {
+    "title": "24-well plate (Costar 3524)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      19.69
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 19.69,
+    "wells": 24,
+    "group": "extra"
+  },
+  "plate_6_flat": {
+    "title": "6-well plate (Costar 3516)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      20.27
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 20.27,
+    "wells": 6,
+    "group": "extra"
+  },
+  "plate_96_deep": {
+    "title": "96 deep-well plate, 2 mL (NEST 503001)",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      44.0
+    ],
+    "footprint_mm": [
+      127.76,
+      85.48
+    ],
+    "height_mm": 44.0,
+    "wells": 96,
+    "group": "extra"
+  },
+  "tiprack_300ul": {
+    "title": "Opentrons 96 tip rack, 300 uL",
+    "source": "modelled from specs (Opentrons labware definition)",
+    "parts": 2,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      64.49
+    ],
+    "group": "extra"
+  },
+  "microtube_1_5ml": {
+    "title": "1.5 mL microcentrifuge tube (Eppendorf Safe-Lock)",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      13.1,
+      18.55,
+      41.0
+    ],
+    "group": "extra"
+  },
+  "conical_50ml": {
+    "title": "50 mL conical tube (Falcon)",
+    "source": "modelled from specs",
+    "parts": 2,
+    "bbox_mm": [
+      34.75,
+      34.75,
+      115.8
+    ],
+    "group": "extra"
+  },
+  "sem_stub_25_4": {
+    "title": "SEM pin stub, 25.4 mm, with sample",
+    "source": "modelled from specs",
+    "parts": 3,
+    "bbox_mm": [
+      25.4,
+      25.4,
+      14.35
+    ],
+    "head_d_mm": 25.4,
+    "overall_h_mm": 12.7,
+    "group": "extra"
+  },
+  "sem_stub_box": {
+    "title": "SEM pin-stub storage box (Ted Pella / EMS class), 24 seats",
+    "source": "modelled from specs",
+    "parts": 30,
+    "bbox_mm": [
+      120.0,
+      84.0,
+      36.0
+    ],
+    "group": "extra"
+  },
+  "glass_slide": {
+    "title": "Glass microscope slide, 75 x 25 x 1 mm",
+    "source": "modelled from specs",
+    "parts": 1,
+    "bbox_mm": [
+      75.0,
+      25.0,
+      1.0
+    ],
+    "group": "extra"
+  },
+  "holder_charge": {
+    "title": "Printed SBS charge station: 3 cups, 3 plugs, press-sleeve socket",
+    "source": "our design (parametric)",
+    "parts": 10,
+    "bbox_mm": [
+      127.81,
+      85.53,
+      71.5
+    ],
+    "group": "station"
+  },
+  "holder_vial_20ml": {
+    "title": "Printed SBS rack, 6 x 20 mL vials, finger slots",
+    "source": "our design (parametric)",
+    "parts": 17,
+    "bbox_mm": [
+      127.81,
+      85.53,
+      66.0
+    ],
+    "group": "station"
+  },
+  "holder_sem_stubs": {
+    "title": "Printed SBS stub tray, 15 seats, tapered bores",
+    "source": "our design (parametric)",
+    "parts": 34,
+    "bbox_mm": [
+      127.81,
+      85.53,
+      20.85
+    ],
+    "group": "station"
+  },
+  "ot2_slot_nest": {
+    "title": "Printed OT-2 slot replica: 128.0 x 86.0 pocket, raised nest",
+    "source": "our design (parametric)",
+    "parts": 2,
+    "bbox_mm": [
+      160.01,
+      118.01,
+      49.3
+    ],
+    "group": "station"
+  },
+  "tube_rack_6": {
+    "title": "6-tube rack (AC, OT-2) with 15 mL tubes",
+    "source": "#64 dims",
+    "parts": 9,
+    "bbox_mm": [
+      127.76,
+      85.48,
+      124.75
+    ],
+    "group": "station"
+  },
+  "crucible_replica": {
+    "title": "Crucible replica station (rePOWDER 225 cm3, PR #232 model)",
+    "source": "lab CAD (PR #232 STEP)",
+    "parts": 4,
+    "bbox_mm": [
+      120.0,
+      120.0,
+      182.1
+    ],
+    "group": "station"
+  },
+  "balance_hr100a_dummy": {
+    "title": "A&D HR-100A balance dummy with breeze break and drop hole",
+    "source": "assumed dims",
+    "parts": 5,
+    "bbox_mm": [
+      200.0,
+      290.5,
+      245.0
+    ],
+    "group": "station"
+  },
+  "arbor_press_1t": {
+    "title": "Arbor press, 1 t (press-fit station)",
+    "source": "assumed dims",
+    "parts": 7,
+    "bbox_mm": [
+      180.0,
+      250.52,
+      532.8
+    ],
+    "group": "station"
+  },
+  "labware_lineup": {
+    "title": "Sandbox objects, all together",
+    "source": "see the per-object rows",
+    "parts": 209,
+    "bbox_mm": [
+      1346.2,
+      868.95,
+      533.2
+    ]
+  },
+  "bambu_a1_mini": {
+    "title": "Bambu Lab A1 mini",
+    "source": "modelled from Bambu's spec and outline drawing",
+    "parts": 18,
+    "bbox_mm": [
+      360.0,
+      295.0,
+      482.53
+    ],
+    "envelope_mm": [
+      347.0,
+      315.0,
+      365.0
+    ],
+    "build_volume_mm": [
+      180,
+      180,
+      180
+    ],
+    "build_plate_mm": [
+      183,
+      183
+    ],
+    "bed_top_above_bench_mm": 80.5
+  },
+  "bambu_h2d": {
+    "title": "Bambu Lab H2D",
+    "source": "modelled from Bambu's spec",
+    "parts": 14,
+    "bbox_mm": [
+      492.0,
+      514.5,
+      626.0
+    ],
+    "envelope_mm": [
+      492.0,
+      514.0,
+      626.0
+    ],
+    "build_volume_single_nozzle_mm": [
+      325,
+      320,
+      325
+    ]
+  },
+  "cubxl": {
+    "title": "CubXL liquid-handling gantry (Genmitsu PROVerXL 4030 V2 frame)",
+    "source": "modelled from the frame's spec and lab photos (#133, #200)",
+    "parts": 34,
+    "bbox_mm": [
+      1015.0,
+      605.0,
+      538.0
+    ],
+    "envelope_mm": [
+      740.0,
+      605.0,
+      488.0
+    ],
+    "travel_mm": [
+      400.0,
+      300.0,
+      110.0
+    ],
+    "frame": "Genmitsu PROVerXL 4030 V2"
+  },
+  "lansmont_m23_drop_tower": {
+    "title": "Lansmont M23 shock test system (drop tower)",
+    "source": "Lansmont's data sheet (envelope, table) and lab photos (frame)",
+    "parts": 13,
+    "bbox_mm": [
+      480.0,
+      550.0,
+      2770.0
+    ],
+    "envelope_mm": [
+      533.0,
+      610.0,
+      2800.0
+    ],
+    "table_mm": [
+      230.0,
+      230.0
+    ],
+    "standard_drop_in": 60,
+    "location": "CB 152A (SMASH Lab), not CB154"
+  },
+  "amazemet_repowder": {
+    "title": "AMAZEMET rePowder induction module (atomizer)",
+    "source": "modelled from AMAZEMET/Indutherm specs and photos (repowder-reference zip, #124)",
+    "parts": 23,
+    "bbox_mm": [
+      1058.31,
+      835.0,
+      1590.0
+    ],
+    "envelope_mm": [
+      1000.0,
+      800.0,
+      1600.0
+    ],
+    "feet_spacing_mm": [
+      714.0,
+      600.0
+    ],
+    "mass_kg": 300
+  },
+  "opentrons_ot2": {
+    "title": "Opentrons OT-2",
+    "source": "Opentrons reference STEP (github.com/Opentrons/ot2)",
+    "parts": 26,
+    "envelope_mm": [
+      624.3,
+      567.5,
+      662.0
+    ]
+  },
+  "agilex_piper": {
+    "title": "AgileX PiPER with gripper",
+    "source": "AgileX STEP (AgileX store CDN)",
+    "parts": 80,
+    "envelope_as_delivered_mm": [
+      145.0,
+      549.3,
+      466.0
+    ]
+  },
+  "sandbox_layout": {
+    "title": "PiPER sandbox: holders, samples and an A1 mini on spot D",
+    "source": "our layout; parts as listed",
+    "parts": 112,
+    "bbox_mm": [
+      1290.0,
+      1360.0,
+      1432.8
+    ]
+  },
+  "cb154_room": {
+    "title": "CB154 with equipment (rough)",
+    "source": "see room.py and sources/cb154_room.json",
+    "parts": 93,
+    "bbox_mm": [
+      9981.0,
+      8254.0,
+      2763.0
+    ],
+    "room_inside_mm": [
+      9601.0,
+      7874.0,
+      2616.0
+    ],
+    "frame": "origin inside SW corner, +x east, +y north"
+  }
+}
