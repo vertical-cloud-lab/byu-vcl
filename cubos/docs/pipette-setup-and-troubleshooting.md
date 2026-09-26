@@ -122,17 +122,24 @@ to destroy a driver. See §19.
 > was dropped (§21.8). The position reference is still gone — recover with `$H`,
 > never `$X` + a jog — and re-check `$20` before the next protocol run.
 
-> ⛔ **But the trio cannot run as committed.** A read-only check on 2026-09-26
-> found the controller recalibrated since 2026-09-24 — `$130/$131/$132` now
-> 410 / 281 / 125.003 against the committed 409 / 309 / 124 — and the camera shows
-> the machine on a different bench. CubOS refuses at connect on the mismatch, and
-> the deck's jog readings are in the old frame, so the deck needs **re-jogging,
-> not converting**, before the gantry file is synced. See
-> [`../results/pipette_test_20260926/`](../results/pipette_test_20260926/README.md).
+> ⛔ **The trio still does not validate, for two new reasons.** Ben
+> recalibrated on the new bench (2026-09-26) and re-jogged the deck.
+>
+> - The gantry file now matches the controller: 391 / 236.665 / 124, `$20=1`.
+> - The tip rack is converted from his A1 reading.
+>
+> What still fails:
+>
+> - The pipette cannot reach vial_1 at y 0.665. It sits +13 mm in Y from the
+>   capper, which puts vial_1 12.3 mm past the Y limit.
+> - Step 5's `travel_z: 87` is above the new `z_max: 121`.
+>
+> Fixing both gives PASS, 12/12, and 0 interferences. The options are in
+> [`../results/pipette_test_20260926b/`](../results/pipette_test_20260926b/README.md).
 > None of this touches the plunger work below, which needs no gantry motion.
 
 > 🔴 **Keep the Pi's mains lead out of the gantry's reach.** Step 0 of every
-> protocol drives to the far corner (409, 309), the extreme that pulled the plug
+> protocol drives to the far corner (now 391, 236.665), the extreme that pulled the plug
 > on 2026-09-24. The Pi is back (2026-09-25 23:37 UTC, 5.13 V in, no
 > under-voltage since boot), but whether the lead has been re-routed is not
 > recorded. The durable fix is a supply of its own, ideally a small UPS (§21.7).

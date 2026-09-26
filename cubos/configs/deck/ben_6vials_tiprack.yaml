@@ -1,63 +1,62 @@
-# ben_6vials_tiprack.yaml -- @benwhitney5463's 6-vial column plus the 2x15 tip
-# rack, CubXL, 2026-09-01 rev.
+# ben_6vials_tiprack.yaml -- @benwhitney5463's vial column plus the 2x15 tip
+# rack, CubXL, 2026-09-26 rev: the new bench, in the new calibration's frame
+# (391 / 236.665 / 124; see the gantry file).
 #
-# Attached to PR #171 on 2026-09-01. THE BODY BELOW IS BEN'S, VERBATIM (parsed
-# YAML verified identical to the attachment). This is the rev that RAN as
-# campaign 54 -- 18/18 steps, 2026-09-01 18:17:41 -> 18:23:31 UTC.
-# See ../../results/pipette_test_20260901/README.md.
+# Attached to PR #228 on 2026-09-26. THE BODY BELOW IS BEN'S, VERBATIM (parsed
+# YAML verified identical to the attachment) EXCEPT the tip rack's XY, which
+# Ben asked to be set from a new jog reading:
+#   "I measured these coordinates with the pipette tip hovering over the a1
+#    spot: x= 265.0 y = 32.665."
 #
-# Changes vs. the rev committed at 77b8057:
-#   tip_rack.calibration.a1.x   366.0 -> 336.0   (-30)
-#   tip_rack.calibration.a2.x   357.5 -> 327.5   (-30)
-#   tip_rack.location.x         366.5 -> 336.5   (-30)
-# Everything else -- all six vials, pickup_z 57, drop_z null -- is unchanged.
-#
-# ---------------------------------------------------------------------------
-# The tip-rack frame question is settled: the anchor IS already converted
-# ---------------------------------------------------------------------------
-# I flagged on 2026-08-31 that 366 might be a double-shifted value. Ben's
-# "I fixed the tip rack location" puts a1.x back to 336.0, which is the
-# 87c3c55 value, and 336.0 = the raw jog reading 284.0 + the pipette's
-# offset_x 52.0. The matching a1.y 37.5 = raw 25.5 + offset_y 12.0.
-#
-# Confirmed on hardware: pick_up_tip commanded gantry (284.0, 25.5, 57.0),
-# straight out of the run's own G-code (gantry_command.log) -- exactly the
-# measured jog point. No further conversion is needed or wanted; applying
-# +52/+12 again would put the pickup 52 and 12 mm off.
-#
-# Note that validate_setup PASSES either way -- it only asks whether a
-# coordinate is reachable, never whether it is the right one. Both (284, 25.5)
-# and (336, 37.5) are inside the working volume, which is why this had to be
-# settled by measurement rather than by a gate.
+# Changes vs. the previous committed rev (2026-09-01, old frame):
+#   vial_3 .. vial_6            removed (pipette_test.yaml only uses 1 and 2)
+#   vial_1 location             (206, 27, 55)   ->  (189, 0.665, 54)
+#   vial_2 location             (206, 60, 55)   ->  (189, 33, 54)
+#   tip_rack calibration.a1     (336, 37.5)     ->  (319.0, 45.664)   converted
+#   tip_rack calibration.a2     (327.5, 37.5)   ->  (310.5, 45.664)
+#   tip_rack location x / y     (336.5, 37.5)   ->  (319.5, 45.664)
+#   pickup_z 57, drop_z null, tip_length 35, everything else   unchanged
 #
 # ---------------------------------------------------------------------------
-# pickup_z 57 -- ran, still unconfirmed by eye
+# The tip-rack anchor: the jog reading plus the NEW pipette offset
 # ---------------------------------------------------------------------------
-# Lowered from 60 because no tip was picked up in campaign 33. The XY is now
-# proven correct, so if a tip still does not seat, Z is the only remaining
-# variable. pick_up_tip is a friction press with NO sensor, so neither CubOS
-# nor the firmware can report a miss -- this needs an eyeball.
+# The jog display shows raw WPos, which is the capper's frame (offset 0/0).
+# CubOS commands gantry = deck - instrument offset, so a point read with the
+# PIPETTE over it sits in the deck frame at reading + pipette offset. The
+# offset is the 2026-09-26 one, (54.0, 12.999), not the old (52, 12):
+#   a1 = (265.0 + 54.0, 32.665 + 12.999) = (319.0, 45.664)
+# a2 is one 8.5 mm column step in -X of a1, as in every rev since 2026-08-24;
+# rows advance +Y, so A1..O1 run deck y 45.664..164.664 (gantry 32.665..151.665,
+# all inside the working volume). location keeps Ben's +0.5 mm X from a1.
 #
-# One thing it is NOT: the plunger. pick_up_tip's plunger command is
-# MOVE_TO 0.0, which is a retraction, and retractions are no-ops on this
-# firmware (2026-09-01 measurement: 0.107 s round trip, no motion). But the
-# tip is seated by pressing the nozzle into it, not by the plunger, so the
-# pickup is a Z/XY question only.
+# Checked through the CubOS loader, not asserted. pick_up_tip tip_rack.A1:
+#   Moving OpentronsPipette to (319.000, 45.664, 57.000)
+#                           -> gantry (265.000, 32.665, 57.000)
+# which is the measured jog point exactly. The XY of the pickup reproduces the
+# reading whatever the offset is; the offset only matters for points measured
+# with the capper and visited by the pipette, i.e. the vials.
 #
 # ---------------------------------------------------------------------------
-# drop_z: null -- correct, leave it
+# vial_1 is outside the PIPETTE's reach (the capper reaches it fine)
 # ---------------------------------------------------------------------------
-# At this CubOS version drop_z is read in exactly one place,
-# deck/labware/tip_rack.py:158-160, as max(abs(pickup_z - drop_z), 1.0) -- a
-# bounding-box height, never a motion target. Setting it equal to pickup_z
-# collapses the rack's modeled height to 1.0 mm and overrides `height: 66`.
+# The pipette sits +12.999 mm in Y from the capper, so the lowest deck Y it can
+# reach is 12.999 (gantry y 0). vial_1 at y 0.665 would need gantry y -12.334:
+#   pipette -> vial_1.location.action_z: gantry (135.0, -12.334, 54.0)
+#   violates y_min=0.0
+# so validate_setup FAILS pipette_test.yaml's `aspirate: vial_1`. vial_2
+# (gantry y 20.001) is fine. The fix is physical or a protocol choice, not a
+# number here: see ../../results/pipette_test_20260926b/README.md, section 3.
 #
-# drop_tip still ejects a full tip-length above the slot: it engages the TIP
-# END to the rack's location.z 57 (gantry 92 -- confirmed in this run's
-# G-code), while a seated tip's end is at deck 22. The real fix is a
-# `tip_disposal` deck entry -- that is what drop_tip is meant to target, and
-# it ejects at that entry's own location.z. Give me a spot for used tips and
-# I will add it.
+# ---------------------------------------------------------------------------
+# pickup_z 57: unverified in this frame
+# ---------------------------------------------------------------------------
+# No Z came with the new reading. pick_up_tip is a friction press with no
+# sensor, so a miss is silent; jog the nozzle down onto A1 once and read Z.
+#
+# drop_z: null is still right. drop_z is only a bounding-box height at this
+# CubOS version (tip_rack.py: max(abs(pickup_z - drop_z), 1.0)), never a motion
+# target. drop_tip engages the TIP END to the rack's z 57 = gantry 92, a full tip
+# length above the slot; the real fix is a `tip_disposal` deck entry.
 
 labware:
   vial_1:
@@ -67,9 +66,9 @@ labware:
     height: 83
     diameter: 28
     location:
-      x: 206
-      y: 27
-      z: 55
+      x: 189
+      y: 0.665
+      z: 54
     capacity_ul: 1500
     working_volume_ul: 1200
     dead_volume_ul: 0
@@ -80,61 +79,9 @@ labware:
     height: 83
     diameter: 28
     location:
-      x: 206
-      y: 60
-      z: 55
-    capacity_ul: 1500
-    working_volume_ul: 1200
-    dead_volume_ul: 0
-  vial_3:
-    type: vial
-    name: vial_3
-    model_name: ''
-    height: 83
-    diameter: 28
-    location:
-      x: 206
-      y: 93
-      z: 55
-    capacity_ul: 1500
-    working_volume_ul: 1200
-    dead_volume_ul: 0
-  vial_4:
-    type: vial
-    name: vial_4
-    model_name: ''
-    height: 83
-    diameter: 28
-    location:
-      x: 206
-      y: 126
-      z: 55
-    capacity_ul: 1500
-    working_volume_ul: 1200
-    dead_volume_ul: 0
-  vial_5:
-    type: vial
-    name: vial_5
-    model_name: ''
-    height: 83
-    diameter: 28
-    location:
-      x: 206
-      y: 159
-      z: 55
-    capacity_ul: 1500
-    working_volume_ul: 1200
-    dead_volume_ul: 0
-  vial_6:
-    type: vial
-    name: vial_6
-    model_name: ''
-    height: 83
-    diameter: 28
-    location:
-      x: 206
-      y: 192
-      z: 55
+      x: 189
+      y: 33
+      z: 54
     capacity_ul: 1500
     working_volume_ul: 1200
     dead_volume_ul: 0
@@ -148,20 +95,20 @@ labware:
     width: 20
     height: 66
     tip_length: 35
-    drop_z: null
+    drop_z:
     x_offset: 8.5
     y_offset: 8.5
     calibration:
       a1:
-        x: 336
-        y: 37.5
+        x: 319.0
+        y: 45.664
       a2:
-        x: 327.5
-        y: 37.5
+        x: 310.5
+        y: 45.664
     pickup_z: 57
     location:
-      x: 336.5
-      y: 37.5
+      x: 319.5
+      y: 45.664
       z: 57
     slots: {}
     tip_present:

@@ -1,5 +1,10 @@
 # 2026-09-26 — the Pi is back and healthy; the trio did not run, because the gantry was recalibrated (and apparently moved) since 09-24
 
+> **Superseded the same evening.** Ben recalibrated again (391 / 236.665 / 124)
+> and sent the new gantry and deck files. §2's "what is needed" is done, and
+> the gantry file now matches the controller. The trio fails validation on two
+> new numbers. See [`../pipette_test_20260926b/`](../pipette_test_20260926b/README.md).
+
 Asked for: *"run the trio quickly as well. I want to make sure the Pi is online
 and everything is working correctly (note that the ports might have switched,
 I am unsure)"*

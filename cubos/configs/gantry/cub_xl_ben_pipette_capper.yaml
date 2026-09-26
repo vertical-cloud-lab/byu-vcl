@@ -1,96 +1,64 @@
-# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-08-31 rev 2.
+# cub_xl_ben_pipette_capper.yaml -- CubXL, @benwhitney5463's 2026-09-26 rev:
+# the gantry recalibrated on its new bench.
 #
-# Attached to PR #171 on 2026-08-31 after watching campaign 33 run (video:
-# https://youtu.be/lmQbUWNqTmM). THE BODY BELOW IS BEN'S, VERBATIM -- no edit
-# of any kind was needed this time, which is a first for this file. The three
-# grbl_settings travel extents already match the controller (409 / 309 / 124,
-# re-read live 2026-08-31 18:4x UTC).
+# Attached to PR #228 on 2026-09-26. THE BODY BELOW IS BEN'S, VERBATIM (parsed
+# YAML verified identical to the attachment) with ONE line added back:
+# cnc.default_feed_rate_mm_min, below.
 #
-# NOT RUN ON HARDWARE in this form. The trio it belongs to fails validation
-# on one number in the protocol; see that file's header.
+# It matches the controller. Read-only from the Pi, 2026-09-26 01:17 UTC, eight
+# minutes after the GRBL board came back onto the Pi's USB at 01:09:56 UTC. It
+# had been off the Pi since 00:53:37, the window this calibration fits:
+#   $130 / $131 / $132   391.000 / 236.665 / 124.000
+#   G54                  -391.000, -236.665, -124.000
+#   $3=1 $10=0 $20=1 $22=1 $23=0 $27=3 $100-$102=400   every critical value
+# so CubOS's connect-time settings check passes. Snapshot in
+# ../../results/pipette_test_20260926b/grbl_settings_20260926b.json.
 #
-# ---------------------------------------------------------------------------
-# safe_z 87.0 -> 115.0: this is the fix for BOTH symptoms in the video
-# ---------------------------------------------------------------------------
-# Ben's observation was that the head travelled visibly lower than the
-# safe_z he could jog to. That gap is exactly the capper's `depth` (15.935):
-# CubOS commands gantry_z = safe_z + depth, while the jog widget displays raw
-# WPos with no instrument offset applied. And because the PIPETTE's depth is
-# 0.0, the bare nozzle -- the lowest thing on the head -- rides at
-# deck Z = safe_z + depth on every capper leg.
-#
-# Two consequences he saw, and what 115 does to each (engage_depth_mm is now
-# 15, so the engage plane is deck 55 + 15 = 70 and cap tops sit at 70):
-#
-#                                        safe_z 87   safe_z 115
-#   nozzle height during capper legs      71.065      99.065   (+28 mm)
-#   held-cap underside vs neighbour top    6 mm        30 mm   (+24 mm)
-#
-# The held-cap number is why caps were being knocked off the electromagnet:
-# a gripped cap is lifted by (safe_z - engage_plane) above its rim, so its
-# underside sat 6 mm over the caps it traversed. 30 mm is a real margin.
-# Verified in the coordinate trace: every capper pose commands gantry
-# 99.065, every engage 54.065.
+# Changes vs. the previous committed rev (2026-09-15; 409 / 309 / 124):
+#   grbl max_travel x / y / z        409 / 309 / 124  ->  391 / 236.665 / 124
+#   working_volume x / y / z max     386.333 / 232 / 124  ->  388 / 233.665 / 121
+#                                    (= max_travel minus the 3 mm pull-off, i.e.
+#                                    the homed pose: no move ends on a limit
+#                                    switch now, as the 124 hover used to on Z)
+#   capper depth                     -15.935  ->  -17.0
+#   pipette offset_x / offset_y      52.0 / 12.0  ->  54.0 / 12.999
+#   capper park_position             deleted 2026-09-15  ->  [236, 25] again
+#   cnc.default_feed_rate_mm_min     2000.0  ->  absent  ->  KEPT at 2000.0
 #
 # ---------------------------------------------------------------------------
-# safe_z 115 REQUIRES the hover-clamp patch -- now applied to the Pi
+# default_feed_rate_mm_min: kept at 2000.0
 # ---------------------------------------------------------------------------
-# Engage-based pipette commands (aspirate, blowout, drop_tip, mix) hover at
-# safe_z measured AT THE TOOL POINT. With a 35 mm tip that needs the carriage
-# at safe_z + 35 = 150, which is 26 mm past z_max 124, and engage commands
-# accept no travel_z -- so unpatched, this config cannot run at all.
-#
-# ../../patches/tipped-hover-clamp-and-ceiling-travel.patch was applied to
-# ~/CubOS on the Pi on 2026-08-31 at Ben's request. It clamps an
-# unreachable tipped hover to the highest carriage-reachable plane and logs
-# a WARNING each time. Observed, three times, in the mock trace:
-#
-#   OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000
-#   below the carriage; ceiling 124.000). Hovering/traveling at 89.000
-#   instead - confirm this plane clears all deck contents.
-#
-# Tip end at deck 89 = carriage at gantry 124 = z_max exactly. That plane
-# clears the cap tops (70) by 19 mm.
-#
-# *** If the patch is ever reverted (`git apply -R`), safe_z MUST go back to
-# *** <= 89 or nothing with a tip on will validate.
+# Ben's file descends from his own local copy (it has park_position, which the
+# branch deleted on 2026-09-15, and none of the branch's comments), so the
+# missing line is lineage rather than a decision. Without it every G01 goes out
+# at F3000 instead of the F2000 that every run on this machine has used. To take
+# the speed-up on purpose, delete the line or set 3000.0, and watch that run.
 #
 # ---------------------------------------------------------------------------
-# park_position [206, 50] -> [236, 175]
+# park_position: harmless, kept as sent
 # ---------------------------------------------------------------------------
-# Moved OFF the vial column (X 206). At safe_z 87 that would have been
-# dangerous -- an off-column park gives every decap/cap leg an X component
-# that walked the passive pipette across the cap tops. At safe_z 115 it is
-# safe and slightly better: the park X (236) is GREATER than the column X
-# (206), and the pipette hangs at +52 in X, so during those legs the nozzle
-# sweeps deck X 258..288 and never passes over a vial at X 206 at all.
-# passive_shadow confirms: 0 interferences, nominal AND --tip-stuck.
+# CubOS 496819c ignores it and warns on every load: "YAML field 'park_position'
+# is no longer used and was ignored (decap/cap no longer park; delete this
+# key)." It is also what a rollback to cbc33dc would need back.
 #
 # ---------------------------------------------------------------------------
-# engage_depth_mm 13 -> 15
+# z_max 121 lowers the tipped ceiling by 3 mm
 # ---------------------------------------------------------------------------
-# Engage plane deck 55 + 15 = 70 (gantry 54.065). 13 was measured with the
-# head's line-break sensor on 2026-08-03 against the pre-recalibration deck;
-# $132 moving 125 -> 124 shifts every deck Z reading 1 mm, and the caps
-# seated cleanly at 15 through all of campaign 33's ten engages.
+# safe_z 115 still needs the hover-clamp patch (applied on the Pi): a tipped
+# engage cannot reach safe_z, so it hovers at the highest carriage-reachable
+# plane, now gantry 121 = tip end at deck 86 (was 124 / 89). Cap tops are at
+# deck 54 + 15 = 69, so that is 17 mm of clearance. The clamp does NOT touch an
+# explicit travel_z, which must now be <= 121 - 35 = 86 whenever it names the
+# tipped pipette. pipette_test.yaml's step 5 still says 87 and fails
+# validation on it: gantry z 122 > z_max 121.
 #
 # ---------------------------------------------------------------------------
-# pipette: offline false, /dev/ttyACM0 -- the plunger only turns ONE WAY
+# The pipette's reach
 # ---------------------------------------------------------------------------
-# Bench-tested directly against the Arduino on 2026-08-31 (see
-# ../../results/pipette_bench_20260831/README.md). The link is fine and the
-# stepper is driven at a clean 0.673 s/mm -- but MOVE_TO only executes when
-# the target is ABOVE the current position. Any retraction returns OK in
-# 0.11 s and does nothing, and HOME zeroes the counter without moving.
-# ASPIRATE overshoots to pos 36 regardless of the commanded value, which
-# parks the plunger above every later target. That is why blowout and
-# drop_tip did nothing in campaign 33. It is a firmware/DIR-line fault, not
-# a CubOS or wiring-to-the-Pi problem, and no config here can work around it.
-#
-# The firmware also reports max_vol 300.00 while pipette_model says
-# p20_single_gen2. Every plunger constant in the p20 entry of
-# instruments/pipette/models.py is marked `# placeholder`; the p300 entry is
-# calibrated. Settle which pipette is mounted before any volume means uL.
+# CubOS commands gantry = deck - offset, so with offset (54.0, 12.999) the
+# pipette cannot reach below deck x 54.0 or deck y 12.999 (gantry 0). The
+# capper (offset 0/0) can. See the deck file's header for what that means for
+# vial_1.
 
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
@@ -99,24 +67,17 @@ cnc:
   calibration_block_height_mm: 35.0
   y_axis_motion: head
   safe_z: 115.0
-  # ADDED 2026-09-15, with the CubOS main migration. Upstream 7ff4d7f made the
-  # feed rate configurable and raised the *module default* from 2000 to 3000
-  # mm/min; before that every G01 hardcoded F2000 regardless of $110-$112.
-  # This file carried no such field, so the migration would have silently made
-  # every move 1.5x faster. Pinned to 2000.0 so the migrated tree reproduces
-  # campaign 83's motion exactly and the speed-up is its own watched run.
-  # To take the speed: change this to 3000.0 (or delete the line). Upstream
-  # pins 3000.0 in all of its own configs.
-  # NB: this field does not exist at CubOS cbc33dc -- CncYaml there is
-  # extra="forbid", so this line must be removed before any rollback.
+  # NOT in Ben's 2026-09-26 attachment; kept deliberately (see the header).
+  # Absent, CubOS 496819c falls back to its module default of 3000 mm/min
+  # (gantry_driver/driver.py DEFAULT_FEED_RATE), 1.5x every run to date.
   default_feed_rate_mm_min: 2000.0
 working_volume:
   x_min: 0.0
-  x_max: 386.333
+  x_max: 388.0
   y_min: 0.0
-  y_max: 232.0
+  y_max: 233.665
   z_min: 0.0
-  z_max: 124.0
+  z_max: 121.0
 origin_policy: deck_origin
 grbl_settings:
   dir_invert_mask: 1
@@ -128,8 +89,8 @@ grbl_settings:
   steps_per_mm_x: 400.0
   steps_per_mm_y: 400.0
   steps_per_mm_z: 400.0
-  max_travel_x: 409
-  max_travel_y: 309
+  max_travel_x: 391.0
+  max_travel_y: 236.665
   max_travel_z: 124.0
 instruments:
   vial_capper_decapper:
@@ -137,37 +98,20 @@ instruments:
     vendor: pawduino
     offset_x: 0.0
     offset_y: 0.0
-    depth: -15.935
+    depth: -17.0
     capture_retries: 2
     capture_settle_s: 1
     engage_depth_mm: 15
     offline: false
-    # park_position DELETED 2026-09-15 on Ben's say-so (was [236, 25]).
-    # Upstream b39988b dropped decap/cap's trailing park move, so CubOS main
-    # ignores the key and loads it with a warning telling you to remove it:
-    #   "YAML field 'park_position' is no longer used and was ignored
-    #    (decap/cap no longer park; delete this key)."
-    # The work it used to do has moved upward, not away: a cap gripped after
-    # decap used to be carried on the park leg at carriage Z 99.065, and is
-    # now carried on the NEXT command's ceiling travel at carriage Z 124 --
-    # about 9 mm more clearance over the caps it traverses.
-    #
-    # Rollback cost, now that it is gone: PawduinoCapper.__init__ at cbc33dc
-    # takes park_position as a REQUIRED argument, so reverting CubOS to
-    # cbc33dc means putting `park_position: [236, 25]` back here first.  The
-    # importer's fallback is the placeholder [-10, -10], outside the working
-    # volume, which alarms GRBL on every decap/cap.
-    #
-    # NOTE this was the *capper instrument's* park, NOT the protocol's
-    # `positions: park_position:` / `pipette_park:` in pipette_test.yaml.
-    # Those are named protocol positions, are still used by steps 1 and 5,
-    # and deleting either would remove real motion from the run.
+    park_position:
+    - 236
+    - 25
     port: /dev/ttyACM0
   pipette:
     type: pipette
     vendor: opentrons
-    offset_x: 52.0
-    offset_y: 12.0
+    offset_x: 54.0
+    offset_y: 12.999
     depth: 0.0
     pipette_model: p20_single_gen2
     port: /dev/ttyACM0
