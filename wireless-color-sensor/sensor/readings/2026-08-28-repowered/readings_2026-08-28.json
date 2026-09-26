@@ -1,0 +1,422 @@
+[
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "8d36ed8d9b53cfaf8e123a6aecf4c5d60710b0a4",
+    "experiment_id": "18d4fd5b-ab60-47ed-8af6-d8900da873fc",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:15:37Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 0,
+      "B": 0,
+      "R": 0
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 7,
+      "ch470": 14,
+      "ch510": 180,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3213,
+      "cie_y": 0.5766,
+      "srgb_hex": "#76FF20",
+      "srgb": [
+        118,
+        255,
+        32
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5709,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  },
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "0d7d8914d540a9d8ddadb66492f2b1623285d2db",
+    "experiment_id": "98758da6-d26a-43a9-8425-bb1ac901f35b",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:15:42Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 50,
+      "B": 50,
+      "R": 50
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 6,
+      "ch470": 14,
+      "ch510": 180,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3219,
+      "cie_y": 0.5786,
+      "srgb_hex": "#76FF18",
+      "srgb": [
+        118,
+        255,
+        24
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5698,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  },
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "446745571d4b32c33962a92c9733a5b3341f5872",
+    "experiment_id": "5013648a-929a-491d-962b-afebbe4672e4",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:15:47Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 0,
+      "B": 0,
+      "R": 0
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 6,
+      "ch470": 14,
+      "ch510": 180,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3219,
+      "cie_y": 0.5786,
+      "srgb_hex": "#76FF18",
+      "srgb": [
+        118,
+        255,
+        24
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5698,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  },
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "fc013d03de5bc5937098820f8873835dae8d669a",
+    "experiment_id": "a8304698-5bf2-4e3f-9c8e-50eae634c5b9",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:15:51Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 50,
+      "B": 50,
+      "R": 50
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 7,
+      "ch470": 14,
+      "ch510": 179,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3217,
+      "cie_y": 0.5764,
+      "srgb_hex": "#77FF20",
+      "srgb": [
+        119,
+        255,
+        32
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5703,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  },
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "2dcab55a9f5a2160226f4ae7d8e189847a69af8f",
+    "experiment_id": "0790e7a4-ba60-4b0b-997c-61d74096d0d5",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:15:56Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 0,
+      "B": 0,
+      "R": 0
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 6,
+      "ch470": 14,
+      "ch510": 180,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3219,
+      "cie_y": 0.5786,
+      "srgb_hex": "#76FF18",
+      "srgb": [
+        118,
+        255,
+        24
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5698,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  },
+  {
+    "schema_version": 1,
+    "doc_type": "color_reading",
+    "reading_uid": "e4cd3797356528b43caf9a04ffe9e44ee3b299bb",
+    "experiment_id": "adce13be-cc20-49ed-afa4-47723c1cd9a8",
+    "recorded_utc": "2026-08-28T17:16:03Z",
+    "sent_utc": "2026-08-28T17:16:00Z",
+    "latency_s": 1.4,
+    "device": {
+      "pico_id": "test",
+      "sensor": "AS7341",
+      "broker_host": "248cc294c37642359297f75b7b023374.s2.eu.hivemq.cloud",
+      "firmware": "sensor_file/main.py (upstream demo)"
+    },
+    "command": {
+      "Y": 50,
+      "B": 50,
+      "R": 50
+    },
+    "counts": {
+      "ch410": 8,
+      "ch440": 6,
+      "ch470": 14,
+      "ch510": 180,
+      "ch550": 188,
+      "ch583": 59,
+      "ch620": 52,
+      "ch670": 51
+    },
+    "wavelengths_nm": {
+      "ch410": 410,
+      "ch440": 440,
+      "ch470": 470,
+      "ch510": 510,
+      "ch550": 550,
+      "ch583": 583,
+      "ch620": 620,
+      "ch670": 670
+    },
+    "color": {
+      "valid": true,
+      "cie_x": 0.3219,
+      "cie_y": 0.5786,
+      "srgb_hex": "#76FF18",
+      "srgb": [
+        118,
+        255,
+        24
+      ],
+      "dominant_channel": "ch550",
+      "dominant_nm": 550,
+      "cct_k_approx": 5698,
+      "basis": "CIE 1931 2-deg CMF sampled at 8 channel centres (relative estimate, not a calibrated colorimeter)"
+    },
+    "quality": {
+      "ok": true,
+      "problems": []
+    },
+    "label": "seated in base, slot 8, bench ambient",
+    "notes": "PR #60: re-run after @timothy-commins repowered the host computer supplying the Pico W; first successful acquisition since 2026-08-10",
+    "fields_not_reported": [
+      "clear",
+      "nir",
+      "flicker_hz",
+      "gain",
+      "atime",
+      "astep",
+      "basic_counts"
+    ]
+  }
+]
