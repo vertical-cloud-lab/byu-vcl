@@ -1,0 +1,4 @@
+cad/.cache/
+__pycache__/
+slice/build/
+onshape/dry_run.json
