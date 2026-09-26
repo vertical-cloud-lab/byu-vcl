@@ -128,6 +128,29 @@ the Pi 5, 15 mm away, comes out as 0. So the checks stand a plain O57 x 10.5 mm 
 (`reference.flange_proxy`). The cylinder is solid where the flange is hollow, which only makes the
 checks stricter.
 
+## Onshape
+
+The assembly is in Onshape in the lab's **vcl-shared › 6DOF Robot Arm** folder:
+[PiPER wrist camera mount (9f691e6)](https://cad.onshape.com/documents/e22711217c260359b417d4ab/w/a89539f5f5ee3273f944af9c).
+It's owned by Vertical Cloud Lab, and all its parts sit in one Part Studio.
+
+[`onshape/onshape_import.py`](onshape/onshape_import.py) put it there over the REST API in
+**9 calls** (the plan allows 2,500 a year):
+
+1. Create a document.
+2. Import `exports/assembly.step`.
+3. Copy the workspace into the folder with the documented `copyWorkspace` call.
+
+API keys can't move a document between folders; the web app's endpoint for that returns 403, as
+found in #234. So the uncopied original is also left in the API key owner's account, and can be
+deleted from there. The run record is in
+[`onshape/run_2026-09-26.json`](onshape/run_2026-09-26.json).
+
+![Onshape shaded view](onshape/onshape_assembly.png)
+
+The parts are imported solids, not native sketch-and-extrude features. For editable geometry,
+rebuild from `Params`, the way #234's `onshape_api.py` does for the lid mount's base.
+
 ## Running it
 
 ```bash
