@@ -1,0 +1,84 @@
+{
+  "overlap_mm3": {
+    "bracket vs gripper fingers (closed)": 0.0,
+    "carrier vs gripper fingers (closed)": 0.0,
+    "hq_pcb vs gripper fingers (closed)": 0.0,
+    "hq_mount vs gripper fingers (closed)": 0.0,
+    "hq_lens vs gripper fingers (closed)": 0.0,
+    "cm_pcb vs gripper fingers (closed)": 0.0,
+    "cm_module vs gripper fingers (closed)": 0.0,
+    "pi5 vs gripper fingers (closed)": 0.0,
+    "pi_spacers vs gripper fingers (closed)": 0.0,
+    "bracket vs gripper fingers (fully open)": 0.0,
+    "carrier vs gripper fingers (fully open)": 0.0,
+    "hq_pcb vs gripper fingers (fully open)": 0.0,
+    "hq_mount vs gripper fingers (fully open)": 0.0,
+    "hq_lens vs gripper fingers (fully open)": 0.0,
+    "cm_pcb vs gripper fingers (fully open)": 0.0,
+    "cm_module vs gripper fingers (fully open)": 0.0,
+    "pi5 vs gripper fingers (fully open)": 0.0,
+    "pi_spacers vs gripper fingers (fully open)": 0.0,
+    "bracket vs gripper body": 0.0,
+    "carrier vs gripper body": 0.0,
+    "hq_pcb vs gripper body": 0.0,
+    "hq_mount vs gripper body": 0.0,
+    "hq_lens vs gripper body": 0.0,
+    "cm_pcb vs gripper body": 0.0,
+    "cm_module vs gripper body": 0.0,
+    "pi5 vs gripper body": 0.0,
+    "pi_spacers vs gripper body": 0.0,
+    "bracket vs carrier": 0.0,
+    "bracket vs hq_pcb": 0.0,
+    "bracket vs hq_mount": 0.0,
+    "bracket vs hq_lens": 0.0,
+    "bracket vs cm_pcb": 0.0,
+    "bracket vs cm_module": 0.0,
+    "carrier vs pi_spacers": 0.0,
+    "carrier vs pi5": 0.0,
+    "pi_spacers vs pi5": 0.0,
+    "hq_mount vs cm_module": 0.0,
+    "hq_pcb vs cm_pcb": 0.0
+  },
+  "gap_mm": {
+    "mount to fingers (closed)": 15.647206365269476,
+    "mount to fingers (fully open)": 17.81303531463741,
+    "bracket to gripper body": 0.017795977517479855,
+    "carrier to gripper body": 0.14871025849202518,
+    "collar halves (split)": 0.9999999999999964
+  },
+  "view": {
+    "hq view vs fingers (closed), mm3": 0.0,
+    "cm3w view vs fingers (closed), mm3": 18163.7,
+    "hq view vs fingers (fully open), mm3": 0.0,
+    "cm3w view vs fingers (fully open), mm3": 9564.5,
+    "HQ field of view (deg, H x V)": [
+      55.3,
+      42.9
+    ],
+    "gripper axis enters the HQ view this far past the fingertips (mm)": 63.0,
+    "HQ lens front behind the fingertips (mm)": 57.6,
+    "optical axes off the gripper axis (mm)": 63.1
+  },
+  "extent_mm": {
+    "rearmost point (must be < flange face 64.98)": 64.5,
+    "max radius from the J6 axis": 98.2,
+    "x": [
+      -93.0,
+      53.6
+    ],
+    "y": [
+      -19.9,
+      64.5
+    ],
+    "z": [
+      -42.1,
+      50.9
+    ]
+  },
+  "printed_volume_cm3": {
+    "bracket": 45.4,
+    "carrier": 52.4,
+    "spacers": 0.4
+  },
+  "pass": true
+}
