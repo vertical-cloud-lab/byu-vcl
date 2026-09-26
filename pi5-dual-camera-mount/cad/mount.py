@@ -502,7 +502,7 @@ def run_checks(p: Params, mount: cq.Workplane) -> dict:
     gp["HQ connector to nearest boss"] = round(gap(hq["conn"], mount), 2)
     gp["Module 3 board to HQ bosses"] = round(gap(cm3["pcb"], make_upright(p).intersect(
         box_span(-200, 200, -p.hq_boss_h - 1, -p.cm3_boss_h - p.cm3_pcb_t - 0.01, -10, 200))), 2)
-    gp["Module 3 connector to upright"] = round(gap(cm3["conn"], mount), 2)
+    gp["Module 3 connector to nearest boss"] = round(gap(cm3["conn"], mount), 2)
     gp["Pi 5 underside to base (at the bosses)"] = p.pi_boss_h
     gp["Active Cooler push pins to base"] = round(gap(cooler, mount), 2)
     gp["USB-C plug to mount"] = round(gap(usb_c_plug(p), mount), 2)
