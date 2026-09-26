@@ -75,6 +75,11 @@ datacenter IPs). The Pi is typically on constrained residential Wi‑Fi and may 
 live workloads, so rate-cap any large transfer (`--limit-rate` or equivalent) and never
 run full-bandwidth speed tests on it.
 
+When a site returns 403 to the runner, try it from a Pi **before** settling for a Wayback
+copy. `microscopy.byu.edu` (the BYU Electron Microscopy Facility) is the known case: 403 from
+a runner, 200 from the CubXL Pi via `ssh … "curl -sS --limit-rate 300k …"`. MDPI blocks both,
+but its PDFs download from `mdpi-res.com` on the runner.
+
 **Treat the Pi as a live production device.** Inspect read-only first (`systemctl status`,
 `journalctl`, `crontab -l` as root) before changing state: scheduled reboots, watchdog
 timers, and `Restart=` policies may already exist, so an unreachable or restarting device
