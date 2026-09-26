@@ -100,14 +100,15 @@ def fmt_time(s: float) -> str:
 
 
 def toolpaths(plates: list[dict]) -> Path:
-    fig = plt.figure(figsize=(16, 10.4), facecolor=SURFACE)
+    n = len(plates)
+    fig = plt.figure(figsize=(16 * n / 3, 10.4), facecolor=SURFACE)
     with zipfile.ZipFile(THREE_MF) as z:
         for k, plate in enumerate(plates):
             segs, feats, first = parse(z.read(f"Metadata/plate_{plate['plate']}.gcode").decode())
             cols = np.array([FEATURES.get(f, OTHER) for f in feats])
             zmax = float(segs[:, :, 2].max())
 
-            ax = fig.add_subplot(2, 3, k + 1, projection="3d", facecolor=SURFACE)
+            ax = fig.add_subplot(2, n, k + 1, projection="3d", facecolor=SURFACE)
             ax.add_collection3d(Line3DCollection(segs, colors=cols, linewidths=0.5))
             ax.plot([0, BED, BED, 0, 0], [0, 0, BED, BED, 0], [0] * 5, color=MUTED, lw=0.8)
             ax.set(xlim=(0, BED), ylim=(0, BED), zlim=(0, zmax))
@@ -119,7 +120,7 @@ def toolpaths(plates: list[dict]) -> Path:
                          f"{fmt_time(plate['print_time_s'])} · {plate['filament_g']:.0f} g · "
                          f"{zmax:.1f} mm tall", color=INK, fontsize=12)
 
-            ax2 = fig.add_subplot(2, 3, k + 4, facecolor=SURFACE)
+            ax2 = fig.add_subplot(2, n, k + 1 + n, facecolor=SURFACE)
             s2 = segs[first][:, :, :2]
             ax2.add_collection(LineCollection(s2, colors=cols[first], linewidths=0.35))
             ax2.plot([0, BED, BED, 0, 0], [0, 0, BED, BED, 0], color=MUTED, lw=0.8)

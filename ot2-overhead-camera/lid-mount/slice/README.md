@@ -10,7 +10,10 @@ slicer, and [`report.json`](report.json) holds the numbers below.
 | 1 | Base | 2 h 32 min | 81.1 g (26.8 m) |
 | 2 | Deck + 4 Pi 5 standoffs + 4 deck shims | 1 h 10 min | 43.5 g (14.3 m) |
 | 3 | Drill template (optional; the paper PDF does the same job) | 52 min | 31.8 g (10.5 m) |
-| | **Total** | **4 h 34 min** | **156.5 g** |
+| 4 | Fit coupon (optional): the top 12 mm of a post, nut slot included, and the deck around a socket, cut from the real parts. Print it first to try both fits | 16 min | 2.5 g (0.8 m) |
+| | **Total** | **4 h 49 min** | **158.9 g** |
+
+Only plates 1 and 2 are needed: 3 h 42 min and 124.6 g.
 
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).
@@ -44,7 +47,7 @@ embedded in the 3MF for the printer's screen:
 | Check | Result |
 |---|---|
 | Slicer warnings (the CLI's `found … slicing warnings` log lines) | **None** on any plate |
-| Bambu's support-necessity check (floating regions, floating cantilevers, large overhangs) | Ran on all 4 objects and flagged nothing. This agrees with the README's "none needs supports" |
+| Bambu's support-necessity check (floating regions, floating cantilevers, large overhangs) | Ran on all 5 objects and flagged nothing. This agrees with the README's "none needs supports" |
 | Toolpaths outside the 180 × 180 mm bed / G-code path conflicts | None / none |
 | G-code warnings stored in the 3MF (`slice_info.config`) | `not_support_traditional_timelapse` on every plate, see below |
 
@@ -151,6 +154,12 @@ against its design value](preview/fit_sim.png)
   [insignificant](https://www.cnckitchen.com/blog/calibration-cubes-are-bad-this-is-how-you-calibrate-your-3d-printer)
   (one pre-production unit had 0.55°). PLA shrinks about 0.35 %, but the base and the deck
   shrink alike.
+- **To know rather than predict, print plate 4 first** (16 minutes). It is the top 12 mm of a
+  post and the deck around its socket, cut from the real parts
+  ([`exports/fit_coupon.stl`](../exports/fit_coupon.stl)). The post top should drop into the
+  socket by hand, and an M3 nut should slide into the slot. If they do, the base and the deck
+  will fit too. The one difference is that a short coupon post cools faster than the top of a
+  96 mm post.
 - **Studio has no tolerance calibration of its own.** Its calibration menu covers
   temperature, flow, pressure advance, max flow rate, VFA and retraction. If a first print
   does come out tight or loose, the knob is "User Customized Offset"

@@ -14,23 +14,28 @@
   "filament_colour": "#000000",
   "return_code": 0,
   "error_string": "Success.",
-  "support_necessity_checks_run": 4,
+  "support_necessity_checks_run": 5,
   "thumbnails_embedded": [
     "Metadata/pick_1.png",
     "Metadata/pick_2.png",
     "Metadata/pick_3.png",
+    "Metadata/pick_4.png",
     "Metadata/plate_1.png",
     "Metadata/plate_1_small.png",
     "Metadata/plate_2.png",
     "Metadata/plate_2_small.png",
     "Metadata/plate_3.png",
     "Metadata/plate_3_small.png",
+    "Metadata/plate_4.png",
+    "Metadata/plate_4_small.png",
     "Metadata/plate_no_light_1.png",
     "Metadata/plate_no_light_2.png",
     "Metadata/plate_no_light_3.png",
+    "Metadata/plate_no_light_4.png",
     "Metadata/top_1.png",
     "Metadata/top_2.png",
-    "Metadata/top_3.png"
+    "Metadata/top_3.png",
+    "Metadata/top_4.png"
   ],
   "plates": [
     {
@@ -68,15 +73,15 @@
         "Bridge": 588,
         "Custom": 346,
         "Flush": 28,
-        "Gap infill": 114,
+        "Gap infill": 113,
         "Inner wall": 1600,
-        "Internal solid infill": 1044,
+        "Internal solid infill": 1046,
         "Outer wall": 1139,
         "Overhang wall": 18,
         "Sparse infill": 1833,
         "Top surface": 319,
-        "Travel": 1751,
-        "Undefined": 1735
+        "Travel": 1750,
+        "Undefined": 1734
       }
     },
     {
@@ -86,7 +91,7 @@
         "deck_1",
         "spacers_1"
       ],
-      "print_time_s": 4188,
+      "print_time_s": 4189,
       "filament_g": 43.5,
       "filament_m": 14.35,
       "bed_type": "Textured PEI Plate",
@@ -116,14 +121,14 @@
         "Custom": 349,
         "Flush": 28,
         "Gap infill": 91,
-        "Inner wall": 285,
-        "Internal solid infill": 923,
+        "Inner wall": 286,
+        "Internal solid infill": 924,
         "Outer wall": 326,
         "Overhang wall": 13,
         "Sparse infill": 647,
         "Top surface": 258,
-        "Travel": 380,
-        "Undefined": 362
+        "Travel": 379,
+        "Undefined": 361
       }
     },
     {
@@ -170,8 +175,54 @@
         "Travel": 146,
         "Undefined": 128
       }
+    },
+    {
+      "plate": 4,
+      "name": "Fit coupon",
+      "objects": [
+        "fit_coupon_1"
+      ],
+      "print_time_s": 931,
+      "filament_g": 2.46,
+      "filament_m": 0.81,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 16,
+        "Bridge": 12,
+        "Custom": 349,
+        "Flush": 28,
+        "Gap infill": 13,
+        "Inner wall": 147,
+        "Internal solid infill": 66,
+        "Outer wall": 96,
+        "Overhang wall": 5,
+        "Sparse infill": 50,
+        "Top surface": 21,
+        "Travel": 148,
+        "Undefined": 129
+      }
     }
   ],
-  "total_print_time_s": 16413,
-  "total_filament_g": 156.46
+  "total_print_time_s": 17345,
+  "total_filament_g": 158.92
 }

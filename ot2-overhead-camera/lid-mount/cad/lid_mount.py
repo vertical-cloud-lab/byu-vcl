@@ -297,6 +297,17 @@ def make_spacers(p: Params) -> cq.Workplane:
     return out
 
 
+def make_fit_coupon(p: Params, base: cq.Workplane, deck: cq.Workplane) -> cq.Workplane:
+    """The top 12 mm of one post, nut slot included, and the deck around its socket, cut from
+    the real parts and laid out as they print: a quick check of both fits on your own printer
+    before committing to the 2.5 h base."""
+    c, h = p.post_c, 12.0
+    top = base.intersect(box(16, 16, h, c, c, p.z_post_top - h)).translate((-c, -c, h - p.z_post_top))
+    sock = (deck.intersect(box(18, 18, p.deck_t, c, c, p.z_deck)).translate((-c, -c, -p.z_deck))
+            .rotate((0, 0, 0), (1, 0, 0), 180).translate((22, 0, p.deck_t)))
+    return top.union(sock)
+
+
 # --- reference models (not printed): for the assembly, renders and checks -------------
 
 def make_camera_pcb(p: Params) -> cq.Workplane:
@@ -513,6 +524,7 @@ def build(p: Params) -> dict[str, cq.Workplane]:
         "lid": make_lid(p),
     }
     parts["camera"] = parts["camera_pcb"].union(parts["camera_mount"])
+    parts["fit_coupon"] = make_fit_coupon(p, parts["base"], parts["deck"])
     return parts
 
 
@@ -536,7 +548,7 @@ def print_orientation(name: str, part: cq.Workplane, p: Params) -> cq.Workplane:
 
 def export(p: Params, parts: dict[str, cq.Workplane], checks: dict, out: Path) -> None:
     out.mkdir(parents=True, exist_ok=True)
-    for name in ("base", "deck", "drill_template", "spacers"):
+    for name in ("base", "deck", "drill_template", "spacers", "fit_coupon"):
         cq.exporters.export(parts[name], str(out / f"{name}.step"))
         cq.exporters.export(print_orientation(name, parts[name], p), str(out / f"{name}.stl"),
                             tolerance=0.02, angularTolerance=0.1)

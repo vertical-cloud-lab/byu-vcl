@@ -51,6 +51,7 @@ safety switch is enabled in Robot Settings, the robot won't run while the window
 | Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes, the Pi 5 sits on top, and a slot passes the ribbon cable. Four sockets in its underside take the post tops |
 | Drill template | [`exports/drill_template.stl`](exports/drill_template.stl), or print [`exports/drill_template_1to1.pdf`](exports/drill_template_1to1.pdf) on paper | Marks the lens cutout and the four bolt holes |
 | Spacers | [`exports/spacers.stl`](exports/spacers.stl) | 4 × 5 mm Pi 5 standoffs, plus 4 × 2 mm shims that raise the deck if the lens ever needs to sit higher |
+| Fit coupon (optional) | [`exports/fit_coupon.stl`](exports/fit_coupon.stl) | The top 12 mm of a post and the deck around its socket, cut from the real parts: a 16-minute check of both fits before the 2.5 h base |
 | Everything, in colour | [`exports/assembly.step`](exports/assembly.step) | With reference models of the lid, camera, adapter, lens and Pi 5 |
 
 STEP files for every printed part sit next to the STLs. The drill template also comes as a
@@ -61,7 +62,8 @@ STEP files for every printed part sit next to the STLs. The drill template also 
 orientation, and **none needs supports** (see [`renders/print_layout.png`](renders/print_layout.png)).
 
 **Bambu Lab A1 mini:** [`slice/lid_mount_A1mini_PLA.3mf`](slice/lid_mount_A1mini_PLA.3mf) is
-already sliced for PLA on three plates: 4 h 33 min and 156 g in all. It uses these settings,
+already sliced for PLA: 3 h 42 min and 125 g for the base and the deck, plus optional plates for
+the drill template and a fit coupon. It uses these settings,
 the Textured PEI plate, and Bambu's "Auto circle contour-hole compensation", so the round screw
 holes print at their nominal sizes. Bambu's support check and slicer both came back clean; the
 only warning concerns timelapse mode. The fits are predicted, not yet measured; see

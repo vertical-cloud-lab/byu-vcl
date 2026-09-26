@@ -8,6 +8,7 @@ Three plates, every part square to the bed:
     1  base            144 x 144 x 99.7 mm, centred
     2  deck + spacers  112 x 112 x 11 mm, 10 mm back from centre, spacers in front of it
     3  drill template  144 x 144 x 2 mm (optional; the paper PDF does the same job)
+    4  fit coupon      a post top and a deck socket (optional; try the fits first)
 
 Presets are Bambu's own system presets (machine "Bambu Lab A1 mini 0.4 nozzle",
 process "0.20mm Standard @BBL A1M", filament "Bambu PLA Basic @BBL A1M"),
@@ -56,6 +57,7 @@ PLATES = [
     ("Base", [("base", 90, 90)]),
     ("Deck + spacers", [("deck", 90, 100), ("spacers", 69, 18)]),
     ("Drill template", [("drill_template", 90, 90)]),
+    ("Fit coupon", [("fit_coupon", 80, 90)]),
 ]
 
 
