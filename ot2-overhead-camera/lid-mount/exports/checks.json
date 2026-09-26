@@ -20,7 +20,7 @@
     "thumbscrews to nearest post": 32.84534959096617,
     "camera to base": 33.562445840513924,
     "Pi 5 board to deck screw heads (plan)": 4.25,
-    "post to socket wall, per side": 0.25,
+    "post to socket wall, per side": 0.2,
     "M3 screw tip below its nut": 6.599999999999994
   },
   "heights_mm": {
@@ -30,7 +30,7 @@
     "camera PCB back": 93.66,
     "deck underside": 99.66,
     "post top (in the deck's sockets)": 102.16,
-    "M3 nut slot, floor": 94.86,
+    "M3 nut slot, floor": 94.66,
     "deck top": 104.66,
     "Pi 5 board underside": 109.66,
     "overall height above lid (approx.)": 127.25999999999999,

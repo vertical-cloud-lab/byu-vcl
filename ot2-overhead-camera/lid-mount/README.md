@@ -61,9 +61,11 @@ STEP files for every printed part sit next to the STLs. The drill template also 
 orientation, and **none needs supports** (see [`renders/print_layout.png`](renders/print_layout.png)).
 
 **Bambu Lab A1 mini:** [`slice/lid_mount_A1mini_PLA.3mf`](slice/lid_mount_A1mini_PLA.3mf) is
-already sliced for PLA on three plates: 4 h 33 min and 157 g in all. It uses these settings
-and the Textured PEI plate. Bambu's support check and slicer both came back clean; the only
-warning concerns timelapse mode. See [`slice/README.md`](slice/README.md).
+already sliced for PLA on three plates: 4 h 33 min and 156 g in all. It uses these settings,
+the Textured PEI plate, and Bambu's "Auto circle contour-hole compensation", so the round screw
+holes print at their nominal sizes. Bambu's support check and slicer both came back clean; the
+only warning concerns timelapse mode. The fits are predicted, not yet measured; see
+[`slice/README.md`](slice/README.md#will-it-fit-first-time).
 
 ### Hardware
 
@@ -120,19 +122,30 @@ PLA threads strip after a few removals and creep under load, and the deck was lo
 the screws. Two changes, both in `Params`:
 
 - **The post tops key into the deck.** Each post rises 2.5 mm (`socket_depth`) into a socket in
-  the deck's underside, with 0.25 mm clearance per side (`socket_clear`) and 45° lead-ins on
-  both parts. The deck stays put without the screws; the screws are the insurance.
+  the deck's underside, with 0.20 mm clearance per side (`socket_clear`) and 45° lead-ins on
+  both parts. The socket's corners are rounded tighter (`socket_corner_r` = 1.0 mm) than the
+  post's, so only the flats touch. The deck stays put without the screws; the screws are the
+  insurance.
 - **An M3 nut in each post, slid in from the side** in the OpenFlexure way. The slot is
-  5.7 × 2.8 mm and ends in a hex, 4.5 mm below the post top, so the screw clamps the top of the
+  5.8 × 2.8 mm and ends in a hex, 4.5 mm below the post top, so the screw clamps the top of the
   post between the nut and the deck instead of threading into plastic. The slots open outward
   along X, just below the deck.
 
-If the posts won't go into the sockets, file or sand the post tops rather than forcing them; if
-they're loose, reprint the deck with a smaller `socket_clear`. The slot is only 0.2 mm wider
-than the nut's 5.5 mm across flats, and printed slots come out slightly narrow, so a nut should
-need a push and then stay put. If it's too tight, clean the slot out with a blade. The
-2 mm shims still work: a shim sits on the post top inside the socket, raising the deck by 2 mm
-and shortening the post's engagement by 2 mm, and the M3 × 16 still reaches 4.6 mm past the nut.
+These fits were chosen with [`slice/fit_sim.py`](slice/fit_sim.py) rather than by guesswork;
+see [slice/README.md](slice/README.md#will-it-fit-first-time). It rebuilds the joints from the
+G-code the printer will run, then applies Bambu's own error model for PLA Basic on the A1 mini.
+The model says small concave arcs print small, so the old concentric socket corners (r = 1.75 mm)
+would have closed to about 0.02 mm, and bound before the flats did. It predicts that 0.20 mm on
+the flats prints as about 0.15 mm (0.08–0.22 mm), with a 99 % chance that every post top fits
+without trimming. It also predicts that the 5.8 mm nut slot prints as about 5.62 mm, so any
+ISO 4032 M3 nut (5.32–5.50 mm across flats) slides in. The posts are 96 mm cantilevers: a post
+top that is a tenth of a millimetre out of place bends into line under well under a newton, so
+only size matters, not position.
+
+If a post still won't go in, sand the post top rather than forcing it. If the fit is loose,
+reprint the deck (the 1 h 10 min plate) with a smaller `socket_clear`. The 2 mm shims still
+work: a shim sits on the post top inside the socket, raising the deck by 2 mm and shortening
+the post's engagement by 2 mm, and the M3 × 16 still reaches 4.6 mm past the nut.
 
 ---
 
@@ -270,7 +283,7 @@ the front-row slots, which is why the mount goes over slots 4–11:
 | Check | Result |
 |---|---|
 | Interference, 13 pairs: base and deck against each other and against the camera, lens, Pi 5, spacers and window, plus the thumbscrew sweep and the view cones | 0 mm³ for every pair |
-| Post to deck socket | 0.25 mm clearance per side, 2.5 mm deep |
+| Post to deck socket | 0.20 mm clearance per side in the CAD, 2.5 mm deep; about 0.15 mm as printed (`slice/fit_sim.py`) |
 | M3 × 16 past its nut | 6.6 mm |
 | Lens front barrel to collar | 3.0 mm radial gap |
 | Thumbscrews to the nearest post | 32.8 mm |

@@ -72,9 +72,12 @@ class Params:
     # the screws. An M3 nut slides into each post from outside (OpenFlexure style), and the
     # screw clamps the top of the post between the nut and the deck instead of tapping into PLA.
     socket_depth: float = 2.5
-    socket_clear: float = 0.25      # per side: a slip fit
-    m3_nut_slot_w: float = 5.7      # 5.5 mm across flats + 0.2, snug so the nut stays put
-    m3_nut_slot_h: float = 2.8      # 2.4 mm nut + 0.4; the slot's roof prints as a bridge
+    # Fits chosen with slice/fit_sim.py: as sliced, then Bambu's A1 mini PLA error model on top.
+    socket_clear: float = 0.20      # per side; prints about 0.15, a locating slip fit
+    socket_corner_r: float = 1.0    # tighter than the post's 1.5 + clear, so only the flats touch:
+                                    # small concave arcs print small, and would bind first
+    m3_nut_slot_w: float = 5.8      # 5.5 mm across flats + 0.3; prints about 5.62
+    m3_nut_slot_h: float = 3.0      # 2.4 mm nut + 0.6, as OpenFlexure's M3 slot; the roof is a bridge
     m3_nut_roof: float = 4.5        # post left above the slot
     m3_screw_len: float = 16.0
     bolt_xy: float = 33.0           # M4 bolts at (+-bolt_xy, +-bolt_xy)
@@ -92,6 +95,7 @@ class Params:
     m25_clear_d: float = 2.8
     m25_nut_af: float = 5.3         # 5.0 mm nut + 0.3
     m25_nut_h: float = 2.3          # 2.0 mm nut + 0.3
+    first_layer_flare: float = 0.4  # 45 deg flare on the camera nut traps, which open onto the bed
     slot_w: float = 22.0            # ribbon cable slot (X)
     slot_h: float = 6.0             # (Y)
     # Raspberry Pi 5: 85 x 56 mm board, M2.5 holes on 58 x 49 mm, 3.5 mm from
@@ -180,6 +184,14 @@ def nut_slot(af, h, reach, cx, cy, z0, angle_deg) -> cq.Workplane:
     return slot.rotate((0, 0, 0), (0, 0, 1), angle_deg).translate((cx, cy, z0))
 
 
+def hex_flare(af, c, cx, cy, z_face) -> cq.Workplane:
+    """A 45 degree flare, c deep, at the mouth of a hex pocket in a face that prints on the bed,
+    so the squashed first layer (elephant's foot) can't close the mouth up."""
+    k = 1 / math.cos(math.pi / 6)
+    return (cq.Workplane("XY").workplane(offset=z_face - c).polygon(6, af * k)
+            .workplane(offset=c + 1).polygon(6, (af + 2 * (c + 1)) * k).loft().translate((cx, cy, 0)))
+
+
 def radial_cyl(d, r0, r1, z, angle_deg) -> cq.Workplane:
     """Cylinder along a radius of the optical axis, from r0 to r1 at height z."""
     return (cq.Workplane("YZ").circle(d / 2).extrude(r1 - r0)
@@ -229,7 +241,7 @@ def make_base(p: Params) -> cq.Workplane:
 
 def make_socket(p: Params, x: float, y: float) -> cq.Workplane:
     """Pocket in the deck's underside that a post top slides into, with a 45 degree lead-in."""
-    w, r, lead = p.post_w + 2 * p.socket_clear, 1.5 + p.socket_clear, 0.6
+    w, r, lead = p.post_w + 2 * p.socket_clear, p.socket_corner_r, 0.6
     pocket = rounded_box(w, p.socket_depth + 1, r, x, y, p.z_deck - 1)
     mouth = rounded_box(w + 2 * lead, lead + 1, r + lead, x, y, p.z_deck - 1).faces(">Z").edges().chamfer(lead)
     return pocket.union(mouth)
@@ -248,6 +260,7 @@ def make_deck(p: Params) -> cq.Workplane:
         # M2.5 up through the camera PCB and the boss; nut trapped in the deck top.
         deck = deck.cut(cyl(p.m25_clear_d, p.cam_standoff + p.deck_t + 2, x, y, z0 - p.cam_standoff - 1))
         deck = deck.cut(hex_prism(p.m25_nut_af, p.m25_nut_h + 1, x, y, z0 + p.deck_t - p.m25_nut_h))
+        deck = deck.cut(hex_flare(p.m25_nut_af, p.first_layer_flare, x, y, z0 + p.deck_t))
     for x, y in p.pi_holes():
         # M2.5 down through the Pi and a spacer; nut trapped in the deck underside.
         deck = deck.cut(cyl(p.m25_clear_d, p.deck_t + 2, x, y, z0 - 1))

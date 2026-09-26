@@ -43,6 +43,11 @@ HERE = Path(__file__).resolve().parent
 EXPORTS = HERE.parent / "exports"
 OUT_3MF = HERE / "lid_mount_A1mini_PLA.3mf"
 OVERRIDES = {"wall-loops": "3", "sparse-infill-density": "25%", "curr-bed-type": "Textured PEI Plate"}
+# Bambu's "Auto circle contour-hole compensation", off in the stock process preset. It resizes
+# round holes and bosses by the error model in the PLA Basic filament preset, which otherwise
+# prints an M3 clearance hole about 0.4 mm small (fit_sim.py). Set in the preset file because
+# the CLI takes booleans only as bare flags.
+PROCESS_SETTINGS = {"enable_circle_compensation": "1"}
 OSMESA = Path("/usr/lib/x86_64-linux-gnu/libOSMesa.so.8")
 FILAMENT_COLOUR = "#000000"
 
@@ -60,6 +65,8 @@ def write_presets(resources: Path, build: Path) -> dict[str, Path]:
         cfg = flatten(kind, name, resources / "profiles" / "BBL")
         if kind == "filament":
             cfg["filament_colour"] = [FILAMENT_COLOUR]
+        if kind == "process":
+            cfg.update(PROCESS_SETTINGS)
         paths[kind] = build / f"{kind}.json"
         paths[kind].write_text(json.dumps(cfg, indent=2) + "\n")
     return paths
@@ -143,7 +150,7 @@ def report(build: Path, log: str) -> dict:
         })
     return {
         "bambu_studio": version.group(1) if version else None,
-        "presets": PRESETS, "overrides": {k.replace("-", "_"): v for k, v in OVERRIDES.items()},
+        "presets": PRESETS, "overrides": {**{k.replace("-", "_"): v for k, v in OVERRIDES.items()}, **PROCESS_SETTINGS},
         "filament_colour": FILAMENT_COLOUR,
         "return_code": result["return_code"], "error_string": result["error_string"],
         "support_necessity_checks_run": support_checks,
