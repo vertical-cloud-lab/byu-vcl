@@ -79,6 +79,17 @@
       "file": "92095A184.step",
       "size_bytes": 982910,
       "sha256": "126458543fd7f2634325abec04d3785b3f1633b90fc734d3bafac82f18008665"
+    },
+    {
+      "pn": "91828A211",
+      "role": "D: M3 hex nut, 18-8 SS, in the posts' side slots (added 2026-09-26)",
+      "title": "Corrosion-Resistant 18-8 Stainless Steel Hex Nut, M3 x 0.5 mm Thread Size | McMaster-Carr",
+      "url": "https://www.mcmaster.com/91828A211/",
+      "cad_format": "3-D STEP",
+      "cad_download_url": "https://www.mcmaster.com/mvC/Library/CAD2/20260729/B7BED686/91828A211_Corrosion-Resistant%2018-8%20Stainless%20Steel%20Hex%20Nut.STEP",
+      "file": "91828A211.step",
+      "size_bytes": 245209,
+      "sha256": "08df99ae2193c8501029d2bf6b9c1512ebd2359e729c1683c081051a3d7687ff"
     }
   ]
 }

@@ -38,9 +38,9 @@
       "objects": [
         "base_1"
       ],
-      "print_time_s": 8924,
-      "filament_g": 80.54,
-      "filament_m": 26.57,
+      "print_time_s": 9111,
+      "filament_g": 81.35,
+      "filament_m": 26.84,
       "bed_type": "Textured PEI Plate",
       "bed_temp_c": [
         65,
@@ -64,17 +64,18 @@
       ],
       "feature_time_s": {
         "Bottom surface": 368,
-        "Bridge": 580,
+        "Bridge": 590,
         "Custom": 346,
         "Flush": 28,
-        "Gap infill": 93,
-        "Inner wall": 1551,
-        "Internal solid infill": 981,
-        "Outer wall": 1094,
-        "Sparse infill": 1899,
-        "Top surface": 310,
-        "Travel": 1688,
-        "Undefined": 1672
+        "Gap infill": 113,
+        "Inner wall": 1598,
+        "Internal solid infill": 1041,
+        "Outer wall": 1131,
+        "Overhang wall": 18,
+        "Sparse infill": 1846,
+        "Top surface": 319,
+        "Travel": 1728,
+        "Undefined": 1712
       }
     },
     {
@@ -84,9 +85,9 @@
         "deck_1",
         "spacers_1"
       ],
-      "print_time_s": 4051,
-      "filament_g": 43.39,
-      "filament_m": 14.32,
+      "print_time_s": 4190,
+      "filament_g": 43.69,
+      "filament_m": 14.42,
       "bed_type": "Textured PEI Plate",
       "bed_temp_c": [
         65,
@@ -110,18 +111,18 @@
       ],
       "feature_time_s": {
         "Bottom surface": 351,
-        "Bridge": 542,
+        "Bridge": 557,
         "Custom": 349,
         "Flush": 28,
-        "Gap infill": 18,
-        "Inner wall": 360,
-        "Internal solid infill": 839,
-        "Outer wall": 302,
+        "Gap infill": 22,
+        "Inner wall": 373,
+        "Internal solid infill": 913,
+        "Outer wall": 310,
         "Overhang wall": 16,
-        "Sparse infill": 657,
-        "Top surface": 245,
-        "Travel": 361,
-        "Undefined": 342
+        "Sparse infill": 636,
+        "Top surface": 266,
+        "Travel": 387,
+        "Undefined": 369
       }
     },
     {
@@ -130,7 +131,7 @@
       "objects": [
         "drill_template_1"
       ],
-      "print_time_s": 3092,
+      "print_time_s": 3094,
       "filament_g": 31.87,
       "filament_m": 10.51,
       "bed_type": "Textured PEI Plate",
@@ -161,15 +162,15 @@
         "Flush": 28,
         "Gap infill": 9,
         "Inner wall": 120,
-        "Internal solid infill": 995,
+        "Internal solid infill": 997,
         "Outer wall": 81,
         "Sparse infill": 99,
         "Top surface": 370,
         "Travel": 145,
-        "Undefined": 127
+        "Undefined": 126
       }
     }
   ],
-  "total_print_time_s": 16067,
-  "total_filament_g": 155.8
+  "total_print_time_s": 16395,
+  "total_filament_g": 156.91
 }

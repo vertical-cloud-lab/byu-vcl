@@ -39,14 +39,22 @@ def add(pl, wp, name, opacity=1.0, color=None):
                 smooth_shading=False, specular=0.15)
 
 
-def add_fasteners(pl, p: Params, lift: dict | None = None) -> None:
-    """McMaster-Carr screws, nuts and washers (see hardware.py), optionally lifted per group."""
+def add_fasteners(pl, p: Params, lift: dict | None = None, slide: dict | None = None, clip=None) -> None:
+    """McMaster-Carr screws, nuts and washers (see hardware.py), optionally lifted per group,
+    slid outward along X per group (the M3 nuts enter their posts that way), or clipped."""
     shapes, _ = hardware.placed(p)
     for name, group in shapes.items():
         dz = (lift or {}).get(name, 0.0)
+        dx = (slide or {}).get(name, 0.0)
         for s in group:
-            pl.add_mesh(mesh(s.translate((0, 0, dz))), color=NYLON if name == "m4_washers" else STEEL,
-                        smooth_shading=False, specular=0.3)
+            out = np.sign(s.val().Center().x)
+            s = s.translate((out * dx, 0, dz))
+            if clip is not None:
+                s = s.intersect(clip)
+                if not s.val().isValid() or s.val().Volume() < 1e-3:
+                    continue
+            pl.add_mesh(mesh(s), color=NYLON if name == "m4_washers" else STEEL, smooth_shading=False,
+                        specular=0.3)
 
 
 def clip_lid(p, parts, size=180.0):
@@ -74,7 +82,7 @@ def render_exploded(p: Params, parts: dict, out: Path) -> None:
         wp = clip_lid(p, parts) if name == "lid" else parts[name]
         add(pl, wp.translate((0, 0, dz)), name, opacity=0.35 if name == "lid" else 1.0)
     add_fasteners(pl, p, {"m4_screws": -75, "m4_washers": -58, "m4_nuts": 14, "cam_screws": 60, "cam_nuts": 124,
-                          "m3_screws": 132, "pi_nuts": 96, "pi_screws": 178})
+                          "m3_screws": 132, "pi_nuts": 96, "pi_screws": 178}, slide={"m3_nuts": 16})
     pl.camera_position = [(500, -620, 400), (0, 0, 100), (0, 0, 1)]
     pl.add_text("Exploded: lid, base, lens, C-CS adapter, camera, deck, Pi 5,\n"
                 "and the McMaster-Carr screws, nuts and washers", font_size=11, color="black")
@@ -107,6 +115,33 @@ def render_section(p: Params, parts: dict, out: Path) -> None:
     pl.close()
 
 
+def render_joint(p: Params, parts: dict, out: Path) -> None:
+    """Close-up section through one post and its deck corner: the socket, the nut slot and the M3."""
+    c = p.post_c
+    keep = box(40, 20, 30, cx=c + 6, cy=c + 10, z0=p.z_deck - 17)
+    pl = plotter((1400, 1100))
+    add(pl, parts["base"].intersect(keep), "base")
+    add(pl, parts["deck"].intersect(keep), "deck")
+    add_fasteners(pl, p, clip=keep.val())
+    z_nut = p.z_m3_slot + p.m3_nut_slot_h / 2
+    labels = {
+        "deck": (c - 11, c, p.z_deck + 3.5),
+        f"socket, {p.socket_depth} mm deep, {p.socket_clear} mm clear per side": (c - 5.2, c, p.z_deck + 0.8),
+        "post": (c - 4, c, p.z_deck - 12),
+        "M3 nut, slid in from the side": (c + 2.6, c, z_nut),
+        f"M3 x {p.m3_screw_len:.0f}": (c + 2.4, c, p.z_deck + p.deck_t + 1.2),
+    }
+    pl.add_point_labels(np.array(list(labels.values()), dtype=float), list(labels.keys()), font_size=20,
+                        point_size=10, point_color="red", shape_opacity=0.85, always_visible=True)
+    pl.camera_position = [(c + 60, c - 240, p.z_deck + 40), (c + 3, c, p.z_deck - 3), (0, 0, 1)]
+    pl.enable_parallel_projection()
+    pl.camera.parallel_scale = 17
+    pl.add_text("Deck to post: socket, side-entry nut slot and M3 screw (section through the post centre)",
+                font_size=11, color="black")
+    pl.screenshot(out / "post_joint.png")
+    pl.close()
+
+
 def render_print_layout(p: Params, parts: dict, out: Path) -> None:
     pl = plotter((1800, 1000))
     offsets = {"base": (-150, 0), "deck": (-10, 0), "drill_template": (140, 0), "spacers": (250, -20)}
@@ -128,6 +163,7 @@ def main() -> None:
     render_assembly(p, parts, RENDERS)
     render_exploded(p, parts, RENDERS)
     render_section(p, parts, RENDERS)
+    render_joint(p, parts, RENDERS)
     render_print_layout(p, parts, RENDERS)
     print(f"renders written to {RENDERS}")
 

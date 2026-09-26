@@ -26,6 +26,7 @@ ROLES = {
     "m25_screw": "91292A018",   # M2.5 x 16 socket head
     "m25_nut": "91828A113",     # M2.5 hex nut
     "m3_screw": "92095A184",    # M3 x 16 button head
+    "m3_nut": "91828A211",      # M3 hex nut, in the posts' side slots
 }
 
 # Nominal ISO dimensions (mm): head diameter, head height, hex socket, nut across flats / height.
@@ -126,6 +127,7 @@ def fasteners() -> dict[str, tuple[cq.Workplane, str]]:
         "m25_screw": pick("m25_screw", "screw", socket_head("M2.5", 16), MAJOR["M2.5"]),
         "m25_nut": pick("m25_nut", "nut", hex_nut("M2.5")),
         "m3_screw": pick("m3_screw", "screw", button_head("M3", 16), MAJOR["M3"]),
+        "m3_nut": pick("m3_nut", "nut", hex_nut("M3")),
     }
 
 
@@ -144,6 +146,7 @@ def placed(p) -> tuple[dict[str, list[cq.Workplane]], dict[str, str]]:
     z_cam_front = p.z_pcb_back - p.cam_pcb_t
     z_pi_top = z_top_deck + p.pi_spacer_h + 1.6
     washer_t = f["m4_washer"][0].val().BoundingBox().zlen
+    m3_nut_h = f["m3_nut"][0].val().BoundingBox().zlen
     shapes = {
         # Base: M4 nuts at the bottom of their traps; button heads + washers from inside the robot.
         "m4_nuts": _place(f["m4_nut"][0], corners(p.bolt_xy), p.base_t - p.m4_nut_h),
@@ -152,8 +155,10 @@ def placed(p) -> tuple[dict[str, list[cq.Workplane]], dict[str, str]]:
         # Camera: M2.5 up through the PCB and bosses, nuts in the deck's top traps.
         "cam_screws": _place(f["m25_screw"][0], corners(p.cam_hole_pitch / 2), z_cam_front),
         "cam_nuts": _place(f["m25_nut"][0], corners(p.cam_hole_pitch / 2), z_top_deck - p.m25_nut_h),
-        # Deck to posts: M3 down into the pilots.
+        # Deck to posts: M3 down through the deck into nuts in the posts' side slots, which the
+        # screws pull up against the slot roofs.
         "m3_screws": _place(f["m3_screw"][0], corners(p.post_c), z_top_deck, flip=True),
+        "m3_nuts": _place(f["m3_nut"][0], corners(p.post_c), p.z_m3_slot + p.m3_nut_slot_h - m3_nut_h),
         # Pi 5: M2.5 down through the board and spacers, nuts in the deck's underside traps.
         "pi_screws": _place(f["m25_screw"][0], p.pi_holes(), z_pi_top, flip=True),
         "pi_nuts": _place(f["m25_nut"][0], p.pi_holes(), p.z_deck + 0.3),

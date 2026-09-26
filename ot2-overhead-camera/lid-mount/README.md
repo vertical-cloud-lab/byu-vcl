@@ -47,8 +47,8 @@ safety switch is enabled in Robot Settings, the robot won't run while the window
 
 | Part | File | Notes |
 |---|---|---|
-| Base | [`exports/base.stl`](exports/base.stl) | 112 × 112 mm plate (144 mm across the tape tabs), a Ø46 mm lens aperture inside a 14 mm light collar, four 10 mm posts, and four M4 nut traps |
-| Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes, the Pi 5 sits on top, and a slot passes the ribbon cable |
+| Base | [`exports/base.stl`](exports/base.stl) | 112 × 112 mm plate (144 mm across the tape tabs), a Ø46 mm lens aperture inside a 14 mm light collar, four M4 nut traps, and four 10 mm posts, each with a side slot for an M3 nut near its top |
+| Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes, the Pi 5 sits on top, and a slot passes the ribbon cable. Four sockets in its underside take the post tops |
 | Drill template | [`exports/drill_template.stl`](exports/drill_template.stl), or print [`exports/drill_template_1to1.pdf`](exports/drill_template_1to1.pdf) on paper | Marks the lens cutout and the four bolt holes |
 | Spacers | [`exports/spacers.stl`](exports/spacers.stl) | 4 × 5 mm Pi 5 standoffs, plus 4 × 2 mm shims that raise the deck if the lens ever needs to sit higher |
 | Everything, in colour | [`exports/assembly.step`](exports/assembly.step) | With reference models of the lid, camera, adapter, lens and Pi 5 |
@@ -61,7 +61,7 @@ STEP files for every printed part sit next to the STLs. The drill template also 
 orientation, and **none needs supports** (see [`renders/print_layout.png`](renders/print_layout.png)).
 
 **Bambu Lab A1 mini:** [`slice/lid_mount_A1mini_PLA.3mf`](slice/lid_mount_A1mini_PLA.3mf) is
-already sliced for PLA on three plates: 4 h 28 min and 156 g in all. It uses these settings
+already sliced for PLA on three plates: 4 h 33 min and 157 g in all. It uses these settings
 and the Textured PEI plate. Bambu's support check and slicer both came back clean; the only
 warning concerns timelapse mode. See [`slice/README.md`](slice/README.md).
 
@@ -71,7 +71,7 @@ warning concerns timelapse mode. See [`slice/README.md`](slice/README.md).
 |---|---|---|
 | 4 | M2.5 × 16 mm screw + M2.5 nut ([91292A018](https://www.mcmaster.com/91292A018/), [91828A113](https://www.mcmaster.com/91828A113/)) | camera → deck (nuts sit in traps on the deck top) |
 | 4 | M2.5 × 16 mm screw + M2.5 nut (same) | Pi 5 → spacers → deck (nuts in traps on the deck underside) |
-| 4 | M3 × 16 mm screw ([92095A184](https://www.mcmaster.com/92095A184/)) | deck → posts (self-tapping into Ø2.6 pilots; set `post_pilot_d = 4.0` for heat-set inserts) |
+| 4 | M3 × 16 mm button head + M3 nut ([92095A184](https://www.mcmaster.com/92095A184/), [91828A211](https://www.mcmaster.com/91828A211/)) | deck → posts (the nuts slide into slots in the posts; see [the joint](#the-deck-to-post-joint)) |
 | 4 | **M4 × 16 button-head (ISO 7380)** + M4 nut + thin nylon washer ([92095A194](https://www.mcmaster.com/92095A194/), [91828A231](https://www.mcmaster.com/91828A231/), [95610A550](https://www.mcmaster.com/95610A550/)) | base → lid, **phase 2 only**. The low 2.2 mm head keeps the screw clear of the pipette head underneath. M4 × 12 ([92095A192](https://www.mcmaster.com/92095A192/)) also works; it just reaches through the nut |
 | – | Painter's or gaffer tape, Command strips, or 3M Dual Lock SJ3560 | **phase 1** (see [§4](#4-install-phase-1-tape-no-cutting)) |
 | – | Optional: 1–2 mm black adhesive foam | light seal under the base, around the aperture |
@@ -89,24 +89,50 @@ the renders use McMaster's own STEP models of them; see [`hardware/`](hardware/R
 The GIF comes from [`cad/animate.py`](cad/animate.py), with the McMaster fasteners.
 
 1. Drop four **M4 nuts** into the hex traps on the base.
-2. Drop four **M2.5 nuts** into the traps on the top of the deck. Hang the camera under the
+2. Slide four **M3 nuts** into the slots near the tops of the posts, lying flat, and push each
+   one in until it stops. The hex end of the slot then holds it on the screw axis.
+3. Drop four **M2.5 nuts** into the traps on the top of the deck. Hang the camera under the
    deck with M2.5 × 16 screws, driven up from the lens side through the camera's corner
    holes. The **ribbon connector goes toward the cable slot**, the side marked by the
    arrow engraved on the base (−Y).
-3. Plug the camera cable into the camera and feed it up through the slot.
-4. Screw on the lens with **one** C–CS adapter. The lens and the camera each ship with one,
+4. Plug the camera cable into the camera and feed it up through the slot.
+5. Screw on the lens with **one** C–CS adapter. The lens and the camera each ship with one,
    and in July the camera wouldn't focus because the adapter ring had been pushed in too far
    (#84). Set the zoom to **about 25 mm**. At the lid, the lens front is 585 mm from the top
    of a plate, which gives a 152 × 114 mm field of view: the plate plus a margin on every
    side, at 26.7 px/mm (~180 px across each well). Above about 27.6 mm the margin
    around the plate drops below 5 mm.
-5. Screw the deck onto the posts with the M3 screws.
-6. Fit the Pi 5 on the four printed spacers with M2.5 × 16 screws down into the nuts on the
+6. Lower the deck onto the posts; their tops drop 2.5 mm into the sockets in its underside.
+   Drive the M3 screws down through the deck into the nuts, snug.
+7. Fit the Pi 5 on the four printed spacers with M2.5 × 16 screws down into the nuts on the
    deck underside, with its power/HDMI edge toward the cable slot. Connect the cable to
    either CAM/DISP port.
 
 The zoom, focus and iris rings stay reachable through the 84 mm windows between the posts.
 Their thumbscrews sweep about Ø55 mm, and the posts are 33 mm clear of that.
+
+### The deck-to-post joint
+
+![Section through a post and its deck corner](renders/post_joint.png)
+
+The screws used to cut their own threads in Ø2.6 mm pilots in the PLA posts. That holds, but
+PLA threads strip after a few removals and creep under load, and the deck was located only by
+the screws. Two changes, both in `Params`:
+
+- **The post tops key into the deck.** Each post rises 2.5 mm (`socket_depth`) into a socket in
+  the deck's underside, with 0.25 mm clearance per side (`socket_clear`) and 45° lead-ins on
+  both parts. The deck stays put without the screws; the screws are the insurance.
+- **An M3 nut in each post, slid in from the side** in the OpenFlexure way. The slot is
+  5.7 × 2.8 mm and ends in a hex, 4.5 mm below the post top, so the screw clamps the top of the
+  post between the nut and the deck instead of threading into plastic. The slots open outward
+  along X, just below the deck.
+
+If the posts won't go into the sockets, file or sand the post tops rather than forcing them; if
+they're loose, reprint the deck with a smaller `socket_clear`. The slot is only 0.2 mm wider
+than the nut's 5.5 mm across flats, and printed slots come out slightly narrow, so a nut should
+need a push and then stay put. If it's too tight, clean the slot out with a blade. The
+2 mm shims still work: a shim sits on the post top inside the socket, raising the deck by 2 mm
+and shortening the post's engagement by 2 mm, and the M3 × 16 still reaches 4.6 mm past the nut.
 
 ---
 
@@ -232,7 +258,8 @@ is up. Every height follows from the camera and lens stack:
 | 72.8 | lens flange |
 | 77.8 | camera CS seat (after one 5.03 mm C–CS adapter) |
 | 93.7 | back of the camera PCB |
-| 99.7 | deck underside = top of the posts (6 mm standoff clears the FPC connector) |
+| 99.7 | deck underside (6 mm standoff clears the FPC connector) |
+| 102.2 | top of the posts, 2.5 mm up inside the deck's sockets |
 | ~127 | top of the Pi 5 and cooler, the tallest point |
 
 `python cad/lid_mount.py` rebuilds the parts and runs these checks, saved to
@@ -242,7 +269,9 @@ the front-row slots, which is why the mount goes over slots 4–11:
 
 | Check | Result |
 |---|---|
-| Interference, 12 pairs: base and deck against the camera, lens, Pi 5, spacers and window, plus the thumbscrew sweep and the view cones | 0 mm³ for every pair |
+| Interference, 13 pairs: base and deck against each other and against the camera, lens, Pi 5, spacers and window, plus the thumbscrew sweep and the view cones | 0 mm³ for every pair |
+| Post to deck socket | 0.25 mm clearance per side, 2.5 mm deep |
+| M3 × 16 past its nut | 6.6 mm |
 | Lens front barrel to collar | 3.0 mm radial gap |
 | Thumbscrews to the nearest post | 32.8 mm |
 | View cone vs. base aperture and lid cutout | clear from 7.5 mm focal length up, i.e. the full 8–50 mm zoom range |
@@ -261,7 +290,8 @@ Sources for the numbers:
 **Estimates to check on the bench.** Each one is a single number in `Params`:
 - `lens_thread_len = 4.5` and the layout of the rings and thumbscrews come from product
   photos, not a drawing. If the lens front ends up lower than expected, there are still
-  9 mm before it touches the window. Add a 2 mm shim under the deck for each 2 mm you need.
+  9 mm before it touches the window. Add a 2 mm shim on each post, inside the deck's socket,
+  for each 2 mm you need.
 - `ring_sweep_d = 64` is generous; the modelled thumbscrews reach Ø55 mm.
 - The simulated view's pinhole sits 20 mm inside the lens front (`PUPIL_IN_LENS`). Moving
   it changes the field of view by about 3 %.
@@ -297,6 +327,15 @@ The volume below is for the simplified base, without tabs, fillets or nut traps:
 | CadQuery, the same simplified geometry | — | reference | 108,840.279 mm³ |
 | [`onshape_api.py`](onshape/onshape_api.py), REST API | Sterling's (the API key's owner) | [document](https://cad.onshape.com/documents/443cb9b65c87663ba09bfe83/w/c9a919c669b084a190eb18cd): native "Base (native features)" Part Studio (4 sketches, 4 extrudes) plus all 5 STEP files imported | **108,840.279 mm³**, bounding box ±56 × ±56 × 0–99.66 mm |
 | [`onshape_ui.py`](onshape/onshape_ui.py), mouse and keyboard in a headed browser on a Pi | BYU VCL | [document](https://cad.onshape.com/documents/06611d6444078e2169084ea3/w/09bfb4bb4f461af09394b634/e/3f433fd9557d805ee224455e): 5 sketches, 5 extrudes, 4 feature mirrors, first attempt, 8 minutes | **108,840.279 mm³**, from Onshape's own mass properties panel |
+
+**The deck sockets and nut slots (2026-09-26)** went in over the REST API, as three more STEP
+imports into the lab-owned copy of the REST document in **vcl-shared › OT-2 Overhead Camera**
+([document](https://cad.onshape.com/documents/b861aa8c20186efe903944e2/w/92e2f78805c144a49d3ac0a0)):
+*base v2 (M3 nut slots in the posts)*, *deck v2 (post sockets)* and *assembly v2 (nut slots and
+sockets)*. Before importing them, the document was saved as the version *Before M3 nut slots and
+deck sockets*, so the older tabs can still be compared against it. That took 11 API calls. The
+native features still build the earlier simplified base: posts that stop at the deck's
+underside (99.66 mm), with no slots, which is what the volumes below were measured on.
 
 Both documents are private to their accounts. Share one from Onshape, or with
 `onshape_api.py --share EMAIL` if the key has the Share scope. The full record is in

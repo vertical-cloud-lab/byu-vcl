@@ -140,6 +140,10 @@ class Scene:
 
 def fastener_meshes(p: Params):
     shapes, sources = hardware.placed(p)
+    # The M3 nuts slide into their posts along X, from the outside, so each side moves as a group.
+    nuts = shapes.pop("m3_nuts")
+    shapes["m3_nuts_r"] = [s for s in nuts if s.val().Center().x > 0]
+    shapes["m3_nuts_l"] = [s for s in nuts if s.val().Center().x < 0]
     return {k: merged(v) for k, v in shapes.items()}, sources
 
 
@@ -175,7 +179,7 @@ def assembly_gif(p: Params, parts: dict, out: Path) -> None:
 
     up = np.array([0, 0, 1.0])
     # Start: everything apart. The deck sub-assembly waits 80 mm up, parts wait further out.
-    hidden = ["m4_nuts", "cam_nuts", "cam_screws", "camera_pcb", "camera_mount", "adapter", "lens",
+    hidden = ["m4_nuts", "m3_nuts_r", "m3_nuts_l", "cam_nuts", "cam_screws", "camera_pcb", "camera_mount", "adapter", "lens",
               "m3_screws", "pi_spacers", "pi5", "pi_screws", "pi_nuts", "m4_screws", "m4_washers"]
     for n in hidden:
         sc.alpha[n] = 0.0
@@ -210,17 +214,23 @@ def assembly_gif(p: Params, parts: dict, out: Path) -> None:
         return lambda u: f(min(max((u - t0) / (1 - t0), 0.0), 1.0))
 
     n = 16
-    sc.step("1 / 8", "Drop 4 x M4 nuts into the hex traps in the base", n, drop(["m4_nuts"], 45))
-    sc.step("2 / 8", "Drop 4 x M2.5 nuts into the traps on top of the deck", n, drop(["cam_nuts"], 40))
-    sc.step("3 / 8", "Hang the HQ Camera under the deck: 4 x M2.5 x 16 up through its corner holes\n"
+    x_axis = np.array([1.0, 0, 0])
+    post = [(p.post_c + 55, -p.post_c - 42, p.z_m3_slot + 30), (p.post_c, -p.post_c, p.z_m3_slot), (0, 0, 1)]
+    sc.step("1 / 9", "Drop 4 x M4 nuts into the hex traps in the base", n, drop(["m4_nuts"], 45))
+    sc.step("2 / 9", "Slide 4 x M3 nuts into the slots near the post tops, flat, until they stop on the\n"
+            "screw axis. The screws will pull them up, clamping the post tops to the deck.", n + 8,
+            both(drop(["m3_nuts_r"], 25, x_axis), drop(["m3_nuts_l"], 25, -x_axis)), hold=26, cam_to=post)
+    sc.step("3 / 9", "Drop 4 x M2.5 nuts into the traps on top of the deck", n, drop(["cam_nuts"], 40), cam_to=view)
+    sc.step("4 / 9", "Hang the HQ Camera under the deck: 4 x M2.5 x 16 up through its corner holes\n"
             "(ribbon connector toward the cable slot)", n + 6,
             both(drop(["camera_pcb", "camera_mount"], -35), delay(drop(["cam_screws"], -45), 0.35)))
-    sc.step("4 / 8", "Thread on the lens with ONE C-CS adapter; set the zoom to about 25 mm", n + 8,
+    sc.step("5 / 9", "Thread on the lens with ONE C-CS adapter; set the zoom to about 25 mm", n + 8,
             both(drop(["adapter"], -45), delay(drop(["lens"], -70), 0.3), delay(spin(["lens"], 1.5), 0.3)))
-    sc.step("5 / 8", "Lower the camera deck onto the four posts; 4 x M3 x 16 into the post pilots", n + 8,
+    sc.step("6 / 9", "Lower the camera deck onto the posts: their tops key 2.5 mm into sockets in its\n"
+            "underside. Then 4 x M3 x 16 down through the deck into the nuts.", n + 8,
             both(lambda u: sc.group_off.__setitem__("deck_sub", up * 80 * (1 - u)),
                  delay(drop(["m3_screws"], 130), 0.55)))
-    sc.step("6 / 8", "Pi 5 on the 4 printed spacers: M2.5 x 16 down into nuts held in the deck's underside",
+    sc.step("7 / 9", "Pi 5 on the 4 printed spacers: M2.5 x 16 down into nuts held in the deck's underside",
             n + 8, both(drop(["pi_nuts"], -30), drop(["pi_spacers"], 40), delay(drop(["pi5"], 55), 0.25),
                         delay(drop(["pi_screws"], 100), 0.5)))
 
@@ -229,7 +239,7 @@ def assembly_gif(p: Params, parts: dict, out: Path) -> None:
         sc.alpha["lid_plain"] = min(1.0, u * 2)
         sc.pos["lid_plain"] = -up * 60 * (1 - min(1.0, u * 1.4))
         sc.alpha["tape"] = ease(max(0.0, (u - 0.7) / 0.3))
-    sc.step("7 / 8", "Phase 1: set it on the window over the plate and tape the four tabs. No holes.\n"
+    sc.step("8 / 9", "Phase 1: set it on the window over the plate and tape the four tabs. No holes.\n"
             "Slide it until the live preview is centred, then tape.", n + 10, phase1, hold=26,
             cam_to=[(330, -430, 250), (0, 0, 50), (0, 0, 1)])
 
@@ -241,7 +251,7 @@ def assembly_gif(p: Params, parts: dict, out: Path) -> None:
         f = delay(drop(["m4_screws", "m4_washers"], -40), 0.4)
         f(u)
     below = [(230, -300, -170), (0, 0, 15), (0, 0, 1)]
-    sc.step("8 / 8", "Phase 2 (optional): window drilled. 4 x M4 x 16 button heads + nylon washers\n"
+    sc.step("9 / 9", "Phase 2 (optional): window drilled. 4 x M4 x 16 button heads + nylon washers\n"
             "from inside the robot, up into the nuts. Heads hang ~3 mm below; 9.1 mm clearance.",
             n + 14, phase2, hold=30, cam_to=below)
     sc.step("", "Assembled.  Fasteners: " + ", ".join(sorted(set(sources.values()))), 20,
@@ -299,11 +309,11 @@ def cutting_gif(p: Params, parts: dict, out: Path) -> None:
     for name in names:
         sc.add(name, mesh(parts[name]).translate((cx, cy, 0)), COLORS[name])
     sc.add("tape", tape_strips(p).translate((cx, cy, 0)), TAPE)
-    for name in ("m4_nuts", "cam_nuts", "cam_screws", "m3_screws", "pi_screws", "pi_nuts"):
+    for name in ("m4_nuts", "m3_nuts_r", "m3_nuts_l", "cam_nuts", "cam_screws", "m3_screws", "pi_screws", "pi_nuts"):
         sc.add(name, fm[name].translate((cx, cy, 0)), STEEL)
     for name, color in (("m4_screws", STEEL), ("m4_washers", NYLON)):
         sc.add(name, fm[name].translate((cx, cy, 0)), color, shown=False)
-    mount = names + ["m4_nuts", "cam_nuts", "cam_screws", "m3_screws", "pi_screws", "pi_nuts"]
+    mount = names + ["m4_nuts", "m3_nuts_r", "m3_nuts_l", "cam_nuts", "cam_screws", "m3_screws", "pi_screws", "pi_nuts"]
     sc.group("mount", mount)
     # Marker tracing, paper template and punch marks.
     trace = pv.lines_from_points(outline_points(p))

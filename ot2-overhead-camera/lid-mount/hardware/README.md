@@ -19,6 +19,7 @@ commit `e9b1911` briefly. If the lab decides committing them is fine, restore th
 | 8 | camera → deck, Pi 5 → deck | [91292A018](https://www.mcmaster.com/91292A018/) | 18-8 stainless socket head screw, M2.5 × 0.45, 16 mm |
 | 8 | in the deck's traps | [91828A113](https://www.mcmaster.com/91828A113/) | 18-8 stainless hex nut, M2.5 × 0.45 |
 | 4 | deck → posts | [92095A184](https://www.mcmaster.com/92095A184/) | 18-8 stainless button head hex-drive screw, M3 × 0.5, 16 mm |
+| 4 | in the posts' side slots | [91828A211](https://www.mcmaster.com/91828A211/) | 18-8 stainless hex nut, M3 × 0.5 (fetched 2026-09-26, when the posts gained nut slots) |
 
 [`mcmaster/parts.json`](mcmaster/parts.json) records each file's page title, download URL,
 size and SHA-256. McMaster sells in packs, so one pack of each covers the build.

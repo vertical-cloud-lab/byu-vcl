@@ -7,10 +7,10 @@ slicer, and [`report.json`](report.json) holds the numbers below.
 
 | Plate | Parts | Time | PLA |
 |---|---|---|---|
-| 1 | Base | 2 h 29 min | 80.5 g (26.6 m) |
-| 2 | Deck + 4 Pi 5 standoffs + 4 deck shims | 1 h 08 min | 43.4 g (14.3 m) |
+| 1 | Base | 2 h 31 min | 81.4 g (26.8 m) |
+| 2 | Deck + 4 Pi 5 standoffs + 4 deck shims | 1 h 09 min | 43.7 g (14.4 m) |
 | 3 | Drill template (optional; the paper PDF does the same job) | 52 min | 31.9 g (10.5 m) |
-| | **Total** | **4 h 28 min** | **155.8 g** |
+| | **Total** | **4 h 33 min** | **156.9 g** |
 
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).
@@ -50,8 +50,11 @@ needs a prime tower).
 
 Two more points that aren't slicer warnings:
 
-- **The four posts** on plate 1 are 10 × 10 mm and stand 94 mm above the plate. The A1 mini
+- **The four posts** on plate 1 are 10 × 10 mm and stand 96 mm above the plate. The A1 mini
   moves the bed in Y, so watch the last few centimetres for ringing.
+- **The M3 nut slots** near the post tops each have a 5.7 mm bridge for a roof, with the screw
+  hole through it. Bambu's support check doesn't flag them, and bridges that short normally
+  print clean. If a roof sags, clear the slot with a blade before pushing the nut in.
 - **The four camera nut traps** on the deck open onto the build plate. The preset's
   elephant-foot compensation is 0, so if an M2.5 nut is tight, the first layer is the reason.
   Chase the hex with a nut or a blade.
