@@ -8,8 +8,9 @@ hovering over the a1 spot: x= 265.0 y = 32.665."*
 session did two things:
 
 - read-only checks over SSH: log timestamps, `dmesg` USB events, port holders;
-- one GRBL read (`?`, `$$`, `$#`, `$I`). Opening the port resets the board, which
-  was already in `Alarm`. Nothing was written.
+- one GRBL read (`?`, `$$`, `$#`, `$I`). Nothing was written. Opening the port
+  resets the board, so it sits in `Alarm` until the next `$H`, which is step 0
+  of any protocol. Whether it was homed before the read is not known.
 
 The Arduino was not opened. Every gate below ran on the runner, against CubOS
 `496819c` plus the Pi's three patches, rebuilt from `cubos/patches/`. Its
