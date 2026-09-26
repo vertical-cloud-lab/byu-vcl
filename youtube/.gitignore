@@ -1,0 +1,3 @@
+# OAuth client JSON and any local token pickles: never commit
+client_secret*.json
+*.pickle

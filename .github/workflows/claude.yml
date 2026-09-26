@@ -12,11 +12,16 @@ on:
 
 jobs:
   claude:
+    # "@claude-youtube" also contains "@claude"; that tag belongs to
+    # claude-youtube.yml alone, so it is excluded here to avoid a double run.
     if: |
-      (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
-      (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
-      (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      (
+        (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
+        (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
+        (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
+      ) &&
+      !contains(github.event.comment.body || github.event.review.body || format('{0} {1}', github.event.issue.title, github.event.issue.body), '@claude-youtube')
     runs-on: ubuntu-latest
     # Allow long waits (e.g., Edison polling) without hitting a job-level limit
     timeout-minutes: 180
@@ -149,6 +154,10 @@ jobs:
           # Hugging Face (byu-vcl account) and Zenodo (deposit:write + deposit:actions)
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
           ZENODO_API_TOKEN: ${{ secrets.ZENODO_API_TOKEN }}
+          # BYU Vertical Cloud Lab YouTube channel, upload + read ONLY (cannot
+          # delete or edit). Full control lives in the youtube-admin environment,
+          # reachable only through @claude-youtube. See youtube/README.md.
+          YOUTUBE_UPLOAD_TOKEN_PICKLE_B64: ${{ secrets.YOUTUBE_UPLOAD_TOKEN_PICKLE_B64 }}
           # Onshape REST API key pair (dev-portal.onshape.com), same pair as tensegrity-optimization
           ONSHAPE_ACCESS_KEY: ${{ secrets.ONSHAPE_ACCESS_KEY }}
           ONSHAPE_SECRET_KEY: ${{ secrets.ONSHAPE_SECRET_KEY }}
