@@ -213,3 +213,71 @@ system closes a subset:
 
 **Crowded, stay out:** general text-to-CAD benchmarking, dexterous multi-finger hand design,
 GelSight/DIGIT tactile hardware, general grasp synthesis.
+
+## What Q4 established (the protocol for the generative-gripper loop)
+
+Q4 was asked for a protocol, not a survey, and it mostly delivered one. Verbatim answer in
+[`edison-6dof/q4-closed-loop-design-protocol/answer.md`](edison-6dof/q4-closed-loop-design-protocol/answer.md).
+
+**Four endpoints, split by what each can attribute.** Off the arm: **retention force**
+(pull-to-slip on a rigidly fixtured finger set, keeping the full force–displacement curve)
+and **capture envelope** (success against deliberately imposed lateral, axial, and angular
+offsets, reported per axis as ED50/ED90 from a logistic mixed model). On the arm: **binary
+grasp success** (lift ≥50 mm within 3 s and hold 3 s, the Cross-Embodiment Gripper
+Benchmark definition) and **seating success**. Never claim a finger-only improvement from
+on-arm data alone. Cycle time is dominated by the arm, so it is a systems metric only.
+
+**Power at a high baseline is the expensive part.** Detecting 90% → 95% at 80% power
+(two-sided α = 0.05) takes **~435–475 trials per group**. I re-derived that: 435 from the
+plain two-proportion test, 474 with continuity correction. Q4's other figure is
+overstated, though: it says 95% → 98% needs ">1,000 per group", but the same calculation
+gives **~590–650** at 80% power and ~790–850 at 90%. Q4 is also inconsistent with itself
+on the total. Its §1.3 budgets 900 trials per design (5,400 total), while the offset grid
+in its own deliverable table works out to **14,040**. It flags this and says to resolve it
+before pre-registering.
+
+**Fatigue has no data to design against.** There are no S–N curves for FDM TPU-85A, PETG,
+or PA-CF at flexure strains, and no ASTM/ISO method for FDM compliant-mechanism fatigue
+(ASTM D7791 can be adapted). The closest study is Juwita 2019: PLA–TPU 95A at ~2 Hz,
+8–80% of yield, where several interface designs failed before reaching 100k cycles. The
+proposed protocol:
+
+- displacement-controlled cycling at ≤1 Hz
+- failure = fracture, ≥20% loss of closure force, ≥20% permanent set, or delamination
+- 100k-cycle run-out, ≥5 specimens per finalist
+- checkpoints at 1k, 10k, 50k, and 100k cycles
+
+Q4 also finds no direct precedent in the compliant-gripper literature for our rigid + TPU
+mechanical-interlock joints. That literature relies on adhesion.
+
+**One print is not a design.** FDM dimensional error is 0.18 ± 0.07 mm across 42 PLA parts
+(Li 2026). Plan on ≥3 independent prints per design, and first run a variance-components
+pilot of five prints of one reference finger per printer.
+
+**What to feed back to the generator.** VLMgineer (Gao 2026) is the only direct evidence.
+There, scalar task reward beat image feedback, and adding execution images *reduced*
+reward by 5.4%. Q4's ranking:
+
+1. structured scalar reward plus a failure label from a pre-registered taxonomy
+2. force–displacement features
+3. failure labels alone
+4. a VLM reading of failure video, which should go to human review, not the loop
+
+Using a balance as a *design-loop* reward is unpublished.
+
+**Ablations and the control arm.** Five matched ablations: no physical feedback, no VLM
+judge, no kernel checks, no parametric priors, and no simulation pre-screen. The
+human-expert control gets the identical frozen specification, matched person-hours and
+pilot prints, and anonymous design codes. Its CAD is frozen before confirmatory testing.
+Si et al. (43 experts, >100 h of execution each, blinded review) is the precedent to cite.
+Budget 30–60 printed-and-tested designs, target 50, at roughly 45 min of printing plus
+30 min of testing each. That is ~60 h of printer and robot time.
+
+**The absence that matters most here** is Q4's claim that *no published lab-object
+manipulation benchmark exists.* That is slightly out of date. Real-robot lab benchmarks
+appeared in August and September 2026: [LabDex](https://arxiv.org/abs/2608.18618), and
+[WetRobo](https://arxiv.org/abs/2609.18435), a reproducible kit built on an AgileX PiPER.
+The narrower claim still holds. Neither ships a buyable labware object set with part
+numbers, masses, and meshes. Every protocol above needs one, and nobody has published it.
+That is the reason for [`sandbox-object-set.md`](sandbox-object-set.md), which Edison Q5
+fed into.
