@@ -74,6 +74,7 @@ from lid_mount import Params  # noqa: E402
 
 SHOTS = HERE / "screenshots"
 BASE_URL = os.environ.get("ONSHAPE_BASE_URL", "https://cad.onshape.com")
+EXPECTED_MM3 = 108840.279          # the same base in CadQuery and over the REST API
 
 # Default shortcuts from https://cad.onshape.com/help/Content/Home/keyboard_shortcuts_and_hotkeys.htm
 # (all used live on 2026-09-25). Kept in one place so a change on Onshape's side is a one-line fix.
@@ -168,6 +169,21 @@ class Ui:
     async def click_tree(self, name: str) -> None:
         box = await (await self.tree(name)).bounding_box()
         await self.click(box["x"] + 15, box["y"] + box["height"] / 2)
+
+    async def pick_into(self, param: str, name: str) -> None:
+        """Pick a feature-list row into a feature dialog's query field, and wait until the
+        field shows it. A pick lands after a round trip to Onshape, over a second from a
+        GitHub runner; activate another field before then and the pick is lost. That is
+        how Mirror 1 of the 2026-09-26 recording ended up with nothing to mirror."""
+        field = self.page.locator(f"[data-parameter-id='{param}']").first
+        for _ in range(2):
+            await self.click_tree(name)
+            for _ in range(32):                     # 8 s
+                if re.search(rf"\b{re.escape(name)}\b", await field.inner_text()):
+                    return
+                await self.page.wait_for_timeout(250)
+            print(f"  {name} did not reach {param}; picking again", flush=True)
+        raise RuntimeError(f"{name} did not reach the {param} field (see the screenshots)")
 
     async def accept(self) -> None:
         """Click the green check of the open sketch or feature dialog. Enter does
@@ -415,10 +431,10 @@ async def mirror_twice(ui: Ui, feature: str, first: int) -> None:
         await page.get_by_text("Feature mirror", exact=True).first.click()
         await ui.wait(800)
         for f in picks:
-            await ui.click_tree(f)
+            await ui.pick_into("instanceFunction", f)       # "Features to mirror"
         await page.locator("[data-parameter-id='mirrorPlane']").first.click()
         await ui.wait()
-        await ui.click_tree(plane)
+        await ui.pick_into("mirrorPlane", plane)
         await ui.wait(1200)
         await ui.shot(f"mirror {' and '.join(picks)} across {plane}")
         await ui.accept()
@@ -533,7 +549,9 @@ async def main() -> None:
             await open_part_studio(ui, url)
             await build_base(ui, Params())
             volume = await read_volume(ui)
-            print(f"done: {ui.page.url}\nvolume of Part 1: {volume:.3f} mm^3 (REST API and CadQuery: 108840.3)")
+            print(f"done: {ui.page.url}\nvolume of Part 1: {volume:.3f} mm^3 (REST API and CadQuery: {EXPECTED_MM3})")
+            if abs(volume - EXPECTED_MM3) > 0.01:
+                raise SystemExit("the volume is wrong: a feature failed or was mis-picked (see the screenshots)")
         except Exception:
             await ui.shot("failed here")
             raise
