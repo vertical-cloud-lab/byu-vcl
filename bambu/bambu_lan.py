@@ -88,7 +88,11 @@ def _free_port() -> int:
 def tunnel(via: str | None, ip: str, ports: list[int]):
     """Yield {remote_port: (host, port)}; with --via, through an ssh -L forward."""
     if not via:
-        yield {p: (ip, p) for p in ports}
+        # BAMBU_PORT_MAP="8883:18883,990:9990,6000:16000" points a direct connection at
+        # the stand-in printer in test/fake_printer.py instead of the real ports.
+        remap = dict(tuple(map(int, kv.split(":"))) for kv in
+                     filter(None, os.environ.get("BAMBU_PORT_MAP", "").split(",")))
+        yield {p: (ip, remap.get(p, p)) for p in ports}
         return
     user, host = os.environ[f"{via}_USERNAME"], os.environ[f"{via}_HOSTNAME"]
     local = {p: _free_port() for p in ports}
@@ -235,6 +239,9 @@ class PrinterFTPS(ftplib.FTP_TLS):
 @contextlib.contextmanager
 def ftps(printer: Printer, via: str | None, host: str | None = None, port: int = 990):
     f = PrinterFTPS(via)
+    if not via:
+        port = dict(tuple(map(int, kv.split(":"))) for kv in
+                    filter(None, os.environ.get("BAMBU_PORT_MAP", "").split(","))).get(port, port)
     f.connect(host or printer.ip, port)
     f.login("bblp", printer.code)
     f.prot_p()
