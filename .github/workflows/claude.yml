@@ -142,7 +142,8 @@ jobs:
       A1_MINI_IP: ${{ secrets.A1_MINI_IP }}
       A1_MINI_ACCESS_CODE: ${{ secrets.A1_MINI_ACCESS_CODE }}
       A1_MINI_SERIAL: ${{ secrets.A1_MINI_SERIAL }}
-      # Bambu Lab cloud account login (Bambu Studio / Handy / MakerWorld)
+      # Bambu Lab cloud account login, for signing Bambu Studio in. A printer on the
+      # cloud refuses control commands not signed by Bambu's own apps (see CLAUDE.md)
       BAMBU_USERNAME: ${{ secrets.BAMBU_USERNAME }}
       BAMBU_PASSWORD: ${{ secrets.BAMBU_PASSWORD }}
       # Allow long-blocking foreground commands (e.g., Edison polling)
