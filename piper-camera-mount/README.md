@@ -98,6 +98,8 @@ tab screws, and loads the HQ bosses with the camera and lens (83 g) at 1 g, one 
   2.4 GPa is stiffer than a 25 % infill print. The old joint's real weakness was the strip itself: a
   pod pivoting on an edge 5 mm from its two screws, where any creep in the plastic lets it rock.
   Read the table as a comparison, not as the printed part's numbers.
+- **Also left out:** the camera and lens's centre of mass sits about 2 cm in front of the bosses, and
+  the load is applied at the bosses, so tilt under sideways loads is understated for both designs.
 
 ![Old vs new under 1 g along Y](renders/joint_fea.png)
 
