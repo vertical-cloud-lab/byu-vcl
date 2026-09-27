@@ -359,6 +359,12 @@ Things to decide or watch:
 - **Time.** Bambu estimates 152 min from `start` to `FINISH`, start sequence included. That
   leaves under 30 min of a 180 min session for pre-flight, the go and upload, with nothing
   spare for delays. Plan the hand-off.
+- **The post roots are the weak plane** (FEA below). In the G-code, the plate's last layer
+  under each post (z 6.0) is mostly sparse infill. The posts' first perimeters (z 6.2–6.4)
+  print as *Floating vertical shell*, i.e. walls over sparse infill, at the plane of peak
+  bending stress. Not a print-failure risk, but a strength one. A 2–3 mm root fillet, or a
+  100 % infill modifier for z 4–10 mm around the posts, would fix it. It hasn't been
+  changed yet.
 - **The fit coupon first.** Plate 4 (16 min, 2.5 g) is the cheap first test of the whole
   path, and of the post-in-socket and nut fits
   ([slice README](../ot2-overhead-camera/lid-mount/slice/README.md#will-it-fit-first-time)).
@@ -385,7 +391,66 @@ slicing efforts have in common:
   - A PrusaSlicer "Marlin" G-code for the H2D sits on powder-doser's `main`.
   - Neither should be sent to a printer. `preflight --3mf` would refuse the first.
 
-## 9. Security notes
+## 9. Stress checks before printing (FEA)
+
+[`fea/fea_base.py`](../ot2-overhead-camera/lid-mount/fea/fea_base.py) runs CalculiX on plate 1
+from its STEP in one command, in about 5 min on a 4-core runner. The pipeline:
+- gmsh meshes `base.step` into 119k ten-node tets, refined to 0.6 mm at the post roots and
+  nut slots.
+- The script writes the `.inp` itself and runs `ccx`.
+- It reads the `.frd` back, checks the reactions against the loads, and checks for stress
+  spikes.
+
+Install: `sudo apt-get install -y calculix-ccx libglu1-mesa libxcursor1 libxft2 libxinerama1`,
+then `pip install gmsh numpy scipy matplotlib`. Results are in
+[`fea/results.json`](../ot2-overhead-camera/lid-mount/fea/results.json).
+
+![von Mises, 10 N lateral](../ot2-overhead-camera/lid-mount/fea/von_mises_lateral_x.png)
+
+**Materials.** Two models on one mesh:
+- **bulk:** solid PLA, E 3.6 GPa.
+- **printed:** each post is its three walls (1.32 mm, E 2.06 GPa, Bambu's Z modulus) around
+  a 25 % infill core (E × 0.25). The plate is left solid, which is optimistic.
+
+**Strengths.** Bambu's PLA Basic sheet gives 35 MPa in XY and 31 MPa in Z. The design value
+across layers is taken as 15 MPa, an assumed half of the sheet value.
+
+| Case | Result (printed model) | vs. beam theory |
+|---|---|---|
+| Deck + camera + lens + Pi, 0.57 kg × 3 = 16.9 N down | 0.07 MPa in the walls; buckling margin ×79 | matches |
+| 10 N sideways at the deck, diagonal (worst) | 4.9 MPa σzz at a root corner: **×3.1** on 15 MPa, ×6.3 on 31 MPa. About 31 N reaches 15 MPa | root corner is mesh-dependent (sharp CAD corner); 2 mm up has converged |
+| First bending mode, posts free as they print | 220 Hz (bulk 291 Hz) | within 2 % |
+
+What this says about printing and using plate 1:
+- **Nothing here threatens the print.** The posts' first mode is 220–291 Hz, far above the
+  bed's motion. The posts' own inertia bends a tip by about 4 µm.
+- **The installed part is the question.**
+  - A knock at the deck of about 30 N could crack a post root, at the layer interface. The
+    sparse-infill root above makes that likelier.
+  - The loaded sway mode is estimated at 27–55 Hz by hand and hasn't been modelled. It could
+    show up as camera shake.
+- **The camera sits over a warm robot.** PLA's heat deflection temperature is about 55 °C.
+  Sustained screw-clamp stress creeps, and this model has no screw preload.
+
+**Pitfalls, so they aren't paid for twice.** Numbers 1 and 2 cost the most time:
+1. **ccx 2.21's multithreaded solver silently gave corrupt stresses.** There were 99 MPa
+   spikes where the true peak is 5 MPa, and the reactions still balanced. Run it with one
+   thread and check for spikes, not just equilibrium.
+2. **ccx can exit 0 after `*ERROR`.** Grep the log.
+3. **`.frd` columns are fixed-width.** Negative numbers run together, so slice by column.
+4. **gmsh's 10-node tet orders its last two nodes the other way from C3D10.** Swap them.
+5. **Surface and volume tags change after booleans.** Find them again by bounding box.
+6. **gmsh's high-order optimisation is needed.** Mid-side nodes snapped onto curved faces
+   nearly invert tets.
+7. **Serial meshing is reproducible; threaded meshing isn't.**
+8. **Other tools.**
+   - In tensegrity-optimization, ccx 2.21 `SECTION=CIRC` beams came out about 14× too
+     compliant ([#66](https://github.com/vertical-cloud-lab/tensegrity-optimization/pull/66#issuecomment-5080376228)).
+   - scikit-fem, SfePy and FEniCSx install in seconds to minutes, but you write the physics
+     yourself.
+   - There is no open-source FDM warping or residual-stress simulator worth using yet.
+
+## 10. Security notes
 
 - **No certificate chain check.** None of the lab's printer code verifies the certificate
   chain, this included. The CN check here is the only identity check.
