@@ -15,6 +15,9 @@ slicer, and [`report.json`](report.json) holds the numbers below.
 
 Only plates 1 and 2 are needed: 3 h 42 min and 124.6 g.
 
+To send a plate to the lab's A1 mini from a script or CI, follow
+[`bambu/README.md`](../../../bambu/README.md). Its section 7 covers plate 1.
+
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).
 On top of them go the main README's print settings: **3 walls and 25 % infill**, where the
