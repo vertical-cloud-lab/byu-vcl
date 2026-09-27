@@ -43,6 +43,7 @@ What the runs on 2026-09-27 showed, with the lid mount's 3MF:
 | `--fault none` | PREPARE → RUNNING → FINISH; `watch` exits 0 with a frame per interval |
 | `--fault hms` | the printer pauses with HMS `0700_0200_0002_0001` (serious); `watch` exits 20 |
 | `--fault hot` with `--auto-stop` | nozzle 280 °C; `watch` exits 40 and `stop` is confirmed by the FAILED state |
+| `--fault cold-bed` | bed falls to 40 °C against a 65 °C target; `watch` exits 20 after 90 s |
 | `stop` without `--yes-stop` | refused |
 | `watch` on an idle printer | exits 20 at once: nothing is printing |
 

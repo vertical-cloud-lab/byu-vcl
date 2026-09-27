@@ -278,21 +278,31 @@ def cmd_watch(args, printer):
                     alarms.append(("hard", f"temperature over limit: nozzle {nz}, bed {bd}"))
                 if (nzt or 0) > args.max_nozzle or (bdt or 0) > args.max_bed:
                     alarms.append(("hard", f"target over limit: nozzle {nzt}, bed {bdt}"))
-                if st["print_error"]:
+                # An HMS entry or error someone has already looked at can be acknowledged
+                # with --ack-hms / --ack-error; anything else ends the watch.
+                if st["print_error"] and error_hex(st["print_error"]) not in args.ack_error:
                     alarms.append(("decision", f"print_error {error_hex(st['print_error'])}"))
-                if st["hms"]:
-                    alarms.append(("decision", f"HMS {hms_codes(st['hms'])}"))
+                new_hms = [h for h in hms_codes(st["hms"]) if h["code"] not in args.ack_hms]
+                if new_hms:
+                    alarms.append(("decision", f"HMS {new_hms}"))
                 if state in ("PAUSE", "FAILED"):
                     alarms.append(("decision", f"printer is {state}"))
 
-                # While printing proper (past layer 1), temperatures should sit on the slice's values.
-                if state == "RUNNING" and (st["layer_num"] or 0) >= 2 and expect:
-                    for key, val, want, tol in (("nozzle", nz, expect.get("nozzle_c"), args.nozzle_tol),
-                                                ("bed", bd, expect.get("bed_c"), args.bed_tol)):
-                        if val is not None and want and abs(val - want) > tol:
+                # Past layer 1: each heater should hold its target (a heater or sensor fault),
+                # and each target should be the file's value (someone changed it, or wrong file).
+                if state == "RUNNING" and (st["layer_num"] or 0) >= 2:
+                    for key, val, target, want, tol in (
+                            ("nozzle", nz, nzt, expect.get("nozzle_c"), args.nozzle_tol),
+                            ("bed", bd, bdt, expect.get("bed_c"), args.bed_tol)):
+                        off = []
+                        if val is not None and target and abs(val - target) > tol:
+                            off.append(f"{key} {val} °C vs target {target}")
+                        if target is not None and want and abs(target - want) > tol:
+                            off.append(f"{key} target {target} °C vs the file's {want}")
+                        if off:
                             off_temp_since.setdefault(key, time.time())
                             if time.time() - off_temp_since[key] > 90:
-                                alarms.append(("decision", f"{key} {val} °C, slice wants {want} ± {tol} for 90 s"))
+                                alarms.append(("decision", "; ".join(off) + f" (± {tol}) for 90 s"))
                         else:
                             off_temp_since.pop(key, None)
 
@@ -402,6 +412,10 @@ def main(argv=None):
     ap.add_argument("--max-nozzle", type=float, default=260)
     ap.add_argument("--max-bed", type=float, default=80)
     ap.add_argument("--auto-stop", action="store_true", help="watch: send stop on a hard temperature alarm")
+    ap.add_argument("--ack-hms", default="", type=lambda v: set(filter(None, v.split(","))),
+                    help="watch: HMS codes (XXXX_XXXX_XXXX_XXXX) already looked at, comma-separated")
+    ap.add_argument("--ack-error", default="", type=lambda v: set(filter(None, v.split(","))),
+                    help="watch: print_error codes (XXXX-XXXX) already looked at")
     ap.add_argument("--yes-stop", action="store_true")
     args = ap.parse_args(argv)
     if args.command in ("upload", "start") and not args.file:

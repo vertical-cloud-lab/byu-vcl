@@ -224,7 +224,7 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 |---|---|---|
 | 0 | `FINISH` after `RUNNING` | Post the last frame; the person removes the part once the bed is below ~35 °C |
 | 10 | Time budget used, still printing | Look at the newest frame, post progress, and run `watch` again |
-| 20 | Needs a decision: `print_error`, an HMS alert (decoded, with severity), `PAUSE` or `FAILED`, nozzle or bed off the file's values (±15/±8 °C for 90 s past layer 1), no new layer for 15 min, or nothing printing | Look at the frame and the codes. `pause`, or `stop --yes-stop` if the part is lost, and tell the humans |
+| 20 | Needs a decision. Triggers: a `print_error`; an HMS alert (decoded, with severity); `PAUSE` or `FAILED`; past layer 1, a heater more than 15 °C (nozzle) or 8 °C (bed) off its target for 90 s, or a target off the file's value; no new layer for 15 min; nothing printing | Look at the frame and the codes. `pause`, or `stop --yes-stop` if the part is lost, and tell the humans. If an HMS entry is harmless and stays (a maintenance reminder, say), re-run with `--ack-hms <code>` so it stops ending the watch, and say so in the thread |
 | 30 | No status for 5 min | The print carries on without us. Tell the humans at once; we can't stop it |
 | 40 | Hard limit: nozzle or its target over 260 °C, or bed or its target over 80 °C | With `--auto-stop`, `stop` has been sent and confirmed. Otherwise send it now |
 
