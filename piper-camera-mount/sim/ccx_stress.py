@@ -49,7 +49,7 @@ HERE = Path(__file__).resolve().parent
 MOUNT = HERE.parent
 sys.path.insert(0, str(MOUNT / "cad"))
 sys.path.insert(0, str(HERE))
-from joint_fea import (BOSS_R, DIRS, E, G, H_MAX, H_MIN, M_CAM, NU, PIXEL, boundary_groups, load_params,  # noqa: E402
+from joint_fea import (DIRS, E, G, H_MAX, H_MIN, M_CAM, NU, PIXEL, boundary_groups, load_params,  # noqa: E402
                        rigid_fit, station)
 from piper_mount import Params, optical_axes, pi_holes  # noqa: E402
 
