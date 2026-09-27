@@ -202,8 +202,9 @@ What the fields mean:
 **How success is judged.** "Sent" isn't "started". In ac-dev-lab, `start_print()` returned
 `True` while the printer was showing an error
 ([#147](https://github.com/AccelerationConsortium/ac-dev-lab/issues/147#issuecomment-2671952659)).
-So `start` succeeds only when the printer's echo of the command says `success` *and*
-`gcode_state` moves to `PREPARE` or `RUNNING` within 90 s.
+So `start` succeeds only when `gcode_state` moves from idle to `PREPARE` or `RUNNING` within
+90 s. An echo of the command with a result other than `success` ends the wait early, as a
+failure. Whether this firmware echoes `project_file` at all is not yet known.
 
 ## 4. Watching
 
@@ -248,8 +249,8 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 
 **What normal looks like on the A1 mini.**
 - **The start takes about 6 min** by Bambu's estimate, all in `PREPARE`: heating, homing, a
-  nozzle wipe on the plate's rear edge, build-plate detection, a vibration test, levelling over the first-layer
-  area, flow calibration and a purge line.
+  nozzle wipe on the plate's rear edge, build-plate detection, a vibration test, levelling
+  over the first-layer area, flow calibration and a purge line.
 - **Nozzle targets during the start** move between 140 and 220 °C. The 250 °C flush applies
   only to non-PLA. The file's own values (220 °C nozzle, 65 °C bed for plate 1) apply
   from layer 1.
@@ -309,7 +310,7 @@ itself:
 
 | | |
 |---|---|
-| **Object** | the base: a 112 mm plate with tape tabs, a light collar, and four 10 × 10 mm posts standing 96 mm |
+| **Object** | the base: a 112 mm plate, 6 mm thick (144 mm across its tape tabs), with a light collar and four 10 × 10 mm posts standing 96 mm |
 | **Height** | 102.2 mm |
 | **Layers and time** | 511 layers at 0.2 mm; 2 h 26 min of model, 2 h 32 min in all |
 | **Filament** | 81.1 g (26.8 m) of Bambu PLA Basic (`GFA00`) |
@@ -321,7 +322,7 @@ itself:
 
 Things to decide or watch:
 - **Colour.**
-  - The README asks for **black** PLA, to block light at the collar. None is loaded.
+  - The lid mount's README asks for **black** PLA, to block light at the collar. None is loaded.
   - Slot 0 (dark blue PLA Basic) is the most opaque option, and fine for a fit test: `--ams-slot 0`.
   - For the final part, ask someone to load black PLA Basic and re-run the pre-flight.
   - Pink (slot 1) is likely to glow.
@@ -332,10 +333,11 @@ Things to decide or watch:
 - **Tall posts on a bed-slinger.** The posts are 96 mm tall on a bed that moves in Y. Watch
   the top 3 cm for ringing and the nut-slot bridges near Z 97.6.
 - **The first layer is the whole 112 mm plate**, so it takes about 7 min. That's the window
-  to watch closely. Layer 26, the plate's top skin, is the longest at about 8 min, half of
-  `watch`'s 15 min stall limit.
-- **Time.** About 158 min from `start` to `FINISH`, including the start sequence. That
-  leaves roughly 20 min of a session for pre-flight, the go and upload. Plan the hand-off.
+  to watch closely. Layer 26, where the plate turns solid under its top surface, is the
+  longest at about 8 min, about half of `watch`'s 15 min stall limit.
+- **Time.** Bambu estimates 152 min from `start` to `FINISH`, start sequence included. That
+  leaves under 30 min of a 180 min session for pre-flight, the go and upload, with nothing
+  spare for delays. Plan the hand-off.
 - **The fit coupon first.** Plate 4 (16 min, 2.5 g) is the cheap first test of the whole
   path, and of the post-in-socket and nut fits
   ([slice README](../ot2-overhead-camera/lid-mount/slice/README.md#will-it-fit-first-time)).
