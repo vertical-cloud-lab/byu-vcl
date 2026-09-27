@@ -271,7 +271,28 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
   `time.sleep` isn't.
 - **Waiting for a person's go.** Either the triggering comment already contains it (written
   within the last 30 min by someone who has looked at the printer), or post the frame and
-  poll the thread with a blocking Python loop.
+  poll the thread. Use one foreground Bash call with a long timeout. `DEFAULT_WORKFLOW_TOKEN`
+  still reads after the session token dies.
+- **Who can give the go.** Check the commenter's repo permission, not `author_association`.
+  sgbaird's comments show as `CONTRIBUTOR` because org membership is private, so an
+  association check would ignore him:
+
+  ```bash
+  GH_TOKEN=$DEFAULT_WORKFLOW_TOKEN python - <<'EOF'
+  import json, subprocess, time
+  gh = lambda path: json.loads(subprocess.run(["gh", "api", path], capture_output=True, text=True).stdout or "null")
+  repo, since = "vertical-cloud-lab/byu-vcl", "2026-09-27T03:30:00Z"   # when the frame was posted
+  deadline = time.time() + 30 * 60
+  while time.time() < deadline:
+      for c in gh(f"repos/{repo}/issues/234/comments?since={since}") or []:
+          who = c["user"]["login"]
+          if "plate clear" in c["body"].lower() and \
+                  (gh(f"repos/{repo}/collaborators/{who}/permission") or {}).get("permission") in ("admin", "maintain", "write"):
+              print("go from", who, c["html_url"]); raise SystemExit
+      time.sleep(60)
+  print("no go within 30 min: don't print")
+  EOF
+  ```
 - **Order of work.** Start early in the session and write up while `watch` runs.
 - **If the print will outlast the session:**
   - Say so before starting.
