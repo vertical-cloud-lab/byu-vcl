@@ -284,9 +284,9 @@ def main() -> None:
             sc.group_off["pod_sub"] = pod_at + (above - pod_at) * ease(u / 0.5)
         else:
             sc.group_off["pod_sub"] = above * (1 - ease((u - 0.5) / 0.5))
-    sc.step("7 / 10", "Lower the pod straight down its lens axis onto the bracket's 45 degree seat, which carries | "
-            "its inner half and its top and bottom edges out to the lens. Fix it with 4 x M3 x 16 into the "
-            "seat's nuts. It comes off again without touching the collar or the tab screws.",
+    sc.step("7 / 10", "Lower the pod down its lens axis onto the bracket's 45 degree seat, | "
+            "then 4 x M3 x 16 into the seat's nuts. The pod comes off again without | "
+            "touching the collar or the tab screws.",
             n + 20, both(pod_path, delay(fly(["pod_screws"], -back, 35), 0.75)),
             cam_to=[(-360, 260, 300), (-55, 30, 10), (0, 0, 1)], hold=15)
     # 8. Pi 5.

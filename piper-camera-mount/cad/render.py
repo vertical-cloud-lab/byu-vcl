@@ -20,8 +20,8 @@ from piper_mount import (ASSEMBLY, CM3W_FOV, COLORS, Params, build, hq_fov, opti
 
 RENDERS = Path(__file__).resolve().parent.parent / "renders"
 # Where each printed part's centre sits on the A1 mini's 180 x 180 mm bed (slice/slice_a1mini.py uses these too).
-PRINT_LAYOUT = {"bracket": (27, 50), "carrier": (50, 128), "pod": (133, 133), "spacers": (75, 14),
-                "tag_wedge#1": (70, 45), "tag_wedge#2": (85, 45)}
+PRINT_LAYOUT = {"bracket": (43, 55), "carrier": (50, 146), "pod": (135, 131), "spacers": (130, 28),
+                "tag_wedge#1": (112, 60), "tag_wedge#2": (128, 60)}
 ALU, DARK, PAD = (0.78, 0.79, 0.81), (0.20, 0.20, 0.22), (0.35, 0.35, 0.37)
 
 
@@ -116,6 +116,29 @@ def render_exploded(p, parts, out):
     pl.close()
 
 
+def render_pod_seat(p, parts, out):
+    """Left: the pod lifted 45 mm off its seat along the lens axis, from above. Right: the seat alone,
+    from behind and outside, so its face, the four screw holes and the rails either side of the lens show."""
+    t = math.radians(p.toe_deg)
+    lift = (-math.sin(t) * 45, math.cos(t) * 45, 0.0)
+    pod = ("pod", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module")
+    pl = pv.Plotter(off_screen=True, window_size=(1700, 800), shape=(1, 2), border=False)
+    pl.set_background("white")
+    pl.enable_anti_aliasing("ssaa")
+    for col, cam, names, text in (
+            (0, [(-70, 45, 420), (-60, 40, 5), (0, 1, 0)], ("bracket", "carrier") + pod,
+             "From above, pod lifted: the seat widens at 45 degrees until it meets the pod"),
+            (1, [(-250, 230, 170), (-60, 45, 5), (0, 0, 1)], ("bracket", "carrier"),
+             "The seat alone, from behind: 987 mm2 of face, 4 x M3, rails above and below the lens")):
+        pl.subplot(0, col)
+        add_gripper(pl, opacity=0.25)
+        add_parts(pl, parts, names=names, offset={n: lift for n in pod})
+        pl.camera_position = cam
+        pl.add_text(text, font_size=11, color="black")
+    pl.screenshot(out / "pod_seat.png")
+    pl.close()
+
+
 def render_print_layout(p, parts, out):
     pl = plotter((1700, 900))
     for name, (dx, dy) in PRINT_LAYOUT.items():
@@ -137,6 +160,7 @@ def main() -> None:
     render_assembly(p, parts, RENDERS)
     render_front(p, parts, RENDERS)
     render_exploded(p, parts, RENDERS)
+    render_pod_seat(p, parts, RENDERS)
     render_print_layout(p, parts, RENDERS)
     print(f"renders written to {RENDERS}")
 
