@@ -142,6 +142,10 @@ jobs:
       A1_MINI_IP: ${{ secrets.A1_MINI_IP }}
       A1_MINI_ACCESS_CODE: ${{ secrets.A1_MINI_ACCESS_CODE }}
       A1_MINI_SERIAL: ${{ secrets.A1_MINI_SERIAL }}
+      # Bambu Lab cloud account login, for signing Bambu Studio in. A printer on the
+      # cloud refuses control commands not signed by Bambu's own apps (see CLAUDE.md)
+      BAMBU_USERNAME: ${{ secrets.BAMBU_USERNAME }}
+      BAMBU_PASSWORD: ${{ secrets.BAMBU_PASSWORD }}
       # Allow long-blocking foreground commands (e.g., Edison polling)
       BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
       BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
