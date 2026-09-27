@@ -10,13 +10,16 @@ the work:
 - [`bambu_print.py`](bambu_print.py) **changes printer state**: upload, start, pause, resume
   and stop. Its `watch` subcommand only reads.
 
-> **Status (2026-09-27).**
+> **Status (2026-09-27, 04:50 UTC).**
 > - **Verified on the A1 mini:** read-only access through a Pi, end to end: status, camera,
->   SD card listing and TLS identity (§2).
-> - **Not yet done on the real printer:** no upload or start from CI. `bambu_print.py` has
->   only been run against the stand-in printer in [`test/`](test/README.md).
+>   SD card listing and TLS identity (§2). **Upload works too**: 2.44 MB with the MD5 read back.
+> - **`start` is refused.** The first real one (plate 4, the fit coupon) got HMS
+>   `0500-0500-0001-0007`, "MQTT Command verification failed". Nothing moved. See §2,
+>   "Firmware and authorisation": with the printer on Bambu's cloud, it accepts control commands
+>   only from Bambu's own apps.
 > - **Its print command** is the payload that started this printer's first programmatic
->   print from a laptop (powder-doser PR #23, 2026-07-27).
+>   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
+>   Developer Mode.
 
 ## The rules
 
@@ -147,16 +150,33 @@ camera frame and writes a redacted JSON with a verdict:
 | SD card root | 21 entries, including 11 `.3mf` files from the powder-doser tests |
 | Camera | 1680×1080, mean luma 98/255. The plate looks clear; the dark patch lines up with the toolhead's shadow |
 
-**Firmware and authorisation.**
-- Bambu's 2025 "authorization control" firmware can make third-party MQTT read-only unless
-  LAN-only mode and Developer Mode are both switched on.
-- Nothing in the lab has hit that yet. The A1 mini took `project_file` commands from a laptop
-  in July and August. Bambu lists 01.08.00.00 as released 2026-05-13, so those prints
-  probably ran on it, but nobody recorded the version at the time.
-- Reads work today, and reads say nothing about control.
-- So the first real `start` is also the test. A rejection comes back as a failed ack, with
-  no state change, and nothing moves. Report it. Don't work around it: turning on Developer
-  Mode takes the printer off Bambu's cloud, and that is the lab's decision.
+**Firmware and authorisation: control is refused (2026-09-27).**
+- Bambu's 2025 "authorization control" firmware makes third-party MQTT read-only unless
+  LAN Only Mode and Developer Mode are both switched on.
+- **The A1 mini is in that state now.** The first real `start` from CI (04:46:18 UTC,
+  firmware 01.08.00.00, [evidence](evidence/2026-09-27/fit-coupon/)) was refused:
+  - no ack and no state change; the printer stayed in `FINISH` with its heaters off;
+  - one HMS entry, stamped the same second: `0500-0500-0001-0007`,
+    ["MQTT Command verification failed, please update Studio or Handy"](https://wiki.bambulab.com/en/x1/troubleshooting/hmscode/0500_0500_0001_0007).
+    It was still listed at 04:48 and had cleared by 04:53, with nobody at the printer.
+    `start` now stops waiting as soon as it sees this code, and names it.
+- **Why July worked.** powder-doser's setup (its Step 1) called for LAN Only and Developer
+  Mode. The printer is back on Bambu's cloud now: its last job, *PCB housing top*, carries
+  cloud task and project IDs.
+- **What still works in this mode:** status, camera, SD-card listing and upload. So `watch`
+  can follow a print that a person started.
+- **What doesn't.** Pause, resume and stop are control commands too. They're untested, but
+  expect them to be refused the same way. So `--auto-stop` and `stop` can't be counted on:
+  only the printer's own protections, and a person with Bambu Handy, can stop a print.
+- **Don't work around the refusal.** That rules out signing keys lifted from Bambu's apps.
+  There are three legitimate routes, all the lab's decision:
+  1. **A person starts it** from Bambu Studio or Handy. `upload` has usually put the 3MF on
+     the SD card already. CI then watches, read-only.
+  2. **LAN Only Mode plus Developer Mode** on the touchscreen. This takes the printer off
+     Bambu's cloud, so there is no Handy, no cloud printing and no failure notifications.
+     With it, this whole runbook works as written.
+  3. **Drive Bambu Studio itself** from CI, logged in to the printer's Bambu account. It
+     signs its commands. That means a new secret and GUI automation, and it's untried.
 
 ## 3. Sending the print
 
@@ -232,6 +252,9 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 - The A1 mini's bed tops out at 80 °C, and a PLA job never asks the nozzle for more than the
   250 °C AMS flush.
 - The printer's firmware has its own thermal protection, and `--auto-stop` backs it up.
+- **While the printer is on Bambu's cloud, expect `stop` to be refused** (§2, "Firmware and
+  authorisation"). Then a person with Bambu Handy is the only remote stop. Name them before
+  the print starts.
 
 **Look at the frames.**
 - **During the start and the first layer:** look at every frame. This is where the lab's
@@ -323,6 +346,7 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 | "Cutter is stuck" 0300-800B after hardware was added near the toolhead | [ac-dev-lab#161](https://github.com/AccelerationConsortium/ac-dev-lab/issues/161#issuecomment-2694655133) | HMS → exit 20 |
 | H2D: extruder overload after an AMS runout switch; wobbling reel stopped a print twice | [tensegrity#96](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/96), [powder-doser#134](https://github.com/vertical-cloud-lab/powder-doser/issues/134#issuecomment-5183033746) | HMS → exit 20 |
 | Printer off the network (the A1 mini was offline on 2026-09-25) | [powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5842644364) | pre-flight can't connect; exit 30 mid-print |
+| `start` refused with HMS 0500-0500-0001-0007 and no ack: authorization control, with the printer on Bambu's cloud; nothing moved | [evidence](evidence/2026-09-27/fit-coupon/), 2026-09-27 | `start` reports it (§2, "Firmware and authorisation") |
 
 ## 7. Plate 1 of the lid mount
 
@@ -468,3 +492,4 @@ What this says about printing and using plate 1:
 | [`bambu_print.py`](bambu_print.py) | `upload`, `start`, `watch`, `pause`, `resume`, `stop` |
 | [`test/`](test/README.md) | a stand-in printer (MQTT, camera) and FTPS server for testing the tooling without a printer |
 | [`evidence/2026-09-27/`](evidence/2026-09-27/) | the read-only dry run: redacted status, pre-flight and camera frame |
+| [`evidence/2026-09-27/fit-coupon/`](evidence/2026-09-27/fit-coupon/) | the refused start of plate 4: pre-flight, `start` output, status and frame afterwards |

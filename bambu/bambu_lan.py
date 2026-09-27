@@ -149,7 +149,9 @@ def peer_identity(addr: tuple[str, int], printer: Printer) -> dict:
         issuer = cert.issuer.get_attributes_for_oid(NameOID.COMMON_NAME)
         out["cn_matches_serial"] = bool(cn) and cn[0].value == printer.serial
         out["issuer_cn"] = issuer[0].value if issuer else None
-        out["not_after"] = cert.not_valid_after_utc.date().isoformat()
+        # not_valid_after_utc is cryptography >= 42; Ubuntu 24.04's apt package is 41
+        out["not_after"] = getattr(cert, "not_valid_after_utc", None) or cert.not_valid_after
+        out["not_after"] = out["not_after"].date().isoformat()
     except ImportError:
         out["cn_matches_serial"] = None
     return out

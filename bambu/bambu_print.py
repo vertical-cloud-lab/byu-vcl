@@ -51,14 +51,26 @@ def error_hex(n) -> str | None:
     return f"{n >> 16:04X}-{n & 0xFFFF:04X}" if n else None
 
 
+# HMS codes this tooling has met, with what they meant here.
+KNOWN_HMS = {
+    # The A1 mini's answer to our first project_file (2026-09-27, firmware 01.08.00.00, printer
+    # bound to Bambu's cloud): nothing moved, no ack, just this. Bambu's wiki calls it "MQTT
+    # Command verification failed, please update Studio or Handy".
+    "0500_0500_0001_0007": "command refused: the firmware only accepts control commands signed by "
+                           "Bambu's own apps, unless LAN Only Mode and Developer Mode are on (README §2)",
+}
+REFUSED = "0500_0500_0001_0007"
+
+
 def hms_codes(hms) -> list[dict]:
     """HMS entries as the XXXX_XXXX_XXXX_XXXX codes of Bambu's wiki, with severity."""
     levels = {1: "fatal", 2: "serious", 3: "common", 4: "info"}
     out = []
     for h in hms or []:
         a, c = int(h.get("attr", 0)), int(h.get("code", 0))
-        out.append({"code": f"{a >> 16:04X}_{a & 0xFFFF:04X}_{c >> 16:04X}_{c & 0xFFFF:04X}",
-                    "severity": levels.get(c >> 16, str(c >> 16))})
+        code = f"{a >> 16:04X}_{a & 0xFFFF:04X}_{c >> 16:04X}_{c & 0xFFFF:04X}"
+        out.append({"code": code, "severity": levels.get(c >> 16, str(c >> 16)),
+                    **({"meaning": KNOWN_HMS[code]} if code in KNOWN_HMS else {})})
     return out
 
 
@@ -229,8 +241,10 @@ def cmd_start(args, printer):
             seq = s.send(body)
             print(f"{now()} sent project_file for {name} plate {args.plate}, "
                   f"AMS slot {args.ams_slot}, confirmed by {args.confirmed_by}", flush=True)
+            # A refusal comes back as an HMS entry, not as an ack.
             started = s.wait(lambda st, a: st.get("gcode_state") in ("PREPARE", "RUNNING")
-                             or a.get(seq, {}).get("result") not in (None, "success"), 90)
+                             or a.get(seq, {}).get("result") not in (None, "success")
+                             or REFUSED in {h["code"] for h in hms_codes(st.get("hms"))}, 90)
             result = {"ack": s.acks.get(seq), "gcode_state": s.get("gcode_state"),
                       "print_error": error_hex(s.get("print_error")), "hms": hms_codes(s.get("hms")),
                       "started": started and s.get("gcode_state") in ("PREPARE", "RUNNING")}
