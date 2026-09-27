@@ -170,6 +170,14 @@ jobs:
           # Pico W machine.unique_id(), read off the board. Namespaces the
           # command/picow/<id>/as7341/read and color-mixing/picow/<id>/as7341 topics.
           PICO_ID: ${{ secrets.PICO_ID }}
+          # Bambu Lab printers (H2D and A1 mini), LAN-mode IP, access code and serial.
+          # The IPs are on the lab LAN, not the tailnet, so reach them from a Pi.
+          H2D_IP: ${{ secrets.H2D_IP }}
+          H2D_ACCESS_CODE: ${{ secrets.H2D_ACCESS_CODE }}
+          H2D_SERIAL: ${{ secrets.H2D_SERIAL }}
+          A1_MINI_IP: ${{ secrets.A1_MINI_IP }}
+          A1_MINI_ACCESS_CODE: ${{ secrets.A1_MINI_ACCESS_CODE }}
+          A1_MINI_SERIAL: ${{ secrets.A1_MINI_SERIAL }}
           # Allow long-blocking foreground commands (e.g., Edison polling)
           BASH_DEFAULT_TIMEOUT_MS: "900000" # 15 min default per Bash call
           BASH_MAX_TIMEOUT_MS: "3600000" # 60 min ceiling per Bash call
