@@ -172,25 +172,34 @@ From `envelope.py` (`exports/envelope.json`), fingers 40 mm apart:
 | 4 | M2.5 x 12 | Pi 5, through the spacers into the nut traps in the carrier |
 | 2 | Raspberry Pi Standard-Mini camera cable, 300 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short |
 | 1 | Pi 5 Active Cooler | Faces outward (+X) |
-| 1 | 5 V USB-C supply on a long lead, and a magnetic breakaway adapter | Along the arm; see below |
+| 1 | 24 V supply at the base, a 24 V to 5.1 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
 
-**Power.** The Pi 5 gets its own USB-C lead, run along the arm with a service loop at each joint.
-It does not share the gripper's supply:
+**Power** ([`power/README.md`](power/README.md) has the numbers and a shopping list). The Pi 5 gets
+its own lead up the arm, with a service loop at each joint. It does not share the gripper's supply:
 
+- **Don't run 5 V up the arm, and don't use a USB-C extension.** The Pi 5 flags under-voltage below
+  4.63 V, and a USB-C cable may lawfully drop 0.75 V at its rated current. Over 3 m, even a 5 A
+  cable ends up at about 4.55 V under load. With an extension it's 4.4 V or less.
+- **Send 24 V (or 12 V) instead, and convert next to the Pi.** Use a small 24 V supply at the base,
+  a two-core high-flex lead up the arm, and a buck converter on the carrier with a USB-C output that
+  advertises 5.1 V / 5 A, plus a 10 to 15 cm lead to the Pi. The loss in the lead is under 1 %. Power
+  over Ethernet is the alternative if the streams should be on a wire too.
 - **The gripper's power/CAN lead is not for the Pi.** It is a short 4-wire jumper from a socket on
   J6 into a notch in the gripper's back cover, right at the flange ring (y ≈ 48 to 54). The mount
   only has to stay out of its way, and it does: the collar stops at y = 46.
 - The PiPER's XT30 at J6 gives 24 V / 2 A that the gripper shares, and
   [ac-dev-lab#328](https://github.com/AccelerationConsortium/ac-dev-lab/issues/328) came to the same
   conclusion for the UR3e: power the Pi separately.
-- **Put a magnetic breakaway at the Pi end**, so a snagged lead pulls apart instead of dragging the
-  arm or tearing out the Pi's socket. This is the quick-disconnect idea from ac-dev-lab#328.
-  Adafruit's [Magnetic Right Angle USB Type C Adapter](https://www.adafruit.com/product/5521)
-  (product 5521, rated 120 W, carries data as well as power) plugs into the Pi's USB-C, which faces
-  the arm, and turns the lead 90 degrees to run back along it.
-- **Check the Pi 5 still sees a 5 A supply through the adapter.** If the supply's USB-PD doesn't
-  get through, the Pi 5 treats it as a 3 A supply and limits the USB ports to 600 mA. That's fine
-  for two CSI cameras, which don't use USB, but the Pi will warn about it at boot.
+- **Make sure a yank can't reach the Pi's socket**, which is how a lab Pi 5 lost its USB-C port
+  ([#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5841723129)). Clamp
+  the lead to the carrier 20 to 30 mm from the plug, and put a magnetic breakaway on the arm's side
+  of the clamp so a snag pulls it apart (the quick-disconnect idea from ac-dev-lab#328). On a USB-C
+  lead, Adafruit's [Magnetic Right Angle USB Type C Adapter](https://www.adafruit.com/product/5521)
+  (product 5521, 120 W) also turns the lead 90 degrees to run back along the arm. On the 24 V lead, a
+  two-pin magnetic DC connector does the same job and only has to carry about 0.6 A.
+- **Check that the Pi 5 sees a 5 A supply.** If the USB-PD offer doesn't get through, the Pi 5
+  treats the supply as 3 A and limits its USB ports to 600 mA. That's fine for two CSI cameras,
+  which don't use USB, but the Pi will warn about it at boot.
 
 **Assembly order** (the GIF above):
 
@@ -228,6 +237,62 @@ CLI, the same way as #234 and #238, and writes
 
 ![Print layout](renders/print_layout.png)
 
+### Material: PAHT-CF on the H2D
+
+PLA is fine for a first fit check. For the mount that stays on the arm, print the bracket and
+carrier (and ideally the pod) in **Bambu PAHT-CF** on the H2D. The numbers are from Bambu's
+datasheets, dry specimens. "Along" means along the layers, "across" means across them:
+
+| | PLA Basic | PETG HF | PETG-CF | **PAHT-CF** | PET-CF | PPA-CF |
+|---|---|---|---|---|---|---|
+| Tensile strength along / across (MPa) | 35 / 31 | 34 / 23 | 35 / 29 | **88 / 64** | 74 / 35 | 168 / 57 |
+| Tensile modulus along / across (MPa) | 2580 / 2060 | 1810 / 1540 | 2460 / 1340 | 3860 / 2180 | 4730 / 2160 | 11800 / 4300 |
+| Heat deflection at 1.8 MPa (°C) | 54 | 62 | 68 | 170 | 182 (annealed) | 196 |
+| Water taken up, saturated | 0.43 % | 0.40 % | 0.30 % | 0.88 % | 0.37 % | 1.30 % |
+| US price per kg | $20 | n/a | $35 | $95 | $85 | $200 |
+
+Why PAHT-CF:
+
+- **It has the most strength across the layers**, 64 MPa, double PLA's. That's where the clamp loads
+  the carrier (see [Stress](#stress-calculix)).
+- **It holds screw preload.** It's a PA12-based nylon, and in
+  [CNC Kitchen's week-long bolted test](https://www.cnckitchen.com/blog/carbon-fiber-nylon-in-3d-printing-pa6-vs-pa12-tested)
+  a PA12-CF joint needed re-tightening once. A PA6-CF joint needed it almost daily.
+  [Dimitrellou et al. 2024](https://doi.org/10.1007/s11665-024-09144-9) rank PAHT-CF above PC and
+  PLA for creep.
+- **It doesn't mind warmth.** It deflects at 170 °C against PLA's 54 °C. PLA sits a few centimetres
+  from the Pi 5's heatsink here.
+- **The H2D already has what it needs.** Its status report, read over LAN MQTT through the CubXL Pi
+  on 2026-09-27, shows:
+  - a 0.4 mm hardened-steel hotend on the left. The right is a 0.6 mm TPU High-Flow hotend, so keep
+    carbon fibre off that one.
+  - an AMS HT, which dries at up to 85 °C. PAHT-CF wants 80 °C for 8 to 12 h, and printing and
+    storage below 20 % RH.
+  - a heated chamber that reaches 65 °C. PAHT-CF wants 45 to 60 °C.
+- **It costs about $7 for this mount.**
+
+The other options:
+
+- **PET-CF** is stiffer along the layers and takes up less water. But it's brittle across them:
+  35 MPa, with 2.4 % elongation at break. The carrier's collar is loaded across its layers.
+- **PPA-CF** is the stiffest by far. But it's brittle across the layers (0.9 % elongation) and wants
+  drying at 100 to 140 °C, which is beyond the AMS HT. It also costs $200/kg.
+- **PETG-CF isn't an upgrade.** It's no stiffer than PLA and deflects at 68 °C.
+- **Avoid PA6-CF and PA6-GF** in an unconditioned lab. They take up 2.4 to 2.6 % water, and damp
+  PA6 loses much of its stiffness.
+
+Notes for printing it:
+
+- **Check the fits first.** Print a coupon with the bore and an M3 nut slot, and measure it,
+  because the shrinkage differs from PLA's.
+- **Don't expect the split to close** (see [Stress](#stress-calculix)). Tighten the four clamp
+  screws evenly to snug.
+- **Carbon-fibre prints are static-dissipative, not conductive.** The one measured CF nylon was
+  about 10⁹ Ω. The Pi sits on its standoffs, clear of the plate, anyway.
+
+Source notes, with every value's datasheet link, are in
+[`sim/materials_2026-09-27.md`](sim/materials_2026-09-27.md).
+
 ## Checks (`exports/checks.json`)
 
 `piper_mount.py` builds everything, runs the checks and exits non-zero if anything interferes. All
@@ -252,9 +317,25 @@ checks stricter.
 
 The final design is in Onshape in the lab's **vcl-shared › 6DOF Robot Arm** folder:
 [PiPER wrist camera mount (4be6e17)](https://cad.onshape.com/documents/93ef145982c24192bfd160be/w/e3d08fcb2dcad7c92e183721).
-It's owned by Vertical Cloud Lab, and all its parts sit in the Part Studio `assembly`.
+It's owned by Vertical Cloud Lab and it's private. Open the **Mount on gripper** tab:
 
-[`onshape/onshape_import.py`](onshape/onshape_import.py) put it there over the REST API in
+| Tab | What's in it |
+|---|---|
+| Mount on gripper | The assembly. Both Part Studios below are inserted whole, at the origin, so the mount sits on the gripper exactly as in the renders |
+| Mount parts (exports/assembly.step) | Our parts, plus envelopes of the Pi 5 and the cameras |
+| AgileX gripper (reference, do not share) | AgileX's gripper STEP, 13 parts. Onshape shows AgileX's Chinese part names garbled; they read 电机加底座 (motor and base), 法兰 (flange), 夹爪 (jaw) and 推力轴承 (thrust bearing), and MGN7 is the linear rail and its carriages |
+| Part Studio 1 | Empty. Onshape's default tab, which the API key can't delete (HTTP 403), so delete it in the web app |
+
+AgileX's gripper went in on 2026-09-27 with
+[`onshape/add_gripper.py`](onshape/add_gripper.py) (about 15 API calls,
+[record](onshape/run_2026-09-27_gripper.json)). The mount was built in the frame of that STEP, so
+the two line up with no mates. AgileX publishes the STEP without a licence, so the repo downloads it
+at run time instead of committing it. For the same reason, **keep this document private** (the script
+refuses to import into a public one).
+
+![The Onshape assembly: the mount on AgileX's gripper](onshape/onshape_on_gripper.png)
+
+[`onshape/onshape_import.py`](onshape/onshape_import.py) made the document over the REST API in
 **7 calls**, plus 3 to check the copy and fetch the shaded view below (the plan allows 2,500 a
 year):
 
@@ -269,7 +350,7 @@ deleted from there. The run record is in
 version, [PiPER wrist camera mount (9f691e6)](https://cad.onshape.com/documents/e22711217c260359b417d4ab/w/a89539f5f5ee3273f944af9c)
 ([record](onshape/run_2026-09-26.json)), is in the same folder and can be deleted.
 
-![Onshape shaded view](onshape/onshape_assembly.png)
+![Onshape shaded view of the mount's Part Studio](onshape/onshape_assembly.png)
 
 The parts are imported solids, not native sketch-and-extrude features. For editable geometry,
 rebuild from `Params`, the way #234's `onshape_api.py` does for the lid mount's base.
@@ -285,6 +366,10 @@ xvfb-run -a -s "-screen 0 1920x1080x24" python fiducials.py         # renders/vi
 python envelope.py                                                   # renders/tight_spaces.png
 xvfb-run -a -s "-screen 0 1920x1080x24" python animate.py           # renders/assembly_steps.gif (gifsicle shrinks it)
 python ../slice/slice_a1mini.py --bambu ~/bambu/squashfs-root       # see slice/README.md
+python ../sim/joint_fea.py                                           # pod joint stiffness, scikit-fem
+xvfb-run -a -s "-screen 0 1920x1080x24" python ../sim/ccx_stress.py  # stresses in CalculiX (apt install calculix-ccx)
+python ../power/voltage_drop.py                                      # power/README.md's table
+python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dcad7c92e183721   # done once
 ```
 
 - **AgileX's STEP isn't committed.** AgileX publishes it with no licence, so
