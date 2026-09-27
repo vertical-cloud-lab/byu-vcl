@@ -3,6 +3,7 @@
 landed (and that the arm sits on its plate in the sandbox assembly). One API call per image.
 
     python shaded_views.py run_2026-09-26.json
+    python shaded_views.py run_2026-09-27_add.json    # the tabs added with --add
 """
 from __future__ import annotations
 
@@ -21,7 +22,14 @@ def main() -> None:
     api = Api()
     shots = []
     sb = run["documents"].get("sandbox", {})
-    if sb.get("assembly"):
+    if "added_to" in run:          # a --add record: the new equipment tabs and the new sandbox assembly
+        for tab, t in run["documents"].get("equipment", {}).get("tabs", {}).items():
+            if t.get("elements"):
+                slug = "".join(c if c.isalnum() else "_" for c in tab.lower()).strip("_")
+                shots.append((f"onshape_{slug}.png", run["documents"]["equipment"]["document"], "partstudios", t["elements"][0]))
+        if sb.get("assembly"):
+            shots.append(("onshape_sandbox_assembly_hr100a.png", sb["document"], "assemblies", sb["assembly"]))
+    elif sb.get("assembly"):
         shots.append(("onshape_sandbox_assembly.png", sb["document"], "assemblies", sb["assembly"]))
     room = run["documents"].get("room", {})
     for tab in room.get("tabs", {}).values():

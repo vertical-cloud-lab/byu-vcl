@@ -77,6 +77,8 @@ ADD = {
         ("Sandbox layout (spot D), real HR-100A", EXPORTS / "sandbox_layout.step"),
     ],
 }
+# The tab takes the uploaded file's name, so a replacement is uploaded under a new one
+UPLOAD_AS = {"Sandbox layout (spot D), real HR-100A": "sandbox_layout_hr100a.step"}
 
 
 class Api:
@@ -94,10 +96,10 @@ class Api:
         return r.json() if r.content else {}
 
 
-def upload(api: Api, did: str, wid: str, path: Path) -> str:
+def upload(api: Api, did: str, wid: str, path: Path, name: str | None = None) -> str:
     with path.open("rb") as fh:
         # Exactly the fields of Onshape's documented example; storeInDocument/yAxisIsUp give HTTP 400 (#234).
-        tr = api.call("POST", f"/translations/d/{did}/w/{wid}", files={"file": (path.name, fh, "application/octet-stream")},
+        tr = api.call("POST", f"/translations/d/{did}/w/{wid}", files={"file": (name or path.name, fh, "application/octet-stream")},
                       data={"formatName": "", "flattenAssemblies": "true", "translate": "true"})
     return tr["id"]
 
@@ -126,7 +128,7 @@ def add_tabs(api: Api, base: dict, keys: list[str], first_wait: float) -> dict:
         did, wid = doc["document"].split("/documents/")[1].split("/w/")
         pending = {}
         for tab, path in ADD[k]:
-            pending[tab] = upload(api, did, wid, path)
+            pending[tab] = upload(api, did, wid, path, UPLOAD_AS.get(tab))
             print(f"  uploaded {path.name} ({path.stat().st_size / 1e6:.1f} MB) into {doc['name']!r} as {tab!r}", flush=True)
         rec = {"document": doc["document"], "tabs": poll(api, pending, first_wait)}
         if k == "sandbox":          # a new assembly on the new layout, with the arm tab already there
