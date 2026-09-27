@@ -129,7 +129,7 @@
         "tag_wedge_1",
         "tag_wedge_1"
       ],
-      "print_time_s": 10158,
+      "print_time_s": 10167,
       "filament_g": 87.4,
       "filament_m": 28.84,
       "bed_type": "Textured PEI Plate",
@@ -159,17 +159,17 @@
         "Custom": 348,
         "Flush": 28,
         "Gap infill": 117,
-        "Inner wall": 1838,
-        "Internal solid infill": 1222,
-        "Outer wall": 1427,
+        "Inner wall": 1837,
+        "Internal solid infill": 1224,
+        "Outer wall": 1428,
         "Overhang wall": 63,
-        "Sparse infill": 2632,
+        "Sparse infill": 2633,
         "Top surface": 298,
-        "Travel": 1486,
-        "Undefined": 1468
+        "Travel": 1492,
+        "Undefined": 1474
       }
     }
   ],
-  "total_print_time_s": 10158,
+  "total_print_time_s": 10167,
   "total_filament_g": 87.4
 }
