@@ -168,8 +168,7 @@ def main() -> None:
     parts = build(p)
     hw = hardware.placed(p)
     t = math.radians(p.toe_deg)
-    back = np.array([-math.sin(t), math.cos(t), 0.0])        # pod station +Y: from the camera side
-    tongue_out = np.array([-math.cos(t), -math.sin(t), 0.0])  # station -X: out of the web's nut slots
+    back = np.array([-math.sin(t), math.cos(t), 0.0])        # pod station +Y: from the lens side toward the board
 
     sc = Scene("AgileX PiPER wrist camera mount: assembly")
     gripper_actors(sc)
@@ -189,7 +188,7 @@ def main() -> None:
         sc.add(f"ribbon_{name}", pv.Spline(pts, 300).tube(radius=1.2), RIBBON, shown=False)
 
     # Sub-assemblies that travel together.
-    sc.group("bracket_sub", ["bracket", "clamp_nuts", "pod_nuts"], (-110, 0, 0))
+    sc.group("bracket_sub", ["bracket", "clamp_nuts", "pod_nuts_top", "pod_nuts_bottom"], (-110, 0, 0))
     sc.group("carrier_sub", ["carrier", "pi_nuts"], (110, 0, 0))
     pod_members = ["pod", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module", "hq_screws", "hq_nuts",
                    "cm_screws", "cm_nuts"]
@@ -237,8 +236,9 @@ def main() -> None:
     show(["bracket"])
     near_bracket = [(-380, -230, 190), (-140, 30, 5), (0, 0, 1)]
     sc.step("1 / 10", "Bracket: push 4 x M3 nuts into the pockets in its clamp ears (from the outside) | "
-            "and slide 2 x M3 nuts into the side slots in its web. They hold the camera pod later.",
-            n + 8, both(fly(["clamp_nuts"], (1, 0, 0), 30), delay(fly(["pod_nuts"], -tongue_out, 30), 0.3)),
+            "and drop 4 x M3 nuts into the slots in the top and bottom of the pod seat. They hold the pod later.",
+            n + 8, both(fly(["clamp_nuts"], (1, 0, 0), 30), delay(fly(["pod_nuts_top"], (0, 0, -1), 30), 0.3),
+                        delay(fly(["pod_nuts_bottom"], (0, 0, 1), 30), 0.3)),
             cam_to=near_bracket, hold=15)
     # 2. Bracket onto the gripper.
     sc.step("2 / 10", "Slide the bracket on from the tab side: half-collar round the O57 body, | "
@@ -272,13 +272,22 @@ def main() -> None:
                          delay(fly(["hq_nuts"], -back, 25), 0.55)), cam_to=pod_view, hold=14)
     sc.step("6 / 10", "Thread the 6 mm lens into the CS mount. Camera Module 3 Wide above it: | "
             "4 x M2 x 10 from the front, nuts behind. Plug a 300 mm Standard-Mini ribbon into each camera.",
-            n + 10, both(fly(["hq_lens"], -back, 45), delay(fly(["cm_pcb", "cm_module"], -back, 30), 0.3),
+            n + 10, both(fly(["hq_lens"], back, 45), delay(fly(["cm_pcb", "cm_module"], -back, 30), 0.3),
                          delay(fly(["cm_screws"], back, 20), 0.55), delay(fly(["cm_nuts"], -back, 20), 0.7)),
             hold=14)
-    # 7. Pod onto the web.
-    sc.step("7 / 10", "Set the pod's tongue on the web and fix it with 2 x M3 x 16 into the web's nuts. | "
-            "The pod can come off again without touching the collar or the tab screws.",
-            n + 12, both(move_group("pod_sub", (0, 0, 0)), delay(fly(["pod_screws"], -back, 35), 0.6)),
+    # 7. Pod onto the seat: first in line with its lens, then straight down the lens axis, so the lens
+    # slides into the seat's cradle rather than through it.
+    above = back * 70.0
+
+    def pod_path(u):
+        if u < 0.5:
+            sc.group_off["pod_sub"] = pod_at + (above - pod_at) * ease(u / 0.5)
+        else:
+            sc.group_off["pod_sub"] = above * (1 - ease((u - 0.5) / 0.5))
+    sc.step("7 / 10", "Lower the pod straight down its lens axis onto the bracket's 45 degree seat, which carries | "
+            "its inner half and its top and bottom edges out to the lens. Fix it with 4 x M3 x 16 into the "
+            "seat's nuts. It comes off again without touching the collar or the tab screws.",
+            n + 20, both(pod_path, delay(fly(["pod_screws"], -back, 35), 0.75)),
             cam_to=[(-360, 260, 300), (-55, 30, 10), (0, 0, 1)], hold=15)
     # 8. Pi 5.
     sc.step("8 / 10", "Pi 5 with its Active Cooler: 4 printed spacers, then 4 x M2.5 x 12 from the top | "

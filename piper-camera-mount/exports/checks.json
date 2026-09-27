@@ -59,7 +59,7 @@
     "pod to gripper body": 3.4041675550824166,
     "carrier to gripper body": 0.14871025849202518,
     "collar halves (split)": 0.9999999999999964,
-    "HQ lens to the bracket": 2.6554286605544704,
+    "HQ lens to the bracket": 1.4999999999999782,
     "HQ lens to the finger plate": 4.449533705398304
   },
   "view": {
@@ -115,7 +115,13 @@
         "upper finger tag": false,
         "lower finger tag": false
       }
-    }
+    },
+    "bracket inside the HQ view (mm3)": 0.0,
+    "pod inside the HQ view (mm3)": 0.0,
+    "carrier inside the HQ view (mm3)": 0.0,
+    "bracket inside the Wide view (mm3)": 2879.3,
+    "pod inside the Wide view (mm3)": 0.0,
+    "carrier inside the Wide view (mm3)": 126.2
   },
   "extent_mm": {
     "rearmost point (must be < flange face 64.98)": 64.5,
@@ -134,9 +140,17 @@
       58.9
     ]
   },
+  "pod_joint": {
+    "contact area (mm2)": 987,
+    "screws": "4 x M3 x 16",
+    "screw spread along z, across (mm)": [
+      38.0,
+      9.0
+    ]
+  },
   "printed_volume_cm3": {
-    "bracket": 36.31,
-    "pod": 18.36,
+    "bracket": 56.86,
+    "pod": 18.84,
     "carrier": 52.39,
     "spacers": 0.44,
     "tag_wedge": 0.12

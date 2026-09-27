@@ -87,9 +87,14 @@ class Params:
 
     # --- bracket (-X): the pad on the tab, and the web the pod sits on --------------
     pad_t: float = 6.0              # the pad on the tab
-    web_x0: float = -51.0           # outer face of the web: 1.6 mm outside the hex-key channels
+    web_x0: float = -51.0           # outer face of the web at the pad: 1.6 mm outside the hex-key channels
     web_x1_rear: float = -38.0      # inner face of the web behind the collar (1.6 mm off the flange)
     web_z: float = 20.0             # half height
+    # The pod seat: from the web's outer face at the pad, the bracket widens outward at 45 degrees
+    # (so it still prints pad-down without supports) until it meets the pod's front face. The pod
+    # then sits on it across its whole inner half and along its top and bottom edges, not on a strip.
+    seat_z0: float = -24.0          # station z, same as the pod's lower edge
+    seat_z1: float = 24.0           # station z; above this the Wide's view begins
     access_d: float = 7.0           # hex-key channels down to the two tab screws (through the pod too)
     tab_screw_len: float = 12.0
 
@@ -103,10 +108,12 @@ class Params:
     pod_x_out: float = -25.0        # station frame, from the HQ axis: outer edge
     pod_z0: float = -24.0           # below the HQ board
     pod_z1: float = 57.0            # above the Camera Module 3 Wide
-    tongue_x0: float = 18.0         # the tongue that sits on the web
+    tongue_x0: float = 18.0         # the tongue that sits on the seat
     tongue_x1: float = 40.0
-    tongue_z: float = 21.0
-    pod_screws: tuple = ((34.0, 15.0), (34.0, -15.0))   # station x, z: 2 x M3 x 16 into nuts in the web
+    tongue_z: float = 24.0          # full height of the pod's lower part
+    # station x, z: 4 x M3 x 16 into nuts in the seat, 38 mm apart vertically and 9 mm across, clear of
+    # the HQ ribbon (z within +/-8 on the back) and of the hex-key channels (z = +/-6 at x ~ 34)
+    pod_screws: tuple = ((26.0, 19.0), (26.0, -19.0), (35.0, 19.0), (35.0, -19.0))
     pod_screw_len: float = 16.0
     pod_nut_y: float = -18.3        # station y of the nut's centre
 
@@ -198,9 +205,12 @@ def hex_x(af, x0, x1, y, z) -> cq.Workplane:
             .rotate((0, 0, 0), (1, 0, 0), 30).translate((x0, y, z)))
 
 
-def hex_y(af, y0, y1, x, z) -> cq.Workplane:
-    """Hex prism along Y, flats facing +/-Z."""
-    return cq.Workplane("XZ").polygon(6, af / math.cos(math.pi / 6)).extrude(-(y1 - y0)).translate((x, y0, z))
+def hex_y(af, y0, y1, x, z, flats_x: bool = False) -> cq.Workplane:
+    """Hex prism along Y, flats facing +/-Z (or +/-X, for a nut that slides in along Z)."""
+    h = cq.Workplane("XZ").polygon(6, af / math.cos(math.pi / 6)).extrude(-(y1 - y0))
+    if flats_x:
+        h = h.rotate((0, 0, 0), (0, 1, 0), 30)
+    return h.translate((x, y0, z))
 
 
 def cyl_z(d, z0, z1, x=0.0, y=0.0) -> cq.Workplane:
@@ -385,26 +395,46 @@ def make_pod(p: Params) -> cq.Workplane:
     return part
 
 
+def pod_seat(p: Params) -> cq.Workplane:
+    """The block under the pod, seen along Z: from the web's outer face at the pad it widens outward
+    at 45 degrees, so the bracket still prints pad-down without supports, and runs back to the pod's
+    front face (cut later). The lens and its mount are cut out of it later too, which leaves it
+    carrying the pod's tongue plus rails along the pod's top and bottom edges out to the lens."""
+    zc = p.ax_z + p.hq_dz
+    y0, L = p.collar_y0, 80.0
+    pts = [(p.web_x0, y0), (p.web_x0 - L, y0 + L), (p.web_x1_rear, y0 + L), (p.web_x1_rear, y0)]
+    return cq.Workplane("XY").polyline(pts).close().extrude(p.seat_z1 - p.seat_z0).translate((0, 0, zc + p.seat_z0))
+
+
 def make_bracket(p: Params) -> cq.Workplane:
     y0 = p.collar_y0
     zc = p.ax_z
     web = box(p.web_x0, p.ax_x - p.split_gap / 2, y0, p.collar_y1, zc - p.web_z, zc + p.web_z)
-    web = web.union(box(p.web_x0, p.web_x1_rear, p.collar_y1 - 1.0, 75, zc - p.web_z, zc + p.web_z))
+    web = web.union(pod_seat(p))
     # The web's top is the pod's front face: everything behind that plane goes.
     web = web.cut(to_world(p, box(-300, 300, -p.hq_standoff - p.pod_t, 300, -300, 300)))
     part = web.union(collar_half(p, -1))
     part = part.cut(cyl_y(2 * p.bore_r, y0 - 1, 80, p.ax_x, zc))
     part = part.cut(hq_place(p)(hq_keepout_local(p)))
+    # Where it goes beyond the first version's web (outboard of it, or above it), the seat keeps out
+    # of the Wide's picture: its top front corner is bevelled along the bottom of the Wide's view
+    # (the cut face leans 32 degrees from vertical as printed, so it needs no support).
+    o, d, up = optical_axes(p)["cm3w"]
+    new = box(-300, p.web_x0, -300, 300, -300, 300).union(
+        box(-300, p.web_x1_rear, -300, 300, zc + p.web_z, 300))
+    part = part.cut(view_pyramid(o, d, up, *CM3W_FOV, 250.0, aperture=1.5).intersect(new))
     # The two tab screws: clearance through the pad, and hex-key channels down to their heads.
     for x, z in p.tab_holes:
         part = part.cut(cyl_y(p.m3_clear_d, y0 - 1, y0 + p.pad_t + 1, x, z))
         part = part.cut(cyl_y(p.access_d, y0 + p.pad_t, 90, x, z))
-    # The pod's two screws: clearance holes along the screw axis, nuts slid in from the web's outer face.
+    # The pod's four screws: clearance holes along the screw axis, nuts slid in from the seat's top
+    # (upper pair) and bottom (lower pair) faces.
     for x, z in p.pod_screws:
         hole = cyl_y(p.m3_clear_d, p.pod_nut_y - 6.0, -p.hq_standoff - p.pod_t + 1.0, x, z)
-        nut = hex_y(p.m3_nut_af, p.pod_nut_y - p.m3_nut_depth / 2, p.pod_nut_y + p.m3_nut_depth / 2, x, z)
-        slot = box(x - 40.0, x, p.pod_nut_y - p.m3_nut_depth / 2, p.pod_nut_y + p.m3_nut_depth / 2,
-                   z - p.m3_nut_af / 2, z + p.m3_nut_af / 2)
+        ny0, ny1 = p.pod_nut_y - p.m3_nut_depth / 2, p.pod_nut_y + p.m3_nut_depth / 2
+        nut = hex_y(p.m3_nut_af, ny0, ny1, x, z, flats_x=True)
+        out = 40.0 if z > 0 else -40.0
+        slot = box(x - p.m3_nut_af / 2, x + p.m3_nut_af / 2, ny0, ny1, min(z, z + out), max(z, z + out))
         part = part.cut(to_world(p, hole.union(nut).union(slot)))
     # Clamp screws across the split: nuts in the bracket's ears.
     for sz in (-1, 1):
@@ -715,7 +745,22 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
             pts[f"{t['name']} finger tag"] = t["centre"]
         tips[f"{opening:.0f} mm open"] = {k: in_view(p, v)[0] for k, v in pts.items()}
     res["view"]["in the HQ view, by opening"] = tips
-    everything = cq.Workplane("XY").add(cq.Compound.makeCompound([parts[n].val() for n in solids]))
+    # The printed parts must stay out of both pictures: each camera's view pyramid, 250 mm deep.
+    for cam, fov, ap in (("HQ", hq_fov(p), 6.0), ("Wide", CM3W_FOV, 1.5)):
+        pyr = view_pyramid(*axes["hq" if cam == "HQ" else "cm3w"], *fov, 250.0, aperture=ap)
+        for n in ("bracket", "pod", "carrier"):
+            res["view"][f"{n} inside the {cam} view (mm3)"] = round(overlap(pyr, parts[n]), 1)
+    # How the pod sits on the bracket: area of their contact face (the pod pushed 0.05 mm into the seat).
+    t = math.radians(p.toe_deg)
+    push = cq.Vector(math.sin(t), -math.cos(t), 0) * 0.05
+    res["pod_joint"] = {
+        "contact area (mm2)": round(overlap(parts["pod"].translate(push.toTuple()), parts["bracket"]) / 0.05),
+        "screws": f"{len(p.pod_screws)} x M3 x {p.pod_screw_len:.0f}",
+        "screw spread along z, across (mm)": [
+            max(z for _, z in p.pod_screws) - min(z for _, z in p.pod_screws),
+            max(x for x, _ in p.pod_screws) - min(x for x, _ in p.pod_screws)],
+    }
+    everything =cq.Workplane("XY").add(cq.Compound.makeCompound([parts[n].val() for n in solids]))
     bb = everything.val().BoundingBox()
     res["extent_mm"] = {
         "rearmost point (must be < flange face 64.98)": round(bb.ymax, 2),

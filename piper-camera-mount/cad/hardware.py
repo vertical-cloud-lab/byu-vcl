@@ -63,14 +63,16 @@ def placed(p: Params) -> dict[str, dict]:
     nut_x = p.ax_x - p.ear_w + p.m3_nut_depth - 0.3
     out["clamp_nuts"] = {"shapes": [along(hex_nut("M3"), cq.Vector(nut_x, y, z), -X) for y, z in clamp],
                          "dir": X, "label": "4 x M3 nut"}
-    # Pod: M3 x 16 from the pod's back face into nuts slid into the web.
+    # Pod: M3 x 16 from the pod's back face into nuts slid into the seat from its top and bottom faces.
     pod = pod_screw_axes(p)
     out["pod_screws"] = {"shapes": [along(socket_head("M3", p.pod_screw_len), a, d) for a, d in pod],
-                         "dir": fwd, "label": "2 x M3 x 16"}
+                         "dir": fwd, "label": f"{len(pod)} x M3 x 16"}
     h = ISO4032["M3"][1]
-    out["pod_nuts"] = {"shapes": [along(hex_nut("M3"), a + d * (-p.hq_standoff - p.pod_nut_y + h / 2), -d,
-                                        spin=p.toe_deg) for a, d in pod],
-                       "dir": cq.Vector(math.cos(t), math.sin(t), 0), "label": "2 x M3 nut"}
+    for key, sign in (("pod_nuts_top", 1), ("pod_nuts_bottom", -1)):
+        axes = [(a, d) for (a, d), (_, z) in zip(pod, p.pod_screws) if z * sign > 0]
+        out[key] = {"shapes": [along(hex_nut("M3"), a + d * (-p.hq_standoff - p.pod_nut_y + h / 2), -d,
+                                     spin=p.toe_deg + 90) for a, d in axes],
+                    "dir": cq.Vector(0, 0, -sign), "label": f"{len(axes)} x M3 nut"}
     # HQ Camera: M2.5 x 12 from the pod's front counterbores, nuts on the back of the board.
     hq, cm = hq_place(p), cm_place(p)
     back = -fwd
