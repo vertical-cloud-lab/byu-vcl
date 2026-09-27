@@ -242,12 +242,12 @@ def render(mesh_u: dict, k: int, out: Path, labels: dict) -> float:
         pl.add_mesh(surf, color="lightgrey", opacity=0.18)
         pl.add_mesh(surf.warp_by_vector("u", factor=scale), scalars="|u| (um)", cmap="viridis",
                     clim=(0, umax * 1e3), show_edges=False, smooth_shading=False,
-                    scalar_bar_args={"title": f"|u| (um), 83 g at 1 g along {DIRS[k]}", "color": "black",
+                    scalar_bar_args={"title": f"displacement (um), 83 g at 1 g along {DIRS[k]}, same scale both sides",
+                                     "color": "black",
                                      "vertical": False, "width": 0.6, "position_x": 0.2, "position_y": 0.04,
                                      "fmt": "%.0f"})
-        pl.add_text(labels[name], position="upper_left", font_size=13, color="black")
-        pl.add_text(f"deformation x {scale:g}; undeformed in grey", position="upper_right", font_size=10,
-                    color="black")
+        pl.add_text(f"{labels[name]}\ndeformation x {scale:g}, undeformed in grey", position="upper_left",
+                    font_size=13, color="black")
         c = np.array(surf.center)
         pl.camera_position = [tuple(c + 260 * np.array([-0.75, -0.45, 0.48])), tuple(c), (0, 0, 1)]
     pl.link_views()

@@ -76,7 +76,7 @@
       }
     },
     "first natural frequency, Rayleigh-Ritz (Hz)": 108.6,
-    "solve time (s)": 159.7,
+    "solve time (s)": 156.0,
     "bonded contact area, pod to bracket (mm2)": 324.9,
     "mesh time (s)": 1.1
   },
@@ -135,7 +135,7 @@
       }
     },
     "first natural frequency, Rayleigh-Ritz (Hz)": 358.5,
-    "solve time (s)": 269.3,
+    "solve time (s)": 250.5,
     "bonded contact area, pod to bracket (mm2)": 987.5,
     "mesh time (s)": 1.5
   },
@@ -158,5 +158,5 @@
     "load case": "Y",
     "deformation scale": 100
   },
-  "run time (s)": 434.5
+  "run time (s)": 412.0
 }
