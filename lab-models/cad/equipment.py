@@ -236,3 +236,190 @@ def drop_tower(carriage_z: float = 1500.0) -> Model:
     m.notes = {"envelope_mm": [W, D, H], "table_mm": [p["table"], p["table"]], "standard_drop_in": 60,
                "location": "CB 152A (SMASH Lab), not CB154"}
     return m
+
+
+# --- Labconco Protector controlled-atmosphere glove box on its stand ----------------------------
+# The cheap pick from PR #78 (proposed 2026-07-20, agreed the same day): a used $2,999 unit in
+# Alabama. Its data plate reads catalog 50701-00: a Protector with a type 304 stainless liner,
+# automatic pressure control and 115 V, built July 2001, with an AtmosPure 51218-00 purifier
+# already fitted. The liner, window, ports and transfer chamber follow Labconco's drawing. The
+# 38 in height is the seller's (the current model is 45.7 in), and the control column, the rear
+# purifier and the bubbler are scaled from the listing photos (sources/glovebox.json).
+# Inches, as on the drawing.
+LABCONCO = dict(body_w=41.5, base_d=30.0, h=38.0, cab_w=16.3, cab_h=31.0, overall_w=63.5,
+                win_w=36.0, win_h=27.7, win_z=3.6, slope_deg=10.0,
+                int_d_floor=28.0, int_h_front=32.0, int_h_rear=28.1, int_floor=1.6,
+                port_id=8.0, port_od=11.0, port_x=(12.3, 29.3), port_z=9.3,
+                ante=(11.0, 13.0, 20.0), ante_floor=5.1, ante_y=(9.0, 22.0),
+                stand_w=60.0, stand_d=30.0, stand_h=34.0, stand_top=1.125, caster=5.0)
+IN = 25.4
+
+
+def glovebox() -> Model:
+    p = {k: (tuple(v * IN for v in val) if isinstance(val, tuple) else val * IN) for k, val in LABCONCO.items()
+         if k != "slope_deg"}
+    a = math.radians(LABCONCO["slope_deg"])
+    m = Model("labconco_glovebox", "Labconco Protector glove box (cat. 50701), stainless, on its stand",
+              source="Labconco's drawing and 2002 manual; the listing's photos and 38 in height (PR #78)")
+    # stand (Labconco 5062000): phenolic top, two pedestal uprights on T-feet, lower shelf, casters
+    sw, sd, S = p["stand_w"], p["stand_d"], p["stand_h"]
+    c = p["caster"]
+    m.add("stand top", box(-sw / 2, -sd / 2, S - p["stand_top"], sw / 2, sd / 2, S), "benchtop")
+    for sx in (-1, 1):
+        x = sx * (sw / 2 - 120)
+        m.add(f"stand upright {'LR'[sx > 0]}", box(x - 40, -40, c + 40, x + 40, 40, S - p["stand_top"]), "printer_black")
+        m.add(f"stand foot {'LR'[sx > 0]}", box(x - 40, -sd / 2 + 30, c, x + 40, sd / 2 - 30, c + 40), "printer_black")
+        for sy in (-1, 1):
+            m.add(f"caster {sx:+d}{sy:+d}", cyl(c * 0.8, c, x=x, y=sy * (sd / 2 - 70)), "printer_black")
+    m.add("stand shelf", box(-sw / 2 + 180, -sd / 2 + 60, 330, sw / 2 - 180, sd / 2 - 60, 350), "printer_black")
+    m.add("stand beam", box(-sw / 2 + 120, -30, 520, sw / 2 - 120, 30, 580), "printer_black")
+    # main body: side profile with the window plane leaning back 10 deg, a lamp facade above it
+    x0 = -sw / 2                                          # left end flush with the stand; the right end overhangs
+    y0 = -p["base_d"] / 2                                 # base front
+    bw, H, wz = p["body_w"], p["h"], p["win_z"]
+    wy1, wz1 = y0 + p["win_h"] * math.sin(a), S + wz + p["win_h"] * math.cos(a)     # window top edge
+    prof = [(y0, S), (-y0, S), (-y0, S + H), (wy1, S + H), (wy1, wz1), (y0, S + wz)]
+    body = cq.Workplane("YZ").polyline(prof).close().extrude(bw).translate((x0, 0, 0))
+    # interior: 35.5 W, 28.0 deep at the floor, 32.0 tall at the front falling to 28.1 at the rear
+    iw = 35.5 * IN
+    fz = S + p["int_floor"]
+    iy0 = y0 + (p["int_floor"] - wz) * math.tan(a) + 12.0          # inner face of the window at the floor
+    ih, ihr = p["int_h_front"], p["int_h_rear"]
+    inner = [(iy0, fz), (iy0 + p["int_d_floor"], fz), (iy0 + p["int_d_floor"], fz + ihr),
+             (iy0 + ih * math.tan(a), fz + ih)]
+    cav = cq.Workplane("YZ").polyline(inner).close().extrude(iw).translate((x0 + (bw - iw) / 2, 0, 0))
+    # the window: a 36.0 x 27.7 opening through the sloped face, glazed with 3/8 in laminated glass
+    nrm = (0, -math.cos(a), math.sin(a))                         # outward normal of the window plane
+    wc = (x0 + bw / 2, (y0 + wy1) / 2, (S + wz + wz1) / 2)
+    wpl = cq.Plane(origin=wc, xDir=(1, 0, 0), normal=nrm)
+    opening = cq.Workplane(wpl).rect(p["win_w"], p["win_h"]).extrude(-80.0)
+    m.add("body", body.cut(cav).cut(opening), "anthracite")
+    m.add("liner floor", box(x0 + (bw - iw) / 2, iy0, fz - 2.7, x0 + (bw + iw) / 2, iy0 + p["int_d_floor"], fz), "steel")
+    # ports: 8 in ID in the glass, centres 12.3 and 29.3 in from the left edge, 9.3 in up
+    pts = []
+    for px in p["port_x"]:
+        up = (p["port_z"] - wz) / math.cos(a)                    # distance up the window plane from its bottom edge
+        pts.append((x0 + px - wc[0], up - p["win_h"] / 2))
+    glass = cq.Workplane(wpl).rect(p["win_w"], p["win_h"]).extrude(-9.5)
+    glass = glass.cut(cq.Workplane(wpl).pushPoints(pts).circle(p["port_id"] / 2).extrude(-30, both=True))
+    m.add("window", glass, "glass")
+    m.add("window frame", cq.Workplane(wpl).rect(p["win_w"] + 60, p["win_h"] + 50).rect(p["win_w"], p["win_h"]).extrude(8),
+          "printer_black")
+    for i, (u, v) in enumerate(pts):
+        ring = cq.Workplane(wpl).center(u, v).circle(p["port_od"] / 2).circle(p["port_id"] / 2).extrude(25.4)
+        m.add(f"glove port {i + 1}", ring, "aluminium")
+        glove = cq.Workplane(wpl).center(u, v).circle(p["port_id"] / 2 - 6).extrude(-380)
+        m.add(f"glove {i + 1}", glove, "pp_black")
+    m.add("badge", box(x0 + bw / 2 - 180, wy1 - 0.6, wz1 + 60, x0 + bw / 2 + 180, wy1 + 0.01, wz1 + 110), "aluminium")
+    # control column on the right end, with the transfer chamber through it and the AtmosPure controller on top
+    cx0, cx1 = x0 + bw, x0 + bw + p["cab_w"]
+    m.add("control column", box(cx0, y0, S, cx1, -y0, S + p["cab_h"]), "anthracite")
+    m.add("atmospure control", box(cx0, y0, S + p["cab_h"], cx1, y0 + 330, S + p["cab_h"] + 100), "printer_black")
+    for i, (z0, z1, mat) in enumerate(((0.80, 0.95, "printer_white"), (0.60, 0.77, "printer_black"),
+                                        (0.40, 0.57, "printer_white"), (0.20, 0.37, "printer_black"))):
+        m.add(f"control panel {i + 1}", box(cx0 + 20, y0 - 3, S + z0 * p["cab_h"], cx1 - 20, y0 + 0.01, S + z1 * p["cab_h"]), mat)
+    m.add("box pressure gauge", cyl(90, 20, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90)
+          .translate(((cx0 + cx1) / 2 - 90, y0 - 3, S + 0.47 * p["cab_h"])), "printer_white")
+    m.add("chamber vacuum gauge", cyl(90, 20, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90)
+          .translate(((cx0 + cx1) / 2 + 90, y0 - 3, S + 0.47 * p["cab_h"])), "printer_white")
+    aw, ah, al = p["ante"]
+    ay0, az0 = y0 + p["ante_y"][0], S + p["ante_floor"]
+    ax1 = x0 + p["overall_w"] - 70.0                      # outer door face; door hardware takes the rest of the 63.5 in
+    tube_ = box(ax1 - al - 30, ay0 - 12, az0 - 12, ax1, ay0 + aw + 12, az0 + ah + 12)
+    tube_ = tube_.cut(box(ax1 - al - 31, ay0, az0, ax1 + 1, ay0 + aw, az0 + ah))
+    m.add("transfer chamber", tube_, "steel")
+    m.add("outer door", box(ax1, ay0 - 30, az0 - 30, ax1 + 16, ay0 + aw + 30, az0 + ah + 30), "steel")
+    m.add("door pivot arms", box(ax1 + 16, ay0 - 30, az0 + ah + 10, ax1 + 70, ay0 + aw + 30, az0 + ah + 40), "steel")
+    m.add("door latch", box(ax1 + 16, ay0 + aw / 2 - 40, az0 - 10, ax1 + 45, ay0 + aw / 2 + 40, az0 + 20), "printer_black")
+    # rear: purifier enclosure (rear left) and the oil bubbler (mid rear)
+    m.add("purifier enclosure", box(x0 + 60, -y0, S + 120, x0 + 340, -y0 + 140, S + 680), "printer_black")
+    m.add("bubbler", box(x0 + bw / 2 - 125, -y0, S + 250, x0 + bw / 2 + 125, -y0 + 100, S + 850), "printer_black")
+    m.add("vacuum pump", rbox(380, 200, 250, 10, x=-sw / 2 + 420, y=0, z=350), "paint_blue")
+    m.notes = {"envelope_mm": [round(p["overall_w"], 1), round(p["base_d"], 1), round(S + H, 1)],
+               "interior_mm": [round(iw), round(p["int_d_floor"]), round(ih)],
+               "transfer_chamber_inside_mm": [round(aw), round(ah), round(al)],
+               "glove_port_centre_height_mm": round(S + p["port_z"]),
+               "floor_centre_mm": [round(x0 + bw / 2, 1), round(iy0 + p["int_d_floor"] / 2, 1), round(fz, 1)],
+               "status": "a used listing (PR #78); not bought"}
+    return m
+
+
+# --- Aconity3D AconityMIDI (metal laser powder-bed fusion) ---------------------------------------
+# Not bought: the candidate metal printer. Envelope 2450 x 1500 x 2320 mm, 1450 kg, build space
+# 170 mm dia. x 200 mm (Aconity's configurator data behind aconity3d.com, 2026; the 2018/2022 sheets
+# give 2170 x 1590 x 2340 for the older design). Every block inside the envelope is scaled from
+# front photos (CMU's, 4.036 mm/px, cross-checked on Aconity's own), and every depth is a guess:
+# no side view is published. Blocks are in the photo frame: x from the left edge, y back from
+# the front face, z up (sources/aconity_midi.json).
+ACONITY = dict(W=2450.0, D=1500.0, H=2320.0, build_d=170.0, build_h=200.0, feet=100.0)
+
+
+def aconity_midi() -> Model:
+    p = ACONITY
+    W, D, H = p["W"], p["D"], p["H"]
+    m = Model("aconity_midi", "Aconity3D AconityMIDI (metal LPBF), candidate",
+              source="Aconity's spec (envelope, build space) and front photos (layout); depths assumed")
+
+    def B(x0, x1, y0, y1, z0, z1):                         # photo frame -> centred frame, front at -D/2
+        return box(x0 - W / 2, y0 - D / 2, z0, x1 - W / 2, y1 - D / 2, z1)
+
+    def X(x):
+        return x - W / 2
+
+    def Y(y):
+        return y - D / 2
+
+    f = p["feet"]
+    # filter unit, left: legs and hopper cone, drum, filter cylinder, valves
+    fx, fy = X(216.0), Y(216.0)
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            m.add(f"filter leg {sx:+d}{sy:+d}", cyl(30, 250, x=fx + sx * 170, y=fy + sy * 170), "printer_black")
+    m.add("filter hopper", cq.Workplane("XY").circle(40).workplane(offset=200).circle(215).loft().translate((fx, fy, 50)), "printer_black")
+    m.add("filter drum", cyl(430, 606, x=fx, y=fy, z=250), "printer_black")
+    m.add("filter cone", cq.Workplane("XY").circle(215).workplane(offset=64).circle(108).loft().translate((fx, fy, 856)), "printer_black")
+    m.add("filter cylinder", cyl(215, 270, x=fx, y=fy, z=920), "printer_black")
+    m.add("filter valves", cyl(90, 215, x=fx, y=fy, z=1190), "steel")
+    m.add("filter hose", cyl(60, 330, x=0, y=0, z=0).rotate((0, 0, 0), (0, 1, 0), 90)
+          .translate((fx + 110, Y(300.0), 1300)), "pp_blue")
+    # base cabinet with the exchangeable process chamber on top
+    m.add("base cabinet", B(464, 1388, 0, 1200, f, 977).edges("|Z").fillet(8), "anthracite")
+    m.add("base feet", B(484, 1368, 20, 1180, 0, f), "printer_black")
+    m.add("base door handle", B(980, 1000, -25, 0, 600, 780), "aluminium")
+    m.add("service strip", B(1388, 1493, 60, 800, 400, 1300), "printer_black")
+    for i, z in enumerate((520, 700, 880, 1060, 1240)):
+        m.add(f"service hose {i + 1}", cyl(22, 740, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), -90)
+              .translate((X(1440.0), Y(60.0), z)), "pp_blue" if i % 2 else "acrylic")
+    m.add("process chamber", B(634, 1243, 250, 950, 977, 1300).edges("|Y").fillet(10), "anthracite")
+    m.add("chamber viewport", B(835, 1005, 245, 250.5, 1121.5, 1178.5), "tinted")
+    m.add("chamber handle", B(840, 1040, 225, 250, 1005, 1030), "aluminium")
+    # optics portal: aluminium-profile posts either side, a scanner shelf, the beam turret
+    for x0 in (540, 1300):
+        for y0 in (250, 890):
+            m.add(f"portal post {x0}-{y0}", B(x0, x0 + 60, y0, y0 + 60, 977, 1905), "printer_black")
+    m.add("scanner shelf", B(540, 1360, 250, 950, 1485, 1500), "printer_black")
+    m.add("portal bridge", B(540, 1360, 250, 950, 1875, 1905), "printer_black")
+    m.add("beam turret", B(807, 1089, 400, 800, 1300, 1485), "aluminium")
+    for i, (x0, x1) in enumerate(((727, 933), (944, 1150))):
+        m.add(f"scan head {i + 1}", B(x0, x1, 350, 750, 1500, 1808).edges("|Z").fillet(8), "printer_grey")
+    m.add("z actuator", B(935, 995, 700, 780, 1808, 2250), "aluminium")
+    for i, xc in enumerate((830.0, 1040.0)):              # yellow fibre loops up to the spec height
+        loop = cq.Solid.makeTorus(150, 9).rotate(cq.Vector(0, 0, 0), cq.Vector(0, 1, 0), 90)
+        m.add(f"fibre loop {i + 1}", cq.Workplane().add(loop).translate((X(xc), Y(600.0), H - 159)), "pp_yellow")
+    # control cabinet, right: two doors, e-stop, buttons, wood worktop, tower with LED strip, monitor
+    m.add("control cabinet", B(1493, 2450, 0, 800, f, 1136).edges("|Z").fillet(6), "anthracite")
+    m.add("control feet", B(1513, 2430, 20, 780, 0, f), "printer_black")
+    m.add("door split", B(1969, 1973, -1, 0.01, f + 20, 1116), "printer_black")
+    m.add("worktop", B(1488, 2455, -20, 800, 1136, 1166), "wood")
+    m.add("e-stop", cyl(60, 22, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90).translate((X(1703.0), Y(0.0), 1065)), "pp_yellow")
+    m.add("e-stop cap", cyl(40, 12, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90).translate((X(1703.0), Y(-22.0), 1065)), "paint_red")
+    m.add("button panel", B(1562, 1849, -6, 0.01, 868, 1001), "printer_black")
+    m.add("control tower", B(1490, 2350, 350, 800, 1166, 1889), "anthracite")
+    m.add("led strip", B(1490, 2350, 345, 350, 1860, 1880), "led_cyan")
+    m.add("monitor pole", B(1944, 1974, 320, 350, 1166, 1600), "aluminium")
+    m.add("monitor", B(1664, 2254, 250, 320, 1380, 1727), "screen")
+    m.add("keyboard", B(1750, 2177, 60, 210, 1166, 1186), "printer_black")
+    m.notes = {"envelope_mm": [W, D, H], "mass_kg": 1450, "build_volume_mm": {"diameter": p["build_d"], "height": p["build_h"]},
+               "status": "candidate, not bought", "needs": "argon 6 bar, compressed air 6 bar, 208 V 3-phase 32 A (US option), "
+               "a ~15 kW chiller for heating or lasers over 400 W (not modelled)"}
+    return m

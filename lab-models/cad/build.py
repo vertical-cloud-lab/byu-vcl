@@ -72,7 +72,7 @@ def main() -> None:
     eq = {}
     if {"equipment", "sandbox", "room"} & set(groups):
         eq = {m.key: m for m in [equipment.a1_mini(), equipment.h2d(), equipment.cubxl(), equipment.drop_tower(),
-                                 equipment.atomizer()]}
+                                 equipment.atomizer(), equipment.glovebox(), equipment.aconity_midi()]}
     if "equipment" in groups:
         for key, m in eq.items():
             index[key] = export(m, stl=False)

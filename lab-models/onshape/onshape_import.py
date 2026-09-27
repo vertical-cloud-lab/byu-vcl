@@ -14,14 +14,15 @@ The folder itself was made over the API too (`make_folder`): POST /folders works
 when the body carries the owner (`ownerId`, `ownerType`); without them it is HTTP 400. Moving
 a document between folders is still web-app only (#234).
 
-Every call counts against the plan's 2,500 a year, so the script waits before its first poll
-instead of polling fast. A dry run (--dry-run) prints the plan and makes no calls.
+Every successful call counts against the plan's 2,500 a year (4xx and 5xx responses don't), so
+the script waits before its first poll instead of polling fast. A dry run (--dry-run) prints the plan and makes no calls.
 
 Credentials come from the environment: ONSHAPE_ACCESS_KEY, ONSHAPE_SECRET_KEY.
 
     python onshape_import.py --folder FOLDER_ID            # all documents
     python onshape_import.py --folder FOLDER_ID --only equipment
     python onshape_import.py --make-folder "Lab Models"    # once: a new folder in vcl-shared
+    python onshape_import.py --add equipment sandbox       # new tabs into the existing documents
 """
 from __future__ import annotations
 
@@ -63,6 +64,20 @@ DOCS = {
     ]),
 }
 
+# Tabs added later to documents that already exist (ids in the run record). The key can't
+# delete, so a model that changes goes in as a new tab and the one it replaces stays behind.
+ADD = {
+    "equipment": [
+        ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step"),
+        ("Labconco glove box", EXPORTS / "labconco_glovebox.step"),
+        ("Aconity MIDI", EXPORTS / "aconity_midi.step"),
+    ],
+    "sandbox": [
+        ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step"),
+        ("Sandbox layout (spot D), real HR-100A", EXPORTS / "sandbox_layout.step"),
+    ],
+}
+
 
 class Api:
     def __init__(self):
@@ -87,6 +102,46 @@ def upload(api: Api, did: str, wid: str, path: Path) -> str:
     return tr["id"]
 
 
+def poll(api: Api, pending: dict[str, str], first_wait: float) -> dict:
+    """Wait once, then poll each translation until it is done."""
+    time.sleep(first_wait)
+    tabs = {}
+    for tab, tid in pending.items():
+        for _ in range(20):
+            st = api.call("GET", f"/translations/{tid}")
+            if st["requestState"] != "ACTIVE":
+                break
+            time.sleep(30)
+        tabs[tab] = {"state": st["requestState"], "elements": st.get("resultElementIds"),
+                     "failure": st.get("failureReason")}
+        print(f"  {tab}: {st['requestState']}", flush=True)
+    return tabs
+
+
+def add_tabs(api: Api, base: dict, keys: list[str], first_wait: float) -> dict:
+    """Import ADD's STEP files as new tabs of the documents in an earlier run record."""
+    out = {}
+    for k in keys:
+        doc = base["documents"][k]
+        did, wid = doc["document"].split("/documents/")[1].split("/w/")
+        pending = {}
+        for tab, path in ADD[k]:
+            pending[tab] = upload(api, did, wid, path)
+            print(f"  uploaded {path.name} ({path.stat().st_size / 1e6:.1f} MB) into {doc['name']!r} as {tab!r}", flush=True)
+        rec = {"document": doc["document"], "tabs": poll(api, pending, first_wait)}
+        if k == "sandbox":          # a new assembly on the new layout, with the arm tab already there
+            layout = next((t["elements"][0] for n, t in rec["tabs"].items() if n.startswith("Sandbox layout") and t["elements"]), None)
+            arm = next((t["elements"][0] for n, t in doc["tabs"].items() if "PiPER" in n and t.get("elements")), None)
+            if layout and arm:
+                try:
+                    rec["assembly"] = sandbox_assembly(api, did, wid, layout, arm, "Sandbox with PiPER (HR-100A)")
+                except RuntimeError as exc:
+                    rec["assembly_error"] = str(exc)[:300]
+        out[k] = rec
+        print(json.dumps(rec, indent=2), flush=True)
+    return out
+
+
 # AgileX's STEP (Y-up, as imported) -> the sandbox layout: turn it Z-up (+90 deg about x), shift
 # its base onto the origin (vendor.py measures (0, 9.2, 4.0) mm), yaw it -90 deg to the URDF's
 # zero, and lift it onto the 12 mm arm plate. Row-major, metres.
@@ -96,9 +151,10 @@ PIPER_IN_SANDBOX = [0, 0, -1, 0.0092,
                     0, 0, 0, 1]
 
 
-def sandbox_assembly(api: Api, did: str, wid: str, layout_eid: str, piper_eid: str) -> str:
+def sandbox_assembly(api: Api, did: str, wid: str, layout_eid: str, piper_eid: str,
+                     name: str = "Sandbox with PiPER") -> str:
     """One assembly tab: the layout Part Studio, and AgileX's arm placed on its plate (5 calls)."""
-    eid = api.call("POST", f"/assemblies/d/{did}/w/{wid}", json={"name": "Sandbox with PiPER"})["id"]
+    eid = api.call("POST", f"/assemblies/d/{did}/w/{wid}", json={"name": name})["id"]
     for ps in (layout_eid, piper_eid):
         api.call("POST", f"/assemblies/d/{did}/w/{wid}/e/{eid}/instances",
                  json={"documentId": did, "elementId": ps, "isWholePartStudio": True})
@@ -121,11 +177,30 @@ def main() -> None:
     ap.add_argument("--make-folder", metavar="NAME", help="create a folder in vcl-shared and print its id")
     ap.add_argument("--only", nargs="*", choices=list(DOCS), help="just these documents")
     ap.add_argument("--first-wait", type=float, default=90.0, help="seconds before the first poll")
+    ap.add_argument("--add", nargs="+", choices=list(ADD), help="add ADD's tabs to these existing documents")
+    ap.add_argument("--record", default="run_2026-09-26.json", help="run record holding the existing documents")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
     if args.make_folder:
         api = Api()
         print(make_folder(api, args.make_folder))
+        return
+    if args.add:
+        tabs = [(t, p) for k in args.add for t, p in ADD[k]]
+        for _, p in tabs:
+            if not p.exists():
+                raise SystemExit(f"missing {p}: run cad/build.py first")
+        if args.dry_run:
+            print("\n".join(f"{t} [{p.stat().st_size / 1e6:.1f} MB]" for t, p in tabs))
+            print(f"about {2 * len(tabs) + 4 * ('sandbox' in args.add)} calls")
+            return
+        api = Api()
+        base = json.loads((HERE / args.record).read_text())
+        record = {"date": time.strftime("%Y-%m-%d"), "added_to": args.record, "documents": add_tabs(api, base, args.add, args.first_wait)}
+        record["api_calls_used"] = api.calls
+        out = HERE / f"run_{record['date']}_add.json"
+        out.write_text(json.dumps(record, indent=2) + "\n")
+        print(f"{api.calls} API calls; record in {out.name}")
         return
     sha = subprocess.run(["git", "rev-parse", "--short=7", "HEAD"], capture_output=True, text=True, cwd=HERE).stdout.strip()
     keys = args.only or list(DOCS)
@@ -154,16 +229,7 @@ def main() -> None:
         for tab, path in tabs:
             pending[tab] = upload(api, did, wid, path)
             print(f"  uploaded {path.name} ({path.stat().st_size / 1e6:.1f} MB) as {tab!r}", flush=True)
-        time.sleep(args.first_wait)
-        for tab, tid in pending.items():
-            for _ in range(20):
-                st = api.call("GET", f"/translations/{tid}")
-                if st["requestState"] != "ACTIVE":
-                    break
-                time.sleep(30)
-            rec["tabs"][tab] = {"state": st["requestState"], "elements": st.get("resultElementIds"),
-                                "failure": st.get("failureReason")}
-            print(f"  {tab}: {st['requestState']}", flush=True)
+        rec["tabs"] = poll(api, pending, args.first_wait)
         # Tabs keep their STEP file names: the public API has no element rename (POST /elements/...
         # is HTTP 405, tried 2026-09-26), so the files are named for what they hold instead.
         if k == "sandbox":
