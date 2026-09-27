@@ -46,10 +46,15 @@ much for the same power, so the loss is a twenty-fifth. Thin, flexible wire is e
 converter holds the Pi at 5.1 V whatever the lead does.
 
 1. **24 V (or 12 V) plus a buck converter on the carrier (recommended).** Use a small 24 V supply at
-   the base, and a two-core high-flex lead up the arm with the service loops. A buck converter with a
-   USB-C output that advertises 5.1 V / 5 A sits on the carrier, with a 10 to 15 cm USB-C lead to
-   the Pi. It's light and cheap, the Pi keeps its 5 A USB budget, and a breakaway on a two-wire DC
-   lead is easy. Don't take the 24 V from the PiPER's J6 XT30: the gripper shares that 2 A.
+   the base, and a two-core high-flex lead up the arm with the service loops. A 5 V / 5 A buck
+   converter with a USB-C output sits on the carrier, with a 10 to 15 cm USB-C lead to the Pi. It's
+   light and cheap, and a breakaway on a two-wire DC lead is easy. Don't take the 24 V from the
+   PiPER's J6 XT30: the gripper shares that 2 A.
+   - Almost none of these converters speak USB-PD. Without it, the Pi 5 assumes 3 A and caps its
+     USB ports at 600 mA, which CSI cameras don't notice.
+   - Setting `PSU_MAX_CURRENT=5000` in the bootloader EEPROM tells the Pi the supply can do 5 A,
+     which removes the cap and the boot warning. Only set it if the converter can really deliver
+     5 A.
 2. **Power over Ethernet**, if the camera streams should be on a wire too. One Cat6 cable carries
    802.3at power (25.5 W at ~50 V) and gigabit Ethernet. At the base it needs a PoE+ injector or
    switch. At the Pi it needs a PoE HAT that fits a Pi 5, or an inline splitter with a USB-C output.
@@ -72,6 +77,34 @@ converter holds the Pi at 5.1 V whatever the lead does.
 3. **Use right-angle plugs at the Pi.** They put the plug body along the board, not sticking out
    from it, which shortens the lever a sideways pull acts through.
 
-## Shopping list
+## What to buy
 
-The search through the CubXL Pi is still running; its shortlist lands here in the next commit.
+A shopping search on 2026-09-27 ran through the CubXL Pi's campus connection, since Amazon blocks
+datacenter IPs. It recorded 69 candidates. The shortlist, with prices, specs and reasons, is in
+[`shopping_2026-09-27.md`](shopping_2026-09-27.md), and all the candidates are in
+[`shopping_2026-09-27.json`](shopping_2026-09-27.json). What it found:
+
+- **No 5.1 V / 5 A supply has a lead longer than 1.5 m.** None has a detachable cable either.
+  Raspberry Pi's new 45 W supply (SC1731, $16.95 at PiShop.us) is the longest official one, at
+  1.5 m and 17 AWG. So no off-the-shelf 5 V supply reaches the wrist on one continuous cable.
+- **Plain 5 V sources work.** PoE splitters, most PoE HATs and most buck converters offer no USB-PD.
+  In that case the Pi 5 caps its USB ports at 600 mA, which doesn't matter for CSI cameras. If the
+  source really can deliver 5 A, `PSU_MAX_CURRENT=5000` in the bootloader EEPROM (or
+  `usb_max_current_enable=1` in `config.txt`) lifts the cap.
+- **No magnetic breakaway publishes its pull-off force.** Measure it with a luggage scale, and
+  compare it with the carrier's numbers in the main README's [Stress](../README.md#stress-calculix)
+  section.
+
+The parts for option 1, plus the alternatives:
+
+| For | Part | Price | Note |
+|---|---|---|---|
+| 24 V at the base | [Mean Well GST36B24-P1J](https://www.amazon.com/dp/B0CNWH3N3H), 24 V 1.5 A | $23.99 | 36 W covers the Pi's worst case through the converter. Needs an IEC C8 mains lead |
+| 5 V at the wrist | [PlusRoc 12/24 V to 5 V 5 A USB-C, potted, 2-pack](https://www.amazon.com/dp/B0FD735LFG) | $15.99 | No PD (the listing says so), so set `PSU_MAX_CURRENT=5000`. Weigh it before it goes on the carrier |
+| 5 V at the wrist, with PD | [eleUniverse 5 V 5 A PD step-down board for Pi 5](https://www.amazon.com/dp/B0FR8VRWFJ) | $20.99 | Takes 9 to 24 V, or USB-C PD in at 12 V. It could run off any PD charger through one long 240 W USB-C cable. 34 g, open board. PD out is unverified |
+| Breakaway | [Adafruit 5521](https://www.adafruit.com/product/5521) magnetic right-angle USB-C adapter | $14.95 | Passes every pin, so PD should get through. Check that the Pi reports 5 A at boot |
+| PoE instead | [Waveshare PoE HAT (G)](https://www.amazon.com/dp/B0D7L5S9CK) + [TP-Link TL-POE160S injector](https://www.amazon.com/dp/B08LZZRX5N) | $22.99 + $19.99 | 802.3at, 5 V 5 A, and fits with the Active Cooler. It adds height the mount's CAD doesn't allow for yet |
+
+Raspberry Pi's own PoE+ HAT for the Pi 5 isn't on sale yet.
+
+![Amazon results for 10 ft USB-C cables, as seen through the Pi](search_long-usb-c-cables.png)

@@ -172,7 +172,7 @@ From `envelope.py` (`exports/envelope.json`), fingers 40 mm apart:
 | 4 | M2.5 x 12 | Pi 5, through the spacers into the nut traps in the carrier |
 | 2 | Raspberry Pi Standard-Mini camera cable, 300 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short |
 | 1 | Pi 5 Active Cooler | Faces outward (+X) |
-| 1 | 24 V supply at the base, a 24 V to 5.1 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
+| 1 | 24 V supply at the base, a 24 V to 5 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
 
 **Power** ([`power/README.md`](power/README.md) has the numbers and a shopping list). The Pi 5 gets
 its own lead up the arm, with a service loop at each joint. It does not share the gripper's supply:
@@ -181,9 +181,10 @@ its own lead up the arm, with a service loop at each joint. It does not share th
   4.63 V, and a USB-C cable may lawfully drop 0.75 V at its rated current. Over 3 m, even a 5 A
   cable ends up at about 4.55 V under load. With an extension it's 4.4 V or less.
 - **Send 24 V (or 12 V) instead, and convert next to the Pi.** Use a small 24 V supply at the base,
-  a two-core high-flex lead up the arm, and a buck converter on the carrier with a USB-C output that
-  advertises 5.1 V / 5 A, plus a 10 to 15 cm lead to the Pi. The loss in the lead is under 1 %. Power
-  over Ethernet is the alternative if the streams should be on a wire too.
+  a two-core high-flex lead up the arm, and a 5 V / 5 A buck converter with a USB-C output on the
+  carrier, plus a 10 to 15 cm lead to the Pi. The loss in the lead is under 1 %. Most of these
+  converters don't speak USB-PD; set `PSU_MAX_CURRENT=5000` in the Pi's EEPROM to tell it the supply
+  can do 5 A. Power over Ethernet is the alternative if the streams should be on a wire too.
 - **The gripper's power/CAN lead is not for the Pi.** It is a short 4-wire jumper from a socket on
   J6 into a notch in the gripper's back cover, right at the flange ring (y ≈ 48 to 54). The mount
   only has to stay out of its way, and it does: the collar stops at y = 46.
