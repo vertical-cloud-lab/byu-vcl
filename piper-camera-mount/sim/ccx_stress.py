@@ -13,7 +13,8 @@ should agree to solver precision. That is the check. Then the stress cases:
             from the socket) along +X (off the board), +Y (straight out of the socket) and +Z,
             carried to the four standoff seats as through a rigid board.
   clamp     each half-collar on its own, round a rigid O57 body (frictionless contact, solved by an
-            active set of radial constraints on the bore), with 500 N in each of its four M3s.
+            active set of radial constraints on the bore), with 200 N (snug) and 500 N (about 0.3 N m)
+            in each of its four M3s.
 
 Linear elastic PLA as in joint_fea.py (E = 2.4 GPa, nu = 0.35). The stress for a given load hardly
 depends on E, so the numbers stand for any of the materials; compare them with each material's
@@ -55,7 +56,7 @@ from piper_mount import Params, optical_axes, pi_holes  # noqa: E402
 EX = MOUNT / "exports"
 BUMP_N = 10.0          # N, each bump and yank case; everything here is linear, so scale freely
 YANK_LEVER = 10.0      # mm, socket mouth to where the plug is gripped
-CLAMP_N = 500.0        # N per M3: about 0.3 N m on a dry M3 (T = 0.2 F d)
+CLAMP_N = (200.0, 500.0)   # N per M3: snug, and about 0.3 N m on a dry M3 (T = 0.2 F d)
 MAX_ITER = 40          # contact active-set iterations
 PU0 = -42.5            # piper_mount.PI_U0
 # Print orientation (build direction) per part, from the README's Printing table.
@@ -141,11 +142,18 @@ class Quadratic:
 
 
 def facet_geometry(mesh: MeshTet, facets: np.ndarray):
+    """Centroids, unit normals and areas. Normals point out of the tet on the facet's first side,
+    i.e. outward on a boundary facet (scikit-fem stores facet vertices sorted, so their order
+    says nothing about which side the solid is on)."""
     v = mesh.p[:, mesh.facets[:, facets]]
     c = v.mean(axis=1)
     n = np.cross(v[:, 1] - v[:, 0], v[:, 2] - v[:, 0], axis=0)
     a = 0.5 * np.linalg.norm(n, axis=0)
-    return c, n / (2 * a), a
+    n = n / (2 * a)
+    tet = mesh.t[:, mesh.f2t[0, facets]]
+    inside = mesh.p[:, tet].mean(axis=1)                  # the tet's centroid is on the solid side
+    n *= np.where(np.einsum("ij,ij->j", n, c - inside) < 0, -1.0, 1.0)
+    return c, n, a
 
 
 # --- ccx --------------------------------------------------------------------------------------
@@ -340,9 +348,8 @@ def clamp_half(work: Path, p: Params, name: str, step: Path, side: int, force: f
     bore, _, _ = boundary_groups(mesh, p)
     bnodes = q.facet_nodes(bore)
     rhat = radial(q.x[bnodes], p)
-    c, n, a = facet_geometry(mesh, np.arange(mesh.facets.shape[1]))
     bf = mesh.boundary_facets()
-    c, n, a = c[:, bf], n[:, bf], a[bf]
+    c, n, a = facet_geometry(mesh, bf)
     # Where the screw pulls: carrier, the counterbore floor under the head (normal +X, head pushes -X);
     # bracket, the floor of the nut pocket (normal -X, nut pulls +X). Both toward the other half.
     x_face = p.ax_x + p.clamp_head_seat if side > 0 else p.ax_x - p.ear_w + p.m3_nut_depth
@@ -547,17 +554,18 @@ def main() -> None:
     }
 
     # 3. the clamp, each half on its own round a rigid body.
-    clamp, viz_c = {}, {}
-    for name, side in (("bracket", -1), ("carrier", 1)):
-        r = clamp_half(work, p, name, EX / f"{name}.step", side, CLAMP_N)
-        viz_c[name] = r.pop("_viz")
-        clamp[name] = r
-    closure = sum(clamp[k]["split face moves toward the other half (mm)"] for k in clamp)
-    out["clamp"] = {"load": f"{CLAMP_N} N in each of the 4 M3s, on the carrier's counterbore floors and the bracket's "
-                            "nut pockets",
-                    "body": "rigid O57, frictionless; the bore starts 0.15 mm clear all round",
-                    "halves": clamp,
-                    "split gap closed (mm, of 1.0)": round(closure, 3)}
+    out["clamp"] = {"load": "each of the 4 M3s pulls with the force below, on the carrier's counterbore floors and "
+                            "the bracket's nut-pocket floors",
+                    "body": "rigid O57, frictionless; the bore starts 0.15 mm clear all round"}
+    viz_c = {}
+    for F in CLAMP_N:
+        clamp = {}
+        for name, side in (("bracket", -1), ("carrier", 1)):
+            r = clamp_half(work / f"clamp_{F:.0f}N", p, name, EX / f"{name}.step", side, F)
+            viz_c[(F, name)] = r.pop("_viz")
+            clamp[name] = r
+        closure = sum(clamp[k]["split face moves toward the other half (mm)"] for k in clamp)
+        out["clamp"][f"{F:.0f} N per screw"] = {"halves": clamp, "split gap closed (mm, of 1.0)": round(closure, 3)}
     out["run time (s)"] = round(time.time() - t_all, 1)
     (HERE / "ccx_stress.json").write_text(json.dumps(out, indent=2) + "\n")
     render(viz_bp, (qc, viz_y), viz_c, out)
@@ -568,40 +576,46 @@ def main() -> None:
 
 def render(bp, yank, clamp, out) -> None:
     import pyvista as pv
-    pv.global_theme.font.family = "arial"
 
-    def grid(q: Quadratic, U: np.ndarray, val: np.ndarray, label: str):
+    def surface(q: Quadratic, val: np.ndarray, label: str):
         g = pv.UnstructuredGrid({pv.CellType.QUADRATIC_TETRA: q.el}, q.x)
-        g.point_data["u"] = U
         g.point_data[label] = val
         return g.extract_surface(nonlinear_subdivision=2, algorithm="dataset_surface")
 
     q, viz, lab = bp
     qc, viz_y = yank
-    panels = []
-    # worst bump by tension across the layers
-    worst_b = max(("X", "Y", "Z"), key=lambda d: max(abs(viz[d][1]["layer"]).max(), 0))
-    panels.append((q, viz[worst_b][0], viz[worst_b][1]["vm"],
-                   f"Pod bumped: {BUMP_N:g} N on its outer edge along {worst_b}\nbracket + pod, von Mises", (-260, -420, 330)))
-    worst_y = max(("X", "Y", "Z"), key=lambda d: viz_y[d][1]["vm"].max())
-    panels.append((qc, viz_y[worst_y][0], viz_y[worst_y][1]["vm"],
-                   f"Cable yank: {BUMP_N:g} N at the USB-C plug along {worst_y}\ncarrier, von Mises", (420, 380, 260)))
-    qb, Ub, mb, _ = clamp["bracket"]
-    panels.append((qb, Ub, mb["vm"], f"Clamp: {CLAMP_N:g} N in each M3\nbracket half on a rigid body, von Mises",
-                   (-300, -330, 300)))
-    pl = pv.Plotter(off_screen=True, shape=(1, 3), window_size=(2700, 1000), border=False)
+    worst_b = max(DIRS, key=lambda d: viz[d][1]["vm"].max())
+    worst_y = max(DIRS, key=lambda d: viz_y[d][1]["vm"].max())
+    F = max(CLAMP_N)
+    qb, _, mb, _ = clamp[(F, "bracket")]
+    qk, _, mk, _ = clamp[(F, "carrier")]
+    panels = [
+        (q, viz[worst_b][1]["vm"], f"Pod bumped: {BUMP_N:g} N on its outer edge along {worst_b}\nbracket + pod",
+         "pod bump", (-0.55, 0.45, 0.70), 1.3),
+        (qc, viz_y[worst_y][1]["vm"], f"Cable yank: {BUMP_N:g} N at the USB-C plug along {worst_y}\n"
+         "carrier, seen from the gripper side", "cable yank", (-0.55, 0.62, 0.55), 1.0),
+        (qb, mb["vm"], f"Clamp: {F:g} N in each M3\nbracket half on a rigid body", "clamp, bracket",
+         (-0.62, -0.55, 0.56), 1.3),
+        (qk, mk["vm"], f"Clamp: {F:g} N in each M3\ncarrier half, seen from the split", "clamp, carrier",
+         (-0.75, -0.35, 0.55), 1.0),
+    ]
+    pl = pv.Plotter(off_screen=True, shape=(1, 4), window_size=(3200, 1050), border=False)
     pl.set_background("white")
-    for i, (qq, U, val, title, cam) in enumerate(panels):
+    for i, (qq, val, title, tag, view, zoom) in enumerate(panels):
         pl.subplot(0, i)
-        vmax = float(np.percentile(val, 99.9))
-        surf = grid(qq, U, val, "von Mises (MPa)")
-        pl.add_mesh(surf, scalars="von Mises (MPa)", cmap="viridis", clim=(0, vmax), show_edges=False,
-                    scalar_bar_args={"title": "von Mises (MPa), clipped at the 99.9th percentile", "color": "black",
-                                     "vertical": False, "width": 0.7, "position_x": 0.15, "position_y": 0.05,
-                                     "fmt": "%.2g", "title_font_size": 16, "label_font_size": 14})
-        pl.add_text(title, position="upper_left", font_size=12, color="black")
+        label = f"von Mises (MPa), {tag}"
+        surf = surface(qq, val, label)
+        top = float(np.percentile(val, 99.8))
+        pl.add_mesh(surf, scalars=label, cmap="viridis", clim=(0, top), show_edges=False,
+                    scalar_bar_args={"title": f"{label}\n(colours stop at the 99.8th percentile)",
+                                     "color": "black", "vertical": False, "width": 0.8, "position_x": 0.1,
+                                     "position_y": 0.04, "fmt": "%.3g", "title_font_size": 18,
+                                     "label_font_size": 16, "n_labels": 4})
+        pl.add_text(title, position="upper_left", font_size=13, color="black")
         c = np.array(surf.center)
-        pl.camera_position = [tuple(c + np.array(cam)), tuple(c), (0, 0, 1)]
+        pl.camera_position = [tuple(c + 300 * np.array(view)), tuple(c), (0, 0, 1)]
+        pl.reset_camera()
+        pl.camera.zoom(zoom)
     pl.screenshot(str(MOUNT / "renders" / "ccx_stress.png"))
     pl.close()
 

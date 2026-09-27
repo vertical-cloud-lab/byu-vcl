@@ -206,8 +206,10 @@ its own lead up the arm, with a service loop at each joint. It does not share th
 
 1. Nuts into the bracket: four in the clamp ears and four in the pod seat's slots.
 2. Bracket onto the gripper, pad against the tab; the two tab screws.
-3. Pi nuts into the carrier, then close the collar with it: the four clamp screws, evenly, until the
-   1 mm split closes.
+3. Pi nuts into the carrier, then close the collar with it: the four clamp screws, evenly, to snug
+   (about 0.1 N m, or 200 N per screw). The split stays about 0.35 mm open. Don't try to close it:
+   that takes about 0.5 N m, which is more than PLA ears take (see [Stress](#stress-calculix)). The
+   GIF's caption still says to close it.
 4. Cameras onto the pod, the lens into the CS mount, both ribbons plugged in.
 5. Pod down its lens axis onto the seat; its four screws.
 6. Pi 5 on its spacers, then the ribbons, then the tag wedges on the fingers.
@@ -293,6 +295,81 @@ Notes for printing it:
 
 Source notes, with every value's datasheet link, are in
 [`sim/materials_2026-09-27.md`](sim/materials_2026-09-27.md).
+
+## Stress (CalculiX)
+
+[`sim/ccx_stress.py`](sim/ccx_stress.py) solves the printed parts in [CalculiX](http://www.calculix.de/)
+2.21 (`apt install calculix-ccx`). It uses `joint_fea.py`'s gmsh meshes, with a node added at each
+edge midpoint, so the elements are CalculiX's C3D10 quadratic tets: 99,060 nodes for bracket + pod.
+The results are in [`sim/ccx_stress.json`](sim/ccx_stress.json).
+
+**CalculiX gives the same answer as scikit-fem.** Here are `joint_fea.py`'s three cases on the same
+mesh (the same node and tet counts) with the same supports:
+
+| 83 g at 1 g along | HQ moves (µm), ccx / scikit-fem | Optical axis tilts (arcmin), ccx / scikit-fem | Largest displacement (µm), ccx / scikit-fem |
+|---|---|---|---|
+| X | 0.4769 / 0.477 | 0.02944 / 0.0294 | 0.9320 / 0.932 |
+| Y | 0.9640 / 0.964 | 0.16157 / 0.1616 | 2.7802 / 2.780 |
+| Z | 0.9746 / 0.975 | 0.00958 / 0.0096 | 1.8602 / 1.860 |
+
+They agree to every digit `joint_fea.json` keeps, so the stiffness numbers in
+[The pod seat](#the-pod-seat) don't depend on the solver.
+
+**The stress cases.** The model is solid, isotropic PLA, but for a given load the stress hardly
+depends on the material. "Across layers" is the normal stress through the layers, using each
+part's print orientation from the Printing table. Bump and yank peaks are taken at least 2 mm from
+the supports, and clamp peaks at least 1.5 mm from the screw seats.
+
+| Case | Load | Peak von Mises | Peak max principal | Peak tension across layers | Where |
+|---|---|---|---|---|---|
+| Camera inertia | 83 g at 1 g, each direction | 0.1 MPa | | | |
+| Pod bumped | 10 N on the pod's outer edge, worst direction (+Y, toward the arm) | 3.0 MPa | 3.4 MPa | 1.5 MPa | Round the pod seat's top nut slot |
+| Cable yank | 10 N at the USB-C plug, worst direction (+X, off the board) | 3.6 MPa | 4.4 MPa | 3.5 MPa | Where the Pi plate meets the collar, at its rear end |
+| Clamp, snug | 200 N in each M3 | 13.8 MPa | 17.4 MPa | 6.9 MPa | The bracket's ear roots, on the collar's outer face |
+| Clamp, about 0.3 N m | 500 N in each M3 | 33.5 MPa | 42.5 MPa | 16.8 MPa | Same place |
+
+What it means, against Bambu's datasheet strengths (PLA Basic 35 MPa along the layers and 31 across;
+PAHT-CF 88 and 64):
+
+- **The camera's weight and ordinary bumps are no problem.** The pod takes about 100 N (10 kgf) on
+  its outer edge before solid PLA reaches its strength, and less with 25 % infill. The seat's nut
+  slots are where it would give first.
+- **A cable yank is fine once the lead is clamped to the carrier.** Solid PLA takes about 80 N
+  sideways before the plate-to-collar joint reaches its strength (about 180 N in PAHT-CF).
+  - The Pi's socket gives up long before that. A straight pull unplugs a USB-C plug at 8 to 20 N (the
+    USB-C spec's range), and a sideways pull levers on the socket instead.
+  - So the clamp should carry the pull, and the breakaway should let go below what the socket takes.
+    See [`power/`](power/README.md).
+- **The clamp screws are the real load.** 500 N per screw is only about 0.3 N m on a dry M3, easy
+  to reach with a hex key.
+  - At 500 N the bracket's ear roots reach 42.5 MPa, above PLA's 35 MPa.
+  - In PLA, stop at snug (200 N, about 0.1 N m), where the peak is 17 MPa, and expect PLA to relax
+    at that stress over weeks.
+  - PAHT-CF holds 500 N with a margin of about 2 along the layers and 4 across.
+- **The split never closes.** The 1 mm split closes by 0.64 mm at 200 N per screw and by 0.82 mm at
+  500 N. Closing it fully would take roughly 800 N per screw (about 0.5 N m), more than PLA ears
+  take. The assembly step above now says so.
+- **A possible design change, not made here:** shrink `split_gap` from 1.0 to about 0.6 mm. The
+  halves would then meet at roughly 200 N per screw, the split would act as a stop, and more torque
+  would go into the split faces instead of bending the ears.
+
+![CalculiX: von Mises stress for the pod bump, the cable yank and the clamp](renders/ccx_stress.png)
+
+How each case is set up:
+
+- **Pod bump:** bracket + pod bonded, collar bore and tab pad fixed, as in `joint_fea.py`.
+- **Cable yank:** the carrier alone with its bore fixed. The plug force is carried to the four
+  standoff seats as if through a rigid board.
+- **Clamp:** each half on its own, round a rigid, frictionless O57 body, 0.15 mm clear all round.
+  Contact is an active set of radial constraints on the bore nodes, iterated until it settles
+  (6 to 15 solves). Each screw's force goes onto its nut-pocket floor or head seat. The screws
+  themselves and the tab screws are not modelled.
+
+Limits of the model:
+
+- **The model is solid and isotropic.** A print with 3 walls and 25 % infill is weaker.
+- **The peaks sit at sharp inside corners** (the ear roots and nut slots), where the value depends
+  on the mesh. A fillet at the ear roots would lower them.
 
 ## Checks (`exports/checks.json`)
 
@@ -395,11 +472,12 @@ python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dc
 - **Nothing has been printed yet.**
   - The clearances reuse the numbers from #234's A1 mini fit study (M3 nut slot 5.8 mm across
     flats, 0.15 mm per side on the body).
-  - The collar's grip depends on the 1 mm split closing up. If it slips, a strip of 0.5 mm rubber
-    inside it will help.
-  - PETG is worth considering over PLA for the bracket and carrier, because it creeps less under
-    clamp load. The xArm mount in
-    [ac-dev-lab#527](https://github.com/AccelerationConsortium/ac-dev-lab/issues/527) was PETG.
+  - The collar grips by squeezing the body, not by closing the split. At a snug 200 N per screw,
+    each half presses on the body with 800 N and the split stays about 0.35 mm open. If it slips, a
+    strip of 0.5 mm rubber inside it will help.
+  - For the parts that stay on the arm, print in PAHT-CF rather than PLA (see
+    [Material](#material-paht-cf-on-the-h2d)), because PLA creeps under clamp load. The xArm mount
+    in [ac-dev-lab#527](https://github.com/AccelerationConsortium/ac-dev-lab/issues/527) was PETG.
 - **Relation to #238** (Pi 5 dual-camera mount): that design wasn't ready when this was made.
   - The pod uses the same hole patterns: HQ M2.5 on a 30 mm square, Camera Module 3 M2 on
     21 x 12.5 mm.
