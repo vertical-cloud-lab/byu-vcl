@@ -10,13 +10,18 @@ the work:
 - [`bambu_print.py`](bambu_print.py) **changes printer state**: upload, start, pause, resume
   and stop. Its `watch` subcommand only reads.
 
-> **Status (2026-09-27, 04:50 UTC).**
+> **Status (2026-09-27, 06:10 UTC).**
 > - **Verified on the A1 mini:** read-only access through a Pi, end to end: status, camera,
 >   SD card listing and TLS identity (§2). **Upload works too**: 2.44 MB with the MD5 read back.
-> - **`start` is refused.** The first real one (plate 4, the fit coupon) got HMS
+> - **`start` over LAN is refused.** The first real one (plate 4, the fit coupon) got HMS
 >   `0500-0500-0001-0007`, "MQTT Command verification failed". Nothing moved. See §2,
 >   "Firmware and authorisation": with the printer on Bambu's cloud, it accepts control commands
 >   only from Bambu's own apps.
+> - **Bambu Studio on the runner works.** Logged in to the lab's Bambu account, it printed the
+>   fit coupon at 05:57 UTC ([`studio/`](studio/README.md),
+>   [evidence](evidence/2026-09-27/fit-coupon-studio/)). That is route 3 in §2. Each session
+>   needs a person to pass on Bambu's e-mailed login code, and the GUI resets a CLI project's
+>   changed settings, so read [`studio/README.md`](studio/README.md) first.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -176,7 +181,9 @@ camera frame and writes a redacted JSON with a verdict:
      Bambu's cloud, so there is no Handy, no cloud printing and no failure notifications.
      With it, this whole runbook works as written.
   3. **Drive Bambu Studio itself** from CI, logged in to the printer's Bambu account. It
-     signs its commands. That means a new secret and GUI automation, and it's untried.
+     signs its commands. **This works** (2026-09-27): see [`studio/README.md`](studio/README.md).
+     It needs `BAMBU_USERNAME`/`BAMBU_PASSWORD` and a person to pass on the e-mailed login
+     code. It also gives the session a working **Stop**: the one on Studio's Device page.
 
 ## 3. Sending the print
 
@@ -253,8 +260,9 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
   250 °C AMS flush.
 - The printer's firmware has its own thermal protection, and `--auto-stop` backs it up.
 - **While the printer is on Bambu's cloud, expect `stop` to be refused** (§2, "Firmware and
-  authorisation"). Then a person with Bambu Handy is the only remote stop. Name them before
-  the print starts.
+  authorisation"). Then the only remote stops are a person with Bambu Handy, or Studio's own
+  Stop button if the session started the print from Studio ([`studio/`](studio/README.md)).
+  Name who holds the stop before the print starts.
 
 **Look at the frames.**
 - **During the start and the first layer:** look at every frame. This is where the lab's
@@ -347,6 +355,7 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
 | H2D: extruder overload after an AMS runout switch; wobbling reel stopped a print twice | [tensegrity#96](https://github.com/vertical-cloud-lab/tensegrity-optimization/issues/96), [powder-doser#134](https://github.com/vertical-cloud-lab/powder-doser/issues/134#issuecomment-5183033746) | HMS → exit 20 |
 | Printer off the network (the A1 mini was offline on 2026-09-25) | [powder-doser#23](https://github.com/vertical-cloud-lab/powder-doser/pull/23#issuecomment-5842644364) | pre-flight can't connect; exit 30 mid-print |
 | `start` refused with HMS 0500-0500-0001-0007 and no ack: authorization control, with the printer on Bambu's cloud; nothing moved | [evidence](evidence/2026-09-27/fit-coupon/), 2026-09-27 | `start` reports it (§2, "Firmware and authorisation") |
+| Studio's GUI opened the CLI-sliced project with Bambu's stock process preset: 2 walls, 15 % infill, circle compensation off, where the project has 3, 25 % and on. No dialog appeared | [studio/](studio/README.md#the-gui-resets-a-cli-projects-changed-settings), 2026-09-27 | comparing the GUI's G-code `CONFIG_BLOCK` with the committed plate before Send |
 
 ## 7. Plate 1 of the lid mount
 
@@ -493,3 +502,5 @@ What this says about printing and using plate 1:
 | [`test/`](test/README.md) | a stand-in printer (MQTT, camera) and FTPS server for testing the tooling without a printer |
 | [`evidence/2026-09-27/`](evidence/2026-09-27/) | the read-only dry run: redacted status, pre-flight and camera frame |
 | [`evidence/2026-09-27/fit-coupon/`](evidence/2026-09-27/fit-coupon/) | the refused start of plate 4: pre-flight, `start` output, status and frame afterwards |
+| [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login-code relay, and what to check before Send |
+| [`evidence/2026-09-27/fit-coupon-studio/`](evidence/2026-09-27/fit-coupon-studio/) | plate 4 printed from Studio: two pre-flights, then `watch`'s status log and frames |
