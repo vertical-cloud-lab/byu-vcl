@@ -235,8 +235,9 @@ def main() -> None:
     # 1. Nuts into the bracket, off the gripper.
     show(["bracket"])
     near_bracket = [(-380, -230, 190), (-140, 30, 5), (0, 0, 1)]
-    sc.step("1 / 10", "Bracket: push 4 x M3 nuts into the pockets in its clamp ears (from the outside) | "
-            "and drop 4 x M3 nuts into the slots in the top and bottom of the pod seat. They hold the pod later.",
+    sc.step("1 / 10", "Bracket: push 4 x M3 nuts into the pockets in its clamp ears, | "
+            "then drop 4 x M3 nuts into the slots in the top and bottom of the | "
+            "pod seat. They hold the pod later.",
             n + 8, both(fly(["clamp_nuts"], (1, 0, 0), 30), delay(fly(["pod_nuts_top"], (0, 0, -1), 30), 0.3),
                         delay(fly(["pod_nuts_bottom"], (0, 0, 1), 30), 0.3)),
             cam_to=near_bracket, hold=15)
