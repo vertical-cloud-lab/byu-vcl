@@ -119,7 +119,7 @@ def glovebox_fit(gb: Model, hr: Model) -> None:
     box_.parts = [Part(p.name, p.shape, clear.get(p.name, p.material)) for p in gb.parts
                   if not p.name.startswith(("glove 1", "glove 2", "stand", "caster", "vacuum pump"))]
     bal = hr.moved(x, y + 60.0, z)
-    out = render([box_, bal], RENDERS / "glovebox_fit.png", size=(1500, 1150), direction=(0.35, -1.0, 0.55),
+    out = render([box_, bal], RENDERS / "glovebox_fit.png", size=(1500, 1150), direction=(0.3, -1.0, 1.1),
                  bounds_of=[box_])
     caption(out, "HR-100A on the Labconco glove box floor (shell drawn clear)", gb.notes.get("fit_note", ""))
 

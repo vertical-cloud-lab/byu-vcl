@@ -342,7 +342,7 @@ def glovebox() -> Model:
                "floor_centre_mm": [round(x0 + bw / 2, 1), round(iy0 + p["int_d_floor"] / 2, 1), round(fz, 1)],
                "status": "a used listing (PR #78); not bought",
                "fit_note": "Inside 902 x 711 x 813 mm. The HR-100A (198 x 262 x 176 mm) passes the 279 x 330 mm "
-                           "transfer chamber; the doser's bridge must too, or go in through the window frame"}
+                           "transfer chamber"}
     return m
 
 
