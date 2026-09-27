@@ -11,6 +11,7 @@ Read-only subcommands, safe at any time:
   status      one full status report (``pushall`` + ``get_version``), summarised
   snapshot    one camera frame (A1 / P1 series: JPEG stream on port 6000)
   preflight   status + snapshot + the go/no-go checks from README.md
+  ls          list the SD card root over FTPS (a LIST; nothing is written)
 
 Nothing here uploads, starts, pauses or stops anything. See README.md for the
 procedure that does, and for why each check exists.
@@ -26,6 +27,7 @@ from __future__ import annotations
 import argparse
 import contextlib
 import datetime as dt
+import ftplib
 import hashlib
 import io
 import json
@@ -146,6 +148,114 @@ def peer_identity(addr: tuple[str, int], printer: Printer) -> dict:
         out["not_after"] = cert.not_valid_after_utc.date().isoformat()
     except ImportError:
         out["cn_matches_serial"] = None
+    return out
+
+
+# -------------------------------------------------------------------------- FTPS
+
+
+def ssh_socket(via: str, host: str, port: int, timeout: float = 30.0) -> socket.socket:
+    """A socket connected to host:port from the Pi, through ``ssh -W``.
+
+    FTPS needs this rather than ``-L``: every passive-mode transfer opens a fresh
+    data connection to a port the printer picks on the spot.
+    """
+    user, pi = os.environ[f"{via}_USERNAME"], os.environ[f"{via}_HOSTNAME"]
+    ours, theirs = socket.socketpair()
+    subprocess.Popen(["ssh", "-W", f"{host}:{port}", "-o", "BatchMode=yes", "-o", "ConnectTimeout=20",
+                      "-o", "StrictHostKeyChecking=accept-new", f"{user}@{pi}"],
+                     stdin=theirs, stdout=theirs, stderr=subprocess.DEVNULL)
+    theirs.close()
+    ours.settimeout(timeout)
+    return ours
+
+
+class PrinterFTPS(ftplib.FTP_TLS):
+    """The printer's SD card over implicit FTPS (port 990), user ``bblp``.
+
+    Two things the stock ``ftplib`` gets wrong for these printers: TLS starts
+    immediately (implicit, not ``AUTH TLS``), and every data connection must
+    resume the control connection's TLS session or the server refuses it.
+    ``via`` routes every connection through a Pi with ``ssh -W``.
+    """
+
+    trust_server_pasv_ipv4_address = True  # the printer reports its own LAN address
+
+    def __init__(self, via: str | None, timeout: float = 30.0):
+        ctx = _tls_context()
+        # Session reuse on the data connection fails under TLS 1.3 ("522 session
+        # reuse required"); powder-doser PR #23 pinned 1.2 to fix it.
+        ctx.minimum_version = ctx.maximum_version = ssl.TLSVersion.TLSv1_2
+        super().__init__(context=ctx, timeout=timeout)
+        self.via = via
+
+    def _open(self, host, port):
+        if self.via:
+            return ssh_socket(self.via, host, port, self.timeout)
+        return socket.create_connection((host, port), self.timeout)
+
+    def connect(self, host="", port=990, timeout=-999, source_address=None):
+        self.host, self.port = host, port
+        self.sock = self.context.wrap_socket(self._open(host, port), server_hostname=host)
+        self.af = socket.AF_INET  # PASV, not EPSV, even when the socket is an ssh pipe
+        self.file = self.sock.makefile("r", encoding=self.encoding)
+        self.welcome = self.getresp()
+        return self.welcome
+
+    def ntransfercmd(self, cmd, rest=None):
+        host, port = self.makepasv()
+        conn = self._open(host, port)
+        try:
+            if rest is not None:
+                self.sendcmd(f"REST {rest}")
+            resp = self.sendcmd(cmd)
+            if resp[0] == "2":
+                resp = self.getresp()
+            if resp[0] != "1":
+                raise ftplib.error_reply(resp)
+            conn = self.context.wrap_socket(conn, server_hostname=self.host, session=self.sock.session)
+        except BaseException:
+            conn.close()
+            raise
+        # The printer drops the TLS close_notify exchange at the end of a transfer,
+        # which makes ftplib's conn.unwrap() raise after the data has all arrived.
+        # The transfer's real outcome is the 226 on the control connection.
+        clean_unwrap = conn.unwrap
+
+        def unwrap():
+            conn.settimeout(5)
+            with contextlib.suppress(ssl.SSLError, OSError):
+                return clean_unwrap()
+
+        conn.unwrap = unwrap
+        size = ftplib.parse150(resp) if resp[:3] == "150" else None
+        return conn, size
+
+
+@contextlib.contextmanager
+def ftps(printer: Printer, via: str | None, host: str | None = None, port: int = 990):
+    f = PrinterFTPS(via)
+    f.connect(host or printer.ip, port)
+    f.login("bblp", printer.code)
+    f.prot_p()
+    try:
+        yield f
+    finally:
+        with contextlib.suppress(Exception):
+            f.quit()
+        f.close()
+
+
+def list_files(f: PrinterFTPS, path: str = "/") -> list[dict]:
+    """Names and sizes on the SD card (a read-only LIST)."""
+    lines: list[str] = []
+    f.retrlines(f"LIST {path}", lines.append)
+    out = []
+    for line in lines:
+        parts = line.split(None, 8)
+        if len(parts) == 9:
+            out.append({"name": parts[8], "dir": line.startswith("d"),
+                        "size": int(parts[4]) if parts[4].isdigit() else None})
     return out
 
 
@@ -276,6 +386,10 @@ def plate_info(path: str, plate: int) -> dict:
     hdr = dict(re.findall(r"^; ([^:=\n]+?)\s*[:=]\s*(.+)$", head.split("; HEADER_BLOCK_END")[0], re.M))
     body = gcode.decode(errors="replace")
     bed = [int(m) for m in re.findall(r"^M190 S(\d+)", body, re.M)]
+    # A flattened preset without Bambu's "template" start G-code slices fine and then
+    # prints air: no M620 filament load, no M412 runout check (powder-doser PR #23).
+    start = {"filament_load": bool(re.search(r"^\s*M620 S\d+A", body, re.M)),
+             "runout_detection": bool(re.search(r"^\s*M412 S1", body, re.M))}
     info = {"file": os.path.basename(path), "plate": plate,
             "file_md5": hashlib.md5(open(path, "rb").read()).hexdigest(),
             "gcode_md5_ok": hashlib.md5(gcode).hexdigest() == md5_stored,
@@ -286,6 +400,7 @@ def plate_info(path: str, plate: int) -> dict:
             "filament_preset": cfg.get("filament_settings_id", "").strip('"'),
             "nozzle_c": _num(cfg.get("nozzle_temperature")),
             "bed_c": bed[0] if bed else None,
+            "start_gcode": start,
             "max_z_mm": _num(hdr.get("max_z_height")),
             "estimated_time": hdr.get("model printing time"),
             "filament_g": _num(hdr.get("total filament weight [g]")),
@@ -370,6 +485,10 @@ def preflight_checks(s: dict, ident: dict, cam: dict | None, plate: dict | None,
         add("nozzle matches the slice", _num(s["nozzle"]["diameter"]) == plate["nozzle_diameter"],
             f"printer {s['nozzle']['diameter']} mm, slice {plate['nozzle_diameter']} mm")
         add("fits the A1 mini build volume", (plate["max_z_mm"] or 0) <= 180, f"max Z {plate['max_z_mm']} mm")
+        add("real start G-code (M620 filament load, M412 runout check)",
+            all(plate["start_gcode"].values()), f"{plate['start_gcode']}")
+        add("bed temperature is not the Cool Plate default", (plate["bed_c"] or 0) >= 45,
+            f"M190 S{plate['bed_c']} ({plate['bed_type']})")
         extra = set(plate["warnings"]) - {"not_support_traditional_timelapse"}
         add("no slicer warnings (beyond timelapse)", not extra, f"{sorted(plate['warnings'])}", "warn")
         want = {f["tray_info_idx"] for f in plate["filaments"]}
@@ -402,7 +521,7 @@ def preflight_checks(s: dict, ident: dict, cam: dict | None, plate: dict | None,
 
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("command", choices=["status", "snapshot", "preflight"])
+    ap.add_argument("command", choices=["status", "snapshot", "preflight", "ls"])
     ap.add_argument("--printer", default="A1_MINI", help="env prefix: A1_MINI or H2D")
     ap.add_argument("--via", default="CUBXL_PI", help="env prefix of the Pi to tunnel through; '' for direct")
     ap.add_argument("--out", default="bambu_out", help="directory for the redacted JSON and JPEG")
@@ -414,6 +533,12 @@ def main(argv=None):
     os.makedirs(args.out, exist_ok=True)
     stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     result = {"utc": stamp, "printer": args.printer, "via": args.via or None, "command": args.command}
+
+    if args.command == "ls":
+        with ftps(printer, args.via or None) as f:
+            result["sd_card_root"] = list_files(f, "/")
+        print(json.dumps(printer.redact(result), indent=1))
+        return 0
 
     with tunnel(args.via, printer.ip, [MQTT_PORT, CAMERA_PORT]) as addrs:
         if args.command in ("status", "preflight"):
