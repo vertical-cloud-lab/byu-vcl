@@ -48,7 +48,7 @@ def equipment_sheet(eq: dict[str, Model]) -> dict[str, Model]:
         m = f()
         allm[m.key] = m
     order = ["bambu_a1_mini", "bambu_h2d", "opentrons_ot2", "agilex_piper", "cubxl", "lansmont_m23_drop_tower",
-             "amazemet_repowder"]
+             "amazemet_repowder", "labconco_glovebox", "aconity_midi"]
     tiles = []
     for key in order:
         if key not in allm:
@@ -110,11 +110,29 @@ def sandbox_scene(cat: dict[str, Model]) -> None:
                 "Blue ring: 0.77 m fingertip reach (#229). Orange wedge: J1 stops at +-150 deg, so nothing sits there")
 
 
+def glovebox_fit(gb: Model, hr: Model) -> None:
+    """The HR-100A on the glove box floor, with the shell drawn clear, to see the room left for the doser."""
+    from common import Part
+    x, y, z = gb.notes["floor_centre_mm"]
+    clear = {"body": "acrylic", "control column": "acrylic", "window frame": "acrylic"}
+    box_ = Model("glovebox_fit", gb.title)
+    box_.parts = [Part(p.name, p.shape, clear.get(p.name, p.material)) for p in gb.parts
+                  if not p.name.startswith(("glove 1", "glove 2", "stand", "caster", "vacuum pump"))]
+    bal = hr.moved(x, y + 60.0, z)
+    out = render([box_, bal], RENDERS / "glovebox_fit.png", size=(1500, 1150), direction=(0.35, -1.0, 0.55),
+                 bounds_of=[box_])
+    caption(out, "HR-100A on the Labconco glove box floor (shell drawn clear)", gb.notes.get("fit_note", ""))
+
+
 def all_renders(cat: dict[str, Model], eq: dict[str, Model], room_model: Model | None = None) -> None:
     RENDERS.mkdir(exist_ok=True)
     labware_sheet(cat)
     render([cat["holder_charge"]], RENDERS / "holder_charge.png", size=(1400, 1000), title=cat["holder_charge"].title)
     render([cat["holder_vial_20ml"]], RENDERS / "holder_vial_20ml.png", size=(1400, 1000), title=cat["holder_vial_20ml"].title)
+    hr = cat["balance_hr100a"]
+    render([hr], RENDERS / "balance_hr100a.png", size=(1400, 1200), direction=(0.8, -1.3, 0.75), title=hr.title)
+    if "labconco_glovebox" in eq:
+        glovebox_fit(eq["labconco_glovebox"], hr)
     equipment_sheet(eq)
     sandbox_scene(cat)
     if room_model is not None:

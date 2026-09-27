@@ -588,17 +588,81 @@ def tube_rack_6() -> Model:
     return m
 
 
+# A&D HR-100A (102 g x 0.1 mg), as the doser runs it: with A&D's small FXi-10 breeze break, not
+# the tall stock one (photos in byu-vcl#2 and the powder-doser threads). Powder falls through the
+# 28 mm opening in the break's lid into the beaker, and the lab measured 79.4 mm from the pan to
+# the lid's underside, which is why vessels must be under 3 in. A&D's drawings give the outline,
+# the pan and the feet; the rest is scaled off them (../sources/hr100a.json lists which). The pan
+# is the manual's 86.5 mm, which matches the lab's measurement; units with A&D's 2022 one-piece
+# pan sit 4 mm higher, so caliper it. Distances along y are from the front of the body, which is
+# 198 x 262 mm without the stock break's housing.
+HR100A = dict(W=198.0, D=262.0, deck=70.0, nose=31.0, slope_y=75.0, slope_z=63.0, foot=5.0,
+              pan_d=90.0, pan_top=86.5, pan_y=168.5, ring_d=120.0, ring_top=84.0,
+              feet_x=162.0, feet_y=(61.5, 253.0), foot_d=30.0,
+              lcd_w=110.0, lcd_y=(34.0, 69.0), key_y=19.0, key_pitch=22.0, key_d=12.0,
+              brk=184.0, brk_r=30.0, plate=(70.0, 82.4), post_w=13.0, post_c=64.0, lid=(165.9, 172.4),
+              boss_d=62.5, boss_top=176.4, hole_d=28.0)
+
+
 def balance() -> Model:
-    """HR-100A-sized dummy with a breeze break and a drop hole (station). Outer dims assumed."""
-    m = Model("balance_hr100a_dummy", "A&D HR-100A balance dummy with breeze break and drop hole", source="assumed dims")
-    m.add("body", rbox(200.0, 290.0, 85.0, 8.0), "printer_white")
-    m.add("display", box(-70, -145.5, 30, 70, -144.9, 70), "screen")
-    brk = rbox(170.0, 170.0, 160.0, 4.0, y=40.0, z=85.0).faces("<Z").shell(-3.0)
-    brk = brk.cut(cyl(20.0, 10.0, x=0, y=40.0, z=240.0))                       # drop hole in the top
-    brk = brk.cut(box(-60, -46, 85, 60, -40, 85 + 76.2))                        # 3 in front opening
-    m.add("breeze break", brk, "acrylic")
-    m.add("pan", cyl(90.0, 3.0, y=40.0, z=95.0), "steel")
-    m.add("beaker", _at(beaker().parts[0].shape, 0, 40.0, 98.0), "glass")
+    """A&D HR-100A with the FXi-10 small breeze break, and the doser's 100 mL beaker on the pan."""
+    p = HR100A
+    W, D = p["W"], p["D"]
+    m = Model("balance_hr100a", "A&D HR-100A balance with the small FXi-10 breeze break (as the doser runs it)",
+              source="A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)")
+    y0 = -D / 2                                                   # front of the body
+    ang = math.atan2(p["slope_z"] - p["nose"], p["slope_y"])     # the display panel's slope
+    prof = [(y0, p["foot"]), (-y0, p["foot"]), (-y0, p["deck"]), (y0 + p["slope_y"] + 5, p["deck"]),
+            (y0 + p["slope_y"], p["slope_z"]), (y0, p["nose"])]
+    body = cq.Workplane("YZ").polyline(prof).close().extrude(W / 2, both=True)
+    m.add("body", body.edges("|Y").fillet(6), "printer_white")
+
+    def on_slope(u0, u1, w, x=0.0, t=0.8):                       # a thin plate lying on the sloped panel
+        u = (u0 + u1) / 2
+        org = (x, y0 + u, p["nose"] + u * math.tan(ang))
+        pl = cq.Plane(origin=org, xDir=(1, 0, 0), normal=(0, -math.sin(ang), math.cos(ang)))
+        return cq.Workplane(pl).rect(w, (u1 - u0) / math.cos(ang)).extrude(t)
+
+    m.add("display", on_slope(*p["lcd_y"], p["lcd_w"]), "screen")
+    for i in range(6):
+        x = (i - 2.5) * p["key_pitch"]
+        u = p["key_y"]
+        org = (x, y0 + u, p["nose"] + u * math.tan(ang))
+        pl = cq.Plane(origin=org, xDir=(1, 0, 0), normal=(0, -math.sin(ang), math.cos(ang)))
+        m.add(f"key {i + 1}", cq.Workplane(pl).circle(p["key_d"] / 2).extrude(2.0), "printer_grey")
+    m.add("bubble level", on_slope(12.0, 26.0, 14.0, x=-W / 2 + 18, t=2.0), "acrylic")
+    for sx in (-1, 1):
+        for fy in p["feet_y"]:
+            m.add(f"foot {sx:+d} {fy:.0f}", cyl(p["foot_d"] if fy < 100 else 20.0, p["foot"], x=sx * p["feet_x"] / 2, y=y0 + fy),
+                  "printer_black")
+    # weighing pan and the breeze ring around it
+    py = y0 + p["pan_y"]
+    m.add("breeze ring", tube(p["ring_d"], p["ring_d"] - 6, p["ring_top"] - p["deck"], y=py, z=p["deck"]), "printer_grey")
+    m.add("pan", cyl(p["pan_d"], 2.0, y=py, z=p["pan_top"] - 2.0).union(cyl(12, p["pan_top"] - 2.0 - p["deck"], y=py, z=p["deck"])),
+          "steel")
+    # FXi-10 small breeze break, centred on the pan: base plate, 4 posts, 4 bowed clear panels, lid
+    b, r = p["brk"], p["brk_r"]
+    z0, z1 = p["plate"]
+    plate = rbox(b, b, z1 - z0, r, y=py, z=z0).cut(cyl(p["ring_d"] + 4, 20, y=py, z=z0 - 1))
+    m.add("breeze break base", plate, "pp_white")
+    for sx in (-1, 1):
+        for sy in (-1, 1):
+            c = p["post_c"]
+            m.add(f"breeze break post {sx:+d}{sy:+d}", rbox(p["post_w"], p["post_w"], p["lid"][0] - z1, 2,
+                                                          x=sx * c, y=py + sy * c, z=z1), "pp_white")
+    c, bulge = p["post_c"], b / 2 - 3
+    for i, (a0, a1, mid) in enumerate((((-c, -c), (c, -c), (0, -bulge)), ((c, -c), (c, c), (bulge, 0)),
+                                      ((c, c), (-c, c), (0, bulge)), ((-c, c), (-c, -c), (-bulge, 0)))):
+        arc = cq.Workplane("XY").moveTo(*a0).threePointArc(mid, a1).offset2D(1.0, "arc")
+        m.add(f"breeze break panel {i + 1}", arc.extrude(p["lid"][0] - z1).translate((0, py, z1)), "acrylic")
+    lid = rbox(b, b, p["lid"][1] - p["lid"][0], r, y=py, z=p["lid"][0])
+    lid = lid.union(cyl(p["boss_d"], p["boss_top"] - p["lid"][1], y=py, z=p["lid"][1]))
+    m.add("breeze break lid", lid.cut(cyl(p["hole_d"], 20, y=py, z=p["lid"][0] - 1)), "pp_white")
+    m.add("beaker", _at(beaker().parts[0].shape, 0, py, p["pan_top"]), "glass")
+    m.notes = {"envelope_mm": [W, D, p["boss_top"]], "pan_top_mm": p["pan_top"],
+               "pan_to_lid_underside_mm": round(p["lid"][0] - p["pan_top"], 1), "drop_hole_d_mm": p["hole_d"],
+               "side_panel_opening_mm": [115, 83.5], "capacity_g": 102, "readability_mg": 0.1,
+               "stock_large_break": "not modelled: 315 mm tall overall, cylinder chamber 156 mm inside (sources/hr100a.json)"}
     return m
 
 

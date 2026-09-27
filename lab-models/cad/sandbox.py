@@ -26,7 +26,7 @@ PLACES = {
     "crucible_replica":     (364.0, -210.0, 0),      # the rePOWDER crucible, rod and adapter (PR #232)
     "tiprack_20ul":         (241.0, 344.0, 55),
     "ot2_slot_nest":        (0.0, 430.0, 0),         # OT-2 slot replica with a NEST plate on its raised nest
-    "balance_hr100a_dummy": (-276.0, 329.0, 40),     # the doser's balance, beaker under the breeze break
+    "balance_hr100a":       (-276.0, 329.0, 40),     # the doser's balance, beaker under the breeze break
     "vial_20ml_water":      (60.0, -245.0, 0),
     "vial_20ml_powder":     (100.0, -245.0, 0),
     "griffin_beaker_100ml": (-10.0, -250.0, 0),

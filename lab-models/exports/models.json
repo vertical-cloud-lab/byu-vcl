@@ -673,15 +673,30 @@
     ],
     "group": "station"
   },
-  "balance_hr100a_dummy": {
-    "title": "A&D HR-100A balance dummy with breeze break and drop hole",
-    "source": "assumed dims",
-    "parts": 5,
+  "balance_hr100a": {
+    "title": "A&D HR-100A balance with the small FXi-10 breeze break (as the doser runs it)",
+    "source": "A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)",
+    "parts": 26,
     "bbox_mm": [
-      200.0,
-      290.5,
-      245.0
+      198.0,
+      263.0,
+      176.4
     ],
+    "envelope_mm": [
+      198.0,
+      262.0,
+      176.4
+    ],
+    "pan_top_mm": 86.5,
+    "pan_to_lid_underside_mm": 79.4,
+    "drop_hole_d_mm": 28.0,
+    "side_panel_opening_mm": [
+      115,
+      83.5
+    ],
+    "capacity_g": 102,
+    "readability_mg": 0.1,
+    "stock_large_break": "not modelled: 315 mm tall overall, cylinder chamber 156 mm inside (sources/hr100a.json)",
     "group": "station"
   },
   "arbor_press_1t": {
@@ -698,10 +713,10 @@
   "labware_lineup": {
     "title": "Sandbox objects, all together",
     "source": "see the per-object rows",
-    "parts": 209,
+    "parts": 230,
     "bbox_mm": [
-      1346.2,
-      868.95,
+      1344.2,
+      855.2,
       533.2
     ]
   },
@@ -812,6 +827,61 @@
     ],
     "mass_kg": 300
   },
+  "labconco_glovebox": {
+    "title": "Labconco Protector glove box (cat. 50701), stainless, on its stand",
+    "source": "Labconco's drawing and 2002 manual; the listing's photos and 38 in height (PR #78)",
+    "parts": 35,
+    "bbox_mm": [
+      1612.9,
+      925.74,
+      1828.8
+    ],
+    "envelope_mm": [
+      1612.9,
+      762.0,
+      1828.8
+    ],
+    "interior_mm": [
+      902,
+      711,
+      813
+    ],
+    "transfer_chamber_inside_mm": [
+      279,
+      330,
+      508
+    ],
+    "glove_port_centre_height_mm": 1100,
+    "floor_centre_mm": [
+      -235.0,
+      -22.4,
+      904.2
+    ],
+    "status": "a used listing (PR #78); not bought",
+    "fit_note": "Inside 902 x 711 x 813 mm. The HR-100A (198 x 262 x 176 mm) passes the 279 x 330 mm transfer chamber; the doser's bridge must too, or go in through the window frame"
+  },
+  "aconity_midi": {
+    "title": "Aconity3D AconityMIDI (metal LPBF), candidate",
+    "source": "Aconity's spec (envelope, build space) and front photos (layout); depths assumed",
+    "parts": 46,
+    "bbox_mm": [
+      2454.0,
+      1234.0,
+      2320.0
+    ],
+    "envelope_mm": [
+      2450.0,
+      1500.0,
+      2320.0
+    ],
+    "mass_kg": 1450,
+    "build_volume_mm": {
+      "diameter": 170.0,
+      "height": 200.0
+    },
+    "status": "candidate, not bought",
+    "needs": "argon 6 bar, compressed air 6 bar, 208 V 3-phase 32 A (US option), a ~15 kW chiller for heating or lasers over 400 W (not modelled)"
+  },
   "opentrons_ot2": {
     "title": "Opentrons OT-2",
     "source": "Opentrons reference STEP (github.com/Opentrons/ot2)",
@@ -835,7 +905,7 @@
   "sandbox_layout": {
     "title": "PiPER sandbox: holders, samples and an A1 mini on spot D",
     "source": "our layout; parts as listed",
-    "parts": 112,
+    "parts": 133,
     "bbox_mm": [
       1290.0,
       1360.0,
