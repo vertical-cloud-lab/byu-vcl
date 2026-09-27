@@ -197,9 +197,10 @@ def render_station(p: Params, mount_mesh, out: Path) -> None:
         pl.subplot(0, i)
         pl.add_mesh(mount_mesh, color=(0.45, 0.5, 0.56), smooth_shading=False, specular=0.2)
         if what == "bare":
+            # On the left-hand bosses, so each label runs across the station, not off the panel's edge.
             labels = {
-                f"HQ: M2.5 on {p.hq_pitch:.0f} x {p.hq_pitch:.0f}, {p.hq_boss_h} mm": (xc + a, -p.hq_boss_h, p.axis_z + a),
-                f"Module 3: M2 on 21 x 12.5, {p.cm3_boss_h:.1f} mm": (xc + p.cm3_hole_du / 2, -p.cm3_boss_h,
+                f"HQ: M2.5 on {p.hq_pitch:.0f} x {p.hq_pitch:.0f}, {p.hq_boss_h} mm": (xc - a, -p.hq_boss_h, p.axis_z + a),
+                f"Module 3: M2 on 21 x 12.5, {p.cm3_boss_h:.1f} mm": (xc - p.cm3_hole_du / 2, -p.cm3_boss_h,
                                                                   p.axis_z + p.cm3_hole_v[0]),
                 "ribbon slot": (xc, -0.5, p.axis_z + p.slot_v),
             }
