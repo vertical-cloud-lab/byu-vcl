@@ -81,7 +81,25 @@ either side of the lens:
 
 ![The pod seat](renders/pod_seat.png)
 
-<!-- FEA -->
+**How much stiffer, simulated.** [`sim/joint_fea.py`](sim/joint_fea.py) meshes bracket and pod
+as one bonded body (quadratic tets, gmsh + scikit-fem), fixes the collar bore and the pad round the
+tab screws, and loads the HQ bosses with the camera and lens (83 g) at 1 g, one direction at a time
+([`sim/joint_fea.json`](sim/joint_fea.json)):
+
+| 83 g at 1 g along | HQ moves, old → new (µm) | optical axis tilts, old → new (arcmin) | picture shifts, old → new (px) |
+|---|---|---|---|
+| Y (gripper pointing down) | 12.1 → 0.96 | 1.77 → 0.16 | 2.0 → 0.18 |
+| Z (finger travel) | 4.2 → 0.97 | 0.16 → 0.010 | 0.18 → 0.011 |
+| X | 0.64 → 0.48 | 0.018 → 0.029 | 0.02 → 0.03 |
+
+- The worst case, along Y, is **about 11 times stiffer in tilt and 13 times in displacement**. The
+  first natural frequency goes from about 110 Hz to 360 Hz (a Rayleigh-Ritz upper bound).
+- **These flatter the old joint.** Bonding says the joint never slips or opens, and solid PLA at
+  2.4 GPa is stiffer than a 25 % infill print. The old joint's real weakness was the strip itself: a
+  pod pivoting on an edge 5 mm from its two screws, where any creep in the plastic lets it rock.
+  Read the table as a comparison, not as the printed part's numbers.
+
+![Old vs new under 1 g along Y](renders/joint_fea.png)
 
 ## What the cameras see
 
