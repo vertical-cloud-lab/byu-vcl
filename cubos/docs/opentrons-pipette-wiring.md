@@ -3173,3 +3173,27 @@ isolated from each other (§18.1, §19.1). The driver is the part to change.
 | holding torque | ❓ optional confirmation on the old board (§22.7); the go/no-go on the new one (§22.8) |
 | the Pi's power lead | ⚠️ not recorded whether it has been re-routed out of the gantry's reach (§21.7) |
 | the gantry frame | ⛔ recalibrated since 2026-09-24 (410 / 281 / 125.003) and apparently on a new bench — the deck needs re-jogging before any protocol run ([`results/pipette_test_20260926/`](../results/pipette_test_20260926/README.md)). The plunger bench work of §22.8–22.9 needs no gantry motion |
+
+## 23. 2026-09-29: a Pololu Tic T500 as the replacement
+
+The lab may use a spare Pololu Tic T500 rather than another 6121. The full
+design is in [`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md), with
+two wiring diagrams in Cubware's layout. In short:
+
+- **It covers everything the P20 GEN2 needs.** Supply is 4.5–35 V. Current
+  limit code 8 is 990 mA, against Opentrons' `plungerCurrent` and
+  `dropTipCurrent` of 1.0 A, and 1.5 A/phase is continuous without a heat sink.
+  The limit switch and homing are fine too.
+- **It needs no UART.** It is configured and read over USB, and the MP6500's
+  over-current, over-temperature and over-voltage faults show up in
+  `ticcmd --status`. That is the readback §8.5 and §10.1 never managed to get
+  out of the TMC2209.
+- **One firmware constant changes.** The T500 stops at 1/8 step, so
+  `STEPS_PER_MM` goes 1592 → 796. `backOffSteps = 796` and the 50,000-step
+  homing budget were already written for 1/8.
+- **Recommended first: STEP/DIR mode.** Arduino `A2`/`A3`/`GND` go to the Tic's
+  `STEP`/`DIR`/`GND`, and the coils move from `1A`/`1B`/`2A`/`2B` to
+  `A1`/`A2`/`B1`/`B2`. The limit switch stays on D9. `A0`/`A1`, the 10 kΩ
+  bridge, `A4` and `5V` are all left unconnected.
+- **Do not wire `A4` to the Tic's `RST`.** The firmware holds `A4` LOW, which
+  would keep the Tic in reset.

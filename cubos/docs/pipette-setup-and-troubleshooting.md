@@ -116,6 +116,11 @@ to destroy a driver. See §19.
 > connected and no rail short found — and it had already survived a power-on
 > reset. Keep the old board, labelled; it is a known-bad reference.
 
+> 🔀 **2026-09-29: if the replacement is a Pololu Tic T500** rather than another
+> 6121, see [`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md). It has the
+> wiring diagram, the three Tic settings, the one firmware constant that changes
+> (`STEPS_PER_MM` 1592 → 796) and the bring-up order.
+
 > ✅ **The deck is intact.** The 2026-09-24 trio was cut when the gantry
 > travelled far enough from the outlet to unplug the Pi; Ben E-stopped it above
 > vial 1 with the capper **not yet engaged**, so no cap was captured and nothing
