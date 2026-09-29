@@ -83,6 +83,8 @@ only warning concerns timelapse mode. The fits are predicted, not yet measured; 
 The camera, lens, C–CS adapter, Pi 5, Active Cooler and 200 mm Pi 5 camera cable are the
 parts already bought on ME order 12704 (see #84). The fasteners are McMaster-Carr parts, and
 the renders use McMaster's own STEP models of them; see [`hardware/`](hardware/README.md).
+To buy them on campus, take [`shopping-list.md`](shopping-list.md) to the ME Prototyping Lab
+(117 EB).
 
 ---
 
