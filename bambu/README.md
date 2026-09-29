@@ -131,8 +131,12 @@ camera frame and writes a redacted JSON with a verdict:
 | frame bright enough, plate empty | **Always a warning.** See below |
 
 **What the camera can and can't show.**
-- The A1 mini's camera is a wide-angle 1680×1080 unit mounted low on the frame, looking
-  across the plate from its edge. The chamber light (`lights_report`) lights the scene.
+- The A1 mini's camera is a wide-angle 1680×1080 unit that rides on the gantry, so its view
+  depends on Z. With the gantry low, as at the start of every print, it looks across the
+  plate from its edge, with the Safety Zone sticker in the foreground. With the gantry parked
+  high after a tall job, it looks down at the plate and also sees the counter and room behind
+  the printer (2026-09-29, [frame](evidence/2026-09-29/drill-template-studio/20260929T182814Z_camera.jpg)).
+  The chamber light (`lights_report`) lights the scene.
 - Anything standing on the plate would be obvious.
 - It shows a flat or dark object poorly. The toolhead hides part of the back, and the
   toolhead's own shadow looks like a dark patch on the plate.
@@ -141,7 +145,8 @@ camera frame and writes a redacted JSON with a verdict:
   reported "not clear" when the bed had simply moved. There is no automatic empty-plate
   check yet.
 - Before asking for the go, read the frame yourself. Anything more than the plate, the
-  shadow and the base sticker is a NO-GO until a person explains it.
+  shadow and the base sticker is a NO-GO until a person explains it. In the high view that
+  includes whatever sits behind the bed: ask the person to confirm the bed's path is clear.
 
 **The dry run on 2026-09-27** (03:05 and 03:25 UTC; [evidence](evidence/2026-09-27/)):
 

@@ -146,6 +146,10 @@ ISO 4032 M3 nut (5.32–5.50 mm across flats) slides in. The posts are 96 mm can
 top that is a tenth of a millimetre out of place bends into line under well under a newton, so
 only size matters, not position.
 
+The fit coupon (plate 4), printed on 2026-09-27, bore this out: the post top drops into the
+socket by hand and is fairly loose, which is enough to locate the deck. The nut slot is still
+untested ([result](slice/README.md#will-it-fit-first-time)).
+
 If a post still won't go in, sand the post top rather than forcing it. If the fit is loose,
 reprint the deck (the 1 h 10 min plate) with a smaller `socket_clear`. The 2 mm shims still
 work: a shim sits on the post top inside the socket, raising the deck by 2 mm and shortening

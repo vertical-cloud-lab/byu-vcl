@@ -74,7 +74,8 @@ Two more points that aren't slicer warnings:
 
 ## Will it fit first time?
 
-Nothing has been printed yet, so these are predictions. [`fit_sim.py`](fit_sim.py) makes them
+These are predictions, made before anything was printed. The fit coupon has been printed since;
+its result is at the end of this section. [`fit_sim.py`](fit_sim.py) makes the predictions
 in about 2 s, in three steps:
 
 1. **As sliced.** It reads the G-code inside the 3MF and rebuilds each fit-critical layer from
@@ -163,6 +164,19 @@ against its design value](preview/fit_sim.png)
   socket by hand, and an M3 nut should slide into the slot. If they do, the base and the deck
   will fit too. The one difference is that a short coupon post cools faster than the top of a
   96 mm post.
+- **The coupon's result (printed 2026-09-27 from Bambu Studio, circle compensation on).** The
+  post top drops into the socket by hand, with some play, and falls back out when the pair is
+  turned over. sgbaird called it "fairly loose"
+  ([video and photos](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5896146609)).
+  - **That's a clearance fit, which is what was designed.** The socket stops the deck
+    sliding, gravity keeps it seated, and the screws hold it down.
+  - **It fits the prediction:** 0.07–0.21 mm per side on the flats. The looseness also fits
+    the owners' reports above that the model is pessimistic.
+  - **It hasn't been measured.** Calipers across the flats of the post top and the socket
+    would turn "fairly loose" into a number.
+  - **For a friction fit,** lower `socket_clear` (0.20 mm now) in 0.05 mm steps and reprint
+    the coupon.
+  - **The M3 nut slot is untested:** no nut was on hand.
 - **Studio has no tolerance calibration of its own.** Its calibration menu covers
   temperature, flow, pressure advance, max flow rate, VFA and retraction. If a first print
   does come out tight or loose, the knob is "User Customized Offset"

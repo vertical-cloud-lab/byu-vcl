@@ -7,6 +7,9 @@ the lab's Bambu account, and sends the job through Bambu's cloud. It worked the 
 (2026-09-27, the lid mount's fit coupon on the A1 mini;
 [evidence](../evidence/2026-09-27/fit-coupon-studio/)). The printer was `RUNNING` 27 s after
 Send, where the LAN `start` an hour earlier had been refused with HMS `0500-0500-0001-0007`.
+It worked again on 2026-09-29 for the drill template, plate 3
+([evidence](../evidence/2026-09-29/drill-template-studio/); see
+[the second run](#second-run-the-drill-template-2026-09-29) below).
 
 Nothing here changes the rules in the runbook. The pre-flight, the person's go and the watching
 all still apply. This route skips `bambu_print.py start`, so its gates are applied by hand: a
@@ -125,3 +128,34 @@ so the estimate was 15 min 23 s instead of 15 min 31 s. Two derived keys,
 - **Two camera feeds at once.** Studio's live view (the ▶ under the camera pane) played through
   the plug-in on the runner. `watch` kept getting a LAN frame every 30 s at the same time, so
   the camera served both.
+
+## Second run: the drill template (2026-09-29)
+
+The same steps, start to finish, in 18 min from a fresh runner to Send:
+
+| UTC | Step |
+|---|---|
+| 18:27 | AppImage downloaded and extracted (about 20 s); apt packages installed in the background |
+| 18:28 | Read-only pre-flight of plate 3: HUMAN-DECISION, with a camera frame that needed explaining (below) |
+| 18:29–18:32 | First run of Studio: certificate prompt, wizard, *Cancel* on the profile update, three Beta prompts, plug-in installed |
+| 18:32:42 | *Log In* pressed; Bambu e-mails the code, and the thread is asked for it |
+| 18:39:27 | The code is posted; `wait_code.py` typed it 6 s later and it worked. So a code is still good after at least 6 min 45 s |
+| 18:39:54 | The go, with the frame explained |
+| 18:41 | Plate 3 sliced in the GUI, after the same three settings were set back (below) |
+| 18:43:45 | Fresh pre-flight |
+| 18:44:46 | *Send*; the printer was `RUNNING` 26 s later |
+
+What was new:
+- **The camera rides on the gantry.** The first frame looked nothing like 2026-09-27's: it looked
+  down at the plate from above, with the counter and the room behind the printer, and no
+  Safety Zone sticker. The last job, a 125-layer part (`side_bracket`), had left the gantry
+  parked high. Once the new print homed, the familiar low view came back. So a high view isn't a
+  moved printer, but it does show things behind the bed that the low view hides. A person
+  confirmed the bed's path before the go.
+- **The GUI reset the same three settings again** (wall loops, sparse infill density, circle
+  compensation). After they were set back, the GUI's G-code extruded the same amount on each
+  of the 10 layers as the committed plate 3, to 0.01 mm of filament. Only the acceleration
+  limits differed, as before, so the estimate was 51 min 26 s instead of 51 min 32 s.
+- **The dialog coordinates in `wait_code.py` held.** With Studio maximised on the 1920×1080
+  display, the code field and *Confirm* were where they were on 2026-09-27.
+
