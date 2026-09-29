@@ -895,6 +895,29 @@ Full write-up in [`results-enclosure-grip-2026-09-29.md`](results-enclosure-grip
   livestream camera is pointed at another machine**. The robot's own camera was
   the only view.
 
+## 2026-09-29 (evening) — height found at nozzle z 99.5; the enclosure fell on the way back
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): test
+that the enclosure won't fall off, then calibrate, stopping if it falls. Full
+write-up in [`results-enclosure-carry-2026-09-29.md`](results-enclosure-carry-2026-09-29.md).
+
+- **At 10 mm/s the grip still fails the in-pocket shake**, even pressed 0.5 mm
+  deeper (z 89.5). The nozzle seems to bottom out in the collar at about z 90.
+- **At 3 mm/s it passed: no slip in 240 jolts** (80 each in X, Y and Z). The
+  slower lift also left it hanging twice as high off its seat.
+- **The carry route no longer passes the base's tower.** It goes straight out to
+  the front at the socket's X, then across. The return is the reverse, and it
+  lets go inside the pocket. `--max-speed 3` caps every move with the enclosure
+  aboard.
+- **Over the plate's centre it touches at nozzle z ≈ 98.9, so "just above" is
+  z 99.5** (~0.6 mm clear), for a 3 mm/s lift after a press to 89.5. Found with
+  the robot camera: the enclosure stops moving with the nozzle at contact. The
+  sensor's reading shows no step there.
+- **Then it fell** during the 91 s run back towards the base, onto the deck in
+  front of it. It still answers. The tips-and-liquid stage was not started.
+  Either it slid off during the long slow move, or its foot clipped the front of
+  the base; there was no video to tell which.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by

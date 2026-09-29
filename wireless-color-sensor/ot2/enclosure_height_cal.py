@@ -15,6 +15,13 @@ speed the enclosure had slid 1-1.8 mm down the nozzle, so it was released in
 place and never carried (``results-enclosure-grip-2026-09-29.md``). Do not
 ``carry`` until ``jiggle`` passes.
 
+That evening it passed at 3 mm/s (240 jolts, no slip) and failed again at
+10 mm/s. Run with ``--max-speed 3``, the enclosure was carried to the plate and
+touched it at nozzle z ~98.9 over the plate's centre, so z 99.5 is "just
+above". Then it came off the nozzle on the way back and fell to the deck in
+front of the base (``results-enclosure-carry-2026-09-29.md``). Passing
+``jiggle`` is necessary, not sufficient.
+
 Runs ON the Pi that holds the robot link, under nohup, and is driven one step
 at a time through a command file. It is built this way, rather than driven
 move-by-move over SSH from a CI runner, for two reasons:
@@ -51,13 +58,15 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
                     release column
     back-out        after a pickup: rise 5 mm, eject, home (abandon the press)
     carry           high lift, then carry to the plate target at --carry-z, in
-                    --carry-segment steps
+                    --carry-segment steps: straight out to the front at the
+                    socket's X, then across (never past the base's tower)
     z <mm>          move the nozzle to this Z over the target (bounded, stepped)
     xy <x> <y>      move the target, at the current Z, only when Z >= 125
     floor <mm>      change the lowest Z that ``z`` will accept
     read [n]        take n sensor readings where it is (default 3)
     photo           photograph again without moving
-    return          lift, carry back, set the enclosure down, home
+    return          lift, carry back the way it came, let go inside the pocket
+                    from the release-here pose, home
     retry-release [extra_mm]
                     the release did not let go: go back down and eject again,
                     optionally pressing extra_mm (0-1) deeper first
