@@ -208,6 +208,11 @@ class Cal:
                 self.log("LINK: robot answers again; repeating the last call")
 
     def move(self, x, y, z, speed):
+        # The OT-2's acceleration is fixed, so each start and stop changes the
+        # speed within a few milliseconds whatever the speed; a slower move
+        # makes that change, and so the jolt to a hanging enclosure, smaller.
+        if self.aboard and self.args.max_speed:
+            speed = min(speed, self.args.max_speed)
         self.call(self.robot.move, x, y, z, speed)
         self.pos = [round(x, 2), round(y, 2), round(z, 2)]
 
@@ -390,6 +395,14 @@ class Cal:
         self.move(x, y, z, DESCENT_SPEED)
         time.sleep(LIFT_DWELL_S)
         shot = self.photos(f"lifted_z{z:g}", reads=2)
+        # Inside the pocket the enclosure hangs a millimetre or two over its
+        # seat, still boxed in, so a low light level there means nothing. Only
+        # judge by light once it is clear of the pocket (``up``).
+        if not self.in_pocket():
+            self.grip_check(shot)
+        self.save_state()
+
+    def grip_check(self, shot):
         lifted = shot.get("reads") or []
         if lifted and self.seated_total:
             ratio = (sum(lifted) / len(lifted)) / max(self.seated_total, 1.0)
@@ -399,7 +412,6 @@ class Cal:
             if ratio < GRIP_RATIO:
                 self.log("GRIP CHECK FAILED -- the enclosure is probably still on its base")
                 self.aboard = False
-        self.save_state()
 
     def in_pocket(self):
         x, y = self.socket
@@ -444,7 +456,9 @@ class Cal:
             raise ValueError(f"up must go higher, to no more than {LIFT_Z}")
         self.move(x, y, z, DESCENT_SPEED)
         time.sleep(LIFT_DWELL_S)
-        self.photos(f"up_z{z:g}", reads=2)
+        shot = self.photos(f"up_z{z:g}", reads=2)
+        if not self.in_pocket():
+            self.grip_check(shot)
 
     def back_out(self):
         """Abandon a press: rise 5 mm, eject, rise, home.
@@ -491,6 +505,12 @@ class Cal:
         x, y = self.socket
         for z in high_lift_stages(self.carry_z):
             self.move(x, y, z, HIGH_LIFT_SPEED)
+        self.photos(f"carry_start_z{self.carry_z:g}", reads=2)
+        # Straight out to the front first, then across. The base has a tall
+        # tower between its two sockets, and at a low carry height the
+        # enclosure's foot is well below its top: a diagonal from A2 drifts
+        # towards it while the enclosure is still alongside.
+        self.carry_to(x, self.target[1], self.carry_z)
         self.carry_to(self.target[0], self.target[1], self.carry_z)
         self.photos(f"over_plate_z{self.carry_z:g}", reads=2)
 
@@ -531,16 +551,30 @@ class Cal:
         self.photos(f"xy{x:g}_{y:g}", reads=2)
 
     def set_down(self):
-        """From wherever the enclosure is: lift, go to the release column, release."""
+        """From wherever the enclosure is: back the way it came, and let go in its pocket.
+
+        Across to the socket's column first, then straight back, the reverse of
+        ``carry``, so it never passes the base's tower at an angle. It is let
+        go from the pose ``release-here`` uses, hanging a few millimetres over
+        its own seat: the one release that has been done at A2 (2026-09-29).
+        The drop column's anti-tilt offset was tuned at A1, and at A2 it
+        points at the tower.
+        """
         self.phase = "return"
         x, y = self.pos[0], self.pos[1]
-        near_base = abs(x - self.socket[0]) < 15 and abs(y - self.socket[1]) < 15
-        top = 130.0 if near_base else self.carry_z
-        ladder = [z for z in (130.0, 150.0, CARRY_Z) if self.pos[2] < z < top]
-        for z in ladder + ([top] if self.pos[2] < top else []):
-            self.move(x, y, z, DESCENT_SPEED if z <= 130 else HIGH_LIFT_SPEED)
-        self.carry_to(self.drop[0], self.drop[1], max(self.pos[2], top))
-        self.release(extra=0.0)
+        sx, sy = self.socket
+        if abs(x - sx) > 0.01 or abs(y - sy) > 0.01:
+            top = max(self.pos[2], self.carry_z)
+            ladder = [z for z in (130.0, 150.0, CARRY_Z) if self.pos[2] < z < top]
+            for z in ladder + ([top] if self.pos[2] < top else []):
+                self.move(x, y, z, DESCENT_SPEED if z <= 130 else HIGH_LIFT_SPEED)
+            self.carry_to(sx, y, self.pos[2])
+            self.carry_to(sx, sy, self.pos[2])
+        for z in (LIFT_Z, 100.0):
+            if self.pos[2] > z:
+                self.move(sx, sy, z, DESCENT_SPEED)
+        self.photos("over_pocket", reads=2)
+        self.back_out()
 
     def release(self, extra):
         self.phase = "release"
@@ -767,6 +801,9 @@ def main():
                         "half the 2026-09-25 fall")
     p.add_argument("--carry-segment", type=float, default=CARRY_SEGMENT_MM,
                    help="lateral step length; each step is a start and a stop, i.e. two jolts")
+    p.add_argument("--max-speed", type=float, default=None,
+                   help="cap every move made with the enclosure aboard (mm/s); test the "
+                        "same speed with jiggle first")
     p.add_argument("--no-sensor", action="store_true",
                    help="the board is not answering: skip every reading (and so the grip check)")
     p.add_argument("--no-live", action="store_true",
