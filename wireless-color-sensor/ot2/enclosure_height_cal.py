@@ -6,8 +6,14 @@
 ~85 mm to the deck about 6 s into the carry. See
 ``results-enclosure-height-2026-09-25.md``. The grip check measures *light* --
 that the enclosure has left its base -- not how tightly it is held, so a pass
-here does not mean the carry is safe. Do not run ``carry`` unattended until
-something that actually tests the grip has been added.
+here does not mean the carry is safe.
+
+``jiggle`` is that test, added 2026-09-29: it shakes the enclosure while it
+still hangs inside its own pocket, where a failing grip drops it a millimetre
+or two back into place. Its first run failed: after 80 jolts at the carry's
+speed the enclosure had slid 1-1.8 mm down the nozzle, so it was released in
+place and never carried (``results-enclosure-grip-2026-09-29.md``). Do not
+``carry`` until ``jiggle`` passes.
 
 Runs ON the Pi that holds the robot link, under nohup, and is driven one step
 at a time through a command file. It is built this way, rather than driven
@@ -39,6 +45,10 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
                     that fails here drops the enclosure a millimetre or two
                     back into its pocket instead of onto the deck
     up <z>          after a pickup: rise straight up over the socket, to <= 110
+    release-here    while still inside the pocket: back-out from there (rise to
+                    --press-z + 5, eject, rise to 110). Silence does the same
+                    there, rather than carrying a doubtful grip out to the
+                    release column
     back-out        after a pickup: rise 5 mm, eject, home (abandon the press)
     carry           high lift, then carry to the plate target at --carry-z, in
                     --carry-segment steps
@@ -55,6 +65,10 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
     seated | aboard after a release with no sensor reading, say which it is
     home            lift and home WITHOUT a release (empty nozzle only)
     quit            close the maintenance run and exit (only when nothing is aboard)
+
+To stop it without motion, ``kill -TERM <pid>``. It ignores SIGINT: a
+background job started from a non-interactive shell inherits SIGINT as
+ignored. SIGTERM leaves the maintenance run open and the gantry where it is.
 
 Status is written to ``state.json`` after every step, and photos to
 ``NN_label_robot.jpg`` (robot camera, turned upright) and ``NN_label_live.jpg``
@@ -236,7 +250,7 @@ class Cal:
             out["reads"] = self.read(reads, label)
         # The livestream runs ~3 s behind; keep grabbing until its newest
         # segment ends after the move did, so the frame shows the new pose.
-        if self.live_failures < 3:
+        if self.live_failures < 3 and not self.args.no_live:
             try:
                 info = {}
                 for _ in range(6):
@@ -448,6 +462,14 @@ class Cal:
         shot = self.photos("backed_out", reads=2)
         self.aboard = False
         reads = shot.get("reads") or []
+        if not reads and self.args.no_sensor:
+            # Only the photo can tell seated from still aboard, so do not home
+            # a nozzle that may still carry it: wait for `seated` or `aboard`.
+            self.aboard = True
+            self.last_note = "backed out; no sensor -- check the photo, then seated | aboard"
+            self.log(self.last_note)
+            self.phase = "release?"
+            return
         if reads and sum(reads) / len(reads) > SEATED_MAX:
             self.aboard = True
             self.last_note = "backed out but the sensor says it is NOT seated -- look"
@@ -599,8 +621,8 @@ class Cal:
 
     def prompt(self):
         if self.phase == "pickup":
-            return ("jiggle <axis> <mm> <n> <mm/s> | up <z> | carry | return | home"
-                    if self.aboard else "home")
+            return ("jiggle <axis> <mm> <n> <mm/s> | up <z> | release-here | carry | "
+                    "return | home" if self.aboard else "home")
         if self.phase in ("carry", "ladder"):
             return "z <mm> | xy <x> <y> | floor <mm> | read [n] | photo | return"
         if self.phase == "release":
@@ -647,6 +669,10 @@ class Cal:
             try:
                 if op == "timeout" and self.phase == "release?":
                     self.log("no instruction and no sensor: holding still, no motion")
+                elif op == "timeout" and self.phase == "pickup" and self.aboard \
+                        and self.in_pocket():
+                    self.log("no instruction while inside the pocket: letting go here")
+                    self.back_out()
                 elif op == "timeout":
                     if self.phase == "release" and self.aboard:
                         if self.release_tries >= MAX_RELEASE_RETRIES:
@@ -664,6 +690,10 @@ class Cal:
                     self.jiggle(cmd[1], float(cmd[2]), int(cmd[3]), float(cmd[4]))
                 elif op == "up" and self.phase == "pickup" and self.aboard:
                     self.up(float(cmd[1]))
+                elif op == "release-here" and self.phase == "pickup" and self.aboard:
+                    if not self.in_pocket():
+                        raise ValueError("release-here only inside the pocket; use return")
+                    self.back_out()
                 elif op == "z" and self.phase in ("carry", "ladder"):
                     self.go_z(float(cmd[1]))
                 elif op == "xy" and self.phase in ("carry", "ladder"):
@@ -739,6 +769,9 @@ def main():
                    help="lateral step length; each step is a start and a stop, i.e. two jolts")
     p.add_argument("--no-sensor", action="store_true",
                    help="the board is not answering: skip every reading (and so the grip check)")
+    p.add_argument("--no-live", action="store_true",
+                   help="robot camera only. On 2026-09-29 the OT-2 stream's camera was "
+                        "pointed at another machine")
     p.add_argument("--simulate", action="store_true",
                    help="no robot, camera or sensor: exercise the command flow only")
     args = p.parse_args()

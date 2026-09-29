@@ -257,7 +257,9 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `test_measurement_timestamps.py` | tries to break PR #201's timestamp work; `--live` adds MQTT + Atlas, never the robot |
 | `plot_timestamp_lag.py` | how late the pre-fix MongoDB `timestamp` field was, per reading |
 | `calibration_status.py` | read-only report of which OT-2 calibrations are present and which are missing |
-| `enclosure_height_cal.py` | runs on the Pi, one step per command: align over a socket, press in photographed steps, carry, step down over the plate. Silence for 10 min sets the enclosure down. **Dropped the enclosure on its only carry**: see below |
+| `enclosure_height_cal.py` | runs on the Pi, one step per command: align over a socket, press in photographed steps, carry, step down over the plate. Silence for 10 min sets the enclosure down. **Dropped the enclosure on its only carry**: see below. `jiggle` tests the grip inside the pocket, and `--simulate` runs it with no robot |
+| `grip_shift.py` | from robot-camera photos: did the enclosure move with the nozzle, and by how much |
+| `release_in_place.py` | lets go of the enclosure over its pocket from a stopped run (used once, 2026-09-29) |
 | `camera_model.py` | fits how each camera sees a 1 mm move in X/Y/Z; reads the nozzle's true height from its shoulder, which is how a jammed press shows up |
 | `live_frame.py` | newest livestream frame (~3 s behind), fetched on the Pi |
 | `livestream_replay.py` | frames from the stream's last ~15 minutes, by lab clock time |
@@ -869,6 +871,29 @@ set the enclosure just above the 96-well plate in slot 1. Full write-up in
   back within 30 s, and it still reads 440 counts seated. The grip check
   measures light, not grip. **No carry should run unattended until something
   that tests the grip is in place.**
+
+## 2026-09-29 — grip tested over the pocket: the enclosure slides; not carried
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
+can the pipette sense how tightly it holds the enclosure, and re-run 09-25's test.
+Full write-up in [`results-enclosure-grip-2026-09-29.md`](results-enclosure-grip-2026-09-29.md).
+
+- **The OT-2 cannot sense the grip.** In `opentrons==8.8.1`, tip presence is
+  *"not supported on the OT2"*. It has no encoders, and its acceleration is fixed
+  (X 3000, Y 2000, Z 1500 mm/s²) whatever speed a move asks for.
+- **So the grip is now tested with the load itself, where failing is harmless.**
+  `jiggle` shakes the enclosure while it still hangs inside its own pocket.
+  One pick-up at A2 went to full depth with no jam. Raised to z 94, the enclosure
+  was ~2.1 mm off its seat. After 80 jolts at the carry's 10 mm/s (12 s), it was
+  ~0.4 mm off: **it slid 1–1.8 mm down the nozzle.** It was released back onto
+  its seat and never carried. Nothing fell.
+- **Before the next carry:** look at the collar on the enclosure's top for damage
+  from the 09-25 jam. Then repeat the in-pocket shake until it holds, e.g. with a
+  0.5 mm deeper press. `--carry-z 125 --carry-segment 400` then halves the fall
+  height and cuts the carry from 72 jolts to 2.
+- **The sensor board did not answer** (flat battery, most likely), and **the
+  livestream camera is pointed at another machine**. The robot's own camera was
+  the only view.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
