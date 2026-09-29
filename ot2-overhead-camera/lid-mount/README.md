@@ -84,7 +84,8 @@ The camera, lens, C–CS adapter, Pi 5, Active Cooler and 200 mm Pi 5 camera cab
 parts already bought on ME order 12704 (see #84). The fasteners are McMaster-Carr parts, and
 the renders use McMaster's own STEP models of them; see [`hardware/`](hardware/README.md).
 To buy them on campus, take [`shopping-list.md`](shopping-list.md) to the ME Prototyping Lab
-(117 EB).
+(117 EB). It also lists the [other lengths and head types](shopping-list.md#other-lengths-and-heads)
+that fit, which [`cad/fastener_fit.py`](cad/fastener_fit.py) checks against the model.
 
 ---
 
