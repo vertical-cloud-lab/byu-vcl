@@ -98,7 +98,7 @@ Z axis flexing, which 09-25 measured at up to 0.6 mm under a press.
 
 **So the enclosure touches the plate at nozzle z ≈ 98.9, and "just above" is
 z 99.5, about 0.6 mm clear** (panel 5). It read 10,636–10,646 counts there, with the
-rail lights on. On the way down the reading fell smoothly, about 80–90 counts per mm
+rail lights on. On the way down the reading fell smoothly, about 75–100 counts per mm
 below z 106, with no step at contact. So the sensor alone can't find the height.
 
 What the number depends on:
