@@ -144,6 +144,7 @@ The same steps, start to finish, in 18 min from a fresh runner to Send:
 | 18:41 | Plate 3 sliced in the GUI, after the same three settings were set back (below) |
 | 18:43:45 | Fresh pre-flight |
 | 18:44:46 | *Send*; the printer was `RUNNING` 26 s later |
+| 19:37:42 | `FINISH`, 52.9 min after Send (Bambu's estimate: 51 min 26 s). `watch` exited 0 with no error or HMS alert |
 
 What was new:
 - **The camera rides on the gantry.** The first frame looked nothing like 2026-09-27's: it looked
@@ -158,4 +159,39 @@ What was new:
   limits differed, as before, so the estimate was 51 min 26 s instead of 51 min 32 s.
 - **The dialog coordinates in `wait_code.py` held.** With Studio maximised on the 1920×1080
   display, the code field and *Confirm* were where they were on 2026-09-27.
+- **Layer 6 took 10.8 min.** It's the first solid layer over the infill. That's inside
+  `watch`'s 15 min stall limit, but a bigger flat part could exceed it and end the watch
+  (exit 20) while nothing is wrong.
+- **Recorded from 19:22 only** ([video](https://www.youtube.com/watch?v=M6w4-SVw9tg)). The
+  request to record every session came mid-print, so the login, slicing and Send are missing.
+
+## Recording and keeping the sent file
+
+Rule 8 of the runbook asks for both. What worked on 2026-09-29:
+
+- **Recording.**
+  - Start before Studio opens:
+    `ffmpeg -f x11grab -framerate 15 -video_size 1920x1080 -i :99.0 -c:v libx264 -preset ultrafast -crf 23 -pix_fmt yuv420p raw.mkv`.
+  - Stop it with SIGINT so the file is finalised. 18 min came to 103 MB.
+- **People on camera.** The camera rides on the gantry, so whenever the gantry is high it
+  sees the room, and people walking past show up at the corners of the frame.
+  - Stop Studio's live view (■ under the camera pane) once the print is done.
+  - Before uploading, blur the room corners. These boxes are in screen pixels for Studio's
+    camera pane: 244 × 341 at (274, 136) and 213 × 274 at (1085, 136). For LAN frames, blur
+    (0, 0)–(400, 560) and (1330, 0)–(1680, 450).
+- **The login.** Cut everything from *Log In* until the verification dialog closes, because the
+  e-mail address is on screen.
+- **Uploading.**
+  - Use `python youtube/yt_service.py upload VIDEO --title … --description … --privacy unlisted`.
+    The script is on `main`.
+  - Put a link to the thread's comment in the description, add chapters, then post the
+    video's link in the thread.
+- **The file that was sent.**
+  - The printer keeps the file it ran on the SD card, as `/cache/<job>.3mf`, next to
+    `<job>_plate_N.gcode`. A read-only FTPS `RETR` gets it. That copy is what's committed.
+  - It carries the lab account's `DesignerUserId` in `3D/3dmodel.model`, so blank that first.
+    The plate G-code and its MD5 are untouched by this.
+  - Studio's *File → Export → Export plate sliced file* gives the same plate G-code, byte for byte.
+- **Metadata.** Commit a `print.json` next to the file. See
+  [the drill template's](../evidence/2026-09-29/drill-template-studio/print.json) for the fields.
 

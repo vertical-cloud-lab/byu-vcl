@@ -18,6 +18,13 @@ Only plates 1 and 2 are needed: 3 h 42 min and 124.6 g.
 To send a plate to the lab's A1 mini from a script or CI, follow
 [`bambu/README.md`](../../../bambu/README.md). Its section 7 covers plate 1.
 
+**Printed so far, both in dark blue PLA Basic and both sent from Bambu Studio on a CI runner:**
+- **Plate 4 (the fit coupon),** 2026-09-27. Its result is in
+  [Will it fit first time?](#will-it-fit-first-time).
+- **Plate 3 (the drill template),** 2026-09-29. It took 52.9 min from Send to finish, against
+  the 51 min 26 s estimate. The file the printer ran and its metadata are in
+  [`bambu/evidence/2026-09-29/drill-template-studio/`](../../../bambu/evidence/2026-09-29/drill-template-studio/).
+
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).
 On top of them go the main README's print settings: **3 walls and 25 % infill**, where the

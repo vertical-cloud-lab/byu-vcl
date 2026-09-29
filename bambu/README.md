@@ -22,6 +22,10 @@ the work:
 >   [evidence](evidence/2026-09-27/fit-coupon-studio/)). That is route 3 in §2. Each session
 >   needs a person to pass on Bambu's e-mailed login code, and the GUI resets a CLI project's
 >   changed settings, so read [`studio/README.md`](studio/README.md) first.
+> - **Second print from Studio (2026-09-29):** the lid mount's drill template, plate 3. It
+>   was sent at 18:44:46 UTC and finished at 19:37:42 with no error or HMS alert. The
+>   [evidence](evidence/2026-09-29/drill-template-studio/) includes the file the printer ran,
+>   its metadata and a [recording](https://www.youtube.com/watch?v=M6w4-SVw9tg).
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -61,6 +65,22 @@ These come from what went wrong elsewhere, as referenced below. None of them is 
 7. **Know the session's clock** (§4.1). A CI session ends at 180 min, and plate 1 of the lid
    mount takes about 152. If the print can outlast the session, say so and arrange a human
    hand-off **before** starting.
+8. **Record the session, and keep what reproduces the print**
+   ([sgbaird, 2026-09-29](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5897039962)):
+   - **The recording.** Start recording the screen before Studio opens, and keep it running
+     to the end of the print ([`studio/README.md`](studio/README.md#recording-and-keeping-the-sent-file)).
+     Cut out the login, where the e-mail address shows. Upload the video unlisted to the
+     BYU VCL channel, with a link to the thread in its description, and post the video's
+     link in the thread.
+   - **The file.** Commit the exact file that was sent, next to the evidence. In Studio that's
+     *File → Export → Export plate sliced file*.
+   - **The metadata.** Commit a metadata JSON with it. It should record:
+     - the source project and its commit;
+     - the settings changed in the GUI;
+     - the Send options;
+     - Bambu's estimates;
+     - the timeline;
+     - who gave the go.
 
 ## 1. Reaching a printer
 
@@ -509,3 +529,4 @@ What this says about printing and using plate 1:
 | [`evidence/2026-09-27/fit-coupon/`](evidence/2026-09-27/fit-coupon/) | the refused start of plate 4: pre-flight, `start` output, status and frame afterwards |
 | [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login-code relay, and what to check before Send |
 | [`evidence/2026-09-27/fit-coupon-studio/`](evidence/2026-09-27/fit-coupon-studio/) | plate 4 printed from Studio: two pre-flights, then `watch`'s status log and frames |
+| [`evidence/2026-09-29/drill-template-studio/`](evidence/2026-09-29/drill-template-studio/) | plate 3 printed from Studio: two pre-flights, the file the printer ran (`sent/`), `print.json` (settings, timeline, the go, the recording), `watch`'s log and key frames |
