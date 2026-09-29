@@ -2,9 +2,11 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
-**This is a paper design.** Nothing here has been wired or powered yet. Every
-number comes from the sources listed at the end, and the first move still needs a
-ruler.
+**Status, 2026-09-29:** bring-up step 1 is done. The Tic's three settings are
+applied and read back
+([record](../results/tic_t500_settings_20260929/README.md)). Nothing has been
+wired to the Tic or powered from 12 V yet. Every number comes from the sources
+listed at the end, and the first move still needs a ruler.
 
 The layout follows Cubware's
 [`opentrons-pipette-setup.md`](https://github.com/Ursa-Laboratories/Cubware/blob/main/documentation/opentrons-pipette-setup.md)
@@ -103,8 +105,10 @@ that leaves the motor silent, with no buzzing (§16.3 of the wiring doc).
 | Step mode | **1/8** | the T500's finest |
 | Current limit | **990 mA** | code 8, the nearest step at or below Opentrons' 1.0 A |
 
-Save the result with `ticcmd --get-settings tic_p20.txt` and commit that file
-next to this doc, so the configuration is on record rather than only on the board.
+**Applied 2026-09-29** to the lab's T500 (serial `00510573`, firmware 1.09) and
+read back byte-for-byte. Every other setting is the factory default. The
+read-back is [`tic_p20.txt`](./tic_p20.txt), and
+`ticcmd --settings tic_p20.txt` loads the same configuration onto another T500.
 
 ### Firmware: one constant, plus the bench tools
 
@@ -134,13 +138,19 @@ now. Read the driver with `ticcmd --status` instead.
 1. **USB only, no 12 V.** Connect the Tic to a laptop or the Pi and run
    `ticcmd --list`. Check the firmware version on the Status tab. Apply the three
    settings above. Until 12 V is connected the Tic reports "Low VIN" and won't
-   energize.
+   energize. ✅ *Done on 2026-09-29 from the CubXL Pi, with VIN at 0.05 V
+   ([record](../results/tic_t500_settings_20260929/README.md)).*
 2. **Everything powered down** (the 12 V *and* the Arduino's USB). Wire it per
    the table. Pololu: *"Connecting or disconnecting a stepper motor while the
    Tic's motor power supply (VIN) is powered can destroy the motor driver."*
 3. **Switch on 12 V at the supply**, not by pushing a live lead into the terminal.
    Run `ticcmd --status`: VIN should read about 12–13 V, with no errors and the
-   operation state Normal.
+   operation state Normal. On the CubXL Pi that is
+   `sudo ~/.local/opt/pololu-tic-1.8.1-linux-rpi/ticcmd --status`. In STEP/DIR
+   mode, Low VIN was the only error left on the list after the settings went in,
+   so the driver energizes and holds at 990 mA the moment VIN comes up. Switch
+   the 12 V off between tests (or send `ticcmd --deenergize`) rather than leave
+   it holding; see "Idle current" below.
 4. **Holding torque.** Push the plunger gently by hand. It should now resist,
    which it never did on the 6121.
 5. **1 mm down and back, before CubOS is involved.** In the Arduino IDE Serial
@@ -202,12 +212,17 @@ firmware ≥ 1.06; the T500 has been supported since 1.04.
 - **A new CubOS pipette backend.** Today's `OpentronsPipette` speaks the PANDA
   serial protocol. The backend would home with `ticcmd --home rev` and move with
   `--position` in microsteps, or use the `ticlib` Python package.
-- **A one-time install on the Pi.** Pololu's Raspberry Pi build of the Tic
-  software needs `sudo` for its udev rule, so record the change in the SOP.
+- **Non-root access on the Pi.** `ticcmd` has been on the Pi since 2026-09-29, in
+  `~/.local/opt/pololu-tic-1.8.1-linux-rpi/` with nothing installed
+  system-wide. Without Pololu's udev rule it needs `sudo`, though. A backend
+  running as the login user needs that rule
+  (`/etc/udev/rules.d/99-pololu.rules`); record it in the SOP when it goes in.
 
-The Tic talks native USB (Pololu vendor ID `1ffb`) rather than a USB serial
-port, so it should not appear as a `/dev/ttyACM*` device or renumber the Arduino.
-Moving the configs to the `by-id` paths is still worth doing first.
+The Tic talks native USB (Pololu vendor ID `1ffb`, one vendor-specific
+interface) rather than a USB serial port. This was confirmed on 2026-09-29: it
+adds no `/dev/ttyACM*` device, and after a boot with the Tic already plugged in
+the Arduino still came up as `/dev/ttyACM0`. Moving the configs to the `by-id`
+paths is still worth doing first.
 
 **What it buys:**
 
@@ -232,6 +247,9 @@ the hardware question first with no new code.
 - [Tic T500 pinout (tic03b)](https://www.pololu.com/product/3134), and the
   `ticcmd` options from
   [pololu-tic-software `cli/cli.cpp`](https://github.com/pololu/pololu-tic-software/blob/master/cli/cli.cpp).
+- Tic software 1.8.1,
+  [Linux (Raspberry Pi) build](https://www.pololu.com/docs/0J71/3.2): the
+  `ticcmd` used on the CubXL Pi.
 - Opentrons
   [`pipetteModelSpecs.json`](https://github.com/Opentrons/opentrons/blob/edge/shared-data/pipette/definitions/1/pipetteModelSpecs.json),
   `p20_single_v2.0`–`v2.2`: `plungerCurrent` 1.0, `dropTipCurrent` 1.0,

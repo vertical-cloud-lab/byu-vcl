@@ -119,7 +119,10 @@ to destroy a driver. See §19.
 > 🔀 **2026-09-29: if the replacement is a Pololu Tic T500** rather than another
 > 6121, see [`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md). It has the
 > wiring diagram, the three Tic settings, the one firmware constant that changes
-> (`STEPS_PER_MM` 1592 → 796) and the bring-up order.
+> (`STEPS_PER_MM` 1592 → 796) and the bring-up order. **Bring-up step 1 is
+> done:** STEP/DIR, 1/8 step and 990 mA are in the Tic's memory and read back
+> ([record](../results/tic_t500_settings_20260929/README.md)). Next is wiring it
+> with everything powered down, then step 3.
 
 > ✅ **The deck is intact.** The 2026-09-24 trio was cut when the gantry
 > travelled far enough from the outlet to unplug the Pi; Ben E-stopped it above

@@ -3197,3 +3197,10 @@ two wiring diagrams in Cubware's layout. In short:
   bridge, `A4` and `5V` are all left unconnected.
 - **Do not wire `A4` to the Tic's `RST`.** The firmware holds `A4` LOW, which
   would keep the Tic in reset.
+
+**2026-09-29, later: bring-up step 1 is done.** With the Tic on the CubXL Pi's
+USB and no 12 V (VIN 0.05 V), its settings went from the factory defaults to
+**STEP/DIR, 1/8 step, 990 mA**, and read back byte-for-byte. Nothing else
+changed. The Tic (serial `00510573`, firmware 1.09) has no USB serial port, so
+it did not renumber the Arduino (still `/dev/ttyACM0`). Record:
+[`results/tic_t500_settings_20260929/`](../results/tic_t500_settings_20260929/README.md).
