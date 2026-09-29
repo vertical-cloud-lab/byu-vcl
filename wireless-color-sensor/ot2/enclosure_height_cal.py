@@ -28,9 +28,20 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
                     with the socket; the pickup then happens at that (x, y)
     pickup          descend to just above the socket mouth and STOP there
     down <z>        press further, at most 2 mm per step, never below --press-z
-    lift            once pressed to within 1 mm of --press-z: lift, dwell, grip check
+    lift [z]        once pressed to within 1 mm of --press-z: lift to z (default 110),
+                    dwell, grip check. ``lift 92.5`` leaves the enclosure hanging
+                    inside its own pocket, for ``jiggle``
+    jiggle <x|y|z> <mm> <n> <mm/s>
+                    grip test, only while the enclosure hangs inside its pocket:
+                    n there-and-back moves of +-mm (x/y <= 0.5 mm; z goes up
+                    only, <= 1.5 mm). Every start and stop is a jolt at the
+                    firmware's full acceleration, the same as a carry's. A grip
+                    that fails here drops the enclosure a millimetre or two
+                    back into its pocket instead of onto the deck
+    up <z>          after a pickup: rise straight up over the socket, to <= 110
     back-out        after a pickup: rise 5 mm, eject, home (abandon the press)
-    carry           high lift, then carry to the plate target at carry height
+    carry           high lift, then carry to the plate target at --carry-z, in
+                    --carry-segment steps
     z <mm>          move the nozzle to this Z over the target (bounded, stepped)
     xy <x> <y>      move the target, at the current Z, only when Z >= 125
     floor <mm>      change the lowest Z that ``z`` will accept
@@ -96,12 +107,20 @@ SEATED_MAX = 800            # counts; above this the enclosure is not closed on 
 GRIP_RATIO = 2.0
 SAFE_XY_Z = 125.0           # lateral moves over the plate only at or above this nozzle Z
 MAX_RELEASE_RETRIES = 3
+# jiggle: only while the enclosure hangs inside its own pocket
+JIGGLE_MAX_LIFT = 4.0       # mm above --press-z
+JIGGLE_MAX_XY = 0.5         # mm; the pocket's side clearance is unmeasured
+JIGGLE_MAX_Z = 1.5
+JIGGLE_MAX_CYCLES = 40
+JIGGLE_MAX_SPEED = 25.0
 
 
 class Cal:
     def __init__(self, args):
         self.args = args
-        self.robot = Robot(ROBOT_IP)
+        self.robot = Robot(ROBOT_IP, simulate=args.simulate)
+        self.carry_z = args.carry_z
+        self.carry_segment = args.carry_segment
         self.link = None
         self.seq = 0
         self.phase = "start"
@@ -182,7 +201,7 @@ class Cal:
         """Short lateral segments: the enclosure sheds on long fast moves."""
         x0, y0 = self.pos[0], self.pos[1]
         span = max(abs(x - x0), abs(y - y0))
-        steps = max(1, int(span / CARRY_SEGMENT_MM + 0.999))
+        steps = max(1, int(span / self.carry_segment + 0.999))
         for i in range(1, steps + 1):
             self.move(x0 + (x - x0) * i / steps, y0 + (y - y0) * i / steps, z, CARRY_SPEED)
 
@@ -193,6 +212,11 @@ class Cal:
         t_move = time.time()
         out = {"seq": self.seq, "label": label, "pos": self.pos,
                "t_local": datetime.now().strftime("%H:%M:%S")}
+        if self.args.simulate:
+            self.history.append(out)
+            self.log(f"photo {self.seq:02d} {label} at {self.pos} (simulated)")
+            self.save_state()
+            return out
         try:
             r = requests.post(f"http://{ROBOT_IP}:31950/camera/picture",
                               headers=HEADERS, timeout=30)
@@ -234,6 +258,8 @@ class Cal:
 
     def read(self, n, label):
         totals = []
+        if self.args.no_sensor:
+            return totals
         try:
             if self.link is None:
                 self.link = SensorLink().connect()
@@ -275,8 +301,8 @@ class Cal:
         self.phase = "preflight"
         h = self.call(self.robot.health)
         self.log(f"robot {h['name']} API {h.get('api_version')}")
-        self.lights_before = robot_lights(ROBOT_IP)
-        if self.args.lights != "leave":
+        self.lights_before = None if self.args.simulate else robot_lights(ROBOT_IP)
+        if self.args.lights != "leave" and not self.args.simulate:
             robot_lights(ROBOT_IP, on=self.args.lights == "on")
             time.sleep(2.0)
         totals = self.read(2, "seated")
@@ -341,13 +367,15 @@ class Cal:
         time.sleep(0.5)
         self.photos(f"press_z{z:g}")
 
-    def lift(self):
+    def lift(self, z=LIFT_Z):
+        if not self.press_z + 1.0 <= z <= LIFT_Z:
+            raise ValueError(f"lift z must be {self.press_z + 1.0}-{LIFT_Z}")
         self.phase = "pickup"
         x, y = self.socket
         self.aboard = True                     # from here on, assume it is on
-        self.move(x, y, LIFT_Z, DESCENT_SPEED)
+        self.move(x, y, z, DESCENT_SPEED)
         time.sleep(LIFT_DWELL_S)
-        shot = self.photos("lifted_z110", reads=2)
+        shot = self.photos(f"lifted_z{z:g}", reads=2)
         lifted = shot.get("reads") or []
         if lifted and self.seated_total:
             ratio = (sum(lifted) / len(lifted)) / max(self.seated_total, 1.0)
@@ -358,6 +386,51 @@ class Cal:
                 self.log("GRIP CHECK FAILED -- the enclosure is probably still on its base")
                 self.aboard = False
         self.save_state()
+
+    def in_pocket(self):
+        x, y = self.socket
+        return (abs(self.pos[0] - x) < 0.01 and abs(self.pos[1] - y) < 0.01
+                and self.pos[2] <= self.press_z + JIGGLE_MAX_LIFT)
+
+    def jiggle(self, axis, amp, cycles, speed):
+        """Grip test with a harmless failure: shake it while it is still in its pocket.
+
+        The grip check measures light. On 2026-09-25 it passed at 10.7x and the
+        enclosure fell ~85 mm six seconds into the carry. The OT-2 cannot feel
+        how tightly it holds anything, so the test has to be the load itself:
+        the carry's jolts, applied where a fall is a millimetre or two into
+        the pocket the enclosure came out of.
+        """
+        if not self.in_pocket():
+            raise ValueError("jiggle only while hanging inside the pocket: over the "
+                             f"socket and at z <= {self.press_z + JIGGLE_MAX_LIFT}")
+        if axis not in ("x", "y", "z"):
+            raise ValueError("axis must be x, y or z")
+        if not 0.05 <= amp <= (JIGGLE_MAX_Z if axis == "z" else JIGGLE_MAX_XY):
+            raise ValueError(f"amplitude out of range for {axis}")
+        if not 1 <= cycles <= JIGGLE_MAX_CYCLES or not 1.0 <= speed <= JIGGLE_MAX_SPEED:
+            raise ValueError(f"cycles 1-{JIGGLE_MAX_CYCLES}, speed 1-{JIGGLE_MAX_SPEED} mm/s")
+        x0, y0, z0 = self.pos
+        self.phase = "pickup"
+        self.log(f"jiggle {axis} +-{amp} mm x{cycles} at {speed:g} mm/s")
+        for _ in range(cycles):
+            for sign in ((1, -1) if axis != "z" else (1, 0)):
+                d = sign * amp
+                self.call(self.robot.move, x0 + d * (axis == "x"),
+                          y0 + d * (axis == "y"), z0 + d * (axis == "z"), speed)
+        self.move(x0, y0, z0, speed)
+        time.sleep(1.0)
+        self.photos(f"jiggled_{axis}{amp:g}x{cycles}_v{speed:g}")
+
+    def up(self, z):
+        x, y = self.socket
+        if abs(self.pos[0] - x) > 0.01 or abs(self.pos[1] - y) > 0.01:
+            raise ValueError("up only straight over the socket")
+        if not self.pos[2] < z <= LIFT_Z:
+            raise ValueError(f"up must go higher, to no more than {LIFT_Z}")
+        self.move(x, y, z, DESCENT_SPEED)
+        time.sleep(LIFT_DWELL_S)
+        self.photos(f"up_z{z:g}", reads=2)
 
     def back_out(self):
         """Abandon a press: rise 5 mm, eject, rise, home.
@@ -387,12 +460,17 @@ class Cal:
         self.photos("homed", reads=2)
 
     def carry(self):
+        # Check before touching the phase: a refused carry must leave the
+        # z/xy commands locked, or the next one drags the enclosure sideways
+        # out of its pocket.
+        if not self.pos[2] >= LIFT_Z - 0.01:
+            raise ValueError(f"carry starts from z >= {LIFT_Z}; use up first")
         self.phase = "carry"
         x, y = self.socket
-        for z in high_lift_stages(CARRY_Z):
+        for z in high_lift_stages(self.carry_z):
             self.move(x, y, z, HIGH_LIFT_SPEED)
-        self.carry_to(self.target[0], self.target[1], CARRY_Z)
-        self.photos(f"over_plate_z{CARRY_Z:g}", reads=2)
+        self.carry_to(self.target[0], self.target[1], self.carry_z)
+        self.photos(f"over_plate_z{self.carry_z:g}", reads=2)
 
     @staticmethod
     def max_step(z):
@@ -435,8 +513,9 @@ class Cal:
         self.phase = "return"
         x, y = self.pos[0], self.pos[1]
         near_base = abs(x - self.socket[0]) < 15 and abs(y - self.socket[1]) < 15
-        top = 130.0 if near_base else CARRY_Z
-        for z in [z for z in (130.0, 150.0, CARRY_Z) if self.pos[2] < z <= top]:
+        top = 130.0 if near_base else self.carry_z
+        ladder = [z for z in (130.0, 150.0, CARRY_Z) if self.pos[2] < z < top]
+        for z in ladder + ([top] if self.pos[2] < top else []):
             self.move(x, y, z, DESCENT_SPEED if z <= 130 else HIGH_LIFT_SPEED)
         self.carry_to(self.drop[0], self.drop[1], max(self.pos[2], top))
         self.release(extra=0.0)
@@ -506,7 +585,8 @@ class Cal:
         try:
             self.call(self.robot.close)
         finally:
-            if self.args.lights != "leave" and self.lights_before is not None:
+            if self.args.lights != "leave" and self.lights_before is not None \
+                    and not self.args.simulate:
                 try:
                     robot_lights(ROBOT_IP, on=self.lights_before)
                 except Exception:  # noqa: BLE001
@@ -519,7 +599,8 @@ class Cal:
 
     def prompt(self):
         if self.phase == "pickup":
-            return "carry | return | home" if self.aboard else "home"
+            return ("jiggle <axis> <mm> <n> <mm/s> | up <z> | carry | return | home"
+                    if self.aboard else "home")
         if self.phase in ("carry", "ladder"):
             return "z <mm> | xy <x> <y> | floor <mm> | read [n] | photo | return"
         if self.phase == "release":
@@ -549,7 +630,7 @@ class Cal:
                                 self.log(self.last_note)
                             continue
                         if cmd[0] == "lift" and self.pos[2] <= self.press_z + 1.0:
-                            self.lift()
+                            self.lift(float(cmd[1]) if len(cmd) > 1 else LIFT_Z)
                         else:                  # back-out, timeout, or lift too shallow
                             self.back_out()
                         break
@@ -579,6 +660,10 @@ class Cal:
                         self.home_empty()
                 elif op == "carry" and self.phase == "pickup" and self.aboard:
                     self.carry()
+                elif op == "jiggle" and self.phase == "pickup" and self.aboard:
+                    self.jiggle(cmd[1], float(cmd[2]), int(cmd[3]), float(cmd[4]))
+                elif op == "up" and self.phase == "pickup" and self.aboard:
+                    self.up(float(cmd[1]))
                 elif op == "z" and self.phase in ("carry", "ladder"):
                     self.go_z(float(cmd[1]))
                 elif op == "xy" and self.phase in ("carry", "ladder"):
@@ -639,13 +724,23 @@ def main():
     p.add_argument("--socket-x", type=float, default=SOCKET_A2[0])
     p.add_argument("--socket-y", type=float, default=SOCKET_A2[1])
     p.add_argument("--drop-dx", type=float, default=-6.0,
-                   help="release column offset; -6.0 is what every September reseat used")
+                   help="release column offset; -6.0 until 2026-09-10, when run_xscan_test.py "
+                        "moved to -4.0 after seeing the module land ~2 mm left")
     p.add_argument("--floor", type=float, default=108.0,
                    help="lowest nozzle Z accepted until raised or lowered by command")
     p.add_argument("--timeout", type=float, default=600.0,
                    help="seconds of silence before it sets the enclosure down by itself")
     p.add_argument("--link-wait", type=float, default=2700.0)
     p.add_argument("--lights", choices=("on", "off", "leave"), default="on")
+    p.add_argument("--carry-z", type=float, default=CARRY_Z,
+                   help="nozzle Z for the carry; 125 puts the foot ~45 mm off the deck, "
+                        "half the 2026-09-25 fall")
+    p.add_argument("--carry-segment", type=float, default=CARRY_SEGMENT_MM,
+                   help="lateral step length; each step is a start and a stop, i.e. two jolts")
+    p.add_argument("--no-sensor", action="store_true",
+                   help="the board is not answering: skip every reading (and so the grip check)")
+    p.add_argument("--simulate", action="store_true",
+                   help="no robot, camera or sensor: exercise the command flow only")
     args = p.parse_args()
     cal = Cal(args)
     cal.log(f"start: socket {cal.socket} target {cal.target} press {cal.press_z} "

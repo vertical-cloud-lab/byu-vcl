@@ -24,6 +24,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FFMPEG = os.path.expanduser("~/ytframes/bin/ffmpeg")
 YTDLP = os.path.expanduser("~/.venvs/ytframes/bin/yt-dlp")
 CHANNEL_LIVE = "https://www.youtube.com/channel/UCZ5KNGkEEqDsRVn0Nlfn0IA/live"
+OT2_TITLE = "OT-2 stream"
 CACHE = os.path.join(HERE, "live-playlist.json")
 UA = ("Mozilla/5.0 (X11; Linux aarch64) AppleWebKit/537.36 (KHTML, like Gecko) "
       "Chrome/140.0 Safari/537.36")
@@ -35,13 +36,32 @@ def fetch(url, timeout=60):
         return r.read()
 
 
+def ot2_watch_url():
+    """The channel's live OT-2 stream, picked by title.
+
+    The channel carries more than one live stream. On 2026-09-29 its /live URL
+    returned the powder doser's, so a frame from CHANNEL_LIVE was of the wrong
+    machine. Fall back to CHANNEL_LIVE only if no live OT-2 stream is listed.
+    """
+    listing = subprocess.run(
+        [YTDLP, "--js-runtimes", "node", "--no-warnings", "--flat-playlist",
+         "--playlist-end", "8", "--print", "%(id)s|%(live_status)s|%(title)s",
+         CHANNEL_LIVE.rsplit("/", 1)[0] + "/streams"],
+        capture_output=True, text=True, timeout=120).stdout
+    for line in listing.splitlines():
+        vid, status, title = (line.split("|", 2) + ["", ""])[:3]
+        if status == "is_live" and title.startswith(OT2_TITLE):
+            return f"https://www.youtube.com/watch?v={vid}"
+    return CHANNEL_LIVE
+
+
 def resolve(refresh=False):
     if not refresh and os.path.exists(CACHE):
         c = json.load(open(CACHE))
         if time.time() - c["t"] < 3000:
             return c["url"]
     out = subprocess.run([YTDLP, "--js-runtimes", "node", "--no-warnings", "-f", "232",
-                          "-g", CHANNEL_LIVE], capture_output=True, text=True,
+                          "-g", ot2_watch_url()], capture_output=True, text=True,
                          timeout=120, check=True).stdout.strip().split("\n")[0]
     json.dump({"t": time.time(), "url": out}, open(CACHE, "w"))
     return out
