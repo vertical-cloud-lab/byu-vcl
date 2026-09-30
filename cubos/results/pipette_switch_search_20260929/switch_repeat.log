@@ -1,0 +1,21 @@
+18:08:59.219  connected in 3.77 s; STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:09:00.219  start                        switch ASSERTED (open, plunger at top)  dt=0.114 s
+18:09:00.333  back off                     DOWN  2.0 mm @  200/s  dt= 8.040 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:09:08.373  after back-off               switch clear (closed)  dt=0.017 s
+18:09:08.410  repeat @ 200                 UP    4.0 mm @  200/s  dt= 8.118 s (full move 15.920 s)  SWITCH OPENED after ~2.01 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:09:16.529  REPEAT: switch reopened after ~2.01 mm
+18:09:16.529  back off                     DOWN  2.0 mm @  200/s  dt= 8.040 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:09:24.568  ladder @ 400                 UP    4.0 mm @  400/s  dt= 4.133 s (full move  7.960 s)  SWITCH OPENED after ~2.03 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:09:28.701  back off                     DOWN  2.0 mm @  200/s  dt= 8.040 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:09:36.742  ladder @ 800                 UP    4.0 mm @  800/s  dt= 2.134 s (full move  3.980 s)  SWITCH OPENED after ~2.04 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:09:38.876  back off                     DOWN  2.0 mm @  200/s  dt= 8.039 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:09:46.916  ladder @ 1600                UP    4.0 mm @ 1600/s  dt= 1.131 s (full move  1.990 s)  SWITCH OPENED after ~2.07 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:09:48.047  back off                     DOWN  2.0 mm @  200/s  dt= 8.040 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:09:56.087  ladder @ 2500                UP    4.0 mm @ 2500/s  dt= 0.770 s (full move  1.274 s)  SWITCH OPENED after ~2.11 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:09:56.857  back off before HOME         DOWN  2.0 mm @  200/s  dt= 8.039 s (full move  7.960 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,200.00]}
+18:10:04.897  before HOME                  switch clear (closed)  dt=0.021 s
+18:10:04.937  firmware HOME (cmd 10)       dt= 1.356 s  -> OK:{"msg":"Pipette homed"}
+18:10:06.301  STATUS -> OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+18:10:06.301  after HOME                   switch clear (closed)  dt=0.017 s
+18:10:06.343  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+18:10:06.345  disconnected

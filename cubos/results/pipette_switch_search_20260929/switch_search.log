@@ -1,0 +1,20 @@
+18:05:15.807  connected in 3.77 s; STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:05:16.807  switch read, before        UP       2 steps ( 0.00 mm) @ 200/s  dt= 0.020 s  commanded= 0.010 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+18:05:16.827  switch read, before (put back) DOWN     2 steps ( 0.00 mm) @ 200/s  dt= 0.017 s  commanded= 0.010 s  -> OK:{"msg":"Moved relative","v":[1.00,2.00,200.00]}
+18:05:16.844  switch reads clear; starting the upward search
+18:05:16.844  search chunk 1/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=20.082 s  commanded=19.900 s  -> OK:{"msg":"Moved relative","v":[0.00,3980.00,200.00]}
+18:05:37.426  search chunk 2/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=20.081 s  commanded=19.900 s  -> OK:{"msg":"Moved relative","v":[0.00,3980.00,200.00]}
+18:05:58.008  search chunk 3/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=20.082 s  commanded=19.900 s  -> OK:{"msg":"Moved relative","v":[0.00,3980.00,200.00]}
+18:06:18.590  search chunk 4/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=20.082 s  commanded=19.900 s  -> OK:{"msg":"Moved relative","v":[0.00,3980.00,200.00]}
+18:06:39.172  search chunk 5/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=20.082 s  commanded=19.900 s  -> OK:{"msg":"Moved relative","v":[0.00,3980.00,200.00]}
+18:06:59.755  search chunk 6/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt=15.027 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:15.282  search chunk 7/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.114 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:15.896  search chunk 8/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.115 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:16.510  search chunk 9/12          UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.114 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:17.125  search chunk 10/12         UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.114 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:17.739  search chunk 11/12         UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.114 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:18.354  search chunk 12/12         UP    3980 steps ( 5.00 mm) @ 200/s  dt= 0.114 s  commanded=19.900 s  -> RAISED PawduinoLinkCommandError('Command 16 failed: ERR:{"error":"Failed to move relative"}')
+18:07:18.968  RESULT: NO TRIP after 60 mm commanded UP. Either the shaft is not turning, it is turning DOWN (then the plunger is now at its bottom stop and the tip ejector is extended), or the switch cannot be reached.
+18:07:18.976  STATUS -> OK:{"homed":0,"pos":-14.36,"max_vol":20.00}
+18:07:18.983  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+18:07:18.986  disconnected
