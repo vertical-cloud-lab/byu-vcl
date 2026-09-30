@@ -13,6 +13,14 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ✅ **2026-09-30: the pipette handles liquid.** Ben watched campaign 68 and
+> reports that it aspirated (almost filling the tip below the foam filter),
+> dispensed, and dropped the tip. That is the first end-to-end confirmation.
+> Still open: the scale. Weigh one 20 µL dispense of water: about 20 mg means
+> 796 steps/mm is right, about 10 mg means it is 1592. `UL_TO_MM 1.34` is also
+> still Opentrons' nominal figure. The run took 4 minutes, and 73 s of that was
+> the CubOS driver waiting on a serial timeout; see [Speed](#speed) below.
+>
 > 🔑 **2026-09-30 (b): the trio ran 12/12 on the Tic, and every plunger command
 > executed.** `pick_up_tip`, `aspirate` (both legs, landing at 1.2 mm),
 > `blowout` and both `drop_tip` legs all returned `OK` at their commanded
@@ -257,7 +265,8 @@ reconnecting the limit switch, which reads clear on the direct wiring (§20.3).
   firmware already contradicts itself about this: `STEPS_PER_MM 1592.0` against
   a homing back-off commented `796; // this is equal to 1mm`.
 - **`UL_TO_MM` 1.34 is Opentrons' nominal figure**, not a calibration of this
-  unit — a gravimetric check once liquid actually moves.
+  unit. It needs a gravimetric check, which is now possible: liquid moves as of
+  2026-09-30.
 
 ## What is in this PR
 
@@ -270,6 +279,7 @@ reconnecting the limit switch, which reads clear on the direct wiring (§20.3).
 | `../patches/tmc2209-softwareserial-read.patch` | makes the janelia TMC2209 read path work on an AVR at all |
 | `../patches/tipped-hover-clamp*.patch` | lets a tipped pipette travel on a machine whose ceiling is below `safe_z + tip` |
 | `../patches/pipette-connect-tolerate-failed-home*.patch` | the escape hatch for an unreferenced plunger — **not a bug fix**, remove once homing works |
+| `../patches/grbl-prompt-status-polling.patch` | the status-polling half of Alex's CubOS PR #351, backported to `496819c`; removes the 2 s wait after every G-code (see [Speed](#speed)). **Not applied to the Pi** |
 | [`../tools/`](../tools/) | `pipette_driver_measure.py`, `pipette_driver_probe.py`, `pipette_bench_check.py`, `run_with_plunger_trace.py` |
 | `../results/pipette_*` | 17 sessions of run logs, plunger traces, G-code, camera frames and `$$` dumps |
 
@@ -296,6 +306,43 @@ $PY ~/byu-vcl/cubos/tools/run_with_plunger_trace.py  $G $D $P   # the real run, 
 Four gates pass offline and none of them models the *other* instrument on the
 head, which is what `passive_shadow.py` is for. Re-home before every run: the
 GRBL board resets when the port opens and comes up in `Alarm`.
+
+## Speed
+
+Measured from campaign 68 (2026-09-30), the 12-step trio: **238 s** from gantry
+connect to disconnect ([logs](../results/pipette_test_20260930b/README.md)).
+
+| part | time | waiting, not moving |
+|---|---|---|
+| 47 gantry moves (`G01`, one axis each) | 127.5 s | ~58 s; the moves themselves need ~69 s at F2000 |
+| 2 homing cycles | 38.2 s | ~11 s, after the opening `$H` |
+| 8 plunger commands (incl. connect) | 45.7 s | none; `MOVE_TO` runs at ~2,400 steps/s |
+| connect, cameras, capper dwell, disconnect | ~27 s | ~4 s (`G90` and `F3000` at connect) |
+
+**Every gantry command took a multiple of ~2.06 s, including 1 mm moves.** In
+CubOS `496819c`, `Mill.current_status()` reads the port *before* sending `?`.
+GRBL sends nothing unprompted (`$10=0`), so that read waits out the serial
+timeout: 2 s normally, 10 s during `home`. Alex's CubOS
+[PR #351](https://github.com/Ursa-Laboratories/CubOS/pull/351) (draft, not
+merged) sends `?` first. Its `current_status()` hunk and its six tests are
+backported here as `../patches/grbl-prompt-status-polling.patch`. Offline on the
+Pi's exact tree (`496819c` + the three applied patches), the six tests fail
+without it and pass with it, and the whole core suite passes (2550, 0 failed). A
+real-time fake GRBL reproduces the log: a 1.5 s move returns after 2.05 s today
+and 1.55 s patched. Nothing has been tested on hardware yet, here or upstream.
+The G-code and feed rates are unchanged.
+
+The levers, per run, measured against this log:
+
+| change | saves | notes |
+|---|---|---|
+| apply `grbl-prompt-status-polling.patch` | ~70 s | same G-code; only the waiting goes |
+| delete `default_feed_rate_mm_min: 2000.0` (CubOS default 3000; GRBL allows 5000) | ~19 s, with or without the patch | each move still ramps down to a stop at its target |
+| firmware `MOVEMENT_VELOCITY` 2500 → 10000, keeping moves into the ejector zone (target > `BLOWOUT_POSITION`) at 2500 | ~25 s | 10000 hits the firmware's 100 µs step-delay floor, ~8,700 steps/s. That is the rate `ASPIRATE` already runs at, because CubOS sends speed 0 and `aspirate()` passes it through. It is ~11 mm/s, about Opentrons' 7.56 µL/s P20 GEN2 default flow. Opentrons ejects tips at 15 mm/s |
+| end the protocol parked instead of homed | ~15 s | the closing `home` is the move to the far corner that pulled the Pi's cable on 09-24 |
+| coordinated XY diagonals (the other half of PR #351) | ~5–10 s | depends on upstream's routing stack; wait for it to merge |
+
+The first three together take a run from about 4 minutes to about 2.
 
 ## Things that cost a session each, so they are worth reading twice
 

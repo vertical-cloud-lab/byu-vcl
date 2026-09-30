@@ -2,7 +2,11 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
-**Status, 2026-09-29 18:10: the plunger moves.** Bring-up steps 1, 3 and 5 are
+**Status, 2026-09-30: the pipette works on the Tic.** With `STEPS_PER_MM 796`
+flashed, the trio ran 12/12 (campaign 68), and Ben saw it aspirate, dispense and
+drop the tip ([record](../results/pipette_test_20260930b/README.md)). The ruler
+or balance check of the 796 scale is still open.
+**Earlier, 2026-09-29 18:10: the plunger moves.** Bring-up steps 1, 3 and 5 are
 done. Driven through the Arduino, the plunger went up about 28.7 mm and opened
 the limit switch. It went down and closed it again, then reopened it after the
 same 2 mm at every rate from 200 to 2,500 microsteps/s. The firmware's own
