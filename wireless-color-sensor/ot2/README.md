@@ -1050,6 +1050,25 @@ it with the sensor. Write-up in
   spectra were read over MQTT from the runner while it sat still. The enclosure
   was **released seated** in A2 (482–488 counts).
 
+## 2026-09-30 (evening) — how accurate were the paint readings? Squeezed, not wide (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) whether
+yellow reading "too wide of a spectrum" meant the readings were off. Write-up in
+[`results-paint-accuracy-2026-09-30.md`](results-paint-accuracy-2026-09-30.md);
+[`analyse_paint_accuracy.py`](analyse_paint_accuracy.py) compares each paint with
+published spectra of its pigments (Liquitex lists PY74; PR170 + PR9; PB15:3).
+
+- **Yellow is supposed to be wide.** PY74 absorbs below ~500 nm and reflects
+  everything from ~550 nm up. Only its 410 nm reading is wrong (0.73 of the empty
+  well against 0.47 at 440, where the pigment is equally dark); treat 410 as
+  unreliable under the rail lights. Red has the right shape. Blue doesn't: it is
+  flat from 410 to 583 nm instead of peaking at 440–480.
+- **Repeatable, not accurate.** A perfectly black paint would read ~0.55 of the
+  empty well and a perfectly white one ~0.9, so colour differences come out ~2.7× smaller than they
+  are. Red reflects 1–3% at 440–550 nm and read 0.46–0.57 there.
+- **Fix: a white and a black well on every plate** (BASICS Titanium White and Mars
+  Black), and `reflectance = (paint − black) ÷ (white − black)` per channel.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
