@@ -16,11 +16,15 @@ place and never carried (``results-enclosure-grip-2026-09-29.md``). Do not
 ``carry`` until ``jiggle`` passes.
 
 That evening it passed at 3 mm/s (240 jolts, no slip) and failed again at
-10 mm/s. Run with ``--max-speed 3``, the enclosure was carried to the plate and
-touched it at nozzle z ~98.9 over the plate's centre, so z 99.5 is "just
-above". Then it came off the nozzle on the way back and fell to the deck in
-front of the base (``results-enclosure-carry-2026-09-29.md``). Passing
-``jiggle`` is necessary, not sufficient.
+10 mm/s. Run with ``--max-speed 3``, the enclosure was carried to the plate,
+then came off the nozzle on the way back and fell to the deck in front of the
+base (``results-enclosure-carry-2026-09-29.md``). Passing ``jiggle`` is
+necessary, not sufficient. That run's "touches the plate at z ~98.9" was wrong:
+on 2026-09-30 the same hang was still ~10 mm clear there, and the enclosure
+touched the plate's centre at nozzle z ~88.1 (``results-enclosure-height-2026-09-30.md``).
+Find contact from the light reading, which stops falling when the foot lands,
+not from sub-pixel camera shifts: a patch with the still plate behind the
+enclosure reads a 0.5 mm step as ~0.1 px.
 
 On 2026-09-30 the return comes back high: straight back along the socket's
 column at --carry-z only until --approach-y, then up to --approach-z for the
@@ -34,6 +38,19 @@ comes down from there in commanded steps: on 09-30 the enclosure had been put
 back upside down, its wide sensor end standing ~5-20 mm above where the collar
 had been, and the old ladder would have pressed into it
 (``results-enclosure-upside-down-2026-09-30.md``). That run stopped at z 150.
+
+Later on 2026-09-30 it fell again, in the last ~40 s of the return: up from
+--carry-z 125 to --approach-z 150 in front of the base, then back towards the
+socket at 150. It landed to the right of the base, as on 09-25. The base has a
+tower beside the right-hand socket about as tall as the enclosure (the
+definition's zDimension is 100), and the enclosure's foot hangs ~74 mm below
+the nozzle, so at z 150 its lower ~25 mm passed alongside the tower. All three
+falls (09-25, 09-29, 09-30) happened while it moved sideways next to the tower
+with its foot below the tower's top. --approach-z is now 190 (the nozzle homes
+at z 199.6), which puts the foot ~16 mm above the tower: near the base the
+enclosure only moves sideways up there, and goes down beside the tower only
+vertically, the way every lift out of the socket has gone. The run after that
+change was carried to the plate and back and released seated in its socket.
 
 Runs ON the Pi that holds the robot link, under nohup, and is driven one step
 at a time through a command file. It is built this way, rather than driven
@@ -870,9 +887,11 @@ def main():
     p.add_argument("--carry-z", type=float, default=CARRY_Z,
                    help="nozzle Z for the carry; 125 puts the foot ~45 mm off the deck, "
                         "half the 2026-09-25 fall")
-    p.add_argument("--approach-z", type=float, default=150.0,
-                   help="nozzle Z over the base's front, out and back (foot ~65 mm off the "
-                        "deck); the carry only drops to --carry-z in front of --approach-y")
+    p.add_argument("--approach-z", type=float, default=190.0,
+                   help="nozzle Z for every sideways move near the base, out and back: the "
+                        "foot hangs ~74 mm below the nozzle, so 190 clears the ~100 mm tower "
+                        "beside the socket by ~16 mm; the carry only drops to --carry-z in "
+                        "front of --approach-y")
     p.add_argument("--approach-y", type=float, default=220.0,
                    help="Y in the socket's column where the carry changes between "
                         "--approach-z and --carry-z; the base's front edge is at y 271.5")
