@@ -938,6 +938,26 @@ tips calibration test, while the enclosure is off its base. Full write-up in
   nominal, because this P300 has no tip-length or pipette-offset calibration. Only
   well A1 was visited.
 
+## 2026-09-30 — the enclosure was back, but upside down; stopped before the pick-up
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): grip
+test over the base, pressing a little deeper, then the height calibration, until
+done or the enclosure can't be picked up. Full write-up in
+[`results-enclosure-upside-down-2026-09-30.md`](results-enclosure-upside-down-2026-09-30.md).
+
+- **It was in A2 upside down.** Its wide sensor end stood up where the collar had
+  been, top at about z 105–120. The pick-up ladder (z 105, 101, 99, then the press)
+  would have driven the nozzle into it. The bare nozzle went only to z 150 over the
+  socket, then home.
+- **The sensor board does not answer** (broker fine, 2 × 20 s). The livestream
+  camera still points at another machine.
+- **`enclosure_height_cal.py` now comes back high over the base.** It stays at
+  `--approach-z 150` (foot ~65 mm off the deck) until clear of the base's front
+  (`--approach-y 220`), and only carries at `--carry-z` in front of that. The long
+  leg is split every `--leg 60` mm with a photo at matching poses out and back. The
+  bare nozzle's first alignment stop is z 150. Simulated end to end, not yet run
+  with the enclosure aboard.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by

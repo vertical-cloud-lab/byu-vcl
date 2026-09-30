@@ -22,6 +22,19 @@ above". Then it came off the nozzle on the way back and fell to the deck in
 front of the base (``results-enclosure-carry-2026-09-29.md``). Passing
 ``jiggle`` is necessary, not sufficient.
 
+On 2026-09-30 the return comes back high: straight back along the socket's
+column at --carry-z only until --approach-y, then up to --approach-z for the
+last stretch over the base's front, then straight down into the pocket. The
+09-29 enclosure landed right against the base's front, in its own column,
+which is where a foot that caught the front edge would drop it. The long legs
+are split every --leg mm with a photo at each stop, at the same poses on the
+way out and back, so a slide down the nozzle shows as a difference between
+the two photos. The bare nozzle's first alignment stop is now z 150, and it
+comes down from there in commanded steps: on 09-30 the enclosure had been put
+back upside down, its wide sensor end standing ~5-20 mm above where the collar
+had been, and the old ladder would have pressed into it
+(``results-enclosure-upside-down-2026-09-30.md``). That run stopped at z 150.
+
 Runs ON the Pi that holds the robot link, under nohup, and is driven one step
 at a time through a command file. It is built this way, rather than driven
 move-by-move over SSH from a CI runner, for two reasons:
@@ -57,16 +70,18 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
                     there, rather than carrying a doubtful grip out to the
                     release column
     back-out        after a pickup: rise 5 mm, eject, home (abandon the press)
-    carry           high lift, then carry to the plate target at --carry-z, in
-                    --carry-segment steps: straight out to the front at the
-                    socket's X, then across (never past the base's tower)
+    carry           high lift to --approach-z, straight out to the front at the
+                    socket's X until --approach-y, down to --carry-z, on to the
+                    plate's Y in --leg legs (a photo at each), then across
+                    (never past the base's tower)
     z <mm>          move the nozzle to this Z over the target (bounded, stepped)
     xy <x> <y>      move the target, at the current Z, only when Z >= 125
     floor <mm>      change the lowest Z that ``z`` will accept
     read [n]        take n sensor readings where it is (default 3)
     photo           photograph again without moving
-    return          lift, carry back the way it came, let go inside the pocket
-                    from the release-here pose, home
+    return          lift, carry back the way it came (up to --approach-z before
+                    the base), down into the pocket, let go from the
+                    release-here pose, home
     retry-release [extra_mm]
                     the release did not let go: go back down and eject again,
                     optionally pressing extra_mm (0-1) deeper first
@@ -122,9 +137,11 @@ SOCKET_A1 = deck.in_slot(10, 36.55, 44.0)              # (36.55, 315.5)
 SOCKET_A2 = deck.in_slot(10, 36.55 + 56.25, 45.0)      # (92.8, 316.5)
 ALIGN_MIN_Z = 100.0         # bare-nozzle hover floor over a socket (mouth ~97.5-99.5)
 ALIGN_TRAVEL_Z = 120.0      # lateral moves near the base only at or above this
-# run_xscan_test.pick_up's descent ladder, split so the bare nozzle stops 30 mm
-# over the socket for an alignment photo before anything presses down.
-ALIGN_LADDER = [170.0, 150.0, 120.0]
+# The bare nozzle's first stop over the socket, for a photo. It was z 120 until
+# 2026-09-30, when the enclosure had been put back upside down and its sensor
+# end stood above where the collar had been: from here the nozzle comes down
+# only by ``align`` commands, one photo each.
+ALIGN_LADDER = [170.0, 150.0]
 PICKUP_LADDER = [105.0, 101.0, 99.0]
 SEATED_MAX = 800            # counts; above this the enclosure is not closed on its base
 GRIP_RATIO = 2.0
@@ -144,6 +161,9 @@ class Cal:
         self.robot = Robot(ROBOT_IP, simulate=args.simulate)
         self.carry_z = args.carry_z
         self.carry_segment = args.carry_segment
+        self.approach_z = args.approach_z
+        self.approach_y = args.approach_y
+        self.leg = args.leg
         self.link = None
         self.seq = 0
         self.phase = "start"
@@ -351,7 +371,7 @@ class Cal:
         x, y = self.socket
         for z in ALIGN_LADDER:
             self.move(x, y, z, 25.0)
-        self.photos("align_hover_z120")
+        self.photos(f"align_hover_z{self.pos[2]:g}")
 
     def realign(self, x, y, z):
         """Bare nozzle only: hover over (x, y) at z, travelling at a safe height."""
@@ -512,16 +532,39 @@ class Cal:
             raise ValueError(f"carry starts from z >= {LIFT_Z}; use up first")
         self.phase = "carry"
         x, y = self.socket
-        for z in high_lift_stages(self.carry_z):
+        high = max(self.carry_z, self.approach_z)
+        for z in high_lift_stages(high):
             self.move(x, y, z, HIGH_LIFT_SPEED)
-        self.photos(f"carry_start_z{self.carry_z:g}", reads=2)
+        self.photos(f"carry_start_z{high:g}", reads=2)
         # Straight out to the front first, then across. The base has a tall
         # tower between its two sockets, and at a low carry height the
         # enclosure's foot is well below its top: a diagonal from A2 drifts
-        # towards it while the enclosure is still alongside.
-        self.carry_to(x, self.target[1], self.carry_z)
+        # towards it while the enclosure is still alongside. It leaves at
+        # --approach-z and only comes down to --carry-z once clear of the
+        # base's front.
+        self.carry_to(x, self.approach_y, high)
+        self.photos(f"clear_of_base_z{high:g}")
+        if self.carry_z < high:
+            self.move(x, self.approach_y, self.carry_z, DESCENT_SPEED)
+        self.leg_to(x, self.target[1], "out")
         self.carry_to(self.target[0], self.target[1], self.carry_z)
         self.photos(f"over_plate_z{self.carry_z:g}", reads=2)
+
+    def legs(self, y_from, y_to):
+        """Leg ends from y_from to y_to, on a grid anchored at --approach-y.
+
+        The grid is the same both ways, so every stop on the way back has a
+        twin on the way out, photographed at the same pose.
+        """
+        lo, hi = sorted((y_from, y_to))
+        pts = [self.approach_y - k * self.leg for k in range(0, 40)]
+        pts = sorted((p for p in pts if lo + 0.01 < p < hi - 0.01), reverse=y_to < y_from)
+        return pts + [y_to]
+
+    def leg_to(self, x, y_end, tag):
+        for yy in self.legs(self.pos[1], y_end):
+            self.carry_to(x, yy, self.pos[2])
+            self.photos(f"{tag}_y{yy:g}")
 
     @staticmethod
     def max_step(z):
@@ -563,11 +606,15 @@ class Cal:
         """From wherever the enclosure is: back the way it came, and let go in its pocket.
 
         Across to the socket's column first, then straight back, the reverse of
-        ``carry``, so it never passes the base's tower at an angle. It is let
-        go from the pose ``release-here`` uses, hanging a few millimetres over
-        its own seat: the one release that has been done at A2 (2026-09-29).
-        The drop column's anti-tilt offset was tuned at A1, and at A2 it
-        points at the tower.
+        ``carry``, so it never passes the base's tower at an angle. The last
+        stretch, over the base's front, is at --approach-z: on 2026-09-29 the
+        return stayed at z 125 (foot ~40 mm off the deck) all the way, and the
+        enclosure ended up on the deck against the base's front, in its own
+        column. Then straight down into the pocket, with a photo at z 130
+        before its foot goes below the pocket's rim. It is let go from the pose
+        ``release-here`` uses, hanging a few millimetres over its own seat: the
+        one release that has been done at A2. The drop column's anti-tilt
+        offset was tuned at A1, and at A2 it points at the tower.
         """
         self.phase = "return"
         x, y = self.pos[0], self.pos[1]
@@ -577,11 +624,20 @@ class Cal:
             ladder = [z for z in (130.0, 150.0, CARRY_Z) if self.pos[2] < z < top]
             for z in ladder + ([top] if self.pos[2] < top else []):
                 self.move(x, y, z, DESCENT_SPEED if z <= 130 else HIGH_LIFT_SPEED)
-            self.carry_to(sx, y, self.pos[2])
+            if abs(x - sx) > 0.01:
+                self.carry_to(sx, y, self.pos[2])
+                self.photos(f"back_y{y:g}")
+            if self.pos[1] < self.approach_y - 0.01:
+                self.leg_to(sx, self.approach_y, "back")
+            if self.pos[2] < self.approach_z:
+                self.move(sx, self.pos[1], self.approach_z, DESCENT_SPEED)
             self.carry_to(sx, sy, self.pos[2])
-        for z in (LIFT_Z, 100.0):
-            if self.pos[2] > z:
+            self.photos(f"over_pocket_z{self.pos[2]:g}")
+        for z in (130.0, LIFT_Z, 100.0):
+            if self.pos[2] > z + 0.01:
                 self.move(sx, sy, z, DESCENT_SPEED)
+                if z == 130.0:
+                    self.photos("over_pocket_z130")
         self.photos("over_pocket", reads=2)
         self.back_out()
 
@@ -808,6 +864,15 @@ def main():
     p.add_argument("--carry-z", type=float, default=CARRY_Z,
                    help="nozzle Z for the carry; 125 puts the foot ~45 mm off the deck, "
                         "half the 2026-09-25 fall")
+    p.add_argument("--approach-z", type=float, default=150.0,
+                   help="nozzle Z over the base's front, out and back (foot ~65 mm off the "
+                        "deck); the carry only drops to --carry-z in front of --approach-y")
+    p.add_argument("--approach-y", type=float, default=220.0,
+                   help="Y in the socket's column where the carry changes between "
+                        "--approach-z and --carry-z; the base's front edge is at y 271.5")
+    p.add_argument("--leg", type=float, default=60.0,
+                   help="split the long run along the socket's column every this many mm, "
+                        "with a photo at each stop")
     p.add_argument("--carry-segment", type=float, default=CARRY_SEGMENT_MM,
                    help="lateral step length; each step is a start and a stop, i.e. two jolts")
     p.add_argument("--max-speed", type=float, default=None,
@@ -823,7 +888,9 @@ def main():
     args = p.parse_args()
     cal = Cal(args)
     cal.log(f"start: socket {cal.socket} target {cal.target} press {cal.press_z} "
-            f"release {cal.release_z} drop {cal.drop} floor {cal.floor}")
+            f"release {cal.release_z} drop {cal.drop} floor {cal.floor} "
+            f"carry {cal.carry_z} approach z {cal.approach_z} y {cal.approach_y} "
+            f"leg {cal.leg} max speed {args.max_speed}")
     try:
         cal.run()
     except Exception:  # noqa: BLE001
