@@ -1,6 +1,6 @@
 """Assembly GIF and a still of the finished spot D enclosure.
 
-    xvfb-run -a python animate.py [still] [gif]
+    xvfb-run -a python animate.py [parts] [still] [gif]
 
 The GIF is kept light on purpose: 640 x 480, about 100 frames, one fixed camera and a shared
 palette, so only the moving parts change from frame to frame. It renders in a minute or two.
@@ -162,8 +162,78 @@ def still(path, size=(1400, 1050)):
     print(path.name)
 
 
+def _part_shot(meshes, camera, size=(520, 440), angle=30):
+    pl = pv.Plotter(off_screen=True, window_size=size, lighting="three lights")
+    pl.set_background(SURFACE)
+    for m, c, smooth in meshes:
+        pl.add_mesh(pv.wrap(m), color=c, smooth_shading=smooth, split_sharp_edges=smooth, specular=0.3)
+    pl.camera_position = camera
+    pl.camera.view_angle = angle
+    pl.enable_anti_aliasing("ssaa")
+    img = pl.screenshot(return_img=True)
+    pl.close()
+    return img
+
+
+def parts_sheet(path):
+    """Each part on its own, with the numbers it is built from."""
+    import matplotlib.pyplot as plt
+
+    X = lambda R, t=(0, 0, 0): B.T(R, t)  # noqa: E731
+    elbow, clamp, screw = P.formufit_elbow(), P.snap_clamp(), P.m5_socket_cap()
+    stub = P.pvc_pipe(0.07)
+    wc, pc = elbow.color, "#e9e9e5"
+    em = elbow.mesh
+    legs = []
+    for ax, pull in ((0, 0.0), (1, 0.0), (2, 0.03)):
+        d = np.eye(3)[ax]
+        legs.append((stub.mesh.copy().apply_transform(X(B.rot_z_to(d), d * (P.ELBOW_STOP + pull))), pc, True))
+    img1 = _part_shot([(em, wc, True), *legs], [(0.21, -0.17, 0.16), (0.035, 0.035, 0.045), (0, 0, 1)])
+
+    pipe = P.pvc_pipe(0.16).mesh.copy().apply_transform(X(B.rot_z_to((1, 0, 0))))
+    img2 = _part_shot([(pipe, pc, True)], [(0.26, -0.20, 0.10), (0.08, 0, 0), (0, 0, 1)])
+
+    alone = clamp.mesh.copy().apply_transform(X(B.rot_z_to((1, 0, 0), (0, 0, -1))))
+    img3 = _part_shot([(alone, clamp.color, True)], [(0.13, -0.11, -0.02), (0, 0, 0), (0, 0, 1)])
+
+    sm = screw.mesh.copy().apply_transform(X(B.rot_z_to((0, 0, -1), (1, 0, 0))))
+    img4 = _part_shot([(sm, screw.color, True)], [(0.05, -0.065, 0.02), (0, 0, -0.011), (0, 0, 1)])
+
+    ply = P.plywood_base()
+    under = [(ply.mesh, ply.color, False)]
+    for x, y in P.hole_xy():
+        under.append((screw.mesh.copy().apply_transform(X(np.eye(3), (x, y, -P.PLY["t"] + P.CBORE_H))), screw.color, True))
+    img5 = _part_shot(under, [(0.075, -0.095, -0.14), (0, 0, -0.01), (0, 0, 1)])
+
+    piper = Piper()
+    arm = [(m, c, True) for _, m, c in B.arm_meshes(piper, q=B.PICK, grip=0.03, keep=None)]
+    base = (ply.mesh.copy().apply_transform(B.T(t=(0, 0, P.PLY["t"]))), ply.color, False)
+    img6 = _part_shot([base, *arm], [(1.05, -1.25, 0.75), (0.0, -0.18, 0.18), (0, 0, 1)])
+
+    cards = [
+        (img1, "FORMUFIT 3-way elbow", "2.250 in overall, 1.293 in OD, 1.001 in socket.\nPipe stops 15.3 mm from the corner, so\nevery pipe is cut 30.6 mm under its span."),
+        (img2, "3/4 in Sch 40 PVC", "1.050 in OD, 0.113 in wall.\nCut 4 each at 1219, 1289 and 1035 mm\nfrom six 10 ft sticks."),
+        (img3, "Snap clamp", "4 in long ABS, 0.90 in ID relaxed.\nSnaps over the pipe with the cloth\nunder it. 33 in all, 3 per pipe."),
+        (img4, "M5 × 25 socket cap", "ISO 4762: 8.5 mm head, 4 mm hex.\nUp through the plywood, 13 mm\ninto the arm's threaded base."),
+        (img5, "Plywood base, from below", "24 × 48 × 0.703 in birch panel.\n4 × Ø5.5 mm on a 70 mm square,\nØ10 mm counterbores 6 mm deep."),
+        (img6, "PiPER on the base", "AgileX URDF and meshes.\n626 mm reach to the flange,\n0.77 m to the fingertips."),
+    ]
+    fig = plt.figure(figsize=(15, 11), dpi=110, facecolor=SURFACE)
+    for i, (img, title, note) in enumerate(cards):
+        x, top = 0.02 + (i % 3) * 0.33, 1 - (i // 3) * 0.5
+        fig.text(x, top - 0.04, title, fontsize=15, color=INK, weight="bold")
+        ax = fig.add_axes([x - 0.01, top - 0.39, 0.31, 0.33])
+        ax.imshow(img)
+        ax.axis("off")
+        fig.text(x, top - 0.395, note, fontsize=11.5, color=INK2, va="top", linespacing=1.45)
+    fig.savefig(path, facecolor=SURFACE)
+    print(path.name)
+
+
 if __name__ == "__main__":
-    what = sys.argv[1:] or ["still", "gif"]
+    what = sys.argv[1:] or ["still", "gif", "parts"]
+    if "parts" in what:
+        parts_sheet(B.HERE / "dome-parts.png")
     if "still" in what:
         still(B.HERE / "dome-finished.png")
     if "gif" in what:

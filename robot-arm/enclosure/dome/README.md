@@ -21,10 +21,13 @@ does not hit the back wall when it parks.
 | [`animate.py`](animate.py) | Renders the assembly GIF and the still |
 | `dome-assembly.gif` | The assembly, step by step (640 × 480, 91 frames, renders in about 15 s) |
 | `dome-finished.png` | The finished enclosure with the flap rolled up |
+| `dome-parts.png` | Each part on its own, with the numbers it is built from |
 | `models/*.stl` | Each part on its own, plus `enclosure-frame.stl` (frame, base and screws, no cloth). GitHub opens these in a 3D viewer. Units are mm |
 | [`enclosure.glb`](enclosure.glb) | The whole thing in colour, with the arm and cloth. Open it in any glTF viewer, e.g. [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/) |
 
 ## Parts and the numbers they are built from
+
+![Parts](dome-parts.png)
 
 | Part | Numbers used | Source |
 |---|---|---|
@@ -85,7 +88,7 @@ Dry-fit everything before gluing. Press-fit joints are enough to carry cloth.
 
 ```bash
 python build.py                    # cut-list.md, models/, enclosure.glb
-xvfb-run -a python animate.py      # dome-finished.png, dome-assembly.gif
+xvfb-run -a python animate.py      # dome-parts.png, dome-finished.png, dome-assembly.gif
 ```
 
 Needs numpy, trimesh, manifold3d, shapely, pyvista and pillow. `piper_fk.py` fetches the PiPER URDF
