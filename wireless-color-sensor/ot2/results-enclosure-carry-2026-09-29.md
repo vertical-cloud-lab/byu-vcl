@@ -1,5 +1,13 @@
 # Enclosure carried to the plate and its height found, then it fell on the way back
 
+> **Corrected 2026-09-30: the height in this write-up is wrong by ~10 mm.** At
+> z 98.9 the enclosure was still moving freely. It touches the plate's centre at
+> nozzle z ≈ 88.1–88.4, and z 89.0 is "just above". The 0.5 mm steps below were read
+> from a camera patch with the still plate behind the enclosure, which pulls
+> sub-pixel shifts towards zero, and the light reading, which kept falling through
+> 98.5, was the right signal. See
+> [`results-enclosure-height-2026-09-30.md`](results-enclosure-height-2026-09-30.md).
+
 **2026-09-29, 17:07–17:33 MDT. Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
 "the sensor has battery. The enclosure has no cracks in it. please run tests to
 confirm the enclosure won't fall off and then the calibration tests as asked

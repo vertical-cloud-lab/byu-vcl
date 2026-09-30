@@ -898,6 +898,10 @@ Full write-up in [`results-enclosure-grip-2026-09-29.md`](results-enclosure-grip
 
 ## 2026-09-29 (evening) — height found at nozzle z 99.5; the enclosure fell on the way back
 
+> **Corrected 2026-09-30:** the height below is wrong. At z 98.9 the enclosure was
+> still ~10 mm above the plate; it touches at z ≈ 88.1–88.4. See the 2026-09-30
+> (morning) entry.
+
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): test
 that the enclosure won't fall off, then calibrate, stopping if it falls. Full
 write-up in [`results-enclosure-carry-2026-09-29.md`](results-enclosure-carry-2026-09-29.md).
@@ -957,6 +961,35 @@ done or the enclosure can't be picked up. Full write-up in
   leg is split every `--leg 60` mm with a photo at matching poses out and back. The
   bare nozzle's first alignment stop is z 150. Simulated end to end, not yet run
   with the enclosure aboard.
+
+## 2026-09-30 (morning) — height found at nozzle z ≈ 88.1–88.4; carried there and back via z 190
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): the same
+request as the entry above, once the enclosure was right way up. Full write-up in
+[`results-enclosure-height-2026-09-30.md`](results-enclosure-height-2026-09-30.md).
+
+- **The enclosure's foot touches the plate's centre at nozzle z ≈ 88.1 and ≈ 88.4**
+  (two pick-ups). **Read at z 89.0**, 0.5–0.9 mm clear. The foot hangs ~74 mm
+  below the nozzle, as the charging-base definition implies.
+- **The 09-29 entry's z 98.9 / 99.5 is wrong by ~10 mm.** Its 0.5 mm steps were
+  read from a camera patch with the still plate behind the enclosure, which pulls
+  sub-pixel shifts towards zero. Find contact from the light reading, which stops
+  falling when the foot lands. Confirm it with a patch that contains only the
+  enclosure, measured against a photo a few mm higher.
+- **The grip held**: 400 jolts plus ~95 s of 7 mm strokes in the socket, the
+  carries, and the touch-down, at 3 mm/s after a press to z 89.0.
+- **Run 1 fell off in the last 44 s of the return**, moving back towards the socket
+  at z 150 beside the base's ~100 mm tower. It landed to the right of the base,
+  as on 09-25. All three falls happened moving sideways next to that tower with
+  the foot below its top.
+- **Run 2 did every sideways move near the base at z 190** (foot ~16 mm above the
+  tower; the nozzle homes at 199.6) and came down beside it only vertically. It was
+  carried to the plate and back and seated (502–504 counts). That is now
+  `--approach-z`'s default. One round trip so far.
+- **Where the enclosure sits in A2 varies when it's put back by hand.** In run 1 it
+  sat ~2 mm high and off-centre, and the collar was at (90.6, 317.6), not (92.8,
+  316.5). It was found by light touches with the bare nozzle, watching whether the
+  enclosure moved.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
