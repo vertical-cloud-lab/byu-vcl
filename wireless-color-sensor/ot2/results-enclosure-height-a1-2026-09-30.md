@@ -1,4 +1,4 @@
-# Enclosure height over well A1: first touch at nozzle z ≈ 87.9
+# Enclosure height over well A1: first touch at nozzle z ≈ 87.9; read at z 86.5
 
 **2026-09-30, 11:18–11:46 MDT. Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
 run the enclosure test for the correct height, very close to the 96-well plate.**
@@ -6,14 +6,51 @@ One pick-up. The morning's runs 1–3 had measured the plate's centre
 ([`results-enclosure-height-2026-09-30.md`](results-enclosure-height-2026-09-30.md)).
 This run went to **well A1** instead, where the yellow paint will go.
 
+## The read height: nozzle z 86.5 over A1, picked by eye
+
+Timothy Commins, watching the run, at [11:40:45 MDT](https://github.com/vertical-cloud-lab/byu-vcl/pull/202#issuecomment-5916514275):
+*"cancel the test ... the height that it currently is at is perfect."* The nozzle
+had reached **z 86.5 over A1** at 11:40:41 and was still there. **That is the read
+height over A1. It replaces "read at z 88.5", the session's own suggestion below.**
+
+- **At z 86.5 the enclosure sits on the plate.** Its foot first touches at z ≈ 87.9,
+  so 86.5 is ~1.4 mm further down. The extra travel did not push the enclosure up
+  the nozzle: afterwards it hung within ~0.3 mm of where it had on the way down
+  ([below](#finding-the-touch)), and it let go normally in A2 (495–499 counts).
+- **The AC's protocol does the same.** It reads at `plate[well].top(z=-1.3)`, which
+  asks for the enclosure's bottom 1.3 mm below the well rim, i.e. pressed onto the
+  plate ([`README.md`](README.md#calibrating-with-the-opentrons-ui-instead-of-hand-tuned-offsets)).
+- **The exact second of the judgement doesn't matter much.** In the ~70 s before the
+  comment the nozzle stepped from 88.25 (11:39:33) to 86.5 in 0.25 mm steps, and
+  everything from 87.75 down has the foot on the plate. Before that it had paused at
+  z 88.5 for 75 s (11:38:10–11:39:25), ~0.6 mm clear. If that pause is what looked
+  right, the number is 88.5 instead.
+- **Only A1 has been pressed this far.** At the plate's centre, 1.4 mm past its touch
+  would be z ≈ 87.0, untested. A single z for the whole plate would press ~1.4 mm at
+  A1 and ~1.9 mm at the centre.
+- **The session running the test ended it**, not the comment: its own plan was to
+  hold at z 88.5 for a photo and go back, and it sent `return` at 11:41:50, 65 s
+  after the comment, without having read it. A second session (triggered by the
+  comment) only watched the return and then wrote this section.
+
+**Why it looked stopped for 20 minutes.** It wasn't stopped: between 11:26 and
+11:41 the nozzle made 46 moves over A1, most of them ~10 s apart. Below z 90 each
+move was 0.25–0.5 mm, too small to see, and five times it held still for 1–2.7 min
+while the session looked at the numbers. Its PR comment was last updated at 11:22,
+so from outside nothing seemed to be happening. On a long ladder, update the
+comment as it goes.
+
+## What the session measured
+
 - **Over A1 the foot first touches at nozzle z ≈ 87.9** (between 88.0 and 87.75).
-  **Read at z 88.5** there, ~0.6 mm clear.
+  z 88.5 there is ~0.6 mm clear. (That was this session's suggested read height,
+  before the pick above.)
 - **That is ~0.5 mm lower than the plate's centre** (88.4 in runs 2 and 3). This
   pick-up hung the same way as those two, so the difference is the plate, not the
   grip: under the pipette, the plate's back-left corner sits lower than its middle.
-- **One height for the whole plate: z 89.0.** It is ~0.6 mm clear at the centre and
-  ~1.1 mm clear at A1. A2 and A3 lie between A1 and the centre, so they should
-  touch between 87.9 and 88.4. That hasn't been tested.
+- **If it must stay clear of the plate everywhere: z 89.0.** It is ~0.6 mm clear
+  at the centre and ~1.1 mm clear at A1. A2 and A3 lie between A1 and the centre,
+  so they should touch between 87.9 and 88.4. That hasn't been tested.
 - **The grip held**: 160 jolts in the socket with no slip, grip check 11.7×, the
   carry out, three descents onto the plate, the carry back. **Released seated in A2**
   (495–499 counts).

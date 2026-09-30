@@ -3,6 +3,26 @@
  "lab_time": "11:18-11:46 MDT",
  "request": "PR #202: run the enclosure test for the correct height, very close to (just above) the 96-well plate",
  "outcome": "over well A1 the enclosure first touches at nozzle z ~87.9 (light stops falling at the free rate between 88.0 and 87.75 on descents 1 and 3); ~0.5 mm lower than the plate centre's 88.4 (runs 2-3, same hang); returned and seated",
+ "read_height_picked": {
+  "nozzle_z": 86.5,
+  "well": "A1",
+  "pickup_press_z": 89.0,
+  "picked_by": "timothy-commins, by eye while watching the run",
+  "comment": "https://github.com/vertical-cloud-lab/byu-vcl/pull/202#issuecomment-5916514275",
+  "comment_local": "11:40:45",
+  "nozzle_at_comment": {
+   "z": 86.5,
+   "reached_local": "11:40:41",
+   "photo": "78_z86.5_robot.jpg"
+  },
+  "past_first_touch_mm": 1.4,
+  "state": "foot resting on the plate; ~1.4 mm of nozzle travel past the first touch at ~87.9",
+  "compare_ac": "AC protocol reads at plate[well].top(z=-1.3): 1.3 mm past the rim",
+  "in_the_70_s_before": "88.25 (11:39:33) down to 86.5 in 0.25 mm steps; all from 87.75 down have the foot on the plate",
+  "alternative": "if the 75 s pause at z 88.5 (11:38:10-11:39:25) is what looked right, 88.5 (~0.6 mm clear)",
+  "untested": "pressing ~1.4 mm past touch anywhere but A1; at the centre that would be z ~87.0",
+  "supersedes": "recommendation.read_z_over_A1 (88.5)"
+ },
  "robot": {
   "serial": "OT2CEP20210722R13",
   "api": "8.8.1",
@@ -589,7 +609,8 @@
   "read_z_over_A1": 88.5,
   "clearance_A1_mm": 0.6,
   "read_z_one_height_whole_plate": 89.0,
-  "note": "A2 and A3 lie between A1 and the centre, so their touch is expected between 87.9 and 88.4; untested"
+  "note": "A2 and A3 lie between A1 and the centre, so their touch is expected between 87.9 and 88.4; untested",
+  "superseded_by": "read_height_picked (nozzle z 86.5 over A1)"
  },
  "return": {
   "cmd_local": "11:41:50",

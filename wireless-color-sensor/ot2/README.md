@@ -998,10 +998,19 @@ height test again. One pick-up, carried to well A1 (where the yellow paint goes)
 instead of the plate's centre. Write-up in
 [`results-enclosure-height-a1-2026-09-30.md`](results-enclosure-height-a1-2026-09-30.md).
 
+- **Read height over A1: nozzle z 86.5, picked by eye.** Timothy Commins, watching,
+  [at 11:40:45](https://github.com/vertical-cloud-lab/byu-vcl/pull/202#issuecomment-5916514275):
+  "the height that it currently is at is perfect". The enclosure was sitting on the
+  plate, ~1.4 mm past its first touch, which is what the AC's `plate[well].top(z=-1.3)`
+  asks for too. This replaces the session's own "read at z 88.5". Only A1 has been
+  pressed this far; at the centre the same press would be z ≈ 87.0, untested.
 - **Over A1 the foot first touches at nozzle z ≈ 87.9** (between 88.0 and 87.75, on
-  two descents). **Read there at z 88.5**, ~0.6 mm clear. At the centre it was 88.4
-  with the same hang, so the plate sits ~0.5 mm lower under A1 than under its centre.
-  **One height for the whole plate: z 89.0.**
+  two descents), so z 88.5 is ~0.6 mm clear. At the centre it was 88.4 with the same
+  hang, so the plate sits ~0.5 mm lower under A1 than under its centre. To stay
+  clear of the plate everywhere, use z 89.0.
+- It looked stopped from outside for ~20 min, but it made 46 moves over A1 in that
+  time: 0.25–0.5 mm each near the plate, too small to see, and the PR comment went
+  un-updated after 11:22. On a long ladder, update the comment as it goes.
 - At A1 the light does not go flat at once, as it does at the centre. It breaks from
   ~35 to ~16 counts per 0.25 mm, then keeps easing off to ~4 by z 87.0. The foot
   overhangs the plate's back and left edges there.
