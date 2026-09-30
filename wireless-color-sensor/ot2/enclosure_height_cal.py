@@ -97,7 +97,9 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
     z <mm>          move the nozzle to this Z over the target (bounded, stepped)
     xy <x> <y>      move the target, at the current Z, only when Z >= 125
     floor <mm>      change the lowest Z that ``z`` will accept
-    read [n]        take n sensor readings where it is (default 3)
+    read [n] [tag]  take n sensor readings where it is (default 3). Every
+                    reading the script takes, here or at a step, is also
+                    appended in full (8 channels) to ``readings.jsonl``
     photo           photograph again without moving
     return          lift, carry back the way it came (up to --approach-z before
                     the base), down into the pocket, let go from the
@@ -148,6 +150,7 @@ FFMPEG = os.path.expanduser("~/ytframes/bin/ffmpeg")
 CMD = os.path.join(HERE, "cmd")
 STATE = os.path.join(HERE, "state.json")
 LOGFILE = os.path.join(HERE, "log.txt")
+READINGS = os.path.join(HERE, "readings.jsonl")
 
 # Base in slot 10. Its LEFT socket (A1) is at the within-slot offset every run
 # since PR #60 used. The RIGHT socket (A2), where the enclosure was found on
@@ -337,6 +340,14 @@ class Cal:
             for i in range(n):
                 r = self.link.read(label=f"cal-{label}-{i + 1}")
                 totals.append(r["total"])
+                # Every reading's 8 channels, not just its total: until
+                # 2026-09-30 the spectra had to be read separately from the
+                # runner while the enclosure sat still.
+                row = {k: r[k] for k in ("experiment_id", "channels", "total",
+                                         "t_request_utc", "t_response_utc")}
+                row.update(label=label, pos=self.pos, seq=self.seq)
+                with open(READINGS, "a") as fh:
+                    fh.write(json.dumps(row) + "\n")
         except Exception as exc:  # noqa: BLE001 - the sensor is a cross-check only
             self.log(f"sensor read failed: {exc}")
             try:
@@ -832,8 +843,9 @@ class Cal:
                     self.log(f"floor now {f}")
                 elif op == "read":
                     n = int(cmd[1]) if len(cmd) > 1 else 3
-                    self.history.append({"label": "read", "pos": self.pos,
-                                         "reads": self.read(n, "extra")})
+                    tag = cmd[2] if len(cmd) > 2 else "extra"
+                    self.history.append({"label": f"read-{tag}", "pos": self.pos,
+                                         "reads": self.read(n, tag)})
                 elif op == "photo":
                     self.photos("again", reads=2)
                 elif op == "return" and self.aboard and self.phase in ("pickup", "carry", "ladder"):
