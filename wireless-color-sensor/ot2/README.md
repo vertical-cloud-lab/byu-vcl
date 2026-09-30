@@ -1020,6 +1020,36 @@ instead of the plate's centre. Write-up in
 - Grip: 160 jolts in the socket with no slip, grip check 11.7×, carried out and back
   via z 190, **released seated** (495–499 counts).
 
+## 2026-09-30 (afternoon) — paint into A1–A3 and read: yellow and red read as themselves
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): take the
+paint from the vials in slot 3 with a tip, put each colour in its own well, and read
+it with the sensor. Write-up in
+[`results-paint-plate-2026-09-30.md`](results-paint-plate-2026-09-30.md).
+
+- **200 µL each: yellow → A1, red → A2, blue → A3**, with one fresh tip each (B1,
+  C1, D1), all dropped in the trash. The driver is [`paint_transfer.py`](paint_transfer.py).
+- **The vials are loose, not in a rack**: three open ~23 mm glass vials in a row
+  across slot 3, paint ~48 mm deep. Their centres came from a camera model fitted
+  to 40 photos of the bare nozzle (0.40 px rms), plus a cylinder fitted to each
+  vial's outline. Blue is at (291.6, 41.9), yellow at (326.4, 39.4), red at
+  (367.6, 41.8). The tip goes straight down to z 38, ~10 mm under the paint, and
+  every photo out of a vial showed the tip full of that colour.
+- **Read with the enclosure resting on the plate at nozzle z 86.5**, five readings
+  per well, rail lights on, and the empty well A6 for comparison. Against A6,
+  red's 620 nm share is **+4.16 share points**, the largest colour signal this rig
+  has produced (previous record 2.61). Yellow's 440 nm share is −2.82. Blue passes
+  the most 440–470 nm of the three paints, but against A6 it is mostly just darker.
+- The spread across five readings was ≤ 0.036 share points per channel.
+- **The pipette's body pressed down on the vials once.** A calibration look with
+  the bare nozzle at (245, 45, 20) brought it down on them. The body reaches at
+  least ~35 mm to +X of the nozzle. Nothing moved, and Z lost ~7.25 mm of steps
+  until the next home. Low looks are now limited to x ≤ 200.
+- `enclosure_height_cal.py --clear-z 91` crosses the known-clear stretch above the
+  plate in one move. The enclosure script records totals only, so the full
+  spectra were read over MQTT from the runner while it sat still. The enclosure
+  was **released seated** in A2 (482–488 counts).
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by

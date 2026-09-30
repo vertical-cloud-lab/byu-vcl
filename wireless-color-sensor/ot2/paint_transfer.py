@@ -74,11 +74,11 @@ from tip_cal import (  # noqa: E402
 
 LOOK_MIN_Z = 70.0            # bare nozzle end; the vial rims are expected near z 61
 # Lower looks, for fitting the camera, only over slots known to be empty and
-# well away from the vials. The pipette's body reaches ~50 mm to +X of the
-# nozzle and sits ~30 mm above its end: on 2026-09-30 a bare-nozzle look at
-# (245, 45, 20) pressed the body down onto the vials standing at x >= 280, and
-# the Z axis silently lost ~7 mm of steps until the next home. So low looks
-# also stay at x <= LOW_LOOK_MAX_X.
+# well away from the vials. The pipette's body reaches at least ~35 mm to +X
+# of the nozzle and sits roughly 30 mm above its end: on 2026-09-30 a
+# bare-nozzle look at (245, 45, 20) pressed the body down onto the vials
+# standing at x >= 280, and the Z axis silently lost ~7 mm of steps until the
+# next home. So low looks also stay at x <= LOW_LOOK_MAX_X.
 LOW_LOOK_SLOTS = (2, 5, 8)
 LOW_LOOK_MIN_Z = 15.0
 LOW_LOOK_MAX_X = 200.0
