@@ -1067,7 +1067,9 @@ published spectra of its pigments (Liquitex lists PY74; PR170 + PR9; PB15:3).
   empty well and a perfectly white one ~0.9, so colour differences come out ~2.7× smaller than they
   are. Red reflects 1–3% at 440–550 nm and read 0.46–0.57 there.
 - **Fix: a white and a black well on every plate** (BASICS Titanium White and Mars
-  Black), and `reflectance = (paint − black) ÷ (white − black)` per channel.
+  Black, watered down in the same ratio as the colour vials, 200 µL each), and
+  `reflectance = (paint − black) ÷ (white − black)` per channel. Stir every vial
+  just before the run: watered-down paint settles, white and black fastest.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

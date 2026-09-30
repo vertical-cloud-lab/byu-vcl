@@ -76,8 +76,10 @@ the paint went in.
 `tip_cal.py`. It ran on the OT-2 link Pi and took one command at a time.
 
 **The vials are loose.** There are three open glass vials standing in a row across
-slot 3, with no rack, so the robot had no labware for them. Their positions came
-from the robot's camera in two steps:
+slot 3, with no rack, so the robot had no labware for them. They hold Liquitex
+BASICS diluted in water ([#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197));
+the ratio wasn't recorded, and the wells got that paint with nothing added. The
+vials' positions came from the robot's camera in two steps:
 
 1. **Fitting the camera.** The bare nozzle was photographed at 40 known positions
    (z 20–100) over empty deck and high over the vials. A projective camera model

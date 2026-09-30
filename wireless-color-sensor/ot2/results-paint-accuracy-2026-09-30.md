@@ -27,10 +27,15 @@ The spectra are dried drawdowns from Zsolt Kovács-Vajna's Color Mixing Tools
 database (University of Brescia), as redistributed in
 [rubenwiersma/painting_tools](https://github.com/rubenwiersma/painting_tools/tree/72f2ced444c1508dfa13ccf5e5d4e25af83fbc38/painting_tools/measurements/pigments/cmt)
 under CC BY-NC-SA 4.0. The script fetches them from that pinned commit rather than
-copying them here. They are not these exact paints: BASICS carry less pigment, and
-the drawdowns are dry. Wet acrylic is milky until it dries, so for yellow and blue
-the chart also shows the pigment mixed 1:1 with titanium white, and the wet paint
-should fall between the two. Red is shown as the range between PR170 and PR9.
+copying them here. They are not these exact paints: BASICS carry less pigment, the
+drawdowns are dry, and ours was watered down in its vials
+([#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197); the ratio wasn't
+recorded). Water alone shouldn't change what an opaque layer reflects, since it
+thins what absorbs and what scatters equally, and ~5 mm of paint should be opaque
+wherever these pigments absorb. Wet acrylic is milky until it dries, so for yellow
+and blue the chart also shows the pigment mixed 1:1 with titanium white (white
+paint, not water), and the wet paint should fall between the two. Red is shown as
+the range between PR170 and PR9.
 
 Each channel is modelled as a Gaussian at the AS7341 datasheet centre and FWHM
 (415/26, 445/30, 480/36, 515/39, 555/39, 590/40, 630/50, 680/52 nm) under even
@@ -114,18 +119,39 @@ paths fit, and these readings can't tell them apart:
 
 ## What would fix it
 
-1. **A white well and a black well on every plate**: Liquitex BASICS Titanium
-   White and Mars Black, 200 µL each, read the same way as the paints. Then, per
-   channel, `reflectance = (paint − black) ÷ (white − black)`. The black well
-   measures the extra light directly, and the white well replaces the empty well,
-   which is a white deck seen through clear plastic, not a white paint. A per-well
-   white reference is what took the Acceleration Consortium's spread from 6–7% to
+1. **A white well and a black well on every plate**: Liquitex BASICS
+   [Titanium White](https://www.liquitex.com/products/basics-acrylic-color-titanium-white)
+   (PW6) and [Mars Black](https://www.liquitex.com/products/basics-acrylic-color-mars-black)
+   (PBk11), **watered down in the same ratio as the colour vials**, 200 µL each,
+   read the same way as the paints. Then, per channel,
+   `reflectance = (paint − black) ÷ (white − black)`. The black well measures the
+   extra light directly, and the white well replaces the empty well, which is a
+   white deck seen through clear plastic, not a white paint. A per-well white
+   reference is what took the Acceleration Consortium's spread from 6–7% to
    1.2–2.3% ([`accuracy-provenance.md`](accuracy-provenance.md)); the black well
    adds the offset, which is large here.
+
+   Watered down, not straight from the tube, because they are the scale the
+   colours are read against, so they should differ from the colours only in
+   pigment: same liquid, same volume, same surface. Water doesn't make them less
+   white or less black at ~5 mm deep, since it thins what absorbs and what
+   scatters equally, and Liquitex rates both pigments opaque. Straight BASICS is
+   a medium-viscosity paint, too thick to pipette reliably with the P300;
+   upstream, even Crayola washable paint left sticky bubbles after blow-out at
+   1:15–1:20 ([`accuracy-provenance.md`](accuracy-provenance.md)). No white or
+   black was on the 2026-09-30 plate, and the 2026-09-04 receipt on
+   [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) has only the
+   three colours, so both still need buying.
 2. **Leave out 410 nm** under the rail lights.
 3. **Read every well the same time after pipetting.** Wet acrylic darkens as it
    dries. These wells were read 31–38 min after dispensing (yellow 12:48 → 13:25,
    red 12:54 → 13:27, blue 12:59 → 13:29 MDT).
+4. **Stir every vial just before the run.** Watered-down paint settles: upstream,
+   paint left overnight settled and the pipette drew the denser bottom layer
+   ([ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2605861484)).
+   Titanium white and iron-oxide black are about three times as dense as the
+   organic pigments in the three colours (~4.2 and ~5.2 g/cm³ against ~1.4–1.6),
+   so they settle faster. The robot draws from ~10 mm under the surface.
 
 To find the path: read the black well as it is, then again with black tape around
 the enclosure's lower sides. If the reading falls, the walls leak. Spacing the
