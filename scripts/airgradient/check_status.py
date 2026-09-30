@@ -44,9 +44,10 @@ BUCKET = pd.Timedelta("5min")
 
 # (local time, label); restarts are found in the raw uploads and marked on
 # their own. Sep 29: Sterling plugged in and switched on the Quest 155 (pump
-# unplugged) while the monitor was offline. It came back at a 3:55 pm restart,
-# and after a second restart at 5:36 pm its Wi-Fi signal changed, which fits
-# Sterling moving it into the enclosure "around 5:00 pm".
+# unplugged) while the monitor was offline. The 3:55 pm restart that brought
+# it back was Sterling power-cycling it before moving it into the enclosure
+# "around 5:00 pm"; after a second restart at 5:36 pm its Wi-Fi signal
+# changed, so it was unplugged and moved again then.
 EVENTS = [("2026-09-29 13:30", "~1:30 pm,\ndehumidifier on")]
 # Room baseline ends here. Only earlier readings go into the room fit, and
 # later ones are drawn as "dehumidifier on".
@@ -205,12 +206,10 @@ def style_axis(ax, ylabel):
     ax.set_ylabel(ylabel, color=SECONDARY, fontsize=10)
 
 
-def step_to(series: pd.Series, x_end, x_start=None) -> pd.Series:
+def step_to(series: pd.Series, x_end) -> pd.Series:
     """Daily values as a step line carried out to x_end."""
     s = series.dropna()
     s = s[s.index <= x_end]
-    if x_start is not None:  # keep y autoscaling to the days on show
-        s = s[s.index >= x_start.floor("D")]
     s[x_end] = s.iloc[-1]
     return s
 
@@ -302,20 +301,50 @@ def main() -> None:
     print(daily[["rhum", "expected_rh", "expected_dew", "out_dew"]]
           .tail(7).round(1).to_string())
 
-    after = df[df.index >= room_until].copy()
-    after["expected_dew"] = daily["expected_dew"].reindex(
-        after.index, method="ffill")
-    after["room_rh"] = daily["expected_rh"].reindex(after.index, method="ffill")
-    print("since the dehumidifier went on (monitor vs expected room):")
-    print(after[["rhum", "atmp", "dew", "room_rh", "expected_dew"]]
-          .resample("1h").mean().round(1).to_string())
+    ref, ref_sd = hourly_room(room, w)
+    after = hourly[hourly.index >= room_until].join(ref).dropna()
+    after["heat"] = after["rh"] - rh_at(after["dew_ref"], after["atmp"])
+    after["water"] = rh_at(after["dew_ref"], after["atmp"]) - after["rhum"]
+    after["less_vapor_%"] = 100 * (1 - rh_at(after["dew"], 0)
+                                   / rh_at(after["dew_ref"], 0))
+    print("since the dehumidifier went on, monitor vs expected room (hourly). "
+          "heat/water: RH points of the gap from warming and from drying:")
+    print(after[["rhum", "rh", "atmp", "t", "dew", "dew_ref", "heat", "water",
+                 "less_vapor_%"]].round(1).to_string())
 
     x_end = now.tz_convert(TZ) + pd.Timedelta("12h")
     events = [(pd.Timestamp(t, tz=TZ), label) for t, label in EVENTS]
     plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
                   last_seen, now)
-    plot_zoom(df, room_until, daily, spans, events + boots, resid, zoom_from,
+    plot_zoom(df, room_until, ref, ref_sd, spans, events + boots, zoom_from,
               now)
+
+
+def hourly_room(room: pd.DataFrame, w: pd.DataFrame) -> tuple:
+    """Hour-by-hour expected room humidity, for comparing with the enclosure.
+
+    The room's hourly dew point follows the trailing 24 h mean of outdoor dew
+    point, plus a daily cycle: about 1 C below that at 5-7 pm and 1 C above
+    at 9-11 am. RH is then taken at the room's median temperature over its
+    last two measured weeks. Returns (hourly frame, residual sd of dew point).
+    """
+    out24 = w["dew_point_2m"].rolling(24, min_periods=18).mean()
+    fit = pd.DataFrame({"dew": room["dew"], "out24": out24}).dropna()
+    slope, icept = np.polyfit(fit["out24"], fit["dew"], 1)
+    cycle = (fit["dew"] - (slope * fit["out24"] + icept)).groupby(
+        fit.index.hour).mean()
+    dew = slope * out24 + icept + cycle.reindex(out24.index.hour).to_numpy()
+    sd = (fit["dew"] - dew.reindex(fit.index)).std()
+    measured = room["atmp"].dropna()
+    t = measured[measured.index >= measured.index[-1] - pd.Timedelta("14D")]
+    t = t.median()
+    print(f"hourly room dew = {slope:.2f} x outdoor dew (trailing 24 h mean) "
+          f"+ {icept:.1f} C + hour-of-day term; residual sd {sd:.2f} C "
+          f"(n = {len(fit)} h); room temperature {t:.1f} C")
+    ref = pd.DataFrame({"dew_ref": dew, "t": t})
+    ref["rh"] = rh_at(ref["dew_ref"], t)
+    ref["rh_lo"], ref["rh_hi"] = rh_at(dew - sd, t), rh_at(dew + sd, t)
+    return ref.dropna(), sd
 
 
 def plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
@@ -365,31 +394,35 @@ def plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
     print("wrote", out)
 
 
-def plot_zoom(df, room_until, daily, spans, events, resid, zoom_from, now):
+def plot_zoom(df, room_until, ref, ref_sd, spans, events, zoom_from, now):
     x_end = now.tz_convert(TZ) + pd.Timedelta("30min")
     win = df[df.index >= zoom_from]
-    last_room = df.index[df.index < room_until][-1]
+    ref = ref[ref.index >= zoom_from.floor("h")].assign(
+        dew_lo=lambda r: r["dew_ref"] - ref_sd,
+        dew_hi=lambda r: r["dew_ref"] + ref_sd)
     fig, axes = plt.subplots(3, 1, figsize=(11.5, 9), sharex=True,
                              constrained_layout=True)
     fig.set_facecolor(SURFACE)
+    expected = f"room, expected from outdoor dew point (hourly, \N{PLUS-MINUS SIGN}1 sd band)"
     panels = [
-        ("Relative humidity (%)", "rhum", "expected_rh",
-         f"room, expected from outdoor dew point (±{resid.std():.0f}%)"),
-        ("Temperature (\N{DEGREE SIGN}C)", "atmp", "room_t",
-         f"room, last measured ({last_room:%b %d})"),
-        ("Dew point (\N{DEGREE SIGN}C)", "dew", "expected_dew",
-         "room, expected from outdoor dew point"),
+        ("Relative humidity (%)", "rhum", "rh", "rh_lo", "rh_hi", expected),
+        ("Temperature (\N{DEGREE SIGN}C)", "atmp", "t", None, None,
+         "room, median of its last 2 measured weeks"),
+        ("Dew point (\N{DEGREE SIGN}C)", "dew", "dew_ref", "dew_lo", "dew_hi",
+         expected),
     ]
     room = win.index < room_until
-    for ax, (ylabel, col, ref_col, ref_label) in zip(axes, panels):
+    for ax, (ylabel, col, ref_col, lo_col, hi_col, ref_label) in zip(axes, panels):
         style_axis(ax, ylabel)
         if room.any():
             ax.plot(win.index[room], win[col][room], color=BLUE,
                     linewidth=1.4, label="room")
         ax.plot(win.index[~room], win[col][~room], color=ORANGE,
                 linewidth=1.4, label="monitor, dehumidifier on")
-        ref = step_to(daily[ref_col], x_end, x_start=zoom_from)
-        ax.step(ref.index, ref, where="post", color=MUTED, linewidth=1.2,
+        if lo_col is not None:
+            ax.fill_between(ref.index, ref[lo_col], ref[hi_col], color=MUTED,
+                            alpha=0.18, linewidth=0)
+        ax.plot(ref.index, ref[ref_col], color=MUTED, linewidth=1.2,
                 label=ref_label)
         ax.legend(loc="lower left", bbox_to_anchor=(0, 1), ncol=2,
                   fontsize=8.5, frameon=False, labelcolor=SECONDARY)
