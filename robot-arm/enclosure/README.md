@@ -9,6 +9,9 @@ Figures and numbers behind the enclosure discussion in
 | `enclosure-options.png` | The quarter, half and full domes as sketched, plus spot D with the arm centred, all at one scale |
 | `cb154-arm-locations.png` | Spots D and E on [`cb154.pdf`](../../cb154.pdf), and the ceiling height available for a two-level setup |
 
+The enclosure chosen for spot D is modelled part by part in [`dome/`](dome/), with a cut list,
+3D exports and an assembly GIF.
+
 To regenerate the figures, run `xvfb-run -a python render_figures.py`. The script clones
 `agilexrobotics/piper_ros` at `ac41fcb` into `/tmp` for the URDF and meshes.
 
