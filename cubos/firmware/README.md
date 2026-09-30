@@ -8,6 +8,30 @@ applied casually.
 Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino)
 @ `228615b` ("fixed mixing function for pipette", 2025-08-27).
 
+## 2026-09-30: the board runs `panda_vcl_p20gen2_tic796_20260930.hex`
+
+The pipette driver is now a Pololu Tic T500 in STEP/DIR mode, whose finest step
+is 1/8 ([`../docs/tic-t500-pipette-setup.md`](../docs/tic-t500-pipette-setup.md)).
+This image is `panda_vcl_p20gen2_20260917.hex` with two constants changed in
+`include/Pipette.h`:
+
+| constant | was | now |
+| --- | --- | --- |
+| `STEPS_PER_MM` | 1592.0 (TMC2209 at 1/16) | **796.0** (Tic at 1/8) |
+| `MICROSTEPPING` | 16 | **8** (only feeds the TMC2209 setup call, which now writes to nothing) |
+
+Built on the Pi from `~/panda_fw_vcl`, the tree that built the 09-17 image:
+an unchanged rebuild reproduced that image byte-for-byte, and this one differs
+from it in 5 bytes, all `ldi` immediates for those two constants. Flashed and
+verified before and after with `avrdude -U flash:v`; record in
+[`../results/pipette_test_20260930/`](../results/pipette_test_20260930/README.md).
+796 is the safe choice while the scale is unconfirmed by a ruler: if 1592 were
+right after all, every move would come out half as long rather than twice as
+long. To go back: flash `panda_vcl_p20gen2_20260917.hex` with the `avrdude`
+command at the end of this file.
+
+The sections below describe the images before this one.
+
 ## ⚠️ 2026-09-17: a newer image is built and committed but **NOT flashed**
 
 `panda_vcl_p20gen2_20260917.hex` corrects the plunger planes and the driver

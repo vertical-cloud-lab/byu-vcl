@@ -13,6 +13,13 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> 🆕 **2026-09-30:** the Arduino now runs the same firmware with
+> `STEPS_PER_MM 796` for the Tic's 1/8 step, so the warning below is resolved
+> (796 cannot overshoot whichever scale is right; the ruler check is still
+> open). The first trio with the Tic in circuit stopped in `decap vial_1` when
+> all of the Pi's USB ports tripped over-current at once; see
+> [`pipette_test_20260930`](../results/pipette_test_20260930/README.md).
+
 **🔑 2026-09-29: the plunger moves.** A Pololu Tic T500 has replaced the condemned
 Adafruit 6121. Driven through the Arduino, the plunger went up to the limit
 switch, back down, and up to it again at every firmware rate, and the

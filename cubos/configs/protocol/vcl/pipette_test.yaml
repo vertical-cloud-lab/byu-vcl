@@ -1,3 +1,11 @@
+# 2026-09-30: pipette_park z and step 5's travel_z 87 -> 86. The 2026-09-26
+# gantry file has z_max 121, and travel_z resolves in the tipped pipette's
+# frame, so 87 + the 35 mm tip named gantry 122; 86 = 121 - 35, the same plane
+# the hover clamp picks for every tipped engage. With the vials moved +33 mm in
+# the deck file: validate_setup PASS, mock 12/12, passive_shadow 0 / 0.
+# Run 2026-09-30 00:22 UTC: stopped in step 2 when the Pi's USB ports tripped
+# over-current. See ../../../results/pipette_test_20260930/README.md.
+#
 # pipette_test.yaml -- SHORTENED rev: decap vial_1, pick up a tip, aspirate in
 # vial_1, park the pipette, recap vial_1, decap vial_2, blow out into vial_2,
 # drop the tip, cap vial_2, home. CubXL, 2026-09-01 rev 3.
@@ -79,7 +87,7 @@
 
 positions:
   park_position: [206.0, 25.0, 115.0]
-  pipette_park:  [258.0, 25.0, 87.0]   # CHANGED 2026-09-08 (was 182.0):
+  pipette_park:  [258.0, 25.0, 86.0]   # CHANGED 2026-09-08 (was 182.0):
                                        # Ben moved both parks to the near-Y
                                        # end of the deck. Pipette frame, so
                                        # gantry (206, 13, 122).
@@ -110,7 +118,7 @@ protocol:
   - move: 
       instrument: pipette
       position: pipette_park
-      travel_z: 87
+      travel_z: 86
 
 
 

@@ -188,6 +188,12 @@ now. Read the driver with `ticcmd --status` instead.
    1 mm at 1/8 step. What the flash fixes is every `MOVE_TO`, `ASPIRATE` and
    prime distance. Until then, if 796 holds, those are about twice as long as
    commanded.)
+   ✅ *2026-09-30: flashed `panda_vcl_p20gen2_tic796_20260930.hex` (the GEN2
+   image with 796, 5 bytes different, verified before and after), and `HOME`
+   stopped on the switch in 0.94 s. The ruler check (step 6) is still open; 796
+   is the value that cannot overshoot whichever scale is right. The first trio
+   then stopped on a USB over-current trip
+   ([record](../results/pipette_test_20260930/README.md)).*
 
 ### Idle current: what to add once it moves
 

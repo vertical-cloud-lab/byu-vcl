@@ -1,4 +1,15 @@
 # ben_6vials_tiprack.yaml -- @benwhitney5463's vial column plus the 2x15 tip
+# rack, CubXL.
+#
+# 2026-09-30: vial_1 y 0.665 -> 33.665 and vial_2 y 33 -> 66. Ben moved both
+# vials +33 mm in Y so the pipette can reach vial_1 (its lowest reachable deck
+# Y is 12.999). aspirate vial_1 now commands gantry (135.0, 20.666, 54.0).
+# validate_setup PASS, mock 12/12, passive_shadow 0 / 0. The "vial_1 is outside
+# the PIPETTE's reach" section below is history. Record:
+# ../../results/pipette_test_20260930/README.md
+#
+# --- the 2026-09-26 header, unchanged below ---
+# ben_6vials_tiprack.yaml -- @benwhitney5463's vial column plus the 2x15 tip
 # rack, CubXL, 2026-09-26 rev: the new bench, in the new calibration's frame
 # (391 / 236.665 / 124; see the gantry file).
 #
@@ -67,7 +78,7 @@ labware:
     diameter: 28
     location:
       x: 189
-      y: 0.665
+      y: 33.665   # 2026-09-30: was 0.665; Ben moved the vial +33 mm in Y
       z: 54
     capacity_ul: 1500
     working_volume_ul: 1200
@@ -80,7 +91,7 @@ labware:
     diameter: 28
     location:
       x: 189
-      y: 33
+      y: 66   # 2026-09-30: was 33; Ben moved the vial +33 mm in Y
       z: 54
     capacity_ul: 1500
     working_volume_ul: 1200
