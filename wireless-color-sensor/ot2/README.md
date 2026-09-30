@@ -991,6 +991,26 @@ request as the entry above, once the enclosure was right way up. Full write-up i
   316.5). It was found by light touches with the bare nozzle, watching whether the
   enclosure moved.
 
+## 2026-09-30 (midday) — over well A1 it touches at nozzle z ≈ 87.9, ~0.5 mm lower than the centre
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): run the
+height test again. One pick-up, carried to well A1 (where the yellow paint goes)
+instead of the plate's centre. Write-up in
+[`results-enclosure-height-a1-2026-09-30.md`](results-enclosure-height-a1-2026-09-30.md).
+
+- **Over A1 the foot first touches at nozzle z ≈ 87.9** (between 88.0 and 87.75, on
+  two descents). **Read there at z 88.5**, ~0.6 mm clear. At the centre it was 88.4
+  with the same hang, so the plate sits ~0.5 mm lower under A1 than under its centre.
+  **One height for the whole plate: z 89.0.**
+- At A1 the light does not go flat at once, as it does at the centre. It breaks from
+  ~35 to ~16 counts per 0.25 mm, then keeps easing off to ~4 by z 87.0. The foot
+  overhangs the plate's back and left edges there.
+- **The room light drifted by up to ~300 counts a minute** during this run, so only
+  descents taken while it was steady count. Check a repeated reading at a fixed
+  height before trusting a step's drop.
+- Grip: 160 jolts in the socket with no slip, grip check 11.7×, carried out and back
+  via z 190, **released seated** (495–499 counts).
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by

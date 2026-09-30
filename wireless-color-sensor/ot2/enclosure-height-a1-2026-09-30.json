@@ -1,0 +1,611 @@
+{
+ "date": "2026-09-30",
+ "lab_time": "11:18-11:46 MDT",
+ "request": "PR #202: run the enclosure test for the correct height, very close to (just above) the 96-well plate",
+ "outcome": "over well A1 the enclosure first touches at nozzle z ~87.9 (light stops falling at the free rate between 88.0 and 87.75 on descents 1 and 3); ~0.5 mm lower than the plate centre's 88.4 (runs 2-3, same hang); returned and seated",
+ "robot": {
+  "serial": "OT2CEP20210722R13",
+  "api": "8.8.1",
+  "maintenance_run": "c4f23a7f-538c-4d0c-a19a-d61b4aaab759"
+ },
+ "script_args": "--press-z 89.0 --carry-z 125 --carry-segment 400 --drop-dx 0 --max-speed 3 --no-live --target-x 14.38 --target-y 74.24 (approach z 190, approach y 220, leg 60)",
+ "script_commit": "12634c5",
+ "target": {
+  "well": "A1",
+  "plate": "corning_96_wellplate_360ul_flat in slot 1",
+  "nozzle_xy": [
+   14.38,
+   74.24
+  ]
+ },
+ "seated_baseline": [
+  492,
+  489
+ ],
+ "enclosure_vs_run3_z150_px": {
+  "enclosure_face": [
+   0.02,
+   0.02
+  ],
+  "base_static": [
+   0.01,
+   -0.01
+  ]
+ },
+ "pickup_xy": [
+  92.8,
+  316.5
+ ],
+ "no_contact_down_to": 100.0,
+ "press_nozzle_px_vs_z99": {
+  "97.5": 1.87,
+  "96": 3.11,
+  "94": 5.22,
+  "92": 7.74,
+  "91": 8.85,
+  "90": 9.65,
+  "89.5": 9.97,
+  "89": 11.01
+ },
+ "press_enclosure_px_vs_z99": {
+  "97.5": 0.02,
+  "96": 0.05,
+  "94": 0.06,
+  "92": 0.06,
+  "91": 0.09,
+  "90": 0.62,
+  "89.5": 0.81,
+  "89": 0.81
+ },
+ "reads_after_lift_z93": [
+  1030,
+  1031
+ ],
+ "grip_tests_in_pocket": {
+  "reference": "18_lifted_z93",
+  "jiggle y 0.3 40 3": -0.0,
+  "jiggle x 0.3 40 3": -0.0,
+  "jolts": 160
+ },
+ "up_110_reads": [
+  5755,
+  5754
+ ],
+ "grip_ratio": 11.7,
+ "carry": {
+  "carry_start_z190_reads": [
+   12767,
+   12767
+  ],
+  "at_a1_local": "11:25:56",
+  "reads_over_a1_z125": [
+   14222,
+   14226
+  ]
+ },
+ "descent_1": [
+  {
+   "z": 118.0,
+   "t_local": "11:26:40",
+   "reads": [
+    13853,
+    13928
+   ],
+   "photo": "28_z118_robot.jpg"
+  },
+  {
+   "z": 114.0,
+   "t_local": "11:26:50",
+   "reads": [
+    13629,
+    13640
+   ],
+   "photo": "29_z114_robot.jpg"
+  },
+  {
+   "z": 110.0,
+   "t_local": "11:27:01",
+   "reads": [
+    13190,
+    13190
+   ],
+   "photo": "30_z110_robot.jpg"
+  },
+  {
+   "z": 108.0,
+   "t_local": "11:27:11",
+   "reads": [
+    12912,
+    12914
+   ],
+   "photo": "31_z108_robot.jpg"
+  },
+  {
+   "z": 106.0,
+   "t_local": "11:27:21",
+   "reads": [
+    12565,
+    12567
+   ],
+   "photo": "32_z106_robot.jpg"
+  },
+  {
+   "z": 104.0,
+   "t_local": "11:27:31",
+   "reads": [
+    12176,
+    12179
+   ],
+   "photo": "33_z104_robot.jpg"
+  },
+  {
+   "z": 103.0,
+   "t_local": "11:27:41",
+   "reads": [
+    11965,
+    11962
+   ],
+   "photo": "34_z103_robot.jpg"
+  },
+  {
+   "z": 102.0,
+   "t_local": "11:27:51",
+   "reads": [
+    11746,
+    11744
+   ],
+   "photo": "35_z102_robot.jpg"
+  },
+  {
+   "z": 101.0,
+   "t_local": "11:28:02",
+   "reads": [
+    11519,
+    11519
+   ],
+   "photo": "36_z101_robot.jpg"
+  },
+  {
+   "z": 100.0,
+   "t_local": "11:28:12",
+   "reads": [
+    11292,
+    11292
+   ],
+   "photo": "37_z100_robot.jpg"
+  },
+  {
+   "z": 100.0,
+   "t_local": "11:28:25",
+   "reads": [
+    11295,
+    11293
+   ],
+   "photo": "38_z100_robot.jpg"
+  },
+  {
+   "z": 99.0,
+   "t_local": "11:28:35",
+   "reads": [
+    11067,
+    11070
+   ],
+   "photo": "39_z99_robot.jpg"
+  },
+  {
+   "z": 98.0,
+   "t_local": "11:28:45",
+   "reads": [
+    10828,
+    10831
+   ],
+   "photo": "40_z98_robot.jpg"
+  },
+  {
+   "z": 97.0,
+   "t_local": "11:28:55",
+   "reads": [
+    10614,
+    10613
+   ],
+   "photo": "41_z97_robot.jpg"
+  },
+  {
+   "z": 96.0,
+   "t_local": "11:29:05",
+   "reads": [
+    10424,
+    10424
+   ],
+   "photo": "42_z96_robot.jpg"
+  },
+  {
+   "z": 95.0,
+   "t_local": "11:29:15",
+   "reads": [
+    10285,
+    10288
+   ],
+   "photo": "43_z95_robot.jpg"
+  },
+  {
+   "z": 94.0,
+   "t_local": "11:29:25",
+   "reads": [
+    10143,
+    10143
+   ],
+   "photo": "44_z94_robot.jpg"
+  },
+  {
+   "z": 93.0,
+   "t_local": "11:29:35",
+   "reads": [
+    9817,
+    9815
+   ],
+   "photo": "45_z93_robot.jpg"
+  },
+  {
+   "z": 93.0,
+   "t_local": "11:30:31",
+   "reads": [
+    10000,
+    10002
+   ],
+   "photo": "46_z93_robot.jpg"
+  },
+  {
+   "z": 92.0,
+   "t_local": "11:30:41",
+   "reads": [
+    9843,
+    9842
+   ],
+   "photo": "47_z92_robot.jpg"
+  },
+  {
+   "z": 91.0,
+   "t_local": "11:30:51",
+   "reads": [
+    9687,
+    9688
+   ],
+   "photo": "48_z91_robot.jpg"
+  },
+  {
+   "z": 90.0,
+   "t_local": "11:31:00",
+   "reads": [
+    9532,
+    9531
+   ],
+   "photo": "49_z90_robot.jpg"
+  },
+  {
+   "z": 90.0,
+   "t_local": "11:31:18",
+   "reads": [
+    9529,
+    9530
+   ],
+   "photo": "50_z90_robot.jpg"
+  },
+  {
+   "z": 89.5,
+   "t_local": "11:31:28",
+   "reads": [
+    9439,
+    9441
+   ],
+   "photo": "51_z89.5_robot.jpg"
+  },
+  {
+   "z": 89.0,
+   "t_local": "11:31:38",
+   "reads": [
+    9318,
+    9317
+   ],
+   "photo": "52_z89_robot.jpg"
+  },
+  {
+   "z": 88.75,
+   "t_local": "11:31:47",
+   "reads": [
+    9276,
+    9275
+   ],
+   "photo": "53_z88.75_robot.jpg"
+  },
+  {
+   "z": 88.75,
+   "t_local": "11:32:07",
+   "reads": [
+    9275,
+    9273
+   ],
+   "photo": "54_z88.75_robot.jpg"
+  },
+  {
+   "z": 88.5,
+   "t_local": "11:32:17",
+   "reads": [
+    9236,
+    9238
+   ],
+   "photo": "55_z88.5_robot.jpg"
+  },
+  {
+   "z": 88.25,
+   "t_local": "11:32:27",
+   "reads": [
+    9204,
+    9204
+   ],
+   "photo": "56_z88.25_robot.jpg"
+  },
+  {
+   "z": 88.0,
+   "t_local": "11:32:37",
+   "reads": [
+    9169,
+    9169
+   ],
+   "photo": "57_z88_robot.jpg"
+  },
+  {
+   "z": 88.0,
+   "t_local": "11:33:01",
+   "reads": [
+    9171,
+    9171
+   ],
+   "photo": "58_z88_robot.jpg"
+  },
+  {
+   "z": 87.75,
+   "t_local": "11:33:11",
+   "reads": [
+    9154,
+    9154
+   ],
+   "photo": "59_z87.75_robot.jpg"
+  },
+  {
+   "z": 87.5,
+   "t_local": "11:33:20",
+   "reads": [
+    9142,
+    9139
+   ],
+   "photo": "60_z87.5_robot.jpg"
+  },
+  {
+   "z": 87.25,
+   "t_local": "11:33:30",
+   "reads": [
+    9128,
+    9129
+   ],
+   "photo": "61_z87.25_robot.jpg"
+  },
+  {
+   "z": 87.0,
+   "t_local": "11:33:39",
+   "reads": [
+    9119,
+    9119
+   ],
+   "photo": "62_z87_robot.jpg"
+  },
+  {
+   "z": null,
+   "t_local": "11:34:55",
+   "reads": [
+    8909,
+    8741
+   ],
+   "photo": "63_again_robot.jpg"
+  }
+ ],
+ "lift_check_z90": {
+  "photo": "64_z90_robot.jpg",
+  "reads": [
+   9303,
+   9259
+  ],
+  "slot_feature_vs_descending_z90_px": [
+   -0.13,
+   -0.05
+  ],
+  "note": "after going down to z 87.0 the enclosure hung where it had on the way down (<= 0.2 px, <= ~0.3 mm)"
+ },
+ "descent_2": [
+  {
+   "z": 89.75,
+   "t_local": "11:37:21",
+   "reads": [
+    8993,
+    8994
+   ],
+   "photo": "65_z89.75_robot.jpg"
+  },
+  {
+   "z": 89.5,
+   "t_local": "11:37:32",
+   "reads": [
+    8941,
+    8940
+   ],
+   "photo": "66_z89.5_robot.jpg"
+  },
+  {
+   "z": 89.25,
+   "t_local": "11:37:42",
+   "reads": [
+    8904,
+    8906
+   ],
+   "photo": "67_z89.25_robot.jpg"
+  },
+  {
+   "z": 89.0,
+   "t_local": "11:37:51",
+   "reads": [
+    8832,
+    8838
+   ],
+   "photo": "68_z89_robot.jpg"
+  },
+  {
+   "z": 88.75,
+   "t_local": "11:38:01",
+   "reads": [
+    8828,
+    8801
+   ],
+   "photo": "69_z88.75_robot.jpg"
+  },
+  {
+   "z": 88.5,
+   "t_local": "11:38:10",
+   "reads": [
+    8795,
+    8759
+   ],
+   "photo": "70_z88.5_robot.jpg"
+  }
+ ],
+ "descent_3": [
+  {
+   "z": 88.25,
+   "t_local": "11:39:33",
+   "reads": [
+    8345,
+    8492
+   ],
+   "photo": "71_z88.25_robot.jpg"
+  },
+  {
+   "z": 88.0,
+   "t_local": "11:39:42",
+   "reads": [
+    8461,
+    8462
+   ],
+   "photo": "72_z88_robot.jpg"
+  },
+  {
+   "z": 87.75,
+   "t_local": "11:39:52",
+   "reads": [
+    8438,
+    8436
+   ],
+   "photo": "73_z87.75_robot.jpg"
+  },
+  {
+   "z": 87.5,
+   "t_local": "11:40:02",
+   "reads": [
+    8426,
+    8427
+   ],
+   "photo": "74_z87.5_robot.jpg"
+  },
+  {
+   "z": 87.25,
+   "t_local": "11:40:12",
+   "reads": [
+    8420,
+    8417
+   ],
+   "photo": "75_z87.25_robot.jpg"
+  },
+  {
+   "z": 87.0,
+   "t_local": "11:40:21",
+   "reads": [
+    8413,
+    8414
+   ],
+   "photo": "76_z87_robot.jpg"
+  },
+  {
+   "z": 86.75,
+   "t_local": "11:40:31",
+   "reads": [
+    8410,
+    8409
+   ],
+   "photo": "77_z86.75_robot.jpg"
+  },
+  {
+   "z": 86.5,
+   "t_local": "11:40:41",
+   "reads": [
+    8198,
+    8141
+   ],
+   "photo": "78_z86.5_robot.jpg"
+  }
+ ],
+ "hold_z88.5": {
+  "photo": "79_z88.5_robot.jpg",
+  "reads": [
+   8451,
+   8450
+  ],
+  "read_4": [
+   8405,
+   8393,
+   8399,
+   8408
+  ],
+  "slot_feature_vs_descending_z88.5_px": [
+   -0.13,
+   -0.19
+  ]
+ },
+ "contact_a1": {
+  "nozzle_z_first_touch": 87.9,
+  "bracket": [
+   87.75,
+   88.0
+  ],
+  "evidence": "light fell 33-38 counts per 0.25 mm down to 88.0, then 16 (descent 1) and 24.5 (descent 3) from 88.0 to 87.75, then 13.5, 12, 9.5 (d1) / 10.5, 8, 5, 4 (d3): a break, then a slow settle rather than the centre's abrupt flat",
+  "fully_down_by": 87.0,
+  "ambient": "the light drifted by up to ~300 counts a minute at a fixed height (z 93 repeated: 9816 -> 10001; z 87.0 repeated: 9119 -> 8825), so only steps taken while it was steady are used; descent 2 was during a drift and is not used",
+  "camera": "the enclosure's dark front slot moved 0.5-0.8 px per mm with the nozzle down to z 89 on descents 1 and 2; below that the per-step shifts (~0.1 px) are within JPEG noise and do not locate the touch on their own"
+ },
+ "contact_centre_same_hang": {
+  "run2": 88.4,
+  "run3": 88.4,
+  "run1": 88.1,
+  "note": "this pick-up hung like runs 2-3: lift reads 1030 vs 1026 and 1045; press pixels within 0.15 px of run 3"
+ },
+ "recommendation": {
+  "read_z_over_A1": 88.5,
+  "clearance_A1_mm": 0.6,
+  "read_z_one_height_whole_plate": 89.0,
+  "note": "A2 and A3 lie between A1 and the centre, so their touch is expected between 87.9 and 88.4; untested"
+ },
+ "return": {
+  "cmd_local": "11:41:50",
+  "route": "up to 125 over A1, across to x 92.8 at y 74.24, back along x 92.8 at 125 to y 220, up to 190, over the socket at 190, straight down to 130, 110, 100, release at 94",
+  "reads_over_pocket_z100": [
+   2776,
+   2781
+  ],
+  "reads_after_release": [
+   495,
+   499
+  ],
+  "reads_after_home": [
+   498,
+   498
+  ],
+  "closed_local": "11:46:02"
+ }
+}
