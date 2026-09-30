@@ -18,7 +18,7 @@ does not hit the back wall when it parks.
 | [`cut-list.md`](cut-list.md) | Pipe cut lengths and stick plan, canvas panels, drilling, clamp count, and a priced shopping list |
 | [`parts.py`](parts.py) | One function per part, built from the maker's published dimensions |
 | [`build.py`](build.py) | Places every part, then writes the cut list and the exports below |
-| [`animate.py`](animate.py) | Renders the assembly GIF and the still |
+| [`animate.py`](animate.py) | Renders the parts sheet, the still and the assembly GIF |
 | `dome-assembly.gif` | The assembly, step by step (640 × 480, 91 frames, renders in about 15 s) |
 | `dome-finished.png` | The finished enclosure with the flap rolled up |
 | `dome-parts.png` | Each part on its own, with the numbers it is built from |
