@@ -131,6 +131,13 @@ paths fit, and these readings can't tell them apart:
    1.2–2.3% ([`accuracy-provenance.md`](accuracy-provenance.md)); the black well
    adds the offset, which is large here.
 
+   **Correction, later on 2026-09-30:** watered down, the black looked grey and read
+   grey to the sensor too, and the white read dimmer than the yellow, so the
+   correction ran from −0.25 to 1.35
+   ([`results-white-black-2026-09-30.md`](results-white-black-2026-09-30.md)).
+   Make them less watery, until they look black and white in the well. The
+   reasoning below assumed ~5 mm of diluted paint is opaque; by eye the black isn't.
+
    Watered down, not straight from the tube, because they are the scale the
    colours are read against, so they should differ from the colours only in
    pigment: same liquid, same volume, same surface. Water doesn't make them less

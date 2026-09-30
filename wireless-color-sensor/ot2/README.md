@@ -1071,6 +1071,34 @@ published spectra of its pigments (Liquitex lists PY74; PR170 + PR9; PB15:3).
   `reflectance = (paint − black) ÷ (white − black)` per channel. Stir every vial
   just before the run: watered-down paint settles, white and black fastest.
 
+## 2026-09-30 (late afternoon) — a white and a black well: the correction fails because the black reads grey
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): Titanium
+White in A4 and Mars Black in A5 (the black "appears to be gray" watered down); read
+the colours for accuracy. No pipetting. Write-up in
+[`results-white-black-2026-09-30.md`](results-white-black-2026-09-30.md);
+[`analyse_white_black.py`](analyse_white_black.py) redoes every number.
+
+- **`(paint − black) ÷ (white − black)` gives −0.25 to 1.35** for the three colours
+  at 440–670 nm, scaled to the pigments' published reflectance. Only 2 of 21 values
+  land in the pigments' ranges. The shapes are right; the scale isn't.
+- **The black is grey to the sensor too.** The red (440–550 nm) and the blue
+  (510–670 nm), both near-black there, read 3–8% below it; it acts like a ~15–20%
+  grey. **The white is too dim**: the yellow reads 4–8% above it from 550 nm up. The
+  black reads 68–89% of the white, so the span between them is small.
+- **Neighbours matter.** With the white and black in A4 and A5, the empty A6 read
+  7–13% lower than at 13:31 and the blue A3 2–5% lower; A1 and A2, whose neighbours
+  didn't change, repeated within 1% over three hours. Light passes between wells
+  through the clear plate.
+- **Repeatable**: ≤ 0.7% within a visit, ≤ 1.7% between two trips 32 min apart.
+- **Next**: charge the sensor (it lasted 16 and 14 min off its base); put each paint
+  in a well with empty wells all round it; make the black and white less watery,
+  until they look black and white. Watering them down like the colours was wrong.
+- `enclosure_height_cal.py` now writes every reading's 8 channels to
+  `readings.jsonl`, and `read [n] [tag]` labels them. With the sensor dead, the
+  release was confirmed from the photo instead: the same pose before the pick-up
+  and after the eject, compared with `grip_shift.py`.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
