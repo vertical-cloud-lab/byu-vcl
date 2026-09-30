@@ -70,9 +70,9 @@ def boards(opt):
     out = []
     for s, nm in ((-1, "left"), (1, "right")):
         lo, hi = sorted((s * xi, s * h))
-        out.append(Board(f"side-{nm}", (lo, -h, 0), (hi, h, CLEAR), 2, (CLEAR, W), step=1, tags=("side",)))
+        out.append(Board(f"side-{nm}", (lo, -h, 0), (hi, h, CLEAR), 1, (W, CLEAR), step=1, tags=("side",)))
     if o["back"]:
-        out.append(Board("back", (-xi, h - T, 0), (xi, h, CLEAR), 2, (CLEAR, 2 * xi), step=2, tags=("back",)))
+        out.append(Board("back", (-xi, h - T, 0), (xi, h, CLEAR), 0, (2 * xi, CLEAR), step=2, tags=("back",)))
     if o["spine"]:
         zb = CLEAR - SPINE_H
         for s, nm in ((-1, "front"), (1, "rear")):

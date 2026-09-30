@@ -101,9 +101,9 @@ class Model:
 
         self.panel(2, ZD, xs, ys, deck_sec, True, t)                    # deck, grain along x
         for s in (-1, 1):
-            self.panel(0, s * XS, ys, zs, 1, False, t)                  # sides, grain vertical
+            self.panel(0, s * XS, ys, zs, 1, True, t)                   # sides, grain front to back
         if o["back"]:
-            self.panel(1, YB, xs, zs, 1, False, t)                      # back, grain vertical
+            self.panel(1, YB, xs, zs, 1, True, t)                       # back, grain left to right
         if o["spine"]:
             zw = zs[zs >= ZB - 1e-9]
             for s in (-1, 1):
@@ -167,43 +167,42 @@ class Model:
         self._clear()
         return U
 
-    def modes(self, arm, n=3):
-        """Natural frequencies with the plywood, the arm at full reach (pointing at the room) and the dome."""
-        m = np.zeros(len(self.coords) + 1)
-        for pts, mass in self.elems:
-            for p in pts:
-                m[p] += mass / 4
-        # dome on the deck's rim
-        rim = [n for k, n in self.nodes.items() if abs(k[2] - self.ZD) < 1e-4 and
-               (abs(abs(k[0]) - self.geom["XS"]) < 1e-4 or abs(k[1] - self.geom["YF"]) < 1e-4 or
-                abs(k[1] - self.geom["YB"]) < 1e-4)]
-        for n in rim:
-            m[n] += DOME_MASS / len(rim)
-        for n in range(1, len(self.coords) + 1):
-            if n not in self.fixed and m[n] > 0:
-                ops.mass(n, m[n], m[n], m[n], 0, 0, 0)
-        # arm + payload as one rigid body at its centre of mass, tied to the foot
-        bodies = arm.bodies(arm.q_reach)
-        M = sum(b[0] for b in bodies)
+    def modes(self, arm):
+        """Natural frequencies of the deck as a rigid body on the hutch's stiffness at the foot.
+
+        A full eigen solve of the 40 000-DOF shell model is slow in OpenSees' band solver, so the
+        stiffness is condensed to the foot (K = C^-1) and the masses that ride on the deck are
+        lumped onto it: the arm at full reach pointing at the room, the deck, the spine, the dome
+        on the rim and a third of each panel. This slightly underestimates the local rocking
+        frequency, since the whole deck is made to rock with the foot."""
+        K = np.linalg.inv((self.C + self.C.T) / 2)
+        bodies = []
         Rz = rot_z(-np.pi / 2)
-        c = sum(b[0] * b[1] for b in bodies) / M
-        I = sum(b[2] + b[0] * ((b[1] - c) @ (b[1] - c) * np.eye(3) - np.outer(b[1] - c, b[1] - c)) for b in bodies)
-        I = Rz @ I @ Rz.T
-        cw = Rz @ c + np.array([0, 0, H.T / 2])
-        arm_node = self.master + 1
-        ops.node(arm_node, cw[0], cw[1], self.ZD + cw[2])
-        ops.rigidLink("beam", self.master, arm_node)
-        ops.mass(arm_node, M, M, M, I[0, 0], I[1, 1], I[2, 2])
-        ops.constraints("Transformation")
-        ops.numberer("RCM")
-        ops.system("UmfPack")
-        lam = ops.eigen("-genBandArpack", n)
-        f = np.sqrt(np.abs(lam)) / (2 * np.pi)
-        shapes = []
-        for i in range(1, n + 1):
-            d = np.array(ops.nodeEigenvector(self.master, i))
-            shapes.append(d)
-        return f, shapes
+        zc = np.array([0, 0, H.T / 2])
+        for m, r, I in arm.bodies(arm.q_reach):
+            bodies.append((m, Rz @ r + zc, Rz @ I @ Rz.T))
+        for b in H.boards(self.opt):
+            m = float(np.prod(b.size)) * H.RHO
+            c = b.centre - np.array([0, 0, self.ZD])
+            if "side" in b.tags or "back" in b.tags:
+                bodies.append((m / 3, np.array([c[0], c[1], 0.0]), np.zeros((3, 3))))
+            else:
+                s = b.size
+                I = m / 12 * np.diag([s[1] ** 2 + s[2] ** 2, s[0] ** 2 + s[2] ** 2, s[0] ** 2 + s[1] ** 2])
+                bodies.append((m, c, I))
+        h = H.W / 2
+        for x, y in ((-h, 0), (h, 0), (0, -h), (0, h)):
+            bodies.append((DOME_MASS / 4, np.array([x, y, 0.0]), np.zeros((3, 3))))
+        M = np.zeros((6, 6))
+        for m, r, I in bodies:
+            S = np.array([[0, -r[2], r[1]], [r[2], 0, -r[0]], [-r[1], r[0], 0]])
+            M[:3, :3] += m * np.eye(3)
+            M[:3, 3:] += -m * S
+            M[3:, :3] += m * S
+            M[3:, 3:] += I - m * S @ S
+        from scipy.linalg import eigh
+        lam, vec = eigh(K, M)
+        return np.sqrt(lam) / (2 * np.pi), vec.T, float(sum(b[0] for b in bodies))
 
 
 def rot_z(a):
@@ -257,13 +256,15 @@ def main():
         d = C @ np.r_[rot_z(-np.pi / 2) @ F0, rot_z(-np.pi / 2) @ M0]
         r["sag_mm"] = float(-d[2] * 1000)
         r["tilt_mrad"] = float(np.linalg.norm(d[3:5]) * 1000)
-        f, _ = mdl.modes(arm)
-        r["f_hz"] = [float(x) for x in f]
+        f, vec, mass = mdl.modes(arm)
+        r["f_hz"] = [float(x) for x in f[:3]]
+        r["mode1"] = vec[0].tolist()
+        r["moving_mass_kg"] = mass
         r["C"] = C.tolist()
         results[opt] = r
         print(f"{opt:12s} payload {r['payload_mm']:.3f} mm  static {r['static_mm']:.3f}  lift {r['lift_mm']:.3f}  "
               f"sway {r['sway_mm']:.3f} (foot {r['sway_foot_mm']:.3f})  sag {r['sag_mm']:.3f}  "
-              f"f = {np.round(f, 1)} Hz  [{r['nodes']} nodes]", flush=True)
+              f"f = {np.round(f[:3], 1)} Hz  [{r['nodes']} nodes]", flush=True)
 
         # deformed shape under the worst static case, for the renders
         mdl2 = Model(opt)
