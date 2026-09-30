@@ -607,7 +607,11 @@ class Cal:
         if z > CARRY_Z:
             raise ValueError(f"z {z} is above the carry height {CARRY_Z}")
         here = self.pos[2]
-        if z < here and here - z > self.max_step(z) + 1e-9:
+        # --clear-z: once the plate's height is known, the stretch above it is
+        # known to be clear, so it is crossed in one move instead of the
+        # contact-finding ladder.
+        clear = self.args.clear_z is not None and z >= self.args.clear_z
+        if z < here and here - z > self.max_step(z) + 1e-9 and not clear:
             raise ValueError(f"step {here - z:.2f} mm down to {z} exceeds the "
                              f"{self.max_step(z)} mm allowed at that height")
         self.phase = "ladder"
@@ -880,6 +884,10 @@ def main():
                         "moved to -4.0 after seeing the module land ~2 mm left")
     p.add_argument("--floor", type=float, default=108.0,
                    help="lowest nozzle Z accepted until raised or lowered by command")
+    p.add_argument("--clear-z", type=float, default=None,
+                   help="over the plate, descend to any z at or above this in one move; "
+                        "below it, the stepped ladder. 91 is ~3 mm above the first touch "
+                        "measured at A1 and at the centre on 2026-09-30")
     p.add_argument("--timeout", type=float, default=600.0,
                    help="seconds of silence before it sets the enclosure down by itself")
     p.add_argument("--link-wait", type=float, default=2700.0)

@@ -13,6 +13,13 @@ measured from robot-camera photos of the bare nozzle (``look``) before any tip
 goes near a vial, and a tip only ever goes into a vial straight down from above
 its mouth.
 
+First run, 2026-09-30 12:23-13:00 MDT: 200 uL each of yellow, red and blue
+into plate wells A1, A2 and A3, one fresh tip each (B1, C1, D1), all dropped
+in the trash (``results-paint-plate-2026-09-30.md``). The vial positions came
+from fitting a camera model to 40 photos of the bare nozzle and a cylinder to
+each vial's outline. Once, a low calibration look pressed the pipette's body
+onto the vials (see LOW_LOOK_MAX_X); nothing moved, and a home recovered Z.
+
 Builds on ``tip_cal.py`` (the pick-up and the plate wells, tested 2026-09-29)
 and runs the same way: ON the Pi that holds the robot link, under nohup, one
 step at a time through a command file (``echo 'look 330 50 120' > cmd.tmp &&
@@ -21,9 +28,11 @@ a tip goes straight up out of whatever it is in, then into the trash, and the
 gantry homes.
 
     bare nozzle
-      look <x> <y> <z>        nozzle end to (x, y, z), z >= LOOK_MIN_Z; sideways
-                              only at z >= LOOK_TRAVEL_Z, and at most 10 mm down
-                              per command below that
+      look <x> <y> <z>        nozzle end to (x, y, z), z >= LOOK_MIN_Z (or down to
+                              LOW_LOOK_MIN_Z over the empty LOW_LOOK_SLOTS, at
+                              x <= LOW_LOOK_MAX_X); sideways only at z >=
+                              LOOK_TRAVEL_Z, and at most 10 mm down per command
+                              below that
       tiphover <well> <h>     nozzle h mm over tip <well> of the rack (h >= 1)
       pickup                  Opentrons' own pickUpTip at the last tiphover
     with a tip on (every z is the tip's END)
@@ -64,6 +73,15 @@ from tip_cal import (  # noqa: E402
 )
 
 LOOK_MIN_Z = 70.0            # bare nozzle end; the vial rims are expected near z 61
+# Lower looks, for fitting the camera, only over slots known to be empty and
+# well away from the vials. The pipette's body reaches ~50 mm to +X of the
+# nozzle and sits ~30 mm above its end: on 2026-09-30 a bare-nozzle look at
+# (245, 45, 20) pressed the body down onto the vials standing at x >= 280, and
+# the Z axis silently lost ~7 mm of steps until the next home. So low looks
+# also stay at x <= LOW_LOOK_MAX_X.
+LOW_LOOK_SLOTS = (2, 5, 8)
+LOW_LOOK_MIN_Z = 15.0
+LOW_LOOK_MAX_X = 200.0
 LOOK_TRAVEL_Z = 100.0        # bare nozzle: sideways only at or above this
 LOOK_MAX_DOWN = 10.0
 MAX_TIP_VOLUME = 250.0
@@ -98,8 +116,13 @@ class Transfer(TipCal):
     def look(self, x, y, z):
         if self.tip:
             self.refuse("look is for the bare nozzle; use tip")
-        if z < LOOK_MIN_Z:
-            self.refuse(f"look z must be >= {LOOK_MIN_Z}")
+        slot = tip_cal.deck.which_slot(x, y)
+        if z < LOOK_MIN_Z and (slot not in LOW_LOOK_SLOTS or z < LOW_LOOK_MIN_Z
+                               or tip_cal.deck.slot_margin(slot, x, y) < 10.0
+                               or x > LOW_LOOK_MAX_X):
+            self.refuse(f"look z must be >= {LOOK_MIN_Z}, or >= {LOW_LOOK_MIN_Z} "
+                        f"well inside slot {'/'.join(map(str, LOW_LOOK_SLOTS))} "
+                        f"at x <= {LOW_LOOK_MAX_X}")
         if not self.same_xy(x, y):
             if self.pos is not None and self.pos[2] < LOOK_TRAVEL_Z:
                 self.move(self.pos[0], self.pos[1], LOOK_TRAVEL_Z, DESCENT_SPEED)
