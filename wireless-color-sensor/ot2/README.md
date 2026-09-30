@@ -260,6 +260,7 @@ seated baseline, and every coordinate is bounds-checked against its slot.
 | `enclosure_height_cal.py` | runs on the Pi, one step per command: align over a socket, press in photographed steps, carry, step down over the plate. Silence for 10 min sets the enclosure down. **Dropped the enclosure on its only carry**: see below. `jiggle` tests the grip inside the pocket, and `--simulate` runs it with no robot |
 | `grip_shift.py` | from robot-camera photos: did the enclosure move with the nozzle, and by how much |
 | `release_in_place.py` | lets go of the enclosure over its pocket from a stopped run (used once, 2026-09-29) |
+| `tip_cal.py` | runs on the Pi, one step per command: hover the bare nozzle over a tip, Opentrons' own pick-up, step the tip into a plate well, aspirate/dispense, return the tip. Silence for 15 min puts the tip back and homes. `--simulate` runs it with no robot |
 | `camera_model.py` | fits how each camera sees a 1 mm move in X/Y/Z; reads the nozzle's true height from its shoulder, which is how a jammed press shows up |
 | `live_frame.py` | newest livestream frame (~3 s behind), fetched on the Pi |
 | `livestream_replay.py` | frames from the stream's last ~15 minutes, by lab clock time |
@@ -917,6 +918,25 @@ write-up in [`results-enclosure-carry-2026-09-29.md`](results-enclosure-carry-20
   front of it. It still answers. The tips-and-liquid stage was not started.
   Either it slid off during the long slow move, or its foot clipped the front of
   the base; there was no video to tell which.
+
+## 2026-09-29 (night) — a 300 µL tip picked up first time, into plate well A1 and back
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): the
+tips calibration test, while the enclosure is off its base. Full write-up in
+[`results-tip-pickup-2026-09-29.md`](results-tip-pickup-2026-09-29.md).
+
+- **The tip rack is in slot 6**, not slot 9 as in the AC protocol. The slot numbers
+  etched in the deck settled it.
+- **One pick-up, at the nominal position, worked first time.** Opentrons' own
+  `pickUpTip` is a 17 mm press at 0.125 A, so a miss would only have stalled on the
+  rim. The tip came up straight.
+- **Into plate well A1 in 5 mm steps, down to 8 mm below the rim** (2.67 mm over
+  the floor, nominally). 50 µL of air was aspirated above the well and dispensed
+  and blown out in it. There is no liquid on the deck.
+- **Put back in A1 of the rack.** Then homed, run closed, lights off as found.
+- **Limits:** the robot camera checks the centring to only 1–2 mm. All heights are
+  nominal, because this P300 has no tip-length or pipette-offset calibration. Only
+  well A1 was visited.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
