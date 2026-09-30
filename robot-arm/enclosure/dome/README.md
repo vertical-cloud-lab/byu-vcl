@@ -11,12 +11,16 @@ This is the "quarter-dome size" box from the parts list. The arm sits in the mid
 corner, as suggested on 25 Sept: that keeps 93 % of its reach inside the walls, and its elbow
 does not hit the back wall when it parks.
 
+![Assembly steps](dome-assembly.gif)
+
 | File | What it is |
 |---|---|
 | [`cut-list.md`](cut-list.md) | Pipe cut lengths and stick plan, canvas panels, drilling, clamp count, and a priced shopping list |
 | [`parts.py`](parts.py) | One function per part, built from the maker's published dimensions |
 | [`build.py`](build.py) | Places every part, then writes the cut list and the exports below |
 | [`animate.py`](animate.py) | Renders the assembly GIF and the still |
+| `dome-assembly.gif` | The assembly, step by step (640 × 480, 91 frames, renders in about 15 s) |
+| `dome-finished.png` | The finished enclosure with the flap rolled up |
 | `models/*.stl` | Each part on its own, plus `enclosure-frame.stl` (frame, base and screws, no cloth). GitHub opens these in a 3D viewer. Units are mm |
 | [`enclosure.glb`](enclosure.glb) | The whole thing in colour, with the arm and cloth. Open it in any glTF viewer, e.g. [gltf-viewer.donmccurdy.com](https://gltf-viewer.donmccurdy.com/) |
 

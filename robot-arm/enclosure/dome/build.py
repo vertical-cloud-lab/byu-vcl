@@ -42,17 +42,17 @@ REST = np.zeros(6)
 PICK = np.radians([0, 111, -90, 0, 66, 0])
 
 STEPS = [
-    "Spot D: two 680 × 1290 mm tables, side by side",
-    "Plywood base: 4 × Ø5.5 mm holes on a 70 mm square, Ø10 mm counterbores underneath",
-    "PiPER on top, 4 × M5 × 25 socket caps up from below",
+    "Spot D: two 680 × 1290 mm tables",
+    "Plywood base, drilled for the arm",
+    "PiPER on, 4 × M5 × 25 screws from below",
     "Base into the middle of the table",
-    "Bottom frame: 4 elbows, 2 × 1219 mm and 2 × 1289 mm pipe",
-    "Corner posts: 4 × 1035 mm pipe",
-    "Top frame: 4 elbows, 2 × 1219 mm and 2 × 1289 mm pipe",
-    "Canvas top, snapped to the top rails",
-    "Back and side walls, snapped to the posts and bottom rails",
-    "Front flap, clamped along the top rail only",
-    "Roll the flap up to load. The arm stays inside the walls",
+    "Bottom frame: 4 elbows, 4 pipes",
+    "Corner posts: 4 × 1035 mm",
+    "Top frame: 4 elbows, 4 pipes",
+    "Canvas top, snap-clamped to the rails",
+    "Back and side walls, clamped",
+    "Front flap, clamped at the top only",
+    "Roll the flap up to load",
 ]
 
 

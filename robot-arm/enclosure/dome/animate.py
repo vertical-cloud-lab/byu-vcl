@@ -21,6 +21,8 @@ SURFACE, INK, INK2 = "#fcfcfb", "#0b0b0b", "#52514e"
 MOVE, LAST = 8, 18                  # frames per step, frames for the last step
 MOVE_MS, HOLD_MS = 70, 1500
 CAMERA = [(-2.35, -3.35, 2.05), (0.0, -0.05, 0.43), (0, 0, 1)]
+CLOSE = [(-0.80, -1.35, 0.16), (0.0, 0.0, 0.33), (0, 0, 1)]   # just under the raised base, steps 2 and 3
+FINAL = [(-1.00, -2.90, 1.35), (0.0, -0.05, 0.50), (0, 0, 1)]  # into the open front, last step
 
 
 def ease(u):
@@ -46,9 +48,10 @@ class Scene:
         self.actors = []
         for it in self.items:
             smooth = not it.part.name.startswith("plywood")
+            cloth = "cloth" in it.tags
             a = pl.add_mesh(pv.wrap(it.world), color=it.part.color, smooth_shading=smooth,
-                            split_sharp_edges=smooth, specular=0.3 if "cloth" not in it.tags else 0.0,
-                            ambient=0.12)
+                            split_sharp_edges=smooth, specular=0.0 if cloth else 0.3,
+                            ambient=0.35 if cloth else 0.12, diffuse=0.7 if cloth else 1.0)
             self.actors.append(a)
         self.flap = next(a for a, it in zip(self.actors, self.items) if "flap" in it.tags)
         roll = B.flap_roll()
@@ -105,10 +108,17 @@ class Scene:
         self.flap.scale = (1, 1, max(1 - roll_u, 1e-3))
         self.flap.visibility = bool(self.flap.visibility and roll_u < 0.97)
         self.roll.visibility = bool(s == last and roll_u > 0.3)
+        # camera: close on the base while the arm goes on, then out to the whole enclosure
+        v = {1: 1 - ease(u), 2: 0.0, 3: ease(u)}.get(s, 1.0)
+        pos, foc = [np.add(np.multiply(CLOSE[i], 1 - v), np.multiply(CAMERA[i], v)) for i in (0, 1)]
+        if s == last:
+            w = ease((u - 0.3) / 0.7)
+            pos, foc = [np.add(np.multiply(p, 1 - w), np.multiply(FINAL[i], w)) for i, p in enumerate((pos, foc))]
+        self.pl.camera_position = [tuple(pos), tuple(foc), (0, 0, 1)]
         if self.caption is not None:
             self.pl.remove_actor(self.caption)
-        self.caption = self.pl.add_text(f"{s + 1}/{len(B.STEPS)}   {B.STEPS[s]}", position="upper_left",
-                                        font_size=10, color=INK)
+        self.caption = self.pl.add_text(f"{s + 1}/{len(B.STEPS)}  {B.STEPS[s]}", position="upper_left",
+                                        font_size=13, color=INK)
 
     def shot(self):
         self.pl.render()
@@ -145,6 +155,7 @@ def still(path, size=(1400, 1050)):
     last = len(B.STEPS) - 1
     sc.pose(last, 1.0, B.PICK)
     sc.pl.remove_actor(sc.caption)
+    sc.pl.camera_position = CAMERA
     sc.pl.enable_anti_aliasing("ssaa")
     Image.fromarray(sc.shot()).save(path)
     sc.pl.close()
