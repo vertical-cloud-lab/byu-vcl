@@ -60,10 +60,13 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
     jiggle <x|y|z> <mm> <n> <mm/s>
                     grip test, only while the enclosure hangs inside its pocket:
                     n there-and-back moves of +-mm (x/y <= 0.5 mm; z goes up
-                    only, <= 1.5 mm). Every start and stop is a jolt at the
+                    only, <= 7 mm). Every start and stop is a jolt at the
                     firmware's full acceleration, the same as a carry's. A grip
-                    that fails here drops the enclosure a millimetre or two
-                    back into its pocket instead of onto the deck
+                    that fails here drops the enclosure a few millimetres
+                    back into its pocket instead of onto the deck. Long z
+                    strokes (``jiggle z 7 20 3``) are the nearest thing the
+                    pocket allows to a long slow carry leg: seconds of
+                    continuous stepping per stroke instead of a start and a stop
     up <z>          after a pickup: rise straight up over the socket, to <= 110
     release-here    while still inside the pocket: back-out from there (rise to
                     --press-z + 5, eject, rise to 110). Silence does the same
@@ -150,7 +153,10 @@ MAX_RELEASE_RETRIES = 3
 # jiggle: only while the enclosure hangs inside its own pocket
 JIGGLE_MAX_LIFT = 4.0       # mm above --press-z
 JIGGLE_MAX_XY = 0.5         # mm; the pocket's side clearance is unmeasured
-JIGGLE_MAX_Z = 1.5
+# Up to 7 mm since 2026-09-30: the 09-29 enclosure passed 240 short jolts, then
+# came off during a 91 s leg of continuous slow stepping. From at most
+# --press-z + 4 that tops out at --press-z + 11, the foot still inside the pocket.
+JIGGLE_MAX_Z = 7.0
 JIGGLE_MAX_CYCLES = 40
 JIGGLE_MAX_SPEED = 25.0
 
