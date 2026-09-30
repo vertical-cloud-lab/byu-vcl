@@ -13,6 +13,8 @@ Timothy Commins, watching the run, at [11:40:45 MDT](https://github.com/vertical
 had reached **z 86.5 over A1** at 11:40:41 and was still there. **That is the read
 height over A1. It replaces "read at z 88.5", the session's own suggestion below.**
 
+![nozzle height over A1 against time](enclosure-height-a1-timeline-2026-09-30.png)
+
 - **At z 86.5 the enclosure sits on the plate.** Its foot first touches at z ≈ 87.9,
   so 86.5 is ~1.4 mm further down. The extra travel did not push the enclosure up
   the nozzle: afterwards it hung within ~0.3 mm of where it had on the way down
@@ -120,6 +122,7 @@ hung at z 88.5 within 0.13 px. That's ≤ ~0.3 mm up the nozzle each time.
 | [`enclosure-height-a1-2026-09-30.json`](enclosure-height-a1-2026-09-30.json) | every reading and photo name for the three descents, the press, the grip test, the return |
 | [`enclosure-height-a1-2026-09-30.png`](enclosure-height-a1-2026-09-30.png) | light lost per 0.25 mm, A1 against the centre; [`plot_enclosure_height_a1.py`](plot_enclosure_height_a1.py) redraws it |
 | [`enclosure-height-a1-2026-09-30.jpg`](enclosure-height-a1-2026-09-30.jpg) | four robot-camera photos |
+| [`enclosure-height-a1-timeline-2026-09-30.png`](enclosure-height-a1-timeline-2026-09-30.png) | nozzle z against time, with the moment the height was picked; [`plot_enclosure_height_a1_timeline.py`](plot_enclosure_height_a1_timeline.py) redraws it |
 
 On the Pi (`RPI_STREAM_CAM_HOSTNAME`): `~/enclosure-cal-0930e/`, with all 88
 robot-camera photos, `log.txt`, `run.out` and `drive.py` (sends one command and
