@@ -1,0 +1,18 @@
+-- as found (energized)
+22:00:51.570Z  energized=Yes VIN=11.1  stopping=None
+22:00:52.013Z  energized=Yes VIN=11.1  stopping=None
+22:00:52.452Z  energized=Yes VIN=11.2  stopping=None
+22:00:52.890Z  energized=Yes VIN=11.2  stopping=None
+22:00:53.329Z  energized=Yes VIN=11.0  stopping=None
+-- de-energized
+22:00:55.285Z  energized=No  VIN=12.6  stopping=
+22:00:55.724Z  energized=No  VIN=12.6  stopping=
+22:00:56.163Z  energized=No  VIN=12.6  stopping=
+22:00:56.601Z  energized=No  VIN=12.6  stopping=
+22:00:57.040Z  energized=No  VIN=12.6  stopping=
+-- re-energized
+22:00:58.996Z  energized=Yes VIN=11.0  stopping=None
+22:00:59.435Z  energized=Yes VIN=11.0  stopping=None
+22:00:59.873Z  energized=Yes VIN=11.1  stopping=None
+22:01:00.312Z  energized=Yes VIN=11.0  stopping=None
+22:01:00.751Z  energized=Yes VIN=11.0  stopping=None

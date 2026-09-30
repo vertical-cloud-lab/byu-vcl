@@ -1,0 +1,3 @@
+22:22:25Z  cmd 6 EMAG_OFF         dt=0.004s  OK:{"msg":"Electromagnet off"}
+22:22:25Z  cmd 7 cap sensor       dt=0.004s  OK:{"value1":0}
+22:22:25Z  cmd 14 pipette STATUS  dt=0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}

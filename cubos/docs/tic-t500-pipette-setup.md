@@ -193,7 +193,11 @@ now. Read the driver with `ticcmd --status` instead.
    stopped on the switch in 0.94 s. The ruler check (step 6) is still open; 796
    is the value that cannot overshoot whichever scale is right. The first trio
    then stopped on a USB over-current trip
-   ([record](../results/pipette_test_20260930/README.md)).*
+   ([record](../results/pipette_test_20260930/README.md)); Ben traced it to
+   the `A2` motor lead coming loose. With it re-secured the trio ran **12/12**,
+   every plunger command executed, and a before/after `HOME` (12.687 s /
+   12.680 s) shows no lost steps
+   ([record](../results/pipette_test_20260930b/README.md)).*
 
 ### Idle current: what to add once it moves
 

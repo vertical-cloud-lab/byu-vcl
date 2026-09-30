@@ -1,0 +1,7 @@
+tic: VIN voltage: 10.5 V Energized: Yes
+22:23:34Z / 16:23:34 lab  connect() 3.77s
+22:23:34Z / 16:23:34 lab  cmd 14 pipette STATUS    dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+22:23:34Z / 16:23:34 lab  cmd  7 cap sensor        dt=  0.004s  OK:{"value1":0}
+22:23:47Z / 16:23:47 lab  cmd 10 HOME              dt= 12.680s  OK:{"msg":"Pipette homed"}
+22:23:47Z / 16:23:47 lab  cmd 14 pipette STATUS    dt=  0.008s  OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+tic: VIN voltage: 12.6 V Operation state: De-energized Energized: No

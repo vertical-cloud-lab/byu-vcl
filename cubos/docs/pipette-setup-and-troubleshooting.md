@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-29**. This is the map; the detail is in
+Status as of **2026-09-30**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,7 +13,18 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-> 🆕 **2026-09-30:** the Arduino now runs the same firmware with
+> 🔑 **2026-09-30 (b): the trio ran 12/12 on the Tic, and every plunger command
+> executed.** `pick_up_tip`, `aspirate` (both legs, landing at 1.2 mm),
+> `blowout` and both `drop_tip` legs all returned `OK` at their commanded
+> rates, and a `HOME` after the run took 12.680 s against 12.687 s before it
+> from the same position, so no steps were lost over ~160,000 in both
+> directions. Not yet shown: liquid actually moving (needs eyes or a balance),
+> and the 796 steps/mm scale (the ruler check). Before the run the GRBL
+> controller was found **factory-reset** (`G54` zeroed, travel 400/300/100,
+> soft limits off); the calibrated frame was restored from the 09-26 record.
+> See [`pipette_test_20260930b`](../results/pipette_test_20260930b/README.md).
+>
+> **2026-09-30:** the Arduino now runs the same firmware with
 > `STEPS_PER_MM 796` for the Tic's 1/8 step, so the warning below is resolved
 > (796 cannot overshoot whichever scale is right; the ruler check is still
 > open). The first trio with the Tic in circuit stopped in `decap vial_1` when
