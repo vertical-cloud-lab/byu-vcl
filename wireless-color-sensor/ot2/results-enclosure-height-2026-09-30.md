@@ -1,23 +1,23 @@
 # Enclosure height over the plate found, and a return route that brings it back
 
-**2026-09-30, 09:25–10:41 MDT. Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
+**2026-09-30, 09:25–11:03 MDT. Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202):
 test that the enclosure won't fall off (over the base, so a slip lands back on it),
 press a little deeper, then run the height calibration, and keep going until the job
-is done or the enclosure can no longer be picked up.** Two pick-ups.
+is done or the enclosure can no longer be picked up.** Three pick-ups.
 
 - **Height: the enclosure's foot touches the plate's centre at nozzle z ≈ 88.1
-  (run 1) and ≈ 88.4 (run 2). Read at z 89.0**, which is 0.5–0.9 mm clear for
-  both pick-ups.
+  (run 1) and ≈ 88.4 (runs 2 and 3). Read at z 89.0**, which is 0.5–0.9 mm clear
+  for all three pick-ups.
 - **The 09-29 figure (touches at 98.9, read at 99.5) was wrong by ~10 mm.** At 98.9
   the enclosure was still moving freely. See [below](#why-09-29-got-989).
 - **Run 1 fell off on the way back**, in the last 44 s before the socket, while
   it moved sideways beside the base's tower. It landed to the right of the base.
-- **Run 2 made every sideways move near the base at z 190**, above the tower,
-  and came down beside the tower only vertically. It was carried to the plate
-  and back and released into its socket: 502–504 counts, seated.
+- **Runs 2 and 3 made every sideways move near the base at z 190**, above the
+  tower, and came down beside the tower only vertically. Both were carried to the
+  plate and back and released into the socket, seated (502–504 and 507–508 counts).
 - **The grip held everywhere it was tested**: 400 jolts plus ~95 s of slow
-  strokes in the socket (run 1), 240 jolts (run 2), the carries, and the touch-down
-  on the plate, with no slip either time.
+  strokes in the socket (run 1), 240 jolts (run 2), 80 (run 3), the carries, and
+  three touch-downs on the plate, with no slip.
 
 All numbers are in [`enclosure-height-2026-09-30.json`](enclosure-height-2026-09-30.json).
 
@@ -126,8 +126,8 @@ Run 2 set `--approach-z 190` (the nozzle homes at z 199.6). That puts the foot
 ~116 mm off the deck, ~16 mm above the tower. Out: straight up to z 190 over the
 socket, then out to y 220, then down to z 125. Back: up to z 190 at y 220, over
 the socket at 190, then straight down, the way every lift out of the socket has
-gone (photos 5–6). **It came back and seated.** That is one round trip. It fits
-the tower explanation, but it doesn't prove it.
+gone (photos 5–6). **It came back and seated, and did so again in run 3.** Two round
+trips fit the tower explanation, but they don't prove it.
 
 ## Run 2
 
@@ -146,6 +146,17 @@ the tower explanation, but it doesn't prove it.
 - Read at z 89.0: 9,235–9,237 counts.
 - Returned via z 190: 2,976 counts hanging in the socket at z 100, **502–504
   after the release**, 503–505 after homing. The run closed at 10:41:17.
+
+## Run 3: the same round trip again
+
+The enclosure sat where run 2 had released it (0.05 px from 09-29 at z 120). It was
+picked up at (92.8, 316.5) with nothing touched down to z 100 and pressed to 89.0. It
+gripped at z ≈ 90, like 09-29 (nozzle 10.99 px, enclosure 0.89 px). At z 93: 80 jolts,
+−0.01 px. Grip check at z 110: **11.4×**. It was carried out via z 190 (11,928–11,934
+counts over the plate at z 125). The light flattened and the camera patch stopped
+between 88.5 and 88.25 (3.98 px at both). **Contact at z ≈ 88.4 again.** Read at
+z 89.0: 9,226–9,229 counts. It returned via z 190: 2,982 counts hanging in the socket,
+**507–508 after the release**, 506–507 after homing. The run closed at 11:03:00.
 
 ## Why 09-29 got 98.9
 
@@ -172,9 +183,9 @@ pressed to 89 → 73–74 mm). 09-29 had doubted the 16.
 
 - **One point on the plate.** Both heights are over the plate's centre. Whether
   the plate is level under A1–A3 wasn't checked.
-- **The height depends on the pick-up.** The two pick-ups differed by 0.3 mm. Allow
+- **The height depends on the pick-up.** The three pick-ups spanned 0.3 mm. Allow
   for that, or re-check contact after each pick-up.
-- **One successful return.** Run 2 is a single round trip on the new route.
+- **Two successful returns.** Runs 2 and 3, on the new route.
 - **Liquid.** Still no paint in the wells, so no colour reading was taken.
 
 ## Files
@@ -187,6 +198,6 @@ pressed to 89 → 73–74 mm). 09-29 had doubted the 16.
 | [`enclosure_height_cal.py`](enclosure_height_cal.py) | `--approach-z` default 190; z strokes up to 7 mm |
 
 On the Pi (`RPI_STREAM_CAM_HOSTNAME`): run 1 in `~/enclosure-cal-0930b/`, run 2 in
-`~/enclosure-cal-0930c/`, each with all robot-camera photos, `log.txt` and
+`~/enclosure-cal-0930c/`, run 3 in `~/enclosure-cal-0930d/`, each with all robot-camera photos, `log.txt` and
 `run.out`. A dry run is in `~/enclosure-cal-0930b/sim/`. No services, timers or
 settings were changed.

@@ -49,8 +49,8 @@ falls (09-25, 09-29, 09-30) happened while it moved sideways next to the tower
 with its foot below the tower's top. --approach-z is now 190 (the nozzle homes
 at z 199.6), which puts the foot ~16 mm above the tower: near the base the
 enclosure only moves sideways up there, and goes down beside the tower only
-vertically, the way every lift out of the socket has gone. The run after that
-change was carried to the plate and back and released seated in its socket.
+vertically, the way every lift out of the socket has gone. The two runs after
+that change were each carried to the plate and back and released seated.
 
 Runs ON the Pi that holds the robot link, under nohup, and is driven one step
 at a time through a command file. It is built this way, rather than driven

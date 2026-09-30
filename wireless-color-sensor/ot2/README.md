@@ -962,14 +962,14 @@ done or the enclosure can't be picked up. Full write-up in
   bare nozzle's first alignment stop is z 150. Simulated end to end, not yet run
   with the enclosure aboard.
 
-## 2026-09-30 (morning) — height found at nozzle z ≈ 88.1–88.4; carried there and back via z 190
+## 2026-09-30 (morning) — height found at nozzle z ≈ 88.1–88.4; carried there and back twice via z 190
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): the same
 request as the entry above, once the enclosure was right way up. Full write-up in
 [`results-enclosure-height-2026-09-30.md`](results-enclosure-height-2026-09-30.md).
 
-- **The enclosure's foot touches the plate's centre at nozzle z ≈ 88.1 and ≈ 88.4**
-  (two pick-ups). **Read at z 89.0**, 0.5–0.9 mm clear. The foot hangs ~74 mm
+- **The enclosure's foot touches the plate's centre at nozzle z ≈ 88.1, 88.4 and
+  88.4** (three pick-ups). **Read at z 89.0**, 0.5–0.9 mm clear. The foot hangs ~74 mm
   below the nozzle, as the charging-base definition implies.
 - **The 09-29 entry's z 98.9 / 99.5 is wrong by ~10 mm.** Its 0.5 mm steps were
   read from a camera patch with the still plate behind the enclosure, which pulls
@@ -982,10 +982,10 @@ request as the entry above, once the enclosure was right way up. Full write-up i
   at z 150 beside the base's ~100 mm tower. It landed to the right of the base,
   as on 09-25. All three falls happened moving sideways next to that tower with
   the foot below its top.
-- **Run 2 did every sideways move near the base at z 190** (foot ~16 mm above the
-  tower; the nozzle homes at 199.6) and came down beside it only vertically. It was
-  carried to the plate and back and seated (502–504 counts). That is now
-  `--approach-z`'s default. One round trip so far.
+- **Runs 2 and 3 did every sideways move near the base at z 190** (foot ~16 mm
+  above the tower; the nozzle homes at 199.6) and came down beside it only
+  vertically. Both were carried to the plate and back and seated (502–504 and
+  507–508 counts). That is now `--approach-z`'s default.
 - **Where the enclosure sits in A2 varies when it's put back by hand.** In run 1 it
   sat ~2 mm high and off-centre, and the collar was at (90.6, 317.6), not (92.8,
   316.5). It was found by light touches with the bare nozzle, watching whether the

@@ -2,7 +2,7 @@
  "date": "2026-09-30",
  "lab_time": "09:25-10:14 MDT",
  "request": "PR #202: grip tests over the base (a slip lands back on the base), press a little deeper, then the height calibration over the plate; continue until done, until it falls, or until it can no longer be picked up",
- "outcome": "run 1: height found (touches the plate's centre at nozzle z ~88.1), then it fell off on the return next to the base's tower; run 2, with every sideways move near the base at z 190: touches at ~88.4, returned and seated",
+ "outcome": "run 1: height found (touches the plate's centre at nozzle z ~88.1), then it fell off on the return beside the base's tower; runs 2 and 3, with every sideways move near the base at z 190: touch at ~88.4 each, returned and seated both times",
  "robot": {
   "serial": "OT2CEP20210722R13",
   "api": "8.8.1",
@@ -1116,7 +1116,347 @@
  },
  "recommendation": {
   "read_height_nozzle_z": 89.0,
-  "clearance_mm": "0.5-0.9 (contact at 88.1 and 88.4 on two pick-ups)",
+  "clearance_mm": "0.5-0.9 (contact at 88.1, 88.4 and 88.4 on three pick-ups)",
   "near_base": "move sideways only at nozzle z >= 185 (foot above the ~100 mm tower); go down beside the tower only vertically"
+ },
+ "run3": {
+  "lab_time": "10:46-11:03 MDT",
+  "maintenance_run": "b15cc081-1df9-4078-8554-068224f8f16c",
+  "script_args": "same as run 2",
+  "seated_baseline": [
+   503,
+   505
+  ],
+  "enclosure_face_vs_run2_z120_px": [
+   0.17,
+   0.0
+  ],
+  "enclosure_face_vs_0929_z120_px": [
+   -0.05,
+   -0.02
+  ],
+  "pickup_xy": [
+   92.8,
+   316.5
+  ],
+  "no_contact_down_to": 100.0,
+  "press_nozzle_px_vs_z99": {
+   "97.5": 1.84,
+   "96": 3.06,
+   "94": 5.18,
+   "92": 7.59,
+   "91": 8.83,
+   "90": 9.73,
+   "89.5": 9.99,
+   "89": 10.99
+  },
+  "press_enclosure_px_vs_z99": {
+   "97.5": 0.01,
+   "96": 0.02,
+   "94": 0.04,
+   "92": 0.04,
+   "91": 0.08,
+   "90": 0.75,
+   "89.5": 0.89,
+   "89": 0.89
+  },
+  "reads_after_lift_z93": [
+   1046,
+   1045
+  ],
+  "grip_tests_in_pocket": {
+   "jiggle y 0.3 40 3": -0.01,
+   "jolts": 80
+  },
+  "up_110_reads": [
+   5756,
+   5756
+  ],
+  "grip_ratio": 11.4,
+  "carry": {
+   "carry_start_z190_reads": [
+    12738,
+    12736
+   ],
+   "reads_over_plate_z125": [
+    11928,
+    11934
+   ],
+   "at_plate_local": "10:53:52"
+  },
+  "ladder": [
+   {
+    "z": 118.0,
+    "t_local": "10:54:14",
+    "reads": [
+     11771,
+     11765
+    ],
+    "photo": "27_z118_robot.jpg"
+   },
+   {
+    "z": 114.0,
+    "t_local": "10:54:26",
+    "reads": [
+     11638,
+     11637
+    ],
+    "photo": "28_z114_robot.jpg"
+   },
+   {
+    "z": 110.0,
+    "t_local": "10:54:37",
+    "reads": [
+     11459,
+     11461
+    ],
+    "photo": "29_z110_robot.jpg"
+   },
+   {
+    "z": 108.0,
+    "t_local": "10:54:47",
+    "reads": [
+     11345,
+     11349
+    ],
+    "photo": "30_z108_robot.jpg"
+   },
+   {
+    "z": 106.0,
+    "t_local": "10:54:58",
+    "reads": [
+     11223,
+     11224
+    ],
+    "photo": "31_z106_robot.jpg"
+   },
+   {
+    "z": 104.0,
+    "t_local": "10:55:09",
+    "reads": [
+     11063,
+     11064
+    ],
+    "photo": "32_z104_robot.jpg"
+   },
+   {
+    "z": 103.0,
+    "t_local": "10:55:20",
+    "reads": [
+     10993,
+     10995
+    ],
+    "photo": "33_z103_robot.jpg"
+   },
+   {
+    "z": 102.0,
+    "t_local": "10:55:30",
+    "reads": [
+     10911,
+     10912
+    ],
+    "photo": "34_z102_robot.jpg"
+   },
+   {
+    "z": 101.0,
+    "t_local": "10:55:40",
+    "reads": [
+     10820,
+     10822
+    ],
+    "photo": "35_z101_robot.jpg"
+   },
+   {
+    "z": 100.0,
+    "t_local": "10:55:51",
+    "reads": [
+     10722,
+     10723
+    ],
+    "photo": "36_z100_robot.jpg"
+   },
+   {
+    "z": 99.0,
+    "t_local": "10:56:02",
+    "reads": [
+     10619,
+     10617
+    ],
+    "photo": "37_z99_robot.jpg"
+   },
+   {
+    "z": 98.0,
+    "t_local": "10:56:13",
+    "reads": [
+     10507,
+     10511
+    ],
+    "photo": "38_z98_robot.jpg"
+   },
+   {
+    "z": 97.0,
+    "t_local": "10:56:23",
+    "reads": [
+     10390,
+     10390
+    ],
+    "photo": "39_z97_robot.jpg"
+   },
+   {
+    "z": 96.0,
+    "t_local": "10:56:33",
+    "reads": [
+     10250,
+     10250
+    ],
+    "photo": "40_z96_robot.jpg"
+   },
+   {
+    "z": 95.0,
+    "t_local": "10:56:44",
+    "reads": [
+     10088,
+     10089
+    ],
+    "photo": "41_z95_robot.jpg"
+   },
+   {
+    "z": 94.0,
+    "t_local": "10:56:54",
+    "reads": [
+     9910,
+     9911
+    ],
+    "photo": "42_z94_robot.jpg"
+   },
+   {
+    "z": 93.0,
+    "t_local": "10:57:06",
+    "reads": [
+     9726,
+     9728
+    ],
+    "photo": "43_z93_robot.jpg",
+    "camera_enclosure_px_vs_z93": 0.0
+   },
+   {
+    "z": 92.0,
+    "t_local": "10:57:16",
+    "reads": [
+     9551,
+     9547
+    ],
+    "photo": "44_z92_robot.jpg",
+    "camera_enclosure_px_vs_z93": 0.89
+   },
+   {
+    "z": 91.0,
+    "t_local": "10:57:27",
+    "reads": [
+     9403,
+     9403
+    ],
+    "photo": "45_z91_robot.jpg",
+    "camera_enclosure_px_vs_z93": 1.56
+   },
+   {
+    "z": 90.0,
+    "t_local": "10:57:38",
+    "reads": [
+     9239,
+     9242
+    ],
+    "photo": "46_z90_robot.jpg",
+    "camera_enclosure_px_vs_z93": 2.55
+   },
+   {
+    "z": 89.5,
+    "t_local": "10:57:48",
+    "reads": [
+     9239,
+     9236
+    ],
+    "photo": "47_z89.5_robot.jpg",
+    "camera_enclosure_px_vs_z93": 2.86
+   },
+   {
+    "z": 89.0,
+    "t_local": "10:57:59",
+    "reads": [
+     9213,
+     9213
+    ],
+    "photo": "48_z89_robot.jpg",
+    "camera_enclosure_px_vs_z93": 3.4
+   },
+   {
+    "z": 88.75,
+    "t_local": "10:58:10",
+    "reads": [
+     9199,
+     9200
+    ],
+    "photo": "49_z88.75_robot.jpg",
+    "camera_enclosure_px_vs_z93": 3.73
+   },
+   {
+    "z": 88.5,
+    "t_local": "10:58:20",
+    "reads": [
+     9189,
+     9186
+    ],
+    "photo": "50_z88.5_robot.jpg",
+    "camera_enclosure_px_vs_z93": 3.98
+   },
+   {
+    "z": 88.25,
+    "t_local": "10:58:31",
+    "reads": [
+     9188,
+     9192
+    ],
+    "photo": "51_z88.25_robot.jpg",
+    "camera_enclosure_px_vs_z93": 3.98
+   },
+   {
+    "z": 89.0,
+    "t_local": "10:58:53",
+    "reads": [
+     9226,
+     9229
+    ],
+    "photo": "52_z89_robot.jpg",
+    "camera_enclosure_px_vs_z93": 3.01
+   }
+  ],
+  "contact": {
+   "nozzle_z_touch": 88.4,
+   "bracket": [
+    88.25,
+    88.5
+   ],
+   "evidence": "camera enclosure-only patch 3.98 px at both 88.5 and 88.25; light 9187.5 -> 9190"
+  },
+  "reads_at_89": [
+   9226,
+   9229
+  ],
+  "return": {
+   "cmd_local": "10:58:53",
+   "reads_over_pocket_z100": [
+    2982,
+    2983
+   ],
+   "reads_after_release": [
+    507,
+    508
+   ],
+   "reads_after_home": [
+    506,
+    507
+   ],
+   "closed_local": "11:03:00"
+  }
  }
 }
