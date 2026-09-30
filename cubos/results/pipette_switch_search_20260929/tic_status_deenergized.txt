@@ -1,0 +1,58 @@
+Name:                         Tic T500 Stepper Motor Controller
+Serial number:                00510573
+Firmware version:             1.09
+Last reset:                   Power-on reset
+Up time:                      0:36:03
+
+Encoder position:             0
+RC pulse width:               N/A
+Input state:                  Invalid
+Input after averaging:        N/A
+Input after hysteresis:       N/A
+Input before scaling:         N/A
+Input after scaling:          0
+Forward limit active:         No
+Reverse limit active:         No
+
+VIN voltage:                  12.271 V
+Operation state:              De-energized
+Energized:                    No
+Homing active:                No
+
+Target:                       No target
+Current position:             0
+Position uncertain:           Yes
+Current velocity:             0
+Max speed:                    2000000
+Starting speed:               0
+Max acceleration:             40000
+Max deceleration:             40000
+Acting target position:       0
+Time since last step:         45000
+Step mode:                    1/8 step
+Current limit:                990 mA
+
+Errors currently stopping the motor:
+  - Intentionally de-energized
+Errors that occurred since last check:
+  - Intentionally de-energized
+
+SCL pin:
+  State:                      Output low
+  Analog reading:             N/A
+  Digital reading:            1
+SDA pin:
+  State:                      Output low
+  Analog reading:             N/A
+  Digital reading:            1
+TX pin:
+  State:                      Output high
+  Analog reading:             N/A
+  Digital reading:            1
+RX pin:
+  State:                      Pulled up
+  Analog reading:             N/A
+  Digital reading:            1
+RC pin:
+  Digital reading:            0
+

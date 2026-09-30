@@ -3217,3 +3217,34 @@ byte-identical. The pipette was out of the camera's view, so whether the shaft
 turned in either run is Ben's observation. The record has a decision table for
 each outcome:
 [`results/tic_t500_first_moves_20260929/`](../results/tic_t500_first_moves_20260929/README.md).
+
+**2026-09-29, 18:05–18:10: the plunger moves, and the limit switch proves it.**
+Ben reported the pipette *vibrating* during the moves above. That is the first
+physical response the motor has ever given: the 6121 never produced a buzz, a
+hold or a twitch. Everything upstream is open-loop, so the switch was used as
+the sensor. Through the Arduino (`CMD 16`, raw microsteps, no ramp), in order:
+
+- **Found the switch.** UP at 200 microsteps/s ran 25 mm with the switch closed,
+  then opened it about 3.7 mm into the next 5 mm chunk. That was about 22,855
+  microsteps, 28.7 mm at 796/mm. Every UP after that was refused in 0.114 s
+  (§3's gate).
+- **Checked it repeats.** DOWN 2 mm closed the switch again. UP reopened it
+  after 2 mm at 200, 400, 800, 1,600 and 2,500 microsteps/s. Both directions
+  move the plunger, direction 0 is UP as the firmware assumes, and no rate the
+  firmware uses stalls.
+- **Homed.** PANDA's `HOME` returned `Pipette homed` in 1.356 s. That is its seek
+  at 10 + 500 µs/step for 2 mm, plus the 100 ms debounce and the 796-step
+  back-off, about 1.36 s, where the 6121 ran out the 26 s budget.
+
+This rules out a jammed plunger, mis-paired coils, a reversed motor, and
+the stall on abrupt starts that Pololu's guide warns of (its §4.3). On this evidence, the 6121 board
+(§22) and the ribbon (§18) were the whole fault. The vibration Ben felt was the
+motor stepping at 50–100 full steps/s.
+
+That leaves only calibration. `STEPS_PER_MM` is still 1592, for 1/16 step, so
+CubOS's connect-time `prime` (`MOVE_TO 28.0` = 44,576 microsteps) would drive
+about 56 mm at the Tic's 1/8, past the 46.5 mm drop-tip plane. Confirm 796/mm
+(ruler, or the raw-step gravimetric check in the record) and flash it before
+CubOS connects. The Tic was left de-energized to stop the 4 W idle heating, so
+send `ticcmd --energize` first. Record:
+[`results/pipette_switch_search_20260929/`](../results/pipette_switch_search_20260929/README.md).

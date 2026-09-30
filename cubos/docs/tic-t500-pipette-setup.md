@@ -2,13 +2,18 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
-**Status, 2026-09-29:** bring-up steps 1 and 3 are done, and step 5 has been
-run from the Pi. The Tic is wired, on 12 V, energized with no errors, and
-the coils carry the current it sets. The Arduino's steps and the Tic's own steps
-both went out cleanly, but whether the shaft turned is still Ben's call
-([first-moves record](../results/tic_t500_first_moves_20260929/README.md);
-settings [record](../results/tic_t500_settings_20260929/README.md)). Every number
-comes from the sources listed at the end, and the first move still needs a ruler.
+**Status, 2026-09-29 18:10: the plunger moves.** Bring-up steps 1, 3 and 5 are
+done. Driven through the Arduino, the plunger went up about 28.7 mm and opened
+the limit switch. It went down and closed it again, then reopened it after the
+same 2 mm at every rate from 200 to 2,500 microsteps/s. The firmware's own
+`HOME` then succeeded in 1.36 s. The polarity is right: direction 0 goes toward
+the switch, so no `A1`↔`A2` swap is needed. What remains is steps 6 and 7:
+confirm 796 microsteps/mm, then flash it. **Don't connect CubOS before step 7.**
+Records: [switch test](../results/pipette_switch_search_20260929/README.md),
+[first moves](../results/tic_t500_first_moves_20260929/README.md),
+[settings](../results/tic_t500_settings_20260929/README.md). The Tic was left
+**de-energized**; run `ticcmd --energize` before the next test. Every number
+comes from the sources listed at the end.
 
 The layout follows Cubware's
 [`opentrons-pipette-setup.md`](https://github.com/Ursa-Laboratories/Cubware/blob/main/documentation/opentrons-pipette-setup.md)
@@ -166,10 +171,23 @@ now. Read the driver with `ticcmd --status` instead.
    ⏳ *2026-09-29 17:52: all four moves (1 mm and 5 mm each way) returned `OK` at
    the commanded rate. At 17:57 the Tic stepped the same moves itself over USB.
    Neither run shows whether the shaft turned; see the record's decision table.*
+   ✅ *2026-09-29 18:05–18:10: the limit switch settles it. UP opened the switch
+   after about 28.7 mm, and 2 mm DOWN closed it again. It then reopened after
+   2 mm at 200, 400, 800, 1,600 and 2,500 microsteps/s, so there was no stall
+   at any firmware rate despite the abrupt starts. Direction 0 is UP, so no swap
+   ([record](../results/pipette_switch_search_20260929/README.md)). The vibration
+   Ben felt at 17:52 was the motor stepping at 50–100 full steps/s.*
 6. **Ruler check.** Send `16,1,7960,800` and measure: 10 mm means 796 is right.
-   Then send `16,0,7960,800` to come back.
+   Then send `16,0,7960,800` to come back. If the plunger can't be seen, the
+   raw-step gravimetric check in the
+   [switch-test record](../results/pipette_switch_search_20260929/README.md)
+   separates 796 from 1592 by weight, about 7.5 mg against 3.7 mg of water.
 7. **Flash the firmware with `STEPS_PER_MM 796`**, confirm `HOME` stops on the
-   switch, and only then run a protocol.
+   switch, and only then run a protocol. (`HOME` already stops on the switch on
+   the current image. It doesn't use `STEPS_PER_MM`, and its 796-step back-off is
+   1 mm at 1/8 step. What the flash fixes is every `MOVE_TO`, `ASPIRATE` and
+   prime distance. Until then, if 796 holds, those are about twice as long as
+   commanded.)
 
 ### Idle current: what to add once it moves
 

@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-26**. This is the map; the detail is in
+Status as of **2026-09-29**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,9 +13,19 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-**The motion half works. The plunger has never physically turned — the cable
-that caused it has been removed, and the driver board it damaged is now
-condemned. Replace the Adafruit 6121.**
+**🔑 2026-09-29: the plunger moves.** A Pololu Tic T500 has replaced the condemned
+Adafruit 6121. Driven through the Arduino, the plunger went up to the limit
+switch, back down, and up to it again at every firmware rate, and the
+firmware's `HOME` succeeded for the first time
+([record](../results/pipette_switch_search_20260929/README.md)). ⚠️ **Don't
+connect CubOS yet.** The firmware still has `STEPS_PER_MM 1592`, written for
+1/16 step, and the Tic runs 1/8. So CubOS's connect-time `prime` would drive
+about 56 mm, into the end of travel. Confirm 796/mm and flash it first
+([Tic doc](./tic-t500-pipette-setup.md), steps 6–7).
+
+*Until 2026-09-29 this read:* **The motion half works. The plunger has never
+physically turned — the cable that caused it has been removed, and the driver
+board it damaged is now condemned. Replace the Adafruit 6121.**
 
 Every software and geometry problem between a protocol and the plunger is
 solved and verified on hardware:
@@ -36,6 +46,8 @@ solved and verified on hardware:
 | **the Adafruit 6121 driver board** | 🔴 **condemned 2026-09-26 — `DIAG` survives a power-on reset *and* an `ENN` reset with a clean load. Replace it** |
 | the TMC2209 UART readback | 🔴 **`comm = 0` with the read fix now live — the RX-side bridge resistor alone; move it during the swap** |
 | the first bench move | ❓ **no movement seen — expected with the output stage off; re-run on the replacement** |
+| **the plunger, on the Tic T500** | ✅ **moves both ways, 2026-09-29.** The limit switch opens after ~28.7 mm up, closes 2 mm down, and reopens after 2 mm at 200–2,500 microsteps/s. `HOME` works. Polarity correct. Tic left de-energized; `ticcmd --energize` before use |
+| firmware `STEPS_PER_MM` | 🔴 **still 1592 (1/16 step) against the Tic's 1/8.** Confirm 796 by ruler or weight, then flash, before CubOS connects |
 | the Pi | ✅ **back on the tailnet 2026-09-25 23:37 UTC, 5.13 V input, no under-voltage since boot** — ⚠️ keep its lead out of the gantry's reach (§21.7) |
 
 Campaign 54 (2026-09-18) is the high-water mark: 12/12 steps, and for the first
@@ -126,6 +138,13 @@ to destroy a driver. See §19.
 > coil current tracking the setting, and moves sent both through the Arduino and
 > from the Tic itself. Whether the plunger turned is still to be confirmed by
 > eye ([record](../results/tic_t500_first_moves_20260929/README.md)).
+> ✅ **Confirmed at 18:05–18:10 by the limit switch,** which is the one sensor on
+> the plunger. UP opened it after about 28.7 mm. DOWN 2 mm closed it, and UP
+> reopened it after the same 2 mm at 200, 400, 800, 1,600 and 2,500
+> microsteps/s. The firmware's `HOME` succeeded in 1.36 s
+> ([record](../results/pipette_switch_search_20260929/README.md)). **Next:** step 6
+> (confirm 796 microsteps/mm, by ruler or weight), then step 7 (flash it), and only
+> then CubOS.
 
 > ✅ **The deck is intact.** The 2026-09-24 trio was cut when the gantry
 > travelled far enough from the outlet to unplug the Pi; Ben E-stopped it above
