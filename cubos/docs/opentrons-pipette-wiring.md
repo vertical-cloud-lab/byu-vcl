@@ -3204,3 +3204,16 @@ USB and no 12 V (VIN 0.05 V), its settings went from the factory defaults to
 changed. The Tic (serial `00510573`, firmware 1.09) has no USB serial port, so
 it did not renumber the Arduino (still `/dev/ttyACM0`). Record:
 [`results/tic_t500_settings_20260929/`](../results/tic_t500_settings_20260929/README.md).
+
+**2026-09-29, evening: wired, powered, and stepped from both ends.** Ben wired
+Figure 1 and put the Tic on 12 V. From the Pi, the Tic read energized with no
+errors. With no motion, VIN sagged in step with the current limit: 12.4 V
+de-energized, then 12.0 / 11.7 / 11.1 / 10.5 V at 174 / 343 / 634 / 990 mA.
+So, unlike the 6121, the driver is regulating current into the windings. Four
+`CMD 16` moves through the Arduino (1 mm and 5 mm each way) returned `OK` at the
+commanded rate, with the limit switch reading clear. The Tic then stepped the
+same moves itself over USB, and its STEP/DIR settings were restored
+byte-identical. The pipette was out of the camera's view, so whether the shaft
+turned in either run is Ben's observation. The record has a decision table for
+each outcome:
+[`results/tic_t500_first_moves_20260929/`](../results/tic_t500_first_moves_20260929/README.md).

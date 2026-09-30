@@ -121,8 +121,11 @@ to destroy a driver. See §19.
 > wiring diagram, the three Tic settings, the one firmware constant that changes
 > (`STEPS_PER_MM` 1592 → 796) and the bring-up order. **Bring-up step 1 is
 > done:** STEP/DIR, 1/8 step and 990 mA are in the Tic's memory and read back
-> ([record](../results/tic_t500_settings_20260929/README.md)). Next is wiring it
-> with everything powered down, then step 3.
+> ([record](../results/tic_t500_settings_20260929/README.md)). **Steps 3 and 5
+> were run later the same day:** wired and on 12 V, energized with no errors,
+> coil current tracking the setting, and moves sent both through the Arduino and
+> from the Tic itself. Whether the plunger turned is still to be confirmed by
+> eye ([record](../results/tic_t500_first_moves_20260929/README.md)).
 
 > ✅ **The deck is intact.** The 2026-09-24 trio was cut when the gantry
 > travelled far enough from the outlet to unplug the Pi; Ben E-stopped it above

@@ -2,11 +2,13 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
-**Status, 2026-09-29:** bring-up step 1 is done. The Tic's three settings are
-applied and read back
-([record](../results/tic_t500_settings_20260929/README.md)). Nothing has been
-wired to the Tic or powered from 12 V yet. Every number comes from the sources
-listed at the end, and the first move still needs a ruler.
+**Status, 2026-09-29:** bring-up steps 1 and 3 are done, and step 5 has been
+run from the Pi. The Tic is wired, on 12 V, energized with no errors, and
+the coils carry the current it sets. The Arduino's steps and the Tic's own steps
+both went out cleanly, but whether the shaft turned is still Ben's call
+([first-moves record](../results/tic_t500_first_moves_20260929/README.md);
+settings [record](../results/tic_t500_settings_20260929/README.md)). Every number
+comes from the sources listed at the end, and the first move still needs a ruler.
 
 The layout follows Cubware's
 [`opentrons-pipette-setup.md`](https://github.com/Ursa-Laboratories/Cubware/blob/main/documentation/opentrons-pipette-setup.md)
@@ -151,6 +153,9 @@ now. Read the driver with `ticcmd --status` instead.
    so the driver energizes and holds at 990 mA the moment VIN comes up. Switch
    the 12 V off between tests (or send `ticcmd --deenergize`) rather than leave
    it holding; see "Idle current" below.
+   ✅ *2026-09-29 17:47: energized, Normal, no errors. VIN is 12.4 V
+   de-energized and sags to about 10.5 V holding at 990 mA, so the supply is
+   soft ([record](../results/tic_t500_first_moves_20260929/README.md)).*
 4. **Holding torque.** Push the plunger gently by hand. It should now resist,
    which it never did on the 6121.
 5. **1 mm down and back, before CubOS is involved.** In the Arduino IDE Serial
@@ -158,6 +163,9 @@ now. Read the driver with `ticcmd --status` instead.
    2 s), then `16,0,796,400` (back up). **If direction 1 moves the plunger up,
    power off and swap `A1`↔`A2`.** Homing seeks with `DIR` LOW, so on a reversed
    motor it would drive into the tip ejector instead of the switch.
+   ⏳ *2026-09-29 17:52: all four moves (1 mm and 5 mm each way) returned `OK` at
+   the commanded rate. At 17:57 the Tic stepped the same moves itself over USB.
+   Neither run shows whether the shaft turned; see the record's decision table.*
 6. **Ruler check.** Send `16,1,7960,800` and measure: 10 mm means 796 is right.
    Then send `16,0,7960,800` to come back.
 7. **Flash the firmware with `STEPS_PER_MM 796`**, confirm `HOME` stops on the
