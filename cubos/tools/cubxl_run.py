@@ -8,8 +8,9 @@ repo (``git pull`` it first, so the configs that run are the committed ones):
         --name pipette_test_20261001
 
 That runs the pipette trio (the default gantry / deck / protocol below) and
-writes everything into ``cubos/results/<name>/``, with ``SUMMARY.md`` as the
-one-screen answer. Stages, in order; any refusal before stage 3 stops the run
+writes everything into ``~/cubxl_runs/<name>/``, with ``SUMMARY.md`` as the
+one-screen answer. That folder is outside the checkout so ``git pull`` never
+trips over it; copy it into ``cubos/results/`` to commit it. Stages, in order; any refusal before stage 3 stops the run
 with nothing moved:
 
   1. checks   versions and applied CubOS patches; ports present, not held by
@@ -599,12 +600,12 @@ def summarize(a, out: Out, rec: dict, r: dict | None, status: str, err: str = ""
 # ----------------------------------------------------------------------- main
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--name", required=True, help="results folder name, cubos/results/<name>/")
+    ap.add_argument("--name", required=True, help="results folder name, ~/cubxl_runs/<name>/")
     ap.add_argument("--gantry", type=Path, default=DEFAULT_GANTRY)
     ap.add_argument("--deck", type=Path, default=DEFAULT_DECK)
     ap.add_argument("--protocol", type=Path, default=DEFAULT_PROTOCOL)
     ap.add_argument("--cubos", type=Path, default=Path.home() / "CubOS")
-    ap.add_argument("--outdir", type=Path, default=None, help="default cubos/results/<name>")
+    ap.add_argument("--outdir", type=Path, default=None, help="default ~/cubxl_runs/<name>")
     ap.add_argument("--frames-at", default="2,4,8,9", help="steps to photograph after")
     ap.add_argument("--no-camera", action="store_true")
     ap.add_argument("--no-tic", action="store_true", help="no pipette Tic on this machine")
@@ -617,7 +618,7 @@ def main() -> int:
     a = ap.parse_args()
     for k in ("gantry", "deck", "protocol"):
         setattr(a, k, getattr(a, k).resolve())
-    outdir = (a.outdir or REPO / "cubos/results" / a.name).resolve()
+    outdir = (a.outdir or Path.home() / "cubxl_runs" / a.name).resolve()
     outdir.mkdir(parents=True, exist_ok=True)
     signal.signal(signal.SIGHUP, signal.SIG_IGN)   # an SSH drop must not kill a run
     out = Out(outdir)

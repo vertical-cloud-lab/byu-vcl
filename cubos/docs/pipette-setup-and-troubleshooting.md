@@ -307,8 +307,11 @@ and writes one folder:
 git -C ~/byu-vcl-pipette pull --ff-only          # run the committed configs
 setsid nohup ~/CubOS/.venv/bin/python ~/byu-vcl-pipette/cubos/tools/cubxl_run.py \
     --name pipette_test_YYYYMMDD > /tmp/cubxl_run.out 2>&1 < /dev/null &
-cat ~/byu-vcl-pipette/cubos/results/pipette_test_YYYYMMDD/SUMMARY.md   # when done
+cat ~/cubxl_runs/pipette_test_YYYYMMDD/SUMMARY.md   # when done
 ```
+
+Results go to `~/cubxl_runs/<name>/`, outside the checkout so the `pull` never
+conflicts; copy the folder into `cubos/results/` to commit it.
 
 [`cubos/tools/cubxl_run.py`](../tools/cubxl_run.py) defaults to the trio below.
 In order, and any refusal before the run means nothing moved:
