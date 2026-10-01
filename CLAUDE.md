@@ -321,6 +321,16 @@ tailnet grant to this Pi is `tcp:22` only — a control service bound to `0.0.0.
 unreachable from CI until its port is added to the `tag:rpi-5-des4` grant, and the safer
 default is to bind it to `127.0.0.1` and reach it over SSH.
 
+**The CubXL deck camera (1 October 2026).** A Camera Module 3 Wide (`imx708_wide`) is on
+this Pi's ribbon-cable connector, meant as a fixed top-down view of the deck. `deckcam.service`
+serves it as MJPEG on `127.0.0.1:8743` — reach it with `ssh -L 8743:127.0.0.1:8743`, like
+the Operator UI — and runs `rpicam-vid` only while a viewer is connected. Only one process
+can hold the camera, so while someone is watching, `rpicam-still` and friends fail with
+*Pipeline handler in use by another process*. For any video below 2304×1296, pin the sensor
+mode (`--mode 2304:1296:10:P`): left to choose, `rpicam-vid` takes the 1536×864 mode, a
+centre crop showing only the middle two thirds of the field of view. Source, installer and
+placement notes: `cubos/deck-camera/`.
+
 **Reaching the Pico W.** The sensor board plugs into the OT-2 stream-cam Pi over USB and is
 driven with `mpremote`, installed there as a venv at `~/.venvs/mpremote/bin/mpremote`
 (1.29.0 + pyserial). It went in as a venv rather than apt so it needs no sudo and touches

@@ -1,0 +1,21 @@
+# Rendered and installed by install.sh, which fills in @USER@ and @DEST@.
+[Unit]
+Description=CubXL deck camera live view (MJPEG on 127.0.0.1:8743, view over an SSH tunnel)
+Documentation=https://github.com/vertical-cloud-lab/byu-vcl/tree/main/cubos/deck-camera
+After=network.target
+
+[Service]
+User=@USER@
+ExecStart=/usr/bin/python3 @DEST@/deckcam.py
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=yes
+ProtectSystem=full
+PrivateTmp=yes
+# Settings are environment variables; see deckcam.py --help. For example, once
+# the camera is mounted, fix focus on the deck instead of hunting on the gantry:
+#Environment=DECKCAM_LENS_POSITION=2.0
+#Environment=DECKCAM_ROTATE180=1
+
+[Install]
+WantedBy=multi-user.target
