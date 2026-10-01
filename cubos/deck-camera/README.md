@@ -28,7 +28,10 @@ the Operator UI and the camera through one connection, give both forwards:
 The page draws a red crosshair on the centre of the frame and a yellow
 rule-of-thirds grid (toggle with `c` and `g`), plus a 180° rotation (`r`) for a
 camera mounted upside down. There is also a snapshot link. The status line shows the frame rate and
-any camera error.
+any camera error. It reads 0 fps for the first few seconds, until it has
+counted some frames.
+
+![The viewer in Chrome through the tunnel, 2026-10-01](viewer-page-2026-10-01.jpg)
 
 - **The camera runs only while someone is watching.** `rpicam-vid` starts with
   the first viewer and stops 10 s after the last one leaves. It takes about 2 s
