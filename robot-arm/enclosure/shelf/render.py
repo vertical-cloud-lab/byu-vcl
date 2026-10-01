@@ -58,6 +58,8 @@ def view(path, size=(1500, 1000)):
         if "ply" in p.tags:
             e = pv.wrap(w).extract_feature_edges(feature_angle=60, boundary_edges=False, manifold_edges=False)
             pl.add_mesh(e, color=PLY_EDGE, line_width=1.2)
+    for it in B.dome_frame():
+        pl.add_mesh(pv.wrap(it.world), color="#f4f4f1", smooth_shading=True, specular=0.3, ambient=0.2)
     q = np.radians(RES["pick_pose_deg"])
     for link, m, c in B.arm_meshes(piper, q, keep=None, grip=0.0155):
         pl.add_mesh(pv.wrap(m), color=c, smooth_shading=True, specular=0.25)
@@ -102,9 +104,13 @@ def plan(ax, piper):
     ax.add_patch(patches.Rectangle((-760, wall), 1520, 40, fc="#ecebe7", ec=INK2, lw=0.8, hatch="///", zorder=1))
     ax.text(-740, wall + 52, "wall (room 158)", fontsize=9, color=INK2)
     px = B.BASE["x"] / 2 * MM
-    ax.add_patch(patches.Rectangle((-px, wall - 5 - B.BASE["y"] * MM), 2 * px, B.BASE["y"] * MM, fc="#f6efe0",
+    yb = (B.RAIL_Y - B.RAIL_GAP - B.Y_J1) * MM
+    ax.add_patch(patches.Rectangle((-px, yb - B.BASE["y"] * MM), 2 * px, B.BASE["y"] * MM, fc="#f6efe0",
                                    ec=MUTED, lw=0.8, ls="--", zorder=0))
-    ax.text(-px + 10, -300, "arm's plate (4 × 4 ft), back edge 5 mm off the wall", fontsize=8.5, color=MUTED)
+    ax.text(-px + 10, -300, "arm's plate (4 × 4 ft, trimmed to 47 1/2 in across)", fontsize=8.5, color=MUTED)
+    rail = (B.RAIL_Y - B.Y_J1) * MM
+    ax.add_patch(patches.Rectangle((-760, rail), 1520, B.P.PIPE_OD * MM, fc="#f1f1ee", ec=MUTED, lw=0.8, zorder=1))
+    ax.text(740, rail + 13, "dome's back bottom rail", fontsize=8, color=INK2, ha="right", va="center")
     # reach: comfortable band (blue) over the J1 range, dead wedge behind the base (orange)
     # In this layout the arm faces -x, so its back (J1 = +/-180) points +x.
     th_ok = np.radians(np.linspace(-(j1 - marg), j1 - marg, 200)) + np.pi       # world angles
@@ -157,8 +163,10 @@ def plan(ax, piper):
     ext(ax, (20, 0), (xd + 200, 0))
     dim(ax, (xd, F), (xd, F + Dp), f"{Dp:.0f}", ha="left", off=(8, 0))
     dim(ax, (xd + 70, 0), (xd + 70, F), f"{F:.0f}\nJ1 to\nfront edge", ha="left", off=(8, 0))
-    ext(ax, (L / 2, wall), (xd + 200, wall))
-    dim(ax, (xd + 170, 0), (xd + 170, wall), f"{wall:.0f}\nJ1 to wall", ha="left", off=(8, 0))
+    ext(ax, (L / 2, F + Dp + T), (xd + 200, F + Dp + T))
+    dim(ax, (xd + 140, 0), (xd + 140, F + Dp + T), f"{F + Dp + T:.0f}\nJ1 to back\nof fence", ha="left", off=(8, 0))
+    ext(ax, (760, wall), (xd + 360, wall))
+    dim(ax, (xd + 330, 0), (xd + 330, wall), f"{wall:.0f}\nJ1 to wall", ha="left", off=(8, 0))
     for row, lab in zip(B.ROWS, ("20 mL vials", "50 mL tubes")):
         y = F + row["y"] * MM
         ax.text(-L / 2 - 12, y, f"{lab}: {y:.0f} from J1, {np.diff(row['xs'])[0] * MM:.0f} pitch", fontsize=8,
@@ -166,7 +174,7 @@ def plan(ax, piper):
     ax.text(-L / 2 - 12, F + Dp + T / 2, "fence", fontsize=8, color=INK2, ha="right", va="center")
     ax.text(-990, 230, f"blue: comfortable picks,\n{band[0] * MM:.0f}–{band[1] * MM:.0f} mm from J1\n"
             f"(45° ± 15° approach,\njoints ≥ {marg:.0f}° off their stops)", fontsize=8.5, color=BLUE, va="top")
-    ax.set_xlim(-1000, 1060)
+    ax.set_xlim(-1000, 1260)
     ax.set_ylim(-330, wall + 80)
     ax.set_aspect("equal")
     ax.axis("off")
@@ -217,6 +225,8 @@ def section(ax, piper):
     ax.annotate(f"parked arm's sweep, r = {r0:.0f}\n(z {rp['underside_behind_m'] * MM:.0f}–"
                 f"{rp['top_behind_m'] * MM:.0f} mm)", xy=(r0, rp["underside_behind_m"] * MM), xytext=(640, 120),
                 fontsize=8.5, color=INK2, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.6), zorder=9)
+    ax.add_patch(patches.Circle(((B.D.SPAN["y"] / 2 - B.Y_J1) * MM, (B.D.Z0 - B.PT) * MM), B.P.PIPE_OD / 2 * MM,
+                                fc="#f1f1ee", ec=INK2, lw=0.7, zorder=4))
     ax.plot([0, 0], [-T - 30, 480], color=INK, lw=0.7, ls="-.", zorder=2)
     ax.text(6, 470, "J1 axis", fontsize=8.5, color=INK)
     # dimensions
@@ -229,14 +239,14 @@ def section(ax, piper):
     ext(ax, (F + Dp + T, top + lip), (xf + 10, top + lip))
     dim(ax, (xf, 0), (xf, top + lip), f"{top + lip:.0f}", ha="left", off=(6, 0), fs=8)
     yd = -T - 70
-    for x in (0, F, F + B.ROWS[0]["y"] * MM, F + B.ROWS[1]["y"] * MM, F + Dp, wall):
+    for x in (0, F, F + B.ROWS[0]["y"] * MM, F + B.ROWS[1]["y"] * MM, F + Dp + T, wall):
         ext(ax, (x, -T - 30), (x, yd - 8))
     dim(ax, (0, yd), (F, yd), f"{F:.0f}")
     dim(ax, (0, yd - 45), (F + B.ROWS[0]["y"] * MM, yd - 45), f"{F + B.ROWS[0]['y'] * MM:.0f} vials")
     dim(ax, (0, yd - 90), (F + B.ROWS[1]["y"] * MM, yd - 90), f"{F + B.ROWS[1]['y'] * MM:.0f} tubes")
-    dim(ax, (0, yd - 135), (F + Dp, yd - 135), f"{F + Dp:.0f} fence")
+    dim(ax, (0, yd - 135), (F + Dp + T, yd - 135), f"{F + Dp + T:.0f} back of fence")
     dim(ax, (0, yd - 180), (wall, yd - 180), f"{wall:.0f} wall")
-    ax.text(-270, 300, "picking a vial and (grey)\na tube, gripper 45° down", fontsize=8.5, color=INK2)
+    ax.text(-275, 300, "dark: picking a vial\ngrey: picking a tube\ngripper 45° down", fontsize=8.5, color=INK2)
     # height table
     rows = REACH["comfortable_band_by_shelf_height_m"]
     txt = ["shelf top above the plate → comfortable band"]
@@ -254,8 +264,8 @@ def section(ax, piper):
 
 def drawing(path):
     piper = Piper()
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=(13, 14.4), dpi=110, facecolor=SURFACE,
-                                 gridspec_kw=dict(height_ratios=[6.3, 7.1], hspace=0.08))
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=(13, 12.6), dpi=110, facecolor=SURFACE,
+                                 gridspec_kw=dict(height_ratios=[4.6, 5.5], hspace=0.08))
     for a in (a1, a2):
         a.set_facecolor(SURFACE)
     plan(a1, piper)

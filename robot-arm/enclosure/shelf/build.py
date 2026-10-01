@@ -36,8 +36,13 @@ REACH = json.loads((HERE / "reach-results.json").read_text())
 # ------------------------------------------------------------------ site
 TABLE = D.TABLE                             # spot D, two 680 x 1290 mm tables, top at z = 0
 WALL_Y = TABLE["y"] / 2                     # back edge of the tables, against room 158's wall
-BASE = dict(x=48 * IN, y=48 * IN)           # the arm's base: the 4 x 4 ft half sheet in the photo
-GAP = 0.005                                 # fence to wall
+# The dome (../dome) stands on the table round everything; its back bottom rail runs along the wall.
+RAIL_Y = D.SPAN["y"] / 2 - P.PIPE_OD / 2    # inside face of that rail's pipe
+RAIL_GAP = 0.005                            # fence to rail
+# The arm's base: the 4 x 4 ft half sheet in the photo. 48 in will not drop between the dome's corner
+# elbows (1217 mm apart inside), so it is trimmed to 47 1/2 in across.
+BASE = dict(x=47.5 * IN, y=48 * IN)
+HUTCH_RAIL = (45.5 * IN + 2 * P.ELBOW_STOP) / 2 - P.PIPE_OD / 2   # the same rail on the deck, from its centre
 
 # ------------------------------------------------------------------ shelf, in the arm's frame
 # front: J1 axis to the front edge. The parked arm sweeps 317 mm round J1 if it turns while folded,
@@ -50,7 +55,7 @@ N_LEGS = 4
 # The arm faces -x: its cable, its parked elbow and J1's dead wedge all point along the wall (+x),
 # and the shelf is off its side, at J1 = -90 degrees.
 ARM_YAW = np.pi
-Y_J1 = WALL_Y - GAP - T - SHELF["depth"] - SHELF["front"]
+Y_J1 = RAIL_Y - RAIL_GAP - T - SHELF["depth"] - SHELF["front"]
 X_J1 = 0.0
 PT = T                                      # top of the arm's plate
 
@@ -175,8 +180,8 @@ def items():
 
 
 def base_plate():
-    """The arm's 4 x 4 ft plate, back edge against the wall, in world coordinates."""
-    y1 = WALL_Y - GAP
+    """The arm's plate, back edge flush with the back of the fence, in world coordinates."""
+    y1 = RAIL_Y - RAIL_GAP
     m = _box((-BASE["x"] / 2, y1 - BASE["y"], 0), (BASE["x"] / 2, y1, PT))
     return m
 
@@ -249,7 +254,11 @@ def layout_numbers():
     y0 = SHELF["front"] + ROWS[0]["y"]
     dead = y0 * np.tan(np.radians(180 - j1lim))
     dead_m = y0 * np.tan(np.radians(180 - j1lim + REACH["margin_deg"]))
-    return dict(j1_to_wall=round(WALL_Y - Y_J1, 4), j1_to_front_edge=SHELF["front"],
+    comfy = item_comfort()
+    return dict(j1_to_wall=round(WALL_Y - Y_J1, 4), j1_to_rail=round(RAIL_Y - Y_J1, 4),
+                j1_to_fence_back=round(SHELF["front"] + SHELF["depth"] + T, 4),
+                hutch_fence_to_rail_with_arm_at_deck_centre=round(HUTCH_RAIL - (SHELF["front"] + SHELF["depth"] + T), 4),
+                items_comfortable=comfy, j1_to_front_edge=SHELF["front"],
                 j1_to_fence=round(SHELF["front"] + SHELF["depth"], 4), shelf_top_above_plate=SHELF["top"],
                 leg_height=round(LEG_H, 4), length=SHELF["length"], depth=SHELF["depth"],
                 leg_x=[round(float(x), 4) for x in leg_x()], span_between_legs=round(float(np.diff(leg_x())[0] - T), 4),
@@ -258,7 +267,27 @@ def layout_numbers():
                 comfortable_band=band, rows=rows,
                 room_facing_dead_half_width_front_row=round(float(dead), 3),
                 room_facing_dead_half_width_front_row_with_margin=round(float(dead_m), 3),
-                arm_on_table_y=round(Y_J1, 4), base_centre_y=round(WALL_Y - GAP - BASE["y"] / 2, 4))
+                arm_on_table_y=round(Y_J1, 4), base_centre_y=round(RAIL_Y - RAIL_GAP - BASE["y"] / 2, 4))
+
+
+def item_comfort():
+    """For every pocket: is a 45 +/- 15 degree pick comfortable at every fingertip height from 10 to
+    60 mm above the nest plate? Read straight off reach.py's map."""
+    d = np.load(HERE / "reach-map.npz")
+    feas, R, Z, Pd = d["feas"], d["r_bins"], d["z_bins"], d["pitches"]
+    sel = (Pd >= REACH["approach_pitch_deg"][0]) & (Pd <= REACH["approach_pitch_deg"][1])
+    comf = feas[sel].all(axis=0)
+    zc = (Z[:-1] + Z[1:]) / 2
+    lo, hi = REACH["grip_above_shelf_m"]
+    base = SHELF["top"] + PLATE_T
+    zs = (zc >= base + lo - 0.005) & (zc <= base + hi + 0.005)
+    out = {}
+    for row in ROWS:
+        r = np.hypot(row["xs"], SHELF["front"] + row["y"])
+        i = np.digitize(r, R) - 1
+        ok = comf[i][:, zs].all(axis=1)
+        out[row["name"]] = f"{int(ok.sum())}/{len(ok)}"
+    return out
 
 
 def stiffness():
@@ -278,8 +307,8 @@ def stiffness():
     shelf_kg = 600 * T * (SHELF["length"] * SHELF["depth"] + N_LEGS * SHELF["depth"] * LEG_H
                           + SHELF["length"] * (SHELF["top"] + SHELF["lip"]))
     mu = 0.3
-    # humidity: in-plane plywood movement ~0.02 % per 1 % moisture content; 3 % MC swing season to season
-    hyg = 0.0002 * 3 * (SHELF["front"] + SHELF["depth"])
+    # humidity: in-plane plywood movement ~0.01-0.02 % per 1 % moisture content; 3 % MC swing season to season
+    hyg = 0.00015 * 3 * (SHELF["front"] + SHELF["depth"])
     return dict(E_Pa=E, EI_Nm2=round(EI, 1), items_kg=load_kg, press_N=press,
                 span_4_legs_m=round(span4, 3), sag_4_legs_mm=round(sag(span4) * 1000, 3),
                 stiffness_4_legs_N_per_mm=round(press / (press * span4 ** 3 / (48 * EI)) / 1000, 0),
@@ -382,9 +411,16 @@ def export(piper, q):
     add(base_plate(), hexrgb("#e9dcc0"), "arm-plate")
     for i, p in enumerate(ps + items()):
         add(p.world, hexrgb(p.color), f"{p.name}-{i}")
+    for i, it in enumerate(dome_frame()):
+        add(it.world, hexrgb(it.part.color), f"dome-{it.part.name}-{i}")
     for j, (link, m, c) in enumerate(arm_meshes(piper, q, keep=0.25)):
         add(m, list(c), f"piper-{link}-{j}")
     scene.export(HERE / "shelf.glb")
+
+
+def dome_frame():
+    """The dome's PVC frame from ../dome, without its cloth, base or screws."""
+    return [it for it in D.layout() if it.tags & {"pipe", "elbow"}]
 
 
 if __name__ == "__main__":

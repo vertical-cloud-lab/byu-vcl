@@ -1,6 +1,13 @@
 {
  "layout_m": {
-  "j1_to_wall": 0.5729,
+  "j1_to_wall": 0.6064,
+  "j1_to_rail": 0.5729,
+  "j1_to_fence_back": 0.5679,
+  "hutch_fence_to_rail_with_arm_at_deck_centre": 0.012,
+  "items_comfortable": {
+   "vial": "9/9",
+   "tube": "5/5"
+  },
   "j1_to_front_edge": 0.35,
   "j1_to_fence": 0.55,
   "shelf_top_above_plate": 0.075,
@@ -70,8 +77,8 @@
   ],
   "room_facing_dead_half_width_front_row": 0.225,
   "room_facing_dead_half_width_front_row_with_margin": 0.39,
-  "arm_on_table_y": 0.1071,
-  "base_centre_y": 0.0654
+  "arm_on_table_y": 0.0736,
+  "base_centre_y": 0.0319
  },
  "stiffness": {
   "E_Pa": 7000000000.0,
@@ -89,7 +96,7 @@
   "shelf_kg": 3.19,
   "friction_mu": 0.3,
   "slide_force_unfixed_N": 18.2,
-  "humidity_shift_mm": 0.33,
+  "humidity_shift_mm": 0.25,
   "target_mm": 0.1
  },
  "pick_pose_deg": [
