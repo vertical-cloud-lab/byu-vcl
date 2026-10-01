@@ -26,6 +26,12 @@ the work:
 >   was sent at 18:44:46 UTC and finished at 19:37:42 with no error or HMS alert. The
 >   [evidence](evidence/2026-09-29/drill-template-studio/) includes the file the printer ran,
 >   its metadata and a [recording](https://www.youtube.com/watch?v=M6w4-SVw9tg).
+> - **Third print from Studio (2026-10-01):** plate 2, the deck with its Pi 5 standoffs and
+>   shims. It was sent at 00:32:54 UTC and finished at 01:43:12, 70 min later against Bambu's
+>   69 min, with no error or HMS alert. It was asked for on PR #84, so its
+>   [evidence](evidence/2026-10-01/deck-studio/) was first committed there and copied here.
+>   [Recording](https://www.youtube.com/watch?v=1gatV4-JgIA). Of the lid mount's two
+>   required plates, only plate 1, the base, is left to print.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -156,7 +162,12 @@ camera frame and writes a redacted JSON with a verdict:
   plate from its edge, with the Safety Zone sticker in the foreground. With the gantry parked
   high after a tall job, it looks down at the plate and also sees the counter and room behind
   the printer (2026-09-29, [frame](evidence/2026-09-29/drill-template-studio/20260929T182814Z_camera.jpg)).
-  The chamber light (`lights_report`) lights the scene.
+- The chamber light (`lights_report`) is not enough on its own; the room's lights matter
+  more. On 2026-10-01 at 00:04 UTC the chamber light was on but the lab was dark, and the
+  frame came out black: mean luma 3.6/255, against 55–118 in every pre-flight with the room lit
+  ([contrast-stretched](evidence/2026-10-01/deck-studio/20261001T000434Z_camera_stretched.jpg)).
+  The pre-flight warns on a frame that dark. Wait for someone to be in the room with the
+  lights on, then take a fresh frame.
 - Anything standing on the plate would be obvious.
 - It shows a flat or dark object poorly. The toolhead hides part of the back, and the
   toolhead's own shadow looks like a dark patch on the plate.
@@ -329,6 +340,17 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
   within the last 30 min by someone who has looked at the printer), or post the frame and
   poll the thread. Use one foreground Bash call with a long timeout. `DEFAULT_WORKFLOW_TOKEN`
   still reads after the session token dies.
+- **Ask for the go and the login code without `@claude`.** A comment that mentions
+  `@claude` starts a new run. On 2026-10-01 "@claude plate clear" started one, and so did
+  the login code, posted after "@claude". Both runs noticed the running session and stood
+  down without touching the printer
+  ([PR #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5922213756)),
+  but two sessions on one printer, or on one e-mailed code, would collide. The running
+  session polls the thread and finds plain replies.
+- **Which thread.** Lid-mount printing belongs on PR #234
+  ([sgbaird, 2026-10-01](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)),
+  the thread that the snippet below and `studio/wait_code.py` poll. For a request from
+  another thread, change the number in the snippet and set `PR_NUMBER` for `wait_code.py`.
 - **Who can give the go.** Check the commenter's repo permission, not `author_association`.
   sgbaird's comments show as `CONTRIBUTOR` because org membership is private, so an
   association check would ignore him:
@@ -401,7 +423,8 @@ itself:
 
 Things to decide or watch:
 - **Colour.**
-  - The lid mount's README asks for **black** PLA, to block light at the collar. None is loaded.
+  - The lid mount's README asks for **black** PLA, to block light at the collar. None is
+    loaded: on 2026-10-01 the AMS Lite still held dark blue and pink PLA Basic, plus white PETG.
   - Slot 0 (dark blue PLA Basic) is the most opaque option, and fine for a fit test: `--ams-slot 0`.
   - For the final part, ask someone to load black PLA Basic and re-run the pre-flight.
   - Pink (slot 1) is likely to glow.
@@ -530,3 +553,4 @@ What this says about printing and using plate 1:
 | [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login-code relay, and what to check before Send |
 | [`evidence/2026-09-27/fit-coupon-studio/`](evidence/2026-09-27/fit-coupon-studio/) | plate 4 printed from Studio: two pre-flights, then `watch`'s status log and frames |
 | [`evidence/2026-09-29/drill-template-studio/`](evidence/2026-09-29/drill-template-studio/) | plate 3 printed from Studio: two pre-flights, the file the printer ran (`sent/`), `print.json` (settings, timeline, the go, the recording), `watch`'s log and key frames |
+| [`evidence/2026-10-01/deck-studio/`](evidence/2026-10-01/deck-studio/README.md) | plate 2 printed from Studio, asked for on PR #84: two pre-flights (the first in a dark lab), the file the printer ran, `print.json`, `watch`'s log and key frames. Copied from that PR's branch (`cad7af2`) |

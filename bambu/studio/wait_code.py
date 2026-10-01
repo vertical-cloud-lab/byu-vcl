@@ -1,9 +1,9 @@
-"""Poll PR #234 every 2 s for a verification code from someone with write access, then type it
-into Bambu Studio's verification dialog. The code itself is never printed."""
+"""Poll PR #234 (or PR_NUMBER) every 2 s for a verification code from someone with write access,
+then type it into Bambu Studio's verification dialog. The code itself is never printed."""
 import json, os, re, subprocess, sys, time, urllib.request, urllib.error
 from pathlib import Path
 
-REPO, PR = "vertical-cloud-lab/byu-vcl", 234
+REPO, PR = "vertical-cloud-lab/byu-vcl", int(os.environ.get("PR_NUMBER", "234"))
 SINCE = sys.argv[1]                      # only comments created after this
 SKIP_IDS = set(sys.argv[2].split(",")) if len(sys.argv) > 2 and sys.argv[2] else set()
 MINUTES = float(os.environ.get("WAIT_MIN", "25"))

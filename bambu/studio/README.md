@@ -9,7 +9,9 @@ the lab's Bambu account, and sends the job through Bambu's cloud. It worked the 
 Send, where the LAN `start` an hour earlier had been refused with HMS `0500-0500-0001-0007`.
 It worked again on 2026-09-29 for the drill template, plate 3
 ([evidence](../evidence/2026-09-29/drill-template-studio/); see
-[the second run](#second-run-the-drill-template-2026-09-29) below).
+[the second run](#second-run-the-drill-template-2026-09-29) below), and on 2026-10-01 for
+plate 2, the deck ([evidence](../evidence/2026-10-01/deck-studio/README.md); see
+[the third run](#third-run-plate-2-2026-10-01)).
 
 Nothing here changes the rules in the runbook. The pre-flight, the person's go and the watching
 all still apply. This route skips `bambu_print.py start`, so its gates are applied by hand: a
@@ -22,7 +24,7 @@ pre-flight under 15 min old, and a camera frame read before Send.
 | [`studio.sh`](studio.sh) | Starts Studio on display `:99` with software GL and WebKit compositing off (the login and home pages are WebKit views) |
 | [`ui.py`](ui.py) | `xdotool` wrapper: smooth pointer moves (they show in a recording), clicks, keys, and `typeenv VAR`, which types a secret from the environment through stdin, so it never appears in argv or a log |
 | [`shot.sh`](shot.sh) | Screenshot of `:99`, to find the next thing to click |
-| [`wait_code.py`](wait_code.py) | Checks the PR thread every 2 s for a 6-digit code from someone with write access, then types it into Studio's verification dialog. It never prints the code |
+| [`wait_code.py`](wait_code.py) | Checks the PR thread (#234, or `PR_NUMBER`) every 2 s for a 6-digit code from someone with write access, then types it into Studio's verification dialog. It never prints the code |
 
 ## Setup (about 2 min on a runner)
 
@@ -65,8 +67,10 @@ runner is a new device. On 2026-09-27:
   minute after it was sent. `wait_code.py` typed it 4 s later, and it worked.
 
 So ask for the code in the thread only when someone is ready to answer, and request a fresh one
-if more than a few minutes pass. What the code proves is a person's inbox, so no session can
-get around it. That is the check working as intended.
+if more than a few minutes pass. Ask for the bare digits, without `@claude`: a comment that
+mentions it starts another run (2026-10-01; see [the third run](#third-run-plate-2-2026-10-01)).
+What the code proves is a person's inbox, so no session can get around it. That is the check
+working as intended.
 
 The typed e-mail address shows on screen until the login closes, and the verification dialog
 repeats it. So cut that stretch from any recording, mask it in any screenshot that leaves the
@@ -164,6 +168,33 @@ What was new:
   (exit 20) while nothing is wrong.
 - **Recorded from 19:22 only** ([video](https://www.youtube.com/watch?v=M6w4-SVw9tg)). The
   request to record every session came mid-print, so the login, slicing and Send are missing.
+
+## Third run: plate 2 (2026-10-01)
+
+Asked for on [PR #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5921915472),
+where the record was first committed; it is now in
+[`../evidence/2026-10-01/deck-studio/`](../evidence/2026-10-01/deck-studio/README.md), with
+the timeline in its `print.json`. Sent at 00:32:54 UTC, `RUNNING` 25 s later, `FINISH` at
+01:43:12: 70.3 min, against Bambu's 69 min 16 s. No error or HMS alert.
+
+What was new:
+- **A dark lab.** The first pre-flight, at 00:04, found the chamber light on and the frame
+  black (mean luma 3.6/255). The session set up Studio and sliced while it waited, and sent
+  nothing until the go came at 00:26, by which time the lights were on (mean luma 54.9).
+- **Duplicate runs.** The go and the login code were both posted with `@claude`, so each
+  started another run. Both stood down without touching the printer, and the running
+  session still read the code and typed it 5 s after it was posted.
+- **The GUI reset the same three settings again.** After they were set back, the GUI's plate 2
+  had the committed plate's 55 layers to Z 11.0, its 43.50 g, temperatures and start G-code.
+  Per-layer extrusion differed by at most 0.8 mm of filament on 14 layers, i.e. one retract
+  more or fewer.
+- **Layer 21 took 8.6 min.** It's the deck's solid top, and the longest layer of the plate:
+  inside `watch`'s 15 min stall limit.
+- **Recorded from Studio's setup to the finish**
+  ([video](https://www.youtube.com/watch?v=1gatV4-JgIA), 7 min 24 s): Studio's setup and
+  slicing at 2×, then Send, then the printer camera as a timelapse to the finish. The login
+  and a 15 min idle wait for the go were cut, and the room corners of the camera frames
+  blurred.
 
 ## Recording and keeping the sent file
 

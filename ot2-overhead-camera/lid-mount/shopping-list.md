@@ -5,7 +5,10 @@ Hawkins's shop). It's open Mon–Fri 8–5, closed Tue 10:30–12 for devotional
 byuprototypinglab@gmail.com. It sells the fasteners it has in stock, so ask a TA at the counter.
 **Pay** with the department card from the front office, and keep the itemized receipt.
 
-Stainless or zinc-plated steel both work. All sizes are metric.
+Stainless or zinc-plated steel both work, and **anything M2.5 can be nylon**
+([sgbaird](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)). The
+M2.5 parts carry only the camera and the Pi 5, a few newtons. Nylon screws still need the
+lengths below, and their heads strip easily, so tighten them gently. All sizes are metric.
 
 ### Phase 1: the mount taped to the lid
 
@@ -69,6 +72,10 @@ doesn't have.
 ### Already on hand
 
 - The camera, lens, C–CS adapter, Pi 5, Active Cooler and camera cable came on ME order 12704 ([#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84)).
-- The printed parts (base, deck, spacers and shims) print on the lab's A1 mini.
+- The printed parts (base, deck, spacers and shims) print on the lab's A1 mini. The deck,
+  spacers and shims (plate 2) were printed on 2026-10-01; the base (plate 1) is still to print.
+- A 350-piece assortment of M2.5 nylon hardware, now in the lab
+  ([sgbaird on #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427)).
+  Check it for the M2.5 screws and nuts before buying any.
 
 Full details are in the [README](README.md#hardware) and [`hardware/README.md`](hardware/README.md).
