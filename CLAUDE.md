@@ -394,6 +394,11 @@ secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed 
 the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
 truncation.
 
+**The "OT-2" stream now shows the atomizer room.** As of 2026-10-01, the `picam-ot2` camera
+(the Pi behind `OT2_STREAM_CAM_HOSTNAME`) points at the atomizer room and streams 240p. It is
+still titled "OT-2" and still added to that playlist. Its settings, change log and the archive
+tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md).
+
 **Reading the livestream archive back.** Two things cost a session to find, both in
 `wireless-color-sensor/ot2/`:
 
