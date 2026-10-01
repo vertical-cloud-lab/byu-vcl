@@ -360,7 +360,7 @@ def write_cut_list(path, nums, stiff):
         f"{ROWS[1]['y'] * 1000:.0f} mm from the front edge ({nums['rows'][1]['y_from_j1'] * 1000:.0f} mm from J1), "
         f"every {np.diff(ROWS[1]['xs'])[0] * 1000:.0f} mm from {ROWS[1]['xs'][0] * 1000:+.0f} to {ROWS[1]['xs'][-1] * 1000:+.0f} mm |",
         f"| — lead-in | {CHAMFER * 1000:.1f} mm × 45° | every pocket | a countersink bit, by hand |",
-        f"| — pin holes | Ø6 mm round on the left, 6 × 14 mm slot on the right | 1 + 1 | the slot runs along the shelf |",
+        "| — pin holes | Ø6 mm round on the left, 6 × 14 mm slot on the right | 1 + 1 | the slot runs along the shelf |",
         "", "## Hardware", "",
         "| Item | Qty | Where |", "|---|---|---|",
         "| Wood glue (PVA) | a little | legs to the top, fence to the legs and top |",
