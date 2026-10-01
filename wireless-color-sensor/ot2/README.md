@@ -1099,6 +1099,35 @@ the colours for accuracy. No pipetting. Write-up in
   release was confirmed from the photo instead: the same pose before the pick-up
   and after the eject, compared with `grip_shift.py`.
 
+## 2026-09-30 (night) — five paints with empty wells between them: the black is black now; the colours still read too light
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202): white in H12
+and black in H7 of a fresh plate; run the test again with an empty well between the
+paints. Write-up in [`results-spaced-wells-2026-09-30.md`](results-spaced-wells-2026-09-30.md);
+[`analyse_spaced_wells.py`](analyse_spaced_wells.py) redoes every number.
+
+- **Layout, all in row H**: yellow H2, red H4, black H7, blue H10, white H12, every
+  other well empty. The robot pipetted the three colours (200 µL, tips F1–H1).
+  Loaded tips went along y 2, in front of the row, never over a well.
+- **`paint_transfer.py mix`** stirs a vial at the draw depth first. Its dispenses say
+  `pushOut: 0`: without that, Opentrons 8.8.1 refuses the next aspirate in place
+  (`PipetteNotReadyToAspirateError`), which stopped the first try after one cycle.
+- **The black now reads below every colour** at 440–670 nm (by 9–61%); at 15:36 the
+  red and the blue read 3–8% below it. The black ÷ white is 0.53–0.74 (was 0.68–0.89).
+- **The calibration stays within 0.24–0.98** (was −0.25 to 1.35), with the right
+  shapes, including a real blue peak at 440–470 nm. But each colour has a floor of
+  0.24–0.36 where its pigment is near-black, and the yellow only matches the white
+  at 550–620 nm. Mean distance outside the pigment's range: yellow 0.09 (was 0.27),
+  blue 0.09 (0.15), red 0.25 (0.20).
+- **Where the enclosure lands matters.** Red, read twice, changed by up to 12.5% at
+  440 nm and not at 620–670. That fits the sensor seeing 13% empty plate in place of
+  paint (R² 0.91). The likely cause of the floor is the same bright background,
+  coming in under and around the paint. **Next**: black paper under the plate, then
+  less watery colours and 200 µL in every well.
+- **The enclosure was in the base's left socket** (moved by hand by 18:05). It was
+  picked up at `--socket-x 36.55 --socket-y 315.5` unadjusted and released seated
+  there. The sensor lasted the whole 22-minute trip.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by

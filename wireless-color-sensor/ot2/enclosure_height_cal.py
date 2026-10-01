@@ -156,6 +156,10 @@ READINGS = os.path.join(HERE, "readings.jsonl")
 # since PR #60 used. The RIGHT socket (A2), where the enclosure was found on
 # 2026-09-25, took a full-depth press at A1 + (56.25, 1.0); the definition's
 # A1 + (55.95, 0) jammed 2.3 mm in. Confirm by photo with `align` regardless.
+# On the evening of 2026-09-30 the enclosure had been put back in the LEFT
+# socket by hand, turned to a different face. With --socket-x 36.55 --socket-y
+# 315.5 it was picked up there unadjusted (nothing touched down to z 102; the
+# face rose 2.2 px at the z 93 lift), carried and released there.
 SOCKET_A1 = deck.in_slot(10, 36.55, 44.0)              # (36.55, 315.5)
 SOCKET_A2 = deck.in_slot(10, 36.55 + 56.25, 45.0)      # (92.8, 316.5)
 ALIGN_MIN_Z = 100.0         # bare-nozzle hover floor over a socket (mouth ~97.5-99.5)
