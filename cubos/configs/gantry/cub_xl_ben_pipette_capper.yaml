@@ -2,8 +2,9 @@
 # the gantry recalibrated on its new bench.
 #
 # Attached to PR #228 on 2026-09-26. THE BODY BELOW IS BEN'S, VERBATIM (parsed
-# YAML verified identical to the attachment) with ONE line added back:
-# cnc.default_feed_rate_mm_min, below.
+# YAML verified identical to the attachment). A cnc.default_feed_rate_mm_min:
+# 2000.0 line was added back on 2026-09-26 and removed again on 2026-10-01, at
+# Ben's request, as speed change 2 (below).
 #
 # It matches the controller. Read-only from the Pi, 2026-09-26 01:17 UTC, eight
 # minutes after the GRBL board came back onto the Pi's USB at 01:09:56 UTC. It
@@ -23,16 +24,20 @@
 #   capper depth                     -15.935  ->  -17.0
 #   pipette offset_x / offset_y      52.0 / 12.0  ->  54.0 / 12.999
 #   capper park_position             deleted 2026-09-15  ->  [236, 25] again
-#   cnc.default_feed_rate_mm_min     2000.0  ->  absent  ->  KEPT at 2000.0
+#   cnc.default_feed_rate_mm_min     2000.0  ->  absent  (kept at 2000.0 until
+#                                    2026-10-01, then removed: see below)
 #
 # ---------------------------------------------------------------------------
-# default_feed_rate_mm_min: kept at 2000.0
+# default_feed_rate_mm_min: absent, so CubOS's 3000 mm/min (2026-10-01)
 # ---------------------------------------------------------------------------
-# Ben's file descends from his own local copy (it has park_position, which the
-# branch deleted on 2026-09-15, and none of the branch's comments), so the
-# missing line is lineage rather than a decision. Without it every G01 goes out
-# at F3000 instead of the F2000 that every run on this machine has used. To take
-# the speed-up on purpose, delete the line or set 3000.0, and watch that run.
+# Ben's file never had it; it descends from his own local copy (it has
+# park_position, which the branch deleted on 2026-09-15). It was added back at
+# 2000.0 on 2026-09-26 because every run on this machine to that date used F2000,
+# and removed on 2026-10-01 as speed change 2 of
+# ../../docs/pipette-setup-and-troubleshooting.md#speed. Absent, CubOS 496819c
+# sends every G01 at its module default DEFAULT_FEED_RATE = 3000 mm/min
+# (gantry_driver/driver.py). The controller allows it: $110-$112 = 5000 mm/min,
+# $120-$122 = 300 mm/s^2, read 2026-09-30.
 #
 # ---------------------------------------------------------------------------
 # park_position: harmless, kept as sent
@@ -67,10 +72,6 @@ cnc:
   calibration_block_height_mm: 35.0
   y_axis_motion: head
   safe_z: 115.0
-  # NOT in Ben's 2026-09-26 attachment; kept deliberately (see the header).
-  # Absent, CubOS 496819c falls back to its module default of 3000 mm/min
-  # (gantry_driver/driver.py DEFAULT_FEED_RATE), 1.5x every run to date.
-  default_feed_rate_mm_min: 2000.0
 working_volume:
   x_min: 0.0
   x_max: 388.0

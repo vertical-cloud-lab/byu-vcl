@@ -1,0 +1,65 @@
+VCL PANDA firmware: the two changes since panda-arduino-p20-and-driver-status.patch.
+Apply on top of that patch (upstream BU-KABlab/PANDA_Arduino @ 228615b), with
+`patch -p1` or `git apply` from the firmware tree's root.
+
+1. 2026-09-30, for the Tic T500 (finest step 1/8): STEPS_PER_MM 1592 -> 796,
+   MICROSTEPPING 16 -> 8. Image: panda_vcl_p20gen2_tic796_20260930.hex.
+2. 2026-10-01, speed: MOVE_TO without a speed runs at MOVEMENT_VELOCITY 10000
+   (stepMotor()'s 100 us floor, ~8,700 steps/s, the rate ASPIRATE already ran
+   at); any leg past BLOWOUT_POSITION, the tip-ejector push, keeps the old
+   2500 steps/s. Image: panda_vcl_p20gen2_tic796_fastmove_20261001.hex.
+
+Generated with diff -u between ~/panda_fw_vcl (built the 09-17 image) and
+~/panda_fw_vcl_tic796_fast on the CubXL Pi.
+
+--- panda_fw_vcl/include/Pipette.h
++++ panda_fw_vcl_tic796_fast/include/Pipette.h
+@@ -54,7 +54,7 @@
+ #define UL_TO_MM 1.34          // uL -> mm  [VCL] P20 GEN2.  Was 1.8.
+ 
+ // Motor settings
+-#define MICROSTEPPING 16         // Microstepping mode
++#define MICROSTEPPING 8          // Microstepping mode  [VCL] Tic T500 max 1/8. Was 16; only fed the TMC2209 setup call.
+ // ---------------------------------------------------------------------------
+ // [VCL] Driver current, P20 GEN2, corrected for the real sense resistor
+ // ---------------------------------------------------------------------------
+@@ -85,9 +85,13 @@
+ #define HOLD_CURRENT_PERCENT 5   // -> CS 1, 0.29 A peak  [VCL] was 10
+ #define MAX_VELOCITY 2500.0      // Maximum velocity in steps/second
+ #define HOMING_VELOCITY 1000.0   // Velocity for homing operation
+-#define MOVEMENT_VELOCITY 2500.0 // Velocity for normal movements
++#define MOVEMENT_VELOCITY 10000.0 // Velocity for normal movements  [VCL] Was 2500.0. 10000 sits on stepMotor()'s 100 us
++                                  // step-delay floor: ~8,700 steps/s with loop overhead, ~11 mm/s at 796 steps/mm.
++                                  // That is the rate ASPIRATE has always run at, because CubOS sends it speed 0.
++#define EJECT_VELOCITY 2500.0     // [VCL] The old MOVEMENT_VELOCITY, kept for MOVE_TO legs past BLOWOUT_POSITION,
++                                  // where the plunger is pushing the tip ejector.
+ #define MAX_ACCELERATION 400.0   // Maximum acceleration in steps/s^2
+-#define STEPS_PER_MM 1592.0      // Steps per mm
++#define STEPS_PER_MM 796.0       // Steps per mm  [VCL] Tic T500 at 1/8 step. Was 1592.0 (TMC2209 at 1/16).
+ 
+ // External declarations
+ extern SoftwareSerial softSerial;
+--- panda_fw_vcl/src/Pipette.cpp
++++ panda_fw_vcl_tic796_fast/src/Pipette.cpp
+@@ -272,8 +272,19 @@
+ bool movePipetteTo(float position, int speed)
+ {
+     // Convert speed if provided, otherwise use default
+-    float velocity = speed > 0 ? (float)speed : MOVEMENT_VELOCITY;
+-    return moveTo(position, velocity);
++    if (speed > 0)
++        return moveTo(position, (float)speed);
++
++    // [VCL] Past BLOWOUT_POSITION the plunger is pushing the tip ejector. That leg keeps
++    // the old 2500 steps/s (EJECT_VELOCITY); the rest of the move, and every other MOVE_TO,
++    // runs at MOVEMENT_VELOCITY.
++    if (position > BLOWOUT_POSITION)
++    {
++        if (currentPosition < BLOWOUT_POSITION && !moveTo(BLOWOUT_POSITION, MOVEMENT_VELOCITY))
++            return false;
++        return moveTo(position, EJECT_VELOCITY);
++    }
++    return moveTo(position, MOVEMENT_VELOCITY);
+ }
+ 
+ // Move relative in direction with steps and velocity
