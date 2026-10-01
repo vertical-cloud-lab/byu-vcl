@@ -282,6 +282,24 @@ def main():
     return out
 
 
+def variants():
+    """Option 3 with a deeper spine, or a stiff adapter plate under the arm (README, "What is left")."""
+    arm = ArmLoads()
+    c = arm.cases()
+    (F0, M0), (Fa, Ma) = c["static"], c["static, arm only"]
+    phis = np.radians(np.arange(0, 360, 15))
+    for label, kw in (("as built", {}), ("spine 150 mm deep", dict(SPINE_H=0.15)),
+                      ("rigid 200 mm adapter plate", dict(BASE_PATCH=0.2))):
+        old = {k: getattr(H, k) for k in kw}
+        for k, v in kw.items():
+            setattr(H, k, v)
+        C = Model(H.RECOMMENDED).compliance()
+        e = max(np.linalg.norm(tip_error(C, F0 - Fa, M0 - Ma, arm.tip, p)) for p in phis)
+        print(f"{label:28s} payload deflection {e * 1000:.3f} mm", flush=True)
+        for k, v in old.items():
+            setattr(H, k, v)
+
+
 if __name__ == "__main__":
-    main()
+    variants() if sys.argv[1:] == ["variants"] else main()
     sys.exit(0)

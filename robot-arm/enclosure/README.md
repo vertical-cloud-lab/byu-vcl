@@ -12,6 +12,10 @@ Figures and numbers behind the enclosure discussion in
 The enclosure chosen for spot D is modelled part by part in [`dome/`](dome/), with a cut list,
 3D exports and an assembly GIF.
 
+The two-level version, with the arm on a raised plywood deck and 0.5 m of workspace underneath,
+is in [`hutch/`](hutch/): five structural options compared, a cut list, a section, an exploded
+view and an assembly GIF.
+
 To regenerate the figures, run `xvfb-run -a python render_figures.py`. The script clones
 `agilexrobotics/piper_ros` at `ac41fcb` into `/tmp` for the URDF and meshes.
 
