@@ -163,8 +163,15 @@ class SensorLink:
             "Grant this credential both publish AND subscribe."
         )
 
-    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2):
-        """Command one reading and return a dict of the 8 channels plus metadata."""
+    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2, settings=None):
+        """Command one reading and return a dict of the 8 channels plus metadata.
+
+        ``settings`` (e.g. ``{"gain": 512, "atime": 200, "astep": 999}``) asks the
+        board for a different gain and integration time for this one reading. It
+        needs the firmware change in ``../pico/`` (sensor_settings.py); a board
+        without it ignores the key, so a reply that does not echo
+        ``sensor_settings`` back is refused rather than mislabelled.
+        """
         timeout = timeout or self.timeout
         r, y, b = rgb
         last_error = None
@@ -180,6 +187,8 @@ class SensorLink:
             experiment_id = f"{label or 'read'}-{int(started * 1000)}"
             payload = {"command": {"R": r, "Y": y, "B": b},
                        "experiment_id": experiment_id}
+            if settings is not None:
+                payload["settings"] = settings
             self._drain()
             self._client.publish(self.command_topic, json.dumps(payload), qos=1)
 
@@ -192,9 +201,15 @@ class SensorLink:
                         body = json.loads(raw.decode("utf-8", "replace"))
                     except ValueError:
                         continue
+                    if body.get("experiment_id") == experiment_id and "error" in body:
+                        raise SensorError(f"the board refused the settings: {body['error']}")
                     data = body.get("sensor_data") or body
                     if not any(c in data for c in CHANNELS):
                         continue
+                    if settings is not None and "sensor_settings" not in body:
+                        raise SensorError(
+                            "the board ignored the settings: it is running firmware "
+                            "without sensor_settings.py (see wireless-color-sensor/pico/)")
                     answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {
@@ -214,6 +229,7 @@ class SensorLink:
                         "t_response_epoch": answered,
                         "latency_s": round(answered - started, 3),
                         "attempt": attempt,
+                        "sensor_settings": body.get("sensor_settings"),
                         "raw": body,
                     }
                 time.sleep(0.02)
