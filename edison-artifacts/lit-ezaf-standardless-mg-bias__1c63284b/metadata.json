@@ -1,0 +1,9 @@
+{
+  "task_id": "1c63284b-2f0a-415c-b51f-8c53fe6a4332",
+  "kind": "LITERATURE_HIGH",
+  "task_type": "PQATaskResponse",
+  "status": "success",
+  "job_name": "job-futurehouse-paperqa3-high",
+  "created_at": "2026-05-22 22:21:12.497433+00:00",
+  "query_summary": "For SEM-EDS quantitative analysis of dilute Mg (0.2-0.45 wt%) in an Al matrix using EDAX TEAM's eZAF Smart Quant standardless Cliff-Lorimer routine on an SDD with ~130-135 eV resolution at Mn K\u03b1: what is the documented systematic bias of standardless eZAF / standardless XPP / standardless \u03c6(\u03c1z) rout"
+}
