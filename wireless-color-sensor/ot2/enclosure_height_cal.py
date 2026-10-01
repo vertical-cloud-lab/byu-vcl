@@ -638,8 +638,8 @@ class Cal:
     def go_xy(self, x, y):
         if self.pos[2] < SAFE_XY_Z:
             raise ValueError(f"lateral moves need z >= {SAFE_XY_Z}; at {self.pos[2]}")
-        if deck.slot_margin(1, x, y) < 0:
-            raise ValueError(f"({x}, {y}) is outside slot 1")
+        if deck.slot_margin(self.args.plate_slot, x, y) < 0:
+            raise ValueError(f"({x}, {y}) is outside slot {self.args.plate_slot}")
         self.carry_to(x, y, self.pos[2])
         self.target = [x, y]
         self.photos(f"xy{x:g}_{y:g}", reads=2)
@@ -891,6 +891,10 @@ def main():
     p.add_argument("--target-x", type=float, default=63.88,
                    help="nozzle X over the plate (default: centre of slot 1)")
     p.add_argument("--target-y", type=float, default=42.74)
+    p.add_argument("--plate-slot", type=int, default=1,
+                   help="slot the plate is in; every target, and every xy move, has to "
+                        "fall inside it. By 2026-10-01 the plate had been moved by hand "
+                        "from slot 1 to slot 7, directly in front of the base")
     p.add_argument("--press-z", type=float, default=90.0,
                    help="pickup press depth; 90.0 is the tighter fit used since 2026-09-09")
     p.add_argument("--socket-x", type=float, default=SOCKET_A2[0])
@@ -935,8 +939,11 @@ def main():
     p.add_argument("--simulate", action="store_true",
                    help="no robot, camera or sensor: exercise the command flow only")
     args = p.parse_args()
+    if deck.slot_margin(args.plate_slot, args.target_x, args.target_y) < 0:
+        p.error(f"target ({args.target_x}, {args.target_y}) is outside slot {args.plate_slot}")
     cal = Cal(args)
-    cal.log(f"start: socket {cal.socket} target {cal.target} press {cal.press_z} "
+    cal.log(f"start: socket {cal.socket} target {cal.target} (slot {args.plate_slot}) "
+            f"press {cal.press_z} "
             f"release {cal.release_z} drop {cal.drop} floor {cal.floor} "
             f"carry {cal.carry_z} approach z {cal.approach_z} y {cal.approach_y} "
             f"leg {cal.leg} max speed {args.max_speed}")
