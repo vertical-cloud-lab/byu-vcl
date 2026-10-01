@@ -1128,6 +1128,28 @@ paints. Write-up in [`results-spaced-wells-2026-09-30.md`](results-spaced-wells-
   picked up at `--socket-x 36.55 --socket-y 315.5` unadjusted and released seated
   there. The sensor lasted the whole 22-minute trip.
 
+## 2026-10-01 — how much did the white/black correction fix? About half of the squeeze (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to what
+degree the white and black wells fixed the distortion. Write-up in
+[`results-white-black-correction-2026-10-01.md`](results-white-black-correction-2026-10-01.md);
+[`analyse_white_black_correction.py`](analyse_white_black_correction.py) scores all
+three 2026-09-30 runs the same way, against the pigments' published ranges at
+440–670 nm.
+
+- **A black paint would read 0.55 before, −0.23 on the 1st try and 0.27 on the 2nd**
+  (0 is accurate). Colour differences came out 2.6× too small, 1.8× too big, then
+  1.3× too small. The average miss went 0.29, 0.20, 0.14.
+- **The 2nd try took out about half**: 51% of the floor, 63% of the squeeze, 51% of
+  the miss. All three paints now have their own pigment's shape; before, the blue
+  had a red paint's.
+- **The black does the work.** On the same readings, dividing by the white alone
+  leaves them as squeezed as before.
+- **What's left is a floor of 0.24–0.36** where the pigments are near-black. It isn't
+  the references (a grey black pushes those values down, a dim white leaves them
+  alone): it's light that reaches the colour wells and not the black well. Next is
+  unchanged: black paper under the plate, then 200 µL in every well.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
