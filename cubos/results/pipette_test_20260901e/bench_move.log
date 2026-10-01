@@ -1,0 +1,59 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after  3.80s: 'OK:Ready'
+  STATUS (read-only)       dt=   0.01s  reply=OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+      firmware max_vol = 300.0 uL -- must match pipette_model in the gantry YAML
+
+Commanding plunger motion. Watch the plunger, not the screen.
+Bounded to +3 mm of forward travel, then asked for it back.
+
+WHAT THE TIMINGS MEAN: stepMotor() in the PANDA firmware bit-bangs
+the STEP pin and counts, with no feedback of any kind. A round trip
+that scales at ~0.673 s/mm proves the ARDUINO emitted the steps -- it
+says nothing about whether the motor turned. Only your eyes can tell
+you that. A flat ~0.1 s means the firmware declined to step at all.
+
+  -- HOME --
+  HOME (cold)              dt=   0.52s  reply=OK:{"msg":"Pipette homed"}                   pos=0.0 homed=1
+  -- forward: does distance scale? --
+  MOVE_TO 1.0 mm           dt=   0.68s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=1.0 homed=1
+  MOVE_TO 3.0 mm           dt=   1.35s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=1
+  -- HOME from a non-zero position: does it retract? --
+  HOME (from 3.0)          dt=   0.52s  reply=OK:{"msg":"Pipette homed"}                   pos=0.0 homed=1
+  -- backward: the same positions, asked for in reverse --
+  MOVE_TO 3.0 mm           dt=   2.02s  reply=OK:{"msg":"Pipette moved","v":[3.00]}        pos=3.0 homed=1
+  MOVE_TO 1.0 mm (back)    dt=   0.11s  reply=OK:{"msg":"Pipette moved","v":[1.00]}        pos=3.0 homed=1
+  MOVE_TO 0.0 mm (back)    dt=   0.11s  reply=OK:{"msg":"Pipette moved"}                   pos=3.0 homed=1
+
+VERDICT: the limit switch is reading ASSERTED (D9 HIGH).
+  HOME returned in 0.52s -- that is only the 796-step
+  back-off, no seek -- and every UP move was refused in
+  ~0.11s (1 step + the 100 ms debounce, then abort).
+  Both come from the same read: stepMotor() aborts when the
+  switch is HIGH and DIR is LOW, and homePipette() calls it
+  an instant success. This is NOT a DIR fault.
+
+  D9 is INPUT_PULLUP and HIGH means 'at the limit', so an
+  open switch circuit reads asserted. Check, in order:
+    1. Pipette pin 6 -> Arduino GND (the switch return). The
+       Cubware diagram labels it but draws no wire.
+    2. Pipette pin 7 -> Arduino D9 (the switch signal).
+    3. The contact must be NORMALLY CLOSED: LOW at rest,
+       opening as the plunger reaches the limit.
+
+NOTE: forward moves DID emit steps (0.68s for 1 mm). That
+  proves the Arduino toggled STEP -- it says nothing about
+  whether the motor turned. If you saw and heard nothing, the
+  fault is downstream of the Arduino, in order of likelihood:
+    1. EN is not held LOW. The firmware's ENABLE is Arduino A4;
+       the Cubware diagram wires the driver's EN to A3, which the
+       firmware drives as DIR. Move that wire to A4.
+    2. No motor supply on the driver's +/- terminal (12 V). VDD
+       from the Arduino powers the logic only; STEP/DIR are
+       accepted silently with no coil current.
+    3. VREF potentiometer at zero. UART never configures the
+       current (firmware transmits on A1, diagram wires A0), so
+       the pot is the only thing setting it.
+  Total silence (no buzz, no holding torque) means no coil
+  current at all. A mixed-up coil pair buzzes instead.

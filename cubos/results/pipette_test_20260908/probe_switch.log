@@ -1,0 +1,11 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after   3.76s: 'OK:Ready'
+  STATUS  homed=0 pos=0.0 max_vol=300.0
+
+  -- limit switch (pipette pin 7 -> D9, return pin 6 -> GND) --
+  D9 is INPUT_PULLUP and HIGH means 'at the limit', so an OPEN
+  switch loop reads ASSERTED. At rest a healthy normally-closed
+  contact holds it CLEAR.
+  15:32:00  ASSERTED (D9 HIGH, loop OPEN)      dt= 0.11s  ERR:{"error":"Failed to move relative"}

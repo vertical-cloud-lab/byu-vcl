@@ -1,0 +1,31 @@
+Sep 29 18:23:24 <pi> kernel: usb usb1-port1: over-current change #1
+Sep 29 18:23:24 <pi> kernel: usb usb3-port1: over-current change #1
+Sep 29 18:23:24 <pi> kernel: usb usb2-port1: over-current change #1
+Sep 29 18:23:24 <pi> kernel: usb usb4-port1: over-current change #1
+Sep 29 18:23:24 <pi> kernel: usb 3-1: USB disconnect, device number 5
+Sep 29 18:23:24 <pi> kernel: usb 1-1: USB disconnect, device number 4
+Sep 29 18:23:24 <pi> kernel: usb 1-1: new full-speed USB device number 5 using xhci-hcd
+Sep 29 18:23:24 <pi> kernel: usb 3-1: new full-speed USB device number 6 using xhci-hcd
+Sep 29 18:23:25 <pi> kernel: usb 1-1: New USB device found, idVendor=1ffb, idProduct=00bd, bcdDevice= 1.09
+Sep 29 18:23:25 <pi> kernel: usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+Sep 29 18:23:25 <pi> kernel: usb 1-1: Product: Pololu Tic T500
+Sep 29 18:23:25 <pi> kernel: usb 1-1: Manufacturer: Pololu Corporation
+Sep 29 18:23:25 <pi> kernel: usb 1-1: SerialNumber: 00510573
+Sep 29 18:23:25 <pi> kernel: usb usb1-port2: over-current change #1
+Sep 29 18:23:25 <pi> kernel: usb 3-1: New USB device found, idVendor=2341, idProduct=0043, bcdDevice= 0.01
+Sep 29 18:23:25 <pi> kernel: usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+Sep 29 18:23:25 <pi> kernel: usb 3-1: Manufacturer: Arduino (www.arduino.cc)
+Sep 29 18:23:25 <pi> kernel: usb 3-1: SerialNumber: 03535343335351018130
+Sep 29 18:23:25 <pi> kernel: ch341-uart ttyUSB0: usb_serial_generic_write_bulk_callback - nonzero urb status: -71
+Sep 29 18:23:25 <pi> kernel: cdc_acm 3-1:1.0: ttyACM1: USB ACM device
+Sep 29 18:23:25 <pi> kernel: usb usb3-port2: over-current change #1
+Sep 29 18:23:25 <pi> kernel: usb 3-2: USB disconnect, device number 4
+Sep 29 18:23:25 <pi> kernel: usb 3-2: failed to send control message: -19
+Sep 29 18:23:25 <pi> kernel: ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0
+Sep 29 18:23:25 <pi> kernel: ch341 3-2:1.0: device disconnected
+Sep 29 18:23:25 <pi> kernel: usb 3-2: new full-speed USB device number 7 using xhci-hcd
+Sep 29 18:23:26 <pi> kernel: usb 3-2: New USB device found, idVendor=1a86, idProduct=7523, bcdDevice= 2.64
+Sep 29 18:23:26 <pi> kernel: usb 3-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+Sep 29 18:23:26 <pi> kernel: usb 3-2: Product: USB Serial
+Sep 29 18:23:26 <pi> kernel: ch341 3-2:1.0: ch341-uart converter detected
+Sep 29 18:23:26 <pi> kernel: usb 3-2: ch341-uart converter now attached to ttyUSB0

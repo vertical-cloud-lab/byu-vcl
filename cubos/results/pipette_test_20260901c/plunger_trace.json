@@ -1,0 +1,89 @@
+[
+  {
+    "t": "13:02:08.500",
+    "cmd": "STATUS",
+    "code": 14,
+    "args": [],
+    "dt_s": 0.007,
+    "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":300.00}",
+    "error": null
+  },
+  {
+    "t": "13:02:34.848",
+    "cmd": "HOME",
+    "code": 10,
+    "args": [],
+    "dt_s": 26.348,
+    "reply": null,
+    "error": "PipetteCommandError('Command 10 failed: ERR:{\"error\":\"Failed to home pipette\"}')"
+  },
+  {
+    "t": "13:03:01.194",
+    "cmd": "HOME",
+    "code": 10,
+    "args": [],
+    "dt_s": 26.346,
+    "reply": null,
+    "error": "PipetteCommandError('Command 10 failed: ERR:{\"error\":\"Failed to home pipette\"}')"
+  },
+  {
+    "t": "13:04:16.160",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "0.0",
+      "0.0"
+    ],
+    "dt_s": 0.006,
+    "reply": "OK:{\"msg\":\"Pipette moved\"}",
+    "error": null
+  },
+  {
+    "t": "13:04:37.319",
+    "cmd": "ASPIRATE",
+    "code": 12,
+    "args": [
+      "0.5",
+      "0.0"
+    ],
+    "dt_s": 6.671,
+    "reply": "OK:{\"msg\":\"Pipette aspirated\",\"v\":[0.50,35.45]}",
+    "error": null
+  },
+  {
+    "t": "13:06:08.719",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "7.0",
+      "0.0"
+    ],
+    "dt_s": 18.862,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[7.00]}",
+    "error": null
+  },
+  {
+    "t": "13:06:23.152",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "10.0",
+      "0.0"
+    ],
+    "dt_s": 1.997,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[10.00]}",
+    "error": null
+  },
+  {
+    "t": "13:06:26.475",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "5.0",
+      "0.0"
+    ],
+    "dt_s": 3.322,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[5.00]}",
+    "error": null
+  }
+]

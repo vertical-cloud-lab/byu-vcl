@@ -1,0 +1,92 @@
+[
+  {
+    "t": "15:51:51.519",
+    "cmd": "STATUS",
+    "code": 14,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":300.00}",
+    "error": null
+  },
+  {
+    "t": "15:51:52.039",
+    "cmd": "HOME",
+    "code": 10,
+    "args": [],
+    "dt_s": 0.52,
+    "reply": "OK:{\"msg\":\"Pipette homed\"}",
+    "error": null
+  },
+  {
+    "t": "15:51:55.393",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "5.0",
+      "0.0"
+    ],
+    "dt_s": 3.354,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[5.00]}",
+    "error": null
+  },
+  {
+    "t": "15:53:20.968",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "0.0",
+      "0.0"
+    ],
+    "dt_s": 0.106,
+    "reply": "OK:{\"msg\":\"Pipette moved\"}",
+    "error": null
+  },
+  {
+    "t": "15:54:02.160",
+    "cmd": "ASPIRATE",
+    "code": 12,
+    "args": [
+      "0.5",
+      "0.0"
+    ],
+    "dt_s": 5.96,
+    "reply": "OK:{\"msg\":\"Pipette aspirated\",\"v\":[0.50,36.00]}",
+    "error": null
+  },
+  {
+    "t": "15:55:25.474",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "7.0",
+      "0.0"
+    ],
+    "dt_s": 0.109,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[7.00]}",
+    "error": null
+  },
+  {
+    "t": "15:55:58.761",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "10.0",
+      "0.0"
+    ],
+    "dt_s": 0.108,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[10.00]}",
+    "error": null
+  },
+  {
+    "t": "15:55:58.868",
+    "cmd": "MOVE_TO",
+    "code": 11,
+    "args": [
+      "5.0",
+      "0.0"
+    ],
+    "dt_s": 0.107,
+    "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[5.00]}",
+    "error": null
+  }
+]

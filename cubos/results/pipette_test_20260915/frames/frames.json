@@ -1,0 +1,134 @@
+[
+  {
+    "tag": "step02_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam0_csi0.jpg",
+    "dt_s": 0.69,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:52:48",
+    "error": null
+  },
+  {
+    "tag": "step02_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step02_decap__cam1_csi1.jpg",
+    "dt_s": 20.01,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:53:08",
+    "error": "TimeoutExpired(['/usr/bin/rpicam-still', '--camera', '1', '--width', '1920', '--height', '1080', '--nopreview', '--immediate', '--vflip', '-o', '/tmp/run_frames/step02_decap__cam1_csi1.jpg'], 20)"
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam0_csi0.jpg",
+    "dt_s": 0.68,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:53:21",
+    "error": null
+  },
+  {
+    "tag": "step03_pick_up_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step03_pick_up_tip__cam1_csi1.jpg",
+    "dt_s": 20.01,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:53:41",
+    "error": "TimeoutExpired(['/usr/bin/rpicam-still', '--camera', '1', '--width', '1920', '--height', '1080', '--nopreview', '--immediate', '--vflip', '-o', '/tmp/run_frames/step03_pick_up_tip__cam1_csi1.jpg'], 20)"
+  },
+  {
+    "tag": "step04_aspirate",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step04_aspirate__cam0_csi0.jpg",
+    "dt_s": 0.68,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:54:02",
+    "error": null
+  },
+  {
+    "tag": "step04_aspirate",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step04_aspirate__cam1_csi1.jpg",
+    "dt_s": 20.01,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:54:22",
+    "error": "TimeoutExpired(['/usr/bin/rpicam-still', '--camera', '1', '--width', '1920', '--height', '1080', '--nopreview', '--immediate', '--vflip', '-o', '/tmp/run_frames/step04_aspirate__cam1_csi1.jpg'], 20)"
+  },
+  {
+    "tag": "step07_decap",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step07_decap__cam0_csi0.jpg",
+    "dt_s": 0.69,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:54:54",
+    "error": null
+  },
+  {
+    "tag": "step07_decap",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step07_decap__cam1_csi1.jpg",
+    "dt_s": 20.01,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:55:14",
+    "error": "TimeoutExpired(['/usr/bin/rpicam-still', '--camera', '1', '--width', '1920', '--height', '1080', '--nopreview', '--immediate', '--vflip', '-o', '/tmp/run_frames/step07_decap__cam1_csi1.jpg'], 20)"
+  },
+  {
+    "tag": "step08_blowout",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step08_blowout__cam0_csi0.jpg",
+    "dt_s": 0.68,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:55:26",
+    "error": null
+  },
+  {
+    "tag": "step08_blowout",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step08_blowout__cam1_csi1.jpg",
+    "dt_s": 20.01,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:55:46",
+    "error": "TimeoutExpired(['/usr/bin/rpicam-still', '--camera', '1', '--width', '1920', '--height', '1080', '--nopreview', '--immediate', '--vflip', '-o', '/tmp/run_frames/step08_blowout__cam1_csi1.jpg'], 20)"
+  },
+  {
+    "tag": "step09_drop_tip",
+    "camera": "cam0_csi0",
+    "name": "imx708_wide",
+    "file": "step09_drop_tip__cam0_csi0.jpg",
+    "dt_s": 0.68,
+    "vflip": false,
+    "hflip": false,
+    "t": "2026-09-15T15:55:59",
+    "error": null
+  },
+  {
+    "tag": "step09_drop_tip",
+    "camera": "cam1_csi1",
+    "name": "imx708_wide",
+    "file": "step09_drop_tip__cam1_csi1.jpg",
+    "dt_s": 0.58,
+    "vflip": true,
+    "hflip": false,
+    "t": "2026-09-15T15:56:00",
+    "error": null
+  }
+]

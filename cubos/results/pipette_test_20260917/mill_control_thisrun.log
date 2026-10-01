@@ -1,0 +1,61 @@
+2026-09-17 17:10:46,773&grbl_cnc_mill&INFO&driver&_locate_over_serial&162&Attempting connection to port: /dev/ttyUSB0 at 115200 baud
+2026-09-17 17:10:46,890&grbl_cnc_mill&INFO&driver&_verify_connection&211&Querying the mill for status
+2026-09-17 17:10:49,294&grbl_cnc_mill&INFO&driver&_verify_connection&227&Raw response: [b'<Alarm|WPos:409.000,309.000,124.000|FS:0,0|Pn:X|WCO:-409.000,-309.000,-124.000>\r\n', b'$0=10\r\n', b'$1=25\r\n', b'$2=0\r\n', b'$3=1\r\n', b'$4=0\r\n', b'$5=0\r\n', b'$6=0\r\n', b'$10=0\r\n', b'$11=0.010\r\n', b'$12=0.002\r\n', b'$13=0\r\n', b'$20=1\r\n', b'$21=0\r\n', b'$22=1\r\n', b'$23=0\r\n', b'$24=100.000\r\n', b'$25=1000.000\r\n', b'$26=250\r\n', b'$27=3.000\r\n', b'$30=10000\r\n', b'$31=0\r\n', b'$32=0\r\n', b'$100=400.000\r\n', b'$101=400.000\r\n', b'$102=400.000\r\n', b'$110=5000.000\r\n', b'$111=5000.000\r\n', b'$112=5000.000\r\n', b'$120=300.000\r\n', b'$121=300.000\r\n', b'$122=150.000\r\n', b'$130=409.000\r\n', b'$131=309.000\r\n', b'$132=124.000\r\n', b'ok\r\n']
+2026-09-17 17:10:49,294&grbl_cnc_mill&INFO&driver&_locate_over_serial&170&Connected successfully to /dev/ttyUSB0 at 115200
+2026-09-17 17:10:49,294&grbl_cnc_mill&INFO&driver&connect&253&Reusing open serial connection from detection
+2026-09-17 17:10:49,294&grbl_cnc_mill&INFO&driver&connect&269&Serial connection to mill opened successfully
+2026-09-17 17:10:49,294&grbl_cnc_mill&INFO&driver&connect&275&Mill connected: True
+2026-09-17 17:10:49,495&grbl_cnc_mill&WARNING&driver&connect&295&Mill is in alarm state — skipping config/setup. Unlock ($X) or home ($H) to clear. Status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0|Pn:X|Ov:100,100,100>
+2026-09-17 17:10:49,495&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 17:10:49,528&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:10:49,528&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:10:49,729&grbl_cnc_mill&INFO&driver&soft_reset&537&Sending soft reset (0x18)
+2026-09-17 17:10:50,729&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: 
+2026-09-17 17:10:50,729&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: Grbl 1.1h ['$' for help]
+2026-09-17 17:10:50,729&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: [MSG:'$H'|'$X' to unlock]
+2026-09-17 17:10:50,729&grbl_cnc_mill&INFO&driver&unlock&518&Sending unlock ($X)
+2026-09-17 17:10:50,734&grbl_cnc_mill&DEBUG&driver&unlock&526&Unlock response: [MSG:Caution: Unlocked]
+2026-09-17 17:10:50,734&grbl_cnc_mill&DEBUG&driver&unlock&526&Unlock response: ok
+2026-09-17 17:10:50,734&grbl_cnc_mill&INFO&driver&read_config&350&Reading mill config
+2026-09-17 17:10:50,734&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 17:10:50,767&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:10:50,767&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:10:50,767&grbl_cnc_mill&DEBUG&driver&read_config&353&Mill config: {'$0': '10', '$1': '25', '$2': '0', '$3': '1', '$4': '0', '$5': '0', '$6': '0', '$10': '0', '$11': '0.010', '$12': '0.002', '$13': '0', '$20': '1', '$21': '0', '$22': '1', '$23': '0', '$24': '100.000', '$25': '1000.000', '$26': '250', '$27': '3.000', '$30': '10000', '$31': '0', '$32': '0', '$100': '400.000', '$101': '400.000', '$102': '400.000', '$110': '5000.000', '$111': '5000.000', '$112': '5000.000', '$120': '300.000', '$121': '300.000', '$122': '150.000', '$130': '409.000', '$131': '309.000', '$132': '124.000'}
+2026-09-17 17:10:50,867&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G90
+2026-09-17 17:10:52,923&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:409.000,309.000,124.000|FS:0,0|Pn:X|Ov:100,100,100>
+2026-09-17 17:10:52,924&grbl_cnc_mill&INFO&driver&enforce_wpos_mode&770&WPos mode and absolute positioning enforced
+2026-09-17 17:10:52,924&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: F3000
+2026-09-17 17:10:54,979&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:409.000,309.000,124.000|FS:0,0|Pn:X>
+2026-09-17 17:10:56,183&grbl_cnc_mill&INFO&driver&seed_wco&791&WCO cached: (-409.0, -309.0, -124.0)
+2026-09-17 17:10:56,184&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 17:10:56,217&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:10:56,217&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 17:11:54,840&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:04,850&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 17:12:06,126&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:12:06,126&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:06,626&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned ok
+2026-09-17 17:12:18,187&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:12:18,187&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:28,194&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 17:12:29,473&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:12:29,473&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:29,973&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned ok
+2026-09-17 17:12:41,534&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:12:41,535&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:51,545&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 17:12:52,820&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:12:52,820&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:12:53,320&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned ok
+2026-09-17 17:13:04,881&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:13:04,881&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:13:14,891&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 17:13:16,171&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:13:16,171&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:13:16,671&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned ok
+2026-09-17 17:13:28,232&grbl_cnc_mill&WARNING&driver&home&646&Homing failed, trying again...
+2026-09-17 17:13:28,232&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 17:13:38,242&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 17:13:38,743&grbl_cnc_mill&WARNING&driver&home&618&Homing timed out
+2026-09-17 17:13:38,749&grbl_cnc_mill&INFO&driver&disconnect&311&Disconnecting from the mill
+2026-09-17 17:13:40,751&grbl_cnc_mill&INFO&driver&disconnect&320&Serial connection to mill closed successfully

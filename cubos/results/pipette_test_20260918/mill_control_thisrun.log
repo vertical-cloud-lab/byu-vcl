@@ -1,0 +1,184 @@
+2026-09-17 18:38:29,040&grbl_cnc_mill&INFO&driver&_locate_over_serial&162&Attempting connection to port: /dev/ttyUSB0 at 115200 baud
+2026-09-17 18:38:29,156&grbl_cnc_mill&INFO&driver&_verify_connection&211&Querying the mill for status
+2026-09-17 18:38:31,561&grbl_cnc_mill&INFO&driver&_verify_connection&227&Raw response: [b'<Alarm|WPos:409.000,309.000,124.000|FS:0,0|WCO:-409.000,-309.000,-124.000>\r\n', b'$0=10\r\n', b'$1=25\r\n', b'$2=0\r\n', b'$3=1\r\n', b'$4=0\r\n', b'$5=0\r\n', b'$6=0\r\n', b'$10=0\r\n', b'$11=0.010\r\n', b'$12=0.002\r\n', b'$13=0\r\n', b'$20=1\r\n', b'$21=0\r\n', b'$22=1\r\n', b'$23=0\r\n', b'$24=100.000\r\n', b'$25=1000.000\r\n', b'$26=250\r\n', b'$27=3.000\r\n', b'$30=10000\r\n', b'$31=0\r\n', b'$32=0\r\n', b'$100=400.000\r\n', b'$101=400.000\r\n', b'$102=400.000\r\n', b'$110=5000.000\r\n', b'$111=5000.000\r\n', b'$112=5000.000\r\n', b'$120=300.000\r\n', b'$121=300.000\r\n', b'$122=150.000\r\n', b'$130=409.000\r\n', b'$131=309.000\r\n', b'$132=124.000\r\n', b'ok\r\n']
+2026-09-17 18:38:31,561&grbl_cnc_mill&INFO&driver&_locate_over_serial&170&Connected successfully to /dev/ttyUSB0 at 115200
+2026-09-17 18:38:31,561&grbl_cnc_mill&INFO&driver&connect&253&Reusing open serial connection from detection
+2026-09-17 18:38:31,561&grbl_cnc_mill&INFO&driver&connect&269&Serial connection to mill opened successfully
+2026-09-17 18:38:31,561&grbl_cnc_mill&INFO&driver&connect&275&Mill connected: True
+2026-09-17 18:38:31,761&grbl_cnc_mill&WARNING&driver&connect&295&Mill is in alarm state — skipping config/setup. Unlock ($X) or home ($H) to clear. Status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0|Ov:100,100,100>
+2026-09-17 18:38:31,761&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 18:38:31,795&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:38:31,795&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:38:31,996&grbl_cnc_mill&INFO&driver&soft_reset&537&Sending soft reset (0x18)
+2026-09-17 18:38:32,996&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: 
+2026-09-17 18:38:32,997&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: Grbl 1.1h ['$' for help]
+2026-09-17 18:38:32,997&grbl_cnc_mill&DEBUG&driver&soft_reset&542&Soft reset response: [MSG:'$H'|'$X' to unlock]
+2026-09-17 18:38:32,997&grbl_cnc_mill&INFO&driver&unlock&518&Sending unlock ($X)
+2026-09-17 18:38:33,002&grbl_cnc_mill&DEBUG&driver&unlock&526&Unlock response: [MSG:Caution: Unlocked]
+2026-09-17 18:38:33,002&grbl_cnc_mill&DEBUG&driver&unlock&526&Unlock response: ok
+2026-09-17 18:38:33,002&grbl_cnc_mill&INFO&driver&read_config&350&Reading mill config
+2026-09-17 18:38:33,002&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 18:38:33,035&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:38:33,036&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:38:33,036&grbl_cnc_mill&DEBUG&driver&read_config&353&Mill config: {'$0': '10', '$1': '25', '$2': '0', '$3': '1', '$4': '0', '$5': '0', '$6': '0', '$10': '0', '$11': '0.010', '$12': '0.002', '$13': '0', '$20': '1', '$21': '0', '$22': '1', '$23': '0', '$24': '100.000', '$25': '1000.000', '$26': '250', '$27': '3.000', '$30': '10000', '$31': '0', '$32': '0', '$100': '400.000', '$101': '400.000', '$102': '400.000', '$110': '5000.000', '$111': '5000.000', '$112': '5000.000', '$120': '300.000', '$121': '300.000', '$122': '150.000', '$130': '409.000', '$131': '309.000', '$132': '124.000'}
+2026-09-17 18:38:33,136&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G90
+2026-09-17 18:38:35,192&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:409.000,309.000,124.000|FS:0,0|Ov:100,100,100>
+2026-09-17 18:38:35,192&grbl_cnc_mill&INFO&driver&enforce_wpos_mode&770&WPos mode and absolute positioning enforced
+2026-09-17 18:38:35,192&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: F3000
+2026-09-17 18:38:37,248&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:409.000,309.000,124.000|FS:0,0>
+2026-09-17 18:38:38,452&grbl_cnc_mill&INFO&driver&seed_wco&791&WCO cached: (-409.0, -309.0, -124.0)
+2026-09-17 18:38:38,452&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $$
+2026-09-17 18:38:38,485&grbl_cnc_mill&DEBUG&driver&_collect_grbl_settings_response&369&Returned ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:38:38,485&grbl_cnc_mill&INFO&driver&_parse_grbl_settings_response&375&Parsing settings from: ['$0=10', '$1=25', '$2=0', '$3=1', '$4=0', '$5=0', '$6=0', '$10=0', '$11=0.010', '$12=0.002', '$13=0', '$20=1', '$21=0', '$22=1', '$23=0', '$24=100.000', '$25=1000.000', '$26=250', '$27=3.000', '$30=10000', '$31=0', '$32=0', '$100=400.000', '$101=400.000', '$102=400.000', '$110=5000.000', '$111=5000.000', '$112=5000.000', '$120=300.000', '$121=300.000', '$122=150.000', '$130=409.000', '$131=309.000', '$132=124.000']
+2026-09-17 18:39:37,113&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 18:39:44,142&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned ok
+2026-09-17 18:39:55,203&grbl_cnc_mill&INFO&driver&home&635&Homing completed
+2026-09-17 18:39:55,254&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 406.0, Y = 306.0, Z = 121.0
+2026-09-17 18:39:55,254&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 25.0, 99.065]
+2026-09-17 18:39:55,254&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:39:57,312&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:406.000,306.000,99.065|FS:0,0>
+2026-09-17 18:39:57,312&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X206.0 F2000.0
+2026-09-17 18:40:05,527&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,306.000,99.065|FS:0,0>
+2026-09-17 18:40:05,527&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y25.0 F2000.0
+2026-09-17 18:40:15,794&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,25.000,99.065|FS:0,0>
+2026-09-17 18:40:36,529&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 25.0, Z = 99.065
+2026-09-17 18:40:36,529&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 99.065]
+2026-09-17 18:40:36,529&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:40:38,587&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,25.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:40:38,587&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y27.0 F2000.0
+2026-09-17 18:40:40,645&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:40:40,646&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:40:42,704&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,99.065|FS:0,0>
+2026-09-17 18:40:42,754&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:40:42,805&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:40:42,805&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 54.065]
+2026-09-17 18:40:42,805&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z54.065 F2000.0
+2026-09-17 18:40:44,863&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,54.065|FS:0,0>
+2026-09-17 18:40:45,920&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 54.065
+2026-09-17 18:40:45,971&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 54.065
+2026-09-17 18:40:45,971&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 99.065]
+2026-09-17 18:40:45,971&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:40:48,029&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,99.065|FS:0,0>
+2026-09-17 18:41:08,845&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:41:08,845&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [284.0, 25.5, 115.0]
+2026-09-17 18:41:08,845&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:41:10,903&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:10,903&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X284.0 F2000.0
+2026-09-17 18:41:15,014&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,27.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:15,014&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y25.5 F2000.0
+2026-09-17 18:41:17,071&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:17,071&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z115.0 F2000.0
+2026-09-17 18:41:19,129&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,115.000|FS:0,0>
+2026-09-17 18:41:19,180&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 115.0
+2026-09-17 18:41:19,231&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 115.0
+2026-09-17 18:41:19,231&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [284.0, 25.5, 57.0]
+2026-09-17 18:41:19,231&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z57.0 F2000.0
+2026-09-17 18:41:21,289&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,57.000|FS:0,0>
+2026-09-17 18:41:21,345&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 57.0
+2026-09-17 18:41:21,345&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [154.0, 15.0, 124.0]
+2026-09-17 18:41:21,345&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:41:25,455&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:25,455&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X154.0 F2000.0
+2026-09-17 18:41:29,565&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:29,565&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y15.0 F2000.0
+2026-09-17 18:41:31,623&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,15.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:41:31,674&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 15.0, Z = 124.0
+2026-09-17 18:41:31,725&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 15.0, Z = 124.0
+2026-09-17 18:41:31,725&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [154.0, 15.0, 55.0]
+2026-09-17 18:41:31,725&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z55.0 F2000.0
+2026-09-17 18:41:35,835&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,15.000,55.000|FS:0,0>
+2026-09-17 18:42:09,713&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 15.0, Z = 55.0
+2026-09-17 18:42:09,713&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 13.0, 122.0]
+2026-09-17 18:42:09,713&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z122.0 F2000.0
+2026-09-17 18:42:13,824&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,15.000,122.000|FS:0,0>
+2026-09-17 18:42:13,824&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X206.0 F2000.0
+2026-09-17 18:42:15,881&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,15.000,122.000|FS:0,0>
+2026-09-17 18:42:15,881&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y13.0 F2000.0
+2026-09-17 18:42:17,939&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,13.000,122.000|FS:0,0>
+2026-09-17 18:42:17,990&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 13.0, Z = 122.0
+2026-09-17 18:42:17,990&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 99.065]
+2026-09-17 18:42:17,990&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:42:20,048&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,13.000,124.000|FS:0,0|Pn:Z|WCO:-409.000,-309.000,-124.000>
+2026-09-17 18:42:20,048&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y27.0 F2000.0
+2026-09-17 18:42:22,106&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,124.000|FS:0,0|Pn:Z|Ov:100,100,100>
+2026-09-17 18:42:22,106&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:42:24,164&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,99.065|FS:0,0>
+2026-09-17 18:42:24,214&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:42:24,265&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:42:24,265&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 54.065]
+2026-09-17 18:42:24,265&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z54.065 F2000.0
+2026-09-17 18:42:26,323&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,54.065|FS:0,0>
+2026-09-17 18:42:27,379&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 54.065
+2026-09-17 18:42:27,430&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 54.065
+2026-09-17 18:42:27,430&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 27.0, 99.065]
+2026-09-17 18:42:27,430&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:42:29,488&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,99.065|FS:0,0>
+2026-09-17 18:42:29,545&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 27.0, Z = 99.065
+2026-09-17 18:42:29,545&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 99.065]
+2026-09-17 18:42:29,545&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:42:31,603&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,27.000,124.000|FS:0,0|Pn:Z|WCO:-409.000,-309.000,-124.000>
+2026-09-17 18:42:31,604&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y60.0 F2000.0
+2026-09-17 18:42:33,661&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,124.000|FS:0,0|Pn:Z|Ov:100,100,100>
+2026-09-17 18:42:33,662&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:42:35,719&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,99.065|FS:0,0>
+2026-09-17 18:42:35,770&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 99.065
+2026-09-17 18:42:35,820&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 99.065
+2026-09-17 18:42:35,820&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 54.065]
+2026-09-17 18:42:35,821&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z54.065 F2000.0
+2026-09-17 18:42:37,877&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,54.065|FS:0,0>
+2026-09-17 18:42:38,934&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 54.065
+2026-09-17 18:42:38,984&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 54.065
+2026-09-17 18:42:38,984&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 99.065]
+2026-09-17 18:42:38,984&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:42:41,043&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,99.065|FS:0,0>
+2026-09-17 18:42:41,100&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 99.065
+2026-09-17 18:42:41,100&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [154.0, 48.0, 124.0]
+2026-09-17 18:42:41,100&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:42:43,158&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,124.000|FS:0,0|Pn:Z|WCO:-409.000,-309.000,-124.000>
+2026-09-17 18:42:43,158&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X154.0 F2000.0
+2026-09-17 18:42:45,222&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,60.000,124.000|FS:0,0|Pn:Z|Ov:100,100,100>
+2026-09-17 18:42:45,222&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y48.0 F2000.0
+2026-09-17 18:42:47,280&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,48.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:42:47,331&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 48.0, Z = 124.0
+2026-09-17 18:42:47,381&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 48.0, Z = 124.0
+2026-09-17 18:42:47,381&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [154.0, 48.0, 55.0]
+2026-09-17 18:42:47,381&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z55.0 F2000.0
+2026-09-17 18:42:51,492&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,48.000,55.000|FS:0,0>
+2026-09-17 18:43:13,089&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 154.0, Y = 48.0, Z = 55.0
+2026-09-17 18:43:13,089&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [284.0, 25.5, 124.0]
+2026-09-17 18:43:13,090&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:43:17,199&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:154.000,48.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:43:17,200&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X284.0 F2000.0
+2026-09-17 18:43:21,310&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,48.000,124.000|FS:0,0|Pn:Z|Ov:100,100,100>
+2026-09-17 18:43:21,311&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y25.5 F2000.0
+2026-09-17 18:43:23,369&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:43:23,419&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 124.0
+2026-09-17 18:43:23,470&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 124.0
+2026-09-17 18:43:23,470&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [284.0, 25.5, 92.0]
+2026-09-17 18:43:23,470&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z92.0 F2000.0
+2026-09-17 18:43:25,528&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,92.000|FS:0,0>
+2026-09-17 18:44:07,825&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 284.0, Y = 25.5, Z = 92.0
+2026-09-17 18:44:07,825&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 99.065]
+2026-09-17 18:44:07,825&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z124.0 F2000.0
+2026-09-17 18:44:09,882&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:284.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:44:09,883&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 X206.0 F2000.0
+2026-09-17 18:44:13,993&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,25.500,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:44:13,993&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Y60.0 F2000.0
+2026-09-17 18:44:16,051&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,124.000|FS:0,0|Pn:Z>
+2026-09-17 18:44:16,051&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:44:18,109&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,99.065|FS:0,0|Ov:100,100,100>
+2026-09-17 18:44:18,159&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 99.065
+2026-09-17 18:44:18,210&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 99.065
+2026-09-17 18:44:18,210&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 54.065]
+2026-09-17 18:44:18,210&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z54.065 F2000.0
+2026-09-17 18:44:20,268&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,54.065|FS:0,0>
+2026-09-17 18:44:21,322&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 54.065
+2026-09-17 18:44:21,373&grbl_cnc_mill&INFO&driver&current_coordinates&901&WPos coordinates: X = 206.0, Y = 60.0, Z = 54.065
+2026-09-17 18:44:21,373&grbl_cnc_mill&DEBUG&driver&_log_target_coordinates&1010&Target coordinates: [206.0, 60.0, 99.065]
+2026-09-17 18:44:21,373&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: G01 Z99.065 F2000.0
+2026-09-17 18:44:23,431&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned <Idle|WPos:206.000,60.000,99.065|FS:0,0>
+2026-09-17 18:44:23,434&grbl_cnc_mill&DEBUG&driver&execute_command&406&Command sent: $H
+2026-09-17 18:44:33,444&grbl_cnc_mill&DEBUG&driver&execute_command&420&Returned 
+2026-09-17 18:44:47,078&grbl_cnc_mill&INFO&driver&home&635&Homing completed
+2026-09-17 18:44:47,081&grbl_cnc_mill&INFO&driver&disconnect&311&Disconnecting from the mill
+2026-09-17 18:44:49,082&grbl_cnc_mill&INFO&driver&disconnect&320&Serial connection to mill closed successfully

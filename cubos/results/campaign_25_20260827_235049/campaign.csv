@@ -1,0 +1,2 @@
+id,description,deck_config,board_config,gantry_config,protocol_config,created_at,status,finished_at,fluid_state_id
+25,"Protocol run: gantry=/home/vcl/run_20260827_pipette_test/cub_xl_partA.yaml, deck=/home/vcl/run_20260827_pipette_test/sterling_6vials_tiprack.yaml, protocol=/home/vcl/run_20260827_pipette_test/pipette_test_partA.yaml",/home/vcl/run_20260827_pipette_test/sterling_6vials_tiprack.yaml,,/home/vcl/run_20260827_pipette_test/cub_xl_partA.yaml,/home/vcl/run_20260827_pipette_test/pipette_test_partA.yaml,2026-08-27 23:50:49,completed,2026-08-27 23:52:30,

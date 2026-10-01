@@ -1,0 +1,2 @@
+id,description,deck_config,board_config,gantry_config,protocol_config,created_at,status,finished_at,fluid_state_id
+68,"Protocol run: gantry=/tmp/run_20260930b/cub_xl_ben_pipette_capper.yaml, deck=/tmp/run_20260930b/ben_6vials_tiprack.yaml, protocol=/tmp/run_20260930b/pipette_test.yaml",/tmp/run_20260930b/ben_6vials_tiprack.yaml,,/tmp/run_20260930b/cub_xl_ben_pipette_capper.yaml,/tmp/run_20260930b/pipette_test.yaml,2026-09-30T22:08:13Z,completed,2026-09-30 22:12:11,

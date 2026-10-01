@@ -1,0 +1,33 @@
+== which image is on the board (avrdude -U flash:v:, read-only) 22:01:14Z
+  panda_vcl_p20gen2_tic796_20260930 : MATCH  
+  panda_vcl_p20gen2_20260917 : no     verification mismatch
+
+== plunger (PawduinoLink, as CubOS talks to it)
+22:01:27Z / 16:01:27 lab  connect() 3.77s
+22:01:27Z / 16:01:27 lab  cmd 14 pipette STATUS    dt=  0.009s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+22:01:27Z / 16:01:27 lab  cmd  7 cap sensor        dt=  0.004s  OK:{"value1":0}
+22:01:40Z / 16:01:40 lab  cmd 10 HOME              dt= 12.687s  OK:{"msg":"Pipette homed"}
+22:01:40Z / 16:01:40 lab  cmd 14 pipette STATUS    dt=  0.008s  OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+Traceback (most recent call last):
+  File "/tmp/run_20260930b/precheck_arduino.py", line 31, in <module>
+    link.close()
+    ^^^^^^^^^^
+AttributeError: 'PawduinoLink' object has no attribute 'close'
+
+== GRBL, read-only 22:01:40Z
+banner: Grbl 1.1h ['$' for help]  | [MSG:'$H'|'$X' to unlock]
+status: <Alarm|MPos:0.000,0.000,0.000|Bf:15,128|FS:0,0|WCO:0.000,0.000,0.000>
+offsets: [G54:0.000,0.000,0.000] [G28:0.000,0.000,0.000]
+     $3 =          1   gantry file 1   ok
+    $10 =          3   gantry file 0   MISMATCH
+    $20 =          0   gantry file 1   MISMATCH
+    $22 =          1   gantry file 1   ok
+    $23 =          0   gantry file 0   ok
+    $27 =      3.000   gantry file 3.0   ok
+   $100 =    400.000   gantry file 400.0   ok
+   $101 =    400.000   gantry file 400.0   ok
+   $102 =    400.000   gantry file 400.0   ok
+   $130 =    400.000   gantry file 391.0   MISMATCH
+   $131 =    300.000   gantry file 236.665   MISMATCH
+   $132 =    100.000   gantry file 124.0   MISMATCH
+RESULT: MISMATCH ['$10', '$20', '$130', '$131', '$132']

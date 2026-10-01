@@ -1,0 +1,47 @@
+Firmware: flashing panda_vcl_p20gen2_20260917.hex — 2026-09-24, Pi local time.
+
+sha256 of the image, runner and Pi, before flashing:
+  runner  1960c35486742da77c356ebac936fe6adc9f9e58a37ea1f2992a8c6eac7fe027
+  pi      1960c35486742da77c356ebac936fe6adc9f9e58a37ea1f2992a8c6eac7fe027
+
+=== which image was on the board BEFORE (avrdude -U flash:v:, read-only) ===
+  panda_vcl_p20_20260915     : MATCH  17370 bytes of flash verified
+  flash_20260915T220346Z     : no     flash verification mismatch
+  panda_vcl_p20gen2_20260917 : no     flash verification mismatch
+
+=== FLASH ===
+Reading 17382 bytes for flash from input file panda_vcl_p20gen2_20260917.hex
+Writing 17382 bytes to flash
+Writing | ################################################## | 100% 2.94s
+Reading | ################################################## | 100% 2.32s
+17382 bytes of flash verified
+Avrdude done. Thank you.
+
+=== which image is on the board AFTER ===
+  panda_vcl_p20gen2_20260917 : MATCH  17382 bytes of flash verified
+  panda_vcl_p20_20260915     : no
+  flash_20260915T220346Z     : no
+
+=== both instrument paths re-checked on the reflashed board ===
+  cmd 14 pipette STATUS   dt= 0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+  cmd  7 cap sensor       dt= 0.004s  OK:{"value1":0}
+
+=== CMD 29 driver status WITH tmc2209-softwareserial-read LIVE ===
+    v = [comm, flags, current_scaling]
+  read 1: dt= 0.156s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  read 2: dt= 0.159s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  read 3: dt= 0.154s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  read 4: dt= 0.155s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+  read 5: dt= 0.159s  OK:{"msg":"Driver status","v":[0.00,0.00,-1.00]}
+
+comm = 0 with the read fix live isolates the readback failure to the hardware
+bridge: the 10 kOhm resistor is still on the RX side, so the Arduino's
+push-pull SoftwareSerial TX idles HIGH on the shared node and the driver cannot
+pull it down to reply.  It has to be A1 --1kOhm-- NODE, with A0 and PDN_UART
+both directly on NODE.  See §14.7 of opentrons-pipette-wiring.md.
+
+=== GRBL, read-only, before the run ===
+  <Alarm|WPos:409.000,309.000,124.000|FS:0,0>     no Pn: field — no limit pin asserted
+  $5=0  $20=1  $21=0  $22=1  $23=0  $27=3.000
+  $100=$101=$102=400.000
+  $130=409.000  $131=309.000  $132=124.000       matches the gantry file exactly

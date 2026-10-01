@@ -1,0 +1,10 @@
+00:21:21Z / 18:21:21 lab  connect() 3.77s
+00:21:21Z / 18:21:21 lab  cmd 14 pipette STATUS        dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+00:21:21Z / 18:21:21 lab  cmd  7 cap sensor            dt=  0.004s  OK:{"value1":0}
+00:21:22Z / 18:21:22 lab  cmd 10 HOME                  dt=  0.938s  OK:{"msg":"Pipette homed"}
+00:21:22Z / 18:21:22 lab  cmd 14 pipette STATUS        dt=  0.008s  OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+Traceback (most recent call last):
+  File "/tmp/precheck.py", line 29, in <module>
+    link.close()
+    ^^^^^^^^^^
+AttributeError: 'PawduinoLink' object has no attribute 'close'

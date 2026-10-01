@@ -1,0 +1,86 @@
+GRBL is in Alarm state after connect. Home to clear. Status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0>
+GRBL alarm detected before protocol run; unlocking controller. Status: <Alarm|WPos:409.000,309.000,124.000|FS:0,0>
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: cub_xl_ben_pipette_capper.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 124.0]
+
+[2/4] Loading deck config...
+  OK: ben_6vials_tiprack.yaml
+  Labware (7):
+    vial_1: vial at (206.0, 27.0, 55.0)
+    vial_2: vial at (206.0, 60.0, 55.0)
+    vial_3: vial at (206.0, 93.0, 55.0)
+    vial_4: vial at (206.0, 126.0, 55.0)
+    vial_5: vial at (206.0, 159.0, 55.0)
+    vial_6: vial at (206.0, 192.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: cub_xl_ben_pipette_capper.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: pipette_test.yaml
+  Steps: 18
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position', travel_z=100.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] aspirate(position='vial_1', volume_ul=20.0, height=-15.0)
+    [5] move(instrument='pipette', position='pipette_park', travel_z=87.0)
+    [6] cap(instrument='vial_capper_decapper', vial='vial_1')
+    [7] decap(instrument='vial_capper_decapper', vial='vial_2')
+    [8] blowout(position='vial_2', height=-15.0)
+    [9] drop_tip(position='tip_rack.A1')
+    [10] cap(instrument='vial_capper_decapper', vial='vial_2')
+    [11] decap(instrument='vial_capper_decapper', vial='vial_3')
+    [12] cap(instrument='vial_capper_decapper', vial='vial_3')
+    [13] decap(instrument='vial_capper_decapper', vial='vial_4')
+    [14] cap(instrument='vial_capper_decapper', vial='vial_4')
+    [15] decap(instrument='vial_capper_decapper', vial='vial_5')
+    [16] cap(instrument='vial_capper_decapper', vial='vial_5')
+    [17] home()
+
+Validating protocol motion bounds...
+  OK (12 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol on hardware...
+------------------------------------------------------------
+
+@@PLUNGER {"t": "12:17:57.744", "cmd": "STATUS", "code": 14, "args": [], "dt_s": 0.007, "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":300.00}", "error": null}
+@@PLUNGER {"t": "12:17:58.264", "cmd": "HOME", "code": 10, "args": [], "dt_s": 0.52, "reply": "OK:{\"msg\":\"Pipette homed\"}", "error": null}
+@@PLUNGER {"t": "12:18:01.619", "cmd": "MOVE_TO", "code": 11, "args": ["5.0", "0.0"], "dt_s": 3.355, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[5.00]}", "error": null}
+@@PLUNGER {"t": "12:19:16.680", "cmd": "MOVE_TO", "code": 11, "args": ["0.0", "0.0"], "dt_s": 0.107, "reply": "OK:{\"msg\":\"Pipette moved\"}", "error": null}
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+@@PLUNGER {"t": "12:19:35.078", "cmd": "ASPIRATE", "code": 12, "args": ["0.5", "0.0"], "dt_s": 5.963, "reply": "OK:{\"msg\":\"Pipette aspirated\",\"v\":[0.50,36.00]}", "error": null}
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+@@PLUNGER {"t": "12:20:43.623", "cmd": "MOVE_TO", "code": 11, "args": ["7.0", "0.0"], "dt_s": 0.108, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[7.00]}", "error": null}
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 124.000). Hovering/traveling at 89.000 instead — confirm this plane clears all deck contents.
+@@PLUNGER {"t": "12:20:54.116", "cmd": "MOVE_TO", "code": 11, "args": ["10.0", "0.0"], "dt_s": 0.109, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[10.00]}", "error": null}
+@@PLUNGER {"t": "12:20:54.226", "cmd": "MOVE_TO", "code": 11, "args": ["5.0", "0.0"], "dt_s": 0.11, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[5.00]}", "error": null}
+
+------------------------------------------------------------
+Protocol complete — 18 steps executed.
+Measurement data store: /home/vcl/.cubos/panda_data.db
+Result CSV files:
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_54_20260901_181741/campaign.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_54_20260901_181741/experiments.csv
+  /home/vcl/CubOS/packages/core/src/cubos/data/results/campaign_54_20260901_181741/manifest.csv
+------------------------------------------------------------
+@@PLUNGER-TRACE 8 command(s) -> /tmp/plunger_trace.json

@@ -1,0 +1,25 @@
+Opening /dev/ttyACM0 at 115200 baud
+NOTE: opening this port resets the Arduino and de-energizes the
+      capper electromagnet. Do not run while a cap is held.
+boot banner after   3.76s: 'OK:Ready'
+  STATUS  homed=0 pos=0.0 max_vol=300.0
+
+  -- motor test: DOWN only, which the switch gate never blocks --
+  1592 steps = 1.0 mm at 400 steps/s -> about 4.0s of travel.
+  WATCH AND LISTEN TO THE PLUNGER. The firmware bit-bangs STEP
+  and counts loop iterations, so a clean reply proves only that
+  the Arduino emitted the pulses -- not that the motor turned.
+  DOWN 1.0 mm   dt=  4.04s  expected~4.0s  OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+  counter 0.0 -> 1.0
+
+  The Arduino emitted every step it was asked for, at the
+  commanded rate. If the plunger was silent and still, the
+  fault is downstream of the Arduino:
+    1. no motor supply on the driver's +/- (VM) terminal, or
+       coils not actually reaching the motor. Open coils are
+       SILENT; a swapped coil PAIR buzzes instead.
+    2. EN not held LOW at the driver pin (firmware pin A4).
+    3. current set to zero -- the VREF pot in standalone mode,
+       or a UART config that left the driver minimized.
+  Grab the plunger with the driver idle: energized coils
+  resist. No resistance at all means no coil current.

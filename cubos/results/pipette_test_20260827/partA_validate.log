@@ -1,0 +1,46 @@
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /home/vcl/run_20260827_pipette_test/cub_xl_partA.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 386.333]  Y[0.0, 232.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: /home/vcl/run_20260827_pipette_test/sterling_6vials_tiprack.yaml
+  Labware (7):
+    vial_1: vial at (187.0, 26.0, 55.0)
+    vial_2: vial at (187.0, 59.0, 55.0)
+    vial_3: vial at (187.0, 92.0, 55.0)
+    vial_4: vial at (187.0, 125.0, 55.0)
+    vial_5: vial at (187.0, 158.0, 55.0)
+    vial_6: vial at (187.0, 191.0, 55.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: /home/vcl/run_20260827_pipette_test/cub_xl_partA.yaml (offline/mock - hardware not contacted)
+  Instruments (2):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-15.935
+    pipette: offset=(52.0, 12.0), depth=0.0
+
+[4/4] Loading protocol...
+  OK: /home/vcl/run_20260827_pipette_test/pipette_test_partA.yaml
+  Steps: 6
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position', travel_z=80.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] mix(position='vial_1', volume_ul=20.0, height=-15.0)
+    [5] move(instrument='pipette', position='park_position', travel_z=80.0)
+
+Validating protocol motion bounds...
+  OK (8 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------

@@ -1,0 +1,26 @@
+[
+  {
+    "t": "2026-09-17T23:11:00.097+00:00",
+    "code": 14,
+    "args": [],
+    "dt_s": 0.008,
+    "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}",
+    "error": null
+  },
+  {
+    "t": "2026-09-17T23:11:26.441+00:00",
+    "code": 10,
+    "args": [],
+    "dt_s": 26.345,
+    "reply": null,
+    "error": "PipetteCommandError('Command 10 failed: ERR:{\"error\":\"Failed to home pipette\"}')"
+  },
+  {
+    "t": "2026-09-17T23:11:52.787+00:00",
+    "code": 10,
+    "args": [],
+    "dt_s": 26.345,
+    "reply": null,
+    "error": "PipetteCommandError('Command 10 failed: ERR:{\"error\":\"Failed to home pipette\"}')"
+  }
+]

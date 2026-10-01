@@ -1,0 +1,65 @@
+Bench plunger window — 2026-09-24, Pi local time (UTC-6), after flashing
+panda_vcl_p20gen2_20260917.hex.  Plunger only: /dev/ttyUSB0 was never opened
+for any of this, so no gantry motion was commanded.
+
+CMD_MOVE_RELATIVE is command 16 and takes (direction, steps, velocity) as
+THREE separate varargs.  PawduinoLink.send_command(code, *args) is varargs,
+not a list — passing [d, steps, rate] as one argument serialises the list's
+repr, and the firmware's comma tokenizer then reads atof("[0") == 0, so the
+direction argument silently parses as 0 whatever you asked for.
+
+=== first attempt, with the mis-formed call (direction always parsed as 0) ===
+start: OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+
+  dir=0  1.00 mm  dt= 2.032s  OK:{"msg":"Moved relative","v":[0.00,1592.00,800.00]}
+           -> OK:{"homed":0,"pos":-1.00,"max_vol":20.00}
+  dir=1  1.00 mm  dt= 2.032s  OK:{"msg":"Moved relative","v":[0.00,1592.00,800.00]}
+           -> OK:{"homed":0,"pos":-2.00,"max_vol":20.00}
+                              ^^^^ echoed direction 0 for BOTH; pos went the
+                                   same way twice instead of cancelling.
+
+  16:09:21  LEG 1  dir=0 START
+  16:10:09  LEG 1  dir=0 END   dt= 48.188s  (commanded 47.8s)  OK:{"msg":"Moved relative","v":[0.00,9552.00,200.00]}
+           -> OK:{"homed":0,"pos":-8.00,"max_vol":20.00}
+  16:10:09  LEG 2  dir=1 START
+  16:10:58  LEG 2  dir=1 END   dt= 48.186s  (commanded 47.8s)  OK:{"msg":"Moved relative","v":[0.00,9552.00,200.00]}
+           -> OK:{"homed":0,"pos":-14.00,"max_vol":20.00}
+
+So this walked 14 mm of RETRACTION rather than the intended balanced +/-6 mm.
+Retraction is the direction gated by the limit switch, and none of it was
+refused — which is itself the clean confirmation that D9 reads LOW.
+
+=== corrected varargs form: direction now takes ===
+start: OK:{"homed":0,"pos":0.00,"max_vol":20.00}   (counter zeroed by the
+                                                    board reset on port open)
+
+  direction=0  1.00 mm  dt= 2.031s  OK:{"msg":"Moved relative","v":[0.00,1592.00,800.00]}
+            -> OK:{"homed":0,"pos":-1.00,"max_vol":20.00}
+  direction=1  1.00 mm  dt= 2.032s  OK:{"msg":"Moved relative","v":[1.00,1592.00,800.00]}
+            -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+
+  direction=0 -> pos DECREASES (retract / up, the gated direction)
+  direction=1 -> pos INCREASES (advance / down, ungated)
+
+=== restore the 14 mm, then a properly balanced window ===
+start: OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+
+  16:12:15  advance 14 mm at 800 steps/s (~28s)
+  16:12:44  done  dt= 28.339s  OK:{"msg":"Moved relative","v":[1.00,22288.00,800.00]}
+            -> OK:{"homed":0,"pos":14.00,"max_vol":20.00}
+
+  16:12:44  ADVANCE (direction=1, B red)     START
+  16:13:16  ADVANCE (direction=1, B red)     END  dt= 32.121s (commanded 31.8s)  OK:{"msg":"Moved relative","v":[1.00,6368.00,200.00]}
+            -> OK:{"homed":0,"pos":18.00,"max_vol":20.00}
+  16:13:16  RETRACT (direction=0, F green)   START
+  16:13:48  RETRACT (direction=0, F green)   END  dt= 32.118s (commanded 31.8s)  OK:{"msg":"Moved relative","v":[0.00,6368.00,200.00]}
+            -> OK:{"homed":0,"pos":14.00,"max_vol":20.00}
+
+final: OK:{"homed":0,"pos":14.00,"max_vol":20.00}
+
+Net commanded travel across the whole session: 14 mm retract, then 14 mm
+advance, then +4/-4 balanced = ZERO.  Every leg ran at the commanded rate in
+both directions (48.19s vs 47.8s commanded; 32.12s vs 31.8s; 2.03s vs 1.99s),
+so the Arduino emitted every step it was asked for.  That is all it proves —
+stepMotor() bit-bangs STEP and counts loop iterations, with no feedback of any
+kind.  Whether the motor turned needs eyes on the machine.

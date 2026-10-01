@@ -1,0 +1,9 @@
+banner after 3.80s: 'OK:Ready'
+  STATUS (before)                    dt=   0.02s  OK:{"homed":0,"pos":0.00,"max_vol":300.00}
+  HOME  (as connect() does)          dt=   0.52s  OK:{"msg":"Pipette homed"}
+  MOVE_TO 5.0 (prime, p20)           dt=  40.02s  
+  STATUS (after prime)               dt=  20.00s  OK:{"msg":"Pipette moved","v":[5.00]}
+  ASPIRATE 0.5  (= 20 uL)            dt=  40.02s  
+  STATUS (after aspirate)            dt=  40.02s  
+  MOVE_TO 7.0 (blowout, p20)         dt=  39.98s  OK:{"msg":"Pipette aspirated","v":[0.50,11.22]}
+  STATUS (after blowout)             dt=   0.02s  OK:{"homed":1,"pos":11.22,"max_vol":300.00}

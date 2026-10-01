@@ -1,0 +1,21 @@
+Firmware: flashing panda_vcl_p20gen2_tic796_20260930.hex -- 2026-09-30T00:20:32Z
+
+sha256:
+2bea99ba61db7d237857cbea487889a8f2754663589854177c1a260002af6380  /tmp/panda_vcl_p20gen2_tic796.hex
+1960c35486742da77c356ebac936fe6adc9f9e58a37ea1f2992a8c6eac7fe027  /home/<user>/byu-vcl/cubos/firmware/panda_vcl_p20gen2_20260917.hex
+
+=== which image is on the board BEFORE (avrdude -U flash:v:, read-only) ===
+  panda_vcl_p20gen2_20260917 : MATCH  
+  panda_vcl_p20gen2_tic796 : no     verification mismatch
+
+=== FLASH ===
+Reading 17382 bytes for flash from input file panda_vcl_p20gen2_tic796.hex
+Writing 17382 bytes to flash
+Writing | ################################################## | 100% 2.94s
+Reading | ################################################## | 100% 2.33s
+17382 bytes of flash verified
+Avrdude done.  Thank you.
+
+=== which image is on the board AFTER ===
+  panda_vcl_p20gen2_tic796 : MATCH  
+  panda_vcl_p20gen2_20260917 : no     verification mismatch

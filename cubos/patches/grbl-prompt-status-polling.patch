@@ -1,0 +1,151 @@
+diff --git a/packages/core/src/cubos/gantry/gantry_driver/driver.py b/packages/core/src/cubos/gantry/gantry_driver/driver.py
+index 1f3d64e..c12863a 100644
+--- a/packages/core/src/cubos/gantry/gantry_driver/driver.py
++++ b/packages/core/src/cubos/gantry/gantry_driver/driver.py
+@@ -678,31 +678,31 @@ class Mill:
+         return status
+ 
+     def current_status(self) -> str:
+-        """Get the current status of the mill."""
+-        self._require_open_serial()
+-        attempt_limit = 5
+-        status = self._read_serial()
++        """Request status before reading; acknowledgments are not completion.
+ 
+-        while status.strip().lower() in ["", "ok"] and attempt_limit > 0:
++        GRBL does not stream status by default. Reading before sending ``?``
++        costs a full serial timeout on every completion poll. Bound both the
++        number of requests and intervening acknowledgment/message lines.
++        """
++        self._require_open_serial()
++        for _ in range(5):
+             self._write_serial(b"?")
+             time.sleep(0.05)
+-            status = self._read_serial()
+-            attempt_limit -= 1
+-
+-        if not status:
+-            raw_lines = self.ser_mill.readlines()
+-            lines = [item.decode(errors="replace").rstrip() for item in raw_lines]
+-            if not lines:
+-                self.logger.error("Failed to get status from the mill")
+-                raise StatusReturnError("Failed to get status from the mill")
+-            # Find the first status line (<...>) or join all lines
+-            status = next((l for l in lines if l.startswith("<")), "; ".join(lines))
+-            self.last_status = status
+-            if any(re.search(r"\b(error|alarm)\b", item.lower()) for item in lines):
+-                self.logger.error("Error in status: %s", status)
+-                raise StatusReturnError(f"Error in status: {status}")
+-        self.last_status = status
+-        return status
++            for _ in range(10):
++                status = self._read_serial().strip()
++                if not status:
++                    break
++                lowered = status.lower()
++                if lowered.startswith(("error:", "alarm:")):
++                    self.last_status = status
++                    raise StatusReturnError(f"Error in status: {status}")
++                if status.startswith("<") and status.endswith(">"):
++                    self.last_status = status
++                    return status
++                # 'ok' acknowledges a command, and [MSG:...] is informational.
++                # Neither is a controller state, so keep reading this reply.
++        self.logger.error("Failed to get status from the mill")
++        raise StatusReturnError("Failed to get status from the mill")
+ 
+     def _read_serial(self):
+         self._require_open_serial()
+diff --git a/packages/core/tests/gantry/driver/test_gantry_driver.py b/packages/core/tests/gantry/driver/test_gantry_driver.py
+index e5ee116..b1d0f9f 100644
+--- a/packages/core/tests/gantry/driver/test_gantry_driver.py
++++ b/packages/core/tests/gantry/driver/test_gantry_driver.py
+@@ -1257,3 +1257,88 @@ class TestCNCDriverLogic(unittest.TestCase):
+ 
+ if __name__ == '__main__':
+     unittest.main()
++
++
++class TestPromptStatusPolling(unittest.TestCase):
++    def make_mill(self, serial):
++        with patch('cubos.gantry.gantry_driver.driver.set_up_mill_logger'), patch(
++            'cubos.gantry.gantry_driver.driver.set_up_command_logger'
++        ):
++            mill = Mill()
++        mill.ser_mill = serial
++        return mill
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_move_queries_before_empty_read_and_waits_for_idle(self, sleep):
++        class OnDemandSerial(FakeGrblSerial):
++            def __init__(self):
++                super().__init__()
++                self.replies = iter([
++                    '<Run|WPos:0.5,0,0|FS:100,0>',
++                    '<Idle|WPos:1,0,0|FS:0,0>',
++                ])
++
++            def write(self, data):
++                if data == b'?':
++                    self.status = next(self.replies)
++                return super().write(data)
++
++            def readline(self):
++                if not self.in_waiting:
++                    raise AssertionError('Blocking read before requesting status')
++                return super().readline()
++
++        serial = OnDemandSerial()
++        mill = self.make_mill(serial)
++        result = mill.execute_command('G01 X1 F2000')
++        self.assertEqual(result, '<Idle|WPos:1,0,0|FS:0,0>')
++        self.assertEqual(serial.writes, [b'G01 X1 F2000\n', b'?', b'?'])
++        self.assertEqual(serial.timeout, 2)
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_ignores_ack_and_informational_lines(self, sleep):
++        serial = ScriptedSerial([
++            b'ok\r\n', b'[MSG:Not idle yet]\r\n',
++            b'<Run|WPos:0,0,0|FS:100,0>\r\n',
++        ])
++        mill = self.make_mill(serial)
++        self.assertEqual(mill.current_status(), '<Run|WPos:0,0,0|FS:100,0>')
++        self.assertEqual(serial.writes, [b'?'])
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_silence_and_message_flood_are_bounded(self, sleep):
++        for lines in ([], [b'ok\r\n'] * 50, [b'[MSG:busy]\r\n'] * 50):
++            with self.subTest(lines=lines[:1]):
++                serial = ScriptedSerial(lines)
++                serial.readlines = MagicMock(side_effect=AssertionError('Unbounded drain'))
++                mill = self.make_mill(serial)
++                with self.assertRaisesRegex(StatusReturnError, 'Failed to get status'):
++                    mill.current_status()
++                self.assertEqual(serial.writes, [b'?'] * 5)
++                serial.readlines.assert_not_called()
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_error_and_alarm_are_not_hidden_by_later_idle(self, sleep):
++        for failure in (b'error:9\r\n', b'ALARM:1\r\n'):
++            with self.subTest(failure=failure):
++                serial = ScriptedSerial([failure, b'<Idle|WPos:0,0,0>\r\n'])
++                mill = self.make_mill(serial)
++                with self.assertRaises(StatusReturnError):
++                    mill.current_status()
++                self.assertEqual(len(serial.lines), 1)
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_hold_and_alarm_status_remain_visible(self, sleep):
++        for state in ('Hold:0', 'Alarm'):
++            with self.subTest(state=state):
++                status = f'<{state}|WPos:0,0,0|FS:0,0>'
++                mill = self.make_mill(FakeGrblSerial(status=status))
++                self.assertEqual(mill.current_status(), status)
++                self.assertEqual(mill.last_status, status)
++
++    @patch('cubos.gantry.gantry_driver.driver.time.sleep')
++    def test_connection_failure_propagates(self, sleep):
++        mill = self.make_mill(FakeGrblSerial())
++        mill._read_serial = MagicMock(side_effect=MillConnectionError('unplugged'))
++        with self.assertRaisesRegex(MillConnectionError, 'unplugged'):
++            mill.current_status()

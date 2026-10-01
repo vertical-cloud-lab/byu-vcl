@@ -1,0 +1,90 @@
+
+positions:
+  park_position: [206.0, 170.0, 100.0]
+  pipette_park:  [258.0, 182.0, 89.0]
+
+protocol:
+  - home:
+
+  # 1. Park the pipette first (base-protocol convention): explicit travel_z
+  #    so the transit out of the homed corner is modeled, well away from the
+  #    vial column and the tip rack.
+  - move:
+      instrument: vial_capper_decapper
+      position: park_position
+      travel_z: 100
+
+  # 2. Open vial_1 while the nozzle is still bare.
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  - pick_up_tip:
+      position: tip_rack.A1
+
+  - aspirate:
+      position: vial_1
+      volume_ul: 20.0
+      height: -15.0
+  - move: 
+      instrument: pipette
+      position: pipette_park
+      travel_z: 89
+
+
+
+  # 6. Close vial_1, then decap+cap the remaining five vials (no pipette
+  #    insertion -- see TIP-ON INVARIANT in the header for why none can
+  #    honestly follow the hand removal).
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_1
+
+  # --- vial 2 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  - blowout:
+      position: vial_2
+      height: -15.0
+
+  - drop_tip:
+        position: tip_rack.A1
+
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_2
+
+  # --- vial 3 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_3
+
+  # --- vial 4 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_4
+
+  # --- vial 5 ---
+  - decap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+  - cap:
+      instrument: vial_capper_decapper
+      vial: vial_5
+
+
+  # Modeled with the tip still attached (nothing runnable clears it); the
+  # home pose validates in-bounds, and the nozzle is physically bare by now.
+  - home:
