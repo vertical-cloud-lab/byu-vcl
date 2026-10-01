@@ -155,7 +155,7 @@ def parts():
         out.append(Part("pin-6mm", _cyl(0.003, top - 0.012, top + PLATE_T - 0.001, x, F + y, 24), "#9aa0a6",
                         tags={"pin"}))
     for x in leg_x()[[0, -1]]:
-        out.append(Part("dowel-1-4in", _cyl(IN / 8, -0.018, 0.020, x, F + Dp / 2, 24), "#9aa0a6", tags={"pin"}))
+        out.append(Part("dowel-1-4in", _cyl(IN / 8, -0.015, 0.017, x, F + Dp / 2, 24), "#9aa0a6", tags={"pin"}))
     # corner braces: 1 1/2 in steel, inside each end leg, into the arm's plate
     for x, s in ((leg_x()[0], 1), (leg_x()[-1], -1)):
         for y in (F + 0.05, F + Dp - 0.05):
@@ -344,7 +344,7 @@ def write_cut_list(path, nums, stiff):
         f"either side of centre, {PLATE_PINS[0][1] * 1000:.0f} mm from the front edge |",
         f"| Leg | {fmt(Dp)} | {fmt(LEG_H)} | {N_LEGS} | stood on edge, square to the wall, centres at "
         f"{', '.join(f'{x * 1000:+.0f}' for x in leg_x())} mm along the shelf; the two end legs get a Ø1/4 in hole "
-        "20 mm up from the bottom, on centre |",
+        "20 mm deep up into the bottom edge, on centre |",
         f"| Fence | {fmt(L)} | {fmt(fence_h)} | 1 | behind the top and legs, standing on the arm's plate; stands "
         f"{SHELF['lip'] * 1000:.0f} mm proud of the shelf |",
         "", f"All six parts come out of one {strip[0] * 1000:.0f} × {strip[1] * 1000:.0f} mm strip: the top and the fence "
@@ -366,15 +366,16 @@ def write_cut_list(path, nums, stiff):
         "| Wood glue (PVA) | a little | legs to the top, fence to the legs and top |",
         "| #8 × 1 1/4 in wood screws | 16 | 2 down through the top into each leg; 2 through the fence into each leg |",
         "| 6 mm × 20 mm steel dowel pins | 2 | press-fit in the shelf top; locate the nest plate |",
-        "| 1/4 in × 1 1/2 in steel dowel pins | 2 | through the end legs into the arm's plate; locate the shelf |",
+        "| 1/4 in × 1 1/4 in steel dowel pins | 2 | up into the end legs, down into the arm's plate; locate the shelf |",
         "| 1 1/2 in steel corner braces, with #8 × 5/8 in screws | 4 | inside the end legs, into the arm's plate; hold the shelf down |",
         "| AprilTag or ArUco markers, printed | 2 | optional, one at each end of the plate, for the wrist camera |",
         "",
         "## Drilling the arm's plate",
         "",
-        f"Two Ø1/4 in holes 18 mm deep for the dowels, at {leg_x()[0] * 1000:+.0f} and {leg_x()[-1] * 1000:+.0f} mm "
-        f"along the shelf and {(SHELF['front'] + Dp / 2) * 1000:.0f} mm behind J1. Drill them through the legs "
-        "with the shelf clamped in place, so the holes line up whatever the error in marking out.",
+        f"Two Ø1/4 in holes 15 mm deep for the dowels (the plate is 18 mm, so not through), at {leg_x()[0] * 1000:+.0f} and {leg_x()[-1] * 1000:+.0f} mm "
+        f"along the shelf and {(SHELF['front'] + Dp / 2) * 1000:.0f} mm from J1 toward the wall. Rather than measuring "
+        "them out, mark them from the legs: drill the legs first, drop a 1/4 in dowel centre into each hole and press the "
+        "shelf down where it goes. The two sets then line up whatever the error in marking out.",
         "",
     ]
     path.write_text("\n".join(lines))
