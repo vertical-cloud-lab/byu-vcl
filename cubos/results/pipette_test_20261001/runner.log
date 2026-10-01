@@ -1,0 +1,71 @@
+21:21:57Z  == pipette_test_20261001: cub_xl_ben_pipette_capper.yaml | ben_6vials_tiprack.yaml | pipette_test.yaml
+21:21:57Z  -- 1. checks
+21:21:57Z  byu-vcl 542a2b5 | CubOS 496819c + 4 patch(es): grbl-prompt-status-polling.patch, p20-gen2-plunger-constants.patch, pipette-connect-tolerate-failed-home-main.patch, tipped-hover-clamp-main.patch
+21:21:57Z  Pi up 23 hours, 29 minutes, throttled=0x0
+21:21:57Z  ports: gantry /dev/ttyUSB0 -> /dev/ttyUSB0, vial_capper_decapper /dev/ttyACM0 -> /dev/ttyACM0, pipette /dev/ttyACM0 -> /dev/ttyACM0 (none held open)
+21:21:57Z  protocol: 12 steps, step 0 = home
+21:22:00Z  GRBL: <Alarm|WPos:391.000,236.665,124.000|FS:0,0|WCO:-391.000,-236.665,-124.000> | $20=1 $21=1 travel [391.0, 236.665, 124.0] G54 [-391.0, -236.665, -124.0] | feed F3000 vs max [5000.0, 5000.0, 5000.0]
+21:22:00Z  Arduino:
+21:22:04Z                 connect          dt=  3.766s  ok
+21:22:04Z    21:22:04.632 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+21:22:04Z    21:22:04.640 cap sensor       dt=  0.004s  OK:{"value1":0}
+21:22:04Z    21:22:04.644 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}
+21:22:04Z  -- 2. gates
+21:22:05Z  gate validate         PASS  (0.4 s)  Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ign
+21:22:09Z  gate mock             PASS  (4.5 s)  OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 12
+21:22:14Z  gate shadow           PASS  (4.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+21:22:18Z  gate shadow_tipstuck  PASS  (4.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+21:22:19Z  Tic: settings = tic_p20.txt; was De-energized, VIN 12.6 V; now energized=Yes, VIN 10.6 V, stopping: None
+21:22:19Z  -- 3. run
+21:22:19Z  RUN start 21:22:19Z (15:22:19 lab)
+21:24:24Z  RUN end   21:24:24Z (15:24:24 lab), 124.4 s, rc=0
+21:24:24Z  -- 4. post-run
+21:24:24Z  post-run Arduino:
+21:24:40Z                 connect          dt=  3.768s  ok
+21:24:40Z    21:24:28.012 EMAG_OFF         dt=  0.004s  OK:{"msg":"Electromagnet off"}
+21:24:40Z    21:24:28.016 cap sensor       dt=  0.004s  OK:{"value1":0}
+21:24:40Z    21:24:28.020 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+21:24:40Z    21:24:28.028 HOME             dt= 12.677s  OK:{"msg":"Pipette homed"}
+21:24:40Z  HOME check: plunger ended at 28.0 mm (firmware); HOME took 12.677 s, which implies 27.99 mm (-0.01 mm)
+21:24:41Z  Tic after: energized=No, VIN 12.6 V, errors since last check: Intentionally de-energized
+21:24:41Z  -- 5. summary
+# pipette_test_20261001
+
+✅ **12/12 steps, protocol complete**
+
+- **When:** 2026-10-01 21:22:19Z → 21:24:24Z (15:22:19–15:24:24 lab), **124 s** wall, connect to disconnect; steps themselves 106 s
+- **Code:** byu-vcl `542a2b5` · CubOS `496819c` + `grbl-prompt-status-polling`, `p20-gen2-plunger-constants`, `pipette-connect-tolerate-failed-home-main`, `tipped-hover-clamp-main`
+- **GRBL:** travel [391.0, 236.665, 124.0], G54 [-391.0, -236.665, -124.0], `$20=1` `$21=1`, feed F3000
+- **G-code:** 47 `G01` in 55.2 s (median 0.913 s, shortest 0.056 s), F 3000; `$H` [7.9, 20.7] s
+- **Tic during run:** 236 polls, VIN 9.0–11.3 V, stopping errors: none
+- **Kernel:** 0 USB line(s) during the run
+- **Plunger HOME check:** ended at 28.0 mm by the firmware; HOME took 12.677 s ⇒ 27.99 mm (**-0.01 mm**)
+
+| step | command | s |
+|---:|---|---:|
+| 0 | home | 7.9 |
+| 1 | move | 9.2 |
+| 2 | decap | 6.2 |
+| 3 | pick_up_tip | 7.3 |
+| 4 | aspirate | 11.8 |
+| 5 | move | 3.8 |
+| 6 | cap | 5.7 |
+| 7 | decap | 6.0 |
+| 8 | blowout | 7.3 |
+| 9 | drop_tip | 12.5 |
+| 10 | cap | 8.0 |
+| 11 | home | 20.7 |
+
+| plunger (UTC) | command | args | s | reply |
+|---|---|---|---:|---|
+| 21:22:29 | STATUS |  | 0.01 | `OK:{"homed":0,"pos":0.00,"max_vol":20.00}` |
+| 21:22:30 | HOME |  | 0.93 | `OK:{"msg":"Pipette homed"}` |
+| 21:22:33 | MOVE_TO | 28.0, 0.0 | 2.56 | `OK:{"msg":"Pipette moved","v":[28.00]}` |
+| 21:23:04 | MOVE_TO | 0.0, 0.0 | 2.56 | `OK:{"msg":"Pipette moved"}` |
+| 21:23:16 | ASPIRATE | 20.0, 0.0 | 5.00 | `OK:{"msg":"Pipette aspirated","v":[20.00,1.20]}` |
+| 21:23:39 | MOVE_TO | 32.5, 0.0 | 2.86 | `OK:{"msg":"Pipette moved","v":[32.50]}` |
+| 21:23:51 | MOVE_TO | 46.5, 0.0 | 4.65 | `OK:{"msg":"Pipette moved","v":[46.50]}` |
+| 21:23:52 | MOVE_TO | 28.0, 0.0 | 1.70 | `OK:{"msg":"Pipette moved","v":[28.00]}` |
+
+Files: `runner.log` (everything), `checks.json`, `gate_*.log`, `run_hardware.log`, `step_trace.json`, `plunger_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`.
+

@@ -157,7 +157,8 @@ now. Read the driver with `ticcmd --status` instead.
 3. **Switch on 12 V at the supply**, not by pushing a live lead into the terminal.
    Run `ticcmd --status`: VIN should read about 12–13 V, with no errors and the
    operation state Normal. On the CubXL Pi that is
-   `sudo ~/.local/opt/pololu-tic-1.8.1-linux-rpi/ticcmd --status`. In STEP/DIR
+   `~/.local/opt/pololu-tic-1.8.1-linux-rpi/ticcmd --status` (no `sudo` since
+   2026-10-01, see "Non-root access" below). In STEP/DIR
    mode, Low VIN was the only error left on the list after the settings went in,
    so the driver energizes and holds at 990 mA the moment VIN comes up. Switch
    the 12 V off between tests (or send `ticcmd --deenergize`) rather than leave
@@ -254,9 +255,14 @@ firmware ≥ 1.06; the T500 has been supported since 1.04.
   `--position` in microsteps, or use the `ticlib` Python package.
 - **Non-root access on the Pi.** `ticcmd` has been on the Pi since 2026-09-29, in
   `~/.local/opt/pololu-tic-1.8.1-linux-rpi/` with nothing installed
-  system-wide. Without Pololu's udev rule it needs `sudo`, though. A backend
-  running as the login user needs that rule
-  (`/etc/udev/rules.d/99-pololu.rules`); record it in the SOP when it goes in.
+  system-wide. ✅ *Since 2026-10-01 it runs without `sudo`:*
+  `/etc/udev/rules.d/99-pololu.rules` on the CubXL Pi holds the one line
+  `SUBSYSTEM=="usb", ATTRS{idVendor}=="1ffb", MODE="0660", GROUP="dialout"`,
+  so the login user (in `dialout`) can open Pololu devices and nothing else
+  changed. Installed so that `cubos/tools/cubxl_run.py` can energize and poll
+  the Tic, and so no session has to pipe the sudo password over SSH again.
+  Revert with `sudo rm /etc/udev/rules.d/99-pololu.rules && sudo udevadm
+  control --reload-rules`, then replug the Tic.
 
 The Tic talks native USB (Pololu vendor ID `1ffb`, one vendor-specific
 interface) rather than a USB serial port. This was confirmed on 2026-09-29: it

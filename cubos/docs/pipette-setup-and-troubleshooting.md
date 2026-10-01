@@ -13,6 +13,14 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ⚡ **2026-10-01: the trio runs in about 2 minutes, and there is a runner.** All
+> three speed changes are in (CubOS status polling, F3000, fast `MOVE_TO`):
+> 12/12 in 124 s against 238 s on 09-30, with no plunger steps lost (see
+> [Speed](#speed)). Runs now go through one command,
+> [`cubos/tools/cubxl_run.py`](../tools/cubxl_run.py), which checks, gates, runs
+> and writes a one-screen `SUMMARY.md`; see [Running it](#running-it). The scale
+> check below is still open.
+>
 > ✅ **2026-09-30: the pipette handles liquid.** Ben watched campaign 68 and
 > reports that it aspirated (almost filling the tip below the foam filter),
 > dispensed, and dropped the tip. That is the first end-to-end confirmation.
@@ -287,20 +295,61 @@ reconnecting the limit switch, which reads clear on the direct wiring (§20.3).
 
 CubOS lives on `rpi-5-des4` at `~/CubOS`; its install and patch state are in
 [`SOP/raspberry-pi-cubos-setup.md`](https://github.com/vertical-cloud-lab/byu-vcl/blob/0561306/SOP/raspberry-pi-cubos-setup.md),
-which is on [#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171) and not in this PR. Run from a
-foreground SSH session — a headless run logs *"Breakpoint skipped because stdin
-is not interactive"* and continues.
+which is on [#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171) and not in this PR.
+
+### With the runner (since 2026-10-01)
+
+This branch is checked out on the Pi as a worktree at `~/byu-vcl-pipette`
+(`~/byu-vcl` itself stays on #171's branch). One command does the whole routine
+and writes one folder:
 
 ```bash
-C=~/byu-vcl/cubos/configs; PY=~/CubOS/.venv/bin/python
+git -C ~/byu-vcl-pipette pull --ff-only          # run the committed configs
+setsid nohup ~/CubOS/.venv/bin/python ~/byu-vcl-pipette/cubos/tools/cubxl_run.py \
+    --name pipette_test_YYYYMMDD > /tmp/cubxl_run.out 2>&1 < /dev/null &
+cat ~/byu-vcl-pipette/cubos/results/pipette_test_YYYYMMDD/SUMMARY.md   # when done
+```
+
+[`cubos/tools/cubxl_run.py`](../tools/cubxl_run.py) defaults to the trio below.
+In order, and any refusal before the run means nothing moved:
+
+1. **checks**: commits and which `cubos/patches` are applied; ports present, not
+   held open, and named identically where shared; protocol step 0 is `home`
+   (opening the GRBL port resets it, so anything else would move against a lost
+   position); `$$` against the gantry file, `G54 == -max_travel` (catches a
+   factory reset), feed within `$110`–`$112`; the Arduino answers and nothing is
+   on the magnet; the Tic's settings equal [`tic_p20.txt`](tic_p20.txt), then
+   it is energized. Protocols with a `breakpoint` are refused, because the run
+   is headless.
+2. **gates**: `validate_setup`, `run_protocol --mock`, `passive_shadow` nominal and
+   `--tip-stuck`.
+3. **run**: `run_with_camera_and_plunger_trace.py`, with the Tic polled and the
+   GRBL logs sliced to the run.
+4. **post-run**: magnet off, cap sensor, plunger `STATUS`; with `--home-check`, a
+   plunger `HOME` whose duration says whether any steps were lost; Tic
+   de-energized.
+5. **summary**: `SUMMARY.md` (one screen) and `summary.json`; `--baseline <dir>`
+   adds a comparison.
+
+`--checks-only` stops after stage 2 (about 25 s, no motion). `setsid nohup` is
+only so an SSH drop can't take the run with it; the runner also ignores SIGHUP.
+Exit status 0 = completed, 1 = ran and failed, 2 = refused, 3 = runner error.
+
+### By hand
+
+Run from a foreground SSH session if the protocol has a `breakpoint` — a headless
+run logs *"Breakpoint skipped because stdin is not interactive"* and continues.
+
+```bash
+C=~/byu-vcl-pipette/cubos/configs; PY=~/CubOS/.venv/bin/python
 G=$C/gantry/cub_xl_ben_pipette_capper.yaml
 D=$C/deck/ben_6vials_tiprack.yaml
 P=$C/protocol/vcl/pipette_test.yaml
 
 $PY -m cubos.tools.validate_setup      $G $D $P      # nothing moves
 $PY -m cubos.tools.run_protocol --mock $G $D $P
-$PY ~/byu-vcl/cubos/tools/passive_shadow.py $G $D $P --tip-stuck
-$PY ~/byu-vcl/cubos/tools/run_with_plunger_trace.py  $G $D $P   # the real run, timed
+$PY ~/byu-vcl-pipette/cubos/tools/passive_shadow.py $G $D $P --tip-stuck
+$PY ~/byu-vcl-pipette/cubos/tools/run_with_plunger_trace.py  $G $D $P   # the real run, timed
 ```
 
 Four gates pass offline and none of them models the *other* instrument on the
@@ -343,6 +392,24 @@ The levers, per run, measured against this log:
 | coordinated XY diagonals (the other half of PR #351) | ~5–10 s | depends on upstream's routing stack; wait for it to merge |
 
 The first three together take a run from about 4 minutes to about 2.
+
+**Measured 2026-10-01, all three applied** (campaign 75,
+[`../results/pipette_test_20261001/`](../results/pipette_test_20261001/SUMMARY.md)):
+the same 12 steps, same configs otherwise, 12/12.
+
+| | campaign 68 (09-30) | **campaign 75 (10-01)** | saved |
+|---|---:|---:|---:|
+| whole run | 238 s, connect to disconnect | **124 s**, process start to end | 114 s |
+| 47 `G01` moves | 127.5 s | **55.2 s** (median 0.91 s; 1 mm moves now 0.06 s) | 72 s |
+| 2 `$H` cycles | 38.2 s | **28.6 s** (7.9 + 20.7) | 10 s |
+| 8 plunger commands | 45.7 s | **20.3 s** | 25 s |
+
+The prediction above was 70 + 19 + 25 = 114 s; the measurement is 114 s. The
+ejector push (`MOVE_TO 46.5`) took 4.65 s on both days, as intended. **No
+plunger steps were lost at the faster rate:** a plunger `HOME` after the run,
+from the firmware's 28.0 mm, took 12.677 s against 12.680 s on 09-30, i.e.
+27.99 mm (−0.01 mm). The Tic logged no errors (VIN 9.0–11.3 V), and the kernel
+logged no USB events.
 
 ## Things that cost a session each, so they are worth reading twice
 

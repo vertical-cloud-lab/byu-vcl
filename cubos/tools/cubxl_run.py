@@ -198,7 +198,12 @@ def check_protocol_starts_with_home(a, out: Out, rec: dict) -> list:
     steps = proto.get("protocol", proto) if isinstance(proto, dict) else proto
     first = steps[0] if steps else None
     first_cmd = (next(iter(first)) if isinstance(first, dict) else str(first)) if first else None
-    rec["protocol"] = {"steps": len(steps), "first": first_cmd}
+    cmds = [next(iter(x)) if isinstance(x, dict) else str(x) for x in steps]
+    rec["protocol"] = {"steps": len(steps), "first": first_cmd, "commands": cmds}
+    if "breakpoint" in cmds:
+        raise Refused("the protocol has a breakpoint, and this run is headless (stdin is "
+                      "/dev/null), so CubOS would skip it and carry on. Run it by hand in a "
+                      "foreground terminal instead")
     if first_cmd != "home" and not a.allow_no_home:
         raise Refused(f"protocol step 0 is {first_cmd!r}, not 'home'. Opening the GRBL port "
                       f"resets the board, so without a home the run would move against a "
@@ -529,13 +534,15 @@ def summarize(a, out: Out, rec: dict, r: dict | None, status: str, err: str = ""
     elif m2 or errs:
         headline = (f"❌ **stopped after {m2.group(1) if m2 else '?'}/{total_steps} steps**"
                     + (f": `{errs[0][:160]}`" if errs else ""))
+    elif status.startswith("checks only"):
+        headline = f"✅ **{status}**"
     else:
         headline = f"⛔ **{status}**" + (f": {err}" if err else "")
     L = [f"# {a.name}", "", headline, ""]
     if r:
         L += [f"- **When:** {r['t_start']:%Y-%m-%d %H:%M:%S}Z → {r['t_end']:%H:%M:%S}Z "
               f"({lab(r['t_start'])}–{lab(r['t_end'])} lab), "
-              f"**{(r['t_end'] - r['t_start']).total_seconds():.0f} s** wall, connect to disconnect"
+              f"**{(r['t_end'] - r['t_start']).total_seconds():.0f} s** wall, run process start to end"
               + (f"; steps themselves {proto_s:.0f} s" if proto_s else "")]
     v = rec.get("byu_vcl", {}), rec.get("cubos", {})
     L += [f"- **Code:** byu-vcl `{v[0].get('commit')}`"

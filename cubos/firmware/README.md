@@ -8,7 +8,28 @@ applied casually.
 Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino)
 @ `228615b` ("fixed mixing function for pipette", 2025-08-27).
 
-## 2026-09-30: the board runs `panda_vcl_p20gen2_tic796_20260930.hex`
+## 2026-10-01: the board runs `panda_vcl_p20gen2_tic796_fastmove_20261001.hex`
+
+The 796 image with `MOVE_TO` sped up (speed change 3 in
+[`../docs/pipette-setup-and-troubleshooting.md`](../docs/pipette-setup-and-troubleshooting.md#speed)).
+Both changes since `panda-arduino-p20-and-driver-status.patch` are in
+[`panda-arduino-tic796-and-fast-moveto.patch`](panda-arduino-tic796-and-fast-moveto.patch).
+
+| constant / function | was | now |
+| --- | --- | --- |
+| `MOVEMENT_VELOCITY` | 2500.0 (~2,400 steps/s, ~3 mm/s) | **10000.0**: `stepMotor()`'s 100 µs floor, ~8,700 steps/s (~11 mm/s), the rate `ASPIRATE` already ran at because CubOS sends it speed 0 |
+| `EJECT_VELOCITY` | — | **2500.0**, new |
+| `movePipetteTo()` with no speed | everything at `MOVEMENT_VELOCITY` | any leg past `BLOWOUT_POSITION` (the tip-ejector push) at `EJECT_VELOCITY`; a move from below blowout goes fast to 32.5 first |
+
+Built in `~/panda_fw_vcl_tic796_fast`, a copy of `~/panda_fw_vcl_tic796`:
+17,468 bytes. `avrdude -U flash:v` matched the 09-30 image before the upload
+and this one after it ([`../results/pipette_test_20261001/`](../results/pipette_test_20261001/SUMMARY.md)).
+On hardware: `MOVE_TO 28.0` from 0 went from 9.29 s to 2.56 s, `MOVE_TO 46.5`
+stayed at 4.65 s, and a post-run plunger `HOME` showed no lost steps. To go
+back: flash `panda_vcl_p20gen2_tic796_20260930.hex` with the `avrdude` command at
+the end of this file, or `pio run -e uno -t upload` in `~/panda_fw_vcl_tic796`.
+
+## 2026-09-30: the board ran `panda_vcl_p20gen2_tic796_20260930.hex`
 
 The pipette driver is now a Pololu Tic T500 in STEP/DIR mode, whose finest step
 is 1/8 ([`../docs/tic-t500-pipette-setup.md`](../docs/tic-t500-pipette-setup.md)).
