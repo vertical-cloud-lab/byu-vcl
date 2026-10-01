@@ -1,0 +1,502 @@
+[
+  {
+    "designation": "1100",
+    "family": "1xxx Wrought",
+    "nominal_composition": "Al-0.12Cu (\u226599.0 Al)"
+  },
+  {
+    "designation": "1050",
+    "family": "1xxx Wrought",
+    "nominal_composition": "Al (\u226599.5 Al)"
+  },
+  {
+    "designation": "1350",
+    "family": "1xxx Wrought",
+    "nominal_composition": "Al (\u226599.5 Al, electrical)"
+  },
+  {
+    "designation": "2024",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-4.4Cu-1.5Mg-0.6Mn"
+  },
+  {
+    "designation": "2014",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-4.4Cu-0.8Si-0.8Mg-0.8Mn"
+  },
+  {
+    "designation": "2219",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-6.3Cu-0.3Mn-0.06Ti-0.10V-0.18Zr"
+  },
+  {
+    "designation": "2618",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-2.3Cu-1.6Mg-1.0Ni-1.1Fe-0.18Si"
+  },
+  {
+    "designation": "2011",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-5.5Cu-0.4Pb-0.4Bi"
+  },
+  {
+    "designation": "2017",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-4.0Cu-0.7Mg-0.7Mn-0.5Si"
+  },
+  {
+    "designation": "2124",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-4.4Cu-1.5Mg-0.6Mn"
+  },
+  {
+    "designation": "2519",
+    "family": "2xxx Wrought",
+    "nominal_composition": "Al-5.8Cu-0.25Mg-0.3Mn-0.15V-0.15Zr"
+  },
+  {
+    "designation": "2090",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-2.6Li-3.0Cu-0.3Mg-0.1Zr"
+  },
+  {
+    "designation": "2091",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-2.3Li-2.5Cu-1.9Mg-0.1Zr"
+  },
+  {
+    "designation": "2195",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-1.0Li-4.0Cu-0.4Mg-0.4Ag-0.11Zr"
+  },
+  {
+    "designation": "2099",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-1.8Li-2.7Cu-0.3Mg-0.09Zr-0.3Zn-0.3Mn"
+  },
+  {
+    "designation": "2050",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-1.0Li-3.6Cu-0.4Mg-0.4Ag-0.11Zr"
+  },
+  {
+    "designation": "2060",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-0.7Li-3.9Cu-0.8Mg-0.2Ag-0.11Zr-0.3Mn-0.4Zn"
+  },
+  {
+    "designation": "2196",
+    "family": "2xxx Al-Li Wrought",
+    "nominal_composition": "Al-1.8Li-2.9Cu-0.5Mg-0.4Ag-0.11Zr"
+  },
+  {
+    "designation": "3003",
+    "family": "3xxx Wrought",
+    "nominal_composition": "Al-1.2Mn-0.12Cu"
+  },
+  {
+    "designation": "3004",
+    "family": "3xxx Wrought",
+    "nominal_composition": "Al-1.2Mn-1.0Mg"
+  },
+  {
+    "designation": "3105",
+    "family": "3xxx Wrought",
+    "nominal_composition": "Al-0.55Mn-0.5Mg"
+  },
+  {
+    "designation": "4043",
+    "family": "4xxx Wrought",
+    "nominal_composition": "Al-5.2Si"
+  },
+  {
+    "designation": "4047",
+    "family": "4xxx Wrought",
+    "nominal_composition": "Al-12.0Si"
+  },
+  {
+    "designation": "4032",
+    "family": "4xxx Wrought",
+    "nominal_composition": "Al-12.2Si-1.0Mg-0.9Cu-0.9Ni"
+  },
+  {
+    "designation": "4045",
+    "family": "4xxx Wrought",
+    "nominal_composition": "Al-10.0Si"
+  },
+  {
+    "designation": "4343",
+    "family": "4xxx Wrought",
+    "nominal_composition": "Al-7.5Si"
+  },
+  {
+    "designation": "5052",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-2.5Mg-0.25Cr"
+  },
+  {
+    "designation": "5083",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-4.4Mg-0.7Mn-0.15Cr"
+  },
+  {
+    "designation": "5086",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-4.0Mg-0.45Mn-0.15Cr"
+  },
+  {
+    "designation": "5182",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-4.5Mg-0.35Mn"
+  },
+  {
+    "designation": "5454",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-2.7Mg-0.8Mn-0.12Cr"
+  },
+  {
+    "designation": "5754",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-3.1Mg-0.5Mn"
+  },
+  {
+    "designation": "5056",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-5.0Mg-0.12Mn-0.12Cr"
+  },
+  {
+    "designation": "5154",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-3.5Mg-0.25Cr"
+  },
+  {
+    "designation": "5356",
+    "family": "5xxx Wrought / Filler Wire",
+    "nominal_composition": "Al-5.0Mg-0.12Mn-0.12Cr-0.12Ti"
+  },
+  {
+    "designation": "5556",
+    "family": "5xxx Wrought / Filler Wire",
+    "nominal_composition": "Al-5.1Mg-0.8Mn-0.12Cr-0.12Ti"
+  },
+  {
+    "designation": "5005",
+    "family": "5xxx Wrought",
+    "nominal_composition": "Al-0.8Mg"
+  },
+  {
+    "designation": "6061",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-1.0Mg-0.6Si-0.28Cu-0.20Cr"
+  },
+  {
+    "designation": "6063",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.7Mg-0.4Si"
+  },
+  {
+    "designation": "6082",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.9Mg-1.0Si-0.7Mn"
+  },
+  {
+    "designation": "6013",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.8Mg-0.8Si-0.9Cu-0.35Mn"
+  },
+  {
+    "designation": "6201",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.7Mg-0.7Si"
+  },
+  {
+    "designation": "6111",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.8Mg-0.9Si-0.7Cu-0.2Mn"
+  },
+  {
+    "designation": "6060",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.5Mg-0.4Si"
+  },
+  {
+    "designation": "6005",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.5Mg-0.7Si-0.15Mn"
+  },
+  {
+    "designation": "6351",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.6Mg-1.0Si-0.6Mn"
+  },
+  {
+    "designation": "6020",
+    "family": "6xxx Wrought",
+    "nominal_composition": "Al-0.8Mg-0.8Si-0.35Sn"
+  },
+  {
+    "designation": "7075",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-5.6Zn-2.5Mg-1.6Cu-0.23Cr"
+  },
+  {
+    "designation": "7050",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-6.2Zn-2.25Mg-2.3Cu-0.12Zr"
+  },
+  {
+    "designation": "7055",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-8.0Zn-2.05Mg-2.3Cu-0.12Zr"
+  },
+  {
+    "designation": "7475",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-5.7Zn-2.25Mg-1.6Cu-0.21Cr"
+  },
+  {
+    "designation": "7178",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-6.8Zn-2.7Mg-2.0Cu-0.26Cr"
+  },
+  {
+    "designation": "7003",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-6.0Zn-0.8Mg"
+  },
+  {
+    "designation": "7020",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-4.5Zn-1.2Mg-0.35Mn-0.15Cr-0.12Zr"
+  },
+  {
+    "designation": "7072",
+    "family": "7xxx Wrought / Cladding",
+    "nominal_composition": "Al-1.0Zn"
+  },
+  {
+    "designation": "7085",
+    "family": "7xxx Wrought",
+    "nominal_composition": "Al-7.5Zn-1.5Mg-1.65Cu-0.12Zr"
+  },
+  {
+    "designation": "7A04",
+    "family": "7xxx Wrought (Chinese)",
+    "nominal_composition": "Al-6.0Zn-2.2Mg-1.7Cu-0.15Mn"
+  },
+  {
+    "designation": "8090",
+    "family": "8xxx Wrought / Al-Li",
+    "nominal_composition": "Al-2.4Li-1.2Cu-0.8Mg-0.11Zr"
+  },
+  {
+    "designation": "8011",
+    "family": "8xxx Wrought",
+    "nominal_composition": "Al-0.7Fe-0.7Si"
+  },
+  {
+    "designation": "8079",
+    "family": "8xxx Wrought",
+    "nominal_composition": "Al-1.2Fe-0.1Si"
+  },
+  {
+    "designation": "8176",
+    "family": "8xxx Wrought",
+    "nominal_composition": "Al-0.5Fe-0.1Si"
+  },
+  {
+    "designation": "A356.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-7.0Si-0.35Mg"
+  },
+  {
+    "designation": "A357.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-7.0Si-0.55Mg-0.05Be"
+  },
+  {
+    "designation": "356.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-7.0Si-0.35Mg"
+  },
+  {
+    "designation": "A380.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-8.5Si-3.5Cu-0.5Ni"
+  },
+  {
+    "designation": "A319.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-6.0Si-3.5Cu"
+  },
+  {
+    "designation": "A390.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-17Si-4.5Cu-0.55Mg"
+  },
+  {
+    "designation": "360.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-9.5Si-0.5Mg"
+  },
+  {
+    "designation": "332.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-9.5Si-3.0Cu-1.0Mg-0.5Ni"
+  },
+  {
+    "designation": "336.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-12.0Si-1.0Cu-1.0Mg-2.5Ni"
+  },
+  {
+    "designation": "355.0",
+    "family": "Cast 3xx.x",
+    "nominal_composition": "Al-5.0Si-1.25Cu-0.5Mg"
+  },
+  {
+    "designation": "413.0",
+    "family": "Cast 4xx.x",
+    "nominal_composition": "Al-12.0Si"
+  },
+  {
+    "designation": "443.0",
+    "family": "Cast 4xx.x",
+    "nominal_composition": "Al-5.2Si"
+  },
+  {
+    "designation": "295.0",
+    "family": "Cast 2xx.x",
+    "nominal_composition": "Al-4.5Cu-1.1Si"
+  },
+  {
+    "designation": "201.0",
+    "family": "Cast 2xx.x",
+    "nominal_composition": "Al-4.6Cu-0.35Mg-0.7Ag-0.25Ti"
+  },
+  {
+    "designation": "242.0",
+    "family": "Cast 2xx.x",
+    "nominal_composition": "Al-4.0Cu-1.5Mg-2.0Ni"
+  },
+  {
+    "designation": "206.0",
+    "family": "Cast 2xx.x",
+    "nominal_composition": "Al-4.6Cu-0.3Mg-0.3Mn-0.22Ti"
+  },
+  {
+    "designation": "520.0",
+    "family": "Cast 5xx.x",
+    "nominal_composition": "Al-10.0Mg"
+  },
+  {
+    "designation": "535.0",
+    "family": "Cast 5xx.x",
+    "nominal_composition": "Al-6.9Mg-0.18Mn-0.18Ti"
+  },
+  {
+    "designation": "713.0",
+    "family": "Cast 7xx.x",
+    "nominal_composition": "Al-7.5Zn-0.35Mg-0.7Cu"
+  },
+  {
+    "designation": "771.0",
+    "family": "Cast 7xx.x",
+    "nominal_composition": "Al-7.0Zn-0.9Mg-0.13Cr-0.12Ti"
+  },
+  {
+    "designation": "850.0",
+    "family": "Cast 8xx.x",
+    "nominal_composition": "Al-6.2Sn-1.0Cu-1.0Ni"
+  },
+  {
+    "designation": "851.0",
+    "family": "Cast 8xx.x",
+    "nominal_composition": "Al-5.5Sn-2.5Si-1.0Cu-0.5Ni"
+  },
+  {
+    "designation": "1420",
+    "family": "Russian Al-Li",
+    "nominal_composition": "Al-2.2Li-6.2Mg-0.1Zr"
+  },
+  {
+    "designation": "1441",
+    "family": "Russian Al-Li",
+    "nominal_composition": "Al-1.7Li-1.6Cu-0.9Mg-0.1Zr"
+  },
+  {
+    "designation": "AlSi10Mg",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-10Si-0.4Mg"
+  },
+  {
+    "designation": "Scalmalloy",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-4.6Mg-0.7Sc-0.35Zr-0.5Mn"
+  },
+  {
+    "designation": "AlSi7Mg (A357-AM)",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-7Si-0.6Mg"
+  },
+  {
+    "designation": "AlSi12",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-12Si"
+  },
+  {
+    "designation": "AlSi3.5Mg2.5",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-3.5Si-2.5Mg"
+  },
+  {
+    "designation": "Al-5Mg-2Si-0.7Mn-0.15Zr",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-5Mg-2Si-0.7Mn-0.15Zr"
+  },
+  {
+    "designation": "A20X (Aeromet)",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-4.5Cu-0.25Mg-TiC"
+  },
+  {
+    "designation": "6061-RAM",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-1.0Mg-0.6Si-0.28Cu"
+  },
+  {
+    "designation": "7A77",
+    "family": "AM Specialty",
+    "nominal_composition": "Al-7.7Zn-2.4Mg-1.5Cu-0.15Zr"
+  },
+  {
+    "designation": "Al-9.3Ce-0.11Sc-0.04Er-0.22Zr",
+    "family": "Specialty / Research RE Alloy",
+    "nominal_composition": "Al-9.3Ce-0.11Sc-0.04Er-0.22Zr"
+  },
+  {
+    "designation": "Al-8Ce-10Mg",
+    "family": "Specialty / Research RE Alloy",
+    "nominal_composition": "Al-8Ce-10Mg"
+  },
+  {
+    "designation": "Al-3.5Cu-1.5Mg-0.5Ag",
+    "family": "Specialty / Al-Cu-Mg-Ag",
+    "nominal_composition": "Al-3.5Cu-1.5Mg-0.5Ag"
+  },
+  {
+    "designation": "Al-5.5Mg-0.3Mn-0.15Sc-0.1Zr",
+    "family": "Specialty / Sc-modified 5xxx",
+    "nominal_composition": "Al-5.5Mg-0.3Mn-0.15Sc-0.1Zr"
+  },
+  {
+    "designation": "Al-33Cu",
+    "family": "Specialty / Brazing Eutectic",
+    "nominal_composition": "Al-33Cu"
+  },
+  {
+    "designation": "Al-5Mg-0.7Mn-0.15Sc-0.05Er-0.1Zr",
+    "family": "Specialty / Multi-RE Alloy",
+    "nominal_composition": "Al-5Mg-0.7Mn-0.15Sc-0.05Er-0.1Zr"
+  }
+]
