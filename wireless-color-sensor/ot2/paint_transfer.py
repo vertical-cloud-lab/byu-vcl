@@ -20,6 +20,14 @@ from fitting a camera model to 40 photos of the bare nozzle and a cylinder to
 each vial's outline. Once, a low calibration look pressed the pipette's body
 onto the vials (see LOW_LOOK_MAX_X); nothing moved, and a home recovered Z.
 
+Second run, 2026-09-30 18:10-18:47 MDT: the same vials, unmoved, into a fresh
+plate's front row with empty wells between (yellow H2, red H4, blue H10), tips
+F1-H1, each vial stirred first with ``mix``
+(``results-spaced-wells-2026-09-30.md``). Its first try stopped at the stir
+(see ``mix``), and that tip, E1, went to the trash holding nothing. A loaded tip
+never crossed the plate: it went out to y 2, in front of row H, along it, and
+in. Empty tips went round the tip rack to the trash, via x 250.
+
 Builds on ``tip_cal.py`` (the pick-up and the plate wells, tested 2026-09-29)
 and runs the same way: ON the Pi that holds the robot link, under nohup, one
 step at a time through a command file (``echo 'look 330 50 120' > cmd.tmp &&
@@ -41,6 +49,8 @@ gantry homes.
                               at most --max-down mm down per command, and never
                               below --vial-floor
       prep                    plunger to the bottom, in air above --rim-z
+      mix <n> <uL> [uL/s]     stir the vial: n x (aspirate, dispense back), in place,
+                              only below --rim-z and before the tip holds any paint
       aspirate <uL> [uL/s]    in place, only below --rim-z; <= 250 uL per tip
       well <name> <h>         over plate well <name>, tip end h mm above its rim
                               (tip_cal.py: 5 mm steps down, 1 mm floor clearance)
@@ -221,6 +231,42 @@ class Transfer(TipCal):
         self.log("plunger at the bottom, ready to aspirate")
         self.save_state()
 
+    def mix(self, n, vol, rate):
+        """Stir a standing vial with the tip before drawing from it.
+
+        Watered-down paint settles, and the draw is ~10 mm under the surface
+        (results-paint-accuracy-2026-09-30.md: "stir every vial just before the
+        run"). The same checks as ``aspirate``; it dispenses everything back, so
+        it ends as it started, plunger at the bottom and nothing held.
+
+        Every dispense here says ``pushOut: 0``. Without it, Opentrons 8.8.1
+        treats a dispense that empties the tip as having pushed the plunger
+        past the bottom, and refuses the next aspirate in place
+        (PipetteNotReadyToAspirateError) until a ``prep`` in air -- which is
+        what stopped the first try on 2026-09-30, after one cycle.
+        """
+        if not self.tip:
+            self.refuse("no tip on")
+        if not self.primed:
+            self.refuse("prep first, in air")
+        if self.aspirated:
+            self.refuse("mix before aspirating, with nothing held")
+        if self.pos[2] > self.args.rim_z - 3.0:
+            self.refuse(f"mix only inside a vial, tip end below z {self.args.rim_z - 3.0}")
+        if in_plate(self.pos[0], self.pos[1], self.args.plate_slot):
+            self.refuse("not in the plate")
+        if not 1 <= n <= 5 or not 0 < vol <= MAX_TIP_VOLUME or not 5.0 <= rate <= 92.86:
+            self.refuse(f"1-5 cycles of 0-{MAX_TIP_VOLUME:g} uL at 5-92.86 uL/s")
+        for _ in range(n):
+            self.robot.command("aspirateInPlace", {"pipetteId": self.robot.pipette_id,
+                                                    "volume": vol, "flowRate": rate}, timeout=180)
+            self.robot.command("dispenseInPlace", {"pipetteId": self.robot.pipette_id,
+                                                    "volume": vol, "flowRate": rate,
+                                                    "pushOut": 0}, timeout=180)
+        self.wet = True
+        self.log(f"mixed {n} x {vol:g} uL at {rate:g} uL/s")
+        self.photo(f"mixed{n}x{vol:g}")
+
     def aspirate(self, vol, rate):
         if not self.tip:
             self.refuse("no tip on")
@@ -292,7 +338,8 @@ class Transfer(TipCal):
     # -- the loop ------------------------------------------------------------------
     def prompt(self):
         if self.tip:
-            return ("tip <x> <y> <z> | prep | aspirate <uL> [uL/s] | well <name> <h> | "
+            return ("tip <x> <y> <z> | prep | mix <n> <uL> [uL/s] | aspirate <uL> [uL/s] | "
+                    "well <name> <h> | "
                     "dispense [uL/s] | blowout | wait <s> | up | trash | return | photo")
         return "look <x> <y> <z> | tiphover <well> <h> | pickup | photo | home | quit"
 
@@ -322,6 +369,8 @@ class Transfer(TipCal):
                     self.tip_to(float(cmd[1]), float(cmd[2]), float(cmd[3]))
                 elif op == "prep":
                     self.prep()
+                elif op == "mix":
+                    self.mix(int(cmd[1]), float(cmd[2]), float(cmd[3]) if len(cmd) > 3 else 30.0)
                 elif op == "aspirate":
                     self.aspirate(float(cmd[1]), float(cmd[2]) if len(cmd) > 2 else 30.0)
                 elif op == "well":
