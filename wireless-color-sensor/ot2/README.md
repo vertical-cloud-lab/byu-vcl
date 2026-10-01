@@ -21,6 +21,27 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
+## Standing settings for the colour read (as of 2026-10-01)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
+the read height. Use these unless a later entry below changes them:
+
+| | value | from |
+| --- | --- | --- |
+| **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
+| first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
+| candidate | **z 95–100** (foot ~7–12 mm up) scored best of ten heights on 10-01; z 86.5 scored worst. Confirm on fresh paint before switching | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md) |
+| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch | |
+| enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
+| sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
+| light | rail lights on; the OT-2 blacked out (no measurable room light on 10-01) | |
+
+```
+enclosure_height_cal.py --socket-x 92.8 --socket-y 316.5 --press-z 89.0 --carry-z 125 \
+    --carry-segment 400 --drop-dx 0 --max-speed 3 --no-live --floor 86 --clear-z 90 \
+    --plate-slot 7 --target-x <well x> --target-y 192.24
+```
+
 ## Run it
 
 The script has to run on **the machine with the USB-Ethernet cable to the
@@ -1149,6 +1170,29 @@ three 2026-09-30 runs the same way, against the pigments' published ranges at
   the references (a grey black pushes those values down, a dim white leaves them
   alone): it's light that reaches the colour wells and not the black well. Next is
   unchanged: black paper under the plate, then 200 µL in every well.
+
+## 2026-10-01 (afternoon) — six wells at ten heights: resting on the plate is the least accurate height
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to try the
+read height, gain and reading time. Write-up in
+[`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md); data in
+[`height-series-2026-10-01.json`](height-series-2026-10-01.json), scored by
+[`analyse_height_series.py`](analyse_height_series.py). One pick-up from A2, one carry,
+no slip, released seated. The plate had been moved to **slot 7**, so the driver gained
+`--plate-slot`.
+
+- **Height is the biggest lever, and contact is the worst place.** With each height's
+  own white and black as references, the mean miss is 0.12 at z 100 and 0.92 at
+  z 86.5. In contact the empty well and the colours read brighter than the white:
+  the light reaching the well comes up through the clear plate, which white paint
+  blocks.
+- **Landing again on the same well changed the reading by 12%**; one landing repeats
+  to 0.04–0.12%. The landing is now the largest error.
+- **The blackout works:** rail lights off, the reading is just the board's own lamp.
+- **Gain and integration time are fixed in the firmware, and the gain was never set:**
+  the chip runs at its 256x default. [`../pico/`](../pico/) makes both settable per
+  reading over MQTT; it needs one USB visit to flash.
+- The paints were ~19 h old. Confirm on fresh paint before moving the read height.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
