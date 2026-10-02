@@ -75,6 +75,16 @@
    "file": "iso-13655-2017-preview.pdf",
    "url": "https://standards.iteh.ai/catalog/standards/sist/960e390f-2252-4af2-bbd1-167266af6cc0/iso-13655-2017",
    "title": "ISO 13655:2017 (free preview pages)"
+  },
+  "ISO18314-1": {
+   "file": "iso-18314-1-2015-preview.pdf",
+   "url": "https://standards.iteh.ai/catalog/standards/sist/0f146362-4c3a-4d22-9ac1-584728b0d5ee/iso-18314-1-2015",
+   "title": "ISO 18314-1:2015 Analytical colorimetry - Part 1: Practical colour measurement (free preview pages)"
+  },
+  "NIH-AGM": {
+   "file": "nih-agm-NBK558077.html",
+   "url": "https://www.ncbi.nlm.nih.gov/books/NBK558077/",
+   "title": "Auld DS et al., Microplate Selection and Recommended Practices in High-throughput Screening and Quantitative Biology, Assay Guidance Manual (NIH/NCATS), 2020"
   }
  },
  "quotes": [
@@ -509,6 +519,84 @@
    "source": "AN001054",
    "where": "§4",
    "quote": "with a thickness of 250 micrometers"
+  },
+  {
+   "id": "iso18314-black",
+   "source": "ISO18314-1",
+   "where": "§5.4",
+   "quote": "A black calibration standard is a standard which has low to no reflectance (for example a black light trap)."
+  },
+  {
+   "id": "iso18314-zero",
+   "source": "ISO18314-1",
+   "where": "§5.4",
+   "quote": "Black calibration is used to establish a known zero point for the instrument."
+  },
+  {
+   "id": "iso18314-white",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "It has reflectance values that are traceable to a national standard."
+  },
+  {
+   "id": "iso18314-durable",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "The white standard is made of a durable material, like ceramic, glass, or enamel."
+  },
+  {
+   "id": "iso18314-repeat",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "When performing extended measurement series and/or under strongly varying environmental conditions (for example temperature) the white calibration shall be repeated in regular intervals."
+  },
+  {
+   "id": "iso18314-control",
+   "source": "ISO18314-1",
+   "where": "§5.5",
+   "quote": "After certain time intervals it is recommended to verify the accuracy of the measurements through the use of coloured control standards."
+  },
+  {
+   "id": "iso18314-notwhite",
+   "source": "ISO18314-1",
+   "where": "§5.5",
+   "quote": "The white calibration standard may not be used for control measurements."
+  },
+  {
+   "id": "nih-clear",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "Clear microplates are typically used for absorbance (colorimetric)-based readouts."
+  },
+  {
+   "id": "nih-white",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "can reduce well-to-well crosstalk, while enhancing the luminescence signal by better reflecting the light."
+  },
+  {
+   "id": "nih-black",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "the black color (often from carbon) can reduce well-to-well crosstalk"
+  },
+  {
+   "id": "nih-suboptimal",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "Suboptimal choice of microplate color will often manifest as [1] lower signal-to-background ratios compared to the optimal microplate color, and/or [2] well-to-well crosstalk when highly active and inactive samples are adjacent to one another."
+  },
+  {
+   "id": "nih-white-hue",
+   "source": "NIH-AGM",
+   "where": "Microplate selection",
+   "quote": "the color of white is not standardized in opaque microplates and there are blue-white and grey-white hues"
+  },
+  {
+   "id": "nih-menisci",
+   "source": "NIH-AGM",
+   "where": "Centrifugation",
+   "quote": "centrifugation will increase variability by creating uneven menisci across the microplate"
   }
  ]
 }
