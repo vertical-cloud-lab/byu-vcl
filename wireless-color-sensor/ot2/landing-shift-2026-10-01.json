@@ -1,0 +1,509 @@
+{
+ "what": "enclosure shift on the nozzle at each landing of the 2026-10-01 height series, from robot-camera photos at z 125 before and after; and the light at the two H12 landings",
+ "px_per_mm_up": [
+  0.518,
+  -0.664
+ ],
+ "landings": [
+  {
+   "well": "H12",
+   "paint": "white",
+   "photos": [
+    "22_over_plate_z125",
+    "34_z125"
+   ],
+   "enclosure_offset_px": [
+    0,
+    0
+   ],
+   "match": 1.0,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      -0.19,
+      -0.022
+     ],
+     "mm_up": -0.12,
+     "off_axis_px": 0.16
+    },
+    "enclosure top": {
+     "shift_px": [
+      -0.001,
+      -0.026
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.02
+    },
+    "nozzle": {
+     "shift_px": [
+      0.081,
+      0.006
+     ],
+     "mm_up": 0.05,
+     "off_axis_px": 0.07
+    },
+    "tip rack": {
+     "shift_px": [
+      0.006,
+      -0.026
+     ],
+     "mm_up": 0.03,
+     "off_axis_px": 0.01
+    },
+    "deck": {
+     "shift_px": [
+      -0.006,
+      -0.015
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.01
+    }
+   }
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "photos": [
+    "35_xy95.38_192.24",
+    "47_z125"
+   ],
+   "enclosure_offset_px": [
+    -20,
+    -2
+   ],
+   "match": 0.78,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      0.359,
+      -0.657
+     ],
+     "mm_up": 0.88,
+     "off_axis_px": 0.12
+    },
+    "enclosure top": {
+     "shift_px": [
+      0.245,
+      -0.394
+     ],
+     "mm_up": 0.55,
+     "off_axis_px": 0.05
+    },
+    "nozzle": {
+     "shift_px": [
+      0.086,
+      -0.091
+     ],
+     "mm_up": 0.15,
+     "off_axis_px": 0.01
+    },
+    "tip rack": {
+     "shift_px": [
+      0.008,
+      -0.018
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.0
+    },
+    "deck": {
+     "shift_px": [
+      -0.006,
+      -0.015
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.01
+    }
+   }
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "photos": [
+    "48_xy68.38_192.24",
+    "58_z125"
+   ],
+   "enclosure_offset_px": [
+    -53,
+    -5
+   ],
+   "match": 0.68,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      -0.002,
+      -0.005
+     ],
+     "mm_up": 0.0,
+     "off_axis_px": 0.0
+    },
+    "enclosure top": {
+     "shift_px": [
+      -0.018,
+      -0.012
+     ],
+     "mm_up": -0.0,
+     "off_axis_px": 0.02
+    },
+    "nozzle": {
+     "shift_px": [
+      -0.015,
+      -0.014
+     ],
+     "mm_up": 0.0,
+     "off_axis_px": 0.02
+    },
+    "tip rack": {
+     "shift_px": [
+      0.016,
+      -0.012
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.01
+    },
+    "deck": {
+     "shift_px": [
+      0.005,
+      -0.008
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.0
+    }
+   }
+  },
+  {
+   "well": "H5",
+   "paint": "empty",
+   "photos": [
+    "59_xy50.38_192.24",
+    "69_z125"
+   ],
+   "enclosure_offset_px": [
+    -77,
+    -6
+   ],
+   "match": 0.63,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      -0.018,
+      -0.021
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.03
+    },
+    "enclosure top": {
+     "shift_px": [
+      -0.01,
+      -0.028
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.03
+    },
+    "nozzle": {
+     "shift_px": [
+      -0.009,
+      -0.036
+     ],
+     "mm_up": 0.03,
+     "off_axis_px": 0.03
+    },
+    "tip rack": {
+     "shift_px": [
+      0.009,
+      -0.009
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.0
+    },
+    "deck": {
+     "shift_px": [
+      0.001,
+      -0.007
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.0
+    }
+   }
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "photos": [
+    "70_xy41.38_192.24",
+    "80_z125"
+   ],
+   "enclosure_offset_px": [
+    -89,
+    -9
+   ],
+   "match": 0.57,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      -0.016,
+      -0.008
+     ],
+     "mm_up": -0.0,
+     "off_axis_px": 0.02
+    },
+    "enclosure top": {
+     "shift_px": [
+      -0.02,
+      -0.02
+     ],
+     "mm_up": 0.0,
+     "off_axis_px": 0.03
+    },
+    "nozzle": {
+     "shift_px": [
+      -0.011,
+      -0.036
+     ],
+     "mm_up": 0.03,
+     "off_axis_px": 0.03
+    },
+    "tip rack": {
+     "shift_px": [
+      0.01,
+      -0.011
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.0
+    },
+    "deck": {
+     "shift_px": [
+      0.002,
+      -0.007
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.0
+    }
+   }
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "photos": [
+    "81_xy23.38_192.24",
+    "91_z125"
+   ],
+   "enclosure_offset_px": [
+    -115,
+    -11
+   ],
+   "match": 0.47,
+   "parts": {
+    "enclosure front": {
+     "shift_px": [
+      -0.011,
+      -0.0
+     ],
+     "mm_up": -0.01,
+     "off_axis_px": 0.01
+    },
+    "enclosure top": {
+     "shift_px": [
+      -0.013,
+      -0.033
+     ],
+     "mm_up": 0.02,
+     "off_axis_px": 0.03
+    },
+    "nozzle": {
+     "shift_px": [
+      -0.002,
+      -0.012
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.01
+    },
+    "tip rack": {
+     "shift_px": [
+      0.007,
+      -0.007
+     ],
+     "mm_up": 0.01,
+     "off_axis_px": 0.0
+    },
+    "deck": {
+     "shift_px": [
+      -0.0,
+      -0.004
+     ],
+     "mm_up": 0.0,
+     "off_axis_px": 0.0
+    }
+   }
+  }
+ ],
+ "h12_first_to_second_visit_z125": {
+  "enclosure front": {
+   "shift_px": [
+    0.161,
+    -0.716
+   ],
+   "mm_up": 0.79,
+   "off_axis_px": 0.31
+  },
+  "enclosure top": {
+   "shift_px": [
+    0.24,
+    -0.496
+   ],
+   "mm_up": 0.64,
+   "off_axis_px": 0.12
+  },
+  "nozzle": {
+   "shift_px": [
+    0.156,
+    -0.214
+   ],
+   "mm_up": 0.31,
+   "off_axis_px": 0.01
+  },
+  "tip rack": {
+   "shift_px": [
+    0.049,
+    -0.076
+   ],
+   "mm_up": 0.11,
+   "off_axis_px": 0.01
+  },
+  "deck": {
+   "shift_px": [
+    -0.015,
+    -0.054
+   ],
+   "mm_up": 0.04,
+   "off_axis_px": 0.04
+  }
+ },
+ "light": {
+  "first_landing_total_86.5": 5727,
+  "second_landing_total_86.5": 6434,
+  "second_landing_equals_first_visit_at_z": 88.98,
+  "second_visit_equivalent_first_visit_z": {
+   "86.5": 88.98,
+   "87.0": 89.01,
+   "88.0": 89.15,
+   "89.0": 89.84,
+   "90.0": 90.85,
+   "125.0": 121.28
+  },
+  "second_86.5_over_first_89_per_channel": [
+   1.007,
+   0.997,
+   0.997,
+   1.005,
+   1.001,
+   0.996,
+   0.996,
+   0.996
+  ],
+  "percent_more_light_than_first_landing": {
+   "second landing, z 86.5": [
+    14.5,
+    24.1,
+    17.3,
+    14.8,
+    13.3,
+    12.6,
+    9.9,
+    6.4
+   ],
+   "first visit, z 88": [
+    3.6,
+    5.8,
+    4.6,
+    3.8,
+    3.7,
+    3.7,
+    3.1,
+    2.2
+   ],
+   "first visit, z 89": [
+    13.7,
+    24.4,
+    17.6,
+    14.1,
+    13.2,
+    13.1,
+    10.3,
+    6.8
+   ],
+   "first visit, z 90": [
+    22.6,
+    42.7,
+    29.6,
+    22.7,
+    21.0,
+    20.8,
+    16.5,
+    10.9
+   ]
+  },
+  "rescored": {
+   "90.0": {
+    "first": {
+     "miss": 0.365,
+     "black_reads": 0.53,
+     "brighter_than_white_of_21": 7
+    },
+    "second": {
+     "miss": 0.269,
+     "black_reads": 0.45,
+     "brighter_than_white_of_21": 4
+    }
+   },
+   "89.0": {
+    "first": {
+     "miss": 0.484,
+     "black_reads": 0.64,
+     "brighter_than_white_of_21": 9
+    },
+    "second": {
+     "miss": 0.344,
+     "black_reads": 0.52,
+     "brighter_than_white_of_21": 5
+    }
+   },
+   "88.0": {
+    "first": {
+     "miss": 0.763,
+     "black_reads": 0.89,
+     "brighter_than_white_of_21": 14
+    },
+    "second": {
+     "miss": 0.426,
+     "black_reads": 0.59,
+     "brighter_than_white_of_21": 8
+    }
+   },
+   "87.0": {
+    "first": {
+     "miss": 0.912,
+     "black_reads": 1.03,
+     "brighter_than_white_of_21": 15
+    },
+    "second": {
+     "miss": 0.441,
+     "black_reads": 0.6,
+     "brighter_than_white_of_21": 8
+    }
+   },
+   "86.5": {
+    "first": {
+     "miss": 0.92,
+     "black_reads": 1.04,
+     "brighter_than_white_of_21": 16
+    },
+    "second": {
+     "miss": 0.442,
+     "black_reads": 0.6,
+     "brighter_than_white_of_21": 8
+    }
+   }
+  },
+  "order_note": "white H12 1st landing 13:51 (before the shift); blue H10 13:55 (during the landing that shifted it); black H7, empty H5, red H4, yellow H2 13:58-14:04 and white H12 again 14:06 (after)"
+ }
+}
