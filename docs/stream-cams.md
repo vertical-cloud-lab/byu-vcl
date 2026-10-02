@@ -13,7 +13,7 @@ in this repo. This page records what is set and what has been changed.
 | --- | --- |
 | Pi | Raspberry Pi Zero 2 W behind `OT2_STREAM_CAM_HOSTNAME` (user `OT2_STREAM_CAM_USERNAME`, sudo password `OT2_STREAM_CAM_PASSWORD`), Camera Module 3 (imx708), Debian 13 |
 | Points at | the atomizer room, as of 2026-10-01, **not the OT-2**. It streams as `CAM_NAME = "picam-ot2"` and `WORKFLOW_NAME = "atomizer"`, so broadcasts are titled *atomizer stream picam-ot2, …* and go into the [*atomizer Livestreams Playlist*](https://www.youtube.com/playlist?list=PLeosQpHvsjiY) (`PLeosQpHvsjiY`). Until 2026-10-01 17:38 MDT the workflow was `OT-2`, whose broadcasts the Lambda files into the *OT-2 Livestreams Playlist* (`PLdKz1vXA-rfQ`). The robot itself is cabled to the Pi behind `RPI_STREAM_CAM_HOSTNAME` ([`wireless-color-sensor/ot2/README.md`](../wireless-color-sensor/ot2/README.md#run-it)) |
-| Client | `~/ac-training-lab/src/ac_training_lab/picam/device.py`, upstream `87a3ccb` plus a local patch, run by `device.service`. The patch adds `SENSOR_MODE`, and on the libx264 path a 2 s keyframe interval and (since 2026-10-01) `-r FRAME_RATE`. The file as it was before the `-r` change is `~/device.py.bak-2026-10-01` |
+| Client | `~/ac-training-lab/src/ac_training_lab/picam/device.py`, upstream `87a3ccb` plus a local patch, run by `device.service`. The patch adds `SENSOR_MODE`, and on the libx264 path a 2 s keyframe interval and (since 2026-10-01) `-r FRAME_RATE`. Since 2026-10-01 18:52 it also passes `--flush` to `rpicam-vid` and `-flags low_delay` to ffmpeg's video input; see [The overlay that skipped seconds](#the-overlay-that-skipped-seconds). The file before the `-r` change is `~/device.py.bak-2026-10-01`, and before the `--flush` change `~/device.py.bak-2026-10-01-flush` |
 | Settings | `my_secrets.py` in the same directory, mode `600`. It also holds the Lambda URL, so read individual lines rather than `cat` it |
 | Watchdog | `stream-watchdog.timer` runs `/usr/local/bin/stream-watchdog.sh` every minute. It restarts `device.service` after 3 checks in a row with no RTMP bytes acknowledged, at most 6 times a day by default |
 | Reboots | root crontab, `0 5,13,21 * * *`. Each boot starts a fresh broadcast from whatever `my_secrets.py` says |
@@ -24,7 +24,7 @@ in this repo. This page records what is set and what has been changed.
 | --- | --- |
 | `CAM_NAME` | `"picam-ot2"` |
 | `WORKFLOW_NAME` | `"atomizer"`. Was `"OT-2"` until 2026-10-01, see [Renaming the workflow](#renaming-the-workflow) |
-| `RESOLUTION` | `"240p"` (426×240). Was `"720p"` until 2026-10-01, see [Change log](#change-log) |
+| `RESOLUTION` | `"144p"` (256×144). Was `"720p"` until 2026-10-01 17:01 and `"240p"` until 18:52, see [Change log](#change-log) |
 | `FRAME_RATE` | `2`. Was `10` until 2026-10-01 |
 | `SENSOR_MODE` | `"2304:1296"`, the full-field binned imx708 mode. Without it the sensor picks a cropped mode for small outputs |
 | `TIMESTAMP_OVERLAY` | `True`: lab local time, top left. This also forces the libx264 re-encode |
@@ -39,7 +39,7 @@ Edit the one line, then restart once:
 ```bash
 ssh "$OT2_STREAM_CAM_USERNAME@$OT2_STREAM_CAM_HOSTNAME" \
   'cd ~/ac-training-lab/src/ac_training_lab/picam &&
-   sed -i "s/^RESOLUTION = .*/RESOLUTION = \"240p\"/" my_secrets.py &&
+   sed -i "s/^RESOLUTION = .*/RESOLUTION = \"144p\"/" my_secrets.py &&
    grep -n "^RESOLUTION" my_secrets.py &&
    sudo -S -p "" systemctl restart device.service' <<< "$OT2_STREAM_CAM_PASSWORD"
 ```
@@ -52,7 +52,8 @@ zeroes that count, if a third restart within the hour can't wait. If systemd doe
 watchdog starts the unit again after 10 minutes.
 
 `RESOLUTION` accepts `144p`, `240p`, `360p`, `480p`, `720p` and `1080p`. The overlay font
-scales as `max(16, height // 20)`: 36 px at 720p, 16 px at 240p.
+scales as `max(16, height // 20)`: 36 px at 720p, 16 px at 240p and 144p. At 144p the
+timestamp's box covers about three quarters of the frame's width.
 
 **Read the `Output #0` line after changing `FRAME_RATE`.** ffmpeg takes its output rate from
 its own estimate of the piped input's rate (the `tbr` on the `Input #1` line), and at low rates
@@ -103,6 +104,7 @@ That has two consequences for a rename:
 | 2026-10-01 17:01 | `RESOLUTION` `"720p"` → `"240p"`, then one restart of `device.service` | [#250](https://github.com/vertical-cloud-lab/byu-vcl/issues/250) |
 | 2026-10-01 17:38 | `WORKFLOW_NAME` `"OT-2"` → `"Atomizer"` and `FRAME_RATE` `10` → `2`. Stopped the service, ended the OT-2 broadcast `KhqPemW8hhc` [by hand](#renaming-the-workflow), started it | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5942678722) |
 | 2026-10-01 17:44 | `WORKFLOW_NAME` `"Atomizer"` → `"atomizer"`, to match the existing playlist's title and `powder doser`. `device.py` gains `-r FRAME_RATE`. `reset-failed`, then one restart | ffmpeg was sending 1.5 fps, see [above](#changing-a-setting) |
+| 2026-10-01 18:52 | `RESOLUTION` `"240p"` → `"144p"`. `device.py` gains `rpicam-vid --flush` and ffmpeg `-flags low_delay`. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5943385687): 144p, and the overlay was jumping several seconds at a time |
 
 #### 720p → 240p
 
@@ -149,9 +151,13 @@ and the 2 fps ones over its first 3:
 Upload falls less than the frame rate does because the keyframe interval stays at 2 s, so at
 2 fps one frame in four is a keyframe. ffmpeg's own counter read 439 frames in 219.5 s,
 i.e. 2.0 fps. YouTube still serves 30 fps renditions (`229` and `269`), and repeats each
-picture to fill them. Comparing consecutive decoded frames over 16 s of `229` showed a new
-picture every 15 frames (0.5 s), with an occasional one held for a full second. The watchdog
-logged no failed checks after either restart.
+picture to fill them. The watchdog logged no failed checks after either restart.
+
+That 2.0 fps was not 2 new pictures a second. ffmpeg met its rate by repeating frames, and the
+overlay jumped 3–4 s at a time; see [The overlay that skipped seconds](#the-overlay-that-skipped-seconds).
+A check made at the time compared consecutive decoded frames from YouTube and reported a new
+picture every 0.5 s. It was wrong: re-encoding makes a repeated picture differ slightly from the
+last, so comparing pixels cannot tell a repeat from a new frame. Reading the overlay can.
 
 The intermediate broadcast [`TZ79Tej1hHY`](https://www.youtube.com/watch?v=TZ79Tej1hHY)
 (17:38–17:44, titled *Atomizer …*) is the one that went out at 1.5 fps.
@@ -168,15 +174,88 @@ it has nothing left to move.
 
 **The archive tooling assumes 720p.** `wireless-color-sensor/ot2/stream_grab_pi.py` asks
 yt-dlp for format `232` (720p), and so does `~/ytframes/grab.py` on the other stream-cam Pi.
-Broadcasts from this camera after 2026-10-01 23:01 UTC do not have that format, and their top
-rendition is `229`. `frames_from_stream.py`'s `OVERLAY_CROP` likewise assumes the size of the
-720p overlay. Both still work on the earlier 720p archives, such as the 2026-09-09 colour
-session. At 2 fps a frame grabbed at a given offset can be up to 0.5 s old. The overlay
-still shows its true time.
+Broadcasts from this camera after 2026-10-01 23:01 UTC do not have that format. Their top
+rendition is `229` (426×240), which after 2026-10-02 00:53 UTC is YouTube's upscale of the
+144p feed; `269` (256×144) is the native one. `frames_from_stream.py`'s `OVERLAY_CROP` likewise
+assumes the size of the 720p overlay. Both still work on the earlier 720p archives, such as the
+2026-09-09 colour session. At 2 fps a frame grabbed at a given offset can be up to 0.5 s old,
+and on this camera's 2 fps broadcasts before 2026-10-02 00:53 UTC the overlay is not a
+reliable clock.
+
+#### 240p → 144p
+
+Both columns are at 2 fps under `atomizer`, and both were measured the same way, over 60 s,
+about an hour into the 240p pipeline and 2 minutes into the 144p one:
+
+| | 240p (before) | 144p (after) |
+| --- | --- | --- |
+| ffmpeg output | 426×240, 2 fps | 256×144, 2 fps |
+| ffmpeg CPU (of 400 %) | 12.3 % | 9.5 % |
+| `rpicam-vid` CPU | 1.1 % | 1.1 % |
+| ffmpeg memory (RSS) | 67 MB | 61 MB |
+| SoC temperature | 46.0 °C | 45.8 °C |
+| Upload to YouTube | 0.18 Mbit/s | 0.07 Mbit/s |
+| Renditions YouTube serves | `229` (426×240), `269` (256×144) | the same two; `229` is now an upscale |
+| Broadcast | [`Lf4QFrrJ-lA`](https://www.youtube.com/watch?v=Lf4QFrrJ-lA) (ended by the restart) | [`osNAv6qmots`](https://www.youtube.com/watch?v=osNAv6qmots) |
+
+The 144p column also has `--flush` and `low_delay`, described next. Neither adds work:
+`--flush` changes when the camera's output leaves, and `low_delay` how ffmpeg schedules decoding.
+
+![144p frame of the atomizer room, from YouTube's 269 rendition](images/stream-cam-picam-ot2-144p-2026-10-01.jpg)
+
+#### The overlay that skipped seconds
+
+At 2 fps the overlay stood still for 3–4 s and then jumped. In 60 s of the live 240p rendition,
+read frame by frame with tesseract, it showed 21 distinct times; 15 of the 20 steps between
+them were 3 or 4 s. In 60 s at 144p after the fix it shows every second, about 2 frames each.
+
+**Cause: `rpicam-vid` buffered its output.** With `-o -` it `fwrite`s each frame to stdout,
+and stdout into a pipe is block-buffered unless `--flush` is given: nothing reaches ffmpeg
+until 4 KB has piled up. At 240p and 2 fps a P-frame was about 700 bytes, so ffmpeg read 4096
+bytes every 2.5–3.5 s, about six frames at once (read from `/proc/<pid>/io` over 20 s).
+
+- drawtext's `localtime` is the wall clock when a frame passes the filter, not when the
+  camera took it. Every frame of a batch got the same second, and the clock jumped by the gap.
+- `-use_wallclock_as_timestamps` likewise gave a batch one timestamp, so `-vsync cfr` kept one
+  frame per output slot and filled the empty slots with copies. Over the 68 minutes of the
+  2 fps, 240p pipeline, ffmpeg dropped 2,892 of the camera's frames and duplicated 2,893 to
+  replace them, about a third of everything. The picture froze along with the clock.
+
+It never showed before because bigger frames fill the buffer sooner: at 720p one frame is more
+than 4 KB, and at 10 fps a batch spans less than a second. At 144p a P-frame is about 100 bytes,
+so without the fix a batch would have been about 40 frames, or 20 s.
+
+**Fix: `--flush`, plus `-flags low_delay`.** `--flush` makes `rpicam-vid` flush after every
+frame. On its own that stops the jumps but leaves the overlay late, because ffmpeg's H.264
+decoder runs 5 frame threads on 4 cores and holds back 4 frames. `-flags low_delay`, as an
+input option, turns frame threading off. What remains is one frame, since ffmpeg's parser
+must see the start of the next frame before it can pass one on. Offline, a copy of this
+pipeline (ffmpeg 7.1.5, as on the Pi) was fed 2 fps 256×144 H.264 frames of about 650 bytes
+on a 4-core runner, and timed each frame from its write to the filter:
+
+| `rpicam-vid` output | Overlay late by | Seconds skipped |
+| --- | --- | --- |
+| buffered (4 KB), as before | 2.5–5.5 s, varying | 6 of 10 |
+| `--flush` | 2.50 s (5 frames) | none |
+| `--flush` + `low_delay` | 0.50 s (1 frame) | none |
+
+`-threads 1` in place of `low_delay` measured the same. On the Pi, ffmpeg now reads from the
+pipe every 0.49–0.51 s, 40 times in 20 s.
+
+The overlay now trails the moment the camera took the frame by about one frame: 0.5 s at
+2 fps. Earlier archives trailed by about 5 frames (1 for the parser, 4 for the decoder
+threads), which at 10 fps is about 0.5 s. That is inferred from the same mechanism, not
+measured on those archives.
+
+`rpicam-vid`'s own log goes into the video pipe, not the journal. `device.py` starts it with
+`stderr=subprocess.STDOUT`, which joins its stderr to the stdout that feeds ffmpeg. That is
+why the journal has no camera messages. ffmpeg's H.264 parser skips text between frames, and
+the journal shows no decode errors since 17:44.
 
 **Not yet observed:** a scheduled reboot after these changes. The first is at 21:00 MDT on
-2026-10-01. It should come back as `atomizer` at 240p and 2 fps, since all three are in the
-file, but nobody has watched one do so yet.
+2026-10-01. It should come back as `atomizer` at 144p and 2 fps, with the flush fix, since
+the settings are in `my_secrets.py` and the fix is in `device.py`, but nobody has watched one
+do so yet.
 
 Older records for this Pi are not on `main` yet:
 
