@@ -1,0 +1,6 @@
+[Unit]
+Description=Restart picam stream if RTMP output stalls
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/stream-watchdog.sh

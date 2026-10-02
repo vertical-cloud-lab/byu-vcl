@@ -1,0 +1,1071 @@
+{
+ "what": "quotations in accuracy-sources-2026-10-02.md, for check_quotes.py",
+ "sources": {
+  "DS000504": {
+   "file": "AS7341-DS000504.pdf",
+   "url": "https://look.ams-osram.com/m/24266a3e584de4db/original/AS7341-DS000504.pdf",
+   "title": "ams OSRAM AS7341 datasheet DS000504 v3-00, 2020-06-25"
+  },
+  "AN001054": {
+   "file": "AS7341-Details-for-Optomechanical-Design.pdf",
+   "url": "https://look.ams-osram.com/m/436a32f63ba06bad/original/AS7341-Details-for-Optomechanical-Design.pdf",
+   "title": "ams OSRAM AN001054 v1-00, 2022-09-21, AS7341 Details for Optomechanical Design"
+  },
+  "AN000633": {
+   "file": "Spectral-Sensor-Calibration-Methods.pdf",
+   "url": "https://look.ams-osram.com/m/269928fe0dba7511/original/Spectral-Sensor-Calibration-Methods.pdf",
+   "title": "ams OSRAM AN000633 v2-00, 2021-05-20, Spectral Sensor Calibration Methods"
+  },
+  "UG000400": {
+   "file": "AS7341_UG000400_6-00.pdf",
+   "url": "https://look.ams-osram.com/m/2a3e700eb3b0a0cf/original/AS7341_UG000400_6-00.pdf",
+   "title": "ams OSRAM UG000400 v6-00, 2022-09-08, AS7341 Evaluation Kit user guide"
+  },
+  "QG000121": {
+   "file": "SpectralSensing_QG000121_2-00.pdf",
+   "url": "https://look.ams-osram.com/m/dfeb820072a6e472/original/SpectralSensing_QG000121_2-00.pdf",
+   "title": "ams OSRAM QG000121 v2-00, 2021-01-11, miniLiquid - Measurement in Liquids"
+  },
+  "AN000660": {
+   "file": "AS7341-Demo-for-Fast-Measurement-Using-Unicom-Board.pdf",
+   "url": "https://look.ams-osram.com/m/7dd996b7759236a3/original/AS7341-Demo-for-Fast-Measurement-Using-Unicom-Board.pdf",
+   "title": "ams OSRAM AN000660 v1-00, 2019-12-09"
+  },
+  "QG000139": {
+   "file": "AS7341_QG000139_1-00.pdf",
+   "url": "https://ams-osram.com/o/download-server/document-download/download/29941181 (FastDemo evaluation software zip, Documents/AS7341_QG000139_1-00.pdf)",
+   "title": "ams OSRAM QG000139 v1-00, AS734x Eval Kit - Spectral Balance and Calibration"
+  },
+  "AN000666": {
+   "file": "AS7341_AN000666_1-01.pdf",
+   "url": "https://ams-osram.com/o/download-server/document-download/download/29941159 (ALS evaluation software zip, Documents/application notes/SMUX/)",
+   "title": "ams OSRAM AN000666 v1-01, 2021-03-15, SMUX Configuration"
+  },
+  "CHIPLIB": {
+   "file": "as7341_chiplib_docu_v0.10.1.pdf",
+   "url": "https://ams-osram.com/o/download-server/document-download/download/29941159 (ALS evaluation software zip, Documents/application notes/firmware/chiplib/general chip_lib plus rpc/)",
+   "title": "ams OSRAM AS7341 ChipLib documentation v0.10.1"
+  },
+  "REVVITY": {
+   "file": "gde-selecting-a-mircoplate.pdf",
+   "url": "https://resources.revvity.com/pdfs/gde-selecting-a-mircoplate.pdf",
+   "title": "Revvity, Guide to selecting a microplate"
+  },
+  "CORNING": {
+   "file": "corning-microplate-selection-guide.pdf",
+   "url": "https://www.fishersci.com/content/dam/fssite/north-america/us/documents/brands/c/corning/corning-microplate-selection-guide.pdf",
+   "title": "Corning Microplate Selection Guide, CLS-MP-014 REV7"
+  },
+  "ADAFRUIT": {
+   "file": "adafruit-product-4698.html",
+   "url": "https://www.adafruit.com/product/4698",
+   "title": "Adafruit AS7341 breakout, product 4698"
+  },
+  "LIQUITEX-MARS": {
+   "file": "liquitex-basics-mars-black.html",
+   "url": "https://www.liquitex.com/products/basics-acrylic-color-mars-black",
+   "title": "Liquitex BASICS Mars Black"
+  },
+  "LIQUITEX-WHITE": {
+   "file": "liquitex-basics-titanium-white.html",
+   "url": "https://www.liquitex.com/products/basics-acrylic-color-titanium-white",
+   "title": "Liquitex BASICS Titanium White"
+  },
+  "ISO13655": {
+   "file": "iso-13655-2017-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/65430/dac5ec12152e4ed788d2ba4b4c234ba0/ISO-13655-2017.pdf",
+   "title": "ISO 13655:2017 (free preview pages)"
+  },
+  "ISO18314-1": {
+   "file": "iso-18314-1-2015-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/62103/f16f626869b0488ba27387bd3f1030f4/ISO-18314-1-2015.pdf",
+   "title": "ISO 18314-1:2015 Analytical colorimetry - Part 1: Practical colour measurement (free preview pages)"
+  },
+  "NIH-AGM": {
+   "file": "nih-agm-NBK558077.html",
+   "url": "https://www.ncbi.nlm.nih.gov/books/NBK558077/",
+   "title": "Auld DS et al., Microplate Selection and Recommended Practices in High-throughput Screening and Quantitative Biology, Assay Guidance Manual (NIH/NCATS), 2020"
+  },
+  "NPL-GPG96": {
+   "file": "npl-gpg96.pdf",
+   "url": "https://eprintspublications.npl.co.uk/3656/1/mgpg96.pdf",
+   "title": "Clarke PJ, Surface Colour Measurement, NPL Measurement Good Practice Guide No. 96, National Physical Laboratory (UK), 2006"
+  },
+  "NPL-GPG95": {
+   "file": "npl-gpg95.pdf",
+   "url": "https://eprintspublications.npl.co.uk/3657/1/mgpg95.pdf",
+   "title": "Gardner JL, Uncertainties in Surface Colour Measurements, NPL Measurement Good Practice Guide No. 95, 2006"
+  },
+  "ISO5-4": {
+   "file": "iso-5-4-2009-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/52916/3f6c3dabfed344cda644b3062133c320/ISO-5-4-2009.pdf",
+   "title": "ISO 5-4:2009 Photography and graphic technology - Density measurements - Part 4: Geometric conditions for reflection density (free preview pages)"
+  },
+  "ISO2469": {
+   "file": "iso-2469-2014-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/51631/99309489d17e42a68151a1392d5e6131/ISO-2469-2014.pdf",
+   "title": "ISO 2469:2014 Paper, board and pulps - Measurement of diffuse radiance factor (free preview pages)"
+  },
+  "NIST-BOOK": {
+   "file": "nist-germer-2014-spectrophotometry.pdf",
+   "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=915098",
+   "title": "Germer TA, Zwinkels JC, Tsai BK (eds.), Spectrophotometry: Accurate Measurement of Optical Properties of Materials, Experimental Methods in the Physical Sciences 46, Academic Press 2014 (via NIST)"
+  },
+  "BESOZZI2026": {
+   "file": "besozzi-2026-actaimeko.pdf",
+   "url": "https://doi.org/10.21014/actaimeko.v15i2.2267",
+   "title": "Besozzi et al. 2026, ACTA IMEKO 15(2)"
+  },
+  "KLUEPPEL2026-IEEE": {
+   "file": "klueppel-2026-ieee-sensors.pdf",
+   "url": "https://doi.org/10.1109/jsen.2026.3711363",
+   "title": "Klueppel et al. 2026, IEEE Sensors Journal"
+  },
+  "KLUEPPEL2026-MEAS": {
+   "file": "klueppel-2026-measurement.pdf",
+   "url": "https://doi.org/10.1016/j.measurement.2026.120734",
+   "title": "Klueppel et al. 2026, Measurement 270:120734"
+  },
+  "RODRIGUEZ2025": {
+   "file": "rodriguez-2025-sensors.xml",
+   "url": "https://doi.org/10.3390/s25237269",
+   "title": "Rodriguez et al. 2025, Sensors 25:7269 (PMC full-text XML)"
+  },
+  "BOTERO2024": {
+   "file": "botero-valencia-2024-instruments.pdf",
+   "url": "https://doi.org/10.3390/instruments8010024",
+   "title": "Botero-Valencia et al. 2024, Instruments 8:24"
+  },
+  "CRIVELLARO2024": {
+   "file": "crivellaro-2024-sensors.xml",
+   "url": "https://doi.org/10.3390/s24186154",
+   "title": "Crivellaro et al. 2024, Sensors 24:6154 (PMC full-text XML)"
+  },
+  "ZAINUDDIN2026": {
+   "file": "zainuddin-2026-engj.pdf",
+   "url": "https://doi.org/10.4186/ej.2026.30.8.81",
+   "title": "Zainuddin et al. 2026, Engineering Journal 30(8)"
+  },
+  "MACHADO2024": {
+   "file": "machado-2024-anal-methods-abstract.txt",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39555593/",
+   "title": "Machado et al. 2024, Anal. Methods 16:8427 (PubMed abstract)"
+  },
+  "SAMEC2024": {
+   "file": "samec-2024-sensors.xml",
+   "url": "https://doi.org/10.3390/s24248208",
+   "title": "Samec et al. 2024, Sensors 24:8208 (PMC full-text XML)"
+  },
+  "BAIRD2023": {
+   "file": "baird-2023-star-protocols.xml",
+   "url": "https://doi.org/10.1016/j.xpro.2023.102329",
+   "title": "Baird & Sparks 2023, STAR Protocols (PMC full-text XML)"
+  },
+  "OCEAN-CC": {
+   "file": "oceanoptics-cosine-correctors.html",
+   "url": "https://www.oceanoptics.com/accessories/sampling-accessories/cosine-correctors/",
+   "title": "Ocean Optics, Cosine Correctors product page (retrieved 2026-10-02)"
+  },
+  "UPSTREAM-GUIDE": {
+   "file": "upstream_index.md",
+   "url": "https://raw.githubusercontent.com/AccelerationConsortium/wireless-color-sensor/07efedd7302bd1def93ef81ceadba38e1ae96853/_build/html/_sources/index.md",
+   "title": "AccelerationConsortium/wireless-color-sensor build guide (index.md) at 07efedd"
+  }
+ },
+ "quotes": [
+  {
+   "id": "ds-diffuser-11.3",
+   "source": "DS000504",
+   "where": "§11.3, PDF p. 62",
+   "quote": "For optimal performance, an achromatic diffuser shall be placed above the device aperture. The recommended solution is a bulk diffuser that meets the minimum recommended scattering characteristic shown below."
+  },
+  {
+   "id": "ds-ed1c50",
+   "source": "DS000504",
+   "where": "Figs. 8-15 footnote (2)",
+   "quote": "The following diffuser is used in final test on top of AS7341: ED1-C50"
+  },
+  {
+   "id": "ds-hca",
+   "source": "DS000504",
+   "where": "Fig. 17 cont., p. 15",
+   "quote": "Half cone angle"
+  },
+  {
+   "id": "ds-measured-diffused",
+   "source": "DS000504",
+   "where": "Figs. 8-15 footnote (1)",
+   "quote": "Parameter measured on a production ongoing sample bases on glass using diffused light"
+  },
+  {
+   "id": "ds-temp",
+   "source": "DS000504",
+   "where": "Fig. 6 footnote (1), p. 8",
+   "quote": "While the device is operational across the temperature range, functionality will vary with temperature."
+  },
+  {
+   "id": "ds-az-footnote",
+   "source": "DS000504",
+   "where": "Fig. 17 footnote (6)",
+   "quote": "auto zero done before every integration cycle"
+  },
+  {
+   "id": "ds-az-temp",
+   "source": "DS000504",
+   "where": "AZ_CONFIG 0xD6, PDF p. 40",
+   "quote": "configures how often the spectral engine offsets are reset (auto zero) to compensate for changes of the device temperature"
+  },
+  {
+   "id": "ds-az-15ms",
+   "source": "DS000504",
+   "where": "AZ_CONFIG 0xD6",
+   "quote": "The typical time auto zero needs to be completed is 15ms."
+  },
+  {
+   "id": "ds-az-255",
+   "source": "DS000504",
+   "where": "AZ_CONFIG 0xD6",
+   "quote": "Only before first measurement cycle"
+  },
+  {
+   "id": "ds-agc-status",
+   "source": "DS000504",
+   "where": "ASTATUS 0x94, PDF p. 50",
+   "quote": "The gain from this status read is required to calculate spectral results if AGC is enabled."
+  },
+  {
+   "id": "ds-asat",
+   "source": "DS000504",
+   "where": "ASTATUS 0x94",
+   "quote": "Indicates if the latched data is affected by analog or digital saturation."
+  },
+  {
+   "id": "ds-nano",
+   "source": "DS000504",
+   "where": "§1 General Description",
+   "quote": "nano-optic deposited interference filter technology. A built-in aperture controls the light entering the sensor array to increase accuracy."
+  },
+  {
+   "id": "ds-limits",
+   "source": "DS000504",
+   "where": "§5 Electrical Characteristics",
+   "quote": "All limits are guaranteed. The parameters with Min and Max values are guaranteed with production tests or SQC (Statistical Quality Control) methods."
+  },
+  {
+   "id": "an1054-aoi",
+   "source": "AN001054",
+   "where": "§3",
+   "quote": "Due to physical effects in the filter stacks, the interference filters are only designed for a limited range of the angle of incidence (AOI) and expect a Lambertian power distribution."
+  },
+  {
+   "id": "an1054-necessary",
+   "source": "AN001054",
+   "where": "§3",
+   "quote": "it is necessary to use an achromatic diffuser that emits light with a Lambertian characteristic to the sensor independent of the angle of incidence"
+  },
+  {
+   "id": "an1054-datasheet-applies",
+   "source": "AN001054",
+   "where": "§3, PDF p. 9",
+   "quote": "It is also important to note that the technical parameters listed in the datasheet [1] apply to a diffuser in front of the sensor. Different diffusers, and the use without a diffuser, lead to different sensor parameters."
+  },
+  {
+   "id": "an1054-recal",
+   "source": "AN001054",
+   "where": "§3, PDF p. 12",
+   "quote": "typically changes the calibration parameters and requires recalibration"
+  },
+  {
+   "id": "an1054-kimoto",
+   "source": "AN001054",
+   "where": "Fig. 9",
+   "quote": "Kimoto 100 PBU"
+  },
+  {
+   "id": "an1054-40",
+   "source": "AN001054",
+   "where": "§5",
+   "quote": "is limited to ±40° over all the channels"
+  },
+  {
+   "id": "an1054-4x4",
+   "source": "AN001054",
+   "where": "§5, PDF p. 15",
+   "quote": "Due to the structured detector (4 x 4 array), the field of view is individual for each photodiode; almost symmetrical for the centered photodiodes and more asymmetrical for those in distance to the center. To avoid a blurred imaging of a light source or its position onto the sensors array the diffuser is also used"
+  },
+  {
+   "id": "an1054-tilt",
+   "source": "AN001054",
+   "where": "§5",
+   "quote": "In the case of a tilted light incidence, the response may shift to an asymmetrical shape. This causes different color measurements in relation to the positioning light source and sensor and decreases the accuracy."
+  },
+  {
+   "id": "an1054-yellowish",
+   "source": "AN001054",
+   "where": "Fig. 10 legend, PDF p. 16",
+   "quote": "partly shadowed blue channel; detected as yellowish light"
+  },
+  {
+   "id": "an633-matrix",
+   "source": "AN000633",
+   "where": "§2.4, PDF p. 13",
+   "quote": "The results in the diagram(s) are good for such a primitive correction method but can be better using matrices. The difference between scale and matric methods is the number of used targets. A higher number of reference targets can increase accuracy for calibration dramatically."
+  },
+  {
+   "id": "an633-bw-scale",
+   "source": "AN000633",
+   "where": "§2.4, PDF p. 12",
+   "quote": "Black/White Scale"
+  },
+  {
+   "id": "an633-identical",
+   "source": "AN000633",
+   "where": "§2.5, PDF p. 16",
+   "quote": "It is important to make all measurements with the Sensor and reference device under identical conditions closed to the application. Each deviation from calibration and application decreases the accuracy."
+  },
+  {
+   "id": "an633-local",
+   "source": "AN000633",
+   "where": "§2.5",
+   "quote": "Local Correction"
+  },
+  {
+   "id": "an633-dE",
+   "source": "AN000633",
+   "where": "§2.5, PDF p. 16",
+   "quote": "be reduced from 1.3 to 0.4 (or Delta E from 1.7 to 1.4)"
+  },
+  {
+   "id": "an633-ref10x",
+   "source": "AN000633",
+   "where": "§1.4, PDF p. 6",
+   "quote": "The reference instrument should be at least ten times more accurate or higher than the sensor requires."
+  },
+  {
+   "id": "an633-ambient",
+   "source": "AN000633",
+   "where": "§1.3",
+   "quote": "Ambient Light"
+  },
+  {
+   "id": "an633-reflections",
+   "source": "AN000633",
+   "where": "§1.3, PDF p. 6",
+   "quote": "Reflections inside the Sensor System"
+  },
+  {
+   "id": "an633-eliminate",
+   "source": "AN000633",
+   "where": "§1.3",
+   "quote": "a verification and optimization process must correct or eliminate all these negative effects"
+  },
+  {
+   "id": "an633-led",
+   "source": "AN000633",
+   "where": "§1.3",
+   "quote": "Temperature and ageing effects from Sensor and luminary (e.g. LEDs)"
+  },
+  {
+   "id": "an633-stable",
+   "source": "AN000633",
+   "where": "§1.4",
+   "quote": "The test setup should be stable and free of any disturbances and drifts."
+  },
+  {
+   "id": "an633-snr",
+   "source": "AN000633",
+   "where": "§2.1",
+   "quote": "The higher the Gain and TINT, the better the ratio between signal and noise."
+  },
+  {
+   "id": "an633-basic",
+   "source": "AN000633",
+   "where": "§2.1, PDF p. 8",
+   "quote": "For all corrections and calibrations, always use Basic_Counts or other calculated values without dependence on the setup and parameters, especially for dynamic gain and the like."
+  },
+  {
+   "id": "revvity-xtalk-def",
+   "source": "REVVITY",
+   "where": "p. 9",
+   "quote": "Cross-talk occurs when light from one well travels through the well walls into adjacent wells and is then detected, adding non-specific counts to that well."
+  },
+  {
+   "id": "revvity-clear",
+   "source": "REVVITY",
+   "where": "p. 9",
+   "quote": "Clear plates can have the highest cross talk, with black plates having the lowest. White plates give medium cross-talk, with the magnitude of the cross-talk being dependent on the concentration of titanium dioxide used as whitener."
+  },
+  {
+   "id": "corning-clear",
+   "source": "CORNING",
+   "where": "p. 6",
+   "quote": "are used for cell culture and colorimetric (absorbance) assays"
+  },
+  {
+   "id": "corning-opaque",
+   "source": "CORNING",
+   "where": "p. 10",
+   "quote": "Opaque walls prevent well-to-well crosstalk"
+  },
+  {
+   "id": "liquitex-mars",
+   "source": "LIQUITEX-MARS",
+   "where": "product description",
+   "quote": "A dense opaque single pigment, with a brown undertone"
+  },
+  {
+   "id": "liquitex-white",
+   "source": "LIQUITEX-WHITE",
+   "where": "product description",
+   "quote": "the strongest, most opaque of all whites"
+  },
+  {
+   "id": "adafruit-jumper",
+   "source": "ADAFRUIT",
+   "where": "product description",
+   "quote": "We've updated this breakout with a cuttable jumper to disable the onboard ON power LED."
+  },
+  {
+   "id": "iso-backing",
+   "source": "ISO13655",
+   "where": "§4.2.3",
+   "quote": "The specimen shall be backed by either a black or a white material that conforms to A.2 or A.3"
+  },
+  {
+   "id": "iso-transparent",
+   "source": "ISO13655",
+   "where": "§4.2.3",
+   "quote": "Where samples being measured by reflection are transparent, the backing used shall be white"
+  },
+  {
+   "id": "iso-geometry",
+   "source": "ISO13655",
+   "where": "§4.2.4",
+   "quote": "The measurement geometry shall be (45°:0°) or (0°:45°), annular or circumferential"
+  },
+  {
+   "id": "qg121-10000",
+   "source": "QG000121",
+   "where": "§7.6, PDF p. 16",
+   "quote": "start the measurement to achieve stable values for the sensor result to be greater than 10,000 digits or more"
+  },
+  {
+   "id": "qg121-30min",
+   "source": "QG000121",
+   "where": "§7.6, PDF p. 16",
+   "quote": "Switch them on and wait 30 minutes to get the working temperature."
+  },
+  {
+   "id": "qg121-empty",
+   "source": "QG000121",
+   "where": "§1, PDF p. 5",
+   "quote": "The influences of the cuvette and the optical path should be eliminated using differential measurement. To do this, first measure the empty cuvette in the setup."
+  },
+  {
+   "id": "qg121-cover",
+   "source": "QG000121",
+   "where": "PDF p. 15",
+   "quote": "Cover the cuvette in the holder to prevent ambient lighting."
+  },
+  {
+   "id": "ug400-counts",
+   "source": "UG000400",
+   "where": "PDF p. 40",
+   "quote": "The higher the counts (before saturation), the better the accuracy."
+  },
+  {
+   "id": "ug400-diffuser",
+   "source": "UG000400",
+   "where": "PDF p. 5",
+   "quote": "Customers should add a diffuser in front of the sensor in the case of a nondiffusible application."
+  },
+  {
+   "id": "ug400-gaincorr",
+   "source": "UG000400",
+   "where": "§6.2.1, PDF p. 27",
+   "quote": "Customers should verify them and make an individual gain correction in the case of the highest accuracy requirements."
+  },
+  {
+   "id": "ug400-devcal",
+   "source": "UG000400",
+   "where": "PDF p. 17",
+   "quote": "a device-specific calibration of the sensor system is recommended"
+  },
+  {
+   "id": "an633-lin-indep",
+   "source": "AN000633",
+   "where": "PDF p. 29",
+   "quote": "Be attended to the number of linearly independent targets, which must be greater than or equal to the number of filters used in the sensor to obtain a stable matrix."
+  },
+  {
+   "id": "an633-devcal",
+   "source": "AN000633",
+   "where": "§2.5",
+   "quote": "Device Calibration: This method is the most complex but has the highest accuracy."
+  },
+  {
+   "id": "an633-avgdE",
+   "source": "AN000633",
+   "where": "PDF p. 24",
+   "quote": "Average DeltaE 0,98487"
+  },
+  {
+   "id": "an633-maxdE",
+   "source": "AN000633",
+   "where": "PDF p. 24",
+   "quote": "Max DeltaE 2,30337"
+  },
+  {
+   "id": "an633-nondiffuse",
+   "source": "AN000633",
+   "where": "§1.2, PDF p. 5",
+   "quote": "In the case of a non-diffuse application, the use of an achromatic diffuser is required, which emits light with Lambertian characteristics to the Sensor, regardless of the angle of incidence."
+  },
+  {
+   "id": "an1054-volume",
+   "source": "AN001054",
+   "where": "§4",
+   "quote": "a volume diffuser with nearly Lambertian and achromatic characteristics is the best choice"
+  },
+  {
+   "id": "an1054-lexan",
+   "source": "AN001054",
+   "where": "§4",
+   "quote": "Lexan 8B28"
+  },
+  {
+   "id": "an1054-45",
+   "source": "AN001054",
+   "where": "§3",
+   "quote": "Select a diffuser with sufficient diffusing power such that the sensor has a smooth angular response (no spikes in the angular response curves) exceeding ±45° (FHWM)."
+  },
+  {
+   "id": "an1054-homog",
+   "source": "AN001054",
+   "where": "§5",
+   "quote": "To avoid such inaccuracies during calibration, it is necessary to illuminate the diffuser with homogeneous light over the hemisphere."
+  },
+  {
+   "id": "an1054-transm",
+   "source": "AN001054",
+   "where": "§4",
+   "quote": "the transmission efficiency of cosine volume diffusers is smaller than 50%"
+  },
+  {
+   "id": "ds-maxcount",
+   "source": "DS000504",
+   "where": "§10.2.2",
+   "quote": "The maximum ADC count is 65535."
+  },
+  {
+   "id": "ds-latch",
+   "source": "DS000504",
+   "where": "§10.2.7",
+   "quote": "Reading the ASTATUS register (0x60 or 0x94) latches all 12 spectral data bytes to that status read."
+  },
+  {
+   "id": "chiplib-mult",
+   "source": "CHIPLIB",
+   "where": "ITEM_ID_GAIN_FACTORS",
+   "quote": "the measured values will be multiplied with a correction factor"
+  },
+  {
+   "id": "chiplib-default",
+   "source": "CHIPLIB",
+   "where": "ITEM_ID_GAIN_FACTORS",
+   "quote": "Default value: 9770, 9770, 9770, 9620, 10000, 10000, 10000, 10000, 10000, 10130, 10320"
+  },
+  {
+   "id": "an660-eq4",
+   "source": "AN000660",
+   "where": "Eq. 4",
+   "quote": "BasicCounts = (RawCounts)* Gain_Correction / (gainx * tint_ms)"
+  },
+  {
+   "id": "an660-vec",
+   "source": "AN000660",
+   "where": "Eq. 4",
+   "quote": "Gain_Correction=1.024;1.024;1.024;1.040;1.000;1.000;1.000;1.000;1.000;0.9875;0.9688"
+  },
+  {
+   "id": "qg139-broadband",
+   "source": "QG000139",
+   "where": "PDF p. 9",
+   "quote": "Width-banded light sources (e.g. D65, A, or high CRI LED)"
+  },
+  {
+   "id": "an666-pass",
+   "source": "AN000666",
+   "where": "PDF pp. 6, 8",
+   "quote": "CLEAR mapped to ADC4, and NIR mapped to ADC5"
+  },
+  {
+   "id": "an1054-lexan-thick",
+   "source": "AN001054",
+   "where": "§4",
+   "quote": "with a thickness of 250 micrometers"
+  },
+  {
+   "id": "iso18314-black",
+   "source": "ISO18314-1",
+   "where": "§5.4",
+   "quote": "A black calibration standard is a standard which has low to no reflectance (for example a black light trap)."
+  },
+  {
+   "id": "iso18314-zero",
+   "source": "ISO18314-1",
+   "where": "§5.4",
+   "quote": "Black calibration is used to establish a known zero point for the instrument."
+  },
+  {
+   "id": "iso18314-white",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "It has reflectance values that are traceable to a national standard."
+  },
+  {
+   "id": "iso18314-durable",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "The white standard is made of a durable material, like ceramic, glass, or enamel."
+  },
+  {
+   "id": "iso18314-repeat",
+   "source": "ISO18314-1",
+   "where": "§5.3",
+   "quote": "When performing extended measurement series and/or under strongly varying environmental conditions (for example temperature) the white calibration shall be repeated in regular intervals."
+  },
+  {
+   "id": "iso18314-control",
+   "source": "ISO18314-1",
+   "where": "§5.5",
+   "quote": "After certain time intervals it is recommended to verify the accuracy of the measurements through the use of coloured control standards."
+  },
+  {
+   "id": "iso18314-notwhite",
+   "source": "ISO18314-1",
+   "where": "§5.5",
+   "quote": "The white calibration standard may not be used for control measurements."
+  },
+  {
+   "id": "nih-clear",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "Clear microplates are typically used for absorbance (colorimetric)-based readouts."
+  },
+  {
+   "id": "nih-white",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "can reduce well-to-well crosstalk, while enhancing the luminescence signal by better reflecting the light."
+  },
+  {
+   "id": "nih-black",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "the black color (often from carbon) can reduce well-to-well crosstalk"
+  },
+  {
+   "id": "nih-suboptimal",
+   "source": "NIH-AGM",
+   "where": "Microplate color",
+   "quote": "Suboptimal choice of microplate color will often manifest as [1] lower signal-to-background ratios compared to the optimal microplate color, and/or [2] well-to-well crosstalk when highly active and inactive samples are adjacent to one another."
+  },
+  {
+   "id": "nih-white-hue",
+   "source": "NIH-AGM",
+   "where": "Microplate selection",
+   "quote": "the color of white is not standardized in opaque microplates and there are blue-white and grey-white hues"
+  },
+  {
+   "id": "nih-menisci",
+   "source": "NIH-AGM",
+   "where": "Centrifugation",
+   "quote": "centrifugation will increase variability by creating uneven menisci across the microplate"
+  },
+  {
+   "id": "npl-zero",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "Detector noise and stray light within the instrument optics will produce a signal for zero reflectance"
+  },
+  {
+   "id": "npl-zero-sub",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "This value must be accurately determined and then subtracted from all subsequent readings."
+  },
+  {
+   "id": "npl-trap",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "Simply making a spectral scan with the sample port open is not satisfactory."
+  },
+  {
+   "id": "npl-wedge",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "As a good rule of thumb, a wedge whose end cannot be seen under standard laboratory illumination is usually a good zero reflectance specimen."
+  },
+  {
+   "id": "npl-traceable",
+   "source": "NPL-GPG96",
+   "where": "§3.1.2",
+   "quote": "The instrument scale should be calibrated against standards traceable to a national metrology institute."
+  },
+  {
+   "id": "npl-0.5",
+   "source": "NPL-GPG96",
+   "where": "§3.1.2",
+   "quote": "Differences of 0.5% in absolute value of radiance factor measurement will produce measurable errors in terms of CIELAB units."
+  },
+  {
+   "id": "npl-matt",
+   "source": "NPL-GPG96",
+   "where": "§3.2.1",
+   "quote": "it is good practice to measure matt samples against a matt white standard and glossy samples against a glossy white standard."
+  },
+  {
+   "id": "npl-warmup",
+   "source": "NPL-GPG96",
+   "where": "§2.3",
+   "quote": "never less than the time suggested by instrument's manufacturer, or thirty minutes."
+  },
+  {
+   "id": "npl-stray",
+   "source": "NPL-GPG96",
+   "where": "§2.7",
+   "quote": "The obvious way of checking for external stray light is to darken the room or cover suspect areas and note if there is any change in the output signal."
+  },
+  {
+   "id": "npl-repro",
+   "source": "NPL-GPG96",
+   "where": "§2.5",
+   "quote": "Reproducibility data is obtained by measuring a sample, removing the sample, replacing the sample and making another measurement, and then repeating this sequence a number of times."
+  },
+  {
+   "id": "npl-repeat",
+   "source": "NPL-GPG96",
+   "where": "§2.5",
+   "quote": "Repeatability data is obtained by measuring a sample, leaving it in place and making another measurement, and then repeating this a number of times."
+  },
+  {
+   "id": "npl95-random",
+   "source": "NPL-GPG95",
+   "where": "Ch. 4",
+   "quote": "Repeated measurements will reduce the effect of random components in the measurement process, but not the systematic components."
+  },
+  {
+   "id": "iso54-baffles",
+   "source": "ISO5-4",
+   "where": "§6.8",
+   "quote": "Scattered flux shall be reduced to a negligible amount by the use of clean optical components and appropriate baffles, and by suitable blackening of surfaces exposed to the specimen, in accordance with good photometric practice."
+  },
+  {
+   "id": "iso54-same",
+   "source": "ISO5-4",
+   "where": "§6.2",
+   "quote": "The specimen characteristics over the illuminator region should be the same as those over the receiver region."
+  },
+  {
+   "id": "iso54-lateral",
+   "source": "ISO5-4",
+   "where": "§6.2 Note 1",
+   "quote": "This requirement prevents lateral diffusion error."
+  },
+  {
+   "id": "iso2469-opaque",
+   "source": "ISO2469",
+   "where": "§3.6",
+   "quote": "thick enough to be opaque, i.e. such that increasing the thickness of the pad by doubling the number of sheets results in no change in the measured reflectance factor"
+  },
+  {
+   "id": "iso2469-single",
+   "source": "ISO2469",
+   "where": "§3.6 Note 1",
+   "quote": "The reflectance factor of a single non-opaque sheet is dependent on the background and is not a material property."
+  },
+  {
+   "id": "iso2469-black-nominal",
+   "source": "ISO2469",
+   "where": "§5.4",
+   "quote": "During calibration, the instrument shall be adjusted to the nominal value of the black cavity."
+  },
+  {
+   "id": "iso13655-opacity",
+   "source": "ISO13655",
+   "where": "§3.7",
+   "quote": "100 times the ratio of the luminous reflectance factor of the substrate over black backing (as defined in A.2) to the luminous reflectance factor over white backing (as defined in A.3)."
+  },
+  {
+   "id": "iso13655-wideband",
+   "source": "ISO13655",
+   "where": "Introduction",
+   "quote": "The use of instruments with wider sampling intervals and bandpass has been deprecated with the exception of the use of such non-standard instruments to monitor the state of previously characterized materials or objects."
+  },
+  {
+   "id": "iso13655-plane",
+   "source": "ISO13655",
+   "where": "§4.2.4",
+   "quote": "While being measured the sample shall lie on a flat surface. The instrument base and the sample surface shall lie in the same plane."
+  },
+  {
+   "id": "iso18314-substrate",
+   "source": "ISO18314-1",
+   "where": "§3",
+   "quote": "In the case of paint films that do not completely hide the substrate, the colour depends on the colour of the substrate and the film thickness"
+  },
+  {
+   "id": "iso18314-first-surface",
+   "source": "ISO18314-1",
+   "where": "§7",
+   "quote": "The first surface reflection (approximately 4 % of the incident light) is only dependent on the refractive ratio not on the colorants."
+  },
+  {
+   "id": "nist-trap",
+   "source": "NIST-BOOK",
+   "where": "§10.3.3, p. 391",
+   "quote": "Next, a light trap is measured to set the dark signal"
+  },
+  {
+   "id": "nist-multiply",
+   "source": "NIST-BOOK",
+   "where": "§10.3.3, p. 391",
+   "quote": "is multiplied by the value of the reflectance factor"
+  },
+  {
+   "id": "nist-45",
+   "source": "NIST-BOOK",
+   "where": "§10.3.1, p. 388",
+   "quote": "illumination/viewing geometries are best for measuring color since they produce results that correlate well with human perception"
+  },
+  {
+   "id": "nist-routine",
+   "source": "NIST-BOOK",
+   "where": "§10.3, p. 384",
+   "quote": "The measurement of a set of stable color standards which span the gamut of color space should be performed as a matter of routine with tristimulus colorimeters"
+  },
+  {
+   "id": "bes-window",
+   "source": "BESOZZI2026",
+   "where": "p. 4",
+   "quote": "Only measurements yielding raw counts between 10 % and 80 % of the full-scale (FS) range were retained."
+  },
+  {
+   "id": "bes-fixgain",
+   "source": "BESOZZI2026",
+   "where": "p. 10",
+   "quote": "the analogue gain should be fixed and exposure regulated exclusively through the integration time."
+  },
+  {
+   "id": "kl-blueshift",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 9",
+   "quote": "an increased angle of incidence of light leads to a blueshift of the filter peak wavelength"
+  },
+  {
+   "id": "kl-fwhm",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 9",
+   "quote": "a higher incidence angle leads to a reduced peak response and an increased full-width at half-maximum (FWHM)"
+  },
+  {
+   "id": "kl-ptfe",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 8",
+   "quote": "PTFE foils or thin white glass sheets"
+  },
+  {
+   "id": "kl-direction",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 4",
+   "quote": "Due to the matrix arrangement, the channel's response to light from different directions is different."
+  },
+  {
+   "id": "kl-nir",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "some channels in the blue and green regions exhibit spectral leakage in the NIR range"
+  },
+  {
+   "id": "kl-r2a",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "R2 = 79.858%"
+  },
+  {
+   "id": "kl-r2b",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "R2 = 94.788 %"
+  },
+  {
+   "id": "rod-66",
+   "source": "RODRIGUEZ2025",
+   "where": "§6",
+   "quote": "the wavelength of peak sensitivity for each channel may deviate by 10 nm, and the gain may vary by up to 66% between sensors of the same model."
+  },
+  {
+   "id": "rod-illum",
+   "source": "RODRIGUEZ2025",
+   "where": "§6.1",
+   "quote": "the number of calibration illuminants be noticeably greater than the number of channels."
+  },
+  {
+   "id": "bv-24",
+   "source": "BOTERO2024",
+   "where": "§2",
+   "quote": "24 patches with known reflectance curves"
+  },
+  {
+   "id": "bv-mae",
+   "source": "BOTERO2024",
+   "where": "p. 13",
+   "quote": "from 0.1137 to 0.03901"
+  },
+  {
+   "id": "criv-drift",
+   "source": "CRIVELLARO2024",
+   "where": "results",
+   "quote": "below 1% over all testing time"
+  },
+  {
+   "id": "criv-5min",
+   "source": "CRIVELLARO2024",
+   "where": "results",
+   "quote": "or below 0.5% considering a time period below 5 min"
+  },
+  {
+   "id": "zai-avg",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "Averaging the five replicates before comparison reduces the RMSE"
+  },
+  {
+   "id": "zai-rmse",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "RMSE = 0.0413 a.u."
+  },
+  {
+   "id": "zai-rmse2",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "to 0.0355 a.u."
+  },
+  {
+   "id": "mach-abs",
+   "source": "MACHADO2024",
+   "where": "abstract",
+   "quote": "sensitivity comparable to a conventional spectrophotometer"
+  },
+  {
+   "id": "ral-45",
+   "source": "SAMEC2024",
+   "where": "§1",
+   "quote": "45°/0° or 0°/45° geometry is used for matt surfaces due to excluded gloss"
+  },
+  {
+   "id": "star-lim",
+   "source": "BAIRD2023",
+   "where": "Limitations",
+   "quote": "Environmental noise (e.g., light conditions) and hardware variation (LED, sensor, sensor positioning, etc.) may affect the results obtained."
+  },
+  {
+   "id": "dif-ug400-reflection-kit",
+   "source": "UG000400",
+   "where": "§1, PDF p. 4",
+   "quote": "The extended kit (Reflection mode) is for contact measurement of colored surfaces (see Figure 2) and consists of the sensor hardware but with a pre-assembled LED and a special adapter in front of the sensor with 0° (Sensor)/45° (LEDs) geometry."
+  },
+  {
+   "id": "dif-ug400-reflection-nodiff",
+   "source": "UG000400",
+   "where": "§1.1, Figure 2 table, PDF p. 5",
+   "quote": "Evaluation Kit with a pre-assembled LED and 0°/45° front adapter (without a diffuser"
+  },
+  {
+   "id": "dif-ug400-als-kit",
+   "source": "UG000400",
+   "where": "§1, PDF p. 4",
+   "quote": "it includes the hardware version without onboard LEDs but with a diffuser in front of the sensor with a maximum field of view"
+  },
+  {
+   "id": "dif-ug400-nondiffuse",
+   "source": "UG000400",
+   "where": "§4, PDF p. 13",
+   "quote": "as light detection from a light source, a translucent diffuser in front of the AS7341 EVK is required"
+  },
+  {
+   "id": "dif-ug400-reflections",
+   "source": "UG000400",
+   "where": "§4 footnote 2, PDF p. 13",
+   "quote": "e.g. ALS (Ambient Light Sensing) in contrast to reflections which are mostly diffused."
+  },
+  {
+   "id": "dif-ug400-l57",
+   "source": "UG000400",
+   "where": "§4, Figure 11, PDF p. 13",
+   "quote": "Kimoto OptSaver L-57"
+  },
+  {
+   "id": "dif-an1054-fine",
+   "source": "AN001054",
+   "where": "§3, PDF p. 9",
+   "quote": "If the diffuser is placed very close to or directly on the AS7341 package, its structure has to be very fine to get the same distribution to each photodiode of the detector array."
+  },
+  {
+   "id": "dif-an1054-touch",
+   "source": "AN001054",
+   "where": "§3, PDF p. 12",
+   "quote": "The surface of the diffusers is very sensitive, and any touch, mechanical stress, or dirt can dramatically change the optical behavior."
+  },
+  {
+   "id": "dif-an1054-surface",
+   "source": "AN001054",
+   "where": "§4.1, PDF p. 13",
+   "quote": "surface diffusers do not reach perfect cosine characteristics"
+  },
+  {
+   "id": "dif-an1054-prove",
+   "source": "AN001054",
+   "where": "§4.1, PDF p. 13",
+   "quote": "This makes it necessary to prove the chosen diffuser individually for the use case."
+  },
+  {
+   "id": "dif-an1054-volume",
+   "source": "AN001054",
+   "where": "§4.2, PDF p. 13",
+   "quote": "The result is a nearly perfect cosine and wavelength-independent/achromatic characteristic even in near field."
+  },
+  {
+   "id": "dif-an1054-2pd",
+   "source": "AN001054",
+   "where": "§2, PDF p. 5",
+   "quote": "The VIS channels are arranged in a 4 x 4 matrix with two photodiodes per channel."
+  },
+  {
+   "id": "dif-an1054-pinhole",
+   "source": "AN001054",
+   "where": "Fig. 4 legend, PDF p. 7",
+   "quote": "Sensor aperture/pinhole."
+  },
+  {
+   "id": "dif-ds-pkg",
+   "source": "DS000504",
+   "where": "§7, Fig. 19 footnote, PDF p. 17",
+   "quote": "diffuser mounted on top of package surface"
+  },
+  {
+   "id": "dif-ocean",
+   "source": "OCEAN-CC",
+   "where": "product page",
+   "quote": "Cosine correctors are optical diffusers (opaline glass, PTFE or Spectralon) that couple to fibers and spectrometers to collect signal from 180° field of view."
+  },
+  {
+   "id": "dif-upstream-yellow",
+   "source": "UPSTREAM-GUIDE",
+   "where": "Sensor Package assembling, step 7",
+   "quote": "The yellow square on AS7341 should be visible from the hole of the sensor enclosure if the sensor is assembled properly."
+  }
+ ]
+}

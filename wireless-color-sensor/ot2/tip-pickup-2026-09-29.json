@@ -1,0 +1,71 @@
+{
+ "date": "2026-09-29",
+ "lab_time": "MDT (UTC-6)",
+ "request": "PR #202: while the enclosure is not in position, do the calibration test for the pipette plastic tips (pick up a 300 uL tip, place liquid in the 96-well plate); one pick-up per test",
+ "outcome": "one pick-up at the nominal position worked first time; tip taken 8 mm into plate well A1, air aspirated above it and dispensed + blown out in it; tip put back in rack A1; homed, run closed, lights restored to off",
+ "robot": {
+  "serial": "OT2CEP20210722R13",
+  "api": "8.8.1",
+  "pipette": "p300_single_v2.1 (P300 single GEN2), left mount; no tip-length or pipette-offset calibration stored for it",
+  "maintenance_runs": {
+   "slot9_hover_only": "0cf71056-ae01-4df8-9ac0-70b2e395b32d",
+   "test": "5e9ce7f5-497d-4c75-a94c-5c3ca0623fa9"
+  }
+ },
+ "deck": {
+  "tip_rack": "slot 6, opentrons_96_tiprack_300ul/1 (identified from the etched slot numbers; slot 9 in the AC protocol)",
+  "plate": "slot 1, loaded as corning_96_wellplate_360ul_flat/1",
+  "trash": "slot 12",
+  "enclosure": "lying on the deck in front of its base (back of slot 7), where it fell on 2026-09-29 17:30; every lateral move stayed at nozzle z >= 150 bare or tip end z >= 110 with a tip",
+  "livestream": "not used; the OT-2 stream camera still points at another machine"
+ },
+ "script": {
+  "file": "tip_cal.py",
+  "args": "--rack-slot 6 --well A1 --timeout 900",
+  "run_from": "RPI_STREAM_CAM_HOSTNAME Pi, ~/tipcal-0929/, ~/.venvs/xscan/bin/python"
+ },
+ "nominal": {
+  "tip_A1_xy": [279.38, 164.74],
+  "tip_top_z": 64.69,
+  "plate_A1_xy": [14.38, 74.24],
+  "plate_rim_z": 14.22,
+  "plate_floor_z": 3.55
+ },
+ "slot9_mistake": "the first run assumed slot 9 and hovered the bare nozzle 30 mm above tip-top height over that empty slot (z 94.69); the photo showed it was not over the rack, so it homed and restarted with slot 6. Nothing was touched.",
+ "hover": {
+  "heights_mm_over_tip_top": [30, 10, 3],
+  "offsets_photographed_at_3mm": [[0, 0], [2, 0], [0, 2], [0, 0]],
+  "finding": "nozzle over tip A1 to within the camera's resolution (about 1 px per mm here, low contrast: black nozzle over a black rack); no offset applied"
+ },
+ "pickup": {
+  "command": "pickUpTip A1, wellLocation top, offset (0, 0, 0)",
+  "engine_result": {"position": {"x": 279.38, "y": 164.74, "z": 64.69}, "tipVolume": 300.0, "tipLength": 51.1, "tipDiameter": 5.23},
+  "tip_length_source": "nominal: 59.3 mm tip - 8.2 mm overlap (no calibration)",
+  "press": "17 mm at 10 mm/s with the Z motor at 0.125 A, back up 17 mm, then Z re-homed (opentrons 8.8.1, p300_single v2.1 pressFit)",
+  "tip_end_z_after_retract": 148.5,
+  "photo_check": "clear tip on the nozzle, in line with the pipette's axis"
+ },
+ "well": {
+  "well": "A1",
+  "steps_h_mm_over_rim": [10, 5, 0, -4, -8],
+  "tip_end_z": [24.22, 19.22, 14.22, 10.22, 6.22],
+  "deepest_mm_over_nominal_floor": 2.67,
+  "air_aspirated_uL": 50,
+  "aspirated_at_h": 10,
+  "dispensed_at_h": -8,
+  "flow_rate_uL_s": 46.43,
+  "blow_out": true,
+  "photo_check": "tip went down into A1 step by step, no bend or catch visible; the camera cannot resolve its centring in the well better than about 1-2 mm"
+ },
+ "return": {
+  "command": "dropTip A1, wellLocation default (tip end to 29.65 mm below the rim, z 35.04), homeAfter",
+  "nozzle_z_after": 86.14,
+  "photo_check": "bare nozzle over the rack afterwards"
+ },
+ "after": "homed, maintenance run closed, rail lights back off as found",
+ "not_done": [
+  "no real liquid: there is none on the deck, so the aspirate/dispense was air",
+  "no tip-length or pipette-offset calibration: the numbers above are the robot's nominal ones, and they were good enough for this pick-up and this well",
+  "one well only (A1); H12 and the rest of the plate were not visited"
+ ]
+}

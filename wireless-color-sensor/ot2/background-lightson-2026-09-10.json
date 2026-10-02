@@ -1,0 +1,840 @@
+{
+  "run": {
+    "started": "2026-09-10T19:55:38.067094+00:00",
+    "home_slot": 10,
+    "scan_slot": 7,
+    "plan": {
+      "pickup": {
+        "x": 36.55,
+        "y": 315.5,
+        "slot": 10,
+        "slot_margin_mm": 36.55
+      },
+      "drop_off": {
+        "x": 30.55,
+        "y": 315.5
+      },
+      "positions": [
+        {
+          "index": 1,
+          "dx": -30.0,
+          "x": 33.88,
+          "y": 225.0,
+          "z": 129.0,
+          "slot_margin_mm": 33.88
+        },
+        {
+          "index": 2,
+          "dx": 0.0,
+          "x": 63.88,
+          "y": 225.0,
+          "z": 129.0,
+          "slot_margin_mm": 42.0
+        },
+        {
+          "index": 3,
+          "dx": 30.0,
+          "x": 93.88,
+          "y": 225.0,
+          "z": 129.0,
+          "slot_margin_mm": 34.12
+        }
+      ],
+      "press_z": 90.0,
+      "release_z": 95.0,
+      "aperture_height_mm": 39.0
+    },
+    "rgb": {
+      "R": 0,
+      "Y": 0,
+      "B": 0
+    },
+    "lights": {
+      "requested": "on",
+      "before": false,
+      "during": true
+    },
+    "reads_per_position": 3,
+    "dry_run": false,
+    "mongodb_ids": [
+      "6aa30bf0a41c9769bbce575e",
+      "6aa30bf0a41c9769bbce575f",
+      "6aa30bf0a41c9769bbce5760",
+      "6aa30bf0a41c9769bbce5761",
+      "6aa30bf0a41c9769bbce5762",
+      "6aa30bf0a41c9769bbce5763",
+      "6aa30bf0a41c9769bbce5764",
+      "6aa30bf0a41c9769bbce5765",
+      "6aa30bf0a41c9769bbce5766",
+      "6aa30bf0a41c9769bbce5767",
+      "6aa30bf0a41c9769bbce5768",
+      "6aa30bf0a41c9769bbce5769",
+      "6aa30bf0a41c9769bbce576a",
+      "6aa30bf0a41c9769bbce576b",
+      "6aa30bf0a41c9769bbce576c"
+    ]
+  },
+  "readings": [
+    {
+      "experiment_id": "seated-baseline-1-1789070141058",
+      "label": "seated-baseline-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 5,
+        "ch440": 6,
+        "ch470": 13,
+        "ch510": 165,
+        "ch550": 176,
+        "ch583": 45,
+        "ch620": 29,
+        "ch670": 27
+      },
+      "total": 466,
+      "t_request_utc": "2026-09-10T19:55:41.058Z",
+      "t_response_utc": "2026-09-10T19:55:42.462Z",
+      "t_request_epoch": 1789070141.058,
+      "t_response_epoch": 1789070142.462,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 45,
+          "ch670": 27,
+          "ch510": 165,
+          "ch410": 5,
+          "ch620": 29,
+          "ch470": 13,
+          "ch550": 176,
+          "ch440": 6
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "seated-baseline-1-1789070141058"
+      },
+      "position": null,
+      "stage": "seated-baseline"
+    },
+    {
+      "experiment_id": "seated-baseline-2-1789070142462",
+      "label": "seated-baseline-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 5,
+        "ch440": 6,
+        "ch470": 13,
+        "ch510": 165,
+        "ch550": 177,
+        "ch583": 46,
+        "ch620": 30,
+        "ch670": 26
+      },
+      "total": 468,
+      "t_request_utc": "2026-09-10T19:55:42.462Z",
+      "t_response_utc": "2026-09-10T19:55:43.906Z",
+      "t_request_epoch": 1789070142.462,
+      "t_response_epoch": 1789070143.906,
+      "latency_s": 1.444,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 46,
+          "ch670": 26,
+          "ch510": 165,
+          "ch410": 5,
+          "ch620": 30,
+          "ch470": 13,
+          "ch550": 177,
+          "ch440": 6
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "seated-baseline-2-1789070142462"
+      },
+      "position": null,
+      "stage": "seated-baseline"
+    },
+    {
+      "experiment_id": "grip-check-1-1789070187144",
+      "label": "grip-check-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 70,
+        "ch440": 331,
+        "ch470": 309,
+        "ch510": 643,
+        "ch550": 843,
+        "ch583": 822,
+        "ch620": 839,
+        "ch670": 567
+      },
+      "total": 4424,
+      "t_request_utc": "2026-09-10T19:56:27.144Z",
+      "t_response_utc": "2026-09-10T19:56:28.568Z",
+      "t_request_epoch": 1789070187.144,
+      "t_response_epoch": 1789070188.568,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 822,
+          "ch670": 567,
+          "ch510": 643,
+          "ch410": 70,
+          "ch620": 839,
+          "ch470": 309,
+          "ch550": 843,
+          "ch440": 331
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "grip-check-1-1789070187144"
+      },
+      "position": {
+        "x": 36.55,
+        "y": 315.5,
+        "z": 110.0
+      },
+      "stage": "grip-check"
+    },
+    {
+      "experiment_id": "grip-check-2-1789070188569",
+      "label": "grip-check-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 71,
+        "ch440": 332,
+        "ch470": 308,
+        "ch510": 644,
+        "ch550": 843,
+        "ch583": 822,
+        "ch620": 840,
+        "ch670": 567
+      },
+      "total": 4427,
+      "t_request_utc": "2026-09-10T19:56:28.569Z",
+      "t_response_utc": "2026-09-10T19:56:30.033Z",
+      "t_request_epoch": 1789070188.569,
+      "t_response_epoch": 1789070190.033,
+      "latency_s": 1.464,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 822,
+          "ch670": 567,
+          "ch510": 644,
+          "ch410": 71,
+          "ch620": 840,
+          "ch470": 308,
+          "ch550": 843,
+          "ch440": 332
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "grip-check-2-1789070188569"
+      },
+      "position": {
+        "x": 36.55,
+        "y": 315.5,
+        "z": 110.0
+      },
+      "stage": "grip-check"
+    },
+    {
+      "experiment_id": "pos1-dx-30-1-1789070210922",
+      "label": "pos1-dx-30-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 235,
+        "ch440": 1102,
+        "ch470": 1047,
+        "ch510": 1925,
+        "ch550": 2680,
+        "ch583": 3019,
+        "ch620": 2979,
+        "ch670": 1769
+      },
+      "total": 14756,
+      "t_request_utc": "2026-09-10T19:56:50.922Z",
+      "t_response_utc": "2026-09-10T19:56:52.327Z",
+      "t_request_epoch": 1789070210.922,
+      "t_response_epoch": 1789070212.327,
+      "latency_s": 1.405,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3019,
+          "ch670": 1769,
+          "ch510": 1925,
+          "ch410": 235,
+          "ch620": 2979,
+          "ch470": 1047,
+          "ch550": 2680,
+          "ch440": 1102
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos1-dx-30-1-1789070210922"
+      },
+      "position": {
+        "index": 1,
+        "dx": -30.0,
+        "x": 33.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 33.88
+      },
+      "stage": "pos1-dx-30"
+    },
+    {
+      "experiment_id": "pos1-dx-30-2-1789070212327",
+      "label": "pos1-dx-30-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 235,
+        "ch440": 1102,
+        "ch470": 1047,
+        "ch510": 1924,
+        "ch550": 2681,
+        "ch583": 3020,
+        "ch620": 2978,
+        "ch670": 1769
+      },
+      "total": 14756,
+      "t_request_utc": "2026-09-10T19:56:52.327Z",
+      "t_response_utc": "2026-09-10T19:56:53.751Z",
+      "t_request_epoch": 1789070212.327,
+      "t_response_epoch": 1789070213.751,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3020,
+          "ch670": 1769,
+          "ch510": 1924,
+          "ch410": 235,
+          "ch620": 2978,
+          "ch470": 1047,
+          "ch550": 2681,
+          "ch440": 1102
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos1-dx-30-2-1789070212327"
+      },
+      "position": {
+        "index": 1,
+        "dx": -30.0,
+        "x": 33.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 33.88
+      },
+      "stage": "pos1-dx-30"
+    },
+    {
+      "experiment_id": "pos1-dx-30-3-1789070213751",
+      "label": "pos1-dx-30-3",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 235,
+        "ch440": 1102,
+        "ch470": 1047,
+        "ch510": 1924,
+        "ch550": 2681,
+        "ch583": 3020,
+        "ch620": 2977,
+        "ch670": 1769
+      },
+      "total": 14755,
+      "t_request_utc": "2026-09-10T19:56:53.751Z",
+      "t_response_utc": "2026-09-10T19:56:55.195Z",
+      "t_request_epoch": 1789070213.751,
+      "t_response_epoch": 1789070215.195,
+      "latency_s": 1.444,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3020,
+          "ch670": 1769,
+          "ch510": 1924,
+          "ch410": 235,
+          "ch620": 2977,
+          "ch470": 1047,
+          "ch550": 2681,
+          "ch440": 1102
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos1-dx-30-3-1789070213751"
+      },
+      "position": {
+        "index": 1,
+        "dx": -30.0,
+        "x": 33.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 33.88
+      },
+      "stage": "pos1-dx-30"
+    },
+    {
+      "experiment_id": "pos2-dx+0-1-1789070228831",
+      "label": "pos2-dx+0-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 243,
+        "ch440": 1148,
+        "ch470": 1082,
+        "ch510": 1973,
+        "ch550": 2747,
+        "ch583": 3091,
+        "ch620": 3051,
+        "ch670": 1819
+      },
+      "total": 15154,
+      "t_request_utc": "2026-09-10T19:57:08.831Z",
+      "t_response_utc": "2026-09-10T19:57:10.255Z",
+      "t_request_epoch": 1789070228.831,
+      "t_response_epoch": 1789070230.255,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3091,
+          "ch670": 1819,
+          "ch510": 1973,
+          "ch410": 243,
+          "ch620": 3051,
+          "ch470": 1082,
+          "ch550": 2747,
+          "ch440": 1148
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos2-dx+0-1-1789070228831"
+      },
+      "position": {
+        "index": 2,
+        "dx": 0.0,
+        "x": 63.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos2-dx+0"
+    },
+    {
+      "experiment_id": "pos2-dx+0-2-1789070230255",
+      "label": "pos2-dx+0-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 243,
+        "ch440": 1148,
+        "ch470": 1082,
+        "ch510": 1972,
+        "ch550": 2747,
+        "ch583": 3088,
+        "ch620": 3049,
+        "ch670": 1819
+      },
+      "total": 15148,
+      "t_request_utc": "2026-09-10T19:57:10.255Z",
+      "t_response_utc": "2026-09-10T19:57:11.679Z",
+      "t_request_epoch": 1789070230.255,
+      "t_response_epoch": 1789070231.679,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3088,
+          "ch670": 1819,
+          "ch510": 1972,
+          "ch410": 243,
+          "ch620": 3049,
+          "ch470": 1082,
+          "ch550": 2747,
+          "ch440": 1148
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos2-dx+0-2-1789070230255"
+      },
+      "position": {
+        "index": 2,
+        "dx": 0.0,
+        "x": 63.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos2-dx+0"
+    },
+    {
+      "experiment_id": "pos2-dx+0-3-1789070231680",
+      "label": "pos2-dx+0-3",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 243,
+        "ch440": 1146,
+        "ch470": 1081,
+        "ch510": 1968,
+        "ch550": 2739,
+        "ch583": 3079,
+        "ch620": 3039,
+        "ch670": 1812
+      },
+      "total": 15107,
+      "t_request_utc": "2026-09-10T19:57:11.680Z",
+      "t_response_utc": "2026-09-10T19:57:13.084Z",
+      "t_request_epoch": 1789070231.68,
+      "t_response_epoch": 1789070233.084,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3079,
+          "ch670": 1812,
+          "ch510": 1968,
+          "ch410": 243,
+          "ch620": 3039,
+          "ch470": 1081,
+          "ch550": 2739,
+          "ch440": 1146
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos2-dx+0-3-1789070231680"
+      },
+      "position": {
+        "index": 2,
+        "dx": 0.0,
+        "x": 63.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 42.0
+      },
+      "stage": "pos2-dx+0"
+    },
+    {
+      "experiment_id": "pos3-dx+30-1-1789070246704",
+      "label": "pos3-dx+30-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 254,
+        "ch440": 1226,
+        "ch470": 1136,
+        "ch510": 2061,
+        "ch550": 2866,
+        "ch583": 3216,
+        "ch620": 3153,
+        "ch670": 1869
+      },
+      "total": 15781,
+      "t_request_utc": "2026-09-10T19:57:26.704Z",
+      "t_response_utc": "2026-09-10T19:57:28.128Z",
+      "t_request_epoch": 1789070246.704,
+      "t_response_epoch": 1789070248.128,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3216,
+          "ch670": 1869,
+          "ch510": 2061,
+          "ch410": 254,
+          "ch620": 3153,
+          "ch470": 1136,
+          "ch550": 2866,
+          "ch440": 1226
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos3-dx+30-1-1789070246704"
+      },
+      "position": {
+        "index": 3,
+        "dx": 30.0,
+        "x": 93.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 34.12
+      },
+      "stage": "pos3-dx+30"
+    },
+    {
+      "experiment_id": "pos3-dx+30-2-1789070248128",
+      "label": "pos3-dx+30-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 255,
+        "ch440": 1226,
+        "ch470": 1136,
+        "ch510": 2059,
+        "ch550": 2866,
+        "ch583": 3215,
+        "ch620": 3153,
+        "ch670": 1869
+      },
+      "total": 15779,
+      "t_request_utc": "2026-09-10T19:57:28.128Z",
+      "t_response_utc": "2026-09-10T19:57:29.533Z",
+      "t_request_epoch": 1789070248.128,
+      "t_response_epoch": 1789070249.533,
+      "latency_s": 1.405,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3215,
+          "ch670": 1869,
+          "ch510": 2059,
+          "ch410": 255,
+          "ch620": 3153,
+          "ch470": 1136,
+          "ch550": 2866,
+          "ch440": 1226
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos3-dx+30-2-1789070248128"
+      },
+      "position": {
+        "index": 3,
+        "dx": 30.0,
+        "x": 93.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 34.12
+      },
+      "stage": "pos3-dx+30"
+    },
+    {
+      "experiment_id": "pos3-dx+30-3-1789070249533",
+      "label": "pos3-dx+30-3",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 254,
+        "ch440": 1225,
+        "ch470": 1135,
+        "ch510": 2061,
+        "ch550": 2865,
+        "ch583": 3216,
+        "ch620": 3153,
+        "ch670": 1869
+      },
+      "total": 15778,
+      "t_request_utc": "2026-09-10T19:57:29.533Z",
+      "t_response_utc": "2026-09-10T19:57:30.937Z",
+      "t_request_epoch": 1789070249.533,
+      "t_response_epoch": 1789070250.937,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 3216,
+          "ch670": 1869,
+          "ch510": 2061,
+          "ch410": 254,
+          "ch620": 3153,
+          "ch470": 1135,
+          "ch550": 2865,
+          "ch440": 1225
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "pos3-dx+30-3-1789070249533"
+      },
+      "position": {
+        "index": 3,
+        "dx": 30.0,
+        "x": 93.88,
+        "y": 225.0,
+        "z": 129.0,
+        "slot_margin_mm": 34.12
+      },
+      "stage": "pos3-dx+30"
+    },
+    {
+      "experiment_id": "reseat-confirm-1-1789070316092",
+      "label": "reseat-confirm-1",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 6,
+        "ch440": 7,
+        "ch470": 13,
+        "ch510": 166,
+        "ch550": 177,
+        "ch583": 45,
+        "ch620": 28,
+        "ch670": 25
+      },
+      "total": 467,
+      "t_request_utc": "2026-09-10T19:58:36.092Z",
+      "t_response_utc": "2026-09-10T19:58:37.516Z",
+      "t_request_epoch": 1789070316.092,
+      "t_response_epoch": 1789070317.516,
+      "latency_s": 1.424,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 45,
+          "ch670": 25,
+          "ch510": 166,
+          "ch410": 6,
+          "ch620": 28,
+          "ch470": 13,
+          "ch550": 177,
+          "ch440": 7
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "reseat-confirm-1-1789070316092"
+      },
+      "position": null,
+      "stage": "reseat-confirm"
+    },
+    {
+      "experiment_id": "reseat-confirm-2-1789070317516",
+      "label": "reseat-confirm-2",
+      "command": {
+        "R": 0,
+        "Y": 0,
+        "B": 0
+      },
+      "channels": {
+        "ch410": 5,
+        "ch440": 6,
+        "ch470": 13,
+        "ch510": 166,
+        "ch550": 177,
+        "ch583": 45,
+        "ch620": 28,
+        "ch670": 26
+      },
+      "total": 466,
+      "t_request_utc": "2026-09-10T19:58:37.516Z",
+      "t_response_utc": "2026-09-10T19:58:38.920Z",
+      "t_request_epoch": 1789070317.516,
+      "t_response_epoch": 1789070318.92,
+      "latency_s": 1.404,
+      "attempt": 1,
+      "raw": {
+        "sensor_data": {
+          "ch583": 45,
+          "ch670": 26,
+          "ch510": 166,
+          "ch410": 5,
+          "ch620": 28,
+          "ch470": 13,
+          "ch550": 177,
+          "ch440": 6
+        },
+        "command": {
+          "Y": 0,
+          "B": 0,
+          "R": 0
+        },
+        "experiment_id": "reseat-confirm-2-1789070317516"
+      },
+      "position": null,
+      "stage": "reseat-confirm"
+    }
+  ]
+}

@@ -163,18 +163,32 @@ class SensorLink:
             "Grant this credential both publish AND subscribe."
         )
 
-    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2):
-        """Command one reading and return a dict of the 8 channels plus metadata."""
+    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2, settings=None):
+        """Command one reading and return a dict of the 8 channels plus metadata.
+
+        ``settings`` (e.g. ``{"gain": 512, "atime": 200, "astep": 999}``) asks the
+        board for a different gain and integration time for this one reading. It
+        needs the firmware change in ``../pico/`` (sensor_settings.py); a board
+        without it ignores the key, so a reply that does not echo
+        ``sensor_settings`` back is refused rather than mislabelled.
+        """
         timeout = timeout or self.timeout
         r, y, b = rgb
         last_error = None
         for attempt in range(1, retries + 2):
             # One clock read feeds both the id and the timestamp, so the epoch
             # baked into experiment_id and the explicit field cannot disagree.
-            started = time.time()
+            # Truncate to whole milliseconds once, and derive the id, the ISO
+            # string and the epoch field from that single value. Rounding one
+            # and truncating another let them disagree by 1 ms, which is
+            # harmless but makes the id and the field stop being interchangeable
+            # for anything matching on them.
+            started = int(time.time() * 1000) / 1000.0
             experiment_id = f"{label or 'read'}-{int(started * 1000)}"
             payload = {"command": {"R": r, "Y": y, "B": b},
                        "experiment_id": experiment_id}
+            if settings is not None:
+                payload["settings"] = settings
             self._drain()
             self._client.publish(self.command_topic, json.dumps(payload), qos=1)
 
@@ -187,10 +201,16 @@ class SensorLink:
                         body = json.loads(raw.decode("utf-8", "replace"))
                     except ValueError:
                         continue
+                    if body.get("experiment_id") == experiment_id and "error" in body:
+                        raise SensorError(f"the board refused the settings: {body['error']}")
                     data = body.get("sensor_data") or body
                     if not any(c in data for c in CHANNELS):
                         continue
-                    answered = time.time()
+                    if settings is not None and "sensor_settings" not in body:
+                        raise SensorError(
+                            "the board ignored the settings: it is running firmware "
+                            "without sensor_settings.py (see wireless-color-sensor/pico/)")
+                    answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {
                         "experiment_id": experiment_id,
@@ -205,10 +225,11 @@ class SensorLink:
                         # a precision the round trip does not have.
                         "t_request_utc": _iso(started),
                         "t_response_utc": _iso(answered),
-                        "t_request_epoch": round(started, 3),
-                        "t_response_epoch": round(answered, 3),
+                        "t_request_epoch": started,
+                        "t_response_epoch": answered,
                         "latency_s": round(answered - started, 3),
                         "attempt": attempt,
+                        "sensor_settings": body.get("sensor_settings"),
                         "raw": body,
                     }
                 time.sleep(0.02)

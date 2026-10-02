@@ -1,0 +1,206 @@
+{
+  "generated": "2026-09-10T03:15:52.377342+00:00",
+  "live": true,
+  "checks": [
+    {
+      "name": "read() returns all five time fields",
+      "ok": true,
+      "detail": "t_request_utc, t_response_utc, t_request_epoch, t_response_epoch, latency_s"
+    },
+    {
+      "name": "experiment_id epoch == t_request_epoch (one clock read, not two)",
+      "ok": true,
+      "detail": "id ms 1789010112447 vs field ms 1789010112447"
+    },
+    {
+      "name": "ISO strings agree with the epochs to the millisecond",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "request <= response, and both inside an independent bracket",
+      "ok": true,
+      "detail": "outer 0.402s, inner 0.402s"
+    },
+    {
+      "name": "latency_s is the measured round trip, not a constant",
+      "ok": true,
+      "detail": "0.402s against an injected 0.4s delay"
+    },
+    {
+      "name": "each document gets its own timestamp",
+      "ok": true,
+      "detail": "180.0s apart, as the readings were"
+    },
+    {
+      "name": "timestamp == the reading's own response time",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stored_at is the shared write time and is later than both readings",
+      "ok": true,
+      "detail": "write time is 200s after the first reading"
+    },
+    {
+      "name": "t_request is carried too, so the bracket survives the write",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a pre-fix reading falls back to the write time instead of raising",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "prefers the explicit field when a reading has one",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "falls back to the experiment_id epoch for 2026-09-09 data",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "a malformed id costs one row, not the index",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "same number of readings",
+      "ok": true,
+      "detail": "114 readings"
+    },
+    {
+      "name": "every row identical (times, offsets, links)",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "markdown identical",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "all 114 fall inside the known stream segment",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "every frame's OCR'd clock matches the reading it belongs to",
+      "ok": true,
+      "detail": "27 frames, worst error 0.8s"
+    },
+    {
+      "name": "every frame's reading is in the index",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "frame offsets and index offsets agree",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "the -67 s archive correction is what both sides used",
+      "ok": true,
+      "detail": "frames -67.0s, index -67.0s"
+    },
+    {
+      "name": "every frame named in frames.json is committed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "plot_spectra.py runs clean",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "same set of spectra as committed",
+      "ok": true,
+      "detail": "27 plots"
+    },
+    {
+      "name": "still 300 px wide, as asked for",
+      "ok": true,
+      "detail": "300x216 px"
+    },
+    {
+      "name": "this machine's UTC agrees with an internet time source",
+      "ok": true,
+      "detail": "skew -0.5s (HTTP Date, 1 s resolution)"
+    },
+    {
+      "name": "broker reachable and delivering, straight from the runner",
+      "ok": true,
+      "detail": "no Pi, no tailnet needed for the sensor link"
+    },
+    {
+      "name": "reading 1: the board answers",
+      "ok": false,
+      "detail": "the sensor did not answer: no reply within 15s (attempt 2)"
+    },
+    {
+      "name": "both documents come back from digital-wetlab.sensor-data-selftest",
+      "ok": true,
+      "detail": "2 found  (synthetic records: the board was asleep)"
+    },
+    {
+      "name": "stored timestamp == the reading's own instant, through BSON and back",
+      "ok": true,
+      "detail": "worst drift 0.0 ms"
+    },
+    {
+      "name": "the two documents do NOT share one timestamp (this was the bug)",
+      "ok": true,
+      "detail": "163s apart in the database"
+    },
+    {
+      "name": "stored_at kept separately, equal to the write time",
+      "ok": true,
+      "detail": "the first reading would have been 175s late under the old scheme"
+    },
+    {
+      "name": "t_request survives the write, so the bracket is queryable",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "stream_index reads the new fields on a brand-new reading",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "scratch documents cleaned up again",
+      "ok": true,
+      "detail": "0 left in sensor-data-selftest"
+    },
+    {
+      "name": "the xscan documents are there to check",
+      "ok": true,
+      "detail": "122 documents from 11 runs"
+    },
+    {
+      "name": "none of them were written by the fixed code -- it has never run for real",
+      "ok": true,
+      "detail": "0 carry stored_at; the fix landed after the last run"
+    },
+    {
+      "name": "the stored timestamp was always LATER than the reading, never earlier",
+      "ok": true,
+      "detail": "n=122, min 2.8s"
+    },
+    {
+      "name": "and it was late by minutes, not milliseconds",
+      "ok": true,
+      "detail": "median 103s, worst 258s late"
+    },
+    {
+      "name": "every multi-reading run collapsed onto one write instant",
+      "ok": true,
+      "detail": "11 runs; the one with two distinct values straddled a millisecond boundary while looping, which is the same defect"
+    }
+  ]
+}
