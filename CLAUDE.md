@@ -396,8 +396,11 @@ truncation.
 
 **The `picam-ot2` camera now shows the atomizer room, not the OT-2.** As of 2026-10-01 that
 camera (the Pi behind `OT2_STREAM_CAM_HOSTNAME`) streams 144p at 2 fps under workflow
-`atomizer`. Its broadcasts are titled *atomizer stream picam-ot2, …* and go into the *atomizer
-Livestreams Playlist* (`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
+`atomizer`. Since 19:55 MDT it is also pixelated on the Pi, to 32×18 solid blocks
+(`PIXELATE_BLOCKS` in its `my_secrets.py`, another local `device.py` patch), so that it shows
+activity rather than detail. The overlay is drawn afterwards and stays sharp. Its broadcasts
+are titled *atomizer stream picam-ot2, …* and go into the *atomizer Livestreams Playlist*
+(`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
 and the archive tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md),
 along with how the Lambda matches a workflow name to playlists. The match is by substring,
 which matters before renaming one.

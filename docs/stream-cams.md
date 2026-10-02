@@ -13,7 +13,7 @@ in this repo. This page records what is set and what has been changed.
 | --- | --- |
 | Pi | Raspberry Pi Zero 2 W behind `OT2_STREAM_CAM_HOSTNAME` (user `OT2_STREAM_CAM_USERNAME`, sudo password `OT2_STREAM_CAM_PASSWORD`), Camera Module 3 (imx708), Debian 13 |
 | Points at | the atomizer room, as of 2026-10-01, **not the OT-2**. It streams as `CAM_NAME = "picam-ot2"` and `WORKFLOW_NAME = "atomizer"`, so broadcasts are titled *atomizer stream picam-ot2, …* and go into the [*atomizer Livestreams Playlist*](https://www.youtube.com/playlist?list=PLeosQpHvsjiY) (`PLeosQpHvsjiY`). Until 2026-10-01 17:38 MDT the workflow was `OT-2`, whose broadcasts the Lambda files into the *OT-2 Livestreams Playlist* (`PLdKz1vXA-rfQ`). The robot itself is cabled to the Pi behind `RPI_STREAM_CAM_HOSTNAME` ([`wireless-color-sensor/ot2/README.md`](../wireless-color-sensor/ot2/README.md#run-it)) |
-| Client | `~/ac-training-lab/src/ac_training_lab/picam/device.py`, upstream `87a3ccb` plus a local patch, run by `device.service`. The patch adds `SENSOR_MODE`, and on the libx264 path a 2 s keyframe interval and (since 2026-10-01) `-r FRAME_RATE`. Since 2026-10-01 18:52 it also passes `--flush` to `rpicam-vid` and `-flags low_delay` to ffmpeg's video input; see [The overlay that skipped seconds](#the-overlay-that-skipped-seconds). The file before the `-r` change is `~/device.py.bak-2026-10-01`, and before the `--flush` change `~/device.py.bak-2026-10-01-flush` |
+| Client | `~/ac-training-lab/src/ac_training_lab/picam/device.py`, upstream `87a3ccb` plus a local patch, run by `device.service`. The patch adds `SENSOR_MODE`, and on the libx264 path a 2 s keyframe interval and (since 2026-10-01) `-r FRAME_RATE`. Since 2026-10-01 18:52 it also passes `--flush` to `rpicam-vid` and `-flags low_delay` to ffmpeg's video input; see [The overlay that skipped seconds](#the-overlay-that-skipped-seconds). Since 19:55 it also reads an optional `PIXELATE_BLOCKS`; see [Pixelation](#pixelation). The file before the `-r` change is `~/device.py.bak-2026-10-01`, before the `--flush` change `~/device.py.bak-2026-10-01-flush`, and before pixelation `~/device.py.bak-2026-10-01-pixelate` |
 | Settings | `my_secrets.py` in the same directory, mode `600`. It also holds the Lambda URL, so read individual lines rather than `cat` it |
 | Watchdog | `stream-watchdog.timer` runs `/usr/local/bin/stream-watchdog.sh` every minute. It restarts `device.service` after 3 checks in a row with no RTMP bytes acknowledged, at most 6 times a day by default |
 | Reboots | root crontab, `0 5,13,21 * * *`. Each boot starts a fresh broadcast from whatever `my_secrets.py` says |
@@ -28,6 +28,7 @@ in this repo. This page records what is set and what has been changed.
 | `FRAME_RATE` | `2`. Was `10` until 2026-10-01 |
 | `SENSOR_MODE` | `"2304:1296"`, the full-field binned imx708 mode. Without it the sensor picks a cropped mode for small outputs |
 | `TIMESTAMP_OVERLAY` | `True`: lab local time, top left. This also forces the libx264 re-encode |
+| `PIXELATE_BLOCKS` | `32`: the picture is averaged into 32×18 solid blocks before the timestamp is drawn, so the timestamp stays sharp. Added 2026-10-01 19:55, see [Pixelation](#pixelation) |
 | `CAMERA_VFLIP` / `CAMERA_HFLIP` | `True` / `True` (the camera is mounted upside down) |
 | `CAMERA_ROTATION` | `0` |
 | `PRIVACY_STATUS` | `"public"` |
@@ -69,6 +70,158 @@ carry it too. For the unit's state use `systemctl show device.service -p ActiveS
 -p ActiveEnterTimestamp -p NRestarts`, and pipe journal output through
 `sed -E 's#live2/[A-Za-z0-9_-]+#live2/<key>#g'`.
 
+### Pixelation
+
+`PIXELATE_BLOCKS` in `my_secrets.py` sets how coarse the picture is: the number of blocks
+along the frame's long side, so `32` gives a 32×18 grid at 16:9. ffmpeg averages each frame
+down to that grid, scales it back up with nearest-neighbour so that every block is one solid
+colour, and only then draws the timestamp. Apart from the timestamp, YouTube never receives
+anything finer than the blocks. Fewer blocks means less detail. `None`, `0` or leaving the
+line out turns it off. Change it like any other setting, with one restart.
+
+The setting counts blocks, not pixels, so the level of detail stays the same if `RESOLUTION`
+changes. That also means the resolution could go back up without adding detail. At 360p, for
+example, the timestamp would cover about a third of the width instead of three quarters, and
+each block would arrive 20 px wide, so the player's upscaling would blur its edges less. That
+has not been tried, and would probably cost some upload; the stream is still at 144p.
+
+The same 144p frame at three levels, enlarged with smoothing the way a player shows the 144p
+rendition:
+
+![One 144p frame of the atomizer room unpixelated, and at 64, 32 and 16 blocks across](images/stream-cam-picam-ot2-pixelate-levels-2026-10-01.png)
+
+At 32, the layout of the room still shows (the blue cabinet, the white bench, the red chair),
+but nothing on the bench or the cabinet can be made out. The three pixelated panels were made
+offline from the "before" frame, with the same filter chain ffmpeg runs on the Pi:
+
+```
+scale=32:18:flags=area,format=yuv444p,scale=256:144:flags=neighbor,format=yuv420p,drawtext=…
+```
+
+- `area` averages every pixel in a block, rather than picking one.
+- The grid is held as 4:4:4. In the stream's 4:2:0, colour is stored at half resolution, so
+  each colour would span 2×2 blocks and bleed across their edges.
+- It runs after any rotation, so the blocks line up with the streamed frame, and before
+  `drawtext`, so the timestamp stays readable to people and to tesseract.
+
+The lines added to `my_secrets.py`:
+
+```python
+# Pixelation setting (optional)
+# Averages the picture into this many solid blocks along its long side, so
+# only coarse shapes and movement show (32 gives 32x18 at 16:9). Applied
+# before the timestamp overlay, which stays sharp. Counted in blocks rather
+# than pixels, so changing RESOLUTION keeps the same level of detail.
+# Like TIMESTAMP_OVERLAY, it requires re-encoding.
+# Set to None or 0 for a sharp picture.
+PIXELATE_BLOCKS = 32
+```
+
+<details>
+<summary>The <code>device.py</code> change, against the Pi's previous local version</summary>
+
+```diff
+--- a/device.py
++++ b/device.py
+@@ -22,6 +22,12 @@
+ except ImportError:
+     SENSOR_MODE = None
+ 
++# Optional setting; older my_secrets.py files may not define it.
++try:
++    from my_secrets import PIXELATE_BLOCKS
++except ImportError:
++    PIXELATE_BLOCKS = None
++
+ # Resolution mappings for YouTube-compatible resolutions
+ RESOLUTION_MAP = {
+     "144p": (256, 144),
+@@ -57,6 +63,7 @@
+     framerate=15,
+     timestamp_overlay=False,
+     sensor_mode=None,
++    pixelate_blocks=None,
+ ):
+     """
+     Starts the libcamera -> ffmpeg pipeline and returns two Popen objects:
+@@ -75,6 +82,10 @@
+             sensor mode. Some sensors (e.g. imx708) auto-select a
+             center-cropped mode for small outputs, losing field of view;
+             forcing the full-FOV binned mode avoids that.
++        pixelate_blocks: Optional number of blocks along the streamed
++            frame's long side (e.g. 32 gives 32x18 at 16:9). Each block
++            is one solid colour, so only coarse shapes and movement show.
++            The timestamp is drawn afterwards and stays sharp.
+     """
+     # Get the available camera command
+     camera_cmd = get_camera_command()
+@@ -136,6 +147,24 @@
+             "transpose=2"
+         )  # 90 degrees counter-clockwise (270 clockwise)
+ 
++    # Pixelate after rotating, so the blocks line up with the streamed frame,
++    # and before the timestamp, so the timestamp stays sharp. Average down to
++    # the block grid, then scale back up with nearest-neighbour. The grid is
++    # held as 4:4:4 so each block keeps its own colour; in 4:2:0 the colour
++    # would be shared by 2x2 neighbouring blocks.
++    if pixelate_blocks:
++        if rotation in (90, 270):
++            out_width, out_height = height, width
++        else:
++            out_width, out_height = width, height
++        block = max(out_width, out_height) / pixelate_blocks
++        grid_width = max(1, round(out_width / block))
++        grid_height = max(1, round(out_height / block))
++        video_filters.append(
++            f"scale={grid_width}:{grid_height}:flags=area,format=yuv444p,"
++            f"scale={out_width}:{out_height}:flags=neighbor,format=yuv420p"
++        )
++
+     # Add timestamp overlay if enabled
+     # Format: YYYY-MM-DD_HH-MM-SS. ffmpeg's localtime evaluates per-frame,
+     # so the overlay updates once per second at typical framerates.
+@@ -313,6 +342,15 @@
+             f"Must be a positive integer (e.g., 15, 24, 30)"
+         )
+ 
++    # Validate pixelation
++    if PIXELATE_BLOCKS is not None and (
++        not isinstance(PIXELATE_BLOCKS, int) or PIXELATE_BLOCKS < 0
++    ):
++        raise ValueError(
++            f"Invalid PIXELATE_BLOCKS '{PIXELATE_BLOCKS}'. "
++            f"Must be a positive integer (e.g., 32), or 0 or None for none"
++        )
++
+     # For 90/270 rotation, output is portrait (swapped dimensions)
+     if CAMERA_ROTATION in (90, 270):
+         output_width, output_height = height, width
+@@ -328,6 +366,10 @@
+     print(f"Using frame rate: {FRAME_RATE} fps")
+     print(f"Sensor mode: {SENSOR_MODE or 'auto'}")
+     print(f"Timestamp overlay: {'enabled' if TIMESTAMP_OVERLAY else 'disabled'}")
++    if PIXELATE_BLOCKS:
++        print(f"Pixelation: {PIXELATE_BLOCKS} blocks along the long side")
++    else:
++        print("Pixelation: off")
+ 
+     # End previous broadcast and start a new one via Lambda
+     end_previous_broadcast()
+@@ -354,6 +396,7 @@
+             FRAME_RATE,
+             TIMESTAMP_OVERLAY,
+             sensor_mode=SENSOR_MODE,
++            pixelate_blocks=PIXELATE_BLOCKS,
+         )
+         print("Stream started")
+         interrupted = False
+```
+
+</details>
+
+Like the `--flush` fix, this is only on this Pi. It would apply unchanged to any picam, and is
+worth upstreaming to `ac-training-lab` with the rest of the local patch.
+
 ### Renaming the workflow
 
 The Lambda ([`vertical-cloud-lab/streamingLambda`](https://github.com/vertical-cloud-lab/streamingLambda/blob/05eb749/chalicelib/ytb_api_utils.py))
@@ -105,6 +258,7 @@ That has two consequences for a rename:
 | 2026-10-01 17:38 | `WORKFLOW_NAME` `"OT-2"` → `"Atomizer"` and `FRAME_RATE` `10` → `2`. Stopped the service, ended the OT-2 broadcast `KhqPemW8hhc` [by hand](#renaming-the-workflow), started it | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5942678722) |
 | 2026-10-01 17:44 | `WORKFLOW_NAME` `"Atomizer"` → `"atomizer"`, to match the existing playlist's title and `powder doser`. `device.py` gains `-r FRAME_RATE`. `reset-failed`, then one restart | ffmpeg was sending 1.5 fps, see [above](#changing-a-setting) |
 | 2026-10-01 18:52 | `RESOLUTION` `"240p"` → `"144p"`. `device.py` gains `rpicam-vid --flush` and ffmpeg `-flags low_delay`. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5943385687): 144p, and the overlay was jumping several seconds at a time |
+| 2026-10-01 19:55 | `PIXELATE_BLOCKS = 32` added to `my_secrets.py`, and `device.py` gains the [pixelation](#pixelation) filter. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5944068559): pixelate on our side, so the stream shows what is happening without much detail |
 
 #### 720p → 240p
 
@@ -180,7 +334,8 @@ rendition is `229` (426×240), which after 2026-10-02 00:53 UTC is YouTube's ups
 assumes the size of the 720p overlay. Both still work on the earlier 720p archives, such as the
 2026-09-09 colour session. At 2 fps a frame grabbed at a given offset can be up to 0.5 s old,
 and on this camera's 2 fps broadcasts before 2026-10-02 00:53 UTC the overlay is not a
-reliable clock.
+reliable clock. From 2026-10-02 01:56 UTC the picture is [pixelated](#pixelation) but the
+overlay is not.
 
 #### 240p → 144p
 
@@ -258,10 +413,37 @@ mechanism, not measured on those archives.
 why the journal has no camera messages. ffmpeg's H.264 parser skips text between frames, and
 the journal shows no decode errors since 17:44.
 
+#### Pixelated, 32 blocks
+
+Both columns are at 144p and 2 fps, measured the same way over 60 s, about an hour into the
+unpixelated pipeline and 3–4 minutes into the pixelated one:
+
+| | 144p (before) | 144p, 32×18 blocks (after) |
+| --- | --- | --- |
+| ffmpeg CPU (of 400 %) | 9.4 % | 9.5 % |
+| `rpicam-vid` CPU | 1.1 % | 1.1 % |
+| ffmpeg memory (RSS) | 61 MB | 62 MB |
+| SoC temperature | 45.8 °C | 45.8 °C |
+| Upload to YouTube | 0.072 Mbit/s | 0.030 Mbit/s |
+| Broadcast | [`osNAv6qmots`](https://www.youtube.com/watch?v=osNAv6qmots) (ended by the restart) | [`m_ITxTwPlrA`](https://www.youtube.com/watch?v=m_ITxTwPlrA) |
+
+The upload more than halves, because solid blocks compress well. The two extra scales at
+256×144 cost no measurable CPU. The startup log records the setting as `Pixelation: 32 blocks
+along the long side`. ffmpeg's progress line has shown no `dup=` or `drop=` since the restart,
+and the watchdog logged no failed checks.
+
+A frame of `m_ITxTwPlrA` from YouTube's 144p rendition (`269`), at its native size:
+
+![Pixelated 144p frame of the atomizer room from YouTube, with a sharp timestamp](images/stream-cam-picam-ot2-pixelated-2026-10-01.png)
+
+The overlay survives it. 62 s of that rendition was fetched through the other stream-cam Pi
+and decoded at 2 fps, and tesseract read all 125 frames. Apart from the broadcast's first 7 s,
+which held 19-56-23, it showed every second from 19-56-24 to 19-57-19, two frames each.
+
 **Not yet observed:** a scheduled reboot after these changes. The first is at 21:00 MDT on
-2026-10-01. It should come back as `atomizer` at 144p and 2 fps, with the flush fix, since
-the settings are in `my_secrets.py` and the fix is in `device.py`, but nobody has watched one
-do so yet.
+2026-10-01. It should come back as `atomizer` at 144p and 2 fps, pixelated, with the flush
+fix, since the settings are in `my_secrets.py` and the fixes are in `device.py`, but nobody
+has watched one do so yet.
 
 Older records for this Pi are not on `main` yet:
 
