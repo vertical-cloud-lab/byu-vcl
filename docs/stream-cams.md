@@ -208,6 +208,9 @@ The 144p column also has `--flush` and `low_delay`, described next. Neither adds
 At 2 fps the overlay stood still for 3–4 s and then jumped. In 60 s of the live 240p rendition,
 read frame by frame with tesseract, it showed 21 distinct times; 15 of the 20 steps between
 them were 3 or 4 s. In 60 s at 144p after the fix it shows every second, about 2 frames each.
+Below, one frame every 0.5 s from each sample, decoded in order from YouTube's HLS segments:
+
+![Overlay before and after: 240p holds 18-45-33 for 3 s then jumps to 18-45-36; 144p ticks every second, two frames per second](images/stream-cam-picam-ot2-overlay-before-after-2026-10-01.png)
 
 **Cause: `rpicam-vid` buffered its output.** With `-o -` it `fwrite`s each frame to stdout,
 and stdout into a pipe is block-buffered unless `--flush` is given: nothing reaches ffmpeg
