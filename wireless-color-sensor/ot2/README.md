@@ -1271,6 +1271,9 @@ found again in a separately downloaded copy of its source. Two checks from runs 
   isn't opaque reads differently over black and over white, so test the paints over both.
 - **ams's calibration note** calls our white/black correction its simplest method; more
   reference targets "can increase accuracy for calibration dramatically".
+- **Peer-reviewed AS7341 studies** (30 read): none measured paint or a 96-well plate. They support
+  fixing the gain and raising counts with the integration time, using the Clear and NIR channels in
+  any calibration, and calibrating each unit (channel peaks can sit 10 nm off).
 - **The ±10 nm channel tolerance in the datasheet is not what limits the score:** moving every
   passband within it changes the miss by at most ±0.015.
 - **Two earlier statements corrected:** the gain is 256x, not 128x (here and in

@@ -314,6 +314,36 @@ full.
   filter colorimeters read "a set of stable color standards which span the gamut of color space … as a
   matter of routine".
 
+## What peer-reviewed AS7341 studies add
+
+About 60 candidate papers were screened (OpenAlex, Crossref, Europe PMC, arXiv) and 30 read in full.
+**None measured paint, or anything in a 96-well plate, and none reports a colour error (ΔE) against a
+reference spectrophotometer on a colour chart.** So nobody has published how accurate a setup like
+ours can be. What they did measure:
+
+| what | finding | source |
+| --- | --- | --- |
+| fix the gain | count scatter was more than 10× larger when the gain was changed than when the integration time was (their Tables 3–4): "the analogue gain should be fixed and exposure regulated exclusively through the integration time." They kept "Only measurements yielding raw counts between 10 % and 80 % of the full-scale (FS) range" | Besozzi *et al.* 2026, *ACTA IMEKO* 15(2), [10.21014/actaimeko.v15i2.2267](https://doi.org/10.21014/actaimeko.v15i2.2267) |
+| angle of incidence | "an increased angle of incidence of light leads to a blueshift of the filter peak wavelength", with "a reduced peak response and an increased full-width at half-maximum (FWHM)"; for diffusers, "PTFE foils or thin white glass sheets" | Klüppel *et al.* 2026, *IEEE Sensors J.*, [10.1109/jsen.2026.3711363](https://doi.org/10.1109/jsen.2026.3711363) |
+| each channel sees differently | "Due to the matrix arrangement, the channel's response to light from different directions is different." | Klüppel *et al.* 2026, *Measurement* 270:120734, [10.1016/j.measurement.2026.120734](https://doi.org/10.1016/j.measurement.2026.120734) |
+| use the Clear and NIR channels | "some channels in the blue and green regions exhibit spectral leakage in the NIR range"; adding Clear and NIR to the calibration raised R² from 79.9% to 94.8% | same |
+| calibrate each unit | "the wavelength of peak sensitivity for each channel may deviate by 10 nm, and the gain may vary by up to 66% between sensors of the same model"; use "noticeably greater" numbers of calibration conditions than channels | Rodriguez *et al.* 2025, *Sensors* 25:7269, [10.3390/s25237269](https://doi.org/10.3390/s25237269) |
+| colour-chart calibration | the only AS7341 reflectance calibration on a colour chart ("24 patches with known reflectance curves", a small neural network) cut the error on 9 new coloured papers "from 0.1137 to 0.03901" (reflectance) | Botero-Valencia *et al.* 2024, *Instruments* 8:24, [10.3390/instruments8010024](https://doi.org/10.3390/instruments8010024) |
+| references close in time | AS7341 drift "below 1% over all testing time" (60 min), "or below 0.5% considering a time period below 5 min" | Crivellaro *et al.* 2024, *Sensors* 24:6154, [10.3390/s24186154](https://doi.org/10.3390/s24186154) |
+| average repeats | "Averaging the five replicates before comparison reduces the RMSE", 0.0413 → 0.0355 | Zainuddin *et al.* 2026, *Engineering Journal* 30(8), [10.4186/ej.2026.30.8.81](https://doi.org/10.4186/ej.2026.30.8.81) |
+| liquids | 3D-printed reflectance photometers with an AS7341, dyes in solution: "sensitivity comparable to a conventional spectrophotometer" (abstract only; the paper is closed) | Machado *et al.* 2024, *Anal. Methods* 16:8427, [10.1039/d4ay01831a](https://doi.org/10.1039/d4ay01831a) |
+| geometry | for matt surfaces, low-cost spectrophotometers use "45°/0° or 0°/45° geometry … due to excluded gloss" | Samec *et al.* 2024, *Sensors* 24:8208, [10.3390/s24248208](https://doi.org/10.3390/s24248208) |
+
+The Acceleration Consortium's own protocol paper gives no accuracy figures, only the caveat
+"Environmental noise (e.g., light conditions) and hardware variation (LED, sensor, sensor positioning,
+etc.) may affect the results obtained." (Baird & Sparks 2023, *STAR Protocols*,
+[10.1016/j.xpro.2023.102329](https://doi.org/10.1016/j.xpro.2023.102329)).
+
+**What this adds to the list above:** fix the gain and raise the counts with the integration time
+(item 2 of the new things); feed the Clear and NIR channels, which the firmware currently discards,
+into any calibration; and treat the datasheet's channel centres as ±10 nm until our own unit is
+calibrated. These papers were each downloaded once; their quotations were found again in that copy.
+
 ## Our own check: the channel tolerance is not what limits the score
 
 The datasheet guarantees each visible channel's centre wavelength only to **typ ± 10 nm** (Figs. 8–15:
@@ -350,12 +380,13 @@ tolerance's.** Measuring our unit's channel centres would matter only once the r
    `pdftotext` (web pages: their saved text).
 2. The ams documents, the two NPL guides and the ISO 5-4 and ISO 2469 previews were downloaded a
    second time, separately, and compared byte for byte with the first copies; all were identical.
+   The papers were downloaded once (every DOI checked against Crossref).
 3. Every quotation in this file was then searched for in those texts, with only whitespace,
    line-break hyphens, quote marks and ligatures normalised, by [`check_quotes.py`](check_quotes.py)
    with the list in [`accuracy-sources-quotes-2026-10-02.json`](accuracy-sources-quotes-2026-10-02.json)
-   (112 quotations, each with its source, section and download link). **All 112 were found.** One,
-   Revvity's "medium cross-talk", matches only with the line-break hyphen ignored, which is how that
-   PDF breaks the word.
+   (133 quotations, each with its source, section and download link). **All 133 were found.** Two
+   (Revvity's "medium cross-talk" and Klüppel's "full-width") match only with the line-break hyphen
+   ignored, which is how those PDFs break the word.
 4. Numbers read from tables (gain ratios, centre wavelengths, dark counts) were also checked against
    the table's column positions, because `pdftotext` can shift a value into the wrong column.
 

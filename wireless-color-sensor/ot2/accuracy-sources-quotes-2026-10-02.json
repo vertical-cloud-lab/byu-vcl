@@ -110,6 +110,56 @@
    "file": "nist-germer-2014-spectrophotometry.pdf",
    "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=915098",
    "title": "Germer TA, Zwinkels JC, Tsai BK (eds.), Spectrophotometry: Accurate Measurement of Optical Properties of Materials, Experimental Methods in the Physical Sciences 46, Academic Press 2014 (via NIST)"
+  },
+  "BESOZZI2026": {
+   "file": "besozzi-2026-actaimeko.pdf",
+   "url": "https://doi.org/10.21014/actaimeko.v15i2.2267",
+   "title": "Besozzi et al. 2026, ACTA IMEKO 15(2)"
+  },
+  "KLUEPPEL2026-IEEE": {
+   "file": "klueppel-2026-ieee-sensors.pdf",
+   "url": "https://doi.org/10.1109/jsen.2026.3711363",
+   "title": "Klueppel et al. 2026, IEEE Sensors Journal"
+  },
+  "KLUEPPEL2026-MEAS": {
+   "file": "klueppel-2026-measurement.pdf",
+   "url": "https://doi.org/10.1016/j.measurement.2026.120734",
+   "title": "Klueppel et al. 2026, Measurement 270:120734"
+  },
+  "RODRIGUEZ2025": {
+   "file": "rodriguez-2025-sensors.xml",
+   "url": "https://doi.org/10.3390/s25237269",
+   "title": "Rodriguez et al. 2025, Sensors 25:7269 (PMC full-text XML)"
+  },
+  "BOTERO2024": {
+   "file": "botero-valencia-2024-instruments.pdf",
+   "url": "https://doi.org/10.3390/instruments8010024",
+   "title": "Botero-Valencia et al. 2024, Instruments 8:24"
+  },
+  "CRIVELLARO2024": {
+   "file": "crivellaro-2024-sensors.xml",
+   "url": "https://doi.org/10.3390/s24186154",
+   "title": "Crivellaro et al. 2024, Sensors 24:6154 (PMC full-text XML)"
+  },
+  "ZAINUDDIN2026": {
+   "file": "zainuddin-2026-engj.pdf",
+   "url": "https://doi.org/10.4186/ej.2026.30.8.81",
+   "title": "Zainuddin et al. 2026, Engineering Journal 30(8)"
+  },
+  "MACHADO2024": {
+   "file": "machado-2024-anal-methods-abstract.txt",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/39555593/",
+   "title": "Machado et al. 2024, Anal. Methods 16:8427 (PubMed abstract)"
+  },
+  "SAMEC2024": {
+   "file": "samec-2024-sensors.xml",
+   "url": "https://doi.org/10.3390/s24248208",
+   "title": "Samec et al. 2024, Sensors 24:8208 (PMC full-text XML)"
+  },
+  "BAIRD2023": {
+   "file": "baird-2023-star-protocols.xml",
+   "url": "https://doi.org/10.1016/j.xpro.2023.102329",
+   "title": "Baird & Sparks 2023, STAR Protocols (PMC full-text XML)"
   }
  },
  "quotes": [
@@ -784,6 +834,132 @@
    "source": "NIST-BOOK",
    "where": "§10.3, p. 384",
    "quote": "The measurement of a set of stable color standards which span the gamut of color space should be performed as a matter of routine with tristimulus colorimeters"
+  },
+  {
+   "id": "bes-window",
+   "source": "BESOZZI2026",
+   "where": "p. 4",
+   "quote": "Only measurements yielding raw counts between 10 % and 80 % of the full-scale (FS) range were retained."
+  },
+  {
+   "id": "bes-fixgain",
+   "source": "BESOZZI2026",
+   "where": "p. 10",
+   "quote": "the analogue gain should be fixed and exposure regulated exclusively through the integration time."
+  },
+  {
+   "id": "kl-blueshift",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 9",
+   "quote": "an increased angle of incidence of light leads to a blueshift of the filter peak wavelength"
+  },
+  {
+   "id": "kl-fwhm",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 9",
+   "quote": "a higher incidence angle leads to a reduced peak response and an increased full-width at half-maximum (FWHM)"
+  },
+  {
+   "id": "kl-ptfe",
+   "source": "KLUEPPEL2026-IEEE",
+   "where": "p. 8",
+   "quote": "PTFE foils or thin white glass sheets"
+  },
+  {
+   "id": "kl-direction",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 4",
+   "quote": "Due to the matrix arrangement, the channel's response to light from different directions is different."
+  },
+  {
+   "id": "kl-nir",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "some channels in the blue and green regions exhibit spectral leakage in the NIR range"
+  },
+  {
+   "id": "kl-r2a",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "R2 = 79.858%"
+  },
+  {
+   "id": "kl-r2b",
+   "source": "KLUEPPEL2026-MEAS",
+   "where": "p. 6",
+   "quote": "R2 = 94.788 %"
+  },
+  {
+   "id": "rod-66",
+   "source": "RODRIGUEZ2025",
+   "where": "§6",
+   "quote": "the wavelength of peak sensitivity for each channel may deviate by 10 nm, and the gain may vary by up to 66% between sensors of the same model."
+  },
+  {
+   "id": "rod-illum",
+   "source": "RODRIGUEZ2025",
+   "where": "§6.1",
+   "quote": "the number of calibration illuminants be noticeably greater than the number of channels."
+  },
+  {
+   "id": "bv-24",
+   "source": "BOTERO2024",
+   "where": "§2",
+   "quote": "24 patches with known reflectance curves"
+  },
+  {
+   "id": "bv-mae",
+   "source": "BOTERO2024",
+   "where": "p. 13",
+   "quote": "from 0.1137 to 0.03901"
+  },
+  {
+   "id": "criv-drift",
+   "source": "CRIVELLARO2024",
+   "where": "results",
+   "quote": "below 1% over all testing time"
+  },
+  {
+   "id": "criv-5min",
+   "source": "CRIVELLARO2024",
+   "where": "results",
+   "quote": "or below 0.5% considering a time period below 5 min"
+  },
+  {
+   "id": "zai-avg",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "Averaging the five replicates before comparison reduces the RMSE"
+  },
+  {
+   "id": "zai-rmse",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "RMSE = 0.0413 a.u."
+  },
+  {
+   "id": "zai-rmse2",
+   "source": "ZAINUDDIN2026",
+   "where": "p. 12",
+   "quote": "to 0.0355 a.u."
+  },
+  {
+   "id": "mach-abs",
+   "source": "MACHADO2024",
+   "where": "abstract",
+   "quote": "sensitivity comparable to a conventional spectrophotometer"
+  },
+  {
+   "id": "ral-45",
+   "source": "SAMEC2024",
+   "where": "§1",
+   "quote": "45°/0° or 0°/45° geometry is used for matt surfaces due to excluded gloss"
+  },
+  {
+   "id": "star-lim",
+   "source": "BAIRD2023",
+   "where": "Limitations",
+   "quote": "Environmental noise (e.g., light conditions) and hardware variation (LED, sensor, sensor positioning, etc.) may affect the results obtained."
   }
  ]
 }
