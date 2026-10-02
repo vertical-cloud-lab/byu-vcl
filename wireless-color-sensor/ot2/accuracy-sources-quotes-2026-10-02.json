@@ -160,6 +160,16 @@
    "file": "baird-2023-star-protocols.xml",
    "url": "https://doi.org/10.1016/j.xpro.2023.102329",
    "title": "Baird & Sparks 2023, STAR Protocols (PMC full-text XML)"
+  },
+  "OCEAN-CC": {
+   "file": "oceanoptics-cosine-correctors.html",
+   "url": "https://www.oceanoptics.com/accessories/sampling-accessories/cosine-correctors/",
+   "title": "Ocean Optics, Cosine Correctors product page (retrieved 2026-10-02)"
+  },
+  "UPSTREAM-GUIDE": {
+   "file": "upstream_index.md",
+   "url": "https://raw.githubusercontent.com/AccelerationConsortium/wireless-color-sensor/07efedd7302bd1def93ef81ceadba38e1ae96853/_build/html/_sources/index.md",
+   "title": "AccelerationConsortium/wireless-color-sensor build guide (index.md) at 07efedd"
   }
  },
  "quotes": [
@@ -960,6 +970,102 @@
    "source": "BAIRD2023",
    "where": "Limitations",
    "quote": "Environmental noise (e.g., light conditions) and hardware variation (LED, sensor, sensor positioning, etc.) may affect the results obtained."
+  },
+  {
+   "id": "dif-ug400-reflection-kit",
+   "source": "UG000400",
+   "where": "§1, PDF p. 4",
+   "quote": "The extended kit (Reflection mode) is for contact measurement of colored surfaces (see Figure 2) and consists of the sensor hardware but with a pre-assembled LED and a special adapter in front of the sensor with 0° (Sensor)/45° (LEDs) geometry."
+  },
+  {
+   "id": "dif-ug400-reflection-nodiff",
+   "source": "UG000400",
+   "where": "§1.1, Figure 2 table, PDF p. 5",
+   "quote": "Evaluation Kit with a pre-assembled LED and 0°/45° front adapter (without a diffuser"
+  },
+  {
+   "id": "dif-ug400-als-kit",
+   "source": "UG000400",
+   "where": "§1, PDF p. 4",
+   "quote": "it includes the hardware version without onboard LEDs but with a diffuser in front of the sensor with a maximum field of view"
+  },
+  {
+   "id": "dif-ug400-nondiffuse",
+   "source": "UG000400",
+   "where": "§4, PDF p. 13",
+   "quote": "as light detection from a light source, a translucent diffuser in front of the AS7341 EVK is required"
+  },
+  {
+   "id": "dif-ug400-reflections",
+   "source": "UG000400",
+   "where": "§4 footnote 2, PDF p. 13",
+   "quote": "e.g. ALS (Ambient Light Sensing) in contrast to reflections which are mostly diffused."
+  },
+  {
+   "id": "dif-ug400-l57",
+   "source": "UG000400",
+   "where": "§4, Figure 11, PDF p. 13",
+   "quote": "Kimoto OptSaver L-57"
+  },
+  {
+   "id": "dif-an1054-fine",
+   "source": "AN001054",
+   "where": "§3, PDF p. 9",
+   "quote": "If the diffuser is placed very close to or directly on the AS7341 package, its structure has to be very fine to get the same distribution to each photodiode of the detector array."
+  },
+  {
+   "id": "dif-an1054-touch",
+   "source": "AN001054",
+   "where": "§3, PDF p. 12",
+   "quote": "The surface of the diffusers is very sensitive, and any touch, mechanical stress, or dirt can dramatically change the optical behavior."
+  },
+  {
+   "id": "dif-an1054-surface",
+   "source": "AN001054",
+   "where": "§4.1, PDF p. 13",
+   "quote": "surface diffusers do not reach perfect cosine characteristics"
+  },
+  {
+   "id": "dif-an1054-prove",
+   "source": "AN001054",
+   "where": "§4.1, PDF p. 13",
+   "quote": "This makes it necessary to prove the chosen diffuser individually for the use case."
+  },
+  {
+   "id": "dif-an1054-volume",
+   "source": "AN001054",
+   "where": "§4.2, PDF p. 13",
+   "quote": "The result is a nearly perfect cosine and wavelength-independent/achromatic characteristic even in near field."
+  },
+  {
+   "id": "dif-an1054-2pd",
+   "source": "AN001054",
+   "where": "§2, PDF p. 5",
+   "quote": "The VIS channels are arranged in a 4 x 4 matrix with two photodiodes per channel."
+  },
+  {
+   "id": "dif-an1054-pinhole",
+   "source": "AN001054",
+   "where": "Fig. 4 legend, PDF p. 7",
+   "quote": "Sensor aperture/pinhole."
+  },
+  {
+   "id": "dif-ds-pkg",
+   "source": "DS000504",
+   "where": "§7, Fig. 19 footnote, PDF p. 17",
+   "quote": "diffuser mounted on top of package surface"
+  },
+  {
+   "id": "dif-ocean",
+   "source": "OCEAN-CC",
+   "where": "product page",
+   "quote": "Cosine correctors are optical diffusers (opaline glass, PTFE or Spectralon) that couple to fibers and spectrometers to collect signal from 180° field of view."
+  },
+  {
+   "id": "dif-upstream-yellow",
+   "source": "UPSTREAM-GUIDE",
+   "where": "Sensor Package assembling, step 7",
+   "quote": "The yellow square on AS7341 should be visible from the hole of the sensor enclosure if the sensor is assembled properly."
   }
  ]
 }

@@ -210,6 +210,13 @@ reference as having "low to no reflectance (for example a black light trap)".
    - The upstream build docs never mention one, and no photo on file shows the sensor side. **Check
      by looking up into the enclosure's opening:** a white film over the sensor means there is one; a
      small dark chip with a pinhole means there isn't.
+   - **Correction (10-02 evening): smaller than this item makes it sound.** ams's requirement is for
+     light from a source; its own kit for coloured surfaces has no diffuser, because reflected light
+     is "mostly diffused" (UG000400 §1, §4). The PR comment that posted this list also called a
+     missing diffuser "a likely part of the 12% landing error"; that error was light getting in after
+     the enclosure rode 0.7 mm up the nozzle ([`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md)
+     §2), which a diffuser does not block. What kind to fit, and where, is in
+     [the next section](#which-diffuser-and-whether-tape-will-do-added-10-02-evening).
 2. **More counts, at one fixed gain, once [`../pico/`](../pico/) is flashed.**
    - ams: "The higher the counts (before saturation), the better the accuracy." (UG000400, PDF
      p. 40); its liquid guide aims "to achieve stable values for the sensor result to be greater than
@@ -238,6 +245,113 @@ reference as having "low to no reflectance (for example a black light trap)".
    which fits the floor. Less water, a defined backing (see the standards section), or both.
 5. **Calibrate against a reference instrument and more targets** (item 3 of §1). AN000633 §2.5:
    "Device Calibration: This method is the most complex but has the highest accuracy."
+
+## Which diffuser, and whether tape will do (added 10-02 evening)
+
+Asked on PR #202 by @timothy-commins: "what kind of difusser is desired? i considered putting a
+semi-transparent piece of tape over the sensor to act as a diffuser". No hardware moved. The new
+quotations are in the same JSON and pass the same check.
+
+**What ams specifies**
+
+- **Spread:** "Select a diffuser with sufficient diffusing power such that the sensor has a smooth
+  angular response (no spikes in the angular response curves) exceeding ±45° (FHWM)" (AN001054 §3).
+  Datasheet Fig. 94 draws the minimum: read off the figure, about 60% of the straight-on response at
+  40°, 40% at 50° and nothing past 70°. A perfect cosine diffuser is still at 50% at 60°.
+- **Volume, not surface:** in a volume diffuser "The result is a nearly perfect cosine and
+  wavelength-independent/achromatic characteristic even in near field", whereas "surface diffusers do
+  not reach perfect cosine characteristics" and "This makes it necessary to prove the chosen diffuser
+  individually for the use case." (AN001054 §4).
+- **Fine grain, right on the chip:** "If the diffuser is placed very close to or directly on the
+  AS7341 package, its structure has to be very fine to get the same distribution to each photodiode
+  of the detector array." (§3). The window to cover is the package's Ø0.90 mm pinhole (Figs. 4–5).
+  ams characterised the chip with a "diffuser mounted on top of package surface" (DS000504 Fig. 19).
+- **ams's examples** (AN001054 §4 and Fig. 9; UG000400 Fig. 11; final test: ED1-C50):
+
+  | film | kind | thickness | transmission | haze | half-angle |
+  | --- | --- | --- | --- | --- | --- |
+  | Kimoto 100 PBU (on the evaluation kit) | surface, both sides | 125 µm | 66% | 89.5% | 35.5° |
+  | Kimoto OptSaver L-57 (alternative kit fit) | — | 100 µm | 60% | 93.1% | 57° |
+  | Lexan 8B28, opaque white | volume, "nearly Lambertian" | 250 µm | — | — | — |
+
+- **Handling:** "The surface of the diffusers is very sensitive, and any touch, mechanical stress, or
+  dirt can dramatically change the optical behavior." Fitting one "typically changes the calibration
+  parameters and requires recalibration", and a cosine volume diffuser passes under 50% of the light.
+
+**Why it is a modest fix here, not the first one**
+
+- **ams's own kit for coloured surfaces has no diffuser.** "The extended kit (Reflection mode) is for
+  contact measurement of colored surfaces (see Figure 2) and consists of the sensor hardware but with a
+  pre-assembled LED and a special adapter in front of the sensor with 0° (Sensor)/45° (LEDs) geometry",
+  listed as "Evaluation Kit with a pre-assembled LED and 0°/45° front adapter (without a diffuser".
+  The diffuser is for non-diffuse light, "as light detection from a light source, a translucent
+  diffuser in front of the AS7341 EVK is required", with the footnote "e.g. ALS (Ambient Light
+  Sensing) in contrast to reflections which are mostly diffused." (UG000400 §1, §4). Our light is
+  mostly scattered by paint, so the datasheet's "For optimal performance" applies less than §1 above
+  suggested.
+- **What it still does for us.** ams's reflection kit presses onto a uniform surface that fills its
+  view; ours looks at a 6.9 mm well with brighter plate around it. "The VIS channels are arranged in a
+  4 x 4 matrix with two photodiodes per channel", and in Fig. 4 each channel's pair sits diagonally
+  opposite across the centre. That cancels a left–right or front–back gradient, but not centre
+  versus edge: the centre four photodiodes look nearly straight down and the corner ones furthest out
+  (§5: "almost symmetrical for the centered photodiodes and more asymmetrical for those in distance to
+  the center"). So over a dark well the outer channels should see more plate than the inner ones.
+  That is our inference from Fig. 4 and §5; which wavelengths sit where on the chip isn't labelled
+  in the figure. A diffuser gives every photodiode the same light.
+- **What it can't do:** block light. The black ÷ white floor at the top of this file is light that
+  isn't the paint, and a diffuser passes it too.
+- **What it can make worse:** the bare chip takes in a 40° half-cone. The kit with a diffuser has
+  "a diffuser in front of the sensor with a maximum field of view", and spectrometer cosine correctors
+  "collect signal from 180° field of view" (Ocean Optics). For a cosine response under even light, the
+  share arriving within 40° of straight on is sin² 40° = 41% (our arithmetic). So the white plastic the
+  sensor looks past starts to count: blacken it at the same time.
+
+**The enclosure's sensor end, from the upstream CAD**
+
+From [`Sensor package main enclosure.step`](https://github.com/AccelerationConsortium/wireless-color-sensor/blob/07efedd7302bd1def93ef81ceadba38e1ae96853/CAD-File/STEP/Sensor%20package%20main%20enclosure.step),
+assuming ours was printed from it (not checked): the sensor end is a cone with 30° sides, Ø11 mm at
+the body narrowing to a Ø5.2 mm tip over 5 mm. Through it runs a Ø4.5 mm bore, 3.4 mm long, which then
+widens upwards at 30° to Ø8.7 mm 3.6 mm higher, where the sensor board sits face down on its stand
+("The yellow square on AS7341 should be visible from the hole", upstream build guide, step 7).
+
+- The tip fits inside a Ø6.86 mm well until the cone meets the rim about 1.4 mm in. That matches the
+  upstream protocol's `top(z=-1.3)`: what our runs call "touching the plate" is the cone seating in
+  the well's rim.
+- The chip looks out through a white funnel and bore at least ~7 mm long. That is the part to blacken.
+
+**Materials**
+
+| material | verdict | why |
+| --- | --- | --- |
+| clear tape (packing, glossy office) | no | not a diffuser |
+| frosted office tape (e.g. Scotch Magic) | probably too weak; screen it | a surface diffuser; no published scattering angle found |
+| masking or painter's tape | no | tinted, coarse paper, little light through |
+| **white PTFE thread-seal ("plumber's") tape, 2–4 layers** | **yes, as a first try** | "Cosine correctors are optical diffusers (opaline glass, PTFE or Spectralon) that couple to fibers and spectrometers to collect signal from 180° field of view." (Ocean Optics); "PTFE foils or thin white glass sheets" (Klüppel *et al.* 2026). Thread-seal tape isn't sold as an optical material, so its thickness varies: lay it flat, unstretched |
+| white diffuser film (Lexan 8B28, Kimoto) | the proper part | ams's own examples; 8B28 is sold in sheets by plastic-film suppliers (e.g. Goodfellow) |
+| white paper, printed white PLA | avoid | fibres or layer lines coarser than the 0.9 mm window (general knowledge, not checked against a source here) |
+
+**A screen anyone can do:** hold the material about 1 cm above printed text. Light leaving a ±45°
+diffuser 10 mm up comes from a patch ~20 mm across, so the letters vanish; a few-degree diffuser
+blurs them by 1–2 mm and they stay readable. That is our geometry, not an ams test. Add layers until
+the letters are gone.
+
+**Fitting**
+
+- On the chip, inside the enclosure, covering the Ø0.9 mm window completely. Not across the outside
+  of the tip: there it would touch the well rim and the paint, and read 12 mm up it would take in
+  several wells.
+- Keep it off the board's LEDs, or it can carry their light to the window.
+- No adhesive or fingerprints over the window; hold it by its edges.
+- Blacken the funnel and bore: matte black paint, or a black marker if that's all there is.
+
+**Testing it**
+
+- Read the same wells at fixed heights (z 92, 100, 110) just before and just after fitting, the same
+  day, re-reading white and black on both trips. Compare black ÷ white per channel, the miss against
+  the published spectra, and how each well's colour changes with height. Expect the counts to fall to
+  half or less.
+- Blackening the funnel in the same visit measures both changes together; one change per read
+  separates them.
 
 ## What the standards and metrology institutes add
 
@@ -373,6 +487,8 @@ tolerance's.** Measuring our unit's channel centres would matter only once the r
 | the chip is "rated −30 to 85 °C" (10-01) | **imprecise**: 85 °C is the absolute maximum; the operating range is −30 to 70 °C, with "functionality will vary with temperature". The datasheet gives no temperature coefficient |
 | the AS7341's own LED was "rejected for saturating the enclosure walls" (09-12, `accuracy-provenance.md`) | **overstated**: upstream it raised most channels to 10k–20k counts (410 nm to ~2k; of 65,535, so not saturated) "possibly due to reflection from the enclosure walls", and the colours stopped being distinguishable ([ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87)) |
 | the green power LED is a fixed offset that the white/black correction cancels (10-02) | **right**; and Adafruit's newer boards have "a cuttable jumper to disable the onboard ON power LED" if it is ever wanted gone |
+| a diffuser is "the manufacturer's first requirement" (10-02, item 1 above) | **overstated**: it is ams's requirement for light from a source; ams's own colour-surface kit ships without one (UG000400 §1, §4). Still worth trying here, for the reasons in [Which diffuser](#which-diffuser-and-whether-tape-will-do-added-10-02-evening) |
+| a missing diffuser is "a likely part of the 12% landing error" (10-02 PR comment) | **wrong**: that error was light getting in after the enclosure rode 0.7 mm up the nozzle (10-02 morning, [`landing_shift.py`](landing_shift.py)); a diffuser doesn't block light |
 
 ## How the quotes were checked
 
@@ -384,7 +500,9 @@ tolerance's.** Measuring our unit's channel centres would matter only once the r
 3. Every quotation in this file was then searched for in those texts, with only whitespace,
    line-break hyphens, quote marks and ligatures normalised, by [`check_quotes.py`](check_quotes.py)
    with the list in [`accuracy-sources-quotes-2026-10-02.json`](accuracy-sources-quotes-2026-10-02.json)
-   (133 quotations, each with its source, section and download link). **All 133 were found.** Two
+   (149 quotations, each with its source, section and download link). **All 133 of the first
+   session were found; the 16 added for the diffuser section on 10-02 evening were checked the same
+   way, against one fresh download each, and were all found too.** Two
    (Revvity's "medium cross-talk" and Klüppel's "full-width") match only with the line-break hyphen
    ignored, which is how those PDFs break the word.
 4. Numbers read from tables (gain ratios, centre wavelengths, dark counts) were also checked against
@@ -413,6 +531,7 @@ in the JSON into one folder, under the file names it gives, and run
 | maker | page | used for |
 | --- | --- | --- |
 | Adafruit (the breakout board) | [product 4698](https://www.adafruit.com/product/4698) | the power-LED jumper |
+| Ocean Optics (spectrometer accessories) | [Cosine Correctors](https://www.oceanoptics.com/accessories/sampling-accessories/cosine-correctors/) product page, saved 2026-10-02 | which materials make a cosine diffuser; 180° field of view |
 | Revvity (microplates) | [Guide to selecting a microplate](https://resources.revvity.com/pdfs/gde-selecting-a-mircoplate.pdf), p. 9 | well-to-well cross-talk by plate colour |
 | Corning (microplates) | [Microplate Selection Guide](https://www.fishersci.com/content/dam/fssite/north-america/us/documents/brands/c/corning/corning-microplate-selection-guide.pdf), CLS-MP-014 REV7, ©2011, pp. 6, 10 (via Fisher Scientific; corning.com refused the download) | clear plates for absorbance; opaque walls prevent cross-talk; solid black/white plates of the same standard 360 µL flat-well format (e.g. 3915 black, 3912 white) |
 | Liquitex (the paints) | product pages for BASICS [Primary Yellow](https://www.liquitex.com/products/basics-acrylic-color-primary-yellow), [Cadmium Red Medium Hue](https://www.liquitex.com/products/basics-acrylic-color-cadmium-red-medium-hue), [Primary Blue](https://www.liquitex.com/products/basics-acrylic-color-primary-blue), [Titanium White](https://www.liquitex.com/products/basics-acrylic-color-titanium-white), [Mars Black](https://www.liquitex.com/products/basics-acrylic-color-mars-black) | opacity ratings, pigments |
@@ -438,5 +557,8 @@ and the ASTM practices E1164, E2214, E1349 and E1331 (public scope pages only).
 - [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87) and
   [#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152): the board-LED and
   black-enclosure tests.
+- [`wireless-color-sensor@07efedd`](https://github.com/AccelerationConsortium/wireless-color-sensor/tree/07efedd7302bd1def93ef81ceadba38e1ae96853/CAD-File/STEP):
+  `Sensor package main enclosure.step` (the cone, bore and funnel in the diffuser section, read from
+  its circles and cones) and the build guide `_build/html/_sources/index.md` (step 7, the sensor stand).
 - [`wireless-color-sensor@07efedd`](https://github.com/AccelerationConsortium/wireless-color-sensor/tree/07efedd7302bd1def93ef81ceadba38e1ae96853/sensor_file):
   `lib/as7341.py` (never writes `AZ_CONFIG`; `set_again` takes codes 0–10).

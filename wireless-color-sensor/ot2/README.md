@@ -1262,6 +1262,8 @@ found again in a separately downloaded copy of its source. Two checks from runs 
   well isn't the white paint.
 - **ams wants a diffuser over the sensor**, and says the datasheet's figures only hold with
   one. Nothing on file shows one in our enclosure: look up into its opening.
+  *Correction, 10-02 evening:* that is ams's rule for light from a source; its own kit for
+  coloured surfaces has no diffuser. See the next entry.
 - **Plate makers:** clear plates have the most well-to-well cross-talk, and opaque walls
   prevent it (Revvity, Corning).
 - **Liquitex** rates the three colours semi-opaque and only the white and black opaque.
@@ -1279,6 +1281,34 @@ found again in a separately downloaded copy of its source. Two checks from runs 
 - **Two earlier statements corrected:** the gain is 256x, not 128x (here and in
   [`accuracy-provenance.md`](accuracy-provenance.md)), and the board's own LED never saturated
   upstream; it made the colours indistinguishable.
+
+## 2026-10-02 (evening) — which diffuser? White PTFE tape on the chip, with the hole blackened; a modest fix (no motion)
+
+Asked on PR #202: what kind of diffuser, and would semi-transparent tape do? Details and sources
+in [*Which diffuser, and whether tape will do*](accuracy-sources-2026-10-02.md#which-diffuser-and-whether-tape-will-do-added-10-02-evening).
+
+- **What ams asks for:** a thin white *volume* diffuser that spreads light evenly to at least
+  ±45°, the same at every colour, with a grain much finer than the chip's Ø0.9 mm window when it
+  sits on the chip. Its examples are white films 0.1–0.25 mm thick (Lexan 8B28, Kimoto 100 PBU,
+  Kimoto OptSaver L-57).
+- **Tape:** frosted office tape is a surface diffuser and probably too weak; masking and painter's
+  tape are tinted; **white PTFE plumber's tape, 2–4 layers, is the cheap first try**. Screen any
+  material by holding it 1 cm above printed text: if the letters are still readable, it doesn't
+  spread light enough.
+- **Where:** on the chip, inside the enclosure, covering the window and clear of the board's LEDs;
+  not across the outside of the tip. **Blacken the funnel and bore it looks through at the same
+  time**, because a diffuser takes in light from every direction, not just the chip's 40° cone.
+- **Expect a modest gain.** ams's own kit for coloured surfaces has no diffuser, since reflected
+  light is already diffuse. Here it should stop the colour channels seeing different mixes of paint
+  and plate; it can't block the stray light that sets the black ÷ white floor. Counts will fall to
+  half or less, and white and black need re-reading after it goes on.
+- **Enclosure geometry, from the upstream CAD** (assuming ours was printed from it): the sensor
+  looks out through a Ø4.5 mm bore at the tip of a 30° cone, Ø5.2 mm at the tip. The tip enters a
+  well ~1.4 mm before the cone meets the rim, which is the upstream protocol's `top(z=-1.3)`: our
+  "touching the plate" is the cone seating in the rim.
+- **Corrected:** the 10-02 PR comment called a missing diffuser "a likely part of the 12% landing
+  error". That error was light getting in after the enclosure moved up the nozzle, which a diffuser
+  doesn't block.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
