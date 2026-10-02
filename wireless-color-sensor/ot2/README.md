@@ -1247,6 +1247,32 @@ Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
 
 ![light at three fixed spots by stage; colour error at matched heights](blackout-2026-10-02.png)
 
+## 2026-10-02 — what the manufacturers and the standards say would make it more accurate (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: pull from manufacturer and accredited sources, double-check them, and
+see what more can be done with the factors that already helped. Write-up in
+[`accuracy-sources-2026-10-02.md`](accuracy-sources-2026-10-02.md); every quotation in it was
+found again in a separately downloaded copy of its source. Two checks from runs on file in
+[`analyse_source_checks.py`](analyse_source_checks.py).
+
+- **Black ÷ white is the number to drive down.** Published Mars black reads 0.02 of titanium
+  white; our black well reads 0.52–0.73 of our white at best (09-30, spaced wells) and
+  0.66–0.83 at z 100. So about half to nine-tenths of what the sensor sees over the white
+  well isn't the white paint.
+- **ams wants a diffuser over the sensor**, and says the datasheet's figures only hold with
+  one. Nothing on file shows one in our enclosure: look up into its opening.
+- **Plate makers:** clear plates have the most well-to-well cross-talk, and opaque walls
+  prevent it (Revvity, Corning).
+- **Liquitex** rates the three colours semi-opaque and only the white and black opaque.
+- **ams's calibration note** calls our white/black correction its simplest method; more
+  reference targets "can increase accuracy for calibration dramatically".
+- **The ±10 nm channel tolerance in the datasheet is not what limits the score:** moving every
+  passband within it changes the miss by at most ±0.015.
+- **Two earlier statements corrected:** the gain is 256x, not 128x (here and in
+  [`accuracy-provenance.md`](accuracy-provenance.md)), and the board's own LED never saturated
+  upstream; it made the colours indistinguishable.
+
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
 Suggested on [#197](https://github.com/vertical-cloud-lab/byu-vcl/issues/197) by
@@ -1406,11 +1432,15 @@ source rather than inferred:
   `--rgb` was never a light command, which is why it appeared inert.
 - **The AS7341 has a controllable white LED** (`set_led_current`, 4–20 mA),
   disabled by two commented-out lines in the board's `main.py`. It was tried
-  upstream and deliberately rejected — it saturates the enclosure walls.
+  upstream and deliberately rejected: with it on, most channels rose to 10k–20k
+  counts (410 nm to ~2k) and the colours stopped being distinguishable. (Corrected 2026-10-02: an
+  earlier version said it "saturates the enclosure walls"; nothing saturated.)
 - **One reading is two SMUX integrations** (`F1F4CN` then `F5F8CN`), 558.8 ms
   each at the shipped `atime=200, astep=999`, so 1.118 s of the ~1.42 s round
-  trip. `Clear` is sampled in both cycles and discarded in both. Gain is 128×
-  against a 512× maximum.
+  trip. `Clear` is sampled in both cycles and discarded in both. Gain is 256×
+  against a 512× maximum: the firmware asks for 128×, but `set_again()` ignores
+  that value and the chip keeps its default (found 2026-10-01, corrected here
+  2026-10-02).
 
 ---
 

@@ -110,6 +110,13 @@ Worth knowing before repeating any of them.
 it was tried upstream and rejected, on the grounds that it saturates the
 enclosure walls and *reduces* the contrast between similar colours.
 
+> **Correction, 2026-10-02** ([`accuracy-sources-2026-10-02.md`](accuracy-sources-2026-10-02.md)).
+> "Saturates" overstates it. Upstream, the LED raised most channels to 10k–20k counts
+> (of 65,535; 410 nm to ~2k), "possibly due to reflection from the enclosure walls", and the colours
+> stopped being distinguishable
+> ([ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87)).
+> Nothing saturated; the contrast loss is the finding.
+
 ---
 
 ## 3. Firmware facts, read from source rather than inferred
@@ -166,6 +173,11 @@ and thrown away in both — it is exactly the factor needed to stitch the halves
   corroboration of §3c.
 - Gain is **128x**; the AS7341 supports up to **512x**, so there is 4x of
   unused gain.
+
+  > **Correction, 2026-10-02** (found 2026-10-01). The gain is **256x**, not 128x. `set_again()` takes a
+  > code (0–10), not a factor, and ignores 128, so the chip stays at its power-on code 9
+  > (DS000504, CFG1 0xAA). That leaves 2x of unused gain, not 4x. See
+  > [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md) §4.
 - Largest single channel ever recorded here with the rail lights on: **3216
   counts of 65535 full scale = 4.9%**.
 
