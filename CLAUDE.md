@@ -394,6 +394,25 @@ secrets, since they are public identifiers. `YT_FALLBACK_VIDEO_ID` is the embed 
 the API is unavailable. Note the playlist ID is unusually short — that is genuine, not a
 truncation.
 
+**The `picam-ot2` camera now shows the atomizer room, not the OT-2.** As of 2026-10-01 that
+camera (the Pi behind `OT2_STREAM_CAM_HOSTNAME`) streams 144p at 2 fps under workflow
+`atomizer`. Since 19:55 MDT it is also pixelated on the Pi (`PIXELATE_BLOCKS` in its
+`my_secrets.py`, another local `device.py` patch), so that it shows activity rather than
+detail: 32×18 solid blocks at first, 128×72 (2×2 px at 144p) since 22:59 MDT. The overlay is
+drawn afterwards and stays sharp. Its broadcasts
+are titled *atomizer stream picam-ot2, …* and go into the *atomizer Livestreams Playlist*
+(`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
+and the archive tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md),
+along with how the Lambda matches a workflow name to playlists. The match is by substring,
+which matters before renaming one.
+
+**On that camera, the overlay is only a clock from 2026-10-01 18:52 MDT.** Without
+`rpicam-vid --flush`, ffmpeg received frames in 4 KB batches. At 240p and 2 fps the overlay
+stood still for 3–4 s, then jumped, and a third of the frames were copies. The Pi's
+`device.py` now has `--flush` and `-flags low_delay`, a local patch like `SENSOR_MODE`,
+which leaves the overlay about one frame behind capture. Any picam at a low resolution or
+frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab`.
+
 **Reading the livestream archive back.** Two things cost a session to find, both in
 `wireless-color-sensor/ot2/`:
 
