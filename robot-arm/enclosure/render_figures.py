@@ -394,19 +394,34 @@ def floor_plan(ax, reach):
                                    lw=0, zorder=3))
     ax.text(2.13, 1.52, "atomizer clean room\n(≈14 × 10 ft, #31)", ha="center", va="center", fontsize=10.5,
             color=INK2, zorder=12, bbox=dict(boxstyle="round,pad=0.25", fc=SURFACE, ec="none"))
-    # D: two tables against room 158's wall, clear of door 154-1's swing
-    dx0, dy1 = m(345, 815)
-    d = (dx0, dy1 - 1.36, 1.29, 1.36)
+    # D: two tables in the corner of room 158's wall and the north wall, as in the photos of the spot. They
+    # stand across door 154-1, which stays sealed (#229), so its swing is no longer kept clear
+    _, wall158 = m(0, 833)  # room 158's east face
+    d = (0.0, wall158 - 1.36, 1.29, 1.36)
     cx, cy = d[0] + d[2] / 2, d[1] + d[3] / 2
+    # the high-voltage transformer is somewhere between the north wall, the pillar, the clean room and door
+    # 154-1's swing (#229). Its size and exact spot aren't recorded, so the whole pocket is drawn
+    _, latch = m(0, 672)  # door 154-1's latch jamb, the swing's edge
+    pillar_n, _ = m(374, 0)  # the pillar's north face
+    clean_w = 10 * 0.3048  # the clean room's west face
+    ax.add_patch(patches.Rectangle((0, clean_w), pillar_n, latch - clean_w, facecolor=ORANGE, alpha=0.12,
+                                   ec=ORANGE, lw=1.5, zorder=7))
+    ax.add_patch(patches.Rectangle((0, clean_w), pillar_n, latch - clean_w, fill=False, ec=ORANGE, hatch="xx",
+                                   lw=0, alpha=0.6, zorder=7))
     ax.add_patch(patches.Rectangle((cx - 0.93, cy - 0.93), 1.86, 1.86, fill=False, ec=ORANGE, lw=1.5,
                                    ls=(0, (4, 3)), zorder=8))
     ax.add_patch(patches.Rectangle(d[:2], d[2], d[3], facecolor=BLUE, alpha=0.18, ec=BLUE, lw=2, zorder=9))
     ax.add_patch(patches.Circle((cx, cy), reach, fill=False, ec=BLUE, lw=1.2, zorder=9))
     ax.plot(cx, cy, "o", ms=7, color=BLUE, mec=SURFACE, mew=2, zorder=10)
-    ax.annotate("D + second table: 1.29 × 1.36 m,\narm centred (door 154-1 is locked)", xy=(d[0] + d[2], d[1] + 0.2),
-                xytext=(3.0, 3.45), arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8), **lab)
-    ax.annotate("sketched full dome (1.86 m) centred on D\nruns into room 158 and the door swing",
-                xy=(cx + 0.93, cy + 0.55), xytext=(3.0, 4.35), arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8),
+    ax.annotate("D + second table: 1.29 × 1.36 m, arm centred,\nacross door 154-1 (kept sealed)",
+                xy=(d[0] + d[2], d[1] + 0.75), xytext=(3.0, 4.9), arrowprops=dict(arrowstyle="-", color=MUTED,
+                                                                                lw=0.8), **lab)
+    ax.annotate("high-voltage transformer, somewhere in here:\nnothing within 7.5 in (190 mm) of it or above "
+                "it.\nD's edge is at the pocket's edge, so measure the gap",
+                xy=(pillar_n, latch - 0.3), xytext=(3.0, 3.9), arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8),
+                **lab)
+    ax.annotate("sketched full dome (1.86 m) centred on D runs\nthrough both walls and over the transformer pocket",
+                xy=(cx + 0.93, cy + 0.75), xytext=(3.0, 5.7), arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.8),
                 fontsize=10.5, color=INK2, zorder=12, bbox=box)
     # E: centre island (approximate)
     e = (3.3, 5.9, 1.36, 1.29)
