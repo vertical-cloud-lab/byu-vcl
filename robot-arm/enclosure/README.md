@@ -7,7 +7,7 @@ Figures and numbers behind the enclosure discussion in
 |---|---|
 | `piper-reach.png` | The PiPER and gripper, rendered from AgileX's own URDF, and a side view of where the fingertip can reach |
 | `enclosure-options.png` | The quarter, half and full domes as sketched, plus spot D with the arm centred, all at one scale |
-| `cb154-arm-locations.png` | Spots D and E on [`cb154.pdf`](../../cb154.pdf), and the ceiling height available for a two-level setup |
+| `cb154-arm-locations.png` | Spots D and E on [`cb154.pdf`](../../cb154.pdf), the transformer pocket next to D, and the ceiling height available for a two-level setup |
 
 The enclosure chosen for spot D is modelled part by part in [`dome/`](dome/), with a cut list,
 3D exports and an assembly GIF.
@@ -15,6 +15,10 @@ The enclosure chosen for spot D is modelled part by part in [`dome/`](dome/), wi
 The two-level version, with the arm on a raised plywood deck and 0.5 m of workspace underneath,
 is in [`hutch/`](hutch/): five structural options compared, a cut list, a section, an exploded
 view and an assembly GIF.
+
+A low shelf for the arm to pick from is in [`shelf/`](shelf/): where it sits relative to the arm,
+how to make item positions repeatable, how stiff it needs to be, a cut list, a 3D view and a
+dimensioned drawing. It also covers the changes needed on the raised deck.
 
 To regenerate the figures, run `xvfb-run -a python render_figures.py`. The script clones
 `agilexrobotics/piper_ros` at `ac41fcb` into `/tmp` for the URDF and meshes.
@@ -54,6 +58,61 @@ These values are computed here from the URDF, with the fingertip taken as 140 mm
   | Half dome as sketched | 44 % |
   | Full dome | 0 % |
   | Spot D (1.29 × 1.36 m), arm centred | 7 % |
+
+## Spot D in the room
+
+Josh and Sterling added two room constraints on #229 after the first floor plan was drawn. The
+floor plan now shows both:
+
+- **The tables stand in the corner** of room 158's wall and the north wall, across door 154-1, as
+  in the photos of the spot. That door leads to a separate lab and stays sealed
+  ([Sterling](https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5827668940)),
+  so the tables can block its swing. The first floor plan had kept that swing clear, which put D
+  1.2 m too far south.
+- **A high-voltage transformer sits right next to D.** It is somewhere between the north wall,
+  the pillar, the clean room and the door's swing. Nothing may be within 7.5 in (190 mm) of it or
+  above it ([Gage, via Josh](https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5827165807)).
+  Its size and exact spot aren't recorded, so the floor plan shades the whole pocket.
+- **Measure that gap before the dome goes up.** The tables are 1.36 m deep, so their east edge
+  lands at about the door's latch jamb, which is where the pocket starts. The edge needs 190 mm or more
+  of clear space to the transformer. The dome, the hutch and the shelf all stay inside the
+  tables' footprint, so none of them brings anything closer. Two things do face that way, though:
+  - The dome's roll-up front opens on that side, so whoever loads the cell stands in the pocket.
+  - At full stretch, the centred arm's fingertip reaches 9 cm past the tables' edge.
+
+## Mounting orientation
+
+The arm goes on upright
+([Sterling](https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5826480282)).
+For reference, from the [side-mount check](https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5826036827)
+on #229:
+
+- **Side mounting is supported.** The firmware has an installation-position setting with three
+  values: upright, side-left and side-right. It is byte 5 of CAN frame `0x151`, from firmware
+  S-V1.5-2. That setting is how the controller knows which way gravity points, so it has to
+  match the real mount, or gravity compensation and drag-teach will be wrong.
+- **The stock `piper_ros` driver never sets it.** It sends the invalid default `0x00` in
+  every `MotionCtrl_2` call.
+- **Inverted (ceiling) mounting has no setting.** A two-level design can't hang the arm from
+  above.
+
+## What other labs do
+
+From the [25 Sept survey](https://github.com/vertical-cloud-lab/byu-vcl/issues/229#issuecomment-5825893732)
+on #229:
+
+- **Learning-from-demonstration rigs mostly don't enclose the arm at all.**
+  [ALOHA](https://arxiv.org/abs/2304.13705) uses a light 20 mm extrusion cage, mostly as a camera
+  mount. [DROID](https://arxiv.org/abs/2403.12945) records in hundreds of real scenes on purpose.
+  [LeRobot](https://huggingface.co/docs/lerobot/il_robots) asks only for fixed cameras, a static
+  background and steady lighting.
+- **When the scene has to be private and consistent, labs close the box and bring their own
+  light.** [CloudGripper](https://arxiv.org/abs/2309.12786) runs 32 fully enclosed cells with their
+  own LEDs, and [GreenAug](https://arxiv.org/abs/2407.07868) warns that a partial screen leaves
+  the wrist camera looking at the room.
+- **Industry uses hard guarding plus limits the controller enforces,** such as
+  [UR's safety planes](https://www.universal-robots.com/manuals/EN/HTML/SW5_20/Content/prod-usr-man/software/PolyScope/content/safety_g5/Planes_g5_en.htm).
+  The PiPER has joint limits only (below).
 
 ## Keeping it inside the enclosure
 
