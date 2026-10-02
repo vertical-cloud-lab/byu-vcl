@@ -396,9 +396,10 @@ truncation.
 
 **The `picam-ot2` camera now shows the atomizer room, not the OT-2.** As of 2026-10-01 that
 camera (the Pi behind `OT2_STREAM_CAM_HOSTNAME`) streams 144p at 2 fps under workflow
-`atomizer`. Since 19:55 MDT it is also pixelated on the Pi, to 32×18 solid blocks
-(`PIXELATE_BLOCKS` in its `my_secrets.py`, another local `device.py` patch), so that it shows
-activity rather than detail. The overlay is drawn afterwards and stays sharp. Its broadcasts
+`atomizer`. Since 19:55 MDT it is also pixelated on the Pi (`PIXELATE_BLOCKS` in its
+`my_secrets.py`, another local `device.py` patch), so that it shows activity rather than
+detail: 32×18 solid blocks at first, 128×72 (2×2 px at 144p) since 22:59 MDT. The overlay is
+drawn afterwards and stays sharp. Its broadcasts
 are titled *atomizer stream picam-ot2, …* and go into the *atomizer Livestreams Playlist*
 (`PLeosQpHvsjiY`), not the OT-2 playlist above. Its settings, change log
 and the archive tooling's 720p assumptions are in [`docs/stream-cams.md`](docs/stream-cams.md),

@@ -28,7 +28,7 @@ in this repo. This page records what is set and what has been changed.
 | `FRAME_RATE` | `2`. Was `10` until 2026-10-01 |
 | `SENSOR_MODE` | `"2304:1296"`, the full-field binned imx708 mode. Without it the sensor picks a cropped mode for small outputs |
 | `TIMESTAMP_OVERLAY` | `True`: lab local time, top left. This also forces the libx264 re-encode |
-| `PIXELATE_BLOCKS` | `32`: the picture is averaged into 32×18 solid blocks before the timestamp is drawn, so the timestamp stays sharp. Added 2026-10-01 19:55, see [Pixelation](#pixelation) |
+| `PIXELATE_BLOCKS` | `128`: the picture is averaged into 128×72 solid blocks, 2×2 px each at 144p, before the timestamp is drawn, so the timestamp stays sharp. Added 2026-10-01 19:55 at `32`, and `128` since 22:59; see [Pixelation](#pixelation) |
 | `CAMERA_VFLIP` / `CAMERA_HFLIP` | `True` / `True` (the camera is mounted upside down) |
 | `CAMERA_ROTATION` | `0` |
 | `PRIVACY_STATUS` | `"public"` |
@@ -73,7 +73,8 @@ carry it too. For the unit's state use `systemctl show device.service -p ActiveS
 ### Pixelation
 
 `PIXELATE_BLOCKS` in `my_secrets.py` sets how coarse the picture is: the number of blocks
-along the frame's long side, so `32` gives a 32×18 grid at 16:9. ffmpeg averages each frame
+along the frame's long side, so `128` gives a 128×72 grid at 16:9 and `32` a 32×18 one. It is
+`128` since 2026-10-01 22:59, and was `32` before that. ffmpeg averages each frame
 down to that grid, scales it back up with nearest-neighbour so that every block is one solid
 colour, and only then draws the timestamp. Apart from the timestamp, YouTube never receives
 anything finer than the blocks. Fewer blocks means less detail. `None`, `0` or leaving the
@@ -82,8 +83,9 @@ line out turns it off. Change it like any other setting, with one restart.
 The setting counts blocks, not pixels, so the level of detail stays the same if `RESOLUTION`
 changes. That also means the resolution could go back up without adding detail. At 360p, for
 example, the timestamp would cover about a third of the width instead of three quarters, and
-each block would arrive 20 px wide, so the player's upscaling would blur its edges less. That
-has not been tried, and would probably cost some upload; the stream is still at 144p.
+each block would arrive 5 px wide at 128 blocks (20 px at 32) rather than 2, so the player's
+upscaling would blur its edges less. That has not been tried, and would probably cost some
+upload; the stream is still at 144p.
 
 The same 144p frame at three levels, enlarged with smoothing the way a player shows the 144p
 rendition:
@@ -104,7 +106,21 @@ scale=32:18:flags=area,format=yuv444p,scale=256:144:flags=neighbor,format=yuv420
 - It runs after any rotation, so the blocks line up with the streamed frame, and before
   `drawtext`, so the timestamp stays readable to people and to tesseract.
 
-The lines added to `my_secrets.py`:
+**Since 22:59 the level is 128, between plain 144p and 64.** The same frame, made the same
+way, with the timestamp drawn as the Pi draws it:
+
+![The same 144p frame unpixelated, and at 128, 96 and 64 blocks across](images/stream-cam-picam-ot2-pixelate-levels-128-2026-10-01.png)
+
+At 128 the room reads plainly, but the things on the bench and the cabinet are only shapes,
+with no labels or fine edges. In log terms it is halfway, a block of 2×2 px against 1 px
+unpixelated and 4×4 px at 64. It is also the only level between those two whose blocks are
+whole pixels. Square blocks that tile 256×144 exactly need a side that divides both 256 and 144,
+which leaves 1, 2, 4, 8 and 16 px, i.e. levels 256 (no change), 128, 64, 32 and 16. Any other
+value works, but nearest-neighbour then makes the blocks uneven: at 96 (96×54) they are 2.67 px
+on average, so they come out 2 or 3 px wide, which barely shows once a player has scaled the
+picture up.
+
+The lines added to `my_secrets.py` at 19:55; the value is `128` since 22:59:
 
 ```python
 # Pixelation setting (optional)
@@ -259,6 +275,8 @@ That has two consequences for a rename:
 | 2026-10-01 17:44 | `WORKFLOW_NAME` `"Atomizer"` → `"atomizer"`, to match the existing playlist's title and `powder doser`. `device.py` gains `-r FRAME_RATE`. `reset-failed`, then one restart | ffmpeg was sending 1.5 fps, see [above](#changing-a-setting) |
 | 2026-10-01 18:52 | `RESOLUTION` `"240p"` → `"144p"`. `device.py` gains `rpicam-vid --flush` and ffmpeg `-flags low_delay`. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5943385687): 144p, and the overlay was jumping several seconds at a time |
 | 2026-10-01 19:55 | `PIXELATE_BLOCKS = 32` added to `my_secrets.py`, and `device.py` gains the [pixelation](#pixelation) filter. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5944068559): pixelate on our side, so the stream shows what is happening without much detail |
+| 2026-10-01 21:00 | Scheduled reboot, the first since these changes. It came back as configured, see [below](#32--128-blocks) | |
+| 2026-10-01 22:59 | `PIXELATE_BLOCKS` `32` → `128`. One restart | [#252](https://github.com/vertical-cloud-lab/byu-vcl/pull/252#issuecomment-5945824243): a level between plain 144p and 64 blocks |
 
 #### 720p → 240p
 
@@ -335,7 +353,7 @@ assumes the size of the 720p overlay. Both still work on the earlier 720p archiv
 2026-09-09 colour session. At 2 fps a frame grabbed at a given offset can be up to 0.5 s old,
 and on this camera's 2 fps broadcasts before 2026-10-02 00:53 UTC the overlay is not a
 reliable clock. From 2026-10-02 01:56 UTC the picture is [pixelated](#pixelation) but the
-overlay is not.
+overlay is not: 32×18 blocks until 04:59 UTC, and 128×72 after that.
 
 #### 240p → 144p
 
@@ -441,10 +459,41 @@ The overlay survives it. 62 s of that rendition was fetched through the other st
 and decoded at 2 fps, and tesseract read all 125 frames. Apart from the broadcast's first 7 s,
 which held 19-56-23, it showed every second from 19-56-24 to 19-57-19, two frames each.
 
-**Not yet observed:** a scheduled reboot after these changes. The first is at 21:00 MDT on
-2026-10-01. It should come back as `atomizer` at 144p and 2 fps, pixelated, with the flush
-fix, since the settings are in `my_secrets.py` and the fixes are in `device.py`, but nobody
-has watched one do so yet.
+#### 32 → 128 blocks
+
+**The 21:00 scheduled reboot came back as configured.** The first since the changes above, on
+2026-10-01. The Pi booted at 21:00:14, and `device.service` started at 21:00:34 with `atomizer`,
+144p, 2 fps and `Pixelation: 32 blocks along the long side`. Its start-up `end` call succeeded,
+and it created [`bUV9kGK-Yh0`](https://www.youtube.com/watch?v=bUV9kGK-Yh0) in the atomizer
+playlist. ffmpeg's `Output #0` line said 2 fps. Over that pipeline's whole run, 14,194 frames in
+1 h 58 min, its progress line never showed `dup=` or `drop=`. The watchdog logged nothing.
+
+Both columns are at 144p and 2 fps, measured the same way over 60 s, about 2 h into the
+32-block pipeline and 5–6 minutes into the 128-block one:
+
+| | 32×18 blocks (before) | 128×72 blocks (after) |
+| --- | --- | --- |
+| ffmpeg CPU (of 400 %) | 9.5 % | 9.9 % |
+| `rpicam-vid` CPU | 1.1 % | 1.1 % |
+| ffmpeg memory (RSS) | 57 MB | 62 MB |
+| SoC temperature | 45.9 °C | 45.9 °C |
+| Upload to YouTube | 0.030 Mbit/s | 0.061 Mbit/s |
+| Broadcast | [`bUV9kGK-Yh0`](https://www.youtube.com/watch?v=bUV9kGK-Yh0) (ended by the restart) | [`GELJvjX_weo`](https://www.youtube.com/watch?v=GELJvjX_weo) |
+
+Finer blocks leave more for the encoder, so the upload doubles, but it is still below the
+unpixelated 0.072 Mbit/s. An earlier sample, 2–3 minutes in, gave the same upload and 10.0 % CPU.
+The startup log reads `Pixelation: 128 blocks along the long side` and `Output #0 … 2 fps`.
+ffmpeg's progress line showed no `dup=` or `drop=` over its first 506 frames. The watchdog
+logged nothing.
+
+A frame of `GELJvjX_weo` from YouTube's 144p rendition (`269`), at its native size:
+
+![Frame of the atomizer room from YouTube at 128×72 blocks, with a sharp timestamp](images/stream-cam-picam-ot2-pixelated-128-2026-10-01.png)
+
+The overlay still keeps time. The broadcast's first 70 s of that rendition were fetched through
+the other stream-cam Pi and decoded at 2 fps, and tesseract read all 139 frames. The first 7.5 s
+held 22-59-54 as the broadcast started, as the 19:56 start did. After that the overlay showed
+every second from 22-59-55 to 23-00-56, two frames each.
 
 Older records for this Pi are not on `main` yet:
 
