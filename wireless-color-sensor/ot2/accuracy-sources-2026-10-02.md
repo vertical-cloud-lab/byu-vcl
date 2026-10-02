@@ -238,46 +238,80 @@ reference as having "low to no reflectance (for example a black light trap)".
 5. **Calibrate against a reference instrument and more targets** (item 3 of §1). ams calls a
    per-device calibration "the most complex but has the highest accuracy" (AN000633 §2.5).
 
-## What the standards add
+## What the standards and metrology institutes add
 
-Standards bodies sell their standards, so only the official free preview pages were read (they
-include the clauses quoted). The NIH guide is free in full.
+Standards bodies sell their standards, so for ISO only the official free preview pages were read
+(they include every clause quoted). The NPL guides, the NIST-hosted book and the NIH guide are free in
+full.
 
-- **The black and white references** (ISO 18314-1:2015, *Analytical colorimetry — Practical colour
-  measurement*, §5.3–5.5):
-  - "A black calibration standard is a standard which has low to no reflectance (for example a black
-    light trap). Black calibration is used to establish a known zero point for the instrument."
-    Watered-down Mars black is not that: it reads 0.52–0.91 of our white.
-  - The white "is made of a durable material, like ceramic, glass, or enamel" and "has reflectance
-    values that are traceable to a national standard". Watered-down paint in a clear well has no
-    known reflectance, so our calibrated values can only be relative.
-  - "When performing extended measurement series and/or under strongly varying environmental
-    conditions (for example temperature) the white calibration shall be repeated in regular
-    intervals."
-  - "After certain time intervals it is recommended to verify the accuracy of the measurements
-    through the use of coloured control standards." and "The white calibration standard may not be
-    used for control measurements." We have never had a control: a few stable coloured samples read
-    every run, separate from the white and black, would show whether a change helped.
-- **The plate** (NIH/NCATS *Assay Guidance Manual*, "Microplate Selection and Recommended Practices",
-  2020): "Clear microplates are typically used for absorbance (colorimetric)-based readouts." White
-  plates "can reduce well-to-well crosstalk, while enhancing the luminescence signal by better
-  reflecting the light"; black plates likewise reduce it. And: "Suboptimal choice of microplate
-  color will often manifest as [1] lower signal-to-background ratios compared to the optimal
-  microplate color, and/or [2] well-to-well crosstalk when highly active and inactive samples are
-  adjacent to one another." That is the 09-30 neighbour effect, in a government guide. If a white
-  plate is tried, note that "the color of white is not standardized in opaque microplates".
-- **The backing under the plate** (ISO 13655:2017 §4.2.3): "The specimen shall be backed by either a
-  black or a white material that conforms to A.2 or A.3", and "Where samples being measured by
-  reflection are transparent, the backing used shall be white". So the standard asks for a *defined*
-  backing, and for see-through samples a white one. Watered-down paint is partly see-through, so it
-  is worth one run on black paper and one on white paper, judged by black ÷ white and the miss.
-- **The geometry** (ISO 13655:2017 §4.2.4): "The measurement geometry shall be (45°:0°) or (0°:45°),
-  annular or circumferential". Ours is neither: light from the rail lights overhead and from the deck
-  below, with the sensor looking straight down. A ring of light at 45° around the sensor's view, with
-  the rail lights off, would be the standard geometry. That is a bigger change than the others.
-- **The liquid surface** (NIH guide): in top-read assays, "centrifugation will increase variability
-  by creating uneven menisci across the microplate". Our sensor reads from the top, so keep every
-  well's volume the same (200 µL) and free of bubbles.
+- **The zero.** NPL's *Surface Colour Measurement* guide (GPG 96 §3.1.1): "Detector noise and stray
+  light within the instrument optics will produce a signal for zero reflectance … This value must be
+  accurately determined and then subtracted from all subsequent readings." The zero is a light trap,
+  not a paint: "As a good rule of thumb, a wedge whose end cannot be seen under standard laboratory
+  illumination is usually a good zero reflectance specimen." ISO 18314-1 §5.4 says the same: "A black
+  calibration standard is a standard which has low to no reflectance (for example a black light
+  trap)." Our Mars black well reads 0.52–0.91 of our white. If the black can't be near zero, ISO 2469
+  §5.4 gives the fallback: "the instrument shall be adjusted to the nominal value of the black
+  cavity", i.e. use its known value (which is what our calibration does with the published Mars black
+  spectrum).
+- **The white.** The ratio to the white is then multiplied by the white's own reflectance factor (NIST
+  book §10.3.3), and that white should be "traceable to a national metrology institute" (NPL §3.1.2),
+  "made of a durable material, like ceramic, glass, or enamel" (ISO 18314-1 §5.3). NPL: "it is good
+  practice to measure matt samples against a matt white standard and glossy samples against a glossy
+  white standard." Watered-down paint in a clear well has no known reflectance, so our calibrated
+  values are relative.
+- **A control.** ISO 18314-1 §5.5: "After certain time intervals it is recommended to verify the
+  accuracy of the measurements through the use of coloured control standards", and "The white
+  calibration standard may not be used for control measurements." We have never had a control: a few
+  stable coloured samples read every run would show whether a change actually helped.
+- **What lights the well must be what the sensor sees.** ISO 5-4 §6.2: "The specimen characteristics
+  over the illuminator region should be the same as those over the receiver region." The rail lights
+  light the whole plate, neighbours included, which is the 09-30 neighbour effect. The NIH/NCATS
+  *Assay Guidance Manual* (2020) describes the symptom: "Suboptimal choice of microplate color will
+  often manifest as [1] lower signal-to-background ratios compared to the optimal microplate color,
+  and/or [2] well-to-well crosstalk when highly active and inactive samples are adjacent to one
+  another." It notes "Clear microplates are typically used for absorbance (colorimetric)-based
+  readouts", while white and black plates "can reduce well-to-well crosstalk".
+- **Stray light inside the instrument.** ISO 5-4 §6.8: "Scattered flux shall be reduced to a
+  negligible amount by the use of clean optical components and appropriate baffles, and by suitable
+  blackening of surfaces exposed to the specimen, in accordance with good photometric practice." Our
+  enclosure's inside is white.
+- **See-through samples.** ISO 2469 §3.6 defines an opaque pad as "thick enough to be opaque, i.e.
+  such that increasing the thickness of the pad by doubling the number of sheets results in no change
+  in the measured reflectance factor", and adds "The reflectance factor of a single non-opaque sheet is
+  dependent on the background and is not a material property." ISO 18314-1 §3: "In the case of paint
+  films that do not completely hide the substrate, the colour depends on the colour of the substrate
+  and the film thickness". ISO 13655 measures this as opacity, the reading over black backing divided
+  by the reading over white (§3.7), and requires a defined backing: "The specimen shall be backed by
+  either a black or a white material that conforms to A.2 or A.3", and "Where samples being measured by
+  reflection are transparent, the backing used shall be white" (§4.2.3). **So: one run over black paper
+  and one over white paper, same wells.** If a paint reads differently, it isn't opaque, and its
+  reading depends on what is under the plate. Then either thicken it until it stops changing, or keep
+  one defined backing for every run.
+- **Geometry.** ISO 13655 §4.2.4: "The measurement geometry shall be (45°:0°) or (0°:45°), annular
+  or circumferential", and "The instrument base and the sample surface shall lie in the same plane."
+  The NIST-hosted book: 45:0 and 0:45 "illumination/viewing geometries are best for measuring color
+  since they produce results that correlate well with human perception". Ours is light from overhead
+  and from the deck, with the sensor looking straight down at a liquid surface below the well rim. A
+  ring of light at 45° inside the enclosure, with the rail lights off, would be the standard geometry:
+  a bigger change than the others.
+- **Repeatability is not reproducibility.** NPL §2.5: repeatability is "measuring a sample, leaving it
+  in place and making another measurement"; reproducibility is "removing the sample, replacing the
+  sample and making another measurement". Our 0.04–0.12% is repeatability; the 12% re-landing is
+  reproducibility. NPL GPG 95: "Repeated measurements will reduce the effect of random components in
+  the measurement process, but not the systematic components." Track both, every run.
+- **Warm-up.** NPL §2.3: warm up for "never less than the time suggested by instrument's
+  manufacturer, or thirty minutes", the same 30 minutes ams gives.
+- **The liquid surface.** About 4% of light reflects off any surface regardless of colour (ISO 18314-1
+  §7), and in top-read assays "centrifugation will increase variability by creating uneven menisci
+  across the microplate" (NIH guide). Keep every well's volume the same and free of bubbles.
+- **What an 8-channel sensor can claim.** ISO 13655's introduction: "The use of instruments with wider
+  sampling intervals and bandpass has been deprecated with the exception of the use of such
+  non-standard instruments to monitor the state of previously characterized materials or objects."
+  So the realistic target for the AS7341 is consistent readings of our own characterised paints,
+  which is what colour matching needs, rather than absolute colour. NIST's book recommends that
+  filter colorimeters read "a set of stable color standards which span the gamut of color space … as a
+  matter of routine".
 
 ## Our own check: the channel tolerance is not what limits the score
 
@@ -355,9 +389,17 @@ below into one folder and run `python3 check_quotes.py accuracy-sources-quotes-2
 
 | source | read | used for |
 | --- | --- | --- |
-| ISO 13655:2017, *Graphic technology — Spectral measurement and colorimetric computation for graphic arts images*, §4.2.3–4.2.4 | the official free preview pages ([iTeh](https://standards.iteh.ai/catalog/standards/sist/960e390f-2252-4af2-bbd1-167266af6cc0/iso-13655-2017)) | defined black or white backing; 45°:0° geometry |
-| ISO 18314-1:2015, *Analytical colorimetry — Part 1: Practical colour measurement*, §5.3–5.5 | the official free preview pages ([iTeh](https://standards.iteh.ai/catalog/standards/sist/0f146362-4c3a-4d22-9ac1-584728b0d5ee/iso-18314-1-2015)) | white standard, black light trap, recalibration interval, coloured control standards |
+| Clarke PJ, *Surface Colour Measurement*, NPL Measurement Good Practice Guide No. 96, National Physical Laboratory (UK), 2006 | [full text](https://eprintspublications.npl.co.uk/3656/1/mgpg96.pdf) | the zero (light trap), traceable white, warm-up, stray-light check, repeatability vs reproducibility |
+| Gardner JL, *Uncertainties in Surface Colour Measurements*, NPL GPG No. 95, 2006 | [full text](https://eprintspublications.npl.co.uk/3657/1/mgpg95.pdf) | averaging removes random error, not systematic |
+| Germer TA, Zwinkels JC, Tsai BK (eds.), *Spectrophotometry: Accurate Measurement of Optical Properties of Materials*, Academic Press, 2014 | [full text via NIST](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=915098); §10.3 only | light-trap zero, multiplying by the white's reflectance, 45:0 geometry, routine colour standards |
+| ISO 13655:2017, *Graphic technology — Spectral measurement and colorimetric computation for graphic arts images* | [free preview](https://cdn.standards.iteh.ai/samples/65430/dac5ec12152e4ed788d2ba4b4c234ba0/ISO-13655-2017.pdf), introduction and §1–4.2.5 | defined backing, opacity, 45°:0° geometry, sample plane, wide-band instruments |
+| ISO 18314-1:2015, *Analytical colorimetry — Part 1: Practical colour measurement* | [free preview](https://cdn.standards.iteh.ai/samples/62103/f16f626869b0488ba27387bd3f1030f4/ISO-18314-1-2015.pdf) | white and black standards, control standards, paint over a substrate, first-surface reflection |
+| ISO 5-4:2009, *Density measurements — Geometric conditions for reflection density* | [free preview](https://cdn.standards.iteh.ai/samples/52916/3f6c3dabfed344cda644b3062133c320/ISO-5-4-2009.pdf), §1–6.8 | baffles and blackening; same specimen under the light as in view |
+| ISO 2469:2014, *Paper, board and pulps — Measurement of diffuse radiance factor* | [free preview](https://cdn.standards.iteh.ai/samples/51631/99309489d17e42a68151a1392d5e6131/ISO-2469-2014.pdf), §1–6.2 | opacity by the doubling test; a black of known value |
 | Auld DS *et al.*, "Microplate Selection and Recommended Practices in High-throughput Screening and Quantitative Biology", *Assay Guidance Manual*, NIH/NCATS, 2020 | [full text](https://www.ncbi.nlm.nih.gov/books/NBK558077/) | plate colour and cross-talk; menisci in top-read assays |
+
+Not read in full, so nothing is claimed from them: CIE 015:2018 *Colorimetry* (table of contents only)
+and the ASTM practices E1164, E2214, E1349 and E1331 (public scope pages only).
 
 **Upstream and this repository**
 

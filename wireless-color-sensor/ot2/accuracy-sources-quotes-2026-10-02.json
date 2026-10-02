@@ -73,18 +73,43 @@
   },
   "ISO13655": {
    "file": "iso-13655-2017-preview.pdf",
-   "url": "https://standards.iteh.ai/catalog/standards/sist/960e390f-2252-4af2-bbd1-167266af6cc0/iso-13655-2017",
+   "url": "https://cdn.standards.iteh.ai/samples/65430/dac5ec12152e4ed788d2ba4b4c234ba0/ISO-13655-2017.pdf",
    "title": "ISO 13655:2017 (free preview pages)"
   },
   "ISO18314-1": {
    "file": "iso-18314-1-2015-preview.pdf",
-   "url": "https://standards.iteh.ai/catalog/standards/sist/0f146362-4c3a-4d22-9ac1-584728b0d5ee/iso-18314-1-2015",
+   "url": "https://cdn.standards.iteh.ai/samples/62103/f16f626869b0488ba27387bd3f1030f4/ISO-18314-1-2015.pdf",
    "title": "ISO 18314-1:2015 Analytical colorimetry - Part 1: Practical colour measurement (free preview pages)"
   },
   "NIH-AGM": {
    "file": "nih-agm-NBK558077.html",
    "url": "https://www.ncbi.nlm.nih.gov/books/NBK558077/",
    "title": "Auld DS et al., Microplate Selection and Recommended Practices in High-throughput Screening and Quantitative Biology, Assay Guidance Manual (NIH/NCATS), 2020"
+  },
+  "NPL-GPG96": {
+   "file": "npl-gpg96.pdf",
+   "url": "https://eprintspublications.npl.co.uk/3656/1/mgpg96.pdf",
+   "title": "Clarke PJ, Surface Colour Measurement, NPL Measurement Good Practice Guide No. 96, National Physical Laboratory (UK), 2006"
+  },
+  "NPL-GPG95": {
+   "file": "npl-gpg95.pdf",
+   "url": "https://eprintspublications.npl.co.uk/3657/1/mgpg95.pdf",
+   "title": "Gardner JL, Uncertainties in Surface Colour Measurements, NPL Measurement Good Practice Guide No. 95, 2006"
+  },
+  "ISO5-4": {
+   "file": "iso-5-4-2009-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/52916/3f6c3dabfed344cda644b3062133c320/ISO-5-4-2009.pdf",
+   "title": "ISO 5-4:2009 Photography and graphic technology - Density measurements - Part 4: Geometric conditions for reflection density (free preview pages)"
+  },
+  "ISO2469": {
+   "file": "iso-2469-2014-preview.pdf",
+   "url": "https://cdn.standards.iteh.ai/samples/51631/99309489d17e42a68151a1392d5e6131/ISO-2469-2014.pdf",
+   "title": "ISO 2469:2014 Paper, board and pulps - Measurement of diffuse radiance factor (free preview pages)"
+  },
+  "NIST-BOOK": {
+   "file": "nist-germer-2014-spectrophotometry.pdf",
+   "url": "https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=915098",
+   "title": "Germer TA, Zwinkels JC, Tsai BK (eds.), Spectrophotometry: Accurate Measurement of Optical Properties of Materials, Experimental Methods in the Physical Sciences 46, Academic Press 2014 (via NIST)"
   }
  },
  "quotes": [
@@ -597,6 +622,168 @@
    "source": "NIH-AGM",
    "where": "Centrifugation",
    "quote": "centrifugation will increase variability by creating uneven menisci across the microplate"
+  },
+  {
+   "id": "npl-zero",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "Detector noise and stray light within the instrument optics will produce a signal for zero reflectance"
+  },
+  {
+   "id": "npl-zero-sub",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "This value must be accurately determined and then subtracted from all subsequent readings."
+  },
+  {
+   "id": "npl-trap",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "Simply making a spectral scan with the sample port open is not satisfactory."
+  },
+  {
+   "id": "npl-wedge",
+   "source": "NPL-GPG96",
+   "where": "§3.1.1",
+   "quote": "As a good rule of thumb, a wedge whose end cannot be seen under standard laboratory illumination is usually a good zero reflectance specimen."
+  },
+  {
+   "id": "npl-traceable",
+   "source": "NPL-GPG96",
+   "where": "§3.1.2",
+   "quote": "The instrument scale should be calibrated against standards traceable to a national metrology institute."
+  },
+  {
+   "id": "npl-0.5",
+   "source": "NPL-GPG96",
+   "where": "§3.1.2",
+   "quote": "Differences of 0.5% in absolute value of radiance factor measurement will produce measurable errors in terms of CIELAB units."
+  },
+  {
+   "id": "npl-matt",
+   "source": "NPL-GPG96",
+   "where": "§3.2.1",
+   "quote": "it is good practice to measure matt samples against a matt white standard and glossy samples against a glossy white standard."
+  },
+  {
+   "id": "npl-warmup",
+   "source": "NPL-GPG96",
+   "where": "§2.3",
+   "quote": "never less than the time suggested by instrument's manufacturer, or thirty minutes."
+  },
+  {
+   "id": "npl-stray",
+   "source": "NPL-GPG96",
+   "where": "§2.7",
+   "quote": "The obvious way of checking for external stray light is to darken the room or cover suspect areas and note if there is any change in the output signal."
+  },
+  {
+   "id": "npl-repro",
+   "source": "NPL-GPG96",
+   "where": "§2.5",
+   "quote": "Reproducibility data is obtained by measuring a sample, removing the sample, replacing the sample and making another measurement, and then repeating this sequence a number of times."
+  },
+  {
+   "id": "npl-repeat",
+   "source": "NPL-GPG96",
+   "where": "§2.5",
+   "quote": "Repeatability data is obtained by measuring a sample, leaving it in place and making another measurement, and then repeating this a number of times."
+  },
+  {
+   "id": "npl95-random",
+   "source": "NPL-GPG95",
+   "where": "Ch. 4",
+   "quote": "Repeated measurements will reduce the effect of random components in the measurement process, but not the systematic components."
+  },
+  {
+   "id": "iso54-baffles",
+   "source": "ISO5-4",
+   "where": "§6.8",
+   "quote": "Scattered flux shall be reduced to a negligible amount by the use of clean optical components and appropriate baffles, and by suitable blackening of surfaces exposed to the specimen, in accordance with good photometric practice."
+  },
+  {
+   "id": "iso54-same",
+   "source": "ISO5-4",
+   "where": "§6.2",
+   "quote": "The specimen characteristics over the illuminator region should be the same as those over the receiver region."
+  },
+  {
+   "id": "iso54-lateral",
+   "source": "ISO5-4",
+   "where": "§6.2 Note 1",
+   "quote": "This requirement prevents lateral diffusion error."
+  },
+  {
+   "id": "iso2469-opaque",
+   "source": "ISO2469",
+   "where": "§3.6",
+   "quote": "thick enough to be opaque, i.e. such that increasing the thickness of the pad by doubling the number of sheets results in no change in the measured reflectance factor"
+  },
+  {
+   "id": "iso2469-single",
+   "source": "ISO2469",
+   "where": "§3.6 Note 1",
+   "quote": "The reflectance factor of a single non-opaque sheet is dependent on the background and is not a material property."
+  },
+  {
+   "id": "iso2469-black-nominal",
+   "source": "ISO2469",
+   "where": "§5.4",
+   "quote": "During calibration, the instrument shall be adjusted to the nominal value of the black cavity."
+  },
+  {
+   "id": "iso13655-opacity",
+   "source": "ISO13655",
+   "where": "§3.7",
+   "quote": "100 times the ratio of the luminous reflectance factor of the substrate over black backing (as defined in A.2) to the luminous reflectance factor over white backing (as defined in A.3)."
+  },
+  {
+   "id": "iso13655-wideband",
+   "source": "ISO13655",
+   "where": "Introduction",
+   "quote": "The use of instruments with wider sampling intervals and bandpass has been deprecated with the exception of the use of such non-standard instruments to monitor the state of previously characterized materials or objects."
+  },
+  {
+   "id": "iso13655-plane",
+   "source": "ISO13655",
+   "where": "§4.2.4",
+   "quote": "While being measured the sample shall lie on a flat surface. The instrument base and the sample surface shall lie in the same plane."
+  },
+  {
+   "id": "iso18314-substrate",
+   "source": "ISO18314-1",
+   "where": "§3",
+   "quote": "In the case of paint films that do not completely hide the substrate, the colour depends on the colour of the substrate and the film thickness"
+  },
+  {
+   "id": "iso18314-first-surface",
+   "source": "ISO18314-1",
+   "where": "§7",
+   "quote": "The first surface reflection (approximately 4 % of the incident light) is only dependent on the refractive ratio not on the colorants."
+  },
+  {
+   "id": "nist-trap",
+   "source": "NIST-BOOK",
+   "where": "§10.3.3, p. 391",
+   "quote": "Next, a light trap is measured to set the dark signal"
+  },
+  {
+   "id": "nist-multiply",
+   "source": "NIST-BOOK",
+   "where": "§10.3.3, p. 391",
+   "quote": "is multiplied by the value of the reflectance factor"
+  },
+  {
+   "id": "nist-45",
+   "source": "NIST-BOOK",
+   "where": "§10.3.1, p. 388",
+   "quote": "illumination/viewing geometries are best for measuring color since they produce results that correlate well with human perception"
+  },
+  {
+   "id": "nist-routine",
+   "source": "NIST-BOOK",
+   "where": "§10.3, p. 384",
+   "quote": "The measurement of a set of stable color standards which span the gamut of color space should be performed as a matter of routine with tristimulus colorimeters"
   }
  ]
 }
