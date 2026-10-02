@@ -1,0 +1,10 @@
+u1 unlock
+j1 jog X -10
+j2 jog X -190
+j3 jog Y -10
+j4 jog Y -190
+j5 jog X 175
+h1 jog X 25
+h2 jog Y 200
+s1 status
+q2 quit
