@@ -8,11 +8,11 @@ Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @t
 > can do with those specific factors
 
 No hardware moved. **How the sources were checked:** every quotation below was copied from a
-downloaded copy of the source, and then searched for again, word for word, in a copy downloaded
-separately (or, for web pages, in the saved page text) by [`check_quotes.py`](#how-the-quotes-were-checked).
-Standards that are sold rather than published (ASTM, ISO, CIE) could only be read as their official
-scope or preview pages; those rows say **scope only**, and nothing is claimed about the parts behind
-the paywall.
+downloaded copy of the source and then found again, word for word, by
+[`check_quotes.py`](check_quotes.py) (details at the end). The ams documents, the NPL guides and
+two of the ISO previews were downloaded a second time to do that, and matched the first copies byte
+for byte. Standards that are sold rather than published (ISO, CIE, ASTM) were read only as their
+official free preview pages; the sources table says which, and nothing is claimed about the rest.
 
 ## The number that says how far there is to go: black ÷ white
 
@@ -69,8 +69,8 @@ reference as having "low to no reflectance (for example a black light trap)".
      undertone", so even undiluted it is a warm black, not a neutral one. Use it undiluted, or use a
      light trap (see the standards section).
   2. **A white that is really white and opaque.** Liquitex calls Titanium White "the strongest, most
-     opaque of all whites"; watered down it lets the deck's light through. Use it undiluted, or an
-     opaque white standard of known reflectance.
+     opaque of all whites", but watered down it no longer hides what is under it. Use it undiluted,
+     or an opaque white standard of known reflectance.
   3. **More references than two.** A matrix calibration needs at least as many targets as channels:
      "Be attended to the number of linearly independent targets, which must be greater than or equal
      to the number of filters used in the sensor to obtain a stable matrix" (AN000633, PDF p. 29), so
@@ -157,9 +157,10 @@ reference as having "low to no reflectance (for example a black light trap)".
   2. **A fixed gap, never a press.** Read lifted (z 95–100 scored best) so nothing pushes the
      enclosure up the nozzle.
   3. **Limit what the sensor can see to one well.** If nothing in the enclosure narrows it, a 40°
-     half-cone 12 mm up takes in a circle about 20 mm across, enough to include the neighbouring wells
-     9 mm away (an estimate: how deep the sensor sits inside the enclosure isn't recorded). That fits z 100 still squeezing colours
-     2.7×. A short matte-black tube under the sensor, as wide as a well, would narrow it.
+     half-cone 12 mm up takes in a circle about 20 mm across, enough to include the neighbouring
+     wells 9 mm away (an estimate: how deep the sensor sits inside the enclosure isn't recorded).
+     That fits z 100 still squeezing colours 2.7×. A short matte-black tube under the sensor, as wide
+     as a well, would narrow it.
 
 ### 5. Rail lights on — 5.6× the signal
 
@@ -212,8 +213,8 @@ reference as having "low to no reflectance (for example a black light trap)".
 2. **More counts, at one fixed gain, once [`../pico/`](../pico/) is flashed.**
    - ams: "The higher the counts (before saturation), the better the accuracy." (UG000400, PDF
      p. 40); its liquid guide aims "to achieve stable values for the sensor result to be greater than
-     10,000 digits or more" (QG000121 §7.6). **Our brightest channel is 1,464–2,402 counts, 2–4% of
-     full scale.** 512x instead of 256x roughly doubles that (typical ratio 7.75 ÷ 3.95); more needs a
+     10,000 digits or more" (QG000121 §7.6). **Our brightest channel on 10-01 was 1,464–2,402 counts,
+     2–4% of full scale.** 512x instead of 256x roughly doubles that (typical ratio 7.75 ÷ 3.95); more needs a
      longer integration, e.g. `astep` 2999 with `atime` 255 is about 2.1 s per half-reading. Expect
      it to help the weak 410 nm channel, not the stray-light floor: gain scales both alike.
    - ams normalises every reading to "Basic_Counts" = raw counts ÷ (gain × integration time) and says
@@ -234,9 +235,9 @@ reference as having "low to no reflectance (for example a black light trap)".
 4. **Paint that hides what is under it.** Liquitex rates all three colours **Semi-Opaque** (Primary
    Yellow PY74, Cadmium Red Medium Hue PR170 + PR9, Primary Blue PB15:3) and only the white and the
    black **Opaque**. Watered down, the colours let light through from below and the black doesn't,
-   which is the floor. Less water, a defined backing (see the standards section), or both.
-5. **Calibrate against a reference instrument and more targets** (item 3 of §1). ams calls a
-   per-device calibration "the most complex but has the highest accuracy" (AN000633 §2.5).
+   which fits the floor. Less water, a defined backing (see the standards section), or both.
+5. **Calibrate against a reference instrument and more targets** (item 3 of §1). AN000633 §2.5:
+   "Device Calibration: This method is the most complex but has the highest accuracy."
 
 ## What the standards and metrology institutes add
 
@@ -345,22 +346,22 @@ tolerance's.** Measuring our unit's channel centres would matter only once the r
 
 ## How the quotes were checked
 
-1. Each source was downloaded and converted to text twice, with `pdftotext -layout` and with plain
+1. Each source was saved and converted to text twice, with `pdftotext -layout` and with plain
    `pdftotext` (web pages: their saved text).
-2. The ams documents were downloaded a second time, separately, from ams's own site, and the two
-   copies compared byte for byte; they were identical.
+2. The ams documents, the two NPL guides and the ISO 5-4 and ISO 2469 previews were downloaded a
+   second time, separately, and compared byte for byte with the first copies; all were identical.
 3. Every quotation in this file was then searched for in those texts, with only whitespace,
-   line-break hyphens, quote marks and ligatures normalised:
-   [`check_quotes.py`](check_quotes.py) with the list in
-   [`accuracy-sources-quotes-2026-10-02.json`](accuracy-sources-quotes-2026-10-02.json). All were
-   found. One (Revvity's "medium cross-talk") matches only with the line-break hyphen ignored, which is
-   how that PDF breaks the word.
-4. Numbers read from figures (gain ratios, centre wavelengths, dark counts) were also checked against
-   the table's column positions, since `pdftotext` can shift a value into the wrong column.
+   line-break hyphens, quote marks and ligatures normalised, by [`check_quotes.py`](check_quotes.py)
+   with the list in [`accuracy-sources-quotes-2026-10-02.json`](accuracy-sources-quotes-2026-10-02.json)
+   (112 quotations, each with its source, section and download link). **All 112 were found.** One,
+   Revvity's "medium cross-talk", matches only with the line-break hyphen ignored, which is how that
+   PDF breaks the word.
+4. Numbers read from tables (gain ratios, centre wavelengths, dark counts) were also checked against
+   the table's column positions, because `pdftotext` can shift a value into the wrong column.
 
 The sources are not copied into the repository. To re-run the check, download them from the links
-below into one folder and run `python3 check_quotes.py accuracy-sources-quotes-2026-10-02.json --dir
-<folder>`.
+in the JSON into one folder, under the file names it gives, and run
+`python3 check_quotes.py accuracy-sources-quotes-2026-10-02.json --dir <folder>`.
 
 ## Sources
 

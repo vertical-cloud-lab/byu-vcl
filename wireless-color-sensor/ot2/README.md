@@ -1265,6 +1265,10 @@ found again in a separately downloaded copy of its source. Two checks from runs 
 - **Plate makers:** clear plates have the most well-to-well cross-talk, and opaque walls
   prevent it (Revvity, Corning).
 - **Liquitex** rates the three colours semi-opaque and only the white and black opaque.
+- **The colour-measurement standards** (ISO 13655, ISO 18314-1, ISO 5-4, ISO 2469; NPL's and
+  NIST's guides) want a light trap for the zero, a white of known reflectance, coloured control
+  samples every run, blackened surfaces inside the instrument, and a defined backing: a layer that
+  isn't opaque reads differently over black and over white, so test the paints over both.
 - **ams's calibration note** calls our white/black correction its simplest method; more
   reference targets "can increase accuracy for calibration dramatically".
 - **The ±10 nm channel tolerance in the datasheet is not what limits the score:** moving every
