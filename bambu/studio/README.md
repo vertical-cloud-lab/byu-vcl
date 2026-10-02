@@ -217,7 +217,7 @@ as "the pillars": the four posts are part of the base, plate 1. The record is in
 | 18:55:47 | Fresh pre-flight |
 | 18:56:41 | *Send*; `RUNNING` by 18:57:26 |
 | 19:03:48 | Layer 1, 7.1 min for the whole 112 mm footprint |
-| 21:22:39 | `FINISH`, 146.0 min after Send (Studio's estimate: 2 h 29 min 41 s). `watch` exited 0 with no error or HMS alert | |
+| 21:22:39 | `FINISH`, 146.0 min after Send (Studio's estimate: 2 h 29 min 41 s). `watch` exited 0 with no error or HMS alert |
 
 What was new:
 - **Black PLA is loaded now** (slot A3, 0-based 2), and Send mapped the project's black
