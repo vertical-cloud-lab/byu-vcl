@@ -30,8 +30,11 @@ the work:
 >   shims. It was sent at 00:32:54 UTC and finished at 01:43:12, 70 min later against Bambu's
 >   69 min, with no error or HMS alert. It was asked for on PR #84, so its
 >   [evidence](evidence/2026-10-01/deck-studio/) was first committed there and copied here.
->   [Recording](https://www.youtube.com/watch?v=1gatV4-JgIA). Of the lid mount's two
->   required plates, only plate 1, the base, is left to print.
+>   [Recording](https://www.youtube.com/watch?v=1gatV4-JgIA).
+> - **Fourth print from Studio (2026-10-02):** plate 1, the base with its four posts, in
+>   black PLA. It was sent at 18:56:41 UTC and finished at 21:22:39, 146.0 min later against
+>   Studio's 2 h 30 min, with no error or HMS alert. [Evidence](evidence/2026-10-02/base-studio/README.md),
+>   [recording](https://www.youtube.com/watch?v=inpbxJkVpe8). All four of the lid mount's plates are now printed.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -423,8 +426,8 @@ itself:
 
 Things to decide or watch:
 - **Colour.**
-  - The lid mount's README asks for **black** PLA, to block light at the collar. None is
-    loaded: on 2026-10-01 the AMS Lite still held dark blue and pink PLA Basic, plus white PETG.
+  - The lid mount's README asks for **black** PLA, to block light at the collar. Black PLA
+    Basic was loaded in slot A3 (0-based 2) by 2026-10-02, and plate 1 was printed in it.
   - Slot 0 (dark blue PLA Basic) is the most opaque option, and fine for a fit test: `--ams-slot 0`.
   - For the final part, ask someone to load black PLA Basic and re-run the pre-flight.
   - Pink (slot 1) is likely to glow.
@@ -553,4 +556,5 @@ What this says about printing and using plate 1:
 | [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login-code relay, and what to check before Send |
 | [`evidence/2026-09-27/fit-coupon-studio/`](evidence/2026-09-27/fit-coupon-studio/) | plate 4 printed from Studio: two pre-flights, then `watch`'s status log and frames |
 | [`evidence/2026-09-29/drill-template-studio/`](evidence/2026-09-29/drill-template-studio/) | plate 3 printed from Studio: two pre-flights, the file the printer ran (`sent/`), `print.json` (settings, timeline, the go, the recording), `watch`'s log and key frames |
+| [`evidence/2026-10-02/base-studio/`](evidence/2026-10-02/base-studio/README.md) | plate 1, the base, printed from Studio in black PLA: two pre-flights, the file Studio sent (exported mid-print), `print.json`, `watch`'s log and key frames |
 | [`evidence/2026-10-01/deck-studio/`](evidence/2026-10-01/deck-studio/README.md) | plate 2 printed from Studio, asked for on PR #84: two pre-flights (the first in a dark lab), the file the printer ran, `print.json`, `watch`'s log and key frames. Copied from that PR's branch (`cad7af2`) |

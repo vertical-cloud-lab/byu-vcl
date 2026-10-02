@@ -11,7 +11,9 @@ It worked again on 2026-09-29 for the drill template, plate 3
 ([evidence](../evidence/2026-09-29/drill-template-studio/); see
 [the second run](#second-run-the-drill-template-2026-09-29) below), and on 2026-10-01 for
 plate 2, the deck ([evidence](../evidence/2026-10-01/deck-studio/README.md); see
-[the third run](#third-run-plate-2-2026-10-01)).
+[the third run](#third-run-plate-2-2026-10-01)), and on 2026-10-02 for plate 1, the base
+([evidence](../evidence/2026-10-02/base-studio/README.md); see
+[the fourth run](#fourth-run-plate-1-the-base-2026-10-02)).
 
 Nothing here changes the rules in the runbook. The pre-flight, the person's go and the watching
 all still apply. This route skips `bambu_print.py start`, so its gates are applied by hand: a
@@ -195,6 +197,43 @@ What was new:
   slicing at 2×, then Send, then the printer camera as a timelapse to the finish. The login
   and a 15 min idle wait for the go were cut, and the room corners of the camera frames
   blurred.
+
+## Fourth run: plate 1, the base (2026-10-02)
+
+Asked for on [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5959041505)
+as "the pillars": the four posts are part of the base, plate 1. The record is in
+[`../evidence/2026-10-02/base-studio/`](../evidence/2026-10-02/base-studio/README.md).
+
+| UTC | Step |
+|---|---|
+| 18:44:24 | Request |
+| 18:46:57 | Read-only pre-flight: idle, no errors, black PLA Basic in slot A3 |
+| 18:47:47 | Frame posted, go and hand-off asked for |
+| 18:48:07 | Recording started, then Studio's first run (wizard, *Cancel* on the profile update, Beta prompts, plug-in) |
+| 18:51:37 | *Log In* pressed |
+| 18:52:03 | The go (`plate clear`) |
+| 18:52:31 | Login code typed, 6 s after it was posted |
+| 18:54:55 | Plate 1 sliced in the GUI, after the same three settings were set back |
+| 18:55:47 | Fresh pre-flight |
+| 18:56:41 | *Send*; `RUNNING` by 18:57:26 |
+| 19:03:48 | Layer 1, 7.1 min for the whole 112 mm footprint |
+| 21:22:39 | `FINISH`, 146.0 min after Send (Studio's estimate: 2 h 29 min 41 s). `watch` exited 0 with no error or HMS alert | |
+
+What was new:
+- **Black PLA is loaded now** (slot A3, 0-based 2), and Send mapped the project's black
+  filament to it by itself.
+- **The camera pane changes size.** Studio first showed the live view letterboxed in the
+  pane, then filling it. The room-corner boxes above fit the second layout. For a recording
+  that spans both, blur the union: 296 × 341 at (274, 136) and 258 × 274 at (1040, 136).
+- **The sent file was exported mid-print**, at 19:02, with *File → Export → Export plate
+  sliced file*. Its plate G-code had the same MD5 as Studio's slice in `/tmp/bamboo_model`.
+  Nothing has to be read back from the SD card after the print.
+- **The GUI reset the same three settings again.** After they were set back, the GUI's plate 1
+  matched the committed plate layer for layer: 511 layers to Z 102.2, 81.12 g, and no layer's
+  extrusion more than 0.05 mm off. Studio's estimate was 2 h 29 min 41 s against the CLI's
+  2 h 32 min 12 s, from the stock acceleration limits.
+- **The clock.** A 2.5 h print fits in a 180 min job only if Send comes early. This one was
+  sent 12 min into the session. It finished 22 min before the job's 180 min limit.
 
 ## Recording and keeping the sent file
 

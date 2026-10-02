@@ -18,7 +18,7 @@ Only plates 1 and 2 are needed: 3 h 42 min and 124.6 g.
 To send a plate to the lab's A1 mini from a script or CI, follow
 [`bambu/README.md`](../../../bambu/README.md). Its section 7 covers plate 1.
 
-**Printed so far, all in dark blue PLA Basic and all sent from Bambu Studio on a CI runner:**
+**Printed so far, all sent from Bambu Studio on a CI runner:**
 - **Plate 4 (the fit coupon),** 2026-09-27. Its result is in
   [Will it fit first time?](#will-it-fit-first-time).
 - **Plate 3 (the drill template),** 2026-09-29. It took 52.9 min from Send to finish, against
@@ -27,9 +27,12 @@ To send a plate to the lab's A1 mini from a script or CI, follow
 - **Plate 2 (the deck, Pi 5 standoffs and deck shims),** 2026-10-01. It took 70.3 min from
   Send to finish, against the 69 min 16 s estimate. The file the printer ran and its metadata
   are in [`bambu/evidence/2026-10-01/deck-studio/`](../../../bambu/evidence/2026-10-01/deck-studio/README.md).
+- **Plate 1 (the base, with its four posts),** 2026-10-02, in black PLA Basic. It took 146.0 min
+  from Send to finish, against Studio's 2 h 29 min 41 s estimate (2 h 32 min for this CLI
+  slice). The file the printer ran and its metadata are in
+  [`bambu/evidence/2026-10-02/base-studio/`](../../../bambu/evidence/2026-10-02/base-studio/README.md).
 
-**Plate 1, the base, is the only required plate still to print.** It is the one that should be
-black, for the light collar.
+Plates 2–4 were printed in dark blue PLA Basic, plate 1 in black.
 
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).

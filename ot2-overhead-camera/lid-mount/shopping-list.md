@@ -94,7 +94,7 @@ doesn't have.
 
 - The camera, lens, C–CS adapter, Pi 5, Active Cooler and camera cable came on ME order 12704 ([#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84)).
 - The printed parts (base, deck, spacers and shims) print on the lab's A1 mini. The deck,
-  spacers and shims (plate 2) were printed on 2026-10-01; the base (plate 1) is still to print.
+  spacers and shims (plate 2) were printed on 2026-10-01, and the base (plate 1), in black, on 2026-10-02.
 - A 350-piece assortment of M2.5 nylon hardware, now in the lab
   ([sgbaird on #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427)).
   Check it for the M2.5 screws and nuts before buying any.
