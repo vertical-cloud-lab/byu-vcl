@@ -429,8 +429,9 @@ unpixelated pipeline and 3–4 minutes into the pixelated one:
 
 The upload more than halves, because solid blocks compress well. The two extra scales at
 256×144 cost no measurable CPU. The startup log records the setting as `Pixelation: 32 blocks
-along the long side`. ffmpeg's progress line has shown no `dup=` or `drop=` since the restart,
-and the watchdog logged no failed checks.
+along the long side`. ffmpeg's progress line showed no `dup=` or `drop=` over its first 506
+frames (about 4 minutes; the journal only stores it in chunks), and the watchdog logged no
+failed checks.
 
 A frame of `m_ITxTwPlrA` from YouTube's 144p rendition (`269`), at its native size:
 
