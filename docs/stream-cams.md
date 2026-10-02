@@ -225,9 +225,10 @@ bytes every 2.5–3.5 s, about six frames at once (read from `/proc/<pid>/io` ov
   2 fps, 240p pipeline, ffmpeg dropped 2,892 of the camera's frames and duplicated 2,893 to
   replace them, about a third of everything. The picture froze along with the clock.
 
-It never showed before because bigger frames fill the buffer sooner: at 720p one frame is more
-than 4 KB, and at 10 fps a batch spans less than a second. At 144p a P-frame is about 100 bytes,
-so without the fix a batch would have been about 40 frames, or 20 s.
+It went unnoticed at 720p and 10 fps, presumably because bigger, more frequent frames filled
+the buffer within about a frame; frame sizes from then were not measured, and neither was the
+240p, 10 fps stretch (17:01–17:38). At 144p a P-frame is about 100 bytes, so without the fix a
+batch would have been about 40 frames, or 20 s.
 
 **Fix: `--flush`, plus `-flags low_delay`.** `--flush` makes `rpicam-vid` flush after every
 frame. On its own that stops the jumps but leaves the overlay late, because ffmpeg's H.264
@@ -248,9 +249,9 @@ pipe every 0.49–0.51 s, 40 times in 20 s. Its progress line has carried no `du
 since the restart, which it prints only once one of them is non-zero.
 
 The overlay now trails the moment the camera took the frame by about one frame: 0.5 s at
-2 fps. Earlier archives trailed by about 5 frames (1 for the parser, 4 for the decoder
-threads), which at 10 fps is about 0.5 s. That is inferred from the same mechanism, not
-measured on those archives.
+2 fps. Earlier archives trailed by at least 5 frames (1 for the parser, 4 for the decoder
+threads), which at 10 fps is 0.5 s, plus any batching. That is inferred from the same
+mechanism, not measured on those archives.
 
 `rpicam-vid`'s own log goes into the video pipe, not the journal. `device.py` starts it with
 `stderr=subprocess.STDOUT`, which joins its stderr to the stdout that feeds ffmpeg. That is
