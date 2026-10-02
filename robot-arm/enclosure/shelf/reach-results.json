@@ -1,0 +1,72 @@
+{
+ "margin_deg": 15.0,
+ "approach_pitch_deg": [
+  -60,
+  -30
+ ],
+ "j1_limit_deg": 150.0,
+ "j1_dead_wedge_deg": 60.0,
+ "j1_dead_wedge_with_margin_deg": 90.0,
+ "behind_comfortable": false,
+ "behind_pitches_deg": [
+  -35,
+  20
+ ],
+ "straight_down_max_tip_height_m": 0.05,
+ "comfortable_band_by_tip_height_m": {
+  "0.00": [
+   0.38,
+   0.64
+  ],
+  "0.05": [
+   0.34,
+   0.63
+  ],
+  "0.10": [
+   0.31,
+   0.59
+  ],
+  "0.15": [
+   0.23,
+   0.54
+  ],
+  "0.20": [
+   0.31,
+   0.43
+  ],
+  "0.25": null
+ },
+ "grip_above_shelf_m": [
+  0.01,
+  0.06
+ ],
+ "comfortable_band_by_shelf_height_m": {
+  "0.050": [
+   0.34,
+   0.58
+  ],
+  "0.075": [
+   0.33,
+   0.57
+  ],
+  "0.100": [
+   0.31,
+   0.53
+  ],
+  "0.125": [
+   0.28,
+   0.49
+  ],
+  "0.150": null
+ },
+ "rest_pose": {
+  "elbow_joint_m": [
+   -0.2824,
+   0.1616
+  ],
+  "behind_m": 0.3138,
+  "swept_radius_m": 0.3167,
+  "underside_behind_m": 0.0891,
+  "top_behind_m": 0.2092
+ }
+}

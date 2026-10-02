@@ -1,0 +1,117 @@
+{
+ "layout_m": {
+  "j1_to_wall": 0.6064,
+  "j1_to_rail": 0.5729,
+  "j1_to_fence_back": 0.5679,
+  "hutch_fence_to_rail_with_arm_at_deck_centre": 0.012,
+  "items_comfortable": {
+   "vial": "9/9",
+   "tube": "5/5"
+  },
+  "j1_to_front_edge": 0.35,
+  "j1_to_fence": 0.55,
+  "shelf_top_above_plate": 0.075,
+  "leg_height": 0.0571,
+  "length": 0.8,
+  "depth": 0.2,
+  "leg_x": [
+   -0.3911,
+   -0.1304,
+   0.1304,
+   0.3911
+  ],
+  "span_between_legs": 0.2429,
+  "parked_sweep_radius": 0.3167,
+  "clearance_to_parked_sweep": 0.0333,
+  "comfortable_band": [
+   0.33,
+   0.57
+  ],
+  "rows": [
+   {
+    "name": "vial",
+    "y_from_j1": 0.39,
+    "n": 9,
+    "x_span": [
+     -0.36,
+     0.36
+    ],
+    "r": [
+     0.39,
+     0.531
+    ],
+    "j1_deg": [
+     90.0,
+     132.7
+    ],
+    "room_facing_j1_deg": [
+     137.3,
+     180.0
+    ],
+    "room_facing_out_of_reach": 5,
+    "room_facing_past_margin": 9
+   },
+   {
+    "name": "tube",
+    "y_from_j1": 0.505,
+    "n": 5,
+    "x_span": [
+     -0.2,
+     0.2
+    ],
+    "r": [
+     0.505,
+     0.543
+    ],
+    "j1_deg": [
+     90.0,
+     111.6
+    ],
+    "room_facing_j1_deg": [
+     158.4,
+     180.0
+    ],
+    "room_facing_out_of_reach": 5,
+    "room_facing_past_margin": 5
+   }
+  ],
+  "room_facing_dead_half_width_front_row": 0.225,
+  "room_facing_dead_half_width_front_row_with_margin": 0.39,
+  "arm_on_table_y": 0.0736,
+  "base_centre_y": 0.0319
+ },
+ "stiffness": {
+  "E_Pa": 7000000000.0,
+  "EI_Nm2": 664.2,
+  "items_kg": 3.0,
+  "press_N": 20.0,
+  "span_4_legs_m": 0.261,
+  "sag_4_legs_mm": 0.014,
+  "stiffness_4_legs_N_per_mm": 1799.0,
+  "span_2_legs_m": 0.782,
+  "sag_2_legs_mm": 0.57,
+  "stiffness_2_legs_N_per_mm": 67.0,
+  "creep_factor": 2.0,
+  "sag_4_legs_long_term_mm": 0.018,
+  "shelf_kg": 3.19,
+  "friction_mu": 0.3,
+  "slide_force_unfixed_N": 18.2,
+  "humidity_shift_mm": 0.25,
+  "target_mm": 0.1
+ },
+ "pick_pose_deg": [
+  -65.4,
+  93.5,
+  -50.2,
+  0.0,
+  6.7,
+  0.0
+ ],
+ "pick_pose_min_margin_deg": 50.2,
+ "pick": {
+  "row": 0,
+  "x": -0.18,
+  "tip_above_plate": 0.02,
+  "pitch": -45.0
+ }
+}
