@@ -35,7 +35,7 @@ the read height. Use these unless a later entry below changes them:
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch | |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
-| light | rail lights on; the OT-2 blacked out (no measurable room light on 10-01) | |
+| light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
 
 ```
 enclosure_height_cal.py --socket-x 92.8 --socket-y 316.5 --press-z 89.0 --carry-z 125 \
@@ -1223,6 +1223,29 @@ commanded pose and lights, 15 minutes apart, and the second landing read 12% mor
   0.44, not 0.92. z 100 (0.12) is still best.
 
 ![which landing moved the enclosure, and the second landing's light](landing-shift-2026-10-01.png)
+
+## 2026-10-02 — what the blackout did: less stray light, steadier readings, no measurable colour gain (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: how did blacking out the OT-2 affect the accuracy?
+[`analyse_blackout.py`](analyse_blackout.py) answers from runs already on file; details in
+[`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md).
+
+- **It removed 28–35% of the light** at three fixed spots over the base (socket A2, z 93,
+  110 and 190), where no paint or plate is involved: ~23% when the sides were covered
+  (09-30, between the 11:18 and 13:19 runs), then another 7–15% of the rest with the
+  cardboard (10-01). The cardboard's share was warmer than the rail light. With the rail
+  lights off the sensor now sees only its own lamp.
+- **Readings are steady:** none of 151 back-to-back pairs on 10-01 differed by more than
+  0.24%; on 09-30, 30 of 394 did by 0.5–5.4%. Not all of that is the blackout: the quiet
+  09-30 morning runs, with no blackout, were as steady as 10-01.
+- **No measurable colour gain from the cardboard.** Same five wells, same heights, sides
+  covered (09-30 19:14) → cardboard (10-01): miss 0.24 → 0.15 at z 125, 0.13 → 0.44 at
+  z 86.5. The plate also moved slot 1 → 7 and the paint aged ~19 h, so neither change is
+  the blackout's alone. A steady, even room light is cancelled by the white/black
+  correction anyway; what is left comes from the rail lights through the clear plate.
+
+![light at three fixed spots by stage; colour error at matched heights](blackout-2026-10-02.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
