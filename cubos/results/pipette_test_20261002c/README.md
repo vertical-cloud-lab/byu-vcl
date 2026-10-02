@@ -50,14 +50,18 @@ only `Alarm` is the expected one at connect, before step 0's `$H`.
 **The Tic's VIN now sags with gantry motion.** It fell to **7.4 V** during the final
 `home`, when only the gantry moves. Medians per step were 8.3–9.5 V. The Tic reported no
 errors, and the plunger HOME check came back within +0.04 mm. But the minimum on
-2026-10-01 was 9.0 V. In the killed run below, 7 minutes earlier, the same step-1 moves
+2026-10-01 was 9.0 V. In the run Ben E-stopped (below), the same step-1 moves
 (Z99, X206, Y25) left VIN at 10.7–11.0 V; here they gave 8.7–9.3 V. So something
-about the supply changed between 19:59 and 20:04Z.
+about the supply changed between 19:59 and 20:04Z, across the E-stop and its reset.
+That's unverified; the E-stop circuit and any supply the Tic shares with the gantry are
+where to look first.
 
-**GRBL went silent at 19:58:58Z** in the previous session's run (below). That was 0.3 s
-into a `G01 Z99` at transit height. Every status query came back empty, and the Pi
-logged no USB disconnect and no under-voltage. GRBL answered normally once the port
-was reopened at 20:01:09, and there was no repeat in this run (0 kernel USB lines).
+**The E-stop leaves GRBL silent, not in alarm.** Ben E-stopped the previous session's
+run at 19:58:58Z (issue #169, 19:59:51Z: "The protocol ran with the first set of files I
+gave, so I used the E-stop to stop the protocol"). After that, every status query
+came back empty, and the Pi logged no USB disconnect: the CH340 stays enumerated while
+the controller behind it is off. CubOS took 11 s to give up on the move, then retried
+for another minute. GRBL answered normally once the port was reopened at 20:01:09.
 
 ## The previous session's runs (Actions run 37055099634)
 
@@ -73,8 +77,10 @@ note and [the gantry log](previous_session/attempt2_mill_control_excerpt.log):
 - **19:58:23Z, `pipette_test_20261002b`, with the 19:35Z deck file Ben had replaced:**
   its motion stage started 44 s before the HOLD file existed (19:59:07Z). `home` and the capper's park move
   completed. `decap vial_1` went to the old position, gantry (115, 45.08, 122), and
-  GRBL went silent on the next move, as above. The session SIGKILLed the run at
-  20:00:07Z and de-energized the Tic at 20:01:33Z. No tip was picked up, and the magnet
-  was never switched on (the cap sensor read 0 at 20:01 and 20:04).
+  **Ben E-stopped it** as the next move (`G01 Z99`, still the transit height) began.
+  The session SIGKILLed the run at 20:00:07Z and de-energized the Tic at 20:01:33Z.
+  No tip was picked up, and the magnet was never switched on (the cap sensor read 0
+  at 20:01 and 20:04).
 
-Both run folders are still on the CubXL Pi under `~/cubxl_runs/`.
+That session recorded both runs on its own branch, `claude/issue-169-20261002-1935`
+(`d4ff4e4`, `b225fc0`). The folders are also still on the CubXL Pi under `~/cubxl_runs/`.
