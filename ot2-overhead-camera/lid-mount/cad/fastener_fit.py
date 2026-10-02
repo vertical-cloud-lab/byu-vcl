@@ -3,8 +3,9 @@
 
 For each joint it sweeps the standard lengths, and reports how far the tip gets past the far
 face of its nut and whether it runs into anything on the way, plus the longest screw that
-runs into nothing. Then it puts a socket head (ISO 4762), a button head (ISO 7380) and a
-Phillips pan head (ISO 7045) on each screw and checks them against the parts around them.
+runs into nothing. Then it puts a socket head (ISO 4762), a button head (ISO 7380) and two
+Phillips pan heads (ISO 7045, and DIN 7985, whose M3 head is wider) on each screw and checks
+them against the parts around them.
 It uses the same `Params` and reference models as `lid_mount.py`, so a change there flows
 through.
 
@@ -24,10 +25,12 @@ from lid_mount import EXPORTS, Params, build, corners, cyl, make_ring_sweep, ove
 LENGTHS = (6, 8, 10, 12, 14, 16, 18, 20, 25)
 PITCH = {"M2.5": 0.45, "M3": 0.5, "M4": 0.7}
 ISO7045 = {"M2.5": (5.0, 2.1), "M3": (5.6, 2.4), "M4": (8.0, 3.1)}   # Phillips pan head: dk, k
+DIN7985 = {"M2.5": (5.0, 2.0), "M3": (6.0, 2.4), "M4": (8.0, 3.1)}   # the older pan head, common in shop bins
 HEADS = {
     "socket (ISO 4762)": {s: v[:2] for s, v in ISO4762.items()},
     "button (ISO 7380)": {s: v[:2] for s, v in ISO7380.items()},
     "Phillips pan (ISO 7045)": ISO7045,
+    "Phillips pan (DIN 7985)": DIN7985,
 }
 WASHER_T = 0.8          # the M4 nylon washer under each head, as in hardware.py
 PIPETTE_GAP = 9.1       # pipette-head top cover to the window's underside, from Opentrons' STEP

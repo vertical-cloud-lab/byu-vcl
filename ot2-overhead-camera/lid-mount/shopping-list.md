@@ -10,13 +10,30 @@ Stainless or zinc-plated steel both work, and **anything M2.5 can be nylon**
 M2.5 parts carry only the camera and the Pi 5, a few newtons. Nylon screws still need the
 lengths below, and their heads strip easily, so tighten them gently. All sizes are metric.
 
+### What the lab's drawer holds
+
+From [@mcwilliams03's photo](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5960197882)
+of 2026-10-02: stainless Phillips pan-head screws and hex nuts, M2 to M6. The drawer has no
+M2.5, so those come from the nylon kit.
+
+| Size | In the drawer | Each | For this mount |
+|---|---|---|---|
+| M3 | 6, 10, 18, 25 and 40 mm screws; nuts | $0.10; nuts $0.05 | **10 mm**, the only length that fits as printed. 18 mm only with the 2 mm shims |
+| M4 | 6, 12, 18, 25 and 40 mm screws; nuts | $0.15; nuts $0.05 | 18 mm, for phase 2 (12 mm at a pinch) |
+
+An M3 × 10 ends level with the floor of the nut slot, 0.6 mm (about one thread) past a
+full-thickness nut. That is enough here: the screws only hold the deck down, and the plastic
+around the nut would give way long before the thread. An M3 × 18 without the shims bottoms
+out 1 mm before its head seats, so it feels tight but doesn't clamp the deck; don't force
+it. The 6 mm screw doesn't reach the nut, and the 25 and 40 mm ones are far too long.
+
 ### Phase 1: the mount taped to the lid
 
 | ☐ | Need | Buy | Part | Goes | Length | If they're out |
 |---|---|---|---|---|---|---|
 | ☐ | 8 | 10 | **M2.5 × 14 or 16 mm screw**, socket head (button or Phillips pan heads also fit) | camera → deck (4), Pi 5 → deck (4) | 14–16 mm; 12 at a pinch. From 18 mm up, the camera screws hit the Pi 5 above them | McMaster [91292A018](https://www.mcmaster.com/91292A018/) (16 mm) |
 | ☐ | 8 | 10 | **M2.5 hex nut** | in the deck's nut traps | | [91828A113](https://www.mcmaster.com/91828A113/) |
-| ☐ | 4 | 6 | **M3 × 12, 14 or 16 mm screw**, button head (socket or Phillips pan heads also fit) | deck → posts | 10–16 mm. **Not 18:** the hole in each post is blind and stops 17 mm below the head | [92095A184](https://www.mcmaster.com/92095A184/) (16 mm) |
+| ☐ | 4 | 6 | **M3 × 10 mm Phillips pan head**, from the drawer above. 12, 14 or 16 mm, with any head, also fit | deck → posts | 10–16 mm. **Not 18** without the shims: the hole in each post is blind and stops 17 mm below the head | [92095A184](https://www.mcmaster.com/92095A184/) (16 mm) |
 | ☐ | 4 | 6 | **M3 hex nut** | slid into the slots in the posts. One also does the fit coupon's nut test | | [91828A211](https://www.mcmaster.com/91828A211/) |
 
 ### Phase 2: only if the window gets drilled
@@ -30,7 +47,7 @@ lengths below, and their heads strip easily, so tighten them gently. All sizes a
 ### Other lengths and heads
 
 Lengths are measured from under the head. [`cad/fastener_fit.py`](cad/fastener_fit.py) tries
-every standard length and three head types against the CAD model, with each nut at its
+every standard length and four head types against the CAD model, with each nut at its
 thickest ([results](exports/fastener_fit.json)).
 
 | Screw | Works | Shortest (tip through its nut) | Longest, and what stops it |
@@ -41,18 +58,22 @@ thickest ([results](exports/fastener_fit.json)).
 | M3, with the 2 mm deck shims | 12–18 mm | 11.4 mm | 19.0 mm |
 | M4, base → lid | 12 mm and up | 11.5 mm, on a 5 mm window with a 0.8 mm washer | nothing in reach |
 
-If the M3s only come in 18 mm or longer, fit the 2 mm shims, deepen the holes before the
-base is printed (`m3_screw_len` in [`cad/lid_mount.py`](cad/lid_mount.py) sets their depth),
-or run a 1/8 in (3.2 mm) drill 2–4 mm further down each post's hole before the nuts go in.
+If only 18 mm or longer M3s are to hand, fit the 2 mm shims, or run a 1/8 in (3.2 mm) drill
+2–4 mm further down each post's hole before the nuts go in. With the shims, the posts reach
+only 0.5 mm into their sockets, less than the 0.8 mm chamfer on their tops, so the screws
+rather than the sockets locate the deck. For a new base, `m3_screw_len` in
+[`cad/lid_mount.py`](cad/lid_mount.py) sets the depth of the holes; the base sent to the
+printer on 2026-10-02 has the 17 mm ones.
 
-**Heads.** Socket (ISO 4762), button (ISO 7380) and Phillips pan (ISO 7045) heads all fit
-the M2.5 and M3 joints, so they can be mixed. The official drawings leave about Ø5.4 mm
-around each of the camera's corner holes and Ø5.8 mm around each of the Pi 5's, and those
-M2.5 heads are Ø4.5–5.0 mm. Skip countersunk (flat) heads: nothing is countersunk. Only the
-M4 heads are constrained, because they hang under the window, above the pipette head. With
-the washer, a button head hangs 3.0 mm below the window, a Phillips pan 3.9 mm and a socket
-head 4.8 mm, against 9.1 mm of clearance in Opentrons' CAD, less about 1.5 mm of estimated
-window sag.
+**Heads.** Socket (ISO 4762), button (ISO 7380) and Phillips pan heads all fit the M2.5
+and M3 joints, so they can be mixed. That includes the older DIN 7985 pan head, whose M3
+head is Ø6.0 mm rather than Ø5.6 mm; it still clears the Pi 5 by 4.0 mm in plan. The
+official drawings leave about Ø5.4 mm around each of the camera's corner holes and Ø5.8 mm
+around each of the Pi 5's, and those M2.5 heads are Ø4.5–5.0 mm. Skip countersunk (flat)
+heads: nothing is countersunk. Only the M4 heads are constrained, because they hang under
+the window, above the pipette head. With the washer, a button head hangs 3.0 mm below the
+window, a Phillips pan 3.9 mm and a socket head 4.8 mm, against 9.1 mm of clearance in
+Opentrons' CAD, less about 1.5 mm of estimated window sag.
 
 **Tools.** Hex keys: 1.5 mm for M2.5 button heads, 2 mm for M2.5 socket and M3 button
 heads, 2.5 mm for M3 socket and M4 button heads. Phillips: #1 for M2.5 and M3, #2 for M4.
@@ -66,7 +87,7 @@ quantities, and lends tools. It's also the next place to try for any size the Pr
 doesn't have.
 
 - ☐ **Painter's or gaffer tape**, to tape the base down in phase 1
-- ☐ **Hex keys to borrow:** 2 mm (M2.5 socket heads, M3 button heads) and 2.5 mm (M4 button heads, or M3 socket heads). Other heads take other tools; see [Tools](#other-lengths-and-heads)
+- ☐ **A #1 Phillips screwdriver to borrow**, for the drawer's M3 pan heads (#2 for its M4s). Hex keys instead for hex-drive heads: 2 mm (M2.5 socket heads, M3 button heads) and 2.5 mm (M4 button heads, or M3 socket heads); see [Tools](#other-lengths-and-heads)
 - ☐ Optional: a scrap of 1–2 mm black adhesive foam, as a light seal under the base
 
 ### Already on hand

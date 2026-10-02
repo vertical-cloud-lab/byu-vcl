@@ -80,6 +80,11 @@
         "dk": 5.0,
         "k": 2.1,
         "runs_into": {}
+      },
+      "Phillips pan (DIN 7985)": {
+        "dk": 5.0,
+        "k": 2.0,
+        "runs_into": {}
       }
     }
   },
@@ -157,6 +162,11 @@
       "Phillips pan (ISO 7045)": {
         "dk": 5.0,
         "k": 2.1,
+        "runs_into": {}
+      },
+      "Phillips pan (DIN 7985)": {
+        "dk": 5.0,
+        "k": 2.0,
         "runs_into": {}
       }
     }
@@ -245,6 +255,12 @@
         "k": 2.4,
         "runs_into": {},
         "plan_gap_to_pi5": 4.2
+      },
+      "Phillips pan (DIN 7985)": {
+        "dk": 6.0,
+        "k": 2.4,
+        "runs_into": {},
+        "plan_gap_to_pi5": 4.0
       }
     }
   },
@@ -324,6 +340,13 @@
         "left_under_window": 6.1
       },
       "Phillips pan (ISO 7045)": {
+        "dk": 8.0,
+        "k": 3.1,
+        "runs_into": {},
+        "below_window": 3.9,
+        "left_under_window": 5.2
+      },
+      "Phillips pan (DIN 7985)": {
         "dk": 8.0,
         "k": 3.1,
         "runs_into": {},
