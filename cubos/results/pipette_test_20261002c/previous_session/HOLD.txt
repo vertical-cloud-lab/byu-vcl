@@ -1,0 +1,12 @@
+run-37057200933
+STOP. Ben asked for this on issue #169 at 19:54Z on 2026-10-02 ("Stop the previous run if
+need be"), and he sent corrected files: the deck file in commit 0e6076a is the one he said
+"didn't save the changes", so a pipette_test with it can drive the pipette into the wrong place.
+
+The session in Actions run 37055099634 (branch claude/issue-169-20261002-1935) must not start
+any more hardware runs. It could not be cancelled from GitHub (403) or Tailscale (no devices
+scope), so this file is how it is stopped. Report what you found and finish.
+
+Actions run 37057200933 (branch claude/issue-169-20261002-1955) has the CubXL. It deletes
+this file when it is done. If that run is over and this file is still here, it is stale:
+delete it.
