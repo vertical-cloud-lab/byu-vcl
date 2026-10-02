@@ -160,8 +160,10 @@ the post's engagement by 2 mm, and the M3 × 16 still reaches 4.6 mm past the nu
 
 ## 3. Where on the lid
 
-The mount fits over **slots 4–11**. Over the front row (slots 1–3) the base would run into
-the frame at the window's front edge; `ot2_context.py` finds 210 mm³ of overlap there.
+The mount fits over **slots 4–11**. Over the front row (slots 1–3), `ot2_context.py` finds
+210 mm³ of overlap with the frame. All of it is the front tape tab: its outer 14.5 mm would
+rest on the frame's rim, which stands 0.5 mm above the window there. Without that tab the base
+clears the rim by 1.5 mm, but its front edge then lands right on the window's front edge.
 **Slot 5** is the natural choice. It's in the middle column, clear of the gantry's home
 position at the back right, and 81 mm in front of the window's centre. That is closer
 to the front edge, which carries the panel, so it sags less there than in the middle.
@@ -177,6 +179,17 @@ of the four screw slots; +x points right and +y points toward the back:
 These come from 2018 CAD, so treat them as a starting point and let the live preview in
 phase 1 decide. The same numbers, measured from the window's front-left corner, are in
 [`exports/ot2_fit.json`](exports/ot2_fit.json).
+
+![Top view of the window, dimensioned for slot 5](renders/lid_placement.png)
+
+On the robot, measure from the screws. Opentrons' window drawing puts the four corner screws
+symmetrically about the centre, at ±255.7 mm across and ±221.9 mm front to back. For slot 5,
+the lens axis is halfway between the left and right screws, and 140.9 mm behind the line
+through the two front screws (146.5 mm from the window's front edge). The V-notches in the
+base's tabs sit on the lens-axis lines, so a taped-on cross at that point lines the mount up.
+At 25 mm zoom, the whole plate stays in view if the axis lands within about 12 mm left-right
+and 14 mm front-back of the mark. The drawing comes from
+[`cad/placement.py`](cad/placement.py).
 
 Because the sensor's long axis is X, the plate's 12 columns should run **left to right**
 across the OT-2, which is how labware normally sits on the deck.
