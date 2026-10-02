@@ -31,6 +31,7 @@ the read height. Use these unless a later entry below changes them:
 | **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
 | candidate | **z 95–100** (foot ~7–12 mm up) scored best of ten heights on 10-01; z 86.5 scored worst. Confirm on fresh paint before switching | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md) |
+| pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter. In contact, re-read the first well at the end of a run | [`landing_shift.py`](landing_shift.py), 10-02 |
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch | |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
@@ -1183,16 +1184,45 @@ no slip, released seated. The plate had been moved to **slot 7**, so the driver 
 
 - **Height is the biggest lever, and contact is the worst place.** With each height's
   own white and black as references, the mean miss is 0.12 at z 100 and 0.92 at
-  z 86.5. In contact the empty well and the colours read brighter than the white:
-  the light reaching the well comes up through the clear plate, which white paint
-  blocks.
+  z 86.5 (0.44 once corrected, see the 10-02 entry below). In contact the empty well
+  and the colours read brighter than the white: the light reaching the well comes up
+  through the clear plate, which white paint blocks.
 - **Landing again on the same well changed the reading by 12%**; one landing repeats
-  to 0.04–0.12%. The landing is now the largest error.
+  to 0.04–0.12%. The 10-02 entry below finds the cause: the H10 landing pushed the
+  enclosure ~0.7 mm up the nozzle.
 - **The blackout works:** rail lights off, the reading is just the board's own lamp.
 - **Gain and integration time are fixed in the firmware, and the gain was never set:**
   the chip runs at its 256x default. [`../pico/`](../pico/) makes both settable per
   reading over MQTT; it needs one USB visit to flash.
 - The paints were ~19 h old. Confirm on fresh paint before moving the read height.
+
+## 2026-10-02 — why landing on H12 twice read 12% apart: the H10 landing pushed the enclosure up the nozzle (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: the enclosure doesn't look as if it sits differently each time, so
+did the same test really give different results? Yes. Same pick-up, same well, same
+commanded pose and lights, 15 minutes apart, and the second landing read 12% more.
+[`landing_shift.py`](landing_shift.py) re-measures the 10-01 robot-camera photos
+([`photos-2026-10-01/`](photos-2026-10-01/)) to ~0.01 px. Details are in §2 of
+[`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md#2-landing-the-same-well-twice-differs-by-12-because-the-h10-landing-moved-the-enclosure).
+
+- **The 10-01 camera check was wrong.** It compared whole pixels and called the two
+  landings identical. The enclosure had moved by 0.7 px, under a millimetre, which
+  neither that check nor an eye can see.
+- **One landing did it: H10 (blue), the second of the run.** Across it the enclosure
+  rose ~0.7 mm on the nozzle (front 0.88 mm, top 0.55, nozzle 0.15). The other five
+  landings moved it under 0.05 mm. The plate, the deck and the camera didn't move.
+- **After that, resting on the white let in the light of hovering 1.5 mm up.** The
+  second landing's spectrum matches the first visit's at z 89 in all 8 channels,
+  within 0.7%.
+- **Probably because H10 pressed hardest.** Over H10 the light stopped falling at
+  z ≈ 89, earliest of the six wells, so that landing pressed ~2.5 mm past first touch
+  instead of ~1–1.5 mm.
+- **It overstated how bad contact is.** The 10-01 white was read before the shift and
+  the black and colours after. With the second landing's white, the miss at z 86.5 is
+  0.44, not 0.92. z 100 (0.12) is still best.
+
+![which landing moved the enclosure, and the second landing's light](landing-shift-2026-10-01.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

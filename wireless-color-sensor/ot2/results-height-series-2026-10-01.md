@@ -15,8 +15,8 @@ stands in for it below.
 
 | factor | tried? | what it does here |
 | --- | --- | --- |
-| **height** | yes, 10 heights × 6 wells | the biggest lever. Resting on the plate (z 86.5) is the *least* accurate height; ~12 mm above it (z 100) the most |
-| **landing** | yes, H12 twice | landing on the same well again changed the reading by **12%**. The largest error left |
+| **height** | yes, 10 heights × 6 wells | the biggest lever. Resting on the plate (z 86.5) is the *least* accurate height; ~12 mm above it (z 100) the most. Contact's error was overstated ~2× (see the correction in §1) |
+| **landing** | yes, H12 twice | landing on the same well again read **12%** more light. Not chance: the H10 landing in between pushed the enclosure ~0.7 mm up the nozzle (§2, corrected 10-02) |
 | **repeats / time** | yes, 16 in a row | one landing already repeats to **0.04–0.12%** per channel. More readings, or longer ones, cannot fix a 12% landing error |
 | **rail lights off** | yes | 400 counts = the board's own green lamp. **The blackout leaves no measurable room light** |
 | **gain** | **no** — needs firmware | fixed in the board's `main.py`; and it was never set (below). Firmware change ready in [`../pico/`](../pico/) |
@@ -73,6 +73,25 @@ perfectly black paint would read, 0 = accurate. Squeeze: how many times too smal
 colour differences come out, 1 = accurate. Gap: foot above the plate's top, from
 the touch at z ≈ 87.5.)
 
+> **Correction, 2026-10-02.** The white in this table was read on the first H12
+> landing, *before* the H10 landing pushed the enclosure up the nozzle (§2). The
+> black, the empty well, the red and the yellow were all read after it. Re-scored
+> with the white from the second H12 landing, which was read in the same state as
+> the rest ([`landing_shift.py`](landing_shift.py)):
+>
+> | nozzle z | 90 | 89 | 88 | 87 | 86.5 |
+> | --- | --- | --- | --- | --- | --- |
+> | miss, as in the table | 0.365 | 0.484 | 0.763 | 0.912 | 0.920 |
+> | miss, second-landing white | 0.269 | 0.344 | 0.426 | 0.441 | **0.442** |
+> | black reads | 0.45 | 0.52 | 0.59 | 0.60 | 0.60 |
+> | colour channels brighter than white | 4 | 5 | 8 | 8 | 8 |
+>
+> Contact is about half as bad as the table says, but it is still the worst height,
+> and z 100 (0.118) is still the best. No second-landing white exists above z 90.
+> The shift matters less with height (+5% at z 90, −0.6% at z 125), so those rows
+> should move less. The blue (H10) was read during the landing that moved the
+> enclosure, so its state is unknown.
+
 **Why contact fails: the white stops being the brightest well.** At z 86.5 the
 empty well read 1.21× the white in total, yellow and red read up to 1.18× it at
 620 nm, and blue 1.44× it at 440 nm. A white/black correction assumes the white
@@ -97,24 +116,60 @@ readings score 0.92. Drying, the slot move and the blackout all changed between
 the two, so this run cannot say which made contact fail. It does say that today,
 on this plate, lifting the enclosure helps and resting it hurts.
 
-## 2. Landing: the same well twice differs by 12%
+## 2. Landing: the same well twice differs by 12%, because the H10 landing moved the enclosure
 
-H12 was read first at 13:51 and again at 14:06, approached the same way (+x at
-z 125, then down). The robot camera shows the two landings identical to the pixel
-(phase correlation 0, 0), and the foot touched at the same z both times — yet:
+> **Corrected 2026-10-02** ([`landing_shift.py`](landing_shift.py)). This section
+> first said the robot camera showed the two landings "identical to the pixel"
+> (phase correlation 0, 0). That check only resolved whole pixels. Measured to
+> ~0.01 px, the enclosure *had* moved, by under a millimetre, during one landing.
+
+H12 was read first at 13:51 and again at 14:06, in the same pick-up, approached the
+same way (+x at z 125, then down):
 
 | nozzle z | 125 | 90 | 89 | 88 | 87 | 86.5 |
 | --- | --- | --- | --- | --- | --- | --- |
 | 2nd landing − 1st, total | −0.6% | +5.0% | +5.8% | +9.8% | +12.2% | +12.3% |
 
-The free-hanging light over H12 at z 125 drifted only −0.95% over the run (12,056,
-11,978, 11,942), so this is not the lamp or the sensor. The difference grows as
-the foot approaches the plate, and the extra light is bluish (+24% at 440 nm, +6%
-at 670 nm) like the rail light itself, i.e. light getting in under the foot. The
-enclosure is a friction fit on a round nozzle and can tilt or turn on it between
-landings; a foot that sits slightly differently lets a different amount of rail
-light in. The 09-30 runs saw the same thing smaller ("the landing alone moves
-it", red read twice).
+Each landing repeats to 0.1% on its own (§3), and the free-hanging light over H12 at
+z 125 drifted only −0.95% over the run (12,056, 11,978, 11,942), so this is not the
+lamp or the sensor.
+
+**What moved, and when.** Every landing starts and ends with a robot-camera photo at
+z 125 over the same well, so each before/after pair brackets one landing. In each
+pair the enclosure, the nozzle and two fixed controls were registered separately,
+and each shift converted to the upward travel a real Z move gives in this camera
+(+0.52, −0.66 px per mm, from the run's own z 125 → 90 step):
+
+| landing (run order) | 1. H12 white | 2. H10 blue | 3. H7 black | 4. H5 empty | 5. H4 red | 6. H2 yellow |
+| --- | --- | --- | --- | --- | --- | --- |
+| enclosure front | −0.12¹ | **0.88** | 0.00 | 0.01 | 0.00 | −0.01 |
+| enclosure top | 0.02 | **0.55** | 0.00 | 0.02 | 0.00 | 0.02 |
+| nozzle | 0.05 | 0.15 | 0.00 | 0.03 | 0.03 | 0.01 |
+| tip rack (control) | 0.03 | 0.02 | 0.02 | 0.02 | 0.02 | 0.01 |
+
+(mm of upward travel. ¹ a 0.19 px sideways shift, not along Z.)
+
+Only the landing on **H10** moved it. The enclosure rose ~0.7 mm on the nozzle, more
+at the front than at the top, so it also tilted slightly. The plate, the deck and the
+camera stayed put (≤ 0.1 mm over the whole run). 0.7 px is invisible to a whole-pixel
+check and to the eye.
+
+**What that did to the light.** On the second visit the enclosure hung ~0.85 mm higher:
+its light at z 89–90 matches the first visit's at +0.85 mm. Resting on the plate, it
+let in exactly the light of the first visit **hovering at z 89, 1.5 mm above the
+plate**: all 8 channels agree within 0.7%. So the foot no longer sat down against the
+plate the way it had on the first landing. That is also why the extra light has the
+"bluish" spectrum of the light that gets in under a raised foot.
+
+![which landing moved the enclosure; the second landing's light against the first visit's at three heights](landing-shift-2026-10-01.png)
+
+**Why H10, probably.** Over H10 the light stopped falling earlier than over any other
+well, at z ≈ 89. From z 89 to 88 it fell 37 counts, against 65–515 elsewhere. If
+that is where the foot met the plate, that landing pressed ~2.5 mm past first touch,
+not the ~1–1.5 mm of the others. Why it met resistance early there isn't known.
+
+The 09-30 runs saw the same thing, smaller ("the landing alone moves it", red read
+twice).
 
 ## 3. Repeats and reading time
 
@@ -194,9 +249,13 @@ characterise properly once the blackout is finished.
 1. **Change the read height to ~z 95–100**, or test it once more on fresh, wet
    paint before deciding. It is the one change in this run that made the
    calibration better instead of worse.
-2. **Stop the enclosure turning or tilting on the nozzle** (a key or flat on the
-   collar, or a printed sleeve), or read every well twice from separate landings and
-   average. The 12% landing error is now the biggest error.
+2. **Stop pressing hard onto the plate.** The one landing that pressed furthest past
+   first touch (H10, probably ~2.5 mm) pushed the enclosure ~0.7 mm up the nozzle,
+   and every later contact reading inherited it. Reading lifted (item 1) avoids the
+   press entirely. If contact is kept, read the white and black in the same pick-up
+   as the colours, and re-read the first well at the end: a change there means the
+   enclosure has moved. A key or flat on the collar, or a printed sleeve, would stop
+   it turning or tilting on the nozzle.
 3. **One USB visit to flash [`../pico/`](../pico/)**, then sweep gain (64–512x) and
    integration (ATIME 100–255) over white, black and one colour.
 
@@ -208,4 +267,7 @@ characterise properly once the blackout is finished.
 | [`analyse_height_series.py`](analyse_height_series.py) | the scoring and the chart |
 | [`height-series-analysis-2026-10-01.json`](height-series-analysis-2026-10-01.json) | per-height scores, repeatability, lights-off reading |
 | [`height-series-2026-10-01.png`](height-series-2026-10-01.png) | the chart |
+| [`landing_shift.py`](landing_shift.py) | 10-02: which landing moved the enclosure, from the photos; the second landing's light; the re-scored near-plate heights |
+| [`landing-shift-2026-10-01.json`](landing-shift-2026-10-01.json), [`.png`](landing-shift-2026-10-01.png) | its output |
+| [`photos-2026-10-01/`](photos-2026-10-01/) | the 14 robot-camera photos it reads (z 125 before and after each landing, plus z 90), from `~/color-read-1001/enc/` on the Pi |
 | [`../pico/`](../pico/) | the firmware change for gain and integration time |
