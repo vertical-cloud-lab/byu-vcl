@@ -2,25 +2,26 @@
 # rack, CubXL, 2026-10-02 rev: the deck re-set-up after the 2026-10-02
 # recalibration (cub_xl_ben_3_instrument.yaml).
 #
-# Attached to issue #169 on 2026-10-02. THE BODY BELOW IS BEN'S, VERBATIM
-# (parsed YAML identical to the attachment; only CRLF -> LF). Ben converted
-# the tip rack himself this time: "I already adjusted the tiprack location
+# Attached to issue #169 on 2026-10-02 at 19:54Z, replacing his 19:35Z
+# attachment, which "didn't save the changes". THE BODY BELOW IS BEN'S,
+# VERBATIM (parsed YAML identical to the attachment; only CRLF -> LF). Ben
+# converted the tip rack himself: "I already adjusted the tiprack location
 # according to the offset".
 #
-# Changes vs. Ben's 2026-10-01 attachment (never committed; it ran no motion):
-#   tip_rack calibration.a1        (336, 37.5)    ->  (294, 92)
-#   tip_rack calibration.a2        (327.5, 37.5)  ->  (285.5, 92)
-#   tip_rack location              (336.5, 37.5, 57)  ->  (294, 92, 62)
-#   tip_rack pickup_z              57  ->  62
-#   vial_1 (115, 45.08, 56), vial_2 (115, 78.08, 56)   unchanged
-# vs. the last committed rev (ben_6vials_tiprack.yaml, 2026-09-30): both vials
-# moved from deck x 189 to x 115 and +11.415 / +12.08 in Y, rims 54 -> 56.
+# Changes vs. the 19:35Z attachment (previous rev of this file):
+#   vial_1 location x / y          115 / 45.08    ->  136.668 / 45
+#   vial_2 location x / y          115 / 78.08    ->  136.668 / 78
+#   tip_rack calibration.a1        (294, 92)      ->  (291.332, 89)
+#   tip_rack calibration.a2        (285.5, 92)    ->  (282.832, 89)
+#   tip_rack location              (294, 92, 62)  ->  (291.332, 89, 59)
+#   tip_rack pickup_z              62  ->  59
+#   vial rims (z 56), heights, tip_length 35: unchanged
 #
 # What the gantry is sent (CubOS commands gantry = deck - instrument offset;
 # capper offset (0, 0), pipette offset (55.0, 11.0)):
-#   capper  -> vial_1 / vial_2         gantry (115, 45.08) / (115, 78.08)
-#   pipette -> vial_1 / vial_2         gantry ( 60, 34.08) / ( 60, 67.08)
-#   pipette -> tip_rack.A1 pick-up     gantry (239, 81, 62)
+#   capper  -> vial_1 / vial_2         gantry (136.668, 45) / (136.668, 78)
+#   pipette -> vial_1 / vial_2         gantry ( 81.668, 34) / ( 81.668, 67)
+#   pipette -> tip_rack.A1 pick-up     gantry (236.332, 78, 59)
 
 labware:
   vial_1:
@@ -30,8 +31,8 @@ labware:
     height: 83
     diameter: 28
     location:
-      x: 115
-      y: 45.08
+      x: 136.668
+      y: 45
       z: 56
     capacity_ul: 1500
     working_volume_ul: 1200
@@ -43,8 +44,8 @@ labware:
     height: 83
     diameter: 28
     location:
-      x: 115
-      y: 78.08
+      x: 136.668
+      y: 78
       z: 56
     capacity_ul: 1500
     working_volume_ul: 1200
@@ -64,16 +65,16 @@ labware:
     y_offset: 8.5
     calibration:
       a1:
-        x: 294
-        y: 92
+        x: 291.332
+        y: 89
       a2:
-        x: 285.5
-        y: 92
-    pickup_z: 62
+        x: 282.832
+        y: 89
+    pickup_z: 59
     location:
-      x: 294
-      y: 92
-      z: 62
+      x: 291.332
+      y: 89
+      z: 59
     slots: {}
     tip_present:
       A1: true

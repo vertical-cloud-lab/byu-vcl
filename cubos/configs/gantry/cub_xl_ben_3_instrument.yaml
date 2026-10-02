@@ -1,49 +1,34 @@
 # cub_xl_ben_3_instrument.yaml -- CubXL, @benwhitney5463's 2026-10-02 rev: the
 # machine recalibrated again, capper + pipette + a mount-only camera.
 #
-# Attached to issue #169 on 2026-10-02. THE BODY BELOW IS BEN'S, VERBATIM
-# EXCEPT the three working_volume maxima, each lowered by the 3 mm homing
-# pull-off ($27):
-#   working_volume x / y / z max   364 / 281 / 125  ->  361 / 278 / 122
+# Attached to issue #169 on 2026-10-02 at 19:54Z, replacing his 19:35Z
+# attachment. THE BODY BELOW IS BEN'S, VERBATIM (parsed YAML identical to the
+# attachment; only CRLF -> LF).
 #
-# Why: working_volume.z_max is the plane the carriage rides for EVERY XY
-# travel (CubOS multi_tool_safe_travel_z), and the tipped pipette's hover
-# ceiling (the hover-clamp patch). GRBL's homed pose is max_travel minus the
-# pull-off -- the 2026-10-01 run reads WPos (388, 233.665, 121) right after $H
-# with $130-$132 = 391 / 236.665 / 124 -- so WPos = max_travel is the exact
-# point where the limit switch tripped during homing. With z_max 125 = $132,
-# about 13 travels per pipette_test would end on the Z switch's trip point,
-# and hard limits are on ($21=1 since 2026-09-30), so any one of them that
-# closes the switch is ALARM:1 mid-run. 122 is the homed pose, the same
-# convention as Ben's own 2026-10-01 file (max_travel 295 / 236.078 / 125,
-# working_volume 292 / 233.078 / 122). No target in pipette_test is near
-# x_max or y_max; X and Y were lowered for the same reason, for any protocol
-# that is.
-#
-# Changes vs. the 2026-10-01 file (never committed; it ran no motion):
-#   grbl max_travel x / y            295 / 236.078  ->  364 / 281
-#   capper depth                     -15.0  ->  -16.0
-#   pipette offset_x / offset_y      175.0 / 15.0  ->  55.0 / 11.0
-#   camera_3 offset / depth          (100.001, 22.0) / -113  ->  (-40, 10) / -110
-#   factory_z_travel_mm              124.0  ->  125.0
-# vs. the last committed rev (cub_xl_ben_pipette_capper.yaml, 2026-09-26):
-# travel 391 / 236.665 / 124 -> 364 / 281 / 125, capper depth -17 -> -16,
-# pipette offset (54.0, 12.999) -> (55.0, 11.0), plus camera_3.
+# Changes vs. the 19:35Z attachment (previous rev of this file):
+#   factory_z_travel_mm              125.0  ->  124.0
+#   working_volume x / y / z max     already 361 / 278 / 122 in Ben's file now.
+#     The previous rev lowered Ben's 364 / 281 / 125 to these by hand: z_max is
+#     the plane every XY travel rides (CubOS multi_tool_safe_travel_z), and
+#     125 = $132 is where the Z switch trips during homing, with hard limits on
+#     ($21=1). 122 = max_travel - the 3 mm pull-off is the homed pose.
+# Everything else is unchanged: GRBL max_travel 364 / 281 / 125, capper offset
+# (0, 0) depth -16, pipette offset (55.0, 11.0), camera_3 (-40, 10) depth -110.
 
 serial_port: /dev/ttyUSB0
 gantry_type: cub_xl
 cnc:
-  factory_z_travel_mm: 125.0
+  factory_z_travel_mm: 124.0
   calibration_block_height_mm: 35.0
   y_axis_motion: head
   safe_z: 115.0
 working_volume:
   x_min: 0.0
-  x_max: 361.0   # Ben's file: 364.0 = max_travel_x; see the header
+  x_max: 361.0
   y_min: 0.0
-  y_max: 278.0   # Ben's file: 281.0 = max_travel_y
+  y_max: 278.0
   z_min: 0.0
-  z_max: 122.0   # Ben's file: 125.0 = max_travel_z = the Z switch's trip point
+  z_max: 122.0
 origin_policy: deck_origin
 grbl_settings:
   dir_invert_mask: 1
