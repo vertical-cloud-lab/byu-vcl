@@ -1,0 +1,3 @@
+cadquery>=2.4
+numpy
+pyvista        # render.py

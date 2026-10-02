@@ -1,0 +1,115 @@
+{
+  "date": "2026-09-26",
+  "script": "onshape_api.py (feature list in features.py)",
+  "account": "Sterling's API key (ONSHAPE_ACCESS_KEY / ONSHAPE_SECRET_KEY)",
+  "owner": "Vertical Cloud Lab (company), like the lab-owned copy of the OT-2 lid mount document",
+  "folder": "vcl-shared",
+  "document": "https://cad.onshape.com/documents/a7f8eebd3fd360dd05a430d2/w/fe08f15a192259fd4c73ef83",
+  "document_name": "Pi 5 dual-camera mount (2958f20)",
+  "made_from_commit": "2958f20",
+  "tabs": {
+    "Mount (native features)": "27 features: 13 sketches (Top, Front and Right planes) and 14 extrudes",
+    "C-mount collar (native features)": "10 features: 5 sketches and 5 extrudes, in print orientation",
+    "Mount + C-mount collar (native parts)": "assembly of the two native parts, the collar placed on the left station",
+    "mount, collar, assembly_hq_cm3, assembly_2x_cm3": "STEP imports of exports/*.step, flattened to part studios",
+    "Part Studio 1": "empty; every new document starts with it, and this API key cannot delete tabs"
+  },
+  "native_part_studios": {
+    "Mount (native features)": {
+      "features": 27,
+      "cadquery_volume_mm3": 50276.095,
+      "element": "92e24e722a3d7ab164453e32",
+      "volume_mm3": 50276.095,
+      "bbox_mm": {
+        "lowX": -54.0,
+        "lowY": -6.5,
+        "lowZ": 0.0,
+        "highX": 54.0,
+        "highY": 108.0,
+        "highZ": 51.75
+      },
+      "volume_difference_mm3": 0.0,
+      "shaded_views": [
+        "api-mount-front-left.png",
+        "api-mount-rear-right.png"
+      ]
+    },
+    "C-mount collar (native features)": {
+      "features": 10,
+      "cadquery_volume_mm3": 4891.852,
+      "element": "9b8412b61ab9242b96e29242",
+      "volume_mm3": 4891.852,
+      "bbox_mm": {
+        "lowX": -21.0,
+        "lowY": -21.0,
+        "lowZ": 0.0,
+        "highX": 21.0,
+        "highY": 21.0,
+        "highZ": 16.65
+      },
+      "volume_difference_mm3": 0.0,
+      "shaded_views": [
+        "api-collar-top-iso.png"
+      ]
+    }
+  },
+  "part_names": {
+    "Mount (native features)": "Pi 5 dual-camera mount",
+    "C-mount collar (native features)": "C-mount collar"
+  },
+  "assembly": {
+    "element": "af399bebf385a51d3e880f82",
+    "instances": 2,
+    "shaded_view": "api-assembly-native.png"
+  },
+  "imports": {
+    "mount.step": [
+      "61d50dd3177e89f0bbfa4686"
+    ],
+    "collar.step": [
+      "d8d7d7a0cb912cf945d81524"
+    ],
+    "assembly_hq_cm3.step": [
+      "d796701156441df380d24d2c"
+    ],
+    "assembly_2x_cm3.step": [
+      "c8e7e92068ae6225651e9791"
+    ]
+  },
+  "runs": [
+    {
+      "what": "found the lab's vcl-shared folder and owner from the OT-2 lid mount document",
+      "api_calls": 5
+    },
+    {
+      "what": "created the document, built both native part studios (all 37 features regenerated OK), named the parts, saved shaded views",
+      "api_calls": 54,
+      "failure": "DELETE of the empty 'Part Studio 1' -> HTTP 403 'Invalid API key state.': the key has no delete scope. The script now renames that tab and builds the mount in it instead."
+    },
+    {
+      "what": "--document URL --skip-native: mass properties and bounding boxes, then the four STEP imports",
+      "api_calls": 19
+    },
+    {
+      "what": "checked the tabs and part names",
+      "api_calls": 3
+    },
+    {
+      "what": "--document URL --skip-native --skip-import: renamed 'Assembly 1', inserted the two native parts and placed the collar",
+      "api_calls": 15
+    },
+    {
+      "what": "final list of tabs",
+      "api_calls": 1
+    }
+  ],
+  "api_calls_total": 97,
+  "shaded_views": [
+    "api-mount-front-left.png",
+    "api-mount-rear-right.png",
+    "api-collar-top-iso.png",
+    "api-assembly-native.png",
+    "api-assembly-hq-cm3.png"
+  ],
+  "note": "assembly_hq_cm3 was imported from 2958f20; the HQ Camera model in later commits only adds its lens bore (for the renders)."
+}
