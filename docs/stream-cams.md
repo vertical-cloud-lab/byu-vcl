@@ -190,6 +190,7 @@ about an hour into the 240p pipeline and 2 minutes into the 144p one:
 | | 240p (before) | 144p (after) |
 | --- | --- | --- |
 | ffmpeg output | 426×240, 2 fps | 256×144, 2 fps |
+| Camera frames ffmpeg dropped, and copies it sent instead | 2,892 and 2,893 of 8,144, over the whole 68 min | none in 2,989, the first 25 min |
 | ffmpeg CPU (of 400 %) | 12.3 % | 9.5 % |
 | `rpicam-vid` CPU | 1.1 % | 1.1 % |
 | ffmpeg memory (RSS) | 67 MB | 61 MB |
@@ -243,7 +244,8 @@ on a 4-core runner, and timed each frame from its write to the filter:
 | `--flush` + `low_delay` | 0.50 s (1 frame) | none |
 
 `-threads 1` in place of `low_delay` measured the same. On the Pi, ffmpeg now reads from the
-pipe every 0.49–0.51 s, 40 times in 20 s.
+pipe every 0.49–0.51 s, 40 times in 20 s. Its progress line has carried no `dup=` or `drop=`
+since the restart, which it prints only once one of them is non-zero.
 
 The overlay now trails the moment the camera took the frame by about one frame: 0.5 s at
 2 fps. Earlier archives trailed by about 5 frames (1 for the parser, 4 for the decoder
