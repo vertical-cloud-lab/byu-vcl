@@ -292,7 +292,7 @@ SEGMENTS = [
                   "Animations: atomizer-charge/cad/machining.py (PR #232), numbers corrected on screen",
                   "Narration: Microsoft Edge TTS voice en-US-SteffanNeural"],
         "footer": "BYU Vertical Cloud Lab",
-        "chapter": "Links",
+        # no chapter: YouTube drops all chapters if any is under 10 s
     }, [
         ("Links to everything are in the description.", None),
     ]),

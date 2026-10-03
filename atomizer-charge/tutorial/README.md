@@ -1,15 +1,18 @@
 # Narrated tutorial: making the Al cups and plugs
 
+**Video: <https://youtu.be/nPIPvVh38Dw>** (unlisted, on the BYU Vertical Cloud Lab channel, uploaded 2026-10-03).
+
 For [#248](https://github.com/vertical-cloud-lab/byu-vcl/issues/248): one video covering how the Al charge cups and their
 vented plugs from [#222](https://github.com/vertical-cloud-lab/byu-vcl/issues/222) are made. It's 6:41 long, narrated
 by the Microsoft Edge TTS voice `en-US-SteffanNeural` (the voice the atomizer training tutorials use), with captions
-burned in.
+burned in. The YouTube description has the chapters and links.
 
 ![One frame from each segment](out/contact_sheet.jpg)
 
 Chapters ([`out/chapters.txt`](out/chapters.txt)): intro · where the cups go · the bar · on the lathe · the cup, step by
 step · the plug, step by step · where the #60 drill is · why the air hole · the numbers · four rules · hydraulic-press
-versions · the drawing, and one request.
+versions · the drawing, and one request. The 4 s end card gets no chapter, because YouTube drops every chapter if any
+one is under 10 s.
 
 ## What's in it
 
