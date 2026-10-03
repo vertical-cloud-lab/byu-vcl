@@ -1,0 +1,250 @@
+[00:00] side insulation
+[00:01] &gt;&gt; Oh, could Gage get a chance to just kind
+[00:03] of get the feel of how how tight it is
+[00:05] getting?
+[00:31] So, this hole this hole is meant to be
+[00:33] in line with this right here, but
+[00:35] &gt;&gt; Just to get the thermal couple inside of
+[00:37] it.
+[00:37] &gt;&gt; no, no, just like you know, there we
+[00:39] are.
+[00:39] &gt;&gt; This area?
+[00:40] &gt;&gt; Uh just you know, there
+[00:42] the thermal couple is flexible. You can
+[00:43] even bend it. Uh but it needs to be
+[00:46] close enough that you can actually
+[00:49] &gt;&gt; Got you. Is this okay?
+[00:53] &gt;&gt; Maybe a little bit too too far.
+[00:57] &gt;&gt; Okay.
+[00:58] And we're just seeing
+[00:59] &gt;&gt; This area is
+[01:01] is just going to make it easier. Then we
+[01:03] put the side insulation.
+[01:07] &gt;&gt; What's this made of? insulation
+[01:08] &gt;&gt; Uh silica and alumina mix.
+[01:11] &gt;&gt; It makes some dust, so sometimes it's
+[01:14] worth to just vacuum that
+[01:16] &gt;&gt; whole of furnace area
+[01:18] especially if something falls in the
+[01:20] crucible.
+[01:21] &gt;&gt; Mhm.
+[01:25] &gt;&gt; It's mostly enough because to like
+[01:27] protect the
+[01:29] the way through.
+[01:41] If it falls, it will immediately break.
+[01:46] I'm just making sure to get it in the
+[01:47] hole first.
+[01:49] Looks like it is.
+[01:52] &gt;&gt; And in case of sitting water, I'm just
+[01:53] making sure it's clean and it's not
+[01:55] damaged on the tip.
+[01:57] &gt;&gt; If it's damaged here, it will just not
+[02:00] seal.
+[02:07] Put it back in.
+[02:10] There's a little bit of dust here that
+[02:12] you can just wipe or
+[02:15] vacuum, but in general this is like
+[02:16] ready to go.
+[02:18] And we remove the ceiling block now.
+[02:21] Now we can add the material.
+[02:24] &gt;&gt; How did you remove it down? That was
+[02:25] with uh the
+[02:26] &gt;&gt; The ceiling block now.
+[02:39] &gt;&gt; This is an induction furnace, right?
+[02:43] Yeah, I see that it's got a bunch of uh
+[02:45] induction coils probably made out of
+[02:47] copper or something with water flowing
+[02:49] through it.
+[02:52] And then you
+[02:53] induce what are called eddy currents, so
+[02:55] this is like getting the
+[02:57] uh electrons like
+[02:59] make these tiny little current loops in
+[03:01] the
+[03:02] within the sample. Or sorry,
+[03:04] within the graphite. Um if your sample
+[03:06] is
+[03:07] &gt;&gt; This way this like pipe is indirect.
+[03:10] They also make the direct heating
+[03:12] option, but the indirect one is that
+[03:15] most of the energy goes into the
+[03:16] graphite.
+[03:17] &gt;&gt; Yeah.
+[03:17] &gt;&gt; And then the graphite is heating the
+[03:19] material inside.
+[03:20] &gt;&gt; Huh. If you had iron or something or
+[03:23] nickel
+[03:24] the you can also get the eddy currents.
+[03:28] So um graphite is
+[03:30] uh
+[03:31] magnetic or magnetic
+[03:32] &gt;&gt; Yeah, yeah. It's called a
+[03:35] Okay, okay.
+[03:35] &gt;&gt; Yeah, but generally this was not
+[03:37] designed for iron, nickel, anything.
+[03:39] &gt;&gt; Yeah, yeah. Because it's
+[03:41] too high melting point.
+[03:44] &gt;&gt; I I can tell you that it is possible to
+[03:46] go higher.
+[03:47] It has enough energy to go up to 1,600.
+[03:51] &gt;&gt; Yeah. Uh the problem is that most of the
+[03:53] plates
+[03:54] are not going to survive it. That's one
+[03:56] thing. And the other is that those
+[03:58] materials are just very active to
+[04:00] graphite and
+[04:01] so on. So, uh they just use it in the
+[04:05] uh more
+[04:06] industrial application where they use
+[04:08] like the same principle for gas
+[04:09] atomization. Uh they just use uh ceramic
+[04:13] crucible, you know, very slow heating,
+[04:16] like a
+[04:17] large ceramic nozzle of this size.
+[04:21] &gt;&gt; difference. Uh this potentially is like
+[04:24] made from regulating equipment, uh
+[04:26] mostly made for precious materials.
+[04:32] &gt;&gt; We always need to clean the feedstock.
+[04:34] It's really important.
+[04:37] So,
+[04:38] what's interesting is that this is much
+[04:39] higher than the furnace,
+[04:41] &gt;&gt; uh but it will go down.
+[04:43] &gt;&gt; The only problem is with a rods which
+[04:45] are like this uh long is that you heat
+[04:48] them at the bottom and then it had a
+[04:50] tendency to cool down here.
+[04:52] So, we will need to increase the
+[04:53] temperature first to melt them at the
+[04:55] bottom and then decrease the
+[04:58] temperature.
+[04:59] &gt;&gt; Because
+[05:00] &gt;&gt; It's beginning to melt.
+[05:00] &gt;&gt; otherwise it will take ages to melt.
+[05:03] &gt;&gt; If it would be copper, it would be
+[05:05] extremely hard to melt
+[05:07] &gt;&gt; when it's sticking out.
+[05:08] &gt;&gt; The more compressed, especially at the
+[05:10] bottom the material is, the faster it
+[05:12] will melt.
+[05:12] &gt;&gt; Got you. Thermal conductivity. If you
+[05:14] just keep bleeding out the
+[05:17] &gt;&gt; Just close it.
+[05:18] Secure it.
+[05:20] Uh if this would ever leak, and it may,
+[05:23] like here, you would uh see that some of
+[05:25] the gas is escaping. Uh you can
+[05:27] &gt;&gt; You just like hear a hiss or something.
+[05:30] You can actually adjust uh this a little
+[05:32] bit
+[05:33] to tighten it.
+[05:34] &gt;&gt; Oh, cool. Yeah, got you. Okay.
+[05:36] &gt;&gt; You loosen and move it.
+[05:41] And uh next step is the chamber.
+[05:50] &gt;&gt; Sorry, where was this?
+[05:51] &gt;&gt; I will put it down.
+[05:52] &gt;&gt; Okay, yes, that's good.
+[05:56] &gt;&gt; Just like you need to wipe it with a bit
+[05:59] of it.
+[06:01] Most of the thing is I'm just made with
+[06:05] brushes, paper, and alcohol. You don't
+[06:08] need anything else.
+[06:09] If some particles would get really stick
+[06:12] to the side of the chamber, sometimes it
+[06:14] happens with thinner or similar
+[06:16] materials, you may want to just have
+[06:18] like
+[06:19] a scraper just to detach them. And
+[06:21] because everything is cooled down, they
+[06:23] do not melt into the chamber. They just
+[06:25] get stuck and you need to scrape them.
+[06:27] &gt;&gt; What material?
+[06:28] &gt;&gt; Teflon, for example.
+[06:30] &gt;&gt; Oh, sorry. What material for the
+[06:31] scraper?
+[06:33] &gt;&gt; Stainless steel.
+[06:34] &gt;&gt; Okay, yeah.
+[06:34] &gt;&gt; If it's If you have like copper and
+[06:36] something
+[06:38] softer, it's nice, but I wouldn't say
+[06:40] like a plastic one may get damaged on
+[06:43] the plastic part.
+[06:43] &gt;&gt; Okay, yeah, I understand.
+[06:51] &gt;&gt; Also, you can always clean here
+[06:54] the ceiling
+[06:56] surface plus the ceiling itself.
+[07:08] And during the whole chamber inside,
+[07:10] just wipe it.
+[07:12] The best, of course, is to vacuum it
+[07:14] first. It helps a lot.
+[07:16] &gt;&gt; But then you just you may just have a
+[07:18] little bit of the powder everywhere. And
+[07:21] you just need to
+[07:22] wipe it.
+[07:24] &gt;&gt; And this is where after an atomization
+[07:26] run, we'd put the
+[07:27] uh the full-face respirators on to to do
+[07:30] the cleaning, yeah.
+[07:33] &gt;&gt; And it's relatively clean. The
+[07:35] atomization also helps like the friendly
+[07:37] atomizations, they help to clean the
+[07:39] equipment.
+[07:41] Because also we apply a little bit of
+[07:43] heat that way where you remove some
+[07:44] material over us.
+[07:49] You have a pretty good access
+[07:50] everywhere. If you would for any reason
+[07:52] need to remove the view port,
+[07:55] uh there are hook wrenches available for
+[07:58] this kind of
+[07:59] view port, you know?
+[08:01] Nothing fancy. It's just like a hook
+[08:03] wrench.
+[08:05] Hook like that and then unscrew it.
+[08:08] &gt;&gt; And from the other side, we have the
+[08:12] cone.
+[08:14] if you want to remove all the powder and
+[08:17] clean everything properly,
+[08:19] we need to take it down as well.
+[08:28] &gt;&gt; Okay, that swivels out. Okay.
+[08:31] &gt;&gt; That's nice.
+[08:38] Same thing. Uh you will need to like
+[08:41] clean from the bottom. You always
+[08:43] recommend you to clean the seal here and
+[08:45] vacuum it.
+[08:47] Plus, when we remove the powder, we just
+[08:49] like use the brush to slightly move it
+[08:52] down.
+[08:59] So, what do you mean about the brush?
+[09:01] Like
+[09:01] &gt;&gt; Uh you have some powder in here, so you
+[09:03] just like you make a circle through the
+[09:05] brush and the powder falls down.
+[09:07] &gt;&gt; Okay. Yeah, I got you.
+[09:08] &gt;&gt; in the container.
+[09:10] &gt;&gt; But the surfaces are smooth,
+[09:12] so it all goes pretty easily.
+[09:14] &gt;&gt; And that would be after you've removed
+[09:15] your atomized powder, is that all right?
+[09:17] &gt;&gt; I mean, uh no, before.
+[09:19] &gt;&gt; Before. Okay.
+[09:19] &gt;&gt; So, first we wipe from the chamber. We
+[09:22] open here, remove everything else.
+[09:25] &gt;&gt; Okay, back.
+[09:30] &gt;&gt; And the last
+[09:31] &gt;&gt; going to be like, you can't operate
+[09:32] until you get an oxygen sensor. It's
+[09:34] like,
+[09:35] He's the safety guy.
+[09:38] &gt;&gt; Uh and you know, the amount of argon
+[09:40] that we are moving through is not big
+[09:42] enough to
+[09:44] uh cause a danger.
+[09:47] &gt;&gt; But, I would still agree that it should
+[09:49] be.
+[09:49] &gt;&gt; Yeah, yeah. It's
+[09:52] &gt;&gt; So, and the last thing is the
+[09:54] uh powder container itself.
+[09:56] &gt;&gt; This thing is crazy.
+[10:00] &gt;&gt; So, we make it in-house.
+[10:05] We have a few commercial powders here.

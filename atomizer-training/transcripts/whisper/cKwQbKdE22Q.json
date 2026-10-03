@@ -1,0 +1,52 @@
+{
+"video_id": "cKwQbKdE22Q",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 156.4793125,
+"segments": [
+{
+"start": 0.0,
+"end": 1.92,
+"text": "Just a little bit of this powder."
+},
+{
+"start": 43.88,
+"end": 71.16,
+"text": "For 15"
+},
+{
+"start": 71.16,
+"end": 75.02,
+"text": "to 30 seconds, they get all of the powder out of here."
+},
+{
+"start": 76.56,
+"end": 79.69,
+"text": "And now, we'll just move it back."
+},
+{
+"start": 84.74,
+"end": 85.5,
+"text": "Move forward."
+},
+{
+"start": 90.36,
+"end": 93.06,
+"text": "So this, I want to see how much powder."
+},
+{
+"start": 97.78,
+"end": 99.84,
+"text": "There's no visible powder in there."
+},
+{
+"start": 104.91,
+"end": 105.87,
+"text": "We should use tape."
+},
+{
+"start": 119.48,
+"end": 121.1,
+"text": "Move everything back over here."
+}
+]
+}

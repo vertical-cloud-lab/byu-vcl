@@ -1,0 +1,71 @@
+{
+ "name": "02_stack",
+ "fps": 15,
+ "n_frames": 682,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "2c.1",
+   "caption": "The stack goes transducer → booster → sonotrode → plate, and it goes in last, after the furnace and the chamber. First the transducer: piezo stack, ~1000 V cable, air-cooled. Never drop it or get it wet.",
+   "start_frame": 0,
+   "end_frame": 84
+  },
+  {
+   "label": "2c.2",
+   "caption": "Booster onto the transducer, 65 N·m (M10 fine thread). The 1.5:1 booster mounted in reverse lowers the amplitude, for finer powder.",
+   "start_frame": 85,
+   "end_frame": 147
+  },
+  {
+   "label": "2c.3",
+   "caption": "Sonotrode on, 60 N·m, isopropanol on the threads. Its KF50 flange is always at the top.",
+   "start_frame": 148,
+   "end_frame": 210
+  },
+  {
+   "label": "2c.4",
+   "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing and fit both clamps without touching the safety cover.",
+   "start_frame": 211,
+   "end_frame": 277
+  },
+  {
+   "label": "2c.5",
+   "caption": "Plate onto its M8 stud with the stack in the housing: 50 N·m, counter-holding the sonotrode with a 17 mm wrench.",
+   "start_frame": 278,
+   "end_frame": 340
+  },
+  {
+   "label": "2c.6",
+   "caption": "Advanced ultrasonics → scan: one wide peak a little over 40 kHz. A double peak? Run a short burst and rescan.",
+   "start_frame": 341,
+   "end_frame": 406
+  },
+  {
+   "label": "2c.7",
+   "caption": "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, the plate is cracked.",
+   "start_frame": 407,
+   "end_frame": 473
+  },
+  {
+   "label": "2c.8",
+   "caption": "Bolt the protective cover over the transducer, then push in and lock the cable and connect the cooling air: two or three minutes that protect a part worth thousands.",
+   "start_frame": 474,
+   "end_frame": 539
+  },
+  {
+   "label": "2c.9",
+   "caption": "Run the frequency check now, before closing. Then swing the door shut: the stack rides in it, and the plate swings in under the nozzle.",
+   "start_frame": 540,
+   "end_frame": 606
+  },
+  {
+   "label": "2c.10",
+   "caption": "Swing the three bolts over the door's back edge and tighten the star knobs. Opening one under pressure just leaks.",
+   "start_frame": 607,
+   "end_frame": 681
+  }
+ ]
+}

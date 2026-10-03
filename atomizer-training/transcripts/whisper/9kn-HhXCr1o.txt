@@ -1,0 +1,432 @@
+[00:00] Okay, so are you doing the gas wash, and now what is it doing?
+[00:05] So first we purged the crucible chamber, and now we're doing this atomized chamber.
+[00:13] So we're at negative 148 millibars, and so I'm going to protect the gas.
+[00:20] It's going to bring back in the pressure a little bit.
+[00:23] Well, I guess what it's doing is vacuuming out all the air that's in there.
+[00:30] from the office vacuum.
+[00:38] So what that does is it takes out all the air that's in it, then puts it in a bunch of argon.
+[00:44] Okay.
+[00:44] And now it'll pull the argon and whatever else is in there back out again.
+[01:07] Does it get down to zero and the oxygen accurate?
+[01:10] Yeah, so as it takes out the air, the oxygen accurate becomes inaccurate.
+[01:16] Oh, okay.
+[01:17] So if it's in a vacuum, then we can't trust this measurement.
+[01:21] Okay.
+[01:34] Okay, so press control.
+[01:44] That's going to bring it up to 150 m bar.
+[01:58] Now we can turn on this guy's heat exchanger.
+[02:08] Once this alarm goes away here, saying cool water flow too low, once that's gone, then we can turn up the temperature.
+[02:17] I think I've got to turn on the generator first though, let's see.
+[02:29] So it's generator to start.
+[02:34] It's at 800 so I want to bring that down to 250 there, which
+[03:03] it is.
+[03:09] Vacuum pump.
+[03:13] Do I turn off this first and then put vacuum pump?
+[03:16] Yep.
+[03:18] And then you guys watch, right?
+[03:20] No, then this is staying open.
+[03:23] Oh, it is?
+[03:23] Okay, yeah.
+[03:25] In this case, whenever you are doing vacuuming one, you keep it over pressure in the other one.
+[03:30] Gotcha.
+[03:31] So if we have some leak...
+[03:34] we already have that relatively good atmosphere in here if there is a leak and we pull some gas from the chamber into the furnace it's going to pull at least the hardware and remind me this pressure control is
+[03:46] for the chamber right only chamber okay yeah well the furnace is only pressure control through negative pressure and gradient pressure gotcha so this
+[04:00] doesn't control the furnace at all no not at all no okay we can only see the temperature all right that's it okay
+[04:16] through five per view basically where it takes it down to negative 0.85 bar and then it'll and then it lets it back in and it cleanses it again
+[04:28] i wonder how fast we go through that argon tank yeah we started
+[04:41] at 2000 on monday oh dang so we're just over halfway after five or six atomizer roads oh so
+[04:59] that tells you how many are left the gas was okay so
+[05:37] that's done right here
+[05:49] Pressure control.
+[06:13] So now I'm purging this again at 250 degrees.
+[06:17] So once this gets to negative 850, at that point, then I can turn it to 500, right?
+[06:22] Yeah.
+[06:23] So I have questions on this.
+[06:25] I mean, or you can then just use the pressure control and change it after.
+[06:29] But there is just flexibility.
+[06:31] It doesn't change much.
+[06:33] Okay.
+[06:33] When we are still far from melting point, all we can do with the
+[06:45] pressure what we want.
+[06:47] If it would be thin and you would have it fully liquid right now, it wouldn't be so good to change the pressure anymore.
+[06:58] In this case, the aluminum will not melt yet.
+[07:10] 500.
+[08:15] So what we're doing is every cycle, we purge this, purge this, then we turn 250 degrees, it brings up the oxygen, purge it, purge it.
+[08:25] 500 degrees brings up more oxygen purge it purge it and now it's ready to melt okay we can't just go straight to 500 you have to go in a cruise of
+[08:37] 250 to get to whatever temperature you want so let's say we're melting something that's a lot higher do we do purges every 250 degrees no
+[08:50] there's no need at this point it's going to be fine because we are not
+[08:54] targeting the null point of the material, but more like the moisture leftovers in the chamber.
+[08:59] So after banning the grease, you can always go to local temperature.
+[09:07] At this point, after a bit more penalty, you already will be low with the oxygen and there will be nothing more evaporating.
+[09:15] If you go with something very low at this point, then you basically don't do any peridation.
+[09:23] Then you
+[09:35] start pressure control and back and forth, back and forth.
+[10:19] What is it doing now?
+[10:21] It's purging it right now.
+[10:23] Oh, okay.
+[10:42] Any pressure?
+[10:44] No, it's barely any more than what we have in the chamber.
+[10:48] But it was sealing out in the previous round.
+[10:51] Okay.
+[10:52] It could be even slack and slightly lower because the flow was just too good.
+[10:58] And if heated, I will just do the control manually with the tools of pressure.
+[11:02] Take control.
+[12:39] And we just go up with that.
+[12:44] And since the...
+[12:46] I guess it's taking up a little bit.
+[12:48] Is it 800 or 1,000?
+[12:50] No, 850.
+[12:53] It was enough the previous time.
+[12:55] I don't think it's down there, so it's fine.
+[12:59] Oxygen content is stabilizing.
+[13:30] You can also usually see the moment the material melts because the temperature will start dropping.
+[13:36] Like a tiny drop of the temperature.
+[13:42] Because the metal will liquefy and get in touch with the material out.
+[14:04] hear like a faster beeping because the induction will use a bit more color because the material will get the shit out from the crucible so as soon
+[14:16] as it melts it fall down through the nozzle no until we open the ceiling rod oh okay and we usually need to increase the pressure a little bit in the furnace to give it
+[14:28] a push the graining pressure right headphones
+[15:06] on yeah just want to see if you want to come watch it yeah so much
+[15:25] Can you see it down in there?
+[15:30] Oh yeah.
+[15:31] Melting already?
+[15:32] Yeah.
+[15:42] This road is going down as well.
+[15:46] So once it starts melting, you reduce it back down to 800?
+[15:56] Yeah.
+[15:57] And now the material will still continue melting.
+[16:00] The temperature will be dropping.
+[16:03] So then after it's all liquefied, we are at the right temperature.
+[16:06] We wait around two minutes to give it time to overheat.
+[16:11] so to reach the same temperature as the reading and to mix while the mixing can be sometimes a question what's the
+[16:25] beeping because i see as it beeps when the induction is starting actually it's like the magnetic field makes all the little chunks yeah there's like little pulses like
+[16:38] what is it a bit more material so it has higher chance of mixing the more material the better it mixes
+[16:49] I would say I mean if you have too little there's just like not really any mixing because it's just a small pool at the bottom.
+[16:56] In this case it has enough volume to actually remove.
+[17:00] Okay.
+[17:04] Oh well the bar is just gone now.
+[17:08] Is it all open up?
+[17:10] Honestly if I can get the jumping.
+[17:11] Oh yeah you can see it jumping around.
+[17:18] So now that it's melted we wait two minutes before opening up the nozzle.
+[17:23] It's so fun and a lot.
+[17:51] It melts as we don't even really see any leftovers or anything.
+[17:55] It's good.
+[17:59] What is this measuring time?
+[18:07] So for example, if you are at melting pressure and you have the generator on, the timing goes.
+[18:15] If you change from melting to graining, then it will show the graining pressure.
+[18:19] So in this case, it's just a timer.
+[18:22] Okay.
+[18:22] The current status.
+[18:24] Cool.
+[18:47] Everything else should be pretty cold.
+[18:49] This is cool-ish.
+[18:51] You know, that's because of water.
+[18:53] Oh, okay, that would be the reason.
+[19:02] The water is like 23 degrees, so it's still fine.
+[19:07] But if we go with max temperature, it will get worse.
+[19:12] In this case, the volume that we had inside of the tank was basically enough.
+[19:20] That's not as cold as last time.
+[19:24] That's so pretty cold.
+[19:25] We just need a very, very tiny bit of your flow.
+[19:28] Otherwise there's some conversation, because we over-pull it all.
+[19:32] Oh, yeah?
+[19:35] So, right now we start with the transistor-pulling.
+[19:38] If it wasn't scanned, you will need to scan it again.
+[19:42] But it keeps the parameters from the last time we scanned it.
+[19:46] Okay.
+[19:46] It's still going to vibrate as normal.
+[19:49] So at this point, we can download, try the vibrations.
+[19:52] Yep.
+[19:53] And in just a matter, the screen needs to control it very well, and it will happen.
+[20:04] So you're just looking to see if it is hitting it.
+[20:07] Let's take a look here.
+[20:09] Let's record that.
+[20:11] I think it will be most valuable.
+[20:14] So I'm going to go with draining pressure and sealing rope.
+[20:25] You see the initial droplet usually gets lost because it is...
+[20:33] The flow is actually too much for this low amplitude that's why we are losing some Because the atomization is very very slow, but the material flows much better than I would expect it to But
+[20:46] that's why we have the droplets going down If it will be a very very small stream or even like single droplets the atomization would be more stable
+[20:58] Yeah
+[21:02] it should go with 0.5 without any issue because right now you can see that we have nice atomization especially on the top part but in the bottom the material gathers and stops the atomization
+[21:14] so nothing at the bottom gets atomized that's why it is dropping down so as I mentioned yesterday
+[21:27] if you want to go with the reverse booster you want to know your material like what parameters you need to get
+[21:35] to have full control over the pulley.
+[21:38] Okay?
+[21:38] Okay.
+[21:39] Yeah.
+[21:40] Okay.
+[21:41] It's over.
+[21:42] Nothing more.
+[21:43] So right now I will stop the vibrations, feeling drop down, melting pressure, stop the heating in any order just to do it as soon as possible after we are
+[21:55] done.
+[21:57] All right.
+[22:05] Hey Bartosz, is that a light normal?
+[22:09] At the light?
+[22:10] Yeah.
+[22:10] Yeah, it's at the sensor.
+[22:11] It's measuring the flow.
+[22:17] I was worried there's electricity arcing.
+[22:19] I was like, uh-oh.
+[22:22] So, in this case, we didn't have smart accommodation, but as I said, we would need to go back to the smaller mode.
+[22:30] Because in this case, I had almost like no overpressure here, yet fluid was falling too quickly.
+[22:43] And, um...
+[22:45] Shut up.
+[22:58] Let's see if I can have a video of a process to show as a reference.
+[23:08] Because with a very well controlled pouring, even with a reverse booster, my best process was like 90% conversion from material to powder.
+[23:18] Oh wow, that's great.
+[23:28] So now we just wait for it to cool down.
+[23:31] Now let's just wait.
+[24:01] If you take a look here.
+[24:03] Very slow process, basically just droplets.
+[24:06] But you see everything gets atomized, like I was wasted.
+[24:12] So that's ideal to have a slow drum like that.
+[24:15] Droplets or a slow string.
+[24:17] In this case the string was pretty fast and they couldn't really control it.
+[24:22] If you have a good flow, but a slow flow, you can always get it better with the turbo pressure.
+[24:30] So the only reason when going to a smaller nozzle is that nothing will be poor at all.
+[24:40] So if we if we want fiber powder then that's the strategy to do very small muscle, very lower bar.
+[24:48] So using the reverse booster in general.
+[24:53] But in order for that to work you need to have a slow and controlled pull.
+[24:58] Yeah.
+[25:00] If you want to just do the testing you can try to use higher up.
+[25:03] You can see here.
+[25:04] It's just going on like that.
+[25:07] If we lower the pressure in here and in here?
+[25:12] No, it's only the differential pressure that matters.
+[25:16] And part of the problem is that if you drop the pressure too much in the furnace right now, instead of having a stream, the material can start just splatter on the side.
+[25:27] You want to actually use the pressure to push it through.
+[25:30] But if you can push through a smaller hole, then you will still have a nice string but less material load.
+[25:37] The process is not long anyway, so whether it's 2 minutes or 5 minutes, you know, it's not going to change much.
+[26:46] High amplitude, maybe you have this.
+[26:51] Yeah, the process is faster, but you just get larger particles.
+[27:03] Yeah, we're going to try to...
+[27:11] Thought I had to write new code twice to get it to this.
+[27:14] Oh no.
+[27:16] So what exactly is the rod made of?
+[27:18] It's aluminium from 60...
+[27:20] Aluminum?
+[27:21] 6063.
+[27:22] Okay.
+[27:23] We just finished our run of the aluminum rod.
+[27:30] Okay, thanks.
+[27:32] Okay, so it's almost pure and very close.
+[27:35] Yeah.
+[27:38] So we want to optimize for smaller particles.
+[27:44] So you just want to figure out the best.
+[27:46] Definitely it's rough to 0.5 nozzle.
+[27:49] I thought it's not going to pull so well.
+[27:51] Because most aluminium aloes do not like the 0.5 so much.
+[27:57] But in this case, even if we had a very little pressure, the floor was too good.
+[28:05] Some of the material was wasted through that.
+[28:08] But you will still have some powder to just use as a sample to...
+[28:14] I'm tired.
+[28:15] And different options.
+[28:16] Okay.
+[28:16] So right now you have both the maximum particles, some will kick in the window, and the option to get the smallest particles.
+[28:28] Are you getting all the out-grabbing chamber?
+[28:31] Open it and brush it.
+[28:33] Okay.
+[28:35] Use the brush.
+[28:36] Yeah, Ronnie, I think it would be good for you to learn the cleaning system.
+[28:47] It might be like the age starts it out and then it's off.
+[28:51] Just because I know you guys don't have like four hour chunks.
+[28:54] Yeah.
+[29:09] If you have a very small sample, like before you change parameter, establish something, it may already be gone.
+[29:20] If you try to have a full, full principle, the plate may not survive it.
+[29:42] But just to know, we've got a recording.
+[29:44] Oh, nice.
+[29:45] Since we're just waiting for the cool down now, so we're just here basically to capture the conversation.
+[29:51] Yeah, okay.
+[29:52] So thanks for running that one.
+[29:54] It took me a while to get this, but we have this one.
+[29:57] I don't think we need to do a bunch of a clean of the chamber.
+[30:00] Maybe we just...
+[30:02] Well, how long does it take to just empty the powder out without doing a big clean?
+[30:11] Still, most of it is just everywhere in the chamber.
+[30:14] Oh, okay.
+[30:14] Yeah, I gotcha.
+[30:14] So let's open it, we scratch it and then take it out.
+[30:17] Okay, gotcha.
+[30:18] Yeah, let's go.
+[30:19] Okay.
+[30:20] So maybe...
+[30:20] I think the most problem is that usually...
+[30:23] There is high chance that the nozzle is...
+[30:25] Even if it's not fully clogged, there is a piece that you need to just remove manually.
+[30:30] And you can attach it without waiting for it to go really down.
+[30:34] So for some alloys, you will basically just load them in and continue.
+[30:40] In this case, there is a chance that once you load more and try to flow more, it will push through.
+[30:45] But sometimes, because it's already solidified inside, the new material is not able to melt it and push it through.
+[30:51] Yeah, that makes sense.
+[30:52] Which means you have to...
+[30:53] disassemble it yeah it will take just a few minutes but uh the way for the temperature to drop okay yeah we can
+[32:34] go through some of the models uh right now okay just so you know what you are left with this is what i definitely recommend to this record and i will tell
+[32:46] everything that you have to use so here are the models for the i can move the hose if you want
+[33:04] So here we have the consumables for the furnace most of them is the same that we use during the processes so like additional dissipations you just have a lot a lot of them in
+[33:16] case falls, breaks, anything you just have plenty of that the blue one is theoretically rated for a higher temperature it's also just more durable and it doesn't make
+[33:28] this kind of like small particles coming out from it
+[33:32] in some cases it may be quite helpful if you like to atomize silver gold to keep everything easier to peel in with higher purity that would be the way to go here
+[33:45] you have a lot of the nozzle holders same thing usually somebody drops it with grace and then you change it or if you over tighten it the thread can crack but you have a
+[33:57] lot of spurs we have a lot of the
+[34:00] You have normal ones, but you also have ones with a hole in them, where additional temperature measurement can be done.
+[34:10] So then you have temperature measurement in the very middle of the furnace, not at the wall.
+[34:17] The alumina, ceiling rods for reactive materials.
+[34:26] The graphite nuts, quite valuable in general, because I mean they just...
+[34:32] and I hope the cost is pretty high on them.
+[34:36] It shouldn't be graphic until you drop it.
+[34:40] The graphite seals, same sometimes, you just drop them, it's also the wear, they will start cracking on where you have a nozzle spurs.
+[34:49] The nozzles, so the graphite nozzles and the boronachip nozzles.
+[34:56] What's the boronachip nozzles used for?
+[34:58] More reactive materials.
+[35:00] if you just expect the activity like magnesium or what not really but sometimes aluminium like with conditions of like calcium maybe some of those like buffets dialogues but
+[35:13] they shouldn't be asked too much but using boron nitrate allows it to go more smoothly for the moment and you have a lot of different covers for the thermocouples
+[35:25] the standard ones
+[35:27] and also the bigger one which is used for a thermocouple that can go in the ceiling road so this is a longer thermocouple that can go in the ceiling road right
+[35:39] here you have two normal spare thermocouples i gotta run to a meeting for a question the documents oh yeah let me send that okay so unless
+[35:52] it like breaks some droplets go on it
+[35:56] is going to work pretty much fine.
+[36:00] This is an additional thermocouple plug if you need it.
+[36:04] It is also possible to have a dual thermocouple measurement actually with it.
+[36:10] There is a screw on the left side where you can go and then you can have it connected to the control panel.
+[36:16] Or it can be just a spare in case that the main one breaks.
+[36:21] A bunch of seals for the furnace.
+[36:25] The timer just wear over time, you know, they will just clean it, there's some dust on there, over time they will just start to do it.
+[36:33] A lot of filters that go on the bark, if it's fully dirty and you see that it's hard to remove the overpressure from the furnace, you can replace it.
+[36:44] Same with the filter that goes in the furnace.
+[36:47] Those are easier to clean with ultrasonic buff as well.
+[36:50] You can first clean them at least a few times before cleaning these ones too.
+[36:54] Not really, I would say they would integrate too much because of it.
+[36:58] You have spare glass.
+[37:00] To be honest, they do not break by themselves.
+[37:05] But if you want to take them out, do some maintenance, sometimes some droplets may go out and just get tipped to the glass.
+[37:13] So you just have extras of the glass.
+[37:16] and the seal under the glass.
+[37:17] To ask for the permission, gotcha.
+[37:25] Additional prologue, popsicle shrouds and connectors.
+[37:32] Crucibles and side insulation.
+[37:34] There are also many crucibles underneath.
+[37:37] There is a second layer.
+[37:39] And filters.
+[37:41] Those filters are used on the inside of the blue cabinet on the right side.
+[37:46] So we are between chamber and the vacuum part.
+[38:10] The filter, this one.
+[38:13] I would say, unless you work with something that evaporates, it will not really get dirty, but I would check it at least after a month or two.
+[38:22] Every two months or so?
+[38:25] To make sure that you have no powder in there, or some leftovers, or no damage to it for any reason.
+[38:37] So, in case of the plates, what you have here?
+[38:43] Carbon fiber, without anything, good for aluminum.
+[38:47] carbon fiber without anything but a large one also same for aluminium if you have trouble catching something or like the stream would be very unstable carbon fiber
+[39:01] fiber with the molybdenum coating on the tip here used mostly for copper with definitely higher temperature where copper doesn't want to wet so we need to use this
+[39:13] coating to get the proper wetting and here
+[39:18] Those plates you can see that they are like fully coated.
+[39:22] So this is carbon fiber coated in a tungsten In this case through plasma coating they are much more expensive can be also used for copper or we use them for some like
+[39:34] copper alloys or some very strange alloys that we do not know how to approach at higher temperatures because they can survive anything At least for some time.
+[39:44] Because of tungsten.
+[39:45] Yeah.
+[39:46] So not higher durability.
+[39:48] titanium 6-4 plates good for low temperatures because titanium just vibrates very well doesn't generate high power but if
+[40:00] you treat titanium with like 800 degrees or over it will break almost immediately because of the phase changes so it's good for alloys lower than 800
+[40:16] So in this case we use them for a higher temperature for materials that may react with aluminum too much.
+[40:23] So with the molybdenium too much.
+[40:26] So then we have an alternative of the niobium, but niobium seems to be more prone to cracking.
+[40:32] What is this material?
+[40:33] Niobium.
+[40:35] Niobium chiponium.
+[40:36] It's more prone to cracking, especially at higher altitudes.
+[40:41] These are the regular carbon fiber rests?
+[40:42] Without any coating.
+[40:46] Then here...
+[40:48] And here we have the molydenum plate.
+[40:52] Smaller and larger.
+[40:54] MLS alloy.
+[40:55] Good for almost anything, right, to be honest.
+[41:00] MLS, both copper, both the aluminium, basically anything.
+[41:05] In case of aluminium, if you have a very long process, there may be some reactivity after that.
+[41:10] Molydenum can react with some materials.
+[41:13] That's just like...
+[41:14] But if you would put half kilogram aluminium...
+[41:17] at the end it may start to react with the body but other than that they seem to work very well right now so it's kind of like a golden standard for most trials okay and
+[41:29] here we have stainless steel plates with one of the approach was magnesium where you do not see the process very well and just like pull randomly on them but
+[41:41] they just they break during one process
+[41:45] They are not very durable, but they are not cheap to replace, can help with some materials of lower temperature where the pouring is unstable.
+[41:54] So they are just like an addition which we try not to use.
+[41:58] In case of magnesium, I would recommend to go either with the molly or if depending on the application, an aerobutic ponium seems to work pretty well as well.
+[42:08] In medical applications, they need to use the anaerobium because the anaerobium is...
+[42:21] The best material I think in case of like consumption, the toxicity is basically below.
+[42:32] But by itself it's just too soft for most parts and too heavy and too expensive.
+[42:51] I just want to carry out some seals, nothing really important for the process.
+[42:57] Okay.
+[43:01] Is this a brush for you to brush out the chamber?
+[43:03] Yeah.
+[43:03] Okay.
+[43:04] But then we recommend to get some of the bigger ones.
+[43:06] Yeah, we need bigger ones.
+[43:07] I don't know why they get us, those were bigger, but the team that is like ordering them, they just like order it, and sometimes they fold in different sizes, different types.
+[43:20] This might be too big, but this is an anti-static brush as well.
+[43:24] That one seems really big.
+[44:20] Definitely my recommendation is that right now to do more traps.
+[44:26] Continue working straight after I depart.
+[44:30] Try to economize just my rods.
+[44:39] or we can talk about trying different materials, but definitely to continue the work a little bit, I'll just help to remember these procedures.
+[44:50] This has been so good, Vartaj.
+[44:52] I'm glad.
+[44:53] I would see that there is just a lot of nuance to how you prepare the process, so setting the right parameters, choosing the right equipment is the main changing factor for the whole
+[45:06] process, but after you have it established, some materials...
+[45:12] And then you just need the operator to focus during the 2-4 minutes of cooling and change the amplitude.
+[45:20] In general we aim for lower amplitude but if you see that it's not atomizing you will need to go higher amplitude just even by the slider and use the turbo pressure to change the cooling.
+[45:34] So the technique I also showed to just press it from time to time which helps a lot to stabilize the stream.
+[45:41] Because, especially if you have low pressure in the furnace, it starts to get unstable and the droplets go everywhere around it.
+[45:49] And you want a nice stream that goes precisely where you are.
+[45:54] If you
+[46:12] are at like below 100 degrees, you can shut down the cooling.
+[46:20] Always make sure to open the chamber before opening it.
+[46:34] This is for the device to unscrew the ceiling rod.
+[46:43] Is this something you grab?
+[46:47] You grab this?
+[46:48] It's with the device.
+[46:50] Okay.
+[46:50] It's part of the tools.
+[46:52] Okay.
+[46:54] Okay.
+[46:54] I think this will be everything that has all my tools, all my parts.
+[47:00] Okay.
+[47:02] I think both of the water and the water is condensation.
+[47:11] I think so as well.
+[47:15] Especially right now.
+[47:17] To be honest, right now you could just shut down your flow light.
+[47:21] Your supply is just too good.
+[47:26] That's crazy that the cooling is just creating condensation.
+[47:30] Yeah.
+[47:33] That's like really cold.
+[47:35] Yeah, it's awesome.
+[47:36] So there's cold water flowing through the outside of this and all this.
+[47:40] Is this a chiller?
+[47:42] This is just, no, this is just a heat exchanger so that the chilled water in the facility just comes down.
+[47:48] Oh, okay.
+[48:00] Maybe that, like, different.
+[48:10] When you tell me what you plan to atomize in the future, I can find the best things for it.
+[48:15] But you already have all the extended consumables.
+[48:18] So you have enough to go on for months.
+[48:23] Hope so.
+[48:24] Thank you.
+[48:26] Thank you a lot.
+[48:33] See ya.
+[48:36] Right now, I'm not sure if you plan to go with copper.
+[48:41] In case of copper, pure copper is a bit tough.
+[48:44] But copper team can, for example, or so.
+[48:48] It's better.
+[48:49] So I think, at least for probably the rest of the semester, we're going to be focusing on just aluminum.
+[48:57] Maybe something.
+[48:59] And then we'll move on to copper later.
+[49:02] It's not terrible, it's just that you don't see much of the process without the viewport and you have to evaporate everywhere.
+[49:13] It could be a bit of a nightmare.
+[49:41] I will add all of you to the database system.
+[49:45] If I will forget it, just remind me.
+[49:47] So I will be on the way until the end of the year.
+[49:52] Little time in the office.
+[49:54] In the evenings and mornings.
+[49:58] Thank you.
+[49:59] Good to meet you.
+[49:59] Thank you for the training.
+[50:02] i hope to see you next time yeah see you

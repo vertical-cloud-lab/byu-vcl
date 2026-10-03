@@ -1,0 +1,71 @@
+{
+ "name": "03_furnace_load",
+ "fps": 15,
+ "n_frames": 939,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "2a.1",
+   "caption": "Start cold. Open the furnace lid (it hinges up to the left) and swing the sealing-rod lever up, clear of the opening. For a rebuild everything comes out: thermocouple, sealing rod, insulation, crucible.",
+   "start_frame": 0,
+   "end_frame": 100
+  },
+  {
+   "label": "2a.2",
+   "caption": "On the bench: nozzle into its holder, white side up (Ø0.5 mm standard, Ø0.7 for Al alloys), then screw the holder into the crucible by hand: several turns, and only just tight.",
+   "start_frame": 101,
+   "end_frame": 203
+  },
+  {
+   "label": "2a.3",
+   "caption": "Graphite seal and bottom insulation in first. Then lift the crucible over and lower it straight down into the coil, its shank through the floor. Handle it gently: graphite is brittle.",
+   "start_frame": 204,
+   "end_frame": 319
+  },
+  {
+   "label": "2a.4",
+   "caption": "Swing the three bolts back and open the chamber's left door. Through it, the lower seal, then thread the thin graphite nut onto the shank from below while the crucible is held still at the top, its thermocouple hole turned to the back right. A second person at the top helps; alone, keep a hand on the crucible. Snug, not tight: graphite cracks if forced, and a loose nut leaks.",
+   "start_frame": 320,
+   "end_frame": 478
+  },
+  {
+   "label": "2a.5",
+   "caption": "Side insulation round the crucible, its hole lined up with the thermocouple port at the back right, then the top insulation (filling cone). Silica-alumina: dusty and fragile.",
+   "start_frame": 479,
+   "end_frame": 556
+  },
+  {
+   "label": "2a.6",
+   "caption": "Thermocouple (Type N) in at the back right, down into the hole in the crucible wall, bent to sit close; its plug is behind the lever post. Leave it in even for maintenance, or the HMI raises 'master temperature sensor'.",
+   "start_frame": 557,
+   "end_frame": 626
+  },
+  {
+   "label": "2a.7",
+   "caption": "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screwed into its adapter, it goes straight down onto the nozzle.",
+   "start_frame": 627,
+   "end_frame": 696
+  },
+  {
+   "label": "2a.8",
+   "caption": "Swing the lever down onto the adapter, push the safety pin in, and press SEALING ROD to bring it down. The rod now rides on the lever, which the pneumatics lift to pour.",
+   "start_frame": 697,
+   "end_frame": 766
+  },
+  {
+   "label": "2a.9",
+   "caption": "Charge: clean rods no thicker than 20 mm, 250–300 g; here 4 × Ø17 × 100 mm 6063 (≈245 g), dropped in round the rod, beside the lever. They stand proud and sink as they melt.",
+   "start_frame": 767,
+   "end_frame": 862
+  },
+  {
+   "label": "2a.10",
+   "caption": "Close the lid and set the latch just tight enough to seal: if it hisses under pressure, loosen it, adjust the latch and retighten. The chamber door stays open for the next step.",
+   "start_frame": 863,
+   "end_frame": 938
+  }
+ ]
+}
