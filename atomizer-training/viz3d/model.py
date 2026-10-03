@@ -106,8 +106,8 @@ CLAMP_Z = (288.0, 300.0)
 CVALVE_Z = (262.0, 288.0)
 CONT_Z = (60.0, 262.0)
 CONT_R = 65.0
-VIEWPORT = np.array([-45.0, CH_Y[0], 1020.0])                          # on the front face, under the furnace
-VIEWPORT_N = np.array([0.0, -1.0, 0.45]) / math.hypot(1.0, 0.45)        # outward axis: tilted to look down at the plate
+VIEWPORT = np.array([-112.0, CH_Y[0] - 8.0, 1030.0])                   # at the front-left top corner, under the furnace
+VIEWPORT_N = np.array([-0.55, -1.0, 0.40]) / np.linalg.norm([-0.55, -1.0, 0.40])   # looks in and down at the plate
 
 # Ultrasonic stack: comes in through the door (left wall) at 40 deg, plate face centre at PLATE_C.
 STACK_ANGLE = 40.0
@@ -413,7 +413,7 @@ def chamber_parts() -> list[Part]:
     door = door.fuse(along(tube(30, 22, 12), sight, (-1, 0, 0)))
     P.append(Part("door", door.clean(), STEEL, "door", tol=0.4))
     P.append(Part("door_glass", along(cyl(22, 4), sight + np.array([-4, 0, 0]), (-1, 0, 0)), GLASS, "door",
-                  opacity=0.8, tol=0.2, cut=False))
+                  opacity=0.8, tol=0.2))
     P.append(Part("door_hinge", compound(*[cyl(8, 50, (DOOR_HINGE[0], DOOR_HINGE[1], z), (0, 0, 1))
                                            for z in (DOOR_Z[0] + 80, DOOR_Z[1] - 90)]), STEEL_DK, "chamber",
                   tol=0.2, cut=False))

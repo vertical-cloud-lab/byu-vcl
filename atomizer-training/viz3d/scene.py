@@ -42,6 +42,30 @@ FLATTISH = {"cabinet", "heat_exchanger", "base_frame", "platform", "chamber", "v
             "hmi", "door"}
 
 
+def _wait_for_x(timeout=60.0):
+    """Under heavy load Xvfb can still be starting when xvfb-run hands over; VTK then fails with 'bad X server
+    connection'. Wait until the display accepts a connection."""
+    if not os.environ.get("DISPLAY"):
+        return
+    import ctypes
+    import time
+    try:
+        x11 = ctypes.cdll.LoadLibrary("libX11.so.6")
+    except OSError:
+        return
+    x11.XOpenDisplay.restype = ctypes.c_void_p
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        d = x11.XOpenDisplay(None)
+        if d:
+            x11.XCloseDisplay(ctypes.c_void_p(d))
+            return
+        time.sleep(0.5)
+
+
+_wait_for_x()
+
+
 def font(size, bold=False, mono=False):
     name = "DejaVuSansMono.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
     return ImageFont.truetype(str(FONT_DIR / name), int(round(size)))
@@ -454,7 +478,11 @@ def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=Tr
         if name in hide:
             continue
         wants = cut == "all" or m["group"] in cut or name in cut
-        if wants and m.get("gone"):
+        if wants and m.get("gone"):            # entirely in the cut-away half
+            if defer:
+                sc.add("w:" + name, m["whole"], m["color"], m["group"], opacity=m["opacity"])
+                sc.cutrole["w:" + name] = "whole"
+                sc.cut_f[m["group"]] = 0.0
             continue
         halved = m["half"] is not None and wants
         op = ghost.get(name, m["opacity"])

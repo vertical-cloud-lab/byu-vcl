@@ -1,14 +1,20 @@
 """Two hero stills of the rePowder model, 1600 x 900: the whole machine, and a section through
 furnace, chamber and container.
 
-    xvfb-run -a -s "-screen 0 1920x1080x24" python render.py     # -> out/machine.png, out/section.png
+    xvfb-run -a -s "-screen 0 1920x1080x24" python render.py           # -> out/machine.png, out/section.png, out/compare.png
+    xvfb-run -a -s "-screen 0 1920x1080x24" python render.py compare   # only the model-vs-video comparison
 """
 from __future__ import annotations
+
+import sys
+from pathlib import Path
 
 import numpy as np
 
 import model as M
 from scene import OUT, Scene, font, load_machine
+
+HERE = Path(__file__).resolve().parent
 
 SIZE = (1600, 900)
 
@@ -201,8 +207,56 @@ def section():
     print("wrote out/section.png")
 
 
+COMPARE = [   # (reference frame in ref/, camera roughly matching it, view angle)
+    ("front_9kn-HhXCr1o_25m00s.jpg", [(40, -1650, 780), (40, 0, 760), (0, 0, 1)], 30),
+    ("left_58wJ_Khwgyk_77m00s.jpg", [(-1150, -850, 1080), (-90, 0, 830), (0, 0, 1)], 30),
+    ("frontleft_FDRTt68Vfvo_51m00s.jpg", [(-520, -1150, 1380), (30, 0, 980), (0, 0, 1)], 30),
+]
+
+
+def compare():
+    """The model next to frames of the real machine from about the same viewpoints (out/compare.png)."""
+    from PIL import Image, ImageDraw
+    from scene import font
+    tiles = []
+    for ref, cam, va in COMPARE:
+        frame = Image.open(HERE / "ref" / ref).convert("RGB")
+        w, h = frame.size
+        sc = Scene("compare", "", size=(w - w % 2, h - h % 2), gif=False, mp4=False)
+        load_machine(sc, hide=("floor",), pipes=False)
+        sc.cam = cam
+        sc.view_angle = va
+        img = sc.snap().convert("RGB")
+        sc.pl.close()
+        tiles.append((frame, img, ref))
+    th = 360
+    row = []
+    for frame, img, ref in tiles:
+        f = frame.resize((int(frame.width * th / frame.height), th))
+        m = img.resize((int(img.width * th / img.height), th))
+        row.append((f, m, ref))
+    W = max(f.width + m.width for f, m, _ in row) + 30
+    H = len(row) * (th + 34) + 50
+    out = Image.new("RGB", (W, H), "white")
+    d = ImageDraw.Draw(out)
+    d.text((10, 10), "Training-video frames (left) and the CAD model from about the same viewpoint (right)",
+           font=font(18, bold=True), fill=(20, 20, 24))
+    y = 46
+    for f, m, ref in row:
+        out.paste(f, (10, y)); out.paste(m, (20 + f.width, y))
+        vid, at = ref.split("_", 1)[1].replace(".jpg", "").rsplit("_", 1)
+        d.text((12, y + th + 4), f"{vid} at {at}", font=font(14), fill=(60, 60, 66))
+        y += th + 34
+    out.save(OUT / "compare.png", optimize=True)
+    print("wrote out/compare.png")
+
+
 if __name__ == "__main__":
     OUT.mkdir(parents=True, exist_ok=True)
+    if sys.argv[1:] == ["compare"]:
+        compare()
+        sys.exit()
     machine()
     machine_clean()
     section()
+    compare()

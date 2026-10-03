@@ -180,12 +180,12 @@ A fixed vertical phone view of the powder-doser bench, uploaded at 17:59 MDT on 
 
 ## dXRB7c6GeDw — Claude ping and troubleshooting for dosing Al 4047 (59:37, Oct 1)
 
-A phone screen recording (uploaded 20:30 MDT on Sep 30, at the same time as BxA7Z9Fliss) of the GitHub pull request where Claude drives the powder doser, narrated while the dose runs. Sterling (the PR author, inferred from the "sgbaird commented" header on screen) is dosing the team's own atomized Al 4047 powder. Claude's comment headings on screen are "Dispensing 8 g of Al 4047", "Investigating the stalled Al 4047 dose", "Fixing the telemetry MemoryError, then re-running the 8 g Al 4047 dose" and "Finishing the Al 4047 dose at bulk tilt only (clog-tolerant)" (keyframes 00:00–38:00). The dose stalls at about 3 g; a MemoryError on the doser's Pico is fixed; larger particles in the atomized powder clog the auger nozzle, which "a larger auger inner channel" or sieving the powder first would avoid; the last tilt-back is too jarring and the tapping solenoid flexes on its one-sided 3D-printed mount. It ends with about 8 g dosed, a small amount of which is loaded into "the 6063 one end closed tube", the powder cup for the Oct 2 charge (inferred). Not atomizer operation, but the charge preparation for it. Whisper with word timestamps, so the times are within a second or two of the words. Phases: before (charge preparation), troubleshooting (doser), chatter.
+A phone screen recording (uploaded 20:30 MDT on Sep 30, at the same time as BxA7Z9Fliss) of the GitHub pull request where Claude drives the powder doser, narrated while the dose runs. Sterling (the PR author, inferred from the "sgbaird commented" header on screen) is dosing the team's own atomized Al 4047 powder. Claude's comment headings on screen are "Dispensing 8 g of Al 4047", "Investigating the stalled Al 4047 dose", "Fixing the telemetry MemoryError, then re-running the 8 g Al 4047 dose" and "Finishing the Al 4047 dose at bulk tilt only (clog-tolerant)" (keyframes 00:59–38:59). The dose stalls at about 3 g; a MemoryError on the doser's Pico is fixed; larger particles in the atomized powder clog the auger nozzle, which "a larger auger inner channel" or sieving the powder first would avoid; the last tilt-back is too jarring and the tapping solenoid flexes on its one-sided 3D-printed mount. It ends with about 8 g dosed, a small amount of which is loaded into "the 6063 one end closed tube", the powder cup for the Oct 2 charge (inferred). Not atomizer operation, but the charge preparation for it. Whisper with word timestamps, so the times are within a second or two of the words. Phases: before (charge preparation), troubleshooting (doser), chatter.
 
 ### Timestamp log
 | mm:ss | phase | what happens / what is said |
 | --- | --- | --- |
-| 00:00 | dosing | (keyframe) Phone screen: the PR thread, Claude's checklist "Dispensing 8 g of Al 4047". |
+| 00:59 | dosing | (keyframe) Phone screen: the PR thread, Claude's checklist "Dispensing 8 g of Al 4047". |
 | 00:23 | dosing | "It looks like it's dosing now. Close to three grams at the moment. Looks like it's flowing pretty well … getting into the funnel." |
 | 01:31 | troubleshooting | "I'm a little surprised that it stopped. Unless I didn't load enough in"; goes back through the doser's livestream to the last point it was pouring (01:49–02:02). |
 | 02:06 | troubleshooting | On the replay: "going, going, going … still see it trickling … looks like it's tapping … and it stopped, even though it was still flowing powder." |
@@ -194,20 +194,20 @@ A phone screen recording (uploaded 20:30 MDT on Sep 30, at the same time as BxA7
 | 04:55 | chatter | Stock delivered: "That's a solid 6063" — "what you ordered" (05:08). |
 | 05:33 | chatter | "Just clean it with IPA is the only thing. You can throw both in if you want" (object not named). |
 | 05:47 | dosing | Picks "medium … just for a faster response here" (the Claude effort setting, inferred; the sentence ends at 07:20). |
-| 08:46 | troubleshooting | "Oh, memory error" — the telemetry MemoryError on the doser's Pico (keyframe 14:00 heading); "maybe I should get a Pico 2 … save my RAM. This should be quite solvable" (09:39). |
+| 08:46 | troubleshooting | "Oh, memory error" — the telemetry MemoryError on the doser's Pico (keyframe 14:59 heading); "maybe I should get a Pico 2 … save my RAM. This should be quite solvable" (09:39). |
 | 18:21 | chatter | Waiting without a laptop; card access has failed, so leaving means calling the engineering lab supervisor to get back in (19:32–19:45). |
 | 23:14 | troubleshooting | Dose backed up: "some pieces maybe kind of stuck … in the nozzle area, some of those larger pieces." |
 | 23:39 | lesson | "A larger auger inner channel would help with that, or me just sitting [sifting, inferred] it … like I probably should have"; "but it's still coming out" (24:02). |
 | 25:24 | troubleshooting | Still getting powder, "just some bigger pieces in the middle there"; the cartridge "might just not be mated properly"; the back clamp could support it better (26:21–26:45). |
 | 27:21 | lesson | "Those bigger chunks really gummed up the nozzle." |
 | 29:48 | dosing | "Trying to get to 4.5, so it's actually kind of a ways away." |
-| 38:00 | dosing | (keyframe) Claude's new plan: "Finishing the Al 4047 dose at bulk tilt only (clog-tolerant)". |
+| 38:59 | dosing | (keyframe) Claude's new plan: "Finishing the Al 4047 dose at bulk tilt only (clog-tolerant)". |
 | 51:46 | dosing | Back on the livestream: "still got that skipping or whatever's going on with the meter"; the flow slows as it nears the target (52:05–52:26). |
 | 52:40 | dosing | "Three, two, zero … pretty much spot on"; "that's the drift, which was just from the fume hood", which is not perfectly sealed; "overall, I'd say that's pretty good" (52:46). |
 | 53:27 | lesson | A small extra amount came with "that last tilt back", which "could probably be a lot slower, less jarring." |
 | 53:47 | lesson | "The solenoid actually bends a little bit when it hits, just because it's only fixtured on one side … to the 3D print, so actually cantilevers just a little bit." |
 | 55:05 | before | "So I've got 8 grams. Take a small amount … load it into the 6063 one end closed tube" — the powder cup; "and I gotta go." |
-| 58:56 | dosing | "Okay, we're finished"; the balance reading arrives, the auger rpm "came back up a little bit" (59:15); (keyframe 58:00) Claude's report with a plot. |
+| 58:56 | dosing | "Okay, we're finished"; the balance reading arrives, the auger rpm "came back up a little bit" (59:15); (keyframe 58:59) Claude's report with a plot. |
 
 ### Procedural steps
 Before (charge preparation, powder doser)
@@ -216,7 +216,7 @@ Before (charge preparation, powder doser)
 - Check the cartridge is mated properly and supported by the back clamp (26:21, 26:32).
 - Load the dosed powder into the Al 6063 one-end-closed tube (55:23).
 Troubleshooting (doser)
-- A MemoryError on the Pico stops the telemetry; the fix was made in firmware (08:46, keyframe 14:00).
+- A MemoryError on the Pico stops the telemetry; the fix was made in firmware (08:46, keyframe 14:59).
 - The last tilt-back should be slower; the tapping solenoid needs fixturing on both sides (53:36, 53:47).
 
 ### Parameters and numbers

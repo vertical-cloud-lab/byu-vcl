@@ -11,7 +11,7 @@ out = ["# Keyframes", "",
        "two-minute frames are taken with an accurate seek at exactly 00:00, 02:00, 04:00, …, so every label is the true time of the frame above it "
        "(a frame less than 8 s after the previous tile is left out). They are a visual table of contents for [`../timestamps.md`](../timestamps.md): "
        "find the moment on the sheet, then open the paused link with the same time. [`sop-frames.md`](sop-frames.md) has one frame for every moment the SOP cites.",
-       "", "Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to read the HMI. Regenerate the sheets with `tools/keyframes.py` "
+       "", "Frames come from the Pi-fetched low-resolution copies (640×360 for landscape videos, 144×256 for portrait phone videos), good enough to recognise a scene, not to read the HMI; full-resolution frames of a given moment can be pulled with `tools/hls_sections.py`. Regenerate the sheets with `tools/keyframes.py` "
        "and this page with `tools/make_keyframes_readme.py`.", ""]
 for vid in order:
     v = videos[vid]; sheet = f"{ROOT}/keyframes/{vid}_sheet.jpg"; idx = f"{KF}/{vid}.json"

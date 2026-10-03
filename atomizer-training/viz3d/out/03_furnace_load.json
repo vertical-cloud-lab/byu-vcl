@@ -1,7 +1,7 @@
 {
  "name": "03_furnace_load",
  "fps": 15,
- "n_frames": 649,
+ "n_frames": 811,
  "size": [
   1280,
   720
@@ -9,51 +9,57 @@
  "substeps": [
   {
    "label": "3.1",
-   "caption": "Start cold, with the furnace lid open: it hinges up to the left. For a rebuild, everything comes out: thermocouple, sealing rod, insulation, crucible.",
+   "caption": "Start cold and open the furnace lid: it hinges up to the left. For a rebuild, everything comes out: thermocouple, sealing rod, insulation, crucible.",
    "start_frame": 0,
-   "end_frame": 87
+   "end_frame": 84
   },
   {
    "label": "3.2",
-   "caption": "Nozzle into its holder, white side up: Ø0.5 mm is standard, Ø0.7 for Al alloys. Screw nozzle and holder onto the crucible as a pair, just tight: the thread barely engages.",
-   "start_frame": 88,
-   "end_frame": 163
+   "caption": "Nozzle into its holder, white side up: Ø0.5 mm standard, Ø0.7 for Al alloys. Screw the holder into the crucible as a pair, by hand: several turns, and only just tight.",
+   "start_frame": 85,
+   "end_frame": 187
   },
   {
    "label": "3.3",
-   "caption": "Graphite seal and bottom insulation in, then the crucible down into the coil. The graphite nut goes on from below; before it is tight, turn its hole to where you can reach it.",
-   "start_frame": 164,
-   "end_frame": 244
+   "caption": "Upper graphite seal and bottom insulation in, then lower the crucible straight down into the coil. Handle it gently: graphite is brittle.",
+   "start_frame": 188,
+   "end_frame": 265
   },
   {
    "label": "3.4",
-   "caption": "Side insulation round the crucible, its hole lined up with the thermocouple port, then the top insulation (filling cone). Silica-alumina: dusty and fragile, vacuum up afterwards.",
-   "start_frame": 245,
-   "end_frame": 325
+   "caption": "Through the chamber's left door, the lower seal, then thread the thin graphite nut onto the shank from below, while the crucible is held still at the top with its thermocouple hole turned to the back right. A second person at the top helps; alone, keep a hand on the crucible. Snug, not tight: graphite cracks if forced, and a loose nut leaks.",
+   "start_frame": 266,
+   "end_frame": 424
   },
   {
    "label": "3.5",
-   "caption": "Thermocouple (Type N) into the hole in the crucible wall, bent to sit close. Leave it in even for maintenance, or the HMI raises 'master temperature sensor' and bleeds argon.",
-   "start_frame": 326,
-   "end_frame": 391
+   "caption": "Side insulation round the crucible, its hole lined up with the thermocouple port at the back right, then the top insulation (filling cone). Silica-alumina: dusty and fragile.",
+   "start_frame": 425,
+   "end_frame": 502
   },
   {
    "label": "3.6",
-   "caption": "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screw it into its adapter, pin the adapter to the arm, lower it onto the nozzle.",
-   "start_frame": 392,
-   "end_frame": 467
+   "caption": "Thermocouple (Type N) in from the back right, into the hole in the crucible wall, bent to sit close. Leave it in even for maintenance, or the HMI raises 'master temperature sensor'.",
+   "start_frame": 503,
+   "end_frame": 565
   },
   {
    "label": "3.7",
-   "caption": "Charge: clean rods no thicker than 20 mm, 250–300 g; here 4 × Ø17 × 100 mm 6063 (≈245 g) dropped in round the seated rod. They stand proud and sink as they melt.",
-   "start_frame": 468,
-   "end_frame": 566
+   "caption": "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screw it into its adapter, pin the adapter to the arm, lower it onto the nozzle.",
+   "start_frame": 566,
+   "end_frame": 638
   },
   {
    "label": "3.8",
+   "caption": "Charge: clean rods no thicker than 20 mm, 250–300 g; here 4 × Ø17 × 100 mm 6063 (≈245 g) dropped in round the seated rod. They stand proud and sink as they melt.",
+   "start_frame": 639,
+   "end_frame": 734
+  },
+  {
+   "label": "3.9",
    "caption": "Close the lid and set the latch just tight enough to seal: if it hisses under pressure, loosen it, adjust the latch and retighten.",
-   "start_frame": 567,
-   "end_frame": 648
+   "start_frame": 735,
+   "end_frame": 810
   }
  ]
 }
