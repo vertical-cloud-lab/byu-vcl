@@ -44,7 +44,7 @@ NOTE_MAX = 40.0       # s: a note stays on screen until the next one, or this lo
 SLACK = 6.0           # s fetched either side of a clip, so the cut can move onto a sentence boundary
 CLIP_VERSION = "1"
 THREADS = os.environ.get("ATOMIZER_THREADS", "")
-ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-pix_fmt", "yuv420p", "-r", str(FPS), "-g", str(FPS * 2),
+ENC = ["-c:v", "libx264", "-preset", "superfast", "-crf", "23", "-pix_fmt", "yuv420p", "-r", str(FPS), "-g", str(FPS * 2),
        "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2"]
 AUDIO = "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100"
 VIDEOS = {v["id"]: v for v in json.load(open(f"{ROOT}/videos.json"))}
@@ -201,6 +201,8 @@ def words_for(vid):
             segs = json.load(open(p))["segments"]
             if segs and "words" in segs[0]:
                 ws = [(w[0], w[1], w[2]) for s in segs for w in s.get("words", [])]
+        if ws is None:
+            return None                      # not cached: the transcript may still be on its way
         _words[vid] = ws
     return _words[vid]
 
@@ -298,7 +300,7 @@ def covering_window(vid, start, end):
     for p in glob.glob(f"{HLS}/{glob.escape(vid)}_*.json"):
         m = json.load(open(p))
         ts = os.path.join(HLS, m.get("file", os.path.basename(p)[:-5] + ".ts"))
-        if m.get("video_id") == vid and m["t0"] <= start and end <= m["t1"] and os.path.exists(ts):
+        if m.get("video_id") == vid and m["t0"] <= start + 0.05 and end <= m["t1"] + 1.5 and os.path.exists(ts):
             if best is None or m.get("height", 0) > best[2]:
                 best = (ts, float(m["t0"]), m.get("height", 0))
     return best
@@ -346,17 +348,19 @@ def cmd_edl(clips, timeline=None):
         if not cs:
             continue
         d = sum(c["end"] - c["start"] for c in cs)
-        at = timeline.get(key) if timeline else None
+        part = next((q for q in PARTS if key in q[2]), None)
+        tl = timeline.get(part[0]) if (timeline and part) else None
+        at = tl["chapters"].get(key) if tl else None
         lines.append(f"## {title}")
         lines.append("")
-        lines.append(f"_{len(cs)} clips, {d / 60:.1f} min" + (f", at {hms(at)} in the stitch" if at is not None else "") + f"._ {note}")
+        lines.append(f"_{len(cs)} clips, {d / 60:.1f} min" + (f", at {hms(at)} in {part[1].split(':')[0].lower()}" if at is not None else "") + f"._ {note}")
         lines.append("")
         lines.append("| # | source | in stitch | length | notes |")
         lines.append("| --- | --- | --- | --- | --- |")
         for c in cs:
             n += 1
             src = f"[{SHORT[c['vid']]} ({DAY[c['vid']]}) {hms(c['start'])}–{hms(c['end'])}]({emb(c['vid'], c['start'])})"
-            at = timeline["clips"].get(c["key"]) if timeline else None
+            at = tl["clips"].get(c["key"]) if tl else None
             notes = "<br>".join(f"[{hms(t)}]({emb(c['vid'], t)}) {txt}" for t, txt in c["notes"])
             lines.append(f"| {n} | {src} | {hms(at) if at is not None else ''} | {c['end'] - c['start']:.0f} s | {notes} |")
         lines.append("")
@@ -460,13 +464,13 @@ def build_clip(clip):
         low = True
     # the picture: fit 1280x720; portrait phone video over a blurred copy of itself instead of black bars
     r = run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", vin[-1]])
-    w0, h0 = (int(x) for x in r.stdout.strip().split(",")[:2])
+    w0, h0 = (int(x) for x in r.stdout.strip().splitlines()[0].split(",")[:2])   # MPEG-TS lists the stream twice
     if h0 > w0:
-        fit = (f"split[fg][bgsrc];[fg]scale=-2:{H}:flags=lanczos[fgs];"
-               f"[bgsrc]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.15[bg];"
-               f"[bg][fgs]overlay=(W-w)/2:0")
+        fit = (f"split[fg][bgsrc];[fg]scale=-2:{H}[fgs];"      # the blur is done small, then scaled up: cheap
+               f"[bgsrc]scale=320:180:force_original_aspect_ratio=increase,crop=320:180,boxblur=5:1,scale={W}:{H},"
+               f"eq=brightness=-0.15[bg];[bg][fgs]overlay=(W-w)/2:0")
     else:
-        fit = f"scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black"
+        fit = f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black"
     label = f"{SHORT[vid]}  ·  {DAY[vid]}  ·  "
     chap = CHAP[clip["chapter"]][1]
     bar = (f"drawbox=x=0:y=0:w=iw:h=46:color=black@0.5:t=fill,"
@@ -476,7 +480,8 @@ def build_clip(clip):
         bar += f",drawtext=fontfile={FONT}:text='360p copy':x=w-tw-20:y=h-30:fontsize=16:fontcolor=white@0.7"
     vf = f"[0:v]{vtrim}fps={FPS},{fit},{bar},ass={ass},format=yuv420p[v]"
     run(["ffmpeg", "-y", "-v", "error", *vin, "-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", a,
-         "-filter_complex", vf, "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}", "-af", AUDIO, *ENC, "-movflags", "+faststart", out])
+         "-filter_complex", vf, "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}", "-shortest", "-af", AUDIO, *ENC,
+         "-movflags", "+faststart", out])
     return out
 
 
@@ -523,18 +528,29 @@ def card_seg(name, kicker, title, sub, accent, footer="", dur=5.0):
     return out
 
 
-def timeline_of(clips):
-    """[(kind, item, path, duration)] for the whole stitch, in order: title card, then per chapter a card and its clips."""
+PARTS = [("part1", "Part 1: the machine, and before a run",
+          ["install", "tour", "hmi", "theory", "safety", "utilities", "stack", "charge", "furnace", "chamber"]),
+         ("part2", "Part 2: during and after a run", ["gaswash", "pour", "after", "cleaning", "consumables", "wrapup"])]
+
+
+def timeline_of(clips, part=None):
+    """[(kind, item, make)] for one part of the stitch, in order: title card, then per chapter a card and its clips.
+    With part=None, everything in one timeline (no part title cards)."""
     tl = []
-    tot = sum(c["end"] - c["start"] for c in clips)
-    tl.append(("title", None, lambda: card_seg(
-        "title", "BYU Vertical Cloud Lab · AMAZEMET rePowder", "The atomizer, start to finish: every recorded step",
-        f"A raw cut of all {len(VIDEOS)} atomizer videos (Sep 1 – Oct 2 2026), reorganised into the order of a run: "
-        f"{len(clips)} clips, {tot / 3600:.1f} hours. Top bar: source video, day, source time; right: the chapter. "
-        "Yellow text: the timestamp log's note for the moment. Bottom: Whisper subtitles. Nothing is narrated or stabilised.",
-        "#1E3A8A", "Chapters are in the video description. The clip list with links to every source moment: "
-        "github.com/vertical-cloud-lab/byu-vcl, atomizer-training/stitch/edl.md", dur=9.0)))
+    keys = part[2] if part else [c[0] for c in CHAPTERS]
+    cs_all = [c for c in clips if c["chapter"] in keys]
+    tot = sum(c["end"] - c["start"] for c in cs_all)
+    if part:
+        tl.append(("title", None, lambda part=part, tot=tot, n=len(cs_all): card_seg(
+            part[0], "BYU Vertical Cloud Lab · AMAZEMET rePowder", f"The atomizer, start to finish: every recorded step. {part[1]}",
+            f"A raw cut of the {len(VIDEOS)} atomizer videos (Sep 1 – Oct 2 2026), reorganised into the order of a run: this part has "
+            f"{n} clips, {tot / 3600:.1f} hours. Top bar: source video, day, running source time; right: the chapter. "
+            "Yellow text: the timestamp log's note for the moment. Bottom: Whisper subtitles. Nothing is narrated or stabilised.",
+            "#1E3A8A", "Chapters are in the video description. The clip list, with a link to every source moment: "
+            "github.com/vertical-cloud-lab/byu-vcl, atomizer-training/stitch/edl.md", dur=9.0)))
     for n, (key, label, title, note) in enumerate(CHAPTERS, 1):
+        if key not in keys:
+            continue
         cs = [c for c in clips if c["chapter"] == key]
         if not cs:
             continue
@@ -550,73 +566,106 @@ def timeline_of(clips):
 
 
 def cmd_build(clips, only=None):
+    """Encode the clip segments: whichever pending clip has its window (and, for videos named in ATOMIZER_WAIT_WORDS, its
+    word-timed transcript) first, in timeline order; waits while the fetch is still running, and falls back to the 360p
+    copies for whatever never arrived once {HLS}/.fetch_done exists."""
     os.makedirs(TMP, exist_ok=True); os.makedirs(OUT, exist_ok=True)
+    wait_words = {v for v in os.environ.get("ATOMIZER_WAIT_WORDS", "").split(",") if v}
     t0 = time.time(); n = 0
+    pending = [c for c in clips if not only or c["vid"] in only]
+    worker, nworkers = (int(x) for x in os.environ.get("ATOMIZER_WORKER", "0/1").split("/"))   # "k/n": every n-th clip
+    pending = [c for i, c in enumerate(pending) if i % nworkers == worker]
     for kind, item, make in timeline_of(clips):
-        if only and (kind != "clip" or item["vid"] not in only):
-            continue
-        p = make(); n += 1
-        if kind == "clip":
-            print(f"{time.strftime('%H:%M:%S')} {item['chapter']:11s} {item['vid']} {hms(item['start'])}-{hms(item['end'])} "
-                  f"{duration(p):6.1f}s  {os.path.basename(p)}", flush=True)
-    print(f"{n} segments in {(time.time() - t0) / 60:.1f} min", flush=True)
+        if kind == "card" and not only and worker == 0:
+            make()
+    while pending:
+        fetched = os.path.exists(f"{HLS}/.fetch_done")
+        ready = [c for c in pending if (fetched or covering_window(c["vid"], c["start"], c["end"]))
+                 and (c["vid"] not in wait_words or words_for(c["vid"]))]
+        if not ready:
+            time.sleep(15); continue
+        c = ready[0]; pending.remove(c)
+        p = build_clip(c); n += 1
+        print(f"{time.strftime('%H:%M:%S')} {c['chapter']:11s} {c['vid']} {hms(c['start'])}-{hms(c['end'])} "
+              f"{duration(p):6.1f}s  {os.path.basename(p)}  ({len(pending)} left)", flush=True)
+    print(f"{n} clips in {(time.time() - t0) / 60:.1f} min", flush=True)
 
 
-def cmd_concat(clips):
+def load_timeline():
+    p = f"{HERE}/chapters.json"
+    return json.load(open(p)) if os.path.exists(p) else {}
+
+
+def cmd_concat(clips, parts=None):
+    """Join each part from the cached segments (no re-encode); record where every chapter and clip starts."""
     os.makedirs(OUT, exist_ok=True)
-    paths, timeline, pos = [], {"clips": {}}, 0.0
-    for kind, item, make in timeline_of(clips):
-        p = make()
-        d = duration(p)
-        if kind == "card":
-            timeline[item] = pos
-        elif kind == "clip":
-            timeline["clips"][item["key"]] = pos
-        paths.append(p); pos += d
-    lst = f"{TMP}/concat.txt"
-    open(lst, "w").write("".join(f"file '{p}'\n" for p in paths))
-    out = f"{OUT}/atomizer_start_to_finish.mp4"
-    run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", "-movflags", "+faststart", out])
-    timeline["total"] = pos
-    json.dump(timeline, open(f"{HERE}/chapters.json", "w"), indent=1)
+    timeline = load_timeline()
+    for part in PARTS:
+        if parts and part[0] not in parts:
+            continue
+        paths, tl, pos = [], {"chapters": {}, "clips": {}}, 0.0
+        for kind, item, make in timeline_of(clips, part):
+            p = make(); d = duration(p)
+            if kind == "card":
+                tl["chapters"][item] = round(pos, 2)
+            elif kind == "clip":
+                tl["clips"][item["key"]] = round(pos, 2)
+            paths.append(p); pos += d
+        lst = f"{TMP}/concat_{part[0]}.txt"
+        open(lst, "w").write("".join(f"file '{p}'\n" for p in paths))
+        out = f"{OUT}/atomizer_start_to_finish_{part[0]}.mp4"
+        run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", "-movflags", "+faststart", out])
+        tl["total"] = round(pos, 2); tl["file"] = os.path.basename(out); tl["title"] = part[1]
+        timeline[part[0]] = tl
+        json.dump(timeline, open(f"{HERE}/chapters.json", "w"), indent=1)
+        print(out, f"{duration(out) / 3600:.2f} h, {os.path.getsize(out) / 1e9:.2f} GB", flush=True)
     cmd_edl(clips, timeline)
-    print(out, f"{duration(out) / 3600:.2f} h, {os.path.getsize(out) / 1e9:.2f} GB")
-    return out
 
 
-def description(clips, timeline):
-    lines = ["Raw cut, draft 1, for review. Every logged moment of the 26 atomizer videos on this channel (installation, the "
-             "AMAZEMET rePowder training with Bartosz Kalicki on Sep 29–30 2026, the dosing sessions and the team's first run on "
+def description(clips, timeline, part):
+    tl = timeline[part[0]]
+    other = [q for q in PARTS if q[0] != part[0]][0]
+    log = json.load(open(f"{HERE}/uploads.json")) if os.path.exists(f"{HERE}/uploads.json") else {}
+    lines = [f"{part[1]}. Raw cut, draft 1, for review. Every logged moment of the 26 atomizer videos on this channel (installation, "
+             "the AMAZEMET rePowder training with Bartosz Kalicki on Sep 29–30 2026, the dosing sessions and the team's first run on "
              "Oct 2), reorganised into the order of a run and joined end to end: nothing narrated, stabilised or faded. The top bar "
              "names the source video, its day and the running source time; the yellow text is the timestamp log's note for the "
-             "moment; subtitles are Whisper. Pauses with nothing logged are skipped, which is why the clips cut.", "",
-             "Chapters:"]
+             "moment; subtitles are Whisper. Pauses with nothing logged are skipped, which is why the clips cut.", "", "Chapters:"]
     for n, (key, label, title, note) in enumerate(CHAPTERS, 1):
-        if key in timeline:
-            lines.append(f"{hms(timeline[key])} {title}")
-    lines += ["", "The clip list, with a link to every source moment, and the procedure written out: "
+        if key in tl["chapters"]:
+            lines.append(f"{hms(tl['chapters'][key])} {n}. {title}")
+    lines.append("")
+    if other[0] in log.get("draft 1", {}):
+        lines.append(f"{other[1]}: {log['draft 1'][other[0]]['url']}")
+    lines += ["The clip list, with a link to every source moment, and the procedure written out: "
               "https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/stitch/edl.md). Issue #124."]
     return "\n".join(lines)
 
 
-def cmd_upload(clips):
+def cmd_upload(clips, parts=None):
     sys.path.insert(0, REPO)
     from youtube.yt_service import upload_video
-    timeline = json.load(open(f"{HERE}/chapters.json"))
-    path = f"{OUT}/atomizer_start_to_finish.mp4"
+    timeline = load_timeline()
     log_p = f"{HERE}/uploads.json"
     log = json.load(open(log_p)) if os.path.exists(log_p) else {}
-    draft = "draft 1"
-    if draft in log:
-        print("already uploaded:", log[draft]["url"]); return
-    title = "rePowder atomizer at BYU VCL: every recorded step, start to finish (raw cut, draft 1)"
-    vid = upload_video(path, title, description(clips, timeline), privacy="unlisted",
-                       tags=["atomizer", "rePowder", "AMAZEMET", "BYU VCL", "training"])
-    log[draft] = {"video_id": vid, "url": f"https://www.youtube.com/watch?v={vid}", "title": title,
-                  "uploaded_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "privacy": "unlisted",
-                  "size_bytes": os.path.getsize(path), "duration_s": round(timeline["total"], 1), "clips": len(clips)}
-    json.dump(log, open(log_p, "w"), indent=1)
-    print(log[draft]["url"])
+    done = log.setdefault("draft 1", {})
+    for part in PARTS:
+        if parts and part[0] not in parts:
+            continue
+        if part[0] in done:
+            print(part[0], "already uploaded:", done[part[0]]["url"]); continue
+        path = f"{OUT}/atomizer_start_to_finish_{part[0]}.mp4"
+        if part[0] not in timeline or not os.path.exists(path):
+            print(part[0], "not built yet"); continue
+        title = f"rePowder atomizer at BYU VCL: every recorded step, start to finish. {part[1]} (raw cut, draft 1)"
+        vid = upload_video(path, title, description(clips, timeline, part), privacy="unlisted",
+                           tags=["atomizer", "rePowder", "AMAZEMET", "BYU VCL", "training"])
+        done[part[0]] = {"video_id": vid, "url": f"https://www.youtube.com/watch?v={vid}", "title": title,
+                         "uploaded_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "privacy": "unlisted",
+                         "size_bytes": os.path.getsize(path), "duration_s": timeline[part[0]]["total"],
+                         "clips": len(timeline[part[0]]["clips"])}
+        json.dump(log, open(log_p, "w"), indent=1)
+        print(part[0], "->", done[part[0]]["url"], flush=True)
 
 
 if __name__ == "__main__":
@@ -627,12 +676,12 @@ if __name__ == "__main__":
     elif cmd == "jobs":
         cmd_jobs(clips, set(sys.argv[2:]) or None)
     elif cmd == "edl":
-        cmd_edl(clips, json.load(open(f"{HERE}/chapters.json")) if os.path.exists(f"{HERE}/chapters.json") else None)
+        cmd_edl(clips, load_timeline() or None)
     elif cmd == "build":
         cmd_build(clips, set(sys.argv[2:]) or None)
     elif cmd == "concat":
-        cmd_concat(clips)
+        cmd_concat(clips, set(sys.argv[2:]) or None)
     elif cmd == "upload":
-        cmd_upload(clips)
+        cmd_upload(clips, set(sys.argv[2:]) or None)
     else:
         raise SystemExit(__doc__)
