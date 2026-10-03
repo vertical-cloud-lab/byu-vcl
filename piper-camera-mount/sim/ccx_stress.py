@@ -12,14 +12,13 @@ should agree to solver precision. That is the check. Then the stress cases:
   yank      the carrier alone, its half-collar bore fixed; 10 N at the Pi 5's USB-C plug (10 mm out
             from the socket) along +X (off the board), +Y (straight out of the socket) and +Z,
             carried to the four standoff seats as through a rigid board.
-  clamp     each half-collar on its own, round a rigid O57 body (frictionless contact, solved by an
-            active set of radial constraints on the bore), with 200 N (snug) and 500 N (about 0.3 N m)
-            in each of its four M3s.
+
+The clamp is in ccx_split.py, which puts both half-collars in one model so that the split can close.
 
 Linear elastic PLA as in joint_fea.py (E = 2.4 GPa, nu = 0.35). The stress for a given load hardly
 depends on E, so the numbers stand for any of the materials; compare them with each material's
 strength, across the layers where the stress crosses them. Out: sim/ccx_stress.json and
-renders/ccx_*.png.
+renders/ccx_stress.png.
 
     sudo apt install calculix-ccx          # CalculiX 2.21
     pip install gmsh scikit-fem pyamg pyvista
@@ -56,8 +55,6 @@ from piper_mount import Params, optical_axes, pi_holes  # noqa: E402
 EX = MOUNT / "exports"
 BUMP_N = 10.0          # N, each bump and yank case; everything here is linear, so scale freely
 YANK_LEVER = 10.0      # mm, socket mouth to where the plug is gripped
-CLAMP_N = (200.0, 500.0)   # N per M3: snug, and about 0.3 N m on a dry M3 (T = 0.2 F d)
-MAX_ITER = 40          # contact active-set iterations
 PU0 = -42.5            # piper_mount.PI_U0
 # Print orientation (build direction) per part, from the README's Printing table.
 BUILD = {"bracket": "world Y (pad face down)", "pod": "station Y (plate face down)", "carrier": "world X (Pi plate face down)"}
@@ -337,82 +334,6 @@ def solve_steps(work: Path, name: str, q: Quadratic, fixed, steps, **kw):
     return read_frd(frd, len(q.x)), dt
 
 
-def clamp_half(work: Path, p: Params, name: str, step: Path, side: int, force: float) -> dict:
-    """One half-collar round a rigid O57 body, frictionless, 4 x `force` in its M3s. Contact is an
-    active set of radial constraints (u_r = -bore_clear, i.e. touching the body) on the bore
-    nodes: drop those pulling on the body, add those pushed into it, repeat until it settles.
-    One node at the crown is also held tangentially and axially, which a symmetric load leaves
-    unloaded, to take out the two rigid motions a frictionless cylinder allows."""
-    mesh, lab, _ = mesh_parts({name: step})
-    q = Quadratic(mesh)
-    bore, _, _ = boundary_groups(mesh, p)
-    bnodes = q.facet_nodes(bore)
-    rhat = radial(q.x[bnodes], p)
-    bf = mesh.boundary_facets()
-    c, n, a = facet_geometry(mesh, bf)
-    # Where the screw pulls: carrier, the counterbore floor under the head (normal +X, head pushes -X);
-    # bracket, the floor of the nut pocket (normal -X, nut pulls +X). Both toward the other half.
-    x_face = p.ax_x + p.clamp_head_seat if side > 0 else p.ax_x - p.ear_w + p.m3_nut_depth
-    loads: dict[int, np.ndarray] = {}
-    faces = []
-    for y in p.clamp_y:
-        for sz in (1, -1):
-            z = p.ax_z + sz * p.clamp_r
-            r = np.hypot(c[1] - y, c[2] - z)
-            sel = (abs(c[0] - x_face) < 0.05) & (n[0] * side > 0.99) & (r > p.m3_clear_d / 2 - 0.05) & (r < 3.4)
-            assert sel.any(), f"no bearing face for the M3 at y={y}, z={z:.1f} ({name})"
-            faces.append(float(a[sel].sum()))
-            for k, v in q.traction(bf[sel], np.array([-side * force, 0.0, 0.0])).items():
-                loads[k] = loads.get(k, 0.0) + v
-    # The split faces, to see how far the gap closes.
-    xs = p.ax_x + side * p.split_gap / 2
-    split = bf[(abs(c[0] - xs) < 0.05) & (n[0] * side < -0.99)]
-    snodes = q.facet_nodes(split)
-    crown = bnodes[np.argmin(np.linalg.norm(q.x[bnodes] - [p.ax_x + side * p.bore_r, (p.collar_y0 + p.collar_y1) / 2,
-                                                           p.ax_z], axis=1))]
-    ang = np.degrees(np.arctan2(q.x[bnodes, 2] - p.ax_z, side * (q.x[bnodes, 0] - p.ax_x)))    # 0 at the crown
-    active = set(bnodes[abs(ang) < 30].tolist())
-    hist = []
-    for it in range(MAX_ITER):
-        fixed = {int(crown): (2, 3)}
-        pres = {k: -p.bore_clear for k in active}
-        res, dt = solve_steps(work, f"clamp_{name}_{it}", q, fixed, [{"name": "clamp", "loads": loads}],
-                              transforms={"NBORE": bnodes}, prescribed=pres, print_nset="NBORE")
-        U = res[0]["DISP"]
-        rf = read_rf(work / f"clamp_{name}_{it}.dat")[0]
-        ur = np.einsum("ij,ij->i", U[bnodes], rhat)
-        R = np.array([rf.get(int(k), np.zeros(3)) @ rhat[i] for i, k in enumerate(bnodes)])
-        tol_r = 1e-3 * max(1.0, float(abs(R).max()))
-        drop = {int(k) for i, k in enumerate(bnodes) if k in active and R[i] < -tol_r}
-        add = {int(k) for i, k in enumerate(bnodes) if k not in active and ur[i] < -p.bore_clear - 1e-4}
-        hist.append({"iteration": it, "in contact": len(active), "dropped": len(drop), "added": len(add),
-                     "ccx (s)": round(dt, 1)})
-        if not drop and not add:
-            break
-        active = (active - drop) | add
-    in_c = np.isin(bnodes, list(active))
-    S = res[0]["STRESS"]
-    build = np.tile([0.0, 1.0, 0.0] if side < 0 else [1.0, 0.0, 0.0], (len(q.x), 1))
-    m = measures(S, build)
-    keep = away_from(q.x, np.array(list(loads.keys())), 1.5)       # not right under the screw heads / nuts
-    part = np.zeros(len(q.x), dtype=int)
-    closure = float(-side * U[snodes, 0].mean())
-    total_r = sum(np.array(rf.get(int(k), np.zeros(3))) for k in bnodes)
-    return {
-        "mesh": {"nodes (C3D10)": len(q.x), "elements": len(q.el)},
-        "screw force (N)": force,
-        "bearing area per screw (mm2)": [round(v, 1) for v in faces],
-        "bearing stress under head/nut (MPa)": round(force / float(np.mean(faces)), 1),
-        "contact iterations": hist,
-        "converged": not drop and not add,
-        "contact arc (deg from the crown)": [round(float(ang[in_c].min()), 1), round(float(ang[in_c].max()), 1)],
-        "body reaction (N)": [round(float(v), 1) for v in total_r],
-        "split face moves toward the other half (mm)": round(closure, 3),
-        "peaks away from the screw seats": summarise(m, keep, q.x, part, [name]),
-        "_viz": (q, U, m, lab),
-    }
-
-
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--skfem", action="store_true", help="re-solve joint_fea.py's cases in scikit-fem on this mesh "
@@ -553,28 +474,16 @@ def main() -> None:
         "ccx time (s)": round(dt_c, 1),
     }
 
-    # 3. the clamp, each half on its own round a rigid body.
-    out["clamp"] = {"load": "each of the 4 M3s pulls with the force below, on the carrier's counterbore floors and "
-                            "the bracket's nut-pocket floors",
-                    "body": "rigid O57, frictionless; the bore starts 0.15 mm clear all round"}
-    viz_c = {}
-    for F in CLAMP_N:
-        clamp = {}
-        for name, side in (("bracket", -1), ("carrier", 1)):
-            r = clamp_half(work / f"clamp_{F:.0f}N", p, name, EX / f"{name}.step", side, F)
-            viz_c[(F, name)] = r.pop("_viz")
-            clamp[name] = r
-        closure = sum(clamp[k]["split face moves toward the other half (mm)"] for k in clamp)
-        out["clamp"][f"{F:.0f} N per screw"] = {"halves": clamp, "split gap closed (mm, of 1.0)": round(closure, 3)}
+    out["clamp"] = "see ccx_split.py and ccx_split.json: both halves in one model, so the split can close"
     out["run time (s)"] = round(time.time() - t_all, 1)
     (HERE / "ccx_stress.json").write_text(json.dumps(out, indent=2) + "\n")
-    render(viz_bp, (qc, viz_y), viz_c, out)
+    render(viz_bp, (qc, viz_y))
     print(json.dumps({k: v for k, v in out.items() if k not in ("settings",)}, indent=1)[:6000])
     if not args.keep:
         shutil.rmtree(work, ignore_errors=True)
 
 
-def render(bp, yank, clamp, out) -> None:
+def render(bp, yank) -> None:
     import pyvista as pv
 
     def surface(q: Quadratic, val: np.ndarray, label: str):
@@ -586,20 +495,13 @@ def render(bp, yank, clamp, out) -> None:
     qc, viz_y = yank
     worst_b = max(DIRS, key=lambda d: viz[d][1]["vm"].max())
     worst_y = max(DIRS, key=lambda d: viz_y[d][1]["vm"].max())
-    F = max(CLAMP_N)
-    qb, _, mb, _ = clamp[(F, "bracket")]
-    qk, _, mk, _ = clamp[(F, "carrier")]
     panels = [
         (q, viz[worst_b][1]["vm"], f"Pod bumped: {BUMP_N:g} N on its outer edge along {worst_b}\nbracket + pod",
          "pod bump", (-0.55, 0.45, 0.70), 1.3),
         (qc, viz_y[worst_y][1]["vm"], f"Cable yank: {BUMP_N:g} N at the USB-C plug along {worst_y}\n"
          "carrier, seen from the gripper side", "cable yank", (-0.55, 0.62, 0.55), 1.0),
-        (qb, mb["vm"], f"Clamp: {F:g} N in each M3\nbracket half on a rigid body", "clamp, bracket",
-         (-0.62, -0.55, 0.56), 1.3),
-        (qk, mk["vm"], f"Clamp: {F:g} N in each M3\ncarrier half, seen from the split", "clamp, carrier",
-         (-0.75, -0.35, 0.55), 1.0),
     ]
-    pl = pv.Plotter(off_screen=True, shape=(1, 4), window_size=(3200, 1050), border=False)
+    pl = pv.Plotter(off_screen=True, shape=(1, 2), window_size=(1600, 1050), border=False)
     pl.set_background("white")
     for i, (qq, val, title, tag, view, zoom) in enumerate(panels):
         pl.subplot(0, i)

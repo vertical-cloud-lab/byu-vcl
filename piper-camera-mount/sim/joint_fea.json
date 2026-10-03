@@ -76,23 +76,23 @@
       }
     },
     "first natural frequency, Rayleigh-Ritz (Hz)": 108.6,
-    "solve time (s)": 156.0,
+    "solve time (s)": 583.2,
     "bonded contact area, pod to bracket (mm2)": 324.9,
-    "mesh time (s)": 1.1
+    "mesh time (s)": 2.3
   },
   "new": {
     "mesh": {
-      "nodes (P1)": 14796,
-      "tets": 59149,
-      "dofs (P2)": 297180,
-      "free dofs": 290478
+      "nodes (P1)": 14766,
+      "tets": 58970,
+      "dofs (P2)": 296451,
+      "free dofs": 289761
     },
     "areas (mm2)": {
-      "bore": 2802.8,
-      "pad": 255.4,
+      "bore": 2815.4,
+      "pad": 255.6,
       "boss": 67.4
     },
-    "printed mass (g)": 94.1,
+    "printed mass (g)": 94.4,
     "cases": {
       "X": {
         "mean displacement (um)": 0.477,
@@ -121,7 +121,7 @@
         "CG iterations": 137
       },
       "Z": {
-        "mean displacement (um)": 0.975,
+        "mean displacement (um)": 0.974,
         "mean displacement vector (um)": [
           0.022,
           0.008,
@@ -135,9 +135,9 @@
       }
     },
     "first natural frequency, Rayleigh-Ritz (Hz)": 358.5,
-    "solve time (s)": 250.5,
+    "solve time (s)": 628.0,
     "bonded contact area, pod to bracket (mm2)": 987.5,
-    "mesh time (s)": 1.5
+    "mesh time (s)": 9.8
   },
   "old/new": {
     "X": {
@@ -158,5 +158,5 @@
     "load case": "Y",
     "deformation scale": 100
   },
-  "run time (s)": 412.0
+  "run time (s)": 1231.5
 }

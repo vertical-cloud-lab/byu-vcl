@@ -16,31 +16,31 @@
   },
   "bracket + pod": {
     "mesh": {
-      "nodes (C3D10)": 99060,
-      "elements": 59149,
+      "nodes (C3D10)": 98817,
+      "elements": 58970,
       "bonded contact area (mm2)": 987.5
     },
     "fixed": "half-collar bore and the pad round the tab screws, as joint_fea.py",
     "check against joint_fea.py (83 g at 1 g on the HQ bosses)": {
       "X": {
         "mean displacement (um)": {
-          "ccx": 0.47685,
+          "ccx": 0.47688,
           "scikit-fem": 0.477,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": -0.031
+          "difference (%)": -0.025
         },
         "optical axis tilt (arcmin)": {
           "ccx": 0.02944,
           "scikit-fem": 0.0294,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": 0.136
+          "difference (%)": 0.147
         },
-        "image shift (px)": 0.03315012739637142,
+        "image shift (px)": 0.033153722661587635,
         "max displacement anywhere (um)": {
-          "ccx": 0.93199,
+          "ccx": 0.93203,
           "scikit-fem": 0.932,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": -0.001
+          "difference (%)": 0.003
         }
       },
       "Y": {
@@ -54,9 +54,9 @@
           "ccx": 0.16157,
           "scikit-fem": 0.1616,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": -0.017
+          "difference (%)": -0.016
         },
-        "image shift (px)": 0.1819338114731372,
+        "image shift (px)": 0.18193627632563364,
         "max displacement anywhere (um)": {
           "ccx": 2.78019,
           "scikit-fem": 2.78,
@@ -66,23 +66,23 @@
       },
       "Z": {
         "mean displacement (um)": {
-          "ccx": 0.97461,
-          "scikit-fem": 0.975,
+          "ccx": 0.97449,
+          "scikit-fem": 0.974,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": -0.04
+          "difference (%)": 0.05
         },
         "optical axis tilt (arcmin)": {
-          "ccx": 0.00958,
+          "ccx": 0.00957,
           "scikit-fem": 0.0096,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": -0.188
+          "difference (%)": -0.293
         },
-        "image shift (px)": 0.010789442524303618,
+        "image shift (px)": 0.010778095561526212,
         "max displacement anywhere (um)": {
-          "ccx": 1.86015,
+          "ccx": 1.85998,
           "scikit-fem": 1.86,
           "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
-          "difference (%)": 0.008
+          "difference (%)": -0.001
         }
       }
     },
@@ -307,7 +307,7 @@
           },
           "tension across layers (MPa)": {
             "bracket": {
-              "value": 0.317,
+              "value": 0.318,
               "at (mm)": [
                 -38.0,
                 46.0,
@@ -363,7 +363,7 @@
           },
           "tension across layers (MPa)": {
             "bracket": {
-              "value": 0.312,
+              "value": 0.311,
               "at (mm)": [
                 -39.0,
                 46.6,
@@ -419,7 +419,7 @@
           },
           "tension across layers (MPa)": {
             "bracket": {
-              "value": 0.275,
+              "value": 0.276,
               "at (mm)": [
                 -38.0,
                 44.6,
@@ -438,12 +438,12 @@
         }
       }
     },
-    "ccx time (s)": 0.0
+    "ccx time (s)": 575.7
   },
   "carrier: cable yank": {
     "mesh": {
-      "nodes (C3D10)": 46179,
-      "elements": 26370
+      "nodes (C3D10)": 46234,
+      "elements": 26405
     },
     "fixed": "the carrier's half-collar bore (clamped to the body)",
     "load": "10.0 N at the USB-C plug, 10.0 mm out from the socket, at [39.2, 74.5, -29.4] mm; through a rigid board to the four standoff seats (O6 mm) on the carrier's outer face",
@@ -519,7 +519,7 @@
       "+X": {
         "von Mises (MPa)": {
           "carrier": {
-            "value": 3.649,
+            "value": 3.616,
             "at (mm)": [
               26.0,
               46.0,
@@ -529,7 +529,7 @@
         },
         "max principal (MPa)": {
           "carrier": {
-            "value": 4.373,
+            "value": 4.334,
             "at (mm)": [
               26.0,
               46.0,
@@ -539,7 +539,7 @@
         },
         "tension across layers (MPa)": {
           "carrier": {
-            "value": 3.529,
+            "value": 3.502,
             "at (mm)": [
               26.0,
               46.0,
@@ -551,7 +551,7 @@
       "-X": {
         "von Mises (MPa)": {
           "carrier": {
-            "value": 3.649,
+            "value": 3.616,
             "at (mm)": [
               26.0,
               46.0,
@@ -561,7 +561,7 @@
         },
         "max principal (MPa)": {
           "carrier": {
-            "value": 2.652,
+            "value": 2.658,
             "at (mm)": [
               31.0,
               40.1,
@@ -571,11 +571,11 @@
         },
         "tension across layers (MPa)": {
           "carrier": {
-            "value": 0.488,
+            "value": 0.382,
             "at (mm)": [
               27.0,
-              15.0,
-              24.4
+              62.6,
+              -38.6
             ]
           }
         }
@@ -583,7 +583,7 @@
       "+Y": {
         "von Mises (MPa)": {
           "carrier": {
-            "value": 0.906,
+            "value": 0.905,
             "at (mm)": [
               31.0,
               10.4,
@@ -593,17 +593,17 @@
         },
         "max principal (MPa)": {
           "carrier": {
-            "value": 0.682,
+            "value": 0.626,
             "at (mm)": [
-              27.0,
-              19.2,
-              -22.1
+              30.7,
+              60.3,
+              -35.7
             ]
           }
         },
         "tension across layers (MPa)": {
           "carrier": {
-            "value": 0.414,
+            "value": 0.416,
             "at (mm)": [
               26.1,
               15.9,
@@ -615,7 +615,7 @@
       "-Y": {
         "von Mises (MPa)": {
           "carrier": {
-            "value": 0.906,
+            "value": 0.905,
             "at (mm)": [
               31.0,
               10.4,
@@ -635,7 +635,7 @@
         },
         "tension across layers (MPa)": {
           "carrier": {
-            "value": 0.454,
+            "value": 0.451,
             "at (mm)": [
               26.0,
               46.0,
@@ -667,10 +667,10 @@
         },
         "tension across layers (MPa)": {
           "carrier": {
-            "value": 0.37,
+            "value": 0.34,
             "at (mm)": [
-              27.0,
-              19.2,
+              26.0,
+              45.1,
               -22.1
             ]
           }
@@ -709,530 +709,8 @@
         }
       }
     },
-    "ccx time (s)": 0.0
+    "ccx time (s)": 78.4
   },
-  "clamp": {
-    "load": "each of the 4 M3s pulls with the force below, on the carrier's counterbore floors and the bracket's nut-pocket floors",
-    "body": "rigid O57, frictionless; the bore starts 0.15 mm clear all round",
-    "200 N per screw": {
-      "halves": {
-        "bracket": {
-          "mesh": {
-            "nodes (C3D10)": 55028,
-            "elements": 32925
-          },
-          "screw force (N)": 200.0,
-          "bearing area per screw (mm2)": [
-            20.5,
-            20.5,
-            20.5,
-            20.5
-          ],
-          "bearing stress under head/nut (MPa)": 9.8,
-          "contact iterations": [
-            {
-              "iteration": 0,
-              "in contact": 506,
-              "dropped": 171,
-              "added": 1054,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 1,
-              "in contact": 1389,
-              "dropped": 535,
-              "added": 144,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 2,
-              "in contact": 998,
-              "dropped": 238,
-              "added": 5,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 3,
-              "in contact": 765,
-              "dropped": 176,
-              "added": 18,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 4,
-              "in contact": 607,
-              "dropped": 115,
-              "added": 5,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 5,
-              "in contact": 497,
-              "dropped": 63,
-              "added": 8,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 6,
-              "in contact": 442,
-              "dropped": 32,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 7,
-              "in contact": 410,
-              "dropped": 19,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 8,
-              "in contact": 391,
-              "dropped": 18,
-              "added": 2,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 9,
-              "in contact": 375,
-              "dropped": 4,
-              "added": 2,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 10,
-              "in contact": 373,
-              "dropped": 0,
-              "added": 0,
-              "ccx (s)": 0.0
-            }
-          ],
-          "converged": true,
-          "contact arc (deg from the crown)": [
-            -89.0,
-            89.0
-          ],
-          "body reaction (N)": [
-            -800.0,
-            0.0,
-            -0.0
-          ],
-          "split face moves toward the other half (mm)": 0.346,
-          "peaks away from the screw seats": {
-            "von Mises (MPa)": {
-              "bracket": {
-                "value": 13.762,
-                "at (mm)": [
-                  -8.4,
-                  18.8,
-                  -26.7
-                ]
-              }
-            },
-            "max principal (MPa)": {
-              "bracket": {
-                "value": 17.437,
-                "at (mm)": [
-                  -16.9,
-                  33.1,
-                  -30.5
-                ]
-              }
-            },
-            "tension across layers (MPa)": {
-              "bracket": {
-                "value": 6.884,
-                "at (mm)": [
-                  -16.9,
-                  33.1,
-                  -30.5
-                ]
-              }
-            }
-          }
-        },
-        "carrier": {
-          "mesh": {
-            "nodes (C3D10)": 46179,
-            "elements": 26370
-          },
-          "screw force (N)": 200.0,
-          "bearing area per screw (mm2)": [
-            23.0,
-            23.0,
-            23.0,
-            23.0
-          ],
-          "bearing stress under head/nut (MPa)": 8.7,
-          "contact iterations": [
-            {
-              "iteration": 0,
-              "in contact": 506,
-              "dropped": 328,
-              "added": 1057,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 1,
-              "in contact": 1235,
-              "dropped": 373,
-              "added": 304,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 2,
-              "in contact": 1166,
-              "dropped": 172,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 3,
-              "in contact": 994,
-              "dropped": 75,
-              "added": 1,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 4,
-              "in contact": 920,
-              "dropped": 23,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 5,
-              "in contact": 897,
-              "dropped": 3,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 6,
-              "in contact": 894,
-              "dropped": 0,
-              "added": 0,
-              "ccx (s)": 0.0
-            }
-          ],
-          "converged": true,
-          "contact arc (deg from the crown)": [
-            -89.0,
-            89.0
-          ],
-          "body reaction (N)": [
-            800.0,
-            -0.0,
-            0.0
-          ],
-          "split face moves toward the other half (mm)": 0.291,
-          "peaks away from the screw seats": {
-            "von Mises (MPa)": {
-              "carrier": {
-                "value": 5.992,
-                "at (mm)": [
-                  -3.9,
-                  39.4,
-                  39.1
-                ]
-              }
-            },
-            "max principal (MPa)": {
-              "carrier": {
-                "value": 7.354,
-                "at (mm)": [
-                  21.1,
-                  22.0,
-                  25.9
-                ]
-              }
-            },
-            "tension across layers (MPa)": {
-              "carrier": {
-                "value": 6.041,
-                "at (mm)": [
-                  21.1,
-                  22.0,
-                  -22.1
-                ]
-              }
-            }
-          }
-        }
-      },
-      "split gap closed (mm, of 1.0)": 0.637
-    },
-    "500 N per screw": {
-      "halves": {
-        "bracket": {
-          "mesh": {
-            "nodes (C3D10)": 55028,
-            "elements": 32925
-          },
-          "screw force (N)": 500.0,
-          "bearing area per screw (mm2)": [
-            20.5,
-            20.5,
-            20.5,
-            20.5
-          ],
-          "bearing stress under head/nut (MPa)": 24.4,
-          "contact iterations": [
-            {
-              "iteration": 0,
-              "in contact": 506,
-              "dropped": 315,
-              "added": 1057,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 1,
-              "in contact": 1248,
-              "dropped": 447,
-              "added": 302,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 2,
-              "in contact": 1103,
-              "dropped": 229,
-              "added": 12,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 3,
-              "in contact": 886,
-              "dropped": 149,
-              "added": 12,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 4,
-              "in contact": 749,
-              "dropped": 109,
-              "added": 9,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 5,
-              "in contact": 649,
-              "dropped": 86,
-              "added": 31,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 6,
-              "in contact": 594,
-              "dropped": 57,
-              "added": 72,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 7,
-              "in contact": 609,
-              "dropped": 46,
-              "added": 2,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 8,
-              "in contact": 565,
-              "dropped": 36,
-              "added": 2,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 9,
-              "in contact": 531,
-              "dropped": 24,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 10,
-              "in contact": 507,
-              "dropped": 13,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 11,
-              "in contact": 494,
-              "dropped": 10,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 12,
-              "in contact": 484,
-              "dropped": 6,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 13,
-              "in contact": 478,
-              "dropped": 0,
-              "added": 2,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 14,
-              "in contact": 480,
-              "dropped": 0,
-              "added": 0,
-              "ccx (s)": 0.0
-            }
-          ],
-          "converged": true,
-          "contact arc (deg from the crown)": [
-            -89.0,
-            89.0
-          ],
-          "body reaction (N)": [
-            -2000.0,
-            -0.0,
-            0.0
-          ],
-          "split face moves toward the other half (mm)": 0.475,
-          "peaks away from the screw seats": {
-            "von Mises (MPa)": {
-              "bracket": {
-                "value": 33.462,
-                "at (mm)": [
-                  -8.4,
-                  18.8,
-                  -26.7
-                ]
-              }
-            },
-            "max principal (MPa)": {
-              "bracket": {
-                "value": 42.518,
-                "at (mm)": [
-                  -16.9,
-                  33.1,
-                  -30.5
-                ]
-              }
-            },
-            "tension across layers (MPa)": {
-              "bracket": {
-                "value": 16.765,
-                "at (mm)": [
-                  -16.9,
-                  33.1,
-                  -30.5
-                ]
-              }
-            }
-          }
-        },
-        "carrier": {
-          "mesh": {
-            "nodes (C3D10)": 46179,
-            "elements": 26370
-          },
-          "screw force (N)": 500.0,
-          "bearing area per screw (mm2)": [
-            23.0,
-            23.0,
-            23.0,
-            23.0
-          ],
-          "bearing stress under head/nut (MPa)": 21.7,
-          "contact iterations": [
-            {
-              "iteration": 0,
-              "in contact": 506,
-              "dropped": 315,
-              "added": 1057,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 1,
-              "in contact": 1248,
-              "dropped": 148,
-              "added": 297,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 2,
-              "in contact": 1397,
-              "dropped": 88,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 3,
-              "in contact": 1309,
-              "dropped": 27,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 4,
-              "in contact": 1282,
-              "dropped": 9,
-              "added": 0,
-              "ccx (s)": 0.0
-            },
-            {
-              "iteration": 5,
-              "in contact": 1273,
-              "dropped": 0,
-              "added": 0,
-              "ccx (s)": 0.0
-            }
-          ],
-          "converged": true,
-          "contact arc (deg from the crown)": [
-            -89.0,
-            89.0
-          ],
-          "body reaction (N)": [
-            2000.0,
-            -0.0,
-            0.0
-          ],
-          "split face moves toward the other half (mm)": 0.349,
-          "peaks away from the screw seats": {
-            "von Mises (MPa)": {
-              "carrier": {
-                "value": 15.057,
-                "at (mm)": [
-                  -3.9,
-                  39.4,
-                  39.1
-                ]
-              }
-            },
-            "max principal (MPa)": {
-              "carrier": {
-                "value": 14.407,
-                "at (mm)": [
-                  -7.4,
-                  38.9,
-                  -38.3
-                ]
-              }
-            },
-            "tension across layers (MPa)": {
-              "carrier": {
-                "value": 11.904,
-                "at (mm)": [
-                  -0.9,
-                  22.0,
-                  -33.6
-                ]
-              }
-            }
-          }
-        }
-      },
-      "split gap closed (mm, of 1.0)": 0.824
-    }
-  },
-  "run time (s)": 31.7
+  "clamp": "see ccx_split.py and ccx_split.json: both halves in one model, so the split can close",
+  "run time (s)": 668.0
 }
