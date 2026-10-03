@@ -1,15 +1,93 @@
-[00:09] It's just cleaning up.
-[00:45] comes down a little bit and stabilizes. Let's say precise, you can remove this part, we just need to unscrew here, the plug, take the handle and then you can open the full valve to get like a perfect access to the inside of the valve. But if the material is similar we can just do that, clean the inside, sometimes even without opening it you can try to put some paper in, use the tweezers to like move it around.
-[06:53] Flush it a few times with isopropanol and it will be fine. Okay, very cool. And now we just put it back in the same room here. Okay, sounds good. So then we can take the things and use the compressed air to take like the paper dust. Okay. On the seal because it's heavy from the seal sticking with it. Okay. Would you recommend having a separate compressed air gun available? This one. You can always put a T and use this one. Okay, yeah. Somewhere in the corner. Okay.
-[08:57] You can find the spot where it is supposed to sit. Okay. Yeah, it definitely got hotter in here. The glass is sealed and then we have enough force to actually give up. Everything is here, so it's just a pit stop and we start the forces. Okay, amazing. And then we ended up not using the vacuum, we were able to just... You can wipe it, but if you want to do a bit of a better cleaning...
-[12:32] okay yeah later later sounds fine and then because we're just doing aluminum again and nothing like okay
-[12:59] On this graph, you can see that something is a little bit off. You can see here. There's like a sign of a second peak, and that's what is causing some kind of resonance when the plate is working. It can go up, then it stabilizes. You can see that it's a bit more sensitive. But fortunately, it's not breaking. It's just heating up more, which in the process will be good, because then we will have power.
-[13:37] faster atomization but generally this is like a rather rough style I know that some combinations like the one-to-one booster with the wider play it may have a tendency okay there's a higher chance that there will be kind of a resonance happening okay and then if we go with the reverse booster it will disappear okay yeah the octatonics are quite unpredictable
-[14:05] We will try our best to have some kind of control over them. There is a great website I can recommend, which is pushasonicresonators.org, where you get quite a lot of information if you would like to upload paper and so on. You get quite a lot of information of a kind that theoretically...
-[14:31] The more you tighten the piezo ceramic stacks, the stability of the whole system is going into infinity. But then if you go to some point and you start, it will just crack. So all of that you can just test it. And also why we need to be so careful with it is like if they're really compressed. Theoretically, you should compress them as much as you want.
-[15:01] uh but when you're actually doing it it's not going to work okay yeah and do you feel pretty comfortable like without kind of full face mask when you're if there is like no more powder okay yeah you just want to do the cleaning after the trials and then it's fine okay yeah and sometimes like the auto consumables probably would be best to have some kind of cabinets to store them yeah
-[15:27] and keep this area clean so from time to time you will want to just vacuum everything wipe it because you may just get some like powder left over somewhere in here okay yeah just small amounts for just taking the powder from the container into the jars okay okay yeah it sounds like having a yeah like a cabinet dry box maybe putting some desiccant in there
-[15:57] Just kind of keep it a little drier would be. Okay, sounds good. I think we can do that. We might pull in that big metal one. Oh yeah, yeah. So here we've got the sample. Yeah, the sample there. So if you keep it upright, the plug is right here. Yeah, so inside, pretty much up to the top of this little cap. The cap's only about that big.
-[16:50] It's filled with the ALSI-10MG and then it's got a little hole in the top of it. Some air can come out, maybe. Yeah, who knows? We'll just need to test it. Yeah, sounds good. And then we'll want to do another one, hopefully. We'll definitely have time. Yeah, where we take that, do the same thing. If we'll have time, I'll also show you how to reverse the booster, just to show you the principles behind it.
-[17:19] Yeah. Okay. Awesome. Okay. And then I have something I need to go to and then get class to teach. How... I guess it'll probably take about an hour to do this, right? Yeah. Okay. Okay. Yeah. So now for that. Yeah. And then I have one other... Let's see. Where is it?
-[17:54] Oh, did I leave it? Oh, no. I thought I left it, didn't I?
+[00:46] It's just cleaning up.
+[00:45] comes down a little bit and stabilizes.
+[00:48] Let's say
+[06:28] precise, you can remove this part, we just need to unscrew here, the plug, take the handle and then you can open the full valve to get like a perfect access to the inside of the valve.
+[06:41] But if the material is similar we can just do that, clean the inside, sometimes even without opening it you can try to put some paper in, use the tweezers to like move it around.
+[06:53] Flush it a few times with isopropanol and it will be fine.
+[06:56] Okay, very cool.
+[06:57] And now we just put it back in the same room here.
+[06:59] Okay, sounds good.
+[07:22] So then we can take the things and use the compressed air to take like the paper dust.
+[07:27] Okay.
+[07:27] On the seal because it's heavy from the seal sticking with it.
+[07:31] Okay.
+[07:34] Would you recommend having a separate compressed air gun available?
+[07:40] This one.
+[07:40] You can always put a T and use this one.
+[07:42] Okay, yeah.
+[07:43] Somewhere in the corner.
+[07:44] Okay.
+[07:45] You can
+[08:57] find the spot where it is supposed to sit.
+[09:00] Okay.
+[09:02] Yeah, it
+[10:39] definitely got hotter in here.
+[10:50] The glass is sealed
+[11:03] and then we have enough force to actually give up.
+[12:18] Everything is here, so it's just a pit stop and we start the forces.
+[12:23] Okay, amazing.
+[12:24] And then we ended up not using the vacuum, we were able to just...
+[12:28] You can wipe it, but if you want to do a bit of a better cleaning...
+[12:36] okay yeah later later sounds fine and then because we're just doing aluminum again and nothing like okay
+[12:59] On this graph, you can see that something is a little bit off.
+[13:04] You can see here.
+[13:05] There's like a sign of a second peak, and that's what is causing some kind of resonance when the plate is working.
+[13:12] It can go up, then it stabilizes.
+[13:25] You can see that it's a bit more sensitive.
+[13:28] But fortunately, it's not breaking.
+[13:33] It's just heating up more, which in the process will be good, because then we will have power.
+[13:37] faster atomization but generally this is like a rather rough style I know that some combinations like the one-to-one booster with the wider play
+[13:49] it may have a tendency okay there's a higher chance that there will be kind of a resonance happening okay and then if we go with the reverse booster it will disappear okay yeah the
+[14:02] octatonics are quite unpredictable
+[14:05] We will try our best to have some kind of control over them.
+[14:13] There is a great website I can recommend, which is pushasonicresonators.org, where you get quite a lot of information if you would like to upload paper and
+[14:25] so on.
+[14:26] You get quite a lot of information of a kind that theoretically...
+[14:31] The more you tighten the piezo ceramic stacks, the stability of the whole system is going into infinity.
+[14:39] But then if you go to some point and you start, it will just crack.
+[14:44] So all of that you can just test it.
+[14:49] And also why we need to be so careful with it is like if they're really compressed.
+[14:58] Theoretically, you should compress them as much as you want.
+[15:01] uh but when you're actually doing it it's not going to work okay yeah and do you feel pretty comfortable like without kind of full face mask when you're if there is like no more powder okay yeah you
+[15:15] just want to do the cleaning after the trials and then it's fine okay yeah and sometimes like the auto consumables probably would be best to have some kind of cabinets to store them yeah
+[15:27] and keep this area clean so from time to time you will want to just vacuum everything wipe it because you may just get some like powder left over somewhere in here okay yeah just
+[15:40] small amounts for just taking the powder from the container into the jars okay okay yeah
+[15:52] it sounds like having a yeah like a cabinet dry box maybe putting some desiccant in there
+[15:57] Just kind of keep it a little drier would be.
+[16:02] Okay, sounds good.
+[16:04] I think we can do that.
+[16:06] We might pull in that big metal one.
+[16:09] Oh yeah, yeah.
+[16:11] So here we've got the sample.
+[16:15] Yeah, the sample there.
+[16:17] So if you keep it upright, the plug is right here.
+[16:43] Yeah, so inside, pretty much up to the top of this little cap.
+[16:47] The cap's only about that big.
+[16:50] It's filled with the ALSI-10MG and then it's got a little hole in the top of it.
+[16:57] Some air can come out, maybe.
+[17:00] Yeah, who knows?
+[17:00] We'll just need to test it.
+[17:02] Yeah, sounds good.
+[17:04] And then we'll want to do another one, hopefully.
+[17:07] We'll definitely have time.
+[17:09] Yeah, where we take that, do the same thing.
+[17:13] If we'll have time, I'll also show you how to reverse the booster, just to show you the principles behind it.
+[17:19] Yeah.
+[17:22] Okay.
+[17:23] Awesome.
+[17:24] Okay.
+[17:25] And then I have something I need to go to and then get class to teach.
+[17:34] How...
+[17:35] I guess it'll probably take about an hour to do this, right?
+[17:40] Yeah.
+[17:40] Okay.
+[17:42] Okay.
+[17:42] Yeah.
+[17:43] So now for that.
+[17:44] Yeah.
+[17:44] And then I have one other...
+[17:47] Let's see.
+[17:52] Where is it?
+[17:54] Oh, did I leave it?
+[17:55] Oh, no.
+[17:57] I thought I left it, didn't I?

@@ -1,48 +1,412 @@
 1
-00:00:07,700 --> 00:01:09,980
-For some reason, it's good enough. This usually doesn't happen. I went to Kevin and I was like, hey, I need a drill bit that's 0.05 millimeters. He's like, no, no, no, I'll have to look for it in inches. Then it translates into inches. And he's like, that is so tiny. What are you doing with that? Is that what you machined? That's what that is. It's 0.05. Holy. Is that where it drips out? It's clear. Yeah.
+00:00:07,700 --> 00:00:09,200
+For some reason, it's good enough.
 
 2
-00:01:09,980 --> 00:01:49,150
-And this is 0.7? Yeah, this is 0.7. Fresh. Is that graphite? Yeah, it's like graphite. I would recommend to put the nozzle, screw it with the crucible, and then it's easier to put them both. So that's the nozzle? Yeah. I think the producer really kind of like thinking about having first the nozzle holder with the nut.
+00:00:26,530 --> 00:00:27,570
+This usually doesn't happen.
 
 3
-00:01:49,150 --> 00:02:55,100
-But I think it's worse because then you have to grab the thread to try to unscrew it or use a special tool which is hard to use actually. So the best option is when those two come together. I see. It's like the threading is really not that much that sticks out. So you just barely have to get it on. Yeah, I think I can get it on. Okay, so it's something else running. See that holder?
+00:00:37,500 --> 00:00:41,740
+I went to Kevin and I was like, hey, I need a drill bit that's 0.05 millimeters.
 
 4
-00:02:55,100 --> 00:03:55,090
-It's important to have that like in about here. Okay. So I'm tightening it. On that hole angle this way? Angle, so this guy can go from here to there. Okay. So you'll see about 0.0 circuits. You can get it centered in the hole and this wasn't fitting. What is that made of? Um, alumina silicon is what you call it. It's gross.
+00:00:42,660 --> 00:00:45,800
+He's like, no, no, no, I'll have to look for it in inches.
 
 5
-00:03:55,090 --> 00:04:46,130
-it just like turns into powder that's kind of that's pretty standard i think for instance oh so he said this will break if it drops see it's already chipped at the top oh yeah there's a lot of fragile consumables in this perfect it goes in that first let's get this right there so that that measures the temperature okay and then
+00:00:46,220 --> 00:00:47,640
+Then it translates into inches.
 
 6
-00:05:01,900 --> 00:05:47,600
-The center piece is also graphite, so it's really brittle. The what you're holding right now? Uh-huh. Okay. The aluminum don't stick pretty low to it, so it's going to pin it all over and come off like that, yeah. Oh, nice. But we'll have to get some scrapers, some specific tools for this. Even like a flathead screw might, or a file, I guess how hard is it to get off?
+00:00:47,780 --> 00:00:50,040
+And he's like, that is so tiny.
 
 7
-00:05:47,600 --> 00:06:59,600
-I can't get it off with my fingers. I don't have to. Just barely squeeze and rub it across the aluminum. It's not a super big deal to damage the shaft, but the tip needs to be good. Otherwise, you have to get a new tip. You have to get a whole new shaft. Okay. And this is what goes into the chamber? It's like a whole, yeah, chamber. Poor dude. So many things on that. What?
+00:00:50,760 --> 00:00:51,940
+What are you doing with that?
 
 8
-00:06:59,890 --> 00:08:00,820
-The sand that's doing, extracting something. Oh yeah. I wonder if she's supposed to be able to get access. We need to find sand or bro. Someone to let them in. Should that be completely free of anything other than, or of any other metals? Um, we probably want to, you know, this is our aluminum one, this is our whatever, our copper one. Yeah. Um, maybe depending on, but you'll have to be like 100% of it. Okay.
+00:00:54,590 --> 00:00:56,350
+Is that what you machined?
 
 9
-00:08:15,250 --> 00:10:07,040
-So that's down like that. Alright, so now I think we can close this. Are these you tying as much as you can or just? It's to get a seal. So if they haven't tied enough, then we'll take it there. Yeah. So another thing I want to do is I want to fix a laser pointer. This might have to be... Bartos, if we were to use a laser pointer to...
+00:00:56,950 --> 00:00:57,790
+That's what that is.
 
 10
-00:10:07,040 --> 00:10:37,650
-Yeah, show the best point to put the... I will remove this here and try to aim for... Do some kind of like a housing to keep it in position here. Gotcha. So you just like remove that. Maybe we could honestly just put it in there. The point through there. Then we would know, okay, we want our... The metal to drip through this point. Then we could see.
+00:00:57,890 --> 00:00:58,610
+It's 0.05.
 
 11
-00:10:37,650 --> 00:11:28,110
-where the position is before we even turn it on oh so you're not wasting any uh-huh so then we're always less that's basically what we'll be going for okay because right now you don't know if it's going to land right on top of it huh right and i don't know if it's too high or too low okay i think we're ready about those so now we're just going to wait for the material right i guess i can clean the lid okay just smaller can tell it easier to get on this guy oh yeah that just flakes off huh
+00:00:59,010 --> 00:00:59,450
+Holy.
 
 12
-00:11:28,820 --> 00:11:51,760
-Once again, just rubbing that to get a good seal. Is that the last part before we put in more material?
+00:01:05,580 --> 00:01:07,760
+Is that where it drips out?
+
+13
+00:01:08,460 --> 00:01:09,140
+It's clear.
+
+14
+00:01:09,440 --> 00:01:09,560
+Yeah.
+
+15
+00:01:09,980 --> 00:01:11,240
+And this is 0.7?
+
+16
+00:01:11,460 --> 00:01:13,000
+Yeah, this is 0.7.
+
+17
+00:01:14,140 --> 00:01:14,740
+Fresh.
+
+18
+00:01:16,380 --> 00:01:20,220
+Is that graphite?
+
+19
+00:01:20,540 --> 00:01:21,420
+Yeah, it's like graphite.
+
+20
+00:01:28,900 --> 00:01:36,140
+I would recommend to put the nozzle, screw it with the crucible, and then it's easier to put them both.
+
+21
+00:01:36,740 --> 00:01:38,520
+So that's the nozzle?
+
+22
+00:01:39,120 --> 00:01:39,240
+Yeah.
+
+23
+00:01:41,480 --> 00:01:48,780
+I think the producer really kind of like thinking about having first the nozzle holder with the nut.
+
+24
+00:01:49,150 --> 00:01:59,600
+But I think it's worse because then you have to grab the thread to try to unscrew it or use a special tool which is hard to use actually.
+
+25
+00:02:00,830 --> 00:02:04,390
+So the best option is when those two come together.
+
+26
+00:02:05,170 --> 00:02:05,470
+I see.
+
+27
+00:02:26,120 --> 00:02:31,510
+It's like the threading is really not that much that sticks out.
+
+28
+00:02:32,710 --> 00:02:34,450
+So you just barely have to get it on.
+
+29
+00:02:34,970 --> 00:02:36,250
+Yeah, I think I can get it on.
+
+30
+00:02:52,490 --> 00:02:53,750
+Okay, so it's something else running.
+
+31
+00:02:53,890 --> 00:02:54,450
+See that holder?
+
+32
+00:02:55,100 --> 00:02:57,920
+It's important to have that like in about here.
+
+33
+00:02:59,590 --> 00:03:00,130
+Okay.
+
+34
+00:03:00,570 --> 00:03:01,810
+So I'm tightening it.
+
+35
+00:03:10,280 --> 00:03:11,940
+On that hole angle this way?
+
+36
+00:03:12,700 --> 00:03:16,060
+Angle, so this guy can go from here to there.
+
+37
+00:03:18,160 --> 00:03:18,600
+Okay.
+
+38
+00:03:19,590 --> 00:03:22,650
+So you'll see about 0.0 circuits.
+
+39
+00:03:23,130 --> 00:03:38,120
+You can
+
+40
+00:03:38,120 --> 00:03:43,740
+get it centered in the hole and this wasn't fitting.
+
+41
+00:03:45,060 --> 00:03:46,140
+What is that made of?
+
+42
+00:03:46,800 --> 00:03:53,020
+Um, alumina silicon is what you call it.
+
+43
+00:03:53,400 --> 00:03:54,360
+It's gross.
+
+44
+00:03:55,080 --> 00:04:07,280
+it just like turns into powder that's kind of that's pretty standard i think for instance oh
+
+45
+00:04:07,280 --> 00:04:20,730
+so he said this will break if it drops see it's already chipped at the top oh yeah there's a lot of fragile consumables in this perfect
+
+46
+00:04:20,730 --> 00:04:35,560
+it goes in that first let's get this right there so that
+
+47
+00:04:35,560 --> 00:04:39,710
+that measures the temperature okay and then
+
+48
+00:05:01,900 --> 00:05:04,720
+The center piece is also graphite, so it's really brittle.
+
+49
+00:05:05,740 --> 00:05:06,940
+The what you're holding right now?
+
+50
+00:05:07,060 --> 00:05:07,420
+Uh-huh.
+
+51
+00:05:07,780 --> 00:05:08,060
+Okay.
+
+52
+00:05:10,750 --> 00:05:17,900
+The aluminum don't stick pretty low to it, so it's going to pin it all over and come off like that, yeah.
+
+53
+00:05:18,080 --> 00:05:18,500
+Oh, nice.
+
+54
+00:05:29,280 --> 00:05:33,080
+But we'll have to get some scrapers, some specific tools for this.
+
+55
+00:05:33,680 --> 00:05:45,750
+Even like a flathead screw might, or a file, I
+
+56
+00:05:45,750 --> 00:05:47,170
+guess how hard is it to get off?
+
+57
+00:05:52,680 --> 00:05:54,360
+I can't get it off with my fingers.
+
+58
+00:05:55,180 --> 00:05:56,060
+I don't have to.
+
+59
+00:06:07,690 --> 00:06:09,990
+Just barely squeeze and rub it across the aluminum.
+
+60
+00:06:13,400 --> 00:06:21,540
+It's not a super big deal to damage the shaft, but the tip needs to be good.
+
+61
+00:06:22,060 --> 00:06:23,440
+Otherwise, you have to get a new tip.
+
+62
+00:06:23,600 --> 00:06:25,060
+You have to get a whole new shaft.
+
+63
+00:06:25,620 --> 00:06:25,780
+Okay.
+
+64
+00:06:26,920 --> 00:06:29,980
+And this is what goes into the chamber?
+
+65
+00:06:30,490 --> 00:06:31,790
+It's like a whole, yeah, chamber.
+
+66
+00:06:56,460 --> 00:06:57,080
+Poor dude.
+
+67
+00:06:57,440 --> 00:06:58,260
+So many things on that.
+
+68
+00:06:58,600 --> 00:06:59,000
+What?
+
+69
+00:06:59,880 --> 00:07:01,860
+The sand that's doing, extracting something.
+
+70
+00:07:02,160 --> 00:07:02,520
+Oh yeah.
+
+71
+00:07:03,960 --> 00:07:13,380
+I wonder if she's supposed to be able to get access.
+
+72
+00:07:13,900 --> 00:07:15,180
+We need to find sand or bro.
+
+73
+00:07:17,620 --> 00:07:18,580
+Someone to let them in.
+
+74
+00:07:30,510 --> 00:07:35,860
+Should that be completely free of anything other than, or of any other metals?
+
+75
+00:07:36,480 --> 00:07:43,770
+Um, we probably want to, you know, this is our aluminum one, this is our whatever, our copper one.
+
+76
+00:07:44,050 --> 00:07:44,450
+Yeah.
+
+77
+00:07:44,990 --> 00:07:49,560
+Um, maybe depending on, but you'll have to be like 100% of it.
+
+78
+00:07:59,780 --> 00:08:00,260
+Okay.
+
+79
+00:08:40,500 --> 00:08:41,740
+So that's down like that.
+
+80
+00:08:43,080 --> 00:08:46,480
+Alright, so now I think we can close this.
+
+81
+00:09:08,870 --> 00:09:11,310
+Are these you tying as much as you can or just?
+
+82
+00:09:13,310 --> 00:09:14,330
+It's to get a seal.
+
+83
+00:09:14,690 --> 00:09:17,090
+So if they haven't tied enough, then we'll take it there.
+
+84
+00:09:17,650 --> 00:09:18,050
+Yeah.
+
+85
+00:09:53,610 --> 00:09:55,890
+So another thing I want to do is I want to fix a laser pointer.
+
+86
+00:09:58,870 --> 00:10:01,010
+This might have to be...
+
+87
+00:10:01,070 --> 00:10:06,970
+Bartos, if we were to use a laser pointer to...
+
+88
+00:10:07,030 --> 00:10:10,370
+Yeah, show the best point to put the...
+
+89
+00:10:10,370 --> 00:10:14,710
+I will remove this here and try to aim for...
+
+90
+00:10:14,710 --> 00:10:19,590
+Do some kind of like a housing to keep it in position here.
+
+91
+00:10:19,990 --> 00:10:20,330
+Gotcha.
+
+92
+00:10:22,270 --> 00:10:23,810
+So you just like remove that.
+
+93
+00:10:24,290 --> 00:10:25,750
+Maybe we could honestly just put it in there.
+
+94
+00:10:25,950 --> 00:10:26,990
+The point through there.
+
+95
+00:10:27,710 --> 00:10:30,510
+Then we would know, okay, we want our...
+
+96
+00:10:30,610 --> 00:10:34,930
+The metal to drip through this point.
+
+97
+00:10:35,870 --> 00:10:37,290
+Then we could see.
+
+98
+00:10:37,640 --> 00:10:49,820
+where the position is before we even turn it on oh so you're not wasting any uh-huh so then we're always less that's basically what we'll be going for okay because right now you don't know if it's going to land right on top
+
+99
+00:10:49,820 --> 00:11:01,840
+of it huh right and i don't know if it's too high or too low okay i think we're ready about those so now we're just going
+
+100
+00:11:01,840 --> 00:11:17,770
+to wait for the material right i guess i can clean the lid okay just smaller
+
+101
+00:11:17,770 --> 00:11:27,540
+can tell it easier to get on this guy oh yeah that just flakes off huh
+
+102
+00:11:28,950 --> 00:11:30,910
+Once again, just rubbing that to get a good seal.
+
+103
+00:11:41,570 --> 00:11:48,710
+Is that the last part before we put in more material?
 

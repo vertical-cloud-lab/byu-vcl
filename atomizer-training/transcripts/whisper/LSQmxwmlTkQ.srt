@@ -1,4 +1,28 @@
 1
-00:00:00,000 --> 00:04:13,520
-Going still? Got another one. Yeah, that's hard to... I might have to run to class in a couple seconds, sorry. Perfect. Okay, thank you.
+00:00:13,120 --> 00:01:53,390
+Going still?
+
+2
+00:03:03,730 --> 00:03:04,510
+Got another one.
+
+3
+00:03:05,910 --> 00:03:07,730
+Yeah, that's hard to...
+
+4
+00:03:07,730 --> 00:03:19,820
+I might have
+
+5
+00:03:19,820 --> 00:03:21,960
+to run to class in a couple seconds, sorry.
+
+6
+00:04:11,510 --> 00:04:12,070
+Perfect.
+
+7
+00:04:12,450 --> 00:04:13,010
+Okay, thank you.
 

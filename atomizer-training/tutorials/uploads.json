@@ -66,5 +66,39 @@
    "privacy": "unlisted",
    "size_bytes": 71210056
   }
+ },
+ "draft 3": {
+  "00-overview": {
+   "video_id": "raIcdus1lI0",
+   "url": "https://www.youtube.com/watch?v=raIcdus1lI0",
+   "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
+   "uploaded_utc": "2026-10-03T15:02:56Z",
+   "privacy": "unlisted",
+   "size_bytes": 52196780
+  },
+  "02-during": {
+   "video_id": "79QQtmIm0JM",
+   "url": "https://www.youtube.com/watch?v=79QQtmIm0JM",
+   "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
+   "uploaded_utc": "2026-10-03T15:10:41Z",
+   "privacy": "unlisted",
+   "size_bytes": 92511801
+  },
+  "01-before": {
+   "video_id": "KwY4KTY1UdI",
+   "url": "https://www.youtube.com/watch?v=KwY4KTY1UdI",
+   "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
+   "uploaded_utc": "2026-10-03T15:12:45Z",
+   "privacy": "unlisted",
+   "size_bytes": 149775826
+  },
+  "03-after": {
+   "video_id": "TvaFwSyqaog",
+   "url": "https://www.youtube.com/watch?v=TvaFwSyqaog",
+   "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
+   "uploaded_utc": "2026-10-03T15:12:49Z",
+   "privacy": "unlisted",
+   "size_bytes": 75965542
+  }
  }
 }

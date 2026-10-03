@@ -1,60 +1,372 @@
 1
-00:00:09,040 --> 00:00:45,740
+00:00:46,290 --> 00:00:46,390
 It's just cleaning up.
 
 2
-00:00:45,740 --> 00:06:53,100
-comes down a little bit and stabilizes. Let's say precise, you can remove this part, we just need to unscrew here, the plug, take the handle and then you can open the full valve to get like a perfect access to the inside of the valve. But if the material is similar we can just do that, clean the inside, sometimes even without opening it you can try to put some paper in, use the tweezers to like move it around.
+00:00:45,740 --> 00:00:47,620
+comes down a little bit and stabilizes.
 
 3
-00:06:53,100 --> 00:07:45,040
-Flush it a few times with isopropanol and it will be fine. Okay, very cool. And now we just put it back in the same room here. Okay, sounds good. So then we can take the things and use the compressed air to take like the paper dust. Okay. On the seal because it's heavy from the seal sticking with it. Okay. Would you recommend having a separate compressed air gun available? This one. You can always put a T and use this one. Okay, yeah. Somewhere in the corner. Okay.
+00:00:48,640 --> 00:06:28,960
+Let's say
 
 4
-00:08:57,040 --> 00:12:32,340
-You can find the spot where it is supposed to sit. Okay. Yeah, it definitely got hotter in here. The glass is sealed and then we have enough force to actually give up. Everything is here, so it's just a pit stop and we start the forces. Okay, amazing. And then we ended up not using the vacuum, we were able to just... You can wipe it, but if you want to do a bit of a better cleaning...
+00:06:28,960 --> 00:06:40,680
+precise, you can remove this part, we just need to unscrew here, the plug, take the handle and then you can open the full valve to get like a perfect access to the inside of the valve.
 
 5
-00:12:32,340 --> 00:12:59,660
-okay yeah later later sounds fine and then because we're just doing aluminum again and nothing like okay
+00:06:41,740 --> 00:06:52,700
+But if the material is similar we can just do that, clean the inside, sometimes even without opening it you can try to put some paper in, use the tweezers to like move it around.
 
 6
-00:12:59,660 --> 00:13:37,780
-On this graph, you can see that something is a little bit off. You can see here. There's like a sign of a second peak, and that's what is causing some kind of resonance when the plate is working. It can go up, then it stabilizes. You can see that it's a bit more sensitive. But fortunately, it's not breaking. It's just heating up more, which in the process will be good, because then we will have power.
+00:06:53,100 --> 00:06:56,300
+Flush it a few times with isopropanol and it will be fine.
 
 7
-00:13:37,780 --> 00:14:05,490
-faster atomization but generally this is like a rather rough style I know that some combinations like the one-to-one booster with the wider play it may have a tendency okay there's a higher chance that there will be kind of a resonance happening okay and then if we go with the reverse booster it will disappear okay yeah the octatonics are quite unpredictable
+00:06:56,480 --> 00:06:57,140
+Okay, very cool.
 
 8
-00:14:05,490 --> 00:14:31,710
-We will try our best to have some kind of control over them. There is a great website I can recommend, which is pushasonicresonators.org, where you get quite a lot of information if you would like to upload paper and so on. You get quite a lot of information of a kind that theoretically...
+00:06:57,280 --> 00:06:59,400
+And now we just put it back in the same room here.
 
 9
-00:14:31,710 --> 00:15:01,340
-The more you tighten the piezo ceramic stacks, the stability of the whole system is going into infinity. But then if you go to some point and you start, it will just crack. So all of that you can just test it. And also why we need to be so careful with it is like if they're really compressed. Theoretically, you should compress them as much as you want.
+00:06:59,600 --> 00:07:00,320
+Okay, sounds good.
 
 10
-00:15:01,340 --> 00:15:27,860
-uh but when you're actually doing it it's not going to work okay yeah and do you feel pretty comfortable like without kind of full face mask when you're if there is like no more powder okay yeah you just want to do the cleaning after the trials and then it's fine okay yeah and sometimes like the auto consumables probably would be best to have some kind of cabinets to store them yeah
+00:07:22,010 --> 00:07:27,100
+So then we can take the things and use the compressed air to take like the paper dust.
 
 11
-00:15:27,860 --> 00:15:57,810
-and keep this area clean so from time to time you will want to just vacuum everything wipe it because you may just get some like powder left over somewhere in here okay yeah just small amounts for just taking the powder from the container into the jars okay okay yeah it sounds like having a yeah like a cabinet dry box maybe putting some desiccant in there
+00:07:27,300 --> 00:07:27,480
+Okay.
 
 12
-00:15:57,810 --> 00:16:50,420
-Just kind of keep it a little drier would be. Okay, sounds good. I think we can do that. We might pull in that big metal one. Oh yeah, yeah. So here we've got the sample. Yeah, the sample there. So if you keep it upright, the plug is right here. Yeah, so inside, pretty much up to the top of this little cap. The cap's only about that big.
+00:07:27,520 --> 00:07:31,330
+On the seal because it's heavy from the seal sticking with it.
 
 13
-00:16:50,420 --> 00:17:19,580
-It's filled with the ALSI-10MG and then it's got a little hole in the top of it. Some air can come out, maybe. Yeah, who knows? We'll just need to test it. Yeah, sounds good. And then we'll want to do another one, hopefully. We'll definitely have time. Yeah, where we take that, do the same thing. If we'll have time, I'll also show you how to reverse the booster, just to show you the principles behind it.
+00:07:31,350 --> 00:07:31,570
+Okay.
 
 14
-00:17:19,580 --> 00:17:53,420
-Yeah. Okay. Awesome. Okay. And then I have something I need to go to and then get class to teach. How... I guess it'll probably take about an hour to do this, right? Yeah. Okay. Okay. Yeah. So now for that. Yeah. And then I have one other... Let's see. Where is it?
+00:07:34,890 --> 00:07:39,810
+Would you recommend having a separate compressed air gun available?
 
 15
-00:17:54,610 --> 00:18:07,950
-Oh, did I leave it? Oh, no. I thought I left it, didn't I?
+00:07:40,050 --> 00:07:40,390
+This one.
+
+16
+00:07:40,650 --> 00:07:42,370
+You can always put a T and use this one.
+
+17
+00:07:42,410 --> 00:07:42,910
+Okay, yeah.
+
+18
+00:07:43,290 --> 00:07:43,990
+Somewhere in the corner.
+
+19
+00:07:44,290 --> 00:07:44,470
+Okay.
+
+20
+00:07:45,030 --> 00:08:57,130
+You can
+
+21
+00:08:57,130 --> 00:08:59,870
+find the spot where it is supposed to sit.
+
+22
+00:09:00,070 --> 00:09:00,290
+Okay.
+
+23
+00:09:02,170 --> 00:10:39,070
+Yeah, it
+
+24
+00:10:39,070 --> 00:10:40,170
+definitely got hotter in here.
+
+25
+00:10:50,040 --> 00:11:03,820
+The glass is sealed
+
+26
+00:11:03,820 --> 00:11:07,250
+and then we have enough force to actually give up.
+
+27
+00:12:18,920 --> 00:12:23,780
+Everything is here, so it's just a pit stop and we start the forces.
+
+28
+00:12:23,940 --> 00:12:24,520
+Okay, amazing.
+
+29
+00:12:24,820 --> 00:12:28,300
+And then we ended up not using the vacuum, we were able to just...
+
+30
+00:12:28,300 --> 00:12:32,120
+You can wipe it, but if you want to do a bit of a better cleaning...
+
+31
+00:12:36,250 --> 00:12:49,990
+okay yeah later later sounds fine and then because we're just doing aluminum again and nothing like okay
+
+32
+00:12:59,660 --> 00:13:03,360
+On this graph, you can see that something is a little bit off.
+
+33
+00:13:04,120 --> 00:13:04,760
+You can see here.
+
+34
+00:13:05,640 --> 00:13:12,140
+There's like a sign of a second peak, and that's what is causing some kind of resonance when the plate is working.
+
+35
+00:13:12,800 --> 00:13:23,970
+It can go up, then it stabilizes.
+
+36
+00:13:25,170 --> 00:13:27,930
+You can see that it's a bit more sensitive.
+
+37
+00:13:28,610 --> 00:13:32,720
+But fortunately, it's not breaking.
+
+38
+00:13:33,200 --> 00:13:37,420
+It's just heating up more, which in the process will be good, because then we will have power.
+
+39
+00:13:37,770 --> 00:13:49,870
+faster atomization but generally this is like a rather rough style I know that some combinations like the one-to-one booster with the wider play
+
+40
+00:13:49,870 --> 00:14:02,050
+it may have a tendency okay there's a higher chance that there will be kind of a resonance happening okay and then if we go with the reverse booster it will disappear okay yeah the
+
+41
+00:14:02,050 --> 00:14:04,270
+octatonics are quite unpredictable
+
+42
+00:14:05,590 --> 00:14:09,510
+We will try our best to have some kind of control over them.
+
+43
+00:14:13,170 --> 00:14:25,250
+There is a great website I can recommend, which is pushasonicresonators.org, where you get quite a lot of information if you would like to upload paper and
+
+44
+00:14:25,250 --> 00:14:25,710
+so on.
+
+45
+00:14:26,630 --> 00:14:31,330
+You get quite a lot of information of a kind that theoretically...
+
+46
+00:14:31,710 --> 00:14:39,270
+The more you tighten the piezo ceramic stacks, the stability of the whole system is going into infinity.
+
+47
+00:14:39,890 --> 00:14:43,790
+But then if you go to some point and you start, it will just crack.
+
+48
+00:14:44,990 --> 00:14:47,910
+So all of that you can just test it.
+
+49
+00:14:49,530 --> 00:14:54,750
+And also why we need to be so careful with it is like if they're really compressed.
+
+50
+00:14:58,070 --> 00:15:00,990
+Theoretically, you should compress them as much as you want.
+
+51
+00:15:01,340 --> 00:15:14,540
+uh but when you're actually doing it it's not going to work okay yeah and do you feel pretty comfortable like without kind of full face mask when you're if there is like no more powder okay yeah you
+
+52
+00:15:15,690 --> 00:15:27,490
+just want to do the cleaning after the trials and then it's fine okay yeah and sometimes like the auto consumables probably would be best to have some kind of cabinets to store them yeah
+
+53
+00:15:27,850 --> 00:15:40,310
+and keep this area clean so from time to time you will want to just vacuum everything wipe it because you may just get some like powder left over somewhere in here okay yeah just
+
+54
+00:15:40,310 --> 00:15:52,480
+small amounts for just taking the powder from the container into the jars okay okay yeah
+
+55
+00:15:52,480 --> 00:15:57,240
+it sounds like having a yeah like a cabinet dry box maybe putting some desiccant in there
+
+56
+00:15:57,800 --> 00:15:59,720
+Just kind of keep it a little drier would be.
+
+57
+00:16:02,020 --> 00:16:03,100
+Okay, sounds good.
+
+58
+00:16:04,150 --> 00:16:05,250
+I think we can do that.
+
+59
+00:16:06,010 --> 00:16:08,030
+We might pull in that big metal one.
+
+60
+00:16:09,790 --> 00:16:10,870
+Oh yeah, yeah.
+
+61
+00:16:11,090 --> 00:16:14,910
+So here we've got the sample.
+
+62
+00:16:15,930 --> 00:16:16,850
+Yeah, the sample there.
+
+63
+00:16:17,030 --> 00:16:19,570
+So if you keep it upright, the plug is right here.
+
+64
+00:16:43,690 --> 00:16:47,430
+Yeah, so inside, pretty much up to the top of this little cap.
+
+65
+00:16:47,650 --> 00:16:49,890
+The cap's only about that big.
+
+66
+00:16:50,420 --> 00:16:56,190
+It's filled with the ALSI-10MG and then it's got a little hole in the top of it.
+
+67
+00:16:57,300 --> 00:16:59,680
+Some air can come out, maybe.
+
+68
+00:17:00,020 --> 00:17:00,920
+Yeah, who knows?
+
+69
+00:17:00,980 --> 00:17:01,980
+We'll just need to test it.
+
+70
+00:17:02,180 --> 00:17:02,900
+Yeah, sounds good.
+
+71
+00:17:04,240 --> 00:17:06,700
+And then we'll want to do another one, hopefully.
+
+72
+00:17:07,520 --> 00:17:09,580
+We'll definitely have time.
+
+73
+00:17:09,720 --> 00:17:12,140
+Yeah, where we take that, do the same thing.
+
+74
+00:17:13,260 --> 00:17:18,820
+If we'll have time, I'll also show you how to reverse the booster, just to show you the principles behind it.
+
+75
+00:17:19,640 --> 00:17:20,120
+Yeah.
+
+76
+00:17:22,500 --> 00:17:22,980
+Okay.
+
+77
+00:17:23,720 --> 00:17:24,200
+Awesome.
+
+78
+00:17:24,720 --> 00:17:25,200
+Okay.
+
+79
+00:17:25,320 --> 00:17:32,400
+And then I have something I need to go to and then get class to teach.
+
+80
+00:17:34,720 --> 00:17:35,200
+How...
+
+81
+00:17:35,200 --> 00:17:40,430
+I guess it'll probably take about an hour to do this, right?
+
+82
+00:17:40,570 --> 00:17:40,570
+Yeah.
+
+83
+00:17:40,850 --> 00:17:41,150
+Okay.
+
+84
+00:17:42,130 --> 00:17:42,430
+Okay.
+
+85
+00:17:42,910 --> 00:17:43,010
+Yeah.
+
+86
+00:17:43,310 --> 00:17:43,970
+So now for that.
+
+87
+00:17:44,270 --> 00:17:44,470
+Yeah.
+
+88
+00:17:44,710 --> 00:17:47,310
+And then I have one other...
+
+89
+00:17:47,540 --> 00:17:48,300
+Let's see.
+
+90
+00:17:52,040 --> 00:17:52,860
+Where is it?
+
+91
+00:17:54,760 --> 00:17:55,700
+Oh, did I leave it?
+
+92
+00:17:55,920 --> 00:17:56,520
+Oh, no.
+
+93
+00:17:57,000 --> 00:17:58,020
+I thought I left it, didn't I?
 

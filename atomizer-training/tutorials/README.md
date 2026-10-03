@@ -1,8 +1,8 @@
 # Narrated tutorials
 
 Four tutorial videos assembled from the material in this folder, uploaded **unlisted** to the BYU Vertical Cloud Lab
-channel for review. Draft 2 replaces draft 1 after Sterling's review on PR #255; both sets are listed below, since the
-upload token cannot delete videos.
+channel for review. Draft 3 replaces drafts 1 and 2 after Sterling's reviews on PR #255; all three sets are listed below,
+since the upload token cannot delete videos.
 
 ## How each tutorial is put together
 
@@ -42,20 +42,20 @@ changes.
 
 ## Uploads
 
-| Tutorial | Draft 2 | Draft 1 (superseded) |
-| --- | --- | --- |
-| 0 · The machine and how it works | [5:16](https://www.youtube.com/watch?v=uVVeTokW3Us) | [3:31](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
-| 1 · Before a run: utilities, stack, furnace, chamber | [8:45](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [6:04](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
-| 2 · During a run: gas wash, melt, pour, end of pour | [7:38](https://www.youtube.com/watch?v=sagBBb78pVQ) | [8:08](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
-| 3 · After a run: shutdown, cool-down, powder, cleaning | [5:54](https://www.youtube.com/watch?v=50j8N8YyDxU) | [6:42](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
+| Tutorial | Draft 3 | Draft 2 (superseded) | Draft 1 (superseded) |
+| --- | --- | --- | --- |
+| 0 · The machine and how it works | [5:27](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
+| 1 · Before a run: utilities, stack, furnace, chamber | [10:06](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
+| 2 · During a run: gas wash, melt, pour, end of pour | [7:43](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
+| 3 · After a run: shutdown, cool-down, powder, cleaning | [5:57](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
 
-Draft 1 can be deleted in YouTube Studio once draft 2 is accepted (the upload token cannot delete).
+Drafts 1 and 2 can be deleted in YouTube Studio once draft 3 is accepted (the upload token cannot delete).
 
 **Playlist.** Creating a playlist needs the channel's full token (`playlists.insert` requires the `youtube` scope), which
 only an `@claude-youtube` run has. [`../../youtube/make_playlist.py`](../../youtube/make_playlist.py) is ready for it:
 
 ```bash
-python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft 2)" --privacy unlisted --ids uVVeTokW3Us qiBB0lIXUDM sagBBb78pVQ 50j8N8YyDxU
+python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft 3)" --privacy unlisted --ids raIcdus1lI0 KwY4KTY1UdI 79QQtmIm0JM TvaFwSyqaog
 ```
 
 ## Files
@@ -83,5 +83,5 @@ python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft 2)" 
   stay hard to read.
 - The narration reads the SOP as written on 2026-10-03. When the SOP's open questions get answered, update `scripts.py` and
   rebuild.
-- The 3D model is plausible rather than measured: proportions come from the keyframes and the vendor documents. See
-  [`../viz3d/README.md`](../viz3d/README.md).
+- The 3D model's proportions are measured from 720p frames and scaled to the documented envelope, but not yet checked
+  with a tape measure. See [`../viz3d/README.md`](../viz3d/README.md).
