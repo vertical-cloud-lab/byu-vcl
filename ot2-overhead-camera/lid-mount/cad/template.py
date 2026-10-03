@@ -133,7 +133,7 @@ def svg(p: Params, pts: list[tuple[float, float]]) -> str:
         "3. Take the window off (4 screws, slide, lift). Clamp it over a wooden backer board, keep any film on, and",
         "    use a sharp plastic or step drill at low speed with light pressure; ease off before breaking through.",
         f"4. Cut the lens hole with a {p.cutout_d:.1f} mm (2 in) hole saw at low speed; deburr every edge.",
-        "5. Bolt with M4 button-head screws from inside the robot into the nuts trapped in the base,",
+        "5. Bolt with M4 x 18 pan-head screws from inside the robot into the nuts trapped in the base,",
         "    with a nylon washer under each head: the pipette head passes ~9 mm below the window.",
         "    Snug only: acrylic cracks from over-tightening and from holes drilled near an edge.",
     ]

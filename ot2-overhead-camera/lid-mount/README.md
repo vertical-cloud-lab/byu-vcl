@@ -73,7 +73,7 @@ only warning concerns timelapse mode. The fits are predicted, not yet measured; 
 
 | Qty | Part | Where |
 |---|---|---|
-| 4 + 4 | M2.5 × 12 Phillips pan head + M2.5 nut, **black nylon**, from the lab's COMRUN kit | camera → deck (nuts sit in traps on the deck top). The kit's longest screw; it ends flush with the top of the nut |
+| 4 + 4 | M2.5 × 12 Phillips pan head + M2.5 nut, **black nylon**, from the lab's COMRUN kit | camera → deck (nuts sit in traps on the deck top). The kit's longest screw; its tip ends 0.1 mm short of the top of the nut, about four threads in |
 | 4 + 4 | M2.5 6 + 6 mm male–female standoff + M2.5 nut, **black nylon**, same kit | Pi 5 → deck: the studs go down through the deck into nuts in the traps on its underside |
 | 4 | M2.5 × 6 Phillips pan head, **black nylon**, same kit | Pi 5 → standoffs |
 | 4 + 4 | M3 × 10 Phillips pan head + M3 nut, stainless, from the Prototyping Lab's drawer ([92000A120](https://www.mcmaster.com/92000A120/), [91828A211](https://www.mcmaster.com/91828A211/)) | deck → posts (the nuts slide into slots in the posts; see [the joint](#the-deck-to-post-joint)) |

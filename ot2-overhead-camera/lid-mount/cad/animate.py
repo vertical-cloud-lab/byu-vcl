@@ -251,7 +251,7 @@ def assembly_gif(p: Params, parts: dict, out: Path) -> None:
             "Slide it until the live preview is centred, then tape.", n + 10, phase1, hold=26,
             cam_to=[(330, -430, 250), (0, 0, 50), (0, 0, 1)])
 
-    # Phase 2: window drilled, button heads from inside.
+    # Phase 2: window drilled, pan heads from inside.
     def phase2(u):
         sc.alpha["tape"] = 1 - min(1.0, u * 3)
         sc.alpha["lid_plain"] = 1 - min(1.0, u * 3)

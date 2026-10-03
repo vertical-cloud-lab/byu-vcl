@@ -292,7 +292,8 @@ def make_drill_template(p: Params) -> cq.Workplane:
 
 
 def make_spacers(p: Params) -> cq.Workplane:
-    """Four Pi 5 standoffs and four deck shims, laid out for printing."""
+    """Four Pi 5 spacers (the fallback for the kit's nylon standoffs) and four deck shims, laid out
+    for printing."""
     out = None
     for i in range(4):
         s = cyl(6.0, p.pi_spacer_h, cx=i * 10.0).cut(cyl(p.m25_clear_d, p.pi_spacer_h + 2, cx=i * 10.0, z0=-1))
