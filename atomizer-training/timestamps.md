@@ -1,6 +1,6 @@
 # Atomizer videos: timestamp log
 
-_704 timestamped rows across 20 of 26 videos._
+_732 timestamped rows across 22 of 26 videos._
 
 Every substantive moment in the BYU VCL atomizer videos (install, AMAZEMET rePowder training Sep 29–30 2026, and the team's own runs), indexed from the transcripts in [`transcripts/`](transcripts/). Rows were extracted from the caption text by reading agents and the `mm:ss` is the caption start time, so a link lands at most a few seconds before the moment.
 
@@ -11,7 +11,7 @@ Phases: *before* (utilities, stack, furnace prep, loading), *during* (pump-down/
 Transcript source per video is listed in the heading: **whisper** = faster-whisper large-v3-turbo on the runner, **auto** = YouTube auto-captions. Whisper is more accurate; the auto-caption rows will be re-checked as Whisper transcripts land.
 
 ## Video 1 of atomizer training
-`wRc8p2_FnJo` · 2026-09-29 · 47:20 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=0) · [▶ watch](https://www.youtube.com/watch?v=wRc8p2_FnJo)
+`wRc8p2_FnJo` · 2026-09-29 · 47:20 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=0) · [▶ watch](https://www.youtube.com/watch?v=wRc8p2_FnJo)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -99,7 +99,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [47:02](https://www.youtube.com/embed/wRc8p2_FnJo?start=2822) | [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2822s) | before | Tighten nut a little; before fully tightening make sure the hole ends up where it can be reached |
 
 ## Atomizer Training Video 2
-`naePD8o9_Gk` · 2026-09-29 · 56:35 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
+`naePD8o9_Gk` · 2026-09-29 · 56:35 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -589,9 +589,36 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 _No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
 
 ## Cartridge cleaning
-`f8KL31PN8bA` · 2026-09-30 · 18:09 · public · transcript: auto · [open paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶ watch](https://www.youtube.com/watch?v=f8KL31PN8bA)
+`f8KL31PN8bA` · 2026-09-30 · 18:09 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶ watch](https://www.youtube.com/watch?v=f8KL31PN8bA)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:09](https://www.youtube.com/embed/f8KL31PN8bA?start=9) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=9s) | after/cleaning | "It's just cleaning up" — post-run clean-up of the cartridge parts at the bench, respirator and orange gloves on (keyframe). |
+| [00:45](https://www.youtube.com/embed/f8KL31PN8bA?start=45) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=45s) | after/cleaning | Something "comes down a little bit and stabilizes" (reading not named; start of a merged 00:45–06:53 segment). |
+| [00:45](https://www.youtube.com/embed/f8KL31PN8bA?start=45) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=45s) | after/cleaning | Thorough option: unscrew the plug, take the handle, open the valve fully "to get like a perfect access to the inside of the valve". |
+| [00:45](https://www.youtube.com/embed/f8KL31PN8bA?start=45) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=45s) | lesson | If the next material is similar, just clean the inside; even without opening, put paper in and move it around with tweezers. |
+| [06:53](https://www.youtube.com/embed/f8KL31PN8bA?start=413) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=413s) | after/cleaning | "Flush it a few times with isopropanol and it will be fine"; then put it back in the same place. |
+| [06:53](https://www.youtube.com/embed/f8KL31PN8bA?start=413) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=413s) | after/cleaning | Use compressed air to blow paper-towel dust off the seal; the lint sticks to the seal. |
+| [06:53](https://www.youtube.com/embed/f8KL31PN8bA?start=413) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=413s) | tools | Trainee asks about a separate compressed-air gun; Bartosz: put a T on the machine's air line and use this one, "somewhere in the corner". |
+| [08:57](https://www.youtube.com/embed/f8KL31PN8bA?start=537) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=537s) | after/cleaning | Refit: "find the spot where it is supposed to sit"; remark that it "definitely got hotter in here". |
+| [08:57](https://www.youtube.com/embed/f8KL31PN8bA?start=537) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=537s) | after/cleaning | "Everything is here, so it's just a pit stop and we start the process"; vacuum not needed — wiping suffices, vacuum for a better clean. |
+| [12:32](https://www.youtube.com/embed/f8KL31PN8bA?start=752) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=752s) | lesson | Deeper cleaning deferred ("later sounds fine") because "we're just doing aluminum again". |
+| [12:59](https://www.youtube.com/embed/f8KL31PN8bA?start=779) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=779s) | troubleshooting | Scan graph at the HMI (keyframe): "something is a little bit off" — a sign of a second peak causing resonance when the plate works. |
+| [12:59](https://www.youtube.com/embed/f8KL31PN8bA?start=779) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=779s) | troubleshooting | Plate is more sensitive and "can go up, then it stabilizes"; "fortunately, it's not breaking", it just heats up more. |
+| [13:37](https://www.youtube.com/embed/f8KL31PN8bA?start=817) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=817s) | theory | More heat gives faster atomization but is "a rather rough style"; 1:1 booster with the wider plate has a higher chance of resonance. |
+| [13:37](https://www.youtube.com/embed/f8KL31PN8bA?start=817) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=817s) | theory | With the reverse booster the resonance will disappear; "the ultrasonics are quite unpredictable". |
+| [14:05](https://www.youtube.com/embed/f8KL31PN8bA?start=845) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=845s) | theory | "We will try our best to have some kind of control over them"; recommends a resonator website (heard "pushasonicresonators.org") for reading. |
+| [14:31](https://www.youtube.com/embed/f8KL31PN8bA?start=871) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=871s) | theory | Tightening the piezo ceramic stacks raises stability "into infinity" in theory, but past some point they crack — hence the care with the stack. |
+| [15:01](https://www.youtube.com/embed/f8KL31PN8bA?start=901) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=901s) | theory | "Theoretically you should compress them as much as you want, but when you're actually doing it, it's not going to work." |
+| [15:01](https://www.youtube.com/embed/f8KL31PN8bA?start=901) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=901s) | safety | Trainee: comfortable without the full-face mask once no powder is around? Bartosz: wear it for the cleaning after the trials, then it's fine. |
+| [15:01](https://www.youtube.com/embed/f8KL31PN8bA?start=901) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=901s) | housekeeping | All the consumables are best stored in some kind of cabinet. |
+| [15:27](https://www.youtube.com/embed/f8KL31PN8bA?start=927) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=927s) | housekeeping | Keep the area clean: from time to time vacuum everything and wipe; small powder residues come from jarring powder out of the container. |
+| [15:27](https://www.youtube.com/embed/f8KL31PN8bA?start=927) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=927s) | housekeeping | Trainee: a cabinet dry box with desiccant to keep things drier; "we might pull in that big metal one" (cabinet, inferred). |
+| [15:57](https://www.youtube.com/embed/f8KL31PN8bA?start=957) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=957s) | before | Sample cup: keep it upright, plug at the top; filled "pretty much up to the top of this little cap"; furnace lid open (keyframe). |
+| [16:50](https://www.youtube.com/embed/f8KL31PN8bA?start=1010) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1010s) | before | Filled with AlSi10Mg; a little hole in the top so air can come out — "who knows? We'll just need to test it". |
+| [16:50](https://www.youtube.com/embed/f8KL31PN8bA?start=1010) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1010s) | before | Plan: another one the same way if time allows; Bartosz will also show how to reverse the booster "to show you the principles". |
+| [17:19](https://www.youtube.com/embed/f8KL31PN8bA?start=1039) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1039s) | chatter | Trainee has somewhere to be and a class to teach; the run will "probably take about an hour". |
+| [17:54](https://www.youtube.com/embed/f8KL31PN8bA?start=1074) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1074s) | chatter | "Oh, did I leave it? Oh, no. I thought I left it, didn't I?" — looking for a misplaced item. |
 
 ## Atomizer training (sterling's phone)
 `2wMgeI-E7zw` · 2026-09-30 · 15:58 · public · transcript: auto · [open paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=0) · [▶ watch](https://www.youtube.com/watch?v=2wMgeI-E7zw)
@@ -796,9 +823,12 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 _No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
 
 ## Drill press, number 70 bit, graphite nozzle
-`LSQmxwmlTkQ` · 2026-09-30 · 4:14 · public · transcript: auto · [open paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=LSQmxwmlTkQ)
+`LSQmxwmlTkQ` · 2026-09-30 · 4:14 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=LSQmxwmlTkQ)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) | [▶](https://www.youtube.com/watch?v=LSQmxwmlTkQ&t=0s) | preparation | Only speech in the clip (single 0:00–4:13 segment): "Going still? Got another one." — a second nozzle to drill (inferred). |
+| [00:00](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) | [▶](https://www.youtube.com/watch?v=LSQmxwmlTkQ&t=0s) | chatter | "Yeah, that's hard to…"; "I might have to run to class in a couple seconds, sorry." "Perfect. Okay, thank you." |
 
 ## Lathe turning aluminum crucibles for atomizer experiments
 `z6rwmQW_3Vg` · 2026-09-26 · 1:35 · public · transcript: auto · [open paused](https://www.youtube.com/embed/z6rwmQW_3Vg?start=0) · [▶ watch](https://www.youtube.com/watch?v=z6rwmQW_3Vg)

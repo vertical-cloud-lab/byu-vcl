@@ -1,0 +1,220 @@
+1
+00:00:00,000 --> 00:01:22,380
+Okay, so now the warning is gone. Generator start is the start of the heating. This one? Yep. And generator stop is stop the opening. That makes sense. Radical is simple. I did not see. Did it get down to negative one bar when it was doing the purging? No. So I think it's done also because we are so high. It's not able to. It just can't. Oh, gotcha. Just based on how the sensors work.
+
+2
+00:01:22,380 --> 00:01:51,500
+Does that mean we can't get as good quality powder? No. In reality it's minus one, but it can only display minus eight something because it's checking the pressure of the air. So the pressure is the same as at sea level, but it just can't display it because it's calibrated at sea level. Can we recalibrate the sensors for here? To be honest, I have no idea. I think it's pretty.
+
+3
+00:01:51,630 --> 00:02:58,580
+This one, maybe, this one probably impossible. That's pretty interesting. That's like a 15% difference. For both, it's like, yeah. How big is the crucible? It's going to have a plug as big as one of these rods down the middle of it. So you're about, from the...
+
+4
+00:02:58,580 --> 00:03:45,730
+middle of the rod or the edge of the rod to the edge of the crucible on the inside is about 20 millimeters well it's a little more than that but i could do the math but that's that's great it's melting right now yeah we just go straight to a tunnel yeah oh okay so let's get the 250 step and let's just do that was it set up that high and we forgot to bring it down it stays at the value that you left it
+
+5
+00:03:45,730 --> 00:05:07,820
+So let's do the purging basically right now. Once of the furnace, then two types of the chamber and we will be good. Okay. Vacuum pump and the gas wash. Gas wash? Yeah. As long as the material did not melt, we can do it safely. Okay. I want to purge the chamber. I put vacuum pump, vacuum valve and then also gas wash or something different? Here we'll do the gas wash, growth over pressure.
+
+6
+00:05:07,820 --> 00:06:08,050
+Then we purge the chamber, go to overpressure and we can automate it right away. Just make sure to go directly to melting pressure after the final gas wash is finished. So normally we want to bring this to 250 Celsius? Yeah, I would say we do 250, 500. So we change it to 250 for this purge normally? Yeah. Obviously, nice. But you know, the principle is the same. Heat it up, purge it.
+
+7
+00:06:09,780 --> 00:09:04,060
+Okay, so normally change the temperature to 250 Celsius, and then we purge the furnace in the chamber. Then we change it to 500 Celsius and do the same thing. And then you're ready to atomize? Yep, and then go with the final temperature and melt everything.
+
+8
+00:09:04,060 --> 00:10:48,460
+Celsius for melting aluminum, right? So when we do something like copper, that's a lot higher melting temperature, you go... If it's not sticking out so much, it's going to be fine. I need to do it just because it's that way. I see. Now in conversion? I mean, you go to the value, productive gas, repeat it, and that's it.
+
+9
+00:10:48,620 --> 00:12:45,970
+It's the first time, so now protective gas. It's good to keep it, but if you see it's not going any further, after a moment, you just can go on with the therapy. Okay, now pressure control. Because it was just one or two times, you can just do it again. Oxygen level is pretty good, but... Okay, so now it's back. So we press pressure control. Yeah. So good, oxygen is low. So right now, we go up with the temperature.
+
+10
+00:12:47,020 --> 00:14:48,240
+And just press it and yeah. What's the melting temperature of graphite? Of the material? Of graphite. Of graphite. We're able to... I think you can easily heat it up to 2000. I think nothing will happen if there is no oxygen. If there is oxygen, the degradation can happen very quickly. The material is already going down. So reduce the temperature to 800. Okay.
+
+11
+00:14:49,580 --> 00:18:00,430
+I will need to do one more Uxasonics scan, I see. And we'll be ready to pour. Great. After it reaches 800, you see that it fully melts, waits two minutes, and it will pour. I wish I was supposed to pour it. Okay. Good. I forgot what I'm supposed to do. I think I just wait for two minutes until it's, like, it's already melted, so now it sits over two minutes and mixes. Oh, yeah. And then... Great. I don't know, I'll just wait for me to come back. I don't know if there's a pulp. Yeah. Perfect.
+
+12
+00:18:02,580 --> 00:18:30,450
+Okay, so it's fully melted. It's been mixing for, and you said about two minutes for this, right? Two minutes, yeah. So you cannot start it as soon as right now. We need to scan it again. There is a time after scan where you can use it. Otherwise, you need to scan it again just to make sure that it will work correctly right after. Scan is fine. This is ready. This is what the number that I put out? Yeah. This is like the frequency that it's right now calibrated to.
+
+13
+00:18:31,150 --> 00:19:11,790
+It should be a little bit over 40 kilohertz. Okay. So then it may drop a bit, but we are still very close to 40 kilohertz all the time. Okay, so if it does not put out above 40 kilohertz, then what do you need to do at that point? I mean, if you're using the parts we have here, it's impossible. Okay. But in the worst case scenario, screw everything, screw everything again, maybe the connection is loose. Gotcha. That may cause the frequency to be off.
+
+14
+00:19:12,110 --> 00:19:41,580
+Okay, so now it's good. I'm going to press ultrasonic start. Yeah, ultrasonic start and yeah, it vibrates. And now, what we need? Stealing rod up, raining pressure, and the hard part is that you need to use the turbo pressure, if needed, to push the material harder. Because there's not enough pressure to push it down? Sometimes, especially at the beginning, you need to push it through the nozzle, and then when the stream is getting stable,
+
+15
+00:19:41,580 --> 00:20:11,790
+you can stop it and it's going to be fine. It also helps to heat up the plate more at the very beginning. So you may need to use it, but you don't have to use it. It's just like, it helps sometimes. Also, it stabilizes the stream. If the stream starts to move a lot, using turbo pressure can help to like push it and unclog the nozzle from any small debris that is inside. That makes sense. Okay, so, okay, so...
+
+16
+00:20:12,180 --> 00:20:44,860
+Give it a try. If some of it falls or whatever, just get the feeding. That's the case. So I press sealing rod, draining pressure, and then... And then look what's happening. Look what's happening. Okay. Move the ultrasonic system and use turbo pressure to control it. Okay, it's missing it. It's a little bit too little, you see. It's gathering. It's not atomizing. The plate cannot fit up. So... You need more volume to get it atomized? Initially. I mean, initially...
+
+17
+00:20:44,860 --> 00:21:14,770
+It said I removed some leftovers and I heated the plate up. Because the material was falling down, but it wasn't getting fully atomized. There was also some material already on the plate. And you can see that it got stuck and it will solidify it. Yes. So I just poured more to heat up the plate, to wash all of it out. And right there you can see that... We're putting more again, right? Or is it okay? It's okay. It's pretty stable. Okay. What you can do, however, is...
+
+18
+00:21:14,770 --> 00:21:46,100
+look at it and like press it from time to time just to you know like it helps to ensure that it doesn't clog so like a small push from time to time but if you need to observe if there is too much muscular gathering don't then stop it if you see that it's atomizing so well but you see there's like some small movement the string is not as stable you can just give it a small push it helps
+
+19
+00:21:46,100 --> 00:22:34,420
+So you just press it and... Just press it for one moment, I think. Like a small push to stabilize this push. Is the position of the plate in a good spot vertically? Yeah. The bench is still first, like before, exactly in the middle, but sometimes you put the sliding band. Before, it's never 100% straight. Okay, I think it's done. So now if I'm still in, you're up? Yeah, you can take a look in the principle, make sure that...
+
+20
+00:22:34,420 --> 00:23:07,280
+It's all out. If it's allowed, use turbo pressure. Yeah, see? Still coming. Oh, yeah. Okay, now it works over. Yeah, nothing more, even with turbo pressure. So now melting pressure, sealing rod, generator stop, ultrasonic stop. Perfect, that's it. Cool. So when there is very little material, it may not want to pour. And then we need to help it with the turbo pressure. That makes sense. Plastic.
+
+21
+00:23:07,280 --> 00:23:36,980
+It helps to remove everything, sometimes it helps to clean the nozzle. But then I make sure that anything that could melt and go through, this goes through. But to be honest, this is all mostly about practice. Like getting the feeling, understanding the amount of material and if the atomization is happening or not. Because it may become the intuitive to pull more. Because if you pull more, there should be no atomization because there will be too much material.
+
+22
+00:23:36,980 --> 00:24:02,590
+limited energy, too much material. But in this case, you lose a droplet, but the plate heats up, the material wets it, and everything else is atomizing very quickly. So when it first starts, is it best to have the plate out of the way at first, and then put it under? No, poor strain on the plate, but just sometimes you may need a little bit more steam at the beginning. Metal plates will heat up faster.
+
+23
+00:24:02,590 --> 00:24:32,620
+Gotcha. They are very thin. They will heat up in one spot. Does it heat up because the aluminum hits it and stops it from vibrating? No, that's the temperature of the aluminum. Oh, okay. You need the specific conditions to get the wetting. Wetting means that the material is having kind of connection to the plate so that the vibrations can go through. If it's just like a droplet sitting on it, it will bounce.
+
+24
+00:24:32,880 --> 00:25:02,660
+If it's wetting, the vibrations will go through, there is like this whole effect of internal cavitation and so on, but it ends up in the droplets being released from the surface. Interesting. There's a whole lot of paper about this. Do I need to bring this temperature down? I don't know. The generator stopped means that it's not heating, it's going down by itself. Okay. And we can just stop the transportation.
+
+25
+00:25:02,660 --> 00:26:04,400
+If we put it down to 250 just for next time, is that a good idea? Yeah, we can already have it. It's not changing anything right now. Let off too early and now it takes a long time.
+
+26
+00:26:04,590 --> 00:26:35,580
+Yeah, I think make bigger nozzles. Yeah something around 0.7 millimeter or whatever closes to that I bet I bet we can do that From 0.5 if you have a 0.6 drill you can just like
+
+27
+00:26:35,580 --> 00:27:32,240
+Definitely less of the left over. True. More heights when I come back next time. Yeah. Yeah. For any reason. I hope it will not be service of a broken device, but whatever it will be. Extreme. We have too many devices around here. It's here. It's here. It's here. We have California. We have Nevada. We have Oregon. Those are easier to get to. Yeah. Yeah. I'm surprised there's not more.
+
+28
+00:27:32,240 --> 00:28:41,780
+material science stuff in Utah because it's so dry. So it's good that way, you know, and less humidity. Maybe Nevada's better though, because it's still dry and closer to sea level. I mean, the sea level, it shouldn't really matter. There kind of is more of it. It's more profitable than it is there. In this case, it's just about the independence. You have it all on site, maybe in the U.S., but those companies certainly...
+
+29
+00:28:41,780 --> 00:29:12,530
+The idea is good, but the problem is with the profit. Yeah, it's true. I think the U.S. government signed a law that they'll pay over market price for minerals, so that to encourage U.S. companies to like mine. Yeah, there is a lot of it. It's a pretty big stock market, but at the same time, relatively unstable. True.
+
+30
+00:29:12,530 --> 00:29:44,020
+Just a lot. Does Poland have a stock market? Yeah. Separate from other countries? Is it his own? That's cool. So there's probably, like I don't know, I don't know anything about stock market outside of the United States. So I'm pretty sure United Nations has a stock market, right? For the whole, for all Europe? In Europe? Yeah, yeah. Or is it specific to country like German stock market, France stock market?
+
+31
+00:29:44,020 --> 00:30:16,220
+Depends. On the app I'm using, it's based on the Lithuanian bank. It's like online. So there is a market which also takes Japan and everything else. Most of it trades in Europe. For example, there isn't basically no Poland. Oh, really? Yeah, just because the app didn't really update. That's too bad. But I have the US, which has different others.
+
+32
+00:30:16,220 --> 00:30:52,460
+the turbo the turbo pressure we use it to to help it warm up to atomize yes and then also to correct the stream direction to control it during the process if something goes incorrectly but often just applying more pressure would it would it help to do have the turbo pressure going um while it's cooling down to so that the nozzle stays clear and don't think it will help really if it gets clogged it gets clogged
+
+33
+00:31:06,930 --> 00:31:37,630
+The Polish stock market had a great moment recently, but for the next three years it will be pretty flat and then maybe go again. Just because it was like undervalued in comparison to the whole world. So it did go up. Let's see. So I'm just writing the steps down. So when we were ready to turn off, did we press this? Yeah, we go back to the melting pressure.
+
+34
+00:31:37,630 --> 00:32:11,790
+Take the ceiling rod down, just close the nozzle. Oh, was it this first? Doesn't matter. Okay. How you do it doesn't really matter. The best is to do it quickly, to stop the heating quickly, stop the vibrations quickly. Oh yeah, generator stop. Ceiling rod melting pressure, generator stop. And ultrasonic start. Ultrasonic start, okay. After the process, you just want to stop everything as soon as possible. There is no need to keep vibrations.
+
+35
+00:32:11,790 --> 00:32:46,540
+Sometimes it may cause the plate to get damaged because there will be solidified material on it. And if you make it vibrate for a long time with it, it may start breaking because of it. So you want to just shut everything down right after the... So in this case, we will take out the powder. Then take out the powder, take out the shasonry system, remove the plate, and we will change to the one-to-one. Okay. Sweet.
+
+36
+00:32:49,360 --> 00:33:33,470
+You press this to turn off the cooling, right? As you can see, you cannot start the vibrations without having it on. Oh, cool. Did we press pressure control? That was always like that, right? It stayed on, yeah. Okay. And then we also turned down the temperature. Now we wait for the temperature to go down enough that we can open the furnace so that the temperature goes down faster. And more or less at this point we can also open the chamber at 400.
+
+37
+00:33:33,470 --> 00:34:49,890
+It's just safe for the graphite. Oh, over 500, there is a faster degradation. Gotcha. Until Celsius. Mining in Utah? Yeah, there is some. I think they're doing more and more. Do you know Kennecott copper mine? It's actually the largest copper mine in the world. Right here. So they mine copper and silver, I think. Yeah, those are usually together. Makes sense.
+
+38
+00:34:49,890 --> 00:35:37,060
+So that's a really big one. And also in this part of Utah there's a lot too. This is Delta Valley. It's a big valley. Way bigger than Salt Lake. In Denver there is the whole university, the mining university. They definitely have more of material science and stuff. I like mining a lot. I'd like to do something with mining. The problem is the profit, exactly. I also say that...
+
+39
+00:35:37,060 --> 00:36:21,070
+Most of it is good, like having your own supply of air, you can get it, it's a whole thing. Yeah. And uranium is, especially right now, and there are typically more oil prices are high, so uranium should be like the thing to go to, but it's like, I wish we had a... Yeah. But finally I think there are going to be... Are people, people are warming up to it? Yeah. We already have like...
+
+40
+00:36:21,070 --> 00:37:03,920
+spot where it should be. The problem was more of the culture that people were protesting against. They were thinking about how bad it is. Same thing in America. So much of the cold. Yeah. With nuclear, it's a lot safer now than it was. We've learned a lot since the 70s. It's creating the small reactors as well. Yeah. Have you seen the one? It's like a modular nuclear reactor.
+
+41
+00:37:03,920 --> 00:37:49,200
+You can hook up together. All self-contained. It's really impressive. The profit is still relatively low. I think in case of 5-10 years, if the oil prices will remain relatively high. If you want to open it, you just need to remove the oil pressure first. It's kind of like preventing you from it anyway, so it makes you do that step.
+
+42
+00:37:49,940 --> 00:38:20,590
+It's still not so bad. In Poland, much worse. Prices of fuel. A few years ago, when it was like COVID time, and then the Ukrainian world, we were like, oh, the oil prices are high. And now it's 30% more. It's not good. This is still too hot to touch to do anything. 350 degrees. It's going to cool much faster.
+
+43
+00:38:21,200 --> 00:38:52,140
+So what you definitely want to do is start cleaning the chamber because this is all ice cold. Right after the process, this is all going to be really cold. There's water running through this too? Yes, everywhere. The whole chamber, the cones. So immediately after the process, it's all going to be cold. Wait. Oh. You still have more pressure inside. Oh. So we need to remove it. It's going to be relatively safe. If you open, you know, that's why we have three of those. Open one, it'll get a leak. Yeah.
+
+44
+00:38:52,140 --> 00:40:27,890
+But if you have powder inside, then you should wear a mask. That's true, that's true. Let's see, so... Remove the pressure control and press the band valve. Okay, now we need masks. Uranium? With the plasma? Wow. Why, what purpose? Question or idea? Where at? In Europe. Interesting. There is a lot of interest. The US as well, we do a lot of questions about it.
+
+45
+00:40:27,890 --> 00:41:17,840
+Did you set this one up already? Oh perfect, okay, so we're gonna open this right?
+
+46
+00:41:17,840 --> 00:42:46,610
+And that should be clean, more or less, everything. Bring it on there. Yeah. Wow, my voice is so quiet. Is the aluminum bad to get on the skin? What? Is the aluminum bad to get on the skin? Not that bad. Could be worse. Magnesium? Magnesium is completely loose though. Oh. Magnesium is the one that you can eat and your body will easily dissolve it. Wow. Okay. So clean, I need this paper towel, is it?
+
+47
+00:42:47,310 --> 00:43:40,540
+so first of all we just need to start it you will want to have a piece of paper maybe another one just to push through if there is any practical like coming down this is a good powder oh yeah it's good you just need to keep it here if any particles fall down if any particles fall down you will want to throw them back it's not much but i can feel the cool arbor coming out
+
+48
+00:43:40,540 --> 00:44:33,100
+And now you will want to use the brush to just remove this, this. Just throw it all back into the chamber. Thank you. We can test the vacuum later to remove the leftovers. Okay. But generally you want to get everything. Like here you also have some powder. And then you just throw it back into the chamber. Everything falls down the chamber. Everything is pushed down to the container.
+
+49
+00:44:33,970 --> 00:50:35,660
+If the ceramic bowl is not hot, you can just remove the larger piece and just throw everything, the powder, back into the top. That's the easiest way. And then we just like push it to the end. The powder in the new port, you know, the plate. If you want everything can go to the sliding. Everything can slide? It can just slide in or we can just remove the heat for you. Okay. All dust is down.
+
+50
+00:50:36,210 --> 00:51:19,950
+Now, can we open this? Yeah, now we need to open it. Push everything down into the container and remove it from the container. When I remove the powder, I usually pour it onto the piece of paper or anything, remove larger pieces and then slide it into the container. After we remove the container. For now, just brush it. Do we have any container from the powder?
+
+51
+00:51:19,950 --> 00:53:21,040
+Did Sterling get one? I don't know. Good thing it's not made of graphite. Let me shut down the cooling. Okay. It will just not boil the water anymore. At what temperature can you turn it off? I think it's 100, but sometimes if it's closed, I shut it down because it cools down slowly right now. But everything here is ice cold, so it will not damage the coil, especially with the furnace. Where's the toothbrush?
+
+52
+00:53:42,700 --> 00:54:20,660
+Just in case the valve on the container. Oh, gotcha. You need to pull it down and move it. Just in case it's heavier than it looks like. Sometimes it just falls and I just feel the powder. It's good. Is it not? How did you open it? Oh, gotcha. Now just this one. There's some powder on top. We can brush it later. I just want to secure what's inside so it doesn't spill.
+
+53
+00:54:20,660 --> 00:55:35,900
+There is a high chance that it's relatively heavy. So now we need to remove this little bit of powder here. Just brush it. We can open the valve and use a small brush to just pour this in the container or we can just move it somewhere else for storage. Some pieces we usually still exploit. So why can you remove them by hand or through a mesh? Okay. Just need something to store it.
+
+54
+00:55:35,900 --> 00:56:23,860
+Mario, can I take this off now? It's hot! This is why I left the laboratory. It's not to need to wear all the equipment. I still atomize from time to time. Even before coming here, I was atomizing Nittino by myself, but I try to avoid it. Yeah. Okay, take a breather break. And jar. Yeah, let's get a jar.
+
+55
+00:56:24,050 --> 00:56:34,180
+We're okay to leave it like this, right? Yeah, we can go to the... Is this still recording? Okay, good.
+

@@ -30,9 +30,9 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer Training Video 5](58wJ_Khwgyk_sheet.jpg)
 
 ## Atomizer Training Video 6
-`tfb4fsVNIFI` · 2026-09-29 · 0 frames · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
+`tfb4fsVNIFI` · 2026-09-29 · 1 frames · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
 
-_sheet not generated yet_
+![Atomizer Training Video 6](tfb4fsVNIFI_sheet.jpg)
 
 ## Atomizer training
 `Pk0K5sBz-sQ` · 2026-09-29 · 9 frames · [open paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=Pk0K5sBz-sQ)
