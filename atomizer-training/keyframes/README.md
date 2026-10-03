@@ -40,9 +40,9 @@ _sheet not generated yet_
 ![Atomizer training](Pk0K5sBz-sQ_sheet.jpg)
 
 ## Atomizer Training Video 7
-`FDRTt68Vfvo` · 2026-09-30 · 0 frames · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
+`FDRTt68Vfvo` · 2026-09-30 · 43 frames · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
 
-_sheet not generated yet_
+![Atomizer Training Video 7](FDRTt68Vfvo_sheet.jpg)
 
 ## Atomizer Training Video 8
 `HTlUrAr5HVU` · 2026-09-30 · 7 frames · [open paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=0) · [▶ watch](https://www.youtube.com/watch?v=HTlUrAr5HVU)
@@ -75,9 +75,9 @@ _sheet not generated yet_
 ![nzyjn0 atomization AlSi10Mg-Al6063](TFpU4uqVF9c_sheet.jpg)
 
 ## nzyjn0 AlSi10Mg-Al6063 dosing session
-`prj_xgeuQtM` · 2026-09-29 · 0 frames · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
+`prj_xgeuQtM` · 2026-09-29 · 34 frames · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
 
-_sheet not generated yet_
+![nzyjn0 AlSi10Mg-Al6063 dosing session](prj_xgeuQtM_sheet.jpg)
 
 ## Dosing Al 4047 powder
 `QXSj0j1OqL8` · 2026-10-01 · 12 frames · [open paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶ watch](https://www.youtube.com/watch?v=QXSj0j1OqL8)
