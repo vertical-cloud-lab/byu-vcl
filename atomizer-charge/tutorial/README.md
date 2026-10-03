@@ -1,6 +1,9 @@
 # Narrated tutorial: making the Al cups and plugs
 
-**Video: <https://youtu.be/nPIPvVh38Dw>** (unlisted, on the BYU Vertical Cloud Lab channel, uploaded 2026-10-03).
+**Video: <https://youtu.be/osx7moehRnE>** (unlisted, on the BYU Vertical Cloud Lab channel, uploaded 2026-10-03).
+An earlier upload of the same day, `nPIPvVh38Dw`, is superseded. Its narration said each cup went into its own bag,
+over footage showing them in one bag, and it gave .508 as a measured diameter rather than the target. The upload
+token can't delete videos, so it needs removing in YouTube Studio or by an `@claude-youtube` run.
 
 For [#248](https://github.com/vertical-cloud-lab/byu-vcl/issues/248): one video covering how the Al charge cups and their
 vented plugs from [#222](https://github.com/vertical-cloud-lab/byu-vcl/issues/222) are made. It's 6:44 long, narrated
