@@ -1,55 +1,522 @@
-[00:00] Okay, so now the warning is gone. Generator start is the start of the heating. This one? Yep. And generator stop is stop the opening. That makes sense. Radical is simple. I did not see. Did it get down to negative one bar when it was doing the purging? No. So I think it's done also because we are so high. It's not able to. It just can't. Oh, gotcha. Just based on how the sensors work.
-[01:22] Does that mean we can't get as good quality powder? No. In reality it's minus one, but it can only display minus eight something because it's checking the pressure of the air. So the pressure is the same as at sea level, but it just can't display it because it's calibrated at sea level. Can we recalibrate the sensors for here? To be honest, I have no idea. I think it's pretty.
-[01:51] This one, maybe, this one probably impossible. That's pretty interesting. That's like a 15% difference. For both, it's like, yeah. How big is the crucible? It's going to have a plug as big as one of these rods down the middle of it. So you're about, from the...
-[02:58] middle of the rod or the edge of the rod to the edge of the crucible on the inside is about 20 millimeters well it's a little more than that but i could do the math but that's that's great it's melting right now yeah we just go straight to a tunnel yeah oh okay so let's get the 250 step and let's just do that was it set up that high and we forgot to bring it down it stays at the value that you left it
-[03:45] So let's do the purging basically right now. Once of the furnace, then two types of the chamber and we will be good. Okay. Vacuum pump and the gas wash. Gas wash? Yeah. As long as the material did not melt, we can do it safely. Okay. I want to purge the chamber. I put vacuum pump, vacuum valve and then also gas wash or something different? Here we'll do the gas wash, growth over pressure.
-[05:07] Then we purge the chamber, go to overpressure and we can automate it right away. Just make sure to go directly to melting pressure after the final gas wash is finished. So normally we want to bring this to 250 Celsius? Yeah, I would say we do 250, 500. So we change it to 250 for this purge normally? Yeah. Obviously, nice. But you know, the principle is the same. Heat it up, purge it.
-[06:09] Okay, so normally change the temperature to 250 Celsius, and then we purge the furnace in the chamber. Then we change it to 500 Celsius and do the same thing. And then you're ready to atomize? Yep, and then go with the final temperature and melt everything.
-[09:04] Celsius for melting aluminum, right? So when we do something like copper, that's a lot higher melting temperature, you go... If it's not sticking out so much, it's going to be fine. I need to do it just because it's that way. I see. Now in conversion? I mean, you go to the value, productive gas, repeat it, and that's it.
-[10:48] It's the first time, so now protective gas. It's good to keep it, but if you see it's not going any further, after a moment, you just can go on with the therapy. Okay, now pressure control. Because it was just one or two times, you can just do it again. Oxygen level is pretty good, but... Okay, so now it's back. So we press pressure control. Yeah. So good, oxygen is low. So right now, we go up with the temperature.
-[12:47] And just press it and yeah. What's the melting temperature of graphite? Of the material? Of graphite. Of graphite. We're able to... I think you can easily heat it up to 2000. I think nothing will happen if there is no oxygen. If there is oxygen, the degradation can happen very quickly. The material is already going down. So reduce the temperature to 800. Okay.
-[14:49] I will need to do one more Uxasonics scan, I see. And we'll be ready to pour. Great. After it reaches 800, you see that it fully melts, waits two minutes, and it will pour. I wish I was supposed to pour it. Okay. Good. I forgot what I'm supposed to do. I think I just wait for two minutes until it's, like, it's already melted, so now it sits over two minutes and mixes. Oh, yeah. And then... Great. I don't know, I'll just wait for me to come back. I don't know if there's a pulp. Yeah. Perfect.
-[18:02] Okay, so it's fully melted. It's been mixing for, and you said about two minutes for this, right? Two minutes, yeah. So you cannot start it as soon as right now. We need to scan it again. There is a time after scan where you can use it. Otherwise, you need to scan it again just to make sure that it will work correctly right after. Scan is fine. This is ready. This is what the number that I put out? Yeah. This is like the frequency that it's right now calibrated to.
-[18:31] It should be a little bit over 40 kilohertz. Okay. So then it may drop a bit, but we are still very close to 40 kilohertz all the time. Okay, so if it does not put out above 40 kilohertz, then what do you need to do at that point? I mean, if you're using the parts we have here, it's impossible. Okay. But in the worst case scenario, screw everything, screw everything again, maybe the connection is loose. Gotcha. That may cause the frequency to be off.
-[19:12] Okay, so now it's good. I'm going to press ultrasonic start. Yeah, ultrasonic start and yeah, it vibrates. And now, what we need? Stealing rod up, raining pressure, and the hard part is that you need to use the turbo pressure, if needed, to push the material harder. Because there's not enough pressure to push it down? Sometimes, especially at the beginning, you need to push it through the nozzle, and then when the stream is getting stable,
-[19:41] you can stop it and it's going to be fine. It also helps to heat up the plate more at the very beginning. So you may need to use it, but you don't have to use it. It's just like, it helps sometimes. Also, it stabilizes the stream. If the stream starts to move a lot, using turbo pressure can help to like push it and unclog the nozzle from any small debris that is inside. That makes sense. Okay, so, okay, so...
-[20:12] Give it a try. If some of it falls or whatever, just get the feeding. That's the case. So I press sealing rod, draining pressure, and then... And then look what's happening. Look what's happening. Okay. Move the ultrasonic system and use turbo pressure to control it. Okay, it's missing it. It's a little bit too little, you see. It's gathering. It's not atomizing. The plate cannot fit up. So... You need more volume to get it atomized? Initially. I mean, initially...
-[20:44] It said I removed some leftovers and I heated the plate up. Because the material was falling down, but it wasn't getting fully atomized. There was also some material already on the plate. And you can see that it got stuck and it will solidify it. Yes. So I just poured more to heat up the plate, to wash all of it out. And right there you can see that... We're putting more again, right? Or is it okay? It's okay. It's pretty stable. Okay. What you can do, however, is...
-[21:14] look at it and like press it from time to time just to you know like it helps to ensure that it doesn't clog so like a small push from time to time but if you need to observe if there is too much muscular gathering don't then stop it if you see that it's atomizing so well but you see there's like some small movement the string is not as stable you can just give it a small push it helps
-[21:46] So you just press it and... Just press it for one moment, I think. Like a small push to stabilize this push. Is the position of the plate in a good spot vertically? Yeah. The bench is still first, like before, exactly in the middle, but sometimes you put the sliding band. Before, it's never 100% straight. Okay, I think it's done. So now if I'm still in, you're up? Yeah, you can take a look in the principle, make sure that...
-[22:34] It's all out. If it's allowed, use turbo pressure. Yeah, see? Still coming. Oh, yeah. Okay, now it works over. Yeah, nothing more, even with turbo pressure. So now melting pressure, sealing rod, generator stop, ultrasonic stop. Perfect, that's it. Cool. So when there is very little material, it may not want to pour. And then we need to help it with the turbo pressure. That makes sense. Plastic.
-[23:07] It helps to remove everything, sometimes it helps to clean the nozzle. But then I make sure that anything that could melt and go through, this goes through. But to be honest, this is all mostly about practice. Like getting the feeling, understanding the amount of material and if the atomization is happening or not. Because it may become the intuitive to pull more. Because if you pull more, there should be no atomization because there will be too much material.
-[23:36] limited energy, too much material. But in this case, you lose a droplet, but the plate heats up, the material wets it, and everything else is atomizing very quickly. So when it first starts, is it best to have the plate out of the way at first, and then put it under? No, poor strain on the plate, but just sometimes you may need a little bit more steam at the beginning. Metal plates will heat up faster.
-[24:02] Gotcha. They are very thin. They will heat up in one spot. Does it heat up because the aluminum hits it and stops it from vibrating? No, that's the temperature of the aluminum. Oh, okay. You need the specific conditions to get the wetting. Wetting means that the material is having kind of connection to the plate so that the vibrations can go through. If it's just like a droplet sitting on it, it will bounce.
-[24:32] If it's wetting, the vibrations will go through, there is like this whole effect of internal cavitation and so on, but it ends up in the droplets being released from the surface. Interesting. There's a whole lot of paper about this. Do I need to bring this temperature down? I don't know. The generator stopped means that it's not heating, it's going down by itself. Okay. And we can just stop the transportation.
-[25:02] If we put it down to 250 just for next time, is that a good idea? Yeah, we can already have it. It's not changing anything right now. Let off too early and now it takes a long time.
-[26:04] Yeah, I think make bigger nozzles. Yeah something around 0.7 millimeter or whatever closes to that I bet I bet we can do that From 0.5 if you have a 0.6 drill you can just like
-[26:35] Definitely less of the left over. True. More heights when I come back next time. Yeah. Yeah. For any reason. I hope it will not be service of a broken device, but whatever it will be. Extreme. We have too many devices around here. It's here. It's here. It's here. We have California. We have Nevada. We have Oregon. Those are easier to get to. Yeah. Yeah. I'm surprised there's not more.
-[27:32] material science stuff in Utah because it's so dry. So it's good that way, you know, and less humidity. Maybe Nevada's better though, because it's still dry and closer to sea level. I mean, the sea level, it shouldn't really matter. There kind of is more of it. It's more profitable than it is there. In this case, it's just about the independence. You have it all on site, maybe in the U.S., but those companies certainly...
-[28:41] The idea is good, but the problem is with the profit. Yeah, it's true. I think the U.S. government signed a law that they'll pay over market price for minerals, so that to encourage U.S. companies to like mine. Yeah, there is a lot of it. It's a pretty big stock market, but at the same time, relatively unstable. True.
-[29:12] Just a lot. Does Poland have a stock market? Yeah. Separate from other countries? Is it his own? That's cool. So there's probably, like I don't know, I don't know anything about stock market outside of the United States. So I'm pretty sure United Nations has a stock market, right? For the whole, for all Europe? In Europe? Yeah, yeah. Or is it specific to country like German stock market, France stock market?
-[29:44] Depends. On the app I'm using, it's based on the Lithuanian bank. It's like online. So there is a market which also takes Japan and everything else. Most of it trades in Europe. For example, there isn't basically no Poland. Oh, really? Yeah, just because the app didn't really update. That's too bad. But I have the US, which has different others.
-[30:16] the turbo the turbo pressure we use it to to help it warm up to atomize yes and then also to correct the stream direction to control it during the process if something goes incorrectly but often just applying more pressure would it would it help to do have the turbo pressure going um while it's cooling down to so that the nozzle stays clear and don't think it will help really if it gets clogged it gets clogged
-[31:06] The Polish stock market had a great moment recently, but for the next three years it will be pretty flat and then maybe go again. Just because it was like undervalued in comparison to the whole world. So it did go up. Let's see. So I'm just writing the steps down. So when we were ready to turn off, did we press this? Yeah, we go back to the melting pressure.
-[31:37] Take the ceiling rod down, just close the nozzle. Oh, was it this first? Doesn't matter. Okay. How you do it doesn't really matter. The best is to do it quickly, to stop the heating quickly, stop the vibrations quickly. Oh yeah, generator stop. Ceiling rod melting pressure, generator stop. And ultrasonic start. Ultrasonic start, okay. After the process, you just want to stop everything as soon as possible. There is no need to keep vibrations.
-[32:11] Sometimes it may cause the plate to get damaged because there will be solidified material on it. And if you make it vibrate for a long time with it, it may start breaking because of it. So you want to just shut everything down right after the... So in this case, we will take out the powder. Then take out the powder, take out the shasonry system, remove the plate, and we will change to the one-to-one. Okay. Sweet.
-[32:49] You press this to turn off the cooling, right? As you can see, you cannot start the vibrations without having it on. Oh, cool. Did we press pressure control? That was always like that, right? It stayed on, yeah. Okay. And then we also turned down the temperature. Now we wait for the temperature to go down enough that we can open the furnace so that the temperature goes down faster. And more or less at this point we can also open the chamber at 400.
-[33:33] It's just safe for the graphite. Oh, over 500, there is a faster degradation. Gotcha. Until Celsius. Mining in Utah? Yeah, there is some. I think they're doing more and more. Do you know Kennecott copper mine? It's actually the largest copper mine in the world. Right here. So they mine copper and silver, I think. Yeah, those are usually together. Makes sense.
-[34:49] So that's a really big one. And also in this part of Utah there's a lot too. This is Delta Valley. It's a big valley. Way bigger than Salt Lake. In Denver there is the whole university, the mining university. They definitely have more of material science and stuff. I like mining a lot. I'd like to do something with mining. The problem is the profit, exactly. I also say that...
-[35:37] Most of it is good, like having your own supply of air, you can get it, it's a whole thing. Yeah. And uranium is, especially right now, and there are typically more oil prices are high, so uranium should be like the thing to go to, but it's like, I wish we had a... Yeah. But finally I think there are going to be... Are people, people are warming up to it? Yeah. We already have like...
-[36:21] spot where it should be. The problem was more of the culture that people were protesting against. They were thinking about how bad it is. Same thing in America. So much of the cold. Yeah. With nuclear, it's a lot safer now than it was. We've learned a lot since the 70s. It's creating the small reactors as well. Yeah. Have you seen the one? It's like a modular nuclear reactor.
-[37:03] You can hook up together. All self-contained. It's really impressive. The profit is still relatively low. I think in case of 5-10 years, if the oil prices will remain relatively high. If you want to open it, you just need to remove the oil pressure first. It's kind of like preventing you from it anyway, so it makes you do that step.
-[37:49] It's still not so bad. In Poland, much worse. Prices of fuel. A few years ago, when it was like COVID time, and then the Ukrainian world, we were like, oh, the oil prices are high. And now it's 30% more. It's not good. This is still too hot to touch to do anything. 350 degrees. It's going to cool much faster.
-[38:21] So what you definitely want to do is start cleaning the chamber because this is all ice cold. Right after the process, this is all going to be really cold. There's water running through this too? Yes, everywhere. The whole chamber, the cones. So immediately after the process, it's all going to be cold. Wait. Oh. You still have more pressure inside. Oh. So we need to remove it. It's going to be relatively safe. If you open, you know, that's why we have three of those. Open one, it'll get a leak. Yeah.
-[38:52] But if you have powder inside, then you should wear a mask. That's true, that's true. Let's see, so... Remove the pressure control and press the band valve. Okay, now we need masks. Uranium? With the plasma? Wow. Why, what purpose? Question or idea? Where at? In Europe. Interesting. There is a lot of interest. The US as well, we do a lot of questions about it.
-[40:27] Did you set this one up already? Oh perfect, okay, so we're gonna open this right?
-[41:17] And that should be clean, more or less, everything. Bring it on there. Yeah. Wow, my voice is so quiet. Is the aluminum bad to get on the skin? What? Is the aluminum bad to get on the skin? Not that bad. Could be worse. Magnesium? Magnesium is completely loose though. Oh. Magnesium is the one that you can eat and your body will easily dissolve it. Wow. Okay. So clean, I need this paper towel, is it?
-[42:47] so first of all we just need to start it you will want to have a piece of paper maybe another one just to push through if there is any practical like coming down this is a good powder oh yeah it's good you just need to keep it here if any particles fall down if any particles fall down you will want to throw them back it's not much but i can feel the cool arbor coming out
-[43:40] And now you will want to use the brush to just remove this, this. Just throw it all back into the chamber. Thank you. We can test the vacuum later to remove the leftovers. Okay. But generally you want to get everything. Like here you also have some powder. And then you just throw it back into the chamber. Everything falls down the chamber. Everything is pushed down to the container.
-[44:33] If the ceramic bowl is not hot, you can just remove the larger piece and just throw everything, the powder, back into the top. That's the easiest way. And then we just like push it to the end. The powder in the new port, you know, the plate. If you want everything can go to the sliding. Everything can slide? It can just slide in or we can just remove the heat for you. Okay. All dust is down.
-[50:36] Now, can we open this? Yeah, now we need to open it. Push everything down into the container and remove it from the container. When I remove the powder, I usually pour it onto the piece of paper or anything, remove larger pieces and then slide it into the container. After we remove the container. For now, just brush it. Do we have any container from the powder?
-[51:19] Did Sterling get one? I don't know. Good thing it's not made of graphite. Let me shut down the cooling. Okay. It will just not boil the water anymore. At what temperature can you turn it off? I think it's 100, but sometimes if it's closed, I shut it down because it cools down slowly right now. But everything here is ice cold, so it will not damage the coil, especially with the furnace. Where's the toothbrush?
-[53:42] Just in case the valve on the container. Oh, gotcha. You need to pull it down and move it. Just in case it's heavier than it looks like. Sometimes it just falls and I just feel the powder. It's good. Is it not? How did you open it? Oh, gotcha. Now just this one. There's some powder on top. We can brush it later. I just want to secure what's inside so it doesn't spill.
-[54:20] There is a high chance that it's relatively heavy. So now we need to remove this little bit of powder here. Just brush it. We can open the valve and use a small brush to just pour this in the container or we can just move it somewhere else for storage. Some pieces we usually still exploit. So why can you remove them by hand or through a mesh? Okay. Just need something to store it.
-[55:35] Mario, can I take this off now? It's hot! This is why I left the laboratory. It's not to need to wear all the equipment. I still atomize from time to time. Even before coming here, I was atomizing Nittino by myself, but I try to avoid it. Yeah. Okay, take a breather break. And jar. Yeah, let's get a jar.
-[56:24] We're okay to leave it like this, right? Yeah, we can go to the... Is this still recording? Okay, good.
+[00:26] Okay, so now the warning is gone.
+[00:30] Generator start is the start of the heating.
+[00:32] This one?
+[00:33] Yep.
+[00:34] And generator stop is stop the opening.
+[00:37] That makes sense.
+[00:38] Radical is simple.
+[01:07] I did not see.
+[01:08] Did it get down to negative one bar when it was doing the purging?
+[01:11] No.
+[01:11] So I think it's done also because we are so high.
+[01:14] It's not able to.
+[01:16] It just can't.
+[01:17] Oh, gotcha.
+[01:18] Just based on how the sensors work.
+[01:22] Does that mean we can't get as good quality powder?
+[01:25] No.
+[01:27] In reality it's minus one, but it can only display minus eight something because it's checking the pressure of the air.
+[01:39] So the pressure is the same as at sea level, but it just can't display it because it's calibrated at sea level.
+[01:45] Can we recalibrate the sensors for here?
+[01:46] To be honest, I have no idea.
+[01:49] I think it's pretty.
+[01:57] This one, maybe, this one probably impossible.
+[02:05] That's pretty interesting.
+[02:06] That's like a 15% difference.
+[02:09] For both, it's like, yeah.
+[02:12] How big is
+[02:42] the crucible?
+[02:48] It's going to have a plug as big as one of these rods down the middle of it.
+[02:56] So you're about, from the...
+[02:58] middle of the rod or the edge of the rod to the edge of the crucible on the inside is about 20 millimeters well it's a little more than that but i could do the math but that's that's great it's
+[03:23] melting right now yeah we just go straight to a tunnel yeah oh okay so let's get the 250 step and let's just do that was
+[03:37] it set up that high and we forgot to bring it down it stays at the value that you left it
+[03:45] So let's do the purging basically right now.
+[03:50] Once of the furnace, then two types of the chamber and we will be good.
+[03:54] Okay.
+[03:56] Vacuum pump and the gas wash.
+[03:59] Gas wash?
+[04:00] Yeah.
+[04:01] As long as the material did not melt, we can do it safely.
+[04:04] Okay.
+[04:04] I want
+[04:57] to purge the chamber.
+[04:59] I put vacuum pump, vacuum valve and then also gas wash or something different?
+[05:04] Here we'll do the gas wash, growth over pressure.
+[05:07] Then we purge the chamber, go to overpressure and we can automate it right away.
+[05:16] Just make sure to go directly to melting pressure after the final gas wash is finished.
+[05:48] So normally we want to bring this to 250 Celsius?
+[05:52] Yeah, I would say we do 250, 500.
+[05:59] So we change it to 250 for this purge normally?
+[06:02] Yeah.
+[06:03] Obviously, nice.
+[06:04] But you know, the principle is the same.
+[06:06] Heat it up, purge it.
+[06:18] Okay, so normally
+[08:17] change the temperature to 250 Celsius, and then we purge the furnace in the chamber.
+[08:27] Then we change it to 500 Celsius and do the same thing.
+[08:31] And then you're ready to atomize?
+[08:34] Yep, and then go with the final temperature and melt everything.
+[09:04] Celsius for melting aluminum, right?
+[09:16] So when we do something like copper, that's a lot higher melting temperature, you go...
+[09:20] If it's not sticking out so much, it's going to be fine.
+[09:23] I need to do it just because it's that way.
+[09:26] I see.
+[10:38] Now in conversion?
+[10:40] I mean, you go to the value, productive gas, repeat it, and that's it.
+[10:48] It's the first time, so now protective gas.
+[10:51] It's good to keep it, but if you see it's not going any further, after a moment, you just can go on with the therapy.
+[11:06] Okay, now pressure control.
+[11:10] Because it was just one or two times, you can just do it again.
+[11:18] Oxygen level is pretty good, but...
+[12:15] Okay, so now it's back.
+[12:17] So we press pressure control.
+[12:19] Yeah.
+[12:40] So good, oxygen is low.
+[12:42] So right now, we go up with the temperature.
+[12:47] And just press it and yeah.
+[14:15] What's the melting temperature of graphite?
+[14:18] Of the material?
+[14:20] Of graphite.
+[14:20] Of graphite.
+[14:22] We're able to...
+[14:23] I think you can easily heat it up to 2000.
+[14:28] I think nothing will happen if there is no oxygen.
+[14:35] If there is oxygen, the degradation can happen very quickly.
+[14:40] The material is already going down.
+[14:45] So reduce the temperature to 800.
+[14:47] Okay.
+[14:49] I will need to do one more Uxasonics scan, I see.
+[14:53] And we'll be ready to pour.
+[14:55] Great.
+[14:56] After it reaches 800, you see that it fully melts, waits two minutes, and it will pour.
+[15:01] I wish I was supposed to pour it.
+[15:03] Okay.
+[17:44] Good.
+[17:45] I forgot what I'm supposed to do.
+[17:46] I think I just wait for two minutes until it's, like, it's already melted, so now it sits over two minutes and mixes.
+[17:54] Oh, yeah.
+[17:54] And then...
+[17:56] Great.
+[17:56] I don't know, I'll just wait for me to come back.
+[17:58] I don't know if there's a pulp.
+[17:59] Yeah.
+[17:59] Perfect.
+[18:02] Okay, so it's fully melted.
+[18:04] It's been mixing for, and you said about two minutes for this, right?
+[18:08] Two minutes, yeah.
+[18:08] So you cannot start it as soon as right now.
+[18:11] We need to scan it again.
+[18:12] There is a time after scan where you can use it.
+[18:15] Otherwise, you need to scan it again just to make sure that it will work correctly right after.
+[18:21] Scan is fine.
+[18:22] This is ready.
+[18:23] This is what the number that I put out?
+[18:25] Yeah.
+[18:25] This is like the frequency that it's right now calibrated to.
+[18:31] It should be a little bit over 40 kilohertz.
+[18:35] Okay.
+[18:37] So then it may drop a bit, but we are still very close to 40 kilohertz all the time.
+[18:53] Okay, so if it does not put out above 40 kilohertz, then what do you need to do at that point?
+[18:58] I mean, if you're using the parts we have here, it's impossible.
+[19:02] Okay.
+[19:03] But in the worst case scenario, screw everything, screw everything again, maybe the connection is loose.
+[19:08] Gotcha.
+[19:09] That may cause the frequency to be off.
+[19:12] Okay, so now it's good.
+[19:13] I'm going to press ultrasonic start.
+[19:15] Yeah, ultrasonic start and yeah, it vibrates.
+[19:20] And now, what we need?
+[19:22] Stealing rod up, raining pressure, and the hard part is that you need to use the turbo pressure, if needed, to push the material harder.
+[19:31] Because there's not enough pressure to push it down?
+[19:33] Sometimes, especially at the beginning, you need to push it through the nozzle, and then when the stream is getting stable,
+[19:41] you can stop it and it's going to be fine.
+[19:44] It also helps to heat up the plate more at the very beginning.
+[19:47] So you may need to use it, but you don't have to use it.
+[19:51] It's just like, it helps sometimes.
+[19:54] Also, it stabilizes the stream.
+[19:56] If the stream starts to move a lot, using turbo pressure can help to like push it and unclog the nozzle from any small debris that is inside.
+[20:07] That makes sense.
+[20:09] Okay, so, okay, so...
+[20:12] Give it a try.
+[20:13] If some of it falls or whatever, just get the feeding.
+[20:18] That's the case.
+[20:19] So I press sealing rod, draining pressure, and then...
+[20:21] And then look what's happening.
+[20:22] Look what's happening.
+[20:23] Okay.
+[20:23] Move the ultrasonic system and use turbo pressure to control it.
+[20:29] Okay, it's missing it.
+[20:32] It's a little bit too little, you see.
+[20:34] It's gathering.
+[20:35] It's not atomizing.
+[20:37] The plate cannot fit up.
+[20:39] So...
+[20:40] You need more volume to get it atomized?
+[20:42] Initially.
+[20:43] I mean, initially...
+[20:44] It said I removed some leftovers and I heated the plate up.
+[20:49] Because the material was falling down, but it wasn't getting fully atomized.
+[20:53] There was also some material already on the plate.
+[20:56] And you can see that it got stuck and it will solidify it.
+[21:00] Yes.
+[21:00] So I just poured more to heat up the plate, to wash all of it out.
+[21:06] And right there you can see that...
+[21:08] We're putting more again, right?
+[21:09] Or is it okay?
+[21:10] It's okay.
+[21:10] It's pretty stable.
+[21:12] Okay.
+[21:12] What you can do, however, is...
+[21:14] look at it and like press it from time to time just to you know like it helps to ensure that it doesn't clog so like a small push
+[21:27] from time to time but if you need to observe if there is too much muscular gathering don't then stop it if you see that it's atomizing so well but you see there's like some small movement
+[21:39] the string is not as stable you can just give it a small push it helps
+[21:47] So you just press it and...
+[21:48] Just press it for one moment, I think.
+[21:52] Like a small push to stabilize this push.
+[22:04] Is the position of the plate in a good spot vertically?
+[22:08] Yeah.
+[22:10] The bench is still first, like before, exactly in the middle, but sometimes you put the sliding band.
+[22:16] Before, it's never 100% straight.
+[22:28] Okay, I think it's done.
+[22:31] So now if I'm still in, you're up?
+[22:32] Yeah, you can take a look in the principle, make sure that...
+[22:34] It's all out.
+[22:35] If it's allowed, use turbo pressure.
+[22:37] Yeah, see?
+[22:38] Still coming.
+[22:39] Oh, yeah.
+[22:42] Okay, now it works over.
+[22:44] Yeah, nothing more, even with turbo pressure.
+[22:47] So now melting pressure, sealing rod, generator stop, ultrasonic stop.
+[22:56] Perfect, that's it.
+[22:57] Cool.
+[22:58] So when there is very little material, it may not want to pour.
+[23:02] And then we need to help it with the turbo pressure.
+[23:05] That makes sense.
+[23:06] Plastic.
+[23:07] It helps to remove everything, sometimes it helps to clean the nozzle.
+[23:12] But then I make sure that anything that could melt and go through, this goes through.
+[23:18] But to be honest, this is all mostly about practice.
+[23:22] Like getting the feeling, understanding the amount of material and if the atomization is happening or not.
+[23:28] Because it may become the intuitive to pull more.
+[23:31] Because if you pull more, there should be no atomization because there will be too much material.
+[23:37] limited energy, too much material.
+[23:39] But in this case, you lose a droplet, but the plate heats up, the material wets it, and everything else is atomizing very quickly.
+[23:49] So when it first starts, is it best to have the plate out of the way at first, and then put it under?
+[23:55] No, poor strain on the plate, but just sometimes you may need a little bit more steam at the beginning.
+[24:00] Metal plates will heat up faster.
+[24:02] Gotcha.
+[24:03] They are very thin.
+[24:04] They will heat up in one spot.
+[24:05] Does it heat up because the aluminum hits it and stops it from vibrating?
+[24:10] No, that's the temperature of the aluminum.
+[24:14] Oh, okay.
+[24:16] You need the specific conditions to get the wetting.
+[24:19] Wetting means that the material is having kind of connection to the plate so that the vibrations can go through.
+[24:29] If it's just like a droplet sitting on it, it will bounce.
+[24:32] If it's wetting, the vibrations will go through, there is like this whole effect of internal cavitation and so on, but it ends up in the droplets being released from the
+[24:44] surface.
+[24:45] Interesting.
+[24:47] There's a whole lot of paper about this.
+[24:49] Do I need to bring this temperature down?
+[24:51] I don't know.
+[24:52] The generator stopped means that it's not heating, it's going down by itself.
+[24:57] Okay.
+[24:58] And we can just stop the transportation.
+[25:03] If we put it down to 250 just for next time, is that a good idea?
+[25:07] Yeah, we can already have it.
+[25:09] It's not changing anything right now.
+[25:11] Let off too
+[25:33] early and now it takes a long time.
+[26:04] Yeah, I think make bigger nozzles.
+[26:09] Yeah something around 0.7 millimeter or whatever closes to that I bet I bet we can do that From
+[26:22] 0.5 if you have a 0.6 drill you can just like
+[26:35] Definitely less of the left over.
+[26:37] True.
+[26:38] More heights
+[26:56] when I come back next time.
+[26:58] Yeah.
+[26:58] Yeah.
+[26:59] For any reason.
+[27:01] I hope it will not be service of a broken device, but whatever it will be.
+[27:10] Extreme.
+[27:11] We have too many devices around here.
+[27:16] It's here.
+[27:17] It's here.
+[27:18] It's here.
+[27:18] We have California.
+[27:21] We have Nevada.
+[27:22] We have Oregon.
+[27:26] Those are easier to get to.
+[27:28] Yeah.
+[27:28] Yeah.
+[27:30] I'm surprised there's not more.
+[27:32] material science stuff in Utah because it's so dry.
+[27:35] So it's good that way, you know, and less humidity.
+[27:38] Maybe Nevada's better though, because it's still dry and closer to sea level.
+[27:42] I mean, the sea level, it shouldn't really matter.
+[28:16] There kind of is more of
+[28:28] it.
+[28:28] It's more profitable than it is there.
+[28:30] In this case, it's just about the independence.
+[28:34] You have it all on site, maybe in the U.S., but those companies certainly...
+[28:41] The idea is good, but the problem is with the profit.
+[28:46] Yeah, it's true.
+[28:47] I think the U.S.
+[28:49] government signed a law that they'll pay over market price for minerals, so that to encourage U.S.
+[28:57] companies to like mine.
+[28:58] Yeah, there is a lot of it.
+[29:02] It's a pretty big stock market, but at the same time, relatively unstable.
+[29:09] True.
+[29:12] Just a lot.
+[29:13] Does Poland have a stock market?
+[29:15] Yeah.
+[29:16] Separate from other countries?
+[29:17] Is it his own?
+[29:19] That's cool.
+[29:23] So there's probably, like I don't know, I don't know anything about stock market outside of the United States.
+[29:28] So I'm pretty sure United Nations has a stock market, right?
+[29:33] For the whole, for all Europe?
+[29:34] In Europe?
+[29:35] Yeah, yeah.
+[29:36] Or is it specific to country like German stock market, France stock market?
+[29:44] Depends.
+[29:44] On the app I'm using, it's based on the Lithuanian bank.
+[29:50] It's like online.
+[29:51] So there is a market which also takes Japan and everything else.
+[29:58] Most of it trades in Europe.
+[30:01] For example, there isn't basically no Poland.
+[30:04] Oh, really?
+[30:05] Yeah, just because the app didn't really update.
+[30:07] That's too bad.
+[30:08] But I have the US, which has different others.
+[30:16] the turbo the turbo pressure we use it to to help it warm up to atomize yes and then also to correct the stream direction to control it during the process if something goes incorrectly
+[30:28] but often just applying more pressure would it would it help to do have the turbo
+[30:40] pressure going um while it's cooling down to so that the nozzle stays clear and don't think it will help really if it gets clogged it gets clogged
+[30:52] The Polish
+[31:07] stock market had a great moment recently, but for the next three years it will be pretty flat and then maybe go again.
+[31:15] Just because it was like undervalued in comparison to the whole world.
+[31:21] So it did go up.
+[31:27] Let's see.
+[31:28] So I'm just writing the steps down.
+[31:31] So when we were ready to turn off, did we press this?
+[31:34] Yeah, we go back to the melting pressure.
+[31:37] Take the ceiling rod down, just close the nozzle.
+[31:40] Oh, was it this first?
+[31:41] Doesn't matter.
+[31:42] Okay.
+[31:44] How you do it doesn't really matter.
+[31:49] The best is to do it quickly, to stop the heating quickly, stop the vibrations quickly.
+[31:55] Oh yeah, generator stop.
+[31:56] Ceiling rod melting pressure, generator stop.
+[31:58] And ultrasonic start.
+[32:00] Ultrasonic start, okay.
+[32:01] After the process, you just want to stop everything as soon as possible.
+[32:09] There is no need to keep vibrations.
+[32:11] Sometimes it may cause the plate to get damaged because there will be solidified material on it.
+[32:18] And if you make it vibrate for a long time with it, it may start breaking because of it.
+[32:23] So you want to just shut everything down right after the...
+[32:27] So in this case, we will take out the powder.
+[32:30] Then take out the powder, take out the shasonry system, remove the plate, and we will change to the one-to-one.
+[32:41] Okay.
+[32:45] Sweet.
+[32:49] You press this to turn off the cooling, right?
+[32:54] As you can see, you cannot start the vibrations without having it on.
+[32:59] Oh, cool.
+[33:12] Did we press pressure control?
+[33:13] That was always like that, right?
+[33:15] It stayed on, yeah.
+[33:16] Okay.
+[33:17] And then we also turned down the temperature.
+[33:22] Now we wait for the temperature to go down enough that we can open the furnace so that the temperature goes down faster.
+[33:29] And more or less at this point we can also open the chamber at 400.
+[33:33] It's just safe for the graphite.
+[33:35] Oh, over 500, there is a faster degradation.
+[33:40] Gotcha.
+[34:13] Until Celsius.
+[34:27] Mining in Utah?
+[34:29] Yeah, there is some.
+[34:31] I think they're doing more and more.
+[34:33] Do you know Kennecott copper mine?
+[34:35] It's actually the largest copper mine in the world.
+[34:39] Right here.
+[34:41] So they mine copper and silver, I think.
+[34:45] Yeah, those are usually together.
+[34:47] Makes sense.
+[34:49] So that's a really big one.
+[34:51] And also in this part of Utah there's a lot too.
+[34:56] This is Delta Valley.
+[34:58] It's a big valley.
+[35:00] Way bigger than Salt Lake.
+[35:04] In Denver there is the whole university, the mining university.
+[35:10] They definitely have more of material science and stuff.
+[35:14] I like mining a lot.
+[35:16] I'd like to do something with mining.
+[35:32] The problem is the profit, exactly.
+[35:35] I also say that...
+[35:37] Most of it is good, like having your own supply of air, you can get it, it's a whole thing.
+[35:49] Yeah.
+[35:49] And uranium is, especially right now, and there are typically more oil prices are high, so
+[36:03] uranium should be like the thing to go to, but it's like, I wish we had a...
+[36:13] Yeah.
+[36:14] But finally I think there are going to be...
+[36:17] Are people, people are warming up to it?
+[36:19] Yeah.
+[36:19] We already have like...
+[36:21] spot where it should be.
+[36:22] The problem was more of the culture that people were protesting against.
+[36:26] They were thinking about how bad it is.
+[36:29] Same thing in America.
+[36:31] So much of the cold.
+[36:36] Yeah.
+[36:38] With nuclear, it's a lot safer now than it was.
+[36:44] We've learned a lot since the 70s.
+[36:48] It's creating the small reactors as well.
+[36:59] Yeah.
+[37:00] Have you seen the one?
+[37:01] It's like a modular nuclear reactor.
+[37:03] You can hook up together.
+[37:05] All self-contained.
+[37:07] It's really impressive.
+[37:10] The profit is still relatively low.
+[37:14] I think in case of 5-10 years, if the oil prices
+[37:26] will remain relatively high.
+[37:28] If you want to open it, you just need to remove the oil pressure first.
+[37:34] It's kind of like preventing you from it anyway, so it makes you do that step.
+[37:49] It's still not so bad.
+[37:51] In Poland, much worse.
+[37:54] Prices of fuel.
+[37:55] A few years ago, when it was like COVID time, and then the Ukrainian world, we were like, oh, the oil prices are high.
+[38:03] And now it's 30% more.
+[38:08] It's not good.
+[38:12] This is still too hot to touch to do anything.
+[38:15] 350 degrees.
+[38:18] It's going to cool much faster.
+[38:21] So what you definitely want to do is start cleaning the chamber because this is all ice cold.
+[38:26] Right after the process, this is all going to be really cold.
+[38:31] There's water running through this too?
+[38:33] Yes, everywhere.
+[38:34] The whole chamber, the cones.
+[38:37] So immediately after the process, it's all going to be cold.
+[38:40] Wait.
+[38:41] Oh.
+[38:41] You still have more pressure inside.
+[38:43] Oh.
+[38:43] So we need to remove it.
+[38:45] It's going to be relatively safe.
+[38:47] If you open, you know, that's why we have three of those.
+[38:49] Open one, it'll get a leak.
+[38:51] Yeah.
+[38:52] But if you have powder inside, then you should wear a mask.
+[38:56] That's true, that's true.
+[38:59] Let's see, so...
+[39:00] Remove the pressure control and press the band valve.
+[39:35] Okay, now we need masks.
+[40:06] Uranium?
+[40:07] With the plasma?
+[40:09] Wow.
+[40:12] Why, what purpose?
+[40:16] Question or idea?
+[40:17] Where at?
+[40:19] In Europe.
+[40:22] Interesting.
+[40:23] There is a lot of interest.
+[40:25] The US as well, we do a lot of questions about it.
+[40:40] Did you set this one up already?
+[40:49] Oh perfect, okay, so we're gonna open this right?
+[41:17] And that should be clean, more or less, everything.
+[41:19] Bring it on there.
+[41:34] Yeah.
+[41:36] Wow, my voice is so quiet.
+[41:38] Is the
+[42:19] aluminum bad to get on the skin?
+[42:21] What?
+[42:22] Is the aluminum bad to get on the skin?
+[42:24] Not that bad.
+[42:28] Could be worse.
+[42:31] Magnesium?
+[42:32] Magnesium is completely loose though.
+[42:34] Oh.
+[42:37] Magnesium is the one that you can eat and your body will easily dissolve it.
+[42:41] Wow.
+[42:43] Okay.
+[42:44] So clean, I need this paper towel, is it?
+[42:47] so first of all we just need to start it you will want to have a piece of paper maybe another one just to push through if there is any practical like coming down this is a good powder oh
+[43:05] yeah it's good you just need to keep it here if any particles fall down if any particles fall down you will want to throw them back it's
+[43:31] not much but i can feel the cool arbor coming out
+[43:40] And now you will want to use the brush to just remove this, this.
+[43:45] Just throw it all back into the chamber.
+[43:52] Thank you.
+[43:53] We can
+[44:05] test the vacuum later to remove the leftovers.
+[44:09] Okay.
+[44:10] But generally you want to get everything.
+[44:12] Like here you also have some powder.
+[44:24] And then you just throw it back into the chamber.
+[44:27] Everything falls down the chamber.
+[44:29] Everything is pushed down to the container.
+[44:34] If the ceramic bowl is not hot, you can just remove the larger piece and just throw everything, the powder, back into the top.
+[44:45] That's the easiest way.
+[44:46] And then we just like push it to the end.
+[44:57] The powder in the new port, you know, the
+[45:10] plate.
+[45:22] If you want everything can go to the sliding.
+[45:26] Everything can slide?
+[45:28] It can just slide in or we can just remove the heat for you.
+[45:48] Okay.
+[50:33] All dust is down.
+[50:37] Now, can we open this?
+[50:38] Yeah, now we need to open it.
+[50:40] Push everything down into the container and remove it from the container.
+[50:51] When I remove the powder, I usually pour it onto the piece of paper or anything, remove larger pieces and then slide it into the container.
+[51:06] After we remove the container.
+[51:08] For now, just brush it.
+[51:11] Do we have any container from the powder?
+[51:19] Did Sterling get one?
+[51:21] I don't know.
+[52:07] Good thing it's not made of graphite.
+[52:27] Let me shut down the cooling.
+[52:29] Okay.
+[52:30] It will just not boil the water anymore.
+[52:40] At what temperature can you turn it off?
+[52:42] I think it's 100, but sometimes if it's closed, I shut it down because it cools down slowly right now.
+[52:50] But everything here is ice cold, so it will not damage the coil, especially with the furnace.
+[53:18] Where's the toothbrush?
+[53:21] Just in
+[53:42] case the valve on the container.
+[53:44] Oh, gotcha.
+[53:45] You need to pull it down and move it.
+[53:49] Just in case it's heavier than it looks like.
+[53:53] Sometimes it just falls and I just feel the powder.
+[53:56] It's good.
+[53:57] Is it not?
+[53:58] How did you open it?
+[54:02] Oh, gotcha.
+[54:05] Now just this one.
+[54:07] There's some powder on top.
+[54:13] We can brush it later.
+[54:15] I just want to secure what's inside so it doesn't spill.
+[54:20] There is a high chance that it's relatively heavy.
+[54:31] So now we need to remove this little bit of powder here.
+[54:34] Just brush it.
+[54:42] We can open the valve and use a small brush to just pour this
+[55:13] in the container or we can just move it somewhere else for storage.
+[55:23] Some pieces we usually still exploit.
+[55:26] So why can you remove them by hand or through a mesh?
+[55:30] Okay.
+[55:30] Just need something to store it.
+[55:35] Mario, can I take this off now?
+[55:42] It's hot!
+[55:45] This is why I left the laboratory.
+[55:57] It's not to need to wear all the equipment.
+[56:02] I still atomize from time to time.
+[56:04] Even before coming here, I was atomizing Nittino by myself, but I try to avoid it.
+[56:11] Yeah.
+[56:17] Okay, take a breather break.
+[56:21] And jar.
+[56:22] Yeah, let's get a jar.
+[56:24] We're okay to leave it like this, right?
+[56:26] Yeah, we can go to the...
+[56:32] Is this still recording?
+[56:33] Okay, good.
