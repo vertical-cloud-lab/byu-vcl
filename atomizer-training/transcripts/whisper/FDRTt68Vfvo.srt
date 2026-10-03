@@ -1,0 +1,272 @@
+1
+00:00:00,000 --> 00:00:25,940
+At this point it's just to remove the crucible, wipe the crucible a little bit, check the nozzle, probably clean the nozzle, put everything back. Then we need to decide on the atomization setup. So if you want to use the reverse booster as part of the training.
+
+2
+00:00:25,940 --> 00:00:50,990
+first you need to remove the plate you need to take it all out and then just start you know unscrewing everything i'll do that then because that's that's probably the biggest part that i um don't i'm not fully confident with yet so um i'll just start it's fully mechanical there is like nothing really to it how you do it doesn't matter which one you unscrew first just you need to unscrew everything
+
+3
+00:00:50,990 --> 00:01:20,930
+separate everything and at the end you need to remove the housing from the booster. Just like the four screws with the hex. You got it. Ronnie, so Ronnie is the one who has the most experience with the vacuum. Would you feel comfortable? We can just grind it at any time. Show them how to use the vacuum inside the chamber. Just like go with it. The good thing is that you almost have no crevices. You only have like the one going to the...
+
+4
+00:01:20,930 --> 00:01:44,420
+vacuum pump and system so where you just need to stick the vacuum here you have the viewport but everything else is fully exposed so we just want to kind of like go through it go through the viewport the crevices and then just the surface depends on what attachments you have
+
+5
+00:01:44,420 --> 00:02:25,090
+work with him like oh how yeah like okay we got this attachment let's get this ready or let's go to the toilet okay yes finally it was so fun drilling the herb machining the stuff too oh good hey ronnie where's the uh uh sharpie the sharpie for uh all right did did we decide
+
+6
+00:02:25,090 --> 00:02:58,700
+We want to bring this cabin in just right there. I almost want to, I mean, we can consolidate stuff too. Yeah. I mean, we can move things around. It's not hard to move stuff. So. I mean, I guess just right along this wall is. Yeah. We can move this underneath the table there. Yeah. I almost wonder if this is the, we have a little bit of movement available with this guy. You know, we could. Oh, okay.
+
+7
+00:02:58,700 --> 00:03:33,860
+Or we could turn it, you know, so that it's facing more like this way. I'm just wondering, because like having a table like here, like there, and like here would be pretty nice. Yeah, we can use longer hoses and move it to the other side of the room if we really wanted to. Okay, I think that's good to keep in mind.
+
+8
+00:03:33,860 --> 00:04:10,220
+We can probably stick the... It's not too bad. I've moved it before, so... It's like it won't fit in between those two pallets, so... Or like between the outlet and the table. Here you mean? Yeah. It probably doesn't matter if we cover that outlet. Mm-hmm. Oh, and then we can... I don't know why this is here. Yeah, that just came in the crate. I don't know.
+
+9
+00:04:11,180 --> 00:05:20,820
+Oh, this was from... Maybe, honestly, let's just lean it against the wall behind the atomizer for now. Yeah, I don't know if the vacuum is going to be going so fast. Yeah, just lean it up against the wall. Yeah, that's fine right there for now. Okay, so... Oh, there's parts in here. No, no, you go. What are these? Oh, this is all for the vacuum, huh? Yeah, I'll be inside. Oops.
+
+10
+00:05:30,130 --> 00:06:54,480
+So I was talking to these guys about this arm, putting it on wheels and programming it to with like a spray nozzle and like a grip pad for like paper towels so it could automatically wipe out the inside of the atomizer.
+
+11
+00:06:54,480 --> 00:07:24,110
+I don't think I feel like that's a achievable. Would we just have like maybe a white line here for the phone? Yeah, maybe. I don't know. There will be a trading list. So everybody's taking part in the trading list. Yeah, yeah. We're going to move.
+
+12
+00:07:24,210 --> 00:08:01,170
+that storage cabinet in here real quick. So we have more. Do we want to do this or a table? Almost a more table space might be. Place to store the powders. I think that's why we're removing it. That might be easier than we can just add a bunch more shelves. Yeah. Okay.
+
+13
+00:08:01,170 --> 00:09:46,320
+Alright, you're going to shut that and we can just... Is this all vacuum stuff? How far do you need to go? Can you curl your thing in your corner? Well, can you just move your corner around? Yeah. You good? Yep.
+
+14
+00:09:49,780 --> 00:10:34,000
+Good let's just put it Let me put it maybe against that corner stitch like that up chill You're gonna eat them
+
+15
+00:10:34,000 --> 00:11:02,660
+And we'll probably get a ton of desiccants and other stuff to try to keep that as a dry box. Uh-huh. Well, I think we'll start putting old encounters in there. Anything we want to keep dry, like the consumables and other stuff. And then, yeah, talking about Dave, see if he has more shelves for that, then we could, you know, like consumables and other stuff. I wonder if we could get, we could attach shelves up high here. Maybe. Yeah.
+
+16
+00:11:02,660 --> 00:11:32,910
+I think for now, they're kind of closed. Anything made of graphite, any powders. Okay. Go on to those. And these are meant for chemicals, so you could probably take them out too. Okay. Are you recording all this? What's that, sorry? Are you recording all this? I am, yeah. Sorry about that.
+
+17
+00:11:33,170 --> 00:12:41,100
+Yeah, we should definitely find another solution because I don't like wearing this, but okay. I know I know it's important to record this. What if we had a motion like a like a body tracking camera on the mountain on the middle? It's like a 360 camera that just like follows you around the room. That'd be cool. Metaglasses. That's a good idea.
+
+18
+00:12:46,160 --> 00:14:28,180
+Yeah, it's got those clipped things there. So if we put one there, is that okay for you? Yeah. It's a good top shell. Why does that look weird? Is that better? There we go. It's like all the way on already. Yeah. Okay. Wow, this area is huge now. Okay. All right, so let's get started taking this guy out.
+
+19
+00:14:28,400 --> 00:17:04,110
+So first thing to do is loose that. Good idea. That is a 17. It's a beast to take off for sure. Yes, but it's not. Yes. Bartosz, how is this? Isn't this just sitting on here?
+
+20
+00:17:04,110 --> 00:17:40,160
+that's what caused the issue so the tolerance is like close to zero so that it fits exactly through the connector so in this case it didn't just get fully straight and at some point it was pushing on this ring which kind of separates
+
+21
+00:17:40,160 --> 00:18:11,920
+How do you clean the plate again? We don't. It would be better right now. Once the ring is in one of the somershots.
+
+22
+00:18:11,920 --> 00:18:41,230
+You would need to very quickly grind it or you would probably destroy it. So you use the same plate for the same material because it's only going to be like a few rounds top. So it doesn't matter that much. So we've got to figure out a way to record or organize what these materials are that we're going to use them so we don't clean them. What material is this again? Tungsten Nickel Iron. Tungsten Nickel Iron.
+
+23
+00:18:41,840 --> 00:19:35,470
+Wow And how does this come out just pulls up I mean you need to disconnect everything Oh, the clamp right there. Oh, sorry. Did I catch your hand? In this case, you can see that it has like a small nut on it, the ultrasonic cable, so sometimes you can't take it out with the nuts like fully screwed in to secure it. Then you need to unscrew this very small nut on it. This one? Uh-huh
+
+24
+00:19:35,470 --> 00:20:09,470
+if it's like if it's in you just cannot take it out so sometimes you need to touch it you know it hides those and in any case it's better to keep it secured somewhere this cable is going to stand on it this cable should be in good condition because we have like one thousand volts going through it yeah grab the transducer that is because if it drops
+
+25
+00:20:09,470 --> 00:21:26,190
+Yeah. Okay. Seal. So this piece is like several thousand dollars. Wow. What does it do? It converts the electrical signal to physical movement. For the vibrating thing? Uh-huh. Is this one also 18? No, this one is 7. 17? 17, 18. 17, 18? Okay. So I'll take off this one first thing. It's okay to put pressures on it like this?
+
+26
+00:21:26,190 --> 00:22:18,290
+So right now we can either just leave it with the sonotrault and we can right now unscrew the housing and just change to the other one. And the booster with the sonotrault can stay connected together. It doesn't really change anything. So what part is the booster? Because I thought, I guess the booster is this piece here. Yeah, this piece, this piece.
+
+27
+00:22:18,320 --> 00:22:52,240
+inside gotcha so we have there is another one so in this case we will need to remove it from the central and then connect it the other way around okay so let me it's hot in here yeah thank you so we're changing out the booster and the booster changes something with the amplitude so
+
+28
+00:22:52,240 --> 00:23:30,540
+This is the one-to-one booster that's in here right now, right? Lower and higher. So the one-to-one is just like normal and then this other one is 1 to 1.5 and then we can put it on backwards and I guess it's 1 to 0.5 or what? I mean it's 1.5 to 1.5 to 1.5 to 1.
+
+29
+00:23:30,700 --> 00:23:59,810
+75% of the normal altitude. And then on there, when the settings go from 0 to 100, is that a percentage? Yes, percentage of the set power from the generator. So this is how you control the electrical signal from the generator. It's not a specific value, it's just like how much current you're actually giving to the transducer. So then the transducer itself starts to vibrate.
+
+30
+00:23:59,810 --> 00:24:27,220
+but then you could for example put three boosters and then it would boost the vibrations even more but then the power would be really high and if you start boosting the vibrations the power is just going up because the transistor needs to kind of keep that intensity going but still we can use it as a mechanical part and we can see in the testing that the mechanical change
+
+31
+00:24:27,220 --> 00:24:58,100
+And the signal changes will kind of work differently at the end. So it's best if you combine both of them. Is it okay if I write on this? Yeah. Let's see, where's the Sharpie? So this direction is 1 to 1.5, right? Yes, because it's from the bigger to the smaller. Bigger to the smaller? Yeah, that also gives us the amplification.
+
+32
+00:24:58,100 --> 00:25:51,570
+The difference of mass on both ends. Oh, interesting. Okay, so, and this goes up to the plate right there. So we're getting 1.5 amplitude right there. So if it was reversed, 5 to 1. Okay. And this guy is just 1 to 1. You see how this one is the difference between that and that. Uh-huh.
+
+33
+00:25:54,640 --> 00:26:58,380
+Okay, so now If you want it's it's also technically recording, but this is recording right now, but if you if you want Yeah, that's way better There's a couple over there too, so I'm gonna grab some more paper towels
+
+34
+00:27:00,080 --> 00:28:09,230
+Just get like literally 30 pieces from the bathroom or something. Unless you know what a roll is. I don't like these rubber gloves in general. Your hands can't breathe.
+
+35
+00:28:09,230 --> 00:29:00,620
+Oh really? Jeez. Same as when I was optimizing the basement. I just didn't put all the full protective gear. Let's see until Ronnie gets back. Set the upgrade. Okay, so I need to turn this guy around. Flip this. And it's all the same direction, right? Yeah, I think it's strange in the past.
+
+36
+00:29:00,720 --> 00:29:59,020
+so right now we have m10 everywhere except that in the transducer it's fine m10 that's the only exception there exists let's stack a little bit but in here we have the fine
+
+37
+00:29:59,440 --> 00:30:46,260
+But you can see that it's fine and normal. Oh, yeah, there's more threads on that one. That's the only one where it's the fine.
+
+38
+00:30:46,260 --> 00:31:27,410
+tighten it together, secure it, and then use the nut so I can screw it. It works pretty well. So this is so we can put that one on the transistor? Yeah, so it pulls out and switches that side or whatever. And that's to flip it, you get the ratio that we want? Mm-hmm. 1.5 to 1. The lower amplitude, we can achieve the final pattern. Oh, okay. So we want the reduction.
+
+39
+00:31:41,460 --> 00:33:00,080
+So we basically have this one. One of them has a shorter one. We can try to work with this. Impressive. Sometimes due to the vibrations they get stuck like that. Sometimes they remain loose all the time and in some cases this happens. So this trick is basically the only thing that works pretty well.
+
+40
+00:33:00,850 --> 00:33:31,470
+Now you need to put the housing top. The smaller one. Because then it will not pass through the transistor. The K50 connection is your top. The K50 that you use to connect to the chamber, it's always going to be the top.
+
+41
+00:33:31,600 --> 00:35:08,290
+1.521 that's going to go up into the chamber. Then this is going to sit underneath just like that. Tighten those together. And this is to reduce the amplitude. Yep. There's four hex nuts. That's hex bolts to put in. In this case, it's just to seal it, to have the rubber seals. So we just want to seal it.
+
+42
+00:35:08,290 --> 00:35:31,550
+No, you don't have to worry about it. Okay, I'm not going super hard. I mean, just until it's like... Okay, so now that's on, we need the rod now, right? Okay, so this is going to go up.
+
+43
+00:35:31,550 --> 00:36:02,260
+It's important that you have the part with the M8 thread and the place for the range on the top so that you can tighten the plate. So also not important to super tighten this? I mean right now not, but then you will use the torque wrench. Oh yes. So then it's very important that you use the right torque. And this one is going to be 60. Yes, 65, 60, 50 at the torque.
+
+44
+00:36:03,820 --> 00:36:41,120
+Okay, so we'll have to remember to tighten it down to 60 tor. Okay, this side is this guy. And what is this piece called again? Transducer. Okay, so this is the very sensitive, expensive part that we don't ever want to draw. Converts the electrical signal into mechanical vibration. Okay, so...
+
+45
+00:36:41,120 --> 00:37:27,980
+This needs to be tightened to 65 torque, 60 torque, and then this connection for the plate, the actual diagram plate, is 50 torque. And that's the torque wrench as far as we get those exact measurements. Okay, so now we can tighten the leash down. So you right now have an 18mm tip, there is a 70. You may need, depends on how you want to do it, you may need all the combinations.
+
+46
+00:37:27,980 --> 00:38:13,600
+So there's a torque wrench that you get a specific torque on it? Yes, you can set it. That's cool. Okay, so... It's kind of tight here. It's 17, so this one goes on the transistor. But it has to be in the other... This orientation? Yeah, and then you need to check the arrow. That indicates if you can move in this direction. See? The arrow is here, so we need to reverse that one.
+
+47
+00:38:13,600 --> 00:38:46,700
+reverse the whole wrench so that we can tighten in other direction while we push this wrench here to you know just keep it in position like that and now you can push now push that way yeah push to me okay but i need to set it to 65 so how do i how do i pull it and rotate so you pull this one keep it pulled and rotate it
+
+48
+00:38:46,700 --> 00:39:18,740
+Best if best to just take care of the ranch and you're here. You pull it and rotate the ranch Okay, so Let's see the 60 at the beginning right now you are 55 Yeah, it's 55. It's like the lowest number you see plus the number Okay, so that's 65 there 60 Yeah, we see 60 and we did go over to
+
+49
+00:39:18,900 --> 00:40:12,050
+So now we need to do the same thing here. You can leave the 17, put the 17 here. But check the arrow and check the volume. So it needs to be that way, huh?
+
+50
+00:40:20,460 --> 00:40:50,220
+That click is how you know that you reached there. And now the best way would be to test it after the change and see that it all works well. So then you need to compress the compressed air and the cable so that we can just scan it, run it, make sure that it operates as long as possible. And it doesn't mean then you know that the connector didn't snap in half, everything is connected with the right torque.
+
+51
+00:40:56,500 --> 00:41:22,830
+And at this point, when it's in, you can lock it so nobody can remove it. But then you also need to remember to unlock it. And it's recommended to keep it by the house. You hold it by that? Yeah. Don't touch the transducer just in case. This, if you touch it, it's going to be hot. In the place where you touch it. Good to know. So this is safe for touching it? The same. The booster is meant to be a safe place to attach anything.
+
+52
+00:41:22,830 --> 00:41:59,070
+of course like a spring as well like a ring around it so then what we do is scan doesn't depend on the frequency okay now the frequency is lower than usual but it's what's happening due to the reverse booster that's something we see that then the frequency tends to be lower so it gets under 40 yeah when we will add the top sound shot it will be a bit higher
+
+53
+00:41:59,070 --> 00:42:48,930
+But if the process is short, it's going to work. Right. So how do you get to use the menu? Main program. And the time for vibration. OK. So you press scan mode. Actually, at the max amplitude, it vibrate slightly higher. Frequency is fine. You can see the very gentle vibration. If I change the amplitude, the parameter is fine. Right now, you need to grab it a bit more.
+
+54
+00:42:48,930 --> 00:43:32,060
+Now we can have it connected to the system. Make sure to put the protective plate first. It's hard to do it before. And make sure that you have the seal. Put the plate on first? Yeah. Put the plate on first. It's easier. You can also lock the door in our position here.
+
+55
+00:43:32,060 --> 00:43:55,040
+also theoretically right now we are doing the training so we can speed things up under normal condition especially if you work with one setup for longer than just one single process you should put the protective cover on the transducer because right now it goes on the transducer but right now we can skip it but if you just leave it if you run longer you should use it
+
+56
+00:43:55,040 --> 00:44:24,700
+does this slip over this yeah slip over it here bolt it on and you bolt it exactly you know if because if you like leave it somebody opens the chamber they can heat the transducer into the cabinet or just push some water it or hit it with anything else so it's better it's like two three minutes and you save a part for thousands so um for terminology this is the transducer the housing booster and this is a sonotrope yeah this is a prolonger sonotrope
+
+57
+00:44:24,700 --> 00:44:54,830
+because we want to differentiate because then we have the top sondoshort the short one is made to be as short as possible and it's only task is to keep the plate but the length of the sondoshort is based on the frequency material and so on so you cannot change it however you want okay that's good enough it has to be a multiplication of half wavelength the wavelength is like 70 meters and it can be 70 140
+
+58
+00:44:55,980 --> 00:46:01,460
+Okay, so putting the seal there, I kind of tap that. Now we need to put on the plate. We can try with the same plate. Generally it should work, it should vibrate. Just make sure it's easier if you put the connector first, then you put the plate and then you hold it with the top. What is the connector?
+
+59
+00:46:01,580 --> 00:46:34,880
+The small piece, the double-threaded piece. Oh, yes. It's probably, I mean, we are missing a connector here. We use it. But you have more of the connectors. This is the, yeah, this is the one. The 8mm. If you can take it out, it's good. If not, you have more. Perfect. It's not the only one. So you put the connector in the sonotra? Yeah, put it first to the end.
+
+60
+00:46:34,880 --> 00:47:01,440
+so that we don't have to push the plate through this kind of like a ring in the middle because the ring is for eight millimeters and the hole in the center is also eight millimeters that's maybe why you also had issues before you can also see here yeah when you pushed it with like it had the ring snapped kind of like here on the edge so it's better to first have it the ring allows us to get only half of the
+
+61
+00:47:01,440 --> 00:47:40,860
+connector into one sonotrope so it goes like halfway through but you can see that it hides in uh into the sonotrope it's not sticking out there so now we can take out the large one unless it's a really damaged charge it's not going to be okay so now put the plate fully into the connector all the way through i need to wiggle it you can see that right now it's in a spot where there is some other trouble
+
+62
+00:47:40,860 --> 00:48:16,930
+So now we just need to push it. At the end you may want to see if there is like nothing snapping on it, if it's like a good move position and if the surfaces are flat. You can see that there is no gaps, nothing. Drops on short, you just push it fully on that plate. So it's definitely a better position than it was before. Okay, so now is it your 18 or 17? 17.
+
+63
+00:48:16,930 --> 00:49:54,030
+And when we have the plate, we should do one final test. So once again, we go into the menu.
+
+64
+00:49:54,030 --> 00:50:48,320
+In this place at some point you can see a very small crack and it's darker Same thing from like the production so there is like some more tension and the vibration just causes it to crack in this spot If everything goes well it will like crack here everything else will work. So the shape
+
+65
+00:50:48,320 --> 00:51:17,280
+this is not super important we try to find a way to see it what's more important is just the quality of what we get from the producers we just had to go through men and different producers trying to find many materials seeing one which is quite reliable this here may also be the issue like caused by the fact that it wasn't so well placed in here so any kind of
+
+66
+00:51:17,280 --> 00:51:48,180
+in correction it can cause some resonance that could cause some defects in the material to show up to heat up that's why the metal plates are generally used for one two three rounds if you would maybe if you would maybe go on with like reverse booster and something with low temperature like teal you could use it for four five six times we need to connect to the container
+
+67
+00:51:48,940 --> 00:52:28,110
+Place inside the protection plate and take care of the furnace I have seen a plate snapping after one process and plate snapping after five processes at the same time It's just not something you can fully rely on Just cleaning off the o-ring the seal
+
+68
+00:52:28,300 --> 00:52:46,960
+Generally you will need a lot of isopropanol, a lot of paper products. That's the base for everything. We should just get a dispenser in here. Yeah, I can actually do that. So we're going to put one in, fix the sink there. Oh nice. So we'll get a second one right here. That would be perfect.
+

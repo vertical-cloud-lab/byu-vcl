@@ -1,73 +1,75 @@
 # Group B — Atomizer training videos 3, 4, 5, 6 (Tue Sep 29 2026)
 
-Source: YouTube auto-captions at `/tmp/work/autosubs/<id>.txt` (no Whisper transcript existed for any of these four IDs). Captions carry no speaker labels; "trainer" = Bartosz Kalicki, inferred from content. Panel/button names are given as heard with the likely intended term, e.g. "graining pressure" → draining/pouring pressure, "ceiling rod" → sealing rod, "turbo pressure" as heard.
+Source: YouTube auto-captions at `/tmp/work/autosubs/<id>.txt`; the Video 3 and Video 5 sections were later re-checked against Whisper transcripts. Captions carry no speaker labels; "trainer" = Bartosz Kalicki, inferred from content. Panel/button names are given as heard with the likely intended term, e.g. "graining pressure" → draining/pouring pressure, "ceiling rod" → sealing rod, "turbo pressure" as heard.
 
 Chronology (inferred from content, not from the video numbers): Video 4 (loading the furnace before the first run) → Video 5 (first powder run, carbon-fiber plate, 1:1.5 booster, done by ~11:50) → Video 3 (post-run disassembly, second run with 1:1 booster + molybdenum plate, "that would be all for today") → Video 6 (powder-container fragment; position uncertain).
 
 ## txH397FGTAU — Atomizer Training Video 3 (51 min, Sep 29)
 
-Opens with the furnace cool enough to take parts out after the morning run and the stack being rebuilt (the opening line calls it "a deep cleaning"), plus a detour on the missing 18 mm torque-wrench tip. The trainer fits the 1:1 booster and a molybdenum-alloy plate, runs the ultrasonic scan and a liquid pattern test, and explains how a straight vs angled pattern reveals plate cracks. The run documents the purge sequence (one purge cold, then purges at 250 °C and 500 °C, each vacuum + gas wash with the other vessel held at overpressure), heating to a 1000 °C set point to melt the rods, dropping to ~780–790 °C, amplitude theory (50–100 % electrical, 80–90 % best, start ~90), and the pour, during which the Mo plate cracks yet atomizes better after a piece breaks off. It ends with powder inspection, the case for wider Mo plates at low amplitude, and the end-of-day shutdown rule (everything off at ~100 °C, software locks you in until 80 °C, powder can stay overnight). Phases: after (disassembly), before (assembly, scan), during (purge, heat, atomize), after (cooldown/shutdown), theory, troubleshooting, some chatter.
+Opens with the furnace cool enough to take parts out after the morning run and the stack being rebuilt (the opening line calls it "a deep cleaning"), plus a detour on the missing 18 mm torque-wrench tip. The trainer fits the 1:1 booster and a molybdenum-alloy plate, runs the ultrasonic scan and a liquid pattern test, and explains how a straight vs angled pattern reveals plate cracks. The run documents the purge sequence (one purge cold, then purges at 250 °C and 500 °C, each vacuum + gas wash with the other vessel held at overpressure), heating to a 1000 °C set point to melt the rods, dropping to ~780–790 °C, amplitude theory (50–100 % electrical, 80–90 % best, start ~90), and the pour, during which the Mo plate cracks yet atomizes better after a piece breaks off. It ends with powder inspection, the case for wider Mo plates at low amplitude, and the end-of-day shutdown rule (everything off at ~100 °C, software locks you in until 80 °C, powder can stay overnight). Phases: after (disassembly), before (assembly, scan), during (purge, heat, atomize), after (cooldown/shutdown), theory, troubleshooting, some chatter. Re-checked against the Whisper large-v3-turbo transcript (`/tmp/work/transcripts/txH397FGTAU.txt`, 48 coarse segments, no word timing) on 2026-10-03; row times still follow the captions. The pour-pressure button is written as heard, "graining" pressure, as in Video 5.
 
 ### Timestamp log
 
 | mm:ss | phase | what happens / what is said |
 |---|---|---|
 | 00:01 | after/cleaning | Narration: "this video is a deep cleaning"; post-run disassembly, long silent stretches. |
-| 01:33 | before | Trainee asks whether a part's orientation matters; trainer: "Not at all" (part not named). |
+| 01:33 | before | Trainee asks whether a part's orientation matters ("orientation doesn't matter, right?"); trainer: "Not at all" (part not named in either transcript). |
 | 03:28 | after | Furnace cool enough to take out the parts; parts put back in; "I forgot to put this in". |
-| 05:01 | tools | "The 18 mm wrench will be a must"; buy a set at Ace Hardware. |
-| 06:37 | tools | Torque wrench should have an "80 mm" (likely 18 mm) tip but it was not shipped; induction-only kits get mis-packed. |
-| 07:44 | chatter | Company bureaucracy; AMAZEMET grew from ~10 to 60+ people (11:36). |
-| 09:14 | after | "It did go all the way through, so we can reuse it" (melt poured fully; part reusable, inferred crucible). |
-| 09:19 | tools | Small tweezers "exceptionally useful": one pair for nuts, one for grabbing anything. |
+| 05:01 | tools | "The 18 mm wrench will be a must"; buy a set at Ace Hardware (captions only; Whisper drops 05:01–06:22). |
+| 06:12 | tools | Trainee: the engineering building next door has a tool room that "has all tools", so one can be borrowed meanwhile. |
+| 06:37 | tools | Torque wrench should have come with an "80 mm" tip (both transcripts hear 80; 18 mm by context) but it was not shipped: kits are packed by what the control cabinet pulls in, so induction-only orders miss it; the trainer had added it to the induction list himself, then production planning rewrote the lists. |
+| 07:44 | chatter | Company bureaucracy; AMAZEMET grew from ~10 to 60+ people (11:36); the trainer used to pack parts from the drawers himself. |
+| 09:14 | after | "It did go all the way through, so we can reuse it" (melt poured fully; part reusable, inferred crucible; Whisper names no object either). |
+| 09:19 | tools | Small tweezers "exceptionally useful": one pair for nuts, one for grabbing anything; take no space. |
 | 09:40 | lesson | Disassembly went easily "because the oxygen level was much better"; oxide roughens surfaces and makes parts stick. |
-| 10:11 | parts | Plate is a molybdenum alloy; best option for Al, but Mo and Al react if the process runs too long. |
+| 10:11 | parts | Plate is a molybdenum alloy (Whisper "Molybdenium alloy"); best option for Al, but Mo and Al react if the process runs too long. |
 | 12:04 | troubleshooting | First scan showed a double peak/interruption; a short burst of vibration seated the parts; micro-friction self-resolves. |
 | 12:42 | before | Liquid pattern on plate: straight = plate vibrating well; angled = crack forming, atomization goes around it. |
-| 13:06 | theory | Plan: 1:1 booster now; reversed booster can give really small Al particles but needs alloy and pour knowledge. |
+| 13:06 | theory | Plan: 1:1 booster now; reversed booster can give really small Al particles but needs alloy and pour knowledge; "you will see how different it is with the metal plate". |
 | 13:47 | chatter | Gage: powders for LPBF characterization, lower-rare-earth alloys. |
 | 14:33 | theory | Low-density metals give bigger particles; Au/Ag much smaller, same technique; spherical, narrow distribution stays usable. |
-| 15:21 | theory | Commercial Al powder 15–45 µm; this is larger but uniform and spherical; still good for printing (Northwestern paper). |
-| 16:12 | before | "Everything in, vibrations fine, so purging." 1:1 booster is slimmer; amplification depends on mass/diameter difference. |
+| 15:21 | theory | Commercial Al powder 15–45 µm; this is larger but uniform and spherical; still good for printing (Northwestern paper); size specs mostly follow how gas-atomized powder behaves, and industry tends to smaller particles (15:54). |
+| 16:12 | before | "Everything in, vibrations fine, so purging." 1:1 booster is slimmer than "the previous one" (the 1:1.5); amplification depends on mass/diameter difference. |
 | 16:44 | during | Purge plan: one purge without heat, then two with heat; each = vacuum pump then gas wash. |
-| 17:10 | troubleshooting | Gas "coming out here"; check how far it screws in — if it won't, it did not seat (closure not named). |
+| 17:10 | troubleshooting | Gas "coming out here"; check how far it screws in — if it won't, it did not seat (closure not named; Whisper equally garbled). |
 | 17:55 | during | One side at overpressure while the other purges, then reverse; two temperatures to drive moisture out of new insulation/crucible. |
 | 18:34 | theory | Magnesium gives the largest particles (light); gold and copper alloys much smaller, same plate and booster. |
-| 19:21 | theory | First-run powder: narrow distribution, perfect for DED; maybe too big for LPBF. |
+| 19:21 | theory | First-run powder: narrow distribution, perfect for DED; maybe too big for LPBF; DED is cheaper and simpler, good for parameter sweeps. |
 | 20:00 | after | Shake the jar: bigger particles rise to the top; grains iridescent. |
-| 20:18 | during | Panel: last state melting pressure; now vacuum pump on, "turn off that and then" (sequence garbled). |
-| 21:03 | during | Heat up (first heated purge). |
-| 21:58 | during | Vacuum at its max but reading still falling; in vacuum the oxygen sensor "is not going to tell you anything". |
+| 20:18 | during | Panel: "the last cycle [done], also melting pressure, and now chamber vacuum" — after the furnace's last purge cycle press melting pressure, then vacuum the chamber (same sequence as Video 5 37:35–38:12); "turn off that" (20:33, item unnamed). |
+| 21:03 | during | Chamber vacuum pulling down; silent stretch (the captions-only "heat up here" fragments at 21:03–21:29 are not in Whisper, and heating is not started until 23:28). |
+| 21:58 | during | Vacuum at its max but reading still falling; in vacuum the oxygen sensor "is not going to tell you anything"; next: protective gas, then redo; running the pump longer is fine but "the effect will not be massive". |
 | 22:31 | chatter | Software versions differ; trainer reported UI issues; three cabinet generations. |
-| 23:28 | during | Press pressure control; get coolant flow; start heating. |
+| 23:28 | during | Press pressure control; get coolant flow; start heating (first heated purge, 250 °C per 33:03). |
 | 30:16 | during | Set point changed to 500 °C; pump stays on gas wash; a leak in between would show as pressure loss. |
-| 31:05 | parts | Plate check: edge peeling/cracking OK if loose bits removed; heavy oxide after an oxygen-rich run → clean fully or new plate; scrape with knife. |
+| 31:05 | parts | Plate check ("looks good"): edge peeling/cracking OK if loose bits removed; heavy oxide after an oxygen-rich run → clean fully or new plate; scrape with knife. |
 | 32:41 | during | "Melt pressure. Turn off pressure control." |
-| 32:58 | theory | Automate the 250/500 purge sequence? No: no control over the furnace controller; its software is locked ("a punch card"). |
+| 32:58 | theory | Automate the "starting at 250 … then redoing it [at] 500" purge sequence? No: no control over the furnace controller; its software is locked ("a punch card"). |
 | 34:15 | during | Repeat purge? "Don't depend on this reading with vacuum inside — fill protective gas, then check; if good, no repeat." |
 | 34:48 | theory | The more runs, the better: heat and vacuum clean the system. |
-| 35:02 | during | Set max temperature 1000 °C to melt the rods. |
+| 35:02 | during | "I will just go to the max temperature" — "To 1,000?" — set point 1000 °C to melt the rods ("it's at a thousand", 37:34). |
 | 37:34 | during | At 1000 °C the Al melts; "when the whistle goes" the Al jumps up in the middle — induction pull, free mixing. |
-| 38:38 | during | As soon as it melts, go down; for a metal plate ~780–790 °C is enough; lower temperature = plate durability. |
+| 38:38 | during | As soon as it melts, go down ("I forgot about that part"); for a metal plate ~780–790 °C is enough (Whisper "like 7.9", captions "780, 790"); lower temperature = plate durability. |
 | 38:55 | theory | Lower amplitude is kinder to the plate but can under-atomize (material flows through); start higher, reduce later. |
-| 39:26 | theory | Lower amplitude = smaller particles but slower, more fragile; booster = mechanical control, generator % = electrical. |
-| 40:00 | parameter | Amplitude 50–100 % = share of generator max current; 100 high; 80–90 best; start ~90 and adjust. |
-| 40:55 | before | Ultrasonic scan test; turn on transducer cooling first. |
-| 41:14 | parts | Cooling here is fully manual; newest version stops it 1 min after vibration; plasma runs up to 4 h continuous. |
-| 41:48 | during | Start sequence: vibration on, draining pressure, sealing rod, turbo pressure — "do it all as quickly as possible". |
-| 42:14 | during | "More amplitude." Pouring a bit too much; use the draining pressure; "too much pressure makes it shoot out too fast". |
-| 43:05 | troubleshooting | Some of the plate is broken; pouring higher on the plate might help. |
+| 39:26 | theory | Lower amplitude = smaller particles but slower, more sensitive, more fragile; booster = mechanical control, generator % = electrical. |
+| 40:00 | parameter | Amplitude "from 50 to 100 %?" = share of the generator's max current to the transducer; 100 high; 80–90 best; start ~90 and adjust. |
+| 40:55 | before | Ultrasonic scan test; turn on transducer cooling first (the cooling works with or without a scan). |
+| 41:14 | parts | Cooling here is fully manual — fine for induction's short runs; newest version stops it 1 min after vibration, which matters for plasma (up to ~4 h continuous atomization). |
+| 41:48 | during | Announced to Sterling: a run with the metal plate. Start sequence: vibration on, "graining" pressure, sealing rod, turbo pressure — "do it all as quickly as possible". |
+| 42:14 | during | "More amplitude." Pouring a bit too much → "try to remove the graining pressure" (Whisper; captions "use the grain pressure"), i.e. back the pour pressure off; "too much pressure makes it shoot out too fast". |
+| 43:05 | troubleshooting | "Some of it is dropping" (un-atomized drops; captions mis-hear "broken"); would pouring higher on the plate help? "Maybe." |
 | 43:48 | troubleshooting | Plate cracked on one side — interrupts atomization. |
+| 44:16 | lesson | With these parameters (1:1 booster, metal plate) the atomization is generally faster and more efficient; "not too bad". |
 | 44:46 | during | Pressure lowered a little; "really good for a moment"; done, stop the vibration (45:07). |
-| 45:11 | lesson | After another piece broke, atomization improved: rolled/cut Mo plates hold tension points; "faulty from the factory probably". |
-| 46:05 | after | Nice powder in the container; inspect under a light; "could be better". |
+| 45:11 | lesson | After another piece broke, atomization improved: rolled/cut Mo plates hold tension points; "faulty from the factory probably"; first a small piece broke, then at the end another, and the atomization got much faster. |
+| 46:05 | after | Nice powder in the container apart from what dropped into the bowl; inspect under a light; "could be better". |
 | 47:00 | after | Can this be turned off? No — wait for cooling too. |
-| 47:28 | parts | Wider/longer Mo plates recommended for Al; larger area helps most at low amplitude. |
-| 49:29 | parts | Wider Mo plate shown; use it for the lowest-amplitude reverse-booster run (needs more time to wet). |
+| 47:28 | parts | Wider/longer Mo plates recommended for Al (captions: what the trainer "would use the credit for"); larger area helps most at low amplitude — more surface to spread, more time to atomize; he had "expected it generally to be better". |
+| 49:29 | parts | Wider Mo plate found on site; use it for the lowest-amplitude reverse-booster run (needs more time to wet). |
 | 49:52 | after | Done for today; full cooldown takes a while; come back in ~30 min. |
-| 50:06 | after | Shutdown at ~100 °C: heat exchanger off, close water, compressed air, argon, then power; any order. |
-| 50:30 | after | Software will not let you leave the program until 80 °C. |
-| 50:46 | after | Powder can stay in the chamber overnight; it only cools more slowly; trainer often does this. |
+| 50:06 | after | Shutdown "once it's like about 100 degrees": heat exchanger off, close water, compressed air, argon, then power; "doesn't matter the order". |
+| 50:30 | after | Software will not let you leave the program until 80 °C; "it keeps reminding you that you need to keep it all going". |
+| 50:46 | after | Powder can stay in the chamber overnight; it does not stick more; "it will have more time to pass[ivate] slowly" (both transcripts hear "pass … slowly"; slow passivation is the likely sense); trainer does this quite often. |
 
 ### Procedural steps
 Before
@@ -78,13 +80,14 @@ Before
 - Turn on transducer air cooling before vibrating (40:55).
 During
 - Purge once cold, then at 250 °C and 500 °C: vacuum pump then gas wash, other vessel at overpressure (16:44, 17:55, 30:16).
+- After the furnace's last purge cycle: melting pressure, then vacuum the chamber (20:18).
 - Fill with protective gas before trusting the oxygen reading (21:58, 34:15).
 - Press pressure control, start coolant flow, start heating (23:28).
 - Switch to melt pressure and turn off pressure control before melting (32:41).
 - Set 1000 °C to melt the rods; drop to ~780–790 °C once molten (35:02, 38:38).
 - Set amplitude ~90 %; stay between 80 and 100 (40:00).
-- Start the pour: vibration on → draining pressure → sealing rod up → turbo pressure if needed, quickly (41:48).
-- If melt shoots out too fast, lower the pour pressure (42:54, 44:46).
+- Start the pour: vibration on → "graining" pressure → sealing rod up → turbo pressure if needed, quickly (41:48).
+- If melt shoots out too fast, back off the "graining" (pour) pressure (42:43, 42:54, 44:46).
 - Stop the vibration when the pour ends (45:07).
 After
 - Keep cooling running; at ~100 °C shut down heat exchanger, water, air, argon, power (47:00, 50:06).
@@ -95,42 +98,46 @@ Cleaning
 Troubleshooting
 - Angled pattern or half-plate atomization = cracked plate (12:42).
 - Gas escaping at a closure: check it screws fully home (17:10).
+- Un-atomized drops falling off the plate: pouring higher on the plate may help (43:05; cf. Video 5 63:58).
 - Mo plate cracking mid-run may release tension and improve atomization; replace the plate afterwards (45:11).
 
 ### Parameters and numbers
 | value | context | mm:ss |
 |---|---|---|
-| 18 mm | wrench / torque-wrench tip needed (heard "80 mm") | 05:01, 06:37 |
+| 18 mm | wrench / torque-wrench tip needed (05:01 captions "18 mm wrench"; at 06:37 both transcripts hear "80 mm" — 18 mm by context and Video 5 15:25) | 05:01, 06:37 |
 | 15–45 µm | commercial Al powder size for comparison | 15:21 |
-| 1:1, 1:1.5 | booster ratios in use | 16:18, 13:14 |
+| 1:1 (this run), 1:1.5 ("the previous one", per Video 5), reversed (planned next) | booster ratios | 16:18, 16:21, 13:14, 49:38 |
 | 1 cold + 2 heated | purge count | 16:44 |
-| 250 °C, 500 °C | heated purge temperatures | 33:03, 30:16 |
-| 1000 °C | set point to melt rods | 35:02 |
-| 780–790 °C | hold temperature with a metal plate | 38:48 |
+| 250 °C, 500 °C | heated purge temperatures (250 from the trainee's recap, same in Whisper; the trainer sets 500 himself) | 33:03, 30:16 |
+| 1000 °C | set point to melt rods ("To 1,000?"; "it's at a thousand" at 37:34) | 35:02 |
+| 780–790 °C | hold temperature with a metal plate (Whisper "like 7.9", captions "780, 790") | 38:48 |
 | 50–100 % | amplitude range (generator current) | 40:00 |
 | 80–90 %, start ~90 | recommended amplitude | 40:17, 40:34 |
 | 1 min | newest-version auto cooling after vibration | 41:17 |
 | 4 h | plasma continuous atomization | 41:25 |
-| ~30 min | come back to shut down | 50:06 |
-| ~100 °C | shutdown threshold (heard "100, 114") | 50:19 |
+| ~30 min | come back to shut down (captions only) | 50:06 |
+| ~100 °C | shutdown threshold (Whisper "about 100 degrees"; "100, 114" was a captions-only fragment) | 50:19 |
 | 80 °C | program exit threshold | 50:36 |
 
 ### Quotable moments
-- 09:51 "If there is no oxygen, suddenly nothing sticks to other parts. The oxide makes the surface rough and that's what makes it stuck."
+- 09:51 "If there is no oxygen, suddenly nothing sticks to other parts. Oxide seems to make the surface rough, and that's what makes it stuck."
 - 10:35 "The same reactivity that helps us get good wetting and a good atomization start, at some point may cause the plate to be damaged."
 - 12:42 "If the pattern is straight, the plate is going really well. If the pattern is angled, it usually means there is a crack formation."
 - 18:05 "You do it at two temperatures to remove all the moisture. New insulation, new crucible may hold moisture; the heat gets it out and the purge removes it."
+- 34:48 "The more we do it, the better it is. The heat from the process cleans it. The vacuum cleans it."
 - 37:39 "When the whistle goes, the aluminum jumps up in the middle. Induction is pulling it. So it also gives us some of the mixing, which is good."
-- 38:43 "For the metal plate we don't need to go so high. We will be fine at 780, 790. It's not much, but it has a high impact on the durability of the plate."
+- 38:43 "For the metal plate we don't need to go so high. We will be fine at like 780, 790. It's not much, but it has a high impact on the durability of the plate."
 - 40:17 "High is 100. 80 to 90 is the best. Lower means there is a chance of no atomization because the vibrations are too weak. Start around 90 and adjust."
 - 45:23 "Metal plates, based on how they were rolled and cut, have tension points when heat is applied; when they break, the atomization can actually do better."
+- 50:30 "Unless it's 80 degrees, it doesn't allow you to leave the program. It keeps reminding you that you need to keep it all going."
 
 ### Unclear / needs checking
-- "80 mm tip" (06:37) is almost certainly the 18 mm tip; confirm against the torque-wrench kit.
-- 01:33 (orientation), 09:14 (what "went all the way through"), 17:10 (which closure "didn't seat"), 20:18 (panel state) are garbled.
-- 250 °C for the first heated purge comes only from the trainee's question at 33:03; the trainer's own set points shown are 500 and 1000.
-- Shutdown threshold heard as "100, 114" (50:19); treat as ~100 °C.
+- "80 mm tip" (06:37) — not settled by Whisper, which also hears "80mm" (twice, 06:57–07:08); 18 mm rests on the captions-only "The 18 mm wrench will be a must" (05:01) and Video 5 15:25 (18 mm flat wrench). Confirm against the torque-wrench kit.
+- 01:33 (orientation) — not resolved: Whisper has the same "orientation doesn't matter, right?" and drops the answer; the part is unnamed. 09:14 — not resolved: Whisper has the same "It did go all the way through. So we can reuse it." with no object named (preceded by "Did you bring this? Yeah. It's cute."). 17:10 — not resolved: Whisper is equally garbled ("you can see how much you can screw it"); the closure is still unnamed. 20:18 — resolved: Whisper has "the last cycle, also melting pressure, and now chamber vacuum", i.e. after the furnace's last purge cycle press melting pressure, then vacuum the chamber (the Video 5 37:35–38:12 sequence); only "turn off that" (20:33) stays unnamed.
+- 250 °C for the first heated purge — resolved by corroboration: Whisper hears the trainee's "starting at 250, purging this, purging this, then redoing it [at] 500" the same way, and the trainer's "No, not really" answers the automation question without correcting the temperatures; Video 5 42:50 confirms 250 °C. The trainer still never says 250 himself in this video.
+- Shutdown threshold — resolved: Whisper has "once it's like about 100 degrees you can turn off everything, doesn't matter the order"; "100, 114" was a captions-only fragment of the trainee's guess. ~100 °C stands.
 - Video numbering (3 before 4 and 5) does not match the apparent chronology.
+- Added by the Whisper pass: 21:03 "heat up here" exists only in the captions (Whisper has nothing there, and heating starts at 23:28), so the old "heat up" row was a caption artifact. 42:43 Whisper "remove the grinding pressure" vs captions "use the grain pressure": the direction (back the pour pressure off) is taken from the next line, "too much pressure makes it shoot out too fast". 43:05 Whisper "some of it is dropping" vs captions "some of it is broken": "dropping" is kept because the follow-up is about pouring higher on the plate and the crack is first noticed at 43:48. 50:50 "it will have more time to pass … slowly" (both transcripts): read as "passivate slowly" rather than "cool slowly", unverified. "Graining pressure" (41:48, 42:00) is heard identically by both transcripts, as in Video 5; the panel label still has to be read at the machine.
 
 ## 1F9_4ccwhss — Atomizer Training Video 4 (10 min, Sep 29)
 
