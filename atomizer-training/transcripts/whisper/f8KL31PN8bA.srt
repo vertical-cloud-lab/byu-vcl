@@ -1,0 +1,60 @@
+1
+00:00:09,040 --> 00:00:45,740
+It's just cleaning up.
+
+2
+00:00:45,740 --> 00:06:53,100
+comes down a little bit and stabilizes. Let's say precise, you can remove this part, we just need to unscrew here, the plug, take the handle and then you can open the full valve to get like a perfect access to the inside of the valve. But if the material is similar we can just do that, clean the inside, sometimes even without opening it you can try to put some paper in, use the tweezers to like move it around.
+
+3
+00:06:53,100 --> 00:07:45,040
+Flush it a few times with isopropanol and it will be fine. Okay, very cool. And now we just put it back in the same room here. Okay, sounds good. So then we can take the things and use the compressed air to take like the paper dust. Okay. On the seal because it's heavy from the seal sticking with it. Okay. Would you recommend having a separate compressed air gun available? This one. You can always put a T and use this one. Okay, yeah. Somewhere in the corner. Okay.
+
+4
+00:08:57,040 --> 00:12:32,340
+You can find the spot where it is supposed to sit. Okay. Yeah, it definitely got hotter in here. The glass is sealed and then we have enough force to actually give up. Everything is here, so it's just a pit stop and we start the forces. Okay, amazing. And then we ended up not using the vacuum, we were able to just... You can wipe it, but if you want to do a bit of a better cleaning...
+
+5
+00:12:32,340 --> 00:12:59,660
+okay yeah later later sounds fine and then because we're just doing aluminum again and nothing like okay
+
+6
+00:12:59,660 --> 00:13:37,780
+On this graph, you can see that something is a little bit off. You can see here. There's like a sign of a second peak, and that's what is causing some kind of resonance when the plate is working. It can go up, then it stabilizes. You can see that it's a bit more sensitive. But fortunately, it's not breaking. It's just heating up more, which in the process will be good, because then we will have power.
+
+7
+00:13:37,780 --> 00:14:05,490
+faster atomization but generally this is like a rather rough style I know that some combinations like the one-to-one booster with the wider play it may have a tendency okay there's a higher chance that there will be kind of a resonance happening okay and then if we go with the reverse booster it will disappear okay yeah the octatonics are quite unpredictable
+
+8
+00:14:05,490 --> 00:14:31,710
+We will try our best to have some kind of control over them. There is a great website I can recommend, which is pushasonicresonators.org, where you get quite a lot of information if you would like to upload paper and so on. You get quite a lot of information of a kind that theoretically...
+
+9
+00:14:31,710 --> 00:15:01,340
+The more you tighten the piezo ceramic stacks, the stability of the whole system is going into infinity. But then if you go to some point and you start, it will just crack. So all of that you can just test it. And also why we need to be so careful with it is like if they're really compressed. Theoretically, you should compress them as much as you want.
+
+10
+00:15:01,340 --> 00:15:27,860
+uh but when you're actually doing it it's not going to work okay yeah and do you feel pretty comfortable like without kind of full face mask when you're if there is like no more powder okay yeah you just want to do the cleaning after the trials and then it's fine okay yeah and sometimes like the auto consumables probably would be best to have some kind of cabinets to store them yeah
+
+11
+00:15:27,860 --> 00:15:57,810
+and keep this area clean so from time to time you will want to just vacuum everything wipe it because you may just get some like powder left over somewhere in here okay yeah just small amounts for just taking the powder from the container into the jars okay okay yeah it sounds like having a yeah like a cabinet dry box maybe putting some desiccant in there
+
+12
+00:15:57,810 --> 00:16:50,420
+Just kind of keep it a little drier would be. Okay, sounds good. I think we can do that. We might pull in that big metal one. Oh yeah, yeah. So here we've got the sample. Yeah, the sample there. So if you keep it upright, the plug is right here. Yeah, so inside, pretty much up to the top of this little cap. The cap's only about that big.
+
+13
+00:16:50,420 --> 00:17:19,580
+It's filled with the ALSI-10MG and then it's got a little hole in the top of it. Some air can come out, maybe. Yeah, who knows? We'll just need to test it. Yeah, sounds good. And then we'll want to do another one, hopefully. We'll definitely have time. Yeah, where we take that, do the same thing. If we'll have time, I'll also show you how to reverse the booster, just to show you the principles behind it.
+
+14
+00:17:19,580 --> 00:17:53,420
+Yeah. Okay. Awesome. Okay. And then I have something I need to go to and then get class to teach. How... I guess it'll probably take about an hour to do this, right? Yeah. Okay. Okay. Yeah. So now for that. Yeah. And then I have one other... Let's see. Where is it?
+
+15
+00:17:54,610 --> 00:18:07,950
+Oh, did I leave it? Oh, no. I thought I left it, didn't I?
+

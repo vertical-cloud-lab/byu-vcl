@@ -1,10 +1,7 @@
 import json, os, subprocess, sys, time
 import numpy as np
 from faster_whisper import WhisperModel, BatchedInferencePipeline
-PRIORITY = ["wRc8p2_FnJo","naePD8o9_Gk","txH397FGTAU","1F9_4ccwhss","58wJ_Khwgyk","Pk0K5sBz-sQ","tfb4fsVNIFI",
-            "FDRTt68Vfvo","HTlUrAr5HVU","9kn-HhXCr1o","u-KjR5TENN4","f8KL31PN8bA","2wMgeI-E7zw","TFpU4uqVF9c",
-            "qYyT39D5Yzo","of5-LhkX_VQ","QXSj0j1OqL8","LSQmxwmlTkQ","z6rwmQW_3Vg","07QOPRHIEvw","Kv9DT3Vo0GE",
-            "cKwQbKdE22Q","prj_xgeuQtM","BxA7Z9Fliss","dXRB7c6GeDw","w02MRlZhpNk"]
+PRIORITY = ["u-KjR5TENN4","f8KL31PN8bA","LSQmxwmlTkQ","naePD8o9_Gk","9kn-HhXCr1o","58wJ_Khwgyk","txH397FGTAU","FDRTt68Vfvo","1F9_4ccwhss","HTlUrAr5HVU","Pk0K5sBz-sQ","tfb4fsVNIFI","TFpU4uqVF9c","of5-LhkX_VQ","qYyT39D5Yzo","2wMgeI-E7zw","QXSj0j1OqL8","z6rwmQW_3Vg","07QOPRHIEvw","Kv9DT3Vo0GE","cKwQbKdE22Q","w02MRlZhpNk","prj_xgeuQtM","BxA7Z9Fliss","dXRB7c6GeDw","wRc8p2_FnJo"]
 DL="/tmp/work/dl"; OUT="/tmp/work/transcripts"
 REMOTE=os.environ["RPI_STREAM_CAM_USERNAME"]+"@"+os.environ["RPI_STREAM_CAM_HOSTNAME"]+":atomizer-dl/"
 def load(path):

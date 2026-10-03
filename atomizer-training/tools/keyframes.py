@@ -19,6 +19,7 @@ def periodic(vid, path, every=120):
     files = sorted(glob.glob(f"{d}/p_*.jpg"))
     return [(i*every, f) for i, f in enumerate(files)]
 def contact_sheet(vid, frames, cols=6, tw=240):
+    if not frames: return
     th = None; tiles = []
     for t, f in frames:
         im = Image.open(f); im.thumbnail((tw, tw)); tiles.append((t, im))
@@ -43,6 +44,10 @@ def run(vid):
     if len(sc) > cap:
         step = len(sc)/cap; sc = [sc[int(i*step)] for i in range(cap)]
     pe = periodic(vid, path)
+    if not pe and not sc:  # very short clip: take one frame at 1 s
+        d = f"{OUT}/{vid}"; os.makedirs(d, exist_ok=True)
+        subprocess.run(["ffmpeg","-v","error","-ss","1","-i",path,"-frames:v","1","-vf","scale=480:-2","-q:v","4",f"{d}/p_0000.jpg"],capture_output=True)
+        pe = [(1.0, f"{d}/p_0000.jpg")] if os.path.exists(f"{d}/p_0000.jpg") else []
     frames = sorted(sc + pe, key=lambda x: x[0])
     # drop near-duplicates within 8 s
     kept = []
