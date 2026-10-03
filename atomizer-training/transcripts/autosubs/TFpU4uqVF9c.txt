@@ -1,0 +1,61 @@
+[00:05] Okay. And once again,
+[00:07] that's all right now at around 270. We
+[00:10] are making five gas washes, so vacuum
+[00:13] and filling with protective gas. At the
+[00:16] end of the cycle, we need to use the
+[00:17] melting pressure to create the over
+[00:19] pressure in the furnace.
+[01:37] Okay. Melting pressure.
+[01:40] And now let's
+[01:42] vacuum the chamber.
+[02:45] &gt;&gt; As much as we are able to
+[02:48] and protect it just
+[02:58] Okay, and again.
+[04:02] &gt;&gt; Okay.
+[04:03] And after filling the chamber with
+[04:06] protective gas again, let's go to higher
+[04:09] temperature.
+[04:53] Okay. And now, again.
+[09:39] &gt;&gt; Mhm.
+[09:48] &gt;&gt; 10.
+[09:49] Final one.
+[10:06] Oxygen level is low. Everything stable.
+[10:10] Now we can raise the temperature.
+[10:26] Let's start with slightly higher
+[10:28] temperature to help homogenize the
+[10:31] material.
+[14:51] &gt;&gt; Yeah, it's mostly homogenized, but I
+[14:54] still see something on one side, some
+[14:57] leftover.
+[14:58] So, let's give it a moment.
+[15:55] &gt;&gt; Uh there is very slight
+[15:58] uh lack of homogenization on one side.
+[16:04] Not very visible here, but very small
+[16:07] leftover and visibly thicker layer of
+[16:10] oxide.
+[16:24] Let's see
+[16:26] if raising the temperature just a little
+[16:27] bit more can help.
+[16:35] Okay.
+[16:37] It seems much better.
+[16:42] But there is still something left.
+[16:47] Hm.
+[17:17] Okay. We'll just have to try to pour it
+[17:19] and see
+[17:20] what will stay. So, let's lower the
+[17:22] temperature a bit.
+[17:31] To around 800°.
+[19:14] I will use this parameters of low
+[19:17] draining pressure
+[19:19] that I have used yesterday and will just
+[19:22] mostly control it through the pressure
+[19:25] control.
+[19:27] Let's do it like that. Just barely
+[19:29] anything. There's also little material.
+[19:32] That's why manual control would be
+[19:33] better.
+[19:40] Vibrations on.
+[20:28] Okay. It was fast. It was everything.
+[20:32] So.
+[20:36] Melting pressure signal down
+[20:38] and generator stop.
