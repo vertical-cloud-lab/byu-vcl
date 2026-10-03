@@ -49,6 +49,16 @@ BUCKET = pd.Timedelta("5min")
 # "around 5:00 pm"; after a second restart at 5:36 pm its Wi-Fi signal
 # changed, so it was unplugged and moved again then.
 EVENTS = [("2026-09-29 13:30", "~1:30 pm,\ndehumidifier on")]
+# Close-up only. The atomizer sessions are from #222 and #124: training with
+# AMAZEMET on Sep 29-30, then the first unsupervised run on Oct 2 from about
+# 1:30 pm. The monitor sees them as CO2 and TVOC rises. The Sep 30 step is
+# from the data alone: +3.3 C in 15 min, with no restart (so not unplugged)
+# and little change in dew point (so heat, not drier air). It has stayed
+# near 27 C since.
+ZOOM_EVENTS = [
+    ("2026-09-30 10:25", "10:25 am Sep 30, +3 \N{DEGREE SIGN}C in\n15 min, no restart"),
+    ("2026-10-02 13:30", "1:30 pm Oct 2,\natomizer run"),
+]
 # Room baseline ends here. Only earlier readings go into the room fit, and
 # later ones are drawn as "dehumidifier on".
 ROOM_UNTIL = "2026-09-29 13:30"
@@ -230,13 +240,23 @@ def shade_offline(axes, spans, x_end, label_ax=None, y=0.97):
 
 
 def mark_events(axes, events, label_ax, y, ha, dx):
-    for t, label in events:
+    """A line per event on every axis, labelled on label_ax. A label that
+    would overlap an earlier one moves a row toward the middle of the axis."""
+    renderer = label_ax.figure.canvas.get_renderer()
+    placed = []
+    for t, label in sorted(events):
         for ax in axes:
             ax.axvline(t, color=SECONDARY, linewidth=1)
-        label_ax.annotate(label, (t, y), xycoords=("data", "axes fraction"),
-                          xytext=(dx, 0), textcoords="offset points", ha=ha,
-                          va="top" if y > 0.5 else "bottom", fontsize=9,
-                          color=SECONDARY)
+        ann = label_ax.annotate(label, (t, y), xycoords=("data", "axes fraction"),
+                                xytext=(dx, 0), textcoords="offset points", ha=ha,
+                                va="top" if y > 0.5 else "bottom", fontsize=9,
+                                color=SECONDARY)
+        box = ann.get_window_extent(renderer)
+        row = (box.height / label_ax.bbox.height + 0.02) * (-1 if y > 0.5 else 1)
+        while any(box.overlaps(p) for p in placed):
+            ann.xy = (t, ann.xy[1] + row)
+            box = ann.get_window_extent(renderer)
+        placed.append(box)
 
 
 def main() -> None:
@@ -307,17 +327,28 @@ def main() -> None:
     after["water"] = rh_at(after["dew_ref"], after["atmp"]) - after["rhum"]
     after["less_vapor_%"] = 100 * (1 - rh_at(after["dew"], 0)
                                    / rh_at(after["dew_ref"], 0))
-    print("since the dehumidifier went on, monitor vs expected room (hourly). "
-          "heat/water: RH points of the gap from warming and from drying:")
+    print("since the dehumidifier went on, monitor vs expected room (daily "
+          "medians of hourly means). heat/water: RH points of the gap from "
+          "warming and from drying:")
     print(after[["rhum", "rh", "atmp", "t", "dew", "dew_ref", "heat", "water",
-                 "less_vapor_%"]].round(1).to_string())
+                 "less_vapor_%"]].resample("D").median().round(1).to_string())
+    # How the monitor's dew point follows the room's: a slope well below 1
+    # means the drying shrinks as the room dries, and the two lines cross
+    # where the dehumidifier would stop removing water at all.
+    last = after[after.index > after.index[-1] - pd.Timedelta("72h")]
+    k, k0 = np.polyfit(last["dew_ref"], last["dew"], 1)
+    print(f"last 72 h: monitor dew = {k:.2f} x expected room dew + {k0:.1f} C "
+          f"(r = {np.corrcoef(last['dew_ref'], last['dew'])[0, 1]:.2f}, "
+          f"n = {len(last)} h); equal at a room dew point of "
+          f"{k0 / (1 - k):.1f} C")
 
     x_end = now.tz_convert(TZ) + pd.Timedelta("12h")
     events = [(pd.Timestamp(t, tz=TZ), label) for t, label in EVENTS]
+    zoom_events = [(pd.Timestamp(t, tz=TZ), label) for t, label in ZOOM_EVENTS]
     plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
                   last_seen, now)
-    plot_zoom(df, room_until, ref, ref_sd, spans, events + boots, zoom_from,
-              now)
+    plot_zoom(df, room_until, ref, ref_sd, spans,
+              events + boots + zoom_events, zoom_from, now)
 
 
 def hourly_room(room: pd.DataFrame, w: pd.DataFrame) -> tuple:
@@ -327,6 +358,14 @@ def hourly_room(room: pd.DataFrame, w: pd.DataFrame) -> tuple:
     point, plus a daily cycle: about 1 C below that at 5-7 pm and 1 C above
     at 9-11 am. RH is then taken at the room's median temperature over its
     last two measured weeks. Returns (hourly frame, residual sd of dew point).
+
+    The fit is from the cooling season (Jul 18 - Sep 24), and the room's
+    relation to outdoor air changes with the season. Against the daily fit
+    in main(), the room's dew point ran about 3.5 C lower in Feb-Apr, 2.7 C
+    lower in May and 1.8 C lower in June, then on the fit in Jul-Aug, and
+    0.6 C lower in Sep 12-23 (Open-Meteo, and the Feb-Jul archive on
+    claude/issue-42-20260718-1733). So expect this estimate to overstate the
+    room more and more as the building moves to heating.
     """
     out24 = w["dew_point_2m"].rolling(24, min_periods=18).mean()
     fit = pd.DataFrame({"dew": room["dew"], "out24": out24}).dropna()
@@ -431,12 +470,19 @@ def plot_zoom(df, room_until, ref, ref_sd, spans, events, zoom_from, now):
     axes[0].set_ylim(lo, hi + 0.2 * (hi - lo))  # room for the event labels
     shade_offline(axes, spans, x_end, label_ax=axes[0], y=0.5)
     mark_events(axes, events, axes[0], 0.97, "left", 4)
-    axes[-1].xaxis.set_major_locator(mdates.HourLocator(interval=2, tz=TZ))
-    axes[-1].xaxis.set_major_formatter(
-        lambda x, _: f"{mdates.num2date(x, tz=TZ):%-I %p}".lower())
+    if x_end - zoom_from <= pd.Timedelta("36h"):
+        axes[-1].xaxis.set_major_locator(mdates.HourLocator(interval=2, tz=TZ))
+        axes[-1].xaxis.set_major_formatter(
+            lambda x, _: f"{mdates.num2date(x, tz=TZ):%-I %p}".lower())
+    else:
+        axes[-1].xaxis.set_major_locator(mdates.DayLocator(tz=TZ))
+        axes[-1].xaxis.set_minor_locator(
+            mdates.HourLocator(byhour=[6, 12, 18], tz=TZ))
+        axes[-1].xaxis.set_major_formatter(
+            mdates.DateFormatter("%a %b %d", tz=TZ))
     fig.suptitle(
         f"CB 154 AirGradient, {zoom_from:%b %d, %-I %p} to "
-        f"{now.tz_convert(TZ):%-I:%M %p}".replace("AM", "am").replace("PM", "pm")
+        f"{now.tz_convert(TZ):%b %d, %-I:%M %p}".replace("AM", "am").replace("PM", "pm")
         + ": after the dehumidifier went on. 5-minute means. "
         "America/Denver time.",
         x=0.01, ha="left", fontsize=11, color=INK)
