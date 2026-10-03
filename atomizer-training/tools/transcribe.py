@@ -1,9 +1,10 @@
 """Whisper transcripts of the atomizer videos: faster-whisper large-v3-turbo, int8, on CPU.
 
-    python transcribe.py                  # every video in PRIORITY without a transcript yet
+    python transcribe.py                  # every video in PRIORITY without a word-timed transcript yet
     python transcribe.py prj_xgeuQtM ...  # just these
 
-Batched for speed, with word timestamps so that the segments can be re-cut at sentence ends (or every ~12 s of speech):
+Batched for speed, with word timestamps so that the segments can be re-cut at sentence ends (or every ~12 s of speech),
+and the words themselves kept in the JSON (`words`: [start, end, word, probability]) for cutting clips on them:
 the batched pipeline on its own returns 30-45 s segments, too coarse for a timestamp link. Videos in NO_VAD are machine
 noise with speech underneath, which the voice-activity filter drops whole, so they run without it, in fixed
 30 s windows.
@@ -34,23 +35,28 @@ def fmt(t):
     return f"{h:02d}:{m:02d}:{s:06.3f}".replace(".", ",")
 
 
+def piece(words):
+    """One output segment, keeping its words as [start, end, word, probability]."""
+    return {"start": round(words[0].start, 2), "end": round(words[-1].end, 2),
+            "text": "".join(x.word for x in words).strip(),
+            "words": [[round(x.start, 2), round(x.end, 2), x.word, round(x.probability, 3)] for x in words]}
+
+
 def recut(segments):
     """Split Whisper's segments at sentence ends, or when a piece passes MAX_SEG seconds, using the word times."""
     out = []
     for s in segments:
         words = s.words or []
         if not words:
-            out.append({"start": round(s.start, 2), "end": round(s.end, 2), "text": s.text.strip()}); continue
+            out.append({"start": round(s.start, 2), "end": round(s.end, 2), "text": s.text.strip(), "words": []}); continue
         cur = []
         for w in words:
             cur.append(w)
             ends_sentence = w.word.strip().endswith((".", "?", "!"))
             if ends_sentence or (cur[-1].end - cur[0].start) > MAX_SEG:
-                out.append({"start": round(cur[0].start, 2), "end": round(cur[-1].end, 2),
-                            "text": "".join(x.word for x in cur).strip()}); cur = []
+                out.append(piece(cur)); cur = []
         if cur:
-            out.append({"start": round(cur[0].start, 2), "end": round(cur[-1].end, 2),
-                        "text": "".join(x.word for x in cur).strip()})
+            out.append(piece(cur))
     return [o for o in out if o["text"]]
 
 
@@ -61,7 +67,8 @@ def fetch(vid):
 
 def main():
     os.makedirs(OUT, exist_ok=True)
-    pending = sys.argv[1:] or [v for v in PRIORITY if not os.path.exists(f"{OUT}/{v}.json")]
+    pending = sys.argv[1:] or [v for v in PRIORITY if not os.path.exists(f"{OUT}/{v}.json")
+                               or "words" not in (json.load(open(f"{OUT}/{v}.json"))["segments"] or [{}])[0]]
     model = WhisperModel(MODEL, device="cpu", compute_type="int8", cpu_threads=os.cpu_count())
     pipe = BatchedInferencePipeline(model=model)
     for attempt in range(3):

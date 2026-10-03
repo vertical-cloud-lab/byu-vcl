@@ -38,7 +38,7 @@ FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each sub-step, to /tmp
 
 
-FLATTISH = {"cabinet", "heat_exchanger", "base_frame", "platform", "chamber", "chamber_mount", "vacuum_pump",
+FLATTISH = {"cabinet", "heat_exchanger", "base_frame", "platform", "chamber", "vacuum_pump",
             "hmi", "door"}
 
 
@@ -127,6 +127,12 @@ class Scene:
         self.base_alpha: dict[str, float] = {}
         self.color: dict[str, tuple] = {}
         self.ambient: dict[str, float] = {}
+        # deferred cutaways: parts can be added twice, whole ("whole") and halved ("half"); cut_f[group] (or cut_f["*"])
+        # blends between them, so an animation can start on the closed machine and open the cutaway when it is needed.
+        # Ghosted shells (ghost_of) go from opaque to their see-through opacity on the same factor.
+        self.cutrole: dict[str, str] = {}
+        self.ghost_of: dict[str, float] = {}
+        self.cut_f: dict[str, float] = {}
         self.cam = [(3000, -3000, 2500), (0, 0, 900), (0, 0, 1)]
         self.view_angle = 30.0
         self.caption = ""
@@ -188,8 +194,16 @@ class Scene:
                 cache[g] = self.world(g)
             actor.SetUserMatrix(_vtk_matrix(cache[g]))
             a = self.alpha[name]
+            op = self.base_alpha[name]
+            role, gh = self.cutrole.get(name), self.ghost_of.get(name)
+            if role or gh is not None:
+                f = self.cut_f.get(g, self.cut_f.get("*", 1.0))
+                if role:
+                    a *= f if role == "half" else 1.0 - f
+                if gh is not None:
+                    op = 1.0 + (gh - 1.0) * f
             actor.SetVisibility(a > 0.02)
-            actor.GetProperty().SetOpacity(min(1.0, self.base_alpha[name] * a))
+            actor.GetProperty().SetOpacity(min(1.0, op * a))
             if name in self.color:
                 actor.GetProperty().SetColor(*self.color[name])
             if name in self.ambient:
@@ -426,13 +440,16 @@ def lighter(c, k=0.45):
     return tuple(x + (1 - x) * k for x in c)
 
 
-def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=True):
+def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=True, defer=False):
     """Add every model part to the scene. Parts whose group is in `cut` (or all cuttable parts when
     cut == "all") are shown halved at y = 0 with their cut faces tinted lighter. `ghost` maps part
-    names to an opacity, for see-through shells."""
+    names to an opacity, for see-through shells. With defer=True the machine starts closed: the halves
+    and ghosts wait until set_cut() opens them (whole copies are added as "w:<part>")."""
     import model
     ms = model.meshes()
     ghost = ghost or {}
+    if defer:
+        sc.cut_f["*"] = 0.0
     for name, m in ms.items():
         if name in hide:
             continue
@@ -451,6 +468,13 @@ def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=Tr
             if m["half_cut"] is not None:
                 sc.add(name + "#cut", m["half_cut"], lighter(m["color"]), m["group"], opacity=op,
                        smooth_shading=False, ambient=0.55, diffuse=0.5, specular=0.0)
+            if defer:
+                sc.add("w:" + name, m["whole"], m["color"], m["group"], opacity=m["opacity"])
+                sc.cutrole.update({name: "half", name + "#cut": "half", "w:" + name: "whole"})
+                sc.cut_f[m["group"]] = 0.0
+        elif defer and name in ghost:
+            sc.add(name, m["whole"], m["color"], m["group"], opacity=1.0)
+            sc.ghost_of[name] = op
         else:
             sc.add(name, m["whole"], m["color"], m["group"], opacity=op)
     if pipes:
@@ -459,12 +483,23 @@ def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=Tr
                 continue
             sc.add("pipe_" + name, pv.Spline(np.array(p["pts"], float), 120).tube(radius=p["r"], n_sides=14),
                    p["color"], "pipes")
-    # the stack rides on the door; the rod rides on the holder arm; the nozzle in the crucible
+    # the stack rides on the door; the rod rides on the holder arm; the nozzle in its holder, the holder on the crucible
     for g in ("plate", "sonotrode", "booster", "transducer", "cover"):
         sc.parent[g] = "door"
     sc.parent["rod"] = "arm"
-    sc.parent["nozzle"] = "crucible"
+    sc.parent["nozzle"] = "holder"
+    sc.parent["holder"] = "crucible"
     return ms
+
+
+def set_cut(sc: Scene, f: float, groups=None):
+    """Blend deferred cutaways: 0 = the closed machine, 1 = cut open. `groups` limits it to some part groups."""
+    if groups is None:
+        for k in list(sc.cut_f):
+            sc.cut_f[k] = f
+    else:
+        for g in groups:
+            sc.cut_f[g] = f
 
 
 def names_of(sc: Scene, group: str) -> list[str]:

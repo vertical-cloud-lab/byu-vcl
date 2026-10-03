@@ -41,10 +41,9 @@ with the training detail from #222 and the powder bags from #249.
    [`tools/make_timestamps.py`](tools/make_timestamps.py) assembles [`timestamps.md`](timestamps.md) from those tables and labels each
    video's source.
 5. **Keyframes** ([`tools/keyframes.py`](tools/keyframes.py), [`tools/sop_frames.py`](tools/sop_frames.py)): scene-change detection plus a frame
-   every two minutes for the contact sheets; a frame at the exact cited second for every SOP reference. The every-two-minute
-   tiles on the sheets are labelled about 60 s early (`fps=1/120` keeps the last keyframe before the middle of each interval,
-   but the tile gets the interval's start time); the scene-change tiles and the SOP frames are exact. Regenerating the sheets
-   with the true frame times is a follow-up.
+   every two minutes for the contact sheets; a frame at the exact cited second for every SOP reference. Every tile carries the
+   true time of its frame: a scene change keeps ffmpeg's own timestamp, and the every-two-minute frames are taken with an
+   accurate seek at exactly 00:00, 02:00, 04:00, …
 6. **SOP**: drafted from the indexes with a fixed outline and the link convention, then reviewed. Where the captions disagree or
    are garbled, the SOP says so and lists the item under *Open questions*; the videos stay the authority.
 7. **3D animations** ([`viz3d/`](viz3d/README.md)): a CadQuery model of the module (furnace, crucible stack, chamber, ultrasonic

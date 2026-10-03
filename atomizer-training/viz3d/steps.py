@@ -17,9 +17,9 @@ import numpy as np
 import pyvista as pv
 
 import model as M
-from scene import MELT, R, S, Scene, T, ease, lighter, load_machine, mix, temp_color, window
+from scene import MELT, R, S, Scene, T, ease, lighter, load_machine, mix, set_cut, temp_color, window
 
-FURNACE_CUT = ("crucible", "nozzle", "furnace", "side_ins", "top_ins", "bottom_ins", "coil", "hood", "tc")
+FURNACE_CUT = ("crucible", "holder", "nozzle", "furnace", "side_ins", "top_ins", "bottom_ins", "coil", "hood", "tc")
 CHAMBER_CUT = ("chamber", "door", "bowl", "splash", "container", "flange_clamp")
 UTILITY_NAMES = ("argon_cylinder", "argon_regulator", "argon_gauges", "vacuum_pump", "pump_sight_glass",
                  "heat_exchanger", "hx_grille", "hx_display", "air_frl")
@@ -29,13 +29,15 @@ CAM = {
     "machine_near": [(-1650, -2500, 1750), (60, 100, 900), (0, 0, 1)],
     "furnace_top": [(-360, -900, 1800), (0, 0, 1335), (0, 0, 1)],
     "furnace_sec": [(-330, -820, 1430), (5, 0, 1262), (0, 0, 1)],
-    "column": [(-760, -2650, 1020), (40, 0, 830), (0, 0, 1)],
-    "pour": [(-620, -1720, 1220), (10, 0, 1070), (0, 0, 1)],
-    "chamber": [(-1000, -2150, 930), (40, 0, 590), (0, 0, 1)],
-    "stream": [(-380, -1050, 1100), (5, 0, 1000), (0, 0, 1)],
-    "wash": [(-640, -2050, 1280), (40, 0, 1060), (0, 0, 1)],
-    "container": [(-650, -1500, 700), (40, 0, 420), (0, 0, 1)],
-    "door_out": [(-1500, -1250, 1050), (-150, 0, 780), (0, 0, 1)],
+    "column": [(-820, -2750, 1120), (70, 0, 860), (0, 0, 1)],
+    "pour": [(-620, -1720, 1200), (10, 0, 1030), (0, 0, 1)],
+    "chamber": [(-900, -2200, 1000), (110, 0, 760), (0, 0, 1)],
+    "stream": [(-380, -1050, 1080), (5, 0, 1030), (0, 0, 1)],
+    "wash": [(-640, -2050, 1280), (70, 0, 1000), (0, 0, 1)],
+    "container": [(-750, -2050, 950), (220, -120, 340), (0, 0, 1)],
+    "door_out": [(-1500, -1250, 1100), (-170, 0, 930), (0, 0, 1)],
+    "nut": [(-430, -820, 960), (-10, 0, 1110), (0, 0, 1)],
+    "outside": [(-1500, -2600, 1650), (60, 100, 950), (0, 0, 1)],
 }
 
 STREAM_TOP = M.NOZZLE_EXIT_Z
@@ -47,14 +49,33 @@ def hood(sc, deg):
     sc.gmat["hood"] = R((0, 1, 0), -deg, M.HINGE)
 
 
+def door_mat(deg):
+    return R((0, 0, 1), -deg, (M.DOOR_HINGE[0], M.DOOR_HINGE[1], 0))
+
+
 def door(sc, deg):
-    sc.gmat["door"] = R((0, 0, 1), -deg, (M.DOOR_HINGE[0], M.DOOR_HINGE[1], 0))
+    sc.gmat["door"] = door_mat(deg)
+
+
+def on_door(p, deg=100):
+    """World position of a point that rides on the door, with the door open `deg`."""
+    return (door_mat(deg) @ np.append(np.asarray(p, float), 1.0))[:3]
 
 
 def clamp(sc, k, f):
-    """f = 1 closed, 0 open (lever flipped up)."""
-    z = (M.CH_Z[0] + 75, (M.CH_Z[0] + M.CH_Z[1]) / 2, M.CH_Z[1] - 75)[k]
-    sc.gmat[f"clamp{k}"] = R((0, 1, 0), 80 * (1 - f), (M.CH_X[0] - 4, M.CH_Y[0] - 19, z))
+    """f = 1 closed, 0 open (the swing bolt and its star knob swung clear of the door)."""
+    sc.gmat[f"clamp{k}"] = R(M.CLAMP_AXES[k], M.CLAMP_SWING[k] * (1 - f), M.CLAMP_PTS[k])
+
+
+def linear(e, t0, t1):
+    """Like window(), but linear in time: undoes the step's easing, for steady motions such as screwing."""
+    u = 0.5 - math.sin(math.asin(max(-1.0, min(1.0, 1 - 2 * e))) / 3)
+    return min(1.0, max(0.0, (u - t0) / (t1 - t0)))
+
+
+def cut_in(sc, u, groups=None):
+    """Open the deferred cutaway over the first part of a sub-step (u from 0 to 1)."""
+    set_cut(sc, window(u, 0.0, 0.35), groups)
 
 
 def slug_xy(k):
@@ -70,7 +91,7 @@ def heat(sc, temp, coil_on):
             if n in sc.actors:
                 sc.color[n] = c
                 sc.ambient[n] = 0.18 + 0.55 * max(0.0, min(1.0, (temp - 450) / 400))
-    for n in ("coil", "coil#cut"):
+    for n in ("coil", "coil#cut", "w:coil"):
         if n in sc.actors:
             sc.color[n] = mix(M.COPPER, (1.0, 0.62, 0.30), coil_on)
             sc.ambient[n] = 0.18 + 0.45 * coil_on
@@ -153,8 +174,8 @@ def stream(sc, on, thick=1.0, frac=1.0):
 class Particles:
     """Droplets / powder as points rendered as spheres; a tiny ballistic model in slow motion."""
 
-    def __init__(self, sc, name, color, size=6.0, slowmo=0.22, seed=1):
-        self.sc, self.name, self.slowmo = sc, name, slowmo
+    def __init__(self, sc, name, color, size=6.0, slowmo=0.22, seed=1, free=False):
+        self.sc, self.name, self.slowmo, self.free = sc, name, slowmo, free
         self.rng = np.random.default_rng(seed)
         self.p = np.zeros((0, 3))
         self.v = np.zeros((0, 3))
@@ -188,7 +209,8 @@ class Particles:
         if n <= 0:
             return
         r = self.rng
-        p = np.column_stack([r.uniform(-100, 220, n), r.uniform(2, 160, n), np.full(n, M.CH_Z[0] + 8)])
+        x = r.uniform(-60, 300, n)
+        p = np.column_stack([x, r.uniform(2, M.CH_Y[1] - 20, n), np.maximum(M.CH_BOTTOM + 8, M.SLOPE_C + 10 - x)])
         self.p = np.vstack([self.p, p])
         self.v = np.vstack([self.v, np.zeros((n, 3))])
 
@@ -198,16 +220,24 @@ class Particles:
             self.v[:, 2] -= 9810 * h
             self.v *= (1 - 1.8 * h)
             self.p += self.v * h
-            x0, x1 = M.CH_X[0] + 6, M.CH_X[1] - 6
+            if self.free:                 # outside the chamber: just fall, and go once well below
+                keep = self.p[:, 2] > 300
+                self.p, self.v = self.p[keep], self.v[keep]
+                pts = self.p if len(self.p) else np.array([[0.0, 0.0, -500.0]])
+                self.sc.set_mesh(self.name, pv.PolyData(pts.copy()))
+                self.sc.alpha[self.name] = 1.0 if len(self.p) else 0.0
+                return
+            x0, x1 = M.CH_X[0] + 6, M.CH_RIGHT - 6
             y0, y1 = 1.0, M.CH_Y[1] - 6
-            inside = self.p[:, 2] > M.CH_Z[0] + 6
+            fl = np.maximum(M.CH_BOTTOM + 8, M.SLOPE_C + 8 - self.p[:, 0])     # the sloped underside
+            inside = self.p[:, 2] > fl - 2
             for ax, lo, hi in ((0, x0, x1), (1, y0, y1)):
                 hit = inside & ((self.p[:, ax] < lo) | (self.p[:, ax] > hi))
                 self.p[hit, ax] = np.clip(self.p[hit, ax], lo, hi)
                 self.v[hit, ax] *= -0.15
-            low = self.p[:, 2] <= M.CH_Z[0] + 8
-            if low.any():   # on the chamber floor / chute: slide to the outlet and drop
-                tgt = np.array([M.CHUTE_X, 0.0, M.CONT_Z[1] - 10])
+            low = self.p[:, 2] <= fl
+            if low.any():   # on the sloped underside: slide down to the outlet and drop
+                tgt = np.array([M.CHUTE_X, 0.0, M.CONT_Z[1] - 45])
                 dvec = tgt[None, :] - self.p[low]
                 dist = np.linalg.norm(dvec, axis=1)[:, None] + 1e-6
                 self.v[low] = dvec / dist * 900
@@ -222,9 +252,9 @@ class Particles:
 def gas_meshes(half):
     fur = pv.Cylinder(center=(0, 0, 1251), direction=(0, 0, 1), radius=128, height=186, resolution=72).merge(
         pv.Cylinder(center=(0, 0, 1412), direction=(0, 0, 1), radius=112, height=130, resolution=6))
-    ch = pv.Box(bounds=(M.CH_X[0] + 5, M.CH_X[1] - 5, M.CH_Y[0] + 5, M.CH_Y[1] - 5, M.CH_Z[0] + 5, M.CH_Z[1] - 5))
-    ch = ch.triangulate().merge(pv.Cylinder(center=(M.CHUTE_X, 0, 280), direction=(0, 0, 1), radius=M.CONT_R - 6,
-                                            height=240, resolution=48).triangulate())
+    ch = M.tess(M.chamber_solid(M.CH_WALL + 1.0), 1.0).triangulate()
+    ch = ch.merge(pv.Cylinder(center=(M.CHUTE_X, 0, (M.CONT_Z[0] + M.CH_BOTTOM) / 2), direction=(0, 0, 1),
+                              radius=M.CONT_R - 6, height=M.CH_BOTTOM - M.CONT_Z[0] - 8, resolution=48).triangulate())
     if half:
         fur = fur.clip(normal=(0, -1, 0), origin=(0, 0.5, 0))
         ch = ch.clip(normal=(0, -1, 0), origin=(0, 0.5, 0))
@@ -267,22 +297,6 @@ class Flow:
         self.sc.alpha[self.name] = self.on
 
 
-def add_whole(sc, groups):
-    """Hidden whole copies (named w:<part>) of parts that are shown halved, for crossfading out of a cutaway."""
-    ms = M.meshes()
-    names = []
-    for name, m in ms.items():
-        if m["group"] in groups and m["half"] is not None or (m["group"] in groups and m.get("gone")):
-            sc.add("w:" + name, m["whole"], m["color"], m["group"], shown=False)
-            names.append("w:" + name)
-    return names
-
-
-def cut_names(sc):
-    ms = M.meshes()
-    return {n for n in sc.actors if n.split("#")[0] in ms and ms[n.split("#")[0]]["half"] is not None}
-
-
 def seq(*fs):
     def f(u):
         for g in fs:
@@ -301,15 +315,17 @@ def lab(text, xyz, fx, fy):
 # ---------------------------------------------------------------------------- 03 furnace load
 def anim_03_furnace_load():
     sc = Scene("03_furnace_load", "3 · Furnace prep and loading")
-    load_machine(sc, cut=FURNACE_CUT, hide=UTILITY_NAMES, pipes=False)
-    # start: lid closed, everything that gets rebuilt is out
+    # the cutaway waits until the lid is open; the chamber is cut too, to show the nut under its top plate
+    load_machine(sc, cut=FURNACE_CUT + ("chamber",), hide=UTILITY_NAMES, pipes=False, defer=True)
     hood(sc, 0)
-    lift = {"crucible": 240, "side_ins": 300, "top_ins": 330, "bottom_ins": 360, "tc": 140, "rod": 260}
-    for g in ("crucible", "side_ins", "top_ins", "bottom_ins", "tc", "rod"):
+    lift = {"crucible": 240, "side_ins": 300, "top_ins": 330, "bottom_ins": 360, "tc": 140, "rod": 260, "seal": -94}
+    for g in ("crucible", "side_ins", "top_ins", "bottom_ins", "tc", "rod", "seal"):
         sc.show(sc.members(g), 0.0)
         sc.gmat[g] = T((0, 0, lift[g]))
-    sc.gmat["nozzle"] = T((0, 0, -70))
-    sc.show(sc.members("nozzle"), 0.0)
+    sc.gmat["holder"] = T((0, 0, -70))
+    sc.show(sc.members("holder") + sc.members("nozzle"), 0.0)
+    sc.gmat["nut"] = T((0, 0, -94))      # below its seat; the last 10 mm are 5 turns of a 2 mm thread
+    sc.show(sc.members("nut"), 0.0)
     for k in range(4):
         sc.show(sc.members(f"slug{k}"), 0.0)
     sc.cam = CAM["machine_near"]
@@ -317,41 +333,61 @@ def anim_03_furnace_load():
 
     def open_lid(u):
         hood(sc, 110 * u)
-
-    sc.step("3.1", "Start cold, with the furnace lid open: it hinges up to the left. For a rebuild, everything "
-            "comes out: thermocouple, sealing rod, insulation, crucible.", 3.5, open_lid, hold=1.4,
+    sc.step("3.1", "Start cold and open the furnace lid: it hinges up to the left. For a rebuild, everything comes "
+            "out: thermocouple, sealing rod, insulation, crucible.", 3.5, open_lid, hold=1.2,
             cam_to=CAM["furnace_top"],
-            labels=[lab("furnace lid (bell)", M.HINGE + np.array([-90, 0, 200]), 0.06, 0.20),
-                    lab("induction coil, in the\nhalf-cut furnace body", (-47, 0, M.Z_CR + 20), 0.06, 0.45)])
+            labels=[lab("furnace lid (bell)", M.HINGE + np.array([-90, 0, 200]), 0.06, 0.20)])
+
+    turns = 4.0                           # the holder threads into the crucible over its last 8 mm
 
     def nozzle_in(u):
-        sc.show(sc.members("crucible"), min(1.0, u * 4))
-        sc.show(sc.members("nozzle"), min(1.0, u * 4))
-        sc.gmat["nozzle"] = T((0, 0, -70 * (1 - window(u, 0.25, 1.0))))
-    sc.step("3.2", "Nozzle into its holder, white side up: Ø0.5 mm is standard, Ø0.7 for Al alloys. "
-            "Screw nozzle and holder onto the crucible as a pair, just tight: the thread barely engages.",
-            3.5, nozzle_in, hold=1.6,
-            labels=[lab("graphite crucible", (-30, -20, M.Z_CR + 240 + 50), 0.06, 0.25),
-                    lab("nozzle, white side up", (0, -8, M.CRUCIBLE_BASE + 240 - 3), 0.06, 0.55)])
+        cut_in(sc, u)
+        sc.show(sc.members("crucible"), 1.0 if u > 0.3 else 0.0)
+        sc.show(sc.members("holder") + sc.members("nozzle"), 1.0 if u > 0.3 else 0.0)
+        rise = window(u, 0.3, 0.45)
+        screw = linear(u, 0.45, 0.97)        # about 1.5 turns a second, 2 mm a turn
+        sc.gmat["holder"] = T((0, 0, -70 + 62 * rise + 8 * screw)) @ R((0, 0, 1), 360 * turns * screw)
+    sc.step("3.2", "Nozzle into its holder, white side up: Ø0.5 mm standard, Ø0.7 for Al alloys. Screw the "
+            "holder into the crucible as a pair, by hand: several turns, and only just tight.", 5.5, nozzle_in,
+            hold=1.4, labels=[lab("graphite crucible", (-30, -20, M.Z_CR + 240 + 50), 0.06, 0.25),
+                              lab("nozzle holder, nozzle\nwhite side up", (0, -8, M.CRUCIBLE_BASE + 240 - 20),
+                                  0.06, 0.55)])
 
     def crucible_in(u):
-        sc.show(sc.members("bottom_ins"), min(1.0, u * 5))
-        sc.gmat["bottom_ins"] = T((0, 0, 360 * (1 - window(u, 0.0, 0.4))))
-        w = window(u, 0.35, 1.0)
-        sc.gmat["crucible"] = T((0, 0, 240 * (1 - w))) @ R((0, 0, 1), 200 * (1 - w))
-    sc.step("3.3", "Graphite seal and bottom insulation in, then the crucible down into the coil. The graphite nut "
-            "goes on from below; before it is tight, turn its hole to where you can reach it.", 4.0, crucible_in,
-            hold=1.4, labels=[lab("bottom insulation", (60, 0, M.CRUCIBLE_BASE - 12), 0.70, 0.62)])
+        sc.show(sc.members("bottom_ins"), 1.0)
+        sc.gmat["bottom_ins"] = T((0, 0, 360 * (1 - window(u, 0.0, 0.35))))
+        sc.gmat["crucible"] = T((0, 0, 240 * (1 - window(u, 0.4, 1.0))))      # straight down: nothing turns
+    sc.step("3.3", "Upper graphite seal and bottom insulation in, then lower the crucible straight down into the "
+            "coil. Handle it gently: graphite is brittle.", 4.0, crucible_in, hold=1.2,
+            labels=[lab("bottom insulation", (60, 0, M.CRUCIBLE_BASE - 12), 0.70, 0.62),
+                    lab("holder shank, through\nthe floor into the chamber", (8, 0, M.SHANK_Z0 + 6), 0.70, 0.80)])
+
+    def nut_on(u):
+        door(sc, 100 * window(u, 0.0, 0.25))
+        sc.show(sc.members("nut") + sc.members("seal"), 1.0 if u > 0.2 else 0.0)
+        rise = window(u, 0.22, 0.36)
+        screw = linear(u, 0.36, 0.97)        # 5 turns at under a turn a second
+        sc.gmat["seal"] = T((0, 0, -94 * (1 - window(u, 0.2, 0.32))))
+        sc.gmat["nut"] = T((0, 0, -94 + 84 * rise + 10 * screw)) @ R((0, 0, 1), -360 * 5 * screw)
+        gauges(sc, t=24, status="nut snug, not tight" if u > 0.95 else "threading the nut on (5 turns)")
+    sc.step("3.4", "Through the chamber's left door, the lower seal, then thread the thin graphite nut onto the shank from below, while "
+            "the crucible is held still at the top with its thermocouple hole turned to the back right. A second "
+            "person at the top helps; alone, keep a hand on the crucible. Snug, not tight: graphite cracks if "
+            "forced, and a loose nut leaks.", 9.0, nut_on, hold=1.6, cam_to=CAM["nut"],
+            labels=[lab("graphite nut: thin,\na few threads", (0, -28, 1120), 0.70, 0.62),
+                    lab("hold the crucible\nhere, at the top", (0, -40, M.RIM - 10), 0.06, 0.22),
+                    lab("left door open:\nthe access opening", on_door((M.CH_X[0] - 26, -40, 1000)), 0.06, 0.62)])
 
     def insulation_in(u):
+        gauges(sc, t=24, status="furnace cold, power on")
         a, b = window(u, 0.0, 0.55), window(u, 0.45, 1.0)
         sc.show(sc.members("side_ins"), min(1.0, u * 6))
         sc.gmat["side_ins"] = T((0, 0, 300 * (1 - a)))
         sc.show(sc.members("top_ins"), min(1.0, max(0.0, (u - 0.4) * 6)))
         sc.gmat["top_ins"] = T((0, 0, 330 * (1 - b)))
-    sc.step("3.4", "Side insulation round the crucible, its hole lined up with the thermocouple port, then the "
-            "top insulation (filling cone). Silica-alumina: dusty and fragile, vacuum up afterwards.", 4.0,
-            insulation_in, hold=1.4,
+    sc.step("3.5", "Side insulation round the crucible, its hole lined up with the thermocouple port at the back "
+            "right, then the top insulation (filling cone). Silica-alumina: dusty and fragile.", 4.0,
+            insulation_in, hold=1.2, cam_to=CAM["furnace_top"],
             labels=[lab("side insulation", (40.5, 0, M.Z_CR + 40), 0.70, 0.45),
                     lab("top insulation", (75, 0, M.BODY_TOP - 18), 0.70, 0.30)])
 
@@ -361,32 +397,33 @@ def anim_03_furnace_load():
     def tc_in(u):
         sc.show(sc.members("tc"), min(1.0, u * 5))
         sc.gmat["tc"] = T((0, 0, 140 * (1 - u)))
-    sc.step("3.5", "Thermocouple (Type N) into the hole in the crucible wall, bent to sit close. Leave it in even "
-            "for maintenance, or the HMI raises 'master temperature sensor' and bleeds argon.", 3.0, tc_in,
-            hold=1.4, labels=[lab("wall thermocouple", tc_pt + np.array([-30, 20, 0]), 0.06, 0.30)])
+    sc.step("3.6", "Thermocouple (Type N) in from the back right, into the hole in the crucible wall, bent to sit "
+            "close. Leave it in even for maintenance, or the HMI raises 'master temperature sensor'.", 3.0, tc_in,
+            hold=1.2, labels=[lab("wall thermocouple,\nback right", tc_pt + np.array([40, 0, 0]), 0.70, 0.22)])
 
     def rod_in(u):
         sc.show(sc.members("rod"), min(1.0, u * 5))
         sc.gmat["rod"] = T((0, 0, 260 * (1 - u)))
-    sc.step("3.6", "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screw it into "
-            "its adapter, pin the adapter to the arm, lower it onto the nozzle.", 3.5, rod_in, hold=1.6,
+    sc.step("3.7", "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screw it into "
+            "its adapter, pin the adapter to the arm, lower it onto the nozzle.", 3.5, rod_in, hold=1.4,
             labels=[lab("sealing rod", (0, -6, M.Z_CR + 60), 0.70, 0.40),
-                    lab("adapter on the holder arm", (40, 18, M.RIM + M.ARM_ABOVE_RIM + 8), 0.70, 0.20)])
+                    lab("adapter on the holder arm", (20, 40, M.RIM + M.ARM_ABOVE_RIM + 8), 0.70, 0.20)])
 
     def charge_in(u):
         for k in range(4):
             w = window(u, 0.18 * k, 0.18 * k + 0.45)
             sc.show(sc.members(f"slug{k}"), 1.0 if u > 0.18 * k else 0.0)
             sc.gmat[f"slug{k}"] = T((0, 0, 260 * (1 - w)))
-    sc.step("3.7", "Charge: clean rods no thicker than 20 mm, 250–300 g; here 4 × Ø17 × 100 mm "
+    sc.step("3.8", "Charge: clean rods no thicker than 20 mm, 250–300 g; here 4 × Ø17 × 100 mm "
             "6063 (≈245 g) dropped in round the seated rod. They stand proud and sink as they melt.", 5.0,
-            charge_in, hold=1.6, still=True,
+            charge_in, hold=1.4, still=True,
             labels=[lab("charge: 4 rods, ≈245 g", (slug_xy(0)[0], slug_xy(0)[1], M.Z_CR + 85), 0.70, 0.62)])
 
     def close_lid(u):
-        hood(sc, 110 * (1 - u))
-    sc.step("3.8", "Close the lid and set the latch just tight enough to seal: if it hisses under pressure, loosen "
-            "it, adjust the latch and retighten.", 3.5, close_lid, hold=2.0, cam_to=CAM["furnace_sec"])
+        set_cut(sc, 1 - window(u, 0.6, 1.0))
+        hood(sc, 110 * (1 - window(u, 0.0, 0.6)))
+    sc.step("3.9", "Close the lid and set the latch just tight enough to seal: if it hisses under pressure, loosen "
+            "it, adjust the latch and retighten.", 3.5, close_lid, hold=1.6, cam_to=CAM["machine_near"])
     return sc.save()
 
 
@@ -412,34 +449,35 @@ def anim_00_machine():
 
     sc.cam = orbit_cam(-115, 24, 4700)
     sc.step("0.1", "BYU's AMAZEMET rePowder: an induction furnace on top of an argon-filled atomization chamber, "
-            "with the controls on a blue cabinet and the utilities behind it.", 2.0, None, hold=1.0,
+            "with the controls and electronics built into its blue frame, and the utilities round it.", 2.0, None,
+            hold=1.0,
             cam_to=orbit_cam(-118, 24, 4300))
     sc.step("0.2", "On top, the Blue Power furnace: a stainless body holding the coil, crucible and insulation, "
             "under a faceted lid with a window, hinged on the left.", 2.4, None, hold=1.2,
             cam_to=orbit_cam(-112, 22, 2600, np.array([20, 120, 1250])),
             labels=[lab("furnace lid (bell)", (-30, -110, 1440), 0.06, 0.22),
                     lab("furnace body", (-90, -100, 1250), 0.06, 0.40)])
-    sc.step("0.3", "Controls: the melting control panel (furnace) and the main switch on the cabinet, and the "
+    sc.step("0.3", "Controls: the melting control panel (furnace) and the main switch on the blue frame, and the "
             "15.6 in HMI on its swing arm, which runs pressures, gas and ultrasonics.", 2.4, None, hold=1.2,
             cam_to=orbit_cam(-82, 18, 2700, np.array([330, 150, 1350])),
-            labels=[lab("melting control panel", (337, 200, 1470), 0.06, 0.22),
-                    lab("main switch", (345, 190, 1200), 0.06, 0.55),
-                    lab("HMI", (600, 60, 1520), 0.74, 0.20)])
-    sc.step("0.4", "Below the furnace, the 57 L atomization chamber: a view port at the front, and on the left a "
-            "door closed by three clamps.", 2.4, None, hold=1.2,
-            cam_to=orbit_cam(-118, 16, 2700, np.array([40, 0, 850])),
-            labels=[lab("atomization chamber", (200, -120, 800), 0.74, 0.40),
-                    lab("view port", M.VIEWPORT + np.array([50, -40, 40]), 0.74, 0.22),
-                    lab("door, 3 clamps", (-140, -150, 935), 0.06, 0.30)])
+            labels=[lab("melting control panel", M.PANEL_C, 0.06, 0.22),
+                    lab("main switch", M.SWITCH_C, 0.06, 0.55),
+                    lab("HMI", M.HMI_C + np.array([0, -20, 60]), 0.74, 0.20)])
+    sc.step("0.4", "Below the furnace, the 57 L atomization chamber: a view port at the front, a door on the left "
+            "held by three star-knob bolts, and an underside that slopes down to the outlet.", 2.4, None, hold=1.2,
+            cam_to=orbit_cam(-118, 16, 2700, np.array([60, 0, 820])),
+            labels=[lab("atomization chamber", (180, M.CH_Y[0], 850), 0.74, 0.40),
+                    lab("view port", M.VIEWPORT + M.VIEWPORT_N * 40, 0.74, 0.22),
+                    lab("door, 3 star knobs", (M.CH_X[0] - 20, -60, 1000), 0.06, 0.30)])
     sc.step("0.5", "The ultrasonic unit rides in the door: transducer under its cover outside, sonotrode and plate "
             "inside, under the furnace nozzle.", 2.4, None, hold=1.2,
-            cam_to=orbit_cam(-150, 14, 2300, np.array([-120, 0, 760])),
+            cam_to=orbit_cam(-150, 14, 2300, np.array([-150, 0, 850])),
             labels=[lab("ultrasonic unit:\ntransducer under its cover", M.PLATE_C - M.STACK_DIR * 330, 0.06, 0.55)])
-    sc.step("0.6", "A cone takes the powder down through a valve to the airlock container, clamped on by its "
-            "flange.", 2.4, None, hold=1.2,
-            cam_to=orbit_cam(-120, 12, 2300, np.array([40, 0, 520])),
-            labels=[lab("chute cone + valve", (M.CHUTE_X - 70, -110, 520), 0.74, 0.40),
-                    lab("powder container", (M.CHUTE_X - 40, -88, 280), 0.74, 0.62)])
+    sc.step("0.6", "The sloped underside and a short cone take the powder down through a valve to the airlock "
+            "container, clamped on by its flange.", 2.4, None, hold=1.2,
+            cam_to=orbit_cam(-120, 12, 2300, np.array([200, 0, 420])),
+            labels=[lab("cone + valve", (M.CHUTE_X, -60, 360), 0.74, 0.40),
+                    lab("powder container", (M.CHUTE_X, -66, 160), 0.74, 0.62)])
     sc.step("0.7", "Behind and beside it: argon 5N with its regulator, the vacuum pump, compressed air for the "
             "transducer, and the heat exchanger on the chilled water.", 2.4, None, hold=1.2,
             cam_to=orbit_cam(-98, 42, 5200, np.array([150, 450, 450])),
@@ -455,17 +493,18 @@ def anim_00_machine():
             sc.alpha[n] = u
     sc.step("0.8", "Cut in half at the furnace axis: crucible, sealing rod and nozzle over the plate, and the cone "
             "down to the container.", 3.0, to_cut, hold=2.0, still=True,
-            cam_to=[(-760, -2650, 1020), (40, 0, 830), (0, 0, 1)],
+            cam_to=CAM["column"],
             labels=[lab("crucible + sealing rod", (0, 0, M.Z_CR + 40), 0.06, 0.18),
                     lab("plate on the sonotrode", M.PLATE_C, 0.06, 0.42),
-                    lab("powder container", (M.CHUTE_X + M.CONT_R - 2, 0, 280), 0.74, 0.75)])
+                    lab("powder container", (M.CHUTE_X + M.CONT_R - 2, 0, 160), 0.74, 0.75)])
     return sc.save()
 
 
 # ------------------------------------------------------------------------------------ 06 pour
 def anim_06_pour():
     sc = Scene("06_pour", "6 · Pour and atomize")
-    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False)
+    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False,
+                 defer=True)
     for k in range(4):
         sc.show(sc.members(f"slug{k}"), 0.0)
     pool = Pool(sc, half=True, level=36)
@@ -487,7 +526,8 @@ def anim_06_pour():
         sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if (on and k) else 0.0))
 
     sc.step("6.1", "Melt held at ~800 °C, O₂ at 45 ppm. The pour goes in this order, quickly: vibration "
-            "ON, draining pressure, sealing rod UP, turbo as needed.", 3.0, lambda u: show_g(), hold=1.2,
+            "ON, draining pressure, sealing rod UP, turbo as needed.", 3.0, lambda u: (cut_in(sc, u), show_g()),
+            hold=1.2,
             cam_to=CAM["pour"], labels=[lab("melt, ~800 °C", (-14, 0, M.Z_CR + 20), 0.06, 0.30),
                                         lab("plate", M.PLATE_C, 0.06, 0.72)])
 
@@ -570,7 +610,14 @@ def anim_06_pour():
 # ------------------------------------------------------------------------------- 02 stack
 def anim_02_stack():
     sc = Scene("02_stack", "2 \u00b7 Ultrasonic stack: build, torque, scan")
-    load_machine(sc, cut=CHAMBER_CUT, hide=UTILITY_NAMES, pipes=False)
+    # the door is locked open for this, so the stack and plate are in plain view: no cutaway
+    load_machine(sc, hide=UTILITY_NAMES, pipes=False)
+    DOOR = 100.0
+    door(sc, DOOR)
+    for c in range(3):
+        clamp(sc, c, 0.0)
+    dm = door_mat(DOOR)[:3, :3]
+    w = lambda p: on_door(p, DOOR)                           # door-frame point -> world
     bench = 330.0             # the stack is put together this far out along its axis, then slid in
     for g in ("transducer", "booster", "sonotrode", "plate", "cover"):
         sc.show(sc.members(g), 0.0)
@@ -578,11 +625,12 @@ def anim_02_stack():
         sc.gmat[g] = T(-M.STACK_DIR * bench)
     sc.gmat["plate"] = T(M.STACK_DIR * 140)
     sc.gmat["cover"] = T(-M.STACK_DIR * 520)
-    mid = M.PLATE_C - M.STACK_DIR * 330
-    cam_side = [tuple(mid + np.array([-120, -1500, 260])), tuple(mid + np.array([0, 0, 40])), (0, 0, 1)]
-    cam_in = [tuple(M.PLATE_C + np.array([-260, -900, 160])), tuple(M.PLATE_C - M.STACK_DIR * 120), (0, 0, 1)]
+    mid = w(M.PLATE_C - M.STACK_DIR * 330)
+    pw = w(M.PLATE_C)
+    cam_side = [tuple(mid + np.array([-1450, -650, 380])), tuple(mid + np.array([0, -60, 40])), (0, 0, 1)]
+    cam_in = [tuple(pw + np.array([-560, -620, 300])), tuple(pw + np.array([0, 40, -40])), (0, 0, 1)]
     sc.cam = CAM["machine_near"]
-    gauges(sc, status="chamber at atmosphere")
+    gauges(sc, status="chamber open, door locked open")
 
     def transducer_in(u):
         sc.show(sc.members("transducer"), min(1.0, u * 4))
@@ -590,7 +638,7 @@ def anim_02_stack():
     sc.step("2.1", "The stack goes transducer \u2192 booster \u2192 sonotrode \u2192 plate. First the transducer: "
             "piezo stack, ~1000 V cable, air-cooled. Never drop it or get it wet.", 3.5, transducer_in, hold=1.2,
             cam_to=cam_side,
-            labels=[lab("transducer", M.PLATE_C - M.STACK_DIR * (bench + 320), 0.06, 0.62)])
+            labels=[lab("transducer", w(M.PLATE_C - M.STACK_DIR * (bench + 320)), 0.06, 0.62)])
 
     def booster_on(u):
         sc.show(sc.members("booster"), min(1.0, u * 4))
@@ -598,15 +646,15 @@ def anim_02_stack():
         gauges(sc, torque="65 N\u00b7m" if u > 0.9 else "\u2026")
     sc.step("2.2", "Booster onto the transducer, 65 N\u00b7m (M10 fine thread). The 1.5:1 booster mounted in "
             "reverse lowers the amplitude, for finer powder.", 3.0, booster_on, hold=1.2,
-            labels=[lab("booster 1.5:1", M.PLATE_C - M.STACK_DIR * (bench + 210), 0.06, 0.40)])
+            labels=[lab("booster 1.5:1", w(M.PLATE_C - M.STACK_DIR * (bench + 210)), 0.06, 0.40)])
 
     def sono_on(u):
         sc.show(sc.members("sonotrode"), min(1.0, u * 4))
-        sc.gmat["sonotrode"] = T(-M.STACK_DIR * (bench - 120 * (1 - u)))
+        sc.gmat["sonotrode"] = T(-M.STACK_DIR * (bench - 120 * (1 - u))) @ R(M.STACK_DIR, 300 * (1 - u), M.PLATE_C)
         gauges(sc, torque="60 N\u00b7m" if u > 0.9 else "\u2026")
     sc.step("2.3", "Sonotrode on, 60 N\u00b7m, isopropanol on the threads. Its KF50 flange is always at the top.",
             3.0, sono_on, hold=1.2,
-            labels=[lab("sonotrode, KF50 flange", M.PLATE_C - M.STACK_DIR * (bench + 110), 0.06, 0.25)])
+            labels=[lab("sonotrode, KF50 flange", w(M.PLATE_C - M.STACK_DIR * (bench + 110)), 0.06, 0.25)])
 
     def stack_in(u):
         for g in ("transducer", "booster", "sonotrode"):
@@ -614,32 +662,31 @@ def anim_02_stack():
         gauges(sc, status="stack in the door housing")
     sc.step("2.4", "Splash plate in first (hard to fit later), O-ring checked, door locked open; then slide the "
             "stack into the door's housing and fit both clamps without touching the safety cover.", 3.5, stack_in,
-            hold=1.0, labels=[lab("door housing", M.PLATE_C - M.STACK_DIR * 194 + np.array([0, -45, 0]), 0.06,
-                                  0.30)])
+            hold=1.0, labels=[lab("door housing", w(M.PLATE_C - M.STACK_DIR * M.DOOR_S), 0.06, 0.30)])
 
     def plate_on(u):
         sc.show(sc.members("plate"), min(1.0, u * 4))
-        sc.gmat["plate"] = T(M.STACK_DIR * 140 * (1 - u)) @ R(M.STACK_DIR, 360 * (1 - u), M.PLATE_C)
+        sc.gmat["plate"] = T(M.STACK_DIR * 140 * (1 - u)) @ R(M.STACK_DIR, 360 * 2 * (1 - u), M.PLATE_C)
         gauges(sc, torque="50 N\u00b7m" if u > 0.9 else "\u2026")
     sc.step("2.5", "Plate onto its M8 stud with the stack in the housing: 50 N\u00b7m, counter-holding the "
             "sonotrode with a 17 mm wrench.", 3.0, plate_on, hold=1.2, cam_to=cam_in,
-            labels=[lab("plate, Ti 20 \u00d7 100", M.PLATE_C + M.PLATE_UP * 30, 0.70, 0.25)])
+            labels=[lab("plate, Ti 20 \u00d7 100", w(M.PLATE_C + M.PLATE_UP * 30), 0.70, 0.25)])
 
     def scan(u):
         f = 39.6 + 0.9 * u
         gauges(sc, scan=f"{f:.2f} kHz \u2026" if u < 0.95 else "one wide peak at 40.12 kHz")
     sc.step("2.6", "Advanced ultrasonics \u2192 scan: one wide peak a little over 40 kHz. A double peak? Run a "
             "short burst and rescan.", 3.0, scan, hold=1.4)
-    mist = Particles(sc, "mist", (0.35, 0.65, 1.0), size=4.0, slowmo=0.15, seed=5)
+    mist = Particles(sc, "mist", (0.35, 0.65, 1.0), size=4.0, slowmo=0.15, seed=5, free=True)
+    sd, pu = dm @ M.STACK_DIR, dm @ M.PLATE_UP
+    ny = np.cross(sd, pu)
 
     def wet(u):
         if u < 0.7:
             n = 6
             r = mist.rng
-            p = M.PLATE_C[None, :] + M.PLATE_UP[None, :] * r.uniform(-45, 45, n)[:, None] \
-                + np.array([0, 1.0, 0])[None, :] * r.uniform(1, 9, n)[:, None]
-            v = M.STACK_DIR[None, :] * r.uniform(150, 700, n)[:, None] + r.normal(0, 150, (n, 3))
-            v[:, 1] = np.abs(v[:, 1])
+            p = pw[None, :] + pu[None, :] * r.uniform(-45, 45, n)[:, None] + ny[None, :] * r.uniform(-9, 9, n)[:, None]
+            v = sd[None, :] * r.uniform(150, 700, n)[:, None] + r.normal(0, 150, (n, 3))
             mist.p = np.vstack([mist.p, p])
             mist.v = np.vstack([mist.v, v])
         mist.step()
@@ -659,7 +706,7 @@ def anim_02_stack():
     sc.step("2.8", "Bolt the protective cover over the transducer, then push in and lock the cable and connect "
             "the cooling air: two or three minutes that protect a part worth thousands.", 3.0, cover_on, hold=2.0,
             cam_to=cam_side, still=True,
-            labels=[lab("protective cover", M.PLATE_C - M.STACK_DIR * 330 + np.array([0, -50, 0]), 0.06, 0.62)])
+            labels=[lab("protective cover", w(M.PLATE_C - M.STACK_DIR * 330), 0.06, 0.62)])
     return sc.save()
 
 
@@ -667,7 +714,7 @@ def anim_02_stack():
 def anim_03b_chamber():
     sc = Scene("03b_chamber", "3b · Chamber: container, splash plate, door")
     ghost = {"chamber": 0.28, "chamber_slots": 0.28, "chute": 0.35, "viewport_glass": 0.4}
-    load_machine(sc, ghost=ghost, hide=UTILITY_NAMES, pipes=False)
+    load_machine(sc, ghost=ghost, hide=UTILITY_NAMES, pipes=False, defer=True)    # see-through only inside
     door(sc, 100)
     for c in range(3):
         clamp(sc, c, 0.0)
@@ -686,12 +733,14 @@ def anim_03b_chamber():
         sc.gmat["container"] = T((0, 0, -260 * (1 - window(u, 0.1, 0.75))))
         sc.show(sc.members("flange_clamp"), window(u, 0.65, 0.85))
         sc.gmat["flange_clamp"] = T((0, 0, -30 * (1 - window(u, 0.7, 1.0))))
-    sc.step("3b.1", "Container on with two people: one lifts it into place under the cone while the other closes "
-            "the flange clamp. Finger-tight only.", 4.0, cont, hold=1.4,
-            labels=[lab("powder container", (M.CHUTE_X - 60, -70, 260), 0.06, 0.60),
-                    lab("flange clamp", (M.CHUTE_X + 84, 0, 431), 0.74, 0.50)])
+    sc.step("3b.1", "Container on: lift it into place under the cone and close the flange clamp, finger-tight. "
+            "A second person makes this easier (one holds the weight, one closes the clamp); alone, keep it "
+            "supported until the clamp is shut.", 4.5, cont, hold=1.4,
+            labels=[lab("powder container", (M.CHUTE_X, -66, 160), 0.06, 0.60),
+                    lab("flange clamp", (M.CHUTE_X + 60, 0, M.CLAMP_Z[0] + 6), 0.74, 0.50)])
 
     def inside(u):
+        cut_in(sc, u)
         a, b = window(u, 0.0, 0.55), window(u, 0.45, 1.0)
         sc.show(sc.members("bowl"), 1.0 if u > 0 else 0)
         sc.gmat["bowl"] = T(np.array((-420, 0, 120)) * (1 - a))
@@ -700,10 +749,11 @@ def anim_03b_chamber():
     sc.step("3b.2", "Through the door: catch bowl on the chamber floor and the splash plate above the container "
             "(one is enough for aluminium). Wipe the plate; hang the covers over the openings.", 4.0, inside,
             hold=1.4, cam_to=CAM["chamber"],
-            labels=[lab("catch bowl", (M.CHUTE_X + 100, 0, M.CH_Z[0] + 20), 0.74, 0.70),
-                    lab("splash plate", (M.CHUTE_X + 70, 0, M.CH_Z[0] + 95), 0.74, 0.52)])
+            labels=[lab("catch bowl", (M.CHUTE_X + 60, 0, M.CH_BOTTOM + 20), 0.74, 0.70),
+                    lab("splash plate", (M.CHUTE_X - 10, 0, 610), 0.74, 0.52)])
 
     def shut(u):
+        set_cut(sc, 1 - window(u, 0.0, 0.3))
         door(sc, 100 * (1 - u))
     sc.step("3b.3", "Run the frequency check now, before closing. Then swing the door shut: the ultrasonic unit "
             "rides in it.", 3.0, shut, hold=1.0, cam_to=CAM["door_out"])
@@ -711,15 +761,17 @@ def anim_03b_chamber():
     def clamps(u):
         for c in range(3):
             clamp(sc, c, window(u, 0.25 * c, 0.25 * c + 0.4))
-    sc.step("3b.4", "Close all three clamps. Opening one under pressure just leaks.", 3.0, clamps, hold=2.0,
-            still=True, labels=[lab("3 door clamps", (M.CH_X[0] - 30, M.CH_Y[0] - 20, 835), 0.74, 0.40)])
+    sc.step("3b.4", "Swing the three bolts over and tighten the star knobs. Opening one under pressure just leaks.",
+            3.0, clamps, hold=2.0,
+            still=True, labels=[lab("3 star-knob bolts", (M.CH_X[0] - 40, -96, 960), 0.74, 0.40)])
     return sc.save()
 
 
 # ---------------------------------------------------------------------------------- 05 melt
 def anim_05_melt():
     sc = Scene("05_melt", "5 · Melt: overshoot to drop the rods, hold at ~800 °C, wait 2 min")
-    load_machine(sc, cut=FURNACE_CUT, hide=tuple(n for n in UTILITY_NAMES if n != "air_frl"), pipes=("air",))
+    load_machine(sc, cut=FURNACE_CUT, hide=tuple(n for n in UTILITY_NAMES if n != "air_frl"), pipes=("air",),
+                 defer=True)
     pool = Pool(sc, half=True, level=-30)
     add_gas(sc, half=True, furnace=0.7, chamber=0.0)
     st = dict(t=500.0, set=1000.0)
@@ -731,6 +783,7 @@ def anim_05_melt():
     show_g()
 
     def heat_up(u):
+        cut_in(sc, u)
         st["t"] = 500 + 350 * u
         heat(sc, st["t"], 1.0)
         show_g()
@@ -783,7 +836,7 @@ def anim_05_melt():
 # ------------------------------------------------------------------------------ 04 gas wash
 def anim_04_gas_wash():
     sc = Scene("04_gas_wash", "4 · Gas wash: vacuum and argon, furnace then chamber")
-    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, hide=UTILITY_NAMES, pipes=False)
+    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, hide=UTILITY_NAMES, pipes=False, defer=True)
     add_gas(sc, half=True, furnace=1.0, chamber=1.0)
     st = dict(pf=150.0, pc=150.0, o2=1000.0, t=24.0, pump="off")
     sc.cam = CAM["wash"]
@@ -800,9 +853,9 @@ def anim_04_gas_wash():
     show_g()
     sc.step("4.1", "Pressure control OFF before any pumping (it holds 150 mbar). Wash one vessel while the other "
             "keeps its overpressure: graphite seals leak, and a leak should pull argon, not air.", 3.0,
-            lambda u: show_g(), hold=1.0,
+            lambda u: (cut_in(sc, u), show_g()), hold=1.0,
             labels=[lab("furnace (argon)", (60, 60, 1250), 0.70, 0.18),
-                    lab("chamber (argon, +150 mbar)", (150, 60, 900), 0.70, 0.40)])
+                    lab("chamber (argon, +150 mbar)", (150, 60, 860), 0.70, 0.40)])
 
     def cycle(vessel, o2_to, t_from=None, t_to=None):
         key = "pf" if vessel == "furnace" else "pc"
@@ -861,7 +914,8 @@ def anim_04_gas_wash():
 # --------------------------------------------------------------------------- 07 end, cooldown
 def anim_07_end_cooldown():
     sc = Scene("07_end_cooldown", "7 · End of pour, cooldown, open, collect")
-    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False)
+    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False,
+                 defer=True)
     for k in range(4):
         sc.show(sc.members(f"slug{k}"), 0.0)
     pool = Pool(sc, half=True, level=-11)
@@ -880,6 +934,7 @@ def anim_07_end_cooldown():
     show_g({"us": "40.08 kHz"})
 
     def turbo(u):
+        cut_in(sc, u)
         st["pf"] = 220 + 1280 * math.sin(math.pi * u)
         pool.set(-11 - 3 * u)
         stream(sc, 1.0 if u < 0.85 else 0.0, 1.2 * (1 - u) + 0.3)
@@ -910,15 +965,8 @@ def anim_07_end_cooldown():
     sc.step("7.3", "Set 250 °C for next time and let it cool. Open at or below 400 °C: above 500 "
             "°C graphite burns in air. Cooling water stays on until about 100 °C.", 4.0, cool, hold=1.0)
 
-    whole = add_whole(sc, CHAMBER_CUT + ("clamp0", "clamp1", "clamp2"))
-    halves = [n for n in sc.actors if sc.group_of[n] in CHAMBER_CUT and not n.startswith("w:")
-              and n in cut_names(sc)]
-
     def show_whole(f):
-        for n in whole:
-            sc.alpha[n] = f
-        for n in halves:
-            sc.alpha[n] = 1 - f
+        set_cut(sc, 1 - f, CHAMBER_CUT + ("*",))
 
     def vent(u):
         show_whole(window(u, 0.5, 1.0))
@@ -951,9 +999,8 @@ def anim_07_end_cooldown():
         brush.step()
         sc.gmat["container_valve"] = np.eye(4)
         sc.gmat["flange_clamp"] = T((0, 0, -30 * window(u, 0.3, 0.5)))
-        sc.alpha.update({n: 1 - window(u, 0.45, 0.6) for n in sc.members("flange_clamp")
-                         if not n.startswith("w:")})
-        sc.gmat["container"] = T((0, -420 * window(u, 0.7, 1.0), -70 * window(u, 0.55, 0.7)))
+        sc.show(sc.members("flange_clamp"), 1 - window(u, 0.45, 0.6))
+        sc.gmat["container"] = T((0, -280 * window(u, 0.7, 1.0), -40 * window(u, 0.55, 0.7)))
     sc.step("7.7", "Close the container valve first (pull down and across: it is heavier than it looks), brush the "
             "top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.", 4.0,
             take_off, hold=1.0, cam_to=CAM["container"])
@@ -970,7 +1017,7 @@ def anim_07_end_cooldown():
 def anim_08_clean():
     sc = Scene("08_clean", "8 · Clean and reset")
     load_machine(sc, cut=tuple(g for g in FURNACE_CUT if g != "nozzle") + CHAMBER_CUT, ghost={"stack_cover": 0.35},
-                 hide=UTILITY_NAMES, pipes=False)
+                 hide=UTILITY_NAMES, pipes=False, defer=True)
     for k in range(4):
         sc.show(sc.members(f"slug{k}"), 0.0)
     pool = Pool(sc, half=True, level=-13)
@@ -982,11 +1029,11 @@ def anim_08_clean():
     sc.show(sc.members("flange_clamp"), 0.0)
     dust = Particles(sc, "dust", (0.66, 0.67, 0.70), size=5.0, slowmo=0.5, seed=3)
     dust.emit_settle(160)
-    dust.p[:, 2] = M.CH_Z[0] + 9
     sc.cam = CAM["chamber"]
     gauges(sc, t=60, status="cold, utilities off")
 
     def brush(u):
+        cut_in(sc, u)
         if u > 0.1:
             dust.step()
     sc.step("8.1", "Same alloy next: open, brush, vacuum. A material change takes about an hour: vacuum, then wipe "
@@ -1056,15 +1103,15 @@ def anim_01_utilities():
         return f
 
     def switch(u):
-        sc.gmat["switch"] = R((0, 1, 0), 90 * window(u, 0.4, 0.8), (345, 200, 1195))
+        sc.gmat["switch"] = R((0, 1, 0), 90 * window(u, 0.4, 0.8), (M.SWITCH_C[0], M.FR_Y[0] - 10, M.SWITCH_C[2]))
         gauges(sc, status="main switch ON" if u > 0.8 else "all off")
     sc.step("1.1", "Breakers and main switch on. Everything else is still off.", 2.5, switch, hold=1.0,
             cam_to=[(-1200, -2600, 1900), (300, 200, 1250), (0, 0, 1)],
-            labels=[lab("main switch", (345, 190, 1200), 0.74, 0.50)])
+            labels=[lab("main switch", M.SWITCH_C, 0.74, 0.50)])
     sc.step("1.2", "Facility chilled water: open the valve only a little (at least 2 L/min, but 'water too cold' "
             "trips below 7–10 °C).", 3.5, run("water_supply", "water_return"), hold=1.0, live=True,
             cam_to=[(2300, -2400, 1900), (500, 400, 600), (0, 0, 1)],
-            labels=[lab("chilled water to the coil", (443, 420, 800), 0.06, 0.40)])
+            labels=[lab("chilled water to the coil", (M.FR_X[1] + 2, 420, 800), 0.06, 0.40)])
     sc.step("1.3", "Heat exchanger on only when you are about to heat; wait for 'cooling water flow low' to "
             "clear.", 3.0, run("water_supply", "water_return"), hold=1.0, live=True,
             labels=[lab("heat exchanger", (920, 140, 700), 0.74, 0.30)])

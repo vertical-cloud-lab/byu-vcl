@@ -342,7 +342,7 @@ The complete first powder run, start to finish. Setup: powder container types, s
 ### Procedural steps
 Before
 - Mount a splash-protection plate above the container (one for Al) (02:38).
-- Lift and clamp the powder container with two people; finger-tighten the flange (03:44, 04:48).
+- Lift and clamp the powder container, finger-tightening the flange; a second person makes it easier (one holds, one clamps), otherwise keep it supported until clamped (03:44, 04:48).
 - Place the gold-melting bowl in the chamber to catch un-atomized melt (05:01).
 - Wipe the plate; hang the covers over the chamber openings (05:41).
 - Assemble transducer → booster → titanium connector rod (M10/M8) → tungsten-alloy sonotrode; IPA on threads (10:28, 10:59).

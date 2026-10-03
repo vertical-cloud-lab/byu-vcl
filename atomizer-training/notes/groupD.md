@@ -456,7 +456,7 @@ Before (equipment test)
 ### Unclear / needs checking
 - What vacuum and what powder; whether this is the powder-doser vacuum, a cleanup vacuum, or a leak test of something else.
 - Whether "no visible powder" means the vacuum failed to capture it or captured all of it.
-- Re-checked against Whisper (word-timed sentence segments): 15–30 s and "no visible powder" confirmed; 01:44 and 01:59 differ (see rows). The frame at 01:00 (labelled 00:00 on the contact sheet, whose every-2-minute tiles are about 60 s early) shows the operator in a half-face respirator, VCL ESD coat and gloves, holding a vacuum wand; at 00:00 a gloved hand holds the powder bottle (keyframe).
+- Re-checked against Whisper (word-timed sentence segments): 15–30 s and "no visible powder" confirmed; 01:44 and 01:59 differ (see rows). The frame at 01:00 shows the operator in a half-face respirator, VCL ESD coat and gloves, holding a vacuum wand; at 00:00 a gloved hand holds the powder bottle (keyframe).
 
 ## w02MRlZhpNk — Dehumidifier troubleshooting (02:58, Sep 29)
 

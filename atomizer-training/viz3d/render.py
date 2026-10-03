@@ -75,15 +75,16 @@ def auto_place(sc, items, top=0.09, bottom=0.88, split=0.45):
 MACHINE_LABELS = [
     ("furnace lid (bell): hinges up to the left;\nwindow + HOT label, black knob", (-40, -105, 1440)),
     ("furnace body: coil, crucible, insulation", (-125, -55, 1250)),
-    ("melting control panel (GU 500)", (337, 200, 1470)),
-    ("15.6 in HMI on a swing arm", (600, 60, 1520)),
-    ("main switch", (345, 185, 1200)),
-    ("atomization chamber, 57 L", (240, -120, 760)),
-    ("view port", tuple(M.VIEWPORT + np.array([60, -40, 40]))),
-    ("door (3 clamps) carries the ultrasonic unit", (-150, -150, 930)),
+    ("melting control panel (GU 500)", tuple(M.PANEL_C)),
+    ("15.6 in HMI on a swing arm", tuple(M.HMI_C + np.array([0, -20, 60]))),
+    ("main switch", tuple(M.SWITCH_C)),
+    ("blue frame: induction generator, PLC and\npneumatics built in (side doors)", (M.FR_X[0] + 40, M.FR_Y[0], 1500)),
+    ("atomization chamber, 57 L:\nsloped underside to the outlet", (200, M.CH_Y[0], 820)),
+    ("view port", tuple(M.VIEWPORT + M.VIEWPORT_N * 40)),
+    ("door (3 star knobs) carries the ultrasonic unit", (M.CH_X[0] - 20, -60, 1000)),
     ("transducer under its protective cover", tuple(M.PLATE_C - M.STACK_DIR * 330 + np.array([0, -50, 0]))),
-    ("chute cone, valve", (M.CHUTE_X - 60, -110, 520)),
-    ("powder container, flange clamp", (M.CHUTE_X - 40, -88, 300)),
+    ("cone, valve", (M.CHUTE_X - 60, -80, 360)),
+    ("powder container, flange clamp", (M.CHUTE_X - 40, -60, 180)),
     ("argon 5N + regulator", (-560, 650, 1100)),
     ("compressed-air filter-regulator", (-275, 960, 1460)),
     ("vacuum pump", (-700, 120, 200)),
@@ -141,15 +142,15 @@ def section():
     tc_run = np.array([0, 0, M.BODY_TOP + 6]) + np.array([np.cos(a), np.sin(a), 0]) * 80
     left = section_panel((800, 900), [(-700, -2500, 1000), (40, 0, 830), (0, 0, 1)], [
         ("furnace", (60, 0, 1250), (0.06, 0.12)),
-        ("atomization chamber\n(57 L, argon)", (-60, 60, 990), (0.06, 0.27)),
+        ("atomization chamber\n(57 L, argon)", (-100, 60, 1060), (0.06, 0.27)),
         ("plate (Ti, 20 x 100)", tuple(M.PLATE_C + M.PLATE_UP * 30), (0.70, 0.33)),
         ("sonotrode", tuple(M.PLATE_C - M.STACK_DIR * 80), (0.06, 0.42)),
         ("booster (1.5:1)", tuple(M.PLATE_C - M.STACK_DIR * 215), (0.06, 0.52)),
         ("transducer (40 kHz),\nunder its cover", tuple(M.PLATE_C - M.STACK_DIR * 310), (0.06, 0.62)),
-        ("splash plate,\ncatch bowl", (M.CHUTE_X + 70, 0, M.CH_Z[0] + 95), (0.70, 0.45)),
-        ("chute cone", (M.CHUTE_X + 110, 0, 560), (0.70, 0.56)),
-        ("valve, flange clamp", (M.CHUTE_X + 80, 0, 430), (0.70, 0.66)),
-        ("powder container", (M.CHUTE_X + M.CONT_R - 2, 0, 280), (0.70, 0.78)),
+        ("splash plate,\ncatch bowl", (M.CHUTE_X - 10, 0, 610), (0.70, 0.45)),
+        ("45° underside:\npowder slides to the outlet", (60, 0, M.chamber_floor(60)), (0.70, 0.56)),
+        ("cone, valve, flange clamp", (M.CHUTE_X + 50, 0, 330), (0.70, 0.66)),
+        ("powder container", (M.CHUTE_X + M.CONT_R - 2, 0, 160), (0.70, 0.78)),
     ], view_angle=36)
     right = section_panel((800, 900), [(-330, -820, 1430), (5, 0, 1262), (0, 0, 1)], [
         ("furnace bell (lid)", (-70, 60, M.HOOD_Z0 + 110), (0.06, 0.135)),
@@ -163,7 +164,7 @@ def section():
         ("sealing rod\n(seated)", (0, 0, M.Z_CR + 55), (0.74, 0.32)),
         ("side insulation", (40.5, 0, M.Z_CR + 50), (0.74, 0.45)),
         ("bottom insulation", (60, 0, M.CRUCIBLE_BASE - 12), (0.74, 0.62)),
-        ("graphite nozzle holder\nand nut", (17, 0, 1156), (0.74, 0.72)),
+        ("nozzle holder; thin graphite\nnut under the top plate", (25, 0, 1120), (0.74, 0.72)),
     ], view_angle=30)
     from PIL import Image, ImageDraw
     from scene import font

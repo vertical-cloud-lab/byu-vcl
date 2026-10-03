@@ -37,10 +37,10 @@ TUTORIALS = {
             ("anim", "00_machine", [
                 "This is the rePowder ultrasonic atomizer at BYU, modeled from the training videos and AMAZEMET's documents.",
                 'On top is the induction furnace: a stainless body holding the coil, the crucible and the insulation, under a lid with a window.',
-                'The melting control panel and the main switch are on the cabinet, and the touchscreen on its swing arm runs the pressures, the gas and the ultrasonics.',
-                'Below the furnace is the fifty-seven liter atomization chamber, with a view port at the front and a door closed by three clamps.',
+                'The melting control panel and the main switch are on the blue frame, which also houses the induction generator and the electronics, and the touchscreen on its swing arm runs the pressures, the gas and the ultrasonics.',
+                'Below the furnace is the fifty-seven liter atomization chamber, with a view port at the front, a door on the left held by three star-knob bolts, and an underside that slopes down to the outlet.',
                 'The ultrasonic unit rides in the door: the transducer outside, under its cover, and the sonotrode and plate inside, under the furnace nozzle.',
-                'A cone takes the powder down through a valve into the container, which is clamped on by its flange.',
+                'The sloped underside and a short cone take the powder down through a valve into the container, which is clamped on by its flange.',
                 'Around it are the utilities: argon, the vacuum pump, compressed air for the transducer, and the heat exchanger on the chilled water.',
                 'Cut in half, the whole path shows: crucible, sealing rod and nozzle above the plate, and the cone down to the container.',
             ]),
@@ -117,16 +117,20 @@ TUTORIALS = {
             ("clip", "58wJ_Khwgyk", 1332.2, 28.0, B),
             ("outline", "01-before_step3", "Step three: the furnace."),
             ("anim", "03_furnace_load", [
-                "Start cold, with the furnace lid open. For a rebuild, everything comes out: thermocouple, sealing rod, "
+                "Start cold, and open the furnace lid. For a rebuild, everything comes out: thermocouple, sealing rod, "
                 "insulation, and crucible.",
                 "The nozzle is the consumable. It goes into its holder white side up. Half a millimeter is the standard bore, "
-                "and point seven is more reliable for aluminum alloys. Nozzle and holder screw onto the crucible as a pair, "
-                "just tight.",
-                "Then the graphite seal and the bottom insulation, and the crucible goes down into the coil, held by the "
-                "graphite nut from below.",
+                "and point seven is more reliable for aluminum alloys. The holder screws into the crucible by hand, several "
+                "turns, and only just tight.",
+                "Then the upper graphite seal and the bottom insulation, and the crucible goes straight down into the coil. "
+                "Handle it gently: graphite is brittle.",
+                "Through the chamber's left door, the lower seal and the thin graphite nut go onto the holder from below, "
+                "while the crucible is held still at the top, its thermocouple hole turned to the back right. A second "
+                "person makes this easier; alone, keep one hand on the crucible. Tighten it snug, but never force it. "
+                "Overtightened graphite cracks, and a loose nut will not seal.",
                 "Side insulation goes around the crucible, with its hole lined up with the thermocouple port, and then the "
                 "top insulation.",
-                "The thermocouple goes into the hole in the crucible wall, bent to sit close.",
+                "The thermocouple goes in from the back right, into the hole in the crucible wall, bent to sit close.",
                 "The sealing rod needs a clean, smooth tip, or it will not seal. It is lowered onto the nozzle before any "
                 "metal goes in.",
                 "The charge must be clean and at most twenty millimeters across. Two hundred fifty to three hundred grams is "
@@ -134,13 +138,14 @@ TUTORIALS = {
                 "Close the lid, and set the latch just tight enough to seal. If it hisses under pressure, adjust the latch.",
             ]),
             ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
+            ("clip", "wRc8p2_FnJo", 2790.0, 49.5, B),    # the thread reaches into the chamber; nut, thermocouple hole
             ("clip", "1F9_4ccwhss", 100.8, 19.6, B),
             ("outline", "01-before_step4", "Step four: the chamber."),
             ("anim", "03b_chamber", [
-                'The powder container goes on with two people: one lifts it into place under the cone while the other closes the flange clamp, finger-tight.',
+                'The powder container goes on under the outlet, and the flange clamp closes finger-tight. A second person makes this easier, one holding the weight while the other closes the clamp; on your own, keep it supported until the clamp is shut.',
                 'Through the door, the catch bowl goes on the chamber floor and the splash plate above the container. One is enough for aluminum.',
                 'Run the frequency check now, before closing, then swing the door shut. The ultrasonic unit rides in it.',
-                'Close all three clamps.',
+                'Swing the three bolts over and tighten the star knobs.',
             ]),
             ("clip", "58wJ_Khwgyk", 224.4, 16.4, B),
             ("clip", "58wJ_Khwgyk", 158.3, 25.4, B),

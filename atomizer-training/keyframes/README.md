@@ -1,8 +1,8 @@
 # Keyframes
 
-One contact sheet per video: every scene change ffmpeg detects (`select=gt(scene,0.3)`, thinned to about one per minute) plus one frame every two minutes, each tile labelled with its `mm:ss`. They are a visual table of contents for [`../timestamps.md`](../timestamps.md): find the moment on the sheet, then open the paused link with the same time. [`sop-frames.md`](sop-frames.md) has one frame for every moment the SOP cites.
+One contact sheet per video: every scene change ffmpeg detects (`select=gt(scene,0.3)`, thinned to about one per minute) plus one frame every two minutes, each tile labelled with the `mm:ss` of its own frame. A scene change keeps ffmpeg's timestamp for that frame, and the two-minute frames are taken with an accurate seek at exactly 00:00, 02:00, 04:00, …, so every label is the true time of the frame above it (a frame less than 8 s after the previous tile is left out). They are a visual table of contents for [`../timestamps.md`](../timestamps.md): find the moment on the sheet, then open the paused link with the same time. [`sop-frames.md`](sop-frames.md) has one frame for every moment the SOP cites.
 
-Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to read the HMI. Regenerate with `tools/keyframes.py`.
+Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to read the HMI. Regenerate the sheets with `tools/keyframes.py` and this page with `tools/make_keyframes_readme.py`.
 
 ## Video 1 of atomizer training
 `wRc8p2_FnJo` · 2026-09-29 · 29 frames · [open paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=0) · [▶ watch](https://www.youtube.com/watch?v=wRc8p2_FnJo)
@@ -10,7 +10,7 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Video 1 of atomizer training](wRc8p2_FnJo_sheet.jpg)
 
 ## Atomizer Training Video 2
-`naePD8o9_Gk` · 2026-09-29 · 35 frames · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
+`naePD8o9_Gk` · 2026-09-29 · 36 frames · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
 
 ![Atomizer Training Video 2](naePD8o9_Gk_sheet.jpg)
 
@@ -20,12 +20,12 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer Training Video 3](txH397FGTAU_sheet.jpg)
 
 ## Atomizer Training Video 4
-`1F9_4ccwhss` · 2026-09-29 · 6 frames · [open paused](https://www.youtube.com/embed/1F9_4ccwhss?start=0) · [▶ watch](https://www.youtube.com/watch?v=1F9_4ccwhss)
+`1F9_4ccwhss` · 2026-09-29 · 7 frames · [open paused](https://www.youtube.com/embed/1F9_4ccwhss?start=0) · [▶ watch](https://www.youtube.com/watch?v=1F9_4ccwhss)
 
 ![Atomizer Training Video 4](1F9_4ccwhss_sheet.jpg)
 
 ## Atomizer Training Video 5
-`58wJ_Khwgyk` · 2026-09-29 · 46 frames · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
+`58wJ_Khwgyk` · 2026-09-29 · 47 frames · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
 
 ![Atomizer Training Video 5](58wJ_Khwgyk_sheet.jpg)
 
@@ -40,7 +40,7 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer training](Pk0K5sBz-sQ_sheet.jpg)
 
 ## Atomizer Training Video 7
-`FDRTt68Vfvo` · 2026-09-30 · 43 frames · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
+`FDRTt68Vfvo` · 2026-09-30 · 44 frames · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
 
 ![Atomizer Training Video 7](FDRTt68Vfvo_sheet.jpg)
 
@@ -50,17 +50,17 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer Training Video 8](HTlUrAr5HVU_sheet.jpg)
 
 ## Atomizer Training Video 9
-`9kn-HhXCr1o` · 2026-09-30 · 34 frames · [open paused](https://www.youtube.com/embed/9kn-HhXCr1o?start=0) · [▶ watch](https://www.youtube.com/watch?v=9kn-HhXCr1o)
+`9kn-HhXCr1o` · 2026-09-30 · 35 frames · [open paused](https://www.youtube.com/embed/9kn-HhXCr1o?start=0) · [▶ watch](https://www.youtube.com/watch?v=9kn-HhXCr1o)
 
 ![Atomizer Training Video 9](9kn-HhXCr1o_sheet.jpg)
 
 ## The expert cleaning the atomizer, pov
-`u-KjR5TENN4` · 2026-09-30 · 12 frames · [open paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶ watch](https://www.youtube.com/watch?v=u-KjR5TENN4)
+`u-KjR5TENN4` · 2026-09-30 · 13 frames · [open paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶ watch](https://www.youtube.com/watch?v=u-KjR5TENN4)
 
 ![The expert cleaning the atomizer, pov](u-KjR5TENN4_sheet.jpg)
 
 ## Cartridge cleaning
-`f8KL31PN8bA` · 2026-09-30 · 10 frames · [open paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶ watch](https://www.youtube.com/watch?v=f8KL31PN8bA)
+`f8KL31PN8bA` · 2026-09-30 · 11 frames · [open paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶ watch](https://www.youtube.com/watch?v=f8KL31PN8bA)
 
 ![Cartridge cleaning](f8KL31PN8bA_sheet.jpg)
 
@@ -70,17 +70,17 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer training (sterling's phone)](2wMgeI-E7zw_sheet.jpg)
 
 ## nzyjn0 atomization AlSi10Mg-Al6063
-`TFpU4uqVF9c` · 2026-09-30 · 10 frames · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
+`TFpU4uqVF9c` · 2026-09-30 · 11 frames · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
 
 ![nzyjn0 atomization AlSi10Mg-Al6063](TFpU4uqVF9c_sheet.jpg)
 
 ## nzyjn0 AlSi10Mg-Al6063 dosing session
-`prj_xgeuQtM` · 2026-09-29 · 34 frames · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
+`prj_xgeuQtM` · 2026-09-29 · 35 frames · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
 
 ![nzyjn0 AlSi10Mg-Al6063 dosing session](prj_xgeuQtM_sheet.jpg)
 
 ## Dosing Al 4047 powder
-`QXSj0j1OqL8` · 2026-10-01 · 12 frames · [open paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶ watch](https://www.youtube.com/watch?v=QXSj0j1OqL8)
+`QXSj0j1OqL8` · 2026-10-01 · 13 frames · [open paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶ watch](https://www.youtube.com/watch?v=QXSj0j1OqL8)
 
 ![Dosing Al 4047 powder](QXSj0j1OqL8_sheet.jpg)
 
@@ -95,7 +95,7 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Atomizer run Oct 2 part 2](of5-LhkX_VQ_sheet.jpg)
 
 ## Claude ping for dosing Al 4047
-`BxA7Z9Fliss` · 2026-10-01 · 8 frames · [open paused](https://www.youtube.com/embed/BxA7Z9Fliss?start=0) · [▶ watch](https://www.youtube.com/watch?v=BxA7Z9Fliss)
+`BxA7Z9Fliss` · 2026-10-01 · 9 frames · [open paused](https://www.youtube.com/embed/BxA7Z9Fliss?start=0) · [▶ watch](https://www.youtube.com/watch?v=BxA7Z9Fliss)
 
 ![Claude ping for dosing Al 4047](BxA7Z9Fliss_sheet.jpg)
 
@@ -105,7 +105,7 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Claude ping and troubleshooting for dosing Al 4047](dXRB7c6GeDw_sheet.jpg)
 
 ## Drill press, number 70 bit, graphite nozzle
-`LSQmxwmlTkQ` · 2026-09-30 · 2 frames · [open paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=LSQmxwmlTkQ)
+`LSQmxwmlTkQ` · 2026-09-30 · 3 frames · [open paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=LSQmxwmlTkQ)
 
 ![Drill press, number 70 bit, graphite nozzle](LSQmxwmlTkQ_sheet.jpg)
 
@@ -120,16 +120,16 @@ Frames are 360p (the Pi-fetched copy), good enough to recognise a scene, not to 
 ![Placing the Atomizer!!!](07QOPRHIEvw_sheet.jpg)
 
 ## Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon!
-`Kv9DT3Vo0GE` · 2026-09-01 · 1 frames · [open paused](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=0) · [▶ watch](https://www.youtube.com/watch?v=Kv9DT3Vo0GE)
+`Kv9DT3Vo0GE` · 2026-09-01 · 2 frames · [open paused](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=0) · [▶ watch](https://www.youtube.com/watch?v=Kv9DT3Vo0GE)
 
 ![Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon!](Kv9DT3Vo0GE_sheet.jpg)
 
 ## Vacuum test
-`cKwQbKdE22Q` · 2026-09-08 · 1 frames · [open paused](https://www.youtube.com/embed/cKwQbKdE22Q?start=0) · [▶ watch](https://www.youtube.com/watch?v=cKwQbKdE22Q)
+`cKwQbKdE22Q` · 2026-09-08 · 2 frames · [open paused](https://www.youtube.com/embed/cKwQbKdE22Q?start=0) · [▶ watch](https://www.youtube.com/watch?v=cKwQbKdE22Q)
 
 ![Vacuum test](cKwQbKdE22Q_sheet.jpg)
 
 ## Dehumidifier troubleshooting
-`w02MRlZhpNk` · 2026-09-29 · 2 frames · [open paused](https://www.youtube.com/embed/w02MRlZhpNk?start=0) · [▶ watch](https://www.youtube.com/watch?v=w02MRlZhpNk)
+`w02MRlZhpNk` · 2026-09-29 · 3 frames · [open paused](https://www.youtube.com/embed/w02MRlZhpNk?start=0) · [▶ watch](https://www.youtube.com/watch?v=w02MRlZhpNk)
 
 ![Dehumidifier troubleshooting](w02MRlZhpNk_sheet.jpg)
