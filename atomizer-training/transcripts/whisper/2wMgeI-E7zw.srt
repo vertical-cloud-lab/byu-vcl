@@ -1,0 +1,144 @@
+1
+00:00:00,430 --> 00:00:18,260
+so we have the main power connection on the back so the whole system is connected to the plug in there and then you have the backing pump connected here
+
+2
+00:00:18,260 --> 00:00:46,030
+And the lower port is used for the heat exchanger, on the other side of the device. We have the argon, connected here with a T, there are two lines where it goes in, and one line for the compressed air, with the blue one. Plus you can see the two hoses for the cooling of the box, the supply return. Those are connected to the heat exchanger. Okay, these two? Yeah, those two.
+
+3
+00:00:46,260 --> 00:01:07,540
+While the heat exchanger is connected to your facility at the same time. The water and the facility here is really cold. They are going to put something on it. To isolate it so that there is no conversation. To be honest, to make it work, we just need to open it.
+
+4
+00:01:07,540 --> 00:01:35,060
+Very very little bit. We don't get too much. Okay, gotcha. Because the water is so cold that without like applying energy to the system it gave water to cold error. Oh really? Okay. I lowered the threshold a little bit because the threshold is 10 degrees Celsius. Okay. As we show in 9.3. I lowered it to 7 just in case. Yeah, I gotcha. But if it will be heated up then there will be no problem. Okay. But those we need to keep them.
+
+5
+00:01:35,060 --> 00:02:02,780
+Open just a little bit. That's going to be enough. And then we will observe if the temperature of the water in the exchanger will be rising. We will adjust it based on that. The heat exchanger is pretty simple. So we have the Holland's tank here. If the water level will be too low... There is the sensor. If the water level will be too low, it will just stop working.
+
+6
+00:02:02,780 --> 00:02:35,230
+or if the temperature will be too high it will stop working or anything else that happens but it's pretty simple and we just have the main switch in here basically we turn it on and the inverter inside will start working the pump will start pumping you see the pressure here okay and now we have the coolant going to the system on the screen of the system here you will see the error of cooling water below
+
+7
+00:02:35,230 --> 00:03:11,300
+which should disappear in the moment. We can also go to the service mode and check it. It has a small delay, but you can see we have the three thirds per minute flow rate. It just needs two. It doesn't require too much. This panel is quite level shutting down for now. In case of the noise, it's possible to open it and even add some insulation inside. It will bother you, especially if it's pretty closed. So that's possible.
+
+8
+00:03:11,300 --> 00:03:39,340
+you know add this like insulation stickers kind of for to reduce the noise from the inside on the so like yeah the inside you can just remove that panel like this uh okay here take it out put some noise okay okay that makes sense uh you turn on the whole system with the main switch here okay uh this panel controls the furnace so it controls the pressure and the temperature of the furnace
+
+9
+00:03:39,340 --> 00:04:08,700
+while we have another panel here which controls the transforming system and what happens in the chamber. So this one is a version which is equipped in the accounts so you can basically make accounts for everybody so nobody else can use the system. This is just like what you have normally, the passwords are simple and you can just change them and make new accounts through the account manager.
+
+10
+00:04:08,700 --> 00:04:39,950
+This program is used to test the ultrasonic vibrations and this one is just used to control the whole system. Okay, yeah. It's relatively simple once we go through the whole training and everything. And that'll be like loading in, doing everything with the... Yeah, so I know that the schedule for everybody is like mixed but to be honest for most of the time we'll be going through the same things. Okay.
+
+11
+00:04:40,270 --> 00:05:01,380
+in the morning we can cover more and whoever is available can come and get the proper training but we can make some notes, some possible changes, some modifications about the custom models so I already heard that so I know that you want to go with like a new model
+
+12
+00:05:01,380 --> 00:05:30,240
+For example, if you would like to work with other components on more magnesium, there is an upgrade that helps. Oh, okay. What's the upgrade? A viewport with argon connection, so that we blow a little bit of argon through here to keep the visibility. Okay, gotcha. Even though we have the magnesium vapor. So I know that I think that the whole order was probably processed with the chiller instead of heat exchanger, which means that you basically have a credit.
+
+13
+00:05:30,240 --> 00:05:58,050
+Oh, okay, got it. I think it was somewhere in the conversation I also mentioned that Steven, but I think the order wasn't changed to make it just go through. Yeah, that's right. So you paid more than you should, which means that you have a few K of credit with us that you can use for extra consumables and extra parts when you will do that. Okay, perfect. Okay, lots of crucibles. You have, because you've got it with additional consumables.
+
+14
+00:05:58,050 --> 00:06:20,770
+We have a lot of equipment, so it will be very easy to use. On my side I have rods of aluminum 4047 here, which will be used for the basic training. I will just show you how to atomize it and how to control the particle size that you're getting. Because to be honest, with what we have here, we both achieved here.
+
+15
+00:06:20,770 --> 00:06:50,770
+By changing some parts you can drastically change the outcome of the process in case of particle size distribution. Every combination doesn't work for every album, but in general there are some tricks that we know, especially for aluminum. How to get large particles and how to get as small particles as possible.
+
+16
+00:06:50,770 --> 00:07:18,050
+lower the density, the larger particles you're getting. So this is something that you will not be able to resist. Okay. Yeah, that makes sense. And then I'm guessing that's just like from the setup. Like some of the water was just from the setup. Can this be moved back once that's dry? Or does it need to... It would be hard because of... Oh, yeah, yeah. Gotcha. Okay. To be honest, longer flexible hoses, maybe some kind of... Okay.
+
+17
+00:07:18,050 --> 00:07:37,230
+angle here and then we can place it. But right now it's just too stiff. I don't want to break it. For the training, keep it that way. This is the core of the ultrasonic system, so the ultrasonic traducer that we basically connect.
+
+18
+00:07:37,490 --> 00:08:00,910
+Okay, here we connect the coolant. So there was one key with the system. It was right now we used to connect the jargon, but I think I have another one with me in the bog. Otherwise, I will just visit his house or anything and figure something out. It's compressed there, so it doesn't have to be perfectly tight. But I know that the threads are different with a bit of tough on tape.
+
+19
+00:08:00,910 --> 00:08:28,080
+I can make them fit. I will cover it but we want to have as much compressor flow as possible in the transistors to keep it cold. It's worse in case of plasma process where you have ultrasonic system working continuously for hours and in here it's just 10 minutes. We just connect it in here, choose the right plate, the vibrating plate and go on.
+
+20
+00:08:28,080 --> 00:08:53,940
+This is something you don't want to drop, you don't want it to be affected by moisture or anything. Okay, gotcha. And so that basically gets installed and then taken off each time or just installed once usually? So it's installed, there will be like one rod here and then you put on the plate and the final rod to keep the vibrating plate in position. The plate is a consumable.
+
+21
+00:08:53,940 --> 00:09:20,660
+Depending on what you do, it may handle one process or it may handle a few processes. If it breaks, you just need to open the chamber, change it, and go on. One process meaning like one 10 minute run? Yeah, one pouring. It's usually, it may, even if it cracks a little bit or something happens to it, usually once it runs, it's able to run. But then if you try to run it again, it may not work. And if it does break and like...
+
+22
+00:09:20,660 --> 00:09:48,580
+would molten metal start dripping into the bottom of the chamber? Yeah, that's why you have like a crucible there. Okay, gotcha. So this is like the one we use, but you can put anything you want in there. Yeah, gotcha. Just a ceramic crucible that will catch it. And about how much is one sonotrode usually? It's only one plate. Depends, but from 10, 12 dollars to the most expensive is like 70, 80. Oh, okay. Yeah, not hundreds. No, no. Okay. Okay.
+
+23
+00:09:48,580 --> 00:10:12,370
+Although the extensive one is a one that's like highly specialized carbon fiber coated with tanks and plasma metal that we have like order from Korea. Okay, yeah, I gotcha. Where we supply in larger quantities. Okay, so replacing that isn't going to be a big thing to do. For example, in general if you are in for smaller particles, the plates are going to last longer.
+
+24
+00:10:12,370 --> 00:10:40,740
+Okay. Because we will then try to limit the amplitude, try to limit the intensity of vibrations and that causes everything to just like have a longer life time. Okay, that makes sense. The furnace where we load the material, so you have a bunch of crucibles, you have a bunch of everything. So the one thing is, I am not sure if you move into those consumables, if it is normal.
+
+25
+00:10:40,740 --> 00:11:04,800
+If you have the boron nitrate spray, I think you give it to plasma. But in general, if you want to work with materials that are going to be slightly reactive, it's good to coat the crucible. So we usually work with the boron nitrate spray. I can just let you know exactly which one.
+
+26
+00:11:04,800 --> 00:11:33,330
+you can also get some options in states. I think in Oak Ridge there is also a company that makes some kinds of coding. Because you can use each file, you can use basically anything that you think will work. From our experience, Boral Maelstrike is usually the best or is the most flexible one.
+
+27
+00:11:33,330 --> 00:11:55,740
+For aluminum and magnesium, do you think this will be fine? Yeah, it will be fine without magnesium. One question, and this might be a repeat of some previous conversations, but if we're switching out the... If we're not doing the same material system every time, like let's say it's always going to have aluminum and magnesium, but we're going to try different ones. You can use the same one. Yeah, okay. Because...
+
+28
+00:11:55,740 --> 00:12:22,820
+After the process you should be able to remove almost everything. There's always some more slag left over that you just peel off from the bottom. You may see some micro leftovers on the walls but it's not going to affect too much. Same with the sealing rods. In most cases you can just peel this kind of slag from them. There may be some leftovers you just polish them. As long as the tip is smooth it's going to work fine.
+
+29
+00:12:22,820 --> 00:12:51,650
+Are these graphite or what? Yeah, graphite. Graphite, but you also have some exceptions because the extended consumable pack that you have, it's not only the same consumables but more, but there are also a few extra things that we use. So like special cover, some materials may have a tendency to create some splashes. A different type of insulation, which is like...
+
+30
+00:12:51,650 --> 00:13:14,700
+let's say it's creating less dust it's denser and generally meant for higher temperatures okay uh so for some processes like where you want to keep extra purity it may be helpful yeah and i'm seeing two two full masks yeah you are getting like the masks you are getting uh the air protection you are getting the filters like yeah it's ear protection
+
+31
+00:13:14,770 --> 00:13:43,250
+Because of the ultrasonic. You should have it. But you will see that the induction system itself is also a bit noisy. The induction coil, when it works, for some people it may not be pleasant. How do you think it's going to be for people outside of the lab? Fine. They will feel here that the device is working but it will not bother you that much. How do you feel about the space here?
+
+32
+00:13:43,250 --> 00:14:24,500
+Does it seem good for the... Okay. Yeah. Okay. Did Gage show you some of the rods that we're hoping to test on Wednesday? Not yet. He might have... I wonder if he has it here. He might not. Well, I guess it's very similar to the rods that you have, but where we bored a hole into it, and then we're loading some powder, and then putting a cap on, basically. So, maybe...
+
+33
+00:14:24,500 --> 00:14:53,330
+Maybe that'll work. If it doesn't, then we'll do arc melting and stuff. I mean, it's always, yeah, it's always better to, or sinter it at least. Yeah. Any kind of concentration will be helpful. But if it's not pure powder, it has higher chance to work. Because the powder may just get dissolved. Okay. Yeah. Okay. That sounds... Yeah. Everything did go really smoothly. Other than they go really fast. Yeah. We didn't need to look for anything for work. Yeah.
+
+34
+00:14:53,330 --> 00:15:22,080
+i think it was 8 30 a.m is that right when we're getting getting started yeah okay yeah yeah cool and then yeah we've done some tests with the vacuum and it'd be nice if we could also i guess use the vacuum during the during the runs to all right well right now i my car is DRAM because the oh okay okay gotcha so i think
+
+35
+00:15:22,080 --> 00:15:50,460
+He was supposed to be told that he will take care of the parking pass. Oh, okay. He will be able to confirm it before tomorrow. Okay, okay, gotcha. Where is the best place to park? So, if you're coming at 8.30, the visitor's lot I think would have some space in it. When did you come this morning? 8.45. And the visitor's lot was totally full? I'm not sure if it was the lot right next to the department.
+
+36
+00:15:50,460 --> 00:15:57,290
+That's where we were aiming. Oh, okay. I'll show you. I'll drop you a pin for the visitor slot, and that's usually... Okay, perfect.
+

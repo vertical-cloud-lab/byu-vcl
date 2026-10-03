@@ -636,7 +636,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [17:54](https://www.youtube.com/embed/f8KL31PN8bA?start=1074) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1074s) | chatter | "Oh, did I leave it? Oh, no. I thought I left it, didn't I?" — looking for a misplaced item. |
 
 ## Atomizer training (sterling's phone)
-`2wMgeI-E7zw` · 2026-09-30 · 15:58 · public · transcript: auto · [open paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=0) · [▶ watch](https://www.youtube.com/watch?v=2wMgeI-E7zw)
+`2wMgeI-E7zw` · 2026-09-30 · 15:58 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=0) · [▶ watch](https://www.youtube.com/watch?v=2wMgeI-E7zw)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
