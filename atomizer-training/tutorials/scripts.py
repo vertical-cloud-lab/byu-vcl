@@ -16,6 +16,11 @@ Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x. Hu
 in the clips.
 """
 VOICE = "en-US-AndrewMultilingualNeural"
+# Whisper's mishearings in the clips, corrected in the burned-in subtitles only (the cached words stay as heard)
+FIXES = {"newtonometers": "newton meters", "your production": "hearing protection", "the bias": "a vise",
+         "transistor": "transducer", "argol": "argon", "ceiling rod": "sealing rod", "or other dramatica.": "or other pneumatics.",
+         "in a cruise of 250": "in increments of 250", "fiber powder": "finer powder", "band valve": "vent valve",
+         "the clay heats up": "the plate heats up", "pull more": "pour more"}
 B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
@@ -41,9 +46,8 @@ TUTORIALS = {
              "overpressure pushes a thin stream of melt through the nozzle, onto a plate vibrating forty thousand times a second. "
              "The melt wets the plate, the vibration breaks it into droplets, and they freeze into round particles as they fall "
              "through the argon into the container."),
-            ("clip", "1F9_4ccwhss", 159, 24, B),
-            ("clip", "naePD8o9_Gk", 1456, 30, B),
-            ("clip", "txH397FGTAU", 873, 30, B),
+            ("clip", "naePD8o9_Gk", 1445.9, 39.5, B),
+            ("clip", "txH397FGTAU", 873.1, 28.0, B),
             ("card", "Safety, every time",
              "Gloves and lab coat · full-face respirator whenever powder is exposed · hearing protection while ultrasonics run · "
              "open the chamber only below 400 °C · the door stays locked until the pressure is vented",
@@ -51,8 +55,8 @@ TUTORIALS = {
              "whenever powder is exposed. Hearing protection while the ultrasonics run, even when the noise does not bother you. "
              "Open the chamber only below four hundred degrees, because hot graphite burns in air. And the door stays locked "
              "while the chamber is under pressure or vacuum, so vent it first."),
-            ("clip", "naePD8o9_Gk", 2321, 22, B),
-            ("clip", "58wJ_Khwgyk", 2551, 18, B),
+            ("clip", "naePD8o9_Gk", 2321.3, 10.2, B),
+            ("clip", "58wJ_Khwgyk", 2552.7, 14.8, B),
             ("card", "How we got here",
              "Delivered June 2026 · room renovated over the summer: power, chilled water, cabinets · installed Sep 28 · "
              "trained Sep 29–30 by Bartosz Kalicki (AMAZEMET) · first run on our own Oct 2",
@@ -72,9 +76,10 @@ TUTORIALS = {
         "segments": [
             ("title", "Before a run", "Tutorial 1 · utilities, the ultrasonic stack, the furnace and the chamber",
              "Tutorial one: before a run."),
+            ("outline", "00-overview_tutorial1", "Tutorial one covers everything before the furnace heats up."),
             ("outline", "01-before",
              "Before any heating, four things have to be right, in this order. The utilities. The ultrasonic stack, assembled, "
-             "torqued and scanned. The furnace: nozzle, crucible, sealing rod, insulation, thermocouple and the charge. "
+             "torqued and scanned. The furnace: nozzle, crucible, insulation, thermocouple, sealing rod and the charge. "
              "And the chamber, with the powder container clamped and the door closed."),
             ("outline", "01-before_step1", "Step one: the utilities."),
             ("anim", "01_utilities",
@@ -84,8 +89,8 @@ TUTORIALS = {
              "transducer, and without it the ultrasonics will not start. Argon, five nines pure, at eight bar on the regulator, "
              "feeds the furnace line and the chamber line through a tee. Check the vacuum pump oil in its sight glass, the "
              "exchanger's water level, and look for leaks."),
-            ("clip", "wRc8p2_FnJo", 87, 30, B),
-            ("clip", "wRc8p2_FnJo", 132, 28, B),
+            ("clip", "wRc8p2_FnJo", 86.2, 42.5, B),
+            ("clip", "wRc8p2_FnJo", 132.5, 38.9, B),
             ("outline", "01-before_step2", "Step two: the ultrasonic stack."),
             ("anim", "02_stack",
              "The stack is built from the transducer outward: booster, sonotrode, and the plate on its connector stud. Torque "
@@ -94,26 +99,26 @@ TUTORIALS = {
              "which gives finer powder but needs a slow, controlled pour. Then run a scan. One wide peak a little above forty "
              "kilohertz is good. A drop of water on the plate should atomize over the whole surface; atomizing on only half of "
              "it means a crack. Bolt the protective cover over the transducer before you close up."),
-            ("clip", "58wJ_Khwgyk", 420, 24, B),
-            ("clip", "58wJ_Khwgyk", 808, 32, B),
-            ("clip", "58wJ_Khwgyk", 1330, 28, B),
+            ("clip", "58wJ_Khwgyk", 419.9, 16.0, B),
+            ("clip", "58wJ_Khwgyk", 805.1, 37.7, B),
+            ("clip", "58wJ_Khwgyk", 1332.2, 28.0, B),
             ("outline", "01-before_step3", "Step three: the furnace."),
             ("anim", "03_furnace_load",
              "The nozzle is the consumable. Half a millimeter is the standard bore, and point seven is more reliable for aluminum "
-             "alloys. It goes into the crucible white side up, and the crucible threads onto its holder until it is just tight. "
-             "The sealing rod goes in before any metal, with a clean, undamaged tip, because a damaged tip will not seal. Then the "
-             "insulation, and the thermocouple, lined up with its port and bent in close. The charge must be clean and at most "
-             "twenty millimeters across; two hundred fifty to three hundred grams is the recommended load. Close the lid just "
-             "tight enough to seal. If it hisses under pressure, adjust the latch."),
-            ("clip", "wRc8p2_FnJo", 2744, 40, B),
-            ("clip", "1F9_4ccwhss", 108, 18, B),
+             "alloys. It goes into its holder white side up, and the crucible threads on until it is just tight. Then the "
+             "insulation, and the thermocouple, lined up with its port and bent in close to the crucible. The sealing rod needs "
+             "a clean, undamaged tip, because a damaged tip will not seal, and it is lowered before any metal goes in. The charge "
+             "must be clean and at most twenty millimeters across; two hundred fifty to three hundred grams is the recommended "
+             "load. Close the lid just tight enough to seal. If it hisses under pressure, adjust the latch."),
+            ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
+            ("clip", "1F9_4ccwhss", 100.8, 19.6, B),
             ("outline", "01-before_step4", "Step four: the chamber."),
             ("anim", "03b_chamber",
              "Mount the powder container with two people, one lifting and one clamping, and tighten the flange by hand. Put the "
              "splash plate above it and the catch bowl inside, hang the covers over the openings, and close the door with all "
              "three clamps."),
-            ("clip", "58wJ_Khwgyk", 224, 26, B),
-            ("clip", "58wJ_Khwgyk", 167, 22, B),
+            ("clip", "58wJ_Khwgyk", 224.4, 16.4, B),
+            ("clip", "58wJ_Khwgyk", 158.3, 25.4, B),
             ("card", "Ready for the gas wash", "Next: tutorial 2, during a run",
              "The machine is ready for the gas wash, which is where tutorial two begins."),
         ],
@@ -123,6 +128,7 @@ TUTORIALS = {
         "segments": [
             ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
              "Tutorial two: during a run."),
+            ("outline", "00-overview_tutorial2", "Tutorial two covers the run itself, from the gas wash to the end of the pour."),
             ("outline", "02-during",
              "A run has four stages: the gas wash, heating and melting the charge, the pour, and ending the pour cleanly."),
             ("outline", "02-during_step1", "Step one: the gas wash."),
@@ -135,38 +141,38 @@ TUTORIALS = {
              "the insulation and the crucible. Stop when oxygen is stable and low: never above one hundred parts per million, "
              "ideally forty to fifty. Set the melting pressure slightly below the chamber pressure, and turn pressure control "
              "back on."),
-            ("clip", "9kn-HhXCr1o", 203, 22, B),
-            ("clip", "9kn-HhXCr1o", 518, 34, B),
-            ("clip", "58wJ_Khwgyk", 2172, 26, B),
+            ("clip", "9kn-HhXCr1o", 205.3, 18.6, B),
+            ("clip", "9kn-HhXCr1o", 516.3, 26.9, B),
+            ("clip", "58wJ_Khwgyk", 2170.4, 15.9, B),
             ("outline", "02-during_step2", "Step two: heat and melt."),
             ("anim", "05_melt",
              "Long rods heat at the bottom and stay cool at the top, so overshoot the setpoint to drop them: between eight hundred "
              "fifty and one thousand degrees was used in training. Watch for the cues. The temperature dips slightly as the melt "
              "touches the thermocouple, and the induction beeps faster. As soon as the charge slumps, bring the setpoint down to "
-             "about eight hundred degrees, which is kinder to the plate. Once everything is liquid, wait two minutes and no "
+             "seven hundred eighty to eight hundred degrees, which is kinder to the plate. Once everything is liquid, wait two minutes and no "
              "longer: that is how long the melt takes to catch up with the crucible-wall thermocouple, and waiting longer only "
              "oxidizes it. Meanwhile turn transducer cooling on, rescan the stack, because scans expire, put hearing protection "
              "on, and take your place at the window."),
-            ("clip", "9kn-HhXCr1o", 808, 22, B),
-            ("clip", "1F9_4ccwhss", 283, 24, B),
-            ("clip", "58wJ_Khwgyk", 3442, 26, B),
+            ("clip", "9kn-HhXCr1o", 810.3, 16.7, B),
+            ("clip", "1F9_4ccwhss", 282.9, 20.1, B),
+            ("clip", "58wJ_Khwgyk", 3442.5, 35.2, B),
             ("outline", "02-during_step3", "Step three: the pour."),
             ("anim", "06_pour",
-             "The pour is quick and always in the same order: vibration on, then draining pressure, then sealing rod up, and "
-             "turbo pressure when needed. Amplitude is a percentage of generator current; start near ninety. Draining pressure "
+             "The pour is quick: vibration on, then draining pressure and sealing rod up within a second or two of each other, "
+             "and turbo pressure when needed. Amplitude is a percentage of generator current; start near ninety. Draining pressure "
              "above the chamber pressure pushes the melt out, and only the difference matters. The first droplet usually "
              "bounces, because a dry plate does not wet. Pouring more at the start heats the plate, and once it is hot every drop "
              "atomizes. Steer with the plate position, so the stream lands high on the plate but not over the top."),
-            ("clip", "58wJ_Khwgyk", 3591, 30, B),
-            ("clip", "naePD8o9_Gk", 1409, 26, B),
-            ("clip", "58wJ_Khwgyk", 3838, 22, B),
-            ("clip", "9kn-HhXCr1o", 1476, 26, B),
+            ("clip", "58wJ_Khwgyk", 3592.9, 10.0, B),
+            ("clip", "naePD8o9_Gk", 1408.8, 20.4, B),
+            ("clip", "58wJ_Khwgyk", 3838.7, 13.8, B),
+            ("clip", "9kn-HhXCr1o", 1480.2, 18.2, B),
             ("outline", "02-during_step4", "Step four: end the pour."),
             ("card", "End of pour, within seconds",
              "Turbo to clear the nozzle → sealing rod down → melting pressure → generator stop → ultrasonics stop",
              "When the crucible is empty, one turbo push clears the nozzle. Then sealing rod down, melting pressure, generator "
              "stop, and ultrasonics stop, all within seconds, because vibrating against solidified metal cracks the plate."),
-            ("clip", "naePD8o9_Gk", 1929, 20, B),
+            ("clip", "naePD8o9_Gk", 1922.6, 19.9, B),
             ("card", "Next: tutorial 3, after a run", "Shutdown, cool-down, collecting the powder, and cleaning",
              "Tutorial three covers the shutdown, cooling down, collecting the powder, and cleaning."),
         ],
@@ -176,28 +182,30 @@ TUTORIALS = {
         "segments": [
             ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
              "Tutorial three: after a run."),
+            ("outline", "00-overview_tutorial3", "Tutorial three covers everything after the pour."),
             ("outline", "03-after",
              "After the pour come four steps: the shutdown sequence, cooling down and opening the chamber, collecting the powder, "
              "and cleaning for the next run."),
             ("outline", "03-after_step1", "Step one: shut down, and step two, cool down and open."),
             ("anim", "07_end_cooldown",
-             "After the pour: sealing rod down, melting pressure, generator stop, ultrasonics stop, and transducer cooling off a "
-             "minute later. Set the furnace to two hundred fifty for next time. Cooling water stays on until about one hundred "
+             "After the pour: sealing rod down, melting pressure, generator stop, ultrasonics stop, and transducer cooling off "
+             "once the plate has cooled. Set the furnace to two hundred fifty for next time. Cooling water stays on until about one hundred "
              "degrees. Open the chamber at or below four hundred degrees; above five hundred, graphite burns in air. Turn "
              "pressure control off and press vent first, because the door stays locked while the pressure is off atmospheric. "
              "Masks and coat on, then open the three clamps. Brush the plate, the bowl, the walls and the view port down into the "
              "container. Close the container valve before taking it off; argon stays inside it."),
-            ("clip", "naePD8o9_Gk", 1884, 30, B),
-            ("clip", "naePD8o9_Gk", 2340, 20, B),
-            ("clip", "tfb4fsVNIFI", 0, 30, B),
+            ("clip", "naePD8o9_Gk", 1891.3, 24.1, B),
+            ("clip", "naePD8o9_Gk", 2320.3, 11.2, B),
+            ("clip", "naePD8o9_Gk", 2339.4, 5.4, B),
+            ("clip", "tfb4fsVNIFI", 0.0, 16.0, B),
             ("outline", "03-after_step3", "Step three: collect the powder."),
             ("card", "Collecting the powder",
              "Close the container valve first · pour onto paper · pick out the chunks · sieve · bag with a six-character label · "
              "photo on GitHub",
              "Close the container valve before you take the container off; it is heavier than it looks. Pour the powder onto "
              "paper, pick out the chunks, sieve it, and bag it with a six-character label and a photo on GitHub."),
-            ("clip", "naePD8o9_Gk", 3051, 24, B),
-            ("clip", "txH397FGTAU", 2765, 22, B),
+            ("clip", "naePD8o9_Gk", 3051.8, 18.7, B),
+            ("clip", "naePD8o9_Gk", 3219, 20, B),
             ("outline", "03-after_step4", "Step four: clean and maintain."),
             ("anim", "08_clean",
              "Cleaning depends on what runs next. For the same alloy: open, brush, and vacuum. A material change takes about an "
@@ -206,9 +214,10 @@ TUTORIALS = {
              "material, because they last one to three runs. When the furnace is cool, take the rod out, peel the slag from the "
              "crucible floor, and keep the rod tip smooth. Look through the nozzle for light, and clear it with a needle or drill "
              "it to point seven. Inspect the HEPA filter every two months, and keep a used one in a metal tray with sand."),
-            ("clip", "58wJ_Khwgyk", 4058, 26, B),
-            ("clip", "FDRTt68Vfvo", 1068, 26, B),
-            ("clip", "wRc8p2_FnJo", 531, 28, B),
+            ("clip", "58wJ_Khwgyk", 4057.6, 25.5, B),
+            ("clip", "FDRTt68Vfvo", 1071.0, 4.2, B),
+            ("clip", "FDRTt68Vfvo", 1096.1, 7.6, B),
+            ("clip", "wRc8p2_FnJo", 530.8, 28.6, B),
             ("card", "Lessons from the first run on our own (Oct 2)",
              "Label the plates · fit the transducer cover · keep 17 and 18 mm wrenches and the torque wrench at the machine · "
              "draining pressure was too high and the plate too far · write every reading down",

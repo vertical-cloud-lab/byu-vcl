@@ -1,0 +1,98 @@
+<mxfile host="make_diagrams.py" type="device">
+  <diagram id="OverviewOnerePowderr" name="Overview · One rePowder run, start to finish">
+    <mxGraphModel dx="1280" dy="720" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="720" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="bg_layer" value="Background (locked)" style="locked=1;" parent="0" />
+        <mxCell id="bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="bg_layer">
+          <mxGeometry x="0" y="0" width="1280" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="1" value="Outline" parent="0" />
+        <mxCell id="title" value="Overview · One rePowder run, start to finish" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=36;fontStyle=1;fontColor=#1F2937;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="12" width="1200" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_lane" value="Tutorial 1 · Before a run" style="swimlane;startSize=38;horizontal=1;rounded=1;arcSize=8;html=1;whiteSpace=wrap;fontSize=22;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;fillColor=#00897B;swimlaneFillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=2;collapsible=0;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="24" y="72" width="1232" height="219.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_b1" value="1 · Utilities on" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s1_lane">
+          <mxGeometry x="18" y="50" width="576" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_c1" value="chilled water · compressed air &lt;b style=&quot;white-space:nowrap&quot;&gt;~4 bar&lt;/b&gt;&lt;br&gt;argon 5N at &lt;b style=&quot;white-space:nowrap&quot;&gt;8 bar&lt;/b&gt; · vacuum pump oil" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s1_lane">
+          <mxGeometry x="18" y="106" width="576" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_b2" value="2 · Prepare the machine" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s1_lane">
+          <mxGeometry x="638" y="50" width="576" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_c2" value="ultrasonic stack + scan&lt;br&gt;furnace: nozzle, crucible, insulation + thermocouple,&lt;br&gt;sealing rod, charge&lt;br&gt;chamber: container, splash plate, door clamps" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s1_lane">
+          <mxGeometry x="638" y="106" width="576" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_a1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s1_lane" source="s1_b1" target="s1_b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_lane" value="Tutorial 2 · During a run" style="swimlane;startSize=38;horizontal=1;rounded=1;arcSize=8;html=1;whiteSpace=wrap;fontSize=22;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;fillColor=#C2410C;swimlaneFillColor=#FCEDE4;strokeColor=#C2410C;strokeWidth=2;collapsible=0;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="24" y="303.333" width="1232" height="219.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_b1" value="3 · Gas wash" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s2_lane">
+          <mxGeometry x="18" y="50" width="266" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_c1" value="furnace ×5, then chamber&lt;br&gt;again at &lt;b style=&quot;white-space:nowrap&quot;&gt;250 °C&lt;/b&gt; and &lt;b style=&quot;white-space:nowrap&quot;&gt;500 °C&lt;/b&gt;&lt;br&gt;O₂ &lt;b style=&quot;white-space:nowrap&quot;&gt;≤ 100 ppm&lt;/b&gt;, best &lt;b style=&quot;white-space:nowrap&quot;&gt;40–50&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s2_lane">
+          <mxGeometry x="18" y="106" width="266" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_b2" value="4 · Melt" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s2_lane">
+          <mxGeometry x="328" y="50" width="266" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_c2" value="overshoot to drop the charge&lt;br&gt;then &lt;b style=&quot;white-space:nowrap&quot;&gt;780–800 °C&lt;/b&gt;&lt;br&gt;hold &lt;b style=&quot;white-space:nowrap&quot;&gt;2 min&lt;/b&gt;, no longer" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s2_lane">
+          <mxGeometry x="328" y="106" width="266" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_b3" value="5 · Pour" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s2_lane">
+          <mxGeometry x="638" y="50" width="266" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_c3" value="vibration on&lt;br&gt;→ draining pressure&lt;br&gt;→ sealing rod up&lt;br&gt;→ turbo as needed" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s2_lane">
+          <mxGeometry x="638" y="106" width="266" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_b4" value="6 · End of pour" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#C2410C;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s2_lane">
+          <mxGeometry x="948" y="50" width="266" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_c4" value="turbo, rod down,&lt;br&gt;melting pressure,&lt;br&gt;generator stop,&lt;br&gt;ultrasonics stop" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s2_lane">
+          <mxGeometry x="948" y="106" width="266" height="103.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s2_lane" source="s2_b1" target="s2_b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s2_lane" source="s2_b2" target="s2_b3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_a3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s2_lane" source="s2_b3" target="s2_b4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_lane" value="Tutorial 3 · After a run" style="swimlane;startSize=38;horizontal=1;rounded=1;arcSize=8;html=1;whiteSpace=wrap;fontSize=22;fontStyle=1;fontColor=#FFFFFF;align=left;spacingLeft=14;fillColor=#6D28D9;swimlaneFillColor=#EFE9FC;strokeColor=#6D28D9;strokeWidth=2;collapsible=0;swimlaneLine=0;" vertex="1" parent="1">
+          <mxGeometry x="24" y="534.667" width="1232" height="171.333" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_b1" value="7 · Cool down" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#6D28D9;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s3_lane">
+          <mxGeometry x="18" y="50" width="369.333" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_c1" value="open at &lt;b style=&quot;white-space:nowrap&quot;&gt;≤ 400 °C&lt;/b&gt;, vent first&lt;br&gt;utilities off at &lt;b style=&quot;white-space:nowrap&quot;&gt;~100 °C&lt;/b&gt;" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s3_lane">
+          <mxGeometry x="18" y="106" width="369.333" height="55.3333" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_b2" value="8 · Collect powder" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#6D28D9;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s3_lane">
+          <mxGeometry x="431.333" y="50" width="369.333" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_c2" value="close the container valve, sieve&lt;br&gt;bag with a &lt;b style=&quot;white-space:nowrap&quot;&gt;6-character&lt;/b&gt; ID" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s3_lane">
+          <mxGeometry x="431.333" y="106" width="369.333" height="55.3333" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_b3" value="9 · Clean" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#6D28D9;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s3_lane">
+          <mxGeometry x="844.667" y="50" width="369.333" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_c3" value="by what runs next:&lt;br&gt;same alloy, or alloy change" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s3_lane">
+          <mxGeometry x="844.667" y="106" width="369.333" height="55.3333" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_a1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s3_lane" source="s3_b1" target="s3_b2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_a2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s3_lane" source="s3_b2" target="s3_b3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

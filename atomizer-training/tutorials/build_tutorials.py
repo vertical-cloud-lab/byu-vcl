@@ -16,9 +16,9 @@ Output: ./out/<tutorial>.mp4, 1280x720 h264 + aac.
     python build_tutorials.py 02-during   # one
 Set ATOMIZER_DL to the folder holding <id>.v360.mp4 and <id>.m4a (default /tmp/work/dl).
 """
-import json, math, os, re, shutil, subprocess, sys, textwrap
+import hashlib, json, math, os, re, shutil, subprocess, sys, textwrap
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
-from scripts import TUTORIALS, VOICE
+from scripts import FIXES, TUTORIALS, VOICE
 import clip_words
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
@@ -114,20 +114,26 @@ def seg_outline(i, name, narration):
     return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.0)
 
 
-def seg_anim(i, name, narration):
+def seg_anim(i, name, narration, substeps=None):
     """A 3D animation under narration. With a list of sentences and the sub-step JSON, each sentence starts with its
-    sub-step and the sub-step is slowed (up to 1.6x) and then held on its last frame until the sentence is done."""
+    sub-step and the sub-step is slowed (up to 1.6x) and then held on its last frame until the sentence is done.
+    `substeps` = (first, last) plays only those sub-steps (inclusive), so one animation can serve several sections."""
     mp4 = f"{V3D}/mp4/{name}.mp4"; meta = f"{V3D}/{name}.json"; out = f"{TMP}/seg_{i}.mp4"
     if not os.path.exists(mp4):
         raise FileNotFoundError(mp4)
     sentences = narration if isinstance(narration, list) else [narration]
     steps = json.load(open(meta))["substeps"] if os.path.exists(meta) else None
     fps = json.load(open(meta)).get("fps", 15) if os.path.exists(meta) else 15
+    if steps is not None and substeps is not None:
+        steps = steps[substeps[0]:substeps[1] + 1]
     if steps is None or len(sentences) != len(steps):
         if steps is not None:
             print(f"  {name}: {len(sentences)} sentences for {len(steps)} sub-steps, timing the whole thing", flush=True)
+            span = {"start_frame": steps[0]["start_frame"], "end_frame": steps[-1]["end_frame"]}
+        else:
+            span = {"start_frame": 0, "end_frame": None}
         sentences = [" ".join(sentences)]
-        steps = [{"start_frame": 0, "end_frame": None}]
+        steps = [span]
     parts, auds = [], []
     for k, (st, text) in enumerate(zip(steps, sentences)):
         mp3 = f"{TMP}/anim_{i}_{k}.mp3"
@@ -158,7 +164,7 @@ def seg_anim(i, name, narration):
     return out
 
 
-def seg_clip(i, vid, start, dur, speaker):
+def seg_clip(i, vid, start, dur, speaker, section=""):
     """The trainer's own words: sentence-snapped, stabilised, subtitled, labelled, loudness-matched."""
     out = f"{TMP}/seg_{i}.mp4"
     v = f"{DL}/{vid}.v360.mp4"; a = f"{DL}/{vid}.m4a"
@@ -170,7 +176,7 @@ def seg_clip(i, vid, start, dur, speaker):
     with open(srt, "w") as f:
         for k, (c0, c1, text) in enumerate(clip_words.srt_lines(words, s), 1):
             ts = lambda x: f"{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{x % 60:06.3f}".replace(".", ",")
-            f.write(f"{k}\n{ts(c0)} --> {ts(min(c1, d))}\n{text}\n\n")
+            f.write(f"{k}\n{ts(c0)} --> {ts(min(c1, d))}\n{clip_words.fix(text, FIXES)}\n\n")
     # pass 1: motion analysis of the cut, at source resolution
     trf = f"{TMP}/clip_{i}.trf"; cut = f"{TMP}/clip_{i}_cut.mp4"
     run(["ffmpeg", "-y", "-v", "error", "-ss", f"{s:.2f}", "-t", f"{d:.2f}", "-i", v, "-ss", f"{s:.2f}", "-t", f"{d:.2f}",
@@ -181,7 +187,8 @@ def seg_clip(i, vid, start, dur, speaker):
     w, h = probe_wh(cut)
     mm = f"{int(start) // 60:02d}:{int(start) % 60:02d}" if start < 3600 else f"{int(start) // 3600}:{int(start) % 3600 // 60:02d}:{int(start) % 60:02d}"
     label = f"{speaker}  ·  {SHORT.get(vid, VIDEOS.get(vid, {}).get('title', vid))}  ·  {mm}"
-    label = label.replace("\\", "").replace(":", "\\:").replace("'", "’").replace(",", "\\,")
+    esc = lambda x: x.replace("\\", "").replace(":", "\\:").replace("'", "’").replace(",", "\\,")
+    label, section = esc(label), esc(section)
     stab = f"vidstabtransform=input={trf}:smoothing=24:zoom=4:optzoom=0:interpol=bicubic,unsharp=5:5:0.6:3:3:0.3"
     if h > w:   # portrait phone video: blurred fill behind the frame instead of black bars
         fg = f"[0:v]{stab},scale=-2:{H}:flags=lanczos,split[fg][bgsrc];" \
@@ -192,7 +199,8 @@ def seg_clip(i, vid, start, dur, speaker):
     style = "FontName=DejaVu Sans,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BackColour=&H99000000," \
             "BorderStyle=4,Outline=0,Shadow=0,MarginV=22"
     vf = (f"{fg},drawbox=x=0:y=0:w=iw:h=46:color=black@0.45:t=fill,"
-          f"drawtext=fontfile={FONT}:text='{label}':x=20:y=13:fontsize=21:fontcolor=white,"
+          + (f"drawtext=fontfile={FONTB}:text='{section}':x=w-tw-20:y=13:fontsize=21:fontcolor=0x9fd3ff," if section else "")
+          + f"drawtext=fontfile={FONT}:text='{label}':x=20:y=13:fontsize=21:fontcolor=white,"
           f"subtitles={srt}:force_style='{style}',fade=t=in:st=0:d=0.25,fade=t=out:st={max(0, d - 0.3):.2f}:d=0.3[vout]")
     run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-filter_complex", vf, "-map", "[vout]", "-map", "0:a:0",
          "-af", f"highpass=f=90,afftdn=nf=-25,{AUDIO},afade=t=in:st=0:d=0.15,afade=t=out:st={max(0, d - 0.3):.2f}:d=0.3",
@@ -226,14 +234,60 @@ def concat_xfade(segs, out, fade=FADE):
     return out
 
 
+NUM = {"one": "1", "two": "2", "three": "3", "four": "4", "five": "5"}
+
+
+def section_label(narration):
+    """'Step two: the ultrasonic stack.' -> 'Step 2 · the ultrasonic stack' for the clips' top bar."""
+    m = re.match(r"Step (\w+): (.*?)[.,]", narration)
+    if not m:
+        return ""
+    desc = re.sub(r"^(the|a|an) ", "", m.group(2))
+    return f"Step {NUM.get(m.group(1).lower(), m.group(1))} · {desc[:1].upper()}{desc[1:]}"
+
+
+def seg_key(seg):
+    """Segments are cached in tmp/ under a hash of everything that goes into them, so a rebuild redoes only what changed."""
+    kind, args = seg[0], seg[1:]
+    deps = [VOICE, json.dumps(args, ensure_ascii=False)]
+    if kind == "clip":
+        deps.append(json.dumps(FIXES, sort_keys=True))
+    if kind == "anim":
+        deps += [str(os.path.getmtime(p)) for p in (f"{V3D}/mp4/{args[0]}.mp4", f"{V3D}/{args[0]}.json") if os.path.exists(p)]
+    if kind == "outline" and os.path.exists(f"{DIAG}/{args[0]}.png"):
+        deps.append(str(os.path.getmtime(f"{DIAG}/{args[0]}.png")))
+    if kind in ("title", "card") and os.path.exists(f"{V3D}/machine.png"):
+        deps.append(str(os.path.getmtime(f"{V3D}/machine.png")))
+    return f"{kind}_" + hashlib.sha1("|".join(deps).encode()).hexdigest()[:12]
+
+
+def make_seg(seg):
+    kind, args = seg[0], seg[1:]
+    sid = seg_key(seg)
+    if os.path.exists(f"{TMP}/seg_{sid}.mp4"):
+        return f"{TMP}/seg_{sid}.mp4"
+    fn = {"title": seg_title, "card": seg_card, "outline": seg_outline, "anim": seg_anim, "clip": seg_clip}[kind]
+    return fn(sid, *args)
+
+
+def plan(key):
+    """The tutorial's segments, with each clip tagged by the step whose divider precedes it."""
+    out, section = [], ""
+    for seg in TUTORIALS[key]["segments"]:
+        if seg[0] == "outline":
+            section = section_label(seg[2]) if "_step" in seg[1] else ""
+        if seg[0] == "clip" and section:
+            seg = (*seg[:6], section)
+        out.append(seg)
+    return out
+
+
 def build(key):
-    t = TUTORIALS[key]; os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
+    os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     segs = []
-    for i, seg in enumerate(t["segments"]):
+    for i, seg in enumerate(plan(key)):
         kind, args = seg[0], seg[1:]
-        sid = f"{key}_{i:02d}"
-        fn = {"title": seg_title, "card": seg_card, "outline": seg_outline, "anim": seg_anim, "clip": seg_clip}[kind]
-        segs.append(fn(sid, *args))
+        segs.append(make_seg(seg))
         print(key, i, kind, args[0] if kind != "clip" else f"{args[0]}@{args[1]}", f"{duration(segs[-1]):.1f}s", flush=True)
     out = f"{OUT}/{key}.mp4"
     concat_xfade(segs, out)
@@ -242,5 +296,12 @@ def build(key):
 
 
 if __name__ == "__main__":
-    for k in (sys.argv[1:] or list(TUTORIALS)):
-        build(k)
+    if sys.argv[1:2] == ["--clips"]:     # pre-build only the clip segments (they need neither the 3D renders nor the diagrams)
+        os.makedirs(TMP, exist_ok=True)
+        for k in (sys.argv[2:] or list(TUTORIALS)):
+            for seg in plan(k):
+                if seg[0] == "clip":
+                    print(k, seg[1], seg[2], f"{duration(make_seg(seg)):.1f}s", flush=True)
+    else:
+        for k in (sys.argv[1:] or list(TUTORIALS)):
+            build(k)
