@@ -34,14 +34,19 @@ Segments are joined with 0.4 s crossfades.
 
 | Tutorial | Draft 2 | Draft 1 (superseded) |
 | --- | --- | --- |
-| 0 · The machine and how it works | _see [`uploads.json`](uploads.json)_ | https://www.youtube.com/watch?v=p6jlgTJEOw4 |
-| 1 · Before a run | | https://www.youtube.com/watch?v=eKH7y4JgJD8 |
-| 2 · During a run | | https://www.youtube.com/watch?v=cGxBFZyFmCY |
-| 3 · After a run | | https://www.youtube.com/watch?v=wPzP6I3jT5w |
+| 0 · The machine and how it works | [5:16](https://www.youtube.com/watch?v=uVVeTokW3Us) | [3:31](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
+| 1 · Before a run: utilities, stack, furnace, chamber | [8:45](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [6:04](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
+| 2 · During a run: gas wash, melt, pour, end of pour | [7:38](https://www.youtube.com/watch?v=sagBBb78pVQ) | [8:08](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
+| 3 · After a run: shutdown, cool-down, powder, cleaning | [5:54](https://www.youtube.com/watch?v=50j8N8YyDxU) | [6:42](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
+
+Draft 1 can be deleted in YouTube Studio once draft 2 is accepted (the upload token cannot delete).
 
 **Playlist.** Creating a playlist needs the channel's full token (`playlists.insert` requires the `youtube` scope), which
-only an `@claude-youtube` run has. [`../../youtube/make_playlist.py`](../../youtube/make_playlist.py) is ready for it (see the
-command at the end of this file).
+only an `@claude-youtube` run has. [`../../youtube/make_playlist.py`](../../youtube/make_playlist.py) is ready for it:
+
+```bash
+python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft 2)" --privacy unlisted --ids uVVeTokW3Us qiBB0lIXUDM sagBBb78pVQ 50j8N8YyDxU
+```
 
 ## Files
 
