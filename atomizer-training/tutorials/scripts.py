@@ -137,7 +137,7 @@ TUTORIALS = {
             ]),
             ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
             ("clip", "wRc8p2_FnJo", 2793.2, 44.2, B),    # the thread reaches into the chamber; nut, thermocouple hole
-            ("clip", "1F9_4ccwhss", 100.8, 47.0, B),     # rod tip, rod in, lever down, "now we can add the material"
+            ("clip", "1F9_4ccwhss", 100.9, 42.5, B),     # rod tip, rod in, lever down, "now we can add the material"
             ("outline", "01-before_step3", "Step three: the chamber."),
             ("anim", "03b_chamber", [
                 'First the round splash-protection disc drops into the top flange of the powder container. One is enough for aluminum.',
