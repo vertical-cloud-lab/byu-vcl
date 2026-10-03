@@ -1,36 +1,49 @@
-"""Assemble narrated tutorial videos from the step GIFs, title cards and clips of the training videos.
+"""Assemble the narrated tutorial videos from the 3D step animations, the draw.io outlines and clips of the training videos.
 
-Segments:
-  card  — a title/section slide with synthetic narration
-  gif   — one step animation from ../viz/out/<name>.gif with synthetic narration (last frame held while the voice finishes)
-  clip  — a cut of a training video (local 360p + audio copies), i.e. the trainer's own words, with a lower-third caption
+Segment kinds (see scripts.py):
+  title    — opening card over the 3D render of the machine, one short line of narration
+  outline  — a draw.io diagram (diagrams/<name>.png): the tutorial's steps, or one of them highlighted as a section divider
+  anim     — a 3D step animation (../viz3d/out/mp4/<name>.mp4). Narration given as a list is timed sentence by sentence
+             against the animation's sub-steps (../viz3d/out/<name>.json); the sub-step stretches if the voice needs longer
+  clip     — the trainer's own words, cut from a training video: snapped to sentence boundaries with word-timed Whisper
+             (clip_words.py), stabilised (vidstab, two passes), subtitled from the same words, loudness-matched
+  card     — a text card with narration
 
-Synthetic narration is Microsoft Edge TTS voice en-US-SteffanNeural at 1x (`edge-tts`). Human narration is used wherever the
-training videos have the trainer explaining the step. Output: ./out/<tutorial>.mp4 (1280x720, h264 + aac). The narration
-text lives in scripts.py so it can be reviewed and edited without touching the build.
+Synthetic narration is Microsoft Edge TTS (VOICE in scripts.py) at 1x. Segments are joined with short crossfades (FADE).
+Output: ./out/<tutorial>.mp4, 1280x720 h264 + aac.
 
     python build_tutorials.py             # all
     python build_tutorials.py 02-during   # one
 Set ATOMIZER_DL to the folder holding <id>.v360.mp4 and <id>.m4a (default /tmp/work/dl).
 """
-import json, math, os, shutil, subprocess, sys, textwrap
-from PIL import Image, ImageDraw, ImageFont
+import json, math, os, re, shutil, subprocess, sys, textwrap
+from PIL import Image, ImageDraw, ImageFilter, ImageFont
 from scripts import TUTORIALS, VOICE
+import clip_words
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 DL = os.environ.get("ATOMIZER_DL", "/tmp/work/dl")
-OUT = f"{HERE}/out"; TMP = f"{HERE}/tmp"
+OUT = f"{HERE}/out"; TMP = f"{HERE}/tmp"; DIAG = f"{HERE}/diagrams"; V3D = f"{ROOT}/viz3d/out"
 FONT = "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"; FONTB = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
-TITLES = {v["id"]: v["title"] for v in json.load(open(f"{ROOT}/videos.json"))}
+VIDEOS = {v["id"]: v for v in json.load(open(f"{ROOT}/videos.json"))}
 W, H, FPS = 1280, 720, 30
-ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "23", "-pix_fmt", "yuv420p", "-r", str(FPS),
-       "-c:a", "aac", "-b:a", "128k", "-ar", "44100", "-ac", "2"]
+FADE = 0.4
+AUDIO = "loudnorm=I=-16:TP=-1.5:LRA=11,aresample=44100"
+ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv420p", "-r", str(FPS),
+       "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2"]
+SHORT = {"wRc8p2_FnJo": "Training video 1", "naePD8o9_Gk": "Training video 2", "txH397FGTAU": "Training video 3",
+         "1F9_4ccwhss": "Training video 4", "58wJ_Khwgyk": "Training video 5", "tfb4fsVNIFI": "Training video 6",
+         "FDRTt68Vfvo": "Training video 7", "HTlUrAr5HVU": "Training video 8", "9kn-HhXCr1o": "Training video 9",
+         "u-KjR5TENN4": "Expert cleaning, POV", "f8KL31PN8bA": "Cartridge cleaning", "2wMgeI-E7zw": "Training (Sterling's phone)",
+         "qYyT39D5Yzo": "First run, Oct 2, part 1", "of5-LhkX_VQ": "First run, Oct 2, part 2", "07QOPRHIEvw": "Placing the atomizer",
+         "Kv9DT3Vo0GE": "Construction update", "z6rwmQW_3Vg": "Turning Al crucibles", "Pk0K5sBz-sQ": "Training, Sep 29",
+         "TFpU4uqVF9c": "Atomizing AlSi10Mg-Al6063"}
 
 
 def run(cmd):
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode != 0:
-        raise RuntimeError(" ".join(cmd) + "\n" + r.stderr[-2000:])
+        raise RuntimeError(" ".join(map(str, cmd))[:600] + "\n" + r.stderr[-2500:])
     return r
 
 
@@ -38,68 +51,178 @@ def duration(path):
     return float(run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", path]).stdout.strip())
 
 
+def probe_wh(path):
+    out = run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0",
+               path]).stdout.strip().split(",")
+    return int(out[0]), int(out[1])
+
+
 def tts(text, path):
-    if not os.path.exists(path):
+    if not os.path.exists(path) or os.path.getsize(path) == 0:
         run(["edge-tts", "--voice", VOICE, "--text", text, "--write-media", path])
     return duration(path)
 
 
-def card_png(title, sub, path):
-    im = Image.new("RGB", (W, H), "#101820"); d = ImageDraw.Draw(im)
-    f1 = ImageFont.truetype(FONTB, 54); f2 = ImageFont.truetype(FONT, 30); f3 = ImageFont.truetype(FONT, 22)
+def font(size, bold=False):
+    return ImageFont.truetype(FONTB if bold else FONT, size)
+
+
+def backdrop():
+    """The 3D render of the machine, darkened and blurred, as the background of titles and cards."""
+    src = f"{V3D}/machine.png"
+    if os.path.exists(src):
+        im = Image.open(src).convert("RGB").resize((W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(6))
+        return Image.blend(im, Image.new("RGB", (W, H), "#0d1620"), 0.78)
+    return Image.new("RGB", (W, H), "#0d1620")
+
+
+def card_png(title, sub, path, kicker="BYU Vertical Cloud Lab · AMAZEMET rePowder"):
+    im = backdrop(); d = ImageDraw.Draw(im)
+    d.text((90, 150), kicker.upper(), font=font(22, True), fill="#7fb3d5")
     y = 200
-    for line in textwrap.wrap(title, 36):
-        d.text((90, y), line, font=f1, fill="white"); y += 68
-    y += 20
-    for line in textwrap.wrap(sub, 70):
-        d.text((90, y), line, font=f2, fill="#c9d6e2"); y += 42
-    d.text((90, H - 70), "BYU Vertical Cloud Lab · AMAZEMET rePowder · draft for review", font=f3, fill="#7f8c99")
+    for line in textwrap.wrap(title, 34):
+        d.text((90, y), line, font=font(56, True), fill="white"); y += 70
+    y += 24
+    for line in textwrap.wrap(sub, 64):
+        d.text((90, y), line, font=font(30), fill="#d5e1ea"); y += 44
     im.save(path)
+
+
+def still_with_audio(png, mp3, out, dur, fade_in=False):
+    run(["ffmpeg", "-y", "-v", "error", "-loop", "1", "-framerate", str(FPS), "-i", png, "-i", mp3, "-t", f"{dur:.2f}",
+         "-vf", f"scale={W}:{H},format=yuv420p" + (",fade=t=in:st=0:d=0.6" if fade_in else ""),
+         "-af", f"adelay=250|250,apad,{AUDIO}", *ENC, out])
+    return out
+
+
+def seg_title(i, title, sub, narration):
+    png = f"{TMP}/title_{i}.png"; mp3 = f"{TMP}/title_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
+    card_png(title, sub, png)
+    return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.4, fade_in=True)
 
 
 def seg_card(i, title, sub, narration):
     png = f"{TMP}/card_{i}.png"; mp3 = f"{TMP}/card_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
-    card_png(title, sub, png); d = tts(narration, mp3) + 0.6
-    run(["ffmpeg", "-y", "-v", "error", "-loop", "1", "-framerate", str(FPS), "-i", png, "-i", mp3, "-t", f"{d:.2f}",
-         "-af", "apad", "-shortest", *ENC, out])
-    return out
+    card_png(title, sub, png)
+    return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.0)
 
 
-def seg_gif(i, name, narration):
-    gif = f"{ROOT}/viz/out/{name}.gif"; mp3 = f"{TMP}/gif_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
-    d_audio = tts(narration, mp3) + 0.6
-    im = Image.open(gif); frames = []
-    try:
-        while True:
-            frames.append(im.convert("RGB").copy()); im.seek(im.tell() + 1)
-    except EOFError:
-        pass
-    gif_fps = 10; n_needed = int(math.ceil(d_audio * gif_fps))
-    if len(frames) < n_needed:
-        frames += [frames[-1]] * (n_needed - len(frames))
-    fdir = f"{TMP}/gif_{i}_frames"; shutil.rmtree(fdir, ignore_errors=True); os.makedirs(fdir)
-    for k, fr in enumerate(frames):
-        canvas = Image.new("RGB", (W, H), "white"); fr2 = fr.resize((960, 720), Image.LANCZOS)
-        canvas.paste(fr2, (160, 0)); canvas.save(f"{fdir}/f_{k:05d}.png")
-    run(["ffmpeg", "-y", "-v", "error", "-framerate", str(gif_fps), "-i", f"{fdir}/f_%05d.png", "-i", mp3,
-         "-af", "apad", "-shortest", *ENC, out])
-    shutil.rmtree(fdir, ignore_errors=True)
+def seg_outline(i, name, narration):
+    png = f"{DIAG}/{name}.png"; mp3 = f"{TMP}/outline_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
+    if not os.path.exists(png):
+        raise FileNotFoundError(png)
+    return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.0)
+
+
+def seg_anim(i, name, narration):
+    """A 3D animation under narration. With a list of sentences and the sub-step JSON, each sentence starts with its
+    sub-step and the sub-step is slowed (up to 1.6x) and then held on its last frame until the sentence is done."""
+    mp4 = f"{V3D}/mp4/{name}.mp4"; meta = f"{V3D}/{name}.json"; out = f"{TMP}/seg_{i}.mp4"
+    if not os.path.exists(mp4):
+        raise FileNotFoundError(mp4)
+    sentences = narration if isinstance(narration, list) else [narration]
+    steps = json.load(open(meta))["substeps"] if os.path.exists(meta) else None
+    fps = json.load(open(meta)).get("fps", 15) if os.path.exists(meta) else 15
+    if steps is None or len(sentences) != len(steps):
+        if steps is not None:
+            print(f"  {name}: {len(sentences)} sentences for {len(steps)} sub-steps, timing the whole thing", flush=True)
+        sentences = [" ".join(sentences)]
+        steps = [{"start_frame": 0, "end_frame": None}]
+    parts, auds = [], []
+    for k, (st, text) in enumerate(zip(steps, sentences)):
+        mp3 = f"{TMP}/anim_{i}_{k}.mp3"
+        d_tts = tts(text, mp3) + 0.5 if text.strip() else 0.0
+        s0 = st["start_frame"] / fps
+        e0 = (st["end_frame"] / fps) if st.get("end_frame") is not None else duration(mp4)
+        d_vid = e0 - s0
+        slow = min(1.6, max(1.0, d_tts / d_vid)) if d_vid > 0 else 1.0
+        hold = max(0.0, d_tts - d_vid * slow)
+        part = f"{TMP}/anim_{i}_{k}.mp4"
+        run(["ffmpeg", "-y", "-v", "error", "-ss", f"{s0:.3f}", "-t", f"{d_vid:.3f}", "-i", mp4, "-an",
+             "-vf", f"setpts={slow:.4f}*PTS,fps={FPS},scale={W}:{H},tpad=stop_mode=clone:stop_duration={hold:.2f},format=yuv420p",
+             "-c:v", "libx264", "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", part])
+        parts.append(part); auds.append((mp3 if text.strip() else None, duration(part)))
+    vlist = f"{TMP}/anim_{i}.txt"; open(vlist, "w").write("".join(f"file '{p}'\n" for p in parts))
+    # narration track: each sentence placed at the start of its sub-step
+    inputs, filt, t = [], [], 0.0
+    for k, (mp3, d) in enumerate(auds):
+        if mp3:
+            inputs += ["-i", mp3]
+            filt.append(f"[{len(inputs) // 2}:a]adelay={int((t + 0.2) * 1000)}|{int((t + 0.2) * 1000)}[a{k}]")
+        t += d
+    labels = "".join(f"[a{k}]" for k, (mp3, _) in enumerate(auds) if mp3)
+    n = labels.count("[")
+    fc = ";".join(filt) + f";{labels}amix=inputs={n}:normalize=0,apad,{AUDIO}[aout]"
+    run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", vlist, *inputs, "-filter_complex", fc,
+         "-map", "0:v", "-map", "[aout]", "-t", f"{t:.2f}", *ENC, out])
     return out
 
 
 def seg_clip(i, vid, start, dur, speaker):
+    """The trainer's own words: sentence-snapped, stabilised, subtitled, labelled, loudness-matched."""
     out = f"{TMP}/seg_{i}.mp4"
     v = f"{DL}/{vid}.v360.mp4"; a = f"{DL}/{vid}.m4a"
     if not (os.path.exists(v) and os.path.exists(a)):
         raise FileNotFoundError(f"{vid}: need {v} and {a}")
-    mm = f"{int(start)//60:02d}:{int(start)%60:02d}"
-    label = f"{speaker} · {TITLES.get(vid, vid)} · {mm}".replace(":", "\\:").replace("'", "’")
-    vf = (f"scale={W}:{H}:force_original_aspect_ratio=decrease,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black,"
-          f"drawbox=x=0:y=ih-64:w=iw:h=64:color=black@0.55:t=fill,"
-          f"drawtext=fontfile={FONT}:text='{label}':x=24:y=h-46:fontsize=26:fontcolor=white")
-    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{start:.2f}", "-t", f"{dur:.2f}", "-i", v,
-         "-ss", f"{start:.2f}", "-t", f"{dur:.2f}", "-i", a, "-map", "0:v:0", "-map", "1:a:0", "-vf", vf,
-         "-af", "apad", "-shortest", *ENC, out])
+    s, e, words = clip_words.snap(vid, start, dur)
+    d = e - s
+    srt = f"{TMP}/clip_{i}.srt"
+    with open(srt, "w") as f:
+        for k, (c0, c1, text) in enumerate(clip_words.srt_lines(words, s), 1):
+            ts = lambda x: f"{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{x % 60:06.3f}".replace(".", ",")
+            f.write(f"{k}\n{ts(c0)} --> {ts(min(c1, d))}\n{text}\n\n")
+    # pass 1: motion analysis of the cut, at source resolution
+    trf = f"{TMP}/clip_{i}.trf"; cut = f"{TMP}/clip_{i}_cut.mp4"
+    run(["ffmpeg", "-y", "-v", "error", "-ss", f"{s:.2f}", "-t", f"{d:.2f}", "-i", v, "-ss", f"{s:.2f}", "-t", f"{d:.2f}",
+         "-i", a, "-map", "0:v:0", "-map", "1:a:0", "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-c:a", "aac",
+         "-b:a", "192k", cut])
+    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=15:result={trf}",
+         "-f", "null", "-"])
+    w, h = probe_wh(cut)
+    mm = f"{int(start) // 60:02d}:{int(start) % 60:02d}" if start < 3600 else f"{int(start) // 3600}:{int(start) % 3600 // 60:02d}:{int(start) % 60:02d}"
+    label = f"{speaker}  ·  {SHORT.get(vid, VIDEOS.get(vid, {}).get('title', vid))}  ·  {mm}"
+    label = label.replace("\\", "").replace(":", "\\:").replace("'", "’").replace(",", "\\,")
+    stab = f"vidstabtransform=input={trf}:smoothing=24:zoom=4:optzoom=0:interpol=bicubic,unsharp=5:5:0.6:3:3:0.3"
+    if h > w:   # portrait phone video: blurred fill behind the frame instead of black bars
+        fg = f"[0:v]{stab},scale=-2:{H}:flags=lanczos,split[fg][bgsrc];" \
+             f"[bgsrc]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.12[bg];" \
+             f"[bg][fg]overlay=(W-w)/2:0"
+    else:
+        fg = f"[0:v]{stab},scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black"
+    style = "FontName=DejaVu Sans,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BackColour=&H99000000," \
+            "BorderStyle=4,Outline=0,Shadow=0,MarginV=22"
+    vf = (f"{fg},drawbox=x=0:y=0:w=iw:h=46:color=black@0.45:t=fill,"
+          f"drawtext=fontfile={FONT}:text='{label}':x=20:y=13:fontsize=21:fontcolor=white,"
+          f"subtitles={srt}:force_style='{style}',fade=t=in:st=0:d=0.25,fade=t=out:st={max(0, d - 0.3):.2f}:d=0.3[vout]")
+    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-filter_complex", vf, "-map", "[vout]", "-map", "0:a:0",
+         "-af", f"highpass=f=90,afftdn=nf=-25,{AUDIO},afade=t=in:st=0:d=0.15,afade=t=out:st={max(0, d - 0.3):.2f}:d=0.3",
+         *ENC, out])
+    for p in (cut, trf):
+        os.remove(p)
+    print(f"    clip {vid} {start}+{dur} -> {s:.1f}-{e:.1f}: {''.join(x['w'] for x in words).strip()[:150]}", flush=True)
+    return out
+
+
+def concat_xfade(segs, out, fade=FADE):
+    """Join the segments with a crossfade of `fade` seconds (video xfade, audio acrossfade)."""
+    durs = [duration(s) for s in segs]
+    inputs = sum((["-i", s] for s in segs), [])
+    norm = [f"[{k}:v]settb=AVTB,fps={FPS},format=yuv420p,setsar=1[n{k}];"
+            f"[{k}:a]aformat=sample_rates=44100:channel_layouts=stereo[m{k}]" for k in range(len(segs))]
+    fv, fa = [], []
+    vprev, aprev, off = "n0", "m0", 0.0
+    for k in range(1, len(segs)):
+        off += durs[k - 1] - fade
+        fv.append(f"[{vprev}][n{k}]xfade=transition=fade:duration={fade}:offset={off:.3f}[v{k}]")
+        fa.append(f"[{aprev}][m{k}]acrossfade=d={fade}:c1=tri:c2=tri[a{k}]")
+        vprev, aprev = f"v{k}", f"a{k}"
+    n = len(segs) - 1
+    fc = ";".join(norm + fv + fa)
+    fc += f";[v{n}]fade=t=out:st={sum(durs) - fade * n - 0.8:.2f}:d=0.8[vend];[a{n}]afade=t=out:st={sum(durs) - fade * n - 0.8:.2f}:d=0.8[aend]"
+    script = f"{TMP}/{os.path.basename(out)}.filter"
+    open(script, "w").write(fc)
+    run(["ffmpeg", "-y", "-v", "error", *inputs, "-filter_complex_script", script, "-map", "[vend]", "-map", "[aend]",
+         *ENC, "-movflags", "+faststart", out])
     return out
 
 
@@ -107,19 +230,14 @@ def build(key):
     t = TUTORIALS[key]; os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
     segs = []
     for i, seg in enumerate(t["segments"]):
-        kind = seg[0]
-        if kind == "card":
-            segs.append(seg_card(f"{key}_{i}", seg[1], seg[2], seg[3]))
-        elif kind == "gif":
-            segs.append(seg_gif(f"{key}_{i}", seg[1], seg[2]))
-        elif kind == "clip":
-            segs.append(seg_clip(f"{key}_{i}", seg[1], seg[2], seg[3], seg[4]))
-        print(key, i, kind, f"{duration(segs[-1]):.1f}s", flush=True)
-    lst = f"{TMP}/{key}.txt"
-    open(lst, "w").write("".join(f"file '{p}'\n" for p in segs))
+        kind, args = seg[0], seg[1:]
+        sid = f"{key}_{i:02d}"
+        fn = {"title": seg_title, "card": seg_card, "outline": seg_outline, "anim": seg_anim, "clip": seg_clip}[kind]
+        segs.append(fn(sid, *args))
+        print(key, i, kind, args[0] if kind != "clip" else f"{args[0]}@{args[1]}", f"{duration(segs[-1]):.1f}s", flush=True)
     out = f"{OUT}/{key}.mp4"
-    run(["ffmpeg", "-y", "-v", "error", "-f", "concat", "-safe", "0", "-i", lst, "-c", "copy", out])
-    print(key, "->", out, f"{duration(out)/60:.1f} min", flush=True)
+    concat_xfade(segs, out)
+    print(key, "->", out, f"{duration(out) / 60:.2f} min", flush=True)
     return out
 
 

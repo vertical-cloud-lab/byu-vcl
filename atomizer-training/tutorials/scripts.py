@@ -1,101 +1,222 @@
-"""Narration scripts and segment lists for the tutorial videos (edit here, then run build_tutorials.py).
+"""Narration and segment lists for the tutorial videos (edit here, then run build_tutorials.py).
+
+Every tutorial has the same shape, so that the four hang together: a title, the draw.io outline of its steps, then for each
+step the outline again with that step highlighted, the 3D animation of the step under synthetic narration, and the trainer
+explaining it in his own words. A closing card points to the next tutorial.
 
 Segment forms:
+  ("title", title, subtitle, narration)
+  ("outline", diagram, narration)                     diagram = diagrams/<diagram>.png (draw.io export)
+  ("anim", name, narration)                           name = ../viz3d/out/mp4/<name>.mp4; narration a string, or a list with
+                                                      one sentence per sub-step of the animation (../viz3d/out/<name>.json)
+  ("clip", video_id, start_seconds, duration_seconds, speaker)   snapped to sentence boundaries by clip_words.py
   ("card", title, subtitle, narration)
-  ("gif", step_name, narration)                       step_name = file in ../viz/out without .gif
-  ("clip", video_id, start_seconds, duration_seconds, speaker)   the trainer's own words, from the training videos
 
-Synthetic narration voice: Microsoft Edge TTS en-US-SteffanNeural at 1x. Human narration: Bartosz Kalicki (AMAZEMET)
-in the clips. Clip windows are the caption start times from ../timestamps.md with a second or two of lead-in.
+Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x. Human narration: Bartosz Kalicki (AMAZEMET),
+in the clips.
 """
-VOICE = "en-US-SteffanNeural"
-B = "Bartosz Kalicki (AMAZEMET)"
-G = "Gage Erickson (BYU VCL)"
+VOICE = "en-US-AndrewMultilingualNeural"
+B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
     "00-overview": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 0: installation and training overview (draft)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 2)",
         "segments": [
-            ("card", "rePowder ultrasonic atomizer: installation and training", "Overview of the install (Sep 2026), the AMAZEMET training (Sep 29–30) and the first unsupervised run (Oct 2). Tutorials 1–3 cover before, during and after a run.",
-             "This short overview introduces the AMAZEMET rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab. The machine arrived in the summer of twenty twenty-six, the enclosure, power, chilled water and argon were finished in September, and Bartosz Kalicki from AMAZEMET installed it and trained the team on September twenty-ninth and thirtieth. The three tutorials that follow cover what happens before, during, and after a run, using the trainer's own explanations wherever they were recorded."),
-            ("clip", "Kv9DT3Vo0GE", 40, 26, G),
-            ("clip", "07QOPRHIEvw", 54, 30, G),
-            ("card", "How it works", "Induction furnace melts the charge in a graphite crucible. A sealing rod opens a tiny nozzle. The melt stream lands on a plate vibrating at 40 kHz and breaks into droplets that freeze into spherical powder in argon.",
-             "An induction coil heats a graphite crucible, and the graphite heats the metal inside it. A graphite sealing rod sits on a nozzle with a hole of half a millimeter or so. Raising the rod, with a little overpressure in the furnace, lets a thin stream of melt fall onto a titanium plate vibrating at forty kilohertz. The melt wets the plate, cavitation throws off droplets, and they freeze into spherical powder in the argon-filled chamber before settling into the container below."),
-            ("clip", "z6rwmQW_3Vg", 26, 28, G),
-            ("clip", "58wJ_Khwgyk", 3588, 32, B),
-            ("clip", "of5-LhkX_VQ", 1788, 14, G),
-            ("card", "What is in the repository", "atomizer-training/sop.md (procedure), timestamps.md (every moment linked), keyframes/, viz/ (step animations), transcripts/",
-             "Everything shown here is documented in the byu-vcl repository under atomizer-training: the operating procedure, a timestamp log that links every substantive moment of the twenty-six videos, keyframes, the step animations, and the transcripts. Continue with tutorial one, before a run."),
+            ("title", "The rePowder ultrasonic atomizer", "Tutorial 0 · the machine, how it makes powder, and what a run looks like",
+             "The rePowder ultrasonic atomizer, at the BYU Vertical Cloud Lab."),
+            ("outline", "00-overview",
+             "A run on the atomizer has three parts, and each has its own tutorial. Before a run: the utilities, the ultrasonic "
+             "stack, the furnace and its charge, and the chamber. During a run: the argon gas wash, the melt, and the pour onto "
+             "the vibrating plate. After a run: shutdown, cool-down, collecting the powder, and cleaning. This overview "
+             "introduces the machine itself and how it turns a bar of metal into powder."),
+            ("anim", "00_machine",
+             "The atomizer is a single module. On top is the induction furnace, under a stainless bell with a small window. "
+             "Beside it, the blue cabinet carries the melting control panel and the touchscreen that runs the machine. "
+             "Below the furnace is the atomization chamber. Its door holds the ultrasonic unit and a view port. "
+             "A cone under the chamber leads down to the powder container, which closes with its own valve. "
+             "At the back are the utilities: chilled water, compressed air, argon, and the vacuum pump."),
+            ("anim", "06_pour",
+             "Here is how it makes powder. An induction coil heats a graphite crucible, and the graphite heats the metal inside it. "
+             "A graphite sealing rod closes a small nozzle in the floor of the crucible. When the rod lifts, a little argon "
+             "overpressure pushes a thin stream of melt through the nozzle, onto a plate vibrating forty thousand times a second. "
+             "The melt wets the plate, the vibration breaks it into droplets, and they freeze into round particles as they fall "
+             "through the argon into the container."),
+            ("clip", "1F9_4ccwhss", 159, 24, B),
+            ("clip", "naePD8o9_Gk", 1456, 30, B),
+            ("clip", "txH397FGTAU", 873, 30, B),
+            ("card", "Safety, every time",
+             "Gloves and lab coat · full-face respirator whenever powder is exposed · hearing protection while ultrasonics run · "
+             "open the chamber only below 400 °C · the door stays locked until the pressure is vented",
+             "A few rules apply to every run. Gloves and a lab coat, because hands go inside the chamber. A full-face respirator "
+             "whenever powder is exposed. Hearing protection while the ultrasonics run, even when the noise does not bother you. "
+             "Open the chamber only below four hundred degrees, because hot graphite burns in air. And the door stays locked "
+             "while the chamber is under pressure or vacuum, so vent it first."),
+            ("clip", "naePD8o9_Gk", 2321, 22, B),
+            ("clip", "58wJ_Khwgyk", 2551, 18, B),
+            ("card", "How we got here",
+             "Delivered June 2026 · room renovated over the summer: power, chilled water, cabinets · installed Sep 28 · "
+             "trained Sep 29–30 by Bartosz Kalicki (AMAZEMET) · first run on our own Oct 2",
+             "The machine arrived in June twenty twenty-six, and the room was renovated around it over the summer: power, chilled "
+             "water, and cabinets. Bartosz Kalicki from AMAZEMET installed it on September twenty-eighth and trained the "
+             "team over the next two days, and the team ran it on its own for the first time on October second. Everything in "
+             "these tutorials comes from those recordings."),
+            ("card", "Next: tutorial 1, before a run",
+             "The written procedure, with a link to the exact moment of video behind every step, is in the byu-vcl repository "
+             "under atomizer-training/sop.md",
+             "The written procedure, with a link to the exact moment of video behind every step, is in the byu-vcl repository. "
+             "Next: tutorial one, before a run."),
         ],
     },
     "01-before": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 2)",
         "segments": [
-            ("card", "Part 1: before a run", "Utilities · ultrasonic stack · furnace preparation · loading the charge. From the AMAZEMET training at BYU, Sep 29–30 2026.",
-             "This is part one of three tutorials on the AMAZEMET rePowder atomizer at the BYU Vertical Cloud Lab. It covers everything before heating: the utilities, the ultrasonic stack, preparing the furnace, and loading the charge. Explanations in the trainer's own voice come from the recorded training sessions. The animated steps summarize the standard operating procedure in the repository."),
-            ("gif", "01_utilities",
-             "Start with the utilities. Open the facility chilled-water valve only a little. The campus water is cold enough to trip the water-too-cold fault, and the heat exchanger needs more than two liters per minute. Switch the heat exchanger on only when you are about to heat. Compressed air arrives at eight bar and is regulated to about four. It does nothing but cool the transducer, and without it the ultrasonics will not start. Argon, five nines purity, at eight bar on the regulator, feeds the furnace line and the chamber line through a tee. Check the vacuum pump oil in the sight glass, the exchanger water level, and look for leaks."),
-            ("clip", "58wJ_Khwgyk", 414, 30, B),
-            ("gif", "02_stack",
-             "The ultrasonic stack is built from the transducer upward: booster, sonotrode, and the plate on its connector stud. Torque matters, because the vibration has to pass through every joint. Sixty-five newton meters at the transducer, sixty at the sonotrode, and fifty at the plate, tightened with the stack already in the housing. A one-and-a-half-to-one booster mounted in reverse lowers the amplitude. That gives finer powder, but it needs a slow and controlled pour. Then run a scan. One wide peak a little above forty kilohertz is good. A drop of water on the plate should atomize over the whole surface. Half the plate means a crack. Bolt the protective cover over the transducer before you close up."),
-            ("clip", "FDRTt68Vfvo", 1488, 24, B),
-            ("clip", "FDRTt68Vfvo", 1872, 16, B),
+            ("title", "Before a run", "Tutorial 1 · utilities, the ultrasonic stack, the furnace and the chamber",
+             "Tutorial one: before a run."),
+            ("outline", "01-before",
+             "Before any heating, four things have to be right, in this order. The utilities. The ultrasonic stack, assembled, "
+             "torqued and scanned. The furnace: nozzle, crucible, sealing rod, insulation, thermocouple and the charge. "
+             "And the chamber, with the powder container clamped and the door closed."),
+            ("outline", "01-before_step1", "Step one: the utilities."),
+            ("anim", "01_utilities",
+             "Open the facility chilled-water valve only a little. The campus water is cold enough to trip the water-too-cold "
+             "fault, and the heat exchanger needs more than two liters per minute. Switch the heat exchanger on only when you "
+             "are about to heat. Compressed air arrives at eight bar and is regulated to about four. It only cools the "
+             "transducer, and without it the ultrasonics will not start. Argon, five nines pure, at eight bar on the regulator, "
+             "feeds the furnace line and the chamber line through a tee. Check the vacuum pump oil in its sight glass, the "
+             "exchanger's water level, and look for leaks."),
+            ("clip", "wRc8p2_FnJo", 87, 30, B),
+            ("clip", "wRc8p2_FnJo", 132, 28, B),
+            ("outline", "01-before_step2", "Step two: the ultrasonic stack."),
+            ("anim", "02_stack",
+             "The stack is built from the transducer outward: booster, sonotrode, and the plate on its connector stud. Torque "
+             "matters, because the vibration has to pass through every joint: sixty-five newton meters at the transducer, sixty "
+             "at the sonotrode, and fifty at the plate. A one-and-a-half-to-one booster mounted in reverse lowers the amplitude, "
+             "which gives finer powder but needs a slow, controlled pour. Then run a scan. One wide peak a little above forty "
+             "kilohertz is good. A drop of water on the plate should atomize over the whole surface; atomizing on only half of "
+             "it means a crack. Bolt the protective cover over the transducer before you close up."),
+            ("clip", "58wJ_Khwgyk", 420, 24, B),
             ("clip", "58wJ_Khwgyk", 808, 32, B),
-            ("gif", "03_furnace_load_operator",
-             "Furnace preparation starts with the nozzle, which is the consumable. Half a millimeter is the standard bore, and point seven is more reliable for aluminum alloys. It goes into the crucible white side up, and the crucible threads onto its holder until it is just tight. The sealing rod goes in before any metal, with a clean and undamaged tip, because a damaged tip will not seal. Then the insulation and the thermocouple, aligned with the port and bent in close. Feedstock must be clean, at most twenty millimeters in diameter, and two hundred fifty to three hundred grams is the recommended charge. Close the lid just tight enough to seal. If it hisses under pressure, adjust the latch."),
+            ("clip", "58wJ_Khwgyk", 1330, 28, B),
+            ("outline", "01-before_step3", "Step three: the furnace."),
+            ("anim", "03_furnace_load",
+             "The nozzle is the consumable. Half a millimeter is the standard bore, and point seven is more reliable for aluminum "
+             "alloys. It goes into the crucible white side up, and the crucible threads onto its holder until it is just tight. "
+             "The sealing rod goes in before any metal, with a clean, undamaged tip, because a damaged tip will not seal. Then the "
+             "insulation, and the thermocouple, lined up with its port and bent in close. The charge must be clean and at most "
+             "twenty millimeters across; two hundred fifty to three hundred grams is the recommended load. Close the lid just "
+             "tight enough to seal. If it hisses under pressure, adjust the latch."),
             ("clip", "wRc8p2_FnJo", 2744, 40, B),
             ("clip", "1F9_4ccwhss", 108, 18, B),
-            ("clip", "1F9_4ccwhss", 280, 26, B),
-            ("card", "Chamber ready", "Container clamped by two people, flange finger-tight, splash plate above it, catch bowl in, covers hung, three door clamps closed. Next: part 2, during a run.",
-             "Finally the chamber. Mount the powder container with two people, lifting and clamping at the same time, and finger-tighten the flange. Put the splash plate above it and the catch bowl inside, hang the covers over the openings, and close the three door clamps. The machine is now ready for the gas wash, which is where part two begins."),
+            ("outline", "01-before_step4", "Step four: the chamber."),
+            ("anim", "03b_chamber",
+             "Mount the powder container with two people, one lifting and one clamping, and tighten the flange by hand. Put the "
+             "splash plate above it and the catch bowl inside, hang the covers over the openings, and close the door with all "
+             "three clamps."),
+            ("clip", "58wJ_Khwgyk", 224, 26, B),
+            ("clip", "58wJ_Khwgyk", 167, 22, B),
+            ("card", "Ready for the gas wash", "Next: tutorial 2, during a run",
+             "The machine is ready for the gas wash, which is where tutorial two begins."),
         ],
     },
     "02-during": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 2)",
         "segments": [
-            ("card", "Part 2: during a run", "Gas wash · heating schedule · pressure logic · the pour. From the AMAZEMET training at BYU, Sep 29–30 2026.",
-             "Part two covers the run itself: the gas wash, the heating schedule, the pressure logic, and the pour. Most of the explanations are the trainer's own words from the training sessions."),
-            ("gif", "04_gas_wash",
-             "Turn pressure control off before pumping, and always keep overpressure in the vessel you are not washing, so that any leak pulls in argon instead of air. The furnace gas wash runs five cycles of vacuum and argon on its own. The gauge bottoms out near minus eight hundred fifty millibar at this altitude. That is normal, not a leak. Then wash the chamber the same way. The oxygen reading means nothing under vacuum, so read it only after filling with argon. Start the generator, go to two hundred fifty degrees, and wash again. Then five hundred degrees, and wash again. The target is moisture in the insulation and the crucible, not the melting point of the metal. Stop when oxygen is stable and low: never above one hundred parts per million, ideally forty to fifty. Set the melting pressure slightly below the chamber pressure and turn pressure control back on."),
+            ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
+             "Tutorial two: during a run."),
+            ("outline", "02-during",
+             "A run has four stages: the gas wash, heating and melting the charge, the pour, and ending the pour cleanly."),
+            ("outline", "02-during_step1", "Step one: the gas wash."),
+            ("anim", "04_gas_wash",
+             "Turn pressure control off before pumping, and always keep overpressure in the vessel you are not washing, so that "
+             "any leak pulls in argon instead of air. The furnace wash runs five cycles of vacuum and argon on its own. The gauge "
+             "bottoms out near minus eight hundred fifty millibar at this altitude; that is normal, not a leak. Then wash the "
+             "chamber the same way. The oxygen reading means nothing under vacuum, so read it only after filling with argon. "
+             "Heat to two hundred fifty degrees and wash again, then to five hundred and wash again; the target is moisture in "
+             "the insulation and the crucible. Stop when oxygen is stable and low: never above one hundred parts per million, "
+             "ideally forty to fifty. Set the melting pressure slightly below the chamber pressure, and turn pressure control "
+             "back on."),
             ("clip", "9kn-HhXCr1o", 203, 22, B),
             ("clip", "9kn-HhXCr1o", 518, 34, B),
             ("clip", "58wJ_Khwgyk", 2172, 26, B),
-            ("gif", "05_melt",
-             "Now the melt. Long rods heat at the bottom and stay cool at the top, so overshoot the setpoint to drop them: between eight hundred fifty and one thousand degrees was used in training. Watch for the cues. The temperature dips slightly as the melt touches the thermocouple, and the induction beeps faster. As soon as the charge slumps, bring the setpoint down to about eight hundred degrees, which is kinder to the plate. Once everything is liquid, wait two minutes, and no longer. That is how long the melt needs to catch up with the crucible-wall thermocouple, and waiting longer only oxidizes it. Meanwhile, turn transducer cooling on, rescan the stack because scans expire, put hearing protection on, and take your place at the window."),
+            ("outline", "02-during_step2", "Step two: heat and melt."),
+            ("anim", "05_melt",
+             "Long rods heat at the bottom and stay cool at the top, so overshoot the setpoint to drop them: between eight hundred "
+             "fifty and one thousand degrees was used in training. Watch for the cues. The temperature dips slightly as the melt "
+             "touches the thermocouple, and the induction beeps faster. As soon as the charge slumps, bring the setpoint down to "
+             "about eight hundred degrees, which is kinder to the plate. Once everything is liquid, wait two minutes and no "
+             "longer: that is how long the melt takes to catch up with the crucible-wall thermocouple, and waiting longer only "
+             "oxidizes it. Meanwhile turn transducer cooling on, rescan the stack, because scans expire, put hearing protection "
+             "on, and take your place at the window."),
             ("clip", "9kn-HhXCr1o", 808, 22, B),
-            ("clip", "9kn-HhXCr1o", 962, 22, B),
-            ("clip", "58wJ_Khwgyk", 3450, 24, B),
-            ("gif", "06_pour",
-             "The pour, done quickly and in order: vibration on, then draining pressure, then sealing rod up, and turbo pressure when needed. Amplitude is a percentage of generator current. Eighty to ninety is best; start near ninety and adjust. Draining pressure above the chamber pressure pushes the melt out, and only the pressure difference matters. The first droplet usually bounces, because a dry plate does not wet. Pouring more at the start is what heats the plate, and a short turbo push at one and a half bar helps it wet and clears debris from the nozzle. Once the plate is hot, every drop atomizes. Steer with the plate position so the stream lands high but not over the top. A stream that is too thin gathers and drips; melt shooting past the plate means the pressure was too high. For two or three minutes the operator stays at the window with the amplitude slider, the turbo button and the plate position."),
-            ("clip", "txH397FGTAU", 2397, 36, B),
-            ("clip", "naePD8o9_Gk", 1150, 36, B),
-            ("clip", "naePD8o9_Gk", 1407, 26, B),
+            ("clip", "1F9_4ccwhss", 283, 24, B),
+            ("clip", "58wJ_Khwgyk", 3442, 26, B),
+            ("outline", "02-during_step3", "Step three: the pour."),
+            ("anim", "06_pour",
+             "The pour is quick and always in the same order: vibration on, then draining pressure, then sealing rod up, and "
+             "turbo pressure when needed. Amplitude is a percentage of generator current; start near ninety. Draining pressure "
+             "above the chamber pressure pushes the melt out, and only the difference matters. The first droplet usually "
+             "bounces, because a dry plate does not wet. Pouring more at the start heats the plate, and once it is hot every drop "
+             "atomizes. Steer with the plate position, so the stream lands high on the plate but not over the top."),
+            ("clip", "58wJ_Khwgyk", 3591, 30, B),
+            ("clip", "naePD8o9_Gk", 1409, 26, B),
+            ("clip", "58wJ_Khwgyk", 3838, 22, B),
             ("clip", "9kn-HhXCr1o", 1476, 26, B),
-            ("clip", "9kn-HhXCr1o", 1506, 22, B),
-            ("card", "End of pour", "Turbo to clear the nozzle → sealing rod down → melting pressure → generator stop → ultrasonics stop. Within seconds. Next: part 3, after a run.",
-             "When the crucible is empty, one turbo push clears the nozzle. Then sealing rod down, melting pressure, generator stop, ultrasonics stop, all within seconds, because vibrating against solidified metal cracks the plate. Part three covers cooldown, powder collection and cleaning."),
+            ("outline", "02-during_step4", "Step four: end the pour."),
+            ("card", "End of pour, within seconds",
+             "Turbo to clear the nozzle → sealing rod down → melting pressure → generator stop → ultrasonics stop",
+             "When the crucible is empty, one turbo push clears the nozzle. Then sealing rod down, melting pressure, generator "
+             "stop, and ultrasonics stop, all within seconds, because vibrating against solidified metal cracks the plate."),
+            ("clip", "naePD8o9_Gk", 1929, 20, B),
+            ("card", "Next: tutorial 3, after a run", "Shutdown, cool-down, collecting the powder, and cleaning",
+             "Tutorial three covers the shutdown, cooling down, collecting the powder, and cleaning."),
         ],
     },
     "03-after": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 2)",
         "segments": [
-            ("card", "Part 3: after a run", "Shutdown · cooldown · opening · collecting powder · cleaning and maintenance. From the AMAZEMET training at BYU, Sep 29–30 2026.",
-             "Part three covers what happens after the pour: the shutdown sequence, cooling down, opening the chamber, collecting and labelling the powder, and cleaning."),
-            ("gif", "07_end_cooldown",
-             "After the pour: sealing rod down, melting pressure, generator stop, ultrasonics stop, and transducer cooling off a minute later. Set the furnace to two hundred fifty for next time. Cooling water stays on until about one hundred degrees. Open the chamber at or below four hundred degrees. Above five hundred, graphite burns in air. Turn pressure control off and press vent first; the door locks while the pressure is off atmospheric. Masks and coat on, then the three clamps. The chamber and cone are water-cooled and wet, but the furnace parts are still hot. Brush plate, bowl, walls and view port down into the container with paper under the opening. Close the container valve before taking it off; argon stays inside it. Pour the powder onto paper, pick out the chunks, sieve, and bag it with a six-character label and a photo on GitHub. At about one hundred degrees shut down the utilities in any order; the program lets you leave at eighty."),
-            ("clip", "naePD8o9_Gk", 1884, 46, B),
-            ("clip", "naePD8o9_Gk", 1994, 22, B),
-            ("clip", "naePD8o9_Gk", 2318, 24, B),
+            ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
+             "Tutorial three: after a run."),
+            ("outline", "03-after",
+             "After the pour come four steps: the shutdown sequence, cooling down and opening the chamber, collecting the powder, "
+             "and cleaning for the next run."),
+            ("outline", "03-after_step1", "Step one: shut down, and step two, cool down and open."),
+            ("anim", "07_end_cooldown",
+             "After the pour: sealing rod down, melting pressure, generator stop, ultrasonics stop, and transducer cooling off a "
+             "minute later. Set the furnace to two hundred fifty for next time. Cooling water stays on until about one hundred "
+             "degrees. Open the chamber at or below four hundred degrees; above five hundred, graphite burns in air. Turn "
+             "pressure control off and press vent first, because the door stays locked while the pressure is off atmospheric. "
+             "Masks and coat on, then open the three clamps. Brush the plate, the bowl, the walls and the view port down into the "
+             "container. Close the container valve before taking it off; argon stays inside it."),
+            ("clip", "naePD8o9_Gk", 1884, 30, B),
+            ("clip", "naePD8o9_Gk", 2340, 20, B),
             ("clip", "tfb4fsVNIFI", 0, 30, B),
-            ("clip", "txH397FGTAU", 3002, 34, B),
-            ("gif", "08_clean",
-             "Cleaning depends on what comes next. Same alloy: open, brush, vacuum. A material change takes about an hour: vacuum everything, then wipe. Brushes, paper towels and isopropanol are all you need, plus a stainless scraper for stuck particles. Never grind or clean a plate; dedicate one plate to one alloy and log which plate saw which material, because they last one to three runs. When the furnace is cool, take the rod out, peel the slag from the crucible floor, scrape aluminum off the rod shaft and keep the tip smooth. Look through the nozzle for light; unclog it with a needle or drill it to point seven, and swap it if a new charge would not push through. Inspect the HEPA filter every two months and keep the used one in a metal tray with sand, because fine dust can ignite on its own."),
+            ("outline", "03-after_step3", "Step three: collect the powder."),
+            ("card", "Collecting the powder",
+             "Close the container valve first · pour onto paper · pick out the chunks · sieve · bag with a six-character label · "
+             "photo on GitHub",
+             "Close the container valve before you take the container off; it is heavier than it looks. Pour the powder onto "
+             "paper, pick out the chunks, sieve it, and bag it with a six-character label and a photo on GitHub."),
+            ("clip", "naePD8o9_Gk", 3051, 24, B),
+            ("clip", "txH397FGTAU", 2765, 22, B),
+            ("outline", "03-after_step4", "Step four: clean and maintain."),
+            ("anim", "08_clean",
+             "Cleaning depends on what runs next. For the same alloy: open, brush, and vacuum. A material change takes about an "
+             "hour: vacuum everything, then wipe. Brushes, paper towels and isopropanol are all you need, plus a stainless scraper "
+             "for stuck particles. Never grind or clean a plate; dedicate one plate to one alloy, and log which plate saw which "
+             "material, because they last one to three runs. When the furnace is cool, take the rod out, peel the slag from the "
+             "crucible floor, and keep the rod tip smooth. Look through the nozzle for light, and clear it with a needle or drill "
+             "it to point seven. Inspect the HEPA filter every two months, and keep a used one in a metal tray with sand."),
+            ("clip", "58wJ_Khwgyk", 4058, 26, B),
             ("clip", "FDRTt68Vfvo", 1068, 26, B),
-            ("clip", "1F9_4ccwhss", 358, 22, B),
-            ("clip", "wRc8p2_FnJo", 520, 34, B),
-            ("card", "Lessons from the first unsupervised run (Oct 2)", "Label the plates · fit the transducer cover · metric 17/18 mm tools · draining pressure too high, plate too far · write every reading down · tighten the chilled-water fitting",
-             "The team's first run without the trainer, on October second, taught a few things. Label the plates, because they could not be told apart. Fit the transducer cover every time. Keep metric seventeen and eighteen millimeter wrenches and a torque wrench with the machine. The draining pressure was set too high and the plate was too far from the nozzle, so most of the charge flew past un-atomized. Write down every reading, since the machine keeps no log. And tighten the chilled-water fitting that leaked all afternoon. The full procedure, with links to every moment of the videos, is in the repository."),
+            ("clip", "wRc8p2_FnJo", 531, 28, B),
+            ("card", "Lessons from the first run on our own (Oct 2)",
+             "Label the plates · fit the transducer cover · keep 17 and 18 mm wrenches and the torque wrench at the machine · "
+             "draining pressure was too high and the plate too far · write every reading down",
+             "The team's first run without the trainer, on October second, taught a few things. Label the plates, because they "
+             "could not be told apart. Fit the transducer cover every time. Keep metric seventeen and eighteen millimeter "
+             "wrenches and a torque wrench with the machine. The draining pressure was set too high and the plate was too far "
+             "from the nozzle, so much of the charge flew past without atomizing. And write down every reading, because the "
+             "machine keeps no log. The full procedure, with links to every moment of the videos, is in the repository."),
         ],
     },
 }
