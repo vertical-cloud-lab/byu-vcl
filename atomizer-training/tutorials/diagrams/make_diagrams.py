@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Draw.io outline diagrams for the rePowder tutorials, and one highlight variant per step.
+"""Draw.io outline diagrams for the rePowder tutorials, with a highlight variant per step and PowerPoint-style builds.
 
-Every tutorial opens on an outline of its major steps; the same outline comes back as a section divider with the
+Every tutorial opens on an outline of its major steps, built up step by step in sync with the narration: first the step
+boxes alone, then each step's detail panel appearing in turn. The same outline comes back as a section divider with the
 current step in full colour and a bold border, and the other steps dimmed. The words and numbers follow
 ../../sop.md (checked 2026-10-03); edit them in SPECS below.
 
@@ -10,11 +11,14 @@ current step in full colour and a bold border, and the other steps dimmed. The w
     python make_diagrams.py --no-export     # only write the .drawio files
     python make_diagrams.py 02-during       # just one diagram (and its variants)
 
-The highlight variants are made from the .drawio files on disk, by cell id: s<k>_... belongs to step (or tutorial
-lane) k, and a<k> is the arrow after step k. Keep those ids when editing in diagrams.net and the variants follow.
+The variants are made from the .drawio files on disk, by cell id: s<k>_... belongs to step (or tutorial lane) k, and
+a<k> is the arrow after step k. Highlights: <name>_step<k>.png (<name>_tutorial<k>.png for the overview's lanes).
+Builds: <name>_build0.png has every step box, arrow and title but no details; <name>_build<k>.png adds the details of
+steps 1..k (s<k>_panel, or the overview captions s<k>_c<j>), so the last build is the whole diagram. Keep those ids
+when editing in diagrams.net and the variants follow.
 Needs draw.io desktop (`drawio` on PATH, or DRAWIO=/path/to/draw.io), Pillow, and xvfb-run when there is no display.
 """
-import argparse, base64, html, os, re, shutil, subprocess, sys, tempfile, urllib.parse, zlib
+import argparse, base64, html, os, re, shutil, signal, subprocess, sys, tempfile, time, urllib.parse, zlib
 import xml.etree.ElementTree as ET
 from PIL import Image, ImageFont
 
@@ -32,8 +36,8 @@ NB = "\u00a0"                         # no-break space
 
 
 def nb(s):
-    """Keep a phrase on one line."""
-    return s.replace(" ", NB)
+    """Keep a phrase on one line, not breaking it at a space or at a hyphen."""
+    return '<span style="white-space:nowrap">' + s.replace(" ", NB) + "</span>"
 
 
 def b(s):
@@ -84,7 +88,7 @@ SPECS = {
                          "sealing rod: clean, undamaged tip; " + nb("lowered before loading"),
                          "clean charge " + b("≤ 20 mm") + " diameter, " + b("250–300 g"),
                          "lid latched, no hissing"]),
-            ("Chamber", ["container: two people, flange finger-tight",
+            ("Chamber", ["container: flange " + nb("finger-tight") + " " + nb("(a 2nd person helps)"),
                          "splash plate and " + nb("catch bowl in"),
                          "covers over " + nb("the openings"),
                          "chamber closed with " + nb("all ") + b("3") + nb(" clamps")]),
@@ -389,6 +393,37 @@ def highlight(tree, k):
     return tree
 
 
+# ---------------------------------------------------------------- builds (work on any .drawio, by id)
+DETAIL = re.compile(r"s(\d+)_(panel|c\d+)$")     # what a build reveals: a step's panel, or an overview lane's captions
+
+
+def cell_ref(el):
+    """(id, parent, source, target) of a cell, bare <mxCell> or wrapped in the <object>/<UserObject> that diagrams.net
+    uses for cells carrying custom data."""
+    inner = el if el.tag == "mxCell" else el.find("mxCell")
+    get = (lambda key: inner.get(key)) if inner is not None else (lambda key: None)
+    return el.get("id", ""), get("parent"), get("source"), get("target")
+
+
+def build_stage(tree, k):
+    """Stage k of a PowerPoint-style build: the whole diagram minus the details of the steps (lanes) after k. Stage 0
+    is the step boxes, arrows and title alone; the last stage is the full diagram."""
+    for root in tree.iter("root"):
+        cells = list(root)
+        refs = [cell_ref(el) for el in cells]
+        drop = {cid for cid, *_ in refs if (m := DETAIL.match(cid)) and int(m.group(1)) > k}
+        grew = bool(drop)
+        while grew:                     # anything hanging off a dropped cell (children, connected edges) goes too
+            grew = False
+            for cid, parent, src, tgt in refs:
+                if cid not in drop and drop & {parent, src, tgt}:
+                    drop.add(cid); grew = True
+        for el, (cid, *_) in zip(cells, refs):
+            if cid in drop:
+                root.remove(el)
+    return tree
+
+
 # ---------------------------------------------------------------- export
 def drawio_cmd():
     exe = os.environ.get("DRAWIO") or shutil.which("drawio") or shutil.which("draw.io")
@@ -400,19 +435,61 @@ def drawio_cmd():
     return cmd
 
 
+STALL = 60                            # s without a new PNG before a draw.io launch counts as hung
+
+
+def run_drawio(src, out, log):
+    """One draw.io launch exporting every .drawio in `src` to `out`. On a busy machine draw.io (31.x) sometimes fails a
+    page capture (UnknownVizError, an unhandled promise rejection) and then waits forever, so the launch is stopped, with
+    its X server and helpers, on that error or once no new PNG has appeared for STALL seconds. The caller retries."""
+    start = os.path.getsize(log) if os.path.exists(log) else 0
+    with open(log, "a") as f:
+        p = subprocess.Popen(drawio_cmd() + ["-x", "-f", "png", "-s", str(SCALE), "-b", "0", "-o", out, src],
+                             stdout=f, stderr=subprocess.STDOUT, start_new_session=True)
+        seen, last = -1, time.time()
+        while p.poll() is None:
+            time.sleep(1)
+            n = len(os.listdir(out))
+            if n != seen:
+                seen, last = n, time.time()
+            with open(log, errors="replace") as g:
+                g.seek(start)
+                failed = "UnhandledPromiseRejection" in g.read()
+            if failed or time.time() - last > STALL:
+                os.killpg(p.pid, signal.SIGKILL); p.wait()
+                print(f"  ! draw.io {'failed a page capture' if failed else 'stalled'} with {n} PNGs exported;"
+                      " restarting it for the rest", file=sys.stderr)
+
+
+def png_ok(path):
+    try:
+        with Image.open(path) as im:
+            im.load()
+        return True
+    except (OSError, SyntaxError):
+        return False
+
+
 def export_all(jobs):
-    """jobs: (drawio_path, png_path) pairs. One draw.io launch exports the whole batch; Pillow makes it 1280x720."""
+    """jobs: (drawio_path, png_path) pairs. One draw.io launch exports the whole batch (a hung launch is restarted for
+    whatever it had not exported yet); Pillow makes each PNG exactly 1280x720."""
     with tempfile.TemporaryDirectory() as tmp:
-        src, out = os.path.join(tmp, "src"), os.path.join(tmp, "out")
-        os.makedirs(src); os.makedirs(out)
-        for i, (dpath, _) in enumerate(jobs):
-            shutil.copy(dpath, os.path.join(src, f"{i:03d}.drawio"))
-        r = subprocess.run(drawio_cmd() + ["-x", "-f", "png", "-s", str(SCALE), "-b", "0", "-o", out, src],
-                           capture_output=True, text=True)
+        out, log = os.path.join(tmp, "out"), os.path.join(tmp, "drawio.log")
+        os.makedirs(out)
+        todo = list(range(len(jobs)))
+        for attempt in range(6):
+            src = os.path.join(tmp, f"src{attempt}")
+            os.makedirs(src)
+            for i in todo:
+                shutil.copy(jobs[i][0], os.path.join(src, f"{i:03d}.drawio"))
+            run_drawio(src, out, log)
+            todo = [i for i in todo if not png_ok(os.path.join(out, f"{i:03d}.png"))]
+            if not todo:
+                break
         for i, (_, png) in enumerate(jobs):
             raw = os.path.join(out, f"{i:03d}.png")
-            if not os.path.exists(raw):
-                sys.exit(f"export failed for {png}:\n{r.stdout[-1500:]}\n{r.stderr[-1500:]}")
+            if i in todo:
+                sys.exit(f"export failed for {png}:\n{open(log, errors='replace').read()[-3000:]}")
             im = Image.open(raw).convert("RGB")
             w, h = im.size
             if abs(w - SCALE * W) > 4 or abs(h - SCALE * H) > 4:      # something sticks out of the page
@@ -455,6 +532,10 @@ def main():
                 var = os.path.join(tmp, f"{name}_{kind}{k}.drawio")
                 highlight(read_model(path), k).write(var, encoding="utf-8")
                 jobs.append((var, os.path.join(HERE, f"{name}_{kind}{k}.png")))
+            for k in [0] + groups(tree):         # build stages; the last one is the full diagram again
+                var = os.path.join(tmp, f"{name}_build{k}.drawio")
+                build_stage(read_model(path), k).write(var, encoding="utf-8")
+                jobs.append((var, os.path.join(HERE, f"{name}_build{k}.png")))
         export_all(jobs)
 
 

@@ -1,12 +1,16 @@
 """Narration and segment lists for the tutorial videos (edit here, then run build_tutorials.py).
 
-Every tutorial has the same shape, so that the four hang together: a title, the draw.io outline of its steps, then for each
-step the outline again with that step highlighted, the 3D animation of the step under synthetic narration, and the trainer
-explaining it in his own words. A closing card points to the next tutorial.
+Every tutorial has the same shape, so that the four hang together: a title, the draw.io outline of its steps built up step
+by step, then for each step the outline again with that step highlighted, the 3D animation of the step under synthetic
+narration, and the trainer explaining it in his own words. A closing card points to the next tutorial.
 
 Segment forms:
   ("title", title, subtitle, narration)
   ("outline", diagram, narration)                     diagram = diagrams/<diagram>.png (draw.io export)
+  ("build", diagram, [sentence0, sentence1, ...])     the outline built up like a PowerPoint slide: sentence 0 over the step
+                                                      boxes alone (diagrams/<diagram>_build0.png), then each step's details
+                                                      appear (<diagram>_build<k>.png, a hard cut) as sentence k starts, so
+                                                      sentence k should name step k. One sentence per build image.
   ("anim", name, narration)                           name = ../viz3d/out/mp4/<name>.mp4; narration a string, or a list with
                                                       one sentence per sub-step of the animation (../viz3d/out/<name>.json)
   ("clip", video_id, start_seconds, duration_seconds, speaker)   snapped to sentence boundaries by clip_words.py
@@ -20,20 +24,22 @@ VOICE = "en-US-AndrewMultilingualNeural"
 FIXES = {"newtonometers": "newton meters", "your production": "hearing protection", "the bias": "a vise",
          "transistor": "transducer", "argol": "argon", "ceiling rod": "sealing rod", "or other dramatica.": "or other pneumatics.",
          "in a cruise of 250": "in increments of 250", "fiber powder": "finer powder", "band valve": "vent valve",
-         "the clay heats up": "the plate heats up", "pull more": "pour more"}
+         "the clay heats up": "the plate heats up", "pull more": "pour more", "The graph is crucible": "the graphite crucible"}
 B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
     "00-overview": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 2)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
         "segments": [
             ("title", "The rePowder ultrasonic atomizer", "Tutorial 0 · the machine, how it makes powder, and what a run looks like",
              "The rePowder ultrasonic atomizer, at the BYU Vertical Cloud Lab."),
-            ("outline", "00-overview",
-             "A run on the atomizer has three parts, and each has its own tutorial. Before a run: the utilities, the ultrasonic "
-             "stack, the furnace and its charge, and the chamber. During a run: the argon gas wash, the melt, and the pour onto "
-             "the vibrating plate. After a run: shutdown, cool-down, collecting the powder, and cleaning. This overview "
-             "introduces the machine itself and how it turns a bar of metal into powder."),
+            ("build", "00-overview", [
+                "A run on the atomizer has three parts, and each has its own tutorial.",
+                "Before a run: the utilities, the ultrasonic stack, the furnace and its charge, and the chamber.",
+                "During a run: the argon gas wash, the melt, and the pour onto the vibrating plate.",
+                "After a run: shutdown, cool-down, collecting the powder, and cleaning. This overview introduces the machine "
+                "itself and how it turns a bar of metal into powder.",
+            ]),
             ("anim", "00_machine", [
                 "This is the rePowder ultrasonic atomizer at BYU, modeled from the training videos and AMAZEMET's documents.",
                 'On top is the induction furnace: a stainless body holding the coil, the crucible and the insulation, under a lid with a window.',
@@ -81,15 +87,18 @@ TUTORIALS = {
         ],
     },
     "01-before": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 2)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
         "segments": [
             ("title", "Before a run", "Tutorial 1 · utilities, the ultrasonic stack, the furnace and the chamber",
              "Tutorial one: before a run."),
             ("outline", "00-overview_tutorial1", "Tutorial one covers everything before the furnace heats up."),
-            ("outline", "01-before",
-             "Before any heating, four things have to be right, in this order. The utilities. The ultrasonic stack, assembled, "
-             "torqued and scanned. The furnace: nozzle, crucible, insulation, thermocouple, sealing rod and the charge. "
-             "And the chamber, with the powder container clamped and the door closed."),
+            ("build", "01-before", [
+                "Before any heating, four things have to be right, in this order.",
+                "The utilities.",
+                "The ultrasonic stack, assembled, torqued and scanned.",
+                "The furnace: nozzle, crucible, insulation, thermocouple, sealing rod and the charge.",
+                "And the chamber, with the powder container clamped and the door closed.",
+            ]),
             ("outline", "01-before_step1", "Step one: the utilities."),
             ("anim", "01_utilities", [
                 'Switch on the breakers and the main switch. Everything else is still off.',
@@ -138,7 +147,7 @@ TUTORIALS = {
                 "Close the lid, and set the latch just tight enough to seal. If it hisses under pressure, adjust the latch.",
             ]),
             ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
-            ("clip", "wRc8p2_FnJo", 2790.0, 49.5, B),    # the thread reaches into the chamber; nut, thermocouple hole
+            ("clip", "wRc8p2_FnJo", 2793.2, 44.2, B),    # the thread reaches into the chamber; nut, thermocouple hole
             ("clip", "1F9_4ccwhss", 100.8, 19.6, B),
             ("outline", "01-before_step4", "Step four: the chamber."),
             ("anim", "03b_chamber", [
@@ -154,13 +163,18 @@ TUTORIALS = {
         ],
     },
     "02-during": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 2)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
         "segments": [
             ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
              "Tutorial two: during a run."),
             ("outline", "00-overview_tutorial2", "Tutorial two covers the run itself, from the gas wash to the end of the pour."),
-            ("outline", "02-during",
-             "A run has four stages: the gas wash, heating and melting the charge, the pour, and ending the pour cleanly."),
+            ("build", "02-during", [
+                "A run has four stages.",
+                "The gas wash.",
+                "Heating and melting the charge.",
+                "The pour.",
+                "And ending the pour cleanly.",
+            ]),
             ("outline", "02-during_step1", "Step one: the gas wash."),
             ("anim", "04_gas_wash", [
                 'Turn pressure control off before any pumping. Wash one vessel while the other keeps its overpressure, so that any leak pulls in argon, not air.',
@@ -213,14 +227,18 @@ TUTORIALS = {
         ],
     },
     "03-after": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 2)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
         "segments": [
             ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
              "Tutorial three: after a run."),
             ("outline", "00-overview_tutorial3", "Tutorial three covers everything after the pour."),
-            ("outline", "03-after",
-             "After the pour come four steps: the shutdown sequence, cooling down and opening the chamber, collecting the powder, "
-             "and cleaning for the next run."),
+            ("build", "03-after", [
+                "After the pour come four steps.",
+                "The shutdown sequence.",
+                "Cooling down and opening the chamber.",
+                "Collecting the powder.",
+                "And cleaning for the next run.",
+            ]),
             ("outline", "03-after_step1", "Step one: the shutdown sequence."),
             ("anim", "07_end_cooldown", [
                 'The run ends the moment the crucible is empty: one turbo push to clear the nozzle,',

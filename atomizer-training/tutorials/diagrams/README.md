@@ -1,14 +1,17 @@
 # Tutorial outline diagrams
 
-Each tutorial opens on a draw.io outline of its major steps. The same outline then comes back as a section divider,
-with the current step in full colour and a bold border and the other steps dimmed. All PNGs are 1280×720, the frame
-size of the tutorial videos.
+Each tutorial opens on a draw.io outline of its major steps, built up like a PowerPoint slide in step with the
+narration. The step boxes come first, and then each step's details appear with no fade as the narration reaches that
+step. The same outline then comes back as a section divider, with the current step in full colour and a bold border and
+the other steps dimmed. All PNGs are 1280×720, the frame size of the tutorial videos.
 
 | Files | What it is |
 | --- | --- |
 | `00-overview.drawio` / `.png` | One run, start to finish: nine numbered phases in three lanes, one lane per tutorial |
 | `00-overview_tutorial1.png` … `_tutorial3.png` | The overview with one tutorial's lane highlighted, a "you are here" for the start of tutorials 1–3 |
+| `00-overview_build0.png` … `_build3.png` | The overview's build: lanes and numbered phase boxes, then each lane's key numbers in turn |
 | `01-before`, `02-during`, `03-after` `.drawio` / `.png` | The opening outline of each tutorial: four steps with their key numbers |
+| `01-before_build0.png` … `03-after_build4.png` | Builds: `_build0` is the four step boxes alone; `_build<k>` adds the detail panels of steps 1 to *k*, so `_build4` is the full outline |
 | `01-before_step1.png` … `03-after_step4.png` | Section dividers: step *k* highlighted, the others dimmed |
 
 Colours: teal for before, burnt orange for during, violet for after. The three pass the colour-blind separation checks.
@@ -40,11 +43,13 @@ downsamples to exactly 1280×720. On macOS, point `DRAWIO` at `/Applications/dra
   app, edit and save (compressed or not), then run `python make_diagrams.py --export-only`. That re-exports every PNG,
   highlight variants included, from your edited file. A later run without `--export-only` overwrites hand edits, so
   carry anything that should last back into `make_diagrams.py`.
-- **Keep the cell ids** (shown under Edit → Edit Data, Ctrl+M). The highlight variants find steps by id:
+- **Keep the cell ids** (shown under Edit → Edit Data, Ctrl+M). The highlight and build variants find steps by id:
   - `s<k>_box` and `s<k>_panel` are step *k*.
   - `s<k>_lane` and the cells inside it are overview lane *k*.
   - `a<k>` is the arrow after step *k*.
   - A new cell whose id does not start with `s<k>_` is never dimmed.
+  - The builds hold back the details: `s<k>_panel`, or the overview's captions `s<k>_c<j>`. These appear at build
+    stage *k*, together with anything inside them or connected to them. Every other cell is there from `_build0`.
 - **Leave the background in place.** The white page-sized rectangle on the locked "Background" layer keeps every export
   at exactly 16:9. Keep all shapes inside the page.
 
