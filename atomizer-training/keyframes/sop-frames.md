@@ -1,6 +1,6 @@
 # Frames for every moment the SOP cites
 
-One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed at the cited second from the 360p copy (394 moments, 0 without a local video yet). The frame is from the caption start time, so it shows what was on screen when the sentence began; use the paused link to watch it.
+One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed at the cited second from the 360p copy (398 moments, 0 without a local video yet). The frame is from the caption start time, so it shows what was on screen when the sentence began; use the paused link to watch it.
 
 | SOP reference | frame | video · links |
 | --- | --- | --- |
@@ -8,6 +8,9 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | T1 39:54 | ![wRc8p2_FnJo 39:54](sop/wRc8p2_FnJo_02394.jpg) | Video 1 of atomizer training · [39:54 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=2394) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2394s) |
 | T1 22:32 | ![wRc8p2_FnJo 22:32](sop/wRc8p2_FnJo_01352.jpg) | Video 1 of atomizer training · [22:32 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=1352) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=1352s) |
 | T4 08:08 | ![1F9_4ccwhss 08:08](sop/1F9_4ccwhss_00488.jpg) | Atomizer Training Video 4 · [08:08 paused](https://www.youtube.com/embed/1F9_4ccwhss?start=488) · [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=488s) |
+| expert cleaning POV | ![u-KjR5TENN4 00:00](sop/u-KjR5TENN4_00000.jpg) | The expert cleaning the atomizer, pov · [00:00 paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=0s) |
+| cartridge cleaning | ![f8KL31PN8bA 00:00](sop/f8KL31PN8bA_00000.jpg) | Cartridge cleaning · [00:00 paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=0s) |
+| #70 drill bit on a graphite nozzle | ![LSQmxwmlTkQ 00:00](sop/LSQmxwmlTkQ_00000.jpg) | Drill press, number 70 bit, graphite nozzle · [00:00 paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶](https://www.youtube.com/watch?v=LSQmxwmlTkQ&t=0s) |
 | T1 00:16 | ![wRc8p2_FnJo 00:16](sop/wRc8p2_FnJo_00016.jpg) | Video 1 of atomizer training · [00:16 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=16) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=16s) |
 | T1 13:14 | ![wRc8p2_FnJo 13:14](sop/wRc8p2_FnJo_00794.jpg) | Video 1 of atomizer training · [13:14 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=794) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=794s) |
 | T1 14:56 | ![wRc8p2_FnJo 14:56](sop/wRc8p2_FnJo_00896.jpg) | Video 1 of atomizer training · [14:56 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=896) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=896s) |
@@ -322,6 +325,7 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | OCT2b 27:59 | ![of5-LhkX_VQ 27:59](sop/of5-LhkX_VQ_01679.jpg) | Atomizer run Oct 2 part 2 · [27:59 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=1679) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1679s) |
 | T5 65:37 | ![58wJ_Khwgyk 65:37](sop/58wJ_Khwgyk_03937.jpg) | Atomizer Training Video 5 · [65:37 paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=3937) · [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3937s) |
 | OCT2b 28:37 | ![of5-LhkX_VQ 28:37](sop/of5-LhkX_VQ_01717.jpg) | Atomizer run Oct 2 part 2 · [28:37 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=1717) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1717s) |
+| T5 51:48 | ![58wJ_Khwgyk 51:48](sop/58wJ_Khwgyk_03108.jpg) | Atomizer Training Video 5 · [51:48 paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=3108) · [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3108s) |
 | T2 38:13 | ![naePD8o9_Gk 38:13](sop/naePD8o9_Gk_02293.jpg) | Atomizer Training Video 2 · [38:13 paused](https://www.youtube.com/embed/naePD8o9_Gk?start=2293) · [▶](https://www.youtube.com/watch?v=naePD8o9_Gk&t=2293s) |
 | T2 39:00 | ![naePD8o9_Gk 39:00](sop/naePD8o9_Gk_02340.jpg) | Atomizer Training Video 2 · [39:00 paused](https://www.youtube.com/embed/naePD8o9_Gk?start=2340) · [▶](https://www.youtube.com/watch?v=naePD8o9_Gk&t=2340s) |
 | TA 06:21 | ![Pk0K5sBz-sQ 06:21](sop/Pk0K5sBz-sQ_00381.jpg) | Atomizer training · [06:21 paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=381) · [▶](https://www.youtube.com/watch?v=Pk0K5sBz-sQ&t=381s) |
