@@ -20,7 +20,7 @@ PLAYLIST = {
         "of training with Bartosz Kalicki of AMAZEMET (Sep 29–30 2026), preparing the charges, and the team's first run on "
         "its own (Oct 2 2026).\n\n"
         "In order:\n"
-        "{tutorials}. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 3, under review)\n"
+        "{tutorials}. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 4, under review)\n"
         "{cups}. Tutorial: making the aluminum cups and plugs that carry powder into the furnace\n"
         "{stitch}. Every recorded step in the order of a run: one raw cut of all the recordings, 6 h 49 min, with chapters\n"
         "{recordings}. The recordings themselves, in the order they were made: delivery and installation (Jun–Sep), "
@@ -42,9 +42,9 @@ def clips(*pairs):
     return [(vid, t, T[vid]) for vid, t in pairs]
 
 
-DRAFT3 = ("Draft 3, for review on GitHub (PR #255). The narration is synthetic (Microsoft Edge TTS, "
-          "en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the "
-          "clips are stabilised and subtitled with Whisper.")
+DRAFT4 = ("Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part "
+          "passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a "
+          "CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.")
 
 TUTORIALS = [
     {"id": "raIcdus1lI0", "kind": "tutorial", "seconds": 327,
@@ -55,28 +55,30 @@ TUTORIALS = [
                 "container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, "
                 "Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the "
                 "machine got here.",
-     "status": DRAFT3,
-     "chapters": [(0, "The three parts of a run"), (36, "The machine, in 3D"), (113, "How it makes powder"),
-                  (171, "Bartosz on wetting and particle size"), (239, "Safety, every run"),
-                  (292, "How we got here: June to October 2026")],
+     "status": DRAFT4,
+     "chapters": [(0, "The three parts of a run"), (37, "The machine, in 3D"), (115, "How it makes powder"),
+                  (172, "Bartosz on wetting and particle size"), (241, "Safety, every run"),
+                  (294, "How we got here: June to October 2026")],
      "sources_intro": B,
      "sources": clips(("naePD8o9_Gk", 1445), ("txH397FGTAU", 873), ("naePD8o9_Gk", 2321), ("58wJ_Khwgyk", 2552))},
-    {"id": "KwY4KTY1UdI", "kind": "tutorial", "seconds": 607,
+    {"id": "KwY4KTY1UdI", "kind": "tutorial", "seconds": 663,
      "was": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
      "title": "Atomizer tutorial 1: before a run",
-     "summary": "Everything before the furnace heats up, in four steps: the utilities (power, chilled water and the heat "
-                "exchanger, compressed air, argon, the daily checks), the ultrasonic stack (transducer, booster, sonotrode "
-                "and plate, the torques, the scan), the furnace (nozzle, crucible and graphite nut, insulation, "
-                "thermocouple, sealing rod, the charge) and the chamber (container, catch bowl, splash plate, door). Each "
-                "step: the outline, a narrated 3D animation, then the trainer explaining it.",
-     "status": DRAFT3,
-     "chapters": [(0, "Outline: four things before any heating"), (32, "Step 1: the utilities"),
-                  (165, "Step 2: the ultrasonic stack"), (316, "Step 3: the furnace and the charge"),
-                  (518, "Step 4: the chamber and the container")],
+     "summary": "Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, "
+                "chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and "
+                "crucible, the graphite nut threaded on from below through the open chamber door, insulation, "
+                "thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) "
+                "and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted "
+                "in the door before it closes. Each step: the outline, a narrated 3D animation, then the trainer "
+                "explaining it.",
+     "status": DRAFT4,
+     "chapters": [(0, "Outline: four things before any heating"), (35, "Step 1: the utilities"),
+                  (168, "Step 2: the furnace and the charge"), (412, "Step 3: the chamber and the container"),
+                  (491, "Step 4: the ultrasonic stack, and closing the door")],
      "sources_intro": B,
-     "sources": clips(("wRc8p2_FnJo", 86), ("wRc8p2_FnJo", 132), ("58wJ_Khwgyk", 419), ("58wJ_Khwgyk", 805),
-                      ("58wJ_Khwgyk", 1332), ("wRc8p2_FnJo", 2754), ("wRc8p2_FnJo", 2793), ("1F9_4ccwhss", 100),
-                      ("58wJ_Khwgyk", 224), ("58wJ_Khwgyk", 158))},
+     "sources": clips(("wRc8p2_FnJo", 86), ("wRc8p2_FnJo", 132), ("wRc8p2_FnJo", 2754), ("wRc8p2_FnJo", 2793),
+                      ("1F9_4ccwhss", 100), ("58wJ_Khwgyk", 158), ("58wJ_Khwgyk", 224), ("58wJ_Khwgyk", 419),
+                      ("58wJ_Khwgyk", 805), ("58wJ_Khwgyk", 1332))},
     {"id": "79QQtmIm0JM", "kind": "tutorial", "seconds": 463,
      "was": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
      "title": "Atomizer tutorial 2: during a run",
@@ -85,14 +87,14 @@ TUTORIALS = [
                 "800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod "
                 "up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, then "
                 "the trainer explaining it.",
-     "status": DRAFT3,
-     "chapters": [(0, "Outline: the four stages of a run"), (22, "Step 1: the gas wash"), (152, "Step 2: heat and melt"),
-                  (277, "Step 3: the pour"), (416, "Step 4: end the pour")],
+     "status": DRAFT4,
+     "chapters": [(0, "Outline: the four stages of a run"), (23, "Step 1: the gas wash"), (153, "Step 2: heat and melt"),
+                  (277, "Step 3: the pour"), (417, "Step 4: end the pour")],
      "sources_intro": B,
      "sources": clips(("9kn-HhXCr1o", 205), ("9kn-HhXCr1o", 516), ("58wJ_Khwgyk", 2170), ("9kn-HhXCr1o", 810),
                       ("1F9_4ccwhss", 282), ("58wJ_Khwgyk", 3442), ("58wJ_Khwgyk", 3592), ("naePD8o9_Gk", 1408),
                       ("58wJ_Khwgyk", 3838), ("9kn-HhXCr1o", 1480), ("naePD8o9_Gk", 1922))},
-    {"id": "TvaFwSyqaog", "kind": "tutorial", "seconds": 358,
+    {"id": "TvaFwSyqaog", "kind": "tutorial", "seconds": 380,
      "was": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
      "title": "Atomizer tutorial 3: after a run",
      "summary": "Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber "
@@ -100,10 +102,10 @@ TUTORIALS = [
                 "labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a "
                 "material change, one plate per alloy). It ends with the lessons from the team's first run on its own, "
                 "Oct 2.",
-     "status": DRAFT3,
-     "chapters": [(0, "Outline: four steps after the pour"), (21, "Step 1: the shutdown sequence"),
-                  (64, "Step 2: cool down and open the chamber"), (118, "Step 3: collect the powder"),
-                  (195, "Step 4: clean and maintain"), (322, "Lessons from the first run on our own")],
+     "status": DRAFT4,
+     "chapters": [(0, "Outline: four steps after the pour"), (22, "Step 1: the shutdown sequence"),
+                  (64, "Step 2: cool down and open the chamber"), (121, "Step 3: collect the powder"),
+                  (198, "Step 4: clean and maintain"), (346, "Lessons from the first run on our own")],
      "sources_intro": B,
      "sources": clips(("naePD8o9_Gk", 1891), ("naePD8o9_Gk", 2320), ("naePD8o9_Gk", 2339), ("tfb4fsVNIFI", 0),
                       ("naePD8o9_Gk", 3219), ("naePD8o9_Gk", 3051), ("58wJ_Khwgyk", 4057), ("FDRTt68Vfvo", 1071),

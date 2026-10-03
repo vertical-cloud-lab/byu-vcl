@@ -477,6 +477,19 @@ def build(key):
     return out
 
 
+def timeline(key):
+    """When each segment starts in out/<key>.mp4, joined as concat_xfade joins them, from the cached segments (nothing is
+    built): [(seconds, kind, name)]. For chapter times in ../playlist/catalog.py."""
+    segments, out, end = plan(key), [], 0.0
+    cuts = hard_cuts(segments)
+    for k, seg in enumerate(segments):
+        d = round(duration(f"{TMP}/seg_{seg_key(seg)}.mp4") * FPS) / FPS
+        start = 0.0 if k == 0 else end if k in cuts else end - FADE
+        out.append((round(start, 2), seg[0], f"{seg[1]}@{seg[2]}" if seg[0] == "clip" else seg[1]))
+        end = start + d
+    return out
+
+
 if __name__ == "__main__":
     if sys.argv[1:2] == ["--clips"]:     # pre-build only the clip segments (they need neither the 3D renders nor the diagrams)
         os.makedirs(TMP, exist_ok=True)
@@ -484,6 +497,10 @@ if __name__ == "__main__":
             for seg in plan(k):
                 if seg[0] == "clip":
                     print(k, seg[1], seg[2], f"{duration(make_seg(seg)):.1f}s", flush=True)
+    elif sys.argv[1:2] == ["--timeline"]:     # segment start times of built tutorials, for chapters
+        for k in (sys.argv[2:] or list(TUTORIALS)):
+            for t, kind, name in timeline(k):
+                print(f"{k}  {int(t) // 60}:{int(t) % 60:02d}  {t:7.2f}  {kind:8s} {name}", flush=True)
     else:
         for k in (sys.argv[1:] or list(TUTORIALS)):
             build(k)
