@@ -1,0 +1,1203 @@
+{
+  "inputs": {
+    "step": "ot2-overhead-camera/lid-mount/exports/base.step",
+    "post_length_mm": 96.16,
+    "z_post_top": 102.16,
+    "z_nut_slot": 94.66,
+    "wall_thickness_mm": 1.32,
+    "infill": 0.25,
+    "core_z": [
+      6.0,
+      86.0
+    ],
+    "masses_kg": {
+      "deck (slicer: plate 2 of the 3mf, 43.5 g)": 0.0435,
+      "HQ camera + C-CS adapter + 8-50 mm zoom lens (upper bound)": 0.4,
+      "Pi 5 + Active Cooler (upper bound)": 0.1,
+      "screws, nuts, Pi spacers, ribbon cable (estimate)": 0.03
+    },
+    "total_mass_kg": 0.5735,
+    "dynamic_factor": 3.0,
+    "F_vertical_total_N": 16.878105,
+    "F_lateral_total_N": 10.0,
+    "materials": {
+      "bulk": {
+        "E_wall": 3600.0,
+        "E_core": 3600.0,
+        "nu": 0.35,
+        "rho_wall": 1.24e-09,
+        "rho_core": 1.24e-09
+      },
+      "printed": {
+        "E_wall": 2060.0,
+        "E_core": 515.0,
+        "nu": 0.35,
+        "rho_wall": 1.24e-09,
+        "rho_core": 3.1e-10
+      }
+    },
+    "strength_MPa": {
+      "XY": 35.0,
+      "Z_TDS": 31.0,
+      "Z_design": 15.0
+    },
+    "ccx": "This is Version 2.21"
+  },
+  "mesh": {
+    "nodes": 209354,
+    "C3D10": 119425,
+    "dofs": 628062,
+    "walls_elements": 94706,
+    "core_elements": 24719,
+    "size_global_mm": 4.0,
+    "size_posts_mm": 1.6,
+    "size_roots_mm": 0.6,
+    "size_slots_mm": 0.6,
+    "min_quality_minSICN": 0.10796073747420663,
+    "p01_quality_minSICN": 0.3874411589846221,
+    "min_quality_before_high_order_opt": 0.0032972111774498577,
+    "midside_offset_max": 0.1528,
+    "step_volume_mm3": 111204.6,
+    "mesh_volume_mm3": 111170.4,
+    "walls_volume_mm3": 93836.1,
+    "core_volume_mm3": 17334.3,
+    "root_curves": 48,
+    "slot_curves": 68,
+    "mesh_time_s": 6.8
+  },
+  "section": {
+    "all": {
+      "A": 98.0698,
+      "I": 791.1737637312164,
+      "Idiag": 791.1737637312161
+    },
+    "core": {
+      "A": 54.1696,
+      "I": 244.52868415998958,
+      "Idiag": 244.52868415998958
+    },
+    "walls": {
+      "A": 43.900200000000005,
+      "I": 546.6450795712267,
+      "Idiag": 546.6450795712267
+    },
+    "c": 5.0,
+    "c_diag": 6.448813844421326
+  },
+  "model_mass_g": {
+    "bulk": 137.9,
+    "printed": 121.7
+  },
+  "runs": {
+    "bulk_a_vertical": {
+      "applied_force_N": [
+        0.0,
+        0.0,
+        -16.878105
+      ],
+      "reaction_force_N": [
+        0.0,
+        -0.0,
+        16.87811
+      ],
+      "equilibrium_error_N": 5.000000008692496e-06,
+      "vm_max_over_p999": 1.27,
+      "max_displacement_mm": 0.0014467712400930185,
+      "max_displacement_at": {
+        "node": 5302,
+        "xyz": [
+          -52.0,
+          -47.0,
+          101.36
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 0.25840883257169284,
+      "max_von_mises_at": {
+        "node": 111454,
+        "xyz": [
+          51.83,
+          -44.1,
+          97.49
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "max_von_mises_2mm_above_root_MPa": 0.25840883257169284,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 111454,
+        "xyz": [
+          51.83,
+          -44.1,
+          97.49
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "max_principal_MPa": 0.18353445666175938,
+      "max_principal_at": {
+        "node": 293,
+        "xyz": [
+          48.7,
+          -47.0,
+          97.66
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "min_principal_MPa": -0.30562045455409986,
+      "max_szz_tension_in_posts_MPa": 0.0292181,
+      "max_szz_tension_in_posts_at": {
+        "node": 113839,
+        "xyz": [
+          50.69,
+          49.08,
+          97.66
+        ],
+        "post": 4,
+        "region": "nut slot"
+      },
+      "max_szz_tension_anywhere_MPa": 0.0292181,
+      "max_szz_tension_anywhere_at": {
+        "node": 113839,
+        "xyz": [
+          50.69,
+          49.08,
+          97.66
+        ],
+        "post": 4,
+        "region": "nut slot"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        -0.0429,
+        -0.0429,
+        -0.0429,
+        -0.0429
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        -0.043,
+        -0.043,
+        -0.043,
+        -0.043
+      ],
+      "mean_top_displacement_mm": [
+        -0.0,
+        0.0,
+        -0.0013
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 1060.9861695318998,
+        "interlayer_Z_design_15MPa_on_max_szz": 513.3804046122095,
+        "XY_35MPa_on_max_von_mises": 135.44428668199495
+      }
+    },
+    "bulk_b_lateral_diag": {
+      "applied_force_N": [
+        7.071068,
+        7.071068,
+        0.0
+      ],
+      "reaction_force_N": [
+        -7.071068,
+        -7.071068,
+        0.0
+      ],
+      "equilibrium_error_N": 1.881345195187123e-07,
+      "vm_max_over_p999": 1.42,
+      "max_displacement_mm": 0.2807124760782107,
+      "max_displacement_at": {
+        "node": 13321,
+        "xyz": [
+          -43.01,
+          -43.01,
+          102.16
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 3.447440971975884,
+      "max_von_mises_at": {
+        "node": 87979,
+        "xyz": [
+          -42.08,
+          51.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_von_mises_2mm_above_root_MPa": 1.9448445932621277,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 101832,
+        "xyz": [
+          51.44,
+          51.67,
+          8.06
+        ],
+        "post": 4,
+        "region": "post"
+      },
+      "max_principal_MPa": 4.652774250943387,
+      "max_principal_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "min_principal_MPa": -4.509956725084655,
+      "max_szz_tension_in_posts_MPa": 4.16854,
+      "max_szz_tension_in_posts_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_szz_tension_anywhere_MPa": 4.16854,
+      "max_szz_tension_anywhere_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        0.9527,
+        0.9532,
+        0.9522,
+        0.9526
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        0.5018,
+        0.5704,
+        0.5704,
+        0.5704
+      ],
+      "mean_top_displacement_mm": [
+        0.19769,
+        0.19776,
+        1e-05
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 7.43665647924693,
+        "interlayer_Z_design_15MPa_on_max_szz": 3.598382167377547,
+        "XY_35MPa_on_max_von_mises": 10.152458094138135
+      }
+    },
+    "bulk_b_lateral_x": {
+      "applied_force_N": [
+        10.0,
+        0.0,
+        0.0
+      ],
+      "reaction_force_N": [
+        -10.0,
+        -0.0,
+        -0.0
+      ],
+      "equilibrium_error_N": 8.827996e-11,
+      "vm_max_over_p999": 1.22,
+      "max_displacement_mm": 0.2802300604579422,
+      "max_displacement_at": {
+        "node": 13054,
+        "xyz": [
+          -51.2,
+          -47.0,
+          102.16
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 2.6820084373610906,
+      "max_von_mises_at": {
+        "node": 87979,
+        "xyz": [
+          -42.08,
+          51.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_von_mises_2mm_above_root_MPa": 1.5316435221056102,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 12457,
+        "xyz": [
+          52.0,
+          43.5,
+          8.18
+        ],
+        "post": 4,
+        "region": "post"
+      },
+      "max_principal_MPa": 3.630308021031782,
+      "max_principal_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "min_principal_MPa": -3.5197722792904154,
+      "max_szz_tension_in_posts_MPa": 3.23887,
+      "max_szz_tension_in_posts_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_szz_tension_anywhere_MPa": 3.23887,
+      "max_szz_tension_anywhere_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        1.3647,
+        1.3647,
+        1.364,
+        1.3639
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        0.7298,
+        0.7301,
+        0.73,
+        0.7301
+      ],
+      "mean_top_displacement_mm": [
+        0.27957,
+        1e-05,
+        3e-05
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 9.571239351996221,
+        "interlayer_Z_design_15MPa_on_max_szz": 4.631244847740107,
+        "XY_35MPa_on_max_von_mises": 13.049921660364932
+      }
+    },
+    "bulk_c_modal": {
+      "frequencies_Hz": [
+        291.27,
+        291.28,
+        291.28,
+        291.31,
+        291.31,
+        291.32,
+        291.32,
+        291.33,
+        1718.62,
+        1718.63
+      ],
+      "modes": [
+        {
+          "f_Hz": 291.27,
+          "max_at": {
+            "node": 13321,
+            "xyz": [
+              -43.01,
+              -43.01,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.28,
+          "max_at": {
+            "node": 13409,
+            "xyz": [
+              43.15,
+              -42.89,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.28,
+          "max_at": {
+            "node": 14066,
+            "xyz": [
+              43.15,
+              42.89,
+              102.16
+            ],
+            "post": 4,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "f_Hz": 291.31,
+          "max_at": {
+            "node": 13351,
+            "xyz": [
+              -43.01,
+              -50.99,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.31,
+          "max_at": {
+            "node": 311,
+            "xyz": [
+              -43.5,
+              51.2,
+              102.16
+            ],
+            "post": 2,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.32,
+          "max_at": {
+            "node": 313,
+            "xyz": [
+              -42.8,
+              43.5,
+              102.16
+            ],
+            "post": 2,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.32,
+          "max_at": {
+            "node": 13379,
+            "xyz": [
+              42.89,
+              -50.85,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 291.33,
+          "max_at": {
+            "node": 14096,
+            "xyz": [
+              42.89,
+              50.85,
+              102.16
+            ],
+            "post": 4,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "f_Hz": 1718.62,
+          "max_at": {
+            "node": 13320,
+            "xyz": [
+              -43.32,
+              -42.82,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 1718.63,
+          "max_at": {
+            "node": 13412,
+            "xyz": [
+              43.32,
+              -42.82,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    },
+    "printed_a_vertical": {
+      "applied_force_N": [
+        0.0,
+        0.0,
+        -16.878105
+      ],
+      "reaction_force_N": [
+        -0.0,
+        -0.0,
+        16.87811
+      ],
+      "equilibrium_error_N": 5.000000008692496e-06,
+      "vm_max_over_p999": 1.27,
+      "max_displacement_mm": 0.0037076311186259293,
+      "max_displacement_at": {
+        "node": 54385,
+        "xyz": [
+          -52.0,
+          -46.96,
+          100.27
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 0.2583437884793646,
+      "max_von_mises_at": {
+        "node": 111454,
+        "xyz": [
+          51.83,
+          -44.1,
+          97.49
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "max_von_mises_2mm_above_root_MPa": 0.2583437884793646,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 111454,
+        "xyz": [
+          51.83,
+          -44.1,
+          97.49
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "max_principal_MPa": 0.18333745347773164,
+      "max_principal_at": {
+        "node": 293,
+        "xyz": [
+          48.7,
+          -47.0,
+          97.66
+        ],
+        "post": 3,
+        "region": "nut slot"
+      },
+      "min_principal_MPa": -0.30583726734074534,
+      "max_szz_tension_in_posts_MPa": 0.0292282,
+      "max_szz_tension_in_posts_at": {
+        "node": 113839,
+        "xyz": [
+          50.69,
+          49.08,
+          97.66
+        ],
+        "post": 4,
+        "region": "nut slot"
+      },
+      "max_szz_tension_anywhere_MPa": 0.0292282,
+      "max_szz_tension_anywhere_at": {
+        "node": 113839,
+        "xyz": [
+          50.69,
+          49.08,
+          97.66
+        ],
+        "post": 4,
+        "region": "nut slot"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        -0.0735,
+        -0.0735,
+        -0.0735,
+        -0.0735
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        -0.0735,
+        -0.0735,
+        -0.0735,
+        -0.0735
+      ],
+      "mean_top_displacement_mm": [
+        -0.0,
+        0.0,
+        -0.00346
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 1060.6195386647141,
+        "interlayer_Z_design_15MPa_on_max_szz": 513.2030025797004,
+        "XY_35MPa_on_max_von_mises": 135.47838794968993
+      }
+    },
+    "printed_b_lateral_diag": {
+      "applied_force_N": [
+        7.071068,
+        7.071068,
+        0.0
+      ],
+      "reaction_force_N": [
+        -7.071068,
+        -7.071068,
+        0.0
+      ],
+      "equilibrium_error_N": 1.881345195187123e-07,
+      "vm_max_over_p999": 1.42,
+      "max_displacement_mm": 0.6290700644613761,
+      "max_displacement_at": {
+        "node": 13321,
+        "xyz": [
+          -43.01,
+          -43.01,
+          102.16
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 4.047847293448951,
+      "max_von_mises_at": {
+        "node": 87979,
+        "xyz": [
+          -42.08,
+          51.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_von_mises_2mm_above_root_MPa": 2.384087086769883,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 101832,
+        "xyz": [
+          51.44,
+          51.67,
+          8.06
+        ],
+        "post": 4,
+        "region": "post"
+      },
+      "max_principal_MPa": 5.444765499483438,
+      "max_principal_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "min_principal_MPa": -5.283317241886821,
+      "max_szz_tension_in_posts_MPa": 4.90315,
+      "max_szz_tension_in_posts_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_szz_tension_anywhere_MPa": 4.90315,
+      "max_szz_tension_anywhere_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        1.241,
+        1.2417,
+        1.2403,
+        1.241
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        0.6532,
+        0.7426,
+        0.7425,
+        0.7426
+      ],
+      "mean_top_displacement_mm": [
+        0.44306,
+        0.44318,
+        1e-05
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 6.322466169707229,
+        "interlayer_Z_design_15MPa_on_max_szz": 3.059257824051885,
+        "XY_35MPa_on_max_von_mises": 8.646571242112842
+      }
+    },
+    "printed_b_lateral_x": {
+      "applied_force_N": [
+        10.0,
+        0.0,
+        0.0
+      ],
+      "reaction_force_N": [
+        -10.0,
+        -0.0,
+        0.0
+      ],
+      "equilibrium_error_N": 5.326347e-11,
+      "vm_max_over_p999": 1.23,
+      "max_displacement_mm": 0.6280074452667058,
+      "max_displacement_at": {
+        "node": 13054,
+        "xyz": [
+          -51.2,
+          -47.0,
+          102.16
+        ],
+        "post": 1,
+        "region": "post"
+      },
+      "max_von_mises_MPa": 3.1453507567931482,
+      "max_von_mises_at": {
+        "node": 87979,
+        "xyz": [
+          -42.08,
+          51.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_von_mises_2mm_above_root_MPa": 1.8952740149929899,
+      "max_von_mises_2mm_above_root_at": {
+        "node": 12457,
+        "xyz": [
+          52.0,
+          43.5,
+          8.18
+        ],
+        "post": 4,
+        "region": "post"
+      },
+      "max_principal_MPa": 4.233123128664982,
+      "max_principal_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "min_principal_MPa": -4.108647935222862,
+      "max_szz_tension_in_posts_MPa": 3.79933,
+      "max_szz_tension_in_posts_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "max_szz_tension_anywhere_MPa": 3.79933,
+      "max_szz_tension_anywhere_at": {
+        "node": 80816,
+        "xyz": [
+          -51.92,
+          43.0,
+          6.22
+        ],
+        "post": 2,
+        "region": "post"
+      },
+      "szz_tension_face_z16_per_post_MPa": [
+        1.7777,
+        1.7777,
+        1.7767,
+        1.7767
+      ],
+      "szz_tension_face_z56_per_post_MPa": [
+        0.95,
+        0.9505,
+        0.9504,
+        0.9505
+      ],
+      "mean_top_displacement_mm": [
+        0.62656,
+        2e-05,
+        6e-05
+      ],
+      "safety_factors": {
+        "interlayer_Z_TDS_31MPa_on_max_szz": 8.159333356144373,
+        "interlayer_Z_design_15MPa_on_max_szz": 3.948064527166632,
+        "XY_35MPa_on_max_von_mises": 11.127534798594086
+      }
+    },
+    "printed_c_modal": {
+      "frequencies_Hz": [
+        219.97,
+        219.97,
+        219.98,
+        220.0,
+        220.0,
+        220.0,
+        220.01,
+        220.01,
+        1371.46,
+        1371.47
+      ],
+      "modes": [
+        {
+          "f_Hz": 219.97,
+          "max_at": {
+            "node": 13321,
+            "xyz": [
+              -43.01,
+              -43.01,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 219.97,
+          "max_at": {
+            "node": 13409,
+            "xyz": [
+              43.15,
+              -42.89,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 219.98,
+          "max_at": {
+            "node": 14066,
+            "xyz": [
+              43.15,
+              42.89,
+              102.16
+            ],
+            "post": 4,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "f_Hz": 220.0,
+          "max_at": {
+            "node": 13351,
+            "xyz": [
+              -43.01,
+              -50.99,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 220.0,
+          "max_at": {
+            "node": 14008,
+            "xyz": [
+              -43.32,
+              51.18,
+              102.16
+            ],
+            "post": 2,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 220.0,
+          "max_at": {
+            "node": 13439,
+            "xyz": [
+              51.11,
+              -43.15,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 220.01,
+          "max_at": {
+            "node": 14038,
+            "xyz": [
+              -42.82,
+              43.32,
+              102.16
+            ],
+            "post": 2,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            1.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 220.01,
+          "max_at": {
+            "node": 14096,
+            "xyz": [
+              42.89,
+              50.85,
+              102.16
+            ],
+            "post": 4,
+            "region": "post"
+          },
+          "dominant": "X",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        },
+        {
+          "f_Hz": 1371.46,
+          "max_at": {
+            "node": 13320,
+            "xyz": [
+              -43.32,
+              -42.82,
+              102.16
+            ],
+            "post": 1,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            1.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "f_Hz": 1371.47,
+          "max_at": {
+            "node": 13412,
+            "xyz": [
+              43.32,
+              -42.82,
+              102.16
+            ],
+            "post": 3,
+            "region": "post"
+          },
+          "dominant": "Y",
+          "post_top_motion": [
+            0.0,
+            0.0,
+            1.0,
+            0.0
+          ]
+        }
+      ]
+    }
+  },
+  "analytic": {
+    "bulk": {
+      "F_vertical_per_post_N": 4.21952625,
+      "F_lateral_per_post_N": 2.5,
+      "L_mm": 96.16,
+      "A_mm2": 98.0698,
+      "I_solid_mm4": 791.1737637312164,
+      "I_walls_mm4": 546.6450795712267,
+      "I_core_mm4": 244.52868415998958,
+      "EI_Nmm2": 2848225.5494323787,
+      "axial_stress_post_MPa": -0.04302574543845302,
+      "axial_stress_nut_slot_net_MPa": -0.07741787949022519,
+      "A_net_slot_mm2": 54.50325270834574,
+      "euler_buckling_per_post_N": 760.0203529437687,
+      "euler_buckling_factor": 180.11983050082188,
+      "top_deflection_vertical_mm": 0.0011492654670449006,
+      "M_root_Nmm": 240.39999999999998,
+      "sigma_root_bending_MPa": 1.519261703435799,
+      "sigma_root_bending_diagonal_MPa": 1.9594871812831813,
+      "top_deflection_lateral_mm": 0.260152342064694,
+      "f1_cantilever_Hz": 292.8806476400687,
+      "f1_cantilever_solid_top_Hz": 292.8747620342605,
+      "mass_per_length_g_per_mm": 0.12160655200000003
+    },
+    "printed": {
+      "F_vertical_per_post_N": 4.21952625,
+      "F_lateral_per_post_N": 2.5,
+      "L_mm": 96.16,
+      "A_mm2": 98.0698,
+      "I_solid_mm4": 791.1737637312164,
+      "I_walls_mm4": 546.6450795712267,
+      "I_core_mm4": 244.52868415998958,
+      "EI_Nmm2": 1252021.1362591216,
+      "axial_stress_post_MPa": -0.07345639386100211,
+      "axial_stress_nut_slot_net_MPa": -0.07741787949022519,
+      "A_net_slot_mm2": 54.50325270834574,
+      "euler_buckling_per_post_N": 334.0892528902256,
+      "euler_buckling_factor": 79.1769580507351,
+      "top_deflection_vertical_mm": 0.0034289159386766813,
+      "M_root_Nmm": 240.39999999999998,
+      "sigma_root_bending_MPa": 1.9776982418989577,
+      "sigma_root_bending_diagonal_MPa": 2.5507615604891427,
+      "top_deflection_lateral_mm": 0.5918211170358227,
+      "f1_cantilever_Hz": 253.7230467823386,
+      "f1_cantilever_solid_top_Hz": 216.1088832483084,
+      "mass_per_length_g_per_mm": 0.07122882400000001
+    }
+  },
+  "timing_s": {
+    "bulk_c_modal": 129.3,
+    "printed_c_modal": 135.3,
+    "bulk_a_vertical": 55.2,
+    "bulk_b_lateral_x": 55.2,
+    "bulk_b_lateral_diag": 72.7,
+    "printed_a_vertical": 81.0,
+    "printed_b_lateral_x": 63.6,
+    "printed_b_lateral_diag": 64.6,
+    "ccx_wall_total": 275.0,
+    "total": 305.6
+  }
+}
