@@ -308,8 +308,8 @@ the API key owner's account.
 
 | Document | Tabs |
 |---|---|
-| [Sandbox objects (48a9e11)](https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29) | `labware_lineup`, every sandbox object in one Part Studio, part names prefixed by object. AgileX's PiPER. The layout twice: `sandbox_layout_hr100a` is current, and `sandbox_layout` is the earlier one with the dummy balance. `balance_hr100a` on its own. Two assemblies with the arm on its plate: *Sandbox with PiPER (HR-100A)* is current |
-| [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, rePowder atomizer, `balance_hr100a`, `labconco_glovebox`, `aconity_midi`, and the drop tower twice. `lansmont_m23_drop_tower_from_photos` is current; `lansmont_m23_drop_tower` is the earlier data-sheet-only model |
+| [Sandbox objects (48a9e11)](https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29) | `labware_lineup`, every sandbox object in one Part Studio, part names prefixed by object. AgileX's PiPER. The layout twice: `sandbox_layout_hr100a` is current, and `sandbox_layout` is the earlier one with the dummy balance. Both layouts still carry A&D's white lid. The balance twice: `balance_hr100a_autotrickler_lid` is current, and `balance_hr100a` has the white lid. Both lids on their own, `lid_autotrickler_v4` and `lid_fxi10_stock`, to swap. Two assemblies with the arm on its plate: *Sandbox with PiPER (HR-100A)* is current |
+| [Lab equipment (48a9e11)](https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff) | A1 mini, H2D, OT-2 (Opentrons' STEP), PiPER (AgileX's STEP), CubXL, rePowder atomizer, `labconco_glovebox`, `mse_pro_glovebox`, and the drop tower twice. `lansmont_m23_drop_tower_from_photos` is current; `lansmont_m23_drop_tower` is the earlier data-sheet-only model. The HR-100A as `balance_hr100a_autotrickler_lid` (current) and `balance_hr100a_stock_lid`; the older `balance_hr100a` has the white lid. The Aconity twice: `aconity_midi_v2` is the rebuilt one, and `aconity_midi` is the first, non-physical one |
 | [CB154 room (968a35d)](https://cad.onshape.com/documents/83cbdf78254f49ff840c86f0/w/185522a505c325c4b23f5efc) | The room with its equipment, including Opentrons' real OT-2. The PiPER is an envelope here. It has two `cb154_room` tabs: the **newer** one is the corrected layout, and the older one has walls in the wrong places |
 
 These are Onshape's own shaded views, from the API:
@@ -317,8 +317,10 @@ These are Onshape's own shaded views, from the API:
 | Sandbox assembly | CB154 |
 |---|---|
 | ![](onshape/onshape_sandbox_assembly_hr100a.png) | ![](onshape/onshape_cb154_room.png) |
-| **Glove box** | **Aconity MIDI** |
-| ![](onshape/onshape_labconco_glove_box.png) | ![](onshape/onshape_aconity_midi.png) |
+| **Labconco glove box** | **MSE PRO glove box** |
+| ![](onshape/onshape_labconco_glove_box.png) | ![](onshape/onshape_mse_pro_acrylic_glove_box.png) |
+| **HR-100A with the AutoTrickler V4 panel** | **Aconity MIDI, rebuilt** |
+| ![](onshape/onshape_hr_100a__autotrickler_v4_lid.png) | ![](onshape/onshape_aconity_midi__reworked.png) |
 
 **The tabs keep their STEP file names.** The public API has no element rename: `POST /elements/...` is
 HTTP 405. The run spent 11 calls finding that out before the rename step was dropped.
@@ -359,6 +361,20 @@ The second session made **19 calls**, all counted:
 - 15 to add the HR-100A, glove box and Aconity tabs and the new layout and assembly
   (`--add equipment sandbox`, recorded in [`onshape/run_2026-09-27_add.json`](onshape/run_2026-09-27_add.json));
 - 4 for the shaded views above.
+
+The third session made **18 calls**, all counted:
+
+- 14 to add seven tabs (`--add equipment sandbox`, the `2026-10-03` batch, recorded in
+  [`onshape/run_2026-10-03_add.json`](onshape/run_2026-10-03_add.json)): the HR-100A with each lid,
+  both lids alone, the MSE box and the rebuilt Aconity;
+- 4 for the shaded views above.
+
+That brings the total to about 85 of the 2,500. The sandbox layout wasn't re-imported for the new
+lid, which would have cost 6 more calls for a ~10 mm difference.
+
+**Delete by hand when convenient** (the key can't): the first `aconity_midi` tab and the white-lid
+`balance_hr100a` tabs, plus the older `cb154_room`, `lansmont_m23_drop_tower`, `sandbox_layout` and
+*Sandbox with PiPER* left from before.
 
 **Getting more calls:**
 
