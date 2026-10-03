@@ -1,0 +1,6 @@
+cadquery>=2.4
+numpy
+scipy          # piper_pose.py (IK)
+pyvista        # render.py
+pillow         # contact sheets
+requests       # ../onshape/onshape_import.py

@@ -1,0 +1,53 @@
+{
+  "date": "2026-09-27",
+  "added_to": "run_2026-09-26.json",
+  "documents": {
+    "equipment": {
+      "document": "https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff",
+      "tabs": {
+        "A&D HR-100A with breeze break": {
+          "state": "DONE",
+          "elements": [
+            "3b3ad6b37f84a9a65fdff5e0"
+          ],
+          "failure": null
+        },
+        "Labconco glove box": {
+          "state": "DONE",
+          "elements": [
+            "6d174e4315949307e6a94c8e"
+          ],
+          "failure": null
+        },
+        "Aconity MIDI": {
+          "state": "DONE",
+          "elements": [
+            "0eb49ab001994440110d6c57"
+          ],
+          "failure": null
+        }
+      }
+    },
+    "sandbox": {
+      "document": "https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29",
+      "tabs": {
+        "A&D HR-100A with breeze break": {
+          "state": "DONE",
+          "elements": [
+            "6c33ba9e3cdd26716d0dd09f"
+          ],
+          "failure": null
+        },
+        "Sandbox layout (spot D), real HR-100A": {
+          "state": "DONE",
+          "elements": [
+            "819bb25181aef0a4be339f09"
+          ],
+          "failure": null
+        }
+      },
+      "assembly": "a98cf161e15e8401a26f88e1"
+    }
+  },
+  "api_calls_used": 15
+}

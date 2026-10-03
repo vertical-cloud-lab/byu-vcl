@@ -1,0 +1,391 @@
+{
+ "_meta": {
+  "generated": "2026-09-26",
+  "units": "mm",
+  "coordinates": "x = right of the pan centre line, seen from the front; y = back from the front edge of the balance body (the nose of the display panel); z = up from the bench (underside of the levelling feet). The pan centre is x=0, y=168.5.",
+  "method": "Stock numbers are read from A&D's own sources: the HR-AZ/HR-A spec table and the 'External Dimensions' drawing (manual 1WMPD4002375C p.93-94, identical to the 2012 US manual the lab links), the 2022 A&D notice that raised the pan, and andonline.com. Sub-dimensions that the drawing shows but does not label were measured off the vector drawing. Its scale is 1.50 mm per PDF point, checked against the labelled 315, 156, 61.5 and 192 mm. Those values are marked estimated (about +/-3 mm). The lab's balance does not use the stock tall breeze break. Its January 2026 set-up photo shows the A&D FXi-10 small breeze break, so that part's geometry comes from the FX-i manual drawing, where it is the FX-120i's standard shield. The FX-i and HR-A bodies share the pan-centre position (168.5 mm from the front), the 162 mm foot pitch and the 192/3 mm underhook. The part is placed on the HR-100A with the lab's own measured pan-to-lid clearance, 3.125 in (79.4 mm). Sites were fetched directly from the runner, with no Pi proxy needed. Lab photos came from powder-doser rig-check frames and byu-vcl#2."
+ },
+ "hr100a": {
+  "name": "A&D HR-100A analytical balance (HR-AZ/HR-A series, C-SHS generation), 102 g x 0.1 mg, external calibration",
+  "dims_mm": {
+   "W": 198,
+   "D": 294,
+   "H": 315,
+   "body_W": 198,
+   "body_D": 262,
+   "body_deck_z": 70,
+   "nose_z": 31,
+   "display_slope_end_y": 75,
+   "display_slope_end_z": 63,
+   "pan_centre_x": 0,
+   "pan_centre_y": 168.5,
+   "pan_top_z": 86.5,
+   "pan_top_z_2022_pan_unit": 90.5,
+   "breeze_ring_d": 120,
+   "breeze_ring_top_z": 84,
+   "feet_pitch_x": 162,
+   "front_feet_y": 61.5,
+   "feet_pitch_y": 191.5,
+   "rear_feet_y": 253,
+   "front_foot_d": 30,
+   "foot_h": 5,
+   "underhook_y": 192,
+   "underhook_x": 3,
+   "locking_handle_out_x": -107,
+   "display_window_W": 110,
+   "display_window_y0": 34,
+   "display_window_y1": 69,
+   "key_row_y": 19,
+   "key_count": 6,
+   "key_pitch_x": 22,
+   "key_d": 12,
+   "lab_config_W": 198,
+   "lab_config_D": 262,
+   "lab_config_H": 176.4
+  },
+  "mass_kg": 3.5,
+  "pan_d_mm": 90,
+  "breeze_break": {
+   "in_use_at_lab": "small",
+   "small": {
+    "description": "A&D FXi-10 small breeze break ('3.4 in high'), identical to the FX-120i's standard shield. It has a white base plate, 4 white posts, 4 clear acrylic side panels bowed outward between the posts, and a white top plate with a raised centre boss and a round centre cap. The doser's 'scale opening' / 'drop hole' is inferred, not documented, to be this centre with the cap out. The Ø28 size is scaled from the drawing, so verify it. Removing one clear side panel leaves a 115 x 83.5 mm opening (A&D).",
+    "outer_W": 184,
+    "outer_D": 184,
+    "corner_r": 30,
+    "inner_W": 171.5,
+    "inner_D": 171.5,
+    "centre_x": 0,
+    "centre_y": 168.5,
+    "nominal_height_in": 3.4,
+    "pan_to_lid_underside": 79.4,
+    "pan_to_lid_underside_on_FX120i": 85,
+    "panel_removed_opening_W": 115,
+    "panel_removed_opening_H": 83.5,
+    "base_plate_top_z_on_FX120i": 82,
+    "top_z_on_FX120i": 176,
+    "base_plate_z0": 70,
+    "base_plate_z1": 82.4,
+    "post_z0": 82.4,
+    "post_z1": 165.9,
+    "post_w": 13,
+    "post_centre_offset_xy": 64,
+    "lid_underside_z": 165.9,
+    "lid_top_z": 172.4,
+    "lid_thickness": 6.5,
+    "centre_boss_d": 62.5,
+    "centre_boss_rise": 4,
+    "centre_opening_d": 28,
+    "top_z": 176.4
+   },
+   "large": {
+    "description": "Stock HR-A 'large breeze break', packed separately and locked to the body by two pull-out handles. The chamber is a cylinder with a fixed clear front, two curved rotary sliding side doors (left and right) that rotate rearward around it, and a clear top door that swings sideways about one of its two securing screws. It is NOT what the lab runs, and is kept here for the stock model.",
+    "inner_d": 156,
+    "inner_H_above_pan": 194,
+    "inner_H_above_pan_pre2022": 198,
+    "ceiling_z": 284.5,
+    "vendor_dims_W_D_H": [
+     183,
+     148.5,
+     251
+    ],
+    "outer_W": 183,
+    "module_H": 251,
+    "outer_d_at_pan_section": 177,
+    "top_frame_W": 185,
+    "base_z": 64,
+    "bottom_frame_z1": 82,
+    "front_y": 75,
+    "rear_y": 294,
+    "top_frame_z0": 284.5,
+    "top_door_top_z": 301,
+    "top_z": 315,
+    "side_opening_W": 112,
+    "side_door_open_x": 105,
+    "top_door_open_x": -270,
+    "top_door_open_rear_overhang": 6
+   }
+  },
+  "sources": [
+   {
+    "url": "https://www.aandd.jp/products/weighing/balance/analytical/hr-az_a.html",
+    "quote": "Weighing pan size | Ø90 mm | External dimensions | 198 (W) × 294 (D) × 315 (H) mm | Net weight | Approx. 3.9 kg ... Compact foot print: 198 mm × 294 mm (smaller than an A4 sheet of paper) ... Rotary sliding doors requiring no extra space at the rear ... FXi-10: Small breeze break FXi-11: Large breeze break",
+    "supports": [
+     "dims_mm.W",
+     "dims_mm.D",
+     "dims_mm.H",
+     "pan_d_mm",
+     "breeze_break.small.description",
+     "breeze_break.large.description"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/1WMPD4002375C_HR-AZ_HR-A_color.pdf#page=93",
+    "quote": "HR-250A HR-251A HR-150A HR-100A ... Weighing capacity ... 102 g ... Weighing pan diameter 90 mm External dimensions 198(W) x 294(D) x 315(H) mm ... Mass of product Approx. 3.5 kg",
+    "supports": [
+     "dims_mm.W",
+     "dims_mm.D",
+     "dims_mm.H",
+     "pan_d_mm",
+     "mass_kg"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/1WMPD4002375C_HR-AZ_HR-A_color.pdf#page=94",
+    "quote": "25. External Dimensions HR-100A ... Unit: : mm *1: When opening maximum *2: Inside dimension *3: Weighing pan diameter *4: Height up to the weighing pan *5: When pulling out the locking handle *6: Inside dimension (from up to the weighing pan) *7: Underhook position (hole center) -- drawing labels: 294 (*1), 6, 156 (*2), 90 (*3), 270(*1), 105 (*1), 315, 198, 107(*5), 86.5 (*4), 3(*7), 162, 198(*6), 112 (*2), 61.5, 191.5, 192(*7)",
+    "supports": [
+     "dims_mm.D",
+     "dims_mm.H",
+     "dims_mm.W",
+     "dims_mm.pan_top_z",
+     "dims_mm.feet_pitch_x",
+     "dims_mm.front_feet_y",
+     "dims_mm.feet_pitch_y",
+     "dims_mm.rear_feet_y",
+     "dims_mm.underhook_y",
+     "dims_mm.underhook_x",
+     "dims_mm.locking_handle_out_x",
+     "breeze_break.large.inner_d",
+     "breeze_break.large.inner_H_above_pan_pre2022",
+     "breeze_break.large.side_opening_W",
+     "breeze_break.large.side_door_open_x",
+     "breeze_break.large.top_door_open_x",
+     "breeze_break.large.top_door_open_rear_overhang",
+     "breeze_break.large.rear_y",
+     "breeze_break.large.top_z"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/1WMPD4002375C_HR-AZ_HR-A_color.pdf#page=7",
+    "quote": "Install the large breeze break when drafts are present ... Pull out the locking handles, and install the large breeze break on the main unit. ... How to open the top door If removing either of the securing screws (3) on the top door, the top door may be pivoted on the remaining screw. ... Top door Large breeze break Antistatic coating Weighing pan Pan support Breeze break ring Dust plate Main unit",
+    "supports": [
+     "breeze_break.large.description",
+     "dims_mm.breeze_ring_d"
+    ]
+   },
+   {
+    "url": "https://weighing.andonline.com/wp-content/uploads/2024/01/HR-A_HR-AZ_Manual_02.pdf#page=7",
+    "quote": "* The large breeze break is packed separately.",
+    "supports": [
+     "breeze_break.large.description"
+    ]
+   },
+   {
+    "url": "https://weighing.andonline.com/wp-content/uploads/2024/01/HR-A_HR-AZ_Manual_02.pdf#page=75",
+    "quote": "Weighing pan diameter 90 mm External dimensions 198(W) x 294(D) x 315(H) mm ... Net weight Approx. 3.9 kg Approx. 3.5 kg",
+    "supports": [
+     "dims_mm.W",
+     "dims_mm.D",
+     "dims_mm.H",
+     "pan_d_mm",
+     "mass_kg"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/update_pan_hraz_fxct.pdf",
+    "quote": "1. Both a weighing pan and a pan support are now provided together as a single weighing pan unit. ... 2. Accordingly, the height and inside dimension above the pan have been changed as shown below. ... 86.5 (height above the pan) ... Changed to ... 90.5 (height above the pan) ... 198 (inside dimension above the pan) ... Changed to ... 194 (inside dimension above the pan)",
+    "supports": [
+     "dims_mm.pan_top_z_2022_pan_unit",
+     "dims_mm.pan_top_z",
+     "breeze_break.large.inner_H_above_pan",
+     "breeze_break.large.inner_H_above_pan_pre2022",
+     "breeze_break.large.ceiling_z"
+    ]
+   },
+   {
+    "url": "https://weighing.andonline.com/product/galaxy-hr-series-balances/hr-100a",
+    "quote": "Weighing Pan Dimensions | Ø 90mm / 3.6in | Breeze Break | 183 x 148.5 x 251mm / 7.2 x 5.84 x 9.88in ... Rotary-Radius doors take up no extra room in fume hoods/glove box ... Breeze break top pivots left or right to allow easy access for tall ﬂasks and beakers",
+    "supports": [
+     "pan_d_mm",
+     "breeze_break.large.vendor_dims_W_D_H",
+     "breeze_break.large.outer_W",
+     "breeze_break.large.module_H",
+     "breeze_break.large.description"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/fzx-i_iwp_gd.pdf#page=89",
+    "quote": "23. EXTERNAL DIMENSIONS ... FX-120i / 200i / 300i / 500i ... Unit: mm -- drawing labels: 184, 171.5 (*2), 85.5, 85 (*4), 82, 83.5 (*5), 176, 184, 168.5, 171.5 (*2), 262.5, 193, 115 (*1), 115 (*1), φ130 (*3), 162, 71.5, 61.5, 194.5, 3 (*6), 192 (*6) -- *1: Width of the opening when a clear plate is removed *2: Inside dimension *3: Weighing pan diameter *4: Height from the weighing pan up to the cap of the breeze break (Inside dimension) *5: Height of the opening when a clear plate is removed",
+    "supports": [
+     "breeze_break.small.outer_W",
+     "breeze_break.small.outer_D",
+     "breeze_break.small.inner_W",
+     "breeze_break.small.inner_D",
+     "breeze_break.small.centre_y",
+     "breeze_break.small.panel_removed_opening_W",
+     "breeze_break.small.panel_removed_opening_H",
+     "breeze_break.small.pan_to_lid_underside_on_FX120i",
+     "breeze_break.small.base_plate_top_z_on_FX120i",
+     "breeze_break.small.top_z_on_FX120i",
+     "dims_mm.pan_centre_y"
+    ]
+   },
+   {
+    "url": "https://www.aandd.jp/products/manual/balances/fzx-i_iwp_gd.pdf#page=88",
+    "quote": "FX series ... Weighing pan diameter 130 mm ... External dimensions 193 (W) x 262.5 (D) x 85.5 (H) mm",
+    "supports": [
+     "dims_mm.body_D"
+    ]
+   },
+   {
+    "url": "https://ceproducts.shop/products/a-d-weighing-fxi-10-small-breeze-break-3-4-high",
+    "quote": "This low-profile windscreen is the same windscreen included with the FX-120i , and works as a compact replacement for the HR-100A . This 3.4\" breeze break keeps air drafts from messing with your charge weights — without getting in your way. Includes: Top plate 4 posts 4 acrylic side panels Base plate",
+    "supports": [
+     "breeze_break.small.description",
+     "breeze_break.small.nominal_height_in"
+    ]
+   },
+   {
+    "url": "https://cambridgeenviro.com/products/balances-scales-fxi-10",
+    "quote": "Small Breeze Break: 3.4\" tall Large Breeze Break: 7.9\" tall",
+    "supports": [
+     "breeze_break.small.nominal_height_in"
+    ]
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/2#issuecomment-3746628274",
+    "quote": "the scale is set up, it needs to be setup  at its desired location before calibration.",
+    "supports": [
+     "breeze_break.in_use_at_lab",
+     "breeze_break.small.description"
+    ]
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/144#issuecomment-5358640332",
+    "quote": "from the top of the load cell to the bottom side of the cage is just over 3in (~3.125in), so anything we put under there has to be 3in MAX.",
+    "supports": [
+     "breeze_break.small.pan_to_lid_underside",
+     "breeze_break.small.lid_underside_z"
+    ]
+   }
+  ],
+  "estimated_keys": [
+   "dims_mm.body_D",
+   "dims_mm.body_deck_z",
+   "dims_mm.nose_z",
+   "dims_mm.display_slope_end_y",
+   "dims_mm.display_slope_end_z",
+   "dims_mm.pan_centre_y",
+   "dims_mm.breeze_ring_d",
+   "dims_mm.breeze_ring_top_z",
+   "dims_mm.front_foot_d",
+   "dims_mm.foot_h",
+   "dims_mm.display_window_W",
+   "dims_mm.display_window_y0",
+   "dims_mm.display_window_y1",
+   "dims_mm.key_row_y",
+   "dims_mm.key_pitch_x",
+   "dims_mm.key_d",
+   "dims_mm.lab_config_D",
+   "dims_mm.lab_config_H",
+   "breeze_break.small.corner_r",
+   "breeze_break.small.base_plate_z0",
+   "breeze_break.small.base_plate_z1",
+   "breeze_break.small.post_z0",
+   "breeze_break.small.post_z1",
+   "breeze_break.small.post_w",
+   "breeze_break.small.post_centre_offset_xy",
+   "breeze_break.small.lid_underside_z",
+   "breeze_break.small.lid_top_z",
+   "breeze_break.small.lid_thickness",
+   "breeze_break.small.centre_boss_d",
+   "breeze_break.small.centre_boss_rise",
+   "breeze_break.small.centre_opening_d",
+   "breeze_break.small.top_z",
+   "breeze_break.large.outer_d_at_pan_section",
+   "breeze_break.large.top_frame_W",
+   "breeze_break.large.base_z",
+   "breeze_break.large.bottom_frame_z1",
+   "breeze_break.large.front_y",
+   "breeze_break.large.top_door_top_z"
+  ],
+  "notes": "(1) WHICH BREEZE BREAK. The lab's unit, photographed at set-up on 2026-01-13 (byu-vcl#2), carries the FXi-10 SMALL breeze break: a white lid with a centre cap, 4 white posts, clear panels and a white base plate. That photo matches the FXi-10 product photos exactly. None of the doser rig frames show the stock 315 mm large breeze break. Model the small break by default and keep the large one as a variant. Caveat: in the August 2026 rig frames the lid looks transparent, not white, so the lid may have been swapped. Confirm with a photo or a caliper. (2) PAN HEIGHT. The manual drawing gives 86.5 mm to the pan. A&D's 2022 notice moved new units to a one-piece pan unit at 90.5 mm, with the large break's inside height reduced from 198 to 194 mm, so the ceiling stays at 284.5 mm. 86.5 is recommended because it matches the lab's own measurement: FX-120i stack + 86.5 pan gives 165.5-86.5 = 79 mm pan-to-lid, and the lab measured 79.4 mm (3.125 in). With a 2022 pan unit the clearance would be only about 75 mm (2.95 in). Caliper the pan height to settle it; if it is 90.5, raise the pan 4 mm and leave the breeze break where it is. (3) SMALL-BREAK Z-STACK. The lid underside is pan top plus the lab's measured 79.4, which gives 165.9 (the FX-120i drawing implies 165.5 = 82 + 83.5). The base plate top is lid underside minus A&D's 83.5 panel-opening height, which gives 82.4 (FX-120i: 82). The base plate sits on the body deck at about 70. The lid top is at 172.4 and the centre boss at 176.4, the same 176 as A&D's FX-120i-with-breeze-break drawing. The lid thickness (6.5), boss rise (4), Ø62.5 boss, Ø28 centre opening (the 'drop hole' once the cap is out), post width and post positions were scaled off the FX-i drawing at 1.736 mm/pt, checked against its 262.5 and 184 dims, and are estimated. (4) STOCK BODY. D=294 includes the large break's rear housing, which overhangs the body. The body alone ends about 262 mm from the front, like the FX-i's sourced 262.5, so the lab configuration's footprint is about 198 x 262. The pan centre sits 168.5 mm from the front; the HR-A drawing measures 168.6, and 168.5 is labelled on the sibling FX-i drawing. The display panel slopes from the nose (z about 31) to about z 63 at y 75, then flat deck at about 70. It carries a bubble level plus 6 keys (ON:OFF, CAL, MODE, SAMPLE, PRINT, RE-ZERO) at the front and a roughly 110 mm-wide LCD behind them. (5) andonline's 'Breeze Break 183 x 148.5 x 251mm' is quoted as published. 183 is consistent with the drawing's roughly 185 mm top-frame width, and 251 with 315 minus a base at about 64 mm. The meaning of 148.5 is unclear, so do not use it as the depth. (6) MASS: the HR-100A (no internal weight) is approx. 3.5 kg. The 3.9 kg on the A&D Japan web page is the HR-AZ figure. (7) VS. THE CURRENT DUMMY. labware.py balance() uses a 200x290x85 body plus a 170x170x160 box from z=85, with a Ø20 hole and a 76.2 mm front slot. The body is too deep and too tall, and the chamber is about 2x too tall for the small break (or about 40% too short for the large one). Recommended replacement: a 198 x 262 body with the deck at 70 and a sloped front; a Ø90 pan at z 86.5, centred 168.5 mm from the front, which is y = +37.5 mm behind the centre of a 262-deep body; and the 184 x 184 small break with base plate z 70-82.4, 4 posts to 165.9, lid to 172.4, boss to 176.4 and a Ø28 centre opening. The front 'slot' should be a removable side panel, 115 wide x 83.5 high. The overall lab configuration is about 198 x 262 x 176."
+ },
+ "lab_usage": {
+  "summary": "The lab's HR-100A (external-cal, 102 g x 0.1 mg) sits on the fume-hood deck under the powder doser. The doser platform (a white board on four legs) bridges OVER the balance and lands on the same deck. The leg-to-leg span is roughly 265 mm, a single-photo estimate and not a caliper measurement. The gap between the breeze-break top and the platform underside is small. The auger module rides in a tilting gondola on that platform above the breeze break, and powder falls from above, through the hole in the AutoTrickler V4 panel that replaced the break's lid (see lid_in_use), into a beaker on the pan. It does not enter through a side door. Spill lands on the top of the cage. A paper funnel through the top was tried and removed on 2026-08-20. The breeze break is A&D's stock FXi-10 small shield, not a custom or printed one, and not the tall large break shipped with the HR-A. The lab measured just over 3 in (about 3.125 in, 79.4 mm) from the pan to the underside of the cage top, so vessels must be 3 in tall or less. A taller Berzelius beaker did not fit. On 2026-08-19 a taller replacement beaker let the cage rest on it and overloaded the balance. Lifting the cage top off instead left it un-tareable in the hood draft, with 5-9 mg SD, against 0.1 mg spec. A granite isolation slab is proposed (#146): a Grizzly G9651 12 x 18 x 3 in (about 305 x 457 x 76 mm, about 29 kg) plate on squash balls, under the balance AND all four bridge legs, because a slab under the balance alone would collide with the platform. Both #146 and PR #147 are still open, so it is not confirmed installed. A larger clear draft cage around the whole doser and balance was also built for the hood (#141, 2026-08-21).",
+  "sources": [
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/144#issuecomment-5358640332",
+    "quote": "They gave me Berzelius first, idk why, and it doesn't fit under the draft cage for the scale ... from the top of the load cell to the bottom side of the cage is just over 3in (~3.125in), so anything we put under there has to be 3in MAX."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/2#issuecomment-3746628274",
+    "quote": "the scale is set up, it needs to be setup  at its desired location before calibration."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/146#issuecomment-5359645712",
+    "quote": "The doser platform bridges **over** the balance on four legs that land on the fume-hood deck, and the balance sits on that same deck. Clearance between the top of the breeze break and the underside of the platform is small. **Put a 50–75 mm slab under the balance alone and it collides with the platform.** ... From the photo it scales to roughly **265 mm** across — but that's a perspective estimate off a single frame, not a caliper."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/146",
+    "quote": "we are going to buy a granite/stone paver for the scale to sit on (and perhaps the powder doser as well)."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/143#issuecomment-5245237807",
+    "quote": "The funnel might be something we attach to the scale opening rather than each auger, while the cap keeps powder in while not dispensing."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/143#issuecomment-5372039796",
+    "quote": "For example, AlSi10Mg always has a large spread on the top of the cage, but others (like silicon -100+200 mesh) have much less spillage."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5345684837",
+    "quote": "This beaker seems to be a little taller than the last one, and the cage pushes down on it slightly."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5347262222",
+    "quote": "I tried removing the top of the cage, but the gust makes the scale un-tareable---isn't that terrible?"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/blob/a151646/docs/rig-checks/2026-08-20-funnel-removed-balance-recheck.md",
+    "quote": "the paper funnel was removed"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/blob/a151646/docs/rig-checks/frames/2026-08-20_beaker-off-pan-weighing-mode.png",
+    "quote": "(photo) doser platform on four white legs straddling the HR-100A; auger gondola directly above the breeze-break lid; balance label reads 'HR-100A'"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/141#issuecomment-5371875692",
+    "quote": "I built a bigger draft cage to put around the whole setup with a clear screen so we can see inside"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/blob/0a0981e/docs/sandbox-object-set.md",
+    "quote": "Must be ≤3\" tall to clear the HR-100A breeze break ... Use the real one, or a same-footprint dummy with the breeze break and drop hole."
+   }
+  ],
+  "lid_in_use": {
+   "which": "autotrickler_v4",
+   "summary": "The doser runs the FXi-10 breeze break with the AutoTrickler V4's clear acrylic top panel on it, not A&D's white lid, and turned 180 deg from AutoTrickler's set-up: the tab faces the display and the Ø46 hole sits behind centre, under the doser's outlet. The lab's own videos and photos show it from the AutoTrickler SOP (2026-03-05, with A&D's white lid lying on the bench beside the balance) through the doser runs of August and September 2026 and the picam-d1pr stream of 2026-10-02. So the earlier reading that powder drops through the white lid's Ø28 centre opening was wrong. Both lids sit on the same posts, so they swap; the model has both (balance(lid='autotrickler'), the default, and balance(lid='stock')). The panel's own dimensions and sources are in autotrickler_v4_lid.json.",
+   "evidence": [
+    {
+     "url": "https://www.youtube.com/watch?v=FZ-rRSlxzFM&t=478s",
+     "quote": "(video frame, 'Autotrickler SOP with Silicon Powder (Part 1)', uploaded 2026-03-05) the AutoTrickler V4 on the lab's HR-100A ('102g/0.1mg HR-100A' label): a clear rimmed tray on the four white FXi-10 posts carries the trickler; A&D's white lid, centre opening uncapped, lies on the bench behind the balance"
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=2BOku0eveQo&t=362s",
+     "quote": "(video frame, Part 2, 2026-03-05) close-up: the clear lid's raised rim overhangs the posts and the bowed panels; the trickler's grey drop funnel passes through the lid's round hole into a shot glass on the pan"
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=2BOku0eveQo&t=168s",
+     "quote": "(video frame, Part 2) at lid level: a flat clear deck with frosted edges, the trickler body standing on it and the drop funnel below it"
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=Elgle_1Ys1M&t=605s",
+     "quote": "(video frame, 'No tilt - Dispensing AlSi10Mg with the Powder Doser', 2026-08-11) the doser on its board and white PVC legs over the balance; the clear lid tilted up shows its round hole"
+    },
+    {
+     "url": "https://www.youtube.com/shorts/IG-ccaCY740",
+     "quote": "(video frame, 'Scale Drift in Fume Hood #2', 2026-09-08) the clear rimmed lid on the breeze break under the doser"
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=VADmn4CjoBQ&t=300s",
+     "quote": "(stream frame, 'powder doser stream picam-d1pr', overlay 2026-10-02_13-06-05) dosing into a beaker under the clear lid"
+    },
+    {
+     "url": "https://www.youtube.com/watch?v=VADmn4CjoBQ&t=14400s",
+     "quote": "(stream frame, overlay 2026-10-02_17-01-17) the breeze break lifted off in one piece, clear lid with its hole on top"
+    }
+   ],
+   "frames_method": "YouTube refuses player extraction from the runner, so frames were cut on the RPI stream-cam Pi: yt-dlp resolved the HLS 1080p (270) or 720p (232) playlist, only the ~6 s segments holding each requested time were fetched (throttled to 1.5 MB/s, ~60 MB in all), ffmpeg read them locally, and the JPEGs came back over SSH. Storyboards (sb0) were used first to find the moments."
+  }
+ }
+}

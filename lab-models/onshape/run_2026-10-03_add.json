@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-03",
+  "batch": "2026-10-03",
+  "added_to": "run_2026-09-26.json",
+  "documents": {
+    "equipment": {
+      "document": "https://cad.onshape.com/documents/5a6a6f0f7cf6afc32e46d316/w/54106e8f2c24cc33369314ff",
+      "tabs": {
+        "HR-100A, AutoTrickler V4 lid": {
+          "state": "DONE",
+          "elements": [
+            "2aaa1cb55c903ae283ccf841"
+          ],
+          "failure": null
+        },
+        "HR-100A, A&D stock lid": {
+          "state": "DONE",
+          "elements": [
+            "9ce29a2c914effeee79101b2"
+          ],
+          "failure": null
+        },
+        "MSE PRO acrylic glove box": {
+          "state": "DONE",
+          "elements": [
+            "92f62ec6cdfc4cf0055cb12e"
+          ],
+          "failure": null
+        },
+        "Aconity MIDI, reworked": {
+          "state": "DONE",
+          "elements": [
+            "e8637ee814fab9979f3e421a"
+          ],
+          "failure": null
+        }
+      }
+    },
+    "sandbox": {
+      "document": "https://cad.onshape.com/documents/5964e87149b77f1dbd8048a4/w/bb280ae6b3866dad924c1a29",
+      "tabs": {
+        "HR-100A, AutoTrickler V4 lid": {
+          "state": "DONE",
+          "elements": [
+            "b0a3d28888800edefe8a74f8"
+          ],
+          "failure": null
+        },
+        "AutoTrickler V4 lid": {
+          "state": "DONE",
+          "elements": [
+            "ccbba1e02b9fb798ab7533b5"
+          ],
+          "failure": null
+        },
+        "FXi-10 stock lid": {
+          "state": "DONE",
+          "elements": [
+            "f4bfcd307d74ad886791ec80"
+          ],
+          "failure": null
+        }
+      }
+    }
+  },
+  "api_calls_used": 14
+}

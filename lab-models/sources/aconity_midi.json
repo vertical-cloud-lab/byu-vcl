@@ -1,0 +1,1726 @@
+{
+ "_meta": {
+  "generated": "2026-09-26",
+  "units": "mm (mass kg)",
+  "method": "Manufacturer data: Aconity3D datasheets (2018 MIDI flyer, 2019 MIDI+ flyer, 2022 MIDI/MIDI+ datasheets, Jan-2026 booklet pages) and the live Aconity3D configurator API that feeds the aconity3d.com product pages (fetched 2026-09-26). Layout sub-dimensions are NOT published; they were scaled from near-orthographic front photos: MIDI from the CMU photo (filter unit + machine + control cabinet = 607 px wide set equal to the current spec W 2450 mm -> 4.036 mm/px; the resulting height 582 px = 2349 mm agrees with spec H 2320 mm to 1.2%), cross-checked against the 2026 Aconity front photo scaled by the same 957 mm control-cabinet width (2.323 mm/px; base-cabinet top 980 vs 977 mm, worktop 1162 vs 1166 mm, chamber top 1289 vs 1300 mm). MIDI+ from Aconity's front photo (Teaser_MIDI+.png, alpha mask, 2.088 mm/px from the same ~960 mm control cabinet; total width then 2679 mm vs spec 2700 mm). Monitor (~589 mm) and keyboard (~427 mm) widths are consistent with that scale. No side view or depth sub-dimension is published anywhere found, so every y (depth) value is an estimate. PDFs parsed with PyMuPDF; the 2018 MIDI flyer's text is outlined vector art, so its quotes were read from the rendered page image.",
+  "axes": "x = along the width from the left edge of the envelope as seen from the front; y = depth from the front face (0 = front, positive toward the back); z = height from the floor.",
+  "status": "The lab has not bought one yet, so the configuration (lasers, filter, chiller, setup station) is still open. Model the base system plus the always-present filter unit; optional peripherals are listed separately.",
+  "updated": "2026-10-03: corrections_2026-10-03 supersedes the layout entries it lists (optics, fibres, filter unit, service gap)"
+ },
+ "aconity_midi": {
+  "name": "Aconity3D AconityMIDI (laser powder bed fusion, current design with dual-laser 3D-scanner optics portal)",
+  "variant": "MIDI",
+  "dims_mm": {
+   "W": 2450,
+   "D": 1500,
+   "H": 2320
+  },
+  "dims_note": "Current manufacturer figure (configurator API and aconity3d.com product page, 2026). The 2018 flyer and the 2022 datasheet give 2170 x 1590 x 2340 mm for the earlier design. Photo proportions indicate that the 2450 mm width includes the side-standing filter unit (left) and the 2320 mm height includes the fibre loops above the scan heads. Conservative planning box that covers both specs: 2450 x 1590 x 2340 mm.",
+  "dims_mm_alternatives": [
+   {
+    "W": 2170,
+    "D": 1590,
+    "H": 2340,
+    "mass_kg": 1385,
+    "source": "https://aconity3d.com/documents/Flyer_AconityMidi_2018_Print.pdf",
+    "year": 2018
+   },
+   {
+    "W": 2170,
+    "D": 1590,
+    "H": 2340,
+    "mass_kg": 1450,
+    "source": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "year": 2022
+   },
+   {
+    "W": 2450,
+    "D": 1500,
+    "H": 2320,
+    "mass_kg": 1450,
+    "source": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/laser-powder-bed-fusion",
+    "year": 2026
+   }
+  ],
+  "mass_kg": 1450,
+  "mass_note": "Without powder. The 2018 flyer gives 1385 kg.",
+  "build_envelope": {
+   "shape": "cylinder",
+   "diameter": 170,
+   "height": 200,
+   "reductions": [
+    {
+     "diameter": 100,
+     "height": 200
+    },
+    {
+     "diameter": 55,
+     "height": 200
+    }
+   ],
+   "note": "The 2018 flyer and the RMU facility page give H 250 mm for the Ø170 build cylinder; current data give H 200 mm. Build cylinder and powder reservoir cylinder are both reduced by the reduction kits."
+  },
+  "lasers": "Current: up to 2 lasers, 200-4000 W, multiple beam profiles, different wavelengths (2026 flyer). The configurator base article lists 1x green single-mode 200/500 W; up to 2x IR single-mode 400/500/700/1000/1200 W AFX. The 2022 datasheet said 'up to 4 x Infrared'. Optics: 2D F-theta (80 µm spot) or 3D scanner (80-500 µm); 3D green scanner 50-250 µm. Max scan speed 12 m/s. The laser source sits as a 19-inch rack unit in the control cabinet (configurator render).",
+  "preheating": "500 °C / Ø170 x H180 mm; 800 °C / Ø100 x H180 mm; 1200 °C / Ø70 x H150 mm (inductive).",
+  "inert_gas": "Argon 4.6 / 6 bar or nitrogen / 6 bar; <5 l/min during process, <30 l/min (2022 datasheet) or <60 l/min (current API) during purging; residual O2 <100 ppm. Optional vacuum ≤2 mbar absolute (MIDI only).",
+  "utilities": {
+   "compressed_air": "ISO 8573-1:2010 [1:4:1] / 6 bar, <50 l/min",
+   "electrical_US_option": "UL wiring option: 208 V, WYE, 32 A (3PH + N + PE)",
+   "cooling": "Chiller required for the heating unit and for lasers above 400 W: air-water 15.3 kW or water-water 15.8 kW (Aconity option)",
+   "fume_extraction": "≤150 m³/h (process chamber spec)"
+  },
+  "powder_handling": "Two cylinders under the exchangeable process chamber (powder reservoir + build cylinder). Only one column is visible from the front in the configurator render, which suggests they sit front-to-back (inferred). Recoater with exchangeable rubber, knife or brush. The process chamber can be swapped out, with an optional external setup station, and the filter unit stands beside the machine. Neither machine has glove ports. The separate AconityXTRACT depowdering station has them.",
+  "colours": {
+   "panels": "anthracite / near-black (dark grey-black powder-coated sheet metal), NOT white/grey",
+   "frames": "black anodised aluminium extrusion (optics portal, setup-station frame)",
+   "worktop": "wood (butcher-block look) on the control cabinet",
+   "accents": "cyan-to-green LED light strip along the top edge of the control-cabinet tower; yellow-red e-stop; coloured push-buttons; blue fibre connectors with yellow fibre cables; small blue/yellow-lit chamber viewport; chrome levelling feet with red rings",
+   "logo": "white 'aconity3D' logo on chamber, base-cabinet door and control-cabinet door"
+  },
+  "layout": {
+   "_scale": "CMU front photo, 4.036 mm/px (floor at image row 615, x0 = left edge of the filter unit). Cross-checked against the 2026 Aconity photo. Heights agree within ±3%, except fibre-loop height, which depends on routing.",
+   "casters_feet_height": {
+    "value": 100,
+    "estimated": true,
+    "basis": "levelling feet/castors: 22 px (CMU) = 89 mm; 45 px (2026 photo) = 105 mm"
+   },
+   "filter_unit": {
+    "x0": 0,
+    "x1": 432,
+    "y0": 0,
+    "y1": 432,
+    "z0": 0,
+    "z1": 1405,
+    "estimated": true,
+    "basis": "CMU photo px 223-330 wide; valve top at row 267. Round vessel, so depth assumed equal to width.",
+    "parts": {
+     "legs_and_cone": {
+      "z0": 0,
+      "z1": 250
+     },
+     "drum_dia": 430,
+     "drum_z": [
+      250,
+      856
+     ],
+     "upper_filter_cylinder_dia": 215,
+     "upper_filter_cylinder_z": [
+      920,
+      1190
+     ],
+     "valves_pipes_top_z": 1405
+    },
+    "look": "black cylindrical filter housing over a larger black drum with a conical hopper on 4 thin legs, piped to the machine with blue/clear hoses"
+   },
+   "base_cabinet": {
+    "x0": 464,
+    "x1": 1388,
+    "y0": 0,
+    "y1": 1200,
+    "z0": 0,
+    "z1": 977,
+    "estimated": true,
+    "basis": "x and z from CMU photo (px 338-567, top row 373). Depth ESTIMATED as 1200 mm, leaving 300 mm of the 1500 mm spec depth for rear hoses and cable chains. No side view is published.",
+    "look": "single hinged front door, handle right of centre at ~z 690, Aconity logo top-right"
+   },
+   "hose_connection_strip": {
+    "x0": 1388,
+    "x1": 1493,
+    "y0": 0,
+    "y1": 800,
+    "z0": 400,
+    "z1": 1300,
+    "estimated": true,
+    "basis": "gap between base cabinet and control cabinet filled with gas and water hoses and quick-connects (CMU/2026 photos)"
+   },
+   "process_chamber": {
+    "x0": 634,
+    "x1": 1243,
+    "y0": 250,
+    "y1": 950,
+    "z0": 977,
+    "z1": 1300,
+    "estimated": true,
+    "basis": "x and z from CMU photo (px 380-531, top row 293). Depth assumed ~700 mm and centred. Exchangeable module sitting on top of the base.",
+    "viewport": {
+     "W": 170,
+     "H": 57,
+     "x_centre": 920,
+     "z_centre": 1150,
+     "estimated": true,
+     "note": "small rectangular bolted-flange window, LED-lit, centred on chamber front"
+    },
+    "handle_z": 1017
+   },
+   "optics_portal_frame": {
+    "x0": 540,
+    "x1": 1360,
+    "y0": 250,
+    "y1": 950,
+    "z0": 977,
+    "z1": 1905,
+    "estimated": true,
+    "basis": "two black aluminium-profile posts (~60 mm, x 540-600 and 1300-1360) either side of the chamber, carrying a horizontal scanner shelf at z ~1485-1500; post tops at z 1905 (CMU photo row 143; 1847 in the 2026 photo). Depth assumed ~700 mm."
+   },
+   "beam_column": {
+    "x0": 807,
+    "x1": 1089,
+    "y0": 400,
+    "y1": 800,
+    "z0": 1300,
+    "z1": 1485,
+    "estimated": true,
+    "basis": "focusing/protective-window turret between the scanner shelf and the chamber lid (CMU photo)"
+   },
+   "scanner_block": {
+    "x0": 727,
+    "x1": 1150,
+    "y0": 350,
+    "y1": 750,
+    "z0": 1500,
+    "z1": 1808,
+    "estimated": true,
+    "basis": "two scan heads side by side in black or silver housings (CMU photo px 403-508 x rows 167-243)"
+   },
+   "fibres_and_z_axis": {
+    "x0": 780,
+    "x1": 1150,
+    "y0": 400,
+    "y1": 800,
+    "z0": 1808,
+    "z1": 2349,
+    "estimated": true,
+    "basis": "vertical actuator, drag chains and yellow fibre loops; top of the loops at CMU row 33 = 2349 mm, which matches the 2320 mm spec height. The 2026 photo has lower loops, ~2170 mm."
+   },
+   "control_cabinet": {
+    "x0": 1493,
+    "x1": 2450,
+    "y0": 0,
+    "y1": 800,
+    "z0": 0,
+    "z1": 1166,
+    "estimated": true,
+    "basis": "x from CMU photo px 593-830 (957 mm wide); worktop surface at 1166 mm (1162 mm in the 2026 photo). Depth ESTIMATED 800 mm (typical electrical enclosure). Contains the control PC and the laser rack unit.",
+    "look": "two doors; left door carries a yellow-red e-stop and a push-button panel; 'aconity3D' lettering lower right; wood worktop with keyboard"
+   },
+   "control_tower": {
+    "x0": 1490,
+    "x1": 2350,
+    "y0": 350,
+    "y1": 800,
+    "z0": 1166,
+    "z1": 1889,
+    "estimated": true,
+    "basis": "upper box on the rear of the worktop (CMU photo px 592-805, top row 147; 1828 mm in the 2026 photo), with an LED strip along its top edge. Depth ESTIMATED."
+   },
+   "monitor": {
+    "x0": 1664,
+    "x1": 2254,
+    "y0": 250,
+    "y1": 320,
+    "z0": 1380,
+    "z1": 1727,
+    "estimated": true,
+    "basis": "~24-27 inch monitor on a pole mount in front of the tower (CMU photo px 633-779 wide)"
+   },
+   "estop": {
+    "x": 1703,
+    "z": 1065,
+    "estimated": true,
+    "basis": "CMU photo"
+   },
+   "button_panel": {
+    "x0": 1562,
+    "x1": 1849,
+    "z0": 868,
+    "z1": 1001,
+    "estimated": true,
+    "basis": "CMU photo; 2 rows of 6 illuminated push-buttons (Ready, E-Stop Reset, Laser, Chamber Illumination, Fixation Crane...) under the e-stop"
+   },
+   "front_access": "Everything is operated from the front: the chamber comes out forward (it is exchangeable), and the base door and control-cabinet doors open forward. Allow roughly 1 m of clear floor in front (planning assumption, not a spec)."
+  },
+  "peripherals": [
+   {
+    "name": "Filter unit (Filterperipherie MIDI; optional AconityINFINIFILTER)",
+    "included": "standard (configurator module 'Filterperipherie MIDI Basis' is active by default)",
+    "dims_mm": {
+     "W": 432,
+     "D": 432,
+     "H": 1405
+    },
+    "estimated": true,
+    "position": "left side of the main machine, same front line (CMU photo); already inside the 2450 mm spec width",
+    "basis": "CMU photo scaled 4.036 mm/px. No published dimensions."
+   },
+   {
+    "name": "Chiller (air-water 15.3 kW or water-water 15.8 kW)",
+    "included": "required for heated build platform and lasers >400 W",
+    "dims_mm": {
+     "W": 800,
+     "D": 800,
+     "H": 1400
+    },
+    "estimated": true,
+    "basis": "Size assumed from typical 15 kW air-cooled process chillers. This is not an Aconity figure, and no Aconity chiller photo or size was found. Place against a wall with airflow clearance; Aconity says frost-free indoor installation."
+   },
+   {
+    "name": "Setup station (Rüststation) with additional process chamber",
+    "included": "optional",
+    "dims_mm": {
+     "W": 700,
+     "D": 800,
+     "H": 1290
+    },
+    "estimated": true,
+    "basis": "2021 configurator render layer rust_station_... scaled by the control-cabinet width (2.454 mm/px): frame ~680 mm wide (~900 with handles), chamber top ~1290 mm. Depth assumed.",
+    "companion": {
+     "name": "PC cart for setup station",
+     "dims_mm": {
+      "W": 640,
+      "D": 600,
+      "H": 1880
+     },
+     "estimated": true,
+     "basis": "same render; H includes the monitor, worktop ~1.25-1.29 m"
+    }
+   },
+   {
+    "name": "Vacuum pump cabinet (MIDI vacuum option, ≤2 mbar)",
+    "included": "optional",
+    "dims_mm": {
+     "W": 670,
+     "D": 700,
+     "H": 1270
+    },
+    "estimated": true,
+    "basis": "2021 configurator render layer vacuuum_option_... (wood-topped cabinet with e-stop), scaled 2.454 mm/px; depth assumed"
+   },
+   {
+    "name": "AconitySIEVE (ultrasonic powder sieve)",
+    "included": "optional",
+    "dims_mm": {
+     "W": 600,
+     "D": 1050,
+     "H": 1100
+    },
+    "mass_kg": 100,
+    "estimated": false,
+    "basis": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/peripheral"
+   },
+   {
+    "name": "AconityXTRACT depowdering station (glove box)",
+    "included": "optional",
+    "dims_mm": null,
+    "estimated": null,
+    "basis": "no dimensions published"
+   }
+  ],
+  "images": [
+   {
+    "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+    "view": "front (orthographic-like, studio)",
+    "description": "Current dual-laser MIDI at CMU, with the filter unit. From left: filter unit ~18% of total width, a black cylinder over a drum with conical hopper on legs, ~0.6 of machine height. Main machine ~38%: single-door base cabinet to ~42% of the height, small chamber with LED-lit viewport at ~1.15 m, black aluminium portal with two scan heads at ~1.5-1.8 m, yellow fibre loops to the top. Control cabinet ~39%: wood worktop at ~50% of height, tall rear box with cyan LED strip at ~81%, monitor on pole, e-stop and button panel on left door. W/H = 607/582 px = 1.04 (spec 2450/2320 = 1.06)."
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/ilDodT2QDtq0fYFu/AconityMIDI_Webseite_Cover%20Image.png",
+    "view": "front (studio photo, dark background)",
+    "description": "Same current MIDI without the filter unit. Main machine (base cabinet 395 px wide) and control cabinet (412 px) side by side, base+control 840 px wide, floor-to-fibre-top 935 px. Base cabinet top at 45% of the fibre-top height, worktop at 53%, tower top at 84%. The small yellow-lit viewport is centred at ~1.18 m."
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/KkEA8wUIeL1sGVrR/Aconity-Midi-preview.png",
+    "view": "front",
+    "description": "Small transparent-background cut-out of the same studio photo (500x334 px)."
+   },
+   {
+    "url": "https://research.unt.edu/caaam/images/22_0116_caaam_instr_1650_0.jpg",
+    "view": "front, in-lab (perspective)",
+    "description": "UNT CAAAM installation (older 3D-scanner portal with a cantilevered Z-axis). Left to right: step ladder for reaching the optics, main machine, control cabinet with 2 monitors, the setup station with its own monitor, and a rack cabinet. Useful for how the system sits against a wall with a ~2.4 m clear ceiling zone."
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf#page=1",
+    "view": "3/4 front render (brochure cover)",
+    "description": "Full MIDI system (2018/2022 design): setup station with a second chamber on an aluminium frame, PC cart, wood-top vacuum/aux cabinet with e-stop, main machine, control cabinet with green-lit tower. Everything anthracite/black with wood worktops."
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/imagelayers/base_1001004178_aconitymidi-lg@2x_60213683017ea.jpg",
+    "view": "front orthographic render (configurator base layer)",
+    "description": "Base machine alone with the front door open: a central column (single visible cylinder + linear actuator) under the chamber, portal frame above. Other layers on the same 2280x1040 canvas (controlling_..., rust_station_..., vacuuum_option_..., E19_04...) composite into the whole system at one common scale."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/laser-powder-bed-fusion",
+    "quote": "\"Machine Dimensions (W x D X H)\" ... \"2450 mm x 1500 mm x 2320 mm\" ... \"Machine weight w/o powder\" ... \"1450 kg\" (aconity-midi); \"2700 x 1800 x 3000 mm³\" ... \"1600 kg\" (aconity-midi-plus); \"Lasers (maximum)\" \"2\" / \"4\"; \"Powder Deposition\" \"Bidirectional & vibrating\"",
+    "supports": [
+     "aconity_midi.dims_mm",
+     "aconity_midi.mass_kg",
+     "aconity_midi_plus.dims_mm",
+     "aconity_midi_plus.mass_kg",
+     "lasers",
+     "powder_handling"
+    ],
+    "note": "JSON API that renders the product pages https://aconity3d.com/products/aconity-midi/ and https://aconity3d.com/products/aconity-midi-plus/"
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Machine dimensions (W x D X H) : 2450 mm x 1500 mm x 2320 mm Machine weight w/o powder: 1450 kg",
+    "supports": [
+     "aconity_midi.dims_mm",
+     "aconity_midi.mass_kg"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "1x Green wavelength Single Mode 200 W / 500 W Up to 2x Infrared wavelength Single Mode 400 W / 500 W / 700 W / 1000 W / 1200 W AFX",
+    "supports": [
+     "aconity_midi.lasers"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Implementation of UL listed components 208 V, WYE, 32 Amp (3PH + N + PE)",
+    "supports": [
+     "utilities.electrical_US_option"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Cooling capacity: 15,3 kW Cooling type: Air-Water || To cool the optional heating unit and laser systems over 400 W output, a cooling unit is necessary",
+    "supports": [
+     "peripherals.chiller"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Maximum vertical displacement of build platform ≤ 200 mm ... Powder deposition with exchangeable rubber, knife or brush unit Fume extraction ≤ 150 m³/h",
+    "supports": [
+     "build_envelope.height",
+     "powder_handling",
+     "utilities.fume_extraction"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Docking station with controller for independent setup of additional process chamber",
+    "supports": [
+     "peripherals.setup_station"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Additional cabinet with vacuum pump",
+    "supports": [
+     "peripherals.vacuum_cabinet"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Control cabinet with control computer",
+    "supports": [
+     "layout.control_cabinet"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "encapsulates the beam path in the process chamber, which changes the laser machine from a class 4 to a class 1",
+    "supports": [
+     "notes.laser_class"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "MACHINE DIMENSIONS (W x D x H) 2170 mm x 1590 mm x 2340 mm MACHINE WEIGHT W / 0 POWDER 1450 kg",
+    "supports": [
+     "aconity_midi.dims_mm_alternatives"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "BUILD SPACE Ø 170 mm x H 200 mm OPTIONAL BUILD SPACE REDUCTION Ø 100 mm x H 200 mm Ø 55 mm x H 200 mm",
+    "supports": [
+     "aconity_midi.build_envelope"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "PREHEATING TEMP/ HEATED AREA 500 ° C / Ø 170 mm x H 180 mm 800 ° C / Ø 100 mm x H 180 mm 1200 ° C / Ø 70 mm x H 150 mm",
+    "supports": [
+     "aconity_midi.preheating"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "INERT GAS TYPE/ PRESSURE Argon 4.6 / 6 bar Nitrogen / 6 bar OPTIONAL INERTIZATION SYSTEM Vaccum < 2 mbar",
+    "supports": [
+     "aconity_midi.inert_gas"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "INERT GAS CONSUMPTION < 5 l/ min during process < 30 l / min during purging < 5 l/ min for vacuum RESIDUAL OXYGEN CONTENT <100 ppm",
+    "supports": [
+     "aconity_midi.inert_gas"
+    ]
+   },
+   {
+    "url": "https://configurator.aconity3d.com/storage/documents/configurator-machines/mtF27r1d8c7EruKa/AconityMIDI_2022.pdf",
+    "quote": "LASER CONFIGURATION 1 x Green wavelength Single Mode 200 W / 500 W Up to 4 x Infrared wavelength Single Mode 200 W / 400 W / 500 W / 700 W / 1000 W / 1200 W AFX",
+    "supports": [
+     "aconity_midi.lasers (2022 wording)"
+    ]
+   },
+   {
+    "url": "https://aconity3d.com/documents/Flyer_AconityMidi_2018_Print.pdf",
+    "quote": "BUILD SPACE Ø 170 mm x H 250 mm ... LASER CONFIGURATION Single Mode Fiber 400 W / 1000 W ... MACHINE DIMENSIONS (W X D X H) 2170 mm x 1590 mm x 2340 mm MACHINE WEIGHT W/O POWDER 1385 kg",
+    "supports": [
+     "aconity_midi.dims_mm_alternatives",
+     "aconity_midi.build_envelope.note"
+    ],
+    "note": "text is outlined vector art; read from the rendered page 2"
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/DNCrPeZxmFKIwlTX/AconityMIDI.pdf",
+    "quote": "Build Space Ø 170 x 200 mm³ ... Laser Configuration Up to 2 Lasers 200 - 4000 W Multiple Beam Profile Options Different Wavelengths Available ... Vacuum Option ≤ 2 mbar Absolute Pressure",
+    "supports": [
+     "aconity_midi.build_envelope",
+     "aconity_midi.lasers",
+     "aconity_midi.inert_gas"
+    ],
+    "note": "Jan-2026 booklet pages 20-21; no machine dimensions given"
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/peripheral",
+    "quote": "\"Machine Dimensions (W x D X H)\" ... \"600 x 1050 x 1100 mm³\" ... \"Machine weight w/o powder\" ... \"100 kg\" (AconitySIEVE); \"Glove ports for contactless operation\" (AconityXTRACT depowdering station)",
+    "supports": [
+     "peripherals.sieve",
+     "powder_handling.glove_ports"
+    ]
+   },
+   {
+    "url": "https://www.rhein-main-universitaeten.de/en/rmu-facilities/aconity-midi-fm-red",
+    "quote": "500 W single-mode fiber laser (1080 nm) ... Build chamber dimensions: Ø 70 mm × H 150 mm, Ø 170 mm × H 250 mm, and Ø 55 mm × H 200 mm",
+    "supports": [
+     "aconity_midi.build_envelope.note (installed unit)"
+    ]
+   },
+   {
+    "url": "https://www.amazemet.com/aconity-midi-lpbf-system-in-amazemets-rd-facility/",
+    "quote": "Build volume of Ø 170 mm x H 200 mm with the possibility to reduce platform size to Ø 55 mm ... Single Mode 400 W laser",
+    "supports": [
+     "aconity_midi.build_envelope (installed unit)"
+    ]
+   },
+   {
+    "url": "https://engineering.cmu.edu/next/facilities/equipment-details/aconity-midi.html",
+    "quote": "Equipped with an optional second process chamber",
+    "supports": [
+     "images (CMU photo host page)"
+    ]
+   },
+   {
+    "url": "https://research.unt.edu/caaam/core-facilities-capabilities.html",
+    "quote": "Aconity MIDI SLM System",
+    "supports": [
+     "images (UNT in-lab photo host page)"
+    ]
+   }
+  ],
+  "estimated_keys": [
+   "layout.*",
+   "peripherals[filter unit].dims_mm",
+   "peripherals[chiller].dims_mm",
+   "peripherals[setup station].dims_mm",
+   "peripherals[vacuum cabinet].dims_mm",
+   "all depth (y) values"
+  ],
+  "notes": "Two published MIDI envelopes exist: 2170 x 1590 x 2340 mm (2018 flyer and 2022 datasheet; older design) and 2450 x 1500 x 2320 mm (current product page and configurator). For a new purchase, use 2450 x 1500 x 2320 mm and 1450 kg. On a 2450 x 1500 footprint that is ~1.45 t, about 3.9 kN/m², and the load is concentrated on levelling feet, so check the floor rating. Aconity machines are anthracite/black, not white. The laser safety class depends on the optional laser-proof enclosure: without it the machine is Class 4 and the room needs interlocked access."
+ },
+ "aconity_midi_plus": {
+  "name": "Aconity3D AconityMIDI+ (laser powder bed fusion, production-research hybrid)",
+  "variant": "MIDI+",
+  "dims_mm": {
+   "W": 2700,
+   "D": 1800,
+   "H": 3000
+  },
+  "dims_note": "Identical in the 2019 flyer, the 2022 datasheet, the current configurator/product page and ET Additive. The front photo scales to about 2680 mm wide (main machine + control cabinet) and about 2660 mm to the top of the fibres, so the 3000 mm height presumably includes vertical travel of the scan unit (a configurator option) and/or service clearance. Model the 3000 mm as a clearance box.",
+  "mass_kg": 1600,
+  "build_envelope": {
+   "shape": "cylinder",
+   "diameter": 250,
+   "height": 250,
+   "reductions": [
+    {
+     "diameter": 170,
+     "height": 250
+    },
+    {
+     "diameter": 100,
+     "height": 250
+    },
+    {
+     "diameter": 55,
+     "height": 250
+    }
+   ]
+  },
+  "lasers": "Up to 4 lasers (QUATTRO), 200-4000 W, multiple beam profiles, green option (1x 200/500 W). 3D scanners only (no F-theta option in the current data).",
+  "preheating": "500 °C / Ø250 x H180 mm; 1000 °C / Ø150 x H150 mm",
+  "inert_gas": "Argon 4.6 / 6 bar or nitrogen / 6 bar; <5 l/min process; <30 (2019/2022 datasheets) or <60 (current API) l/min purging; O2 <100 ppm. No vacuum option.",
+  "powder_handling": "Bidirectional and vibrating powder deposition with a twin powder supply: three cylinders (supply, build, supply) are visible on the spare chamber in the configurator render. Optional multi-material deposition (Aerosint) for up to 3 materials. Exchangeable process chamber with optional setup station.",
+  "colours": "Same palette as the MIDI: anthracite/black panels, black aluminium portal, wood worktop, cyan/green LED strip on the control tower. The chamber has a long dark-blue/yellow-tinted horizontal viewport.",
+  "layout": {
+   "_scale": "Aconity front photo Teaser_MIDI+.png (lid OPEN, Aerosint recoater fitted), 2.088 mm/px from the alpha mask (floor at row 1409, x0 = left edge of base cabinet at column 468)",
+   "casters_feet_height": {
+    "value": 133,
+    "estimated": true,
+    "basis": "photo rows 1345-1409"
+   },
+   "base_cabinet": {
+    "x0": 0,
+    "x1": 1716,
+    "y0": 0,
+    "y1": 1400,
+    "z0": 0,
+    "z1": 1011,
+    "estimated": true,
+    "basis": "photo columns 468-1290, top row 925. Depth ESTIMATED 1400 mm, leaving ~400 mm of the 1800 mm spec depth for rear services/lid swing.",
+    "look": "double doors with two central vertical handles; logo top-centre"
+   },
+   "process_chamber_closed": {
+    "x0": 150,
+    "x1": 1640,
+    "y0": 150,
+    "y1": 1250,
+    "z0": 1011,
+    "z1": 1340,
+    "estimated": true,
+    "basis": "chamber width from the lid-open photo (133-1665 incl. gas-strut hinges); closed height ~330 mm from the 3/4 render and configurator render proportions",
+    "viewport": {
+     "W": 650,
+     "H": 90,
+     "x_centre": 895,
+     "z_centre": 1200,
+     "estimated": true,
+     "note": "long horizontal viewport ~40-45% of chamber width, centred, handle below"
+    },
+    "lid": "hinged at the rear, gas springs both sides; opened lid reaches z ~1780 (photo row 555)"
+   },
+   "optics_portal_frame": {
+    "x0": 138,
+    "x1": 1675,
+    "y0": 150,
+    "y1": 1250,
+    "z0": 1011,
+    "z1": 1771,
+    "estimated": true,
+    "basis": "black aluminium portal posts either side of the chamber (photo), bridge at ~1771-1835"
+   },
+   "scanner_block": {
+    "x0": 453,
+    "x1": 1305,
+    "y0": 400,
+    "y1": 1000,
+    "z0": 1835,
+    "z1": 2253,
+    "estimated": true,
+    "basis": "up to 4 scan heads in a black enclosure, 852 mm wide (photo columns 685-1093, rows 330-530). The 3/4 render shows a stepped telescopic cover between the scanner and the chamber when the head is raised."
+   },
+   "fibres_and_z_axis": {
+    "x0": 589,
+    "x1": 1186,
+    "y0": 500,
+    "y1": 900,
+    "z0": 2253,
+    "z1": 2658,
+    "estimated": true,
+    "basis": "Z-axis motor, drag chains and fibre loops (photo top row 136)"
+   },
+   "control_cabinet": {
+    "x0": 1716,
+    "x1": 2679,
+    "y0": 0,
+    "y1": 800,
+    "z0": 0,
+    "z1": 1201,
+    "estimated": true,
+    "basis": "photo columns 1290-1751 (963 mm); worktop at 1201 mm; depth ESTIMATED 800 mm"
+   },
+   "control_tower": {
+    "x0": 1700,
+    "x1": 2572,
+    "y0": 350,
+    "y1": 800,
+    "z0": 1201,
+    "z1": 1940,
+    "estimated": true,
+    "basis": "photo columns 1282-1700, LED strip top at 1940 mm, central hood to ~1968 mm; depth ESTIMATED"
+   },
+   "monitor": {
+    "x0": 1867,
+    "x1": 2447,
+    "y0": 250,
+    "y1": 320,
+    "z0": 1301,
+    "z1": 1616,
+    "estimated": true,
+    "basis": "photo"
+   },
+   "estop": {
+    "x": 1936,
+    "z": 1102,
+    "estimated": true,
+    "basis": "photo"
+   }
+  },
+  "peripherals": [
+   {
+    "name": "Filter unit (Filterperipherie MIDI+)",
+    "dims_mm": null,
+    "estimated": true,
+    "basis": "exists as a configurator module; no photo or size found. Use the MIDI filter-unit size (~430 x 430 x 1400) as a placeholder."
+   },
+   {
+    "name": "Laser cabinet (Laserschrank)",
+    "dims_mm": null,
+    "estimated": true,
+    "basis": "configurator module '02.99.05_001.00 Laserschrank' exists for MIDI+; no size or photo found"
+   },
+   {
+    "name": "Chiller 15.3 kW air-water / 15.8 kW water-water",
+    "dims_mm": {
+     "W": 800,
+     "D": 800,
+     "H": 1400
+    },
+    "estimated": true,
+    "basis": "typical 15 kW class, not an Aconity figure"
+   },
+   {
+    "name": "Setup station with spare 3-cylinder chamber, PC cart, extra chamber on trolley",
+    "dims_mm": null,
+    "estimated": true,
+    "basis": "shown in the configurator layers E04/E02 (links below). Spare chamber frame roughly the width of the base cabinet's chamber zone."
+   }
+  ],
+  "images": [
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/geFS1iuwoLodZMV5/Teaser_MIDI+.png",
+    "view": "front (photo, transparent background)",
+    "description": "Main machine and control cabinet, lid open, Aerosint recoater. Base cabinet ~64% of total width and ~38% of photo height (double doors). Control cabinet ~36% of width, worktop at ~45%, tower top at ~73%. The optics block sits above the chamber at 69-85% of height, and the fibres reach 100%."
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/wlblOJB3pcnGRRLD/AconityMIDI+_Backlid_header-Multi-Mat_Optimized.png",
+    "view": "front (photo, dark background)",
+    "description": "Same machine and pose as the teaser (lid open, multi-material)."
+   },
+   {
+    "url": "https://etadditive.com/wp-content/uploads/2022/06/AconityMidi_plus-e1654854292530-1024x1024.png",
+    "view": "3/4 front-left render",
+    "description": "Lid closed. Long dark viewport across the chamber front, gas-spring lid, stepped telescopic cover over the beam path, 4-fibre scanner block on the Z-portal, control cabinet with green-lit tower behind the monitor, wood worktop. Shows that the base is deeper than the control cabinet."
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/imagelayers/E03_01BasiskomponenteAconityMIDI+_617bf141ac0bd.png",
+    "view": "front orthographic render layer (configurator)",
+    "description": "Base machine. Composite it with E01 (control), E04 (setup station), E02 (extra chamber), E07/E05 (scanner/Z) on the same 2280x1040 canvas for the whole system at one scale. Note: base/control width ratio 1.45 here vs 1.78 in the photo, so the render is an older design."
+   }
+  ],
+  "sources": [
+   {
+    "url": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/laser-powder-bed-fusion",
+    "quote": "\"Machine Dimensions (W x D X H)\" ... \"2450 mm x 1500 mm x 2320 mm\" ... \"Machine weight w/o powder\" ... \"1450 kg\" (aconity-midi); \"2700 x 1800 x 3000 mm³\" ... \"1600 kg\" (aconity-midi-plus); \"Lasers (maximum)\" \"2\" / \"4\"; \"Powder Deposition\" \"Bidirectional & vibrating\"",
+    "supports": [
+     "aconity_midi.dims_mm",
+     "aconity_midi.mass_kg",
+     "aconity_midi_plus.dims_mm",
+     "aconity_midi_plus.mass_kg",
+     "lasers",
+     "powder_handling"
+    ],
+    "note": "JSON API that renders the product pages https://aconity3d.com/products/aconity-midi/ and https://aconity3d.com/products/aconity-midi-plus/"
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Implementation of UL listed components 208 V, WYE, 32 Amp (3PH + N + PE)",
+    "supports": [
+     "utilities.electrical_US_option"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Cooling capacity: 15,3 kW Cooling type: Air-Water || To cool the optional heating unit and laser systems over 400 W output, a cooling unit is necessary",
+    "supports": [
+     "peripherals.chiller"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Maximum vertical displacement of build platform ≤ 200 mm ... Powder deposition with exchangeable rubber, knife or brush unit Fume extraction ≤ 150 m³/h",
+    "supports": [
+     "build_envelope.height",
+     "powder_handling",
+     "utilities.fume_extraction"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Docking station with controller for independent setup of additional process chamber",
+    "supports": [
+     "peripherals.setup_station"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Additional cabinet with vacuum pump",
+    "supports": [
+     "peripherals.vacuum_cabinet"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "Control cabinet with control computer",
+    "supports": [
+     "layout.control_cabinet"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/2",
+    "quote": "encapsulates the beam path in the process chamber, which changes the laser machine from a class 4 to a class 1",
+    "supports": [
+     "notes.laser_class"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/3",
+    "quote": "Machine dimensions (W x D X H) : 2700 mm x 1800 mm x 3000 mm Machine weight w/o powder: 1600 kg",
+    "supports": [
+     "aconity_midi_plus.dims_mm",
+     "aconity_midi_plus.mass_kg"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/configurator/machine/3",
+    "quote": "twin supply system, the Aconity MIDI+ offers increased productivity with a bidirectional powder deposition",
+    "supports": [
+     "aconity_midi_plus.powder_handling"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/gxPFMisXKEtzchm0/AconityMIDI+_2022.pdf",
+    "quote": "MACHINE DIMENSIONS (W x D x H) 2700 mm x 1800 mm x 3000 mm MACHINE WEIGHT W/O POWDER 1600 kg",
+    "supports": [
+     "aconity_midi_plus.dims_mm",
+     "aconity_midi_plus.mass_kg"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/gxPFMisXKEtzchm0/AconityMIDI+_2022.pdf",
+    "quote": "BUILD SPACE Ø 250 mm x H 250  mm OPTIONAL BUILD SPACE  REDUCTION Ø 170 mm x H 250 mm Ø 100 mm x H 250 mm Ø 55 mm x H 250 mm",
+    "supports": [
+     "aconity_midi_plus.build_envelope"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/gxPFMisXKEtzchm0/AconityMIDI+_2022.pdf",
+    "quote": "PREHEATING TEMP / BUILD SPACE 500 ° C / Ø 250 mm x H 180 mm 1000 ° C / Ø 150 mm x H 150 mm",
+    "supports": [
+     "aconity_midi_plus.preheating"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/gxPFMisXKEtzchm0/AconityMIDI+_2022.pdf",
+    "quote": "The AconityMIDI+ is also available with up to four lasers in the QUATTRO-Laser configuration",
+    "supports": [
+     "aconity_midi_plus.lasers"
+    ]
+   },
+   {
+    "url": "https://aconity3d.com/documents/Flyer_AconityMidi_2019_Print.pdf",
+    "quote": "MACHINE DIMENSIONS (W X D X H) 2700 mm x 1800 mm x 3000 mm MACHINE WEIGHT W/O POWDER 1600 kg",
+    "supports": [
+     "aconity_midi_plus.dims_mm"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/storage/documents/configurator-machines/TjAnQLKfKmer5dQb/AconityMIDI+.pdf",
+    "quote": "Build Space Ø 250 x 250 mm³ ... Laser Configuration Up to 4 Lasers 200 - 4000 W ... Multi-Material Support Up to three Materials",
+    "supports": [
+     "aconity_midi_plus.build_envelope",
+     "aconity_midi_plus.lasers",
+     "aconity_midi_plus.powder_handling"
+    ]
+   },
+   {
+    "url": "https://etadditive.com/machine/aconitymidi-3/",
+    "quote": "2700 mm x 1800 mm x 3000 mm ... 1600 kg",
+    "supports": [
+     "aconity_midi_plus.dims_mm (distributor)"
+    ]
+   },
+   {
+    "url": "https://configurator-api.aconity3d.com/api/v1/configurator-machines/peripheral",
+    "quote": "\"Machine Dimensions (W x D X H)\" ... \"600 x 1050 x 1100 mm³\" ... \"Machine weight w/o powder\" ... \"100 kg\" (AconitySIEVE); \"Glove ports for contactless operation\" (AconityXTRACT depowdering station)",
+    "supports": [
+     "peripherals.sieve",
+     "powder_handling.glove_ports"
+    ]
+   },
+   {
+    "url": "https://engineering.cmu.edu/next/facilities/equipment-details/aconity-midi.html",
+    "quote": "Equipped with an optional second process chamber",
+    "supports": [
+     "images (CMU photo host page)"
+    ]
+   },
+   {
+    "url": "https://research.unt.edu/caaam/core-facilities-capabilities.html",
+    "quote": "Aconity MIDI SLM System",
+    "supports": [
+     "images (UNT in-lab photo host page)"
+    ]
+   }
+  ],
+  "estimated_keys": [
+   "layout.*",
+   "peripherals[*].dims_mm",
+   "all depth (y) values"
+  ],
+  "notes": "~1.6 t on a 2.7 x 1.8 m footprint. Needs ~3.0 m clear height per spec."
+ },
+ "midi_vs_midi_plus": {
+  "envelope_mm": {
+   "MIDI": "2450 x 1500 x 2320 (current; 2170 x 1590 x 2340 in 2018/2022)",
+   "MIDI+": "2700 x 1800 x 3000"
+  },
+  "mass_kg": {
+   "MIDI": 1450,
+   "MIDI+": 1600
+  },
+  "build": {
+   "MIDI": "Ø170 x 200",
+   "MIDI+": "Ø250 x 250"
+  },
+  "lasers_max": {
+   "MIDI": 2,
+   "MIDI+": 4
+  },
+  "max_preheat_C": {
+   "MIDI": "1200 (Ø70)",
+   "MIDI+": "1000 (Ø150)"
+  },
+  "vacuum_option": {
+   "MIDI": true,
+   "MIDI+": false
+  },
+  "multi_material": {
+   "MIDI": false,
+   "MIDI+": true
+  },
+  "base_cabinet_width_mm_est": {
+   "MIDI": 924,
+   "MIDI+": 1716
+  },
+  "shared": "same ~0.96 m control cabinet with wood worktop (~1.17-1.20 m) and LED-strip tower (~1.9 m); same colours"
+ },
+ "corrections_2026-10-03": {
+  "why": "PR #240 review (2026-10-03): the first model 'looks kind of weird. Some non-physical assembly/geometry there.' Its fibre loops floated in mid-air, the filter legs touched nothing, a 'z actuator' poked through a portal slab, the scan heads sat on a solid shelf with no beam path, and a hose floated between the filter and the machine. All of these were invented or misread parts. This pass rebuilt the model from Aconity's configurator layers, Aconity's 2026 cover photo, CMU's photo and Amazemet's photos of their machine.",
+  "_meta": {
+   "generated": "2026-10-03",
+   "units": "mm",
+   "frame": "x from the left edge of the envelope seen from the front, y back from the front face, z up from the floor (same as sources/aconity_midi.json)",
+   "method": "Downloaded and inspected ~70 images: the CMU/AXT current-design studio photo (filter unit included), the 2026 Aconity cover photo, every MIDI layer from the configurator API (base frame, 2025 3D-scanner and multiscanner trays, the Rexroth vertical scanning unit, laser enclosure, control cabinet, setup station), Amazemet's MIDI photo set, ET Additive's 2022 brochure render (3/4 view, older design), 3Dnatives, TU Darmstadt and UNT lab photos, Aconity news (2018 MultiScan), and the Jan-2026 booklet page. Positions were read from mm-gridded crops of the CMU photo (4.036 mm/px, floor row 615, x0 col 223) and cross-checked against the 2026 photo (2.323 mm/px) and configurator layers (~2.45 mm/px). Values are apparent front-plane positions; depths are inferred from part relationships.",
+   "not_done": [
+    "No side, rear or top view of the CURRENT MIDI was found anywhere (configurator layers are front orthographic only; brochures repeat the same front photo); every y value is an estimate",
+    "Configurator API exposes no 3D models (glb/obj/stl), only 2D PNG layers",
+    "YouTube: only the Formnext 2019 MIDI+ interview (EvWw3R7NiAk) turned up; thumbnails not fetched or used",
+    "LinkedIn, Formnext galleries, ORNL, NIST, Penn State, Sheffield, Imperial, RMIT, TUM, Fraunhofer ILT pages not searched (time budget)",
+    "CubXL Pi fetch not used (no page was blocked)",
+    "Filter-unit depth unresolved: in the CMU photo its castors sit 175-225 mm above the floor line (perspective implies it stands ~0.6-0.9 m back), yet the base cabinet's four feet are all on one line, so the photo may be a composite",
+    "Fibre chains: the 2025 configurator layer and the 2026 photo show both chains outboard of the collimators; the CMU unit's left chain looks inboard. The outboard layout is used."
+   ]
+  },
+  "observations": [
+   {
+    "part": "optics portal posts",
+    "what_it_really_is": "Two vertical black aluminium-profile uprights, one either side of the process chamber. In Aconity's configurator base render they are the outer uprights of the base cabinet's own profile frame: they run continuously from levelling feet on the floor, inside the cabinet's side panels, up past the cabinet top to about 1.9 m. The CMU front photo shows four levelling feet under the base cabinet, at x ~510, 720, 1150 and 1350. The outer two sit under these uprights. On the current machine each post has a bright strip on its inner face above and below the scanner tray, probably a linear guide rail. Each post top ends in a small silver block. Nothing spans the post tops at the front.",
+    "position_mm": {
+     "left_post_x": [
+      540,
+      600
+     ],
+     "right_post_x": [
+      1290,
+      1350
+     ],
+     "y": [
+      900,
+      960
+     ],
+     "z": [
+      0,
+      1905
+     ]
+    },
+    "size_mm": {
+     "section": "~60 x 60 (apparent width 55-60)",
+     "height_above_base_top": 928
+    },
+    "supported_by": "Levelling feet on the floor (they are base-frame uprights). They do not stand on the cabinet lid.",
+    "connects_to": "Base frame below; the hidden crossbar near the top; possibly guide rails for the scanner tray",
+    "confidence": "medium (x and z high; continuous-to-floor medium; y LOW, inferred from the scanner tray being cantilevered forward of a rear Z-axis)",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "CMU front photo with a mm grid; post tops at z ~1905"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/ilDodT2QDtq0fYFu/AconityMIDI_Webseite_Cover%20Image.png",
+      "note": "2026 Aconity photo: posts with silver strips and silver top blocks, no front crossbar; post tops ~1847"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/base_1001004178_aconitymidi-lg@2x_60213683017ea.jpg",
+      "note": "Configurator base render (2021 design, door open): uprights run from the floor feet to above the crossbar"
+     }
+    ]
+   },
+   {
+    "part": "portal crossbar",
+    "what_it_really_is": "A horizontal aluminium profile between the two posts with 45-degree corner gusset plates. In front views of the current machine it is hidden behind the scanner tray's back wall and side cheeks. It is visible in the configurator render when the narrower 2D-scanner tray is fitted, and from below in Amazemet's chamber photo. The Z-axis linear module hangs from its centre.",
+    "position_mm": {
+     "x": [
+      540,
+      1350
+     ],
+     "y": [
+      930,
+      990
+     ],
+     "z": [
+      1620,
+      1680
+     ]
+    },
+    "size_mm": {
+     "profile": "~60 x 60",
+     "gussets": "~150 mm triangles at both ends"
+    },
+    "supported_by": "Both posts",
+    "connects_to": "Z-axis linear module (bolted through a vertical adapter plate)",
+    "confidence": "medium for existence; low for exact z and y. The 2021 render puts it ~240 mm below the post tops: 1905-240 = ~1665.",
+    "sources": [
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/scansystem2d_1001005549_aconitymidi-lg@2x_602136838a5cd.png",
+      "note": "2D-scanner layer composited on the base render: the crossbar and its gusset show at the right, behind the tray"
+     },
+     {
+      "url": "https://www.amazemet.com/wp-content/uploads/2024/11/aconity-f1_web-33.webp",
+      "note": "Amazemet MIDI: crossbar with corner gussets above the chamber and the Rexroth module hanging from it"
+     }
+    ]
+   },
+   {
+    "part": "Z-axis (vertical scanning unit)",
+    "what_it_really_is": "A Bosch Rexroth aluminium linear module (silver profile with the 'rexroth' label) standing vertically on the machine's centreline behind the scan heads. A black motor/end block sits on top, and the module has its own small cable chain. It sticks up above the scan heads with a free top end. It is bolted to the crossbar, so nothing has to pass through a top bridge. Its lower end reaches down to just above the rear of the chamber lid, as seen in the Amazemet photos. The scanner tray's back wall is bolted to its carriage, so the whole optics tray moves vertically. Aconity's configurator calls this the 'Vertikale Scaneinheit / Z-Achse'.",
+    "position_mm": {
+     "x": [
+      890,
+      1020
+     ],
+     "y": [
+      870,
+      955
+     ],
+     "z": [
+      1330,
+      2090
+     ],
+     "motor_cap_z": [
+      2060,
+      2095
+     ]
+    },
+    "size_mm": {
+     "w": 130,
+     "d": 85,
+     "h": 760
+    },
+    "supported_by": "Crossbar, through an adapter plate",
+    "connects_to": "Carriage to the scanner-tray back wall; motor cable to the control cabinet through the optics cable bundle",
+    "confidence": "medium (identity high, from the Rexroth label in the configurator layer and Amazemet photos; y low)",
+    "sources": [
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/vertical_scanning_unit_1001002616_aconitymidi-lg@2x_60213683aa14d.png",
+      "note": "Configurator vertical_scanning_unit layer: Rexroth module, 58 px = ~140 mm wide"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/images/1001002616_6023e305e00a7.png",
+      "note": "Configurator option thumbnail: the linear module with mounting plate and cable chain"
+     },
+     {
+      "url": "https://www.amazemet.com/wp-content/uploads/2023/06/aconity-f1_web-39-1024x683.webp",
+      "note": "Amazemet MIDI: Rexroth module beside the open chamber"
+     },
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "silver column with dark cap between the collimators, top z ~2090"
+     }
+    ]
+   },
+   {
+    "part": "scanner tray (the 'shelf')",
+    "what_it_really_is": "A black sheet-metal L-cradle: a floor plate with a lip, a full-width back wall and triangular side gussets or cheeks at both ends. It is not a fixed shelf between the posts. It is the moving optics carriage, and its back wall is bolted to the Z-axis carriage. The scan heads stand on the floor plate. The floor has a beam opening under the scan heads, where the beam-path enclosure tube is flanged on underneath. Small accessory boxes sit in the cheek spaces: a pyrometer or camera module on the left, a cable junction on the right.",
+    "position_mm": {
+     "x": [
+      545,
+      1345
+     ],
+     "y": [
+      400,
+      870
+     ],
+     "floor_z": [
+      1490,
+      1505
+     ],
+     "back_wall_z": [
+      1505,
+      1720
+     ]
+    },
+    "size_mm": {
+     "w": 800,
+     "d": 470,
+     "floor_t": 12,
+     "back_wall_t": 10,
+     "back_wall_h": 215,
+     "beam_opening_dia": 220
+    },
+    "supported_by": "Z-axis carriage via its back wall; guided by the post rails",
+    "connects_to": "Scan heads (on top), beam-path tube (underneath), cable bundle from the control cabinet (enters at the right cheek)",
+    "confidence": "high for form, x and z; medium for depth",
+    "sources": [
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/E13_01OptischesSystemMultiscanner_68b6afb112cb3.png",
+      "note": "2025 configurator multiscanner layer: floor plate, back wall, side gussets, chains, collimators"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/E09_01OptischesSystem3DScanner_68b6afb1094ff.png",
+      "note": "2025 configurator single 3D-scanner layer, same tray"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/ilDodT2QDtq0fYFu/AconityMIDI_Webseite_Cover%20Image.png",
+      "note": "2026 photo: same tray, black housings"
+     }
+    ]
+   },
+   {
+    "part": "scan heads (dual 3D scanner)",
+    "what_it_really_is": "Two scan-head housings side by side on the tray floor: grey/silver on the CMU unit, black with the Aconity logo in 2026. Inside are Raylase galvo heads, per the 2018 MultiScan module render. Each head takes the collimated beam from the vertical blue collimator on its top and fires it down through the tray's beam opening. A small connector block (grey cable plugs) sits on top between the two heads.",
+    "position_mm": {
+     "head1_x": [
+      740,
+      945
+     ],
+     "head2_x": [
+      945,
+      1145
+     ],
+     "y": [
+      450,
+      800
+     ],
+     "z": [
+      1505,
+      1810
+     ]
+    },
+    "size_mm": {
+     "each_w": 205,
+     "d": 350,
+     "h": 305
+    },
+    "supported_by": "Tray floor plate",
+    "connects_to": "Collimators on top; beam exits down through the tray floor into the beam-path tube",
+    "confidence": "high for x and z; depth low",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "x 740-1145, z 1505-1810"
+     },
+     {
+      "url": "https://news.aconity3d.com/app/uploads/2018/10/Multiscan_verbessert_resized_VeryWide_Black_2-3.png",
+      "note": "2018 dual scan-head module: Raylase heads below, fibre receptacles with red caps on top"
+     }
+    ]
+   },
+   {
+    "part": "collimators / fibre receivers",
+    "what_it_really_is": "One blue cylindrical collimator (z-shifter) per laser, standing vertically on top of each scan head near its outer edge. Each has a silver fibre connector (QBH-type) on top where the yellow fibre plugs in.",
+    "position_mm": {
+     "left_x_centre": 767,
+     "right_x_centre": 1115,
+     "y_centre": 600,
+     "blue_body_z": [
+      1815,
+      1995
+     ],
+     "connector_z": [
+      1995,
+      2100
+     ]
+    },
+    "size_mm": {
+     "blue_dia": 50,
+     "blue_len": 180,
+     "connector_dia": 28,
+     "connector_len": 105
+    },
+    "supported_by": "Scan-head housing top",
+    "connects_to": "Yellow fibre from above; beam down into the scan head",
+    "confidence": "high for x and z",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "blue bodies x 744-793 and 1091-1145"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/E13_01OptischesSystemMultiscanner_68b6afb112cb3.png",
+      "note": "collimators near the outer edges of the heads"
+     }
+    ]
+   },
+   {
+    "part": "vertical fibre/cable chains",
+    "what_it_really_is": "Two short vertical black cable carriers, one outboard of each collimator, standing on the tray (behind the cheeks, on the back-wall top edge). Each carries the laser fibre plus grey signal cables up from tray level. At the top the fibre leaves the chain and makes a 180-degree bend down into the collimator connector. The grey cables arc over to connectors on the scan-head tops.",
+    "position_mm": {
+     "left_x": [
+      680,
+      740
+     ],
+     "right_x": [
+      1150,
+      1210
+     ],
+     "y": [
+      760,
+      820
+     ],
+     "z": [
+      1720,
+      2120
+     ]
+    },
+    "size_mm": {
+     "w": 60,
+     "d": 45,
+     "h": 400
+    },
+    "supported_by": "Scanner tray (back wall / cheek top)",
+    "connects_to": "Fibre and cable bundle arriving at the tray's right cheek",
+    "confidence": "medium (outboard placement per the configurator and 2026 photo; the CMU unit looks slightly different)",
+    "sources": [
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/E13_01OptischesSystemMultiscanner_68b6afb112cb3.png",
+      "note": "chains outboard of both collimators, fibres exit at the top"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/ilDodT2QDtq0fYFu/AconityMIDI_Webseite_Cover%20Image.png",
+      "note": "chains beside both collimators"
+     }
+    ]
+   },
+   {
+    "part": "fibre loops",
+    "what_it_really_is": "Not free loops. Each yellow fibre is a tall inverted U: it rises out of the top of its cable chain, bends 180 degrees, and drops into the collimator connector. Bend radius is ~30-60 mm, with straight legs ~150-250 mm. The loop tops set the overall height: CMU left ~2290, right ~2355 (spec H 2320); 2026 photo ~2160.",
+    "position_mm": {
+     "left_loop": {
+      "x": [
+       710,
+       770
+      ],
+      "top_z": 2290
+     },
+     "right_loop": {
+      "x": [
+       1115,
+       1180
+      ],
+      "top_z": 2355
+     },
+     "y": "~600-790, in the chain-collimator plane"
+    },
+    "size_mm": {
+     "fibre_cable_dia": 8
+    },
+    "supported_by": "Both ends: chain top and collimator connector",
+    "connects_to": "Chain top to collimator top",
+    "confidence": "high",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "loop tops"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/E13_01OptischesSystemMultiscanner_68b6afb112cb3.png",
+      "note": "inverted-U from chain to collimator"
+     }
+    ]
+   },
+   {
+    "part": "fibre and cable bundle to the control cabinet",
+    "what_it_really_is": "A free-hanging bundle of yellow/orange fibres plus a red cable. It leaves the tray's right cheek at z ~1600 and swings right and down to the control cabinet. It enters at the left-rear of the worktop, right beside the tower's left side (z ~1170-1200). The slack accommodates the Z travel. The laser sources are rack units in the control cabinet. Older design: same route up the tower's left side (ET Additive render).",
+    "position_mm": {
+     "start": {
+      "x": 1345,
+      "y": "~650",
+      "z": 1600
+     },
+     "end": {
+      "x": 1540,
+      "y": "~380",
+      "z": 1180
+     }
+    },
+    "size_mm": {
+     "bundle_dia": "~30 (2-3 cables of 8-10 mm)"
+    },
+    "supported_by": "Hangs between the tray cheek and the worktop gland",
+    "connects_to": "Laser sources and controls in the control cabinet; chains on the tray",
+    "confidence": "medium",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "orange/yellow cables from the tray's right cheek to the worktop's left end"
+     },
+     {
+      "url": "https://etadditive.com/wp-content/uploads/2022/06/AconityMidi-e1654854467288.png",
+      "note": "2022 brochure render: fibres rise from the worktop beside the tower"
+     }
+    ]
+   },
+   {
+    "part": "beam-path enclosure tube",
+    "what_it_really_is": "Aconity's 'laser enclosure' (Laserschutzeinhausung) option: a black, stepped, telescopic tube that encloses the beam from the tray floor down to the chamber lid's window flange. That enclosure makes the machine laser class 1. It replaces the current model's 'beam turret' block.",
+    "position_mm": {
+     "x_centre": 935,
+     "y_centre": 600,
+     "top_ring_z": [
+      1420,
+      1490
+     ],
+     "body_z": [
+      1335,
+      1420
+     ],
+     "lid_flange_z": [
+      1300,
+      1335
+     ]
+    },
+    "size_mm": {
+     "top_ring_dia": 290,
+     "body_dia": 200,
+     "lid_flange_dia": 230
+    },
+    "supported_by": "Hangs from the tray floor underside; its lower end seats on the chamber-lid window flange",
+    "connects_to": "Tray beam opening above; protective window in the chamber lid below",
+    "confidence": "high for form and z; dia medium",
+    "sources": [
+     {
+      "url": "https://configurator-api.aconity3d.com/images/1001005514_6023e3069e3f7.png",
+      "note": "option thumbnail: stepped cylinder with a top flange plate"
+     },
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "x 795-1090 top ring, 836-1050 body"
+     }
+    ]
+   },
+   {
+    "part": "process chamber",
+    "what_it_really_is": "An exchangeable black chamber module on the base-cabinet top. It has a bolted rectangular viewport with LED lighting (blue/yellow), a long bar handle along the bottom front, and clamp levers at the left front corner. There are no glove ports. Gas and valve fittings sit on its right side, and a valve terminal hangs on the right post. The lid carries a central round window flange for the beam tube and a curved bow handle arching over the lid around the flange. Per Amazemet photos it opens upward for part removal.",
+    "position_mm": {
+     "x": [
+      634,
+      1243
+     ],
+     "y": [
+      250,
+      950
+     ],
+     "z": [
+      985,
+      1300
+     ],
+     "viewport": {
+      "x": [
+       855,
+       1000
+      ],
+      "z": [
+       1120,
+       1180
+      ]
+     },
+     "front_handle": {
+      "x": [
+       860,
+       1040
+      ],
+      "z": [
+       1005,
+       1030
+      ]
+     },
+     "lid_bow_handle": {
+      "x": [
+       770,
+       1080
+      ],
+      "z": [
+       1290,
+       1335
+      ]
+     }
+    },
+    "size_mm": {
+     "w": 610,
+     "d": 700,
+     "h": 315
+    },
+    "supported_by": "Base-cabinet top",
+    "connects_to": "Beam tube (lid flange), gas circuit (right side and rear), filter unit (via base-cabinet bulkheads)",
+    "confidence": "high for x and z; depth medium",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "chamber, viewport, bow handle"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/N2cQBrDy7a0a09PH/1b49d04.jpg",
+      "note": "AconityMINI chamber close-up: same bow handles, clamp lever and KF flange style"
+     }
+    ]
+   },
+   {
+    "part": "base cabinet",
+    "what_it_really_is": "An aluminium-profile frame with black panels and a single front door hinged on the LEFT. Its handle is near the right edge, not the centre. Four levelling feet with red rings are visible along the front.",
+    "position_mm": {
+     "x": [
+      470,
+      1390
+     ],
+     "y": [
+      0,
+      1200
+     ],
+     "z": [
+      0,
+      990
+     ],
+     "door_handle": {
+      "x": [
+       1240,
+       1260
+      ],
+      "z": [
+       500,
+       580
+      ]
+     }
+    },
+    "size_mm": {
+     "w": 920,
+     "h": 990
+    },
+    "supported_by": "Floor (levelling feet)",
+    "connects_to": "Portal posts (shared uprights); filter-unit pipe on the left wall; service bulkheads on the right wall",
+    "confidence": "high for x and z, door hinge and handle; depth low",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "handle at x ~1250, z ~540"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/base_1001004178_aconitymidi-lg@2x_60213683017ea.jpg",
+      "note": "door open, hinged on the left"
+     }
+    ]
+   },
+   {
+    "part": "service connections between base and control cabinet",
+    "what_it_really_is": "Not a box. Quick-coupling bulkheads (gas and water) and black or orange hoses stick out of the base cabinet's right wall into the ~110 mm gap before the control cabinet. The hoses hang in the gap and run down and back.",
+    "position_mm": {
+     "x": [
+      1390,
+      1500
+     ],
+     "y": [
+      100,
+      900
+     ],
+     "z": [
+      300,
+      1100
+     ]
+    },
+    "size_mm": {
+     "hose_dia": "12-25"
+    },
+    "supported_by": "Base-cabinet right wall (bulkheads)",
+    "connects_to": "Chiller, gas supply and control cabinet (behind)",
+    "confidence": "medium",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "fittings at x 1390-1500, z 450-1100"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/storage/images/configurator-machines/ilDodT2QDtq0fYFu/AconityMIDI_Webseite_Cover%20Image.png",
+      "note": "same fittings"
+     }
+    ]
+   },
+   {
+    "part": "filter unit",
+    "what_it_really_is": "A cyclone pre-separator with a cartridge filter on top, on a castored stand. The lower vessel is a black cylinder with a conical bottom ending in a small clamped collection jar. Four full-height black tubular legs run from castors on the floor up to the drum's top flange ring. The legs hug the drum wall: one front, one each side, and one at the back, hidden. A short black neck rises from the centre of the drum lid to a smaller black cartridge-filter cylinder. On top of that is a stainless elbow and valve block with a blue pneumatic actuator.",
+    "position_mm": {
+     "x": [
+      0,
+      420
+     ],
+     "z": [
+      0,
+      1420
+     ],
+     "drum": {
+      "x": [
+       15,
+       405
+      ],
+      "z": [
+       500,
+       850
+      ]
+     },
+     "cone": {
+      "z": [
+       300,
+       500
+      ]
+     },
+     "jar": {
+      "z": [
+       230,
+       330
+      ],
+      "dia": 90
+     },
+     "filter_cylinder": {
+      "x": [
+       100,
+       330
+      ],
+      "z": [
+       940,
+       1200
+      ]
+     },
+     "valve_block_z": [
+      1200,
+      1420
+     ],
+     "y_centre": "700-900 (LOW confidence, see note)"
+    },
+    "size_mm": {
+     "drum_dia": 390,
+     "filter_cyl_dia": 230,
+     "leg_dia": 28,
+     "apparent_total_h": 1420
+    },
+    "supported_by": "Its own four legs on castors",
+    "connects_to": "(1) A horizontal stainless pipe (~60 mm, black sleeve, clamp fitting) leaves the upper drum side at z ~790 and runs into the base cabinet's LEFT wall at x ~470. This is the cyclone's tangential process-gas inlet. (2) Clear braided hoses (~35-40 mm) drop from the valve block (z ~1300) along the right side of the filter to bulkheads at the top-left of the base cabinet (x 440-470, z 830-1000). This is the clean-gas return. (3) Thin blue air lines go from the drum-lid fittings to the base cabinet's left wall at z ~900-1000.",
+    "note": "In the CMU photo the filter unit's castors sit 175-225 mm ABOVE the machine's floor line, and the front castor is lower than the side ones. This is perspective, so the unit stands well behind the front plane, roughly beside the middle of the base cabinet's left wall. Its true size is then ~10-20% larger than the apparent numbers above. Alternatively the studio photo is a composite. The base cabinet's own four feet all sit on the same line, so this cannot be resolved without a side view.",
+    "confidence": "high for form and connections; low for depth and absolute size",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "filter unit with a mm grid"
+     },
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "brightened 3x crop"
+     },
+     {
+      "url": "https://www.axt.com.au/wp-content/uploads/aconity-3D-midi.png",
+      "note": "same photo, white background"
+     }
+    ]
+   },
+   {
+    "part": "control cabinet, worktop, tower, monitor",
+    "what_it_really_is": "A two-door cabinet. The left door carries the e-stop and two rows of six push-buttons, with a key-switch panel below. A wood worktop sits on top. On the rear of the worktop is a tower box with a cyan-to-green LED strip along its top front edge. The tower is set in ~70 mm from the cabinet's right edge. The monitor is on a vertical pole that rises from the worktop and is clamped to the tower front, ending ~1850. The fibre and cable bundle enters at the worktop's left-rear corner beside the tower.",
+    "position_mm": {
+     "cabinet": {
+      "x": [
+       1500,
+       2450
+      ],
+      "y": [
+       0,
+       800
+      ],
+      "z": [
+       0,
+       1170
+      ]
+     },
+     "worktop": {
+      "z": [
+       1170,
+       1200
+      ]
+     },
+     "tower": {
+      "x": [
+       1500,
+       2380
+      ],
+      "y": [
+       380,
+       800
+      ],
+      "z": [
+       1200,
+       1905
+      ]
+     },
+     "led": {
+      "z": [
+       1870,
+       1905
+      ]
+     },
+     "monitor": {
+      "x": [
+       1663,
+       2238
+      ],
+      "z": [
+       1440,
+       1735
+      ]
+     },
+     "pole": {
+      "x": [
+       1950,
+       1975
+      ],
+      "z": [
+       1200,
+       1850
+      ]
+     }
+    },
+    "size_mm": {
+     "cabinet_w": 950
+    },
+    "supported_by": "Floor (levelling feet); tower and pole on the worktop",
+    "connects_to": "Optics bundle (worktop gland); service hoses (rear)",
+    "confidence": "high for x and z; depth low",
+    "sources": [
+     {
+      "url": "https://engineering.cmu.edu/mfi/_files/images/equipment/aconity-midi.png",
+      "note": "control cabinet, tower and monitor"
+     },
+     {
+      "url": "https://configurator-api.aconity3d.com/imagelayers/controlling_1001005471_aconitymidi-lg@2x_60213683127d1.png",
+      "note": "configurator control-cabinet layer, door open"
+     }
+    ]
+   }
+  ],
+  "fixes_to_current_model": [
+   {
+    "current_part": "fibre loop 1/2 (free tori at H-159)",
+    "problem": "Float in mid-air, attached to nothing",
+    "fix": "Make each fibre an inverted-U sweep (cable dia ~8 mm, bend R ~40 mm) from the top of a vertical cable chain (new box 60 x 45 x 400 mm, z 1720-2120, standing on the tray outboard of each collimator at x 680-740 and 1150-1210) down into the top of that collimator's connector (z 2100). Loop tops at ~2290 (left) and ~2355 (right)."
+   },
+   {
+    "current_part": "filter legs (4 x 250 mm stubs at r=240)",
+    "problem": "Outside the drum footprint and below it; they touch nothing",
+    "fix": "Four Ø28 legs from the floor (castor ~70 mm tall at the bottom) up to the drum's top flange (z ~850), centred at r = drum_r + 14 at 0/90/180/270 degrees, one facing front. Add a top flange ring (Ø~420 x 10 at z 850)."
+   },
+   {
+    "current_part": "filter hopper / drum / cone / cylinder / valves",
+    "problem": "Wrong form. The cone is at the top and the hopper sits at floor level.",
+    "fix": "Drum Ø390 z 500-850; cone down from Ø390 at z 500 to Ø80 at z 330; clamped jar Ø90 z 230-330; drum lid at 850; black neck Ø40 z 850-940; filter cylinder Ø230 z 940-1200 with top flange; stainless elbow/valve block z 1200-1400 with a blue actuator."
+   },
+   {
+    "current_part": "filter hose (blue cylinder floating at z 1300)",
+    "problem": "Floats in air with neither end connected",
+    "fix": "Replace with (a) a horizontal stainless pipe Ø60 at z ~790 from the drum side into the base cabinet's left wall (x 470), with a clamp flange at the wall; (b) a clear braided hose Ø38 swept from the valve block (z ~1300) down to a bulkhead at the base cabinet's top-left (x ~465, z ~900); (c) optional thin blue air lines."
+   },
+   {
+    "current_part": "z actuator (pokes through portal bridge to 2250)",
+    "problem": "Passes through the slab; no real machine has a slab there",
+    "fix": "Make it a Rexroth linear module (130 x 85 mm, z 1330-2090) on the centreline BEHIND the scan heads (y ~870-955). Bolt it to a crossbar between the posts (z ~1620-1680, y ~930-990), add a black motor cap at the top (z 2060-2095) and leave the top free."
+   },
+   {
+    "current_part": "portal bridge (slab at z 1875-1905)",
+    "problem": "Does not exist on the current machine",
+    "fix": "Delete. Add the hidden crossbar plus 45-degree gussets instead (above)."
+   },
+   {
+    "current_part": "portal posts 540/1300 x 250/890 (four posts from z 977)",
+    "problem": "Four posts standing on the cabinet lid; the real machine has two uprights",
+    "fix": "Two posts (60 x 60) at x 540-600 and 1290-1350, y ~900-960, running from the floor (inside the base cabinet) to z 1905, each with a silver rail strip on its inner face and a silver top block (z 1830-1905). The front pair goes."
+   },
+   {
+    "current_part": "scanner shelf",
+    "problem": "A solid slab spanning four posts, with no beam opening",
+    "fix": "Make it the moving tray: floor plate 800 x 470 x 12 (x 545-1345, y 400-870, z 1490-1502) with a Ø220 hole at (x 935, y 600); back wall 800 x 10 x 215 at y 860-870; triangular side gussets at both ends. Attach the back wall to the Z-module carriage."
+   },
+   {
+    "current_part": "beam turret (box 807-1089 under the shelf)",
+    "problem": "A solid block with no optical function",
+    "fix": "Replace with a stepped cylinder on the beam axis (x 935, y 600): top ring Ø290 z 1420-1490 bolted under the tray hole, body Ø200 z 1335-1420, lid flange Ø230 z 1300-1335 seated on the chamber lid."
+   },
+   {
+    "current_part": "scan head 1/2",
+    "problem": "Sit on an unbroken shelf; no collimators",
+    "fix": "Keep the x/z (740-945, 945-1145; z 1505-1810), set y 450-800. Add blue collimators Ø50 x 180 (z 1815-1995) plus silver connectors Ø28 to z 2100 at x 767 and 1115, and a small grey plug block on top at the centre."
+   },
+   {
+    "current_part": "process chamber",
+    "problem": "Missing the lid features the beam path needs",
+    "fix": "Add a lid window flange (Ø230 boss) under the beam tube, a bow handle (Ø20 tube arc x 770-1080 peaking at z ~1335), and clamp levers at the front-left."
+   },
+   {
+    "current_part": "service strip (box) + service hoses",
+    "problem": "A free-standing box in the gap",
+    "fix": "Delete the box. Put 4-6 quick-coupling bulkheads on the base cabinet's right wall (x 1390, z 450-1100) and let hoses hang down in the gap to the floor and run to the rear."
+   },
+   {
+    "current_part": "base door handle",
+    "problem": "At the door centre (x 980-1000)",
+    "fix": "Move to x ~1240-1260, z ~500-580. The door is hinged on the left edge."
+   },
+   {
+    "current_part": "(missing) fibre/cable bundle",
+    "problem": "No connection from the lasers to the optics",
+    "fix": "Add a swept bundle (Ø~30) from the tray's right cheek (x 1345, z 1600) to a gland at the worktop's left-rear (x ~1540, y ~380, z 1170)."
+   },
+   {
+    "current_part": "monitor pole",
+    "problem": "Mostly fine",
+    "fix": "Run it from the worktop to z ~1850 against the tower front (y ~370-380). Optional: monitor centre x ~1950."
+   },
+   {
+    "current_part": "all y values",
+    "problem": "No side or rear view of the current design was found",
+    "fix": "Use the estimates above: beam axis and chamber centre at y 600; tray y 400-870; Z module 870-955; crossbar 930-990; posts 900-960; base 0-1200. Keep them flagged as estimates. The filter unit may stand ~0.6-0.9 m back, beside the base's left wall, with low confidence."
+   }
+  ]
+ }
+}
