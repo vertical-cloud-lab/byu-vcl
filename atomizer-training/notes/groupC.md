@@ -1,6 +1,6 @@
 # Group C — rePowder training transcript index (Videos 7, 8, 9, Sterling's phone)
 
-Source: YouTube auto-captions only (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for these four. Video 9 has since been re-checked row by row against a Whisper large-v3-turbo transcript (`/tmp/work/transcripts/9kn-HhXCr1o.txt`); see its section. Timestamps are the caption start times. Speaker attribution is inferred from context (Bartosz = trainer; Gage/Ronnie/Sterling = trainees). "Torque 65/60/50" units are never spoken; Nm is inferred.
+Source: YouTube auto-captions only (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for these four. Videos 7 and 9 have since been re-checked row by row against Whisper large-v3-turbo transcripts (`/tmp/work/transcripts/<id>.txt`); see their sections. Timestamps are the caption start times. Speaker attribution is inferred from context (Bartosz = trainer; Gage/Ronnie/Sterling = trainees). "Torque 65/60/50" units are never spoken; Nm is inferred.
 
 ## FDRTt68Vfvo — Atomizer Training Video 7 (53 min, Sep 30)
 
@@ -22,11 +22,11 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 | 10:30 | before/storage | Cabinet becomes a dry box with desiccants for powders, graphite consumables, anything to keep dry. |
 | 11:24 | chatter | Head-mounted camera is recording; ideas for a 360 tracking camera or camera glasses. |
 | 14:20 | before/setup | Start taking the stack out; loosen the first fastener; "that is a 17" (mm wrench). |
-| 16:48 | troubleshooting | Earlier resonance explained: part was slightly off when fully in, tolerance near zero, so it pushed on the separating ring. |
+| 16:48 | troubleshooting | Earlier resonance explained: the plate's hole fits the connector stud with near-zero tolerance ("fits exactly through the connector"); it was slightly off, not fully straight, when fully in, so it pushed on the connector's middle ring that separates the two sonotrodes (the 8 mm ring of 46:29). Whisper confirms the wording. |
 | 17:10 | chatter | Where is the atomized 4047 powder that could be used as a sample? |
 | 17:51 | after/cleaning | How do you clean the plate? "You don't" — careful grinding would probably just destroy it. |
 | 18:16 | lesson | Keep the same plate for the same material (only a few rounds anyway); need a log of which plate saw which material. |
-| 18:35 | part | Current plate material stated as tungsten–nickel–iron. |
+| 18:35 | part | Trainee asks "what material is this again?" right after the plate talk; answer "tungsten nickel iron" (both transcripts agree on the words, neither names the part; V5 identifies the top sonotrode as a tungsten alloy, so this is most likely the W–Ni–Fe top sonotrode rather than a plate). |
 | 18:55 | before/setup | To remove the stack: disconnect everything, then remove the clamp. |
 | 19:20 | before/setup | The ultrasonic cable connector has a small locking nut; if screwed in, unscrew it or the cable won't come out. |
 | 19:45 | safety | Keep the cable secured so nobody stands on it; ~1,000 V goes through it. |
@@ -34,7 +34,7 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 | 20:49 | before/setup | Wrench sizes on the stack: 17 and 18 mm. |
 | 21:52 | before/setup | Option: leave the sonotrode on, unscrew the housing, swap the booster; booster and connector can stay together. |
 | 22:11 | theory | Which part is the booster: the piece inside the housing; remove it from the sonotrode and connect it the other way round. |
-| 22:41 | theory | Booster changes amplitude: 1:1 is normal, the other is 1:1.5; reversed it's 1.5:1, giving "75% of normal amplitude" (as said). |
+| 22:41 | theory | Booster changes amplitude: 1:1 is normal, the other is 1:1.5; reversed it's 1.5:1, giving "75% of the normal amplitude" (Whisper and auto-captions both hear 75% — a loose figure, 1/1.5 = 67%). |
 | 23:36 | theory | Amplitude 0–100 on screen is % of set generator power — how much current goes to the transducer, not a physical value. |
 | 24:01 | theory | Could stack three boosters, but power would be very high; mechanical and electrical changes act differently — combine both. |
 | 24:50 | theory | Amplification comes from going bigger-to-smaller: the difference of mass at the two ends. |
@@ -42,14 +42,14 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 | 27:43 | chatter | Gloves; Bartosz's magnesium medical-lab work needed a full protective suit. |
 | 29:31 | before/setup | Threads are M10 everywhere except the transducer, which is M10 fine. |
 | 30:16 | troubleshooting | Stud seized in the booster; trick: jam two M10 nuts together on it, then unscrew with the nuts. |
-| 31:16 | theory | Going 1.5:1 reduction: "the lower the amplitude we can achieve, the finer the powder" — so we want the reduction. |
+| 31:16 | theory | Going 1.5:1 reduction: "the lower the amplitude we can achieve, the finer the powder" (heard as "pattern" in both transcripts; "powder" from context) — so we want the reduction. |
 | 32:40 | troubleshooting | Studs sometimes seize from vibration, sometimes stay loose; the double-nut trick is basically the only thing that works. |
 | 33:03 | before/setup | Fit the smaller housing now — it will not pass over the transducer later. |
-| 33:17 | before/setup | The KF50 connection is always the top, connecting to the chamber; 1.5:1 end goes up into the chamber. |
+| 33:17 | before/setup | The "K50" connection (both transcripts; KF50 flange inferred) is always the top, connecting to the chamber; 1.5:1 end goes up into the chamber. |
 | 34:58 | before/setup | Housing screws: just tight enough to compress the rubber seals; don't overtighten. |
 | 35:18 | before/setup | Fit connector stud: the end with the M8 thread and wrench flats must face up so the plate can be tightened. |
-| 35:50 | before/setup | Use a torque wrench — right torque is very important: transducer–booster 65, booster–sonotrode 60, plate connector 50. |
-| 37:18 | part | Prolonger sonotrode currently the 80 mm tip; a 70 mm exists; may need combinations. |
+| 35:50 | before/setup | Use a torque wrench — right torque is very important: Bartosz says "65, 60, 50" (transducer–booster 65, booster–sonotrode 60, plate connector 50); no unit spoken — the trainee repeats them as "65 torque, 60 torque, 50 torque" (36:03, 36:41). |
+| 37:18 | part | Prolonger sonotrode currently the 80 mm tip (auto-captions; Whisper hears "18 mm"); a 70 mm exists; may need combinations. |
 | 37:56 | before/setup | 17 mm on the transducer; check the arrow on the torque wrench; reverse the ratchet; hold with a second wrench. |
 | 38:33 | before/setup | Set the torque wrench: pull the collar and rotate; reading = lowest visible number plus vernier (60 + 5 = 65). |
 | 40:21 | before/setup | Tighten until you hear the click — that's how you know the torque is reached. |
@@ -61,16 +61,18 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 | 43:09 | before/setup | Install: put the protective plate on first (hard to do afterwards) and make sure the seal is in; lock the door open. |
 | 43:32 | safety | Normal use: bolt the protective cover over the transducer — someone opening the chamber could hit or wet it; 2–3 min saves thousands. |
 | 44:15 | theory | Terminology: transducer, housing, booster, prolonger sonotrode, top sonotrode (short bar whose only task is holding the plate). |
-| 44:35 | theory | Sonotrode length fixed by frequency and material: a multiple of half-wavelength (~70 mm → 70, 140). |
+| 44:35 | theory | Sonotrode length fixed by frequency and material: a multiple of half-wavelength; said as "the wavelength is like 70 [mm]", lengths 70, 140 (70 mm ≈ a half-wave at 40 kHz). |
 | 44:56 | before/setup | Put in the seal (O-ring). |
 | 45:40 | before/setup | Mount plate: connector (small double-threaded stud) first, then plate, then hold with the top sonotrode. |
 | 46:29 | lesson | Thread the connector fully in first so the plate isn't forced through the 8 mm ring; the ring snapped at the edge before. |
+| 47:01 | before/setup | The connector's middle ring is a stop: only half the stud enters each sonotrode, so it sits hidden inside the prolonger and does not stick out. |
 | 47:37 | before/setup | Check nothing snags, surfaces are flat, no gaps; push the top sonotrode fully onto the plate — better than before. |
 | 48:12 | before/setup | Two 17 mm wrenches; plate joint to 50 torque. |
 | 49:30 | before/setup | Final test: menu, scan, vibration/power; put some water on the plate to see it vibrate. |
 | 50:21 | troubleshooting | Small crack with dark spot at the plate edge = heating from tension; it will crack there; poor placement → resonance → defects. |
-| 51:23 | lesson | Metal plates generally last 1–3 runs; with reverse booster and a low-temperature alloy maybe 4–6. |
-| 51:42 | before/setup | Next: connect the container, put the plate inside the protection plate, take care of the frames. |
+| 50:47 | lesson | Plate shape is not critical; supplier quality is — many producers and materials were tried before finding a reliable one; the edge crack may also stem from the earlier poor placement. |
+| 51:23 | lesson | Metal plates generally last 1–3 runs ("one, two, three rounds", both transcripts); with reverse booster and a low-temperature alloy ("like teal"/"like T" — probably tin) maybe 4–6. |
+| 51:42 | before/setup | Next: connect the container, put the plate inside the protection plate, take care of the furnace (Whisper; auto-captions heard "frames"). |
 | 51:55 | lesson | Seen a plate snap after one process and after five of the same kind — not something you can fully rely on. |
 | 52:23 | cleaning | Clean the O-ring seal; "a lot of isopropyl, a lot of paper towels — that's the base for everything"; get a dispenser. |
 
@@ -87,7 +89,7 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 - Fit the smaller housing before reassembly — it won't pass over the transducer (33:03)
 - Tighten housing screws only enough to seat the rubber seals (34:58)
 - Fit the connector stud with the M8 thread and wrench flats facing up (35:32)
-- Torque transducer–booster to 65, booster–sonotrode to 60, plate connector to 50; stop at the click (36:40, 40:21)
+- Torque transducer–booster to 65, booster–sonotrode to 60, plate connector to 50 (no unit spoken); stop at the click (36:40, 40:21)
 - Check the torque-wrench arrow; reverse the ratchet to tighten the other way; counter-hold with a second wrench (38:03)
 - Set torque by pulling the collar and rotating; read the base scale plus the vernier (38:37)
 - Connect air and cable, scan and run a test before installing in the chamber (40:26)
@@ -96,10 +98,10 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 - Lock the chamber door open while installing (43:27)
 - For normal use, bolt the protective cover over the transducer (43:32)
 - Install the O-ring seal (44:56)
-- Thread the connector fully into the sonotrode, then the plate, then the top sonotrode (46:29)
+- Thread the connector fully into the sonotrode until its middle ring stops it (half in each sonotrode, hidden inside), then the plate, then the top sonotrode (46:29, 47:01)
 - Check flat contact and no gaps; torque the plate joint to 50 (47:47, 48:22)
 - Final scan test with water on the plate (49:30)
-- Connect the collection container; put the plate inside the protection plate; frames (51:42)
+- Connect the collection container; put the plate inside the protection plate; take care of the furnace (51:42)
 
 **After / Cleaning**
 - Remove crucible, wipe it, check and clean the nozzle, reassemble (00:09)
@@ -109,7 +111,7 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 - Store powders and graphite consumables in a desiccant dry box (10:30)
 
 **Troubleshooting**
-- Resonance/odd behaviour: check the plate/connector is centred and not bearing on the ring (16:48)
+- Resonance/odd behaviour: check the plate sits straight and centred on the connector stud and is not bearing on its middle ring (16:48)
 - Reverse booster lowers frequency below 40 kHz; the top sonotrode raises it; acceptable for short runs (41:40)
 - Dark spot or crack at the plate edge means it is heating from tension; expect it to fail there (50:21)
 
@@ -123,22 +125,22 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 | ~1,000 V | through the ultrasonic cable | 19:56 |
 | several thousand $ | transducer cost | 20:29 |
 | 1:1, 1:1.5, 1.5:1 | booster ratios (normal, amplify, reversed) | 23:10 |
-| 75% | of normal amplitude with reversed booster, as said (1/1.5 = 67%) | 23:29 |
+| 75% | of normal amplitude with reversed booster — confirmed by Whisper and auto-captions (1/1.5 = 67%) | 23:29 |
 | 0–100 | amplitude slider = % of set generator power | 23:36 |
 | 3 boosters | hypothetical stacking; power would be very high | 24:01 |
 | M10 / M10 fine | stud threads; fine thread only at the transducer | 29:31 |
 | 2 × M10 nuts | jam-nut trick for seized studs | 30:43 |
-| KF50 | chamber connection, always the top ("K50" as heard) | 33:17 |
+| KF50 (inferred) | chamber connection, always the top ("K50" in both transcripts) | 33:17 |
 | M8 | thread for the plate connector | 35:34 |
-| 65 / 60 / 50 | torque: transducer–booster / booster–sonotrode / plate | 36:40 |
-| 80 mm, 70 mm | prolonger sonotrode tip lengths available | 37:18 |
+| 65 / 60 / 50 | torque: transducer–booster / booster–sonotrode / plate; no unit spoken (trainee: "65 torque") | 36:40 |
+| 80 mm, 70 mm | prolonger sonotrode tip lengths available (Whisper hears "18 mm" for the 80) | 37:18 |
 | 60 + 5 = 65 | torque wrench reading (base scale + vernier) | 38:55 |
 | < 40,000 Hz | frequency with reverse booster | 41:51 |
 | 2–3 min | time to bolt on the transducer cover | 44:11 |
-| ~70 mm | half-wavelength unit; sonotrode lengths 70, 140 | 44:50 |
+| ~70 mm | half-wavelength unit (said as "the wavelength is like 70"); sonotrode lengths 70, 140 | 44:50 |
 | 8 mm | ring and central hole diameter in the sonotrode | 46:38 |
 | 1–3 runs | typical metal plate life | 51:25 |
-| 4–6 runs | plate life with reverse booster and low-temp alloy | 51:37 |
+| 4–6 runs | plate life with reverse booster and low-temp alloy ("like teal" — probably tin) | 51:37 |
 | 1 vs 5 processes | range seen before a plate snapped | 51:55 |
 
 ### Quotable moments
@@ -154,12 +156,12 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 
 ### Unclear / needs checking
 
-- 23:29 "75% of normal amplitude" for 1.5:1 — arithmetic says 1/1.5 = 67%; may be a loose figure or a mis-hearing.
-- 36:40 torque units never stated (Nm inferred); confirm 65/60/50 against the manual.
-- 18:35 "tungsten nickel iron" is said by a trainee; V9 lists W-plasma-coated carbon fibre, Mo, Nb, Ti64 and stainless plates — which was it?
-- 16:48–17:39 audio is fragmentary; whether the off-centre part was the plate or the connector ring is inferred.
-- 51:35 "low temperature like T" — tin? titanium? unresolved.
-- 00:00 opens mid-sentence ("oxygen level isn't"); earlier context is in Video 6.
+- 23:29 "75% of normal amplitude" for 1.5:1 — resolved: Whisper and the auto-captions both hear "75% of the normal amplitude"; it is what was said, a loose figure for 1/1.5 (67%), not a mis-hearing.
+- 36:40 torque units — resolved as far as the audio goes: Whisper confirms 65/60/50; no Nm or other unit is spoken (Bartosz "65, 60, 50", trainee "65 torque, 60 torque, 50 torque" at 36:03/36:41). Nm still to be confirmed against the manual.
+- 18:35 "tungsten nickel iron" — partly resolved: Whisper has the same words (question "what material is this again?", answer by a second voice), no part named. W–Ni–Fe is a heavy-alloy sonotrode material, not one of the V9 plate materials, and V5 identifies the top sonotrode as a tungsten alloy — so most likely the top sonotrode, not a plate. Confirm on the next session.
+- 16:48–17:39 — resolved: Whisper confirms "the tolerance is like close to zero so that it fits exactly through the connector ... it didn't get fully straight and at some point it was pushing on this ring which kind of separates" — the off part was the plate on the connector stud, bearing on the stud's middle ring (the one explained at 46:29–47:01).
+- 51:35 "low temperature like T" — not resolved: Whisper hears "like teal", auto-captions "like T"; a low-melting alloy is meant, so tin is the most plausible reading (not titanium).
+- 00:00 opens mid-sentence ("oxygen level isn't"); earlier context is in Video 6. Whisper's first segment starts with the crucible sentence; the "oxygen level"/Gage question exists only in the auto-captions.
 
 ## HTlUrAr5HVU — Atomizer Training Video 8 (12 min, Sep 30)
 
