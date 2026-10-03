@@ -2,8 +2,10 @@
 """From a part's sliced G-code to the material inside it: what was extruded where, in which direction.
 
 - parse(): every extruding G1/G2/G3 move as a straight segment (arcs cut into chords of at most 5 deg),
-  with its layer (from Bambu's '; Z_HEIGHT' / '; LAYER_HEIGHT' comments), '; LINE_WIDTH' and
-  '; FEATURE'. Coordinates are moved into the STL's print frame by the placement the slicer used.
+  with its layer (from Bambu's '; Z_HEIGHT' comments), '; LINE_WIDTH' and '; FEATURE'. A layer's height
+  is its Z_HEIGHT step: Bambu also writes '; LAYER_HEIGHT' mid-layer for its thick bridges (one nozzle
+  diameter), which is the bridge bead's height, not the layer's. Coordinates are moved into the STL's
+  print frame by the placement the slicer used.
 - Raster: per layer, a fine pixel grid (a quarter of a line width) in the print frame. Each pixel gets
   the feature of the bead covering it (0 = no bead) and that bead's direction (degrees, 0-179). A bead
   covers the pixels within half its line width of its centreline. Dense features (walls, skins, solid
@@ -45,8 +47,7 @@ def parse(text: str, offset_xy=(0.0, 0.0), filament_d: float = 1.75) -> Toolpath
     x = y = 0.0
     absolute = True
     feat, width = 0, 0.4
-    z_tops, hs = [], []
-    cur_h = None
+    z_tops = []
     segs, lay, wid, fts, ev = [], [], [], [], []
     num = re.compile(r"([XYZEIJF])(-?\d*\.?\d+)")
     for line in text.splitlines():
@@ -58,11 +59,6 @@ def parse(text: str, offset_xy=(0.0, 0.0), filament_d: float = 1.75) -> Toolpath
                 z = float(line[11:])
                 if not z_tops or abs(z - z_tops[-1]) > 1e-6:
                     z_tops.append(z)
-                    hs.append(cur_h if cur_h is not None else z)
-            elif line.startswith("; LAYER_HEIGHT:"):
-                cur_h = float(line[15:])
-                if hs:
-                    hs[-1] = cur_h
             elif line.startswith("; FEATURE:"):
                 feat = FEATURES.get(line[10:].strip(), 0)
             elif line.startswith("; LINE_WIDTH:"):
@@ -118,8 +114,9 @@ def parse(text: str, offset_xy=(0.0, 0.0), filament_d: float = 1.75) -> Toolpath
     seg = np.array(segs, float)
     seg[:, [0, 2]] -= offset_xy[0]
     seg[:, [1, 3]] -= offset_xy[1]
+    z_top = np.array(z_tops)
     return Toolpath(seg, np.array(lay), np.array(wid), np.array(fts, np.uint8), np.array(ev),
-                    np.array(z_tops), np.array(hs))
+                    z_top, np.diff(np.r_[0.0, z_top]).round(6))
 
 
 @njit(cache=True)

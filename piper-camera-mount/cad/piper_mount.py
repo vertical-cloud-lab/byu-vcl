@@ -813,7 +813,11 @@ def print_orientation(name: str, part: cq.Workplane, p: Params | None = None) ->
     if name == "bracket":
         part = part.rotate((0, 0, 0), (1, 0, 0), 90)        # +Y -> +Z
     elif name == "pod":
-        part = make_pod_local(p or Params()).rotate((0, 0, 0), (1, 0, 0), 90)   # station +Y -> +Z
+        # The world pod taken back into the station frame, not make_pod_local(): make_pod() cuts the
+        # hex-key channels through the tongue in the world frame, and the STL needs them too.
+        o = station_origin(p or Params())
+        part = part.translate((-o.x, -o.y, -o.z)).rotate((0, 0, 0), (0, 0, 1), -(p or Params()).toe_deg)
+        part = part.rotate((0, 0, 0), (1, 0, 0), 90)        # station +Y -> +Z
     elif name == "carrier":
         part = part.rotate((0, 0, 0), (0, 1, 0), 90)        # -X -> +Z
     bb = part.val().BoundingBox()
