@@ -167,7 +167,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [55:52](https://www.youtube.com/embed/naePD8o9_Gk?start=3352) | [▶](https://www.youtube.com/watch?v=naePD8o9_Gk&t=3352s) | chatter | Bartosz left the lab partly to avoid PPE; recently atomized Nitinol |
 
 ## Atomizer Training Video 3
-`txH397FGTAU` · 2026-09-29 · 51:05 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/txH397FGTAU?start=0) · [▶ watch](https://www.youtube.com/watch?v=txH397FGTAU)
+`txH397FGTAU` · 2026-09-29 · 51:05 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/txH397FGTAU?start=0) · [▶ watch](https://www.youtube.com/watch?v=txH397FGTAU)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |

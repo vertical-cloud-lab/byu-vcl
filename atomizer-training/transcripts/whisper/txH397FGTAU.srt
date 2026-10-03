@@ -1,0 +1,192 @@
+1
+00:00:00,980 --> 00:06:23,230
+All right, this video is a deep planing. Well, orientation doesn't matter, right? I forgot to put this in. We can, yeah, we can go get that. We can temporarily, we can, there's a, in the, in the building next door, in the engineering building.
+
+2
+00:06:23,230 --> 00:06:57,950
+They have a place where they have all tools and just get what you need.
+
+3
+00:06:57,950 --> 00:07:29,490
+If there is the control cabinet, you get this and this and this. It's automatically in the system. That's why when you have no plasma parts, suddenly I have no 80mm tip. Which actually at the beginning, I have added it specifically for the induction side. But then over time, there were more people planning for the co-production.
+
+4
+00:07:30,100 --> 00:08:04,820
+He started to change it in a way that it doesn't always make sense. Does that look good? Yeah. I sometimes miss the times when there was like no system mapping. I had just a bunch of parts in the drawers and I was packing everything myself and just putting it in because I knew what is necessary. Sounds like good times.
+
+5
+00:08:05,260 --> 00:08:43,220
+I know right now we have this scale and it's good. In some cases we have to go through so many procedures, so many people to get things done. Yeah. In English we call that bureaucracy. You know that word? Yeah. In Polish it's basically the same. It's bureaucracy. In this case it's fully internal.
+
+6
+00:08:43,250 --> 00:09:25,040
+I'm not sure if it makes it better or worse. But that's the fact that right now, okay. I wouldn't have time to sometimes just rub it carefully. It goes... Did you bring this? Yeah. It's cute. Oh, wow. It did go all the way through. So we can reuse it. Great. Yeah, and this is exceptionally useful. Little tweezers? Yeah.
+
+7
+00:09:25,200 --> 00:09:58,140
+Because this one is just for the nuts. This one is for just grabbing anything. It takes no space and helps you out. Okay, so I can put this all back together now, right? This looks good. So you could see that it did go so easily, probably because no oxygen was much, much, much better. It's usually the same. If there is no oxygen, suddenly nothing sticks to other parts.
+
+8
+00:09:58,140 --> 00:10:30,610
+Oxide seems to make everything like the surface is rough and so on. And that's what makes it stuck. Interesting. What kind of metal is the plate? This one? Molybdenium alloy. Oh, wow. So, I just want to check if it will vibrate well. Because right now it's like the best option for aluminium. In case of atomization, the only drawback is that the process cannot be very long.
+
+9
+00:10:30,800 --> 00:11:43,890
+Because Molybdenium and Aluminium they will react at some point. Oh really? If the process goes on for too long, there may be some reactivity. The same reactivity that helps us to get a good wetting and good optimization start. At some point it may cause the effect to be damaged. Wow. I'm really happy that the company has grown. And from people and people, we have like over 50.
+
+10
+00:11:44,560 --> 00:12:24,720
+You have over 60? Yeah, over 60. Wow. Just a fish also. As an initial scan, I had like a double fish in here, kind of like some disruption in that area. Right now? No, before. That was like a second one. I started it for a moment. I made the scan again and it goes. So, if you give the thing a little bit of vibration, it just like position itself well.
+
+11
+00:12:24,750 --> 00:12:59,460
+If there is some micro-friction, sometimes it just gets resolved by itself. Take a look. Oh yeah, it's nice. You see the pattern? If the pattern is straight, it means that the vibration plays this noise really well. If the pattern would be like angle, it usually means that there is a track formation.
+
+12
+00:12:59,460 --> 00:13:30,740
+There will be a spot without optimization and it will go like around it. Gotcha. Let's try it. I just want you to see the differences between all the combinations. That's why we can quickly go with the one-to-one, make a trial with the reversed one, which can work, but it's hard sometimes. It requires you to know how well it works, but then if you do that, it can...
+
+13
+00:13:30,740 --> 00:14:03,920
+This powder? We'll get another jar. What? Another jar. What's the application?
+
+14
+00:14:04,820 --> 00:14:30,530
+So we want to just, so we're trying to characterize powders and then use them for laser powder infusion printing and then determine if we can, we want to characterize powders that have better properties than currently existing ones. So specifically with rare earth metals, we want them to have less rare earth metals.
+
+15
+00:14:30,530 --> 00:14:57,340
+that have better the same properties you know okay so the one thing is don't get scared by the fact that some of the so the particles will be a little bit bigger especially when the density is low it's normal for gold we have silver you have way smaller particles with the same technique but because the powder is so spherical the quality of it so it's so good and the distribution is so narrow
+
+16
+00:14:57,340 --> 00:15:25,790
+Even a little bit larger particles are still fully usable. You can get normal good results. There will be stone and nice paper coming out. I did it with Northwestern University. I did atomized aluminum for them. I tried to get the best results with the reverse booster and so on. But you know, sometimes commercially you get power of like 15 to 45 minerals.
+
+17
+00:15:25,790 --> 00:15:54,720
+It's larger, but because it's very uniform, spherical and narrow distribution, the results are a little bit better. It's still good for printing? No. Is it still good for printing even though it's bigger? Yeah, exactly. Interesting. Because the sizes, okay, in some applications it depends on how precise the print is, okay, there may be some questions about it, but in many cases...
+
+18
+00:15:54,720 --> 00:16:23,470
+There is like no exact reason behind it. Just it's based on how well the powder from gas atomization behaves and what particle size you need to use to have a good properties at the end. And they tend to use smaller particles in general. Okay, we have everything in. The vibrations are fine. So, purging. Weren't you doing the one-to-one booster this time? Yeah, the one-to-one. Oh, this is the one-to-one. Oh. And this is the previous one.
+
+19
+00:16:23,470 --> 00:16:56,780
+Oh, interesting. It looks almost the same. One to one is sliver. This part is sliver because the amplification depends on the difference of weights or the diameters. Gotcha. Okay, so. Purging without heat, then two purging without heat. Purging without heat, purging, two purgings with the heat. Okay, so the first purging, so we want to start by...
+
+20
+00:16:57,170 --> 00:17:42,510
+getting a vacuum pump and then gas wash. On one side, the schematic is the same. It's coming on down here. Sometimes it doesn't work. You can see how much you can screw it. If you hit it, it doesn't mean that it doesn't align. You can see right now. Okay, is that what did you do? Yeah. And right now it should be pretty easy to do this.
+
+21
+00:17:53,490 --> 00:18:36,860
+Good. So one side is always over pressure, the other is pergic. And then they just reverse. And then you do it at two temperatures in order to remove all the moisture from the material, from the crucibles. If you put a new insulation, new crucible, like material, there may be some moisture in it, anything, the hill will help us to get it out and the pergic will remove it from the system.
+
+22
+00:18:36,860 --> 00:19:23,890
+largest particles because it's so light there is kind of like nothing we can do about it while gold copper hours are much smaller particles in exactly the same process same plates and booster um so you said we do we do one one purge and and then and then heat up and you do two purges right so for example this powder
+
+23
+00:19:24,110 --> 00:19:51,170
+The distribution is narrow, it's perfect for DED. For LPDF, maybe too big, but for DED, it would be really nice if you have it. In general, DED is also much cheaper to use to get and simpler. And still, it's all really nice results with it. Quite a lot of results. DED is just something that you can kind of like run and be like, whatever.
+
+24
+00:19:51,170 --> 00:20:33,410
+let's just make a pattern let's change the parameters on like each part uh cool shape it you can see all those like bigger pieces go exactly on the top yeah that's pretty cool the iridescence of the greens yeah the last cycle also melting pressure and now uh chamber um vacuum buff yeah
+
+25
+00:20:33,410 --> 00:22:27,440
+Turn off that. So this is at our max, but this is still going down. So we wait for this too? Don't worry about it. So now we can... In the vacuum, the oxygen sensor is just not going to tell you anything. Gotcha. So now we do protective gas and then redo? Yeah. They are typically letting it run for a little bit longer. It's going to be fine. But the effect will not be massive. Now we back to the vacuum.
+
+26
+00:22:27,980 --> 00:23:01,180
+Yeah, I see a few things that we kind of changed in the newer version of the software. If you think on how the logic between the battles work. But this is something that I will check with the team if we can fix it. Because I already saw here a few things and I reported it. And they will check it. Because the improvements are kind of like constant. Sometimes it's happening too quickly.
+
+27
+00:23:01,180 --> 00:23:34,800
+From one device to another, it's always something new and again something new. Like this one. I saw like three versions of it. This with old cabinet, like very old cabinet, old cabinet, new cabinet, standalone version. I even remember the versions where it was like, you know, moving, rotating. Okay, so now we put pressure control? Yeah, pressure control and let's get the flow and start it.
+
+28
+00:23:43,440 --> 00:31:11,730
+So I'll have some water, but procedure is the same. Okay, sorry. Okay, I just changed the temperature to 500. So, backthumb stays on, gas wash, right? That burst then, okay. Currently, it should keep the pressure, but if there would be a leak in between, we would start losing from here. So good. So degradation that can happen is like,
+
+29
+00:31:11,730 --> 00:31:42,160
+in this area it can start cleaning off or just like cracking but this is fine if you can like remove some of it and you generally can uh the pieces that are like not oxidized and good can stay okay and it will not affect the process cool if you have a lot of oxygen and there will be a lot of oxide on the plate then they expect either to fully clean it or take in the plate you clean it the same way just with like
+
+30
+00:31:42,160 --> 00:33:17,980
+pulling off pieces yeah yeah i'm definitely getting an air conditioner for here it's hot all right melt pressure turn off pressure control this this whole process of like starting at 250 purging this purging this then redoing it 500 purge this purge that could that all be automated no no really the problem is that we have no control over this one
+
+31
+00:33:17,980 --> 00:34:29,090
+Here, yeah. Here, not at all. Is the software lost? Yeah, I'm not sure. The software is closer to, you know, having kind of like a punch card than actually a code, so that's most of the problem. Okay, so do we want to do it again? I will go again, yeah. Okay. But don't depend on this week when you have the vacuum inside anyway.
+
+32
+00:34:29,090 --> 00:37:36,850
+Gotcha. So first clean it with protective gas. Uh-huh. And then check the reading. If the reading is good, then we don't need to do it again. I think it will be. The more we do it, the better it is. The heat from the process cleans it. The vacuum cleans it. So after a few rounds, it's still good. Gotcha. So I will just go to the max temperature. To 1,000? Okay. So now it's melting.
+
+33
+00:37:37,010 --> 00:38:45,010
+Yep, starting to melt. So the aluminum, when the whistle goes, the aluminum jumps up in the middle. Yeah. Why is that? The induction is pulling it. So the magnetic current is... Yes. Interesting. So it also gives us some of the mixing. It's so fun watching it. Okay, so... Yeah, go down. Oh, down, that's right. Yeah, as soon as... I forgot about that part. As soon as it starts melting. Especially for the metal plate.
+
+34
+00:38:45,010 --> 00:39:19,730
+we don't need to go so high. We'll be fine at like 7.9. It's not much, but sometimes it has a high impact on the durability of the plate. Same as the lower amplitude here we use, the better for the plate. But sometimes if you go like all the way down, there may be like too little atomization that the material will be flowing through. So sometimes you may need, especially at the beginning, to go with higher amplitude and then maybe reduce it a bit.
+
+35
+00:39:19,730 --> 00:39:50,720
+And that depends on the plate and also the material? It's also what the booster does. So the lower amplitude means smaller particles but the atomization is slower, more sensitive, more fragile. You said lower amplitude means smaller particles? So the same thing happens when this booster provides higher amplitude, this one lower amplitude. And then you're going to still have some impact on the...
+
+36
+00:39:50,720 --> 00:40:21,700
+electrical signal from the generator to the transducer so this is like a mechanical control and this is the electrical control so is it from 50 to 100 percent it does it corresponds to the current going from the the max current possible from the generator to the transducer so what is considered the high amplitude what's considered low after high is 100 i would say going to like between
+
+37
+00:40:21,700 --> 00:41:05,280
+80 and 100 is usually like 80 let's say 80 to 90 is like the best lower means that there is a chance that there will be like no optimization suddenly because the vibrations could be too weak gotcha so i would start with somewhere around 90 and then adjust okay okay so so i'm gonna test ultrasonic scan this is good i always just need to turn on the pulley do it first
+
+38
+00:41:05,280 --> 00:41:41,020
+I mean, even without the scan, you could just turn on the cooling and it would work. Oh, okay. Yeah, I'm not surprised that it gives you full manual control. In the newest version, it waits automatically one minute after the vibration. In this case, it's not a problem. It works for plasma, which is like four hours of force of atomization sometimes. So, that's true. Okay. Sterling, we're about to start a round with the...
+
+39
+00:41:41,020 --> 00:42:26,350
+the metal plate. Start the vibrations, graining pressure, sealing rod, turbo pressure. Start the vibrations. Then try to do it all as quickly as possible right now. So sealing rod and graining pressure, right? Turbo. More amplitude.
+
+40
+00:42:28,270 --> 00:43:58,350
+Not too down. Maybe a little bit too much pouring. We should try to remove the grinding pressure. Too much pressure makes it shoot out too fast? Yeah. I see that some of it is dropping. If it was higher up on the plate, would it be better? Maybe. Maybe. Okay. But I see that it plays track for some reason. It plays track? Yeah, it's track on one side. Oh. And that can be what, like, uh...
+
+41
+00:43:58,350 --> 00:45:18,190
+disrupting the atomization a bit. Now the atomization with those parameters to degenerate is faster and more efficient. It's not too bad. It's quite a stressor by a low. Now, it was really good for a moment now. Okay, we are done. We saw the vibrations. Oh yeah, it broke, huh? Yeah, for some reason it started to break. And after some point, when another piece broke,
+
+42
+00:45:18,190 --> 00:45:45,340
+It started to atomize much better, like some tension was released. That's something we see sometimes in the metal plates, based on how they were rolled and cut, that when the heat is applied, sometimes they have some tension points, and when they break, the atomization can actually be better. So this one is faulty, from the factory probably? Yeah. But first, it was like...
+
+43
+00:45:45,340 --> 00:46:52,210
+small small piece broke, it was the bud and at the end another small piece broke and actually the application started to be mud part of it. That's a small inch of an adjustment. And you take some time. And we have a, except for water, this go down here, we have a piece of really nice powder. Let me get the light. There's some? Oh yeah. Yeah.
+
+44
+00:47:00,620 --> 00:48:01,260
+I can turn this off it or no I have to wait for this too It's a broader plate We also make them wider wider and longer it could be quite beneficial for
+
+45
+00:48:02,990 --> 00:49:29,630
+If mafia doesn't spread so well, it helps a lot. I expected it to generate to be better. But the Russian area helps especially at low amplitude. Mafia has more surface to spread and more time to atomize. That makes sense. I'm going to get some water real quick. What's up, Ben? Oh, wait. Oh, good. Are all of these molybdenium? No difference. We will go for that.
+
+46
+00:49:29,630 --> 00:50:01,180
+This is the wider molybdenum. So you can see that it's a lot longer, yeah. It helps a lot, especially with the low amplitude. So for the lowest amplitude reverse booster, I would like to go with this. Because then we definitely need more time to wet, more time to... Do you want a chair? I mean, generally, that would probably be all for today because it will take quite some time until it falls down. Yeah, so are we okay to leave it as is right now?
+
+47
+00:50:01,180 --> 00:50:29,730
+so once it's like about 100 degrees you can turn off everything doesn't matter the order
+
+48
+00:50:29,730 --> 00:51:04,920
+So you can see that right now we cannot even leave the program. Unless it's 80 degrees, it doesn't allow you to leave the program. Because it means it keeps reminding you that you need to keep it all going. So there's no problem to leave the powder in here overnight? No. It doesn't stick more? No. It will have more time to pass the rain slowly. That's something I do quite often. Not an hour.
+
