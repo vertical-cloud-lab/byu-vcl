@@ -38,11 +38,11 @@ def transcribe_window(vid, start, dur):
 
 
 def words_for(vid, start, dur):
-    """Cached words of any window that covers [start - 2, start + dur + 2], else a fresh transcription."""
+    """Cached words of any window that covers the clip (with a little slack), else a fresh transcription."""
     import glob
     for p in sorted(glob.glob(f"{CACHE}/{vid}_*.json")):
         d = json.load(open(p))
-        if d["window"][0] <= max(0.0, start - 2) and d["window"][1] >= start + dur + 2:
+        if d["window"][0] <= max(0.0, start - 0.3) and d["window"][1] >= start + dur + 0.5:
             return d["words"]
     p = cache_path(vid, start)
     os.makedirs(CACHE, exist_ok=True)

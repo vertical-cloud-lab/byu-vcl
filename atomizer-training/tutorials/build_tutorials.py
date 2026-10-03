@@ -67,24 +67,30 @@ def font(size, bold=False):
     return ImageFont.truetype(FONTB if bold else FONT, size)
 
 
-def backdrop():
-    """The 3D render of the machine, darkened and blurred, as the background of titles and cards."""
-    src = f"{V3D}/machine.png"
-    if os.path.exists(src):
-        im = Image.open(src).convert("RGB").resize((W, H), Image.LANCZOS).filter(ImageFilter.GaussianBlur(6))
-        return Image.blend(im, Image.new("RGB", (W, H), "#0d1620"), 0.78)
-    return Image.new("RGB", (W, H), "#0d1620")
+INK = "#1F2937"
+ACCENT = {"00": "#1E3A8A", "01": "#00897B", "02": "#C2410C", "03": "#6D28D9"}   # navy, then the diagrams' tutorial colours
 
 
-def card_png(title, sub, path, kicker="BYU Vertical Cloud Lab · AMAZEMET rePowder"):
-    im = backdrop(); d = ImageDraw.Draw(im)
-    d.text((90, 150), kicker.upper(), font=font(22, True), fill="#7fb3d5")
-    y = 200
-    for line in textwrap.wrap(title, 34):
-        d.text((90, y), line, font=font(56, True), fill="white"); y += 70
-    y += 24
-    for line in textwrap.wrap(sub, 64):
-        d.text((90, y), line, font=font(30), fill="#d5e1ea"); y += 44
+def card_png(title, sub, path, accent=ACCENT["00"], kicker="BYU Vertical Cloud Lab · AMAZEMET rePowder"):
+    """A light card in the diagrams' style: text on the left, the 3D machine on the right, a bar in the tutorial's colour."""
+    im = Image.new("RGB", (W, H), "white")
+    art = f"{V3D}/machine_clean.png"
+    if os.path.exists(art):
+        m = Image.open(art).convert("RGB").resize((W, H), Image.LANCZOS)
+        im.paste(m, (110, 0))
+        fade = Image.linear_gradient("L").rotate(90, expand=True).resize((W // 2, H))   # white -> clear, left to right
+        mask = Image.new("L", (W, H), 0); mask.paste(Image.new("L", (W // 2, H), 255), (0, 0))
+        mask.paste(fade.transpose(Image.FLIP_LEFT_RIGHT), (W // 2 - 60, 0))
+        im = Image.composite(Image.new("RGB", (W, H), "white"), im, mask)
+    d = ImageDraw.Draw(im)
+    d.rectangle([0, H - 14, W, H], fill=accent)
+    d.text((80, 150), kicker.upper(), font=font(20, True), fill=accent)
+    y = 196
+    for line in textwrap.wrap(title, 24):
+        d.text((80, y), line, font=font(54, True), fill=INK); y += 66
+    y += 22
+    for line in textwrap.wrap(sub, 36):
+        d.text((80, y), line, font=font(28), fill="#4B5563"); y += 40
     im.save(path)
 
 
@@ -95,15 +101,20 @@ def still_with_audio(png, mp3, out, dur, fade_in=False):
     return out
 
 
+def accent_for(text):
+    m = re.search(r"[Tt]utorial (\d)", text)
+    return ACCENT.get(f"0{m.group(1)}", ACCENT["00"]) if m else ACCENT["00"]
+
+
 def seg_title(i, title, sub, narration):
     png = f"{TMP}/title_{i}.png"; mp3 = f"{TMP}/title_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
-    card_png(title, sub, png)
+    card_png(title, sub, png, accent=accent_for(sub))
     return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.4, fade_in=True)
 
 
 def seg_card(i, title, sub, narration):
     png = f"{TMP}/card_{i}.png"; mp3 = f"{TMP}/card_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
-    card_png(title, sub, png)
+    card_png(title, sub, png, accent=accent_for(title + " " + sub))
     return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.0)
 
 
@@ -256,8 +267,8 @@ def seg_key(seg):
         deps += [str(os.path.getmtime(p)) for p in (f"{V3D}/mp4/{args[0]}.mp4", f"{V3D}/{args[0]}.json") if os.path.exists(p)]
     if kind == "outline" and os.path.exists(f"{DIAG}/{args[0]}.png"):
         deps.append(str(os.path.getmtime(f"{DIAG}/{args[0]}.png")))
-    if kind in ("title", "card") and os.path.exists(f"{V3D}/machine.png"):
-        deps.append(str(os.path.getmtime(f"{V3D}/machine.png")))
+    if kind in ("title", "card") and os.path.exists(f"{V3D}/machine_clean.png"):
+        deps.append(str(os.path.getmtime(f"{V3D}/machine_clean.png")))
     return f"{kind}_" + hashlib.sha1("|".join(deps).encode()).hexdigest()[:12]
 
 
