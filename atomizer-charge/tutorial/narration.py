@@ -72,9 +72,9 @@ SEGMENTS = [
         "chapter": "On the lathe",
     }, [
         ("Here's how the first cups were made.", None),
-        ("Gage marked the bar at about 3 inches per cup: a quarter inch over the finished length, so both ends can "
+        ("The bar was marked at about 3 inches per cup: a quarter inch over the finished length, so both ends can "
          "be faced.",
-         "Gage marked the bar at about three inches per cup: a quarter inch over the finished length, so both ends "
+         "The bar was marked at about three inches per cup: a quarter inch over the finished length, so both ends "
          "can be faced."),
     ]),
     ("clip", {
@@ -91,13 +91,13 @@ SEGMENTS = [
     ("clip_vo", {
         "title": "Mark and saw the blanks",
         "start": 43.0,
-        "notes": ["Three 3 in blanks", "Plus about 1 3/8 in for plugs"],
+        "notes": ["Three 3 in blanks: two cups, one solid slug", "Plus a piece about 1 3/8 in long"],
         "credit": GAGE,
     }, [
-        ("The blanks were cut on the band saw: three pieces 3 inches long, plus a piece about 1 3/8 inches long for "
-         "the plugs.",
-         "The blanks were cut on the band saw: three pieces, three inches long, plus a piece about one and "
-         "three-eighths inches long, for the plugs."),
+        ("The blanks were cut on the band saw: three pieces 3 inches long, two for cups and one for a solid slug, "
+         "plus a shorter piece about 1 3/8 inches long.",
+         "The blanks were cut on the band saw: three pieces, three inches long, two for cups and one for a solid "
+         "slug, plus a shorter piece, about one and three-eighths inches long."),
     ]),
     ("clip", {
         "title": "Center drill, then the 1/2 in drill",
@@ -123,13 +123,13 @@ SEGMENTS = [
         "title": "Drill 1/2 in, 2.25 in deep",
         "start": 86.6,
         "notes": ["1/2 in drill, 2.25 in deep", "The drill point leaves a pointed bottom: fine",
-                  "Each cup in its own bag"],
+                  "Bagged, and the bag labeled"],
         "credit": GAGE,
     }, [
         ("The half-inch drill then went in 2.25 inches deep. The drill tip leaves a pointed bottom, and that's fine.",
          "The half-inch drill then went in two and a quarter inches deep. The drill tip leaves a pointed bottom, "
          "and that's fine."),
-        ("Each finished cup went into its own bag.", None),
+        ("The finished pieces were bagged, and the bag labeled.", None),
     ]),
     ("gif", {
         "title": "The cup, step by step (CAD)",
@@ -170,8 +170,8 @@ SEGMENTS = [
         [("Break the top edge. It's a deburr only, and plays no part in the fit.", None)],
         [("Part it off. The plugs so far are 9/16 inch long.",
           "Part it off. The plugs so far are nine-sixteenths of an inch long.")],
-        [("One plug per cup, turned to that cup's measured hole. The first plugs came out at 0.508 inch diameter.",
-          "One plug per cup, turned to that cup's measured hole. The first plugs came out at point five oh eight "
+        [("One plug per cup, turned to that cup's measured hole. The first plugs were turned to 0.508 inch diameter.",
+          "One plug per cup, turned to that cup's measured hole. The first plugs were turned to point five oh eight "
           "inches in diameter."),
          ("Measure every hole, rather than reusing that number.", None)],
     ]),
@@ -282,7 +282,7 @@ SEGMENTS = [
         ("The full drawing, the CAD and these animations are in pull request 232, linked from issue 222.", None),
         ("The lengths on the drawing are design values. For the standard cups, go by the numbers in this video.",
          None),
-        ("One request: nobody has filmed the plugs being turned yet. Please record that step this time, with the "
+        ("One request: there's no video of the plugs being turned yet. Please film that step this time, with the "
          "chest camera.", None),
     ]),
     ("card", {

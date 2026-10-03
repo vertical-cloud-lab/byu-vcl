@@ -3,7 +3,7 @@
 **Video: <https://youtu.be/nPIPvVh38Dw>** (unlisted, on the BYU Vertical Cloud Lab channel, uploaded 2026-10-03).
 
 For [#248](https://github.com/vertical-cloud-lab/byu-vcl/issues/248): one video covering how the Al charge cups and their
-vented plugs from [#222](https://github.com/vertical-cloud-lab/byu-vcl/issues/222) are made. It's 6:41 long, narrated
+vented plugs from [#222](https://github.com/vertical-cloud-lab/byu-vcl/issues/222) are made. It's 6:44 long, narrated
 by the Microsoft Edge TTS voice `en-US-SteffanNeural` (the voice the atomizer training tutorials use), with captions
 burned in. The YouTube description has the chapters and links.
 
