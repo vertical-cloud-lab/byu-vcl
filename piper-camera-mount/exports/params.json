@@ -21,7 +21,7 @@
   "collar_wall": 5.0,
   "collar_y0": 14.5,
   "collar_y1": 46.0,
-  "split_gap": 1.0,
+  "split_gap": 0.6,
   "ear_w": 9.0,
   "ear_z0": 25.0,
   "ear_z1": 44.0,

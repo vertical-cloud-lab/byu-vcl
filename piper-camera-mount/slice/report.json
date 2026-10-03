@@ -21,15 +21,15 @@
     {
       "part": "bracket",
       "stl": "bracket.stl",
-      "sha256": "96242e676000",
+      "sha256": "55435c26f655",
       "centre": [
         43,
         55
       ],
       "footprint": [
-        6.89,
+        6.79,
         11.0,
-        79.11,
+        79.21,
         99.0
       ],
       "height": 42.68
@@ -37,7 +37,7 @@
     {
       "part": "carrier",
       "stl": "carrier.stl",
-      "sha256": "5dd9863f9d9d",
+      "sha256": "114363150caf",
       "centre": [
         50,
         146
@@ -48,7 +48,7 @@
         94.0,
         173.75
       ],
-      "height": 38.41
+      "height": 38.61
     },
     {
       "part": "pod",
@@ -116,7 +116,13 @@
     }
   ],
   "layout_warnings": [],
-  "thumbnails_embedded": [],
+  "thumbnails_embedded": [
+    "Metadata/pick_1.png",
+    "Metadata/plate_1.png",
+    "Metadata/plate_1_small.png",
+    "Metadata/plate_no_light_1.png",
+    "Metadata/top_1.png"
+  ],
   "plates": [
     {
       "plate": 1,
@@ -129,9 +135,9 @@
         "tag_wedge_1",
         "tag_wedge_1"
       ],
-      "print_time_s": 10167,
-      "filament_g": 87.4,
-      "filament_m": 28.84,
+      "print_time_s": 10226,
+      "filament_g": 87.62,
+      "filament_m": 28.91,
       "bed_type": "Textured PEI Plate",
       "bed_temp_c": [
         65,
@@ -155,21 +161,21 @@
       ],
       "feature_time_s": {
         "Bottom surface": 317,
-        "Bridge": 399,
+        "Bridge": 400,
         "Custom": 348,
         "Flush": 28,
-        "Gap infill": 117,
-        "Inner wall": 1837,
-        "Internal solid infill": 1224,
-        "Outer wall": 1428,
+        "Gap infill": 118,
+        "Inner wall": 1840,
+        "Internal solid infill": 1256,
+        "Outer wall": 1432,
         "Overhang wall": 63,
-        "Sparse infill": 2633,
-        "Top surface": 298,
-        "Travel": 1492,
-        "Undefined": 1474
+        "Sparse infill": 2644,
+        "Top surface": 297,
+        "Travel": 1500,
+        "Undefined": 1482
       }
     }
   ],
-  "total_print_time_s": 10167,
-  "total_filament_g": 87.4
+  "total_print_time_s": 10226,
+  "total_filament_g": 87.62
 }

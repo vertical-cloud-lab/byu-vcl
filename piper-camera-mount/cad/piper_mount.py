@@ -72,7 +72,7 @@ class Params:
     collar_wall: float = 5.0
     collar_y0: float = 14.5
     collar_y1: float = 46.0         # stops 2 mm short of the jumper sockets in the back cover
-    split_gap: float = 1.0          # between the two halves, so tightening squeezes the body
+    split_gap: float = 0.6          # between the two halves: they meet at about snug, then act as a stop
     ear_w: float = 9.0              # each half's ear, along X from the split
     ear_z0: float = 25.0            # ears run from here out to ear_z1, measured from the axis
     ear_z1: float = 44.0

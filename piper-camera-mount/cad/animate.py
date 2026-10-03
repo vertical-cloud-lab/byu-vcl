@@ -258,7 +258,7 @@ def main() -> None:
             n + 10, both(fly(["pi_nuts"], (1, 0, 0), 25), delay(move_group("carrier_sub", (0, 0, 0)), 0.35)),
             cam_to=pi_side, hold=14)
     sc.step("4 / 10", "4 x M3 x 16 through the carrier's plate into the bracket's nuts: tighten evenly | "
-            "until the 1 mm split closes up and the collar grips the body.",
+            "until the 0.6 mm split just closes, then stop. The halves meeting is the stop.",
             n + 4, fly(["clamp_screws"], (-1, 0, 0), 40), hold=14)
     # 5. Pod sub-assembly, off to the side.
     pod_at = np.array([-120, 60, 70])
