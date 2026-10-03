@@ -47,8 +47,8 @@ DRAFT4 = ("Draft 4, for review on GitHub (PR #255): the steps in the order of a 
           "CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.")
 
 TUTORIALS = [
-    {"id": "raIcdus1lI0", "kind": "tutorial", "seconds": 327,
-     "was": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
+    {"id": "-yxOIJfhs80", "kind": "tutorial", "seconds": 327,
+     "was": "Atomizer tutorial 0: the machine and how it works (draft 4)",
      "title": "Atomizer tutorial 0: the machine and how it works",
      "summary": "What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the "
                 "machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder "
@@ -61,8 +61,8 @@ TUTORIALS = [
                   (294, "How we got here: June to October 2026")],
      "sources_intro": B,
      "sources": clips(("naePD8o9_Gk", 1445), ("txH397FGTAU", 873), ("naePD8o9_Gk", 2321), ("58wJ_Khwgyk", 2552))},
-    {"id": "KwY4KTY1UdI", "kind": "tutorial", "seconds": 663,
-     "was": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
+    {"id": "xpkbazHT_7M", "kind": "tutorial", "seconds": 663,
+     "was": "Atomizer tutorial 1: before a run (draft 4)",
      "title": "Atomizer tutorial 1: before a run",
      "summary": "Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, "
                 "chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and "
@@ -79,8 +79,8 @@ TUTORIALS = [
      "sources": clips(("wRc8p2_FnJo", 86), ("wRc8p2_FnJo", 132), ("wRc8p2_FnJo", 2754), ("wRc8p2_FnJo", 2793),
                       ("1F9_4ccwhss", 100), ("58wJ_Khwgyk", 158), ("58wJ_Khwgyk", 224), ("58wJ_Khwgyk", 419),
                       ("58wJ_Khwgyk", 805), ("58wJ_Khwgyk", 1332))},
-    {"id": "79QQtmIm0JM", "kind": "tutorial", "seconds": 463,
-     "was": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
+    {"id": "Jex6lDcERUM", "kind": "tutorial", "seconds": 463,
+     "was": "Atomizer tutorial 2: during a run (draft 4)",
      "title": "Atomizer tutorial 2: during a run",
      "summary": "The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, "
                 "until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about "
@@ -94,8 +94,8 @@ TUTORIALS = [
      "sources": clips(("9kn-HhXCr1o", 205), ("9kn-HhXCr1o", 516), ("58wJ_Khwgyk", 2170), ("9kn-HhXCr1o", 810),
                       ("1F9_4ccwhss", 282), ("58wJ_Khwgyk", 3442), ("58wJ_Khwgyk", 3592), ("naePD8o9_Gk", 1408),
                       ("58wJ_Khwgyk", 3838), ("9kn-HhXCr1o", 1480), ("naePD8o9_Gk", 1922))},
-    {"id": "TvaFwSyqaog", "kind": "tutorial", "seconds": 380,
-     "was": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
+    {"id": "VWa33SEvFJw", "kind": "tutorial", "seconds": 380,
+     "was": "Atomizer tutorial 3: after a run (draft 4)",
      "title": "Atomizer tutorial 3: after a run",
      "summary": "Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber "
                 "(only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and "
@@ -609,32 +609,45 @@ RECORDINGS = [
 
 VIDEOS = TUTORIALS + [CUPS] + STITCH + [DELIVERY] + RECORDINGS
 
-_DRAFT = "This is draft {n} of tutorial {t}; draft 3 replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255."
+_DRAFT = ("This is draft {n} of tutorial {t}; draft 4, linked above, replaced it after review on "
+          "https://github.com/vertical-cloud-lab/byu-vcl/pull/255.")
 SUPERSEDED = [
-    {"id": "p6jlgTJEOw4", "by": "raIcdus1lI0", "why": _DRAFT.format(n=1, t=0),
+    {"id": "p6jlgTJEOw4", "by": "-yxOIJfhs80", "why": _DRAFT.format(n=1, t=0),
      "was": "rePowder atomizer at BYU VCL, tutorial 0: installation and training overview (draft)",
      "title": "[superseded] Atomizer tutorial 0, draft 1 (installation and training overview)"},
-    {"id": "eKH7y4JgJD8", "by": "KwY4KTY1UdI", "why": _DRAFT.format(n=1, t=1),
+    {"id": "eKH7y4JgJD8", "by": "xpkbazHT_7M", "why": _DRAFT.format(n=1, t=1),
      "was": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft)",
      "title": "[superseded] Atomizer tutorial 1, draft 1 (before a run)"},
-    {"id": "cGxBFZyFmCY", "by": "79QQtmIm0JM", "why": _DRAFT.format(n=1, t=2),
+    {"id": "cGxBFZyFmCY", "by": "Jex6lDcERUM", "why": _DRAFT.format(n=1, t=2),
      "was": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft)",
      "title": "[superseded] Atomizer tutorial 2, draft 1 (during a run)"},
-    {"id": "wPzP6I3jT5w", "by": "TvaFwSyqaog", "why": _DRAFT.format(n=1, t=3),
+    {"id": "wPzP6I3jT5w", "by": "VWa33SEvFJw", "why": _DRAFT.format(n=1, t=3),
      "was": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft)",
      "title": "[superseded] Atomizer tutorial 3, draft 1 (after a run)"},
-    {"id": "uVVeTokW3Us", "by": "raIcdus1lI0", "why": _DRAFT.format(n=2, t=0),
+    {"id": "uVVeTokW3Us", "by": "-yxOIJfhs80", "why": _DRAFT.format(n=2, t=0),
      "was": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 2)",
      "title": "[superseded] Atomizer tutorial 0, draft 2 (the machine and how it works)"},
-    {"id": "qiBB0lIXUDM", "by": "KwY4KTY1UdI", "why": _DRAFT.format(n=2, t=1),
+    {"id": "qiBB0lIXUDM", "by": "xpkbazHT_7M", "why": _DRAFT.format(n=2, t=1),
      "was": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 2)",
      "title": "[superseded] Atomizer tutorial 1, draft 2 (before a run)"},
-    {"id": "sagBBb78pVQ", "by": "79QQtmIm0JM", "why": _DRAFT.format(n=2, t=2),
+    {"id": "sagBBb78pVQ", "by": "Jex6lDcERUM", "why": _DRAFT.format(n=2, t=2),
      "was": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 2)",
      "title": "[superseded] Atomizer tutorial 2, draft 2 (during a run)"},
-    {"id": "50j8N8YyDxU", "by": "TvaFwSyqaog", "why": _DRAFT.format(n=2, t=3),
+    {"id": "50j8N8YyDxU", "by": "VWa33SEvFJw", "why": _DRAFT.format(n=2, t=3),
      "was": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 2)",
      "title": "[superseded] Atomizer tutorial 3, draft 2 (after a run)"},
+    {"id": "raIcdus1lI0", "by": "-yxOIJfhs80", "why": _DRAFT.format(n=3, t=0),
+     "was": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
+     "title": "[superseded] Atomizer tutorial 0, draft 3 (the machine and how it works)"},
+    {"id": "KwY4KTY1UdI", "by": "xpkbazHT_7M", "why": _DRAFT.format(n=3, t=1),
+     "was": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
+     "title": "[superseded] Atomizer tutorial 1, draft 3 (before a run)"},
+    {"id": "79QQtmIm0JM", "by": "Jex6lDcERUM", "why": _DRAFT.format(n=3, t=2),
+     "was": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
+     "title": "[superseded] Atomizer tutorial 2, draft 3 (during a run)"},
+    {"id": "TvaFwSyqaog", "by": "VWa33SEvFJw", "why": _DRAFT.format(n=3, t=3),
+     "was": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
+     "title": "[superseded] Atomizer tutorial 3, draft 3 (after a run)"},
     {"id": "nPIPvVh38Dw", "by": "osx7moehRnE",
      "why": "This first upload's narration said each cup went into its own bag, over footage showing them in one bag, and "
             "gave .508 in as a measured diameter rather than the target.",

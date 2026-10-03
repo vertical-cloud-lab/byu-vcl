@@ -9,7 +9,7 @@ in this order:
 
 | # | What |
 | --- | --- |
-| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 3, [`../tutorials/`](../tutorials/README.md)) |
+| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 3 until the next `apply`, then draft 4; [`../tutorials/`](../tutorials/README.md)) |
 | 5 | Tutorial: making the aluminum cups and plugs (issue #248) |
 | 6–7 | Every recorded step in the order of a run, a 6 h 49 min raw cut in two parts ([`../stitch/`](../stitch/README.md)) |
 | 8–34 | The recordings, in the order they were made: delivery and installation (Jun–Sep), commissioning (Sep 28), training day 1 (Sep 29), day 2 (Sep 30), dosing the next charge (Sep 30), the first run on our own (Oct 2) |
@@ -69,6 +69,17 @@ python sync.py apply --ref <sha>    # update the videos, then create / fill / re
   `../tools/make_timestamps.py`, so that its timestamp-log heading (the link's anchor) matches.
 
 ## Still open
+
+- **Draft 4 of the tutorials is waiting for one `apply`.** It was uploaded later on 2026-10-03:
+  [0](https://www.youtube.com/watch?v=-yxOIJfhs80), [1](https://www.youtube.com/watch?v=xpkbazHT_7M),
+  [2](https://www.youtube.com/watch?v=Jex6lDcERUM), [3](https://www.youtube.com/watch?v=VWa33SEvFJw). The upload token
+  could set their titles and descriptions but cannot touch the playlist or any other video. `catalog.py` already has
+  them in `TUTORIALS`, with draft 3 moved to `SUPERSEDED`, and [`descriptions.md`](descriptions.md) shows the result.
+  `python sync.py apply --ref <sha>` in an `@claude-youtube` run then:
+  - swaps them into positions 1–4;
+  - drops "(draft 4)" from their titles;
+  - labels draft 3 `[superseded] …`;
+  - re-points drafts 1–2 at draft 4.
 
 - **Deleting the 9 superseded uploads** is the user's call: it cannot be undone. Their ids are in `SUPERSEDED` in
   `catalog.py`.

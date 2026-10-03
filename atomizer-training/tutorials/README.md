@@ -1,8 +1,10 @@
 # Narrated tutorials
 
 Four tutorial videos assembled from the material in this folder, uploaded **unlisted** to the BYU Vertical Cloud Lab
-channel for review. Draft 3 replaces drafts 1 and 2 after Sterling's reviews on PR #255; all three sets are listed below,
-since the upload token cannot delete videos.
+channel for review. Draft 4 replaces draft 3 after Sterling's review on PR #255: no part of the 3D model passes through
+another any more, tutorial 1 follows the order of a real run (utilities, furnace, chamber, then the ultrasonic stack before
+the door closes), and the cleaning step takes the nut off from below before the crucible comes out. All four sets are listed
+below, since the upload token cannot delete videos.
 
 ## How each tutorial is put together
 
@@ -42,20 +44,24 @@ changes.
 
 ## Uploads
 
-| Tutorial | Draft 3 | Draft 2 (superseded) | Draft 1 (superseded) |
-| --- | --- | --- | --- |
-| 0 · The machine and how it works | [5:27](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
-| 1 · Before a run: utilities, stack, furnace, chamber | [10:06](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
-| 2 · During a run: gas wash, melt, pour, end of pour | [7:43](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
-| 3 · After a run: shutdown, cool-down, powder, cleaning | [5:57](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
+| Tutorial | Draft 4 | Draft 3 (superseded) | Draft 2 (superseded) | Draft 1 (superseded) |
+| --- | --- | --- | --- | --- |
+| 0 · The machine and how it works | [5:27](https://www.youtube.com/watch?v=-yxOIJfhs80) | [draft 3](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
+| 1 · Before a run: utilities, furnace, chamber, stack | [11:03](https://www.youtube.com/watch?v=xpkbazHT_7M) | [draft 3](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
+| 2 · During a run: gas wash, melt, pour, end of pour | [7:43](https://www.youtube.com/watch?v=Jex6lDcERUM) | [draft 3](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
+| 3 · After a run: shutdown, cool-down, powder, cleaning | [6:20](https://www.youtube.com/watch?v=VWa33SEvFJw) | [draft 3](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
 
-Drafts 1 and 2 are now titled `[superseded] …` and point to draft 3. Deleting them is still to do: it needs the full token and a go-ahead.
+Draft 4 went up already titled in the playlist's pattern (*Atomizer tutorial N: … (draft 4)*) and described from
+[`../playlist/catalog.py`](../playlist/catalog.py): summary, chapters, the training-video moment behind every clip, and
+links pinned at `6c5da5f`. Drafts 1 and 2 are titled `[superseded] …`. Deleting them is still to do: it needs the full token
+and a go-ahead.
 
-**Playlist.** Draft 3 opens the atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, ahead of the
-cups tutorial, the stitch and the recordings. Titles, descriptions (with chapters, and a link to the training-video
-moment behind every clip) and the playlist order come from [`../playlist/catalog.py`](../playlist/catalog.py). When a
-new draft is uploaded, swap its ids in there and run `python ../playlist/sync.py apply --ref <sha>` in an
-`@claude-youtube` run; see [`../playlist/README.md`](../playlist/README.md).
+**Playlist.** The atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, opens with the tutorials,
+ahead of the cups tutorial, the stitch and the recordings. It still holds draft 3, because the upload token cannot edit a
+playlist or another video. `catalog.py` already points at draft 4 and lists draft 3 as superseded, so one
+`@claude-youtube` run makes the swap: `python ../playlist/sync.py apply --ref <sha>`. It drops "(draft 4)" from the new
+titles, labels draft 3 `[superseded] …` and puts draft 4 in its place in the playlist. See
+[`../playlist/README.md`](../playlist/README.md).
 
 ## Files
 
@@ -71,8 +77,14 @@ new draft is uploaded, swap its ids in there and run `python ../playlist/sync.py
 
   On a shared machine, `ATOMIZER_THREADS=2 nice -n 10 python build_tutorials.py` caps every ffmpeg call at two threads.
 - [`clip_words.py`](clip_words.py): word-timed Whisper for the clip windows, cached in `clip_words/`.
-- [`upload.py`](upload.py): uploads `out/*.mp4` unlisted with the upload-only token. It records ids per draft in
-  [`uploads.json`](uploads.json).
+- [`upload.py`](upload.py): uploads `out/*.mp4` unlisted with the upload-only token, with the title from `scripts.py` and
+  the description that `../playlist/catalog.py` gives the tutorial (`--ref <pushed sha>` pins its links). It records ids per
+  draft in [`uploads.json`](uploads.json). For a new draft:
+  1. build;
+  2. `python build_tutorials.py --timeline` for the chapter times;
+  3. update the catalog entries and push;
+  4. upload;
+  5. swap the ids in the catalog.
 - The rendered `out/*.mp4` are not committed (tens of MB each); the uploads are the deliverable, and the build is
   reproducible.
 
