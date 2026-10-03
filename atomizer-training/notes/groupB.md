@@ -211,47 +211,47 @@ Troubleshooting
 
 ## 58wJ_Khwgyk — Atomizer Training Video 5 (79 min, Sep 29)
 
-The complete first powder run, start to finish. Setup: powder container types, splash-protection plates, the gold-melting catch bowl, chamber covers, then the ultrasonic stack (piezo transducer with air cooling and LEMO cable, 1:1.5/reversed/1:1 boosters, titanium connector rod M10/M8, titanium sonotrode, carbon-fiber plate) torqued to 65/60/50 N·m with the plate tightened in the housing, scan at ~40 kHz, wet test and plate positioning. Atmosphere: chamber overpressure with O2-sensor bleed, five automatic furnace purges, chamber vacuum to the altitude-limited floor, protective-gas refill, then repeats at 250 °C and ~500 °C, with a "pressure crucible" warning diagnosed as a chamber-to-furnace leak. Melt: set 1000 °C to drop the rods, hold ~790 °C, wait exactly 2 min, then pour with sealing rod up, draining and turbo pressure, steering the stream by plate position; oxygen rose and bent the stream. After: stop sequence, cool to ~400 °C to open, vent before opening, respirators, brushing, slag, ~1 h cleaning for a material change. Phases: before, during, after, cleaning, theory, troubleshooting, safety, some chatter.
+The complete first powder run, start to finish. Setup: powder container types, splash-protection plates, the gold-melting catch bowl, chamber covers, then the ultrasonic stack (piezo transducer with air cooling and LEMO cable, 1:1.5/reversed/1:1 boosters, titanium connector rod M10/M8, tungsten-alloy sonotrode, carbon-fiber plate) torqued to 65/60/50 N·m with the plate tightened in the housing, scan at ~40 kHz, wet test and plate positioning. Atmosphere: chamber overpressure with O2-sensor bleed, five automatic furnace purges, chamber vacuum to the altitude-limited floor, protective-gas refill, then repeats at 250 °C and ~500 °C, with a "pressure crucible" warning diagnosed as a chamber-to-furnace leak. Melt: set 1000 °C to drop the rods, hold ~790 °C, wait exactly 2 min, then pour with sealing rod up, "graining" and turbo pressure, steering the stream by plate position; oxygen rose and bent the stream. After: stop sequence, cool to ~400 °C to open, vent before opening, respirators, brushing, slag, ~1 h cleaning for a material change. Phases: before, during, after, cleaning, theory, troubleshooting, safety, some chatter.
 
 ### Timestamp log
 
 | mm:ss | phase | what happens / what is said |
 |---|---|---|
 | 00:00 | parts | Powder container types: this one shows its contents and has a built-in valve; a stainless tube is simpler, valve added separately. |
-| 00:18 | parts | AMAZEMET keeps this type for induction and waste circulation; otherwise plain stainless — easier to make and clean; have both. |
+| 00:18 | parts | AMAZEMET keeps this type for induction and in the recirculation system for waste management; otherwise plain stainless — easier to make and clean; have both. |
 | 00:54 | cleaning | No powder yet, so compressed air may blow out paper-towel dust; never with powder inside (01:32). |
-| 01:38 | context | First rod run; AMAZEMET avoids running powder on the production side; long runs were for an automated plasma system. |
+| 01:38 | context | First rod run through this machine — AMAZEMET tests subsystems separately and avoids making powder on the production side; the recent long runs were for an automated, no-operator plasma system. |
 | 02:21 | parts | Protective plates: hot metals like copper splash if atomization goes wrong; plates stop splashes entering the container. |
 | 02:47 | before | For aluminum one protective plate is enough; splashes stick there, powder falls past. |
 | 03:44 | before | Mounting the container is easier with two people: lift and clamp at the same time. |
-| 04:08 | before | First process uses the booster already in the housing → "large" powder; easy, good for training, but big particles. |
+| 04:08 | before | First process uses the booster already in the housing → "large powder"; easy, good for training, but big particles — "more into DED and LPBF size"; with the parameters set well "you can kind of do both" (04:39). |
 | 04:48 | before | Finger-tighten the container flange. |
 | 05:01 | before | A jewelry gold-melting bowl goes in the chamber for safety; catches un-atomized melt for reuse; graphite would also work. |
 | 05:41 | before | Wipe the plate; hang covers over chamber openings/door so powder can be swept from the edge (05:50). |
 | 06:40 | parts | Stack base: transducer = stack of piezo discs; compressed-air cooling; LEMO cable brings the generator signal. |
 | 07:00 | safety | Transducer care: don't drop, heat, wet or overheat; always air-cool; "one mistake can actually damage it". |
 | 07:20 | parts | If the air line were closed the system would still see pressure but give no cooling. |
-| 07:38 | cost | Repair ~2,000 (piezo plates swapped); cheap online transducers fail; theirs come from a Polish industrial maker (08:02). |
+| 07:38 | cost | Repair "close to 2,000" (currency unstated; the trainee guessed 5–10k new): only the piezo plates are swapped; cheap Alibaba/AliExpress transducers are cheap for a reason; theirs come from a Polish industrial maker near AMAZEMET (08:02). |
 | 08:21 | parts | Booster: mechanical amplifier; its ring acts like a spring, so it can be held there without affecting vibration. |
 | 08:43 | parameter | Boosters: 1:1.5 gives 150 % amplitude; reversed it reduces; 1:1 in the middle (09:22). |
-| 08:56 | theory | Reversed booster on Al → smallest particles but needs good wetting and slow pouring; more energy → larger particles, faster, pour more. |
+| 08:56 | theory | Reversed booster on Al → smallest particles but needs good, slow pouring (not too much material at once); more energy → larger particles, faster atomization, pour more. |
 | 09:24 | theory | 1:1 used for copper and magnesium; not every material atomizes at low amplitude. |
-| 09:48 | lesson | Amplifying booster "will immediately destroy all the plates"; metal plates crack; reversed gave several Al runs without damage. |
-| 10:28 | parts | Connector rod: titanium, prolongs the stack; M10 at the base, M8 at the tip (10:44). |
+| 09:48 | lesson | Amplifying booster "will immediately destroy all the plates"; metal plates crack too quickly; reversed gave several Al runs in a row without damage and significantly better powder — still not very fine, but pretty good (09:55). |
+| 10:28 | parts | Connector rod: titanium, prolongs the stack; connectors also titanium; M10 at the base, M8 at the tip (10:44). |
 | 10:59 | cleaning | Clean threads with IPA; if problems start, unscrew everything and clean all threads (cavitation dust). |
-| 11:19 | parts | Sonotrode: titanium alloy; M8 at the top means a smaller hole in the plate → more contact surface. |
+| 11:19 | parts | Sonotrode (the top piece that carries the plate): "a tungsten alloy, actually" — handles the temperature, not damaged by the conditions; M8 at the top means a smaller hole in the plate → more contact surface. |
 | 11:53 | parts | For Al a bare carbon-fiber plate works: Al wets and penetrates it; large particles; up to ~10 processes (12:11). |
-| 12:39 | theory | Silicon was atomized on CF with induction; unpoured Si expands on cooling and cracks the crucible (13:02). |
-| 13:30 | parameter | Torques 65 N·m, 60 N·m, 50 or 55 N·m (50 safer): ultrasound must pass; too tight damages threads, loose = friction. |
+| 12:39 | theory | Silicon was atomized on bare CF with induction — the higher-temperature setup with coatings and an "aluminum" (presumably alumina) sealing rod; Si reacts with and wets the CF, atomizing very well; unpoured Si expands on cooling and cracks the crucible (13:02). |
+| 13:30 | parameter | Torques 65 N·m, 60 N·m, 50 or 55 N·m ("Newton meters" spoken for the 65; 50 is the safer bet): ultrasound must pass through; too tight damages the thread and connector, loose = friction. |
 | 14:38 | before | Tighten in a vise (best) or on the floor; AMAZEMET uses machined aluminum soft jaws; 18 mm flat wrench needed (15:25). |
 | 15:46 | troubleshooting | A damaged sonotrode would show in the scan. |
 | 16:59 | before | Torque wrench: pull collar down, rotate so the 60 and 65 marks align → 65 N·m; it clicks when done (17:30). |
 | 17:38 | before | "Now it's 60"; the final (plate) torque is done with the stack already in the housing. |
-| 18:10 | before | Hold the stack, but don't push the stiff cable/hose back too much; elbow fittings on order (18:47). |
+| 18:10 | before | Hold the stack, but don't push the stiff cable/hose back too much — Bartosz warned it could damage something (unnamed); elbow fittings on order via Dave (18:47). |
 | 19:03 | before | Transducer goes in its cover so nobody hits it; rotate slightly to catch material; clamp only snug (20:18). |
 | 21:50 | parameter | Full run with cleaning and prep: ~1 h for Al; longer for higher-melting metals. |
-| 22:10 | before | Once connected, run a scan: a little over 40 kHz is right; scan also checks impedance. |
-| 22:56 | theory | Holding the vibrating tip heats it instantly; damping shifts frequency; squeaking = loose parts → reassemble (23:18). |
+| 22:10 | before | Once connected, run a scan: a little over 40 kHz is right; scan also checks impedance and would not pass if something were wrong; then max amplitude, start vibrations, watch the power (22:29). |
+| 22:56 | theory | Holding the vibrating tip heats it instantly (faster at higher frequency); damping shifts frequency; squeaking = loose parts → unscrew, clean, reassemble (23:18). |
 | 24:18 | parameter | All energy passes through the transducer: 300–500 W may trip it; expect ≤100–150 W here, ~50 W on most plates. |
 | 24:49 | before | Insert stack into housing; clamp over, not touching the safety cover; add the final clamp. |
 | 25:11 | parts | View ports: hardened glass standard, borosilicate optional; furnace window is glass-ceramic; none ever broke. |
@@ -261,49 +261,53 @@ The complete first powder run, start to finish. Setup: powder container types, s
 | 28:18 | parts | Plate clearly visible through the view port; a phone holder/camera could go there. |
 | 28:46 | before | Plate holder moves up/down/left/right; melt should land as high as possible without going over the top. |
 | 29:21 | before | Loosen to turn; up/down needs simultaneous rotation; final adjustment at the first flow (30:32). |
-| 30:52 | during | Atmosphere: 5 furnace purges + 2 chamber purges at overpressure, repeated at 250 °C and 500 °C for moisture. |
-| 31:17 | theory | Worth it for Mg or Al (low oxygen gives good flow); for bismuth one purge and opening at 300 °C sufficed. |
+| 30:52 | during | Atmosphere: 5 furnace purges + 2 chamber purges at overpressure, done "one, two, three times" — cold, then at 250 °C and 500 °C for moisture. |
+| 31:17 | theory | Worth it for Mg or Al (low oxygen gives good flow); for bismuth he just opened the furnace right away at 300 °C to add more, with only a little purging. |
+| 31:42 | theory | Bismuth powder made without oxygen does not get the crystal colours; the grains are faceted rather than round because of how it crystallizes. |
 | 31:57 | before | Argon and compressed air on; cooling not needed until heating starts. |
 | 32:05 | during | Chamber overpressure: system auto-adds or vents; the hiss is the oxygen-sensor bleed; valve sets a small flow (32:44). |
 | 33:00 | safety | Machine will not block a run on bad O2; you watch the value and set alarms yourself. |
 | 33:22 | during | Graphite seals leak between furnace and chamber, so purge one side while the other holds overpressure. |
 | 33:49 | during | Vacuum pump on, press gas wash: furnace runs 5 purge cycles automatically; it has no sensor. |
 | 34:16 | theory | Hot graphite purifies itself. |
-| 34:39 | troubleshooting | "Pressure crucible" warning: furnace not reaching −1 bar; gas leaking chamber→furnace, maybe sealing rod; still workable. |
+| 34:39 | troubleshooting | "Pressure crucible" warning: gas coming from chamber to furnace stops it reaching the target; maybe a crack in the sealing rod, but it was inspected and seems tight; still workable because so many purge cycles follow (35:00). |
 | 36:14 | troubleshooting | Not reaching −1 = leak; chamber→furnace acceptable, from outside worse; later swap sealing rod/crucible to test (36:27). |
+| 36:40 | theory | A new crucible or sealing rod usually aligns better, but the rod is solid graphite seating on solid graphite — not a true seal, so some furnace–chamber leak is inherent. |
 | 37:24 | during | "Cooling water flow low" warning — chiller not on yet. |
 | 37:35 | during | After the last cycle (counter shows 1) manually press melting pressure, then overpressure, then vacuum the chamber (38:12). |
-| 38:28 | during | Chamber vacuum needs the pump running and the big valve open; furnace valve clicking = argon leaking into chamber (OK). |
-| 39:31 | during | Wait until chamber pressure stops changing; −1000 mbar at sea level, less at altitude (reading garbled). |
-| 40:10 | during | Fill protective gas; cycle again ("52, heat it up" — garbled); remove all oxygen and moisture. |
-| 40:55 | theory | Plasma variant: gas flow all the way through heats the gas in the filters. |
-| 41:12 | during | Second cycle: pressure control to 150; read O2 only at pressure, not in vacuum; value drops then stabilizes. |
-| 41:51 | during | Start heating: coolant flow, big switch on, no error, set 250 (heard "50"); press generator start (42:22). |
+| 38:28 | during | Chamber vacuum needs the pump running and the big valve open; furnace valve clicking = argon topping up what leaks into the chamber (OK); no clicking would just mean it is well sealed (39:27). |
+| 38:53 | theory | Furnace→chamber leaks are acceptable while everything is being flushed with argon; purging the two separately is better than vacuuming both at once, which is also possible. |
+| 39:31 | during | Wait until chamber pressure stops changing — not a set point, just the pump's limit: −1000 mbar at sea level, less at altitude; the reading here is inaudible in both transcripts (Video 1 28:10 gives the floor as about −850 mbar). |
+| 40:10 | during | Fill protective gas; "this is just the cycle again: 5, 2, heat it up; 5, 2, heat it up; 5, 2" (five furnace purges, two chamber purges, then heat); at the start especially, remove all oxygen and moisture. |
+| 40:55 | theory | Plasma variant: start the gas flow all the way through, heating the gas as it passes the filters, and pull it right out. |
+| 41:12 | during | Second cycle: pressure control to 150 (no unit spoken); read O2 only at pressure, not in vacuum; value drops then stabilizes. |
+| 41:51 | during | Start heating: coolant flow, big switch on, no error, set 250 (captions "50"; Whisper drops the phrase, 250 confirmed at 42:50); press generator start (42:22). |
 | 42:31 | safety | Hearing protection: use it now; ultrasonic vibration is the worst even if it does not bother you. |
 | 42:50 | during | To 250 °C almost instantly, always overshoots; vacuum again — gas wash always needs the vacuum pump (43:05). |
 | 43:12 | theory | Heat evaporates moisture; coatings dry off. Smells: pump oil, hot graphite/metal from the vent, filtered (43:44). |
 | 44:19 | parts | Door lock engages whenever pressure is off atmospheric. |
 | 45:08 | during | Last cycle → overpressure; now the chamber: pump has its own furnace valves, chamber big valve is opened manually (45:22). |
 | 46:45 | theory | Frequency is fixed by hardware (generator, transducer, sonotrode matched); a different set costs under 50,000. |
-| 47:22 | theory | No 20 kHz for induction; 60 kHz offered but sensitive and hard on parts — explore 40 kHz first. |
+| 47:22 | theory | No 20 kHz for induction; 60 kHz offered — good for research but very sensitive, damages parts quickly, prone to errors until everything is set perfectly — explore 40 kHz first, then test 60. |
 | 48:01 | during | Oxygen falling; set point up to ~500 °C to drive out moisture. |
 | 49:38 | during | Rods standing up will melt "like a stick of butter". |
 | 50:11 | safety | First powder run: full-face respirators for cleaning; ventilation status unknown, call facilities (50:37). |
 | 51:08 | during | Melting pressure; O2 rose slightly from heat/evaporation; the filter releases moisture in the first runs. |
-| 51:48 | parts | Chamber cooling is very good — condensation can appear inside; water exceptionally cold; one exchanger enough (52:33). |
-| 52:50 | during | Al hold ~790–800 (CF plate can go higher); set 1000 to melt the rods, then lower to 790 (53:14). |
-| 53:28 | safety | Ventilation checked with a sheet of paper. |
-| 54:24 | safety | At 1300 °C it is too bright to watch — use a filter or glasses. |
+| 51:48 | parts | Chamber cooling is very good — condensation can appear even inside; the water is exceptionally cold; the same supply with another exchanger would serve a plasma system too (52:17). |
+| 52:50 | during | Al hold up to 800, maybe 790 (the CF plate can go a bit higher); set much higher — 1000 at 53:38 — just to melt the rods, then lower to ~790 as they go down (53:14). |
+| 53:28 | safety | Facilities said the ventilation should be on all the time; checked with a sheet of paper over it. |
+| 54:24 | safety | At 1300 °C it is too bright to watch — use a filter or glasses; around 1500–1600 °C it is basically white (54:51). |
 | 55:06 | theory | Whistling is the induction; it pulses to hold temperature. |
-| 55:23 | during | Temperature falls as the rods melt; lower the set point; a packed charge melts easier; a lid shields the crucible (55:45). |
-| 57:22 | during | Stabilized; once all liquid wait 2 min — measured lag between crucible-wall thermocouple and melt. |
+| 55:23 | during | Temperature falls as the rods melt; lowering the set point just stops applying energy (56:20); a packed charge melts easier; something placed over the crucible shields it so the radiation stays inside (55:45). |
+| 57:22 | during | Stabilized; once all liquid wait 2 min — measured lag for the crucible-wall thermocouple to match the melt (reference taken with a thermocouple in the sealing rod). |
+| 58:23 | theory | The melt is visibly mixing — the induction pulsing moves it up and down and stirs it. |
 | 58:43 | during | Do not wait longer than 2 min — more oxidation, more reactivity; then pour. |
 | 58:53 | during | Best results need an operator at the window adjusting amplitude, turbo pressure and plate position. |
-| 59:51 | during | Start: vibrations on; sealing rod up; draining pressure pushes the melt; turbo pressure when necessary. |
+| 59:51 | during | Start: vibrations on; sealing rod up; "graining" pressure (HMI label as heard, Whisper "grading" — see Unclear) pushes the melt; turbo pressure when necessary. |
 | 60:27 | during | Stream lands too far — move the plate; "too much"; then better, more area covered, pour a bit higher (60:53). |
 | 61:07 | during | Once the plate is hot every drop atomizes; initial losses heat the plate; metal plates heat faster (61:34). |
 | 62:12 | during | End: turbo pressure to clear the nozzle; sealing rod down; melting pressure; generator stop; ultrasonics stop. |
-| 62:24 | lesson | O2 rose a lot; oxide at the nozzle bends the stream — compensate with plate position (62:54). |
+| 62:24 | lesson | O2 rose a lot; oxide at the nozzle bends the stream, so it wandered forward and back — compensate with plate position; a few initial droplets lost is fine, with a hot plate and a stable stream everything atomizes (62:54). |
 | 63:24 | after | Heating stopped; temperature dropping. |
 | 63:28 | idea | Laser pointer on the sealing-rod arm or holder to mark plate position — "not very hard". |
 | 63:58 | theory | Aim higher on the plate: longer contact, more heating, all atomized instead of droplets. |
@@ -311,14 +315,15 @@ The complete first powder run, start to finish. Setup: powder container types, s
 | 65:22 | lesson | No parameter log exists — record parameters by hand. |
 | 65:37 | after | Around 400 °C the furnace/chamber can be opened to speed cooling. |
 | 65:41 | troubleshooting | Drips on coolant lines are condensation, more at top temperatures. |
-| 66:20 | parts | Chamber water jacket: stainless channels cast in. |
-| 66:49 | after | Over ~400 open the chamber; everything inside is cold; "just don't touch the [nozzle]". |
+| 66:20 | parts | Chamber water jacket: stainless channels set in the mould, then cast in aluminum — not copper coils. |
+| 66:49 | after | Over ~400 open the chamber; everything inside is cold; "just don't touch the nut" — the graphite nut under the furnace that holds the crucible and nozzle holder (see Unclear); clock 11:38 (67:16). |
 | 67:20 | cleaning | Brushes push powder down; different sizes for different materials. |
-| 67:38 | cleaning | Material change in induction mode: vacuum, wipe; ~1 h; scrape anything melted on (68:02). |
+| 67:38 | cleaning | Material change in induction mode: vacuum, wipe all surfaces and the powder container; ~1 h; scrape anything melted on (68:02); much worse with plasma. |
 | 68:26 | after | Around 100 °C you can shut down. |
-| 68:51 | parts | CF plate is reusable if intact; the bowl can be removed and cleaned (69:37). |
+| 68:51 | parts | CF plate is reusable if intact — the IPA wet test checks it for defects (69:12); the bowl can be removed and cleaned (69:37). |
 | 70:10 | theory | Process is short; prepare the next charge while cooling. |
-| 71:41 | theory | Lower amplitude lets plates survive higher temperature; metal plates want the amplitude-reducing booster (72:04). |
+| 71:01 | theory | A plate glowing orange in a video is plausible — with copper or brass the carbon-fiber plate glows and can take it; a visible arc means plasma, not induction. |
+| 71:41 | theory | Lower amplitude lets plates survive higher temperature; copper alloys, silver and gold all work on CF or metal plates, but metal plates want the amplitude-reducing booster (72:04). |
 | 72:18 | parts | CF rarely destroyed with Al; coated CF for copper wears out; metal plates crack, hole, piece falls off. |
 | 73:48 | safety | Full-face respirators labelled; visor sticker replaced instead of the mask (75:02). |
 | 76:16 | after | Slag always remains at the crucible bottom; paper or tray under parts catches powder to return (76:24). |
@@ -331,7 +336,7 @@ Before
 - Lift and clamp the powder container with two people; finger-tighten the flange (03:44, 04:48).
 - Place the gold-melting bowl in the chamber to catch un-atomized melt (05:01).
 - Wipe the plate; hang the covers over the chamber openings (05:41).
-- Assemble transducer → booster → titanium connector rod (M10/M8) → sonotrode; IPA on threads (10:28, 10:59).
+- Assemble transducer → booster → titanium connector rod (M10/M8) → tungsten-alloy sonotrode; IPA on threads (10:28, 10:59).
 - Torque in a vise with soft jaws: 65 N·m, 60 N·m; plate 50 (or 55) N·m after mounting in the housing (13:30, 17:38).
 - Set the torque wrench: pull the collar down, rotate to the mark, listen for the click (16:59).
 - Connect air cooling and LEMO cable; put the transducer in its protective cover (06:46, 19:03).
@@ -353,7 +358,7 @@ During
 - Switch to melting pressure (51:08).
 - Set 1000 °C to melt the rods; lower to ~790 °C as they go down (52:50, 55:23).
 - Wait 2 min after everything is liquid, no longer (57:22, 58:43).
-- Pour: vibrations on, sealing rod up, draining pressure, turbo pressure as needed; steer with the plate (59:51).
+- Pour: vibrations on, sealing rod up, "graining" pressure, turbo pressure as needed; steer with the plate (59:51).
 - End: turbo pressure to clear the nozzle, sealing rod down, melting pressure, generator stop, ultrasonics stop (62:12).
 - Write down the parameters; there is no log (65:22).
 After
@@ -376,31 +381,33 @@ Troubleshooting
 ### Parameters and numbers
 | value | context | mm:ss |
 |---|---|---|
-| ~2,000 | transducer repair cost (new guessed 5–10k, currency unstated) | 07:38 |
+| ~2,000 | transducer repair cost, "close to 2,000" (new guessed 5–10k, currency unstated) | 07:38 |
 | 1:1.5 (150 %), reversed, 1:1 | booster options | 08:43 |
 | M10, M8 | connector rod threads | 10:44 |
 | ~10 processes | carbon-fiber plate life with Al | 12:11 |
-| 65 / 60 / 50–55 N·m | stack torques | 13:30 |
+| 65 / 60 / 50–55 N·m | stack torques; "Newton meters" is spoken once, for the 65 | 13:30 |
 | 18 mm | flat wrench size | 15:25 |
 | ~1 h | full run incl. prep for Al | 21:50 |
 | ~40 kHz | scan frequency, "a little over" | 22:24 |
-| 300–500 W | may trip the transducer | 24:26 |
+| 300–500 W | may trip the transducer (captions "watts"; Whisper's "volts" is a mis-hearing) | 24:26 |
 | 100–150 W, ~50 W | expected power here / most plates | 24:32 |
 | 50 N·m | plate torque in housing | 26:02 |
 | 5 + 2 | furnace / chamber purges per cycle | 30:52 |
 | 250 °C, 500 °C | heated purge temperatures | 31:01 |
 | 300 °C | bismuth: furnace opened right away | 31:37 |
 | −1 (bar) | furnace vacuum target | 36:14 |
-| −1000 mbar | chamber vacuum at sea level | 39:39 |
-| 150 | pressure-control target for the O2 reading | 41:18 |
-| 250 (heard "50") | first heating set point | 42:07 |
+| −1000 mbar | chamber vacuum floor at sea level; the floor reached here is inaudible (about −850 mbar per Video 1 28:10) | 39:39 |
+| "5, 2, heat it up" | purge-cycle shorthand: 5 furnace purges, 2 chamber purges, then heat, repeated | 40:31 |
+| 150 | pressure-control target for the O2 reading; no unit spoken (mbar overpressure inferred) | 41:18 |
+| 250 (captions "50") | first heating set point; Whisper drops the phrase, 250 confirmed at 42:50 | 42:07 |
 | <50,000 | cost of a different frequency set | 47:02 |
 | 20 / 40 / 60 kHz | frequency options | 47:22 |
 | ~500 °C | second heated purge | 48:06 |
-| 790–800 °C | Al hold temperature | 52:53 |
-| 1000 °C | melt set point | 53:38 |
+| 790–800 °C | Al hold temperature ("up to 800, maybe 790") | 52:53 |
+| 1000 °C | melt set point ("set to a thousand") | 53:38 |
 | 1300 °C | too bright to watch unfiltered | 54:26 |
-| 2 min | hold after full melt | 57:29 |
+| 1500–1600 °C | glow turns basically white | 54:51 |
+| 2 min | hold after full melt (crucible-wall thermocouple lag, measured against a thermocouple in the sealing rod) | 57:29 |
 | ~400 °C | open chamber | 65:37 |
 | 11:38 | clock time at opening | 67:16 |
 | ~1 h | cleaning for a material change | 67:46 |
@@ -409,21 +416,26 @@ Troubleshooting
 ### Quotable moments
 - 07:00 "Don't drop it, don't heat it, don't expose it to moisture, don't overheat it. Always have the compressor cooling, because it's pretty expensive."
 - 09:48 "The stronger one will immediately destroy all the plates. For metal plates I don't recommend to use this one, because they crack."
-- 13:51 "If you go higher, you can damage the thread. If you have it loose, you just have friction between the parts and the ultrasonic vibration doesn't go through."
+- 13:51 "If you go with higher, you can damage the thread, damage the connector. But if you have it loose, then you just have the friction between the parts and the ultrasonic vibration doesn't go through."
 - 33:22 "The graphite seals are not perfect. We have leaks between the furnace and the chamber. That's why I'm purging one side, keeping overpressure on the other."
 - 36:18 "If it's a leak from the chamber to the furnace, that's acceptable. If it's a leak from the outside, it's worse."
-- 57:32 "We have measured that 2 minutes is how much it takes for the temperature of the crucible at the wall to be the same as the temperature of the metal."
+- 36:44 "We have the point where the sealing rod is just like solid graphite going into solid graphite, and it's not really sealed."
+- 57:32 "We have measured that 2 minutes is how much it takes for the temperature of the crucible at the wall to be the same as the temperature of the metal, when measured with a thermocouple in the sealing rod."
 - 58:43 "We don't want to wait longer than 2 minutes, because it can cause more oxidization, more reactivity. As much as we need, and then we pour."
-- 63:58 "If the material points a little higher, it passes longer on the plate, heats it more, has more contact before falling, so there is a higher chance it will all be atomized."
+- 63:58 "If you have the material pointing a little bit higher, it will then pass longer on the plate, heat it more and will have more contact with the plate before falling down. So there is a higher chance that it will be all atomized."
 
 ### Unclear / needs checking
-- "Lunch powder" (04:17) = large powder; "NPPF size" (04:39) possibly "LPBF" (but Video 3 calls this powder DED-sized).
-- "Graining pressure" (59:51, Video 3 41:48): draining or pouring pressure — confirm the panel label.
-- 39:49 "new bars" (chamber vacuum floor at Provo altitude) and 40:31 "52, heat it up" are garbled.
-- 41:18 "150" has no unit (mbar overpressure, inferred); 42:07 "50" is read as 250 from 42:50.
-- 18:33 what gets damaged by pushing the stack back; 20:48 "Petburg, China" label; 67:05 "don't touch the knot".
-- 12:25 "the salad" — a customer's Al alloy, unidentified; 12:53–12:58 silicon setup garbled.
-- 35:00 "we cannot even work like that" likely means "we can still work like that".
+- "Lunch powder" (04:17) — resolved: Whisper has "how to make large powder". "NPPF size" (04:39) — resolved: "More into like DED and LPBF size … if you set the parameters well, you can kind of do both" (consistent with Video 3 calling this powder DED-sized).
+- "Graining pressure" (59:51, Video 3 41:48): not settled from the audio — Whisper hears "grading pressure" here, and across Videos 1, 3, 5 and 9 both transcripts hear "graining/grading/grainy", never "draining", so the log's "draining" was a guess and "graining" is kept as the heard label; the panel label itself still has to be read at the machine.
+- 39:49 "new bars" — the number is inaudible in Whisper as well ("right now it's at negative …" and the segment ends); Whisper adds that it is not a set point but the maximum the pump reaches, shifted by altitude (40:01); Video 1 28:10 gives the floor as about −850 mbar. 40:31 "52, heat it up" — resolved: Whisper has "5-2, heat it up, 5-2, heat it up, 5-2", i.e. five furnace purges, two chamber purges, then heat, repeated — the 30:52 schedule.
+- 41:18 "150" — still no unit in Whisper ("It will go to 150"); mbar overpressure remains inferred. 42:07 "50" — resolved as 250 by context: Whisper drops that sentence entirely, but "to 250 it goes almost instantly" (42:50) and the 250/500 plan (31:01) are both confirmed.
+- 18:33 — not resolved: Whisper has "Bartosz was saying that if we push this back too much, we might damage the…" and the speaker trails off. 20:48 "Petburg, China" — Whisper has no text between 19:07 and 21:19, so not resolved. 67:05 — resolved: "just don't touch the nut" (Whisper "nut", captions "knot"): the graphite nut under the furnace that holds the crucible and nozzle holder (Video 1 Whisper), the one part still hot when the chamber is opened — not the nozzle as the log guessed.
+- 12:25 "the salad" — not resolved: Whisper hears the same words; it answers a question about Al–Mg alloy blends, so an Al–Mg alloy is likely but unnamed. 12:53–12:58 — resolved: "With induction … but it was the higher temperature setup with coatings, aluminum sealing rod" — the Si run used the coated high-temperature set and an "aluminum" (presumably alumina, given the Si melting point) sealing rod.
+- 35:00 — resolved by context: both transcripts hear "we can not even work like that", but the next sentence ("it's just that we go through so many of the purging cycles that at the end it's going to be okay") makes the sense "we can even work like that".
+- 11:19 sonotrode material — corrected from titanium to tungsten alloy: Whisper has "This is a tungsten alloy, actually. It just handles the temperature well" (captions "ten alloy"), matching Video 8 06:44 ("it's tungsten, I believe, like a tungsten alloy") and Video 7 18:35 ("tungsten nickel iron"); the connector rod and its connectors are titanium (10:28).
+- 08:56 "good wetting" was a mis-hearing: Whisper has "you need to have good pouring, because then the pouring has to be slow enough that there is not too much material".
+- 52:33 "I think one is enough" — ambiguous: it may be the trainee reading the O2 value ("one at this temperature … oxygen is going to be very low anyway") rather than a heat-exchanger count, so row 51:48 no longer claims "one exchanger enough".
+- 24:26 Whisper says "volts" where the captions say "watts"; the scan screen shows power and the captions have "50 W" at 24:42, so watts is kept.
 
 ## tfb4fsVNIFI — Atomizer Training Video 6 (49 s, Sep 29)
 
