@@ -1,0 +1,448 @@
+1
+00:00:00,000 --> 00:00:30,190
+But is there an advantage with this type of container over a stainless tube? In here we exactly see what we have inside. It also has the built-in valve. In case of the stainless steel we have a very simple tube and the valve is added separately. So it's just a newer design? This one we still keep for induction and we keep it in the restriculation system for waste management.
+
+2
+00:00:30,190 --> 00:01:26,270
+but otherwise we are using the simple stainless steel. They are just easier to make, easier to clean. So it's best to have a little bit of both. Okay. How much is that? The newer... What? The other design, how much is that one? I've created it to be... Yeah, gotcha. ...much more. I've put the powder so you can just use the compressed air to clean it. Generally, after a good cleaning and removing all the powder, this is something that I would say is okay.
+
+3
+00:01:26,270 --> 00:01:56,420
+so if you want to remove like a small dust from the paper towel you can just use the compressed air through but you need to make sure that you have no powder okay inside and another thing has have you run have you run any rods through yet or this will be the first run yeah yeah yeah that's right we just try to avoid it yes like getting everything separately uh but also the production doesn't like us to atomize the production side yeah
+
+4
+00:01:56,420 --> 00:02:26,080
+and have the powder in there recently we did quite a lot but this was because we were like checking a system which had automatic atomization of the plasma okay yeah like a fully automated no operator and yeah and we just had to really check it and let it run for hours yeah so some materials like copper because the temperature is pretty high
+
+5
+00:02:26,080 --> 00:02:55,380
+If the atomization goes wrong, they will just splash over. To prevent the splashes to just go directly into the container. Where would it splash? From the plate, down there. For some of those, we just add these protective plates. Depending on what you atomize, you can use them or not use them or use one of those. For example, in the case of aluminum, I don't expect anything to happen that much, so I will just put the one.
+
+6
+00:02:56,620 --> 00:03:51,840
+put it like that and you know the splashes would stop in here they would probably stick to this and the powder would fall down so it's like if you have half of good process the powder is falling in and then something goes wrong and you have material splashing you don't just don't want it to go in and center the powder that's already done I mean if somebody would help you to move it up it would be easier otherwise you just need to find like the best way because you need to
+
+7
+00:03:51,840 --> 00:04:39,490
+both move it up and plant it at the same time. Then we add the powder container. So the first process that we will do, because I already have the correct booster in the housing, is how to make large powder. This is easy, it looks pretty well, so it's also good for the purpose of training. But the outcome, unfortunately, is that the particles are quite big.
+
+8
+00:04:39,490 --> 00:05:18,000
+More into like DED and LPBF size. Well, if you like set the parameters well, you can kind of do both. And there's just finger tightening for the flash. We place the wall for safety. So this is just like a wall used to melt gold. So it's something that should be available everywhere. Shouldn't be too expensive also.
+
+9
+00:05:18,030 --> 00:05:49,810
+And we just use it so that's the material. So it can handle the temperature of liquid gold so this is enough for our purposes. But if you would want to make it from like graphite or it's a glass, no problem. And you can just use it to cast material and reuse it. And the last thing is this plate. I want it to wipe as well.
+
+10
+00:05:49,810 --> 00:06:37,490
+so to prevent the powder from going into the openings or very close to the door we added this kind of cover pretty well like that and that's all so it's securing those openings and allow you to remove the powder from like the edge here so directly we are almost ready so right now we need to prepare the atomization setup
+
+11
+00:06:37,490 --> 00:07:10,540
+The base of the optimization setup is this, the transducer. Inside we have a stack of piezo-ceramic disks. We connect the cooling with the compressor and the LEMO cable which provides the signal from the generator. The mechanical signal. The main thing about maintenance of this one is don't drop it, don't heat it, don't expose it to moisture, don't overheat it. Always have the compressor cooling.
+
+12
+00:07:10,540 --> 00:07:40,050
+because it's pretty expensive if you take good care of it it can work for a long time but one mistake can actually damage it yeah so with the compressor we kind of control it but if you would like close it in here for any reason the system would see the pressure but you would have no cooling yeah i forget was that like five ten thousand or more the good thing is it can be repaired so that's cheaper but it's still like close to two thousand
+
+13
+00:07:40,050 --> 00:07:59,890
+2000, okay. Is the piezo ceramic plates the expensive part or what? Yes, the plates. They just, for repair, they just change the plates and that's it. Okay, interesting. So the main thing is that there is a key on Alibaba, Aliexpress, and everywhere you can get a lot of different transducers. Yeah. But we just found out that...
+
+14
+00:07:59,890 --> 00:08:30,980
+There is a reason why they are so cheap. And we have a company, this company is in Poland, really close to our location. And they just make pieces that are like high quality, made for industrial applications. So as long as it's not exposed to these terrible conditions, it's going to be fine. Then it's connected to a booster. So the next part here is a booster. It's a fully mechanical part, like this one, that amplifies the vibration.
+
+15
+00:08:30,980 --> 00:08:57,200
+It also has this kind of ring which works like a spring and stabilizes it, so we can actually grab it here without affecting the vibrations. And we have two different boosters. This one is 1 to 1.5, so you get 150% of the amplitude, of the power. If you reverse it, it can also work as a D amplifier, basically.
+
+16
+00:08:57,200 --> 00:09:25,780
+and it works like for aluminium for example for some like for tea or like that it works well and this is how you get the smallest particles possible but you need to have good pouring because then the pouring has to be slow enough that there is not too much material if we have more energy we get larger particles the atomization is faster we can pour more and so on okay larger particles at the end okay somewhere in the something in the middle is the one-to-one
+
+17
+00:09:25,780 --> 00:09:55,810
+so this is like one we use it for a copper we use it for magnesium not every material can be atomized with really no amplitude so this is like the middle which is good for most of the materials do you have other other ones that are yeah it's just those like one to one and then one to 1.5 which you can flip around yeah stronger one will immediately destroy all the plates okay so for like metal plates i don't recommend to use this one because they crack
+
+18
+00:09:55,810 --> 00:10:23,570
+It cracked too quickly. While with the Reverest I was able to have a few rounds in a row without damaging the blade with really good results. The powder was significantly better than what you would get with this booster. That was for which material? Aluminium. I have a software like that. It's still not going to be very fine, but pretty good.
+
+19
+00:10:23,980 --> 00:11:00,980
+Let's start with something simple. Next we need to have a connector rod. That's just a titanium rod that we use to prolong the whole system. The connectors are also made from titanium. This is an M10 in here and M8 is at the tip. I will explain why. Do you end up cleaning that one with IPA? Yeah, the shreds in general.
+
+20
+00:11:00,980 --> 00:11:31,890
+If you start to have issues with it, the best way is to unscrew everything. Clean all the threads because from the vibrations, cavitation, there might be some dust getting in. So you need to clean it and it fixes most of the issues. And then we need to have something to add on the top. This is a tungsten alloy, actually. It just handles the temperature well. It doesn't get damaged, doesn't get affected by current conditions. And here we have the M8.
+
+21
+00:11:31,980 --> 00:12:02,820
+The M8 is used so that we can have smaller holes in the plate because we want to have more of a contact surface between the parts. And now we go to the plates. So this is the plates we will go through separately in the consumables because you have a lot of them, different types. But for aluminium this is very interesting that we can use just a carbon fiber plate without any coating, without any things and aluminium sticks to it very well.
+
+22
+00:12:02,820 --> 00:12:31,100
+it wets it like penetrates it a little bit and atomization is perfect cool large part of it wouldn't have thought yeah but it works exceptionally well and this can handle like up to 10 processes so that would include like the aluminum magnesium alloy blends or yeah okay if it's mostly aluminum then yeah okay i think we have one customer that uses it to atomize the salad quite a lot okay aluminum wets carbon fiber
+
+23
+00:12:31,100 --> 00:13:00,080
+That's very interesting because we also have a lot of them with different coatings. But in some cases it just works very well by itself. We even atomized silicone using it and we just allowed it. Silicone started to react with it, went very well, which caused very good atomization at the end. That wasn't with induction though, right? With induction. Oh, okay. But it was the higher temperature setup with coatings, aluminum sealing rod.
+
+24
+00:13:00,080 --> 00:13:30,110
+this is like one of the very rare cases where it's kind of possible but the trick is if you don't pour it all it explodes in the crucible because silicon has the negative expansion factor okay so when it cools down it stands instead of shrinking it actually expands okay so then there is change that it will crack the crucible okay yeah so before we are able to use it we need to tighten it properly
+
+25
+00:13:30,110 --> 00:13:58,450
+So that's why we use the vise. The values are 65 Nm here, 60 here and 50 or 55 here. I would say 50 is the safer bet. And that's to ensure that the ultrasonic signal goes through the materials properly. If you go with higher you can damage the thread, damage the connector. But if you have it loose then you just have...
+
+26
+00:13:58,450 --> 00:14:58,190
+the friction between the parts and the ultrasonic vibration doesn't go. And we have to apply the tool for that. Before we can use the vise, it's the best. If not, we can also just do it on the floor. So another thing that, it's hard to say if it could fit here, but what we do for our vises, we machine aluminium jaws. Grounded ones so that they can hold their mouth perfectly.
+
+27
+00:15:01,360 --> 00:15:40,740
+Gotcha, so whatever looks like some kind of rubber on there might not. Yeah, I was just like a soft jaz, okay. It should warm because you should counter it anyway. Okay. Okay. Is there a chance that you have an 18mm wrench like that? Maybe. And if something flat was going to fit exactly in here. 18mm? Yeah. Otherwise, or I can remove the...
+
+28
+00:15:40,740 --> 00:16:14,480
+uh some trolls and then we can use the adjustable wrench yeah by the way if the sonotrode does get damaged would we be able to see that with the um yes and you're welcome to try the vise if the rubber gets damaged we don't really really care so yeah just end up needing to replace it
+
+29
+00:16:15,660 --> 00:17:04,140
+When you set the torque in one of those
+
+30
+00:17:05,230 --> 00:18:21,520
+You need to pull this down and rotate. So you have the number 60 and then 65 aligned. That's a 65 torque. Could you show up pulling it down just real quick? Yeah. And you hear when it's down. Okay. So yeah, that was 65. Now it's 60. The final step is down with the system already connected. Okay. Yeah. Oh, not too much though, mate. Yeah, I just need to make sure that it's pushing.
+
+31
+00:18:33,490 --> 00:19:07,020
+Bartosz was saying that if we push this back too much, we might damage the... Yeah, it's stiff. Yeah. We might be able to rotate it around or something, but we can figure that out. I talked to Dave. We're going to get elbows. Oh, okay, nice. So he'll actually... Okay, cool. That would be nice. He's like, yeah. Generally, for protection, we put it in the cover.
+
+32
+00:19:07,570 --> 00:21:19,470
+What's the schedule for next hours?
+
+33
+00:21:19,500 --> 00:21:51,790
+I have to go in an hour at 12. So normally how long does a run take with all the cleaning and preparation? One hour.
+
+34
+00:21:51,890 --> 00:22:29,470
+If you do it quickly, it's like one hour. If it's for aluminium, if it's a higher melting point, maybe longer, because the heating and cooling will take a bit longer. That's good, because I don't know when I can do a six hour run. Once we have it connected, it's just good to run a scan, test the vibration of it. I can see that it's calibrated pretty well, a little bit over 40 kilohertz, which is what we want.
+
+35
+00:22:29,470 --> 00:23:17,360
+The scan was fine. It's also checking the impedance here. If it would be too small or something would be wrong with it, the scan wouldn't pass. And it's like maximum amplitude, start vibrations. You can see the power. Wow, that's so interesting. So that's the ultrasonic vibration turning into heat just because you're keeping it from...
+
+36
+00:23:17,360 --> 00:23:42,210
+Wow, that's incredible. Yeah, and sometimes if you do that, it changes the frequency, and the squeezing sometimes is just like a little bit of resonance. Especially, I didn't tighten those, so sometimes other parts may start to vibrate a little bit. If it's happening constantly, the best is to unscrew everything.
+
+37
+00:23:42,210 --> 00:24:11,790
+Clean it and put it back together. It may be an issue with the connectors and everything. That's amazing how fast that gets hot. Yeah, basically it's instant enough. I was like, wow, I was impressed. I didn't expect it to be hot. The higher the frequency, the faster it happens. So 60 kHz, you can just... I want to try making like a stovetop oven with that now.
+
+38
+00:24:11,790 --> 00:24:44,990
+That'll be cool. I'll just understand. The whole problem is that all this energy has to pass through the transducer. So when we go to like 3, 4, 500 volts, the transducer may at some point just shut down by itself. Okay. But in this case, we should expect more than like 100, 150 maybe. In most of the plates, I would say it's going to be like maybe 50 volts.
+
+39
+00:24:44,990 --> 00:25:16,030
+so just insert that up in and then that clamp goes over it sits on nice yeah it's not touching uh the safety cover just generally good now we can add the final clamp thingy okay are the viewports quartz are they with these reports yeah are they what's the material is it quartz or uh this one the basic one is just hardened glass okay
+
+40
+00:25:16,030 --> 00:25:55,410
+But if you would like, it's also a possibility to get it in the borosilicate. The one on the furnace is kind of like a glass ceramic which can handle more than the borosilicate. So we never had one of those breaking. And generally we just want to kind of find a way where it's in the middle. It sits well. First we try to do it in accordance to the handles.
+
+41
+00:25:55,570 --> 00:27:00,740
+first by hand and then the wrench this one's 50 you need to counter rotate just to make it easier to put the wrench on guess we want to do it like that and you can see the arrow direction of the torque and now let's test it again that is tracking the vibration of the whole system now it was good enough let's navigate it a little bit
+
+42
+00:27:00,740 --> 00:27:57,280
+So you can see now the power is higher because the number of effects is going to be pushed out. On the metal plate it will be a bit more visible on how it spreads on the surface. But just to make sure that we have atomization on the whole surface. If there is a clock or a certain effect it can cause only half of the plate to vibrate for example.
+
+43
+00:27:57,280 --> 00:28:29,390
+So what would we see if it was not looking good? So like it looked all very uniform. So on top you would have atomization, for example. On the bottom you would have no atomization or barely any atomization. And that would mean that the plate is like cracked. Like in the middle. That makes sense. I'm surprised how well you can see the plate in there. I thought maybe this was like a welding mask window and so like... No need for that.
+
+44
+00:28:29,420 --> 00:29:03,870
+You can also put a camera in here. I saw some people putting like a phone holder here So this is just oh we can move up down left and right so you can move the plate So I would need to make sure that kind of like the material that goes in the middle is going to fall on the plate and we want it to fall as high as possible
+
+45
+00:29:03,870 --> 00:29:31,710
+But if it goes too high, it will start going on the top of some shoes. We don't want that. Yeah. Can I feel how that moves? Sure. Let's try this easy. Up and down, a little bit more resistance. So like up down this way? Yeah, probably you will need to just move it. So I loosen this and then this allows me to turn it. Yeah, and up and down you probably need to like rotate it a bit at the same time. It's just too much resistance otherwise. Okay.
+
+46
+00:29:31,710 --> 00:30:37,840
+So this moves on this axis, right? When you say up-down? The rotation helps, otherwise there may be too much. I think it's the end. And then this? Yeah, it's 30 feet. The resistance is enough to hold by itself for the pressure, but it's good too. Okay. Does it look okay or how did you want it? More like that. And more or less, when I get the flow, I usually adjust it to the first flow and then...
+
+47
+00:30:38,100 --> 00:31:08,080
+The atomization should more or less go on by itself. So, how do we prepare the atmosphere? Usually, what I will show you right now, we do it one, two, three times. So like the five pergings of the furnace, overpressure, two pergings of the chamber, overpressure, and then we repeat it at a higher temperature. 250 degrees and then 500. So that if we have any moisture like that.
+
+48
+00:31:08,080 --> 00:31:35,070
+anything we are able to remove it well with the heat and then the atmosphere and oxygen results should be good enough to allow us to process uh sometimes you like maybe like okay it's a lot of effort but for like magnesium or aluminium it's worth it it's that's the lack of oxygen is giving us the good flow but if like if you would process it in just doing it to us would be enough like really when i was doing these moves i was just
+
+49
+00:31:35,070 --> 00:32:01,500
+opening the furnace right away at 300 degrees, putting more, a little bit of purging. Does Busby's powder have that crystal beautiful color? Without oxygen? No. That's the case. But I think that the powder is kind of like having facets. It's not really round because of how it crystallizes. So right now we have argon, we have compressed air, we have...
+
+50
+00:32:01,500 --> 00:32:44,430
+not yet the cooling but we don't need it before we start heating so first of all let's start with the atmosphere how i do it over pressure in the chamber and where let's see so it should be it's going to keep it automatically going to add or vent you can also hear a little bit of a leak it's the oxygen sensor now maybe it's even a little bit too much right now but are you turning you're turning something to adjust the flow rate
+
+51
+00:32:44,430 --> 00:33:16,080
+Yeah, there's just like a valve. Okay. You were tightening it? Yeah. Okay. We don't need much, but it just has to go through the sensor. Okay. So if you stop hearing anything, then that's not good. Will the machine not let you run if it can't detect? No. Okay. You just see the value here. And you can set the alarms by yourself. So right now you can see that something is wrong, so...
+
+52
+00:33:16,080 --> 00:33:44,240
+it should require you to do an action about it okay we have overpressure in the chamber we do the purging of the furnace the connection the graphite seals they are not perfect we have leaks between the furnace and the chamber that's why when i am purging one side i'm keeping over pressure on the other side so that it's not like air which is getting sucked in but right now it's going to be air with argon but then it gets after some purgings it will be almost only
+
+53
+00:33:44,240 --> 00:34:14,640
+argon and the argon can pass through and i'm fine with it so here i have right now argon and air and i need to have the button pump running and i press the gas switch now the fairness will automatically do five runs of purging until it's it doesn't have a sensor so we need to just kind of make sure that it passes
+
+54
+00:34:16,240 --> 00:35:00,430
+Typically graphite, when the graphite gets hot, it's also purifying. Because we get the pressure crucible warning which means that there's some gas coming from the chamber to the furnace and it doesn't allow it to get to the value of the light. You think that might be happening right now? No.
+
+55
+00:35:00,430 --> 00:35:47,180
+It's okay. We can not even work like that. It's just that we go through so many of the perfect cycles that at the end it's going to be okay. Because we inspected the surface and it looks fine and the ceiling wrong, right? Sometimes this may also cause a leak, but it seems to be tight enough. Although, let me check mapping. The ceiling is in there, so...
+
+56
+00:36:10,420 --> 00:36:40,270
+I'm sorry. What was it indicating to you that there was a leak? Was it something on here? It's not getting to minus one. Okay. So it definitely means that there is some leak. Okay. If it's a leak from the chamber to the furnace, that's acceptable. If it's a leak from the outside, it's worse. Okay. Let's see just how it goes. So we can later just change the parts like the ceiling road and the crucible and see if it will persist or not. Okay. Sometimes usually after changing the crucible or the ceiling road.
+
+57
+00:36:40,270 --> 00:37:39,550
+They have a better alignment. But we have the point where the same road is just like solid graphite going into solid graphite and it's not really sealed. This one we will see here. When we will start pumping the channel. It says cooling water flow low? Because this is not on. Okay. So generally after that we are at the last cycle so you see the number one.
+
+58
+00:37:39,550 --> 00:38:23,600
+and it's going to end uh we manually need to press the melting pressure so we need to manually go right into the melting pressure okay and the pressure crucible warning is that what we were just talking about yeah that is not getting to minus one okay we will find a reason for that and after last cycle let's go to the overpressure and then we do the vacuum in the trunk
+
+59
+00:38:24,080 --> 00:38:53,710
+Did you press that and you pressed both of them? Okay. I mean you need to make sure that the vacuum pump is running and the vacuum valve is open. The valve is leading into the chamber. You can even hear the leak from the furnace with this valve opening and closing. It's the valve that's adding more argon into the furnace. It means that some of the argon from the furnace is leaking into the bottom chamber and so it's being constantly... That's a little short.
+
+60
+00:38:53,900 --> 00:39:23,500
+Exactly, which isn't like a bad thing because right now we are just like purging everything with argon, just the morgue. That's why the leaks between those two are generally acceptable and I think it's still better to do the purging separately than try to do it like fucking them at once, which is also possible. Sometimes do you have it where it's not doing the like this extra injection?
+
+61
+00:39:23,500 --> 00:39:53,870
+of argon like where it's not doing that like i mean the energy just means that everything here is very well okay okay and generally how long you wait you just wait until you see that the chamber pressure is not changing anymore really so it means that this is the limit normally it's minus 1000 when we are at the sea level the higher we are the lower will be the maximum volume right now it's at negative
+
+62
+00:39:53,870 --> 00:40:36,460
+And that's what we set it to, right? I mean it's not set, it's just like the maximum it's able to get to. That's because it's 30 feet is like minus 1000, but because of the height, the reading is changed. And then we fill it a bit with the protective gas. This is just a cycle. Again, make sure there's... 5-2, heat it up, 5-2, heat it up, 5-2.
+
+63
+00:40:38,480 --> 00:41:24,240
+Especially at the beginning. I need to make sure that we remove all the oxygen and the moisture. Start the gas flow all the way through and just heat up the glass going through the filters and everything and pour it right up. Right now we are at the second one. We can just use the pressure control. It will go to 150 and then we can see what is the reading from the system.
+
+64
+00:41:24,240 --> 00:41:58,300
+Redinking vacuum doesn't really make much sense. So we need to wait until we are at the other platform. Now the valve is also open and you can see that the valve is just dropping so so quickly. And after a moment it stabilizes. Okay, so it's not too bad as you can see. But it can be better. Okay. So now we need to start here. Let's get the flow of coolant.
+
+65
+00:41:58,300 --> 00:42:36,380
+No error means that we can start the heating just by pressing the generator start. That's a good sound. So when would we typically use ear protection?
+
+66
+00:42:36,380 --> 00:43:04,270
+I will even use it right now just because you have so many sources of the noise. But when you have the ultrasonic vibrations it's the worst. Because it may not bother you but it will affect you the most. As you can see to 250 it goes almost instantly. It will always overshoot because the power we are using is much higher than we need to get to this point.
+
+67
+00:43:04,880 --> 00:44:03,220
+Did you just do vacuum again? Okay. So whenever you want to do the gaffos, you need to have the vacuum pump. And now we apply some heating here. So any moisture, anything just evaporates. If you had the coating, same thing. The coating is just going to dry. And the smell? Vacuum pump. Okay, yeah. Smell of the oil. Especially at the beginning, when the oil is relatively fresh, it smells more. Sometimes you may also get smell.
+
+68
+00:44:03,220 --> 00:45:03,230
+OPA just because of the air vented from the furnace. So like smelling like old graphite of metal. Like it goes through the fingers. So there are no particles. From the bars. So that lock keeps coming in and out as the pressure changes. I see. So if it's gotcha, so it engages if it's outside of one or zero or regular.
+
+69
+00:45:03,230 --> 00:45:43,950
+Could you remind me of this vacuum valve? When we have the vacuum pump running, we provide the vacuum for the furnace and it has its own valves. And then there is the big valve which leads to the chamber. So if we want to vacuum the chamber, we need to manually open it additionally.
+
+70
+00:45:44,340 --> 00:46:38,000
+I will know that it's this building, not the Department of Mechanical Engineering as it shows on the map, but right in here. Because I knew this was like 1.54. Oh, okay, yeah. There is no 1.54. Yeah, I gotcha, yeah. All good. Thanks for the call. I'm glad I could find you. I was at the call, and then I lost the reception and didn't want to come back. Yeah, yeah. It happens sometimes because I'm using my...
+
+71
+00:46:38,000 --> 00:47:10,100
+European number, it's running, so sometimes it doesn't work as well. And then set frequency, from what I understood... It's 40. The hardware just sets the frequency. Generator, transducer, something short, everything has to be set to a certain frequency. Yeah, that's right. And I think it was going to be like, what is it, like 50,000 or something to try to get a new, like a different frequency? Less. Oh, less? Okay, no.
+
+72
+00:47:12,820 --> 00:47:42,030
+It's not that expensive, but it is relatively expensive, but not as much. Even you see the second generator. So right now, in this case, we don't offer 20 kHz for induction. We offer 60 kHz, but I would suggest go on reporting, explore all the capabilities of 40 kHz, and then we can run a test and see if the 60 will be a better choice. He goes, I don't really like the 60 kHz.
+
+73
+00:47:42,030 --> 00:48:19,070
+It's very sensitive. It's good for research, but it's very sensitive. It damages the parts very quickly. It's strong to measure until everything gets down perfectly. For everyday operation, it's not helping that much. You can see that the oxygen is going down right now even more, and I'm going up to 500. This is already enough to work with, but...
+
+74
+00:48:19,070 --> 00:49:51,860
+I just want to make sure that after heating up, we can remove any moisture left over, anything that starts to evaporate from there. Oh yeah, we had to switch phones, the full documentation. Yeah, because I don't remember both of them. And they have documentation too, but it's also studying as a secondary reference. So you can see the rods in here. So they're kind of sticking up, but it's going to melt and then basically like spaghetti. Or like a stick of butter just melts.
+
+75
+00:49:51,860 --> 00:50:44,750
+Is the ventilation on here?
+
+76
+00:50:45,580 --> 00:51:37,680
+This smell stays with us. Do you maybe want to call Barry or somebody? Yeah. Or Dave, I don't know. Okay. Right. The melting pressure. But you can see that this increased a little bit. Okay. Mostly because of the heat, some of the operation. Okay. Yeah. In the first processes, it may go up even more because we will be heating up the gas in the chamber. Okay.
+
+77
+00:51:37,680 --> 00:52:09,420
+And like, for example, the filter is used as a part that usually releases a lot of moisture and can affect the oxygen level very well. You also need to be careful because the cooling here is really good. We can have some conversation and that conversation may even be shown inside. You can see already here a little bit of the conversation. Even though the valves are very open. But the water you have is exceptionally cold.
+
+78
+00:52:09,710 --> 00:52:54,220
+It's a really good supply. If you ever need the plasma system as well, I would just use the same thing and put another exchanger. I think it will be more than enough. I think one is enough. Sorry, one... Oh, one hertz at this temperature, yeah. Oxygen is going to be very low anyway. And now we go up. So for this I would go like...
+
+79
+00:52:54,220 --> 00:53:36,530
+up to 800 maybe 790 for especially for the carbon fiber we can go a bit higher okay but I will go much higher just to get the rods to melt okay I'm just applying a lot of energy when I will sit up the rods are melting and going down I will lower it to like 790 he said he doesn't know so he said we can test it by putting it he said it should be on all the time so we put a piece of paper over it
+
+80
+00:53:38,670 --> 00:54:27,180
+set to a thousand so we'll start seeing some movement probably cool how fast oh yeah take a look yeah so the problem is that normally it will happen much faster but right now i needed to at least start if it will start melting at the very bottom it will just go down quickly yeah but i need to apply more energy for that okay much more energy sure this is fine at the max temperature if you have like 1300
+
+81
+00:54:27,180 --> 00:55:04,720
+It may not be that easy to observe it for too much. You may want to have some kind of filter or glasses. Yeah, I gotcha. It's too bright to look at. Oh yeah, same thing with the other induction prints I did, especially when we were getting up to like 2000 Celsius. Yeah, around 1500-1600 it gets basically white. The closer you get to the temperature of the sun, the brighter it gets. And we don't like looking at the sun.
+
+82
+00:55:06,100 --> 00:55:51,980
+that whistling noise is that from this is induction okay the induction okay so you can see that right now it's not working with the full power continuously it's just pulsating to keep the temperature okay oh yeah look at that oh yeah so i can just i'm in the work there the fact that it's melting will also lower the temperature even faster the more packed it is in the crucible the easier to melt
+
+83
+00:55:52,050 --> 00:57:33,460
+In some cases, you can also use this to like shield the crucible. And then the radiation stays inside, all the heat is inside. For like around... Did you get it? Yeah, it's almost all liquid. Okay, you changed the temperature right now. Yeah, when I want to lower the temperature, right now it's just not applying any more energy. Thanks for that. We should wait two minutes.
+
+84
+00:57:33,460 --> 00:58:28,720
+two minutes is how much it takes for the temperature of the crucible at the wall to be the same as the temperature of the metal when measured with a thermocouple in the ceiling. So there's like a two minute delay. So now if we wait two minutes, we are sure that all the metal has the temperature that we measure. So I'm just ready to pour it out. Do you want to get the earmuffs for that? It's mixing inside right now, just by the reaction.
+
+85
+00:58:28,720 --> 00:59:04,050
+Okay. The pulsation. Yeah, so it's really like it's the pulsation that's or not. Just moving it up and down and that's causing the mixing. Great. That's clever. We don't want to wait like longer than two minutes because it just can cause more oxygenization and more reactivity. So as much as we need and then it will work. Okay. So I will try to show you the atomization, which generally will be worse for the atomization because the best result is when you need to stand in here.
+
+86
+00:59:04,050 --> 00:59:34,300
+We need to control the amplitude, use the pressure, especially the turbo pressure if there is not enough flow, and change the position of the plane quickly. So usually you want to do it like that. Once you have some material that's well established, repetitive, you just know what to do. Okay. Gotcha. Yeah, maybe if you want to record from that side, I'll record from this side. If you want, you can just put the phone here.
+
+87
+00:59:34,300 --> 01:00:31,280
+Record it and we will all see it. Well, did you need to look for... I mean, no, I can just look here. Oh, yeah, yeah, got it. Fine. Okay, the start is fine. The vibrations are working right now. I'll do it here. So the procedure to start is sealing rod up, grading pressure to push the material, and the turbo pressure when necessary. Too far, I want to move it up a little bit.
+
+88
+01:00:31,280 --> 01:01:24,750
+Now I have more of the area covered. The area is a bit more covered, we pour it a bit higher, so it makes it easier. It could be better, it should almost have no drops. Okay, now the plate heated up well, we pour the metal a little bit higher on it, and you can see that at this point, without touching anything, every single piece is getting atomized.
+
+89
+01:01:24,750 --> 01:02:23,410
+So you may have a little bit of loss at the very beginning of the process, which is needed to heat up the plates. But the metal plates have a tendency to heat up the plates in general. It's almost a little bit, but I don't want to adapt it at this point. Okay? We are now using the turbo pressure a little bit more to clear the nozzle, sealing rope down, melting pressure, generator stop, stop the ultrasonids.
+
+90
+01:02:23,700 --> 01:02:53,500
+So what we could also see is that the oxygen did rise a lot, and that could probably cause a little bit of issues with the flow. So the flow wasn't perfectly stable, it was sometimes moving a bit. And that's actually highly related to the oxygen. When the material, like on the nozzle, when it's pointing out it oxidizes a bit, it can cause the stream to not move smoothly through the nozzle, like in a straight way, but to bend a little bit.
+
+91
+01:02:53,500 --> 01:03:24,080
+That's why sometimes we're moving a bit forward, a bit backward. But generally that's something that you just need to then control with the position of the plate. So it could be better. Usually a few initial droplets that you lose, it's fine. Sometimes you can avoid it, sometimes not. But then when the plate gets hot, if you have the stable stream, you should get everything atomized. Can we leave the temperature up at 800?
+
+92
+01:03:24,080 --> 01:03:54,180
+It's dropping, I stopped the hitting. How hard would it be to install something like a laser pointer pointing at the spot where the plate should be sitting? It's still very hot, not very hard. You can just use the ceiling rod arm to print something. It's not a problem. Or you can use the holder itself. Then we can see with the laser pointer where the...
+
+93
+01:03:54,180 --> 01:04:24,590
+the plate needs to be positioned and get it right on, ready to start and return. If you have the material pointing a little bit higher, it will then pass longer on the plate, heat it more and will have more contact with the plate before falling down. So there is higher chance that it will be all atomized. If you're heating everything at the tip and not everything is atomized, then it will be like falling down.
+
+94
+01:04:25,100 --> 01:05:00,140
+In the container already. Some more on the plates, in the ceramic bowl that we need to just brush, but... In general, it does the whole procedure. Yeah. The initial heat on the chamber should help us to reduce the oxygen. We can try to... We have a lot of material, because normally there is a lot of plasma training, so in this case I have a lot of my material. Sorry.
+
+95
+01:05:00,180 --> 01:05:36,930
+So we can try to repeat it. You can then try to repeat it by yourself and see how it goes for you. And then we can also try to do the same thing but with the one-to-one booster and metal plate. So you will have comparison also if you will want to compare the powders in case of the size. Is there a log output of all the parameters we use for this atom material? No, so we'll just have to make. And now we just need to wait.
+
+96
+01:05:36,930 --> 01:06:17,760
+When it's around 400 degrees, it's possible to open the... What's this? Just a coolant. There was more conversation when we started. It's coming back again. When we were at the top temperatures, because it was a bit warmer, there was more conversation. That's amazing.
+
+97
+01:06:17,760 --> 01:06:49,170
+There are stainless steel canals put inside when they cast it and that's how the water is flowing through the cast. Okay, so it's not like copper coils, it's like a cast, fully cast... Yeah, they have a stainless steel frame and then they cast aluminum. The chamber is just with the water jacket.
+
+98
+01:06:49,490 --> 01:07:19,280
+When it's over 400 we can open the chamber just to get it to cool down faster And then more or less at this point we can also open the chamber take everything from there because it's all cold in the chamber Just don't touch the nut Okay, do you have the time game? Yeah, it's 11.38
+
+99
+01:07:21,520 --> 01:07:57,070
+So these are the brushes we use to push the powder down? Yes, but it's best to have different brushes or maybe bigger ones for different materials. In this case, in the reaction mode, it's relatively fast. You just need to vacuum everything, wipe all the surfaces from the remaining powder. So I would say the thinning will take one hour maybe just to clean it very well, everything with the powder container. So relatively fast. Much worse in case of like a plasma in it.
+
+100
+01:07:57,810 --> 01:08:57,780
+What if something ends up melting to the side? Scrape it off. Now it's just a wait. So what's stopping us from doing the process almost continuously is just that we wait for it to cool down. When it starts around 100 degrees we can shut down the excess. So how do you, like, that crucible forward, like is that, first off, is that a...
+
+101
+01:08:57,780 --> 01:09:27,440
+Carbon plate. It's like a one-time use. Oh, the carbon fiber? The carbon fiber plate, yeah. Sounds like some plates we can reuse. Do you just swap out the carbon fiber every time? No, we can do the same one. Okay. If it's fine, we can do the same one. Okay, yeah. I guess that's where you do the test with the IPA and check for defects and things like that. Makes sense. And then I guess for that crucible on the bottom, how do you clean that? Like, you put it in a furnace, melt it, and pour it out?
+
+102
+01:09:28,270 --> 01:10:24,240
+Or is that a thing? Like you can only use that for aluminum from now on maybe? Yeah, I mean the plate or the bowl? It's fine, you can remove it in cleanliness. You just, I guess... It should get off the ice. I think it's exciting, but as you see the process doesn't take the move. Then you can at the moment you can prepare something for the next shell or so without the powders, waiting for it to cool down, because the whole process is just heating up, pouring, and then there's the weight.
+
+103
+01:10:28,660 --> 01:11:01,260
+In the video you have of the atomization on your slideshow, do you know what material is being atomized in there? Because it's like way hotter than this, right? Because that's like actually got... Oh, that's probably... Yeah, that's probably one of the... Like that was probably with plasma or... Yeah, that probably wasn't with the induction. Oh, wait. Actually, maybe... I don't know. We have a video we got from...
+
+104
+01:11:01,970 --> 01:11:41,890
+If you can see an arc in there, it's definitely the plasma. Yeah, and he's got a video of the ultrasonic plate and metal on it, but it's glowing like orange. It can happen. I mean, if you would go with copper or brass, then the carbon fiber, yeah, it would be glowing. Interesting. And the carbon fiber, it can handle it, actually. It's still showing there back here. Yeah. And the plate's actually metal. Yeah, this one. It can.
+
+105
+01:11:41,890 --> 01:12:21,090
+Some plates can handle it. So at lower amplitudes, they handle the high temperature much better. As I said, copper alloys, silver, gold, you can process it all. Both with the carbon fiber plates and the metal plates, but for the metal plates, it's just better to use the booster that lowers the amplitude. Because if you have amplitudes and high temperature, the plates just keep breaking. Have you had the plates just...
+
+106
+01:12:21,090 --> 01:12:49,100
+completely break and fall off the floor. Does it usually get caught in the... I mean, carbon fiber, no. It doesn't really get destroyed that way. For aluminium, it's going to be almost always fine, until it's really damaged. Copper and some alloys, then we use carbon fiber with coatings. So the issue may be that after a few trials, the coating just wears off. And there is too little wetting and atomization.
+
+107
+01:12:49,100 --> 01:13:28,960
+Metal plates, you will actually see the cracks, a hole, possibly just a piece falling off. In worst case scenario, half of the plate will just crack. Generally, it will take several minutes still to cool down. Should we get it up with respirators? We still want probably to cool it down, but it's more. I'll leave it in about six minutes for collapsing. Pick up my lunch and then I'll come back.
+
+108
+01:13:28,960 --> 01:14:36,880
+Are you guys going to get lunch during that time too? Yeah, yeah. I guess so. We'll finish the process and then... Oh, yeah. Full face, huh? So I'll wrap my name on one of them then. Where's our scuba tanks at? Should we get a separate container for ourselves to put this? I kind of figured, probably. We might... What are you going to store that in?
+
+109
+01:14:37,330 --> 01:16:03,360
+with a plastic lid. That's smart. So something for future lab setups with equipment like this I think it'd be to be smart to like let's say we know of someone that has a specific machine we want to get in our lab we can go to there see their setup understand the space
+
+110
+01:16:03,360 --> 01:16:34,430
+make sure to bring like a tape measure, measure things out, but okay, this is how their workflow goes, watch them run it, and so then when we are designing our lab, we can make sure to incorporate those ideas, you know. Still hot, we see that we put all the material, there is just some slab left of the water. I will need also a piece of paper, because sometimes if there is a little bit of powder that can fall, I put a piece of paper or a tray underneath.
+
+111
+01:16:34,430 --> 01:18:03,310
+Get it all, throw it back in the machine. The slag is impurities or is it just aluminum? It's just from the aluminum. It will always be there, not much else. You always need to make sure to release the pressure. So we need to vent the chamber before we open it. We're going to be doing full cleaning. I will just open it, brush it a little bit. Are those gloves different than these black ones? Mine are just maybe a little bit stronger. A little bit thicker?
+
+112
+01:18:03,310 --> 01:18:48,560
+Did I grab a respirator tube? If you want, thank you. I mean, is that your acute distance or not? Be good for me then. Um, I'd just like one more. Yeah, it's 49 right now. You know what, all the, the thing? Yeah, do it. Oh, here's your, here's the, oh yeah. Alright, I'm going to pause and stop the video.
+

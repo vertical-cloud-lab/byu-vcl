@@ -263,7 +263,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [09:52](https://www.youtube.com/embed/1F9_4ccwhss?start=592) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=592s) | parts | Last item: the powder container, made in-house; a few commercial powders shown. |
 
 ## Atomizer Training Video 5
-`58wJ_Khwgyk` · 2026-09-29 · 1:18:49 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
+`58wJ_Khwgyk` · 2026-09-29 · 1:18:49 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
