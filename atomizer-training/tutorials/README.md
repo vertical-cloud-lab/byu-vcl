@@ -11,16 +11,16 @@ channel for review. Each one alternates two kinds of narration:
 
 | Tutorial | Length | Unlisted link |
 | --- | --- | --- |
-| 0 · Installation and training overview | | see [`uploads.json`](uploads.json) |
+| 0 · Installation and training overview | 3:31 | https://www.youtube.com/watch?v=p6jlgTJEOw4 |
 | 1 · Before a run (utilities, stack, furnace, loading) | 6:04 | https://www.youtube.com/watch?v=eKH7y4JgJD8 |
-| 2 · During a run (gas wash, heating, pour) | | see [`uploads.json`](uploads.json) |
-| 3 · After a run (shutdown, cooldown, powder, cleaning) | | see [`uploads.json`](uploads.json) |
+| 2 · During a run (gas wash, heating, pour) | 8:08 | https://www.youtube.com/watch?v=cGxBFZyFmCY |
+| 3 · After a run (shutdown, cooldown, powder, cleaning) | 6:42 | https://www.youtube.com/watch?v=wPzP6I3jT5w |
 
 **Playlist.** Creating a playlist needs the channel's full token (`playlists.insert` requires the `youtube` scope), which
 only an `@claude-youtube` run has. [`../../youtube/make_playlist.py`](../../youtube/make_playlist.py) is ready for it:
 
 ```bash
-python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft)" --privacy unlisted --ids <ids from uploads.json in order 00 01 02 03>
+python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft)" --privacy unlisted --ids p6jlgTJEOw4 eKH7y4JgJD8 cGxBFZyFmCY wPzP6I3jT5w
 ```
 
 ## Files

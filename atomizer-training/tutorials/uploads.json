@@ -6,5 +6,29 @@
   "uploaded_utc": "2026-10-03T04:32:07Z",
   "privacy": "unlisted",
   "size_bytes": 48631037
+ },
+ "02-during": {
+  "video_id": "cGxBFZyFmCY",
+  "url": "https://www.youtube.com/watch?v=cGxBFZyFmCY",
+  "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft)",
+  "uploaded_utc": "2026-10-03T04:35:04Z",
+  "privacy": "unlisted",
+  "size_bytes": 55291880
+ },
+ "03-after": {
+  "video_id": "wPzP6I3jT5w",
+  "url": "https://www.youtube.com/watch?v=wPzP6I3jT5w",
+  "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft)",
+  "uploaded_utc": "2026-10-03T04:37:46Z",
+  "privacy": "unlisted",
+  "size_bytes": 68589927
+ },
+ "00-overview": {
+  "video_id": "p6jlgTJEOw4",
+  "url": "https://www.youtube.com/watch?v=p6jlgTJEOw4",
+  "title": "rePowder atomizer at BYU VCL, tutorial 0: installation and training overview (draft)",
+  "uploaded_utc": "2026-10-03T04:38:28Z",
+  "privacy": "unlisted",
+  "size_bytes": 19449865
  }
 }
