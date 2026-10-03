@@ -1,20 +1,112 @@
 1
-00:00:00,000 --> 00:02:59,860
-okay once again so right now at around 270 we are making five gas washes so vacuum and filling with protective gas at the end of the cycle we need to use the melting pressure to create the overpressure in the furnace okay melting pressure and now let's vacuum the chamber as much as we are able to and protective gas okay and again
+00:00:00,000 --> 00:00:12,140
+okay once again so right now at around 270 we are making five gas
 
 2
-00:04:02,030 --> 00:15:56,740
-okay after filling the chamber with protective gas again let's go to higher temperature and now again oxygen level is low everything is stable now we can raise the temperature let's start with slightly higher temperature to help homogenize the material it's mostly homogenized but i still see something on one side some leftover so let's give it a moment there is
+00:00:12,140 --> 00:01:38,980
+washes so vacuum and filling with protective gas at the end of the cycle we need to use the melting pressure to create the overpressure in the furnace okay melting
 
 3
-00:15:56,740 --> 00:17:23,410
-very slight lack of homogenization on one side not very visible here but a very small leftover and visibly thicker layer of oxide let's see if raising the temperature just a little bit more can help okay it seems much better but there is still something left we'll just have to try to pour it and see what will stay so let's lower the temperature a bit
+00:01:38,980 --> 00:02:46,860
+pressure and now let's vacuum the chamber as much
 
 4
-00:17:31,470 --> 00:20:38,670
-So around 800 degrees. Use the parameters of low graining pressure that I have used yesterday and we'll just mostly control it through the pressure control. Let's do it like that. Just barely anything. There's also little material. That's why manual control will be better. Okay. Vibrations on. It was fast. It was everything. So melting pressure, ceiling root down.
+00:02:46,860 --> 00:02:59,020
+as we are able to and protective gas okay and
 
 5
-00:20:38,670 --> 00:20:40,140
+00:02:59,020 --> 00:02:59,220
+again
+
+6
+00:04:02,030 --> 00:04:54,920
+okay after filling the chamber with protective gas again let's go to higher temperature and now
+
+7
+00:04:54,920 --> 00:10:07,710
+again oxygen level
+
+8
+00:10:07,710 --> 00:10:26,980
+is low everything is stable now we can raise the temperature let's
+
+9
+00:10:26,980 --> 00:14:52,800
+start with slightly higher temperature to help homogenize the material it's mostly
+
+10
+00:14:52,800 --> 00:15:56,540
+homogenized but i still see something on one side some leftover so let's give it a moment there is
+
+11
+00:15:56,730 --> 00:16:09,600
+very slight lack of homogenization on one side not very visible here but a very small leftover and visibly
+
+12
+00:16:09,600 --> 00:16:25,400
+thicker layer of oxide let's see
+
+13
+00:16:25,400 --> 00:16:37,710
+if raising the temperature just a little bit more can help okay it seems
+
+14
+00:16:37,710 --> 00:17:18,150
+much better but there is still something left we'll just
+
+15
+00:17:18,150 --> 00:17:22,890
+have to try to pour it and see what will stay so let's lower the temperature a bit
+
+16
+00:17:23,410 --> 00:17:32,670
+So around 800 degrees.
+
+17
+00:19:14,730 --> 00:19:25,830
+Use the parameters of low graining pressure that I have used yesterday and we'll just mostly control it through the pressure control.
+
+18
+00:19:26,830 --> 00:19:28,130
+Let's do it like that.
+
+19
+00:19:28,570 --> 00:19:30,230
+Just barely anything.
+
+20
+00:19:30,550 --> 00:19:31,990
+There's also little material.
+
+21
+00:19:32,330 --> 00:19:34,190
+That's why manual control will be better.
+
+22
+00:19:39,050 --> 00:19:39,190
+Okay.
+
+23
+00:19:40,530 --> 00:19:41,550
+Vibrations on.
+
+24
+00:19:41,770 --> 00:20:29,540
+It was
+
+25
+00:20:29,540 --> 00:20:29,840
+fast.
+
+26
+00:20:30,000 --> 00:20:30,600
+It was everything.
+
+27
+00:20:32,230 --> 00:20:38,150
+So melting pressure, ceiling root down.
+
+28
+00:20:38,670 --> 00:20:39,630
 Generator stopped.
 

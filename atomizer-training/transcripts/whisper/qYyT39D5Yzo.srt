@@ -1,72 +1,660 @@
 1
-00:00:00,880 --> 00:00:59,180
-Okay, so hopefully we got a good view with that. I'm going to get started with this atomizer run. So, turn on this guy. Turn on the air. Okay, that looks like it's about right. The water's still leaking from this guy here. I forgot how to tighten that a little more. Turn on the compressed air. Okay.
+00:00:00,880 --> 00:00:09,280
+Okay, so hopefully we got a good view with that.
 
 2
-00:01:00,750 --> 00:01:54,640
-So hopefully we're doing those ends. Let me check my startup process. My phone here, my stuff. All right, so I was going to check the oil, check the water level, check the argon, set to eight bars. Open chilled water lines about 20 degrees. Press air valve. All right. So I think for this run, we are going to do what's on here right now. I forgot.
+00:00:09,720 --> 00:00:13,740
+I'm going to get started with this atomizer run.
 
 3
-00:02:04,500 --> 00:03:04,350
-Yeah, nothing's okay. We're going to do a molybdenum plate. How to identify. I'm going to have to go back and find the video where we list this. Pretty sure these are the molybdenum plates. And these are the big ones. So I'm looking at it. Yeah. I'm going to mark these so we don't forget. What's up, Ronnie? You ready to do some science, man? No.
+00:00:17,390 --> 00:00:20,330
+So, turn on this guy.
 
 4
-00:03:04,350 --> 00:03:59,120
-So ready. Let's do it. Do you remember what these are? Whatever that one. Oh, you know what? These are probably molybdenum dipped carbon fiber. I think because they feel light they are. Oh, yeah. Is that what MO is? Yeah, MO is molybdenum.
+00:00:24,490 --> 00:00:25,750
+Turn on the air.
 
 5
-00:04:05,620 --> 00:04:42,060
-And then these ones are the, just an M.O. Remember the other one? I think it's this guy? No. What are those? Another kind of fiber. This one? There's another one. It's right next to him on the periodic table. It's like N. I didn't even recognize when they said it. I thought he was saying a foreign word. I didn't understand that. N.B. N.B.O. Yeah, if you just look at it. Yeah, yeah. N.O.B.O.
+00:00:31,680 --> 00:00:33,360
+Okay, that looks like it's about right.
 
 6
-00:04:42,060 --> 00:05:26,610
-Is that right? Molybdenum and Neobium. Yeah, this one fricking. So what is it? Neobium? Neobium. Question mark. I know it's the one right next to the molybdenum on the periodic table, but if that is right. So these ones are just carbon fiber, right? I don't know what makes these different. I know he put it all out on the table, so hopefully it's a big carbon fiber. Stainless steel.
+00:00:44,140 --> 00:00:51,660
+The water's still leaking from this guy here.
 
 7
-00:05:27,250 --> 00:06:00,500
-big molybdenum. Okay, so I'm thinking for today we do a molybdenum one since this is a little gold standard. We get smaller particles of those. Oh really? That's great. Yeah, maybe I should have just gone by. Is this okay? I didn't know exactly. Yeah, this is great. These are the project support centers, I think. Oh, okay. Did they not say I had any tools to bring back?
+00:00:52,630 --> 00:00:54,030
+I forgot how to tighten that a little more.
 
 8
-00:06:00,500 --> 00:06:33,650
-I just asked, is this what's on there? And they were like, yeah, this looks great. Either we have free ones or... Yeah, we'll have to bring them back eventually. Do we need them? I could take them back right now, too. Well, so, yeah, we could use them today. Probably afterwards we should take them back because we just need something to clean this thing. Oh, yeah. After our run. So we need to order some tools. Can I use it? I'll hit you.
+00:00:54,710 --> 00:00:55,730
+Turn on the compressed air.
 
 9
-00:06:33,650 --> 00:07:02,910
-I got this part off. I got some leather aluminum wrong, but that stuff wasn't coming off with these. I tried getting a flathead. I just didn't know how dingable this is. Yeah, it's tungsten, I believe. Like a tungsten alloy. Yes. However, the shape of this is very important. Okay, so we should get that off any of this. He told me it's not a big deal, but I think, I mean, it grew from the last run to the...
+00:00:58,080 --> 00:00:58,540
+Okay.
 
 10
-00:07:02,910 --> 00:07:43,170
-the one we just did so i think we should get it off it's just we should be careful not to damage it get a file maybe that might be the best way file do you want it right now or i i think we're okay today but um yeah let's get this guy on just turn it on by pressing that line yeah that's right so that green light just came on there yeah all right so i'm gonna catch this guy this is the upper sonotrode
+00:01:00,750 --> 00:01:03,130
+So hopefully we're doing those ends.
 
 11
-00:07:43,170 --> 00:08:26,320
-he had another name for it sonotrode yeah so he called it like protruding sonotrode or something and this is like the extending sonotrode all right let's let's see i guess those little wrenches you took back yes uh yeah the allen wrench uh yeah if there's just if there's a number i think those are only met or imperial i don't think we have metric torque
+00:01:05,220 --> 00:01:08,320
+Let me check my startup process.
 
 12
-00:08:26,770 --> 00:10:02,190
-Huh the box it's in the drawer should be classic There's a yeah Could you could you go get number 18 and 17 from the PSC or whatever? He's gonna get that I guess that shouldn't be empty relatively It's gonna suck having to clean that out when we're really well when we're start doing that
+00:01:08,640 --> 00:01:12,000
+My phone here, my stuff.
 
 13
-00:10:08,110 --> 00:14:28,050
-Check the nozzle. Pretty sure I put a new one in there. Yep, there's light coming through. Pretty sure it's set back in good. Okay, so I guess it's all good in line. That's not a nice noise. Press that. All right, once Ryan gets back, then we'll keep going. Run over the system SOP that I wrote down because it's kind of a little bit funky. I'll get in. I've got some questions, so just making sure it's...
+00:01:26,580 --> 00:01:30,540
+All right, so I was going to check the oil, check the water level, check the argon, set to eight bars.
 
 14
-00:14:28,370 --> 00:16:27,820
-Linear. Do you want to tighten that down? Yeah, and I already said it, so. So this will go on this part here. So this whole thing turns. So we should also put the housing over this, too. What's that? Yeah. So that goes...
+00:01:31,760 --> 00:01:34,600
+Open chilled water lines about 20 degrees.
 
 15
-00:16:28,140 --> 00:17:22,740
-Up over this like this and then there's four screws that like screw on to it Wait, wait, look those are the screw holes. It's probably them We had to do that before we run the thing though, huh? All right. Well, let's not worry about it this time But we should to protect this expensive What's that the transducer? Yeah If you want to
+00:01:36,150 --> 00:01:36,930
+Press air valve.
 
 16
-00:17:22,740 --> 00:19:04,300
-shut those three things on there for my phone oh this is gonna be fun after purging at 500 perspective that's that native press protective gas well that that'll allow air into the chamber start by pressing purging at yeah any what say stop or what are we gonna we'll just be doing that crucible
+00:01:38,140 --> 00:01:38,420
+All right.
 
 17
-00:19:04,980 --> 00:21:11,220
-All right, this is going to be the weird part. All right, so I guess we need to test this. Oh, you know what? I'm sorry. Can we open this back up? Yeah, let's open that back up. So let's check our thing, make sure it's actually. What are you looking for out there? He said there should only be one valley, one peak. So I think that's good. It has zero watts.
+00:01:43,200 --> 00:01:53,600
+So I think for this run, we are going to do what's on here right now.
 
 18
-00:21:13,490 --> 00:21:38,600
-I'm going to take a video and save the bar. Oh yeah, look at that.
+00:01:53,600 --> 00:01:53,980
+I forgot.
+
+19
+00:02:04,500 --> 00:02:05,460
+Yeah, nothing's okay.
+
+20
+00:02:11,260 --> 00:02:16,300
+We're going to do a molybdenum plate.
+
+21
+00:02:26,440 --> 00:02:27,620
+How to identify.
+
+22
+00:02:28,560 --> 00:02:34,100
+I'm going to have to go back and find the video where we list this.
+
+23
+00:02:42,990 --> 00:02:46,530
+Pretty sure these are the molybdenum plates.
+
+24
+00:02:48,420 --> 00:02:50,320
+And these are the big ones.
+
+25
+00:02:50,760 --> 00:02:53,480
+So I'm looking at it.
+
+26
+00:02:54,100 --> 00:02:54,240
+Yeah.
+
+27
+00:02:56,640 --> 00:02:58,580
+I'm going to mark these so we don't forget.
+
+28
+00:03:01,320 --> 00:03:01,960
+What's up, Ronnie?
+
+29
+00:03:02,380 --> 00:03:03,960
+You ready to do some science, man?
+
+30
+00:03:04,080 --> 00:03:04,180
+No.
+
+31
+00:03:04,340 --> 00:03:04,820
+So ready.
+
+32
+00:03:04,980 --> 00:03:05,460
+Let's do it.
+
+33
+00:03:08,200 --> 00:03:37,110
+Do you remember what
+
+34
+00:03:37,110 --> 00:03:37,550
+these are?
+
+35
+00:03:41,910 --> 00:03:42,890
+Whatever that one.
+
+36
+00:03:43,070 --> 00:03:43,710
+Oh, you know what?
+
+37
+00:03:44,450 --> 00:03:49,810
+These are probably molybdenum dipped carbon fiber.
+
+38
+00:03:50,490 --> 00:03:52,590
+I think because they feel light they are.
+
+39
+00:03:54,070 --> 00:03:54,410
+Oh, yeah.
+
+40
+00:03:55,650 --> 00:03:56,830
+Is that what MO is?
+
+41
+00:03:57,070 --> 00:03:58,550
+Yeah, MO is molybdenum.
+
+42
+00:04:05,670 --> 00:04:08,190
+And then these ones are the, just an M.O.
+
+43
+00:04:17,170 --> 00:04:18,590
+Remember the other one?
+
+44
+00:04:18,690 --> 00:04:19,670
+I think it's this guy?
+
+45
+00:04:19,950 --> 00:04:20,230
+No.
+
+46
+00:04:20,570 --> 00:04:20,890
+What are those?
+
+47
+00:04:21,590 --> 00:04:22,350
+Another kind of fiber.
+
+48
+00:04:22,970 --> 00:04:23,410
+This one?
+
+49
+00:04:24,110 --> 00:04:24,810
+There's another one.
+
+50
+00:04:24,890 --> 00:04:26,670
+It's right next to him on the periodic table.
+
+51
+00:04:26,810 --> 00:04:27,570
+It's like N.
+
+52
+00:04:29,080 --> 00:04:30,580
+I didn't even recognize when they said it.
+
+53
+00:04:30,600 --> 00:04:31,780
+I thought he was saying a foreign word.
+
+54
+00:04:33,000 --> 00:04:34,440
+I didn't understand that.
+
+55
+00:04:34,780 --> 00:04:35,260
+N.B.
+
+56
+00:04:36,080 --> 00:04:36,880
+N.B.O.
+
+57
+00:04:37,940 --> 00:04:39,000
+Yeah, if you just look at it.
+
+58
+00:04:39,280 --> 00:04:39,560
+Yeah, yeah.
+
+59
+00:04:40,900 --> 00:04:41,600
+N.O.B.O.
+
+60
+00:04:42,060 --> 00:04:42,740
+Is that right?
+
+61
+00:04:42,960 --> 00:04:43,820
+Molybdenum and Neobium.
+
+62
+00:04:43,920 --> 00:04:45,020
+Yeah, this one fricking.
+
+63
+00:04:46,420 --> 00:04:47,240
+So what is it?
+
+64
+00:04:48,140 --> 00:04:48,540
+Neobium?
+
+65
+00:04:50,320 --> 00:04:50,720
+Neobium.
+
+66
+00:04:55,910 --> 00:04:56,710
+Question mark.
+
+67
+00:04:58,900 --> 00:05:04,600
+I know it's the one right next to the molybdenum on the periodic table, but if that is right.
+
+68
+00:05:06,700 --> 00:05:10,200
+So these ones are just carbon fiber, right?
+
+69
+00:05:10,340 --> 00:05:11,900
+I don't know what makes these different.
+
+70
+00:05:20,100 --> 00:05:24,190
+I know he put it all out on the table, so hopefully it's a big carbon fiber.
+
+71
+00:05:25,350 --> 00:05:25,990
+Stainless steel.
+
+72
+00:05:27,310 --> 00:05:28,170
+big molybdenum.
+
+73
+00:05:28,210 --> 00:05:35,030
+Okay, so I'm thinking for today we do a molybdenum one since this is a little gold standard.
+
+74
+00:05:35,900 --> 00:05:37,520
+We get smaller particles of those.
+
+75
+00:05:37,680 --> 00:05:38,220
+Oh really?
+
+76
+00:05:38,480 --> 00:05:38,980
+That's great.
+
+77
+00:05:43,050 --> 00:05:48,720
+Yeah, maybe I should have just gone by.
+
+78
+00:05:48,720 --> 00:05:49,180
+Is this okay?
+
+79
+00:05:49,560 --> 00:05:50,180
+I didn't know exactly.
+
+80
+00:05:50,440 --> 00:05:52,430
+Yeah, this is great.
+
+81
+00:05:53,470 --> 00:05:56,030
+These are the project support centers, I think.
+
+82
+00:05:56,510 --> 00:05:56,890
+Oh, okay.
+
+83
+00:05:57,190 --> 00:05:59,510
+Did they not say I had any tools to bring back?
+
+84
+00:06:00,490 --> 00:06:02,130
+I just asked, is this what's on there?
+
+85
+00:06:02,310 --> 00:06:03,450
+And they were like, yeah, this looks great.
+
+86
+00:06:05,340 --> 00:06:07,300
+Either we have free ones or...
+
+87
+00:06:07,910 --> 00:06:09,610
+Yeah, we'll have to bring them back eventually.
+
+88
+00:06:10,800 --> 00:06:11,540
+Do we need them?
+
+89
+00:06:13,060 --> 00:06:14,860
+I could take them back right now, too.
+
+90
+00:06:15,220 --> 00:06:17,860
+Well, so, yeah, we could use them today.
+
+91
+00:06:18,520 --> 00:06:25,650
+Probably afterwards we should take them back because we just need something to clean this thing.
+
+92
+00:06:27,090 --> 00:06:27,810
+Oh, yeah.
+
+93
+00:06:27,950 --> 00:06:28,630
+After our run.
+
+94
+00:06:29,390 --> 00:06:30,870
+So we need to order some tools.
+
+95
+00:06:31,570 --> 00:06:32,270
+Can I use it?
+
+96
+00:06:32,470 --> 00:06:33,170
+I'll hit you.
+
+97
+00:06:33,640 --> 00:06:35,060
+I got this part off.
+
+98
+00:06:35,140 --> 00:06:38,580
+I got some leather aluminum wrong, but that stuff wasn't coming off with these.
+
+99
+00:06:39,020 --> 00:06:40,320
+I tried getting a flathead.
+
+100
+00:06:40,560 --> 00:06:43,580
+I just didn't know how dingable this is.
+
+101
+00:06:43,920 --> 00:06:46,320
+Yeah, it's tungsten, I believe.
+
+102
+00:06:46,500 --> 00:06:47,540
+Like a tungsten alloy.
+
+103
+00:06:48,440 --> 00:06:48,640
+Yes.
+
+104
+00:06:49,440 --> 00:06:51,500
+However, the shape of this is very important.
+
+105
+00:06:52,850 --> 00:06:54,890
+Okay, so we should get that off any of this.
+
+106
+00:06:55,390 --> 00:07:02,770
+He told me it's not a big deal, but I think, I mean, it grew from the last run to the...
+
+107
+00:07:02,910 --> 00:07:15,430
+the one we just did so i think we should get it off it's just we should be careful not to damage it get a file maybe that might be the best way file do you want it right now or i i
+
+108
+00:07:15,430 --> 00:07:29,340
+think we're okay today but um yeah let's get this guy on just turn it on by pressing that line yeah
+
+109
+00:07:29,340 --> 00:07:41,350
+that's right so that green light just came on there yeah all right so i'm gonna catch this guy this is
+
+110
+00:07:41,350 --> 00:07:42,790
+the upper sonotrode
+
+111
+00:07:43,170 --> 00:07:56,200
+he had another name for it sonotrode yeah so he called it like protruding sonotrode or something and this is like the extending sonotrode all right
+
+112
+00:07:56,200 --> 00:08:08,390
+let's let's see i guess those little wrenches you took back yes uh yeah the allen
+
+113
+00:08:12,160 --> 00:08:20,100
+wrench uh yeah if there's just if there's a number i think those are only met or imperial i don't think we have metric torque
+
+114
+00:08:27,100 --> 00:09:09,610
+Huh the box it's in the drawer should be classic
+
+115
+00:09:13,450 --> 00:09:24,800
+There's a yeah Could you could you go get number 18 and 17 from the PSC or whatever?
+
+116
+00:09:36,780 --> 00:09:50,040
+He's gonna get that I guess that
+
+117
+00:09:50,040 --> 00:10:01,630
+shouldn't be empty relatively It's gonna suck having to clean that out when we're really well when we're start doing that
+
+118
+00:10:08,110 --> 00:10:09,150
+Check the nozzle.
+
+119
+00:10:11,350 --> 00:10:13,030
+Pretty sure I put a new one in there.
+
+120
+00:10:26,400 --> 00:10:27,480
+Yep, there's light coming through.
+
+121
+00:10:44,950 --> 00:10:46,370
+Pretty sure it's set back in good.
+
+122
+00:11:43,790 --> 00:11:53,120
+Okay, so I guess it's all good in line.
+
+123
+00:12:01,620 --> 00:12:02,720
+That's not a nice noise.
+
+124
+00:12:09,870 --> 00:12:10,590
+Press that.
+
+125
+00:12:21,090 --> 00:12:25,370
+All right, once Ryan gets back, then we'll keep going.
+
+126
+00:12:25,690 --> 00:14:16,110
+Run over
+
+127
+00:14:16,110 --> 00:14:22,140
+the system SOP that I wrote down because it's kind of a little bit funky.
+
+128
+00:14:23,430 --> 00:14:23,870
+I'll get in.
+
+129
+00:14:24,930 --> 00:14:27,730
+I've got some questions, so just making sure it's...
+
+130
+00:14:28,580 --> 00:14:29,100
+Linear.
+
+131
+00:14:31,630 --> 00:14:33,410
+Do you want to tighten that down?
+
+132
+00:14:33,650 --> 00:14:45,640
+Yeah, and I already said it, so.
+
+133
+00:14:55,340 --> 00:15:10,450
+So this will
+
+134
+00:15:10,450 --> 00:15:11,530
+go on this part here.
+
+135
+00:16:00,370 --> 00:16:02,370
+So this whole thing turns.
+
+136
+00:16:07,620 --> 00:16:10,620
+So we should also put the housing over this, too.
+
+137
+00:16:16,690 --> 00:16:17,350
+What's that?
+
+138
+00:16:18,190 --> 00:16:18,710
+Yeah.
+
+139
+00:16:25,600 --> 00:16:27,400
+So that goes...
+
+140
+00:16:28,280 --> 00:16:43,860
+Up over this like this and then there's four screws that like screw on to it Wait,
+
+141
+00:16:43,880 --> 00:16:48,050
+wait, look those are the screw holes.
+
+142
+00:16:49,830 --> 00:16:56,620
+It's probably them We had to do that before we run the thing though, huh?
+
+143
+00:16:59,090 --> 00:16:59,390
+All right.
+
+144
+00:16:59,490 --> 00:17:13,450
+Well, let's not worry about it this time But we should to protect this expensive What's that the
+
+145
+00:17:13,450 --> 00:17:13,990
+transducer?
+
+146
+00:17:14,130 --> 00:17:22,410
+Yeah If you want to
+
+147
+00:17:22,730 --> 00:17:35,930
+shut those three things on there for my phone oh this is gonna be fun after purging at 500 perspective
+
+148
+00:17:36,950 --> 00:18:12,860
+that's that
+
+149
+00:18:12,860 --> 00:18:27,950
+native press protective gas well that that'll allow air into the chamber start by pressing purging
+
+150
+00:18:27,950 --> 00:18:46,710
+at yeah
+
+151
+00:18:56,270 --> 00:19:03,640
+any what say stop or what are we gonna we'll just be doing that crucible
+
+152
+00:19:06,790 --> 00:20:00,620
+All right,
+
+153
+00:20:00,680 --> 00:20:01,560
+this is going to be the weird part.
+
+154
+00:20:01,700 --> 00:20:08,890
+All right, so I guess we need to test this.
+
+155
+00:20:10,190 --> 00:20:10,850
+Oh, you know what?
+
+156
+00:20:10,850 --> 00:20:11,150
+I'm sorry.
+
+157
+00:20:11,310 --> 00:20:12,330
+Can we open this back up?
+
+158
+00:20:14,410 --> 00:20:15,750
+Yeah, let's open that back up.
+
+159
+00:20:24,000 --> 00:20:28,390
+So let's check our thing, make sure it's actually.
+
+160
+00:20:50,630 --> 00:20:52,170
+What are you looking for out there?
+
+161
+00:20:53,030 --> 00:20:55,310
+He said there should only be one valley, one peak.
+
+162
+00:20:56,330 --> 00:20:58,250
+So I think that's good.
+
+163
+00:21:09,250 --> 00:21:10,750
+It has zero watts.
+
+164
+00:21:13,600 --> 00:21:20,080
+I'm going to take a video and save the bar.
+
+165
+00:21:37,570 --> 00:21:38,410
+Oh yeah, look at that.
 
