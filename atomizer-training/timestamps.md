@@ -712,7 +712,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 _No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
 
 ## Atomizer Fri Oct 2 pt1
-`qYyT39D5Yzo` · 2026-10-02 · 21:39 · public · transcript: auto · [open paused](https://www.youtube.com/embed/qYyT39D5Yzo?start=0) · [▶ watch](https://www.youtube.com/watch?v=qYyT39D5Yzo)
+`qYyT39D5Yzo` · 2026-10-02 · 21:39 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/qYyT39D5Yzo?start=0) · [▶ watch](https://www.youtube.com/watch?v=qYyT39D5Yzo)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
