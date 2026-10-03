@@ -10,10 +10,10 @@ with the training detail from #222 and the powder bags from #249.
 | **The procedure**: before / during / after a run, safety, utilities, cleaning, troubleshooting, known runs, open questions, with every step linked to the moment of video it comes from | [`sop.md`](sop.md) |
 | **Timestamp log**: every substantive moment in every video, one row each, links open the player **paused** at that second (no autoplay) | [`timestamps.md`](timestamps.md) |
 | Per-video indexes: summary, timestamp table, procedural steps, parameters, quotes, open questions (what the SOP was built from) | [`notes/`](notes/) |
-| Transcripts: YouTube auto-captions for 20 videos, Whisper large-v3-turbo transcripts for the videos done so far | [`transcripts/`](transcripts/) |
+| Transcripts: YouTube auto-captions for 20 videos, Whisper large-v3-turbo transcripts for all 26, and word-level re-runs of the clips where the two still disagreed | [`transcripts/`](transcripts/) |
 | Keyframes: a contact sheet per video, and one frame for every moment the SOP cites | [`keyframes/`](keyframes/README.md), [`keyframes/sop-frames.md`](keyframes/sop-frames.md) |
-| Step visualizations: eight schematic GIFs of the run, plus the semi-transparent-operator test | [`viz/`](viz/README.md) |
-| Narrated tutorials: scripts, build pipeline, upload log | [`tutorials/`](tutorials/README.md) |
+| **3D step animations**: a CadQuery model of the machine, rendered with PyVista into one GIF per step of the run (the assembly-GIF style of #239 and #234), plus a labelled overview and a cutaway | [`viz3d/`](viz3d/README.md) |
+| **Narrated tutorials**: four videos built from the 3D animations, draw.io outlines and the trainer's own explanations; scripts, diagrams, build pipeline, upload log | [`tutorials/`](tutorials/README.md) |
 | Inventory of the videos (id, title, date, duration, privacy) | [`videos.json`](videos.json) |
 | The scripts that made all of this | [`tools/`](tools/) |
 
@@ -27,41 +27,65 @@ with the training detail from #222 and the powder bags from #249.
    `~/atomizer-dl/`, which can be deleted.
 3. **Transcription** ([`tools/transcribe.py`](tools/transcribe.py)): `faster-whisper` **large-v3-turbo**, int8, batched with VAD, which is the
    largest Whisper model this 4-core, no-GPU runner handles at a useful speed (about 4× realtime when it has the machine to
-   itself, 2× when sharing). The 26 videos total 11.2 hours, so one session cannot transcribe all of them; the queue runs videos
-   without YouTube captions first, then the training videos. YouTube's auto-captions ([`tools/vtt2txt.py`](tools/vtt2txt.py)) stand in
-   for the rest and are labelled as such in [`timestamps.md`](timestamps.md). Finished files land in
-   [`transcripts/whisper/`](transcripts/whisper/); re-run the script to continue the queue.
+   itself, 2× when sharing). The 26 videos total 11.2 hours and took two sessions to transcribe. The first 16 came out of
+   plain VAD batching (30–45 s segments); the last 10 were run with word timestamps and re-cut at sentence ends (each has a
+   `.json` recording the settings), the two machine-noise videos without the voice filter. All 26 are in
+   [`transcripts/whisper/`](transcripts/whisper/), next to YouTube's auto-captions ([`tools/vtt2txt.py`](tools/vtt2txt.py)) for the 20 that have
+   them. Clips where the captions and the batched transcript still disagreed on a number, name or label were re-decoded
+   word by word with [`tools/recheck_clips.py`](tools/recheck_clips.py) ([`recheck-clips.json`](transcripts/whisper/recheck-clips.json)), which
+   also records the speech check of the silent videos.
 4. **Indexing**: four reading agents turned the caption text into the per-video tables in [`notes/`](notes/), keeping the
-   caption start time of every row so that each becomes a link. [`tools/make_timestamps.py`](tools/make_timestamps.py) assembles
-   [`timestamps.md`](timestamps.md) from those tables.
+   caption start time of every row so that each becomes a link. Every captioned video was then re-checked line by line
+   against its Whisper transcript, with each correction marked in the row ("Whisper: …") and listed in the section's
+   *Unclear* list; the six uncaptioned videos were indexed from Whisper, or from frames of the footage where there is no speech.
+   [`tools/make_timestamps.py`](tools/make_timestamps.py) assembles [`timestamps.md`](timestamps.md) from those tables and labels each
+   video's source.
 5. **Keyframes** ([`tools/keyframes.py`](tools/keyframes.py), [`tools/sop_frames.py`](tools/sop_frames.py)): scene-change detection plus a frame
-   every two minutes for the contact sheets; a frame at the exact cited second for every SOP reference.
+   every two minutes for the contact sheets; a frame at the exact cited second for every SOP reference. The every-two-minute
+   tiles on the sheets are labelled about 60 s early (`fps=1/120` keeps the last keyframe before the middle of each interval,
+   but the tile gets the interval's start time); the scene-change tiles and the SOP frames are exact. Regenerating the sheets
+   with the true frame times is a follow-up.
 6. **SOP**: drafted from the indexes with a fixed outline and the link convention, then reviewed. Where the captions disagree or
    are garbled, the SOP says so and lists the item under *Open questions*; the videos stay the authority.
-7. **Visualizations** ([`viz/atomizer_steps.py`](viz/atomizer_steps.py)): a state-driven schematic rendered by matplotlib into one GIF
-   per step, the same GIF-per-step idea as the assembly and machining clips in #245 and #232.
-8. **Tutorials** ([`tutorials/build_tutorials.py`](tutorials/build_tutorials.py)): title cards and the step GIFs narrated with Microsoft Edge TTS
-   `en-US-SteffanNeural` at 1×, interleaved with clips of the trainer's own explanations cut from the training videos (human
-   narration wherever it exists), concatenated to 720p and uploaded unlisted with [`../youtube/yt_service.py`](../youtube/yt_service.py).
+7. **3D animations** ([`viz3d/`](viz3d/README.md)): a CadQuery model of the module (furnace, crucible stack, chamber, ultrasonic
+   stack, cone and container, cabinet and utilities), proportioned from the keyframes and the vendor documents, rendered off-screen
+   with PyVista into one animation per step. Each animation's sub-steps are written to a JSON file so the narration can follow
+   them. Draft 1's matplotlib schematics and stick-figure operator were dropped after review.
+8. **Tutorials** ([`tutorials/`](tutorials/README.md)). Each tutorial runs: a draw.io outline of its steps, then for each step:
+   - the outline with that step highlighted;
+   - its 3D animation, narrated sentence by sentence by Microsoft Edge TTS `en-US-AndrewMultilingualNeural` at 1×;
+   - the trainer's own explanation, cut from the training videos.
+
+   Clips are cut on sentence boundaries found by word-timed Whisper, stabilised with `vidstab` and subtitled. Segments are
+   crossfaded, rendered at 720p, and uploaded unlisted with [`../youtube/yt_service.py`](../youtube/yt_service.py).
 
 ## Link convention
 
 `https://www.youtube.com/embed/<id>?start=<seconds>` opens YouTube's embed player at that second **without autoplay**
 (embeds only autoplay with `autoplay=1`); `https://www.youtube.com/watch?v=<id>&t=<seconds>s` is the same moment on the
-normal watch page, which does autoplay. Unlisted videos open with either. Times are caption start times, so a link lands a
-second or two before the words.
+normal watch page, which does autoplay. Unlisted videos open with either. Times are caption start times (Whisper segment
+starts for the uncaptioned videos), so a link lands a second or two before the words.
 
 ## Status and follow-ups
 
-- Whisper transcripts exist for the videos listed in [`transcripts/whisper/`](transcripts/whisper/); the rest of the queue is a
-  follow-up ping away (`python atomizer-training/tools/transcribe.py` after re-fetching audio from the Pi, or from the YouTube
-  originals). The `notes/` and `timestamps.md` rows were made from auto-captions and should be re-checked against the Whisper
-  text where it changes a number.
-- *The expert cleaning the atomizer, pov* has sound but Whisper's voice-activity filter found no speech in it; it is probably
-  machine noise, but re-run it with `vad_filter=False` to be sure.
-- Whisper was run through the batched pipeline for speed, which yields coarse segments (median 30–45 s, a few minutes where
-  speech is continuous), so a Whisper-derived `mm:ss` can precede the words by more than a caption-derived one does. For
-  finer timing re-run with `word_timestamps=True` or the non-batched `WhisperModel.transcribe`; the text itself is the
-  better of the two sources.
-- The `graining`/`draining` HMI label, the torque units, the Oct 2 "17" pressure reading and which plate ran on Oct 2 are the
-  open questions in the SOP that only someone at the machine can close.
+- The transcription queue is finished: Whisper transcripts exist for all 26 videos, and all 20 captioned indexes have been
+  re-checked against them (Oct 3). 799 rows across all 26 videos in [`timestamps.md`](timestamps.md): 20 videos indexed from
+  auto-captions and re-checked, 3 from Whisper alone, 3 from keyframes.
+- Values the re-check changed, each also corrected in [`sop.md`](sop.md): the Oct 2 pour pressure was said as ".17 bar"
+  (0.17 bar, as #249 records; the captions heard "17.17") and the Oct 2 plate was "pure molybdenum" (captions: "pure
+  aluminum"); the coolant flow at commissioning read about 3 L/min against the 2 L/min needed (captions: "10"); Video 4's
+  "sealing block" is the sealing rod being lowered before loading; earlier passes settled the ~1000 °C Video 2 setpoint and
+  the spoken N·m torque unit. The per-video *Unclear* lists in [`notes/`](notes/) record every
+  correction and the lines that remain disputed.
+- No usable speech in three videos. *The expert cleaning the atomizer, pov* and *Dosing Al 4047 powder*, re-run without the
+  voice filter, give only hallucinated filler ("So, let's go.", "Thank you.", "We'll be right back.") at the edges of
+  Whisper's 30 s windows, and a sensitive VAD pass finds 1 s and 0 s of speech in them; the *nzyjn0 AlSi10Mg-Al6063 dosing
+  session* has a few words in its first 19 s and nothing after. All three are indexed from frames of the footage only, so
+  their steps have to be read from the footage.
+- The first 16 transcripts have coarse segments (30–45 s, minutes where speech is continuous), so their rows keep caption
+  times; the two Whisper-only videos among them (cartridge cleaning, drill clip) would get exact times from a re-run with
+  the current [`tools/transcribe.py`](tools/transcribe.py) (word timestamps).
+- Open questions only someone at the machine can close: the `graining`/`draining` HMI label; whether the HMI's pour
+  pressure is absolute or relative to the chamber (0.17 bar was "definitely too high" against a 150 mbar chamber); the
+  Video 8 nozzle Gage machined, said as "0.05" (0.5 mm inferred); whether the Sep 30 plate was Mo or tungsten–nickel–iron;
+  and the safety-valve rating and thermocouple type from Video 1 (0.8 bar and "M" per Whisper, "8 bar" and N per the captions).

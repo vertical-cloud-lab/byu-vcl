@@ -1,7 +1,10 @@
 # Group D — atomizer video transcript index
 
-Source: YouTube auto-captions only (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for any of these nine IDs.
-Captions are sparse and noisy, so long silent stretches are real gaps, not omissions. Speaker names are given only
+Source: YouTube auto-captions (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for any of these nine IDs when they were indexed.
+All nine have since been re-checked against Whisper large-v3-turbo ([`../transcripts/whisper/`](../transcripts/whisper/)): the six short clips have
+word-timed sentence segments, the three run videos coarse 30 s–4 min ones, so caption start times are kept. Lines still disputed after that were
+re-decoded word by word from the audio ([`recheck-clips.json`](../transcripts/whisper/recheck-clips.json), "clip re-run"). Corrections are marked in the
+rows and listed in each Unclear section. Captions are sparse and noisy, so long silent stretches are real gaps, not omissions. Speaker names are given only
 where the transcript makes them clear; "narrator" = the person holding the camera. Items marked "(inferred)" are not
 stated verbatim in the captions.
 
@@ -12,9 +15,9 @@ The furnace is at ~270 °C when the clip starts; he explains the five vacuum/arg
 put overpressure in the furnace, and he alternates vacuum, backfill and temperature steps until the oxygen reading is low and stable. He then raises
 the temperature above normal to homogenize the mixed charge, watches an un-homogenized spot with a thicker oxide layer on one side, decides to pour
 anyway at ~800 °C, and drains using the low draining-pressure settings from the day before under manual pressure control. The pour is over within
-about a minute ("It was fast. It was everything"). Phases: during (pump-down / gas wash, heating, homogenization, atomizing) and the first shutdown
+about a minute ("It was fast. It was everything"), then melting pressure, sealing rod down, generator stop. Phases: during (pump-down / gas wash, heating, homogenization, atomizing) and the first shutdown
 steps. The video description adds a remark not in the captions: irregular particles are better for compaction and larger particles for (resisting)
-oxidation.
+oxidation. Re-checked against the Whisper transcript (five segments, one spanning 04:02–15:56, so the caption times are kept).
 
 ### Timestamp log
 | mm:ss | phase | what happens / what is said |
@@ -27,7 +30,7 @@ oxidation.
 | 02:58 | pump-down | "And again" — next wash cycle. |
 | 04:03 | heating | "After filling the chamber with protective gas again, let's go to higher temperature." |
 | 04:53 | pump-down | "And now, again" — another wash at the higher temperature. |
-| 09:48 | pump-down | "10. Final one." — last wash cycle (the "10" may be a cycle count; unclear). |
+| 09:48 | pump-down | "Okay, final one." — last wash cycle (clip re-run of 09:35–10:15; the captions' "10" was "Okay", and the batched Whisper has nothing there). |
 | 10:06 | heating | "Oxygen level is low. Everything stable. Now we can raise the temperature." |
 | 10:26 | heating | "Start with slightly higher temperature to help homogenize the material" (mixed powder/cup charge). |
 | 14:51 | heating | "Mostly homogenized, but I still see something on one side, some leftover. Let's give it a moment." |
@@ -35,11 +38,11 @@ oxidation.
 | 16:24 | heating | Raises temperature "just a little bit more" to help. |
 | 16:35 | heating | "Seems much better. But there is still something left." |
 | 17:17 | heating | Decision: "try to pour it and see what will stay"; lower the temperature "to around 800°". |
-| 19:14 | atomizing | Uses "parameters of low draining pressure that I have used yesterday"; controls mostly via pressure control. |
+| 19:14 | atomizing | Uses "the parameters of low graining pressure that I have used yesterday" (Whisper "graining", captions "draining": the pour pressure); controls mostly via pressure control. |
 | 19:27 | atomizing | "Just barely anything. There's also little material. That's why manual control would be better." |
 | 19:40 | atomizing | "Vibrations on" (ultrasonic generator started). |
 | 20:28 | after | "It was fast. It was everything." — pour complete in under a minute. |
-| 20:36 | after | "Melting pressure signal down and generator stop." |
+| 20:36 | after | "So melting pressure, sealing rod down. Generator stopped." (Whisper; the captions' "signal down" is the sealing rod). |
 
 ### Procedural steps
 Before
@@ -57,16 +60,15 @@ During
 - Switch vibrations on just before opening the pour (19:40).
 
 After
-- When the pour is finished: melting pressure off, generator stop (20:36).
+- When the pour is finished: melting pressure, sealing rod down, generator stop (20:36).
 
 ### Parameters and numbers
 | value | context | mm:ss |
 | --- | --- | --- |
 | ~270 (°C, inferred) | furnace temperature at start of clip | 00:07 |
 | 5 | gas washes (vacuum + argon backfill) | 00:10 |
-| "10" | said before "Final one" — possibly 10th cycle (unclear) | 09:48 |
 | ~800 °C | temperature lowered to before pouring | 17:31 |
-| "low draining pressure" | same setting as the previous day (value not stated) | 19:14 |
+| "low graining pressure" | pour pressure, same setting as the previous day (value not stated; Whisper "graining", captions "draining") | 19:14 |
 
 ### Quotable moments
 - "At the end of the cycle, we need to use the melting pressure to create the overpressure in the furnace." (00:16)
@@ -77,9 +79,10 @@ After
 
 ### Unclear / needs checking
 - "around 270" at 00:07 is assumed to be °C (consistent with the 250 °C wash stage in the Oct 2 run).
-- "10. Final one." (09:48): cycle number, or something else? Oct 2 video says a gas wash = 5 cycles.
+- "10. Final one." (09:48) — resolved: the clip re-run hears "Okay, final one."; there is no number, so nothing to reconcile with the 5-cycle gas wash.
 - The homogenization temperature and the actual draining-pressure value are never spoken.
-- Whether "melting pressure" and "draining pressure" are the same control (both appear) — likely yes (inferred).
+- Whether "melting pressure" and "draining pressure" are the same control — no: they are two furnace pressure settings (melting pressure holds the furnace just below the chamber, the pour pressure pushes the melt out, Video 1 31:21). Here melting pressure ends each wash cycle and the pour (00:16, 20:36), and the pour uses the "low graining pressure" (19:14, the label Whisper hears in the training videos too).
+- Re-checked against Whisper: no number changes (270, five washes, ~800 confirmed). Whisper adds "sealing rod down" to the end-of-pour sequence (20:36).
 
 ## qYyT39D5Yzo — Atomizer Fri Oct 2 pt1 (21:39, Oct 2)
 
@@ -89,7 +92,7 @@ spent identifying the unlabeled sonotrode/atomization plates (Mo, Nb, carbon-fib
 "those are the gold standard" for smaller particles, then scrounging metric 17/18 mm wrenches and a torque wrench to mount the upper sonotrode. The
 nozzle (new, 0.5 mm) is checked for light through the hole, the HMI is password-protected, the transducer housing is skipped "this time", and after
 closing the chamber they reopen it to run the ultrasonic frequency check ("only one valley, one peak"). Phases: before (setup/prep/loading), with
-several lessons learned.
+several lessons learned. Re-checked against the Whisper transcript (segments of 30 s to 4 min, so the caption times are kept).
 
 ### Timestamp log
 | mm:ss | phase | what happens / what is said |
@@ -102,13 +105,13 @@ several lessons learned.
 | 02:24 | prep / lesson | Cannot identify plates; "have to go back and find the video"; "I'm going to mark these so we don't forget." |
 | 03:01 | chatter | Ronnie arrives: "You ready to do some science?" |
 | 03:36 | prep | Plate ID: "probably molybdenum-dipped carbon fibre... feel how light they are"; "MO is molybdenum"; others "just the Mo". |
-| 04:16 | prep | Another plate material "right next to molybdenum on the periodic table... NB" — niobium (inferred). |
+| 04:16 | prep | Another plate material "right next to molybdenum on the periodic table... NB" — niobium, said as "Molybdenum and Neobium" (Whisper, 04:42). |
 | 05:06 | prep | "So these ones are just carbon fibre, right? I don't know what makes these different." |
 | 05:20 | prep | Set includes big carbon fibre, stainless steel, big molybdenum; choose Mo: "gold standard. We get smaller particles." |
-| 05:52 | tools | Borrowed tools from the "PSC" (project support centre?); must return later; "we need to order some tools." |
+| 05:52 | tools | Borrowed tools from the PSC — "these are the project support centers, I think" (Whisper; captions "project sports centers"); must return later; "we need to order some tools." |
 | 06:21 | cleaning | Need something to clean "this thing" after the run. |
 | 06:33 | cleaning / lesson | Aluminum residue not coming off a part; "didn't know how dingable this is"; "it's tungsten... a tungsten alloy." |
-| 06:49 | cleaning | "The shape of this is very important" — the deposit "grew from the last run to the one we just did"; remove carefully, maybe with a file. |
+| 06:49 | cleaning | "The shape of this is very important" — Bartosz "told me it's not a big deal" (Whisper), but the deposit "grew from the last run to the one we just did"; remove carefully, maybe with a file. |
 | 07:24 | setup | Power on by pressing the button; "that green light just came on." |
 | 07:38 | loading | Attach "the upper sonotrode... he called it like protruding sono[trode]... the extending sonotrode." |
 | 07:56 | tools | Small wrenches were returned; toolbox Allen keys are imperial only; need metric 17 and 18. |
@@ -125,7 +128,7 @@ several lessons learned.
 | 17:02 | lesson | "But we should, to protect this expensive... transducer." |
 | 17:21 | loading | "Shut those three things on there" (chamber latches, inferred). |
 | 17:29 | pump-down | Reading SOP: "After purging at 500... press protective gas... that'll allow air into the chamber. Start by pressing purging." |
-| 18:44 | loading | "Are you ready for the .5 mm?" — 0.5 mm nozzle (inferred); "we'll just be doing that crucible." |
+| 18:44 | loading | "Are you ready for the .5 mm?" (captions; the clip re-run hears "Did you already feel a .5mm?", the batched Whisper drops it) — 0.5 mm nozzle (inferred); "we'll just be doing that crucible." |
 | 20:00 | check / lesson | "We need to test this... Can we open this back up?" — chamber reopened for the test. |
 | 20:50 | check | Frequency scan: "He said there should only be one valley, one peak. So I think that's good." |
 | 21:09 | check | "Power zero watts." |
@@ -175,7 +178,8 @@ Cleaning
 - "Aluminum plates" at 02:43 — plates made of aluminum, or plates intended for aluminum charges?
 - "Open chilled water lines about 20°" — valve angle or 20 °C.
 - "Press protective gas... that'll allow air into the chamber" (18:12) — probably means argon fill/vent; wording garbled.
-- "PSC" and who the narrator is (not Ronnie) are not resolved by the captions.
+- "PSC" — resolved: Whisper hears "these are the project support centers, I think", the shop the tools came from. Who the narrator is (not Ronnie) is still open; Whisper's "once Ryan gets back" (10:08 segment) is presumably Ronnie fetching the wrenches.
+- Re-checked against Whisper: 8 bar, "about 20 degrees", wrenches 18 and 17, one valley/one peak and zero watts are all confirmed as spoken. The ".5 mm" (18:44) and "the 50 torque" (14:42) lines are missing from the batched Whisper but present in the clip re-run ("this one is the 50 torque, right? Yep, and I already set it"; "17 or 18. 17").
 
 ## of5-LhkX_VQ — Atomizer run Oct 2 part 2 (30:18, Oct 2)
 
@@ -183,10 +187,12 @@ Part 2 of the unsupervised run: purge, heat, pour and cooldown. A small graphite
 lowered, 250 °C is set, pressure control is turned on and the wash sequence is explained (one wash at room temperature, one at 250 °C, one or two at
 500 °C, stopping when the oxygen reading is in the "low 20s"); a "gas wash" is five vacuum/argon cycles and pressure control (which holds 150 mbar)
 must be turned off before pumping. The generator is started, the chilled water alarm waited out, and after the 500 °C wash the oxygen reads low 20s so
-the fourth wash is skipped. They set 830 °C (the trainer had used 850 then 800), set amplitude to "about 90" on an unmarked knob, melting pressure
-"17", and open the sealing rod: material flies out and most of the charge is not atomized — the pressure "was definitely too high" and the plate
+the fourth wash is skipped. They set 830 °C (the trainer had used 850 then 800), set amplitude to "about 90" on an unmarked knob, the pour pressure to
+".17 bar" (Whisper; captions "17.17"), check the plate ("pure molybdenum"), and open the sealing rod: material flies out and most of the charge is not atomized — the pressure "was definitely too high" and the plate
 should have been closer. Shutdown follows (sealing rod closed, generator stop, ultrasonic off, furnace to 250 °C, open above... only below 400 °C
-because graphite oxidizes). Phases: during (pump-down, heating, atomizing) and after (cooldown), plus troubleshooting.
+because graphite oxidizes). Phases: during (pump-down, heating, atomizing) and after (cooldown), plus troubleshooting. Re-checked against the
+Whisper transcript (segments of 30 s to 3 min, so the caption times are kept) and a word-level re-run of the disputed clips
+([`../transcripts/whisper/recheck-clips.json`](../transcripts/whisper/recheck-clips.json)): the pressure was 0.17 bar and the plate pure molybdenum.
 
 ### Timestamp log
 | mm:ss | phase | what happens / what is said |
@@ -202,7 +208,7 @@ because graphite oxidizes). Phases: during (pump-down, heating, atomizing) and a
 | 04:03 | heating | "Set 250°." Green light on; "turn on pressure control" (04:16). |
 | 04:23 | pump-down | "Now we're going to put some vacuum pump and gas wash." |
 | 04:42 | pump-down | Sequence: vacuum here first, then at 250, then at 500; doing the first one "before we go temperature at all" — chamber at 30°. |
-| 04:59 | pump-down | "One wash of the whole system at room temperature, then one at 250, then two washes at 500 if needed." |
+| 04:59 | pump-down | "One wash of the whole system at room temperature, then one at 250, then two washes at 500 if needed" — "it's like four washes total" (Whisper). |
 | 05:22 | pump-down | How to know if needed: oxygen reading; "if it's like low 20s, he says that's good." |
 | 05:54 | heating | "Heat." |
 | 06:31 | pump-down | "Melting pressure." |
@@ -219,21 +225,21 @@ because graphite oxidizes). Phases: during (pump-down, heating, atomizing) and a
 | 12:11 | pump-down | Watch gauge go "all the way" down; then "turn off that" (12:50). |
 | 13:06 | heating | Change temperature setpoint up to 500. |
 | 13:18 | design | No keypad for exact setpoints; furnace is from a different company that "won't let them interface", so controls are separate. |
-| 13:42 | design | "It should be really easy to do a single button that does this entire cycle." |
+| 13:42 | design | "It should be really easy to do a single button that does this entire cycle" — but "I don't know what the real situation is" (Whisper): the interface reason is second-hand. |
 | 14:20 | pump-down | At 500: "press vacuum pump gas again." |
 | 14:32 | plumbing | Identifying lines: chilled water lines ("really cold"); white hose is the argon into the tank (15:02). |
 | 15:42 | chatter | "He said we could atomize gold and silver in this" — wedding-ring joke. |
-| 16:31 | pump-down | "Turn on pressure control"; "this is going up" (16:59). |
+| 16:31 | pump-down | "All right, I'm going to turn off pressure control" (Whisper, both the batched transcript and the clip re-run; the captions heard "turn on"), ready to pump the chamber at 500 °C; "this is going up … it's going down" (16:59). |
 | 17:50 | check | Oxygen "in low 20s. So I think we're good. We don't have to do another purge cycle." |
-| 18:21 | record | "Just write down" readings; "with the mbar check" (19:15). |
+| 18:21 | record | "So just write down the mbar" (Whisper); "with the mbar check" (19:15). |
 | 19:25 | heating | "We can bring this up to 800." |
-| 19:33 | heating / deviation | "He went to 850 and then brought it down to 800?" — can't remember why; "I'm going to set to 830." |
+| 19:33 | heating / deviation | "He went to 850 and then brought it down to 800?" — can't remember why: "I think you just like felt like that was a good amount, so I guess we'll just have to play with it" (Whisper); "I'm going to set to 830." |
 | 19:56 | heating | "Hoping this is going to mix well. Starting to glow." |
 | 20:12 | chatter | Meta glasses livestream idea. |
 | 21:56 | heating | "Is it getting orange? Oh, yeah. I don't think it's melting just yet." |
-| 22:15 | charge | Plug ("cap") length: "point three something" per the GitHub issue; "didn't go hardly in at all" — maybe shorter is fine. |
+| 22:15 | charge | Plug ("cap") length: "I think it was like .3 something" per the GitHub issue (captions and the clip re-run; the batched Whisper drops it); "didn't go hardly in at all" — maybe shorter is fine. |
 | 23:04 | charge | Purpose of the plugs: "apparently what we're doing could explode" (loose powder; inferred). |
-| 23:17 | atomizing | "Melting pressure 17. Guess we'll see if 17.17 bar is high enough. He kept turning it down." |
+| 23:17 | atomizing | Pour pressure set: "I guess we'll see if .17 bar is high enough. He kept turning it down" (every Whisper decode: 0.17 bar, as #249 records). The label just before is "printing pressure" (captions) or "spinning pressure" (clip re-run), i.e. the pour pressure heard elsewhere as "graining", not melting pressure; the captions' "17.17 bar" doubled the number. |
 | 23:37 | heating | "Hey, it's melting. Oh, it's gone. Definitely not a lot in there." |
 | 23:54 | heating | Powder "might be clumped up again... No, I think it's mixing" — induction stirs the melt. |
 | 24:18 | safety | Heat felt through the viewing window. |
@@ -241,9 +247,9 @@ because graphite oxidizes). Phases: during (pump-down, heating, atomizing) and a
 | 24:54 | atomizing | Amplitude: 100 "might be too much... bring it to about 90"; knob reads "88 to 100... around 90". |
 | 25:23 | lesson | "We're going to have to create digital readouts" for the amplitude knob. |
 | 25:38 | heating | "830°." |
-| 25:53 | atomizing | "Check the plate. What plate is this?... aluminum. Not a coated carbon, just pure." |
-| 26:25 | atomizing | "Sealing rod, [draining] pressure, on." |
-| 26:45 | atomizing / problem | "Uh-oh. Please turn off the frequency. Holy dang, [they] are flying out of there." |
+| 25:53 | atomizing | "Check the plate. What plate is this? The M[o]? … Not the coated carbon, it's pure molybdenum. Yeah, pure molybdenum." (word-level clip re-run of 25:50–26:15; the captions' "aluminum … pure aluminum" was a mis-hearing, and the batched Whisper drops the answer). |
+| 26:25 | atomizing | "Sealing rod, graining pressure" (both transcripts "grinning": the pour pressure), on. |
+| 26:45 | atomizing / problem | "Uh-oh. Can you turn off the frequency? Holy dang, [they] are flying out of there." (captions and the clip re-run; the batched Whisper drops the second sentence). |
 | 27:00 | atomizing | "It's totally working... Is that all of it? Yep." "Most of it did not get atomized, unfortunately." |
 | 27:26 | lesson | "That was definitely too high. It should have been a lot lower." |
 | 27:33 | lesson | "The plate needed to be a lot closer so [it] had more time to run down it." |
@@ -271,7 +277,7 @@ During
 - Write down the readings (18:21).
 - Raise to melt temperature (trainer: 850 then 800; team used 830) and hold ~2 minutes to mix (19:25, 19:51, 24:27).
 - Set amplitude (~90) and check which plate is installed (24:54, 25:53).
-- Open the sealing rod with draining pressure on; watch the pour (26:25).
+- Open the sealing rod with the pour ("graining") pressure on; watch the pour (26:25).
 
 After
 - Close the sealing rod, stop the generator, stop the ultrasonic, cooler on (27:41).
@@ -290,13 +296,15 @@ Troubleshooting
 | 500 °C | second heated wash setpoint; washes "if needed" | 05:17, 13:09 |
 | low 20s | oxygen reading considered good (unit not stated) | 05:29, 18:10 |
 | 80 PSI | a gauge, "that's high" (unidentified) | 08:46 |
+| 4 washes | total: room temperature, 250, two at 500 if needed ("it's like four washes total", Whisper) | 05:05 |
 | 5 cycles | per "gas wash"; 1 cycle for the other button | 10:44 |
 | 150 mbar | pressure held by pressure control | 11:59 |
 | 800 / 850 °C | trainer's melt setpoints (850 then 800) | 19:28, 19:36 |
 | 830 °C | team's melt setpoint | 19:51, 25:38 |
-| ~0.3 (in, inferred) | plug length from the GitHub issue | 22:49 |
-| 17 / "17.17 bar" | melting (draining) pressure reading; units unclear | 23:26 |
+| ~0.3 (in, inferred) | plug length from the GitHub issue (".3 something": captions and clip re-run) | 22:49 |
+| 0.17 bar | pour pressure: Whisper ".17 bar", as #249 records; captions "printing pressure 17 … 17.17 bar" | 23:26 |
 | ~2 min | hold after melting before atomizing | 24:27 |
+| pure Mo | plate on Oct 2: "pure molybdenum" (clip re-run; captions "pure aluminum") | 26:07 |
 | ~90 (88–100) | amplitude knob setting | 25:06, 25:30 |
 | 400 °C (500 °C) | graphite oxidation threshold; open chamber below 400 | 28:38, 28:56 |
 
@@ -308,13 +316,14 @@ Troubleshooting
 - "The graphite when exposed to oxygen above 400° or above 500° reacts with the oxygen." (28:52)
 
 ### Unclear / needs checking
-- "17 / 17.17 bar" melting pressure (23:17): bar, mbar, or a percentage — compare with the trainer's "low draining pressure".
+- Pressure at 23:17 — resolved as spoken: every Whisper decode (batched transcript, clip re-run at beam 5 and beam 1) has "I guess we'll see if .17 bar is high enough. He kept turning it down", i.e. 0.17 bar, matching #249. The label before it is "printing pressure" (captions) or "spinning pressure" (clip re-run, beam 1): the pour pressure (heard "grinning" at 26:25, "graining" in the training videos), not melting pressure. Still open: why 0.17 bar was "definitely too high" when the chamber holds 150 mbar (+20 mbar), unless the HMI value is a differential above the chamber (inferred).
 - Which graphite part was dropped (03:45) and whether it was inspected afterward.
-- Plate identity at 25:59: pt1 chose molybdenum, here the answer sounds like "aluminum" (plate for aluminum?).
+- Plate identity at 25:59 — resolved: a word-level re-run of 25:50–26:15 hears "What plate is this? The MW? Yeah. And not the coated carpet, it's pure molybdenum. Yeah, pure molybdenum." (beam 5; beam 1 also ends "just pure molybdenum"; a longer 25:40–26:35 window trails off as "…not as a coated carpet, just yeah"). The captions' "The ML … aluminum … pure aluminum" was a mis-hearing of the same words; the batched Whisper segment kept only the question. Pure Mo matches the pt1 choice (05:27) and #249.
 - "80 PSI" gauge (08:46): compressed air? Not the 8 bar argon.
 - "Could explode" (23:15) — the trainer's actual reason for plugging the powder cup is not in the captions.
 - Oxygen unit ("low 20s") — ppm presumed.
-- Whether "cooler" at 27:50 is a separate shutdown action.
+- Whether "cooler" at 27:50 is a separate shutdown action (Whisper: "Cooler, yeah").
+- Re-checked against Whisper: 250, 30°, 150 mbar, 80 psi, five cycles, low 20s, 830, ~90 (88–100), 2 min and 400/500 are all confirmed as spoken. Missing from the batched Whisper but confirmed by the clip re-run: ".3 something" (22:49), "Holy dang … flying out of there" (26:53), "pure molybdenum" (26:07). Whisper-only: "four washes total" (05:05), the 850/800 answer (19:48), the hedge on the furnace interface (13:41). 16:31: Whisper hears "turn off pressure control" in both decodes, the captions "turn on"; "off" is kept, as the chamber is pumped next.
 
 ## BxA7Z9Fliss — Claude ping for dosing Al 4047 (10:48, Oct 1)
 
@@ -346,6 +355,7 @@ Before
 ### Unclear / needs checking
 - The PR number, the prompt text and the dosing parameters are on screen, not in the captions.
 - What was "almost forgot[ten]" at 05:42.
+- Re-checked against Whisper (word-timed sentence segments): the same words; voice-activity detection finds speech only at 00:00–00:17, 02:53–03:07 and 05:46, so the rest of the 10:48 is silent screen and camera time.
 
 ## Kv9DT3Vo0GE — Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon! (02:30, Sep 1)
 
@@ -363,13 +373,13 @@ eyewash), whiteboard space and large breaker boxes. Phase: installation / facili
 | 00:43 | installation | "Look how big this transformer is. This is the device that powers our atomizer." |
 | 00:49 | installation | Transformer too big for the planned spot "above there"; placed here instead; could put a tall table over it if heat allows (01:00). |
 | 01:13 | installation | Slats, vents, lights; electrical "should be done"; light switches not working yet (01:28). |
-| 01:35 | installation | Cabinets; big sink — narrator will drill holes and finish plumbing (01:44). |
+| 01:35 | installation | Cabinets; big sink — "they'll have to drill the holes, put in the finished plumbing" (01:44, batched Whisper; captions "I'll"; the clip re-run's "so that the drill the holes" settles neither). |
 | 01:48 | installation | Second sink, probably the emergency [eyewash]; narrator wonders why not combined. |
 | 02:05 | installation | Whiteboard space; "massive" breaker boxes — "look how big these breakers are" (02:18). |
 
 ### Procedural steps
 Before (installation)
-- Finish sink plumbing: drill holes and install fixtures (01:44).
+- Finish sink plumbing: drill holes and install fixtures (01:44; who does it is unclear, "they'll" or "I'll").
 - Keep the transformer area clear until its heat output is known before covering it with a table (01:00).
 
 ### Parameters and numbers
@@ -384,6 +394,7 @@ Before (installation)
 ### Unclear / needs checking
 - "Emergency irons" (01:52) — presumably emergency eyewash/shower.
 - Which pump is "next to" the dehumidifier (condensate pump? exhaust?).
+- Re-checked against Whisper (word-timed sentence segments): the wording agrees with the captions, "emergency irons" included; the one difference is who finishes the sink plumbing (Whisper "they'll", captions "I'll").
 
 ## 07QOPRHIEvw — Placing the Atomizer!!! (01:26, Sep 3)
 
@@ -411,12 +422,12 @@ Before (installation)
 - "They'll bring in the chilled water down from the top and run the argon there by that orange tape on the wall." (01:08)
 
 ### Unclear / needs checking
-- No captions for 00:00–00:55; whatever is shown there is undocumented.
+- No captions for 00:00–00:55; whatever is shown there is undocumented. Whisper's voice-activity filter also finds no speech before 00:54, and its text after that matches the captions.
 
 ## cKwQbKdE22Q — Vacuum test (02:37, Sep 8)
 
 This is not the atomizer. Someone adds a small amount of powder, connects a hose, switches a vacuum on, lets it run 15–30 s "to get all of the powder
-out", then pours/inspects to see how much powder was captured — and finds "no visible powder in there", though "you can see it" on closer look. It
+out", then pours/inspects to see how much powder was captured — and finds "no visible powder in there" (the captions add "I mean, you can see it", which Whisper hears as "We should use tape"). It
 reads as a test of a small vacuum for picking up (metal) powder, with an ambiguous result. Phase: prep / equipment test (powder-handling, inferred).
 
 ### Timestamp log
@@ -425,10 +436,10 @@ reads as a test of a small vacuum for picking up (metal) powder, with an ambiguo
 | 00:00 | test | "Add just a little bit of this powder... like this here." |
 | 00:15 | test | Connect the hose/fitting; "we'll turn this on" (00:24). |
 | 01:08 | test | "Let it run for 15 to 30 seconds to get all of the powder out of here." |
-| 01:16 | test | "Now we just leave it like that." |
+| 01:16 | test | "Now we just leave it like that" (captions; Whisper "we'll just move it back … move forward", 01:24). |
 | 01:24 | test | Pour out / inspect: "I want to see how much powder." |
-| 01:37 | result | "There's no visible powder in there... I mean, you can see it." |
-| 02:09 | test | "All the way." (unclear); ends. |
+| 01:37 | result | "There's no visible powder in there" (both); then "I mean, you can see it" (captions) or "We should use tape" (Whisper, 01:44) — a tape check for residue (inferred). |
+| 01:59 | test | "Move everything back over here" (Whisper; captions "everything talked about too … all the way", 02:09); ends. |
 
 ### Procedural steps
 Before (equipment test)
@@ -445,6 +456,7 @@ Before (equipment test)
 ### Unclear / needs checking
 - What vacuum and what powder; whether this is the powder-doser vacuum, a cleanup vacuum, or a leak test of something else.
 - Whether "no visible powder" means the vacuum failed to capture it or captured all of it.
+- Re-checked against Whisper (word-timed sentence segments): 15–30 s and "no visible powder" confirmed; 01:44 and 01:59 differ (see rows). The frame at 01:00 (labelled 00:00 on the contact sheet, whose every-2-minute tiles are about 60 s early) shows the operator in a half-face respirator, VCL ESD coat and gloves, holding a vacuum wand; at 00:00 a gloved hand holds the powder bottle (keyframe).
 
 ## w02MRlZhpNk — Dehumidifier troubleshooting (02:58, Sep 29)
 
@@ -460,8 +472,8 @@ uncertain. Phase: facility troubleshooting (enclosure humidity control, relevant
 | 00:10 | troubleshooting | Dehumidifier: "the 24 volts shorted to each other. So that should be working." |
 | 00:40 | troubleshooting | "I heard a click. That's good, I guess." |
 | 00:46 | troubleshooting | The pump "doesn't look like anything's actually attached to it"; its point is to move water in and out. |
-| 01:17 | troubleshooting | "Is the pump just not being used at all? Maybe." Two pairs of wires; "looks like it's just connected directly." |
-| 01:43 | troubleshooting | "Why is it not on? ... I think the breaker got tripped." |
+| 01:17 | troubleshooting | "Is the pump just not being used at all? Maybe." Two bare wires (Whisper; captions "two pair of wires"); "looks like it's just connected directly." |
+| 01:43 | troubleshooting | "Why is it not on?" — "I don't think, I don't think the breaker got tripped" (Whisper, batched and clip re-run); the captions dropped the second "don't" and heard "I think the breaker got tripped" (01:57). |
 | 02:08 | troubleshooting | Clicks heard when turning the control; "I would have assumed that's the right way to turn it for dryer." |
 | 02:43 | troubleshooting | Notes a line "going into the side"; goes back down (02:55). |
 
@@ -469,7 +481,7 @@ uncertain. Phase: facility troubleshooting (enclosure humidity control, relevant
 Troubleshooting
 - Confirm the 24 V control terminals are jumpered/shorted and listen for the relay click (00:10, 00:40).
 - Check whether the condensate pump is actually plumbed or bypassed (00:46, 01:17).
-- If the unit is dead despite the control signal, check the breaker (01:57).
+- If the unit is dead despite the control signal, check the breaker (01:57); here the narrator did not think it had tripped.
 - Verify which direction of the humidistat knob means "dryer" (02:32).
 
 ### Parameters and numbers
@@ -479,11 +491,12 @@ Troubleshooting
 
 ### Quotable moments
 - "The 24 volts [are] shorted to each other. So that should be working." (00:18)
-- "Why is it not on? ... I think the breaker got tripped." (01:43)
+- "Then the question is why is it not on? I don't think the breaker got tripped." (01:43, Whisper)
 
 ### Unclear / needs checking
 - Outcome unknown — the clip ends without the dehumidifier confirmed running.
 - Which breaker and whether the pump is intentionally bypassed.
+- Re-checked against Whisper (word-timed sentence segments): 24 V confirmed ("the 24 volts shorted to each other"); the breaker line (01:43) is a negative in both Whisper decodes, and "bare" vs "pair of" wires (01:17) differ.
 
 ## z6rwmQW_3Vg — Lathe turning aluminum crucibles for atomizer experiments (01:35, Sep 26)
 
@@ -526,3 +539,4 @@ Before
 ### Unclear / needs checking
 - Rod outer diameter and bore depth are not spoken (repo notes say 20 mm OD, ~3 in deep bore; the 2.75 in cup here is shorter).
 - Which alloy this stock is (Al 6063 per the later runs; not stated here).
+- Re-checked against Whisper (word-timed sentence segments): 2.75 in, "a quarter inch more", "three three-inch pieces" and "about one and three-eighths" are confirmed. Whisper's voice-activity filter drops the 00:14 answer ("1/4 in should be fine if you're confident…") and both 1/2 in drill lines (01:05, 01:25), which rest on the captions.

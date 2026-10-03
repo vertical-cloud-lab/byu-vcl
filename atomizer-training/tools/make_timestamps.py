@@ -28,25 +28,34 @@ for path in sorted(glob.glob(f"{ROOT}/notes/*.md")):
 order = [l.strip() for l in open(f"{HERE}/video_ids.txt") if l.strip()]
 out = ["# Atomizer videos: timestamp log", "",
        "Every substantive moment in the BYU VCL atomizer videos (install, AMAZEMET rePowder training Sep 29–30 2026, and the team's own runs), "
-       "indexed from the transcripts in [`transcripts/`](transcripts/). Rows were extracted from the caption text by reading agents and the "
-       "`mm:ss` is the caption start time, so a link lands at most a few seconds before the moment.", "",
+       "indexed from the transcripts in [`transcripts/`](transcripts/). Reading agents extracted the rows from the YouTube auto-captions and "
+       "then re-checked them line by line against the Whisper transcripts; the six videos without captions were indexed from Whisper alone, "
+       "and the ones with no speech from frames of the footage. The `mm:ss` is the caption start time (or the Whisper segment start), so a "
+       "link lands at most a few seconds before the moment.", "",
        "**Links do not autoplay.** The `mm:ss` link opens YouTube's embed player paused at that second "
        "(`youtube.com/embed/<id>?start=<s>`; embeds only autoplay when `autoplay=1` is passed). The ▶ link is the normal watch page at the same "
        "time, which does autoplay. Unlisted videos open with either link; private ones need the channel login.", "",
        "Phases: *before* (utilities, stack, furnace prep, loading), *during* (pump-down/gas wash, heating, atomizing), *after* (shutdown, cooldown, "
        "venting, powder collection), *cleaning/maintenance*, *theory*, *troubleshooting*, *installation*, *chatter*.", "",
-       "Transcript source per video is listed in the heading: **whisper** = faster-whisper large-v3-turbo on the runner, **auto** = YouTube "
-       "auto-captions. Whisper is more accurate; the auto-caption rows will be re-checked as Whisper transcripts land.", ""]
+       "Transcript source per video is listed in the heading: **auto + whisper** = rows from YouTube auto-captions (caption start times), "
+       "re-checked line by line against the faster-whisper large-v3-turbo transcript, with disagreements noted in the row; **whisper** = no "
+       "YouTube captions, rows from Whisper alone; **keyframes** = no usable speech (Whisper returns only hallucinated filler), rows read from "
+       "frames of the footage (see [`keyframes/`](keyframes/README.md)) and marked (keyframe); **auto** = auto-captions only, not yet re-checked.", ""]
 total = 0
 for vid in order:
     v = meta[vid]; rows = logs.get(vid, [])
-    src = "whisper" if os.path.exists(f"{ROOT}/transcripts/whisper/{vid}.txt") else "auto"
+    has_auto = os.path.exists(f"{ROOT}/transcripts/autosubs/{vid}.txt")
+    has_whisper = os.path.exists(f"{ROOT}/transcripts/whisper/{vid}.txt")
+    if rows and all(text.startswith("(keyframe)") for _, _, text in rows):
+        src = "keyframes"
+    else:
+        src = "auto + whisper" if has_auto and has_whisper else "whisper" if has_whisper else "auto" if has_auto else "none"
     out.append(f"## {v['title']}")
     out.append(f"`{vid}` · {v['published'][:10]} · {iso_dur(v['duration'])} · {v['privacy']} · transcript: {src} · "
                f"[open paused](https://www.youtube.com/embed/{vid}?start=0) · [▶ watch](https://www.youtube.com/watch?v={vid})")
     out.append("")
     if not rows:
-        out.append("_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._"); out.append(""); continue
+        out.append("_No rows yet: no transcript of this video has been indexed._"); out.append(""); continue
     out.append("| mm:ss | ▶ | phase | what happens / what is said |"); out.append("| --- | --- | --- | --- |")
     for mmss, phase, text in rows:
         s = secs(mmss); total += 1

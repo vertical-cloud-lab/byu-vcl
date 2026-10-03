@@ -1,6 +1,6 @@
 # Group C — rePowder training transcript index (Videos 7, 8, 9, Sterling's phone)
 
-Source: YouTube auto-captions only (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for these four. Videos 7 and 9 have since been re-checked row by row against Whisper large-v3-turbo transcripts (`/tmp/work/transcripts/<id>.txt`); see their sections. Timestamps are the caption start times. Speaker attribution is inferred from context (Bartosz = trainer; Gage/Ronnie/Sterling = trainees). "Torque 65/60/50" units are never spoken; Nm is inferred.
+Source: YouTube auto-captions only (`/tmp/work/autosubs/<id>.txt`); no Whisper transcript existed for these four. All four have since been re-checked row by row against Whisper large-v3-turbo transcripts (now in [`../transcripts/whisper/`](../transcripts/whisper/)); see their sections. Lines still disputed after that were re-decoded word by word from the audio ([`recheck-clips.json`](../transcripts/whisper/recheck-clips.json), "clip re-run"). Timestamps are the caption start times. Speaker attribution is inferred from context (Bartosz = trainer; Gage/Ronnie/Sterling = trainees). "Torque 65/60/50" units are not spoken in these four videos; "Newton meters" is said once, in Video 5 13:30 (Whisper).
 
 ## FDRTt68Vfvo — Atomizer Training Video 7 (53 min, Sep 30)
 
@@ -165,29 +165,29 @@ Covers the gap between two runs: a quick plan for post-run cleaning (remove cruc
 
 ## HTlUrAr5HVU — Atomizer Training Video 8 (12 min, Sep 30)
 
-Short, Gage-narrated furnace reassembly between runs with Bartosz occasionally advising. It documents the nozzle sizes on hand (a 0.7 mm fresh graphite nozzle and a 0.5 mm one Gage machined), Bartosz's preferred assembly order (nozzle screwed into the crucible first, then the holder nut), orienting a hole on a part, seating the insulation and thermocouple, scraping aluminium off the graphite sealing rod while protecting its tip, dedicating consumables per alloy, closing the furnace just tight enough to seal, and an idea to aim the drip onto the plate with a laser pointer. Phases: after (cleaning consumables) and before (loading prep).
+Short, Gage-narrated furnace reassembly between runs with Bartosz occasionally advising. It documents the nozzle sizes on hand (a 0.7 mm fresh graphite nozzle and a 0.5 mm one Gage machined, said as "0.05"), Bartosz's preferred assembly order (nozzle screwed into the crucible first, then the holder nut), orienting a hole on a part, seating the insulation and thermocouple, scraping aluminium off the graphite sealing rod while protecting its tip, dedicating consumables per alloy, closing the furnace just tight enough to seal, and an idea to aim the drip onto the plate with a laser pointer. Phases: after (cleaning consumables) and before (loading prep). Re-checked against the Whisper transcript (30–60 s segments, so the caption times are kept).
 
 ### Timestamp log
 
 | mm:ss | phase | what happens / what is said |
 |---|---|---|
-| 00:07 | troubleshooting | Something "is getting off... this usually doesn't happen" (object not identifiable from audio). |
-| 00:37 | before/loading | Gage asked the shop for a ~0.5 mm drill bit to make a nozzle; "that is so tiny". |
-| 00:57 | part | The machined nozzle is 0.5 mm; this one is 0.7 mm, fresh; all graphite. |
+| 00:07 | troubleshooting | Something "is getting off... this usually doesn't happen" (object not identifiable from audio; Whisper hears "it's good enough"). |
+| 00:37 | before/loading | Gage asked Kevin in the shop for a drill bit "0.05 millimeters" (Whisper; captions "005 mm"), which had to be looked up in inches: "that is so tiny" — 0.5 mm is meant (inferred, see Unclear). |
+| 00:57 | part | The machined nozzle: "It's 0.05" (Whisper; captions "05"), read as 0.5 mm; this one is 0.7 mm, fresh; graphite. |
 | 01:28 | before/loading | Bartosz: screw the nozzle into the crucible first, then put the holder/nut on — easier. |
 | 01:41 | lesson | Producer's order (nozzle holder with nut first) is worse: you must grab the thread or use an awkward special tool. |
 | 02:26 | before/loading | Very little thread engagement — "you just barely have to get it on". |
-| 02:52 | before/loading | Orient the hole on the part "about here", angled, so the other part can travel from here to there. |
+| 02:52 | before/loading | Orient the hole on the part "about here", angled, so the other part can travel from here to there (Whisper "See that holder?" where the captions have "See that hole there?"). |
 | 03:37 | mistake | Didn't centre it in the hole enough, so the part wasn't fitting. |
-| 03:45 | part | Aluminium–silicon(-ate) insulation; "it just turns into powder"; standard for furnaces. |
+| 03:45 | part | Insulation: "alumina silicon is what you call it" (Whisper; captions "aluminum silicon") — the silica–alumina mix of Video 4 01:08; "it just turns into powder"; standard for furnaces. |
 | 04:09 | lesson | It breaks if dropped; already chipped at the top; many fragile consumables. |
 | 04:23 | before/loading | Insulation goes in first; the thermocouple sits there and measures temperature. |
 | 04:44 | cleaning | Clean the sealing rod; centre piece is graphite and really brittle; aluminium didn't stick much. |
-| 05:29 | cleaning | Need scrapers/specific tools; for now squeeze and rub across the aluminium. |
+| 05:29 | cleaning | Need scrapers/specific tools — "even like a flathead screw[driver] … or a file" (both transcripts); for now squeeze and rub across the aluminium (06:08). |
 | 06:13 | lesson | Damaging the rod shaft isn't a big deal, but the tip must be good, or you need a new tip/shaft. |
 | 06:25 | part | This (rod) is what goes into the chamber (furnace). |
-| 07:30 | lesson | Contamination: keep "our aluminium one" and "our copper one" sets; doesn't need to be 100%. |
-| 08:43 | before/loading | Close the furnace. |
+| 07:30 | lesson | Contamination: keep "our aluminium one" and "our copper one" sets; doesn't need to be 100% (captions "you don't have to get like 100%" and the word-level clip re-run "you don't have to be like 100% of it"; the batched Whisper's "you'll have to" is the outlier). |
+| 08:43 | before/loading | Part seated ("So that's down like that", Whisper); close the furnace. |
 | 09:09 | before/loading | How tight? Enough to get a seal — if not tight enough, air gets in. |
 | 09:53 | idea | Laser pointer through the pour path to show where metal will land on the plate before heating; wastes less. |
 | 10:59 | before/loading | Ready; waiting for material; clean the lid (smaller lid is easier). |
@@ -215,8 +215,8 @@ Short, Gage-narrated furnace reassembly between runs with Bartosz occasionally a
 
 | value | context | mm:ss |
 |---|---|---|
-| "005 mm" drill | likely 0.5 mm drill bit for the nozzle | 00:38 |
-| 0.5 mm | machined graphite nozzle | 00:57 |
+| "0.05 mm" drill | spoken twice as "0.05" (Whisper; captions "005 mm", "05"); read as the 0.5 mm nozzle bit (inferred) | 00:38 |
+| 0.5 mm (said "0.05") | machined graphite nozzle | 00:57 |
 | 0.7 mm | fresh graphite nozzle | 01:07 |
 
 ### Quotable moments
@@ -227,11 +227,12 @@ Short, Gage-narrated furnace reassembly between runs with Bartosz occasionally a
 
 ### Unclear / needs checking
 
-- 02:52 which part's hole is being oriented (nozzle holder? crucible?) and relative to what — video needed.
-- 03:19 "you'll see about 0 seconds" — unintelligible.
-- 03:45 "aluminum silicon" — alumina–silica fibre insulation is inferred.
-- 00:07–00:26 what is "getting off".
-- 08:40 "let's download that" — unclear (screen? data?).
+- 02:52 which part's hole is being oriented (nozzle holder? crucible?) and relative to what — video needed. Whisper hears "See that holder?" for the captions' "See that hole there?", which points at the nozzle holder but does not settle it.
+- 03:19 "you'll see about 0 seconds" — unintelligible in both (Whisper "0.0 circuits").
+- 03:45 — resolved: Whisper hears "alumina silicon", matching Video 4 01:08's "silica and alumina mix".
+- 00:07–00:26 what is "getting off" — not resolved; Whisper hears "For some reason, it's good enough. This usually doesn't happen."
+- 08:40 "let's download that" — resolved: Whisper has "So that's down like that" (a part seated before the lid is closed), not a download.
+- 00:37–00:57 nozzle size: both transcripts hear "oh-five" — Whisper "a drill bit that's 0.05 millimeters" and "It's 0.05", captions "005 mm" and "05". A 0.05 mm (50 µm) bore would be ten times finer than the standard 0.5 mm nozzle (Video 1 39:54), and it is shown as the smaller of two nozzles next to a fresh 0.7, so 0.5 mm is read as meant (inferred); confirm with Gage. A word-level re-run of 00:30–01:20 hears "0.05 millimeters" and "It's 0.05" again, so that is what was said.
 
 ## 9kn-HhXCr1o — Atomizer Training Video 9 (50 min, Sep 30)
 
@@ -416,7 +417,7 @@ The most complete run-through. Gage narrates the automated gas-wash purge, heat-
 
 ## 2wMgeI-E7zw — Atomizer training (sterling's phone) (16 min, Sep 30)
 
-Phone recording of an orientation walk-around, apparently from the setup day before the formal training (it mentions rods "to test on Wednesday" and an 8:30 a.m. start "tomorrow"). Bartosz shows the rear utility connections (power, vacuum pump, heat exchanger, argon T, compressed air, cooling supply/return), the heat exchanger and its first start-up including a "water too cold" fault from the facility chilled water, the two control panels and software accounts, the transducer and its compressed-air cooling, plate consumable life and cost, boron-nitride crucible coating, cleaning between alloys, the extended consumable pack, PPE, and BYU's plan for powder-packed capped rods. Phases: before (setup/utilities), theory, consumables; no run.
+Phone recording of an orientation walk-around, apparently from the setup day before the formal training (it mentions rods "to test on Wednesday" and an 8:30 a.m. start "tomorrow"). Bartosz shows the rear utility connections (power, vacuum pump, heat exchanger, argon T, compressed air, cooling supply/return), the heat exchanger and its first start-up including a "water too cold" fault from the facility chilled water, the two control panels and software accounts, the transducer and its compressed-air cooling, plate consumable life and cost, boron-nitride crucible coating, cleaning between alloys, the extended consumable pack, PPE, and BYU's plan for powder-packed capped rods. Phases: before (setup/utilities), theory, consumables; no run. Re-checked against the Whisper transcript (30–60 s segments, so the caption times are kept); it corrects the coolant flow reading at 02:29.
 
 ### Timestamp log
 
@@ -428,30 +429,30 @@ Phone recording of an orientation walk-around, apparently from the setup day bef
 | 01:04 | troubleshooting | Open the facility valve only a very little; cold water tripped "water too cold" — threshold 10 °C, reading 9.3, lowered to 7 °C. |
 | 01:28 | before/setup | Keep the valve barely open, watch the exchanger water temperature rise under load, adjust. |
 | 01:45 | theory | Heat exchanger: coolant tank with level sensor; stops on low level or high temperature; main switch starts inverter and pump; pressure gauge. |
-| 02:29 | before/setup | "Cooling water too low" error on the main screen clears after a short delay; check in service mode (~10 flowing). |
+| 02:29 | before/setup | "Cooling water too low" error on the main screen clears after a short delay; service mode shows the flow: about 3 L/min, and it "just needs two" (Whisper "three thirds per minute flow rate. It just needs two"; the word-level clip re-run "freezers per minute flow rate, it just needs two"; captions "frame there's 10 minutes flowing" — all three fit "three liters per minute"). |
 | 02:55 | lesson | Exchanger panel is loud; the side panel can come off to add insulation inside. |
 | 03:27 | theory | Main switch; one panel controls the furnace (pressure and temperature); the other controls the ultrasonic system and chamber. |
 | 03:45 | theory | Software has user accounts (account manager, simple default passwords); one program tests vibrations, another runs the system. |
 | 04:29 | admin | Mixed schedules; mornings cover more; keep notes on consumables and modifications. |
 | 04:53 | future | For Al–Mg alloys with more magnesium there is an upgrade: viewport with argon purge to keep visibility. |
-| 05:21 | admin | Order was priced with a chiller rather than a heat exchanger → credit for extra consumables/parts; lots of crucibles. |
+| 05:21 | admin | Order was priced with a chiller rather than a heat exchanger → "a few K of credit" (Whisper; captions "a few kind of credit") for extra consumables/parts; lots of crucibles. |
 | 06:02 | before/loading | Bartosz brought aluminium 4047 rods for basic training; will show how to control particle size. |
 | 06:16 | theory | Changing parts drastically changes the PSD; not every combination suits every alloy; tricks for Al large vs small. |
 | 06:49 | theory | Lower density → larger particles; you cannot resist that. |
 | 06:57 | troubleshooting | Water on the floor is from setup; unit can't be moved back — hoses too stiff; longer hoses/angle fitting. |
-| 07:29 | part | The transducer is the core; compressed-air cooling connects here; thread mismatch solved with Teflon tape/hardware store fitting. |
-| 08:03 | theory | Maximise compressed-air flow to keep the transducer cold; plasma runs for hours, atomizing only a couple of minutes. |
+| 07:29 | part | The transducer is the core; compressed-air cooling connects here: the one fitting ("key") supplied went on the argon line, Bartosz has another in his bag or will get one at Ace Hardware; the threads differ, Teflon tape makes them fit (07:56). |
+| 08:03 | theory | Maximise compressed-air flow to keep the transducer cold; plasma runs for hours, here the ultrasonics run "just 10 minutes or 5 minutes" (word-level clip re-run; batched Whisper "just 10 minutes"; captions "a couple of minutes"), hence the trainee's "one 10-minute run" (09:02). |
 | 08:28 | safety | Don't drop the transducer; keep it away from moisture. |
 | 08:41 | before/setup | Stack: one rod (sonotrode), then the plate, then the final rod that holds the plate in position. |
 | 08:51 | lesson | Plate is a consumable: one process or a few; if it breaks, open the chamber and change it; a cracked plate may not run twice. |
 | 09:17 | safety | If a plate breaks, the ceramic crucible under it catches molten metal. |
 | 09:33 | cost | Plates cost $10–12 up to $70–80 (tungsten plasma-coated carbon fibre from Korea). |
 | 10:07 | theory | Aiming for smaller particles means lower amplitude, so plates last longer. |
-| 10:34 | lesson | Coat crucibles with boron-nitride spray for reactive materials; yttria also possible; BN most flexible; US suppliers exist. |
+| 10:34 | lesson | Coat crucibles with boron-nitride spray for reactive materials; yttria also possible; BN most flexible; US suppliers exist, e.g. a coatings company in Oak Ridge (11:08, both transcripts). |
 | 11:37 | cleaning | Switching alloys: after a run peel the slag off the crucible bottom; micro leftovers on walls don't matter. |
 | 12:09 | cleaning | Sealing rods: peel slag, polish; as long as the tip is smooth it works. |
 | 12:25 | part | Extended pack extras: splash cover for spitting materials; denser high-temperature insulation for purity. |
-| 13:02 | safety | Two full masks, ear protection (ultrasonic), filters; the induction coil is also noisy. |
+| 13:02 | safety | Two full masks, ear protection (ultrasonic), filters; the induction coil is also noisy; people outside the lab should not be bothered (13:29). |
 | 13:48 | before/loading | BYU test rods: bored hole, powder loaded, capped — to try Wednesday; arc melting as fallback. |
 | 14:27 | lesson | Any consolidation helps; pure powder has a higher chance of just getting lost. |
 | 14:53 | admin | 8:30 a.m. start tomorrow; use the vacuum during runs; parking (to end). |
@@ -482,8 +483,10 @@ Phone recording of an orientation walk-around, apparently from the setup day bef
 |---|---|---|
 | 2 argon lines via a T | rear argon connection | 00:25 |
 | 10 °C → 7 °C | water-too-cold threshold lowered; reading was 9.3 °C | 01:21 |
-| ~10 | flow value seen in service mode (units unclear) | 02:48 |
+| ~3 L/min (needs 2) | coolant flow in service mode (Whisper "three thirds per minute flow rate. It just needs two"; captions "10 minutes flowing") | 02:48 |
+| "a few K" | credit left by the chiller/heat-exchanger price difference (Whisper; captions "a few kind of") | 05:43 |
 | Al 4047 | training rods Bartosz brought | 06:02 |
+| 5–10 min | ultrasonic running time per run, against hours in a plasma process ("just 10 minutes or 5 minutes", clip re-run) | 08:14 |
 | 1 process to a few | plate life | 08:55 |
 | $10–12 / $70–80 | cheapest / most expensive plate | 09:40 |
 | 2 full masks | PPE supplied | 13:02 |
@@ -502,6 +505,8 @@ Phone recording of an orientation walk-around, apparently from the setup day bef
 ### Unclear / needs checking
 
 - Recording date: content ("test on Wednesday", "8:30 tomorrow") implies Monday Sep 28 or Tuesday Sep 29, not the Sep 30 upload date.
-- 02:48 "10 minutes flowing" — probably a flow rate (10 L/min?) in service mode.
-- 07:39 "one key with the system" — a fitting/adapter, inferred.
+- 02:48 — resolved: Whisper has "you can see we have the three thirds per minute flow rate. It just needs two. It doesn't require too much", and the clip re-run "we have the freezers per minute flow rate, it just needs two" — about 3 L/min against the 2 L/min minimum (Video 1's ">2 L/min"); the captions' "frame there's 10 minutes flowing" was a mis-hearing of the same words.
+- 07:39 "one key with the system" — both transcripts hear "key"; it went on the argon line, so a fitting/adapter (inferred).
+- 08:15 ultrasonic running time — resolved toward 5–10 min: the batched Whisper hears "just 10 minutes", the word-level clip re-run "just 10 minutes or 5 minutes", against the captions' "a couple of minutes"; the trainee's "one 10-minute run" (09:02) echoes it. The pour itself lasts 2–5 min (Video 9 25:42), so this is the vibration on-time, not the pour.
+- Kept from the captions where Whisper is worse: 04:48 "modifications about the consumables … aluminum magnesium alloy" (Whisper "custom models … a new model").
 - 05:21 chiller-vs-heat-exchanger credit — commercial detail, verify with AMAZEMET.

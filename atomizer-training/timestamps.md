@@ -1,17 +1,17 @@
 # Atomizer videos: timestamp log
 
-_747 timestamped rows across 22 of 26 videos._
+_799 timestamped rows across 26 of 26 videos._
 
-Every substantive moment in the BYU VCL atomizer videos (install, AMAZEMET rePowder training Sep 29–30 2026, and the team's own runs), indexed from the transcripts in [`transcripts/`](transcripts/). Rows were extracted from the caption text by reading agents and the `mm:ss` is the caption start time, so a link lands at most a few seconds before the moment.
+Every substantive moment in the BYU VCL atomizer videos (install, AMAZEMET rePowder training Sep 29–30 2026, and the team's own runs), indexed from the transcripts in [`transcripts/`](transcripts/). Reading agents extracted the rows from the YouTube auto-captions and then re-checked them line by line against the Whisper transcripts; the six videos without captions were indexed from Whisper alone, and the ones with no speech from frames of the footage. The `mm:ss` is the caption start time (or the Whisper segment start), so a link lands at most a few seconds before the moment.
 
 **Links do not autoplay.** The `mm:ss` link opens YouTube's embed player paused at that second (`youtube.com/embed/<id>?start=<s>`; embeds only autoplay when `autoplay=1` is passed). The ▶ link is the normal watch page at the same time, which does autoplay. Unlisted videos open with either link; private ones need the channel login.
 
 Phases: *before* (utilities, stack, furnace prep, loading), *during* (pump-down/gas wash, heating, atomizing), *after* (shutdown, cooldown, venting, powder collection), *cleaning/maintenance*, *theory*, *troubleshooting*, *installation*, *chatter*.
 
-Transcript source per video is listed in the heading: **whisper** = faster-whisper large-v3-turbo on the runner, **auto** = YouTube auto-captions. Whisper is more accurate; the auto-caption rows will be re-checked as Whisper transcripts land.
+Transcript source per video is listed in the heading: **auto + whisper** = rows from YouTube auto-captions (caption start times), re-checked line by line against the faster-whisper large-v3-turbo transcript, with disagreements noted in the row; **whisper** = no YouTube captions, rows from Whisper alone; **keyframes** = no usable speech (Whisper returns only hallucinated filler), rows read from frames of the footage (see [`keyframes/`](keyframes/README.md)) and marked (keyframe); **auto** = auto-captions only, not yet re-checked.
 
 ## Video 1 of atomizer training
-`wRc8p2_FnJo` · 2026-09-29 · 47:20 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=0) · [▶ watch](https://www.youtube.com/watch?v=wRc8p2_FnJo)
+`wRc8p2_FnJo` · 2026-09-29 · 47:20 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=0) · [▶ watch](https://www.youtube.com/watch?v=wRc8p2_FnJo)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -101,7 +101,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [47:02](https://www.youtube.com/embed/wRc8p2_FnJo?start=2822) | [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2822s) | before | Tighten nut a little; before fully tightening make sure the hole ends up where it can be reached |
 
 ## Atomizer Training Video 2
-`naePD8o9_Gk` · 2026-09-29 · 56:35 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
+`naePD8o9_Gk` · 2026-09-29 · 56:35 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/naePD8o9_Gk?start=0) · [▶ watch](https://www.youtube.com/watch?v=naePD8o9_Gk)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -167,7 +167,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [55:52](https://www.youtube.com/embed/naePD8o9_Gk?start=3352) | [▶](https://www.youtube.com/watch?v=naePD8o9_Gk&t=3352s) | chatter | Bartosz left the lab partly to avoid PPE; recently atomized Nitinol |
 
 ## Atomizer Training Video 3
-`txH397FGTAU` · 2026-09-29 · 51:05 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/txH397FGTAU?start=0) · [▶ watch](https://www.youtube.com/watch?v=txH397FGTAU)
+`txH397FGTAU` · 2026-09-29 · 51:05 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/txH397FGTAU?start=0) · [▶ watch](https://www.youtube.com/watch?v=txH397FGTAU)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -231,41 +231,41 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [50:46](https://www.youtube.com/embed/txH397FGTAU?start=3046) | [▶](https://www.youtube.com/watch?v=txH397FGTAU&t=3046s) | after | Powder can stay in the chamber overnight; it does not stick more; "it will have more time to pass[ivate] slowly" (both transcripts hear "pass … slowly"; slow passivation is the likely sense); trainer does this quite often. |
 
 ## Atomizer Training Video 4
-`1F9_4ccwhss` · 2026-09-29 · 10:08 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/1F9_4ccwhss?start=0) · [▶ watch](https://www.youtube.com/watch?v=1F9_4ccwhss)
+`1F9_4ccwhss` · 2026-09-29 · 10:08 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/1F9_4ccwhss?start=0) · [▶ watch](https://www.youtube.com/watch?v=1F9_4ccwhss)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
-| [00:00](https://www.youtube.com/embed/1F9_4ccwhss?start=0) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=0s) | before | Side insulation being placed; Gage invited to feel how tight the assembly gets. |
+| [00:00](https://www.youtube.com/embed/1F9_4ccwhss?start=0) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=0s) | before | Side insulation being placed (Whisper "nice insulation"); Gage invited to feel how tight the assembly gets. |
 | [00:31](https://www.youtube.com/embed/1F9_4ccwhss?start=31) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=31s) | before | Hole in insulation must line up with the thermocouple port; thermocouple is flexible, can bend, must get close enough. |
 | [00:53](https://www.youtube.com/embed/1F9_4ccwhss?start=53) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=53s) | before | "Maybe a little bit too far" — thermocouple position corrected; then side insulation (01:01). |
-| [01:08](https://www.youtube.com/embed/1F9_4ccwhss?start=68) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=68s) | parts | Insulation is a silica and alumina mix; dusty — vacuum the furnace area, especially if something falls in the crucible. |
-| [01:41](https://www.youtube.com/embed/1F9_4ccwhss?start=101) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=101s) | parts | "If it falls, it will immediately break"; get it into the hole first (graphite sealing rod, inferred). |
+| [01:08](https://www.youtube.com/embed/1F9_4ccwhss?start=68) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=68s) | parts | Insulation is a silica and alumina mix (both transcripts); dusty — vacuum the furnace area, especially if something falls in the crucible. |
+| [01:41](https://www.youtube.com/embed/1F9_4ccwhss?start=101) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=101s) | parts | "If it falls, it will immediately break"; get it into the hole first (graphite sealing rod, inferred; captions only, Whisper has nothing between 01:20 and 01:57). |
 | [01:52](https://www.youtube.com/embed/1F9_4ccwhss?start=112) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=112s) | before | Sealing rod tip must be clean and undamaged: "if it's damaged here, it will just not seal". |
 | [02:10](https://www.youtube.com/embed/1F9_4ccwhss?start=130) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=130s) | before | Wipe or vacuum residual dust; "ready to go". |
-| [02:18](https://www.youtube.com/embed/1F9_4ccwhss?start=138) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=138s) | before | Remove the "sealing block"; now add the material. |
+| [02:18](https://www.youtube.com/embed/1F9_4ccwhss?start=138) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=138s) | before | Move the sealing rod down, then add the material (Whisper: "we move the sealing rod down. Now we can add the material. How did you move it down?"; the word-level clip re-run: "we move the sealing rod to cover … How did you move it down? That was with the sealing rod b[utton]"; the captions' "remove the sealing block" was a mis-hearing). |
 | [02:39](https://www.youtube.com/embed/1F9_4ccwhss?start=159) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=159s) | theory | Sterling: copper coils, eddy currents; trainer: this is indirect — energy goes into the graphite, graphite heats the charge. |
-| [03:35](https://www.youtube.com/embed/1F9_4ccwhss?start=215) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=215s) | theory | Not designed for iron/nickel: melting point too high; plates would not survive; those metals react with graphite. |
-| [03:47](https://www.youtube.com/embed/1F9_4ccwhss?start=227) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=227s) | parameter | Generator has enough energy to go up to 1600. |
-| [04:05](https://www.youtube.com/embed/1F9_4ccwhss?start=245) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=245s) | theory | Industrial gas atomizers use ceramic crucibles, slow heating, large ceramic nozzles; this unit is built for precious metals. |
+| [03:35](https://www.youtube.com/embed/1F9_4ccwhss?start=215) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=215s) | theory | Not designed for iron/nickel: melting point too high — "one thing is the 1300 [limiting] point" (heard "lighting" by the batched Whisper and in three of five word-level re-runs; the captions drop it), i.e. the 1300 °C working limit; plates would not survive; those metals react with graphite. |
+| [03:47](https://www.youtube.com/embed/1F9_4ccwhss?start=227) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=227s) | parameter | "It is possible to go higher": the generator has enough energy to go up to 1600 (°C, said against the 1300 limit). |
+| [04:05](https://www.youtube.com/embed/1F9_4ccwhss?start=245) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=245s) | theory | Industrial gas atomizers use ceramic crucibles, slow heating, large ceramic nozzles; this unit was initially made from granulating equipment, mostly for precious metals (Whisper "granulating"; captions "regulating"). |
 | [04:32](https://www.youtube.com/embed/1F9_4ccwhss?start=272) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=272s) | before | "We always need to clean the feedstock. It's really important." |
 | [04:37](https://www.youtube.com/embed/1F9_4ccwhss?start=277) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=277s) | before | Rods stand above the furnace; they go down as they melt. |
 | [04:43](https://www.youtube.com/embed/1F9_4ccwhss?start=283) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=283s) | lesson | Long rods heat at the bottom and cool at the top: raise temperature first, then decrease; copper sticking out is very hard to melt. |
 | [05:08](https://www.youtube.com/embed/1F9_4ccwhss?start=308) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=308s) | theory | The more compressed the material at the bottom, the faster it melts. |
 | [05:17](https://www.youtube.com/embed/1F9_4ccwhss?start=317) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=317s) | before | Close and secure the furnace lid; if it hisses, loosen and adjust the latch to tighten. |
 | [05:41](https://www.youtube.com/embed/1F9_4ccwhss?start=341) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=341s) | cleaning | Next: the chamber. Cleaning uses brushes, paper and alcohol only (06:01). |
-| [06:09](https://www.youtube.com/embed/1F9_4ccwhss?start=369) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=369s) | cleaning | Particles stuck to the wall (with "thinner"/tin-like materials): stainless-steel scraper; cooled particles stick, they do not melt in. |
+| [06:09](https://www.youtube.com/embed/1F9_4ccwhss?start=369) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=369s) | cleaning | Particles stuck to the wall, which happens with tin or similar materials (Whisper "tin"; captions "thinner"): detach them with a stainless-steel scraper; cooled particles stick, they do not melt in. |
 | [06:34](https://www.youtube.com/embed/1F9_4ccwhss?start=394) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=394s) | cleaning | Copper or softer scraper is fine; a plastic one may get damaged. |
 | [06:51](https://www.youtube.com/embed/1F9_4ccwhss?start=411) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=411s) | cleaning | Clean the sealing surface and the seal; wipe the whole chamber; vacuum first (07:12). |
 | [07:24](https://www.youtube.com/embed/1F9_4ccwhss?start=444) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=444s) | safety | Trainee: full-face respirators go on for post-run cleaning. |
-| [07:33](https://www.youtube.com/embed/1F9_4ccwhss?start=453) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=453s) | theory | Atomization runs also help clean the equipment (heat removes residue; garbled). |
+| [07:33](https://www.youtube.com/embed/1F9_4ccwhss?start=453) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=453s) | theory | Atomization runs also help clean the equipment: the heat applied removes moisture leftovers (Whisper; captions "material over us"). |
 | [07:49](https://www.youtube.com/embed/1F9_4ccwhss?start=469) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=469s) | parts | View port comes out with a hook wrench. |
 | [08:08](https://www.youtube.com/embed/1F9_4ccwhss?start=488) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=488s) | cleaning | The cone below swivels out; take it down to remove all powder; clean and vacuum its seal from below (08:38). |
 | [08:47](https://www.youtube.com/embed/1F9_4ccwhss?start=527) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=527s) | cleaning | Brush in a circle so powder falls into the container; do this before removing the container (09:17). |
-| [09:30](https://www.youtube.com/embed/1F9_4ccwhss?start=570) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=570s) | safety | "You can't operate until you get an oxygen sensor"; trainer: argon flow is small, but agrees one should be fitted. |
-| [09:52](https://www.youtube.com/embed/1F9_4ccwhss?start=592) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=592s) | parts | Last item: the powder container, made in-house; a few commercial powders shown. |
+| [09:30](https://www.youtube.com/embed/1F9_4ccwhss?start=570) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=570s) | safety | Room oxygen sensor: a trainee jokes that "the safety guy" would say "you can't operate until you get an oxygen sensor" (Whisper); trainer: the argon flow is not big enough to cause a danger, but "I still agree that it should be" fitted. |
+| [09:52](https://www.youtube.com/embed/1F9_4ccwhss?start=592) | [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=592s) | parts | Last item: the powder container, made in-house with "a few commercial parts" (Whisper; captions "a few commercial powders here"). |
 
 ## Atomizer Training Video 5
-`58wJ_Khwgyk` · 2026-09-29 · 1:18:49 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
+`58wJ_Khwgyk` · 2026-09-29 · 1:18:49 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=0) · [▶ watch](https://www.youtube.com/watch?v=58wJ_Khwgyk)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -383,7 +383,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [77:48](https://www.youtube.com/embed/58wJ_Khwgyk?start=4668) | [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=4668s) | cleaning | Same material next, so open and brush only; gloves, respirator. |
 
 ## Atomizer Training Video 6
-`tfb4fsVNIFI` · 2026-09-29 · 0:49 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
+`tfb4fsVNIFI` · 2026-09-29 · 0:49 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -392,7 +392,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [00:37](https://www.youtube.com/embed/tfb4fsVNIFI?start=37) | [▶](https://www.youtube.com/watch?v=tfb4fsVNIFI&t=37s) | cleaning | Best way to clean after an atomization: open it fully by removing the four nuts (00:42, 00:45). |
 
 ## Atomizer training
-`Pk0K5sBz-sQ` · 2026-09-29 · 9:32 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=Pk0K5sBz-sQ)
+`Pk0K5sBz-sQ` · 2026-09-29 · 9:32 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=Pk0K5sBz-sQ)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -410,7 +410,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [09:18](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=558) | [▶](https://www.youtube.com/watch?v=Pk0K5sBz-sQ&t=558s) | after | Leave it to cool; then remove slag, check nozzle, put new material in |
 
 ## Atomizer Training Video 7
-`FDRTt68Vfvo` · 2026-09-30 · 52:48 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
+`FDRTt68Vfvo` · 2026-09-30 · 52:48 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=0) · [▶ watch](https://www.youtube.com/watch?v=FDRTt68Vfvo)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -481,27 +481,27 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [52:23](https://www.youtube.com/embed/FDRTt68Vfvo?start=3143) | [▶](https://www.youtube.com/watch?v=FDRTt68Vfvo&t=3143s) | cleaning | Clean the O-ring seal; "a lot of isopropyl, a lot of paper towels — that's the base for everything"; get a dispenser. |
 
 ## Atomizer Training Video 8
-`HTlUrAr5HVU` · 2026-09-30 · 11:52 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=0) · [▶ watch](https://www.youtube.com/watch?v=HTlUrAr5HVU)
+`HTlUrAr5HVU` · 2026-09-30 · 11:52 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=0) · [▶ watch](https://www.youtube.com/watch?v=HTlUrAr5HVU)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
-| [00:07](https://www.youtube.com/embed/HTlUrAr5HVU?start=7) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=7s) | troubleshooting | Something "is getting off... this usually doesn't happen" (object not identifiable from audio). |
-| [00:37](https://www.youtube.com/embed/HTlUrAr5HVU?start=37) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=37s) | before/loading | Gage asked the shop for a ~0.5 mm drill bit to make a nozzle; "that is so tiny". |
-| [00:57](https://www.youtube.com/embed/HTlUrAr5HVU?start=57) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=57s) | part | The machined nozzle is 0.5 mm; this one is 0.7 mm, fresh; all graphite. |
+| [00:07](https://www.youtube.com/embed/HTlUrAr5HVU?start=7) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=7s) | troubleshooting | Something "is getting off... this usually doesn't happen" (object not identifiable from audio; Whisper hears "it's good enough"). |
+| [00:37](https://www.youtube.com/embed/HTlUrAr5HVU?start=37) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=37s) | before/loading | Gage asked Kevin in the shop for a drill bit "0.05 millimeters" (Whisper; captions "005 mm"), which had to be looked up in inches: "that is so tiny" — 0.5 mm is meant (inferred, see Unclear). |
+| [00:57](https://www.youtube.com/embed/HTlUrAr5HVU?start=57) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=57s) | part | The machined nozzle: "It's 0.05" (Whisper; captions "05"), read as 0.5 mm; this one is 0.7 mm, fresh; graphite. |
 | [01:28](https://www.youtube.com/embed/HTlUrAr5HVU?start=88) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=88s) | before/loading | Bartosz: screw the nozzle into the crucible first, then put the holder/nut on — easier. |
 | [01:41](https://www.youtube.com/embed/HTlUrAr5HVU?start=101) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=101s) | lesson | Producer's order (nozzle holder with nut first) is worse: you must grab the thread or use an awkward special tool. |
 | [02:26](https://www.youtube.com/embed/HTlUrAr5HVU?start=146) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=146s) | before/loading | Very little thread engagement — "you just barely have to get it on". |
-| [02:52](https://www.youtube.com/embed/HTlUrAr5HVU?start=172) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=172s) | before/loading | Orient the hole on the part "about here", angled, so the other part can travel from here to there. |
+| [02:52](https://www.youtube.com/embed/HTlUrAr5HVU?start=172) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=172s) | before/loading | Orient the hole on the part "about here", angled, so the other part can travel from here to there (Whisper "See that holder?" where the captions have "See that hole there?"). |
 | [03:37](https://www.youtube.com/embed/HTlUrAr5HVU?start=217) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=217s) | mistake | Didn't centre it in the hole enough, so the part wasn't fitting. |
-| [03:45](https://www.youtube.com/embed/HTlUrAr5HVU?start=225) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=225s) | part | Aluminium–silicon(-ate) insulation; "it just turns into powder"; standard for furnaces. |
+| [03:45](https://www.youtube.com/embed/HTlUrAr5HVU?start=225) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=225s) | part | Insulation: "alumina silicon is what you call it" (Whisper; captions "aluminum silicon") — the silica–alumina mix of Video 4 01:08; "it just turns into powder"; standard for furnaces. |
 | [04:09](https://www.youtube.com/embed/HTlUrAr5HVU?start=249) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=249s) | lesson | It breaks if dropped; already chipped at the top; many fragile consumables. |
 | [04:23](https://www.youtube.com/embed/HTlUrAr5HVU?start=263) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=263s) | before/loading | Insulation goes in first; the thermocouple sits there and measures temperature. |
 | [04:44](https://www.youtube.com/embed/HTlUrAr5HVU?start=284) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=284s) | cleaning | Clean the sealing rod; centre piece is graphite and really brittle; aluminium didn't stick much. |
-| [05:29](https://www.youtube.com/embed/HTlUrAr5HVU?start=329) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=329s) | cleaning | Need scrapers/specific tools; for now squeeze and rub across the aluminium. |
+| [05:29](https://www.youtube.com/embed/HTlUrAr5HVU?start=329) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=329s) | cleaning | Need scrapers/specific tools — "even like a flathead screw[driver] … or a file" (both transcripts); for now squeeze and rub across the aluminium (06:08). |
 | [06:13](https://www.youtube.com/embed/HTlUrAr5HVU?start=373) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=373s) | lesson | Damaging the rod shaft isn't a big deal, but the tip must be good, or you need a new tip/shaft. |
 | [06:25](https://www.youtube.com/embed/HTlUrAr5HVU?start=385) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=385s) | part | This (rod) is what goes into the chamber (furnace). |
-| [07:30](https://www.youtube.com/embed/HTlUrAr5HVU?start=450) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=450s) | lesson | Contamination: keep "our aluminium one" and "our copper one" sets; doesn't need to be 100%. |
-| [08:43](https://www.youtube.com/embed/HTlUrAr5HVU?start=523) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=523s) | before/loading | Close the furnace. |
+| [07:30](https://www.youtube.com/embed/HTlUrAr5HVU?start=450) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=450s) | lesson | Contamination: keep "our aluminium one" and "our copper one" sets; doesn't need to be 100% (captions "you don't have to get like 100%" and the word-level clip re-run "you don't have to be like 100% of it"; the batched Whisper's "you'll have to" is the outlier). |
+| [08:43](https://www.youtube.com/embed/HTlUrAr5HVU?start=523) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=523s) | before/loading | Part seated ("So that's down like that", Whisper); close the furnace. |
 | [09:09](https://www.youtube.com/embed/HTlUrAr5HVU?start=549) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=549s) | before/loading | How tight? Enough to get a seal — if not tight enough, air gets in. |
 | [09:53](https://www.youtube.com/embed/HTlUrAr5HVU?start=593) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=593s) | idea | Laser pointer through the pour path to show where metal will land on the plate before heating; wastes less. |
 | [10:59](https://www.youtube.com/embed/HTlUrAr5HVU?start=659) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=659s) | before/loading | Ready; waiting for material; clean the lid (smaller lid is easier). |
@@ -509,7 +509,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [11:41](https://www.youtube.com/embed/HTlUrAr5HVU?start=701) | [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=701s) | before/loading | Last part before loading more material. |
 
 ## Atomizer Training Video 9
-`9kn-HhXCr1o` · 2026-09-30 · 50:08 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/9kn-HhXCr1o?start=0) · [▶ watch](https://www.youtube.com/watch?v=9kn-HhXCr1o)
+`9kn-HhXCr1o` · 2026-09-30 · 50:08 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/9kn-HhXCr1o?start=0) · [▶ watch](https://www.youtube.com/watch?v=9kn-HhXCr1o)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -599,9 +599,23 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [49:25](https://www.youtube.com/embed/9kn-HhXCr1o?start=2965) | [▶](https://www.youtube.com/watch?v=9kn-HhXCr1o&t=2965s) | admin | Support via WhatsApp with photos (captions); everyone added to the database system; Bartosz travelling until year end, in the office mornings/evenings. |
 
 ## The expert cleaning the atomizer, pov
-`u-KjR5TENN4` · 2026-09-30 · 18:45 · public · transcript: auto · [open paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶ watch](https://www.youtube.com/watch?v=u-KjR5TENN4)
+`u-KjR5TENN4` · 2026-09-30 · 18:45 · public · transcript: keyframes · [open paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶ watch](https://www.youtube.com/watch?v=u-KjR5TENN4)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/u-KjR5TENN4?start=0) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=0s) | cleaning | (keyframe) Wide view of the rePowder before the clean: blue housing, the chamber with its round view port, the HMI on its arm, a grey bin. No speech anywhere in the video; the Whisper text is hallucination (see Unclear). |
+| [00:30](https://www.youtube.com/embed/u-KjR5TENN4?start=30) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=30s) | cleaning | (keyframe) POV under the machine: orange gloves holding a printed sheet by a black star knob; the sheet is consulted again at 01:00–01:30 and 04:00 (not readable at 360p). |
+| [03:00](https://www.youtube.com/embed/u-KjR5TENN4?start=180) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=180s) | cleaning | (keyframe) Both hands up under the chamber, working on a stainless flange with a tool. |
+| [05:00](https://www.youtube.com/embed/u-KjR5TENN4?start=300) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=300s) | cleaning | (keyframe) A long hand tool inside the stainless chamber and cone; hands inside it again at 06:00, wiping (inferred). |
+| [07:00](https://www.youtube.com/embed/u-KjR5TENN4?start=420) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=420s) | cleaning | (keyframe) View across the machine front: HMI on its arm, the grey bin. |
+| [07:30](https://www.youtube.com/embed/u-KjR5TENN4?start=450) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=450s) | cleaning | (keyframe) Holding a round stainless dome-shaped part over the container stand (the splash plate or the cone, unidentified). |
+| [09:00](https://www.youtube.com/embed/u-KjR5TENN4?start=540) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=540s) | cleaning | (keyframe) At a bench laid out with wrenches, pliers, polished stainless parts, paper towels and a wash bottle. |
+| [10:30](https://www.youtube.com/embed/u-KjR5TENN4?start=630) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=630s) | cleaning | (keyframe) Close-up of the view-port window (cleaning it, inferred from Video 1 44:11). |
+| [11:00](https://www.youtube.com/embed/u-KjR5TENN4?start=660) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=660s) | cleaning | (keyframe) Holding a round black spoked part over boxes (unidentified: a lid or hand-wheel). |
+| [13:30](https://www.youtube.com/embed/u-KjR5TENN4?start=810) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=810s) | cleaning | (keyframe) A blue-capped wash bottle at the chamber door's opening and seal (IPA on the seal, inferred from Video 4 06:51). |
+| [15:00](https://www.youtube.com/embed/u-KjR5TENN4?start=900) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=900s) | cleaning | (keyframe) Used paper into the bin; argon cylinders chained to the wall behind. |
+| [15:30](https://www.youtube.com/embed/u-KjR5TENN4?start=930) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=930s) | cleaning | (keyframe) Hands with paper at the top of the stainless powder container under the chamber. |
+| [17:30](https://www.youtube.com/embed/u-KjR5TENN4?start=1050) | [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=1050s) | cleaning | (keyframe) In front of the HMI with a long-handled tool; pliers on the shelf. |
 
 ## Cartridge cleaning
 `f8KL31PN8bA` · 2026-09-30 · 18:09 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶ watch](https://www.youtube.com/watch?v=f8KL31PN8bA)
@@ -636,7 +650,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [17:54](https://www.youtube.com/embed/f8KL31PN8bA?start=1074) | [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=1074s) | chatter | "Oh, did I leave it? Oh, no. I thought I left it, didn't I?" — looking for a misplaced item. |
 
 ## Atomizer training (sterling's phone)
-`2wMgeI-E7zw` · 2026-09-30 · 15:58 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=0) · [▶ watch](https://www.youtube.com/watch?v=2wMgeI-E7zw)
+`2wMgeI-E7zw` · 2026-09-30 · 15:58 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=0) · [▶ watch](https://www.youtube.com/watch?v=2wMgeI-E7zw)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -646,36 +660,36 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [01:04](https://www.youtube.com/embed/2wMgeI-E7zw?start=64) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=64s) | troubleshooting | Open the facility valve only a very little; cold water tripped "water too cold" — threshold 10 °C, reading 9.3, lowered to 7 °C. |
 | [01:28](https://www.youtube.com/embed/2wMgeI-E7zw?start=88) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=88s) | before/setup | Keep the valve barely open, watch the exchanger water temperature rise under load, adjust. |
 | [01:45](https://www.youtube.com/embed/2wMgeI-E7zw?start=105) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=105s) | theory | Heat exchanger: coolant tank with level sensor; stops on low level or high temperature; main switch starts inverter and pump; pressure gauge. |
-| [02:29](https://www.youtube.com/embed/2wMgeI-E7zw?start=149) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=149s) | before/setup | "Cooling water too low" error on the main screen clears after a short delay; check in service mode (~10 flowing). |
+| [02:29](https://www.youtube.com/embed/2wMgeI-E7zw?start=149) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=149s) | before/setup | "Cooling water too low" error on the main screen clears after a short delay; service mode shows the flow: about 3 L/min, and it "just needs two" (Whisper "three thirds per minute flow rate. It just needs two"; the word-level clip re-run "freezers per minute flow rate, it just needs two"; captions "frame there's 10 minutes flowing" — all three fit "three liters per minute"). |
 | [02:55](https://www.youtube.com/embed/2wMgeI-E7zw?start=175) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=175s) | lesson | Exchanger panel is loud; the side panel can come off to add insulation inside. |
 | [03:27](https://www.youtube.com/embed/2wMgeI-E7zw?start=207) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=207s) | theory | Main switch; one panel controls the furnace (pressure and temperature); the other controls the ultrasonic system and chamber. |
 | [03:45](https://www.youtube.com/embed/2wMgeI-E7zw?start=225) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=225s) | theory | Software has user accounts (account manager, simple default passwords); one program tests vibrations, another runs the system. |
 | [04:29](https://www.youtube.com/embed/2wMgeI-E7zw?start=269) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=269s) | admin | Mixed schedules; mornings cover more; keep notes on consumables and modifications. |
 | [04:53](https://www.youtube.com/embed/2wMgeI-E7zw?start=293) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=293s) | future | For Al–Mg alloys with more magnesium there is an upgrade: viewport with argon purge to keep visibility. |
-| [05:21](https://www.youtube.com/embed/2wMgeI-E7zw?start=321) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=321s) | admin | Order was priced with a chiller rather than a heat exchanger → credit for extra consumables/parts; lots of crucibles. |
+| [05:21](https://www.youtube.com/embed/2wMgeI-E7zw?start=321) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=321s) | admin | Order was priced with a chiller rather than a heat exchanger → "a few K of credit" (Whisper; captions "a few kind of credit") for extra consumables/parts; lots of crucibles. |
 | [06:02](https://www.youtube.com/embed/2wMgeI-E7zw?start=362) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=362s) | before/loading | Bartosz brought aluminium 4047 rods for basic training; will show how to control particle size. |
 | [06:16](https://www.youtube.com/embed/2wMgeI-E7zw?start=376) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=376s) | theory | Changing parts drastically changes the PSD; not every combination suits every alloy; tricks for Al large vs small. |
 | [06:49](https://www.youtube.com/embed/2wMgeI-E7zw?start=409) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=409s) | theory | Lower density → larger particles; you cannot resist that. |
 | [06:57](https://www.youtube.com/embed/2wMgeI-E7zw?start=417) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=417s) | troubleshooting | Water on the floor is from setup; unit can't be moved back — hoses too stiff; longer hoses/angle fitting. |
-| [07:29](https://www.youtube.com/embed/2wMgeI-E7zw?start=449) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=449s) | part | The transducer is the core; compressed-air cooling connects here; thread mismatch solved with Teflon tape/hardware store fitting. |
-| [08:03](https://www.youtube.com/embed/2wMgeI-E7zw?start=483) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=483s) | theory | Maximise compressed-air flow to keep the transducer cold; plasma runs for hours, atomizing only a couple of minutes. |
+| [07:29](https://www.youtube.com/embed/2wMgeI-E7zw?start=449) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=449s) | part | The transducer is the core; compressed-air cooling connects here: the one fitting ("key") supplied went on the argon line, Bartosz has another in his bag or will get one at Ace Hardware; the threads differ, Teflon tape makes them fit (07:56). |
+| [08:03](https://www.youtube.com/embed/2wMgeI-E7zw?start=483) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=483s) | theory | Maximise compressed-air flow to keep the transducer cold; plasma runs for hours, here the ultrasonics run "just 10 minutes or 5 minutes" (word-level clip re-run; batched Whisper "just 10 minutes"; captions "a couple of minutes"), hence the trainee's "one 10-minute run" (09:02). |
 | [08:28](https://www.youtube.com/embed/2wMgeI-E7zw?start=508) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=508s) | safety | Don't drop the transducer; keep it away from moisture. |
 | [08:41](https://www.youtube.com/embed/2wMgeI-E7zw?start=521) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=521s) | before/setup | Stack: one rod (sonotrode), then the plate, then the final rod that holds the plate in position. |
 | [08:51](https://www.youtube.com/embed/2wMgeI-E7zw?start=531) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=531s) | lesson | Plate is a consumable: one process or a few; if it breaks, open the chamber and change it; a cracked plate may not run twice. |
 | [09:17](https://www.youtube.com/embed/2wMgeI-E7zw?start=557) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=557s) | safety | If a plate breaks, the ceramic crucible under it catches molten metal. |
 | [09:33](https://www.youtube.com/embed/2wMgeI-E7zw?start=573) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=573s) | cost | Plates cost $10–12 up to $70–80 (tungsten plasma-coated carbon fibre from Korea). |
 | [10:07](https://www.youtube.com/embed/2wMgeI-E7zw?start=607) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=607s) | theory | Aiming for smaller particles means lower amplitude, so plates last longer. |
-| [10:34](https://www.youtube.com/embed/2wMgeI-E7zw?start=634) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=634s) | lesson | Coat crucibles with boron-nitride spray for reactive materials; yttria also possible; BN most flexible; US suppliers exist. |
+| [10:34](https://www.youtube.com/embed/2wMgeI-E7zw?start=634) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=634s) | lesson | Coat crucibles with boron-nitride spray for reactive materials; yttria also possible; BN most flexible; US suppliers exist, e.g. a coatings company in Oak Ridge (11:08, both transcripts). |
 | [11:37](https://www.youtube.com/embed/2wMgeI-E7zw?start=697) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=697s) | cleaning | Switching alloys: after a run peel the slag off the crucible bottom; micro leftovers on walls don't matter. |
 | [12:09](https://www.youtube.com/embed/2wMgeI-E7zw?start=729) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=729s) | cleaning | Sealing rods: peel slag, polish; as long as the tip is smooth it works. |
 | [12:25](https://www.youtube.com/embed/2wMgeI-E7zw?start=745) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=745s) | part | Extended pack extras: splash cover for spitting materials; denser high-temperature insulation for purity. |
-| [13:02](https://www.youtube.com/embed/2wMgeI-E7zw?start=782) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=782s) | safety | Two full masks, ear protection (ultrasonic), filters; the induction coil is also noisy. |
+| [13:02](https://www.youtube.com/embed/2wMgeI-E7zw?start=782) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=782s) | safety | Two full masks, ear protection (ultrasonic), filters; the induction coil is also noisy; people outside the lab should not be bothered (13:29). |
 | [13:48](https://www.youtube.com/embed/2wMgeI-E7zw?start=828) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=828s) | before/loading | BYU test rods: bored hole, powder loaded, capped — to try Wednesday; arc melting as fallback. |
 | [14:27](https://www.youtube.com/embed/2wMgeI-E7zw?start=867) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=867s) | lesson | Any consolidation helps; pure powder has a higher chance of just getting lost. |
 | [14:53](https://www.youtube.com/embed/2wMgeI-E7zw?start=893) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=893s) | admin | 8:30 a.m. start tomorrow; use the vacuum during runs; parking (to end). |
 
 ## nzyjn0 atomization AlSi10Mg-Al6063
-`TFpU4uqVF9c` · 2026-09-30 · 20:56 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
+`TFpU4uqVF9c` · 2026-09-30 · 20:56 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -687,7 +701,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [02:58](https://www.youtube.com/embed/TFpU4uqVF9c?start=178) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=178s) | pump-down | "And again" — next wash cycle. |
 | [04:03](https://www.youtube.com/embed/TFpU4uqVF9c?start=243) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=243s) | heating | "After filling the chamber with protective gas again, let's go to higher temperature." |
 | [04:53](https://www.youtube.com/embed/TFpU4uqVF9c?start=293) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=293s) | pump-down | "And now, again" — another wash at the higher temperature. |
-| [09:48](https://www.youtube.com/embed/TFpU4uqVF9c?start=588) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=588s) | pump-down | "10. Final one." — last wash cycle (the "10" may be a cycle count; unclear). |
+| [09:48](https://www.youtube.com/embed/TFpU4uqVF9c?start=588) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=588s) | pump-down | "Okay, final one." — last wash cycle (clip re-run of 09:35–10:15; the captions' "10" was "Okay", and the batched Whisper has nothing there). |
 | [10:06](https://www.youtube.com/embed/TFpU4uqVF9c?start=606) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=606s) | heating | "Oxygen level is low. Everything stable. Now we can raise the temperature." |
 | [10:26](https://www.youtube.com/embed/TFpU4uqVF9c?start=626) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=626s) | heating | "Start with slightly higher temperature to help homogenize the material" (mixed powder/cup charge). |
 | [14:51](https://www.youtube.com/embed/TFpU4uqVF9c?start=891) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=891s) | heating | "Mostly homogenized, but I still see something on one side, some leftover. Let's give it a moment." |
@@ -695,24 +709,42 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [16:24](https://www.youtube.com/embed/TFpU4uqVF9c?start=984) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=984s) | heating | Raises temperature "just a little bit more" to help. |
 | [16:35](https://www.youtube.com/embed/TFpU4uqVF9c?start=995) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=995s) | heating | "Seems much better. But there is still something left." |
 | [17:17](https://www.youtube.com/embed/TFpU4uqVF9c?start=1037) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1037s) | heating | Decision: "try to pour it and see what will stay"; lower the temperature "to around 800°". |
-| [19:14](https://www.youtube.com/embed/TFpU4uqVF9c?start=1154) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1154s) | atomizing | Uses "parameters of low draining pressure that I have used yesterday"; controls mostly via pressure control. |
+| [19:14](https://www.youtube.com/embed/TFpU4uqVF9c?start=1154) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1154s) | atomizing | Uses "the parameters of low graining pressure that I have used yesterday" (Whisper "graining", captions "draining": the pour pressure); controls mostly via pressure control. |
 | [19:27](https://www.youtube.com/embed/TFpU4uqVF9c?start=1167) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1167s) | atomizing | "Just barely anything. There's also little material. That's why manual control would be better." |
 | [19:40](https://www.youtube.com/embed/TFpU4uqVF9c?start=1180) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1180s) | atomizing | "Vibrations on" (ultrasonic generator started). |
 | [20:28](https://www.youtube.com/embed/TFpU4uqVF9c?start=1228) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1228s) | after | "It was fast. It was everything." — pour complete in under a minute. |
-| [20:36](https://www.youtube.com/embed/TFpU4uqVF9c?start=1236) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1236s) | after | "Melting pressure signal down and generator stop." |
+| [20:36](https://www.youtube.com/embed/TFpU4uqVF9c?start=1236) | [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1236s) | after | "So melting pressure, sealing rod down. Generator stopped." (Whisper; the captions' "signal down" is the sealing rod). |
 
 ## nzyjn0 AlSi10Mg-Al6063 dosing session
-`prj_xgeuQtM` · 2026-09-29 · 1:08:45 · public · transcript: auto · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
+`prj_xgeuQtM` · 2026-09-29 · 1:08:45 · public · transcript: keyframes · [open paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶ watch](https://www.youtube.com/watch?v=prj_xgeuQtM)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/prj_xgeuQtM?start=0) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=0s) | dosing | (keyframe) Doser bench: blue 3D-printed doser with a tube mounted horizontally, balance under a glass draft shield. "Let's see how this looks" (00:17) is the only clear line in the video. |
+| [07:00](https://www.youtube.com/embed/prj_xgeuQtM?start=420) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=420s) | dosing | (keyframe) Paper and blue tools laid out at the back of the bench; a tube stands upright on it from 08:00. |
+| [11:00](https://www.youtube.com/embed/prj_xgeuQtM?start=660) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=660s) | dosing | (keyframe) Gloved hands at the back work on the upright tube (filling it, inferred), a white bottle beside it at 12:00–13:00 (the powder, inferred). |
+| [14:00](https://www.youtube.com/embed/prj_xgeuQtM?start=840) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=840s) | dosing | (keyframe) A gloved arm reaches across to the doser; at 15:00 a red-topped tube stands in the draft shield on the balance, and hands are at the doser again at 16:00. |
+| [24:00](https://www.youtube.com/embed/prj_xgeuQtM?start=1440) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=1440s) | dosing | (keyframe) A red-marked item in the draft shield; from here to 52:00 the frames do not change (dosing or waiting; the frames cannot tell). |
+| [53:00](https://www.youtube.com/embed/prj_xgeuQtM?start=3180) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=3180s) | after | (keyframe) Hands back at the doser; a red-marked part set down on the paper at 54:00. |
+| [55:00](https://www.youtube.com/embed/prj_xgeuQtM?start=3300) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=3300s) | after | (keyframe) The glass draft shield lifted off and set down in front; the balance pan bare. |
+| [58:00](https://www.youtube.com/embed/prj_xgeuQtM?start=3480) | [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=3480s) | after | (keyframe) An arm at the doser once more; the bench is still from there to the end. |
 
 ## Dosing Al 4047 powder
-`QXSj0j1OqL8` · 2026-10-01 · 22:15 · public · transcript: auto · [open paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶ watch](https://www.youtube.com/watch?v=QXSj0j1OqL8)
+`QXSj0j1OqL8` · 2026-10-01 · 22:15 · public · transcript: keyframes · [open paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶ watch](https://www.youtube.com/watch?v=QXSj0j1OqL8)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=0s) | dosing | (keyframe) The camera settles on the doser bench: blue 3D-printed doser, balance with a glass draft shield, paper with blue tools, jars, a wash bottle. No speech in the video; the Whisper text is hallucination (see Unclear). |
+| [02:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=120) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=120s) | dosing | (keyframe) A gloved hand works at the back of the bench; an empty tube stands upright on the paper. |
+| [04:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=240) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=240s) | dosing | (keyframe) Gloved hands place something in the draft shield on the balance. |
+| [12:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=720) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=720s) | dosing | (keyframe) Gloved hands at the back hold a small tube upright, through 15:00 (filling it, inferred). |
+| [17:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=1020) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=1020s) | dosing | (keyframe) A blue-and-white tube (the powder cartridge, inferred) fitted to the doser by hand. |
+| [18:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=1080) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=1080s) | dosing | (keyframe) The cartridge sits in the doser above the balance; the scene stays still to 20:00. |
+| [21:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=1260) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=1260s) | dosing | (keyframe) A gloved hand at the balance; a clear cover lifted at the back. |
+| [22:00](https://www.youtube.com/embed/QXSj0j1OqL8?start=1320) | [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=1320s) | dosing | (keyframe) Last frame: the cartridge in place over the balance. |
 
 ## Atomizer Fri Oct 2 pt1
-`qYyT39D5Yzo` · 2026-10-02 · 21:39 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/qYyT39D5Yzo?start=0) · [▶ watch](https://www.youtube.com/watch?v=qYyT39D5Yzo)
+`qYyT39D5Yzo` · 2026-10-02 · 21:39 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/qYyT39D5Yzo?start=0) · [▶ watch](https://www.youtube.com/watch?v=qYyT39D5Yzo)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -724,13 +756,13 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [02:24](https://www.youtube.com/embed/qYyT39D5Yzo?start=144) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=144s) | prep / lesson | Cannot identify plates; "have to go back and find the video"; "I'm going to mark these so we don't forget." |
 | [03:01](https://www.youtube.com/embed/qYyT39D5Yzo?start=181) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=181s) | chatter | Ronnie arrives: "You ready to do some science?" |
 | [03:36](https://www.youtube.com/embed/qYyT39D5Yzo?start=216) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=216s) | prep | Plate ID: "probably molybdenum-dipped carbon fibre... feel how light they are"; "MO is molybdenum"; others "just the Mo". |
-| [04:16](https://www.youtube.com/embed/qYyT39D5Yzo?start=256) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=256s) | prep | Another plate material "right next to molybdenum on the periodic table... NB" — niobium (inferred). |
+| [04:16](https://www.youtube.com/embed/qYyT39D5Yzo?start=256) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=256s) | prep | Another plate material "right next to molybdenum on the periodic table... NB" — niobium, said as "Molybdenum and Neobium" (Whisper, 04:42). |
 | [05:06](https://www.youtube.com/embed/qYyT39D5Yzo?start=306) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=306s) | prep | "So these ones are just carbon fibre, right? I don't know what makes these different." |
 | [05:20](https://www.youtube.com/embed/qYyT39D5Yzo?start=320) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=320s) | prep | Set includes big carbon fibre, stainless steel, big molybdenum; choose Mo: "gold standard. We get smaller particles." |
-| [05:52](https://www.youtube.com/embed/qYyT39D5Yzo?start=352) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=352s) | tools | Borrowed tools from the "PSC" (project support centre?); must return later; "we need to order some tools." |
+| [05:52](https://www.youtube.com/embed/qYyT39D5Yzo?start=352) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=352s) | tools | Borrowed tools from the PSC — "these are the project support centers, I think" (Whisper; captions "project sports centers"); must return later; "we need to order some tools." |
 | [06:21](https://www.youtube.com/embed/qYyT39D5Yzo?start=381) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=381s) | cleaning | Need something to clean "this thing" after the run. |
 | [06:33](https://www.youtube.com/embed/qYyT39D5Yzo?start=393) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=393s) | cleaning / lesson | Aluminum residue not coming off a part; "didn't know how dingable this is"; "it's tungsten... a tungsten alloy." |
-| [06:49](https://www.youtube.com/embed/qYyT39D5Yzo?start=409) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=409s) | cleaning | "The shape of this is very important" — the deposit "grew from the last run to the one we just did"; remove carefully, maybe with a file. |
+| [06:49](https://www.youtube.com/embed/qYyT39D5Yzo?start=409) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=409s) | cleaning | "The shape of this is very important" — Bartosz "told me it's not a big deal" (Whisper), but the deposit "grew from the last run to the one we just did"; remove carefully, maybe with a file. |
 | [07:24](https://www.youtube.com/embed/qYyT39D5Yzo?start=444) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=444s) | setup | Power on by pressing the button; "that green light just came on." |
 | [07:38](https://www.youtube.com/embed/qYyT39D5Yzo?start=458) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=458s) | loading | Attach "the upper sonotrode... he called it like protruding sono[trode]... the extending sonotrode." |
 | [07:56](https://www.youtube.com/embed/qYyT39D5Yzo?start=476) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=476s) | tools | Small wrenches were returned; toolbox Allen keys are imperial only; need metric 17 and 18. |
@@ -747,14 +779,14 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [17:02](https://www.youtube.com/embed/qYyT39D5Yzo?start=1022) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1022s) | lesson | "But we should, to protect this expensive... transducer." |
 | [17:21](https://www.youtube.com/embed/qYyT39D5Yzo?start=1041) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1041s) | loading | "Shut those three things on there" (chamber latches, inferred). |
 | [17:29](https://www.youtube.com/embed/qYyT39D5Yzo?start=1049) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1049s) | pump-down | Reading SOP: "After purging at 500... press protective gas... that'll allow air into the chamber. Start by pressing purging." |
-| [18:44](https://www.youtube.com/embed/qYyT39D5Yzo?start=1124) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1124s) | loading | "Are you ready for the .5 mm?" — 0.5 mm nozzle (inferred); "we'll just be doing that crucible." |
+| [18:44](https://www.youtube.com/embed/qYyT39D5Yzo?start=1124) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1124s) | loading | "Are you ready for the .5 mm?" (captions; the clip re-run hears "Did you already feel a .5mm?", the batched Whisper drops it) — 0.5 mm nozzle (inferred); "we'll just be doing that crucible." |
 | [20:00](https://www.youtube.com/embed/qYyT39D5Yzo?start=1200) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1200s) | check / lesson | "We need to test this... Can we open this back up?" — chamber reopened for the test. |
 | [20:50](https://www.youtube.com/embed/qYyT39D5Yzo?start=1250) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1250s) | check | Frequency scan: "He said there should only be one valley, one peak. So I think that's good." |
 | [21:09](https://www.youtube.com/embed/qYyT39D5Yzo?start=1269) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1269s) | check | "Power zero watts." |
 | [21:13](https://www.youtube.com/embed/qYyT39D5Yzo?start=1273) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1273s) | record | Takes a video inside the chamber: "Oh yeah, look at that." |
 
 ## Atomizer run Oct 2 part 2
-`of5-LhkX_VQ` · 2026-10-02 · 30:18 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=of5-LhkX_VQ)
+`of5-LhkX_VQ` · 2026-10-02 · 30:18 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=of5-LhkX_VQ)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -769,7 +801,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [04:03](https://www.youtube.com/embed/of5-LhkX_VQ?start=243) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=243s) | heating | "Set 250°." Green light on; "turn on pressure control" (04:16). |
 | [04:23](https://www.youtube.com/embed/of5-LhkX_VQ?start=263) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=263s) | pump-down | "Now we're going to put some vacuum pump and gas wash." |
 | [04:42](https://www.youtube.com/embed/of5-LhkX_VQ?start=282) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=282s) | pump-down | Sequence: vacuum here first, then at 250, then at 500; doing the first one "before we go temperature at all" — chamber at 30°. |
-| [04:59](https://www.youtube.com/embed/of5-LhkX_VQ?start=299) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=299s) | pump-down | "One wash of the whole system at room temperature, then one at 250, then two washes at 500 if needed." |
+| [04:59](https://www.youtube.com/embed/of5-LhkX_VQ?start=299) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=299s) | pump-down | "One wash of the whole system at room temperature, then one at 250, then two washes at 500 if needed" — "it's like four washes total" (Whisper). |
 | [05:22](https://www.youtube.com/embed/of5-LhkX_VQ?start=322) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=322s) | pump-down | How to know if needed: oxygen reading; "if it's like low 20s, he says that's good." |
 | [05:54](https://www.youtube.com/embed/of5-LhkX_VQ?start=354) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=354s) | heating | "Heat." |
 | [06:31](https://www.youtube.com/embed/of5-LhkX_VQ?start=391) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=391s) | pump-down | "Melting pressure." |
@@ -786,21 +818,21 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [12:11](https://www.youtube.com/embed/of5-LhkX_VQ?start=731) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=731s) | pump-down | Watch gauge go "all the way" down; then "turn off that" (12:50). |
 | [13:06](https://www.youtube.com/embed/of5-LhkX_VQ?start=786) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=786s) | heating | Change temperature setpoint up to 500. |
 | [13:18](https://www.youtube.com/embed/of5-LhkX_VQ?start=798) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=798s) | design | No keypad for exact setpoints; furnace is from a different company that "won't let them interface", so controls are separate. |
-| [13:42](https://www.youtube.com/embed/of5-LhkX_VQ?start=822) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=822s) | design | "It should be really easy to do a single button that does this entire cycle." |
+| [13:42](https://www.youtube.com/embed/of5-LhkX_VQ?start=822) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=822s) | design | "It should be really easy to do a single button that does this entire cycle" — but "I don't know what the real situation is" (Whisper): the interface reason is second-hand. |
 | [14:20](https://www.youtube.com/embed/of5-LhkX_VQ?start=860) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=860s) | pump-down | At 500: "press vacuum pump gas again." |
 | [14:32](https://www.youtube.com/embed/of5-LhkX_VQ?start=872) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=872s) | plumbing | Identifying lines: chilled water lines ("really cold"); white hose is the argon into the tank (15:02). |
 | [15:42](https://www.youtube.com/embed/of5-LhkX_VQ?start=942) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=942s) | chatter | "He said we could atomize gold and silver in this" — wedding-ring joke. |
-| [16:31](https://www.youtube.com/embed/of5-LhkX_VQ?start=991) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=991s) | pump-down | "Turn on pressure control"; "this is going up" (16:59). |
+| [16:31](https://www.youtube.com/embed/of5-LhkX_VQ?start=991) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=991s) | pump-down | "All right, I'm going to turn off pressure control" (Whisper, both the batched transcript and the clip re-run; the captions heard "turn on"), ready to pump the chamber at 500 °C; "this is going up … it's going down" (16:59). |
 | [17:50](https://www.youtube.com/embed/of5-LhkX_VQ?start=1070) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1070s) | check | Oxygen "in low 20s. So I think we're good. We don't have to do another purge cycle." |
-| [18:21](https://www.youtube.com/embed/of5-LhkX_VQ?start=1101) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1101s) | record | "Just write down" readings; "with the mbar check" (19:15). |
+| [18:21](https://www.youtube.com/embed/of5-LhkX_VQ?start=1101) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1101s) | record | "So just write down the mbar" (Whisper); "with the mbar check" (19:15). |
 | [19:25](https://www.youtube.com/embed/of5-LhkX_VQ?start=1165) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1165s) | heating | "We can bring this up to 800." |
-| [19:33](https://www.youtube.com/embed/of5-LhkX_VQ?start=1173) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1173s) | heating / deviation | "He went to 850 and then brought it down to 800?" — can't remember why; "I'm going to set to 830." |
+| [19:33](https://www.youtube.com/embed/of5-LhkX_VQ?start=1173) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1173s) | heating / deviation | "He went to 850 and then brought it down to 800?" — can't remember why: "I think you just like felt like that was a good amount, so I guess we'll just have to play with it" (Whisper); "I'm going to set to 830." |
 | [19:56](https://www.youtube.com/embed/of5-LhkX_VQ?start=1196) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1196s) | heating | "Hoping this is going to mix well. Starting to glow." |
 | [20:12](https://www.youtube.com/embed/of5-LhkX_VQ?start=1212) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1212s) | chatter | Meta glasses livestream idea. |
 | [21:56](https://www.youtube.com/embed/of5-LhkX_VQ?start=1316) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1316s) | heating | "Is it getting orange? Oh, yeah. I don't think it's melting just yet." |
-| [22:15](https://www.youtube.com/embed/of5-LhkX_VQ?start=1335) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1335s) | charge | Plug ("cap") length: "point three something" per the GitHub issue; "didn't go hardly in at all" — maybe shorter is fine. |
+| [22:15](https://www.youtube.com/embed/of5-LhkX_VQ?start=1335) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1335s) | charge | Plug ("cap") length: "I think it was like .3 something" per the GitHub issue (captions and the clip re-run; the batched Whisper drops it); "didn't go hardly in at all" — maybe shorter is fine. |
 | [23:04](https://www.youtube.com/embed/of5-LhkX_VQ?start=1384) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1384s) | charge | Purpose of the plugs: "apparently what we're doing could explode" (loose powder; inferred). |
-| [23:17](https://www.youtube.com/embed/of5-LhkX_VQ?start=1397) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1397s) | atomizing | "Melting pressure 17. Guess we'll see if 17.17 bar is high enough. He kept turning it down." |
+| [23:17](https://www.youtube.com/embed/of5-LhkX_VQ?start=1397) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1397s) | atomizing | Pour pressure set: "I guess we'll see if .17 bar is high enough. He kept turning it down" (every Whisper decode: 0.17 bar, as #249 records). The label just before is "printing pressure" (captions) or "spinning pressure" (clip re-run), i.e. the pour pressure heard elsewhere as "graining", not melting pressure; the captions' "17.17 bar" doubled the number. |
 | [23:37](https://www.youtube.com/embed/of5-LhkX_VQ?start=1417) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1417s) | heating | "Hey, it's melting. Oh, it's gone. Definitely not a lot in there." |
 | [23:54](https://www.youtube.com/embed/of5-LhkX_VQ?start=1434) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1434s) | heating | Powder "might be clumped up again... No, I think it's mixing" — induction stirs the melt. |
 | [24:18](https://www.youtube.com/embed/of5-LhkX_VQ?start=1458) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1458s) | safety | Heat felt through the viewing window. |
@@ -808,9 +840,9 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [24:54](https://www.youtube.com/embed/of5-LhkX_VQ?start=1494) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1494s) | atomizing | Amplitude: 100 "might be too much... bring it to about 90"; knob reads "88 to 100... around 90". |
 | [25:23](https://www.youtube.com/embed/of5-LhkX_VQ?start=1523) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1523s) | lesson | "We're going to have to create digital readouts" for the amplitude knob. |
 | [25:38](https://www.youtube.com/embed/of5-LhkX_VQ?start=1538) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1538s) | heating | "830°." |
-| [25:53](https://www.youtube.com/embed/of5-LhkX_VQ?start=1553) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1553s) | atomizing | "Check the plate. What plate is this?... aluminum. Not a coated carbon, just pure." |
-| [26:25](https://www.youtube.com/embed/of5-LhkX_VQ?start=1585) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1585s) | atomizing | "Sealing rod, [draining] pressure, on." |
-| [26:45](https://www.youtube.com/embed/of5-LhkX_VQ?start=1605) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1605s) | atomizing / problem | "Uh-oh. Please turn off the frequency. Holy dang, [they] are flying out of there." |
+| [25:53](https://www.youtube.com/embed/of5-LhkX_VQ?start=1553) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1553s) | atomizing | "Check the plate. What plate is this? The M[o]? … Not the coated carbon, it's pure molybdenum. Yeah, pure molybdenum." (word-level clip re-run of 25:50–26:15; the captions' "aluminum … pure aluminum" was a mis-hearing, and the batched Whisper drops the answer). |
+| [26:25](https://www.youtube.com/embed/of5-LhkX_VQ?start=1585) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1585s) | atomizing | "Sealing rod, graining pressure" (both transcripts "grinning": the pour pressure), on. |
+| [26:45](https://www.youtube.com/embed/of5-LhkX_VQ?start=1605) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1605s) | atomizing / problem | "Uh-oh. Can you turn off the frequency? Holy dang, [they] are flying out of there." (captions and the clip re-run; the batched Whisper drops the second sentence). |
 | [27:00](https://www.youtube.com/embed/of5-LhkX_VQ?start=1620) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1620s) | atomizing | "It's totally working... Is that all of it? Yep." "Most of it did not get atomized, unfortunately." |
 | [27:26](https://www.youtube.com/embed/of5-LhkX_VQ?start=1646) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1646s) | lesson | "That was definitely too high. It should have been a lot lower." |
 | [27:33](https://www.youtube.com/embed/of5-LhkX_VQ?start=1653) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1653s) | lesson | "The plate needed to be a lot closer so [it] had more time to run down it." |
@@ -823,7 +855,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [29:53](https://www.youtube.com/embed/of5-LhkX_VQ?start=1793) | [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1793s) | after | "Our first atomizer run by ourselves. Woo!" |
 
 ## Claude ping for dosing Al 4047
-`BxA7Z9Fliss` · 2026-10-01 · 10:48 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/BxA7Z9Fliss?start=0) · [▶ watch](https://www.youtube.com/watch?v=BxA7Z9Fliss)
+`BxA7Z9Fliss` · 2026-10-01 · 10:48 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/BxA7Z9Fliss?start=0) · [▶ watch](https://www.youtube.com/watch?v=BxA7Z9Fliss)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -833,9 +865,33 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [05:42](https://www.youtube.com/embed/BxA7Z9Fliss?start=342) | [▶](https://www.youtube.com/watch?v=BxA7Z9Fliss&t=342s) | chatter | "Oh, almost forgot." (unspecified). |
 
 ## Claude ping and troubleshooting for dosing Al 4047
-`dXRB7c6GeDw` · 2026-10-01 · 59:37 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/dXRB7c6GeDw?start=0) · [▶ watch](https://www.youtube.com/watch?v=dXRB7c6GeDw)
+`dXRB7c6GeDw` · 2026-10-01 · 59:37 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/dXRB7c6GeDw?start=0) · [▶ watch](https://www.youtube.com/watch?v=dXRB7c6GeDw)
 
-_No caption-derived rows yet (no YouTube auto-captions for this video; waiting on the Whisper transcript)._
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/dXRB7c6GeDw?start=0) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=0s) | dosing | (keyframe) Phone screen: the PR thread, Claude's checklist "Dispensing 8 g of Al 4047". |
+| [00:23](https://www.youtube.com/embed/dXRB7c6GeDw?start=23) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=23s) | dosing | "It looks like it's dosing now. Close to three grams at the moment. Looks like it's flowing pretty well … getting into the funnel." |
+| [01:31](https://www.youtube.com/embed/dXRB7c6GeDw?start=91) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=91s) | troubleshooting | "I'm a little surprised that it stopped. Unless I didn't load enough in"; goes back through the doser's livestream to the last point it was pouring (01:49–02:02). |
+| [02:06](https://www.youtube.com/embed/dXRB7c6GeDw?start=126) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=126s) | troubleshooting | On the replay: "going, going, going … still see it trickling … looks like it's tapping … and it stopped, even though it was still flowing powder." |
+| [03:24](https://www.youtube.com/embed/dXRB7c6GeDw?start=204) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=204s) | dosing | Reads Claude's reply ("the new protocol it wrote"); "I'm screen recording my session here" (03:48). |
+| [04:23](https://www.youtube.com/embed/dXRB7c6GeDw?start=263) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=263s) | chatter | A visitor asks what is being dosed: "the atomized" powder; "it was going great, and then it just stopped." |
+| [04:55](https://www.youtube.com/embed/dXRB7c6GeDw?start=295) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=295s) | chatter | Stock delivered: "That's a solid 6063" — "what you ordered" (05:08). |
+| [05:33](https://www.youtube.com/embed/dXRB7c6GeDw?start=333) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=333s) | chatter | "Just clean it with IPA is the only thing. You can throw both in if you want" (object not named). |
+| [05:47](https://www.youtube.com/embed/dXRB7c6GeDw?start=347) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=347s) | dosing | Picks "medium … just for a faster response here" (the Claude effort setting, inferred; the sentence ends at 07:20). |
+| [08:46](https://www.youtube.com/embed/dXRB7c6GeDw?start=526) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=526s) | troubleshooting | "Oh, memory error" — the telemetry MemoryError on the doser's Pico (keyframe 14:00 heading); "maybe I should get a Pico 2 … save my RAM. This should be quite solvable" (09:39). |
+| [18:21](https://www.youtube.com/embed/dXRB7c6GeDw?start=1101) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1101s) | chatter | Waiting without a laptop; card access has failed, so leaving means calling the engineering lab supervisor to get back in (19:32–19:45). |
+| [23:14](https://www.youtube.com/embed/dXRB7c6GeDw?start=1394) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1394s) | troubleshooting | Dose backed up: "some pieces maybe kind of stuck … in the nozzle area, some of those larger pieces." |
+| [23:39](https://www.youtube.com/embed/dXRB7c6GeDw?start=1419) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1419s) | lesson | "A larger auger inner channel would help with that, or me just sitting [sifting, inferred] it … like I probably should have"; "but it's still coming out" (24:02). |
+| [25:24](https://www.youtube.com/embed/dXRB7c6GeDw?start=1524) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1524s) | troubleshooting | Still getting powder, "just some bigger pieces in the middle there"; the cartridge "might just not be mated properly"; the back clamp could support it better (26:21–26:45). |
+| [27:21](https://www.youtube.com/embed/dXRB7c6GeDw?start=1641) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1641s) | lesson | "Those bigger chunks really gummed up the nozzle." |
+| [29:48](https://www.youtube.com/embed/dXRB7c6GeDw?start=1788) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1788s) | dosing | "Trying to get to 4.5, so it's actually kind of a ways away." |
+| [38:00](https://www.youtube.com/embed/dXRB7c6GeDw?start=2280) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=2280s) | dosing | (keyframe) Claude's new plan: "Finishing the Al 4047 dose at bulk tilt only (clog-tolerant)". |
+| [51:46](https://www.youtube.com/embed/dXRB7c6GeDw?start=3106) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3106s) | dosing | Back on the livestream: "still got that skipping or whatever's going on with the meter"; the flow slows as it nears the target (52:05–52:26). |
+| [52:40](https://www.youtube.com/embed/dXRB7c6GeDw?start=3160) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3160s) | dosing | "Three, two, zero … pretty much spot on"; "that's the drift, which was just from the fume hood", which is not perfectly sealed; "overall, I'd say that's pretty good" (52:46). |
+| [53:27](https://www.youtube.com/embed/dXRB7c6GeDw?start=3207) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3207s) | lesson | A small extra amount came with "that last tilt back", which "could probably be a lot slower, less jarring." |
+| [53:47](https://www.youtube.com/embed/dXRB7c6GeDw?start=3227) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3227s) | lesson | "The solenoid actually bends a little bit when it hits, just because it's only fixtured on one side … to the 3D print, so actually cantilevers just a little bit." |
+| [55:05](https://www.youtube.com/embed/dXRB7c6GeDw?start=3305) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3305s) | before | "So I've got 8 grams. Take a small amount … load it into the 6063 one end closed tube" — the powder cup; "and I gotta go." |
+| [58:56](https://www.youtube.com/embed/dXRB7c6GeDw?start=3536) | [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3536s) | dosing | "Okay, we're finished"; the balance reading arrives, the auger rpm "came back up a little bit" (59:15); (keyframe 58:00) Claude's report with a plot. |
 
 ## Drill press, number 70 bit, graphite nozzle
 `LSQmxwmlTkQ` · 2026-09-30 · 4:14 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=LSQmxwmlTkQ)
@@ -846,7 +902,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [00:00](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) | [▶](https://www.youtube.com/watch?v=LSQmxwmlTkQ&t=0s) | chatter | "Yeah, that's hard to…"; "I might have to run to class in a couple seconds, sorry." "Perfect. Okay, thank you." |
 
 ## Lathe turning aluminum crucibles for atomizer experiments
-`z6rwmQW_3Vg` · 2026-09-26 · 1:35 · public · transcript: auto · [open paused](https://www.youtube.com/embed/z6rwmQW_3Vg?start=0) · [▶ watch](https://www.youtube.com/watch?v=z6rwmQW_3Vg)
+`z6rwmQW_3Vg` · 2026-09-26 · 1:35 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/z6rwmQW_3Vg?start=0) · [▶ watch](https://www.youtube.com/watch?v=z6rwmQW_3Vg)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -859,7 +915,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [01:25](https://www.youtube.com/embed/z6rwmQW_3Vg?start=85) | [▶](https://www.youtube.com/watch?v=z6rwmQW_3Vg&t=85s) | prep | Putting in the 1/2 in drill bit. |
 
 ## Placing the Atomizer!!!
-`07QOPRHIEvw` · 2026-09-03 · 1:26 · public · transcript: auto · [open paused](https://www.youtube.com/embed/07QOPRHIEvw?start=0) · [▶ watch](https://www.youtube.com/watch?v=07QOPRHIEvw)
+`07QOPRHIEvw` · 2026-09-03 · 1:26 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/07QOPRHIEvw?start=0) · [▶ watch](https://www.youtube.com/watch?v=07QOPRHIEvw)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -868,7 +924,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [01:18](https://www.youtube.com/embed/07QOPRHIEvw?start=78) | [▶](https://www.youtube.com/watch?v=07QOPRHIEvw&t=78s) | installation | "That should be it for installing this. Commission it in about 2 weeks." |
 
 ## Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon!
-`Kv9DT3Vo0GE` · 2026-09-01 · 2:30 · public · transcript: auto · [open paused](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=0) · [▶ watch](https://www.youtube.com/watch?v=Kv9DT3Vo0GE)
+`Kv9DT3Vo0GE` · 2026-09-01 · 2:30 · public · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=0) · [▶ watch](https://www.youtube.com/watch?v=Kv9DT3Vo0GE)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -878,25 +934,25 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [00:43](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=43) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=43s) | installation | "Look how big this transformer is. This is the device that powers our atomizer." |
 | [00:49](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=49) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=49s) | installation | Transformer too big for the planned spot "above there"; placed here instead; could put a tall table over it if heat allows (01:00). |
 | [01:13](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=73) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=73s) | installation | Slats, vents, lights; electrical "should be done"; light switches not working yet (01:28). |
-| [01:35](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=95) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=95s) | installation | Cabinets; big sink — narrator will drill holes and finish plumbing (01:44). |
+| [01:35](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=95) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=95s) | installation | Cabinets; big sink — "they'll have to drill the holes, put in the finished plumbing" (01:44, batched Whisper; captions "I'll"; the clip re-run's "so that the drill the holes" settles neither). |
 | [01:48](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=108) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=108s) | installation | Second sink, probably the emergency [eyewash]; narrator wonders why not combined. |
 | [02:05](https://www.youtube.com/embed/Kv9DT3Vo0GE?start=125) | [▶](https://www.youtube.com/watch?v=Kv9DT3Vo0GE&t=125s) | installation | Whiteboard space; "massive" breaker boxes — "look how big these breakers are" (02:18). |
 
 ## Vacuum test
-`cKwQbKdE22Q` · 2026-09-08 · 2:37 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/cKwQbKdE22Q?start=0) · [▶ watch](https://www.youtube.com/watch?v=cKwQbKdE22Q)
+`cKwQbKdE22Q` · 2026-09-08 · 2:37 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/cKwQbKdE22Q?start=0) · [▶ watch](https://www.youtube.com/watch?v=cKwQbKdE22Q)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
 | [00:00](https://www.youtube.com/embed/cKwQbKdE22Q?start=0) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=0s) | test | "Add just a little bit of this powder... like this here." |
 | [00:15](https://www.youtube.com/embed/cKwQbKdE22Q?start=15) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=15s) | test | Connect the hose/fitting; "we'll turn this on" (00:24). |
 | [01:08](https://www.youtube.com/embed/cKwQbKdE22Q?start=68) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=68s) | test | "Let it run for 15 to 30 seconds to get all of the powder out of here." |
-| [01:16](https://www.youtube.com/embed/cKwQbKdE22Q?start=76) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=76s) | test | "Now we just leave it like that." |
+| [01:16](https://www.youtube.com/embed/cKwQbKdE22Q?start=76) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=76s) | test | "Now we just leave it like that" (captions; Whisper "we'll just move it back … move forward", 01:24). |
 | [01:24](https://www.youtube.com/embed/cKwQbKdE22Q?start=84) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=84s) | test | Pour out / inspect: "I want to see how much powder." |
-| [01:37](https://www.youtube.com/embed/cKwQbKdE22Q?start=97) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=97s) | result | "There's no visible powder in there... I mean, you can see it." |
-| [02:09](https://www.youtube.com/embed/cKwQbKdE22Q?start=129) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=129s) | test | "All the way." (unclear); ends. |
+| [01:37](https://www.youtube.com/embed/cKwQbKdE22Q?start=97) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=97s) | result | "There's no visible powder in there" (both); then "I mean, you can see it" (captions) or "We should use tape" (Whisper, 01:44) — a tape check for residue (inferred). |
+| [01:59](https://www.youtube.com/embed/cKwQbKdE22Q?start=119) | [▶](https://www.youtube.com/watch?v=cKwQbKdE22Q&t=119s) | test | "Move everything back over here" (Whisper; captions "everything talked about too … all the way", 02:09); ends. |
 
 ## Dehumidifier troubleshooting
-`w02MRlZhpNk` · 2026-09-29 · 2:58 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/w02MRlZhpNk?start=0) · [▶ watch](https://www.youtube.com/watch?v=w02MRlZhpNk)
+`w02MRlZhpNk` · 2026-09-29 · 2:58 · unlisted · transcript: auto + whisper · [open paused](https://www.youtube.com/embed/w02MRlZhpNk?start=0) · [▶ watch](https://www.youtube.com/watch?v=w02MRlZhpNk)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -904,7 +960,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [00:10](https://www.youtube.com/embed/w02MRlZhpNk?start=10) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=10s) | troubleshooting | Dehumidifier: "the 24 volts shorted to each other. So that should be working." |
 | [00:40](https://www.youtube.com/embed/w02MRlZhpNk?start=40) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=40s) | troubleshooting | "I heard a click. That's good, I guess." |
 | [00:46](https://www.youtube.com/embed/w02MRlZhpNk?start=46) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=46s) | troubleshooting | The pump "doesn't look like anything's actually attached to it"; its point is to move water in and out. |
-| [01:17](https://www.youtube.com/embed/w02MRlZhpNk?start=77) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=77s) | troubleshooting | "Is the pump just not being used at all? Maybe." Two pairs of wires; "looks like it's just connected directly." |
-| [01:43](https://www.youtube.com/embed/w02MRlZhpNk?start=103) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=103s) | troubleshooting | "Why is it not on? ... I think the breaker got tripped." |
+| [01:17](https://www.youtube.com/embed/w02MRlZhpNk?start=77) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=77s) | troubleshooting | "Is the pump just not being used at all? Maybe." Two bare wires (Whisper; captions "two pair of wires"); "looks like it's just connected directly." |
+| [01:43](https://www.youtube.com/embed/w02MRlZhpNk?start=103) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=103s) | troubleshooting | "Why is it not on?" — "I don't think, I don't think the breaker got tripped" (Whisper, batched and clip re-run); the captions dropped the second "don't" and heard "I think the breaker got tripped" (01:57). |
 | [02:08](https://www.youtube.com/embed/w02MRlZhpNk?start=128) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=128s) | troubleshooting | Clicks heard when turning the control; "I would have assumed that's the right way to turn it for dryer." |
 | [02:43](https://www.youtube.com/embed/w02MRlZhpNk?start=163) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=163s) | troubleshooting | Notes a line "going into the side"; goes back down (02:55). |

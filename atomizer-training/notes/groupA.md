@@ -1,6 +1,6 @@
 # Group A — atomizer training transcripts (Sep 29 2026)
 
-Source: YouTube auto-captions in `/tmp/work/autosubs/` (the Whisper file for wRc8p2_FnJo was empty when these notes were first written, so all three were drafted from auto-captions). The wRc8p2_FnJo and naePD8o9_Gk sections were later re-checked row by row against Whisper large-v3-turbo transcripts (`/tmp/work/transcripts/<id>.txt`); corrections, and the open items they settle, are recorded in each section's Unclear list. Trainer: Bartosz Kalicki (AMAZEMET). Trainees: Gage Erickson, Ronnie Guymon, Sterling Baird. Caption mis-hearings normalised: "ceiling/silly rod" = sealing rod, "transucer" = transducer, "automize" = atomize, "Aragon" = argon, "hepailter" = HEPA filter. The HMI button heard as "graining / grading / raining pressure" is written "graining pressure" throughout (see Unclear).
+Source: YouTube auto-captions in `/tmp/work/autosubs/` (the Whisper file for wRc8p2_FnJo was empty when these notes were first written, so all three were drafted from auto-captions). The wRc8p2_FnJo, naePD8o9_Gk and Pk0K5sBz-sQ sections were later re-checked row by row against Whisper large-v3-turbo transcripts (`/tmp/work/transcripts/<id>.txt`); corrections, and the open items they settle, are recorded in each section's Unclear list. Trainer: Bartosz Kalicki (AMAZEMET). Trainees: Gage Erickson, Ronnie Guymon, Sterling Baird. Caption mis-hearings normalised: "ceiling/silly rod" = sealing rod, "transucer" = transducer, "automize" = atomize, "Aragon" = argon, "hepailter" = HEPA filter. The HMI button heard as "graining / grading / raining pressure" is written "graining pressure" throughout (see Unclear).
 
 ## wRc8p2_FnJo — Video 1 of atomizer training (47 min, Sep 29)
 
@@ -240,6 +240,7 @@ After
 - Minutes 00:00–03:56 and 01:57–02:18 have almost no captions; what is being handled (the "piece", the "plate") is inferred from context.
 - 06:43 ventilation question has no usable answer.
 - 08:37 "130 degrees" is assumed to be the furnace thermocouple reading (inferred).
+- Re-checked against Whisper (five segments, the first spanning 00:00–06:15, so the caption times are kept): every number is confirmed ("150 degrees", "130 degrees", "keep the cooling until 100 degrees") and the wording matches the captions; Whisper adds nothing in the near-silent 00:00–03:56 stretch. The 06:43 ventilation exchange is no clearer ("is it ventilated … we still need to wait … it's got more of a condensation or"; the captions' 07:16 "compensation" is Whisper's "condensation"). Where Whisper mis-hears ("I might throw people" for show, "foil the water" for boil, "remove the stock" for slag) the captions are kept.
 
 ## naePD8o9_Gk — Atomizer Training Video 2 (56 min, Sep 29)
 

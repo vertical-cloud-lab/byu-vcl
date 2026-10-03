@@ -1,6 +1,6 @@
 # Group B — Atomizer training videos 3, 4, 5, 6 (Tue Sep 29 2026)
 
-Source: YouTube auto-captions at `/tmp/work/autosubs/<id>.txt`; the Video 3 and Video 5 sections were later re-checked against Whisper transcripts. Captions carry no speaker labels; "trainer" = Bartosz Kalicki, inferred from content. Panel/button names are given as heard with the likely intended term, e.g. "graining pressure" → draining/pouring pressure, "ceiling rod" → sealing rod, "turbo pressure" as heard.
+Source: YouTube auto-captions at `/tmp/work/autosubs/<id>.txt`; the Video 3, 4, 5 and 6 sections were later re-checked against Whisper transcripts, and the Video 4 lines still disputed after that were re-decoded word by word from the audio ([`recheck-clips.json`](../transcripts/whisper/recheck-clips.json), "word-level re-run"). Captions carry no speaker labels; "trainer" = Bartosz Kalicki, inferred from content. Panel/button names are given as heard with the likely intended term, e.g. "graining pressure" → draining/pouring pressure, "ceiling rod" → sealing rod, "turbo pressure" as heard.
 
 Chronology (inferred from content, not from the video numbers): Video 4 (loading the furnace before the first run) → Video 5 (first powder run, carbon-fiber plate, 1:1.5 booster, done by ~11:50) → Video 3 (post-run disassembly, second run with 1:1 booster + molybdenum plate, "that would be all for today") → Video 6 (powder-container fragment; position uncertain).
 
@@ -141,53 +141,53 @@ Troubleshooting
 
 ## 1F9_4ccwhss — Atomizer Training Video 4 (10 min, Sep 29)
 
-Loading the induction furnace before the first run: aligning the insulation hole with the thermocouple port, placing the flexible thermocouple close enough, fitting the silica/alumina side insulation, checking the sealing rod tip is clean and undamaged, removing a "sealing block", adding the Al rods, and closing the furnace lid with its adjustable latch. Theory interludes cover indirect induction heating through graphite, the 1600 °C capability and why Fe/Ni are not intended, and why long rods need a higher initial temperature. The second half is a chamber-cleaning walkthrough: brushes, paper and alcohol, a stainless scraper for stuck particles, vacuum first, view-port hook wrench, the swing-out cone, brushing powder down into the container, and a room oxygen-sensor discussion. Phases: before (loading), theory, cleaning/after.
+Loading the induction furnace before the first run: aligning the insulation hole with the thermocouple port, placing the flexible thermocouple close enough, fitting the silica/alumina side insulation, checking the sealing rod tip is clean and undamaged, moving the sealing rod down (the captions' "sealing block"), adding the Al rods, and closing the furnace lid with its adjustable latch. Theory interludes cover indirect induction heating through graphite, the 1300 °C working limit against the generator's 1600 °C capability and why Fe/Ni are not intended, the unit's origin in granulating equipment for precious metals, and why long rods need a higher initial temperature. The second half is a chamber-cleaning walkthrough: brushes, paper and alcohol, a stainless scraper for stuck particles (tin and similar), vacuum first, view-port hook wrench, the swing-out cone, brushing powder down into the container, and a joke about the safety officer demanding a room oxygen sensor. Phases: before (loading), theory, cleaning/after. Re-checked against the Whisper transcript; its segments run 20–60 s, so the caption start times are kept.
 
 ### Timestamp log
 
 | mm:ss | phase | what happens / what is said |
 |---|---|---|
-| 00:00 | before | Side insulation being placed; Gage invited to feel how tight the assembly gets. |
+| 00:00 | before | Side insulation being placed (Whisper "nice insulation"); Gage invited to feel how tight the assembly gets. |
 | 00:31 | before | Hole in insulation must line up with the thermocouple port; thermocouple is flexible, can bend, must get close enough. |
 | 00:53 | before | "Maybe a little bit too far" — thermocouple position corrected; then side insulation (01:01). |
-| 01:08 | parts | Insulation is a silica and alumina mix; dusty — vacuum the furnace area, especially if something falls in the crucible. |
-| 01:41 | parts | "If it falls, it will immediately break"; get it into the hole first (graphite sealing rod, inferred). |
+| 01:08 | parts | Insulation is a silica and alumina mix (both transcripts); dusty — vacuum the furnace area, especially if something falls in the crucible. |
+| 01:41 | parts | "If it falls, it will immediately break"; get it into the hole first (graphite sealing rod, inferred; captions only, Whisper has nothing between 01:20 and 01:57). |
 | 01:52 | before | Sealing rod tip must be clean and undamaged: "if it's damaged here, it will just not seal". |
 | 02:10 | before | Wipe or vacuum residual dust; "ready to go". |
-| 02:18 | before | Remove the "sealing block"; now add the material. |
+| 02:18 | before | Move the sealing rod down, then add the material (Whisper: "we move the sealing rod down. Now we can add the material. How did you move it down?"; the word-level clip re-run: "we move the sealing rod to cover … How did you move it down? That was with the sealing rod b[utton]"; the captions' "remove the sealing block" was a mis-hearing). |
 | 02:39 | theory | Sterling: copper coils, eddy currents; trainer: this is indirect — energy goes into the graphite, graphite heats the charge. |
-| 03:35 | theory | Not designed for iron/nickel: melting point too high; plates would not survive; those metals react with graphite. |
-| 03:47 | parameter | Generator has enough energy to go up to 1600. |
-| 04:05 | theory | Industrial gas atomizers use ceramic crucibles, slow heating, large ceramic nozzles; this unit is built for precious metals. |
+| 03:35 | theory | Not designed for iron/nickel: melting point too high — "one thing is the 1300 [limiting] point" (heard "lighting" by the batched Whisper and in three of five word-level re-runs; the captions drop it), i.e. the 1300 °C working limit; plates would not survive; those metals react with graphite. |
+| 03:47 | parameter | "It is possible to go higher": the generator has enough energy to go up to 1600 (°C, said against the 1300 limit). |
+| 04:05 | theory | Industrial gas atomizers use ceramic crucibles, slow heating, large ceramic nozzles; this unit was initially made from granulating equipment, mostly for precious metals (Whisper "granulating"; captions "regulating"). |
 | 04:32 | before | "We always need to clean the feedstock. It's really important." |
 | 04:37 | before | Rods stand above the furnace; they go down as they melt. |
 | 04:43 | lesson | Long rods heat at the bottom and cool at the top: raise temperature first, then decrease; copper sticking out is very hard to melt. |
 | 05:08 | theory | The more compressed the material at the bottom, the faster it melts. |
 | 05:17 | before | Close and secure the furnace lid; if it hisses, loosen and adjust the latch to tighten. |
 | 05:41 | cleaning | Next: the chamber. Cleaning uses brushes, paper and alcohol only (06:01). |
-| 06:09 | cleaning | Particles stuck to the wall (with "thinner"/tin-like materials): stainless-steel scraper; cooled particles stick, they do not melt in. |
+| 06:09 | cleaning | Particles stuck to the wall, which happens with tin or similar materials (Whisper "tin"; captions "thinner"): detach them with a stainless-steel scraper; cooled particles stick, they do not melt in. |
 | 06:34 | cleaning | Copper or softer scraper is fine; a plastic one may get damaged. |
 | 06:51 | cleaning | Clean the sealing surface and the seal; wipe the whole chamber; vacuum first (07:12). |
 | 07:24 | safety | Trainee: full-face respirators go on for post-run cleaning. |
-| 07:33 | theory | Atomization runs also help clean the equipment (heat removes residue; garbled). |
+| 07:33 | theory | Atomization runs also help clean the equipment: the heat applied removes moisture leftovers (Whisper; captions "material over us"). |
 | 07:49 | parts | View port comes out with a hook wrench. |
 | 08:08 | cleaning | The cone below swivels out; take it down to remove all powder; clean and vacuum its seal from below (08:38). |
 | 08:47 | cleaning | Brush in a circle so powder falls into the container; do this before removing the container (09:17). |
-| 09:30 | safety | "You can't operate until you get an oxygen sensor"; trainer: argon flow is small, but agrees one should be fitted. |
-| 09:52 | parts | Last item: the powder container, made in-house; a few commercial powders shown. |
+| 09:30 | safety | Room oxygen sensor: a trainee jokes that "the safety guy" would say "you can't operate until you get an oxygen sensor" (Whisper); trainer: the argon flow is not big enough to cause a danger, but "I still agree that it should be" fitted. |
+| 09:52 | parts | Last item: the powder container, made in-house with "a few commercial parts" (Whisper; captions "a few commercial powders here"). |
 
 ### Procedural steps
 Before
 - Align the insulation hole with the thermocouple port; bend the thermocouple so it sits close to the crucible (00:31).
 - Fit the side insulation; vacuum the dust it sheds (01:01, 01:11).
 - Inspect the sealing rod tip for cleanliness and damage before inserting it into the nozzle hole (01:52).
-- Remove the sealing block, then load the cleaned feedstock (02:18, 04:32).
+- Move the sealing rod down, then load the cleaned feedstock (02:18, 04:32).
 - Close and secure the furnace lid; re-adjust the latch if gas hisses out (05:17).
 During
 - For long rods, overshoot the temperature to melt the bottom first, then reduce (04:43).
 Cleaning
 - Vacuum the chamber first, then wipe with brushes, paper and alcohol (07:12, 06:01).
-- Scrape stuck particles with a stainless-steel scraper; avoid plastic (06:19, 06:34).
+- Scrape stuck particles (tin and similar) with a stainless-steel scraper; avoid plastic (06:19, 06:34).
 - Clean the sealing surface and seal; unscrew the view port with a hook wrench if needed (06:51, 07:55).
 - Swing out the cone, clean and vacuum its seal, brush powder down into the container before removing the container (08:08, 08:47, 09:17).
 Troubleshooting
@@ -197,7 +197,8 @@ Troubleshooting
 | value | context | mm:ss |
 |---|---|---|
 | silica + alumina | side insulation material | 01:08 |
-| 1600 | max temperature the generator can reach (°C, inferred) | 03:47 |
+| 1300 | working limit, "the 1300 [limiting] point" (Whisper only; °C, inferred, cf. the type-N thermocouple to 1300 °C in Video 1 34:11) | 03:35 |
+| 1600 | max temperature the generator can reach, above that limit (°C, inferred) | 03:47 |
 | brushes, paper, alcohol | only cleaning consumables needed | 06:01 |
 | stainless steel | scraper material | 06:33 |
 
@@ -211,10 +212,11 @@ Troubleshooting
 - 06:21 "Because everything is cooled down, they do not melt into the chamber. They just get stuck and you need to scrape them."
 
 ### Unclear / needs checking
-- "Sealing block" (02:18): a spacer/lock removed before loading; exact part unknown.
-- What "immediately breaks if it falls" (01:41); sealing rod is an inference.
-- "Thinner or similar materials" (06:14) that stick to the wall — possibly tin.
-- 07:33 (atomization helping to clean) is garbled.
+- "Sealing block" (02:18) — resolved: Whisper has "we move the sealing rod down. Now we can add the material. How did you move it down? That was with… the sealing rod [button]", and a word-level re-run of 02:10–02:30 hears "we move the sealing rod to cover … How did you move it down? That was with the sealing rod bottle [button]". The step is lowering the sealing rod into the nozzle before the charge goes in, not removing a part.
+- What "immediately breaks if it falls" (01:41) — not resolved: the line is captions-only (Whisper's 00:59–01:57 segment does not contain it); sealing rod is an inference.
+- "Thinner or similar materials" (06:14) — resolved: Whisper "tin or similar materials". The captions-only "Teflon, for example" (06:28) is not in Whisper, which has the scraper answer "stainless steel" only.
+- 07:33 — resolved: "The atomization also helps … they help to clean the equipment. Because also we apply a little bit of heat that way, we remove some moisture leftovers"; the word before "atomizations" is garbled in both ("trending"/"friendly").
+- Added by the Whisper pass: 03:35 "the 1300 lighting point" is Whisper-only (batched transcript and three of five word-level re-runs of windows in 03:20–04:10; the other two, and the captions, have only "too high melting point" there) and is read as the 1300 °C working limit, so the 1600 at 03:47 is °C above it. 04:21 "granulating equipment" (Whisper) replaces the captions' "regulating". 09:30 the oxygen-sensor line was a trainee's joke about the safety officer, not a demand; the trainer's answer is unchanged. 10:05 "a few commercial parts" (Whisper) vs "powders" (captions) — not resolved.
 
 ## 58wJ_Khwgyk — Atomizer Training Video 5 (79 min, Sep 29)
 
@@ -471,4 +473,5 @@ Cleaning
 - 00:03 "It should be in at least a semi-protective atmosphere. Argon is heavy, so it goes to the bottom. After the run, even if you open it cold, you should still have [argon]."
 
 ### Unclear / needs checking
-- The 00:14–00:37 gap and the trailing "if you like, as" are cut; which container (glass with valve vs stainless tube) is unknown.
+- The 00:14–00:37 gap and the trailing "if you like, as" are cut; which container (glass with valve vs stainless tube) is unknown. Whisper (one 00:00–00:48 segment) has the same words and nothing more in the gap.
+- Re-checked against Whisper: "four" is confirmed ("Remove those four, four, open it"), but "nuts" (00:45) is captions-only — Whisper hears "Okay, so then that's good" — so the fastener type rests on the captions and the footage.

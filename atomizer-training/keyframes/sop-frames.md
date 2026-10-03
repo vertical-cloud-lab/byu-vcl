@@ -1,6 +1,6 @@
 # Frames for every moment the SOP cites
 
-One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed at the cited second from the 360p copy (399 moments, 0 without a local video yet). The frame is from the caption start time, so it shows what was on screen when the sentence began; use the paused link to watch it.
+One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed at the cited second from the 360p copy (404 moments, 0 without a local video yet). The frame is from the caption start time, so it shows what was on screen when the sentence began; use the paused link to watch it.
 
 | SOP reference | frame | video · links |
 | --- | --- | --- |
@@ -9,9 +9,12 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | T5 11:19 | ![58wJ_Khwgyk 11:19](sop/58wJ_Khwgyk_00679.jpg) | Atomizer Training Video 5 · [11:19 paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=679) · [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=679s) |
 | T1 22:32 | ![wRc8p2_FnJo 22:32](sop/wRc8p2_FnJo_01352.jpg) | Video 1 of atomizer training · [22:32 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=1352) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=1352s) |
 | T4 08:08 | ![1F9_4ccwhss 08:08](sop/1F9_4ccwhss_00488.jpg) | Atomizer Training Video 4 · [08:08 paused](https://www.youtube.com/embed/1F9_4ccwhss?start=488) · [▶](https://www.youtube.com/watch?v=1F9_4ccwhss&t=488s) |
-| expert cleaning POV | ![u-KjR5TENN4 00:00](sop/u-KjR5TENN4_00000.jpg) | The expert cleaning the atomizer, pov · [00:00 paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=0s) |
 | cartridge cleaning | ![f8KL31PN8bA 00:00](sop/f8KL31PN8bA_00000.jpg) | Cartridge cleaning · [00:00 paused](https://www.youtube.com/embed/f8KL31PN8bA?start=0) · [▶](https://www.youtube.com/watch?v=f8KL31PN8bA&t=0s) |
 | #70 drill bit on a graphite nozzle | ![LSQmxwmlTkQ 00:00](sop/LSQmxwmlTkQ_00000.jpg) | Drill press, number 70 bit, graphite nozzle · [00:00 paused](https://www.youtube.com/embed/LSQmxwmlTkQ?start=0) · [▶](https://www.youtube.com/watch?v=LSQmxwmlTkQ&t=0s) |
+| Al 4047 dosing session | ![dXRB7c6GeDw 00:00](sop/dXRB7c6GeDw_00000.jpg) | Claude ping and troubleshooting for dosing Al 4047 · [00:00 paused](https://www.youtube.com/embed/dXRB7c6GeDw?start=0) · [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=0s) |
+| expert cleaning POV | ![u-KjR5TENN4 00:00](sop/u-KjR5TENN4_00000.jpg) | The expert cleaning the atomizer, pov · [00:00 paused](https://www.youtube.com/embed/u-KjR5TENN4?start=0) · [▶](https://www.youtube.com/watch?v=u-KjR5TENN4&t=0s) |
+| AlSi10Mg for nzyjn0 | ![prj_xgeuQtM 00:00](sop/prj_xgeuQtM_00000.jpg) | nzyjn0 AlSi10Mg-Al6063 dosing session · [00:00 paused](https://www.youtube.com/embed/prj_xgeuQtM?start=0) · [▶](https://www.youtube.com/watch?v=prj_xgeuQtM&t=0s) |
+| Al 4047 | ![QXSj0j1OqL8 00:00](sop/QXSj0j1OqL8_00000.jpg) | Dosing Al 4047 powder · [00:00 paused](https://www.youtube.com/embed/QXSj0j1OqL8?start=0) · [▶](https://www.youtube.com/watch?v=QXSj0j1OqL8&t=0s) |
 | T1 00:16 | ![wRc8p2_FnJo 00:16](sop/wRc8p2_FnJo_00016.jpg) | Video 1 of atomizer training · [00:16 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=16) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=16s) |
 | T1 13:14 | ![wRc8p2_FnJo 13:14](sop/wRc8p2_FnJo_00794.jpg) | Video 1 of atomizer training · [13:14 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=794) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=794s) |
 | T1 14:56 | ![wRc8p2_FnJo 14:56](sop/wRc8p2_FnJo_00896.jpg) | Video 1 of atomizer training · [14:56 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=896) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=896s) |
@@ -102,6 +105,7 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | T2 32:09 | ![naePD8o9_Gk 32:09](sop/naePD8o9_Gk_01929.jpg) | Atomizer Training Video 2 · [32:09 paused](https://www.youtube.com/embed/naePD8o9_Gk?start=1929) · [▶](https://www.youtube.com/watch?v=naePD8o9_Gk&t=1929s) |
 | T5 02:21 | ![58wJ_Khwgyk 02:21](sop/58wJ_Khwgyk_00141.jpg) | Atomizer Training Video 5 · [02:21 paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=141) · [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=141s) |
 | SP 01:04 | ![2wMgeI-E7zw 01:04](sop/2wMgeI-E7zw_00064.jpg) | Atomizer training (sterling's phone) · [01:04 paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=64) · [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=64s) |
+| SP 02:29 | ![2wMgeI-E7zw 02:29](sop/2wMgeI-E7zw_00149.jpg) | Atomizer training (sterling's phone) · [02:29 paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=149) · [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=149s) |
 | T1 34:36 | ![wRc8p2_FnJo 34:36](sop/wRc8p2_FnJo_02076.jpg) | Video 1 of atomizer training · [34:36 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=2076) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2076s) |
 | T1 17:17 | ![wRc8p2_FnJo 17:17](sop/wRc8p2_FnJo_01037.jpg) | Video 1 of atomizer training · [17:17 paused](https://www.youtube.com/embed/wRc8p2_FnJo?start=1037) · [▶](https://www.youtube.com/watch?v=wRc8p2_FnJo&t=1037s) |
 | T5 65:41 | ![58wJ_Khwgyk 65:41](sop/58wJ_Khwgyk_03941.jpg) | Atomizer Training Video 5 · [65:41 paused](https://www.youtube.com/embed/58wJ_Khwgyk?start=3941) · [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3941s) |
@@ -230,6 +234,7 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | LATHE 01:02 | ![z6rwmQW_3Vg 01:02](sop/z6rwmQW_3Vg_00062.jpg) | Lathe turning aluminum crucibles for atomizer experiments · [01:02 paused](https://www.youtube.com/embed/z6rwmQW_3Vg?start=62) · [▶](https://www.youtube.com/watch?v=z6rwmQW_3Vg&t=62s) |
 | LATHE 01:14 | ![z6rwmQW_3Vg 01:14](sop/z6rwmQW_3Vg_00074.jpg) | Lathe turning aluminum crucibles for atomizer experiments · [01:14 paused](https://www.youtube.com/embed/z6rwmQW_3Vg?start=74) · [▶](https://www.youtube.com/watch?v=z6rwmQW_3Vg&t=74s) |
 | OCT2b 22:15 | ![of5-LhkX_VQ 22:15](sop/of5-LhkX_VQ_01335.jpg) | Atomizer run Oct 2 part 2 · [22:15 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=1335) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1335s) |
+| DOSE2 23:14 | ![dXRB7c6GeDw 23:14](sop/dXRB7c6GeDw_01394.jpg) | Claude ping and troubleshooting for dosing Al 4047 · [23:14 paused](https://www.youtube.com/embed/dXRB7c6GeDw?start=1394) · [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=1394s) |
 | T8 07:30 | ![HTlUrAr5HVU 07:30](sop/HTlUrAr5HVU_00450.jpg) | Atomizer Training Video 8 · [07:30 paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=450) · [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=450s) |
 | T8 09:09 | ![HTlUrAr5HVU 09:09](sop/HTlUrAr5HVU_00549.jpg) | Atomizer Training Video 8 · [09:09 paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=549) · [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=549s) |
 | T8 11:26 | ![HTlUrAr5HVU 11:26](sop/HTlUrAr5HVU_00686.jpg) | Atomizer Training Video 8 · [11:26 paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=686) · [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=686s) |
@@ -374,6 +379,7 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | T7 18:35 | ![FDRTt68Vfvo 18:35](sop/FDRTt68Vfvo_01115.jpg) | Atomizer Training Video 7 · [18:35 paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=1115) · [▶](https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1115s) |
 | RUN1 19:40 | ![TFpU4uqVF9c 19:40](sop/TFpU4uqVF9c_01180.jpg) | nzyjn0 atomization AlSi10Mg-Al6063 · [19:40 paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=1180) · [▶](https://www.youtube.com/watch?v=TFpU4uqVF9c&t=1180s) |
 | T9 20:14 | ![9kn-HhXCr1o 20:14](sop/9kn-HhXCr1o_01214.jpg) | Atomizer Training Video 9 · [20:14 paused](https://www.youtube.com/embed/9kn-HhXCr1o?start=1214) · [▶](https://www.youtube.com/watch?v=9kn-HhXCr1o&t=1214s) |
+| DOSE2 55:05 | ![dXRB7c6GeDw 55:05](sop/dXRB7c6GeDw_03305.jpg) | Claude ping and troubleshooting for dosing Al 4047 · [55:05 paused](https://www.youtube.com/embed/dXRB7c6GeDw?start=3305) · [▶](https://www.youtube.com/watch?v=dXRB7c6GeDw&t=3305s) |
 | OCT2b 25:53 | ![of5-LhkX_VQ 25:53](sop/of5-LhkX_VQ_01553.jpg) | Atomizer run Oct 2 part 2 · [25:53 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=1553) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1553s) |
 | OCT2b 26:25 | ![of5-LhkX_VQ 26:25](sop/of5-LhkX_VQ_01585.jpg) | Atomizer run Oct 2 part 2 · [26:25 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=1585) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=1585s) |
 | TA 04:23 | ![Pk0K5sBz-sQ 04:23](sop/Pk0K5sBz-sQ_00263.jpg) | Atomizer training · [04:23 paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=263) · [▶](https://www.youtube.com/watch?v=Pk0K5sBz-sQ&t=263s) |
@@ -402,4 +408,3 @@ One frame per unique video moment linked from [`../sop.md`](../sop.md), grabbed 
 | T7 22:41 | ![FDRTt68Vfvo 22:41](sop/FDRTt68Vfvo_01361.jpg) | Atomizer Training Video 7 · [22:41 paused](https://www.youtube.com/embed/FDRTt68Vfvo?start=1361) · [▶](https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1361s) |
 | T8 02:52 | ![HTlUrAr5HVU 02:52](sop/HTlUrAr5HVU_00172.jpg) | Atomizer Training Video 8 · [02:52 paused](https://www.youtube.com/embed/HTlUrAr5HVU?start=172) · [▶](https://www.youtube.com/watch?v=HTlUrAr5HVU&t=172s) |
 | OCT2b 08:46 | ![of5-LhkX_VQ 08:46](sop/of5-LhkX_VQ_00526.jpg) | Atomizer run Oct 2 part 2 · [08:46 paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=526) · [▶](https://www.youtube.com/watch?v=of5-LhkX_VQ&t=526s) |
-| SP 02:29 | ![2wMgeI-E7zw 02:29](sop/2wMgeI-E7zw_00149.jpg) | Atomizer training (sterling's phone) · [02:29 paused](https://www.youtube.com/embed/2wMgeI-E7zw?start=149) · [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=149s) |
