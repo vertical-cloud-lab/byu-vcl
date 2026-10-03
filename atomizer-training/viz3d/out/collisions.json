@@ -1,0 +1,624 @@
+{
+ "rest": [
+  {
+   "a": "furnace_body",
+   "b": "oring",
+   "depth": 2.5,
+   "at": [
+    90,
+    -84,
+    1342
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "tc_plug",
+   "depth": 8.5,
+   "at": [
+    65,
+    83,
+    1345
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "hood_hinge",
+   "depth": 5.8,
+   "at": [
+    -135,
+    -1,
+    1326
+   ]
+  },
+  {
+   "a": "lever_clevis",
+   "b": "lever_pin",
+   "depth": 2.5,
+   "at": [
+    111,
+    -9,
+    1394
+   ]
+  },
+  {
+   "a": "coil_lead0",
+   "b": "coil_lead1",
+   "depth": 1.7,
+   "at": [
+    -197,
+    -6,
+    1198
+   ]
+  },
+  {
+   "a": "hood",
+   "b": "hood_knob",
+   "depth": 4.9,
+   "at": [
+    104,
+    -20,
+    1464
+   ]
+  },
+  {
+   "a": "chamber",
+   "b": "viewport_flange",
+   "depth": 21.7,
+   "at": [
+    -35,
+    -120,
+    1085
+   ]
+  },
+  {
+   "a": "base_frame",
+   "b": "feet",
+   "depth": 2.0,
+   "at": [
+    -100,
+    522,
+    110
+   ]
+  },
+  {
+   "a": "side_door_r",
+   "b": "hmi_arm",
+   "depth": 3.0,
+   "at": [
+    633,
+    209,
+    1386
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi",
+   "depth": 19.8,
+   "at": [
+    745,
+    50,
+    1409
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi_screen",
+   "depth": 18.8,
+   "at": [
+    746,
+    51,
+    1408
+   ]
+  },
+  {
+   "a": "argon_regulator",
+   "b": "argon_gauges",
+   "depth": 4.0,
+   "at": [
+    -583,
+    734,
+    1484
+   ]
+  }
+ ],
+ "anims": {
+  "00_machine": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "0.1",
+     "caption": "BYU's AMAZEMET rePowder: an induction furnace on top of an argon-filled atomization chamber, with the controls and electronics built into its blue frame, and the utilities round it.",
+     "start_frame": 0,
+     "end_frame": 59
+    },
+    {
+     "label": "0.2",
+     "caption": "On top, the Blue Power furnace: a stainless body holding the coil, crucible and insulation, under a faceted lid with a window, hinged on the left.",
+     "start_frame": 60,
+     "end_frame": 113
+    },
+    {
+     "label": "0.3",
+     "caption": "Controls: the melting control panel (furnace) and the main switch on the blue frame, and the 15.6 in HMI on its swing arm, which runs pressures, gas and ultrasonics.",
+     "start_frame": 114,
+     "end_frame": 167
+    },
+    {
+     "label": "0.4",
+     "caption": "Below the furnace, the 57 L atomization chamber: a view port at the front, a door on the left held by three star-knob bolts, and an underside that slopes down to the outlet.",
+     "start_frame": 168,
+     "end_frame": 221
+    },
+    {
+     "label": "0.5",
+     "caption": "The ultrasonic unit rides in the door: transducer under its cover outside, sonotrode and plate inside, under the furnace nozzle.",
+     "start_frame": 222,
+     "end_frame": 275
+    },
+    {
+     "label": "0.6",
+     "caption": "The sloped underside and a short cone take the powder down through a valve to the airlock container, clamped on by its flange.",
+     "start_frame": 276,
+     "end_frame": 329
+    },
+    {
+     "label": "0.7",
+     "caption": "Behind and beside it: argon 5N with its regulator, the vacuum pump, compressed air for the transducer, and the heat exchanger on the chilled water.",
+     "start_frame": 330,
+     "end_frame": 383
+    },
+    {
+     "label": "0.8",
+     "caption": "Cut in half at the furnace axis: crucible, sealing rod and nozzle over the plate, and the cone down to the container.",
+     "start_frame": 384,
+     "end_frame": 458
+    }
+   ]
+  },
+  "01_utilities": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "1.1",
+     "caption": "Breakers and main switch on. Everything else is still off.",
+     "start_frame": 0,
+     "end_frame": 67
+    },
+    {
+     "label": "1.2",
+     "caption": "Facility chilled water: open the valve only a little (at least 2 L/min, but 'water too cold' trips below 7\u201310 \u00b0C).",
+     "start_frame": 68,
+     "end_frame": 134
+    },
+    {
+     "label": "1.3",
+     "caption": "Heat exchanger on only when you are about to heat; wait for 'cooling water flow low' to clear.",
+     "start_frame": 135,
+     "end_frame": 194
+    },
+    {
+     "label": "1.4",
+     "caption": "Compressed air: 8 bar supply, about 4 bar regulated. It only cools the transducer, but no air means no ultrasonics.",
+     "start_frame": 195,
+     "end_frame": 261
+    },
+    {
+     "label": "1.5",
+     "caption": "Argon 5N at 8 bar on the regulator (0\u201310 bar, not a welding regulator): one T into the furnace line and the chamber line; it also drives the pneumatics.",
+     "start_frame": 262,
+     "end_frame": 328
+    },
+    {
+     "label": "1.6",
+     "caption": "Checklist: vacuum-pump oil in the sight glass, exchanger water level, HEPA filter (every ~2 months), hoses dry.",
+     "start_frame": 329,
+     "end_frame": 410
+    }
+   ]
+  },
+  "03_furnace_load": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "2a.1",
+     "caption": "Start cold. Open the furnace lid (it hinges up to the left) and swing the sealing-rod lever up, clear of the opening. For a rebuild everything comes out: thermocouple, sealing rod, insulation, crucible.",
+     "start_frame": 0,
+     "end_frame": 100
+    },
+    {
+     "label": "2a.2",
+     "caption": "On the bench: nozzle into its holder, white side up (\u00d80.5 mm standard, \u00d80.7 for Al alloys), then screw the holder into the crucible by hand: several turns, and only just tight.",
+     "start_frame": 101,
+     "end_frame": 203
+    },
+    {
+     "label": "2a.3",
+     "caption": "Graphite seal and bottom insulation in first. Then lift the crucible over and lower it straight down into the coil, its shank through the floor. Handle it gently: graphite is brittle.",
+     "start_frame": 204,
+     "end_frame": 319
+    },
+    {
+     "label": "2a.4",
+     "caption": "Swing the three bolts back and open the chamber's left door. Through it, the lower seal, then thread the thin graphite nut onto the shank from below while the crucible is held still at the top, its thermocouple hole turned to the back right. A second person at the top helps; alone, keep a hand on the crucible. Snug, not tight: graphite cracks if forced, and a loose nut leaks.",
+     "start_frame": 320,
+     "end_frame": 478
+    },
+    {
+     "label": "2a.5",
+     "caption": "Side insulation round the crucible, its hole lined up with the thermocouple port at the back right, then the top insulation (filling cone). Silica-alumina: dusty and fragile.",
+     "start_frame": 479,
+     "end_frame": 556
+    },
+    {
+     "label": "2a.6",
+     "caption": "Thermocouple (Type N) in at the back right, down into the hole in the crucible wall, bent to sit close; its plug is behind the lever post. Leave it in even for maintenance, or the HMI raises 'master temperature sensor'.",
+     "start_frame": 557,
+     "end_frame": 626
+    },
+    {
+     "label": "2a.7",
+     "caption": "Sealing rod in BEFORE any metal, its tip clean and smooth or it will not seal. Screwed into its adapter, it goes straight down onto the nozzle.",
+     "start_frame": 627,
+     "end_frame": 696
+    },
+    {
+     "label": "2a.8",
+     "caption": "Swing the lever down onto the adapter, push the safety pin in, and press SEALING ROD to bring it down. The rod now rides on the lever, which the pneumatics lift to pour.",
+     "start_frame": 697,
+     "end_frame": 766
+    },
+    {
+     "label": "2a.9",
+     "caption": "Charge: clean rods no thicker than 20 mm, 250\u2013300 g; here 4 \u00d7 \u00d817 \u00d7 100 mm 6063 (\u2248245 g), dropped in round the rod, beside the lever. They stand proud and sink as they melt.",
+     "start_frame": 767,
+     "end_frame": 862
+    },
+    {
+     "label": "2a.10",
+     "caption": "Close the lid and set the latch just tight enough to seal: if it hisses under pressure, loosen it, adjust the latch and retighten. The chamber door stays open for the next step.",
+     "start_frame": 863,
+     "end_frame": 938
+    }
+   ]
+  },
+  "03b_chamber": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "2b.1",
+     "caption": "Splash-protection disc first: it drops into the container's top flange. One is enough for aluminium.",
+     "start_frame": 0,
+     "end_frame": 84
+    },
+    {
+     "label": "2b.2",
+     "caption": "Lift the container under the outlet and close the flange clamp, finger-tight. A second person makes this easier (one holds the weight, one closes the clamp); alone, keep it supported until the clamp is shut.",
+     "start_frame": 85,
+     "end_frame": 187
+    },
+    {
+     "label": "2b.3",
+     "caption": "Through the open door: the catch bowl goes on the chamber floor, round the outlet. It catches un-atomized melt and protects the chamber if a plate breaks. Wipe the chamber and hang the covers.",
+     "start_frame": 188,
+     "end_frame": 286
+    }
+   ]
+  },
+  "02_stack": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "2c.1",
+     "caption": "The stack goes transducer \u2192 booster \u2192 sonotrode \u2192 plate, and it goes in last, after the furnace and the chamber. First the transducer: piezo stack, ~1000 V cable, air-cooled. Never drop it or get it wet.",
+     "start_frame": 0,
+     "end_frame": 84
+    },
+    {
+     "label": "2c.2",
+     "caption": "Booster onto the transducer, 65 N\u00b7m (M10 fine thread). The 1.5:1 booster mounted in reverse lowers the amplitude, for finer powder.",
+     "start_frame": 85,
+     "end_frame": 147
+    },
+    {
+     "label": "2c.3",
+     "caption": "Sonotrode on, 60 N\u00b7m, isopropanol on the threads. Its KF50 flange is always at the top.",
+     "start_frame": 148,
+     "end_frame": 210
+    },
+    {
+     "label": "2c.4",
+     "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing and fit both clamps without touching the safety cover.",
+     "start_frame": 211,
+     "end_frame": 277
+    },
+    {
+     "label": "2c.5",
+     "caption": "Plate onto its M8 stud with the stack in the housing: 50 N\u00b7m, counter-holding the sonotrode with a 17 mm wrench.",
+     "start_frame": 278,
+     "end_frame": 340
+    },
+    {
+     "label": "2c.6",
+     "caption": "Advanced ultrasonics \u2192 scan: one wide peak a little over 40 kHz. A double peak? Run a short burst and rescan.",
+     "start_frame": 341,
+     "end_frame": 406
+    },
+    {
+     "label": "2c.7",
+     "caption": "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, the plate is cracked.",
+     "start_frame": 407,
+     "end_frame": 473
+    },
+    {
+     "label": "2c.8",
+     "caption": "Bolt the protective cover over the transducer, then push in and lock the cable and connect the cooling air: two or three minutes that protect a part worth thousands.",
+     "start_frame": 474,
+     "end_frame": 539
+    },
+    {
+     "label": "2c.9",
+     "caption": "Run the frequency check now, before closing. Then swing the door shut: the stack rides in it, and the plate swings in under the nozzle.",
+     "start_frame": 540,
+     "end_frame": 606
+    },
+    {
+     "label": "2c.10",
+     "caption": "Swing the three bolts over the door's back edge and tighten the star knobs. Opening one under pressure just leaks.",
+     "start_frame": 607,
+     "end_frame": 681
+    }
+   ]
+  },
+  "04_gas_wash": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "3.1",
+     "caption": "Pressure control OFF before any pumping (it holds 150 mbar). Wash one vessel while the other keeps its overpressure: graphite seals leak, and a leak should pull argon, not air.",
+     "start_frame": 0,
+     "end_frame": 74
+    },
+    {
+     "label": "3.2",
+     "caption": "Furnace wash 1: pump to the gauge floor, about \u2212850 mbar at Provo's altitude (\u22121000 at sea level): normal, not a leak. Then argon back in to +150.",
+     "start_frame": 75,
+     "end_frame": 149
+    },
+    {
+     "label": "3.3",
+     "caption": "Furnace washes 2 and 3, same again. O\u2082 reads nonsense under vacuum: backfill, then read.",
+     "start_frame": 150,
+     "end_frame": 224
+    },
+    {
+     "label": "3.3",
+     "caption": "Furnace washes 2 and 3, same again. O\u2082 reads nonsense under vacuum: backfill, then read.",
+     "start_frame": 225,
+     "end_frame": 284
+    },
+    {
+     "label": "3.4",
+     "caption": "Then the chamber, while the furnace holds its overpressure: pump to the floor, fill with argon, repeat.",
+     "start_frame": 285,
+     "end_frame": 359
+    },
+    {
+     "label": "3.5",
+     "caption": "Generator on, 250 \u00b0C, wash again: the target is moisture in new insulation and crucible, not the metal.",
+     "start_frame": 360,
+     "end_frame": 442
+    },
+    {
+     "label": "3.6",
+     "caption": "500 \u00b0C, wash again. Stop washing once O\u2082 is low and stable: \u2264100 ppm, best 40\u201350 (the team has seen the low 20s).",
+     "start_frame": 443,
+     "end_frame": 525
+    },
+    {
+     "label": "3.7",
+     "caption": "Pressure control back ON at melting pressure, the furnace slightly below the chamber (130 / 150 mbar). Ready to melt.",
+     "start_frame": 526,
+     "end_frame": 593
+    }
+   ]
+  },
+  "05_melt": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "4.1",
+     "caption": "Setpoint 850\u20131000 \u00b0C: long rods heat at the bottom and stay cooler at the top, so overshoot first. The generator heats the graphite; the graphite heats the charge.",
+     "start_frame": 0,
+     "end_frame": 89
+    },
+    {
+     "label": "4.2",
+     "caption": "Melt cues: a small temperature dip as melt reaches the thermocouple, faster induction beeping, the sealing rod sinking a little, the Al 'jumping' in the middle.",
+     "start_frame": 90,
+     "end_frame": 156
+    },
+    {
+     "label": "4.3",
+     "caption": "The rods slump into a pool. As soon as they do, bring the setpoint down to 780\u2013800 \u00b0C: the plate will not stand much more.",
+     "start_frame": 157,
+     "end_frame": 249
+    },
+    {
+     "label": "4.4",
+     "caption": "Wait 2 minutes once everything is liquid: the crucible-wall thermocouple lags the melt. Any longer only oxidizes it.",
+     "start_frame": 250,
+     "end_frame": 324
+    },
+    {
+     "label": "4.5",
+     "caption": "Meanwhile: transducer cooling air on, rescan the ultrasonics (scans expire), hearing protection on, an operator at the window.",
+     "start_frame": 325,
+     "end_frame": 406
+    }
+   ]
+  },
+  "06_pour": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "5.1",
+     "caption": "Melt held at ~800 \u00b0C, O\u2082 at 45 ppm. The pour goes in this order, quickly: vibration ON, draining pressure, sealing rod UP, turbo as needed.",
+     "start_frame": 0,
+     "end_frame": 77
+    },
+    {
+     "label": "5.2",
+     "caption": "Vibration ON. Amplitude is a percentage of generator current: start about 90 % and adjust; lower gives finer powder but may stop atomizing.",
+     "start_frame": 78,
+     "end_frame": 130
+    },
+    {
+     "label": "5.3",
+     "caption": "Draining pressure: furnace above chamber pushes the melt out. Only the difference matters.",
+     "start_frame": 131,
+     "end_frame": 175
+    },
+    {
+     "label": "5.4",
+     "caption": "Sealing rod UP: the melt stream falls onto the plate. The first drops usually bounce off: a cold, dry plate does not wet.",
+     "start_frame": 176,
+     "end_frame": 235
+    },
+    {
+     "label": "5.5",
+     "caption": "A short TURBO push (1.5 bar) heats the plate and clears debris; pouring more at the start is what makes the plate wet.",
+     "start_frame": 236,
+     "end_frame": 288
+    },
+    {
+     "label": "5.6",
+     "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. Steer with the plate position: land high on it, not over the top.",
+     "start_frame": 289,
+     "end_frame": 393
+    },
+    {
+     "label": "5.7",
+     "caption": "The powder runs down the cone into the container. Too thin a stream gathers and drips; melt shooting past the plate means the pressure is too high (the Oct 2 lesson).",
+     "start_frame": 394,
+     "end_frame": 498
+    },
+    {
+     "label": "5.8",
+     "caption": "Two to three minutes of attention: amplitude slider, turbo pulses, plate position, with the operator at the window the whole time.",
+     "start_frame": 499,
+     "end_frame": 603
+    },
+    {
+     "label": "5.9",
+     "caption": "The crucible runs empty: next, the end-of-pour sequence (step 6).",
+     "start_frame": 604,
+     "end_frame": 670
+    }
+   ]
+  },
+  "07_end_cooldown": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "6.1",
+     "caption": "Crucible empty: one TURBO push clears the last drops and the nozzle.",
+     "start_frame": 0,
+     "end_frame": 67
+    },
+    {
+     "label": "6.2",
+     "caption": "Within seconds: sealing rod DOWN, melting pressure, generator STOP, ultrasonics STOP. Vibrating against solidified metal cracks the plate.",
+     "start_frame": 68,
+     "end_frame": 127
+    },
+    {
+     "label": "7.1",
+     "caption": "Set 250 \u00b0C for next time and let it cool. Open at or below 400 \u00b0C: above 500 \u00b0C graphite burns in air. Cooling water stays on until about 100 \u00b0C.",
+     "start_frame": 128,
+     "end_frame": 202
+    },
+    {
+     "label": "7.2",
+     "caption": "Pressure control OFF, press VENT. The door stays locked while the pressure is off atmospheric. Masks and lab coat on.",
+     "start_frame": 203,
+     "end_frame": 262
+    },
+    {
+     "label": "7.3",
+     "caption": "Swing the three bolts back and open the door: the plate comes out with it. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+     "start_frame": 263,
+     "end_frame": 337
+    },
+    {
+     "label": "7.4",
+     "caption": "Brush the plate, bowl, walls and view port down into the container, in a circle, before it comes off. Let the dust settle before reaching in.",
+     "start_frame": 338,
+     "end_frame": 420
+    },
+    {
+     "label": "8.1",
+     "caption": "Close the container valve first (pull down and across: it is heavier than it looks), brush the top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.",
+     "start_frame": 421,
+     "end_frame": 495
+    },
+    {
+     "label": "8.2",
+     "caption": "Pour onto paper, pick out chunks, sieve, bag, 6-character ID label, photo on GitHub. At about 100 \u00b0C: heat exchanger, water, air, argon, power off, in any order.",
+     "start_frame": 496,
+     "end_frame": 577
+    }
+   ]
+  },
+  "08_clean": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "9.1",
+     "caption": "Same alloy next: open, brush, vacuum. A material change takes about an hour: vacuum, then wipe everything. Brushes, paper towels and isopropanol only.",
+     "start_frame": 0,
+     "end_frame": 89
+    },
+    {
+     "label": "9.2",
+     "caption": "Plate off its stud. Never grind or clean it: one plate per alloy, logged (1\u20133 runs each). A stainless scraper for stuck particles, never plastic.",
+     "start_frame": 90,
+     "end_frame": 156
+    },
+    {
+     "label": "9.3",
+     "caption": "Once the furnace can be touched (150 \u00b0C is too hot): lid open, SEALING ROD up, safety pin out, lever up, rod out. Scrape Al off its shaft and keep the tip smooth.",
+     "start_frame": 157,
+     "end_frame": 246
+    },
+    {
+     "label": "9.4",
+     "caption": "Strip it in order: thermocouple, top and side insulation; through the door, hold the graphite nut and unscrew it from below with the seal, so nothing falls; then the crucible comes up and out, and the bottom insulation.",
+     "start_frame": 247,
+     "end_frame": 399
+    },
+    {
+     "label": "9.5",
+     "caption": "On the bench, unscrew the holder and lift the nozzle out. Look through it for light; unclog it with a needle or drill it to \u00d80.7; swap it if a new charge would not push through.",
+     "start_frame": 400,
+     "end_frame": 492
+    },
+    {
+     "label": "9.6",
+     "caption": "Reassemble in the same order as before a run: nozzle, holder, bottom insulation, crucible, nut, insulation, thermocouple, rod, lever. Wipe the O-rings; HEPA filter about every two months (sand tray).",
+     "start_frame": 493,
+     "end_frame": 657
+    }
+   ]
+  }
+ }
+}

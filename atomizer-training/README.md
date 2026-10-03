@@ -13,7 +13,7 @@ with the training detail from #222 and the powder bags from #249.
 | Transcripts: YouTube auto-captions for 20 videos, Whisper large-v3-turbo transcripts for all 26 (word-timed for all nine training videos and every longer video), and word-level re-runs of the clips where the two still disagreed | [`transcripts/`](transcripts/) |
 | **Start-to-finish stitch**: every logged moment of all 26 videos in the order of a run, one raw cut in two parts, with the clip list and chapter times | [`stitch/`](stitch/README.md) |
 | Keyframes: a contact sheet per video, and one frame for every moment the SOP cites | [`keyframes/`](keyframes/README.md), [`keyframes/sop-frames.md`](keyframes/sop-frames.md) |
-| **3D step animations**: a CadQuery model of the machine, rendered with PyVista into one GIF per step of the run (the assembly-GIF style of #239 and #234), plus a labelled overview and a cutaway | [`viz3d/`](viz3d/README.md) |
+| **3D step animations**: a CadQuery model of the machine, rendered with PyVista into one GIF per step of the run (the assembly-GIF style of #239 and #234), plus a labelled overview and a cutaway. Every animation is checked frame by frame so that no part passes through another ([`viz3d/out/collisions.md`](viz3d/out/collisions.md)) | [`viz3d/`](viz3d/README.md) |
 | **Narrated tutorials**: four videos built from the 3D animations, draw.io outlines and the trainer's own explanations; scripts, diagrams, build pipeline, upload log | [`tutorials/`](tutorials/README.md) |
 | Inventory of the videos (id, title, date, duration, privacy) | [`videos.json`](videos.json) |
 | The scripts that made all of this | [`tools/`](tools/) |
@@ -51,7 +51,10 @@ with the training detail from #222 and the powder bags from #249.
    stack, cone and container, frame and utilities), measured from 720p frames and AMAZEMET's renders and scaled to the documented
    envelope, rendered off-screen
    with PyVista into one animation per step. Each animation's sub-steps are written to a JSON file so the narration can follow
-   them. Draft 1's matplotlib schematics and stick-figure operator were dropped after review.
+   them. Draft 1's matplotlib schematics and stick-figure operator were dropped after review. Since draft 4,
+   [`viz3d/collide.py`](viz3d/collide.py) replays every animation without rendering and fails any pair of parts that
+   pass through each other. Fixing what it found also put the steps in the order of a real run: the furnace, the
+   chamber, and the stack into the door last.
 8. **Tutorials** ([`tutorials/`](tutorials/README.md)). Each tutorial runs: a draw.io outline of its steps that builds up with the
    narration (step boxes first, then each step's details as it is named), then for each step:
    - the outline with that step highlighted;

@@ -511,12 +511,15 @@ def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=Tr
                 continue
             sc.add("pipe_" + name, pv.Spline(np.array(p["pts"], float), 120).tube(radius=p["r"], n_sides=14),
                    p["color"], "pipes")
-    # the stack rides on the door; the rod rides on the holder arm; the nozzle in its holder, the holder on the crucible
+    # the stack rides on the door; the lever and the rod ride on the post's piston ("arm_base", which lifts them to pour),
+    # the lever swings up about its pivot on its own ("arm"); the nozzle in its holder, the holder on the crucible
     for g in ("plate", "sonotrode", "booster", "transducer", "cover"):
         sc.parent[g] = "door"
-    sc.parent["rod"] = "arm"
+    sc.parent["arm"] = "arm_base"
+    sc.parent["rod"] = "arm_base"
     sc.parent["nozzle"] = "holder"
     sc.parent["holder"] = "crucible"
+    sc.parent["splash"] = "container"           # the splash disc sits in the container's top flange
     return ms
 
 

@@ -23,7 +23,7 @@
         <mxCell id="s1_b2" value="2 · Prepare the machine" style="rounded=1;arcSize=14;whiteSpace=wrap;html=1;fontSize=24;fontStyle=1;fillColor=#FFFFFF;strokeColor=#00897B;strokeWidth=3;fontColor=#1F2937;" vertex="1" parent="s1_lane">
           <mxGeometry x="638" y="50" width="576" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="s1_c2" value="ultrasonic stack + scan&lt;br&gt;furnace: nozzle, crucible, insulation + thermocouple,&lt;br&gt;sealing rod, charge&lt;br&gt;chamber: container, splash plate, door clamps" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s1_lane">
+        <mxCell id="s1_c2" value="furnace: crucible, nut, insulation, thermocouple,&lt;br&gt;sealing rod + lever, charge&lt;br&gt;chamber: splash disc, container, catch bowl&lt;br&gt;stack into the door, scan; &lt;span style=&quot;white-space:nowrap&quot;&gt;door bolted&lt;/span&gt;" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=top;fontSize=20;fontColor=#1F2937;strokeColor=none;fillColor=none;spacing=0;" vertex="1" parent="s1_lane">
           <mxGeometry x="638" y="106" width="576" height="103.333" as="geometry" />
         </mxCell>
         <mxCell id="s1_a1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="s1_lane" source="s1_b1" target="s1_b2">

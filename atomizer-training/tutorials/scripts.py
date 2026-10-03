@@ -29,13 +29,13 @@ B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
     "00-overview": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 4)",
         "segments": [
             ("title", "The rePowder ultrasonic atomizer", "Tutorial 0 · the machine, how it makes powder, and what a run looks like",
              "The rePowder ultrasonic atomizer, at the BYU Vertical Cloud Lab."),
             ("build", "00-overview", [
                 "A run on the atomizer has three parts, and each has its own tutorial.",
-                "Before a run: the utilities, the ultrasonic stack, the furnace and its charge, and the chamber.",
+                "Before a run: the utilities, the furnace and its charge, the chamber, and last the ultrasonic stack.",
                 "During a run: the argon gas wash, the melt, and the pour onto the vibrating plate.",
                 "After a run: shutdown, cool-down, collecting the powder, and cleaning. This overview introduces the machine "
                 "itself and how it turns a bar of metal into powder.",
@@ -87,17 +87,17 @@ TUTORIALS = {
         ],
     },
     "01-before": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 4)",
         "segments": [
-            ("title", "Before a run", "Tutorial 1 · utilities, the ultrasonic stack, the furnace and the chamber",
+            ("title", "Before a run", "Tutorial 1 · utilities, the furnace, the chamber and the ultrasonic stack",
              "Tutorial one: before a run."),
             ("outline", "00-overview_tutorial1", "Tutorial one covers everything before the furnace heats up."),
             ("build", "01-before", [
                 "Before any heating, four things have to be right, in this order.",
                 "The utilities.",
-                "The ultrasonic stack, assembled, torqued and scanned.",
                 "The furnace: nozzle, crucible, insulation, thermocouple, sealing rod and the charge.",
-                "And the chamber, with the powder container clamped and the door closed.",
+                "The chamber, with the splash disc, the powder container and the catch bowl.",
+                "And last the ultrasonic stack, assembled, mounted in the door and scanned, before the door closes.",
             ]),
             ("outline", "01-before_step1", "Step one: the utilities."),
             ("anim", "01_utilities", [
@@ -110,60 +110,64 @@ TUTORIALS = {
             ]),
             ("clip", "wRc8p2_FnJo", 86.2, 42.5, B),
             ("clip", "wRc8p2_FnJo", 132.5, 38.9, B),
-            ("outline", "01-before_step2", "Step two: the ultrasonic stack."),
+            ("outline", "01-before_step2", "Step two: the furnace."),
+            ("anim", "03_furnace_load", [
+                "Start cold. Open the furnace lid, and swing the sealing-rod lever up, clear of the opening. For a "
+                "rebuild, everything comes out: thermocouple, sealing rod, insulation, and crucible.",
+                "On the bench, the nozzle goes into its holder, white side up. Half a millimeter is the standard bore, "
+                "and point seven is more reliable for aluminum alloys. The holder screws into the crucible by hand, "
+                "several turns, and only just tight.",
+                "The graphite seal and the bottom insulation go in first. Then lift the crucible over, and lower it "
+                "straight down into the coil. Handle it gently: graphite is brittle.",
+                "Open the chamber's left door. Through it, the lower seal and the thin graphite nut go onto the holder "
+                "from below, while the crucible is held still at the top, its thermocouple hole turned to the back "
+                "right. A second person makes this easier; alone, keep one hand on the crucible. Tighten it snug, but "
+                "never force it. Overtightened graphite cracks, and a loose nut will not seal.",
+                "Side insulation goes around the crucible, with its hole lined up with the thermocouple port, and then "
+                "the top insulation.",
+                "The thermocouple goes in at the back right, down into the hole in the crucible wall, bent to sit close.",
+                "The sealing rod needs a clean, smooth tip, or it will not seal. It goes straight down onto the nozzle, "
+                "before any metal goes in.",
+                "Then swing the lever down onto the rod's adapter, push the safety pin in, and press the sealing rod "
+                "button to bring it down.",
+                "Now the charge, clean and at most twenty millimeters across. Two hundred fifty to three hundred grams "
+                "is the recommended load.",
+                "Close the lid, and set the latch just tight enough to seal. If it hisses under pressure, adjust the "
+                "latch. The chamber door stays open for the next step.",
+            ]),
+            ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
+            ("clip", "wRc8p2_FnJo", 2793.2, 44.2, B),    # the thread reaches into the chamber; nut, thermocouple hole
+            ("clip", "1F9_4ccwhss", 100.8, 47.0, B),     # rod tip, rod in, lever down, "now we can add the material"
+            ("outline", "01-before_step3", "Step three: the chamber."),
+            ("anim", "03b_chamber", [
+                'First the round splash-protection disc drops into the top flange of the powder container. One is enough for aluminum.',
+                'Lift the container under the outlet and close the flange clamp finger-tight. A second person makes this easier, one holding the weight while the other closes the clamp; on your own, keep it supported until the clamp is shut.',
+                'Through the open door, the catch bowl goes on the chamber floor, around the outlet. It catches melt that does not atomize, and protects the chamber if a plate breaks.',
+            ]),
+            ("clip", "58wJ_Khwgyk", 158.3, 25.4, B),
+            ("clip", "58wJ_Khwgyk", 224.4, 16.4, B),
+            ("outline", "01-before_step4", "Step four: the ultrasonic stack, and closing the door."),
             ("anim", "02_stack", [
-                'The stack goes transducer, booster, sonotrode, plate. The transducer is an air-cooled piezo stack on a cable carrying about a thousand volts. Never drop it or get it wet.',
+                'The ultrasonic stack goes in last. It goes transducer, booster, sonotrode, plate. The transducer is an air-cooled piezo stack on a cable carrying about a thousand volts. Never drop it or get it wet.',
                 'The booster goes onto the transducer at sixty-five newton meters. Mounted in reverse, the one-and-a-half-to-one booster lowers the amplitude, for finer powder.',
                 'The sonotrode goes on at sixty newton meters, with isopropanol on the threads.',
-                'Fit the splash plate first, because it is hard to fit later, then slide the stack into the door.',
+                'With the door locked open, slide the stack into the door housing and fit both clamps.',
                 'The plate goes onto its stud with the stack already in the housing: fifty newton meters, counter-holding the sonotrode with a seventeen millimeter wrench.',
                 'Then run a scan. One wide peak a little over forty kilohertz is good.',
                 'A drop of water on the plate should atomize over the whole surface. If only half of it atomizes, the plate is cracked.',
-                'Finally, bolt the protective cover over the transducer, lock the cable, and connect the cooling air.',
+                'Bolt the protective cover over the transducer, lock the cable, and connect the cooling air.',
+                'Run the frequency check before closing. Then swing the door shut, and the plate swings in under the nozzle.',
+                'Swing the three bolts over, and tighten the star knobs.',
             ]),
             ("clip", "58wJ_Khwgyk", 419.9, 16.0, B),
             ("clip", "58wJ_Khwgyk", 805.1, 37.7, B),
             ("clip", "58wJ_Khwgyk", 1332.2, 28.0, B),
-            ("outline", "01-before_step3", "Step three: the furnace."),
-            ("anim", "03_furnace_load", [
-                "Start cold, and open the furnace lid. For a rebuild, everything comes out: thermocouple, sealing rod, "
-                "insulation, and crucible.",
-                "The nozzle is the consumable. It goes into its holder white side up. Half a millimeter is the standard bore, "
-                "and point seven is more reliable for aluminum alloys. The holder screws into the crucible by hand, several "
-                "turns, and only just tight.",
-                "Then the upper graphite seal and the bottom insulation, and the crucible goes straight down into the coil. "
-                "Handle it gently: graphite is brittle.",
-                "Through the chamber's left door, the lower seal and the thin graphite nut go onto the holder from below, "
-                "while the crucible is held still at the top, its thermocouple hole turned to the back right. A second "
-                "person makes this easier; alone, keep one hand on the crucible. Tighten it snug, but never force it. "
-                "Overtightened graphite cracks, and a loose nut will not seal.",
-                "Side insulation goes around the crucible, with its hole lined up with the thermocouple port, and then the "
-                "top insulation.",
-                "The thermocouple goes in from the back right, into the hole in the crucible wall, bent to sit close.",
-                "The sealing rod needs a clean, smooth tip, or it will not seal. It is lowered onto the nozzle before any "
-                "metal goes in.",
-                "The charge must be clean and at most twenty millimeters across. Two hundred fifty to three hundred grams is "
-                "the recommended load.",
-                "Close the lid, and set the latch just tight enough to seal. If it hisses under pressure, adjust the latch.",
-            ]),
-            ("clip", "wRc8p2_FnJo", 2754.8, 34.6, B),
-            ("clip", "wRc8p2_FnJo", 2793.2, 44.2, B),    # the thread reaches into the chamber; nut, thermocouple hole
-            ("clip", "1F9_4ccwhss", 100.8, 19.6, B),
-            ("outline", "01-before_step4", "Step four: the chamber."),
-            ("anim", "03b_chamber", [
-                'The powder container goes on under the outlet, and the flange clamp closes finger-tight. A second person makes this easier, one holding the weight while the other closes the clamp; on your own, keep it supported until the clamp is shut.',
-                'Through the door, the catch bowl goes on the chamber floor and the splash plate above the container. One is enough for aluminum.',
-                'Run the frequency check now, before closing, then swing the door shut. The ultrasonic unit rides in it.',
-                'Swing the three bolts over and tighten the star knobs.',
-            ]),
-            ("clip", "58wJ_Khwgyk", 224.4, 16.4, B),
-            ("clip", "58wJ_Khwgyk", 158.3, 25.4, B),
             ("card", "Ready for the gas wash", "Next: tutorial 2, during a run",
              "The machine is ready for the gas wash, which is where tutorial two begins."),
         ],
     },
     "02-during": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 4)",
         "segments": [
             ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
              "Tutorial two: during a run."),
@@ -227,7 +231,7 @@ TUTORIALS = {
         ],
     },
     "03-after": {
-        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
+        "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 4)",
         "segments": [
             ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
              "Tutorial three: after a run."),
@@ -249,7 +253,7 @@ TUTORIALS = {
             ("anim", "07_end_cooldown", [
                 'Set two hundred fifty degrees for next time, and let it cool. Open only at or below four hundred degrees, because above five hundred, graphite burns in air.',
                 'Turn pressure control off and press vent. The door stays locked while the pressure is off atmospheric. Masks and lab coat on.',
-                'Open the three clamps and the door. The chamber and cone are water-cooled, but the furnace parts are still hot.',
+                'Swing the three bolts back and open the door; the plate comes out with it. The chamber and cone are water-cooled, but the furnace parts are still hot.',
                 'Brush the plate, the bowl, the walls and the view port down into the container, before it comes off.',
             ], (2, 5)),
             ("clip", "naePD8o9_Gk", 2320.3, 11.2, B),
@@ -266,9 +270,10 @@ TUTORIALS = {
             ("anim", "08_clean", [
                 'Cleaning depends on what runs next. For the same alloy: open, brush, and vacuum. A material change takes about an hour: vacuum, then wipe everything, with brushes, paper towels and isopropanol.',
                 'Take the plate off its stud. Never grind or clean a plate: keep one plate per alloy, and log which plate saw which material. A stainless scraper handles stuck particles.',
-                'Once the furnace can be touched, open the lid and take the sealing rod out. Peel the slag from the crucible floor, scrape aluminum off the shaft, and keep the tip smooth.',
-                'Strip the thermocouple, the insulation and the crucible. Look through the nozzle for light; clear it with a needle, or drill it to point seven.',
-                'Reassemble in order, wipe the O-rings, and check the HEPA filter about every two months, keeping a used one in a metal tray with sand.',
+                'Once the furnace can be touched, open the lid, raise the sealing rod, pull the safety pin, swing the lever up, and take the rod out. Scrape aluminum off the shaft, and keep the tip smooth.',
+                'Strip it in order: thermocouple, top and side insulation. Then, through the door, hold the graphite nut and unscrew it from below with its seal, so nothing falls. Lift the crucible out, and peel the slag from its floor; the bottom insulation comes out last.',
+                'On the bench, unscrew the holder and take the nozzle out. Look through it for light; clear it with a needle, or drill it to point seven.',
+                'Reassemble in the same order as before a run. Wipe the O-rings, and check the HEPA filter about every two months, keeping a used one in a metal tray with sand.',
             ]),
             ("clip", "58wJ_Khwgyk", 4057.6, 25.5, B),
             ("clip", "FDRTt68Vfvo", 1071.0, 4.2, B),
