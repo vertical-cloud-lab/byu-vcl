@@ -15,7 +15,8 @@ with the training detail from #222 and the powder bags from #249.
 | Keyframes: a contact sheet per video, and one frame for every moment the SOP cites | [`keyframes/`](keyframes/README.md), [`keyframes/sop-frames.md`](keyframes/sop-frames.md) |
 | **3D step animations**: a CadQuery model of the machine, rendered with PyVista into one GIF per step of the run (the assembly-GIF style of #239 and #234), plus a labelled overview and a cutaway. Every animation is checked frame by frame so that no part passes through another ([`viz3d/out/collisions.md`](viz3d/out/collisions.md)) | [`viz3d/`](viz3d/README.md) |
 | **Narrated tutorials**: four videos built from the 3D animations, draw.io outlines and the trainer's own explanations; scripts, diagrams, build pipeline, upload log | [`tutorials/`](tutorials/README.md) |
-| Inventory of the videos (id, title, date, duration, privacy) | [`videos.json`](videos.json) |
+| **The playlist**: every atomizer video on the channel in one unlisted playlist, tutorials first, then the recordings in the order they were made; each renamed, with a summary, chapters and links back here | [playlist](https://www.youtube.com/playlist?list=PLB8wxmcPAjLM), [`playlist/`](playlist/README.md) |
+| Inventory of the videos (id, title as on YouTube, original title, date, duration, privacy) | [`videos.json`](videos.json) |
 | The scripts that made all of this | [`tools/`](tools/) |
 
 ## How it was made

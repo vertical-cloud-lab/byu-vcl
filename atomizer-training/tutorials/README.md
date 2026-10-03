@@ -49,14 +49,13 @@ changes.
 | 2 · During a run: gas wash, melt, pour, end of pour | [7:43](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
 | 3 · After a run: shutdown, cool-down, powder, cleaning | [5:57](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
 
-Drafts 1 and 2 can be deleted in YouTube Studio once draft 3 is accepted (the upload token cannot delete).
+Drafts 1 and 2 are now titled `[superseded] …` and point to draft 3. Deleting them is still to do: it needs the full token and a go-ahead.
 
-**Playlist.** Creating a playlist needs the channel's full token (`playlists.insert` requires the `youtube` scope), which
-only an `@claude-youtube` run has. [`../../youtube/make_playlist.py`](../../youtube/make_playlist.py) is ready for it:
-
-```bash
-python youtube/make_playlist.py --title "rePowder atomizer tutorials (draft 3)" --privacy unlisted --ids raIcdus1lI0 KwY4KTY1UdI 79QQtmIm0JM TvaFwSyqaog
-```
+**Playlist.** Draft 3 opens the atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, ahead of the
+cups tutorial, the stitch and the recordings. Titles, descriptions (with chapters, and a link to the training-video
+moment behind every clip) and the playlist order come from [`../playlist/catalog.py`](../playlist/catalog.py). When a
+new draft is uploaded, swap its ids in there and run `python ../playlist/sync.py apply --ref <sha>` in an
+`@claude-youtube` run; see [`../playlist/README.md`](../playlist/README.md).
 
 ## Files
 
