@@ -416,8 +416,8 @@ def write_ass(path, clip, cues):
            "[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, "
            "Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
            "MarginR, MarginV, Encoding\n"
-           "Style: Speech,DejaVu Sans,29,&H00FFFFFF,&H000000FF,&H00000000,&H88000000,0,0,0,0,100,100,0,0,3,0,0,2,60,60,26,1\n"
-           "Style: Note,DejaVu Sans,23,&H00C8F0FF,&H000000FF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,3,0,0,7,22,22,58,1\n\n"
+           "Style: Speech,DejaVu Sans,29,&H00FFFFFF,&H000000FF,&H00000000,&H70000000,0,0,0,0,100,100,0,0,3,0,0,2,60,60,26,1\n"
+           "Style: Note,DejaVu Sans,23,&H0080E6FF,&H000000FF,&H00000000,&H58000000,0,0,0,0,100,100,0,0,3,0,0,7,22,22,58,1\n\n"
            "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     open(path, "w", encoding="utf-8").write(hdr + "\n".join(ev) + "\n")
 
@@ -657,7 +657,8 @@ def cmd_upload(clips, parts=None):
         path = f"{OUT}/atomizer_start_to_finish_{part[0]}.mp4"
         if part[0] not in timeline or not os.path.exists(path):
             print(part[0], "not built yet"); continue
-        title = f"rePowder atomizer at BYU VCL: every recorded step, start to finish. {part[1]} (raw cut, draft 1)"
+        title = f"rePowder atomizer, every recorded step: {part[1].replace(': ', ', ')} (raw cut, draft 1)"   # YouTube: 100 chars max
+        assert len(title) <= 100, title
         vid = upload_video(path, title, description(clips, timeline, part), privacy="unlisted",
                            tags=["atomizer", "rePowder", "AMAZEMET", "BYU VCL", "training"])
         done[part[0]] = {"video_id": vid, "url": f"https://www.youtube.com/watch?v={vid}", "title": title,
