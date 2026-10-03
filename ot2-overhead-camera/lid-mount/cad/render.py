@@ -17,7 +17,6 @@ from lid_mount import ASSEMBLY, COLORS, Params, box, build, make_view_cone, prin
 
 RENDERS = Path(__file__).resolve().parent.parent / "renders"
 PRINTED = ("base", "deck", "drill_template", "spacers")
-STEEL, NYLON = (0.74, 0.75, 0.78), (0.96, 0.95, 0.90)
 
 
 def mesh(wp, tol=0.05) -> pv.PolyData:
@@ -40,8 +39,8 @@ def add(pl, wp, name, opacity=1.0, color=None):
 
 
 def add_fasteners(pl, p: Params, lift: dict | None = None, slide: dict | None = None, clip=None) -> None:
-    """McMaster-Carr screws, nuts and washers (see hardware.py), optionally lifted per group,
-    slid outward along X per group (the M3 nuts enter their posts that way), or clipped."""
+    """The screws, nuts and washers (see hardware.py), optionally lifted per group, slid outward
+    along X per group (the M3 nuts enter their posts that way), or clipped."""
     shapes, _ = hardware.placed(p)
     for name, group in shapes.items():
         dz = (lift or {}).get(name, 0.0)
@@ -53,8 +52,7 @@ def add_fasteners(pl, p: Params, lift: dict | None = None, slide: dict | None = 
                 s = s.intersect(clip)
                 if not s.val().isValid() or s.val().Volume() < 1e-3:
                     continue
-            pl.add_mesh(mesh(s), color=NYLON if name == "m4_washers" else STEEL, smooth_shading=False,
-                        specular=0.3)
+            pl.add_mesh(mesh(s), color=hardware.color(name), smooth_shading=False, specular=0.3)
 
 
 def clip_lid(p, parts, size=180.0):
@@ -76,7 +74,7 @@ def render_assembly(p: Params, parts: dict, out: Path) -> None:
 
 def render_exploded(p: Params, parts: dict, out: Path) -> None:
     lift = {"lid": -40, "base": 0, "lens": 35, "adapter": 55, "camera_mount": 75, "camera_pcb": 75,
-            "deck": 110, "pi_spacers": 135, "pi5": 160}
+            "deck": 110, "pi_standoffs": 130, "pi5": 160}
     pl = plotter((1400, 1600))
     for name, dz in lift.items():
         wp = clip_lid(p, parts) if name == "lid" else parts[name]
@@ -84,8 +82,9 @@ def render_exploded(p: Params, parts: dict, out: Path) -> None:
     add_fasteners(pl, p, {"m4_screws": -75, "m4_washers": -58, "m4_nuts": 14, "cam_screws": 60, "cam_nuts": 124,
                           "m3_screws": 132, "pi_nuts": 96, "pi_screws": 178}, slide={"m3_nuts": 16})
     pl.camera_position = [(500, -620, 400), (0, 0, 100), (0, 0, 1)]
-    pl.add_text("Exploded: lid, base, lens, C-CS adapter, camera, deck, Pi 5,\n"
-                "and the McMaster-Carr screws, nuts and washers", font_size=11, color="black")
+    pl.add_text("Exploded: lid, base, lens, C-CS adapter, camera, deck, Pi 5. Steel: the lab drawer's\n"
+                "M3 x 10 and M4 x 18 pan heads and nuts. Black: the nylon M2.5 kit's screws, nuts, standoffs",
+                font_size=11, color="black")
     pl.screenshot(out / "exploded.png")
     pl.close()
 
@@ -129,7 +128,7 @@ def render_joint(p: Params, parts: dict, out: Path) -> None:
         f"socket, {p.socket_depth} mm deep, {p.socket_clear} mm clear per side": (c - 5.2, c, p.z_deck + 0.8),
         "post": (c - 4, c, p.z_deck - 12),
         "M3 nut, slid in from the side": (c + 2.6, c, z_nut),
-        f"M3 x {p.m3_screw_len:.0f}": (c + 2.4, c, p.z_deck + p.deck_t + 1.2),
+        "M3 x 10 pan head": (c + 2.4, c, p.z_deck + p.deck_t + 1.2),
     }
     pl.add_point_labels(np.array(list(labels.values()), dtype=float), list(labels.keys()), font_size=20,
                         point_size=10, point_color="red", shape_opacity=0.85, always_visible=True)

@@ -1,8 +1,16 @@
-# Fasteners: McMaster-Carr models
+# Fasteners: McMaster-Carr models and the nylon kit
 
-The screws, nuts and washers in the renders and GIFs are McMaster-Carr's own 3-D STEP
-models (with modelled threads). They were downloaded on 2026-09-26. `cad/hardware.py` loads
-them from `mcmaster/<PN>.step`, and falls back to ISO nominal shapes if a file is missing.
+Since 2026-10-03 the renders and GIFs show the fasteners the lab is actually using:
+
+- **Steel:** the stainless Phillips pan heads and nuts from the ME Prototyping Lab's drawer
+  ([`../shopping-list.md`](../shopping-list.md)). These are drawn from McMaster-Carr's own 3-D
+  STEP models of the same parts, with modelled threads.
+- **Nylon:** every M2.5 part is black nylon from the lab's COMRUN kit
+  ([`amazon/README.md`](amazon/README.md)). COMRUN publishes no CAD, so `cad/hardware.py` and
+  `cad/lid_mount.py` draw those from nominal sizes.
+
+`cad/hardware.py` loads the McMaster files from `mcmaster/<PN>.step`, and falls back to ISO
+nominal shapes if a file is missing.
 
 **The STEP files aren't committed.** McMaster's CAD comes with no licence to redistribute it,
 and this repo is public, so they are handled like Opentrons' STEP in `cad/ot2_context.py`:
@@ -12,17 +20,23 @@ commit `e9b1911` briefly. If the lab decides committing them is fine, restore th
 
 | Qty | Role | McMaster PN | Part |
 |---|---|---|---|
-| 4 | base → lid, phase 2 | [92095A194](https://www.mcmaster.com/92095A194/) | 18-8 stainless button head hex-drive screw, M4 × 0.7, 16 mm (ISO 7380) |
-| – | shorter option | [92095A192](https://www.mcmaster.com/92095A192/) | the same, 12 mm |
+| 4 | base → lid, phase 2 | [92000A227](https://www.mcmaster.com/92000A227/) | 18-8 stainless Phillips pan head screw, M4 × 0.7, 18 mm: the drawer's M4 × 18 (fetched 2026-10-03) |
 | 4 | in the base's traps | [91828A231](https://www.mcmaster.com/91828A231/) | 18-8 stainless hex nut, M4 × 0.7 |
 | 4 | under the M4 heads | [95610A550](https://www.mcmaster.com/95610A550/) | nylon washer, M4, 4.3 mm ID × 9 mm OD (0.8 mm thick in the model) |
-| 8 | camera → deck, Pi 5 → deck | [91292A018](https://www.mcmaster.com/91292A018/) | 18-8 stainless socket head screw, M2.5 × 0.45, 16 mm |
-| 8 | in the deck's traps | [91828A113](https://www.mcmaster.com/91828A113/) | 18-8 stainless hex nut, M2.5 × 0.45 |
-| 4 | deck → posts | [92095A184](https://www.mcmaster.com/92095A184/) | 18-8 stainless button head hex-drive screw, M3 × 0.5, 16 mm |
+| 4 | deck → posts | [92000A120](https://www.mcmaster.com/92000A120/) | 18-8 stainless Phillips pan head screw, M3 × 0.5, 10 mm: the drawer's M3 × 10 (fetched 2026-10-03) |
 | 4 | in the posts' side slots | [91828A211](https://www.mcmaster.com/91828A211/) | 18-8 stainless hex nut, M3 × 0.5 (fetched 2026-09-26, when the posts gained nut slots) |
 
+The first design used button and socket heads, and steel M2.5:
+[92095A194](https://www.mcmaster.com/92095A194/) and [92095A192](https://www.mcmaster.com/92095A192/)
+(M4 × 16 and × 12 button heads), [92095A184](https://www.mcmaster.com/92095A184/) (M3 × 16 button
+head), [91292A018](https://www.mcmaster.com/91292A018/) (M2.5 × 16 socket head) and
+[91828A113](https://www.mcmaster.com/91828A113/) (M2.5 nut). They all still fit, as the shopping
+list's [other lengths and heads](../shopping-list.md#other-lengths-and-heads) explains, but the
+renders no longer draw them.
+
 [`mcmaster/parts.json`](mcmaster/parts.json) records each file's page title, download URL,
-size and SHA-256. McMaster sells in packs, so one pack of each covers the build.
+size and SHA-256, and whether the renders use it. McMaster sells in packs, so one pack of each
+covers the build.
 
 ## How they were fetched
 
@@ -34,11 +48,14 @@ which also live on that Pi in `~/mcm/lid`:
 ```bash
 # on the Pi, in ~/mcm/lid
 bash run.sh title 92095A194                # print the product page's title (checks the PN)
-bash run.sh step  92095A194 91828A231      # download <PN>.step (+ <PN>.meta.json) for each PN
+bash run.sh step  92000A227 91828A231      # download <PN>.step (+ <PN>.meta.json) for each PN
 
-# then, from the runner or a laptop on the tailnet
+# then, from the runner or a laptop on the tailnet, one file at a time (scp's SFTP mode
+# doesn't expand braces on the far side)
 u=RPI_STREAM_CAM_USERNAME; h=RPI_STREAM_CAM_HOSTNAME
-scp "${!u}@${!h}:~/mcm/lid/*.step" hardware/mcmaster/
+for pn in 92000A227 91828A231 95610A550 92000A120 91828A211; do
+  scp "${!u}@${!h}:mcm/lid/$pn.step" hardware/mcmaster/
+done
 ```
 
 Each file's SHA-256 is in `parts.json`, so a fresh download can be checked against the one

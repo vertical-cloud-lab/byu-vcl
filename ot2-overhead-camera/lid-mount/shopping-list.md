@@ -5,16 +5,41 @@ Hawkins's shop). It's open Mon–Fri 8–5, closed Tue 10:30–12 for devotional
 byuprototypinglab@gmail.com. It sells the fasteners it has in stock, so ask a TA at the counter.
 **Pay** with the department card from the front office, and keep the itemized receipt.
 
-Stainless or zinc-plated steel both work, and **anything M2.5 can be nylon**
-([sgbaird](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)). The
-M2.5 parts carry only the camera and the Pi 5, a few newtons. Nylon screws still need the
-lengths below, and their heads strip easily, so tighten them gently. All sizes are metric.
+**Nothing M2.5 needs buying.** Every M2.5 part comes from the lab's black nylon COMRUN kit
+(below), which is fine because those parts carry only the camera and the Pi 5, a few newtons
+([sgbaird](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)).
+The M3 and M4 parts are the stainless pan heads in the lab's drawer. All sizes are metric.
+
+### From the nylon M2.5 kit, already in the lab
+
+COMRUN's 350-piece black nylon M2.5 kit ([Amazon B0CKBWQSNY](https://www.amazon.com/dp/B0CKBWQSNY/)).
+The lab has two of them, and one M2 kit that this mount doesn't use. The kit holds Phillips pan
+heads in 6, 8 and 12 mm, nuts, washers, and male–female and female–female standoffs; the full
+list is in [`hardware/amazon/README.md`](hardware/amazon/README.md).
+
+| ☐ | Take | Part | Goes |
+|---|---|---|---|
+| ☐ | 4 | **PM M2.5 × 12** pan head, the kit's longest | camera → deck: up through the camera's corner holes |
+| ☐ | 4 | **M2.5 nut** | in the traps on top of the deck, for those screws |
+| ☐ | 4 | **M2.5 6 + 6 male–female standoff** (6 mm hex body, 6 mm stud) | Pi 5 → deck: each stud goes down through the deck |
+| ☐ | 4 | **M2.5 nut** | in the traps in the deck's underside, onto the studs |
+| ☐ | 4 | **PM M2.5 × 6** pan head | down through the Pi 5 into the standoffs |
+
+- **The camera screws:** the M2.5 × 12 is just long enough. Its tip ends level with the top of
+  the nut, about four threads in, and the camera and lens hang about 0.5 N on each screw.
+- **The standoffs** replace the printed 5 mm spacers and lift the Pi 1 mm. They stay on the
+  deck when the Pi comes off, so the nuts underneath can't drop out.
+- **If an M2.5 × 6 stops before the Pi is snug,** put a kit washer under its head; COMRUN gives
+  no thread depth for the standoffs.
+- **Fallback with the printed spacers:** M2.5 × 12 down through the Pi and spacers into the
+  underside nuts.
+- **Tightening:** small nylon Phillips heads strip easily, so tighten until snug and stop.
 
 ### What the lab's drawer holds
 
 From [@mcwilliams03's photo](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5960197882)
 of 2026-10-02: stainless Phillips pan-head screws and hex nuts, M2 to M6. The drawer has no
-M2.5, so those come from the nylon kit.
+M2.5, so those come from the nylon kit above.
 
 | Size | In the drawer | Each | For this mount |
 |---|---|---|---|
@@ -29,19 +54,19 @@ it. The 6 mm screw doesn't reach the nut, and the 25 and 40 mm ones are far too 
 
 ### Phase 1: the mount taped to the lid
 
+The M2.5 parts come from the kit above; these are the only ones to buy.
+
 | ☐ | Need | Buy | Part | Goes | Length | If they're out |
 |---|---|---|---|---|---|---|
-| ☐ | 8 | 10 | **M2.5 × 14 or 16 mm screw**, socket head (button or Phillips pan heads also fit) | camera → deck (4), Pi 5 → deck (4) | 14–16 mm; 12 at a pinch. From 18 mm up, the camera screws hit the Pi 5 above them | McMaster [91292A018](https://www.mcmaster.com/91292A018/) (16 mm) |
-| ☐ | 8 | 10 | **M2.5 hex nut** | in the deck's nut traps | | [91828A113](https://www.mcmaster.com/91828A113/) |
-| ☐ | 4 | 6 | **M3 × 10 mm Phillips pan head**, from the drawer above. 12, 14 or 16 mm, with any head, also fit | deck → posts | 10–16 mm. **Not 18** without the shims: the hole in each post is blind and stops 17 mm below the head | [92095A184](https://www.mcmaster.com/92095A184/) (16 mm) |
-| ☐ | 4 | 6 | **M3 hex nut** | slid into the slots in the posts. One also does the fit coupon's nut test | | [91828A211](https://www.mcmaster.com/91828A211/) |
+| ☐ | 4 | 6 | **M3 × 10 mm Phillips pan head**, stainless, from the drawer above. 12, 14 or 16 mm, with any head, also fit | deck → posts | 10–16 mm. **Not 18** without the shims: the hole in each post is blind and stops 17 mm below the head | McMaster [92000A120](https://www.mcmaster.com/92000A120/) (the same screw) |
+| ☐ | 4 | 6 | **M3 hex nut**, from the drawer | slid into the slots in the posts. One also does the fit coupon's nut test | | [91828A211](https://www.mcmaster.com/91828A211/) |
 
 ### Phase 2: only if the window gets drilled
 
 | ☐ | Need | Buy | Part | Goes | Length | If they're out |
 |---|---|---|---|---|---|---|
-| ☐ | 4 | 4 | **M4 × 16 mm button head screw (ISO 7380)**, or a Phillips pan head. Not a socket head: the head hangs under the lid, and the pipette head passes 9.1 mm below it | up through the lid into the base, from inside the robot | 12 mm and up; 14–16 best | [92095A194](https://www.mcmaster.com/92095A194/) |
-| ☐ | 4 | 4 | **M4 hex nut** | in the base's nut traps | | [91828A231](https://www.mcmaster.com/91828A231/) |
+| ☐ | 4 | 4 | **M4 × 18 mm Phillips pan head**, stainless, from the drawer. Not a socket head: the head hangs under the lid, and the pipette head passes 9.1 mm below it | up through the lid into the base, from inside the robot | 12 mm and up. The 18 reaches 6.5 mm past the nut; a 12 only 0.5 mm | [92000A227](https://www.mcmaster.com/92000A227/) (the same screw) |
+| ☐ | 4 | 4 | **M4 hex nut**, from the drawer | in the base's nut traps | | [91828A231](https://www.mcmaster.com/91828A231/) |
 | ☐ | 4 | 4 | **M4 nylon washer**, 4.3 × 9 mm. A plain steel one will do if that's all they have; tighten gently | under the M4 heads | | [95610A550](https://www.mcmaster.com/95610A550/) |
 
 ### Other lengths and heads
@@ -52,8 +77,9 @@ thickest ([results](exports/fastener_fit.json)).
 
 | Screw | Works | Shortest (tip through its nut) | Longest, and what stops it |
 |---|---|---|---|
-| M2.5, camera → deck | 14–16 mm; 12 at a pinch | 12.1 mm | 17.4 mm: the underside of the Pi 5 |
-| M2.5, Pi 5 → deck | 12 mm and up | 11.3 mm | 38 mm: the space kept clear for turning the lens rings |
+| M2.5, camera → deck | 12–18 mm; the kit's 12 is flush with the nut | 12.1 mm | 18.4 mm: the underside of the Pi 5 |
+| M2.5, Pi 5 → nylon standoffs | 6 mm | 1.6 mm (the board) | about 7.6 mm: the bottom of the 6 mm standoff's thread |
+| M2.5, Pi 5 → printed spacers → deck (fallback) | 12 mm and up | 11.3 mm | 38 mm: the space kept clear for turning the lens rings |
 | M3, deck → posts | 10–16 mm | 9.4 mm | 17.0 mm: the bottom of the screw hole in the post |
 | M3, with the 2 mm deck shims | 12–18 mm | 11.4 mm | 19.0 mm |
 | M4, base → lid | 12 mm and up | 11.5 mm, on a 5 mm window with a 0.8 mm washer | nothing in reach |
@@ -66,7 +92,7 @@ rather than the sockets locate the deck. For a new base, `m3_screw_len` in
 printer on 2026-10-02 has the 17 mm ones.
 
 **Heads.** Socket (ISO 4762), button (ISO 7380) and Phillips pan heads all fit the M2.5
-and M3 joints, so they can be mixed. That includes the older DIN 7985 pan head, whose M3
+and M3 joints, so they can be mixed, and the kit's nylon pan heads fit. That includes the older DIN 7985 pan head, whose M3
 head is Ø6.0 mm rather than Ø5.6 mm; it still clears the Pi 5 by 4.0 mm in plan. The
 official drawings leave about Ø5.4 mm around each of the camera's corner holes and Ø5.8 mm
 around each of the Pi 5's, and those M2.5 heads are Ø4.5–5.0 mm. Skip countersunk (flat)
@@ -75,10 +101,11 @@ the window, above the pipette head. With the washer, a button head hangs 3.0 mm 
 window, a Phillips pan 3.9 mm and a socket head 4.8 mm, against 9.1 mm of clearance in
 Opentrons' CAD, less about 1.5 mm of estimated window sag.
 
-**Tools.** Hex keys: 1.5 mm for M2.5 button heads, 2 mm for M2.5 socket and M3 button
-heads, 2.5 mm for M3 socket and M4 button heads. Phillips: #1 for M2.5 and M3, #2 for M4.
-Hex drives are the easier choice for the camera screws, which are driven up past the
-camera's lens mount, and small stainless Phillips heads cam out easily.
+**Tools.** For the parts above, a Phillips screwdriver: #1 for the nylon M2.5 and the M3
+pan heads, #2 for the M4s. Press firmly while turning: small Phillips heads cam out, and nylon
+ones strip. A stubby or offset driver helps with the camera screws, which go up past the
+camera's lens mount. Hex keys only if you swap in hex-drive heads: 1.5 mm for M2.5 button
+heads, 2 mm for M2.5 socket and M3 button heads, 2.5 mm for M3 socket and M4 button heads.
 
 ### Free at the Project Support Center, 107 EB
 
@@ -87,7 +114,7 @@ quantities, and lends tools. It's also the next place to try for any size the Pr
 doesn't have.
 
 - ☐ **Painter's or gaffer tape**, to tape the base down in phase 1
-- ☐ **A #1 Phillips screwdriver to borrow**, for the drawer's M3 pan heads (#2 for its M4s). Hex keys instead for hex-drive heads: 2 mm (M2.5 socket heads, M3 button heads) and 2.5 mm (M4 button heads, or M3 socket heads); see [Tools](#other-lengths-and-heads)
+- ☐ **A #1 Phillips screwdriver to borrow**, for the kit's nylon M2.5 pan heads and the drawer's M3 pan heads (#2 for its M4s). Hex keys only if you use hex-drive heads instead; see [Tools](#other-lengths-and-heads)
 - ☐ Optional: a scrap of 1–2 mm black adhesive foam, as a light seal under the base
 
 ### Already on hand
@@ -95,8 +122,8 @@ doesn't have.
 - The camera, lens, C–CS adapter, Pi 5, Active Cooler and camera cable came on ME order 12704 ([#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84)).
 - The printed parts (base, deck, spacers and shims) print on the lab's A1 mini. The deck,
   spacers and shims (plate 2) were printed on 2026-10-01, and the base (plate 1), in black, on 2026-10-02.
-- A 350-piece assortment of M2.5 nylon hardware, now in the lab
-  ([sgbaird on #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427)).
-  Check it for the M2.5 screws and nuts before buying any.
+- Two 350-piece COMRUN kits of black nylon M2.5 hardware, which supply every M2.5 part
+  ([above](#from-the-nylon-m25-kit-already-in-the-lab); [sgbaird on #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427)),
+  and one M2 kit, not needed here.
 
 Full details are in the [README](README.md#hardware) and [`hardware/README.md`](hardware/README.md).

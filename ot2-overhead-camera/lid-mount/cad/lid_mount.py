@@ -8,7 +8,8 @@ pointing straight down through the OT-2's 5 mm top window, with the Raspberry Pi
     base            plate, four posts and a light collar; tapes or bolts to the lid
     deck            the camera hangs underneath on four M2.5 bosses; the Pi 5 sits on top
     drill_template  2 mm plate for marking the lens cutout and the bolt holes
-    spacers         4 x Pi 5 standoffs and 4 x 2 mm shims to raise the deck
+    spacers         4 x Pi 5 spacers (the fallback for the nylon standoffs) and
+                    4 x 2 mm shims to raise the deck
 
 Coordinates: the optical axis is X = Y = 0, Z = 0 is the top face of the lid,
 +Z is up. The camera's ribbon connector and tripod foot face -Y. The long axis
@@ -79,7 +80,7 @@ class Params:
     m3_nut_slot_w: float = 5.8      # 5.5 mm across flats + 0.3; prints about 5.62
     m3_nut_slot_h: float = 3.0      # 2.4 mm nut + 0.6, as OpenFlexure's M3 slot; the roof is a bridge
     m3_nut_roof: float = 4.5        # post left above the slot
-    m3_screw_len: float = 16.0
+    m3_screw_len: float = 16.0      # sets the depth of the post holes; the lab uses the drawer's M3 x 10
     bolt_xy: float = 33.0           # M4 bolts at (+-bolt_xy, +-bolt_xy)
     bolt_clear_d: float = 4.5
     m4_nut_af: float = 7.3          # 7.0 mm nut + 0.3 clearance
@@ -104,7 +105,12 @@ class Params:
     pi_hole_y: float = 49.0
     pi_cx: float = 0.0              # centre of the Pi's hole pattern on the deck
     pi_cy: float = 12.0
-    pi_spacer_h: float = 5.0
+    pi_spacer_h: float = 5.0        # the printed spacers: the fallback for the standoffs below
+    # The Pi 5 sits on black nylon M2.5 male-female standoffs from the lab's COMRUN kit: a 6 mm
+    # hex body and a 6 mm stud, which goes down through the deck into a nut in its underside.
+    pi_standoff_h: float = 6.0
+    pi_standoff_stud: float = 6.0
+    pi_standoff_af: float = 5.0     # COMRUN gives no size; 5 mm is usual for M2.5 nylon
     shim_t: float = 2.0
 
     # --- drill template ------------------------------------------------------
@@ -332,11 +338,14 @@ def make_camera(p: Params) -> cq.Workplane:
     return make_camera_pcb(p).union(make_camera_mount(p))
 
 
-def place_pi_spacers(p: Params) -> cq.Workplane:
+def place_pi_standoffs(p: Params) -> cq.Workplane:
+    """The kit's nylon male-female standoffs on the deck, studs down through it."""
     out = None
+    z0 = p.z_deck + p.deck_t
     for x, y in p.pi_holes():
-        s = cyl(6.0, p.pi_spacer_h, x, y, p.z_deck + p.deck_t).cut(
-            cyl(p.m25_clear_d, p.pi_spacer_h + 2, x, y, p.z_deck + p.deck_t - 1))
+        s = hex_prism(p.pi_standoff_af, p.pi_standoff_h, x, y, z0)
+        s = s.cut(cyl(2.0, p.pi_standoff_h, x, y, z0 + 1.0))       # the female thread
+        s = s.union(cyl(2.5, p.pi_standoff_stud, x, y, z0 - p.pi_standoff_stud))
         out = s if out is None else out.union(s)
     return out
 
@@ -369,7 +378,7 @@ def make_ring_sweep(p: Params) -> cq.Workplane:
 
 def make_pi5(p: Params) -> cq.Workplane:
     x0, x1, y0, y1 = p.pi_board_box()
-    zb = p.z_deck + p.deck_t + p.pi_spacer_h
+    zb = p.z_deck + p.deck_t + p.pi_standoff_h
     cx, cy = (x0 + x1) / 2, (y0 + y1) / 2
     board = box(85.0, 56.0, 1.6, cx, cy, zb).edges("|Z").fillet(3.0)
     for x, y in p.pi_holes():
@@ -430,10 +439,11 @@ def pi_to_screw_heads(p: Params, head_r: float = 2.75) -> float:
     return min(gaps)
 
 
-def m3_thread_past_nut(p: Params, nut_h: float = 2.4) -> float:
-    """How far the M3 screw reaches below its nut once the nut is pulled up against the slot roof."""
+def m3_thread_past_nut(p: Params, nut_h: float = 2.4, length: float | None = None) -> float:
+    """How far an M3 screw (by default m3_screw_len) reaches below its nut once the nut is pulled
+    up against the slot roof."""
     nut_bottom = p.z_m3_slot + p.m3_nut_slot_h - nut_h
-    return nut_bottom - (p.z_deck + p.deck_t - p.m3_screw_len)
+    return nut_bottom - (p.z_deck + p.deck_t - (p.m3_screw_len if length is None else length))
 
 
 def min_clear_focal(p: Params) -> float:
@@ -478,7 +488,8 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
             "camera to base": gap(cam, base),
             "Pi 5 board to deck screw heads (plan)": pi_to_screw_heads(p),
             "post to socket wall, per side": p.socket_clear,
-            "M3 screw tip below its nut": m3_thread_past_nut(p),
+            "M3 x 10 tip below its nut (the screws in use)": m3_thread_past_nut(p, length=10.0),
+            "M3 x 16 tip below its nut (the longest the holes take)": m3_thread_past_nut(p),
         },
         "heights_mm": {
             "lens front (Z)": p.z_lens_front,
@@ -489,8 +500,8 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
             "post top (in the deck's sockets)": p.z_post_top,
             "M3 nut slot, floor": p.z_m3_slot,
             "deck top": p.z_deck + p.deck_t,
-            "Pi 5 board underside": p.z_deck + p.deck_t + p.pi_spacer_h,
-            "overall height above lid (approx.)": p.z_deck + p.deck_t + p.pi_spacer_h + 1.6 + 16.0,
+            "Pi 5 board underside": p.z_deck + p.deck_t + p.pi_standoff_h,
+            "overall height above lid (approx.)": p.z_deck + p.deck_t + p.pi_standoff_h + 1.6 + 16.0,
             "post height": p.z_post_top - p.base_t,
         },
         "optics": {
@@ -502,8 +513,8 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
             for name in ("base", "deck", "drill_template", "spacers")
         },
     }
-    results["overlap_mm3"]["deck vs Pi spacers"] = overlap(deck, parts["pi_spacers"])
-    results["overlap_mm3"]["Pi spacers vs Pi 5"] = overlap(parts["pi_spacers"], pi)
+    results["overlap_mm3"]["deck vs Pi standoffs"] = overlap(deck, parts["pi_standoffs"])
+    results["overlap_mm3"]["Pi standoffs vs Pi 5"] = overlap(parts["pi_standoffs"], pi)
     tol = 1e-3
     results["pass"] = all(v <= tol for v in results["overlap_mm3"].values())
     return results
@@ -515,7 +526,7 @@ def build(p: Params) -> dict[str, cq.Workplane]:
         "deck": make_deck(p),
         "drill_template": make_drill_template(p),
         "spacers": make_spacers(p),
-        "pi_spacers": place_pi_spacers(p),
+        "pi_standoffs": place_pi_standoffs(p),
         "camera_pcb": make_camera_pcb(p),
         "camera_mount": make_camera_mount(p),
         "adapter": make_adapter(p),
@@ -529,9 +540,9 @@ def build(p: Params) -> dict[str, cq.Workplane]:
 
 
 # Parts shown in the assembly, and their colours.
-ASSEMBLY = ("lid", "base", "deck", "pi_spacers", "camera_pcb", "camera_mount", "adapter", "lens", "pi5")
+ASSEMBLY = ("lid", "base", "deck", "pi_standoffs", "camera_pcb", "camera_mount", "adapter", "lens", "pi5")
 COLORS = {
-    "base": (0.36, 0.42, 0.48), "deck": (0.45, 0.50, 0.56), "pi_spacers": (0.45, 0.50, 0.56),
+    "base": (0.36, 0.42, 0.48), "deck": (0.45, 0.50, 0.56), "pi_standoffs": (0.20, 0.20, 0.22),
     "camera_pcb": (0.12, 0.48, 0.25), "camera_mount": (0.13, 0.13, 0.14),
     "adapter": (0.75, 0.75, 0.78), "lens": (0.08, 0.08, 0.09), "pi5": (0.18, 0.55, 0.34),
     "lid": (0.75, 0.89, 1.0),

@@ -11,8 +11,8 @@
     "view cone at 7.5 mm vs base": 0,
     "view cone at 7.5 mm vs lid": 0,
     "view cone at 25 mm vs lid": 0,
-    "deck vs Pi spacers": 0,
-    "Pi spacers vs Pi 5": 0
+    "deck vs Pi standoffs": 0,
+    "Pi standoffs vs Pi 5": 0
   },
   "gap_mm": {
     "lens front barrel to collar": 2.9999999999999982,
@@ -21,7 +21,8 @@
     "camera to base": 33.562445840513924,
     "Pi 5 board to deck screw heads (plan)": 4.25,
     "post to socket wall, per side": 0.2,
-    "M3 screw tip below its nut": 6.599999999999994
+    "M3 x 10 tip below its nut (the screws in use)": 0.5999999999999943,
+    "M3 x 16 tip below its nut (the longest the holes take)": 6.599999999999994
   },
   "heights_mm": {
     "lens front (Z)": 9.0,
@@ -32,8 +33,8 @@
     "post top (in the deck's sockets)": 102.16,
     "M3 nut slot, floor": 94.66,
     "deck top": 104.66,
-    "Pi 5 board underside": 109.66,
-    "overall height above lid (approx.)": 127.25999999999999,
+    "Pi 5 board underside": 110.66,
+    "overall height above lid (approx.)": 128.26,
     "post height": 96.16
   },
   "optics": {

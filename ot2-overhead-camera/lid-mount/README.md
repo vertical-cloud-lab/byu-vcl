@@ -50,7 +50,7 @@ safety switch is enabled in Robot Settings, the robot won't run while the window
 | Base | [`exports/base.stl`](exports/base.stl) | 112 × 112 mm plate (144 mm across the tape tabs), a Ø46 mm lens aperture inside a 14 mm light collar, four M4 nut traps, and four 10 mm posts, each with a side slot for an M3 nut near its top |
 | Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes, the Pi 5 sits on top, and a slot passes the ribbon cable. Four sockets in its underside take the post tops |
 | Drill template | [`exports/drill_template.stl`](exports/drill_template.stl), or print [`exports/drill_template_1to1.pdf`](exports/drill_template_1to1.pdf) on paper | Marks the lens cutout and the four bolt holes |
-| Spacers | [`exports/spacers.stl`](exports/spacers.stl) | 4 × 5 mm Pi 5 standoffs, plus 4 × 2 mm shims that raise the deck if the lens ever needs to sit higher |
+| Spacers | [`exports/spacers.stl`](exports/spacers.stl) | 4 × 5 mm Pi 5 spacers, now only a fallback: the Pi 5 sits on the nylon kit's standoffs. Plus 4 × 2 mm shims that raise the deck if the lens ever needs to sit higher |
 | Fit coupon (optional) | [`exports/fit_coupon.stl`](exports/fit_coupon.stl) | The top 12 mm of a post and the deck around its socket, cut from the real parts: a 16-minute check of both fits before the 2.5 h base |
 | Everything, in colour | [`exports/assembly.step`](exports/assembly.step) | With reference models of the lid, camera, adapter, lens and Pi 5 |
 
@@ -73,19 +73,23 @@ only warning concerns timelapse mode. The fits are predicted, not yet measured; 
 
 | Qty | Part | Where |
 |---|---|---|
-| 4 | M2.5 × 16 mm screw + M2.5 nut ([91292A018](https://www.mcmaster.com/91292A018/), [91828A113](https://www.mcmaster.com/91828A113/)) | camera → deck (nuts sit in traps on the deck top) |
-| 4 | M2.5 × 16 mm screw + M2.5 nut (same) | Pi 5 → spacers → deck (nuts in traps on the deck underside) |
-| 4 | M3 × 16 mm button head + M3 nut ([92095A184](https://www.mcmaster.com/92095A184/), [91828A211](https://www.mcmaster.com/91828A211/)) | deck → posts (the nuts slide into slots in the posts; see [the joint](#the-deck-to-post-joint)) |
-| 4 | **M4 × 16 button-head (ISO 7380)** + M4 nut + thin nylon washer ([92095A194](https://www.mcmaster.com/92095A194/), [91828A231](https://www.mcmaster.com/91828A231/), [95610A550](https://www.mcmaster.com/95610A550/)) | base → lid, **phase 2 only**. The low 2.2 mm head keeps the screw clear of the pipette head underneath. M4 × 12 ([92095A192](https://www.mcmaster.com/92095A192/)) also works; it just reaches through the nut |
+| 4 + 4 | M2.5 × 12 Phillips pan head + M2.5 nut, **black nylon**, from the lab's COMRUN kit | camera → deck (nuts sit in traps on the deck top). The kit's longest screw; it ends flush with the top of the nut |
+| 4 + 4 | M2.5 6 + 6 mm male–female standoff + M2.5 nut, **black nylon**, same kit | Pi 5 → deck: the studs go down through the deck into nuts in the traps on its underside |
+| 4 | M2.5 × 6 Phillips pan head, **black nylon**, same kit | Pi 5 → standoffs |
+| 4 + 4 | M3 × 10 Phillips pan head + M3 nut, stainless, from the Prototyping Lab's drawer ([92000A120](https://www.mcmaster.com/92000A120/), [91828A211](https://www.mcmaster.com/91828A211/)) | deck → posts (the nuts slide into slots in the posts; see [the joint](#the-deck-to-post-joint)) |
+| 4 | **M4 × 18 Phillips pan head** + M4 nut + thin nylon washer, from the drawer ([92000A227](https://www.mcmaster.com/92000A227/), [91828A231](https://www.mcmaster.com/91828A231/), [95610A550](https://www.mcmaster.com/95610A550/)) | base → lid, **phase 2 only**. With its washer, the 3.1 mm head hangs 3.9 mm below the window, inside the 9.1 mm the pipette head leaves. A button head would hang 0.9 mm higher; see the [shopping list](shopping-list.md#other-lengths-and-heads) |
 | – | Painter's or gaffer tape, Command strips, or 3M Dual Lock SJ3560 | **phase 1** (see [§4](#4-install-phase-1-tape-no-cutting)) |
 | – | Optional: 1–2 mm black adhesive foam | light seal under the base, around the aperture |
 
 The camera, lens, C–CS adapter, Pi 5, Active Cooler and 200 mm Pi 5 camera cable are the
-parts already bought on ME order 12704 (see #84). The fasteners are McMaster-Carr parts, and
-the renders use McMaster's own STEP models of them; see [`hardware/`](hardware/README.md).
-To buy them on campus, take [`shopping-list.md`](shopping-list.md) to the ME Prototyping Lab
-(117 EB). It also lists the [other lengths and head types](shopping-list.md#other-lengths-and-heads)
-that fit, which [`cad/fastener_fit.py`](cad/fastener_fit.py) checks against the model.
+parts already bought on ME order 12704 (see #84). The M2.5 parts are all black nylon from the
+lab's COMRUN 350-piece kit; [`hardware/amazon/`](hardware/amazon/README.md) lists what the kit
+holds and why these pieces. The M3 and M4 screws and nuts are stainless, from the ME
+Prototyping Lab's drawer (117 EB); take [`shopping-list.md`](shopping-list.md) there. The
+renders draw the steel parts from McMaster-Carr's STEP models of the same screws and nuts
+([`hardware/`](hardware/README.md)), and the nylon ones from nominal sizes. The shopping list
+also gives the [other lengths and head types](shopping-list.md#other-lengths-and-heads) that
+fit, which [`cad/fastener_fit.py`](cad/fastener_fit.py) checks against the model.
 
 ---
 
@@ -93,27 +97,35 @@ that fit, which [`cad/fastener_fit.py`](cad/fastener_fit.py) checks against the 
 
 ![Assembly, step by step](renders/assembly_steps.gif)
 
-The GIF comes from [`cad/animate.py`](cad/animate.py), with the McMaster fasteners.
+The GIF comes from [`cad/animate.py`](cad/animate.py). Steel parts are the drawer's pan heads
+and nuts; black parts are the nylon kit's.
 
-1. Drop four **M4 nuts** into the hex traps on the base.
+1. Drop four **M4 nuts** into the hex traps on the base. They're only needed for phase 2.
 2. Slide four **M3 nuts** into the slots near the tops of the posts, lying flat, and push each
    one in until it stops. The hex end of the slot then holds it on the screw axis.
-3. Drop four **M2.5 nuts** into the traps on the top of the deck. Hang the camera under the
-   deck with M2.5 × 16 screws, driven up from the lens side through the camera's corner
-   holes. The **ribbon connector goes toward the cable slot**, the side marked by the
-   arrow engraved on the base (−Y).
-4. Plug the camera cable into the camera and feed it up through the slot.
-5. Screw on the lens with **one** C–CS adapter. The lens and the camera each ship with one,
+3. Drop four nylon **M2.5 nuts** into the traps on the top of the deck.
+4. Fit the Pi 5's four nylon **6 + 6 mm male–female standoffs**. Push each stud down through
+   the deck. From underneath, start a nylon M2.5 nut on it inside the trap, then turn the
+   standoff finger tight; the trap stops the nut turning.
+5. Hang the camera under the deck with four nylon **M2.5 × 12** pan heads, driven up from the
+   lens side through the camera's corner holes into the nuts. The **ribbon connector goes
+   toward the cable slot**, the side marked by the arrow engraved on the base (−Y). Plug the
+   camera cable in and feed it up through the slot.
+6. Screw on the lens with **one** C–CS adapter. The lens and the camera each ship with one,
    and in July the camera wouldn't focus because the adapter ring had been pushed in too far
    (#84). Set the zoom to **about 25 mm**. At the lid, the lens front is 585 mm from the top
    of a plate, which gives a 152 × 114 mm field of view: the plate plus a margin on every
    side, at 26.7 px/mm (~180 px across each well). Above about 27.6 mm the margin
    around the plate drops below 5 mm.
-6. Lower the deck onto the posts; their tops drop 2.5 mm into the sockets in its underside.
-   Drive the M3 screws down through the deck into the nuts, snug.
-7. Fit the Pi 5 on the four printed spacers with M2.5 × 16 screws down into the nuts on the
-   deck underside, with its power/HDMI edge toward the cable slot. Connect the cable to
-   either CAM/DISP port.
+7. Lower the deck onto the posts; their tops drop 2.5 mm into the sockets in its underside.
+   Drive the four **M3 × 10** pan heads down through the deck into the nuts, snug.
+8. Set the Pi 5 on the standoffs, with its power/HDMI edge toward the cable slot, and fix it
+   with four nylon **M2.5 × 6** pan heads. Connect the cable to either CAM/DISP port.
+
+Nylon Phillips heads strip easily, so tighten them until snug and stop. If an M2.5 × 6 stops
+before the Pi is held, put one of the kit's washers under its head. Without the standoffs,
+the printed 5 mm spacers still work, with M2.5 × 12s down through the Pi and spacers into the
+underside nuts.
 
 The zoom, focus and iris rings stay reachable through the 84 mm windows between the posts.
 Their thumbscrews sweep about Ø55 mm, and the posts are 33 mm clear of that.
@@ -154,7 +166,8 @@ untested ([result](slice/README.md#will-it-fit-first-time)).
 If a post still won't go in, sand the post top rather than forcing it. If the fit is loose,
 reprint the deck (the 1 h 10 min plate) with a smaller `socket_clear`. The 2 mm shims still
 work: a shim sits on the post top inside the socket, raising the deck by 2 mm and shortening
-the post's engagement by 2 mm, and the M3 × 16 still reaches 4.6 mm past the nut.
+the post's engagement by 2 mm. With the shims, the M3 × 10 falls 1.4 mm short of the far side
+of the nut, so use the drawer's M3 × 18s, which reach 6.6 mm past it.
 
 ---
 
@@ -263,11 +276,11 @@ acrylic makers limit step bits to sheet up to 3 mm.
    the backer, then deburr both edges. Use a drill press for acrylic, or have acrylic
    laser-cut instead. On polycarbonate a hand drill with a side handle also works.
 6. Put the window back so it presses the safety switch again. Bolt the base down with
-   the M4 button-heads from **inside** the robot, up into the trapped nuts, with the
+   the M4 × 18 pan heads from **inside** the robot, up into the trapped nuts, with the
    nylon washer under the head. Tighten them snug and no more; over-tightening cracks
    acrylic.
 7. **Check the clearance.** With the robot homed (head fully up), jog the gantry slowly
-   under the mount and look along the lid. The screw heads plus washers hang about 3 mm
+   under the mount and look along the lid. The screw heads plus washers hang about 3.9 mm
    below the window, against 9.1 mm of clearance in the CAD. The window already sags
    about 1 mm under its own weight across the 450 mm span, and the ~0.4 kg mount adds up
    to about 0.5 mm; both are simply-supported beam estimates, not measurements.
@@ -295,7 +308,7 @@ is up. Every height follows from the camera and lens stack:
 | 93.7 | back of the camera PCB |
 | 99.7 | deck underside (6 mm standoff clears the FPC connector) |
 | 102.2 | top of the posts, 2.5 mm up inside the deck's sockets |
-| ~127 | top of the Pi 5 and cooler, the tallest point |
+| ~128 | top of the Pi 5 and cooler, the tallest point (the Pi sits on 6 mm standoffs) |
 
 `python cad/lid_mount.py` rebuilds the parts and runs these checks, saved to
 [`exports/checks.json`](exports/checks.json). `python cad/ot2_context.py` adds the OT-2
@@ -304,9 +317,9 @@ the front-row slots, which is why the mount goes over slots 4–11:
 
 | Check | Result |
 |---|---|
-| Interference, 13 pairs: base and deck against each other and against the camera, lens, Pi 5, spacers and window, plus the thumbscrew sweep and the view cones | 0 mm³ for every pair |
+| Interference, 13 pairs: base and deck against each other and against the camera, lens, Pi 5, standoffs and window, plus the thumbscrew sweep and the view cones | 0 mm³ for every pair |
 | Post to deck socket | 0.20 mm clearance per side in the CAD, 2.5 mm deep; about 0.15 mm as printed (`slice/fit_sim.py`) |
-| M3 × 16 past its nut | 6.6 mm |
+| M3 × 10 past its nut | 0.6 mm (an M3 × 16 reaches 6.6 mm) |
 | Lens front barrel to collar | 3.0 mm radial gap |
 | Thumbscrews to the nearest post | 32.8 mm |
 | View cone vs. base aperture and lid cutout | clear from 7.5 mm focal length up, i.e. the full 8–50 mm zoom range |
