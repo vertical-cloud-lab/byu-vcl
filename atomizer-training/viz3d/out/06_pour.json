@@ -1,7 +1,7 @@
 {
  "name": "06_pour",
  "fps": 15,
- "n_frames": 605,
+ "n_frames": 671,
  "size": [
   1280,
   720
@@ -29,37 +29,37 @@
    "label": "6.4",
    "caption": "Sealing rod UP: the melt stream falls onto the plate. The first drops usually bounce off: a cold, dry plate does not wet.",
    "start_frame": 176,
-   "end_frame": 229
+   "end_frame": 235
   },
   {
    "label": "6.5",
    "caption": "A short TURBO push (1.5 bar) heats the plate and clears debris; pouring more at the start is what makes the plate wet.",
-   "start_frame": 230,
-   "end_frame": 267
+   "start_frame": 236,
+   "end_frame": 288
   },
   {
    "label": "6.6",
    "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. Steer with the plate position: land high on it, not over the top.",
-   "start_frame": 268,
-   "end_frame": 357
+   "start_frame": 289,
+   "end_frame": 393
   },
   {
    "label": "6.7",
    "caption": "The powder runs down the cone into the container. Too thin a stream gathers and drips; melt shooting past the plate means the pressure is too high (the Oct 2 lesson).",
-   "start_frame": 358,
-   "end_frame": 447
+   "start_frame": 394,
+   "end_frame": 498
   },
   {
    "label": "6.8",
    "caption": "Two to three minutes of attention: amplitude slider, turbo pulses, plate position, with the operator at the window the whole time.",
-   "start_frame": 448,
-   "end_frame": 537
+   "start_frame": 499,
+   "end_frame": 603
   },
   {
    "label": "6.9",
    "caption": "The crucible runs empty: next, the end-of-pour sequence (step 7).",
-   "start_frame": 538,
-   "end_frame": 604
+   "start_frame": 604,
+   "end_frame": 670
   }
  ]
 }

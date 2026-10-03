@@ -1,7 +1,7 @@
 {
  "name": "04_gas_wash",
  "fps": 15,
- "n_frames": 562,
+ "n_frames": 594,
  "size": [
   1280,
   720
@@ -17,43 +17,43 @@
    "label": "4.2",
    "caption": "Furnace wash 1: pump to the gauge floor, about −850 mbar at Provo's altitude (−1000 at sea level): normal, not a leak. Then argon back in to +150.",
    "start_frame": 75,
-   "end_frame": 143
+   "end_frame": 149
   },
   {
    "label": "4.3",
    "caption": "Furnace washes 2 and 3, same again. O₂ reads nonsense under vacuum: backfill, then read.",
-   "start_frame": 144,
-   "end_frame": 207
+   "start_frame": 150,
+   "end_frame": 224
   },
   {
    "label": "4.3",
    "caption": "Furnace washes 2 and 3, same again. O₂ reads nonsense under vacuum: backfill, then read.",
-   "start_frame": 208,
-   "end_frame": 261
+   "start_frame": 225,
+   "end_frame": 284
   },
   {
    "label": "4.4",
    "caption": "Then the chamber, while the furnace holds its overpressure: pump to the floor, fill with argon, repeat.",
-   "start_frame": 262,
-   "end_frame": 333
+   "start_frame": 285,
+   "end_frame": 359
   },
   {
    "label": "4.5",
    "caption": "Generator on, 250 °C, wash again: the target is moisture in new insulation and crucible, not the metal.",
-   "start_frame": 334,
-   "end_frame": 413
+   "start_frame": 360,
+   "end_frame": 442
   },
   {
    "label": "4.6",
    "caption": "500 °C, wash again. Stop washing once O₂ is low and stable: ≤100 ppm, best 40–50 (the team has seen the low 20s).",
-   "start_frame": 414,
-   "end_frame": 493
+   "start_frame": 443,
+   "end_frame": 525
   },
   {
    "label": "4.7",
    "caption": "Pressure control back ON at melting pressure, the furnace slightly below the chamber (130 / 150 mbar). Ready to melt.",
-   "start_frame": 494,
-   "end_frame": 561
+   "start_frame": 526,
+   "end_frame": 593
   }
  ]
 }

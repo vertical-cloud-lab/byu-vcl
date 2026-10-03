@@ -1,7 +1,7 @@
 {
  "name": "02_stack",
  "fps": 15,
- "n_frames": 546,
+ "n_frames": 549,
  "size": [
   1280,
   720
@@ -47,13 +47,13 @@
    "label": "2.7",
    "caption": "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, the plate is cracked.",
    "start_frame": 407,
-   "end_frame": 470
+   "end_frame": 473
   },
   {
    "label": "2.8",
    "caption": "Bolt the protective cover over the transducer, then push in and lock the cable and connect the cooling air: two or three minutes that protect a part worth thousands.",
-   "start_frame": 471,
-   "end_frame": 545
+   "start_frame": 474,
+   "end_frame": 548
   }
  ]
 }
