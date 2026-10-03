@@ -51,7 +51,8 @@ for vid in order:
     else:
         src = "auto + whisper" if has_auto and has_whisper else "whisper" if has_whisper else "auto" if has_auto else "none"
     out.append(f"## {v['title']}")
-    out.append(f"`{vid}` · {v['published'][:10]} · {iso_dur(v['duration'])} · {v['privacy']} · transcript: {src} · "
+    was = f" · uploaded as *{v['uploaded_as']}*" if v.get("uploaded_as") else ""
+    out.append(f"`{vid}` · {v['published'][:10]} · {iso_dur(v['duration'])} · {v['privacy']} · transcript: {src}{was} · "
                f"[open paused](https://www.youtube.com/embed/{vid}?start=0) · [▶ watch](https://www.youtube.com/watch?v={vid})")
     out.append("")
     if not rows:
