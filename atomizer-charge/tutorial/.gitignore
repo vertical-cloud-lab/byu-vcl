@@ -1,0 +1,3 @@
+# the rendered video is on YouTube; rebuild with build.py
+out/*.mp4
+__pycache__/
