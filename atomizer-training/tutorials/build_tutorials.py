@@ -68,7 +68,20 @@ def font(size, bold=False):
 
 
 INK = "#1F2937"
+CARD_VERSION = "5"            # bump when card_png or still_with_audio change, so cached cards are rebuilt
 ACCENT = {"00": "#1E3A8A", "01": "#00897B", "02": "#C2410C", "03": "#6D28D9"}   # navy, then the diagrams' tutorial colours
+
+
+def wrap_px(d, text, f, width):
+    """Greedy word wrap to a pixel width."""
+    lines, cur = [], ""
+    for w in text.split():
+        t = f"{cur} {w}".strip()
+        if cur and d.textlength(t, font=f) > width:
+            lines.append(cur); cur = w
+        else:
+            cur = t
+    return lines + ([cur] if cur else [])
 
 
 def card_png(title, sub, path, accent=ACCENT["00"], kicker="BYU Vertical Cloud Lab · AMAZEMET rePowder"):
@@ -78,25 +91,41 @@ def card_png(title, sub, path, accent=ACCENT["00"], kicker="BYU Vertical Cloud L
     if os.path.exists(art):
         m = Image.open(art).convert("RGB").resize((W, H), Image.LANCZOS)
         im.paste(m, (110, 0))
-        fade = Image.linear_gradient("L").rotate(90, expand=True).resize((W // 2, H))   # white -> clear, left to right
-        mask = Image.new("L", (W, H), 0); mask.paste(Image.new("L", (W // 2, H), 255), (0, 0))
-        mask.paste(fade.transpose(Image.FLIP_LEFT_RIGHT), (W // 2 - 60, 0))
+        x0, x1 = 600, 760                                     # white up to x0, fading to the bare render by x1
+        ramp = Image.linear_gradient("L").rotate(90, expand=True).resize((x1 - x0, H))
+        if ramp.getpixel((0, 0)) < ramp.getpixel((x1 - x0 - 1, 0)):
+            ramp = ramp.transpose(Image.FLIP_LEFT_RIGHT)
+        mask = Image.new("L", (W, H), 0); mask.paste(Image.new("L", (x0, H), 255), (0, 0)); mask.paste(ramp, (x0, 0))
         im = Image.composite(Image.new("RGB", (W, H), "white"), im, mask)
     d = ImageDraw.Draw(im)
     d.rectangle([0, H - 14, W, H], fill=accent)
     d.text((80, 150), kicker.upper(), font=font(20, True), fill=accent)
     y = 196
-    for line in textwrap.wrap(title, 24):
-        d.text((80, y), line, font=font(54, True), fill=INK); y += 66
+    for line in wrap_px(d, title, font(52, True), 560):
+        d.text((80, y), line, font=font(52, True), fill=INK); y += 64
     y += 22
-    for line in textwrap.wrap(sub, 36):
-        d.text((80, y), line, font=font(28), fill="#4B5563"); y += 40
+    items = [x.strip() for x in re.split(r" · | → ", sub)] if (sub.count(" · ") + sub.count(" → ")) >= 2 else None
+    if items:                                   # a list of points: one bullet each, smaller type
+        for item in items:
+            item = item[:1].upper() + item[1:]
+            for k, line in enumerate(wrap_px(d, item, font(25), 520)):
+                if k == 0:
+                    d.ellipse([84, y + 12, 94, y + 22], fill=accent)
+                d.text((108, y), line, font=font(25), fill="#374151"); y += 34
+            y += 8
+    else:
+        for line in wrap_px(d, sub, font(28), 560):
+            d.text((80, y), line, font=font(28), fill="#4B5563"); y += 40
     im.save(path)
 
 
-def still_with_audio(png, mp3, out, dur, fade_in=False):
+def still_with_audio(png, mp3, out, dur, fade_in=False, zoom=False):
+    """A still under narration; `zoom` adds a slow push-in (2.5 % over the segment) so long diagrams are not static."""
+    n = max(1, int(dur * FPS))
+    vf = (f"scale={2 * W}:{2 * H},zoompan=z='1+0.025*on/{n}':d=1:x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':s={W}x{H}:fps={FPS},"
+          f"format=yuv420p") if zoom else f"scale={W}:{H},format=yuv420p"
     run(["ffmpeg", "-y", "-v", "error", "-loop", "1", "-framerate", str(FPS), "-i", png, "-i", mp3, "-t", f"{dur:.2f}",
-         "-vf", f"scale={W}:{H},format=yuv420p" + (",fade=t=in:st=0:d=0.6" if fade_in else ""),
+         "-vf", vf + (",fade=t=in:st=0:d=0.6" if fade_in else ""),
          "-af", f"adelay=250|250,apad,{AUDIO}", *ENC, out])
     return out
 
@@ -122,7 +151,23 @@ def seg_outline(i, name, narration):
     png = f"{DIAG}/{name}.png"; mp3 = f"{TMP}/outline_{i}.mp3"; out = f"{TMP}/seg_{i}.mp4"
     if not os.path.exists(png):
         raise FileNotFoundError(png)
-    return still_with_audio(png, mp3, out, tts(narration, mp3) + 1.0)
+    d = tts(narration, mp3)
+    return still_with_audio(png, mp3, out, d + 1.0, zoom=d > 6)
+
+
+def wait_ready(path, timeout=1800):
+    """The 3D renders may still be (re)writing an MP4: wait until it probes cleanly and has stopped changing."""
+    import time
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            m = os.path.getmtime(path); duration(path)
+            if time.time() - m > 20:
+                return
+        except (OSError, RuntimeError, ValueError):
+            pass
+        time.sleep(10)
+    raise TimeoutError(path)
 
 
 def seg_anim(i, name, narration, substeps=None):
@@ -130,8 +175,7 @@ def seg_anim(i, name, narration, substeps=None):
     sub-step and the sub-step is slowed (up to 1.6x) and then held on its last frame until the sentence is done.
     `substeps` = (first, last) plays only those sub-steps (inclusive), so one animation can serve several sections."""
     mp4 = f"{V3D}/mp4/{name}.mp4"; meta = f"{V3D}/{name}.json"; out = f"{TMP}/seg_{i}.mp4"
-    if not os.path.exists(mp4):
-        raise FileNotFoundError(mp4)
+    wait_ready(mp4)
     sentences = narration if isinstance(narration, list) else [narration]
     steps = json.load(open(meta))["substeps"] if os.path.exists(meta) else None
     fps = json.load(open(meta)).get("fps", 15) if os.path.exists(meta) else 15
@@ -264,9 +308,12 @@ def seg_key(seg):
     if kind == "clip":
         deps.append(json.dumps(FIXES, sort_keys=True))
     if kind == "anim":
+        wait_ready(f"{V3D}/mp4/{args[0]}.mp4")
         deps += [str(os.path.getmtime(p)) for p in (f"{V3D}/mp4/{args[0]}.mp4", f"{V3D}/{args[0]}.json") if os.path.exists(p)]
     if kind == "outline" and os.path.exists(f"{DIAG}/{args[0]}.png"):
         deps.append(str(os.path.getmtime(f"{DIAG}/{args[0]}.png")))
+    if kind in ("title", "card", "outline"):
+        deps.append(CARD_VERSION)
     if kind in ("title", "card") and os.path.exists(f"{V3D}/machine_clean.png"):
         deps.append(str(os.path.getmtime(f"{V3D}/machine_clean.png")))
     return f"{kind}_" + hashlib.sha1("|".join(deps).encode()).hexdigest()[:12]

@@ -1,0 +1,35 @@
+{
+ "name": "03b_chamber",
+ "fps": 15,
+ "n_frames": 312,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "3b.1",
+   "caption": "Container on with two people: one lifts it into place under the cone while the other closes the flange clamp. Finger-tight only.",
+   "start_frame": 0,
+   "end_frame": 95
+  },
+  {
+   "label": "3b.2",
+   "caption": "Through the door: catch bowl on the chamber floor and the splash plate above the container (one is enough for aluminium). Wipe the plate; hang the covers over the openings.",
+   "start_frame": 96,
+   "end_frame": 176
+  },
+  {
+   "label": "3b.3",
+   "caption": "Run the frequency check now, before closing. Then swing the door shut: the ultrasonic unit rides in it.",
+   "start_frame": 177,
+   "end_frame": 236
+  },
+  {
+   "label": "3b.4",
+   "caption": "Close all three clamps. Opening one under pressure just leaks.",
+   "start_frame": 237,
+   "end_frame": 311
+  }
+ ]
+}

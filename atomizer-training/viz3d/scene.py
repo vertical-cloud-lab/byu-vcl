@@ -317,7 +317,7 @@ class Scene:
         return hi
 
     def step(self, label, caption, seconds, update=None, hold=1.2, cam_to=None, labels=(), still=False,
-             view_angle_to=None):
+             view_angle_to=None, live=False):
         """One sub-step: `seconds` of motion (update(u), u eased 0 -> 1, camera to `cam_to`), then `hold` s."""
         start = self.n
         self.label = label
@@ -356,7 +356,12 @@ class Scene:
                 self.preview.append(img)
         self.labels = [(t, xyz, at, 1.0) for t, xyz, at in new]
         if hold > 0 and not PREVIEW:
-            self.snap(max(1, int(round(hold * FPS))))
+            if live and update is not None:       # particles, flow and vibration keep going through the hold
+                for _ in range(max(1, int(round(hold * FPS)))):
+                    update(1.0)
+                    self.snap()
+            else:
+                self.snap(max(1, int(round(hold * FPS))))
         self.substeps.append(dict(label=label, caption=self.caption, start_frame=start, end_frame=self.n - 1))
 
     # --------------------------------------------------------------------------------- save
@@ -393,11 +398,12 @@ class Scene:
 
 
 def write_gif(frames, path: Path, colors=128, lossy=60, limit_mb=4.9):
-    picks = frames[:: max(1, len(frames) // 24)][:25]
-    tw, th = frames[0].width // 5, frames[0].height // 5
-    mosaic = Image.new("RGB", (tw * 5, th * 5), "white")
+    # palette from a 3 x 3 mosaic at half size, so small saturated parts (the yellow switch, the coil) get colours
+    picks = frames[:: max(1, len(frames) // 8)][:9]
+    tw, th = frames[0].width // 2, frames[0].height // 2
+    mosaic = Image.new("RGB", (tw * 3, th * 3), "white")
     for i, f in enumerate(picks):
-        mosaic.paste(f.resize((tw, th)), ((i % 5) * tw, (i // 5) * th))
+        mosaic.paste(f.resize((tw, th)), ((i % 3) * tw, (i // 3) * th))
     pal = mosaic.quantize(colors=colors, method=Image.Quantize.MEDIANCUT)
     q = [f.quantize(palette=pal, dither=Image.Dither.NONE) for f in frames]
     q[0].save(path, save_all=True, append_images=q[1:], duration=int(1000 / GIF_FPS), loop=0, optimize=False,

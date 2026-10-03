@@ -1,0 +1,59 @@
+{
+ "name": "07_end_cooldown",
+ "fps": 15,
+ "n_frames": 568,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "7.1",
+   "caption": "Crucible empty: one TURBO push clears the last drops and the nozzle.",
+   "start_frame": 0,
+   "end_frame": 60
+  },
+  {
+   "label": "7.2",
+   "caption": "Within seconds: sealing rod DOWN, melting pressure, generator STOP, ultrasonics STOP. Vibrating against solidified metal cracks the plate.",
+   "start_frame": 61,
+   "end_frame": 120
+  },
+  {
+   "label": "7.3",
+   "caption": "Set 250 °C for next time and let it cool. Open at or below 400 °C: above 500 °C graphite burns in air. Cooling water stays on until about 100 °C.",
+   "start_frame": 121,
+   "end_frame": 195
+  },
+  {
+   "label": "7.4",
+   "caption": "Pressure control OFF, press VENT. The door stays locked while the pressure is off atmospheric. Masks and lab coat on.",
+   "start_frame": 196,
+   "end_frame": 255
+  },
+  {
+   "label": "7.5",
+   "caption": "Three clamps off, door open. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+   "start_frame": 256,
+   "end_frame": 330
+  },
+  {
+   "label": "7.6",
+   "caption": "Brush the plate, bowl, walls and view port down into the container, in a circle, before it comes off. Let the dust settle before reaching in.",
+   "start_frame": 331,
+   "end_frame": 410
+  },
+  {
+   "label": "7.7",
+   "caption": "Close the container valve first (pull down and across: it is heavier than it looks), brush the top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.",
+   "start_frame": 411,
+   "end_frame": 485
+  },
+  {
+   "label": "7.8",
+   "caption": "Pour onto paper, pick out chunks, sieve, bag, 6-character ID label, photo on GitHub. At about 100 °C: heat exchanger, water, air, argon, power off, in any order.",
+   "start_frame": 486,
+   "end_frame": 567
+  }
+ ]
+}

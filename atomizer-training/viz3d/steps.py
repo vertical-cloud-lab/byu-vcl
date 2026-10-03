@@ -39,6 +39,7 @@ CAM = {
 }
 
 STREAM_TOP = M.NOZZLE_EXIT_Z
+NOZZLE_OUT = np.array([-80.0, -70.0, -45.0])    # where the nozzle is held out of the crucible for the light check
 
 
 # --------------------------------------------------------------------------------- helpers
@@ -470,7 +471,7 @@ def anim_06_pour():
     pool = Pool(sc, half=True, level=36)
     powder = Powder(sc, half=True, level=0)
     add_stream(sc)
-    spray = Particles(sc, "spray", (0.80, 0.80, 0.84), size=5.0)
+    spray = Particles(sc, "spray", (0.40, 0.41, 0.46), size=5.5)       # dark enough to read on the chamber wall
     drops = Particles(sc, "drops", MELT, size=7.0, slowmo=0.35)
     heat(sc, 795, 1.0)
     add_gas(sc, half=True, furnace=0.7, chamber=0.7)
@@ -495,14 +496,14 @@ def anim_06_pour():
         vibrate(True)
         show_g()
     sc.step("6.2", "Vibration ON. Amplitude is a percentage of generator current: start about 90 % and adjust; "
-            "lower gives finer powder but may stop atomizing.", 2.5, us_on, hold=1.0)
+            "lower gives finer powder but may stop atomizing.", 2.5, us_on, hold=1.0, live=True)
 
     def drain(u):
         st["pf"] = 130 + 90 * u
         vibrate(True)
         show_g()
     sc.step("6.3", "Draining pressure: furnace above chamber pushes the melt out. Only the difference matters.",
-            2.0, drain, hold=1.0)
+            2.0, drain, hold=1.0, live=True)
 
     def rod_up(u):
         sc.gmat["arm"] = T((0, 0, 12 * window(u, 0.0, 0.3)))
@@ -513,7 +514,7 @@ def anim_06_pour():
         vibrate(True)
         show_g()
     sc.step("6.4", "Sealing rod UP: the melt stream falls onto the plate. The first drops usually bounce off: a "
-            "cold, dry plate does not wet.", 3.0, rod_up, hold=0.6, cam_to=CAM["stream"],
+            "cold, dry plate does not wet.", 3.0, rod_up, hold=1.0, live=True, cam_to=CAM["stream"],
             labels=[lab("sealing rod up", (0, -6, M.Z_CR + 70), 0.70, 0.22),
                     lab("melt stream", (0, 0, 1000), 0.70, 0.45)])
 
@@ -528,7 +529,7 @@ def anim_06_pour():
         vibrate(True)
         show_g()
     sc.step("6.5", "A short TURBO push (1.5 bar) heats the plate and clears debris; pouring more at the start is "
-            "what makes the plate wet.", 2.5, turbo, hold=0.0)
+            "what makes the plate wet.", 2.5, turbo, hold=1.0, live=True)
 
     def atomize(u, rate=28, cam=None):
         st["pf"] = 220
@@ -544,13 +545,13 @@ def anim_06_pour():
         show_g()
     sc.step("6.6", "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and "
             "fall to the cone. Steer with the plate position: land high on it, not over the top.", 6.0, atomize,
-            hold=0.0, labels=[lab("droplets freeze into powder", M.IMPACT + np.array([90, 0, -40]), 0.70, 0.62)])
+            hold=1.0, live=True, labels=[lab("droplets freeze into powder", M.IMPACT + np.array([90, 0, -40]), 0.70, 0.62)])
     sc.step("6.7", "The powder runs down the cone into the container. Too thin a stream gathers and drips; melt "
-            "shooting past the plate means the pressure is too high (the Oct 2 lesson).", 6.0, atomize, hold=0.0,
+            "shooting past the plate means the pressure is too high (the Oct 2 lesson).", 6.0, atomize, hold=1.0, live=True,
             cam_to=CAM["chamber"], still=True,
             labels=[lab("powder container", (M.CHUTE_X + M.CONT_R - 2, 0, 300), 0.70, 0.75)])
     sc.step("6.8", "Two to three minutes of attention: amplitude slider, turbo pulses, plate position, with the "
-            "operator at the window the whole time.", 6.0, atomize, hold=0.0)
+            "operator at the window the whole time.", 6.0, atomize, hold=1.0, live=True)
 
     def tail(u):
         st["level"] = max(-12.0, st["level"] - 0.2)
@@ -562,7 +563,7 @@ def anim_06_pour():
         powder.set(3 + 55 * min(1.0, spray.landed / 5200))
         vibrate(True)
         show_g()
-    sc.step("6.9", "The crucible runs empty: next, the end-of-pour sequence (step 7).", 3.0, tail, hold=1.5)
+    sc.step("6.9", "The crucible runs empty: next, the end-of-pour sequence (step 7).", 3.0, tail, hold=1.5, live=True)
     return sc.save()
 
 
@@ -645,7 +646,7 @@ def anim_02_stack():
         gauges(sc, us="40.12 kHz", amp=90)
         sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if sc.n % 2 else 0.0))
     sc.step("2.7", "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, "
-            "the plate is cracked.", 3.5, wet, hold=0.8)
+            "the plate is cracked.", 3.5, wet, hold=1.0, live=True)
 
     def cover_on(u):
         mist.p = mist.p[:0]
@@ -774,7 +775,7 @@ def anim_05_melt():
         air.step()
         show_g({"status": "transducer air ON, rescan"})
     sc.step("5.5", "Meanwhile: transducer cooling air on, rescan the ultrasonics (scans expire), hearing "
-            "protection on, an operator at the window.", 4.0, meanwhile, hold=1.5, cam_to=CAM["column"],
+            "protection on, an operator at the window.", 4.0, meanwhile, hold=1.5, live=True, cam_to=CAM["column"],
             labels=[lab("cooling air to the transducer", M.PLATE_C - M.STACK_DIR * 380, 0.06, 0.62)])
     return sc.save()
 
@@ -831,18 +832,18 @@ def anim_04_gas_wash():
             show_g()
         return f
     sc.step("4.2", "Furnace wash 1: pump to the gauge floor, about −850 mbar at Provo's altitude (−1000 at "
-            "sea level): normal, not a leak. Then argon back in to +150.", 4.0, cycle("furnace", 650), hold=0.6)
+            "sea level): normal, not a leak. Then argon back in to +150.", 4.0, cycle("furnace", 650), hold=1.0)
     sc.step("4.3", "Furnace washes 2 and 3, same again. O₂ reads nonsense under vacuum: backfill, then read.",
-            4.0, cycle("furnace", 380), hold=0.3)
+            4.0, cycle("furnace", 380), hold=1.0)
     sc.step("4.3", "Furnace washes 2 and 3, same again. O₂ reads nonsense under vacuum: backfill, then read.",
-            3.0, cycle("furnace", 260), hold=0.6)
+            3.0, cycle("furnace", 260), hold=1.0)
     sc.step("4.4", "Then the chamber, while the furnace holds its overpressure: pump to the floor, fill with "
-            "argon, repeat.", 4.0, cycle("chamber", 120), hold=0.8)
+            "argon, repeat.", 4.0, cycle("chamber", 120), hold=1.0)
     sc.step("4.5", "Generator on, 250 °C, wash again: the target is moisture in new insulation and crucible, "
-            "not the metal.", 4.5, cycle("furnace", 70, 24, 250), hold=0.8,
+            "not the metal.", 4.5, cycle("furnace", 70, 24, 250), hold=1.0,
             labels=[lab("coil on: 250 °C", (-47, 0, M.Z_CR - 28 + 12.5 * 2.5), 0.06, 0.35)])
     sc.step("4.6", "500 °C, wash again. Stop washing once O₂ is low and stable: ≤100 ppm, best "
-            "40–50 (the team has seen the low 20s).", 4.5, cycle("furnace", 45, 250, 500), hold=0.8,
+            "40–50 (the team has seen the low 20s).", 4.5, cycle("furnace", 45, 250, 500), hold=1.0,
             still=True)
 
     def ready(u):
@@ -887,7 +888,7 @@ def anim_07_end_cooldown():
         spray.step()
         sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if sc.n % 2 else 0.0))
         show_g({"us": "40.08 kHz"})
-    sc.step("7.1", "Crucible empty: one TURBO push clears the last drops and the nozzle.", 2.5, turbo, hold=0.5)
+    sc.step("7.1", "Crucible empty: one TURBO push clears the last drops and the nozzle.", 2.5, turbo, hold=1.0, live=True)
 
     def stop(u):
         sc.gmat["arm"] = T((0, 0, 12 * (1 - window(u, 0.0, 0.3))))
@@ -943,14 +944,15 @@ def anim_07_end_cooldown():
         brush.step()
         powder.set(55 + 8 * u)
     sc.step("7.6", "Brush the plate, bowl, walls and view port down into the container, in a circle, before it "
-            "comes off. Let the dust settle before reaching in.", 4.5, brush_down, hold=0.8, cam_to=CAM["chamber"],
+            "comes off. Let the dust settle before reaching in.", 4.5, brush_down, hold=1.0, live=True, cam_to=CAM["chamber"],
             still=True)
 
     def take_off(u):
         brush.step()
         sc.gmat["container_valve"] = np.eye(4)
         sc.gmat["flange_clamp"] = T((0, 0, -30 * window(u, 0.3, 0.5)))
-        sc.alpha.update({n: 1 - window(u, 0.45, 0.6) for n in sc.members("flange_clamp")})
+        sc.alpha.update({n: 1 - window(u, 0.45, 0.6) for n in sc.members("flange_clamp")
+                         if not n.startswith("w:")})
         sc.gmat["container"] = T((0, -420 * window(u, 0.7, 1.0), -70 * window(u, 0.55, 0.7)))
     sc.step("7.7", "Close the container valve first (pull down and across: it is heavier than it looks), brush the "
             "top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.", 4.0,
@@ -967,7 +969,8 @@ def anim_07_end_cooldown():
 # ----------------------------------------------------------------------------------- 08 clean
 def anim_08_clean():
     sc = Scene("08_clean", "8 · Clean and reset")
-    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False)
+    load_machine(sc, cut=tuple(g for g in FURNACE_CUT if g != "nozzle") + CHAMBER_CUT, ghost={"stack_cover": 0.35},
+                 hide=UTILITY_NAMES, pipes=False)
     for k in range(4):
         sc.show(sc.members(f"slug{k}"), 0.0)
     pool = Pool(sc, half=True, level=-13)
@@ -987,7 +990,7 @@ def anim_08_clean():
         if u > 0.1:
             dust.step()
     sc.step("8.1", "Same alloy next: open, brush, vacuum. A material change takes about an hour: vacuum, then wipe "
-            "everything. Brushes, paper towels and isopropanol only.", 4.0, brush, hold=0.8)
+            "everything. Brushes, paper towels and isopropanol only.", 4.0, brush, hold=1.0, live=True)
 
     def plate_off(u):
         dust.step()
@@ -1014,15 +1017,16 @@ def anim_08_clean():
             sc.alpha.update({n: 1 - w for n in sc.members(g)})
         sc.gmat["crucible"] = T((0, 0, 240 * window(u, 0.3, 0.7)))
         sc.alpha["pool"] = sc.alpha["pool#cut"] = 0.0 if u > 0.3 else 1.0
-        sc.gmat["nozzle"] = T((0, 0, -70 * window(u, 0.7, 1.0)))
+        sc.gmat["nozzle"] = T(NOZZLE_OUT * window(u, 0.7, 1.0))
     sc.step("8.4", "Strip it: thermocouple, insulation, crucible. Nozzle: look through it for light; unclog with "
             "a needle or drill it to Ø0.7; swap it if a new charge would not push through.", 4.0,
             nozzle_check, hold=1.2,
-            labels=[lab("nozzle: light through it?", (0, 0, M.CRUCIBLE_BASE - 3 + 240 - 70), 0.06, 0.55)])
+            labels=[lab("nozzle: light through it?", NOZZLE_OUT + np.array([0, 0, M.CRUCIBLE_BASE - 3 + 240]),
+                        0.06, 0.55)])
 
     def rebuild(u):
         w = window(u, 0.0, 0.6)
-        sc.gmat["nozzle"] = T((0, 0, -70 * (1 - window(u, 0.0, 0.3))))
+        sc.gmat["nozzle"] = T(NOZZLE_OUT * (1 - window(u, 0.0, 0.3)))
         sc.gmat["crucible"] = T((0, 0, 240 * (1 - window(u, 0.25, 0.6))))
         for g in ("tc", "top_ins", "side_ins"):
             sc.alpha.update({n: window(u, 0.55, 0.75) for n in sc.members(g)})
@@ -1058,23 +1062,23 @@ def anim_01_utilities():
             cam_to=[(-1200, -2600, 1900), (300, 200, 1250), (0, 0, 1)],
             labels=[lab("main switch", (345, 190, 1200), 0.74, 0.50)])
     sc.step("1.2", "Facility chilled water: open the valve only a little (at least 2 L/min, but 'water too cold' "
-            "trips below 7–10 °C).", 3.5, run("water_supply", "water_return"), hold=0.8,
+            "trips below 7–10 °C).", 3.5, run("water_supply", "water_return"), hold=1.0, live=True,
             cam_to=[(2300, -2400, 1900), (500, 400, 600), (0, 0, 1)],
             labels=[lab("chilled water to the coil", (443, 420, 800), 0.06, 0.40)])
     sc.step("1.3", "Heat exchanger on only when you are about to heat; wait for 'cooling water flow low' to "
-            "clear.", 3.0, run("water_supply", "water_return"), hold=0.8,
+            "clear.", 3.0, run("water_supply", "water_return"), hold=1.0, live=True,
             labels=[lab("heat exchanger", (920, 140, 700), 0.74, 0.30)])
     sc.step("1.4", "Compressed air: 8 bar supply, about 4 bar regulated. It only cools the transducer, but no air "
-            "means no ultrasonics.", 3.5, run("water_supply", "water_return", "air"), hold=0.8,
+            "means no ultrasonics.", 3.5, run("water_supply", "water_return", "air"), hold=1.0, live=True,
             cam_to=[(-2700, -1900, 1700), (-300, 300, 900), (0, 0, 1)],
             labels=[lab("air to the transducer", M.PLATE_C - M.STACK_DIR * 405, 0.74, 0.62),
                     lab("air filter-regulator", (-275, 960, 1430), 0.06, 0.20)])
     sc.step("1.5", "Argon 5N at 8 bar on the regulator (0–10 bar, not a welding regulator): one T into the "
             "furnace line and the chamber line; it also drives the pneumatics.", 3.5,
-            run("water_supply", "water_return", "air", "argon"), hold=0.8,
+            run("water_supply", "water_return", "air", "argon"), hold=1.0, live=True,
             labels=[lab("argon 5N, regulator", (-560, 700, 1480), 0.06, 0.35)])
     sc.step("1.6", "Checklist: vacuum-pump oil in the sight glass, exchanger water level, HEPA filter (every ~2 "
-            "months), hoses dry.", 3.5, run("water_supply", "water_return", "air", "argon"), hold=2.0,
+            "months), hoses dry.", 3.5, run("water_supply", "water_return", "air", "argon"), hold=2.0, live=True,
             cam_to=CAM["machine"], still=True,
             labels=[lab("pump oil sight glass", (-590, 127, 110), 0.06, 0.75)])
     return sc.save()

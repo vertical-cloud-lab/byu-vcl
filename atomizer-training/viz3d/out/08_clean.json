@@ -1,0 +1,41 @@
+{
+ "name": "08_clean",
+ "fps": 15,
+ "n_frames": 412,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "8.1",
+   "caption": "Same alloy next: open, brush, vacuum. A material change takes about an hour: vacuum, then wipe everything. Brushes, paper towels and isopropanol only.",
+   "start_frame": 0,
+   "end_frame": 86
+  },
+  {
+   "label": "8.2",
+   "caption": "Plate off its stud. Never grind or clean it: one plate per alloy, logged (1–3 runs each). A stainless scraper for stuck particles, never plastic.",
+   "start_frame": 87,
+   "end_frame": 153
+  },
+  {
+   "label": "8.3",
+   "caption": "Once the furnace can be touched (150 °C is too hot): lid open, sealing rod out. Peel the slag from the crucible floor, scrape Al off the shaft, keep the tip smooth.",
+   "start_frame": 154,
+   "end_frame": 228
+  },
+  {
+   "label": "8.4",
+   "caption": "Strip it: thermocouple, insulation, crucible. Nozzle: look through it for light; unclog with a needle or drill it to Ø0.7; swap it if a new charge would not push through.",
+   "start_frame": 229,
+   "end_frame": 306
+  },
+  {
+   "label": "8.5",
+   "caption": "Reassemble: nozzle, crucible, insulation, thermocouple, rod. Wipe the O-rings; HEPA filter about every two months (sand tray).",
+   "start_frame": 307,
+   "end_frame": 411
+  }
+ ]
+}
