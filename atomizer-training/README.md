@@ -59,5 +59,9 @@ second or two before the words.
   text where it changes a number.
 - *The expert cleaning the atomizer, pov* has sound but Whisper's voice-activity filter found no speech in it; it is probably
   machine noise, but re-run it with `vad_filter=False` to be sure.
+- Whisper was run through the batched pipeline for speed, which yields coarse segments (median 30–45 s, a few minutes where
+  speech is continuous), so a Whisper-derived `mm:ss` can precede the words by more than a caption-derived one does. For
+  finer timing re-run with `word_timestamps=True` or the non-batched `WhisperModel.transcribe`; the text itself is the
+  better of the two sources.
 - The `graining`/`draining` HMI label, the torque units, the Oct 2 "17" pressure reading and which plate ran on Oct 2 are the
   open questions in the SOP that only someone at the machine can close.
