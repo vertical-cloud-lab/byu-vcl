@@ -1,0 +1,59 @@
+{
+ "name": "00_machine",
+ "fps": 15,
+ "n_frames": 545,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "0.1",
+   "caption": "BYU's AMAZEMET rePowder: an induction furnace on top of an argon-filled atomization chamber, with the controls on a blue cabinet and the utilities behind it.",
+   "start_frame": 0,
+   "end_frame": 70
+  },
+  {
+   "label": "0.2",
+   "caption": "On top, the Blue Power furnace: a stainless body holding the coil, crucible and insulation, under a faceted lid with a window, hinged on the left.",
+   "start_frame": 71,
+   "end_frame": 136
+  },
+  {
+   "label": "0.3",
+   "caption": "Controls: the melting control panel (furnace) and the main switch on the cabinet, and the 15.6 in HMI on its swing arm, which runs pressures, gas and ultrasonics.",
+   "start_frame": 137,
+   "end_frame": 202
+  },
+  {
+   "label": "0.4",
+   "caption": "Below the furnace, the 57 L atomization chamber: a view port at the front, and on the left a door closed by three clamps.",
+   "start_frame": 203,
+   "end_frame": 268
+  },
+  {
+   "label": "0.5",
+   "caption": "The ultrasonic unit rides in the door: transducer under its cover outside, sonotrode and plate inside, under the furnace nozzle.",
+   "start_frame": 269,
+   "end_frame": 327
+  },
+  {
+   "label": "0.6",
+   "caption": "A cone takes the powder down through a valve to the airlock container, clamped on by its flange.",
+   "start_frame": 328,
+   "end_frame": 386
+  },
+  {
+   "label": "0.7",
+   "caption": "Behind and beside it: argon 5N with its regulator, the vacuum pump, compressed air for the transducer, and the heat exchanger on the chilled water.",
+   "start_frame": 387,
+   "end_frame": 459
+  },
+  {
+   "label": "0.8",
+   "caption": "Cut in half at the furnace axis: crucible, sealing rod and nozzle over the plate, and the cone down to the container.",
+   "start_frame": 460,
+   "end_frame": 544
+  }
+ ]
+}
