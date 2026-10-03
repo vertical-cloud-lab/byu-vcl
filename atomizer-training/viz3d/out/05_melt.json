@@ -8,31 +8,31 @@
  ],
  "substeps": [
   {
-   "label": "5.1",
+   "label": "4.1",
    "caption": "Setpoint 850–1000 °C: long rods heat at the bottom and stay cooler at the top, so overshoot first. The generator heats the graphite; the graphite heats the charge.",
    "start_frame": 0,
    "end_frame": 89
   },
   {
-   "label": "5.2",
+   "label": "4.2",
    "caption": "Melt cues: a small temperature dip as melt reaches the thermocouple, faster induction beeping, the sealing rod sinking a little, the Al 'jumping' in the middle.",
    "start_frame": 90,
    "end_frame": 156
   },
   {
-   "label": "5.3",
+   "label": "4.3",
    "caption": "The rods slump into a pool. As soon as they do, bring the setpoint down to 780–800 °C: the plate will not stand much more.",
    "start_frame": 157,
    "end_frame": 249
   },
   {
-   "label": "5.4",
+   "label": "4.4",
    "caption": "Wait 2 minutes once everything is liquid: the crucible-wall thermocouple lags the melt. Any longer only oxidizes it.",
    "start_frame": 250,
    "end_frame": 324
   },
   {
-   "label": "5.5",
+   "label": "4.5",
    "caption": "Meanwhile: transducer cooling air on, rescan the ultrasonics (scans expire), hearing protection on, an operator at the window.",
    "start_frame": 325,
    "end_frame": 406

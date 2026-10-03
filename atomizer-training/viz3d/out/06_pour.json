@@ -8,56 +8,56 @@
  ],
  "substeps": [
   {
-   "label": "6.1",
+   "label": "5.1",
    "caption": "Melt held at ~800 °C, O₂ at 45 ppm. The pour goes in this order, quickly: vibration ON, draining pressure, sealing rod UP, turbo as needed.",
    "start_frame": 0,
    "end_frame": 77
   },
   {
-   "label": "6.2",
+   "label": "5.2",
    "caption": "Vibration ON. Amplitude is a percentage of generator current: start about 90 % and adjust; lower gives finer powder but may stop atomizing.",
    "start_frame": 78,
    "end_frame": 130
   },
   {
-   "label": "6.3",
+   "label": "5.3",
    "caption": "Draining pressure: furnace above chamber pushes the melt out. Only the difference matters.",
    "start_frame": 131,
    "end_frame": 175
   },
   {
-   "label": "6.4",
+   "label": "5.4",
    "caption": "Sealing rod UP: the melt stream falls onto the plate. The first drops usually bounce off: a cold, dry plate does not wet.",
    "start_frame": 176,
    "end_frame": 235
   },
   {
-   "label": "6.5",
+   "label": "5.5",
    "caption": "A short TURBO push (1.5 bar) heats the plate and clears debris; pouring more at the start is what makes the plate wet.",
    "start_frame": 236,
    "end_frame": 288
   },
   {
-   "label": "6.6",
+   "label": "5.6",
    "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. Steer with the plate position: land high on it, not over the top.",
    "start_frame": 289,
    "end_frame": 393
   },
   {
-   "label": "6.7",
+   "label": "5.7",
    "caption": "The powder runs down the cone into the container. Too thin a stream gathers and drips; melt shooting past the plate means the pressure is too high (the Oct 2 lesson).",
    "start_frame": 394,
    "end_frame": 498
   },
   {
-   "label": "6.8",
+   "label": "5.8",
    "caption": "Two to three minutes of attention: amplitude slider, turbo pulses, plate position, with the operator at the window the whole time.",
    "start_frame": 499,
    "end_frame": 603
   },
   {
-   "label": "6.9",
-   "caption": "The crucible runs empty: next, the end-of-pour sequence (step 7).",
+   "label": "5.9",
+   "caption": "The crucible runs empty: next, the end-of-pour sequence (step 6).",
    "start_frame": 604,
    "end_frame": 670
   }

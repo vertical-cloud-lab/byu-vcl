@@ -38,7 +38,8 @@ CAM = {
     "wash": [(-640, -2050, 1280), (70, 0, 1000), (0, 0, 1)],
     "container": [(-750, -2050, 950), (220, -120, 340), (0, 0, 1)],
     "door_out": [(-1750, -700, 1200), (-160, -40, 930), (0, 0, 1)],
-    "nut": [(-430, -820, 960), (-10, 0, 1110), (0, 0, 1)],
+    "nut": [(330, -880, 930), (-20, 0, 1105), (0, 0, 1)],          # from the front right: the open door is to the left
+    "left_high": [(-1450, -320, 1700), (110, 0, 720), (0, 0, 1)],   # from the left, past the open door's free edge
     "bench": [(-560, -1250, 1650), (0, -170, 1330), (0, 0, 1)],
     "outside": [(-1500, -2600, 1650), (60, 100, 950), (0, 0, 1)],
 }
@@ -682,10 +683,17 @@ def anim_02_stack():
         sc.gmat[g] = T(-M.STACK_DIR * bench)
     sc.gmat["plate"] = T(M.STACK_DIR * 140)
     sc.gmat["cover"] = T(-M.STACK_DIR * 300)
-    mid = w(M.PLATE_C - M.STACK_DIR * 330)
     pw = w(M.PLATE_C)
-    cam_side = [tuple(mid + np.array([-1250, -950, 420])), tuple(mid + np.array([0, -60, 40])), (0, 0, 1)]
-    cam_in = [tuple(pw + np.array([-640, -560, 300])), tuple(pw + np.array([0, 0, -40])), (0, 0, 1)]
+    # the open door's stack points its transducer end at the operator: look at the assembly side-on, from the left, and
+    # at the plate from behind the door, where it now sits
+    mid = w(M.PLATE_C - M.STACK_DIR * (bench + 180))
+    axis = dm @ -M.STACK_DIR
+    side_dir = np.cross(axis, (0, 0, 1.0))
+    side_dir = side_dir / np.linalg.norm(side_dir)
+    if side_dir[0] > 0:
+        side_dir = -side_dir
+    cam_side = [tuple(mid + side_dir * 1550 + np.array([0, 0, 470])), tuple(mid + np.array([0, 0, 110])), (0, 0, 1)]
+    cam_in = [tuple(pw + np.array([-430, 620, 260])), tuple(pw + np.array([0, 0, -30])), (0, 0, 1)]
     sc.cam = CAM["machine_near"]
     gauges(sc, status="chamber ready, door locked open")
 
@@ -829,7 +837,7 @@ def anim_03b_chamber():
         sc.gmat["bowl"] = T(path(w, [bowl_out, bowl_out * np.array([0.336, 0, 1]), (0, 0, bowl_out[2]), (0, 0, 0)]))
     sc.step("2b.3", "Through the open door: the catch bowl goes on the chamber floor, round the outlet. It catches "
             "un-atomized melt and protects the chamber if a plate breaks. Wipe the chamber and hang the covers.", 5.0,
-            bowl, hold=1.6, cam_to=CAM["chamber"], still=True,
+            bowl, hold=1.6, cam_to=CAM["left_high"], still=True,
             labels=[lab("catch bowl", (M.CHUTE_X + 50, 0, M.CH_BOTTOM + 20), 0.74, 0.70)])
     return sc.save()
 

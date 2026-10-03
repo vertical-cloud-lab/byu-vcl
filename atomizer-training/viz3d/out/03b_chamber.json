@@ -1,35 +1,29 @@
 {
  "name": "03b_chamber",
  "fps": 15,
- "n_frames": 320,
+ "n_frames": 287,
  "size": [
   1280,
   720
  ],
  "substeps": [
   {
-   "label": "3b.1",
-   "caption": "Container on: lift it into place under the cone and close the flange clamp, finger-tight. A second person makes this easier (one holds the weight, one closes the clamp); alone, keep it supported until the clamp is shut.",
+   "label": "2b.1",
+   "caption": "Splash-protection disc first: it drops into the container's top flange. One is enough for aluminium.",
    "start_frame": 0,
-   "end_frame": 103
+   "end_frame": 84
   },
   {
-   "label": "3b.2",
-   "caption": "Through the door: catch bowl on the chamber floor and the splash plate above the container (one is enough for aluminium). Wipe the plate; hang the covers over the openings.",
-   "start_frame": 104,
-   "end_frame": 184
+   "label": "2b.2",
+   "caption": "Lift the container under the outlet and close the flange clamp, finger-tight. A second person makes this easier (one holds the weight, one closes the clamp); alone, keep it supported until the clamp is shut.",
+   "start_frame": 85,
+   "end_frame": 187
   },
   {
-   "label": "3b.3",
-   "caption": "Run the frequency check now, before closing. Then swing the door shut: the ultrasonic unit rides in it.",
-   "start_frame": 185,
-   "end_frame": 244
-  },
-  {
-   "label": "3b.4",
-   "caption": "Swing the three bolts over and tighten the star knobs. Opening one under pressure just leaks.",
-   "start_frame": 245,
-   "end_frame": 319
+   "label": "2b.3",
+   "caption": "Through the open door: the catch bowl goes on the chamber floor, round the outlet. It catches un-atomized melt and protects the chamber if a plate breaks. Wipe the chamber and hang the covers.",
+   "start_frame": 188,
+   "end_frame": 286
   }
  ]
 }
