@@ -22,7 +22,7 @@ Credentials come from the environment: ONSHAPE_ACCESS_KEY, ONSHAPE_SECRET_KEY.
     python onshape_import.py --folder FOLDER_ID            # all documents
     python onshape_import.py --folder FOLDER_ID --only equipment
     python onshape_import.py --make-folder "Lab Models"    # once: a new folder in vcl-shared
-    python onshape_import.py --add equipment sandbox       # new tabs into the existing documents
+    python onshape_import.py --add equipment sandbox       # the latest batch of new tabs, into the existing documents
 """
 from __future__ import annotations
 
@@ -64,21 +64,36 @@ DOCS = {
     ]),
 }
 
-# Tabs added later to documents that already exist (ids in the run record). The key can't
-# delete, so a model that changes goes in as a new tab and the one it replaces stays behind.
-ADD = {
-    "equipment": [
-        ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step"),
-        ("Labconco glove box", EXPORTS / "labconco_glovebox.step"),
-        ("Aconity MIDI", EXPORTS / "aconity_midi.step"),
-    ],
-    "sandbox": [
-        ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step"),
-        ("Sandbox layout (spot D), real HR-100A", EXPORTS / "sandbox_layout.step"),
-    ],
+# Tabs added later to documents that already exist (ids in the run record), one batch per session.
+# The key can't delete, so a model that changes goes in as a new tab and the one it replaces stays
+# behind; a replacement is uploaded under a new file name, since the tab takes the file's name.
+BATCHES = {
+    "2026-09-27": {
+        "equipment": [
+            ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step", None),
+            ("Labconco glove box", EXPORTS / "labconco_glovebox.step", None),
+            ("Aconity MIDI", EXPORTS / "aconity_midi.step", None),
+        ],
+        "sandbox": [
+            ("A&D HR-100A with breeze break", EXPORTS / "labware" / "balance_hr100a.step", None),
+            ("Sandbox layout (spot D), real HR-100A", EXPORTS / "sandbox_layout.step", "sandbox_layout_hr100a.step"),
+        ],
+    },
+    "2026-10-03": {
+        "equipment": [
+            ("HR-100A, AutoTrickler V4 lid", EXPORTS / "labware" / "balance_hr100a.step", "balance_hr100a_autotrickler_lid.step"),
+            ("HR-100A, A&D stock lid", EXPORTS / "labware" / "balance_hr100a_stock_lid.step", None),
+            ("MSE PRO acrylic glove box", EXPORTS / "mse_pro_glovebox.step", None),
+            ("Aconity MIDI, reworked", EXPORTS / "aconity_midi.step", "aconity_midi_v2.step"),
+        ],
+        "sandbox": [
+            ("HR-100A, AutoTrickler V4 lid", EXPORTS / "labware" / "balance_hr100a.step", "balance_hr100a_autotrickler_lid.step"),
+            ("AutoTrickler V4 lid", EXPORTS / "labware" / "lid_autotrickler_v4.step", None),
+            ("FXi-10 stock lid", EXPORTS / "labware" / "lid_fxi10_stock.step", None),
+        ],
+    },
 }
-# The tab takes the uploaded file's name, so a replacement is uploaded under a new one
-UPLOAD_AS = {"Sandbox layout (spot D), real HR-100A": "sandbox_layout_hr100a.step"}
+LATEST = max(BATCHES)
 
 
 class Api:
@@ -120,18 +135,19 @@ def poll(api: Api, pending: dict[str, str], first_wait: float) -> dict:
     return tabs
 
 
-def add_tabs(api: Api, base: dict, keys: list[str], first_wait: float) -> dict:
-    """Import ADD's STEP files as new tabs of the documents in an earlier run record."""
+def add_tabs(api: Api, base: dict, keys: list[str], first_wait: float, batch: dict) -> dict:
+    """Import a batch's STEP files as new tabs of the documents in an earlier run record."""
     out = {}
     for k in keys:
         doc = base["documents"][k]
         did, wid = doc["document"].split("/documents/")[1].split("/w/")
         pending = {}
-        for tab, path in ADD[k]:
-            pending[tab] = upload(api, did, wid, path, UPLOAD_AS.get(tab))
+        for tab, path, name in batch[k]:
+            pending[tab] = upload(api, did, wid, path, name)
             print(f"  uploaded {path.name} ({path.stat().st_size / 1e6:.1f} MB) into {doc['name']!r} as {tab!r}", flush=True)
         rec = {"document": doc["document"], "tabs": poll(api, pending, first_wait)}
-        if k == "sandbox":          # a new assembly on the new layout, with the arm tab already there
+        if k == "sandbox" and any(t.startswith("Sandbox layout") for t, _, _ in batch[k]):
+            # a new assembly on the new layout, with the arm tab already there
             layout = next((t["elements"][0] for n, t in rec["tabs"].items() if n.startswith("Sandbox layout") and t["elements"]), None)
             arm = next((t["elements"][0] for n, t in doc["tabs"].items() if "PiPER" in n and t.get("elements")), None)
             if layout and arm:
@@ -179,7 +195,8 @@ def main() -> None:
     ap.add_argument("--make-folder", metavar="NAME", help="create a folder in vcl-shared and print its id")
     ap.add_argument("--only", nargs="*", choices=list(DOCS), help="just these documents")
     ap.add_argument("--first-wait", type=float, default=90.0, help="seconds before the first poll")
-    ap.add_argument("--add", nargs="+", choices=list(ADD), help="add ADD's tabs to these existing documents")
+    ap.add_argument("--add", nargs="+", choices=["equipment", "sandbox"], help="add a batch's tabs to these existing documents")
+    ap.add_argument("--batch", default=LATEST, choices=list(BATCHES), help="which batch of tabs (default: the latest)")
     ap.add_argument("--record", default="run_2026-09-26.json", help="run record holding the existing documents")
     ap.add_argument("--dry-run", action="store_true")
     args = ap.parse_args()
@@ -188,17 +205,19 @@ def main() -> None:
         print(make_folder(api, args.make_folder))
         return
     if args.add:
-        tabs = [(t, p) for k in args.add for t, p in ADD[k]]
+        batch = BATCHES[args.batch]
+        tabs = [(t, p) for k in args.add for t, p, _ in batch.get(k, [])]
         for _, p in tabs:
             if not p.exists():
                 raise SystemExit(f"missing {p}: run cad/build.py first")
         if args.dry_run:
             print("\n".join(f"{t} [{p.stat().st_size / 1e6:.1f} MB]" for t, p in tabs))
-            print(f"about {2 * len(tabs) + 4 * ('sandbox' in args.add)} calls")
+            print(f"about {2 * len(tabs)} calls, plus 4 if the batch has a new sandbox layout")
             return
         api = Api()
         base = json.loads((HERE / args.record).read_text())
-        record = {"date": time.strftime("%Y-%m-%d"), "added_to": args.record, "documents": add_tabs(api, base, args.add, args.first_wait)}
+        record = {"date": time.strftime("%Y-%m-%d"), "batch": args.batch, "added_to": args.record,
+                  "documents": add_tabs(api, base, [k for k in args.add if k in batch], args.first_wait, batch)}
         record["api_calls_used"] = api.calls
         out = HERE / f"run_{record['date']}_add.json"
         out.write_text(json.dumps(record, indent=2) + "\n")

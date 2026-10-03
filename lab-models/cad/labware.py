@@ -589,27 +589,95 @@ def tube_rack_6() -> Model:
 
 
 # A&D HR-100A (102 g x 0.1 mg), as the doser runs it: with A&D's small FXi-10 breeze break, not
-# the tall stock one (photos in byu-vcl#2 and the powder-doser threads). Powder falls through the
-# 28 mm opening in the break's lid into the beaker, and the lab measured 79.4 mm from the pan to
-# the lid's underside, which is why vessels must be under 3 in. A&D's drawings give the outline,
-# the pan and the feet; the rest is scaled off them (../sources/hr100a.json lists which). The pan
-# is the manual's 86.5 mm, which matches the lab's measurement; units with A&D's 2022 one-piece
-# pan sit 4 mm higher, so caliper it. Distances along y are from the front of the body, which is
-# 198 x 262 mm without the stock break's housing.
+# the tall stock one (photos in byu-vcl#2 and the powder-doser threads), and on that break the
+# AutoTrickler V4's clear panel rather than A&D's white lid (the lab's dosing videos, from the
+# March 2026 AutoTrickler SOP to the October doser streams; ../sources/hr100a.json). The lids
+# swap: `balance(lid="stock")` is the same balance with A&D's lid, and `lid_model()` gives either
+# lid on its own. The lab measured 79.4 mm from the pan to the lid's underside, which is why
+# vessels must be under 3 in. A&D's drawings give the outline, the pan and the feet; the rest is
+# scaled off them (../sources/hr100a.json lists which). The pan is the manual's 86.5 mm, which
+# matches the lab's measurement; units with A&D's 2022 one-piece pan sit 4 mm higher, so caliper
+# it. Distances along y are from the front of the body, which is 198 x 262 mm without the stock
+# break's housing.
 HR100A = dict(W=198.0, D=262.0, deck=70.0, nose=31.0, slope_y=75.0, slope_z=63.0, foot=5.0,
               pan_d=90.0, pan_top=86.5, pan_y=168.5, ring_d=120.0, ring_top=84.0,
               feet_x=162.0, feet_y=(61.5, 253.0), foot_d=30.0,
               lcd_w=110.0, lcd_y=(34.0, 69.0), key_y=19.0, key_pitch=22.0, key_d=12.0,
               brk=184.0, brk_r=30.0, plate=(70.0, 82.4), post_w=13.0, post_c=64.0, lid=(165.9, 172.4),
               boss_d=62.5, boss_top=176.4, hole_d=28.0)
+# AutoTrickler V4 acrylic top panel (../sources/autotrickler_v4_lid.json): a flat clear panel that
+# drops onto the four posts by a groove in its underside, with three rubber bumpers that the
+# trickler housing rests on and one round hole for the housing's funnel. AutoTrickler installs it
+# with the tab at the back and the hole forward of centre; the lab runs it turned 180 deg, tab to
+# the front and the hole behind centre, under the doser's outlet. The bumpers are AutoTrickler's
+# own figure (1/2 x 9/64 in); everything else is scaled from photos, so caliper it.
+# corner/side: half-widths of the outline at the corners and at the middle of each bowed side.
+AT_LID = dict(corner=84.0, side=92.0, fillet=20.0, t=6.0, hole_d=46.0, hole_y=24.0, tab_w=50.0, tab_out=16.0,
+              bumper_d=12.7, bumper_h=3.6, side_bumper=(63.0, 25.0), tab_bumper=100.0,
+              groove_in=8.0, groove_w=5.0, groove_d=2.5)
 
 
-def balance() -> Model:
-    """A&D HR-100A with the FXi-10 small breeze break, and the doser's 100 mL beaker on the pan."""
+def _bowed(corner: float, side: float, fillet: float, h: float) -> cq.Workplane:
+    """A slab h thick whose outline is a square with every side bowed out to `side` and the
+    corners rounded."""
+    c, s = corner, side
+    w = (cq.Workplane("XY").moveTo(-c, -c).threePointArc((0, -s), (c, -c)).threePointArc((s, 0), (c, c))
+         .threePointArc((0, s), (-c, c)).threePointArc((-s, 0), (-c, -c)).close())
+    return w.extrude(h).edges("|Z").fillet(fillet)
+
+
+def lid_parts(kind: str, py: float = 0.0, z: float | None = None) -> list[tuple[str, cq.Workplane, str]]:
+    """The breeze break's lid, resting on the posts: 'stock' (A&D's, white, with the Ø28 centre
+    opening), 'autotrickler' (the V4 panel turned as the lab runs it, tab to the front) or
+    'autotrickler_as_installed' (AutoTrickler's orientation, tab at the back)."""
+    p = HR100A
+    z = p["lid"][0] if z is None else z
+    if kind == "stock":
+        b, r = p["brk"], p["brk_r"]
+        lid = rbox(b, b, p["lid"][1] - p["lid"][0], r, y=py, z=z)
+        lid = lid.union(cyl(p["boss_d"], p["boss_top"] - p["lid"][1], y=py, z=z + p["lid"][1] - p["lid"][0]))
+        return [("breeze break lid", lid.cut(cyl(p["hole_d"], 40, y=py, z=z - 1)), "pp_white")]
+    a = AT_LID
+    s = 1.0 if kind == "autotrickler_as_installed" else -1.0      # +1: the tab at the back (+y)
+    panel = _bowed(a["corner"], a["side"], a["fillet"], a["t"])
+    tab_y0, tab_y1 = a["side"] - 30.0, a["side"] + a["tab_out"]
+    panel = panel.union(rbox(a["tab_w"], tab_y1 - tab_y0, a["t"], 8.0, y=s * (tab_y0 + tab_y1) / 2))
+    gi, gw = a["groove_in"], a["groove_w"]
+    groove = _bowed(a["corner"] - gi, a["side"] - gi, a["fillet"] - gi, a["groove_d"]).cut(
+        _bowed(a["corner"] - gi - gw, a["side"] - gi - gw, a["fillet"] - gi - gw, a["groove_d"]))
+    panel = panel.cut(groove.translate((0, 0, -0.01))).cut(cyl(a["hole_d"], 20, y=-s * a["hole_y"], z=-1))
+    parts = [("autotrickler v4 panel", panel.translate((0, py, z)), "acrylic")]
+    bx, by = a["side_bumper"]
+    for i, (x, y) in enumerate(((-bx, s * by), (bx, s * by), (0.0, s * a["tab_bumper"]))):
+        parts.append((f"panel bumper {i + 1}", cyl(a["bumper_d"], a["bumper_h"], x=x, y=py + y, z=z + a["t"]), "polystyrene"))
+    return parts
+
+
+def lid_model(kind: str) -> Model:
+    """Either lid on its own, as it sits on the posts (z = 0 at its underside, y = 0 at the pan
+    centre, the balance's display towards -y)."""
+    title = {"stock": "A&D FXi-10 breeze break lid (stock, white)",
+             "autotrickler": "AutoTrickler V4 acrylic top panel, turned as the lab runs it (tab to the front)"}[kind]
+    m = Model("lid_fxi10_stock" if kind == "stock" else "lid_autotrickler_v4", title,
+              source="A&D's FX-i drawing" if kind == "stock" else
+              "AutoTrickler's manual and photos, the lab's photos (sources/autotrickler_v4_lid.json)")
+    for name, shape, mat in lid_parts(kind, 0.0, 0.0):
+        m.add(name, shape, mat)
+    return m
+
+
+def balance(lid: str = "autotrickler") -> Model:
+    """A&D HR-100A with the FXi-10 small breeze break, and the doser's 100 mL beaker on the pan.
+    lid: 'autotrickler' (the AutoTrickler V4's clear lid, as the doser runs it) or 'stock'."""
     p = HR100A
     W, D = p["W"], p["D"]
-    m = Model("balance_hr100a", "A&D HR-100A balance with the small FXi-10 breeze break (as the doser runs it)",
-              source="A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)")
+    if lid == "stock":
+        m = Model("balance_hr100a_stock_lid", "A&D HR-100A with the FXi-10 breeze break and A&D's own lid",
+                  source="A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)")
+    else:
+        m = Model("balance_hr100a", "A&D HR-100A with the FXi-10 breeze break and the AutoTrickler V4 lid "
+                  "(as the doser runs it)",
+                  source="A&D drawings and specs, the lab's measurements, photos and videos (sources/hr100a.json)")
     y0 = -D / 2                                                   # front of the body
     ang = math.atan2(p["slope_z"] - p["nose"], p["slope_y"])     # the display panel's slope
     prof = [(y0, p["foot"]), (-y0, p["foot"]), (-y0, p["deck"]), (y0 + p["slope_y"] + 5, p["deck"]),
@@ -655,12 +723,14 @@ def balance() -> Model:
                                       ((c, c), (-c, c), (0, bulge)), ((-c, c), (-c, -c), (-bulge, 0)))):
         arc = cq.Workplane("XY").moveTo(*a0).threePointArc(mid, a1).offset2D(1.0, "arc")
         m.add(f"breeze break panel {i + 1}", arc.extrude(p["lid"][0] - z1).translate((0, py, z1)), "acrylic")
-    lid = rbox(b, b, p["lid"][1] - p["lid"][0], r, y=py, z=p["lid"][0])
-    lid = lid.union(cyl(p["boss_d"], p["boss_top"] - p["lid"][1], y=py, z=p["lid"][1]))
-    m.add("breeze break lid", lid.cut(cyl(p["hole_d"], 20, y=py, z=p["lid"][0] - 1)), "pp_white")
-    m.add("beaker", _at(beaker().parts[0].shape, 0, py, p["pan_top"]), "glass")
-    m.notes = {"envelope_mm": [W, D, p["boss_top"]], "pan_top_mm": p["pan_top"],
-               "pan_to_lid_underside_mm": round(p["lid"][0] - p["pan_top"], 1), "drop_hole_d_mm": p["hole_d"],
+    for name, shape, mat in lid_parts(lid, py):
+        m.add(name, shape, mat)
+    by = py + (AT_LID["hole_y"] if lid == "autotrickler" else 0.0)    # the beaker goes under the drop hole
+    m.add("beaker", _at(beaker().parts[0].shape, 0, by, p["pan_top"]), "glass")
+    top = p["boss_top"] if lid == "stock" else p["lid"][0] + AT_LID["t"] + AT_LID["bumper_h"]
+    m.notes = {"envelope_mm": [W, D, round(top, 1)], "pan_top_mm": p["pan_top"], "lid": lid,
+               "pan_to_lid_underside_mm": round(p["lid"][0] - p["pan_top"], 1),
+               "drop_hole_d_mm": p["hole_d"] if lid == "stock" else AT_LID["hole_d"],
                "side_panel_opening_mm": [115, 83.5], "capacity_g": 102, "readability_mg": 0.1,
                "stock_large_break": "not modelled: 315 mm tall overall, cylinder chamber 156 mm inside (sources/hr100a.json)"}
     return m

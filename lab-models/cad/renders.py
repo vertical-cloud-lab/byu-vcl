@@ -48,14 +48,16 @@ def equipment_sheet(eq: dict[str, Model]) -> dict[str, Model]:
         m = f()
         allm[m.key] = m
     order = ["bambu_a1_mini", "bambu_h2d", "opentrons_ot2", "agilex_piper", "cubxl", "lansmont_m23_drop_tower",
-             "amazemet_repowder", "labconco_glovebox", "aconity_midi"]
+             "amazemet_repowder", "labconco_glovebox", "mse_pro_glovebox", "aconity_midi"]
+    views = {"aconity_midi": (-0.8, -1.2, 0.55)}      # from the left, where its filter unit stands
     tiles = []
     for key in order:
         if key not in allm:
             continue
         m = allm[key]
-        out = render([m], TILES / f"{key}.png", size=(900, 900), direction=(0.75, -1.25, 0.6))
-        render([m], RENDERS / f"{key}.png", size=(1400, 1200), direction=(0.75, -1.25, 0.6), title=m.title)
+        d = views.get(key, (0.75, -1.25, 0.6))
+        out = render([m], TILES / f"{key}.png", size=(900, 900), direction=d)
+        render([m], RENDERS / f"{key}.png", size=(1400, 1200), direction=d, title=m.title)
         src = "vendor STEP" if "STEP" in m.source and "lab" not in m.source else "rough, from specs"
         tiles.append((out, m.title, f"{_grams(m)}  ·  {src}"))
     contact_sheet(tiles, RENDERS / "equipment_sheet.png", cols=4, tile_w=480, title="Lab equipment",
@@ -124,6 +126,27 @@ def glovebox_fit(gb: Model, hr: Model) -> None:
     caption(out, "HR-100A on the Labconco glove box floor (shell drawn clear)", gb.notes.get("fit_note", ""))
 
 
+def balance_lids(hr: Model) -> None:
+    """The HR-100A twice: with the AutoTrickler V4 lid the doser runs, and with A&D's own lid."""
+    import labware
+    stock = labware.balance("stock")
+    gap = 300.0
+    out = render([hr.moved(-gap / 2), stock.moved(gap / 2)], RENDERS / "balance_hr100a_lids.png", size=(1600, 1000),
+                 direction=(0.35, -1.3, 0.9), zoom=1.05)
+    caption(out, "HR-100A breeze break lids: AutoTrickler V4 (left, as the doser runs it) and A&D's own (right)",
+            "Both sit on the same four FXi-10 posts, so they swap. The panel's 46 mm hole is 24 mm behind the pan centre, "
+            "under the doser's outlet; A&D's lid has a 28 mm centre opening.")
+
+
+def mse_fit(gb: Model, hr: Model) -> None:
+    """The HR-100A on the MSE box's floor, gone in through the 400 mm side door."""
+    x, y, z = gb.notes["floor_centre_mm"]
+    bal = hr.moved(x - 150.0, y, z)
+    out = render([gb, bal], RENDERS / "mse_glovebox_fit.png", size=(1500, 1100), direction=(0.45, -1.0, 0.75),
+                 bounds_of=[gb])
+    caption(out, "HR-100A inside the MSE PRO acrylic box", gb.notes.get("fit_note", ""))
+
+
 def all_renders(cat: dict[str, Model], eq: dict[str, Model], room_model: Model | None = None) -> None:
     RENDERS.mkdir(exist_ok=True)
     labware_sheet(cat)
@@ -131,8 +154,11 @@ def all_renders(cat: dict[str, Model], eq: dict[str, Model], room_model: Model |
     render([cat["holder_vial_20ml"]], RENDERS / "holder_vial_20ml.png", size=(1400, 1000), title=cat["holder_vial_20ml"].title)
     hr = cat["balance_hr100a"]
     render([hr], RENDERS / "balance_hr100a.png", size=(1400, 1200), direction=(0.8, -1.3, 0.75), title=hr.title)
+    balance_lids(hr)
     if "labconco_glovebox" in eq:
         glovebox_fit(eq["labconco_glovebox"], hr)
+    if "mse_pro_glovebox" in eq:
+        mse_fit(eq["mse_pro_glovebox"], hr)
     equipment_sheet(eq)
     sandbox_scene(cat)
     if room_model is not None:

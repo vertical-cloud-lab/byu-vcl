@@ -674,22 +674,23 @@
     "group": "station"
   },
   "balance_hr100a": {
-    "title": "A&D HR-100A balance with the small FXi-10 breeze break (as the doser runs it)",
-    "source": "A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)",
-    "parts": 26,
+    "title": "A&D HR-100A with the FXi-10 breeze break and the AutoTrickler V4 lid (as the doser runs it)",
+    "source": "A&D drawings and specs, the lab's measurements, photos and videos (sources/hr100a.json)",
+    "parts": 29,
     "bbox_mm": [
       198.0,
       263.0,
-      176.4
+      175.5
     ],
     "envelope_mm": [
       198.0,
       262.0,
-      176.4
+      175.5
     ],
     "pan_top_mm": 86.5,
+    "lid": "autotrickler",
     "pan_to_lid_underside_mm": 79.4,
-    "drop_hole_d_mm": 28.0,
+    "drop_hole_d_mm": 46.0,
     "side_panel_opening_mm": [
       115,
       83.5
@@ -713,11 +714,57 @@
   "labware_lineup": {
     "title": "Sandbox objects, all together",
     "source": "see the per-object rows",
-    "parts": 230,
+    "parts": 233,
     "bbox_mm": [
       1344.2,
       855.2,
       533.2
+    ]
+  },
+  "balance_hr100a_stock_lid": {
+    "title": "A&D HR-100A with the FXi-10 breeze break and A&D's own lid",
+    "source": "A&D drawings and specs, the lab's measurements and photos (sources/hr100a.json)",
+    "parts": 26,
+    "bbox_mm": [
+      198.0,
+      263.0,
+      176.4
+    ],
+    "envelope_mm": [
+      198.0,
+      262.0,
+      176.4
+    ],
+    "pan_top_mm": 86.5,
+    "lid": "stock",
+    "pan_to_lid_underside_mm": 79.4,
+    "drop_hole_d_mm": 28.0,
+    "side_panel_opening_mm": [
+      115,
+      83.5
+    ],
+    "capacity_g": 102,
+    "readability_mg": 0.1,
+    "stock_large_break": "not modelled: 315 mm tall overall, cylinder chamber 156 mm inside (sources/hr100a.json)"
+  },
+  "lid_autotrickler_v4": {
+    "title": "AutoTrickler V4 acrylic top panel, turned as the lab runs it (tab to the front)",
+    "source": "AutoTrickler's manual and photos, the lab's photos (sources/autotrickler_v4_lid.json)",
+    "parts": 4,
+    "bbox_mm": [
+      184.0,
+      200.0,
+      9.6
+    ]
+  },
+  "lid_fxi10_stock": {
+    "title": "A&D FXi-10 breeze break lid (stock, white)",
+    "source": "A&D's FX-i drawing",
+    "parts": 1,
+    "bbox_mm": [
+      184.0,
+      184.0,
+      10.5
     ]
   },
   "bambu_a1_mini": {
@@ -860,14 +907,56 @@
     "status": "a used listing (PR #78); not bought",
     "fit_note": "Inside 902 x 711 x 813 mm. The HR-100A (198 x 262 x 176 mm) passes the 279 x 330 mm transfer chamber"
   },
+  "mse_pro_glovebox": {
+    "title": "MSE PRO 378L two-port acrylic glove box with airlock (GB0068899), candidate",
+    "source": "MSE's product data and listing photo; MITR's manual (sources/glovebox.json)",
+    "parts": 36,
+    "bbox_mm": [
+      1285.0,
+      778.18,
+      700.0
+    ],
+    "envelope_mm": [
+      1285,
+      778,
+      700
+    ],
+    "chamber_outside_mm": [
+      900.0,
+      600.0,
+      700.0
+    ],
+    "interior_mm": [
+      880.0,
+      580.0,
+      680.0
+    ],
+    "airlock_mm": [
+      245.0,
+      240.0,
+      230.0
+    ],
+    "side_door_mm": [
+      400.0,
+      400.0
+    ],
+    "floor_centre_mm": [
+      0.0,
+      0.0,
+      10.0
+    ],
+    "status": "candidate, not bought",
+    "open_question": "MSE's listing: a 400 x 400 mm square side door and a vertical front. MITR's manual for the same model: a 300 mm round door and a sloped front. Ask MSE which ships.",
+    "fit_note": "Inside 880 x 580 x 680 mm. The HR-100A (198 x 262 x 176 mm) can't pass the 240 mm airlock, so it goes in through the 400 mm side door."
+  },
   "aconity_midi": {
     "title": "Aconity3D AconityMIDI (metal LPBF), candidate",
-    "source": "Aconity's spec (envelope, build space) and front photos (layout); depths assumed",
-    "parts": 46,
+    "source": "Aconity's spec (envelope, build space), configurator layers and front photos (layout); depths inferred",
+    "parts": 112,
     "bbox_mm": [
-      2454.0,
+      2472.0,
       1234.0,
-      2320.0
+      2324.0
     ],
     "envelope_mm": [
       2450.0,
@@ -905,7 +994,7 @@
   "sandbox_layout": {
     "title": "PiPER sandbox: holders, samples and an A1 mini on spot D",
     "source": "our layout; parts as listed",
-    "parts": 133,
+    "parts": 136,
     "bbox_mm": [
       1290.0,
       1360.0,

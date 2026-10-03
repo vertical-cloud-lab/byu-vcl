@@ -6,8 +6,10 @@ lab around it, requested on [PR #240](https://github.com/vertical-cloud-lab/byu-
 - the objects in [`docs/sandbox-object-set.md`](../docs/sandbox-object-set.md), plus the stations and
   printed holders they move between;
 - the A1 mini, H2D, OT-2, CubXL, PiPER, drop tower and atomizer;
-- the doser's HR-100A balance with its breeze break, the cheap glove box from PR #78, and the
-  Aconity MIDI metal printer;
+- the doser's HR-100A balance with its breeze break, and both lids for that break: A&D's own
+  and the AutoTrickler V4 panel the doser actually runs;
+- the cheap glove box from PR #78, the MSE PRO acrylic box from #30, and the Aconity MIDI metal
+  printer;
 - a rough model of room CB154.
 
 Everything is in Onshape, in **vcl-shared › [Lab Models](https://cad.onshape.com/documents?nodeId=4213db40f9a2525e7c715685&resourceType=folder)**
@@ -17,8 +19,8 @@ Everything is in Onshape, in **vcl-shared › [Lab Models](https://cad.onshape.c
 |---|---|
 | **Vendor CAD, used as-is** | OT-2 (Opentrons' reference STEP), PiPER with gripper (AgileX's STEP; its URDF meshes pose the arm in renders) |
 | **Lab CAD from another branch** | Charge cup, plug, slug and press sleeve, and the crucible replica: #222 / PR #232's STEP files, copied into [`cad/inputs/atomizer-charge/`](cad/inputs/atomizer-charge/) |
-| **Modelled from vendor drawings, standards and datasheets** | Every other sandbox object. The sources for each dimension, with verbatim quotes, are in [`sources/labware.json`](sources/labware.json). Also the HR-100A ([`sources/hr100a.json`](sources/hr100a.json)), and the glove box's liner, window, ports and transfer chamber ([`sources/glovebox.json`](sources/glovebox.json)) |
-| **Rough models from a spec envelope plus photos** | A1 mini, H2D, CubXL, drop tower, atomizer, Aconity MIDI ([`sources/aconity_midi.json`](sources/aconity_midi.json)), the glove box's control column and rear, and the room |
+| **Modelled from vendor drawings, standards and datasheets** | Every other sandbox object. The sources for each dimension, with verbatim quotes, are in [`sources/labware.json`](sources/labware.json). Also the HR-100A ([`sources/hr100a.json`](sources/hr100a.json)), and the Labconco glove box's liner, window, ports and transfer chamber ([`sources/glovebox.json`](sources/glovebox.json)) |
+| **Rough models from a spec envelope plus photos** | A1 mini, H2D, CubXL, drop tower, atomizer, Aconity MIDI ([`sources/aconity_midi.json`](sources/aconity_midi.json)), the MSE PRO glove box, the Labconco's control column and rear, the AutoTrickler V4 panel ([`sources/autotrickler_v4_lid.json`](sources/autotrickler_v4_lid.json)), and the room |
 | **Our designs** | The printed holders and the OT-2 slot nest. Their STLs are in [`exports/labware/`](exports/labware/) |
 
 ## Sandbox
@@ -68,35 +70,69 @@ not the 15 a tight grid would fit.
 
 - **Masses, and most glass wall thicknesses.** Vendors don't publish them, so they are estimates
   (marked `estimated_keys` in `sources/labware.json`).
-- **The HR-100A's pan height and lid.** The model uses the manual's 86.5 mm pan, which matches the
-  lab's 79.4 mm pan-to-lid measurement. Units with A&D's 2022 one-piece pan sit at 90.5 mm. The lid
-  looks clear rather than white in the August rig photos, so it may have been swapped.
+- **The HR-100A's pan height and the AutoTrickler panel.** The model uses the manual's 86.5 mm pan,
+  which matches the lab's 79.4 mm pan-to-lid measurement. Units with A&D's 2022 one-piece pan sit at
+  90.5 mm. Every dimension of the AutoTrickler panel except its bumpers is scaled from photos, and the
+  lab has the part, so five minutes with calipers would replace them.
 - **The arbor press.** Its outer dimensions are assumed.
 - **The crucible replica.** PR #232 scaled it from a drawing; it hasn't been measured.
 
-## The doser's balance: HR-100A with its breeze break
+## The doser's balance: HR-100A with its breeze break and lids
+
+![HR-100A, both lids](renders/balance_hr100a_lids.png)
+
+**The doser runs the AutoTrickler V4's clear panel, not A&D's white lid.** The breeze break itself is
+A&D's small FXi-10, not the 315 mm cylinder the HR-100A ships with. Its four posts take either lid, so
+the model has both: `balance_hr100a` with the AutoTrickler panel, as the doser runs it, and
+`balance_hr100a_stock_lid` with A&D's. Each lid is also a STEP of its own, `lid_autotrickler_v4` and
+`lid_fxi10_stock`, so the swap can be made in Onshape.
+
+The lab's own videos and photos show the panel from the start of the year to last week. The frames
+were cut through the stream-cam Pi, since YouTube blocks the runner:
+
+- [*Autotrickler SOP with Silicon Powder (Part 1)*, 7:58](https://www.youtube.com/watch?v=FZ-rRSlxzFM&t=478s), 2026-03-05. The V4 trickler sits on the
+  clear panel on the lab's HR-100A, and A&D's white lid lies on the bench behind it.
+  [Part 2 at 6:02](https://www.youtube.com/watch?v=2BOku0eveQo&t=362s) shows the funnel going down through the panel's hole.
+- [*No tilt – Dispensing AlSi10Mg with the Powder Doser*, 10:05](https://www.youtube.com/watch?v=Elgle_1Ys1M&t=605s), 2026-08-11. The panel
+  is tipped up under the doser, which shows its hole.
+- The fume-hood shorts of August and September, such as [*Scale Drift in Fume Hood #2*](https://www.youtube.com/shorts/IG-ccaCY740).
+- The [picam-d1pr stream on 2026-10-02](https://www.youtube.com/watch?v=VADmn4CjoBQ&t=300s), still dosing under the clear panel.
+- Photos in [powder-doser#116](https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5259483789) (2026-08-11) and
+  [#157](https://github.com/vertical-cloud-lab/powder-doser/issues/157#issuecomment-5685921132) (2026-09-15).
+
+So last session's note that powder drops through the white lid's Ø28 centre opening was wrong. It
+drops through the panel's Ø46 hole.
+
+**The panel, from AutoTrickler's V4 manual and product page:**
+
+- It is flat clear acrylic, about 6 mm thick, with the same outline as A&D's top.
+- A groove underneath drops onto the post tops. Nothing clips it in place.
+- Three Ø12.7 × 3.6 mm rubber bumpers (AutoTrickler's figure) carry the trickler housing.
+- One Ø46 hole takes the housing's funnel.
+- A 50 mm tab carries the third bumper.
+
+**The lab runs it turned 180°.** AutoTrickler puts the tab at the back, so the hole is 24 mm forward of
+centre. The lab has the tab at the front, so the hole is 24 mm *behind* centre, under the doser's
+outlet. The model is turned the lab's way; `lid_parts("autotrickler_as_installed")` gives
+AutoTrickler's orientation.
+
+Only the bumpers are a published figure. The outline, thickness, hole, tab and groove are scaled from
+photos ([`sources/autotrickler_v4_lid.json`](sources/autotrickler_v4_lid.json) gives the scale for each).
 
 ![HR-100A](renders/balance_hr100a.png)
 
-**The lab doesn't run the stock breeze break.** The HR-100A ships with a 315 mm tall cylindrical
-chamber. The lab's unit carries A&D's small FXi-10 break instead: the set-up photo in #2 matches it,
-and no doser photo shows the tall one. It has a white base plate, four posts, four bowed clear panels
-and a lid with a centre cap. The dummy this replaces was a 200 × 290 mm body under a 160 mm box, so
-it was too deep and too tall.
+**The balance:**
 
 - **Overall:** 198 × 262 × 176 mm and 3.5 kg, with a Ø90 mm pan centred 168.5 mm back from the front.
-- **The break:** 184 × 184 mm outside, 171.5 mm inside. Each clear panel lifts out and leaves a
+- **The break:** 184 × 184 mm outside, 171.5 mm inside. Each clear side panel lifts out and leaves a
   115 × 83.5 mm opening, which is the arm's way in.
-- **The drop hole is the lid's centre opening,** about Ø28 mm with the cap out. The doser's auger
-  sits on a bridge above the break and drops powder through it into the beaker. Nothing comes in
-  from the side.
 - **Vessels must be under 3 in** because the lab measured 79.4 mm (3.125 in) from the pan to the
-  lid's underside. The 70 mm Griffin beaker clears it by about 9 mm. On 2026-08-19 a taller beaker
-  let the lid rest on it and overloaded the balance.
+  underside of the panel. The 70 mm Griffin beaker clears it by about 9 mm. On 2026-08-19 a taller
+  beaker let the panel rest on it and overloaded the balance.
 - **Sourced vs scaled:** A&D's drawings and spec pages give the outline, the pan, the feet and the
-  break's 184, 171.5, 115 and 83.5 mm. The deck height, display slope, post positions and lid details
-  are scaled off A&D's vector drawings (±3 mm). [`sources/hr100a.json`](sources/hr100a.json) marks
-  each one, and also has the stock chamber's dimensions.
+  break's 184, 171.5, 115 and 83.5 mm. The deck height, display slope, post positions and the stock
+  lid's details are scaled off A&D's vector drawings (±3 mm). [`sources/hr100a.json`](sources/hr100a.json)
+  marks each one, and also has the stock chamber's dimensions.
 
 Two things aren't modelled. The doser's bridge has a ~265 mm leg span, but that is a one-photo
 estimate. The granite slab proposed in powder-doser#146 is still an open issue.
@@ -113,9 +149,10 @@ estimate. The granite slab proposed in powder-doser#146 is still an open issue.
 | AgileX PiPER | 626.75 mm reach | AgileX's arm-plus-gripper STEP, in the pose it ships in. 0–70 mm gripper |
 | CubXL | 740 × 605 × 488 | The frame is a **Genmitsu PROVerXL 4030 V2**: the badge is in the #133 and #200 photos, and the [SainSmart spec](https://www.sainsmart.com/products/proverxl-4030-v2) gives 400 × 300 × 110 mm travel. The slotted acrylic deck, tool plate, six-vial rack and control box are from photos |
 | Lansmont M23 drop tower | 533 × 610 × 2800 | Lansmont data sheet: 21 × 24 in envelope, 96–120 in tall, 9.06 × 9.06 in table. The frame is from the lab's photos ([`sources/drop_tower.json`](sources/drop_tower.json)): two ~25 mm rods ~280 mm apart, one rear column, a latch head, ~2.8 m as set up. It lives in the SMASH Lab, CB 152A |
-| AMAZEMET rePowder | 1000 × 800 × 1600 | O&MM p. 42 and Facility Guide p. 7, as restated in the `repowder-reference.zip` uploaded to PR #232 ([unpacked here](https://github.com/vertical-cloud-lab/byu-vcl/tree/323adba/atomizer-charge/repowder-reference)): ≈300 kg on four feet at 714 × 600 mm. Layout from the #124 crate photo and AMAZEMET's render |
+| AMAZEMET rePowder | 1000 × 800 × 1600 | O&MM p. 42 and Facility Guide p. 7, as restated in the `repowder-reference.zip` uploaded to PR #232 ([unpacked here](https://github.com/vertical-cloud-lab/byu-vcl/tree/323adba/atomizer-charge/repowder-reference)): ≈300 kg on four feet at 714 × 600 mm. Layout from the #124 crate photo and AMAZEMET's render. **A more accurate model is being built in [PR #255](https://github.com/vertical-cloud-lab/byu-vcl/pull/255#issuecomment-5969452927)** from the installation and training videos; this rough one only holds the room layout until it lands |
 | Labconco Protector glove box, cat. 50701 (not bought) | 1613 × 762 × 1829 on its stand | Labconco's drawing and 2002 manual for the liner, window, ports and transfer chamber; the seller's 38 in height; the LabX listing's 44 photos for the control column, purifier and bubbler ([`sources/glovebox.json`](sources/glovebox.json)) |
-| Aconity3D AconityMIDI (candidate) | 2450 × 1500 × 2320 | Aconity's current spec, 1450 kg, Ø170 × 200 mm build. Blocks scaled from front photos; every depth is a guess ([`sources/aconity_midi.json`](sources/aconity_midi.json)) |
+| MSE PRO 378L acrylic glove box (candidate) | 1285 × 600 × 700 with the airlock and latches (900 × 600 × 700 box) | MSE's product data: 10 mm PMMA, 240 mm airlock, 400 × 400 mm side door, 68 kg. Ports, airlock height, doors and fittings scaled from MSE's listing photo ([`sources/glovebox.json`](sources/glovebox.json)) |
+| Aconity3D AconityMIDI (candidate) | 2450 × 1500 × 2320 | Aconity's current spec, 1450 kg, Ø170 × 200 mm build. Rebuilt on 2026-10-03 from Aconity's configurator layers and the CMU, Aconity and Amazemet photos; every depth is inferred ([`sources/aconity_midi.json`](sources/aconity_midi.json)) |
 
 **The H2D and A1 mini have no usable vendor CAD.** Bambu publishes none. The best leads are a measured
 H2 enclosure STEP on MakerWorld and GrabCAD models, and all of them need an account to download.
@@ -144,14 +181,69 @@ the transfer chamber easily. The doser's bridge must fit it too, or go in throug
 
 ![HR-100A on the glove box floor](renders/glovebox_fit.png)
 
+**The MSE PRO acrylic box from #30 is modelled too**, as the alternative
+([`sources/glovebox.json`](sources/glovebox.json), `mse_pro_acrylic_airlock`).
+
+![MSE PRO acrylic glove box](renders/mse_pro_glovebox.png)
+
+- **What MSE publishes:** catalog GB0068899, the same specs as #30's GB0010. It is a 900 × 600 ×
+  700 mm box of 10 mm PMMA with a 240 mm airlock, a 400 × 400 mm side door, two ball valves on the
+  chamber and two on the airlock, a gauge and a socket inside. It weighs 68 kg and comes without a
+  stand.
+- **The maker is Changsha MITR,** whose model is the MT008-B. Its table gives 900 × 600 × 700 as the
+  *outside* size, so the inside is about 880 × 580 × 680.
+- **The rest is scaled from MSE's listing photo,** to about ±25 mm:
+  - The ports are at x = ±210 mm and 305 mm up. Their rings are about Ø150, with a Ø125 bore.
+  - The gloves are cream latex on red O-rings.
+  - The airlock is on the right end, its floor about 55 mm up. Both its doors are round, the inner
+    one clamped by a crossbar and the outer one by a swing bar and T-handle.
+  - The side door is on the left end, a removable plate on four toggle latches.
+- **Overall it is about 1285 mm wide**, from the latches to the T-handle.
+
+**Ask MSE which version ships.** Their listing photo shows a vertical front and a square 400 mm
+door. The maker's manual, which MSE links from the same listing, shows a sloped front and a 300 mm
+*round* door. The model follows the listing.
+
+**The HR-100A only goes in through the side door.** It can't pass the 240 mm airlock, and the 400 mm
+door clears it easily.
+
+![HR-100A inside the MSE box](renders/mse_glovebox_fit.png)
+
 **The Aconity MIDI is a candidate, not a purchase.** Aconity's current figure is 2450 × 1500 ×
 2320 mm and 1450 kg. The 2018 and 2022 sheets give 2170 × 1590 × 2340 mm for the older design, so a
-box covering both is 2450 × 1590 × 2340. The machine has three parts:
+box covering both is 2450 × 1590 × 2340.
 
-- a side-standing filter unit;
-- the base cabinet, with the exchangeable Ø170 × 200 mm process chamber on top and an aluminium
-  portal carrying two scan heads above that;
-- a control cabinet with a wood worktop.
+![Aconity MIDI](renders/aconity_midi.png)
+
+**The first model of it was not physical, and the second is.** The first had yellow fibre loops
+floating in mid-air, filter legs that touched nothing, a Z bar poking through a slab on top of four
+posts, scan heads on a solid shelf with no way for the beam to reach the chamber, and a hose floating
+in the air. Each was a part I had invented or misread from one front photo. This version follows
+Aconity's own configurator layers and photos, CMU's, and Amazemet's photos of their machine
+([`sources/aconity_midi.json`](sources/aconity_midi.json), `corrections_2026-10-03`):
+
+- **The optics frame:**
+  - Two posts on the base cabinet and a crossbar between them, with no slab on top.
+  - A Rexroth Z module bolted to the crossbar. It moves an L-shaped scanner tray up and down.
+  - The tray has a beam opening under the two scan heads. A stepped beam tube runs from that
+    opening down to a window flange in the chamber lid.
+- **The fibres:**
+  - A blue collimator stands on each scan head. Each yellow fibre rises out of a vertical cable
+    chain on the tray, bends 180° and drops into its collimator. Those bends are the 2320 mm
+    height.
+  - The fibres reach the lasers in the control cabinet as one slack bundle down to the worktop, so
+    they can follow the Z travel.
+- **The filter unit is a cyclone:**
+  - From the floor up: a collection jar, a cone and a drum, with a cartridge filter and a valve
+    block on top.
+  - Four legs on castors run up to the drum's rim.
+  - A stainless pipe and a clear hose run into the base cabinet's left wall.
+- **The service gap:** fittings on the base cabinet's right wall, with hoses hanging across into the
+  control cabinet.
+
+Every depth is still inferred, because no side or rear view of the current machine is published.
+The filter unit's place beside the base cabinet is the least certain: in the photos its castors sit
+above the machine's floor line, which suggests it stands 0.6–0.9 m back.
 
 It has no glove ports. It is anthracite, not white. It also needs services the model doesn't show:
 

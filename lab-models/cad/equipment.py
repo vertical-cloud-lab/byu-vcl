@@ -14,7 +14,7 @@ import math
 
 import cadquery as cq
 
-from common import Model, box, cyl, rbox, tube
+from common import Model, box, cyl, hose, rbox, tube
 
 
 # --- Bambu Lab A1 mini ------------------------------------------------------------------------
@@ -111,6 +111,8 @@ def h2d(bed_z: float = 260.0) -> Model:
 # unit in its crate (#124) and AMAZEMET's render: a blue cabinet; Blue Power "aus500" furnace
 # head at the top left; a slanted stainless atomization chamber with the ultrasonic unit in its
 # door; a cone down to the airlock powder container; the melting control panel top right.
+# Superseded once it lands: PR #255 is building a more accurate one from the installation and
+# training videos, so this rough model is only kept for the room layout until then.
 REPOWDER = dict(W=1000.0, D=800.0, H=1600.0, feet_x=714.0, feet_y=600.0)
 
 
@@ -346,13 +348,113 @@ def glovebox() -> Model:
     return m
 
 
+# --- MSE PRO 378L two-port acrylic glove box with airlock (#30) ----------------------------------
+# The alternative to the Labconco: MSE Supplies GB0068899 (the GB0010 of #30, same specs), made by
+# Changsha MITR (their MT008-B). MSE's data: 900 W x 600 D x 700 H mm (outside, per MITR's table) of
+# 10 mm PMMA, a 240 mm airlock, a 400 x 400 mm side door, two ball valves on the chamber and two
+# on the airlock, one gauge, one socket inside, 68 kg, no stand. MSE's listing photo shows a plain
+# box with a vertical front; port positions, the airlock's height, both doors' hardware and the
+# fittings are scaled from it (camera fitted to the known 900 x 700 face, about +-25 mm). MITR's own
+# manual shows a sloped front and a 300 mm round side door instead, so ask MSE which one ships
+# (sources/glovebox.json, mse_pro_acrylic_airlock).
+MSE = dict(W=900.0, D=600.0, H=700.0, t=10.0, port_od=150.0, port_id=125.0, port_x=210.0, port_z=305.0,
+           ante=(450.0, 695.0, 240.0, 55.0, 285.0), ante_door=200.0, door=400.0, door_z=335.0, door_plate=470.0)
+
+
+def mse_glovebox() -> Model:
+    p = MSE
+    W, D, H, t = p["W"], p["D"], p["H"], p["t"]
+    m = Model("mse_pro_glovebox", "MSE PRO 378L two-port acrylic glove box with airlock (GB0068899), candidate",
+              source="MSE's product data and listing photo; MITR's manual (sources/glovebox.json)")
+
+    def along(axis, d, length, at):                       # a cylinder of diameter d along +x/-x/+y/-y from `at`
+        c = cq.Workplane("XY").circle(d / 2).extrude(abs(length))
+        rot = {"x": ((0, 1, 0), 90), "y": ((1, 0, 0), -90)}[axis]
+        c = c.rotate((0, 0, 0), rot[0], rot[1] if length > 0 else -rot[1])
+        return c.translate(at)
+
+    shell = box(-W / 2, -D / 2, 0, W / 2, D / 2, H).cut(box(-W / 2 + t, -D / 2 + t, t, W / 2 - t, D / 2 - t, H - t))
+    ports = [(-p["port_x"], p["port_z"]), (p["port_x"], p["port_z"])]
+    for x, z in ports:
+        shell = shell.cut(along("y", p["port_id"], 3 * t, (x, -D / 2 - t, z)))
+    ax0, ax1, aw, az0, az1 = p["ante"]
+    azc = (az0 + az1) / 2
+    shell = shell.cut(along("x", p["ante_door"], 3 * t, (W / 2 - 2 * t, 0, azc)))
+    dz, dw = p["door_z"], p["door"]
+    shell = shell.cut(box(-W / 2 - 1, -dw / 2, dz - dw / 2, -W / 2 + t + 1, dw / 2, dz + dw / 2))
+    m.add("chamber", shell, "acrylic")
+    # glove ports: a ring with a flange on the front wall, the glove held on by a red O-ring
+    for i, (x, z) in enumerate(ports):
+        m.add(f"glove port {i + 1}", along("y", p["port_od"], -35.0, (x, -D / 2, z)).cut(along("y", p["port_id"], -40.0, (x, -D / 2 + 1, z)))
+              .union(along("y", 180.0, -6.0, (x, -D / 2, z)).cut(along("y", p["port_id"], -10.0, (x, -D / 2 + 1, z)))), "printer_white")
+        m.add(f"glove o-ring {i + 1}", along("y", p["port_od"] + 6, -6.0, (x, -D / 2 - 22, z)).cut(
+            along("y", p["port_od"] - 1, -8.0, (x, -D / 2 - 21, z))), "paint_red")
+        m.add(f"glove {i + 1}", along("y", p["port_id"] - 10, 320.0, (x, -D / 2 + t, z)), "latex")
+    # airlock on the right end: a 240 mm acrylic box, round doors at both ends; the inner one is
+    # clamped by a crossbar inside the chamber, the outer by a swing bar and a T-handle screw
+    lock = box(ax0, -aw / 2, az0, ax1, aw / 2, az1).cut(box(ax0 - 1, -aw / 2 + t, az0 + t, ax1 - t, aw / 2 - t, az1 - t))
+    lock = lock.cut(along("x", p["ante_door"], 2 * t, (ax1 - 1.5 * t, 0, azc)))
+    m.add("airlock", lock, "acrylic")
+    m.add("airlock outer door", along("x", 225.0, 15.0, (ax1, 0, azc)), "acrylic")
+    m.add("airlock swing bar", box(ax1 + 15, -135, azc - 10, ax1 + 27, 135, azc + 10), "steel")
+    m.add("airlock t-handle screw", along("x", 12.0, 60.0, (ax1 + 27, 0, azc)), "steel")
+    m.add("airlock t-handle", along("y", 10.0, 80.0, (ax1 + 87, -40, azc)), "steel")
+    m.add("airlock inner door", along("x", 225.0, -15.0, (W / 2 - t, 0, azc)), "acrylic")
+    m.add("airlock inner crossbar", box(W / 2 - t - 27, -135, azc - 10, W / 2 - t - 15, 135, azc + 10), "steel")
+    # side door on the left end: a removable plate on a white gasket, held by four toggle latches
+    dp = p["door_plate"]
+    m.add("side door gasket", box(-W / 2 - 4, -dp / 2, dz - dp / 2, -W / 2, dp / 2, dz + dp / 2)
+          .cut(box(-W / 2 - 5, -dw / 2, dz - dw / 2, -W / 2 + 1, dw / 2, dz + dw / 2)), "printer_white")
+    m.add("side door", box(-W / 2 - 4 - t, -dp / 2, dz - dp / 2, -W / 2 - 4, dp / 2, dz + dp / 2), "acrylic")
+    for sy in (-1, 1):
+        for z in (180.0, 460.0):
+            m.add(f"side door latch {sy:+d} {z:.0f}", box(-W / 2 - 22, sy * (dp / 2 - 30) - 12, z - 15, -W / 2 - 14, sy * (dp / 2 - 30) + 12, z + 15),
+                  "steel")
+    # fittings: gauge and red vacuum valve on the airlock, black ball valves low on the airlock
+    # front and the left end, the inlet valve high on the right end, the socket strip inside
+    m.add("vacuum gauge stem", cyl(14, 50, x=510, y=-80, z=az1), "steel")
+    m.add("vacuum gauge", along("y", 60.0, -25.0, (510, -80 + 12, 360)), "printer_white")
+    m.add("vacuum valve", cyl(22, 40, x=600, y=0, z=az1), "steel")
+    m.add("vacuum valve handle", box(570, -6, az1 + 40, 630, 6, az1 + 48), "paint_red")
+    m.add("airlock ball valve", along("y", 22.0, -35.0, (500, -aw / 2, 100)), "steel")
+    m.add("airlock ball valve handle", box(470, -aw / 2 - 43, 108, 530, -aw / 2 - 35, 116), "printer_black")
+    m.add("exhaust valve", along("x", 22.0, -40.0, (-W / 2, -250, 40)), "steel")
+    m.add("exhaust valve handle", box(-W / 2 - 48, -280, 48, -W / 2 - 40, -220, 56), "printer_black")
+    m.add("inlet valve", along("x", 22.0, 35.0, (W / 2, -250, 650)), "steel")
+    m.add("inlet valve handle", box(W / 2 + 35, -280, 658, W / 2 + 43, -220, 666), "printer_black")
+    m.add("socket strip", box(-W / 2 + t + 20, D / 2 - t - 45, t, -W / 2 + t + 220, D / 2 - t - 5, t + 35), "printer_white")
+    for i in range(4):
+        m.add(f"socket {i + 1}", box(-W / 2 + t + 40 + 45 * i, D / 2 - t - 35, t + 35, -W / 2 + t + 70 + 45 * i, D / 2 - t - 15, t + 36),
+              "pp_blue")
+    m.add("power cable", hose([(-W / 2 + t + 220, D / 2 - t - 25, t + 17), (-120, D / 2 - t - 25, t + 17), (-120, D / 2 - 30, 110),
+                               (-120, D / 2 + 60, 110), (-120, D / 2 + 140, 5)], 8), "printer_black")
+    bb = cq.Compound.makeCompound([q.shape for q in m.parts]).BoundingBox()
+    m.notes = {"envelope_mm": [round(bb.xlen), round(bb.ylen), round(bb.zlen)], "chamber_outside_mm": [W, D, H],
+               "interior_mm": [W - 2 * t, D - 2 * t, H - 2 * t], "airlock_mm": [ax1 - ax0, aw, az1 - az0],
+               "side_door_mm": [dw, dw], "floor_centre_mm": [0.0, 0.0, t], "status": "candidate, not bought",
+               "open_question": "MSE's listing: a 400 x 400 mm square side door and a vertical front. MITR's manual for "
+                                "the same model: a 300 mm round door and a sloped front. Ask MSE which ships.",
+               "fit_note": "Inside 880 x 580 x 680 mm. The HR-100A (198 x 262 x 176 mm) can't pass the 240 mm airlock, "
+                           "so it goes in through the 400 mm side door."}
+    return m
+
+
 # --- Aconity3D AconityMIDI (metal laser powder-bed fusion) ---------------------------------------
 # Not bought: the candidate metal printer. Envelope 2450 x 1500 x 2320 mm, 1450 kg, build space
 # 170 mm dia. x 200 mm (Aconity's configurator data behind aconity3d.com, 2026; the 2018/2022 sheets
-# give 2170 x 1590 x 2340 for the older design). Every block inside the envelope is scaled from
-# front photos (CMU's, 4.036 mm/px, cross-checked on Aconity's own), and every depth is a guess:
-# no side view is published. Blocks are in the photo frame: x from the left edge, y back from
-# the front face, z up (sources/aconity_midi.json).
+# give 2170 x 1590 x 2340 for the older design). The layout is read off Aconity's own configurator
+# layers and front photos (CMU's at 4.036 mm/px, Aconity's 2026 cover) and Amazemet's photos of
+# theirs (sources/aconity_midi.json, "corrections_2026-10-03"):
+#   - the optics hang off a Rexroth Z module bolted to a crossbar between two posts, with no top
+#     slab: the module moves an L-shaped scanner tray, which has a beam opening;
+#   - a stepped beam tube runs from under that opening to a window flange in the chamber lid;
+#   - each yellow fibre leaves a vertical cable chain on the tray, bends 180 deg and drops into the
+#     collimator on its scan head; the fibres reach the lasers in the control cabinet as a bundle;
+#   - the filter is a cyclone (jar, cone, drum) with a cartridge filter on top, on four legs that
+#     run up to the drum's rim, piped into the base cabinet's left wall.
+# x and z come from the photos; every depth (y) is inferred from how the parts fit, since no side
+# view is published. Blocks are in the photo frame: x from the left edge, y back from the front
+# face, z up.
 ACONITY = dict(W=2450.0, D=1500.0, H=2320.0, build_d=170.0, build_h=200.0, feet=100.0)
 
 
@@ -360,67 +462,134 @@ def aconity_midi() -> Model:
     p = ACONITY
     W, D, H = p["W"], p["D"], p["H"]
     m = Model("aconity_midi", "Aconity3D AconityMIDI (metal LPBF), candidate",
-              source="Aconity's spec (envelope, build space) and front photos (layout); depths assumed")
+              source="Aconity's spec (envelope, build space), configurator layers and front photos (layout); depths inferred")
 
     def B(x0, x1, y0, y1, z0, z1):                         # photo frame -> centred frame, front at -D/2
         return box(x0 - W / 2, y0 - D / 2, z0, x1 - W / 2, y1 - D / 2, z1)
 
-    def X(x):
-        return x - W / 2
+    def P(x, y, z):
+        return (x - W / 2, y - D / 2, z)
 
-    def Y(y):
-        return y - D / 2
+    def C(d, x, y, z0, z1):                                # vertical cylinder in the photo frame
+        return cyl(d, z1 - z0, x=x - W / 2, y=y - D / 2, z=z0)
+
+    def levelling_feet(xs, ys, top):
+        for x in xs:
+            for y in ys:
+                m.add(f"levelling foot {x:.0f}-{y:.0f}", C(60, x, y, 0, 25), "steel")
+                m.add(f"foot ring {x:.0f}-{y:.0f}", C(46, x, y, 25, 35), "paint_red")
+                m.add(f"foot stem {x:.0f}-{y:.0f}", C(20, x, y, 35, top), "steel")
 
     f = p["feet"]
-    # filter unit, left: legs and hopper cone, drum, filter cylinder, valves
-    fx, fy = X(216.0), Y(216.0)
-    for sx in (-1, 1):
-        for sy in (-1, 1):
-            m.add(f"filter leg {sx:+d}{sy:+d}", cyl(30, 250, x=fx + sx * 170, y=fy + sy * 170), "printer_black")
-    m.add("filter hopper", cq.Workplane("XY").circle(40).workplane(offset=200).circle(215).loft().translate((fx, fy, 50)), "printer_black")
-    m.add("filter drum", cyl(430, 606, x=fx, y=fy, z=250), "printer_black")
-    m.add("filter cone", cq.Workplane("XY").circle(215).workplane(offset=64).circle(108).loft().translate((fx, fy, 856)), "printer_black")
-    m.add("filter cylinder", cyl(215, 270, x=fx, y=fy, z=920), "printer_black")
-    m.add("filter valves", cyl(90, 215, x=fx, y=fy, z=1190), "steel")
-    m.add("filter hose", cyl(60, 330, x=0, y=0, z=0).rotate((0, 0, 0), (0, 1, 0), 90)
-          .translate((fx + 110, Y(300.0), 1300)), "pp_blue")
-    # base cabinet with the exchangeable process chamber on top
-    m.add("base cabinet", B(464, 1388, 0, 1200, f, 977).edges("|Z").fillet(8), "anthracite")
-    m.add("base feet", B(484, 1368, 20, 1180, 0, f), "printer_black")
-    m.add("base door handle", B(980, 1000, -25, 0, 600, 780), "aluminium")
-    m.add("service strip", B(1388, 1493, 60, 800, 400, 1300), "printer_black")
-    for i, z in enumerate((520, 700, 880, 1060, 1240)):
-        m.add(f"service hose {i + 1}", cyl(22, 740, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), -90)
-              .translate((X(1440.0), Y(60.0), z)), "pp_blue" if i % 2 else "acrylic")
-    m.add("process chamber", B(634, 1243, 250, 950, 977, 1300).edges("|Y").fillet(10), "anthracite")
-    m.add("chamber viewport", B(835, 1005, 245, 250.5, 1121.5, 1178.5), "tinted")
-    m.add("chamber handle", B(840, 1040, 225, 250, 1005, 1030), "aluminium")
-    # optics portal: aluminium-profile posts either side, a scanner shelf, the beam turret
-    for x0 in (540, 1300):
-        for y0 in (250, 890):
-            m.add(f"portal post {x0}-{y0}", B(x0, x0 + 60, y0, y0 + 60, 977, 1905), "printer_black")
-    m.add("scanner shelf", B(540, 1360, 250, 950, 1485, 1500), "printer_black")
-    m.add("portal bridge", B(540, 1360, 250, 950, 1875, 1905), "printer_black")
-    m.add("beam turret", B(807, 1089, 400, 800, 1300, 1485), "aluminium")
-    for i, (x0, x1) in enumerate(((727, 933), (944, 1150))):
-        m.add(f"scan head {i + 1}", B(x0, x1, 350, 750, 1500, 1808).edges("|Z").fillet(8), "printer_grey")
-    m.add("z actuator", B(935, 995, 700, 780, 1808, 2250), "aluminium")
-    for i, xc in enumerate((830.0, 1040.0)):              # yellow fibre loops up to the spec height
-        loop = cq.Solid.makeTorus(150, 9).rotate(cq.Vector(0, 0, 0), cq.Vector(0, 1, 0), 90)
-        m.add(f"fibre loop {i + 1}", cq.Workplane().add(loop).translate((X(xc), Y(600.0), H - 159)), "pp_yellow")
+    # filter unit, left: a cyclone (jar, cone, drum) with a cartridge filter on top, on four legs
+    # that run from castors up to the drum's rim; it stands back beside the base cabinet
+    fx, fy = 210.0, 750.0
+    m.add("filter jar", C(90, fx, fy, 230, 330), "steel")
+    m.add("filter cone", cq.Workplane("XY").circle(45).workplane(offset=170).circle(195).loft()
+          .translate(P(fx, fy, 330)), "printer_black")
+    m.add("filter drum", C(390, fx, fy, 500, 850), "printer_black")
+    m.add("filter drum lid", C(410, fx, fy, 850, 862), "printer_black")
+    m.add("filter neck", C(80, fx, fy, 862, 940), "steel")
+    m.add("cartridge filter", C(230, fx, fy, 940, 1200), "printer_black")
+    m.add("valve block", C(70, fx, fy, 1200, 1330), "steel")
+    m.add("valve elbow", hose([P(fx, fy, 1300), P(fx + 70, fy, 1300)], 50), "steel")
+    m.add("valve actuator", B(fx - 35, fx + 35, fy - 35, fy + 35, 1330, 1420), "pp_blue")
+    for i, (dx, dy) in enumerate(((-1, 0), (1, 0), (0, -1), (0, 1))):
+        lx, ly = fx + dx * 209.0, fy + dy * 209.0
+        m.add(f"filter leg {i + 1}", C(28, lx, ly, 62, 862), "printer_black")
+        m.add(f"filter castor fork {i + 1}", B(lx - 18, lx + 18, ly - 18, ly + 18, 40, 62), "steel")
+        m.add(f"filter castor {i + 1}", cyl(40, 16).rotate((0, 0, 0), (0, 1, 0), 90).translate(P(lx - 8, ly, 20)), "printer_black")
+    # into the machine: a stainless pipe from the drum's side to the base cabinet's left wall, a
+    # clear hose from the valve block to the wall's top, and a thin air line from the actuator
+    m.add("cyclone inlet pipe", hose([P(fx + 190, fy, 790), P(470.5, fy, 790)], 60), "steel")
+    m.add("filter hose", hose([P(fx + 70, fy, 1300), P(fx + 170, fy, 1300), P(430, fy - 60, 1150), P(470.5, fy - 80, 960)], 38),
+          "acrylic")
+    m.add("air line", hose([P(fx + 35, fy - 20, 1390), P(fx + 120, fy - 40, 1390), P(440, fy - 150, 1080), P(470.5, fy - 160, 1040)], 8),
+          "pp_blue")
+    # base cabinet: one door hinged on the left, handle on the right
+    m.add("base cabinet", B(470, 1390, 0, 1200, f, 990).edges("|Z").fillet(8), "anthracite")
+    levelling_feet((510.0, 1350.0), (40.0, 1160.0), f)
+    m.add("base door split", B(488, 491, -1, 0.01, f + 20, 970), "printer_black")
+    m.add("base door handle", B(1243, 1257, -25, 0.01, 500, 580), "aluminium")
+    # process chamber on the base, with its viewport, bar handle, clamp levers and carry handle
+    m.add("process chamber", B(634, 1243, 250, 950, 990, 1300).edges("|Y").fillet(10), "anthracite")
+    m.add("chamber viewport", B(855, 1000, 244, 250.01, 1120, 1180), "tinted")
+    m.add("chamber handle", hose([P(870, 250, 1017), P(870, 225, 1017), P(1030, 225, 1017), P(1030, 250, 1017)], 16), "printer_black")
+    for i, z in enumerate((1060.0, 1230.0)):
+        m.add(f"chamber clamp {i + 1}", B(645, 690, 225, 250.01, z - 12, z + 12), "steel")
+    arc = [P(770 + 310 * k / 10, 330, 1300 + 35 * math.sin(math.pi * k / 10)) for k in range(11)]
+    m.add("chamber carry handle", hose(arc, 18), "printer_black")
+    # beam path: a stepped tube from the chamber lid's window flange up to the tray's opening
+    bx, by = 935.0, 600.0
+    m.add("beam tube flange", C(230, bx, by, 1300, 1335), "anthracite")
+    m.add("beam tube", C(200, bx, by, 1335, 1420), "anthracite")
+    m.add("beam tube ring", C(290, bx, by, 1420, 1490), "anthracite")
+    # optics frame: two posts on the base cabinet (no top slab), a crossbar with gussets, and the
+    # Rexroth Z module bolted to its front
+    for i, x0 in enumerate((540.0, 1290.0)):
+        m.add(f"portal post {i + 1}", B(x0, x0 + 60, 900, 960, 990, 1905), "printer_black")
+        m.add(f"post cap {i + 1}", B(x0, x0 + 60, 900, 960, 1905, 1915), "aluminium")
+        rx = x0 + 60 if i == 0 else x0 - 8
+        m.add(f"post rail {i + 1}", B(rx, rx + 8, 915, 945, 1100, 1890), "aluminium")
+    m.add("crossbar", B(600, 1290, 900, 960, 1620, 1680), "printer_black")
+    for i, (xa, xb) in enumerate(((600.0, 750.0), (1290.0, 1140.0))):
+        gus = (cq.Workplane("XZ").polyline([(xa - W / 2, 1620), (xb - W / 2, 1620), (xa - W / 2, 1470)]).close()
+               .extrude(-10).translate((0, 925 - D / 2, 0)))
+        m.add(f"crossbar gusset {i + 1}", gus, "printer_black")
+    m.add("z module", B(890, 1020, 815, 900, 1330, 2060), "aluminium")
+    m.add("z motor", B(895, 1015, 820, 895, 2060, 2095), "printer_black")
+    m.add("z carriage", B(880, 1030, 800, 815, 1480, 1730), "aluminium")
+    # the scanner tray it moves: floor with the beam opening, back wall, end gussets, side boxes
+    tray = B(545, 1345, 400, 800, 1490, 1505).cut(C(220, bx, by, 1480, 1520))
+    m.add("scanner tray", tray, "printer_black")
+    m.add("tray back wall", B(545, 1345, 790, 800, 1505, 1720), "printer_black")
+    for i, x0 in enumerate((545.0, 1335.0)):
+        gus = (cq.Workplane("YZ").polyline([(500 - D / 2, 1505), (790 - D / 2, 1505), (790 - D / 2, 1715)]).close()
+               .extrude(10).translate((x0 - W / 2, 0, 0)))
+        m.add(f"tray gusset {i + 1}", gus, "printer_black")
+    m.add("tray box left", B(560, 725, 450, 750, 1505, 1700), "printer_black")
+    m.add("tray box right", B(1160, 1330, 450, 750, 1505, 1700), "printer_black")
+    # two scan heads, a collimator and fibre connector on each
+    for i, (x0, x1, cx) in enumerate(((740.0, 945.0, 767.0), (945.0, 1145.0, 1115.0))):
+        m.add(f"scan head {i + 1}", B(x0, x1, 430, 780, 1505, 1810).edges("|Z").fillet(6), "printer_black")
+        m.add(f"collimator {i + 1}", C(50, cx, by, 1810, 1995), "pp_blue")
+        m.add(f"fibre connector {i + 1}", C(28, cx, by, 1995, 2100), "steel")
+    # cable chains on brackets off the back wall; each fibre rises out of its chain, bends 180 deg
+    # and drops into its collimator (bend tops 2290 and 2320 mm, the spec height)
+    for i, (x0, cx, top) in enumerate(((680.0, 767.0, 2290.0), (1150.0, 1115.0, 2320.0))):
+        m.add(f"chain bracket {i + 1}", B(x0, x0 + 60, 720, 790, 1700, 1720), "printer_black")
+        m.add(f"cable chain {i + 1}", B(x0, x0 + 60, 720, 765, 1720, 2120), "printer_black")
+        a, b = (x0 + 30, 742.5), (cx, by)
+        r = math.hypot(b[0] - a[0], b[1] - a[1]) / 2
+        zc = top - r
+        pts = [P(a[0], a[1], 2120), P(a[0], a[1], zc)]
+        for k in range(1, 12):
+            t = math.pi * k / 12
+            u = (1 - math.cos(t)) / 2
+            pts.append(P(a[0] + (b[0] - a[0]) * u, a[1] + (b[1] - a[1]) * u, zc + r * math.sin(t)))
+        pts += [P(b[0], b[1], zc), P(b[0], b[1], 2100)]
+        m.add(f"fibre {i + 1}", hose(pts, 8), "pp_yellow")
+    # fibre and cable bundle from the tray's right side down to the worktop, with slack for the Z travel
+    m.add("fibre bundle", hose([P(1345, 650, 1600), P(1420, 600, 1440), P(1490, 470, 1260), P(1540, 360, 1200)], 30),
+          "pp_yellow")
+    # service fittings on the base cabinet's right wall, hoses hanging into the control cabinet
+    for i, (yy, zz) in enumerate(((150, 1050), (300, 900), (450, 750), (600, 600), (750, 450))):
+        m.add(f"service fitting {i + 1}", hose([P(1390, yy, zz), P(1425, yy, zz)], 25), "brass")
+        m.add(f"service hose {i + 1}", hose([P(1425, yy, zz), P(1460, yy, zz - 80), P(1470, yy, zz - 200), P(1500.5, yy, zz - 260)], 16),
+              "pp_blue" if i % 2 else "acrylic")
     # control cabinet, right: two doors, e-stop, buttons, wood worktop, tower with LED strip, monitor
-    m.add("control cabinet", B(1493, 2450, 0, 800, f, 1136).edges("|Z").fillet(6), "anthracite")
-    m.add("control feet", B(1513, 2430, 20, 780, 0, f), "printer_black")
-    m.add("door split", B(1969, 1973, -1, 0.01, f + 20, 1116), "printer_black")
-    m.add("worktop", B(1488, 2455, -20, 800, 1136, 1166), "wood")
-    m.add("e-stop", cyl(60, 22, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90).translate((X(1703.0), Y(0.0), 1065)), "pp_yellow")
-    m.add("e-stop cap", cyl(40, 12, x=0, y=0, z=0).rotate((0, 0, 0), (1, 0, 0), 90).translate((X(1703.0), Y(-22.0), 1065)), "paint_red")
+    m.add("control cabinet", B(1500, 2450, 0, 800, f, 1170).edges("|Z").fillet(6), "anthracite")
+    levelling_feet((1540.0, 2410.0), (40.0, 760.0), f)
+    m.add("door split", B(1969, 1973, -1, 0.01, f + 20, 1150), "printer_black")
+    m.add("worktop", B(1495, 2455, -20, 800, 1170, 1200), "wood")
+    m.add("e-stop", cyl(60, 22).rotate((0, 0, 0), (1, 0, 0), 90).translate(P(1703.0, 0.0, 1065)), "pp_yellow")
+    m.add("e-stop cap", cyl(40, 12).rotate((0, 0, 0), (1, 0, 0), 90).translate(P(1703.0, -22.0, 1065)), "paint_red")
     m.add("button panel", B(1562, 1849, -6, 0.01, 868, 1001), "printer_black")
-    m.add("control tower", B(1490, 2350, 350, 800, 1166, 1889), "anthracite")
-    m.add("led strip", B(1490, 2350, 345, 350, 1860, 1880), "led_cyan")
-    m.add("monitor pole", B(1944, 1974, 320, 350, 1166, 1600), "aluminium")
-    m.add("monitor", B(1664, 2254, 250, 320, 1380, 1727), "screen")
-    m.add("keyboard", B(1750, 2177, 60, 210, 1166, 1186), "printer_black")
+    m.add("control tower", B(1500, 2380, 380, 800, 1200, 1905), "anthracite")
+    m.add("led strip", B(1500, 2380, 375, 380.01, 1870, 1905), "led_cyan")
+    m.add("monitor pole", B(1950, 1975, 355, 380, 1200, 1850), "aluminium")
+    m.add("monitor", B(1663, 2238, 315, 355, 1440, 1735), "screen")
+    m.add("keyboard", B(1750, 2177, 60, 210, 1200, 1220), "printer_black")
     m.notes = {"envelope_mm": [W, D, H], "mass_kg": 1450, "build_volume_mm": {"diameter": p["build_d"], "height": p["build_h"]},
                "status": "candidate, not bought", "needs": "argon 6 bar, compressed air 6 bar, 208 V 3-phase 32 A (US option), "
                "a ~15 kW chiller for heating or lasers over 400 W (not modelled)"}

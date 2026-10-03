@@ -1,0 +1,411 @@
+{
+ "_meta": {
+  "generated": "2026-10-03",
+  "method": "Read the AutoTrickler V4 user manual (Jan 2025 and Sep 2022 editions, text + embedded photos), the autotrickler.com Shopify product JSON and embedded FAQ for the 'V4 Acrylic Top Panel', retailer (CE Products) product photos and CAD renders, AutoTrickler YouTube thumbnails, and third-party Printables models (funnel, cup guide, pan guard; STLs downloaded and measured). Lab usage from vertical-cloud-lab/byu-vcl and vertical-cloud-lab/powder-doser issues/comments and committed rig-check frames. No official drawing exists publicly, so every panel dimension except the bumper size is SCALED FROM PHOTOS: lateral sizes against the panel's own outer width, assumed equal to the stock FXi-10 top outline (184 mm, the value in the lab's current model); fore-aft against the breeze-break post spacing (128 mm c-c) in the side photo; thickness from the foreshortened hole wall in the lab's 4032x3024 photo. Treat all 'estimated_keys' as +/-10-15%.",
+  "coords": "Panel frame used below: origin = panel/breeze-break centre in plan, +x = right (viewed from the display side), +y = FRONT (toward the balance display), z up. 'AutoTrickler orientation' = tab to the rear as the manual specifies; the lab currently runs it rotated 180 deg (see lab_usage).",
+  "not_done": [
+   "No physical measurement: the lab owns this exact part (on the HR-100A now). Five minutes with calipers would replace every estimate here; measure outline, thickness, hole diameter and position, bottom-groove width/depth/inset, tab outline, and bumper positions.",
+   "No official drawing or DXF found; autotrickler.com product page for the panel has no images, only text and a 100 g shipping weight.",
+   "Bottom groove width/depth/inset not determinable from photos (only its existence and that it follows the perimeter).",
+   "Rear 'extended tab' outline is approximate (one oblique photo); corner radii unknown.",
+   "snipershide.com threads (incl. third-party 'AutoTrickler Panel Sets') returned HTTP 403; accurateshooter/reddit threads not read in full.",
+   "Printables funnel is a third-party remodel 'more like the original', not the OEM part; OEM funnel not measured.",
+   "Did not verify that the FX-123 breeze break (used in the CE Products side photo) is dimensionally identical to the FX-120i/FXi-10; the panel is sold for both.",
+   "YouTube video frames not fetched (player blocked from runner); only thumbnails used.",
+   "Exact housing (trickler unit) dimensions not determined beyond NEMA-17 motors and the 18 in overall height."
+  ],
+  "files_not_kept": "The two manual PDFs (2025 and 2022 editions) and four third-party STLs (funnel, cup guide, pan guard) were downloaded and measured but not committed: the PDFs are AutoTrickler's and the STLs carry their own licences. URLs are in the sources.",
+  "model": "lab-models/cad/labware.py, AT_LID and lid_parts(): outline 184 mm (bowed sides, as the stock top), 6 mm thick, Ø46 hole 24 mm off centre, a 50 mm tab sticking out 16 mm, bumpers Ø12.7 x 3.6, and a 5 x 2.5 mm groove 8 mm in from the edge underneath. balance(lid='autotrickler') turns it as the lab runs it (tab to the front, hole behind centre); lid_parts('autotrickler_as_installed') is AutoTrickler's orientation."
+ },
+ "autotrickler_v4_lid": {
+  "description": "'V4 Acrylic Top Panel' (AutoTrickler part, USD 40): a flat clear acrylic plate that REPLACES the A&D FX-i breeze-break top plate. It sits directly on the tops of the four vertical arms, located by a groove machined in its underside (no pins/clips; the V3 'panel clips' are removed). Same plan outline as the stock top (bowed rounded square following the breeze-break side panels) plus one 'extended tab' at the rear. Three clear self-adhesive rubber bumpers are stuck on its TOP face (left, right, and on the rear tab); the V4 housing's three contact points rest on them (the housing is not fastened). One round through-hole, centred left-right and forward of centre, through which the housing's white funnel hangs down toward the cup. No raised boss, no centre cap, no funnel/chute integral to the panel. The breeze-break FRONT side panel is left out in AutoTrickler use.",
+  "dims_mm": {
+   "outline_width_x": 184,
+   "outline_depth_y_excl_tab": 184,
+   "outline_shape": "same as stock FXi-10 top plate outline (bowed rounded square); the measured top-panel width is ~95% of the bowed side-panel bulge width in the manual photo",
+   "thickness": 6.0,
+   "thickness_range": [
+    5.0,
+    6.5
+   ],
+   "hole_diameter": 46,
+   "hole_diameter_range": [
+    42,
+    50
+   ],
+   "hole_center_x": 0,
+   "hole_center_y_forward_of_center": 24,
+   "hole_center_y_range": [
+    20,
+    28
+   ],
+   "rear_tab_width": 50,
+   "rear_tab_protrusion_beyond_outline": 16,
+   "bumper_diameter": 12.7,
+   "bumper_height": 3.6,
+   "side_bumper_centers_xy": [
+    [
+     -63,
+     -25
+    ],
+    [
+     63,
+     -25
+    ]
+   ],
+   "rear_bumper_center_xy": [
+    0,
+    -100
+   ],
+   "bottom_groove": "continuous channel around the perimeter on the UNDERSIDE that drops over the tops of the four vertical arms; inset roughly 8-12 mm from the outer edge (estimate); width and depth unknown (suggest ~5 mm wide x ~2-3 mm deep as a modelling placeholder)",
+   "panel_mass_g_vendor_shipping_weight": 100,
+   "note_on_mass": "100 g (Shopify 'weight') would imply ~3 mm acrylic for this outline; the photo-scaled thickness is ~6 mm (~220 g). Shopify weights are often placeholders; prefer the photo value until measured.",
+   "rear_tab_width_range": [
+    45,
+    60
+   ],
+   "rear_tab_protrusion_range": [
+    12,
+    20
+   ],
+   "rear_tab_shape": "trapezoid, wider at the root; centred on x=0; carries the third bumper",
+   "hole_diameter_check": "hole/panel-width ratio = 0.25 in two independent photos (OEM manual p4 photo: 179.5/717 px; lab photo 2026-08-11: 328/1290 px at the hole depth) -> 46 mm if the panel is 184 mm wide"
+  },
+  "holes": [
+   {
+    "id": "funnel_hole",
+    "shape": "round, plain straight-walled through-hole (edge looks milled/frosted)",
+    "diameter_mm": 46,
+    "center_xy_mm": [
+     0,
+     24
+    ],
+    "axis": "vertical (perpendicular to the panel)",
+    "purpose": "the housing's white funnel (O.D. ~32-37 mm) passes down through it; the trickler tubes themselves stay ABOVE the panel inside the housing",
+    "confidence": "low-medium (scaled; diameter ratio 0.25 of panel width measured in manual photo; position from side photo +21.6 mm vs post midpoint and manual photo ~+28 mm)"
+   }
+  ],
+  "raised_features": [
+   {
+    "id": "bumper_left",
+    "type": "clear rubber dome bumper, self-adhesive",
+    "dia_mm": 12.7,
+    "h_mm": 3.6,
+    "center_xy_mm": [
+     -63,
+     -25
+    ]
+   },
+   {
+    "id": "bumper_right",
+    "type": "clear rubber dome bumper, self-adhesive",
+    "dia_mm": 12.7,
+    "h_mm": 3.6,
+    "center_xy_mm": [
+     63,
+     -25
+    ]
+   },
+   {
+    "id": "bumper_rear",
+    "type": "clear rubber dome bumper on the extended tab",
+    "dia_mm": 12.7,
+    "h_mm": 3.6,
+    "center_xy_mm": [
+     0,
+     -100
+    ]
+   }
+  ],
+  "material": "clear acrylic (PMMA) sheet; milled edges; bumpers clear silicone/rubber (Scotch SP951-type)",
+  "colour": "transparent/clear (V4 beta prototype used an opaque white panel; production is clear so the green 'charge complete' LED shines down through it)",
+  "fits": "A&D FX-i / FZ-i small breeze break: FX/FZ-120i, 200i, 300i, 500i and FX-123 (AutoTrickler compatibility list); same part for all of them. 'Not compatible with V3' (the V3 sat on the stock white top plate using 'V3 panel clips'; the Area 419 Lexan lid fits only V2/V3 housings). Sits where the stock top plate sits: its underside groove lands on the tops of the 4 vertical arms, so its underside is at the stock plate's seat height minus the groove depth. On the lab's HR-100A it fits because the lab fitted the FXi-10 small breeze break (AutoTrickler itself says the HR series is not supported electrically/speed-wise).",
+  "sources": [
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "Place the top panel on the platform. If you have AutoTrickler V3 panel clips, remove them. The groove on the bottom of the panel fits directly on top of the vertical arms. The three bumpers already attached to the panel will face up, and the extended tab faces to the rear.",
+    "supports": [
+     "description",
+     "bottom_groove",
+     "raised_features",
+     "rear_tab",
+     "fits"
+    ]
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "Install the left, right, and rear panels, leaving the front open.",
+    "supports": [
+     "description"
+    ]
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "Install the funnel into the bottom of the housing. An o-ring is captive within the housing. Push and twist the funnel groove into the o-ring. Position the housing on the top panel. Center the left and right contact points on the bumpers. Center the rear of the housing on the panel. Verify the housing rests on all three bumpers properly and has a slight upward angle relative to the panel.",
+    "supports": [
+     "holes",
+     "raised_features"
+    ]
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "Contents ... Acrylic mounting panel ... Centering tray ... Hopper cover ... 4 rubber bumpers ... Funnel",
+    "supports": [
+     "description"
+    ]
+   },
+   {
+    "url": "https://swisssafety.com/media/files/AutoTrickler_V4.pdf",
+    "quote": "(Sep 2022 edition; setup text and photos identical to Jan 2025)",
+    "supports": [
+     "description"
+    ]
+   },
+   {
+    "url": "https://autotrickler.com/products/v4-acrylic-top-panel",
+    "quote": "This is a replacement clear panel for V4 with the bumpers on top. Not compatible with V3.",
+    "supports": [
+     "material",
+     "colour",
+     "fits",
+     "panel_mass_g_vendor_shipping_weight"
+    ]
+   },
+   {
+    "url": "https://autotrickler.com/products/v4-acrylic-top-panel (embedded FAQ)",
+    "quote": "The bumpers are readily available at your local hardware store. Check in the cabinet section; we use 1/2\" dia x 9/64\" high, but really any size should work.",
+    "supports": [
+     "bumper_diameter",
+     "bumper_height"
+    ]
+   },
+   {
+    "url": "https://autotrickler.com/pages/autotrickler-v4",
+    "quote": "The AutoTrickler rests on a clear acrylic panel with soft silicone pads that minimize vibration and noise. ... By popular request, a green light shines down through the clear panel indicating the correct charge weight has been reached.",
+    "supports": [
+     "material",
+     "colour"
+    ]
+   },
+   {
+    "url": "https://autotrickler.com/products/autotrickler-v4 (embedded FAQ)",
+    "quote": "The AutoTrickler is compatible with all of the following scales: A&D FX or FZ 120i, 200i, 300i, or 500i and the new FX-123.",
+    "supports": [
+     "fits"
+    ]
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/1152/9562/products/V4lid.jpg?v=1655220412",
+    "quote": "(photo: top-view render of V4 housing on the clear panel; NEMA-17 frame = 125 px gives ~2.95 px/mm, panel width 535 px -> ~181-184 mm)",
+    "supports": [
+     "outline_width_x",
+     "outline_shape"
+    ]
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/1152/9562/files/FX123i-V4_side.png?v=1769196120",
+    "quote": "(photo: side view; funnel axis 66 px = ~22 mm forward of the post midpoint at 3.06 px/mm)",
+    "supports": [
+     "hole_center_y_forward_of_center"
+    ]
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf (page 4 photo)",
+    "quote": "(photo: panel alone on FX-120i breeze break; hole width 179.5 px vs panel width 717 px; side bumpers at x = -62/+65 mm; rear tab visible)",
+    "supports": [
+     "hole_diameter",
+     "side_bumper_centers_xy",
+     "rear_tab_width",
+     "rear_tab_protrusion_beyond_outline"
+    ]
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5259483789",
+    "quote": "(photo: the lab's panel on the HR-100A; the hole's far wall is ~0.094 of the hole width at 42 deg elevation, giving t = ~5.8 mm if the hole is 46 mm)",
+    "supports": [
+     "thickness"
+    ]
+   }
+  ],
+  "estimated_keys": [
+   "outline_width_x",
+   "outline_depth_y_excl_tab",
+   "thickness",
+   "hole_diameter",
+   "hole_center_y_forward_of_center",
+   "rear_tab_width",
+   "rear_tab_protrusion_beyond_outline",
+   "side_bumper_centers_xy",
+   "rear_bumper_center_xy",
+   "bottom_groove"
+  ],
+  "measured_or_sourced_keys": [
+   "bumper_diameter (FAQ)",
+   "bumper_height (FAQ)",
+   "hole_center_x (symmetric in every photo)",
+   "panel_mass_g_vendor_shipping_weight (vendor)"
+  ],
+  "scales_used": {
+   "manual_p4_photo": "panel outer width 717 px := 184 mm (3.90 px/mm); view elevation ~14 deg from hole ellipse 0.245",
+   "side_photo": "front/rear post c-c 392 px := 128 mm (3.06 px/mm)",
+   "topview_render": "NEMA-17 motor 125 px := 42.3 mm",
+   "lab_photo_hole": "hole width 880 px (zoom) := 46 mm; elevation ~42 deg from hole ellipse 0.668"
+  }
+ },
+ "autotrickler_v4_system": {
+  "summary": "Single housing (two NEMA-17 steppers driving a large spiral-grooved 'auger' tube for bulk and a small tube for the final kernels, both via toothed belts; electronics integrated). Hopper sits on the REAR block; tubes run roughly front-back along the centreline, slightly tilted; both drop into the front U-channel block, whose bottom carries the white funnel that hangs through the panel hole into a glass cup on the pan.",
+  "housing_support": "3-point: left and right contact points (under the motor plates) on the side bumpers, rear contact on the tab bumper; free-standing, lifts off without disturbing the scale.",
+  "tube_angle": "approximately horizontal; manual: 'has a slight upward angle relative to the panel'; flow is tuned by tilting ('The housing needs to be tilted down/up'), with the scale levelled by its bubble as the starting point. No numeric angle published.",
+  "funnel": {
+   "source": "Printables 236386 remodel ('more like the original'), STL measured",
+   "overall_length_mm": 44.5,
+   "short_version_length_mm": 39.4,
+   "max_od_mm": 37.0,
+   "spigot_od_mm": 34.0,
+   "oring_groove_root_dia_mm": 32.0,
+   "body_od_mm": 32.2,
+   "tip_od_mm": 19.5,
+   "outlet_bore_mm": 8.5,
+   "fit": "push-and-twist into a captive o-ring in the housing bottom"
+  },
+  "funnel_tip_height": "estimate: ~15-20 mm below the panel underside, just at/above the cup rim (manual cover photo, FX-120i)",
+  "funnel_axis_xy_mm": [
+   0,
+   24
+  ],
+  "cup": "glass shot-glass cup (holds ~400 gr = ~26 g powder) with a white 3D-printed ring-and-handle; top O.D. ~45 mm (estimate). Cup sits on a white printed chevron 'centering tray' stuck to the pan, front edge near the pan's raised border, so the cup sits slightly IN FRONT of the funnel centre (optional rear position puts it behind).",
+  "platform_bumpers": "4 more 1/2 in x 9/64 in bumpers go UNDER the breeze-break base plate at the corner circles (not on the lid).",
+  "overall": "FAQ: 'The V4 AutoTrickler is about 18 inches tall and the footprint of the scale is about 9 by 11 inches.' Shipping weight 1.5 kg.",
+  "v3_comparison": "V3 = two separate units sitting on the STOCK white A&D top plate with 'V3 panel clips' (YouTube 'AutoTrickler V3 vs V4 (beta)' thumbnail); the V4 beta used an opaque white panel; production V4 panel is clear and 'Not compatible with V3'.",
+  "sources": [
+   {
+    "url": "https://autotrickler.com/products/autotrickler-v4 (embedded FAQ)",
+    "quote": "The V4 AutoTrickler is about 18 inches tall and the footprint of the scale is about 9 by 11 inches."
+   },
+   {
+    "url": "https://autotrickler.com/products/autotrickler-v4.json",
+    "quote": "Clear acrylic panel (not shown in photo) Silicone pads to stabilize the A&D scale platform Glass cup with handle, and tray to position cup on scale"
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "The glass cup will rest slightly in front of center of the funnel. ... You may position the tray further back so the cup will be offset slightly behind the funnel instead of in front. This will locate the cup closer to the center of the scale."
+   },
+   {
+    "url": "https://www.scalesandbalances.co.uk/wp-content/uploads/2026/03/AutoTrickler-V4-2025.pdf",
+    "quote": "Position a bumper in the center of each corner circle on the underside of the plastic windscreen platform base."
+   },
+   {
+    "url": "https://www.printables.com/model/236386-autotrickler-v4-funnel",
+    "quote": "I remodeled this and made a few tweaks to make it more like the original."
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=yC_J1p0bzAM",
+    "quote": "(thumbnail: 'AutoTrickler V3 vs V4 (beta)')"
+   }
+  ]
+ },
+ "lab_usage": {
+  "which_lid_now": "The AutoTrickler V4 clear acrylic top panel, on the HR-100A's FXi-10 breeze break, but ROTATED 180 deg from the AutoTrickler orientation: the extended tab (with its bumper) faces the FRONT/display and the ~46 mm hole sits behind centre, under the powder-doser outlet. The V4 trickler housing itself is NOT on the balance (bagged since March; lab moved to its own doser in June). The stock white A&D top plate with its round cap does not appear in any 2026 doser photo. Latest photo evidence: 2026-09-15.",
+  "evidence": [
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/10",
+    "quote": "Autotrickler v4 arrived ... This is the autotrickler being completely set up. (photo shows V4 housing on the clear panel on the HR-100A)"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/63#issuecomment-4001371924",
+    "quote": "Aside: I put the autotrickler stuff in a bag since we'll be using the scale tomorrow."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/63#issuecomment-4756195495",
+    "quote": "Moving away from autotrickler and towards our custom doser in https://github.com/vertical-cloud-lab/powder-doser"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5259483789",
+    "quote": "There was a little bit of spillage from the powder ... (photo, 2026-08-11: clear V4 panel on the HR-100A, round hole toward the rear, side bumpers, tab+bumper at the front)"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/blob/2d83324/docs/rig-checks/2026-08-19-balance-overload-beaker-check.md",
+    "quote": "The replacement beaker is tall enough that the clear plastic breeze-break assembly no longer clears its rim."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/157#issuecomment-5685921132",
+    "quote": "(frame_1240, 2026-09-15: same clear panel, tab+bumper at the front)"
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/144#issuecomment-5358640332",
+    "quote": "from the top of the load cell to the bottom side of the cage is just over 3in (~3.125in), so anything we put under there has to be 3in MAX."
+   },
+   {
+    "url": "https://github.com/vertical-cloud-lab/powder-doser/issues/116 (comment by swcharles, 2026-08-11)",
+    "quote": "for now we can use the smaller cup that came with the autotrickler"
+   },
+   {
+    "url": "https://autotrickler.com/products/autotrickler-v4 (embedded FAQ)",
+    "quote": "Does the AutoTrickler work with the A&D HR-100A? No, this scale is not compatible with the AutoTrickler. The HR series scales are too slow to properly work with the AutoTrickler."
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=FZ-rRSlxzFM&t=478s",
+    "quote": "(video frame, 'Autotrickler SOP with Silicon Powder (Part 1)', 2026-03-05) the V4 on the lab's HR-100A; A&D's white lid lies on the bench behind it"
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=Elgle_1Ys1M&t=605s",
+    "quote": "(video frame, 'No tilt - Dispensing AlSi10Mg with the Powder Doser', 2026-08-11) the panel tilted up under the doser, showing its hole"
+   },
+   {
+    "url": "https://www.youtube.com/watch?v=VADmn4CjoBQ&t=300s",
+    "quote": "(stream frame, picam-d1pr, 2026-10-02 13:06) still the clear panel under the doser; the latest evidence"
+   }
+  ],
+  "notes": "For the CAD switch: model the panel in the AutoTrickler orientation (tab rear, hole ~24 mm forward) and provide a 180 deg variant (tab front, hole ~24 mm rearward), which is how the lab runs it for the doser. Clearance quoted by the lab: ~3.125 in (79 mm) from the load-cell top to the underside of the lid. The breeze-break front panel appears to be installed in the doser photos (AutoTrickler use leaves it out)."
+ },
+ "images": [
+  {
+   "shows": "lab's HR-100A with the clear V4 panel, hole toward rear, side bumpers, front tab+bumper (best lab view)",
+   "source": "https://github.com/vertical-cloud-lab/powder-doser/issues/116#issuecomment-5259483789"
+  },
+  {
+   "shows": "full-res zoom of the hole and its milled wall (thickness estimate)",
+   "source": "same"
+  },
+  {
+   "shows": "most recent (2026-09-15) frame: same panel still on, tab at front",
+   "source": "https://github.com/vertical-cloud-lab/powder-doser/blob/6b122f7/docs/issue-157-recheck-20260915/frame_1240_display50.6077.png"
+  },
+  {
+   "shows": "V4 housing installed on the panel on the lab's HR-100A (Feb 2026)",
+   "source": "https://github.com/vertical-cloud-lab/byu-vcl/issues/10"
+  },
+  {
+   "shows": "OEM photo: panel alone on FX-120i breeze break, hole, two side bumpers, rear tab",
+   "source": "manual p4"
+  },
+  {
+   "shows": "same, tone-stretched with pixel grid used for measurements",
+   "source": "manual p4"
+  },
+  {
+   "shows": "front view: housing, funnel through panel, cup on tray",
+   "source": "manual cover"
+  },
+  {
+   "shows": "side view: housing position fore-aft, funnel just through panel",
+   "source": "https://cdn.shopify.com/s/files/1/1152/9562/files/FX123i-V4_side.png"
+  },
+  {
+   "shows": "OEM top-view render of the housing on the panel (outline shape)",
+   "source": "https://cdn.shopify.com/s/files/1/1152/9562/products/V4lid.jpg"
+  },
+  {
+   "shows": "underside render: white funnel and 3 cone-tipped contact feet",
+   "source": "https://cdn.shopify.com/s/files/1/1152/9562/products/V4funnel.jpg"
+  },
+  {
+   "shows": "box contents incl. the panel (top right), funnel, chevron tray, cup with handle",
+   "source": "manual p1"
+  },
+  {
+   "shows": "V3 on stock white top plate vs V4 beta on white panel",
+   "source": "https://i.ytimg.com/vi/yC_J1p0bzAM/maxresdefault.jpg"
+  }
+ ]
+}

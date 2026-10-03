@@ -62,6 +62,7 @@ MATERIALS = {
     "anthracite":   (0.21, 0.22, 0.23, 1.00, 0.3),
     "led_cyan":     (0.25, 0.85, 0.85, 1.00, 0.2),
     "fibreglass":   (0.90, 0.89, 0.84, 1.00, 0.2),
+    "latex":        (0.92, 0.86, 0.65, 1.00, 0.2),
 }
 
 
@@ -153,3 +154,16 @@ def rbox(w: float, d: float, h: float, r: float = 0.0, x=0.0, y=0.0, z=0.0, cent
 def box(x0, y0, z0, x1, y1, z1) -> cq.Workplane:
     """Axis-aligned box between two corners."""
     return cq.Workplane("XY").box(x1 - x0, y1 - y0, z1 - z0, centered=False).translate((x0, y0, z0))
+
+
+def hose(pts, d: float) -> cq.Workplane:
+    """A hose or cable of diameter d through the waypoints, so it starts and ends exactly where it
+    is attached: straight runs joined by balls at the bends."""
+    vs = [cq.Vector(*p) for p in pts]
+    solid = None
+    for a, b in zip(vs[:-1], vs[1:]):
+        seg = cq.Solid.makeCylinder(d / 2, (b - a).Length, a, (b - a).normalized())
+        solid = seg if solid is None else solid.fuse(seg)
+    for v in vs[1:-1]:
+        solid = solid.fuse(cq.Solid.makeSphere(d / 2, v, angleDegrees1=-90, angleDegrees2=90))
+    return cq.Workplane().add(solid.clean())

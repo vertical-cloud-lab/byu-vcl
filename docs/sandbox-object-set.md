@@ -316,11 +316,13 @@ borrowed replica at spot D until the arm is co-located with the real thing.
   its own approach constraint. Arm motion near a 0.1 mg balance is a new disturbance, so log
   the balance alongside the arm.
   - **The lab runs A&D's small FXi-10 break, not the stock 315 mm chamber.** It is 198 × 262
-    × 176 mm overall. The drop hole is the lid's centre opening, and the pan is 79.4 mm below
-    the lid.
+    × 176 mm overall.
+  - **Its lid is the AutoTrickler V4's clear acrylic panel, not A&D's white one.** The panel is
+    turned so its Ø46 hole sits 24 mm behind centre, under the doser's outlet. That hole is the
+    drop hole. The pan is 79.4 mm below the panel.
   - **The arm's way in is a side panel.** Lifting one out leaves a 115 × 83.5 mm opening.
-  - The [model](../lab-models/README.md#the-dosers-balance-hr-100a-with-its-breeze-break) has
-    the sources.
+  - The [model](../lab-models/README.md#the-dosers-balance-hr-100a-with-its-breeze-break-and-lids)
+    has both lids and the sources.
 - **Crucible replica.** Ø57 mm bore, Ø12.6 mm sealing rod, and the ≈Ø22 mm adapter
   overhang ~18 mm above the rim, all from
   [PR #232's model](https://github.com/vertical-cloud-lab/byu-vcl/blob/323adba/atomizer-charge/README.md).

@@ -13,7 +13,8 @@
   "caveats": [
    "The LabX record's own availability window is product_available_from 2024-04-13 to product_available_to 2024-07-12, although is_active=1. The listing may be stale, so confirm it is still for sale.",
    "The earlier comments treated this unit as 'purge-level as sold, AtmosPure-upgradable' and 'fiberglass liner (not groundable)'. The photos and data plate show otherwise: it is a stainless-lined Protector (catalog 50701) that already has a 2001-vintage AtmosPure 51218-00 recirculating purifier. The purifier's condition and regeneration state are unknown, and no O2/H2O monitors are visible."
-  ]
+  ],
+  "mse_note_2026-10-03": "Modelled on request in PR #240 (2026-10-03). The box exists in two versions and MSE's own documents disagree: the listing shows a vertical-front box with a 400 x 400 mm square side door, while the bundled maker's manual (Changsha MITR, MT008-B) lists a 300 mm round side door and its photos show a sloped front. The model follows the listing photo."
  },
  "labconco_ca": {
   "name": "Labconco Protector Controlled Atmosphere Glove Box, single width, Type 304 stainless steel liner, automatic Pressure Control Module, 115 V; fitted with an AtmosPure 51218-00 gas purifier; on a Labconco mobile base stand with casters",
@@ -436,110 +437,364 @@
   "notes": "Use the 2023 Labconco drawing for the liner, window, ports and transfer chamber; the 2002 manual describes the same 8 in ID / 17 in ports, 3/8 in glass at 10 deg and pivoting transfer-chamber doors. Use the seller's 38 in for this unit's height (without stand), not the current model's 45.7 in. The 2001 body has a much shorter lamp facade, and scaling photo 00 by the 27.7 in window gives ~37-38 in. The 2001 right-hand section is a taller control column than the current 22.4 in housing. The 40 in depth probably includes the rear bubbler and purifier; the box body itself is 34.4 in. Measure before relying on either. Door/elevator check: 63.5 in wide x 34.4 in deep body; take it off the stand for doorways. The glove box sits on the stand with its transfer-chamber (right) end overhanging a 60 in stand. The doser (HR-100A balance) must pass an 11 x 13 in opening and a 20 in-long chamber, or go in through the removable window frame."
  },
  "mse_pro_acrylic_airlock": {
-  "name": "MSE PRO Economy Compact Laboratory Two Port Acrylic Glove Box with Airlock Chamber (GB0010, $3,233.95 per #30 on 2026-09-23). Same specs as the live 'MSE PRO 378L Laboratory Two Port Acrylic Glove Box with Airlock Chamber (900W x 600D x 700H mm)', GB0068899, $2,586.95",
-  "catalog": "GB0010 (page now 404) / GB0068899",
+  "name": "MSE PRO 378L Laboratory Two Port Acrylic Glove Box with Airlock Chamber (900W x 600D x 700H mm), SKU GB0068899; OEM Changsha MITR Instrument Equipment Co. (MT008-B, 'Type B': only the airlock is vacuum-rated, main box is gas-purged)",
   "dims_mm": {
-   "ext_W": 900,
-   "ext_D": 600,
-   "ext_H": 700,
-   "int_W": 880,
-   "int_D": 580,
-   "int_H": 680,
-   "ext_W_incl_airlock_and_clamps": 1200,
-   "note": "The listing gives 'Dimensions (mm) 900W x 600D x 700H' without saying inside or outside. 378 L = 0.9 x 0.6 x 0.7 m3 exactly, so it is taken here as the nominal envelope, with interior = minus two 10 mm walls (estimate). ext_W with airlock is estimated from the product photo"
+   "main_box_outer": {
+    "x": 900,
+    "y": 600,
+    "z": 700,
+    "note": "MITR table heading is '操作箱外尺寸' = operating-box OUTER size"
+   },
+   "wall_thickness": 10,
+   "main_box_inner_derived": {
+    "x": 880,
+    "y": 580,
+    "z": 680
+   },
+   "airlock_nominal": {
+    "x": 240,
+    "y": 240,
+    "z": 240,
+    "note": "spec says 240W*240D*240H without inner/outer; photo scales to ~225-235 outer, so 240 outer (inner ~210-220, walls ~12-15) fits the photo better than 240 inner + walls (~270 outer)"
+   },
+   "overall_x_with_airlock_and_clamp_est": [
+    -500,
+    790
+   ],
+   "overall_width_est": "~1250-1300 from left latch to right T-handle; ~1310-1350 including the left-end ball valve",
+   "overall_depth_est": "600 body; ~640 at the glove-port rings",
+   "overall_height": "700 (airlock gauge top ~z 400, below the box top)",
+   "mass_kg": 68
   },
-  "window": {
-   "shape": "Plain rectangular box; all walls clear 10 mm PMMA; vertical front (no slope)"
+  "front_panel": {
+   "orientation": "vertical (not sloped) in the MSE listing photo",
+   "evidence": "front face measures 2080 x 1631 px = 1.275 (900/700 = 1.286); top-front and bottom-front edge widths agree within 1 % and the side edges are vertical, so any slope is under ~30 mm",
+   "material": "10 mm clear PMMA, flat",
+   "alternative_variant": "MITR's own MT008-B photos and the manual drawing show a SLOPED front (trapezoidal end walls, hot-bent rounded top-front edge, glove ports on the slope). From the manual drawing only, the top is set back ~20 % of the depth (~120 mm); low confidence. Use only if MSE confirms that variant."
   },
   "glove_ports": {
    "count": 2,
-   "glove_spec_mm": "145*600*1.1 or 145*800*0.3 (rubber; choose one)",
-   "port_id_est": 150,
-   "centre_spacing_est": 410,
-   "centre_height_above_floor_est": 330
+   "wall": "front (y=-300)",
+   "centres": [
+    {
+     "x": -210,
+     "z": 305
+    },
+    {
+     "x": 210,
+     "z": 305
+    }
+   ],
+   "spacing": 420,
+   "spacing_range": [
+    400,
+    450
+   ],
+   "z_range": [
+    280,
+    340
+   ],
+   "ring_od": 150,
+   "bore_est": 125,
+   "ring_protrusion_outside_est": 35,
+   "flange_od_est": 180,
+   "glove": "natural latex, 145 x 600 x 1.1 mm (option 145 x 800 x 0.3 mm); cuff held on the ring by two O-rings (MITR '双圈固定手套'), red in the MSE photo",
+   "scaling_note": "glove bulbs at image x 750 / 1769 px, y ~1730 px; back-projected at ~80 mm in front of the front face to x = -214 / +215, z = 304; the bulbs droop slightly, so the true port centres may be ~10-30 mm higher"
   },
   "antechamber": {
-   "int_W": 240,
-   "int_D": 240,
-   "int_H": 240,
-   "shape": "cube, acrylic, clamp-latched doors both ends",
-   "max_vacuum_MPa": -0.1,
-   "side": "Right end in MSE's product photo (estimated; the photo's viewing direction is ambiguous)",
-   "floor_above_chamber_floor_est": 100
+   "end": "right (+x) end wall, seen from the glove side",
+   "y_centre": 0,
+   "axis_z": 170,
+   "axis_z_range": [
+    140,
+    200
+   ],
+   "outer_bottom_z": 55,
+   "outer_bottom_z_range": [
+    30,
+    110
+   ],
+   "outer_top_z_est": 285,
+   "inner_floor_above_main_inner_floor_est": "~50-65 (inner floor ~z 60-75 vs main inner floor z 10)",
+   "body_x_range_est": [
+    450,
+    695
+   ],
+   "outer_door_and_clamp_to_x_est": 790,
+   "construction": "clear PMMA cube, edges look ~12-15 mm thick, bonded directly to the main box end wall (no flange)",
+   "inner_door": "round clear acrylic disc with O-ring on the main-chamber side of the end wall, visible ring dia ~195-200 (est. disc OD ~220), clamped by an internal crossbar on two stainless threaded rods with a screw; the rods show through the wall above and below the opening",
+   "outer_door": "round clear acrylic disc (est. OD ~220-240, ~20 thick) with red O-ring on the airlock's outer end, clamped by a swing-away crossbar (two clear acrylic blocks on stainless rods) and a stainless T-handle screw; T-handle hangs vertically",
+   "scaling_note": "front-face edges at image y 1647 / 2141 px and the inner-door ring centre at y 1825 px, back-projected at y = -130 (centred, ~260 deep), give bottom z ~55, top z ~280, axis z ~165-170. The photo airlock is ~225-235 mm tall, slightly under the nominal 240."
   },
   "side_door": {
-   "W": 400,
-   "H": 400,
-   "side": "End opposite the airlock (photo)"
+   "end": "left (-x) end wall",
+   "opening": {
+    "y": 400,
+    "z": 400,
+    "note": "MSE: 'Square door 400*400mm'; older MSE listings: '400D x 400H (open outwards)'"
+   },
+   "centre": {
+    "y": 0,
+    "z": 335
+   },
+   "centre_z_range": [
+    295,
+    375
+   ],
+   "opening_z_est": [
+    135,
+    535
+   ],
+   "door_plate_est": "~460-480 square clear PMMA with rounded corners, white silicone gasket, screwed clamping frame; sits outside the wall, ~40-50 proud",
+   "latches": "4 stainless hook-type toggle (draw) latches on clear acrylic blocks: 2 on the front edge (z ~180 and ~460) and 2 on the back edge; they stick out ~70-90 from the wall",
+   "hinges": "none seen; door appears removable ('open outwards')",
+   "scaling_note": "frame screw strips at image x ~137 and ~390 px, back-projected to y ~ -200 and +190; their ends give z ~155-190 to ~500",
+   "conflict": "bundled manual/MITR tables: 'Left Round Door 300 mm' (MITR standard); not what the listing photo shows"
   },
-  "fittings": "Ball valves 2 x 8 mm SUS304 (chamber) + 2 x 8 mm (airlock); 1 pressure gauge; 1 power socket inside",
-  "stand": "None included",
-  "material": "PMMA (acrylic), 10 mm; not groundable; 300-400 ppm O2/H2O floor per MSE",
-  "mass_kg": 68,
-  "mass_note": "Shopify variant weight for GB0068899 (68000 g). The 2026-09-23 #30 comment gave 110 kg ship weight for GB0010.",
-  "sources": [
+  "fittings": [
    {
-    "url": "https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-with-airlock-chamber900w-x-600d-x-700h-mm",
-    "quote": "Dimensions (mm) 900W x 600D x 700H Door Size Square door 400*400mm Glove Dimension(rubber) 145*600*1.1 145*800*0.3",
-    "supports": [
-     "dims_mm",
-     "side_door",
-     "glove_ports.glove_spec_mm"
-    ],
-    "note": "Shopify product JSON body_html (whitespace collapsed); price 2586.95, grams 68000"
+    "what": "airlock vacuum gauge, ~60 mm dial, stainless case, blue cap, bottom-mount on clear acrylic boss (manual item 3)",
+    "where": "airlock top, near the main box: x~510, y~-80, dial centre z~360, facing front"
    },
    {
-    "url": "https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-with-airlock-chamber900w-x-600d-x-700h-mm",
-    "quote": "Airlock Transfer Chamber 240W*240D*240H(mm) Max. Vacuum Degree (Mpa) -0.1",
+    "what": "airlock vacuum valve: hose barb + needle/ball valve with red lever on acrylic boss (manual item 2)",
+    "where": "airlock top, outer half: x~600, y~-80, z~285-400"
+   },
+   {
+    "what": "looped grey/silver hose between gauge and valve",
+    "where": "on the airlock top"
+   },
+   {
+    "what": "airlock inlet valve: mini ball valve, black T-handle, hose barb, SUS304, ~8 mm (manual item 4)",
+    "where": "airlock front face, low and near the main box: x~500, y~-130 (face), z~100"
+   },
+   {
+    "what": "main-chamber exhaust valve: mini ball valve, black T-handle, hose barb, SUS304 ~8 mm (manual item 5)",
+    "where": "left end wall, lower front corner: y~-250, z~40, protrudes to x~-520"
+   },
+   {
+    "what": "main-chamber inlet valve: small SUS304 valve/barb (manual item 1)",
+    "where": "top of right end wall, z~680; photo suggests front corner (y~-280), manual drawing shows the top-back corner (y~+250); low confidence"
+   },
+   {
+    "what": "power socket strip, white with blue outlets, 110 V (spec: '1 inside')",
+    "where": "inside, on the floor against the back wall at the left: x~-350, y~+250, z 10-60"
+   },
+   {
+    "what": "power-cord pass-through (black cable through a gland)",
+    "where": "back wall, low: x~-120, z~110; low confidence"
+   }
+  ],
+  "base": {
+   "type": "none: no stand, frame or feet. The 10 mm PMMA floor panel sits directly on the bench, and the box is no wider at the base than above",
+   "note": "MSE: no stand included. MITR's sloped standard variant sometimes has end plates running down as legs; the MSE photo does not."
+  },
+  "construction": "Solvent-bonded 10 mm clear PMMA panels (Mitsubishi PMMA per manual) with square butt-jointed edges. The top panel sits on the walls and shows a ~10 mm edge band at the top front. No aluminium frame, corner brackets or lifting handles are visible. The airlock is bonded to the right end wall. All hardware is stainless (SUS304).",
+  "colours": {
+   "pmma": "clear/colourless, faint grey-blue at edges",
+   "gloves": "natural latex cream, RGB ~(235,220,165), shadows ~(175,142,87)",
+   "glove_o_rings": "red in MSE photo (black in MITR's own photos)",
+   "door_gasket": "white silicone",
+   "airlock_door_o_rings": "red/orange",
+   "hardware": "stainless steel",
+   "ball_valve_handles": "black",
+   "airlock_vacuum_valve_handle": "red",
+   "gauge": "white dial, stainless bezel, blue cap",
+   "socket_strip": "white body, blue outlets"
+  },
+  "sources": [
+   {
+    "url": "https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-with-airlock-chamber900w-x-600d-x-700h-mm.json",
+    "quote": "Dimensions (mm) 900W x 600D x 700H ... Door Size Square door 400*400mm ... Glove Dimension(rubber) 145*600*1.1 145*800*0.3 ... Airlock Transfer Chamber 240W*240D*240H(mm) ... Power Pocket (pc) 1 inside",
     "supports": [
+     "dims_mm",
+     "side_door.opening",
+     "glove_ports.glove",
      "antechamber"
     ]
    },
    {
-    "url": "https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-with-airlock-chamber900w-x-600d-x-700h-mm",
-    "quote": "The minimum achievable water and oxygen levels are 300–400 ppm, which makes it unsuitable for high-end applications such as handling battery powders.",
+    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/GB0068899.png",
+    "quote": "(photo; identical content to MITRGlovebox1.jpg)",
     "supports": [
-     "material"
+     "front_panel",
+     "side_door",
+     "antechamber",
+     "glove_ports",
+     "fittings",
+     "base",
+     "colours"
     ]
    },
    {
-    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/GB0068899.png?v=1776272275",
-    "quote": "(product photo)",
+    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/MITRGlovebox1.jpg",
+    "quote": "(photo, higher quality copy used for scaling)",
     "supports": [
-     "antechamber.side",
-     "side_door.side",
-     "glove_ports (estimates)",
-     "dims_mm.ext_W_incl_airlock_and_clamps"
+     "glove_ports.centres",
+     "antechamber.axis_z",
+     "side_door.centre",
+     "front_panel"
     ]
    },
    {
-    "url": "https://github.com/vertical-cloud-lab/byu-vcl/issues/30#issuecomment-5801369883",
-    "quote": "Same 900×600×700 mm chamber, same 10 mm PMMA, same 240 mm airlock, same 1 inside socket, same −0.1 MPa, same 400×400 mm door, same 300–400 ppm disclaimer.",
+    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/MITRglovebox2.jpg",
+    "quote": "(photo: door latches, gasket, glove cuff O-ring, socket strip)",
     "supports": [
-     "name",
-     "catalog"
+     "side_door.latches",
+     "glove_ports.glove",
+     "fittings",
+     "colours"
     ]
    },
    {
-    "url": "https://www.msesupplies.com/products/mse-pro-economy-compact-laboratory-two-port-acrylic-glove-box-with-airlock-chamber-1",
-    "quote": "HTTP 404 on 2026-09-27",
+    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/MITRGlovebox3.jpg",
+    "quote": "(photo: toggle latch detail, airlock inner round door with red O-ring seen through box, black T-handle ball valve)",
     "supports": [
-     "catalog"
+     "side_door.latches",
+     "antechamber.inner_door",
+     "fittings"
+    ]
+   },
+   {
+    "url": "https://cdn.shopify.com/s/files/1/0722/7785/files/MITRglovebox4.jpg",
+    "quote": "(photo: airlock round doors, T-handle clamp, gauge, red valve, black ball valve)",
+    "supports": [
+     "antechamber",
+     "fittings"
+    ]
+   },
+   {
+    "url": "GB0068899 instruction manual (PDF on MSE's SharePoint, linked from the product page's description)",
+    "quote": "GB0068899 900 x 600 x 700 10 mm Y N Y PMMA 300 mm 2 [Left Round Door column]; 'Made from imported Mitsubishi PMMA material from Japan; highly transparent, integrally formed'; Type B: 'Two inlet valves, Two outlet valves, One power supply board, One vacuum gauge'",
+    "supports": [
+     "side_door.conflict",
+     "fittings",
+     "construction"
+    ]
+   },
+   {
+    "url": "https://www.mictr.com/yakelishoutaoxiang/151.html",
+    "quote": "MT008-B 900*600*700 2只 300 (MM) PMMA 有 10 (mm) 240*240*240 [table headed 操作箱外尺寸 / 左侧圆门 / 过渡箱尺寸]",
+    "supports": [
+     "dims_mm.main_box_outer",
+     "dims_mm.airlock_nominal",
+     "front_panel.alternative_variant"
+    ]
+   },
+   {
+    "url": "https://candymitr.en.made-in-china.com/product/tOeATUnPJdhu/China-China-Mitr-900-600-700mm-Small-Size-Durable-Lab-Isolation-Chamber-Box-with-Inert-Gases-Acrylic-Glove-Box.html",
+    "quote": "MT008 900*600*700 10mm Yes No Yes PMMA 300mm Two",
+    "supports": [
+     "OEM identity",
+     "front_panel.alternative_variant"
+    ]
+   },
+   {
+    "url": "https://www.mitrmill.com/Products_details/Acrylic_glove_box_-Type_B.html",
+    "quote": "Type B: As an anaerobic glove box, the transition room can be vacuumed but not vacuum in the main box",
+    "supports": [
+     "name"
+    ]
+   },
+   {
+    "url": "https://web.archive.org/web/2025/https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-900w-x-600d-x-700h-mm-1",
+    "quote": "SKU# GB0022 ... Gloves Port Size (mm) ⌀140 ... Door Size (mm) 400D x 400H (open outwards) ... Airlock Transfer Chamber Dimensions (mm) 240W x 240D x 240H",
+    "supports": [
+     "glove_ports.ring_od",
+     "side_door.opening"
+    ]
+   },
+   {
+    "url": "https://web.archive.org/web/2025/https://www.msesupplies.com/products/mse-pro-378l-laboratory-two-port-acrylic-glove-box-900w-x-600d-x-700h-mm",
+    "quote": "SKU# GB0016 ... Gloves Port Size (mm) ⌀145 ... Door Size (mm) 400D x 400H (open outwards)",
+    "supports": [
+     "glove_ports.ring_od",
+     "side_door.opening"
+    ]
+   },
+   {
+    "url": "https://www.msesupplies.com/collections/acrylic-glove-box/products.json",
+    "quote": "MSE PRO Latex Gloves for Acrylic Glove Box, D140*L600mm",
+    "supports": [
+     "glove_ports.ring_od"
     ]
    }
   ],
   "estimated_keys": [
-   "dims_mm.int_W",
-   "dims_mm.int_D",
-   "dims_mm.int_H",
-   "dims_mm.ext_W_incl_airlock_and_clamps",
-   "glove_ports.port_id_est",
-   "glove_ports.centre_spacing_est",
-   "glove_ports.centre_height_above_floor_est",
-   "antechamber.side",
-   "antechamber.floor_above_chamber_floor_est",
-   "side_door.side"
+   "dims_mm.airlock_nominal (inner/outer)",
+   "dims_mm.overall_x_with_airlock_and_clamp_est",
+   "dims_mm.overall_width_est",
+   "dims_mm.overall_depth_est",
+   "front_panel.orientation (photo-based)",
+   "front_panel.alternative_variant",
+   "glove_ports.centres",
+   "glove_ports.spacing",
+   "glove_ports.bore_est",
+   "glove_ports.ring_protrusion_outside_est",
+   "glove_ports.flange_od_est",
+   "glove_ports.ring_od (from glove cuff spec)",
+   "antechamber.y_centre",
+   "antechamber.axis_z",
+   "antechamber.outer_bottom_z",
+   "antechamber.outer_top_z_est",
+   "antechamber.body_x_range_est",
+   "antechamber.outer_door_and_clamp_to_x_est",
+   "antechamber.inner_door",
+   "antechamber.outer_door",
+   "side_door.centre",
+   "side_door.opening_z_est",
+   "side_door.door_plate_est",
+   "side_door.latches",
+   "fittings[*].where",
+   "base.type (no underside view)",
+   "colours (sampled from photos)"
   ],
-  "notes": "Chamber only: pump, analyzers and stand are extras. MSE notes a design update is in progress, so confirm dimensions in writing before ordering."
+  "_meta": {
+   "generated": "2026-10-03",
+   "frame": "x to the right seen from the glove (front) side, y away from the viewer (front face y=-300, back face y=+300), z up from the bench, origin at the centre of the main box footprint. mm.",
+   "method": "Fetched the GB0068899 Shopify JSON (1 image) and its linked manual PDF (SharePoint, MITR-sourced: path '202604_MITR glove box'); pulled every image from MSE's acrylic-glove-box collection JSON (23 listings) and two archived (Wayback) older MSE listings (GB0016/GB0022, a different OEM design); identified the OEM as Changsha MITR Instrument Equipment (model MT008-B) and pulled its Made-in-China MT008 listing, mitrmill.com Type-B page and mictr.com Type-B page (spec tables + photos). Looked at every image. Positions were scaled from the best copy of the listing photo (MITRGlovebox1.jpg, 3000 px but upscaled from ~1000 px) by fitting a pinhole camera to the main box corners using the known 900 x 700 front face and 600 depth (fit: camera ~3.1 m in front of the front face, ~1.06 m above the bench, nearly centred; front face fits 900x700 to <1 %), then back-projecting features onto their wall planes. Typical scaling error ~5-10 % (~±20-30 mm).",
+   "not_done": [
+    "No dimensioned drawing of this box exists in any source found; every position below is scaled from one low-resolution, generic photo (the same image is used on all six MSE 'with airlock' sizes, so it is not proven to be the 900 model, though its 1.275 front aspect ratio matches 900x700 to 1 %).",
+    "Glove ports are hidden by the inflated gloves; port centres were taken from the glove bulbs, which sit in front of the panel.",
+    "No back, top or right-end view of the rectangular variant was found; the back-wall cable gland, socket strip and main-chamber inlet valve positions are weak.",
+    "Labzee (MITR relabel, e.g. BZAGB-509B) returned 403; it was not fetched via the CubXL Pi (judged low value). Alibaba/Amazon/Landt (MA-008) listings were not mined beyond search snippets.",
+    "Conflict not resolved: MSE listing says 'Square door 400*400mm' and the photo shows a square latched door, but the bundled MITR manual and MITR tables say 'Left Round Door 300 mm' and MITR's own photos show a sloped-front box. Which variant ships is a question for MSE (sales@msesupplies.com).",
+    "Airlock 240 cube: inner vs outer not stated; the photo scales to ~225-235 mm outer."
+   ]
+  },
+  "earlier_estimates_2026-09-27": {
+   "dims_mm": {
+    "ext_W": 900,
+    "ext_D": 600,
+    "ext_H": 700,
+    "int_W": 880,
+    "int_D": 580,
+    "int_H": 680,
+    "ext_W_incl_airlock_and_clamps": 1200,
+    "note": "The listing gives 'Dimensions (mm) 900W x 600D x 700H' without saying inside or outside. 378 L = 0.9 x 0.6 x 0.7 m3 exactly, so it is taken here as the nominal envelope, with interior = minus two 10 mm walls (estimate). ext_W with airlock is estimated from the product photo"
+   },
+   "glove_ports": {
+    "count": 2,
+    "glove_spec_mm": "145*600*1.1 or 145*800*0.3 (rubber; choose one)",
+    "port_id_est": 150,
+    "centre_spacing_est": 410,
+    "centre_height_above_floor_est": 330
+   },
+   "antechamber": {
+    "int_W": 240,
+    "int_D": 240,
+    "int_H": 240,
+    "shape": "cube, acrylic, clamp-latched doors both ends",
+    "max_vacuum_MPa": -0.1,
+    "side": "Right end in MSE's product photo (estimated; the photo's viewing direction is ambiguous)",
+    "floor_above_chamber_floor_est": 100
+   },
+   "side_door": {
+    "W": 400,
+    "H": 400,
+    "side": "End opposite the airlock (photo)"
+   }
+  },
+  "model": "lab-models/cad/equipment.py, MSE and mse_glovebox() (2026-10-03)"
  }
 }

@@ -69,10 +69,13 @@ def main() -> None:
             index[key] = export(m, EXPORTS / "labware", stl=m.notes.get("group") == "station" and "our design" in m.source)
         lu = lineup(cat)
         index[lu.key] = export(lu, stl=False)
+        for m in (labware.balance("stock"), labware.lid_model("autotrickler"), labware.lid_model("stock")):
+            index[m.key] = export(m, EXPORTS / "labware")       # the swappable lids, kept out of the lineup
     eq = {}
     if {"equipment", "sandbox", "room"} & set(groups):
         eq = {m.key: m for m in [equipment.a1_mini(), equipment.h2d(), equipment.cubxl(), equipment.drop_tower(),
-                                 equipment.atomizer(), equipment.glovebox(), equipment.aconity_midi()]}
+                                 equipment.atomizer(), equipment.glovebox(), equipment.mse_glovebox(),
+                                 equipment.aconity_midi()]}
     if "equipment" in groups:
         for key, m in eq.items():
             index[key] = export(m, stl=False)
