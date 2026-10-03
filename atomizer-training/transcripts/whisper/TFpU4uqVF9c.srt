@@ -1,0 +1,20 @@
+1
+00:00:00,000 --> 00:02:59,860
+okay once again so right now at around 270 we are making five gas washes so vacuum and filling with protective gas at the end of the cycle we need to use the melting pressure to create the overpressure in the furnace okay melting pressure and now let's vacuum the chamber as much as we are able to and protective gas okay and again
+
+2
+00:04:02,030 --> 00:15:56,740
+okay after filling the chamber with protective gas again let's go to higher temperature and now again oxygen level is low everything is stable now we can raise the temperature let's start with slightly higher temperature to help homogenize the material it's mostly homogenized but i still see something on one side some leftover so let's give it a moment there is
+
+3
+00:15:56,740 --> 00:17:23,410
+very slight lack of homogenization on one side not very visible here but a very small leftover and visibly thicker layer of oxide let's see if raising the temperature just a little bit more can help okay it seems much better but there is still something left we'll just have to try to pour it and see what will stay so let's lower the temperature a bit
+
+4
+00:17:31,470 --> 00:20:38,670
+So around 800 degrees. Use the parameters of low graining pressure that I have used yesterday and we'll just mostly control it through the pressure control. Let's do it like that. Just barely anything. There's also little material. That's why manual control will be better. Okay. Vibrations on. It was fast. It was everything. So melting pressure, ceiling root down.
+
+5
+00:20:38,670 --> 00:20:40,140
+Generator stopped.
+

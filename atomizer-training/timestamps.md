@@ -383,7 +383,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [77:48](https://www.youtube.com/embed/58wJ_Khwgyk?start=4668) | [▶](https://www.youtube.com/watch?v=58wJ_Khwgyk&t=4668s) | cleaning | Same material next, so open and brush only; gloves, respirator. |
 
 ## Atomizer Training Video 6
-`tfb4fsVNIFI` · 2026-09-29 · 0:49 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
+`tfb4fsVNIFI` · 2026-09-29 · 0:49 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/tfb4fsVNIFI?start=0) · [▶ watch](https://www.youtube.com/watch?v=tfb4fsVNIFI)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -392,7 +392,7 @@ Transcript source per video is listed in the heading: **whisper** = faster-whisp
 | [00:37](https://www.youtube.com/embed/tfb4fsVNIFI?start=37) | [▶](https://www.youtube.com/watch?v=tfb4fsVNIFI&t=37s) | cleaning | Best way to clean after an atomization: open it fully by removing the four nuts (00:42, 00:45). |
 
 ## Atomizer training
-`Pk0K5sBz-sQ` · 2026-09-29 · 9:32 · public · transcript: auto · [open paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=Pk0K5sBz-sQ)
+`Pk0K5sBz-sQ` · 2026-09-29 · 9:32 · public · transcript: whisper · [open paused](https://www.youtube.com/embed/Pk0K5sBz-sQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=Pk0K5sBz-sQ)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -675,7 +675,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [14:53](https://www.youtube.com/embed/2wMgeI-E7zw?start=893) | [▶](https://www.youtube.com/watch?v=2wMgeI-E7zw&t=893s) | admin | 8:30 a.m. start tomorrow; use the vacuum during runs; parking (to end). |
 
 ## nzyjn0 atomization AlSi10Mg-Al6063
-`TFpU4uqVF9c` · 2026-09-30 · 20:56 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
+`TFpU4uqVF9c` · 2026-09-30 · 20:56 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/TFpU4uqVF9c?start=0) · [▶ watch](https://www.youtube.com/watch?v=TFpU4uqVF9c)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
@@ -754,7 +754,7 @@ _No caption-derived rows yet (no YouTube auto-captions for this video; waiting o
 | [21:13](https://www.youtube.com/embed/qYyT39D5Yzo?start=1273) | [▶](https://www.youtube.com/watch?v=qYyT39D5Yzo&t=1273s) | record | Takes a video inside the chamber: "Oh yeah, look at that." |
 
 ## Atomizer run Oct 2 part 2
-`of5-LhkX_VQ` · 2026-10-02 · 30:18 · unlisted · transcript: auto · [open paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=of5-LhkX_VQ)
+`of5-LhkX_VQ` · 2026-10-02 · 30:18 · unlisted · transcript: whisper · [open paused](https://www.youtube.com/embed/of5-LhkX_VQ?start=0) · [▶ watch](https://www.youtube.com/watch?v=of5-LhkX_VQ)
 
 | mm:ss | ▶ | phase | what happens / what is said |
 | --- | --- | --- | --- |
