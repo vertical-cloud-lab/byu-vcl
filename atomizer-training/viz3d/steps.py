@@ -17,7 +17,7 @@ import numpy as np
 import pyvista as pv
 
 import model as M
-from scene import MELT, R, S, Scene, T, ease, lighter, load_machine, mix, set_cut, temp_color, window
+from scene import FPS, MELT, R, S, Scene, T, ease, lighter, load_machine, mix, set_cut, temp_color, window
 
 FURNACE_CUT = ("crucible", "holder", "nozzle", "furnace", "side_ins", "top_ins", "bottom_ins", "coil", "hood", "tc")
 FURNACE_FIXED = tuple(g for g in FURNACE_CUT if g not in ("crucible", "holder", "nozzle"))
@@ -51,6 +51,17 @@ NOZZLE_OUT = np.array([-70.0, -60.0, 30.0])    # nozzle held up beside the holde
 
 
 # --------------------------------------------------------------------------------- helpers
+# Per-frame effects were written for 15 fps. These keep them the same per second at any VIZ3D_FPS (identical at 15).
+def per_frame(n):
+    """A count emitted every frame at 15 fps, scaled to the frame rate."""
+    return int(round(n * 15 / FPS))
+
+
+def tick(sc):
+    """The frame number at 15 fps: the plate's exaggerated vibration alternates on it, so it flickers at the same rate."""
+    return sc.n * 15 // FPS
+
+
 def hood(sc, deg):
     sc.gmat["hood"] = R((0, 1, 0), -deg, M.HINGE)
 
@@ -245,9 +256,9 @@ class Particles:
         self.p = np.vstack([self.p, p])
         self.v = np.vstack([self.v, np.zeros((n, 3))])
 
-    def step(self, dt=1 / 15):
+    def step(self, dt=None):
         if len(self.p):
-            h = dt * self.slowmo
+            h = (dt or 1 / FPS) * self.slowmo
             self.v[:, 2] -= 9810 * h
             self.v *= (1 - 1.8 * h)
             self.p += self.v * h
@@ -321,7 +332,7 @@ class Flow:
                point_size=size, ambient=0.7, shown=False)
 
     def step(self):
-        self.phase = (self.phase + self.speed) % (1.0 / self.n)
+        self.phase = (self.phase + self.speed * 15 / FPS) % (1.0 / self.n)
         s = (np.arange(self.n) / self.n + self.phase) % 1.0
         idx = (s * (len(self.line) - 1)).astype(int)
         self.sc.set_mesh(self.name, pv.PolyData(self.line[idx].copy()))
@@ -579,7 +590,7 @@ def anim_06_pour():
     show_g()
 
     def vibrate(on):
-        k = sc.n % 2
+        k = tick(sc) % 2
         sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if (on and k) else 0.0))
 
     sc.step("5.1", "Melt held at ~800 °C, O₂ at 45 ppm. The pour goes in this order, quickly: vibration "
@@ -605,7 +616,7 @@ def anim_06_pour():
     def rod_up(u):
         rod_lift(sc, 12 * window(u, 0.0, 0.3))
         stream(sc, 1.0 if u > 0.3 else 0.0, 1.0, window(u, 0.3, 0.6))
-        if 0.6 < u < 0.95 and sc.n % 3 == 0:
+        if 0.6 < u < 0.95 and sc.n % max(1, 3 * FPS // 15) == 0:
             drops.emit_drops(2, M.IMPACT + np.array([0, 0, 3]), M.PLATE_UP * 250 + M.STACK_DIR * 500)
         drops.step()
         vibrate(True)
@@ -618,7 +629,7 @@ def anim_06_pour():
     def turbo(u):
         st["pf"] = 220 + (1500 - 220) * (math.sin(math.pi * u))
         stream(sc, 1.0, 1.0 + 0.8 * math.sin(math.pi * u))
-        spray.emit_spray(int(18 * window(u, 0.3, 1.0)))
+        spray.emit_spray(per_frame(int(18 * window(u, 0.3, 1.0))))
         spray.step()
         drops.step()
         st["level"] -= 0.12
@@ -631,7 +642,7 @@ def anim_06_pour():
     def atomize(u, rate=28, cam=None):
         st["pf"] = 220
         stream(sc, 1.0, 1.0)
-        spray.emit_spray(rate)
+        spray.emit_spray(per_frame(rate))
         spray.step()
         drops.step()
         st["level"] = max(-12.0, st["level"] - 0.085)
@@ -655,7 +666,7 @@ def anim_06_pour():
         pool.set(st["level"])
         stream(sc, 1.0 if u < 0.6 else 0.0, 1.0 - 0.6 * u)
         if u < 0.6:
-            spray.emit_spray(int(20 * (1 - u)))
+            spray.emit_spray(per_frame(int(20 * (1 - u))))
         spray.step()
         powder.set(3 + 55 * min(1.0, spray.landed / 5200))
         vibrate(True)
@@ -748,7 +759,7 @@ def anim_02_stack():
 
     def wet(u):
         if u < 0.7:
-            n = 6
+            n = per_frame(6)
             r = mist.rng
             p = pw[None, :] + pu[None, :] * r.uniform(-45, 45, n)[:, None] + ny[None, :] * r.uniform(-9, 9, n)[:, None]
             v = sd[None, :] * r.uniform(150, 700, n)[:, None] + r.normal(0, 150, (n, 3))
@@ -756,7 +767,7 @@ def anim_02_stack():
             mist.v = np.vstack([mist.v, v])
         mist.step()
         gauges(sc, us="40.12 kHz", amp=90)
-        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if sc.n % 2 else 0.0))
+        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if tick(sc) % 2 else 0.0))
     sc.step("2c.7", "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, "
             "the plate is cracked.", 3.5, wet, hold=1.0, live=True)
 
@@ -1014,9 +1025,9 @@ def anim_07_end_cooldown():
         pool.set(-11 - 3 * u)
         stream(sc, 1.0 if u < 0.85 else 0.0, 1.2 * (1 - u) + 0.3)
         if u < 0.8:
-            spray.emit_spray(10)
+            spray.emit_spray(per_frame(10))
         spray.step()
-        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if sc.n % 2 else 0.0))
+        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if tick(sc) % 2 else 0.0))
         show_g({"us": "40.08 kHz"})
     sc.step("6.1", "Crucible empty: one TURBO push clears the last drops and the nozzle.", 2.5, turbo, hold=1.0, live=True)
 
@@ -1026,7 +1037,7 @@ def anim_07_end_cooldown():
         heat(sc, 795, 1 - window(u, 0.4, 0.6))
         spray.step()
         on = u < 0.75
-        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if (on and sc.n % 2) else 0.0))
+        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if (on and tick(sc) % 2) else 0.0))
         show_g({"us": "40.08 kHz" if on else "STOP"})
     sc.step("6.2", "Within seconds: sealing rod DOWN, melting pressure, generator STOP, ultrasonics STOP. "
             "Vibrating against solidified metal cracks the plate.", 3.0, stop, hold=1.0,
@@ -1063,7 +1074,7 @@ def anim_07_end_cooldown():
     def brush_down(u):
         show_whole(1 - window(u, 0.0, 0.3))
         if u < 0.7:
-            brush.emit_settle(14)
+            brush.emit_settle(per_frame(14))
         brush.step()
         powder.set(55 + 8 * u)
     sc.step("7.4", "Brush the plate, bowl, walls and view port down into the container, in a circle, before it "

@@ -12,6 +12,10 @@ u = 0 -> 1, an optional camera move, leader-line labels, then a hold. Frames are
 Text (title, step label, caption, gauge readouts, leader labels) is drawn with PIL on top of
 each output at its own resolution, so the GIF's text is drawn at GIF size rather than shrunk.
 ``out/<name>.json`` records the frame range of each sub-step in the MP4, for timing narration.
+
+For videos that add their own captions (``../ppt/``), ``VIZ3D_CLEAN=1`` drops every piece of text and writes only
+``out/clean/<name>.mp4`` and ``.json``, leaving the committed GIF, still and JSON alone. ``VIZ3D_SIZE=1920x1080`` and
+``VIZ3D_FPS=30`` change the frame size and rate; every move keeps its duration in seconds, so the speed is the same.
 """
 from __future__ import annotations
 
@@ -30,9 +34,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 HERE = Path(__file__).resolve().parent
 OUT = HERE / "out"
-FPS = 15
+FPS = int(os.environ.get("VIZ3D_FPS", "15"))
 GIF_FPS = 10
-SIZE = (1280, 720)
+SIZE = tuple(int(v) for v in os.environ.get("VIZ3D_SIZE", "1280x720").split("x"))
+CLEAN = bool(os.environ.get("VIZ3D_CLEAN"))     # no text at all; writes out/clean/ only (see the docstring)
 GIF_SIZE = (800, 450)
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each sub-step, to /tmp
@@ -69,6 +74,11 @@ _wait_for_x()
 def font(size, bold=False, mono=False):
     name = "DejaVuSansMono.ttf" if mono else ("DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf")
     return ImageFont.truetype(str(FONT_DIR / name), int(round(size)))
+
+
+def size_scale(size) -> float:
+    """Pixel sizes (points) were chosen at 1280 x 720; this keeps them the same fraction of the frame."""
+    return size[1] / 720
 
 
 def ease(u: float) -> float:
@@ -172,14 +182,17 @@ class Scene:
         self.preview: list[Image.Image] = []
         if PREVIEW:
             mp4 = gif = False
+        if CLEAN:
+            gif = False
+        self.mp4_dir = OUT / ("clean" if CLEAN else "mp4")
         if mp4:
-            (OUT / "mp4").mkdir(parents=True, exist_ok=True)
-            self.mp4_path = OUT / "mp4" / f"{name}.mp4"
+            self.mp4_dir.mkdir(parents=True, exist_ok=True)
+            self.mp4_path = self.mp4_dir / f"{name}.mp4"
             self.mp4 = subprocess.Popen(
                 ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
                  "-s", f"{size[0]}x{size[1]}", "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264",
-                 "-preset", "medium", "-crf", "21", "-pix_fmt", "yuv420p", "-movflags", "+faststart",
-                 str(self.mp4_path)], stdin=subprocess.PIPE)
+                 "-preset", "medium", "-crf", "16" if CLEAN else "21", "-pix_fmt", "yuv420p",
+                 "-movflags", "+faststart", str(self.mp4_path)], stdin=subprocess.PIPE)
         self.gif = gif
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
 
@@ -190,6 +203,8 @@ class Scene:
         style = dict(smooth_shading=True, specular=0.35, specular_power=20, ambient=0.18, diffuse=0.85)
         if name.split("#")[0].split(":")[-1] in FLATTISH:      # big flat panels: no sheen, so GIFs compress
             style.update(specular=0.08)
+        if "point_size" in kw:                                  # sized for 720p: the same on screen at any VIZ3D_SIZE
+            kw["point_size"] = kw["point_size"] * size_scale(self.size)
         style.update(kw)
         actor = self.pl.add_mesh(poly, color=color, opacity=opacity, **style)
         self.actors[name] = actor
@@ -249,6 +264,8 @@ class Scene:
         return dx / self.size[0], 1.0 - dy / self.size[1]
 
     def overlay(self, img: Image.Image, scale: float, anchors) -> Image.Image:
+        if CLEAN:
+            return img
         W, H = img.size
         d = ImageDraw.Draw(img, "RGBA")
         s = max(scale, 0.80)                      # GIF text is kept larger than a straight downscale
@@ -420,8 +437,9 @@ class Scene:
             self.mp4.stdin.close()
             self.mp4.wait()
         meta = dict(name=self.name, fps=FPS, n_frames=self.n, size=list(self.size), substeps=self.substeps)
-        (OUT / f"{self.name}.json").write_text(json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
-        if self.still is not None:
+        (self.mp4_dir if CLEAN else OUT).joinpath(f"{self.name}.json").write_text(
+            json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
+        if self.still is not None and not CLEAN:
             Image.fromarray(self.still[1]).convert("RGB").save(OUT / f"{self.name}_still.png", optimize=True)
         info = f"{self.name}: {self.n} frames, {self.n / FPS:.1f} s"
         if self.mp4 is not None:
