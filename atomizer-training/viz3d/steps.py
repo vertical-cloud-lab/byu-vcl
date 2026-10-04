@@ -52,9 +52,12 @@ NOZZLE_OUT = np.array([-70.0, -60.0, 30.0])    # nozzle held up beside the holde
 
 # --------------------------------------------------------------------------------- helpers
 # Per-frame effects were written for 15 fps. These keep them the same per second at any VIZ3D_FPS (identical at 15).
+PER_FRAME = 15 / FPS      # exactly 1.0 at 15 fps
+
+
 def per_frame(n):
     """A count emitted every frame at 15 fps, scaled to the frame rate."""
-    return int(round(n * 15 / FPS))
+    return int(round(n * PER_FRAME))
 
 
 def tick(sc):
@@ -332,7 +335,7 @@ class Flow:
                point_size=size, ambient=0.7, shown=False)
 
     def step(self):
-        self.phase = (self.phase + self.speed * 15 / FPS) % (1.0 / self.n)
+        self.phase = (self.phase + self.speed * PER_FRAME) % (1.0 / self.n)
         s = (np.arange(self.n) / self.n + self.phase) % 1.0
         idx = (s * (len(self.line) - 1)).astype(int)
         self.sc.set_mesh(self.name, pv.PolyData(self.line[idx].copy()))
@@ -632,7 +635,7 @@ def anim_06_pour():
         spray.emit_spray(per_frame(int(18 * window(u, 0.3, 1.0))))
         spray.step()
         drops.step()
-        st["level"] -= 0.12
+        st["level"] -= 0.12 * PER_FRAME
         pool.set(st["level"])
         vibrate(True)
         show_g()
@@ -645,7 +648,7 @@ def anim_06_pour():
         spray.emit_spray(per_frame(rate))
         spray.step()
         drops.step()
-        st["level"] = max(-12.0, st["level"] - 0.085)
+        st["level"] = max(-12.0, st["level"] - 0.085 * PER_FRAME)
         pool.set(st["level"])
         st["made"] += rate
         powder.set(3 + 55 * min(1.0, spray.landed / 5200))
@@ -662,7 +665,7 @@ def anim_06_pour():
             "operator at the window the whole time.", 6.0, atomize, hold=1.0, live=True)
 
     def tail(u):
-        st["level"] = max(-12.0, st["level"] - 0.2)
+        st["level"] = max(-12.0, st["level"] - 0.2 * PER_FRAME)
         pool.set(st["level"])
         stream(sc, 1.0 if u < 0.6 else 0.0, 1.0 - 0.6 * u)
         if u < 0.6:
