@@ -38,6 +38,7 @@ whole and the halved part, and `set_cut()` blends between them.
 | [`render.py`](render.py) | Hero stills at 1600 × 900: `out/machine.png` (labelled), `out/machine_clean.png` (no text; the machine in the right 60 %, artwork for title cards), `out/section.png` (the column cut at the furnace axis, with the furnace close up) and `out/compare.png` (the model beside the 720p video frames in [`ref/`](ref/), from about the same viewpoints). |
 | `out/<name>.gif` | 800 × 450, 10 fps, ≤ 5 MB, for GitHub. |
 | `out/mp4/<name>.mp4` | 1280 × 720, 15 fps, h264 yuv420p, no audio, for the narrated tutorials. Not committed (see `.gitignore`); regenerate with `steps.py`. |
+| `out/clean/<name>.mp4`, `.json` | `VIZ3D_CLEAN=1`: the same animation with no text at all (no title, label, caption, gauges or leader labels), for videos that add their own captions ([`../ppt/`](../ppt/README.md)). `VIZ3D_SIZE` and `VIZ3D_FPS` set the frame size and rate. Every move keeps its length in seconds, and per-frame effects (particles, the plate's vibration, flow dots, point sizes) are scaled to match. Not committed. |
 | `out/<name>_still.png` | One representative 1280 × 720 frame. |
 | `out/<name>.json` | `{name, fps, n_frames, size, substeps: [{label, caption, start_frame, end_frame}]}`: the MP4 frame range of every sub-step (motion plus its hold), for timing narration sentence by sentence. Every animation opens with 1 s of establishing view, counted in its first sub-step. |
 
@@ -50,6 +51,7 @@ xvfb-run -a -s "-screen 0 1920x1080x24" python render.py          # hero stills
 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py           # every animation
 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 06_pour   # one (or several) by name
 PREVIEW=1 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 06_pour   # last frame of each sub-step only, as a contact sheet in /tmp
+VIZ3D_CLEAN=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 02_stack   # no text at all, 1080p30, into out/clean/ (for ../ppt/)
 xvfb-run -a -s "-screen 0 1920x1080x24" python collide.py          # interference check of every animation -> out/collisions.md
 xvfb-run -a -s "-screen 0 1920x1080x24" python collide.py 03_furnace_load   # one (writes out/collisions_<names>.md)
 ```

@@ -6,11 +6,11 @@ and the tutorials.
 
 | Clip | Narrated, unlisted (draft 1) | File | Length |
 | --- | --- | --- | --- |
-| Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | (uploading) | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
-| The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | (uploading) | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
+| Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | https://www.youtube.com/watch?v=86K-EHhtPp8 | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
+| The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
 
 [`script.md`](script.md) lists every caption with when it is up, its spoken line and how long that line takes, with a
-frame from each.
+frame from each. The upload log, with the commit each description links to, is [`uploads.json`](uploads.json).
 
 ## The rules
 
