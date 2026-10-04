@@ -74,3 +74,19 @@ faces on the bed, and finds the largest edge-connected patch of them. It reports
 its flattest face (90° is a flat ceiling) and its bounding box in the STL's own frame. Faces drawn at
 exactly 45°, like the carrier's gussets, are counted separately as `at_limit_mm2`. Hole tops,
 nut-slot roofs and counterbore roofs all show up: they print as short bridges.
+
+## Three setups, each part alone (`slice_configs.py`)
+
+[`slice_configs.py`](slice_configs.py) slices the mount for the material question, with the same CLI
+and the same overrides (3 walls, 25 % grid infill, supports off):
+
+| Setup | Printer and nozzle | Process | Filament |
+|---|---|---|---|
+| `h2d_pahtcf_06` | H2D, 0.6 mm hardened steel (Bambu's recommendation for PAHT-CF) | 0.30mm Standard | Bambu PAHT-CF |
+| `h2d_pahtcf_04` | H2D, 0.4 mm hardened steel (fitted now) | 0.20mm Standard | Bambu PAHT-CF |
+| `a1m_pla_04` | A1 mini, 0.4 mm | 0.20mm Standard | Bambu PLA Basic |
+
+Plate 1 is the whole job, and plates 2 to 6 hold one part each, centred on the bed. So each part's
+mass comes from its own G-code, split by feature, in
+[`slice_configs.json`](slice_configs.json). Each part's G-code also goes to `build_<setup>/` (ignored
+by git), where [`../sim/sliced_fea.py`](../sim/sliced_fea.py) reads it to model the part as printed.

@@ -93,9 +93,10 @@ for _code, _name in NAMES.items():
     GROUP[_code] = 2 if _name == "Sparse infill" else 0 if "wall" in _name.lower() or "shell" in _name.lower() else 1
 GROUPS = ("wall", "solid infill or skin", "sparse infill")
 MODES = ("along the bead", "between beads in a layer", "between layers")
-FORCES = (100, 200, 500, 1000)                      # N per M3
+FORCES = (200, 1000)                                # N per M3: snug, and overtightened
 ALPHA_FIX, ALPHA_CONTACT = 1e2, 3e1     # penalty stiffness, as multiples of the median diagonal of K
-MAX_ITER = 30
+MAX_ITER = 10
+SETTLED = 0.002                         # contact has settled when under this share of its rows change
 BUMP_N, YANK_LEVER = 10.0, 10.0         # as ccx_stress.py
 EXCL_LOAD, EXCL_SUPPORT = 1.5, 2.0      # mm: peaks are taken this far from loaded and from fixed nodes
 RX90 = np.array([[1.0, 0, 0], [0, 0, -1], [0, 1, 0]])     # cadquery rotate about +X by 90: +Y -> +Z
@@ -589,11 +590,9 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
     on = np.zeros(rows.n, bool)
     for c in crowns:
         on[c] = True
-    for i, n, idx in body:          # start: the body in contact 30 degrees either side of each crown
-        q = system.parts[i]
-        side = -1 if i == 0 else 1
-        ang = np.degrees(np.arctan2(q.xw[n, 2] - p.ax_z, side * (q.xw[n, 0] - p.ax_x)))
-        on[idx[abs(ang) < 30]] = True
+    for i, n, idx in body:          # start closed: the body all round and the split; tension drops out
+        on[idx] = True
+    on[split] = True
     keep = [away(qb, seats_b, EXCL_LOAD), away(qc, seats_c, EXCL_LOAD)]
     out = {"config": cfg, "solid": solid, "voxel (mm)": h, "parts": {q.name: q.stats for q in (qb, qc)},
            "dofs": int(system.off[-1]), "split pairs": int(len(S)),
@@ -603,10 +602,13 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
            "forces": {}}
     viz = {"F": [], "fi": {}, "U": {}}
     solver, U = None, None
+    changes = 0
     for F in forces:
         hist = []
         for it in range(MAX_ITER):
-            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U)
+            # a fresh AMG hierarchy (about 30 s) once many contacts have flipped: the old one, built for
+            # the old contact set, can take five times the CG iterations
+            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U, rebuild=changes > 100)
             gap = rows.g0 + rows.B @ U
             lam = -rows.k * gap * on                    # compression > 0 on active rows
             changes = 0
@@ -621,10 +623,12 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
             hist.append({"iteration": it, "changes": changes, **info})
             print(f"  {cfg} {'solid' if solid else 'printed'} F {F} it {it}: changes {changes}, "
                   f"split on {int(on[split].sum())}, CG {info['cg_iterations']} ({info['solve_s']} s)", flush=True)
-            if not changes:
+            n_rows = sum(len(b[2]) for b in body) + len(split)
+            if changes <= SETTLED * n_rows:
                 break
         gs = gap[split]
-        res = {"converged": not changes, "iterations": len(hist), "CG iterations": sum(x["cg_iterations"] for x in hist),
+        res = {"converged": changes <= SETTLED * n_rows, "contact changes at the last iteration": changes,
+               "iterations": len(hist), "CG iterations": sum(x["cg_iterations"] for x in hist),
                "split gap (mm)": {"narrowest": round(float(gs.min()), 4), "widest": round(float(gs.max()), 4),
                                   "mean": round(float(gs.mean()), 4)},
                "split contact force (N)": round(float(lam[split].sum()), 1),
@@ -768,6 +772,45 @@ def case_yank(cfg: str, p, h: float, solid: bool) -> dict:
     return out
 
 
+def bearing_zone(cw: np.ndarray, p, side: int, r: float = 4.5, depth: float = 4.0) -> np.ndarray:
+    """Voxels round an M3 nut (bracket, side -1) or head (carrier, side +1): within r of a screw axis
+    and within depth of its seat face either way, so the walls of the nut pocket or counterbore too."""
+    xf = p.ax_x - p.ear_w + p.m3_nut_depth if side < 0 else p.ax_x + p.clamp_head_seat
+    lo, hi = xf - depth, xf + depth
+    inside = np.zeros(len(cw), bool)
+    for y in p.clamp_y:
+        for sz in (1, -1):
+            rr = np.hypot(cw[:, 1] - y, cw[:, 2] - (p.ax_z + sz * p.clamp_r))
+            inside |= (rr < r) & (cw[:, 0] >= lo) & (cw[:, 0] <= hi)
+    return inside
+
+
+def clamp_zones(cfg: str, p, h: float) -> dict:
+    """Re-evaluate a solved clamp (viz pickle) with the nut and head bearing zones apart: the peak
+    outside them (the collar and ears as a structure) and inside them (bearing under the nut or head,
+    where 1.0 mm voxels put a whole nut's load on a few nodes)."""
+    viz = pickle.loads((CACHE / f"viz_{cfg}_printed_{h:.2f}.pkl").read_bytes())
+    qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, False)
+    system = System([qb, qc])
+    out = {}
+    for F in viz["F"]:
+        U = viz["U"][F].astype(float)
+        res = {}
+        for i, (q, side) in enumerate(((qb, -1), (qc, 1))):
+            zone = bearing_zone(q.cw, p, side)
+            u = part_u(system, U, i)
+            res[q.name] = {"outside the bearing zones": evaluate(q, u, ~zone),
+                           "in the bearing zones": evaluate(q, u, zone)}
+        out[str(F)] = res
+    # bearing stress by hand: F over the nut's (5.5 mm across flats) or head's (O5.5) ring on a O3.4 hole
+    a_nut = 0.866 * 5.5 ** 2 - math.pi * (p.m3_clear_d / 2) ** 2
+    a_head = math.pi / 4 * (5.5 ** 2 - p.m3_clear_d ** 2)
+    out["bearing stress by hand (MPa per N of screw force)"] = {"nut on the bracket": round(1 / a_nut, 5),
+                                                                "head on the carrier": round(1 / a_head, 5),
+                                                                "areas (mm2)": [round(a_nut, 1), round(a_head, 1)]}
+    return out
+
+
 # --- main ------------------------------------------------------------------------------------------
 
 def main() -> None:
@@ -787,6 +830,8 @@ def main() -> None:
                 res, viz = case_clamp(cfg, p, args.h, args.solid, [int(f) for f in args.forces])
                 (CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.h:.2f}.pkl").write_bytes(
                     pickle.dumps(viz))
+            elif case == "zones":
+                res = clamp_zones(cfg, p, args.h)
             elif case == "pod":
                 res = case_pod(cfg, p, args.h, args.solid)
             else:

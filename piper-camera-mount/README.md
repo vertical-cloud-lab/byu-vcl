@@ -230,8 +230,9 @@ CLI, the same way as #234 and #238, and writes
 [`slice/piper_camera_mount_A1mini_PLA.3mf`](slice/piper_camera_mount_A1mini_PLA.3mf) and
 [`slice/report.json`](slice/report.json):
 
-- **One plate:** all five part types, **2 h 50 min and 87.6 g** with 3 walls and 25 % infill on the
-  Textured PEI plate.
+- **One plate:** all five part types, **2 h 50 min and 87.5 g** with 3 walls and 25 % infill on the
+  Textured PEI plate. The same parts on the H2D in PAHT-CF weigh 72.0 g (0.4 mm nozzle) or 83.5 g
+  (0.6 mm); see [As sliced](#as-sliced-paht-cf-and-pla-simsliced_feapy).
 - **No supports.** Supports are off, and Bambu's own support check flags none of the six objects.
   There are no slicer warnings and no toolpaths off the bed.
 - **Overhangs** (`slice/overhangs.json`): the only faces steeper than 45 degrees are the roofs of
@@ -337,7 +338,9 @@ PAHT-CF 88 and 64):
   its outer edge before solid PLA reaches its strength, and less with 25 % infill. The seat's nut
   slots are where it would give first.
 - **A cable yank is fine once the lead is clamped to the carrier.** Solid PLA takes about 80 N
-  sideways before the plate-to-collar joint reaches its strength (about 180 N in PAHT-CF).
+  sideways before the plate-to-collar joint reaches its strength (about 180 N in PAHT-CF). As
+  printed, with walls, infill and layers judged across the layers, it is less: about 60 N in PLA and
+  120 N in PAHT-CF (see [As sliced](#as-sliced-paht-cf-and-pla-simsliced_feapy)).
   - The Pi's socket gives up long before that. A straight pull unplugs a USB-C plug at 8 to 20 N (the
     USB-C spec's range), and a sideways pull levers on the socket instead.
   - So the clamp should carry the pull, and the breakaway should let go below what the socket takes.
@@ -361,7 +364,8 @@ How each case is set up:
 
 Limits of the model:
 
-- **The model is solid and isotropic.** A print with 3 walls and 25 % infill is weaker.
+- **The model is solid and isotropic.** A print with 3 walls and 25 % infill is weaker, and
+  [As sliced](#as-sliced-paht-cf-and-pla-simsliced_feapy) models the printed parts from their G-code.
 - **The peaks sit at sharp inside corners** (the ear roots and nut slots), where the value depends
   on the mesh. A fillet at the ear roots would lower them.
 
@@ -431,6 +435,185 @@ What it shows:
 Limits: the plastic is solid, isotropic and linear-elastic, so past PLA's 35 MPa the numbers say
 where it would start to give, not what it would do next. The faces are frictionless; friction would
 only hold the ears more. The screws are forces, not modelled bolts.
+
+## As sliced: PAHT-CF and PLA (`sim/sliced_fea.py`)
+
+The CalculiX models above treat each part as solid, isotropic PLA. A print is neither. It has three
+walls round the outside and 25 % grid infill inside, its beads are stiffer and stronger along their
+length than across, and its layers bond more weakly than either.
+[`sim/sliced_fea.py`](sim/sliced_fea.py) rebuilds each part from the G-code that would print it, in
+PAHT-CF on the H2D and in PLA on the A1 mini, and loads it as the CalculiX models do. The results are
+in [`sim/sliced_fea.json`](sim/sliced_fea.json).
+
+**The slices.** [`slice/slice_configs.py`](slice/slice_configs.py) slices each part alone on a plate
+with the Bambu Studio 02.08.02.61 CLI, using Bambu's system presets plus this README's 3 walls and
+25 % grid infill. It weighs each part from its own G-code
+([`slice/slice_configs.json`](slice/slice_configs.json)):
+
+| | Bracket | Pod | Carrier | Whole job | Job time |
+|---|---|---|---|---|---|
+| H2D, PAHT-CF, 0.6 mm hardened nozzle, 0.30 mm layers | 37.7 g | 13.5 g | 31.7 g | 83.5 g | 3 h 47 min |
+| H2D, PAHT-CF, 0.4 mm hardened nozzle, 0.20 mm layers | 31.1 g | 11.9 g | 28.3 g | 72.0 g | 3 h 48 min |
+| A1 mini, PLA Basic, 0.4 mm nozzle, 0.20 mm layers | 37.8 g | 14.5 g | 34.4 g | 87.4 g | 2 h 50 min |
+
+- **PLA weighs more** mostly because it is denser: 1.26 g/cm³ in Bambu's preset, against 1.06 for
+  PAHT-CF.
+- **The 0.6 mm nozzle adds 11.5 g.** Its three walls are 3 × 0.62 mm thick, against 0.42 + 2 × 0.45 mm
+  with the 0.4 mm nozzle, so more of each part is solid.
+- **Bambu recommends the 0.6 mm nozzle for PAHT-CF,** because a wider nozzle clogs less: the
+  [H2D 0.6 mm hardened-steel hotend](https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066388)
+  is $17.99. A 0.5 kg spool ($49.99) is five to six sets at 83.5 g.
+
+**From G-code to a model:**
+
+- **The raster.** [`sim/gcode_voxels.py`](sim/gcode_voxels.py) reads every extrusion on the part's
+  plate, with its feature (outer wall, sparse infill and so on), width and layer. It draws each one at
+  0.1 mm per pixel in the STL's print frame, and keeps the bead's direction.
+- **The voxels.** Each voxel then holds some fraction of bead, in some mix of directions. Its
+  stiffness is the bead's orthotropic stiffness, turned to each of those directions and averaged by
+  volume (iso-strain). Between infill lines there is nothing. Voxels under 15 % bead are dropped, about
+  1 % of the bead volume.
+- **The frame.** Each part is placed in the world by the transform its STL was exported with. So the
+  supports and loads are those of `ccx_stress.py` and `ccx_split.py`.
+
+![One layer of the bracket: the G-code, and the voxels made from it](renders/sliced_model.png)
+
+**Bead properties** ([`sim/bead_properties.json`](sim/bead_properties.json), sourced in
+[`sim/bead_properties_2026-10-03.md`](sim/bead_properties_2026-10-03.md)). They are back-calculated
+from Bambu's datasheets: a model of the datasheet's tensile bar, with its walls and ±45° infill,
+reproduces the datasheet's modulus and strength. Dry, room temperature:
+
+| MPa | Stiffness along the bead / across it / across the layers | Tensile strength, same three | Shear strength in a layer / across the layers |
+|---|---|---|---|
+| PAHT-CF | 7600 / 2700 / 2180 | 120 / 50 / 47 | 47 / 33 |
+| PLA Basic | 2800 / 2600 / 2060 | 48 / 33 / 31 | 19 / 18 |
+
+**Failure.** The strain in each voxel gives the stress in each bead direction it holds, in that bead's
+own axes. That stress goes into three Hashin-type criteria: along the bead, between beads in a layer,
+and between layers. Each is written so that it scales with the load. So a failure index of 1 is the
+first failure, and 1 / index is the factor on the load to reach it.
+
+**The clamp** (both halves at 1.0 mm voxels, with the body and the split as in `ccx_split.py`):
+
+| | Faces pushing, 200 / 1000 N per M3 | Squeeze on the body, bracket's half, 200 / 1000 N | Peak index in the collar and ears at 200 N, bracket / carrier | Same at 1000 N |
+|---|---|---|---|---|
+| PAHT-CF, 0.6 mm nozzle | 462 / 3,153 N | 452 / 1,178 N | 0.19 / 0.11 | 0.64 / 0.43 |
+| PAHT-CF, 0.4 mm nozzle | 476 / 3,224 N | 442 / 1,092 N | 0.18 / 0.16 | 0.72 / 0.68 |
+| PLA | 500 / 3,383 N | 420 / 884 N | 0.26 / 0.18 | 0.98 / 0.78 |
+| The same voxels, solid PLA (the check) | 436 / 3,020 N | 534 / 1,430 N | 0.15 / 0.14 (max principal / 35 MPa) | 0.39 / 0.42 |
+| Solid PLA, CalculiX tets (`ccx_split.py`) | 112 / 2,370 N | 1,198 / 2,634 N | 0.57 (19.8 MPa / 35) | 0.61 |
+
+![The clamp, as sliced: peak failure index at snug and overtightened](renders/sliced_clamp.png)
+
+- **At 1.0 mm, the voxel model of the clamp only works like for like.** Filled with solid PLA, the
+  same voxels give half CalculiX's squeeze on the body and, at snug, a quarter of its peak. The ears' roots are
+  sharp inside corners that a 1 mm voxel can't resolve, and the coarse collar is softer. So compare
+  each print with the solid-PLA voxel row, not with CalculiX.
+- **Like for like, printing makes the collar a little softer.** In PLA, the squeeze on the body is
+  21 % less at snug and 38 % less at 1000 N, and the faces carry 12 to 15 % more. The split closes
+  before snug either way.
+- **Like for like, the print is weaker than solid PLA.** In the bracket, walls and 25 % infill raise
+  PLA's peak index 1.7 times at snug and 2.5 times at 1000 N (each on its own criterion). PAHT-CF's
+  indices are about 0.7 of PLA's in the bracket and 0.9 in the carrier. The 0.6 mm nozzle's thicker
+  walls help most in the carrier: 0.43 against 0.68 at 1000 N.
+- **So PLA's ear roots may be near their limit at snug.** CalculiX's solid PLA peaks at 19.8 MPa
+  there at snug, 0.57 of PLA's 35 MPa. If printing raises that by the same 1.7 times, printed PLA is
+  near 1. That is a flag, not a result: it needs a finer model of the printed ear roots. PAHT-CF,
+  with two to three times PLA's strengths, keeps a wide margin either way.
+- **Under the heads and nuts, by hand.** The voxels can't resolve these either: at 1.0 mm, a whole
+  nut's load lands on 6 to 9 nodes, so the section below sets them apart.
+  - A head bears on 14.7 mm² of the carrier's counterbore floor (0.068 MPa per N) and presses it across
+    the layers. PLA's 65 MPa there is reached at about 950 N per screw, and PAHT-CF's 75 MPa at about
+    1,100 N.
+  - A nut bears on 17.1 mm² of the bracket (0.058 MPa per N), within its layers: about 1,200 N in PLA
+    and 1,370 N in PAHT-CF.
+  - So **tighten to snug, not past it**, in either material.
+
+![The section through the first clamp screws at 1000 N per screw, as sliced](renders/sliced_section.png)
+
+**The cable yank** (the carrier alone at 0.6 mm voxels, 10 N at the USB-C plug):
+
+| | Worst direction | First failure, voxel model | Allowing for the voxels' corners (see Checks) | Where, and how |
+|---|---|---|---|---|
+| PAHT-CF, 0.6 mm nozzle | +X, off the board | 81 N | about 120 N | between beads in a layer, in the solid skin where the plate meets the collar |
+| PAHT-CF, 0.4 mm nozzle | +X | 85 N | about 125 N | between layers, in the outer wall at the same joint |
+| PLA | +X | 43 N | about 60 N | between layers, at the same joint |
+
+- **The joint is the one CalculiX found:** the rear end of the plate, where it meets the collar. As
+  printed, it gives between the layers.
+- **That is below the solid estimate,** which was about 80 N for PLA and 180 N for PAHT-CF. Two
+  things lower it. The printed walls and infill raise the peak tension across the layers by 13 % in
+  PLA, on the same voxels (5.73 against 5.06 MPa). And the joint is now judged by its strength across
+  the layers, with the shear there counted, rather than by PLA's strength along them.
+- **It is still well above what the socket takes.** A straight pull unplugs a USB-C plug at 8 to
+  20 N, and a sideways pull levers on the socket long before 60 N. So the strain-relief clamp and the
+  magnetic breakaway in [`power/`](power/README.md) still decide what breaks first.
+
+**The pod** (bracket and pod at 1.0 mm voxels, the pod tied to the seat as in `joint_fea.py`, the
+bore and tab pad fixed):
+
+| | HQ moves at 1 g along X / Y / Z | Optical axis tilts, X / Y / Z | Pod bump, 10 N on its outer edge: first failure |
+|---|---|---|---|
+| PAHT-CF, 0.6 mm nozzle | 0.41 / 0.91 / 0.83 µm | 0.025 / 0.139 / 0.011 arcmin | 204 N, along +Y (toward the arm) |
+| PAHT-CF, 0.4 mm nozzle | 0.50 / 1.08 / POD04Z µm | 0.031 / 0.165 / POD04ZT arcmin | POD04BUMP |
+| PLA | 0.64 / 1.50 / 1.43 µm | 0.046 / 0.243 / 0.023 arcmin | 75 N, along +Y |
+| Solid PLA, CalculiX tets | 0.48 / 0.96 / 0.97 µm | 0.029 / 0.162 / 0.010 arcmin | about 100 N |
+
+- **The camera's weight still doesn't matter.** The printed PLA pod lets the HQ tilt at most 0.24
+  arcmin at 1 g, which is 0.27 px at the 6 mm lens. PAHT-CF, with its stiffer beads, tilts it 0.14 to
+  0.17 arcmin.
+- **A knock is where the material shows.** PLA gives at 75 N on the pod's outer edge, and PAHT-CF with
+  the 0.6 mm nozzle at about 200 N. Both give at the top end of the seat, where the bonded joint ends.
+  That end is a sharp edge in a bonded model, so read the exact values as rough, and the ratio between
+  the materials as the result.
+
+![Force at the first failure: cable yank and pod bump](renders/sliced_loads.png)
+
+**Checks:**
+
+- **The raster against the G-code.** The beads land on the STL: their extent matches its outline to
+  0.01 mm, and the carrier's top layer is at 38.60 mm against the STL's 38.61. The raster holds 4 %
+  more bead than the filament the G-code pushes (the carrier, 0.4 mm nozzle). That is expected:
+  Bambu meters a bead with rounded sides, and the raster fills its whole width by the layer height.
+  The bead properties are per gross area too, as the datasheet bars are, so the raster's area is the
+  right one to use. Bridges are the exception, at 34 % under: Bambu prints them as round beads one
+  nozzle wide, and the raster gives them one layer.
+- **The voxels against CalculiX.** The yank on the same 0.6 mm voxels, filled with solid PLA as in
+  `ccx_stress.py`, puts its peak at the same place: the plate-to-collar joint, (26.5, 45.7, -21.8)
+  against CalculiX's (26.0, 46.0, -21.1). The peak is 1.45 times CalculiX's across the layers (5.06
+  against 3.50 MPa) and 1.49 times in max principal (6.45 against 4.33 MPa). That is the voxels'
+  staircase at a sharp inside corner. In the other directions, where the peaks are small and spread
+  out, the two differ by up to 30 % either way. So at a sharp corner the voxel peak overstates the
+  stress by roughly that factor, which the yank table allows for.
+- **The clamp against CalculiX:** see the solid-PLA voxel row in the clamp table. At 1.0 mm the voxel
+  collar is softer and misses the ear roots' peak, which is why the clamp is read like for like.
+- **Voxel size: not done.** A yank at 0.8 mm, to compare with 0.6 mm, stalled (CG did not converge in
+  800 iterations), and a clamp at 0.6 mm was too slow to fit in this run. So there is no convergence
+  study here, only the two checks against CalculiX.
+- **Contact.** Every clamp solve settled: at the last iteration, at most 11 of about 8,800 contact
+  springs (body and split) were still changing.
+
+**Limits:**
+
+- **Resolution.** The clamp and pod models use 1.0 mm voxels, and the yank uses 0.6 mm. The walls are
+  1.3 to 1.9 mm thick, so they are one or two voxels at 1.0 mm. That resolves the load paths and the
+  contact, but not the stress gradient through a wall, and the clamp's peaks sit in partly filled
+  voxels at the edges of the split faces. Read those indices as rough, and compare the setups, which
+  share each model's resolution. At 0.6 mm the clamp has 1.6 million unknowns and needs a dozen
+  contact iterations, which didn't fit in this run.
+- **Within a voxel, the beads share one strain** (iso-strain), which is an upper bound on its
+  stiffness.
+- **The bead properties are inferred from datasheets.** PAHT-CF's stiffness along the bead is the
+  least certain (4,600 to 9,500 MPa). A 0° and a ±45° coupon printed on the H2D with this profile would
+  pin it down.
+- **They are dry and short-term.** Damp PAHT-CF (saturated at 55 % RH) loses 8 to 20 % of its
+  strength by Bambu's figures. Nothing here covers creep, which matters more for PLA under the
+  clamp's load, or heat.
+- **Linear elastic to the first failure.** Past an index of 1, the numbers say where a part starts to
+  give, not what it does next.
+- **The pod is bonded to the seat,** as in `joint_fea.py`. The four M3s and the real contact at the seat
+  are not modelled.
+- **Nothing has been printed yet.**
 
 ## Checks (`exports/checks.json`)
 
@@ -508,9 +691,13 @@ xvfb-run -a -s "-screen 0 1920x1080x24" python fiducials.py         # renders/vi
 python envelope.py                                                   # renders/tight_spaces.png
 xvfb-run -a -s "-screen 0 1920x1080x24" python animate.py           # renders/assembly_steps.gif (gifsicle shrinks it)
 python ../slice/slice_a1mini.py --bambu ~/bambu/squashfs-root       # see slice/README.md
+python ../slice/slice_configs.py --bambu ~/bambu/squashfs-root      # each part alone, 3 printer/material setups
 python ../sim/joint_fea.py                                           # pod joint stiffness, scikit-fem
 xvfb-run -a -s "-screen 0 1920x1080x24" python ../sim/ccx_stress.py  # stresses in CalculiX (apt install calculix-ccx)
 xvfb-run -a -s "-screen 0 1920x1080x24" python ../sim/ccx_split.py   # the clamp's split, both halves (about 40 min)
+python ../sim/sliced_fea.py --cases yank                             # the parts as sliced (needs slice_configs.py's G-code)
+python ../sim/sliced_fea.py --cases clamp pod zones --h 1.0          # (about 15 min per setup)
+python ../sim/sliced_plots.py                                        # renders/sliced_*.png
 python ../power/voltage_drop.py                                      # power/README.md's table
 python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dcad7c92e183721   # done once
 ```
@@ -537,12 +724,14 @@ python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dc
 - **Nothing has been printed yet.**
   - The clearances reuse the numbers from #234's A1 mini fit study (M3 nut slot 5.8 mm across
     flats, 0.15 mm per side on the body).
-  - The collar grips by squeezing the body until the split closes. When it closes, each half
-    presses on the body with about 900 N in all, summed round the bore. That figure is set by
-    the geometry, not the torque: the clearance takes 0.3 mm of the 0.6 mm split and the squeeze gets
-    the rest. So a bore printed 0.05 mm oversize per side leaves a third less squeeze, and one
-    0.15 mm oversize leaves none. Check the bore on a coupon first. If it slips, a strip of 0.5 mm
-    rubber inside it will help.
+  - The collar grips by squeezing the body until the split closes. The solid model put that squeeze
+    at about 900 N for each half, summed round the bore, when the split closes. Printed with walls and
+    25 % infill, the collar is softer, and like for like the squeeze is about a fifth less at snug (see
+    [As sliced](#as-sliced-paht-cf-and-pla-simsliced_feapy)). Either way it is set by the geometry,
+    not the torque: the clearance takes 0.3 mm of the 0.6 mm split and the squeeze gets the rest. So a
+    bore printed 0.05 mm oversize per side leaves a third less squeeze, and one 0.15 mm oversize
+    leaves none. Check the bore on a coupon first. If it slips, a strip of 0.5 mm rubber inside it will
+    help.
   - For the parts that stay on the arm, print in PAHT-CF rather than PLA (see
     [Material](#material-paht-cf-on-the-h2d)), because PLA creeps under clamp load. The xArm mount
     in [ac-dev-lab#527](https://github.com/AccelerationConsortium/ac-dev-lab/issues/527) was PETG.
