@@ -139,7 +139,38 @@ def build(name):
          out])
     sheet(name, rows, out)
     print(f"{name}: {duration(out):.2f} s, {os.path.getsize(out) / 1e6:.1f} MB -> {out}", flush=True)
+    split(name, meta, end)
     return rows, end
+
+
+PART_HOLD = 0.5          # s each part but the last ends on (the last has the clip's own end hold)
+
+
+def parts(name, meta, end):
+    """[(file, start, end)]: the clip cut where the sub-steps in CLIPS[name]["parts"] start (each one a caption's start,
+    so no line is cut), one step per slide."""
+    ps = CLIPS[name].get("parts", [])
+    fps = meta["fps"]
+    start = {s["label"]: s["start_frame"] / fps for s in meta["substeps"]}
+    t = [0.0] + [start[lab] for _, lab in ps[1:]] + [end]
+    return [(f"{name}_{suffix}.mp4", t[k], t[k + 1]) for k, (suffix, _) in enumerate(ps)]
+
+
+def split(name, meta, end):
+    fps = meta["fps"]
+    for k, (fn, a, b) in enumerate(parts(name, meta, end)):
+        hold = 0.0 if b >= end - 1e-6 else PART_HOLD
+        vf = f"trim=start_frame={round(a * fps)}:end_frame={round(b * fps)},setpts=PTS-STARTPTS"
+        af = f"atrim=start={a:.4f}:end={b:.4f},asetpts=PTS-STARTPTS"
+        if hold:
+            vf += f",tpad=stop_mode=clone:stop_duration={hold}"
+            af += f",apad=pad_dur={hold}"
+        out = f"{OUT}/{fn}"
+        run(["ffmpeg", "-y", "-v", "error", "-i", f"{OUT}/{name}.mp4", "-vf", vf, "-af", af, "-r", str(fps),
+             "-c:v", "libx264", "-preset", "slow", "-crf", "18", "-profile:v", "high", "-pix_fmt", "yuv420p",
+             "-c:a", "aac", "-b:a", "160k", "-ar", "44100", "-ac", "2", "-movflags", "+faststart", out])
+        print(f"  part {fn}: {ts(a)}-{ts(b)} of the clip, {duration(out):.2f} s, {os.path.getsize(out) / 1e6:.1f} MB",
+              flush=True)
 
 
 def sheet(name, rows, mp4, cols=4, tw=480):
@@ -198,6 +229,12 @@ def script_md(done):
             md.append(f"| {k} | {r['caption']} ({len(r['caption'].split())}) | {ts(r['start'])}–{ts(r['end'])} | "
                       f"{r['end'] - r['start']:.1f} s | {r['narration']} | {ts(a)}–{ts(a + r['speech'])} | "
                       f"{r['end'] - a - r['speech']:.1f} s |")
+        if c.get("parts"):
+            meta = json.load(open(f"{CLEAN}/{name}.json"))
+            ps = parts(name, meta, end)
+            md += ["", "Also cut into one part per step, for a slide each (each ends on a "
+                   f"{PART_HOLD:g} s hold; the last keeps the clip's own):", ""]
+            md += [f"- [`videos/{fn}`](videos/{fn}): {ts(a)}–{ts(b)} of the clip" for fn, a, b in ps]
         md += ["", f"![{name}]({name}_sheet.jpg)", ""]
     open(f"{HERE}/script.md", "w").write("\n".join(md))
 

@@ -85,6 +85,8 @@ CLIPS = {
                 "the same order, as in the full step animations.",
         "tutorials": ("01-before", "02-during"),
         "end_hold": 0.7,
+        # also cut into one part per step, at these sub-steps' starts: videos/summary_<suffix>.mp4
+        "parts": [("1_furnace", "F.1"), ("2_stack", "S.1"), ("3_run", "R.1")],
         "lines": [
             ("F.1", 0.0, "Graphite crucible into the induction coil",
              "A graphite crucible, with a nozzle, goes into the coil."),

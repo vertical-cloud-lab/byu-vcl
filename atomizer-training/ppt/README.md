@@ -7,6 +7,7 @@ sped up. The other two clips are single steps at the animation's own speed, the 
 | Clip | Narrated, unlisted (draft 1) | File | Length |
 | --- | --- | --- | --- |
 | **The whole run** (`summary`), condensed. Furnace (about 14 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (6 s): built, into the door, door shut. Run (13 s): argon and the melt, the pour onto the plate (zoomed in), powder into the container | https://www.youtube.com/watch?v=qwopusVSwf4 | [`videos/summary.mp4`](videos/summary.mp4) | 0:33 |
+| The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:14.5, 0:06.4, 0:13.1 |
 | Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | https://www.youtube.com/watch?v=86K-EHhtPp8 | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
 | The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
 

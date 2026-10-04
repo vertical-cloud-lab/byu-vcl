@@ -57,4 +57,10 @@ Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, 
 | 6 | Melt pours onto the vibrating plate (6) | 0:23.9–0:28.0 | 4.1 s | The rod lifts; melt hits the vibrating plate. | 0:24.1–0:27.5 | 0.5 s |
 | 7 | Droplets freeze into metal powder (5) | 0:28.0–0:33.0 | 5.0 s | It flies off as droplets that freeze into powder. | 0:28.2–0:32.0 | 1.0 s |
 
+Also cut into one part per step, for a slide each (each ends on a 0.5 s hold; the last keeps the clip's own):
+
+- [`videos/summary_1_furnace.mp4`](videos/summary_1_furnace.mp4): 0:00.0–0:14.0 of the clip
+- [`videos/summary_2_stack.mp4`](videos/summary_2_stack.mp4): 0:14.0–0:19.9 of the clip
+- [`videos/summary_3_run.mp4`](videos/summary_3_run.mp4): 0:19.9–0:33.0 of the clip
+
 ![summary](summary_sheet.jpg)
