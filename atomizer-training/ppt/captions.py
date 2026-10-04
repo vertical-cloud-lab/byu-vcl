@@ -1,14 +1,15 @@
 """Short captions and narration for the slide versions of the 3D animations (edit here, then run build_ppt.py).
 
-Made for a PowerPoint slide: the animation plays at its own speed, with one short caption at a time and one short spoken
-line per caption. The rules, which build_ppt.py checks:
+Made for a PowerPoint slide: one short caption at a time and one short spoken line per caption. The single-step clips play
+the animation at its own speed. The summary (../viz3d/steps.py anim_summary) is one condensed take through the furnace,
+the stack, the melt and the pour, with the fasteners sped up. The rules, which build_ppt.py checks:
   - a caption has at most MAX_WORDS words (a number and its unit, "65 N·m", count as two);
   - a caption stays up at least MIN_DWELL seconds;
   - its line is spoken while it is up, starting LEAD s after it appears and done SPARE s before the next one.
 
 Each line is (sub-step, offset, caption, narration): the caption appears `offset` seconds after that sub-step of the
 animation starts (../viz3d/out/clean/<name>.json) and stays until the next caption appears, or the video ends. A long
-sub-step can carry two captions (2a.4: the door and the nut, then how tight).
+sub-step can carry two captions (2a.4: the door and the nut, then how tight). A clip can set its own "end_hold" (s).
 """
 MAX_WORDS = 6
 MIN_DWELL = 4.0
@@ -72,6 +73,33 @@ CLIPS = {
              "Swing the door shut, with the plate under the nozzle."),
             ("2c.10", 0.0, "Three bolts, star knobs tight",
              "Swing the three bolts over, and tighten the knobs."),
+        ],
+    },
+    "summary": {
+        "title": "Atomizer slide clip: from loading to powder in 33 seconds (draft 1)",
+        "summary": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the "
+                   "sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon "
+                   "and pouring onto the vibrating plate, which atomizes the melt into powder.",
+        "note": "Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, plate, cover and bolts) "
+                "are sped up, and the checks, gas washes and holds are left out. The parts follow the same paths, in "
+                "the same order, as in the full step animations.",
+        "tutorials": ("01-before", "02-during"),
+        "end_hold": 0.7,
+        "lines": [
+            ("F.1", 0.0, "Graphite crucible into the induction coil",
+             "A graphite crucible, with a nozzle, goes into the coil."),
+            ("F.4", 0.0, "Fastened below, then insulated",
+             "It's fastened from below, then insulated."),
+            ("F.7", 0.0, "Sealing rod in, then the metal",
+             "A sealing rod plugs the nozzle; then the metal."),
+            ("S.1", 0.0, "Ultrasonic stack mounts in the door",
+             "The forty kilohertz ultrasonic stack mounts in the door."),
+            ("R.1", 0.0, "Argon fill, then induction melting",
+             "Under argon, the coil melts the metal."),
+            ("R.2", 0.0, "Melt pours onto the vibrating plate",
+             "The rod lifts; melt hits the vibrating plate."),
+            ("R.3", 0.0, "Droplets freeze into metal powder",
+             "It flies off as droplets that freeze into powder."),
         ],
     },
 }

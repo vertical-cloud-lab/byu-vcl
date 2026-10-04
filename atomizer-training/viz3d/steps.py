@@ -42,6 +42,7 @@ CAM = {
     "left_high": [(-1450, -320, 1700), (110, 0, 720), (0, 0, 1)],   # from the left, past the open door's free edge
     "bench": [(-560, -1250, 1650), (0, -170, 1330), (0, 0, 1)],
     "outside": [(-1500, -2600, 1650), (60, 100, 950), (0, 0, 1)],
+    "section_fr": [(300, -980, 1330), (-15, 0, 1225), (0, 0, 1)],  # the cut furnace and the nut under the deck at once
 }
 
 STREAM_TOP = M.NOZZLE_EXIT_Z
@@ -1255,6 +1256,214 @@ def anim_01_utilities():
     return sc.save()
 
 
+# ------------------------------------------------------------------------- summary, for slides
+def anim_summary():
+    """About 30 s for a slide, in one take: the furnace loaded (2a), the ultrasonic stack mounted (2c), then the melt (4)
+    and the pour (5). Same parts on the same paths, in the same order, as 03_furnace_load, 02_stack, 05_melt and 06_pour.
+    The fasteners (holder, nut, booster, sonotrode, plate, cover, bolts) are sped up. The checks, gas washes and holds
+    are left out. Captions and narration come from ../ppt/, so render it with VIZ3D_CLEAN=1."""
+    sc = Scene("summary", "The rePowder atomizer: a run in 30 s")
+    load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False,
+                 defer=True)
+    sc.intro = 0.6
+    # the furnace as 03_furnace_load starts it: cold, stripped, the crucible not yet built, the piston up
+    hood(sc, 0)
+    lift = {"side_ins": 300, "top_ins": 330, "bottom_ins": 360, "tc": 140, "rod": 260, "seal": -94}
+    for g, dz in lift.items():
+        sc.show(sc.members(g), 0.0)
+        sc.gmat[g] = T((0, 0, dz))
+    cru = sc.members("crucible") + sc.members("holder") + sc.members("nozzle")
+    sc.show(cru, 0.0)
+    sc.gmat["crucible"] = T(BENCH)
+    sc.gmat["holder"] = T((0, 0, -70))
+    sc.gmat["nut"] = T((0, 0, -94))
+    sc.show(sc.members("nut"), 0.0)
+    for k in range(4):
+        sc.show(sc.members(f"slug{k}"), 0.0)
+    rod_lift(sc, 12)
+    sc.gmat["rod"] = T((0, 0, lift["rod"] - 12))
+    # the stack as 02_stack starts it: not built yet, so hidden, each part where it comes from (it rides on the door)
+    bench = 330.0
+    for g in STACK:
+        sc.show(sc.members(g), 0.0)
+    for g in ("transducer", "booster", "sonotrode"):
+        sc.gmat[g] = T(-M.STACK_DIR * bench)
+    sc.gmat["plate"] = T(M.STACK_DIR * 140)
+    sc.gmat["cover"] = T(-M.STACK_DIR * 300)
+    # the run, as 05_melt and 06_pour: no melt, no argon, no powder yet
+    pool = Pool(sc, half=True, level=-30)
+    powder = Powder(sc, half=True, level=0)
+    add_stream(sc)
+    spray = Particles(sc, "spray", (0.40, 0.41, 0.46), size=5.5)
+    add_gas(sc, half=True, furnace=0.0, chamber=0.0)
+    heat(sc, 24, 0.0)
+    sc.cam = CAM["machine_near"]
+
+    # ---- furnace (2a), each move as in 03_furnace_load, in the same order and with the same relative timing
+    def open_lid(u):
+        hood(sc, 110 * window(u, 0.0, 0.55))
+        lever(sc, window(u, 0.5, 1.0))
+    sc.step("F.1", "Lid open, lever up", 1.2, open_lid, hold=0, cam_to=CAM["bench"])
+
+    def nozzle_in(u):                       # 4 turns in about a second: sped up
+        sc.show(cru, 1.0 if u > 0.05 else 0.0)
+        rise = window(u, 0.1, 0.3)
+        screw = linear(u, 0.3, 0.97)
+        sc.gmat["holder"] = T((0, 0, -70 + 62 * rise + 8 * screw)) @ R((0, 0, 1), 360 * 4 * screw)
+    sc.step("F.2", "Holder screwed into the crucible (sped up)", 1.1, nozzle_in, hold=0)
+
+    def crucible_in(u):
+        set_cut(sc, window(u, 0.0, 0.15), FURNACE_FIXED)
+        sc.show(sc.members("bottom_ins"), 1.0 if u > 0.02 else 0.0)
+        sc.gmat["bottom_ins"] = T((0, 0, 360 * (1 - window(u, 0.05, 0.35))))
+        sc.gmat["crucible"] = T(path(window(u, 0.4, 1.0), [BENCH, (BENCH[0], BENCH[1], OVER), (0, 0, OVER), (0, 0, 0)]))
+        set_cut(sc, window(u, 0.75, 0.9), ("crucible", "holder", "nozzle"))
+    sc.step("F.3", "Bottom insulation, then the crucible down into the coil", 2.6, crucible_in, hold=0.1,
+            cam_to=CAM["furnace_top"])
+
+    def nut_on(u):                          # 5 turns in about a second: sped up
+        for c in range(3):
+            clamp(sc, c, 1 - window(u, 0.02 * c, 0.02 * c + 0.08))
+        door(sc, 100 * window(u, 0.1, 0.28))
+        set_cut(sc, window(u, 0.18, 0.3), ("chamber",))
+        sc.show(sc.members("nut") + sc.members("seal"), 1.0 if u > 0.2 else 0.0)
+        rise = window(u, 0.22, 0.36)
+        screw = linear(u, 0.36, 0.97)
+        sc.gmat["seal"] = T((0, 0, -94 * (1 - window(u, 0.2, 0.32))))
+        sc.gmat["nut"] = T((0, 0, -94 + 84 * rise + 10 * screw)) @ R((0, 0, 1), -360 * 5 * screw)
+    sc.step("F.4", "Door open, the graphite nut on from below (sped up)", 2.3, nut_on, hold=0, cam_to=CAM["section_fr"])
+
+    def insulation_in(u):
+        a, b = window(u, 0.0, 0.55), window(u, 0.45, 1.0)
+        sc.show(sc.members("side_ins"), 1.0 if u > 0.01 else 0.0)
+        sc.gmat["side_ins"] = T((0, 0, 300 * (1 - a)))
+        sc.show(sc.members("top_ins"), 1.0 if u > 0.45 else 0.0)
+        sc.gmat["top_ins"] = T((0, 0, 330 * (1 - b)))
+    sc.step("F.5", "Side and top insulation", 1.1, insulation_in, hold=0)
+
+    def tc_in(u):
+        sc.show(sc.members("tc"), 1.0 if u > 0.01 else 0.0)
+        sc.gmat["tc"] = T((0, 0, 140 * (1 - u)))
+    sc.step("F.6", "Thermocouple in (sped up)", 0.7, tc_in, hold=0)
+
+    def rod_in(u):
+        sc.show(sc.members("rod"), 1.0 if u > 0.01 else 0.0)
+        sc.gmat["rod"] = T((0, 0, 260 * (1 - u) - 12))
+    sc.step("F.7", "Sealing rod in", 1.0, rod_in, hold=0)
+
+    def lever_down(u):
+        lever(sc, 1 - window(u, 0.0, 0.6))
+        v = window(u, 0.7, 1.0)
+        rod_lift(sc, 12 * (1 - v))
+        sc.gmat["rod"] = T((0, 0, -12 * (1 - v)))
+    sc.step("F.8", "Lever down, pin in, rod down (sped up)", 0.7, lever_down, hold=0)
+
+    def charge_in(u):
+        for k in range(4):
+            w = window(u, 0.18 * k, 0.18 * k + 0.45)
+            sc.show(sc.members(f"slug{k}"), 1.0 if u > 0.18 * k else 0.0)
+            sc.gmat[f"slug{k}"] = T((0, 0, 260 * (1 - w)))
+    sc.step("F.9", "The charge", 1.4, charge_in, hold=0)
+
+    def close_lid(u):
+        set_cut(sc, 1 - window(u, 0.6, 1.0))
+        hood(sc, 110 * (1 - window(u, 0.0, 0.6)))
+    sc.step("F.10", "Lid closed", 1.2, close_lid, hold=0, cam_to=CAM["machine_near"])
+
+    # ---- ultrasonic stack (2c), as in 02_stack: the door is still open from the nut
+    DOOR = 100.0
+    dm = door_mat(DOOR)[:3, :3]
+    w = lambda p: on_door(p, DOOR)
+    mid = w(M.PLATE_C - M.STACK_DIR * (bench + 180))
+    axis = dm @ -M.STACK_DIR
+    side_dir = np.cross(axis, (0, 0, 1.0))
+    side_dir = side_dir / np.linalg.norm(side_dir)
+    if side_dir[0] > 0:
+        side_dir = -side_dir
+    cam_side = [tuple(mid + side_dir * 1550 + np.array([0, 0, 470])), tuple(mid + np.array([0, 0, 110])), (0, 0, 1)]
+
+    def transducer_in(u):
+        v = window(u, 0.35, 1.0)
+        sc.show(sc.members("transducer"), min(1.0, v * 4))
+        sc.gmat["transducer"] = T(-M.STACK_DIR * (bench + 160 * (1 - v)))
+    sc.step("S.1", "Transducer", 1.4, transducer_in, hold=0, cam_to=cam_side)
+
+    def booster_sono(u):                    # 65 and 60 N·m: sped up
+        for g, (t0, t1) in (("booster", (0.0, 0.5)), ("sonotrode", (0.5, 1.0))):
+            v = window(u, t0, t1)
+            sc.show(sc.members(g), min(1.0, v * 4))
+            sc.gmat[g] = T(-M.STACK_DIR * (bench - 120 * (1 - v))) @ R(M.STACK_DIR, 300 * (1 - v), M.PLATE_C)
+    sc.step("S.2", "Booster and sonotrode on (sped up)", 1.1, booster_sono, hold=0)
+
+    def into_door(u):                       # then the plate, 50 N·m: sped up
+        v = window(u, 0.0, 0.6)
+        for g in ("transducer", "booster", "sonotrode"):
+            sc.gmat[g] = T(-M.STACK_DIR * bench * (1 - v))
+        p = window(u, 0.6, 1.0)
+        sc.show(sc.members("plate"), min(1.0, p * 4))
+        sc.gmat["plate"] = T(M.STACK_DIR * 140 * (1 - p)) @ R(M.STACK_DIR, 360 * 2 * (1 - p), M.PLATE_C)
+    sc.step("S.3", "Into the door, plate on (sped up)", 1.2, into_door, hold=0)
+
+    def cover_shut(u):                      # cover on (sped up), then the door swings shut
+        c = window(u, 0.0, 0.3)
+        sc.show(sc.members("cover"), min(1.0, c * 4))
+        sc.gmat["cover"] = T(-M.STACK_DIR * 300 * (1 - c))
+        door(sc, DOOR * (1 - window(u, 0.35, 1.0)))
+    sc.step("S.4", "Cover on, door shut", 1.5, cover_shut, hold=0, cam_to=CAM["door_out"])
+
+    def bolts(u):                           # the three star-knob bolts: sped up
+        for c in range(3):
+            clamp(sc, c, window(u, 0.25 * c, 0.25 * c + 0.4))
+    sc.step("S.5", "Three bolts (sped up)", 0.7, bolts, hold=0)
+
+    # ---- the run (4 melt, 5 pour), as in 05_melt and 06_pour; the gas washes are left out
+    st = dict(level=-30.0)
+
+    def vibrate(on):
+        k = tick(sc) % 2
+        sc.gmat["plate"] = T(M.STACK_DIR * (1.2 if (on and k) else 0.0))
+
+    def melt(u):
+        cut_in(sc, u)
+        set_gas(sc, furnace=0.7 * window(u, 0.05, 0.35), chamber=0.7 * window(u, 0.05, 0.35))
+        coil = window(u, 0.2, 0.3)
+        t = 24 + 846 * window(u, 0.25, 0.6) - 70 * window(u, 0.8, 1.0)
+        heat(sc, t, coil)
+        for k in range(4):
+            x, y = slug_xy(k)
+            f = 1 - 0.95 * window(u, 0.5 + 0.03 * k, 0.88 + 0.03 * k)
+            sc.gmat[f"slug{k}"] = S((1 + 0.1 * (1 - f), 1 + 0.1 * (1 - f), f), (x, y, M.Z_CR))
+            sc.alpha[f"slug{k}"] = 1.0 if f > 0.07 else 0.0
+        st["level"] = -30 if u < 0.52 else -14 + 50 * window(u, 0.52, 0.97)
+        pool.set(st["level"])
+    sc.step("R.1", "Argon in; the coil melts the charge", 4.0, melt, hold=0, cam_to=CAM["furnace_sec"])
+
+    def pour(u):
+        vibrate(True)
+        rod_lift(sc, 12 * window(u, 0.0, 0.2))
+        stream(sc, 1.0 if u > 0.2 else 0.0, 1.0, window(u, 0.2, 0.4))
+        if u > 0.4:
+            spray.emit_spray(per_frame(int(28 * window(u, 0.4, 0.8))))
+        spray.step()
+        st["level"] = max(-12.0, st["level"] - (0.085 * PER_FRAME if u > 0.4 else 0.0))
+        pool.set(st["level"])
+        powder.set(3 + 55 * min(1.0, spray.landed / 1800))
+    sc.step("R.2", "Vibration on, rod up: the melt onto the plate", 4.1, pour, hold=0, cam_to=CAM["stream"],
+            live=True)
+
+    def atomize(u):
+        vibrate(True)
+        stream(sc, 1.0, 1.0)
+        spray.emit_spray(per_frame(28))
+        spray.step()
+        st["level"] = max(-12.0, st["level"] - 0.085 * PER_FRAME)
+        pool.set(st["level"])
+        powder.set(3 + 55 * min(1.0, spray.landed / 1800))
+    sc.step("R.3", "Droplets freeze into powder, down into the container", 3.8, atomize, hold=0.5, live=True,
+            cam_to=CAM["chamber"], still=True)
+    return sc.save()
+
+
 ANIMS = {
     "03_furnace_load": anim_03_furnace_load,
     "00_machine": anim_00_machine,
@@ -1266,6 +1475,7 @@ ANIMS = {
     "07_end_cooldown": anim_07_end_cooldown,
     "08_clean": anim_08_clean,
     "01_utilities": anim_01_utilities,
+    "summary": anim_summary,
 }
 
 if __name__ == "__main__":
