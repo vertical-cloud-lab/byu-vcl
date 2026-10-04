@@ -72,7 +72,7 @@ sys.path.insert(0, str(MOUNT / "cad"))
 sys.path.insert(0, str(HERE))
 from gcode_voxels import NAMES, parse, rasterize, volume_check  # noqa: E402
 from joint_fea import BOSS_R, DIRS, G, M_CAM, PAD_R, PIXEL, load_params, rigid_fit, station  # noqa: E402
-from voxel_fe import Solver, VoxelModel, bond, isotropic, orthotropic, strains  # noqa: E402
+from voxel_fe import DirectSolver, Solver, VoxelModel, bond, isotropic, orthotropic, strains  # noqa: E402
 
 CONFIGS = {
     "h2d_pahtcf_06": {"material": "PAHT-CF", "bed": (350.0, 320.0),
@@ -96,6 +96,7 @@ MODES = ("along the bead", "between beads in a layer", "between layers")
 FORCES = (200, 1000)                                # N per M3: snug, and overtightened
 ALPHA_FIX, ALPHA_CONTACT = 1e2, 3e1     # penalty stiffness, as multiples of the median diagonal of K
 MAX_ITER = 10
+SOLVER = {"name": "direct"}         # or "amg"; set by --solver
 SETTLED = 0.002                         # contact has settled when under this share of its rows change
 BUMP_N, YANK_LEVER = 10.0, 10.0         # as ccx_stress.py
 EXCL_LOAD, EXCL_SUPPORT = 1.5, 2.0      # mm: peaks are taken this far from loaded and from fixed nodes
@@ -444,11 +445,14 @@ def trilinear(q: Part, pts_w: np.ndarray):
 def solve(system: System, rows: Rows, on: np.ndarray, f_ext: np.ndarray, solver: Solver | None, x0=None,
           rebuild: bool = False, rtol: float = 1e-6):
     P, fP = rows.penalty(on)
+    direct = SOLVER["name"] == "direct"
     if solver is None:
-        solver = Solver(system, P)
-        print(f"  K: {system.off[-1]} dofs, nnz {system.K.nnz}; AMG setup {solver.setup_s:.0f} s", flush=True)
+        solver = DirectSolver(system, P) if direct else Solver(system, P)
+        what = f"Cholesky, {solver.nnz_L / 1e6:.0f} M nonzeros" if direct else "AMG setup"
+        print(f"  K: {system.off[-1]} dofs, nnz {system.K.nnz}; {what} {solver.setup_s:.0f} s", flush=True)
     else:
-        solver.set_operator(P, rebuild=rebuild)
+        # the direct solver refactorises when its CG stalls, so AMG's rebuild hint is left out
+        solver.set_operator(P, rebuild=rebuild and not direct)
     try:
         U, info = solver.solve(f_ext + fP, x0=x0, rtol=rtol, maxiter=400)
     except RuntimeError:
@@ -456,6 +460,14 @@ def solve(system: System, rows: Rows, on: np.ndarray, f_ext: np.ndarray, solver:
         U, info = solver.solve(f_ext + fP, x0=x0, rtol=3 * rtol, maxiter=800)
         info["rebuilt"] = True
     return U, info, solver
+
+
+def solver_info(solver) -> dict:
+    if isinstance(solver, DirectSolver):
+        return {"solver": "sparse Cholesky (MKL PARDISO), kept as CG's preconditioner",
+                "factorisations": solver.factorisations, "factor nonzeros (M)": round(solver.nnz_L / 1e6, 1),
+                "factorising (s)": round(solver.factor_s, 1)}
+    return {"solver": "CG with smoothed-aggregation AMG (pyamg)"}
 
 
 def node_forces(system: System, i: int, nodes: np.ndarray, F_world: np.ndarray, f: np.ndarray | None = None):
@@ -647,6 +659,7 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
         vals = {k: (v[key]["value"] if solid else v[key]) for k, v in pk.items()}
         print(f"{cfg} {'solid' if solid else 'printed'} h {h} F {F}: gap {res['split gap (mm)']['narrowest']:.3f}, "
               f"split {res['split contact force (N)']} N, {key} {vals}, {time.time() - t0:.0f} s", flush=True)
+    out.update(solver_info(solver))
     out["run time (s)"] = round(time.time() - t0, 1)
     viz.update({"cw": {q.name: q.cw for q in (qb, qc)}, "h": h})
     return out, viz
@@ -730,6 +743,7 @@ def case_pod(cfg: str, p, h: float, solid: bool) -> dict:
         cases[f"bump {dname}"]["CG iterations"] = info["cg_iterations"]
         print(f"{cfg} pod {dname}: {cases[f'HQ 1 g {dname}']}", flush=True)
     out["cases"] = cases
+    out.update(solver_info(solver))
     out["run time (s)"] = round(time.time() - t0, 1)
     return out
 
@@ -768,6 +782,7 @@ def case_yank(cfg: str, p, h: float, solid: bool) -> dict:
                                          "max displacement (um)": round(float(np.linalg.norm(U.reshape(-1, 3),
                                                                                              axis=1).max()) * 1e3, 2)}
         print(f"{cfg} yank {dname}: {json.dumps(out['cases'][f'yank {dname}'])[:400]}", flush=True)
+    out.update(solver_info(solver))
     out["run time (s)"] = round(time.time() - t0, 1)
     return out
 
@@ -820,7 +835,10 @@ def main() -> None:
     ap.add_argument("--solid", action="store_true", help="fill the voxels solid with ccx's isotropic PLA (the check)")
     ap.add_argument("--h", type=float, default=H_VOX, help="voxel size (mm)")
     ap.add_argument("--forces", type=float, nargs="*", default=FORCES)
+    ap.add_argument("--solver", choices=("direct", "amg"), default="direct",
+                    help="sparse Cholesky (pypardiso, the default) or AMG-preconditioned CG (pyamg)")
     args = ap.parse_args()
+    SOLVER["name"] = args.solver
     p = load_params((EX / "params.json").read_text())
     out_f = HERE / "sliced_fea.json"
     for cfg in args.configs:

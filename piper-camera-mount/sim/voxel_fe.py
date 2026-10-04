@@ -12,7 +12,8 @@ which an unstructured tet mesh of the CAD solid can't carry without binning orie
 - Supports and contact are penalty springs on 3 x 3 diagonal blocks: k I for a fixed node, k n n^T
   for a node held along a normal n (frictionless contact, a sliding support).
 - Solver: pyamg smoothed aggregation on 3 x 3 blocks, with the six rigid-body modes as its
-  near-null space, as the preconditioner for CG.
+  near-null space, as the preconditioner for CG. Or DirectSolver: a sparse Cholesky factorisation
+  (MKL PARDISO), kept as CG's preconditioner while the contact set changes under it.
 """
 from __future__ import annotations
 
@@ -21,7 +22,7 @@ import time
 import numpy as np
 import pyamg
 import scipy.sparse as sp
-from scipy.sparse.linalg import cg
+from scipy.sparse.linalg import LinearOperator, cg
 
 CORNERS = np.array([[0, 0, 0], [1, 0, 0], [1, 1, 0], [0, 1, 0], [0, 0, 1], [1, 0, 1], [1, 1, 1], [0, 1, 1]])
 IU = np.triu_indices(6)
@@ -154,6 +155,81 @@ class Solver:
         if info != 0:
             raise RuntimeError(f"CG did not converge ({info}) in {it[0]} iterations")
         return u, {"cg_iterations": it[0], "solve_s": round(time.time() - t0, 1)}
+
+
+class DirectSolver:
+    """K + P by sparse Cholesky (MKL PARDISO through pypardiso), with Solver's interface.
+
+    At 0.6 mm voxels a clamp model has 1.6 M dofs or more. There pyamg's setup takes minutes and its
+    smoothers run on one core, and the contact loop wants a new hierarchy whenever many contacts flip.
+    A factorisation is one multithreaded pass instead. The contact loop changes P on a few hundred rows
+    at a time, so the last factorisation is kept as CG's preconditioner on each new operator (the error
+    is then a low-rank change, and CG removes it in a few iterations). It is redone only when CG needs
+    more than `refactor_after` iterations, or when set_operator is told to rebuild. The operator is
+    applied as K u + P u, so K + P is only ever formed as its upper triangle, for PARDISO."""
+
+    def __init__(self, model, P: sp.csr_matrix, refactor_after: int = 30):
+        self.model, self.refactor_after = model, refactor_after
+        self.ps, self.factorisations, self.factor_s, self.stale = None, 0, 0.0, True
+        self.Ku = sp.triu(model.K, format="csr")
+        self.set_operator(P)
+        self._factorise()
+
+    def set_operator(self, P: sp.csr_matrix, rebuild: bool = False):
+        self.P = P.tocsr()
+        n = self.P.shape[0]
+        self.A = LinearOperator((n, n), matvec=lambda x: self.model.K @ x + self.P @ x, dtype=float)
+        self.stale = self.stale or rebuild
+
+    def _factorise(self):
+        from pypardiso import PyPardisoSolver
+        t0 = time.time()
+        if self.ps is not None:
+            self.ps.free_memory(everything=True)
+            self.ps = None
+        U = (self.Ku + sp.triu(self.P, format="csr")).tocsr()
+        U.sort_indices()
+        ps = PyPardisoSolver(mtype=2)        # real symmetric positive definite: Cholesky, upper triangle
+        ps.iparm[0] = 1                      # the values set here; defaults for the rest
+        ps.iparm[1] = 3                      # nested dissection ordering, the parallel (OpenMP) METIS
+        ps.iparm[9] = 8                      # pivot perturbation 1e-8, should a pivot be tiny
+        ps.iparm[17] = -1                    # report the factor's nonzeros
+        ps.set_phase(12)
+        ps._call_pardiso(U, np.zeros(U.shape[0]))
+        self.ps, self.U = ps, U
+        self.nnz_L = int(ps.iparm[17])
+        self.factorisations += 1
+        self.stale = False
+        self.setup_s = time.time() - t0
+        self.factor_s += self.setup_s
+
+    def _apply(self, r: np.ndarray) -> np.ndarray:
+        self.ps.set_phase(33)
+        return self.ps._call_pardiso(self.U, np.ascontiguousarray(r, dtype=float))
+
+    def solve(self, f: np.ndarray, x0: np.ndarray | None = None, rtol: float = 1e-8, maxiter: int = 2000):
+        t0 = time.time()
+        if self.stale:
+            self._factorise()
+        n = len(f)
+        M = LinearOperator((n, n), matvec=self._apply, dtype=float)
+        total, refactored = 0, False
+        for attempt in range(2):
+            it = [0]
+
+            def cb(_):
+                it[0] += 1
+            limit = self.refactor_after if attempt == 0 else maxiter
+            u, info = cg(self.A, f, x0=x0, rtol=rtol, maxiter=limit, M=M, callback=cb)
+            total += it[0]
+            if info == 0:
+                break
+            if attempt == 1:
+                raise RuntimeError(f"CG did not converge ({info}) in {it[0]} iterations on a fresh factorisation")
+            self._factorise()
+            refactored, x0 = True, u
+        return u, {"cg_iterations": total, "solve_s": round(time.time() - t0, 1), "refactorised": refactored,
+                   "factorisations so far": self.factorisations}
 
 
 def strains(model: VoxelModel, U: np.ndarray) -> np.ndarray:
