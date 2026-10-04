@@ -126,35 +126,57 @@ class VoxelModel:
 
 
 class Solver:
-    """K + P with an AMG hierarchy, reusable as a preconditioner when P changes a little (contact)."""
+    """K + P with an AMG hierarchy, reusable as a preconditioner when P changes a little (contact).
 
-    def __init__(self, model: VoxelModel, P: sp.csr_matrix):
-        self.model = model
+    The operator is applied as K u + P u, so K + P is only formed (as 3 x 3 blocks) to build a
+    hierarchy. A hierarchy built for one contact set is kept for the next while CG still converges in
+    `rebuild_after` iterations; past that it is rebuilt for the current operator and CG carries on from
+    where it stopped. At 0.6 mm voxels a rebuild costs about as much as 25 CG iterations."""
+
+    def __init__(self, model: VoxelModel, P: sp.csr_matrix, rebuild_after: int = 25):
+        self.model, self.rebuild_after = model, rebuild_after
+        self.rebuilds, self.setup_total_s, self.ml = 0, 0.0, None
         self.set_operator(P, rebuild=True)
 
     def set_operator(self, P: sp.csr_matrix, rebuild: bool = False):
-        self.A = (self.model.K + P).tocsr()
-        if rebuild:
-            t0 = time.time()
-            Ab = self.A.tobsr(blocksize=(3, 3))
-            self.ml = pyamg.smoothed_aggregation_solver(
-                Ab, B=self.model.rigid_modes(), strength=("symmetric", {"theta": 0.0}), smooth="jacobi",
-                presmoother=("block_gauss_seidel", {"sweep": "symmetric"}),
-                postsmoother=("block_gauss_seidel", {"sweep": "symmetric"}),
-                max_coarse=300, max_levels=15, coarse_solver="splu")   # pyamg's default dense pinv stalls
-            self.M = self.ml.aspreconditioner(cycle="V")
-            self.setup_s = time.time() - t0
+        self.P = P.tocsr()
+        n = self.P.shape[0]
+        self.A = LinearOperator((n, n), matvec=lambda x: self.model.K @ x + self.P @ x, dtype=float)
+        if rebuild or self.ml is None:
+            self._build()
+
+    def _build(self):
+        t0 = time.time()
+        self.ml = self.M = None
+        Ab = (self.model.K + self.P).tobsr(blocksize=(3, 3))
+        self.ml = pyamg.smoothed_aggregation_solver(
+            Ab, B=self.model.rigid_modes(), strength=("symmetric", {"theta": 0.0}), smooth="jacobi",
+            presmoother=("block_gauss_seidel", {"sweep": "symmetric"}),
+            postsmoother=("block_gauss_seidel", {"sweep": "symmetric"}),
+            max_coarse=300, max_levels=15, coarse_solver="splu")   # pyamg's default dense pinv stalls
+        self.M = self.ml.aspreconditioner(cycle="V")
+        self.rebuilds += 1
+        self.setup_s = time.time() - t0
+        self.setup_total_s += self.setup_s
 
     def solve(self, f: np.ndarray, x0: np.ndarray | None = None, rtol: float = 1e-8, maxiter: int = 2000):
         t0 = time.time()
-        it = [0]
+        total, rebuilt = 0, False
+        for attempt in range(2):
+            it = [0]
 
-        def cb(_):
-            it[0] += 1
-        u, info = cg(self.A, f, x0=x0, rtol=rtol, maxiter=maxiter, M=self.M, callback=cb)
-        if info != 0:
-            raise RuntimeError(f"CG did not converge ({info}) in {it[0]} iterations")
-        return u, {"cg_iterations": it[0], "solve_s": round(time.time() - t0, 1)}
+            def cb(_):
+                it[0] += 1
+            limit = self.rebuild_after if attempt == 0 else maxiter
+            u, info = cg(self.A, f, x0=x0, rtol=rtol, maxiter=limit, M=self.M, callback=cb)
+            total += it[0]
+            if info == 0:
+                break
+            if attempt == 1:
+                raise RuntimeError(f"CG did not converge ({info}) in {it[0]} iterations on a fresh hierarchy")
+            self._build()
+            rebuilt, x0 = True, u
+        return u, {"cg_iterations": total, "solve_s": round(time.time() - t0, 1), "rebuilt": rebuilt}
 
 
 class DirectSolver:

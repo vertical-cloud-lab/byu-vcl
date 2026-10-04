@@ -95,11 +95,12 @@ GROUPS = ("wall", "solid infill or skin", "sparse infill")
 MODES = ("along the bead", "between beads in a layer", "between layers")
 FORCES = (200, 1000)                                # N per M3: snug, and overtightened
 ALPHA_FIX, ALPHA_CONTACT = 1e2, 3e1     # penalty stiffness, as multiples of the median diagonal of K
-MAX_ITER = 10
-SOLVER = {"name": "direct"}         # or "amg"; set by --solver
+MAX_ITER = {"n": 10}                    # contact iterations per load; --max-iter
+SOLVER = {"name": "amg"}            # or "direct"; set by --solver
 SETTLED = 0.002                         # contact has settled when under this share of its rows change
 BUMP_N, YANK_LEVER = 10.0, 10.0         # as ccx_stress.py
 EXCL_LOAD, EXCL_SUPPORT = 1.5, 2.0      # mm: peaks are taken this far from loaded and from fixed nodes
+EAR_R = 2.5                             # mm: "at the ear root" is within this of CalculiX's peak there
 RX90 = np.array([[1.0, 0, 0], [0, 0, -1], [0, 1, 0]])     # cadquery rotate about +X by 90: +Y -> +Z
 RY90 = np.array([[0.0, 0, 1], [0, 1, 0], [-1, 0, 0]])     # about +Y by 90: -X -> +Z
 
@@ -315,6 +316,10 @@ class System:
         self.k0 = float(np.median(d[d > 0]))
 
     def rigid_modes(self) -> np.ndarray:
+        """Six rigid-body modes per part, each part's own: AMG's near-null space. (Six shared by all the
+        parts would halve the coarse grids, but CG then needs 1.5 to 3 times the iterations: the split
+        holds the halves only along its normal, so they slide past each other freely, which a rigid
+        motion of both together can't represent.)"""
         B = np.zeros((self.off[-1], 6 * len(self.parts)))
         for i, q in enumerate(self.parts):
             B[self.off[i]:self.off[i + 1], 6 * i:6 * i + 6] = q.model.rigid_modes()
@@ -451,8 +456,8 @@ def solve(system: System, rows: Rows, on: np.ndarray, f_ext: np.ndarray, solver:
         what = f"Cholesky, {solver.nnz_L / 1e6:.0f} M nonzeros" if direct else "AMG setup"
         print(f"  K: {system.off[-1]} dofs, nnz {system.K.nnz}; {what} {solver.setup_s:.0f} s", flush=True)
     else:
-        # the direct solver refactorises when its CG stalls, so AMG's rebuild hint is left out
-        solver.set_operator(P, rebuild=rebuild and not direct)
+        # both solvers rebuild (AMG) or refactorise (direct) themselves once CG stalls on the old one
+        solver.set_operator(P, rebuild=rebuild)
     try:
         U, info = solver.solve(f_ext + fP, x0=x0, rtol=rtol, maxiter=400)
     except RuntimeError:
@@ -467,7 +472,8 @@ def solver_info(solver) -> dict:
         return {"solver": "sparse Cholesky (MKL PARDISO), kept as CG's preconditioner",
                 "factorisations": solver.factorisations, "factor nonzeros (M)": round(solver.nnz_L / 1e6, 1),
                 "factorising (s)": round(solver.factor_s, 1)}
-    return {"solver": "CG with smoothed-aggregation AMG (pyamg)"}
+    return {"solver": "CG with smoothed-aggregation AMG (pyamg)", "AMG builds": solver.rebuilds,
+            "AMG setup (s)": round(solver.setup_total_s, 1)}
 
 
 def node_forces(system: System, i: int, nodes: np.ndarray, F_world: np.ndarray, f: np.ndarray | None = None):
@@ -567,7 +573,33 @@ def make_parts(cfg: str, names, p, h: float, solid: bool) -> list[Part]:
     return [Part(n, voxel_grid(cfg, n, h), mat, *tr[n], solid=solid) for n in names]
 
 
-def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict, dict]:
+def ccx_ear_root(F: int) -> np.ndarray:
+    """Where ccx_split.py's solid PLA (0.6 mm split) has the bracket's peak max principal at F per M3."""
+    forces = json.loads((HERE / "ccx_split.json").read_text())["designs"]["0.6 mm"]["forces"]
+    k = min(forces, key=lambda f: abs(float(f) - F))
+    return np.array(forces[k]["peaks away from the screw seats"]["max principal (MPa)"]["bracket"]["at (mm)"])
+
+
+def warm_start(warm: dict, F: int, system: System, row_xw: np.ndarray, kind: np.ndarray, on: np.ndarray):
+    """The contact set and displacements of a coarser solution (its viz pickle) at load F, carried to
+    this model: each contact row takes the state of the nearest coarse row of its kind (the bracket's
+    bore, the carrier's, the split), and each node the inverse-distance mean of the displacements of
+    its four nearest coarse nodes. Only the start of the contact loop changes, not what it settles to."""
+    c = warm["contact"][F]
+    for k in range(3):
+        idx, wk = np.flatnonzero(kind == k), c["kind"] == k
+        _, j = cKDTree(c["xyz"][wk]).query(row_xw[idx])
+        on[idx] = c["on"][wk][j]
+    U = np.zeros(system.off[-1])
+    for i, q in enumerate(system.parts):
+        d, j = cKDTree(warm["xw"][q.name]).query(q.xw, k=4)
+        w = 1.0 / np.maximum(d, 1e-6)
+        uw = np.einsum("nk,nkc->nc", w / w.sum(axis=1, keepdims=True), warm["uw"][F][q.name][j])
+        U[system.off[i]:system.off[i + 1]] = (uw @ q.R.T).ravel()      # world -> print-frame dofs
+    return U
+
+
+def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | None = None) -> tuple[dict, dict]:
     t0 = time.time()
     qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, solid)
     system = System([qb, qc])
@@ -612,15 +644,28 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
            "seat nodes per screw": {"bracket": [int(len(n)) for n in seats_b],
                                     "carrier": [int(len(n)) for n in seats_c]},
            "forces": {}}
-    viz = {"F": [], "fi": {}, "U": {}}
+    viz = {"F": [], "fi": {}, "U": {}, "contact": {}, "uw": {},
+           "xw": {q.name: q.xw.astype(np.float32) for q in (qb, qc)}}
+    # each contact row's place (its bracket node, for the split) and kind, for warm starts
+    contact = np.concatenate([b[2] for b in body] + [split])
+    kind = np.full(rows.n, -1)
+    row_xw = np.zeros((rows.n, 3))
+    for (i, n, idx), q in zip(body, (qb, qc)):
+        kind[idx], row_xw[idx] = i, q.xw[n]
+    kind[split], row_xw[split] = 2, qb.xw[S]
+    if warm is not None:
+        out["warm start"] = f"contact set and displacements from the {warm['h']:.2f} mm solution"
+    out["contact rows"] = int(len(contact))
     solver, U = None, None
     changes = 0
     for F in forces:
         hist = []
-        for it in range(MAX_ITER):
-            # a fresh AMG hierarchy (about 30 s) once many contacts have flipped: the old one, built for
-            # the old contact set, can take five times the CG iterations
-            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U, rebuild=changes > 100)
+        if warm is not None and F in warm.get("contact", {}):
+            U = warm_start(warm, F, system, row_xw, kind, on)
+        for it in range(MAX_ITER["n"]):
+            # the solver keeps its AMG hierarchy (or factorisation) from the last contact set while CG
+            # still converges quickly on it, and rebuilds once it doesn't
+            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U)
             gap = rows.g0 + rows.B @ U
             lam = -rows.k * gap * on                    # compression > 0 on active rows
             changes = 0
@@ -649,9 +694,19 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES) -> tuple[dict,
                "peaks": {}}
         for i, q in enumerate((qb, qc)):
             res["peaks"][q.name] = evaluate(q, part_u(system, U, i), keep[i])
+        # the bracket's ear root, where CalculiX's solid PLA peaks: the peak within EAR_R of that point
+        xyz = ccx_ear_root(F)
+        near = keep[0] & (np.linalg.norm(qb.cw - xyz, axis=1) < EAR_R)
+        if near.any():
+            res["at CalculiX's ear-root peak"] = {"point (mm)": [round(float(c), 1) for c in xyz], "radius (mm)": EAR_R,
+                                                  "bracket": evaluate(qb, part_u(system, U, 0), near)}
             if not solid:
                 viz["fi"].setdefault(q.name, {})[F] = q.last_fi.astype(np.float32)
         viz["U"][F] = U.astype(np.float32)
+        viz["contact"][F] = {"xyz": row_xw[contact].astype(np.float32), "on": on[contact].copy(),
+                             "kind": kind[contact]}
+        viz["uw"][F] = {q.name: (part_u(system, U, i).reshape(-1, 3) @ q.R).astype(np.float32)
+                        for i, q in enumerate((qb, qc))}
         viz["F"].append(F)
         out["forces"][str(F)] = res
         pk = res["peaks"]
@@ -800,12 +855,12 @@ def bearing_zone(cw: np.ndarray, p, side: int, r: float = 4.5, depth: float = 4.
     return inside
 
 
-def clamp_zones(cfg: str, p, h: float) -> dict:
+def clamp_zones(cfg: str, p, h: float, solid: bool = False) -> dict:
     """Re-evaluate a solved clamp (viz pickle) with the nut and head bearing zones apart: the peak
     outside them (the collar and ears as a structure) and inside them (bearing under the nut or head,
     where 1.0 mm voxels put a whole nut's load on a few nodes)."""
-    viz = pickle.loads((CACHE / f"viz_{cfg}_printed_{h:.2f}.pkl").read_bytes())
-    qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, False)
+    viz = pickle.loads((CACHE / f"viz_{cfg}_{'solid' if solid else 'printed'}_{h:.2f}.pkl").read_bytes())
+    qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, solid)
     system = System([qb, qc])
     out = {}
     for F in viz["F"]:
@@ -816,6 +871,8 @@ def clamp_zones(cfg: str, p, h: float) -> dict:
             u = part_u(system, U, i)
             res[q.name] = {"outside the bearing zones": evaluate(q, u, ~zone),
                            "in the bearing zones": evaluate(q, u, zone)}
+        near = ~bearing_zone(qb.cw, p, -1) & (np.linalg.norm(qb.cw - ccx_ear_root(F), axis=1) < EAR_R)
+        res["bracket at CalculiX's ear-root peak"] = evaluate(qb, part_u(system, U, 0), near)
         out[str(F)] = res
     # bearing stress by hand: F over the nut's (5.5 mm across flats) or head's (O5.5) ring on a O3.4 hole
     a_nut = 0.866 * 5.5 ** 2 - math.pi * (p.m3_clear_d / 2) ** 2
@@ -835,21 +892,31 @@ def main() -> None:
     ap.add_argument("--solid", action="store_true", help="fill the voxels solid with ccx's isotropic PLA (the check)")
     ap.add_argument("--h", type=float, default=H_VOX, help="voxel size (mm)")
     ap.add_argument("--forces", type=float, nargs="*", default=FORCES)
-    ap.add_argument("--solver", choices=("direct", "amg"), default="direct",
-                    help="sparse Cholesky (pypardiso, the default) or AMG-preconditioned CG (pyamg)")
+    ap.add_argument("--solver", choices=("amg", "direct"), default="amg",
+                    help="AMG-preconditioned CG (pyamg), or sparse Cholesky (pypardiso: faster up to about "
+                         "0.8 mm, but its factor at 0.6 mm wants 14.5 GB)")
+    ap.add_argument("--warm-from", type=float, default=None,
+                    help="clamp: start the contact loop from the solution at this (coarser) voxel size")
+    ap.add_argument("--max-iter", type=int, default=MAX_ITER["n"], help="contact iterations per load, at most")
     args = ap.parse_args()
     SOLVER["name"] = args.solver
+    MAX_ITER["n"] = args.max_iter
     p = load_params((EX / "params.json").read_text())
     out_f = HERE / "sliced_fea.json"
     for cfg in args.configs:
         for case in args.cases:
             key = f"{cfg} / {'solid' if args.solid else 'as printed'} / {args.h:.2f} mm / {case}"
             if case == "clamp":
-                res, viz = case_clamp(cfg, p, args.h, args.solid, [int(f) for f in args.forces])
+                warm = None
+                if args.warm_from:
+                    wf = CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.warm_from:.2f}.pkl"
+                    warm = pickle.loads(wf.read_bytes()) if wf.exists() else None
+                    print(f"warm start from {wf.name}" if warm else f"no {wf.name}: a cold start", flush=True)
+                res, viz = case_clamp(cfg, p, args.h, args.solid, [int(f) for f in args.forces], warm=warm)
                 (CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.h:.2f}.pkl").write_bytes(
                     pickle.dumps(viz))
             elif case == "zones":
-                res = clamp_zones(cfg, p, args.h)
+                res = clamp_zones(cfg, p, args.h, args.solid)
             elif case == "pod":
                 res = case_pod(cfg, p, args.h, args.solid)
             else:
