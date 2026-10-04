@@ -555,7 +555,7 @@ bore and tab pad fixed):
 | | HQ moves at 1 g along X / Y / Z | Optical axis tilts, X / Y / Z | Pod bump, 10 N on its outer edge: first failure |
 |---|---|---|---|
 | PAHT-CF, 0.6 mm nozzle | 0.41 / 0.91 / 0.83 µm | 0.025 / 0.139 / 0.011 arcmin | 204 N, along +Y (toward the arm) |
-| PAHT-CF, 0.4 mm nozzle | 0.50 / 1.08 / POD04Z µm | 0.031 / 0.165 / POD04ZT arcmin | POD04BUMP |
+| PAHT-CF, 0.4 mm nozzle | 0.50 / 1.08 / – µm | 0.031 / 0.165 / – arcmin | not solved: the Z case stalled, and the run stopped before writing |
 | PLA | 0.64 / 1.50 / 1.43 µm | 0.046 / 0.243 / 0.023 arcmin | 75 N, along +Y |
 | Solid PLA, CalculiX tets | 0.48 / 0.96 / 0.97 µm | 0.029 / 0.162 / 0.010 arcmin | about 100 N |
 
@@ -589,7 +589,8 @@ bore and tab pad fixed):
   collar is softer and misses the ear roots' peak, which is why the clamp is read like for like.
 - **Voxel size: not done.** A yank at 0.8 mm, to compare with 0.6 mm, stalled (CG did not converge in
   800 iterations), and a clamp at 0.6 mm was too slow to fit in this run. So there is no convergence
-  study here, only the two checks against CalculiX.
+  study here, only the two checks against CalculiX. The PAHT-CF 0.4 mm pod stalled the same way on
+  its Z case, so its row has the camera's X and Y only (from the run's log) and no bump.
 - **Contact.** Every clamp solve settled: at the last iteration, at most 11 of about 8,800 contact
   springs (body and split) were still changing.
 
