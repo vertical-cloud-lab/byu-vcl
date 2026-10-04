@@ -622,7 +622,14 @@ bore and tab pad fixed):
 - **The clamp against CalculiX:** see the clamp table. The solid-PLA voxel collar closes its split
   before 50 N per screw. At 1.0 mm, from 50 to 150 N, the faces already push 63, 184 and 306 N,
   while CalculiX's split is still 0.04 mm open at 100 N and closes at about 140 N. The faces' force
-  at snug is the same at every voxel size, so this is not resolution.
+  at snug is the same at every voxel size, so this is not resolution. Two more checks on the voxel
+  side (`--check`, 1.0 mm, solid PLA):
+  - **`crowns`.** Started as `ccx_split.py` starts, with the body within 30 degrees of each crown and
+    the split open, the voxels settle to the same answer: within 1 % on the faces and 3 % on the
+    squeeze.
+  - **`bonded`.** With no bore node allowed to leave the body, the split closes even sooner: the faces
+    push 105 N at 50 N per screw. So a bore held on too much wouldn't stiffen a collar the way
+    CalculiX's is stiffer.
 - **Voxel size.** The clamp at 1.0, 0.8 and 0.6 mm, in all four models, is in the convergence plot
   above. The 0.8 mm yank and the PAHT-CF 0.4 mm pod's Z case, which stalled before, weren't re-run.
   The PAHT-CF 0.4 mm pod's row therefore still has the camera's X and Y only, from the earlier

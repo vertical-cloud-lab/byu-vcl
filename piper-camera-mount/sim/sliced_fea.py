@@ -611,7 +611,12 @@ def warm_start(warm: dict, F: int, system: System, row_xw: np.ndarray, kind: np.
     return U
 
 
-def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | None = None) -> tuple[dict, dict]:
+def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | None = None,
+               check: str | None = None) -> tuple[dict, dict]:
+    """check: "crowns" starts the contact loop as ccx_split.py does (the body within 30 degrees of each
+    crown, the split open), to show the answer doesn't depend on the start; "bonded" never lets a bore
+    node leave the body (radial only, still frictionless), to see how much that alone stiffens the
+    collar."""
     t0 = time.time()
     qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, solid)
     system = System([qb, qc])
@@ -649,6 +654,11 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | N
     for i, n, idx in body:          # start closed: the body all round and the split; tension drops out
         on[idx] = True
     on[split] = True
+    if check == "crowns":
+        on[split] = False
+        for (i, n, idx), q, side in zip(body, (qb, qc), (-1, 1)):
+            _, rh = radial(q.xw[n], p)
+            on[idx] = rh[:, 0] * side > math.cos(math.radians(30.0))
     keep = [away(qb, seats_b, EXCL_LOAD), away(qc, seats_c, EXCL_LOAD)]
     out = {"config": cfg, "solid": solid, "voxel (mm)": h, "parts": {q.name: q.stats for q in (qb, qc)},
            "dofs": int(system.off[-1]), "split pairs": int(len(S)),
@@ -687,7 +697,7 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | N
             for idx in [b[2] for b in body] + [split]:
                 act = on[idx]
                 tol = 1e-3 * max(1e-9, float(lam[idx].max()))
-                drop = idx[act & (lam[idx] < -tol)]
+                drop = idx[act & (lam[idx] < -tol)] if not (check == "bonded" and idx is not split) else idx[:0]
                 add = idx[~act & (gap[idx] < -1e-4)]
                 on[drop] = False
                 on[add] = True
@@ -921,6 +931,8 @@ def main() -> None:
                          "0.8 mm, but its factor at 0.6 mm wants 14.5 GB)")
     ap.add_argument("--warm-from", type=float, default=None,
                     help="clamp: start the contact loop from the solution at this (coarser) voxel size")
+    ap.add_argument("--check", choices=("crowns", "bonded"), default=None,
+                    help="clamp: start as ccx_split.py does, or keep the bores on the body (see case_clamp)")
     ap.add_argument("--max-iter", type=int, default=MAX_ITER["n"], help="contact iterations per load, at most")
     args = ap.parse_args()
     SOLVER["name"] = args.solver
@@ -936,8 +948,13 @@ def main() -> None:
                     wf = CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.warm_from:.2f}.pkl"
                     warm = pickle.loads(wf.read_bytes()) if wf.exists() else None
                     print(f"warm start from {wf.name}" if warm else f"no {wf.name}: a cold start", flush=True)
-                res, viz = case_clamp(cfg, p, args.h, args.solid, [int(f) for f in args.forces], warm=warm)
-                (CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.h:.2f}.pkl").write_bytes(
+                res, viz = case_clamp(cfg, p, args.h, args.solid, [int(f) for f in args.forces], warm=warm,
+                                      check=args.check)
+                if args.check:
+                    res["check"] = args.check
+                    key = key + f" ({args.check})"
+                tag = f"_{args.check}" if args.check else ""
+                (CACHE / f"viz_{cfg}_{'solid' if args.solid else 'printed'}_{args.h:.2f}{tag}.pkl").write_bytes(
                     pickle.dumps(viz))
             elif case == "zones":
                 res = clamp_zones(cfg, p, args.h, args.solid)

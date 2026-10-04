@@ -12035,6 +12035,750 @@
   "factorising (s)": 136.9,
   "run time (s)": 226.5
  },
+ "h2d_pahtcf_04 / solid / 1.00 mm / clamp (bonded)": {
+  "config": "h2d_pahtcf_04",
+  "solid": true,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 57794,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31080.7,
+    "bead volume kept (mm3)": 29456.1,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 5.23
+   },
+   "carrier": {
+    "voxels": 53612,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27334.2,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.66
+   }
+  },
+  "dofs": 399456,
+  "split pairs": 1104,
+  "body nodes": {
+   "bracket": 3806,
+   "carrier": 3772
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    24,
+    24,
+    29,
+    29
+   ],
+   "carrier": [
+    44,
+    44,
+    36,
+    36
+   ]
+  },
+  "forces": {
+   "50": {
+    "converged": true,
+    "contact changes at the last iteration": 2,
+    "iterations": 6,
+    "CG iterations": 97,
+    "split gap (mm)": {
+     "narrowest": -0.0,
+     "widest": 0.1772,
+     "mean": 0.0851
+    },
+    "split contact force (N)": 104.8,
+    "body: radial contact force, summed (N)": {
+     "bracket": 62.6,
+     "carrier": 52.7
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 3.486,
+       "at (mm)": [
+        -37.1,
+        45.0,
+        -17.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 4.673,
+       "at (mm)": [
+        -37.1,
+        45.0,
+        -17.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 1.514,
+       "at (mm)": [
+        -38.1,
+        46.0,
+        -17.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 3.131,
+       "at (mm)": [
+        -7.5,
+        45.5,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 2.985,
+       "at (mm)": [
+        -7.5,
+        45.5,
+        -40.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 2.492,
+       "at (mm)": [
+        21.5,
+        42.5,
+        25.4
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 1.421,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 1.67,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.534,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   },
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 7,
+    "iterations": 3,
+    "CG iterations": 50,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1587,
+     "mean": 0.0672
+    },
+    "split contact force (N)": 474.2,
+    "body: radial contact force, summed (N)": {
+     "bracket": 419.7,
+     "carrier": 400.8
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 6.348,
+       "at (mm)": [
+        -9.1,
+        22.0,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 5.251,
+       "at (mm)": [
+        -37.1,
+        45.0,
+        -17.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 2.783,
+       "at (mm)": [
+        -8.1,
+        38.0,
+        -39.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 7.93,
+       "at (mm)": [
+        -7.5,
+        21.5,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 5.111,
+       "at (mm)": [
+        -7.5,
+        24.5,
+        -37.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 3.847,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        -33.6
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 2.467,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 2.832,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.8,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 5,
+    "iterations": 5,
+    "CG iterations": 60,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1155,
+     "mean": 0.0323
+    },
+    "split contact force (N)": 3068.5,
+    "body: radial contact force, summed (N)": {
+     "bracket": 1329.9,
+     "carrier": 1300.6
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 31.796,
+       "at (mm)": [
+        -12.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 14.165,
+       "at (mm)": [
+        -8.1,
+        41.0,
+        -35.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 8.627,
+       "at (mm)": [
+        -8.1,
+        21.0,
+        -34.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 26.609,
+       "at (mm)": [
+        -4.5,
+        20.5,
+        42.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 14.958,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 13.845,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 5.87,
+       "at (mm)": [
+        -16.1,
+        35.0,
+        35.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 5.958,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 1.532,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   }
+  },
+  "contact rows": 8682,
+  "solver": "sparse Cholesky (MKL PARDISO), kept as CG's preconditioner",
+  "factorisations": 3,
+  "factor nonzeros (M)": 315.7,
+  "factorising (s)": 102.4,
+  "run time (s)": 180.3,
+  "check": "bonded"
+ },
+ "h2d_pahtcf_04 / solid / 1.00 mm / clamp (crowns)": {
+  "config": "h2d_pahtcf_04",
+  "solid": true,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 57794,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31080.7,
+    "bead volume kept (mm3)": 29456.1,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 5.23
+   },
+   "carrier": {
+    "voxels": 53612,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27334.2,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.66
+   }
+  },
+  "dofs": 399456,
+  "split pairs": 1104,
+  "body nodes": {
+   "bracket": 3806,
+   "carrier": 3772
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    24,
+    24,
+    29,
+    29
+   ],
+   "carrier": [
+    44,
+    44,
+    36,
+    36
+   ]
+  },
+  "forces": {
+   "50": {
+    "converged": true,
+    "contact changes at the last iteration": 3,
+    "iterations": 13,
+    "CG iterations": 277,
+    "split gap (mm)": {
+     "narrowest": -0.0,
+     "widest": 0.1824,
+     "mean": 0.0892
+    },
+    "split contact force (N)": 62.9,
+    "body: radial contact force, summed (N)": {
+     "bracket": 210.2,
+     "carrier": 159.0
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 2.993,
+       "at (mm)": [
+        -34.1,
+        44.0,
+        -18.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 3.513,
+       "at (mm)": [
+        -35.1,
+        35.0,
+        21.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 1.361,
+       "at (mm)": [
+        -35.1,
+        31.0,
+        -17.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 2.499,
+       "at (mm)": [
+        20.5,
+        43.5,
+        26.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 2.985,
+       "at (mm)": [
+        21.5,
+        42.5,
+        25.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 2.51,
+       "at (mm)": [
+        21.5,
+        42.5,
+        25.4
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 1.589,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 1.831,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.488,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   },
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 9,
+    "CG iterations": 81,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1557,
+     "mean": 0.0664
+    },
+    "split contact force (N)": 435.8,
+    "body: radial contact force, summed (N)": {
+     "bracket": 546.6,
+     "carrier": 486.7
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 6.064,
+       "at (mm)": [
+        -12.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 5.386,
+       "at (mm)": [
+        -35.1,
+        36.0,
+        21.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 2.624,
+       "at (mm)": [
+        -8.1,
+        39.0,
+        -39.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 7.603,
+       "at (mm)": [
+        -7.5,
+        21.5,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 4.773,
+       "at (mm)": [
+        -7.5,
+        19.5,
+        -37.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 3.404,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 2.633,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 3.017,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.812,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 7,
+    "CG iterations": 105,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1115,
+     "mean": 0.0306
+    },
+    "split contact force (N)": 3018.5,
+    "body: radial contact force, summed (N)": {
+     "bracket": 1474.9,
+     "carrier": 1379.6
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 31.873,
+       "at (mm)": [
+        -12.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 13.63,
+       "at (mm)": [
+        -8.1,
+        41.0,
+        -35.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 8.376,
+       "at (mm)": [
+        -8.1,
+        21.0,
+        -34.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 26.663,
+       "at (mm)": [
+        -4.5,
+        20.5,
+        42.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 14.629,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 13.461,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      }
+     }
+    },
+    "at CalculiX's ear-root peak": {
+     "point (mm)": [
+      -16.9,
+      33.1,
+      34.3
+     ],
+     "radius (mm)": 2.5,
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 5.762,
+       "at (mm)": [
+        -16.1,
+        35.0,
+        35.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 6.028,
+       "at (mm)": [
+        -18.1,
+        35.0,
+        33.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 1.463,
+       "at (mm)": [
+        -18.1,
+        32.0,
+        33.4
+       ]
+      }
+     }
+    }
+   }
+  },
+  "contact rows": 8682,
+  "solver": "sparse Cholesky (MKL PARDISO), kept as CG's preconditioner",
+  "factorisations": 9,
+  "factor nonzeros (M)": 325.5,
+  "factorising (s)": 232.6,
+  "run time (s)": 361.6,
+  "check": "crowns"
+ },
  "h2d_pahtcf_04 / solid / 1.00 mm / pod": {
   "config": "h2d_pahtcf_04",
   "solid": true,
