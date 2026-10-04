@@ -1,0 +1,264 @@
+{
+ "_meta": {
+  "units": "MPa (density in g/cm3; also given in t/mm3)",
+  "axes": "1=along bead, 2=across beads in layer plane, 3=build (Z)",
+  "state": "dry, room temperature, short-term",
+  "compiled": "2026-10-03",
+  "doc": "bead_properties_2026-10-03.md"
+ },
+ "PLA": {
+  "E1": 2800,
+  "E2": 2600,
+  "E3": 2060,
+  "G12": 900,
+  "G13": 810,
+  "G23": 760,
+  "nu12": 0.35,
+  "nu13": 0.35,
+  "nu23": 0.35,
+  "Xt": 48,
+  "Xc": 80,
+  "Yt": 33,
+  "Yc": 70,
+  "Zt": 31,
+  "Zc": 65,
+  "S12": 19,
+  "S13": 18,
+  "S23": 18,
+  "density": 1.24,
+  "density_unit": "g/cm3",
+  "density_t_per_mm3": 1.24e-09,
+  "ranges": {
+   "E1": [
+    2500,
+    3400
+   ],
+   "E2": [
+    2300,
+    3100
+   ],
+   "E3": [
+    1900,
+    2400
+   ],
+   "G12": [
+    800,
+    1100
+   ],
+   "G13": [
+    700,
+    930
+   ],
+   "G23": [
+    650,
+    900
+   ],
+   "nu12": [
+    0.32,
+    0.38
+   ],
+   "nu13": [
+    0.3,
+    0.38
+   ],
+   "nu23": [
+    0.3,
+    0.4
+   ],
+   "Xt": [
+    38,
+    55
+   ],
+   "Xc": [
+    60,
+    90
+   ],
+   "Yt": [
+    28,
+    40
+   ],
+   "Yc": [
+    55,
+    85
+   ],
+   "Zt": [
+    25,
+    34
+   ],
+   "Zc": [
+    50,
+    80
+   ],
+   "S12": [
+    15,
+    30
+   ],
+   "S13": [
+    14,
+    27
+   ],
+   "S23": [
+    14,
+    25
+   ]
+  },
+  "notes": "Bambu PLA Basic, dry, annealed 55 C/8 h like the TDS V3.0 bars. MPa. Axes 1=along bead, 2=across beads in plane, 3=build. E3 and Zt are the TDS Z values (2060, 31). E1, Xt and S12 are back-calculated so that an ISO 527-2 1A bar with 2 walls (0.42+0.45 mm, 17.4% of the gauge width) and a +/-45 core (Bambu Studio defaults) reproduces the TDS X-Y values (2580 MPa, 35 MPa). Stiffness uses CLT; strength uses a plastic rule of mixtures with the core failing by the Hashin matrix criterion. Ratios come from Ferreira 2017 doi:10.1016/j.compositesb.2017.05.013 (E2/E1, G12/E1, +/-45 to 0 deg strength ratio 0.66, Yt/Xt 0.68), Song 2017 doi:10.1016/j.matdes.2017.03.051 (Xc/Xt 1.79, Yc/Yt 2.12) and Gonabadi 2020 doi:10.1007/s00170-020-06138-4 (nu, G13, interlayer shear). S12=19 is for Hashin; use 16 with max-stress. Zc, \u03bd23 and G23 are assumptions. See bead_properties_2026-10-03.md."
+ },
+ "PAHT-CF": {
+  "E1": 7600,
+  "E2": 2700,
+  "E3": 2180,
+  "G12": 950,
+  "G13": 850,
+  "G23": 770,
+  "nu12": 0.38,
+  "nu13": 0.38,
+  "nu23": 0.42,
+  "Xt": 120,
+  "Xc": 100,
+  "Yt": 50,
+  "Yc": 80,
+  "Zt": 47,
+  "Zc": 75,
+  "S12": 47,
+  "S13": 33,
+  "S23": 30,
+  "density": 1.06,
+  "density_unit": "g/cm3",
+  "density_t_per_mm3": 1.06e-09,
+  "ranges": {
+   "E1": [
+    4600,
+    9500
+   ],
+   "E2": [
+    2300,
+    3400
+   ],
+   "E3": [
+    1900,
+    2400
+   ],
+   "G12": [
+    800,
+    1150
+   ],
+   "G13": [
+    700,
+    1000
+   ],
+   "G23": [
+    650,
+    900
+   ],
+   "nu12": [
+    0.33,
+    0.44
+   ],
+   "nu13": [
+    0.33,
+    0.44
+   ],
+   "nu23": [
+    0.35,
+    0.48
+   ],
+   "Xt": [
+    100,
+    140
+   ],
+   "Xc": [
+    75,
+    130
+   ],
+   "Yt": [
+    42,
+    65
+   ],
+   "Yc": [
+    60,
+    100
+   ],
+   "Zt": [
+    40,
+    64
+   ],
+   "Zc": [
+    60,
+    100
+   ],
+   "S12": [
+    40,
+    52
+   ],
+   "S13": [
+    25,
+    44
+   ],
+   "S23": [
+    22,
+    40
+   ]
+  },
+  "wet_knockdown": {
+   "E1": 0.86,
+   "E2": 0.83,
+   "E3": 0.81,
+   "G12": 0.81,
+   "G13": 0.81,
+   "G23": 0.81,
+   "nu12": 1.0,
+   "nu13": 1.0,
+   "nu23": 1.0,
+   "Xt": 0.92,
+   "Xc": 0.85,
+   "Yt": 0.85,
+   "Yc": 0.85,
+   "Zt": 0.8,
+   "Zc": 0.8,
+   "S12": 0.82,
+   "S13": 0.82,
+   "S23": 0.82,
+   "ranges": {
+    "E1": [
+     0.8,
+     0.94
+    ],
+    "E2": [
+     0.8,
+     0.92
+    ],
+    "E3": [
+     0.8,
+     0.9
+    ],
+    "G": [
+     0.75,
+     0.9
+    ],
+    "Xt": [
+     0.85,
+     1.0
+    ],
+    "Xc": [
+     0.8,
+     0.92
+    ],
+    "Yt": [
+     0.8,
+     1.0
+    ],
+    "Zt": [
+     0.8,
+     0.97
+    ],
+    "S": [
+     0.78,
+     0.95
+    ]
+   },
+   "notes": "Multiply the dry values. Bambu store page dry/wet flexural table (https://us.store.bambulab.com/products/paht-cf): modulus X-Y 4230->3640 (0.86), Z 1820->1480 (0.81); strength X-Y 125->115 (0.92), Z 61->49 (0.80); Bambu states a 12-18% decline. Saturated uptake 0.88% at 25 C/55% RH; the page gives no conditioning protocol. Cross-check: Dynamism PA12-CF TDS after 3 days immersed: E_XY 0.92, E_Z 0.84, strength ~1.0. E2, G, Xc, Yt and S factors are assumptions (matrix-dominated)."
+  },
+  "notes": "Bambu PAHT-CF (PA12 + other long-chain PA + CF; Tm 225 C), dry, annealed 80 C/12 h like the TDS V3.0 bars (290 C, 100 mm/s, 100% infill). MPa. E3 and Zt are the TDS V3.0 Z values (2180, 47; V2.0 had Zt 64). E1, Xt and S12 are back-calculated so that a 2-wall + +/-45 ISO 1A bar reproduces the TDS X-Y values (3860 +/- 230 MPa, 92 +/- 7 MPa): the coupon model gives 3752 MPa for walls at 17.4% (0.4 mm nozzle) and 4106 MPa at 25% (0.6 mm), and 88 MPa strength. If Bambu's X-Y bars were 0/90, E1 would be about 4640 (the low end of the range). Anisotropy references: Ferreira 2017 PLA-CF E1/E2 = 1.92; BASF Ultrafuse PAHT CF15 flexural XZ/ZX = 2.8; Prusament PA11-CF flexural modulus 6.2 GPa on edge vs 3.0 GPa flat; Belei 2024 doi:10.1089/3dp.2023.0173 PAHT CF15 +/-45 UTS 93.7 vs 0/90 111.3. E2, G12, G13, G23, nu13, nu23, Xc, Yt, Yc, Zc, S13 and S23 are assumptions; see bead_properties_2026-10-03.md."
+ }
+}

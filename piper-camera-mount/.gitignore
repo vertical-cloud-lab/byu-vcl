@@ -1,0 +1,5 @@
+cad/.cache/
+__pycache__/
+slice/build/
+slice/build_*/
+sim/build_sliced/

@@ -1,0 +1,1719 @@
+{
+  "what": "both half-collars in one CalculiX (ccx 2.21) model round a rigid O57 body, the four clamp screws tightened past snug, for the 1.0 mm split the collar had and the 0.6 mm it has now",
+  "settings": {
+    "material": {
+      "E (MPa)": 2400.0,
+      "nu": 0.35,
+      "note": "solid, isotropic PLA, linear elastic"
+    },
+    "elements": "C3D10 on gmsh tets, as joint_fea.py and ccx_stress.py",
+    "body": "rigid O57, frictionless, 0.15 mm clear all round (an active set of radial constraints)",
+    "split": "frictionless, node to surface: SPRING2 springs of 1e+05 N/mm from the bracket's split-face nodes to the carrier's face (*EQUATION), an active set",
+    "screws": "F in each M3, on the carrier's counterbore floors and the bracket's nut-pocket floors; the screws themselves are not modelled",
+    "peaks": "at least 1.5 mm from the screw seats; across layers uses each part's print direction (bracket world Y, carrier world X)"
+  },
+  "designs": {
+    "1.0 mm": {
+      "split (mm)": 1.0,
+      "mesh": {
+        "nodes (C3D10)": 101394,
+        "elements": 59440,
+        "bracket split-face nodes paired with the carrier's face": 1574
+      },
+      "forces": {
+        "50": {
+          "converged": true,
+          "iterations": 13,
+          "ccx (s)": 533.3,
+          "split gap (mm)": {
+            "narrowest": 0.4923,
+            "widest": 0.6843,
+            "mean": 0.589,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 341.5,
+            "carrier": 302.9
+          },
+          "body: net push along X (N)": {
+            "bracket": -200.0,
+            "carrier": 200.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 5.455,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 3.931,
+                "at (mm)": [
+                  -1.5,
+                  27.9,
+                  29.8
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 8.286,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 3.08,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 3.483,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 2.586,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            }
+          }
+        },
+        "100": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 193.4,
+          "split gap (mm)": {
+            "narrowest": 0.4267,
+            "widest": 0.6666,
+            "mean": 0.5455,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 705.7,
+            "carrier": 648.8
+          },
+          "body: net push along X (N)": {
+            "bracket": -400.0,
+            "carrier": 400.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 10.274,
+                "at (mm)": [
+                  -9.8,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 7.359,
+                "at (mm)": [
+                  -1.5,
+                  27.9,
+                  29.8
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 14.58,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.031,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 6.029,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 3.348,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            }
+          }
+        },
+        "200": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 191.1,
+          "split gap (mm)": {
+            "narrowest": 0.31,
+            "widest": 0.6358,
+            "mean": 0.4682,
+            "narrowest at (y, z mm)": [
+              37.4,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1437.5,
+            "carrier": 1345.9
+          },
+          "body: net push along X (N)": {
+            "bracket": -800.0,
+            "carrier": 800.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 23.415,
+                "at (mm)": [
+                  -9.8,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 14.817,
+                "at (mm)": [
+                  -5.5,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 26.418,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 5.999,
+                "at (mm)": [
+                  -7.4,
+                  22.4,
+                  42.2
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 10.737,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 5.179,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "300": {
+          "converged": true,
+          "iterations": 3,
+          "ccx (s)": 119.1,
+          "split gap (mm)": {
+            "narrowest": 0.1994,
+            "widest": 0.6062,
+            "mean": 0.3966,
+            "narrowest at (y, z mm)": [
+              37.4,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 2172.0,
+            "carrier": 2046.0
+          },
+          "body: net push along X (N)": {
+            "bracket": -1200.0,
+            "carrier": 1200.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 26.074,
+                "at (mm)": [
+                  -9.8,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 21.38,
+                "at (mm)": [
+                  -5.5,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 37.463,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 8.898,
+                "at (mm)": [
+                  -7.4,
+                  22.0,
+                  42.3
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 15.058,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 7.656,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "converged": true,
+          "iterations": 4,
+          "ccx (s)": 147.8,
+          "split gap (mm)": {
+            "narrowest": 0.0898,
+            "widest": 0.5774,
+            "mean": 0.3267,
+            "narrowest at (y, z mm)": [
+              23.1,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 2908.3,
+            "carrier": 2747.9
+          },
+          "body: net push along X (N)": {
+            "bracket": -1600.0,
+            "carrier": 1600.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 32.131,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 26.465,
+                "at (mm)": [
+                  -5.5,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 48.631,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 11.759,
+                "at (mm)": [
+                  -7.4,
+                  22.0,
+                  42.3
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 19.441,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 10.108,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "converged": true,
+          "iterations": 4,
+          "ccx (s)": 138.5,
+          "split gap (mm)": {
+            "narrowest": -0.0,
+            "widest": 0.5449,
+            "mean": 0.2605,
+            "narrowest at (y, z mm)": [
+              23.1,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 8.8,
+            "top ears": 2.6,
+            "bottom ears": 6.2
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 3627.7,
+            "carrier": 3434.5
+          },
+          "body: net push along X (N)": {
+            "bracket": -1991.3,
+            "carrier": 1991.3
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 39.489,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 29.548,
+                "at (mm)": [
+                  -5.5,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 59.746,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 14.438,
+                "at (mm)": [
+                  -7.4,
+                  38.5,
+                  -38.4
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 23.845,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 12.527,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "650": {
+          "converged": true,
+          "iterations": 7,
+          "ccx (s)": 212.3,
+          "split gap (mm)": {
+            "narrowest": -0.0001,
+            "widest": 0.5084,
+            "mean": 0.2215,
+            "narrowest at (y, z mm)": [
+              21.7,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 278.3,
+            "top ears": 136.9,
+            "bottom ears": 141.4
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 4172.2,
+            "carrier": 3961.4
+          },
+          "body: net push along X (N)": {
+            "bracket": -2321.4,
+            "carrier": 2321.4
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 41.159,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 30.679,
+                "at (mm)": [
+                  -5.5,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 62.132,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 18.042,
+                "at (mm)": [
+                  -7.4,
+                  38.9,
+                  -38.3
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 24.83,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 15.481,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "800": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 127.4,
+          "split gap (mm)": {
+            "narrowest": -0.0002,
+            "widest": 0.4794,
+            "mean": 0.1923,
+            "narrowest at (y, z mm)": [
+              38.8,
+              45.9
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 593.4,
+            "top ears": 294.5,
+            "bottom ears": 298.9
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 4633.3,
+            "carrier": 4403.8
+          },
+          "body: net push along X (N)": {
+            "bracket": -2606.8,
+            "carrier": 2606.8
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 41.994,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 39.659,
+                "at (mm)": [
+                  -7.4,
+                  19.2,
+                  -42.1
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 63.235,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 22.321,
+                "at (mm)": [
+                  -7.4,
+                  39.7,
+                  -37.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 25.33,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 18.323,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "1000": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 128.0,
+          "split gap (mm)": {
+            "narrowest": -0.0002,
+            "widest": 0.4472,
+            "mean": 0.1616,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 13.0,
+          "split contact force (N)": {
+            "total": 1061.0,
+            "top ears": 528.5,
+            "bottom ears": 532.5
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 5161.3,
+            "carrier": 4910.3
+          },
+          "body: net push along X (N)": {
+            "bracket": -2939.7,
+            "carrier": 2939.7
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 42.482,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 40.878,
+                "at (mm)": [
+                  -7.4,
+                  19.2,
+                  -42.1
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 63.752,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 29.063,
+                "at (mm)": [
+                  -7.4,
+                  40.0,
+                  41.4
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 25.606,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 21.958,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "run time (s)": 1853.6
+    },
+    "0.6 mm": {
+      "split (mm)": 0.6,
+      "mesh": {
+        "nodes (C3D10)": 101394,
+        "elements": 59440,
+        "bracket split-face nodes paired with the carrier's face": 1574
+      },
+      "forces": {
+        "50": {
+          "converged": true,
+          "iterations": 12,
+          "ccx (s)": 495.3,
+          "split gap (mm)": {
+            "narrowest": 0.1044,
+            "widest": 0.2801,
+            "mean": 0.1929,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 340.0,
+            "carrier": 302.8
+          },
+          "body: net push along X (N)": {
+            "bracket": -200.0,
+            "carrier": 200.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 4.931,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.111,
+                "at (mm)": [
+                  -5.6,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 7.475,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 3.069,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 3.085,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 2.581,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            }
+          }
+        },
+        "100": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 196.3,
+          "split gap (mm)": {
+            "narrowest": 0.0391,
+            "widest": 0.262,
+            "mean": 0.1499,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 0.0,
+            "top ears": 0.0,
+            "bottom ears": 0.0
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 702.7,
+            "carrier": 647.3
+          },
+          "body: net push along X (N)": {
+            "bracket": -400.0,
+            "carrier": 400.0
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 11.899,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 8.659,
+                "at (mm)": [
+                  -5.6,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 13.637,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.009,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 5.569,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 3.337,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            }
+          }
+        },
+        "150": {
+          "converged": true,
+          "iterations": 6,
+          "ccx (s)": 243.6,
+          "split gap (mm)": {
+            "narrowest": -0.0,
+            "widest": 0.2442,
+            "mean": 0.1149,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 14.6,
+            "top ears": 6.1,
+            "bottom ears": 8.5
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1036.3,
+            "carrier": 967.2
+          },
+          "body: net push along X (N)": {
+            "bracket": -585.4,
+            "carrier": 585.4
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 19.543,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 12.608,
+                "at (mm)": [
+                  -5.6,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 18.98,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.839,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 7.724,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.003,
+                "at (mm)": [
+                  21.1,
+                  39.0,
+                  25.9
+                ]
+              }
+            }
+          }
+        },
+        "200": {
+          "converged": true,
+          "iterations": 4,
+          "ccx (s)": 170.1,
+          "split gap (mm)": {
+            "narrowest": -0.0,
+            "widest": 0.2333,
+            "mean": 0.1025,
+            "narrowest at (y, z mm)": [
+              38.8,
+              -42.1
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 112.3,
+            "top ears": 55.1,
+            "bottom ears": 57.2
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1198.0,
+            "carrier": 1126.6
+          },
+          "body: net push along X (N)": {
+            "bracket": -687.7,
+            "carrier": 687.7
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 21.611,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 13.809,
+                "at (mm)": [
+                  -5.6,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 19.776,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 5.634,
+                "at (mm)": [
+                  -7.6,
+                  39.7,
+                  -37.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 8.098,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 4.589,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "250": {
+          "converged": true,
+          "iterations": 3,
+          "ccx (s)": 117.5,
+          "split gap (mm)": {
+            "narrowest": -0.0001,
+            "widest": 0.2228,
+            "mean": 0.0914,
+            "narrowest at (y, z mm)": [
+              38.8,
+              45.9
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 214.7,
+            "top ears": 106.5,
+            "bottom ears": 108.2
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1350.3,
+            "carrier": 1277.1
+          },
+          "body: net push along X (N)": {
+            "bracket": -785.4,
+            "carrier": 785.4
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 23.293,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 14.791,
+                "at (mm)": [
+                  -7.6,
+                  19.2,
+                  -42.1
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 20.512,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 7.243,
+                "at (mm)": [
+                  -7.6,
+                  39.7,
+                  -37.9
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 8.433,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 5.533,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "300": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 203.2,
+          "split gap (mm)": {
+            "narrowest": -0.0001,
+            "widest": 0.213,
+            "mean": 0.082,
+            "narrowest at (y, z mm)": [
+              38.8,
+              45.9
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 0.0,
+          "split contact force (N)": {
+            "total": 325.5,
+            "top ears": 161.8,
+            "bottom ears": 163.7
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1488.6,
+            "carrier": 1413.0
+          },
+          "body: net push along X (N)": {
+            "bracket": -874.5,
+            "carrier": 874.5
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 24.676,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 18.835,
+                "at (mm)": [
+                  -7.6,
+                  19.2,
+                  -42.1
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.011,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 8.987,
+                "at (mm)": [
+                  -7.6,
+                  40.0,
+                  -37.6
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 8.672,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 6.447,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "400": {
+          "converged": true,
+          "iterations": 6,
+          "ccx (s)": 245.5,
+          "split gap (mm)": {
+            "narrowest": -0.0001,
+            "widest": 0.1987,
+            "mean": 0.0678,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 17.8,
+          "split contact force (N)": {
+            "total": 569.6,
+            "top ears": 284.0,
+            "bottom ears": 285.6
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1729.6,
+            "carrier": 1646.1
+          },
+          "body: net push along X (N)": {
+            "bracket": -1030.5,
+            "carrier": 1030.5
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 25.347,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 17.529,
+                "at (mm)": [
+                  -7.6,
+                  19.2,
+                  -42.1
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.417,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 12.267,
+                "at (mm)": [
+                  -7.6,
+                  40.0,
+                  -37.6
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 9.291,
+                "at (mm)": [
+                  -8.2,
+                  38.5,
+                  42.3
+                ]
+              },
+              "carrier": {
+                "value": 8.206,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "500": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 209.5,
+          "split gap (mm)": {
+            "narrowest": -0.0001,
+            "widest": 0.1866,
+            "mean": 0.057,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 69.8,
+          "split contact force (N)": {
+            "total": 834.9,
+            "top ears": 416.5,
+            "bottom ears": 418.4
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 1934.6,
+            "carrier": 1844.4
+          },
+          "body: net push along X (N)": {
+            "bracket": -1165.1,
+            "carrier": 1165.1
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 25.968,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 16.68,
+                "at (mm)": [
+                  -5.6,
+                  20.9,
+                  31.5
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.448,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 15.313,
+                "at (mm)": [
+                  -7.6,
+                  40.1,
+                  41.0
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 10.458,
+                "at (mm)": [
+                  -8.2,
+                  38.5,
+                  42.3
+                ]
+              },
+              "carrier": {
+                "value": 9.894,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "650": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 213.8,
+          "split gap (mm)": {
+            "narrowest": -0.0002,
+            "widest": 0.1712,
+            "mean": 0.0444,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 132.6,
+          "split contact force (N)": {
+            "total": 1261.4,
+            "top ears": 629.7,
+            "bottom ears": 631.8
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 2196.6,
+            "carrier": 2098.3
+          },
+          "body: net push along X (N)": {
+            "bracket": -1338.7,
+            "carrier": 1338.7
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 26.921,
+                "at (mm)": [
+                  -9.7,
+                  46.0,
+                  30.5
+                ]
+              },
+              "carrier": {
+                "value": 20.717,
+                "at (mm)": [
+                  -3.9,
+                  39.2,
+                  -38.2
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.411,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 19.189,
+                "at (mm)": [
+                  -7.6,
+                  40.1,
+                  41.0
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 11.163,
+                "at (mm)": [
+                  -8.2,
+                  38.5,
+                  -35.0
+                ]
+              },
+              "carrier": {
+                "value": 12.301,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "800": {
+          "converged": true,
+          "iterations": 4,
+          "ccx (s)": 135.3,
+          "split gap (mm)": {
+            "narrowest": -0.0002,
+            "widest": 0.1585,
+            "mean": 0.035,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 191.7,
+          "split contact force (N)": {
+            "total": 1716.4,
+            "top ears": 857.0,
+            "bottom ears": 859.4
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 2414.2,
+            "carrier": 2309.4
+          },
+          "body: net push along X (N)": {
+            "bracket": -1483.7,
+            "carrier": 1483.7
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 27.944,
+                "at (mm)": [
+                  -12.4,
+                  39.5,
+                  -38.1
+                ]
+              },
+              "carrier": {
+                "value": 26.307,
+                "at (mm)": [
+                  -3.9,
+                  39.2,
+                  -38.2
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.313,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 21.456,
+                "at (mm)": [
+                  -7.6,
+                  40.1,
+                  40.1
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 14.016,
+                "at (mm)": [
+                  -8.2,
+                  38.5,
+                  -35.0
+                ]
+              },
+              "carrier": {
+                "value": 14.557,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        },
+        "1000": {
+          "converged": true,
+          "iterations": 5,
+          "ccx (s)": 190.3,
+          "split gap (mm)": {
+            "narrowest": -0.0002,
+            "widest": 0.1457,
+            "mean": 0.0269,
+            "narrowest at (y, z mm)": [
+              21.1,
+              45.0
+            ]
+          },
+          "split face in contact over whole facets (mm2)": 227.8,
+          "split contact force (N)": {
+            "total": 2369.5,
+            "top ears": 1183.3,
+            "bottom ears": 1186.2
+          },
+          "body: radial contact force, summed (N)": {
+            "bracket": 2634.1,
+            "carrier": 2523.0
+          },
+          "body: net push along X (N)": {
+            "bracket": -1630.6,
+            "carrier": 1630.6
+          },
+          "peaks away from the screw seats": {
+            "von Mises (MPa)": {
+              "bracket": {
+                "value": 35.605,
+                "at (mm)": [
+                  -12.4,
+                  39.5,
+                  -38.1
+                ]
+              },
+              "carrier": {
+                "value": 33.551,
+                "at (mm)": [
+                  -3.9,
+                  39.2,
+                  -38.2
+                ]
+              }
+            },
+            "max principal (MPa)": {
+              "bracket": {
+                "value": 21.316,
+                "at (mm)": [
+                  -16.9,
+                  33.1,
+                  34.3
+                ]
+              },
+              "carrier": {
+                "value": 19.554,
+                "at (mm)": [
+                  -7.6,
+                  40.1,
+                  39.3
+                ]
+              }
+            },
+            "tension across layers (MPa)": {
+              "bracket": {
+                "value": 14.749,
+                "at (mm)": [
+                  -8.2,
+                  38.8,
+                  -34.7
+                ]
+              },
+              "carrier": {
+                "value": 17.212,
+                "at (mm)": [
+                  -0.9,
+                  22.0,
+                  -33.6
+                ]
+              }
+            }
+          }
+        }
+      },
+      "run time (s)": 2499.2
+    }
+  }
+}

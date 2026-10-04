@@ -1,0 +1,181 @@
+{
+  "bambu_studio": "02.08.02.61",
+  "presets": {
+    "machine": "Bambu Lab A1 mini 0.4 nozzle",
+    "process": "0.20mm Standard @BBL A1M",
+    "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "overrides": {
+    "wall_loops": "3",
+    "sparse_infill_density": "25%",
+    "curr_bed_type": "Textured PEI Plate",
+    "enable_circle_compensation": "1",
+    "enable_support": "0"
+  },
+  "filament_colour": "#000000",
+  "return_code": 0,
+  "error_string": "Success.",
+  "support_necessity_checks_run": 6,
+  "support_necessity_flags": [],
+  "layout": [
+    {
+      "part": "bracket",
+      "stl": "bracket.stl",
+      "sha256": "55435c26f655",
+      "centre": [
+        43,
+        55
+      ],
+      "footprint": [
+        6.79,
+        11.0,
+        79.21,
+        99.0
+      ],
+      "height": 42.68
+    },
+    {
+      "part": "carrier",
+      "stl": "carrier.stl",
+      "sha256": "114363150caf",
+      "centre": [
+        50,
+        146
+      ],
+      "footprint": [
+        6.0,
+        118.25,
+        94.0,
+        173.75
+      ],
+      "height": 38.61
+    },
+    {
+      "part": "pod",
+      "stl": "pod.stl",
+      "sha256": "dceffbdc6569",
+      "centre": [
+        135,
+        131
+      ],
+      "footprint": [
+        102.5,
+        90.5,
+        167.5,
+        171.5
+      ],
+      "height": 10.0
+    },
+    {
+      "part": "spacers",
+      "stl": "spacers.stl",
+      "sha256": "48f37448dff6",
+      "centre": [
+        130,
+        28
+      ],
+      "footprint": [
+        112.0,
+        25.0,
+        148.0,
+        31.0
+      ],
+      "height": 5.0
+    },
+    {
+      "part": "tag_wedge#1",
+      "stl": "tag_wedge.stl",
+      "sha256": "034f36e9ef5a",
+      "centre": [
+        112,
+        60
+      ],
+      "footprint": [
+        109.03,
+        56.38,
+        114.97,
+        63.62
+      ],
+      "height": 4.96
+    },
+    {
+      "part": "tag_wedge#2",
+      "stl": "tag_wedge.stl",
+      "sha256": "034f36e9ef5a",
+      "centre": [
+        128,
+        60
+      ],
+      "footprint": [
+        125.03,
+        56.38,
+        130.97,
+        63.62
+      ],
+      "height": 4.96
+    }
+  ],
+  "layout_warnings": [],
+  "thumbnails_embedded": [
+    "Metadata/pick_1.png",
+    "Metadata/plate_1.png",
+    "Metadata/plate_1_small.png",
+    "Metadata/plate_no_light_1.png",
+    "Metadata/top_1.png"
+  ],
+  "plates": [
+    {
+      "plate": 1,
+      "name": "PiPER camera mount",
+      "objects": [
+        "bracket_1",
+        "carrier_1",
+        "pod_1",
+        "spacers_1",
+        "tag_wedge_1",
+        "tag_wedge_1"
+      ],
+      "print_time_s": 10230,
+      "filament_g": 87.46,
+      "filament_m": 28.86,
+      "bed_type": "Textured PEI Plate",
+      "bed_temp_c": [
+        65,
+        65,
+        0
+      ],
+      "toolpath_outside_bed": false,
+      "support_used": false,
+      "slicer_warnings": [],
+      "gcode_warnings": [
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 2,
+          "code": "10018003"
+        },
+        {
+          "msg": "not_support_traditional_timelapse",
+          "level": 3,
+          "code": "1000C003"
+        }
+      ],
+      "feature_time_s": {
+        "Bottom surface": 313,
+        "Bridge": 395,
+        "Custom": 348,
+        "Flush": 28,
+        "Gap infill": 128,
+        "Inner wall": 1861,
+        "Internal solid infill": 1210,
+        "Outer wall": 1442,
+        "Overhang wall": 63,
+        "Sparse infill": 2640,
+        "Top surface": 296,
+        "Travel": 1524,
+        "Undefined": 1506
+      }
+    }
+  ],
+  "total_print_time_s": 10230,
+  "total_filament_g": 87.46
+}

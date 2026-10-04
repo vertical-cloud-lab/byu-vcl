@@ -1,0 +1,25 @@
+{
+  "date": "2026-09-27",
+  "name": "PiPER wrist camera mount (4be6e17)",
+  "folder": {
+    "vcl-shared": "222f47147b861ce6fc04396f",
+    "6DOF Robot Arm": "9a78d7989a97567e68bc153a"
+  },
+  "source_document": "https://cad.onshape.com/documents/4d1543d1aead93f7d42c7a3d/w/96a14f14b3a42f31f37b4e0b",
+  "import": {
+    "file": "assembly.step",
+    "state": "DONE",
+    "elements": [
+      "f85757e2edded45436165e72"
+    ]
+  },
+  "lab_copy": "https://cad.onshape.com/documents/93ef145982c24192bfd160be/w/e3d08fcb2dcad7c92e183721",
+  "api_calls_used": 10,
+  "lab_copy_check": {
+    "name": "PiPER wrist camera mount (4be6e17)",
+    "owner": "Vertical Cloud Lab",
+    "parentId": "9a78d7989a97567e68bc153a",
+    "isPublic": false
+  },
+  "shaded_view": "onshape_assembly.png (isometric shaded view of the lab copy's Part Studio 'assembly')"
+}

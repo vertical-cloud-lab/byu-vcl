@@ -1,0 +1,5262 @@
+{
+ "a1m_pla_04 / as printed / 0.60 mm / yank": {
+  "config": "a1m_pla_04",
+  "solid": false,
+  "voxel (mm)": 0.6,
+  "parts": {
+   "carrier": {
+    "voxels": 178735,
+    "voxel (mm)": [
+     0.6,
+     0.6,
+     0.6
+    ],
+    "bead volume in the raster (mm3)": 27804.0,
+    "bead volume kept (mm3)": 27446.3,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.29
+   }
+  },
+  "dofs": 777861,
+  "fixed bore nodes": 10377,
+  "seat nodes": [
+   60,
+   60,
+   66,
+   66
+  ],
+  "cases": {
+   "yank X": {
+    "carrier": {
+     "+": {
+      "failure index": 0.2306,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0707,
+        "at (mm)": [
+         28.3,
+         43.3,
+         -20.0
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.2112,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.2306,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 5.731,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 6.324,
+       "at (mm)": [
+        27.1,
+        45.7,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.1636,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0772,
+        "at (mm)": [
+         29.5,
+         46.3,
+         -23.0
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1401,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.1636,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 1.152,
+       "at (mm)": [
+        28.3,
+        43.9,
+        -17.0
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 2.984,
+       "at (mm)": [
+        30.7,
+        45.7,
+        -21.8
+       ]
+      }
+     }
+    },
+    "CG iterations": 53,
+    "max displacement (um)": 201.96
+   },
+   "yank Y": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0351,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.64,
+      "at (mm)": [
+       26.5,
+       15.1,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0128,
+        "at (mm)": [
+         30.7,
+         40.3,
+         -33.8
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0294,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0351,
+        "at (mm)": [
+         26.5,
+         15.1,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.81,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.774,
+       "at (mm)": [
+        27.1,
+        15.1,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0286,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0155,
+        "at (mm)": [
+         30.7,
+         20.5,
+         -33.8
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0259,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0286,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.707,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.721,
+       "at (mm)": [
+        27.1,
+        45.7,
+        -22.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 35,
+    "max displacement (um)": 29.56
+   },
+   "yank Z": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0254,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.64,
+      "at (mm)": [
+       26.5,
+       15.1,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0125,
+        "at (mm)": [
+         27.1,
+         37.9,
+         -40.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0216,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0254,
+        "at (mm)": [
+         26.5,
+         15.1,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.584,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.593,
+       "at (mm)": [
+        27.1,
+        46.3,
+        -21.8
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0192,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.64,
+      "at (mm)": [
+       26.5,
+       15.1,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0117,
+        "at (mm)": [
+         30.7,
+         63.7,
+         -33.2
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0183,
+        "at (mm)": [
+         27.1,
+         46.3,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0192,
+        "at (mm)": [
+         26.5,
+         15.1,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.329,
+       "at (mm)": [
+        26.5,
+        45.7,
+        25.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.68,
+       "at (mm)": [
+        30.1,
+        61.9,
+        -29.6
+       ]
+      }
+     }
+    },
+    "CG iterations": 35,
+    "max displacement (um)": 25.98
+   }
+  },
+  "run time (s)": 231.9
+ },
+ "a1m_pla_04 / as printed / 1.00 mm / clamp": {
+  "config": "a1m_pla_04",
+  "solid": false,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 50522,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31084.1,
+    "bead volume kept (mm3)": 30554.9,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 1.7
+   },
+   "carrier": {
+    "voxels": 43686,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 27804.0,
+    "bead volume kept (mm3)": 27433.8,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.33
+   }
+  },
+  "dofs": 411174,
+  "split pairs": 1116,
+  "body nodes": {
+   "bracket": 3953,
+   "carrier": 3774
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    6,
+    6,
+    9,
+    9
+   ],
+   "carrier": [
+    40,
+    40,
+    30,
+    30
+   ]
+  },
+  "forces": {
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 1,
+    "iterations": 8,
+    "CG iterations": 58,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1475,
+     "mean": 0.0535
+    },
+    "split contact force (N)": 499.6,
+    "body: radial contact force, summed (N)": {
+     "bracket": 419.6,
+     "carrier": 415.3
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 0.3453,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.38,
+      "at (mm)": [
+       -12.1,
+       41.0,
+       -37.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.3281,
+        "at (mm)": [
+         -15.1,
+         36.0,
+         -36.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.3453,
+        "at (mm)": [
+         -12.1,
+         41.0,
+         -37.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.2802,
+        "at (mm)": [
+         -12.1,
+         23.0,
+         39.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 4.453,
+       "at (mm)": [
+        -8.1,
+        22.0,
+        -33.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 10.75,
+       "at (mm)": [
+        -8.1,
+        40.0,
+        -36.6
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.2423,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 100.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.22,
+      "at (mm)": [
+       -0.5,
+       38.5,
+       -33.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.1398,
+        "at (mm)": [
+         -7.5,
+         36.5,
+         -35.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1758,
+        "at (mm)": [
+         -7.5,
+         20.5,
+         -37.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.2423,
+        "at (mm)": [
+         -0.5,
+         38.5,
+         -33.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 6.816,
+       "at (mm)": [
+        -0.5,
+        38.5,
+        -33.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 6.569,
+       "at (mm)": [
+        -7.5,
+        19.5,
+        -36.6
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 11,
+    "iterations": 6,
+    "CG iterations": 132,
+    "split gap (mm)": {
+     "narrowest": -0.0005,
+     "widest": 0.1067,
+     "mean": 0.0244
+    },
+    "split contact force (N)": 3383.3,
+    "body: radial contact force, summed (N)": {
+     "bracket": 883.5,
+     "carrier": 918.7
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 1.6381,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.2,
+      "at (mm)": [
+       -12.1,
+       41.0,
+       40.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 1.4725,
+        "at (mm)": [
+         -15.1,
+         40.0,
+         38.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 1.6381,
+        "at (mm)": [
+         -12.1,
+         41.0,
+         40.4
+        ]
+       },
+       "between layers": {
+        "failure index": 1.2727,
+        "at (mm)": [
+         -12.1,
+         23.0,
+         39.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 16.379,
+       "at (mm)": [
+        -14.1,
+        22.0,
+        -38.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 37.423,
+       "at (mm)": [
+        -15.1,
+        40.0,
+        38.4
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.8969,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 85.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.22,
+      "at (mm)": [
+       -0.5,
+       38.5,
+       37.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.3481,
+        "at (mm)": [
+         -0.5,
+         39.5,
+         35.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.3986,
+        "at (mm)": [
+         -3.5,
+         36.5,
+         37.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.8969,
+        "at (mm)": [
+         -0.5,
+         38.5,
+         37.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 24.509,
+       "at (mm)": [
+        -0.5,
+        38.5,
+        37.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 9.354,
+       "at (mm)": [
+        -3.5,
+        40.5,
+        -33.6
+       ]
+      }
+     }
+    }
+   }
+  },
+  "run time (s)": 541.8
+ },
+ "a1m_pla_04 / as printed / 1.00 mm / pod": {
+  "config": "a1m_pla_04",
+  "solid": false,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 50522,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31084.1,
+    "bead volume kept (mm3)": 30554.9,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 1.7
+   },
+   "pod": {
+    "voxels": 16910,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 11572.7,
+    "bead volume kept (mm3)": 11481.9,
+    "STL volume in the raster (mm3)": 18838.8,
+    "bead volume dropped (%)": 0.78
+   }
+  },
+  "dofs": 292629,
+  "fixed nodes": {
+   "bore": 3953,
+   "pad": 287
+  },
+  "pod front-face nodes tied to the bracket": 1076,
+  "tied area (mm2, nodes x voxel face)": 1076.0,
+  "HQ boss nodes": 176,
+  "edge nodes": 560,
+  "cases": {
+   "HQ 1 g X": {
+    "mean displacement (um)": 0.6449,
+    "optical axis tilt (arcmin)": 0.04577,
+    "image shift (px)": 0.05154,
+    "max displacement anywhere (um)": 1.2833,
+    "CG iterations": 99
+   },
+   "bump X": {
+    "bracket": {
+     "+": {
+      "failure index": 0.0205,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.45,
+      "at (mm)": [
+       -79.1,
+       43.0,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0082,
+        "at (mm)": [
+         -78.1,
+         44.0,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0201,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0205,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.133,
+       "at (mm)": [
+        -48.1,
+        45.0,
+        25.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.278,
+       "at (mm)": [
+        -59.1,
+        47.0,
+        9.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0252,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.45,
+      "at (mm)": [
+       -79.1,
+       43.0,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.017,
+        "at (mm)": [
+         -78.1,
+         43.0,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0252,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         21.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0132,
+        "at (mm)": [
+         -78.1,
+         42.0,
+         25.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.318,
+       "at (mm)": [
+        -79.1,
+        43.0,
+        24.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.748,
+       "at (mm)": [
+        -79.1,
+        44.0,
+        21.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.038,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.71,
+      "at (mm)": [
+       -80.6,
+       44.7,
+       24.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0127,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         20.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.038,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0244,
+        "at (mm)": [
+         -80.9,
+         45.6,
+         24.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.182,
+       "at (mm)": [
+        -91.9,
+        47.5,
+        18.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.537,
+       "at (mm)": [
+        -98.8,
+        39.1,
+        -3.6
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0472,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.6,
+      "at (mm)": [
+       -80.6,
+       44.7,
+       25.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0251,
+        "at (mm)": [
+         -81.9,
+         45.3,
+         24.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0472,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0316,
+        "at (mm)": [
+         -80.9,
+         45.6,
+         24.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.712,
+       "at (mm)": [
+        -80.9,
+        45.6,
+        24.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.31,
+       "at (mm)": [
+        -80.6,
+        44.7,
+        21.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 106
+   },
+   "HQ 1 g Y": {
+    "mean displacement (um)": 1.501,
+    "optical axis tilt (arcmin)": 0.24304,
+    "image shift (px)": 0.27367,
+    "max displacement anywhere (um)": 4.0174,
+    "CG iterations": 105
+   },
+   "bump Y": {
+    "bracket": {
+     "+": {
+      "failure index": 0.0726,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.82,
+      "at (mm)": [
+       -79.1,
+       43.0,
+       24.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0461,
+        "at (mm)": [
+         -78.1,
+         43.0,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0726,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0501,
+        "at (mm)": [
+         -78.1,
+         42.0,
+         23.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 1.066,
+       "at (mm)": [
+        -79.1,
+        43.0,
+        24.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.715,
+       "at (mm)": [
+        -79.1,
+        44.0,
+        21.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0628,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.82,
+      "at (mm)": [
+       -79.1,
+       43.0,
+       24.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0186,
+        "at (mm)": [
+         -78.1,
+         44.0,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0628,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0554,
+        "at (mm)": [
+         -79.1,
+         43.0,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.353,
+       "at (mm)": [
+        -38.1,
+        47.0,
+        20.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.616,
+       "at (mm)": [
+        -37.1,
+        46.0,
+        21.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.1328,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.6,
+      "at (mm)": [
+       -80.6,
+       44.7,
+       25.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0598,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         -17.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1328,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0985,
+        "at (mm)": [
+         -80.9,
+         45.6,
+         24.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 2.29,
+       "at (mm)": [
+        -80.9,
+        45.6,
+        24.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 3.454,
+       "at (mm)": [
+        -80.6,
+        44.7,
+        25.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.1014,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.6,
+      "at (mm)": [
+       -80.6,
+       44.7,
+       25.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0476,
+        "at (mm)": [
+         -81.1,
+         49.7,
+         20.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1014,
+        "at (mm)": [
+         -80.6,
+         44.7,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0741,
+        "at (mm)": [
+         -80.9,
+         45.6,
+         24.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.512,
+       "at (mm)": [
+        -91.9,
+        47.5,
+        18.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 2.234,
+       "at (mm)": [
+        -81.1,
+        49.7,
+        20.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 151
+   },
+   "HQ 1 g Z": {
+    "mean displacement (um)": 1.4251,
+    "optical axis tilt (arcmin)": 0.02261,
+    "image shift (px)": 0.02546,
+    "max displacement anywhere (um)": 2.8518,
+    "CG iterations": 108
+   },
+   "bump Z": {
+    "bracket": {
+     "+": {
+      "failure index": 0.027,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.16,
+      "at (mm)": [
+       -57.1,
+       48.0,
+       9.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.027,
+        "at (mm)": [
+         -57.1,
+         48.0,
+         9.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0208,
+        "at (mm)": [
+         -76.1,
+         40.0,
+         21.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.016,
+        "at (mm)": [
+         -59.1,
+         48.0,
+         10.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.275,
+       "at (mm)": [
+        -57.1,
+        48.0,
+        9.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.982,
+       "at (mm)": [
+        -59.1,
+        47.0,
+        9.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.025,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.6,
+      "at (mm)": [
+       -37.1,
+       46.0,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0217,
+        "at (mm)": [
+         -74.1,
+         40.0,
+         -16.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.025,
+        "at (mm)": [
+         -37.1,
+         46.0,
+         21.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0193,
+        "at (mm)": [
+         -67.1,
+         43.0,
+         18.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.272,
+       "at (mm)": [
+        -77.1,
+        44.0,
+        21.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.801,
+       "at (mm)": [
+        -37.1,
+        46.0,
+        21.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.0522,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       -99.9,
+       42.9,
+       -3.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0522,
+        "at (mm)": [
+         -99.9,
+         42.9,
+         -3.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0329,
+        "at (mm)": [
+         -99.9,
+         42.9,
+         7.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0215,
+        "at (mm)": [
+         -90.5,
+         42.7,
+         16.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.483,
+       "at (mm)": [
+        -99.7,
+        42.0,
+        -3.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.87,
+       "at (mm)": [
+        -99.9,
+        42.9,
+        -3.6
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0447,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       -99.9,
+       42.9,
+       7.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0447,
+        "at (mm)": [
+         -99.9,
+         42.9,
+         7.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0365,
+        "at (mm)": [
+         -99.9,
+         42.9,
+         -3.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0237,
+        "at (mm)": [
+         -66.3,
+         49.1,
+         16.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.428,
+       "at (mm)": [
+        -99.4,
+        41.0,
+        7.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.584,
+       "at (mm)": [
+        -98.8,
+        39.1,
+        7.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 130
+   }
+  },
+  "run time (s)": 617.1
+ },
+ "a1m_pla_04 / as printed / 1.00 mm / zones": {
+  "200": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.2649,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 135.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.16,
+     "at (mm)": [
+      -8.1,
+      37.0,
+      40.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.2631,
+       "at (mm)": [
+        -8.1,
+        37.0,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.2649,
+       "at (mm)": [
+        -8.1,
+        37.0,
+        40.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.184,
+       "at (mm)": [
+        -8.1,
+        21.0,
+        -34.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 4.453,
+      "at (mm)": [
+       -8.1,
+       22.0,
+       -33.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 10.75,
+      "at (mm)": [
+       -8.1,
+       40.0,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.97,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.28,
+     "at (mm)": [
+      -14.1,
+      22.0,
+      -34.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.3281,
+       "at (mm)": [
+        -15.1,
+        36.0,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.97,
+       "at (mm)": [
+        -14.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.2802,
+       "at (mm)": [
+        -12.1,
+        23.0,
+        39.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 5.536,
+      "at (mm)": [
+       -14.1,
+       21.0,
+       38.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 16.795,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       38.4
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.1758,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 45.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.19,
+     "at (mm)": [
+      -7.5,
+      20.5,
+      -37.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1398,
+       "at (mm)": [
+        -7.5,
+        36.5,
+        -35.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1758,
+       "at (mm)": [
+        -7.5,
+        20.5,
+        -37.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1581,
+       "at (mm)": [
+        -5.5,
+        26.5,
+        42.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 2.763,
+      "at (mm)": [
+       21.5,
+       44.5,
+       -21.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 6.57,
+      "at (mm)": [
+       -7.5,
+       19.5,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.5346,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 100.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.22,
+     "at (mm)": [
+      -1.5,
+      38.5,
+      -33.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.168,
+       "at (mm)": [
+        -2.5,
+        37.5,
+        37.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1562,
+       "at (mm)": [
+        -4.5,
+        19.5,
+        38.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.5346,
+       "at (mm)": [
+        -1.5,
+        38.5,
+        -33.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 13.128,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       -33.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 4.607,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       -33.6
+      ]
+     }
+    }
+   }
+  },
+  "1000": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.9752,
+     "mode": "along the bead",
+     "bead direction in the layer (deg)": 135.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.16,
+     "at (mm)": [
+      -8.1,
+      37.0,
+      -36.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.9752,
+       "at (mm)": [
+        -8.1,
+        37.0,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.9389,
+       "at (mm)": [
+        -8.1,
+        37.0,
+        40.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.7159,
+       "at (mm)": [
+        -9.1,
+        21.0,
+        39.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 11.555,
+      "at (mm)": [
+       -8.1,
+       22.0,
+       38.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 21.332,
+      "at (mm)": [
+       -8.1,
+       37.0,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 4.7608,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.28,
+     "at (mm)": [
+      -14.1,
+      22.0,
+      -34.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 2.2312,
+       "at (mm)": [
+        -14.1,
+        39.0,
+        -38.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 4.7608,
+       "at (mm)": [
+        -14.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "between layers": {
+       "failure index": 1.291,
+       "at (mm)": [
+        -13.1,
+        39.0,
+        -38.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 28.371,
+      "at (mm)": [
+       -14.1,
+       21.0,
+       38.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 79.393,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       38.4
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.7795,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 50.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.31,
+     "at (mm)": [
+      -7.5,
+      20.5,
+      -35.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.3481,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        35.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.3374,
+       "at (mm)": [
+        -4.5,
+        42.5,
+        -33.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.7795,
+       "at (mm)": [
+        -7.5,
+        20.5,
+        -35.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 6.563,
+      "at (mm)": [
+       2.5,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 7.897,
+      "at (mm)": [
+       -6.5,
+       23.5,
+       -37.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 2.1861,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 100.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.21,
+     "at (mm)": [
+      -1.5,
+      38.5,
+      37.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.6644,
+       "at (mm)": [
+        -2.5,
+        37.5,
+        37.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.3986,
+       "at (mm)": [
+        -3.5,
+        36.5,
+        37.4
+       ]
+      },
+      "between layers": {
+       "failure index": 2.1861,
+       "at (mm)": [
+        -1.5,
+        38.5,
+        37.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 51.244,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 20.892,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       -33.6
+      ]
+     }
+    }
+   }
+  },
+  "bearing stress by hand (MPa per N of screw force)": {
+   "nut on the bracket": 0.05842,
+   "head on the carrier": 0.06812,
+   "areas (mm2)": [
+    17.1,
+    14.7
+   ]
+  }
+ },
+ "h2d_pahtcf_04 / as printed / 0.60 mm / yank": {
+  "config": "h2d_pahtcf_04",
+  "solid": false,
+  "voxel (mm)": 0.6,
+  "parts": {
+   "carrier": {
+    "voxels": 178616,
+    "voxel (mm)": [
+     0.6,
+     0.6,
+     0.6
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27434.6,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.3
+   }
+  },
+  "dofs": 777555,
+  "fixed bore nodes": 10377,
+  "seat nodes": [
+   60,
+   60,
+   66,
+   66
+  ],
+  "cases": {
+   "yank X": {
+    "carrier": {
+     "+": {
+      "failure index": 0.1174,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0915,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0767,
+        "at (mm)": [
+         27.1,
+         45.1,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.1174,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 4.64,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 9.05,
+       "at (mm)": [
+        27.1,
+        46.3,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0905,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.67,
+      "at (mm)": [
+       27.1,
+       46.3,
+       -22.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0905,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0331,
+        "at (mm)": [
+         27.7,
+         46.3,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0887,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.893,
+       "at (mm)": [
+        28.3,
+        43.9,
+        -17.0
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 4.458,
+       "at (mm)": [
+        30.7,
+        45.7,
+        -21.8
+       ]
+      }
+     }
+    },
+    "CG iterations": 91,
+    "max displacement (um)": 134.32
+   },
+   "yank Y": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0163,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.64,
+      "at (mm)": [
+       26.5,
+       15.1,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0101,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.012,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0163,
+        "at (mm)": [
+         26.5,
+         15.1,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.599,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.994,
+       "at (mm)": [
+        27.1,
+        15.1,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0145,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0105,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0114,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0145,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.569,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.01,
+       "at (mm)": [
+        27.1,
+        46.3,
+        -22.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 75,
+    "max displacement (um)": 19.85
+   },
+   "yank Z": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0123,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.97,
+      "at (mm)": [
+       26.5,
+       45.7,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0109,
+        "at (mm)": [
+         30.1,
+         61.9,
+         -29.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0097,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -21.8
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0123,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.469,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.849,
+       "at (mm)": [
+        27.1,
+        46.3,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0097,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.64,
+      "at (mm)": [
+       26.5,
+       15.1,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0091,
+        "at (mm)": [
+         30.1,
+         61.9,
+         -29.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0083,
+        "at (mm)": [
+         27.1,
+         46.3,
+         25.0
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0097,
+        "at (mm)": [
+         26.5,
+         15.1,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.269,
+       "at (mm)": [
+        26.5,
+        45.7,
+        25.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.087,
+       "at (mm)": [
+        30.1,
+        61.9,
+        -29.6
+       ]
+      }
+     }
+    },
+    "CG iterations": 70,
+    "max displacement (um)": 17.76
+   }
+  },
+  "run time (s)": 429.6
+ },
+ "h2d_pahtcf_04 / as printed / 1.00 mm / clamp": {
+  "config": "h2d_pahtcf_04",
+  "solid": false,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 50533,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31080.8,
+    "bead volume kept (mm3)": 30553.2,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 1.7
+   },
+   "carrier": {
+    "voxels": 43719,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27429.8,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.32
+   }
+  },
+  "dofs": 411198,
+  "split pairs": 1120,
+  "body nodes": {
+   "bracket": 3953,
+   "carrier": 3774
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    6,
+    6,
+    9,
+    9
+   ],
+   "carrier": [
+    40,
+    40,
+    30,
+    30
+   ]
+  },
+  "forces": {
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 9,
+    "CG iterations": 91,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1576,
+     "mean": 0.063
+    },
+    "split contact force (N)": 475.5,
+    "body: radial contact force, summed (N)": {
+     "bracket": 441.6,
+     "carrier": 448.8
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 0.2264,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.2,
+      "at (mm)": [
+       -12.1,
+       41.0,
+       40.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.2264,
+        "at (mm)": [
+         -12.1,
+         41.0,
+         40.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1799,
+        "at (mm)": [
+         -8.1,
+         38.0,
+         44.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.122,
+        "at (mm)": [
+         -10.1,
+         24.0,
+         38.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 4.053,
+       "at (mm)": [
+        -8.1,
+        23.0,
+        -34.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 15.237,
+       "at (mm)": [
+        -8.1,
+        40.0,
+        -36.6
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.1554,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.6,
+      "at (mm)": [
+       -7.5,
+       39.5,
+       -41.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0902,
+        "at (mm)": [
+         -7.5,
+         19.5,
+         -36.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.108,
+        "at (mm)": [
+         -3.5,
+         38.5,
+         -33.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.1554,
+        "at (mm)": [
+         -7.5,
+         39.5,
+         -41.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 6.002,
+       "at (mm)": [
+        -0.5,
+        38.5,
+        -33.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 10.71,
+       "at (mm)": [
+        -7.5,
+        19.5,
+        -36.6
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 1,
+    "iterations": 7,
+    "CG iterations": 182,
+    "split gap (mm)": {
+     "narrowest": -0.0004,
+     "widest": 0.1181,
+     "mean": 0.031
+    },
+    "split contact force (N)": 3224.2,
+    "body: radial contact force, summed (N)": {
+     "bracket": 1092.2,
+     "carrier": 1135.0
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 1.3829,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.2,
+      "at (mm)": [
+       -12.1,
+       41.0,
+       40.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 1.3829,
+        "at (mm)": [
+         -12.1,
+         41.0,
+         40.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.7712,
+        "at (mm)": [
+         -12.1,
+         41.0,
+         41.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.5602,
+        "at (mm)": [
+         -10.1,
+         23.0,
+         39.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 14.758,
+       "at (mm)": [
+        -14.1,
+        22.0,
+        -38.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 56.196,
+       "at (mm)": [
+        -15.1,
+        36.0,
+        -37.6
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.6762,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 140.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.35,
+      "at (mm)": [
+       -7.5,
+       23.5,
+       -35.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.1574,
+        "at (mm)": [
+         -1.5,
+         39.5,
+         35.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.2668,
+        "at (mm)": [
+         -3.5,
+         36.5,
+         37.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.6762,
+        "at (mm)": [
+         -7.5,
+         23.5,
+         -35.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 22.701,
+       "at (mm)": [
+        -0.5,
+        38.5,
+        37.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 21.461,
+       "at (mm)": [
+        -7.5,
+        23.5,
+        -35.6
+       ]
+      }
+     }
+    }
+   }
+  },
+  "run time (s)": 652.2
+ },
+ "h2d_pahtcf_04 / as printed / 1.00 mm / zones": {
+  "200": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.1799,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.4,
+     "at (mm)": [
+      -8.1,
+      38.0,
+      44.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1287,
+       "at (mm)": [
+        -8.1,
+        40.0,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1799,
+       "at (mm)": [
+        -8.1,
+        38.0,
+        44.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1105,
+       "at (mm)": [
+        -8.1,
+        21.0,
+        -34.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 4.052,
+      "at (mm)": [
+       -8.1,
+       23.0,
+       -34.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 15.237,
+      "at (mm)": [
+       -8.1,
+       40.0,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.3736,
+     "mode": "along the bead",
+     "bead direction in the layer (deg)": 0.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 1.0,
+     "at (mm)": [
+      -13.1,
+      22.0,
+      -34.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.3736,
+       "at (mm)": [
+        -13.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.3601,
+       "at (mm)": [
+        -14.1,
+        41.0,
+        -36.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1314,
+       "at (mm)": [
+        -13.1,
+        39.0,
+        -38.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 3.764,
+      "at (mm)": [
+       -14.1,
+       41.0,
+       -36.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 25.113,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       38.4
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.1554,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.6,
+     "at (mm)": [
+      -7.5,
+      39.5,
+      -41.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.0902,
+       "at (mm)": [
+        -7.5,
+        19.5,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.0812,
+       "at (mm)": [
+        -3.5,
+        26.5,
+        -38.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1554,
+       "at (mm)": [
+        -7.5,
+        39.5,
+        -41.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 3.067,
+      "at (mm)": [
+       21.5,
+       44.5,
+       25.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 10.71,
+      "at (mm)": [
+       -7.5,
+       19.5,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.3153,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 100.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.22,
+     "at (mm)": [
+      -1.5,
+      38.5,
+      37.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1008,
+       "at (mm)": [
+        -2.5,
+        37.5,
+        37.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1081,
+       "at (mm)": [
+        -3.5,
+        38.5,
+        -33.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.3153,
+       "at (mm)": [
+        -1.5,
+        38.5,
+        37.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 12.018,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 4.156,
+      "at (mm)": [
+       -3.5,
+       40.5,
+       37.4
+      ]
+     }
+    }
+   }
+  },
+  "1000": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.7226,
+     "mode": "along the bead",
+     "bead direction in the layer (deg)": 0.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.4,
+     "at (mm)": [
+      -8.1,
+      40.0,
+      42.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.7226,
+       "at (mm)": [
+        -8.1,
+        40.0,
+        42.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.4903,
+       "at (mm)": [
+        -8.1,
+        38.0,
+        44.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.5279,
+       "at (mm)": [
+        -9.1,
+        21.0,
+        39.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 11.933,
+      "at (mm)": [
+       -8.1,
+       22.0,
+       38.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 36.192,
+      "at (mm)": [
+       -8.1,
+       37.0,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 1.9568,
+     "mode": "along the bead",
+     "bead direction in the layer (deg)": 0.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 1.0,
+     "at (mm)": [
+      -13.1,
+      22.0,
+      -34.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 1.9568,
+       "at (mm)": [
+        -13.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 1.7053,
+       "at (mm)": [
+        -14.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.6511,
+       "at (mm)": [
+        -13.1,
+        39.0,
+        -38.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 17.934,
+      "at (mm)": [
+       -14.1,
+       41.0,
+       40.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 115.656,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       38.4
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.6762,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 140.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.35,
+     "at (mm)": [
+      -7.5,
+      23.5,
+      -35.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1574,
+       "at (mm)": [
+        -1.5,
+        39.5,
+        35.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1693,
+       "at (mm)": [
+        -1.5,
+        40.5,
+        36.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.6762,
+       "at (mm)": [
+        -7.5,
+        23.5,
+        -35.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 7.064,
+      "at (mm)": [
+       2.5,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 21.461,
+      "at (mm)": [
+       -7.5,
+       23.5,
+       -35.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 1.3945,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.48,
+     "at (mm)": [
+      -2.5,
+      38.5,
+      38.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1165,
+       "at (mm)": [
+        -1.5,
+        20.5,
+        44.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.2674,
+       "at (mm)": [
+        -2.5,
+        41.5,
+        38.4
+       ]
+      },
+      "between layers": {
+       "failure index": 1.3945,
+       "at (mm)": [
+        -2.5,
+        38.5,
+        38.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 48.608,
+      "at (mm)": [
+       -1.5,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 18.979,
+      "at (mm)": [
+       -3.5,
+       40.5,
+       -33.6
+      ]
+     }
+    }
+   }
+  },
+  "bearing stress by hand (MPa per N of screw force)": {
+   "nut on the bracket": 0.05842,
+   "head on the carrier": 0.06812,
+   "areas (mm2)": [
+    17.1,
+    14.7
+   ]
+  }
+ },
+ "h2d_pahtcf_04 / solid / 0.60 mm / yank": {
+  "config": "h2d_pahtcf_04",
+  "solid": true,
+  "voxel (mm)": 0.6,
+  "parts": {
+   "carrier": {
+    "voxels": 246531,
+    "voxel (mm)": [
+     0.6,
+     0.6,
+     0.6
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27123.5,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 2.42
+   }
+  },
+  "dofs": 828102,
+  "fixed bore nodes": 10171,
+  "seat nodes": [
+   60,
+   60,
+   66,
+   66
+  ],
+  "cases": {
+   "yank X": {
+    "carrier": {
+     "+": {
+      "von Mises (MPa)": {
+       "value": 4.872,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 6.453,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 5.061,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      }
+     },
+     "-": {
+      "von Mises (MPa)": {
+       "value": 4.872,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 2.222,
+       "at (mm)": [
+        30.7,
+        39.7,
+        -33.2
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.382,
+       "at (mm)": [
+        26.5,
+        15.1,
+        25.6
+       ]
+      }
+     }
+    },
+    "CG iterations": 38,
+    "max displacement (um)": 135.81
+   },
+   "yank Y": {
+    "carrier": {
+     "+": {
+      "von Mises (MPa)": {
+       "value": 0.626,
+       "at (mm)": [
+        29.5,
+        8.5,
+        -35.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 0.778,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.589,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      }
+     },
+     "-": {
+      "von Mises (MPa)": {
+       "value": 0.626,
+       "at (mm)": [
+        29.5,
+        8.5,
+        -35.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 0.79,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.63,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      }
+     }
+    },
+    "CG iterations": 37,
+    "max displacement (um)": 19.91
+   },
+   "yank Z": {
+    "carrier": {
+     "+": {
+      "von Mises (MPa)": {
+       "value": 0.474,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 0.627,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.492,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      }
+     },
+     "-": {
+      "von Mises (MPa)": {
+       "value": 0.474,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 0.459,
+       "at (mm)": [
+        30.7,
+        63.1,
+        -33.8
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 0.277,
+       "at (mm)": [
+        26.5,
+        45.7,
+        25.6
+       ]
+      }
+     }
+    },
+    "CG iterations": 37,
+    "max displacement (um)": 17.41
+   }
+  },
+  "run time (s)": 276.5
+ },
+ "h2d_pahtcf_04 / solid / 1.00 mm / clamp": {
+  "config": "h2d_pahtcf_04",
+  "solid": true,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 57794,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 31080.8,
+    "bead volume kept (mm3)": 29456.2,
+    "STL volume in the raster (mm3)": 57521.6,
+    "bead volume dropped (%)": 5.23
+   },
+   "carrier": {
+    "voxels": 53612,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     1.0
+    ],
+    "bead volume in the raster (mm3)": 27796.8,
+    "bead volume kept (mm3)": 27334.2,
+    "STL volume in the raster (mm3)": 52851.7,
+    "bead volume dropped (%)": 1.66
+   }
+  },
+  "dofs": 399456,
+  "split pairs": 1104,
+  "body nodes": {
+   "bracket": 3806,
+   "carrier": 3772
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    24,
+    24,
+    29,
+    29
+   ],
+   "carrier": [
+    44,
+    44,
+    36,
+    36
+   ]
+  },
+  "forces": {
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 5,
+    "iterations": 10,
+    "CG iterations": 54,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1558,
+     "mean": 0.0665
+    },
+    "split contact force (N)": 435.7,
+    "body: radial contact force, summed (N)": {
+     "bracket": 533.9,
+     "carrier": 488.4
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 6.082,
+       "at (mm)": [
+        -9.1,
+        22.0,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 5.383,
+       "at (mm)": [
+        -35.1,
+        36.0,
+        21.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 2.628,
+       "at (mm)": [
+        -8.1,
+        39.0,
+        -39.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 7.603,
+       "at (mm)": [
+        -7.5,
+        21.5,
+        -41.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 4.774,
+       "at (mm)": [
+        -7.5,
+        19.5,
+        -37.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 3.401,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 8,
+    "CG iterations": 96,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1114,
+     "mean": 0.0305
+    },
+    "split contact force (N)": 3019.8,
+    "body: radial contact force, summed (N)": {
+     "bracket": 1430.1,
+     "carrier": 1382.4
+    },
+    "peaks": {
+     "bracket": {
+      "von Mises (MPa)": {
+       "value": 31.874,
+       "at (mm)": [
+        -12.1,
+        22.0,
+        -34.6
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 13.649,
+       "at (mm)": [
+        -8.1,
+        41.0,
+        -35.6
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 8.386,
+       "at (mm)": [
+        -8.1,
+        21.0,
+        -34.6
+       ]
+      }
+     },
+     "carrier": {
+      "von Mises (MPa)": {
+       "value": 26.665,
+       "at (mm)": [
+        -4.5,
+        20.5,
+        42.4
+       ]
+      },
+      "max principal (MPa)": {
+       "value": 14.628,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      },
+      "tension across layers (MPa)": {
+       "value": 13.461,
+       "at (mm)": [
+        -0.5,
+        39.5,
+        37.4
+       ]
+      }
+     }
+    }
+   }
+  },
+  "run time (s)": 658.5
+ },
+ "h2d_pahtcf_06 / as printed / 0.60 mm / yank": {
+  "config": "h2d_pahtcf_06",
+  "solid": false,
+  "voxel (mm)": 0.6,
+  "parts": {
+   "carrier": {
+    "voxels": 187247,
+    "voxel (mm)": [
+     0.6,
+     0.6,
+     0.6
+    ],
+    "bead volume in the raster (mm3)": 31013.7,
+    "bead volume kept (mm3)": 30765.4,
+    "STL volume in the raster (mm3)": 52696.0,
+    "bead volume dropped (%)": 0.8
+   }
+  },
+  "dofs": 764583,
+  "fixed bore nodes": 10373,
+  "seat nodes": [
+   60,
+   60,
+   66,
+   66
+  ],
+  "cases": {
+   "yank X": {
+    "carrier": {
+     "+": {
+      "failure index": 0.1229,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       27.1,
+       46.3,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0419,
+        "at (mm)": [
+         30.7,
+         45.7,
+         -20.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.1229,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -21.8
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0975,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 3.818,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 3.637,
+       "at (mm)": [
+        27.1,
+        45.1,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0925,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       27.1,
+       46.3,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0358,
+        "at (mm)": [
+         27.1,
+         37.3,
+         -40.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0925,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -21.8
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0742,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 1.044,
+       "at (mm)": [
+        29.5,
+        40.9,
+        -18.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 4.19,
+       "at (mm)": [
+        30.7,
+        45.7,
+        -20.6
+       ]
+      }
+     }
+    },
+    "CG iterations": 82,
+    "max displacement (um)": 127.97
+   },
+   "yank Y": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0148,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.25,
+      "at (mm)": [
+       28.9,
+       8.5,
+       -35.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0111,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0132,
+        "at (mm)": [
+         27.1,
+         15.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0148,
+        "at (mm)": [
+         28.9,
+         8.5,
+         -35.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.532,
+       "at (mm)": [
+        26.5,
+        15.1,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.983,
+       "at (mm)": [
+        27.1,
+        15.1,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0146,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       27.1,
+       45.7,
+       -22.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0098,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0146,
+        "at (mm)": [
+         27.1,
+         45.7,
+         -22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0121,
+        "at (mm)": [
+         26.5,
+         45.7,
+         -21.8
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.465,
+       "at (mm)": [
+        26.5,
+        45.7,
+        -21.8
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.69,
+       "at (mm)": [
+        30.7,
+        20.5,
+        -33.8
+       ]
+      }
+     }
+    },
+    "CG iterations": 86,
+    "max displacement (um)": 18.61
+   },
+   "yank Z": {
+    "carrier": {
+     "+": {
+      "failure index": 0.0128,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       27.1,
+       46.3,
+       -21.8
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0085,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0128,
+        "at (mm)": [
+         27.1,
+         46.3,
+         -21.8
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0121,
+        "at (mm)": [
+         28.9,
+         8.5,
+         -35.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.444,
+       "at (mm)": [
+        28.9,
+        8.5,
+        -35.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.726,
+       "at (mm)": [
+        27.1,
+        15.1,
+        -22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.01,
+      "mode": "between beads in a layer",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.5,
+      "at (mm)": [
+       27.1,
+       46.3,
+       25.0
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0073,
+        "at (mm)": [
+         27.1,
+         15.1,
+         -22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.01,
+        "at (mm)": [
+         27.1,
+         46.3,
+         25.0
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0097,
+        "at (mm)": [
+         28.9,
+         8.5,
+         -35.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.227,
+       "at (mm)": [
+        26.5,
+        45.7,
+        25.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.771,
+       "at (mm)": [
+        30.7,
+        63.1,
+        -33.8
+       ]
+      }
+     }
+    },
+    "CG iterations": 84,
+    "max displacement (um)": 16.36
+   }
+  },
+  "run time (s)": 372.2
+ },
+ "h2d_pahtcf_06 / as printed / 1.00 mm / clamp": {
+  "config": "h2d_pahtcf_06",
+  "solid": false,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 58062,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     0.9
+    ],
+    "bead volume in the raster (mm3)": 37452.5,
+    "bead volume kept (mm3)": 37060.0,
+    "STL volume in the raster (mm3)": 57605.3,
+    "bead volume dropped (%)": 1.05
+   },
+   "carrier": {
+    "voxels": 48973,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     0.9
+    ],
+    "bead volume in the raster (mm3)": 31013.7,
+    "bead volume kept (mm3)": 30674.5,
+    "STL volume in the raster (mm3)": 52696.0,
+    "bead volume dropped (%)": 1.09
+   }
+  },
+  "dofs": 448458,
+  "split pairs": 1292,
+  "body nodes": {
+   "bracket": 4296,
+   "carrier": 3978
+  },
+  "seat nodes per screw": {
+   "bracket": [
+    8,
+    8,
+    8,
+    8
+   ],
+   "carrier": [
+    29,
+    29,
+    24,
+    24
+   ]
+  },
+  "forces": {
+   "200": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 9,
+    "CG iterations": 99,
+    "split gap (mm)": {
+     "narrowest": -0.0001,
+     "widest": 0.1609,
+     "mean": 0.0661
+    },
+    "split contact force (N)": 462.3,
+    "body: radial contact force, summed (N)": {
+     "bracket": 451.7,
+     "carrier": 468.8
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 0.2035,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.4,
+      "at (mm)": [
+       -12.1,
+       40.1,
+       40.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.2035,
+        "at (mm)": [
+         -12.1,
+         40.1,
+         40.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.185,
+        "at (mm)": [
+         -8.1,
+         39.2,
+         44.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.1118,
+        "at (mm)": [
+         -11.1,
+         23.0,
+         39.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 4.073,
+       "at (mm)": [
+        -8.1,
+        39.2,
+        -34.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 18.454,
+       "at (mm)": [
+        -8.1,
+        40.1,
+        -36.6
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.1481,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 90.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.22,
+      "at (mm)": [
+       -0.9,
+       38.5,
+       -33.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0682,
+        "at (mm)": [
+         21.6,
+         43.5,
+         -19.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0995,
+        "at (mm)": [
+         -3.6,
+         39.5,
+         -33.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.1481,
+        "at (mm)": [
+         -0.9,
+         38.5,
+         -33.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 6.331,
+       "at (mm)": [
+        -0.9,
+        38.5,
+        -33.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 7.91,
+       "at (mm)": [
+        -7.2,
+        19.5,
+        -36.6
+       ]
+      }
+     }
+    }
+   },
+   "1000": {
+    "converged": true,
+    "contact changes at the last iteration": 0,
+    "iterations": 8,
+    "CG iterations": 269,
+    "split gap (mm)": {
+     "narrowest": -0.0003,
+     "widest": 0.1212,
+     "mean": 0.0336
+    },
+    "split contact force (N)": 3152.9,
+    "body: radial contact force, summed (N)": {
+     "bracket": 1177.8,
+     "carrier": 1242.3
+    },
+    "peaks": {
+     "bracket": {
+      "failure index": 1.1243,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.4,
+      "at (mm)": [
+       -12.1,
+       40.1,
+       -36.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 1.1243,
+        "at (mm)": [
+         -12.1,
+         40.1,
+         -36.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.5696,
+        "at (mm)": [
+         -12.1,
+         19.4,
+         40.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.4631,
+        "at (mm)": [
+         -10.1,
+         23.0,
+         39.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 13.101,
+       "at (mm)": [
+        -14.1,
+        38.3,
+        -38.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 43.673,
+       "at (mm)": [
+        -8.1,
+        20.3,
+        -36.6
+       ]
+      }
+     },
+     "carrier": {
+      "failure index": 0.7068,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 105.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.76,
+      "at (mm)": [
+       -3.6,
+       38.5,
+       38.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.1328,
+        "at (mm)": [
+         -0.9,
+         40.5,
+         34.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.2837,
+        "at (mm)": [
+         -3.6,
+         40.5,
+         -33.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.7068,
+        "at (mm)": [
+         -3.6,
+         38.5,
+         38.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 23.076,
+       "at (mm)": [
+        -0.9,
+        38.5,
+        37.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 19.881,
+       "at (mm)": [
+        -3.6,
+        36.5,
+        -33.6
+       ]
+      }
+     }
+    }
+   }
+  },
+  "run time (s)": 839.5
+ },
+ "h2d_pahtcf_06 / as printed / 1.00 mm / pod": {
+  "config": "h2d_pahtcf_06",
+  "solid": false,
+  "voxel (mm)": 1.0,
+  "parts": {
+   "bracket": {
+    "voxels": 58062,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     0.9
+    ],
+    "bead volume in the raster (mm3)": 37452.5,
+    "bead volume kept (mm3)": 37060.0,
+    "STL volume in the raster (mm3)": 57605.3,
+    "bead volume dropped (%)": 1.05
+   },
+   "pod": {
+    "voxels": 19770,
+    "voxel (mm)": [
+     1.0,
+     1.0,
+     0.9
+    ],
+    "bead volume in the raster (mm3)": 12967.9,
+    "bead volume kept (mm3)": 12880.7,
+    "STL volume in the raster (mm3)": 18822.0,
+    "bead volume dropped (%)": 0.67
+   }
+  },
+  "dofs": 321189,
+  "fixed nodes": {
+   "bore": 4296,
+   "pad": 287
+  },
+  "pod front-face nodes tied to the bracket": 1066,
+  "tied area (mm2, nodes x voxel face)": 1066.0,
+  "HQ boss nodes": 176,
+  "edge nodes": 636,
+  "cases": {
+   "HQ 1 g X": {
+    "mean displacement (um)": 0.4147,
+    "optical axis tilt (arcmin)": 0.02528,
+    "image shift (px)": 0.02847,
+    "max displacement anywhere (um)": 0.7214,
+    "CG iterations": 218
+   },
+   "bump X": {
+    "bracket": {
+     "+": {
+      "failure index": 0.0126,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.56,
+      "at (mm)": [
+       -79.1,
+       43.7,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0126,
+        "at (mm)": [
+         -79.1,
+         43.7,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0095,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         21.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0065,
+        "at (mm)": [
+         -78.1,
+         42.8,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.097,
+       "at (mm)": [
+        -45.1,
+        47.3,
+        24.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.452,
+       "at (mm)": [
+        -59.1,
+        47.3,
+        9.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0114,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.56,
+      "at (mm)": [
+       -79.1,
+       43.7,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0114,
+        "at (mm)": [
+         -79.1,
+         43.7,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0094,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0053,
+        "at (mm)": [
+         -78.1,
+         41.9,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.216,
+       "at (mm)": [
+        -79.1,
+        42.8,
+        21.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.263,
+       "at (mm)": [
+        -79.1,
+        43.7,
+        21.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.0165,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.25,
+      "at (mm)": [
+       -90.7,
+       43.4,
+       15.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0165,
+        "at (mm)": [
+         -90.7,
+         43.4,
+         15.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0128,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0127,
+        "at (mm)": [
+         -81.8,
+         45.2,
+         25.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.11,
+       "at (mm)": [
+        -92.0,
+        47.7,
+        18.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.73,
+       "at (mm)": [
+        -80.3,
+        50.4,
+        21.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0163,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 170.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.99,
+      "at (mm)": [
+       -80.6,
+       44.6,
+       22.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0163,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0145,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0156,
+        "at (mm)": [
+         -81.8,
+         45.2,
+         25.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.546,
+       "at (mm)": [
+        -81.8,
+        45.2,
+        25.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.651,
+       "at (mm)": [
+        -90.7,
+        43.4,
+        15.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 241
+   },
+   "HQ 1 g Y": {
+    "mean displacement (um)": 0.9119,
+    "optical axis tilt (arcmin)": 0.13863,
+    "image shift (px)": 0.1561,
+    "max displacement anywhere (um)": 2.2428,
+    "CG iterations": 248
+   },
+   "bump Y": {
+    "bracket": {
+     "+": {
+      "failure index": 0.0316,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.37,
+      "at (mm)": [
+       -79.1,
+       42.8,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0316,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0296,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         22.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0251,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         -17.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.697,
+       "at (mm)": [
+        -75.1,
+        40.1,
+        21.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 3.173,
+       "at (mm)": [
+        -79.1,
+        43.7,
+        21.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0317,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.56,
+      "at (mm)": [
+       -79.1,
+       43.7,
+       21.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0317,
+        "at (mm)": [
+         -79.1,
+         43.7,
+         21.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.028,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         21.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0231,
+        "at (mm)": [
+         -79.1,
+         42.8,
+         -17.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.333,
+       "at (mm)": [
+        -38.1,
+        46.4,
+        20.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 0.729,
+       "at (mm)": [
+        -53.1,
+        49.1,
+        9.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.049,
+      "mode": "between layers",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "sparse infill",
+      "bead fraction of the voxel": 0.15,
+      "at (mm)": [
+       -81.8,
+       45.2,
+       25.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0413,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         25.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0388,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         24.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.049,
+        "at (mm)": [
+         -81.8,
+         45.2,
+         25.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 1.761,
+       "at (mm)": [
+        -81.8,
+        45.2,
+        25.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 3.954,
+       "at (mm)": [
+        -80.6,
+        44.6,
+        22.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0395,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 175.0,
+      "feature": "solid infill or skin",
+      "bead fraction of the voxel": 0.99,
+      "at (mm)": [
+       -80.6,
+       44.6,
+       22.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0395,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         22.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0355,
+        "at (mm)": [
+         -80.6,
+         44.6,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0394,
+        "at (mm)": [
+         -81.8,
+         45.2,
+         25.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.318,
+       "at (mm)": [
+        -92.0,
+        47.7,
+        18.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 3.295,
+       "at (mm)": [
+        -80.3,
+        50.4,
+        20.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 334
+   },
+   "HQ 1 g Z": {
+    "mean displacement (um)": 0.8332,
+    "optical axis tilt (arcmin)": 0.01115,
+    "image shift (px)": 0.01255,
+    "max displacement anywhere (um)": 1.5435,
+    "CG iterations": 251
+   },
+   "bump Z": {
+    "bracket": {
+     "+": {
+      "failure index": 0.0149,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 0.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.26,
+      "at (mm)": [
+       -49.1,
+       46.4,
+       25.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0149,
+        "at (mm)": [
+         -49.1,
+         46.4,
+         25.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0088,
+        "at (mm)": [
+         -53.1,
+         42.8,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0088,
+        "at (mm)": [
+         -75.1,
+         40.1,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.215,
+       "at (mm)": [
+        -75.1,
+        40.1,
+        21.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.676,
+       "at (mm)": [
+        -59.1,
+        47.3,
+        9.4
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0168,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 45.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.17,
+      "at (mm)": [
+       -59.1,
+       47.3,
+       9.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0168,
+        "at (mm)": [
+         -59.1,
+         47.3,
+         9.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0127,
+        "at (mm)": [
+         -53.1,
+         42.8,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.008,
+        "at (mm)": [
+         -75.1,
+         40.1,
+         21.4
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.235,
+       "at (mm)": [
+        -38.1,
+        46.4,
+        21.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.493,
+       "at (mm)": [
+        -49.1,
+        46.4,
+        25.4
+       ]
+      }
+     }
+    },
+    "pod": {
+     "+": {
+      "failure index": 0.0195,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 135.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.25,
+      "at (mm)": [
+       -90.7,
+       43.4,
+       15.4
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0195,
+        "at (mm)": [
+         -90.7,
+         43.4,
+         15.4
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0127,
+        "at (mm)": [
+         -99.4,
+         44.5,
+         -4.6
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0117,
+        "at (mm)": [
+         -90.4,
+         42.6,
+         -12.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.297,
+       "at (mm)": [
+        -90.4,
+        42.6,
+        -12.6
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 2.064,
+       "at (mm)": [
+        -91.6,
+        43.1,
+        -10.6
+       ]
+      }
+     },
+     "-": {
+      "failure index": 0.0206,
+      "mode": "along the bead",
+      "bead direction in the layer (deg)": 50.0,
+      "feature": "wall",
+      "bead fraction of the voxel": 0.25,
+      "at (mm)": [
+       -91.6,
+       43.1,
+       -10.6
+      ],
+      "worst voxel per mode": {
+       "along the bead": {
+        "failure index": 0.0206,
+        "at (mm)": [
+         -91.6,
+         43.1,
+         -10.6
+        ]
+       },
+       "between beads in a layer": {
+        "failure index": 0.0104,
+        "at (mm)": [
+         -54.8,
+         52.5,
+         25.4
+        ]
+       },
+       "between layers": {
+        "failure index": 0.0106,
+        "at (mm)": [
+         -90.4,
+         42.6,
+         -12.6
+        ]
+       }
+      },
+      "largest bead tension across the layers (MPa)": {
+       "value": 0.275,
+       "at (mm)": [
+        -90.4,
+        42.6,
+        16.4
+       ]
+      },
+      "largest bead tension along the bead (MPa)": {
+       "value": 1.946,
+       "at (mm)": [
+        -90.7,
+        43.4,
+        15.4
+       ]
+      }
+     }
+    },
+    "CG iterations": 395
+   }
+  },
+  "run time (s)": 1637.6
+ },
+ "h2d_pahtcf_06 / as printed / 1.00 mm / zones": {
+  "200": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.185,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.4,
+     "at (mm)": [
+      -8.1,
+      39.2,
+      44.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1555,
+       "at (mm)": [
+        -8.1,
+        40.1,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.185,
+       "at (mm)": [
+        -8.1,
+        39.2,
+        44.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.0994,
+       "at (mm)": [
+        -8.1,
+        39.2,
+        -34.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 4.073,
+      "at (mm)": [
+       -8.1,
+       39.2,
+       -34.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 18.454,
+      "at (mm)": [
+       -8.1,
+       40.1,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.4019,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.3,
+     "at (mm)": [
+      -14.1,
+      41.0,
+      -36.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.3591,
+       "at (mm)": [
+        -13.1,
+        22.1,
+        -34.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.4019,
+       "at (mm)": [
+        -14.1,
+        41.0,
+        -36.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1584,
+       "at (mm)": [
+        -13.1,
+        39.2,
+        -38.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 4.796,
+      "at (mm)": [
+       -14.1,
+       19.4,
+       40.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 21.835,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       -34.6
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.1091,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 1.0,
+     "at (mm)": [
+      -7.2,
+      19.5,
+      -41.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.0682,
+       "at (mm)": [
+        21.6,
+        43.5,
+        -19.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.0652,
+       "at (mm)": [
+        18.9,
+        15.5,
+        28.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.1091,
+       "at (mm)": [
+        -7.2,
+        19.5,
+        -41.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 3.053,
+      "at (mm)": [
+       21.6,
+       16.5,
+       -21.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 7.91,
+      "at (mm)": [
+       -7.2,
+       19.5,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 0.2917,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 100.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.22,
+     "at (mm)": [
+      -1.8,
+      38.5,
+      -33.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.0387,
+       "at (mm)": [
+        -6.3,
+        18.5,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.0995,
+       "at (mm)": [
+        -3.6,
+        39.5,
+        -33.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.2917,
+       "at (mm)": [
+        -1.8,
+        38.5,
+        -33.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 11.203,
+      "at (mm)": [
+       -1.8,
+       38.5,
+       -33.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 4.674,
+      "at (mm)": [
+       -3.6,
+       36.5,
+       -33.6
+      ]
+     }
+    }
+   }
+  },
+  "1000": {
+   "bracket": {
+    "outside the bearing zones": {
+     "failure index": 0.6442,
+     "mode": "along the bead",
+     "bead direction in the layer (deg)": 0.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.16,
+     "at (mm)": [
+      -8.1,
+      40.1,
+      -36.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.6442,
+       "at (mm)": [
+        -8.1,
+        40.1,
+        -36.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.4999,
+       "at (mm)": [
+        -8.1,
+        39.2,
+        44.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.4518,
+       "at (mm)": [
+        -9.1,
+        23.0,
+        39.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 10.093,
+      "at (mm)": [
+       -8.1,
+       39.2,
+       -34.6
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 43.673,
+      "at (mm)": [
+       -8.1,
+       20.3,
+       -36.6
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 1.9224,
+     "mode": "between beads in a layer",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.3,
+     "at (mm)": [
+      -14.1,
+      41.0,
+      -36.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 1.8647,
+       "at (mm)": [
+        -13.1,
+        22.1,
+        -34.6
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 1.9224,
+       "at (mm)": [
+        -14.1,
+        41.0,
+        -36.6
+       ]
+      },
+      "between layers": {
+       "failure index": 0.4631,
+       "at (mm)": [
+        -10.1,
+        23.0,
+        39.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 23.663,
+      "at (mm)": [
+       -14.1,
+       19.4,
+       40.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 102.048,
+      "at (mm)": [
+       -14.1,
+       23.0,
+       -34.6
+      ]
+     }
+    }
+   },
+   "carrier": {
+    "outside the bearing zones": {
+     "failure index": 0.4252,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 90.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.79,
+     "at (mm)": [
+      -7.2,
+      38.5,
+      -34.6
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.1328,
+       "at (mm)": [
+        -0.9,
+        40.5,
+        34.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.1442,
+       "at (mm)": [
+        -0.9,
+        42.5,
+        36.4
+       ]
+      },
+      "between layers": {
+       "failure index": 0.4252,
+       "at (mm)": [
+        -7.2,
+        38.5,
+        -34.6
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 6.623,
+      "at (mm)": [
+       1.8,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 12.057,
+      "at (mm)": [
+       -7.2,
+       36.5,
+       37.4
+      ]
+     }
+    },
+    "in the bearing zones": {
+     "failure index": 1.1602,
+     "mode": "between layers",
+     "bead direction in the layer (deg)": 100.0,
+     "feature": "wall",
+     "bead fraction of the voxel": 0.22,
+     "at (mm)": [
+      -1.8,
+      38.5,
+      37.4
+     ],
+     "worst voxel per mode": {
+      "along the bead": {
+       "failure index": 0.0602,
+       "at (mm)": [
+        0.9,
+        39.5,
+        44.4
+       ]
+      },
+      "between beads in a layer": {
+       "failure index": 0.2839,
+       "at (mm)": [
+        -2.7,
+        41.5,
+        -34.6
+       ]
+      },
+      "between layers": {
+       "failure index": 1.1602,
+       "at (mm)": [
+        -1.8,
+        38.5,
+        37.4
+       ]
+      }
+     },
+     "largest bead tension across the layers (MPa)": {
+      "value": 42.886,
+      "at (mm)": [
+       -1.8,
+       38.5,
+       37.4
+      ]
+     },
+     "largest bead tension along the bead (MPa)": {
+      "value": 19.881,
+      "at (mm)": [
+       -3.6,
+       36.5,
+       -33.6
+      ]
+     }
+    }
+   }
+  },
+  "bearing stress by hand (MPa per N of screw force)": {
+   "nut on the bracket": 0.05842,
+   "head on the carrier": 0.06812,
+   "areas (mm2)": [
+    17.1,
+    14.7
+   ]
+  }
+ }
+}

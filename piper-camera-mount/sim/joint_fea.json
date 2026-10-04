@@ -1,0 +1,162 @@
+{
+  "what": "HQ Camera motion under its own inertia (83 g at 1 g), pod bonded to bracket; old strip joint (66763fc) vs new 45 deg seat",
+  "settings": {
+    "material": {
+      "E (MPa)": 2400.0,
+      "nu": 0.35,
+      "density (g/cm3)": 1.24,
+      "note": "solid, isotropic PLA; infill and layer lines make a print softer: compare, don't trust the absolute values"
+    },
+    "elements": "quadratic tets (P2) on a straight-sided gmsh mesh",
+    "mesh size (mm)": {
+      "max": 3.0,
+      "min": 0.8,
+      "per 2 pi of curvature": 12
+    },
+    "joint": "bracket and pod fragmented to one conforming mesh: bonded, i.e. a preloaded bolted joint that neither slips nor opens; screws not modelled",
+    "fixed": "half-collar bore (r = bore_r, y = collar_y0..collar_y1) and pad face y = collar_y0 within 7.0 mm of each tab screw",
+    "load": "83 g x 9.80665 m/s2 = 0.814 N along world X, Y, Z in turn, uniform traction on the HQ boss end faces (station y = 0, within 4.0 mm of each boss centre)",
+    "tilt": "best-fit small rigid rotation of the boss-face P2 nodes, component normal to the optical axis",
+    "image shift": "lens_f * tan(tilt) / 1.55 um",
+    "solver": "pyamg smoothed aggregation (rigid-body near-nullspace) + CG, rtol 1e-10",
+    "frequency": "Rayleigh-Ritz on the X, Y, Z static deflections (an upper bound); printed-part density + camera mass spread over the boss faces"
+  },
+  "old": {
+    "mesh": {
+      "nodes (P1)": 11557,
+      "tets": 42824,
+      "dofs (P2)": 224943,
+      "free dofs": 218244
+    },
+    "areas (mm2)": {
+      "bore": 2802.8,
+      "pad": 260.6,
+      "boss": 67.4
+    },
+    "printed mass (g)": 68.0,
+    "cases": {
+      "X": {
+        "mean displacement (um)": 0.642,
+        "mean displacement vector (um)": [
+          0.555,
+          0.322,
+          -0.02
+        ],
+        "optical axis tilt (arcmin)": 0.0182,
+        "roll about the optical axis (arcmin)": 0.0011,
+        "image shift (px)": 0.0205,
+        "max displacement anywhere (um)": 1.047,
+        "CG iterations": 134
+      },
+      "Y": {
+        "mean displacement (um)": 12.108,
+        "mean displacement vector (um)": [
+          0.322,
+          12.103,
+          0.052
+        ],
+        "optical axis tilt (arcmin)": 1.7736,
+        "roll about the optical axis (arcmin)": 0.0043,
+        "image shift (px)": 1.9971,
+        "max displacement anywhere (um)": 25.538,
+        "CG iterations": 142
+      },
+      "Z": {
+        "mean displacement (um)": 4.152,
+        "mean displacement vector (um)": [
+          -0.02,
+          0.052,
+          4.152
+        ],
+        "optical axis tilt (arcmin)": 0.1581,
+        "roll about the optical axis (arcmin)": 0.2084,
+        "image shift (px)": 0.1781,
+        "max displacement anywhere (um)": 8.735,
+        "CG iterations": 141
+      }
+    },
+    "first natural frequency, Rayleigh-Ritz (Hz)": 108.6,
+    "solve time (s)": 583.2,
+    "bonded contact area, pod to bracket (mm2)": 324.9,
+    "mesh time (s)": 2.3
+  },
+  "new": {
+    "mesh": {
+      "nodes (P1)": 14766,
+      "tets": 58970,
+      "dofs (P2)": 296451,
+      "free dofs": 289761
+    },
+    "areas (mm2)": {
+      "bore": 2815.4,
+      "pad": 255.6,
+      "boss": 67.4
+    },
+    "printed mass (g)": 94.4,
+    "cases": {
+      "X": {
+        "mean displacement (um)": 0.477,
+        "mean displacement vector (um)": [
+          0.392,
+          0.271,
+          0.022
+        ],
+        "optical axis tilt (arcmin)": 0.0294,
+        "roll about the optical axis (arcmin)": 0.0012,
+        "image shift (px)": 0.0332,
+        "max displacement anywhere (um)": 0.932,
+        "CG iterations": 134
+      },
+      "Y": {
+        "mean displacement (um)": 0.964,
+        "mean displacement vector (um)": [
+          0.271,
+          0.925,
+          0.008
+        ],
+        "optical axis tilt (arcmin)": 0.1616,
+        "roll about the optical axis (arcmin)": 0.0051,
+        "image shift (px)": 0.1819,
+        "max displacement anywhere (um)": 2.78,
+        "CG iterations": 137
+      },
+      "Z": {
+        "mean displacement (um)": 0.974,
+        "mean displacement vector (um)": [
+          0.022,
+          0.008,
+          0.974
+        ],
+        "optical axis tilt (arcmin)": 0.0096,
+        "roll about the optical axis (arcmin)": 0.0436,
+        "image shift (px)": 0.0108,
+        "max displacement anywhere (um)": 1.86,
+        "CG iterations": 143
+      }
+    },
+    "first natural frequency, Rayleigh-Ritz (Hz)": 358.5,
+    "solve time (s)": 628.0,
+    "bonded contact area, pod to bracket (mm2)": 987.5,
+    "mesh time (s)": 9.8
+  },
+  "old/new": {
+    "X": {
+      "displacement old/new": 1.35,
+      "tilt old/new": 0.62
+    },
+    "Y": {
+      "displacement old/new": 12.56,
+      "tilt old/new": 10.98
+    },
+    "Z": {
+      "displacement old/new": 4.26,
+      "tilt old/new": 16.47
+    }
+  },
+  "render": {
+    "file": "renders/joint_fea.png",
+    "load case": "Y",
+    "deformation scale": 100
+  },
+  "run time (s)": 1231.5
+}

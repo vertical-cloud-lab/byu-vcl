@@ -1,0 +1,24 @@
+{
+  "date": "2026-09-27",
+  "document": "https://cad.onshape.com/documents/93ef145982c24192bfd160be/w/e3d08fcb2dcad7c92e183721",
+  "isPublic": false,
+  "tabs_before": {
+    "assembly": "PARTSTUDIO (exports/assembly.step, our parts only)",
+    "Part Studio 1": "PARTSTUDIO, empty default",
+    "Assembly 1": "ASSEMBLY, empty default"
+  },
+  "import": {
+    "file": "AgileX_Gripper.STEP",
+    "sha256": "6e6c9bb04d7e4b3c7ebcd452dd5e730a4eba2af08b1b80f1e1d2607956a5815d",
+    "state": "DONE",
+    "elements": ["0b3290773556a588df64e8a0"]
+  },
+  "tabs_after": {
+    "Mount on gripper": "ASSEMBLY (was Assembly 1): both Part Studios inserted whole, 28 part instances, every transform the identity",
+    "Mount parts (exports/assembly.step)": "PARTSTUDIO (was assembly)",
+    "AgileX gripper (reference, do not share)": "PARTSTUDIO, 13 parts, AgileX's own part names",
+    "Part Studio 1": "still there, empty: DELETE returned HTTP 403 'Invalid API key state' (the key has no delete scope)"
+  },
+  "shaded_view": "onshape_on_gripper.png (the assembly, same view as renders/assembly.png)",
+  "api_calls_used": "about 15: document, elements, import + status polls, 2 inserts, 3 renames, the refused delete; then elements, assembly definition and shaded view to check"
+}
