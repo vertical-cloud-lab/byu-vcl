@@ -1,0 +1,240 @@
+{
+ "rest": [
+  {
+   "a": "furnace_body",
+   "b": "oring",
+   "depth": 2.5,
+   "at": [
+    102,
+    68,
+    1342
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "tc_plug",
+   "depth": 8.7,
+   "at": [
+    65,
+    84,
+    1345
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "hood_hinge",
+   "depth": 5.8,
+   "at": [
+    -135,
+    -4,
+    1317
+   ]
+  },
+  {
+   "a": "lever_clevis",
+   "b": "lever_pin",
+   "depth": 2.4,
+   "at": [
+    114,
+    10,
+    1394
+   ]
+  },
+  {
+   "a": "coil_lead0",
+   "b": "coil_lead1",
+   "depth": 1.7,
+   "at": [
+    -197,
+    -6,
+    1198
+   ]
+  },
+  {
+   "a": "hood",
+   "b": "hood_knob",
+   "depth": 4.4,
+   "at": [
+    104,
+    -20,
+    1464
+   ]
+  },
+  {
+   "a": "chamber",
+   "b": "viewport_flange",
+   "depth": 21.7,
+   "at": [
+    -1,
+    -120,
+    1098
+   ]
+  },
+  {
+   "a": "base_frame",
+   "b": "feet",
+   "depth": 2.0,
+   "at": [
+    -95,
+    527,
+    110
+   ]
+  },
+  {
+   "a": "side_door_r",
+   "b": "hmi_arm",
+   "depth": 3.0,
+   "at": [
+    633,
+    207,
+    1394
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi",
+   "depth": 19.8,
+   "at": [
+    745,
+    50,
+    1414
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi_screen",
+   "depth": 18.8,
+   "at": [
+    746,
+    51,
+    1406
+   ]
+  },
+  {
+   "a": "argon_regulator",
+   "b": "argon_gauges",
+   "depth": 4.0,
+   "at": [
+    -581,
+    734,
+    1481
+   ]
+  }
+ ],
+ "anims": {
+  "summary": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "F.1",
+     "caption": "Lid open, lever up",
+     "start_frame": 0,
+     "end_frame": 53
+    },
+    {
+     "label": "F.2",
+     "caption": "Holder screwed into the crucible (sped up)",
+     "start_frame": 54,
+     "end_frame": 86
+    },
+    {
+     "label": "F.3",
+     "caption": "Bottom insulation, then the crucible down into the coil",
+     "start_frame": 87,
+     "end_frame": 167
+    },
+    {
+     "label": "F.4",
+     "caption": "Door open, the graphite nut on from below (sped up)",
+     "start_frame": 168,
+     "end_frame": 236
+    },
+    {
+     "label": "F.5",
+     "caption": "Side and top insulation",
+     "start_frame": 237,
+     "end_frame": 269
+    },
+    {
+     "label": "F.6",
+     "caption": "Thermocouple in (sped up)",
+     "start_frame": 270,
+     "end_frame": 290
+    },
+    {
+     "label": "F.7",
+     "caption": "Sealing rod in",
+     "start_frame": 291,
+     "end_frame": 320
+    },
+    {
+     "label": "F.8",
+     "caption": "Lever down, pin in, rod down (sped up)",
+     "start_frame": 321,
+     "end_frame": 341
+    },
+    {
+     "label": "F.9",
+     "caption": "The charge",
+     "start_frame": 342,
+     "end_frame": 383
+    },
+    {
+     "label": "F.10",
+     "caption": "Lid closed",
+     "start_frame": 384,
+     "end_frame": 419
+    },
+    {
+     "label": "S.1",
+     "caption": "Transducer",
+     "start_frame": 420,
+     "end_frame": 461
+    },
+    {
+     "label": "S.2",
+     "caption": "Booster and sonotrode on (sped up)",
+     "start_frame": 462,
+     "end_frame": 494
+    },
+    {
+     "label": "S.3",
+     "caption": "Into the door, plate on (sped up)",
+     "start_frame": 495,
+     "end_frame": 530
+    },
+    {
+     "label": "S.4",
+     "caption": "Cover on, door shut",
+     "start_frame": 531,
+     "end_frame": 575
+    },
+    {
+     "label": "S.5",
+     "caption": "Three bolts (sped up)",
+     "start_frame": 576,
+     "end_frame": 596
+    },
+    {
+     "label": "R.1",
+     "caption": "Argon in; the coil melts the charge",
+     "start_frame": 597,
+     "end_frame": 716
+    },
+    {
+     "label": "R.2",
+     "caption": "Vibration on, rod up: the melt onto the plate",
+     "start_frame": 717,
+     "end_frame": 839
+    },
+    {
+     "label": "R.3",
+     "caption": "Droplets freeze into powder, down into the container",
+     "start_frame": 840,
+     "end_frame": 968
+    }
+   ]
+  }
+ }
+}

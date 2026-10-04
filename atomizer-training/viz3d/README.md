@@ -81,8 +81,10 @@ sped up: the holder takes 4 turns in under a second and the nut 5 turns in about
 sonotrode, plate, cover and the three bolts are sped up too. The scan, the wet test, the gas washes and every hold are left
 out. From the nut to the charge it keeps one camera, a section from the front right that shows the crucible in the coil
 and the nut under the deck together. In the pour it zooms in on the plate, then pulls back to the container. It is
-rendered only in clean mode, for [`../ppt/`](../ppt/README.md), so it has no GIF. Its interference check is
-[`out/collisions_summary.md`](out/collisions_summary.md).
+rendered only in clean mode, for [`../ppt/`](../ppt/README.md), so it has no GIF. Its interference check,
+[`out/collisions_summary.md`](out/collisions_summary.md), found no interference. It was run at the video's 30 fps
+(`VIZ3D_FPS=30 xvfb-run -a python collide.py summary`), not the usual 15, because the sped-up moves cover more ground
+per frame.
 
 Heat is shown as colour, not physics: the charge goes grey → dull red → orange with the readout temperature, the coil
 brightens while the generator runs, the melt is an emissive orange. The argon is a light-blue translucent volume that

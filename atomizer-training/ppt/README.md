@@ -33,7 +33,7 @@ They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build i
     booster, sonotrode and plate, the cover and the three bolts.
   - Left out: the scan, the wet test, the gas washes and every hold.
   - Its 7 captions name the key steps only, so the fasteners pass without one. Its last frame is held 0.7 s.
-  - [`../viz3d/out/collisions_summary.md`](../viz3d/out/collisions_summary.md) is its interference check.
+  - Nothing passes through anything, checked frame by frame at 30 fps: [`../viz3d/out/collisions_summary.md`](../viz3d/out/collisions_summary.md).
 
 ## How they differ from the GIFs
 
