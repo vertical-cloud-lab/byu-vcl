@@ -37,13 +37,22 @@ the G-code that slice_configs.py writes for it, in each of three configurations:
   yank    the carrier, its bore fixed: 10 N at the USB-C plug, carried to the four standoff seats as
           through a rigid board.
 
+  zones   a solved clamp re-read (no solve): the peaks under the nuts and heads, at the split faces
+          (contact edges, which don't converge with the voxel size), in the collar and ears away
+          from both, and at the bracket's ear root, where ccx_split.py's solid PLA peaks.
+
 - Checks. The same voxel grids filled solid with ccx's isotropic PLA (E 2400 MPa, nu 0.35), against
-  ccx_split.json and ccx_stress.json (--solid). The clamp at a second voxel size (--h). Each
+  ccx_split.json and ccx_stress.json (--solid). The clamp at 1.0, 0.8 and 0.6 mm (--h). Each
   raster's bead volume against the filament its G-code pushes.
+- Solving. CG with pyamg's smoothed aggregation (--solver amg), or a sparse Cholesky through
+  pypardiso (--solver direct: faster up to about 0.8 mm, but 14.5 GB of factor at 0.6 mm). At
+  0.6 mm the clamp has 1.6 M unknowns; start it from a coarser solution with --warm-from 1.0, which
+  cuts its contact iterations from 12-16 to 4-7 (8 to 15 minutes, about 8 GB).
 
     python piper-camera-mount/slice/slice_configs.py --bambu ~/bambu/squashfs-root   # the G-code
-    pip install numba pyamg trimesh opencv-python-headless cadquery gmsh scikit-fem shapely rtree
-    python piper-camera-mount/sim/sliced_fea.py [--configs ...] [--cases clamp pod yank] [--solid] [--h 0.6]
+    pip install numba pyamg pypardiso trimesh opencv-python-headless cadquery gmsh scikit-fem shapely rtree networkx
+    python piper-camera-mount/sim/sliced_fea.py [--configs ...] [--cases clamp zones pod yank] [--solid] [--h 0.6]
+        [--solver amg|direct] [--warm-from 1.0] [--max-iter 16]
 
 Out: sim/sliced_fea.json (merged, so cases can be run separately) and the cache in sim/build_sliced/.
 """
@@ -98,9 +107,11 @@ ALPHA_FIX, ALPHA_CONTACT = 1e2, 3e1     # penalty stiffness, as multiples of the
 MAX_ITER = {"n": 10}                    # contact iterations per load; --max-iter
 SOLVER = {"name": "amg"}            # or "direct"; set by --solver
 SETTLED = 0.002                         # contact has settled when under this share of its rows change
+REBUILD_FRAC = 0.01                     # AMG is rebuilt when over this share of the contact rows changed
 BUMP_N, YANK_LEVER = 10.0, 10.0         # as ccx_stress.py
 EXCL_LOAD, EXCL_SUPPORT = 1.5, 2.0      # mm: peaks are taken this far from loaded and from fixed nodes
 EAR_R = 2.5                             # mm: "at the ear root" is within this of CalculiX's peak there
+SPLIT_DEPTH = 1.5                       # mm: the split faces' zone, from each face into its part
 RX90 = np.array([[1.0, 0, 0], [0, 0, -1], [0, 1, 0]])     # cadquery rotate about +X by 90: +Y -> +Z
 RY90 = np.array([[0.0, 0, 1], [0, 1, 0], [-1, 0, 0]])     # about +Y by 90: -X -> +Z
 
@@ -270,7 +281,8 @@ def largest_component(ijk: np.ndarray) -> np.ndarray:
 class Part:
     """One part's voxel model, its print transform, and what each voxel holds."""
 
-    def __init__(self, name: str, g: dict, mat: dict, R: np.ndarray, t: np.ndarray, solid: bool = False):
+    def __init__(self, name: str, g: dict, mat: dict, R: np.ndarray, t: np.ndarray, solid: bool = False,
+                 assemble: bool = True):
         self.name, self.mat, self.R, self.t, self.solid = name, mat, R, t, solid
         N = g["npix"]
         frac = (g["cin"] if solid else g["cnt"]) / N
@@ -292,7 +304,7 @@ class Part:
         else:
             coef = np.column_stack([self.cnt, g["trig"][sel]]) / N               # (n, 5)
             C = (coef @ mat["fourier"]).reshape(-1, 6, 6)
-        self.model = VoxelModel(self.ijk, C, g["h"], g["origin"])
+        self.model = VoxelModel(self.ijk, C, g["h"], g["origin"], assemble=assemble)
         self.xw = (self.model.x - t) @ R                                         # nodes, world
         self.cw = (g["origin"] + (self.ijk + 0.5) * g["h"] - t) @ R              # voxel centres, world
         self.surface = self.model.surface
@@ -567,10 +579,10 @@ def away(q: Part, nodes_list, r: float) -> np.ndarray:
 
 # --- cases ---------------------------------------------------------------------------------------
 
-def make_parts(cfg: str, names, p, h: float, solid: bool) -> list[Part]:
+def make_parts(cfg: str, names, p, h: float, solid: bool, assemble: bool = True) -> list[Part]:
     tr = transforms(p)
     mat = material("solid" if solid else CONFIGS[cfg]["material"])
-    return [Part(n, voxel_grid(cfg, n, h), mat, *tr[n], solid=solid) for n in names]
+    return [Part(n, voxel_grid(cfg, n, h), mat, *tr[n], solid=solid, assemble=assemble) for n in names]
 
 
 def ccx_ear_root(F: int) -> np.ndarray:
@@ -658,14 +670,17 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | N
     out["contact rows"] = int(len(contact))
     solver, U = None, None
     changes = 0
+    n_rows = sum(len(b[2]) for b in body) + len(split)
     for F in forces:
         hist = []
         if warm is not None and F in warm.get("contact", {}):
             U = warm_start(warm, F, system, row_xw, kind, on)
         for it in range(MAX_ITER["n"]):
-            # the solver keeps its AMG hierarchy (or factorisation) from the last contact set while CG
-            # still converges quickly on it, and rebuilds once it doesn't
-            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U)
+            # AMG: a fresh hierarchy once many contacts have flipped (the old one can take five times the CG
+            # iterations); otherwise the old one, until CG stalls on it. The direct solver keeps its
+            # factorisation until CG stalls, which at 1.0 mm is always the cheaper way
+            many = SOLVER["name"] == "amg" and changes > REBUILD_FRAC * n_rows
+            U, info, solver = solve(system, rows, on, F * f1, solver, x0=U, rebuild=many)
             gap = rows.g0 + rows.B @ U
             lam = -rows.k * gap * on                    # compression > 0 on active rows
             changes = 0
@@ -694,14 +709,14 @@ def case_clamp(cfg: str, p, h: float, solid: bool, forces=FORCES, warm: dict | N
                "peaks": {}}
         for i, q in enumerate((qb, qc)):
             res["peaks"][q.name] = evaluate(q, part_u(system, U, i), keep[i])
+            if not solid:
+                viz["fi"].setdefault(q.name, {})[F] = q.last_fi.astype(np.float32)
         # the bracket's ear root, where CalculiX's solid PLA peaks: the peak within EAR_R of that point
         xyz = ccx_ear_root(F)
         near = keep[0] & (np.linalg.norm(qb.cw - xyz, axis=1) < EAR_R)
         if near.any():
             res["at CalculiX's ear-root peak"] = {"point (mm)": [round(float(c), 1) for c in xyz], "radius (mm)": EAR_R,
                                                   "bracket": evaluate(qb, part_u(system, U, 0), near)}
-            if not solid:
-                viz["fi"].setdefault(q.name, {})[F] = q.last_fi.astype(np.float32)
         viz["U"][F] = U.astype(np.float32)
         viz["contact"][F] = {"xyz": row_xw[contact].astype(np.float32), "on": on[contact].copy(),
                              "kind": kind[contact]}
@@ -855,13 +870,19 @@ def bearing_zone(cw: np.ndarray, p, side: int, r: float = 4.5, depth: float = 4.
     return inside
 
 
+def split_zone(cw: np.ndarray, p, depth: float = SPLIT_DEPTH) -> np.ndarray:
+    """Voxels within depth of the split plane (x = ax_x, world): the faces that press together. Their
+    edges, at the screw holes and the ends of the ears, carry the contact's edge peaks."""
+    return np.abs(cw[:, 0] - p.ax_x) < p.split_gap / 2 + depth
+
+
 def clamp_zones(cfg: str, p, h: float, solid: bool = False) -> dict:
     """Re-evaluate a solved clamp (viz pickle) with the nut and head bearing zones apart: the peak
     outside them (the collar and ears as a structure) and inside them (bearing under the nut or head,
     where 1.0 mm voxels put a whole nut's load on a few nodes)."""
     viz = pickle.loads((CACHE / f"viz_{cfg}_{'solid' if solid else 'printed'}_{h:.2f}.pkl").read_bytes())
-    qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, solid)
-    system = System([qb, qc])
+    qb, qc = make_parts(cfg, ("bracket", "carrier"), p, h, solid, assemble=False)
+    system = argparse.Namespace(off=np.cumsum([0] + [3 * q.model.n_nodes for q in (qb, qc)]))   # dofs only
     out = {}
     for F in viz["F"]:
         U = viz["U"][F].astype(float)
@@ -869,8 +890,11 @@ def clamp_zones(cfg: str, p, h: float, solid: bool = False) -> dict:
         for i, (q, side) in enumerate(((qb, -1), (qc, 1))):
             zone = bearing_zone(q.cw, p, side)
             u = part_u(system, U, i)
+            face = split_zone(q.cw, p)
             res[q.name] = {"outside the bearing zones": evaluate(q, u, ~zone),
-                           "in the bearing zones": evaluate(q, u, zone)}
+                           "in the bearing zones": evaluate(q, u, zone),
+                           "outside the bearing zones and the split faces": evaluate(q, u, ~zone & ~face),
+                           "at the split faces, outside the bearing zones": evaluate(q, u, face & ~zone)}
         near = ~bearing_zone(qb.cw, p, -1) & (np.linalg.norm(qb.cw - ccx_ear_root(F), axis=1) < EAR_R)
         res["bracket at CalculiX's ear-root peak"] = evaluate(qb, part_u(system, U, 0), near)
         out[str(F)] = res

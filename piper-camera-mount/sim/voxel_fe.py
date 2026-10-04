@@ -70,7 +70,7 @@ class VoxelModel:
     """Solid voxels at integer grid indices ijk (n, 3), each with a 6 x 6 stiffness C (n, 6, 6).
     origin + (ijk + 0.5) * h is a voxel centre; nodes sit at origin + node_ijk * h."""
 
-    def __init__(self, ijk: np.ndarray, C: np.ndarray, h, origin):
+    def __init__(self, ijk: np.ndarray, C: np.ndarray, h, origin, assemble: bool = True):
         self.ijk = np.asarray(ijk, np.int64)
         self.h = np.asarray(h, float)
         self.origin = np.asarray(origin, float)
@@ -84,7 +84,7 @@ class VoxelModel:
         self.n_nodes = len(ukey)
         self.brick = Brick(self.h)
         self.C = C
-        self.K = self._assemble(c21(C))
+        self.K = self._assemble(c21(C)) if assemble else None      # not needed to re-read a solution
         # nodes on the outer surface: any of their 8 surrounding voxels missing
         cnt = np.bincount(self.conn.ravel(), minlength=self.n_nodes)
         self.surface = cnt < 8

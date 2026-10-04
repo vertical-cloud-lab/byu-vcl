@@ -493,41 +493,70 @@ own axes. That stress goes into three Hashin-type criteria: along the bead, betw
 and between layers. Each is written so that it scales with the load. So a failure index of 1 is the
 first failure, and 1 / index is the factor on the load to reach it.
 
-**The clamp** (both halves at 1.0 mm voxels, with the body and the split as in `ccx_split.py`):
+**The clamp** (both halves, with the body and the split as in `ccx_split.py`). It is now solved at
+0.6 mm voxels, about 1.6 million unknowns, and at 0.8 and 1.0 mm to check the voxel size. A run
+takes 8 to 15 minutes, warm-started from the 1.0 mm solution (see "Solving at 0.6 mm" under
+Checks).
 
-| | Faces pushing, 200 / 1000 N per M3 | Squeeze on the body, bracket's half, 200 / 1000 N | Peak index in the collar and ears at 200 N, bracket / carrier | Same at 1000 N |
-|---|---|---|---|---|
-| PAHT-CF, 0.6 mm nozzle | 462 / 3,153 N | 452 / 1,178 N | 0.19 / 0.11 | 0.64 / 0.43 |
-| PAHT-CF, 0.4 mm nozzle | 476 / 3,224 N | 442 / 1,092 N | 0.18 / 0.16 | 0.72 / 0.68 |
-| PLA | 500 / 3,383 N | 420 / 884 N | 0.26 / 0.18 | 0.98 / 0.78 |
-| The same voxels, solid PLA (the check) | 436 / 3,020 N | 534 / 1,430 N | 0.15 / 0.14 (max principal / 35 MPa) | 0.39 / 0.42 |
-| Solid PLA, CalculiX tets (`ccx_split.py`) | 112 / 2,370 N | 1,198 / 2,634 N | 0.57 (19.8 MPa / 35) | 0.61 |
+| At 0.6 mm voxels | Faces pushing, 200 / 1000 N per M3 | Squeeze on the body, bracket's half, 200 / 1000 N | Collar and ears, bracket / carrier, 200 N | Same at 1000 N | Bracket at the ear root, 200 / 1000 N |
+|---|---|---|---|---|---|
+| PAHT-CF, 0.6 mm nozzle | 487 / 3,256 N | 420 / 1,059 N | 0.19 / 0.12 | 0.28 / 0.27 | 0.07 / 0.15 |
+| PAHT-CF, 0.4 mm nozzle | 498 / 3,334 N | 411 / 967 N | 0.18 / 0.13 | 0.37 / 0.33 | 0.10 / 0.18 |
+| PLA | 528 / 3,487 N | 384 / 761 N | 0.25 / 0.26 | 0.66 / 0.68 | 0.16 / 0.46 |
+| The same voxels, solid PLA (the check; max principal / 35 MPa) | 439 / 3,056 N | 525 / 1,383 N | 0.25 / 0.13 | 0.38 / 0.26 | 0.10 / 0.20 |
+| Solid PLA, CalculiX tets (`ccx_split.py`) | 112 / 2,370 N | 1,198 / 2,634 N | | | 0.57 / 0.61 (19.8 / 21.3 MPa) |
 
-![The clamp, as sliced: peak failure index at snug and overtightened](renders/sliced_clamp.png)
-
-- **At 1.0 mm, the voxel model of the clamp only works like for like.** Filled with solid PLA, the
-  same voxels give half CalculiX's squeeze on the body and, at snug, a quarter of its peak. The ears' roots are
-  sharp inside corners that a 1 mm voxel can't resolve, and the coarse collar is softer. So compare
-  each print with the solid-PLA voxel row, not with CalculiX.
-- **Like for like, printing makes the collar a little softer.** In PLA, the squeeze on the body is
-  21 % less at snug and 38 % less at 1000 N, and the faces carry 12 to 15 % more. The split closes
-  before snug either way.
-- **Like for like, the print is weaker than solid PLA.** In the bracket, walls and 25 % infill raise
-  PLA's peak index 1.7 times at snug and 2.5 times at 1000 N (each on its own criterion). PAHT-CF's
-  indices are about 0.7 of PLA's in the bracket and 0.9 in the carrier. The 0.6 mm nozzle's thicker
-  walls help most in the carrier: 0.43 against 0.68 at 1000 N.
-- **So PLA's ear roots may be near their limit at snug.** CalculiX's solid PLA peaks at 19.8 MPa
-  there at snug, 0.57 of PLA's 35 MPa. If printing raises that by the same 1.7 times, printed PLA is
-  near 1. That is a flag, not a result: it needs a finer model of the printed ear roots. PAHT-CF,
-  with two to three times PLA's strengths, keeps a wide margin either way.
-- **Under the heads and nuts, by hand.** The voxels can't resolve these either: at 1.0 mm, a whole
-  nut's load lands on 6 to 9 nodes, so the section below sets them apart.
+- **"Collar and ears"** means everywhere except the zones under the nuts and heads and the split faces
+  (1.5 mm deep). **"Ear root"** is the peak within 2.5 mm of where CalculiX's solid PLA peaks:
+  the inside corner where the bracket's ear meets the collar's outer face, at (-16.9, 33.1, 34.3).
+- **The voxel size no longer matters much for the clamp as a whole.** In solid PLA, the faces push
+  439, 440 and 439 N at snug at 1.0, 0.8 and 0.6 mm, and the squeeze on the body is 565, 526 and
+  525 N. The ear root's peak settles too, at 3.1, 3.5 and 3.6 MPa. In the prints, the faces and the
+  squeeze move by under 5 % from 0.8 to 0.6 mm, and the ear root settles in PAHT-CF. PLA's ear root
+  at 1000 N doesn't: it jumps from 0.26 to 0.46, in a voxel a sixth full of wall (convergence plot
+  below).
+- **But the voxels still disagree with CalculiX, and refining didn't close the gap.** The voxel
+  collar closes its split before 50 N per screw, where CalculiX's needs about 140 N. So at snug the
+  voxels put four times CalculiX's force into the faces, squeeze the body half as hard, and bend the
+  ears less, which puts a fifth of CalculiX's stress at the ear root (3.6 against 19.8 MPa).
+  - **It isn't the voxels' stiffness.** On the pod case, solid-PLA voxels match CalculiX's tets to
+    within 9 % on how far the HQ moves at 1 g and 6 % on how far it tilts (see Checks).
+  - **So the two clamp models differ somewhere in their set-up.** On paper they match: the same
+    clearance, split, crowns, contact rules and screw seats, and the screw loads sum correctly in both.
+    I haven't found the difference in this run.
+- **The split faces' edges don't converge, so they are judged by hand.** The 1.0 mm table's peaks
+  in the collar and ears were mostly on the split faces, beside the screw holes and at the ends of the
+  ears. There they grow or jump about as the voxels shrink. PAHT-CF with the 0.6 mm nozzle, bracket,
+  at 1000 N: 0.64, 0.65, then 1.43. A flat, frictionless contact with a sharp edge has an infinite pressure at
+  that edge, so a finer model only finds a higher peak. On average the faces press at 6 to 7 MPa at
+  1000 N per screw (3,260 to 3,490 N over 480 to 560 mm² in contact). That is about a tenth of PLA's
+  or PAHT-CF's strength in compression. Real edges are rounded, and a few tenths of a millimetre of
+  crushing there spreads the load.
+- **The collar and ears** peak on the collar's outer face about 40 degrees from the crown, where the
+  ring bends round the body, and in partly filled voxels at the walls' edges. Those still drift with
+  the voxel size. For PLA at snug the peak is 0.17, 0.20, then 0.25.
+- **Is printed PLA near its limit at snug? It depends on which clamp model is right.**
+  - By the voxels: no. Printed PLA reaches 0.25 in the collar and ears at snug, and 0.16 at the
+    ear root. At 1000 N it reaches 0.68 and 0.46.
+  - By CalculiX: close. On the same voxels, printing raises the ear root's index 1.55 times over solid
+    PLA (0.159 against 3.6 / 35 = 0.103). Applied to CalculiX's 0.57, that gives about 0.9 at snug.
+  - PAHT-CF keeps a margin either way. With the 0.6 mm nozzle it reaches 0.07 at the ear root by
+    the voxels, and about 0.4 by CalculiX scaled the same way (0.71 times solid PLA). With the 0.4 mm
+    nozzle it reaches 0.10, and about 0.55 (0.95 times).
+  - So **print the clamp in PAHT-CF**. In PLA, stop at snug, when the split just closes.
+- **Under the heads and nuts, by hand.** The voxels can't resolve these: at 0.6 mm a nut bears on 26 to
+  28 nodes of the printed bracket and a head on 14 to 20 of the carrier, so the section below sets
+  them apart.
   - A head bears on 14.7 mm² of the carrier's counterbore floor (0.068 MPa per N) and presses it across
     the layers. PLA's 65 MPa there is reached at about 950 N per screw, and PAHT-CF's 75 MPa at about
     1,100 N.
   - A nut bears on 17.1 mm² of the bracket (0.058 MPa per N), within its layers: about 1,200 N in PLA
     and 1,370 N in PAHT-CF.
   - So **tighten to snug, not past it**, in either material.
+
+![The clamp, as sliced, at 0.6 mm voxels: peak failure index at snug and overtightened](renders/sliced_clamp.png)
+
+![The clamp against voxel size: faces, squeeze, ear root and the split faces' edges](renders/sliced_convergence.png)
 
 ![The section through the first clamp screws at 1000 N per screw, as sliced](renders/sliced_section.png)
 
@@ -585,23 +614,48 @@ bore and tab pad fixed):
   staircase at a sharp inside corner. In the other directions, where the peaks are small and spread
   out, the two differ by up to 30 % either way. So at a sharp corner the voxel peak overstates the
   stress by roughly that factor, which the yank table allows for.
-- **The clamp against CalculiX:** see the solid-PLA voxel row in the clamp table. At 1.0 mm the voxel
-  collar is softer and misses the ear roots' peak, which is why the clamp is read like for like.
-- **Voxel size: not done.** A yank at 0.8 mm, to compare with 0.6 mm, stalled (CG did not converge in
-  800 iterations), and a clamp at 0.6 mm was too slow to fit in this run. So there is no convergence
-  study here, only the two checks against CalculiX. The PAHT-CF 0.4 mm pod stalled the same way on
-  its Z case, so its row has the camera's X and Y only (from the run's log) and no bump.
-- **Contact.** Every clamp solve settled: at the last iteration, at most 11 of about 8,800 contact
-  springs (body and split) were still changing.
+- **The voxels' stiffness against CalculiX's.** The pod case on 1.0 mm voxels filled with solid PLA
+  ([`sim/sliced_fea.json`](sim/sliced_fea.json), `h2d_pahtcf_04 / solid / 1.00 mm / pod`): at 1 g
+  along X / Y / Z the HQ moves 0.434 / 0.959 / 0.908 µm, against CalculiX's 0.477 / 0.964 / 0.974,
+  and tilts 0.0296 / 0.1630 / 0.0101 arcmin, against 0.0294 / 0.1616 / 0.0096. So the elements and
+  the material model agree with CalculiX's. The clamp's disagreement comes from somewhere else.
+- **The clamp against CalculiX:** see the clamp table. The solid-PLA voxel collar closes its split
+  before 50 N per screw. At 1.0 mm, from 50 to 150 N, the faces already push 63, 184 and 306 N,
+  while CalculiX's split is still 0.04 mm open at 100 N and closes at about 140 N. The faces' force
+  at snug is the same at every voxel size, so this is not resolution.
+- **Voxel size.** The clamp at 1.0, 0.8 and 0.6 mm, in all four models, is in the convergence plot
+  above. The 0.8 mm yank and the PAHT-CF 0.4 mm pod's Z case, which stalled before, weren't re-run.
+  The PAHT-CF 0.4 mm pod's row therefore still has the camera's X and Y only, from the earlier
+  run's log, and no bump.
+- **Solving at 0.6 mm.** The clamp at 0.6 mm has 1.6 to 1.7 million unknowns. The solver is pyamg's
+  smoothed aggregation as CG's preconditioner, with each half's six rigid-body modes as its
+  near-null space.
+  - **AMG reuse.** The hierarchy is rebuilt when over 1 % of the contact rows change. Otherwise it is
+    reused until CG needs 25 iterations on it.
+  - **Warm start.** Each contact row starts in the state of the nearest row of the 1.0 mm solution,
+    and each node starts at the 1.0 mm displacements. The contact loop then settles in 4 to 7
+    iterations, against 12 to 16 from cold.
+  - **Run times.** 8 to 15 minutes and about 8 GB per model, on 4 cores.
+  - **Two things that didn't work.** A sparse Cholesky (MKL PARDISO, `--solver direct`) is three
+    times faster at 1.0 mm and gives the same answers (PLA's index 0.3449 against 0.3453 by AMG), but
+    at 0.6 mm its factor wants 14.5 GB. Six rigid-body modes shared by both halves would halve the
+    coarse grids, but CG then needs 1.5 to 3 times the iterations: the split holds the halves only
+    along its normal, so they slide past each other, which a rigid motion of both together can't
+    represent.
+- **Contact.** Every clamp solve settled. At the last iteration, at most 18 of the 9,000 to 24,000
+  contact rows (body and split) were still changing.
 
 **Limits:**
 
-- **Resolution.** The clamp and pod models use 1.0 mm voxels, and the yank uses 0.6 mm. The walls are
-  1.3 to 1.9 mm thick, so they are one or two voxels at 1.0 mm. That resolves the load paths and the
-  contact, but not the stress gradient through a wall, and the clamp's peaks sit in partly filled
-  voxels at the edges of the split faces. Read those indices as rough, and compare the setups, which
-  share each model's resolution. At 0.6 mm the clamp has 1.6 million unknowns and needs a dozen
-  contact iterations, which didn't fit in this run.
+- **Resolution.** The clamp uses 0.6 mm voxels (with 0.8 and 1.0 mm as checks), the yank 0.6 mm and
+  the pod 1.0 mm. The walls are 1.3 to 1.9 mm thick, so they are two or three voxels at 0.6 mm. The
+  clamp as a whole has converged: the faces, the squeeze and the ear root's peak barely move from
+  0.8 to 0.6 mm. Its peak indices still sit in partly filled voxels at the edges of walls, and they
+  drift by 10 to 25 % between voxel sizes, so read them to about that. The split faces' edges don't
+  converge at all, and are judged by hand.
+- **The clamp model disagrees with CalculiX's** on how easily the collar closes (see above), by
+  about a factor of four on the faces' force at snug. Until that is settled, PLA's margin at the
+  ear roots is somewhere between 0.16 and 0.9 at snug.
 - **Within a voxel, the beads share one strain** (iso-strain), which is an upper bound on its
   stiffness.
 - **The bead properties are inferred from datasheets.** PAHT-CF's stiffness along the bead is the

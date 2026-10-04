@@ -3,9 +3,10 @@
 
   renders/sliced_model.png    one layer of the bracket: the G-code raster, and the voxels made from it
   renders/sliced_clamp.png    the clamp: split gap and peak failure index against screw force
-  renders/sliced_section.png  the section through the first clamp screws at 500 N: what is printed
+  renders/sliced_section.png  the section through the first clamp screws at 1000 N: what is printed
                               there, and how close each voxel is to failing
   renders/sliced_loads.png    force to the first failure for the cable yank, the pod bump and the clamp
+  renders/sliced_convergence.png  the clamp at 1.0, 0.8 and 0.6 mm voxels, against the CalculiX tets
 
     python piper-camera-mount/sim/sliced_plots.py
 """
@@ -41,7 +42,9 @@ CMAP = LinearSegmentedColormap.from_list("fi", BLUES)
 CMAP.set_over(CRITICAL)
 FEATURE_COLORS = ["#3987e5", "#86b6ef", "#e1e0d9"]       # wall, solid infill or skin, sparse infill
 Y_CUT = 22.2                    # the first row of clamp screws (y = 22), just off it: voxel faces lie on whole mm
-H_CASE = {"clamp": 1.0, "zones": 1.0, "pod": 1.0, "yank": 0.6}      # voxel size each case was run at
+H_CASE = {"clamp": 0.6, "zones": 0.6, "pod": 1.0, "yank": 0.6}      # voxel size each case was run at
+H_STUDY = (1.0, 0.8, 0.6)                                           # the clamp's voxel sizes
+PLA_X = 35.0                    # MPa: the solid models' strength (ccx_stress.py), for an index from max principal
 
 
 def results() -> dict:
@@ -134,17 +137,20 @@ def bearing_by_hand(res: dict, cfg: str, F: int) -> tuple[float, float]:
 
 def plot_clamp(res: dict, path: Path):
     """Peak failure index at snug (200 N per M3) and overtightened (1000 N): each half's collar and
-    ears from the voxel model, and the bearing under the heads and nuts by hand, per configuration."""
-    rows = ["Bracket: collar and ears", "Carrier: collar and ears", "Carrier: under the heads (by hand)",
-            "Bracket: under the nuts (by hand)"]
-    fig, axs = plt.subplots(1, 2, figsize=(14, 5.6), sharey=True)
+    ears from the voxel model (away from the screws' bearing zones and the split faces), the bracket at
+    CalculiX's ear-root peak, and the bearing under the heads and nuts by hand, per configuration."""
+    rows = ["Bracket: collar and ears", "Bracket: at the ear root", "Carrier: collar and ears",
+            "Carrier: under the heads (by hand)", "Bracket: under the nuts (by hand)"]
+    fig, axs = plt.subplots(1, 2, figsize=(14, 6.4), sharey=True)
+    away = "outside the bearing zones and the split faces"
     for ax, F in zip(axs, (200, 1000)):
         for k, cfg in enumerate(ORDER):
             z = get(res, cfg, "zones")
             if not z:
                 continue
-            vals = [z[str(F)]["bracket"]["outside the bearing zones"]["failure index"],
-                    z[str(F)]["carrier"]["outside the bearing zones"]["failure index"], *bearing_by_hand(res, cfg, F)]
+            vals = [z[str(F)]["bracket"][away]["failure index"],
+                    z[str(F)]["bracket at CalculiX's ear-root peak"]["failure index"],
+                    z[str(F)]["carrier"][away]["failure index"], *bearing_by_hand(res, cfg, F)]
             for r, v in enumerate(vals):
                 y = len(rows) - 1 - r + (1 - k) * 0.26
                 ax.barh(y, v, height=0.24, color=COLOR[cfg], label=SHORT[cfg] if r == 0 else None)
@@ -201,8 +207,10 @@ def plot_section(res: dict, path: Path, F: int = 1000, window=(-24.0, 8.0, 18.0,
                 for xf in (p.ax_x - p.ear_w + p.m3_nut_depth, p.ax_x + p.clamp_head_seat):
                     ax.add_patch(plt.Rectangle((xf - 4.0, p.ax_z + p.clamp_r - 4.5), 8.0, 9.0, fill=False,
                                                color=INK2, lw=1.2, ls=":"))
-                ax.text(window[0] + 0.5, window[3] - 1.0, "dotted: bearing zones under the nut and head",
-                        fontsize=8, color=INK2, va="top")
+                for sx in (-1, 1):  # the split faces' zone (sliced_fea.split_zone)
+                    ax.axvline(p.ax_x + sx * (p.split_gap / 2 + S.SPLIT_DEPTH), color=INK2, lw=0.9, ls=(0, (1, 2)))
+                ax.text(window[0] + 0.5, window[3] - 1.0, "dotted: bearing zones under the nut and head,\n"
+                        "and the split faces' zone", fontsize=8, color=INK2, va="top")
             ax.set_xlim(window[0], window[1])
             ax.set_ylim(window[2], window[3])
             ax.set_aspect("equal")
@@ -217,6 +225,90 @@ def plot_section(res: dict, path: Path, F: int = 1000, window=(-24.0, 8.0, 18.0,
     cb = fig.colorbar(sm, ax=axs[1, :].tolist(), fraction=0.03, pad=0.02, extend="max")
     cb.set_label("failure index (red: over 1)")
     fig.savefig(path, dpi=100, bbox_inches="tight")
+    plt.close(fig)
+
+
+def convergence(res: dict) -> dict:
+    """{series: {quantity: {F: [value at each of H_STUDY, or None]}}} for the clamp, plus CalculiX's
+    solid-PLA values. Series: the three prints, and the solid-PLA voxels (h2d_pahtcf_04's grid)."""
+    ccx = json.loads((HERE / "ccx_split.json").read_text())["designs"]["0.6 mm"]["forces"]
+    series = [(cfg, False) for cfg in ORDER] + [("h2d_pahtcf_04", True)]
+    out = {}
+    for cfg, solid in series:
+        name = "solid" if solid else cfg
+        out[name] = {"faces": {}, "squeeze": {}, "ear": {}, "peak": {}, "edge": {}}
+        for F in (200, 1000):
+            for key in out[name]:
+                out[name][key][F] = []
+            for h in H_STUDY:
+                c, z = get(res, cfg, "clamp", solid, h), get(res, cfg, "zones", solid, h)
+                r = c["forces"].get(str(F)) if c else None
+                out[name]["faces"][F].append(r["split contact force (N)"] if r else None)
+                out[name]["squeeze"][F].append(r["body: radial contact force, summed (N)"]["bracket"] if r else None)
+                zz = z.get(str(F)) if z else None
+                away, face = "outside the bearing zones and the split faces", "at the split faces, outside the bearing zones"
+                if zz is None:
+                    ear = peak = edge = None
+                elif solid:
+                    ear = zz["bracket at CalculiX's ear-root peak"]["max principal (MPa)"]["value"] / PLA_X
+                    peak = zz["bracket"][away]["max principal (MPa)"]["value"] / PLA_X
+                    edge = zz["bracket"][face]["max principal (MPa)"]["value"] / PLA_X
+                else:
+                    ear = zz["bracket at CalculiX's ear-root peak"]["failure index"]
+                    peak = zz["bracket"][away]["failure index"]
+                    edge = zz["bracket"][face]["failure index"]
+                out[name]["ear"][F].append(ear)
+                out[name]["peak"][F].append(peak)
+                out[name]["edge"][F].append(edge)
+    pk = "peaks away from the screw seats"
+    out["CalculiX"] = {"faces": {F: ccx[str(F)]["split contact force (N)"]["total"] for F in (200, 1000)},
+                       "squeeze": {F: ccx[str(F)]["body: radial contact force, summed (N)"]["bracket"] for F in (200, 1000)},
+                       "ear": {F: ccx[str(F)][pk]["max principal (MPa)"]["bracket"]["value"] / PLA_X for F in (200, 1000)}}
+    return out
+
+
+def plot_convergence(res: dict, path: Path):
+    """Small multiples, snug (top) and overtightened (bottom): the faces' push, the squeeze on the body
+    and the bracket's index at CalculiX's ear-root peak, against voxel size, refining to the right."""
+    cv = convergence(res)
+    cols = [("faces", "faces pushing at the split (N)"), ("squeeze", "squeeze on the body, bracket's half (N)"),
+            ("ear", "bracket: index at the ear root"), ("edge", "bracket: index at the split faces' edges")]
+    fig, axs = plt.subplots(2, 4, figsize=(19, 8.4))
+    names = ORDER + ["solid"]
+    for row, F in enumerate((200, 1000)):
+        for col, (key, label) in enumerate(cols):
+            ax = axs[row, col]
+            for name in names:
+                ys = cv[name][key][F]
+                pts = [(h, y) for h, y in zip(H_STUDY, ys) if y is not None]
+                if not pts:
+                    continue
+                hx, yy = zip(*pts)
+                color = SOLID if name == "solid" else COLOR[name]
+                ls = (0, (5, 2)) if name == "solid" else "-"
+                ax.plot(hx, yy, ls=ls, lw=2, color=color, zorder=3,
+                        label="solid PLA, same voxels" if name == "solid" else SHORT[name])
+                ax.plot(hx, yy, "o", ms=8, color=color, mec=SURFACE, mew=2, zorder=4)
+            ref = cv["CalculiX"].get(key, {}).get(F)
+            if ref is not None:
+                ax.axhline(ref, color=INK2, lw=1.2, ls=(0, (2, 2)), zorder=2)
+                ax.text(0.585, ref, "CalculiX tets,\nsolid PLA", color=INK2, fontsize=8.5, va="center", ha="left")
+            ax.set_xlim(1.04, 0.47)
+            ax.set_xticks(H_STUDY)
+            ax.set_ylim(bottom=0)
+            ax.grid(True, color=GRID, lw=0.8)
+            ax.set_axisbelow(True)
+            if row == 1:
+                ax.set_xlabel("voxel size (mm), finer to the right")
+            ax.set_title(label, loc="left", fontsize=11)
+        axs[row, 0].set_ylabel({200: "snug: 200 N per M3", 1000: "overtightened: 1000 N per M3"}[F])
+    for col in (2, 3):
+        axs[1, col].text(0.0, -0.17, "prints: failure index; solid: max principal / 35 MPa", transform=axs[1, col].transAxes,
+                         fontsize=8.5, color=INK2, va="top")
+    handles, labels = axs[0, 0].get_legend_handles_labels()
+    fig.legend(handles, labels, loc="lower center", ncol=4, frameon=False, fontsize=10)
+    fig.tight_layout(rect=(0, 0.05, 1, 1))
+    fig.savefig(path, dpi=110)
     plt.close(fig)
 
 
@@ -273,7 +365,7 @@ def tables(res: dict) -> str:
         c = get(res, cfg, "clamp")
         if not c:
             continue
-        out.append(f"\nclamp, {SHORT[cfg]} (0.8 mm voxels)\n")
+        out.append(f"\nclamp, {SHORT[cfg]} ({H_CASE['clamp']} mm voxels)\n")
         out.append("| Force in each M3 | Narrowest gap | Faces pushing | Bracket: index, mode | Carrier: index, mode |")
         out.append("|---|---|---|---|---|")
         for F in sorted(int(k) for k in c["forces"]):
@@ -333,8 +425,10 @@ def main():
     print(tables(res))
     plot_clamp(res, RENDERS / "sliced_clamp.png")
     plot_section(res, RENDERS / "sliced_section.png")
-    plot_loads(res, RENDERS / "sliced_loads.png")
-    plot_model(RENDERS / "sliced_model.png")
+    plot_convergence(res, RENDERS / "sliced_convergence.png")
+    if "--all" in sys.argv:             # these two don't depend on the clamp
+        plot_loads(res, RENDERS / "sliced_loads.png")
+        plot_model(RENDERS / "sliced_model.png")
     print(json.dumps(first_failure(res), indent=1))
 
 
