@@ -3256,12 +3256,12 @@ send `ticcmd --energize` first. Record:
 ## 24. 2026-10-05: three numberings for the same ten holes
 
 Ben rewired the coils to the Tic per Figure 1 of
-[`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md) and noticed that, by
-his count, the limit-switch wires sit on header pins **5 (return)** and
-**8 (signal)**, not the 6 and 7 that this document and the figure give. He had
-not moved them, and the switch has worked on them in every run since it was
-first found on 2026-09-29 (§23). Both are right. They are the same two holes,
-numbered differently.
+[`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md) and noticed that,
+counted Ben's way, the limit-switch wires sit on header pins **5 (return)** and
+**8 (signal)**, not the 6 and 7 that this document and the figure give. Those
+two wires were not moved, and the switch has worked on them in every run since
+it was first found on 2026-09-29 (§23). Both are right. They are the same two
+holes, numbered differently.
 
 Three numberings of this header are in use. All three are ordinary 2×5
 numberings, with odd pins in one column and even pins in the other. They differ
