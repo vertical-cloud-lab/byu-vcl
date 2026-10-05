@@ -1,0 +1,55 @@
+{
+  "extrudes": {
+    "Extrude 1": {
+      "depth_mm": 15.0,
+      "regions": 1,
+      "profile_area_mm2": 499.1416
+    },
+    "Extrude 2": {
+      "depth_mm": 10.0,
+      "regions": 2,
+      "profile_area_mm2": 60.9796
+    },
+    "Extrude 3": {
+      "depth_mm": 5.0,
+      "regions": 2,
+      "profile_area_mm2": 22.2971
+    }
+  },
+  "fillets": {
+    "Fillet 1": {
+      "radius_mm": 1.0,
+      "edges": 10
+    },
+    "Fillet 2": {
+      "radius_mm": 0.7,
+      "edges": 4
+    }
+  },
+  "volume_mm3": 8208.405,
+  "surface_mm2": 3871.352,
+  "bbox_mm": {
+    "x": [
+      -25.0,
+      25.0
+    ],
+    "y": [
+      -7.5,
+      7.5
+    ],
+    "z": [
+      -21.5689,
+      5.0
+    ]
+  },
+  "clip_opening_mm": {
+    "11 mm clip": 4.8602,
+    "7 mm clip": 2.6
+  },
+  "source": {
+    "document": "3094e1d7fbb4c4351dcd0e1a",
+    "workspace": "d3134413115bb70af771d24a",
+    "element": "ef669eb623cfc76bb11527a4",
+    "microversion": "cfeb7b999fb9e175115c8d7c"
+  }
+}

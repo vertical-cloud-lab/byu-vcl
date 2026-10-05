@@ -1,0 +1,62 @@
+# Atomizer transducer cable holder
+
+A strip with two snap clips for the atomizer transducer's cables, designed by
+@ronnie-guymon in Onshape ([document](https://byudesign.onshape.com/documents/3094e1d7fbb4c4351dcd0e1a/w/d3134413115bb70af771d24a/e/ef669eb623cfc76bb11527a4),
+"Atomizer holder", Part Studio 1). Requested as a print in
+[#256](https://github.com/vertical-cloud-lab/byu-vcl/issues/256): one part, black PLA.
+
+![Front view over the Onshape sketch, and a shaded view of the STL](render.png)
+
+## Why this is a rebuild, not an export
+
+The document is shared by link as view-only, with export off. Through that link the
+Onshape API returns the feature list, but answers 401 or 403 to everything that touches
+geometry: STL/STEP export, tessellation, mass properties, bounding boxes. So
+[`transducer_cable_holder.stl`](transducer_cable_holder.stl) is rebuilt from the feature
+list ([`onshape/features.json`](onshape/features.json), fetched 2026-10-05, microversion
+`cfeb7b999fb9e175115c8d7c`) by [`rebuild_from_features.py`](rebuild_from_features.py).
+**If an STL exported from Onshape itself turns up, use that instead.**
+
+| Feature | What it is |
+|---|---|
+| Sketch 1 | Front plane: a 50 × 10 mm rectangle and two C-shaped clip profiles hanging below it |
+| Extrude 1 | the strip, 15 mm, symmetric |
+| Extrude 2 | the Ø11 mm clip (1.6 mm wall), 10 mm, symmetric |
+| Fillet 1 | 1 mm: the strip's four long edges, the Ø11 clip's two lips and four tip edges |
+| Extrude 3 | the Ø7 mm clip (1.0 mm wall), 5 mm, symmetric |
+| Fillet 2 | 0.7 mm: the Ø7 clip's four tip edges |
+
+The feature list carries the solved sketch, so every coordinate, radius, depth and fillet
+radius is read from it. The script writes down only the topology, decoded from the
+features' queries: which sketch entities bound each extruded region, and which pairs meet
+at each filleted edge. It checks those names against the query text.
+
+All 14 filleted edges run straight along the extrude direction through the full depth of
+their own extrude, so the fillets are applied to the 2D profile before extruding, which
+gives the same solid.
+
+**One judgement call: the clip tips.** Each tip is narrower than its two fillets: 1.6 mm
+against 2 × 1 mm, and 1.0 mm against 2 × 0.7 mm. Onshape reports both fillets OK, so it
+let the two blends meet. Here they are trimmed where they cross. That leaves a ridge
+0.02–0.03 mm short of the original tip face, well below what a 0.4 mm nozzle resolves.
+
+## Checks
+
+From [`rebuild_summary.json`](rebuild_summary.json):
+
+| | |
+|---|---|
+| Bounding box | 50.0 × 15.0 × 26.57 mm (X × Y × Z, Onshape's frame) |
+| Volume | 8,208 mm³: strip 499.14 mm² × 15 + Ø11 clip 60.98 mm² × 10 + Ø7 clip 22.30 mm² × 5 |
+| Strip profile | 500 mm² less four 1 mm corners (0.86 mm²), as expected |
+| Ø11 clip opening | 4.86 mm, the narrowest gap between the arms after the lip fillets (3.15 mm at the sharp sketch corners) |
+| Ø7 clip opening | 2.60 mm (no lip fillet on this clip) |
+| Solid | one valid solid; every feature in the source reports `OK` |
+
+## Re-running
+
+```bash
+pip install cadquery trimesh matplotlib
+python rebuild_from_features.py   # STL, STEP and rebuild_summary.json
+python render.py                  # render.png
+```
