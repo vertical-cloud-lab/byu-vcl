@@ -13,13 +13,16 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-> 🔴 **2026-10-05: back on a TMC2209, and the plunger doesn't move.** Ben swapped the
-> Tic out for a TMC2209 board. Before any protocol ran, three limit-switch probes sent
-> 21 mm of moves in both directions. They started where the 10-02 run's last `HOME`
-> left the plunger, and none reached the switch. `CMD 29` read `comm = 0`.
-> `pipette_test` was not run. The checklist is in
-> [`tmc2209_probe_20261005`](../results/tmc2209_probe_20261005/README.md). While the
-> Tic is out, the runner needs `--no-tic`.
+> 🔴 **2026-10-05: the TMC2209 board was tried again, and it doesn't drive the
+> plunger.** Ben swapped the Tic out for it. With the board plugged in, limit-switch
+> probes sent 9 mm of moves in both directions, and none reached the switch. They
+> started where the 10-02 run's last `HOME` left the plunger. Ben stood at the
+> pipette for a 30 s buzz at 100 full steps/s and felt nothing. `CMD 29` read
+> `comm = 0`. `pipette_test` was not run, and the pipette is going back on the Tic.
+> The record and a checklist for another try are in
+> [`tmc2209_probe_20261005`](../results/tmc2209_probe_20261005/README.md). If the
+> TMC2209 goes back in, run its `tmc2209_probe.py` before any protocol, and give
+> the runner `--no-tic`.
 >
 > ⚡ **2026-10-01: the trio runs in about 2 minutes, and there is a runner.** All
 > three speed changes are in (CubOS status polling, F3000, fast `MOVE_TO`):
