@@ -4,13 +4,17 @@ The #232 clips (machining_cup.gif, machining_plug.gif, fill_and_vent.gif) carry 
 a caption line and leader-line callouts, and most steps are on screen for one to three and a half seconds. These
 are for a slide instead:
 
-  * text in one place only: one caption at a time, centred in a band under the picture
+  * text in one place only: one caption at a time, in a band under the picture, every one starting at the same
+    indented left edge, so nothing but the words changes when the caption does
   * at most six words per caption and no numbers, so nothing on screen can go out of date
   * every caption stays up for at least MIN_CAPTION_S seconds; save() refuses to write a clip that breaks either rule
-  * 1280x720, each clip as a looping GIF (drops straight into Google Slides) and an H.264 MP4 (PowerPoint, Keynote)
+  * rendered at 1920x1080: an H.264 MP4 at that size (PowerPoint, Keynote) and a 1280x720 GIF that plays once
+    (Google Slides)
 
 The motion is re-rendered from the same build123d model, with more frames per step, using machining.py's geometry
-and drawing helpers, rather than stretched from the old GIFs.
+and drawing helpers, rather than stretched from the old GIFs. The plug and fill clips end with an optional step
+each: a small channel across the plug's top face, and pressing the plug down with a ram, which covers the vent
+hole, so the channel is the way out for the air the powder gives up as it compacts.
 
     xvfb-run -a python clips.py              # all three -> out/{cup,plug,fill}.{gif,mp4}
     xvfb-run -a python clips.py plug         # one of them
@@ -29,6 +33,7 @@ import subprocess
 import sys
 
 import numpy as np
+from build123d import Align, Box, Cylinder, Pos
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -38,10 +43,12 @@ PR232_COMMIT = "323adba"  # head of PR #232 when these were built
 CACHE = os.environ.get("CLIPS_CACHE", "/tmp/al/pr232-cad")
 OUT = os.path.join(HERE, "out")
 
-W, H = 1280, 720
-BAND = 104  # caption band along the bottom; the picture is everything above it
+W, H = 1920, 1080
+BAND = 156  # caption band along the bottom; the picture is everything above it
 VIEW_H = H - BAND
-FONT_PX = 44
+FONT_PX = 66
+INDENT = 96  # every caption starts here, left-aligned, so the words change but nothing moves
+GIF_W, GIF_H = 1280, 720  # the GIF is a downscaled copy; the MP4 is full size
 INK = (11, 11, 11)
 FRAME_S = 0.1  # 10 fps while anything moves
 MIN_CAPTION_S = 5.0
@@ -126,7 +133,7 @@ class Clip(m.Scene):
     def add(self, pic, caption, seconds=FRAME_S):
         frame = Image.new("RGB", (W, H), "white")
         frame.paste(pic, (0, 0))
-        ImageDraw.Draw(frame).text((W / 2, VIEW_H + BAND / 2), caption, font=self.font, fill=INK, anchor="mm")
+        ImageDraw.Draw(frame).text((INDENT, VIEW_H + BAND / 2), caption, font=self.font, fill=INK, anchor="lm")
         self.frames.append([frame, caption, seconds])
 
     def grab(self, caption, **_):
@@ -172,21 +179,23 @@ class Clip(m.Scene):
             t += seconds
 
     def write_gif(self, colours=256):
-        imgs = [f for f, _, _ in self.frames]
+        imgs = [f.resize((GIF_W, GIF_H), Image.LANCZOS) for f, _, _ in self.frames]
         sample = Image.fromarray(np.vstack([np.asarray(im) for im in imgs[:: max(1, len(imgs) // 24)]]))
         pal = sample.quantize(colors=colours, method=Image.Quantize.MEDIANCUT)
         q = [im.quantize(palette=pal, dither=Image.Dither.NONE) for im in imgs]
         # Median cut averages each box, so the background comes out (252, 252, 252): a grey rectangle on a white
         # slide. Adding a pure white entry doesn't help, as Pillow's palette lookup is approximate and still picks
         # the grey one, so turn whichever entry the background landed on white. The band's corner is always background.
-        bg = q[0].getpixel((2, H - 2))
+        bg = q[0].getpixel((2, GIF_H - 2))
         p = pal.getpalette()[: 3 * colours]
         p[3 * bg: 3 * bg + 3] = [255, 255, 255]
         for im in q:
             im.putpalette(p)
         ms = [int(round(s * 1000)) for _, _, s in self.frames]
         path = os.path.join(OUT, f"{self.name}.gif")
-        q[0].save(path, save_all=True, append_images=q[1:], duration=ms, loop=0, disposal=1)
+        # No loop= here: without it Pillow writes no NETSCAPE loop block, so the GIF plays once and stops on
+        # its last frame. loop=0 would make it loop forever, which on a slide it must not.
+        q[0].save(path, save_all=True, append_images=q[1:], duration=ms, disposal=1)
         print(f"wrote out/{self.name}.gif  {os.path.getsize(path) / 1e6:.1f} MB")
 
     def write_mp4(self):
@@ -288,6 +297,36 @@ def reamer():
     """Straight reamer, a hair under size like machining.drill(): chamfered nose, flutes, then a thinner shank."""
     r = cad.CUP_BORE_D / 2 * 0.94
     return m.lay(m.turned([(0, 0), (r - 0.8, 0), (r, 0.8), (r, 52), (r * 0.72, 52), (r * 0.72, 80), (0, 80)]))
+
+
+# The optional press-fit route (#248): the plug is pushed down onto the powder with a ram. A flat ram covers the
+# vent hole, so a small channel across the plug's top face, through the hole, keeps a way out for the air the powder
+# gives up as it compacts: along the channel, then up the clearance between the ram and the bore.
+CHANNEL_W, CHANNEL_D = 1.2, 0.8  # mm; about a hacksaw kerf wide, and shallow
+RAM_R = m.RB - 0.8  # a little under the bore, so it can push the plug past the rim
+PRESS_DOWN = 3.0  # how far the ram pushes the plug past where it was set by hand
+
+
+def plug_with_channel(x_to=None):
+    """std_plug with the channel cut across its top face along X, as far as x_to (all the way if None)."""
+    x0 = -m.RB - 1.0
+    x1 = m.RB + 1.0 if x_to is None else x_to
+    if x1 <= x0 + 0.05:
+        return PARTS["std_plug"]
+    slot = Pos((x0 + x1) / 2, 0, cad.PLUG_L + 0.5 - CHANNEL_D / 2) * Box(x1 - x0, CHANNEL_W, CHANNEL_D + 1.0)
+    return PARTS["std_plug"] - slot
+
+
+def end_mill():
+    """A small end mill standing on its tip at the origin: the flutes, then the thicker shank."""
+    flutes = Cylinder(CHANNEL_W / 2, 5.0, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    shank = Pos(0, 0, 5.0) * Cylinder(1.6, 24.0, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    return flutes + shank
+
+
+def ram():
+    """Press ram, flat end at the origin, body running up."""
+    return Cylinder(RAM_R, 40.0, align=(Align.CENTER, Align.CENTER, Align.MIN))
 
 
 # ---------------------------------------------------------------------------
@@ -452,6 +491,34 @@ def plug():
     c.linger(0.6)
 
     finished_part(c, PARTS["std_plug"], PLUG_PART_CAM, "The finished plug")
+
+    # Optional, for the press-fit route: a small channel across the top face, through the vent hole, so the hole
+    # still breathes with a ram sitting on the face. Shown with a small end mill; a hacksaw stroke does the same job.
+    cap = "Optional: a channel across the top"
+    focal, view, scale = PLUG_PART_CAM
+    mill = m.cached("end_mill", end_mill)
+    x_in, x_out = -m.RB - 1.5, m.RB + 1.5
+    z_up, z_cut = cad.PLUG_L + 4.0, cad.PLUG_L - CHANNEL_D
+
+    def mill_frame(x, z, x_to):
+        c.pl.clear()
+        m.show(c.pl, m.tessellate(plug_with_channel(x_to)), AL, lw=1.2)
+        m.show(c.pl, mill, m.STEEL, lw=0.8, move=(x, 0, z))
+        c.camera(focal, view, scale)
+
+    mill_frame(x_in, z_up, x_in)
+    c.dissolve(cap)
+    for t in steps(8):  # down to depth, off the edge of the part
+        mill_frame(x_in, z_up - (z_up - z_cut) * t, x_in)
+        c.grab(cap)
+    for t in steps(30):  # across the face; the channel follows the cutter
+        x = x_in + (x_out - x_in) * t
+        mill_frame(x, z_cut, x)
+        c.grab(cap)
+    for t in steps(8):  # and back up
+        mill_frame(x_out, z_cut + (z_up - z_cut) * t, None)
+        c.grab(cap)
+    c.linger(0.8)
     c.save()
 
 
@@ -474,7 +541,11 @@ def fill():
     gr = m.RB * np.sqrt(rng.uniform(0, 0.8, 14))
     surface_grains = list(zip(gr * np.cos(ga), gr * np.sin(ga), rng.uniform(0.35, 0.7, 14)))
 
-    def scene(frac, plug_z=None):
+    plug_ch_mesh = m.tessellate(plug_with_channel(), cut=True)
+    ram_mesh = m.tessellate(ram(), cut=True)
+    press_cam = ((0.0, 0.0, z_top + 1.0), (0.42, -1.0, 0.48), 16.0)  # close on the top of the cup, from a bit higher
+
+    def scene(frac, plug_z=None, plug=plug_mesh, cam=FILL_CAM, ram_z=None):
         pl = c.pl
         pl.clear()
         m.show(pl, cup_mesh, AL, lw=1.2)
@@ -486,8 +557,10 @@ def fill():
                 if gy >= 0.5:
                     pl.add_mesh(pv.Sphere(radius=g, center=(gx, gy, top + g * 0.4)), color=colour, **rr.BODY)
         if plug_z is not None:
-            m.show(pl, plug_mesh, AL, lw=1.2, move=(0, 0, plug_z))
-        c.camera(focal, view, scale)
+            m.show(pl, plug, AL, lw=1.2, move=(0, 0, plug_z))
+        if ram_z is not None:
+            m.show(pl, ram_mesh, m.STEEL, lw=1.0, move=(0, 0, ram_z))
+        c.camera(*cam)
 
     cap = "Fill with weighed powder"
     n = 2 if PREVIEW else 40
@@ -518,6 +591,54 @@ def fill():
             fade = max(0.0, 1 - (z - m.CUP_L - 1) / 14)
             c.pl.add_mesh(pv.Arrow(start=(0, 0, z), direction=(0, 0, 1), tip_length=0.42, tip_radius=0.32,
                                    shaft_radius=0.13, scale=7.0), color=m.AIR, opacity=0.25 + 0.65 * fade, **rr.BODY)
+        c.grab(cap)
+    c.linger(0.8)
+
+    # Optional: press it down with a ram instead of setting it by hand. The ram covers the vent hole, so the
+    # channel across the plug's top face is the way out: along the channel, then up between the ram and the bore.
+    cap = "Optional: press it down to compact"
+    lift = cad.PLUG_L + 16.0  # ram's start, above the plug
+
+    def pressed(down, ram_z):
+        pz = z_top - down
+        scene((pz - floor) / (z_top - floor), pz, plug_ch_mesh, press_cam, ram_z)
+
+    pressed(0.0, z_top + lift)
+    c.dissolve(cap, n=8)
+    for t in steps(14):  # the ram comes down onto the plug
+        pressed(0.0, z_top + lift - 16.0 * t)
+        c.grab(cap)
+    for t in steps(24):  # and pushes it on down; the powder compacts under it
+        pressed(PRESS_DOWN * t, z_top - PRESS_DOWN * t + cad.PLUG_L)
+        c.grab(cap)
+    c.linger(1.2)
+
+    cap = "Air escapes along the channel"
+    pz = z_top - PRESS_DOWN
+    z_face, z_ch = pz + cad.PLUG_L, pz + cad.PLUG_L - CHANNEL_D / 2
+    x_gap = m.RB - 0.4  # middle of the clearance between the ram and the bore
+    arrow = 2.2  # arrow length; each arrow is placed by its tail
+    turn = x_gap - arrow  # tail position at which a channel arrow's tip reaches the clearance
+    path = turn + 16.0  # out along the channel, then up
+    n = 2 if PREVIEW else 46
+    for i in range(n):
+        pressed(PRESS_DOWN, z_face)
+        for k in range(4):
+            s = (i * 0.75 + k * path / 4) % path
+            for sign in (-1, 1):
+                if s < turn:
+                    start, direction, fade = (sign * s, -0.02, z_ch), (sign, 0, 0), 1.0
+                else:
+                    z = z_face + (s - turn)
+                    start, direction = (sign * x_gap, -0.02, z), (0, 0, 1)
+                    fade = min(1.0, max(0.0, 1 - (z - m.CUP_L - 2) / 10))
+                c.pl.add_mesh(pv.Arrow(start=start, direction=direction, tip_length=0.4, tip_radius=0.16,
+                                       shaft_radius=0.07, scale=arrow), color=m.AIR, opacity=0.25 + 0.65 * fade,
+                              **rr.BODY)
+        c.grab(cap)
+    c.linger(0.4)
+    for t in steps(12):  # the ram lifts off, and the channel is there to see
+        pressed(PRESS_DOWN, z_face + 14.0 * t * t)
         c.grab(cap)
     c.linger(0.8)
     c.save()
