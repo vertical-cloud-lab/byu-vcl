@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-30**. This is the map; the detail is in
+Status as of **2026-10-05**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,6 +13,14 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> 🔴 **2026-10-05: back on a TMC2209, and the plunger doesn't move.** Ben swapped the
+> Tic out for a TMC2209 board. Before any protocol ran, three limit-switch probes sent
+> 21 mm of moves in both directions. They started where the 10-02 run's last `HOME`
+> left the plunger, and none reached the switch. `CMD 29` read `comm = 0`.
+> `pipette_test` was not run. The checklist is in
+> [`tmc2209_probe_20261005`](../results/tmc2209_probe_20261005/README.md). While the
+> Tic is out, the runner needs `--no-tic`.
+>
 > ⚡ **2026-10-01: the trio runs in about 2 minutes, and there is a runner.** All
 > three speed changes are in (CubOS status polling, F3000, fast `MOVE_TO`):
 > 12/12 in 124 s against 238 s on 09-30, with no plunger steps lost (see
