@@ -1,9 +1,11 @@
-# Atomizer transducer cable holder
+# Atomizer transducer cable holder: rebuilt from the Onshape feature list
 
 A strip with two snap clips for the atomizer transducer's cables, designed by
 @ronnie-guymon in Onshape ([document](https://byudesign.onshape.com/documents/3094e1d7fbb4c4351dcd0e1a/w/d3134413115bb70af771d24a/e/ef669eb623cfc76bb11527a4),
 "Atomizer holder", Part Studio 1). Requested as a print in
 [#256](https://github.com/vertical-cloud-lab/byu-vcl/issues/256): one part, black PLA.
+The file that was printed, its slice and the print evidence are in the folder above,
+committed by the run that did the print. This folder is the independent rebuild.
 
 ![Front view over the Onshape sketch, and a shaded view of the STL](render.png)
 
