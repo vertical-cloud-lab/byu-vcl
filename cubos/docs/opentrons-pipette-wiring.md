@@ -658,6 +658,10 @@ viewing-independent form, which is what to check by eye:
 > **The two fully-populated rows are the two nearest the pipette tip. The four empty
 > holes are the far row plus one hole in each of the two rows next to it.**
 
+Two other numberings of these same holes are in use: Opentrons' own schematic,
+and counting left to right from the bottom row. They put the switch on 4 + 5 and
+on 5 + 8. §24 maps all three.
+
 ### 8.7 What a 180-degree connector flip would actually look like
 
 Worth writing down precisely, because the mapping is not intuitive. Under a flipped
@@ -3248,3 +3252,80 @@ about 56 mm at the Tic's 1/8, past the 46.5 mm drop-tip plane. Confirm 796/mm
 CubOS connects. The Tic was left de-energized to stop the 4 W idle heating, so
 send `ticcmd --energize` first. Record:
 [`results/pipette_switch_search_20260929/`](../results/pipette_switch_search_20260929/README.md).
+
+## 24. 2026-10-05: three numberings for the same ten holes
+
+Ben rewired the coils to the Tic per Figure 1 of
+[`tic-t500-pipette-setup.md`](./tic-t500-pipette-setup.md) and noticed that, by
+his count, the limit-switch wires sit on header pins **5 (return)** and
+**8 (signal)**, not the 6 and 7 that this document and the figure give. He had
+not moved them, and the switch has worked on them in every run since it was
+first found on 2026-09-29 (§23). Both are right. They are the same two holes,
+numbered differently.
+
+Three numberings of this header are in use. All three are ordinary 2×5
+numberings, with odd pins in one column and even pins in the other. They differ
+only in which corner is pin 1. Looking at the header from outside with the two
+motor rows at the bottom, as in §8.6 and the Tic figure:
+
+- **The ribbon numbering**, used by science-jubilee, PANDA, Cubware, this
+  document and the Tic figure: pin 1 is the **bottom-right** hole.
+- **Opentrons' schematic**, header `JP1` in
+  [`pipette-main.sch`](https://github.com/Opentrons/ot2/blob/1f55a03/PCB%20files/pipette-main/EAGLE/pipette-main.sch):
+  pin 1 is the **top-left** hole. This is the "reverse of the ribbon
+  numbering" in Ursa's review (§10), `n → 11 − n`.
+- **Counting left to right from the bottom row**: pin 1 is the
+  **bottom-left** hole. This is the mirror image of the ribbon numbering, and
+  it gives exactly Ben's 5 and 8.
+
+| hole (motor rows at the bottom) | what is on it (Opentrons net) | ribbon, this doc | Opentrons `JP1` | left to right |
+| --- | --- | ---: | ---: | ---: |
+| bottom row, right | coil B (`MOTOR_1B_IN`) | 1 | 10 | 2 |
+| bottom row, left | coil B (`MOTOR_1A_IN`) | 2 | 9 | 1 |
+| row 2, right | coil A (`MOTOR_2B_IN`) | 3 | 8 | 4 |
+| row 2, left | coil A (`MOTOR_2A_IN`) | 4 | 7 | 3 |
+| middle row, right | ID EEPROM supply (`5V-IN`) | 5 | 6 | 6 |
+| **middle row, left** | **switch return (`GND`) → Arduino GND** | **6** | **5** | **5** |
+| **row 4, right** | **switch signal (`MIN_OUT`) → D9** | **7** | **4** | **8** |
+| row 4, left | ID EEPROM address (`ADDRESS`) | 8 | 3 | 7 |
+| top row, right | ID EEPROM `SDA` | 9 | 2 | 10 |
+| top row, left | ID EEPROM `SCL` | 10 | 1 | 9 |
+
+The middle row is the same from either end, which is why the switch return is
+pin 5 in both Opentrons' numbering and the left-to-right count.
+
+**The mirror does no harm on the coils.** Each coil fills one row, and the
+mirror only swaps the two holes within a row. Wiring the Tic table by the
+left-to-right count therefore reverses *both* coils relative to the figure.
+That leaves the direction alone. Reversing both coils turns the stator field by
+180° electrical, so the rotor sits two full steps (about 0.02 mm of plunger)
+from where it otherwise would, and then turns the same way. Reversing *one*
+coil is what flips the direction (§18.6).
+
+**On the switch it would do harm.** The two switch holes are not a row pair.
+The left-to-right count's "6 and 7" are the ID EEPROM's supply and address
+pins. Moving the switch wires there takes the switch out of the circuit,
+nothing pulls D9 low, and the firmware reads that as "at the limit" (§3):
+`HOME` fakes success in 0.52 s and every upward move is refused. **Leave the
+switch wires where they are.**
+
+**The run record says those wires are on the switch.** A switch that wasn't in
+the circuit could not have opened 28.7 mm up and closed again 2 mm back down,
+at every rate tried (§23). Nor could it have stopped `HOME` in every run since,
+or given the +0.04 mm before/after `HOME` check of 2026-10-02
+([record](https://github.com/vertical-cloud-lab/byu-vcl/blob/d921c64/cubos/results/pipette_test_20261002c/README.md)).
+
+**Go by position, not by number.** With the motor rows at the bottom, the
+switch return is the left hole of the middle row, and the switch signal is the
+right hole of the row above it. Each of the bottom two rows is one coil. The
+other four holes go to the pipette's ID EEPROM, which nothing here reads, and
+stay unconnected.
+
+Sources: the `JP1` nets are read from Opentrons'
+[`pipette-main.sch`](https://github.com/Opentrons/ot2/blob/1f55a03/PCB%20files/pipette-main/EAGLE/pipette-main.sch)
+(EAGLE). The header is a 3M 30310-6002HB on a standard 2×5 footprint, with odd
+pads in one row. The switch is from
+[`pipette-endstop.sch`](https://github.com/Opentrons/ot2/blob/1f55a03/PCB%20files/pipette-endstop/EAGLE/pipette-endstop.sch):
+an Omron D2F-L-A with `NC` to `GND` and `COM` to the signal, plus a capacitor
+across it. It is a bare contact with no supply pin. The positions come from the
+science-jubilee photo in §8.6.
