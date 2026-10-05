@@ -4,7 +4,7 @@ Asked in [PR #257](https://github.com/vertical-cloud-lab/byu-vcl/pull/257): how 
 stands up to repeated use, whether another material suits the repeated flexing, and whether a
 magnet would be a better way to hold the cable. This folder answers the first two with a
 nonlinear CalculiX model of each clip, for both versions of the part. The magnet question is
-answered in the PR thread.
+answered in the PR thread, and where to put the magnet in [`../magnet/`](../magnet/README.md).
 
 ![Peak strain against the diameter pushed through each clip](clip_strain.png)
 
