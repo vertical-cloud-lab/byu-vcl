@@ -76,12 +76,16 @@ A 0.002 mm gap is the two tessellations' own chord error, so the rebuild is the 
 
 The clip openings are narrow for their bores: 4.86 mm for Ø11 (44%) and 2.60 mm for Ø7
 (37%). Pushing a full-size, firm cable in through the gap would spread each arm by
-3.1 mm and 2.2 mm. Treating each arm as a curved cantilever fixed where it leaves the
-strip, that is roughly 6–7% bending strain at the root. PLA yields at about 2–3%, and at
-less across layer lines. So expect a firm cable to go in from the end, not snap in from
-the side. A soft or flattenable cable may still snap in. For a true snap-on clip in PLA,
-open the gap to roughly 70–80% of the bore, or make the arms thinner and longer. This is
-a hand estimate, not a simulation.
+3.1 mm and 2.2 mm. A CalculiX model of each clip ([`fea/`](fea/README.md)) puts the peak
+strain at 4.6% and 5.1%, on the inside of each arm where it joins the strip. (A hand
+estimate here, treating each arm as a curved cantilever, had said 6–7%.) PLA yields at
+about 2–3%, and at less across layer lines. So expect a firm cable to go in from the end,
+not snap in from the side. A soft or flattenable cable may still snap in.
+
+The printed revision (17:03 UTC) widened the openings to 7.2 and 5.88 mm and gave both
+clips 1 mm walls. A cable as wide as the bore then strains them 2.3% and 2.8%. That is
+better, but still above a rule-of-thumb 1.2% for snapping PLA over and over: see
+[`fea/README.md`](fea/README.md) for the curves, other materials and where the strain sits.
 
 ## Re-running
 
