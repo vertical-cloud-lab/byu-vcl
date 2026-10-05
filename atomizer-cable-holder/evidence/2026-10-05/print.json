@@ -1,0 +1,190 @@
+{
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/issues/256#issuecomment-5998480602",
+ "requested_by": "ronnie-guymon",
+ "source": {
+  "onshape_document": "https://byudesign.onshape.com/documents/3094e1d7fbb4c4351dcd0e1a/w/d3134413115bb70af771d24a/e/ef669eb623cfc76bb11527a4",
+  "document_name": "Atomizer holder",
+  "element": "Part Studio 1",
+  "part": "Part 1",
+  "workspace_modified_at": "2026-10-05T17:03:58Z",
+  "export_route": "GET /api/v10/partstudios/.../gltf with the lab API key at cad.onshape.com (STL endpoint refused); glTF in metres, Z-up, converted to STL in mm with trimesh",
+  "mesh": {
+   "facets": 3316,
+   "watertight": true,
+   "bodies": 1,
+   "extents_mm": [
+    50.0,
+    15.0,
+    25.955
+   ],
+   "volume_mm3": 7804.5
+  },
+  "design": {
+   "bar_mm": [
+    50,
+    10,
+    15
+   ],
+   "clips": [
+    {
+     "bore_mm": 12.75,
+     "wall_mm": 1,
+     "depth_mm": 7
+    },
+    {
+     "bore_mm": 8.75,
+     "wall_mm": 1,
+     "depth_mm": 2
+    }
+   ],
+   "fillet_mm": 0.7
+  },
+  "superseded": "An earlier version (11 mm and 7 mm bores, clips 10 and 5 mm deep) was sliced and pre-flighted at 16:46 UTC, then replaced by the designer's 17:03 update before anything was sent."
+ },
+ "slicer": "Bambu Studio 02.08.02.61 (GUI, on the runner's Xvfb display), bundled profiles (configuration update cancelled)",
+ "presets": {
+  "printer": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.20mm Standard @BBL A1M",
+  "filament": "Bambu PLA Basic @BBL A1M",
+  "plate": "Textured PEI Plate"
+ },
+ "settings_changed_in_gui": {
+  "enable_support": true,
+  "support_type": "normal(auto)",
+  "support_threshold_angle": 30,
+  "support_on_build_plate_only": true,
+  "filament_colour": "Black (10101)"
+ },
+ "orientation": "On its side: the sketch plane is the bed plane, so the C-clips print in the layer plane and flex along extruded lines. The clips are narrower than the bar and centred on it, so they stand on supports (z 4.0 and 6.5 mm).",
+ "bambu_estimates": {
+  "total": "18m41s",
+  "prepare": "5m58s + 57s",
+  "model": "11m45s",
+  "filament_g": {
+   "model": 4.02,
+   "support": 0.64,
+   "total": 4.67
+  },
+  "filament_m": 1.54,
+  "layers": 96,
+  "max_z_mm": 15.0
+ },
+ "sent_file": {
+  "name": "atomizer_holder_A1mini_blackPLA.gcode.3mf",
+  "how": "File > Export > Export plate sliced file, from the same slice that was sent",
+  "plate_1_gcode_md5": "dd278c8c69083e249bf8c36888fc3534",
+  "matches_studio_slice_in_tmp_bamboo_model": true,
+  "job_name_on_printer": "atomizer_holder_side"
+ },
+ "send_options": {
+  "printer": "Thumbelina, the A1 Mini",
+  "plate": "PEI",
+  "ams_mapping": {
+   "PLA (filament 1)": "A3 (0-based slot 2), black PLA Basic"
+  },
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "go": {
+  "by": "ronnie-guymon",
+  "comments": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/256#issuecomment-5999321513 (\"the build plate is clear\")",
+   "https://github.com/vertical-cloud-lab/byu-vcl/issues/256#issuecomment-5999375850 (\"plate still clear\")"
+  ],
+  "notes": "The 16:46 frame showed a red box right behind the bed; it was gone from the 17:14:49 frame."
+ },
+ "login_code_relayed_by": "ronnie-guymon (first code posted was refused as incorrect; the second, at 17:13:17, worked)",
+ "timeline_utc": [
+  [
+   "16:18:23",
+   "Request"
+  ],
+  [
+   "16:19",
+   "Onshape API: 403 (document not shared with the key's account)"
+  ],
+  [
+   "16:21:45",
+   "Read-only status of the A1 mini through the CubXL Pi: FINISH, no errors"
+  ],
+  [
+   "16:23",
+   "Screen recording and Bambu Studio started on the runner"
+  ],
+  [
+   "16:24",
+   "Link sharing on: document and feature list readable, geometry refused"
+  ],
+  [
+   "16:38:59",
+   "Export allowed on the link; glTF export works at 16:40"
+  ],
+  [
+   "16:46:21",
+   "First pre-flight (superseded version): HUMAN-DECISION"
+  ],
+  [
+   "16:47",
+   "First slice uploaded to the SD card (MD5 read back)"
+  ],
+  [
+   "16:49:28",
+   "Studio Log In pressed; Bambu e-mails a code"
+  ],
+  [
+   "17:03:58",
+   "Designer updates the part in Onshape"
+  ],
+  [
+   "17:08:14",
+   "Fresh code requested"
+  ],
+  [
+   "17:09:56",
+   "Code typed 5 s after it was posted: refused (incorrect)"
+  ],
+  [
+   "17:13:22",
+   "Second code typed 5 s after it was posted: logged in"
+  ],
+  [
+   "17:14:10",
+   "Updated part sliced in the GUI"
+  ],
+  [
+   "17:14:49",
+   "Fresh pre-flight: HUMAN-DECISION, all automated checks pass"
+  ],
+  [
+   "17:15:22",
+   "Send"
+  ],
+  [
+   "17:15:55",
+   "RUNNING (heating)"
+  ],
+  [
+   "17:21:59",
+   "Layer 1"
+  ],
+  [
+   "17:33:29",
+   "FINISH; watch exited 0, no print_error or HMS alert"
+  ],
+  [
+   "17:34:15",
+   "Plate already cleared"
+  ]
+ ],
+ "actual_duration": "18m07s from Send to FINISH (Bambu's estimate 18m41s)",
+ "watch": {
+  "frames_every_s": 30,
+  "auto_stop": true,
+  "exits": [
+   10,
+   0
+  ]
+ },
+ "recording": null
+}
