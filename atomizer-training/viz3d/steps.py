@@ -43,6 +43,7 @@ CAM = {
     "bench": [(-560, -1250, 1650), (0, -170, 1330), (0, 0, 1)],
     "outside": [(-1500, -2600, 1650), (60, 100, 950), (0, 0, 1)],
     "section_fr": [(300, -980, 1330), (-15, 0, 1225), (0, 0, 1)],  # the cut furnace and the nut under the deck at once
+    "melt_close": [(-70, -235, 1345), (0, 0, 1262), (0, 0, 1)],     # the melt in the cut crucible, either side of the rod
 }
 
 STREAM_TOP = M.NOZZLE_EXIT_Z
@@ -166,7 +167,16 @@ class Pool:
                    smooth_shading=False)
         self.set(level)
 
-    def set(self, level, color=MELT):
+    def set(self, level, color=MELT, stir=0.0):
+        """`stir` > 0 (cutaway only, with the bore full, level >= 0): the surface pulses as the coil stirs the melt
+        (stirred(), at the scene's clock), `stir` scaling the waves."""
+        if stir > 0.01 and self.half and level >= 0:
+            top, cut = stirred(level, self.sc.n / FPS, stir)
+            self.sc.set_mesh("pool", top)
+            self.sc.set_mesh("pool#cut", cut)
+            self.sc.alpha["pool"] = self.sc.alpha["pool#cut"] = 1.0
+            self.sc.color["pool"], self.sc.color["pool#cut"] = color, lighter(color, 0.3)
+            return
         on = level > self.levels[0] - 0.5
         i = int(np.argmin(np.abs(self.levels - level)))
         body, cut = self.meshes[i]
@@ -177,6 +187,60 @@ class Pool:
             self.sc.set_mesh("pool#cut", cut)
             self.sc.alpha["pool#cut"] = 1.0 if on else 0.0
             self.sc.color["pool#cut"] = lighter(color, 0.3)
+
+
+STIR_PERIOD = 1.1          # s: one pulse of the generator, and one surge of the melt up the rod
+
+
+def stir_height(r, t, amp=1.0):
+    """The stirred melt's surface, mm above its mean level, at radii r (mm, rod to wall) and time t (s).
+
+    What the training videos show: "when the whistle goes, the aluminum jumps up in the middle. The induction is
+    pulling it" (Video 3, 37:38), and "it's the pulsation ... just moving it up and down, and that's causing the
+    mixing" (Video 5, 58:24-58:37; the melt through the window at 58:06). Each pulse a ring wave runs in from the
+    crucible wall, steepening as it closes on the rod, and surges up the rod before it falls back. The volume is kept:
+    what climbs the rod comes from round the wall. In the section it is the same on both sides of the rod."""
+    r0, r1 = M.SEALING_ROD_D / 2 + 0.4, M.CRUCIBLE_ID / 2 - 0.3
+    rho = (np.asarray(r, float) - r0) / (r1 - r0)
+    ph = (t / STIR_PERIOD) % 1.0
+    c = 1.0 - ph / 0.5                                  # the ring's crest: the wall at the pulse's start, the rod halfway
+    grow = 3.0 + 5.0 * min(ph / 0.5, 1.0)
+    fade = 1.0 - ease((ph - 0.42) / 0.2)
+    ring = grow * ease(ph / 0.12) * fade * np.exp(-((rho - c) / 0.15) ** 2)
+    surge = 18.0 * math.sin(math.pi * min(max((ph - 0.36) / 0.56, 0.0), 1.0)) ** 2 * np.exp(-rho / 0.12)
+    back = 2.5 * math.sin(math.pi * min(max((ph - 0.7) / 0.3, 0.0), 1.0)) * np.exp(-((rho - (ph - 0.7) / 0.3) / 0.2) ** 2)
+    h = ring + surge + back
+    w = np.asarray(r, float)                            # annulus area ~ r dr: take out the mean, so the volume is kept
+    return amp * (h - (h * w).sum() / w.sum())
+
+
+def stirred(level, t, amp=1.0, nr=44, nt=49):
+    """(top surface, section face at y = 0) of the stirred melt standing `level` mm above Z_CR, the back half (y >= 0)
+    as in the cutaway; meshes in world coordinates, like the pool's."""
+    r0, r1 = M.SEALING_ROD_D / 2 + 0.4, M.CRUCIBLE_ID / 2 - 0.3
+    r = r0 + (r1 - r0) * np.linspace(0.0, 1.0, nr) ** 1.5         # finer near the rod, where the melt climbs
+    z = M.Z_CR + level + stir_height(r, t, amp)
+    th = np.linspace(0.0, math.pi, nt)
+    R_, TH = np.meshgrid(r, th, indexing="ij")
+    pts = np.column_stack([(R_ * np.cos(TH)).ravel(), (R_ * np.sin(TH)).ravel(), np.repeat(z, nt)])
+    i, j = np.meshgrid(np.arange(nr - 1), np.arange(nt - 1), indexing="ij")
+    a = (i * nt + j).ravel()
+    quads = np.column_stack([np.full(a.size, 4), a, a + nt, a + nt + 1, a + 1]).ravel()
+    top = pv.PolyData(pts, quads).triangulate().compute_normals(auto_orient_normals=False, consistent_normals=False)
+    if top.point_data["Normals"][:, 2].mean() < 0:
+        top = top.compute_normals(flip_normals=True, auto_orient_normals=False, consistent_normals=False)
+    # the section at y = 0: from the floor cone (and the wall) up to the surface, either side of the rod
+    zb = M.Z_CR + np.array([M.floor_z(v) for v in r])
+    faces, cpts = [], []
+    for sgn in (1.0, -1.0):
+        base = len(cpts)
+        for k in range(nr):
+            cpts += [(sgn * r[k], 0.0, zb[k]), (sgn * r[k], 0.0, z[k])]
+        for k in range(nr - 1):
+            q = base + 2 * k
+            faces += [4, q, q + 2, q + 3, q + 1]
+    cut = pv.PolyData(np.array(cpts), np.array(faces)).triangulate()
+    return top, cut
 
 
 class Powder:
@@ -217,6 +281,24 @@ def stream(sc, on, thick=1.0, frac=1.0):
     sc.gmat["stream"] = S((thick, thick, max(frac, 0.01)), (0, 0, top))
 
 
+FLYING, SLIDING, DROPPING = 0, 1, 2
+DROP_R = 9.0                  # mm: a droplet's drawn radius at the summary's 1080p (8 px), kept clear of every wall
+SLIDE_V, DROP_V = 900.0, 1200.0                     # mm/s in the model's slow motion
+CHUTE_C = np.array([M.CHUTE_X, 0.0])
+OUTLET_R = 52.0 - DROP_R - 6.0                      # the hole in the chamber floor (r 52) into the chute
+
+
+def floor_at(x):
+    """Height a particle rests at on the chamber floor: the 45 deg underside (z = SLOPE_C - x), then flat."""
+    return np.maximum(M.CH_BOTTOM + DROP_R, M.SLOPE_C + DROP_R * math.sqrt(2) - np.asarray(x, float))
+
+
+def chute_r(z):
+    """How far from the outlet axis a falling particle may be at height z: the floor hole (r 52), then the cone, which
+    narrows to r 38 at its foot, the valves (r 38-40) and the container's neck."""
+    return np.interp(z, [M.CONT_Z[1] - 40, 340.0, 410.0, M.CH_BOTTOM + 20], [30.0, 30.0, 44.0, 44.0])
+
+
 class Particles:
     """Droplets / powder as points rendered as spheres; a tiny ballistic model in slow motion."""
 
@@ -225,6 +307,7 @@ class Particles:
         self.rng = np.random.default_rng(seed)
         self.p = np.zeros((0, 3))
         self.v = np.zeros((0, 3))
+        self.s = np.zeros(0, int)        # FLYING, SLIDING (on the chamber floor) or DROPPING (down the outlet)
         self.landed = 0
         self.poly = pv.PolyData(np.array([[0.0, 0.0, -500.0]]))
         sc.add(name, self.poly, color, "static", render_points_as_spheres=True, point_size=size, ambient=0.4,
@@ -241,14 +324,13 @@ class Particles:
         d /= np.linalg.norm(d, axis=1)[:, None]
         p = M.IMPACT[None, :] + r.normal(0, 2.5, (n, 3))
         p[:, 1] = np.abs(p[:, 1]) + 1.0
-        self.p = np.vstack([self.p, p])
-        self.v = np.vstack([self.v, d * sp[:, None]])
+        self.add(p, d * sp[:, None])
 
     def emit_drops(self, n, pos, vel):
         if n <= 0:
             return
-        self.p = np.vstack([self.p, np.repeat(np.asarray(pos, float)[None, :], n, 0)])
-        self.v = np.vstack([self.v, np.asarray(vel, float)[None, :] + self.rng.normal(0, 60, (n, 3))])
+        self.add(np.repeat(np.asarray(pos, float)[None, :], n, 0),
+                 np.asarray(vel, float)[None, :] + self.rng.normal(0, 60, (n, 3)))
 
     def emit_settle(self, n):
         """Powder lying in the chamber being brushed down: start on the chamber floor, slide to the chute."""
@@ -256,9 +338,15 @@ class Particles:
             return
         r = self.rng
         x = r.uniform(-60, 300, n)
-        p = np.column_stack([x, r.uniform(2, M.CH_Y[1] - 20, n), np.maximum(M.CH_BOTTOM + 8, M.SLOPE_C + 10 - x)])
+        y = r.uniform(2, M.CH_Y[1] - 20, n)
+        y = np.minimum(y, np.sqrt(np.maximum((M.CH_Y[1] - DROP_R) ** 2 - np.maximum(x - M.CH_X[1], 0) ** 2, 1.0)))
+        p = np.column_stack([x, y, floor_at(x)])
+        self.add(p, np.zeros((n, 3)), SLIDING)
+
+    def add(self, p, v, state=0):
         self.p = np.vstack([self.p, p])
-        self.v = np.vstack([self.v, np.zeros((n, 3))])
+        self.v = np.vstack([self.v, v])
+        self.s = np.concatenate([self.s, np.full(len(p), state, int)])
 
     def step(self, dt=None):
         if len(self.p):
@@ -273,23 +361,61 @@ class Particles:
                 self.sc.set_mesh(self.name, pv.PolyData(pts.copy()))
                 self.sc.alpha[self.name] = 1.0 if len(self.p) else 0.0
                 return
-            x0, x1 = M.CH_X[0] + 6, M.CH_RIGHT - 6
-            y0, y1 = 1.0, M.CH_Y[1] - 6
-            fl = np.maximum(M.CH_BOTTOM + 8, M.SLOPE_C + 8 - self.p[:, 0])     # the sloped underside
-            inside = self.p[:, 2] > fl - 2
-            for ax, lo, hi in ((0, x0, x1), (1, y0, y1)):
-                hit = inside & ((self.p[:, ax] < lo) | (self.p[:, ax] > hi))
-                self.p[hit, ax] = np.clip(self.p[hit, ax], lo, hi)
-                self.v[hit, ax] *= -0.15
-            low = self.p[:, 2] <= fl
-            if low.any():   # on the sloped underside: slide down to the outlet and drop
-                tgt = np.array([M.CHUTE_X, 0.0, M.CONT_Z[1] - 45])
-                dvec = tgt[None, :] - self.p[low]
-                dist = np.linalg.norm(dvec, axis=1)[:, None] + 1e-6
-                self.v[low] = dvec / dist * 900
-            gone = self.p[:, 2] < M.CONT_Z[1] - 20
+            fly, slide, drop = self.s == FLYING, self.s == SLIDING, self.s == DROPPING
+            # in flight: bounce off the inside of the chamber (flat front and back, the half-round end, the ceiling and
+            # the door wall), keeping the back half (y > 0) for the cutaway
+            p, v = self.p, self.v
+            x0, xc, rr = M.CH_X[0] + DROP_R, M.CH_X[1], M.CH_Y[1] - DROP_R
+            for ax, lo, hi in ((0, x0, None), (1, 1.0, rr), (2, None, M.CH_TOP - DROP_R)):
+                if lo is not None:
+                    hit = fly & (p[:, ax] < lo)
+                    p[hit, ax] = lo
+                    v[hit, ax] = np.abs(v[hit, ax]) * 0.15
+                if hi is not None:
+                    hit = fly & (p[:, ax] > hi)
+                    p[hit, ax] = hi
+                    v[hit, ax] = -np.abs(v[hit, ax]) * 0.15
+            dx = p[:, 0] - xc
+            d = np.hypot(dx, p[:, 1]) + 1e-9
+            hit = fly & (dx > 0) & (d > rr)                  # past the half-round end
+            if hit.any():
+                n = np.column_stack([dx[hit] / d[hit], p[hit, 1] / d[hit]])
+                p[hit, 0], p[hit, 1] = xc + n[:, 0] * rr, n[:, 1] * rr
+                vn = (v[hit, :2] * n).sum(1)
+                v[hit, :2] -= (1.15 * np.maximum(vn, 0.0))[:, None] * n
+            # landing: from the floor on, a particle slides down the 45 deg underside, then across to the outlet
+            land = fly & (p[:, 2] <= floor_at(p[:, 0]))
+            self.s[land] = SLIDING
+            slide = self.s == SLIDING
+            if slide.any():
+                ps = p[slide]
+                on_slope = ps[:, 0] < xc
+                to = np.column_stack([CHUTE_C[0] - ps[:, 0], CHUTE_C[1] - ps[:, 1]])
+                dist = np.linalg.norm(to, axis=1) + 1e-9
+                vel = np.zeros_like(ps)
+                vel[on_slope] = np.array([1.0, 0.0, 0.0]) * SLIDE_V
+                vel[~on_slope, :2] = to[~on_slope] / dist[~on_slope, None] * SLIDE_V
+                ps += vel * h
+                ps[:, 2] = floor_at(ps[:, 0])                    # stay on the floor (down the slope as x grows)
+                v[slide] = 0.0
+                p[slide] = ps
+                at_outlet = np.hypot(ps[:, 0] - CHUTE_C[0], ps[:, 1] - CHUTE_C[1]) < OUTLET_R
+                idx = np.flatnonzero(slide)[at_outlet]
+                self.s[idx] = DROPPING
+            drop = self.s == DROPPING
+            if drop.any():
+                pd = p[drop]
+                pd[:, 2] -= DROP_V * h
+                off = pd[:, :2] - CHUTE_C[None, :]
+                r = np.linalg.norm(off, axis=1) + 1e-9
+                rmax = chute_r(pd[:, 2])
+                k = np.minimum(1.0, rmax / r)
+                pd[:, :2] = CHUTE_C[None, :] + off * k[:, None]
+                p[drop] = pd
+                v[drop] = 0.0
+            gone = p[:, 2] < M.CONT_Z[1] - 20
             self.landed += int(gone.sum())
-            self.p, self.v = self.p[~gone], self.v[~gone]
+            self.p, self.v, self.s = p[~gone], v[~gone], self.s[~gone]
         pts = self.p if len(self.p) else np.array([[0.0, 0.0, -500.0]])
         self.sc.set_mesh(self.name, pv.PolyData(pts.copy()))
         self.sc.alpha[self.name] = 1.0 if len(self.p) else 0.0
@@ -1258,14 +1384,15 @@ def anim_01_utilities():
 
 # ------------------------------------------------------------------------- summary, for slides
 def anim_summary():
-    """About 30 s for a slide, in one take: the furnace loaded (2a), the ultrasonic stack mounted (2c), then the melt (4)
-    and the pour (5). Same parts on the same paths, in the same order, as 03_furnace_load, 02_stack, 05_melt and 06_pour.
-    The fasteners (holder, nut, booster, sonotrode, plate, cover, bolts) are sped up. The checks, gas washes and holds
-    are left out. Captions and narration come from ../ppt/, so render it with VIZ3D_CLEAN=1."""
-    sc = Scene("summary", "The rePowder atomizer: a run in 30 s")
+    """About 44 s for a slide, in one take: the furnace loaded (2a), the ultrasonic stack mounted (2c), then the melt (4),
+    the coil stirring it, and the pour (5). Same parts on the same paths, in the same order, as 03_furnace_load, 02_stack,
+    05_melt and 06_pour. The fasteners (holder, nut, booster, sonotrode, plate, cover, bolts) are sped up, each move is
+    followed by a short pause, and the furnace, the stack and the run are a longer pause apart. The checks, gas washes
+    and holds are left out. Captions and narration come from ../ppt/, so render it with VIZ3D_CLEAN=1."""
+    sc = Scene("summary", "The rePowder atomizer: a run in 44 s")
     load_machine(sc, cut=FURNACE_CUT + CHAMBER_CUT, ghost={"stack_cover": 0.35}, hide=UTILITY_NAMES, pipes=False,
                  defer=True)
-    sc.intro = 0.6
+    sc.intro = 0.8
     # the furnace as 03_furnace_load starts it: cold, stripped, the crucible not yet built, the piston up
     hood(sc, 0)
     lift = {"side_ins": 300, "top_ins": 330, "bottom_ins": 360, "tc": 140, "rod": 260, "seal": -94}
@@ -1303,14 +1430,14 @@ def anim_summary():
     def open_lid(u):
         hood(sc, 110 * window(u, 0.0, 0.55))
         lever(sc, window(u, 0.5, 1.0))
-    sc.step("F.1", "Lid open, lever up", 1.2, open_lid, hold=0, cam_to=CAM["bench"])
+    sc.step("F.1", "Lid open, lever up", 1.45, open_lid, hold=0.2, cam_to=CAM["bench"])
 
     def nozzle_in(u):                       # 4 turns in about a second: sped up
         sc.show(cru, 1.0 if u > 0.05 else 0.0)
         rise = window(u, 0.1, 0.3)
         screw = linear(u, 0.3, 0.97)
         sc.gmat["holder"] = T((0, 0, -70 + 62 * rise + 8 * screw)) @ R((0, 0, 1), 360 * 4 * screw)
-    sc.step("F.2", "Holder screwed into the crucible (sped up)", 1.1, nozzle_in, hold=0)
+    sc.step("F.2", "Holder screwed into the crucible (sped up)", 1.45, nozzle_in, hold=0.2)
 
     def crucible_in(u):
         set_cut(sc, window(u, 0.0, 0.15), FURNACE_FIXED)
@@ -1318,7 +1445,7 @@ def anim_summary():
         sc.gmat["bottom_ins"] = T((0, 0, 360 * (1 - window(u, 0.05, 0.35))))
         sc.gmat["crucible"] = T(path(window(u, 0.4, 1.0), [BENCH, (BENCH[0], BENCH[1], OVER), (0, 0, OVER), (0, 0, 0)]))
         set_cut(sc, window(u, 0.75, 0.9), ("crucible", "holder", "nozzle"))
-    sc.step("F.3", "Bottom insulation, then the crucible down into the coil", 2.6, crucible_in, hold=0.1,
+    sc.step("F.3", "Bottom insulation, then the crucible down into the coil", 2.9, crucible_in, hold=0.25,
             cam_to=CAM["furnace_top"])
 
     def nut_on(u):                          # 5 turns in about a second: sped up
@@ -1331,7 +1458,8 @@ def anim_summary():
         screw = linear(u, 0.36, 0.97)
         sc.gmat["seal"] = T((0, 0, -94 * (1 - window(u, 0.2, 0.32))))
         sc.gmat["nut"] = T((0, 0, -94 + 84 * rise + 10 * screw)) @ R((0, 0, 1), -360 * 5 * screw)
-    sc.step("F.4", "Door open, the graphite nut on from below (sped up)", 2.3, nut_on, hold=0, cam_to=CAM["section_fr"])
+    sc.step("F.4", "Door open, the graphite nut on from below (sped up)", 2.7, nut_on, hold=0.25,
+            cam_to=CAM["section_fr"])
 
     def insulation_in(u):
         a, b = window(u, 0.0, 0.55), window(u, 0.45, 1.0)
@@ -1339,36 +1467,36 @@ def anim_summary():
         sc.gmat["side_ins"] = T((0, 0, 300 * (1 - a)))
         sc.show(sc.members("top_ins"), 1.0 if u > 0.45 else 0.0)
         sc.gmat["top_ins"] = T((0, 0, 330 * (1 - b)))
-    sc.step("F.5", "Side and top insulation", 1.1, insulation_in, hold=0)
+    sc.step("F.5", "Side and top insulation", 1.35, insulation_in, hold=0.1)
 
     def tc_in(u):
         sc.show(sc.members("tc"), 1.0 if u > 0.01 else 0.0)
         sc.gmat["tc"] = T((0, 0, 140 * (1 - u)))
-    sc.step("F.6", "Thermocouple in (sped up)", 0.7, tc_in, hold=0)
+    sc.step("F.6", "Thermocouple in (sped up)", 0.9, tc_in, hold=0.1)
 
     def rod_in(u):
         sc.show(sc.members("rod"), 1.0 if u > 0.01 else 0.0)
         sc.gmat["rod"] = T((0, 0, 260 * (1 - u) - 12))
-    sc.step("F.7", "Sealing rod in", 1.0, rod_in, hold=0)
+    sc.step("F.7", "Sealing rod in", 1.25, rod_in, hold=0.15)
 
     def lever_down(u):
         lever(sc, 1 - window(u, 0.0, 0.6))
         v = window(u, 0.7, 1.0)
         rod_lift(sc, 12 * (1 - v))
         sc.gmat["rod"] = T((0, 0, -12 * (1 - v)))
-    sc.step("F.8", "Lever down, pin in, rod down (sped up)", 0.7, lever_down, hold=0)
+    sc.step("F.8", "Lever down, pin in, rod down (sped up)", 0.95, lever_down, hold=0.15)
 
     def charge_in(u):
         for k in range(4):
             w = window(u, 0.18 * k, 0.18 * k + 0.45)
             sc.show(sc.members(f"slug{k}"), 1.0 if u > 0.18 * k else 0.0)
             sc.gmat[f"slug{k}"] = T((0, 0, 260 * (1 - w)))
-    sc.step("F.9", "The charge", 1.4, charge_in, hold=0)
+    sc.step("F.9", "The charge", 1.65, charge_in, hold=0.2)
 
     def close_lid(u):
         set_cut(sc, 1 - window(u, 0.6, 1.0))
         hood(sc, 110 * (1 - window(u, 0.0, 0.6)))
-    sc.step("F.10", "Lid closed", 1.2, close_lid, hold=0, cam_to=CAM["machine_near"])
+    sc.step("F.10", "Lid closed", 1.4, close_lid, hold=0.6, cam_to=CAM["machine_near"])     # a pause before the stack
 
     # ---- ultrasonic stack (2c), as in 02_stack: the door is still open from the nut
     DOOR = 100.0
@@ -1386,14 +1514,14 @@ def anim_summary():
         v = window(u, 0.35, 1.0)
         sc.show(sc.members("transducer"), min(1.0, v * 4))
         sc.gmat["transducer"] = T(-M.STACK_DIR * (bench + 160 * (1 - v)))
-    sc.step("S.1", "Transducer", 1.4, transducer_in, hold=0, cam_to=cam_side)
+    sc.step("S.1", "Transducer", 1.6, transducer_in, hold=0.1, cam_to=cam_side)
 
     def booster_sono(u):                    # 65 and 60 N·m: sped up
         for g, (t0, t1) in (("booster", (0.0, 0.5)), ("sonotrode", (0.5, 1.0))):
             v = window(u, t0, t1)
             sc.show(sc.members(g), min(1.0, v * 4))
             sc.gmat[g] = T(-M.STACK_DIR * (bench - 120 * (1 - v))) @ R(M.STACK_DIR, 300 * (1 - v), M.PLATE_C)
-    sc.step("S.2", "Booster and sonotrode on (sped up)", 1.1, booster_sono, hold=0)
+    sc.step("S.2", "Booster and sonotrode on (sped up)", 1.4, booster_sono, hold=0.1)
 
     def into_door(u):                       # then the plate, 50 N·m: sped up
         v = window(u, 0.0, 0.6)
@@ -1402,19 +1530,19 @@ def anim_summary():
         p = window(u, 0.6, 1.0)
         sc.show(sc.members("plate"), min(1.0, p * 4))
         sc.gmat["plate"] = T(M.STACK_DIR * 140 * (1 - p)) @ R(M.STACK_DIR, 360 * 2 * (1 - p), M.PLATE_C)
-    sc.step("S.3", "Into the door, plate on (sped up)", 1.2, into_door, hold=0)
+    sc.step("S.3", "Into the door, plate on (sped up)", 1.5, into_door, hold=0.1)
 
     def cover_shut(u):                      # cover on (sped up), then the door swings shut
         c = window(u, 0.0, 0.3)
         sc.show(sc.members("cover"), min(1.0, c * 4))
         sc.gmat["cover"] = T(-M.STACK_DIR * 300 * (1 - c))
         door(sc, DOOR * (1 - window(u, 0.35, 1.0)))
-    sc.step("S.4", "Cover on, door shut", 1.5, cover_shut, hold=0, cam_to=CAM["door_out"])
+    sc.step("S.4", "Cover on, door shut", 1.9, cover_shut, hold=0.1, cam_to=CAM["door_out"])
 
     def bolts(u):                           # the three star-knob bolts: sped up
         for c in range(3):
             clamp(sc, c, window(u, 0.25 * c, 0.25 * c + 0.4))
-    sc.step("S.5", "Three bolts (sped up)", 0.7, bolts, hold=0)
+    sc.step("S.5", "Three bolts (sped up)", 0.9, bolts, hold=0.6)                 # a pause before the run
 
     # ---- the run (4 melt, 5 pour), as in 05_melt and 06_pour; the gas washes are left out
     st = dict(level=-30.0)
@@ -1435,8 +1563,14 @@ def anim_summary():
             sc.gmat[f"slug{k}"] = S((1 + 0.1 * (1 - f), 1 + 0.1 * (1 - f), f), (x, y, M.Z_CR))
             sc.alpha[f"slug{k}"] = 1.0 if f > 0.07 else 0.0
         st["level"] = -30 if u < 0.52 else -14 + 50 * window(u, 0.52, 0.97)
-        pool.set(st["level"])
-    sc.step("R.1", "Argon in; the coil melts the charge", 4.0, melt, hold=0, cam_to=CAM["furnace_sec"])
+        pool.set(st["level"], stir=min(1.0, max(0.0, st["level"] / 30)))      # the coil stirs it as soon as it is melt
+    sc.step("R.1", "Argon in; the coil melts the charge", 4.4, melt, hold=0, cam_to=CAM["furnace_sec"])
+
+    def stir(u):                            # each pulse of the generator surges the melt up the rod (stir_height)
+        heat(sc, 800, 1.0)
+        pool.set(st["level"], stir=1.0)
+    sc.step("R.1b", "The coil stirs the melt", 1.0, stir, hold=0, cam_to=CAM["melt_close"])
+    sc.step("R.1c", "The coil stirs the melt", 2.0, stir, hold=0)          # held close, for two pulses
 
     def pour(u):
         vibrate(True)
@@ -1446,9 +1580,9 @@ def anim_summary():
             spray.emit_spray(per_frame(int(28 * window(u, 0.4, 0.8))))
         spray.step()
         st["level"] = max(-12.0, st["level"] - (0.085 * PER_FRAME if u > 0.4 else 0.0))
-        pool.set(st["level"])
+        pool.set(st["level"], stir=1 - window(u, 0.1, 0.5))
         powder.set(3 + 55 * min(1.0, spray.landed / 1800))
-    sc.step("R.2", "Vibration on, rod up: the melt onto the plate", 4.1, pour, hold=0, cam_to=CAM["stream"],
+    sc.step("R.2", "Vibration on, rod up: the melt onto the plate", 4.3, pour, hold=0, cam_to=CAM["stream"],
             live=True)
 
     def atomize(u):
@@ -1459,7 +1593,7 @@ def anim_summary():
         st["level"] = max(-12.0, st["level"] - 0.085 * PER_FRAME)
         pool.set(st["level"])
         powder.set(3 + 55 * min(1.0, spray.landed / 1800))
-    sc.step("R.3", "Droplets freeze into powder, down into the container", 3.8, atomize, hold=0.5, live=True,
+    sc.step("R.3", "Droplets freeze into powder, down into the container", 4.0, atomize, hold=0.6, live=True,
             cam_to=CAM["chamber"], still=True)
     return sc.save()
 

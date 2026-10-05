@@ -76,12 +76,14 @@ CLIPS = {
         ],
     },
     "summary": {
-        "title": "Atomizer slide clip: from loading to powder in 33 seconds (draft 1)",
+        "title": "Atomizer slide clip: from loading to powder in 44 seconds (draft 2)",
         "summary": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the "
-                   "sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon "
-                   "and pouring onto the vibrating plate, which atomizes the melt into powder.",
+                   "sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon, "
+                   "the coil's pulses stirring the melt up the sealing rod, and pouring onto the vibrating plate, which "
+                   "atomizes the melt into powder.",
         "note": "Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, plate, cover and bolts) "
-                "are sped up, and the checks, gas washes and holds are left out. The parts follow the same paths, in "
+                "are sped up, and the checks, gas washes and holds are left out. Each move is followed by a short pause, "
+                "and the furnace, the stack and the run are a longer pause apart. The parts follow the same paths, in "
                 "the same order, as in the full step animations.",
         "tutorials": ("01-before", "02-during"),
         "end_hold": 0.7,
@@ -96,8 +98,8 @@ CLIPS = {
              "A sealing rod plugs the nozzle; then the metal."),
             ("S.1", 0.0, "Ultrasonic stack mounts in the door",
              "The forty kilohertz ultrasonic stack mounts in the door."),
-            ("R.1", 0.0, "Argon fill, then induction melting",
-             "Under argon, the coil melts the metal."),
+            ("R.1", 0.0, "Argon fill, induction melting and stirring",
+             "Under argon, the coil melts and stirs the metal."),
             ("R.2", 0.0, "Melt pours onto the vibrating plate",
              "The rod lifts; melt hits the vibrating plate."),
             ("R.3", 0.0, "Droplets freeze into metal powder",

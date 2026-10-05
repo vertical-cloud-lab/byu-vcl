@@ -8,18 +8,18 @@ Parts that overlap where they stand: these are mounted on or into each other (a 
 
 | Part | Part | Overlap (mm) | At |
 | --- | --- | ---: | --- |
-| furnace_body | oring | 2.5 | [102, 68, 1342] |
-| furnace_body | tc_plug | 8.7 | [65, 84, 1345] |
-| furnace_body | hood_hinge | 5.8 | [-135, -4, 1317] |
-| lever_clevis | lever_pin | 2.4 | [114, 10, 1394] |
+| furnace_body | oring | 2.5 | [123, -9, 1343] |
+| furnace_body | tc_plug | 7.7 | [65, 85, 1340] |
+| furnace_body | hood_hinge | 5.8 | [-135, -5, 1313] |
+| lever_clevis | lever_pin | 2.5 | [114, 10, 1399] |
 | coil_lead0 | coil_lead1 | 1.7 | [-197, -6, 1198] |
-| hood | hood_knob | 4.4 | [104, -20, 1464] |
-| chamber | viewport_flange | 21.7 | [-1, -120, 1098] |
-| base_frame | feet | 2.0 | [-95, 527, 110] |
-| side_door_r | hmi_arm | 3.0 | [633, 207, 1394] |
-| hmi_arm | hmi | 19.8 | [745, 50, 1414] |
-| hmi_arm | hmi_screen | 18.8 | [746, 51, 1406] |
-| argon_regulator | argon_gauges | 4.0 | [-581, 734, 1481] |
+| hood | hood_knob | 4.5 | [105, -20, 1463] |
+| chamber | viewport_flange | 22.0 | [-37, -120, 1083] |
+| base_frame | feet | 2.0 | [-96, 529, 110] |
+| side_door_r | hmi_arm | 3.0 | [633, 207, 1424] |
+| hmi_arm | hmi | 19.8 | [745, 50, 1411] |
+| hmi_arm | hmi_screen | 18.8 | [746, 51, 1415] |
+| argon_regulator | argon_gauges | 4.0 | [-539, 734, 1479] |
 
 ## summary
 
