@@ -19,8 +19,8 @@ to be kept secured "so nobody is going to stand on it… we have like one thousa
 through it" ([T7 19:45](https://www.youtube.com/embed/FDRTt68Vfvo?start=1185)), and warned
 that both lines are stiff enough to damage the transducer end if pushed back too far
 ([T5 18:33](https://www.youtube.com/embed/58wJ_Khwgyk?start=1113)). This holder keeps those
-lines in place. Links are to the training recordings indexed in `atomizer-training/` on
-`claude/issue-124-20261003-0335`.
+lines in place. Links are to the training recordings, indexed in `atomizer-training/` in
+[PR #255](https://github.com/vertical-cloud-lab/byu-vcl/pull/255).
 
 The clips flex only while a line is pushed in or pulled out. A line that rides in its clip
 when the door swings bends the line, not the clip. So the number of flex cycles is the number
