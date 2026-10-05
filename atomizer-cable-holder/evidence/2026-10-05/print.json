@@ -175,6 +175,10 @@
   [
    "17:34:15",
    "Plate already cleared"
+  ],
+  [
+   "17:42:39",
+   "Recording uploaded (unlisted)"
   ]
  ],
  "actual_duration": "18m07s from Send to FINISH (Bambu's estimate 18m41s)",
@@ -186,5 +190,18 @@
    0
   ]
  },
- "recording": null
+ "recording": {
+  "url": "https://www.youtube.com/watch?v=9sMhaYUUJE8",
+  "privacy": "unlisted",
+  "channel": "BYU Vertical Cloud Lab",
+  "length": "6:50",
+  "cut": "16:48:30-17:14:00 UTC (the Bambu login, where the account e-mail is on screen, and the wait for the go)",
+  "chapters": [
+   "0:00 Studio setup and first slice (6x)",
+   "4:12 Updated part re-sliced, then Send (2x)",
+   "5:27 Printing, Device page (16x)",
+   "6:36 Printer camera over LAN, every 30 s (room corners blurred)"
+  ],
+  "raw_recording": "deleted from the runner after the cut"
+ }
 }

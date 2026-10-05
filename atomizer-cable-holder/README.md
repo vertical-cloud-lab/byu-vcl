@@ -72,6 +72,12 @@ Sterling's personal EDU account, which has no company attached. What each reques
 
 ![First layer, layer 12, layer 53 and the last layer](evidence/2026-10-05/frames/montage.jpg)
 
+![The finished part on the plate, 17:33:27 UTC](evidence/2026-10-05/frames/20261005T173327Z_finished.jpg)
+
+[Recording of the session](https://www.youtube.com/watch?v=9sMhaYUUJE8) (6 min 50 s, unlisted). It shows Studio on the
+runner and then the printer's camera. The Bambu login and the wait for the go are cut.
+
 The first pre-flight (16:46) showed a red box right behind the bed's back edge. The A1 mini
-moves its bed front to back, so it was raised before the go, and it was gone from the
-17:14:49 frame. Room corners in the committed frames are blurred.
+moves its bed front to back, so the box was flagged before the go. It was gone from the
+17:14:49 frame, and it is back in the frame of the finished part. Room corners in the
+committed frames are blurred.
