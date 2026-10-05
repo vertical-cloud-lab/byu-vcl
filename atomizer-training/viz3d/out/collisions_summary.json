@@ -5,19 +5,19 @@
    "b": "oring",
    "depth": 2.5,
    "at": [
-    123,
-    -9,
+    -98,
+    74,
     1343
    ]
   },
   {
    "a": "furnace_body",
    "b": "tc_plug",
-   "depth": 7.7,
+   "depth": 8.4,
    "at": [
-    65,
-    85,
-    1340
+    66,
+    84,
+    1345
    ]
   },
   {
@@ -26,8 +26,8 @@
    "depth": 5.8,
    "at": [
     -135,
-    -5,
-    1313
+    -1,
+    1320
    ]
   },
   {
@@ -35,9 +35,9 @@
    "b": "lever_pin",
    "depth": 2.5,
    "at": [
-    114,
-    10,
-    1399
+    112,
+    -7,
+    1397
    ]
   },
   {
@@ -53,21 +53,21 @@
   {
    "a": "hood",
    "b": "hood_knob",
-   "depth": 4.5,
+   "depth": 4.7,
    "at": [
-    105,
+    108,
     -20,
-    1463
+    1468
    ]
   },
   {
    "a": "chamber",
    "b": "viewport_flange",
-   "depth": 22.0,
+   "depth": 21.9,
    "at": [
-    -37,
+    -40,
     -120,
-    1083
+    1081
    ]
   },
   {
@@ -75,8 +75,8 @@
    "b": "feet",
    "depth": 2.0,
    "at": [
-    -96,
-    529,
+    612,
+    525,
     110
    ]
   },
@@ -87,13 +87,13 @@
    "at": [
     633,
     207,
-    1424
+    1404
    ]
   },
   {
    "a": "hmi_arm",
    "b": "hmi",
-   "depth": 19.8,
+   "depth": 19.7,
    "at": [
     745,
     50,
@@ -107,7 +107,7 @@
    "at": [
     746,
     51,
-    1415
+    1411
    ]
   },
   {
@@ -115,9 +115,9 @@
    "b": "argon_gauges",
    "depth": 4.0,
    "at": [
-    -539,
+    -582,
     734,
-    1479
+    1482
    ]
   }
  ],
@@ -226,19 +226,25 @@
      "label": "R.1b",
      "caption": "The coil stirs the melt",
      "start_frame": 952,
-     "end_frame": 1026
+     "end_frame": 981
+    },
+    {
+     "label": "R.1c",
+     "caption": "The coil stirs the melt",
+     "start_frame": 982,
+     "end_frame": 1041
     },
     {
      "label": "R.2",
      "caption": "Vibration on, rod up: the melt onto the plate",
-     "start_frame": 1027,
-     "end_frame": 1155
+     "start_frame": 1042,
+     "end_frame": 1170
     },
     {
      "label": "R.3",
      "caption": "Droplets freeze into powder, down into the container",
-     "start_frame": 1156,
-     "end_frame": 1293
+     "start_frame": 1171,
+     "end_frame": 1308
     }
    ]
   }
