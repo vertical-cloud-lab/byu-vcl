@@ -51,5 +51,18 @@
     "workspace": "d3134413115bb70af771d24a",
     "element": "ef669eb623cfc76bb11527a4",
     "microversion": "cfeb7b999fb9e175115c8d7c"
+  },
+  "onshape_comparison": {
+    "onshape_volume_mm3": 8208.274,
+    "rebuild_mesh_volume_mm3": 8208.371,
+    "onshape_area_mm2": 3871.21,
+    "rebuild_mesh_area_mm2": 3871.316,
+    "bbox_max_difference_mm": 2e-05,
+    "surface_distance_mm": {
+      "samples": 80000,
+      "mean": 0.00021,
+      "p99": 0.00174,
+      "max": 0.00212
+    }
   }
 }

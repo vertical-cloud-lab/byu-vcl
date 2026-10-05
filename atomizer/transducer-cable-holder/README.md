@@ -15,7 +15,11 @@ geometry: STL/STEP export, tessellation, mass properties, bounding boxes. So
 [`transducer_cable_holder.stl`](transducer_cable_holder.stl) is rebuilt from the feature
 list ([`onshape/features.json`](onshape/features.json), fetched 2026-10-05, microversion
 `cfeb7b999fb9e175115c8d7c`) by [`rebuild_from_features.py`](rebuild_from_features.py).
-**If an STL exported from Onshape itself turns up, use that instead.**
+
+Export was switched on later the same morning. The print in #256 uses Onshape's own
+export, made by the run that held the printer. The rebuild stays here as a cross-check,
+and as a worked example for the next view-only link. Measured against Onshape's mesh, it
+is exact to within tessellation (see [Checks](#checks)).
 
 | Feature | What it is |
 |---|---|
@@ -38,7 +42,8 @@ gives the same solid.
 **One judgement call: the clip tips.** Each tip is narrower than its two fillets: 1.6 mm
 against 2 × 1 mm, and 1.0 mm against 2 × 0.7 mm. Onshape reports both fillets OK, so it
 let the two blends meet. Here they are trimmed where they cross. That leaves a ridge
-0.02–0.03 mm short of the original tip face, well below what a 0.4 mm nozzle resolves.
+0.02–0.03 mm short of the original tip face. Onshape's mesh agrees: its lowest point,
+which is on that ridge, is at the same Z to within 0.00002 mm.
 
 ## Checks
 
@@ -53,10 +58,23 @@ From [`rebuild_summary.json`](rebuild_summary.json):
 | Ø7 clip opening | 2.60 mm (no lip fillet on this clip) |
 | Solid | one valid solid; every feature in the source reports `OK` |
 
+**Against Onshape's own mesh** ([`compare_to_onshape.py`](compare_to_onshape.py), using
+the Part Studio's glTF export in [`onshape/part_studio.gltf`](onshape/part_studio.gltf)):
+
+| | Onshape | Rebuild |
+|---|---|---|
+| Volume (mesh) | 8,208.27 mm³ | 8,208.37 mm³ |
+| Surface area (mesh) | 3,871.21 mm² | 3,871.32 mm² |
+| Bounding box | same to within 0.00002 mm | |
+| Surface distance, 80,000 samples both ways | mean 0.0002 mm, max 0.0021 mm | |
+
+A 0.002 mm gap is the two tessellations' own chord error, so the rebuild is the same part.
+
 ## Re-running
 
 ```bash
-pip install cadquery trimesh matplotlib
+pip install cadquery trimesh matplotlib rtree
 python rebuild_from_features.py   # STL, STEP and rebuild_summary.json
 python render.py                  # render.png
+python compare_to_onshape.py      # adds the comparison to rebuild_summary.json
 ```
