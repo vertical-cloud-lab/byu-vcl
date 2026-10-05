@@ -70,6 +70,17 @@ the Part Studio's glTF export in [`onshape/part_studio.gltf`](onshape/part_studi
 
 A 0.002 mm gap is the two tessellations' own chord error, so the rebuild is the same part.
 
+## Fit note
+
+The clip openings are narrow for their bores: 4.86 mm for Ø11 (44%) and 2.60 mm for Ø7
+(37%). Pushing a full-size, firm cable in through the gap would spread each arm by
+3.1 mm and 2.2 mm. Treating each arm as a curved cantilever fixed where it leaves the
+strip, that is roughly 6–7% bending strain at the root. PLA yields at about 2–3%, and at
+less across layer lines. So expect a firm cable to go in from the end, not snap in from
+the side. A soft or flattenable cable may still snap in. For a true snap-on clip in PLA,
+open the gap to roughly 70–80% of the bore, or make the arms thinner and longer. This is
+a hand estimate, not a simulation.
+
 ## Re-running
 
 ```bash
