@@ -4,10 +4,10 @@ The 3D animations from [`../viz3d/`](../viz3d/README.md), cut for a PowerPoint s
 at a time and speaks one short line per caption. The summary is the whole run in one condensed take, with the fasteners
 sped up. The other two clips are single steps at the animation's own speed, the same as in the GIFs and the tutorials.
 
-| Clip | Narrated, unlisted (draft 1) | File | Length |
+| Clip | Narrated, unlisted | File | Length |
 | --- | --- | --- | --- |
-| **The whole run** (`summary`), condensed. Furnace (about 14 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (6 s): built, into the door, door shut. Run (13 s): argon and the melt, the pour onto the plate (zoomed in), powder into the container | https://www.youtube.com/watch?v=qwopusVSwf4 | [`videos/summary.mp4`](videos/summary.mp4) | 0:33 |
-| The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:14.5, 0:06.4, 0:13.1 |
+| **The whole run** (`summary`), condensed (draft 2). Furnace (19 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (8 s): built, into the door, door shut. Run (17 s): argon and the melt, a close-up of the coil stirring the melt up the sealing rod, the pour onto the plate (zoomed in), powder into the container | https://www.youtube.com/watch?v=j9QcpcG8EVI (draft 1, 0:33: [qwopusVSwf4](https://www.youtube.com/watch?v=qwopusVSwf4)) | [`videos/summary.mp4`](videos/summary.mp4) | 0:44 |
+| The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:19.5, 0:08.8, 0:17.0 |
 | Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | https://www.youtube.com/watch?v=86K-EHhtPp8 | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
 | The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
 
@@ -29,8 +29,12 @@ They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build i
 - **The summary is condensed, and captions only the steps an audience needs.** It is its own animation
   (`anim_summary` in [`../viz3d/steps.py`](../viz3d/steps.py)): the same parts on the same paths, in the same order, as
   the furnace, stack, melt and pour animations.
-  - Sped up: the holder (4 turns in about a second), the nut (5 turns in about one), the thermocouple, the lever, the
+  - Sped up: the holder (4 turns in about a second), the nut (5 turns in about 1.6 s), the thermocouple, the lever, the
     booster, sonotrode and plate, the cover and the three bolts.
+  - Paced for a slide (draft 2, 44 s): a short pause after each move, and 0.6 s between the furnace, the stack and the
+    run. The narration pauses between steps rather than saying more.
+  - Shows the coil stirring the melt: a 3 s close-up of the cut crucible, the melt surging up the sealing rod at each
+    pulse ([`../viz3d/README.md`](../viz3d/README.md) has the sources).
   - Left out: the scan, the wet test, the gas washes and every hold.
   - Its 7 captions name the key steps only, so the fasteners pass without one. Its last frame is held 0.7 s.
   - Nothing passes through anything, checked frame by frame at 30 fps: [`../viz3d/out/collisions_summary.md`](../viz3d/out/collisions_summary.md).

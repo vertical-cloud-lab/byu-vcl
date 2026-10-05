@@ -75,21 +75,39 @@ invalidates the cache. When two renders run at once, give each its own display (
 | **4 · Melt** — overshoot, melt cues, rods slump into a pool, setpoint down to ~800 °C, 2 min hold ![](out/05_melt.gif) | **5 · Pour and atomize** — vibration, draining pressure, rod up, first drops bounce, turbo, spray off the plate, powder into the container ![](out/06_pour.gif) |
 | **6–8 · End of pour, cool down, collect** — turbo, rod down, stops, cool to ≤400 °C, vent, bolts back, door open (plate out with it), brush down, clamp halves part, container off ![](out/07_end_cooldown.gif) | **9 · Clean and reset** — brush; plate off; rod up, pin out, lever up, rod out; thermocouple and insulation out; nut off from below; crucible out to the bench; nozzle check; reassembled in order ![](out/08_clean.gif) |
 
-**Summary, for slides** (`summary`). This is a whole run in one take of about 32 s: 2a (furnace), 2c (stack and door),
+**Summary, for slides** (`summary`). This is a whole run in one take of about 44 s: 2a (furnace), 2c (stack and door),
 4 (melt) and 5 (pour). The parts take the same paths, in the same order, as in the four step animations. The fasteners are
-sped up: the holder takes 4 turns in under a second and the nut 5 turns in about one. The thermocouple, lever, booster,
-sonotrode, plate, cover and the three bolts are sped up too. The scan, the wet test, the gas washes and every hold are left
-out. From the nut to the charge it keeps one camera, a section from the front right that shows the crucible in the coil
-and the nut under the deck together. In the pour it zooms in on the plate, then pulls back to the container. It is
-rendered only in clean mode, for [`../ppt/`](../ppt/README.md), so it has no GIF. Its interference check,
+sped up: the holder takes 4 turns in about a second and the nut 5 turns in about 1.6 s. The thermocouple, lever, booster,
+sonotrode, plate, cover and the three bolts are sped up too. Each move is followed by a short pause (0.1–0.25 s), and the
+furnace, the stack and the run are 0.6 s apart. The scan, the wet test, the gas washes and every hold are left out. From
+the nut to the charge it keeps one camera, a section from the front right that shows the crucible in the coil and the
+nut under the deck together. Once the charge has melted it moves in close on the cut crucible for 3 s, to show the coil
+stirring the melt (below). In the pour it zooms in on the plate, then pulls back to the container. It is rendered only in
+clean mode, for [`../ppt/`](../ppt/README.md), so it has no GIF. Its interference check,
 [`out/collisions_summary.md`](out/collisions_summary.md), found no interference. It was run at the video's 30 fps
 (`VIZ3D_FPS=30 xvfb-run -a python collide.py summary`), not the usual 15, because the sped-up moves cover more ground
 per frame.
 
+**The stirring** (`stir_height` and `stirred` in [`steps.py`](steps.py), used by the summary for now). The induction
+field stirs the melt in pulses. In training, Bartosz: "when the whistle goes, the aluminum jumps up in the middle. The
+induction is pulling it. So it also gives us some of the mixing" ([Video 3, 37:38](https://www.youtube.com/embed/txH397FGTAU?start=2258)),
+and "it's the pulsation … just moving it up and down, and that's causing the mixing"
+([Video 5, 58:24–58:37](https://www.youtube.com/embed/58wJ_Khwgyk?start=3504)). The melt itself is seen through the lid's
+window, with the rod down its middle, at [Video 5, 58:06](https://www.youtube.com/embed/58wJ_Khwgyk?start=3486). In the
+model, each pulse (1.1 s) sends a ring wave in from the crucible wall. It steepens as it closes on the rod, surges about
+18 mm up the rod and falls back. The volume is kept, so what climbs the rod comes from round the wall. The surface is
+rebuilt every frame as a half annulus with its section at y = 0, so in the cutaway the same wave rises on both sides of
+the rod. Its height and period are illustrative: the window shows the motion, not its size.
+
 Heat is shown as colour, not physics: the charge goes grey → dull red → orange with the readout temperature, the coil
 brightens while the generator runs, the melt is an emissive orange. The argon is a light-blue translucent volume that
 fades out under vacuum. Droplets and powder are a small ballistic particle model in slow motion, kept to the back half
-so they read against the cutaway. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
+so they read against the cutaway. In flight they bounce off the inside of the chamber: its flat front and back, the
+half-round end, the ceiling and the door wall, a droplet's drawn radius (9 mm) clear of each. Once they land they slide
+down the 45° underside, cross the flat floor to the outlet and fall down the chute into the container. A replay of the
+summary's spray without rendering puts no particle outside the chamber, the outlet, the chute or the container. Before
+this, the bounds were a plain box and landed powder slid straight at the container, so some of it was drawn up to 118 mm
+outside the chamber. The committed GIFs of 06–08 still show that older model. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
 readouts are those used in training ([`../sop.md`](../sop.md)); they are illustrative, not a recipe.
 
 ## Measured vs. assumed
