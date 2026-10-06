@@ -101,6 +101,12 @@ If the UART wire was connected and the 12 V was back on for one of them, the boa
 0.21 A rms from then on and stayed cool. That can't explain the missing motion, since the same
 settings drive 0.72 A rms during a move.
 
+*Corrected 2026-10-06: they don't, and it can.* The library switches off StealthChop's automatic
+current scaling, and the firmware never switches it back on. So CS 6 and CS 1 scale a fixed PWM
+amplitude, about 0.1 A while moving and 0.03 A at rest, rather than setting a regulated current.
+Cool, no motion and no buzz all follow from that one cause. See
+[`tmc2209_probe_20261006`](../tmc2209_probe_20261006/README.md) and wiring doc §24.
+
 **Why it got hot: it held the motor at a current nobody had set.**
 
 - The driver is on whenever it has 12 V. The firmware drives A4 (`EN`) low, and the 6121 pulls
@@ -159,6 +165,12 @@ and the protocol's step 0 `home` clears it.
 asked whether this was the 6121 condemned on 2026-09-26. Ben said at 22:06Z that it is a new
 board. It also said the UART wire only mattered for readback, which is wrong: it carries the
 firmware's current settings.
+
+*2026-10-06: Ben's run through steps 1–12 and the probe's result are in
+[`tmc2209_probe_20261006`](../tmc2209_probe_20261006/README.md).* The board passed. Step 13's
+"0.21 A rms hold current" below is wrong for the reason given there. Once the firmware's writes
+land, the chip holds ~0.03 A and should feel cold. The last two rows of the table now lead to
+that record's tests A and B.
 
 Section numbers are from [`opentrons-pipette-wiring.md`](../../docs/opentrons-pipette-wiring.md).
 The figures assume an Adafruit 6121 like the 09-26 board: 0.05 Ω sense resistors, VREF at most

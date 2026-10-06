@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-10-05**. This is the map; the detail is in
+Status as of **2026-10-06**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,6 +13,17 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> 🔑 **2026-10-06: the board checks out, and the firmware may be what starves it.**
+> Ben's meter readings on the TMC2209 were healthy: VM 12.4 V, VDD 5 V, VREF 0.586 V,
+> coils 3.4 Ω, and DIAG 0 V once enabled. `tmc2209_probe.py` and the down-probe still saw
+> no motion either way. The janelia library's `initialize()` switches off StealthChop's
+> automatic current scaling, and `setupMotor()` never switches it back on. In that mode
+> `IRUN 6` scales a fixed PWM amplitude, 36 × 7/32 of 256, instead of setting a regulated
+> current. That works out to ≈0.1 A in the coils against the 1 A intended (wiring doc
+> §24). Two tests are in
+> [`tmc2209_probe_20261006`](../results/tmc2209_probe_20261006/README.md#next-two-ways-to-test-it):
+> pull the UART wire (standalone mode), or flash `disableStealthChop()`.
+>
 > 🔴 **2026-10-05: the TMC2209 board was tried again, and it doesn't drive the
 > plunger.** Ben swapped the Tic out for it. With the board plugged in, limit-switch
 > probes sent 9 mm of moves in both directions, and none reached the switch. They

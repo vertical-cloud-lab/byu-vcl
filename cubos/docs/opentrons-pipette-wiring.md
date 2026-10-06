@@ -3248,3 +3248,43 @@ about 56 mm at the Tic's 1/8, past the 46.5 mm drop-tip plane. Confirm 796/mm
 CubOS connects. The Tic was left de-energized to stop the 4 W idle heating, so
 send `ticcmd --energize` first. Record:
 [`results/pipette_switch_search_20260929/`](../results/pipette_switch_search_20260929/README.md).
+
+## 24. 2026-10-06: the firmware asks the TMC2209 for about a tenth of the current
+
+A new TMC2209 board passed Ben's meter checks: VM 12.4 V, VDD 5 V, VREF 0.586 V, coils
+3.4 Ω, and DIAG 0 V with EN high and after EN went back on A4. It still moved the plunger
+neither way under `tmc2209_probe.py` and the down-probe
+([`results/tmc2209_probe_20261006/`](../results/tmc2209_probe_20261006/README.md)). The
+likely reason is in the library rather than the board.
+
+[janelia-arduino/TMC2209](https://github.com/janelia-arduino/TMC2209) 10.1.1's
+`initialize()`, which §4 quotes, ends with `disableAutomaticCurrentScaling()` and
+`disableAutomaticGradientAdaptation()`. `setupMotor()` then calls `enableStealthChop()`
+and never re-enables either. With `TPWMTHRS` 0, StealthChop runs at every speed, and with
+`pwm_autoscale` 0 it doesn't regulate current. The datasheet's PWMCONF table: *"The
+current settings IRUN and IHOLD are not enforced by regulation but scale the PWM
+amplitude, only! … PWM_OFS * ((CS_ACTUAL+1) / 32) + PWM_GRAD * 256 / TSTEP"*.
+`setRegistersToDefaults()` writes `PWM_OFS` 36 and `PWM_GRAD` 0, so:
+
+```
+moving   IRUN 6:   36 * 7/32 = 7.9 of 256  ->  ~0.38 V on the coil at 12.4 V  ->  ~0.11 A peak
+at rest  IHOLD 1:  36 * 2/32 = 2.3 of 256  ->  ~0.11 V                        ->  ~0.03 A
+intended IRUN 6, regulated (SpreadCycle, 0.05 Ohm):                               1.02 A peak
+```
+
+That fits the 10-05 sequence. The board was hot in standalone mode before any port open,
+because there StealthChop's automatic scaling regulates to the trimmer. It went cold after
+the writes landed, with no motion, no buzz and DIAG low.
+
+🔴 **Corrections.** §22.4 and §22.5b say the trimmer and `RUN_CURRENT_PERCENT 20` *"agree
+within 7%, so it stops mattering"* which one is in force. That holds only if the firmware's
+setting is a regulated current, and here it isn't. Once the writes land, the coil current
+is ~0.1 A whatever VREF says. Every TMC2209 image on this machine was affected: upstream's
+`RUN_CURRENT_PERCENT 50` (CS 15) gives ≈0.23 A. The 09-26 board's DIAG fault (§22) is
+separate and stands.
+
+**Not yet measured.** It depends on the writes landing, and with `comm = 0` that's inferred
+from the hot-then-cold sequence. The two tests in the record separate the cases: take the
+UART wire off pin 9 (standalone mode), or flash `disableStealthChop()` in `setupMotor()`.
+SpreadCycle regulates `IRUN`/`IHOLD` against the sense resistors, as the Tic does, and
+doesn't need StealthChop's tuning for the firmware's unramped starts.
