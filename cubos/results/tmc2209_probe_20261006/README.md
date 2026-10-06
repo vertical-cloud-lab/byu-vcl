@@ -93,17 +93,17 @@ by regulation but scale the PWM amplitude, only! The resulting PWM amplitude (li
 
 So the chip doesn't regulate the current at all. It applies a fixed fraction of VM:
 
-| | CS | PWM amplitude, of 256 | coil volts at 12.4 V | coil current, 3.4 Ω |
-|---|---|---|---|---|
-| moving | IRUN 6 | 36 × 7/32 ≈ 7.9 | ≈ 0.38 V | **≈ 0.11 A peak** |
-| at rest | IHOLD 1 | 36 × 2/32 ≈ 2.3 | ≈ 0.11 V | **≈ 0.03 A** |
-| what `RUN_CURRENT_PERCENT 20` was meant to give | IRUN 6 | regulated | | 1.02 A peak |
-| the Tic, which moves this plunger at every rate | | regulated | | 0.99 A |
+| | CS | PWM amplitude, of 255 | coil current at 12.4 V, 3.4 Ω |
+|---|---|---|---|
+| moving | IRUN 6 | 36 × 7/32 ≈ 7.9 | **≈ 0.08 A rms (0.11 A peak)** |
+| at rest | IHOLD 1 | 36 × 2/32 ≈ 2.3 | **≈ 0.02 A rms (0.03 A peak)** |
+| what `RUN_CURRENT_PERCENT 20` was meant to give | IRUN 6 | would need ≈ 74 | 0.72 A rms (1.02 A peak) |
+| the Tic, which moves this plunger at every rate | | regulated | 0.99 A limit |
 
-The coil current is amplitude / 256 × VM / R. That ignores the MOSFETs' ~0.3 Ω and the back-EMF
-in motion, and both make it lower still. A tenth of the rated current gives about a tenth of
-the torque. That's too little to drive the plunger past its seals, and it's silent and cold
-while it fails.
+The currents come from the datasheet's own formula for this mode (§6.6, p. 43):
+`I_rms = VM × PWM_SCALE / (374 × R_coil)`. Back-EMF in motion lowers them further. A tenth of
+the rated current gives about a tenth of the torque. That's too little to drive the plunger past
+its seals, and it's silent and cold while it fails.
 
 **It fits everything seen so far:**
 

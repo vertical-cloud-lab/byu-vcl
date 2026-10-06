@@ -3267,9 +3267,11 @@ amplitude, only! … PWM_OFS * ((CS_ACTUAL+1) / 32) + PWM_GRAD * 256 / TSTEP"*.
 `setRegistersToDefaults()` writes `PWM_OFS` 36 and `PWM_GRAD` 0, so:
 
 ```
-moving   IRUN 6:   36 * 7/32 = 7.9 of 256  ->  ~0.38 V on the coil at 12.4 V  ->  ~0.11 A peak
-at rest  IHOLD 1:  36 * 2/32 = 2.3 of 256  ->  ~0.11 V                        ->  ~0.03 A
-intended IRUN 6, regulated (SpreadCycle, 0.05 Ohm):                               1.02 A peak
+I_rms = VM * PWM_SCALE / (374 * R_coil)          datasheet p. 43, this mode, 12.4 V, 3.4 Ohm
+
+moving   IRUN 6:   PWM 36 * 7/32 = 7.9   ->  ~0.08 A rms (0.11 A peak)
+at rest  IHOLD 1:  PWM 36 * 2/32 = 2.3   ->  ~0.02 A rms (0.03 A peak)
+intended IRUN 6, regulated, 0.05 Ohm:        0.72 A rms (1.02 A peak) -- would need PWM ~74
 ```
 
 That fits the 10-05 sequence. The board was hot in standalone mode before any port open,
