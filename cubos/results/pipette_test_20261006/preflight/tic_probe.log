@@ -1,0 +1,20 @@
+21:18:02.013Z  connected in 3.77 s (the port open reset the Arduino)
+21:18:02.021Z  STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+21:18:02.177Z  CMD 29 before: comm=0 (no UART reply) flags=0 [] CS=-1
+21:18:02.214Z  start                      switch closed (below the top)  dt=0.020 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+21:18:03.229Z  UP search 1/6              UP    0.5 mm @   400/s  dt= 1.015 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+21:18:04.229Z  UP search 2/6              UP    0.5 mm @   400/s  dt= 1.000 s (full move  0.995 s)  SWITCH OPENED after ~0.45 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+21:18:04.229Z  DIRECTION PROVEN: UP opened the switch after ~0.95 mm
+21:18:08.264Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+21:18:09.996Z  ladder @ 1000              UP    4.0 mm @  1000/s  dt= 1.732 s (full move  3.184 s)  SWITCH OPENED after ~2.05 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+21:18:14.031Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.035 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+21:18:14.801Z  ladder @ 2500              UP    4.0 mm @  2500/s  dt= 0.770 s (full move  1.274 s)  SWITCH OPENED after ~2.10 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+21:18:18.835Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+21:18:19.130Z  ladder @ 10000             UP    4.0 mm @ 10000/s  dt= 0.295 s (full move  0.366 s)  SWITCH OPENED after ~2.13 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+21:18:23.164Z  back off before HOME       DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+21:18:24.515Z  firmware HOME (cmd 10)  dt= 1.351 s  -> OK:{"msg":"Pipette homed"}
+21:18:24.524Z  STATUS -> OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+21:18:24.561Z  after HOME                 switch closed (below the top)  dt=0.020 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+21:18:24.716Z  CMD 29 after: comm=0 (no UART reply) flags=0 [] CS=-1
+21:18:24.724Z  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+21:18:24.725Z  disconnected; exit 0
