@@ -197,10 +197,10 @@ offered.
 | Company | Location | Method / scale | Published minimum | Al? | Contact |
 | --- | --- | --- | --- | --- | --- |
 | **AMAZEMET** (atomization service) | Majdan / Warsaw, Poland | Ultrasonic (rePowder), arc-melt pre-alloying | **50 g**; "budget starting point €1,000" | yes (induction) | sales@amazemet.com, +48 573 481 303 |
-| **Goodfellow** | Coraopolis PA (US office) / UK | Ultrasonic ("patented ultrasonic technology") | **100 g** | yes | +1-800-821-2870; booth 725 at MS&T26 |
+| **Goodfellow** | Pittsburgh, PA (US HQ, 301 Grant St) / UK | Ultrasonic ("patented ultrasonic technology") | **100 g** | yes | +1-800-821-2870; booth 725 at MS&T26 |
 | **Belmont Metals** | Brooklyn, NY | Research Atomizer + metallurgy team | **4 lb** Al-based, 5 lb others; "low flat rate" | yes | 1 (833) 4-ALLOYS; belmontmetals.com/contact-us |
 | **Rosswag Engineering** | Pfinztal (Karlsruhe), Germany | BluePower gas atomizer + in-house LPBF qualification | **5–50 kg**, "within 2 weeks" | yes (portfolio) | rosswag-engineering.de |
-| **Ultra Fine Specialty Products** | Woonsocket, RI | Pilot gas atomizer (Ar/N₂) | small batches "up to 500 lbs" | steels, Ni, Co, Cu, magnetic (Al not listed) | ultrafinepowder.com |
+| **Ultra Fine Specialty Products** | Woonsocket, RI | Pilot gas atomizer (Ar/N₂) | small batches "up to 500 lbs" | steels, Ni, Co, Cu, magnetic (Al not listed) | (401) 488-4990; ultrafinepowder.com |
 | **Arcast Inc. / Arcast Materials** | Oxford, Maine | Atomizer maker; contract powder production for "challenging" and reactive alloys (VersaMelt ≈3 kg/cycle) | per quote | reactive/Ti focus | arcastinc.com, arcastmaterials.com |
 | **Atomising Systems Ltd** | Sheffield, UK | Operates gas, water **and ultrasonic** atomisers for niche markets | per quote | per quote | atomising.co.uk / metal-powder.co.uk |
 | **Valimet** | Stockton, CA | Toll atomization of aluminum alloys, ≤2500 °F melts, 2–200 µm | **100 lb** to 100 t | **yes, Al specialist** | sales@valimet.com, +1 209 444 1600 |
@@ -211,8 +211,8 @@ offered.
 | **Kennametal Additive** | Pittsburgh / Latrobe, PA | Gas atomization; Co/Ni/Fe, Stellite, WC | production scale | no | booth 818 at MS&T26 |
 | **Continuum Powders** (Custom Foundry Runtime) | Houston, TX / Cloverdale, CA | Plasma-gas atomization sold as machine runtime | **40–50 kg** | not stated | 707-234-5565, continuumpowders.com/contact |
 | **Nanoval** | Berlin, Germany | Laval-nozzle gas atomization | **2 kg** to 5,000 kg; "small amounts for first testing" | per quote | nanoval.de |
-| **Additive Plus / ATO Lab (3D Lab)** | Poland (US sales office) | Ultrasonic (ATO); "custom alloy batch runs in 3–4 weeks" | per quote | per quote | additiveplus.com |
-| **Blue Power / Indutherm** | Bretten, Germany | AUS 500 induction ultrasonic atomizer maker | equipment, not service | — | bluepowerinduction.com |
+| **Additive Plus** (US distributor of 3D Lab's ATO ultrasonic atomizers, Poland) | California, USA | Ultrasonic (ATO); "custom alloy batch runs in 3–4 weeks" | per quote | per quote | additiveplus.com |
+| **Blue Power / Indutherm** | Walzbachtal, Germany | AUS 500 induction ultrasonic atomizer maker | equipment, not service | — | bluepowerinduction.com |
 
 How to use this list: the top three rows are the same price band the VCL would compete in
 (tens of grams to a few pounds, ultrasonic or research atomizer, €1,000-ish entry price).
@@ -230,7 +230,7 @@ require but the non-federal surcharge discussion will benefit from.
 | **Georgia Tech AMPF** | rePowder, **induction + plasma** | yes, hourly (§3) | ampf.research.gatech.edu |
 | **Ames National Laboratory PSDC** | Close-coupled gas atomizers, 2–5 kg and 10–25 kg | no; DOE SPP cost estimates | PSD@ameslab.gov |
 | **Royce / University of Sheffield** | Arcast EIGA (induction + gas), Tekna spheroidiser | no; access schemes | royce@sheffield.ac.uk |
-| **Empa** (Switzerland) | rePowder (shipped 2023–24) | no | via AMAZEMET partner list |
+| **Empa** (Switzerland) | rePowder (AMAZEMET shipment announcement) | no | via AMAZEMET partner list |
 | **Technical University of Munich** | rePowder (commissioned Feb 2024; Al alloys, chip recycling) | no | AMAZEMET case study |
 | **Chemnitz University of Technology** | rePowder (2024; high-Mn Fe alloys for coatings) | no | AMAZEMET case study |
 | **TU Darmstadt** | rePowder (magnetocaloric Gd powders) | no | AMAZEMET references |
