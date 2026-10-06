@@ -100,7 +100,7 @@ So the chip doesn't regulate the current at all. It applies a fixed fraction of 
 | what `RUN_CURRENT_PERCENT 20` was meant to give | IRUN 6 | would need ≈ 74 | 0.72 A rms (1.02 A peak) |
 | the Tic, which moves this plunger at every rate | | regulated | 0.99 A limit |
 
-The currents come from the datasheet's own formula for this mode (§6.6, p. 43):
+The currents come from the datasheet's own formula for this mode (§6.4, p. 43):
 `I_rms = VM × PWM_SCALE / (374 × R_coil)`. Back-EMF in motion lowers them further. A tenth of
 the rated current gives about a tenth of the torque. That's too little to drive the plunger past
 its seals, and it's silent and cold while it fails.

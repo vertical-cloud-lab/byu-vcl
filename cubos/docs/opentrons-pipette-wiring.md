@@ -3267,7 +3267,7 @@ amplitude, only! … PWM_OFS * ((CS_ACTUAL+1) / 32) + PWM_GRAD * 256 / TSTEP"*.
 `setRegistersToDefaults()` writes `PWM_OFS` 36 and `PWM_GRAD` 0, so:
 
 ```
-I_rms = VM * PWM_SCALE / (374 * R_coil)          datasheet p. 43, this mode, 12.4 V, 3.4 Ohm
+I_rms = VM * PWM_SCALE / (374 * R_coil)          datasheet §6.4 p. 43, 12.4 V, 3.4 Ohm
 
 moving   IRUN 6:   PWM 36 * 7/32 = 7.9   ->  ~0.08 A rms (0.11 A peak)
 at rest  IHOLD 1:  PWM 36 * 2/32 = 2.3   ->  ~0.02 A rms (0.03 A peak)
