@@ -2,7 +2,9 @@
 
 The 3D animations from [`../viz3d/`](../viz3d/README.md), cut for a PowerPoint slide. Each clip shows one short caption
 at a time and speaks one short line per caption. The summary is the whole run in one condensed take, with the fasteners
-sped up. The other two clips are single steps at the animation's own speed, the same as in the GIFs and the tutorials.
+sped up. The other three clips are single steps at the animation's own speed, the same as in the GIFs and the tutorials.
+All ten animations are also here as they are, without captions or narration: see
+[the animations as MP4s](#the-animations-as-mp4s).
 
 | Clip | Narrated, unlisted | File | Length |
 | --- | --- | --- | --- |
@@ -10,6 +12,7 @@ sped up. The other two clips are single steps at the animation's own speed, the 
 | The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:19.5, 0:08.8, 0:17.0 |
 | Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | https://www.youtube.com/watch?v=86K-EHhtPp8 | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
 | The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
+| The pour (`06_pour`): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | https://www.youtube.com/watch?v=21oFnNmzd3E | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
 
 [`script.md`](script.md) lists every caption with when it is up, its spoken line and how long that line takes, with a
 frame from each. The upload log, with the commit each description links to, is [`uploads.json`](uploads.json).
@@ -19,8 +22,10 @@ frame from each. The upload log, with the commit each description links to, is [
 They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build if any is broken:
 
 - **At most 6 words on screen at a time.** A number and its unit ("65 N·m") count as two.
-- **Each caption stays up at least 4 s.** The two clips' captions are up 4.2–7.7 s each. One caption per sub-step of the
-  animation; the long nut sub-step (2a.4) carries two, the door and nut, then how tight.
+- **Each caption stays up at least 4 s.** The single-step clips' captions are up 4.0–7.7 s each. One caption per
+  sub-step of the animation; the long nut sub-step (2a.4) carries two, the door and nut, then how tight. In the pour,
+  three sub-steps are shorter than 4 s: the vibration caption also covers the draining pressure (5.3), and the turbo
+  caption runs 0.5 s into the next sub-step.
 - **Each line is spoken while its caption is up.** It starts 0.25 s after the caption appears and ends at least 0.3 s
   before the next.
 - **No other text.** The GIFs' title, step label, leader labels, gauges and long captions are all off.
