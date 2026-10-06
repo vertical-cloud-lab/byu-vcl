@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-06)
+## Standing settings for the colour read (as of 2026-10-06 evening)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -30,10 +30,10 @@ the read height. Use these unless a later entry below changes them:
 | --- | --- | --- |
 | **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
-| candidate | **z 100** (foot ~12 mm up) scored best of ten heights on 10-01, and again on fresh paint over white paper on 10-06 (miss 0.16 against 0.49 resting). Resting on the plate scored worst both times. Recommended; not switched until @timothy-commins says so | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md) |
+| candidate | **z 92–100** (foot ~4–12 mm up). z 100 scored best of ten heights on 10-01 and over white paper on 10-06; over black paper z 92 scored 0.12, z 95 0.13, z 100 0.14, against 0.50 resting. Resting on the plate scored worst every time. Recommended; not switched until @timothy-commins says so | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
 | pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)) | [`landing_shift.py`](landing_shift.py), 10-02, 10-06 |
-| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of white paper since 10-06**; that day only H12 rested on the plate by z 87, so check it lies flat | 10-06 |
-| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted, refilled 10-06. **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
+| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
+| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
@@ -1339,6 +1339,37 @@ hand; refill the dried colours from the vials and check how the accuracy changed
   test); thicker colours; cap the vials.
 
 ![scores against 10-01](white-paper-2026-10-06.png)
+
+## 2026-10-06 (evening) — the same wells over black paper: lower error above the plate, the yellow worse
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: the white paper under the plate swapped for black paper; run the same test
+again. Write-up in [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md);
+[`analyse_black_paper.py`](analyse_black_paper.py) scores it height for height against the
+afternoon and runs the backing test.
+
+- **Same trip, no new paint:** one pick-up from A2 (photos within 0.02 px of the afternoon's
+  at every press step, grip 9.2×), the five wells at the afternoon's heights, then the empty H5
+  and the white H12 again above the plate. Released seated, 469–471 counts.
+- **Lower error at every height above the plate:** z 92 0.21 → 0.12 (the best yet), z 95
+  0.17 → 0.13, z 100 0.16 → 0.14. Resting on the plate unchanged (0.49 → 0.50).
+- **Every colour read darker.** The red's dark channels now read 0.04–0.06 (published
+  0.01–0.03) and the blue is inside its range from 440 to 583 nm; the yellow's 550–670 nm
+  channels fell to 0.23–0.37, further below PY74's 0.63–0.95. Colour differences are still
+  ~4× too small at z 100; a black paint now reads 0.11 instead of 0.25.
+- **The backing test:** the opaque white and black lost the same counts as each other (the
+  paper seen through the plate around the well), and the colours lost more: 4% (yellow), 8%
+  (red), 11% (blue) of their reading over white paper at z 100, most in each paint's own
+  colour. All three are partly see-through.
+- **But the yellow was already too dark over white paper**, so most of that shortfall is not
+  the backing. Next suspect: the hand-filled white and black (volume unknown) against the
+  200 µL colours.
+- **The H12 landing pushed the enclosure 0.85 mm up the nozzle** (afternoon 0.57), and the
+  light fell 12% in that one 0.5 mm step. H12's second visit gives the shifted white directly.
+- **Next:** keep the black paper; read at z 92–100; fill white and black to 200 µL like the
+  colours; thicker colours.
+
+![scores against the white-paper afternoon](black-paper-2026-10-06.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
