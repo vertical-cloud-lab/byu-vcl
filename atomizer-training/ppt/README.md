@@ -51,6 +51,36 @@ They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build i
 - Rendered with no text at all (`VIZ3D_CLEAN=1` in [`../viz3d/scene.py`](../viz3d/scene.py)), then captioned here: white
   bold text on a navy pill, centred near the bottom, switched between frames with no fade.
 
+## The animations as MP4s
+
+All ten step animations as they are, without captions or narration: for a slide you talk over, or to cut your own
+clips. They have the same moves at the same speed as the GIFs, at 1920 × 1080 and 30 fps, with no sound. An MP4 doesn't
+loop on its own; PowerPoint loops a video only if *Loop until Stopped* is ticked. Each comes two ways:
+
+- `<name>.mp4` has the GIF's text: the title, step label, caption, readouts and part labels, drawn at full size.
+- `<name>_no_text.mp4` has no text at all, so you can add your own.
+
+| Step | With the GIF's text | No text | Length |
+| --- | --- | --- | --- |
+| 0 · Tour of the machine | [`00_machine.mp4`](videos/animations/00_machine.mp4) (6.3 MB) | [`00_machine_no_text.mp4`](videos/animations/00_machine_no_text.mp4) (5.5 MB) | 0:30.6 |
+| 1 · Utilities on | [`01_utilities.mp4`](videos/animations/01_utilities.mp4) (4.2 MB) | [`01_utilities_no_text.mp4`](videos/animations/01_utilities_no_text.mp4) (3.9 MB) | 0:27.5 |
+| 2a · Furnace prep and loading | [`03_furnace_load.mp4`](videos/animations/03_furnace_load.mp4) (9.8 MB) | [`03_furnace_load_no_text.mp4`](videos/animations/03_furnace_load_no_text.mp4) (8.7 MB) | 1:02.7 |
+| 2b · Chamber: splash disc, container, catch bowl | [`03b_chamber.mp4`](videos/animations/03b_chamber.mp4) (1.3 MB) | [`03b_chamber_no_text.mp4`](videos/animations/03b_chamber_no_text.mp4) (1.1 MB) | 0:19.2 |
+| 2c · Ultrasonic stack and the door | [`02_stack.mp4`](videos/animations/02_stack.mp4) (3.8 MB) | [`02_stack_no_text.mp4`](videos/animations/02_stack_no_text.mp4) (3.2 MB) | 0:45.6 |
+| 3 · Gas wash | [`04_gas_wash.mp4`](videos/animations/04_gas_wash.mp4) (1.1 MB) | [`04_gas_wash_no_text.mp4`](videos/animations/04_gas_wash_no_text.mp4) (0.7 MB) | 0:39.5 |
+| 4 · Melt | [`05_melt.mp4`](videos/animations/05_melt.mp4) (2.0 MB) | [`05_melt_no_text.mp4`](videos/animations/05_melt_no_text.mp4) (1.7 MB) | 0:27.2 |
+| 5 · Pour and atomize | [`06_pour.mp4`](videos/animations/06_pour.mp4) (7.4 MB) | [`06_pour_no_text.mp4`](videos/animations/06_pour_no_text.mp4) (7.2 MB) | 0:44.7 |
+| 6–8 · End of pour, cool down, collect | [`07_end_cooldown.mp4`](videos/animations/07_end_cooldown.mp4) (3.3 MB) | [`07_end_cooldown_no_text.mp4`](videos/animations/07_end_cooldown_no_text.mp4) (3.1 MB) | 0:38.5 |
+| 9 · Clean and reset | [`08_clean.mp4`](videos/animations/08_clean.mp4) (7.3 MB) | [`08_clean_no_text.mp4`](videos/animations/08_clean_no_text.mp4) (7.0 MB) | 0:43.9 |
+
+![A frame from each animation](animations_sheet.jpg)
+
+They differ from the GIFs in one way besides size and frame rate. In the pour, the end of the run and the cleaning, the
+powder uses the corrected particle model, so none of it is drawn outside the chamber. Both files come from the same
+render (`VIZ3D_HD=1` in [`../viz3d/scene.py`](../viz3d/scene.py)), so they match frame for frame. `build_ppt.py
+animations` copies them here after checking each one's size, frame rate and frame count against the animation's
+timing. The no-text render (`../viz3d/out/clean/<name>.mp4`) is also the input the captioned clips above are built from.
+
 ## In PowerPoint
 
 Insert → Video → This Device, and pick the MP4. Under Playback, set Start to Automatically or When Clicked. The narration
@@ -62,15 +92,18 @@ is in the file. To talk over it instead, set the clip's Volume to Mute; the capt
 export PIP_TIMEOUT=600 PIP_RETRIES=2
 pip install cadquery pyvista edge-tts               # plus: apt-get install xvfb libgl1-mesa-dri ffmpeg
 cd ../viz3d
-VIZ3D_CLEAN=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 03_furnace_load 02_stack summary
+VIZ3D_CLEAN=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 03_furnace_load 02_stack 06_pour summary
+# or, for the animations as MP4s too: the same clean renders, plus the version with the GIF's text, from one render
+VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py   # all ten (or name some)
 cd ../ppt
+python build_ppt.py animations                      # videos/animations/ and animations_sheet.jpg (or name some)
 python build_ppt.py --check                         # the rules and timing (uses the 15 fps timing if nothing is rendered)
 python build_ppt.py                                 # videos/*.mp4, script.md, *_sheet.jpg (or name one: summary)
 python build_ppt.py upload --ref <pushed sha>       # unlisted, upload-only token; ids into uploads.json
 ```
 
 The clean renders took 13 minutes for the two single steps, run side by side on four cores, and 7 minutes for the
-summary. To change the wording, edit `captions.py` and rerun
+summary. With `VIZ3D_HD=1`, all ten animations took 52 minutes, four at a time on four cores. To change the wording, edit `captions.py` and rerun
 `build_ppt.py`; the renders are reused. A caption's time is given as an offset into one of the animation's sub-steps
 (their frames are in `../viz3d/out/clean/<name>.json`). Moving one means changing that offset, or the motion in
 `../viz3d/steps.py`.

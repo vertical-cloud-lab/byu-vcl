@@ -63,7 +63,7 @@ Run `collide.py` after any change to `model.py` or `steps.py`, before rendering:
 half an hour, and it names the sub-step, the frames and the two parts.
 
 A frame takes about 0.25 s (software OpenGL, SSAA and depth peeling for the see-through parts), so an animation takes
-two to three minutes. At 1920 × 1080 and 30 fps, four renders side by side take about 1 s a frame each: about 45 minutes
+two to three minutes. At 1920 × 1080 and 30 fps, four renders side by side take about 1 s a frame each: 52 minutes
 for all ten. The first run builds the CadQuery model (about 15 s) and caches the meshes; editing `model.py`
 invalidates the cache. When two renders run at once, give each its own display (`xvfb-run -n 201 …`, `-n 202 …`):
 `-a` can hand both the same one.
