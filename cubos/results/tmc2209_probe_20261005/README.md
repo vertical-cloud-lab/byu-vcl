@@ -88,9 +88,10 @@ times come from his comments on #169, the logs here, and the file times on the P
 | 22:11:36–22:16:00 | Round 2 and the buzz: no motion |
 
 **The session didn't cause the heat, and didn't set out to stop it.** The board was hot four
-minutes before the session first opened the Arduino's port. After that it sent only `STATUS` (14),
-`CMD 29` (a read), `CMD 16` moves and `EMAG_OFF` (6). None of them sets the driver's current or
-switches it off. Pulling the 12 V at 22:02 is what stopped the heat.
+minutes before the session first opened the Arduino's port. After that it sent the Arduino only
+`STATUS` (14), a cap-sensor read, `CMD 29` (a read), `CMD 16` moves and `EMAG_OFF` (6). None of
+them sets the driver's current or switches it off. Pulling the 12 V at 22:02 is what stopped the
+heat.
 
 **The session may have kept it from coming back, though.** Each port open resets the Arduino, and
 `setupPipette()` then re-sends the TMC2209's settings over UART. Those take the trimmer out of
