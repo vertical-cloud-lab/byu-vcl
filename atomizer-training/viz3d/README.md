@@ -39,6 +39,7 @@ whole and the halved part, and `set_cut()` blends between them.
 | `out/<name>.gif` | 800 × 450, 10 fps, ≤ 5 MB, for GitHub. |
 | `out/mp4/<name>.mp4` | 1280 × 720, 15 fps, h264 yuv420p, no audio, for the narrated tutorials. Not committed (see `.gitignore`); regenerate with `steps.py`. |
 | `out/clean/<name>.mp4`, `.json` | `VIZ3D_CLEAN=1`: the same animation with no text at all (no title, label, caption, gauges or leader labels), for videos that add their own captions ([`../ppt/`](../ppt/README.md)). `VIZ3D_SIZE` and `VIZ3D_FPS` set the frame size and rate. Every move keeps its length in seconds, and per-frame effects (particles, the plate's vibration, flow dots, point sizes) are scaled to match. Not committed. |
+| `out/hd/<name>.mp4` | `VIZ3D_HD=1`: the animation with all the GIF's text, drawn at the same share of the frame as at 720p, written from the same frames as the clean `out/clean/<name>.mp4` (both h264 CRF 18). With `VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30` these are the MP4s in [`../ppt/videos/animations/`](../ppt/videos/animations/), copied there. Leaves the GIF, still and JSON alone. Not committed here. |
 | `out/<name>_still.png` | One representative 1280 × 720 frame. |
 | `out/<name>.json` | `{name, fps, n_frames, size, substeps: [{label, caption, start_frame, end_frame}]}`: the MP4 frame range of every sub-step (motion plus its hold), for timing narration sentence by sentence. Every animation opens with 1 s of establishing view, counted in its first sub-step. |
 
@@ -53,6 +54,7 @@ xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 06_pour   # one (or seve
 PREVIEW=1 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 06_pour   # last frame of each sub-step only, as a contact sheet in /tmp
 VIZ3D_CLEAN=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 02_stack   # no text at all, 1080p30, into out/clean/ (for ../ppt/)
 VIZ3D_CLEAN=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py summary    # the condensed run, for ../ppt/
+VIZ3D_HD=1 VIZ3D_SIZE=1920x1080 VIZ3D_FPS=30 xvfb-run -a -s "-screen 0 1920x1080x24" python steps.py 06_pour      # 1080p30 with the GIF's text (out/hd/) and without (out/clean/)
 xvfb-run -a -s "-screen 0 1920x1080x24" python collide.py          # interference check of every animation -> out/collisions.md
 xvfb-run -a -s "-screen 0 1920x1080x24" python collide.py 03_furnace_load   # one (writes out/collisions_<names>.md)
 ```
@@ -61,7 +63,8 @@ Run `collide.py` after any change to `model.py` or `steps.py`, before rendering:
 half an hour, and it names the sub-step, the frames and the two parts.
 
 A frame takes about 0.25 s (software OpenGL, SSAA and depth peeling for the see-through parts), so an animation takes
-two to three minutes. The first run builds the CadQuery model (about 15 s) and caches the meshes; editing `model.py`
+two to three minutes. At 1920 × 1080 and 30 fps, four renders side by side take about 1 s a frame each: about 45 minutes
+for all ten. The first run builds the CadQuery model (about 15 s) and caches the meshes; editing `model.py`
 invalidates the cache. When two renders run at once, give each its own display (`xvfb-run -n 201 …`, `-n 202 …`):
 `-a` can hand both the same one.
 
@@ -107,7 +110,8 @@ half-round end, the ceiling and the door wall, a droplet's drawn radius (9 mm) c
 down the 45° underside, cross the flat floor to the outlet and fall down the chute into the container. A replay of the
 summary's spray without rendering puts no particle outside the chamber, the outlet, the chute or the container. Before
 this, the bounds were a plain box and landed powder slid straight at the container, so some of it was drawn up to 118 mm
-outside the chamber. The committed GIFs of 06–08 still show that older model. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
+outside the chamber. The committed GIFs of 06–08 still show that older model; the 1080p MP4s in
+[`../ppt/videos/animations/`](../ppt/videos/animations/) have the new one. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
 readouts are those used in training ([`../sop.md`](../sop.md)); they are illustrative, not a recipe.
 
 ## Measured vs. assumed

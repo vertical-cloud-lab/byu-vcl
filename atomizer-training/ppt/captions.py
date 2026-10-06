@@ -75,6 +75,33 @@ CLIPS = {
              "Swing the three bolts over, and tighten the knobs."),
         ],
     },
+    "06_pour": {
+        "title": "Atomizer slide clip: the pour (draft 1)",
+        "summary": "The pour step of tutorial 2, cut for a slide: the melt held near 800 °C, the vibration on and the "
+                   "furnace pressure raised above the chamber's, the sealing rod lifted, a turbo push to heat the plate, "
+                   "then every drop atomizing and the powder running down into the container.",
+        "tutorials": ("02-during",),
+        # 5.2 (3.5 s), 5.3 (3.0 s) and 5.5 (3.5 s) are shorter than MIN_DWELL: 5.2's caption covers 5.3 too, and
+        # 5.5's runs 0.5 s into 5.6
+        "lines": [
+            ("5.1", 0.0, "Melt held near 800 °C",
+             "The melt is held near eight hundred degrees, under argon."),
+            ("5.2", 0.0, "Vibration on, then furnace pressure up",
+             "Switch the vibration on, then raise the furnace pressure above the chamber's."),
+            ("5.4", 0.0, "Sealing rod up: melt pours",
+             "Lift the sealing rod, and the melt pours."),
+            ("5.5", 0.0, "Turbo push heats the plate",
+             "A short turbo push heats the plate."),
+            ("5.6", 0.5, "Hot plate: every drop atomizes",
+             "Once the plate is hot, every drop atomizes."),
+            ("5.7", 0.0, "Powder runs into the container",
+             "The droplets freeze in the argon, and the powder runs down into the container."),
+            ("5.8", 0.0, "The pour lasts 2–3 minutes",
+             "The pour lasts two to three minutes, with an operator watching at the window."),
+            ("5.9", 0.0, "Crucible empty: the pour ends",
+             "When the crucible runs empty, the pour is over."),
+        ],
+    },
     "summary": {
         "title": "Atomizer slide clip: from loading to powder in 44 seconds (draft 2)",
         "summary": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the "

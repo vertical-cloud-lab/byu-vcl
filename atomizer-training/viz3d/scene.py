@@ -16,6 +16,10 @@ each output at its own resolution, so the GIF's text is drawn at GIF size rather
 For videos that add their own captions (``../ppt/``), ``VIZ3D_CLEAN=1`` drops every piece of text and writes only
 ``out/clean/<name>.mp4`` and ``.json``, leaving the committed GIF, still and JSON alone. ``VIZ3D_SIZE=1920x1080`` and
 ``VIZ3D_FPS=30`` change the frame size and rate; every move keeps its duration in seconds, so the speed is the same.
+
+``VIZ3D_HD=1`` writes both from the same frames: ``out/hd/<name>.mp4`` with all the GIF's text, drawn at the same share
+of the frame as at 1280 x 720, and the clean ``out/clean/<name>.mp4`` and ``.json``. It too leaves the GIF, still and
+JSON alone. Used with ``VIZ3D_SIZE`` and ``VIZ3D_FPS`` for the MP4s in ``../ppt/videos/animations/``.
 """
 from __future__ import annotations
 
@@ -38,6 +42,7 @@ FPS = int(os.environ.get("VIZ3D_FPS", "15"))
 GIF_FPS = 10
 SIZE = tuple(int(v) for v in os.environ.get("VIZ3D_SIZE", "1280x720").split("x"))
 CLEAN = bool(os.environ.get("VIZ3D_CLEAN"))     # no text at all; writes out/clean/ only (see the docstring)
+HD = bool(os.environ.get("VIZ3D_HD"))           # out/hd/ with the text and out/clean/ without (see the docstring)
 GIF_SIZE = (800, 450)
 FONT_DIR = Path("/usr/share/fonts/truetype/dejavu")
 PREVIEW = bool(os.environ.get("PREVIEW"))   # render only the last frame of each sub-step, to /tmp
@@ -178,21 +183,21 @@ class Scene:
         self.gif_frames: list[Image.Image] = []
         self.still: tuple[int, np.ndarray] | None = None
         self.want_still = False
-        self.mp4 = None
+        self.mp4 = self.mp4_text = None
         self.preview: list[Image.Image] = []
         if PREVIEW:
             mp4 = gif = False
-        if CLEAN:
+        if CLEAN or HD:
             gif = False
-        self.mp4_dir = OUT / ("clean" if CLEAN else "mp4")
+        self.mp4_dir = OUT / ("clean" if CLEAN or HD else "mp4")
         if mp4:
-            self.mp4_dir.mkdir(parents=True, exist_ok=True)
             self.mp4_path = self.mp4_dir / f"{name}.mp4"
-            self.mp4 = subprocess.Popen(
-                ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24",
-                 "-s", f"{size[0]}x{size[1]}", "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264",
-                 "-preset", "medium", "-crf", "16" if CLEAN else "21", "-pix_fmt", "yuv420p",
-                 "-movflags", "+faststart", str(self.mp4_path)], stdin=subprocess.PIPE)
+            if HD:      # the clean one is also the input of ../ppt/'s captioned clips; both are kept as delivered
+                self.mp4 = encoder(self.mp4_path, size, crf=18, preset="slow")
+                self.mp4_text_path = OUT / "hd" / f"{name}.mp4"
+                self.mp4_text = encoder(self.mp4_text_path, size, crf=18, preset="slow")
+            else:
+                self.mp4 = encoder(self.mp4_path, size, crf=16 if CLEAN else 21)
         self.gif = gif
         self.intro = 1.0          # seconds of establishing view before the first sub-step's motion
 
@@ -351,14 +356,16 @@ class Scene:
     def snap(self, n=1):
         base = self.render_base()
         anchors = [self.project(xyz) for _, xyz, _, _ in self.labels]
-        hi = self.overlay(Image.fromarray(base), 1.0, anchors)
+        # HD: the text keeps the share of the frame it has at 1280 x 720
+        hi = self.overlay(Image.fromarray(base), size_scale(self.size) if HD else 1.0, anchors)
         if self.want_still:
             self.still = (self.n, np.asarray(hi).copy())
             self.want_still = False
-        if self.mp4 is not None:
-            buf = np.asarray(hi.convert("RGB")).tobytes()
-            for _ in range(n):
-                self.mp4.stdin.write(buf)
+        for proc, frame in ((self.mp4, base if HD else hi), (self.mp4_text, hi)):
+            if proc is not None:
+                buf = np.asarray(frame.convert("RGB") if isinstance(frame, Image.Image) else frame).tobytes()
+                for _ in range(n):
+                    proc.stdin.write(buf)
         lo = None
         for i in range(n):
             k = self.n + i
@@ -433,17 +440,20 @@ class Scene:
             print("preview", self.name, len(self.preview))
             return
         OUT.mkdir(parents=True, exist_ok=True)
-        if self.mp4 is not None:
-            self.mp4.stdin.close()
-            self.mp4.wait()
+        for proc in (self.mp4, self.mp4_text):
+            if proc is not None:
+                proc.stdin.close()
+                proc.wait()
         meta = dict(name=self.name, fps=FPS, n_frames=self.n, size=list(self.size), substeps=self.substeps)
-        (self.mp4_dir if CLEAN else OUT).joinpath(f"{self.name}.json").write_text(
+        (self.mp4_dir if CLEAN or HD else OUT).joinpath(f"{self.name}.json").write_text(
             json.dumps(meta, indent=1, ensure_ascii=False) + "\n")
-        if self.still is not None and not CLEAN:
+        if self.still is not None and not (CLEAN or HD):
             Image.fromarray(self.still[1]).convert("RGB").save(OUT / f"{self.name}_still.png", optimize=True)
         info = f"{self.name}: {self.n} frames, {self.n / FPS:.1f} s"
         if self.mp4 is not None:
             info += f", mp4 {self.mp4_path.stat().st_size / 1e6:.1f} MB"
+        if self.mp4_text is not None:
+            info += f", with text {self.mp4_text_path.stat().st_size / 1e6:.1f} MB"
         if self.gif and self.gif_frames:
             path = OUT / f"{self.name}.gif"
             write_gif(self.gif_frames, path)
@@ -451,6 +461,15 @@ class Scene:
         self.pl.close()
         print(info, flush=True)
         return info
+
+
+def encoder(path: Path, size, crf, preset="medium") -> subprocess.Popen:
+    """ffmpeg reading raw RGB frames on stdin, writing h264 yuv420p at FPS."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    return subprocess.Popen(
+        ["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s", f"{size[0]}x{size[1]}",
+         "-r", str(FPS), "-i", "-", "-an", "-c:v", "libx264", "-preset", preset, "-crf", str(crf), "-pix_fmt", "yuv420p",
+         "-movflags", "+faststart", str(path)], stdin=subprocess.PIPE)
 
 
 def write_gif(frames, path: Path, colors=128, lossy=60, limit_mb=4.9):

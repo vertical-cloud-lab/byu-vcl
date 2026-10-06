@@ -16,8 +16,13 @@ and <name>_sheet.jpg (one frame per caption, for checking).
     python build_ppt.py summary                 # one (script.md keeps the others' sections as they are)
     python build_ppt.py --check                 # rules and timing only: needs the .json and the TTS, not the MP4
     python build_ppt.py upload --ref <sha>      # upload videos/*.mp4 unlisted (upload-only token), ids into uploads.json
+    python build_ppt.py animations [names]      # the ten step animations as they are, into videos/animations/ (below)
+
+`animations` takes the 1080p30 renders that ../viz3d writes with VIZ3D_HD=1 (out/hd/<name>.mp4 with the GIF's text,
+out/clean/<name>.mp4 without), checks each pair against its timing, and copies them to videos/animations/<name>.mp4 and
+<name>_no_text.mp4, with animations_sheet.jpg showing a frame of each. No captions or narration are added.
 """
-import argparse, hashlib, json, os, re, subprocess, sys, time
+import argparse, hashlib, json, os, re, shutil, subprocess, sys, time
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE); REPO = os.path.dirname(ROOT)
@@ -286,13 +291,80 @@ def upload(ref, names):
         print(name, "->", log[name]["url"], flush=True)
 
 
+ANIMATIONS = {         # the step animations in the order of a run, as in ../viz3d/README.md
+    "00_machine": "0 · Tour of the machine",
+    "01_utilities": "1 · Utilities on",
+    "03_furnace_load": "2a · Furnace prep and loading",
+    "03b_chamber": "2b · Chamber: splash disc, container, catch bowl",
+    "02_stack": "2c · Ultrasonic stack and the door",
+    "04_gas_wash": "3 · Gas wash",
+    "05_melt": "4 · Melt",
+    "06_pour": "5 · Pour and atomize",
+    "07_end_cooldown": "6–8 · End of pour, cool down, collect",
+    "08_clean": "9 · Clean and reset",
+}
+
+
+def probe(path):
+    """(width, height, frame rate, frames, has audio) of an MP4."""
+    r = run(["ffprobe", "-v", "error", "-show_entries", "stream=codec_type,width,height,r_frame_rate,nb_frames",
+             "-of", "json", path])
+    st = json.loads(r.stdout)["streams"]
+    v = next(x for x in st if x["codec_type"] == "video")
+    return (int(v["width"]), int(v["height"]), v["r_frame_rate"], int(v["nb_frames"]),
+            any(x["codec_type"] == "audio" for x in st))
+
+
+def animations(names=(), cols=2, tw=640):
+    """videos/animations/: each step animation with the GIF's text and with none (all, or `names`), and a sheet with a
+    frame of each one there."""
+    dst = f"{OUT}/animations"
+    os.makedirs(dst, exist_ok=True)
+    for name in names or ANIMATIONS:
+        meta = json.load(open(f"{CLEAN}/{name}.json"))
+        want = (*meta["size"], f"{meta['fps']}/1", meta["n_frames"], False)
+        for src, out in ((f"{ROOT}/viz3d/out/hd/{name}.mp4", f"{dst}/{name}.mp4"),
+                         (f"{CLEAN}/{name}.mp4", f"{dst}/{name}_no_text.mp4")):
+            got = probe(src)
+            if got != want:
+                raise SystemExit(f"{src}: {got}, expected {want} from {CLEAN}/{name}.json; render it again")
+            shutil.copyfile(src, out)
+        print(f"{name}: {ts(meta['n_frames'] / meta['fps'])}, {os.path.getsize(f'{dst}/{name}.mp4') / 1e6:.1f} MB with "
+              f"text, {os.path.getsize(f'{dst}/{name}_no_text.mp4') / 1e6:.1f} MB without", flush=True)
+    tiles = []
+    for name in ANIMATIONS:
+        if not os.path.exists(f"{dst}/{name}.mp4"):
+            continue
+        meta = json.load(open(f"{CLEAN}/{name}.json"))
+        secs = meta["n_frames"] / meta["fps"]
+        th = tw * meta["size"][1] // meta["size"][0]
+        png = f"{TMP}/anim_{name}.png"
+        run(["ffmpeg", "-y", "-v", "error", "-ss", f"{secs * 0.55:.3f}", "-i", f"{dst}/{name}.mp4", "-frames:v", "1",
+             "-vf", f"scale={tw}:{th}", png])
+        im = Image.open(png).convert("RGB")
+        lab = f"{name}.mp4 · {ts(secs)}"
+        d = ImageDraw.Draw(im)
+        f = ImageFont.truetype(FONT, 16)
+        d.rectangle((0, th - 26, d.textlength(lab, font=f) + 14, th), fill=(255, 255, 255))
+        d.text((7, th - 23), lab, font=f, fill=(20, 20, 24))
+        tiles.append(im)
+    th = tiles[0].height
+    rows_n = (len(tiles) + cols - 1) // cols
+    sheet = Image.new("RGB", (cols * tw + (cols - 1) * 4, rows_n * th + (rows_n - 1) * 4), (255, 255, 255))
+    for i, im in enumerate(tiles):
+        sheet.paste(im, ((i % cols) * (tw + 4), (i // cols) * (th + 4)))
+    sheet.save(f"{HERE}/animations_sheet.jpg", quality=85, optimize=True)
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("names", nargs="*", help="animations (default: all in captions.py), or 'upload'")
+    ap.add_argument("names", nargs="*", help="animations (default: all in captions.py), or 'upload', or 'animations'")
     ap.add_argument("--check", action="store_true")
     ap.add_argument("--ref", help="for upload: the pushed commit the description's links point at")
     args = ap.parse_args()
     os.makedirs(OUT, exist_ok=True); os.makedirs(TMP, exist_ok=True)
+    if args.names[:1] == ["animations"]:
+        return animations(args.names[1:])
     if args.names[:1] == ["upload"]:
         if not args.ref:
             raise SystemExit("upload needs --ref <pushed commit>")
