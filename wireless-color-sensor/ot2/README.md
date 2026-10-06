@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-01)
+## Standing settings for the colour read (as of 2026-10-06)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -30,9 +30,10 @@ the read height. Use these unless a later entry below changes them:
 | --- | --- | --- |
 | **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
-| candidate | **z 95–100** (foot ~7–12 mm up) scored best of ten heights on 10-01; z 86.5 scored worst. Confirm on fresh paint before switching | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md) |
-| pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter. In contact, re-read the first well at the end of a run | [`landing_shift.py`](landing_shift.py), 10-02 |
-| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch | |
+| candidate | **z 100** (foot ~12 mm up) scored best of ten heights on 10-01, and again on fresh paint over white paper on 10-06 (miss 0.16 against 0.49 resting). Resting on the plate scored worst both times. Recommended; not switched until @timothy-commins says so | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md) |
+| pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)) | [`landing_shift.py`](landing_shift.py), 10-02, 10-06 |
+| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of white paper since 10-06**; that day only H12 rested on the plate by z 87, so check it lies flat | 10-06 |
+| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted, refilled 10-06. **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
@@ -1309,6 +1310,35 @@ in [*Which diffuser, and whether tape will do*](accuracy-sources-2026-10-02.md#w
 - **Corrected:** the 10-02 PR comment called a missing diffuser "a likely part of the 12% landing
   error". That error was light getting in after the enclosure moved up the nozzle, which a diffuser
   doesn't block.
+
+## 2026-10-06 — fresh colours over white paper, undiluted white and black: no gain in accuracy
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: white paper under the plate, the black and white refilled undiluted by
+hand; refill the dried colours from the vials and check how the accuracy changed. Write-up in
+[`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md);
+[`analyse_white_paper.py`](analyse_white_paper.py) scores the run height for height against
+10-01.
+
+- **Refilled** yellow H2, red H4, blue H10, 200 µL each (tips A2, B2, A3). The vials had lost
+  ~1 cm since 09-30: the first draw, at tip-end z 38, came up clear, so every colour was drawn
+  at z 28. Tips C2–H2 were already gone; the C2 pick-up got nothing, and the bare nozzle never
+  came within ~18 mm of the paint.
+- **No gain.** z 100 is still the best height (miss 0.160, was 0.128), z 90–92 are unchanged,
+  and resting on the plate is still the worst (0.49, was 0.44).
+- **The references improved; the colours didn't.** The undiluted black reads 8–9% darker and the
+  white 1–3.5% brighter, so black ÷ white at z 100 fell from 0.65–0.82 to 0.54–0.77. But the
+  yellow reads 6–9% darker, and the red's dark channels came out lighter (0.16–0.18, was
+  0.10–0.13): the colour wells get light the opaque black doesn't.
+- **The paper only matters close to the plate.** At z 90–92 nothing changed beyond the black;
+  resting, the white reads 7–9% brighter, and the light curve flattens ~1 mm before contact, so
+  the touch has to be found with the camera.
+- **Only H12 rested on the plate**; over the other four wells the enclosure still moved with the
+  nozzle at z 86.5. The H12 landing pushed the enclosure 0.5 mm up the nozzle; scores corrected.
+- **Next:** read at z 100; black paper under the plate (with today's white, the ISO backing
+  test); thicker colours; cap the vials.
+
+![scores against 10-01](white-paper-2026-10-06.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

@@ -28,6 +28,17 @@ F1-H1, each vial stirred first with ``mix``
 never crossed the plate: it went out to y 2, in front of row H, along it, and
 in. Empty tips went round the tip rack to the trash, via x 250.
 
+Third run, 2026-10-06 13:10-13:51 MDT: the same wells refilled on the plate,
+now in slot 7 (``--plate-slot 7``), tips A2, B2 and A3
+(``results-white-paper-2026-10-06.md``). The open vials had lost ~1 cm since
+09-30: the first yellow draw at tip-end z 38 came up clear, so it was blown
+back into its vial and every colour was drawn at z 28. With the plate in
+slot 7, loaded tips went along y 2 to the well's x, then along that x to
+y 178, in front of the plate, and in. A missing tip goes unnoticed: C2 was
+gone, so the "pick-up" took nothing and the bare nozzle, 51 mm higher than
+the tip end the robot was placing, never reached the paint. Check the tip
+in the first photo over the vial before going in.
+
 Builds on ``tip_cal.py`` (the pick-up and the plate wells, tested 2026-09-29)
 and runs the same way: ON the Pi that holds the robot link, under nohup, one
 step at a time through a command file (``echo 'look 330 50 120' > cmd.tmp &&
