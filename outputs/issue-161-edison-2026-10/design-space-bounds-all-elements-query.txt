@@ -1,0 +1,11 @@
+We are defining the design space for a Bayesian-optimization alloy-design campaign on ALUMINIUM-based alloys for laser powder-bed fusion (LPBF). Powder is made in-house by ULTRASONIC ATOMIZATION of ~100 g charges (induction melting under argon, ~1300 C ceiling). Each of the following solutes will be varied INDEPENDENTLY in wt.% with aluminium as the balance: Mn, Cr, Zr, Mg, Si, Cu, Ti, Fe, Ni, Ce, Sc, Li, Er, Zn, Sn. The optimizer treats the space as a box (lower and upper bound per element) intersected with a total-solute constraint (aluminium >= some minimum, e.g. 80 wt.%).
+
+For EACH of the 15 elements, please give, with citations:
+(a) the range of wt.% actually used in published LPBF (or other rapid-solidification / additive manufacturing) aluminium alloys that contain that element, with representative alloys and compositions (e.g. AlSi10Mg, AlSi12, Scalmalloy, Al-Mn-Sc-Zr, Al-Mg-Zr, Al-Zr-Er-Ni, Al-Ce-Mg, Al-Ce-Ni, 2xxx/7xxx-type LPBF alloys, Al-Li LPBF alloys, Al-Fe, Al-Ni, Al-Cr, Al-Sn);
+(b) the physical ceiling that should cap the upper bound: maximum solid solubility, eutectic or peritectic composition, onset of coarse primary intermetallics even at LPBF/atomization cooling rates, hot-cracking susceptibility, melt-pool evaporation (Mg, Zn, Li), or printability limits;
+(c) a recommended LOWER and UPPER bound (wt.%) for the campaign, and whether the lower bound should be zero (a true control arm) or a small positive value;
+(d) any pairwise interactions that should constrain the box (for example Si suppressing Ti/Zr solubility, Mg with Si forming Mg2Si, Li with Cu, Fe forming beta-AlFeSi needles, Mn/Cr/Fe sludge, Zr and Sc co-precipitation).
+
+Then: (e) is a total-solute cap of 15, 20 or 25 wt.% (Al >= 85, 80, 75 wt.%) the norm in published high-throughput or combinatorial Al-alloy campaigns, and what do those campaigns use as bounds? (f) What impurity tolerances (Fe, Si, O, H, other) are specified for commercial LPBF Al-alloy powders (AlSi10Mg, Scalmalloy, A20X, Al-Mn-Sc-Zr, Al-Ce alloys) and what Fe/Si levels in master-alloy aluminium bases (e.g. masters cast on 99.7% vs 99.99% Al) would therefore be tolerable?
+
+Please tabulate the per-element answers and state clearly where evidence is missing.
