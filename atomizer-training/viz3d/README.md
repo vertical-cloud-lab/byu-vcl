@@ -23,6 +23,51 @@ inside, and close again for outside actions: in the furnace step the lid opens o
 with the nozzle; the chamber goes back to whole to vent and open the door. `load_machine(..., defer=True)` adds both the
 whole and the halved part, and `set_cut()` blends between them.
 
+**The ultrasonic stack is built as the training shows it** (rebuilt 7 Oct, after the Oct 6 run in #261). From the
+transducer out, it goes:
+
+1. transducer, booster, then the Ti sonotrode (M10 at its base; M8 and 17 mm wrench flats at its tip);
+2. the double-threaded M8 connector, whose ring hides in the sonotrode's tip, so half of it is in each sonotrode;
+3. the plate, slid onto the connector through an 8 mm hole 10 mm from one end;
+4. the tungsten-alloy (W–Ni–Fe) upper sonotrode, screwed onto the connector and torqued against the plate (50 N·m).
+
+Sources: [T5 10:28–11:41](https://www.youtube.com/embed/58wJ_Khwgyk?start=628) and
+[25:56](https://www.youtube.com/embed/58wJ_Khwgyk?start=1556), [T7 45:41–47:27](https://www.youtube.com/embed/FDRTt68Vfvo?start=2741)
+("put the connector first, then you put the plate and then you hold it with the top"), and
+[the Oct 2 run at 7:41](https://www.youtube.com/embed/qYyT39D5Yzo?start=461). So the plate is a cantilever off the
+stack's axis, and the upper sonotrode stands out past it on the side the melt lands on. Before this, the model had the
+plate's centre on a stud at the end of the sonotrode, with nothing beyond it.
+
+- **Sizes, in one block at the top of `model.py`.** They are frame estimates scaled by the plate's 20 mm width: plate
+  100 × 20 × 2.5 (carbon fibre), both sonotrodes about Ø20, upper sonotrode 55 long. #261 asks Gage and Ronnie to measure
+  them.
+- **The two things set by hand are parameters** (`StackSetup`): the plate's clocking about the axis (`clock`, 0 = level
+  and pointing to the front) and how far the stack is slid into its housing (`slide`). `behind` is where the axis passes
+  the stream. `VIZ3D_STACK` picks a set-up: a name in `SETUPS`, or e.g. `clock=90,slide=-31,behind=0`. Each set-up has its
+  own mesh cache.
+- **The default is the training set-up.** The plate is level and points to the front of the chamber, and the axis is
+  40 mm behind the stream. That 40 mm is inferred from the clocking, not measured. The stream lands mid-plate, 40 mm in
+  front of the hole, and clears the upper sonotrode by 28.6 mm. `landing()` works out where the stream first meets the
+  stack for any set-up, and `IMPACT` comes from it.
+- **How touchy that is.** With the plate level, sliding the stack about 8 mm either way puts the stream off the plate's
+  edge, because the plate is only 20 mm wide across the slope.
+- **The Oct 6 failure is `06b_oct6`.** It is rendered with `VIZ3D_STACK=oct6`. The plate is clocked straight down the
+  slope and the stack slid in, so the upper sonotrode is under the stream: the melt gathers on it and drips onto the plate.
+  Then the stack is pulled back 40 mm: the stream clears the upper sonotrode and lands near the plate's free end.
+- **The two set-ups do not agree on where the axis is.** With the axis 40 mm behind the stream, no clocking or slide puts
+  the upper sonotrode under the stream: it stays about 30 mm to the side. The photos in #261 show that on Oct 6 it caught
+  the melt, so the axis was then within about 10 mm of the stream, sideways. `oct6` therefore has the axis in line with
+  the stream (`behind=0`). The measurement of the axis-to-nozzle offset asked for in #261 decides which is right; change
+  `AXIS_BEHIND`, and every animation follows.
+- **The door swing points the same way.** With the axis 40 mm behind the stream, the upper sonotrode's far end catches the
+  back edge of the door opening as the door swings (9 mm, `collide.py`). Pulled back 35 mm or more in its housing, it
+  clears. So the animations pull the stack back 40 mm (`PULL` in `steps.py`) before the door opens, and slide it in after
+  the door shuts. The captions say to do that only if the upper sonotrode would catch the opening's edge, because no
+  footage shows it. With the axis in line with the stream, the door swings clear without it.
+- **What moves with what.** The connector carries the plate and the upper sonotrode, so all three vibrate together. The
+  stack slides in its housing as one group (`stack`), and the protective cover stays bolted on. Droplets bounce off the
+  upper sonotrode, and a glowing film on the plate shows where the stream lands.
+
 ![machine](out/machine.png)
 
 ![section](out/section.png)
@@ -31,7 +76,7 @@ whole and the halved part, and `set_cut()` blends between them.
 
 | File | What it is |
 | --- | --- |
-| [`model.py`](model.py) | The machine as named CadQuery parts with colours: cabinet, melting control panel, HMI, main switch; furnace body, faceted lid (window, HOT label, knob), coil, insulation (bottom, side, top/filling cone), graphite crucible with its cone floor and pour hole, nozzle (white side up) and holder, sealing rod, adapter, holder arm and lift post, wall thermocouple, the four charge rods; chamber, door with three clamps, view port, catch bowl, splash plate; ultrasonic stack (transducer, booster, sonotrode with KF50 flange, plate on its stud, protective cover); chute cone, valve, flange clamp, powder container; argon cylinder and regulator, vacuum pump, heat exchanger, air filter-regulator, and the utility lines. `meshes()` tessellates everything (whole, and halved at y = 0 with the cut faces tinted) and caches it in `.cache/`. |
+| [`model.py`](model.py) | The machine as named CadQuery parts with colours: cabinet, melting control panel, HMI, main switch; furnace body, faceted lid (window, HOT label, knob), coil, insulation (bottom, side, top/filling cone), graphite crucible with its cone floor and pour hole, nozzle (white side up) and holder, sealing rod, adapter, holder arm and lift post, wall thermocouple, the four charge rods; chamber, door with three clamps, view port, catch bowl, splash plate; ultrasonic stack (transducer, booster, Ti sonotrode with KF50 flange and wrench flats, M8 connector, plate hung by its hole near one end, tungsten-alloy upper sonotrode, protective cover; see above); chute cone, valve, flange clamp, powder container; argon cylinder and regulator, vacuum pump, heat exchanger, air filter-regulator, and the utility lines. `meshes()` tessellates everything (whole, and halved at y = 0 with the cut faces tinted) and caches it in `.cache/`. |
 | [`scene.py`](scene.py) | The `Scene` framework (after #239's `animate.py`): actors in groups that move together (groups can ride on other groups: the stack on the door, the rod on the arm), eased moves, opacity fades, colour and glow changes, camera moves, leader-line labels, gauge readouts, step label and wrapped caption. Each `step()` is one sub-step (one action, one caption) followed by a hold of at least 1 s; where particles, flow dots or the plate's vibration are running, the hold keeps them moving (`live=True`) instead of freezing the frame. Every frame is rendered once at 1280 × 720 and written to the MP4 (15 fps) and, every 1.5th frame, to the GIF (800 × 450, 10 fps, one palette, `gifsicle -O3 --lossy`). Text is drawn with PIL at each output's own size, so the GIF's text stays legible. |
 | [`steps.py`](steps.py) | One animation per SOP step, plus `00_machine` (a tour) and `summary` (one condensed take for slides, below). File names are draft 1's; titles and sub-step labels follow the nine numbered phases of the overview outline (1 utilities; 2a furnace, 2b chamber, 2c stack and door; 3 gas wash; 4 melt; 5 pour; 6–8 end, cool down, collect; 9 clean), which is also the order of a real run. |
 | [`collide.py`](collide.py) | The interference check above. `xvfb-run -a python collide.py` writes `out/collisions.md` and `.json`: per animation, every pair that overlaps by more than 1.5 mm while moving, with sub-step, frame range, depth and where. It meshes each CadQuery solid in one piece, so the mesh is closed: the per-face render meshes have slits along cut edges, which flip the sign of the distance. It also reports anything that goes below the floor. About 15 minutes for all ten on four cores. |
@@ -74,14 +119,14 @@ invalidates the cache. When two renders run at once, give each its own display (
 | --- | --- |
 | **0 · Tour of the machine** — furnace, controls, chamber and door, ultrasonic unit, cone and container, utilities, then the cutaway ![](out/00_machine.gif) | **1 · Utilities on** — main switch, chilled water, heat exchanger, compressed air, argon; flow shown as dots along each line ![](out/01_utilities.gif) |
 | **2a · Furnace prep and loading** (`03_furnace_load`) — lid open and the rod lever swung up; holder screwed into the crucible in front of the furnace; seal and bottom insulation in, then the crucible lifted over and lowered straight into the coil; bolts back, door open, nut threaded on from below with the crucible held at the top (snug, never forced); insulation; thermocouple from the back right; sealing rod; lever down, pin in, SEALING ROD down; charge beside the lever; lid ![](out/03_furnace_load.gif) | **2b · Chamber** (`03b_chamber`) — splash disc into the container's top flange, container lifted from the floor and slid under the outlet, clamp halves close, catch bowl in through the open door (the only see-through moment) ![](out/03b_chamber.gif) |
-| **2c · Ultrasonic stack** (`02_stack`) — last, with the door locked open: transducer → booster (65 N·m) → sonotrode (60 N·m) → into the door housing → plate (50 N·m) → scan → wet test → cover → door shut (the plate swings in) → three star-knob bolts ![](out/02_stack.gif) | **3 · Gas wash** — furnace pumped and back-filled while the chamber holds overpressure, then the chamber, then washes at 250 and 500 °C ![](out/04_gas_wash.gif) |
+| **2c · Ultrasonic stack** (`02_stack`) — last, with the door locked open: transducer → booster (65 N·m) → Ti sonotrode (60 N·m) → into the door housing, short of its mark → connector, plate, upper sonotrode (50 N·m) → scan → wet test → cover → door shut, stack slid to its mark → three star-knob bolts ![](out/02_stack.gif) | **3 · Gas wash** — furnace pumped and back-filled while the chamber holds overpressure, then the chamber, then washes at 250 and 500 °C ![](out/04_gas_wash.gif) |
 | **4 · Melt** — overshoot, melt cues, rods slump into a pool, setpoint down to ~800 °C, 2 min hold ![](out/05_melt.gif) | **5 · Pour and atomize** — vibration, draining pressure, rod up, first drops bounce, turbo, spray off the plate, powder into the container ![](out/06_pour.gif) |
-| **6–8 · End of pour, cool down, collect** — turbo, rod down, stops, cool to ≤400 °C, vent, bolts back, door open (plate out with it), brush down, clamp halves part, container off ![](out/07_end_cooldown.gif) | **9 · Clean and reset** — brush; plate off; rod up, pin out, lever up, rod out; thermocouple and insulation out; nut off from below; crucible out to the bench; nozzle check; reassembled in order ![](out/08_clean.gif) |
+| **6–8 · End of pour, cool down, collect** — turbo, rod down, stops, cool to ≤400 °C, vent, bolts back, stack pulled back, door open (plate out with it), brush down, clamp halves part, container off ![](out/07_end_cooldown.gif) | **9 · Clean and reset** — brush; upper sonotrode off, then the plate; rod up, pin out, lever up, rod out; thermocouple and insulation out; nut off from below; crucible out to the bench; nozzle check; reassembled in order ![](out/08_clean.gif) |
 
 **Summary, for slides** (`summary`). This is a whole run in one take of about 44 s: 2a (furnace), 2c (stack and door),
 4 (melt) and 5 (pour). The parts take the same paths, in the same order, as in the four step animations. The fasteners are
 sped up: the holder takes 4 turns in about a second and the nut 5 turns in about 1.6 s. The thermocouple, lever, booster,
-sonotrode, plate, cover and the three bolts are sped up too. Each move is followed by a short pause (0.1–0.25 s), and the
+sonotrode, connector, plate, upper sonotrode, cover and the three bolts are sped up too. Each move is followed by a short pause (0.1–0.25 s), and the
 furnace, the stack and the run are 0.6 s apart. The scan, the wet test, the gas washes and every hold are left out. From
 the nut to the charge it keeps one camera, a section from the front right that shows the crucible in the coil and the
 nut under the deck together. Once the charge has melted it moves in close on the cut crucible for 3 s, to show the coil
@@ -110,8 +155,7 @@ half-round end, the ceiling and the door wall, a droplet's drawn radius (9 mm) c
 down the 45° underside, cross the flat floor to the outlet and fall down the chute into the container. A replay of the
 summary's spray without rendering puts no particle outside the chamber, the outlet, the chute or the container. Before
 this, the bounds were a plain box and landed powder slid straight at the container, so some of it was drawn up to 118 mm
-outside the chamber. The committed GIFs of 06–08 still show that older model; the 1080p MP4s in
-[`../ppt/videos/animations/`](../ppt/videos/animations/) have the new one. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
+outside the chamber. Since the stack was rebuilt, every GIF and MP4 has the new model. The plate's vibration is exaggerated (±1.2 mm) so it shows. Numbers in captions and
 readouts are those used in training ([`../sop.md`](../sop.md)); they are illustrative, not a recipe.
 
 ## Measured vs. assumed
@@ -145,7 +189,7 @@ near the frame edges were not used.
 | Outlet, cone, valve, container under the rounded end; container bottom ~60 mm off the floor. Flange clamp in two halves that part to release it | Frames (`58wJ_Khwgyk` 77:00, 3:22–3:52), render | Position observed; sizes assumed |
 | Splash protection: a round dish whose rim lies in the container's top flange, not a plate in the chamber. Catch bowl: a ring round the outlet on the chamber floor | `58wJ_Khwgyk` 2:17–2:57 (the disc pressed into the container's flange, before the container goes on), 6:42–6:52 (the bowl on the chamber floor through the open door) | Disc observed; the bowl's place is a guess |
 | Door: U-shaped (flat top, round bottom), 236 × 340, nearly the whole left face, **hinged at its front edge**, opening towards the operator. Three swing bolts with star knobs at the back edge, on brackets on the back face; each swings back about its pivot before the door can open. Small sight glass | Open door in `58wJ_Khwgyk` 25:00 and `FDRTt68Vfvo` 45:00: the stack's transducer end points at the camera, which a back-edge hinge would turn towards the frame. In `58wJ_Khwgyk` 77:00 the knobs are on the edge away from the view port. Draft 3 had it the other way round | Observed; size scaled |
-| Ultrasonic stack through the door's lower half at 40°, plate under the nozzle. 40 kHz, plate 20 × 100 Ti, booster 1.5:1, torques 65 / 60 / 50 N·m | Quote, O&MM, SOP; angle from the front and side frames (35–45°) | Torques documented; lengths assumed |
+| Ultrasonic stack through the door's lower half at 40°. Ti sonotrode → M8 connector → plate (100 × 20 × 2.5 carbon fibre, hung by an 8 mm hole 10 mm from one end) → W–Ni–Fe upper sonotrode Ø20 × 55. 40 kHz, booster 1.5:1, torques 65 / 60 / 50 N·m. Training set-up: plate level, pointing to the front; the axis 40 mm behind the stream; the stream lands mid-plate, 28.6 mm clear of the upper sonotrode | Quote, O&MM, SOP; angle from the front and side frames (35–45°); the build order and parts from `58wJ_Khwgyk` 10:28–11:41 and `FDRTt68Vfvo` 45:41–47:27; the photos in #261 | Torques and the order documented; sizes are frame estimates (scaled by the plate's 20 mm width); the axis offset and clocking inferred. #261 asks for them to be measured |
 | View port: 12-sided cover on the front face under the furnace, tilted down at the plate | Front-left frames | Observed; size scaled |
 | Furnace body Ø270 on the chamber's top plate, which reaches 40 mm past the chamber's left face under the body; faceted lid (R 152, reaching over the deck round the lever post) hinged on the left, turning round its pin on a bracket; coil leads on the left; connector plate at the back left | Frames (`wRc8p2_FnJo` 35:06–37:44, 41:00, 47:00; `1F9_4ccwhss` 5:16), render | Observed; proportions scaled |
 | Sealing-rod lever: a flat bar on a clevis at the top of a pneumatic post at the right of the deck. It swings up, past vertical, to clear the opening, and comes down over the adapter's top stub, where a safety pin holds it. The post's piston lifts lever and rod 12 mm to pour. The lever sits 89 mm above the crucible rim (#222 had 47) | `1F9_4ccwhss` 1:18–1:42 (raised while the insulation goes in), 2:02–2:20 (rod in, lever down, "we move the sealing rod down … now we can add the material"), 4:12–4:44 (down, with the charge going in beside it); `wRc8p2_FnJo` 36:24 (rod up, pin out, rod out) | Mechanism observed; sizes scaled |

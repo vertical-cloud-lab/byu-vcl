@@ -287,6 +287,17 @@ def shake(sc, on):
     sc.gmat["connector"] = T(M.STACK_DIR * (1.2 if (on and tick(sc) % 2) else 0.0))
 
 
+PULL = 40.0     # mm the stack is pulled back in its housing while the door swings (see slide())
+
+
+def slide(sc, mm):
+    """Slide the stack in its housing, mm along the axis from its run depth (negative: pulled back). At its run depth the
+    upper sonotrode's far end would catch the back edge of the door opening as the door swings (9 mm, collide.py); pulled
+    back 35 mm or more it clears, so the stack is pulled back PULL mm before the door opens and slid in after it shuts.
+    The protective cover is bolted to the housing and stays."""
+    sc.gmat["stack"] = T(M.STACK_DIR * mm)
+
+
 def add_film(sc):
     """Melt wetting the plate where the stream lands: a thin glowing disc on the plate's face, riding on the plate."""
     disc = pv.Cylinder(center=tuple(M.IMPACT + M.STACK_DIR * 0.4), direction=tuple(M.STACK_DIR), radius=7.0, height=0.8,
@@ -880,11 +891,13 @@ def anim_02_stack():
         sc.gmat[g] = T(-M.STACK_DIR * bench)
     out_along(sc)
     sc.gmat["cover"] = T(-M.STACK_DIR * 300)
-    pw = w(M.PLATE_C)
-    tw = w(M.TIP)
+    slide(sc, -PULL)          # it goes into the housing short of its mark, so the door can swing shut
+    back = -M.STACK_DIR * PULL
+    pw = w(M.PLATE_C + back)
+    tw = w(M.TIP + back)
     # the open door's stack points its transducer end at the operator: look at the assembly side-on, from the left, and
     # at the plate from behind the door, where it now sits
-    mid = w(M.on_axis(bench + 176))
+    mid = w(M.on_axis(bench + 176 + PULL))
     axis = dm @ -M.STACK_DIR
     side_dir = np.cross(axis, (0, 0, 1.0))
     side_dir = side_dir / np.linalg.norm(side_dir)
@@ -902,7 +915,7 @@ def anim_02_stack():
     sc.step("2c.1", "The stack goes transducer \u2192 booster \u2192 sonotrode \u2192 plate, and it goes in last, "
             "after the furnace and the chamber. First the transducer: piezo stack, ~1000 V cable, air-cooled. Never "
             "drop it or get it wet.", 3.5, transducer_in, hold=1.2, cam_to=cam_side,
-            labels=[lab("transducer", w(M.on_axis(bench + 316)), 0.06, 0.62)])
+            labels=[lab("transducer", w(M.on_axis(bench + 316) + back), 0.06, 0.62)])
 
     def booster_on(u):
         sc.show(sc.members("booster"), min(1.0, u * 4))
@@ -910,7 +923,7 @@ def anim_02_stack():
         gauges(sc, torque="65 N\u00b7m" if u > 0.9 else "\u2026")
     sc.step("2c.2", "Booster onto the transducer, 65 N\u00b7m (M10 fine thread). The 1.5:1 booster mounted in "
             "reverse lowers the amplitude, for finer powder.", 3.0, booster_on, hold=1.2,
-            labels=[lab("booster 1.5:1", w(M.on_axis(bench + 206)), 0.06, 0.40)])
+            labels=[lab("booster 1.5:1", w(M.on_axis(bench + 206) + back), 0.06, 0.40)])
 
     def sono_on(u):
         sc.show(sc.members("sonotrode"), min(1.0, u * 4))
@@ -918,14 +931,14 @@ def anim_02_stack():
         gauges(sc, torque="60 N\u00b7m" if u > 0.9 else "\u2026")
     sc.step("2c.3", "Ti sonotrode on, 60 N\u00b7m, isopropanol on the threads. Its KF50 flange is always at the top.",
             3.0, sono_on, hold=1.2,
-            labels=[lab("Ti sonotrode, KF50 flange", w(M.on_axis(bench + 106)), 0.06, 0.25)])
+            labels=[lab("Ti sonotrode, KF50 flange", w(M.on_axis(bench + 106) + back), 0.06, 0.25)])
 
     def stack_in(u):
         for g in ("transducer", "booster", "sonotrode"):
             sc.gmat[g] = T(-M.STACK_DIR * bench * (1 - u))
         gauges(sc, status="stack in the door housing")
-    sc.step("2c.4", "With the splash disc already in and the door locked open, slide the stack into the door's housing "
-            "and fit both clamps without touching the safety cover.", 3.5, stack_in,
+    sc.step("2c.4", "With the splash disc already in and the door locked open, slide the stack into the door's housing, "
+            "short of its mark for now, and fit both clamps without touching the safety cover.", 3.5, stack_in,
             hold=1.0, labels=[lab("door housing", w(M.PORT - M.STACK_DIR * 30), 0.06, 0.30)])
 
     def plate_on(u):
@@ -936,9 +949,10 @@ def anim_02_stack():
             "its ring hides, the plate onto it through the hole near its end, then the tungsten upper sonotrode, "
             "torqued against the plate to 50 N\u00b7m, counter-holding with a 17 mm wrench.", 6.8, plate_on, hold=1.2,
             cam_to=cam_in,
-            labels=[lab("plate, carbon fibre 100 \u00d7 20,\nhung by its end", w(M.PLATE_C + M.PLATE_ALONG * 25), 0.06, 0.66),
-                    lab("upper sonotrode,\ntungsten alloy", w(M.UPPER_END), 0.70, 0.25),
-                    lab("M8 connector", w(M.TIP + M.STACK_DIR * 6), 0.70, 0.62)])
+            labels=[lab("plate, carbon fibre 100 \u00d7 20,\nhung by its end", w(M.PLATE_C + M.PLATE_ALONG * 25 + back),
+                        0.06, 0.66),
+                    lab("upper sonotrode,\ntungsten alloy", w(M.UPPER_END + back), 0.70, 0.25),
+                    lab("M8 connector", w(M.TIP + M.STACK_DIR * 6 + back), 0.70, 0.62)])
 
     def scan(u):
         f = 39.6 + 0.9 * u
@@ -976,11 +990,12 @@ def anim_02_stack():
             cam_to=cam_side, labels=[lab("protective cover", w(M.on_axis(326)), 0.06, 0.62)])
 
     def shut(u):
-        door(sc, DOOR * (1 - u))
-        gauges(sc, status="frequency checked; door closing")
-    sc.step("2c.9", "Run the frequency check now, before closing. Then swing the door shut: the stack rides in it, and "
-            "the plate swings in under the nozzle, the stream to land mid-plate beside the upper sonotrode.", 3.5, shut,
-            hold=1.0, cam_to=CAM["door_out"])
+        door(sc, DOOR * (1 - window(u, 0.0, 0.62)))
+        slide(sc, -PULL * (1 - window(u, 0.7, 1.0)))
+        gauges(sc, status="door closing" if u < 0.66 else "stack in to its mark, clamped")
+    sc.step("2c.9", "Run the frequency check now, before closing. Swing the door shut, the stack pulled back if the upper "
+            "sonotrode would catch the opening, then slide it to its mark and clamp it: the stream must land mid-plate, "
+            "beside the upper sonotrode.", 4.5, shut, hold=1.0, cam_to=CAM["door_out"])
 
     def clamps(u):
         for c in range(3):
@@ -1259,9 +1274,11 @@ def anim_07_end_cooldown():
     def open_door(u):
         for c in range(3):
             clamp(sc, c, 1 - window(u, 0.12 * c, 0.12 * c + 0.3))
-        door(sc, 100 * window(u, 0.45, 1.0))
-    sc.step("7.3", "Swing the three bolts back and open the door: the plate comes out with it. The chamber and cone "
-            "are water-cooled and wet; the furnace parts are still hot.", 4.0, open_door, hold=1.0)
+        slide(sc, -PULL * window(u, 0.3, 0.5))
+        door(sc, 100 * window(u, 0.52, 1.0))
+    sc.step("7.3", "Swing the three bolts back and open the door: the plate comes out with it. If the upper sonotrode would "
+            "catch the opening's edge, pull the stack back in its housing first. The chamber and cone are water-cooled "
+            "and wet; the furnace parts are still hot.", 4.5, open_door, hold=1.0)
     brush = Particles(sc, "brushed", (0.70, 0.71, 0.74), size=5.0, slowmo=0.5, seed=7)
 
     def brush_down(u):
@@ -1300,6 +1317,7 @@ def anim_08_clean():
     pool = Pool(sc, half=True, level=-13)
     pool.set(-13, (0.55, 0.56, 0.58))
     door(sc, 100)
+    slide(sc, -PULL)                      # pulled back to open the door (7.3)
     for c in range(3):
         clamp(sc, c, 0.0)
     for g in ("container", "splash", "flange_clamp", "flange_clamp_b"):     # off since 8.1
@@ -1323,11 +1341,12 @@ def anim_08_clean():
         sc.alpha.update({n: 1 - window(u, 0.36, 0.46) for n in sc.members("upper")})
         sc.gmat["plate"] = T(M.STACK_DIR * 70 * window(u, 0.5, 0.92))
         sc.alpha.update({n: 1 - window(u, 0.86, 0.98) for n in sc.members("plate")})
-    pw = on_door(M.PLATE_C, 100)
+    pw = on_door(M.PLATE_C - M.STACK_DIR * PULL, 100)
     sc.step("9.2", "Upper sonotrode off, then the plate off the connector. Never grind or clean a plate: one per alloy, "
             "logged (1–3 runs each). A stainless scraper for stuck particles, never plastic.", 4.0, plate_off, hold=1.0,
             cam_to=[tuple(pw + np.array([-650, -650, 350])), tuple(pw), (0, 0, 1)],
-            labels=[lab("plate", pw, 0.06, 0.30), lab("upper sonotrode", on_door(M.UPPER_END, 100), 0.70, 0.25)])
+            labels=[lab("plate", pw, 0.06, 0.30),
+                    lab("upper sonotrode", on_door(M.UPPER_END - M.STACK_DIR * PULL, 100), 0.70, 0.25)])
 
     def rod_out(u):
         hood(sc, 110 * window(u, 0.0, 0.3))
@@ -1482,6 +1501,7 @@ def anim_summary():
         sc.gmat[g] = T(-M.STACK_DIR * bench)
     out_along(sc)
     sc.gmat["cover"] = T(-M.STACK_DIR * 300)
+    slide(sc, -PULL)
     # the run, as 05_melt and 06_pour: no melt, no argon, no powder yet
     pool = Pool(sc, half=True, level=-30)
     powder = Powder(sc, half=True, level=0)
@@ -1568,7 +1588,7 @@ def anim_summary():
     DOOR = 100.0
     dm = door_mat(DOOR)[:3, :3]
     w = lambda p: on_door(p, DOOR)
-    mid = w(M.on_axis(bench + 176))
+    mid = w(M.on_axis(bench + 176 + PULL))
     axis = dm @ -M.STACK_DIR
     side_dir = np.cross(axis, (0, 0, 1.0))
     side_dir = side_dir / np.linalg.norm(side_dir)
@@ -1596,12 +1616,13 @@ def anim_summary():
         put_on(sc, u, (0.5, 0.64, 0.66, 0.82, 0.84, 1.0))
     sc.step("S.3", "Into the door; connector, plate, upper sonotrode (sped up)", 1.8, into_door, hold=0.1)
 
-    def cover_shut(u):                      # cover on (sped up), then the door swings shut
-        c = window(u, 0.0, 0.3)
+    def cover_shut(u):                      # cover on (sped up), then the door swings shut and the stack slides in
+        c = window(u, 0.0, 0.27)
         sc.show(sc.members("cover"), min(1.0, c * 4))
         sc.gmat["cover"] = T(-M.STACK_DIR * 300 * (1 - c))
-        door(sc, DOOR * (1 - window(u, 0.35, 1.0)))
-    sc.step("S.4", "Cover on, door shut", 1.9, cover_shut, hold=0.1, cam_to=CAM["door_out"])
+        door(sc, DOOR * (1 - window(u, 0.3, 0.82)))
+        slide(sc, -PULL * (1 - window(u, 0.84, 1.0)))
+    sc.step("S.4", "Cover on, door shut, stack slid in", 2.2, cover_shut, hold=0.1, cam_to=CAM["door_out"])
 
     def bolts(u):                           # the three star-knob bolts: sped up
         for c in range(3):
@@ -1712,8 +1733,7 @@ def anim_06b_oct6():
     def stack_slide(mm):
         """Pull the stack back in its housing (negative mm), the door shut; the cover stays bolted on."""
         st["slide"] = mm
-        for g in ("connector", "sonotrode", "booster", "transducer"):
-            sc.gmat[g] = T(M.STACK_DIR * mm)
+        slide(sc, mm)
         spray.upper_base = UPPER_BASE + M.STACK_DIR * mm
 
     def stream_to(z, on=True):
