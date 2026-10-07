@@ -172,8 +172,8 @@ def main() -> None:
 
     sc = Scene("AgileX PiPER wrist camera mount: assembly")
     gripper_actors(sc)
-    for name in ("bracket", "carrier", "pod", "pi_spacers", "pi5", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb",
-                 "cm_module"):
+    for name in ("bracket", "carrier", "pod", "pi_spacers", "pi5", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws",
+                 "cm_pcb", "cm_module"):
         sc.add(name, mesh(parts[name]), COLORS[name], shown=False)
     for name, g in hw.items():
         sc.add(name, merged(g["shapes"]), STEEL, shown=False)
@@ -190,8 +190,8 @@ def main() -> None:
     # Sub-assemblies that travel together.
     sc.group("bracket_sub", ["bracket", "clamp_nuts", "pod_nuts_top", "pod_nuts_bottom"], (-110, 0, 0))
     sc.group("carrier_sub", ["carrier", "pi_nuts"], (110, 0, 0))
-    pod_members = ["pod", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module", "hq_screws", "hq_nuts",
-                   "cm_screws", "cm_nuts"]
+    pod_members = ["pod", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb", "cm_module", "hq_screws",
+                   "hq_nuts", "cm_screws", "cm_nuts"]
     sc.group("pod_sub", pod_members, (-120, 60, 70))
 
     view = [(-420, -330, 260), (-20, 10, 5), (0, 0, 1)]
@@ -273,7 +273,7 @@ def main() -> None:
                          delay(fly(["hq_nuts"], -back, 25), 0.55)), cam_to=pod_view, hold=14)
     sc.step("6 / 10", "Thread the 6 mm lens into the CS mount. Camera Module 3 Wide above it: | "
             "4 x M2 x 10 from the front, nuts behind. Plug a 300 mm Standard-Mini ribbon into each camera.",
-            n + 10, both(fly(["hq_lens"], back, 45), delay(fly(["cm_pcb", "cm_module"], -back, 30), 0.3),
+            n + 10, both(fly(["hq_lens", "hq_lens_screws"], back, 45), delay(fly(["cm_pcb", "cm_module"], -back, 30), 0.3),
                          delay(fly(["cm_screws"], back, 20), 0.55), delay(fly(["cm_nuts"], -back, 20), 0.7)),
             hold=14)
     # 7. Pod onto the seat: first in line with its lens, then straight down the lens axis, so the lens

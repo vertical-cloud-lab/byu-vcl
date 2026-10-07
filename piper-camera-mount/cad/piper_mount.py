@@ -49,6 +49,7 @@ from pathlib import Path
 import cadquery as cq
 
 import reference
+from lenses import LENSES, lens_body_local, lens_keepout_local, lens_screws_local, screw_sweep_local
 
 HERE = Path(__file__).resolve().parent
 EXPORTS = HERE.parent / "exports"
@@ -127,11 +128,11 @@ class Params:
     hq_hole_d: float = 37.0         # through the plate: the O36 back-focus ring
     m25_clear_d: float = 2.8
     boss_d: float = 5.5
-    # Raspberry Pi 6 mm CS-mount lens (PT361060M3MP12): O30 x 34 mm, 53 g (maker's figures).
-    lens_od: float = 30.0
-    lens_len: float = 34.0
-    lens_thread: float = 4.0        # estimate: thread inside the mount
-    lens_f: float = 6.0
+    # Raspberry Pi 6 mm CS-mount lens (PT361060M3MP12): O30 x 34 mm, 53 g. lenses.py has it and the
+    # 16 mm telephoto, and lens_compare.py says why it's this one.
+    lens: str = "6mm"
+    lens_screw_deg: tuple = (150.0, 215.0)   # where its focus and aperture thumbscrews point, as drawn
+                                             # (round the axis from the camera's +X); any angle clears
 
     # --- Camera Module 3 Wide, official drawing; connector faces +Z --------------------
     cm_gap: float = 10.5            # its board's lower edge above the HQ board's upper edge: keeps the
@@ -174,9 +175,17 @@ class Params:
         return self.hq_board / 2 + self.cm_gap + self.cm_lens_from_top
 
     @property
+    def lens_spec(self):
+        return LENSES[self.lens]
+
+    @property
+    def lens_f(self) -> float:
+        return self.lens_spec.f
+
+    @property
     def hq_front_dist(self) -> float:
-        """HQ board front face to the front of the 6 mm lens, along the optical axis."""
-        return self.hq_cs_seat + self.lens_len - self.lens_thread
+        """HQ board front face to the front of the lens, along the optical axis."""
+        return self.hq_cs_seat + self.lens_spec.front_s
 
     @property
     def pi_x(self) -> float:
@@ -290,19 +299,19 @@ def make_hq_camera_local(p: Params) -> dict[str, cq.Workplane]:
     mount = cyl_z(36.0, seat, seat + 5.8).union(cyl_z(30.75, seat + 5.8, 0))              # ring + body
     mount = mount.union(lbox(-6.985, 6.985, -b / 2 - 11.2, -b / 2 + 4.0, -12.0, 0))      # tripod foot
     mount = mount.union(lbox(-5.08, 5.08, b / 2 - 3.5, b / 2 + 1.5, seat + 1.0, seat + 6.0))  # focus lock
-    lens = cyl_z(25.4, seat, seat + p.lens_thread)                                        # thread, inside
-    lens = lens.union(cyl_z(p.lens_od, seat - (p.lens_len - p.lens_thread), seat))
-    return {"hq_pcb": pcb, "hq_mount": mount, "hq_lens": lens}
+    return {"hq_pcb": pcb, "hq_mount": mount, "hq_lens": lens_body_local(p.lens_spec, seat),
+            "hq_lens_screws": lens_screws_local(p.lens_spec, seat, p.lens_screw_deg)}
 
 
 def hq_keepout_local(p: Params, c: float = 1.5) -> cq.Workplane:
-    """The HQ Camera and lens grown by c: what the bracket's web must stay out of."""
+    """The HQ Camera and lens grown by c: what the bracket's web must stay out of. That includes
+    the circles the lens's thumbscrews can sweep, back to the camera (lenses.lens_keepout_local)."""
     b, seat = p.hq_board, -p.hq_cs_seat
     k = lbox(-b / 2 - c, b / 2 + c, -b / 2 - c, b / 2 + c, -c, p.hq_pcb_t + 3.0)
     k = k.union(cyl_z(36.0 + 2 * c, seat - c, 0))
     k = k.union(lbox(-6.985 - c, 6.985 + c, -b / 2 - 11.2 - c, -b / 2 + 4.0, -12.0 - c, 0))
     k = k.union(lbox(-5.08 - c, 5.08 + c, b / 2 - 3.5, b / 2 + 1.5 + c, seat + 1.0 - c, seat + 6.0 + c))
-    k = k.union(cyl_z(p.lens_od + 2 * c, seat - (p.lens_len - p.lens_thread) - c, seat))
+    k = k.union(lens_keepout_local(p.lens_spec, seat, c))
     return k
 
 
@@ -697,23 +706,32 @@ def axis_in_view_beyond_tips(p: Params) -> float:
 
 
 def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
-    solids = ("bracket", "pod", "carrier", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module", "pi5",
-              "pi_spacers")
+    solids = ("bracket", "pod", "carrier", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb",
+              "cm_module", "pi5", "pi_spacers")
+    # Wherever the lens's thumbscrews end up pointing: focusing turns the aperture ring with it.
+    sweep = hq_place(p)(screw_sweep_local(p.lens_spec, -p.hq_cs_seat))
     res: dict = {"overlap_mm3": {}, "gap_mm": {}, "view": {}, "extent_mm": {}}
     for opening, tag in ((0.0, "closed"), (100.0, "fully open")):
         g = reference.gripper(opening)
         for name in solids:
             res["overlap_mm3"][f"{name} vs gripper fingers ({tag})"] = overlap(parts[name], g["fingers"])
         res["gap_mm"][f"mount to fingers ({tag})"] = min(
-            gap(parts[n], g["fingers"]) for n in ("bracket", "pod", "carrier", "hq_lens", "hq_mount", "cm_module"))
+            gap(parts[n], g["fingers"]) for n in ("bracket", "pod", "carrier", "hq_lens", "hq_lens_screws",
+                                                  "hq_mount", "cm_module"))
+        res["overlap_mm3"][f"HQ lens thumbscrews, at any angle, vs gripper fingers ({tag})"] = overlap(
+            sweep, g["fingers"])
         wedges = place_tag_wedges(p, opening)
         res["gap_mm"][f"finger tag wedges to the mount ({tag})"] = min(
             gap(wedges, parts[n]) for n in ("bracket", "pod", "carrier", "hq_lens", "hq_mount", "pi5"))
     g = reference.gripper()
     for name in solids:
         res["overlap_mm3"][f"{name} vs gripper body"] = overlap(parts[name], g["body"])
+    for name in ("bracket", "pod", "cm_pcb", "cm_module"):
+        res["overlap_mm3"][f"HQ lens thumbscrews, at any angle, vs {name}"] = overlap(sweep, parts[name])
+    res["overlap_mm3"]["HQ lens thumbscrews, at any angle, vs gripper body"] = overlap(sweep, g["body"])
     pairs = [("bracket", "pod"), ("bracket", "carrier"), ("pod", "carrier"),
-             ("bracket", "hq_pcb"), ("bracket", "hq_mount"), ("bracket", "hq_lens"), ("bracket", "cm_pcb"),
+             ("bracket", "hq_pcb"), ("bracket", "hq_mount"), ("bracket", "hq_lens"),
+             ("bracket", "hq_lens_screws"), ("pod", "hq_lens_screws"), ("bracket", "cm_pcb"),
              ("bracket", "cm_module"), ("pod", "hq_pcb"), ("pod", "hq_mount"), ("pod", "hq_lens"),
              ("pod", "cm_pcb"), ("pod", "cm_module"), ("carrier", "pi_spacers"), ("carrier", "pi5"),
              ("pi_spacers", "pi5"), ("hq_mount", "cm_module"), ("hq_pcb", "cm_pcb"), ("hq_mount", "cm_pcb")]
@@ -725,6 +743,8 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
     res["gap_mm"]["collar halves (split)"] = gap(parts["bracket"], parts["carrier"])
     res["gap_mm"]["HQ lens to the bracket"] = gap(parts["hq_lens"], parts["bracket"])
     res["gap_mm"]["HQ lens to the finger plate"] = gap(parts["hq_lens"], g["body"])
+    res["gap_mm"]["HQ lens thumbscrews, at any angle, to the bracket"] = gap(sweep, parts["bracket"])
+    res["gap_mm"]["HQ lens thumbscrews, at any angle, to the finger plate"] = gap(sweep, g["body"])
     # What the HQ Camera sees.
     hf, vf = hq_fov(p)
     axes = optical_axes(p)
@@ -795,14 +815,15 @@ def build(p: Params) -> dict[str, cq.Workplane]:
     return parts
 
 
-ASSEMBLY = ("bracket", "pod", "carrier", "pi_spacers", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module",
-            "pi5")
+ASSEMBLY = ("bracket", "pod", "carrier", "pi_spacers", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb",
+            "cm_module", "pi5")
 PRINTED = ("bracket", "pod", "carrier", "spacers", "tag_wedge")
 ORANGE = (0.93, 0.45, 0.13)
 COLORS = {
     "bracket": ORANGE, "pod": (0.96, 0.58, 0.20), "carrier": ORANGE, "pi_spacers": ORANGE, "spacers": ORANGE,
     "tag_wedge": ORANGE,
     "hq_pcb": (0.12, 0.48, 0.25), "hq_mount": (0.13, 0.13, 0.14), "hq_lens": (0.08, 0.08, 0.09),
+    "hq_lens_screws": (0.78, 0.74, 0.62),
     "cm_pcb": (0.12, 0.48, 0.25), "cm_module": (0.1, 0.1, 0.1), "pi5": (0.18, 0.55, 0.34),
 }
 

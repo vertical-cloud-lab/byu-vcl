@@ -1,0 +1,809 @@
+{
+ "6mm": {
+  "optics": {
+   "lens": {
+    "key": "6mm",
+    "name": "6 mm wide-angle (CS mount)",
+    "f": 6.0,
+    "mount": "CS",
+    "od": 30.0,
+    "length": 34.0,
+    "thread": 4.0,
+    "mass_g": 53.0,
+    "fov_hq_deg": [
+     55.0,
+     45.0,
+     71.0
+    ],
+    "f_numbers": [
+     1.2,
+     16.0
+    ],
+    "mod_m": 0.2,
+    "rated_mp": 3.0,
+    "image_format": "1/2\"",
+    "price_usd": 25.0,
+    "profile": [
+     [
+      0.0,
+      12.3,
+      29.0
+     ],
+     [
+      12.3,
+      21.9,
+      29.4
+     ],
+     [
+      21.9,
+      27.3,
+      30.0
+     ],
+     [
+      27.3,
+      28.8,
+      29.0
+     ],
+     [
+      28.8,
+      30.0,
+      30.0
+     ]
+    ],
+    "screws": [
+     [
+      4.0,
+      "focus"
+     ],
+     [
+      17.4,
+      "aperture"
+     ]
+    ],
+    "screw_tip_r": 20.0,
+    "screw_d": 3.0,
+    "glass_d": 22.0,
+    "adapter": 0.0
+   },
+   "field of view (deg, across x up), pinhole from the sensor": [
+    55.3,
+    42.9
+   ],
+   "field of view (deg, across x up x diagonal), Raspberry Pi's figure": [
+    55.0,
+    45.0,
+    71.0
+   ],
+   "points": {
+    "upper finger tag, 0 mm open": {
+     "distance along the axis (mm)": 81.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      85.8,
+      64.3
+     ],
+     "px per mm (2028 x 1520)": 23.6,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 118
+    },
+    "lower finger tag, 0 mm open": {
+     "distance along the axis (mm)": 81.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      85.8,
+      64.3
+     ],
+     "px per mm (2028 x 1520)": 23.6,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 118
+    },
+    "upper finger tag, 60 mm open": {
+     "distance along the axis (mm)": 81.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      85.8,
+      64.3
+     ],
+     "px per mm (2028 x 1520)": 23.6,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 118
+    },
+    "lower finger tag, 60 mm open": {
+     "distance along the axis (mm)": 81.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      85.8,
+      64.3
+     ],
+     "px per mm (2028 x 1520)": 23.6,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 118
+    },
+    "target 30 mm past the fingertips": {
+     "distance along the axis (mm)": 131.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      138.2,
+      103.6
+     ],
+     "px per mm (2028 x 1520)": 14.7,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 294
+    },
+    "target 60 mm past the fingertips": {
+     "distance along the axis (mm)": 160.6,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      168.2,
+      126.1
+     ],
+     "px per mm (2028 x 1520)": 12.1,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 241
+    },
+    "target 120 mm past the fingertips": {
+     "distance along the axis (mm)": 217.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      228.4,
+      171.2
+     ],
+     "px per mm (2028 x 1520)": 8.9,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 178
+    }
+   },
+   "focus": {
+    "lens moved out from infinity focus, to the nearest finger tag (mm)": 0.474,
+    "lens moved out from infinity focus, to the farthest target (mm)": 0.17,
+    "the lens's own focus range reaches (mm out, at its 0.2 m MOD)": 0.186,
+    "back-focus ring has to add (mm)": 0.289
+   },
+   "depth of field": {
+    "finger tags + target 60 mm past the tips": {
+     "near, far (mm)": [
+      81.9,
+      160.6
+     ],
+     "by f-number (um)": {
+      "f/2.8": {
+       "defocus": 40.7,
+       "diffraction": 4.0,
+       "total": 40.9,
+       "focus_at_mm": 108.5
+      },
+      "f/4": {
+       "defocus": 28.5,
+       "diffraction": 5.7,
+       "total": 29.1,
+       "focus_at_mm": 108.5
+      },
+      "f/5.6": {
+       "defocus": 20.4,
+       "diffraction": 8.0,
+       "total": 21.9,
+       "focus_at_mm": 108.5
+      },
+      "f/8": {
+       "defocus": 14.2,
+       "diffraction": 11.4,
+       "total": 18.2,
+       "focus_at_mm": 108.5
+      },
+      "f/11": {
+       "defocus": 10.4,
+       "diffraction": 15.6,
+       "total": 18.7,
+       "focus_at_mm": 108.5
+      },
+      "f/16": {
+       "defocus": 7.1,
+       "diffraction": 22.7,
+       "total": 23.8,
+       "focus_at_mm": 108.5
+      }
+     },
+     "sharpest": "f/8",
+     "blur at the sharpest (px, 2028 x 1520)": 5.9
+    },
+    "finger tags + target 120 mm past the tips": {
+     "near, far (mm)": [
+      81.9,
+      217.9
+     ],
+     "by f-number (um)": {
+      "f/2.8": {
+       "defocus": 51.6,
+       "diffraction": 4.0,
+       "total": 51.7,
+       "focus_at_mm": 119.1
+      },
+      "f/4": {
+       "defocus": 36.1,
+       "diffraction": 5.7,
+       "total": 36.6,
+       "focus_at_mm": 119.1
+      },
+      "f/5.6": {
+       "defocus": 25.8,
+       "diffraction": 7.9,
+       "total": 27.0,
+       "focus_at_mm": 119.1
+      },
+      "f/8": {
+       "defocus": 18.1,
+       "diffraction": 11.3,
+       "total": 21.3,
+       "focus_at_mm": 119.1
+      },
+      "f/11": {
+       "defocus": 13.1,
+       "diffraction": 15.5,
+       "total": 20.4,
+       "focus_at_mm": 119.1
+      },
+      "f/16": {
+       "defocus": 9.0,
+       "diffraction": 22.6,
+       "total": 24.3,
+       "focus_at_mm": 119.1
+      }
+     },
+     "sharpest": "f/11",
+     "blur at the sharpest (px, 2028 x 1520)": 6.6
+    }
+   },
+   "load": {
+    "mass (g)": 53.0,
+    "centre of mass in front of the pod's face (mm, approx.)": 19.4,
+    "moment about the pod's face (g mm)": 1030
+   }
+  },
+  "fit": {
+   "overlap_mm3": {
+    "lens + thumbscrew circles vs bracket": 0.0,
+    "lens + thumbscrew circles vs pod": 0.0,
+    "lens + thumbscrew circles vs cm_pcb": 0.0,
+    "lens + thumbscrew circles vs cm_module": 0.0,
+    "lens + thumbscrew circles vs gripper body": 0.0,
+    "lens + thumbscrew circles vs fingers (closed)": 0.0,
+    "lens + thumbscrew circles vs fingers (fully open)": 0.0,
+    "lens inside the Wide's view (250 mm deep)": 0.6
+   },
+   "gap_mm": {
+    "lens to the bracket": 1.5,
+    "lens to the finger plate": 4.45,
+    "thumbscrew circles to the finger plate": 14.16
+   },
+   "lens front behind the finger plate's front face (mm)": 16.5,
+   "lens front behind the fingertips (mm)": 89.5,
+   "clash": {
+    "lens inside the Wide's view (250 mm deep)": 0.6
+   }
+  },
+  "rendered views": {
+   "summary": {
+    "openings with both finger tags detected": [
+     0,
+     20,
+     40,
+     60
+    ],
+    "target detected (cases of 18)": 17,
+    "finger tag and target in the same picture (cases of 18)": 11,
+    "at the pictured pose": {
+     "1": {
+      "edge px": 105.5,
+      "position error mm": 0.35
+     },
+     "2": {
+      "edge px": 104.5,
+      "position error mm": 0.19
+     },
+     "10": {
+      "edge px": 224.8,
+      "position error mm": 0.42
+     }
+    }
+   },
+   "cases": {
+    "0 mm open, target 30 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "0 mm open, target 60 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.48
+    },
+    "0 mm open, target 120 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.22
+    },
+    "20 mm open, target 30 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.1
+    },
+    "20 mm open, target 60 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.41
+    },
+    "20 mm open, target 120 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.29
+    },
+    "40 mm open, target 30 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.43
+    },
+    "40 mm open, target 60 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.16
+    },
+    "40 mm open, target 120 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.61
+    },
+    "60 mm open, target 30 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.38
+    },
+    "60 mm open, target 60 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.2
+    },
+    "60 mm open, target 120 mm past": {
+     "finger tags": [
+      1,
+      2
+     ],
+     "target": true,
+     "target from finger tag error (mm)": 0.56
+    },
+    "80 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "80 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "80 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    }
+   }
+  }
+ },
+ "16mm": {
+  "optics": {
+   "lens": {
+    "key": "16mm",
+    "name": "16 mm telephoto (C mount)",
+    "f": 16.0,
+    "mount": "C",
+    "od": 39.0,
+    "length": 50.0,
+    "thread": 4.0,
+    "mass_g": 133.7,
+    "fov_hq_deg": [
+     22.2,
+     16.7,
+     27.8
+    ],
+    "f_numbers": [
+     1.4,
+     16.0
+    ],
+    "mod_m": 0.2,
+    "rated_mp": 10.0,
+    "image_format": "1\"",
+    "price_usd": 50.0,
+    "profile": [
+     [
+      0.0,
+      5.0,
+      31.0
+     ],
+     [
+      5.0,
+      16.0,
+      36.0
+     ],
+     [
+      16.0,
+      36.0,
+      38.0
+     ],
+     [
+      36.0,
+      51.0,
+      39.0
+     ]
+    ],
+    "screws": [
+     [
+      10.5,
+      "aperture"
+     ],
+     [
+      26.0,
+      "focus"
+     ]
+    ],
+    "screw_tip_r": 24.0,
+    "screw_d": 3.0,
+    "glass_d": 30.0,
+    "adapter": 5.0
+   },
+   "field of view (deg, across x up), pinhole from the sensor": [
+    22.2,
+    16.8
+   ],
+   "field of view (deg, across x up x diagonal), Raspberry Pi's figure": [
+    22.2,
+    16.7,
+    27.8
+   ],
+   "points": {
+    "upper finger tag, 0 mm open": {
+     "distance along the axis (mm)": 60.9,
+     "in view": false,
+     "picture covers (mm, across x up)": [
+      23.9,
+      17.9
+     ],
+     "px per mm (2028 x 1520)": 84.7,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 424
+    },
+    "lower finger tag, 0 mm open": {
+     "distance along the axis (mm)": 60.9,
+     "in view": false,
+     "picture covers (mm, across x up)": [
+      23.9,
+      17.9
+     ],
+     "px per mm (2028 x 1520)": 84.7,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 424
+    },
+    "upper finger tag, 60 mm open": {
+     "distance along the axis (mm)": 60.9,
+     "in view": false,
+     "picture covers (mm, across x up)": [
+      23.9,
+      17.9
+     ],
+     "px per mm (2028 x 1520)": 84.7,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 424
+    },
+    "lower finger tag, 60 mm open": {
+     "distance along the axis (mm)": 60.9,
+     "in view": false,
+     "picture covers (mm, across x up)": [
+      23.9,
+      17.9
+     ],
+     "px per mm (2028 x 1520)": 84.7,
+     "tag edge, 5 mm tag (px, 2028 x 1520, face-on)": 424
+    },
+    "target 30 mm past the fingertips": {
+     "distance along the axis (mm)": 110.9,
+     "in view": false,
+     "picture covers (mm, across x up)": [
+      43.6,
+      32.7
+     ],
+     "px per mm (2028 x 1520)": 46.6,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 931
+    },
+    "target 60 mm past the fingertips": {
+     "distance along the axis (mm)": 139.6,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      54.8,
+      41.1
+     ],
+     "px per mm (2028 x 1520)": 37.0,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 740
+    },
+    "target 120 mm past the fingertips": {
+     "distance along the axis (mm)": 196.9,
+     "in view": true,
+     "picture covers (mm, across x up)": [
+      77.4,
+      58.0
+     ],
+     "px per mm (2028 x 1520)": 26.2,
+     "tag edge, 20 mm tag (px, 2028 x 1520, face-on)": 524
+    }
+   },
+   "focus": {
+    "lens moved out from infinity focus, to the nearest finger tag (mm)": 5.701,
+    "lens moved out from infinity focus, to the farthest target (mm)": 1.415,
+    "the lens's own focus range reaches (mm out, at its 0.2 m MOD)": 1.391,
+    "back-focus ring has to add (mm)": 4.31
+   },
+   "depth of field": {
+    "finger tags + target 60 mm past the tips": {
+     "near, far (mm)": [
+      60.9,
+      139.6
+     ],
+     "by f-number (um)": {
+      "f/2.8": {
+       "defocus": 521.5,
+       "diffraction": 4.6,
+       "total": 521.5,
+       "focus_at_mm": 84.8
+      },
+      "f/4": {
+       "defocus": 365.0,
+       "diffraction": 6.6,
+       "total": 365.1,
+       "focus_at_mm": 84.8
+      },
+      "f/5.6": {
+       "defocus": 260.7,
+       "diffraction": 9.3,
+       "total": 260.9,
+       "focus_at_mm": 84.8
+      },
+      "f/8": {
+       "defocus": 182.5,
+       "diffraction": 13.2,
+       "total": 183.0,
+       "focus_at_mm": 84.8
+      },
+      "f/11": {
+       "defocus": 132.7,
+       "diffraction": 18.2,
+       "total": 134.0,
+       "focus_at_mm": 84.8
+      },
+      "f/16": {
+       "defocus": 91.3,
+       "diffraction": 26.5,
+       "total": 95.0,
+       "focus_at_mm": 84.8
+      }
+     },
+     "sharpest": "f/16",
+     "blur at the sharpest (px, 2028 x 1520)": 30.6
+    },
+    "finger tags + target 120 mm past the tips": {
+     "near, far (mm)": [
+      60.9,
+      196.9
+     ],
+     "by f-number (um)": {
+      "f/2.8": {
+       "defocus": 626.2,
+       "diffraction": 4.5,
+       "total": 626.2,
+       "focus_at_mm": 93.0
+      },
+      "f/4": {
+       "defocus": 438.3,
+       "diffraction": 6.5,
+       "total": 438.4,
+       "focus_at_mm": 93.0
+      },
+      "f/5.6": {
+       "defocus": 313.1,
+       "diffraction": 9.1,
+       "total": 313.2,
+       "focus_at_mm": 93.0
+      },
+      "f/8": {
+       "defocus": 219.2,
+       "diffraction": 13.0,
+       "total": 219.6,
+       "focus_at_mm": 93.0
+      },
+      "f/11": {
+       "defocus": 159.4,
+       "diffraction": 17.8,
+       "total": 160.4,
+       "focus_at_mm": 93.0
+      },
+      "f/16": {
+       "defocus": 109.6,
+       "diffraction": 25.9,
+       "total": 112.6,
+       "focus_at_mm": 93.0
+      }
+     },
+     "sharpest": "f/16",
+     "blur at the sharpest (px, 2028 x 1520)": 36.3
+    }
+   },
+   "load": {
+    "mass (g)": 133.7,
+    "centre of mass in front of the pod's face (mm, approx.)": 29.9,
+    "moment about the pod's face (g mm)": 4002
+   }
+  },
+  "fit": {
+   "overlap_mm3": {
+    "lens + thumbscrew circles vs bracket": 1662.6,
+    "lens + thumbscrew circles vs pod": 0.0,
+    "lens + thumbscrew circles vs cm_pcb": 0.0,
+    "lens + thumbscrew circles vs cm_module": 0.0,
+    "lens + thumbscrew circles vs gripper body": 176.4,
+    "lens + thumbscrew circles vs fingers (closed)": 0.0,
+    "lens + thumbscrew circles vs fingers (fully open)": 0.0,
+    "lens inside the Wide's view (250 mm deep)": 5985.8
+   },
+   "gap_mm": {
+    "lens to the bracket": 0.0,
+    "lens to the finger plate": 0.0,
+    "thumbscrew circles to the finger plate": 5.56
+   },
+   "lens front behind the finger plate's front face (mm)": -3.6,
+   "lens front behind the fingertips (mm)": 69.4,
+   "clash": {
+    "lens + thumbscrew circles vs bracket": 1662.6,
+    "lens + thumbscrew circles vs gripper body": 176.4,
+    "lens inside the Wide's view (250 mm deep)": 5985.8
+   }
+  },
+  "rendered views": {
+   "summary": {
+    "openings with both finger tags detected": [],
+    "target detected (cases of 18)": 6,
+    "finger tag and target in the same picture (cases of 18)": 0,
+    "at the pictured pose": {
+     "1": null,
+     "2": null,
+     "10": null
+    }
+   },
+   "cases": {
+    "0 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "0 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "0 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "20 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "20 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "20 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "40 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "40 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "40 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "60 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "60 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "60 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "80 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "80 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "80 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 30 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 60 mm past": {
+     "finger tags": [],
+     "target": false,
+     "target from finger tag error (mm)": null
+    },
+    "100 mm open, target 120 mm past": {
+     "finger tags": [],
+     "target": true,
+     "target from finger tag error (mm)": null
+    }
+   }
+  }
+ }
+}

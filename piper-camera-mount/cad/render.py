@@ -103,7 +103,7 @@ def render_front(p, parts, out):
 
 def render_exploded(p, parts, out):
     off = {"bracket": (-30, 0, 0), "pod": (-70, 30, 0), "hq_pcb": (-70, 55, 0), "hq_mount": (-70, 55, 0),
-           "hq_lens": (-70, 20, 0), "cm_pcb": (-70, 55, 0), "cm_module": (-70, 55, 0), "carrier": (40, 0, 0),
+           "hq_lens": (-70, 20, 0), "hq_lens_screws": (-70, 20, 0), "cm_pcb": (-70, 55, 0), "cm_module": (-70, 55, 0), "carrier": (40, 0, 0),
            "pi_spacers": (60, 0, 0), "pi5": (85, 0, 0)}
     pl = plotter((1700, 1100))
     add_gripper(pl, opacity=0.35)
@@ -121,7 +121,7 @@ def render_pod_seat(p, parts, out):
     from behind and outside, so its face, the four screw holes and the rails either side of the lens show."""
     t = math.radians(p.toe_deg)
     lift = (-math.sin(t) * 45, math.cos(t) * 45, 0.0)
-    pod = ("pod", "hq_pcb", "hq_mount", "hq_lens", "cm_pcb", "cm_module")
+    pod = ("pod", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb", "cm_module")
     pl = pv.Plotter(off_screen=True, window_size=(1700, 800), shape=(1, 2), border=False)
     pl.set_background("white")
     pl.enable_anti_aliasing("ssaa")

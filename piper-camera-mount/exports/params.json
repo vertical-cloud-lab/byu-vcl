@@ -84,10 +84,11 @@
   "hq_hole_d": 37.0,
   "m25_clear_d": 2.8,
   "boss_d": 5.5,
-  "lens_od": 30.0,
-  "lens_len": 34.0,
-  "lens_thread": 4.0,
-  "lens_f": 6.0,
+  "lens": "6mm",
+  "lens_screw_deg": [
+    150.0,
+    215.0
+  ],
   "cm_gap": 10.5,
   "cm_standoff": 2.5,
   "cm_w": 25.0,
