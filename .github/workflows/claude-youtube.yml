@@ -43,6 +43,18 @@ jobs:
         with:
           fetch-depth: 1
 
+      # Same ephemeral tailnet join as claude.yml. Needed because YouTube blocks
+      # player extraction (yt-dlp downloads) from datacenter IPs, so pulling
+      # livestream or channel video has to go through a stream-cam Pi's
+      # residential IP. The OAuth client must request BOTH tags or the join
+      # fails outright; see the Tailscale section of CLAUDE.md.
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v2
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-secret: ${{ secrets.TS_OAUTH_SECRET }}
+          tags: tag:stream-cam-test,tag:rpi-5-des4
+
       - name: Run Claude Code
         uses: anthropics/claude-code-action@v1
         env:
@@ -52,6 +64,14 @@ jobs:
           # Repo secret: upload + read only, the same one every @claude run gets.
           YOUTUBE_UPLOAD_TOKEN_PICKLE_B64: ${{ secrets.YOUTUBE_UPLOAD_TOKEN_PICKLE_B64 }}
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          # Stream-cam Pis, reached over the tailnet joined above.
+          RPI_STREAM_CAM_HOSTNAME: ${{ secrets.RPI_STREAM_CAM_HOSTNAME }}
+          RPI_STREAM_CAM_PASSWORD: ${{ secrets.RPI_STREAM_CAM_PASSWORD }}
+          OT2_STREAM_CAM_HOSTNAME: ${{ secrets.OT2_STREAM_CAM_HOSTNAME }}
+          OT2_STREAM_CAM_PASSWORD: ${{ secrets.OT2_STREAM_CAM_PASSWORD }}
+          # Variables, not secrets: see the masking note in CLAUDE.md.
+          RPI_STREAM_CAM_USERNAME: ${{ vars.RPI_STREAM_CAM_USERNAME }}
+          OT2_STREAM_CAM_USERNAME: ${{ vars.OT2_STREAM_CAM_USERNAME }}
           BASH_DEFAULT_TIMEOUT_MS: "900000"
           BASH_MAX_TIMEOUT_MS: "3600000"
         with:
