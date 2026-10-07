@@ -30,7 +30,7 @@ B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
     "00-overview": {
-        "title": "Atomizer tutorial 0: the machine and how it works (draft 5)",
+        "title": "Atomizer tutorial 0: the machine and how it works (draft 6)",
         "segments": [
             ("title", "The rePowder ultrasonic atomizer", "Tutorial 0 · the machine, how it makes powder, and what a run looks like",
              "The rePowder ultrasonic atomizer, at the BYU Vertical Cloud Lab."),
@@ -88,7 +88,7 @@ TUTORIALS = {
         ],
     },
     "01-before": {
-        "title": "Atomizer tutorial 1: before a run (draft 5)",
+        "title": "Atomizer tutorial 1: before a run (draft 6)",
         "segments": [
             ("title", "Before a run", "Tutorial 1 · utilities, the furnace, the chamber and the ultrasonic stack",
              "Tutorial one: before a run."),
@@ -168,7 +168,7 @@ TUTORIALS = {
         ],
     },
     "02-during": {
-        "title": "Atomizer tutorial 2: during a run (draft 5)",
+        "title": "Atomizer tutorial 2: during a run (draft 6)",
         "segments": [
             ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
              "Tutorial two: during a run."),
@@ -232,7 +232,7 @@ TUTORIALS = {
         ],
     },
     "03-after": {
-        "title": "Atomizer tutorial 3: after a run (draft 5)",
+        "title": "Atomizer tutorial 3: after a run (draft 6)",
         "segments": [
             ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
              "Tutorial three: after a run."),

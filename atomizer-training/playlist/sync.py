@@ -2,8 +2,9 @@
 
     python sync.py plan [--ref <sha>]               # check the catalog, write descriptions.md; no YouTube calls
     python sync.py backup                           # save every catalogued video's current title, description, tags
-    python sync.py apply --ref <sha>                # update the videos, then create, fill and order the playlist
-    python sync.py restore <backup.json> [id ...]   # put backed-up titles, descriptions and tags back
+    python sync.py apply --ref <sha>                # update the videos, make the superseded ones private, then
+                                                    # create, fill and order the playlist
+    python sync.py restore <backup.json> [id ...]   # put backed-up titles, descriptions, tags and privacy back
 
 `--ref` is the commit the GitHub links point at. It has to be pushed, and its timestamps.md has to carry the catalog's
 titles as headings already (tools/make_timestamps.py takes them from videos.json), or the per-video links would miss;
@@ -138,7 +139,7 @@ def describe(v, docs, pid):
 def describe_superseded(s, pid):
     return "\n".join([f"Superseded by {WATCH}{s['by']}. {s['why']}", "",
                       f"The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list={pid}",
-                      "", "This upload is kept only until it is deleted."])
+                      "", "This upload is kept, private, as a record of the review; it is not deleted."])
 
 
 def playlist_description(docs):
@@ -242,9 +243,10 @@ def cmd_backup(args):
     yt = youtube()
     ids = [v["id"] for v in VIDEOS] + [s["id"] for s in SUPERSEDED]
     got = fetch(yt, ids)
-    path = f"{HERE}/backup-{time.strftime('%Y-%m-%d')}.json"
-    if os.path.exists(path):
-        raise SystemExit(f"{path} exists; keep the first backup of the day")
+    path, n = f"{HERE}/backup-{time.strftime('%Y-%m-%d')}.json", 0
+    while os.path.exists(path):              # never overwrite an earlier backup: the day's second is -b, then -c ...
+        n += 1
+        path = f"{HERE}/backup-{time.strftime('%Y-%m-%d')}-{chr(ord('a') + n)}.json"
     out = {"taken_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
            "videos": {i: {"snippet": {k: got[i]["snippet"][k] for k in KEEP if k in got[i]["snippet"]},
                           "privacyStatus": got[i]["status"]["privacyStatus"]} for i in ids}}
@@ -265,6 +267,22 @@ def update_snippet(yt, item, title, desc, tags=None, category=None):
     if same:
         return False
     yt.videos().update(part="snippet", body={"id": item["id"], "snippet": new}).execute()
+    return True
+
+
+STATUS_KEEP = ("embeddable", "license", "publicStatsViewable", "containsSyntheticMedia")
+
+
+def set_privacy(yt, item, privacy):
+    """videos.update replaces the whole status part too, so carry over its other writable fields."""
+    st = item["status"]
+    if st["privacyStatus"] == privacy:
+        return False
+    new = {k: st[k] for k in STATUS_KEEP if k in st}
+    new["privacyStatus"] = privacy
+    if "madeForKids" in st:
+        new["selfDeclaredMadeForKids"] = st["madeForKids"]
+    yt.videos().update(part="status", body={"id": item["id"], "status": new}).execute()
     return True
 
 
@@ -368,6 +386,9 @@ def cmd_apply(args):
             print("updated", v["id"], "->", title)
         else:
             print("unchanged", v["id"])
+    for s in SUPERSEDED:                     # superseded uploads are made private rather than deleted
+        if set_privacy(yt, got[s["id"]], "private"):
+            print("private", s["id"], "->", s["title"])
     sync_items(yt, pid, [v["id"] for v in VIDEOS], {s["id"] for s in SUPERSEDED})
     p = playlist_meta(yt, pid, PLAYLIST["title"], pd)
     rd = runs_description(docs, pid)
@@ -393,6 +414,8 @@ def cmd_restore(args):
         old = backup[i]["snippet"]
         if update_snippet(yt, got[i], old["title"], old.get("description", ""), old.get("tags", []), old.get("categoryId")):
             print("restored", i, "->", old["title"])
+        if backup[i].get("privacyStatus") and set_privacy(yt, got[i], backup[i]["privacyStatus"]):
+            print("restored", i, "->", backup[i]["privacyStatus"])
 
 
 def main():

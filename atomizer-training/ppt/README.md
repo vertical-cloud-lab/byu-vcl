@@ -8,11 +8,11 @@ All ten animations are also here as they are, without captions or narration: see
 
 | Clip | Narrated, unlisted | File | Length |
 | --- | --- | --- | --- |
-| **The whole run** (`summary`), condensed (draft 3: the rebuilt stack). Furnace (19 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (9 s): built, into the door, then the connector, the plate hung by its end and the upper sonotrode, door shut, stack slid to its mark. Run (17 s): argon and the melt, a close-up of the coil stirring the melt up the sealing rod, the pour onto the plate (zoomed in), powder into the container | Draft 3 not uploaded yet. Draft 2, with the old stack: https://www.youtube.com/watch?v=j9QcpcG8EVI (draft 1, 0:33: [qwopusVSwf4](https://www.youtube.com/watch?v=qwopusVSwf4)) | [`videos/summary.mp4`](videos/summary.mp4) | 0:45 |
+| **The whole run** (`summary`), condensed (draft 3: the rebuilt stack). Furnace (19 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (9 s): built, into the door, then the connector, the plate hung by its end and the upper sonotrode, door shut, stack slid to its mark. Run (17 s): argon and the melt, a close-up of the coil stirring the melt up the sealing rod, the pour onto the plate (zoomed in), powder into the container | Draft 3: https://www.youtube.com/watch?v=UaMVgjwOtrU (superseded and private: draft 2, the old stack, [j9QcpcG8EVI](https://www.youtube.com/watch?v=j9QcpcG8EVI); draft 1, 0:33, [qwopusVSwf4](https://www.youtube.com/watch?v=qwopusVSwf4)) | [`videos/summary.mp4`](videos/summary.mp4) | 0:45 |
 | The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:19.5, 0:09.4, 0:17.0 |
-| Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid. Re-cut on 7 Oct only because the door's housing moved with the stack's axis | https://www.youtube.com/watch?v=86K-EHhtPp8 (the earlier cut) | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
-| The ultrasonic stack and the door (`02_stack`, draft 2: the rebuilt stack): transducer, booster, sonotrode, into the door, then the connector, the plate hung by its end and the upper sonotrode at 50 N·m, scan, wet test, cover, door shut, stack slid to its mark, bolted | Draft 2 not uploaded yet. Draft 1, with the old stack: https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:51 |
-| The pour (`06_pour`, draft 2: the rebuilt stack): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | Draft 2 not uploaded yet. Draft 1, with the old stack: https://www.youtube.com/watch?v=21oFnNmzd3E | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
+| Loading the furnace (`03_furnace_load`, draft 2): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid. Re-cut on 7 Oct only because the door's housing moved with the stack's axis | Draft 2: https://www.youtube.com/watch?v=u4MORr_PZbI (superseded and private: draft 1, the earlier cut, [86K-EHhtPp8](https://www.youtube.com/watch?v=86K-EHhtPp8)) | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
+| The ultrasonic stack and the door (`02_stack`, draft 2: the rebuilt stack): transducer, booster, sonotrode, into the door, then the connector, the plate hung by its end and the upper sonotrode at 50 N·m, scan, wet test, cover, door shut, stack slid to its mark, bolted | Draft 2: https://www.youtube.com/watch?v=6LTmL_qm2Eo (superseded and private: draft 1, the old stack, [8lBR11fgznI](https://www.youtube.com/watch?v=8lBR11fgznI)) | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:51 |
+| The pour (`06_pour`, draft 2: the rebuilt stack): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | Draft 2: https://www.youtube.com/watch?v=JAXKQTDq2zg (superseded and private: draft 1, the old stack, [21oFnNmzd3E](https://www.youtube.com/watch?v=21oFnNmzd3E)) | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
 
 [`script.md`](script.md) lists every caption with when it is up, its spoken line and how long that line takes, with a
 frame from each. The upload log, with the commit each description links to, is [`uploads.json`](uploads.json).
@@ -101,8 +101,12 @@ cd ../ppt
 python build_ppt.py animations                      # videos/animations/ and animations_sheet.jpg (or name some)
 python build_ppt.py --check                         # the rules and timing (uses the 15 fps timing if nothing is rendered)
 python build_ppt.py                                 # videos/*.mp4, script.md, *_sheet.jpg (or name one: summary)
-python build_ppt.py upload --ref <pushed sha>       # unlisted, upload-only token; ids into uploads.json
+python build_ppt.py upload summary --ref <pushed sha>   # unlisted, upload-only token; ids into uploads.json
 ```
+
+`upload` skips a clip that `uploads.json` already has, so before uploading a new draft, rename the old entry to
+`<name> (draft N)` (as `summary (draft 2)`). Give the names before `--ref`. A machine without the clean render takes
+the captions' times for the description from `script.md`.
 
 The clean renders took 13 minutes for the two single steps, run side by side on four cores, and 7 minutes for the
 summary. With `VIZ3D_HD=1`, all ten animations took 52 minutes, four at a time on four cores. To change the wording, edit `captions.py` and rerun
@@ -110,5 +114,7 @@ summary. With `VIZ3D_HD=1`, all ten animations took 52 minutes, four at a time o
 (their frames are in `../viz3d/out/clean/<name>.json`). Moving one means changing that offset, or the motion in
 `../viz3d/steps.py`.
 
-The uploads are not in the [playlist](https://www.youtube.com/playlist?list=PLB8wxmcPAjLM), and
-[`../playlist/sync.py`](../playlist/sync.py) does not touch them, since they are not in its catalog.
+The uploads are not in the [playlist](https://www.youtube.com/playlist?list=PLB8wxmcPAjLM). The current ones are not in
+[`../playlist/catalog.py`](../playlist/catalog.py) either, so [`../playlist/sync.py`](../playlist/sync.py) leaves them
+alone. The superseded ones are in its `SUPERSEDED` list, so `sync.py apply` titles them `[superseded] …`, points each at
+its replacement and keeps it private. Nothing has been deleted.

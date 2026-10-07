@@ -18,7 +18,7 @@ sys.path.insert(1, f"{ROOT}/playlist")
 from youtube.yt_service import upload_video
 from scripts import TUTORIALS, VOICE
 
-DRAFT = "draft 5"
+DRAFT = "draft 6"
 LOG = f"{HERE}/uploads.json"
 PR = "https://github.com/vertical-cloud-lab/byu-vcl/pull/255"
 DESC = ("Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) "

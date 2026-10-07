@@ -22,7 +22,8 @@ Output: ./out/<tutorial>.mp4, 1280x720 h264 + aac.
 
     python build_tutorials.py             # all
     python build_tutorials.py 02-during   # one
-Set ATOMIZER_DL to the folder holding <id>.m4a and <id>.v360.mp4 (default /tmp/work/dl), and ATOMIZER_HLS to the folder
+Set ATOMIZER_DL to the folder holding <id>.m4a (or excerpts <id>_a<start>.m4a with a .json giving their t0) and
+<id>.v360.mp4 (default /tmp/work/dl), and ATOMIZER_HLS to the folder
 holding the 720p windows <id>_<start>.ts with their <id>_<start>.json (t0 = video time of the first frame; default
 /tmp/work/hls). A clip that no window covers falls back to the 360p copy, with a warning. ATOMIZER_THREADS=2 caps the
 threads of every ffmpeg call, for a shared machine.
@@ -310,14 +311,26 @@ def clip_source(vid, s, e):
     return best[:2] if best else None
 
 
+def audio_source(vid, s, e):
+    """(path, t0) of the sound for [s, e]: the full-length track {DL}/<id>.m4a (t0 = 0), else an excerpt
+    {DL}/<id>_a<start>.m4a whose .json gives t0, the video time of its first sample. Excerpts are cut on the Pi, decoded
+    from t0 and re-encoded, so that a rebuild over a slow link moves minutes of audio rather than hours."""
+    a = f"{DL}/{vid}.m4a"
+    if os.path.exists(a):
+        return a, 0.0
+    for p in glob.glob(f"{DL}/{glob.escape(vid)}_a*.json"):
+        m = json.load(open(p))
+        if m.get("video_id") == vid and m["t0"] <= s and e <= m["t1"] and os.path.exists(f"{DL}/{m['file']}"):
+            return f"{DL}/{m['file']}", float(m["t0"])
+    raise FileNotFoundError(f"{vid}: need {a}, or an excerpt that covers {s:.1f}-{e:.1f}")
+
+
 def seg_clip(i, vid, start, dur, speaker, section=""):
     """The trainer's own words: sentence-snapped, cut from the 720p window, stabilised, subtitled, labelled,
     loudness-matched."""
     out = f"{TMP}/seg_{i}.mp4"
-    a = f"{DL}/{vid}.m4a"
-    if not os.path.exists(a):
-        raise FileNotFoundError(f"{vid}: need {a}")
     s, e, words = clip_words.snap(vid, start, dur)
+    a, a0 = audio_source(vid, s, e)
     d = e - s
     srt = f"{TMP}/clip_{i}.srt"
     with open(srt, "w") as f:
@@ -337,7 +350,7 @@ def seg_clip(i, vid, start, dur, speaker, section=""):
             raise FileNotFoundError(f"{vid}: no window in {HLS} covers {s:.1f}-{e:.1f}, and no {v}")
         print(f"  ! clip {vid} {s:.1f}-{e:.1f}: no window in {HLS} covers it; using the 360p copy", flush=True)
         vin, vtrim = ["-ss", f"{s:.3f}", "-i", v], ""
-    run(["ffmpeg", "-y", "-v", "error", *vin, "-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", a,
+    run(["ffmpeg", "-y", "-v", "error", *vin, "-ss", f"{s - a0:.3f}", "-t", f"{d:.3f}", "-i", a,
          "-filter_complex", f"[0:v]{vtrim}fps={FPS}[v]", "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}",
          "-c:v", "libx264", "-preset", "ultrafast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
     # pass 1: motion analysis of the cut, at source resolution
@@ -454,12 +467,10 @@ def seg_real(i, vid, t_in, t_out, caption, opts=None, section=""):
     bar naming what it shows."""
     opts = opts or {}
     out = f"{TMP}/seg_{i}.mp4"
-    a = f"{DL}/{vid}.m4a"
-    if not os.path.exists(a):
-        raise FileNotFoundError(f"{vid}: need {a}")
     s, e, words = real_window(vid, t_in, t_out, opts.get("exact", False), opts.get("at", "middle"))
     d = e - s
     mute = opts.get("mute", False)
+    a, a0 = (None, 0.0) if mute else audio_source(vid, s, e)
     srt = f"{TMP}/real_{i}.srt"
     cues = [] if mute else clip_words.srt_lines(words, s)
     with open(srt, "w") as f:
@@ -471,7 +482,7 @@ def seg_real(i, vid, t_in, t_out, caption, opts=None, section=""):
         raise FileNotFoundError(f"real {vid} {s:.1f}-{e:.1f}: no window in {HLS} covers it")
     trf = f"{TMP}/real_{i}.trf"; cut = f"{TMP}/real_{i}_cut.mp4"
     x = round((s - src[1]) * FPS) / FPS
-    ain = ["-f", "lavfi", "-t", f"{d:.3f}", "-i", "anullsrc=r=44100:cl=stereo"] if mute else ["-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", a]
+    ain = ["-f", "lavfi", "-t", f"{d:.3f}", "-i", "anullsrc=r=44100:cl=stereo"] if mute else ["-ss", f"{s - a0:.3f}", "-t", f"{d:.3f}", "-i", a]
     run(["ffmpeg", "-y", "-v", "error", "-i", src[0], *ain,
          "-filter_complex", f"[0:v]trim=start={max(0.0, x - 0.5 / FPS):.4f},setpts=PTS-STARTPTS,fps={FPS},"
          # no bigger than the frame it ends up in (1080p and portrait sources), so the two vidstab passes stay quick
