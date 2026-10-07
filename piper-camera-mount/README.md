@@ -93,12 +93,15 @@ tab screws, and loads the HQ bosses with the camera and lens (83 g) at 1 g, one 
 
 | 83 g at 1 g along | HQ moves, old → new (µm) | optical axis tilts, old → new (arcmin) | picture shifts, old → new (px) |
 |---|---|---|---|
-| Y (gripper pointing down) | 12.1 → 0.96 | 1.77 → 0.16 | 2.0 → 0.18 |
-| Z (finger travel) | 4.2 → 0.97 | 0.16 → 0.010 | 0.18 → 0.011 |
-| X | 0.64 → 0.48 | 0.018 → 0.029 | 0.02 → 0.03 |
+| Y (gripper pointing down) | 12.1 → 1.22 | 1.77 → 0.20 | 2.0 → 0.23 |
+| Z (finger travel) | 4.2 → 1.21 | 0.16 → 0.003 | 0.18 → 0.003 |
+| X | 0.64 → 0.51 | 0.018 → 0.030 | 0.02 → 0.03 |
 
-- The worst case, along Y, is **about 11 times stiffer in tilt and 13 times in displacement**. The
-  first natural frequency goes from about 110 Hz to 360 Hz (a Rayleigh-Ritz upper bound).
+- The worst case, along Y, is **about 9 times stiffer in tilt and 10 times in displacement**. The
+  first natural frequency goes from about 110 Hz to 320 Hz (a Rayleigh-Ritz upper bound).
+- Widening the lens cradle for the 6 mm lens's thumbscrews (901 mm² of seat instead of 987) cost
+  about a fifth of that. Before it, the worst case was 11 and 13 times stiffer, at 360 Hz. Either way
+  the picture moves less than a quarter of a pixel at 1 g.
 - **These flatter the old joint.** Bonding says the joint never slips or opens, and solid PLA at
   2.4 GPa is stiffer than a 25 % infill print. The old joint's real weakness was the strip itself: a
   pod pivoting on an edge 5 mm from its two screws, where any creep in the plastic lets it rock.
@@ -408,6 +411,12 @@ edge midpoint, so the elements are CalculiX's C3D10 quadratic tets: 98,817 nodes
 The results are in [`sim/ccx_stress.json`](sim/ccx_stress.json). The clamp has its own model,
 [`sim/ccx_split.py`](sim/ccx_split.py), with both halves together (see
 [The split as a stop](#the-split-as-a-stop)).
+
+**These, and the sliced FEA below, predate the wider lens cradle** (October 2026, for the 6 mm lens's
+thumbscrews; see [The pod seat](#the-pod-seat)). So does the cross-check against `joint_fea.py`
+below, which used that script's mesh at the time. That change took 5.3 cm³ off the seat next to the
+lens and nothing anywhere else, so the clamp, collar and cable-yank results stand. The pod-bump and
+camera-weight cases load the seat, and they have not been re-run.
 
 **CalculiX gives the same answer as scikit-fem.** Here are `joint_fea.py`'s three cases on the same
 mesh (the same node and tet counts) with the same supports:
