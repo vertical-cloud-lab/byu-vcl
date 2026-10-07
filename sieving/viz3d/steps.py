@@ -201,7 +201,7 @@ def tip_matrix(group_rim: np.ndarray, target: np.ndarray, ang: float):
 def anim_sieving():
     sc = Scene("sieving", "Sieving atomized powder: 3 in stack, No. 60 / 230 / 635 (#222)")
     sc.cam = CAM["bench"]
-    load_parts(sc, hidden=("trough", "label", "doser_tube", "doser_band", "doser_cap", "funnel", "lid_coarse",
+    load_parts(sc, hidden=("label", "doser_tube", "doser_band", "doser_cap", "funnel", "lid_coarse",
                            "lid_print", "lid_fines")
                + tuple(f"chunk{k}" for k in range(7)) + tuple(f"grit{k}" for k in range(9)))
     chunk_groups = [f"chunk{k}" for k in range(7)]
@@ -211,9 +211,15 @@ def anim_sieving():
     for c in M.CHUNK_POS:
         a, rr = rng.uniform(0, 2 * math.pi), rng.uniform(0, 19)
         tgt = np.array([M.DISH_XY[0] + rr * math.cos(a), M.DISH_XY[1] + rr * math.sin(a), 1.2 + 2.2])
-        chunk_targets.append(tgt - (np.array([PX, PY, 0.3]) + c))
-    # powder: a cone on the paper, a layer on each mesh and in the pan, and a layer in each jar
-    cone = Heap(sc, "heap_paper", "cone", "paper", (PX, PY, 0.3))
+        chunk_targets.append(tgt - (np.array([PX, PY, M.TRAY_WALL + 0.2]) + c))
+    for name, pts in M.bonding_leads().items():          # flexible bonding leads, tray and stack to the ground stud
+        line = pv.Spline(np.array(pts, float), 60)
+        sc.add(name, line.tube(radius=1.3, n_sides=10), M.GROUND, "static", ambient=0.4)
+        for p in (pts[0], pts[-1]):
+            sc.add(name + "_clip" + str(pts.index(p)), pv.Cube(center=p, x_length=9, y_length=5, z_length=6),
+                   M.STEEL_DK, "static")
+    # powder: a cone on the tray, a layer on each mesh and in the pan, and a layer in each jar
+    cone = Heap(sc, "heap_paper", "cone", "paper", (PX, PY, M.TRAY_WALL + 0.1))
     heaps = {"s60": Heap(sc, "heap_s60", "disc", "s60", (SX, SY, M.MESH_Z["s60"] + 0.3), half=True),
              "s230": Heap(sc, "heap_s230", "disc", "s230", (SX, SY, M.MESH_Z["s230"] + 0.3), half=True),
              "s635": Heap(sc, "heap_s635", "disc", "s635", (SX, SY, M.MESH_Z["s635"] + 0.3), half=True),
@@ -240,18 +246,20 @@ def anim_sieving():
         sc.gmat["container"] = T(lift - mouth) @ R(tilt_axis, ang, mouth)
         if 0.52 < u < 0.97:
             lip = mouth_target + to_paper * 48.0 - (0, 0, 6.0)
-            drops.emit(int(round(14 * (15 / FPS))), lip, to_paper * 160.0 + (0, 0, -120.0), 0.6,
+            drops.emit(int(round(14 * (15 / FPS))), lip, to_paper * 160.0 + (0, 0, -120.0), M.TRAY_WALL + 0.4,
                        spread=(4.0, 4.0, 2.0))
         cone.set(window(u, 0.55, 0.98))
         drops.step()
         if u > 0.93:
             for g in chunk_groups:
                 show_group(sc, g, (u - 0.93) / 0.07)
-    sc.step("1 · pour out", "After a run, with the dust settled: tip the powder container out onto a sheet of paper. "
-            "Bartosz's practice (T2 50:51). The heap is mostly spheres with unatomized pieces in it.", 4.5, pour,
+    sc.step("1 · pour out", "After a run, with the dust settled: tip the powder container out onto a grounded stainless "
+            "tray (Bartosz pours onto paper, T2 50:51; paper is an insulator and NFPA 484 practice says never pour "
+            "powder over one). The heap is mostly spheres with unatomized pieces in it.", 4.5, pour,
             hold=1.2, cam_to=CAM["pour"], live=True,
             labels=[lab("powder container (size assumed, #255)", mouth + (0, 0, -60), 0.06, 0.30),
-                    lab("letter sheet", (PX + 60, PY - 80, 0), 0.60, 0.80)])
+                    lab("bonded, grounded tray", (PX + 60, PY - 80, M.TRAY_H), 0.60, 0.80),
+                    lab("bonding lead to ground", (M.GROUND_XY[0] - 2, M.GROUND_XY[1] - 4, 20), 0.56, 0.18)])
 
     # 2 · pick out the pieces ---------------------------------------------------------------------------------
     def pick(u):
@@ -266,42 +274,62 @@ def anim_sieving():
             "the dish. They are feedstock again (TA 04:50), not waste.", 3.5, pick, hold=1.2, cam_to=CAM["paper"],
             labels=[lab("pieces: back into the next charge", (*M.DISH_XY, 14), 0.55, 0.22)])
 
-    # 3 · fold the paper and fill the top sieve --------------------------------------------------------------
+    # 3 · scoop from the tray into a funnel on the No. 60 -----------------------------------------------------
     # the cover's parking place on the bench, as a translation from where it sits on the stack
     cover_delta = np.array([95.0, -60.0, -(M.TOP_RIM_Z - M.COVER_SKIRT) + 0.5])
-    trough_end = np.array([PX + M.PAPER_W / 2, PY, 0.0])        # the +x end of the fold, which goes over the sieve
-    trough_target = np.array([SX - 6.0, SY, M.TOP_RIM_Z + 16.0])
+    funnel_home = np.array([M.JAR_COARSE_XY[0], M.JAR_COARSE_XY[1], M.JAR_H - 10.0])
+    funnel_stack = np.array([SX, SY, M.TOP_RIM_Z - 12.0])
     full_s60 = depth(BATCH)
+    scoop_rest = np.array([PX - 150.0, PY - 80.0, M.SCOOP_R + 0.5])      # where the scoop's bowl starts (its origin)
+    heap_c = np.array([PX, PY, M.TRAY_WALL + 0.1])
+    dip = heap_c + (-30.0, 0.0, 6.0)
+    over_funnel = np.array([SX - 18.0, SY, M.TOP_RIM_Z + 62.0])
+    n_scoops = 3
 
     def fill(u):
-        a = window(u, 0.0, 0.22)
-        sc.alpha["paper"] = 1.0 - a
-        show_group(sc, "trough", a)
-        cone.set(1.0 - window(u, 0.42, 0.90))
-        w = window(u, 0.18, 0.48)
+        w = window(u, 0.0, 0.22)
         sc.gmat["cover"] = T(path(w, [(0, 0, 0), (0, 0, 55), cover_delta + (0, 0, 50), cover_delta]))
-        v = window(u, 0.22, 0.52)
-        carry = path(v, [trough_end, trough_end + (0, 0, 120), trough_target + (-30, 0, 30), trough_target])
-        tilt = 24.0 * window(u, 0.40, 0.60)
-        sc.gmat["trough"] = T(carry - trough_end) @ R((0, 1, 0), tilt, trough_end)
-        if 0.44 < u < 0.90:
+        show_group(sc, "funnel", 1.0 if u > 0.05 else 0.0)
+        f = window(u, 0.05, 0.28)
+        sc.gmat["funnel"] = T(path(f, [funnel_home, funnel_home + (0, 0, 80), funnel_stack + (0, 0, 60), funnel_stack])
+                              - funnel_home)
+        # three scoops: dip, carry, tip over the funnel, back
+        k = window(u, 0.25, 0.97) * n_scoops
+        i = min(int(k), n_scoops - 1)
+        t = k - i
+        carry = path(min(t / 0.55, 1.0), [scoop_rest if i == 0 else dip, dip, dip + (0, 0, 70), over_funnel + (-40, 0, 20),
+                                           over_funnel])
+        if t > 0.55:
+            back = path((t - 0.55) / 0.45, [over_funnel, over_funnel + (-40, 0, 20), dip + (0, 0, 70), dip])
+            carry = back
+        tip = 70.0 * (window(t, 0.50, 0.62) - window(t, 0.70, 0.85))
+        sc.gmat["scoop"] = T(carry - scoop_rest) @ R((0, 1, 0), tip, carry + (M.SCOOP_L, 0, 0))
+        pouring = 0.58 < t < 0.80 and u < 0.97
+        if pouring:
             drops.axis = (SX, SY, M.MESH_R - 1.5)
-            drops.emit(int(round(16 * (15 / FPS))), trough_target + (14.0, 0, 8.0), (90.0, 0, -60.0),
-                       M.MESH_Z["s60"] + 0.5, spread=(3.0, 6.0, 2.0))
-        heaps["s60"].set(full_s60 * window(u, 0.50, 0.95))
+            drops.emit(int(round(14 * (15 / FPS))), over_funnel + (M.SCOOP_L + 6.0, 0, -12.0), (10.0, 0, -90.0),
+                       M.MESH_Z["s60"] + 0.5, spread=(3.0, 3.0, 2.0))
+        done = (i + max(0.0, (t - 0.58) / 0.22)) / n_scoops if t > 0.58 else i / n_scoops
+        done = min(1.0, done)
+        cone.set(1.0 - done)
+        heaps["s60"].set(full_s60 * min(1.0, max(0.0, done - 0.05) / 0.95))
         drops.step()
-    sc.step("3 · into the No. 60", "Fold the sheet and slide the powder into the top sieve, the No. 60 (250 µm): it "
-            "scalps what the hand missed and keeps the fine meshes safe. 50 g is a 7.7 mm bed on a 3 in mesh.", 5.5,
-            fill, hold=1.2, cam_to=CAM["fill"], live=True,
+    sc.step("3 · into the No. 60", "A conductive scoop carries the powder to a funnel on the top sieve, the No. 60 "
+            "(250 µm): it scalps what the hand missed and keeps the fine meshes safe. 50 g is a 7.7 mm bed on a "
+            "3 in mesh; feed it in parts rather than all at once.", 7.0, fill, hold=1.2, cam_to=CAM["fill"],
+            live=True,
             labels=[lab("No. 60 (250 µm)", (SX + 38, SY, M.MESH_Z["s60"] + 14), 0.70, 0.30),
                     lab("No. 230 (63 µm)", (SX + 38, SY, M.MESH_Z["s230"] + 14), 0.70, 0.46),
                     lab("No. 635 (20 µm)", (SX + 38, SY, M.MESH_Z["s635"] + 14), 0.70, 0.62),
                     lab("pan", (SX + 38, SY, 20), 0.70, 0.78)])
 
     def lid_on(u):
-        show_group(sc, "trough", 1.0 - window(u, 0.0, 0.3))
-        sc.alpha["paper"] = window(u, 0.2, 0.5)
-        w = window(u, 0.0, 0.8)
+        f = window(u, 0.0, 0.45)
+        sc.gmat["funnel"] = T(path(f, [funnel_stack, funnel_stack + (0, 0, 60), funnel_home + (0, 0, 80), funnel_home])
+                              - funnel_home)
+        sc.gmat["scoop"] = T(path(window(u, 0.0, 0.4), [dip, dip + (0, 0, 40), scoop_rest + (0, 0, 40), scoop_rest])
+                             - scoop_rest)
+        w = window(u, 0.3, 0.9)
         sc.gmat["cover"] = T(path(w, [cover_delta, cover_delta + (0, 0, 60), (0, 0, 60),
                                       (0, 0, 0)]))
         drops.axis = None
@@ -380,7 +408,7 @@ def anim_sieving():
     def unstack2(u):
         sc.gmat["s60"] = tip_matrix(rim60, path(window(u, 0.0, 0.3), [dish_target, dish_target + (60, -80, 40),
                                                                         rest60 + (0, 0, 60), rest60]), 0.0)
-        show_group(sc, "funnel", window(u, 0.0, 0.15))
+        show_group(sc, "funnel", 1.0)
         v = window(u, 0.25, 0.62)
         carry = path(v, [rim230, rim230 + (0, 0, 70), over_coarse + (40, 0, 40), over_coarse])
         ang = -150.0 * window(u, 0.60, 0.80)

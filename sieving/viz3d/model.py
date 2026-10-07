@@ -50,6 +50,8 @@ BLUE = (0.16, 0.36, 0.78)
 WHITE = (0.96, 0.96, 0.96)
 RED = (0.80, 0.10, 0.08)
 LABEL = (1.0, 1.0, 1.0)
+BRASS = (0.80, 0.65, 0.32)
+GROUND = (0.12, 0.60, 0.28)
 
 # ------------------------------------------------------------------------------------- the sieves
 SIEVE_OD = 76.2            # 3 in
@@ -70,8 +72,11 @@ TOP_RIM_Z = PAN_H + 3 * STACKED_H              # 130.3: rim of the top sieve, wh
 SIEVE_LABEL = {"s60": "No. 60 (250 um)", "s230": "No. 230 (63 um)", "s635": "No. 635 (20 um)", "pan": "pan"}
 
 # ------------------------------------------------------------------------------- other things
-PAPER_C = (-120.0, 15.0)   # letter sheet, landscape
-PAPER_W, PAPER_D = 279.0, 216.0
+PAPER_C = (-120.0, 15.0)   # the tray's centre (the name is kept: it was a letter sheet in the first draft)
+PAPER_W, PAPER_D = 280.0, 220.0   # stainless tray, outside
+TRAY_H, TRAY_WALL = 18.0, 1.0
+SCOOP_L, SCOOP_R = 70.0, 15.0     # a stainless lab scoop: a half-tube with a round handle
+GROUND_XY = (-40.0, 235.0)        # bonding point at the back of the bench
 CONT_R, CONT_H = 65.0, 202.0     # #255's assumed powder container (not measured)
 CONT_XY = (-275.0, 110.0)
 DISH_XY = (-70.0, 160.0)
@@ -252,6 +257,19 @@ def chunk_shapes(rng: np.random.Generator, n: int) -> list[cq.Shape]:
     return out
 
 
+def bonding_leads() -> dict:
+    """Flexible bonding leads with clips, as point lists: tray to the ground stud, and sieve stack to the stud."""
+    px, py = PAPER_C
+    gx, gy = GROUND_XY
+    sx, sy = STACK_XY
+    return {
+        "lead_tray": [(px + 60.0, py + PAPER_D / 2 - 2.0, TRAY_H + 1.0), (px + 50.0, py + PAPER_D / 2 + 25.0, 30.0),
+                      (gx - 20.0, gy - 40.0, 24.0), (gx - 2.0, gy - 4.0, 18.0)],
+        "lead_stack": [(sx - 2.0, sy + SIEVE_OD / 2 + 1.0, 30.0), (sx - 20.0, sy + 80.0, 40.0),
+                       (gx + 30.0, gy - 60.0, 30.0), (gx + 2.0, gy - 4.0, 18.0)],
+    }
+
+
 def heap_cone(v: float, R0=50.0, H0=19.0) -> cq.Shape:
     """A heap poured onto the paper: volume fraction v (0-1) of the full heap, keeping the angle of repose."""
     s = max(v, 0.02) ** (1 / 3)
@@ -274,15 +292,21 @@ def parts() -> list[Part]:
     P = []
     # bench top (the drawing's floor), matte
     P.append(Part("bench", box(-420, 440, -210, 260, -18, 0), BENCH, "static", cut=False, tol=2.0))
-    # paper, flat, and its folded form (a V trough along x) at the same place
+    # a grounded stainless tray (NFPA 484 / Benson 2012: never pour powder over a nonconductive surface), and a scoop
     px, py = PAPER_C
-    P.append(Part("paper", box(px - PAPER_W / 2, px + PAPER_W / 2, py - PAPER_D / 2, py + PAPER_D / 2, 0, 0.3), PAPER,
-                  "paper", cut=False, tol=1.0))
-    half_w = PAPER_D / 2
-    leaf = box(-PAPER_W / 2, PAPER_W / 2, 0, half_w, 0, 0.3)
-    left = leaf.rotate(V(0, 0, 0), V(1, 0, 0), 32).translate(V(px, py, 0))
-    right = leaf.rotate(V(0, 0, 0), V(1, 0, 0), 180 - 32).translate(V(px, py, 0))
-    P.append(Part("trough", fuse(left, right), PAPER, "trough", cut=False, tol=1.0))
+    tray = box(px - PAPER_W / 2, px + PAPER_W / 2, py - PAPER_D / 2, py + PAPER_D / 2, 0, TRAY_H).cut(
+        box(px - PAPER_W / 2 + TRAY_WALL, px + PAPER_W / 2 - TRAY_WALL, py - PAPER_D / 2 + TRAY_WALL,
+            py + PAPER_D / 2 - TRAY_WALL, TRAY_WALL, TRAY_H + 1))
+    P.append(Part("paper", tray, STEEL, "paper", cut=False, tol=0.5))
+    bowl = cyl(SCOOP_R, SCOOP_L, (0, 0, 0), (1, 0, 0)).cut(cyl(SCOOP_R - 0.8, SCOOP_L + 2, (-1, 0, 0), (1, 0, 0)))
+    bowl = bowl.cut(box(-5, SCOOP_L + 5, -SCOOP_R - 2, SCOOP_R + 2, 0, SCOOP_R + 2))          # keep the lower half
+    bowl = bowl.fuse(cyl(SCOOP_R, 0.8, (0, 0, 0), (1, 0, 0)).cut(box(-2, 2, -SCOOP_R - 2, SCOOP_R + 2, 0, SCOOP_R + 2)))
+    handle = cyl(3.0, 90.0, (-90.0, 0, -4.0), (1, 0, 0))
+    scoop = fuse(bowl, handle).translate(V(px - 150.0, py - 80.0, SCOOP_R + 0.5))   # resting beside the tray
+    P.append(Part("scoop", scoop, STEEL, "scoop", cut=False, tol=0.3))
+    gx, gy = GROUND_XY
+    P.append(Part("ground_stud", fuse(box(gx - 14, gx + 14, gy - 10, gy + 10, 0, 6), cyl(3.0, 14, (gx, gy, 6))),
+                  BRASS, "static", cut=False, tol=0.2))
     # the sieve stack, assembled, pan on the bench
     sx, sy = STACK_XY
     P.append(Part("pan", pan(sx, sy), STEEL, "pan", tol=0.25))
@@ -309,7 +333,7 @@ def parts() -> list[Part]:
     # unatomized pieces on the paper heap (group "chunks") and the grit that stays on the No. 60 (group "grit")
     rng = np.random.default_rng(7)
     for k, s in enumerate(chunk_shapes(rng, 7)):
-        P.append(Part(f"chunk{k}", s.translate(V(px, py, 0.3)), CHUNK, f"chunk{k}", cut=False, tol=0.15))
+        P.append(Part(f"chunk{k}", s.translate(V(px, py, TRAY_WALL + 0.2)), CHUNK, f"chunk{k}", cut=False, tol=0.15))
     rng = np.random.default_rng(11)
     for k in range(9):
         a, rr, r = rng.uniform(0, 2 * math.pi), rng.uniform(4, 30), rng.uniform(0.6, 1.4)
