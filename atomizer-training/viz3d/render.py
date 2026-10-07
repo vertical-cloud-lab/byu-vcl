@@ -150,7 +150,7 @@ def section():
         ("furnace", (60, 0, 1250), (0.06, 0.12)),
         ("atomization chamber\n(57 L, argon)", (-100, 60, 1060), (0.06, 0.27)),
         ("plate (carbon fibre, 100 x 20),\nhung by its end", tuple(M.PLATE_C + M.PLATE_ALONG * 25), (0.70, 0.33)),
-        ("upper sonotrode (W alloy)", tuple(M.UPPER_END), (0.70, 0.22)),
+        ("upper sonotrode (W alloy)", tuple(M.UPPER_END), (0.06, 0.35)),
         ("Ti sonotrode", tuple(M.on_axis(76)), (0.06, 0.42)),
         ("booster (1.5:1)", tuple(M.on_axis(211)), (0.06, 0.52)),
         ("transducer (40 kHz),\nunder its cover", tuple(M.on_axis(306)), (0.06, 0.62)),
