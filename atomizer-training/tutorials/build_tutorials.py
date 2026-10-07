@@ -11,6 +11,9 @@ Segment kinds (see scripts.py):
              (clip_words.py), cut frame-exact from the 720p window of the video that covers it, stabilised (vidstab, two
              passes, zoomed in just enough to hide the moving edges, capped), subtitled from the same words,
              loudness-matched
+  real     — the action itself, from the recordings (real-footage.md): cut at the pick's in and out points (its middle
+             REAL_MAX seconds if longer, never through a word), stabilised like a clip, with its own sound and subtitles,
+             under a bar naming what it shows
   card     — a text card with narration
 
 Synthetic narration is Microsoft Edge TTS (VOICE in scripts.py) at 1x. Segments are joined with short crossfades (FADE),
@@ -46,10 +49,11 @@ ENC = ["-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-pix_fmt", "yuv4
 SHORT = {"wRc8p2_FnJo": "Training video 1", "naePD8o9_Gk": "Training video 2", "txH397FGTAU": "Training video 3",
          "1F9_4ccwhss": "Training video 4", "58wJ_Khwgyk": "Training video 5", "tfb4fsVNIFI": "Training video 6",
          "FDRTt68Vfvo": "Training video 7", "HTlUrAr5HVU": "Training video 8", "9kn-HhXCr1o": "Training video 9",
-         "u-KjR5TENN4": "Expert cleaning, POV", "f8KL31PN8bA": "Cartridge cleaning", "2wMgeI-E7zw": "Training (Sterling's phone)",
+         "u-KjR5TENN4": "Expert cleaning, POV", "f8KL31PN8bA": "Cartridge cleaning", "2wMgeI-E7zw": "Commissioning, Sep 28",
          "qYyT39D5Yzo": "First run, Oct 2, part 1", "of5-LhkX_VQ": "First run, Oct 2, part 2", "07QOPRHIEvw": "Placing the atomizer",
          "Kv9DT3Vo0GE": "Construction update", "z6rwmQW_3Vg": "Turning Al crucibles", "Pk0K5sBz-sQ": "Training, Sep 29",
-         "TFpU4uqVF9c": "Atomizing AlSi10Mg-Al6063"}
+         "TFpU4uqVF9c": "Atomizing AlSi10Mg-Al6063", "VFycaxIq0Tc": "Oct 6 run, video 1", "dnPs56DPt6I": "Oct 6 run, video 2",
+         "DWH1CEygsTI": "Oct 6 run, video 3", "LSQmxwmlTkQ": "Drilling a nozzle, Sep 30"}
 
 
 def run(cmd):
@@ -211,6 +215,13 @@ def seg_build(i, name, sentences):
     return out
 
 
+def anim_mp4(name):
+    """The step animation's MP4: ../viz3d/out/mp4/<name>.mp4 from a fresh render, else the committed 1080p copy with the
+    same text and timing in ../ppt/videos/animations/."""
+    p = f"{V3D}/mp4/{name}.mp4"
+    return p if os.path.exists(p) else f"{ROOT}/ppt/videos/animations/{name}.mp4"
+
+
 def wait_ready(path, timeout=1800):
     """The 3D renders may still be (re)writing an MP4: wait until it probes cleanly and has stopped changing."""
     import time
@@ -230,7 +241,7 @@ def seg_anim(i, name, narration, substeps=None):
     """A 3D animation under narration. With a list of sentences and the sub-step JSON, each sentence starts with its
     sub-step and the sub-step is slowed (up to 1.6x) and then held on its last frame until the sentence is done.
     `substeps` = (first, last) plays only those sub-steps (inclusive), so one animation can serve several sections."""
-    mp4 = f"{V3D}/mp4/{name}.mp4"; meta = f"{V3D}/{name}.json"; out = f"{TMP}/seg_{i}.mp4"
+    mp4 = anim_mp4(name); meta = f"{V3D}/{name}.json"; out = f"{TMP}/seg_{i}.mp4"
     wait_ready(mp4)
     sentences = narration if isinstance(narration, list) else [narration]
     steps = json.load(open(meta))["substeps"] if os.path.exists(meta) else None
@@ -366,6 +377,139 @@ def seg_clip(i, vid, start, dur, speaker, section=""):
     return out
 
 
+REAL_VERSION = "2"        # bump when seg_real changes, so cached picks are rebuilt
+REAL_MAX, REAL_SLACK = 14.0, 3.0   # s: a pick up to REAL_MAX + REAL_SLACK plays whole; a longer one plays its middle REAL_MAX
+REAL_LIGHT_ZOOM = 5.0     # %: zoom cap for picks marked "light" in real-footage.md (the camera rests on one view)
+TAG = {"real": ("IN THE LAB", "#00897B"), "wrong": ("WHAT GOES WRONG", "#C2410C")}
+
+
+_TRANSCRIPTS = {}
+
+
+def transcript_words(vid, s, e):
+    """Words of the full word-timed transcript (../transcripts/whisper/<id>.json) that overlap [s, e], as clip_words
+    gives them: [{"w", "s", "e"}]."""
+    if vid not in _TRANSCRIPTS:
+        p = f"{ROOT}/transcripts/whisper/{vid}.json"
+        _TRANSCRIPTS[vid] = [{"w": w[2], "s": w[0], "e": w[1]} for seg in (json.load(open(p))["segments"] if os.path.exists(p)
+                             else []) for w in seg.get("words") or []]
+    return [w for w in _TRANSCRIPTS[vid] if w["e"] > s and w["s"] < e]
+
+
+def real_window(vid, t_in, t_out, exact=False):
+    """(start, end, words) of a pick: all of it, or its middle REAL_MAX seconds if it is longer than REAL_MAX + REAL_SLACK.
+    An end that falls inside a word moves out to the word's edge, and a sentence that finishes within 1.5 s is let finish,
+    so the sound never stops mid-word. `exact` keeps the given points (picks timed to the frame by hand)."""
+    s, e = float(t_in), float(t_out)
+    if not exact and e - s > REAL_MAX + REAL_SLACK:
+        mid = (s + e) / 2
+        s, e = mid - REAL_MAX / 2, mid + REAL_MAX / 2
+    words = transcript_words(vid, s - 4, e + 4)
+    if not exact and words:
+        inside = [w for w in words if w["s"] < s < w["e"] and w["e"] - w["s"] < 1.2]   # longer: Whisper's padding
+        if inside:                            # start on the word's first sound, not halfway through it
+            before = [w["e"] for w in words if w["e"] <= inside[0]["s"]]
+            s = max(inside[0]["s"] - 0.1, before[-1] if before else 0.0)
+        inside = [w for w in words if w["s"] < e < w["e"] and w["e"] - w["s"] < 1.2]
+        e0 = e = inside[0]["e"] if inside else e
+        prev = None
+        for w in [w for w in words if w["s"] >= e - 0.01]:   # let a sentence in progress finish, if it does so soon
+            if w["e"] - e0 > 1.5 or (prev and w["s"] - prev["e"] > 0.7):
+                break
+            if w["w"].strip().endswith((".", "?", "!")):
+                e = w["e"]
+                break
+            prev = w
+        after = [w["s"] for w in words if w["s"] >= e - 0.01]
+        e = min(e + 0.15, after[0] - 0.02) if after and after[0] > e else e + 0.15
+    return max(0.0, s), e, [w for w in words if w["s"] >= s - 0.05 and w["e"] <= e + 0.05]
+
+
+def real_bar(caption, source, section, kind, path):
+    """The top bar of a real-footage pick, drawn with Pillow: a coloured tag, what the pick shows, where it is from, and
+    the step at the right."""
+    im = Image.new("RGBA", (W, 50), (0, 0, 0, 0)); d = ImageDraw.Draw(im)
+    d.rectangle([0, 0, W, 50], fill=(0, 0, 0, 125))
+    tag, colour = TAG[kind]
+    ft, fc, fs = font(15, True), font(22, True), font(18)
+    tw = d.textlength(tag, font=ft)
+    d.rounded_rectangle([16, 12, 16 + tw + 20, 38], radius=5, fill=colour)
+    d.text((26, 16), tag, font=ft, fill="white")
+    x = 16 + tw + 20 + 14
+    d.text((x, 12), caption, font=fc, fill="white"); x += d.textlength(caption, font=fc) + 14
+    fsec = font(19, True)
+    right = W - 20 - (d.textlength(section, font=fsec) + 24 if section else 0)
+    while source and x + d.textlength(source, font=fs) > right:      # never run into the step label
+        source = source[:-2].rstrip() + "…"
+    d.text((x, 15), source, font=fs, fill="#D1D5DB")
+    if section:
+        d.text((W - 20 - d.textlength(section, font=fsec), 14), section, font=fsec, fill="#9fd3ff")
+    im.save(path)
+
+
+def seg_real(i, vid, t_in, t_out, caption, opts=None, section=""):
+    """A real-footage pick: cut from the 720p window, stabilised (less zoom for a camera at rest), with the recording's own
+    sound (or silence where real-footage.md says to mute the chatter), subtitled from the word-timed transcript, under a
+    bar naming what it shows."""
+    opts = opts or {}
+    out = f"{TMP}/seg_{i}.mp4"
+    a = f"{DL}/{vid}.m4a"
+    if not os.path.exists(a):
+        raise FileNotFoundError(f"{vid}: need {a}")
+    s, e, words = real_window(vid, t_in, t_out, opts.get("exact", False))
+    d = e - s
+    mute = opts.get("mute", False)
+    srt = f"{TMP}/real_{i}.srt"
+    cues = [] if mute else clip_words.srt_lines(words, s)
+    with open(srt, "w") as f:
+        for k, (c0, c1, text) in enumerate(cues, 1):
+            ts = lambda x: f"{int(x // 3600):02d}:{int(x % 3600 // 60):02d}:{x % 60:06.3f}".replace(".", ",")
+            f.write(f"{k}\n{ts(c0)} --> {ts(min(c1, d))}\n{clip_words.fix(text, FIXES)}\n\n")
+    src = clip_source(vid, s, e)
+    if not src:
+        raise FileNotFoundError(f"real {vid} {s:.1f}-{e:.1f}: no window in {HLS} covers it")
+    trf = f"{TMP}/real_{i}.trf"; cut = f"{TMP}/real_{i}_cut.mp4"
+    x = round((s - src[1]) * FPS) / FPS
+    ain = ["-f", "lavfi", "-t", f"{d:.3f}", "-i", "anullsrc=r=44100:cl=stereo"] if mute else ["-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", a]
+    run(["ffmpeg", "-y", "-v", "error", "-i", src[0], *ain,
+         "-filter_complex", f"[0:v]trim=start={max(0.0, x - 0.5 / FPS):.4f},setpts=PTS-STARTPTS,fps={FPS},"
+         # no bigger than the frame it ends up in (1080p and portrait sources), so the two vidstab passes stay quick
+         f"scale='min({W},iw)':'min({H},ih)':force_original_aspect_ratio=decrease:force_divisible_by=2:flags=lanczos[v]",
+         "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}",
+         "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
+    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=15:result={trf}",
+         "-f", "null", "-"])
+    w, h = probe_wh(cut)
+    cap = REAL_LIGHT_ZOOM if opts.get("light") else STAB_MAX_ZOOM
+    rot = 100 * max(w, h) / min(w, h) * math.sin(STAB_ANGLE) + 0.5
+    shift = max(4, int((cap - rot) / 200 * min(w, h)))
+    stab = (f"vidstabtransform=input={trf}:smoothing={STAB_SMOOTH}:optzoom=1:zoom={rot:.2f}:maxshift={shift}:"
+            f"maxangle={STAB_ANGLE}:crop=keep:interpol=bicubic,unsharp=5:5:0.6:3:3:0.3")
+    if h > w:
+        fg = f"[0:v]{stab},scale=-2:{H}:flags=lanczos,split[fg][bgsrc];" \
+             f"[bgsrc]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.12[bg];" \
+             f"[bg][fg]overlay=(W-w)/2:0"
+    else:
+        fg = f"[0:v]{stab},scale={W}:{H}:force_original_aspect_ratio=decrease:flags=lanczos,pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=black"
+    mm = f"{int(t_in) // 60:02d}:{int(t_in) % 60:02d}" if t_in < 3600 else f"{int(t_in) // 3600}:{int(t_in) % 3600 // 60:02d}:{int(t_in) % 60:02d}"
+    bar = f"{TMP}/real_{i}_bar.png"
+    real_bar(caption, f"{SHORT.get(vid, VIDEOS.get(vid, {}).get('title', vid))} · {mm}", opts.get("section", section),
+             "wrong" if opts.get("wrong") else "real", bar)
+    style = "FontName=DejaVu Sans,FontSize=15,PrimaryColour=&H00FFFFFF,OutlineColour=&H00000000,BackColour=&H99000000," \
+            "BorderStyle=4,Outline=0,Shadow=0,MarginV=22"
+    vf = (f"{fg}[base];[base][1:v]overlay=0:0," + (f"subtitles={srt}:force_style='{style}'," if cues else "")
+          + f"fade=t=in:st=0:d=0.25,fade=t=out:st={max(0, d - 0.3):.2f}:d=0.3[vout]")
+    af = "anull" if mute else f"highpass=f=90,afftdn=nf=-25,{AUDIO}"
+    r = run(["ffmpeg", "-y", "-v", "info", "-nostats", "-i", cut, "-i", bar, "-filter_complex", vf, "-map", "[vout]",
+             "-map", "0:a:0", "-af", f"{af},afade=t=in:st=0:d=0.15,afade=t=out:st={max(0, d - 0.3):.2f}:d=0.3", *ENC, out])
+    for p in (cut, trf):
+        os.remove(p)
+    zoom = re.findall(r"Final zoom: ([-\d.]+)", r.stderr)
+    print(f"    real {vid} {t_in}-{t_out} -> {s:.1f}-{e:.1f} ({d:.1f}s) from {os.path.basename(src[0])} ({w}x{h}),"
+          f" {float(zoom[-1]) if zoom else float('nan'):.1f} % zoom{', muted' if mute else ''}: {caption}", flush=True)
+    return out
+
+
 def concat_xfade(segs, out, fade=FADE, cuts=()):
     """Join the segments with a crossfade of `fade` seconds (video xfade, audio acrossfade), or with a hard cut at the
     joins in `cuts` (join k is the one into segs[k]). Each segment's video and audio are first held or padded to the same
@@ -418,12 +562,17 @@ def seg_key(seg):
         src = clip_source(args[0], *clip_words.snap(args[0], args[1], args[2])[:2])
         deps += [json.dumps(FIXES, sort_keys=True), CLIP_VERSION, f"{STAB_MAX_ZOOM}/{STAB_ANGLE}/{STAB_SMOOTH}",
                  f"{src[0]}@{os.path.getmtime(src[0])}" if src else "360p"]
+    if kind == "real":
+        w0, w1 = real_window(args[0], args[1], args[2], (args[4] if len(args) > 4 and args[4] else {}).get("exact", False))[:2]
+        src = clip_source(args[0], w0, w1)
+        deps += [json.dumps(FIXES, sort_keys=True), REAL_VERSION, f"{STAB_MAX_ZOOM}/{REAL_LIGHT_ZOOM}/{STAB_ANGLE}/{STAB_SMOOTH}",
+                 f"{REAL_MAX}/{REAL_SLACK}", f"{src[0]}@{os.path.getmtime(src[0])}" if src else "none"]
     if kind == "build":
         deps += [CARD_VERSION, f"{BUILD_LEAD}/{BUILD_GAP}/{BUILD_TAIL}"] + \
                 [f"{os.path.basename(p)}@{os.path.getmtime(p)}" for p in build_pngs(args[0])]
     if kind == "anim":
-        wait_ready(f"{V3D}/mp4/{args[0]}.mp4")
-        deps += [str(os.path.getmtime(p)) for p in (f"{V3D}/mp4/{args[0]}.mp4", f"{V3D}/{args[0]}.json") if os.path.exists(p)]
+        wait_ready(anim_mp4(args[0]))
+        deps += [str(os.path.getmtime(p)) for p in (anim_mp4(args[0]), f"{V3D}/{args[0]}.json") if os.path.exists(p)]
     if kind == "outline" and os.path.exists(f"{DIAG}/{args[0]}.png"):
         deps.append(str(os.path.getmtime(f"{DIAG}/{args[0]}.png")))
     if kind in ("title", "card", "outline"):
@@ -443,7 +592,7 @@ def make_seg(seg):
         except (RuntimeError, ValueError):       # half-written by an interrupted build: make it again
             os.remove(f"{TMP}/seg_{sid}.mp4")
     fn = {"title": seg_title, "card": seg_card, "outline": seg_outline, "build": seg_build, "anim": seg_anim,
-          "clip": seg_clip}[kind]
+          "clip": seg_clip, "real": seg_real}[kind]
     return fn(sid, *args)
 
 
@@ -460,6 +609,8 @@ def plan(key):
             section = section_label(seg[2]) if seg[0] == "outline" and "_step" in seg[1] else ""
         if seg[0] == "clip" and section:
             seg = (*seg[:6], section)
+        if seg[0] == "real":
+            seg = (*seg[:6], section)
         out.append(seg)
     return out
 
@@ -470,7 +621,8 @@ def build(key):
     for i, seg in enumerate(segments):
         kind, args = seg[0], seg[1:]
         segs.append(make_seg(seg))
-        print(key, i, kind, args[0] if kind != "clip" else f"{args[0]}@{args[1]}", f"{duration(segs[-1]):.1f}s", flush=True)
+        print(key, i, kind, args[0] if kind not in ("clip", "real") else f"{args[0]}@{args[1]}", f"{duration(segs[-1]):.1f}s",
+              flush=True)
     out = f"{OUT}/{key}.mp4"
     concat_xfade(segs, out, cuts=hard_cuts(segments))
     print(key, "->", out, f"{duration(out) / 60:.2f} min", flush=True)
@@ -485,18 +637,18 @@ def timeline(key):
     for k, seg in enumerate(segments):
         d = round(duration(f"{TMP}/seg_{seg_key(seg)}.mp4") * FPS) / FPS
         start = 0.0 if k == 0 else end if k in cuts else end - FADE
-        out.append((round(start, 2), seg[0], f"{seg[1]}@{seg[2]}" if seg[0] == "clip" else seg[1]))
+        out.append((round(start, 2), seg[0], f"{seg[1]}@{seg[2]}" if seg[0] in ("clip", "real") else seg[1]))
         end = start + d
     return out
 
 
 if __name__ == "__main__":
-    if sys.argv[1:2] == ["--clips"]:     # pre-build only the clip segments (they need neither the 3D renders nor the diagrams)
+    if sys.argv[1:2] == ["--clips"]:     # pre-build only the clips and real picks (they need neither the renders nor the diagrams)
         os.makedirs(TMP, exist_ok=True)
         for k in (sys.argv[2:] or list(TUTORIALS)):
             for seg in plan(k):
-                if seg[0] == "clip":
-                    print(k, seg[1], seg[2], f"{duration(make_seg(seg)):.1f}s", flush=True)
+                if seg[0] in ("clip", "real"):
+                    print(k, seg[0], seg[1], seg[2], f"{duration(make_seg(seg)):.1f}s", flush=True)
     elif sys.argv[1:2] == ["--timeline"]:     # segment start times of built tutorials, for chapters
         for k in (sys.argv[2:] or list(TUTORIALS)):
             for t, kind, name in timeline(k):

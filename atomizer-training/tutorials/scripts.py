@@ -15,6 +15,7 @@ Segment forms:
                                                       one sentence per sub-step of the animation (../viz3d/out/<name>.json)
   ("clip", video_id, start_seconds, duration_seconds, speaker)   snapped to sentence boundaries by clip_words.py
   ("card", title, subtitle, narration)
+  ("real", video_id, in_seconds, out_seconds, caption, opts)    the action itself, from real-footage.md: see R() and REAL below
 
 Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x. Human narration: Bartosz Kalicki (AMAZEMET),
 in the clips.
@@ -29,7 +30,7 @@ B = "Bartosz Kalicki, AMAZEMET"
 
 TUTORIALS = {
     "00-overview": {
-        "title": "Atomizer tutorial 0: the machine and how it works (draft 4)",
+        "title": "Atomizer tutorial 0: the machine and how it works (draft 5)",
         "segments": [
             ("title", "The rePowder ultrasonic atomizer", "Tutorial 0 · the machine, how it makes powder, and what a run looks like",
              "The rePowder ultrasonic atomizer, at the BYU Vertical Cloud Lab."),
@@ -87,7 +88,7 @@ TUTORIALS = {
         ],
     },
     "01-before": {
-        "title": "Atomizer tutorial 1: before a run (draft 4)",
+        "title": "Atomizer tutorial 1: before a run (draft 5)",
         "segments": [
             ("title", "Before a run", "Tutorial 1 · utilities, the furnace, the chamber and the ultrasonic stack",
              "Tutorial one: before a run."),
@@ -167,7 +168,7 @@ TUTORIALS = {
         ],
     },
     "02-during": {
-        "title": "Atomizer tutorial 2: during a run (draft 4)",
+        "title": "Atomizer tutorial 2: during a run (draft 5)",
         "segments": [
             ("title", "During a run", "Tutorial 2 · gas wash, heating and melting, the pour, and ending it",
              "Tutorial two: during a run."),
@@ -231,7 +232,7 @@ TUTORIALS = {
         ],
     },
     "03-after": {
-        "title": "Atomizer tutorial 3: after a run (draft 4)",
+        "title": "Atomizer tutorial 3: after a run (draft 5)",
         "segments": [
             ("title", "After a run", "Tutorial 3 · shutdown, cool-down and opening, collecting the powder, cleaning",
              "Tutorial three: after a run."),
@@ -290,3 +291,145 @@ TUTORIALS = {
         ],
     },
 }
+
+
+def R(vid, t_in, t_out, caption, **opts):
+    """A real-footage pick from real-footage.md: the recording from t_in to t_out (its middle 14 s if it runs longer than
+    17), under a bar reading `caption`. opts: light (the camera rests on one view, so less stabilisation zoom), mute (only
+    chatter on the sound), wrong (shown as the mistake, not the method), exact (keep the points as given), section (the
+    bar's step label, where no step outline comes before it)."""
+    return ("real", vid, t_in, t_out, caption, opts)
+
+
+# Draft 5: after each step's animation, the real action for each of its sub-steps (the first picks of real-footage.md, in
+# the animation's order), then the explanation clips draft 4 already had. A key names the segment the group follows:
+# "anim <name>" (plus " <first>-<last>" for a part of one), "card <title>", or "before card <title>" for a group that
+# comes just before that card.
+REAL = {
+    "00-overview": {
+        "anim 00_machine": [
+            R("VFycaxIq0Tc", 150, 170, "The machine, from the front", light=True, mute=True, section="The machine"),
+            R("2wMgeI-E7zw", 215, 238, "Furnace panel and touchscreen", section="The machine"),
+            R("2wMgeI-E7zw", 12, 34, "The utilities, at the back", section="The machine"),
+        ],
+        "anim 06_pour": [
+            R("TFpU4uqVF9c", 957, 980, "The melt, through the lid window", section="How it makes powder"),
+            R("dnPs56DPt6I", 980, 995, "Water atomizing on the plate", section="How it makes powder"),
+            R("9kn-HhXCr1o", 1212, 1232, "Rod up: the stream hits the plate", light=True, section="How it makes powder"),
+            R("9kn-HhXCr1o", 1262, 1271, "Atomizing high on the plate", light=True, section="How it makes powder"),
+        ],
+        "card Safety, every time": [
+            R("58wJ_Khwgyk", 4427, 4442, "Full-face respirators, one each", section="Safety"),
+        ],
+    },
+    "01-before": {
+        "anim 01_utilities": [
+            R("2wMgeI-E7zw", 203, 215, "The main switch, on the frame"),
+            R("2wMgeI-E7zw", 64, 78, "Chilled water: open it a little"),
+            R("2wMgeI-E7zw", 126, 148, "Heat exchanger on"),
+            R("qYyT39D5Yzo", 44, 58, "Compressed air on"),
+            R("DWH1CEygsTI", 355, 370, "The argon regulator"),
+            R("qYyT39D5Yzo", 86, 98, "The startup checklist"),
+        ],
+        "anim 03_furnace_load": [
+            R("wRc8p2_FnJo", 2150, 2172, "Teardown: thermocouple out first"),
+            R("dnPs56DPt6I", 168, 190, "Crucible lowered into the coil"),
+            R("HTlUrAr5HVU", 146, 170, "Graphite nut on, from below"),
+            R("1F9_4ccwhss", 31, 55, "Insulation lined up with the port", light=True),
+            R("HTlUrAr5HVU", 260, 280, "Thermocouple into its hole"),
+            R("dnPs56DPt6I", 240, 265, "Sealing rod in, under the lever"),
+            R("DWH1CEygsTI", 40, 60, "The charge, wiped with IPA"),
+            R("1F9_4ccwhss", 317, 335, "Lid closed and latched", light=True),
+        ],
+        "anim 03b_chamber": [
+            R("58wJ_Khwgyk", 286, 298, "Container on, clamp finger-tight"),
+            R("58wJ_Khwgyk", 329, 343, "The catch bowl, in the chamber", exact=True),
+        ],
+        "anim 02_stack": [
+            R("58wJ_Khwgyk", 397, 418, "The transducer, at the door"),
+            R("FDRTt68Vfvo", 2276, 2300, "Booster on, counter-held: 65 N·m"),
+            R("FDRTt68Vfvo", 2123, 2145, "The sonotrode, threaded on"),
+            R("58wJ_Khwgyk", 1486, 1503, "The stack, into the door housing"),
+            R("58wJ_Khwgyk", 1555, 1575, "The plate on: 50 N·m"),
+            R("dnPs56DPt6I", 338, 363, "The scan, on the touchscreen"),
+            R("dnPs56DPt6I", 980, 995, "Water test: the whole plate atomizes"),
+            R("FDRTt68Vfvo", 2455, 2470, "The cable connector, locked"),
+            R("dnPs56DPt6I", 602, 615, "Frequency check: 40,200 Hz"),
+            R("dnPs56DPt6I", 1040, 1065, "The star knobs, tightened"),
+        ],
+    },
+    "02-during": {
+        "anim 04_gas_wash": [
+            R("9kn-HhXCr1o", 184, 205, "Pressure control off, pump on"),
+            R("58wJ_Khwgyk", 2030, 2052, "The furnace gas wash, started"),
+            R("58wJ_Khwgyk", 2255, 2273, "The last cycle, at −0.76 bar", light=True),
+            R("DWH1CEygsTI", 1255, 1268, "Oxygen after the fill: 19 ppm"),
+            R("58wJ_Khwgyk", 2293, 2312, "Chamber wash: pump on, valve open"),
+            R("9kn-HhXCr1o", 149, 170, "Generator on, setpoint 250 °C"),
+            R("9kn-HhXCr1o", 373, 393, "The next wash, at 500 °C"),
+            R("9kn-HhXCr1o", 94, 108, "Pressure control back on"),
+        ],
+        "anim 05_melt": [
+            R("58wJ_Khwgyk", 3170, 3186, "Overshoot, to drop the rods"),
+            R("DWH1CEygsTI", 1417, 1430, "The charge, glowing"),
+            R("txH397FGTAU", 2313, 2332, "Setpoint down as it melts"),
+            R("DWH1CEygsTI", 1628, 1652, "The pool: wait two minutes"),
+            R("DWH1CEygsTI", 1710, 1733, "Rescan: 40,185 Hz"),
+        ],
+        "anim 06_pour": [
+            R("naePD8o9_Gk", 1152, 1171, "The pour sequence, on the touchscreen"),
+            R("of5-LhkX_VQ", 1500, 1522, "Amplitude set to about 90"),
+            R("9kn-HhXCr1o", 1212, 1232, "Rod up: the stream hits the plate", light=True),
+            R("9kn-HhXCr1o", 1262, 1271, "Hot plate: atomizing high on it", light=True),
+            R("DWH1CEygsTI", 1833, 1848, "Stack too high: stream on the sonotrode", wrong=True),
+            R("DWH1CEygsTI", 1955, 1978, "The same mistake, explained", wrong=True),
+            R("9kn-HhXCr1o", 1271, 1280, "Melt gathers at the bottom, drips", light=True),
+            R("of5-LhkX_VQ", 1608, 1633, "Pressure too high: little atomized", wrong=True),
+            R("txH397FGTAU", 2686, 2708, "At the window as the pour ends"),
+        ],
+        "anim 07_end_cooldown 0-1": [
+            R("58wJ_Khwgyk", 3732, 3744, "Turbo, then the stop sequence"),
+            R("9kn-HhXCr1o", 1299, 1316, "It's over: stop the vibration", light=True),
+        ],
+    },
+    "03-after": {
+        "anim 07_end_cooldown 0-1": [
+            R("TFpU4uqVF9c", 1228, 1242, "Pour over: rod down, generator off"),
+        ],
+        "anim 07_end_cooldown 2-5": [
+            R("of5-LhkX_VQ", 1679, 1699, "Setpoint down to 250 °C"),
+            R("Pk0K5sBz-sQ", 260, 284, "Door open, the plate on it"),
+            R("naePD8o9_Gk", 2620, 2645, "Powder brushed into the chamber"),
+        ],
+        "anim 07_end_cooldown 6-7": [
+            R("naePD8o9_Gk", 3305, 3330, "Powder brushed out onto paper"),
+        ],
+        "anim 08_clean": [
+            R("1F9_4ccwhss", 412, 436, "Seal and chamber, wiped with alcohol"),
+            R("wRc8p2_FnJo", 2184, 2207, "Sealing rod out, insulation lifted"),
+            R("wRc8p2_FnJo", 2247, 2272, "The nut, unscrewed from below"),
+            R("LSQmxwmlTkQ", 0, 20, "Drilling a nozzle: #70 bit", mute=True),
+            R("FDRTt68Vfvo", 3142, 3155, "The O-ring seal, wiped with isopropanol"),
+        ],
+        "before card Lessons from the first run on our own (Oct 2)": [
+            R("qYyT39D5Yzo", 146, 170, "Oct 2: which plate is which?", section="Lessons from Oct 2"),
+            R("of5-LhkX_VQ", 1644, 1660, "Oct 2: pressure too high, plate far", section="Lessons from Oct 2"),
+        ],
+    },
+}
+
+
+def _anchor(seg):
+    if seg[0] == "anim":
+        return f"anim {seg[1]}" + (f" {seg[3][0]}-{seg[3][1]}" if len(seg) > 3 else "")
+    return f"card {seg[1]}" if seg[0] == "card" else None
+
+
+for _key, _groups in REAL.items():
+    _new, _used = [], set()
+    for _seg in TUTORIALS[_key]["segments"]:
+        _a = _anchor(_seg)
+        _new += _groups.get(f"before {_a}", []) + [_seg] + _groups.get(_a, [])
+        _used |= {_a, f"before {_a}"}
+    assert set(_groups) <= _used, f"{_key}: no segment for {set(_groups) - _used}"
+    TUTORIALS[_key]["segments"] = _new
