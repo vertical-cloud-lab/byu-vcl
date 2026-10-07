@@ -921,6 +921,7 @@ export const topWindowCamera = defineFeature(function(context is Context, id is 
                 const sad = transform(vector(px, py, zArm)) * rotationAround(line(origin, vector(0, 0, 1)), heading);
                 bx(context, id + "podSad" + "add", reach - mmv(14), reach + mmv(14), mmv(-14), mmv(14), mmv(-4), mmv(24));
                 bx(context, id + "podSad" + "cut", reach - mmv(15), reach + mmv(15), mmv(-10.2), mmv(10.2), mmv(-0.2), mmv(20.2));
+                zcyl(context, id + "podSad" + "cut" + "m5", reach, mmv(0), mmv(19), mmv(25), mmv(2.7));      // M5 into a T-nut in the top slot
                 place(context, id + "podSadPlace", qCreatedBy(id + "podSad", EntityType.BODY), sad);
                 const podQ = qUnion([qCreatedBy(id + "pod" + "add", EntityType.BODY), qCreatedBy(id + "hanger", EntityType.BODY), qCreatedBy(id + "podSad" + "add", EntityType.BODY)]);
                 unite(context, id + "podU", podQ);
@@ -938,6 +939,7 @@ export const topWindowCamera = defineFeature(function(context is Context, id is 
                 place(context, id + "boxPlace", qCreatedBy(id + "vf", EntityType.BODY), toWorld(coordSystem(tip + dir * mmv(6), cross(yUp, nOut), nOut)));
                 bx(context, id + "tipSock" + "add", armLen - mmv(30), armLen + mmv(8), mmv(-14), mmv(14), mmv(-4), mmv(24));
                 bx(context, id + "tipSock" + "cut", armLen - mmv(31), armLen + mmv(0.2), mmv(-10.2), mmv(10.2), mmv(-0.2), mmv(20.2));
+                zcyl(context, id + "tipSock" + "cut" + "m5", armLen - mmv(15), mmv(0), mmv(19), mmv(25), mmv(2.7));
                 place(context, id + "tipSockPlace", qCreatedBy(id + "tipSock", EntityType.BODY), armT);
                 const boxQ = qUnion([qCreatedBy(t.trayId + "add", EntityType.BODY), qCreatedBy(id + "tipSock" + "add", EntityType.BODY)]);
                 unite(context, id + "boxU", boxQ);

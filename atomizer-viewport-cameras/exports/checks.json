@@ -52,24 +52,14 @@
    "stl": "exports/stl/top_face_plate.stl"
   },
   "TOP camera pod (print)": {
-   "volume_cm3": 27.09,
-   "mass_petg_g": 34.4,
+   "volume_cm3": 26.98,
+   "mass_petg_g": 34.3,
    "bbox_mm": [
     46.0,
     43.8,
     76.8
    ],
    "stl": "exports/stl/top_camera_pod.stl"
-  },
-  "TOP display box (print)": {
-   "volume_cm3": 87.93,
-   "mass_petg_g": 111.7,
-   "bbox_mm": [
-    110.6,
-    104.0,
-    99.9
-   ],
-   "stl": "exports/stl/top_display_box.stl"
   },
   "FRONT face plate (print)": {
    "volume_cm3": 24.8,
@@ -90,6 +80,16 @@
     15.7
    ],
    "stl": "exports/stl/top_detent_collar.stl"
+  },
+  "TOP display box (print)": {
+   "volume_cm3": 87.84,
+   "mass_petg_g": 111.6,
+   "bbox_mm": [
+    110.6,
+    104.0,
+    99.9
+   ],
+   "stl": "exports/stl/top_display_box.stl"
   }
  },
  "interference": [],

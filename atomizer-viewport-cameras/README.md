@@ -123,7 +123,8 @@ shows it).
   variable ND. The camera stays 250 mm away and in front of the lid's edge, mostly out of the hot air rising off it.
 - **The arm.**
   - A 5/8 in post stands on a switchable magnetic base on top of the blue frame (painted steel).
-  - A printed hub turns on the post and carries a 2020 extrusion out over the furnace to the camera pod.
+  - A printed hub turns on the post and carries a 2020 extrusion (about 470 mm, cut from a 500 mm length) out over the
+    furnace to the camera pod.
   - A detent collar is clamped to the post under the hub. Its two dimples, "working" and "parked" (90° away), take an
     M6 ball plunger in the hub. Swing the arm clear to load the crucible, and it clicks back to the same place.
   - The arm runs at about z 1.8 m. The unit stays 152 mm clear of the closed lid and 118 mm clear of the fully open one.
@@ -170,7 +171,7 @@ The model was built entirely over the REST API, with no browser.
 FeatureScript and adds or updates the four features. [`export.py`](onshape/export.py) exports the STEP and shaded
 views, and [`evalfs.py`](onshape/evalfs.py) evaluates a FeatureScript snippet in the Part Studio.
 
-The whole job took 41 API calls, out of the company's 2,500 a year. They are logged, without bodies, in
+The whole job took 50 API calls, out of the company's 2,500 a year. They are logged, without bodies, in
 [`onshape/evidence/calls.jsonl`](onshape/evidence/calls.jsonl).
 
 Two things worth knowing if you script Onshape:
@@ -223,9 +224,9 @@ resellers (the HQ Camera $55 against $99.99). Prices are as of 7 October 2026, b
 | Each station: Pi 5 4 GB, Active Cooler, 27 W PSU, 32 GB card | $153.85 |
 | Front: + HQ Camera M12, 16 mm M12 lens, Camera Module 3 Wide, 2 cables, 5 in HDMI, micro-HDMI lead | $334.20 |
 | Left: + Camera Module 3 Wide, cable, 5 in Touch Display 2 | $251.25 |
-| Top: + HQ Camera, 16 mm C lens, hot mirror, variable ND, shade-5 plate, 500 mm cable, 2.8 in DSI, magnetic base, 5/8 in bar | $432.88 |
+| Top: + HQ Camera, 16 mm C lens, hot mirror, variable ND, shade-5 plate, 500 mm cable, 2.8 in DSI, magnetic base, 5/8 in bar, 2020 extrusion, M5 T-nuts and screws, 5/8 in shaft collars | $484.85 |
 | Shared: inserts, screws, ball plungers, dowels, flocking, VHB, PETG, ASA, PA6-CF | $147.31 |
-| **All three** | **$1,165.64** |
+| **All three** | **$1,217.61** |
 
 - **Pi 5 prices have roughly doubled since late 2025.** The 4 GB board is $110 at list. Three 2 GB boards would
   save $97.50.
@@ -246,8 +247,8 @@ resellers (the HQ Camera $55 against $99.99). Prices are as of 7 October 2026, b
   1. Tap one end of the 5/8 in bar M8 and screw it into the magnetic base.
   2. Clamp the detent collar to the post, M4, with the "working" dimple under the camera's position.
   3. Fit the hub with its M6 plunger, then a shaft collar above the hub.
-  4. Bolt the extrusion into the hub: one M5 through the hub's socket into a T-nut in the extrusion's slot. The
-     camera pod's saddle and the display box's socket are slip fits in this model; give each an M5 and a T-nut too.
+  4. Slide the extrusion into the hub's socket, the camera pod's saddle and the display box's socket. Each has one
+     M5 hole on top, for an M5 × 10 into a drop-in T-nut in the extrusion's top slot.
   5. Aim by loosening the collar, not by bending anything.
 - **Image orientation** depends on how each ribbon is routed. Flip it in software (`--rotation 180` or picamera2's
   `Transform`).
@@ -265,8 +266,6 @@ resellers (the HQ Camera $55 against $99.99). Prices are as of 7 October 2026, b
 - **The display outlines** are from the vendors' stated sizes. The 2.8 in DSI's outline is assumed. The face plates
   clamp the displays by their edges, and no display's mounting holes are modelled. Check each display's drawing
   before printing the face plate.
-- **Still to price** for the top arm: the 2020 extrusion (about 470 mm long in this model), M5 T-nuts and screws,
-  and 5/8 in shaft collars. The pod's saddle and the display box's socket have no screw holes yet.
 - **No software has been written.** The display and stream approach above is from the streamingLambda prototypes.
 - **Not sliced.** The STLs are in machine orientation, not print orientation.
 - **Bartosz's laser-fixture idea from #264** (a laser in the sealing-pin seat, shining through the nozzle onto the
