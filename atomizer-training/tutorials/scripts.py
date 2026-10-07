@@ -297,7 +297,8 @@ def R(vid, t_in, t_out, caption, **opts):
     """A real-footage pick from real-footage.md: the recording from t_in to t_out (its middle 14 s if it runs longer than
     17), under a bar reading `caption`. opts: light (the camera rests on one view, so less stabilisation zoom), mute (only
     chatter on the sound), wrong (shown as the mistake, not the method), exact (keep the points as given), section (the
-    bar's step label, where no step outline comes before it)."""
+    bar's step label, where no step outline comes before it), at="end" (a long pick plays its last 14 s, not its middle,
+    where the words that matter come at the end)."""
     return ("real", vid, t_in, t_out, caption, opts)
 
 
@@ -351,7 +352,7 @@ REAL = {
             R("FDRTt68Vfvo", 2123, 2145, "The sonotrode, threaded on"),
             R("58wJ_Khwgyk", 1486, 1503, "The stack, into the door housing"),
             R("58wJ_Khwgyk", 1555, 1575, "The plate on: 50 N·m"),
-            R("dnPs56DPt6I", 338, 363, "The scan, on the touchscreen"),
+            R("dnPs56DPt6I", 338, 363, "The scan, on the touchscreen", at="end"),
             R("dnPs56DPt6I", 980, 995, "Water test: the whole plate atomizes"),
             R("FDRTt68Vfvo", 2455, 2470, "The cable connector, locked"),
             R("dnPs56DPt6I", 602, 615, "Frequency check: 40,200 Hz"),
@@ -373,7 +374,7 @@ REAL = {
             R("58wJ_Khwgyk", 3170, 3186, "Overshoot, to drop the rods"),
             R("DWH1CEygsTI", 1417, 1430, "The charge, glowing"),
             R("txH397FGTAU", 2313, 2332, "Setpoint down as it melts"),
-            R("DWH1CEygsTI", 1628, 1652, "The pool: wait two minutes"),
+            R("DWH1CEygsTI", 1628, 1652, "The pool: wait two minutes", at="end"),
             R("DWH1CEygsTI", 1710, 1733, "Rescan: 40,185 Hz"),
         ],
         "anim 06_pour": [
@@ -384,7 +385,7 @@ REAL = {
             R("DWH1CEygsTI", 1833, 1848, "Stack too high: stream on the sonotrode", wrong=True),
             R("DWH1CEygsTI", 1955, 1978, "The same mistake, explained", wrong=True),
             R("9kn-HhXCr1o", 1271, 1280, "Melt gathers at the bottom, drips", light=True),
-            R("of5-LhkX_VQ", 1608, 1633, "Pressure too high: little atomized", wrong=True),
+            R("of5-LhkX_VQ", 1608, 1633, "Pressure too high: little atomized", wrong=True, at="end"),
             R("txH397FGTAU", 2686, 2708, "At the window as the pour ends"),
         ],
         "anim 07_end_cooldown 0-1": [
@@ -405,7 +406,7 @@ REAL = {
             R("naePD8o9_Gk", 3305, 3330, "Powder brushed out onto paper"),
         ],
         "anim 08_clean": [
-            R("1F9_4ccwhss", 412, 436, "Seal and chamber, wiped with alcohol"),
+            R("1F9_4ccwhss", 412, 436, "Seal and chamber, wiped with alcohol", at="end"),
             R("wRc8p2_FnJo", 2184, 2207, "Sealing rod out, insulation lifted"),
             R("wRc8p2_FnJo", 2247, 2272, "The nut, unscrewed from below"),
             R("LSQmxwmlTkQ", 0, 20, "Drilling a nozzle: #70 bit", mute=True),

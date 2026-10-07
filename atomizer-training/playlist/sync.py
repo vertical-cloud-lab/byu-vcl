@@ -113,6 +113,10 @@ def describe(v, docs, pid):
         if v.get("sources"):
             lines += ["", v.get("sources_intro", "Clips from the training recordings:")]
             lines += [f"{label} at {ts(t)}: {WATCH}{vid}&t={int(t)}s" for vid, t, label in v["sources"]]
+        if v.get("real"):        # the real-footage picks, one line each if they fit in YouTube's 5000 bytes, else a link
+            real = ["", v.get("real_intro", "The real footage, from the recordings:")] + \
+                   [f"{label}: https://youtu.be/{vid}?t={int(t)}" for vid, t, label in v["real"]]
+            lines += real
         if v.get("context") or v["kind"] in ("recording", "delivery"):
             about = v.get("context", "")
             if v["kind"] in ("recording", "delivery"):
@@ -124,6 +128,10 @@ def describe(v, docs, pid):
     rid = load_state().get("runs_playlist_id")
     if rid and v["id"] in RUNS["ids"]:
         lines += [f"The team's own runs, oldest first: https://www.youtube.com/playlist?list={rid}"]
+    if v.get("real") and len("\n".join(lines).encode()) > 5000:
+        k = lines.index(real[1])
+        lines[k:k + len(real) - 1] = [f"{real[1][:-1]}, each with a link to its moment: "
+                                      f"{docs.url('tutorials/real-footage.md')}"]
     return "\n".join(lines)
 
 

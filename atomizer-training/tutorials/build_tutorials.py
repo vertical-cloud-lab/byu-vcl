@@ -339,9 +339,9 @@ def seg_clip(i, vid, start, dur, speaker, section=""):
         vin, vtrim = ["-ss", f"{s:.3f}", "-i", v], ""
     run(["ffmpeg", "-y", "-v", "error", *vin, "-ss", f"{s:.3f}", "-t", f"{d:.3f}", "-i", a,
          "-filter_complex", f"[0:v]{vtrim}fps={FPS}[v]", "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}",
-         "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
+         "-c:v", "libx264", "-preset", "ultrafast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
     # pass 1: motion analysis of the cut, at source resolution
-    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=15:result={trf}",
+    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=9:result={trf}",
          "-f", "null", "-"])
     w, h = probe_wh(cut)
     mm = f"{int(start) // 60:02d}:{int(start) % 60:02d}" if start < 3600 else f"{int(start) // 3600}:{int(start) % 3600 // 60:02d}:{int(start) % 60:02d}"
@@ -352,7 +352,7 @@ def seg_clip(i, vid, start, dur, speaker, section=""):
     rot = 100 * max(w, h) / min(w, h) * math.sin(STAB_ANGLE) + 0.5    # % zoom that hides the largest rotation, + margin
     shift = int((STAB_MAX_ZOOM - rot) / 200 * min(w, h))             # px: optzoom=1 adds at most 2*shift/min(w,h)
     stab = (f"vidstabtransform=input={trf}:smoothing={STAB_SMOOTH}:optzoom=1:zoom={rot:.2f}:maxshift={shift}:"
-            f"maxangle={STAB_ANGLE}:crop=keep:interpol=bicubic,unsharp=5:5:0.6:3:3:0.3")
+            f"maxangle={STAB_ANGLE}:crop=keep:interpol=bilinear,unsharp=5:5:0.6:3:3:0.3")
     if h > w:   # portrait phone video: blurred fill behind the frame instead of black bars
         fg = f"[0:v]{stab},scale=-2:{H}:flags=lanczos,split[fg][bgsrc];" \
              f"[bgsrc]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.12[bg];" \
@@ -396,13 +396,14 @@ def transcript_words(vid, s, e):
     return [w for w in _TRANSCRIPTS[vid] if w["e"] > s and w["s"] < e]
 
 
-def real_window(vid, t_in, t_out, exact=False):
-    """(start, end, words) of a pick: all of it, or its middle REAL_MAX seconds if it is longer than REAL_MAX + REAL_SLACK.
+def real_window(vid, t_in, t_out, exact=False, at="middle"):
+    """(start, end, words) of a pick: all of it, or REAL_MAX seconds of it if it is longer than REAL_MAX + REAL_SLACK: the
+    middle, or with at="end" the last (where the words that matter come at the end of the pick).
     An end that falls inside a word moves out to the word's edge, and a sentence that finishes within 1.5 s is let finish,
     so the sound never stops mid-word. `exact` keeps the given points (picks timed to the frame by hand)."""
     s, e = float(t_in), float(t_out)
     if not exact and e - s > REAL_MAX + REAL_SLACK:
-        mid = (s + e) / 2
+        mid = e - REAL_MAX / 2 if at == "end" else (s + e) / 2
         s, e = mid - REAL_MAX / 2, mid + REAL_MAX / 2
     words = transcript_words(vid, s - 4, e + 4)
     if not exact and words:
@@ -456,7 +457,7 @@ def seg_real(i, vid, t_in, t_out, caption, opts=None, section=""):
     a = f"{DL}/{vid}.m4a"
     if not os.path.exists(a):
         raise FileNotFoundError(f"{vid}: need {a}")
-    s, e, words = real_window(vid, t_in, t_out, opts.get("exact", False))
+    s, e, words = real_window(vid, t_in, t_out, opts.get("exact", False), opts.get("at", "middle"))
     d = e - s
     mute = opts.get("mute", False)
     srt = f"{TMP}/real_{i}.srt"
@@ -476,15 +477,15 @@ def seg_real(i, vid, t_in, t_out, caption, opts=None, section=""):
          # no bigger than the frame it ends up in (1080p and portrait sources), so the two vidstab passes stay quick
          f"scale='min({W},iw)':'min({H},ih)':force_original_aspect_ratio=decrease:force_divisible_by=2:flags=lanczos[v]",
          "-map", "[v]", "-map", "1:a:0", "-t", f"{d:.3f}",
-         "-c:v", "libx264", "-preset", "veryfast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
-    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=15:result={trf}",
+         "-c:v", "libx264", "-preset", "ultrafast", "-crf", "16", "-c:a", "aac", "-b:a", "192k", cut])
+    run(["ffmpeg", "-y", "-v", "error", "-i", cut, "-vf", f"vidstabdetect=shakiness=8:accuracy=9:result={trf}",
          "-f", "null", "-"])
     w, h = probe_wh(cut)
     cap = REAL_LIGHT_ZOOM if opts.get("light") else STAB_MAX_ZOOM
     rot = 100 * max(w, h) / min(w, h) * math.sin(STAB_ANGLE) + 0.5
     shift = max(4, int((cap - rot) / 200 * min(w, h)))
     stab = (f"vidstabtransform=input={trf}:smoothing={STAB_SMOOTH}:optzoom=1:zoom={rot:.2f}:maxshift={shift}:"
-            f"maxangle={STAB_ANGLE}:crop=keep:interpol=bicubic,unsharp=5:5:0.6:3:3:0.3")
+            f"maxangle={STAB_ANGLE}:crop=keep:interpol=bilinear,unsharp=5:5:0.6:3:3:0.3")
     if h > w:
         fg = f"[0:v]{stab},scale=-2:{H}:flags=lanczos,split[fg][bgsrc];" \
              f"[bgsrc]scale={W}:{H}:force_original_aspect_ratio=increase,crop={W}:{H},boxblur=24:2,eq=brightness=-0.12[bg];" \
@@ -563,7 +564,8 @@ def seg_key(seg):
         deps += [json.dumps(FIXES, sort_keys=True), CLIP_VERSION, f"{STAB_MAX_ZOOM}/{STAB_ANGLE}/{STAB_SMOOTH}",
                  f"{src[0]}@{os.path.getmtime(src[0])}" if src else "360p"]
     if kind == "real":
-        w0, w1 = real_window(args[0], args[1], args[2], (args[4] if len(args) > 4 and args[4] else {}).get("exact", False))[:2]
+        o = args[4] if len(args) > 4 and args[4] else {}
+        w0, w1 = real_window(args[0], args[1], args[2], o.get("exact", False), o.get("at", "middle"))[:2]
         src = clip_source(args[0], w0, w1)
         deps += [json.dumps(FIXES, sort_keys=True), REAL_VERSION, f"{STAB_MAX_ZOOM}/{REAL_LIGHT_ZOOM}/{STAB_ANGLE}/{STAB_SMOOTH}",
                  f"{REAL_MAX}/{REAL_SLACK}", f"{src[0]}@{os.path.getmtime(src[0])}" if src else "none"]
