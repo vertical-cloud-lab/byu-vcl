@@ -240,7 +240,7 @@ anything taken from a secondary source rather than the producer's own page says 
 
 ### 4.1 AlSi10Mg
 
-**No atomizer publishes its melt charge.** Valimet, Kymera/ECKA, Gränges, Höganäs and
+**What the atomizers say.** Valimet, Kymera/ECKA, Gränges, Höganäs and
 ECKART TLS describe their process only as "inert gas atomized" (ECKART TLS adds EIGA, which
 atomizes pre-alloyed round bar). Nobody names an ingot brand or element grades. The only
 explicit charge found is a Chinese patent (CN107716918B, Beijing Baohang):
@@ -270,8 +270,8 @@ Fe at 0.12–0.15 wt% is what **primary** feedstock gives:
 | Magnesium | **ASTM B92 9980A** ingot | ≥ 99.80% Mg |
 | or pre-alloyed | **C360.2 / EN AB-43000 ingot** | Fe ≤ 0.40, Cu ≤ 0.03 |
 
-P1020A plus 553 silicon gives at most 0.896 × 0.20 + 0.10 × 0.5 ≈ **0.23 wt% Fe**, which
-matches the 0.12–0.15 measured in real powder. Secondary (recycled) 43000 ingot, at up to
+P1020A plus 553 silicon caps Fe at 0.896 × 0.20 + 0.10 × 0.5 ≈ **0.23 wt%**. Real P1020
+usually sits well under its 0.20 ceiling, which fits the 0.12–0.15 measured in powder. Secondary (recycled) 43000 ingot, at up to
 0.40 Fe, could not guarantee Renishaw's < 0.25.
 
 **So for AlSi10Mg, an industrially realistic charge is 99.7% Al, not 4N.** The industry's own
