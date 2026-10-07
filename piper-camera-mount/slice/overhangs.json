@@ -1,0 +1,145 @@
+{
+  "criterion": {
+    "angle_from_vertical_deg": 45.0,
+    "margin_deg": 0.1,
+    "normal_z_below": -0.7083,
+    "bed_faces_excluded_within_mm": 0.05
+  },
+  "parts": {
+    "bracket": {
+      "stl": "bracket.stl",
+      "sha256": "55435c26f655",
+      "bbox_mm": [
+        -36.21,
+        -44.0,
+        0.0,
+        36.21,
+        44.0,
+        42.68
+      ],
+      "overhang_area_mm2": 258.4,
+      "triangles": 790,
+      "at_limit_mm2": 766.6,
+      "patches": 13,
+      "largest_patch": {
+        "area_mm2": 34.5,
+        "triangles": 131,
+        "max_angle_deg": 73.0,
+        "bbox_mm": [
+          -0.96,
+          -24.0,
+          33.31,
+          4.59,
+          -15.65,
+          35.0
+        ]
+      },
+      "next_largest_mm2": [
+        34.5,
+        34.5
+      ]
+    },
+    "carrier": {
+      "stl": "carrier.stl",
+      "sha256": "114363150caf",
+      "bbox_mm": [
+        -44.0,
+        -27.75,
+        -0.0,
+        44.0,
+        27.75,
+        38.61
+      ],
+      "overhang_area_mm2": 96.4,
+      "triangles": 1008,
+      "at_limit_mm2": 1566.0,
+      "patches": 4,
+      "largest_patch": {
+        "area_mm2": 24.1,
+        "triangles": 252,
+        "max_angle_deg": 90.0,
+        "bbox_mm": [
+          35.4,
+          -17.0,
+          33.41,
+          41.9,
+          -10.5,
+          33.41
+        ]
+      },
+      "next_largest_mm2": [
+        24.1,
+        24.1
+      ]
+    },
+    "pod": {
+      "stl": "pod.stl",
+      "sha256": "dceffbdc6569",
+      "bbox_mm": [
+        -32.5,
+        -40.5,
+        0.0,
+        32.5,
+        40.5,
+        10.0
+      ],
+      "overhang_area_mm2": 91.3,
+      "triangles": 2048,
+      "at_limit_mm2": 0.0,
+      "patches": 12,
+      "largest_patch": {
+        "area_mm2": 13.5,
+        "triangles": 252,
+        "max_angle_deg": 90.0,
+        "bbox_mm": [
+          -25.0,
+          -1.0,
+          2.0,
+          -20.0,
+          4.0,
+          2.0
+        ]
+      },
+      "next_largest_mm2": [
+        13.5,
+        13.5
+      ]
+    },
+    "spacers": {
+      "stl": "spacers.stl",
+      "sha256": "48f37448dff6",
+      "bbox_mm": [
+        -18.0,
+        -3.0,
+        0.0,
+        18.0,
+        3.0,
+        5.0
+      ],
+      "overhang_area_mm2": 0.0,
+      "triangles": 0,
+      "at_limit_mm2": 0.0,
+      "patches": 0,
+      "largest_patch": null,
+      "next_largest_mm2": []
+    },
+    "tag_wedge": {
+      "stl": "tag_wedge.stl",
+      "sha256": "034f36e9ef5a",
+      "bbox_mm": [
+        -2.97,
+        -3.62,
+        0.0,
+        2.97,
+        3.62,
+        4.96
+      ],
+      "overhang_area_mm2": 0.0,
+      "triangles": 0,
+      "at_limit_mm2": 0.0,
+      "patches": 0,
+      "largest_patch": null,
+      "next_largest_mm2": []
+    }
+  }
+}

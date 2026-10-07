@@ -1,0 +1,62 @@
+{
+ "fetched_utc": "2026-10-03T19:58:32Z",
+ "fetched_via": "CubXL Pi (campus connection), curl",
+ "hotend_page": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s (us.store.bambulab.com/products/bambu-hotend-h2d redirects here)",
+ "h2d_hotends": {
+  "Bambu Hotend - H2/P2S/X2D - Standard Flow / H2D / 0.2mm Stainless Steel": {
+   "price_usd": 17.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066376"
+  },
+  "Bambu Hotend - H2/P2S/X2D - Standard Flow / H2D / 0.4mm Hardened Steel": {
+   "price_usd": 17.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066382"
+  },
+  "Bambu Hotend - H2/P2S/X2D - Standard Flow / H2D / 0.6mm Hardened Steel": {
+   "price_usd": 17.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066388"
+  },
+  "Bambu Hotend - H2/P2S/X2D - Standard Flow / H2D / 0.8mm Hardened Steel": {
+   "price_usd": 17.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066394"
+  },
+  "Bambu Hotend - H2/P2S/X2D - High Flow / H2D / 0.4mm Hardened Steel": {
+   "price_usd": 49.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775969560946847781"
+  },
+  "Bambu Hotend - H2/P2S/X2D - High Flow / H2D / 0.6mm Hardened Steel": {
+   "price_usd": 49.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775969560946847787"
+  },
+  "Bambu Hotend - H2/P2S/X2D - High Flow / H2D / 0.8mm Hardened Steel": {
+   "price_usd": 49.99,
+   "availability": "InStock",
+   "url": "https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775969560946847793"
+  }
+ },
+ "paht_cf": {
+  "page": "https://us.store.bambulab.com/products/paht-cf",
+  "source": "bambulab-us.myshopify.com/products/paht-cf.js",
+  "variants": [
+   {
+    "title": "Black (70100) / Filament with spool / 0.5 kg",
+    "price_usd": 49.99,
+    "available": true,
+    "id": 41009510711432
+   },
+   {
+    "title": "Black (70100) / Filament with spool / 1 kg",
+    "price_usd": 94.99,
+    "available": true,
+    "id": 41009450483848
+   }
+  ],
+  "hotend_compatibility_text": "Hotend with Hardened Steel 0.4mm / 0.6mm (recommended) / 0.8 mm* Hotend with Stainless Steel Nozzle All Size Glue Glue S",
+  "footnote": "*As the nozzle size increases, the probability of clogging decreases, but the print quality also decreases. Therefore, it is recommended to use a 0.6 mm Hardened Steel nozzle to avoid clogging while maintaining optimal print quality. RFID for Intelligent Print"
+ }
+}

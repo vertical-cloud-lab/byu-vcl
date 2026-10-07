@@ -1,0 +1,557 @@
+{
+ "h2d_pahtcf_04": {
+  "presets": {
+   "machine": "Bambu Lab H2D 0.4 nozzle",
+   "process": "0.20mm Standard @BBL H2D",
+   "filament": "Bambu PAHT-CF @BBL H2D"
+  },
+  "overrides": {
+   "wall_loops": "3",
+   "sparse_infill_density": "25%",
+   "curr_bed_type": "Textured PEI Plate",
+   "enable_circle_compensation": "1",
+   "enable_support": "0"
+  },
+  "layer_height_mm": 0.2,
+  "line_width_mm": {
+   "outer_wall_line_width": 0.42,
+   "inner_wall_line_width": 0.45,
+   "sparse_infill_line_width": 0.45,
+   "internal_solid_infill_line_width": 0.42,
+   "top_surface_line_width": 0.42
+  },
+  "sparse_infill_pattern": "grid",
+  "filament_density_g_cm3": 1.06,
+  "plates": [
+   {
+    "plate": 1,
+    "name": "job",
+    "objects": [
+     "bracket_1",
+     "carrier_1",
+     "pod_1",
+     "spacers_1",
+     "tag_wedge_1",
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655",
+     "carrier": "114363150caf",
+     "pod": "dceffbdc6569",
+     "spacers": "48f37448dff6",
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 13701,
+    "slicer_filament_g": 72.0,
+    "slicer_filament_m": 28.24,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 10.985,
+     "Inner wall": 22.184,
+     "Gap infill": 0.357,
+     "Bottom surface": 1.379,
+     "Internal solid infill": 7.759,
+     "Sparse infill": 22.521,
+     "Bridge": 2.362,
+     "Floating vertical shell": 2.63,
+     "Top surface": 1.74,
+     "Overhang wall": 0.053
+    },
+    "part_g_from_gcode": 71.97
+   },
+   {
+    "plate": 2,
+    "name": "bracket",
+    "objects": [
+     "bracket_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655"
+    },
+    "print_time_s": 6646,
+    "slicer_filament_g": 31.15,
+    "slicer_filament_m": 12.22,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 12.021,
+     "Outer wall": 5.593,
+     "Gap infill": 0.043,
+     "Bottom surface": 0.144,
+     "Internal solid infill": 0.954,
+     "Sparse infill": 10.534,
+     "Floating vertical shell": 1.223,
+     "Bridge": 0.392,
+     "Top surface": 0.196,
+     "Overhang wall": 0.023
+    },
+    "part_g_from_gcode": 31.12
+   },
+   {
+    "plate": 3,
+    "name": "pod",
+    "objects": [
+     "pod_1"
+    ],
+    "stl_sha256": {
+     "pod": "dceffbdc6569"
+    },
+    "print_time_s": 3213,
+    "slicer_filament_g": 11.92,
+    "slicer_filament_m": 4.67,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 3.231,
+     "Outer wall": 1.774,
+     "Gap infill": 0.098,
+     "Bottom surface": 0.4,
+     "Internal solid infill": 2.3,
+     "Sparse infill": 2.75,
+     "Overhang wall": 0.015,
+     "Floating vertical shell": 0.102,
+     "Bridge": 0.65,
+     "Top surface": 0.569
+    },
+    "part_g_from_gcode": 11.89
+   },
+   {
+    "plate": 4,
+    "name": "carrier",
+    "objects": [
+     "carrier_1"
+    ],
+    "stl_sha256": {
+     "carrier": "114363150caf"
+    },
+    "print_time_s": 5803,
+    "slicer_filament_g": 28.36,
+    "slicer_filament_m": 11.12,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 3.327,
+     "Inner wall": 6.829,
+     "Gap infill": 0.048,
+     "Bottom surface": 0.83,
+     "Internal solid infill": 4.444,
+     "Sparse infill": 9.238,
+     "Bridge": 1.319,
+     "Floating vertical shell": 1.305,
+     "Top surface": 0.975,
+     "Overhang wall": 0.015
+    },
+    "part_g_from_gcode": 28.33
+   },
+   {
+    "plate": 5,
+    "name": "spacers",
+    "objects": [
+     "spacers_1"
+    ],
+    "stl_sha256": {
+     "spacers": "48f37448dff6"
+    },
+    "print_time_s": 1162,
+    "slicer_filament_g": 0.4,
+    "slicer_filament_m": 0.16,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 0.219,
+     "Gap infill": 0.158
+    },
+    "part_g_from_gcode": 0.38
+   },
+   {
+    "plate": 6,
+    "name": "tag_wedge",
+    "objects": [
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 1122,
+    "slicer_filament_g": 0.15,
+    "slicer_filament_m": 0.06,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 0.051,
+     "Outer wall": 0.034,
+     "Bottom surface": 0.003,
+     "Internal solid infill": 0.03,
+     "Gap infill": 0.002
+    },
+    "part_g_from_gcode": 0.12
+   }
+  ],
+  "bambu_studio": "02.08.02.61"
+ },
+ "h2d_pahtcf_06": {
+  "presets": {
+   "machine": "Bambu Lab H2D 0.6 nozzle",
+   "process": "0.30mm Standard @BBL H2D 0.6 nozzle",
+   "filament": "Bambu PAHT-CF @BBL H2D 0.6 nozzle"
+  },
+  "overrides": {
+   "wall_loops": "3",
+   "sparse_infill_density": "25%",
+   "curr_bed_type": "Textured PEI Plate",
+   "enable_circle_compensation": "1",
+   "enable_support": "0"
+  },
+  "layer_height_mm": 0.3,
+  "line_width_mm": {
+   "outer_wall_line_width": 0.62,
+   "inner_wall_line_width": 0.62,
+   "sparse_infill_line_width": 0.62,
+   "internal_solid_infill_line_width": 0.62,
+   "top_surface_line_width": 0.62
+  },
+  "sparse_infill_pattern": "grid",
+  "filament_density_g_cm3": 1.06,
+  "plates": [
+   {
+    "plate": 1,
+    "name": "job",
+    "objects": [
+     "bracket_1",
+     "carrier_1",
+     "pod_1",
+     "spacers_1",
+     "tag_wedge_1",
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655",
+     "carrier": "114363150caf",
+     "pod": "dceffbdc6569",
+     "spacers": "48f37448dff6",
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 13628,
+    "slicer_filament_g": 83.56,
+    "slicer_filament_m": 32.77,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 16.129,
+     "Inner wall": 29.463,
+     "Gap infill": 0.398,
+     "Bottom surface": 1.949,
+     "Internal solid infill": 6.691,
+     "Sparse infill": 19.495,
+     "Floating vertical shell": 2.439,
+     "Top surface": 3.43,
+     "Overhang wall": 0.073,
+     "Bridge": 3.466
+    },
+    "part_g_from_gcode": 83.53
+   },
+   {
+    "plate": 2,
+    "name": "bracket",
+    "objects": [
+     "bracket_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655"
+    },
+    "print_time_s": 6849,
+    "slicer_filament_g": 37.73,
+    "slicer_filament_m": 14.8,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 16.083,
+     "Outer wall": 8.23,
+     "Gap infill": 0.12,
+     "Bottom surface": 0.189,
+     "Internal solid infill": 0.798,
+     "Sparse infill": 9.144,
+     "Floating vertical shell": 1.153,
+     "Bridge": 0.797,
+     "Top surface": 1.149,
+     "Overhang wall": 0.037
+    },
+    "part_g_from_gcode": 37.7
+   },
+   {
+    "plate": 3,
+    "name": "pod",
+    "objects": [
+     "pod_1"
+    ],
+    "stl_sha256": {
+     "pod": "dceffbdc6569"
+    },
+    "print_time_s": 3149,
+    "slicer_filament_g": 13.49,
+    "slicer_filament_m": 5.29,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 4.32,
+     "Outer wall": 2.589,
+     "Gap infill": 0.074,
+     "Bottom surface": 0.542,
+     "Internal solid infill": 1.767,
+     "Sparse infill": 2.293,
+     "Overhang wall": 0.015,
+     "Floating vertical shell": 0.181,
+     "Bridge": 0.873,
+     "Top surface": 0.807
+    },
+    "part_g_from_gcode": 13.46
+   },
+   {
+    "plate": 4,
+    "name": "carrier",
+    "objects": [
+     "carrier_1"
+    ],
+    "stl_sha256": {
+     "carrier": "114363150caf"
+    },
+    "print_time_s": 5614,
+    "slicer_filament_g": 31.76,
+    "slicer_filament_m": 12.46,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 4.875,
+     "Inner wall": 8.954,
+     "Gap infill": 0.13,
+     "Bottom surface": 1.213,
+     "Internal solid infill": 4.1,
+     "Sparse infill": 8.058,
+     "Floating vertical shell": 1.104,
+     "Top surface": 1.473,
+     "Bridge": 1.797,
+     "Overhang wall": 0.021
+    },
+    "part_g_from_gcode": 31.73
+   },
+   {
+    "plate": 5,
+    "name": "spacers",
+    "objects": [
+     "spacers_1"
+    ],
+    "stl_sha256": {
+     "spacers": "48f37448dff6"
+    },
+    "print_time_s": 1150,
+    "slicer_filament_g": 0.42,
+    "slicer_filament_m": 0.17,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Outer wall": 0.333,
+     "Gap infill": 0.06
+    },
+    "part_g_from_gcode": 0.39
+   },
+   {
+    "plate": 6,
+    "name": "tag_wedge",
+    "objects": [
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 1101,
+    "slicer_filament_g": 0.15,
+    "slicer_filament_m": 0.06,
+    "gcode_g_by_feature": {
+     "Custom": 0.0,
+     "Inner wall": 0.053,
+     "Outer wall": 0.046,
+     "Bottom surface": 0.003,
+     "Internal solid infill": 0.013,
+     "Gap infill": 0.003
+    },
+    "part_g_from_gcode": 0.12
+   }
+  ],
+  "bambu_studio": "02.08.02.61"
+ },
+ "a1m_pla_04": {
+  "presets": {
+   "machine": "Bambu Lab A1 mini 0.4 nozzle",
+   "process": "0.20mm Standard @BBL A1M",
+   "filament": "Bambu PLA Basic @BBL A1M"
+  },
+  "overrides": {
+   "wall_loops": "3",
+   "sparse_infill_density": "25%",
+   "curr_bed_type": "Textured PEI Plate",
+   "enable_circle_compensation": "1",
+   "enable_support": "0"
+  },
+  "layer_height_mm": 0.2,
+  "line_width_mm": {
+   "outer_wall_line_width": 0.42,
+   "inner_wall_line_width": 0.45,
+   "sparse_infill_line_width": 0.45,
+   "internal_solid_infill_line_width": 0.42,
+   "top_surface_line_width": 0.42
+  },
+  "sparse_infill_pattern": "grid",
+  "filament_density_g_cm3": 1.26,
+  "plates": [
+   {
+    "plate": 1,
+    "name": "job",
+    "objects": [
+     "bracket_1",
+     "carrier_1",
+     "pod_1",
+     "spacers_1",
+     "tag_wedge_1",
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655",
+     "carrier": "114363150caf",
+     "pod": "dceffbdc6569",
+     "spacers": "48f37448dff6",
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 10233,
+    "slicer_filament_g": 87.46,
+    "slicer_filament_m": 28.86,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Outer wall": 13.351,
+     "Inner wall": 26.937,
+     "Gap infill": 0.452,
+     "Bottom surface": 1.719,
+     "Internal solid infill": 9.41,
+     "Sparse infill": 27.307,
+     "Bridge": 2.86,
+     "Floating vertical shell": 3.179,
+     "Top surface": 2.109,
+     "Overhang wall": 0.065
+    },
+    "part_g_from_gcode": 87.39
+   },
+   {
+    "plate": 2,
+    "name": "bracket",
+    "objects": [
+     "bracket_1"
+    ],
+    "stl_sha256": {
+     "bracket": "55435c26f655"
+    },
+    "print_time_s": 4904,
+    "slicer_filament_g": 37.84,
+    "slicer_filament_m": 12.49,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Inner wall": 14.591,
+     "Outer wall": 6.789,
+     "Gap infill": 0.052,
+     "Bottom surface": 0.185,
+     "Internal solid infill": 1.157,
+     "Sparse infill": 12.77,
+     "Floating vertical shell": 1.483,
+     "Bridge": 0.477,
+     "Top surface": 0.237,
+     "Overhang wall": 0.027
+    },
+    "part_g_from_gcode": 37.77
+   },
+   {
+    "plate": 3,
+    "name": "pod",
+    "objects": [
+     "pod_1"
+    ],
+    "stl_sha256": {
+     "pod": "dceffbdc6569"
+    },
+    "print_time_s": 2211,
+    "slicer_filament_g": 14.53,
+    "slicer_filament_m": 4.79,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Inner wall": 3.93,
+     "Outer wall": 2.163,
+     "Gap infill": 0.124,
+     "Bottom surface": 0.505,
+     "Internal solid infill": 2.785,
+     "Sparse infill": 3.33,
+     "Overhang wall": 0.019,
+     "Floating vertical shell": 0.123,
+     "Bridge": 0.786,
+     "Top surface": 0.69
+    },
+    "part_g_from_gcode": 14.46
+   },
+   {
+    "plate": 4,
+    "name": "carrier",
+    "objects": [
+     "carrier_1"
+    ],
+    "stl_sha256": {
+     "carrier": "114363150caf"
+    },
+    "print_time_s": 4071,
+    "slicer_filament_g": 34.46,
+    "slicer_filament_m": 11.37,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Outer wall": 4.04,
+     "Inner wall": 8.292,
+     "Gap infill": 0.059,
+     "Bottom surface": 1.021,
+     "Internal solid infill": 5.395,
+     "Sparse infill": 11.206,
+     "Bridge": 1.599,
+     "Floating vertical shell": 1.572,
+     "Top surface": 1.182,
+     "Overhang wall": 0.019
+    },
+    "part_g_from_gcode": 34.38
+   },
+   {
+    "plate": 5,
+    "name": "spacers",
+    "objects": [
+     "spacers_1"
+    ],
+    "stl_sha256": {
+     "spacers": "48f37448dff6"
+    },
+    "print_time_s": 562,
+    "slicer_filament_g": 0.55,
+    "slicer_filament_m": 0.18,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Outer wall": 0.271,
+     "Gap infill": 0.204
+    },
+    "part_g_from_gcode": 0.47
+   },
+   {
+    "plate": 6,
+    "name": "tag_wedge",
+    "objects": [
+     "tag_wedge_1"
+    ],
+    "stl_sha256": {
+     "tag_wedge": "034f36e9ef5a"
+    },
+    "print_time_s": 490,
+    "slicer_filament_g": 0.22,
+    "slicer_filament_m": 0.07,
+    "gcode_g_by_feature": {
+     "Custom": 0.037,
+     "Inner wall": 0.062,
+     "Outer wall": 0.041,
+     "Bottom surface": 0.004,
+     "Internal solid infill": 0.037,
+     "Gap infill": 0.003
+    },
+    "part_g_from_gcode": 0.15
+   }
+  ],
+  "bambu_studio": "02.08.02.61"
+ }
+}

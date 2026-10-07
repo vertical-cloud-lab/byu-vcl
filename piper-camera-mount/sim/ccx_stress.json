@@ -1,0 +1,716 @@
+{
+  "what": "CalculiX (ccx 2.21) stress analysis of the printed parts, and a check of ccx against joint_fea.py (scikit-fem) on the same mesh",
+  "settings": {
+    "material": {
+      "E (MPa)": 2400.0,
+      "nu": 0.35,
+      "note": "solid, isotropic PLA as in joint_fea.py; stress for a given load hardly depends on E, so compare the stresses with any material's strength"
+    },
+    "elements": "C3D10 (quadratic tets) on joint_fea.py's gmsh mesh, midside nodes at the edge midpoints",
+    "solver": "ccx SPOOLES",
+    "print orientation (layers normal to)": {
+      "bracket": "world Y (pad face down)",
+      "pod": "station Y (plate face down)",
+      "carrier": "world X (Pi plate face down)"
+    }
+  },
+  "bracket + pod": {
+    "mesh": {
+      "nodes (C3D10)": 98817,
+      "elements": 58970,
+      "bonded contact area (mm2)": 987.5
+    },
+    "fixed": "half-collar bore and the pad round the tab screws, as joint_fea.py",
+    "check against joint_fea.py (83 g at 1 g on the HQ bosses)": {
+      "X": {
+        "mean displacement (um)": {
+          "ccx": 0.47688,
+          "scikit-fem": 0.477,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": -0.025
+        },
+        "optical axis tilt (arcmin)": {
+          "ccx": 0.02944,
+          "scikit-fem": 0.0294,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": 0.147
+        },
+        "image shift (px)": 0.033153722661587635,
+        "max displacement anywhere (um)": {
+          "ccx": 0.93203,
+          "scikit-fem": 0.932,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": 0.003
+        }
+      },
+      "Y": {
+        "mean displacement (um)": {
+          "ccx": 0.964,
+          "scikit-fem": 0.964,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": 0.0
+        },
+        "optical axis tilt (arcmin)": {
+          "ccx": 0.16157,
+          "scikit-fem": 0.1616,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": -0.016
+        },
+        "image shift (px)": 0.18193627632563364,
+        "max displacement anywhere (um)": {
+          "ccx": 2.78019,
+          "scikit-fem": 2.78,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": 0.007
+        }
+      },
+      "Z": {
+        "mean displacement (um)": {
+          "ccx": 0.97449,
+          "scikit-fem": 0.974,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": 0.05
+        },
+        "optical axis tilt (arcmin)": {
+          "ccx": 0.00957,
+          "scikit-fem": 0.0096,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": -0.293
+        },
+        "image shift (px)": 0.010778095561526212,
+        "max displacement anywhere (um)": {
+          "ccx": 1.85998,
+          "scikit-fem": 1.86,
+          "scikit-fem from": "joint_fea.json (the same mesh: same node and tet counts)",
+          "difference (%)": -0.001
+        }
+      }
+    },
+    "HQ Camera at 1 g, stress": {
+      "X": {
+        "max von Mises (MPa)": 0.0832
+      },
+      "Y": {
+        "max von Mises (MPa)": 0.0962
+      },
+      "Z": {
+        "max von Mises (MPa)": 0.0923
+      }
+    },
+    "bump": {
+      "load": "10.0 N spread over the pod's outer edge face (438 mm2), along world +X (toward the gripper), +Y (toward the arm), +Z; the reverse directions are the same solutions with the sign flipped",
+      "peaks (at least 2 mm from the supports)": {
+        "+X": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 0.966,
+              "at (mm)": [
+                -79.6,
+                43.1,
+                25.9
+              ]
+            },
+            "pod": {
+              "value": 1.374,
+              "at (mm)": [
+                -90.7,
+                41.6,
+                15.4
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 0.339,
+              "at (mm)": [
+                -65.7,
+                48.7,
+                16.5
+              ]
+            },
+            "pod": {
+              "value": 0.488,
+              "at (mm)": [
+                -98.9,
+                39.7,
+                -3.1
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 0.118,
+              "at (mm)": [
+                -39.0,
+                46.6,
+                22.6
+              ]
+            },
+            "pod": {
+              "value": 0.144,
+              "at (mm)": [
+                -87.8,
+                48.4,
+                33.1
+              ]
+            }
+          }
+        },
+        "-X": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 0.966,
+              "at (mm)": [
+                -79.6,
+                43.1,
+                25.9
+              ]
+            },
+            "pod": {
+              "value": 1.374,
+              "at (mm)": [
+                -90.7,
+                41.6,
+                15.4
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 1.107,
+              "at (mm)": [
+                -80.0,
+                43.5,
+                25.2
+              ]
+            },
+            "pod": {
+              "value": 1.6,
+              "at (mm)": [
+                -90.8,
+                41.0,
+                15.2
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 0.415,
+              "at (mm)": [
+                -80.0,
+                43.5,
+                25.2
+              ]
+            },
+            "pod": {
+              "value": 0.469,
+              "at (mm)": [
+                -80.6,
+                44.1,
+                24.7
+              ]
+            }
+          }
+        },
+        "+Y": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 3.031,
+              "at (mm)": [
+                -79.6,
+                43.1,
+                25.9
+              ]
+            },
+            "pod": {
+              "value": 2.376,
+              "at (mm)": [
+                -81.1,
+                44.0,
+                22.9
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 3.368,
+              "at (mm)": [
+                -80.0,
+                43.5,
+                25.2
+              ]
+            },
+            "pod": {
+              "value": 3.071,
+              "at (mm)": [
+                -80.6,
+                44.1,
+                24.7
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 1.305,
+              "at (mm)": [
+                -80.0,
+                43.5,
+                25.2
+              ]
+            },
+            "pod": {
+              "value": 1.503,
+              "at (mm)": [
+                -79.2,
+                44.6,
+                25.9
+              ]
+            }
+          }
+        },
+        "-Y": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 3.031,
+              "at (mm)": [
+                -79.6,
+                43.1,
+                25.9
+              ]
+            },
+            "pod": {
+              "value": 2.376,
+              "at (mm)": [
+                -81.1,
+                44.0,
+                22.9
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 0.493,
+              "at (mm)": [
+                -65.7,
+                48.7,
+                16.5
+              ]
+            },
+            "pod": {
+              "value": 1.76,
+              "at (mm)": [
+                -81.2,
+                50.2,
+                20.4
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 0.318,
+              "at (mm)": [
+                -38.0,
+                46.0,
+                20.5
+              ]
+            },
+            "pod": {
+              "value": 0.484,
+              "at (mm)": [
+                -87.8,
+                48.4,
+                33.1
+              ]
+            }
+          }
+        },
+        "+Z": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 1.315,
+              "at (mm)": [
+                -65.7,
+                48.7,
+                16.5
+              ]
+            },
+            "pod": {
+              "value": 1.547,
+              "at (mm)": [
+                -90.7,
+                41.6,
+                -11.6
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 1.463,
+              "at (mm)": [
+                -65.7,
+                48.7,
+                16.5
+              ]
+            },
+            "pod": {
+              "value": 1.939,
+              "at (mm)": [
+                -99.1,
+                40.1,
+                -4.1
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 0.311,
+              "at (mm)": [
+                -39.0,
+                46.6,
+                22.6
+              ]
+            },
+            "pod": {
+              "value": 0.561,
+              "at (mm)": [
+                -99.1,
+                40.1,
+                -4.1
+              ]
+            }
+          }
+        },
+        "-Z": {
+          "von Mises (MPa)": {
+            "bracket": {
+              "value": 1.315,
+              "at (mm)": [
+                -65.7,
+                48.7,
+                16.5
+              ]
+            },
+            "pod": {
+              "value": 1.547,
+              "at (mm)": [
+                -90.7,
+                41.6,
+                -11.6
+              ]
+            }
+          },
+          "max principal (MPa)": {
+            "bracket": {
+              "value": 0.868,
+              "at (mm)": [
+                -75.9,
+                39.4,
+                -17.6
+              ]
+            },
+            "pod": {
+              "value": 1.919,
+              "at (mm)": [
+                -99.1,
+                40.1,
+                7.9
+              ]
+            }
+          },
+          "tension across layers (MPa)": {
+            "bracket": {
+              "value": 0.276,
+              "at (mm)": [
+                -38.0,
+                44.6,
+                21.9
+              ]
+            },
+            "pod": {
+              "value": 0.575,
+              "at (mm)": [
+                -99.1,
+                40.1,
+                7.9
+              ]
+            }
+          }
+        }
+      }
+    },
+    "ccx time (s)": 575.7
+  },
+  "carrier: cable yank": {
+    "mesh": {
+      "nodes (C3D10)": 46234,
+      "elements": 26405
+    },
+    "fixed": "the carrier's half-collar bore (clamped to the body)",
+    "load": "10.0 N at the USB-C plug, 10.0 mm out from the socket, at [39.2, 74.5, -29.4] mm; through a rigid board to the four standoff seats (O6 mm) on the carrier's outer face",
+    "forces on the four seats (N)": {
+      "X": [
+        [
+          8.32,
+          0.0,
+          0.0
+        ],
+        [
+          0.36,
+          0.0,
+          0.0
+        ],
+        [
+          4.64,
+          0.0,
+          0.0
+        ],
+        [
+          -3.32,
+          0.0,
+          0.0
+        ]
+      ],
+      "Y": [
+        [
+          -0.84,
+          3.57,
+          0.91
+        ],
+        [
+          0.84,
+          3.57,
+          -0.91
+        ],
+        [
+          -0.84,
+          1.43,
+          0.91
+        ],
+        [
+          0.84,
+          1.43,
+          -0.91
+        ]
+      ],
+      "Z": [
+        [
+          0.71,
+          1.96,
+          4.16
+        ],
+        [
+          0.71,
+          1.96,
+          0.84
+        ],
+        [
+          -0.71,
+          -1.96,
+          4.16
+        ],
+        [
+          -0.71,
+          -1.96,
+          0.84
+        ]
+      ]
+    },
+    "peaks (at least 2 mm from the bore)": {
+      "+X": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 3.616,
+            "at (mm)": [
+              26.0,
+              46.0,
+              -21.1
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 4.334,
+            "at (mm)": [
+              26.0,
+              46.0,
+              -21.1
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 3.502,
+            "at (mm)": [
+              26.0,
+              46.0,
+              -21.1
+            ]
+          }
+        }
+      },
+      "-X": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 3.616,
+            "at (mm)": [
+              26.0,
+              46.0,
+              -21.1
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 2.658,
+            "at (mm)": [
+              31.0,
+              40.1,
+              -33.9
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 0.382,
+            "at (mm)": [
+              27.0,
+              62.6,
+              -38.6
+            ]
+          }
+        }
+      },
+      "+Y": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 0.905,
+            "at (mm)": [
+              31.0,
+              10.4,
+              -35.9
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 0.626,
+            "at (mm)": [
+              30.7,
+              60.3,
+              -35.7
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 0.416,
+            "at (mm)": [
+              26.1,
+              15.9,
+              -22.1
+            ]
+          }
+        }
+      },
+      "-Y": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 0.905,
+            "at (mm)": [
+              31.0,
+              10.4,
+              -35.9
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 0.93,
+            "at (mm)": [
+              30.8,
+              10.2,
+              -35.9
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 0.451,
+            "at (mm)": [
+              26.0,
+              46.0,
+              -21.1
+            ]
+          }
+        }
+      },
+      "+Z": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 0.694,
+            "at (mm)": [
+              31.0,
+              58.7,
+              -37.5
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 0.645,
+            "at (mm)": [
+              30.5,
+              59.7,
+              -35.7
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 0.34,
+            "at (mm)": [
+              26.0,
+              45.1,
+              -22.1
+            ]
+          }
+        }
+      },
+      "-Z": {
+        "von Mises (MPa)": {
+          "carrier": {
+            "value": 0.694,
+            "at (mm)": [
+              31.0,
+              58.7,
+              -37.5
+            ]
+          }
+        },
+        "max principal (MPa)": {
+          "carrier": {
+            "value": 0.677,
+            "at (mm)": [
+              30.8,
+              58.7,
+              -37.7
+            ]
+          }
+        },
+        "tension across layers (MPa)": {
+          "carrier": {
+            "value": 0.207,
+            "at (mm)": [
+              30.5,
+              59.7,
+              19.6
+            ]
+          }
+        }
+      }
+    },
+    "ccx time (s)": 78.4
+  },
+  "clamp": "see ccx_split.py and ccx_split.json: both halves in one model, so the split can close",
+  "run time (s)": 668.0
+}

@@ -1,0 +1,778 @@
+{
+ "summary": {
+  "finger tags detected at openings (mm)": {
+   "upper #1": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60
+   ],
+   "lower #2": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60
+   ]
+  },
+  "target tag detected at openings (mm), by distance past the fingertips": {
+   "30 mm": [
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "60 mm": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+   ],
+   "120 mm": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+   ]
+  },
+  "worst position error, any detected tag (mm)": 0.76,
+  "worst rotation error, any detected tag (deg)": 0.98,
+  "finger tag view angle off its normal (deg)": [
+   32.9,
+   39.1
+  ],
+  "finger tag edge (px, in the 2028 x 1520 picture)": [
+   101.9,
+   109.0
+  ],
+  "worst target-from-finger-tag error (mm)": 1.04
+ },
+ "cases": [
+  {
+   "opening_mm": 0,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": {
+    "position_error_mm": 0.08,
+    "rotation_error_deg": 0.61,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.5
+   },
+   "tag 2": {
+    "position_error_mm": 0.2,
+    "rotation_error_deg": 0.39,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 101.9,
+    "distance_mm": 84.5
+   },
+   "tag 10": null
+  },
+  {
+   "opening_mm": 0,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.48,
+   "tag 1": {
+    "position_error_mm": 0.08,
+    "rotation_error_deg": 0.61,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.5
+   },
+   "tag 2": {
+    "position_error_mm": 0.2,
+    "rotation_error_deg": 0.39,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 101.9,
+    "distance_mm": 84.5
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 0,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.22,
+   "tag 1": {
+    "position_error_mm": 0.08,
+    "rotation_error_deg": 0.61,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.5
+   },
+   "tag 2": {
+    "position_error_mm": 0.2,
+    "rotation_error_deg": 0.39,
+    "view_angle_off_normal_deg": 32.9,
+    "tag_edge_px": 101.9,
+    "distance_mm": 84.5
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 10,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": {
+    "position_error_mm": 0.76,
+    "rotation_error_deg": 0.23,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.6,
+    "distance_mm": 84.9
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.7,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.9
+   },
+   "tag 10": null
+  },
+  {
+   "opening_mm": 10,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.38,
+   "tag 1": {
+    "position_error_mm": 0.76,
+    "rotation_error_deg": 0.23,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.6,
+    "distance_mm": 84.9
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.7,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.9
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 10,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 1.04,
+   "tag 1": {
+    "position_error_mm": 0.76,
+    "rotation_error_deg": 0.23,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.6,
+    "distance_mm": 84.9
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.7,
+    "view_angle_off_normal_deg": 33.4,
+    "tag_edge_px": 102.1,
+    "distance_mm": 84.9
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 20,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": 0.1,
+   "tag 1": {
+    "position_error_mm": 0.02,
+    "rotation_error_deg": 0.78,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 103.3,
+    "distance_mm": 85.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.05,
+    "rotation_error_deg": 0.85,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 102.6,
+    "distance_mm": 85.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 20,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.41,
+   "tag 1": {
+    "position_error_mm": 0.02,
+    "rotation_error_deg": 0.78,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 103.3,
+    "distance_mm": 85.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.05,
+    "rotation_error_deg": 0.85,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 102.6,
+    "distance_mm": 85.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 20,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.29,
+   "tag 1": {
+    "position_error_mm": 0.02,
+    "rotation_error_deg": 0.78,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 103.3,
+    "distance_mm": 85.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.05,
+    "rotation_error_deg": 0.85,
+    "view_angle_off_normal_deg": 34.1,
+    "tag_edge_px": 102.6,
+    "distance_mm": 85.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 30,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": 0.16,
+   "tag 1": {
+    "position_error_mm": 0.07,
+    "rotation_error_deg": 0.98,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 104.2,
+    "distance_mm": 86.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.41,
+    "rotation_error_deg": 0.18,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 103.4,
+    "distance_mm": 86.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 30,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.35,
+   "tag 1": {
+    "position_error_mm": 0.07,
+    "rotation_error_deg": 0.98,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 104.2,
+    "distance_mm": 86.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.41,
+    "rotation_error_deg": 0.18,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 103.4,
+    "distance_mm": 86.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 30,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.35,
+   "tag 1": {
+    "position_error_mm": 0.07,
+    "rotation_error_deg": 0.98,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 104.2,
+    "distance_mm": 86.7
+   },
+   "tag 2": {
+    "position_error_mm": 0.41,
+    "rotation_error_deg": 0.18,
+    "view_angle_off_normal_deg": 35.1,
+    "tag_edge_px": 103.4,
+    "distance_mm": 86.7
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 40,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": 0.43,
+   "tag 1": {
+    "position_error_mm": 0.35,
+    "rotation_error_deg": 0.69,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 105.5,
+    "distance_mm": 88.0
+   },
+   "tag 2": {
+    "position_error_mm": 0.19,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 104.5,
+    "distance_mm": 88.0
+   },
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 40,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.16,
+   "tag 1": {
+    "position_error_mm": 0.35,
+    "rotation_error_deg": 0.69,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 105.5,
+    "distance_mm": 88.0
+   },
+   "tag 2": {
+    "position_error_mm": 0.19,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 104.5,
+    "distance_mm": 88.0
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 40,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.61,
+   "tag 1": {
+    "position_error_mm": 0.35,
+    "rotation_error_deg": 0.69,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 105.5,
+    "distance_mm": 88.0
+   },
+   "tag 2": {
+    "position_error_mm": 0.19,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 36.3,
+    "tag_edge_px": 104.5,
+    "distance_mm": 88.0
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 50,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": 0.34,
+   "tag 1": {
+    "position_error_mm": 0.25,
+    "rotation_error_deg": 0.47,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 107.4,
+    "distance_mm": 89.6
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.8,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 105.4,
+    "distance_mm": 89.6
+   },
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 50,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.21,
+   "tag 1": {
+    "position_error_mm": 0.25,
+    "rotation_error_deg": 0.47,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 107.4,
+    "distance_mm": 89.6
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.8,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 105.4,
+    "distance_mm": 89.6
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 50,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.52,
+   "tag 1": {
+    "position_error_mm": 0.25,
+    "rotation_error_deg": 0.47,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 107.4,
+    "distance_mm": 89.6
+   },
+   "tag 2": {
+    "position_error_mm": 0.09,
+    "rotation_error_deg": 0.8,
+    "view_angle_off_normal_deg": 37.7,
+    "tag_edge_px": 105.4,
+    "distance_mm": 89.6
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 60,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": 0.38,
+   "tag 1": {
+    "position_error_mm": 0.3,
+    "rotation_error_deg": 0.41,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 109.0,
+    "distance_mm": 91.4
+   },
+   "tag 2": {
+    "position_error_mm": 0.57,
+    "rotation_error_deg": 0.54,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 107.1,
+    "distance_mm": 91.4
+   },
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 60,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": 0.2,
+   "tag 1": {
+    "position_error_mm": 0.3,
+    "rotation_error_deg": 0.41,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 109.0,
+    "distance_mm": 91.4
+   },
+   "tag 2": {
+    "position_error_mm": 0.57,
+    "rotation_error_deg": 0.54,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 107.1,
+    "distance_mm": 91.4
+   },
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 60,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": 0.56,
+   "tag 1": {
+    "position_error_mm": 0.3,
+    "rotation_error_deg": 0.41,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 109.0,
+    "distance_mm": 91.4
+   },
+   "tag 2": {
+    "position_error_mm": 0.57,
+    "rotation_error_deg": 0.54,
+    "view_angle_off_normal_deg": 39.1,
+    "tag_edge_px": 107.1,
+    "distance_mm": 91.4
+   },
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 70,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 70,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 70,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 80,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 80,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 80,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 90,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 90,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 90,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  },
+  {
+   "opening_mm": 100,
+   "target_past_fingertips_mm": 30,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.11,
+    "rotation_error_deg": 0.21,
+    "view_angle_off_normal_deg": 26.7,
+    "tag_edge_px": 267.0,
+    "distance_mm": 133.8
+   }
+  },
+  {
+   "opening_mm": 100,
+   "target_past_fingertips_mm": 60,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.42,
+    "rotation_error_deg": 0.43,
+    "view_angle_off_normal_deg": 21.9,
+    "tag_edge_px": 224.8,
+    "distance_mm": 161.1
+   }
+  },
+  {
+   "opening_mm": 100,
+   "target_past_fingertips_mm": 120,
+   "relative_error_mm (target from upper finger tag)": null,
+   "tag 1": null,
+   "tag 2": null,
+   "tag 10": {
+    "position_error_mm": 0.29,
+    "rotation_error_deg": 0.17,
+    "view_angle_off_normal_deg": 16.0,
+    "tag_edge_px": 170.9,
+    "distance_mm": 218.0
+   }
+  }
+ ]
+}
