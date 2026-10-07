@@ -312,8 +312,13 @@ def sync_items(yt, pid, want, drop):
                 "playlistId": pid, "position": pos, "resourceId": {"kind": "youtube#video", "videoId": vid}}}).execute()
             print(f"added {vid} at {pos + 1}")
     for pos, vid in enumerate(want):       # then fix the order, one move at a time
-        cur = items()
-        it = next(i for i in cur if i["snippet"]["resourceId"]["videoId"] == vid)
+        for _ in range(8):                 # a just-inserted item can take a few seconds to be listed
+            it = next((i for i in items() if i["snippet"]["resourceId"]["videoId"] == vid), None)
+            if it:
+                break
+            time.sleep(3)
+        else:
+            raise SystemExit(f"{vid} is still not listed in {pid} after inserting it; re-run apply")
         if it["snippet"]["position"] != pos:
             yt.playlistItems().update(part="snippet", body={"id": it["id"], "snippet": {
                 "playlistId": pid, "position": pos, "resourceId": it["snippet"]["resourceId"]}}).execute()
