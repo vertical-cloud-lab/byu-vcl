@@ -37,25 +37,41 @@ the question is the right one, and the slice is large:
 | 25 | 75 | 22 % |
 | 30 | 70 | 52 % |
 
-(Volume by inclusion–exclusion over the box corners, `box_slice_volume_fraction`; with the
-bounds in §2 the uppers sum to 59.3 wt.%, so most of the raw box is not an aluminium alloy at
-all.) **S is a campaign decision that nobody has written down.** Everything below uses
-S = 20 wt.% and the sweep in §4 shows how the conclusions move with it.
+(Volume by inclusion–exclusion over the box corners, `box_slice_volume_fraction`; the table is
+for the July placeholders, whose uppers sum to 59.3 wt.%; with the proposed box below (68.9
+wt.%) the S = 20 survivor is 1.1 %. Either way most of the raw box is not an aluminium alloy
+at all.) **S is a campaign decision that nobody has written down.** Edison's literature pass
+(§6.3) found no published BO campaign that states one and recommends **Al ≥ 80 wt.%
+(S = 20)** as the structural-alloy default, which is what everything below uses; the sweep in
+§4 shows how the conclusions move with it.
 
-### The bounds on record
+### The bounds: July placeholders and the proposed box
 
-No design space has been ratified. These are the numbers in the repo — the family maxima from
-the 20-run purchase model (`purchase_quantity_model.py`) and the erbium analysis
-(`erbium-bounds-and-lot-size.md`) — with L = 0 everywhere so every element keeps a true
-zero-arm control. §6 says what the Edison literature pass changes.
+No design space has been ratified. The July numbers are the family maxima from the 20-run
+purchase model (`purchase_quantity_model.py`) plus the erbium analysis
+(`erbium-bounds-and-lot-size.md`). The **proposed** column takes Edison's literature bounds
+(§6.3) where they are better supported, and keeps the July value where a published
+rapid-solidification precedent goes higher than Edison's conservative pick (noted). L = 0
+everywhere so every element keeps a true zero-arm control. The script's default is the
+proposed box; the July box is kept in it as `DESIGN_SPACE_JULY`.
 
-| Element | L | U (wt.%) | Element | L | U (wt.%) | Element | L | U (wt.%) |
-| --- | ---: | ---: | --- | ---: | ---: | --- | ---: | ---: |
-| Mn | 0 | 5.0 | Cu | 0 | 4.0 | Sc | 0 | 0.8 |
-| Cr | 0 | 2.0 | Ti | 0 | 0.5 | Li | 0 | 2.0 |
-| Zr | 0 | 2.0 | Fe | 0 | 1.0 | Er | 0 | 3.0 |
-| Mg | 0 | 6.0 | Ni | 0 | 2.0 | Zn | 0 | 8.0 |
-| Si | 0 | 12.0 | Ce | 0 | 10.0 | Sn | 0 | 1.0 |
+| Element | July U | **Proposed U** (wt.%) | Note |
+| --- | ---: | ---: | --- |
+| Mn | 5.0 | **5.0** | Edison 2.0; Al-4.5Mn-Mg-Sc-Zr LPBF alloys justify 5 |
+| Cr | 2.0 | **2.0** | Edison 1.0; AlCr3 has been printed |
+| Zr | 2.0 | **2.0** | Edison 0.5 (Scalmalloy-type); the Al-Zr-Er-Ni optimum has 3.2 wt.% Zr |
+| Mg | 6.0 | **6.0** | Edison 6.0 |
+| Si | 12.0 | **12.6** | Edison: the eutectic; hypereutectic is a separate branch |
+| Cu | 4.0 | **6.0** | Edison 6.0 (AlCu6.8 printed) |
+| Ti | 0.5 | **0.5** | Edison 0.2; the melt-window doc covers to 2 |
+| Fe | 1.0 | **2.0** | Edison 2.0 (AlFe2.5, AlFe3 printed) |
+| Ni | 2.0 | **5.0** | Edison 5.0 (AlSi10Mg + 5 Ni) |
+| Ce | 10.0 | **12.0** | Edison Cs/Ce query 12, bounds query 10 |
+| Sc | 0.8 | **0.8** | Edison 0.8 |
+| Li | 2.0 | **3.0** | Edison 3.0 (1, 2, 3 wt.% Li printed; ≈15 % Li loss) |
+| Er | 3.0 | **3.0** | Edison 1.0 at low confidence; the erbium doc's 3.0 stands |
+| Zn | 8.0 | **7.0** | Edison 7.0 |
+| Sn | 1.0 | **2.0** | Edison 10 is a bearing-alloy branch; 2 keeps the structural framing |
 
 ## 2. The exact answer
 
@@ -111,66 +127,70 @@ cross-checks V against `scipy.optimize.linprog`; they agree to machine precision
    joint condition V(y) ≤ 1 couples the elements, because every master spends batch mass on
    its own aluminium and the worst vertex stacks the least concentrated sources together.
 
-## 3. Numbers for the bounds on record (S = 20 wt.%)
+## 3. Numbers for the proposed box (S = 20 wt.%; July values in parentheses where they differ)
 
 ### 3.1 Necessary floor on each source's non-Al fraction (others elemental)
 
 | Element | U | y floor | Element | U | y floor | Element | U | y floor |
 | --- | ---: | ---: | --- | ---: | ---: | --- | ---: | ---: |
-| Mn | 5.0 | 5.9 % | Cu | 4.0 | 4.8 % | Sc | 0.8 | **1.0 %** |
-| Cr | 2.0 | 2.4 % | Ti | 0.5 | 0.6 % | Li | 2.0 | **2.4 %** |
-| Zr | 2.0 | **2.4 %** | Fe | 1.0 | 1.2 % | Er | 3.0 | **3.6 %** |
-| Mg | 6.0 | 7.0 % | Ni | 2.0 | 2.4 % | Zn | 8.0 | 9.1 % |
-| Si | 12.0 | 13.0 % | Ce | 10.0 | **11.1 %** | Sn | 1.0 | 1.2 % |
+| Mn | 5.0 | 5.9 % | Cu | 6.0 | 7.0 % | Sc | 0.8 | **1.0 %** |
+| Cr | 2.0 | 2.4 % | Ti | 0.5 | 0.6 % | Li | 3.0 | **3.6 %** |
+| Zr | 2.0 | **2.4 %** | Fe | 2.0 | 2.4 % | Er | 3.0 | **3.6 %** |
+| Mg | 6.0 | 7.0 % | Ni | 5.0 | 5.9 % | Zn | 7.0 | 8.1 % |
+| Si | 12.6 | 13.6 % | Ce | 12.0 | **13.0 %** | Sn | 2.0 | 2.4 % |
 
-Every commercial master clears its own floor (Al-2Sc 2 % > 1 %, Al-5Li > 2.4 %, Al-10Zr,
-Al-10Er, Al-20Ce > 11.1 %, Al-50Mg). **Individually, none of them is a problem.**
+Every commercial master clears its own floor (Al-2Sc 2 % > 1 %, Al-5Li 5 % > 3.6 %, Al-10Zr,
+Al-10Er, Al-20Ce 20 % > 13 %, Al-50Mg). **Individually, none of them is a problem.**
 
 ### 3.2 Jointly, the commercial-master plans are not feasible
 
 V = grams of sources needed per 100 g for the worst recipe; feasible iff ≤ 1. "Reachable
 share" is the volume fraction of P the scenario can make (Monte Carlo, 2 × 10⁶ draws).
 
-| Scenario | Sources that are masters (y) | V | Reachable share | Worst recipe |
+| Scenario | Sources that are masters (y) | V proposed (July) | Reachable share | Worst recipe (proposed box) |
 | --- | --- | ---: | ---: | --- |
-| A. all elemental | none | **0.20** | 100 % | any; 20 g solute + 80 g Al |
-| B. 2026-08 shopping chart | Zr Al-10Zr, Ce Al-20Ce, Sc Al-2Sc, Er Al-10Er, Li Al-10Li | 1.62 | 95.2 % | Sc 0.8 + Li 2 + Zr 2 + Er 3 + Ce 10 (+ Mn 2.2) needs **162 g** of sources |
-| C. every reactive element as a commercial master | + Li Al-5Li, Ti Al-10Ti, Mg Al-50Mg | 1.88 | 78.4 % | same corner, 188 g |
-| **D. the 2026-09 plan** | Li Al-5Li, Zr Al-10Zr pieces, Ti Al-10Ti pieces; Sc chips, Er powder, Ce pieces, Mg pieces elemental | **0.81** | **100 %** | Li 2 + Zr 2 + Ti 0.5 + Mn 5 + Cr 2 + Mg 6 + Si 2.5 → 80.5 g sources + 19.5 g Al |
-| F. plan D but Sc as Al-2Sc | + Sc Al-2Sc | 1.20 | 98.8 % | Sc + Li + Zr + Ti corner needs 120 g |
-| G. all masters but Al-10Li | Li Al-10Li, Sc Al-2Sc, Zr Al-10Zr, Ti Al-10Ti, Er Al-10Er, Ce Al-20Ce | 1.67 | 93.7 % | Ce 50 g + Sc 40 g + Er 30 g alone |
-| E. recommended set (§5) | Li Al-10Li, Zr Al-Zr50 crushed, Ti Al-10Ti; rest elemental | **0.45** | **100 %** | 44.5 g sources, 55.5 g Al |
+| A. all elemental | none | **0.20** (0.20) | 100 % | any; 20 g solute + 80 g Al |
+| B. 2026-08 shopping chart | Zr Al-10Zr, Ce Al-20Ce, Sc Al-2Sc, Er Al-10Er, Li Al-10Li | 1.76 (1.62) | 94.7 % | Sc 0.8 + Li 3 + Zr 2 + Er 3 + Ce 11.2 needs **176 g** of sources |
+| C. every reactive element as a commercial master | + Li Al-5Li, Ti Al-10Ti, Mg Al-50Mg | 2.08 (1.88) | 72.2 % | same corner, 208 g |
+| **D. the 2026-09 plan** | Li Al-5Li, Zr Al-10Zr pieces, Ti Al-10Ti pieces; Sc chips, Er powder, Ce pieces, Mg pieces elemental | **0.995** (0.81) | **100 %** | Li 3 (60 g Al-5Li) + Zr 2 (20 g) + Ti 0.5 (5 g) + Mn 5 + Cr 2 + Mg 6 + Si 1.5 → 99.5 g sources, **0.5 g Al** |
+| F. plan D but Sc as Al-2Sc | + Sc Al-2Sc | 1.39 (1.20) | 93.2 % | Sc + Li + Zr + Ti corner needs 139 g |
+| G. all masters but Al-10Li | Li Al-10Li, Sc Al-2Sc, Zr Al-10Zr, Ti Al-10Ti, Er Al-10Er, Ce Al-20Ce | 1.79 (1.67) | 93.0 % | Ce 53.5 g + Sc 40 g + Er 30 g + Li 30 g |
+| E. recommended set (§5) | Li Al-10Li, Zr Al-Zr50 crushed, Ti Al-10Ti; rest elemental | **0.54** (0.45) | **100 %** | 53.5 g sources, 46.5 g Al |
 
-Two things to read off this table.
+Three things to read off this table.
 
 **The reachable-share column is misleading on purpose.** Scenario B still "covers" 95 % of
 the design space by volume, but the 5 % it loses is exactly the high-Sc/Li/Zr/Er/Ce corner
 that the L1₂-precipitation and Al-Ce families exist to explore. Bayesian optimization walks to
 corners; volume fractions describe the interior.
 
-**The plan already agreed on 2026-09-08 reaches the whole space,** with 19.5 g of pure Al to
-spare in its worst case, and it stays feasible up to S ≈ 30 wt.% (§4). What it cannot absorb
-is swapping scandium back to Al-2Sc (scenario F: with Al-5Li and Al-10Zr also at their
-maxima the corner needs 120 g). The contextual minima the script prints for scenario F say
-what would fix it: either an Al-Sc master at ≥ 3.9 wt.% Sc, or lithium as Al-10Li (≥ 9.9 %)
-instead of Al-5Li. Those are the trade-offs the "minimum non-Al fraction" question was really
-asking about: the floors are coupled, and the coupling is through which elements are
-*simultaneously* dilute.
+**The plan agreed on 2026-09-08 reaches the whole space — but on the proposed box only just.**
+With the July bounds it had 19.5 g of pure Al to spare; raising the lithium ceiling from 2 to
+3 wt.% (Edison) makes the Al-5Li charge 60 g, and the worst recipe then leaves **0.5 g** of
+pure Al. It fails for any S ≥ 25 (§4). That is the single most consequential number in this
+report: **Al-5Li is not enough once Li can go to 3 wt.%; Al-10Li is.**
+
+**Scandium cannot go back to Al-2Sc** (scenario F: with Al-5Li and Al-10Zr also at their
+maxima the corner needs 139 g). The contextual minima the script prints for F say what would
+fix it — an Al-Sc master at ≥ 62 wt.% Sc (i.e. not a master at all) or lithium at ≥ 14 % —
+so on the proposed box the only workable scandium source is elemental. Those are the
+trade-offs the "minimum non-Al fraction" question was really asking about: the floors are
+coupled, and the coupling is through which elements are *simultaneously* dilute.
 
 ### 3.3 Minimum y per master given the rest of the plan (the useful numbers)
 
-For scenario D (what we are ordering), holding the other sources fixed:
+Holding the other sources fixed as listed:
 
-| Master | In the plan | Minimum y that keeps the space reachable | Margin |
-| --- | --- | ---: | --- |
-| Al-Li | Al-5Li (y = 0.05) | **3.4 %** | 1.5× |
-| Al-Zr | Al-10Zr pieces (0.10) | **5.1 %** | 2× |
-| Al-Ti | Al-10Ti pieces (0.10) | **2.0 %** | 5× |
+| Master | Scenario D (Al-5Li plan): minimum y | Margin | Scenario E (Al-10Li, Al-Zr50): minimum y | Margin |
+| --- | ---: | --- | ---: | --- |
+| Al-Li | **5.0 %** (July box: 3.4 %) | **none** with Al-5Li | **3.9 %** | 2.6× with Al-10Li |
+| Al-Zr | **9.8 %** (5.1 %) | none with Al-10Zr | **4.0 %** | 12× with Al-Zr50 |
+| Al-Ti | **9.1 %** (2.0 %) | 1.1× with Al-10Ti | **1.0 %** | 10× with Al-10Ti |
 
 If, in addition, erbium were taken as Al-10Er and cerium as Al-20Ce (the "safe-handling"
-instinct), the plan breaks (scenario G). The Ce master alone is 50 g per batch at the 10 wt.%
-upper bound, which is why **cerium must be elemental pieces or a ≥ ~20 % master used only
-below ~5 wt.% Ce, and erbium elemental**, unless the Ce ceiling is lowered.
+instinct), the plan breaks (scenario G). The Ce master alone is 53–56 g per batch near the
+12 wt.% upper bound, which is why **cerium must be elemental pieces, or a ≥ ~25 % master used
+only below ~6 wt.% Ce, and erbium elemental**, unless the Ce ceiling is lowered.
 
 ### 3.4 Impurity tolerance as a second floor
 
@@ -181,15 +201,16 @@ base, 3N solutes and a 2000 ppm tolerance (the Scalmalloy Fe limit, see
 | Scenario | masters cast on 99.7 % Al | masters cast on 4N Al |
 | --- | ---: | ---: |
 | A (elemental) | 280 ppm | 280 ppm |
-| D (2026-09 plan) | **2,034 ppm** | 280 ppm |
-| F | 3,171 ppm | 280 ppm |
-| E (recommended) | 991 ppm | 280 ppm |
+| D (2026-09 plan) | **2,586 ppm** (July box 2,034) | 280 ppm |
+| F | 3,722 ppm | 280 ppm |
+| E (recommended) | 1,252 ppm | 280 ppm |
 
 Impurity-limited floors on y, masters on 99.7 % Al, element alone at its upper bound:
-Sc 1.2 %, Li 3.0 %, Zr 3.0 %, Er 4.4 %, Ce 13.8 %, Mg 8.6 %, Ti 0.8 %. They are the same
-order as the reachability floors, and plan D sits right at the tolerance because 40 g of
-Al-5Li on commercial aluminium is 40 % of the batch. **Ask Belmont what aluminium the
-Al-5Li is cast on**; a 4N-base master removes the issue entirely.
+Sc 1.2 %, Li 4.4 %, Zr 3.0 %, Er 4.4 %, Ce 16.3 %, Mg 8.6 %, Ti 0.8 %. They are the same
+order as the reachability floors, and plan D overshoots the tolerance because 60 g of Al-5Li
+on commercial aluminium is 60 % of the batch. **Ask Belmont what aluminium the Al-5Li is
+cast on**; a 4N-base master removes the issue entirely. Edison's impurity table (§6.3) gives
+the context: Scalmalloy production powder runs Fe 0.01–0.13 wt.%, AlSi10Mg allows ≤ 0.55.
 
 ## 4. How the answer moves with the total-solute cap
 
@@ -197,15 +218,16 @@ V for each scenario versus S (feasible iff ≤ 1):
 
 | S (wt.%) | A | B | C | D | F | G | E |
 | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 10 | 0.10 | 1.21 | 1.44 | 0.70 | 1.09 | 1.29 | 0.34 |
-| 15 | 0.15 | 1.46 | 1.68 | 0.76 | 1.16 | 1.49 | 0.39 |
-| 20 | 0.20 | 1.62 | 1.88 | 0.81 | 1.20 | 1.67 | 0.45 |
-| 25 | 0.25 | 1.67 | 1.98 | 0.85 | 1.23 | 1.73 | 0.50 |
-| 30 | 0.30 | 1.72 | 2.03 | 0.91 | 1.26 | 1.77 | 0.55 |
+| 10 | 0.10 | 1.26 | 1.58 | 0.90 | 1.29 | 1.28 | 0.43 |
+| 15 | 0.15 | 1.51 | 1.83 | 0.94 | 1.34 | 1.53 | 0.48 |
+| 20 | 0.20 | 1.76 | 2.08 | **0.99** | 1.39 | 1.79 | 0.54 |
+| 25 | 0.25 | 1.84 | 2.22 | **1.04** | 1.44 | 1.89 | 0.58 |
+| 30 | 0.30 | 1.89 | 2.30 | 1.09 | 1.49 | 1.94 | 0.64 |
 
 The commercial-master plans fail even at S = 10 because the failure is the *per-element*
 mass of the dilute masters, not the cap: Al-2Sc at 0.8 wt.% Sc is 40 g whatever S is. The cap
-only decides how many of those 40-gram charges can be demanded at once.
+only decides how many of those 40-gram charges can be demanded at once. Plan D crosses 1 at
+S = 25; the recommended set has a factor of ~1.5 in hand at S = 30.
 
 ## 5. Master alloys we could make ourselves, and the window for each
 
@@ -220,15 +242,15 @@ dosed as pieces.
 | --- | ---: | --- | ---: | --- | --- |
 | Al-Zr | 2.4 % | 2 %: 1000 · 5 %: 1140 · 10 %: 1260 · 15 %: 1360 · 50 %: 1620 | **≈ 6 %** | 5, 10 (ESPI pieces), 50 (ESPI pieces) | Al-10Zr no (19 % Al₃Zr); **Al-Zr50 yes** (94 %) |
 | Al-Ti | 0.6 % | 2 %: 960 · 5 %: 1100 · 10 %: 1200 · 20 %: 1300 | **≈ 10 %** | 5 (rod), 10 (ESPI pieces) | No (27 % Al₃Ti at 10 %) |
-| Al-Ce | 11.1 % | 10 %: 640 · 20 %: 780 · 30 %: 980 · 50 %: 1220 | **≈ 45 %** | 10, 20 | Al-20Ce no (34 %); ≥ 30 % yes |
-| Al-Li | 2.4 % | all ≤ 720 (AlLi melts ≈ 700) | any (reactivity, not temperature, limits it) | 2, 5, 8, 10, 20 | No (AlLi is 25 % at 5 % Li) |
+| Al-Ce | 13.0 % | 10 %: 640 · 20 %: 780 · 30 %: 980 · 50 %: 1220 | **≈ 45 %** | 10, 20, 25 | Al-20Ce no (34 %); ≥ 30 % yes |
+| Al-Li | 3.6 % | all ≤ 720 (AlLi melts ≈ 700) | any (reactivity, not temperature, limits it) | 2, 5, 8, 10, 20 | No (AlLi is 25 % at 5 % Li) |
 | Al-Mg | 7.0 % | all ≤ 660 (eutectic 450 at 35 %) | any | 20–75 | **Al-50Mg yes** (β/γ) |
 | Al-Mn | 5.9 % | 10 %: 820 · 20 %: 920 · 50 %: 1120 | ≈ 50 % | 60 (Belmont) | Al-60Mn yes |
 | Al-Cr | 2.4 % | 10 %: 940 · 20 %: 1020 · 33 %: ≈ 1150 · 50 %: 1320 | ≈ 40 % | 20 (Belmont), 33 (ESPI) | **Al-Cr33 yes** |
-| Al-Fe | 1.2 % | 5 %: 780 · 10 %: 900 · 20 %: 1040 · 50 %: 1180 | ≈ 50 % | — | ≥ 40 % yes |
-| Al-Ni | 2.4 % | 10 %: 700 · 20 %: 780 · 30 %: 860 · 50 %: 1380 | ≈ 40 % | 20 (Belmont) | ≥ 40 % yes |
-| Al-Si | 13.0 % | 12 %: 577 (eutectic) · 30 %: 840 · 50 %: 1060 | any | 11 (ESPI), 4047 rod | ≥ 50 % yes |
-| Al-Cu, Al-Zn, Al-Sn | 4.8 / 9.1 / 1.2 % | all ≤ 660 | any | 10/50, drops, 15 | Al-Cu50 yes |
+| Al-Fe | 2.4 % | 5 %: 780 · 10 %: 900 · 20 %: 1040 · 50 %: 1180 | ≈ 50 % | — | ≥ 40 % yes |
+| Al-Ni | 5.9 % | 10 %: 700 · 20 %: 780 · 30 %: 860 · 50 %: 1380 | ≈ 40 % | 20 (Belmont) | ≥ 40 % yes |
+| Al-Si | 13.6 % | 12 %: 577 (eutectic) · 30 %: 840 · 50 %: 1060 | any | 11 (ESPI), 4047 rod | ≥ 50 % yes |
+| Al-Cu, Al-Zn, Al-Sn | 7.0 / 8.1 / 2.4 % | all ≤ 660 | any | 10/50, drops, 15 | Al-Cu50 yes |
 | Al-Sc *(literature)* | 1.0 % | 0.6 %: 659 (eutectic) · 2 %: ≈ 800 · 36 %: 1320 (Al₃Sc) | ≈ 5–10 % (liquidus ≈ 900–1000, interpolated) | 2 | No below ~25 % |
 | Al-Er *(literature)* | 3.6 % | 6 %: 655 (eutectic) · Al₃Er ≈ 1070 at 67 % | ≈ 20–30 % | 5, 10 | ≥ 35 % yes |
 
@@ -239,8 +261,8 @@ Al-Sc diagram; eutectic 6 wt.% Er / 655 °C likewise — and should be treated a
 What this means for making master-alloy *powder* in-house:
 
 - **Zr is the only element where the reachability floor and the melting ceiling squeeze.**
-  The floor is 2.4 % (5.1 % next to Al-5Li), induction tops out near 6 %, and the commercial
-  10 % piece needs the arc melter. The clean answer is ESPI's **Al-Zr50 pieces, arc-made,
+  The floor is 2.4 % (9.8 % next to Al-5Li at 3 wt.% Li; 4.0 % next to Al-10Li), induction
+  tops out near 6 %, and the commercial 10 % piece needs the arc melter. The clean answer is ESPI's **Al-Zr50 pieces, arc-made,
   brittle, crushed in the glovebox** to 150–300 µm: 4 g per batch at 2 wt.% Zr. Atomizing an
   Al-5Zr powder in-house is possible but buys nothing over crushed Al-Zr50 (and Al-5Zr sits at
   the floor with no margin once Li is a master).
@@ -251,12 +273,12 @@ What this means for making master-alloy *powder* in-house:
 - **Sc and Er**: a ≥ 4 % Al-Sc or ≥ 10 % Al-Er master is meltable, but at 0.8 g and 3 g of
   elemental metal per batch there is nothing to gain over chips and powder in the cup.
 
-### The recommended set (scenario E) — 16 feedstocks, V = 0.45 at S = 20
+### The recommended set (scenario E) — 16 feedstocks, V = 0.54 at S = 20
 
 | Element | Source | y | Why |
 | --- | --- | ---: | --- |
 | Al | 4N shot/rod machined into the cup | — | required (pure-Al vertex) |
-| Li | **Al-10Li** if available (Belmont/KBM/SAM), else Al-5Li | 0.10 / 0.05 | Al-5Li is feasible but leaves the Sc choice constrained (scenario F) |
+| Li | **Al-10Li** (KBM AlLi10 on enquiry, SAM Al-Li 10, CG Material; or an ESPI/ACI custom melt) | 0.10 | Al-5Li reaches the box with 0.5 g to spare at Li ≤ 3 wt.% and fails at S ≥ 25 (scenario D) |
 | Zr | **Al-Zr50 pieces, crushed** (ESPI Knd2756) | 0.50 | 2.4 % floor; arc-made, brittle |
 | Ti | Al-10Ti pieces (ESPI Knc6829) or −325 mesh Ti powder | 0.10 / 1 | both clear the 0.6 % floor |
 | Sc | **chips** (ESPI Knc6313) | 1 | Al-2Sc only fits if Li is Al-10Li; chips dissolve faster than the pellet |
@@ -265,9 +287,9 @@ What this means for making master-alloy *powder* in-house:
 | Mg | pieces (ESPI) or Al-50Mg crushed | 1 / 0.50 | either clears the 7 % floor |
 | Mn Cr Si Cu Fe Ni Zn Sn | elemental powders as quoted | 1 | no floor to meet |
 
-Every composition in the box-with-cap is reachable with this set, the worst recipe uses 44.5 g
-of sources, and no master is more than 2× above its floor except where the element is
-elemental anyway. Swap any row and re-run the script; it prints the new worst vertex.
+Every composition in the box-with-cap is reachable with this set, the worst recipe uses 53.5 g
+of sources (46.5 g of pure Al left), and each master sits 2.6–12× above its contextual floor
+(§3.3). Swap any row and re-run the script; it prints the new worst vertex.
 
 ## 6. Cs and the literature bounds (Edison)
 
@@ -322,20 +344,68 @@ count stays at 15 non-Al, 16 feedstocks, unless Mohadaseh confirms a different e
   or, equivalently, keep Ce elemental and accept the oxide-skin cleaning step. Either way the
   script's scenario table is the arbiter: add the master with its *y* and check V ≤ 1.
 
-### 6.3 All-element bounds (second query)
+### 6.3 All-element bounds (second query, `edison-design-space-bounds-2026-10.md`)
 
-See the subsection below once the second report is retrieved; it is written in place.
+Edison's per-element recommendation (all with **L = 0 as the control**), and what this
+report does with it:
+
+| Element | Edison U (wt.%) | Published LPBF / RS range it cites | Edison's ceiling rationale | Used here |
+| --- | ---: | --- | --- | ---: |
+| Mn | 2.0 | 0–3 (AlMn3; Scalmalloy 0.2–0.5) | Al₆Mn; Fe–Mn–Cr sludge | 5.0 (Al-4.5Mn-Mg-Sc-Zr precedent) |
+| Cr | 1.0 | 0–3 (AlCr3) | Al₇Cr/Al₁₃Cr₂, sludge | 2.0 |
+| Zr | 0.5 | 0–0.42 (Scalmalloy) | primary Al₃Zr; dissolution at ≤ 1300 °C | 2.0 (Al-Zr-Er-Ni optimum 3.2) |
+| Mg | 6.0 | 0–6 (AlMg6) | evaporation, keyholing, cracking | 6.0 |
+| Si | 12.6 | 0–20 (AlSi7Mg…AlSi20) | eutectic; hypereutectic as a branch | 12.6 |
+| Cu | 6.0 | 0–6.8 (2xxx) | hot cracking above ~4.5 | 6.0 |
+| Ti | 0.2 | 0–0.2 | primary Al₃Ti; silicides | 0.5 |
+| Fe | 2.0 | 0–3 (AlFe3) | β-AlFeSi; ≤ 0.5 when Si is high | 2.0 |
+| Ni | 5.0 | 0–5.1 | Al₃Ni; incomplete dissolution | 5.0 |
+| Ce | 10.0 (12 in the Cs/Ce query) | 0–10.6 | eutectic 10.6 | 12.0 |
+| Sc | 0.8 | 0.2–0.71 (Scalmalloy) | primary Al₃(Sc,Zr); cost | 0.8 |
+| Li | 3.0 | 1, 2, 3 (binary 3.2) | ≈ 15 % Li loss; density falls at 3 | 3.0 |
+| Er | 1.0 (low–medium confidence) | 0.4 at.% Er control in Al-Er-Zr-Ni | coarse Al₃Er | 3.0 (erbium doc) |
+| Zn | 7.0 | 5.4–6.5 (7xxx) | evaporation; 7xxx cracking | 7.0 |
+| Sn | 10.0 | up to 40 (bearing alloys) | miscibility gap; structural use | 2.0 |
+
+Three further outputs of that report matter here:
+
+- **Total-solute cap.** No published high-throughput or BO Al-alloy campaign states an
+  "Al ≥ X" constraint (BIRDSHOT/BRAVE used per-element bounds plus CALPHAD phase filters).
+  Edison recommends **Al ≥ 80 wt.% (S = 20)** as the structural default, with 75 % only for
+  hypereutectic Si or Sn-rich functional branches. That is the S used throughout.
+- **Pairwise constraints** the optimizer should carry in addition to the box: Si–Mg (Mg₂Si
+  stoichiometry, Mg/Si ≈ 1.73 by weight), Si–Ti and Si–Zr (silicides consume the refiner),
+  Si–Fe (hold Fe ≤ 0.5 when Si is high unless Mn is present), Li–Cu (T₁/T₂/Tʙ change with the
+  ratio; treat as a coupled subspace), Mn–Cr–Fe sludge factor Fe + 2Mn + 3Cr ≲ 1.8 as a
+  pre-screen, Sc–Zr pairing, Mg–Zn / Mg–Li / Zn–Li volatility corners, Ce–Ni and Ce–Mg as
+  designed eutectic branches, Er–Zr sampled jointly. **None of these changes the
+  reachability result** (they only remove corners, and every scenario is checked on the full
+  box), but they are the right place to encode "don't sample Mg 6 with Zn 7".
+- **Impurity tolerances.** AlSi10Mg: Fe ≤ 0.55, Cu ≤ 0.05, Mn ≤ 0.45, Zn ≤ 0.10, Ti ≤ 0.15,
+  others ≤ 0.05 each / 0.15 total. Scalmalloy production powders: Fe 0.01–0.13, Si 0.01–0.06.
+  A 99.7 % base brings ≈ 0.2 Fe + 0.1 Si; Edison's compromise is 99.7 % Al when Si ≥ 3 wt.%
+  and 4N Al when Si < 1 and Fe must stay ≤ 0.15 — the same split the 2026-10-07 purity note
+  reached. Fresh UA powder should be < 500 ppm O by inert-gas fusion.
+
+What Edison was **not** able to source: equilibrium solubilities for Mn, Zr, Ti, Er, Zn and
+Sn (flagged "direct supporting source not retrieved" — the CALPHAD values in this repo's
+melt-window and Al-Ni docs are the better numbers), a literature-wide Er wt.% range, and any
+quantitative Ce–Ni or Si–Ti constraint.
 
 ## 7. What to decide
 
-1. **Ratify the bounds and the cap.** The method is exact; the inputs are placeholders. S = 20
-   is a guess; the uppers are family maxima from July. Put the agreed table into
-   `DESIGN_SPACE` and `S_TOTAL` and commit it — the optimizer config should import from the
-   same place.
+1. **Ratify the bounds and the cap.** The method is exact; the inputs are a proposal. S = 20
+   is Edison's and this report's default; the proposed uppers are in §1 with their
+   provenance. Put the agreed table into `DESIGN_SPACE` and `S_TOTAL` and commit it — the
+   optimizer config should import from the same place, and the pairwise constraints of §6.3
+   belong next to it.
 2. **Keep Sc, Er and Ce elemental** (chips/powder/pieces into the cup). That single choice is
    what makes the whole space reachable; every all-master variant fails on the same corner.
 3. **Buy Al-Zr50 pieces rather than, or alongside, Al-10Zr**, and crush them.
-4. **Ask for Al-10Li.** With Al-5Li the plan works (V = 0.81) but loses the option of ever
-   using Al-2Sc.
-5. **Ask what aluminium each master is cast on** (Fe, Si of the base); plan D sits at the
-   2000 ppm tolerance with 99.7 % bases.
+4. **Buy Al-10Li, not Al-5Li.** With the lithium ceiling at 3 wt.%, Al-5Li reaches the box
+   with 0.5 g of margin and fails at S ≥ 25; Al-10Li restores a 2.6× margin.
+5. **Ask what aluminium each master is cast on** (Fe, Si of the base); plan D overshoots the
+   2000 ppm tolerance with 99.7 % bases, the recommended set does not.
+6. **Drop Cs; confirm with Mohadaseh whether Ce, Ca or Sr was meant.** If Ca or Sr, add the
+   element to `DESIGN_SPACE` with a 0–0.1 wt.% box (modifier levels) and re-run; both come as
+   Al-10Sr / Al-10Ca masters, which at 0.1 wt.% cost 1 g of batch and change nothing above.

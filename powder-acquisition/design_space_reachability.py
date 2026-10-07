@@ -69,23 +69,36 @@ import numpy as np
 # bounds analysis (erbium-bounds-and-lot-size.md, [0, 3]), and the melt-window docs.
 # NONE of these is ratified -- they are the numbers on record. Edit freely.
 # --------------------------------------------------------------------------------------
+# July 2026 placeholders (family maxima of the 20-run purchase model + Er [0, 3]) -- kept
+# for comparison with the tables in the 2026-10-07 report.
+DESIGN_SPACE_JULY = {
+    "Mn": (0.0, 5.0), "Cr": (0.0, 2.0), "Zr": (0.0, 2.0), "Mg": (0.0, 6.0), "Si": (0.0, 12.0),
+    "Cu": (0.0, 4.0), "Ti": (0.0, 0.5), "Fe": (0.0, 1.0), "Ni": (0.0, 2.0), "Ce": (0.0, 10.0),
+    "Sc": (0.0, 0.8), "Li": (0.0, 2.0), "Er": (0.0, 3.0), "Zn": (0.0, 8.0), "Sn": (0.0, 1.0),
+}
+
+# Proposed 2026-10-07 box: Edison literature bounds (edison-design-space-bounds-2026-10.md,
+# edison-cesium-and-cerium-bounds-2026-10.md) where they are better supported than the July
+# placeholders, July values kept where a published rapid-solidification precedent goes higher
+# than Edison's conservative pick (Mn, Cr, Zr, Ti, Er -- see the report, section 6.3).
+# L = 0 everywhere: every element keeps a true control arm. NOT ratified.
 DESIGN_SPACE = {
     # element: (lower wt.%, upper wt.%)
-    "Mn": (0.0, 5.0),
-    "Cr": (0.0, 2.0),
-    "Zr": (0.0, 2.0),
-    "Mg": (0.0, 6.0),
-    "Si": (0.0, 12.0),
-    "Cu": (0.0, 4.0),
-    "Ti": (0.0, 0.5),
-    "Fe": (0.0, 1.0),
-    "Ni": (0.0, 2.0),
-    "Ce": (0.0, 10.0),
-    "Sc": (0.0, 0.8),
-    "Li": (0.0, 2.0),
-    "Er": (0.0, 3.0),
-    "Zn": (0.0, 8.0),
-    "Sn": (0.0, 1.0),
+    "Mn": (0.0, 5.0),    # Edison 2.0; Al-4.5Mn-Mg-Sc-Zr LPBF alloys justify 5
+    "Cr": (0.0, 2.0),    # Edison 1.0; AlCr3 printed
+    "Zr": (0.0, 2.0),    # Edison 0.5 (Scalmalloy-type); Al-Zr-Er-Ni optimum has 3.2 wt.% Zr
+    "Mg": (0.0, 6.0),    # Edison 6.0
+    "Si": (0.0, 12.6),   # Edison 12.6 (eutectic)
+    "Cu": (0.0, 6.0),    # Edison 6.0
+    "Ti": (0.0, 0.5),    # Edison 0.2; melt-window doc covers to 2
+    "Fe": (0.0, 2.0),    # Edison 2.0
+    "Ni": (0.0, 5.0),    # Edison 5.0
+    "Ce": (0.0, 12.0),   # Edison Cs/Ce query 12 (bounds query 10)
+    "Sc": (0.0, 0.8),    # Edison 0.8
+    "Li": (0.0, 3.0),    # Edison 3.0
+    "Er": (0.0, 3.0),    # Edison 1.0 (low confidence); erbium-bounds doc 3.0
+    "Zn": (0.0, 7.0),    # Edison 7.0
+    "Sn": (0.0, 2.0),    # Edison 10 is a bearing-alloy branch; 2 keeps the structural framing
 }
 S_TOTAL = 20.0  # wt.% maximum total solute (Al >= 80 wt.%)
 S_SWEEP = (10.0, 15.0, 20.0, 25.0, 30.0)
