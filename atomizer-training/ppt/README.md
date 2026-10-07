@@ -8,11 +8,11 @@ All ten animations are also here as they are, without captions or narration: see
 
 | Clip | Narrated, unlisted | File | Length |
 | --- | --- | --- | --- |
-| **The whole run** (`summary`), condensed (draft 2). Furnace (19 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (8 s): built, into the door, door shut. Run (17 s): argon and the melt, a close-up of the coil stirring the melt up the sealing rod, the pour onto the plate (zoomed in), powder into the container | https://www.youtube.com/watch?v=j9QcpcG8EVI (draft 1, 0:33: [qwopusVSwf4](https://www.youtube.com/watch?v=qwopusVSwf4)) | [`videos/summary.mp4`](videos/summary.mp4) | 0:44 |
-| The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:19.5, 0:08.8, 0:17.0 |
-| Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid | https://www.youtube.com/watch?v=86K-EHhtPp8 | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
-| The ultrasonic stack and the door (`02_stack`): transducer, booster, sonotrode, into the door, plate, scan, wet test, cover, door shut and bolted | https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:47 |
-| The pour (`06_pour`): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | https://www.youtube.com/watch?v=21oFnNmzd3E | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
+| **The whole run** (`summary`), condensed (draft 3: the rebuilt stack). Furnace (19 s): crucible into the coil, nut, insulation, sealing rod, charge, lid. Stack (9 s): built, into the door, then the connector, the plate hung by its end and the upper sonotrode, door shut, stack slid to its mark. Run (17 s): argon and the melt, a close-up of the coil stirring the melt up the sealing rod, the pour onto the plate (zoomed in), powder into the container | Draft 3 not uploaded yet. Draft 2, with the old stack: https://www.youtube.com/watch?v=j9QcpcG8EVI (draft 1, 0:33: [qwopusVSwf4](https://www.youtube.com/watch?v=qwopusVSwf4)) | [`videos/summary.mp4`](videos/summary.mp4) | 0:45 |
+| The same, one step per slide: furnace, stack, run. Cut at caption starts, so no line is cut; each ends on a 0.5 s hold | (parts of the above) | [`summary_1_furnace.mp4`](videos/summary_1_furnace.mp4), [`summary_2_stack.mp4`](videos/summary_2_stack.mp4), [`summary_3_run.mp4`](videos/summary_3_run.mp4) | 0:19.5, 0:09.4, 0:17.0 |
+| Loading the furnace (`03_furnace_load`): lid and lever, crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, charge, lid. Re-cut on 7 Oct only because the door's housing moved with the stack's axis | https://www.youtube.com/watch?v=86K-EHhtPp8 (the earlier cut) | [`videos/03_furnace_load.mp4`](videos/03_furnace_load.mp4) | 1:04 |
+| The ultrasonic stack and the door (`02_stack`, draft 2: the rebuilt stack): transducer, booster, sonotrode, into the door, then the connector, the plate hung by its end and the upper sonotrode at 50 N·m, scan, wet test, cover, door shut, stack slid to its mark, bolted | Draft 2 not uploaded yet. Draft 1, with the old stack: https://www.youtube.com/watch?v=8lBR11fgznI | [`videos/02_stack.mp4`](videos/02_stack.mp4) | 0:51 |
+| The pour (`06_pour`, draft 2: the rebuilt stack): the melt held near 800 °C, vibration on and the furnace pressure up, the sealing rod lifted, a turbo push to heat the plate, every drop atomizing, the powder into the container | Draft 2 not uploaded yet. Draft 1, with the old stack: https://www.youtube.com/watch?v=21oFnNmzd3E | [`videos/06_pour.mp4`](videos/06_pour.mp4) | 0:46 |
 
 [`script.md`](script.md) lists every caption with when it is up, its spoken line and how long that line takes, with a
 frame from each. The upload log, with the commit each description links to, is [`uploads.json`](uploads.json).
@@ -23,7 +23,8 @@ They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build i
 
 - **At most 6 words on screen at a time.** A number and its unit ("65 N·m") count as two.
 - **Each caption stays up at least 4 s.** The single-step clips' captions are up 4.0–7.7 s each. One caption per
-  sub-step of the animation; the long nut sub-step (2a.4) carries two, the door and nut, then how tight. In the pour,
+  sub-step of the animation; two long sub-steps carry two: the nut (2a.4), the door and nut, then how tight; and the stack's
+  2c.5, the connector and plate, then the upper sonotrode. In the pour,
   three sub-steps are shorter than 4 s: the vibration caption also covers the draining pressure (5.3), and the turbo
   caption runs 0.5 s into the next sub-step.
 - **Each line is spoken while its caption is up.** It starts 0.25 s after the caption appears and ends at least 0.3 s
@@ -35,8 +36,8 @@ They live in [`captions.py`](captions.py), and `build_ppt.py` refuses to build i
   (`anim_summary` in [`../viz3d/steps.py`](../viz3d/steps.py)): the same parts on the same paths, in the same order, as
   the furnace, stack, melt and pour animations.
   - Sped up: the holder (4 turns in about a second), the nut (5 turns in about 1.6 s), the thermocouple, the lever, the
-    booster, sonotrode and plate, the cover and the three bolts.
-  - Paced for a slide (draft 2, 44 s): a short pause after each move, and 0.6 s between the furnace, the stack and the
+    booster and sonotrode, the connector, plate and upper sonotrode, the cover and the three bolts.
+  - Paced for a slide (draft 2, 44 s; draft 3, 45 s, adds the connector and upper sonotrode and the stack sliding in): a short pause after each move, and 0.6 s between the furnace, the stack and the
     run. The narration pauses between steps rather than saying more.
   - Shows the coil stirring the melt: a 3 s close-up of the cut crucible, the melt surging up the sealing rod at each
     pulse ([`../viz3d/README.md`](../viz3d/README.md) has the sources).
