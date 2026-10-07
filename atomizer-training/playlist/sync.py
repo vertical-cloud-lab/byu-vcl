@@ -121,6 +121,9 @@ def describe(v, docs, pid):
         lines += ["", "On GitHub (vertical-cloud-lab/byu-vcl):"]
         lines += [f"{name}: {url}" for name, url in v.get("links", []) + docs.links(v)]
     lines += ["", f"Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list={pid}"]
+    rid = load_state().get("runs_playlist_id")
+    if rid and v["id"] in RUNS["ids"]:
+        lines += [f"The team's own runs, oldest first: https://www.youtube.com/playlist?list={rid}"]
     return "\n".join(lines)
 
 

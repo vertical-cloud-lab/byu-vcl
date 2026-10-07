@@ -57,11 +57,8 @@ links pinned at `6c5da5f`. Drafts 1 and 2 are titled `[superseded] …`. Deletin
 and a go-ahead.
 
 **Playlist.** The atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, opens with the tutorials,
-ahead of the cups tutorial, the stitch and the recordings. It still holds draft 3, because the upload token cannot edit a
-playlist or another video. `catalog.py` already points at draft 4 and lists draft 3 as superseded, so one
-`@claude-youtube` run makes the swap: `python ../playlist/sync.py apply --ref <sha>`. It drops "(draft 4)" from the new
-titles, labels draft 3 `[superseded] …` and puts draft 4 in its place in the playlist. See
-[`../playlist/README.md`](../playlist/README.md).
+ahead of the cups tutorial, the stitch and the recordings. Draft 4 has been in positions 1–4 since 2026-10-07, without
+"(draft 4)" in the titles, and draft 3 is labelled `[superseded] …`. See [`../playlist/README.md`](../playlist/README.md).
 
 ## Files
 

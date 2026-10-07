@@ -996,6 +996,7 @@ Everything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://g
 Discussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255
 
 Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c
 ```
 
 ## 34. Atomizer, first run on our own (Oct 2), part 2: gas wash, pour and cooldown
@@ -1029,6 +1030,7 @@ Everything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://g
 Discussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255
 
 Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c
 ```
 
 ## 35. 10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)
@@ -1064,6 +1066,7 @@ Everything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://g
 Discussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255
 
 Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c
 ```
 
 ## 36. 10/6/2026 Atomizer Run Video 2: furnace, ultrasonic scan, carbon-fibre plate, door closed
@@ -1096,6 +1099,7 @@ Everything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://g
 Discussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255
 
 Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c
 ```
 
 ## 37. 10/6/2026 Atomizer Run Video 3: gas wash, melt, pour (stack too high, vibration off)
@@ -1132,6 +1136,7 @@ Everything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://g
 Discussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255
 
 Playlist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c
 ```
 
 ## not in the playlist: [superseded] Atomizer tutorial 0, draft 1 (installation and training overview)
