@@ -939,7 +939,7 @@ def anim_02_stack():
         gauges(sc, status="stack in the door housing")
     sc.step("2c.4", "With the splash disc already in and the door locked open, slide the stack into the door's housing, "
             "short of its mark for now, and fit both clamps without touching the safety cover.", 3.5, stack_in,
-            hold=1.0, labels=[lab("door housing", w(M.PORT - M.STACK_DIR * 30), 0.06, 0.30)])
+            hold=1.0, cam_to=cam_in, labels=[lab("door housing", w(M.PORT - M.STACK_DIR * 30), 0.06, 0.30)])
 
     def plate_on(u):
         put_on(sc, u)
@@ -948,7 +948,6 @@ def anim_02_stack():
     sc.step("2c.5", "With the stack in the housing, in the training's order: the M8 connector into the sonotrode until "
             "its ring hides, the plate onto it through the hole near its end, then the tungsten upper sonotrode, "
             "torqued against the plate to 50 N\u00b7m, counter-holding with a 17 mm wrench.", 6.8, plate_on, hold=1.2,
-            cam_to=cam_in,
             labels=[lab("plate, carbon fibre 100 \u00d7 20,\nhung by its end", w(M.PLATE_C + M.PLATE_ALONG * 25 + back),
                         0.06, 0.66),
                     lab("upper sonotrode,\ntungsten alloy", w(M.UPPER_END + back), 0.70, 0.25),

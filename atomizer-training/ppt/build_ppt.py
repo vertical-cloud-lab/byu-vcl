@@ -300,6 +300,7 @@ ANIMATIONS = {         # the step animations in the order of a run, as in ../viz
     "04_gas_wash": "3 · Gas wash",
     "05_melt": "4 · Melt",
     "06_pour": "5 · Pour and atomize",
+    "06b_oct6": "What goes wrong: the upper sonotrode under the stream (Oct 6); rendered with VIZ3D_STACK=oct6",
     "07_end_cooldown": "6–8 · End of pour, cool down, collect",
     "08_clean": "9 · Clean and reset",
 }

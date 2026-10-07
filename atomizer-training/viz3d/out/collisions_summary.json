@@ -5,18 +5,18 @@
    "b": "oring",
    "depth": 2.5,
    "at": [
-    -98,
-    74,
-    1343
+    123,
+    -39,
+    1342
    ]
   },
   {
    "a": "furnace_body",
    "b": "tc_plug",
-   "depth": 8.4,
+   "depth": 8.9,
    "at": [
-    66,
-    84,
+    65,
+    83,
     1345
    ]
   },
@@ -26,7 +26,7 @@
    "depth": 5.8,
    "at": [
     -135,
-    -1,
+    -6,
     1320
    ]
   },
@@ -35,9 +35,9 @@
    "b": "lever_pin",
    "depth": 2.5,
    "at": [
-    112,
-    -7,
-    1397
+    114,
+    10,
+    1395
    ]
   },
   {
@@ -53,21 +53,21 @@
   {
    "a": "hood",
    "b": "hood_knob",
-   "depth": 4.7,
+   "depth": 4.3,
    "at": [
-    108,
-    -20,
+    109,
+    -19,
     1468
    ]
   },
   {
    "a": "chamber",
    "b": "viewport_flange",
-   "depth": 21.9,
+   "depth": 21.6,
    "at": [
-    -40,
+    -37,
     -120,
-    1081
+    1084
    ]
   },
   {
@@ -75,8 +75,8 @@
    "b": "feet",
    "depth": 2.0,
    "at": [
-    612,
-    525,
+    621,
+    530,
     110
    ]
   },
@@ -87,17 +87,17 @@
    "at": [
     633,
     207,
-    1404
+    1410
    ]
   },
   {
    "a": "hmi_arm",
    "b": "hmi",
-   "depth": 19.7,
+   "depth": 19.8,
    "at": [
     745,
     50,
-    1411
+    1407
    ]
   },
   {
@@ -107,7 +107,7 @@
    "at": [
     746,
     51,
-    1411
+    1407
    ]
   },
   {
@@ -115,9 +115,9 @@
    "b": "argon_gauges",
    "depth": 4.0,
    "at": [
-    -582,
+    -540,
     734,
-    1482
+    1479
    ]
   }
  ],
@@ -200,51 +200,51 @@
     },
     {
      "label": "S.3",
-     "caption": "Into the door, plate on (sped up)",
+     "caption": "Into the door; connector, plate, upper sonotrode (sped up)",
      "start_frame": 667,
-     "end_frame": 714
+     "end_frame": 723
     },
     {
      "label": "S.4",
-     "caption": "Cover on, door shut",
-     "start_frame": 715,
-     "end_frame": 774
+     "caption": "Cover on, door shut, stack slid in",
+     "start_frame": 724,
+     "end_frame": 792
     },
     {
      "label": "S.5",
      "caption": "Three bolts (sped up)",
-     "start_frame": 775,
-     "end_frame": 819
+     "start_frame": 793,
+     "end_frame": 837
     },
     {
      "label": "R.1",
      "caption": "Argon in; the coil melts the charge",
-     "start_frame": 820,
-     "end_frame": 951
+     "start_frame": 838,
+     "end_frame": 969
     },
     {
      "label": "R.1b",
      "caption": "The coil stirs the melt",
-     "start_frame": 952,
-     "end_frame": 981
+     "start_frame": 970,
+     "end_frame": 999
     },
     {
      "label": "R.1c",
      "caption": "The coil stirs the melt",
-     "start_frame": 982,
-     "end_frame": 1041
+     "start_frame": 1000,
+     "end_frame": 1059
     },
     {
      "label": "R.2",
      "caption": "Vibration on, rod up: the melt onto the plate",
-     "start_frame": 1042,
-     "end_frame": 1170
+     "start_frame": 1060,
+     "end_frame": 1188
     },
     {
      "label": "R.3",
      "caption": "Droplets freeze into powder, down into the container",
-     "start_frame": 1171,
-     "end_frame": 1308
+     "start_frame": 1189,
+     "end_frame": 1326
     }
    ]
   }

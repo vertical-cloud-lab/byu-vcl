@@ -1,7 +1,7 @@
 {
  "name": "07_end_cooldown",
  "fps": 15,
- "n_frames": 578,
+ "n_frames": 586,
  "size": [
   1280,
   720
@@ -33,27 +33,27 @@
   },
   {
    "label": "7.3",
-   "caption": "Swing the three bolts back and open the door: the plate comes out with it. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+   "caption": "Swing the three bolts back and open the door: the plate comes out with it. If the upper sonotrode would catch the opening's edge, pull the stack back in its housing first. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
    "start_frame": 263,
-   "end_frame": 337
+   "end_frame": 345
   },
   {
    "label": "7.4",
    "caption": "Brush the plate, bowl, walls and view port down into the container, in a circle, before it comes off. Let the dust settle before reaching in.",
-   "start_frame": 338,
-   "end_frame": 420
+   "start_frame": 346,
+   "end_frame": 428
   },
   {
    "label": "8.1",
    "caption": "Close the container valve first (pull down and across: it is heavier than it looks), brush the top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.",
-   "start_frame": 421,
-   "end_frame": 495
+   "start_frame": 429,
+   "end_frame": 503
   },
   {
    "label": "8.2",
    "caption": "Pour onto paper, pick out chunks, sieve, bag, 6-character ID label, photo on GitHub. At about 100 °C: heat exchanger, water, air, argon, power off, in any order.",
-   "start_frame": 496,
-   "end_frame": 577
+   "start_frame": 504,
+   "end_frame": 585
   }
  ]
 }

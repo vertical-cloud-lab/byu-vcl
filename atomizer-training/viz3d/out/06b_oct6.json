@@ -1,0 +1,35 @@
+{
+ "name": "06b_oct6",
+ "fps": 15,
+ "n_frames": 354,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "O.1",
+   "caption": "Oct 6: the plate was clocked straight down the slope, and the stack slid in far enough that its upper sonotrode stood under the nozzle.",
+   "start_frame": 0,
+   "end_frame": 77
+  },
+  {
+   "label": "O.2",
+   "caption": "Sealing rod up: the stream lands on the upper sonotrode, not the plate. The melt gathers round it and drips onto the plate, where it freezes: almost nothing atomizes.",
+   "start_frame": 78,
+   "end_frame": 182
+  },
+  {
+   "label": "O.3",
+   "caption": "About three-quarters of the way through, Gage pulled the stack back about 40 mm. The stream clears the upper sonotrode now, but lands near the plate's free end.",
+   "start_frame": 183,
+   "end_frame": 254
+  },
+  {
+   "label": "O.4",
+   "caption": "Some of it atomizes now, but most of the melt is already on the upper sonotrode and the plate: very little powder (4yghtr). Before closing the door, check the stream will land mid-plate, beside the upper sonotrode.",
+   "start_frame": 255,
+   "end_frame": 353
+  }
+ ]
+}
