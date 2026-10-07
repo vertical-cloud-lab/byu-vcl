@@ -1,0 +1,496 @@
+"""Status check for the CB 154 AirGradient monitor (issue #42).
+
+Reports when the monitor last uploaded, every offline span and restart, and
+how its humidity compares with what outdoor moisture predicts for the room,
+then plots it. The prediction is there because there is only one monitor:
+since Sep 29 it sits in the dehumidified enclosure, so "expected room RH" is
+the stand-in for the room reading it can no longer take.
+
+API notes (see also the full-history script on claude/issue-42-20260718-1733):
+  - Auth: `token` query param, read from the AIRGRADIENT_API_KEY env var. The
+    request URL carries the token, so errors report the path only.
+  - measures/current returns the *last* reading with its timestamp, even when
+    the monitor has been offline for days. Check the timestamp.
+  - measures/past serves 5-minute buckets for 150 days, max 10 days per call.
+  - measures/raw serves every upload (about one a minute), max 200 records
+    and 2 days per call. A restart shows up there as an upload with no sensor
+    values. The 5-minute buckets usually average it away.
+  - After a restart the TVOC index starts over near 100.
+
+Usage:
+    AIRGRADIENT_API_KEY=... python check_status.py [--since 2026-07-18]
+        [--zoom-from "2026-09-29 12:00"]
+"""
+
+import argparse
+import datetime as dt
+import os
+import time
+from pathlib import Path
+
+import matplotlib.dates as mdates
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import requests
+
+HERE = Path(__file__).parent
+API_BASE = "https://api.airgradient.com/public/api/v1"
+LOCATION_ID = 184200  # "CB 154"
+LAT, LON = 40.246, -111.649  # BYU campus, Provo, UT
+TZ = "America/Denver"
+GAP = pd.Timedelta("15min")
+BUCKET = pd.Timedelta("5min")
+
+# (local time, label); restarts are found in the raw uploads and marked on
+# their own. Sep 29: Sterling plugged in and switched on the Quest 155 (pump
+# unplugged) while the monitor was offline. The 3:55 pm restart that brought
+# it back was Sterling power-cycling it before moving it into the enclosure
+# "around 5:00 pm"; after a second restart at 5:36 pm its Wi-Fi signal
+# changed, so it was unplugged and moved again then.
+EVENTS = [("2026-09-29 13:30", "~1:30 pm,\ndehumidifier on")]
+# Close-up only. The atomizer sessions are from #222 and #124: training with
+# AMAZEMET on Sep 29-30, then the first unsupervised run on Oct 2 from about
+# 1:30 pm. The monitor sees them as CO2 and TVOC rises. The Sep 30 step is
+# from the data alone: +3.3 C in 15 min, with no restart (so not unplugged)
+# and little change in dew point (so heat, not drier air). It has stayed
+# near 27 C since.
+ZOOM_EVENTS = [
+    ("2026-09-30 10:25", "10:25 am Sep 30, +3 \N{DEGREE SIGN}C in\n15 min, no restart"),
+    ("2026-10-02 13:30", "1:30 pm Oct 2,\natomizer run"),
+]
+# Room baseline ends here. Only earlier readings go into the room fit, and
+# later ones are drawn as "dehumidifier on".
+ROOM_UNTIL = "2026-09-29 13:30"
+
+MEASURES = [
+    "timestamp", "pm01", "pm02", "pm10", "pm01_corrected", "pm02_corrected",
+    "pm10_corrected", "pm003Count", "atmp", "rhum", "rco2", "atmp_corrected",
+    "rhum_corrected", "rco2_corrected", "tvoc", "tvocIndex", "noxIndex",
+    "wifi", "datapoints",
+]
+SENSORS = ["atmp", "rhum", "rco2", "pm02"]
+
+# palette (dataviz skill reference, light mode; slots 1-3 validated all-pairs)
+BLUE = "#2a78d6"  # room
+ORANGE = "#eb6834"  # dehumidifier on
+AQUA = "#1baf7a"  # outdoor
+INK = "#0b0b0b"
+SECONDARY = "#52514e"
+MUTED = "#898781"
+GRID = "#e1e0d9"
+BASELINE = "#c3c2b7"
+SURFACE = "#fcfcfb"
+OFFLINE = "#f0efec"
+
+
+def api_get(path: str, empty_if_404: bool = False, **params) -> object:
+    r = requests.get(
+        f"{API_BASE}{path}",
+        params={"token": os.environ["AIRGRADIENT_API_KEY"], **params},
+        timeout=180,
+    )
+    if r.status_code == 404 and empty_if_404:
+        return []
+    if not r.ok:
+        raise RuntimeError(f"AirGradient {path} returned HTTP {r.status_code}")
+    return r.json()
+
+
+def api_time(t: dt.datetime) -> str:
+    return t.strftime("%Y%m%dT%H%M%SZ")
+
+
+def fetch_indoor(start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
+    rows, cur = [], start
+    while cur < end:
+        to = min(cur + dt.timedelta(days=10), end)
+        rows += api_get(f"/locations/{LOCATION_ID}/measures/past",
+                        **{"from": api_time(cur), "to": api_time(to)})
+        cur = to
+    df = pd.DataFrame(rows)[MEASURES].drop_duplicates(subset="timestamp")
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+    return df.sort_values("timestamp").reset_index(drop=True)
+
+
+def fetch_raw(start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
+    # 3 h per call stays under the 200-record cap at one upload a minute.
+    # A window with no uploads (the monitor offline) comes back as a 404.
+    rows, cur = [], start
+    while cur < end:
+        to = min(cur + dt.timedelta(hours=3), end)
+        rows += api_get(f"/locations/{LOCATION_ID}/measures/raw",
+                        empty_if_404=True,
+                        **{"from": api_time(cur), "to": api_time(to)})
+        cur = to
+    df = pd.DataFrame(rows)[MEASURES[:-1] + ["firmwareVersion"]]
+    df["timestamp"] = pd.to_datetime(df["timestamp"], utc=True)
+    return df.drop_duplicates(subset="timestamp").sort_values("timestamp")
+
+
+def fetch_outdoor(start: dt.datetime, end: dt.datetime) -> pd.DataFrame:
+    # Historical-forecast API: the high-resolution models, archived, through
+    # today. Its daily dew point tracks the room better (r 0.975) than the
+    # ERA5 archive API's (0.962), which ran 1-8 C wetter over Provo.
+    for attempt in range(4):  # Open-Meteo times out now and then from CI
+        try:
+            r = requests.get(
+                "https://historical-forecast-api.open-meteo.com/v1/forecast",
+                params=dict(latitude=LAT, longitude=LON, timezone="UTC",
+                            start_date=f"{start:%Y-%m-%d}",
+                            end_date=f"{end:%Y-%m-%d}",
+                            hourly="temperature_2m,relative_humidity_2m,dew_point_2m"),
+                timeout=60,
+            )
+            r.raise_for_status()
+            break
+        except requests.RequestException:
+            if attempt == 3:
+                raise
+            time.sleep(20 * (attempt + 1))
+    w = pd.DataFrame(r.json()["hourly"])
+    w["time"] = pd.to_datetime(w["time"]).dt.tz_localize("UTC")
+    return w
+
+
+def dew_point(t, rh):
+    b, c = 17.62, 243.12  # Magnus, over water
+    g = np.log(rh / 100) + b * t / (c + t)
+    return c * g / (b - g)
+
+
+def rh_at(td, t):
+    b, c = 17.62, 243.12
+    return 100 * np.exp(b * td / (c + td) - b * t / (c + t))
+
+
+def offline_spans(df: pd.DataFrame, last_seen: pd.Timestamp,
+                  now: pd.Timestamp) -> list:
+    ts = df["timestamp"]
+    spans = [(ts[i - 1] + BUCKET, ts[i]) for i in df.index[ts.diff() > GAP]]
+    if now - last_seen > GAP:
+        spans.append((last_seen, None))  # still offline
+    return spans
+
+
+def dbm(v: float) -> str:
+    return "n/a" if np.isnan(v) else f"{v:.0f}".replace("-", "\N{MINUS SIGN}")
+
+
+def restarts(raw: pd.DataFrame, spans: list) -> list:
+    """(time, label) for each boot, i.e. each upload with no sensor values.
+
+    Back-to-back empty uploads count as one boot. The label notes a boot that
+    ended an outage, or a Wi-Fi signal shift across it (a sign of a move).
+    """
+    raw = raw.set_index("timestamp")
+    empty = raw[SENSORS].isna().all(axis=1)
+    boots = raw.index[empty].to_series()
+    boots = boots[boots.diff().isna() | (boots.diff() > GAP)]
+    wifi = raw.loc[~empty, "wifi"]
+    half_hour = pd.Timedelta("30min")
+    out = []
+    for t in boots:
+        local = t.tz_convert(TZ)
+        label = f"{local:%-I:%M %p} restart".replace("AM", "am").replace("PM", "pm")
+        before = wifi.loc[t - half_hour:t].median()
+        after = wifi.loc[t:t + half_hour].median()
+        if any(b is not None and abs(t - b) < BUCKET for _, b in spans):
+            label += ",\nback online"
+        elif abs(after - before) >= 3:
+            label += f",\nWi-Fi {dbm(before)} \N{RIGHTWARDS ARROW} {dbm(after)} dBm"
+        print(f"restart: {local:%Y-%m-%d %H:%M:%S}  Wi-Fi median "
+              f"{dbm(before)} dBm before, {dbm(after)} dBm after")
+        out.append((local, label))
+    return out
+
+
+def style_axis(ax, ylabel):
+    ax.set_facecolor(SURFACE)
+    ax.grid(axis="y", color=GRID, linewidth=0.7)
+    for side in ("top", "right"):
+        ax.spines[side].set_visible(False)
+    for side in ("left", "bottom"):
+        ax.spines[side].set_color(BASELINE)
+    ax.tick_params(colors=MUTED, labelsize=9)
+    ax.set_ylabel(ylabel, color=SECONDARY, fontsize=10)
+
+
+def step_to(series: pd.Series, x_end) -> pd.Series:
+    """Daily values as a step line carried out to x_end."""
+    s = series.dropna()
+    s = s[s.index <= x_end]
+    s[x_end] = s.iloc[-1]
+    return s
+
+
+def shade_offline(axes, spans, x_end, label_ax=None, y=0.97):
+    for a, b in spans:
+        a, b = a.tz_convert(TZ), (x_end if b is None else b.tz_convert(TZ))
+        for ax in axes:
+            ax.axvspan(a, b, color=OFFLINE, linewidth=0, zorder=0)
+        if label_ax is not None:
+            left, right = (mdates.num2date(v, tz=TZ) for v in label_ax.get_xlim())
+            a, b = max(a, left), min(b, right)
+            if a < b:
+                label_ax.annotate("offline", (a + (b - a) / 2, y),
+                                  xycoords=("data", "axes fraction"),
+                                  ha="center", va="top", fontsize=9,
+                                  color=SECONDARY)
+
+
+def mark_events(axes, events, label_ax, y, ha, dx):
+    """A line per event on every axis, labelled on label_ax. A label that
+    would overlap an earlier one moves a row toward the middle of the axis."""
+    renderer = label_ax.figure.canvas.get_renderer()
+    placed = []
+    for t, label in sorted(events):
+        for ax in axes:
+            ax.axvline(t, color=SECONDARY, linewidth=1)
+        ann = label_ax.annotate(label, (t, y), xycoords=("data", "axes fraction"),
+                                xytext=(dx, 0), textcoords="offset points", ha=ha,
+                                va="top" if y > 0.5 else "bottom", fontsize=9,
+                                color=SECONDARY)
+        box = ann.get_window_extent(renderer)
+        row = (box.height / label_ax.bbox.height + 0.02) * (-1 if y > 0.5 else 1)
+        while any(box.overlaps(p) for p in placed):
+            ann.xy = (t, ann.xy[1] + row)
+            box = ann.get_window_extent(renderer)
+        placed.append(box)
+
+
+def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--since", default="2026-07-18")
+    ap.add_argument("--zoom-from", default="2026-09-29 12:00",
+                    help="local start of the close-up figure")
+    args = ap.parse_args()
+    start = pd.Timestamp(args.since, tz=TZ).tz_convert("UTC").to_pydatetime()
+    zoom_from = pd.Timestamp(args.zoom_from, tz=TZ)
+    room_until = pd.Timestamp(ROOM_UNTIL, tz=TZ)
+    now = pd.Timestamp.now(tz="UTC")
+
+    current = api_get("/locations/measures/current")
+    current = next(c for c in current if c["locationId"] == LOCATION_ID)
+    last_seen = pd.Timestamp(current["timestamp"])
+    print(f"last upload {last_seen.tz_convert(TZ):%a %b %d %H:%M:%S %Z} "
+          f"({(now - last_seen).total_seconds() / 3600:.1f} h ago), "
+          f"firmware {current['firmwareVersion']}, wifi {current['wifi']} dBm")
+
+    df = fetch_indoor(start, now.to_pydatetime())
+    raw = fetch_raw(zoom_from.tz_convert("UTC").to_pydatetime(),
+                    now.to_pydatetime())
+    w = fetch_outdoor(start, now)
+    w = w[w["time"] <= now]  # the API also returns today's forecast hours
+    stem = f"{start:%Y%m%d}_{now:%Y%m%d}"
+    df.to_csv(HERE / f"cb154_5min_{stem}.csv.gz", index=False)
+    raw.to_csv(HERE / f"cb154_raw_{zoom_from:%Y%m%d}_{now:%Y%m%d}.csv.gz",
+               index=False)
+    w.to_csv(HERE / f"provo_weather_hourly_{stem}.csv", index=False)
+
+    spans = offline_spans(df, last_seen, now)
+    for a, b in spans:
+        end = b.tz_convert(TZ) if b is not None else "still offline"
+        dur = (b if b is not None else now) - a
+        print(f"offline: {a.tz_convert(TZ):%Y-%m-%d %H:%M} -> {end}  ({dur})")
+    boots = restarts(raw, spans)
+
+    df = df.set_index("timestamp").tz_convert(TZ)
+    df["dew"] = dew_point(df["atmp"], df["rhum"])
+    w = w.set_index("time").tz_convert(TZ)
+    hourly = df[["rhum", "atmp", "dew"]].resample("1h").mean()
+    room = hourly[hourly.index < room_until]
+
+    # Room dew point follows outdoor dew point (the room's air is replaced
+    # fast: CO2 sits near outdoor levels), so fit daily means of the room
+    # baseline and turn the prediction back into RH at the room's last
+    # measured temperature.
+    daily = room.resample("D").mean().join(
+        w["dew_point_2m"].resample("D").mean().rename("out_dew"), how="outer")
+    full = room["rhum"].resample("D").count() >= 20
+    fit = daily[full.reindex(daily.index, fill_value=False)].dropna()
+    slope, icept = np.polyfit(fit["out_dew"], fit["dew"], 1)
+    r = np.corrcoef(fit["out_dew"], fit["dew"])[0, 1]
+    daily["expected_dew"] = slope * daily["out_dew"] + icept
+    daily["room_t"] = daily["atmp"].ffill()
+    daily["expected_rh"] = rh_at(daily["expected_dew"], daily["room_t"])
+    resid = fit["rhum"] - daily.loc[fit.index, "expected_rh"]
+    print(f"room dew = {slope:.2f} x outdoor dew + {icept:.1f} C "
+          f"(daily r = {r:.3f}, n = {len(fit)} days); expected RH is "
+          f"within +/-{resid.std():.1f}% (1 sd)")
+    print(daily[["rhum", "expected_rh", "expected_dew", "out_dew"]]
+          .tail(7).round(1).to_string())
+
+    ref, ref_sd = hourly_room(room, w)
+    after = hourly[hourly.index >= room_until].join(ref).dropna()
+    after["heat"] = after["rh"] - rh_at(after["dew_ref"], after["atmp"])
+    after["water"] = rh_at(after["dew_ref"], after["atmp"]) - after["rhum"]
+    after["less_vapor_%"] = 100 * (1 - rh_at(after["dew"], 0)
+                                   / rh_at(after["dew_ref"], 0))
+    print("since the dehumidifier went on, monitor vs expected room (daily "
+          "medians of hourly means). heat/water: RH points of the gap from "
+          "warming and from drying:")
+    print(after[["rhum", "rh", "atmp", "t", "dew", "dew_ref", "heat", "water",
+                 "less_vapor_%"]].resample("D").median().round(1).to_string())
+    # How the monitor's dew point follows the room's: a slope well below 1
+    # means the drying shrinks as the room dries, and the two lines cross
+    # where the dehumidifier would stop removing water at all.
+    last = after[after.index > after.index[-1] - pd.Timedelta("72h")]
+    k, k0 = np.polyfit(last["dew_ref"], last["dew"], 1)
+    print(f"last 72 h: monitor dew = {k:.2f} x expected room dew + {k0:.1f} C "
+          f"(r = {np.corrcoef(last['dew_ref'], last['dew'])[0, 1]:.2f}, "
+          f"n = {len(last)} h); equal at a room dew point of "
+          f"{k0 / (1 - k):.1f} C")
+
+    x_end = now.tz_convert(TZ) + pd.Timedelta("12h")
+    events = [(pd.Timestamp(t, tz=TZ), label) for t, label in EVENTS]
+    zoom_events = [(pd.Timestamp(t, tz=TZ), label) for t, label in ZOOM_EVENTS]
+    plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
+                  last_seen, now)
+    plot_zoom(df, room_until, ref, ref_sd, spans,
+              events + boots + zoom_events, zoom_from, now)
+
+
+def hourly_room(room: pd.DataFrame, w: pd.DataFrame) -> tuple:
+    """Hour-by-hour expected room humidity, for comparing with the enclosure.
+
+    The room's hourly dew point follows the trailing 24 h mean of outdoor dew
+    point, plus a daily cycle: about 1 C below that at 5-7 pm and 1 C above
+    at 9-11 am. RH is then taken at the room's median temperature over its
+    last two measured weeks. Returns (hourly frame, residual sd of dew point).
+
+    The fit is from the cooling season (Jul 18 - Sep 24), and the room's
+    relation to outdoor air changes with the season. Against the daily fit
+    in main(), the room's dew point ran about 3.5 C lower in Feb-Apr, 2.7 C
+    lower in May and 1.8 C lower in June, then on the fit in Jul-Aug, and
+    0.6 C lower in Sep 12-23 (Open-Meteo, and the Feb-Jul archive on
+    claude/issue-42-20260718-1733). So expect this estimate to overstate the
+    room more and more as the building moves to heating.
+    """
+    out24 = w["dew_point_2m"].rolling(24, min_periods=18).mean()
+    fit = pd.DataFrame({"dew": room["dew"], "out24": out24}).dropna()
+    slope, icept = np.polyfit(fit["out24"], fit["dew"], 1)
+    cycle = (fit["dew"] - (slope * fit["out24"] + icept)).groupby(
+        fit.index.hour).mean()
+    dew = slope * out24 + icept + cycle.reindex(out24.index.hour).to_numpy()
+    sd = (fit["dew"] - dew.reindex(fit.index)).std()
+    measured = room["atmp"].dropna()
+    t = measured[measured.index >= measured.index[-1] - pd.Timedelta("14D")]
+    t = t.median()
+    print(f"hourly room dew = {slope:.2f} x outdoor dew (trailing 24 h mean) "
+          f"+ {icept:.1f} C + hour-of-day term; residual sd {sd:.2f} C "
+          f"(n = {len(fit)} h); room temperature {t:.1f} C")
+    ref = pd.DataFrame({"dew_ref": dew, "t": t})
+    ref["rh"] = rh_at(ref["dew_ref"], t)
+    ref["rh_lo"], ref["rh_hi"] = rh_at(dew - sd, t), rh_at(dew + sd, t)
+    return ref.dropna(), sd
+
+
+def plot_overview(hourly, room_until, daily, w, spans, events, resid, x_end,
+                  last_seen, now):
+    fig, (ax_rh, ax_dp) = plt.subplots(
+        2, 1, figsize=(11.5, 7), sharex=True, constrained_layout=True)
+    fig.set_facecolor(SURFACE)
+    style_axis(ax_rh, "Relative humidity (%)")
+    style_axis(ax_dp, "Dew point (\N{DEGREE SIGN}C)")
+
+    room = hourly.index < room_until
+    ax_rh.plot(hourly.index[room], hourly["rhum"][room], color=BLUE,
+               linewidth=1.4, label="room (AirGradient, hourly)")
+    ax_rh.plot(hourly.index[~room], hourly["rhum"][~room], color=ORANGE,
+               linewidth=1.4, label="dehumidifier on")
+    expected = step_to(daily["expected_rh"], x_end)
+    ax_rh.step(expected.index, expected, where="post", color=MUTED,
+               linewidth=1.2,
+               label=f"room, expected from outdoor dew point (daily, ±{resid.std():.0f}%)")
+    ax_dp.plot(hourly.index[room], hourly["dew"][room], color=BLUE,
+               linewidth=1.4, label="room")
+    ax_dp.plot(hourly.index[~room], hourly["dew"][~room], color=ORANGE,
+               linewidth=1.4, label="dehumidifier on")
+    out_dew = w["dew_point_2m"].rolling(24, center=True, min_periods=12).mean()
+    ax_dp.plot(out_dew.index, out_dew, color=AQUA, linewidth=1.4,
+               label="outdoor, Provo (24 h mean, Open-Meteo)")
+
+    ax_dp.set_xlim(hourly.index[0], x_end)
+    shade_offline((ax_rh, ax_dp), spans, x_end, label_ax=ax_rh)
+    mark_events((ax_rh, ax_dp), events, ax_rh, 0.04, "right", -6)
+
+    for ax in (ax_rh, ax_dp):
+        ax.legend(loc="lower left", bbox_to_anchor=(0, 1), ncol=3,
+                  fontsize=8.5, frameon=False, labelcolor=SECONDARY)
+    ax_dp.xaxis.set_major_locator(mdates.WeekdayLocator(byweekday=mdates.MO, tz=TZ))
+    ax_dp.xaxis.set_major_formatter(mdates.DateFormatter("%b %d", tz=TZ))
+    status = (f"no uploads since {last_seen.tz_convert(TZ):%a %b %d, %H:%M}"
+              if now - last_seen > GAP else "online")
+    fig.suptitle(
+        f"CB 154 AirGradient, {hourly.index[0]:%b %d} \N{EN DASH} "
+        f"{now.tz_convert(TZ):%b %d, %Y}: {status}. "
+        "Hourly means, America/Denver time.",
+        x=0.01, ha="left", fontsize=11, color=INK)
+
+    out = HERE / f"cb154_status_{now:%Y%m%d}.png"
+    fig.savefig(out, dpi=150, facecolor=SURFACE)
+    print("wrote", out)
+
+
+def plot_zoom(df, room_until, ref, ref_sd, spans, events, zoom_from, now):
+    x_end = now.tz_convert(TZ) + pd.Timedelta("30min")
+    win = df[df.index >= zoom_from]
+    ref = ref[ref.index >= zoom_from.floor("h")].assign(
+        dew_lo=lambda r: r["dew_ref"] - ref_sd,
+        dew_hi=lambda r: r["dew_ref"] + ref_sd)
+    fig, axes = plt.subplots(3, 1, figsize=(11.5, 9), sharex=True,
+                             constrained_layout=True)
+    fig.set_facecolor(SURFACE)
+    expected = f"room, expected from outdoor dew point (hourly, \N{PLUS-MINUS SIGN}1 sd band)"
+    panels = [
+        ("Relative humidity (%)", "rhum", "rh", "rh_lo", "rh_hi", expected),
+        ("Temperature (\N{DEGREE SIGN}C)", "atmp", "t", None, None,
+         "room, median of its last 2 measured weeks"),
+        ("Dew point (\N{DEGREE SIGN}C)", "dew", "dew_ref", "dew_lo", "dew_hi",
+         expected),
+    ]
+    room = win.index < room_until
+    for ax, (ylabel, col, ref_col, lo_col, hi_col, ref_label) in zip(axes, panels):
+        style_axis(ax, ylabel)
+        if room.any():
+            ax.plot(win.index[room], win[col][room], color=BLUE,
+                    linewidth=1.4, label="room")
+        ax.plot(win.index[~room], win[col][~room], color=ORANGE,
+                linewidth=1.4, label="monitor, dehumidifier on")
+        if lo_col is not None:
+            ax.fill_between(ref.index, ref[lo_col], ref[hi_col], color=MUTED,
+                            alpha=0.18, linewidth=0)
+        ax.plot(ref.index, ref[ref_col], color=MUTED, linewidth=1.2,
+                label=ref_label)
+        ax.legend(loc="lower left", bbox_to_anchor=(0, 1), ncol=2,
+                  fontsize=8.5, frameon=False, labelcolor=SECONDARY)
+    axes[-1].set_xlim(zoom_from, x_end)
+    lo, hi = axes[0].get_ylim()
+    axes[0].set_ylim(lo, hi + 0.2 * (hi - lo))  # room for the event labels
+    shade_offline(axes, spans, x_end, label_ax=axes[0], y=0.5)
+    mark_events(axes, events, axes[0], 0.97, "left", 4)
+    if x_end - zoom_from <= pd.Timedelta("36h"):
+        axes[-1].xaxis.set_major_locator(mdates.HourLocator(interval=2, tz=TZ))
+        axes[-1].xaxis.set_major_formatter(
+            lambda x, _: f"{mdates.num2date(x, tz=TZ):%-I %p}".lower())
+    else:
+        axes[-1].xaxis.set_major_locator(mdates.DayLocator(tz=TZ))
+        axes[-1].xaxis.set_minor_locator(
+            mdates.HourLocator(byhour=[6, 12, 18], tz=TZ))
+        axes[-1].xaxis.set_major_formatter(
+            mdates.DateFormatter("%a %b %d", tz=TZ))
+    fig.suptitle(
+        f"CB 154 AirGradient, {zoom_from:%b %d, %-I %p} to "
+        f"{now.tz_convert(TZ):%b %d, %-I:%M %p}".replace("AM", "am").replace("PM", "pm")
+        + ": after the dehumidifier went on. 5-minute means. "
+        "America/Denver time.",
+        x=0.01, ha="left", fontsize=11, color=INK)
+
+    out = HERE / f"cb154_enclosure_{now:%Y%m%d}.png"
+    fig.savefig(out, dpi=150, facecolor=SURFACE)
+    print("wrote", out)
+
+
+if __name__ == "__main__":
+    main()
