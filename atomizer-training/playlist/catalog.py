@@ -229,9 +229,9 @@ OCT6 = [
      "title": "10/6/2026 Atomizer Run Video 2: furnace, ultrasonic scan, carbon-fibre plate, door closed",
      "summary": "Gage rebuilds the furnace and sets up the ultrasonic stack on his own: crucible and insulation into the "
                 "coil, the thermocouple and the sealing rod, a scan at 40,000 Hz, a plate torqued to 50 N·m and tested "
-                "(40,200 Hz, 20 W), then swapped for a carbon-fibre plate, the cheapest, which still carries some "
-                "aluminium from an earlier run. A spray test through the open door, then the door is bolted shut. The "
-                "stack's height under the nozzle is not checked here; in video 3 it turns out to be too high.",
+                "(40,200 Hz, 20 W), then swapped for a carbon-fibre plate, “the cheapest”. A spray test through the "
+                "open door, then the door is bolted shut. The stack's height under the nozzle is not checked here; in "
+                "video 3 it turns out to be too high.",
      "context": "Recorded Tue Oct 6 2026, 14:06–14:24 MDT, on Gage Erickson's collar phone.",
      "docs": RUN_OCT6, "links": PARAMS_261,
      "chapters": [(0, "Crucible and insulation into the furnace"), (220, "Thermocouple and sealing rod"),

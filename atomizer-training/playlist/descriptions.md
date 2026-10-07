@@ -1071,7 +1071,7 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 [`dnPs56DPt6I`](https://www.youtube.com/watch?v=dnPs56DPt6I) · was *Oct 6th atomizer run, video 2*
 
 ```
-Gage rebuilds the furnace and sets up the ultrasonic stack on his own: crucible and insulation into the coil, the thermocouple and the sealing rod, a scan at 40,000 Hz, a plate torqued to 50 N·m and tested (40,200 Hz, 20 W), then swapped for a carbon-fibre plate, the cheapest, which still carries some aluminium from an earlier run. A spray test through the open door, then the door is bolted shut. The stack's height under the nozzle is not checked here; in video 3 it turns out to be too high.
+Gage rebuilds the furnace and sets up the ultrasonic stack on his own: crucible and insulation into the coil, the thermocouple and the sealing rod, a scan at 40,000 Hz, a plate torqued to 50 N·m and tested (40,200 Hz, 20 W), then swapped for a carbon-fibre plate, “the cheapest”. A spray test through the open door, then the door is bolted shut. The stack's height under the nozzle is not checked here; in video 3 it turns out to be too high.
 
 Chapters:
 0:00 Crucible and insulation into the furnace
