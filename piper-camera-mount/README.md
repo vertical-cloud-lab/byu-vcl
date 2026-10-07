@@ -162,6 +162,9 @@ From `envelope.py` (`exports/envelope.json`), fingers 40 mm apart:
 
 ## Hardware
 
+The whole bill of materials, with what the lab already has and what is still to buy, is in
+[`BOM.md`](BOM.md).
+
 | Qty | Part | Where |
 |---|---|---|
 | 2 | M3 x 12 socket head (ISO 4762) | Bracket pad into the tab's brass inserts, down the O7 channels with a 2.5 mm hex key. Snug only |
