@@ -56,6 +56,12 @@ Draft 4 went up already titled in the playlist's pattern (*Atomizer tutorial N: 
 links pinned at `6c5da5f`. Drafts 1 and 2 are titled `[superseded] …`. Deleting them is still to do: it needs the full token
 and a go-ahead.
 
+**Real footage for draft 5.** Draft 4 is about 44 % recordings (35 clips, 818 s of 30:33), but only 8 of those clips
+(about 220 s) show the work itself; the rest is Bartosz explaining, often at the touchscreen, and tutorial 2 has no
+hands-on footage at all. [`real-footage.md`](real-footage.md) is the cut list for draft 5: for every animation sub-step,
+the moment of real footage that shows it, checked against the log, the transcript and the frames, with whether it
+needs stabilizing. Building it needs the stream-cam Pi for the 720p windows, so a regular `@claude` run.
+
 **Playlist.** The atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, opens with the tutorials,
 ahead of the cups tutorial, the stitch and the recordings. Draft 4 has been in positions 1–4 since 2026-10-07, without
 "(draft 4)" in the titles, and draft 3 is labelled `[superseded] …`. See [`../playlist/README.md`](../playlist/README.md).
