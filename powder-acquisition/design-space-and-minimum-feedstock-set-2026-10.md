@@ -332,7 +332,7 @@ count stays at 15 non-Al, 16 feedstocks, unless Mohadaseh confirms a different e
 - **Edison's recommended box: 4–12 wt.% Ce**, highest-value region 8–10.6. The 4 % floor is
   "where Ce starts to pay", not a campaign constraint; keep **L = 0** so the Ce-free arm
   remains the control, and take **U = 12** (slightly hypereutectic, which rapid solidification
-  tolerates). That change raises the Ce floor on a master to 13.6 % and is folded into the
+  tolerates). That change raises the Ce floor on a master to 13.0 % and is folded into the
   tables of §3 (re-run of the script after this update).
 - **Charging form.** Edison prefers an **Al-20Ce / Al-25Ce master** for safety (Ce is
   pre-bound as Al₁₁Ce₃, less dross) over elemental Ce (99.9 %, melted under Ar at 780–800 °C
