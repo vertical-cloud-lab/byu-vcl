@@ -39,7 +39,9 @@
 6. Confirm the depreciable base = capitalized acquisition cost including
    **tariff/duty, freight, and installation** (2 CFR 200.1) as booked by Fixed
    Assets — and the process to fix the asset record if ancillary charges were
-   expensed instead.
+   expensed instead. BYU's *Asset Capitalization Procedures* name freight and
+   installation explicitly ("included in the cost of the equipment"); confirm
+   that import duty is treated the same way (see Q35).
 7. Can machine-specific renovation line items (rigging, dedicated electrical,
    inert-gas plumbing, machine-specific ventilation) be **reclassified from the
    building/renovation project to the equipment asset record** before schedule
@@ -53,7 +55,8 @@
    documented use-allowance? (The choice moves the repayment horizon from
    ~1.5 years to beyond the useful life — we will not project timelines until
    ruled.) Our draft ledger is in the equipment package — does it satisfy the
-   documentation requirement?
+   documentation requirement? Alternative we now prefer: reimbursement by
+   re-coding the purchase to the equipment reserve (Q34).
 
 **Rates & structure**
 9. Approval of a per-job **minimum fee** for setup/expendables (p. 4).
@@ -93,7 +96,10 @@
 
 ## For Sponsored Programs Office
 18. Current negotiated F&A rate agreement (rate, base, expiration) — confirm
-    51.5% and whether it applies to service-center external sales.
+    51.5% and whether it applies to service-center external sales. The signed
+    agreement we found (2019, revised 2022) sets 51.5% MTDC on-campus research
+    for 2022-01-01 to 2024-12-31, with the same rates carried into FY2025. What
+    is in force for 2026–27?
 19. When external engagements are research-shaped, what's the minimal-friction
     sponsored-agreement path, and how should recharge machine time appear in
     sponsored budgets (internal rate as a direct cost in MTDC)?
@@ -106,7 +112,13 @@
 21. How was the renovation booked (building asset / equipment / expensed), item
     by item? Which items, if any, do **you** determine belong on the equipment
     asset record (rigging and vendor installation vs. dedicated electrical /
-    gas plumbing / ventilation, which may remain building systems)?
+    gas plumbing / ventilation, which may remain building systems)? Was the
+    room work capitalized as a building improvement (BYU threshold $100,000,
+    10–40-year life) or expensed? Can movable items bought under the renovation
+    and costing $5,000 or more each (chiller, oxygen-depletion monitors,
+    glovebox, dust collector, gas purifier, gas cabinets) be recorded as
+    separate equipment assets and added to the center's depreciation schedule
+    (Policy p. 8)?
 
 ## For Treasury Services
 22. eMarkets Storefront setup for external card payments: timeline, contract
@@ -162,3 +174,31 @@
     instruments were federally funded (the likely source of the difference in
     posture — the atomizer is startup-funded with no federal money), and what
     "grandfathered in" means concretely relative to the June 2005 policy.
+
+## Rate structure, reimbursement, tariff (added 2026-10-07)
+33. **Two services, one uniform rate each.** We propose a *machine run* for
+    trained BYU operators ($476/run at forecast volume) and a *full-service
+    run* operated by center staff ($904/run internal; the only service offered
+    to external users). Facility-management labor is allocated across all
+    runs, and operator labor only to full-service runs ("allocated to a service
+    or product according to a reasonable approximation of the benefit
+    received," p. 3). Is this acceptable, and what training or authorization
+    record should gate access to the machine-run rate?
+34. **Reimbursement by re-coding the purchase (p. 8).** May the atomizer's
+    purchase be moved to the center's equipment reserve ("change the speedtype
+    in PeopleSoft to the Recharge Center equipment reserve account")? Either in
+    tranches as depreciation accumulates, or at once under an approved reserve
+    deficit (p. 7) that depreciation repays over the schedule. Our own group
+    would pay the machine-run rate from startup funds, so every run's
+    depreciation reaches the reserve. Is this preferred to in-kind credit?
+35. **Tariff basis and refunds.** Who was the importer of record for the
+    atomizer (BYU through a customs broker, or the vendor under DDP terms), and
+    on what entry date? Duty paid under IEEPA became refundable after
+    *Learning Resources, Inc. v. Trump* (2026-02-20). The CIT's 2026-05-07
+    ruling against the Section 122 surcharge is stayed on appeal. Section 301
+    duty (from 2026-07-24) is in force. If BYU pursues or receives a refund,
+    how should the asset record and the depreciation schedule be adjusted?
+36. **Non-federal pricing structure.** Two posted surcharge levels for
+    non-federal externals: academic/nonprofit, including non-US universities,
+    at $280/run, and commercial at $780/run. Embargo fees are charged per order,
+    not per run. Any objection under p. 5?

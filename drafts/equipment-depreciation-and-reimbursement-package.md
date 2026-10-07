@@ -31,8 +31,11 @@
 
 2 CFR 200.1 permits ancillary charges — "taxes, duty, protective in transit
 insurance, freight, and installation" — in acquisition cost per the
-institution's regular practice; BYU depreciates "acquisition cost … less
-residual value" (Policy p. 7). **Reconcile this table against what Fixed Assets
+institution's regular practice. BYU's regular practice (Financial Services,
+*Asset Capitalization Procedures*) records equipment "at acquisition cost", and
+"Installation costs and freight charges are included in the cost of the
+equipment." BYU depreciates "acquisition cost … less residual value" (Policy
+p. 7). **Reconcile this table against what Fixed Assets
 actually booked; raise any mismatch before the schedule is approved.**
 
 | Component | Amount | Capitalized on asset record? |
@@ -68,7 +71,17 @@ Itemize from the renovation project ledger:
 | Dedicated electrical service to machine | $[  ] | Yes | | reclassify |
 | Inert-gas (argon) plumbing to machine | $[  ] | Yes | | reclassify |
 | Machine-specific ventilation/exhaust | $[  ] | Yes | | reclassify |
+| Movable equipment bought under the renovation, each ≥ $5,000 (e.g., chiller, oxygen-depletion monitors, glovebox, dust collector, gas purifier, gas cabinet) | $[  ] | Yes | | separate equipment asset(s), added to the depreciation schedule (Policy p. 8) |
 | General room renovation (walls, lighting, finishes…) | $[  ] | No | | remains building cost (not in rates) |
+
+Movable items costing $5,000 or more meet BYU's definition of equipment
+("tangible movable equipment … having a useful life of three years or longer")
+and can be recorded as their own assets. Equipment "purchased with general or
+departmental operating (non-Federal) funds, can be depreciated in recharge
+rates" (Policy p. 8), and the account that paid can be reimbursed. Items under
+$5,000 were expensed and stay out. General room work is a building improvement
+(BYU capitalizes improvements only at $100,000 or more, over 10–40 years) and
+is excluded from rates whether capitalized or expensed (Policy p. 3).
 
 Ask Fixed Assets how each item was booked **before** the depreciation schedule
 is approved; reclassification afterward is much harder.

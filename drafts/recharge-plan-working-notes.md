@@ -1122,3 +1122,357 @@ no-surcharge rule for federal externals. Kickoff question — don't guess.
   the political-runway problem Edison's strategy critique predicted — one more
   reason the cross-functional kickoff (with the Academic VP chain represented)
   should happen before, not after, drafting rounds with Regulatory Accounting.
+
+## 20. Recommended rate card, tariff, and renovation (Sterling, 2026-10-07)
+
+PI asked for (a) a rate recommendation built on everything gathered,
+including the 2026-10-06 market research
+([`recharge-model-market-research.md`](../recharge-model-market-research.md));
+(b) whether the tariff goes into the depreciation schedule (PI's assumption: no);
+(c) whether the room renovation is included. **This is a recommendation and has
+not been adopted.** The university-facing drafts keep the §17 numbers until the
+PI decides.
+
+### 20.1 What changed since §17
+
+- **The peer band is now documented** (market research §3). For a six-hour run
+  on the same instrument: Northwestern charges $1,075 / $1,720 / $2,150 per run.
+  JHU charges $150 / $150 / $246 self-operated and $558 / $558 / $915 assisted.
+  Georgia Tech charges $480 internal and $1,650 external. AMAZEMET's own service
+  starts at €1,000 for 50 g. That is the price floor for what we would sell.
+- **The §17 single rate has a structural flaw.** It charges 2.0 FTE of staff
+  time ($180k/yr at the A12 loaded cost) to *every* run. That includes the ~200
+  own-lab runs, which the lab's own students operate as part of their research.
+  Two consequences follow:
+  - **Year one is staffed by a student bench**, about 2.0 FTE × ~$36k ≈ $72k.
+    The $918 rate therefore overstates labor by ~$108k. Billed users would
+    over-pay by ~$37k (105/305 of the gap), which becomes a surplus that rolls
+    into the next year's rates (p. 6). Regulatory Accounting will ask what the
+    center actually pays for labor.
+  - **If the 2.0 FTE are real staff hires**, the center still pays for the labor,
+    argon and maintenance behind each "free" in-kind own-lab run. That deficit
+    is 200 × ($918 − $164) ≈ **$151k/yr**. The responsible department must fund
+    it (p. 6). Unless the department agrees to pay it from its own budget, in
+    practice it lands on the startup account.
+- **A re-read of p. 8 surfaced a cash reimbursement route** that earlier
+  sections read only loosely. See §20.6.
+- **The Oct 1, 2026 start date has passed** (§18). Each further month forfeits
+  $4,166.67 of recoverable depreciation: ~$16.7k forfeited for a Dec 1 start,
+  ~$20.8k for Jan 1.
+
+### 20.2 Structure: two services, each with one uniform rate
+
+1. **Machine run (trained BYU operator).** A BYU user who has completed the
+   center's training (EHS/NFPA 484 plus the instrument) runs their own job.
+   The own lab's runs fall here. This is the JHU "independent" pattern on the
+   identical rePowder with the induction module.
+2. **Full-service run (center operator).** Center staff do intake, setup, melt,
+   atomization, powder recovery, one standard sieve cut, packaging and the run
+   record. It is the only service offered to external and remote users (the
+   cloud-lab model), and BYU users who are not trained can buy it. This is the
+   JHU "assisted" pattern and Northwestern's per-run model.
+
+Policy fit:
+- Internal rates stay cost-based and uniform within each service (pp. 4–5).
+- Operator labor goes only to the service that uses it. Policy p. 3: "Costs,
+  including overhead or administrative costs, must be allocated to a service or
+  product according to a reasonable approximation of the benefit received".
+- Billable units must be "reasonable and accurate" (p. 5).
+
+**Definition of a run:** one composition, one crucible charge, ≤6 machine-hours.
+
+### 20.3 Pool and rates (5-yr life, 305 runs, A1–A12 otherwise unchanged)
+
+Staffing basis: **one staff technician, 1.0 FTE at $90k loaded**, split as follows.
+- **0.5 FTE facility management**, allocated across all runs: training,
+  scheduling, the EHS program, maintenance coordination, QA, quoting/billing.
+- **0.5 FTE operations**, allocated to full-service runs only: ~10 hands-on hours
+  × 105 runs ≈ 1,050 h.
+- Own-lab runs are operated by the lab's trained students as research effort,
+  not as a center cost.
+- Check: full-service runs carry ~13 staff-hours each all-in (10 hands-on plus a
+  3.3-hour management share). That matches the ~13.6 h/run implied by §17's 2.0
+  FTE / 305 runs. The difference is that §17 also charged staff time to runs
+  the students operate.
+
+| Pool line | $/yr |
+|---|---|
+| Depreciation ($250k / 5 yr) | 50,000 |
+| Maintenance/service (A8) | 10,000 |
+| Center admin/supplies (A9) | 5,000 |
+| Facility management, 0.5 FTE | 45,000 |
+| Non-labor variable, $115 × 305 | 35,075 |
+| **Machine pool** | **145,075** → ÷ 305 = **$475.66/run** ($79/machine-h) |
+| Operations, 0.5 FTE ÷ 105 full-service runs | 45,000 → **$428.57/run** |
+| **Full-service internal** | **$904.23/run** ($151/machine-h) |
+
+Posted card:
+
+| Service | BYU (uniform) | External, documented federal | External, non-federal academic / nonprofit (incl. non-US universities) | External, commercial |
+|---|---|---|---|---|
+| Full-service run | **$904** | **$1,370** (× 1.515, no surcharge) | **$1,650** (+$280) | **$2,150** (+$780) |
+| Machine run (trained BYU operator) | **$476** | — | — | — |
+| Machine time beyond 6 h | 1/6 of the tier's run price per hour ($79 machine / $151 full-service internal; $228 / $275 / $358 external) | | | |
+| Minimum fee (job started, no usable run) | $150 | $230 | $230 | $230 |
+| Data embargo, **per order** (non-federal only) | — | — | +$1,000 / $2,500 / $5,000 / $10,000 for 6 / 12 / 24 / 48 mo | same |
+| Feedstock, master alloy, extra sieve cuts, shipping | at cost | at cost + overhead | at cost + overhead | at cost + overhead |
+
+Notes:
+- Characterization (PSD, SEM, O/N/H) is bought from existing BYU facilities at
+  their posted rates and is not in this pool.
+- Two non-federal surcharge levels mirror Northwestern's academic/commercial
+  split. Surcharge size is discretionary under p. 5; this is new question Q36.
+- The external minimum fee carries overhead because p. 5 requires overhead on
+  every external rate.
+- The embargo is priced **per order**, not per run. A three-run composition
+  series does not owe three embargo fees.
+
+**Student-operator variant**, if full-service runs are staffed by student
+hourly operators at ~$36k/FTE instead of a technician:
+- Machine $387, full-service $559, federal external ~$846.
+- That federal price sits below AMAZEMET's own €1,000 starting price. It
+  reopens the §19.3 undercutting objection, and federal externals cannot be
+  surcharged.
+- Rates would also step up once a technician is hired.
+- Recommendation: build the rate on the technician and hire one, or confirm the
+  hire date before submitting. The rate must reflect what the center will
+  actually pay.
+
+### 20.4 Positioning against the peer band
+
+| Six-hour run | Internal | External academic | Commercial |
+|---|---|---|---|
+| Northwestern (per run, bundled) | $1,075 | $1,720 | $2,150 |
+| JHU assisted (hourly × 6) | $558 | $558 | $915 |
+| Georgia Tech (hourly × 6) | $480 | $1,650 | $1,650 |
+| AMAZEMET service | — | — | from €1,000 / 50 g |
+| **Recommended full-service** | **$904** | **$1,370** federal / **$1,650** non-federal | **$2,150** |
+| **Recommended machine run** | **$476** (≈ Georgia Tech's $80/h) | — | — |
+
+- Every external tier is at or above the OEM's own starting service price, so
+  the undercutting objection (§19.3) never has to be argued.
+- Federal external sits under both Northwestern's and Georgia Tech's external
+  rates.
+- Commercial matches Northwestern's top tier.
+
+### 20.5 CY2027 cash walk, recommended card, own-lab paid in cash
+
+Mix: 200 own-lab machine runs. 105 full-service runs: 5 internal, 70 federal,
+15 non-federal academic, 15 commercial. The 15/15 split of the 30 non-federal
+runs is an assumption.
+
+- **Center keeps** ~$206k. That is the $190,075 pool plus ~$15.9k of
+  surcharge.
+  - Pool sources: own lab $95.2k, internal full-service $4.5k, 100 external
+    runs × $904 ≈ $90.4k.
+  - Surcharge: 15 × $280 + 15 × $780 ≈ $15.9k, plus any embargo sales. This is
+    upgrade money (p. 5). UBIT applies to net surcharge income; card fees are
+    absorbed here.
+- **Overhead to central:** 100 × $904 × 0.515 ≈ $46.6k. Gross external billings
+  ≈ $153k.
+- **Equipment reserve intake:** $163.93 × 305 ≈ **$50k/yr**, because every run is
+  paid. Under §17 with in-kind own-lab runs it was $17.2k/yr.
+- **Share that is internal:** ~48% of what the center keeps (~40% of gross
+  billings) and two-thirds of runs. Under §17 billed revenue was ~95% external. This helps the "primarily
+  internal" classification question (Q12) and the student-learning-first
+  posture (§19).
+
+### 20.6 Own-lab settlement: pay the machine rate, take §8 back as cash through the reserve
+
+This supersedes §5's "§8 in-kind preferred" if the PI adopts §20.
+
+The policy's own mechanism for equipment bought with departmental funds (p. 8):
+"Equipment used by the Recharge Center, which is purchased with general or
+departmental operating (non-Federal) funds, can be depreciated in recharge
+rates. The department can be reimbursed for the cost of this equipment if:
+Prior approval is received by Regulatory Accounting … To obtain reimbursement
+for the cost of the equipment used by the Recharge Center, change the
+speedtype in PeopleSoft to the Recharge Center equipment reserve account."
+
+Read literally, this moves the atomizer's purchase cost off the startup account
+and onto the reserve, which is a cash refund to the startup account. Earlier
+sections (§§5, 14) read "charging equipment to the reserve" only as the reserve
+*buying something* for the startup account. Reserves "cannot be in deficit
+without prior Regulatory Accounting approval" (p. 7), so there are two ways to
+do it:
+- **(a) Tranches:** re-code a tranche each time the reserve fills.
+- **(b) All at once:** re-code everything now under an approved deficit, repaid
+  by depreciation.
+
+New question Q34.
+
+Economics at forecast volume:
+
+| | §17 design, in-kind at $918 | §20, cash at $476 + re-code |
+|---|---|---|
+| Own-lab gross | $0 billed | $95.2k/yr by journal entry |
+| Operating cost behind own-lab runs (labor, argon, maintenance share) | ~$151k/yr deficit (p. 6) | inside the $95.2k |
+| Returned to startup | $0 cash. The claim is "used" at $918/run, so it is exhausted in ~1.4 yr | ≈ **$50k/yr** via re-code (all depreciation, including billed runs') until the cap |
+| **Net to startup / department** | ~$151k/yr | ≈ **$45k/yr** ≈ **$226 per own-lab run** |
+
+Breakdown of the ~$45k:
+- Argon and consumables the lab would buy anyway: $23k.
+- The own-lab share of the technician's facility-management time: $29.5k.
+- Maintenance/admin share: $9.8k.
+- Less the billed runs' depreciation that flows back: −$17.2k.
+
+The general point: **the §8 claim is worth exactly the depreciation dollars,
+however it is taken.** In-kind credit valued at the full rate burns the $250k
+claim on operating costs the startup is also paying through the deficit. Take
+the claim in a form valued at depreciation instead: re-code from the reserve,
+or in-kind credit valued at the depreciation component only. The exception is
+if the department agrees to fund the own-lab operating deficit from its own
+money. Then in-kind at the full rate is genuinely worth more to the startup
+account. That is a negotiation, not a policy question.
+
+Caps:
+- Total reimbursement ≤ the amount invested (p. 7).
+- The reserve can only ever collect depreciation inside the approved schedule.
+  With a Jan 1, 2027 start, re-code reimbursement tops out at ~$229k
+  ($250k − $20.8k stub).
+- After the schedule ends, the machine rate drops to ~$312 (depreciation
+  exits).
+
+Liquidity: the startup account fronts $95.2k/yr gross. Option (b) front-loads
+the refund instead.
+
+### 20.7 Staffing note (revises §15.2 for this structure)
+
+§15.2 staged the technician because the §17 model needed 2.0 FTE (~$180k). Under
+§20 the center needs about **one** FTE at forecast volume, because the own lab
+operates its own runs.
+
+At 105 full-service runs, billed revenue covers:
+- the operations half of the technician (~$45k);
+- about a third of the management half (~$15.5k).
+
+The own lab carries ~$29.5k through the machine rate. If full-service volume
+halves to ~50 runs, the technician's underused operations time is a ~$24k/yr
+department-funded gap. That is a much smaller bet than §15.3's ~$45k-per-FTE
+exposure on a 2-FTE model.
+
+**Recommendation:** hire one staff technician on a startup/department bridge,
+with ECO clearance lead time (§15.1), and build the full-service rate on that
+hire. Split-fund the technician if they also carry department duties (p. 3
+effort documentation).
+
+### 20.8 Tariff: normally **in** the depreciation schedule
+
+This is the opposite of the PI's assumption.
+
+- **BYU's own practice.** From Financial Services, *Asset Capitalization
+  Procedures*, read live 2026-10-07 through the Pi:
+  - "Expenditures requiring capitalization are recorded at acquisition cost".
+  - For equipment, "Installation costs and freight charges are included in the
+    cost of the equipment".
+  - Equipment threshold $5,000, life 3–10 years by category, straight-line.
+  - The page does not name duties. Under GAAP (which BYU's procedures follow,
+    citing ASC standards), a non-refundable import duty is a cost of bringing
+    the asset to its usable location, like freight. So the default expectation
+    is that the duty is capitalized.
+- **2 CFR 200.1** ("acquisition cost") says duty "may be included in **or
+  excluded from** the acquisition cost in accordance with the [entity's] regular
+  accounting practices".
+  - **Correction:** the 2026-07-03 PR answer quoted this with an ellipsis that
+    dropped "or excluded from". The scenarios doc §4 has it right. The federal
+    rule defers to BYU's practice, and BYU's practice is landed cost (freight
+    and installation named explicitly).
+- **Policy p. 7** depreciates "acquisition cost of the equipment less residual
+  value divided by its useful life". Whatever is on the asset record is what the
+  5-year schedule spreads.
+- **Check:** confirm the duty is on the atomizer's asset record (Q6/Q20). If a
+  customs broker billed it separately and it was expensed, ask Financial
+  Accounting to add it before the depreciation schedule is approved.
+- **Refund wrinkle: check before capitalizing.** The legal basis depends on the
+  customs entry date:
+  - **Entered before late February 2026: IEEPA tariff.** The Supreme Court struck it down in
+    *Learning Resources, Inc. v. Trump* (2026-02-20, 6–3). The CIT ordered
+    refunds on 2026-03-04. A refund needs an active filing by the importer of
+    record (CBP's CAPE system or a protest). If refundable, it should not stay
+    in the base.
+  - **2026-02-24 to 2026-07-23: Section 122, 10% global surcharge.** The CIT
+    held it unlawful on 2026-05-07 (*Oregon v. Trump*; *Burlap & Barrel v.
+    Trump*) but limited relief to the named plaintiffs. The Federal Circuit
+    stayed that ruling on 2026-06-11, finding the government likely to succeed.
+    Treat it as a real cost. A refund is a long shot, but BYU's customs broker
+    or OGC can say whether preserving the right is worthwhile.
+  - **2026-07-24 onward: Section 301, 10% on EU goods.** In force indefinitely.
+  - Ordinary MFN duty applies throughout.
+  - "Bought within the last couple of months" (said 2026-07-03) puts the entry
+    most likely in the Section 122 window.
+  - Only the **importer of record** can claim a refund. Under DDP terms
+    (AMAZEMET or its distributor imports) the duty is inside the invoice price
+    and already in the base. New question Q35.
+- **Rate impact:** each $10k added to the base adds $2k/yr of depreciation, or
+  +$6.56/run on both services (+$9.93 federal external). It is negligible to
+  customers, and each dollar flows back to the startup account through §20.6.
+
+### 20.9 Renovation: mostly out, three ways part of it can come in
+
+BYU's *Asset Capitalization Procedures* draw the lines.
+
+**1. Room work is out of the rates.** This covers walls, flooring, HVAC,
+lighting, fire protection, and upgrades to building electrical/gas/plumbing.
+- BYU classifies it as "Building Improvements": "remodeling … upgrades to
+  physical operating systems such as plumbing, heating and air conditioning,
+  lighting".
+- It is capitalized only at **≥ $100,000**, with a 10–40-year life set by
+  Capital Needs Analysis. Below that, it is expensed.
+- Policy p. 3 excludes both cases: "Building depreciation, rent, and operations
+  and maintenance not paid by recharge center. (Only costs incurred by the
+  recharge center can be included in rates.)" and "Any costs already reimbursed
+  through the Facilities and Administrative (indirect) cost rate".
+- A capitalized improvement is recovered centrally through the 51.5% overhead
+  (including the overhead on our external users), not back to the department
+  or college. An expensed one is simply spent.
+
+**2. Installation of the atomizer is in.** This covers rigging and placement,
+anchoring, vendor installation and commissioning, and final connections from
+building utilities to the machine.
+- It is equipment cost per BYU's own text ("Installation costs … are included
+  in the cost of the equipment").
+- If any of it was billed inside the renovation project, ask Financial
+  Accounting to move it to the atomizer's asset record.
+
+**3. Movable equipment bought with renovation money is in, as separate assets.**
+- Examples: recirculating chiller, oxygen-depletion monitors, glovebox, dust
+  collector or explosion-rated vacuum, gas purifier, gas or flammables cabinets.
+- Each item ≥ $5,000 meets BYU's "Equipment" definition (movable, ≥ $5k,
+  ≥ 3-year life). It can be its own asset, depreciated in the center's rates.
+  Policy p. 8: departmental non-federal equipment "can be depreciated in
+  recharge rates".
+- It is reimbursable to whichever account paid.
+- Items under $5k were expensed and stay out.
+
+**Gray zone:** dedicated circuits, gas lines and exhaust ducts serving only the
+atomizer. BYU puts "upgrades to physical operating systems" under building
+improvements and notes an asset "may lose its specific identity … when attached
+as a permanent part of a building". Expect most of this to stay building; it is
+Financial Accounting's call.
+
+**Who benefits:** whatever moves onto an equipment record is reimbursable, through
+§20.6's re-code, to the department or college that paid for the renovation.
+That gives the Chair and Dean a concrete reason to back the itemization. Next
+step: pull the renovation project's line items and sort them into the three
+groups above. This is the PI's "retroactive quote on non-atomizer-specific
+items" idea. Do it before the depreciation schedule is approved. Question
+Q21.
+
+Contacts named on the BYU *Asset Capitalization Procedures* page (Financial
+Accounting): Marshall Chamberlain and Andrew Neil, C-249 ASB.
+
+### 20.10 Overhead-rate note
+
+BYU's signed rate agreement (2019, revised 2022) sets on-campus research at
+**51.5%** MTDC from 2022-01-01 to 2024-12-31, with the same rates carried into
+FY2025. Nothing found confirms the rate for 2026–27 or whether it is the rate
+applied to service-center external sales. Q18 is unchanged in substance. Every
+external price above scales with it: at 50%, federal external would be $1,356.
+
+### 20.11 Not changed
+
+The overview, establishment proposal, rate proposal, service agreement and
+equipment package still carry §17's single-rate card ($918 / $1,391 / $1,650).
+Propagating §20 is one pass if the PI adopts it. The equipment package gains
+BYU's capitalization wording and a row for movable renovation equipment. The
+questions doc gains Q33–Q36 and sharper Q6/Q8/Q18/Q21.
