@@ -1,0 +1,24 @@
+Firmware: flashing fix B (spreadCycle) -- 2026-10-07T18:52:15Z
+
+sha256:
+6d2dc97741a4e5ee0f05b8c7d7ba7254c1e04b6e1f77438eb714d2af7223437f  panda_vcl_p20gen2_tic796_fastmove_20261001.hex
+e8ddfe3dfc66f98add2e2f92b0cc5a9fe7d972db42fb1e1b6aac11420f3422c4  panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex
+
+=== backup of the flash as it is (avrdude -U flash:r) ===
+4ea3902f61b1018955a476981121b88f3bb03a5db2e3fe308c9e43673fd44399  flash_before_20261007.hex
+
+=== which image is on the board BEFORE ===
+  fastmove_20261001 : MATCH
+  spreadcycle : no     verification mismatch
+
+=== FLASH ===
+Reading 17468 bytes for flash from input file panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex
+Writing 17468 bytes to flash
+Writing | ################################################## | 100% 2.95s
+Reading | ################################################## | 100% 2.35s
+17468 bytes of flash verified
+Avrdude done.  Thank you.
+
+=== which image is on the board AFTER ===
+  spreadcycle : MATCH
+  fastmove_20261001 : no     verification mismatch

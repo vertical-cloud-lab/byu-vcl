@@ -1,0 +1,108 @@
+Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ignored (decap/cap no longer park; delete this key).
+Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ignored (decap/cap no longer park; delete this key).
+GRBL is in Alarm state after connect. Home to clear. Status: <Alarm|WPos:364.000,281.000,125.000|FS:0,0>
+GRBL alarm detected before protocol run; unlocking controller. Status: <Alarm|WPos:364.000,281.000,125.000|FS:0,0>
+  cam0_csi0: imx708_wide  [csi]  csi index 0
+  cam1_csi1: imx708_wide  [csi]  csi index 1
+------------------------------------------------------------
+Protocol Setup Validation
+------------------------------------------------------------
+
+[1/4] Loading gantry config...
+  OK: /home/<user>/byu-vcl-pipette/cubos/configs/gantry/cub_xl_ben_3_instrument.yaml
+  Gantry type: cub_xl
+  Working volume: X[0.0, 361.0]  Y[0.0, 278.0]  Z[0.0, 122.0]
+
+[2/4] Loading deck config...
+  OK: /home/<user>/byu-vcl-pipette/cubos/configs/deck/ben_2vials_tiprack.yaml
+  Labware (3):
+    vial_1: vial at (136.668, 45.0, 56.0)
+    vial_2: vial at (136.668, 78.0, 56.0)
+    tip_rack: TipRack
+
+[3/4] Loading instruments...
+  OK: /home/<user>/byu-vcl-pipette/cubos/configs/gantry/cub_xl_ben_3_instrument.yaml (offline/mock - hardware not contacted)
+  Instruments (3):
+    vial_capper_decapper: offset=(0.0, 0.0), depth=-16.0
+    pipette: offset=(55.0, 11.0), depth=0.0
+    camera_3: offset=(-40.0, 10.0), depth=-110.0
+
+[4/4] Loading protocol...
+  OK: /home/<user>/byu-vcl-pipette/cubos/configs/protocol/vcl/pipette_test.yaml
+  Steps: 12
+    [0] home()
+    [1] move(instrument='vial_capper_decapper', position='park_position', travel_z=115.0)
+    [2] decap(instrument='vial_capper_decapper', vial='vial_1')
+    [3] pick_up_tip(position='tip_rack.A1')
+    [4] aspirate(position='vial_1', volume_ul=20.0, height=-35.0)
+    [5] move(instrument='pipette', position='pipette_park', travel_z=86.0)
+    [6] cap(instrument='vial_capper_decapper', vial='vial_1')
+    [7] decap(instrument='vial_capper_decapper', vial='vial_2')
+    [8] blowout(position='vial_2', height=-35.0)
+    [9] drop_tip(position='tip_rack.A1')
+    [10] cap(instrument='vial_capper_decapper', vial='vial_2')
+    [11] home()
+
+Validating protocol motion bounds...
+  OK (12 protocol target(s) checked)
+
+Validating protocol semantics...
+  OK
+
+------------------------------------------------------------
+RESULT: PASS - protocol motion targets within gantry bounds
+Protocol is ready to run.
+------------------------------------------------------------
+
+------------------------------------------------------------
+Running protocol on hardware...
+------------------------------------------------------------
+
+@@PLUNGER {"t": "2026-10-07T18:55:18.461+00:00", "code": 14, "args": [], "dt_s": 0.008, "reply": "OK:{\"homed\":0,\"pos\":0.00,\"max_vol\":20.00}", "error": null}
+@@PLUNGER {"t": "2026-10-07T18:55:19.399+00:00", "code": 10, "args": [], "dt_s": 0.938, "reply": "OK:{\"msg\":\"Pipette homed\"}", "error": null}
+@@PLUNGER {"t": "2026-10-07T18:55:21.959+00:00", "code": 11, "args": ["28.0", "0.0"], "dt_s": 2.56, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[28.00]}", "error": null}
+@@CAM capture after steps [2, 3, 4, 8, 9, 10] of 12
+@@STEP {"index": 0, "command": "home", "t": "2026-10-07T18:55:22.010+00:00", "dt_s": 7.933, "ok": true}
+@@STEP {"index": 1, "command": "move", "t": "2026-10-07T18:55:29.943+00:00", "dt_s": 9.494, "ok": true}
+@@STEP {"index": 2, "command": "decap", "t": "2026-10-07T18:55:39.437+00:00", "dt_s": 7.347, "ok": true}
+@@CAM OK  step02_decap__cam0_csi0.jpg  (0.66s)
+@@CAM OK  step02_decap__cam1_csi1.jpg  (0.61s)
+@@PLUNGER {"t": "2026-10-07T18:55:56.492+00:00", "code": 11, "args": ["0.0", "0.0"], "dt_s": 2.557, "reply": "OK:{\"msg\":\"Pipette moved\"}", "error": null}
+@@STEP {"index": 3, "command": "pick_up_tip", "t": "2026-10-07T18:55:48.059+00:00", "dt_s": 8.433, "ok": true}
+@@CAM OK  step03_pick_up_tip__cam0_csi0.jpg  (0.69s)
+@@CAM OK  step03_pick_up_tip__cam1_csi1.jpg  (0.62s)
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 122.000). Hovering/traveling at 87.000 instead - confirm this plane clears all deck contents.
+@@PLUNGER {"t": "2026-10-07T18:56:10.598+00:00", "code": 12, "args": ["20.0", "0.0"], "dt_s": 5.001, "reply": "OK:{\"msg\":\"Pipette aspirated\",\"v\":[20.00,1.20]}", "error": null}
+@@STEP {"index": 4, "command": "aspirate", "t": "2026-10-07T18:55:57.811+00:00", "dt_s": 12.787, "ok": true}
+@@CAM OK  step04_aspirate__cam0_csi0.jpg  (0.66s)
+@@CAM OK  step04_aspirate__cam1_csi1.jpg  (0.73s)
+@@STEP {"index": 5, "command": "move", "t": "2026-10-07T18:56:11.993+00:00", "dt_s": 5.008, "ok": true}
+@@STEP {"index": 6, "command": "cap", "t": "2026-10-07T18:56:17.001+00:00", "dt_s": 7.043, "ok": true}
+@@STEP {"index": 7, "command": "decap", "t": "2026-10-07T18:56:24.044+00:00", "dt_s": 5.931, "ok": true}
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 122.000). Hovering/traveling at 87.000 instead - confirm this plane clears all deck contents.
+@@PLUNGER {"t": "2026-10-07T18:56:37.192+00:00", "code": 11, "args": ["32.5", "0.0"], "dt_s": 2.861, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[32.50]}", "error": null}
+@@STEP {"index": 8, "command": "blowout", "t": "2026-10-07T18:56:29.976+00:00", "dt_s": 7.217, "ok": true}
+@@CAM OK  step08_blowout__cam0_csi0.jpg  (0.67s)
+@@CAM OK  step08_blowout__cam1_csi1.jpg  (0.62s)
+OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 122.000). Hovering/traveling at 87.000 instead - confirm this plane clears all deck contents.
+@@PLUNGER {"t": "2026-10-07T18:56:49.607+00:00", "code": 11, "args": ["46.5", "0.0"], "dt_s": 4.647, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[46.50]}", "error": null}
+@@PLUNGER {"t": "2026-10-07T18:56:51.303+00:00", "code": 11, "args": ["28.0", "0.0"], "dt_s": 1.696, "reply": "OK:{\"msg\":\"Pipette moved\",\"v\":[28.00]}", "error": null}
+@@STEP {"index": 9, "command": "drop_tip", "t": "2026-10-07T18:56:38.479+00:00", "dt_s": 12.824, "ok": true}
+@@CAM OK  step09_drop_tip__cam0_csi0.jpg  (0.67s)
+@@CAM OK  step09_drop_tip__cam1_csi1.jpg  (0.72s)
+@@STEP {"index": 10, "command": "cap", "t": "2026-10-07T18:56:52.694+00:00", "dt_s": 7.394, "ok": true}
+@@CAM OK  step10_cap__cam0_csi0.jpg  (0.66s)
+@@CAM OK  step10_cap__cam1_csi1.jpg  (0.62s)
+@@STEP {"index": 11, "command": "home", "t": "2026-10-07T18:57:01.375+00:00", "dt_s": 22.267, "ok": true}
+
+------------------------------------------------------------
+Protocol complete — 12 steps executed.
+Measurement data store: /home/<user>/.cubos/panda_data.db
+Result CSV files:
+  /home/<user>/CubOS/packages/core/src/cubos/data/results/campaign_112_20261007_185509/campaign.csv
+  /home/<user>/CubOS/packages/core/src/cubos/data/results/campaign_112_20261007_185509/experiments.csv
+  /home/<user>/CubOS/packages/core/src/cubos/data/results/campaign_112_20261007_185509/manifest.csv
+------------------------------------------------------------
+@@CAM 12/12 frame(s) captured -> /home/<user>/cubxl_runs/pipette_test_20261007/frames
+@@PLUNGER-TRACE 8 command(s) -> /home/<user>/cubxl_runs/pipette_test_20261007/plunger_trace.json
+@@STEP-TRACE 12 step(s) -> /home/<user>/cubxl_runs/pipette_test_20261007/step_trace.json
