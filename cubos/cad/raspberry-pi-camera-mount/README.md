@@ -30,8 +30,8 @@ the 2 mm fillets, and the 0.75 mm fillets meeting the 0.25 mm one. Corners are a
 vertices.
 
 It is the same shape as the STL: 28.8 × 31.04 × 34.0 mm, 8,761.1 mm³. That is 0.25 mm³ more
-than the STL, because the STL cut each curved surface into flat facets that sit slightly inside
-it.
+than the STL: along the rounded outer edges, the STL's flat facets cut a thin sliver off the true
+surface.
 
 ## Importing it into Onshape
 
@@ -44,19 +44,19 @@ above. Onshape reports 8,761.17 mm³ and 4,768.81 mm².
 
 ## Editing it
 
-- Fillets, holes and bosses are single faces now, so Onshape's direct-editing tools work on
-  them: **Modify fillet** to change a fillet's radius or remove it, **Move face** or
+- Fillets, holes and bosses are single faces now, which is what Onshape's direct-editing tools
+  work on: **Modify fillet** to change a fillet's radius or remove it, **Move face** or
   **Offset face** to move or resize a hole or boss, **Delete face** to remove a feature and
-  heal the gap.
+  heal the gap. These tools weren't tried on this file yet.
 - Flat faces work like any Onshape face: sketch on them, extrude from them, move them.
 - It is still an imported solid with no feature history, so its sizes are changed by editing
   faces, not by editing dimensions in a sketch.
 
 ## How it was made
 
-The STL came from a CAD export, which places every STL vertex exactly on the original CAD
-surfaces; only the flat facets between vertices cut corners. So each original surface can be
-recovered exactly from the vertices, with no remodelling:
+The STL came from a CAD export, which puts every STL vertex on the original CAD surfaces (here
+to within 0.00002 mm); only the flat facets between the vertices cut corners. So each original
+surface can be recovered from the vertices by fitting, with no remodelling:
 
 1. [`tools/segment.py`](tools/segment.py) sorts the triangles into faces. Triangles that lie in
    one plane and span more than 0.2 mm form the 71 large flat faces (the facets of the curved
