@@ -12,6 +12,18 @@ entries in `REAL` in [`scripts.py`](scripts.py), with a caption of at most six w
 A pick longer than 17 s plays its middle 14 s; the catch bowl plays 5:29–5:43, so that the bowl is in frame. See the
 [README](README.md#how-each-tutorial-is-put-together).
 
+## Review of draft 5 (frames at 20, 50 and 80 % of every pick)
+
+Most picks show what their caption says. These do not, or only partly, and are the ones to swap in the next build:
+
+| Pick | Tutorials | What it shows instead | Suggested fix |
+| --- | --- | --- | --- |
+| Water test, V2 16:20–16:35 | 0 and 1 | the outside of the machine. The spray test is heard (16:25, "like straight lines") but the collar phone points away; no plate is in frame from 16:12 to 16:39 | try [T5 27:32](https://www.youtube.com/embed/58wJ_Khwgyk?start=1652), where the wet test is explained (frames not checked) |
+| Nut from below, T8 2:26–2:50 (played 2:31–2:45) | 1 | arms and sleeves; the nut is not visible | the *(alt)* pick, from 2:56: gloved hands on the nut at the opening, 2:58–3:10 |
+| Star knobs, V2 17:20–17:45 (played 17:25–17:40) | 1 | feet: the phone points at the floor after 17:27 | 17:10–17:24, gloved hands on the knobs |
+| Respirators, T5 73:47–74:02 | 0 | torque wrenches on the cabinet; the respirator is in hand, barely visible | keep, or look a minute either side |
+| Rescan, V3 28:30–28:53 (played 28:34–28:49) | 2 | the touchscreen only at the start, then the furnace | `exact` 28:30–28:42 |
+
 ## Reading the tables
 
 - **Sub-steps** are the narration sentences in [`scripts.py`](scripts.py), one per sub-step of the animation (numbered

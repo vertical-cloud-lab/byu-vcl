@@ -107,6 +107,10 @@ ahead of the cups tutorial, the stitch and the recordings. Draft 5 has been in p
 
 ## Known limitations
 
+- Draft 5's stabilisation uses `vidstabdetect` accuracy 9 (was 15) and bilinear interpolation (was bicubic), for every
+  clip and pick, so that the 105 of them could be built in one job; the difference is hard to see at 720p. A few real
+  picks show the wrong moment: see [the review in real-footage.md](real-footage.md#review-of-draft-5-frames-at-20-50-and-80--of-every-pick).
+
 - The clips are 720p, the best HLS stream `hls_sections.py` found for these videos. HMI screens filmed from a distance
   stay hard to read.
 - The narration reads the SOP as written on 2026-10-03. When the SOP's open questions get answered, update `scripts.py` and
