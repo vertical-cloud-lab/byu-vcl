@@ -725,4 +725,10 @@ SUPERSEDED = [
             "gave .508 in as a measured diameter rather than the target.",
      "was": "Making the aluminum cups and plugs for the rePowder atomizer (narrated tutorial)",
      "title": "[superseded] Atomizer tutorial: making the aluminum cups and plugs (first upload)"},
+    {"id": "qwopusVSwf4", "by": "j9QcpcG8EVI",
+     "why": "This is draft 1 (33 s) of the slide clip of a whole run; draft 2 (44 s), linked above, is slower, shows the "
+            "melt being stirred and keeps the powder inside the chamber, after review on "
+            "https://github.com/vertical-cloud-lab/byu-vcl/pull/255.",
+     "was": "Atomizer slide clip: from loading to powder in 33 seconds (draft 1)",
+     "title": "[superseded] Atomizer slide clip: from loading to powder in 33 seconds (draft 1)"},
 ]

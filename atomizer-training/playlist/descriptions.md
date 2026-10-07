@@ -1289,3 +1289,15 @@ The current tutorials, and every atomizer recording: https://www.youtube.com/pla
 
 This upload is kept only until it is deleted.
 ```
+
+## not in the playlist: [superseded] Atomizer slide clip: from loading to powder in 33 seconds (draft 1)
+
+[`qwopusVSwf4`](https://www.youtube.com/watch?v=qwopusVSwf4) · was *Atomizer slide clip: from loading to powder in 33 seconds (draft 1)*
+
+```
+Superseded by https://www.youtube.com/watch?v=j9QcpcG8EVI. This is draft 1 (33 s) of the slide clip of a whole run; draft 2 (44 s), linked above, is slower, shows the melt being stirred and keeps the powder inside the chamber, after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+
+The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+
+This upload is kept only until it is deleted.
+```
