@@ -30,7 +30,7 @@ for the parts that stay on the arm (see [Material](README.md#material-paht-cf-on
 
 | Qty | Part | Lab has | Evidence |
 |---|---|---|---|
-| 1 | Raspberry Pi 5 | **On hand:** about 6 or 7 unassigned 1 GB boards, out of 10 bought, 8 in the office on 4 September, and 1 since given to the CubXL. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#198](https://github.com/vertical-cloud-lab/byu-vcl/issues/198#issuecomment-5546194460), [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5841723129) |
+| 1 | Raspberry Pi 5 | **On hand:** about 6 or 7 unassigned 1 GB boards. 10 were bought, and 8 were in the office on 4 September. One may since have replaced the CubXL's board, whose USB-C socket was damaged. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#198](https://github.com/vertical-cloud-lab/byu-vcl/issues/198#issuecomment-5546194460), [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5841723129) |
 | 1 | Pi 5 Active Cooler | **Ordered:** 10, on the same PiShop order as the Pi 5s | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
 | 1 | microSD card | **Ordered:** two 5-packs of SanDisk 32 GB, on the same order | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
 | 1 | Raspberry Pi HQ Camera (CS) | **None free.** The lab's only HQ Camera is on the OT-2 (meorders 12704). | [#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-4407498492) |
