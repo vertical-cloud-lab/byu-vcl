@@ -10,31 +10,37 @@ part has only the STL, a PNG and a README.
 
 ## What is in the file
 
-One closed solid of 156 faces, each a true flat or curved surface:
+One closed solid of 152 faces, each a true flat or curved surface:
 
 | Faces | Surface | Where |
 | --- | --- | --- |
 | 75 | flat | the flat faces, including the hex nut pockets |
-| 41 | cylinder, r = 2 mm | the 2 mm fillets, and the curved channels |
+| 38 | cylinder, r = 2 mm | the 2 mm fillets, and the curved channels |
 | 13 | cylinder, r = 0.75 mm | the fillets on the legs underneath |
 | 2 | cylinder, r = 0.25 mm | the small fillets under the base |
 | 4 | cylinder, r = 1.15 mm | the four Ø2.3 mm screw holes |
 | 4 | cylinder, r = 2.4 mm | the four Ø4.8 mm bosses |
-| 1 | cylinder, r = 1.999 mm | a short piece of 2 mm fillet (see below) |
 | 6 | torus, 4 mm bend radius, 2 mm tube | where the 2 mm fillets bend round a corner |
 | 10 | sphere, r = 2 mm | the corners where three 2 mm fillets meet |
 
-Most edges are exact straight lines (247) or circles and arcs (116). The 44 others are smooth
-spline curves, where two curved surfaces cross along a curve that isn't a circle, such as a
-boss running into a fillet.
+The 377 edges between faces are 243 straight lines, 107 circles and arcs, 12 ellipses (where two
+2 mm fillets meet at an inside corner) and 15 smooth spline curves. The splines are where two
+cylinders cross along a curve that is neither a circle nor an ellipse: the bosses running into
+the 2 mm fillets, and the 0.75 mm fillets meeting the 0.25 mm one. Corners are at the STL's own
+vertices.
 
-It is the same shape as the STL: 28.8 × 31.04 × 34.0 mm, 8,761.1 mm³. That is 0.24 mm³ more
-than the STL, because the STL cut each curved surface into flat facets slightly inside it.
+It is the same shape as the STL: 28.8 × 31.04 × 34.0 mm, 8,761.1 mm³. That is 0.25 mm³ more
+than the STL, because the STL cut each curved surface into flat facets that sit slightly inside
+it.
 
 ## Importing it into Onshape
 
 Import `RaspberryPiCameraMount.step` into an Onshape document with the **+** button at the
 bottom left → **Import**. The units are millimetres.
+
+On 2026-10-07 the file was imported into Onshape through its API. It took 6 seconds and gave one
+part with 152 faces: 75 planes, 61 cylinders, 6 tori and 10 spheres, with the radii listed
+above. Onshape reports 8,761.17 mm³ and 4,768.81 mm².
 
 ## Editing it
 
@@ -60,14 +66,24 @@ recovered exactly from the vertices, with no remodelling:
    surface, within 8°. Every triangle ended up in a region, and no vertex is further than
    0.0000174 mm from its region's surface.
    [`tools/fit.py`](tools/fit.py) has the fitting code.
-2. [`tools/build.py`](tools/build.py) builds one face per region on its fitted surface. The
-   boundary between two neighbouring regions becomes one edge: a straight line or a circle
-   when its STL vertices lie on one (to within 0.00002 mm), otherwise a smooth spline through
-   those vertices. Corners are at the STL's own vertices. OpenCascade's `ShapeFix` then adds
-   the seam lines that closed cylinders need and the 2D copies of edges on curved faces.
+2. [`tools/build.py`](tools/build.py) tidies the regions, then builds one face per region on
+   its fitted surface:
+   - Neighbouring regions on the same surface are merged into one face.
+   - Cylinder axes are set exactly along x, y or z and radii to the nearest 0.05 mm, wherever
+     the vertices still fit within 0.00005 mm. This turned a short piece of fillet fitted as
+     r = 1.9992 mm into r = 2 mm.
+   - Where a fillet meets a corner ball or a bend, the two surfaces touch tangentially, so
+     triangles right next to the line where they touch fit both. 42 such triangles had joined
+     the wrong face and are moved back across that line.
+   - The boundary between two faces becomes one edge: a straight line, circle or ellipse when
+     its STL vertices lie on one to within 0.00002 mm, otherwise a smooth spline through those
+     vertices.
+   - OpenCascade's `ShapeFix` adds the seam lines that closed surfaces need in OpenCascade (for
+     example down each hole; Onshape drops them on import) and the 2D copies of edges on curved
+     faces.
 
 It needs OpenCascade 8.0 from the `cadquery-ocp` Python package, and takes about 2 minutes,
-nearly all of it in the region growing:
+nearly all of it in the region growing in `segment.py`:
 
 ```bash
 pip install cadquery-ocp numpy scipy trimesh rtree matplotlib
@@ -86,23 +102,26 @@ STEP back and compares it with the STL.
 
 | | STL | STEP read back |
 | --- | --- | --- |
-| Shape | One closed mesh | One valid solid (OpenCascade's `BRepCheck`): 156 faces, 407 edges, 248 vertices |
-| Volume | 8,760.891 mm³ | 8,761.134 mm³ |
-| Surface area | 4,768.681 mm² | 4,768.797 mm² |
-| Bounding box | x −14.4 to 14.4, y −7.27 to 23.77, z −10 to 24 mm | identical |
-| STL vertices to the STEP surface | | at most 0.0006 mm |
-| STEP surface to the STL's facets | | at most 0.0010 mm, 0.0003 mm on average |
+| Shape | One closed mesh | One valid solid (OpenCascade's `BRepCheck`): 152 faces, 395 edges including seams, 240 vertices |
+| Volume | 8,760.891 mm³ | 8,761.137 mm³ |
+| Surface area | 4,768.681 mm² | 4,768.798 mm² |
+| Bounding box | x −14.4 to 14.4, y −7.27 to 23.77, z −10 to 24 mm | the same, except y reaches 23.7711 mm (see below) |
+| STL vertices to the STEP surface | | at most 0.0004 mm |
+| STEP surface to the STL's facets | | at most 0.0016 mm, 0.0003 mm on average |
+| Largest edge tolerance | | 0.0002 mm |
 
-The last two rows compare a 0.0005 mm tessellation of the STEP with the STL, so they include
-up to 0.0005 mm of tessellation error. The largest gap, 0.001 mm, is where a curved surface
-bulges out from between the STL's facets.
+The two distance rows compare a 0.0005 mm tessellation of the STEP with the STL, so they include
+up to 0.0005 mm of tessellation error. The STEP surface strays furthest from the STL where a
+curved surface bulges out between the STL's facets.
 
 ## Known imperfections
 
-- One short piece of 2 mm fillet came out as r = 1.999 mm, because it has only 13 triangles
-  to fit to. It is off by under 0.001 mm.
-- Four tiny flat faces (under 0.05 mm across) sit where two fillets meet a boss. They are
-  pieces of the face the bosses stand on, cut off by the fillets, and the STL has them too.
+- At one corner, where a 2 mm fillet meets a corner ball, the STL's vertices along the join
+  wander by up to 0.008 mm from where the two surfaces touch, so that edge is a spline instead
+  of a quarter circle. The spline bulges 0.001 mm past the back face, which is why the bounding
+  box reaches y = 23.7711 mm.
+- Four tiny flat faces, under 0.05 mm across, sit where two fillets meet a boss. They are pieces
+  of the face the bosses stand on, cut off by the fillets, and the STL has them too.
 
 ## License
 

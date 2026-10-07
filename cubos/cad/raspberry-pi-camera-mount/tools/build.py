@@ -1,5 +1,17 @@
-"""Build a B-rep solid from the segmented mesh: one face per region on its fitted surface.
-Usage: build.py seg.pkl out.step"""
+#!/usr/bin/env python3
+"""Build a STEP solid from segment.py's output: one face per region, on its fitted surface.
+
+Before building, it merges neighbouring regions that lie on the same surface, sets cylinder axes
+exactly along x, y or z and radii to the nearest 0.05 mm where the vertices still fit, and, where a
+fillet meets a corner ball or a bend tangentially, moves the few triangles that ended up on the
+wrong side of the line where the two surfaces touch.
+
+Each boundary between two regions becomes one edge: a line, circle or ellipse when its STL vertices
+lie on one within 0.00002 mm, otherwise a spline through them. Corners are STL vertices.
+OpenCascade's ShapeFix adds the seams of closed cylinders and the 2D copies of edges on curved faces.
+
+Usage: python build.py seg.pkl output.step [product name]   (set DEBUG_EDGES=1 to list spline edges)
+"""
 import pickle
 import sys
 import time
@@ -16,8 +28,7 @@ from OCP.BRepBuilderAPI import BRepBuilderAPI_MakeEdge  # noqa: E402
 from OCP.BRepCheck import BRepCheck_Analyzer  # noqa: E402
 from OCP.BRepGProp import BRepGProp  # noqa: E402
 from OCP.GProp import GProp_GProps  # noqa: E402
-from OCP.Geom import (Geom_CylindricalSurface, Geom_Plane, Geom_SphericalSurface,  # noqa: E402
-                      Geom_ToroidalSurface, Geom_ConicalSurface, Geom_Circle, Geom_Line)
+from OCP.Geom import Geom_CylindricalSurface, Geom_Plane, Geom_SphericalSurface, Geom_ToroidalSurface  # noqa: E402
 from OCP.GeomAPI import GeomAPI_Interpolate  # noqa: E402
 from OCP.ShapeFix import ShapeFix_Shape  # noqa: E402
 from OCP.OCP.collections import HArray1_gp_Pnt as TColgp_HArray1OfPnt  # noqa: E402
@@ -71,6 +82,125 @@ label = np.array([newid[find(l)] for l in label])
 models = [models[r] for r in roots]
 nreg = len(models)
 print(f"{nreg} faces after merging ({time.time()-t0:.1f}s)")
+
+# ---- tidy cylinder parameters: axis exactly along x, y or z and radius to 0.05 mm when the
+# vertices still fit within TOL_FIT; only the axis position is refitted
+from scipy.optimize import least_squares  # noqa: E402
+
+tris_of = defaultdict(list)
+for t in range(len(F)):
+    tris_of[label[t]].append(t)
+
+
+def snap_cylinder(m, Q):
+    a = m["a"].copy()
+    k = int(np.argmax(np.abs(a)))
+    if 1 - abs(a[k]) > 1e-6:
+        return m
+    a = np.zeros(3)
+    a[k] = 1.0
+    r = round(m["r"] / 0.05) * 0.05
+    if abs(r - m["r"]) > 2e-3:
+        r = m["r"]
+    i, j = [x for x in range(3) if x != k]
+
+    def res(p):
+        return np.hypot(Q[:, i] - p[0], Q[:, j] - p[1]) - r
+
+    p = least_squares(res, [m["c"][i], m["c"][j]], method="lm", xtol=1e-15, ftol=1e-15).x
+    if np.abs(res(p)).max() > TOL_FIT:
+        return m
+    c = m["c"].copy()
+    c[i], c[j] = p
+    return dict(type="cylinder", c=c, a=a, r=r)
+
+
+def sep_plane(mA, mB):
+    """Plane through the contact curve of two tangent surfaces, splitting one face from the other."""
+    ta, tb = mA["type"], mB["type"]
+    if {ta, tb} == {"cylinder", "sphere"}:
+        cy, sp = (mA, mB) if ta == "cylinder" else (mB, mA)
+        d = sp["c"] - cy["c"]
+        if np.linalg.norm(d - (d @ cy["a"]) * cy["a"]) < 1e-3 and abs(cy["r"] - sp["r"]) < 1e-3:
+            return sp["c"], cy["a"]
+    if {ta, tb} == {"cylinder", "torus"}:
+        cy, to = (mA, mB) if ta == "cylinder" else (mB, mA)
+        if abs(cy["a"] @ to["a"]) < 1e-3 and abs(cy["r"] - to["r"]) < 1e-3:
+            q = cy["c"] + ((to["c"] - cy["c"]) @ cy["a"]) * cy["a"]
+            if abs(np.linalg.norm(q - to["c"]) - to["R"]) < 1e-3:
+                return q, cy["a"]
+    return None
+
+
+for r in range(nreg):
+    if models[r]["type"] == "cylinder":
+        models[r] = snap_cylinder(models[r], P[np.unique(F[tris_of[r]])])
+
+# merge neighbouring cylinder regions that are now the same cylinder, then refit them together
+from fit import fit_cylinder  # noqa: E402
+
+
+def same_cylinder(m1, m2):
+    if m1["type"] != "cylinder" or m2["type"] != "cylinder":
+        return False
+    if abs(abs(m1["a"] @ m2["a"]) - 1) > 1e-9 or abs(m1["r"] - m2["r"]) > 1e-6:
+        return False
+    d = m2["c"] - m1["c"]
+    return np.linalg.norm(d - (d @ m1["a"]) * m1["a"]) < 1e-3
+
+
+parent = list(range(nreg))
+for t in range(len(F)):
+    for u in nbr[t]:
+        i, j = find(label[t]), find(label[u])
+        if i != j and same_cylinder(models[i], models[j]):
+            parent[max(i, j)] = min(i, j)
+roots = sorted({find(i) for i in range(nreg)})
+if len(roots) < nreg:
+    newid = {r: k for k, r in enumerate(roots)}
+    label = np.array([newid[find(l)] for l in label])
+    models = [models[r] for r in roots]
+    nreg = len(models)
+    tris_of = defaultdict(list)
+    for t in range(len(F)):
+        tris_of[label[t]].append(t)
+    for r in range(nreg):
+        if models[r]["type"] == "cylinder":
+            Q = P[np.unique(F[tris_of[r]])]
+            m = snap_cylinder(fit_cylinder(Q, nn[tris_of[r]], models[r]["a"]), Q)
+            if np.abs(dist(m, Q)).max() < TOL_FIT:
+                models[r] = m
+print(f"{nreg} faces after merging pieces of the same cylinder")
+
+pairs = set()
+for t in range(len(F)):
+    for u in nbr[t]:
+        if label[t] < label[u]:
+            pairs.add((label[t], label[u]))
+nrel = 0
+for A, Bq in sorted(pairs):
+    sp_ = sep_plane(models[A], models[Bq])
+    if sp_ is None:
+        continue
+    p0, n = sp_
+    sideA = np.sign(np.sum((cen[tris_of[A]] - p0) @ n))
+    # triangles of A or B within two rings of their shared boundary
+    ring = set()
+    for t in tris_of[A] + tris_of[Bq]:
+        if any(label[u] in (A, Bq) and label[u] != label[t] for u in nbr[t]):
+            ring.add(t)
+    for _ in range(2):
+        ring |= {u for t in list(ring) for u in nbr[t] if label[u] in (A, Bq)}
+    for t in ring:
+        want = A if np.sign((cen[t] - p0) @ n) == sideA else Bq
+        if label[t] != want:
+            label[t] = want
+            nrel += 1
+tris_of = defaultdict(list)
+for t in range(len(F)):
+    tris_of[label[t]].append(t)
+worst = max(np.abs(dist(models[r], P[np.unique(F[tris_of[r]])])).max() for r in range(nreg))
+print(f"tangent boundaries: {nrel} triangles moved to the other side; worst vertex residual {worst:.1e} mm")
 
 # ---- boundary half-edges and loops per region
 out = defaultdict(list)  # (region, v) -> list of (w, other_region)
@@ -227,6 +357,39 @@ for key, ch in chains.items():
                 else:
                     edge = BRepBuilderAPI_MakeEdge(circ, vertex(vs[0]), vertex(vs[-1])).Edge()
                 ntype["circle"] += 1
+    if edge is None and len(vs) >= (6 if closed else 5):
+        Y = X[:-1] if closed else X
+        cY = Y.mean(0)
+        nrm = np.linalg.svd(Y - cY, full_matrices=False)[2][2]
+        if np.abs((Y - cY) @ nrm).max() < 2e-5:
+            e1 = np.cross(nrm, [1.0, 0, 0] if abs(nrm[0]) < 0.9 else [0, 1.0, 0])
+            e1 /= np.linalg.norm(e1)
+            e2 = np.cross(nrm, e1)
+            x, y = (Y - cY) @ e1, (Y - cY) @ e2
+            M = np.c_[x * x, x * y, y * y, x, y, np.ones_like(x)]
+            co = np.linalg.svd(M)[2][-1]
+            A2 = np.array([[co[0], co[1] / 2], [co[1] / 2, co[2]]])
+            if np.linalg.det(A2) > 0:
+                ctr2 = np.linalg.solve(2 * A2, -co[3:5])
+                k_ = -(co[0] * ctr2[0] ** 2 + co[1] * ctr2[0] * ctr2[1] + co[2] * ctr2[1] ** 2
+                       + co[3] * ctr2[0] + co[4] * ctr2[1] + co[5])
+                w_, U = np.linalg.eigh(A2 / k_)
+                if (w_ > 0).all():
+                    ax_len = 1 / np.sqrt(w_)  # [major, minor] since w ascending
+                    maj = U[:, 0]
+                    lx = (x - ctr2[0]) * maj[0] + (y - ctr2[1]) * maj[1]
+                    ly = -(x - ctr2[0]) * maj[1] + (y - ctr2[1]) * maj[0]
+                    th = np.arctan2(ly / ax_len[1], lx / ax_len[0])
+                    dev = np.hypot(lx - ax_len[0] * np.cos(th), ly - ax_len[1] * np.sin(th)).max()
+                    if dev < 2e-5 and ax_len[0] < 100:
+                        C = cY + ctr2[0] * e1 + ctr2[1] * e2
+                        xdir = maj[0] * e1 + maj[1] * e2
+                        if np.unwrap(th)[-1] < np.unwrap(th)[0]:
+                            nrm = -nrm
+                        from OCP.gp import gp_Elips  # noqa: E402
+                        el = gp_Elips(gp_Ax2(gp_Pnt(*C), gp_Dir(*nrm), gp_Dir(*xdir)), ax_len[0], ax_len[1])
+                        edge = BRepBuilderAPI_MakeEdge(el, vertex(vs[0]), vertex(vs[-1] if not closed else vs[0])).Edge()
+                        ntype["ellipse"] += 1
     if edge is None:
         pts = X[:-1] if closed else X
         arr = TColgp_HArray1OfPnt(1, len(pts))
@@ -237,6 +400,13 @@ for key, ch in chains.items():
         crv = itp.Curve()
         edge = BRepBuilderAPI_MakeEdge(crv, vertex(vs[0]), vertex(vs[-1])).Edge()
         ntype["bspline"] += 1
+        if __import__("os").environ.get("DEBUG_EDGES"):
+            Y = X[:-1] if closed else X
+            cY = Y.mean(0)
+            nrm = np.linalg.svd(Y - cY, full_matrices=False)[2][2]
+            others = {o for o in vreg[vs[len(vs) // 2]]}
+            print("  bspline", len(vs), "pts, planarity", f"{np.abs((Y - cY) @ nrm).max():.1e}",
+                  "regions", [(o, models[o]["type"][:3]) for o in sorted(others)], "closed" if closed else "", "min", np.round(X.min(0), 4), "max", np.round(X.max(0), 4))
     B.UpdateEdge(edge, 5e-5)
     E[key] = edge
 print("edge curves:", dict(ntype), f"({time.time()-t0:.1f}s)")
@@ -265,7 +435,7 @@ B.MakeShell(shell)
 ftype = defaultdict(int)
 for r in range(nreg):
     m = models[r]
-    tr = tris_of_r = np.nonzero(label == r)[0]
+    tr = np.nonzero(label == r)[0]
     sgn = np.sign(np.sum(np.sum(normal(m, cen[tr]) * nn[tr], 1)))
     face = TopoDS_Face()
     B.MakeFace(face, surface(m, sgn), 5e-5)

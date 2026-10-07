@@ -1,4 +1,4 @@
-"""Surface fitting and mesh segmentation helpers (planes, cylinders, spheres, tori, cones)."""
+"""Fitting planes, cylinders, spheres and tori to mesh vertices, and small mesh helpers."""
 from collections import deque
 
 import numpy as np
@@ -144,38 +144,6 @@ def fit_torus(Q, N, G):
     return dict(type="torus", c=c, a=a, R=R, r=abs(r))
 
 
-def fit_cone(Q, N):
-    # axis direction: normals of a cone make a constant angle with the axis -> fit a "circle" on the Gauss sphere
-    Nc = N.mean(0)
-    # plane through the normal tips: n.a = const -> lstsq a
-    s = np.linalg.lstsq(np.c_[N, -np.ones(len(N))], np.zeros(len(N)), rcond=None)
-    w, v = np.linalg.eigh(np.c_[N, -np.ones(len(N))].T @ np.c_[N, -np.ones(len(N))])
-    x = v[:, 0]
-    a0 = x[:3] / np.linalg.norm(x[:3])
-    sinh = x[3] / np.linalg.norm(x[:3])  # n.a = -sin(h) for the cone normal formula above
-    a0, h0 = (a0, np.arcsin(np.clip(-sinh, -1, 1)))
-    if h0 < 0:
-        a0, h0 = -a0, -h0
-    cyl = fit_cylinder(Q, N, a0)  # rough axis position
-    q0 = Q.mean(0)
-    z = (q0 - cyl["c"]) @ a0
-    rho = np.linalg.norm((Q - cyl["c"]) - np.outer((Q - cyl["c"]) @ a0, a0), axis=1).mean()
-    apex0 = cyl["c"] + (z - rho / np.tan(h0 if h0 > 1e-6 else 1e-6)) * a0
-    e1, e2 = orth_basis(a0)
-
-    def unpack(p):
-        a = a0 + p[0] * e1 + p[1] * e2
-        a /= np.linalg.norm(a)
-        return apex0 + p[2:5], a, h0 + p[5]
-
-    def res(p):
-        c, a, h = unpack(p)
-        return dist(dict(type="cone", c=c, a=a, h=h), Q)
-
-    c, a, h = unpack(_lsq(res, [0, 0, 0, 0, 0, 0]))
-    return dict(type="cone", c=c, a=a, h=h)
-
-
 ORDER = ["plane", "cylinder", "sphere", "torus"]
 
 
@@ -208,8 +176,6 @@ def fit_best(Q, N, G, tol, kinds=ORDER):
                 m = fit_sphere(Q, N)
             elif k == "cylinder":
                 m = fit_cylinder(Q, N)
-            elif k == "cone":
-                m = fit_cone(Q, N)
             else:
                 m = fit_torus(Q, N, G)
         except Exception:

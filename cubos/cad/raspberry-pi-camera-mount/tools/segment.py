@@ -1,4 +1,21 @@
-"""Segment the STL into flat faces and analytic curved surfaces. Usage: segment.py in.stl out.pkl"""
+#!/usr/bin/env python3
+"""Sort an STL's triangles into faces, each lying on one plane, cylinder, sphere or torus.
+
+A CAD export puts every STL vertex exactly on the original surfaces, so each face of the original
+model can be recovered by fitting: a region is accepted only if all its vertices lie within TOL
+(default 0.00002 mm) of the fitted surface and every facet faces the surface's way within 8 degrees.
+
+1. Coplanar triangles spanning more than 0.2 mm form the flat faces (facets of curved surfaces are
+   narrower than that).
+2. The remaining triangles are split into smoothly connected components; a component that fits one
+   surface becomes one region.
+3. Other components are split by region growing from seed patches, repeated until no new region is
+   found; leftover triangles that fit a neighbouring region join it.
+4. What is left is mostly long fillet facets whose only vertices are at their ends; for those, a
+   cylinder axis is taken from the cross product of two neighbouring facet normals.
+
+Usage: python segment.py input.stl seg.pkl [TOL]
+"""
 import pickle
 import sys
 import time
@@ -144,7 +161,7 @@ for npass in range(8):
         for t in np.nonzero(allowed)[0]:
             for u in nbr[t]:
                 L = label[u]
-                if L >= 0 and models[L]["type"] != "plane" or (L >= 0 and models[L]["type"] == "plane" and False):
+                if L >= 0 and models[L]["type"] != "plane":
                     if np.abs(dist(models[L], P[F[t]])).max() < TOL and normal_ok(models[L], nn[t:t + 1], cen[t:t + 1]):
                         label[t] = L
                         allowed[t] = False
