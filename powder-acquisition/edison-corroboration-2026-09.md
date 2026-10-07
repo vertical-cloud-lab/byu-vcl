@@ -161,7 +161,7 @@ Practical mitigations, in order of cheapness:
 - **The "4N Al in 150–300 µm doesn't exist off the shelf" problem disappears.** The cup is machined from
   solid, so the base can be bought as **4N rod, bar or ingot** — the form 4N aluminium is actually sold in.
   That removes the compromise recorded in [`quote-review-2026-08.md`](quote-review-2026-08.md) §1 (99.7 %
-  AL-111 powder contributing 87 % of the impurity budget, ~2× the Scalmalloy Fe limit) at a stroke. It also
+  AL-111 powder contributing 87 % of the impurity budget, ~2× the Scalmalloy Fe limit — corrected 2026-10-07 to ~0.7× the real limit, see al-ni-purity-and-industry-feedstock-2026-10.md §4) at a stroke. It also
   means the AEE **AL-111 5 lb order is no longer load-bearing** — keep it as commissioning stock, but the
   campaign base should be 4N bar.
 - **Weigh each cup.** Aluminium is the balance of the alloy, so a cup weighed to 0.01 g lets the solute doses

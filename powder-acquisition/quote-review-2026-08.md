@@ -36,7 +36,7 @@ Every number below is reproducible with [`quote_analysis.py`](quote_analysis.py)
 
 | Question | Answer |
 | --- | --- |
-| **Purity** | Good enough on **every line except the aluminium base**. Al is >85 wt.% of every alloy, so 99.7% Al alone contributes **2,715 ppm** of tramp — 87% of the entire feedstock impurity budget, and ~2× the Scalmalloy Fe limit. Everything else lands at ≤120 ppm and is fine. |
+| **Purity** | Good enough on **every line except the aluminium base**. Al is >85 wt.% of every alloy, so 99.7% Al alone contributes **2,715 ppm** of tramp — 87% of the entire feedstock impurity budget, and ~2× the Scalmalloy Fe limit *(corrected 2026-10-07: ~0.7× the limit, see §1.2 note)*. Everything else lands at ≤120 ppm and is fine. |
 | **Particle size** | **Four lines are genuinely unworkable** as auger feedstock (ESPI Cr, ESPI Ti, ESPI Sn 3N — all −325 mesh — and ESPI's Mg, which is ½″ ingot, not powder). Several more are "fine but tolerable". Only **one quoted line hits the 150–300 µm target: AEE AL-111.** |
 | **Dust explosion** | One line is a real hazard escalation: **ESPI's −325 mesh titanium** (MIE 3–30 mJ, ships UN 2546 Class 4.2 spontaneously combustible). The rest are manageable inside the argon glovebox. |
 | **Money** | The three quotes total **$9,399.55**. About **$8,600 of that should not be bought** — most of it a single elemental-scandium line — leaving **~$780 of items worth ordering today**, plus master alloys and Mg still to source. |
@@ -147,6 +147,12 @@ typical commercial split (~0.15% Fe / 0.10% Si / 0.05% other), the base alone pu
   Fe forms coarse Al-Fe-Si intermetallics that blunt exactly the ductility those alloys are for;
 - **0.54× the AlSi10Mg limit** (0.25 wt.%) — a non-problem for the Al-Si-Mg-Cu, Al-Zn-Mg-Cu,
   and Al-Ce-Mg families.
+
+> **Correction (2026-10-07):** 0.068 wt.% was one lot's *measured* Fe, not a limit. The Scalmalloy
+> limit is Fe ≤ 0.20 wt.% (Nikon SLM datasheet) or ≤ 0.40 (APWORKS), and production lots measure
+> 0.12–0.29 wt.%. So ~0.14 wt.% Fe from a 99.7% base is about 0.7× the tighter limit and inside the
+> range of commercial Scalmalloy, not 2× over it. See
+> [`al-ni-purity-and-industry-feedstock-2026-10.md`](al-ni-purity-and-industry-feedstock-2026-10.md) §4.
 
 **Recommendation — buy both:**
 

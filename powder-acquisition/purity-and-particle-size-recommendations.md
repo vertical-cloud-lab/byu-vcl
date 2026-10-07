@@ -35,7 +35,7 @@ Workflow assumed: blend elemental feedstocks → melt → ultrasonic atomization
 | Si | 99.9% | Lump/granule or coarse powder | Limits Fe-bearing brittle phases; 99.5% coarse Si (shopping list) is acceptable for first campaigns. |
 | Cu | 99.9% | Granules/lumps or coarse powder | Cu losses observed during remelt/atomization — clean feedstock aids composition control. |
 | Ti | 99.9% | **Al-Ti or Al-5Ti-1B master alloy preferred** | Standard grain-refiner practice; avoids undissolved Ti at 100 g melt scale. |
-| Fe | 99.9% (only if intentional addition) | Granules/coarse powder | Otherwise Fe is the impurity to *avoid* — Scalmalloy spec holds Fe ≈ 0.068 wt.%. |
+| Fe | 99.9% (only if intentional addition) | Granules/coarse powder | Otherwise Fe is the impurity to *avoid* — Scalmalloy spec holds Fe ≈ 0.068 wt.%. *(Corrected 2026-10-07: that was one lot's measured value; the limit is ≤ 0.20–0.40 wt.% and production lots run 0.12–0.29.)* |
 | Ni | 99.9–99.99% | Granules preferred | 99.99% granulate precedent in ultrasonic-atomization literature. |
 | Ce | >99% min; 99.5–99.9% preferred | **Al-10Ce/Al-20Ce master alloy** or clean lumps | Cheapest rare earth; >99% Ce demonstrated in Al-Mn-Ce LPBF work. |
 | Sc | 99.5% min; 99.9% if affordable | **Al-2Sc master alloy strongly preferred** | Elemental Sc is ~$3,000–15,000/kg and oxidizes readily; Al-2Sc is industry standard. |

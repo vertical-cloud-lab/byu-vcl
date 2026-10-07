@@ -52,11 +52,16 @@ word only, and its basis (metals or total) is not stated.
 in the alloy × (1 − purity)): Cu at 4 wt.%, Ni at 2 wt.% and Fe at 1 wt.% give 40, 20 and
 10 ppm of tramp elements at 99.9%. Even if the true purity were 99.0%, that is 400, 200 and
 100 ppm, still small next to the 2,715 ppm the 99.7% Al base contributes.
+*(2026-10-07: this only holds for a 99.7% base. With a 4N or 5N rod the solutes dominate. See
+[`al-ni-purity-and-industry-feedstock-2026-10.md`](al-ni-purity-and-industry-feedstock-2026-10.md) §3.)*
 
 **They are far too fine for the augers.** The cohesion index (250 µm / d)² is 32× for Cu,
 2,500× for Fe and 6,900× for Ni, against ~10× as the point where powder stops feeding.
 That only matters for Cu: the campaign uses 5 g of Ni and 2.5 g of Fe in total, which get
 weighed into the cups by hand in the glovebox anyway.
+
+*(2026-10-07: Ni is not slow. Liquid Al holds 17.7 wt% Ni at 750 °C against 4.1 wt% Fe, so Ni
+dissolves ~4× faster than Fe; see the Al–Ni doc §2.)*
 
 **Fine is good for dissolving, but 3–5 µm powder sinters.** Fe and Ni dissolve slowly, so
 fine particles help, as the September Edison corroboration found. Bartosz's warning from

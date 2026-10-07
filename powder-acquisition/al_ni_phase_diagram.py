@@ -171,6 +171,38 @@ def dissolution_enthalpy(T_c=750.0, w=2.0):
     return dh_per_mol_ni / 1000.0, q, dT
 
 
+COMPARE = ["FE", "MN", "CR", "TI", "ZR"]   # computed with COST507 (al_ti_melt_window.py)
+M.update({"FE": 55.845, "MN": 54.938, "CR": 51.996, "TI": 47.867, "ZR": 91.224})
+
+
+def solubility_in_liquid_al(el, T_c):
+    """wt% of `el` the liquid holds next to its Al-richest aluminide at T. Dissolution of
+    a solid addition is boundary-layer diffusion controlled and its rate scales with this
+    number (Darby, Jugle & Kleppa 1963), so it ranks how easily each solute goes in."""
+    from pycalphad import equilibrium
+    import pycalphad.variables as v
+    if el == "NI":
+        return ni_capacity_of_liquid(T_c)[0]
+    from pycalphad.core.utils import filter_phases, unpack_species
+    import al_ti_melt_window as alti
+    cdb = alti._get_db()
+    comps = ["AL", el, "VA"]
+    ph = alti.PHASE_SETS.get(el) or filter_phases(cdb, unpack_species(cdb, comps))
+    for x_overall in (0.02, 0.05, 0.1, 0.2, 0.3):
+        eq = equilibrium(cdb, comps, ph, {v.X(el): x_overall, v.T: T_c + 273.15,
+                                          v.P: 101325, v.N: 1}, calc_opts={"pdens": 500})
+        names = np.asarray(eq.Phase.values).ravel()
+        fr = np.asarray(eq.NP.values).ravel()
+        xs = np.asarray(eq.X.sel(component=el).values).reshape(len(names), -1)[:, 0]
+        liq = [xs[i] for i, n in enumerate(names) if n == "LIQUID" and fr[i] > 1e-8]
+        sol = [n for i, n in enumerate(names) if n not in ("", "LIQUID")
+               and np.isfinite(fr[i]) and fr[i] > 1e-8]
+        if liq and sol:
+            a, b = liq[0] * M[el], (1 - liq[0]) * M["AL"]
+            return 100.0 * a / (a + b)
+    return float("nan")
+
+
 def compute():
     w_grid = sorted(set([0.05, 0.1, 0.25, 0.5, 1.0, 1.5, 2.0, 3.0, 4.0, 5.0, 5.5,
                          5.75, 6.0, 6.25, 6.5, 7.0] + [float(w) for w in range(8, 43)]))
@@ -181,6 +213,9 @@ def compute():
     for t in (650, 700, 750, 800, 850, 900, 950, 1000, 1100, 1200, 1300):
         c, s = ni_capacity_of_liquid(t)
         data["capacity"][str(t)] = [c, s]
+    data["solubility_vs_other_solutes"] = {
+        str(t): {el: solubility_in_liquid_al(el, t) for el in ["NI"] + COMPARE}
+        for t in (750, 800)}
     data["enthalpy"] = {}
     for t in (700, 750, 800):
         for w in (1.0, 2.0):
@@ -206,6 +241,10 @@ def report(d):
     print("\nNi that liquid Al can hold before an aluminide forms (C_s)")
     for t, (c, s) in d["capacity"].items():
         print(f"  {t:>5} C: {c:6.2f} wt% Ni   (coexisting with {', '.join(s)})")
+    if "solubility_vs_other_solutes" in d:
+        print("\nHow much of each solute liquid Al holds (wt%; Ni: Dupin 2001, others: COST507)")
+        for t, row in d["solubility_vs_other_solutes"].items():
+            print(f"  {t} C: " + ", ".join(f"{el.title()} {w:.2f}" for el, w in row.items()))
     print("\nHeat of dissolving solid Ni into liquid Al")
     for k, (dh, q, dT) in d["enthalpy"].items():
         print(f"  {k:>10}: {dh:7.1f} kJ/mol Ni, {q / 1000:5.2f} kJ per 100 g charge,"

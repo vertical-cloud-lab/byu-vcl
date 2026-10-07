@@ -57,8 +57,11 @@ QUOTED_PURITY = [
 ]
 
 # Reference impurity limits for context (wt.% -> ppm of finished alloy).
+# Corrected 2026-10-07: 0.068 wt.% Fe was one lot's measured value (via the July Edison
+# report), not a limit. Nikon SLM's Scalmalloy datasheet caps Fe at 0.20 wt.% and APWORKS
+# at 0.40; production lots measure 0.12-0.29 (al-ni-purity-and-industry-feedstock-2026-10.md).
 REFERENCES = {
-    "Scalmalloy Fe limit (0.068 wt.%)": 680,
+    "Scalmalloy Fe limit, Nikon SLM (0.20 wt.%)": 2000,
     "AlSi10Mg Fe limit (0.25 wt.%)": 2500,
     "1199 Al total impurity (0.01 wt.%)": 100,
 }
@@ -126,7 +129,7 @@ def impurity_budget() -> None:
     fe_from_al = MAX_WT_PCT["Al"] / 100.0 * 0.0015 * 1e6
     print(f"If AEE AL-111's 0.3% impurity is a typical Fe 0.15 / Si 0.10 / other 0.05 split,")
     print(f"the Al base alone delivers ~{fe_from_al:.0f} ppm Fe ({fe_from_al/1e4:.3f} wt.%) to the alloy")
-    print(f"  -> {fe_from_al/REFERENCES['Scalmalloy Fe limit (0.068 wt.%)']:.1f}x the Scalmalloy Fe limit;"
+    print(f"  -> {fe_from_al/REFERENCES['Scalmalloy Fe limit, Nikon SLM (0.20 wt.%)']:.1f}x the Scalmalloy Fe limit;"
           f" {fe_from_al/REFERENCES['AlSi10Mg Fe limit (0.25 wt.%)']:.2f}x the AlSi10Mg limit.")
     print("  ACTION: request the AL-111 certificate of analysis before assuming this split.")
 
