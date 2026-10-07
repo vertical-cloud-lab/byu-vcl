@@ -55,7 +55,7 @@ the keyframe pages use the new titles too.
   slide clips are not in either playlist.
 - **New playlist [*Atomizer Runs*](https://www.youtube.com/playlist?list=PLZQwIo89me4c)** (unlisted): the Oct 2
   run's two parts and the Oct 6 run's three videos, oldest first. The daily SOP names it.
-- **Every description's GitHub links** now point at the commit of this run instead of `a0e4b5f`.
+- **Every description's GitHub links** now point at `c707e74` instead of `a0e4b5f` (all 51 read back identical to the catalog).
 - **Undo**: `python sync.py restore backup-2026-10-07.json [id ...]` ([`backup-2026-10-07.json`](backup-2026-10-07.json),
   taken just before; it also has each video's privacy).
 
