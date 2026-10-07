@@ -1,0 +1,12 @@
+read in 11.5 s
+topology: {'SOLID': 1, 'SHELL': 1, 'FACE': 27001, 'EDGE': 53557, 'VERTEX': 26563}
+valid (BRepCheck): True
+edges not shared by exactly 2 faces: 0
+max tolerance (mm): 1.046452763638854e-06
+STL: 26563 vertices, volume 8760.891399 mm3, area 4768.681107 mm2
+STEP: 26563 vertices, volume 8760.891542 mm3, area 4768.681107 mm2
+volume difference 1.430e-04 mm3, area difference -8.659e-09 mm2
+STEP vertices matching an STL vertex: 26563 of 26563; largest distance 9.511e-12 mm
+bbox STL  [-14.39999962  -7.26999998 -10.        ] [14.39999962 23.77000046 24.        ]
+bbox STEP [-14.39999962  -7.26999998 -10.        ] [14.39999962 23.77000046 24.        ]
+done in 18.1 s
