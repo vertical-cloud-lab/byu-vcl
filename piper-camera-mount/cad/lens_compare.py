@@ -232,7 +232,7 @@ def views(p: Params, parts: dict, det, n: float, focus_mm: float) -> tuple[np.nd
     return img, {"summary": summary, "cases": found}
 
 
-def closeup(p: Params, parts: dict, clash: cq.Workplane | None, path: Path, title: str) -> None:
+def closeup(p: Params, parts: dict, clash: cq.Workplane | None, path: Path) -> None:
     """The pod on its seat, from outside and in front, the lens and what it hits."""
     pl = pv.Plotter(off_screen=True, window_size=(1100, 900))
     pl.set_background("white")
@@ -270,7 +270,7 @@ def main() -> None:
     assert p6.lens == "6mm"
     parts6 = build(p6)
     det = detector()
-    out, panels = {}, {}
+    out = {}
     tmp = RENDERS / "_lens_tmp"
     tmp.mkdir(parents=True, exist_ok=True)
     for key in ("6mm", "16mm"):
@@ -286,7 +286,7 @@ def main() -> None:
         focus = dof["by f-number (um)"][dof["sharpest"]]["focus_at_mm"]
         img, res_view = views(p, parts, det, n, focus)
         cv2.imwrite(str(tmp / f"view_{key}.png"), cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
-        closeup(p, parts, clash, tmp / f"pod_{key}.png", p.lens_spec.name)
+        closeup(p, parts, clash, tmp / f"pod_{key}.png")
         out[key] = {"optics": opt, "fit": res_fit, "rendered views": res_view,
                     "pictures taken at": {"f-number": n, "focus (mm from the lens front)": round(focus, 1)}}
         print(key, json.dumps({"fit": res_fit["clash"], "views": res_view["summary"]}, indent=1))

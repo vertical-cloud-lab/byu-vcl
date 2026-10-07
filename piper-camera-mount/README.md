@@ -137,15 +137,15 @@ pixels are in the 2028 x 1520 mode that `fiducials.py` renders.
 | Rated resolution | 3 MP | 10 MP |
 | On this mount | fits; the cradle clears its thumbscrews at any angle | doesn't fit (below) |
 | Moment about the pod's face | 1030 g mm | 4000 g mm (3.9 times) |
-| Price at launch | $25 | $50 |
+| Price at launch (US retail now varies, and runs higher) | $25 | $50 |
 
 **Why the 6 mm:**
 
 - **It sees the gripper and the target together, which the 16 mm can't.** The camera sits 60 mm
   out from the gripper axis and 89.5 mm behind the fingertips. From there the 16 mm sees a patch 24 x
-  18 mm at the depth of the finger tags, and no finger tag falls in it at any opening. It sees a
-  target 60 to 120 mm past the tips only when the fingers are far enough apart, and never with a
-  finger tag.
+  18 mm at the depth of the finger tags, and no finger tag falls in it at any opening. Of the three
+  target distances it gets a whole 20 mm target in the picture only at 120 mm past the tips, and
+  never together with a finger tag.
 - **Depth of field.** The work spans 82 mm (finger tags) to 161 mm (a target 60 mm out) or more.
   - **6 mm:** focused about 108 mm out at f/8, it blurs each end by about 6 px. That is about half a
     cell of a finger tag, and the detector still finds them (see below). Stopping down further
@@ -155,9 +155,9 @@ pixels are in the 2028 x 1520 mode that `fiducials.py` renders.
   - **So the 16 mm would need refocusing by hand** between near and far, which a wrist camera can't
     do.
 - **The 6 mm has enough pixels.** A 20 mm target tag is 178 to 294 px across from 30 to 120 mm past
-  the tips. AprilTag decodes from about 30 px. The 16 mm's 3 times the pixels per mm only pay off on targets
-  much further away or on small detail. That is a job for a fixed camera, such as the OT-2's
-  overhead camera, not a wrist camera.
+  the tips, and AprilTag decodes from about 30 px. The 16 mm's three times the pixels per mm only pay
+  off on targets much further away or on small detail. That is a job for a fixed camera, such as the
+  OT-2's overhead camera, not a wrist camera.
 - **The 16 mm doesn't fit this mount.**
   - With its adapter it is 21 mm longer and 9 mm wider.
   - It cuts into the seat (1663 mm³) and the finger plate (176 mm³).
@@ -171,12 +171,13 @@ pixels are in the 2028 x 1520 mode that `fiducials.py` renders.
 - **Take the C-CS adapter off first.** The HQ ships with it, and the 6 mm won't focus with it on
   (Raspberry Pi's guide). Screw the HQ's back-focus ring fully in and lock it.
 - **Focus about 108 mm in front of the lens, about 20 mm past the fingertips**, with the camera
-  running. Following the guide: lock the inner NEAR/FAR ring with its thumbscrew, then turn the
-  outer two rings together until the picture is sharp. That takes 4 to 5 turns from new, and it is
-  what leaves the aperture thumbscrew pointing anywhere. Focusing as close as the finger tags needs
-  the lens 0.47 mm out from infinity, and its 0.2 m minimum object distance only covers 0.19 mm.
-  Raspberry Pi says the lens focuses much closer than that in practice. If it won't, back the
-  back-focus ring out by about 0.3 mm.
+  running. Following the guide, lock the inner NEAR/FAR ring with its thumbscrew, then turn the
+  outer two rings together until the picture is sharp. The guide says that takes four or five whole
+  turns, and it is what leaves the aperture thumbscrew pointing anywhere.
+  - **Close focus:** focusing on the finger tags needs the lens 0.47 mm out from infinity, and its
+    0.2 m minimum object distance only covers 0.19 mm. The guide also says the lens can focus at
+    very short distances, for macro work, so it should reach. If it doesn't, back the HQ's
+    back-focus ring out by about 0.3 mm.
 - **Stop down to about f/8.** The aperture ring is marked only OPEN and CLOSE, so close it until a
   finger tag and a target 60 mm out are both crisp, then lock its thumbscrew. f/8 lets in an eighth
   of the light f/2.8 does, so expect longer exposures or add a small light.
