@@ -48,10 +48,10 @@ CLIPS = {
         ],
     },
     "02_stack": {
-        "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 1)",
+        "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 2)",
         "summary": "The ultrasonic-stack step of tutorial 1, cut for a slide: transducer, booster and sonotrode with "
-                   "their torques, into the door, the plate, the scan and wet test, the cover, then the door shut and "
-                   "bolted.",
+                   "their torques, into the door, then the connector, the plate hung by its end and the tungsten upper "
+                   "sonotrode torqued against it, the scan and wet test, the cover, then the door shut and bolted.",
         "lines": [
             ("2c.1", 0.0, "The stack: transducer first",
              "The ultrasonic stack goes in last, starting with the transducer."),
@@ -61,8 +61,10 @@ CLIPS = {
              "The sonotrode, at sixty newton meters."),
             ("2c.4", 0.0, "Slide it into the door",
              "Slide the stack into the door housing."),
-            ("2c.5", 0.0, "Plate on: 50 N·m",
-             "Then the plate, at fifty newton meters."),
+            ("2c.5", 0.0, "Connector in, plate on it",
+             "Then the connector, and the plate onto it."),
+            ("2c.5", 4.0, "Upper sonotrode on: 50 N·m",
+             "The upper sonotrode clamps it, at fifty newton meters."),
             ("2c.6", 0.0, "Scan: one peak near 40 kHz",
              "Scan for one wide peak, near forty kilohertz."),
             ("2c.7", 0.0, "Wet test: whole plate atomizes",
@@ -76,7 +78,7 @@ CLIPS = {
         ],
     },
     "06_pour": {
-        "title": "Atomizer slide clip: the pour (draft 1)",
+        "title": "Atomizer slide clip: the pour (draft 2)",
         "summary": "The pour step of tutorial 2, cut for a slide: the melt held near 800 °C, the vibration on and the "
                    "furnace pressure raised above the chamber's, the sealing rod lifted, a turbo push to heat the plate, "
                    "then every drop atomizing and the powder running down into the container.",
@@ -103,12 +105,13 @@ CLIPS = {
         ],
     },
     "summary": {
-        "title": "Atomizer slide clip: from loading to powder in 44 seconds (draft 2)",
+        "title": "Atomizer slide clip: from loading to powder in 45 seconds (draft 3)",
         "summary": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the "
                    "sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon, "
                    "the coil's pulses stirring the melt up the sealing rod, and pouring onto the vibrating plate, which "
                    "atomizes the melt into powder.",
-        "note": "Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, plate, cover and bolts) "
+        "note": "Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, connector, plate, upper "
+                "sonotrode, cover and bolts) "
                 "are sped up, and the checks, gas washes and holds are left out. Each move is followed by a short pause, "
                 "and the furnace, the stack and the run are a longer pause apart. The parts follow the same paths, in "
                 "the same order, as in the full step animations.",

@@ -550,8 +550,10 @@ def load_machine(sc: Scene, cut=(), hide=(), ghost: dict | None = None, pipes=Tr
                    p["color"], "pipes")
     # the stack rides on the door; the lever and the rod ride on the post's piston ("arm_base", which lifts them to pour),
     # the lever swings up about its pivot on its own ("arm"); the nozzle in its holder, the holder on the crucible
-    for g in ("plate", "sonotrode", "booster", "transducer", "cover"):
+    for g in ("connector", "sonotrode", "booster", "transducer", "cover"):
         sc.parent[g] = "door"
+    sc.parent["plate"] = "connector"            # the plate and the upper sonotrode are held on the connector
+    sc.parent["upper"] = "connector"
     sc.parent["arm"] = "arm_base"
     sc.parent["rod"] = "arm_base"
     sc.parent["nozzle"] = "holder"

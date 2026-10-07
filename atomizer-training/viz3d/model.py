@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import hashlib
 import math
+import os
 import pickle
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -53,6 +54,8 @@ HX = (0.90, 0.91, 0.92)
 FLOOR = (0.955, 0.955, 0.96)
 FRAME = (0.25, 0.26, 0.28)
 GREEN = (0.10, 0.55, 0.25)
+CARBON = (0.13, 0.13, 0.15)       # carbon-fibre plate
+W_ALLOY = (0.47, 0.48, 0.51)      # tungsten-alloy (W-Ni-Fe) upper sonotrode
 WATER_IN, WATER_OUT = (0.15, 0.35, 0.85), (0.85, 0.20, 0.15)
 ARGON_LINE = (0.10, 0.62, 0.35)
 AIR_LINE = (0.35, 0.72, 0.95)
@@ -114,14 +117,115 @@ CONT_R = 65.0
 VIEWPORT = np.array([5.0, CH_Y[0] - 8.0, 1030.0])                     # front face, top left, under the furnace
 VIEWPORT_N = np.array([-0.15, -1.0, 0.40]) / np.linalg.norm([-0.15, -1.0, 0.40])   # looks in and down at the plate
 
-# Ultrasonic stack: comes in through the door (left wall) at 40 deg, plate face centre at PLATE_C.
-STACK_ANGLE = 40.0
+# ------------------------------------------------------------------- ultrasonic stack: sizes and set-up, in one place
+# From the transducer out: transducer -> booster -> Ti sonotrode (M10 at its base; M8 and 17 mm wrench flats at its tip)
+# -> double-threaded M8 connector, whose ring in the middle hides in the sonotrode's tip, so half of it is in each
+# sonotrode -> the plate, slid onto the connector through an 8 mm hole about 10 mm from one end -> the upper sonotrode,
+# tungsten alloy (W-Ni-Fe), screwed onto the connector and torqued against the plate (50 N m). So the plate is a cantilever
+# off the stack's axis, and the upper sonotrode stands out past it on the side the melt lands on. Sources: T5 10:28-11:41
+# and 25:56, T7 17:23 and 45:41-47:27, the Oct 2 run at 7:41, #261. The sizes are frame estimates scaled by the plate's
+# 20 mm width; #261 asks for the upper sonotrode, the clocking and the axis-to-nozzle offset to be measured.
+STACK_ANGLE = 40.0                    # the stack comes in through the door (left wall), rising at 40 deg
+PLATE_L, PLATE_W, PLATE_T = 100.0, 20.0, 2.5    # carbon fibre (the small CF plate); Mo plates are the same shape
+HOLE_D, HOLE_E = 8.0, 10.0            # the plate's hole, and its centre's distance from the plate's end
+SONO_R, SONO_FLATS = 10.0, 17.0       # Ti sonotrode: about 20 mm across, flats 17 mm across at its tip
+UPPER_R, UPPER_L = 10.0, 55.0         # W-Ni-Fe upper sonotrode: about 20 mm across, 55 mm long
+CONN_R, CONN_HALF, CONN_RING = 4.0, 12.0, 3.0   # M8 connector: each threaded half, and the 8 mm ring between them
+AXIS_BEHIND = 40.0      # the axis passes this far behind (+y) the stream: inferred from the training clocking, not measured
+IMPACT_Z = 981.5        # height of the plate's face where the stream lands in the training set-up (126 mm under the nozzle)
+
+
+@dataclass(frozen=True)
+class StackSetup:
+    """How the stack is set: two things set by hand when it goes in, and where its axis is.
+
+    clock: the plate's angle about the axis, in degrees: 0 = level, its free end towards the front of the chamber;
+    90 = its free end straight down the slope. slide: mm further into the housing than in the training set-up (negative:
+    pulled back). behind: how far the axis passes behind the stream (+y); the machine's, not set by hand."""
+    clock: float = 0.0
+    slide: float = 0.0
+    behind: float = AXIS_BEHIND
+
+
+SETUPS = {
+    # the training set-up: the plate level and pointing to the front of the chamber, so with the axis AXIS_BEHIND behind
+    # the stream (the hole-to-mid-plate distance), the stream lands mid-plate, beside the upper sonotrode
+    "training": StackSetup(),
+    # Oct 6 (#261): the plate clocked straight down the slope, with the stack slid in far enough that the upper sonotrode
+    # is under the stream. With the axis 40 mm behind the stream no clocking or slide can do that (the upper sonotrode
+    # stays 30 mm to the side), so this set-up has the axis in line with the stream, which is what the photo implies
+    "oct6": StackSetup(clock=90.0, slide=-31.0, behind=0.0),
+}
+
+
+def _setup_from_env() -> StackSetup:
+    """VIZ3D_STACK: a name in SETUPS, or e.g. "clock=90,slide=-31,behind=0". Default: the training set-up."""
+    v = os.environ.get("VIZ3D_STACK", "training").strip()
+    if v in SETUPS:
+        return SETUPS[v]
+    return StackSetup(**{k.strip(): float(x) for k, x in (kv.split("=") for kv in v.split(",") if kv.strip())})
+
+
+SETUP = _setup_from_env()
 STACK_DIR = np.array([math.cos(math.radians(STACK_ANGLE)), 0.0, math.sin(math.radians(STACK_ANGLE))])
-PLATE_UP = np.array([-STACK_DIR[2], 0.0, STACK_DIR[0]])                              # up the plate's slope
-IMPACT_S = 15.0                       # the stream lands this far up the plate from its centre
-PLATE_C = np.array([IMPACT_S * STACK_DIR[2], 0.0, 970.0])   # chosen so the stream at x = 0 lands high
-IMPACT = PLATE_C + IMPACT_S * PLATE_UP
-DOOR_S = (PLATE_C[0] - CH_X[0]) / STACK_DIR[0]              # plate face to the door plane, along the stack
+PLATE_UP = np.array([-STACK_DIR[2], 0.0, STACK_DIR[0]])   # in the plate's plane: up its slope, towards the door
+PLATE_FRONT = np.array([0.0, -1.0, 0.0])                    # in the plate's plane: level, towards the chamber's front
+
+
+def plate_dirs(clock: float) -> tuple[np.ndarray, np.ndarray]:
+    """(along, across): unit vectors in the plate's plane, from its hole towards its free end, and across it."""
+    c = math.radians(clock)
+    al = math.cos(c) * PLATE_FRONT - math.sin(c) * PLATE_UP
+    return al, np.cross(STACK_DIR, al)
+
+
+def tip_of(setup: StackSetup = SETUP) -> np.ndarray:
+    """The Ti sonotrode's tip face on the axis, which is the plate's back face at its hole. With no slide the hole sits
+    straight behind (+y) the training set-up's landing point, `behind` mm from it."""
+    return np.array([0.0, setup.behind, IMPACT_Z]) - STACK_DIR * PLATE_T + STACK_DIR * setup.slide
+
+
+TIP = tip_of(SETUP)                                   # the Ti sonotrode's tip face, on the axis
+PLATE_ALONG, PLATE_ACROSS = plate_dirs(SETUP.clock)
+PLATE_C = TIP + STACK_DIR * PLATE_T + PLATE_ALONG * (PLATE_L / 2 - HOLE_E)    # the plate's face, mid-plate
+UPPER_END = TIP + STACK_DIR * (PLATE_T + UPPER_L)    # the upper sonotrode's free end, on the axis
+# the housing is on the door, so it stays where the axis crosses the door plane with no slide; the stack slides in it
+_TIP_HOME = tip_of(StackSetup(SETUP.clock, 0.0, SETUP.behind))
+DOOR_S = (_TIP_HOME[0] - CH_X[0]) / STACK_DIR[0]    # Ti sonotrode tip to the door plane, along the axis, with no slide
+PORT = _TIP_HOME - STACK_DIR * DOOR_S                 # where the axis crosses the door plane: the housing
+
+
+def on_axis(s: float, tip=None) -> np.ndarray:
+    """The point on the stack's axis s mm back from the Ti sonotrode's tip face."""
+    return (TIP if tip is None else np.asarray(tip, float)) - STACK_DIR * s
+
+
+def landing(setup: StackSetup = SETUP, slide: float = 0.0, stream_r: float = 1.4):
+    """Where the stream (falling from the nozzle at x = y = 0, radius stream_r) first meets the stack, with it slid a
+    further `slide` mm: (point, "plate" | "upper" | None). The upper sonotrode stands above the plate's face, so it
+    is hit first wherever it is under the stream."""
+    tip = tip_of(setup) + STACK_DIR * slide
+    al, ac = plate_dirs(setup.clock)
+    face = tip + STACK_DIR * PLATE_T
+    hits = []
+    # the plate's face: the stream crosses its plane once
+    zf = face[2] + (STACK_DIR[0] * face[0] + STACK_DIR[1] * face[1]) / STACK_DIR[2]
+    w = np.array([0.0, 0.0, zf]) - face
+    if -HOLE_E <= w @ al <= PLATE_L - HOLE_E and abs(w @ ac) <= PLATE_W / 2 + stream_r:
+        hits.append((zf, "plate"))
+    # the upper sonotrode: the highest point of the stream inside it (widened by the stream's radius)
+    z = np.linspace(NOZZLE_EXIT_Z, CH_BOTTOM, 6001)
+    w = np.column_stack([np.full_like(z, -face[0]), np.full_like(z, -face[1]), z - face[2]])
+    t = w @ STACK_DIR
+    radial = np.sqrt(np.maximum((w * w).sum(1) - t * t, 0.0))
+    inside = np.flatnonzero((t >= 0.0) & (t <= UPPER_L) & (radial <= UPPER_R + stream_r))
+    if len(inside):
+        hits.append((float(z[inside[0]]), "upper"))
+    if not hits:
+        return None, None
+    zh, what = max(hits)
+    return np.array([0.0, 0.0, zh]), what
+
 
 # graphite nozzle holder: its threaded shank passes the furnace floor and the top plate; the thin graphite nut goes on
 # from below, inside the chamber, against a graphite seal
@@ -129,6 +233,9 @@ SHANK_R, SHANK_Z0 = 12.0, 1108.0
 NUT_R, NUT_Z = 30.0, (1110.0, 1122.0)          # thin: 60 x 12 mm, a few threads; the seal is above it, to the wall
 NUT_PITCH = 2.0
 NOZZLE_EXIT_Z = SHANK_Z0
+IMPACT, IMPACT_ON = landing()   # where the stream lands with SETUP: on the plate, or on the upper sonotrode
+if IMPACT is None:              # it misses the stack: say where it would have crossed the plate's level
+    IMPACT = np.array([0.0, 0.0, IMPACT_Z])
 
 DOOR_Z = (775.0, 1115.0)                        # U-shaped door: flat top, round bottom, on the vertical part of the face
 DOOR_W = 236.0
@@ -442,9 +549,8 @@ def chamber_parts() -> list[Part]:
     # bore passes the sonotrode's KF50 flange, the booster and the transducer
     door = u_shape(DOOR_W, DOOR_Z[0], DOOR_Z[1], x0 - DOOR_T, DOOR_T)
     door = door.fuse(u_shape(DOOR_W - 50, DOOR_Z[0] + 25, DOOR_Z[1] - 25, x0 - DOOR_T - 10, 10))
-    port = PLATE_C - STACK_DIR * DOOR_S          # the stack crosses the door plane here
-    door = door.cut(along(cyl(40, 200), port - STACK_DIR * 100, STACK_DIR))
-    door = door.fuse(along(tube(49, 40, 60), port - STACK_DIR * 60, STACK_DIR))
+    door = door.cut(along(cyl(40, 200), PORT - STACK_DIR * 100, STACK_DIR))      # the stack crosses the door plane at PORT
+    door = door.fuse(along(tube(49, 40, 60), PORT - STACK_DIR * 60, STACK_DIR))
     sight = np.array([x0 - DOOR_T - 10, -45.0, 1060.0])
     door = door.fuse(along(tube(30, 22, 12), sight, (-1, 0, 0)))
     hx, hy = DOOR_HINGE
@@ -514,37 +620,58 @@ def chamber_parts() -> list[Part]:
     return P
 
 
-def stack_parts() -> list[Part]:
-    """Ultrasonic stack along STACK_DIR. Distances are measured back from the plate face."""
+def frame(shape: cq.Shape, origin, ex, ey, ez) -> cq.Shape:
+    """Place a part built on its own x, y, z axes at `origin`, those axes turned to ex, ey, ez (right-handed, unit)."""
+    from OCP.gp import gp_Ax3, gp_Dir, gp_Pnt, gp_Trsf
+    t = gp_Trsf()
+    t.SetDisplacement(gp_Ax3(), gp_Ax3(gp_Pnt(*map(float, origin)), gp_Dir(*map(float, ez)), gp_Dir(*map(float, ex))))
+    return shape.moved(cq.Location(t))
+
+
+def stack_parts(setup: StackSetup = SETUP) -> list[Part]:
+    """The ultrasonic stack along STACK_DIR, built back from the Ti sonotrode's tip face (tip_of(setup)), and out from it:
+    the connector, the plate hung from its hole and clocked by setup.clock, and the upper sonotrode. Each part is built
+    in the stack's own frame (x along the plate towards its free end, z along the axis, out of the door into the chamber,
+    z = 0 at the tip face) and placed with frame()."""
     P = []
+    tip = tip_of(setup)
+    al, ac = plate_dirs(setup.clock)
 
-    def seg(name, r, s0, s1, color, group, tol=0.15, **kw):
-        P.append(Part(name, along(cyl(r, s1 - s0), PLATE_C - STACK_DIR * s1, STACK_DIR), color, group, tol=tol,
-                      cut=False, **kw))
+    def put(shape):
+        return frame(shape, tip, al, ac, STACK_DIR)
 
-    plate = cq.Workplane("XY").rect(100, 20).extrude(4).edges("|Z").fillet(3).val()
-    plate = plate.translate(V(0, 0, -4))
-    # orient: plate long side up the slope, normal along STACK_DIR, face at PLATE_C
-    plate = plate.rotate(V(0, 0, 0), V(0, 1, 0), 45).translate(V(*PLATE_C))
-    P.append(Part("plate", plate, TITANIUM, "plate", tol=0.1, cut=False))
-    seg("stud", 4, 4, 14, STEEL_DK, "plate")
-    sono = fuse(along(cyl(12, 128), PLATE_C - STACK_DIR * 132, STACK_DIR),
-                along(cyl(17, 8), PLATE_C - STACK_DIR * 126, STACK_DIR),
-                along(cyl(37, 8), PLATE_C - STACK_DIR * 120, STACK_DIR))       # KF50 flange at the booster end
-    sono = sono.cut(along(cyl(4.4, 16), PLATE_C - STACK_DIR * 20, STACK_DIR))     # threaded bore for the plate stud
-    P.append(Part("sonotrode", sono, TITANIUM, "sonotrode", tol=0.15, cut=False))
-    boost = fuse(along(cyl(20, 120), PLATE_C - STACK_DIR * 254, STACK_DIR),
-                 along(cyl(34, 10), PLATE_C - STACK_DIR * 199, STACK_DIR))
-    P.append(Part("booster", boost, (0.72, 0.73, 0.76), "booster", tol=0.15, cut=False))
-    trans = fuse(along(cyl(36, 100), PLATE_C - STACK_DIR * 354, STACK_DIR),
-                 along(cyl(30, 10), PLATE_C - STACK_DIR * 364, STACK_DIR),
-                 along(cyl(9, 25), PLATE_C - STACK_DIR * 389, STACK_DIR))
-    P.append(Part("transducer", trans, (0.25, 0.27, 0.30), "transducer", tol=0.2, cut=False))
-    cover = along(tube(50, 46, 170), PLATE_C - STACK_DIR * 406, STACK_DIR)
-    cover = cover.fuse(along(cyl(50, 5), PLATE_C - STACK_DIR * 411, STACK_DIR).cut(
-        along(cyl(12, 12), PLATE_C - STACK_DIR * 416, STACK_DIR)))
-    cover = cover.fuse(along(tube(62, 46, 8), PLATE_C - STACK_DIR * 244, STACK_DIR))
-    P.append(Part("stack_cover", cover.clean(), STEEL, "cover", tol=0.3, cut=False))
+    def zc(r, z0, z1):                     # a cylinder on the axis from z0 to z1, in the stack's frame
+        return cyl(r, z1 - z0, (0, 0, z0))
+
+    # the plate: 100 x 20 x 2.5, its back face on the tip, hung by the hole HOLE_E from one end
+    plate = cq.Workplane("XY").box(PLATE_L, PLATE_W, PLATE_T, centered=(True, True, False)).edges("|Z").fillet(3.0).val()
+    plate = plate.translate(V(PLATE_L / 2 - HOLE_E, 0, 0)).cut(zc(HOLE_D / 2, -1, PLATE_T + 1))
+    P.append(Part("plate", put(plate), CARBON, "plate", tol=0.1, cut=False))
+    # the connector: two M8 halves and the 8 mm ring between them, which hides in the Ti sonotrode's tip
+    conn = fuse(zc(CONN_R - 0.2, -CONN_HALF - CONN_RING, -CONN_RING), zc(CONN_R, -CONN_RING, 0.0),
+                zc(CONN_R - 0.2, 0.0, CONN_HALF))
+    for z in np.arange(-CONN_HALF - CONN_RING + 2.0, -CONN_RING - 0.5, 2.5).tolist() + \
+            np.arange(1.5, CONN_HALF - 0.5, 2.5).tolist():                                   # a few threads
+        conn = conn.cut(tube(CONN_R + 1, CONN_R - 0.7, 0.8, (0, 0, z)))
+    P.append(Part("connector", put(conn.clean()), TITANIUM, "connector", tol=0.05, cut=False))
+    # the upper sonotrode (W-Ni-Fe): on the connector's outer half, its face against the plate
+    up = cq.Workplane("XY").circle(UPPER_R).extrude(UPPER_L).faces(">Z").edges().chamfer(1.2).val()
+    up = up.translate(V(0, 0, PLATE_T)).cut(zc(CONN_R + 0.4, PLATE_T - 1, CONN_HALF + 0.6))
+    P.append(Part("upper_sonotrode", put(up), W_ALLOY, "upper", tol=0.1, cut=False))
+    # Ti sonotrode: M8 bore and wrench flats at the tip, KF50 flange and a collar at the booster end (back 108-122 mm)
+    sono = fuse(zc(SONO_R, -128, 0), zc(17, -122, -114), zc(37, -116, -108))
+    sono = sono.cut(zc(CONN_R + 0.4, -CONN_HALF - CONN_RING - 1.0, 1.0))
+    for x0, x1 in ((SONO_FLATS / 2, SONO_R + 2), (-SONO_R - 2, -SONO_FLATS / 2)):
+        sono = sono.cut(box(x0, x1, -SONO_R - 2, SONO_R + 2, -14, -2))
+    P.append(Part("sonotrode", put(sono.clean()), TITANIUM, "sonotrode", tol=0.15, cut=False))
+    # booster (1.5:1), transducer and its protective cover: as before, measured back from the tip
+    boost = fuse(zc(20, -250, -130), zc(34, -195, -185))
+    P.append(Part("booster", put(boost), (0.72, 0.73, 0.76), "booster", tol=0.15, cut=False))
+    trans = fuse(zc(36, -350, -250), zc(30, -360, -350), zc(9, -385, -360))
+    P.append(Part("transducer", put(trans), (0.25, 0.27, 0.30), "transducer", tol=0.2, cut=False))
+    cover = fuse(tube(50, 46, 170, (0, 0, -402)), zc(50, -407, -402).cut(zc(12, -412, -400)),
+                 tube(62, 46, 8, (0, 0, -240)))
+    P.append(Part("stack_cover", put(cover.clean()), STEEL, "cover", tol=0.3, cut=False))
     return P
 
 
@@ -655,7 +782,7 @@ def utility_parts() -> list[Part]:
 
 def pipe_routes() -> dict[str, dict]:
     """Utility lines as centre-line polylines (rendered as tubes by PyVista, not CadQuery)."""
-    cover_end = PLATE_C - STACK_DIR * 405
+    cover_end = on_axis(401)
     fx0, fx1 = FR_X
     return {
         "water_supply": dict(color=WATER_IN, r=7, pts=[(678, 300, 260), (640, 320, 150), (600, 360, 140),
@@ -740,7 +867,8 @@ def halve(shape: cq.Shape) -> cq.Shape:
 
 
 def _source_hash() -> str:
-    return hashlib.sha1(Path(__file__).read_bytes()).hexdigest()[:12]
+    """The model's source and the stack's set-up (VIZ3D_STACK), so each set-up has its own cached meshes."""
+    return hashlib.sha1(Path(__file__).read_bytes() + repr(SETUP).encode()).hexdigest()[:12]
 
 
 def meshes(force: bool = False) -> dict:

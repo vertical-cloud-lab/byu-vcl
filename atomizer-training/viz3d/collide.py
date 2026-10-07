@@ -280,7 +280,7 @@ def report(rest, results):
 
 if __name__ == "__main__":
     import steps
-    names = sys.argv[1:] or list(steps.ANIMS)
+    names = sys.argv[1:] or steps.DEFAULT
     out = HERE / "out"
     rest = check_rest()
     print(f"assembled machine: {len(rest)} overlaps", flush=True)
