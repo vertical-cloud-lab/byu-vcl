@@ -8,6 +8,8 @@ with the training detail from #222 and the powder bags from #249.
 | What | Where |
 | --- | --- |
 | **The procedure**: before / during / after a run, safety, utilities, cleaning, troubleshooting, known runs, open questions, with every step linked to the moment of video it comes from | [`sop.md`](sop.md) |
+| **Daily run SOP** (Gage Erickson, Oct 6): who does what on a run day, Gage, Ronnie and Paul, copied from #126 | [`daily-sop.md`](daily-sop.md) |
+| **Runs, checked against the footage**: Oct 6, Gage's three videos placed on the clock of the pixelated room stream, then the daily SOP and the #261 parameters checked step by step | [`runs/2026-10-06.md`](runs/2026-10-06.md) |
 | **Timestamp log**: every substantive moment in every video, one row each, links open the player **paused** at that second (no autoplay) | [`timestamps.md`](timestamps.md) |
 | Per-video indexes: summary, timestamp table, procedural steps, parameters, quotes, open questions (what the SOP was built from) | [`notes/`](notes/) |
 | Transcripts: YouTube auto-captions for 20 videos, Whisper large-v3-turbo transcripts for all 26 (word-timed for all nine training videos and every longer video), and word-level re-runs of the clips where the two still disagreed | [`transcripts/`](transcripts/) |

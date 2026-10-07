@@ -1,0 +1,58 @@
+{
+ "date": "2026-10-06",
+ "timezone": "MDT (UTC-6), the stream overlay's lab local time",
+ "stream_id": "AHERrlMcqKg",
+ "stream_title": "atomizer stream picam-ot2, 2026-10-06 UTC 19:00",
+ "stream_start": "13:01:11",
+ "stream_start_note": "offset 0 of the broadcast; 460 of 461 legible overlay readings (one every 30 s, 13:01-17:16) give 13:01:11 +- 1 s. The first frame of a broadcast lags by 7 s.",
+ "stream_file": "/tmp/work/stream/AHERrlMcqKg.f160.mp4",
+ "morning_stream": {
+  "id": "EpFB_QaDegU",
+  "start": "05:01:09.5",
+  "end": "13:00:00",
+  "note": "958 of 958 readings give 05:01:09-05:01:10; the room is empty all morning apart from 14 s at 12:44:13"
+ },
+ "method": "stream_sync.py motion (stream --grid, phones whole-picture) then align: Pearson correlation of log movement per 0.5 s, smoothed over 2 s",
+ "videos": {
+  "VFycaxIq0Tc": {
+   "title": "Oct 6 atomizer run, video 1",
+   "file": "/tmp/work/dl/VFycaxIq0Tc.v720.mp4",
+   "stream_offset_s": 367.5,
+   "r": 0.479,
+   "runner_up_r": 0.297,
+   "halves_offset_s": [
+    367.5,
+    368.5
+   ],
+   "start": "13:07:18",
+   "end": "13:27:34"
+  },
+  "dnPs56DPt6I": {
+   "title": "Oct 6th atomizer run, video 2",
+   "file": "/tmp/work/dl/dnPs56DPt6I.v720.mp4",
+   "stream_offset_s": 3923.5,
+   "r": 0.76,
+   "runner_up_r": 0.281,
+   "halves_offset_s": [
+    3923.5,
+    3923.5
+   ],
+   "start": "14:06:34",
+   "end": "14:24:31"
+  },
+  "DWH1CEygsTI": {
+   "title": "Oct 6 atomizer run, video 3",
+   "file": "/tmp/work/dl/DWH1CEygsTI.v720.mp4",
+   "stream_offset_s": 5786.0,
+   "r": 0.804,
+   "runner_up_r": 0.248,
+   "halves_offset_s": [
+    5786.0,
+    5786.0
+   ],
+   "start": "14:37:37",
+   "end": "15:12:18"
+  }
+ },
+ "independent_check": "video 3 at 28:58-29:01: the checklist phone's status bar reads 3:06; the alignment puts that at 15:06:35-15:06:38"
+}

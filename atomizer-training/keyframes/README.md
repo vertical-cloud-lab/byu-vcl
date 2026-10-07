@@ -133,3 +133,18 @@ Frames come from the Pi-fetched low-resolution copies (640×360 for landscape vi
 `w02MRlZhpNk` · 2026-09-29 · 3 frames · [open paused](https://www.youtube.com/embed/w02MRlZhpNk?start=0) · [▶ watch](https://www.youtube.com/watch?v=w02MRlZhpNk)
 
 ![Atomizer room (Sep 29): dehumidifier troubleshooting](w02MRlZhpNk_sheet.jpg)
+
+## Oct 6 atomizer run, video 1
+`VFycaxIq0Tc` · 2026-10-06 · 11 frames · [open paused](https://www.youtube.com/embed/VFycaxIq0Tc?start=0) · [▶ watch](https://www.youtube.com/watch?v=VFycaxIq0Tc)
+
+![Oct 6 atomizer run, video 1](VFycaxIq0Tc_sheet.jpg)
+
+## Oct 6th atomizer run, video 2
+`dnPs56DPt6I` · 2026-10-06 · 21 frames · [open paused](https://www.youtube.com/embed/dnPs56DPt6I?start=0) · [▶ watch](https://www.youtube.com/watch?v=dnPs56DPt6I)
+
+![Oct 6th atomizer run, video 2](dnPs56DPt6I_sheet.jpg)
+
+## Oct 6 atomizer run, video 3
+`DWH1CEygsTI` · 2026-10-06 · 18 frames · [open paused](https://www.youtube.com/embed/DWH1CEygsTI?start=0) · [▶ watch](https://www.youtube.com/watch?v=DWH1CEygsTI)
+
+![Oct 6 atomizer run, video 3](DWH1CEygsTI_sheet.jpg)

@@ -273,7 +273,10 @@ def ensure_playlist(yt, st, docs):
     return pid
 
 
-def sync_items(yt, pid, want):
+def sync_items(yt, pid, want, drop):
+    """Put the catalog's videos (`want`) first, in order, and take the superseded ones (`drop`) out. Anything else
+    stays, after them: the team adds each day's run videos to this playlist themselves (#126), before the catalog
+    knows about them, and deleting those would quietly undo their work."""
     def items():
         out, token = [], None
         while True:
@@ -283,9 +286,12 @@ def sync_items(yt, pid, want):
                 return sorted(out, key=lambda i: i["snippet"]["position"])
     have = items()
     for it in have:
-        if it["snippet"]["resourceId"]["videoId"] not in want:
+        vid = it["snippet"]["resourceId"]["videoId"]
+        if vid in drop:
             yt.playlistItems().delete(id=it["id"]).execute()
-            print("removed from playlist:", it["snippet"]["resourceId"]["videoId"])
+            print("removed from playlist:", vid)
+        elif vid not in want:
+            print("kept at the end, not in the catalog yet:", vid)
     present = {it["snippet"]["resourceId"]["videoId"] for it in have}
     for pos, vid in enumerate(want):
         if vid not in present:
@@ -324,7 +330,7 @@ def cmd_apply(args):
             print("updated", v["id"], "->", title)
         else:
             print("unchanged", v["id"])
-    sync_items(yt, pid, [v["id"] for v in VIDEOS])
+    sync_items(yt, pid, [v["id"] for v in VIDEOS], {s["id"] for s in SUPERSEDED})
     p = yt.playlists().list(part="snippet,status", id=pid).execute()["items"][0]
     if (p["snippet"]["title"], p["snippet"].get("description", "")) != (PLAYLIST["title"], pd):
         yt.playlists().update(part="snippet,status", body={"id": pid, "snippet": {

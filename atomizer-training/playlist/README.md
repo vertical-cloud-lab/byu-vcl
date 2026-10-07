@@ -62,6 +62,10 @@ python sync.py apply --ref <sha>    # update the videos, then create / fill / re
   `apply` also refuses a commit that is not on a remote.
 - **It is idempotent.** Videos that already match are skipped, and the playlist is synced to the catalog's order.
   Interrupted runs (quota, network) resume.
+- **It only takes `SUPERSEDED` uploads out of the playlist.** A video the catalog does not know yet stays, after the
+  catalog's videos. The team adds each day's run videos to this playlist themselves: Gage's three from the Oct 6 run
+  went in on the day, before the catalog had them ([`../runs/2026-10-06.md`](../runs/2026-10-06.md)). Until
+  2026-10-07, `apply` deleted every video not in the catalog, which would have removed those three.
 - **After PR #255 merges**, run `apply --ref main` to point every link at the living docs instead of the pinned commit.
 - **For a new tutorial draft**, put its id in `TUTORIALS` in place of the old one and move the old one to `SUPERSEDED`,
   then `apply`. That renames both, swaps the playlist entry and leaves the old upload labelled.
