@@ -1,0 +1,102 @@
+{
+ "source": "exports/onshape_partstudio.step (Onshape export of the Part Studio)",
+ "printed": {
+  "FRONT socket + tray (print)": {
+   "volume_cm3": 153.22,
+   "mass_petg_g": 194.6,
+   "bbox_mm": [
+    176.8,
+    108.7,
+    161.4
+   ],
+   "stl": "exports/stl/front_socket_tray.stl"
+  },
+  "LEFT face plate (print)": {
+   "volume_cm3": 30.27,
+   "mass_petg_g": 38.4,
+   "bbox_mm": [
+    8.5,
+    155.9,
+    103.9
+   ],
+   "stl": "exports/stl/left_face_plate.stl"
+  },
+  "TOP hub (print)": {
+   "volume_cm3": 72.08,
+   "mass_petg_g": 91.5,
+   "bbox_mm": [
+    54.0,
+    83.7,
+    30.0
+   ],
+   "stl": "exports/stl/top_hub.stl"
+  },
+  "LEFT collar + tray (print)": {
+   "volume_cm3": 136.55,
+   "mass_petg_g": 173.4,
+   "bbox_mm": [
+    67.1,
+    150.3,
+    98.3
+   ],
+   "stl": "exports/stl/left_collar_tray.stl"
+  },
+  "TOP face plate (print)": {
+   "volume_cm3": 24.09,
+   "mass_petg_g": 30.6,
+   "bbox_mm": [
+    111.1,
+    76.7,
+    89.5
+   ],
+   "stl": "exports/stl/top_face_plate.stl"
+  },
+  "TOP camera pod (print)": {
+   "volume_cm3": 27.09,
+   "mass_petg_g": 34.4,
+   "bbox_mm": [
+    46.0,
+    43.8,
+    76.8
+   ],
+   "stl": "exports/stl/top_camera_pod.stl"
+  },
+  "TOP display box (print)": {
+   "volume_cm3": 87.93,
+   "mass_petg_g": 111.7,
+   "bbox_mm": [
+    110.6,
+    104.0,
+    99.9
+   ],
+   "stl": "exports/stl/top_display_box.stl"
+  },
+  "FRONT face plate (print)": {
+   "volume_cm3": 24.8,
+   "mass_petg_g": 31.5,
+   "bbox_mm": [
+    133.5,
+    44.8,
+    104.1
+   ],
+   "stl": "exports/stl/front_face_plate.stl"
+  },
+  "TOP detent collar (print)": {
+   "volume_cm3": 33.12,
+   "mass_petg_g": 42.1,
+   "bbox_mm": [
+    54.0,
+    64.4,
+    15.7
+   ],
+   "stl": "exports/stl/top_detent_collar.stl"
+  }
+ },
+ "interference": [],
+ "clearances": {
+  "front_unit_top_above_cover_top_mm": 5.9,
+  "top_unit_to_open_lid_mm": 118.2,
+  "top_unit_to_closed_lid_mm": 118.2,
+  "left_unit_to_stack_mm": 60.3
+ }
+}
