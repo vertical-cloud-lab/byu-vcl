@@ -110,6 +110,14 @@ SCENARIOS = {
         "Ti": ("Al-10Ti pieces (ESPI Knc6829)", 0.10),
         # Sc chips, Er powder, Ce ingot, Mg pieces are elemental (y = 1)
     },
+    "F. plan D but Sc as Al-2Sc": {
+        "Li": ("Al-5Li", 0.05), "Zr": ("Al-10Zr pieces", 0.10), "Ti": ("Al-10Ti pieces", 0.10),
+        "Sc": ("Al-2Sc", 0.02),
+    },
+    "G. all-master but Al-10Li": {
+        "Li": ("Al-10Li", 0.10), "Sc": ("Al-2Sc", 0.02), "Zr": ("Al-10Zr pieces", 0.10),
+        "Ti": ("Al-10Ti pieces", 0.10), "Er": ("Al-10Er", 0.10), "Ce": ("Al-20Ce", 0.20),
+    },
     "E. recommended (see report)": {
         "Li": ("Al-10Li (or Al-5Li if Sc/Zr/Ce are elemental)", 0.10),
         "Zr": ("Al-Zr50 pieces (ESPI Knd2756), crushed", 0.50),
