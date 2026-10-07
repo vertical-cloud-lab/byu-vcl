@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-10-06**. This is the map; the detail is in
+Status as of **2026-10-07**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,6 +13,15 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ✅ **2026-10-07: with the UART wire off, the TMC2209 moves the plunger.** The board was
+> cold with the wire on pin 9 and turned warm with it off. `tmc2209_probe.py` then proved the
+> direction (DIR LOW is up), passed the rate ladder up to the ~8,700 steps/s `MOVE_TO` rate,
+> and homed, matching the Tic's 09-29 numbers. So the board is fine, and the firmware's UART
+> writes were what stopped it (wiring doc §25). Next is `pipette_test` with the wire off and
+> `cubxl_run.py --no-tic`. Long term, either leave the wire off with pin 9 tied to a level, or
+> flash `disableStealthChop()` and put the wire back. Record:
+> [`tmc2209_probe_20261007`](../results/tmc2209_probe_20261007/README.md).
+>
 > 🔑 **2026-10-06: the board checks out, and the firmware may be what starves it.**
 > Ben's meter readings on the TMC2209 were healthy: VM 12.4 V, VDD 5 V, VREF 0.586 V,
 > coils 3.4 Ω, and DIAG 0 V once enabled. `tmc2209_probe.py` and the down-probe still saw

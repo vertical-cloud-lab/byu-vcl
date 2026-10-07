@@ -13,6 +13,10 @@ switches it back on. That leaves the coils with about **0.1 A** when they should
 reading of the source, not yet a measurement. [Next](#next-two-ways-to-test-it) gives two ways
 to test it.
 
+*(2026-10-07: test A done. With the UART wire off pin 9, the board went from cold to warm, and
+`tmc2209_probe.py` proved the direction, passed the whole rate ladder and homed:
+[`tmc2209_probe_20261007`](../tmc2209_probe_20261007/README.md).)*
+
 ## What the probes saw
 
 Both scripts are the 10-05 ones, unchanged: the same sha256 on the Pi and in
@@ -198,6 +202,7 @@ Arduino (dropping the capper's magnet) and GRBL (so it needs homing).
 ## State left
 
 - **Plunger:** not homed, and most likely still ~1 mm below the switch, since nothing turned.
+  *(2026-10-07: it was 1.65 mm below. Something moved it ~0.65 mm down.)*
 - **Electromagnet:** off, `EMAG_OFF` → `OK` after each probe.
 - **Gantry:** not touched, and its port wasn't opened. GRBL was reset by the 16:35 USB drops,
   so it needs homing before a run, as always.

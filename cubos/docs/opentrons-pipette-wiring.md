@@ -3290,3 +3290,35 @@ from the hot-then-cold sequence. The two tests in the record separate the cases:
 UART wire off pin 9 (standalone mode), or flash `disableStealthChop()` in `setupMotor()`.
 SpreadCycle regulates `IRUN`/`IHOLD` against the sense resistors, as the Tic does, and
 doesn't need StealthChop's tuning for the firmware's unramped starts.
+
+## 25. 2026-10-07: with the UART wire off pin 9, the TMC2209 moves the plunger at every rate
+
+Ben's free check first: with the wire on pin 9 and nothing moving, the board and pipette were
+**cold**. With the wire off (standalone mode) they turned **warm**. `tmc2209_probe.py` then
+exited 0 ([`results/tmc2209_probe_20261007/`](../results/tmc2209_probe_20261007/README.md)):
+
+| | TMC2209, standalone, 10-07 | Tic, 09-29 |
+|---|---|---|
+| UP search | switch opened after ~1.65 mm: DIR LOW is up | DIR LOW is up |
+| ladder: switch reopened after a 2 mm back-off | ~2.05 / 2.12 / 2.13 mm at 1,000 / 2,500 / 10,000 microsteps/s | ~2.11 mm at 2,500 |
+| time to the trip at 2,500/s | 0.774 s | 0.770 s |
+| `HOME` from 2 mm below | `OK` in 1.348 s | `OK` in 1.356 s |
+
+So §24 holds as far as it can be tested without readback. The firmware's UART writes land,
+and they're what stops the motor. The new board is fine, with no damage from the 10-05 heat.
+Which register does it is still inferred from the library source.
+
+What runs now is the chip's standalone defaults: the trimmer's current (VREF 0.586 V ≈ 0.77 A
+rms, 1.09 A peak, on a 6121's 0.05 Ω), StealthChop with automatic scaling (if the board leaves
+`SPREAD` on its internal pull-down), and 1/8 step (`MS1`/`MS2`'s). In this mode the motor
+followed the firmware's unramped starts up to ~8,700 microsteps/s.
+
+🔑 **`PDN_UART` has no internal pull.** The datasheet's pin table gives it `DIO`, where `MS1`,
+`MS2`, `SPREAD` and `DIR` are `DI (pd)`. With the wire off, pin 9 floats, and that pin decides
+standstill reduction: low cuts the current at rest to `IHOLD` (16, 53% of `IRUN`, with the OTP
+bits at their factory 0), and high keeps it at the full run current. If the wire stays off for
+good, tie pin 9 through 1–10 kΩ: to GND for the reduced hold, or to `VDD` for the full hold the
+Tic gives. The resistor protects A1 if the wire is ever put back by mistake.
+
+The two ways to keep the TMC2209: the wire off for good with pin 9 tied, or fix B
+(`disableStealthChop()`) with the wire back on (§24).

@@ -1,0 +1,22 @@
+18:18:17.071Z  connected in 3.77 s (the port open reset the Arduino)
+18:18:17.079Z  STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:18:17.235Z  CMD 29 before: comm=0 (no UART reply) flags=0 [] CS=-1
+18:18:17.275Z  start                      switch closed (below the top)  dt=0.021 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+18:18:18.291Z  UP search 1/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:18:19.307Z  UP search 2/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:18:20.323Z  UP search 3/6              UP    0.5 mm @   400/s  dt= 1.015 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:18:20.721Z  UP search 4/6              UP    0.5 mm @   400/s  dt= 0.398 s (full move  0.995 s)  SWITCH OPENED after ~0.15 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:18:20.721Z  DIRECTION PROVEN: UP opened the switch after ~1.65 mm
+18:18:24.755Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+18:18:26.487Z  ladder @ 1000              UP    4.0 mm @  1000/s  dt= 1.732 s (full move  3.184 s)  SWITCH OPENED after ~2.05 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:18:30.522Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.035 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+18:18:31.296Z  ladder @ 2500              UP    4.0 mm @  2500/s  dt= 0.774 s (full move  1.274 s)  SWITCH OPENED after ~2.12 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:18:35.330Z  back off                   DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+18:18:35.625Z  ladder @ 10000             UP    4.0 mm @ 10000/s  dt= 0.295 s (full move  0.366 s)  SWITCH OPENED after ~2.13 mm  -> ERR Command 16 failed: ERR:{"error":"Failed to move relative"}
+18:18:39.660Z  back off before HOME       DOWN  2.0 mm @   400/s  dt= 4.034 s (full move  3.980 s)  completed  -> OK:{"msg":"Moved relative","v":[1.00,1592.00,400.00]}
+18:18:41.008Z  firmware HOME (cmd 10)  dt= 1.348 s  -> OK:{"msg":"Pipette homed"}
+18:18:41.016Z  STATUS -> OK:{"homed":1,"pos":0.00,"max_vol":20.00}
+18:18:41.053Z  after HOME                 switch closed (below the top)  dt=0.020 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+18:18:41.208Z  CMD 29 after: comm=0 (no UART reply) flags=0 [] CS=-1
+18:18:41.215Z  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+18:18:41.218Z  disconnected; exit 0
