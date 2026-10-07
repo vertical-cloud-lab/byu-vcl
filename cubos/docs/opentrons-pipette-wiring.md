@@ -3360,3 +3360,13 @@ been reseated. Nothing recorded can confirm it.
 second, and its post-run `HOME` came out at +0.04 mm. Everything stays plugged in now. If the
 pipette goes back on the Tic, no reflash is needed: the Tic's STEP/DIR input ignores the UART
 writes.
+
+**Afterwards, Ben confirmed two things.** The new board is an **Adafruit 6121**, so the
+figures above hold, from its 0.05 Ω sense resistors (§10). And at idle after the run it was at
+**room temperature**. Assuming the 12 V was on, that means the writes landed and the chip is
+holding `IHOLD`: on the trimmer it would hold ≈0.77 A rms at rest and turn warm, as in §25.
+Feeling the board at idle is the check to repeat whenever the wiring or the power-up order
+changes. He also felt vibration on what he thinks was the first probe of the afternoon. Both
+probes before the flash ran the 10-01 image, so that fits §24, current reaching the coils but
+too little to turn the plunger. It is light evidence, though: on 10-05 a 30 s buzz in what
+should have been the same state gave nothing he could feel.

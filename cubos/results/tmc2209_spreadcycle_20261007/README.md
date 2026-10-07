@@ -9,7 +9,9 @@ UART. I just plugged EN back in to A4."*
 **It worked.** With EN back on A4 and the UART wire on pin 9, the 10-01 firmware didn't move
 the plunger, in two probes. Fix B (`disableStealthChop()`) did. `tmc2209_probe.py` passed, then
 `pipette_test` ran 12/12 with no lost steps. Its plunger timings match the Tic's 10-06 run to
-the hundredth of a second.
+the hundredth of a second. Afterwards Ben confirmed that the board is an Adafruit 6121, and
+found it at room temperature at idle. That is the sign that the firmware's hold current is in
+force, not the trimmer's ([Ben's follow-ups](#bens-follow-ups)).
 
 ## Timeline (UTC)
 
@@ -90,9 +92,10 @@ tip clearly. The 10-06 Tic run isn't committed. It is on the Pi at
   and the same 12 V, and only one bit of GCONF different. One didn't move, and the other moved
   at every rate. That's what the 10-06 reading of the library predicted (wiring doc §24).
 - **Everything can stay plugged in.** The chip now runs on the firmware's current, regulated:
-  `IRUN` CS 6 while moving and `IHOLD` CS 1 at rest. On a 6121's 0.05 Ω that's 0.72 A rms and
-  0.21 A rms, Opentrons' 1.0 A peak `plungerCurrent` and 0.3 A `idleCurrent`. While the writes
-  land, the trimmer sets nothing (`i_scale_analog = 0`).
+  `IRUN` CS 6 while moving and `IHOLD` CS 1 at rest. On the 6121's 0.05 Ω (Ben has confirmed
+  the board is one) that's 0.72 A rms and 0.21 A rms, Opentrons' 1.0 A peak `plungerCurrent`
+  and 0.3 A `idleCurrent`. While the writes land, the trimmer sets nothing
+  (`i_scale_analog = 0`).
 - **The same image runs the Tic.** The Tic's STEP/DIR input ignores the UART writes, so swapping
   drivers needs no reflash, only `--no-tic` on `cubxl_run.py` while the TMC2209 is on.
 
@@ -112,11 +115,26 @@ In practice it doesn't matter while the writes land. If they ever don't, the chi
 the trimmer, which also moves the plunger, as 10-07 showed. That makes VREF at 0.55–0.59 V the
 backstop, so leave it there.
 
+## Ben's follow-ups
+
+- **18:53:47Z:** *"I felt vibrations on the first probe run (at least I think it was the first
+  one.)"* Both probes before the flash were the 10-01 image, so whichever he counts as the
+  first, it was one of them. That fits wiring doc §24: current in the coils and steps
+  arriving, but too little current to turn the plunger. It is light evidence. He isn't sure of
+  the run, and on 10-05 a 30 s buzz in what should have been the same state gave nothing he
+  could feel.
+- **21:10:37Z:** *"the new board is the Adafruit 6121."* So the current figures here stand, from
+  its 0.05 Ω sense resistors: 0.72 A rms moving, 0.21 A rms at rest.
+- **21:10:37Z:** *"I checked, and the board is at room temperature."* That is check 1 below, and
+  it passed, assuming the 12 V was on. The chip is holding the firmware's `IHOLD`. On the
+  trimmer it would hold ≈0.77 A rms at rest and turn warm, as it did on 10-07.
+
 ## Three things for Ben to know
 
 1. **Idle temperature is the free check that the writes are landing.** After a run, with
    everything plugged in and the CubXL idle, the board and pipette should sit near room
    temperature, cooler than on 10-07. Warm like 10-07 means the trimmer is in charge again.
+   *Done after this run: room temperature (above).*
 2. **Power-up order.** If the 12 V comes on after the Arduino's last reset (the Pi booted first,
    say), the writes went to an unpowered chip. It then runs on the trimmer and holds full
    current at rest until a host opens the port. CubOS opens it at the start of every run, so

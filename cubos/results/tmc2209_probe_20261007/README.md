@@ -53,6 +53,8 @@ firmware's UART setup was what stopped it, as 10-06 predicted.
 - **It started 1.65 mm below the switch, not the ~1 mm the 10-06 record expected.** Something
   moved it ~0.65 mm down after the Tic's last `HOME` on 10-06: a hand on the plunger, or the
   10-06 probes turning it part of the way. `HOME` has re-zeroed it.
+- *Added later that day:* Ben at 18:19:13Z, half a minute after the probe ended: *"I felt the
+  pipette vibrating, but it was pretty light."*
 
 ## What it settles
 
@@ -79,7 +81,8 @@ With the wire off, the firmware's writes go nowhere, and the chip runs on its ow
 (standalone mode):
 
 - **Current from the trimmer.** VREF 0.586 V is ≈ 0.77 A rms (1.09 A peak) on a 6121's 0.05 Ω
-  sense resistors. Ben hasn't confirmed the new board is a 6121.
+  sense resistors. Ben hasn't confirmed the new board is a 6121. *(He did later that day: it
+  is.)*
 - **StealthChop with automatic current regulation,** if the board leaves `SPREAD` on its
   internal pull-down.
 - **1/8 step** from `MS1`/`MS2`.

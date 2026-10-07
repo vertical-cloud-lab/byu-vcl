@@ -174,7 +174,7 @@ that record's tests A and B.
 
 Section numbers are from [`opentrons-pipette-wiring.md`](../../docs/opentrons-pipette-wiring.md).
 The figures assume an Adafruit 6121 like the 09-26 board: 0.05 Ω sense resistors, VREF at most
-~1.16 V. Header pins (§10.3): 1 VDD, 2 GND, 3 DIR, 4 STEP, 7 DIAG, 9 UART, 10 EN. The pipette
+~1.16 V. *(Ben confirmed on 2026-10-07 that the new board is a 6121.)* Header pins (§10.3): 1 VDD, 2 GND, 3 DIR, 4 STEP, 7 DIAG, 9 UART, 10 EN. The pipette
 works on the Tic, so steps 1–13 can also be done on the bench with a spare stepper, which
 leaves the CubXL alone.
 

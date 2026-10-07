@@ -20,7 +20,9 @@ the wiring doc, because conflating the two has cost real time.
 > `en_SpreadCycle`), and flashed. `tmc2209_probe.py` then passed, and `cubxl_run.py --no-tic`
 > ran 12/12 with a post-run `HOME` of +0.04 mm. Its plunger timings match the Tic's 10-06 run.
 > The chip now runs on the firmware's regulated current, 0.72 A rms moving and 0.21 A rms at
-> rest on a 6121, so everything can stay plugged in at idle. Run with `--no-tic` while the
+> rest on a 6121 (Ben has confirmed the new board is one), so everything can stay plugged in at
+> idle. Ben found the board at room temperature at idle after the run, the sign that the
+> firmware's settings are in force rather than the trimmer's. Run with `--no-tic` while the
 > TMC2209 is on. Record:
 > [`tmc2209_spreadcycle_20261007`](../results/tmc2209_spreadcycle_20261007/README.md), wiring
 > doc §26, firmware in [`../firmware/README.md`](../firmware/README.md).
