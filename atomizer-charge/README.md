@@ -318,13 +318,13 @@ The ± is whether the 2.25" was measured to the drill tip or to full diameter.
 
 **Machining doesn't move the composition** (Edison, 2026-10-07: [machining](../outputs/issue-222-machining-contamination/literature_machining_answer.md),
 [cleaning](../outputs/issue-222-machining-contamination/literature_cleaning_answer.md)). A 1 mg steel chip in a 200 g
-run is 5 ppm Fe, against 3500 ppm allowed in 6063. Oil left after wiping is about 1 mg per cup, and most of it boils
-off during pump-down. The native oxide on the cups is ~1 ppm O per run, against 400–700 ppm in the powder itself. What
-can matter is discrete: abrasive grit, steel or brass swarf, dried coolant, and oil pooled at the bottom of the blind
-bore. An IPA wipe handles the outside, but IPA doesn't dissolve mineral oil and a Kimwipe doesn't reach the bottom of
-the bore. So: cut dry or with light oil only, with no water-soluble coolant or tapping fluid, on a lathe brushed free
+run is 5 ppm Fe, against 3500 ppm allowed in 6063. Oil left after wiping is about 1 mg per cup (~20 ppm), and it is more likely to
+outgas or crack as the charge heats than to reach the powder. The cups' native oxide adds ~1 ppm O to a run, against
+30–200 ppm from the powder's own oxide (fine Al-Si powder carries 400–700 ppm O). What can matter is discrete: abrasive grit, steel or brass swarf, dried coolant, and oil pooled at the bottom of the blind
+bore. One IPA wipe takes ~89 % of an oily soil off Al, but IPA isn't miscible with mineral oil, so it partly smears it,
+and a Kimwipe doesn't reach the bottom of the bore. So: cut dry or with light oil only, with no water-soluble coolant or tapping fluid, on a lathe brushed free
 of steel and brass chips. Use no emery, files or Scotch-Brite. Flush the bore with 99 % IPA from the wash bottle,
-swab it, and flush again, with acetone first if oil was used. Dry the cups at 80 °C for 30 min before filling. EDS
+swab it, and flush again, with heptane or a lab detergent first if oil was used. Dry the cups at 80 °C for 30 min before filling. EDS
 can't see any of this. LECO O/C/H on the powder can.
 
 ## Measure before machining
