@@ -1,0 +1,21 @@
+read RaspberryPiCameraMount.step in 0.2 s
+topology: 1 solid, 156 faces, 407 edges, 248 vertices
+valid (BRepCheck): True
+faces by surface type: {'plane': 75, 'cylinder': 65, 'torus': 6, 'sphere': 10}
+  cylinder r=0.250: 2 faces
+  cylinder r=0.750: 13 faces
+  cylinder r=1.150: 4 faces
+  cylinder r=1.999: 1 faces
+  cylinder r=2.000: 41 faces
+  cylinder r=2.400: 4 faces
+  sphere r=2.000: 10 faces
+  torus R=4.000 r=2.000: 6 faces
+edges by curve type: {'line': 247, 'circle': 116, 'bspline': 38, 'other': 6}
+largest edge tolerance: 7.75e-04 mm
+volume: STL 8760.891 mm3, STEP 8761.134 mm3 (difference +0.242)
+area:   STL 4768.681 mm2, STEP 4768.797 mm2 (difference +0.116)
+bbox STL  [[-14.4, -7.27, -10.0], [14.4, 23.77, 24.0]]
+bbox STEP [[-14.4, -7.27, -10.0], [14.4, 23.77, 24.0]]
+STEP surface -> STL facets: max 0.0010 mm, mean 0.00026 mm (84881 points)
+STL vertices -> STEP surface: max 0.00064 mm (STEP tessellated to 0.0005 mm)
+done in 3.6 s
