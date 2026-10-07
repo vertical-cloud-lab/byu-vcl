@@ -26,7 +26,7 @@ VIEWS = {
 def main() -> None:
     api = Onshape()
     st = json.loads((HERE / "state.json").read_text())
-    did, wid, eid = st["did"], st["wid"], st["elements"]["Part Studio 1"]["id"]
+    did, wid, eid = st["did"], st["wid"], st["elements"]["Viewport cameras"]["id"]
     what = sys.argv[1:] or ["step"]
     if "step" in what:
         tr = api.call("POST", f"/partstudios/d/{did}/w/{wid}/e/{eid}/translations",

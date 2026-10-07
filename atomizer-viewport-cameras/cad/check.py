@@ -160,14 +160,10 @@ def main() -> None:
         res["clearances"]["front_unit_top_above_cover_top_mm"] = round(ztop_front - ztop_cover, 1)
     # top unit vs the lid, closed and open
     top = [(n, s) for n, s in printed + bought if n.startswith("TOP") or (n.startswith("(bought)") and s.BoundingBox().zmin > 1500)]
-    for lid_name in ("(machine) furnace lid, open", "(machine) furnace lid"):
-        lids = get(lid_name)
+    for lid_name, key in (("(machine) furnace lid, open", "top_unit_to_open_lid_mm"), ("(machine) furnace lid", "top_unit_to_closed_lid_mm")):
+        lids = [s for n, s in solids if n == lid_name]
         if lids and top:
-            dmin = min(distance(s, l) for _, s in top for l in lids)
-            key = "top_unit_to_open_lid_mm" if "open" in lid_name else "top_unit_to_closed_lid_mm"
-            res["clearances"][key] = round(dmin, 1)
-            if "open" not in lid_name:
-                break
+            res["clearances"][key] = round(min(distance(s, l) for _, s in top for l in lids), 1)
     # left unit to the stack
     left = [s for n, s in printed if n.startswith("LEFT")]
     stack = get("(machine) ultrasonic stack")

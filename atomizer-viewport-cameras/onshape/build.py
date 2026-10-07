@@ -106,7 +106,7 @@ def main() -> None:
         print("feature studio:", sorted(st["specs"]), st["namespace"])
         save(st)
     if "features" in what:
-        ps = el["Part Studio 1"]["id"]
+        ps = el["Viewport cameras"]["id"]
         st.setdefault("features", {})
         only = [a for a in what if a in UNITS]
         for ftype in (only or list(UNITS)):

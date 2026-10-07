@@ -96,7 +96,7 @@
  "clearances": {
   "front_unit_top_above_cover_top_mm": 5.9,
   "top_unit_to_open_lid_mm": 118.2,
-  "top_unit_to_closed_lid_mm": 118.2,
+  "top_unit_to_closed_lid_mm": 152.0,
   "left_unit_to_stack_mm": 60.3
  }
 }

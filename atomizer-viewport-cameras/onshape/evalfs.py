@@ -21,7 +21,7 @@ def plain(v):
 def evaluate(script: str):
     api = Onshape()
     st = json.load(open("state.json"))
-    r = api.call("POST", f"/partstudios/d/{st['did']}/w/{st['wid']}/e/{st['elements']['Part Studio 1']['id']}/featurescript",
+    r = api.call("POST", f"/partstudios/d/{st['did']}/w/{st['wid']}/e/{st['elements']['Viewport cameras']['id']}/featurescript",
                  json={"script": script, "queries": {}})
     return plain(r.get("result") or {}), r.get("notices"), r.get("console")
 

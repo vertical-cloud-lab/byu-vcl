@@ -2,10 +2,6 @@
  "did": "f6b439dfa2a88fd1d41e85b7",
  "wid": "30ec7826dedfab13d9c6d67b",
  "elements": {
-  "Part Studio 1": {
-   "id": "e6c903fdad97a6197366fe66",
-   "type": "PARTSTUDIO"
-  },
   "Assembly 1": {
    "id": "8ca99229ea65319b2b1366ed",
    "type": "ASSEMBLY"
@@ -21,6 +17,10 @@
   "Machine dimensions (measure these)": {
    "id": "215de9d02ddb283956bf690d",
    "type": "VARIABLESTUDIO"
+  },
+  "Viewport cameras": {
+   "id": "e6c903fdad97a6197366fe66",
+   "type": "PARTSTUDIO"
   }
  },
  "fs_microversion": "af85b32e41a2622b8184e6ed",
