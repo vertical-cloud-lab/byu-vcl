@@ -37,7 +37,7 @@ Installation, training and tutorials, all in order: https://www.youtube.com/play
 
 ## 1. Atomizer tutorial 0: the machine and how it works
 
-[`-yxOIJfhs80`](https://www.youtube.com/watch?v=-yxOIJfhs80) · was *Atomizer tutorial 0: the machine and how it works (draft 5)*
+[`Pnwe5B1YUnM`](https://www.youtube.com/watch?v=Pnwe5B1YUnM) · was *Atomizer tutorial 0: the machine and how it works (draft 5)*
 
 ```
 What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, each followed by the real thing in the lab, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the machine got here.
@@ -82,7 +82,7 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 2. Atomizer tutorial 1: before a run
 
-[`xpkbazHT_7M`](https://www.youtube.com/watch?v=xpkbazHT_7M) · was *Atomizer tutorial 1: before a run (draft 5)*
+[`sWx-k8CyCsk`](https://www.youtube.com/watch?v=sWx-k8CyCsk) · was *Atomizer tutorial 1: before a run (draft 5)*
 
 ```
 Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and crucible, the graphite nut threaded on from below through the open chamber door, insulation, thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted in the door before it closes. Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it.
@@ -152,7 +152,7 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 3. Atomizer tutorial 2: during a run
 
-[`Jex6lDcERUM`](https://www.youtube.com/watch?v=Jex6lDcERUM) · was *Atomizer tutorial 2: during a run (draft 5)*
+[`1rqkZO2DOhc`](https://www.youtube.com/watch?v=1rqkZO2DOhc) · was *Atomizer tutorial 2: during a run (draft 5)*
 
 ```
 The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about 800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, the same stage in the lab (including three mistakes from Oct 2 and Oct 6), then the trainer explaining it.
@@ -221,7 +221,7 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 4. Atomizer tutorial 3: after a run
 
-[`VWa33SEvFJw`](https://www.youtube.com/watch?v=VWa33SEvFJw) · was *Atomizer tutorial 3: after a run (draft 5)*
+[`UqYrbrsJSsU`](https://www.youtube.com/watch?v=UqYrbrsJSsU) · was *Atomizer tutorial 3: after a run (draft 5)*
 
 ```
 Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber (only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a material change, one plate per alloy). Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it. It ends with the lessons from the team's first run on its own, Oct 2.
@@ -1236,7 +1236,7 @@ The team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo
 [`p6jlgTJEOw4`](https://www.youtube.com/watch?v=p6jlgTJEOw4) · was *rePowder atomizer at BYU VCL, tutorial 0: installation and training overview (draft)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=-yxOIJfhs80. This is draft 1 of tutorial 0; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 1 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1248,7 +1248,7 @@ This upload is kept only until it is deleted.
 [`eKH7y4JgJD8`](https://www.youtube.com/watch?v=eKH7y4JgJD8) · was *rePowder atomizer at BYU VCL, tutorial 1: before a run (draft)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=xpkbazHT_7M. This is draft 1 of tutorial 1; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 1 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1260,7 +1260,7 @@ This upload is kept only until it is deleted.
 [`cGxBFZyFmCY`](https://www.youtube.com/watch?v=cGxBFZyFmCY) · was *rePowder atomizer at BYU VCL, tutorial 2: during a run (draft)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=Jex6lDcERUM. This is draft 1 of tutorial 2; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 1 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1272,7 +1272,7 @@ This upload is kept only until it is deleted.
 [`wPzP6I3jT5w`](https://www.youtube.com/watch?v=wPzP6I3jT5w) · was *rePowder atomizer at BYU VCL, tutorial 3: after a run (draft)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=VWa33SEvFJw. This is draft 1 of tutorial 3; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 1 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1284,7 +1284,7 @@ This upload is kept only until it is deleted.
 [`uVVeTokW3Us`](https://www.youtube.com/watch?v=uVVeTokW3Us) · was *rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 2)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=-yxOIJfhs80. This is draft 2 of tutorial 0; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 2 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1296,7 +1296,7 @@ This upload is kept only until it is deleted.
 [`qiBB0lIXUDM`](https://www.youtube.com/watch?v=qiBB0lIXUDM) · was *rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 2)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=xpkbazHT_7M. This is draft 2 of tutorial 1; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 2 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1308,7 +1308,7 @@ This upload is kept only until it is deleted.
 [`sagBBb78pVQ`](https://www.youtube.com/watch?v=sagBBb78pVQ) · was *rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 2)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=Jex6lDcERUM. This is draft 2 of tutorial 2; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 2 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1320,7 +1320,7 @@ This upload is kept only until it is deleted.
 [`50j8N8YyDxU`](https://www.youtube.com/watch?v=50j8N8YyDxU) · was *rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 2)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=VWa33SEvFJw. This is draft 2 of tutorial 3; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 2 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1332,7 +1332,7 @@ This upload is kept only until it is deleted.
 [`raIcdus1lI0`](https://www.youtube.com/watch?v=raIcdus1lI0) · was *rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=-yxOIJfhs80. This is draft 3 of tutorial 0; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 3 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1344,7 +1344,7 @@ This upload is kept only until it is deleted.
 [`KwY4KTY1UdI`](https://www.youtube.com/watch?v=KwY4KTY1UdI) · was *rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=xpkbazHT_7M. This is draft 3 of tutorial 1; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 3 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1356,7 +1356,7 @@ This upload is kept only until it is deleted.
 [`79QQtmIm0JM`](https://www.youtube.com/watch?v=79QQtmIm0JM) · was *rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=Jex6lDcERUM. This is draft 3 of tutorial 2; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 3 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 
@@ -1368,7 +1368,55 @@ This upload is kept only until it is deleted.
 [`TvaFwSyqaog`](https://www.youtube.com/watch?v=TvaFwSyqaog) · was *rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)*
 
 ```
-Superseded by https://www.youtube.com/watch?v=VWa33SEvFJw. This is draft 3 of tutorial 3; draft 4, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 3 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+
+The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+
+This upload is kept only until it is deleted.
+```
+
+## not in the playlist: [superseded] Atomizer tutorial 0, draft 4 (the machine and how it works)
+
+[`-yxOIJfhs80`](https://www.youtube.com/watch?v=-yxOIJfhs80) · was *Atomizer tutorial 0: the machine and how it works*
+
+```
+Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 4 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+
+The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+
+This upload is kept only until it is deleted.
+```
+
+## not in the playlist: [superseded] Atomizer tutorial 1, draft 4 (before a run)
+
+[`xpkbazHT_7M`](https://www.youtube.com/watch?v=xpkbazHT_7M) · was *Atomizer tutorial 1: before a run*
+
+```
+Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 4 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+
+The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+
+This upload is kept only until it is deleted.
+```
+
+## not in the playlist: [superseded] Atomizer tutorial 2, draft 4 (during a run)
+
+[`Jex6lDcERUM`](https://www.youtube.com/watch?v=Jex6lDcERUM) · was *Atomizer tutorial 2: during a run*
+
+```
+Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 4 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
+
+The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
+
+This upload is kept only until it is deleted.
+```
+
+## not in the playlist: [superseded] Atomizer tutorial 3, draft 4 (after a run)
+
+[`VWa33SEvFJw`](https://www.youtube.com/watch?v=VWa33SEvFJw) · was *Atomizer tutorial 3: after a run*
+
+```
+Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 4 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.
 
 The current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM
 

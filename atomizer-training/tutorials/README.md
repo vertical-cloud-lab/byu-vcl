@@ -59,27 +59,26 @@ changes.
 
 ## Uploads
 
-| Tutorial | Draft 4 | Draft 3 (superseded) | Draft 2 (superseded) | Draft 1 (superseded) |
-| --- | --- | --- | --- | --- |
-| 0 · The machine and how it works | [5:27](https://www.youtube.com/watch?v=-yxOIJfhs80) | [draft 3](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
-| 1 · Before a run: utilities, furnace, chamber, stack | [11:03](https://www.youtube.com/watch?v=xpkbazHT_7M) | [draft 3](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
-| 2 · During a run: gas wash, melt, pour, end of pour | [7:43](https://www.youtube.com/watch?v=Jex6lDcERUM) | [draft 3](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
-| 3 · After a run: shutdown, cool-down, powder, cleaning | [6:20](https://www.youtube.com/watch?v=VWa33SEvFJw) | [draft 3](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
+| Tutorial | Draft 5 | Draft 4 (superseded) | Draft 3 (superseded) | Draft 2 (superseded) | Draft 1 (superseded) |
+| --- | --- | --- | --- | --- | --- |
+| 0 · The machine and how it works | [7:16](https://www.youtube.com/watch?v=Pnwe5B1YUnM) | [draft 4](https://www.youtube.com/watch?v=-yxOIJfhs80) | [draft 3](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
+| 1 · Before a run: utilities, furnace, chamber, stack | [17:08](https://www.youtube.com/watch?v=sWx-k8CyCsk) | [draft 4](https://www.youtube.com/watch?v=xpkbazHT_7M) | [draft 3](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
+| 2 · During a run: gas wash, melt, pour, end of pour | [13:14](https://www.youtube.com/watch?v=1rqkZO2DOhc) | [draft 4](https://www.youtube.com/watch?v=Jex6lDcERUM) | [draft 3](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
+| 3 · After a run: shutdown, cool-down, powder, cleaning | [9:12](https://www.youtube.com/watch?v=UqYrbrsJSsU) | [draft 4](https://www.youtube.com/watch?v=VWa33SEvFJw) | [draft 3](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
 
-Draft 4 went up already titled in the playlist's pattern (*Atomizer tutorial N: … (draft 4)*) and described from
-[`../playlist/catalog.py`](../playlist/catalog.py): summary, chapters, the training-video moment behind every clip, and
-links pinned at `6c5da5f`. Drafts 1 and 2 are titled `[superseded] …`. Deleting them is still to do: it needs the full token
-and a go-ahead.
+Draft 5 went up the same way as draft 4: titled in the playlist's pattern (*Atomizer tutorial N: … (draft 5)*) and
+described from [`../playlist/catalog.py`](../playlist/catalog.py), now with a link to the moment behind every
+real-footage pick as well as every clip. Drafts 1–4 are titled `[superseded] …`. Deleting them is still to do: it needs
+a go-ahead.
 
-**Real footage for draft 5.** Draft 4 is about 44 % recordings (35 clips, 818 s of 30:33), but only 8 of those clips
-(about 220 s) show the work itself; the rest is Bartosz explaining, often at the touchscreen, and tutorial 2 has no
-hands-on footage at all. [`real-footage.md`](real-footage.md) is the cut list for draft 5: for every animation sub-step,
-the moment of real footage that shows it, checked against the log, the transcript and the frames, with whether it
-needs stabilizing. Building it needs the stream-cam Pi for the 720p windows, so a regular `@claude` run.
+**Real footage (draft 5).** Draft 4 was about 44 % recordings (35 clips, 818 s of 30:33), but only 8 of those clips
+(about 220 s) showed the work itself; the rest was Bartosz explaining, often at the touchscreen, and tutorial 2 had no
+hands-on footage at all. Draft 5 adds the 70 picks of [`real-footage.md`](real-footage.md) (every first pick and the
+three "what goes wrong" ones), about 17 minutes, one after each step's animation in the order of its sub-steps.
 
 **Playlist.** The atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, opens with the tutorials,
-ahead of the cups tutorial, the stitch and the recordings. Draft 4 has been in positions 1–4 since 2026-10-07, without
-"(draft 4)" in the titles, and draft 3 is labelled `[superseded] …`. See [`../playlist/README.md`](../playlist/README.md).
+ahead of the cups tutorial, the stitch and the recordings. Draft 5 has been in positions 1–4 since 2026-10-07, without
+"(draft 5)" in the titles, and draft 4 is labelled `[superseded] …`. See [`../playlist/README.md`](../playlist/README.md).
 
 ## Files
 

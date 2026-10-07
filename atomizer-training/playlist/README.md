@@ -12,7 +12,7 @@ in this order:
 
 | # | What |
 | --- | --- |
-| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 4; [`../tutorials/`](../tutorials/README.md)) |
+| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 5, with real footage; [`../tutorials/`](../tutorials/README.md)) |
 | 5 | Tutorial: making the aluminum cups and plugs (issue #248) |
 | 6–7 | Every recorded step in the order of a run, a 6 h 49 min raw cut in two parts ([`../stitch/`](../stitch/README.md)) |
 | 8–37 | The recordings, in the order they were made: delivery and installation (Jun–Sep), commissioning (Sep 28), training day 1 (Sep 29), day 2 (Sep 30), dosing the next charge (Sep 30), the first run on our own (Oct 2), the run of Oct 6 |
@@ -42,6 +42,13 @@ The repo follows the new titles. [`../videos.json`](../videos.json) keeps each v
 the keyframe pages use the new titles too.
 
 ## What changed on YouTube, and what did not
+
+**2026-10-07, later** (`@claude-youtube` on PR #255, with Tailscale this time):
+
+- **Tutorial draft 5** (with real footage after each animation) was uploaded and went into positions 1–4 without
+  "(draft 5)" in the titles; draft 4 is `[superseded] …` and out of the playlist. Each draft 5 description lists every
+  real-footage pick with a link to its moment, after the trainer's clips.
+- Drafts 1–3 now point at draft 5, and every description's GitHub links were re-pinned to the commit of this change.
 
 **2026-10-07** (`@claude-youtube` on PR #255):
 
