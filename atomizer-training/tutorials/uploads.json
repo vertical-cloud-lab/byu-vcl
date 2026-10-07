@@ -176,5 +176,43 @@
    "size_bytes": 146672642,
    "links_ref": "d4c34e8"
   }
+ },
+ "draft 6": {
+  "03-after": {
+   "video_id": "eNdmhnCl16s",
+   "url": "https://www.youtube.com/watch?v=eNdmhnCl16s",
+   "title": "Atomizer tutorial 3: after a run (draft 6)",
+   "uploaded_utc": "2026-10-07T16:48:12Z",
+   "privacy": "unlisted",
+   "size_bytes": 146887571,
+   "links_ref": "1d90811"
+  },
+  "02-during": {
+   "video_id": "4MyqZakpCtc",
+   "url": "https://www.youtube.com/watch?v=4MyqZakpCtc",
+   "title": "Atomizer tutorial 2: during a run (draft 6)",
+   "uploaded_utc": "2026-10-07T16:50:52Z",
+   "privacy": "unlisted",
+   "size_bytes": 197198262,
+   "links_ref": "1d90811"
+  },
+  "01-before": {
+   "video_id": "R2m-PynLxlE",
+   "url": "https://www.youtube.com/watch?v=R2m-PynLxlE",
+   "title": "Atomizer tutorial 1: before a run (draft 6)",
+   "uploaded_utc": "2026-10-07T16:51:36Z",
+   "privacy": "unlisted",
+   "size_bytes": 298510198,
+   "links_ref": "1d90811"
+  },
+  "00-overview": {
+   "video_id": "t07lNjBmhRg",
+   "url": "https://www.youtube.com/watch?v=t07lNjBmhRg",
+   "title": "Atomizer tutorial 0: the machine and how it works (draft 6)",
+   "uploaded_utc": "2026-10-07T16:51:47Z",
+   "privacy": "unlisted",
+   "size_bytes": 86530848,
+   "links_ref": "1d90811"
+  }
  }
 }

@@ -4,22 +4,16 @@ Four tutorial videos assembled from the material in this folder, uploaded **unli
 channel for review. Draft 5 adds the real thing: after each step's 3D animation, the same step in the lab, cut from the
 recordings (the training days, Oct 2 and Oct 6), stabilized and labelled, before Bartosz explains it. That follows
 Sterling's review on PR #255 ("the walkthrough tutorials would also benefit from real video snippets being shown").
-Draft 4 put no part of the 3D model through another and put tutorial 1 in the order of a real run. All five sets are
+Draft 4 put no part of the 3D model through another and put tutorial 1 in the order of a real run. All six sets are
 listed below.
 
-**Draft 5's 3D animations show the old ultrasonic stack.** On 7 Oct the model's stack was rebuilt as the training shows it:
-the connector, the plate hung by its hole near one end, and the tungsten upper sonotrode
-([`../viz3d/README.md`](../viz3d/README.md)). Every animation segment of all four tutorials changes with it, and the
-narration of the stack, pour, cool-down and cleaning steps was updated in [`scripts.py`](scripts.py) to match. Draft 6
-needs a YouTube-admin run:
-
-1. Re-render the 15 fps animations, which are not committed (`out/mp4/`):
-   `xvfb-run -a -s "-screen 0 1920x1080x24" python ../viz3d/steps.py`.
-2. Rebuild all four with `build_tutorials.py`, then upload them.
-3. Swap draft 5 for draft 6 in `../playlist/catalog.py`, and run `sync.py apply`.
-
-The five real-footage picks flagged in [the draft 5 review](real-footage.md#review-of-draft-5-frames-at-20-50-and-80--of-every-pick)
-can be swapped in the same build.
+**Draft 6 shows the ultrasonic stack as the training assembles it** (7 Oct): the connector, the plate hung by its hole
+near one end, and the tungsten upper sonotrode ([`../viz3d/README.md`](../viz3d/README.md)). Every 3D animation segment
+of all four tutorials was rebuilt from the re-rendered animations, with the narration of the stack, pour, cool-down and
+cleaning steps updated in [`scripts.py`](scripts.py) to match. Everything else (the outlines, the real-footage picks and
+the trainer's clips) is cut as in draft 5, except three real-footage picks swapped as
+[the draft 5 review](real-footage.md#review-of-draft-5-frames-at-20-50-and-80--of-every-pick) suggested: the nut from
+below, the star knobs and the rescan. The water test and the respirators are still to look at.
 
 ## How each tutorial is put together
 
@@ -73,17 +67,17 @@ changes.
 
 ## Uploads
 
-| Tutorial | Draft 5 | Draft 4 (superseded) | Draft 3 (superseded) | Draft 2 (superseded) | Draft 1 (superseded) |
-| --- | --- | --- | --- | --- | --- |
-| 0 · The machine and how it works | [7:16](https://www.youtube.com/watch?v=Pnwe5B1YUnM) | [draft 4](https://www.youtube.com/watch?v=-yxOIJfhs80) | [draft 3](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
-| 1 · Before a run: utilities, furnace, chamber, stack | [17:08](https://www.youtube.com/watch?v=sWx-k8CyCsk) | [draft 4](https://www.youtube.com/watch?v=xpkbazHT_7M) | [draft 3](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
-| 2 · During a run: gas wash, melt, pour, end of pour | [13:14](https://www.youtube.com/watch?v=1rqkZO2DOhc) | [draft 4](https://www.youtube.com/watch?v=Jex6lDcERUM) | [draft 3](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
-| 3 · After a run: shutdown, cool-down, powder, cleaning | [9:12](https://www.youtube.com/watch?v=UqYrbrsJSsU) | [draft 4](https://www.youtube.com/watch?v=VWa33SEvFJw) | [draft 3](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
+| Tutorial | Draft 6 | Draft 5 (superseded) | Draft 4 (superseded) | Draft 3 (superseded) | Draft 2 (superseded) | Draft 1 (superseded) |
+| --- | --- | --- | --- | --- | --- | --- |
+| 0 · The machine and how it works | [7:17](https://www.youtube.com/watch?v=t07lNjBmhRg) | [draft 5](https://www.youtube.com/watch?v=Pnwe5B1YUnM) | [draft 4](https://www.youtube.com/watch?v=-yxOIJfhs80) | [draft 3](https://www.youtube.com/watch?v=raIcdus1lI0) | [draft 2](https://www.youtube.com/watch?v=uVVeTokW3Us) | [draft 1](https://www.youtube.com/watch?v=p6jlgTJEOw4) |
+| 1 · Before a run: utilities, furnace, chamber, stack | [17:26](https://www.youtube.com/watch?v=R2m-PynLxlE) | [draft 5](https://www.youtube.com/watch?v=sWx-k8CyCsk) | [draft 4](https://www.youtube.com/watch?v=xpkbazHT_7M) | [draft 3](https://www.youtube.com/watch?v=KwY4KTY1UdI) | [draft 2](https://www.youtube.com/watch?v=qiBB0lIXUDM) | [draft 1](https://www.youtube.com/watch?v=eKH7y4JgJD8) |
+| 2 · During a run: gas wash, melt, pour, end of pour | [13:11](https://www.youtube.com/watch?v=4MyqZakpCtc) | [draft 5](https://www.youtube.com/watch?v=1rqkZO2DOhc) | [draft 4](https://www.youtube.com/watch?v=Jex6lDcERUM) | [draft 3](https://www.youtube.com/watch?v=79QQtmIm0JM) | [draft 2](https://www.youtube.com/watch?v=sagBBb78pVQ) | [draft 1](https://www.youtube.com/watch?v=cGxBFZyFmCY) |
+| 3 · After a run: shutdown, cool-down, powder, cleaning | [9:21](https://www.youtube.com/watch?v=eNdmhnCl16s) | [draft 5](https://www.youtube.com/watch?v=UqYrbrsJSsU) | [draft 4](https://www.youtube.com/watch?v=VWa33SEvFJw) | [draft 3](https://www.youtube.com/watch?v=TvaFwSyqaog) | [draft 2](https://www.youtube.com/watch?v=50j8N8YyDxU) | [draft 1](https://www.youtube.com/watch?v=wPzP6I3jT5w) |
 
-Draft 5 went up the same way as draft 4: titled in the playlist's pattern (*Atomizer tutorial N: … (draft 5)*) and
-described from [`../playlist/catalog.py`](../playlist/catalog.py), now with a link to the moment behind every
-real-footage pick as well as every clip. Drafts 1–4 are titled `[superseded] …`. Deleting them is still to do: it needs
-a go-ahead.
+Drafts 5 and 6 went up the same way as draft 4: titled in the playlist's pattern (*Atomizer tutorial N: … (draft 6)*)
+and described from [`../playlist/catalog.py`](../playlist/catalog.py), with a link to the moment behind every
+real-footage pick as well as every clip. Drafts 1–5 are titled `[superseded] …` and are **private**, as asked on
+2026-10-07, rather than deleted.
 
 **Real footage (draft 5).** Draft 4 was about 44 % recordings (35 clips, 818 s of 30:33), but only 8 of those clips
 (about 220 s) showed the work itself; the rest was Bartosz explaining, often at the touchscreen, and tutorial 2 had no
@@ -91,8 +85,8 @@ hands-on footage at all. Draft 5 adds the 70 picks of [`real-footage.md`](real-f
 three "what goes wrong" ones), about 17 minutes, one after each step's animation in the order of its sub-steps.
 
 **Playlist.** The atomizer playlist, <https://www.youtube.com/playlist?list=PLB8wxmcPAjLM>, opens with the tutorials,
-ahead of the cups tutorial, the stitch and the recordings. Draft 5 has been in positions 1–4 since 2026-10-07, without
-"(draft 5)" in the titles, and draft 4 is labelled `[superseded] …`. See [`../playlist/README.md`](../playlist/README.md).
+ahead of the cups tutorial, the stitch and the recordings. Draft 6 has been in positions 1–4 since 2026-10-07, without
+"(draft 6)" in the titles, and draft 5 is labelled `[superseded] …` and private. See [`../playlist/README.md`](../playlist/README.md).
 
 ## Files
 
@@ -100,11 +94,20 @@ ahead of the cups tutorial, the stitch and the recordings. Draft 5 has been in p
 - [`build_tutorials.py`](build_tutorials.py): renders the cards, times the narration against the animations, cuts and
   stabilises the clips, normalises everything to 1280×720 h264/aac and crossfades the segments together. It needs:
   - `ffmpeg` with `vidstab` and `libass` (Ubuntu's build has both), `edge-tts`, Pillow and `faster-whisper`;
-  - the full-length audio copies, `<id>.m4a` (`ATOMIZER_DL`, default `/tmp/work/dl`; see [`../tools/dl.sh`](../tools/dl.sh));
+  - the full-length audio copies, `<id>.m4a` (`ATOMIZER_DL`, default `/tmp/work/dl`; see [`../tools/dl.sh`](../tools/dl.sh)),
+    or excerpts of them, `<id>_a<start>.m4a` with a `.json` giving the video time of their first sample;
   - the 720p windows, `<id>_<start>.ts` with their `.json` (`ATOMIZER_HLS`, default `/tmp/work/hls`; see
     [`../tools/hls_sections.py`](../tools/hls_sections.py)). A clip that no window covers falls back to the 360p copy
     `<id>.v360.mp4` in `ATOMIZER_DL`, with a warning;
-  - the MP4s from `../viz3d/steps.py` and the PNGs from `diagrams/make_diagrams.py`.
+  - the MP4s from `../viz3d/steps.py` (or, if there is no fresh render, the committed 1080p copies in
+    `../ppt/videos/animations/`, which have the same text and timing) and the PNGs from `diagrams/make_diagrams.py`.
+
+  Draft 6 was built that way, on 7 Oct, over a tailnet link to the Pi that was relayed (about 2 MB/s) rather than
+  direct. Pulling the cached windows that cover the clips would have meant 2.4 GB, and the full audio tracks 0.5 GB, so
+  the Pi fetched small windows around each clip and pick instead (`hls_sections.py`, 95 windows of
+  `<id>_d6_<start>.ts`, about 570 MB, now also in `~/atomizer-hls`) and cut the audio excerpts with its static ffmpeg
+  (in `~/atomizer-dl/d6/`, 98 files). The 105 clips and picks then took about 40 minutes, three or four at a time, and
+  the animation segments came from the committed 1080p copies, with only the chamber step re-rendered.
 
   On a shared machine, `ATOMIZER_THREADS=2 nice -n 10 python build_tutorials.py` caps every ffmpeg call at two threads.
 - [`clip_words.py`](clip_words.py): word-timed Whisper for the clip windows, cached in `clip_words/`.

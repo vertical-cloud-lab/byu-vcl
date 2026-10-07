@@ -335,7 +335,7 @@ REAL = {
         "anim 03_furnace_load": [
             R("wRc8p2_FnJo", 2150, 2172, "Teardown: thermocouple out first"),
             R("dnPs56DPt6I", 168, 190, "Crucible lowered into the coil"),
-            R("HTlUrAr5HVU", 146, 170, "Graphite nut on, from below"),
+            R("HTlUrAr5HVU", 178, 190, "Graphite nut on, from below"),     # draft 6: the alt pick (2:26 showed arms)
             R("1F9_4ccwhss", 31, 55, "Insulation lined up with the port", light=True),
             R("HTlUrAr5HVU", 260, 280, "Thermocouple into its hole"),
             R("dnPs56DPt6I", 240, 265, "Sealing rod in, under the lever"),
@@ -356,7 +356,7 @@ REAL = {
             R("dnPs56DPt6I", 980, 995, "Water test: the whole plate atomizes"),
             R("FDRTt68Vfvo", 2455, 2470, "The cable connector, locked"),
             R("dnPs56DPt6I", 602, 615, "Frequency check: 40,200 Hz"),
-            R("dnPs56DPt6I", 1040, 1065, "The star knobs, tightened"),
+            R("dnPs56DPt6I", 1030, 1044, "The star knobs, tightened"),      # draft 6: before the phone turns to the floor
         ],
     },
     "02-during": {
@@ -375,7 +375,7 @@ REAL = {
             R("DWH1CEygsTI", 1417, 1430, "The charge, glowing"),
             R("txH397FGTAU", 2313, 2332, "Setpoint down as it melts"),
             R("DWH1CEygsTI", 1628, 1652, "The pool: wait two minutes", at="end"),
-            R("DWH1CEygsTI", 1710, 1733, "Rescan: 40,185 Hz"),
+            R("DWH1CEygsTI", 1710, 1722, "Rescan: 40,185 Hz", exact=True),  # draft 6: only while the touchscreen is in frame
         ],
         "anim 06_pour": [
             R("naePD8o9_Gk", 1152, 1171, "The pour sequence, on the touchscreen"),

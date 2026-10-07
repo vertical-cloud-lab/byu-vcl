@@ -24,6 +24,8 @@ Most picks show what their caption says. These do not, or only partly, and are t
 | Respirators, T5 73:47–74:02 | 0 | torque wrenches on the cabinet; the respirator is in hand, barely visible | keep, or look a minute either side |
 | Rescan, V3 28:30–28:53 (played 28:34–28:49) | 2 | the touchscreen only at the start, then the furnace | `exact` 28:30–28:42 |
 
+**Draft 6 (7 Oct) took three of these fixes:** the nut from below is now T8 2:58–3:10, the star knobs V2 17:10–17:24, and the rescan V3 28:30–28:42 (`exact`), in [`scripts.py`](scripts.py). The water test and the respirators are as in draft 5: T5 27:32 has not been checked frame by frame, and the respirator pick was to keep.
+
 ## Reading the tables
 
 - **Sub-steps** are the narration sentences in [`scripts.py`](scripts.py), one per sub-step of the animation (numbered

@@ -12,7 +12,7 @@ in this order:
 
 | # | What |
 | --- | --- |
-| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 5, with real footage; [`../tutorials/`](../tutorials/README.md)) |
+| 1–4 | Narrated tutorials 0–3: the machine, then before, during and after a run (draft 6: the rebuilt ultrasonic stack, with real footage; [`../tutorials/`](../tutorials/README.md)) |
 | 5 | Tutorial: making the aluminum cups and plugs (issue #248) |
 | 6–7 | Every recorded step in the order of a run, a 6 h 49 min raw cut in two parts ([`../stitch/`](../stitch/README.md)) |
 | 8–37 | The recordings, in the order they were made: delivery and installation (Jun–Sep), commissioning (Sep 28), training day 1 (Sep 29), day 2 (Sep 30), dosing the next charge (Sep 30), the first run on our own (Oct 2), the run of Oct 6 |
@@ -42,6 +42,20 @@ The repo follows the new titles. [`../videos.json`](../videos.json) keeps each v
 the keyframe pages use the new titles too.
 
 ## What changed on YouTube, and what did not
+
+**2026-10-07, third pass** (`@claude-youtube` on PR #255, after the ultrasonic stack was rebuilt in the 3D model):
+
+- **Tutorial draft 6** (every 3D animation with the rebuilt stack) was uploaded and went into positions 1–4 without
+  "(draft 6)" in the titles. Draft 5 is `[superseded] …` and out of the playlist; drafts 1–4 now point at draft 6.
+- **Four rebuilt slide clips** were uploaded (the whole run, the stack, the pour, the furnace; see
+  [`../ppt/README.md`](../ppt/README.md)). The four they replace joined `SUPERSEDED`, and the 33 s draft now points at
+  the new summary. The slide clips are still in neither playlist.
+- **Every superseded upload is now private** (26: tutorial drafts 1–5, the first cups upload and five slide clips), as
+  asked on 2026-10-07: private and titled `[superseded] …` rather than deleted. `apply` does this for anything in
+  `SUPERSEDED`, carrying over the rest of each video's status.
+- **Oct 6 video 1 (`VFycaxIq0Tc`) was already private** when this run started; it was not changed here.
+- **Undo**: `python sync.py restore backup-2026-10-07-b.json [id ...]` ([`backup-2026-10-07-b.json`](backup-2026-10-07-b.json), taken just before). `restore` now puts back
+  each video's privacy as well as its title, description and tags.
 
 **2026-10-07, later** (`@claude-youtube` on PR #255, with Tailscale this time):
 
@@ -98,14 +112,14 @@ python sync.py apply --ref <sha>    # update the videos, then create / fill / re
   2026-10-07, `apply` deleted every video not in the catalog, which would have removed those three.
 - **After PR #255 merges**, run `apply --ref main` to point every link at the living docs instead of the pinned commit.
 - **For a new tutorial draft**, put its id in `TUTORIALS` in place of the old one and move the old one to `SUPERSEDED`,
-  then `apply`. That renames both, swaps the playlist entry and leaves the old upload labelled.
+  then `apply`. That renames both, swaps the playlist entry, and leaves the old upload labelled and private.
 - **Renaming a recording** also means updating its `title` in `../videos.json` and re-running
   `../tools/make_timestamps.py`, so that its timestamp-log heading (the link's anchor) matches.
 
 ## Still open
 
-- **Deleting the 14 superseded uploads** (tutorial drafts 1–3, the first cups upload, slide clip draft 1) is the user's
-  call: it cannot be undone. Their ids are in `SUPERSEDED` in `catalog.py`.
+- **The 26 superseded uploads are private, not deleted** (since 2026-10-07). Deleting any of them would need the
+  user's go-ahead: it cannot be undone. Their ids are in `SUPERSEDED` in `catalog.py`.
 - **The playlist is unlisted.** Anyone who opens a public playlist can watch the unlisted videos in it, so making it
   public would expose the unlisted videos here too (16 of the 37 are public after 2026-10-07). Check *dosing Al 4047 with Claude* (`dXRB7c6GeDw`) first: a
   personal email is on screen around 50:00.
