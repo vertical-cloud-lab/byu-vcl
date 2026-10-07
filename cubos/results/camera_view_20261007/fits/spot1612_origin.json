@@ -1,0 +1,56 @@
+{
+ "camera_plate_xyz_at_home": [
+  406.997728724769,
+  233.5293895189525,
+  490.78482061792056
+ ],
+ "deck_origin_in_plate": [
+  141.81368459695597,
+  38.48128506794727
+ ],
+ "camera_offset_from_capper_deck_xy": [
+  -95.81595587218698,
+  -82.95189554899474
+ ],
+ "home": {
+  "camera_plate_xyz": [
+   406.997728724769,
+   233.5293895189525,
+   490.78482061792056
+  ],
+  "plate_in_frame_pct": 99.98684937271508,
+  "plate_visible_pct": 94.72133820783252,
+  "workarea_in_frame_pct": 100.0,
+  "workarea_visible_pct": 100.0,
+  "plate_y_max_in_frame": 490.0,
+  "plate_y_max_visible": 490.0
+ },
+ "origin": {
+  "camera_plate_xyz": [
+   45.99772872476899,
+   -44.47061048104749,
+   490.78482061792056
+  ],
+  "plate_in_frame_pct": 67.4890192262171,
+  "plate_visible_pct": 14.481470766155546,
+  "workarea_in_frame_pct": 99.59591944886063,
+  "workarea_visible_pct": 9.446210916799153,
+  "plate_y_max_in_frame": 350.0,
+  "plate_y_max_visible": 200.0
+ },
+ "origin_z0": {
+  "camera_plate_xyz": [
+   45.99772872476899,
+   -44.47061048104749,
+   368.78482061792056
+  ],
+  "plate_in_frame_pct": 47.329107598432444,
+  "plate_visible_pct": 16.761789537360933,
+  "workarea_in_frame_pct": 67.24960254372019,
+  "workarea_visible_pct": 21.614997350291468,
+  "plate_y_max_in_frame": 252.5,
+  "plate_y_max_visible": 212.5
+ },
+ "raise_needed_for_plate_in_frame_mm": 230,
+ "raise_needed_for_workarea_in_frame_mm": 10
+}
