@@ -13,8 +13,11 @@ and tests every pair of shown parts that move relative to each other for overlap
 and checks those points against the other part's signed distance. Draft 3 had about 240 runs of interference: the
 crucible, holder, insulation, rod and charge going through the fixed sealing-rod arm, the bottom insulation through the
 crucible and the coil, the container rising through the floor, the catch bowl through the chamber wall, and the
-plate swinging through the chamber's corner with the door. Draft 4 has none above 1.5 mm in any of the ten animations
-([`out/collisions.md`](out/collisions.md)). The only overlaps left are parts mounted on each other in the assembled
+plate swinging through the chamber's corner with the door. Draft 4 had none above 1.5 mm in any of the ten animations.
+Neither does the rebuilt stack (7 Oct), in the ten, `06b_oct6` or the summary at 30 fps
+([`out/collisions.md`](out/collisions.md), [`out/collisions_summary.md`](out/collisions_summary.md)): the one overlap it
+brought, the upper sonotrode catching the door opening as the door swung, is why the stack now slides back in its
+housing while the door swings (see the stack section below). The only overlaps left are parts mounted on each other in the assembled
 machine (view port in the wall, knob on the lid, HMI on its arm), listed at the top of that report.
 
 **Cutaways come in only when the step needs the inside.** Every animation opens on the closed machine, as the operator
@@ -122,6 +125,7 @@ invalidates the cache. When two renders run at once, give each its own display (
 | **2c · Ultrasonic stack** (`02_stack`) — last, with the door locked open: transducer → booster (65 N·m) → Ti sonotrode (60 N·m) → into the door housing, short of its mark → connector, plate, upper sonotrode (50 N·m) → scan → wet test → cover → door shut, stack slid to its mark → three star-knob bolts ![](out/02_stack.gif) | **3 · Gas wash** — furnace pumped and back-filled while the chamber holds overpressure, then the chamber, then washes at 250 and 500 °C ![](out/04_gas_wash.gif) |
 | **4 · Melt** — overshoot, melt cues, rods slump into a pool, setpoint down to ~800 °C, 2 min hold ![](out/05_melt.gif) | **5 · Pour and atomize** — vibration, draining pressure, rod up, first drops bounce, turbo, spray off the plate, powder into the container ![](out/06_pour.gif) |
 | **6–8 · End of pour, cool down, collect** — turbo, rod down, stops, cool to ≤400 °C, vent, bolts back, stack pulled back, door open (plate out with it), brush down, clamp halves part, container off ![](out/07_end_cooldown.gif) | **9 · Clean and reset** — brush; upper sonotrode off, then the plate; rod up, pin out, lever up, rod out; thermocouple and insulation out; nut off from below; crucible out to the bench; nozzle check; reassembled in order ![](out/08_clean.gif) |
+| **What goes wrong: the upper sonotrode under the stream (Oct 6)** (`06b_oct6`, `VIZ3D_STACK=oct6`) — the plate clocked straight down the slope and the stack slid in: the stream lands on the upper sonotrode, the melt gathers round it and drips onto the plate; pulled back 40 mm, the stream clears it but lands near the plate's free end ![](out/06b_oct6.gif) | |
 
 **Summary, for slides** (`summary`). This is a whole run in one take of about 44 s: 2a (furnace), 2c (stack and door),
 4 (melt) and 5 (pour). The parts take the same paths, in the same order, as in the four step animations. The fasteners are

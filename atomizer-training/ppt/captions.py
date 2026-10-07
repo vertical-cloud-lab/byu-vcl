@@ -64,7 +64,7 @@ CLIPS = {
             ("2c.5", 0.0, "Connector in, plate on it",
              "Then the connector, and the plate onto it."),
             ("2c.5", 4.0, "Upper sonotrode on: 50 N·m",
-             "The upper sonotrode clamps it, at fifty newton meters."),
+             "The upper sonotrode, at fifty newton meters."),
             ("2c.6", 0.0, "Scan: one peak near 40 kHz",
              "Scan for one wide peak, near forty kilohertz."),
             ("2c.7", 0.0, "Wet test: whole plate atomizes",

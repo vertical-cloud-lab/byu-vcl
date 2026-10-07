@@ -7,6 +7,20 @@ Sterling's review on PR #255 ("the walkthrough tutorials would also benefit from
 Draft 4 put no part of the 3D model through another and put tutorial 1 in the order of a real run. All five sets are
 listed below.
 
+**Draft 5's 3D animations show the old ultrasonic stack.** On 7 Oct the model's stack was rebuilt as the training shows it:
+the connector, the plate hung by its hole near one end, and the tungsten upper sonotrode
+([`../viz3d/README.md`](../viz3d/README.md)). Every animation segment of all four tutorials changes with it, and the
+narration of the stack, pour, cool-down and cleaning steps was updated in [`scripts.py`](scripts.py) to match. Draft 6
+needs a YouTube-admin run:
+
+1. Re-render the 15 fps animations, which are not committed (`out/mp4/`):
+   `xvfb-run -a -s "-screen 0 1920x1080x24" python ../viz3d/steps.py`.
+2. Rebuild all four with `build_tutorials.py`, then upload them.
+3. Swap draft 5 for draft 6 in `../playlist/catalog.py`, and run `sync.py apply`.
+
+The five real-footage picks flagged in [the draft 5 review](real-footage.md#review-of-draft-5-frames-at-20-50-and-80--of-every-pick)
+can be swapped in the same build.
+
 ## How each tutorial is put together
 
 Every tutorial has the same shape, so the four read as one series:

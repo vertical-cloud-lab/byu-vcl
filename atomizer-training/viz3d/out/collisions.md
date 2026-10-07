@@ -8,18 +8,18 @@ Parts that overlap where they stand: these are mounted on or into each other (a 
 
 | Part | Part | Overlap (mm) | At |
 | --- | --- | ---: | --- |
-| furnace_body | oring | 2.5 | [90, -84, 1342] |
-| furnace_body | tc_plug | 8.5 | [65, 83, 1345] |
-| furnace_body | hood_hinge | 5.8 | [-135, -1, 1326] |
-| lever_clevis | lever_pin | 2.5 | [111, -9, 1394] |
+| furnace_body | oring | 2.5 | [-116, -56, 1342] |
+| furnace_body | tc_plug | 8.6 | [66, 83, 1345] |
+| furnace_body | hood_hinge | 5.8 | [-135, -5, 1324] |
+| lever_clevis | lever_pin | 2.6 | [112, -7, 1397] |
 | coil_lead0 | coil_lead1 | 1.7 | [-197, -6, 1198] |
-| hood | hood_knob | 4.9 | [104, -20, 1464] |
-| chamber | viewport_flange | 21.7 | [-35, -120, 1085] |
-| base_frame | feet | 2.0 | [-100, 522, 110] |
-| side_door_r | hmi_arm | 3.0 | [633, 209, 1386] |
+| hood | hood_knob | 4.6 | [104, -20, 1464] |
+| chamber | viewport_flange | 22.1 | [-38, -120, 1082] |
+| base_frame | feet | 2.0 | [609, -95, 110] |
+| side_door_r | hmi_arm | 3.0 | [633, 207, 1398] |
 | hmi_arm | hmi | 19.8 | [745, 50, 1409] |
-| hmi_arm | hmi_screen | 18.8 | [746, 51, 1408] |
-| argon_regulator | argon_gauges | 4.0 | [-583, 734, 1484] |
+| hmi_arm | hmi_screen | 18.8 | [745, 51, 1414] |
+| argon_regulator | argon_gauges | 4.0 | [-581, 734, 1480] |
 
 ## 00_machine
 
@@ -50,6 +50,12 @@ No interference.
 No interference.
 
 ## 06_pour
+
+No interference.
+
+## 06b_oct6
+
+Checked with `VIZ3D_STACK=oct6`, the Oct 6 set-up it shows (the axis in line with the stream, the plate down the slope).
 
 No interference.
 

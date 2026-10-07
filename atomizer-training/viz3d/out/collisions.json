@@ -5,17 +5,17 @@
    "b": "oring",
    "depth": 2.5,
    "at": [
-    90,
-    -84,
+    -116,
+    -56,
     1342
    ]
   },
   {
    "a": "furnace_body",
    "b": "tc_plug",
-   "depth": 8.5,
+   "depth": 8.6,
    "at": [
-    65,
+    66,
     83,
     1345
    ]
@@ -26,18 +26,18 @@
    "depth": 5.8,
    "at": [
     -135,
-    -1,
-    1326
+    -5,
+    1324
    ]
   },
   {
    "a": "lever_clevis",
    "b": "lever_pin",
-   "depth": 2.5,
+   "depth": 2.6,
    "at": [
-    111,
-    -9,
-    1394
+    112,
+    -7,
+    1397
    ]
   },
   {
@@ -53,7 +53,7 @@
   {
    "a": "hood",
    "b": "hood_knob",
-   "depth": 4.9,
+   "depth": 4.6,
    "at": [
     104,
     -20,
@@ -63,11 +63,11 @@
   {
    "a": "chamber",
    "b": "viewport_flange",
-   "depth": 21.7,
+   "depth": 22.1,
    "at": [
-    -35,
+    -38,
     -120,
-    1085
+    1082
    ]
   },
   {
@@ -75,8 +75,8 @@
    "b": "feet",
    "depth": 2.0,
    "at": [
-    -100,
-    522,
+    609,
+    -95,
     110
    ]
   },
@@ -86,8 +86,8 @@
    "depth": 3.0,
    "at": [
     633,
-    209,
-    1386
+    207,
+    1398
    ]
   },
   {
@@ -105,9 +105,9 @@
    "b": "hmi_screen",
    "depth": 18.8,
    "at": [
-    746,
+    745,
     51,
-    1408
+    1414
    ]
   },
   {
@@ -115,9 +115,9 @@
    "b": "argon_gauges",
    "depth": 4.0,
    "at": [
-    -583,
+    -581,
     734,
-    1484
+    1480
    ]
   }
  ],
@@ -326,51 +326,51 @@
     },
     {
      "label": "2c.3",
-     "caption": "Sonotrode on, 60 N\u00b7m, isopropanol on the threads. Its KF50 flange is always at the top.",
+     "caption": "Ti sonotrode on, 60 N\u00b7m, isopropanol on the threads. Its KF50 flange is always at the top.",
      "start_frame": 148,
      "end_frame": 210
     },
     {
      "label": "2c.4",
-     "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing and fit both clamps without touching the safety cover.",
+     "caption": "With the splash disc already in and the door locked open, slide the stack into the door's housing, not yet to its mark, and fit both clamps without touching the safety cover.",
      "start_frame": 211,
      "end_frame": 277
     },
     {
      "label": "2c.5",
-     "caption": "Plate onto its M8 stud with the stack in the housing: 50 N\u00b7m, counter-holding the sonotrode with a 17 mm wrench.",
+     "caption": "With the stack in the housing, in the training's order: the M8 connector into the sonotrode until its ring hides, the plate onto it through the hole near its end, then the tungsten upper sonotrode, torqued against the plate to 50 N\u00b7m, counter-holding with a 17 mm wrench.",
      "start_frame": 278,
-     "end_frame": 340
+     "end_frame": 397
     },
     {
      "label": "2c.6",
      "caption": "Advanced ultrasonics \u2192 scan: one wide peak a little over 40 kHz. A double peak? Run a short burst and rescan.",
-     "start_frame": 341,
-     "end_frame": 406
+     "start_frame": 398,
+     "end_frame": 463
     },
     {
      "label": "2c.7",
      "caption": "Wet test: a drop of water should atomize over the whole plate. If only half of it atomizes, the plate is cracked.",
-     "start_frame": 407,
-     "end_frame": 473
+     "start_frame": 464,
+     "end_frame": 530
     },
     {
      "label": "2c.8",
      "caption": "Bolt the protective cover over the transducer, then push in and lock the cable and connect the cooling air: two or three minutes that protect a part worth thousands.",
-     "start_frame": 474,
-     "end_frame": 539
+     "start_frame": 531,
+     "end_frame": 596
     },
     {
      "label": "2c.9",
-     "caption": "Run the frequency check now, before closing. Then swing the door shut: the stack rides in it, and the plate swings in under the nozzle.",
-     "start_frame": 540,
-     "end_frame": 606
+     "caption": "Run the frequency check now, before closing. Swing the door shut with the stack still pulled back, so the upper sonotrode clears the opening, then slide it in to its mark and clamp it: the stream will land mid-plate, beside the upper sonotrode.",
+     "start_frame": 597,
+     "end_frame": 679
     },
     {
      "label": "2c.10",
      "caption": "Swing the three bolts over the door's back edge and tighten the star knobs. Opening one under pressure just leaks.",
-     "start_frame": 607,
-     "end_frame": 681
+     "start_frame": 680,
+     "end_frame": 754
     }
    ]
   },
@@ -500,7 +500,7 @@
     },
     {
      "label": "5.6",
-     "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. Steer with the plate position: land high on it, not over the top.",
+     "caption": "Once the plate is hot every drop atomizes: droplets fly off the plate, freeze in the argon and fall to the cone. The stream lands mid-plate, beside the upper sonotrode, never on it.",
      "start_frame": 289,
      "end_frame": 393
     },
@@ -521,6 +521,36 @@
      "caption": "The crucible runs empty: next, the end-of-pour sequence (step 6).",
      "start_frame": 604,
      "end_frame": 670
+    }
+   ]
+  },
+  "06b_oct6": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "O.1",
+     "caption": "Oct 6: the plate was clocked straight down the slope, and the stack slid in far enough that its upper sonotrode stood under the nozzle.",
+     "start_frame": 0,
+     "end_frame": 77
+    },
+    {
+     "label": "O.2",
+     "caption": "Sealing rod up: the stream lands on the upper sonotrode, not the plate. The melt gathers round it and drips onto the plate, where it freezes: almost nothing atomizes.",
+     "start_frame": 78,
+     "end_frame": 182
+    },
+    {
+     "label": "O.3",
+     "caption": "About three-quarters of the way through, Gage pulled the stack back about 40 mm. The stream clears the upper sonotrode now, but lands near the plate's free end.",
+     "start_frame": 183,
+     "end_frame": 254
+    },
+    {
+     "label": "O.4",
+     "caption": "Some of it atomizes now, but most of the melt is already on the upper sonotrode and the plate: very little powder (4yghtr). Before closing the door, check the stream will land mid-plate, beside the upper sonotrode.",
+     "start_frame": 255,
+     "end_frame": 353
     }
    ]
   },
@@ -554,27 +584,27 @@
     },
     {
      "label": "7.3",
-     "caption": "Swing the three bolts back and open the door: the plate comes out with it. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+     "caption": "Swing the three bolts back, pull the stack back in its housing so the upper sonotrode clears the opening, and open the door: the plate comes out with it. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
      "start_frame": 263,
-     "end_frame": 337
+     "end_frame": 345
     },
     {
      "label": "7.4",
      "caption": "Brush the plate, bowl, walls and view port down into the container, in a circle, before it comes off. Let the dust settle before reaching in.",
-     "start_frame": 338,
-     "end_frame": 420
+     "start_frame": 346,
+     "end_frame": 428
     },
     {
      "label": "8.1",
      "caption": "Close the container valve first (pull down and across: it is heavier than it looks), brush the top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.",
-     "start_frame": 421,
-     "end_frame": 495
+     "start_frame": 429,
+     "end_frame": 503
     },
     {
      "label": "8.2",
      "caption": "Pour onto paper, pick out chunks, sieve, bag, 6-character ID label, photo on GitHub. At about 100 \u00b0C: heat exchanger, water, air, argon, power off, in any order.",
-     "start_frame": 496,
-     "end_frame": 577
+     "start_frame": 504,
+     "end_frame": 585
     }
    ]
   },
@@ -590,33 +620,33 @@
     },
     {
      "label": "9.2",
-     "caption": "Plate off its stud. Never grind or clean it: one plate per alloy, logged (1\u20133 runs each). A stainless scraper for stuck particles, never plastic.",
+     "caption": "Upper sonotrode off, then the plate off the connector. Never grind or clean a plate: one per alloy, logged (1\u20133 runs each). A stainless scraper for stuck particles, never plastic.",
      "start_frame": 90,
-     "end_frame": 156
+     "end_frame": 164
     },
     {
      "label": "9.3",
      "caption": "Once the furnace can be touched (150 \u00b0C is too hot): lid open, SEALING ROD up, safety pin out, lever up, rod out. Scrape Al off its shaft and keep the tip smooth.",
-     "start_frame": 157,
-     "end_frame": 246
+     "start_frame": 165,
+     "end_frame": 254
     },
     {
      "label": "9.4",
      "caption": "Strip it in order: thermocouple, top and side insulation; through the door, hold the graphite nut and unscrew it from below with the seal, so nothing falls; then the crucible comes up and out, and the bottom insulation.",
-     "start_frame": 247,
-     "end_frame": 399
+     "start_frame": 255,
+     "end_frame": 407
     },
     {
      "label": "9.5",
      "caption": "On the bench, unscrew the holder and lift the nozzle out. Look through it for light; unclog it with a needle or drill it to \u00d80.7; swap it if a new charge would not push through.",
-     "start_frame": 400,
-     "end_frame": 492
+     "start_frame": 408,
+     "end_frame": 500
     },
     {
      "label": "9.6",
      "caption": "Reassemble in the same order as before a run: nozzle, holder, bottom insulation, crucible, nut, insulation, thermocouple, rod, lever. Wipe the O-rings; HEPA filter about every two months (sand tray).",
-     "start_frame": 493,
-     "end_frame": 657
+     "start_frame": 501,
+     "end_frame": 665
     }
    ]
   }
