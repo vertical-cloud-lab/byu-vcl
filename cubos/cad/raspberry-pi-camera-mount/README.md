@@ -23,11 +23,11 @@ It is a direct conversion. Nothing was remodelled, smoothed or moved.
 
 ## Importing it into Onshape
 
-1. Download `RaspberryPiCameraMount.step.zip` and unzip it. Onshape won't import a STEP file
-   from inside a zip.
+1. Download `RaspberryPiCameraMount.step.zip` and unzip it. Onshape refuses a zipped STEP file
+   ("Translation is not supported for zipped STEP files").
 2. Import `RaspberryPiCameraMount.step` into an Onshape document, with the **+** button at the
    bottom left → **Import**. The units are millimetres.
-3. Expect the import to take a while. The STEP is 29 MB and has 27,001 faces.
+3. Wait for it: Onshape took about 2.5 minutes to import this file.
 
 ## Editing it
 
@@ -79,7 +79,9 @@ reads the STEP back and compares it with the STL.
 | Bounding box | x −14.4 to 14.4, y −7.27 to 23.77, z −10 to 24 mm | identical |
 | Largest tolerance | | 0.000001 mm |
 
-Not checked: the import into Onshape itself.
+On 2026-10-07 the STEP was also imported into Onshape through its API. Onshape made one part
+with 27,001 planar faces, 53,557 edges and 26,563 vertices, the same as the STEP, and reports
+8,760.8916 mm³ and 4,768.6811 mm².
 
 ## License
 
