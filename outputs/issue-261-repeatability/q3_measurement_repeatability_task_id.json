@@ -1,0 +1,6 @@
+{
+  "task_id": "a444ad4a-da6a-48fa-82fa-611659577316",
+  "job_name": "job-futurehouse-paperqa3",
+  "query": "What is the measurement repeatability (within-lab) and reproducibility (between-lab) of metal powder characterization used for additive manufacturing: (1) sieve analysis per ASTM B214 / ISO 4497 (standard deviation of mass fraction per sieve cut); (2) laser diffraction per ISO 13320 / ASTM B822 (coefficient of variation of D10, D50, D90); (3) SEM or dynamic image analysis of sphericity or circularity (how many particles must be measured for a stable mean, and the typical uncertainty); (4) SEM-EDS quantitative composition of aluminum alloy powders, e.g. Si and Mg in Al alloys (typical relative error and repeatability); (5) powder sampling error (riffling, spinning riffler per ASTM B215) and its contribution to the total variance. Give numeric values with citations, especially ASTM/ISO precision-and-bias statements and interlaboratory studies.",
+  "submitted_utc": "2026-10-07T06:15:21Z"
+}

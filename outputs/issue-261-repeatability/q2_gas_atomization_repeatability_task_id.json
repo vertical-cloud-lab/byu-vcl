@@ -1,0 +1,6 @@
+{
+  "task_id": "85ebe1ed-c3ec-491d-b954-a3215d873933",
+  "job_name": "job-futurehouse-paperqa3-high",
+  "query": "What published data exist on run-to-run (heat-to-heat, batch-to-batch or lot-to-lot) repeatability of gas atomization of metal powders (VIGA, EIGA, close-coupled or free-fall gas atomization; also plasma atomization) at nominally fixed settings? Report, with numbers and citations, the spread (standard deviation or coefficient of variation, and the number of runs or lots) in D10/D50/D90 or span, yield into the additive-manufacturing cut (15-45 um or 15-53 um), sphericity/morphology, oxygen and nitrogen content, flowability (Hall, Carney, rheometer) and apparent density. Include industrial lot-to-lot variability for AM powders (AlSi10Mg, Ti-6Al-4V, 316L, IN718), powder-variability studies for qualification (e.g. NIST, NASA, ASTM interlaboratory studies), and how many lots or runs those studies used. Also report any published guidance on how many replicate runs are needed to establish a process baseline before optimization.",
+  "submitted_utc": "2026-10-07T06:15:20Z"
+}
