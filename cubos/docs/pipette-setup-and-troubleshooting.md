@@ -13,7 +13,20 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
-> ✅ **2026-10-07: with the UART wire off, the TMC2209 moves the plunger.** The board was
+> ✅ **2026-10-07, later: fix B is flashed, and `pipette_test` ran 12/12 on the TMC2209 with
+> every wire on.** The wire pulled for the earlier entry was EN from A4, not UART. With EN back
+> on, the 10-01 image didn't move the plunger in two probes. The firmware was rebuilt with
+> `disableStealthChop()` in `setupMotor()`, which changes one instruction (GCONF
+> `en_SpreadCycle`), and flashed. `tmc2209_probe.py` then passed, and `cubxl_run.py --no-tic`
+> ran 12/12 with a post-run `HOME` of +0.04 mm. Its plunger timings match the Tic's 10-06 run.
+> The chip now runs on the firmware's regulated current, 0.72 A rms moving and 0.21 A rms at
+> rest on a 6121, so everything can stay plugged in at idle. Run with `--no-tic` while the
+> TMC2209 is on. Record:
+> [`tmc2209_spreadcycle_20261007`](../results/tmc2209_spreadcycle_20261007/README.md), wiring
+> doc §26, firmware in [`../firmware/README.md`](../firmware/README.md).
+>
+> ✅ **2026-10-07: with the UART wire off, the TMC2209 moves the plunger.** *(Corrected: the
+> wire that was off was EN, not UART. See the entry above.)* The board was
 > cold with the wire on pin 9 and turned warm with it off. `tmc2209_probe.py` then proved the
 > direction (DIR LOW is up), passed the rate ladder up to the ~8,700 steps/s `MOVE_TO` rate,
 > and homed, matching the Tic's 09-29 numbers. So the board is fine, and the firmware's UART

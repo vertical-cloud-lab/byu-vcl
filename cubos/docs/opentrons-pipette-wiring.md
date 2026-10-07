@@ -3293,6 +3293,9 @@ doesn't need StealthChop's tuning for the firmware's unramped starts.
 
 ## 25. 2026-10-07: with the UART wire off pin 9, the TMC2209 moves the plunger at every rate
 
+> **Correction (§26).** The wire that came off for this run was EN from A4, not UART from pin
+> 9. The UART wire stayed on. The section is left as written.
+
 Ben's free check first: with the wire on pin 9 and nothing moving, the board and pipette were
 **cold**. With the wire off (standalone mode) they turned **warm**. `tmc2209_probe.py` then
 exited 0 ([`results/tmc2209_probe_20261007/`](../results/tmc2209_probe_20261007/README.md)):
@@ -3322,3 +3325,38 @@ Tic gives. The resistor protects A1 if the wire is ever put back by mistake.
 
 The two ways to keep the TMC2209: the wire off for good with pin 9 tied, or fix B
 (`disableStealthChop()`) with the wire back on (§24).
+
+## 26. 2026-10-07: spreadCycle firmware moves the TMC2209 with every wire on
+
+Ben then found that the wire he had pulled for §25 was **EN from A4**, not UART from pin 9.
+With EN back on A4 and everything plugged in, the 10-01 image didn't move the plunger in two
+probes (18:40Z and 18:49Z). He asked for fix B, so the firmware was rebuilt with one line
+changed in `setupMotor()`, `enableStealthChop()` → `disableStealthChop()`, and flashed. The two
+images differ by one instruction, the one that sets GCONF bit 2 (`en_SpreadCycle`).
+`tmc2209_probe.py` then passed, and `pipette_test` ran 12/12 with `cubxl_run.py --no-tic`
+([`results/tmc2209_spreadcycle_20261007/`](../results/tmc2209_spreadcycle_20261007/README.md)).
+
+| | 10-01 image (StealthChop), 18:49Z | fix B (spreadCycle), 18:52Z |
+|---|---|---|
+| wiring, 12 V | everything on | the same, three minutes later |
+| UP search | no switch within 3 mm | switch after ~1.05 mm |
+| ladder at 1,000 / 2,500 / 10,000 | not reached | trips at ~2.05 / 2.10 / 2.12 mm |
+| `HOME` | not sent | `OK` in 1.347 s |
+
+That is the A/B §24 asked for. The UART writes land with every wire on, and StealthChop with
+`pwm_autoscale` off (as the library's `initialize()` leaves it) is what starved the motor. In
+spreadCycle the chip regulates to `IRUN`/`IHOLD`, so the firmware's own table in
+[`../firmware/README.md`](../firmware/README.md) holds now: 0.72 A rms moving and 0.21 A rms
+at rest on a 6121. The trimmer only matters when the writes don't land, for instance if the
+12 V comes on after the Arduino's last reset. Then it runs as in §25 until the next port open.
+
+§25's pass is still unexplained. EN is low whether its wire is on or off: the firmware drives
+A4 low, and the 6121 pulls EN down with 20 kΩ. So for the StealthChop image to have moved the
+plunger, its writes can't have reached the chip in that run. A UART wire that wasn't making
+contact would do it. The 18:33Z USB drop, while Ben was at the header, is when it could have
+been reseated. Nothing recorded can confirm it.
+
+`pipette_test_20261007`'s plunger timings match the Tic's 10-06 run to the hundredth of a
+second, and its post-run `HOME` came out at +0.04 mm. Everything stays plugged in now. If the
+pipette goes back on the Tic, no reflash is needed: the Tic's STEP/DIR input ignores the UART
+writes.

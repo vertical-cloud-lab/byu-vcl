@@ -1,5 +1,16 @@
 # tmc2209_probe_20261007: with the UART wire off, the TMC2209 moves the plunger at every rate
 
+> **Correction, later on 2026-10-07.** The wire that came off was **EN (from A4)**, not the
+> UART wire. Ben: *"I realized I unplugged EN from A4 instead of UART."* So this run had the
+> UART wire on pin 9 the whole time. EN is low either way (the firmware drives A4 low, and the
+> 6121 pulls EN down), so the pass below can't be put down to the wire that was pulled. For
+> the StealthChop image to move the plunger, its writes can't have reached the chip in this
+> run, for a reason nothing recorded shows. With EN back on and everything plugged in, the
+> same image didn't move it twice, and fix B (`disableStealthChop()`) then ran `pipette_test`
+> 12/12. See [`tmc2209_spreadcycle_20261007`](../tmc2209_spreadcycle_20261007/README.md).
+> The text below is as written before the correction. Its "pin 9 now floats" advice no longer
+> applies.
+
 Issue #169, [PR #260](https://github.com/vertical-cloud-lab/byu-vcl/pull/260), 2026-10-07,
 CubXL Pi. Ben did the free check and test A from
 [`tmc2209_probe_20261006`](../tmc2209_probe_20261006/README.md#next-two-ways-to-test-it):
