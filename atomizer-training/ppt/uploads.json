@@ -1,5 +1,5 @@
 {
- "03_furnace_load": {
+ "03_furnace_load (draft 1)": {
   "video_id": "86K-EHhtPp8",
   "url": "https://www.youtube.com/watch?v=86K-EHhtPp8",
   "title": "Atomizer slide clip: loading the furnace (draft 1)",
@@ -8,7 +8,7 @@
   "size_bytes": 9617986,
   "links_ref": "963edd1"
  },
- "02_stack": {
+ "02_stack (draft 1)": {
   "video_id": "8lBR11fgznI",
   "url": "https://www.youtube.com/watch?v=8lBR11fgznI",
   "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 1)",
@@ -26,7 +26,7 @@
   "size_bytes": 7568405,
   "links_ref": "d6a6653"
  },
- "summary": {
+ "summary (draft 2)": {
   "video_id": "j9QcpcG8EVI",
   "url": "https://www.youtube.com/watch?v=j9QcpcG8EVI",
   "title": "Atomizer slide clip: from loading to powder in 44 seconds (draft 2)",
@@ -35,7 +35,7 @@
   "size_bytes": 9166248,
   "links_ref": "217f886"
  },
- "06_pour": {
+ "06_pour (draft 1)": {
   "video_id": "21oFnNmzd3E",
   "url": "https://www.youtube.com/watch?v=21oFnNmzd3E",
   "title": "Atomizer slide clip: the pour (draft 1)",

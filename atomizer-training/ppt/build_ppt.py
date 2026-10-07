@@ -249,7 +249,8 @@ TUTORIAL_NAMES = {"01-before": "Atomizer tutorial 1, before a run", "02-during":
 
 def describe(name, ref, rows):
     c = CLIPS[name]
-    tuts = json.load(open(f"{ROOT}/tutorials/uploads.json"))["draft 4"]
+    drafts = json.load(open(f"{ROOT}/tutorials/uploads.json"))
+    tuts = drafts[max(drafts, key=lambda d: int(d.split()[-1]))]     # the latest draft of the tutorials
     blob = f"https://github.com/vertical-cloud-lab/byu-vcl/blob/{ref}/atomizer-training"
     speed = c.get("note") or "The animation runs at its own speed."
     lines = [c["summary"], "",
@@ -270,6 +271,17 @@ def describe(name, ref, rows):
     return desc
 
 
+def script_rows(name):
+    """The captions' start times as the last build wrote them to script.md, for describing an upload on a machine without
+    the clean render (it is not committed): [{"caption", "start"}]."""
+    sec = open(f"{HERE}/script.md").read().split(f"`{name}`, ", 1)[1].split("\n## ", 1)[0]
+    rows = [dict(caption=m.group(1), start=int(m.group(2)) * 60 + float(m.group(3)))
+            for m in re.finditer(r"^\| \d+ \| (.+?) \(\d+\) \| (\d+):(\d+\.\d)–", sec, re.M)]
+    if len(rows) != len(CLIPS[name]["lines"]):
+        raise SystemExit(f"{name}: script.md has {len(rows)} captions, captions.py {len(CLIPS[name]['lines'])}")
+    return rows
+
+
 def upload(ref, names):
     sys.path.append(REPO)
     sys.path.insert(1, f"{ROOT}/playlist")
@@ -280,7 +292,7 @@ def upload(ref, names):
         if name in log:
             print(name, "already uploaded:", log[name]["url"]); continue
         path = f"{OUT}/{name}.mp4"
-        _, rows, _ = timeline(name)
+        rows = timeline(name)[1] if os.path.exists(f"{CLEAN}/{name}.json") else script_rows(name)
         title = CLIPS[name]["title"]
         print("uploading", name, title, flush=True)
         vid = upload_video(path, title, describe(name, ref, rows), privacy="unlisted", tags=TAGS + ["slides", "animation"])

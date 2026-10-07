@@ -19,7 +19,7 @@ END_HOLD = 1.0           # s the last frame is held after the animation ends
 
 CLIPS = {
     "03_furnace_load": {
-        "title": "Atomizer slide clip: loading the furnace (draft 1)",
+        "title": "Atomizer slide clip: loading the furnace (draft 2)",
         "summary": "The furnace step of tutorial 1, cut for a slide: the lid and lever, the crucible into the coil, "
                    "the graphite nut from below, insulation, thermocouple, sealing rod, the charge and the lid.",
         "lines": [
