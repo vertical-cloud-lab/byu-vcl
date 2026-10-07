@@ -79,12 +79,13 @@ class Docs:
                 raise SystemExit(f"{v['id']}: no heading '## {v['title']}' in timestamps.md at {self.ref}. "
                                  f"Update videos.json, run tools/make_timestamps.py, commit and push first.")
             out = [sop, ("This video, moment by moment (timestamp log)", self.url("timestamps.md", slug(v["title"])))]
-            if v["id"] in self.notes:
-                path, anchor = self.notes[v["id"]]
+            src = v.get("source_id", v["id"])         # a re-upload keeps the notes and transcript of the first upload
+            if src in self.notes:
+                path, anchor = self.notes[src]
                 out.append(("Notes: summary, steps, numbers, open questions", self.url(path, anchor)))
             else:
                 raise SystemExit(f"{v['id']}: no section in notes/ at {self.ref}")
-            out.append(("Transcript (Whisper large-v3-turbo)", self.url(f"transcripts/whisper/{v['id']}.txt")))
+            out.append(("Transcript (Whisper large-v3-turbo)", self.url(f"transcripts/whisper/{src}.txt")))
             for name, path in v.get("docs", []):       # extra pages in this folder, e.g. a run report
                 if self.read(f"atomizer-training/{path}") is None:
                     raise SystemExit(f"{v['id']}: atomizer-training/{path} does not exist at {self.ref}")

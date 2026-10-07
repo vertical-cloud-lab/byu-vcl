@@ -1,0 +1,1152 @@
+{
+ "taken_utc": "2026-10-07T16:52:21Z",
+ "videos": {
+  "t07lNjBmhRg": {
+   "snippet": {
+    "title": "Atomizer tutorial 0: the machine and how it works (draft 6)",
+    "description": "What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, each followed by the real thing in the lab, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the machine got here.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 The three parts of a run\n0:36 The machine, in 3D\n1:54 The machine, in the lab\n2:36 How it makes powder\n3:34 Making powder, in the lab\n4:26 Bartosz on wetting and particle size\n5:34 Safety, every run\n6:42 How we got here: June to October 2026\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 2 at 24:05: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1445s\nTraining video 3 at 14:33: https://www.youtube.com/watch?v=txH397FGTAU&t=873s\nTraining video 2 at 38:41: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2321s\nTraining video 5 at 42:32: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=2552s\n\nThe real footage shown after each animation, from the recordings:\nThe machine, from the front: https://youtu.be/VFycaxIq0Tc?t=150\nFurnace panel and touchscreen: https://youtu.be/2wMgeI-E7zw?t=215\nThe utilities, at the back: https://youtu.be/2wMgeI-E7zw?t=12\nThe melt, through the lid window: https://youtu.be/TFpU4uqVF9c?t=957\nWater atomizing on the plate: https://youtu.be/dnPs56DPt6I?t=980\nRod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212\nAtomizing high on the plate: https://youtu.be/9kn-HhXCr1o?t=1262\nFull-face respirators, one each: https://youtu.be/58wJ_Khwgyk?t=4427\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/1d90811/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "R2m-PynLxlE": {
+   "snippet": {
+    "title": "Atomizer tutorial 1: before a run (draft 6)",
+    "description": "Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and crucible, the graphite nut threaded on from below through the open chamber door, insulation, thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted in the door before it closes. Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: four things before any heating\n0:34 Step 1: the utilities\n1:25 Step 1, in the lab\n4:09 Step 2: the furnace and the charge\n6:11 Step 2, in the lab\n10:04 Step 3: the chamber and the container\n10:40 Step 3, in the lab\n11:48 Step 4: the ultrasonic stack, and closing the door\n13:32 Step 4, in the lab\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 1 at 1:26: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=86s\nTraining video 1 at 2:12: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=132s\nTraining video 1 at 45:54: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2754s\nTraining video 1 at 46:33: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2793s\nTraining video 4 at 1:40: https://www.youtube.com/watch?v=1F9_4ccwhss&t=100s\nTraining video 5 at 2:38: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=158s\nTraining video 5 at 3:44: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=224s\nTraining video 5 at 6:59: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=419s\nTraining video 5 at 13:25: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=805s\nTraining video 5 at 22:12: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=1332s\n\nThe real footage shown after each animation, from the recordings:\nThe main switch, on the frame: https://youtu.be/2wMgeI-E7zw?t=203\nChilled water: open it a little: https://youtu.be/2wMgeI-E7zw?t=64\nHeat exchanger on: https://youtu.be/2wMgeI-E7zw?t=126\nCompressed air on: https://youtu.be/qYyT39D5Yzo?t=44\nThe argon regulator: https://youtu.be/DWH1CEygsTI?t=355\nThe startup checklist: https://youtu.be/qYyT39D5Yzo?t=86\nTeardown: thermocouple out first: https://youtu.be/wRc8p2_FnJo?t=2150\nCrucible lowered into the coil: https://youtu.be/dnPs56DPt6I?t=168\nGraphite nut on, from below: https://youtu.be/HTlUrAr5HVU?t=178\nInsulation lined up with the port: https://youtu.be/1F9_4ccwhss?t=31\nThermocouple into its hole: https://youtu.be/HTlUrAr5HVU?t=260\nSealing rod in, under the lever: https://youtu.be/dnPs56DPt6I?t=240\nThe charge, wiped with IPA: https://youtu.be/DWH1CEygsTI?t=40\nLid closed and latched: https://youtu.be/1F9_4ccwhss?t=317\nContainer on, clamp finger-tight: https://youtu.be/58wJ_Khwgyk?t=286\nThe catch bowl, in the chamber: https://youtu.be/58wJ_Khwgyk?t=329\nThe transducer, at the door: https://youtu.be/58wJ_Khwgyk?t=397\nBooster on, counter-held: 65 N·m: https://youtu.be/FDRTt68Vfvo?t=2276\nThe sonotrode, threaded on: https://youtu.be/FDRTt68Vfvo?t=2123\nThe stack, into the door housing: https://youtu.be/58wJ_Khwgyk?t=1486\nThe plate on: 50 N·m: https://youtu.be/58wJ_Khwgyk?t=1555\nThe scan, on the touchscreen: https://youtu.be/dnPs56DPt6I?t=338\nWater test: the whole plate atomizes: https://youtu.be/dnPs56DPt6I?t=980\nThe cable connector, locked: https://youtu.be/FDRTt68Vfvo?t=2455\nFrequency check: 40,200 Hz: https://youtu.be/dnPs56DPt6I?t=602\nThe star knobs, tightened: https://youtu.be/dnPs56DPt6I?t=1030\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/1d90811/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "4MyqZakpCtc": {
+   "snippet": {
+    "title": "Atomizer tutorial 2: during a run (draft 6)",
+    "description": "The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about 800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, the same stage in the lab (including three mistakes from Oct 2 and Oct 6), then the trainer explaining it.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: the four stages of a run\n0:22 Step 1: the gas wash\n1:29 Step 1, in the lab\n4:24 Step 2: heat and melt\n5:16 Step 2, in the lab\n7:37 Step 3: the pour\n8:53 Step 3, in the lab\n11:55 Step 4: end the pour\n12:15 Step 4, in the lab\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 9 at 3:25: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=205s\nTraining video 9 at 8:36: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=516s\nTraining video 5 at 36:10: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=2170s\nTraining video 9 at 13:30: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=810s\nTraining video 4 at 4:42: https://www.youtube.com/watch?v=1F9_4ccwhss&t=282s\nTraining video 5 at 57:22: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3442s\nTraining video 5 at 59:52: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3592s\nTraining video 2 at 23:28: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1408s\nTraining video 5 at 1:03:58: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3838s\nTraining video 9 at 24:40: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=1480s\nTraining video 2 at 32:02: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1922s\n\nThe real footage shown after each animation, from the recordings:\nPressure control off, pump on: https://youtu.be/9kn-HhXCr1o?t=184\nThe furnace gas wash, started: https://youtu.be/58wJ_Khwgyk?t=2030\nThe last cycle, at −0.76 bar: https://youtu.be/58wJ_Khwgyk?t=2255\nOxygen after the fill: 19 ppm: https://youtu.be/DWH1CEygsTI?t=1255\nChamber wash: pump on, valve open: https://youtu.be/58wJ_Khwgyk?t=2293\nGenerator on, setpoint 250 °C: https://youtu.be/9kn-HhXCr1o?t=149\nThe next wash, at 500 °C: https://youtu.be/9kn-HhXCr1o?t=373\nPressure control back on: https://youtu.be/9kn-HhXCr1o?t=94\nOvershoot, to drop the rods: https://youtu.be/58wJ_Khwgyk?t=3170\nThe charge, glowing: https://youtu.be/DWH1CEygsTI?t=1417\nSetpoint down as it melts: https://youtu.be/txH397FGTAU?t=2313\nThe pool: wait two minutes: https://youtu.be/DWH1CEygsTI?t=1628\nRescan: 40,185 Hz: https://youtu.be/DWH1CEygsTI?t=1710\nThe pour sequence, on the touchscreen: https://youtu.be/naePD8o9_Gk?t=1152\nAmplitude set to about 90: https://youtu.be/of5-LhkX_VQ?t=1500\nRod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212\nHot plate: atomizing high on it: https://youtu.be/9kn-HhXCr1o?t=1262\nStack too high: stream on the sonotrode: https://youtu.be/DWH1CEygsTI?t=1833\nThe same mistake, explained: https://youtu.be/DWH1CEygsTI?t=1955\nMelt gathers at the bottom, drips: https://youtu.be/9kn-HhXCr1o?t=1271\nPressure too high: little atomized: https://youtu.be/of5-LhkX_VQ?t=1608\nAt the window as the pour ends: https://youtu.be/txH397FGTAU?t=2686\nTurbo, then the stop sequence: https://youtu.be/58wJ_Khwgyk?t=3732\nIt's over: stop the vibration: https://youtu.be/9kn-HhXCr1o?t=1299\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/1d90811/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "eNdmhnCl16s": {
+   "snippet": {
+    "title": "Atomizer tutorial 3: after a run (draft 6)",
+    "description": "Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber (only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a material change, one plate per alloy). Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it. It ends with the lessons from the team's first run on its own, Oct 2.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: four steps after the pour\n0:21 Step 1: the shutdown sequence\n0:39 Step 1, in the lab\n1:17 Step 2: cool down and open the chamber\n2:02 Step 2, in the lab\n3:03 Step 3: collect the powder\n3:25 Step 3, in the lab\n4:36 Step 4: clean and maintain\n5:59 Step 4, in the lab\n8:16 Lessons from the first run on our own\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 2 at 31:31: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1891s\nTraining video 2 at 38:40: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2320s\nTraining video 2 at 38:59: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2339s\nTraining video 6 at 0:00: https://www.youtube.com/watch?v=tfb4fsVNIFI&t=0s\nTraining video 2 at 53:39: https://www.youtube.com/watch?v=naePD8o9_Gk&t=3219s\nTraining video 2 at 50:51: https://www.youtube.com/watch?v=naePD8o9_Gk&t=3051s\nTraining video 5 at 1:07:37: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=4057s\nTraining video 7 at 17:51: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1071s\nTraining video 7 at 18:16: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1096s\nTraining video 1 at 8:50: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=530s\n\nThe real footage shown after each animation, from the recordings:\nPour over: rod down, generator off: https://youtu.be/TFpU4uqVF9c?t=1228\nSetpoint down to 250 °C: https://youtu.be/of5-LhkX_VQ?t=1679\nDoor open, the plate on it: https://youtu.be/Pk0K5sBz-sQ?t=260\nPowder brushed into the chamber: https://youtu.be/naePD8o9_Gk?t=2620\nPowder brushed out onto paper: https://youtu.be/naePD8o9_Gk?t=3305\nSeal and chamber, wiped with alcohol: https://youtu.be/1F9_4ccwhss?t=412\nSealing rod out, insulation lifted: https://youtu.be/wRc8p2_FnJo?t=2184\nThe nut, unscrewed from below: https://youtu.be/wRc8p2_FnJo?t=2247\nDrilling a nozzle: #70 bit: https://youtu.be/LSQmxwmlTkQ?t=0\nThe O-ring seal, wiped with isopropanol: https://youtu.be/FDRTt68Vfvo?t=3142\nOct 2: which plate is which?: https://youtu.be/qYyT39D5Yzo?t=146\nOct 2: pressure too high, plate far: https://youtu.be/of5-LhkX_VQ?t=1644\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/1d90811/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/1d90811/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "osx7moehRnE": {
+   "snippet": {
+    "title": "Atomizer tutorial: making the aluminum cups and plugs",
+    "description": "How to make the aluminum cups and vented plugs that carry powder into the rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab: lathe footage of the first cups, the same steps animated from the CAD, the numbers to use, and what changes for the hydraulic-press versions.\n\n0:00 Intro\n0:28 Where the cups go\n0:44 The bar\n1:06 On the lathe\n2:15 The cup, step by step\n3:02 The plug, step by step\n3:52 Where the #60 drill is\n4:04 Why the air hole\n4:35 The numbers\n5:02 Four rules\n5:42 Hydraulic-press versions\n6:14 The drawing, and one request\n\nNumbers are from the parts made so far (issue #222). Cups: 2.750 in long, turned from 3/4 in 6063 bar (McMaster 1640T16), with a 1/2 in drill 2.25 in deep. Plugs: each cup's measured hole + .0005 to .0008 in (the first ones were .508 in), .5625 in long, with a #60 air hole. About 8.7 g of powder per cup.\n\nLinks\nThis tutorial (issue #248): https://github.com/vertical-cloud-lab/byu-vcl/issues/248\nCharge design (issue #222): https://github.com/vertical-cloud-lab/byu-vcl/issues/222\nDrawing, CAD and animations (PR #232): https://github.com/vertical-cloud-lab/byu-vcl/pull/232\nLathe footage, Gage Erickson: https://youtube.com/shorts/z6rwmQW_3Vg\nNarration text and build script: https://github.com/vertical-cloud-lab/byu-vcl/tree/edac3cd/atomizer-charge/tutorial\n\nThe CAD animations were made before the parts, so their out-of-date callouts have been corrected on screen. The narration is synthetic: Microsoft Edge TTS voice en-US-SteffanNeural.\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "aluminum 6063",
+     "atomizer",
+     "lathe",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "27",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "LpjXVa_TMXg": {
+   "snippet": {
+    "title": "Atomizer, every recorded step (part 1 of 2): the machine, and before a run",
+    "description": "Part 1 of 2: installation, a tour of the machine, the HMI, materials and particle size, safety, and everything before a run (utilities, the ultrasonic stack, charge preparation, the furnace and the chamber). Every logged moment of the 26 atomizer recordings, reorganised into the order of a run and joined end to end. Nothing is narrated, stabilised or faded: the top bar names the source video, its day and the running source time; the yellow text is the timestamp log's note for the moment; the subtitles are Whisper. Stretches where nothing was logged (waiting for purges and melts, idle camera, chatter) are skipped, which is why the clips cut.\n\nRaw cut, draft 1, for review (PR #255). Part 2, during and after a run: https://www.youtube.com/watch?v=Nz2Y1O3ekfg\n\nChapters:\n0:00 1. Installation and commissioning\n8:48 2. The machine: a tour of the module\n23:52 3. The HMI: pages, scan, program and pressure logic\n39:48 4. Materials, boosters and particle size\n44:18 5. Safety and PPE\n46:16 6. Before a run: power-up and utilities\n58:24 7. Before a run: the ultrasonic stack\n2:04:49 8. Charge preparation: cups, rods and dosing\n2:35:25 9. Before a run: furnace, nozzle, crucible and loading\n3:08:10 10. Before a run: chamber, plate guard, bowl and container\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nEvery clip, with a link to its source moment: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/stitch/edl.md\nHow the cut was made: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/stitch/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "training",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Nz2Y1O3ekfg": {
+   "snippet": {
+    "title": "Atomizer, every recorded step (part 2 of 2): during and after a run",
+    "description": "Part 2 of 2: the gas wash and heating, the pour, shutdown and powder collection, cleaning, tools and consumables, and the lessons. Every logged moment of the 26 atomizer recordings, reorganised into the order of a run and joined end to end. Nothing is narrated, stabilised or faded: the top bar names the source video, its day and the running source time; the yellow text is the timestamp log's note for the moment; the subtitles are Whisper. Stretches where nothing was logged (waiting for purges and melts, idle camera, chatter) are skipped, which is why the clips cut.\n\nRaw cut, draft 1, for review (PR #255). Part 1, the machine and before a run: https://www.youtube.com/watch?v=LpjXVa_TMXg\n\nChapters:\n0:00 11. During a run: gas wash and heating\n1:25:04 12. During a run: the pour\n2:06:01 13. After a run: shutdown, cooldown, venting, powder out\n2:40:32 14. Cleaning between runs\n3:05:30 15. Tools, consumables and spares\n3:21:33 16. Lessons, planning and support\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nEvery clip, with a link to its source moment: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/stitch/edl.md\nHow the cut was made: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/stitch/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "training",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "hbaD2ii6f3c": {
+   "snippet": {
+    "title": "Atomizer delivery (Jun 15): unboxing the crate of accessories and spares",
+    "description": "Unpacking the smaller crate of atomizer parts, box by box: respirators and cartridges, ear protection, lab coats and gloves, fire-extinguishing powder, brushes, 17 and 18 mm wrench heads and the large torque wrench; crucibles, many insulating pieces, metal filters and graphite parts; rods, plates and small parts; the vacuum pump; boxes the narrator takes for powder collection containers; an oil filter, anti-static mats, fittings and tubes, and the heat exchanger. Everything looks intact.\n\nChapters:\n0:00 PPE, tools and the torque wrench\n1:31 Crucibles, insulation, filters and graphite\n2:50 Rods, plates and small parts\n3:21 Vacuum pump, containers, oil filter, mats\n4:06 Fittings, tubes and the heat exchanger\n\nUploaded Mon Jun 15 2026. It is not in the indexed set yet (no transcript or timestamp log), so this summary comes from YouTube's auto-captions. Originally titled “Unboxing of smaller crate w/ Atomizer pieces”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Kv9DT3Vo0GE": {
+   "snippet": {
+    "title": "Atomizer installation (Sep 1): the lab enclosure under construction",
+    "description": "A walk-through of the lab enclosure under construction, before the atomizer arrived: the dehumidifier with a pump beside it, venting, chilled-water lines, and the transformer that powers the atomizer, too big for its planned spot. The narrator also shows the new slats, vents and lights (switches not yet working), cabinets, a big sink and a second sink, whiteboard space and large breaker boxes.\n\nUploaded Tue Sep 1 2026. Originally titled “Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon!”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-installation-sep-1-the-lab-enclosure-under-construction\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#kv9dt3vo0ge--exciting-vertical-cloud-lab-construction-update-atomizer-will-be-installed-soon-0230-sep-1\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/Kv9DT3Vo0GE.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "07QOPRHIEvw": {
+   "snippet": {
+    "title": "Atomizer installation (Sep 3): the machine in its enclosure",
+    "description": "Installation update: the atomizer and the rest of the crate's contents are in the cleaned-up enclosure. The narrator explains what is still to come: chilled water down from the ceiling, argon from the tanks along the orange-taped wall, and commissioning in about two weeks.\n\nUploaded Thu Sep 3 2026, with the note “Spent some time cleaning the containment chamber out and unboxing the atomizer and crate to prepare for installation!” Originally titled “Placing the Atomizer!!!”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-installation-sep-3-the-machine-in-its-enclosure\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#07qoprhievw--placing-the-atomizer-0126-sep-3\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/07QOPRHIEvw.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "cKwQbKdE22Q": {
+   "snippet": {
+    "title": "Vacuum test (Sep 8): clearing a small amount of powder",
+    "description": "Not the atomizer itself: in a half-face respirator and gloves, someone adds a little powder, connects a hose and runs a vacuum for 15 to 30 s “to get all of the powder out”, then checks and finds “no visible powder in there”. Which vacuum and which powder, and whether that counts as a pass, are not said.\n\nUploaded Tue Sep 8 2026. Originally titled “Vacuum test”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#vacuum-test-sep-8-clearing-a-small-amount-of-powder\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#ckwqbkde22q--vacuum-test-0237-sep-8\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/cKwQbKdE22Q.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "z6rwmQW_3Vg": {
+   "snippet": {
+    "title": "Atomizer charge prep (Sep 26): turning aluminum cups on the lathe",
+    "description": "Machine-shop clip of making the aluminum cups and plugs that hold powder for the custom-charge runs. Rod stock is band-sawn into three 3 in pieces (2.75 in plus 1/4 in for facing) and one of about 1 3/8 in for plugs; on the lathe the first cup is faced to exactly 2.75 in, centre-drilled and bored with a 1/2 in drill.\n\nGage Erickson's lathe footage, uploaded Sat Sep 26 2026. The narrated tutorial built on it: https://www.youtube.com/watch?v=osx7moehRnE Originally titled “Lathe turning aluminum crucibles for atomizer experiments”; the SOP cites it as LATHE.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-charge-prep-sep-26-turning-aluminum-cups-on-the-lathe\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#z6rwmqw_3vg--lathe-turning-aluminum-crucibles-for-atomizer-experiments-0135-sep-26\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/z6rwmQW_3Vg.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "2wMgeI-E7zw": {
+   "snippet": {
+    "title": "Atomizer commissioning (Sep 28): walk-around of the utilities and consumables",
+    "description": "Bartosz Kalicki of AMAZEMET walks the team round the newly installed machine: the rear utility connections and the heat exchanger's first start-up, where cold facility water trips a water-too-cold fault (limit lowered from 10 to 7 °C) and coolant flow reads about 3 L/min against the 2 needed; then the control panels and accounts, transducer air cooling, plate life and cost, crucible coating, cleaning between alloys, and PPE.\n\nChapters:\n0:00 Rear utilities and heat-exchanger start-up\n3:26 Control panels and accounts; particle size\n7:28 Transducer air cooling; plate life and cost\n10:32 Crucible coating; cleaning between alloys\n13:01 PPE, capped powder rods; next-day logistics\n\nFilmed on Sterling Baird's phone on the commissioning day, Mon Sep 28 2026 (inferred from “8:30 a.m. start tomorrow” and rods “to test on Wednesday”), and uploaded Sep 30. Originally titled “Atomizer training (sterling's phone)”; the SOP cites it as SP.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-commissioning-sep-28-walk-around-of-the-utilities-and-consumables\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupC.md#2wmgei-e7zw--atomizer-training-sterlings-phone-16-min-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/2wMgeI-E7zw.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "wRc8p2_FnJo": {
+   "snippet": {
+    "title": "Atomizer training video 1 (Sep 29): tour of the module, the HMI, furnace teardown",
+    "description": "Bartosz Kalicki (AMAZEMET) powers up the rePowder and shows the trainees the inside of the module: compressed air at about 4 bar (transducer cooling only), the two argon lines, cooling water, valves, the O2 sensor and the HEPA filter (check every 2 months), then vacuum pump and heat exchanger upkeep. On the HMI he covers the 40 kHz ultrasonic scan, O2 limits (best 40–50 ppm, not above 100), gas wash and the furnace pressures. He then strips the furnace, explains nozzle bores (0.5 mm standard, 0.7 mm for poor flow) and boron nitride coating, cleans and rebuilds it. No run happens.\n\nChapters:\n0:00 Power-up: leave the transformer breaker on\n0:53 Module tour: compressed air, argon and water\n4:45 Pneumatics, valves, O2 sensor and HEPA filter\n9:52 Ultrasonic generator, PLC, fuses and updates\n12:58 Vacuum pump oil, heat exchanger water level\n18:11 HMI accounts and settings\n19:58 Ultrasonic scan: 39–41 kHz, one wide peak\n24:29 Atomization screen: keep O2 under 100 ppm\n25:53 Chamber controls: gas wash, pressure control\n29:08 Furnace panel: green light, gas wash x5, turbo\n33:03 Program setup, heat ramp and service mode\n34:59 Furnace teardown: thermocouple to brass filter\n39:17 Nozzle bore: 0.5 mm standard, drill to 0.7 mm\n41:59 Crucible coating: boron nitride, night before\n44:11 Clean the seal, glass and graphite parts\n45:54 Reassemble: nozzle white side up, crucible, nut\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Video 1 of atomizer training”; the SOP cites it as T1.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-1-sep-29-tour-of-the-module-the-hmi-furnace-teardown\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupA.md#wrc8p2_fnjo--video-1-of-atomizer-training-47-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/wRc8p2_FnJo.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "1F9_4ccwhss": {
+   "snippet": {
+    "title": "Atomizer training video 4 (Sep 29): loading the furnace, cleaning the chamber",
+    "description": "Before the first run, Bartosz Kalicki loads the induction furnace with the trainees: insulation lined up with the thermocouple port, the sealing rod tip checked and the rod lowered, the rods added and the lid latched. He explains that the coil heats the graphite, which heats the charge, and why iron and nickel are not intended: the plates would not survive and those metals react with graphite. Then chamber cleaning: vacuum first, then brushes, paper and alcohol, a stainless-steel scraper, and the swing-out cone.\n\nChapters:\n0:00 Insulation, thermocouple and sealing rod\n2:38 Induction heating; why not iron or nickel\n4:31 Load the rods and close the furnace lid\n5:40 Cleaning the chamber: brushes, scraper, cone\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 4”; the SOP cites it as T4.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-4-sep-29-loading-the-furnace-cleaning-the-chamber\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupB.md#1f9_4ccwhss--atomizer-training-video-4-10-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/1F9_4ccwhss.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "58wJ_Khwgyk": {
+   "snippet": {
+    "title": "Atomizer training video 5 (Sep 29): the first run, start to finish",
+    "description": "The first rod run through the machine, start to finish, with Bartosz Kalicki explaining each step. He fits the powder container, splash guard and catch bowl, builds the stack (1:1.5 booster, titanium connector rod, tungsten-alloy sonotrode, carbon-fiber plate) at 65/60/50 N·m and scans it at just over 40 kHz. Furnace and chamber purges run cold, at 250 °C and at 500 °C; a 1000 °C set point melts the aluminum rods, held at about 790 °C for 2 min, then poured. Rising oxygen bends the stream; the chamber is opened at about 400 °C.\n\nChapters:\n0:00 Powder container, splash guard, catch bowl\n6:37 Transducer care and booster choice\n10:27 Connector rod, sonotrode, carbon-fiber plate\n13:25 Torque the stack: 65 and 60 N·m in a vise\n19:03 Transducer cover; bench scan at 40 kHz\n24:46 Stack in housing; plate 50 N·m; wet test; aim\n30:43 Purge plan; chamber overpressure; O2 sensor\n33:47 Furnace gas wash (5 purges); leak warning\n37:34 Chamber vacuum, protective gas, O2 reading\n41:50 Heat to 250 °C and purge\n48:00 Purge at 500 °C, then melting pressure\n52:49 Set 1000 °C to melt, hold 790 °C, wait 2 min\n59:50 The pour onto the carbon-fiber plate\n1:02:11 Stop sequence; why the stream wandered\n1:04:21 Cooldown: open at 400 °C, off at 100 °C\n1:08:51 Q&A: plate reuse, glowing plates, plate wear\n1:13:47 Off topic: respirator storage, lab layout\n1:16:16 Slag, vent the chamber, brush the powder\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 5”; the SOP cites it as T5.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-5-sep-29-the-first-run-start-to-finish\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupB.md#58wj_khwgyk--atomizer-training-video-5-79-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/58wJ_Khwgyk.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "tfb4fsVNIFI": {
+   "snippet": {
+    "title": "Atomizer training video 6 (Sep 29): closing the powder container",
+    "description": "A 49-second clip at the powder container after a run. Bartosz Kalicki says to close the container once all the powder is brushed in: argon is heavy and stays at the bottom, so it keeps a semi-protective atmosphere even when opened cold. To clean it properly after a run, open it fully. Most of the clip is silent.\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 6”; the SOP cites it as T6.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-6-sep-29-closing-the-powder-container\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupB.md#tfb4fsvnifi--atomizer-training-video-6-49-s-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/tfb4fsVNIFI.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Pk0K5sBz-sQ": {
+   "snippet": {
+    "title": "Atomizer training (Sep 29): right after a pour, brushing powder and cooling down",
+    "description": "Recorded right after a pour; the first four minutes have almost no speech. Bartosz Kalicki (AMAZEMET) has the trainees brush the powder back inside for reuse, remove any big solidified piece, and wipe the tube, especially at the bottom, before closing. Removing slag and checking the nozzle must wait because the furnace is still at 150 °C. He adds that the cooling water stays on until about 100 °C, can stop earlier when the crucible is empty, and must stay on if a big unpoured chunk is left.\n\nChapters:\n0:00 Mostly silent footage after the pour\n3:56 Brush powder back in, wipe the tube\n6:19 Still 150 °C: slag and nozzle check must wait\n8:37 When to stop the cooling water (100 °C)\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer training”; the SOP cites it as TA.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-sep-29-right-after-a-pour-brushing-powder-and-cooling-down\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupA.md#pk0k5sbz-sq--atomizer-training-95-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/Pk0K5sBz-sQ.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "naePD8o9_Gk": {
+   "snippet": {
+    "title": "Atomizer training video 2 (Sep 29): a run, from heating to powder out",
+    "description": "Bartosz Kalicki (AMAZEMET) coaches the trainees through an Al 4047 run, from heating to powder out. The setpoint is still at about 1000 °C from before, so the rods melt before the usual 250 °C and 500 °C purges; they purge at once, drop to 800 °C, wait 2 min and rescan the stack (just over 40 kHz). A trainee pours with the sealing rod up and turbo pressure, Bartosz explains wetting and the quick shutdown, then the chamber is vented, opened in masks and lab coats, and the powder brushed into the container. Long stretches are off-topic chat.\n\nChapters:\n0:00 Start heating; why the gauge stops at −0.8 bar\n3:22 Setpoint left at 1000 °C: purge right away\n5:48 Normal routine: purge at 250 °C, then 500 °C\n10:35 Chamber purge, then heat once O2 is low\n14:40 Rods slump: reduce to 800 °C, wait 2 min\n18:08 Rescan the ultrasonic stack: just over 40 kHz\n19:12 Pour: ultrasonic start, sealing rod up, turbo\n22:28 Crucible empty: shutdown, then wetting theory\n24:49 Set 250 °C for next time; drill 0.7 mm nozzles\n26:53 Off topic: other installs, minerals, stocks\n30:15 Recap: turbo, shutdown order, plate damage\n33:16 Wait for 400 °C; off topic: mining, nuclear\n37:27 Vent the chamber, masks and lab coats on\n42:44 Brush the powder down into the container\n45:09 Remove the plate; chamber cleaning, no speech\n50:32 Powder into the container; cooling water off\n53:39 Close the container valve and take it out\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 2”; the SOP cites it as T2.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-2-sep-29-a-run-from-heating-to-powder-out\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupA.md#naepd8o9_gk--atomizer-training-video-2-56-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/naePD8o9_Gk.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "txH397FGTAU": {
+   "snippet": {
+    "title": "Atomizer training video 3 (Sep 29): 1:1 booster and a Mo plate, the last run of the day",
+    "description": "Bartosz Kalicki and the trainees clean up after the previous run, reassemble the furnace and fit the 1:1 booster with a molybdenum-alloy plate, checked by a scan and a liquid pattern test. After purges cold, at 250 °C and at 500 °C, a 1000 °C set point melts the rods and 780–790 °C is held; he advises starting near 90 % amplitude. The Mo plate cracks during the pour, yet atomizes better once a piece breaks off. The day ends with the powder, the case for wider Mo plates, and shutdown: everything off at about 100 °C.\n\nChapters:\n0:00 Cleaning up after the previous run\n5:00 Off topic: the missing torque-wrench tip\n9:12 Reassembly, low-oxygen lesson, Mo-alloy plate\n12:03 Scan double peak; liquid pattern test\n13:06 Booster plan; particle size for printing\n16:12 1:1 booster in; cold furnace purge\n18:33 Theory: particle size by metal; DED vs LPBF\n20:17 Chamber vacuum and protective gas\n23:27 Heat to 250 °C and purge\n30:15 Purge at 500 °C; plate wear check\n32:40 Melting pressure; can purging be automated?\n35:01 Set 1000 °C to melt the rods\n38:33 Lower to 780–790 °C; amplitude 80–90 %; scan\n41:38 The pour: Mo plate cracks, then works better\n46:04 Powder check; the case for wider Mo plates\n49:51 Shutdown at 100 °C; program locked above 80 °C\n\nRecorded Tue Sep 29 2026, day 1 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 3”; the SOP cites it as T3.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-3-sep-29-11-booster-and-a-mo-plate-the-last-run-of-the-day\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupB.md#txh397fgtau--atomizer-training-video-3-51-min-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/txH397FGTAU.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "w02MRlZhpNk": {
+   "snippet": {
+    "title": "Atomizer room (Sep 29): dehumidifier troubleshooting",
+    "description": "Facility troubleshooting, not atomizer operation: up at the enclosure dehumidifier, the narrator finds the 24 V control terminals shorted together and hears a click, sees that the pump next to it seems unconnected, and does not think the breaker has tripped. Turning the humidistat knob gives more clicks, but the clip ends without the unit confirmed running.\n\nRecorded Tue Sep 29 2026, during the training. Originally titled “Dehumidifier troubleshooting”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-room-sep-29-dehumidifier-troubleshooting\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#w02mrlzhpnk--dehumidifier-troubleshooting-0258-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/w02MRlZhpNk.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "prj_xgeuQtM": {
+   "snippet": {
+    "title": "Atomizer charge prep (Sep 29): dosing AlSi10Mg for charge nzyjn0 (no narration)",
+    "description": "A fixed phone view of the lab's powder doser and balance, preparing charge nzyjn0: AlSi10Mg powder dosed into an Al 6063 cup for the Sep 30 custom-charge atomizer run. There is almost no speech (“Let's see how this looks” at 0:17). Gloved hands lay out tools, work on a tube and set a tube on the balance; the view then stays unchanged from about 24:00 to 52:00, after which the draft shield is lifted off.\n\nChapters:\n0:00 Powder doser and balance on the bench\n7:00 Paper and tools laid out at the back\n11:00 Gloved hands work on an upright tube\n14:00 At the powder doser; a tube on the balance\n24:00 Long unchanged view: dosing or waiting\n53:00 Back at the doser; draft shield lifted off\n58:00 An arm at the powder doser once more\n\nRecorded Tue Sep 29 2026. The cup became the charge of the Sep 30 custom-charge run; the powders are logged in issue #249: https://github.com/vertical-cloud-lab/byu-vcl/issues/249 Originally titled “nzyjn0 AlSi10Mg-Al6063 dosing session”; the SOP cites it as DOSE1.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-charge-prep-sep-29-dosing-alsi10mg-for-charge-nzyjn0-no-narration\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#prj_xgeuqtm--nzyjn0-alsi10mg-al6063-dosing-session-10845-sep-29\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/prj_xgeuQtM.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "u-KjR5TENN4": {
+   "snippet": {
+    "title": "Atomizer training (Sep 30): the expert cleaning the atomizer, first-person view",
+    "description": "A body-worn, first-person recording of the trainer cleaning the atomizer after a run (the uploader calls him “the expert”; Bartosz Kalicki, inferred from his orange gloves). There is no narration and no usable speech, so the chapters name what the frames show. In orange gloves he works under the chamber with a printed sheet, inside the chamber and cone with a long tool, at a bench of tools, at the view port, at the door seal with a wash bottle, and with paper at the top of the powder container. Training videos 2 and 4 narrate the same kind of cleaning.\n\nChapters:\n0:00 Under the chamber with a printed sheet\n5:00 Inside the chamber and cone with a long tool\n7:30 A domed stainless part, then the tool bench\n10:30 View port, then a wash bottle at the door seal\n15:00 Paper to the bin; powder container top; HMI\n\nUploaded Wed Sep 30 2026, mid-morning on day 2 of the training. Originally titled “The expert cleaning the atomizer, pov”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-sep-30-the-expert-cleaning-the-atomizer-first-person-view\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#u-kjr5tenn4--the-expert-cleaning-the-atomizer-pov-1845-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/u-KjR5TENN4.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "LSQmxwmlTkQ": {
+   "snippet": {
+    "title": "Atomizer nozzle prep (Sep 30): drilling a graphite nozzle with a #70 bit",
+    "description": "Machine-shop clip: a graphite nozzle is held on the drill-press table and under the chuck to open its bore with a #70 wire-gauge bit (nominally 0.028 in, about 0.71 mm). There is no narration, only a few words of chatter. Per the issue comment linked below, two nozzles were drilled: one “botched just a bit”, one that “looks pretty nice”.\n\nUploaded Wed Sep 30 2026. Originally titled “Drill press, number 70 bit, graphite nozzle”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nPhotos of the two drilled nozzles (issue #222): https://github.com/vertical-cloud-lab/byu-vcl/issues/222#issuecomment-5914976661\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-nozzle-prep-sep-30-drilling-a-graphite-nozzle-with-a-70-bit\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#lsqmxwmltkq--drill-press-number-70-bit-graphite-nozzle-414-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/LSQmxwmlTkQ.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "f8KL31PN8bA": {
+   "snippet": {
+    "title": "Atomizer training (Sep 30): cleaning a filter cartridge; a second scan peak",
+    "description": "Bartosz Kalicki, in a respirator and gloves, cleans a filter cartridge and its valve body at the bench after a run, mostly without words for the first six minutes, then flushes it with isopropanol and blows paper lint off the seal with compressed air; deeper cleaning waits, as the next charge is aluminum again. At the HMI he reads a second peak on the ultrasonic scan as resonance from the 1:1 booster with the wider plate, and explains why piezo stacks must not be over-tightened. It ends with housekeeping and the AlSi10Mg sample cup for the next run.\n\nChapters:\n0:00 Cleaning the cartridge valve at the bench\n6:53 IPA flush, then compressed air on the seal\n8:54 Refitting the cartridge; deep clean deferred\n12:57 Second scan peak, booster choice, piezo stacks\n15:01 Masks, housekeeping and consumables storage\n15:57 The AlSi10Mg sample cup and next steps\n\nRecorded Wed Sep 30 2026, day 2 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Cartridge cleaning”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-sep-30-cleaning-a-filter-cartridge-a-second-scan-peak\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#f8kl31pn8ba--cartridge-cleaning-1809-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/f8KL31PN8bA.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "TFpU4uqVF9c": {
+   "snippet": {
+    "title": "Atomizer training (Sep 30): first custom charge, AlSi10Mg in an Al 6063 cup",
+    "description": "Bartosz Kalicki narrates the first custom-charge run: charge nzyjn0, AlSi10Mg powder in an Al 6063 cup. Vacuum and argon gas washes alternate with temperature steps until the oxygen reading is low and stable. He overshoots the temperature to homogenize the mixed charge, still sees a leftover spot with a thicker oxide layer, lowers to about 800 °C and pours at the previous day's low pour pressure under manual pressure control. The pour is over in under a minute, then melting pressure, sealing rod down, generator stop.\n\nChapters:\n0:00 Gas wash (purge): vacuum, then argon backfill\n4:03 Higher temperature, more gas washes\n10:06 Oxygen low and stable: heat to homogenize\n14:51 Leftover spot with a thicker oxide layer\n17:17 Decide to pour; lower to about 800 °C\n19:14 Pour at low pressure, then sealing rod down\n\nRecorded Wed Sep 30 2026, day 2 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Probably the same run as Training video 9, filmed from another camera (the SOP infers this from matching times): https://www.youtube.com/watch?v=9kn-HhXCr1o. The uploader's note: “also was mentioned that irregular and larger particles are better for compaction and oxidation, respectively”. Originally titled “nzyjn0 atomization AlSi10Mg-Al6063”; the SOP cites it as RUN1.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-sep-30-first-custom-charge-alsi10mg-in-an-al-6063-cup\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#tfpu4uqvf9c--nzyjn0-atomization-alsi10mg-al6063-2056-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/TFpU4uqVF9c.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "FDRTt68Vfvo": {
+   "snippet": {
+    "title": "Atomizer training video 7 (Sep 30): reversing the booster, rebuilding the stack",
+    "description": "Between two runs, Bartosz Kalicki talks the trainees through taking the ultrasonic stack apart and flipping the 1:1.5 booster to 1.5:1, which lowers the amplitude for finer powder. He frees a seized stud with two jammed M10 nuts, gives torques of 65, 60 and 50 for the three joints and shows how to set the torque wrench. The rebuilt stack scans just under 40 kHz, goes back in with the plate and is scanned with water on the plate; plates last about 1–3 runs. From 2:20 to 14:20 the talk is mostly lab layout.\n\nChapters:\n0:00 Plan between runs; vacuuming the chamber\n2:20 Off topic: lab layout, moving a cabinet\n10:30 Cabinet to become a desiccant dry box\n11:23 Off topic: camera ideas, shelving\n14:19 Teardown starts: taking the plate off\n16:47 Why it resonated; keep one plate per alloy\n18:54 Removing the stack: cable, clamp, transducer\n21:52 Booster theory: 1:1.5 vs reversed 1.5:1\n25:56 Off topic: camera, paper towels, gloves\n29:28 Flipping the booster; freeing a seized stud\n33:02 Housing on; 1.5:1 end up toward the chamber\n35:48 Torque 65/60/50 and setting the torque wrench\n40:25 Bench test: scan; frequency under 40 kHz\n43:07 Installing the stack; naming its parts\n45:39 Mounting the plate: connector first, torque 50\n49:29 Final scan with water; why plates crack\n\nRecorded Wed Sep 30 2026, day 2 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 7”; the SOP cites it as T7.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-7-sep-30-reversing-the-booster-rebuilding-the-stack\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupC.md#fdrtt68vfvo--atomizer-training-video-7-53-min-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/FDRTt68Vfvo.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "HTlUrAr5HVU": {
+   "snippet": {
+    "title": "Atomizer training video 8 (Sep 30): nozzles, and reassembling the furnace",
+    "description": "Gage Erickson reassembles the furnace between runs while Bartosz Kalicki advises. Gage shows a fresh 0.7 mm graphite nozzle and a smaller one he machined (said as “0.05”; 0.5 mm inferred), and Bartosz recommends screwing the nozzle into the crucible before fitting the holder nut. They seat the insulation and thermocouple, scrape aluminium off the graphite sealing rod while protecting its tip, keep one consumable set per alloy, close the furnace just tight enough to seal and clean the lid before loading.\n\nChapters:\n0:00 Nozzle sizes; nozzle into the crucible first\n3:44 Insulation in; cleaning the sealing rod\n8:40 Closing the furnace; laser-pointer aiming idea\n10:58 Cleaning the lid before loading\n\nRecorded Wed Sep 30 2026, day 2 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Originally titled “Atomizer Training Video 8”; the SOP cites it as T8.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-8-sep-30-nozzles-and-reassembling-the-furnace\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupC.md#htlurar5hvu--atomizer-training-video-8-12-min-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/HTlUrAr5HVU.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "9kn-HhXCr1o": {
+   "snippet": {
+    "title": "Atomizer training video 9 (Sep 30): a full run, then consumables and plates",
+    "description": "Gage Erickson runs the machine while Bartosz Kalicki explains each step: gas wash, heat exchanger and generator on, purges at 250 °C and 500 °C, then 850 °C to melt the charge, back to 800 °C and a 2-minute wait to mix. With the reverse booster the melt pours too fast for the low amplitude and part of it drips through un-atomized, so Bartosz recommends a 0.5 mm nozzle and a slow, controlled pour for fine powder. He then tours the consumables and plate materials, the training certificate is signed, and he gives closing advice.\n\nChapters:\n0:00 Gas wash: furnace, then chamber; 150 mbar\n1:57 Heat exchanger on; heat to 250 °C and purge\n6:12 Purge again, then 500 °C; why two stages\n10:41 Low pour pressure; heat to 850 °C\n13:29 Melting cues: temperature dip, faster beeping\n15:41 Back to 800 °C; wait 2 min to overheat and mix\n19:34 The pour: vibration on, open the sealing rod\n21:39 Stop the pour; next time a smaller nozzle\n22:58 Fine powder: small nozzle, low amplitude\n28:28 Powder out, nozzle check; charge size\n32:31 Consumables: insulation, sealing rods, nozzles\n35:18 Consumables: thermocouples, seals, filters\n38:35 Plates: carbon fibre, Ti64, Nb, Mo, steel\n43:45 Certificate; advice on practice and the pour\n46:10 Cooldown below 100 °C; condensation; plans\n\nRecorded Wed Sep 30 2026, day 2 of the rePowder training at BYU, given by Bartosz Kalicki of AMAZEMET to Gage Erickson, Ronnie Guymon and Sterling Baird. Probably the same run as the nzyjn0 custom-charge video, filmed from another camera (the SOP infers this from matching times): https://www.youtube.com/watch?v=TFpU4uqVF9c Originally titled “Atomizer Training Video 9”; the SOP cites it as T9.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-training-video-9-sep-30-a-full-run-then-consumables-and-plates\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupC.md#9kn-hhxcr1o--atomizer-training-video-9-50-min-sep-30\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/9kn-HhXCr1o.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "BxA7Z9Fliss": {
+   "snippet": {
+    "title": "Atomizer charge prep (Sep 30): asking Claude on GitHub to dose Al 4047",
+    "description": "Not atomizer operation: a mostly silent screen recording in which the narrator opens a GitHub pull request where Claude can be pinged and copies a saved prompt asking for another powder-doser run of Al 4047. The rest of the clip stays on the pull request without commentary.\n\nRecorded Wed Sep 30 2026. Originally titled “Claude ping for dosing Al 4047”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-charge-prep-sep-30-asking-claude-on-github-to-dose-al-4047\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#bxa7z9fliss--claude-ping-for-dosing-al-4047-1048-oct-1\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/BxA7Z9Fliss.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "QXSj0j1OqL8": {
+   "snippet": {
+    "title": "Atomizer charge prep (Sep 30): preparing an Al 4047 dose (no narration)",
+    "description": "A fixed phone view of the lab's powder doser bench, with no narration and no speech: per the upload's title, Al 4047 powder is being dosed, as charge preparation for the atomizer. Gloved hands set out an empty tube, place an item in the draft shield on the balance, hold a small tube upright at the back of the bench, and fit a tube (the powder cartridge, inferred) to the doser above the balance, where it then sits still.\n\nChapters:\n0:00 Doser bench; an empty tube set out\n4:00 An item placed in the draft shield\n12:00 A small tube held upright at the back\n17:00 A tube fitted to the powder doser by hand\n21:00 Hand at the balance; a clear cover lifted\n\nRecorded Wed Sep 30 2026. Originally titled “Dosing Al 4047 powder”.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-charge-prep-sep-30-preparing-an-al-4047-dose-no-narration\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#qxsj0j1oql8--dosing-al-4047-powder-2215-oct-1\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/QXSj0j1OqL8.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "dXRB7c6GeDw": {
+   "snippet": {
+    "title": "Atomizer charge prep (Sep 30): dosing Al 4047 with Claude; a stall and a clog",
+    "description": "A narrated phone screen recording of the GitHub pull request in which Claude runs the lab's powder doser, dosing 8 g of the team's own atomized Al 4047 powder. The dose stalls near 3 g, Claude fixes a telemetry MemoryError on the doser's Pico, and larger particles then clog the auger nozzle, so Claude finishes at bulk tilt only. It ends at about 8 g, with notes on a larger auger channel, a slower final tilt-back and the one-sided solenoid mount. Charge preparation for the atomizer, not atomizer operation.\n\nChapters:\n0:00 Dose stalls near 3 g; replaying the livestream\n3:21 Claude's reply, with side talk from a visitor\n8:43 MemoryError on the doser's Pico; Claude's fix\n18:18 Waiting on Claude, with off-topic chat\n23:11 Larger particles clog the auger nozzle\n29:45 Still a ways from 4.5 with the clog\n38:59 Claude's plan: bulk tilt only (clog-tolerant)\n51:43 Reaching the target, pretty much spot on\n53:24 Lessons: slower tilt-back, solenoid mount flex\n55:02 8 g dosed; a small amount for the 6063 tube\n58:53 Finished: balance reading and Claude's report\n\nRecorded Wed Sep 30 2026. The dose became the charge of the Oct 2 run (inferred). Originally titled “Claude ping and troubleshooting for dosing Al 4047”; the SOP cites it as DOSE2.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-charge-prep-sep-30-dosing-al-4047-with-claude-a-stall-and-a-clog\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupE.md#dxrb7c6gedw--claude-ping-and-troubleshooting-for-dosing-al-4047-5937-oct-1\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/dXRB7c6GeDw.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "qYyT39D5Yzo": {
+   "snippet": {
+    "title": "Atomizer, first run on our own (Oct 2), part 1: startup, plates and loading",
+    "description": "Startup and loading, narrated by a team member with Ronnie Guymon helping. Utilities go on while a chilled-water fitting still leaks, and a phone checklist is read: oil, water level, argon at 8 bar, chilled water, air valve. They identify the unlabeled plates and choose molybdenum for smaller particles, fetch metric 17 and 18 mm wrenches to mount the upper sonotrode, see light through the new nozzle and skip the transducer housing this time. The chamber is then reopened for the frequency scan: one valley, one peak.\n\nChapters:\n0:00 Utilities on and the startup checklist\n1:46 Identifying the plates; choosing molybdenum\n6:31 Aluminum build-up on the tungsten-alloy part\n7:24 Power on; upper sonotrode; metric wrenches\n10:08 Nozzle check, HMI login, wait for wrenches\n14:15 Sonotrode torqued; transducer housing skipped\n17:21 Chamber closed; reading the SOP purge steps\n20:00 Reopen the chamber for the frequency scan\n\nRecorded Fri Oct 2 2026: the team's first run without the trainer. Originally titled “Atomizer Fri Oct 2 pt1”; the SOP cites it as OCT2a.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-first-run-on-our-own-oct-2-part-1-startup-plates-and-loading\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#qyyt39d5yzo--atomizer-fri-oct-2-pt1-2139-oct-2\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/qYyT39D5Yzo.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\nThe team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "of5-LhkX_VQ": {
+   "snippet": {
+    "title": "Atomizer, first run on our own (Oct 2), part 2: gas wash, pour and cooldown",
+    "description": "Purge, heat, pour and cooldown. After loading and lowering the sealing rod, the team gas-washes at room temperature, 250 °C and 500 °C; with oxygen in the low 20s they skip a fourth wash. They heat to 830 °C (the trainer used 850, then 800), set amplitude to about 90 and pour pressure to 0.17 bar, and confirm a pure molybdenum plate. When the sealing rod opens, most of the charge pours un-atomized: the pressure was too high and the plate too far from the nozzle. Then shutdown, opening only below 400 °C.\n\nChapters:\n0:00 Setup and wipe-down before loading\n3:00 Loading with tweezers; sealing rod down\n4:03 Set 250 °C; gas wash at room temperature\n9:05 Generator start; gas wash at 250 °C\n13:06 Heat to 500 °C; gas wash at 500 °C\n17:50 Oxygen in the low 20s; heat to 830 °C\n20:12 Off topic: livestreaming with Meta glasses\n21:56 Melting; plug length; pour pressure 0.17 bar\n24:54 Amplitude about 90; pure molybdenum plate\n26:25 Pour: most of the charge is not atomized\n27:41 Shutdown; open the chamber below 400 °C\n\nRecorded Fri Oct 2 2026: the team's first run without the trainer. Originally titled “Atomizer run Oct 2 part 2”; the SOP cites it as OCT2b.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#atomizer-first-run-on-our-own-oct-2-part-2-gas-wash-pour-and-cooldown\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupD.md#of5-lhkx_vq--atomizer-run-oct-2-part-2-3018-oct-2\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/of5-LhkX_VQ.txt\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\nThe team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "VFycaxIq0Tc": {
+   "snippet": {
+    "title": "10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)",
+    "description": "Gage Erickson introduces Paul, who is joining the team, to the lab and to his part of the daily run SOP. Only Gage and Ronnie operate the machine. Paul's list: order a clip for the T-piece and some tools (bigger brushes for the container, a stainless scraper, a tape measure) through ME orders, checked with Gage or Ronnie first; keep an Excel sheet of every run's parameters (plate type, amplitude, melt temperature, alloy); and make SEM stubs from each powder. No machine operation.\n\nChapters:\n0:00 Meeting Paul; who may operate the machine\n3:15 The list of things to help with\n4:56 Charges, alloys and a jar of powder\n6:42 IPA on anything with powder on it\n7:43 Ordering: a clip for the T-piece\n8:51 How to place an ME order\n14:56 Tools: brushes, a scraper, a tape measure\n17:24 The run sheet; organizing powders\n17:57 Making SEM stubs\n19:33 Logging every run's parameters\n\nRecorded Tue Oct 6 2026, 13:07–13:27 MDT (placed on the room stream's clock), on Gage's collar phone. Originally titled “Oct 6 atomizer run, video 1”; the SOP cites it as OCT6a.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nRun parameters (issue #261): https://github.com/vertical-cloud-lab/byu-vcl/issues/261\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#1062026-atomizer-run-video-1-onboarding-paul-orders-run-log-sem-stubs\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupF.md#vfycaxiq0tc--oct-6-atomizer-run-video-1-2017-oct-6\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/VFycaxIq0Tc.txt\nThe run, checked against the daily SOP and the room stream; what to check before the next run: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/runs/2026-10-06.md\nDaily run SOP (Gage Erickson): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/daily-sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\nThe team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "private"
+  },
+  "dnPs56DPt6I": {
+   "snippet": {
+    "title": "10/6/2026 Atomizer Run Video 2: furnace, ultrasonic scan, carbon-fibre plate, door closed",
+    "description": "Gage rebuilds the furnace and sets up the ultrasonic stack on his own: crucible and insulation into the coil, the thermocouple and the sealing rod, a scan at 40,000 Hz, a plate torqued to 50 N·m and tested (40,200 Hz, 20 W), then swapped for a carbon-fibre plate, “the cheapest”. A spray test through the open door, then the door is bolted shut. The stack's height under the nozzle is not checked here; in video 3 it turns out to be too high.\n\nChapters:\n0:00 Crucible and insulation into the furnace\n3:40 Thermocouple and sealing rod\n5:38 Ultrasonic scan: 40,000 Hz\n6:32 A plate on, torqued to 50\n9:42 Test: 40,200 Hz, 20 W\n13:06 Swapping to a carbon-fibre plate\n16:25 Spray test; the door bolted shut\n\nRecorded Tue Oct 6 2026, 14:06–14:24 MDT, on Gage Erickson's collar phone. Originally titled “Oct 6th atomizer run, video 2”; the SOP cites it as OCT6b.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nRun parameters (issue #261): https://github.com/vertical-cloud-lab/byu-vcl/issues/261\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#1062026-atomizer-run-video-2-furnace-ultrasonic-scan-carbon-fibre-plate-door-closed\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupF.md#dnps56dpt6i--oct-6th-atomizer-run-video-2-1757-oct-6\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/dnPs56DPt6I.txt\nThe run, checked against the daily SOP and the room stream; what to check before the next run: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/runs/2026-10-06.md\nDaily run SOP (Gage Erickson): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/daily-sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\nThe team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "DWH1CEygsTI": {
+   "snippet": {
+    "title": "10/6/2026 Atomizer Run Video 3: gas wash, melt, pour (stack too high, vibration off)",
+    "description": "180 g of aluminium rods (#261 says Al 6067, probably 6063), wiped with IPA, go in beside the sealing rod. One gas wash takes the oxygen to 19 ppm; then 900 °C, 840 °C for two minutes, and 0.2 bar of pour pressure. The pour starts with the ultrasonic vibration off and the stack too high, so the stream hits the upper sonotrode and blobs off it. Pulled back three quarters of the way through, some melt atomizes: a small jar of powder, enough for SEM, and a bag of splats. Oxygen reads 121 ppm afterwards. Gage explains what went wrong, then the cooldown to 400 °C. A run to learn from: the run report below lists what to check before the next one.\n\nChapters:\n0:00 Charge wiped with IPA and loaded\n5:17 Gas wash\n19:35 Out in the lab: SEM samples, a sieve\n20:43 Argon fill; oxygen 19 ppm\n21:15 Heating to 900 °C\n24:26 Pour pressure 0.2 bar; oxygen 27 ppm\n26:42 Melted; 840 °C for two minutes\n28:20 Scan, draining pressure, the checklist\n29:35 The pour\n32:35 What went wrong: stack too high, vibration off\n33:43 Cooldown to 400 °C\n\nRecorded Tue Oct 6 2026, 14:37–15:12 MDT, on Gage Erickson's collar phone. Powder code 4yghtr. Originally titled “Oct 6 atomizer run, video 3”; the SOP cites it as OCT6c.\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nRun parameters (issue #261): https://github.com/vertical-cloud-lab/byu-vcl/issues/261\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThis video, moment by moment (timestamp log): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/timestamps.md#1062026-atomizer-run-video-3-gas-wash-melt-pour-stack-too-high-vibration-off\nNotes: summary, steps, numbers, open questions: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/notes/groupF.md#dwh1ceygsti--oct-6-atomizer-run-video-3-3442-oct-6\nTranscript (Whisper large-v3-turbo): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/transcripts/whisper/DWH1CEygsTI.txt\nThe run, checked against the daily SOP and the room stream; what to check before the next run: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/runs/2026-10-06.md\nDaily run SOP (Gage Erickson): https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/daily-sop.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\nThe team's own runs, oldest first: https://www.youtube.com/playlist?list=PLZQwIo89me4c",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "p6jlgTJEOw4": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 0, draft 1 (installation and training overview)",
+    "description": "Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 1 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "eKH7y4JgJD8": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 1, draft 1 (before a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 1 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "cGxBFZyFmCY": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 2, draft 1 (during a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 1 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "wPzP6I3jT5w": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 3, draft 1 (after a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 1 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "uVVeTokW3Us": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 0, draft 2 (the machine and how it works)",
+    "description": "Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 2 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "qiBB0lIXUDM": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 1, draft 2 (before a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 2 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "sagBBb78pVQ": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 2, draft 2 (during a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 2 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "50j8N8YyDxU": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 3, draft 2 (after a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 2 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "raIcdus1lI0": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 0, draft 3 (the machine and how it works)",
+    "description": "Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 3 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "KwY4KTY1UdI": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 1, draft 3 (before a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 3 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "79QQtmIm0JM": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 2, draft 3 (during a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 3 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "TvaFwSyqaog": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 3, draft 3 (after a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 3 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "-yxOIJfhs80": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 0, draft 4 (the machine and how it works)",
+    "description": "Superseded by https://www.youtube.com/watch?v=Pnwe5B1YUnM. This is draft 4 of tutorial 0; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "xpkbazHT_7M": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 1, draft 4 (before a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=sWx-k8CyCsk. This is draft 4 of tutorial 1; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Jex6lDcERUM": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 2, draft 4 (during a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=1rqkZO2DOhc. This is draft 4 of tutorial 2; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "VWa33SEvFJw": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial 3, draft 4 (after a run)",
+    "description": "Superseded by https://www.youtube.com/watch?v=UqYrbrsJSsU. This is draft 4 of tutorial 3; draft 5, linked above, replaced it after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "nPIPvVh38Dw": {
+   "snippet": {
+    "title": "[superseded] Atomizer tutorial: making the aluminum cups and plugs (first upload)",
+    "description": "Superseded by https://www.youtube.com/watch?v=osx7moehRnE. This first upload's narration said each cup went into its own bag, over footage showing them in one bag, and gave .508 in as a measured diameter rather than the target.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "BYU Vertical Cloud Lab",
+     "aluminum 6063",
+     "lathe",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "27",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "qwopusVSwf4": {
+   "snippet": {
+    "title": "[superseded] Atomizer slide clip: from loading to powder in 33 seconds (draft 1)",
+    "description": "Superseded by https://www.youtube.com/watch?v=j9QcpcG8EVI. This is draft 1 (33 s) of the slide clip of a whole run; draft 2 (44 s), linked above, is slower, shows the melt being stirred and keeps the powder inside the chamber, after review on https://github.com/vertical-cloud-lab/byu-vcl/pull/255.\n\nThe current tutorials, and every atomizer recording: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM\n\nThis upload is kept only until it is deleted.",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "animation",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "slides",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Pnwe5B1YUnM": {
+   "snippet": {
+    "title": "Atomizer tutorial 0: the machine and how it works",
+    "description": "What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, each followed by the real thing in the lab, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the machine got here.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 The three parts of a run\n0:37 The machine, in 3D\n1:55 The machine, in the lab\n2:37 How it makes powder\n3:34 Making powder, in the lab\n4:26 Bartosz on wetting and particle size\n5:34 Safety, every run\n6:42 How we got here: June to October 2026\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 2 at 24:05: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1445s\nTraining video 3 at 14:33: https://www.youtube.com/watch?v=txH397FGTAU&t=873s\nTraining video 2 at 38:41: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2321s\nTraining video 5 at 42:32: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=2552s\n\nThe real footage shown after each animation, from the recordings:\nThe machine, from the front: https://youtu.be/VFycaxIq0Tc?t=150\nFurnace panel and touchscreen: https://youtu.be/2wMgeI-E7zw?t=215\nThe utilities, at the back: https://youtu.be/2wMgeI-E7zw?t=12\nThe melt, through the lid window: https://youtu.be/TFpU4uqVF9c?t=957\nWater atomizing on the plate: https://youtu.be/dnPs56DPt6I?t=980\nRod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212\nAtomizing high on the plate: https://youtu.be/9kn-HhXCr1o?t=1262\nFull-face respirators, one each: https://youtu.be/58wJ_Khwgyk?t=4427\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "sWx-k8CyCsk": {
+   "snippet": {
+    "title": "Atomizer tutorial 1: before a run",
+    "description": "Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and crucible, the graphite nut threaded on from below through the open chamber door, insulation, thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted in the door before it closes. Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: four things before any heating\n0:35 Step 1: the utilities\n1:26 Step 1, in the lab\n4:10 Step 2: the furnace and the charge\n6:12 Step 2, in the lab\n10:07 Step 3: the chamber and the container\n10:42 Step 3, in the lab\n11:51 Step 4: the ultrasonic stack, and closing the door\n13:15 Step 4, in the lab\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 1 at 1:26: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=86s\nTraining video 1 at 2:12: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=132s\nTraining video 1 at 45:54: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2754s\nTraining video 1 at 46:33: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=2793s\nTraining video 4 at 1:40: https://www.youtube.com/watch?v=1F9_4ccwhss&t=100s\nTraining video 5 at 2:38: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=158s\nTraining video 5 at 3:44: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=224s\nTraining video 5 at 6:59: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=419s\nTraining video 5 at 13:25: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=805s\nTraining video 5 at 22:12: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=1332s\n\nThe real footage shown after each animation, from the recordings:\nThe main switch, on the frame: https://youtu.be/2wMgeI-E7zw?t=203\nChilled water: open it a little: https://youtu.be/2wMgeI-E7zw?t=64\nHeat exchanger on: https://youtu.be/2wMgeI-E7zw?t=126\nCompressed air on: https://youtu.be/qYyT39D5Yzo?t=44\nThe argon regulator: https://youtu.be/DWH1CEygsTI?t=355\nThe startup checklist: https://youtu.be/qYyT39D5Yzo?t=86\nTeardown: thermocouple out first: https://youtu.be/wRc8p2_FnJo?t=2150\nCrucible lowered into the coil: https://youtu.be/dnPs56DPt6I?t=168\nGraphite nut on, from below: https://youtu.be/HTlUrAr5HVU?t=146\nInsulation lined up with the port: https://youtu.be/1F9_4ccwhss?t=31\nThermocouple into its hole: https://youtu.be/HTlUrAr5HVU?t=260\nSealing rod in, under the lever: https://youtu.be/dnPs56DPt6I?t=240\nThe charge, wiped with IPA: https://youtu.be/DWH1CEygsTI?t=40\nLid closed and latched: https://youtu.be/1F9_4ccwhss?t=317\nContainer on, clamp finger-tight: https://youtu.be/58wJ_Khwgyk?t=286\nThe catch bowl, in the chamber: https://youtu.be/58wJ_Khwgyk?t=329\nThe transducer, at the door: https://youtu.be/58wJ_Khwgyk?t=397\nBooster on, counter-held: 65 N·m: https://youtu.be/FDRTt68Vfvo?t=2276\nThe sonotrode, threaded on: https://youtu.be/FDRTt68Vfvo?t=2123\nThe stack, into the door housing: https://youtu.be/58wJ_Khwgyk?t=1486\nThe plate on: 50 N·m: https://youtu.be/58wJ_Khwgyk?t=1555\nThe scan, on the touchscreen: https://youtu.be/dnPs56DPt6I?t=338\nWater test: the whole plate atomizes: https://youtu.be/dnPs56DPt6I?t=980\nThe cable connector, locked: https://youtu.be/FDRTt68Vfvo?t=2455\nFrequency check: 40,200 Hz: https://youtu.be/dnPs56DPt6I?t=602\nThe star knobs, tightened: https://youtu.be/dnPs56DPt6I?t=1040\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "1rqkZO2DOhc": {
+   "snippet": {
+    "title": "Atomizer tutorial 2: during a run",
+    "description": "The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about 800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, the same stage in the lab (including three mistakes from Oct 2 and Oct 6), then the trainer explaining it.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: the four stages of a run\n0:22 Step 1: the gas wash\n1:30 Step 1, in the lab\n4:25 Step 2: heat and melt\n5:16 Step 2, in the lab\n7:40 Step 3: the pour\n8:56 Step 3, in the lab\n11:59 Step 4: end the pour\n12:18 Step 4, in the lab\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 9 at 3:25: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=205s\nTraining video 9 at 8:36: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=516s\nTraining video 5 at 36:10: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=2170s\nTraining video 9 at 13:30: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=810s\nTraining video 4 at 4:42: https://www.youtube.com/watch?v=1F9_4ccwhss&t=282s\nTraining video 5 at 57:22: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3442s\nTraining video 5 at 59:52: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3592s\nTraining video 2 at 23:28: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1408s\nTraining video 5 at 1:03:58: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3838s\nTraining video 9 at 24:40: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=1480s\nTraining video 2 at 32:02: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1922s\n\nThe real footage shown after each animation, from the recordings:\nPressure control off, pump on: https://youtu.be/9kn-HhXCr1o?t=184\nThe furnace gas wash, started: https://youtu.be/58wJ_Khwgyk?t=2030\nThe last cycle, at −0.76 bar: https://youtu.be/58wJ_Khwgyk?t=2255\nOxygen after the fill: 19 ppm: https://youtu.be/DWH1CEygsTI?t=1255\nChamber wash: pump on, valve open: https://youtu.be/58wJ_Khwgyk?t=2293\nGenerator on, setpoint 250 °C: https://youtu.be/9kn-HhXCr1o?t=149\nThe next wash, at 500 °C: https://youtu.be/9kn-HhXCr1o?t=373\nPressure control back on: https://youtu.be/9kn-HhXCr1o?t=94\nOvershoot, to drop the rods: https://youtu.be/58wJ_Khwgyk?t=3170\nThe charge, glowing: https://youtu.be/DWH1CEygsTI?t=1417\nSetpoint down as it melts: https://youtu.be/txH397FGTAU?t=2313\nThe pool: wait two minutes: https://youtu.be/DWH1CEygsTI?t=1628\nRescan: 40,185 Hz: https://youtu.be/DWH1CEygsTI?t=1710\nThe pour sequence, on the touchscreen: https://youtu.be/naePD8o9_Gk?t=1152\nAmplitude set to about 90: https://youtu.be/of5-LhkX_VQ?t=1500\nRod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212\nHot plate: atomizing high on it: https://youtu.be/9kn-HhXCr1o?t=1262\nStack too high: stream on the sonotrode: https://youtu.be/DWH1CEygsTI?t=1833\nThe same mistake, explained: https://youtu.be/DWH1CEygsTI?t=1955\nMelt gathers at the bottom, drips: https://youtu.be/9kn-HhXCr1o?t=1271\nPressure too high: little atomized: https://youtu.be/of5-LhkX_VQ?t=1608\nAt the window as the pour ends: https://youtu.be/txH397FGTAU?t=2686\nTurbo, then the stop sequence: https://youtu.be/58wJ_Khwgyk?t=3732\nIt's over: stop the vibration: https://youtu.be/9kn-HhXCr1o?t=1299\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "UqYrbrsJSsU": {
+   "snippet": {
+    "title": "Atomizer tutorial 3: after a run",
+    "description": "Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber (only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a material change, one plate per alloy). Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it. It ends with the lessons from the team's first run on its own, Oct 2.\n\nDraft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.\n\nChapters:\n0:00 Outline: four steps after the pour\n0:22 Step 1: the shutdown sequence\n0:39 Step 1, in the lab\n1:18 Step 2: cool down and open the chamber\n1:57 Step 2, in the lab\n2:58 Step 3: collect the powder\n3:20 Step 3, in the lab\n4:31 Step 4: clean and maintain\n5:51 Step 4, in the lab\n8:08 Lessons from the first run on our own\n\nBartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:\nTraining video 2 at 31:31: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1891s\nTraining video 2 at 38:40: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2320s\nTraining video 2 at 38:59: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2339s\nTraining video 6 at 0:00: https://www.youtube.com/watch?v=tfb4fsVNIFI&t=0s\nTraining video 2 at 53:39: https://www.youtube.com/watch?v=naePD8o9_Gk&t=3219s\nTraining video 2 at 50:51: https://www.youtube.com/watch?v=naePD8o9_Gk&t=3051s\nTraining video 5 at 1:07:37: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=4057s\nTraining video 7 at 17:51: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1071s\nTraining video 7 at 18:16: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1096s\nTraining video 1 at 8:50: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=530s\n\nThe real footage shown after each animation, from the recordings:\nPour over: rod down, generator off: https://youtu.be/TFpU4uqVF9c?t=1228\nSetpoint down to 250 °C: https://youtu.be/of5-LhkX_VQ?t=1679\nDoor open, the plate on it: https://youtu.be/Pk0K5sBz-sQ?t=260\nPowder brushed into the chamber: https://youtu.be/naePD8o9_Gk?t=2620\nPowder brushed out onto paper: https://youtu.be/naePD8o9_Gk?t=3305\nSeal and chamber, wiped with alcohol: https://youtu.be/1F9_4ccwhss?t=412\nSealing rod out, insulation lifted: https://youtu.be/wRc8p2_FnJo?t=2184\nThe nut, unscrewed from below: https://youtu.be/wRc8p2_FnJo?t=2247\nDrilling a nozzle: #70 bit: https://youtu.be/LSQmxwmlTkQ?t=0\nThe O-ring seal, wiped with isopropanol: https://youtu.be/FDRTt68Vfvo?t=3142\nOct 2: which plate is which?: https://youtu.be/qYyT39D5Yzo?t=146\nOct 2: pressure too high, plate far: https://youtu.be/of5-LhkX_VQ?t=1644\n\nOn GitHub (vertical-cloud-lab/byu-vcl):\nHow the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/tutorials/README.md\nOperating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/sop.md\nThe 3D model and step animations: https://github.com/vertical-cloud-lab/byu-vcl/blob/4ba560e/atomizer-training/viz3d/README.md\nEverything: SOP, timestamp log, transcripts, 3D animations, tutorials: https://github.com/vertical-cloud-lab/byu-vcl/tree/4ba560e/atomizer-training\nDiscussion: https://github.com/vertical-cloud-lab/byu-vcl/pull/255\n\nPlaylist, with the tutorials and every recording in order: https://www.youtube.com/playlist?list=PLB8wxmcPAjLM",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en-US"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "j9QcpcG8EVI": {
+   "snippet": {
+    "title": "Atomizer slide clip: from loading to powder in 44 seconds (draft 2)",
+    "description": "A whole run in one condensed take, for a slide: the graphite crucible into the induction coil, the sealing rod and the charge, the ultrasonic stack into the chamber door, then melting under argon, the coil's pulses stirring the melt up the sealing rod, and pouring onto the vibrating plate, which atomizes the melt into powder.\n\nFor slides: one short caption at a time (at most 6 words, each up at least 4 s) and a short spoken line for each. Condensed: the fasteners (holder, nut, thermocouple, lever, booster, sonotrode, plate, cover and bolts) are sped up, and the checks, gas washes and holds are left out. Each move is followed by a short pause, and the furnace, the stack and the run are a longer pause apart. The parts follow the same paths, in the same order, as in the full step animations. Draft for review.\n\n0:00 Graphite crucible into the induction coil\n0:07 Fastened below, then insulated\n0:12 Sealing rod in, then the metal\n0:19 Ultrasonic stack mounts in the door\n0:27 Argon fill, induction melting and stirring\n0:34 Melt pours onto the vibrating plate\n0:39 Droplets freeze into metal powder\n\n3D model in CadQuery, rendered with PyVista, built from the training videos and AMAZEMET's documents; parts move along their real assembly paths. Narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x.\n\nThe whole steps, with Bartosz Kalicki (AMAZEMET) explaining them:\nAtomizer tutorial 1, before a run: https://www.youtube.com/watch?v=xpkbazHT_7M\nAtomizer tutorial 2, during a run: https://www.youtube.com/watch?v=Jex6lDcERUM\n\nScript and timing: https://github.com/vertical-cloud-lab/byu-vcl/blob/217f886/atomizer-training/ppt/script.md\nCaptions: https://github.com/vertical-cloud-lab/byu-vcl/blob/217f886/atomizer-training/ppt/captions.py\nSOP: https://github.com/vertical-cloud-lab/byu-vcl/blob/217f886/atomizer-training/sop.md\nPull request: https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "animation",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "slides",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "8lBR11fgznI": {
+   "snippet": {
+    "title": "Atomizer slide clip: the ultrasonic stack and the door (draft 1)",
+    "description": "The ultrasonic-stack step of tutorial 1, cut for a slide: transducer, booster and sonotrode with their torques, into the door, the plate, the scan and wet test, the cover, then the door shut and bolted.\n\nFor slides: one short caption at a time (at most 6 words, each up at least 4 s), a short spoken line for each, and the animation at its own speed. Draft for review.\n\n0:00 The stack: transducer first\n0:05 Booster on: 65 N·m\n0:09 Sonotrode on: 60 N·m\n0:14 Slide it into the door\n0:18 Plate on: 50 N·m\n0:22 Scan: one peak near 40 kHz\n0:27 Wet test: whole plate atomizes\n0:31 Cover on, cable, cooling air\n0:36 Swing the door shut\n0:40 Three bolts, star knobs tight\n\n3D model in CadQuery, rendered with PyVista, built from the training videos and AMAZEMET's documents; parts move along their real assembly paths. Narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x.\n\nThe whole step, with Bartosz Kalicki (AMAZEMET) explaining it: Atomizer tutorial 1, before a run: https://www.youtube.com/watch?v=xpkbazHT_7M\n\nScript and timing: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/ppt/script.md\nCaptions: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/ppt/captions.py\nSOP: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/sop.md\nPull request: https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "animation",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "slides",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "21oFnNmzd3E": {
+   "snippet": {
+    "title": "Atomizer slide clip: the pour (draft 1)",
+    "description": "The pour step of tutorial 2, cut for a slide: the melt held near 800 °C, the vibration on and the furnace pressure raised above the chamber's, the sealing rod lifted, a turbo push to heat the plate, then every drop atomizing and the powder running down into the container.\n\nFor slides: one short caption at a time (at most 6 words, each up at least 4 s) and a short spoken line for each. The animation runs at its own speed. Draft for review.\n\n0:00 Melt held near 800 °C\n0:05 Vibration on, then furnace pressure up\n0:11 Sealing rod up: melt pours\n0:15 Turbo push heats the plate\n0:19 Hot plate: every drop atomizes\n0:26 Powder runs into the container\n0:33 The pour lasts 2–3 minutes\n0:40 Crucible empty: the pour ends\n\n3D model in CadQuery, rendered with PyVista, built from the training videos and AMAZEMET's documents; parts move along their real assembly paths. Narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x.\n\nThe whole step, with Bartosz Kalicki (AMAZEMET) explaining it:\nAtomizer tutorial 2, during a run: https://www.youtube.com/watch?v=Jex6lDcERUM\n\nScript and timing: https://github.com/vertical-cloud-lab/byu-vcl/blob/f36eefb/atomizer-training/ppt/script.md\nCaptions: https://github.com/vertical-cloud-lab/byu-vcl/blob/f36eefb/atomizer-training/ppt/captions.py\nSOP: https://github.com/vertical-cloud-lab/byu-vcl/blob/f36eefb/atomizer-training/sop.md\nPull request: https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "animation",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "slides",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "86K-EHhtPp8": {
+   "snippet": {
+    "title": "Atomizer slide clip: loading the furnace (draft 1)",
+    "description": "The furnace step of tutorial 1, cut for a slide: the lid and lever, the crucible into the coil, the graphite nut from below, insulation, thermocouple, sealing rod, the charge and the lid.\n\nFor slides: one short caption at a time (at most 6 words, each up at least 4 s), a short spoken line for each, and the animation at its own speed. Draft for review.\n\n0:00 Open the lid, lever up\n0:06 Screw the holder into the crucible\n0:13 Lower the crucible into the coil\n0:21 Door open, nut on from below\n0:26 Snug, never forced\n0:31 Side and top insulation\n0:37 Thermocouple in, back right\n0:41 Sealing rod in, before metal\n0:46 Lever down, safety pin in\n0:51 Charge: 250–300 g of rods\n0:57 Close the lid\n\n3D model in CadQuery, rendered with PyVista, built from the training videos and AMAZEMET's documents; parts move along their real assembly paths. Narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x.\n\nThe whole step, with Bartosz Kalicki (AMAZEMET) explaining it: Atomizer tutorial 1, before a run: https://www.youtube.com/watch?v=xpkbazHT_7M\n\nScript and timing: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/ppt/script.md\nCaptions: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/ppt/captions.py\nSOP: https://github.com/vertical-cloud-lab/byu-vcl/blob/963edd1/atomizer-training/sop.md\nPull request: https://github.com/vertical-cloud-lab/byu-vcl/pull/255",
+    "tags": [
+     "AMAZEMET",
+     "BYU Vertical Cloud Lab",
+     "animation",
+     "atomizer",
+     "metal powder",
+     "rePowder",
+     "slides",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  }
+ }
+}

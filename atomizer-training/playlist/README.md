@@ -50,12 +50,18 @@ the keyframe pages use the new titles too.
 - **Four rebuilt slide clips** were uploaded (the whole run, the stack, the pour, the furnace; see
   [`../ppt/README.md`](../ppt/README.md)). The four they replace joined `SUPERSEDED`, and the 33 s draft now points at
   the new summary. The slide clips are still in neither playlist.
-- **Every superseded upload is now private** (26: tutorial drafts 1–5, the first cups upload and five slide clips), as
-  asked on 2026-10-07: private and titled `[superseded] …` rather than deleted. `apply` does this for anything in
-  `SUPERSEDED`, carrying over the rest of each video's status.
-- **Oct 6 video 1 (`VFycaxIq0Tc`) was already private** when this run started; it was not changed here.
-- **Undo**: `python sync.py restore backup-2026-10-07-b.json [id ...]` ([`backup-2026-10-07-b.json`](backup-2026-10-07-b.json), taken just before). `restore` now puts back
-  each video's privacy as well as its title, description and tags.
+- **Every superseded upload is now private** (27: tutorial drafts 1–5, the first cups upload, five slide clips and the
+  first upload of Oct 6 video 1), as asked on 2026-10-07: private and titled `[superseded] …` rather than deleted.
+  `apply` does this for anything in `SUPERSEDED`, carrying over the rest of each video's status.
+- **Oct 6 video 1 had been re-uploaded** by the time this run started: the first upload (`VFycaxIq0Tc`) was private and
+  out of both playlists, and the re-upload (`2sNAJX89b6s`, same length, title and description) was public and in
+  them. The catalog now names the re-upload (with `source_id` pointing its notes and transcript links at the first
+  upload's files), and the first upload is in `SUPERSEDED`. The first `apply` of this pass, before the catalog knew,
+  put `VFycaxIq0Tc` back into both playlists; the second took it out again and put the re-upload in its place.
+- **Undo**: `python sync.py restore backup-2026-10-07-b.json [id ...]`
+  ([`backup-2026-10-07-b.json`](backup-2026-10-07-b.json), taken just before). `restore` now puts back each video's
+  privacy as well as its title, description and tags. The re-upload `2sNAJX89b6s` is not in it, since the catalog
+  only learned of it afterwards; its description before this pass was a copy of the first upload's.
 
 **2026-10-07, later** (`@claude-youtube` on PR #255, with Tailscale this time):
 
@@ -118,7 +124,7 @@ python sync.py apply --ref <sha>    # update the videos, then create / fill / re
 
 ## Still open
 
-- **The 26 superseded uploads are private, not deleted** (since 2026-10-07). Deleting any of them would need the
+- **The 27 superseded uploads are private, not deleted** (since 2026-10-07). Deleting any of them would need the
   user's go-ahead: it cannot be undone. Their ids are in `SUPERSEDED` in `catalog.py`.
 - **The playlist is unlisted.** Anyone who opens a public playlist can watch the unlisted videos in it, so making it
   public would expose the unlisted videos here too (16 of the 37 are public after 2026-10-07). Check *dosing Al 4047 with Claude* (`dXRB7c6GeDw`) first: a

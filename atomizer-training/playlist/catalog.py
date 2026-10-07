@@ -53,7 +53,10 @@ REAL_INTRO = "The real footage shown after each animation, from the recordings:"
 def real(key):
     """[(video id, seconds, label)] of the real-footage picks tutorial `key` shows (drafts 5 and 6), in order (REAL in
     ../tutorials/scripts.py), for its description."""
-    return [(r[1], r[2], r[4]) for g in _REAL[key].values() for r in g]
+    return [(REUPLOADED.get(r[1], r[1]), r[2], r[4]) for g in _REAL[key].values() for r in g]
+
+
+REUPLOADED = {"VFycaxIq0Tc": "2sNAJX89b6s"}     # first upload -> its re-upload (same length), for description links
 
 
 DRAFT6 = ("Draft 6, for review on GitHub (PR #255). The 3D animations now show the ultrasonic stack as the training "
@@ -255,7 +258,9 @@ RUN_OCT6 = [("The run, checked against the daily SOP and the room stream; what t
             ("Daily run SOP (Gage Erickson)", "daily-sop.md")]
 PARAMS_261 = [("Run parameters (issue #261)", "https://github.com/vertical-cloud-lab/byu-vcl/issues/261")]
 OCT6 = [
-    {"id": "VFycaxIq0Tc", "kind": "recording", "cite": "OCT6a",
+    # Re-uploaded on 2026-10-07 as 2sNAJX89b6s (same length, title and description); the first upload, VFycaxIq0Tc, was
+    # made private and taken out of both playlists. The notes, transcript and timestamp log still cite VFycaxIq0Tc.
+    {"id": "2sNAJX89b6s", "source_id": "VFycaxIq0Tc", "kind": "recording", "cite": "OCT6a",
      "was": "Oct 6 atomizer run, video 1",
      "title": "10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)",
      "summary": "Gage Erickson introduces Paul, who is joining the team, to the lab and to his part of the daily run SOP. "
@@ -308,7 +313,7 @@ OCT6 = [
 RUNS = {
     "title": "Atomizer Runs",
     "privacy": "unlisted",
-    "ids": ["qYyT39D5Yzo", "of5-LhkX_VQ", "VFycaxIq0Tc", "dnPs56DPt6I", "DWH1CEygsTI"],
+    "ids": ["qYyT39D5Yzo", "of5-LhkX_VQ", "2sNAJX89b6s", "dnPs56DPt6I", "DWH1CEygsTI"],
     "description": (
         "The BYU Vertical Cloud Lab team's own runs of the AMAZEMET rePowder ultrasonic atomizer, oldest first, from the "
         "first one without the trainer (Oct 2 2026). Run videos are titled \"Month/Day/Year Atomizer Run Video #\", as the "
@@ -797,4 +802,5 @@ SUPERSEDED = [
     {"id": "8lBR11fgznI", "by": "6LTmL_qm2Eo", "why": "This is draft 1 of the slide clip of the ultrasonic stack. It showed the ultrasonic stack wrongly assembled, with the plate's centre on a stud at the end of the stack; draft 2, linked above, shows it as the training does: the connector, the plate hung by its hole near one end, and the tungsten upper sonotrode. Review: https://github.com/vertical-cloud-lab/byu-vcl/pull/255.", "was": "Atomizer slide clip: the ultrasonic stack and the door (draft 1)", "title": "[superseded] Atomizer slide clip: the ultrasonic stack and the door (draft 1)"},
     {"id": "21oFnNmzd3E", "by": "JAXKQTDq2zg", "why": "This is draft 1 of the slide clip of the pour. It showed the ultrasonic stack wrongly assembled, with the plate's centre on a stud at the end of the stack; draft 2, linked above, shows it as the training does: the connector, the plate hung by its hole near one end, and the tungsten upper sonotrode. Review: https://github.com/vertical-cloud-lab/byu-vcl/pull/255.", "was": "Atomizer slide clip: the pour (draft 1)", "title": "[superseded] Atomizer slide clip: the pour (draft 1)"},
     {"id": "86K-EHhtPp8", "by": "u4MORr_PZbI", "why": "This is draft 1 of the slide clip of loading the furnace. Draft 2, linked above, puts the stack's housing in the chamber door where the rebuilt ultrasonic stack needs it. Review: https://github.com/vertical-cloud-lab/byu-vcl/pull/255.", "was": "Atomizer slide clip: loading the furnace (draft 1)", "title": "[superseded] Atomizer slide clip: loading the furnace (draft 1)"},
+    {"id": "VFycaxIq0Tc", "by": "2sNAJX89b6s", "why": "This is the first upload of Oct 6 video 1. On 2026-10-07 it was made private and re-uploaded as the video linked above, at the same length; the notes, transcript and timestamp log on GitHub still cite this id, at the same times.", "was": "10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)", "title": "[superseded] 10/6/2026 Atomizer Run Video 1 (first upload)"},
 ]
