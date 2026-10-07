@@ -316,6 +316,17 @@ The ± is whether the 2.25" was measured to the drill tip or to full diameter.
   which loads the .060" wall to about its 110 MPa yield in compression. A 1/4" plug needs 0.3–0.6 t. The same
   arithmetic puts the as-made 9/16" plug near yield at .0008" too (1.8–2.3 t on the .120" wall), so aim for .0005".
 
+**Machining doesn't move the composition** (Edison, 2026-10-07: [machining](../outputs/issue-222-machining-contamination/literature_machining_answer.md),
+[cleaning](../outputs/issue-222-machining-contamination/literature_cleaning_answer.md)). A 1 mg steel chip in a 200 g
+run is 5 ppm Fe, against 3500 ppm allowed in 6063. Oil left after wiping is about 1 mg per cup, and most of it boils
+off during pump-down. The native oxide on the cups is ~1 ppm O per run, against 400–700 ppm in the powder itself. What
+can matter is discrete: abrasive grit, steel or brass swarf, dried coolant, and oil pooled at the bottom of the blind
+bore. An IPA wipe handles the outside, but IPA doesn't dissolve mineral oil and a Kimwipe doesn't reach the bottom of
+the bore. So: cut dry or with light oil only, with no water-soluble coolant or tapping fluid, on a lathe brushed free
+of steel and brass chips. Use no emery, files or Scotch-Brite. Flush the bore with 99 % IPA from the wash bottle,
+swab it, and flush again, with acetone first if oil was used. Dry the cups at 80 °C for 30 min before filling. EDS
+can't see any of this. LECO O/C/H on the powder can.
+
 ## Measure before machining
 
 The crucible is reachable now: Bartosz: "if you move the foam out you can see the crucible" (9/17 call, 20:12). Wear
