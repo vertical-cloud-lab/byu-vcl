@@ -5,7 +5,12 @@ him talking, or the touchscreen, rather than the work. This is the cut list for 
 a few seconds of the real action from the tables below, then the explanation clip draft 4 already has. The picks go
 through the clip path [`build_tutorials.py`](build_tutorials.py) already has: 720p windows fetched on the stream-cam Pi
 with [`../tools/hls_sections.py`](../tools/hls_sections.py), two-pass `vidstab` zoomed in by at most 10 %, and the label
-bar drawn after it. Nothing is fetched or rendered yet: this session had no Pi access.
+bar drawn after it.
+
+**Built into draft 5** (2026-10-07): every first pick and the three "what goes wrong" picks, 70 in all, are `R(...)`
+entries in `REAL` in [`scripts.py`](scripts.py), with a caption of at most six words each. The *(alt)* rows are not used.
+A pick longer than 17 s plays its middle 14 s; the catch bowl plays 5:29–5:43, so that the bowl is in frame. See the
+[README](README.md#how-each-tutorial-is-put-together).
 
 ## Reading the tables
 

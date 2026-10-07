@@ -63,6 +63,9 @@ with the training detail from #222 and the powder bags from #249.
    narration (step boxes first, then each step's details as it is named), then for each step:
    - the outline with that step highlighted;
    - its 3D animation, narrated sentence by sentence by Microsoft Edge TTS `en-US-AndrewMultilingualNeural` at 1×;
+   - since draft 5, the same step in the lab: for each sub-step of the animation, the moment of real footage that shows
+     it ([`tutorials/real-footage.md`](tutorials/real-footage.md)), from the training days, Oct 2 and Oct 6, labelled
+     *in the lab* or, for three mistakes, *what goes wrong*;
    - the trainer's own explanation, cut from the training videos.
 
    Clips are cut from the 720p sources on sentence boundaries found by word-timed Whisper, stabilised with `vidstab` (zooming

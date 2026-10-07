@@ -10,7 +10,7 @@ unlisted · 37 videos
 The AMAZEMET rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab: its delivery and installation, two days of training with Bartosz Kalicki of AMAZEMET (Sep 29–30 2026), preparing the charges, and the team's own runs since Oct 2 2026.
 
 In order:
-1–4. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 4, under review)
+1–4. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 5, under review)
 5. Tutorial: making the aluminum cups and plugs that carry powder into the furnace
 6–7. Every recorded step in the order of a run: one raw cut of all the recordings, 6 h 49 min, with chapters
 8–37. The recordings themselves, in the order they were made: delivery and installation (Jun–Sep), commissioning (Sep 28), training day 1 (Sep 29), training day 2 (Sep 30), dosing the next charge (Sep 30), the first run on our own (Oct 2) and the run of Oct 6
@@ -37,26 +37,38 @@ Installation, training and tutorials, all in order: https://www.youtube.com/play
 
 ## 1. Atomizer tutorial 0: the machine and how it works
 
-[`-yxOIJfhs80`](https://www.youtube.com/watch?v=-yxOIJfhs80) · was *Atomizer tutorial 0: the machine and how it works (draft 4)*
+[`-yxOIJfhs80`](https://www.youtube.com/watch?v=-yxOIJfhs80) · was *Atomizer tutorial 0: the machine and how it works (draft 5)*
 
 ```
-What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the machine got here.
+What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, each followed by the real thing in the lab, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the machine got here.
 
-Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
+Draft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
 
 Chapters:
 0:00 The three parts of a run
 0:37 The machine, in 3D
-1:55 How it makes powder
-2:52 Bartosz on wetting and particle size
-4:01 Safety, every run
-4:54 How we got here: June to October 2026
+1:55 The machine, in the lab
+2:37 How it makes powder
+3:34 Making powder, in the lab
+4:26 Bartosz on wetting and particle size
+5:34 Safety, every run
+6:42 How we got here: June to October 2026
 
 Bartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:
 Training video 2 at 24:05: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1445s
 Training video 3 at 14:33: https://www.youtube.com/watch?v=txH397FGTAU&t=873s
 Training video 2 at 38:41: https://www.youtube.com/watch?v=naePD8o9_Gk&t=2321s
 Training video 5 at 42:32: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=2552s
+
+The real footage shown after each animation, from the recordings:
+The machine, from the front: https://youtu.be/VFycaxIq0Tc?t=150
+Furnace panel and touchscreen: https://youtu.be/2wMgeI-E7zw?t=215
+The utilities, at the back: https://youtu.be/2wMgeI-E7zw?t=12
+The melt, through the lid window: https://youtu.be/TFpU4uqVF9c?t=957
+Water atomizing on the plate: https://youtu.be/dnPs56DPt6I?t=980
+Rod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212
+Atomizing high on the plate: https://youtu.be/9kn-HhXCr1o?t=1262
+Full-face respirators, one each: https://youtu.be/58wJ_Khwgyk?t=4427
 
 On GitHub (vertical-cloud-lab/byu-vcl):
 How the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/tutorials/README.md
@@ -70,19 +82,23 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 2. Atomizer tutorial 1: before a run
 
-[`xpkbazHT_7M`](https://www.youtube.com/watch?v=xpkbazHT_7M) · was *Atomizer tutorial 1: before a run (draft 4)*
+[`xpkbazHT_7M`](https://www.youtube.com/watch?v=xpkbazHT_7M) · was *Atomizer tutorial 1: before a run (draft 5)*
 
 ```
-Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and crucible, the graphite nut threaded on from below through the open chamber door, insulation, thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted in the door before it closes. Each step: the outline, a narrated 3D animation, then the trainer explaining it.
+Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and crucible, the graphite nut threaded on from below through the open chamber door, insulation, thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted in the door before it closes. Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it.
 
-Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
+Draft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
 
 Chapters:
 0:00 Outline: four things before any heating
 0:35 Step 1: the utilities
-2:48 Step 2: the furnace and the charge
-6:52 Step 3: the chamber and the container
-8:11 Step 4: the ultrasonic stack, and closing the door
+1:26 Step 1, in the lab
+4:10 Step 2: the furnace and the charge
+6:12 Step 2, in the lab
+10:07 Step 3: the chamber and the container
+10:42 Step 3, in the lab
+11:51 Step 4: the ultrasonic stack, and closing the door
+13:15 Step 4, in the lab
 
 Bartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:
 Training video 1 at 1:26: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=86s
@@ -96,6 +112,34 @@ Training video 5 at 6:59: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=419s
 Training video 5 at 13:25: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=805s
 Training video 5 at 22:12: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=1332s
 
+The real footage shown after each animation, from the recordings:
+The main switch, on the frame: https://youtu.be/2wMgeI-E7zw?t=203
+Chilled water: open it a little: https://youtu.be/2wMgeI-E7zw?t=64
+Heat exchanger on: https://youtu.be/2wMgeI-E7zw?t=126
+Compressed air on: https://youtu.be/qYyT39D5Yzo?t=44
+The argon regulator: https://youtu.be/DWH1CEygsTI?t=355
+The startup checklist: https://youtu.be/qYyT39D5Yzo?t=86
+Teardown: thermocouple out first: https://youtu.be/wRc8p2_FnJo?t=2150
+Crucible lowered into the coil: https://youtu.be/dnPs56DPt6I?t=168
+Graphite nut on, from below: https://youtu.be/HTlUrAr5HVU?t=146
+Insulation lined up with the port: https://youtu.be/1F9_4ccwhss?t=31
+Thermocouple into its hole: https://youtu.be/HTlUrAr5HVU?t=260
+Sealing rod in, under the lever: https://youtu.be/dnPs56DPt6I?t=240
+The charge, wiped with IPA: https://youtu.be/DWH1CEygsTI?t=40
+Lid closed and latched: https://youtu.be/1F9_4ccwhss?t=317
+Container on, clamp finger-tight: https://youtu.be/58wJ_Khwgyk?t=286
+The catch bowl, in the chamber: https://youtu.be/58wJ_Khwgyk?t=329
+The transducer, at the door: https://youtu.be/58wJ_Khwgyk?t=397
+Booster on, counter-held: 65 N·m: https://youtu.be/FDRTt68Vfvo?t=2276
+The sonotrode, threaded on: https://youtu.be/FDRTt68Vfvo?t=2123
+The stack, into the door housing: https://youtu.be/58wJ_Khwgyk?t=1486
+The plate on: 50 N·m: https://youtu.be/58wJ_Khwgyk?t=1555
+The scan, on the touchscreen: https://youtu.be/dnPs56DPt6I?t=338
+Water test: the whole plate atomizes: https://youtu.be/dnPs56DPt6I?t=980
+The cable connector, locked: https://youtu.be/FDRTt68Vfvo?t=2455
+Frequency check: 40,200 Hz: https://youtu.be/dnPs56DPt6I?t=602
+The star knobs, tightened: https://youtu.be/dnPs56DPt6I?t=1040
+
 On GitHub (vertical-cloud-lab/byu-vcl):
 How the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/tutorials/README.md
 Operating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/sop.md
@@ -108,19 +152,23 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 3. Atomizer tutorial 2: during a run
 
-[`Jex6lDcERUM`](https://www.youtube.com/watch?v=Jex6lDcERUM) · was *Atomizer tutorial 2: during a run (draft 4)*
+[`Jex6lDcERUM`](https://www.youtube.com/watch?v=Jex6lDcERUM) · was *Atomizer tutorial 2: during a run (draft 5)*
 
 ```
-The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about 800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, then the trainer explaining it.
+The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about 800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, the same stage in the lab (including three mistakes from Oct 2 and Oct 6), then the trainer explaining it.
 
-Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
+Draft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
 
 Chapters:
 0:00 Outline: the four stages of a run
-0:23 Step 1: the gas wash
-2:33 Step 2: heat and melt
-4:37 Step 3: the pour
-6:57 Step 4: end the pour
+0:22 Step 1: the gas wash
+1:30 Step 1, in the lab
+4:25 Step 2: heat and melt
+5:16 Step 2, in the lab
+7:40 Step 3: the pour
+8:56 Step 3, in the lab
+11:59 Step 4: end the pour
+12:18 Step 4, in the lab
 
 Bartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:
 Training video 9 at 3:25: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=205s
@@ -135,6 +183,32 @@ Training video 5 at 1:03:58: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=3838s
 Training video 9 at 24:40: https://www.youtube.com/watch?v=9kn-HhXCr1o&t=1480s
 Training video 2 at 32:02: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1922s
 
+The real footage shown after each animation, from the recordings:
+Pressure control off, pump on: https://youtu.be/9kn-HhXCr1o?t=184
+The furnace gas wash, started: https://youtu.be/58wJ_Khwgyk?t=2030
+The last cycle, at −0.76 bar: https://youtu.be/58wJ_Khwgyk?t=2255
+Oxygen after the fill: 19 ppm: https://youtu.be/DWH1CEygsTI?t=1255
+Chamber wash: pump on, valve open: https://youtu.be/58wJ_Khwgyk?t=2293
+Generator on, setpoint 250 °C: https://youtu.be/9kn-HhXCr1o?t=149
+The next wash, at 500 °C: https://youtu.be/9kn-HhXCr1o?t=373
+Pressure control back on: https://youtu.be/9kn-HhXCr1o?t=94
+Overshoot, to drop the rods: https://youtu.be/58wJ_Khwgyk?t=3170
+The charge, glowing: https://youtu.be/DWH1CEygsTI?t=1417
+Setpoint down as it melts: https://youtu.be/txH397FGTAU?t=2313
+The pool: wait two minutes: https://youtu.be/DWH1CEygsTI?t=1628
+Rescan: 40,185 Hz: https://youtu.be/DWH1CEygsTI?t=1710
+The pour sequence, on the touchscreen: https://youtu.be/naePD8o9_Gk?t=1152
+Amplitude set to about 90: https://youtu.be/of5-LhkX_VQ?t=1500
+Rod up: the stream hits the plate: https://youtu.be/9kn-HhXCr1o?t=1212
+Hot plate: atomizing high on it: https://youtu.be/9kn-HhXCr1o?t=1262
+Stack too high: stream on the sonotrode: https://youtu.be/DWH1CEygsTI?t=1833
+The same mistake, explained: https://youtu.be/DWH1CEygsTI?t=1955
+Melt gathers at the bottom, drips: https://youtu.be/9kn-HhXCr1o?t=1271
+Pressure too high: little atomized: https://youtu.be/of5-LhkX_VQ?t=1608
+At the window as the pour ends: https://youtu.be/txH397FGTAU?t=2686
+Turbo, then the stop sequence: https://youtu.be/58wJ_Khwgyk?t=3732
+It's over: stop the vibration: https://youtu.be/9kn-HhXCr1o?t=1299
+
 On GitHub (vertical-cloud-lab/byu-vcl):
 How the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/tutorials/README.md
 Operating procedure (SOP), each step linked to the moment of video it comes from: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/sop.md
@@ -147,20 +221,24 @@ Playlist, with the tutorials and every recording in order: https://www.youtube.c
 
 ## 4. Atomizer tutorial 3: after a run
 
-[`VWa33SEvFJw`](https://www.youtube.com/watch?v=VWa33SEvFJw) · was *Atomizer tutorial 3: after a run (draft 4)*
+[`VWa33SEvFJw`](https://www.youtube.com/watch?v=VWa33SEvFJw) · was *Atomizer tutorial 3: after a run (draft 5)*
 
 ```
-Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber (only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a material change, one plate per alloy). It ends with the lessons from the team's first run on its own, Oct 2.
+Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber (only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a material change, one plate per alloy). Each step: the outline, a narrated 3D animation, the same step in the lab, then the trainer explaining it. It ends with the lessons from the team's first run on its own, Oct 2.
 
-Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
+Draft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.
 
 Chapters:
 0:00 Outline: four steps after the pour
 0:22 Step 1: the shutdown sequence
-1:04 Step 2: cool down and open the chamber
-2:01 Step 3: collect the powder
-3:18 Step 4: clean and maintain
-5:46 Lessons from the first run on our own
+0:39 Step 1, in the lab
+1:18 Step 2: cool down and open the chamber
+1:57 Step 2, in the lab
+2:58 Step 3: collect the powder
+3:20 Step 3, in the lab
+4:31 Step 4: clean and maintain
+5:51 Step 4, in the lab
+8:08 Lessons from the first run on our own
 
 Bartosz Kalicki (AMAZEMET) in his own words, cut from the training recordings:
 Training video 2 at 31:31: https://www.youtube.com/watch?v=naePD8o9_Gk&t=1891s
@@ -173,6 +251,20 @@ Training video 5 at 1:07:37: https://www.youtube.com/watch?v=58wJ_Khwgyk&t=4057s
 Training video 7 at 17:51: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1071s
 Training video 7 at 18:16: https://www.youtube.com/watch?v=FDRTt68Vfvo&t=1096s
 Training video 1 at 8:50: https://www.youtube.com/watch?v=wRc8p2_FnJo&t=530s
+
+The real footage shown after each animation, from the recordings:
+Pour over: rod down, generator off: https://youtu.be/TFpU4uqVF9c?t=1228
+Setpoint down to 250 °C: https://youtu.be/of5-LhkX_VQ?t=1679
+Door open, the plate on it: https://youtu.be/Pk0K5sBz-sQ?t=260
+Powder brushed into the chamber: https://youtu.be/naePD8o9_Gk?t=2620
+Powder brushed out onto paper: https://youtu.be/naePD8o9_Gk?t=3305
+Seal and chamber, wiped with alcohol: https://youtu.be/1F9_4ccwhss?t=412
+Sealing rod out, insulation lifted: https://youtu.be/wRc8p2_FnJo?t=2184
+The nut, unscrewed from below: https://youtu.be/wRc8p2_FnJo?t=2247
+Drilling a nozzle: #70 bit: https://youtu.be/LSQmxwmlTkQ?t=0
+The O-ring seal, wiped with isopropanol: https://youtu.be/FDRTt68Vfvo?t=3142
+Oct 2: which plate is which?: https://youtu.be/qYyT39D5Yzo?t=146
+Oct 2: pressure too high, plate far: https://youtu.be/of5-LhkX_VQ?t=1644
 
 On GitHub (vertical-cloud-lab/byu-vcl):
 How the tutorials are made: scripts, outlines, build: https://github.com/vertical-cloud-lab/byu-vcl/blob/c707e74/atomizer-training/tutorials/README.md

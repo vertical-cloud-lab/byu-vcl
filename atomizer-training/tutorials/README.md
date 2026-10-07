@@ -1,10 +1,11 @@
 # Narrated tutorials
 
 Four tutorial videos assembled from the material in this folder, uploaded **unlisted** to the BYU Vertical Cloud Lab
-channel for review. Draft 4 replaces draft 3 after Sterling's review on PR #255: no part of the 3D model passes through
-another any more, tutorial 1 follows the order of a real run (utilities, furnace, chamber, then the ultrasonic stack before
-the door closes), and the cleaning step takes the nut off from below before the crucible comes out. All four sets are listed
-below, since the upload token cannot delete videos.
+channel for review. Draft 5 adds the real thing: after each step's 3D animation, the same step in the lab, cut from the
+recordings (the training days, Oct 2 and Oct 6), stabilized and labelled, before Bartosz explains it. That follows
+Sterling's review on PR #255 ("the walkthrough tutorials would also benefit from real video snippets being shown").
+Draft 4 put no part of the 3D model through another and put tutorial 1 in the order of a real run. All five sets are
+listed below.
 
 ## How each tutorial is put together
 
@@ -17,6 +18,9 @@ Every tutorial has the same shape, so the four read as one series:
    - the outline again, with that step highlighted;
    - the **3D animation** of the step ([`../viz3d/`](../viz3d/README.md)), narrated by Microsoft Edge TTS
      `en-US-AndrewMultilingualNeural` at 1×, with each sentence timed to the sub-step it describes;
+   - **the same step in the lab** (draft 5): for each sub-step of the animation, in its order, the moment of real footage
+     that shows it, from [`real-footage.md`](real-footage.md). A bar on top reads **IN THE LAB** (or **WHAT GOES WRONG**
+     for the three mistakes shown as such), what the clip shows, and the recording and time it comes from;
    - **Bartosz Kalicki (AMAZEMET) explaining it in his own words**, cut from the training videos.
 4. A closing card pointing to the next tutorial.
 
@@ -41,6 +45,17 @@ changes.
 - **Audio.** Clip audio is loudness-matched to the narration, after a light high-pass and denoise.
 - **Portrait phone video** gets a blurred fill instead of black bars.
 - **Label.** A top bar names the speaker, the video and the time, so each moment can be found in [`../timestamps.md`](../timestamps.md).
+
+**The real footage** (`real` segments, draft 5) goes through the same path, with three differences:
+
+- **Length.** A pick plays whole if it is at most 17 s long; a longer one plays its middle 14 s. Either end that falls
+  inside a word moves to the word's edge, and a sentence that ends within 1.5 s is let finish. The words come from the
+  word-timed transcripts in [`../transcripts/whisper/`](../transcripts/whisper/), so no new Whisper run is needed.
+- **Sound.** Each pick keeps its own sound, subtitled from the same words. The two picks real-footage.md marks as
+  chatter (the machine from the front in Oct 6 video 1, and the nozzle on the drill press) are silent.
+- **Stabilization.** As for the clips, but zoomed in by at most 5 % where real-footage.md says the camera rests on one
+  view ("light"). Sources bigger than the frame (the 1080p commissioning video, the portrait phone videos) are scaled
+  down first, so the two `vidstab` passes stay quick.
 
 ## Uploads
 

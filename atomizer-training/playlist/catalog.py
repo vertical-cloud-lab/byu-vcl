@@ -9,6 +9,8 @@ this catalog), summary, optional status, chapters [(seconds, label)] (YouTube ne
 as), and optional tags, category. A recording's title must also be its heading in ../timestamps.md, which
 tools/make_timestamps.py builds from ../videos.json, so the two are kept the same.
 """
+import os
+import sys
 
 TAGS = ["atomizer", "rePowder", "AMAZEMET", "ultrasonic atomization", "metal powder", "BYU Vertical Cloud Lab"]
 
@@ -20,7 +22,7 @@ PLAYLIST = {
         "of training with Bartosz Kalicki of AMAZEMET (Sep 29–30 2026), preparing the charges, and the team's own runs "
         "since Oct 2 2026.\n\n"
         "In order:\n"
-        "{tutorials}. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 4, under review)\n"
+        "{tutorials}. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 5, under review)\n"
         "{cups}. Tutorial: making the aluminum cups and plugs that carry powder into the furnace\n"
         "{stitch}. Every recorded step in the order of a run: one raw cut of all the recordings, 6 h 49 min, with chapters\n"
         "{recordings}. The recordings themselves, in the order they were made: delivery and installation (Jun–Sep), "
@@ -42,74 +44,117 @@ def clips(*pairs):
     return [(vid, t, T[vid]) for vid, t in pairs]
 
 
-DRAFT4 = ("Draft 4, for review on GitHub (PR #255): the steps in the order of a real run, and a 3D model in which no part "
-          "passes through another. The narration is synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a "
-          "CadQuery/PyVista 3D model of the machine and draw.io outlines; the clips are stabilised and subtitled with Whisper.")
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "tutorials"))
+from scripts import REAL as _REAL  # noqa: E402  the real-footage picks of tutorial draft 5
+
+REAL_INTRO = "The real footage shown after each animation, from the recordings:"
+
+
+def real(key):
+    """[(video id, seconds, label)] of the real-footage picks draft 5 of tutorial `key` shows, in order (REAL in
+    ../tutorials/scripts.py), for its description."""
+    return [(r[1], r[2], r[4]) for g in _REAL[key].values() for r in g]
+
+
+DRAFT5 = ("Draft 5, for review on GitHub (PR #255): after each step's 3D animation, the real action of that step, cut from "
+          "the recordings (training, Oct 2 and Oct 6), stabilised and labelled, before the trainer explains it. The narration is "
+          "synthetic (Microsoft Edge TTS, en-US-AndrewMultilingualNeural) over a CadQuery/PyVista 3D model of the machine and "
+          "draw.io outlines; the clips are stabilised and subtitled with Whisper.")
 
 TUTORIALS = [
-    {"id": "-yxOIJfhs80", "kind": "tutorial", "seconds": 327,
-     "was": "Atomizer tutorial 0: the machine and how it works (draft 4)",
+    {"id": "-yxOIJfhs80", "kind": "tutorial", "seconds": 436,
+     "was": "Atomizer tutorial 0: the machine and how it works (draft 5)",
      "title": "Atomizer tutorial 0: the machine and how it works",
      "summary": "What the rePowder ultrasonic atomizer is and how it turns a bar of metal into powder: a 3D tour of the "
                 "machine (induction furnace, control frame, 57 L chamber, the ultrasonic stack in the door, the powder "
                 "container and the utilities), how melt poured onto a plate vibrating at 40 kHz becomes round particles, "
-                "Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the "
+                "each followed by the real thing in the lab, Bartosz Kalicki of AMAZEMET on wetting and particle size, the safety rules for every run, and how the "
                 "machine got here.",
-     "status": DRAFT4,
-     "chapters": [(0, "The three parts of a run"), (37, "The machine, in 3D"), (115, "How it makes powder"),
-                  (172, "Bartosz on wetting and particle size"), (241, "Safety, every run"),
-                  (294, "How we got here: June to October 2026")],
+     "status": DRAFT5,
+     "chapters": [(0, "The three parts of a run"),
+                  (37, "The machine, in 3D"),
+                  (115, "The machine, in the lab"),
+                  (157, "How it makes powder"),
+                  (214, "Making powder, in the lab"),
+                  (266, "Bartosz on wetting and particle size"),
+                  (334, "Safety, every run"),
+                  (402, "How we got here: June to October 2026")],
      "sources_intro": B,
-     "sources": clips(("naePD8o9_Gk", 1445), ("txH397FGTAU", 873), ("naePD8o9_Gk", 2321), ("58wJ_Khwgyk", 2552))},
-    {"id": "xpkbazHT_7M", "kind": "tutorial", "seconds": 663,
-     "was": "Atomizer tutorial 1: before a run (draft 4)",
+     "sources": clips(("naePD8o9_Gk", 1445), ("txH397FGTAU", 873), ("naePD8o9_Gk", 2321), ("58wJ_Khwgyk", 2552)),
+     "real_intro": REAL_INTRO, "real": real("00-overview")},
+    {"id": "xpkbazHT_7M", "kind": "tutorial", "seconds": 1028,
+     "was": "Atomizer tutorial 1: before a run (draft 5)",
      "title": "Atomizer tutorial 1: before a run",
      "summary": "Everything before the furnace heats up, in four steps, in the order of a real run: the utilities (power, "
                 "chilled water and the heat exchanger, compressed air, argon, the daily checks), the furnace (nozzle and "
                 "crucible, the graphite nut threaded on from below through the open chamber door, insulation, "
                 "thermocouple, sealing rod and lever, the charge), the chamber (splash disc, powder container, catch bowl) "
                 "and last the ultrasonic stack (transducer, booster, sonotrode and plate, the torques, the scan), mounted "
-                "in the door before it closes. Each step: the outline, a narrated 3D animation, then the trainer "
-                "explaining it.",
-     "status": DRAFT4,
-     "chapters": [(0, "Outline: four things before any heating"), (35, "Step 1: the utilities"),
-                  (168, "Step 2: the furnace and the charge"), (412, "Step 3: the chamber and the container"),
-                  (491, "Step 4: the ultrasonic stack, and closing the door")],
+                "in the door before it closes. Each step: the outline, a narrated 3D animation, the same step in the "
+                "lab, then the trainer explaining it.",
+     "status": DRAFT5,
+     "chapters": [(0, "Outline: four things before any heating"),
+                  (35, "Step 1: the utilities"),
+                  (86, "Step 1, in the lab"),
+                  (250, "Step 2: the furnace and the charge"),
+                  (372, "Step 2, in the lab"),
+                  (607, "Step 3: the chamber and the container"),
+                  (642, "Step 3, in the lab"),
+                  (711, "Step 4: the ultrasonic stack, and closing the door"),
+                  (795, "Step 4, in the lab")],
      "sources_intro": B,
      "sources": clips(("wRc8p2_FnJo", 86), ("wRc8p2_FnJo", 132), ("wRc8p2_FnJo", 2754), ("wRc8p2_FnJo", 2793),
                       ("1F9_4ccwhss", 100), ("58wJ_Khwgyk", 158), ("58wJ_Khwgyk", 224), ("58wJ_Khwgyk", 419),
-                      ("58wJ_Khwgyk", 805), ("58wJ_Khwgyk", 1332))},
-    {"id": "Jex6lDcERUM", "kind": "tutorial", "seconds": 463,
-     "was": "Atomizer tutorial 2: during a run (draft 4)",
+                      ("58wJ_Khwgyk", 805), ("58wJ_Khwgyk", 1332)),
+     "real_intro": REAL_INTRO, "real": real("01-before")},
+    {"id": "Jex6lDcERUM", "kind": "tutorial", "seconds": 794,
+     "was": "Atomizer tutorial 2: during a run (draft 5)",
      "title": "Atomizer tutorial 2: during a run",
      "summary": "The run itself, in four stages: the argon gas wash (vacuum and argon cycles cold, at 250 °C and at 500 °C, "
                 "until oxygen is low and stable), heating and melting the charge (overshoot to drop the rods, then about "
                 "800 °C, wait two minutes), the pour onto the vibrating plate (vibration, draining pressure, sealing rod "
-                "up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, then "
-                "the trainer explaining it.",
-     "status": DRAFT4,
-     "chapters": [(0, "Outline: the four stages of a run"), (23, "Step 1: the gas wash"), (153, "Step 2: heat and melt"),
-                  (277, "Step 3: the pour"), (417, "Step 4: end the pour")],
+                "up, turbo), and ending the pour within seconds. Each stage: the outline, a narrated 3D animation, the "
+                "same stage in the lab (including three mistakes from Oct 2 and Oct 6), then the trainer explaining it.",
+     "status": DRAFT5,
+     "chapters": [(0, "Outline: the four stages of a run"),
+                  (22, "Step 1: the gas wash"),
+                  (90, "Step 1, in the lab"),
+                  (265, "Step 2: heat and melt"),
+                  (316, "Step 2, in the lab"),
+                  (460, "Step 3: the pour"),
+                  (536, "Step 3, in the lab"),
+                  (719, "Step 4: end the pour"),
+                  (738, "Step 4, in the lab")],
      "sources_intro": B,
      "sources": clips(("9kn-HhXCr1o", 205), ("9kn-HhXCr1o", 516), ("58wJ_Khwgyk", 2170), ("9kn-HhXCr1o", 810),
                       ("1F9_4ccwhss", 282), ("58wJ_Khwgyk", 3442), ("58wJ_Khwgyk", 3592), ("naePD8o9_Gk", 1408),
-                      ("58wJ_Khwgyk", 3838), ("9kn-HhXCr1o", 1480), ("naePD8o9_Gk", 1922))},
-    {"id": "VWa33SEvFJw", "kind": "tutorial", "seconds": 380,
-     "was": "Atomizer tutorial 3: after a run (draft 4)",
+                      ("58wJ_Khwgyk", 3838), ("9kn-HhXCr1o", 1480), ("naePD8o9_Gk", 1922)),
+     "real_intro": REAL_INTRO, "real": real("02-during")},
+    {"id": "VWa33SEvFJw", "kind": "tutorial", "seconds": 552,
+     "was": "Atomizer tutorial 3: after a run (draft 5)",
      "title": "Atomizer tutorial 3: after a run",
      "summary": "Everything after the pour, in four steps: the shutdown sequence, cooling down and opening the chamber "
                 "(only below 400 °C, vented, masks on), collecting the powder (container valve, sieving, bagging and "
                 "labelling) and cleaning for the next run (brush and vacuum for the same alloy, about an hour for a "
-                "material change, one plate per alloy). It ends with the lessons from the team's first run on its own, "
-                "Oct 2.",
-     "status": DRAFT4,
-     "chapters": [(0, "Outline: four steps after the pour"), (22, "Step 1: the shutdown sequence"),
-                  (64, "Step 2: cool down and open the chamber"), (121, "Step 3: collect the powder"),
-                  (198, "Step 4: clean and maintain"), (346, "Lessons from the first run on our own")],
+                "material change, one plate per alloy). Each step: the outline, a narrated 3D animation, the same step "
+                "in the lab, then the trainer explaining it. It ends with the lessons from the team's first run on its "
+                "own, Oct 2.",
+     "status": DRAFT5,
+     "chapters": [(0, "Outline: four steps after the pour"),
+                  (22, "Step 1: the shutdown sequence"),
+                  (39, "Step 1, in the lab"),
+                  (78, "Step 2: cool down and open the chamber"),
+                  (117, "Step 2, in the lab"),
+                  (178, "Step 3: collect the powder"),
+                  (200, "Step 3, in the lab"),
+                  (271, "Step 4: clean and maintain"),
+                  (351, "Step 4, in the lab"),
+                  (488, "Lessons from the first run on our own")],
      "sources_intro": B,
      "sources": clips(("naePD8o9_Gk", 1891), ("naePD8o9_Gk", 2320), ("naePD8o9_Gk", 2339), ("tfb4fsVNIFI", 0),
                       ("naePD8o9_Gk", 3219), ("naePD8o9_Gk", 3051), ("58wJ_Khwgyk", 4057), ("FDRTt68Vfvo", 1071),
-                      ("FDRTt68Vfvo", 1096), ("wRc8p2_FnJo", 530))},
+                      ("FDRTt68Vfvo", 1096), ("wRc8p2_FnJo", 530)),
+     "real_intro": REAL_INTRO, "real": real("03-after")},
 ]
 
 CUPS = {
