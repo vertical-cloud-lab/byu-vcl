@@ -1,6 +1,6 @@
 # Atomizer videos: timestamp log
 
-_799 timestamped rows across 26 of 26 videos._
+_870 timestamped rows across 29 of 29 videos._
 
 Every substantive moment in the BYU VCL atomizer videos (install, AMAZEMET rePowder training Sep 29–30 2026, and the team's own runs), indexed from the transcripts in [`transcripts/`](transcripts/). Reading agents extracted the rows from the YouTube auto-captions and then re-checked them line by line against the Whisper transcripts; the six videos without captions were indexed from Whisper alone, and the ones with no speech from frames of the footage. The `mm:ss` is the caption start time (or the Whisper segment start), so a link lands at most a few seconds before the moment.
 
@@ -964,3 +964,92 @@ Transcript source per video is listed in the heading: **auto + whisper** = rows 
 | [01:43](https://www.youtube.com/embed/w02MRlZhpNk?start=103) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=103s) | troubleshooting | "Why is it not on?" — "I don't think, I don't think the breaker got tripped" (Whisper, batched and clip re-run); the captions dropped the second "don't" and heard "I think the breaker got tripped" (01:57). |
 | [02:08](https://www.youtube.com/embed/w02MRlZhpNk?start=128) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=128s) | troubleshooting | Clicks heard when turning the control; "I would have assumed that's the right way to turn it for dryer." |
 | [02:43](https://www.youtube.com/embed/w02MRlZhpNk?start=163) | [▶](https://www.youtube.com/watch?v=w02MRlZhpNk&t=163s) | troubleshooting | Notes a line "going into the side"; goes back down (02:55). |
+
+## 10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)
+`VFycaxIq0Tc` · 2026-10-06 · 20:17 · public · transcript: whisper · uploaded as *Oct 6 atomizer run, video 1* · [open paused](https://www.youtube.com/embed/VFycaxIq0Tc?start=0) · [▶ watch](https://www.youtube.com/watch?v=VFycaxIq0Tc)
+
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:07](https://www.youtube.com/embed/VFycaxIq0Tc?start=7) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=7s) | record | "Set an alarm, set a 20 minute timer." |
+| [00:54](https://www.youtube.com/embed/VFycaxIq0Tc?start=54) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=54s) | onboarding | Paul: "this machine is what turns the solid metal into metal powder", and other stations work "on the AI to monitor it". |
+| [01:08](https://www.youtube.com/embed/VFycaxIq0Tc?start=68) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=68s) | safety | "Me and Ronnie are the only ones that are allowed to operate this machine just because there's some sensitive parts that can get damaged easily." |
+| [01:28](https://www.youtube.com/embed/VFycaxIq0Tc?start=88) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=88s) | record | Dr. Baird "loves it when we record everything" (Whisper "Dr. Bird"), hence the collar camera; Meta glasses would be better. |
+| [02:40](https://www.youtube.com/embed/VFycaxIq0Tc?start=160) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=160s) | onboarding | Paul's time: Tuesdays and Thursdays are his open days. |
+| [03:15](https://www.youtube.com/embed/VFycaxIq0Tc?start=195) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=195s) | onboarding | "Me and Ronnie put together this list of things we need help with", ordered top priority first. |
+| [04:56](https://www.youtube.com/embed/VFycaxIq0Tc?start=296) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=296s) | charge | The aluminium shells "you fill with metal", melted in the crucible and turned into powder (the cups of #248). |
+| [05:36](https://www.youtube.com/embed/VFycaxIq0Tc?start=336) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=336s) | materials | The two powders so far: AlSi10Mg and pure aluminium. |
+| [05:54](https://www.youtube.com/embed/VFycaxIq0Tc?start=354) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=354s) | product | A jar from "my most recent run": "that's all aluminum powder … it needs to be … sifted, still get some chunks in it". |
+| [06:22](https://www.youtube.com/embed/VFycaxIq0Tc?start=382) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=382s) | plans | Aluminium-family alloys next, with scandium, erbium, copper or more magnesium. |
+| [06:42](https://www.youtube.com/embed/VFycaxIq0Tc?start=402) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=402s) | safety | IPA on everything that has powder on it; powder must not get on the skin. |
+| [07:43](https://www.youtube.com/embed/VFycaxIq0Tc?start=463) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=463s) | ordering | First need: a clip for the T-piece ("a number six on it", about a 6 mm tube); photograph the markings. |
+| [08:51](https://www.youtube.com/embed/VFycaxIq0Tc?start=531) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=531s) | ordering | How to put together an ME order, shown on the laptop from 10:26. |
+| [12:17](https://www.youtube.com/embed/VFycaxIq0Tc?start=737) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=737s) | ordering | Send the order to Dr. Baird, Gage and Ronnie, and check with Gage or Ronnie before submitting. |
+| [14:56](https://www.youtube.com/embed/VFycaxIq0Tc?start=896) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=896s) | ordering | The tool list, sent on Slack. |
+| [15:13](https://www.youtube.com/embed/VFycaxIq0Tc?start=913) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=913s) | cleaning | The brushes they have: "we're cleaning out the whole inside of this container, like every surface"; bigger ones are needed. |
+| [15:50](https://www.youtube.com/embed/VFycaxIq0Tc?start=950) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=950s) | cleaning | Powder is swept down into the machine, "because it's all product that we can keep". |
+| [16:52](https://www.youtube.com/embed/VFycaxIq0Tc?start=1012) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=1012s) | ordering | A stainless-steel scraper, "literally like a card … but stainless steel"; a general-purpose tape measure (17:11). |
+| [17:24](https://www.youtube.com/embed/VFycaxIq0Tc?start=1044) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=1044s) | onboarding | The rest of the list: order tools, build an Excel sheet, enter the info for each powder run, organize powders and stubs. |
+| [17:57](https://www.youtube.com/embed/VFycaxIq0Tc?start=1077) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=1077s) | characterization | "Every single one of these powders we need to characterize under an electron microscope", on stubs. |
+| [18:31](https://www.youtube.com/embed/VFycaxIq0Tc?start=1111) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=1111s) | characterization | Stubs: gloves (they are cleaned with IPA), a carbon-tape sticker, open the jar carefully ("you might even want to wear a mask"), dip, shake off the excess (19:10). |
+| [19:33](https://www.youtube.com/embed/VFycaxIq0Tc?start=1173) | [▶](https://www.youtube.com/watch?v=VFycaxIq0Tc&t=1173s) | record | "Every single run, we've got all these parameters … put it into an excel sheet": "CFC plate … carbon fiber", amplitude, melt temperature, type of aluminium (20:06). |
+
+## 10/6/2026 Atomizer Run Video 2: furnace, ultrasonic scan, carbon-fibre plate, door closed
+`dnPs56DPt6I` · 2026-10-06 · 17:57 · public · transcript: whisper · uploaded as *Oct 6th atomizer run, video 2 * · [open paused](https://www.youtube.com/embed/dnPs56DPt6I?start=0) · [▶ watch](https://www.youtube.com/watch?v=dnPs56DPt6I)
+
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/dnPs56DPt6I?start=0) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=0s) | before | (keyframe) The furnace is open; black nitrile gloves. |
+| [01:40](https://www.youtube.com/embed/dnPs56DPt6I?start=100) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=100s) | before | (keyframe) Crucible and insulation into the furnace, to 03:00. |
+| [03:35](https://www.youtube.com/embed/dnPs56DPt6I?start=215) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=215s) | before | "I forget about this piece every time." |
+| [03:40](https://www.youtube.com/embed/dnPs56DPt6I?start=220) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=220s) | before | (keyframe) Thermocouple in, then the sealing rod and its lever (04:20). |
+| [05:38](https://www.youtube.com/embed/dnPs56DPt6I?start=338) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=338s) | before | "Ultrasonic scan." "40,000 … as far as I understand, that's good" (06:16). |
+| [06:32](https://www.youtube.com/embed/dnPs56DPt6I?start=392) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=392s) | before | "Now I'm going to put on this guy finally"; the first wrench is "not the right size" (07:27). |
+| [08:26](https://www.youtube.com/embed/dnPs56DPt6I?start=506) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=506s) | before | "This needs to be set to 50": the torque wrench, for the plate; "50" (09:33). |
+| [09:42](https://www.youtube.com/embed/dnPs56DPt6I?start=582) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=582s) | before | "Test." "40,200. Perfect" (10:08); "20 watts of power. Good" (10:31). |
+| [13:06](https://www.youtube.com/embed/dnPs56DPt6I?start=786) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=786s) | before / deviation | "I said we're going to do these with carbon fiber because those are the cheapest … I gotta redo this." |
+| [14:00](https://www.youtube.com/embed/dnPs56DPt6I?start=840) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=840s) | before | "That's amazing how hot that gets"; "there's a little bit of aluminum on it still … I can see if this atomizes still. I think it will" (14:15): the carbon-fibre plate carries aluminium from an earlier run (inferred). |
+| [15:16](https://www.youtube.com/embed/dnPs56DPt6I?start=916) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=916s) | before | Torqued to "50" again; (keyframe) torque wrench on the plate at 15:40. |
+| [16:25](https://www.youtube.com/embed/dnPs56DPt6I?start=985) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=985s) | before | Spray test on the new plate through the open door: "So they're like straight lines. Wow." "Hot again" (16:31). |
+| [17:24](https://www.youtube.com/embed/dnPs56DPt6I?start=1044) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=1044s) | before | The door's star knobs: "Graphite's supposed to be brittle … I think these are … some metal." |
+| [17:39](https://www.youtube.com/embed/dnPs56DPt6I?start=1059) | [▶](https://www.youtube.com/watch?v=dnPs56DPt6I&t=1059s) | before | "That's tight"; "I think we're set now. I just need to prepare our material for it" (17:49). |
+
+## 10/6/2026 Atomizer Run Video 3: gas wash, melt, pour (stack too high, vibration off)
+`DWH1CEygsTI` · 2026-10-06 · 34:42 · public · transcript: whisper · uploaded as *Oct 6 atomizer run, video 3* · [open paused](https://www.youtube.com/embed/DWH1CEygsTI?start=0) · [▶ watch](https://www.youtube.com/watch?v=DWH1CEygsTI)
+
+| mm:ss | ▶ | phase | what happens / what is said |
+| --- | --- | --- | --- |
+| [00:00](https://www.youtube.com/embed/DWH1CEygsTI?start=0) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=0s) | before | "Alright, got our material." |
+| [00:40](https://www.youtube.com/embed/DWH1CEygsTI?start=40) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=40s) | before | (keyframe) The charge wiped with IPA at the bench, to 02:40. |
+| [04:00](https://www.youtube.com/embed/DWH1CEygsTI?start=240) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=240s) | before | (keyframe) Seal wiped; the charge into the crucible beside the sealing rod (04:40). |
+| [04:08](https://www.youtube.com/embed/DWH1CEygsTI?start=248) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=248s) | team | "I met with Paul today … I just gave him the list of things we put together"; he will order the T-piece. |
+| [05:17](https://www.youtube.com/embed/DWH1CEygsTI?start=317) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=317s) | during | "Pressure control, vacuum pump, gas wash, it's gonna do its thing a couple times." |
+| [06:00](https://www.youtube.com/embed/DWH1CEygsTI?start=360) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=360s) | before | (keyframe) The argon regulator gauges. |
+| [10:40](https://www.youtube.com/embed/DWH1CEygsTI?start=640) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=640s) | during | (keyframe) The HMI's separate ULTRASONIC SCAN and ULTRASONIC START buttons. |
+| [11:40](https://www.youtube.com/embed/DWH1CEygsTI?start=700) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=700s) | before | (keyframe) The wall gas valves. |
+| [19:35](https://www.youtube.com/embed/DWH1CEygsTI?start=1175) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1175s) | characterization | Out in the main lab: "these ones will be about 80 … we just got to look under the microscope first"; Paul will make SEM samples (19:55). |
+| [20:15](https://www.youtube.com/embed/DWH1CEygsTI?start=1215) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1215s) | during | "Do you want to see this, Ronnie? Or Carl?"; "right now, it's filling up with argon gas" (20:43). |
+| [20:57](https://www.youtube.com/embed/DWH1CEygsTI?start=1257) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1257s) | during | Oxygen: "Low 20s is good enough"; "now it's 19 parts per million" (21:01). |
+| [21:15](https://www.youtube.com/embed/DWH1CEygsTI?start=1275) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1275s) | during | "We are going to put the temperature up to 900 and see what that does." |
+| [21:50](https://www.youtube.com/embed/DWH1CEygsTI?start=1310) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1310s) | plans | "For the next couple weeks … how consistently we can make powders and sort of the cheapest runs possible … not trying to go for the small stuff just yet." |
+| [22:16](https://www.youtube.com/embed/DWH1CEygsTI?start=1336) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1336s) | product | "We've already got like five batches"; no sifter yet, chemical engineering may lend one, "we should get our own"; sieve it contained, "you don't want to breathe it at all" (22:50). |
+| [23:18](https://www.youtube.com/embed/DWH1CEygsTI?start=1398) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1398s) | record | "Set a timer for 16 minutes. That's how much time is left on the storage for the phone." |
+| [23:40](https://www.youtube.com/embed/DWH1CEygsTI?start=1420) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1420s) | during | (keyframe) The charge glowing through the furnace window; again at 27:00. |
+| [24:25](https://www.youtube.com/embed/DWH1CEygsTI?start=1465) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1465s) | during | "Increase the pressure to 20 bar": 0.2 bar per #261 (inferred); "last time … I don't think we had enough pressure" (24:36). |
+| [24:49](https://www.youtube.com/embed/DWH1CEygsTI?start=1489) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1489s) | during | "PPM counts to 27." "Maybe we should have let it sit a little bit longer before." |
+| [26:20](https://www.youtube.com/embed/DWH1CEygsTI?start=1580) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1580s) | lesson | "Remember for next time … bring down the [ppm] to like seven, just do one more purge at the end there, let it settle longer." |
+| [26:42](https://www.youtube.com/embed/DWH1CEygsTI?start=1602) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1602s) | during | "Down to 850 … 40, completely melted." |
+| [27:22](https://www.youtube.com/embed/DWH1CEygsTI?start=1642) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1642s) | during | "Let that go for two minutes." |
+| [28:20](https://www.youtube.com/embed/DWH1CEygsTI?start=1700) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1700s) | during | (keyframe) Ultrasonic scan on the HMI, nominal 40,185 Hz. |
+| [28:47](https://www.youtube.com/embed/DWH1CEygsTI?start=1727) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1727s) | during | "Scanner is looking good, I'm gonna press draining pressure"; the checklist: "sealing rod … make sure the plate is in that position and use the turbo pump as needed" (28:53). |
+| [28:58](https://www.youtube.com/embed/DWH1CEygsTI?start=1738) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1738s) | during | (keyframe) The checklist on a second phone; its status bar reads 3:06. |
+| [29:18](https://www.youtube.com/embed/DWH1CEygsTI?start=1758) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1758s) | during | "It doesn't display above 10 minutes, so I'll just give it like 20 more seconds." |
+| [29:35](https://www.youtube.com/embed/DWH1CEygsTI?start=1775) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1775s) | during | "Here we go": the sealing rod up, the pour. |
+| [30:35](https://www.youtube.com/embed/DWH1CEygsTI?start=1835) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1835s) | troubleshooting | "That'd be why, huh? It was just too high at this point, too late." |
+| [30:40](https://www.youtube.com/embed/DWH1CEygsTI?start=1840) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1840s) | troubleshooting | (keyframe) Hand on the stack, pulling it back. |
+| [31:25](https://www.youtube.com/embed/DWH1CEygsTI?start=1885) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1885s) | during | "There we go." |
+| [32:11](https://www.youtube.com/embed/DWH1CEygsTI?start=1931) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1931s) | during | "We're done." |
+| [32:35](https://www.youtube.com/embed/DWH1CEygsTI?start=1955) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1955s) | lesson | "That was too high, and so the stream was hitting that, blobbing up, and then falling under this. And I couldn't see it"; pulled back, "some atomization, but not nearly as much as we should have" (32:51). |
+| [32:58](https://www.youtube.com/embed/DWH1CEygsTI?start=1978) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1978s) | lesson | "I forgot to turn on the ultrasonic system"; "we still got enough powder to analyze in the SEM" (33:09). |
+| [33:18](https://www.youtube.com/embed/DWH1CEygsTI?start=1998) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=1998s) | problem | Oxygen "120 parts per million. I don't know what that's about"; (keyframe 33:20) HMI: chamber 138 mbar, 783 °C, oxygen 121 ppm; ultrasonic 0 %, 0 Hz, 0 W. |
+| [33:43](https://www.youtube.com/embed/DWH1CEygsTI?start=2023) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=2023s) | after | "Wait for this to cool down to about 400 degrees, and then after that we can open it up." |
+| [34:24](https://www.youtube.com/embed/DWH1CEygsTI?start=2064) | [▶](https://www.youtube.com/watch?v=DWH1CEygsTI&t=2064s) | after | Through the chamber window: "that got in the way, so it's blobbing off … harder to atomize … still got a bunch." |

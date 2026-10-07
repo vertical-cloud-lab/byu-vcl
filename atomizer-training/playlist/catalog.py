@@ -17,15 +17,15 @@ PLAYLIST = {
     "privacy": "unlisted",
     "description": (
         "The AMAZEMET rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab: its delivery and installation, two days "
-        "of training with Bartosz Kalicki of AMAZEMET (Sep 29–30 2026), preparing the charges, and the team's first run on "
-        "its own (Oct 2 2026).\n\n"
+        "of training with Bartosz Kalicki of AMAZEMET (Sep 29–30 2026), preparing the charges, and the team's own runs "
+        "since Oct 2 2026.\n\n"
         "In order:\n"
         "{tutorials}. Narrated tutorials: the machine and how it works, then before, during and after a run (draft 4, under review)\n"
         "{cups}. Tutorial: making the aluminum cups and plugs that carry powder into the furnace\n"
         "{stitch}. Every recorded step in the order of a run: one raw cut of all the recordings, 6 h 49 min, with chapters\n"
         "{recordings}. The recordings themselves, in the order they were made: delivery and installation (Jun–Sep), "
-        "commissioning (Sep 28), training day 1 (Sep 29), training day 2 (Sep 30), dosing the next charge (Sep 30), and the "
-        "first run on our own (Oct 2)\n\n"
+        "commissioning (Sep 28), training day 1 (Sep 29), training day 2 (Sep 30), dosing the next charge (Sep 30), the "
+        "first run on our own (Oct 2) and the run of Oct 6\n\n"
         "Written up on GitHub:\n"
         "Operating procedure (SOP), every step linked to the moment of video it comes from: {sop}\n"
         "Timestamp log, transcripts, notes, 3D animations and the tutorials: {folder}\n"
@@ -200,6 +200,78 @@ DELIVERY = {
                  (246, "Fittings, tubes and the heat exchanger")],
     "context": "Uploaded Mon Jun 15 2026. It is not in the indexed set yet (no transcript or timestamp log), so this "
                "summary comes from YouTube's auto-captions.",
+}
+
+# Gage's videos of the Oct 6 run, titled as his daily run SOP asks ("Month/Day/Year Atomizer Run Video #", ../daily-sop.md)
+# with a description after the colon. "docs" are extra links into this folder, checked by sync.py like the others.
+RUN_OCT6 = [("The run, checked against the daily SOP and the room stream; what to check before the next run",
+             "runs/2026-10-06.md"),
+            ("Daily run SOP (Gage Erickson)", "daily-sop.md")]
+PARAMS_261 = [("Run parameters (issue #261)", "https://github.com/vertical-cloud-lab/byu-vcl/issues/261")]
+OCT6 = [
+    {"id": "VFycaxIq0Tc", "kind": "recording", "cite": "OCT6a",
+     "was": "Oct 6 atomizer run, video 1",
+     "title": "10/6/2026 Atomizer Run Video 1: onboarding Paul (orders, run log, SEM stubs)",
+     "summary": "Gage Erickson introduces Paul, who is joining the team, to the lab and to his part of the daily run SOP. "
+                "Only Gage and Ronnie operate the machine. Paul's list: order a clip for the T-piece and some tools "
+                "(bigger brushes for the container, a stainless scraper, a tape measure) through ME orders, checked with "
+                "Gage or Ronnie first; keep an Excel sheet of every run's parameters (plate type, amplitude, melt "
+                "temperature, alloy); and make SEM stubs from each powder. No machine operation.",
+     "context": "Recorded Tue Oct 6 2026, 13:07–13:27 MDT (placed on the room stream's clock), on Gage's collar phone.",
+     "docs": RUN_OCT6, "links": PARAMS_261,
+     "chapters": [(0, "Meeting Paul; who may operate the machine"), (195, "The list of things to help with"),
+                  (296, "Charges, alloys and a jar of powder"), (402, "IPA on anything with powder on it"),
+                  (463, "Ordering: a clip for the T-piece"), (531, "How to place an ME order"),
+                  (896, "Tools: brushes, a scraper, a tape measure"), (1044, "The run sheet; organizing powders"),
+                  (1077, "Making SEM stubs"), (1173, "Logging every run's parameters")]},
+    {"id": "dnPs56DPt6I", "kind": "recording", "cite": "OCT6b",
+     "was": "Oct 6th atomizer run, video 2",
+     "title": "10/6/2026 Atomizer Run Video 2: furnace, ultrasonic scan, carbon-fibre plate, door closed",
+     "summary": "Gage rebuilds the furnace and sets up the ultrasonic stack on his own: crucible and insulation into the "
+                "coil, the thermocouple and the sealing rod, a scan at 40,000 Hz, a plate torqued to 50 N·m and tested "
+                "(40,200 Hz, 20 W), then swapped for a carbon-fibre plate, the cheapest, which still carries some "
+                "aluminium from an earlier run. A spray test through the open door, then the door is bolted shut. The "
+                "stack's height under the nozzle is not checked here; in video 3 it turns out to be too high.",
+     "context": "Recorded Tue Oct 6 2026, 14:06–14:24 MDT, on Gage Erickson's collar phone.",
+     "docs": RUN_OCT6, "links": PARAMS_261,
+     "chapters": [(0, "Crucible and insulation into the furnace"), (220, "Thermocouple and sealing rod"),
+                  (338, "Ultrasonic scan: 40,000 Hz"), (392, "A plate on, torqued to 50"),
+                  (582, "Test: 40,200 Hz, 20 W"), (786, "Swapping to a carbon-fibre plate"),
+                  (985, "Spray test; the door bolted shut")]},
+    {"id": "DWH1CEygsTI", "kind": "recording", "cite": "OCT6c",
+     "was": "Oct 6 atomizer run, video 3",
+     "title": "10/6/2026 Atomizer Run Video 3: gas wash, melt, pour (stack too high, vibration off)",
+     "summary": "180 g of aluminium rods (#261 says Al 6067, probably 6063), wiped with IPA, go in beside the sealing "
+                "rod. One gas wash takes the oxygen to 19 ppm; then 900 °C, 840 °C for two minutes, and 0.2 bar of pour pressure. The pour starts with the "
+                "ultrasonic vibration off and the stack too high, so the stream hits the upper sonotrode and blobs off "
+                "it. Pulled back three quarters of the way through, some melt atomizes: a small jar of powder, enough "
+                "for SEM, and a bag of splats. Oxygen reads 121 ppm afterwards. Gage explains what went wrong, then the "
+                "cooldown to 400 °C. A run to learn from: the run report below lists what to check before the next one.",
+     "context": "Recorded Tue Oct 6 2026, 14:37–15:12 MDT, on Gage Erickson's collar phone. Powder code 4yghtr.",
+     "docs": RUN_OCT6, "links": PARAMS_261,
+     "chapters": [(0, "Charge wiped with IPA and loaded"), (317, "Gas wash"),
+                  (1175, "Out in the lab: SEM samples, a sieve"), (1243, "Argon fill; oxygen 19 ppm"),
+                  (1275, "Heating to 900 °C"), (1466, "Pour pressure 0.2 bar; oxygen 27 ppm"),
+                  (1602, "Melted; 840 °C for two minutes"), (1700, "Scan, draining pressure, the checklist"),
+                  (1775, "The pour"), (1955, "What went wrong: stack too high, vibration off"),
+                  (2023, "Cooldown to 400 °C")]},
+]
+
+# The daily run SOP's own playlist: the team's runs, oldest first. The team adds each day's videos themselves; sync.py
+# puts these first and leaves anything else where it is.
+RUNS = {
+    "title": "Atomizer Runs",
+    "privacy": "unlisted",
+    "ids": ["qYyT39D5Yzo", "of5-LhkX_VQ", "VFycaxIq0Tc", "dnPs56DPt6I", "DWH1CEygsTI"],
+    "description": (
+        "The BYU Vertical Cloud Lab team's own runs of the AMAZEMET rePowder ultrasonic atomizer, oldest first, from the "
+        "first one without the trainer (Oct 2 2026). Run videos are titled \"Month/Day/Year Atomizer Run Video #\", as the "
+        "daily run SOP asks.\n\n"
+        "Each run's parameters: https://github.com/vertical-cloud-lab/byu-vcl/issues/261\n"
+        "Daily run SOP: {daily}\n"
+        "Run reports, checked against the videos: {runs}\n"
+        "Operating procedure (SOP), every step linked to the training video it comes from: {sop}\n"
+        "Installation, training and tutorials, all in order: https://www.youtube.com/playlist?list={main}"),
 }
 
 RECORDINGS = [
@@ -605,7 +677,7 @@ RECORDINGS = [
                   (1494, "Amplitude about 90; pure molybdenum plate"),
                   (1585, "Pour: most of the charge is not atomized"),
                   (1661, "Shutdown; open the chamber below 400 °C")]},
-]
+] + OCT6
 
 VIDEOS = TUTORIALS + [CUPS] + STITCH + [DELIVERY] + RECORDINGS
 
