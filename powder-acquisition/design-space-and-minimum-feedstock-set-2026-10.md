@@ -271,9 +271,60 @@ elemental anyway. Swap any row and re-run the script; it prints the new worst ve
 
 ## 6. Cs and the literature bounds (Edison)
 
-See `edison-cesium-and-cerium-bounds-2026-10.md` and `edison-design-space-bounds-2026-10.md`
-for the raw reports. Summary and consequences are in §6 of this file once the queries return
-(both were still running when this file was first written; this section is updated in place).
+Raw reports: `edison-cesium-and-cerium-bounds-2026-10.md` (task `a9f7f5f0`) and
+`edison-design-space-bounds-2026-10.md` (task `4fbb9859`); full trajectories under
+`outputs/issue-161-edison-2026-10/`.
+
+### 6.1 Cesium: exclude it (fix at 0 wt.%)
+
+Edison found no route by which Cs can be an alloying element in aluminium, and the physics
+is unambiguous:
+
+- **Al–Cs is nearly immiscible** (Sangster & Pelton 1993): ≤ 0.1 at.% Cs in liquid Al at the
+  Al melting point, expected a few hundredths of an at.%, essentially zero solid solubility,
+  **no intermetallic compounds** — like Al–Na, Al–K and Al–Rb. There is no eutectic or
+  peritectic to use.
+- **Cs boils at 671 °C**, 11 °C above the melting point of Al, so at any melt temperature
+  (700–1000 °C) pure Cs has a vapour pressure above 1 atm. In an open crucible, and then on a
+  sonotrode, retention would be near zero and irreproducible.
+- **Pyrophoric and violently water-reactive**; liquid at room temperature. Charging it into a
+  700 °C melt is a fire and explosion hazard, not a procedure.
+- The only Al uses of Cs are **surface chemistry**: Cs-bearing chloride/fluoride fluxes
+  modify Al–Si eutectic silicon (Davies & West, via Steen 1973), and Cs-fluoroaluminate
+  brazing fluxes. No Cs-containing Al alloy, LPBF or otherwise, exists in the literature,
+  and **no Al–Cs master alloy exists** — consistent with immiscibility.
+
+Edison's reading, which I share: the suggestion was most likely **Ce** (already on the
+list), or possibly **Ca** or **Sr** (both genuine Al alloying additions). So the element
+count stays at 15 non-Al, 16 feedstocks, unless Mohadaseh confirms a different element.
+
+### 6.2 Cerium: raise the ceiling to 12 wt.%, keep 0 as the control, and note the master-alloy tension
+
+- **Eutectic** Al–Al₁₁Ce₃ at **10.6 wt.% Ce, 644.5 ± 0.6 °C** (Czerwinski 2020); solid
+  solubility ≈ 0.005 wt.%, so all Ce is intermetallic, which is why Al₁₁Ce₃ does not coarsen.
+- **Published LPBF compositions** span ≈ 3–10.6 wt.% Ce (Al-10Ce: YS 222 / UTS 319 MPa /
+  10.8 %; Al-10Ce-0.4Sc-0.2Zr: 344 / 445 / 10 %; AlCe10MgSi: 430 / 593 / 1.6 %;
+  Al-8Ce-10Mg; Al-10.5Ce-3.1Ni-1.2Mn); 3 wt.% Ce removed hot cracking in an Al–Cu alloy.
+  Near-eutectic Al–Ce has a broad, crack-free LPBF window; the only evaporation issue is Mg
+  in Ce–Mg alloys, not Ce (b.p. 3443 °C).
+- **Edison's recommended box: 4–12 wt.% Ce**, highest-value region 8–10.6. The 4 % floor is
+  "where Ce starts to pay", not a campaign constraint; keep **L = 0** so the Ce-free arm
+  remains the control, and take **U = 12** (slightly hypereutectic, which rapid solidification
+  tolerates). That change raises the Ce floor on a master to 13.6 % and is folded into the
+  tables of §3 (re-run of the script after this update).
+- **Charging form.** Edison prefers an **Al-20Ce / Al-25Ce master** for safety (Ce is
+  pre-bound as Al₁₁Ce₃, less dross) over elemental Ce (99.9 %, melted under Ar at 780–800 °C
+  with stirring, the research norm) and over mischmetal (confounds the Ce variable). That is
+  sound metallurgy, but §3 shows what it costs in batch mass: at 12 wt.% Ce an Al-25Ce master
+  is **48 g of the 100 g charge**, which only fits if Sc, Li, Er and Zr are not *also* dilute
+  masters at their maxima. Practical rule: use a ≥ 25 % Ce master (ESPI can cast one; Belmont
+  and QS quote Al-Ce) for Ce ≤ ~6 wt.%, and elemental Ce pieces for the near-eutectic runs;
+  or, equivalently, keep Ce elemental and accept the oxide-skin cleaning step. Either way the
+  script's scenario table is the arbiter: add the master with its *y* and check V ≤ 1.
+
+### 6.3 All-element bounds (second query)
+
+See the subsection below once the second report is retrieved; it is written in place.
 
 ## 7. What to decide
 
