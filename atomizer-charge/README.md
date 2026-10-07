@@ -287,6 +287,35 @@ Ranked by how much they would change the plan:
    compressed air (#126).
 5. Weigh the loaded cup: that mass balance gives the true powder fraction. Store sealed with desiccant (#30, #230).
 
+## Composition spread: 4047 powder in 6063 cups (#264)
+
+[`composition_spread.py`](composition_spread.py) works from the cups and plugs **as made** (#222, #248), not the
+drawing above: 2.750" cup, 1/2" drill 2.25" deep, plug Ø.508" × .5625" with a #60 vent. Powder at 1.60 g/cm³
+tapped. Ranges are the Aluminum Association limits for 6063 and 4047 taken at both ends.
+
+| Cup | Wall | 6063 (cup + plug) | Powder when full |
+|---|---|---|---|
+| As made | .120" | 38.7 ± 0.7 g | 8.8 ± 0.4 g = 18.6 wt% |
+| Thin: 5/8" drill, 1/4" plug | .060" | 26.8 ± 1.3 g | 15.9 ± 0.8 g = 37 wt% |
+
+The ± is whether the 2.25" was measured to the drill tip or to full diameter.
+
+| Powder, wt% | Cup | 4047 per cup | Si, wt% | Mg, wt% |
+|---|---|---|---|---|
+| 0 | 6063 only (the #261 repeats) | — | 0.20–0.60 | 0.45–0.90 |
+| 7.5 | As made, ~35 % full | 3.1 g | 1.0–1.5 | 0.42–0.84 |
+| 15 | As made, ~77 % full | 6.8 g | 1.8–2.5 | 0.38–0.78 |
+| 22.5 | Thin, ~49 % full | 7.8 g | 2.6–3.4 | 0.35–0.72 |
+| 30 | Thin, ~72 % full | 11.5 g | 3.4–4.3 | 0.32–0.66 |
+
+- The Si ranges don't overlap even at the spec extremes. The Mg ranges all overlap, so this is a Si spread.
+- The Oct 2 run (u23y78, a full as-made cup) sits at ~18.6 wt%: Si 2.2–2.9, Mg 0.37–0.75.
+- Every cup in a run gets the same fill, with no plain 6063 alongside. Otherwise use `charge_composition()` with
+  the weighed masses.
+- The thin cup takes a 1/4" plug, not 9/16". At the top of the .0005–.0008" fit, a 9/16" plug needs ~1–1.3 t,
+  which loads the .060" wall to about its 110 MPa yield in compression. A 1/4" plug needs 0.3–0.6 t. The same
+  arithmetic puts the as-made 9/16" plug near yield at .0008" too (1.8–2.3 t on the .120" wall), so aim for .0005".
+
 ## Measure before machining
 
 The crucible is reachable now: Bartosz: "if you move the foam out you can see the crucible" (9/17 call, 20:12). Wear
