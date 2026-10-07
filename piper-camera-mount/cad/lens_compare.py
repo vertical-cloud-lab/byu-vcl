@@ -159,30 +159,77 @@ def fit(p: Params, parts: dict) -> dict:
     return res, lens_all
 
 
-def views(p: Params, parts: dict, det) -> tuple[np.ndarray, dict]:
-    """The HQ picture at VIEW, annotated, and what the detector finds at every opening and target."""
+def disk(d: float) -> np.ndarray:
+    r = d / 2
+    n = int(math.ceil(r))
+    y, x = np.mgrid[-n:n + 1, -n:n + 1]
+    k = (x * x + y * y <= r * r + 0.25).astype(np.float32)
+    return k / k.sum()
+
+
+def defocus(img: np.ndarray, z: np.ndarray, f: float, n: float, focus_mm: float) -> np.ndarray:
+    """The ideal picture as the lens would take it focused at focus_mm and f/n: each pixel blurred by
+    the disk its distance gives (geometric defocus, thin lens), then the whole picture by diffraction
+    (Gaussian, sigma = 0.42 lambda N at the working f-number). Pixels are gathered from a stack of
+    uniformly blurred copies, which is rough at depth edges but fine on flat tags."""
+    zz = np.where(np.isfinite(z), z, 1000.0)
+    zz = np.clip(zz, f * 1.5, None)
+    v = 1.0 / (1.0 / f - 1.0 / zz)
+    vm = thin_lens_v(f, focus_mm)
+    b = (f / n) * np.abs(v - vm) / v / BINNED                    # blur disk diameter, px
+    levels = [0.0, 1.5, 2.5, 4.0, 6.0, 8.0, 11.0, 16.0, 22.0, 32.0, 45.0, 64.0, 90.0]
+    src = img.astype(np.float32)
+    out = np.zeros_like(src)
+    prev = src
+    for lo, hi in zip(levels[:-1], levels[1:]):
+        nxt = cv2.filter2D(src, -1, disk(hi), borderType=cv2.BORDER_REPLICATE)
+        w = np.clip((b - lo) / (hi - lo), 0.0, 1.0)[..., None]
+        m = ((b >= lo) & (b < hi))[..., None]
+        out = np.where(m, prev * (1 - w) + nxt * w, out)
+        prev = nxt
+    out = np.where((b >= levels[-1])[..., None], prev, out)
+    sigma = 0.42 * WAVELENGTH * n * (vm / f) / BINNED
+    out = cv2.GaussianBlur(out, (0, 0), sigma)
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
+def views(p: Params, parts: dict, det, n: float, focus_mm: float) -> tuple[np.ndarray, dict]:
+    """What the detector finds at every opening and target, in the ideal picture and focused at
+    focus_mm and f/n; and the picture at VIEW as the lens would take it, annotated."""
     scene = Scene(p, parts)
-    img, tags = scene.render(*VIEW)
-    res = detect(img, tags, det)
-    found = {}
+    found, pictured = {}, None
     for opening in (0, 20, 40, 60, 80, 100):
         for target in TARGETS:
-            im, tg = scene.render(opening, target)
-            r = detect(im, tg, det)
-            found[f"{opening} mm open, target {target} mm past"] = {
-                "finger tags": [tid for tid in (1, 2) if r.get(tid)], "target": bool(r.get(TARGET_ID)),
-                "target from finger tag error (mm)": relative_error(r)}
-    summary = {
-        "openings with both finger tags detected": sorted({int(k.split()[0]) for k, v in found.items()
-                                                          if len(v["finger tags"]) == 2}),
-        "target detected (cases of 18)": sum(v["target"] for v in found.values()),
-        "finger tag and target in the same picture (cases of 18)": sum(
-            bool(v["finger tags"]) and v["target"] for v in found.values()),
-        "at the pictured pose": {str(k): (None if v is None else {"edge px": v["tag_edge_px"],
-                                                                  "position error mm": v["position_error_mm"]})
-                                 for k, v in res.items()},
-    }
-    return annotate(img, res), {"summary": summary, "cases": found}
+            im, tg, z = scene.render(opening, target, depth=True)
+            soft = defocus(im, z, p.lens_f, n, focus_mm)
+            row = {}
+            for label, picture in (("ideal", im), (f"f/{n:g}, focused at {focus_mm:.0f} mm", soft)):
+                r = detect(picture, tg, det)
+                row[label] = {"finger tags": [tid for tid in (1, 2) if r.get(tid)], "target": bool(r.get(TARGET_ID)),
+                              "target from finger tag error (mm)": relative_error(r),
+                              "worst position error (mm)": max((v["position_error_mm"] for v in r.values() if v),
+                                                               default=None)}
+                if (opening, target) == VIEW and picture is soft:
+                    pictured = (annotate(soft, r), r)
+            found[f"{opening} mm open, target {target} mm past"] = row
+    summary = {}
+    for label in next(iter(found.values())):
+        cases = [v[label] for v in found.values()]
+        summary[label] = {
+            "openings with both finger tags detected": sorted({int(k.split()[0]) for k, v in found.items()
+                                                              if len(v[label]["finger tags"]) == 2}),
+            "target detected (cases of 18)": sum(c["target"] for c in cases),
+            "finger tag and target in the same picture (cases of 18)": sum(
+                bool(c["finger tags"]) and c["target"] for c in cases),
+            "worst target-from-finger-tag error (mm)": max((c["target from finger tag error (mm)"] for c in cases
+                                                           if c["target from finger tag error (mm)"] is not None),
+                                                          default=None),
+        }
+    img, r = pictured
+    summary["at the pictured pose"] = {str(k): (None if v is None else {"edge px": v["tag_edge_px"],
+                                                                        "position error mm": v["position_error_mm"]})
+                                       for k, v in r.items()}
+    return img, {"summary": summary, "cases": found}
 
 
 def closeup(p: Params, parts: dict, clash: cq.Workplane | None, path: Path, title: str) -> None:
@@ -191,15 +238,15 @@ def closeup(p: Params, parts: dict, clash: cq.Workplane | None, path: Path, titl
     pl.set_background("white")
     pl.enable_anti_aliasing("ssaa")
     add_gripper(pl, opening=40.0, opacity=0.35)
-    names = ("bracket", "pod", "carrier", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb", "cm_module")
+    names = ("pod", "carrier", "hq_pcb", "hq_mount", "hq_lens", "hq_lens_screws", "cm_pcb", "cm_module")
     add_parts(pl, parts, names=names)
+    pl.add_mesh(mesh(parts["bracket"]), color=COLORS["bracket"], opacity=0.55, smooth_shading=False)
     if clash is not None and clash.val().isValid() and clash.val().Volume() > 1e-3:
         pl.add_mesh(mesh(clash), color=(0.9, 0.05, 0.05))
     o, d, _ = (np.array(v.toTuple()) for v in optical_axes(lens_params(p, "6mm"))["hq"])
     focal = o + d * 5.0
     pl.camera_position = [tuple(focal + np.array([-150.0, -150.0, 95.0])), tuple(focal), (0, 0, 1)]
     pl.camera.zoom(1.25)
-    pl.add_text(title, font_size=12, color="black")
     pl.screenshot(path)
     pl.close()
 
@@ -233,22 +280,33 @@ def main() -> None:
         clash = None
         if res_fit["clash"]:
             clash = lens_all.intersect(parts["bracket"])
-        img, res_view = views(p, parts, det)
+        opt = optics(p)
+        dof = opt["depth of field"]["finger tags + target 60 mm past the tips"]
+        n = float(dof["sharpest"][2:])
+        focus = dof["by f-number (um)"][dof["sharpest"]]["focus_at_mm"]
+        img, res_view = views(p, parts, det, n, focus)
         cv2.imwrite(str(tmp / f"view_{key}.png"), cv2.cvtColor(img, cv2.COLOR_RGB2BGR))
         closeup(p, parts, clash, tmp / f"pod_{key}.png", p.lens_spec.name)
-        out[key] = {"optics": optics(p), "fit": res_fit, "rendered views": res_view}
+        out[key] = {"optics": opt, "fit": res_fit, "rendered views": res_view,
+                    "pictures taken at": {"f-number": n, "focus (mm from the lens front)": round(focus, 1)}}
         print(key, json.dumps({"fit": res_fit["clash"], "views": res_view["summary"]}, indent=1))
     o6, o16 = out["6mm"], out["16mm"]
     hf6, vf6 = o6["optics"]["field of view (deg, across x up), pinhole from the sensor"]
     hf16, vf16 = o16["optics"]["field of view (deg, across x up), pinhole from the sensor"]
-    v6, v16 = o6["rendered views"]["summary"], o16["rendered views"]["summary"]
+    def caption(key, hf, vf):
+        o = out[key]
+        at = o["pictures taken at"]
+        label = f"f/{at['f-number']:g}, focused at {at['focus (mm from the lens front)']:.0f} mm"
+        both = o["rendered views"]["summary"][label]["finger tag and target in the same picture (cases of 18)"]
+        return (f"HQ through the {key[:-2]} mm ({hf:.0f} x {vf:.0f} deg), {label}:\n"
+                f"a finger tag and the target detected together in {both} of 18 poses")
     figure([
-        (tmp / "pod_6mm.png", f"6 mm wide-angle (CS): O30 x 34 mm, 53 g. Fits the seat; thumbscrews clear at any angle"),
-        (tmp / "pod_16mm.png", "16 mm telephoto (C, with the C-CS adapter): O39 x 50 mm, 134 g. Red: where it hits"),
-        (tmp / "view_6mm.png", f"HQ through the 6 mm ({hf6:.0f} x {vf6:.0f} deg): finger tags + target in "
-                               f"{v6['finger tag and target in the same picture (cases of 18)']}/18 cases"),
-        (tmp / "view_16mm.png", f"HQ through the 16 mm ({hf16:.0f} x {vf16:.0f} deg): finger tags + target in "
-                                f"{v16['finger tag and target in the same picture (cases of 18)']}/18 cases"),
+        (tmp / "pod_6mm.png", "6 mm wide-angle (CS mount): O30 x 34 mm, 53 g.\n"
+                              "Fits the seat; its two thumbscrews clear at any angle"),
+        (tmp / "pod_16mm.png", "16 mm telephoto (C mount, on the C-CS adapter): O39 x 50 mm, 134 g.\n"
+                               "Red: where it would cut into the seat"),
+        (tmp / "view_6mm.png", caption("6mm", hf6, vf6)),
+        (tmp / "view_16mm.png", caption("16mm", hf16, vf16)),
     ], RENDERS / "lens_compare.png")
     for f in tmp.iterdir():
         f.unlink()

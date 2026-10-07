@@ -8,7 +8,7 @@
   "parts": {
     "bracket": {
       "stl": "bracket.stl",
-      "sha256": "55435c26f655",
+      "sha256": "bf9c1f853fe5",
       "bbox_mm": [
         -36.21,
         -44.0,
@@ -19,7 +19,7 @@
       ],
       "overhang_area_mm2": 258.4,
       "triangles": 790,
-      "at_limit_mm2": 766.6,
+      "at_limit_mm2": 512.2,
       "patches": 13,
       "largest_patch": {
         "area_mm2": 34.5,

@@ -129,7 +129,7 @@ def render_pod_seat(p, parts, out):
             (0, [(-70, 45, 420), (-60, 40, 5), (0, 1, 0)], ("bracket", "carrier") + pod,
              "From above, pod lifted: the seat widens at 45 degrees until it meets the pod"),
             (1, [(-250, 230, 170), (-60, 45, 5), (0, 0, 1)], ("bracket", "carrier"),
-             "The seat alone, from behind: 987 mm2 of face, 4 x M3, rails above and below the lens")):
+             "The seat alone, from behind: 901 mm2 of face, 4 x M3, rails above and below the lens")):
         pl.subplot(0, col)
         add_gripper(pl, opacity=0.25)
         add_parts(pl, parts, names=names, offset={n: lift for n in pod})

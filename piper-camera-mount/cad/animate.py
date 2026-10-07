@@ -271,7 +271,7 @@ def main() -> None:
             "4 x M2.5 x 12 from the plate's front, nuts on the back of the board.",
             n + 10, both(fly(["hq_pcb", "hq_mount"], -back, 40), delay(fly(["hq_screws"], back, 25), 0.4),
                          delay(fly(["hq_nuts"], -back, 25), 0.55)), cam_to=pod_view, hold=14)
-    sc.step("6 / 10", "Thread the 6 mm lens into the CS mount. Camera Module 3 Wide above it: | "
+    sc.step("6 / 10", "Thread the 6 mm lens into the CS mount (C-CS adapter off). Camera Module 3 Wide above it: | "
             "4 x M2 x 10 from the front, nuts behind. Plug a 300 mm Standard-Mini ribbon into each camera.",
             n + 10, both(fly(["hq_lens", "hq_lens_screws"], back, 45), delay(fly(["cm_pcb", "cm_module"], -back, 30), 0.3),
                          delay(fly(["cm_screws"], back, 20), 0.55), delay(fly(["cm_nuts"], -back, 20), 0.7)),

@@ -94,7 +94,9 @@ class Scene:
         self.textures = {i: pv.numpy_to_texture(tag_image(i)) for i in (*FINGER_IDS.values(), TARGET_ID)}
 
     def render(self, opening: float, target: float | None, which: str = "hq", size=SIZE,
-               annotate: bool = False) -> tuple[np.ndarray, list[dict]]:
+               annotate: bool = False, depth: bool = False) -> tuple:
+        """The picture and the tags in it; with depth=True also each pixel's distance along the
+        optical axis (mm, NaN where nothing was drawn), for lens_compare.py's defocus."""
         p = self.p
         pl = pv.Plotter(off_screen=True, window_size=size)
         pl.set_background((0.93, 0.93, 0.90))
@@ -121,8 +123,10 @@ class Scene:
         pl.camera.view_angle = vfov
         pl.camera.clipping_range = (1.0, 3000.0)
         img = pl.screenshot(return_img=True)
+        z = -pl.get_image_depth(fill_value=np.nan, reset_camera_clipping_range=False) if depth else None
         pl.close()
-        return img, [dict(t, cam=(o, d, up, vfov)) for t in tags]
+        tags = [dict(t, cam=(o, d, up, vfov)) for t in tags]
+        return (img, tags, z) if depth else (img, tags)
 
 
 def detect(img: np.ndarray, tags: list[dict], det: cv2.aruco.ArucoDetector) -> dict[int, dict | None]:

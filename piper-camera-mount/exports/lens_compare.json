@@ -276,157 +276,373 @@
   },
   "rendered views": {
    "summary": {
-    "openings with both finger tags detected": [
-     0,
-     20,
-     40,
-     60
-    ],
-    "target detected (cases of 18)": 17,
-    "finger tag and target in the same picture (cases of 18)": 11,
+    "ideal": {
+     "openings with both finger tags detected": [
+      0,
+      20,
+      40,
+      60
+     ],
+     "target detected (cases of 18)": 17,
+     "finger tag and target in the same picture (cases of 18)": 11,
+     "worst target-from-finger-tag error (mm)": 0.61
+    },
+    "f/8, focused at 108 mm": {
+     "openings with both finger tags detected": [
+      0,
+      20,
+      40,
+      60
+     ],
+     "target detected (cases of 18)": 17,
+     "finger tag and target in the same picture (cases of 18)": 11,
+     "worst target-from-finger-tag error (mm)": 0.71
+    },
     "at the pictured pose": {
      "1": {
-      "edge px": 105.5,
-      "position error mm": 0.35
+      "edge px": 105.4,
+      "position error mm": 0.64
      },
      "2": {
-      "edge px": 104.5,
-      "position error mm": 0.19
+      "edge px": 104.3,
+      "position error mm": 0.54
      },
      "10": {
-      "edge px": 224.8,
-      "position error mm": 0.42
+      "edge px": 224.7,
+      "position error mm": 0.67
      }
     }
    },
    "cases": {
     "0 mm open, target 30 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.2
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.57
+     }
     },
     "0 mm open, target 60 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.48
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.48,
+      "worst position error (mm)": 0.42
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.35,
+      "worst position error (mm)": 0.67
+     }
     },
     "0 mm open, target 120 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.22
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.22,
+      "worst position error (mm)": 0.29
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.21,
+      "worst position error (mm)": 0.57
+     }
     },
     "20 mm open, target 30 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.1
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.1,
+      "worst position error (mm)": 0.11
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.3,
+      "worst position error (mm)": 0.31
+     }
     },
     "20 mm open, target 60 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.41
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.41,
+      "worst position error (mm)": 0.42
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.41,
+      "worst position error (mm)": 0.67
+     }
     },
     "20 mm open, target 120 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.29
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.29,
+      "worst position error (mm)": 0.29
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.26,
+      "worst position error (mm)": 0.52
+     }
     },
     "40 mm open, target 30 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.43
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.43,
+      "worst position error (mm)": 0.35
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.66,
+      "worst position error (mm)": 0.64
+     }
     },
     "40 mm open, target 60 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.16
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.16,
+      "worst position error (mm)": 0.42
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.22,
+      "worst position error (mm)": 0.67
+     }
     },
     "40 mm open, target 120 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.61
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.61,
+      "worst position error (mm)": 0.35
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.23,
+      "worst position error (mm)": 0.64
+     }
     },
     "60 mm open, target 30 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.38
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.38,
+      "worst position error (mm)": 0.57
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.71,
+      "worst position error (mm)": 0.76
+     }
     },
     "60 mm open, target 60 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.2
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.2,
+      "worst position error (mm)": 0.57
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.29,
+      "worst position error (mm)": 0.76
+     }
     },
     "60 mm open, target 120 mm past": {
-     "finger tags": [
-      1,
-      2
-     ],
-     "target": true,
-     "target from finger tag error (mm)": 0.56
+     "ideal": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.56,
+      "worst position error (mm)": 0.57
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [
+       1,
+       2
+      ],
+      "target": true,
+      "target from finger tag error (mm)": 0.3,
+      "worst position error (mm)": 0.76
+     }
     },
     "80 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.11
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.06
+     }
     },
     "80 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.42
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.67
+     }
     },
     "80 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.29
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.52
+     }
     },
     "100 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.11
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.06
+     }
     },
     "100 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.42
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.67
+     }
     },
     "100 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.29
+     },
+     "f/8, focused at 108 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.52
+     }
     }
    }
+  },
+  "pictures taken at": {
+   "f-number": 8.0,
+   "focus (mm from the lens front)": 108.5
   }
  },
  "16mm": {
@@ -703,9 +919,18 @@
   },
   "rendered views": {
    "summary": {
-    "openings with both finger tags detected": [],
-    "target detected (cases of 18)": 6,
-    "finger tag and target in the same picture (cases of 18)": 0,
+    "ideal": {
+     "openings with both finger tags detected": [],
+     "target detected (cases of 18)": 6,
+     "finger tag and target in the same picture (cases of 18)": 0,
+     "worst target-from-finger-tag error (mm)": null
+    },
+    "f/16, focused at 85 mm": {
+     "openings with both finger tags detected": [],
+     "target detected (cases of 18)": 6,
+     "finger tag and target in the same picture (cases of 18)": 0,
+     "worst target-from-finger-tag error (mm)": null
+    },
     "at the pictured pose": {
      "1": null,
      "2": null,
@@ -714,96 +939,262 @@
    },
    "cases": {
     "0 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "0 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "0 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     },
     "20 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "20 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "20 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     },
     "40 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "40 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "40 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     },
     "60 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "60 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "60 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     },
     "80 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "80 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "80 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     },
     "100 mm open, target 30 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "100 mm open, target 60 mm past": {
-     "finger tags": [],
-     "target": false,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": false,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": null
+     }
     },
     "100 mm open, target 120 mm past": {
-     "finger tags": [],
-     "target": true,
-     "target from finger tag error (mm)": null
+     "ideal": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 0.15
+     },
+     "f/16, focused at 85 mm": {
+      "finger tags": [],
+      "target": true,
+      "target from finger tag error (mm)": null,
+      "worst position error (mm)": 5.68
+     }
     }
    }
+  },
+  "pictures taken at": {
+   "f-number": 16.0,
+   "focus (mm from the lens front)": 84.8
   }
  }
 }
