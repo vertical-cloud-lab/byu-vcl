@@ -1,5 +1,8 @@
 # What the A1 mini has printed (as of 2026-10-08)
 
+> **Update, later on 2026-10-08:** the PLA set was sent to the A1 mini at 12:39 UTC, after this
+> record was made. See [`../print_2026-10-08/`](../print_2026-10-08/README.md).
+
 **None of the PiPER mount has been printed on the A1 mini**, and nothing of it is in the H2D's
 cloud history either. Its job,
 [`piper_camera_mount_A1mini_PLA.3mf`](../piper_camera_mount_A1mini_PLA.3mf), was never sent: it is

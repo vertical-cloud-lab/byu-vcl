@@ -10,7 +10,8 @@ It follows the OT-2 lid mount in [#234](https://github.com/vertical-cloud-lab/by
 (`ot2-overhead-camera/lid-mount/`): a parametric CadQuery model built around the maker's own CAD,
 with interference checks, exports and renders from one script. The design notes gathered in
 [borysgroup/aurora-cloud-infra#5](https://github.com/borysgroup/aurora-cloud-infra/issues/5) are
-the starting point for the PiPER side. **Nothing has been printed yet.**
+the starting point for the PiPER side. **The PLA set went to the A1 mini on 2026-10-08**
+([record](slice/print_2026-10-08/README.md)). Nothing has been fitted to the gripper yet.
 
 ![Assembly on AgileX's gripper model](renders/assembly.png)
 
@@ -683,7 +684,7 @@ bore and tab pad fixed):
   give, not what it does next.
 - **The pod is bonded to the seat,** as in `joint_fea.py`. The four M3s and the real contact at the seat
   are not modelled.
-- **Nothing has been printed yet.**
+- **No printed part has been tested.** The PLA set went to the A1 mini on 2026-10-08.
 
 ## Checks (`exports/checks.json`)
 
@@ -792,7 +793,8 @@ python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dc
     estimate.
   - The Pi 5's connector positions are read off Raspberry Pi's drawing, and its outline is a
     simplified envelope, as in #234.
-- **Nothing has been printed yet.**
+- **Nothing has been fitted yet.** The PLA set went to the A1 mini on 2026-10-08
+  ([record](slice/print_2026-10-08/README.md)).
   - The clearances reuse the numbers from #234's A1 mini fit study (M3 nut slot 5.8 mm across
     flats, 0.15 mm per side on the body).
   - The collar grips by squeezing the body until the split closes. The solid model put that squeeze

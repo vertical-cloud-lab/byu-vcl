@@ -91,8 +91,13 @@ mass comes from its own G-code, split by feature, in
 [`slice_configs.json`](slice_configs.json). Each part's G-code also goes to `build_<setup>/` (ignored
 by git), where [`../sim/sliced_fea.py`](../sim/sliced_fea.py) reads it to model the part as printed.
 
-## Has it been printed? (`a1mini_history/`)
+## Has it been printed? (`print_2026-10-08/`, `a1mini_history/`)
 
-Not as of 2026-10-08. [`a1mini_history/`](a1mini_history/README.md) lists everything the A1 mini
-has printed since July, from Bambu's cloud and the printer's own SD card, with the two read-only
-scripts that fetch it.
+**The PLA set went to the A1 mini on 2026-10-08.** It was sent at 12:39 UTC from Bambu Studio on a
+CI runner, as one plate, in black PLA Basic on Textured PEI. The record is in
+[`print_2026-10-08/`](print_2026-10-08/README.md): pre-flights, the file Studio sent, `print.json`
+and camera frames.
+
+Before that, nothing of the mount had been printed. [`a1mini_history/`](a1mini_history/README.md)
+lists everything the A1 mini printed from July to the morning of 2026-10-08, from Bambu's cloud and
+the printer's own SD card, with the two read-only scripts that fetch it.
