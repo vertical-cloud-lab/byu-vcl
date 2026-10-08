@@ -26,15 +26,15 @@ followed step by step. It's the fifth print sent this way.
 
 - Sent at 12:39:19 UTC; the first status read after it, at 12:39:57, found the printer `RUNNING` and heating.
 - Layer 1 ran from 12:46:35 to about 12:54:10: 7.5 min, against the G-code's 7.
-- **The session followed it to layer 113 of 213** (67 %) at 14:33, with no print error, HMS alert or
+- **The session followed it to layer 153 of 213** (83 %) at 15:00, with no print error, HMS alert or
   temperature alarm. The frames checked (every 30 s through the first layers, then about every
-  10 min) showed nothing wrong. The printer then gave 54 min to go, for a finish
-  near 15:28 UTC.
+  10 min) showed nothing wrong. The printer then gave 27 min to go, for a finish
+  near 15:28 UTC. The session ended at 15:12, so this record stops before the finish.
 - **Video:** https://www.youtube.com/watch?v=KPQpL98ouMU (unlisted, 5 min 21 s). It shows Studio's
   setup and slicing at 4×, then Send at 2×, then Studio's camera view at 60× to layer 101. The login
   is cut, and the room corners of the camera view are blurred.
 
-![Key frames, start to layer 112](frames/montage.jpg)
+![Key frames, start to layer 152](frames/montage.jpg)
 
 ## Timeline (UTC)
 
@@ -56,6 +56,7 @@ followed step by step. It's the fifth print sent this way.
 | 13:46 | Layer 29: the carrier's plate has its solid top |
 | 14:27 | Layer 101 |
 | 14:33 | Layer 113 (67 %), 54 min to go by the printer |
+| 15:00 | Layer 153 (83 %), 27 min to go: the last status this session committed |
 
 ## Files
 
