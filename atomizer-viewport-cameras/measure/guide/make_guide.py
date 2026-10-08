@@ -346,8 +346,9 @@ def front_side_sketch(cols):
         P = lambda s, r: (x_face - k * s, oy + k * r)   # s mm out from the chamber face, r mm down from the axis
         d.rectangle([x_face, 120, x_face + 70, Hd - 60], fill="#8E979F")
         d.line([(x_face, 120), (x_face, Hd - 60)], fill="white", width=4)
-        d.text((x_face - 150, Hd - 112), "chamber front", font=font(18, True), fill="white")
-        d.text((x_face - 150, Hd - 88), "face", font=font(17), fill="white")
+        txt = Image.new("RGB", (420, 40), "#8E979F")   # label up the chamber face, rotated
+        ImageDraw.Draw(txt).text((10, 6), "CHAMBER FRONT FACE", font=font(22, True), fill="white")
+        im.paste(txt.rotate(90, expand=True), (x_face + 16, Hd - 60 - 430))
         d.polygon([P(0, -40), P(30, -40), P(30, 40), P(0, 40)], fill="#C9CED2", outline="white")
         d.polygon([P(30, -47.5), P(45, -47.5), P(45, 47.5), P(30, 47.5)], fill="#E6E9EB", outline="black")
         d.polygon([P(44, -31.5), P(47, -31.5), P(47, 31.5), P(44, 31.5)], fill="#7FD0F0")
@@ -362,7 +363,7 @@ def front_side_sketch(cols):
             d.text(P(52, -116), "bracket", font=font(15, True), fill="black")
             d.text(P(118, -78), "grey cover", font=font(17, True), fill="white")
         else:
-            d.text(P(44, -70), "nut", font=font(17, True), fill="white")
+            d.text(P(70, -40), "nut", font=font(17, True), fill="white")
         d.text(P(46, 36), "glass", font=font(15, True), fill="#7FD0F0")
         dashed(d, P(-5, 0), P(120, 0), col="#FFD400")
         return P
