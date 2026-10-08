@@ -44,7 +44,7 @@
       "objects": [
         "base_1"
       ],
-      "print_time_s": 9133,
+      "print_time_s": 9132,
       "filament_g": 81.12,
       "filament_m": 26.77,
       "bed_type": "Textured PEI Plate",
@@ -73,15 +73,15 @@
         "Bridge": 588,
         "Custom": 346,
         "Flush": 28,
-        "Gap infill": 113,
+        "Gap infill": 114,
         "Inner wall": 1600,
-        "Internal solid infill": 1046,
+        "Internal solid infill": 1044,
         "Outer wall": 1139,
         "Overhang wall": 18,
         "Sparse infill": 1833,
         "Top surface": 319,
-        "Travel": 1750,
-        "Undefined": 1734
+        "Travel": 1751,
+        "Undefined": 1735
       }
     },
     {
@@ -91,9 +91,9 @@
         "deck_1",
         "spacers_1"
       ],
-      "print_time_s": 4189,
-      "filament_g": 43.5,
-      "filament_m": 14.35,
+      "print_time_s": 4087,
+      "filament_g": 43.28,
+      "filament_m": 14.28,
       "bed_type": "Textured PEI Plate",
       "bed_temp_c": [
         65,
@@ -120,15 +120,15 @@
         "Bridge": 555,
         "Custom": 349,
         "Flush": 28,
-        "Gap infill": 91,
-        "Inner wall": 286,
-        "Internal solid infill": 924,
-        "Outer wall": 326,
+        "Gap infill": 69,
+        "Inner wall": 285,
+        "Internal solid infill": 922,
+        "Outer wall": 286,
         "Overhang wall": 13,
         "Sparse infill": 647,
         "Top surface": 258,
-        "Travel": 379,
-        "Undefined": 361
+        "Travel": 342,
+        "Undefined": 324
       }
     },
     {
@@ -213,16 +213,16 @@
         "Flush": 28,
         "Gap infill": 13,
         "Inner wall": 147,
-        "Internal solid infill": 66,
+        "Internal solid infill": 65,
         "Outer wall": 96,
         "Overhang wall": 5,
         "Sparse infill": 50,
         "Top surface": 21,
         "Travel": 148,
-        "Undefined": 129
+        "Undefined": 130
       }
     }
   ],
-  "total_print_time_s": 17345,
-  "total_filament_g": 158.92
+  "total_print_time_s": 17242,
+  "total_filament_g": 158.7
 }

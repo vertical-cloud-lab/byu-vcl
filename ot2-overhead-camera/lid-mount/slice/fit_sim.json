@@ -76,7 +76,7 @@
         ],
         "corner_clear_min": 0.334,
         "socket_centre_vs_nominal": [
-          0.0,
+          -0.0,
           0.001
         ]
       },
@@ -169,7 +169,7 @@
     "holes": {
       "M3 clearance, deck (design 3.4)": {
         "d_equiv": 3.809,
-        "af_y": 3.81
+        "af_y": 3.811
       },
       "M2.5 clearance, camera boss (design 2.8)": {
         "d_equiv": 3.221,
