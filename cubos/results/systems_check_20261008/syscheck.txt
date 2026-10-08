@@ -1,0 +1,22 @@
+CubXL systems check, 2026-10-08 22:11:32 UTC
+INFO  Pi             Raspberry Pi 5 Model B Rev 1.1, booted 2026-10-08 15:50 local time
+PASS  power          throttled=0x0 (no under-voltage or throttling), input 5.13 V, power supply 5000 mA, USB over-current none
+PASS  temperature    39.5 °C
+PASS  disk           13% used, 23.9 GiB free
+PASS  memory         735 of 991 MiB available
+PASS  Wi-Fi          signal -44 dBm
+PASS  Arduino        USB port 3-1, /dev/ttyACM0, not held open
+PASS  gantry CH340   USB port 3-2, /dev/ttyUSB0, not held open
+FAIL  Tic T500       1ffb:00bd is not on USB, so its status can't be read and it can't be energized or de-energized from the Pi
+PASS  USB log        no USB errors or disconnects since boot
+PASS  cameras        2 detected: 0 imx708_wide 4608x2592 (i2c@88000); 1 imx708_wide 4608x2592 (i2c@80000)
+PASS  still cam 0    /tmp/syscheck_20261008/cam0_csi0.jpg 748284 bytes, exposure 37.5 ms, gain 2.0, AfState 2
+PASS  still cam 1    /tmp/syscheck_20261008/cam1_csi1.jpg 689082 bytes, exposure 47.8 ms, gain 2.0, AfState 2
+PASS  deckcam        service active, viewers 0, camera running False
+PASS  Arduino boot   'OK:Ready' 3.80 s after the port opened
+PASS  Arduino HELLO  OK:{"msg":"Hello from Pawduino!"}
+PASS  plunger STATUS OK:{"homed":0,"pos":0.00,"max_vol":20.00} (max_vol 20.00 = the VCL P20 GEN2 firmware)
+PASS  cap sensor     OK:{"value1":0} (0 = nothing in the beam)
+INFO  gantry         port not opened (opening it resets GRBL); GRBL itself is checked by cubxl_run.py before a run
+
+1 failed: Tic T500; 0 warning(s)

@@ -1,0 +1,44 @@
+# USB and kernel enumeration on the CubXL Pi, 2026-10-08 ~22:04 UTC (16:04 MDT).
+# Hostname replaced with <pi>. Read-only commands.
+
+== lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+Bus 003 Device 003: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+== lsusb -t
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/2p, 480M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+/:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/2p, 480M
+    |__ Port 001: Dev 002, If 0, Class=Communications, Driver=cdc_acm, 12M
+    |__ Port 001: Dev 002, If 1, Class=CDC Data, Driver=cdc_acm, 12M
+    |__ Port 002: Dev 003, If 0, Class=Vendor Specific Class, Driver=ch341, 12M
+/:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=xhci-hcd/1p, 5000M
+== /dev/serial/by-id
+total 0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 usb-1a86_USB_Serial-if00-port0 -> ../../ttyUSB0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 usb-Arduino__www.arduino.cc__0043_03535343335351018130-if00 -> ../../ttyACM0
+== /dev/serial/by-path
+total 0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 platform-xhci-hcd.1-usb-0:1:1.0 -> ../../ttyACM0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 platform-xhci-hcd.1-usb-0:2:1.0-port0 -> ../../ttyUSB0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 platform-xhci-hcd.1-usbv2-0:1:1.0 -> ../../ttyACM0
+lrwxrwxrwx 1 root root 13 Oct  8 12:25 platform-xhci-hcd.1-usbv2-0:2:1.0-port0 -> ../../ttyUSB0
+== tty devices
+crw-rw---- 1 root dialout 166, 0 Oct  8 12:25 /dev/ttyACM0
+crw-rw---- 1 root dialout 188, 0 Oct  8 12:25 /dev/ttyUSB0
+== ticcmd --list (no output = no Tic found)
+(no output, rc=0)
+
+== every USB device the kernel enumerated since boot
+[3.701031] <pi> kernel: usb 3-1: new full-speed USB device number 2 using xhci-hcd
+[3.701412] <pi> kernel: usb 3-1: New USB device found, idVendor=2341, idProduct=0043, bcdDevice= 0.01
+[3.701538] <pi> kernel: usb 3-1: New USB device strings: Mfr=1, Product=2, SerialNumber=220
+[3.701660] <pi> kernel: usb 3-1: Manufacturer: Arduino (www.arduino.cc)
+[3.701780] <pi> kernel: usb 3-1: SerialNumber: 03535343335351018130
+[3.701933] <pi> kernel: usb 3-2: new full-speed USB device number 3 using xhci-hcd
+[3.702055] <pi> kernel: usb 3-2: New USB device found, idVendor=1a86, idProduct=7523, bcdDevice= 2.64
+[3.702176] <pi> kernel: usb 3-2: New USB device strings: Mfr=0, Product=2, SerialNumber=0
+[3.702295] <pi> kernel: usb 3-2: Product: USB Serial
