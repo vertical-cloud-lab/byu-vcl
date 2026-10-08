@@ -96,6 +96,8 @@ the lid's opening arc on the left.
 
 ## Still unknown: measure with a tape
 
+The sheets in [`guide/`](guide/HOW-TO-MEASURE.md) turn this list into labelled photos, with where each tape goes.
+
 1. Front port: glass clear Ø, nut OD and notch count, how far the hood face stands off the chamber face, the port
    axis's tilt (inclinometer on the glass), and the hood's inner bore where it grips the nut.
 2. Hood: true across-flats and across-corners, depth, the pod's size and position, and the LED cable route and plug.

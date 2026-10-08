@@ -1,6 +1,6 @@
 """Draw the measurement guide: each training-video frame with the measurements marked on it, and a legend below.
 
-    python make_guide.py        # writes N_*.jpg next to this file
+    python make_guide.py        # writes N_*.jpg, rePowder-measuring-guide.pdf and field_sheet.csv next to this file
 
 The frames are in ../frames/. The text of every measurement is in sheets.py; the marks are placed here in frame
 pixels. Sheet 4 is a drawn side view of the front port, for the depths and the angle a photo can't show.
@@ -230,8 +230,7 @@ def legend(rows, cols, width=W, pad=22):
     tmp = ImageDraw.Draw(Image.new("RGB", (10, 10)))
     for mid, pri, title, how, guess, var in rows:
         lines = textwrap.wrap(how, width=int(colw / 10.6))
-        guess_w = tmp.textlength(f"now in the model: {guess}", font=fs) + 24 + tmp.textlength("measured:", font=fs)
-        h = 36 + 25 * len(lines) + 34 + 10 + (28 if guess_w + 130 > colw else 0)
+        h = 36 + 25 * len(lines) + 34 + 10 + 30
         blocks.append((h, mid, pri, title, lines, guess, var))
     # fill the left column first, then the right, keeping order
     total = sum(b[0] for b in blocks)
@@ -261,10 +260,8 @@ def legend(rows, cols, width=W, pad=22):
                 d.text((x0 + 10, yy), ln, font=fb, fill="#222222")
                 yy += 25
             d.text((x0 + 10, yy + 4), f"now in the model: {guess}", font=fs, fill="#555555")
-            gx = x0 + 10 + d.textlength(f"now in the model: {guess}", font=fs) + 24
-            if gx + d.textlength("measured:", font=fs) + 120 > x0 + colw:   # no room: next line
-                yy += 28
-                gx = x0 + 10
+            yy += 30                      # the blank gets a line of its own, long enough to write in
+            gx = x0 + 10
             d.text((gx, yy + 4), "measured:", font=fs, fill="black")
             lx = gx + d.textlength("measured:", font=fs) + 8
             d.line([(lx, yy + 26), (x0 + colw - 8, yy + 26)], fill="black", width=2)
@@ -425,6 +422,7 @@ def main():
     front_cols = {}
     for sh in SHEETS[:3]:
         front_cols.update(colour_map(sh["rows"]))
+    pages = []
     for sh in SHEETS:
         cols = colour_map(sh["rows"])
         if sh["key"] == "4_front_side_sketch":
@@ -447,7 +445,10 @@ def main():
         parts.append(footer())
         out = stack(*parts)
         out.save(HERE / f"{sh['key']}.jpg", quality=88)
+        pages.append(out)
         print(sh["key"], out.size)
+    # one sheet a page, 8 in wide, for printing
+    pages[0].save(HERE / "rePowder-measuring-guide.pdf", save_all=True, append_images=pages[1:], resolution=160)
 
 
 if __name__ == "__main__":

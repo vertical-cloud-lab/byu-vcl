@@ -59,21 +59,15 @@ The rePowder reference summary from #232 (`repowder-reference.zip`) agrees where
 
 ### What to measure (for @ronnie-guymon)
 
-Each item is a variable in the Onshape Variable Studio, named in brackets. In rough order of how much they matter:
+**[`measure/guide/HOW-TO-MEASURE.md`](measure/guide/HOW-TO-MEASURE.md)** has eight sheets, one per area of the
+machine, with each measurement lettered on a photo. Each says where the tape goes, the tool, and the value the model
+has now, with a blank for the measured one. They are also a [PDF for printing](measure/guide/rePowder-measuring-guide.pdf).
+The 17 marked FIRST are the ones the fit-test prints need. [`field_sheet.csv`](measure/guide/field_sheet.csv) maps
+each letter to the Onshape variable it replaces.
 
-1. **Front port**: glass Ø (`fp_glass_d`), nut OD (`fp_nut_d`) and how far its face stands off the chamber face
-   (`fp_nut_face`), the port axis tilt with a phone inclinometer on the glass (`fp_tilt`), and its centre: height
-   above the floor and distance from the chamber's left edge (`fp_z`, `fp_x`).
-2. **LED cover**: across flats (`fp_cover_af`), front opening (`fp_cover_open`), depth and how far its face is from
-   the chamber face (`fp_cover_len`, `fp_cover_face`), and the pod's size and setback (`fp_pod_*`). Also the gap from
-   the cover's top to the furnace's foot bracket.
-3. **Left sight glass**: is it an ISO-KF clamp flange or a threaded fitting? Ring OD (`lp_ring_d`), glass Ø
-   (`lp_glass_d`), how far it stands out (`lp_protrusion`), centre height and distance from the door's back edge
-   (`lp_z`, `lp_y`), and how far the door opens (`door_open`).
-4. **Lid**: window W × L (`tw_wid`, `tw_len`), plate outline and screw positions, facet angle (`lid_facet_angle`),
-   window centre height (`tw_z`), skirt Ø, lid top height and hinge pin (`lid_r`, `lid_top_z`, `lid_hinge_*`).
-5. **Scale**: furnace body Ø and the chamber top's height (`furn_r`, `ch_top_z`). Every number above was scaled from them.
-6. **Blue frame**: front face and top (`fr_front_y`, `fr_top_z`). The top camera's magnetic base sits on it.
+| | |
+|---|---|
+| ![](measure/guide/1_front_cover_on.jpg) | ![](measure/guide/5_left_sight_glass.jpg) |
 
 ## Design
 

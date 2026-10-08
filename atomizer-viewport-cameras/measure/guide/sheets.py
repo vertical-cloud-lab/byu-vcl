@@ -122,7 +122,7 @@ SHEETS = [
              "108 mm, 100 mm", "lp_y, door_z1"),
             ("L7", 3, "Down to the stack",
              "From the bottom of the ring straight down to the top of the ultrasonic stack where it leaves the door.",
-             "about 70 mm", "stack_z"),
+             "about 60 mm", "stack_z"),
             ("L8", 2, "Door swing",
              "Open the door fully: about how many degrees? Does anything on its outside come near the blue "
              "cabinet? Gap from the closed door's back edge to the blue panel.",
