@@ -24,9 +24,16 @@ followed step by step. It's the fifth print sent this way.
 
 ## Outcome
 
-- Sent at 12:39:19 UTC; `RUNNING` 38 s later.
+- Sent at 12:39:19 UTC; the first status read after it, at 12:39:57, found the printer `RUNNING` and heating.
 - Layer 1 ran from 12:46:35 to about 12:54:10: 7.5 min, against the G-code's 7.
-- STATUS_PLACEHOLDER
+- **The session followed it to layer 113 of 213** (67 %) at 14:33, with every frame clean and
+  no print error, HMS alert or temperature alarm. The printer then gave 54 min to go, for a finish
+  near 15:28 UTC.
+- **Video:** https://www.youtube.com/watch?v=KPQpL98ouMU (unlisted, 5 min 21 s). It shows Studio's
+  setup and slicing at 4×, then Send at 2×, then Studio's camera view at 60× to layer 101. The login
+  is cut, and the room corners of the camera view are blurred.
+
+![Key frames, start to layer 112](frames/montage.jpg)
 
 ## Timeline (UTC)
 
@@ -45,7 +52,9 @@ followed step by step. It's the fifth print sent this way.
 | 12:39:57 | Status read: `RUNNING`, job `piper_camera_mount_A1mini_PLA`, heating |
 | 12:46:35 | Layer 1 |
 | 12:54:22 | Layer 2 |
-| TIMELINE_PLACEHOLDER | |
+| 13:46 | Layer 29: the carrier's plate has its solid top |
+| 14:27 | Layer 101 |
+| 14:33 | Layer 113 (67 %), 54 min to go by the printer |
 
 ## Files
 
@@ -56,7 +65,7 @@ followed step by step. It's the fifth print sent this way.
 | `sent/piper_camera_mount_A1mini_PLA.gcode.3mf` | The file Studio sent. It was exported mid-print with *File → Export → Export plate sliced file*, and its plate G-code is byte for byte Studio's own slice (MD5 `971c840fefd399638689a5460bf4da2b`). Only `DesignerUserId` is blanked |
 | `print.json` | Settings restored in the GUI, Send options, estimates, timeline, the go |
 | `watch.jsonl.gz` | Every status sample from `bambu_print.py watch` |
-| `frames/` | Key frames from the printer's camera, named `<UTC>_L<layer>` |
+| `frames/` | Key frames from the printer's camera, named `<UTC>_L<layer>`, and `montage.jpg` of them all |
 
 ## What the GUI changed, and the check
 
