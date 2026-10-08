@@ -100,6 +100,22 @@ fit, which [`cad/fastener_fit.py`](cad/fastener_fit.py) checks against the model
 The GIF comes from [`cad/animate.py`](cad/animate.py). Steel parts are the drawer's pan heads
 and nuts; black parts are the nylon kit's.
 
+**A version to pause on:** [`renders/assembly_steps.mp4`](renders/assembly_steps.mp4) (1920 × 1080,
+2 min 15 s, 17 MB), also [on YouTube](https://www.youtube.com/watch?v=YWsTg3aCP50) (unlisted).
+Both have a chapter for each step. It shows the same ten steps, larger, and labels every part
+with its count, size, material and source.
+- Each step holds twice. First the parts are laid out beside their places, with a dashed line
+  from each one to where it goes. Then they're shown in place.
+- The parts a step adds are orange, or amber for a second kind of part.
+- Where nuts go inside a part (the posts in step 2, the deck in step 4), that part is drawn
+  see-through.
+- The side panel repeats the step below and its parts; the first and last chapters list
+  everything.
+
+[`renders/assembly_steps_sheet.png`](renders/assembly_steps_sheet.png) shows where each step
+ends, on one page. Both come from [`cad/assembly_video.py`](cad/assembly_video.py), which
+renders the video in about 5 min.
+
 1. Drop four **M4 nuts** into the hex traps on the base. They're only needed for phase 2.
 2. Slide four **M3 nuts** into the slots near the tops of the posts, lying flat, and push each
    one in until it stops. The hex end of the slot then holds it on the screw axis.
