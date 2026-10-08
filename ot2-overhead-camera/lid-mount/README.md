@@ -153,7 +153,9 @@ The first deck, printed on 2026-10-01, hung the camera on four 6 mm bosses, and 
 M2.5 × 12s didn't reach through their nuts. The screw check had taken the camera's PCB as 1.4 mm, the
 figure on Raspberry Pi's drawing, but the lab's board measures 2.0 mm. The bosses are now
 3.5 mm (`cam_standoff`), so the 12 mm screw reaches 1.8 mm past the far face of its nut. Its
-tip stands about 1.5 mm proud of the deck top, 4.5 mm below the Pi 5.
+tip stands about 1.5 mm proud of the deck top, 4.5 mm below the Pi 5. Sliced in 0.2 mm
+layers, the bosses come out 3.6 mm tall, because the last layer ends at 8.6 mm; that still
+leaves 1.7 mm past the nut.
 
 The base was already printed and the deck still sits on its posts, so the camera and lens now
 ride 2.5 mm higher (`lens_front_gap` 3.0 → 5.5 mm). That changes three things:
