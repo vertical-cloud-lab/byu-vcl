@@ -1,0 +1,261 @@
+{
+ "utc": "20261008T121614Z",
+ "printer": "A1_MINI",
+ "via": "CUBXL_PI",
+ "command": "preflight",
+ "tls": {
+  "tls_version": "TLSv1.2",
+  "cert_sha256": "19b3d4361c691d23\u2026",
+  "cn_matches_serial": true,
+  "issuer_cn": "BBL CA",
+  "not_after": "2036-03-30"
+ },
+ "mqtt": {
+  "messages": 2,
+  "connected": true,
+  "rc": "Success",
+  "seconds": 1.5
+ },
+ "summary": {
+  "gcode_state": "FINISH",
+  "stage": 255,
+  "print_error": 0,
+  "hms": [],
+  "percent": 100,
+  "remaining_min": 0,
+  "layer": [
+   155,
+   155
+  ],
+  "nozzle_c": [
+   21.875,
+   0
+  ],
+  "bed_c": [
+   21.71875,
+   0
+  ],
+  "nozzle": {
+   "diameter": "0.4",
+   "type": "stainless_steel"
+  },
+  "sdcard": true,
+  "wifi_signal": "-44dBm",
+  "external_spool": {
+   "type": "",
+   "colour": "00000000"
+  },
+  "ams_trays": [
+   {
+    "unit": "0",
+    "slot": "0",
+    "type": "PLA",
+    "idx": "GFA00",
+    "name": "PLA Basic",
+    "colour": "0A2989FF",
+    "remain_pct": 100
+   },
+   {
+    "unit": "0",
+    "slot": "1",
+    "type": "PLA",
+    "idx": "GFA00",
+    "name": "PLA Basic",
+    "colour": "F5547CFF",
+    "remain_pct": 100
+   },
+   {
+    "unit": "0",
+    "slot": "2",
+    "type": "PLA",
+    "idx": "GFA00",
+    "name": "PLA Basic",
+    "colour": "000000FF",
+    "remain_pct": 100
+   },
+   {
+    "unit": "0",
+    "slot": "3",
+    "type": "PETG",
+    "idx": "GFG00",
+    "name": "PETG Basic",
+    "colour": "FFFFFFFF",
+    "remain_pct": 100
+   }
+  ],
+  "ams_units": 1,
+  "xcam": {
+   "buildplate_marker_detector": true
+  },
+  "ipcam": {
+   "ipcam_record": "enable",
+   "timelapse": "disable",
+   "resolution": "1080p",
+   "mode_bits": 3
+  },
+  "last_job": {
+   "subtask_name": "RaspberryPiCameraMount(NEW)",
+   "gcode_file": ""
+  },
+  "firmware": {
+   "ota": "01.08.00.00",
+   "esp32": "01.16.41.34",
+   "mc": "00.01.30.43",
+   "th": "00.01.07.73",
+   "ams_f1/0": "00.00.08.15"
+  },
+  "fun": null
+ },
+ "camera": {
+  "file": "/tmp/pf/20261008T121614Z_camera.jpg",
+  "width": 1680,
+  "height": 1080,
+  "mean_luma": 113.2,
+  "luma_stddev": 64.2
+ },
+ "plate": {
+  "file": "piper_camera_mount_A1mini_PLA.3mf",
+  "plate": 1,
+  "file_md5": "8d2fe312fc919709105a0714348f74d6",
+  "gcode_md5_ok": true,
+  "printer_model": "Bambu Lab A1 mini",
+  "nozzle_diameter": 0.4,
+  "bed_type": "Textured PEI Plate",
+  "filament_type": "PLA",
+  "filament_preset": "Bambu PLA Basic @BBL A1M",
+  "nozzle_c": 220.0,
+  "bed_c": 65,
+  "start_gcode": {
+   "filament_load": true,
+   "runout_detection": true
+  },
+  "max_z_mm": 42.6,
+  "estimated_time": "2h 44m 31s; total estimated time: 2h 50m 29s",
+  "filament_g": 87.46,
+  "filaments": [
+   {
+    "id": "1",
+    "tray_info_idx": "GFA00",
+    "type": "PLA",
+    "color": "#000000",
+    "used_g": "87.46"
+   }
+  ],
+  "warnings": [
+   "not_support_traditional_timelapse"
+  ]
+ },
+ "checks": [
+  {
+   "check": "right printer (TLS CN = serial)",
+   "result": "pass",
+   "detail": "issuer BBL CA"
+  },
+  {
+   "check": "printer idle",
+   "result": "pass",
+   "detail": "gcode_state=FINISH"
+  },
+  {
+   "check": "no print error",
+   "result": "pass",
+   "detail": "print_error=0"
+  },
+  {
+   "check": "no HMS alerts",
+   "result": "pass",
+   "detail": "hms=[]"
+  },
+  {
+   "check": "heaters off",
+   "result": "pass",
+   "detail": "targets nozzle=0.0 bed=0.0"
+  },
+  {
+   "check": "nozzle thermistor plausible",
+   "result": "pass",
+   "detail": "nozzle=21.875 \u00b0C"
+  },
+  {
+   "check": "bed thermistor plausible",
+   "result": "pass",
+   "detail": "bed=21.71875 \u00b0C"
+  },
+  {
+   "check": "SD card present",
+   "result": "pass",
+   "detail": "sdcard=True"
+  },
+  {
+   "check": "3MF plate G-code intact (md5)",
+   "result": "pass",
+   "detail": "plate 1"
+  },
+  {
+   "check": "sliced for this printer model",
+   "result": "pass",
+   "detail": "slice 'Bambu Lab A1 mini', printer 'Bambu Lab A1 mini'"
+  },
+  {
+   "check": "nozzle matches the slice",
+   "result": "pass",
+   "detail": "printer 0.4 mm, slice 0.4 mm"
+  },
+  {
+   "check": "fits the A1 mini build volume",
+   "result": "pass",
+   "detail": "max Z 42.6 mm"
+  },
+  {
+   "check": "real start G-code (M620 filament load, M412 runout check)",
+   "result": "pass",
+   "detail": "{'filament_load': True, 'runout_detection': True}"
+  },
+  {
+   "check": "bed temperature is not the Cool Plate default",
+   "result": "pass",
+   "detail": "M190 S65 (Textured PEI Plate)"
+  },
+  {
+   "check": "no slicer warnings (beyond timelapse)",
+   "result": "pass",
+   "detail": "['not_support_traditional_timelapse']"
+  },
+  {
+   "check": "the sliced filament is loaded",
+   "result": "pass",
+   "detail": "slice wants ['GFA00'] (Bambu PLA Basic @BBL A1M); matching AMS slots (0-based): [('0', 'PLA Basic', '0A2989FF'), ('1', 'PLA Basic', 'F5547CFF'), ('2', 'PLA Basic', '000000FF')]"
+  },
+  {
+   "check": "build plate is the sliced one",
+   "result": "warn",
+   "detail": "slice assumes Textured PEI Plate (bed 65 \u00b0C); confirm on the frame or in person"
+  },
+  {
+   "check": "Wi-Fi signal usable",
+   "result": "pass",
+   "detail": "-44dBm"
+  },
+  {
+   "check": "last job's part removed",
+   "result": "warn",
+   "detail": "state FINISH: the last part may still be on the plate"
+  },
+  {
+   "check": "camera frame",
+   "result": "pass",
+   "detail": "1680\u00d71080"
+  },
+  {
+   "check": "frame bright enough to judge the plate",
+   "result": "pass",
+   "detail": "mean luma 113.2/255"
+  },
+  {
+   "check": "plate empty (human/visual check of the frame)",
+   "result": "warn",
+   "detail": "not automatable yet: look at the frame"
+  }
+ ],
+ "verdict": "HUMAN-DECISION"
+}
