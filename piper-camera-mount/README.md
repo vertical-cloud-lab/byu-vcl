@@ -163,7 +163,8 @@ From `envelope.py` (`exports/envelope.json`), fingers 40 mm apart:
 ## Hardware
 
 The whole bill of materials, with what the lab already has and what is still to buy, is in
-[`BOM.md`](BOM.md).
+[`BOM.md`](BOM.md). How much RAM the Pi 5 should have (8 GB, if it will run Claude Code or PyTorch
+models on the wrist) is in [`compute/README.md`](compute/README.md).
 
 | Qty | Part | Where |
 |---|---|---|
@@ -173,7 +174,7 @@ The whole bill of materials, with what the lab already has and what is still to 
 | 4 | M2.5 x 12 + 4 M2.5 nuts | HQ Camera: heads in counterbores on the pod's front, nuts on the camera's back |
 | 4 | M2 x 10 + 4 M2 nuts | Camera Module 3 Wide, the same way |
 | 4 | M2.5 x 12 | Pi 5, through the spacers into the nut traps in the carrier |
-| 2 | Raspberry Pi Standard-Mini camera cable, 300 or 500 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short. 500 mm works with the extra folded on the carrier |
+| 2 | Raspberry Pi Standard-Mini camera cable, 300 or 500 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short. 500 mm works with the extra folded on the carrier; 300 mm leaves nothing to fold |
 | 1 | Pi 5 Active Cooler | Faces outward (+X) |
 | 1 | 24 V supply at the base, a 24 V to 5 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
 
@@ -188,6 +189,10 @@ its own lead up the arm, with a service loop at each joint. It does not share th
   carrier, plus a 10 to 15 cm lead to the Pi. The loss in the lead is under 1 %. Most of these
   converters don't speak USB-PD; set `PSU_MAX_CURRENT=5000` in the Pi's EEPROM to tell it the supply
   can do 5 A. Power over Ethernet is the alternative if the streams should be on a wire too.
+- **Or send 12 V over USB-C.** A PD step-down board on the carrier asks the supply for 12 V and makes
+  5 V next to the Pi, so the official supply and a USB-C extension, or any charger that offers 12 V
+  and a 10 ft cable, will reach. No 5 V supply, from any maker, was found that both reaches and
+  gives 3 A or more ([`power/shopping_2026-10-08.md`](power/shopping_2026-10-08.md)).
 - **The gripper's power/CAN lead is not for the Pi.** It is a short 4-wire jumper from a socket on
   J6 into a notch in the gripper's back cover, right at the flange ring (y ≈ 48 to 54). The mount
   only has to stay out of its way, and it does: the collar stops at y = 46.
@@ -764,6 +769,7 @@ python ../sim/sliced_fea.py --cases yank                             # the parts
 python ../sim/sliced_fea.py --cases clamp pod zones --h 1.0          # (about 15 min per setup)
 python ../sim/sliced_plots.py                                        # renders/sliced_*.png
 python ../power/voltage_drop.py                                      # power/README.md's table
+python ../compute/ram_footprint.py prep && python ../compute/ram_footprint.py all   # compute/README.md's memory table
 python ../onshape/add_gripper.py --doc 93ef145982c24192bfd160be --ws e3d08fcb2dcad7c92e183721   # done once
 ```
 

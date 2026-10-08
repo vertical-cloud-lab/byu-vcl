@@ -35,24 +35,41 @@ def buck(v0: float, metres: float, awg: int, amps_5v: float, eff: float = 0.9) -
 
 
 def main() -> None:
+    # (route, supply volts, cable legs, mated pairs). The 8 October 2026 rows are the longest
+    # non-Raspberry Pi supplies found (power/shopping_2026-10-08.md); none of them states a wire
+    # gauge, so the gauges are guesses, generous ones for the 5.25 V supply.
     rows = [
-        ("Official 27 W supply alone: its 1.2 m, 17 AWG lead (too short to reach)", [(1.2, 17)], 1),
-        ("Official supply + 2 m USB-C extension (22 AWG, one more mated pair)", [(1.2, 17), (2.0, 22)], 2),
-        ("Official supply + 2 m 240 W (5 A) extension, if it really is 20 AWG", [(1.2, 17), (2.0, 20)], 2),
-        ("Official supply + 2 m extension of a thin 3 A cable (26 AWG)", [(1.2, 17), (2.0, 26)], 2),
-        ("5 A PD supply + one 3 m 5 A cable (20 AWG)", [(3.0, 20)], 1),
-        ("5 A PD supply + one 3 m 3 A cable (24 AWG)", [(3.0, 24)], 1),
+        ("Official 27 W supply alone: its 1.2 m, 17 AWG lead (too short to reach)", V_OFFICIAL, [(1.2, 17)], 1),
+        ("Official supply + 2 m USB-C extension (22 AWG, one more mated pair)", V_OFFICIAL, [(1.2, 17), (2.0, 22)], 2),
+        ("Official supply + 2 m 240 W (5 A) extension, if it really is 20 AWG", V_OFFICIAL, [(1.2, 17), (2.0, 20)], 2),
+        ("Official supply + 2 m extension of a thin 3 A cable (26 AWG)", V_OFFICIAL, [(1.2, 17), (2.0, 26)], 2),
+        ("5 A PD supply + one 3 m 5 A cable (20 AWG)", V_OFFICIAL, [(3.0, 20)], 1),
+        ("5 A PD supply + one 3 m 3 A cable (24 AWG)", V_OFFICIAL, [(3.0, 24)], 1),
+        ("iUniker 5.25 V / 4 A, 1.5 m lead (if 18 AWG) + 2 m 240 W extension (20 AWG)", 5.25, [(1.5, 18), (2.0, 20)], 2),
+        ("Any PD charger's 5 V / 3 A profile (5.0 V) + a 3 m 240 W cable (20 AWG)", 5.0, [(3.05, 20)], 2),
+        ("5 V / 2 A camera adapter with its 3 m USB-A to C cable (if 24 AWG)", 5.0, [(3.05, 24)], 2),
     ]
     out = {"assumptions": __doc__.split("\n\n")[1].replace("\n", " "), "under-voltage (V)": UV, "usb": [], "buck": []}
     print(f"| Route (3 to 3.5 m to the wrist) | at {LOADS[0]} A | at {LOADS[1]} A |\n|---|---|---|")
-    for name, legs, mated in rows:
-        v = [usb(V_OFFICIAL, legs, mated, a) for a in LOADS]
+    for name, v0, legs, mated in rows:
+        v = [usb(v0, legs, mated, a) for a in LOADS]
         out["usb"].append({"route": name, "volts at the Pi": [round(x, 2) for x in v]})
         print(f"| {name} | {v[0]:.2f} V{'' if v[0] > UV else ' (low)'} | {v[1]:.2f} V{'' if v[1] > UV else ' (low)'} |")
     for v0, awg in ((24.0, 22), (12.0, 22), (24.0, 26)):
         vin, pct = buck(v0, 3.5, awg, LOADS[1])
         out["buck"].append({"supply (V)": v0, "AWG": awg, "volts at the converter": round(vin, 2), "lost (%)": round(pct, 2)})
         print(f"| {v0:.0f} V up 3.5 m of {awg} AWG, 5.1 V buck at the Pi | 5.10 V | 5.10 V (converter sees {vin:.2f} V, {pct:.1f} % lost) |")
+    # 12 V over USB-C PD to a PD step-down board on the carrier: the cable's own resistance plus its
+    # mated pairs, at the 12 V current the board draws for the Pi's 2.5 A.
+    for name, legs, mated in (
+        ("Any PD charger with a 12 V profile + one 3 m 240 W cable (20 AWG), PD step-down board at the Pi", [(3.05, 20)], 2),
+        ("Official supply's 12 V profile + 2 m 240 W extension (20 AWG), PD step-down board at the Pi", [(1.2, 17), (2.0, 20)], 3),
+    ):
+        i = 5.1 * LOADS[1] / 0.9 / 12.0
+        drop = i * (sum(2 * m * OHM_PER_M[g] for m, g in legs) + mated * R_MATED)
+        out["buck"].append({"route": name, "supply (V)": 12.0, "volts at the converter": round(12.0 - drop, 2),
+                            "lost (%)": round(100 * drop / 12.0, 2)})
+        print(f"| {name} | 5.10 V | 5.10 V (board sees {12.0 - drop:.2f} V, {100 * drop / 12.0:.1f} % lost) |")
     (Path(__file__).with_suffix(".json")).write_text(json.dumps(out, indent=2) + "\n")
 
 

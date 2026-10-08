@@ -33,8 +33,13 @@ Pi). So besides getting power up the arm, the socket must never be what takes th
 | Official supply + 2 m extension of a thin 3 A cable (26 AWG) | 4.18 V (low) | 3.56 V (low) |
 | 5 A PD supply + one 3 m 5 A cable (20 AWG) | 4.77 V | 4.55 V (low) |
 | 5 A PD supply + one 3 m 3 A cable (24 AWG) | 4.31 V (low) | 3.79 V (low) |
+| iUniker 5.25 V / 4 A, 1.5 m lead (if 18 AWG) + 2 m 240 W extension (20 AWG) | 4.90 V | 4.66 V |
+| Any PD charger's 5 V / 3 A profile (5.0 V) + a 3 m 240 W cable (20 AWG) | 4.64 V | 4.39 V (low) |
+| 5 V / 2 A camera adapter with its 3 m USB-A to C cable (if 24 AWG) | 4.17 V (low) | 3.62 V (low) |
 | 24 V up 3.5 m of 22 AWG, 5.1 V buck converter at the Pi | 5.10 V | 5.10 V (the converter sees 23.78 V; 0.9 % lost) |
 | 12 V up 3.5 m of 22 AWG, 5.1 V buck converter at the Pi | 5.10 V | 5.10 V (the converter sees 11.56 V; 3.6 % lost) |
+| Any PD charger with a 12 V profile + one 3 m 240 W cable, PD step-down board at the Pi | 5.10 V | 5.10 V (the board sees 11.71 V; 2.4 % lost) |
+| Official supply's 12 V profile + 2 m 240 W extension, PD step-down board at the Pi | 5.10 V | 5.10 V (the board sees 11.72 V; 2.3 % lost) |
 
 Even the best 5 V route, one continuous 3 m cable with 20 AWG conductors, sags under load. Any
 extension is marginal at best.
@@ -54,6 +59,29 @@ design:
   Any bit 0 or 16 set means under-voltage. If either shows up, go to the 24 V route below.
 - **It still needs the strain relief.** An extension adds a second plug that can lever on a
   socket, so clamp the lead to the carrier as below.
+
+## Supplies not made by Raspberry Pi (8 October 2026)
+
+A second search through the CubXL Pi looked for any supply that both powers the Pi 5 and reaches
+the wrist. The details are in [`shopping_2026-10-08.md`](shopping_2026-10-08.md).
+
+- **At 5 V, none does.**
+  - Where a supply with 3 A or more at 5 V gives its lead's length, it's 1 to 1.5 m.
+  - The 3 m and 5 m 5 V adapters are 2 A (10 W) camera chargers, and they'd leave the Pi at 4.2 V.
+  - Chargers sold with 10 ft cables give only 3 A at 5 V, and through 3 m that's 4.64 V.
+- **The best 5 V-only test:** [iUniker's 5.25 V / 4 A supply](https://www.amazon.com/dp/B097P2NLVH)
+  ($9.99) through the same 2 m extension. Its extra 0.15 V puts the Pi at 4.90 V streaming and
+  4.66 V with a busy CPU, if its lead is 18 AWG. It has no PD, which CSI cameras don't need.
+- **What does reach with margin is 12 V on the USB-C cable,** turned into 5 V on the carrier by a
+  PD step-down board such as [eleUniverse's](https://www.amazon.com/dp/B0FR8VRWFJ) ($20.99, 34 g,
+  9 to 24 V in, 5 V / 5 A out).
+  - **Which cables work:** the board asks the charger for 12 V, so either the official supply
+    through the extension, or any 12 V-capable charger and a 10 ft 240 W cable. At about 1.2 A on
+    the cable, the drop no longer matters.
+  - **Check the charger:** many phone and laptop chargers skip 12 V and offer only 5, 9, 15 and
+    20 V.
+  - **On the carrier:** fixed there, it puts its own socket, not the Pi's, at the end of the long
+    cable. The carrier's CAD has no place for it yet.
 
 ## What people do instead: send a higher voltage and convert at the Pi
 

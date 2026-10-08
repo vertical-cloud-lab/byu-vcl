@@ -43,6 +43,27 @@
         4.31,
         3.79
       ]
+    },
+    {
+      "route": "iUniker 5.25 V / 4 A, 1.5 m lead (if 18 AWG) + 2 m 240 W extension (20 AWG)",
+      "volts at the Pi": [
+        4.9,
+        4.66
+      ]
+    },
+    {
+      "route": "Any PD charger's 5 V / 3 A profile (5.0 V) + a 3 m 240 W cable (20 AWG)",
+      "volts at the Pi": [
+        4.64,
+        4.39
+      ]
+    },
+    {
+      "route": "5 V / 2 A camera adapter with its 3 m USB-A to C cable (if 24 AWG)",
+      "volts at the Pi": [
+        4.17,
+        3.62
+      ]
     }
   ],
   "buck": [
@@ -63,6 +84,18 @@
       "AWG": 26,
       "volts at the converter": 23.45,
       "lost (%)": 2.31
+    },
+    {
+      "route": "Any PD charger with a 12 V profile + one 3 m 240 W cable (20 AWG), PD step-down board at the Pi",
+      "supply (V)": 12.0,
+      "volts at the converter": 11.71,
+      "lost (%)": 2.39
+    },
+    {
+      "route": "Official supply's 12 V profile + 2 m 240 W extension (20 AWG), PD step-down board at the Pi",
+      "supply (V)": 12.0,
+      "volts at the converter": 11.72,
+      "lost (%)": 2.3
     }
   ]
 }

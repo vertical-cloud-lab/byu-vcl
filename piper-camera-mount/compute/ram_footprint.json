@@ -1,0 +1,183 @@
+{
+ "meta": {
+  "machine": "x86_64, 4 CPUs, INTEL(R) XEON(R) PLATINUM 8573C",
+  "python": "3.12.3",
+  "versions": {
+   "numpy": "2.5.2",
+   "opencv": "5.0.0",
+   "torch": "2.14.1+cpu",
+   "onnxruntime": "1.30.0",
+   "ultralytics": "8.4.174",
+   "ncnn": "1.0.20260526"
+  },
+  "frames": {
+   "HQ": [
+    3040,
+    4056
+   ],
+   "CM3 Wide": [
+    2592,
+    4608
+   ]
+  },
+  "note": "Each case runs in its own fresh Python process and reports its peak resident set (ru_maxrss), so one case's allocations can't hide in another's. Model weights and activations are the same size on any CPU, so the peaks carry over to a Pi 5 to within the frameworks' own overhead (tens of MB). The times are from whatever machine runs this and are only there to compare runtimes with each other; for Pi 5 speeds see compute/README.md."
+ },
+ "cases": [
+  {
+   "case": "python + numpy",
+   "ok": true,
+   "peak RSS (MB)": 27.4,
+   "wall (s)": 0.1,
+   "threads": "4"
+  },
+  {
+   "case": "OpenCV: AprilTags on both full 12 MP frames, bench scene",
+   "ok": true,
+   "peak RSS (MB)": 268.2,
+   "after load (MB)": 132.7,
+   "ms per pair of frames": 122.0,
+   "tags found": 24,
+   "wall (s)": 0.6,
+   "threads": "4"
+  },
+  {
+   "case": "OpenCV: AprilTags on both full 12 MP frames, pure noise (worst case)",
+   "ok": true,
+   "peak RSS (MB)": 687.4,
+   "after load (MB)": 129.5,
+   "ms per pair of frames": 951.5,
+   "tags found": 0,
+   "wall (s)": 3.4,
+   "threads": "4"
+  },
+  {
+   "case": "PyTorch + torchvision, imported only",
+   "ok": true,
+   "peak RSS (MB)": 305.1,
+   "wall (s)": 2.2,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n detect, Ultralytics (PyTorch), 640",
+   "ok": true,
+   "peak RSS (MB)": 492.9,
+   "after load (MB)": 350.6,
+   "ms per frame": 46.1,
+   "wall (s)": 3.0,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n detect, ONNX Runtime, 640",
+   "ok": true,
+   "peak RSS (MB)": 155.4,
+   "after load (MB)": 84.3,
+   "ms per frame": 43.5,
+   "wall (s)": 0.5,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n detect, NCNN, 640",
+   "ok": true,
+   "peak RSS (MB)": 147.6,
+   "after load (MB)": 69.3,
+   "ms per frame": 63.1,
+   "wall (s)": 0.5,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11s detect, Ultralytics (PyTorch), 640",
+   "ok": true,
+   "peak RSS (MB)": 563.5,
+   "after load (MB)": 379.6,
+   "ms per frame": 110.8,
+   "wall (s)": 3.3,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11s detect, ONNX Runtime, 640",
+   "ok": true,
+   "peak RSS (MB)": 263.2,
+   "after load (MB)": 137.4,
+   "ms per frame": 183.5,
+   "wall (s)": 1.4,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11m detect, ONNX Runtime, 640",
+   "ok": true,
+   "peak RSS (MB)": 443.8,
+   "after load (MB)": 233.8,
+   "ms per frame": 282.2,
+   "wall (s)": 2.0,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n-seg, Ultralytics (PyTorch), 640",
+   "ok": true,
+   "peak RSS (MB)": 508.0,
+   "after load (MB)": 352.2,
+   "ms per frame": 57.0,
+   "wall (s)": 3.0,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n-seg, ONNX Runtime, 640",
+   "ok": true,
+   "peak RSS (MB)": 194.1,
+   "after load (MB)": 85.9,
+   "ms per frame": 97.4,
+   "wall (s)": 0.8,
+   "threads": "4"
+  },
+  {
+   "case": "YOLO11n-seg, NCNN, 640",
+   "ok": true,
+   "peak RSS (MB)": 158.6,
+   "after load (MB)": 73.2,
+   "ms per frame": 90.3,
+   "wall (s)": 0.7,
+   "threads": "4"
+  },
+  {
+   "case": "U-Net (ResNet-34), PyTorch, 512 x 512",
+   "ok": true,
+   "peak RSS (MB)": 595.1,
+   "after load (MB)": 438.5,
+   "ms per frame": 354.2,
+   "params (M)": 24.4,
+   "wall (s)": 4.9,
+   "threads": "4"
+  },
+  {
+   "case": "Mask R-CNN (ResNet-50 FPN v2), PyTorch, frame shrunk to 1066 x 800 first",
+   "ok": true,
+   "peak RSS (MB)": 1278.7,
+   "after load (MB)": 500.0,
+   "ms per frame": 4137.1,
+   "params (M)": 46.4,
+   "wall (s)": 15.3,
+   "threads": "4"
+  },
+  {
+   "case": "Mask R-CNN (ResNet-50 FPN v2), PyTorch, full 12 MP frame in",
+   "ok": true,
+   "peak RSS (MB)": 10294.4,
+   "after load (MB)": 631.1,
+   "ms per frame": 6496.2,
+   "params (M)": 46.4,
+   "wall (s)": 22.5,
+   "threads": "4"
+  }
+ ],
+ "also measured": {
+  "Claude Code 2.1.293, native binary, this CI session after about 28 min (VmHWM / VmRSS from /proc)": {
+   "peak RSS (MB)": 374.6,
+   "RSS (MB)": 313.0
+  },
+  "CubXL Pi 5 (1 GB), Debian 13 trixie, headless, idle (free -m, 2026-10-08)": {
+   "total (MB)": 990,
+   "used (MB)": 269,
+   "available (MB)": 721
+  }
+ }
+}

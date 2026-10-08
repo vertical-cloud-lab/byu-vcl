@@ -1,4 +1,4 @@
-# Bill of materials, what the lab has, and what's still to buy (7 October 2026)
+# Bill of materials, what the lab has, and what's still to buy (7 October 2026, updated 8 October)
 
 This is one mount: the PiPER's gripper, a Pi 5, the HQ Camera and the Camera Module 3 Wide, powered by
 the official 27 W supply through a USB-C extension, with 24 V up the arm as the fallback
@@ -10,7 +10,8 @@ The "Lab has" column comes from a read of every issue, PR and comment in this re
 - **On hand:** a person said it arrived, or used it.
 - **Ordered:** there's an order, but no one has said it arrived.
 
-Prices were checked on 7 October 2026 unless a date is given.
+Prices were checked on 7 October 2026 unless a date is given. How much RAM the Pi should have is in
+[`compute/README.md`](compute/README.md).
 
 ## Bill of materials
 
@@ -31,13 +32,13 @@ for the parts that stay on the arm (see [Material](README.md#material-paht-cf-on
 
 | Qty | Part | Lab has | Evidence |
 |---|---|---|---|
-| 1 | Raspberry Pi 5 | **On hand:** about 6 or 7 unassigned 1 GB boards. 10 were bought, and 8 were in the office on 4 September. One may since have replaced the CubXL's board, whose USB-C socket was damaged. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#198](https://github.com/vertical-cloud-lab/byu-vcl/issues/198#issuecomment-5546194460), [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5841723129) |
+| 1 | Raspberry Pi 5, **8 GB recommended** | **On hand:** about 6 or 7 unassigned 1 GB boards. 10 were bought, and 8 were in the office on 4 September. One may since have replaced the CubXL's board, whose USB-C socket was damaged. A 1 GB board runs the cameras and OpenCV, but not Claude Code (4 GB minimum) or PyTorch models beside them ([`compute/README.md`](compute/README.md)) | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#198](https://github.com/vertical-cloud-lab/byu-vcl/issues/198#issuecomment-5546194460), [#234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5841723129) |
 | 1 | Pi 5 Active Cooler | **Ordered:** 10, on the same PiShop order as the Pi 5s | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
 | 1 | microSD card | **Ordered:** two 5-packs of SanDisk 32 GB, on the same order | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
 | 1 | Raspberry Pi HQ Camera (CS) | **None free.** The lab's only HQ Camera is on the OT-2 (meorders 12704). | [#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-4407498492) |
 | 1 | 6 mm wide-angle CS lens for the HQ | **None.** The OT-2's HQ has a Waveshare 8–50 mm zoom. | [#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-4407498492), [#239](https://github.com/vertical-cloud-lab/byu-vcl/issues/239#issuecomment-6046148468) |
 | 1 | Camera Module 3 Wide | **On hand:** 10 bought, 2 on the CubXL | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171#issuecomment-5642454946) |
-| 2 | Pi 5 camera cable (Standard–Mini), 300 or 500 mm | **Ordered:** 5 × 500 mm. There's one 200 mm on the OT-2. The routes are 206 and 212 mm, so 200 mm is too short. 500 mm works too, with the extra folded flat on the carrier; 300 mm is only tidier. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
+| 2 | Pi 5 camera cable (Standard–Mini), 300 or 500 mm | **On hand:** 5 × 500 mm, in sgbaird's office (8 October). There's one 200 mm on the OT-2. The routes are 206 and 212 mm, so 200 mm is too short. 500 mm works, with the extra folded flat on the carrier; 300 mm is tidier, so two are on the PiShop order below. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#245](https://github.com/vertical-cloud-lab/byu-vcl/pull/245) |
 
 ### Fasteners
 
@@ -63,8 +64,11 @@ change to 24 V up the arm with 5 V made on the carrier ([`power/README.md`](powe
 | 1 | Magnetic breakaway (Adafruit 5521, right-angle USB-C), optional | **None.** It was proposed on 27 September and not ordered |
 | — | Zip ties: strain relief on the carrier, and the service loops | **Some** are in use on the doser, sizes unknown |
 
-If the extension fails: a 24 V supply at the base (36 W or more), a 24 V to 5 V / 5 A USB-C
-converter on the carrier, and about 3–4 m of lead. The lab has none of these.
+If the extension fails, the cheapest fix keeps it: a PD step-down board on the carrier asks the
+official supply for 12 V and makes 5 V next to the Pi ($20.99). The fallback after that is 24 V: a
+supply at the base (36 W or more), a 24 V to 5 V / 5 A USB-C converter on the carrier, and about
+3–4 m of lead. The lab has none of these. The search found no supply, from any maker, that gives
+5 V at 3 A or more on a lead long enough to reach the wrist ([`power/shopping_2026-10-08.md`](power/shopping_2026-10-08.md)).
 
 ### Tools and consumables
 
@@ -84,6 +88,7 @@ converter on the carrier, and about 3–4 m of lead. The lab has none of these.
 |---|---|---|---|---|
 | Raspberry Pi HQ Camera CS | 1 | [PiShop.us](https://www.pishop.us/product/raspberry-pi-hq-camera-cs/), in stock | $55.00 | $55.00 |
 | 6 mm Wide Angle Lens for HQ Camera CS | 1 | [PiShop.us](https://www.pishop.us/product/6mm-wide-angle-lens-for-raspberry-pi-hq-camera-cs/), in stock | $34.00 | $34.00 |
+| Camera Cable for Raspberry Pi 5, **300 mm** (pick the length on the page) | 2 | [PiShop.us](https://www.pishop.us/product/camera-cable-for-raspberry-pi-5/), on the same order, 8 October | $3.95 | $7.90 |
 | M3 x 16 socket head, class 12.9, black oxide | 10 | [Bolt Depot 13638](https://boltdepot.com/Product-Details?product=13638) | $0.12 | $1.20 |
 | M3 x 12 socket head, class 12.9, zinc | 4 | [Bolt Depot 23068](https://boltdepot.com/Product-Details?product=23068) | $0.17 | $0.68 |
 | M3 hex nut, 18-8 stainless | 12 | [Bolt Depot 4773](https://www.boltdepot.com/Product-Details.aspx?product=4773) | $0.07 | $0.84 |
@@ -92,7 +97,8 @@ converter on the carrier, and about 3–4 m of lead. The lab has none of these.
 | M2 x 10 socket head, 18-8 stainless | 6 | [Bolt Depot 6365](https://www.boltdepot.com/Product-Details.aspx?product=6365) | $0.12 | $0.72 |
 | USB-C extension, 240 W (5 A), 6.6 ft, male to female | 1 | [Amazon B09FDWG61C](https://www.amazon.com/dp/B09FDWG61C) (AINOPE), in stock | $8.99 | $8.99 |
 | Zip ties, 400 pack, 4 + 6 + 8 + 12 in, black nylon | 1 | [Amazon B08TVLYB3Q](https://www.amazon.com/dp/B08TVLYB3Q), in stock | $6.99 | $6.99 |
-| | | | **Total** | **about $110, plus shipping** |
+| | | | **Total** | **about $118, plus shipping** |
+| Raspberry Pi 5, **8 GB**, recommended | 1 | [PiShop.us](https://www.pishop.us/product/raspberry-pi-5-8gb/), in stock, 8 October | $175.00 | **about $293 with it** |
 
 Notes on the list:
 
@@ -101,9 +107,12 @@ Notes on the list:
   - The quantities include spares, because nuts get lost in slots.
   - The M3 nuts can come from the Prototyping Lab drawer instead.
 - **Amazon prices** were checked through the CubXL Pi on 8 October 2026, delivering to Provo.
-- **The camera cables** aren't on the list: the 500 mm ones from #164 will do. If they never
-  arrived, buy two [300 mm](https://www.pishop.us/product/camera-cable-for-raspberry-pi-5/)
-  ($3.95 each) instead, since they're the same price and leave less to fold.
+- **The camera cables:** the 500 mm ones from #164 are in sgbaird's office and will do. Since the HQ
+  Camera and lens come from PiShop anyway, two 300 mm cables cost $7.90 more and leave nothing
+  to fold.
+- **The 8 GB Pi 5** is for running Claude Code, PyTorch models or several models at once on the
+  wrist. Its price is from PiShop on 8 October, when the 1 GB and 2 GB boards were out of stock and
+  the 4 GB was $110. The reasoning and measurements are in [`compute/README.md`](compute/README.md).
 - **The extension** goes between the official 27 W supply's 1.2 m lead and the Pi, about 3.2 m in
   all. It should hold the Pi at about 4.78 V while it streams, against an under-voltage limit of
   4.63 V, if its wires are really 20 AWG. No listing says, so check it on the arm with
@@ -117,8 +126,11 @@ Notes on the list:
 | Item | When | Where | Price |
 |---|---|---|---|
 | Magnetic right-angle USB-C adapter, 120 W | A breakaway, so a snagged lead pulls apart instead of the socket. It adds another mated pair, about 0.03 V at 1.5 A | [Adafruit 5521](https://www.adafruit.com/product/5521) | $14.95 |
-| 24 V route: Mean Well GST36U24-P1J, PlusRoc 24 V to 5 V USB-C converter, two 1.5 m barrel extensions, a jack to screw terminal | Only if the Pi reports under-voltage through the extension | [TRC Electronics](https://www.trcelectronics.com/products/mean-well-gst36u24-p1j) $19.48, [Amazon B0FD735LFG](https://www.amazon.com/dp/B0FD735LFG) $15.99, [Adafruit 327](https://www.adafruit.com/product/327) 2 × $2.95, [Adafruit 368](https://www.adafruit.com/product/368) $2.00 | $43.37 |
-| Raspberry Pi 5, 4 GB | If a spare 1 GB board stalls with both cameras. On the CubXL's 1 GB Pi, one of its two 12 MP cameras timed out on 5 of 6 captures, most likely for want of memory ([#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171#issuecomment-5688528247)). An 8 GB board was suggested on [#233](https://github.com/vertical-cloud-lab/byu-vcl/issues/233#issuecomment-5828038858) | [PiShop.us](https://www.pishop.us/product/raspberry-pi-5-4gb/), 1 per order | $110.00 (2 GB $77.50, 8 GB $175.00) |
+| 24 V route: Mean Well GST36U24-P1J, PlusRoc 24 V to 5 V USB-C converter, two 1.5 m barrel extensions, a jack to screw terminal | Only if the Pi reports under-voltage through the extension, and you'd rather not rely on PD | [TRC Electronics](https://www.trcelectronics.com/products/mean-well-gst36u24-p1j) $19.48, [Amazon B0FD735LFG](https://www.amazon.com/dp/B0FD735LFG) $15.99, [Adafruit 327](https://www.adafruit.com/product/327) 2 × $2.95, [Adafruit 368](https://www.adafruit.com/product/368) $2.00 | $43.37 |
+| PD step-down board, 12 V in from USB-C PD, 5 V / 5 A out (eleUniverse) | If the extension leaves the Pi under-voltage: keep the official supply and the extension, and have the board ask for 12 V and make 5 V on the carrier. 34 g, with a fan; the carrier has no place for it yet | [Amazon B0FR8VRWFJ](https://www.amazon.com/dp/B0FR8VRWFJ), in stock, 8 October | $20.99 |
+| iUniker 5 V / 4 A supply (5.25 V out, 1.5 m lead) | Another cheap test in place of the official supply: its 0.15 V more puts the Pi at about 4.90 V through the extension. No PD | [Amazon B097P2NLVH](https://www.amazon.com/dp/B097P2NLVH), in stock, 8 October | $9.99 |
+| Raspberry Pi 5, 4 GB, instead of the 8 GB | Meets Claude Code's 4 GB minimum, but not with the cameras and a PyTorch model beside it | [PiShop.us](https://www.pishop.us/product/raspberry-pi-5-4gb/), in stock, 8 October | $110.00 |
+| Raspberry Pi AI HAT+, 13 TOPS (Hailo-8L) | For YOLO or segmentation at video rate: YOLO11n at 157 fps against about 7 fps on the Pi's CPU. It needs room on the carrier that the CAD doesn't have | [PiShop.us](https://www.pishop.us/product/raspberry-pi-ai-hat-13-tops/), 8 October | $76.95 (26 TOPS $119.95) |
 | H2D hotend, 0.6 mm hardened steel | If it isn't on meorders 13433, and the 0.4 mm clogs on PAHT-CF | [Bambu Lab](https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066388), 3 October | $17.99 |
 | A luggage scale | To measure the breakaway's pull-off force, which no maker publishes | any | about $10 |
 
@@ -134,8 +146,8 @@ came with a Chinese one ([#259](https://github.com/vertical-cloud-lab/byu-vcl/is
   - On the older 0 to 70 mm gripper (about 145 mm), the pad has to move 2 mm.
 - **What's on meorders 13433:** the 0.5 kg or 1 kg spool, and whether the 0.6 mm hotend was added.
 - **Whether the rest of the #164 order arrived.** Only some of it is confirmed:
-  - Confirmed: the Pi 5s, the COMRUN kits and the Camera Module 3 Wides.
-  - Not confirmed: the Active Coolers, the SD cards and the 500 mm cables.
+  - Confirmed: the Pi 5s, the COMRUN kits, the Camera Module 3 Wides and the 500 mm cables.
+  - Not confirmed: the Active Coolers and the SD cards.
 - **Other projects want the same parts.** On 7 October the atomizer's front viewport was asked to
   get an HQ + Wide pair like this one ([#198](https://github.com/vertical-cloud-lab/byu-vcl/issues/198#issuecomment-6032136284)).
   If that goes ahead, it needs its own HQ Camera, and another spare Pi 5.
