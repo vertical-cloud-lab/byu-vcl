@@ -1,0 +1,171 @@
+{
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6069360332",
+ "requested_by": "ronnie-guymon",
+ "request_text": "print <Atomizer Holder V3 element> in black, the plate is clear (21:26:05 UTC); then 'print on the A1 mini' (21:27:35)",
+ "source": {
+  "onshape_document": "https://byudesign.onshape.com/documents/3094e1d7fbb4c4351dcd0e1a/w/d3134413115bb70af771d24a/e/c785cc2846c2740d77a7bd91",
+  "document_name": "Atomizer holder",
+  "element": "Atomizer Holder V3",
+  "microversion": "82e22afb979092148007314b",
+  "workspace_modified_at": "2026-10-08T21:35:51Z",
+  "export_route": "GET /api/v10/partstudios/.../gltf with the lab API key at cad.onshape.com; glTF in metres, Z-up, converted to STL in mm with trimesh (merge_vertices, watertight check)",
+  "mesh": {
+   "facets": 404,
+   "watertight": true,
+   "bodies": 1,
+   "extents_mm": [
+    50.0,
+    70.0,
+    45.0
+   ],
+   "volume_mm3": 77781.35
+  },
+  "change_from_2026_10_06": "Sketches 5-6 and Extrudes 5-6: three 10.5 x 3.5 mm magnet slots (one 45 mm deep from a long side at the hook end, two 42 mm deep from the top end), each 1.0 mm from the back face. Old minus new = 4740.75 mm3, exactly the slots.",
+  "superseded": "The 21:20 UTC save had the skins at 0.5 mm (upright slots) and 0.7 mm (cross slot). It was exported at 21:28 and pre-flighted, then replaced by the designer's 21:35:51 change to 1 mm before anything was sliced or sent."
+ },
+ "slicer": "Bambu Studio 02.08.02.61 (GUI, on the runner's Xvfb display), bundled profiles (configuration update cancelled)",
+ "presets": {
+  "printer": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.20mm Standard @BBL A1M",
+  "filament": "Bambu PLA Basic @BBL A1M",
+  "plate": "Textured PEI Plate"
+ },
+ "settings_changed_in_gui": {
+  "filament_colour": "Black (10101)"
+ },
+ "orientation": "Stood on the bottom of the hook, as on 2026-10-06 and as it hangs in use: (x, y, z) -> (x, -z, y) from Onshape's frame, back face toward the back of the bed. No supports. Upright slots open at the top (z 28-70 mm); the cross slot is a tunnel at z 5-15.5 mm, roof bridged across 3.5 mm.",
+ "skin_check": "In the plate G-code, each 1.0 mm skin is two 0.42 mm outer walls with a 0.23 mm gap-fill line between them (layers z 10 and z 40); the cross slot's roof (z 15.8) is Bridge across the 3.5 mm span. See skin_toolpaths.png.",
+ "bambu_estimates": {
+  "total": "1h7m25s",
+  "prepare": "5m58s",
+  "timelapse_moves_not_run": "4m13s",
+  "model": "57m13s",
+  "filament_g": 31.36,
+  "filament_m": 10.35,
+  "layers": 350,
+  "max_z_mm": 70.0
+ },
+ "sent_file": {
+  "name": "atomizer_holder_v3_magnet_slots_A1mini_blackPLA.gcode.3mf",
+  "how": "The .<pid>.0.3mf Studio wrote next to its slice in /tmp/bamboo_model at Send; DesignerUserId blanked. A pre-Send File > Export > Export plate sliced file had the same plate G-code.",
+  "plate_1_gcode_md5": "23ae1261b9ce59a0bad10f31e77b52a3",
+  "job_name_on_printer": "atomizer_holder_v3_magnet_slots_print"
+ },
+ "send_options": {
+  "printer": "Thumbelina, the A1 Mini",
+  "plate": "PEI",
+  "ams_mapping": {
+   "PLA (filament 1)": "A3 (0-based slot 2), black PLA Basic"
+  },
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "go": {
+  "by": "ronnie-guymon",
+  "comments": [
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6069360332 (\"the plate is clear\", in the request)",
+   "https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6069658934 (\"plate is clear, the red bin is not in the path\", 21:45:55)"
+  ],
+  "notes": "Both pre-flight frames show the red bin just behind the bed's back right corner, where it was moved away from on 2026-10-06; asked about, Ronnie judged it out of the bed's path."
+ },
+ "login_code_relayed_by": "ronnie-guymon (posted 21:40:52, typed 21:40:57, worked first time)",
+ "route": "Bambu Studio GUI on the runner (runbook route 3). Pre-flight and watch through OT2_STREAM_CAM (ssh port forwards only): the CubXL and RPI stream-cam Pis were offline on the tailnet.",
+ "timeline_utc": [
+  [
+   "21:26:05",
+   "Request"
+  ],
+  [
+   "21:27:35",
+   "\"print on the A1 mini\" (started a second run, which stood down)"
+  ],
+  [
+   "21:28",
+   "First Onshape export (the 21:20 save: 0.5/0.7 mm skins)"
+  ],
+  [
+   "21:32:54",
+   "First pre-flight: FINISH after 'Part Studio 1 - Carriage.step', no error or HMS, heaters off, bed 33 C; HUMAN-DECISION"
+  ],
+  [
+   "21:33:48",
+   "Screen recording and Bambu Studio started"
+  ],
+  [
+   "21:35:51",
+   "Designer saves the 1 mm skins; says so at 21:36:40 (started a third run, which stood down)"
+  ],
+  [
+   "21:36:55",
+   "Studio Log In pressed; Bambu e-mails a code"
+  ],
+  [
+   "21:40:57",
+   "Code typed 5 s after it was posted: logged in"
+  ],
+  [
+   "21:40",
+   "Second Onshape export, microversion 82e22af"
+  ],
+  [
+   "21:43-21:45",
+   "Sliced in the GUI; filament set to black; re-sliced; plate sliced file exported"
+  ],
+  [
+   "21:45:55",
+   "The go"
+  ],
+  [
+   "21:46:10",
+   "Fresh pre-flight against the exported 3MF: HUMAN-DECISION, all automated checks pass"
+  ],
+  [
+   "21:46:44",
+   "Send"
+  ],
+  [
+   "21:47:04",
+   "RUNNING: the first status read after Send, 20 s later"
+  ],
+  [
+   "21:53:09",
+   "Layer 1"
+  ],
+  [
+   "22:48:47",
+   "FINISH"
+  ]
+ ],
+ "watch": {
+  "frames_every_s": [
+   30,
+   60
+  ],
+  "auto_stop": true,
+  "max_layer_seen": 350,
+  "print_errors": [],
+  "hms": [],
+  "alarms": [],
+  "exits": [
+   10,
+   0
+  ]
+ },
+ "recording": {
+  "url": "https://www.youtube.com/watch?v=Yf4LR9r0XuM",
+  "privacy": "unlisted",
+  "channel": "BYU Vertical Cloud Lab",
+  "length": "5:09",
+  "cut": "21:36:35-21:42:35 UTC (the Bambu login and the home page that shows the account name)",
+  "blurred": "the room corners of Studio's camera pane",
+  "chapters": [
+   "0:00 Bambu Studio's first run on the runner (3x)",
+   "0:56 Slicing the 1 mm-skin version, exporting it, and Send (3x)",
+   "2:24 The start: heating, homing, bed levelling, flow calibration (16x)",
+   "2:54 The print through Studio's live view, Send to FINISH (24x)"
+  ]
+ },
+ "actual_duration": "62m03s from Send (21:46:44) to FINISH (22:48:47); Studio estimated 1h7m25s, of which 4m13s is timelapse moves that do not run with timelapse off",
+ "after": "At 22:49:11 the plate was already empty: the part had been taken off within about 25 s of FINISH."
+}

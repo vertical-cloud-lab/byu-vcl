@@ -138,3 +138,38 @@ The same as 2026-10-06:
 
 The slice is 350 layers to 70.0 mm and 31.36 g (10.35 m). Studio's estimate was 1 h 7 min 25 s;
 4 min 13 s of that is timelapse moves, which don't run with timelapse off.
+
+### How it went (2026-10-08, UTC)
+
+| | |
+|---|---|
+| Route | Bambu Studio's GUI on the runner, logged in to the lab's Bambu account (route 3 of the Bambu runbook in [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234)). Pre-flight and `watch` went through `OT2_STREAM_CAM`, using ssh port forwards only, because the CubXL and RPI stream-cam Pis were offline on the tailnet |
+| Request | 21:26:05, "in black, the plate is clear". At 21:27:35, "print on the A1 mini" |
+| First export | 21:28. This was the 21:20 save, with 0.5 and 0.7 mm skins |
+| Pre-flight 1 | 21:32:54. `FINISH` after someone else's *Part Studio 1 - Carriage.step*, no error or HMS alert, heaters off, bed 33 °C. The red bin was again just behind the bed's back right corner, so Ronnie was asked about it |
+| The 1 mm change | Saved 21:35:51, posted 21:36:40 |
+| Login | *Log In* at 21:36:55. The code was posted at 21:40:52 and typed 5 s later, and it worked the first time |
+| Second export | About 21:40, microversion `82e22af` |
+| Slice | 21:43–21:45 in the GUI. The filament was set to black, then the plate was re-sliced and exported |
+| The go | 21:45:55, "plate is clear, the red bin is not in the path" |
+| Pre-flight 2 | 21:46:10, against the exported 3MF. Every automated check passed. The plate, the plate type and the empty plate are always left to a person |
+| Send | 21:46:44. `RUNNING` by 21:47:04 |
+| Layer 1 | 21:53:09, after a 6.4 min start sequence |
+| Finish | `FINISH` at 22:48:47, 62.0 min after Send, against Studio's 1 h 7 min, which includes 4 min of timelapse moves that don't run. `watch` exited 0, with no `print_error`, HMS alert or temperature alarm in 1,682 status samples. By 22:49:11 the part was already off the plate |
+
+The two other `@claude` comments in the thread, at 21:27:35 and 21:36:40, each started another run. Both stood
+down without touching the printer. The second one spotted that this session's first export
+predated the 1 mm change.
+
+Frames, room blurred: [layer 5](evidence/2026-10-08/frames/20261008T215601Z_L5.jpg),
+[layer 59](evidence/2026-10-08/frames/20261008T220726Z_L59.jpg),
+[layer 80](evidence/2026-10-08/frames/20261008T221103Z_L80.jpg) (just above the cross slot's roof),
+[layer 151](evidence/2026-10-08/frames/20261008T222133Z_L151.jpg),
+[layer 248](evidence/2026-10-08/frames/20261008T223345Z_L248.jpg),
+[the last layer](evidence/2026-10-08/frames/20261008T224759Z_L350.jpg) (22:47:59) and
+[the empty plate](evidence/2026-10-08/frames/20261008T224911Z_after.jpg) (22:49:11).
+
+**[Recording](https://www.youtube.com/watch?v=Yf4LR9r0XuM)** (5:09, unlisted). It runs from Studio's first run, through slicing and
+Send, to `FINISH` through Studio's live view. The login and the home page that shows the
+account name (21:36:35–21:42:35) are cut, and the room is blurred.
+
