@@ -6,6 +6,8 @@ box instead of snap clips, to be held to the cabinet by a magnet (see
 ([*Atomizer holder*, element *Atomizer Holder V3*](https://byudesign.onshape.com/documents/3094e1d7fbb4c4351dcd0e1a/w/d3134413115bb70af771d24a/e/c785cc2846c2740d77a7bd91)).
 One was printed in black PLA on the lab's A1 mini on 2026-10-06, at the request on
 [PR #257](https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6025049559).
+A second, with three pockets for bar magnets added in the same element, was printed on
+2026-10-08 ([below](#with-magnet-slots-2026-10-08)).
 
 ![The part as it stood on the bed](evidence/2026-10-06/part_views.png)
 
@@ -14,8 +16,8 @@ One was printed in black PLA on the lab's A1 mini on 2026-10-06, at the request 
 | [`atomizer_holder_v3.stl`](atomizer_holder_v3.stl) | The part as designed, in millimetres and Onshape's coordinates |
 | [`atomizer_holder_v3_A1mini_blackPLA.gcode.3mf`](atomizer_holder_v3_A1mini_blackPLA.gcode.3mf) | The sliced plate that was sent. Its plate G-code is byte-identical to Studio's own slice. The lab account's `DesignerUserId` is blanked |
 | [`onshape/features.json`](onshape/features.json) | The element's feature list (4 sketches, 4 extrudes, 1 plane), as fetched at 20:44 UTC |
-| [`evidence/2026-10-06/print.json`](evidence/2026-10-06/print.json) | Source, settings, Send options, estimates, timeline and who gave the go |
-| [`evidence/2026-10-06/`](evidence/2026-10-06/) | Both pre-flights with their camera frames, `watch`'s log (`watch.jsonl.gz`) and key frames |
+| [`evidence/2026-10-06/`](evidence/2026-10-06/) | Both pre-flights with their camera frames, three key frames and the part render |
+| [`atomizer_holder_v3_magnet_slots.stl`](atomizer_holder_v3_magnet_slots.stl) and the other `magnet_slots` files | The 2026-10-08 version and its print ([below](#with-magnet-slots-2026-10-08)) |
 | [`off_the_shelf/`](off_the_shelf/README.md) | What Amazon sells that is like this holder, searched 2026-10-08 |
 
 ## The part
@@ -77,6 +79,62 @@ with trimesh (`merge_vertices`, then a watertightness check).
 | Login | The code was typed 6 s after it was posted and worked the first time |
 | Send | 20:57:45, `PREPARE` by 20:58:00, `RUNNING` by 20:58:12 |
 | Layer 1 | 21:04:51, after Bambu's start sequence |
-| `FINISH` | FINISH_PLACEHOLDER |
+| Finish | Not recorded. The session's last update was at 21:28, on layer 129 of 350, with Studio's estimate at 21:59. It stopped before the print ended, so its `print.json` and `watch` log were never committed. The part was off the plate and hung on the machine by 2026-10-07 ([photo](https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6048100182)) |
 
-FRAMES_PLACEHOLDER
+Frames: [layer 1](evidence/2026-10-06/frames/20261006T210524Z_L1.jpg) (21:05),
+[layer 22](evidence/2026-10-06/frames/20261006T211005Z_L22.jpg) (21:10) and
+[layer 122](evidence/2026-10-06/frames/20261006T212731Z_L122.jpg) (21:27).
+
+## With magnet slots (2026-10-08)
+
+@ronnie-guymon added three pockets for 40 × 10 × 3 mm bar magnets to the same Onshape element,
+so the magnets sit inside the part instead of being hot-glued to its back. He asked for it
+in black on [PR #257](https://github.com/vertical-cloud-lab/byu-vcl/pull/257#issuecomment-6069360332),
+and it was printed on the A1 mini that afternoon.
+
+| File | What |
+|---|---|
+| [`atomizer_holder_v3_magnet_slots.stl`](atomizer_holder_v3_magnet_slots.stl) | The part as designed: Onshape microversion `82e22af`, saved 21:35:51 UTC. Millimetres, Onshape's coordinates |
+| [`atomizer_holder_v3_magnet_slots_print.stl`](atomizer_holder_v3_magnet_slots_print.stl) | The same mesh turned +90° about X, (x, y, z) → (x, −z, y), so it stands on the bottom of the hook. This is the file that was sliced |
+| [`atomizer_holder_v3_magnet_slots_A1mini_blackPLA.gcode.3mf`](atomizer_holder_v3_magnet_slots_A1mini_blackPLA.gcode.3mf) | The file Studio uploaded at Send. Its plate G-code is byte-identical to Studio's slice. The lab account's `DesignerUserId` is blanked |
+| [`onshape/features_2026-10-08.json`](onshape/features_2026-10-08.json) | The feature list at `82e22af`: the 2026-10-06 features plus Sketches 5–6 and Extrudes 5–6, the slots |
+| [`toolpaths_magnet_slots.py`](toolpaths_magnet_slots.py) | Draws the sent G-code's toolpaths over the slots' skins (the figure below) |
+| [`evidence/2026-10-08/`](evidence/2026-10-08/) | Both pre-flights with their camera frames, `print.json`, `watch`'s log and key frames |
+
+### The slots
+
+Nothing else changed. Subtracting the new mesh from the 2026-10-06 one leaves exactly the
+three slots, 4,740.75 mm³. The part prints standing the way it hangs on the panel, hook at the
+bottom, so the heights below are also where the slots sit in use.
+
+| Slot | Section | Depth | Opens on | Where it is in the print |
+|---|---|---|---|---|
+| Cross | 10.5 × 3.5 mm | 45 mm | One long side, at the hook end | A tunnel from 5 to 15.5 mm up. Its roof bridges the 3.5 mm span |
+| Upright, two | 10.5 × 3.5 mm | 42 mm | The top end of the back plate | Open from 28 mm up to the top, at 70 mm. The section lies in the layer plane |
+
+- **Each slot is 1.0 mm from the back face,** the face that goes against the panel.
+  - The first save, at 21:20 UTC, had 0.5 mm behind the upright slots and 0.7 mm behind the
+    cross slot. There the slicer lays two 0.42 mm outer walls into a skin narrower than both
+    together: 0.84 mm of plastic in 0.5 mm. That is likely to bulge the back face or pinch the slot.
+  - Ronnie changed it to 1 mm at 21:35:51, before anything was sent.
+  - In the sent slice, each 1 mm skin is two 0.42 mm outer walls with a 0.23 mm gap-fill line
+    between them. That's solid, and nothing overlaps.
+- **Fit.** The slots leave 0.25 mm a side around a 10 × 3 mm magnet. Printed slots often come out
+  0.1–0.2 mm narrow, and the cross slot's bridged roof may sag a little, so try a magnet in each
+  slot before relying on it.
+- **Holding the magnets in.** The upright slots open upwards in use, so a magnet can't drop out of
+  them. The cross slot opens on a side. In both, the magnet's pull on the panel holds it against
+  the skin, and only friction and the slot's fit stop it sliding along the slot.
+
+![The sent slice's toolpaths over the 1 mm skins](evidence/2026-10-08/skin_toolpaths.png)
+
+### Print settings
+
+The same as 2026-10-06:
+- A1 mini with a 0.4 mm nozzle and the Textured PEI Plate.
+- Bambu PLA Basic, black, from AMS slot A3.
+- `0.20mm Standard @BBL A1M` with no changes.
+- Stood on the bottom of the hook, with no supports.
+
+The slice is 350 layers to 70.0 mm and 31.36 g (10.35 m). Studio's estimate was 1 h 7 min 25 s;
+4 min 13 s of that is timelapse moves, which don't run with timelapse off.
