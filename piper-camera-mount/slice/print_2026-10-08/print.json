@@ -1,0 +1,91 @@
+{
+ "what": "PiPER wrist camera mount, every printed part on one plate: bracket, pod, carrier, 4 Pi 5 spacers, 2 tag wedges",
+ "result": "printing (updated below as the session follows it)",
+ "asked_for": "https://github.com/vertical-cloud-lab/byu-vcl/pull/245 (sgbaird, 2026-10-08T12:12:00Z: 'begin printing the parts')",
+ "printer": {
+  "model": "Bambu Lab A1 mini",
+  "name_in_studio": "Thumbelina, the A1 Mini",
+  "nozzle": "0.4 mm stainless steel",
+  "firmware": "01.08.00.00",
+  "ams_lite": "00.00.08.15",
+  "mode": "Bambu cloud (not LAN-only)"
+ },
+ "route": "route 3 in bambu/README.md (PR #234): Bambu Studio 02.08.02.61 GUI on the GitHub Actions runner's Xvfb display, logged in to the lab's Bambu account, sent through Bambu's cloud",
+ "source_project": {
+  "path": "piper-camera-mount/slice/piper_camera_mount_A1mini_PLA.3mf",
+  "md5": "8d2fe312fc919709105a0714348f74d6",
+  "last_commit": "b3dba57",
+  "committed_plate_1_gcode_md5": "b33a79908eece69c1543685bad446fe8"
+ },
+ "gui_changes_before_slicing": {
+  "why": "opening the CLI-sliced project in the GUI reset these to Bambu's stock process preset (bambu/studio/README.md on PR #234)",
+  "restored": {
+   "wall_loops": "2 -> 3",
+   "sparse_infill_density": "15% -> 25%",
+   "enable_circle_compensation": "0 -> 1"
+  },
+  "left_at_stock": {
+   "machine_max_acceleration_x/y": "20000 (project: 6000)",
+   "machine_max_acceleration_travel": "9000 (project: 6000)"
+  },
+  "followed_infill": {
+   "skeleton_infill_density": "15% -> 25%",
+   "skin_infill_density": "15% -> 25%"
+  },
+  "check": "the GUI's plate 1 G-code has the committed plate's 213 layers to Z 42.6 and 87.47 g (committed: 87.46 g); no layer's extrusion is more than 0.46 mm of filament off (layer 5, of 332 mm); same bed (M190 S65), nozzle (220), start G-code (M620 S0A, M412 S1) and G29.1 Z offset"
+ },
+ "presets": {
+  "machine": "Bambu Lab A1 mini 0.4 nozzle",
+  "process": "0.20mm Standard @BBL A1M (modified as above)",
+  "filament": "Bambu PLA Basic @BBL A1M"
+ },
+ "send_options": {
+  "job_name": "piper_camera_mount_A1mini_PLA (renamed from 'piper_camera_mount_A1mini_PLA_PiPER camera mount', to keep spaces out)",
+  "plate_type": "Textured PEI",
+  "ams_mapping": "A3 = 0-based slot 2, Bambu PLA Basic GFA00, black 000000",
+  "timelapse": false,
+  "auto_bed_leveling": true,
+  "flow_dynamics_calibration": true
+ },
+ "sent_file": {
+  "path": "sent/piper_camera_mount_A1mini_PLA.gcode.3mf",
+  "provenance": "File > Export > Export plate sliced file, at 12:48 UTC mid-print; DesignerUserId (the lab's Bambu account ID) blanked in 3D/3dmodel.model, nothing else changed",
+  "plate_1_gcode_md5": "971c840fefd399638689a5460bf4da2b",
+  "same_gcode_as": [
+   "Studio's own slice in /tmp/bamboo_model (byte for byte)"
+  ]
+ },
+ "estimates": {
+  "studio_total_time": "2h 48m 30s",
+  "studio_model_time": "2h 42m 32s",
+  "cli_total_time": "2h 50m 29s",
+  "filament_g": 87.47,
+  "filament_m": 28.86,
+  "layers": 213,
+  "max_z_mm": 42.6,
+  "printer_remaining_at_start_min": 168
+ },
+ "timeline_utc": {
+  "request": "2026-10-08T12:12:00Z",
+  "preflight_1": "2026-10-08T12:16:14Z (HUMAN-DECISION: every automatic check passed; gantry parked high, plate looks empty)",
+  "frame_posted_go_asked": "2026-10-08T12:20:54Z",
+  "studio_started": "2026-10-08T12:21:01Z (recording from the same second)",
+  "gui_slice": "2026-10-08T12:24:50Z",
+  "login_pressed": "2026-10-08T12:28:48Z (Bambu e-mails the code)",
+  "login_code_asked": "2026-10-08T12:29:30Z",
+  "login_code_posted": "2026-10-08T12:36:48Z, with 'Plate clear' (sgbaird)",
+  "login_code_typed": "2026-10-08T12:36:53Z",
+  "preflight_2": "2026-10-08T12:37:43Z (HUMAN-DECISION: same scene, same checks passing)",
+  "go": "2026-10-08T12:37:50Z (sgbaird: 'Get going.')",
+  "sent": "2026-10-08T12:39:19Z",
+  "running_by": "2026-10-08T12:39:57Z (status read: RUNNING, stage 2, job piper_camera_mount_A1mini_PLA)",
+  "layer_1": "2026-10-08T12:46:35Z"
+ },
+ "go": {
+  "by": "sgbaird",
+  "comments": [
+   "2026-10-08T12:36:48Z: 'Plate clear' (with the login code)",
+   "2026-10-08T12:37:50Z: 'Get going. Your other confirmation requests are overkill.'"
+  ]
+ }
+}
