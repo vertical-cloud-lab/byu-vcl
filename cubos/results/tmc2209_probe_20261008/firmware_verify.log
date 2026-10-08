@@ -1,0 +1,7 @@
+Which firmware is on the Arduino (avrdude -U flash:v, read-only) -- 2026-10-08T22:36:48Z
+port holders before: []
+e8ddfe3dfc66f98add2e2f92b0cc5a9fe7d972db42fb1e1b6aac11420f3422c4  panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex
+6d2dc97741a4e5ee0f05b8c7d7ba7254c1e04b6e1f77438eb714d2af7223437f  panda_vcl_p20gen2_tic796_fastmove_20261001.hex
+  spreadcycle_20261007 : MATCH
+  fastmove_20261001 : no     verification mismatch
+done 2026-10-08T22:36:56Z

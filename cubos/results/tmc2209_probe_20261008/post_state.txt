@@ -1,0 +1,8 @@
+Post-probe state -- 2026-10-08T22:37:56Z
+uptime: up 47 minutes   throttled=0x0   EXT5V: 5.13622000V
+port holders: ACM0=[] USB0=[]
+USB devices:
+Bus 003 Device 002: ID 2341:0043 Arduino SA Uno R3 (CDC ACM)
+Bus 003 Device 003: ID 1a86:7523 QinHeng Electronics CH340 serial converter
+kernel USB events since boot (boot enumeration excluded):
+  none
