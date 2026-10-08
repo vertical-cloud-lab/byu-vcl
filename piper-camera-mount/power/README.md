@@ -29,6 +29,7 @@ Pi). So besides getting power up the arm, the socket must never be what takes th
 |---|---|---|
 | Official 27 W supply alone: its 1.2 m, 17 AWG lead (too short to reach) | 5.01 V | 4.95 V |
 | Official supply + 2 m USB-C extension (22 AWG, one more mated pair) | 4.66 V | 4.37 V (low) |
+| Official supply + 2 m 240 W (5 A) extension, if it really is 20 AWG | 4.78 V | 4.57 V (low) |
 | Official supply + 2 m extension of a thin 3 A cable (26 AWG) | 4.18 V (low) | 3.56 V (low) |
 | 5 A PD supply + one 3 m 5 A cable (20 AWG) | 4.77 V | 4.55 V (low) |
 | 5 A PD supply + one 3 m 3 A cable (24 AWG) | 4.31 V (low) | 3.79 V (low) |
@@ -37,6 +38,22 @@ Pi). So besides getting power up the arm, the socket must never be what takes th
 
 Even the best 5 V route, one continuous 3 m cable with 20 AWG conductors, sags under load. Any
 extension is marginal at best.
+
+## If you'd rather try an extension first (8 October 2026)
+
+At the 1.5 A the Pi draws streaming two cameras, an extension rated for 240 W (5 A) leaves the Pi
+at about 4.78 V, if its conductors are really 20 AWG. That's above 4.63 V, but only by 0.15 V. A
+busy CPU (2.5 A) takes it under. No listing gives the gauge, so it's a $9 experiment, not a
+design:
+
+- **What to buy:** [AINOPE 240 W USB-C extension, 6.6 ft, B09FDWG61C](https://www.amazon.com/dp/B09FDWG61C),
+  $8.99, in stock, checked through the CubXL Pi on 8 October. With the official supply's 1.2 m
+  lead it reaches about 3.2 m.
+- **How to tell whether it works:** on the wrist, stream both cameras and load the CPU, then read
+  `vcgencmd pmic_read_adc EXT5V_V` (the Pi's own input voltage) and `vcgencmd get_throttled`.
+  Any bit 0 or 16 set means under-voltage. If either shows up, go to the 24 V route below.
+- **It still needs the strain relief.** An extension adds a second plug that can lever on a
+  socket, so clamp the lead to the carrier as below.
 
 ## What people do instead: send a higher voltage and convert at the Pi
 

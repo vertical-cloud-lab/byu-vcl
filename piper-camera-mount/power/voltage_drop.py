@@ -38,6 +38,7 @@ def main() -> None:
     rows = [
         ("Official 27 W supply alone: its 1.2 m, 17 AWG lead (too short to reach)", [(1.2, 17)], 1),
         ("Official supply + 2 m USB-C extension (22 AWG, one more mated pair)", [(1.2, 17), (2.0, 22)], 2),
+        ("Official supply + 2 m 240 W (5 A) extension, if it really is 20 AWG", [(1.2, 17), (2.0, 20)], 2),
         ("Official supply + 2 m extension of a thin 3 A cable (26 AWG)", [(1.2, 17), (2.0, 26)], 2),
         ("5 A PD supply + one 3 m 5 A cable (20 AWG)", [(3.0, 20)], 1),
         ("5 A PD supply + one 3 m 3 A cable (24 AWG)", [(3.0, 24)], 1),

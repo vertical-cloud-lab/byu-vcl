@@ -1,7 +1,8 @@
 # Bill of materials, what the lab has, and what's still to buy (7 October 2026)
 
 This is one mount: the PiPER's gripper, a Pi 5, the HQ Camera and the Camera Module 3 Wide, powered by
-24 V up the arm (option 1 in [`power/README.md`](power/README.md)).
+the official 27 W supply through a USB-C extension, with 24 V up the arm as the fallback
+([`power/README.md`](power/README.md)).
 
 The "Lab has" column comes from a read of every issue, PR and comment in this repo and in
 [powder-doser](https://github.com/vertical-cloud-lab/powder-doser), up to 7 October 2026. The terms:
@@ -36,7 +37,7 @@ for the parts that stay on the arm (see [Material](README.md#material-paht-cf-on
 | 1 | Raspberry Pi HQ Camera (CS) | **None free.** The lab's only HQ Camera is on the OT-2 (meorders 12704). | [#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-4407498492) |
 | 1 | 6 mm wide-angle CS lens for the HQ | **None.** The OT-2's HQ has a Waveshare 8–50 mm zoom. | [#84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-4407498492), [#239](https://github.com/vertical-cloud-lab/byu-vcl/issues/239#issuecomment-6046148468) |
 | 1 | Camera Module 3 Wide | **On hand:** 10 bought, 2 on the CubXL | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625), [#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171#issuecomment-5642454946) |
-| 2 | Pi 5 camera cable (Standard–Mini), 300 mm | **None at 300 mm.** 5 × 500 mm were ordered, and there's one 200 mm on the OT-2. The routes are 206 and 212 mm, so 200 mm is too short. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
+| 2 | Pi 5 camera cable (Standard–Mini), 300 or 500 mm | **Ordered:** 5 × 500 mm. There's one 200 mm on the OT-2. The routes are 206 and 212 mm, so 200 mm is too short. 500 mm works too, with the extra folded flat on the carrier; 300 mm is only tidier. | [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625) |
 
 ### Fasteners
 
@@ -49,15 +50,21 @@ for the parts that stay on the arm (see [Material](README.md#material-paht-cf-on
 | 4 | M2.5 x 12 + 4 M2.5 nuts | Pi 5, through the spacers into the carrier's nut traps | **On hand:** the COMRUN kits (M2.5 x 12 nylon pan heads, 20 per kit, and 50 nuts) |
 | 4 | M2 x 10 socket head + 4 M2 nuts | Camera Module 3 Wide | **Nuts only.** The COMRUN M2 nylon kit has M2 x 6, 8 and 12, not 10 |
 
-### Power (24 V up the arm, 5 V made on the carrier)
+### Power
+
+The PiPER being powered doesn't power the Pi: the arm's supply feeds its motors and the gripper, and the
+Pi on the wrist needs its own lead. Try a USB-C extension first; if the Pi reports under-voltage,
+change to 24 V up the arm with 5 V made on the carrier ([`power/README.md`](power/README.md)).
 
 | Qty | Part | Lab has |
 |---|---|---|
-| 1 | 24 V supply, 36 W or more, at the arm's base | **None.** The only Pi supplies are 5.1 V (the official 27 W) |
-| 1 | 24 V to 5 V / 5 A USB-C buck converter, on the carrier | **None** |
-| about 3–4 m | Lead from the supply to the wrist, with service loops at each joint | **None** |
-| 1 | Magnetic breakaway (Adafruit 5521, right-angle USB-C) | **None.** It was proposed on 27 September and not ordered |
-| — | Strain relief on the carrier, and ties for the service loops | **Zip ties:** some are in use on the doser. **Hook-and-loop, adhesive mounts, spiral wrap:** none on record |
+| 1 | Raspberry Pi 27 W USB-C supply (5.1 V / 5 A, 1.2 m lead) | **On hand:** the only Pi 5 supply the lab has |
+| 1 | USB-C extension, 240 W (5 A), about 2 m | **None** |
+| 1 | Magnetic breakaway (Adafruit 5521, right-angle USB-C), optional | **None.** It was proposed on 27 September and not ordered |
+| — | Zip ties: strain relief on the carrier, and the service loops | **Some** are in use on the doser, sizes unknown |
+
+If the extension fails: a 24 V supply at the base (36 W or more), a 24 V to 5 V / 5 A USB-C
+converter on the carrier, and about 3–4 m of lead. The lab has none of these.
 
 ### Tools and consumables
 
@@ -77,20 +84,15 @@ for the parts that stay on the arm (see [Material](README.md#material-paht-cf-on
 |---|---|---|---|---|
 | Raspberry Pi HQ Camera CS | 1 | [PiShop.us](https://www.pishop.us/product/raspberry-pi-hq-camera-cs/), in stock | $55.00 | $55.00 |
 | 6 mm Wide Angle Lens for HQ Camera CS | 1 | [PiShop.us](https://www.pishop.us/product/6mm-wide-angle-lens-for-raspberry-pi-hq-camera-cs/), in stock | $34.00 | $34.00 |
-| Camera Cable for Raspberry Pi 5, **300 mm** (choose the length at checkout) | 2 | [PiShop.us](https://www.pishop.us/product/camera-cable-for-raspberry-pi-5/) | $3.95 | $7.90 |
 | M3 x 16 socket head, class 12.9, black oxide | 10 | [Bolt Depot 13638](https://boltdepot.com/Product-Details?product=13638) | $0.12 | $1.20 |
 | M3 x 12 socket head, class 12.9, zinc | 4 | [Bolt Depot 23068](https://boltdepot.com/Product-Details?product=23068) | $0.17 | $0.68 |
 | M3 hex nut, 18-8 stainless | 12 | [Bolt Depot 4773](https://www.boltdepot.com/Product-Details.aspx?product=4773) | $0.07 | $0.84 |
 | M2.5 x 12 socket head, 316 stainless | 6 | [Bolt Depot 22460](https://boltdepot.com/Product-Details?product=22460) | $0.20 | $1.20 |
 | M2.5 hex nut, zinc | 6 | [Bolt Depot 18058](https://boltdepot.com/Product-Details?product=18058) | $0.08 | $0.48 |
 | M2 x 10 socket head, 18-8 stainless | 6 | [Bolt Depot 6365](https://www.boltdepot.com/Product-Details.aspx?product=6365) | $0.12 | $0.72 |
-| Mean Well GST36U24-P1J: 24 V, 1.5 A, US wall plug, 5.5 x 2.1 mm plug | 1 | [TRC Electronics](https://www.trcelectronics.com/products/mean-well-gst36u24-p1j), 325 in stock | $19.48 | $19.48 |
-| PlusRoc 12/24 V to 5 V 5 A USB-C converter, potted, 2-pack | 1 | [Amazon B0FD735LFG](https://www.amazon.com/dp/B0FD735LFG), price from 27 September | $15.99 | $15.99 |
-| 2.1 mm barrel extension, 1.5 m, 24 AWG | 2 | [Adafruit 327](https://www.adafruit.com/product/327), in stock | $2.95 | $5.90 |
-| 2.1 mm jack to screw terminal, for the converter's input | 1 | [Adafruit 368](https://www.adafruit.com/product/368), in stock | $2.00 | $2.00 |
-| Magnetic right-angle USB-C adapter, 120 W | 1 | [Adafruit 5521](https://www.adafruit.com/product/5521), in stock | $14.95 | $14.95 |
-| Hook-and-loop ties and adhesive tie mounts, for the service loops and the clamp on the carrier | — | any | about $10 | about $10 |
-| | | | **Total** | **about $170, plus shipping** |
+| USB-C extension, 240 W (5 A), 6.6 ft, male to female | 1 | [Amazon B09FDWG61C](https://www.amazon.com/dp/B09FDWG61C) (AINOPE), in stock | $8.99 | $8.99 |
+| Zip ties, 400 pack, 4 + 6 + 8 + 12 in, black nylon | 1 | [Amazon B08TVLYB3Q](https://www.amazon.com/dp/B08TVLYB3Q), in stock | $6.99 | $6.99 |
+| | | | **Total** | **about $110, plus shipping** |
 
 Notes on the list:
 
@@ -98,17 +100,24 @@ Notes on the list:
   checkout. McMaster, where the lab has an account, sells the same sizes in packs of 50 or 100.
   - The quantities include spares, because nuts get lost in slots.
   - The M3 nuts can come from the Prototyping Lab drawer instead.
-- **The 24 V supply** replaces the Mean Well GST36B24-P1J on the 27 September list. That desktop
-  version needs a separate IEC C8 mains lead; this one plugs straight into the power strip.
-- **The extensions:** two, plus the supply's own cord, reach the wrist. At 24 V they drop about
-  0.3 V, at the 0.6 A the converter draws when the Pi takes 2.5 A.
-- **The converter:** the PlusRoc doesn't do USB-PD, so set `PSU_MAX_CURRENT=5000` on the Pi
-  ([`power/README.md`](power/README.md)). Weigh it before it goes on the carrier.
+- **Amazon prices** were checked through the CubXL Pi on 8 October 2026, delivering to Provo.
+- **The camera cables** aren't on the list: the 500 mm ones from #164 will do. If they never
+  arrived, buy two [300 mm](https://www.pishop.us/product/camera-cable-for-raspberry-pi-5/)
+  ($3.95 each) instead, since they're the same price and leave less to fold.
+- **The extension** goes between the official 27 W supply's 1.2 m lead and the Pi, about 3.2 m in
+  all. It should hold the Pi at about 4.78 V while it streams, against an under-voltage limit of
+  4.63 V, if its wires are really 20 AWG. No listing says, so check it on the arm with
+  `vcgencmd pmic_read_adc EXT5V_V` and `vcgencmd get_throttled`
+  ([`power/README.md`](power/README.md#if-youd-rather-try-an-extension-first-8-october-2026)).
+- **The zip ties:** the 4 in ones hold the lead to the carrier 20 to 30 mm from the plug, and the 8
+  and 12 in ones hold the service loops on the arm.
 
 ### Optional
 
 | Item | When | Where | Price |
 |---|---|---|---|
+| Magnetic right-angle USB-C adapter, 120 W | A breakaway, so a snagged lead pulls apart instead of the socket. It adds another mated pair, about 0.03 V at 1.5 A | [Adafruit 5521](https://www.adafruit.com/product/5521) | $14.95 |
+| 24 V route: Mean Well GST36U24-P1J, PlusRoc 24 V to 5 V USB-C converter, two 1.5 m barrel extensions, a jack to screw terminal | Only if the Pi reports under-voltage through the extension | [TRC Electronics](https://www.trcelectronics.com/products/mean-well-gst36u24-p1j) $19.48, [Amazon B0FD735LFG](https://www.amazon.com/dp/B0FD735LFG) $15.99, [Adafruit 327](https://www.adafruit.com/product/327) 2 × $2.95, [Adafruit 368](https://www.adafruit.com/product/368) $2.00 | $43.37 |
 | Raspberry Pi 5, 4 GB | If a spare 1 GB board stalls with both cameras. On the CubXL's 1 GB Pi, one of its two 12 MP cameras timed out on 5 of 6 captures, most likely for want of memory ([#171](https://github.com/vertical-cloud-lab/byu-vcl/pull/171#issuecomment-5688528247)). An 8 GB board was suggested on [#233](https://github.com/vertical-cloud-lab/byu-vcl/issues/233#issuecomment-5828038858) | [PiShop.us](https://www.pishop.us/product/raspberry-pi-5-4gb/), 1 per order | $110.00 (2 GB $77.50, 8 GB $175.00) |
 | H2D hotend, 0.6 mm hardened steel | If it isn't on meorders 13433, and the 0.4 mm clogs on PAHT-CF | [Bambu Lab](https://us.store.bambulab.com/products/bambu-hotend-h2-p2s?id=775924445524066388), 3 October | $17.99 |
 | A luggage scale | To measure the breakaway's pull-off force, which no maker publishes | any | about $10 |

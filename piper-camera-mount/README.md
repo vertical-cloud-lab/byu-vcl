@@ -173,7 +173,7 @@ The whole bill of materials, with what the lab already has and what is still to 
 | 4 | M2.5 x 12 + 4 M2.5 nuts | HQ Camera: heads in counterbores on the pod's front, nuts on the camera's back |
 | 4 | M2 x 10 + 4 M2 nuts | Camera Module 3 Wide, the same way |
 | 4 | M2.5 x 12 | Pi 5, through the spacers into the nut traps in the carrier |
-| 2 | Raspberry Pi Standard-Mini camera cable, 300 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short |
+| 2 | Raspberry Pi Standard-Mini camera cable, 300 or 500 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short. 500 mm works with the extra folded on the carrier |
 | 1 | Pi 5 Active Cooler | Faces outward (+X) |
 | 1 | 24 V supply at the base, a 24 V to 5 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
 

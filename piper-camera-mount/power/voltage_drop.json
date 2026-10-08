@@ -17,6 +17,13 @@
       ]
     },
     {
+      "route": "Official supply + 2 m 240 W (5 A) extension, if it really is 20 AWG",
+      "volts at the Pi": [
+        4.78,
+        4.57
+      ]
+    },
+    {
       "route": "Official supply + 2 m extension of a thin 3 A cable (26 AWG)",
       "volts at the Pi": [
         4.18,
