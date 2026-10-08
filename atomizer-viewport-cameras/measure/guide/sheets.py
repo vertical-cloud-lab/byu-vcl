@@ -1,0 +1,209 @@
+"""What to measure on each viewing window, as text: one sheet per photo.
+
+Each row: (id, priority, title, how, guess, onshape variable(s)). Priority 1 is needed before the fit-test prints,
+2 aims and places the units, 3 if there is time. The guesses are the values now in the Onshape Variable Studio.
+make_guide.py draws these onto the photos; the same rows go into field_sheet.csv and HOW-TO-MEASURE.md.
+"""
+from __future__ import annotations
+
+SHEETS = [
+    dict(
+        key="1_front_cover_on", frame="front_port_FDRTt68Vfvo_5100.jpg", src="FDRTt68Vfvo 51:00",
+        title="1  FRONT PORT, grey cover on",
+        where="Stand facing the front of the chamber (the aus500 label). Gloves on: the grey cover soaks up skin oil.",
+        rows=[
+            ("F1", 1, "Cover width, flat to flat",
+             "Outside of the grey 12-sided cover, from one flat side to the flat directly opposite (not corner to "
+             "corner). Calipers, or press two books against opposite flats and measure between them.",
+             "162 mm", "fp_cover_af"),
+            ("F2", 1, "Cable pod: width, height, depth",
+             "The small faceted box on the cover with the black cable. Width along the cover's edge; how far it "
+             "sticks out past the cover's edge; front to back.",
+             "90 x 45 x 55 mm", "fp_pod_w, fp_pod_h, fp_pod_depth"),
+            ("F3", 1, "Pod position",
+             "Clock position of the pod seen from the front (6 o'clock since 30 Sep), and how far its front face "
+             "sits behind the cover's front face.",
+             "6 o'clock, 5 mm", "fp_pod_angle, fp_pod_setback"),
+            ("F4", 3, "Glass centre to left side",
+             "Hold a ruler flat on the chamber's left side (the door side) so it sticks forward. Measure across to "
+             "the centre of the glass.",
+             "100 mm", "fp_x"),
+            ("F5", 3, "Glass centre height",
+             "Tape from the floor straight up to the centre of the glass.",
+             "1035 mm", "fp_z"),
+            ("F6", 1, "Room above the cover",
+             "Straight up from the top of the cover to the first thing above it (the furnace's foot bracket), and "
+             "how far back from the cover's front face that bracket starts.",
+             "about 20 mm", "(clearance check)"),
+            ("F7", 2, "Room to the left: door clamp",
+             "From the cover's left edge to the nearest point of the top-left star knob, knob tightened. Then "
+             "loosen it and swing the bolt out: does it pass the cover, and by how much?",
+             "about 50 mm", "(clearance check)"),
+        ],
+    ),
+    dict(
+        key="2_front_cover_closeup", frame="front_port_58wJ_Khwgyk_2511.jpg", src="58wJ_Khwgyk 25:11",
+        title="2  FRONT PORT, looking into the grey cover",
+        where="Cover still on. Gloves. Don't press on the glass or scratch it.",
+        rows=[
+            ("F8", 1, "Front opening",
+             "Across the hole in the cover's front face, at its front edge (the first edge you meet, not the "
+             "glass), flat to flat.",
+             "75 mm", "fp_cover_open"),
+            ("F9", 1, "Depth to the glass",
+             "Push the end of a steel rule (or the calipers' depth rod) straight in through the opening until it "
+             "just touches the glass. Read it where it passes the cover's front face.",
+             "30 mm", "fp_cover_face - fp_nut_face"),
+            ("F10", 2, "Visible glass diameter",
+             "The clear glass you can see, edge to edge, across the middle.",
+             "63 mm", "fp_glass_d"),
+        ],
+    ),
+    dict(
+        key="3_front_cover_off", frame="front_port_1F9_4ccwhss_0758.jpg", src="1F9_4ccwhss 7:58",
+        title="3  FRONT PORT, grey cover off",
+        where="Pull the cover straight off by hand and let it hang on its cable (don't unplug it). Don't turn the "
+              "shiny nut: it holds the glass in.",
+        rows=[
+            ("F11", 1, "Cover depth and back bore",
+             "Cover off: stand it face down on a table. Height from the table to its back edge. Then the inside "
+             "diameter of the opening at its back (the part that slides over the nut) and how deep that goes.",
+             "45 mm", "fp_cover_len"),
+            ("F12", 2, "Nut outside diameter",
+             "The shiny round nut that holds the glass, across its outside.",
+             "95 mm", "fp_nut_d"),
+            ("F13", 2, "Nut face, out from the chamber",
+             "From the flat steel front of the chamber out to the front face of the nut, square to the nut face. "
+             "Measure at the nut's top and at its bottom (they differ if the port is tilted).",
+             "45 mm", "fp_nut_face"),
+            ("F14", 1, "Port tilt",
+             "Hold your phone flat on the nut's front face with a level app (iPhone: Measure > Level). Write the "
+             "degrees it leans back from vertical. Then do the same on the flat chamber face beside it.",
+             "20 deg", "fp_tilt"),
+            ("F15", 3, "Port turned left or right?",
+             "Lay a rule horizontally across the nut's face. Measure from the chamber face to the rule at the "
+             "nut's left and right edges. Same = it points straight out.",
+             "same (0 deg)", "fp_yaw"),
+            ("F16", 2, "Cover face, out from the chamber",
+             "Cover back on: from the chamber face out to the cover's front face, at its top and at its bottom.",
+             "75 mm", "fp_cover_face"),
+        ],
+    ),
+    dict(
+        key="4_front_side_sketch", frame=None, src="sketch, not to scale",
+        title="4  FRONT PORT, side view (sketch)",
+        where="Where the depths and the angle on sheets 1 to 3 go. Seen from the left side, chamber on the right, operator on the left. Not to scale.",
+        rows=[],
+    ),
+    dict(
+        key="5_left_sight_glass", frame="left_port_58wJ_Khwgyk_7725.jpg", src="58wJ_Khwgyk 77:25, inset 9kn-HhXCr1o 25:06",
+        title="5  LEFT SIDE: small window on the door",
+        where="The round window near the top of the chamber's left door, above the ultrasonic stack. Door closed.",
+        rows=[
+            ("L1", 1, "Ring outside diameter",
+             "The shiny ring round the little window: across its outside, at the widest point. Calipers.",
+             "65 mm", "lp_ring_d"),
+            ("L2", 1, "How far the ring sticks out",
+             "From the door's flat outer face to the ring's outer face.",
+             "30 mm", "lp_protrusion"),
+            ("L3", 1, "What kind of fitting? (photo)",
+             "Threaded nut with notches for a hook wrench, like the front port? Or a band clamp with a wing nut "
+             "(KF)? Take one photo straight on and one from the side.",
+             "threaded?", "(decides the clamp)"),
+            ("L4", 2, "Visible glass diameter",
+             "The clear glass, edge to edge.",
+             "45 mm", "lp_glass_d"),
+            ("L5", 2, "Centre height",
+             "Floor to the centre of the glass.",
+             "1015 mm", "lp_z"),
+            ("L6", 2, "Centre to door's edges",
+             "Horizontally to the door's back edge (the hinge side, nearer the blue cabinet), and up to the "
+             "door's top edge.",
+             "108 mm, 100 mm", "lp_y, door_z1"),
+            ("L7", 3, "Down to the stack",
+             "From the bottom of the ring straight down to the top of the ultrasonic stack where it leaves the door.",
+             "about 70 mm", "stack_z"),
+            ("L8", 2, "Door swing",
+             "Open the door fully: about how many degrees? Does anything on its outside come near the blue "
+             "cabinet? Gap from the closed door's back edge to the blue panel.",
+             "100 deg", "door_open"),
+        ],
+    ),
+    dict(
+        key="6_lid_window", frame="top_window_58wJ_Khwgyk_5806.jpg", src="58wJ_Khwgyk 58:06",
+        title="6  FURNACE LID WINDOW, face on",
+        where="Furnace cold and lid closed. This is the window on the sloped front face of the lid.",
+        rows=[
+            ("T1", 1, "Window opening width",
+             "Across the clear opening in the steel plate, left to right, inside edge to inside edge.",
+             "60 mm", "tw_wid"),
+            ("T2", 1, "Window opening height",
+             "The same, top to bottom (along the slope).",
+             "64 mm", "tw_len"),
+            ("T3", 2, "Plate width",
+             "The polished plate round the window: outside width at the top screw row.",
+             "112 mm", "tw_plate_w"),
+            ("T4", 2, "Plate length",
+             "Top edge to bottom edge of the plate, along the slope, through the middle.",
+             "105 mm", "tw_plate_l"),
+            ("T5", 3, "Screw spacing",
+             "Centre to centre of the top three screws, and the hex key size that fits them.",
+             "48 mm, M5?", "(mount option)"),
+            ("T6", 3, "Glass recess",
+             "How far the glass sits below the plate's surface: rule end on the glass, read at the plate face.",
+             "4 mm", "(model only)"),
+        ],
+    ),
+    dict(
+        key="7_lid_from_front", frame="top_window_DWH1CEygsTI_2540.jpg", src="DWH1CEygsTI 25:40",
+        title="7  FURNACE LID, from the front",
+        where="Lid closed. The window's position and angle decide where the top camera's arm puts it.",
+        rows=[
+            ("T7", 1, "Window slope",
+             "Lay your phone flat on the window plate with a level app. Degrees from horizontal.",
+             "50 deg", "lid_facet_angle"),
+            ("T8", 1, "Window centre height",
+             "Floor to the centre of the window glass.",
+             "1455 mm", "tw_z"),
+            ("T9", 2, "Lid diameter",
+             "Wrap a tape round the round lower part of the lid. Write the circumference (we divide by 3.14).",
+             "864 mm round (275 dia)", "lid_r"),
+            ("T10", 2, "Lid top height",
+             "Floor to the highest point of the closed lid.",
+             "1500 mm", "lid_top_z"),
+            ("T11", 2, "Hinge pin",
+             "The hinge on the lid's left: the pin's height above the floor, and how far left of the window's "
+             "centre it is.",
+             "1345 mm, 160 mm", "lid_hinge_z, lid_hinge_x"),
+        ],
+    ),
+    dict(
+        key="8_whole_machine", frame="top_window_2wMgeI-E7zw_1000.jpg", src="2wMgeI-E7zw 10:00",
+        title="8  WHOLE MACHINE: scale, heights, the lid's swing",
+        where="Every guess above was scaled from M1 and M2, so these two matter most here.",
+        rows=[
+            ("M1", 1, "Furnace body, round",
+             "Tape round the silver furnace body (BLUE POWER lettering). Write the circumference.",
+             "848 mm round (270 dia)", "furn_r"),
+            ("M2", 1, "Chamber top height",
+             "Floor to the chamber's flat top, the deck the furnace stands on.",
+             "1130 mm", "ch_top_z"),
+            ("M3", 2, "Blue cabinet top height",
+             "Floor to the top of the blue cabinet behind the furnace.",
+             "1600 mm", "fr_top_z"),
+            ("M4", 2, "Blue cabinet top: steel?",
+             "Does a magnet stick to its top? Front-to-back depth of the top, and what is up there. The top "
+             "camera's magnetic base would stand on it.",
+             "steel?", "fr_front_y"),
+            ("M5", 3, "Furnace to the blue panel",
+             "The smallest gap from the back of the furnace body to the blue panel behind it.",
+             "30 mm", "fr_front_y - furn_r"),
+            ("M6", 2, "Lid fully open",
+             "Open the lid all the way. Floor to its highest point; how far left of the window's closed position "
+             "its far edge reaches; and the angle it opened through.",
+             "1610 mm, 310 mm, 105 deg", "lid_open"),
+        ],
+    ),
+]
+
+PRIORITY = {1: "needed before the fit-test prints", 2: "aims and places the units", 3: "if there is time"}
