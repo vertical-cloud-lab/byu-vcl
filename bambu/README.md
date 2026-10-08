@@ -35,8 +35,13 @@ the work:
 >   black PLA. It was sent at 18:56:41 UTC and finished at 21:22:39, 146.0 min later against
 >   Studio's 2 h 30 min, with no error or HMS alert. [Evidence](evidence/2026-10-02/base-studio/README.md),
 >   [recording](https://www.youtube.com/watch?v=inpbxJkVpe8). All four of the lid mount's plates are now printed.
->   Plate 2 needs printing again: the deck's camera bosses lost 2.5 mm on 2026-10-08
->   ([why](../ot2-overhead-camera/lid-mount/README.md#the-camera-bosses-2026-10-08)).
+>   The deck's camera bosses lost 2.5 mm on 2026-10-08
+>   ([why](../ot2-overhead-camera/lid-mount/README.md#the-camera-bosses-2026-10-08)), and the
+>   new deck was printed that day on the H2D (next point).
+> - **Fifth print, the first on the H2D (2026-10-08):** the new deck, in black PLA Basic, sent
+>   from Studio at 19:57:42 UTC. [Evidence](evidence/2026-10-08/deck-h2d-studio/README.md).
+>   Two things differ from the A1 mini, both in §11: the H2D refused `H2D_ACCESS_CODE` over
+>   LAN, so it was checked and watched from Studio's Device page, and its nozzles are 0.6 mm.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.
@@ -546,6 +551,53 @@ What this says about printing and using plate 1:
   contain them into comments. That has already happened once in the lab's other repos.
   `bambu_lan.py` writes only redacted files.
 
+## 11. The H2D
+
+The first print on the H2D was the lid mount's new deck, on 2026-10-08
+([evidence](evidence/2026-10-08/deck-h2d-studio/README.md)). It went by route 3, Bambu Studio
+on the runner, where the printer shows as *BYU VCL H2D - Théoden*. What's different from the
+A1 mini:
+
+- **The LAN route is shut until `H2D_ACCESS_CODE` is updated.** On 2026-10-08 at 19:36 UTC the
+  printer's TLS certificate matched `H2D_SERIAL`, but its MQTT broker answered the secret's
+  access code with "Not authorized". The code was most likely rotated on the printer after the
+  2026-09-27 leak, and the secret wasn't updated. Until it is, `bambu_lan.py` and
+  `bambu_print.py` can't reach the H2D. Don't retry the login in a loop.
+- **So the pre-flight and the watching happen in Studio.**
+  - **What the Device page shows:** state, the four temperatures (left and right nozzle, bed,
+    chamber), the AMS contents and the chamber camera. HMS alerts are under *Assistant (HMS)*.
+  - **[`studio/watch_studio.py`](studio/watch_studio.py)** screenshots that page every 10 s
+    and reads the temperatures and layer with tesseract. It saves a camera frame every N s, and
+    stops on a new dialog window, a hard temperature limit, a stalled layer or a blank camera.
+  - **The OCR is noisy.** It read a 140 °C target as 114, for example. Treat it as a prompt to
+    look at the frames, not as a replacement for `watch`.
+- **The nozzles are 0.6 mm**: the left is standard flow, the right TPU high flow (2026-10-08).
+  *Sync info* on Studio's Prepare tab reads them from the printer. Slice for what is fitted,
+  or ask someone to swap the nozzle.
+- **AMS layout (2026-10-08).** An AMS 2 Pro feeds the left nozzle: black PLA in A2,
+  light-blue PLA in A4. The right nozzle has an empty AMS HT and TPU on the external spool.
+- **Filament grouping.** At the first slice, Studio asks how to spread the filaments over the
+  two nozzles. *Convenience mode* (`filament_map_mode = Auto For Match`) puts each filament on
+  the nozzle whose AMS holds it, which is what you want.
+- **PLA on Textured PEI is 55 °C** in Bambu's H2D presets (65 °C on the A1 mini). That still
+  passes the pre-flight's ≥ 45 °C check.
+- **No `M412` in the H2D's start G-code.** Bambu's H2D template (dated 2026-06-05) loads
+  filament with `M620 S…A` but never sends `M412`, the A1 mini's runout command. So
+  `preflight --3mf` would wrongly fail an H2D file on that check.
+- **The start takes about 7.5 min** from Send to layer 1:
+  - homing;
+  - a camera check of the bed for foreign objects;
+  - filament change and flow calibration;
+  - nozzle cleaning;
+  - bed levelling.
+- **The camera** is fixed at the top front left of the chamber. For the first layers the bed
+  comes up to just under the nozzle, so the view is a low, grazing one. Frames can show the
+  room, so look for people before publishing them.
+- **The Device page's *Update* tab shows the serial numbers** of the printer and both AMS
+  units. Don't open it while recording, or cut it from the video.
+- **Firmware (2026-10-08):** printer 01.03.00.00, with 01.04.00.00 offered (not updated
+  remotely); AMS 2 Pro 04.00.21.87; AMS HT 04.00.21.86.
+
 ## Files
 
 | File | What |
@@ -560,3 +612,4 @@ What this says about printing and using plate 1:
 | [`evidence/2026-09-29/drill-template-studio/`](evidence/2026-09-29/drill-template-studio/) | plate 3 printed from Studio: two pre-flights, the file the printer ran (`sent/`), `print.json` (settings, timeline, the go, the recording), `watch`'s log and key frames |
 | [`evidence/2026-10-02/base-studio/`](evidence/2026-10-02/base-studio/README.md) | plate 1, the base, printed from Studio in black PLA: two pre-flights, the file Studio sent (exported mid-print), `print.json`, `watch`'s log and key frames |
 | [`evidence/2026-10-01/deck-studio/`](evidence/2026-10-01/deck-studio/README.md) | plate 2 printed from Studio, asked for on PR #84: two pre-flights (the first in a dark lab), the file the printer ran, `print.json`, `watch`'s log and key frames. Copied from that PR's branch (`cad7af2`) |
+| [`evidence/2026-10-08/deck-h2d-studio/`](evidence/2026-10-08/deck-h2d-studio/README.md) | the new deck printed on the H2D from Studio: the frames before Send, the file Studio uploaded, `print.json`, the Device-page monitor's log and key frames |

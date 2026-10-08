@@ -27,6 +27,7 @@ pre-flight under 15 min old, and a camera frame read before Send.
 | [`ui.py`](ui.py) | `xdotool` wrapper: smooth pointer moves (they show in a recording), clicks, keys, and `typeenv VAR`, which types a secret from the environment through stdin, so it never appears in argv or a log |
 | [`shot.sh`](shot.sh) | Screenshot of `:99`, to find the next thing to click |
 | [`wait_code.py`](wait_code.py) | Checks the PR thread (#234, or `PR_NUMBER`) every 2 s for a 6-digit code from someone with write access, then types it into Studio's verification dialog. It never prints the code |
+| [`watch_studio.py`](watch_studio.py) | Watches a print from Studio's Device page when the LAN route is shut (the H2D, 2026-10-08): reads temperatures and layer by OCR every 10 s, saves camera frames, stops on a new dialog, a hard limit, a stall or a blank camera |
 
 ## Setup (about 2 min on a runner)
 
@@ -234,6 +235,41 @@ What was new:
   2 h 32 min 12 s, from the stock acceleration limits.
 - **The clock.** A 2.5 h print fits in a 180 min job only if Send comes early. This one was
   sent 12 min into the session. It finished 22 min before the job's 180 min limit.
+
+## Fifth run: the new deck on the H2D (2026-10-08)
+
+Asked for on [PR #234](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-6067524181)
+as "print that on the h2d in pla": the deck with the 3.5 mm camera bosses. The record is in
+[`../evidence/2026-10-08/deck-h2d-studio/`](../evidence/2026-10-08/deck-h2d-studio/README.md),
+and the H2D's differences are in the runbook's [§11](../README.md#11-the-h2d).
+
+| UTC | Step |
+|---|---|
+| 19:32:00 | Request |
+| 19:36 | LAN status read: the TLS certificate matches `H2D_SERIAL`, but the access code is refused |
+| 19:36:38 | Recording started, then Studio's first run |
+| 19:40:10 | *Log In* pressed |
+| 19:44:45 | Login code typed, 6 s after it was posted |
+| 19:46 | Device page: H2D idle, no HMS alerts, heaters off; camera frame posted, go asked for |
+| 19:49–19:53 | *Sync info* (0.6 mm nozzles), `deck.stl` imported, 3 walls, 25 % infill and circle compensation set, sliced |
+| 19:56:17 | The go (`plate clear`) |
+| 19:56:43 | Fresh Device-page check and frame |
+| 19:57:42 | *Send*; uploaded through Bambu's cloud, and the printer was homing by 19:58:29 |
+| 20:05 | Layer 1 |
+
+What was new:
+- **A new project, not the CLI's 3MF.** The deck was imported from
+  `ot2-overhead-camera/lid-mount/exports/deck.stl` into an empty project after *Sync info* had
+  set the printer to the H2D. The project's three settings were set on Bambu's
+  `0.30mm Standard @BBL H2D 0.6 nozzle`.
+- **The sent file is in `/tmp/bamboo_model`.** At *Send*, Studio wrote the 3MF it uploaded
+  next to its slice, as `.<pid>.0.3mf`. Its plate G-code was byte-identical to the slice and to
+  a pre-Send *Export plate sliced file*. So the sent file can be committed without opening a
+  dialog mid-print.
+- **The Send dialog defaults to timelapse *On*** for the H2D, and to *Auto* for levelling and
+  flow calibration. Set timelapse *Off* and the other two *On*.
+- **Studio's slice had no warnings at all**, not even the timelapse one every A1 mini file
+  carries.
 
 ## Recording and keeping the sent file
 
