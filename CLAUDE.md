@@ -4,6 +4,7 @@
 - Include plots directly in your comment reply via `![image name](https://github.com/<user/org>/<repo>/blob/<shortened-commit-hash>/<filename>?raw=true)`. Truncate the commit hash to the first 7 characters only. For example, `https://github.com/AccelerationConsortium/evaluation-metrics/blob/52754e7/scripts/bo_benchmarks/demonstrations/branin_campaign_demonstration_results.png?raw=true`. For provenance, ensure you use the shortened (7-character) commit hash, not the branch name
 - If you mention files in your comment reply, add direct hyperlinks based on the shortened (7-character) commit hash
 - IMPORTANT: Never echo/grep/print environment secrets. These should never be exposed in your terminal history or other outputs
+- When someone asks for assembly instructions, or for a design that people will have to put together from several parts, make a labelled step-by-step MP4 like the [OT-2 lid mount's](https://www.youtube.com/watch?v=YWsTg3aCP50): commit it, upload it unlisted with a chapter per step, and post both links with a contact sheet of the steps. [`docs/assembly-instruction-videos.md`](docs/assembly-instruction-videos.md) describes the style and how to build one
 
 ## Edison Scientific
 
