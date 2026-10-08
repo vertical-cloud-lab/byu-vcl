@@ -38,10 +38,12 @@ the work:
 >   The deck's camera bosses lost 2.5 mm on 2026-10-08
 >   ([why](../ot2-overhead-camera/lid-mount/README.md#the-camera-bosses-2026-10-08)), and the
 >   new deck was printed that day on the H2D (next point).
-> - **Fifth print, the first on the H2D (2026-10-08):** the new deck, in black PLA Basic, sent
->   from Studio at 19:57:42 UTC. [Evidence](evidence/2026-10-08/deck-h2d-studio/README.md).
->   Two things differ from the A1 mini, both in §11: the H2D refused `H2D_ACCESS_CODE` over
->   LAN, so it was checked and watched from Studio's Device page, and its nozzles are 0.6 mm.
+> - **Fifth print, the first on the H2D (2026-10-08):** the new deck, in black PLA Basic. It was
+>   sent from Studio at 19:57:42 UTC and finished at about 20:42:17, 44.6 min later against
+>   Studio's 41 min, with no HMS alert. [Evidence](evidence/2026-10-08/deck-h2d-studio/README.md),
+>   [recording](https://www.youtube.com/watch?v=nrGHKqr7TO0). Two things differ from the A1
+>   mini, both in §11: the H2D refused `H2D_ACCESS_CODE` over LAN, so it was checked and watched
+>   from Studio's Device page, and its nozzles are 0.6 mm.
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.

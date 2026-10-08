@@ -256,6 +256,8 @@ and the H2D's differences are in the runbook's [§11](../README.md#11-the-h2d).
 | 19:56:43 | Fresh Device-page check and frame |
 | 19:57:42 | *Send*; uploaded through Bambu's cloud, and the printer was homing by 19:58:29 |
 | 20:05 | Layer 1 |
+| 20:41:44 | Layer 28 (from the recording) |
+| 20:42:17 | Finished: 100 % and the "Printing" label gone, 44.6 min after Send (estimate: 41 min 4 s). No HMS alert or dialog |
 
 What was new:
 - **A new project, not the CLI's 3MF.** The deck was imported from
@@ -270,6 +272,20 @@ What was new:
   flow calibration. Set timelapse *Off* and the other two *On*.
 - **Studio's slice had no warnings at all**, not even the timelapse one every A1 mini file
   carries.
+- **"Finished" shows before the finish.** When the remaining time reaches 0 min, the job panel
+  writes "Finished" where the estimated finish time was, while the label on the left still
+  says "Printing". Here that came around layer 21 of 28, about 70 s early. `watch_studio.py`
+  now waits for 100 % and the "Printing" label to go.
+- **Studio closes the live view** a few minutes after the print ends ("Temporarily closed
+  because there is no printing for a while"). Press ▶ again for the last frame.
+- **The recording is bigger with the camera playing:** 3.4 GB for 75 min at 15 fps, against
+  103 MB for 18 min on 2026-09-29. There's room on the runner, but cut segments from it as the
+  print goes rather than all at the end.
+- **Stop the recorder with `pkill -INT -x ffmpeg`, not `pkill -f <its command line>`.** The `-f`
+  pattern also matched the shell running `pkill` and ended it, though the recording was saved.
+- **[Recording](https://www.youtube.com/watch?v=nrGHKqr7TO0)** (10:48). The login and the
+  *Update* tab, which shows serial numbers, are cut. The 24× chapter ends at layer 22, so
+  layers 23–28 and the end of the print, about 50 s, aren't in it.
 
 ## Recording and keeping the sent file
 

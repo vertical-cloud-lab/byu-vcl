@@ -7,8 +7,11 @@ Written for the H2D on 2026-10-08, when the printer refused H2D_ACCESS_CODE over
 with the printer selected and the camera playing; the screen regions below assume that layout.
 Every 10 s: screenshot :99, OCR the temperatures and the job panel, log a JSON line.
 Every FRAME_EVERY_S: save the camera pane as a JPEG named by time and layer.
-Exit 0: the job panel shows 100 % or "Finished" after printing was seen. (Match whole words:
-"Estimated finish time" is on screen the whole time; matching "finish" ended the first run.)
+Exit 0: the job panel shows 100 % and its "Printing" label has gone, after printing was seen.
+Not the word "Finished": Studio puts it in place of "Estimated finish time" as soon as the
+remaining time reaches 0 min, which on 2026-10-08 was at layer 21 of 28, 70 s before the
+H2D finished. (Matching "finish" ended the first run at layer 1.) This rule was checked
+against that day's recording, not yet live.
 Exit 10: time budget used.  Exit 20: needs a decision (a new dialog window, a nozzle over
 260 or bed over 80 degC, the layer unchanged for 15 min, the camera pane blank for 3 min).
 Targets other than the file's 220/55 are only noted. Only reads the screen; never clicks.
@@ -80,7 +83,7 @@ while time.time() - t0 < MINUTES * 60:
             print(f"{now} note: left nozzle target {rec['nozL'][1]} (file says 220)", flush=True)
         if rec["bed"] and rec["bed"][1] not in (0, 55):
             print(f"{now} note: bed target {rec['bed'][1]} (file says 55)", flush=True)
-    if saw_print and (rec["percent"] == 100 or re.search(r"\bFinished\b|\bCompleted\b", job)):
+    if saw_print and rec["percent"] == 100 and not re.search(r"Pr\w{0,2}nt\w{0,3}g", job):  # OCR gives "Printng" too
         img.save(f"{OUT}/finished_{now}.png"); cam.save(f"{OUT}/frames/{now}_finished.jpg", quality=90)
         code, why = 0, "job shows finished"; break
     if saw_print and time.time() - last_layer_t > 15 * 60:

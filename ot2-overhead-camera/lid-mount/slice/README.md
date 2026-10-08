@@ -28,14 +28,23 @@ To send a plate to the lab's A1 mini from a script or CI, follow
   Send to finish, against the 69 min 16 s estimate. The file the printer ran and its metadata
   are in [`bambu/evidence/2026-10-01/deck-studio/`](../../../bambu/evidence/2026-10-01/deck-studio/README.md).
   **That deck has the first 6 mm camera bosses**, which leave the M2.5 × 12s 0.7 mm short
-  of the top of their nuts. Plate 2 has had 3.5 mm ones since 2026-10-08, and the deck needs
-  printing again ([why](../README.md#the-camera-bosses-2026-10-08)).
+  of the top of their nuts. Plate 2 has had 3.5 mm ones since 2026-10-08
+  ([why](../README.md#the-camera-bosses-2026-10-08)), and that deck was printed on the H2D the
+  same day (last point).
 - **Plate 1 (the base, with its four posts),** 2026-10-02, in black PLA Basic. It took 146.0 min
   from Send to finish, against Studio's 2 h 29 min 41 s estimate (2 h 32 min for this CLI
   slice). The file the printer ran and its metadata are in
   [`bambu/evidence/2026-10-02/base-studio/`](../../../bambu/evidence/2026-10-02/base-studio/README.md).
+- **The deck with the 3.5 mm camera bosses, on the H2D,** 2026-10-08, in black PLA Basic, deck
+  only. It wasn't sliced from this project: the H2D has 0.6 mm nozzles, so the deck was sliced
+  in Studio's GUI with `0.30mm Standard @BBL H2D 0.6 nozzle` and this project's 3 walls, 25 %
+  infill and circle compensation. In 0.3 mm layers the plate comes out 5.1 mm thick and the
+  bosses 3.3 mm tall, 8.4 mm in all against 8.5 mm in CAD. It took 44.6 min from Send to
+  finish, against Studio's 41 min 4 s estimate. The file the printer
+  ran and its metadata are in
+  [`bambu/evidence/2026-10-08/deck-h2d-studio/`](../../../bambu/evidence/2026-10-08/deck-h2d-studio/README.md).
 
-Plates 2–4 were printed in dark blue PLA Basic, plate 1 in black.
+Plates 2–4 were printed in dark blue PLA Basic; plate 1 and the H2D deck in black.
 
 **Settings.** These are Bambu's own system presets: printer `Bambu Lab A1 mini 0.4 nozzle`,
 process `0.20mm Standard @BBL A1M` and filament `Bambu PLA Basic @BBL A1M` (220 °C nozzle).

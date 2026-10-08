@@ -27,9 +27,10 @@ list is in [`hardware/amazon/README.md`](hardware/amazon/README.md).
 
 - **The camera screws:** the M2.5 × 12 goes up through the camera's 2 mm PCB, the deck's
   3.5 mm bosses and the deck, and ends 1.8 mm past the top of a full-thickness nut. The first
-  deck's 6 mm bosses left it 0.7 mm short of the top of the nut, so reprint a deck that has
-  those ([why](README.md#the-camera-bosses-2026-10-08)). The camera and lens hang only about
-  0.5 N on each screw.
+  deck's 6 mm bosses left it 0.7 mm short of the top of the nut
+  ([why](README.md#the-camera-bosses-2026-10-08)). Use the deck printed on the H2D on
+  2026-10-08: its plate and bosses came out 8.4 mm in all, against 8.5 mm in CAD, so the screw
+  reaches about 0.1 mm further. The camera and lens hang only about 0.5 N on each screw.
 - **The standoffs** replace the printed 5 mm spacers and lift the Pi 1 mm. They stay on the
   deck when the Pi comes off, so the nuts underneath can't drop out.
 - **If an M2.5 × 6 stops before the Pi is snug,** put a kit washer under its head; COMRUN gives

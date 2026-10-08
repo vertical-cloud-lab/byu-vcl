@@ -171,7 +171,10 @@ ride 2.5 mm higher (`lens_front_gap` 3.0 → 5.5 mm). That changes three things:
 
 The first deck is kept as the file the printer ran,
 [`lid_mount_deck_plate2.3mf`](../../bambu/evidence/2026-10-01/deck-studio/sent/lid_mount_deck_plate2.3mf).
-Plate 2 of the A1 mini project now prints the new one (1 h 08 min).
+Plate 2 of the A1 mini project now prints the new one (1 h 08 min). The new deck was printed
+on the H2D on 2026-10-08. That printer has 0.6 mm nozzles, so it was sliced in 0.3 mm layers:
+the plate came out 5.1 mm thick and the bosses 3.3 mm tall, 8.4 mm in all against 8.5 mm in
+CAD ([record](../../bambu/evidence/2026-10-08/deck-h2d-studio/README.md)).
 
 ### The deck-to-post joint
 
