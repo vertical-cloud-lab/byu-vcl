@@ -102,7 +102,8 @@ and nuts; black parts are the nylon kit's.
 
 **A version to pause on:** [`renders/assembly_steps.mp4`](renders/assembly_steps.mp4) (1920 × 1080,
 2 min 15 s, 17 MB), also [on YouTube](https://www.youtube.com/watch?v=YWsTg3aCP50) (unlisted).
-Both have a chapter for each step. It shows the same ten steps, larger, and labels every part
+The YouTube copy predates the shorter camera bosses, so its camera hangs 2.5 mm lower; the
+steps are the same. Both have a chapter for each step. It shows the same ten steps, larger, and labels every part
 with its count, size, material and source.
 - Each step holds twice. First the parts are laid out beside their places, with a dashed line
   from each one to where it goes. Then they're shown in place.
