@@ -49,15 +49,21 @@ class Params:
     lens_thread_len: float = 4.5    # estimate: thread length behind the flange
     lens_clear_ap: float = 36.0     # front glass; deliberately generous for the cone check
     ring_sweep_d: float = 64.0      # estimated sweep of the thumbscrews as the rings turn
-    lens_front_gap: float = 3.0     # the lens front sits this far above the base top
+    # The lens front sits this far above the base top. It was 3.0 with 6.0 mm camera bosses; the
+    # bosses lost 2.5 mm on 2026-10-08, and the deck stays where the printed posts hold it, so the
+    # camera and lens now ride 2.5 mm higher. Keep lens_front_gap + cam_standoff = 9.0 for the
+    # printed base.
+    lens_front_gap: float = 5.5
 
     # --- Raspberry Pi HQ Camera (CS-mount), from the official drawing --------
     cam_board: float = 38.0
     cam_hole_pitch: float = 30.0    # 4 x O2.5 holes, 4 mm in from each edge
-    cam_pcb_t: float = 1.4
+    cam_pcb_t: float = 2.0          # measured on the lab's camera, 2026-10-08 (was taken as 1.4)
     cs_seat_from_pcb_back: float = 15.83   # 18.58 overall minus the 2.75 connector
     c_cs_adapter: float = 5.03      # C (17.526) minus CS (12.5) flange focal distance
-    cam_standoff: float = 6.0       # PCB back face to deck; clears the FPC connector
+    # PCB back face to deck: the height of the four camera bosses. 6.0 left the kit's M2.5 x 12
+    # short of its nut through the 2 mm PCB; 3.5 still clears the 2.75 mm FPC connector.
+    cam_standoff: float = 3.5
 
     # --- base --------------------------------------------------------------
     base_size: float = 112.0
@@ -487,6 +493,7 @@ def run_checks(p: Params, parts: dict[str, cq.Workplane]) -> dict:
             "lens front above lid top": p.z_lens_front,
             "thumbscrews to nearest post": gap(lens, base.intersect(box(300, 300, 200, z0=p.base_t + p.collar_h + 0.1))),
             "camera to base": gap(cam, base),
+            "camera FPC connector to deck underside": p.z_deck - p.z_pcb_back - 2.75,
             "Pi 5 board to deck screw heads (plan)": pi_to_screw_heads(p),
             "post to socket wall, per side": p.socket_clear,
             "M3 x 10 tip below its nut (the screws in use)": m3_thread_past_nut(p, length=10.0),

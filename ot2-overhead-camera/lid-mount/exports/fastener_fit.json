@@ -1,75 +1,77 @@
 {
   "camera -> deck": {
     "size": "M2.5",
-    "full_nut_at": 12.1,
-    "longest": 18.37,
+    "full_nut_at": 10.2,
+    "longest": 16.46,
     "pick": 12,
     "lengths": [
       {
         "length": 6,
         "on_hand": true,
-        "tip_z": 98.26,
-        "past_nut": -6.1,
+        "tip_z": 100.16,
+        "past_nut": -4.2,
         "runs_into": {}
       },
       {
         "length": 8,
         "on_hand": true,
-        "tip_z": 100.26,
-        "past_nut": -4.1,
+        "tip_z": 102.16,
+        "past_nut": -2.2,
         "runs_into": {}
       },
       {
         "length": 10,
         "on_hand": false,
-        "tip_z": 102.26,
-        "past_nut": -2.1,
+        "tip_z": 104.16,
+        "past_nut": -0.2,
         "runs_into": {}
       },
       {
         "length": 12,
         "on_hand": true,
-        "tip_z": 104.26,
-        "past_nut": -0.1,
+        "tip_z": 106.16,
+        "past_nut": 1.8,
         "runs_into": {}
       },
       {
         "length": 14,
         "on_hand": false,
-        "tip_z": 106.26,
-        "past_nut": 1.9,
+        "tip_z": 108.16,
+        "past_nut": 3.8,
         "runs_into": {}
       },
       {
         "length": 16,
         "on_hand": false,
-        "tip_z": 108.26,
-        "past_nut": 3.9,
+        "tip_z": 110.16,
+        "past_nut": 5.8,
         "runs_into": {}
       },
       {
         "length": 18,
         "on_hand": false,
-        "tip_z": 110.26,
-        "past_nut": 5.9,
-        "runs_into": {}
+        "tip_z": 112.16,
+        "past_nut": 7.8,
+        "runs_into": {
+          "pi5": 19.781
+        }
       },
       {
         "length": 20,
         "on_hand": false,
-        "tip_z": 112.26,
-        "past_nut": 7.9,
+        "tip_z": 114.16,
+        "past_nut": 9.8,
         "runs_into": {
-          "pi5": 21.1
+          "pi5": 33.642
         }
       },
       {
         "length": 25,
         "on_hand": false,
-        "tip_z": 117.26,
-        "past_nut": 12.9,
+        "tip_z": 119.16,
+        "past_nut": 14.8,
         "runs_into": {
-          "pi5": 54.106
+          "pi5": 66.649
         }
       }
     ],
@@ -208,7 +210,7 @@
   "Pi 5 -> printed spacers -> deck (fallback)": {
     "size": "M2.5",
     "full_nut_at": 11.3,
-    "longest": 38.44,
+    "longest": 35.92,
     "pick": 12,
     "lengths": [
       {
