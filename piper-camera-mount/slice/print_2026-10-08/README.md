@@ -1,4 +1,4 @@
-# The PiPER mount in PLA, printed on the A1 mini (2026-10-08)
+# The PiPER mount in PLA on the A1 mini (2026-10-08)
 
 Every printed part of the mount on one plate:
 - the bracket;
@@ -7,7 +7,7 @@ Every printed part of the mount on one plate:
 - the four Pi 5 spacers;
 - both tag wedges.
 
-It was printed in black Bambu PLA Basic on the Textured PEI plate, from
+It went out in black Bambu PLA Basic on the Textured PEI plate, from
 [`../piper_camera_mount_A1mini_PLA.3mf`](../piper_camera_mount_A1mini_PLA.3mf) as of `b3dba57`:
 213 layers to 42.6 mm, 87.47 g, and Studio's estimate of 2 h 48 min 30 s. It was asked for on
 [PR #245](https://github.com/vertical-cloud-lab/byu-vcl/pull/245) ("begin printing the parts").
@@ -26,8 +26,9 @@ followed step by step. It's the fifth print sent this way.
 
 - Sent at 12:39:19 UTC; the first status read after it, at 12:39:57, found the printer `RUNNING` and heating.
 - Layer 1 ran from 12:46:35 to about 12:54:10: 7.5 min, against the G-code's 7.
-- **The session followed it to layer 113 of 213** (67 %) at 14:33, with every frame clean and
-  no print error, HMS alert or temperature alarm. The printer then gave 54 min to go, for a finish
+- **The session followed it to layer 113 of 213** (67 %) at 14:33, with no print error, HMS alert or
+  temperature alarm. The frames checked (every 30 s through the first layers, then about every
+  10 min) showed nothing wrong. The printer then gave 54 min to go, for a finish
   near 15:28 UTC.
 - **Video:** https://www.youtube.com/watch?v=KPQpL98ouMU (unlisted, 5 min 21 s). It shows Studio's
   setup and slicing at 4×, then Send at 2×, then Studio's camera view at 60× to layer 101. The login
@@ -89,15 +90,15 @@ What differed:
 
 ## Things the next print should know
 
-- **The printer has moved.** It now stands on a wooden counter by a whiteboard, with boxes behind
-  it. Compare the 29 September frames on PR #234. The parked-high view shows a pencil, a red box and
+- **The printer has moved** since the 29 September frames on PR #234. It now stands on a wooden
+  counter by a whiteboard, with boxes behind it. The parked-high view shows a pencil, a red box and
   black rods near the bed.
 - **A shorter go.** sgbaird gave the go as "Plate clear" with the login code, and called the rest of
   the runbook's checklist overkill: "Get going. Your other confirmation requests are overkill."
   Next time, ask for the code and "plate clear" in one message, and give anything else as
   information.
-- **The clock.** This job was sent 27 min into the session. It runs about 2 h 56 min from Send, so it
-  finishes about 17 min after the job's 180 min limit. Studio's Stop covers the print only while the
+- **The clock.** This job was sent 27 min into the session. It runs about 2 h 49 min from Send, so it
+  finishes about 16 min after the job's 180 min limit (15:12 UTC). Studio's Stop covers the print only while the
   session lasts. A print of this length needs Send within about 10 min of the trigger, or a
   hand-off.
 - **Black PLA on the dark plate** shows in the low camera view only as a sheen until a part's
