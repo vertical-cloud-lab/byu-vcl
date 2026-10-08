@@ -16,6 +16,7 @@ One was printed in black PLA on the lab's A1 mini on 2026-10-06, at the request 
 | [`onshape/features.json`](onshape/features.json) | The element's feature list (4 sketches, 4 extrudes, 1 plane), as fetched at 20:44 UTC |
 | [`evidence/2026-10-06/print.json`](evidence/2026-10-06/print.json) | Source, settings, Send options, estimates, timeline and who gave the go |
 | [`evidence/2026-10-06/`](evidence/2026-10-06/) | Both pre-flights with their camera frames, `watch`'s log (`watch.jsonl.gz`) and key frames |
+| [`off_the_shelf/`](off_the_shelf/README.md) | What Amazon sells that is like this holder, searched 2026-10-08 |
 
 ## The part
 
