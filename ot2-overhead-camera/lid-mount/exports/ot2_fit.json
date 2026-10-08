@@ -7,17 +7,17 @@
     ],
     "deck surface to window underside (mm)": 585.2,
     "pipette-head top cover below window underside (mm)": 9.1,
-    "lens front to plate top (mm)": 584.9
+    "lens front to plate top (mm)": 587.4
   },
   "optics": {
     "focal length used (mm)": 25.0,
     "field of view at the plate top, f = 25 (mm)": [
-      152.1,
-      114.0
+      152.7,
+      114.5
     ],
-    "resolution at the plate (px/mm)": 26.7,
-    "pixels across one 6.86 mm well": 183,
-    "longest focal length leaving 5 mm round the plate (mm)": 27.6
+    "resolution at the plate (px/mm)": 26.6,
+    "pixels across one 6.86 mm well": 182,
+    "longest focal length leaving 5 mm round the plate (mm)": 27.7
   },
   "slots": {
     "1": {

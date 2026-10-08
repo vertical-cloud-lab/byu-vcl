@@ -36,7 +36,7 @@ WINDOW = (564.9, 455.1)
 WINDOW_CENTRE_DECK = (196.5, 214.525)
 SCREWS = [(sx * 255.7, sy * 221.9) for sx in (-1, 1) for sy in (-1, 1)]
 SLOT_SIZE = (128.0, 86.0)
-FOV_25 = (152.1, 114.0)          # at the plate top, f = 25 mm (exports/ot2_fit.json)
+FOV_25 = (152.7, 114.5)          # at the plate top, f = 25 mm (exports/ot2_fit.json)
 PLATE = (127.76, 85.48)
 
 SURFACE, INK, INK2, MUTED = "#fcfcfb", "#0b0b0b", "#52514e", "#a3a29c"

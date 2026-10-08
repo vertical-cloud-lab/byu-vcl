@@ -35,6 +35,8 @@ the work:
 >   black PLA. It was sent at 18:56:41 UTC and finished at 21:22:39, 146.0 min later against
 >   Studio's 2 h 30 min, with no error or HMS alert. [Evidence](evidence/2026-10-02/base-studio/README.md),
 >   [recording](https://www.youtube.com/watch?v=inpbxJkVpe8). All four of the lid mount's plates are now printed.
+>   Plate 2 needs printing again: the deck's camera bosses lost 2.5 mm on 2026-10-08
+>   ([why](../ot2-overhead-camera/lid-mount/README.md#the-camera-bosses-2026-10-08)).
 > - **Its print command** is the payload that started this printer's first programmatic
 >   print from a laptop (powder-doser PR #23, 2026-07-27), when the printer was set up for
 >   Developer Mode.

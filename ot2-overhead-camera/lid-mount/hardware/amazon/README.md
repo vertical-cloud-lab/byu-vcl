@@ -28,7 +28,7 @@ dimensions for the M2.5 parts. The model uses 5 mm across the flats for the stan
 
 | Joint | From the kit | Qty | Fit ([`cad/fastener_fit.py`](../../cad/fastener_fit.py)) |
 |---|---|---|---|
-| Camera → deck | **PM M2.5 × 12**, up through the camera's corner holes and the deck's bosses | 4 | The longest in the kit, and just long enough. Through the 1.4 mm board, the 6 mm boss and the 5 mm deck, its tip ends 0.1 mm below the top of a full 2.0 mm nut, about 4 threads in. The camera and lens weigh about 0.2 kg, or 0.5 N per screw. |
+| Camera → deck | **PM M2.5 × 12**, up through the camera's corner holes and the deck's bosses | 4 | The longest in the kit. Through the camera's 2.0 mm board (measured; Raspberry Pi's drawing says 1.4 mm), the 3.5 mm boss and the 5 mm deck, its tip ends 1.8 mm past the top of a full 2.0 mm nut. With the first deck's 6 mm bosses it ended 0.7 mm below the top of the nut. The camera and lens weigh about 0.2 kg, or 0.5 N per screw. |
 | | **M2.5 nut**, in the traps on the deck top | 4 | |
 | Pi 5 → deck | **M2.5 6 + 6 male–female standoff**: the stud goes down through the deck | 4 | The 6 mm stud reaches 1.3 mm past the nut and ends 1.0 mm below the deck, where nothing is in the way |
 | | **M2.5 nut**, in the traps in the deck's underside, onto each stud | 4 | |

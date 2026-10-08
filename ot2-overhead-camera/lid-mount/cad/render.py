@@ -103,7 +103,8 @@ def render_section(p: Params, parts: dict, out: Path) -> None:
         f"collar top  Z = {p.base_t + p.collar_h:.1f}": (0, -95, p.base_t + p.collar_h),
         f"lens flange  Z = {p.z_lens_flange:.1f}": (0, -95, p.z_lens_flange),
         f"camera PCB  Z = {p.z_pcb_back:.1f}": (0, -95, p.z_pcb_back),
-        f"deck  Z = {p.z_deck:.1f}": (0, -95, p.z_deck),
+        # pinned to the deck's top face, so it clears the camera PCB label 3.5 mm below
+        f"deck  Z = {p.z_deck:.1f} to {p.z_deck + p.deck_t:.1f}": (0, -95, p.z_deck + p.deck_t),
     }
     pl.add_point_labels(np.array(list(labels.values()), dtype=float), list(labels.keys()), font_size=18,
                         point_size=8, point_color="red", shape_opacity=0.8, always_visible=True)

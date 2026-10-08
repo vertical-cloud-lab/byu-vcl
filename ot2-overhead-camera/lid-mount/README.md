@@ -48,7 +48,7 @@ safety switch is enabled in Robot Settings, the robot won't run while the window
 | Part | File | Notes |
 |---|---|---|
 | Base | [`exports/base.stl`](exports/base.stl) | 112 × 112 mm plate (144 mm across the tape tabs), a Ø46 mm lens aperture inside a 14 mm light collar, four M4 nut traps, and four 10 mm posts, each with a side slot for an M3 nut near its top |
-| Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes, the Pi 5 sits on top, and a slot passes the ribbon cable. Four sockets in its underside take the post tops |
+| Deck | [`exports/deck.stl`](exports/deck.stl) | The camera hangs underneath from its four M2.5 holes on four 3.5 mm bosses, the Pi 5 sits on top, and a slot passes the ribbon cable. Four sockets in its underside take the post tops. The bosses were 6 mm until 2026-10-08; see [the camera bosses](#the-camera-bosses-2026-10-08) |
 | Drill template | [`exports/drill_template.stl`](exports/drill_template.stl), or print [`exports/drill_template_1to1.pdf`](exports/drill_template_1to1.pdf) on paper | Marks the lens cutout and the four bolt holes |
 | Spacers | [`exports/spacers.stl`](exports/spacers.stl) | 4 × 5 mm Pi 5 spacers, now only a fallback: the Pi 5 sits on the nylon kit's standoffs. Plus 4 × 2 mm shims that raise the deck if the lens ever needs to sit higher |
 | Fit coupon (optional) | [`exports/fit_coupon.stl`](exports/fit_coupon.stl) | The top 12 mm of a post and the deck around its socket, cut from the real parts: a 16-minute check of both fits before the 2.5 h base |
@@ -62,7 +62,7 @@ STEP files for every printed part sit next to the STLs. The drill template also 
 orientation, and **none needs supports** (see [`renders/print_layout.png`](renders/print_layout.png)).
 
 **Bambu Lab A1 mini:** [`slice/lid_mount_A1mini_PLA.3mf`](slice/lid_mount_A1mini_PLA.3mf) is
-already sliced for PLA: 3 h 42 min and 125 g for the base and the deck, plus optional plates for
+already sliced for PLA: 3 h 40 min and 124 g for the base and the deck, plus optional plates for
 the drill template and a fit coupon. It uses these settings,
 the Textured PEI plate, and Bambu's "Auto circle contour-hole compensation", so the round screw
 holes print at their nominal sizes. Bambu's support check and slicer both came back clean; the
@@ -73,7 +73,7 @@ only warning concerns timelapse mode. The fits are predicted, not yet measured; 
 
 | Qty | Part | Where |
 |---|---|---|
-| 4 + 4 | M2.5 × 12 Phillips pan head + M2.5 nut, **black nylon**, from the lab's COMRUN kit | camera → deck (nuts sit in traps on the deck top). The kit's longest screw; its tip ends 0.1 mm short of the top of the nut, about four threads in |
+| 4 + 4 | M2.5 × 12 Phillips pan head + M2.5 nut, **black nylon**, from the lab's COMRUN kit | camera → deck (nuts sit in traps on the deck top). The kit's longest screw. Through the camera's 2 mm PCB and the 3.5 mm bosses, its tip ends 1.8 mm past the top of the nut |
 | 4 + 4 | M2.5 6 + 6 mm male–female standoff + M2.5 nut, **black nylon**, same kit | Pi 5 → deck: the studs go down through the deck into nuts in the traps on its underside |
 | 4 | M2.5 × 6 Phillips pan head, **black nylon**, same kit | Pi 5 → standoffs |
 | 4 + 4 | M3 × 10 Phillips pan head + M3 nut, stainless, from the Prototyping Lab's drawer ([92000A120](https://www.mcmaster.com/92000A120/), [91828A211](https://www.mcmaster.com/91828A211/)) | deck → posts (the nuts slide into slots in the posts; see [the joint](#the-deck-to-post-joint)) |
@@ -129,9 +129,9 @@ renders the video in about 5 min.
    camera cable in and feed it up through the slot.
 6. Screw on the lens with **one** C–CS adapter. The lens and the camera each ship with one,
    and in July the camera wouldn't focus because the adapter ring had been pushed in too far
-   (#84). Set the zoom to **about 25 mm**. At the lid, the lens front is 585 mm from the top
-   of a plate, which gives a 152 × 114 mm field of view: the plate plus a margin on every
-   side, at 26.7 px/mm (~180 px across each well). Above about 27.6 mm the margin
+   (#84). Set the zoom to **about 25 mm**. At the lid, the lens front is 587 mm from the top
+   of a plate, which gives a 153 × 114 mm field of view: the plate plus a margin on every
+   side, at 26.6 px/mm (~180 px across each well). Above about 27.7 mm the margin
    around the plate drops below 5 mm.
 7. Lower the deck onto the posts; their tops drop 2.5 mm into the sockets in its underside.
    Drive the four **M3 × 10** pan heads down through the deck into the nuts, snug.
@@ -145,6 +145,30 @@ underside nuts.
 
 The zoom, focus and iris rings stay reachable through the 84 mm windows between the posts.
 Their thumbscrews sweep about Ø55 mm, and the posts are 33 mm clear of that.
+
+### The camera bosses (2026-10-08)
+
+The first deck, printed on 2026-10-01, hung the camera on four 6 mm bosses, and the nylon
+M2.5 × 12s didn't reach through their nuts. The screw check had taken the camera's PCB as 1.4 mm, the
+figure on Raspberry Pi's drawing, but the lab's board measures 2.0 mm. The bosses are now
+3.5 mm (`cam_standoff`), so the 12 mm screw reaches 1.8 mm past the far face of its nut. Its
+tip stands about 1.5 mm proud of the deck top, 4.5 mm below the Pi 5.
+
+The base was already printed and the deck still sits on its posts, so the camera and lens now
+ride 2.5 mm higher (`lens_front_gap` 3.0 → 5.5 mm). That changes three things:
+
+- **The FPC connector** on the back of the camera clears the deck by 0.75 mm. The ribbon has
+  3.5 mm under the deck, instead of 6 mm, to turn up into the slot.
+- **The lens front** is 11.5 mm above the window instead of 9 mm, still 8.5 mm inside the
+  collar. At 25 mm zoom the view grows from 152 × 114 mm to 153 × 114 mm.
+- **The worst-case view cone** clears the base's Ø46 mm aperture from 9.1 mm focal length up,
+  not 7.5 mm. That envelope sends light from the whole Ø36 mm front glass at the corner angle,
+  and between 8 and 9 mm it grazes the aperture. The simulated view's pinhole model (pupil
+  20 mm inside the lens) puts the 8 mm corner rays 7.5 mm inside it.
+
+The first deck is kept as the file the printer ran,
+[`lid_mount_deck_plate2.3mf`](../../bambu/evidence/2026-10-01/deck-studio/sent/lid_mount_deck_plate2.3mf).
+Plate 2 of the A1 mini project now prints the new one (1 h 08 min).
 
 ### The deck-to-post joint
 
@@ -180,7 +204,7 @@ socket by hand and is fairly loose, which is enough to locate the deck. The nut 
 untested ([result](slice/README.md#will-it-fit-first-time)).
 
 If a post still won't go in, sand the post top rather than forcing it. If the fit is loose,
-reprint the deck (the 1 h 10 min plate) with a smaller `socket_clear`. The 2 mm shims still
+reprint the deck (the 1 h 08 min plate) with a smaller `socket_clear`. The 2 mm shims still
 work: a shim sits on the post top inside the socket, raising the deck by 2 mm and shortening
 the post's engagement by 2 mm. With the shims, the M3 × 10 falls 1.4 mm short of the far side
 of the nut, so use the drawer's M3 × 18s, which reach 6.6 mm past it.
@@ -217,7 +241,7 @@ the lens axis is halfway between the left and right screws, and 140.9 mm behind 
 through the two front screws (146.5 mm from the window's front edge). The V-notches in the
 base's tabs sit on the lens-axis lines, so a taped-on cross at that point lines the mount up.
 At 25 mm zoom, the whole plate stays in view if the axis lands within about 12 mm left-right
-and 14 mm front-back of the mark. The drawing comes from
+and 15 mm front-back of the mark. The drawing comes from
 [`cad/placement.py`](cad/placement.py).
 
 Because the sensor's long axis is X, the plate's 12 columns should run **left to right**
@@ -301,10 +325,11 @@ acrylic makers limit step bits to sheet up to 3 mm.
    about 1 mm under its own weight across the 450 mm span, and the ~0.4 kg mount adds up
    to about 0.5 mm; both are simply-supported beam estimates, not measurements.
 
-Why 2 in: the view cone from the lens front clears a 50.8 mm hole across the **whole 8–50
-mm zoom range**. At the 25 mm working zoom it is only ~40 mm across at the window's
-underside, so a 1¾ in (44.5 mm) saw would also work. There is 19 mm of panel between the
-cutout and each bolt hole.
+Why 2 in: the worst-case view cone from the lens front clears a 50.8 mm hole from 8.8 mm
+focal length up. Below that, the base's own Ø46 mm aperture is the tighter limit (9.1 mm; see
+[the camera bosses](#the-camera-bosses-2026-10-08)), so a bigger hole would gain nothing. At
+the 25 mm working zoom the cone is only ~41 mm across at the window's underside, so a 1¾ in
+(44.5 mm) saw would also work. There is 19 mm of panel between the cutout and each bolt hole.
 
 ---
 
@@ -317,12 +342,12 @@ is up. Every height follows from the camera and lens stack:
 |---:|---|
 | −590.2 | deck surface (Opentrons CAD) |
 | 0 | top of the window |
-| 9.0 | lens front, 3 mm above the base and inside the collar |
+| 11.5 | lens front, 5.5 mm above the base and inside the collar |
 | 20.0 | top of the collar |
-| 72.8 | lens flange |
-| 77.8 | camera CS seat (after one 5.03 mm C–CS adapter) |
-| 93.7 | back of the camera PCB |
-| 99.7 | deck underside (6 mm standoff clears the FPC connector) |
+| 75.3 | lens flange |
+| 80.3 | camera CS seat (after one 5.03 mm C–CS adapter) |
+| 96.2 | back of the camera PCB |
+| 99.7 | deck underside (the 3.5 mm camera bosses leave the FPC connector 0.75 mm clear) |
 | 102.2 | top of the posts, 2.5 mm up inside the deck's sockets |
 | ~128 | top of the Pi 5 and cooler, the tallest point (the Pi sits on 6 mm standoffs) |
 
@@ -338,7 +363,9 @@ the front-row slots, which is why the mount goes over slots 4–11:
 | M3 × 10 past its nut | 0.6 mm (an M3 × 16 reaches 6.6 mm) |
 | Lens front barrel to collar | 3.0 mm radial gap |
 | Thumbscrews to the nearest post | 32.8 mm |
-| View cone vs. base aperture and lid cutout | clear from 7.5 mm focal length up, i.e. the full 8–50 mm zoom range |
+| View cone vs. base aperture and lid cutout | clear from 9.1 mm focal length up; 7.5 mm before the camera rose 2.5 mm ([why it's fine](#the-camera-bosses-2026-10-08)) |
+| Camera FPC connector to the deck underside | 0.75 mm |
+| M2.5 × 12 past its nut, camera → deck | 1.8 mm, through the 2.0 mm PCB ([`cad/fastener_fit.py`](cad/fastener_fit.py)) |
 | Pi 5 board to the deck screw heads (plan view) | 4.25 mm, so the deck comes off without removing the Pi |
 | Base vs. the OT-2 frame, mount over each slot | 0 mm³ for slots 4–11; overlaps for 1–3 |
 
@@ -346,7 +373,8 @@ Sources for the numbers:
 - The HQ Camera's
   [official mechanical drawing](https://datasheets.raspberrypi.com/hq-camera/hq-camera-cs-mechanical-drawing.pdf):
   38 mm board, Ø2.5 holes 4 mm from each edge on a 30 mm square, and 18.58 mm overall depth
-  including the 2.75 mm connector.
+  including the 2.75 mm connector. The drawing gives the PCB as 1.4 mm; the model uses the
+  2.0 mm measured on the lab's board (2026-10-08).
 - Waveshare's [8–50 mm lens spec](https://www.waveshare.com/8-50mm-Zoom-Lens-for-Pi.htm):
   Φ40 × 68.3 mm, 148 g, minimum object distance 0.20 m.
 - Opentrons' OT-2 model, as described above.
@@ -354,13 +382,13 @@ Sources for the numbers:
 **Estimates to check on the bench.** Each one is a single number in `Params`:
 - `lens_thread_len = 4.5` and the layout of the rings and thumbscrews come from product
   photos, not a drawing. If the lens front ends up lower than expected, there are still
-  9 mm before it touches the window. Add a 2 mm shim on each post, inside the deck's socket,
+  11.5 mm before it touches the window. Add a 2 mm shim on each post, inside the deck's socket,
   for each 2 mm you need.
 - `ring_sweep_d = 64` is generous; the modelled thumbscrews reach Ø55 mm.
 - The simulated view's pinhole sits 20 mm inside the lens front (`PUPIL_IN_LENS`). Moving
   it changes the field of view by about 3 %.
 
-At 585 mm the view is close to straight down but not telecentric. Toward the plate's
+At 587 mm the view is close to straight down but not telecentric. Toward the plate's
 edges the camera sees about 1 mm of each well's wall, which is visible in the simulated
 view. Keep that in mind when you segment wells near the edges.
 

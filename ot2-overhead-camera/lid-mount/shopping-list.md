@@ -25,8 +25,10 @@ list is in [`hardware/amazon/README.md`](hardware/amazon/README.md).
 | ☐ | 4 | **M2.5 nut** | in the traps in the deck's underside, onto the studs |
 | ☐ | 4 | **PM M2.5 × 6** pan head | down through the Pi 5 into the standoffs |
 
-- **The camera screws:** the M2.5 × 12 is just long enough. Its tip ends 0.1 mm short of the
-  top of a full-thickness nut, about four threads in, and the camera and lens hang only about
+- **The camera screws:** the M2.5 × 12 goes up through the camera's 2 mm PCB, the deck's
+  3.5 mm bosses and the deck, and ends 1.8 mm past the top of a full-thickness nut. The first
+  deck's 6 mm bosses left it 0.7 mm short of the top of the nut, so reprint a deck that has
+  those ([why](README.md#the-camera-bosses-2026-10-08)). The camera and lens hang only about
   0.5 N on each screw.
 - **The standoffs** replace the printed 5 mm spacers and lift the Pi 1 mm. They stay on the
   deck when the Pi comes off, so the nuts underneath can't drop out.
@@ -78,9 +80,9 @@ thickest ([results](exports/fastener_fit.json)).
 
 | Screw | Works | Shortest (tip through its nut) | Longest, and what stops it |
 |---|---|---|---|
-| M2.5, camera → deck | 12–18 mm; the kit's 12 ends 0.1 mm short of the nut's top | 12.1 mm | 18.4 mm: the underside of the Pi 5 |
+| M2.5, camera → deck | 10–16 mm; the kit's 12 ends 1.8 mm past the nut's top | 10.2 mm, through the 2 mm PCB and 3.5 mm bosses | 16.4 mm: the underside of the Pi 5 |
 | M2.5, Pi 5 → nylon standoffs | 6 mm | 1.6 mm (the board) | about 7.6 mm: the bottom of the 6 mm standoff's thread |
-| M2.5, Pi 5 → printed spacers → deck (fallback) | 12 mm and up | 11.3 mm | 38 mm: the space kept clear for turning the lens rings |
+| M2.5, Pi 5 → printed spacers → deck (fallback) | 12 mm and up | 11.3 mm | 35.9 mm: the space kept clear for turning the lens rings |
 | M3, deck → posts | 10–16 mm | 9.4 mm | 17.0 mm: the bottom of the screw hole in the post |
 | M3, with the 2 mm deck shims | 12–18 mm | 11.4 mm | 19.0 mm |
 | M4, base → lid | 12 mm and up | 11.5 mm, on a 5 mm window with a 0.8 mm washer | nothing in reach |

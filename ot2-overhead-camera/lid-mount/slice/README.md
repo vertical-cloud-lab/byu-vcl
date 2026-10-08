@@ -8,12 +8,12 @@ slicer, and [`report.json`](report.json) holds the numbers below.
 | Plate | Parts | Time | PLA |
 |---|---|---|---|
 | 1 | Base | 2 h 32 min | 81.1 g (26.8 m) |
-| 2 | Deck + 4 Pi 5 standoffs + 4 deck shims | 1 h 10 min | 43.5 g (14.3 m) |
+| 2 | Deck + 4 Pi 5 standoffs + 4 deck shims. The deck's camera bosses are 3.5 mm since 2026-10-08 | 1 h 08 min | 43.3 g (14.3 m) |
 | 3 | Drill template (optional; the paper PDF does the same job) | 52 min | 31.8 g (10.5 m) |
 | 4 | Fit coupon (optional): the top 12 mm of a post, nut slot included, and the deck around a socket, cut from the real parts. Print it first to try both fits | 16 min | 2.5 g (0.8 m) |
-| | **Total** | **4 h 49 min** | **158.9 g** |
+| | **Total** | **4 h 47 min** | **158.7 g** |
 
-Only plates 1 and 2 are needed: 3 h 42 min and 124.6 g.
+Only plates 1 and 2 are needed: 3 h 40 min and 124.4 g.
 
 To send a plate to the lab's A1 mini from a script or CI, follow
 [`bambu/README.md`](../../../bambu/README.md). Its section 7 covers plate 1.
@@ -27,6 +27,9 @@ To send a plate to the lab's A1 mini from a script or CI, follow
 - **Plate 2 (the deck, Pi 5 standoffs and deck shims),** 2026-10-01. It took 70.3 min from
   Send to finish, against the 69 min 16 s estimate. The file the printer ran and its metadata
   are in [`bambu/evidence/2026-10-01/deck-studio/`](../../../bambu/evidence/2026-10-01/deck-studio/README.md).
+  **That deck has the first 6 mm camera bosses**, which leave the M2.5 × 12s 0.7 mm short
+  of the top of their nuts. Plate 2 has had 3.5 mm ones since 2026-10-08, and the deck needs
+  printing again ([why](../README.md#the-camera-bosses-2026-10-08)).
 - **Plate 1 (the base, with its four posts),** 2026-10-02, in black PLA Basic. It took 146.0 min
   from Send to finish, against Studio's 2 h 29 min 41 s estimate (2 h 32 min for this CLI
   slice). The file the printer ran and its metadata are in
