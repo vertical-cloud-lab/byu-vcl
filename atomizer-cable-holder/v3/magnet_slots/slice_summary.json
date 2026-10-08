@@ -1,0 +1,40 @@
+{
+  "onshape_21:31_fc5bbfa": {
+    "onshape_source_microversion": "fc5bbfa3f109ef69315a25fb",
+    "bambu_studio": "02.08.02.61 CLI",
+    "presets": {
+      "machine": "Bambu Lab A1 mini 0.4 nozzle",
+      "process": "0.20mm Standard @BBL A1M",
+      "filament": "Bambu PLA Basic @BBL A1M"
+    },
+    "bed": "Textured PEI Plate",
+    "wall_generator": "classic",
+    "wall_loops": "2",
+    "sparse_infill_density": "15%",
+    "detect_thin_wall": "0",
+    "layers": 350,
+    "model_printing_time": "1h 1m 6s",
+    "total_estimated_time": "1h 7m 5s",
+    "filament_g": 31.12,
+    "orientation": "standing on the bottom of the hook (Onshape -y down), as printed on 2026-10-06"
+  },
+  "onshape_21:36_82e22af": {
+    "onshape_source_microversion": "82e22afb979092148007314b",
+    "bambu_studio": "02.08.02.61 CLI",
+    "presets": {
+      "machine": "Bambu Lab A1 mini 0.4 nozzle",
+      "process": "0.20mm Standard @BBL A1M",
+      "filament": "Bambu PLA Basic @BBL A1M"
+    },
+    "bed": "Textured PEI Plate",
+    "wall_generator": "classic",
+    "wall_loops": "2",
+    "sparse_infill_density": "15%",
+    "detect_thin_wall": "0",
+    "layers": 350,
+    "model_printing_time": "1h 2m 18s",
+    "total_estimated_time": "1h 8m 16s",
+    "filament_g": 31.36,
+    "orientation": "standing on the bottom of the hook (Onshape -y down), as printed on 2026-10-06"
+  }
+}

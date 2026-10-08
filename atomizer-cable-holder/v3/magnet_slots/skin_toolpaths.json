@@ -1,0 +1,144 @@
+{
+  "Onshape 21:31 UTC (fc5bbfa)": {
+    "upright slot (layer at 50.0 mm)": {
+      "segments": 61,
+      "toolpath_bounds_mm": [
+        [
+          0.21,
+          25.21
+        ],
+        [
+          49.79,
+          44.79
+        ]
+      ],
+      "skin_mm": 0.5,
+      "skin_midline_coverage_pct": {
+        "Outer wall": 100.0
+      },
+      "lines_along_skin": [
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.79,
+          "width_mm": 0.42,
+          "length_mm": 49.6
+        },
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.71,
+          "width_mm": 0.42,
+          "length_mm": 10.9
+        }
+      ]
+    },
+    "cross slot (layer at 10.0 mm)": {
+      "segments": 95,
+      "toolpath_bounds_mm": [
+        [
+          0.21,
+          0.21
+        ],
+        [
+          49.79,
+          44.79
+        ]
+      ],
+      "skin_mm": 0.7,
+      "skin_midline_coverage_pct": {
+        "Outer wall": 100.0
+      },
+      "lines_along_skin": [
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.79,
+          "width_mm": 0.42,
+          "length_mm": 49.6
+        },
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.51,
+          "width_mm": 0.42,
+          "length_mm": 45.0
+        }
+      ]
+    }
+  },
+  "Onshape 21:36 UTC (82e22af), now": {
+    "upright slot (layer at 50.0 mm)": {
+      "segments": 63,
+      "toolpath_bounds_mm": [
+        [
+          0.21,
+          25.21
+        ],
+        [
+          49.79,
+          44.79
+        ]
+      ],
+      "skin_mm": 1.0,
+      "skin_midline_coverage_pct": {
+        "Gap infill": 100.0
+      },
+      "lines_along_skin": [
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.79,
+          "width_mm": 0.42,
+          "length_mm": 49.6
+        },
+        {
+          "feature": "Gap infill",
+          "y_mm": 44.5,
+          "width_mm": 0.23086,
+          "length_mm": 11.3
+        },
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.21,
+          "width_mm": 0.42,
+          "length_mm": 10.9
+        }
+      ]
+    },
+    "cross slot (layer at 10.0 mm)": {
+      "segments": 95,
+      "toolpath_bounds_mm": [
+        [
+          0.21,
+          0.21
+        ],
+        [
+          49.79,
+          44.79
+        ]
+      ],
+      "skin_mm": 1.0,
+      "skin_midline_coverage_pct": {
+        "Gap infill": 99.1,
+        "Outer wall": 0.7,
+        "Gap infill+Outer wall": 0.2
+      },
+      "lines_along_skin": [
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.79,
+          "width_mm": 0.42,
+          "length_mm": 49.6
+        },
+        {
+          "feature": "Gap infill",
+          "y_mm": 44.5,
+          "width_mm": 0.23086,
+          "length_mm": 45.0
+        },
+        {
+          "feature": "Outer wall",
+          "y_mm": 44.21,
+          "width_mm": 0.42,
+          "length_mm": 45.0
+        }
+      ]
+    }
+  }
+}
