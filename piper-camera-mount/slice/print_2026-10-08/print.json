@@ -1,6 +1,6 @@
 {
  "what": "PiPER wrist camera mount, every printed part on one plate: bracket, pod, carrier, 4 Pi 5 spacers, 2 tag wedges",
- "result": "printing (updated below as the session follows it)",
+ "result": "still printing when the session ended its watch: layer 30/213, 39 %, 101 min left at 2026-10-08T13:47:17Z; no print error, HMS alert or alarm seen",
  "asked_for": "https://github.com/vertical-cloud-lab/byu-vcl/pull/245 (sgbaird, 2026-10-08T12:12:00Z: 'begin printing the parts')",
  "printer": {
   "model": "Bambu Lab A1 mini",
@@ -79,7 +79,40 @@
   "go": "2026-10-08T12:37:50Z (sgbaird: 'Get going.')",
   "sent": "2026-10-08T12:39:19Z",
   "running_by": "2026-10-08T12:39:57Z (status read: RUNNING, stage 2, job piper_camera_mount_A1mini_PLA)",
-  "layer_1": "2026-10-08T12:46:35Z"
+  "layer_1": "2026-10-08T12:46:35Z",
+  "layer_starts": {
+   "0": "2026-10-08T12:40:27Z",
+   "1": "2026-10-08T12:46:29Z",
+   "2": "2026-10-08T12:53:56Z",
+   "3": "2026-10-08T12:56:59Z",
+   "4": "2026-10-08T13:00:04Z",
+   "5": "2026-10-08T13:01:29Z",
+   "6": "2026-10-08T13:03:05Z",
+   "7": "2026-10-08T13:04:38Z",
+   "8": "2026-10-08T13:06:09Z",
+   "9": "2026-10-08T13:07:43Z",
+   "10": "2026-10-08T13:09:24Z",
+   "11": "2026-10-08T13:10:52Z",
+   "12": "2026-10-08T13:12:52Z",
+   "13": "2026-10-08T13:14:29Z",
+   "14": "2026-10-08T13:15:52Z",
+   "15": "2026-10-08T13:17:20Z",
+   "16": "2026-10-08T13:18:52Z",
+   "17": "2026-10-08T13:22:37Z",
+   "18": "2026-10-08T13:24:50Z",
+   "19": "2026-10-08T13:26:54Z",
+   "20": "2026-10-08T13:29:08Z",
+   "21": "2026-10-08T13:32:10Z",
+   "22": "2026-10-08T13:33:16Z",
+   "23": "2026-10-08T13:34:26Z",
+   "24": "2026-10-08T13:35:38Z",
+   "25": "2026-10-08T13:36:44Z",
+   "26": "2026-10-08T13:38:04Z",
+   "27": "2026-10-08T13:40:51Z",
+   "28": "2026-10-08T13:42:40Z",
+   "29": "2026-10-08T13:44:25Z",
+   "30": "2026-10-08T13:46:11Z"
+  }
  },
  "go": {
   "by": "sgbaird",
@@ -87,5 +120,25 @@
    "2026-10-08T12:36:48Z: 'Plate clear' (with the login code)",
    "2026-10-08T12:37:50Z: 'Get going. Your other confirmation requests are overkill.'"
   ]
+ },
+ "watch": {
+  "tool": "bambu_print.py watch (PR #234), --auto-stop, frames every 30 s for the start and first layers, then every 60-90 s",
+  "samples": 1831,
+  "first": "2026-10-08T12:40:27Z",
+  "last": "2026-10-08T13:47:17Z",
+  "last_state": {
+   "gcode_state": "RUNNING",
+   "mc_percent": 39,
+   "mc_remaining_time": 101,
+   "layer_num": 30,
+   "total_layer_num": 213,
+   "nozzle_temper": 219.6875,
+   "nozzle_target_temper": 220,
+   "bed_temper": 65.15625,
+   "bed_target_temper": 65
+  },
+  "print_errors_seen": [],
+  "hms_seen": [],
+  "alarms_seen": []
  }
 }
