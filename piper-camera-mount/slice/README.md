@@ -90,3 +90,9 @@ Plate 1 is the whole job, and plates 2 to 6 hold one part each, centred on the b
 mass comes from its own G-code, split by feature, in
 [`slice_configs.json`](slice_configs.json). Each part's G-code also goes to `build_<setup>/` (ignored
 by git), where [`../sim/sliced_fea.py`](../sim/sliced_fea.py) reads it to model the part as printed.
+
+## Has it been printed? (`a1mini_history/`)
+
+Not as of 2026-10-08. [`a1mini_history/`](a1mini_history/README.md) lists everything the A1 mini
+has printed since July, from Bambu's cloud and the printer's own SD card, with the two read-only
+scripts that fetch it.

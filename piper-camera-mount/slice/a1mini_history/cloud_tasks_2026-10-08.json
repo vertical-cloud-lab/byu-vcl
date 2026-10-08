@@ -1,0 +1,1100 @@
+{
+ "source": "Bambu cloud, GET /v1/user-service/my/tasks for the lab account",
+ "fetched_utc": "2026-10-08T11:51:11Z",
+ "printer": "A1_MINI",
+ "count": 52,
+ "tasks": [
+  {
+   "title": "Baseplate_fusion",
+   "plateIndex": 1,
+   "startTime": "2026-07-13T20:53:45Z",
+   "endTime": "2026-07-14T00:25:57Z",
+   "costTime": 12887,
+   "weight": 91.1,
+   "length": 3006,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0086D6FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "VialCap16mm",
+   "plateIndex": 1,
+   "startTime": "2026-07-15T17:52:05Z",
+   "endTime": "2026-07-15T18:15:51Z",
+   "costTime": 1203,
+   "weight": 4.15,
+   "length": 137,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "VialCap16mm",
+   "plateIndex": 1,
+   "startTime": "2026-07-15T18:21:10Z",
+   "endTime": "2026-07-15T18:49:46Z",
+   "costTime": 1468,
+   "weight": 5.56,
+   "length": 183,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "9VialHolder20mL_TightFit - Pill",
+   "plateIndex": 1,
+   "startTime": "2026-07-17T21:50:12Z",
+   "endTime": "2026-07-17T22:08:38Z",
+   "costTime": 894,
+   "weight": 2.65,
+   "length": 88,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "VialCap16mm",
+   "plateIndex": 1,
+   "startTime": "2026-07-17T22:13:32Z",
+   "endTime": "2026-07-17T22:42:20Z",
+   "costTime": 1504,
+   "weight": 5.87,
+   "length": 194,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "VialCap16mm",
+   "plateIndex": 1,
+   "startTime": "2026-07-17T23:09:39Z",
+   "endTime": "2026-07-17T23:33:25Z",
+   "costTime": 1468,
+   "weight": 5.59,
+   "length": 184,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "fake_tip_test_array_slit_small (1)_plate_2",
+   "plateIndex": 2,
+   "startTime": "2026-07-19T01:12:34Z",
+   "endTime": "2026-07-19T01:45:19Z",
+   "costTime": 2356,
+   "weight": 5.49,
+   "length": 182,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PETG",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "fake_tip_test_array_slit_small (1)_plate_2",
+   "plateIndex": 2,
+   "startTime": "2026-07-19T01:59:46Z",
+   "endTime": "2026-07-19T02:40:17Z",
+   "costTime": 2358,
+   "weight": 5.49,
+   "length": 183,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PETG",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "picam3-mount-v2",
+   "plateIndex": 1,
+   "startTime": "2026-07-28T19:24:34Z",
+   "endTime": "2026-07-28T20:25:51Z",
+   "costTime": 3738,
+   "weight": 28.05,
+   "length": 926,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "TipRack",
+   "plateIndex": 1,
+   "startTime": "2026-07-28T22:48:48Z",
+   "endTime": "2026-07-29T01:36:36Z",
+   "costTime": 10027,
+   "weight": 70.16,
+   "length": 2315,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "picam3-mount-v2",
+   "plateIndex": 1,
+   "startTime": "2026-07-29T16:15:38Z",
+   "endTime": "2026-07-29T16:16:42Z",
+   "costTime": 2668,
+   "weight": 14.89,
+   "length": 491,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "picam3-mount-v2",
+   "plateIndex": 1,
+   "startTime": "2026-07-29T17:06:11Z",
+   "endTime": "2026-07-29T17:55:59Z",
+   "costTime": 2668,
+   "weight": 14.89,
+   "length": 491,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "Cap Final x16",
+   "plateIndex": 1,
+   "startTime": "2026-07-30T19:16:10Z",
+   "endTime": "2026-07-31T00:01:11Z",
+   "costTime": 15678,
+   "weight": 86.28,
+   "length": 2717,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0086D6FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "DC Body1.stl + DC Hinge1.stl + DC Lid1.stl + DC Arm1.stl + DC Arm1.stl",
+   "plateIndex": 1,
+   "startTime": "2026-07-31T22:08:13Z",
+   "endTime": "2026-07-31T23:06:04Z",
+   "costTime": 3622,
+   "weight": 17.92,
+   "length": 591,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Arm v2.stl + Arm v2.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-03T15:51:03Z",
+   "endTime": "2026-08-03T16:02:46Z",
+   "costTime": 685,
+   "weight": 1.89,
+   "length": 62,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Bolt v1.stl + Bolt v1.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-03T16:19:50Z",
+   "endTime": "2026-08-03T16:33:08Z",
+   "costTime": 930,
+   "weight": 0.58,
+   "length": 19,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "TipRack20uL",
+   "plateIndex": 1,
+   "startTime": "2026-08-03T20:06:54Z",
+   "endTime": "2026-08-03T22:45:56Z",
+   "costTime": 9617,
+   "weight": 67.33,
+   "length": 2222,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Compliant Cap V1.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-04T15:06:46Z",
+   "endTime": "2026-08-04T16:36:09Z",
+   "costTime": 5390,
+   "weight": 35.6,
+   "length": 1175,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "3.1mm shaft.stl + 3.1mm shaft.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-04T16:43:46Z",
+   "endTime": "2026-08-04T17:00:18Z",
+   "costTime": 1174,
+   "weight": 0.8,
+   "length": 27,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "VialCap16mm",
+   "plateIndex": 1,
+   "startTime": "2026-08-04T23:05:43Z",
+   "endTime": "2026-08-04T23:30:12Z",
+   "costTime": 1468,
+   "weight": 5.59,
+   "length": 184,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Part Studio 1 - probe",
+   "plateIndex": 1,
+   "startTime": "2026-08-05T17:29:16Z",
+   "endTime": "2026-08-05T20:04:28Z",
+   "costTime": 8340,
+   "weight": 80.61,
+   "length": 2660,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Part Studio 1 - probe",
+   "plateIndex": 1,
+   "startTime": "2026-08-05T20:40:24Z",
+   "endTime": "2026-08-05T22:44:17Z",
+   "costTime": 8367,
+   "weight": 77.85,
+   "length": 2569,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Sensor package main enclosure",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T00:48:56Z",
+   "endTime": "2026-08-06T00:51:26Z",
+   "costTime": 3463,
+   "weight": 26,
+   "length": 858,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Manfrotto200PLpro v13",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T03:26:40Z",
+   "endTime": "2026-08-06T03:35:27Z",
+   "costTime": 5242,
+   "weight": 36.16,
+   "length": 1203,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PETG",
+     "colour": "FFFFFFFF",
+     "ams_slot": 3
+    }
+   ]
+  },
+  {
+   "title": "Manfrotto200PLpro v13",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T03:36:45Z",
+   "endTime": "2026-08-06T05:55:43Z",
+   "costTime": 5682,
+   "weight": 37.91,
+   "length": 1261,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PETG",
+     "colour": "FFFFFFFF",
+     "ams_slot": 3
+    }
+   ]
+  },
+  {
+   "title": "Compliant Cap V5.stl + Torsional Spring.stl + Torsional Spring.stl + Pin.stl + Pin.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T17:41:09Z",
+   "endTime": "2026-08-06T18:47:40Z",
+   "costTime": 4046,
+   "weight": 26.38,
+   "length": 869,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Compliant Cap V5.stl + Right T Spring.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T19:56:19Z",
+   "endTime": "2026-08-06T20:16:15Z",
+   "costTime": 4498,
+   "weight": 26.94,
+   "length": 889,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Compliant Cap V5.stl + Right T Spring.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T20:17:25Z",
+   "endTime": "2026-08-06T21:29:01Z",
+   "costTime": 4498,
+   "weight": 26.94,
+   "length": 889,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Auger Filling Stand.stl",
+   "plateIndex": 1,
+   "startTime": "2026-08-06T22:33:00Z",
+   "endTime": "2026-08-07T00:05:14Z",
+   "costTime": 5768,
+   "weight": 36.31,
+   "length": 1198,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "dummy pipette probe",
+   "plateIndex": 1,
+   "startTime": "2026-08-07T23:19:02Z",
+   "endTime": "2026-08-08T00:08:03Z",
+   "costTime": 3457,
+   "weight": 4.67,
+   "length": 154,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "FFFFFFFF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "servopinion_v2",
+   "plateIndex": 1,
+   "startTime": "2026-08-12T13:29:12Z",
+   "endTime": "2026-08-12T13:46:42Z",
+   "costTime": 1052,
+   "weight": 2.31,
+   "length": 76,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "servopinion_v2",
+   "plateIndex": 1,
+   "startTime": "2026-08-13T19:27:39Z",
+   "endTime": "2026-08-13T20:49:23Z",
+   "costTime": 5082,
+   "weight": 40.41,
+   "length": 1333,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "pcb_housing_bottom",
+   "plateIndex": 1,
+   "startTime": "2026-08-21T18:50:33Z",
+   "endTime": "2026-08-21T20:02:10Z",
+   "costTime": 4352,
+   "weight": 42.1,
+   "length": 1389,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Electronics Carriage V1.step",
+   "plateIndex": 1,
+   "startTime": "2026-08-26T20:08:33Z",
+   "endTime": "2026-08-26T21:14:49Z",
+   "costTime": 4098,
+   "weight": 30.44,
+   "length": 1003,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Auger Carriage - Auger Carriage.step + Part Studio 1 - Frame Carriage.step",
+   "plateIndex": 1,
+   "startTime": "2026-08-27T15:51:53Z",
+   "endTime": "2026-08-27T17:49:46Z",
+   "costTime": 7101,
+   "weight": 59.39,
+   "length": 1960,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "dummy pipette probe",
+   "plateIndex": 1,
+   "startTime": "2026-08-27T23:56:47Z",
+   "endTime": "2026-08-28T00:45:57Z",
+   "costTime": 3457,
+   "weight": 4.67,
+   "length": 154,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "F5547CFF",
+     "ams_slot": 1
+    }
+   ]
+  },
+  {
+   "title": "PCB Housing top",
+   "plateIndex": 1,
+   "startTime": "2026-09-03T23:20:26Z",
+   "endTime": "2026-09-04T00:23:49Z",
+   "costTime": 3814,
+   "weight": 31.87,
+   "length": 1052,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "auger_open_end",
+   "plateIndex": 1,
+   "startTime": "2026-09-08T19:20:57Z",
+   "endTime": "2026-09-08T21:29:47Z",
+   "costTime": 7875,
+   "weight": 38.64,
+   "length": 1275,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "Doser Centering Device.step",
+   "plateIndex": 1,
+   "startTime": "2026-09-08T21:39:55Z",
+   "endTime": "2026-09-08T23:09:43Z",
+   "costTime": 5997,
+   "weight": 40.43,
+   "length": 1334,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "PCB housing top",
+   "plateIndex": 1,
+   "startTime": "2026-09-10T23:10:41Z",
+   "endTime": "2026-09-11T00:18:26Z",
+   "costTime": 4074,
+   "weight": 32.78,
+   "length": 1082,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "PCB housing top",
+   "plateIndex": 1,
+   "startTime": "2026-09-15T00:39:54Z",
+   "endTime": "2026-09-15T01:53:50Z",
+   "costTime": 4452,
+   "weight": 41.72,
+   "length": 1376,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "lid_mount_A1mini_PLA_fit_coupon",
+   "plateIndex": 4,
+   "startTime": "2026-09-27T05:57:24Z",
+   "endTime": "2026-09-27T06:12:53Z",
+   "costTime": 923,
+   "weight": 2.46,
+   "length": 81,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "side_bracket",
+   "plateIndex": 1,
+   "startTime": "2026-09-29T00:37:41Z",
+   "endTime": "2026-09-29T01:34:05Z",
+   "costTime": 3392,
+   "weight": 24.13,
+   "length": 796,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "side_bracket",
+   "plateIndex": 1,
+   "startTime": "2026-09-29T01:42:30Z",
+   "endTime": "2026-09-29T02:35:22Z",
+   "costTime": 3241,
+   "weight": 23.62,
+   "length": 779,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "lid_mount_drill_template",
+   "plateIndex": 3,
+   "startTime": "2026-09-29T18:44:50Z",
+   "endTime": "2026-09-29T19:37:38Z",
+   "costTime": 3086,
+   "weight": 31.84,
+   "length": 1051,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "lid_mount_deck_plate2",
+   "plateIndex": 2,
+   "startTime": "2026-10-01T00:32:59Z",
+   "endTime": "2026-10-01T01:43:09Z",
+   "costTime": 4156,
+   "weight": 43.5,
+   "length": 1435,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "0A2989FF",
+     "ams_slot": 0
+    }
+   ]
+  },
+  {
+   "title": "lid_mount_base_plate1",
+   "plateIndex": 1,
+   "startTime": "2026-10-02T18:56:47Z",
+   "endTime": "2026-10-02T21:22:35Z",
+   "costTime": 8981,
+   "weight": 81.12,
+   "length": 2677,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "atomizer_holder_side",
+   "plateIndex": 1,
+   "startTime": "2026-10-05T17:15:27Z",
+   "endTime": "2026-10-05T17:33:25Z",
+   "costTime": 1121,
+   "weight": 4.67,
+   "length": 154,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Centering device version 2",
+   "plateIndex": 1,
+   "startTime": "2026-10-05T20:58:53Z",
+   "endTime": "2026-10-05T20:59:26Z",
+   "costTime": 4152,
+   "weight": 22.34,
+   "length": 737,
+   "status": 3,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "failed or stopped",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "Centering device version 2",
+   "plateIndex": 1,
+   "startTime": "2026-10-05T21:01:29Z",
+   "endTime": "2026-10-05T22:09:22Z",
+   "costTime": 4152,
+   "weight": 22.34,
+   "length": 737,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "atomizer_holder_v3",
+   "plateIndex": 1,
+   "startTime": "2026-10-06T20:57:50Z",
+   "endTime": "2026-10-06T21:54:17Z",
+   "costTime": 3693,
+   "weight": 29.71,
+   "length": 980,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  },
+  {
+   "title": "RaspberryPiCameraMount(NEW)",
+   "plateIndex": 1,
+   "startTime": "2026-10-07T21:28:58Z",
+   "endTime": "2026-10-07T22:00:57Z",
+   "costTime": 1997,
+   "weight": 7.11,
+   "length": 235,
+   "status": 2,
+   "failedType": 0,
+   "mode": "cloud_file",
+   "createClientType": "slicer",
+   "outcome": "finished",
+   "filament": [
+    {
+     "type": "PLA",
+     "colour": "000000FF",
+     "ams_slot": 2
+    }
+   ]
+  }
+ ]
+}
