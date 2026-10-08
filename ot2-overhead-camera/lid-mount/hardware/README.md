@@ -61,6 +61,15 @@ done
 Each file's SHA-256 is in `parts.json`, so a fresh download can be checked against the one
 the renders used.
 
+**A Pi isn't required.** On 2026-10-08, with the CubOS Pi offline, the same `cdp.js` fetched
+92000A120, 92000A227 and 91828A211 on a GitHub Actions runner, driving the runner's own
+`google-chrome --headless=new` (Node 22 needs no `--experimental-websocket`). All three matched
+the SHA-256 in `parts.json`. The nut and washer the renders use, 91828A231 and 95610A550, can
+also be restored from commit `e9b1911` without staging them:
+`git show e9b1911:ot2-overhead-camera/lid-mount/hardware/mcmaster/<PN>.step > hardware/mcmaster/<PN>.step`.
+If you write your own cleanup step, don't `pkill -f` a pattern that also appears in your own
+command line, because it kills the shell running it.
+
 `run.sh` starts Chromium (niced, DevTools on loopback only) and always kills it on exit.
 `cdp.js` runs under the Pi's Node 20 with `--experimental-websocket`, so nothing had to be
 installed. For each part it opens `https://www.mcmaster.com/<PN>/` and clicks the CAD format
