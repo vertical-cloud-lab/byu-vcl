@@ -1,0 +1,328 @@
+{
+ "url": "https://psc.byu.edu/available%20for%20purchase",
+ "date": "2026-10-09",
+ "terms": "Most non-consumable items are available for both checkout and purchase (cougar cash only)",
+ "free": "We provide consumables such as tape, glue, wire, nuts, bolts, screws, velcro, and zip ties free of cost (in reasonable quantities).",
+ "items": [
+  {
+   "name": "Battery Holder",
+   "price": "$1.00(2) $2.00(6)"
+  },
+  {
+   "name": "9V Battery Connector",
+   "price": "$0.40 / Each"
+  },
+  {
+   "name": "AA/AAA Batteries",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "9V Batteries",
+   "price": "$1.00 / Each"
+  },
+  {
+   "name": "IR light",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Alligator Clips",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "Safety Glasses",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Barrel Socket",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Barrel Plug",
+   "price": "$2.70 / Each"
+  },
+  {
+   "name": "Barrel Plug to Wire",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Barrel Plug to 9V",
+   "price": "$0.60 / Each"
+  },
+  {
+   "name": "Limit Switches",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "SPDT Switch",
+   "price": "$1.00/ Each"
+  },
+  {
+   "name": "Push Button Switch",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "Headers",
+   "price": "$0.05 / Pin"
+  },
+  {
+   "name": "Screw Terminal",
+   "price": "$0.35 / Each"
+  },
+  {
+   "name": "Jumpers",
+   "price": "$0.05 / Each"
+  },
+  {
+   "name": "Anderson Power Pole",
+   "price": "$1.40 / Each"
+  },
+  {
+   "name": "DuPont",
+   "price": "$0.05 / Pin"
+  },
+  {
+   "name": "JST Wire to Board",
+   "price": "$0.05 / Pin"
+  },
+  {
+   "name": "JST Wire to Wire",
+   "price": "$0.05 / Pin"
+  },
+  {
+   "name": "Stand-Off Spacer",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "Circuit Boards",
+   "price": "$0.30 / Each"
+  },
+  {
+   "name": "Green Buss Board",
+   "price": "$1.50 / Each"
+  },
+  {
+   "name": "Red Buss Board",
+   "price": "$2.00(S) / $2.50(L)"
+  },
+  {
+   "name": "Pic 24 PCB",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Breadboard",
+   "price": "$1.00(S) / $2.00(L)"
+  },
+  {
+   "name": "Breadboard Wire Kit",
+   "price": "$3.00 / Each"
+  },
+  {
+   "name": "Jumper Wires",
+   "price": "$1.00 / Set of 10"
+  },
+  {
+   "name": "Mosfet",
+   "price": "$1.00 / Each"
+  },
+  {
+   "name": "Regulator",
+   "price": "(3.3V) : $0.50 / (5V) : $0.75"
+  },
+  {
+   "name": "Variable Regulator",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Chip Holder (14/20)",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "OP-Amp",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Pic24",
+   "price": "$3.00 / Each"
+  },
+  {
+   "name": "QRD Light Sensor",
+   "price": "$1.00 / Each"
+  },
+  {
+   "name": "LED Lights",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "IR Photodiode",
+   "price": "$0.40 / Each"
+  },
+  {
+   "name": "Resistors",
+   "price": "Free"
+  },
+  {
+   "name": "Diode",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "Ceramic Capacitors",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "Electrolytic Capacitors",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "Stepper Motor Driver",
+   "price": "$10.00 / Each"
+  },
+  {
+   "name": "DC Motor Driver",
+   "price": "$3.00 / Each"
+  },
+  {
+   "name": "DC Motor Mounts",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "Small DC Motor",
+   "price": "$1.00 / Each"
+  },
+  {
+   "name": "Medium DC Motor",
+   "price": "$2.50 / Each"
+  },
+  {
+   "name": "Plastic Geared DC",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Small Servo",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Large Foam Wheels",
+   "price": "$4.00 / Each"
+  },
+  {
+   "name": "Small Wheels",
+   "price": "$1.50 / Each"
+  },
+  {
+   "name": "Yellow Wheel",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Strip of 3 LED's",
+   "price": "$0.10 / Each"
+  },
+  {
+   "name": "LED Pad",
+   "price": "$1.00 / Each"
+  },
+  {
+   "name": "Propeller",
+   "price": "$0.75 / Each"
+  },
+  {
+   "name": "Fans",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Arduino Uno & Cable",
+   "price": "$4.00 / Each"
+  },
+  {
+   "name": "Adapters",
+   "price": "$1 (USB-C) / $0.50-3.00(SD)"
+  },
+  {
+   "name": "Clamp",
+   "price": "$1.50 / Each"
+  },
+  {
+   "name": "Ruler",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "L Brackets",
+   "price": "$0.25 / Each"
+  },
+  {
+   "name": "Acrylic, ABS, Plywood Base (12\"x12\")",
+   "price": "$6.00(A) / $4.00(ABS) / $1.00(PLYW)"
+  },
+  {
+   "name": "Lever Nut",
+   "price": "$0.50 / Each"
+  },
+  {
+   "name": "Timing Belt/Pulley Set",
+   "price": "$15.00 / Each"
+  },
+  {
+   "name": "Carrier Board",
+   "price": "$5.00 / Each"
+  },
+  {
+   "name": "Drawer Slides",
+   "price": "$2.00 / Each"
+  },
+  {
+   "name": "Linear Bearing Set",
+   "price": "$22.00 / Each ($2/cut)"
+  },
+  {
+   "name": "Lead Screw Set",
+   "price": "$13.00 / Each ($2/cut)"
+  },
+  {
+   "name": "Lazy Susan Bearing",
+   "price": "$4.00 / Each"
+  },
+  {
+   "name": "Geared DC Mount",
+   "price": "$3.25 / Each"
+  },
+  {
+   "name": "Small Geared DC",
+   "price": "$8.00 / Each"
+  },
+  {
+   "name": "Large DC Motor",
+   "price": "$4.00 / Each"
+  },
+  {
+   "name": "Large Geared DC Motor",
+   "price": "$16.00 / Each"
+  },
+  {
+   "name": "Large Servo",
+   "price": "$5.00 / Each"
+  },
+  {
+   "name": "Stepper Motor",
+   "price": "$10.00 / Each"
+  },
+  {
+   "name": "Stepper Mount",
+   "price": "$2.50 / Each"
+  },
+  {
+   "name": "Large Wheels",
+   "price": "$8.00 / Each"
+  },
+  {
+   "name": "70mm Omni Wheels",
+   "price": "$15.00 / Each"
+  },
+  {
+   "name": "4\" Omni Wheels",
+   "price": "$15.00 / Each"
+  },
+  {
+   "name": "5/8\" Castor",
+   "price": "$1.50 / Each"
+  }
+ ]
+}
