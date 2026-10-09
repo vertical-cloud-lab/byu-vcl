@@ -6,17 +6,20 @@ Capital raised counts equity, JV capital and IPO proceeds; grants and debt are l
 
 | Company | HQ | Founded | Type | Status | Capital raised | Latest round | Team size (date, method) | Open roles (2026-10-09) |
 |---|---|---|---|---|---|---|---|---|
-| [CuspAI](companies/cuspai.md) | Cambridge, UK | 2024 | Computational / software | active | $580M | $450M B, 2026-07 | 30 (2025-09, press) | 14 |
+| [CuspAI](companies/cuspai.md) | Cambridge, UK | 2024 | Computational / software | active | $580M | $450M B, 2026-07 | 85 (2026-08, linkedin-band) | 14 |
 | [Periodic Labs](companies/periodic-labs.md) | Menlo Park, US | 2025 | Self-driving or cloud lab | active | $300M | n/d Next round (reported, unconfirmed), 2026-03 | 88 (2026-08, linkedin-band) | 33 |
 | [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)](companies/dp-technology.md) | Beijing, China | 2018 | Computational / software | active | $211M | $114M C, 2025-12 | 201–500 (2025-03, linkedin-band) | n/d |
 | [Emerald Cloud Lab](companies/emerald-cloud-lab.md) | Austin, US | 2010 | Self-driving or cloud lab | active | $98M | n/d B ext. (aggregator), 2024-04 | 101 (2026-10, team-page) | n/d |
 | [Chemify](companies/chemify.md) | Glasgow, UK | 2019 | Self-driving or cloud lab | active | $93M (+$30M grants) | n/d B1 ext. (allotments 12 Dec 2025,…, 2025-12 | 200 (2026-10, team-page) | 33 |
 | [Orbital Materials (now Orbital Industries)](companies/orbital-materials.md) | London, UK | 2022 | Computational / software | active | $71M | $50M B, 2026-05 | 50 (2026-05, press) | 7 |
+| [Citrine Informatics](companies/citrine-informatics.md) | Redwood City, US | 2013 | Computational / software | active | $66M | $2.6M Unannounced equity/options (Form…, 2025-01 | 68 (2026-07, linkedin-band) | 5 |
 | [Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)](companies/deep-principle.md) | Hangzhou, China | 2023 | Computational / software | active | $24M | n/d A3 (closes A series), 2026-07 | n/d | n/d |
 | [Altrove](companies/altrove.md) | Paris, France | 2024 | Self-driving or cloud lab | active | $14M | $10M Seed, 2025-10 | 6–9 (2024-12, registry) | n/d |
 | [Dunia Innovations](companies/dunia-innovations.md) | Berlin, Germany | 2022 | Self-driving or cloud lab | active | $12M | $12M Seed/A (sources differ), 2024-10 | 11–50 (2026-03, linkedin-band) | 13 |
 | [Intrepid Labs](companies/intrepid-labs.md) | Toronto, Canada | 2023 | Self-driving or cloud lab | active | $11M | $7.0M Seed, 2025-05 | 1–10 (2026-10, other) | 0 |
 | [Entalpic](companies/entalpic.md) | Paris, France | 2024 | Computational / software | active | $9.4M | $9.4M Seed, 2024-09 | 25 (2025-12, press) | n/d |
+| [Telescope Innovations](companies/telescope-innovations.md) | Vancouver, Canada | None | Self-driving or cloud lab | active | $5.8M | $0.9M Private placement, tranche 2, 2025-10 | n/d | n/d |
+| [Atinary Technologies](companies/atinary.md) | Lausanne, Switzerland | 2019 | Self-driving or cloud lab | active | $5.0M | n/d Strategic minority investment, 2026-08 | 11–50 (2025-11, linkedin-band) | 4 |
 | [Polymerize (Polymerize Pte Ltd)](companies/polymerize.md) | Singapore, Singapore | 2020 | Computational / software | active | $4.8M | n/d Strategic (undisclosed), 2025-03 | 11–50 (2026-10, other) | n/d |
 | [Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)](companies/matlantis.md) | Tokyo, Japan | 2021 | Computational / software | active | $2.8M | n/d Business-and-capital alliance (Mi…, 2024-06 | 46 (2025-07, other) | 2 |
 | [Materials Nexus (MatNex)](companies/materials-nexus.md) | London, UK | 2020 | Computational / software | active | $2.6M | n/d Unannounced round (SH01 allotment…, 2025-01 | 25 (2026-10, team-page) | 0 |
@@ -30,6 +33,8 @@ Capital raised counts equity, JV capital and IPO proceeds; grants and debt are l
 | CuspAI | 2 | 2 | · | 1 | 9 | · | · | 14 |
 | Dunia Innovations | 5 | 2 | 4 | 1 | 1 | · | · | 13 |
 | Orbital Materials (now Orbital Industries) | 1 | 1 | 1 | 3 | 1 | · | · | 7 |
+| Citrine Informatics | 1 | 1 | · | · | 3 | · | · | 5 |
+| Atinary Technologies | 1 | · | 1 | 1 | 1 | · | · | 4 |
 | Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC) | · | · | · | · | 2 | · | · | 2 |
 
 ## Leadership backgrounds
@@ -39,7 +44,9 @@ Founders, executives and heads tracked in each profile, counted by keywords in t
 | Company | Leaders tracked | PhD | professor / faculty | frontier AI lab / big tech | national lab | chemicals / materials industry | prior startup / founder | finance / consulting |
 |---|---|---|---|---|---|---|---|---|
 | Altrove | 2 | 1 | · | · | · | · | · | · |
-| Chemify | 6 | 2 | · | 1 | · | · | 1 | · |
+| Atinary Technologies | 2 | 2 | · | · | · | · | · | · |
+| Chemify | 7 | 2 | · | 1 | · | · | 1 | · |
+| Citrine Informatics | 21 | 1 | · | 1 | 1 | · | · | · |
 | CuspAI | 9 | 1 | 1 | 3 | · | · | · | · |
 | DP Technology (深势科技, Beijing DP Technology Co., Ltd.) | 3 | 2 | · | · | · | · | · | 1 |
 | Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.) | 3 | 2 | · | 1 | · | 1 | · | · |
@@ -52,7 +59,8 @@ Founders, executives and heads tracked in each profile, counted by keywords in t
 | Orbital Materials (now Orbital Industries) | 3 | · | · | 1 | · | · | · | · |
 | Periodic Labs | 3 | 1 | · | 3 | · | · | · | · |
 | Polymerize (Polymerize Pte Ltd) | 2 | 1 | · | · | · | · | · | 1 |
-| **All** | **47** | **15** | **3** | **9** | **0** | **1** | **2** | **2** |
+| Telescope Innovations | 2 | · | 1 | · | · | · | · | · |
+| **All** | **73** | **18** | **4** | **10** | **1** | **1** | **2** | **2** |
 
 ## Posted pay
 

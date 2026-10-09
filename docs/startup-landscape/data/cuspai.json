@@ -65,6 +65,15 @@
       "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
     },
     {
+      "date": "2026-08-27",
+      "value": 85,
+      "low": 51,
+      "high": 200,
+      "method": "linkedin-band",
+      "note": "archived LinkedIn company page: 'Company size 51-200 employees', 'Discover all 85 employees' (members listing CuspAI)",
+      "source": "https://web.archive.org/web/20260827211002/https://www.linkedin.com/company/cusp-ai/"
+    },
+    {
       "date": "2026-10-09",
       "value": 10,
       "low": null,
@@ -443,6 +452,7 @@
     "Leadership start dates for the VPs and senior director are first-seen dates on the live site, not hire dates; Wayback history of the team section was not checked.",
     "OpenAlex has no institution record; raw-affiliation search finds 59 works and 10 distinct CuspAI-affiliated authors (5 in 2025, 7 in 2026), a lower bound on publishing staff.",
     "Current openings function mapping: program managers, developer relations, partnerships, ecosystem and talent roles -> business-ops; data engineer -> software-eng; application scientists -> materials-science; internship and agents engineer -> ml-research.",
-    "Posting history merges 6 Wayback-captured Ashby posting IDs (board first captured Oct 2025) with live Ashby publishedAt dates; earliest date per ID wins. Hiring before Oct 2025 is invisible here."
+    "Posting history merges 6 Wayback-captured Ashby posting IDs (board first captured Oct 2025) with live Ashby publishedAt dates; earliest date per ID wins. Hiring before Oct 2025 is invisible here.",
+    "Older LinkedIn captures (Jul 2024, Apr and Dec 2025) exist in Wayback but were not re-read after the gzip fix; only the Aug 2026 capture is used."
   ]
 }

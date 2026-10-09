@@ -14,6 +14,7 @@ The share capital rose from EUR 600 to EUR 920 in November 2022 and to EUR 35,56
 
 | Date | Headcount | Method | Note | Source |
 | --- | --- | --- | --- | --- |
+| 2025-01-13 | 29 (band 2-10, stale) | LinkedIn | "View all 29 employees" | [Wayback](https://web.archive.org/web/20250113175418/https://www.linkedin.com/company/dunia-innovations/) |
 | 2025-12-10 | 47 (band 11-50) | LinkedIn | "View all 47 employees" | [Wayback](https://web.archive.org/web/20251210000909/https://www.linkedin.com/company/dunia-innovations/) |
 | 2026-03-26 | 54 (band 11-50) | LinkedIn | "View all 54 employees" | [Wayback](https://web.archive.org/web/20260326235256/https://www.linkedin.com/company/dunia-innovations) |
 
@@ -30,11 +31,7 @@ The search for a Head of AI Research (posted 2026-02-02) is still open, so that 
 
 ## Staff roles observed
 
-No team page lists staff (the people page shows founders only). The open Personio roles below show who the company is hiring now.
-
-| Role | Function | Seen | Background | Source |
-| --- | --- | --- | --- | --- |
-| (see current openings) | | 2025-07 to 2026-02 | | [Personio](https://dunia.jobs.personio.com/) |
+No staff are named or titled anywhere public: the [people page](https://dunia.ai/people) shows only the founders and says the team spans "electrochemistry, materials science, physics, robotics engineering, business, and AI". The open roles under Job postings show who the company is hiring now.
 
 ## Job postings
 
@@ -59,11 +56,11 @@ No leadership departures, layoffs or pivots found. The three founders are still 
 
 ## Hiring vs. funding
 
-The only announced round (USD 11.5M, October 2024) preceded strong growth: by December 2025 LinkedIn counted 47 people, and 54 by March 2026, roughly a 50-person company 14-17 months after the round. Then in one week of February 2026 Dunia opened 12 roles at once, including a Head of AI Research and a thermocatalysis scientist (a step beyond electrocatalysis). There is no public funding announcement to match. Either an unannounced round closed around then, or the company is hiring ahead of one. Most of those roles are still open eight months later.
+The only announced round (USD 11.5M, October 2024) was followed by steady growth. LinkedIn counted 29 people in January 2025, 47 in December 2025 and 54 in March 2026, roughly 25 net hires in the 17 months after the round. Then in one week of February 2026 Dunia opened 12 roles at once, including a Head of AI Research and a thermocatalysis scientist (a step beyond electrocatalysis). There is no public funding announcement to match. Either an unannounced round closed around then, or the company is hiring ahead of one. Most of those roles are still open eight months later.
 
 ## Coverage and caveats
 
 - Funding: one round, consistent across sources except for the round label.
-- Headcount: two LinkedIn captures only (the January 2025 capture was unreadable). No registry headcount (northdata paywall), no team page.
+- Headcount: three LinkedIn captures only. No registry headcount (northdata paywall), no team page.
 - Postings: current board only; creation dates come from Personio.
 - OpenAlex and Wayback team-page history were skipped for lack of time.

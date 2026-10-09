@@ -35,10 +35,6 @@ Total stated by the company: USD 14M. The site footer also credits funding from 
 
 None by title. The about page says the tech team spans "crystal simulation, high-throughput lab experimentation, advanced materials characterization, and scale-up design" and that "70% of our tech team holds relevant PhDs" (MIT, Cambridge, ENS, Polytechnique) ([about](https://altrove.ai/about)).
 
-| Role | Function | Seen | Background | Source |
-| --- | --- | --- | --- | --- |
-| (none named) | | | | [about](https://altrove.ai/about) |
-
 ## Job postings
 
 - **Current openings (2026-10-09):** unknown. The site's Careers link goes to the LinkedIn jobs tab, which this survey does not read; no Ashby, Greenhouse, Lever, Recruitee or Workable board answers to `altrove`.

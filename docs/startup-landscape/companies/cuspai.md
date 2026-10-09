@@ -18,9 +18,8 @@ The disclosed rounds sum to $580M; tech.eu says more than $670M in total. Compan
 | --- | --- | --- | --- | --- |
 | 2025-03-31 | 12 | registry | average over the first 13-month period | [CH accounts (iXBRL)](https://find-and-update.company-information.service.gov.uk/company/15549537/filing-history/MzQ5MjM2NDQ0NGFkaXF6a2N4/document?format=xhtml&download=1) |
 | 2025-09-10 | ~30 | press | at Series A | [Fortune](https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry) |
+| 2026-08-27 | 85 (band 51-200) | linkedin-band | archived LinkedIn company page: size band 51-200, "Discover all 85 employees" | [Wayback](https://web.archive.org/web/20260827211002/https://www.linkedin.com/company/cusp-ai/) |
 | 2026-10-09 | 10 (leadership only) | team-page | site lists only the leadership team, not all staff | [cusp.ai](https://www.cusp.ai/) |
-
-LINKEDIN_PLACEHOLDER
 
 ## Leadership and key hires
 
@@ -75,7 +74,7 @@ No executive departures found. The registry shows only investor-board turnover: 
 
 ## Hiring vs. funding
 
-Average headcount was 12 in the post-seed year to March 2025 and about 30 at the September 2025 Series A. The company then built out a C-suite: Chief Strategy Officer and VP Engineering by late 2024, a CSO in January 2026, and four more VP and senior-director roles listed by October 2026. Posting activity follows the money. Captured and live postings went from 2-3 a quarter in 2025Q4-2026Q2 to 11 in 2026Q3, the quarter of the $450M Series B, and those 11 are mostly ecosystem, developer-relations, partnerships and Singapore roles tied to the AI Materials Foundry launch rather than research hires.
+Average headcount was 12 in the post-seed year to March 2025, about 30 at the September 2025 Series A, and 85 LinkedIn-listed employees (band 51-200) by August 2026, roughly a tripling in the eleven months after the Series A. The company then built out a C-suite: Chief Strategy Officer and VP Engineering by late 2024, a CSO in January 2026, and four more VP and senior-director roles listed by October 2026. Posting activity follows the money. Captured and live postings went from 2-3 a quarter in 2025Q4-2026Q2 to 11 in 2026Q3, the quarter of the $450M Series B, and those 11 are mostly ecosystem, developer-relations, partnerships and Singapore roles tied to the AI Materials Foundry launch rather than research hires.
 
 ## Coverage and caveats
 

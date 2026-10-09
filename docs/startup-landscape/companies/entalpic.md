@@ -57,7 +57,7 @@ No leadership departures found. All three founders are still named in the 2024 s
 
 ## Hiring vs. funding
 
-The hiring page went up in June 2024, a month after incorporation and three months before the seed was announced. At the seed (September 2024) LinkedIn showed 3 employees. Over the following eight months that grew to 15 (January 2025) and 21 (May 2025), and the company says it reached 25 in 2025. That is about 20 hires in the first year after a EUR 8.5M round, above the "core team of 10-15" its seed-era job ads described. Most were ML and chemistry/materials specialists. No later round has been announced, so a planned Grenoble lab (late 2026) is presumably being built on seed money, partnerships or undisclosed funding.
+The hiring page went up in June 2024, a month after incorporation and three months before the seed was announced. At the seed (September 2024) LinkedIn showed 3 employees. Over the following eight months that grew to 15 (January 2025) and 21 (May 2025), and the company says it reached 25 in 2025. That is about 20 net additions in the first year after a EUR 8.5M round, above the "core team of 10-15" its seed-era job ads described. Most were ML and chemistry/materials specialists. No later round has been announced, so a planned Grenoble lab (late 2026) is presumably being built on seed money, partnerships or undisclosed funding.
 
 ## Coverage and caveats
 

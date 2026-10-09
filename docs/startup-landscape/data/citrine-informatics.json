@@ -1,0 +1,639 @@
+{
+ "company": "Citrine Informatics",
+ "slug": "citrine-informatics",
+ "hq": "Redwood City, US",
+ "country": "US",
+ "founded": "2013",
+ "category": "materials informatics software",
+ "focus": "AI/data platform for materials and chemicals R&D (sequential learning), sold to industrial R&D teams",
+ "status": "active",
+ "website": "https://citrine.io",
+ "funding": [
+  {
+   "date": "2016-05-09",
+   "round": "Series A (Form D first sale; announced 2017-06-08 as $7.6M)",
+   "amount_usd_m": 8.76,
+   "original_amount": "USD 8,757,049 sold (Form D, 10 investors); press: USD 7.6M",
+   "type": "equity",
+   "lead_investors": [
+    "Innovation Endeavors",
+    "DCVC",
+    "Prelude Ventures"
+   ],
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000167550116000001/primary_doc.xml"
+  },
+  {
+   "date": "2019-06-28",
+   "round": "Series B (Form D first sale; announced 2019-10-10 as $20M)",
+   "amount_usd_m": 20.95,
+   "original_amount": "USD 20,948,322 sold of 28,556,986 offered (Form D, 8 investors)",
+   "type": "equity",
+   "lead_investors": [
+    "Prelude Ventures",
+    "Innovation Endeavors"
+   ],
+   "source": "https://citrine.io/media-post/citrine-informatics-raises-20m-in-series-b-funding/"
+  },
+  {
+   "date": "2020-10-23",
+   "round": "Series B extension (Form D first sale)",
+   "amount_usd_m": 12.35,
+   "original_amount": "USD 12,354,375 sold of 20,000,000 offered (Form D, 7 investors)",
+   "type": "equity",
+   "lead_investors": [
+    "Prelude Ventures"
+   ],
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000116840420000017/primary_doc.xml"
+  },
+  {
+   "date": "2022-10-28",
+   "round": "Series C (Form D first sale; announced 2023-01-04 as $16M)",
+   "amount_usd_m": 16.0,
+   "original_amount": "USD 16M announced; Form D: 12,595,504 sold of 17,633,507 offered, 11 investors",
+   "type": "equity",
+   "lead_investors": [
+    "Prelude Ventures",
+    "Innovation Endeavors"
+   ],
+   "source": "https://www.businesswire.com/news/home/20230104005839/en/Citrine-Informatics-Raises-$16M-in-Series-C-Financing"
+  },
+  {
+   "date": "2023-09-15",
+   "round": "Unannounced equity (Form D)",
+   "amount_usd_m": 5.0,
+   "original_amount": "USD 4,999,999 sold (Form D, 2 investors)",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000116840423000001/primary_doc.xml"
+  },
+  {
+   "date": "2025-01-24",
+   "round": "Unannounced equity/options (Form D)",
+   "amount_usd_m": 2.6,
+   "original_amount": "USD 2,604,987 sold of 6,100,000 offered (Form D, 5 investors)",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000116840425000001/primary_doc.xml"
+  }
+ ],
+ "headcount": [
+  {
+   "date": "2016-04-16",
+   "value": 9,
+   "low": null,
+   "high": null,
+   "method": "team-page",
+   "note": "all people listed on /team",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "date": "2016-10-23",
+   "value": 14,
+   "low": null,
+   "high": null,
+   "method": "team-page",
+   "note": "all people listed on /team",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  },
+  {
+   "date": "2021-02-10",
+   "value": null,
+   "low": null,
+   "high": null,
+   "method": "press",
+   "note": "team grew 19% in Q4 2020 (no absolute figure)",
+   "source": "https://www.businesswire.com/news/home/20210210005836/en"
+  },
+  {
+   "date": "2024-02-13",
+   "value": 84,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "band 51-200; 'View all 84 employees'",
+   "source": "https://web.archive.org/web/20240213193316/https://www.linkedin.com/company/citrine-informatics/"
+  },
+  {
+   "date": "2024-12-12",
+   "value": 69,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "band 51-200; 69 employees on LinkedIn",
+   "source": "https://web.archive.org/web/20241212055339/https://www.linkedin.com/company/citrine-informatics"
+  },
+  {
+   "date": "2025-08-04",
+   "value": 68,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "band 51-200; 68 employees on LinkedIn",
+   "source": "https://web.archive.org/web/20250804075337/https://www.linkedin.com/company/citrine-informatics/"
+  },
+  {
+   "date": "2026-03-21",
+   "value": 71,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "band 51-200; 71 employees on LinkedIn",
+   "source": "https://web.archive.org/web/20260321014536/https://www.linkedin.com/company/citrine-informatics/"
+  },
+  {
+   "date": "2026-07-21",
+   "value": 68,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "band 51-200; 68 employees on LinkedIn",
+   "source": "https://web.archive.org/web/20260721211735/https://www.linkedin.com/company/citrine-informatics"
+  },
+  {
+   "date": "2020-12-31",
+   "value": 17,
+   "low": null,
+   "high": null,
+   "method": "openalex",
+   "note": "distinct authors with Citrine affiliation in 2020 (peak); 2016:7, 2018:7, 2021:13, 2023:13, 2025:4",
+   "source": "https://api.openalex.org/authors?filter=affiliations.institution.id:I4210143896"
+  }
+ ],
+ "postings": [
+  {
+   "period": "2020Q4",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20201021042449/https://citrine.io/careers/?gh_jid=1820554"
+  },
+  {
+   "period": "2021Q3",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20210922151952/https://citrine.io/careers/?gh_jid=1075894"
+  },
+  {
+   "period": "2021Q4",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20211204042525/https://citrine.io/careers/?gh_jid=262559"
+  },
+  {
+   "period": "2025Q3",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20250826161708/https://ats.rippling.com/citrine-informatics/jobs/c3fbb9c3-8c20-4b09-a1d6-5979769e0b9c"
+  },
+  {
+   "period": "2025Q4",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47"
+  },
+  {
+   "period": "2026Q1",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260305165023/https://ats.rippling.com/citrine-informatics/jobs/e2d90b04-4cae-4196-9843-014c6a6c35e2"
+  },
+  {
+   "period": "2026Q2",
+   "new_postings": 3,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260521082858/https://ats.rippling.com/citrine-informatics/jobs"
+  },
+  {
+   "period": "2026Q3",
+   "new_postings": 2,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260814143401/https://ats.rippling.com/citrine-informatics/jobs/93f5099f-29d3-4bab-ac52-f94bf53de4f5"
+  },
+  {
+   "period": "2026Q4",
+   "new_postings": 1,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20261003112309/https://ats.rippling.com/citrine-informatics/jobs/3418abba-4de2-4a0a-8dc3-9ad403db68f1"
+  }
+ ],
+ "current_openings": {
+  "date": "2026-10-09",
+  "count": 5,
+  "by_function": {
+   "ml-research": 1,
+   "materials-science": 1,
+   "business-ops": 3
+  },
+  "titles": [
+   "Data & Artificial Intelligence Research Engineer, L4",
+   "Materials Informatics Consultant III (Germany)",
+   "Customer Success Manager, L3 (Germany)",
+   "Business Operations Manager, L3",
+   "General Opportunities (talent pool)"
+  ],
+  "source": "https://ats.rippling.com/citrine-informatics/jobs"
+ },
+ "people": [
+  {
+   "name": "Greg Mulholland",
+   "title": "CEO and co-founder; director",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2013",
+   "start_basis": "founding year (about page); Form D executive officer 2016-2025",
+   "end": null,
+   "background": "M.Phil. Cambridge (Driscoll group); worked at a small semiconductor company (bulk GaN growth); Stanford GSB",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "name": "Bryce Meredig",
+   "title": "Co-founder; Chief Science Officer; director",
+   "function": "ml-research",
+   "seniority": "founder",
+   "start": "2013",
+   "start_basis": "founding year; Form D executive officer/director 2016-2020",
+   "end": "2022",
+   "background": "PhD Northwestern (Wolverton group, first-principles + data-driven materials); Stanford GSB; now Travertine Labs per speaker bio",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "name": "Scott Brady",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2016-05",
+   "start_basis": "Form D 2016 related persons",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000167550116000001/primary_doc.xml"
+  },
+  {
+   "name": "Mark Cupta",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2016-05",
+   "start_basis": "Form D 2016 related persons",
+   "end": null,
+   "background": "not stated in filing",
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000167550116000001/primary_doc.xml"
+  },
+  {
+   "name": "Cynthia Arnold",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2019-06",
+   "start_basis": "first Form D listing (2019)",
+   "end": null,
+   "background": "industry technology/innovation executive (per Citrine podcast intro)",
+   "source": "https://www.sec.gov/Archives/edgar/data/1675501/000167550119000001/primary_doc.xml"
+  },
+  {
+   "name": "Amar Hanspal",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2022-11",
+   "start_basis": "press release 2022-11-28",
+   "end": null,
+   "background": "not stated here",
+   "source": "https://www.businesswire.com/news/home/20221128005163/en/Citrine-Informatics-Appoints-Amar-Hanspal-to-its-Board-of-Directors"
+  },
+  {
+   "name": "Jordan O'Mara",
+   "title": "Leadership team, Engineering",
+   "function": "software-eng",
+   "seniority": "head",
+   "start": "2016-04",
+   "start_basis": "first team-page capture",
+   "end": "by 2023-12",
+   "background": "BS/MS CS NC State; 8 yrs Red Hat",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Sean Paradiso",
+   "title": "Leadership team, Scientific Software Engineering",
+   "function": "software-eng",
+   "seniority": "head",
+   "start": "2016-04",
+   "start_basis": "first team-page capture",
+   "end": "by 2023-12",
+   "background": "UCSB (polymer field theory, Fredrickson group)",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Christina Hartman",
+   "title": "Leadership team, Operations",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2016-04",
+   "start_basis": "first team-page capture",
+   "end": "by 2023-12",
+   "background": "Univ. of Colorado Boulder; early Snapchat employee",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Deepak Ghodke",
+   "title": "VP of Sales",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2017-10",
+   "start_basis": "press release 2017-10-05",
+   "end": null,
+   "background": "~10 yrs Tableau (APAC)",
+   "source": "https://citrine.io/media-post/citrine-informatics-hires-senior-global-sales-leaders/"
+  },
+  {
+   "name": "Brian Gillespie",
+   "title": "VP of Sales",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2017-10",
+   "start_basis": "press release 2017-10-05",
+   "end": null,
+   "background": "20-yr sales career; VP Sales, Sight Machine",
+   "source": "https://citrine.io/media-post/citrine-informatics-hires-senior-global-sales-leaders/"
+  },
+  {
+   "name": "Julia Ling",
+   "title": "Chief Technology Officer (promoted; joined as data scientist)",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2019-11",
+   "start_basis": "press release 2019-11-21 (on 2019-07 leadership page as Data Science)",
+   "end": "by 2023-12",
+   "background": "Truman Fellow, Sandia National Labs",
+   "source": "https://citrine.io/media-post/citrine-informatics-appoints-new-cto-and-vp-of-global-sales"
+  },
+  {
+   "name": "Michael Smocer",
+   "title": "VP of Global Sales",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2019-11",
+   "start_basis": "press release 2019-11-21",
+   "end": null,
+   "background": "VP Global Accounts ANSYS; CRO Voci",
+   "source": "https://citrine.io/media-post/citrine-informatics-appoints-new-cto-and-vp-of-global-sales"
+  },
+  {
+   "name": "Andrea Fuller",
+   "title": "Leadership team, Marketing",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2019-07",
+   "start_basis": "first about-page capture",
+   "end": "by 2023-12",
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Raphael Stargrove",
+   "title": "Leadership team, Product",
+   "function": "software-eng",
+   "seniority": "head",
+   "start": "2019-07",
+   "start_basis": "first about-page capture",
+   "end": "by 2023-12",
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Alla Koltun",
+   "title": "Leadership team, Finance",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2019-07",
+   "start_basis": "first about-page capture",
+   "end": null,
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20190721232539/https://citrine.io/about/"
+  },
+  {
+   "name": "Justine Trubey",
+   "title": "Chief Operating Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2020-02",
+   "start_basis": "press release 2020-02-18",
+   "end": "after 2023-12",
+   "background": "CEO Limbforge; VP ops Shapeways; Amazon Kindle content ops; SVP tech/ops Random House",
+   "source": "https://citrine.io/?p=2919"
+  },
+  {
+   "name": "Rahim Lakhani",
+   "title": "Chief Financial Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2023-01",
+   "start_basis": "press release 2023-01-10; Form D officer 2023, 2025",
+   "end": null,
+   "background": "CFO, Alpha Capital Acquisition Company (SPAC)",
+   "source": "https://www.businesswire.com/news/home/20230110005845/en/Citrine-Informatics-Appoints-CFO-Rahim-Lakhani"
+  },
+  {
+   "name": "Scott Carlyle",
+   "title": "Chief Customer Officer, later Chief Commercial Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2023-01",
+   "start_basis": "press release 2023-01-23",
+   "end": "after 2023-12",
+   "background": "20+ yrs sales; CRO aPriori",
+   "source": "https://citrine.io/media-post/citrine-informatics-appoints-cco-scott-carlyle"
+  },
+  {
+   "name": "Kyle Killebrew",
+   "title": "Leadership team, Customer; now Chief Operating Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2023-12",
+   "start_basis": "about-page capture",
+   "end": null,
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20231203144008/https://citrine.io/about/"
+  },
+  {
+   "name": "Ify Edwards",
+   "title": "Leadership team, People Operations",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2023-12",
+   "start_basis": "about-page capture",
+   "end": null,
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20231203144008/https://citrine.io/about/"
+  },
+  {
+   "name": "John Shaw",
+   "title": "Leadership team, Engineering",
+   "function": "software-eng",
+   "seniority": "head",
+   "start": "2023-12",
+   "start_basis": "about-page capture",
+   "end": null,
+   "background": "not stated",
+   "source": "https://web.archive.org/web/20231203144008/https://citrine.io/about/"
+  },
+  {
+   "name": "Bernie Segura",
+   "title": "Leadership team, Customer Success and Services",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2026-10",
+   "start_basis": "live about page 2026-10-09",
+   "end": null,
+   "background": "not stated",
+   "source": "https://citrine.io/about/"
+  },
+  {
+   "name": "Rich Campbell",
+   "title": "Leadership team, Sales",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2026-10",
+   "start_basis": "live about page 2026-10-09",
+   "end": null,
+   "background": "not stated",
+   "source": "https://citrine.io/about/"
+  },
+  {
+   "name": "Steve Edkins",
+   "title": "Leadership team, Strategy and Operations",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2026-10",
+   "start_basis": "live about page 2026-10-09",
+   "end": null,
+   "background": "not stated",
+   "source": "https://citrine.io/about/"
+  }
+ ],
+ "staff_roles": [
+  {
+   "title": "Software/infrastructure engineer",
+   "function": "software-eng",
+   "first_seen": "2016-04",
+   "last_seen": "2016-10",
+   "background": "MCS Colorado State; ~10 yrs Red Hat",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Materials data scientist",
+   "function": "ml-research",
+   "first_seen": "2016-04",
+   "last_seen": "2016-10",
+   "background": "MS materials science (+CS) Stanford",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Materials scientist",
+   "function": "materials-science",
+   "first_seen": "2016-04",
+   "last_seen": "2016-10",
+   "background": "BSc chem/biochem + Honours materials science, Univ. Cape Town",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Computational materials scientist",
+   "function": "materials-science",
+   "first_seen": "2016-04",
+   "last_seen": "2016-10",
+   "background": "PhD UCLA (DFT, hydrogen storage)",
+   "source": "https://web.archive.org/web/20160416155118/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Materials scientist",
+   "function": "materials-science",
+   "first_seen": "2016-10",
+   "last_seen": "2016-10",
+   "background": "graduate research on iron-based superconductors, Univ. Maryland",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Materials scientist",
+   "function": "materials-science",
+   "first_seen": "2016-10",
+   "last_seen": "2016-10",
+   "background": "BS materials science, Univ. Utah",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Computational scientist",
+   "function": "ml-research",
+   "first_seen": "2016-10",
+   "last_seen": "2016-10",
+   "background": "PhD physics Univ. Chicago; DOE Computational Science Graduate Fellow",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Communications / public affairs",
+   "function": "business-ops",
+   "first_seen": "2016-10",
+   "last_seen": "2016-10",
+   "background": "BA political science, Cal Poly SLO; nonprofit public affairs",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  },
+  {
+   "title": "Business development (Japan/Asia)",
+   "function": "business-ops",
+   "first_seen": "2016-10",
+   "last_seen": "2016-10",
+   "background": "MA economics & strategic studies, Aberystwyth; fluent Japanese",
+   "source": "https://web.archive.org/web/20161023220617/http://www.citrine.io:80/team"
+  }
+ ],
+ "departures": [
+  {
+   "who": "Bryce Meredig",
+   "title": "Co-founder, Chief Science Officer",
+   "date": "2022",
+   "basis": "quoted as CSO in Apr 2022 release; absent from Form D related persons from Nov 2022; current bio names Travertine Labs",
+   "source": "https://www.deep-tech-week.com/speakers/7d39d607-2480-41d7-b555-cee368ab775a"
+  },
+  {
+   "who": "Julia Ling",
+   "title": "CTO",
+   "date": "2023",
+   "basis": "absent from 2023-12 about-page leadership list",
+   "source": "https://web.archive.org/web/20231203144008/https://citrine.io/about/"
+  },
+  {
+   "who": "Jordan O'Mara, Sean Paradiso, Christina Hartman, Andrea Fuller, Raphael Stargrove",
+   "title": "2019 leadership team (engineering, sci. software, ops, marketing, product)",
+   "date": "2023",
+   "basis": "listed 2019-07, absent from 2023-12 leadership list",
+   "source": "https://web.archive.org/web/20231203144008/https://citrine.io/about/"
+  },
+  {
+   "who": "Justine Trubey",
+   "title": "COO",
+   "date": "2024-2026",
+   "basis": "listed 2023-12, absent from live page 2026-10 (COO now Kyle Killebrew)",
+   "source": "https://citrine.io/about/"
+  },
+  {
+   "who": "Scott Carlyle",
+   "title": "Chief Commercial Officer",
+   "date": "2024-2026",
+   "basis": "listed 2023-12, absent from live page 2026-10",
+   "source": "https://citrine.io/about/"
+  },
+  {
+   "who": "LinkedIn-listed employees (unnamed)",
+   "title": "net -15",
+   "date": "2024",
+   "basis": "84 (2024-02) to 69 (2024-12) on archived LinkedIn page",
+   "source": "https://web.archive.org/web/20241212055339/https://www.linkedin.com/company/citrine-informatics"
+  }
+ ],
+ "notes": [
+  "Form D (CIK 1675501) gives six dated raises; announced rounds map onto them: Series A ($7.6M, announced June 2017; Form D first sale May 2016, $8.76M), Series B ($20M, Oct 2019), Series B extension (Prelude-led, Form D Oct 2020, $12.35M), Series C ($16M, Jan 2023; Form D Oct 2022). The 2016-to-2017 mapping is an inference from the absence of a 2017 Form D.",
+  "Total raised: ~$65.7M summing the amounts in the funding table (Form D figures where nothing was announced).",
+  "Team pages: /team captured only in 2016; the 2019-2023 /about pages list only a leadership team (9 people in 2019, 8 in 2023, 9 live), not total staff.",
+  "No 2017-2023 total headcount found; press gives only relative growth (+19% in Q4 2020). Third-party counts (PitchBook 71, Built In 104) were not used.",
+  "OpenAlex author counts (collaborators filtered) peak at 17 in 2020; this is a weak proxy for staff numbers, inflated by co-authors on consortium papers.",
+  "Greenhouse (gh_jid on citrine.io, 2020-2022) and Rippling (2025-) job boards; boards.greenhouse.io had no captures under 'citrine*'. Postings are captured postings only, a lower bound.",
+  "Skipped: per-snapshot diffs of 2019-2023 /about pages (one 2021 capture was unreadable)."
+ ]
+}

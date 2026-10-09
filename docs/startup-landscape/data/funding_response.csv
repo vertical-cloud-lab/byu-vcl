@@ -1,13 +1,21 @@
 company,date,round,amount_usd_m,postings_6mo_before,postings_6mo_after,team_before,team_before_date,team_after,team_after_date
 Altrove,2024-07-03,Pre-seed,4.0,,,,,4,2025-02-20
 Altrove,2025-10-31,Seed,10.0,,,4,2025-02-20,,
+Atinary Technologies,2023-10-03,Seed,5.0,0,0,,,23,2024-07-07
+Atinary Technologies,2026-08-14,Strategic minority investment,,0,4,23,2025-11-03,,
 Chemify,2022-02-14,Seed,,0,0,0,2021-12-31,15,2022-12-31
 Chemify,2023-08-02,Series A (announced with seed as USD 43M total),43.0,0,0,15,2022-12-31,79,2024-12-31
-Chemify,2025-10-21,Series B,50.0,0,6,79,2024-12-31,200,2026-10-09
-Chemify,2025-12-12,"Series B1 extension (allotments 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 per SH01; accounts say 27 Jul)",,0,11,79,2024-12-31,200,2026-10-09
+Chemify,2025-10-21,Series B,50.0,0,30,79,2024-12-31,200,2026-10-09
+Chemify,2025-12-12,"Series B1 extension (allotments 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 per SH01; accounts say 27 Jul)",,11,26,79,2024-12-31,200,2026-10-09
+Citrine Informatics,2016-05-09,Series A (Form D first sale; announced 2017-06-08 as $7.6M),8.76,0,0,9,2016-04-16,14,2016-10-23
+Citrine Informatics,2019-06-28,Series B (Form D first sale; announced 2019-10-10 as $20M),20.95,0,0,,,,
+Citrine Informatics,2020-10-23,Series B extension (Form D first sale),12.35,0,1,,,17,2020-12-31
+Citrine Informatics,2022-10-28,Series C (Form D first sale; announced 2023-01-04 as $16M),16.0,0,0,,,84,2024-02-13
+Citrine Informatics,2023-09-15,Unannounced equity (Form D),5.0,0,0,,,69,2024-12-12
+Citrine Informatics,2025-01-24,Unannounced equity/options (Form D),2.6,0,0,69,2024-12-12,68,2026-07-21
 CuspAI,2024-06-18,Seed,30.0,0,0,,,30,2025-09-10
-CuspAI,2025-09-10,Series A,100.0,0,4,30,2025-09-10,,
-CuspAI,2026-07-20,Series B,450.0,5,11,30,2025-09-10,,
+CuspAI,2025-09-10,Series A,100.0,0,4,30,2025-09-10,85,2026-08-27
+CuspAI,2026-07-20,Series B,450.0,5,11,30,2025-09-10,85,2026-08-27
 "Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-06-05,Seed,10,,,,,,
 "Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-10-15,Seed+,,,,,,,
 "Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-11-15,Seed++,,,,,,,
@@ -48,3 +56,6 @@ Polymerize (Polymerize Pte Ltd),2020-10-15,Seed,0.59,,,,,,
 Polymerize (Polymerize Pte Ltd),2022-05-25,Series A,4.2,,,,,,
 Polymerize (Polymerize Pte Ltd),2024-09-24,Series A-II (strategic),,,,,,,
 Polymerize (Polymerize Pte Ltd),2025-03-27,Strategic (undisclosed),,,,,,,
+Telescope Innovations,2022-11-10,Non-brokered private placement,1.08,,,,,,
+Telescope Innovations,2025-09-15,"Private placement, tranche 1 (LIFE exemption)",3.75,,,,,,
+Telescope Innovations,2025-10-15,"Private placement, tranche 2",0.93,,,,,,

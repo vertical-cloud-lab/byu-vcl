@@ -9,22 +9,134 @@
   "status": "active",
   "website": "https://dunia.ai",
   "funding": [
-    {"date": "2024-10-23", "round": "Seed/Series A (sources differ)", "amount_usd_m": 11.5, "original_amount": "USD 11.5M (~EUR 10.6M)", "type": "equity", "lead_investors": ["Elaia", "redalpine"], "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"}
+    {
+      "date": "2024-10-23",
+      "round": "Seed/Series A (sources differ)",
+      "amount_usd_m": 11.5,
+      "original_amount": "USD 11.5M (~EUR 10.6M)",
+      "type": "equity",
+      "lead_investors": [
+        "Elaia",
+        "redalpine"
+      ],
+      "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"
+    }
   ],
   "headcount": [
-    {"date": "2025-12-10", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50; 'View all 47 employees'", "source": "https://web.archive.org/web/20251210000909/https://www.linkedin.com/company/dunia-innovations/"},
-    {"date": "2026-03-26", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50 (stale band); 'View all 54 employees'", "source": "https://web.archive.org/web/20260326235256/https://www.linkedin.com/company/dunia-innovations"}
+    {
+      "date": "2025-01-13",
+      "value": null,
+      "low": 2,
+      "high": 10,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 2-10 (stale); 'View all 29 employees'",
+      "source": "https://web.archive.org/web/20250113175418/https://www.linkedin.com/company/dunia-innovations/"
+    },
+    {
+      "date": "2025-12-10",
+      "value": null,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'View all 47 employees'",
+      "source": "https://web.archive.org/web/20251210000909/https://www.linkedin.com/company/dunia-innovations/"
+    },
+    {
+      "date": "2026-03-26",
+      "value": null,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50 (stale band); 'View all 54 employees'",
+      "source": "https://web.archive.org/web/20260326235256/https://www.linkedin.com/company/dunia-innovations"
+    }
   ],
   "postings": [
-    {"period": "2025Q3", "new_postings": 1, "method": "ats", "source": "https://dunia.jobs.personio.com/"},
-    {"period": "2026Q1", "new_postings": 12, "method": "ats", "source": "https://dunia.jobs.personio.com/"}
+    {
+      "period": "2025Q3",
+      "new_postings": 1,
+      "method": "ats",
+      "source": "https://dunia.jobs.personio.com/"
+    },
+    {
+      "period": "2026Q1",
+      "new_postings": 12,
+      "method": "ats",
+      "source": "https://dunia.jobs.personio.com/"
+    }
   ],
-  "current_openings": {"date": "2026-10-09", "count": 13, "by_function": {"ml-research": 5, "materials-science": 2, "lab-automation": 4, "software-eng": 1, "business-ops": 1}, "titles": ["Head of AI Research", "ML Researcher, Representation Learning", "ML Engineer, Agents & Reasoning", "Materials Informatics Scientist (Evaluation-focused)", "Chemical Data Scientist", "Quantum Chemistry Specialist", "Research Scientist, Thermocatalysis", "Lab Technicians", "Lab Operations & Procurement Manager", "Manufacturing Systems Engineer", "Reliability & Test Engineer", "Software Engineer, Infrastructure", "Business Development Manager"], "source": "https://dunia.jobs.personio.com/"},
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 13,
+    "by_function": {
+      "ml-research": 5,
+      "materials-science": 2,
+      "lab-automation": 4,
+      "software-eng": 1,
+      "business-ops": 1
+    },
+    "titles": [
+      "Head of AI Research",
+      "ML Researcher, Representation Learning",
+      "ML Engineer, Agents & Reasoning",
+      "Materials Informatics Scientist (Evaluation-focused)",
+      "Chemical Data Scientist",
+      "Quantum Chemistry Specialist",
+      "Research Scientist, Thermocatalysis",
+      "Lab Technicians",
+      "Lab Operations & Procurement Manager",
+      "Manufacturing Systems Engineer",
+      "Reliability & Test Engineer",
+      "Software Engineer, Infrastructure",
+      "Business Development Manager"
+    ],
+    "source": "https://dunia.jobs.personio.com/"
+  },
   "people": [
-    {"name": "Alexander Hammer", "title": "Co-founder & CEO; Geschäftsführer", "function": "leadership", "seniority": "founder", "start": "2022-06", "start_basis": "Handelsregister: Dunia Innovations UG registered 2022-06-21 with the three founders as managing directors", "end": null, "background": "Not stated in sources found", "source": "https://www.northdata.com/Dunia%20Innovations%20GmbH,%20Berlin"},
-    {"name": "Marcus Tze-Kiat Ng", "title": "Co-founder & CTO; Geschäftsführer", "function": "leadership", "seniority": "founder", "start": "2022-06", "start_basis": "Handelsregister registration 2022-06-21", "end": null, "background": "Dr.; research background in artificial photosynthesis", "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"},
-    {"name": "Ahmed Ismail", "title": "Co-founder & COO; Geschäftsführer", "function": "leadership", "seniority": "founder", "start": "2022-06", "start_basis": "Handelsregister registration 2022-06-21", "end": null, "background": "Dr.; professional background in the oil and gas industry", "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"},
-    {"name": "Carlos Haertel", "title": "Chairman of the board (also angel investor)", "function": "leadership", "seniority": "board", "start": "2024-10", "start_basis": "Announced with the October 2024 round", "end": null, "background": "Dr.; industry executive (details not in source)", "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"}
+    {
+      "name": "Alexander Hammer",
+      "title": "Co-founder & CEO; Geschäftsführer",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-06",
+      "start_basis": "Handelsregister: Dunia Innovations UG registered 2022-06-21 with the three founders as managing directors",
+      "end": null,
+      "background": "Not stated in sources found",
+      "source": "https://www.northdata.com/Dunia%20Innovations%20GmbH,%20Berlin"
+    },
+    {
+      "name": "Marcus Tze-Kiat Ng",
+      "title": "Co-founder & CTO; Geschäftsführer",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-06",
+      "start_basis": "Handelsregister registration 2022-06-21",
+      "end": null,
+      "background": "Dr.; research background in artificial photosynthesis",
+      "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"
+    },
+    {
+      "name": "Ahmed Ismail",
+      "title": "Co-founder & COO; Geschäftsführer",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2022-06",
+      "start_basis": "Handelsregister registration 2022-06-21",
+      "end": null,
+      "background": "Dr.; professional background in the oil and gas industry",
+      "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"
+    },
+    {
+      "name": "Carlos Haertel",
+      "title": "Chairman of the board (also angel investor)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2024-10",
+      "start_basis": "Announced with the October 2024 round",
+      "end": null,
+      "background": "Dr.; industry executive (details not in source)",
+      "source": "https://siliconcanals.com/dunia-innovations-raises-10-6m/"
+    }
   ],
   "staff_roles": [],
   "departures": [],
@@ -32,7 +144,7 @@
     "Registry: Amtsgericht Charlottenburg HRB 243294 B; registered 2022-06-21 as Dunia Innovations UG (share capital EUR 600), raised to EUR 920 on 2022-11-07 and EUR 35,565 on 2024-10-24 as a GmbH (northdata summary). The Nov 2022 increase suggests an early outside investment, but no pre-seed announcement was found, so none is recorded.",
     "The Oct 2024 round (USD 11.5M) is the only announced financing. Participants: EIC, Pace Ventures, Kindred Capital, Deep Science Ventures, Anglo American; angels Udo Jung, Chris Gibson, Lee Cronin, Carlos Haertel. Seedtable labels it Series A; others call it seed or just a 'funding round'.",
     "Twelve of the 13 open Personio postings were created 2026-02-02 to 2026-02-06, a single hiring push with no matching public funding announcement as of 2026-10-09. Counts of 'new postings' here are only postings still open, a lower bound.",
-    "People page now shows only the three founders; earlier team-page captures and the 2025-01 LinkedIn capture were not readable or not checked (time). OpenAlex not checked.",
+    "People page now shows only the three founders; earlier team-page captures were not checked (time). OpenAlex not checked.",
     "No headcount from the German registry (northdata hides it behind a paywall)."
   ]
 }

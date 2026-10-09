@@ -37,6 +37,7 @@ Disclosed total about $71M ([Resilience Media](https://resiliencemedia.co/orbita
 | Role | Function | First seen | Background | Source |
 | --- | --- | --- | --- | --- |
 | Associate Director (press contact) | business-ops | 2024-07 | not stated | [GlobeNewswire](https://www.globenewswire.com/news-release/2024/07/30/2920925/0/en/Award-Winning-Material-Inventor-Joins-as-Advisor-for-AI-Innovator-of-Climate-Technologies.html) |
+| Process Engineering - Data Center Cooling (posting) | materials-science | 2025-05 | process/chemical engineering for cooling fluids | [Wayback](https://web.archive.org/web/20250518133738/https://jobs.ashbyhq.com/orbitalmaterials/3ba2ea88-8f62-4204-8453-8f288f3db4d6?utm_source=Impact+Ventures+job+board&utm_medium=getro.com&gh_src=Impact+Ventures+job+board) |
 | Researcher, Chemistry (onsite, new lab near Princeton NJ) | materials-science | 2025-05 | zeolite/MOF synthesis and testing | [Toyota Ventures job board](https://jobs.toyota.ventures/companies/orbital-materials/jobs/51707162-researcher-chemistry) |
 | Researcher, Generative Models / Simulation (London or Princeton) | ml-research | 2025 | ML for atomistic simulation | [Compound job board](https://jobs.compound.vc/companies/orbital-materials/jobs/51641785-researcher-generative-models-simulation) |
 | Researcher (x3 quoted on About page) | ml-research | 2026-10 | not stated | [About](https://www.orbitalindustries.com/about) |

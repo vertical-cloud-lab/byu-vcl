@@ -132,20 +132,26 @@
   ],
   "postings": [
     {
+      "period": "2025Q4",
+      "new_postings": 11,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
+    },
+    {
       "period": "2026Q1",
-      "new_postings": 6,
-      "method": "ats",
-      "source": "https://www.chemify.io/careers"
+      "new_postings": 19,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
     },
     {
       "period": "2026Q2",
-      "new_postings": 5,
-      "method": "ats",
-      "source": "https://www.chemify.io/careers"
+      "new_postings": 7,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx*"
     },
     {
       "period": "2026Q3",
-      "new_postings": 22,
+      "new_postings": 21,
       "method": "ats",
       "source": "https://www.chemify.io/careers"
     }
@@ -303,7 +309,7 @@
       "function": "leadership",
       "seniority": "exec",
       "start": null,
-      "start_basis": "named as CTO in the Oct 2025 Series B release",
+      "start_basis": "named as CTO in the Oct 2025 Series B release; not on the Aug 2024 About page (Delubac was COO/CTO then)",
       "end": null,
       "background": "not stated; no longer listed on the About page by Oct 2026, where Knut Sauer is CTO",
       "source": "https://siliconcanals.com/glasgows-chemify-raises-43m/"
@@ -324,11 +330,11 @@
       "title": "Chief Financial Officer",
       "function": "business-ops",
       "seniority": "exec",
-      "start": null,
-      "start_basis": "listed on the About page, Oct 2026",
+      "start": "2024-08",
+      "start_basis": "listed as CFO on the archived About page, 29 Aug 2024 (start on or before)",
       "end": null,
       "background": "Economics degree; FCA; 30+ years in finance leadership at start-ups, scale-ups and multinationals",
-      "source": "https://www.chemify.io/about"
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
     },
     {
       "name": "Neil McCourt",
@@ -343,14 +349,14 @@
     },
     {
       "name": "Swati Chatterjee",
-      "title": "SVP, Business Development",
+      "title": "SVP, Business Development (SVP Sales and Business Development in 2024)",
       "function": "business-ops",
       "seniority": "exec",
-      "start": null,
-      "start_basis": "listed on the About page, Oct 2026",
+      "start": "2024-08",
+      "start_basis": "listed on the archived About page, 29 Aug 2024 (start on or before)",
       "end": null,
       "background": "15+ years building chemistry design and synthesis partnerships, incl. Syngene",
-      "source": "https://www.chemify.io/about"
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
     },
     {
       "name": "Sandy Mahatme",
@@ -395,6 +401,39 @@
       "end": null,
       "background": "PhD computational drug design (Melbourne); SVP Global Head of AI/ML at GSK; ex-Head of AI Genentech",
       "source": "https://www.chemify.io/about"
+    },
+    {
+      "name": "Daniel Delubac",
+      "title": "COO/CTO",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2024-08",
+      "start_basis": "listed on the archived About page, 29 Aug 2024 (start on or before)",
+      "end": "2026-10",
+      "background": "not stated",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Mike Frumkin",
+      "title": "Advisory board",
+      "function": "software-eng",
+      "seniority": "advisor",
+      "start": "2024-08",
+      "start_basis": "archived About page, 29 Aug 2024",
+      "end": "2026-10",
+      "background": "25+ years in technical leadership incl. NeXT and Google",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "name": "Sara Walker",
+      "title": "Advisory board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-08",
+      "start_basis": "archived About page, 29 Aug 2024",
+      "end": "2026-10",
+      "background": "Astrobiologist and theoretical physicist, Arizona State University; PhD Dartmouth",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
     }
   ],
   "staff_roles": [
@@ -452,6 +491,20 @@
       "date": null,
       "basis": "CTO in the Oct 2025 release; the Oct 2026 About page lists Knut Sauer as CTO. Not a director, so no registry date",
       "source": "https://www.chemify.io/about"
+    },
+    {
+      "who": "Daniel Delubac",
+      "title": "COO/CTO",
+      "date": "2026-10",
+      "basis": "on the Aug 2024 About page, absent from the Oct 2026 page (exact exit date unknown; latest possible date shown); role split into COO (Neil McCourt) and CTO",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
+    },
+    {
+      "who": "Mike Frumkin; Sara Walker",
+      "title": "Advisory board",
+      "date": "2026-10",
+      "basis": "on the Aug 2024 About page, absent from the Oct 2026 page",
+      "source": "https://web.archive.org/web/20240829041046/https://chemify.io/about"
     }
   ],
   "notes": [
@@ -462,6 +515,7 @@
     "Grant USD figure converts GBP 22M at ~1.34 USD/GBP. The 2023 round also included the UK Government Innovation Accelerators programme (Glasgow City Region).",
     "No OpenAlex institution record or works with a Chemify raw affiliation; staff publish under the University of Glasgow.",
     "Current openings are listed on chemify.io/careers and hosted on PeopleHR (chemifyltd.peoplehr.net); 33 titles. Mapping: CADD and ML scientists -> ml-research; chemists and analytical/purification technicians and lab coordinator -> materials-science; mechanical, mechatronics, manufacturing, firmware engineers and automation scientist -> lab-automation; software, product owner/designer and CTO-office director -> software-eng; finance, H&S, project and operations managers -> business-ops.",
-    "Postings by quarter count only openings still live on 2026-10-09, dated by the careers page (PeopleHR); 24 of 33 were posted June-September 2026."
+    "Postings: 58 distinct PeopleHR posting IDs, merging 32 Wayback-captured IDs (first capture 2025-11-22) with 32 live IDs dated on the careers page (6 overlap); earliest date per ID wins. The board is not visible in Wayback before the Oct 2025 Series B, so earlier hiring is uncovered. 24 of 33 live titles were posted June-September 2026.",
+    "Aug 2024 About page also lists investors not named in the round announcements: Founders Fund, Berggruen Holdings, DCVC and Creator Fund."
   ]
 }

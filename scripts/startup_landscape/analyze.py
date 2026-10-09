@@ -22,6 +22,10 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.dates as mdates  # noqa: E402
 import matplotlib.pyplot as plt  # noqa: E402
+from matplotlib.ticker import FuncFormatter  # noqa: E402
+
+USD_M = FuncFormatter(lambda v, _: f"${v / 1000:g}B" if v >= 1000 else f"${v:g}M")
+PLAIN = FuncFormatter(lambda v, _: f"{v:g}")
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 OUT = os.path.join(ROOT, "docs", "startup-landscape")
@@ -126,8 +130,8 @@ def load():
             [{**p, "_d": quarter_mid(p.get("period"))} for p in d.get("postings") or []
              if quarter_mid(p.get("period")) and p.get("new_postings") is not None],
             key=lambda p: p["_d"])
-        # Chart label: drop parentheticals in scripts the plotting font lacks (e.g. CJK names).
-        d["_name"] = re.sub(r"\s*\([^)]*[^\x00-\x7f][^)]*\)", "", d["company"]).strip()
+        # Chart label: drop parentheticals (legal names, former names, names in other scripts).
+        d["_name"] = re.sub(r"\s*\(.*?\)", "", d["company"]).strip()
         d["_region"] = REGION.get(d.get("country"), "Canada & Asia")
         d["_kind"] = KIND.get(d.get("category"), "Computational / software")
         cos.append(d)
@@ -162,6 +166,19 @@ def fmt_hc(h):
     return f'{val} ({h["_d"]:%Y-%m}, {h.get("method")})'
 
 
+def chart_round(f):
+    """Compact event label for charts: amount plus a short round name."""
+    r = re.sub(r"\s*\(.*", "", f.get("round") or "").replace("Series ", "").replace("extension", "ext.")
+    r = r.split("/")[0].strip()
+    r = r if len(r) <= 14 else r[:13].rstrip() + "…"
+    kind = f.get("type") or "equity"
+    if kind in ("grant", "debt") and kind not in r.lower():
+        r += f" {kind}"
+    elif kind == "other":
+        r += " (non-equity)"
+    return f'{money(f.get("amount_usd_m"))} {r}'.strip()
+
+
 def short_round(f, width=34):
     r = (f.get("round") or "").replace("Series ", "").replace("extension", "ext.")
     r = r if len(r) <= width else r[: width - 1].rstrip() + "…"
@@ -182,12 +199,12 @@ def timeline_grid(cos):
         start = min(dates + [parse_date(co.get("founded")) or min(dates)])
         x0 = date(start.year, 1, 1)
         ax.set_xlim(x0, date(2026, 12, 31))
-        ymax = max([h["_hi"] or h["_v"] for h in co["_headcount"]] + [10]) * 1.35
+        ymax = max([max(h["_hi"] or 0, h["_v"]) for h in co["_headcount"]] + [10]) * 1.35
         ax.set_ylim(0, ymax)
         for f in co["_funding"]:
             grant = (f.get("type") or "equity") not in CAPITAL
             ax.axvline(f["_d"], color=AXIS if grant else INK2, lw=0.7, zorder=1)
-            ax.text(f["_d"], ymax * 0.98, " " + short_round(f), rotation=90, va="top",
+            ax.text(f["_d"], ymax * 0.98, " " + chart_round(f), rotation=90, va="top",
                     ha="right", fontsize=5.6, color=MUTED if grant else INK2, zorder=2)
         exact = [h for h in co["_headcount"] if not h["_band"] and not h["_weak"]]
         weak = [h for h in co["_headcount"] if not h["_band"] and h["_weak"]]
@@ -238,16 +255,18 @@ def scatter(cos):
                     fontsize=6.5, color=INK2)
     ax.set_xscale("log")
     ax.set_yscale("log")
-    for k in (1, 3, 10):  # reference lines: $k M of capital per employee
-        lo, hi = ax.get_xlim()
-        xs = [lo, hi]
-        ax.plot(xs, [x / k for x in xs], color=AXIS, lw=0.6, zorder=1)
-    ax.set_xlim(left=max(ax.get_xlim()[0], 0.3))
-    ax.set_ylim(bottom=max(ax.get_ylim()[0], 1))
-    for k in (1, 3, 10):
-        x = ax.get_xlim()[1] / 1.6
-        if ax.get_ylim()[0] < x / k < ax.get_ylim()[1]:
-            ax.text(x, x / k, f"${k}M per head", fontsize=6.5, color=MUTED, ha="right", va="bottom")
+    x0, x1 = ax.get_xlim()
+    y0, y1 = max(ax.get_ylim()[0], 1), ax.get_ylim()[1]
+    for k in (0.3, 1, 3, 10):  # reference lines: $k M of capital per team member
+        ax.plot([x0, x1], [x0 / k, x1 / k], color=GRID, lw=0.9, zorder=1)
+        xl = min(x1 / 1.5, k * y1 / 1.5)
+        if xl / k > y0 and xl > x0:
+            ax.text(xl, xl / k * 1.08, f"${k:g}M per person", fontsize=6.5, color=MUTED,
+                    ha="right", va="bottom")
+    ax.set_xlim(x0, x1)
+    ax.set_ylim(y0, y1)
+    ax.xaxis.set_major_formatter(USD_M)
+    ax.yaxis.set_major_formatter(PLAIN)
     ax.set_xlabel("Capital raised to date (USD M, log; equity and JV capital, excluding grants and debt)")
     ax.set_ylabel("Team size (log; band midpoints where only a size band is known)")
     ax.set_title("Team size against capital raised", loc="left")
@@ -278,7 +297,7 @@ def postings_grid(cos):
             if f["_d"] < date(lo.year, 1, 1):
                 continue
             ax.axvline(f["_d"], color=INK2, lw=0.7, zorder=1)
-            ax.text(f["_d"], top * 0.98, " " + short_round(f), rotation=90, va="top", ha="right",
+            ax.text(f["_d"], top * 0.98, " " + chart_round(f), rotation=90, va="top", ha="right",
                     fontsize=5.6, color=INK2)
         ax.set_title(co["_name"], loc="left")
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
@@ -304,17 +323,22 @@ def per_head(cos):
     rows.sort(key=lambda r: r[0])
     fig, ax = plt.subplots(figsize=(8, 0.32 * len(rows) + 1.2))
     ys = range(len(rows))
-    ax.barh(list(ys), [r[0] for r in rows], height=0.62,
-            color=[SLOTS[KINDS.index(r[1]["_kind"])] for r in rows], zorder=3)
+    for y, (v, co) in zip(ys, rows):
+        band = best_headcount(co)["_band"]
+        ax.barh(y, v, height=0.62, color=SLOTS[KINDS.index(co["_kind"])], zorder=3,
+                alpha=0.45 if band else 1)
+        ax.text(v, y, f"  ${v:.2f}M" + ("  (from a size band)" if band else ""), va="center",
+                fontsize=6.5, color=INK2)
     ax.set_yticks(list(ys))
     ax.set_yticklabels([r[1]["_name"] for r in rows], fontsize=7, color=INK2)
-    for y, (v, co) in zip(ys, rows):
-        ax.text(v, y, f"  {v:.2f}" if v < 10 else f"  {v:.0f}", va="center", fontsize=6.5, color=INK2)
     ax.set_xscale("log")
+    ax.xaxis.set_major_formatter(USD_M)
+    ax.set_xlim(right=max(r[0] for r in rows) * 6)
     ax.grid(axis="y", visible=False)
-    ax.set_xlabel("Capital raised to date per team member (USD M, log)")
-    ax.set_title("Capital per head at the latest team-size datapoint", loc="left")
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c, label=k) for c, k in zip(SLOTS, KINDS)]
+    ax.set_xlabel("Capital raised to date per team member at the latest team-size datapoint (USD, log)")
+    ax.set_title("Capital per person (pale bars: team size known only as a band)", loc="left")
+    kinds = [k for k in KINDS if any(r[1]["_kind"] == k for r in rows)]
+    handles = [plt.Rectangle((0, 0), 1, 1, color=SLOTS[KINDS.index(k)], label=k) for k in kinds]
     ax.legend(handles=handles, loc="lower right", fontsize=7)
     ax.tick_params(length=0)
     fig.tight_layout()
