@@ -1,0 +1,75 @@
+--- a/main.py
++++ b/main.py
+@@ -64,6 +64,31 @@
+ # See micropython/micropython#19087 and #18257.
+ sensor = Sensor(i2c = I2C(0, scl=Pin(5), sda=Pin(4)))
+ 
++# Per-reading gain (added 2026-10-09, gain only). A read command may carry
++# "settings": {"gain": G} with G one of GAINS. Without it the reading uses
++# DEFAULT_GAIN_CODE, the 128x that Sensor() has always set, so a command
++# without "settings" reads exactly as before. Integration time is not
++# settable: it stays at Sensor()'s atime=100, astep=999 (2 x 281 ms).
++GAINS = (0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512)  # index = AGAIN code
++DEFAULT_GAIN_CODE = 8  # Sensor(gain=8): code 8 = 128x
++
++
++def gain_code(settings):
++    """AGAIN code (0-10) for a command's optional "settings" object."""
++    if settings is None:
++        return DEFAULT_GAIN_CODE
++    if not isinstance(settings, dict):
++        raise ValueError("settings must be an object")
++    for key in settings:
++        if key != "gain":
++            raise ValueError("only gain can be set, not %r" % (key,))
++    gain = settings.get("gain", GAINS[DEFAULT_GAIN_CODE])
++    if not isinstance(gain, bool):
++        for code, g in enumerate(GAINS):
++            if gain == g:
++                return code
++    raise ValueError("gain must be one of 0.5, 1, 2, 4, ... 512; got %r" % (gain,))
++
+ 
+ def read_sensor_data():
+     """Read dictionary of sensor data"""
+@@ -183,12 +208,37 @@
+                 B = command["B"]
+                 
+ 
+-                # Run the color experiment with the specified RGB values
+-                sensor_data = run_color_experiment(R, Y, B)
++                # Gain for this reading; a bad "settings" gets an error reply
++                try:
++                    code = gain_code(incoming_dict.get("settings"))
++                except ValueError as e:
++                    await client.publish(sensor_data_topic, json.dumps(
++                        {"experiment_id": experiment_id, "error": str(e)}))
++                    continue
++
++                # Run the color experiment with the specified RGB values,
++                # then put the default gain back whatever happens
++                sensor.sensor.set_again(code)
++                try:
++                    sensor_data = run_color_experiment(R, Y, B)
++                    # ASTATUS (0x94), read straight after the counts: the gain
++                    # code the chip used (bits 0-3) and saturation (bit 7).
++                    # The driver's own copy from its bulk read always showed
++                    # code 8 here on 2026-10-09, whatever the gain.
++                    try:
++                        astatus = sensor.i2c.readfrom_mem(0x39, 0x94, 1)[0]
++                    except OSError:
++                        astatus = None
++                finally:
++                    sensor.sensor.set_again(DEFAULT_GAIN_CODE)
+ 
+                 # Combine the sensor data with the original command
+                 payload_data = incoming_dict.copy()
+-                payload_data.update({"sensor_data": sensor_data})
++                payload_data.update({"sensor_data": sensor_data,
++                                     "sensor_settings": {
++                                         "gain": GAINS[code],
++                                         "again_code": None if astatus is None else astatus & 0x0F,
++                                         "analog_saturated": None if astatus is None else bool(astatus & 0x80)}})
+                 #payload_data["course_id"] = COURSE_ID
+ 
+                 # Convert the payload data to a JSON string
