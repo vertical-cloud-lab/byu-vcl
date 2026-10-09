@@ -21,7 +21,7 @@ The prices are from the shops' own catalogues on 9 October 2026, read through th
 | How to pay | Cougar Cash, a department card or a research group account | Cougar Cash only. Consumables are free |
 | Catalogue | [elcparts.byu.edu](https://elcparts.byu.edu/): 958 items, each with a price, a count and a shelf | [Our Inventory](https://psc.byu.edu/available%20for%20purchase): 80 items, at prices it calls approximate |
 | Free | | "tape, glue, wire, nuts, bolts, screws, velcro, and zip ties ... (in reasonable quantities)" |
-| Lends | ECEn equipment. Loans to other departments go only to faculty, and are free for one semester | [Hand tools, power supplies, drills, soldering irons, heat guns, slow-motion cameras, and weights, scales and force gauges](https://psc.byu.edu/lab%20kits) |
+| Lends | ECEn equipment, such as bench supplies, multimeters and a Joulescope. Loans to other departments go only to faculty, and are free for one semester | [Hand tools, power supplies, drills, soldering irons, heat guns, slow-motion cameras, and weights, scales and force gauges](https://psc.byu.edu/lab%20kits) |
 
 Both are on [the ELC's information page](https://eceshop.byu.edu/information-and-resources) and
 [the PSC's home page](https://psc.byu.edu/).
@@ -58,10 +58,13 @@ For the extension, "rated 5 A" is what [`power/voltage_drop.py`](../power/voltag
 assumes: 20 AWG, about 4.78 V at the Pi while it streams. An ordinary 22 AWG one gives about
 4.66 V, just above the Pi's 4.63 V warning.
 
-**The ELC also has a 27 W USB-C supply,** a RasTech XS-GaN-27W at $8.99. Its label gives 5.1 V at
-5 A, and 9, 12 and 15 V. Its count isn't kept, so ask. It's worth having only if the lab's one
-official supply is needed elsewhere. Because it offers 12 V, it would also feed the PD step-down
-board in the BOM's optional list.
+**The ELC also sells a 27 W USB-C supply,** a RasTech XS-GaN-27W at $8.99. Its label gives 5.1 V at
+5 A, and 9, 12 and 15 V. Its count isn't kept, so ask. Because it offers 12 V, it would also feed
+the PD step-down board in the BOM's optional list.
+
+**To measure what the Pi really draws on the arm:** the 1.5 A and 2.5 A in `voltage_drop.py` are
+estimates. The ELC has a Joulescope JS220 (3 A continuous) in CB 413. It also sells USB-C breakout
+boards (24-pin, $2.20 male and $3.80 female), which would put the meter in the VBUS line.
 
 **On the 24 V route** (optional in the BOM):
 - **The lead:** the ELC sells 16–18 AWG hookup wire at $0.13 a foot. A two-wire lead 4 m long is
