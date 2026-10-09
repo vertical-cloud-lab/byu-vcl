@@ -30,7 +30,7 @@ the read height. Use these unless a later entry below changes them:
 | --- | --- | --- |
 | **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
-| candidate | **z 92–100** (foot ~4–12 mm up). z 100 scored best of ten heights on 10-01 and over white paper on 10-06; over black paper z 92 scored 0.12, z 95 0.13, z 100 0.14, against 0.50 resting. Resting on the plate scored worst every time. Recommended; not switched until @timothy-commins says so | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
+| candidate | **z 92** (foot ~4 mm up) **over black paper**; z 100 without it. Over black paper z 92 scored 12.2 points off, z 95 12.9, z 100 14.3, resting 49.9; on white paper and bare deck z 100 was best (16.0, 12.8). Resting scored worst in all 3 runs. Recommended; not switched until @timothy-commins says so | [`results-read-height-2026-10-09.md`](results-read-height-2026-10-09.md), [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
 | pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)) | [`landing_shift.py`](landing_shift.py), 10-02, 10-06 |
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
 | paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
@@ -1395,6 +1395,35 @@ the committed analyses on one scale (error = mean distance from the published pi
   repeatability and same-sensor colour matching, not agreement with published spectra.
 
 ![colour error in every paint run](accuracy-summary-2026-10-09.png)
+
+## 2026-10-09 (evening) — read at z 92 over black paper, not resting; "points off" explained; no OTA on the board yet; ams's references (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: what the 10-09 percentages meant, whether above beats resting and at what
+exact height, whether the Pico W can be updated over the broker, and which references the
+sensor's maker recommends. All of it is in
+[`results-read-height-2026-10-09.md`](results-read-height-2026-10-09.md), with numbers from
+[`analyse_read_height.py`](analyse_read_height.py).
+
+- **"Accuracy %" is retired for "points off"**: how far a paint's 7 readings sit outside
+  its pigment's published range, on a black-well 0 to white-well 100 scale. The "80–99%"
+  a colour-blind grey scored is why the percentages read better than they were.
+- **Above beats resting in all 3 ladder runs** (3–4× fewer points off). Over black paper
+  the best tested height is **z 92, ~4 mm above the plate**: 12.2 points (interpolated
+  minimum z 93.2). Without black paper z 100 was best. Closer keeps more of the colour
+  contrast but lets in more light from under the plate; the black paper cut that light,
+  so the best height moved down. Resting, the colours read brighter than white paint.
+- **"Darker = more accurate" flips with the backing**: over black paper blue 5, yellow 15
+  points at z 92; over white paper and bare deck yellow 10, blue 26–29.
+- **No over-the-air update path on the board**: its `main.py` (upstream and the 09-03
+  backup) only subscribes to the read command. One USB visit could add a signed updater
+  (HiveMQ free tier: every login can publish anywhere). Not written; @sgbaird's call.
+- **ams (AN000633)**: our white/black is its "primitive" two-point scale; it calibrates with
+  a 24-patch X-Rite ColorChecker whose true colours come from a reference spectrometer,
+  under the application's own conditions, then a least-squares matrix from ≥ 8 targets
+  (average ΔE 0.98 on its own 24 patches).
+
+![points off at each read height](read-height-2026-10-09.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
