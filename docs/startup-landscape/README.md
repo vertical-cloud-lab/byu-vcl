@@ -1,6 +1,6 @@
 # AI-for-materials and self-driving-lab startups: who they hire, when, and how it tracks funding
 
-A survey of 20+ startups in the US, Europe, Canada and Asia. For each one: who holds which role, when they joined and what they did before; what jobs the company posts and how often its people leave; how big the team is; and how hiring moves against the funding timeline. It continues the enterprise/academic precedent work in [#155](https://github.com/vertical-cloud-lab/byu-vcl/issues/155). Data snapshot: **9 October 2026**.
+A survey of 25 startups in the US, Europe, Canada and Asia. For each one: who holds which role, when they joined and what they did before; what jobs the company posts and how often its people leave; how big the team is; and how hiring moves against the funding timeline. It continues the enterprise/academic precedent work in [#155](https://github.com/vertical-cloud-lab/byu-vcl/issues/155). Data snapshot: **9 October 2026**.
 
 **25 companies** are covered:
 - **US:** Periodic Labs, Lila Sciences, Radical AI, Medra, Tetsuwan Scientific, Citrine Informatics, Kebotix, Mitra Chem, Aionics, Mattiq, Emerald Cloud Lab.
@@ -20,7 +20,7 @@ The one-row-per-company table is in [`summary.md`](summary.md), and each company
 - [Aionics](companies/aionics.md): ~$11M.
 
 The 2024–25 cohort raises that much in a single round:
-- [Periodic Labs](companies/periodic-labs.md): a $300M seed (Sep 2025), with talks at ~$7B reported but unconfirmed.
+- [Periodic Labs](companies/periodic-labs.md): a $300M seed (Sep 2025), with talks at a ~$7B valuation reported but unconfirmed.
 - [Lila Sciences](companies/lila-sciences.md): $550M in seven months.
 - [CuspAI](companies/cuspai.md): $580M in 25 months, including a $450M Series B at a $2.6B valuation (Jul 2026).
 - [Medra](companies/medra.md): $63M in three months.
