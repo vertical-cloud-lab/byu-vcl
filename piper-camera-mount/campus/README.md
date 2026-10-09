@@ -36,6 +36,11 @@ shop doesn't keep that tally up, not that the item is out. Ask at the desk.
 
 ## Against what the mount needs
 
+**Fasteners: try the Prototyping Lab drawer first.** [`BOM.md`](../BOM.md) (8 October) lists socket
+heads to order. A length check of every joint, made alongside this page on 9 October, reports
+that the drawer's M3 × 10, M3 × 18 and M2 × 12 pan heads fit instead, with the nylon M2.5 kit on
+the Pi. The fastener rows below are for socket heads, or for anything the drawer is out of.
+
 | Need | Qty | ELC | PSC | Prototyping Lab | What to do |
 |---|---|---|---|---|---|
 | Raspberry Pi 5, 8 GB | 1 | **$188.00, 2 in stock** | | | PiShop is $175.00 plus shipping (8 October). Buy it at the ELC to have it today on a research group account, or add it to the PiShop order for the HQ Camera to save $13 |
@@ -46,7 +51,7 @@ shop doesn't keep that tally up, not that the item is out. Ask at the desk.
 | M3 × 12 socket head | 2 + 2 spare | $0.06 if the size is there (cabinet 10) | Free if the size is there | No: M3 × 10 and × 18 pan heads | Look at the ELC and the PSC first |
 | M3 × 16 socket head | 8 + 2 spare | As above | As above | No 16 | As above |
 | M3 nut | 8 + 4 spare | $0.08 | Free | $0.05 | Any of the three |
-| M2.5 × 12, steel, and nut | 4 + 2 spare | $0.06 and $0.08 if the size is there | Probably not: on 1 October sgbaird [wrote](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427) that neither it nor the Prototyping Lab could supply M2.5 | No M2.5 | The ELC is the only campus chance. The nylon kits are fine for the Pi, not for the HQ Camera |
+| M2.5 × 12, steel, and nut | 4 + 2 spare | $0.06 and $0.08 if the size is there | Probably not: on 1 October sgbaird [wrote](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5924615427) that neither it nor the Prototyping Lab could supply M2.5 | No M2.5 | The ELC is the only campus chance for steel M2.5. An ISO 4762 M2.5 head is 2.5 mm tall, and the pod's counterbores are 2.0 mm deep, so it would stand 0.5 mm proud. The 9 October check puts M2 × 12 pan heads here instead |
 | M2 × 10 socket head | 4 + 2 spare | $0.06 if the size is there | Free if the size is there | No: M2 × 6 and × 12 pan heads | The M2 nuts are on hand |
 | USB-C extension, about 2 m, rated 5 A | 1 | **$3.14, 21 in stock**: braided, male to female. The catalogue gives no length or rating | Only USB-C adapters, $1 | | Read its label at the desk. If it's 2 m and rated 100 or 240 W, it's a cheaper test than the AINOPE ($8.99) |
 | Zip ties | some | $0.02 each, any length | **Free** | | Free at the PSC. The Amazon pack ($6.99) isn't needed |
@@ -81,11 +86,11 @@ Some items can come from campus before anything is ordered:
 
 1. **Zip ties and hook-and-loop ties:** free at the PSC.
 2. **Fasteners:**
-   - Look in the ELC's cabinet 10 and the PSC's free bins for M3 × 12 and × 16 socket heads, M3
-     nuts, M2.5 × 12 and M2 × 10.
-   - At the ELC's prices, the BOM's 26 screws and 18 nuts come to about $3.00 (26 × $0.06 +
-     18 × $0.08), against $5.12 plus shipping at Bolt Depot.
-   - Order only the sizes that neither shop has.
+   - The Prototyping Lab drawer first, as above.
+   - For anything it lacks, look in the ELC's cabinet 10 and the PSC's free bins.
+   - At the ELC's prices, the 26 screws and 18 nuts on the BOM's Bolt Depot order would come to
+     about $3.00 (26 × $0.06 + 18 × $0.08), against $5.12 plus shipping.
+   - Order only what none of the three has.
 3. **The USB-C extension:** check the ELC's $3.14 one first.
 4. **The force gauge:** borrow it from the PSC.
 5. **The Pi 5, 8 GB:** at the ELC, if waiting for PiShop is the bigger cost.
