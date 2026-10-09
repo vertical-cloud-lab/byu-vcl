@@ -1,0 +1,37 @@
+{
+  "company": "Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",
+  "slug": "matlantis",
+  "hq": "Tokyo, Japan",
+  "country": "JP",
+  "founded": "2021",
+  "category": "AI-for-materials (computational)",
+  "focus": "Matlantis universal atomistic simulator (PFP neural-network potential) sold as cloud SaaS",
+  "status": "active",
+  "website": "https://matlantis.com/en/",
+  "funding": [
+    {"date": "2021-06-01", "round": "JV formation (paid-in capital)", "amount_usd_m": 2.8, "original_amount": "JPY 310M (PFN 51%, ENEOS 49%)", "type": "jv-capital", "lead_investors": ["Preferred Networks", "ENEOS"], "source": "https://matlantis.com/en/company/profile/"},
+    {"date": "2024-06-03", "round": "Business-and-capital alliance (Mitsubishi joins as shareholder)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "jv-capital", "lead_investors": ["Mitsubishi Corporation"], "source": "https://matlantis.com/news/business-and-capital-alliance-with-mc"}
+  ],
+  "headcount": [
+    {"date": "2025-07-01", "value": 46, "low": null, "high": null, "method": "other", "note": "Company Deck (published 2026-03-27): 従業員数 46, as of July 2025", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"}
+  ],
+  "postings": [],
+  "current_openings": {"date": "2026-10-09", "count": 2, "by_function": {"business-ops": 2}, "titles": ["Domestic Account Manager", "Product Manager"], "source": "https://matlantis.com/en/careers/"},
+  "people": [
+    {"name": "Daisuke Okanohara", "title": "President and CEO (代表取締役社長)", "function": "leadership", "seniority": "exec", "start": "2021-06", "start_basis": "representative since founding; named President and CEO on the 2022-07-01 first-anniversary page", "end": null, "background": "Co-founder of Preferred Networks (PFN COO, then Chief Executive Researcher 2021, CTO 2025, CEO from 2025-11 concurrently); computer-science PhD, University of Tokyo", "source": "https://www.preferred.jp/wp-content/uploads/2025/07/PFN_cofounders_biographies_en_20250701.pdf"},
+    {"name": "Ju Li", "title": "Technical Advisor", "function": "materials-science", "seniority": "advisor", "start": "2024-08", "start_basis": "company history on profile page", "end": null, "background": "Professor, Massachusetts Institute of Technology (nuclear science and engineering; materials science)", "source": "https://matlantis.com/en/company/profile/"}
+  ],
+  "staff_roles": [
+    {"title": "Customer success engineer", "function": "materials-science", "first_seen": "2026-03", "last_seen": null, "background": "two profiled in the company deck; computational chemistry/materials support", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"},
+    {"title": "US-based employee (Cambridge, MA)", "function": "business-ops", "first_seen": "2025", "last_seen": null, "background": "first US hire, per deck timeline", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"}
+  ],
+  "departures": [],
+  "notes": [
+    "Mitsui & Co. is NOT a shareholder; the third shareholder (June 2024) is Mitsubishi Corporation. The stake and amount are undisclosed, and paid-in capital still reads JPY 310M afterwards, consistent with a share transfer or a capital-reserve booking rather than a disclosed new round.",
+    "Renamed from Preferred Computational Chemistry to Matlantis Corporation on 2025-07-01; the US subsidiary PFCC Inc. (Cambridge, MA, opened 2024-09) became Matlantis Inc.",
+    "PFN's own staff developed PFP; much of the R&D sits inside PFN, so Matlantis headcount (46) understates the people working on the product.",
+    "Only one dated headcount was found. Wayback CDX on matlantis.com company pages timed out (shared Wayback budget), and the BizReach listing returned 403. LinkedIn and OpenAlex were skipped for time.",
+    "Careers run on Talentio (open.talentio.com/r/1/c/matlantis), which the ats helper does not cover; no posting history was collected.",
+    "Timeline: PFN-ENEOS collaboration from 2019-06; cloud launch in Japan 2021-07; US service 2023-04; PFP v7 (96 elements) 2024-09; LightPFP 2025-01; PFP v8 2025-07."
+  ]
+}

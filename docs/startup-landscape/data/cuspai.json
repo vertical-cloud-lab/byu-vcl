@@ -1,0 +1,448 @@
+{
+  "company": "CuspAI",
+  "slug": "cuspai",
+  "hq": "Cambridge, UK",
+  "country": "UK",
+  "founded": "2024",
+  "category": "AI-for-materials (computational)",
+  "focus": "Generative AI 'search engine' for materials (sorbents, carbon capture, PFAS filtration, semiconductors, batteries); AI Materials Foundry partner network",
+  "status": "active",
+  "website": "https://www.cusp.ai",
+  "funding": [
+    {
+      "date": "2024-06-18",
+      "round": "Seed",
+      "amount_usd_m": 30.0,
+      "original_amount": "USD 30M (~EUR 28M)",
+      "type": "equity",
+      "lead_investors": [
+        "Hoxton Ventures"
+      ],
+      "source": "https://lw.com/en/news/2024/06/latham-advises-on-30-million-seed-fundraising-of-cuspai"
+    },
+    {
+      "date": "2025-09-10",
+      "round": "Series A",
+      "amount_usd_m": 100.0,
+      "original_amount": "USD 100M (~EUR 85M); reported valuation USD 520M",
+      "type": "equity",
+      "lead_investors": [
+        "New Enterprise Associates (NEA)",
+        "Temasek"
+      ],
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "date": "2026-07-20",
+      "round": "Series B",
+      "amount_usd_m": 450.0,
+      "original_amount": "USD 450M; valuation USD 2.6B",
+      "type": "equity",
+      "lead_investors": [
+        "Kleiner Perkins",
+        "New Enterprise Associates (NEA)"
+      ],
+      "source": "https://tech.eu/2026/07/20/jeff-bezos-and-sovereign-ai-back-cuspai-in-450m-raise"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2025-03-31",
+      "value": 12,
+      "low": null,
+      "high": null,
+      "method": "registry",
+      "note": "average number of employees over the 13-month first period (9 Mar 2024 to 31 Mar 2025)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/filing-history/MzQ5MjM2NDQ0NGFkaXF6a2N4/document?format=xhtml&download=1"
+    },
+    {
+      "date": "2025-09-10",
+      "value": 30,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "'about 30 employees' at the Series A",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "date": "2026-10-09",
+      "value": 10,
+      "low": null,
+      "high": null,
+      "method": "team-page",
+      "note": "leadership team only (10 named on cusp.ai); full staff not listed, so this is not a total headcount",
+      "source": "https://www.cusp.ai/"
+    }
+  ],
+  "postings": [
+    {
+      "period": "2025Q4",
+      "new_postings": 1,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/cuspai*"
+    },
+    {
+      "period": "2026Q1",
+      "new_postings": 3,
+      "method": "wayback-cdx",
+      "source": "https://web.archive.org/web/*/jobs.ashbyhq.com/cuspai*"
+    },
+    {
+      "period": "2026Q2",
+      "new_postings": 2,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/cuspai"
+    },
+    {
+      "period": "2026Q3",
+      "new_postings": 11,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/cuspai"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 14,
+    "by_function": {
+      "ml-research": 2,
+      "materials-science": 2,
+      "software-eng": 1,
+      "business-ops": 9
+    },
+    "titles": [
+      "MLFF Distillation & GCMC Integration - Internship (AI/ML, London)",
+      "Applied AI/ML Engineer (Agents) (AI/ML, Amsterdam)",
+      "Application Scientist (AI Materials Science) (Singapore)",
+      "Head of Scientific Applications (Singapore)",
+      "Data Engineer (Platform & Engineering, EMEA)",
+      "Technical Program Manager (AI/ML) (Berlin)",
+      "Technical Program Manager (Science) (London)",
+      "Scientific Developer Relations Manager (London)",
+      "Scientific Developer Relations Manager (Singapore)",
+      "Scientific Developer Relations Manager (West Coast US)",
+      "Ecosystem Manager, AI Materials Foundry (West Coast US)",
+      "Strategic Partnerships Manager (Platform Partnerships) (London)",
+      "Senior Talent Partner (Singapore)",
+      "Talent Acquisition Operations Specialist (Amsterdam)"
+    ],
+    "source": "https://jobs.ashbyhq.com/cuspai"
+  },
+  "people": [
+    {
+      "name": "Chad Edwards",
+      "title": "Co-founder and CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-03",
+      "start_basis": "director from incorporation, 9 Mar 2024 (Companies House)",
+      "end": null,
+      "background": "PhD chemist; deep-tech roles at Google and Quantinuum",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Max Welling",
+      "title": "Co-founder and CTO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-03",
+      "start_basis": "director from incorporation, 9 Mar 2024 (Companies House)",
+      "end": null,
+      "background": "Professor of machine learning, University of Amsterdam; former VP at Microsoft Research (AI for Science) and Qualcomm",
+      "source": "https://siliconcanals.com/cambridge-based-cuspai-secures-28m/"
+    },
+    {
+      "name": "Debbie Toms",
+      "title": "Chief of Staff; company secretary",
+      "function": "business-ops",
+      "seniority": "exec",
+      "start": "2024-07",
+      "start_basis": "company secretary appointed 8 Jul 2024 (Companies House)",
+      "end": null,
+      "background": "not stated",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Markus Hoffmann",
+      "title": "Chief Strategy Officer",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2024-10",
+      "start_basis": "appointment reported in an undated news item, c. Oct 2024 (secondary)",
+      "end": null,
+      "background": "More than ten years at Google",
+      "source": "https://hyper.ai/de/news/35190"
+    },
+    {
+      "name": "Felix Hanke",
+      "title": "VP Scientific Engineering (reported c. Oct 2024 as VP Engineering)",
+      "function": "software-eng",
+      "seniority": "head",
+      "start": "2024-10",
+      "start_basis": "appointment reported in an undated news item, c. Oct 2024 (secondary)",
+      "end": null,
+      "background": "not stated in sources used",
+      "source": "https://hyper.ai/de/news/35190"
+    },
+    {
+      "name": "Aron Walsh",
+      "title": "Chief Scientific Officer",
+      "function": "materials-science",
+      "seniority": "exec",
+      "start": "2026-01",
+      "start_basis": "Imperial College news: joined January 2026",
+      "end": null,
+      "background": "Chair in Materials Design, Imperial College London (retains the chair)",
+      "source": "https://www.imperial.ac.uk/news/articles/engineering/materials/2026/imperial-expert-leads-science-at-2-billion-ai-materials-company-cuspai/"
+    },
+    {
+      "name": "Alessandro De Maria",
+      "title": "VP Platform Engineering",
+      "function": "software-eng",
+      "seniority": "head",
+      "start": "2026-10",
+      "start_basis": "first seen on current leadership page (not a start date)",
+      "end": null,
+      "background": "not checked",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Will Kay",
+      "title": "VP Product and Data",
+      "function": "software-eng",
+      "seniority": "head",
+      "start": "2026-10",
+      "start_basis": "first seen on current leadership page (not a start date)",
+      "end": null,
+      "background": "not checked",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Jonathan Fildes",
+      "title": "VP Creative and Communications",
+      "function": "business-ops",
+      "seniority": "head",
+      "start": "2026-10",
+      "start_basis": "first seen on current leadership page (not a start date)",
+      "end": null,
+      "background": "not checked",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Monica Hansen",
+      "title": "Senior Director, Strategy and Operations",
+      "function": "business-ops",
+      "seniority": "director",
+      "start": "2026-10",
+      "start_basis": "first seen on current leadership page (not a start date)",
+      "end": null,
+      "background": "not checked",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Charles Seely",
+      "title": "Board director (Hoxton Ventures)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2024-06",
+      "start_basis": "director appointed 18 Jun 2024, at seed close (Companies House)",
+      "end": "2025-07",
+      "background": "Partner, Hoxton Ventures (seed lead)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Lan Xuezhao",
+      "title": "Board director (Basis Set Ventures)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2024-06",
+      "start_basis": "director appointed 18 Jun 2024 (Companies House)",
+      "end": "2025-07",
+      "background": "Founder, Basis Set Ventures (seed co-investor)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Lila Tretikov",
+      "title": "Board director (NEA)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2025-08",
+      "start_basis": "director appointed 4 Aug 2025 (Companies House), with the Series A",
+      "end": null,
+      "background": "Partner at NEA; former deputy CTO at Microsoft",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Joshua Coyne",
+      "title": "Board director (Series B investor)",
+      "function": "leadership",
+      "seniority": "board",
+      "start": "2026-07",
+      "start_basis": "director appointed 19 Jul 2026 (Companies House), the day before the Series B announcement",
+      "end": null,
+      "background": "Venture investor; appointed as the Kleiner Perkins/NEA-led Series B closed (fund affiliation inferred from timing, not stated in a release)",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "name": "Geoffrey Hinton",
+      "title": "Advisory board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": "2024-06",
+      "start_basis": "announced with the seed round",
+      "end": null,
+      "background": "Nobel laureate; ex-Google",
+      "source": "https://nz.finance.yahoo.com/news/cambridge-based-cuspai-taps-godfather-070214110.html"
+    },
+    {
+      "name": "Yann LeCun",
+      "title": "Advisor",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": "2025-09",
+      "start_basis": "listed as existing advisor in Series A coverage",
+      "end": null,
+      "background": "Turing Award laureate; Meta chief AI scientist",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "name": "Kristin Persson",
+      "title": "Advisor",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2025-09",
+      "start_basis": "listed as existing advisor in Series A coverage",
+      "end": null,
+      "background": "UC Berkeley; leads the Materials Project",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "name": "Verity Harding",
+      "title": "Advisor",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": "2025-09",
+      "start_basis": "listed as existing advisor in Series A coverage",
+      "end": null,
+      "background": "Former Google DeepMind head of public policy; University of Cambridge",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "name": "Lord John Browne",
+      "title": "Advisory board",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": "2025-09",
+      "start_basis": "joining announced with the Series A",
+      "end": null,
+      "background": "Former BP CEO; chair of the Francis Crick Institute",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "name": "Martin van den Brink",
+      "title": "Advisory board",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": "2025-09",
+      "start_basis": "joining announced with the Series A",
+      "end": null,
+      "background": "Former president and CTO of ASML",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "name": "John Giannandrea",
+      "title": "Advisor",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": "2026-10",
+      "start_basis": "first seen on current site (not a start date)",
+      "end": null,
+      "background": "Former Apple and Google leader",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Abhi Talwalkar",
+      "title": "Advisor",
+      "function": "business-ops",
+      "seniority": "advisor",
+      "start": "2026-10",
+      "start_basis": "first seen on current site (not a start date)",
+      "end": null,
+      "background": "Boards of AMD and Lam Research; former LSI Corporation CEO",
+      "source": "https://www.cusp.ai/"
+    },
+    {
+      "name": "Berend Smit",
+      "title": "Carbon-capture expert (role per secondary source)",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-10",
+      "start_basis": "undated news item, c. Oct 2024 (secondary)",
+      "end": null,
+      "background": "Professor; carbon-capture/porous-materials modelling",
+      "source": "https://hyper.ai/de/news/35190"
+    },
+    {
+      "name": "Susana Garcia",
+      "title": "Carbon-capture expert (role per secondary source)",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-10",
+      "start_basis": "undated news item, c. Oct 2024 (secondary)",
+      "end": null,
+      "background": "Professor; carbon-capture process engineering",
+      "source": "https://hyper.ai/de/news/35190"
+    }
+  ],
+  "staff_roles": [
+    {
+      "title": "Research scientists hired from leading AI labs (Google DeepMind, Meta)",
+      "function": "ml-research",
+      "first_seen": "2025-09",
+      "last_seen": null,
+      "background": "ex-Google DeepMind and Meta (press)",
+      "source": "https://fortune.com/2025/09/10/cuspai-raises-100-million-in-new-venture-capital-funding-ai-for-chemistry"
+    },
+    {
+      "title": "Publishing ML researchers (OpenAlex, CuspAI affiliation)",
+      "function": "ml-research",
+      "first_seen": "2025",
+      "last_seen": "2026",
+      "background": "co-affiliations: University of Amsterdam AMLab, Microsoft Research AI for Science (Cambridge), University of Reading pharmacy",
+      "source": "https://api.openalex.org/works?filter=raw_affiliation_strings.search:%22CuspAI%22"
+    },
+    {
+      "title": "Application Scientist (AI Materials Science), Singapore",
+      "function": "materials-science",
+      "first_seen": "2026-03",
+      "last_seen": null,
+      "background": "job ad",
+      "source": "https://jobs.ashbyhq.com/cuspai/10d89a8b-eaa3-449f-babd-26dc3ebb9098"
+    }
+  ],
+  "departures": [
+    {
+      "who": "Charles Seely",
+      "title": "Board director (Hoxton Ventures)",
+      "date": "2025-07",
+      "basis": "Companies House TM01, 31 Jul 2025, at Series A board reshuffle",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    },
+    {
+      "who": "Lan Xuezhao",
+      "title": "Board director (Basis Set Ventures)",
+      "date": "2025-07",
+      "basis": "Companies House TM01, 31 Jul 2025",
+      "source": "https://find-and-update.company-information.service.gov.uk/company/15549537/officers"
+    }
+  ],
+  "notes": [
+    "Companies House 15549537 (CUSP AI LIMITED), incorporated 9 Mar 2024. SH01 allotments: 18 Jun 2024 and 5 Jul 2024 (seed), 22 Nov 2024 (small), 4 Aug, 14 Aug, 2 Sep, 26 Sep, 6 Nov 2025 (Series A tranches), 18 Mar 2026 (unannounced; share capital rose ~11%), 17 Aug 2026 (Series B). The 18 Mar 2026 allotment has no matching press release.",
+    "First accounts (13 months to 31 Mar 2025) are group accounts with overseas undertakings (Amsterdam staff appear in job ads); they record GBP 22m cash and say the group raised 'over $100m' in Sept 2025. Year end moved to 31 Dec; accounts to 31 Dec 2025 are not yet filed.",
+    "Disclosed rounds sum to USD 580M; tech.eu reports more than USD 670M raised in total.",
+    "Welling and Edwards ceased to be persons with significant control on 4 Aug 2025 (dilution at the Series A).",
+    "Leadership start dates for the VPs and senior director are first-seen dates on the live site, not hire dates; Wayback history of the team section was not checked.",
+    "OpenAlex has no institution record; raw-affiliation search finds 59 works and 10 distinct CuspAI-affiliated authors (5 in 2025, 7 in 2026), a lower bound on publishing staff.",
+    "Current openings function mapping: program managers, developer relations, partnerships, ecosystem and talent roles -> business-ops; data engineer -> software-eng; application scientists -> materials-science; internship and agents engineer -> ml-research.",
+    "Posting history merges 6 Wayback-captured Ashby posting IDs (board first captured Oct 2025) with live Ashby publishedAt dates; earliest date per ID wins. Hiring before Oct 2025 is invisible here."
+  ]
+}

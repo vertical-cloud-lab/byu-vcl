@@ -25,6 +25,7 @@ per host with a lock file, so several agents on one machine share one budget.
 """
 import argparse
 import fcntl
+import gzip
 import hashlib
 import html
 import json
@@ -76,7 +77,11 @@ def get(url, *, data=None, headers=None, tries=4, timeout=60):
         )
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                body = resp.read().decode("utf-8", errors="replace")
+                blob = resp.read()
+            # Wayback's id_ playback can return the original gzip body undecoded.
+            if blob[:2] == b"\x1f\x8b":
+                blob = gzip.decompress(blob)
+            body = blob.decode("utf-8", errors="replace")
             with open(path, "w", encoding="utf-8") as fh:
                 fh.write(body)
             return body

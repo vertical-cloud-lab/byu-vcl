@@ -1,0 +1,73 @@
+{
+  "company": "Periodic Labs",
+  "slug": "periodic-labs",
+  "hq": "Menlo Park, US",
+  "country": "US",
+  "founded": "2025",
+  "category": "self-driving lab",
+  "focus": "Frontier-model 'AI scientists' plus autonomous physical-science labs; first target is higher-temperature superconductors and semiconductor/materials R&D",
+  "status": "active",
+  "website": "https://periodic.com",
+  "funding": [
+    {"date": "2025-09-30", "round": "Seed", "amount_usd_m": 300.0, "original_amount": "USD 300M", "type": "equity", "lead_investors": ["Andreessen Horowitz (a16z)"], "source": "https://www.maginative.com/article/periodic-labs-launches-with-300m-to-build-an-ai-scientist/"},
+    {"date": "2026-03-25", "round": "Next round (reported, unconfirmed)", "amount_usd_m": null, "original_amount": "reported 'hundreds of millions' at ~USD 7B valuation (Bloomberg, Mar 2026); USD 500M per Caproasia", "type": "equity", "lead_investors": [], "source": "https://www.caproasia.com/?p=74183"}
+  ],
+  "headcount": [
+    {"date": "2025-10-07", "value": 28, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn 'View all 28 employees' (members listing the company); size band 11-50", "source": "https://web.archive.org/web/20251007025933/https://www.linkedin.com/company/periodic-labs/"},
+    {"date": "2026-03-06", "value": 46, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn 'View all 46 employees'; band still 11-50", "source": "https://web.archive.org/web/20260306025438/https://www.linkedin.com/company/periodic-labs"},
+    {"date": "2026-05-14", "value": 56, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn 'View all 56 employees'; band 11-50 lags the member count", "source": "https://web.archive.org/web/20260514110648/https://www.linkedin.com/company/periodic-labs"},
+    {"date": "2026-08-30", "value": 88, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn 'View all 88 employees'; band 11-50 not updated", "source": "https://web.archive.org/web/20260830000733/https://www.linkedin.com/company/periodic-labs"}
+  ],
+  "postings": [
+    {"period": "2025Q3", "new_postings": 12, "method": "wayback-cdx", "source": "https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs"},
+    {"period": "2025Q4", "new_postings": 4, "method": "wayback-cdx", "source": "https://web.archive.org/web/20251103153026/https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5/application"},
+    {"period": "2026Q1", "new_postings": 2, "method": "wayback-cdx", "source": "https://web.archive.org/web/20260309120218/https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63"},
+    {"period": "2026Q2", "new_postings": 16, "method": "wayback-cdx", "source": "https://web.archive.org/web/20260519060536/https://jobs.ashbyhq.com/periodic-labs?employmentType=FullTime"},
+    {"period": "2026Q2", "new_postings": 1, "method": "ats", "source": "https://jobs.ashbyhq.com/periodic-labs"},
+    {"period": "2026Q3", "new_postings": 10, "method": "wayback-cdx", "source": "https://web.archive.org/web/20260819221743/https://jobs.ashbyhq.com/periodic-labs?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16&employmentType=FullTime&locationId=905b044e-ad3a-4fc0-9d62-90e6f9904e52"},
+    {"period": "2026Q3", "new_postings": 6, "method": "ats", "source": "https://jobs.ashbyhq.com/periodic-labs"},
+    {"period": "2026Q4", "new_postings": 2, "method": "wayback-cdx", "source": "https://web.archive.org/web/20261001170432/https://jobs.ashbyhq.com/periodic-labs/168dbf20-2230-49a0-9f00-f2ff58dad5c8"},
+    {"period": "2026Q4", "new_postings": 3, "method": "ats", "source": "https://jobs.ashbyhq.com/periodic-labs"}
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 33,
+    "by_function": {"ml-research": 5, "materials-science": 10, "lab-automation": 6, "software-eng": 4, "business-ops": 8},
+    "titles": [
+      "Research Scientist, Scaling RL", "Research Scientist/Research Engineer, Midtraining", "Research Scientist, Data", "Research Scientist/Research Engineer, Materials Data", "Computational Scientist, Differentiable Physics",
+      "Research Scientist, Materials Characterization", "Research Scientist, Thin Films", "Research Scientist, Condensed Matter Theory", "Computational Scientist, Structural & Thermal", "Research Engineer, Semiconductor", "Process Engineer, Powder", "Process Technician, Thin Films", "Research Associate, Thin Films", "Research Intern, Thin Films", "XRD Facility Manager",
+      "Automation Engineer", "Research Engineer, Lab Automation", "Equipment Engineer", "Laboratory Technician", "Senior Equipment Maintenance Technician", "Electrical Technician",
+      "Software Engineer", "Product Engineer", "ML Systems Engineer", "Forward Deployed Engineer, Physics & Simulation",
+      "Head of People", "Head of Environmental Health & Safety (EHS)", "Environmental Health & Safety (EHS) Technician", "Process Safety Engineer", "Controller", "Procurement & Finance Operations Manager", "Business Operations, Product & Science", "Technical Recruiter"
+    ],
+    "source": "https://jobs.ashbyhq.com/periodic-labs"
+  },
+  "people": [
+    {"name": "Liam Fedus", "title": "Co-founder", "function": "leadership", "seniority": "founder", "start": "2025-09", "start_basis": "public launch 2025-09-30 (company formed earlier in 2025)", "end": null, "background": "PhD Universite de Montreal (Bengio, Larochelle); ex-Google Brain; ex-OpenAI VP of post-training research, ChatGPT co-creator", "source": "https://thelogic.co/briefing/radical-ventures-backs-periodic-labs-in-us300m-round-to-build-ai-scientists/"},
+    {"name": "Ekin Dogus Cubuk", "title": "Co-founder", "function": "leadership", "seniority": "founder", "start": "2025-09", "start_basis": "public launch 2025-09-30", "end": null, "background": "Ex-Google Brain / Google DeepMind materials and chemistry research lead; GNoME co-author", "source": "https://www.maginative.com/article/periodic-labs-launches-with-300m-to-build-an-ai-scientist/"},
+    {"name": "Alexandre Passos", "title": "Founder (per Maginative key points; other coverage names only Fedus and Cubuk as co-founders)", "function": "ml-research", "seniority": "founder", "start": "2025-09", "start_basis": "launch coverage 2025-09-30", "end": null, "background": "Ex-OpenAI researcher (reasoning models o1/o3, per third-party directory)", "source": "https://www.maginative.com/article/periodic-labs-launches-with-300m-to-build-an-ai-scientist/"},
+    {"name": "Carolyn Bertozzi", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": "2025-09", "start_basis": "listed on launch-day homepage (Wayback 2025-10-01)", "end": null, "background": "Professor of Chemistry, Stanford", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"},
+    {"name": "Mercouri Kanatzidis", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": "2025-09", "start_basis": "listed on launch-day homepage (Wayback 2025-10-01)", "end": null, "background": "Professor of Chemistry, Northwestern", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"},
+    {"name": "Steve Kivelson", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": "2025-09", "start_basis": "listed on launch-day homepage (Wayback 2025-10-01)", "end": null, "background": "Professor of Physics, Stanford", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"},
+    {"name": "Zhi-Xun Shen", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": "2025-09", "start_basis": "listed on launch-day homepage (Wayback 2025-10-01)", "end": null, "background": "Professor of Physics, Stanford", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"},
+    {"name": "Chris Wolverton", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": "2025-09", "start_basis": "listed on launch-day homepage (Wayback 2025-10-01)", "end": null, "background": "Professor of Materials Science and Engineering, Northwestern", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"}
+  ],
+  "staff_roles": [
+    {"title": "Founding research staff", "function": "ml-research", "first_seen": "2025-10", "last_seen": null, "background": "Ex-ServiceNow / Element AI; Montreal ML research", "source": "https://thelogic.co/briefing/radical-ventures-backs-periodic-labs-in-us300m-round-to-build-ai-scientists/"},
+    {"title": "Founding research staff", "function": "ml-research", "first_seen": "2025-10", "last_seen": null, "background": "Adjunct professor, McGill University", "source": "https://thelogic.co/briefing/radical-ventures-backs-periodic-labs-in-us300m-round-to-build-ai-scientists/"},
+    {"title": "Founding team (collective)", "function": "ml-research", "first_seen": "2025-09", "last_seen": null, "background": "Credits claimed: ChatGPT, GNoME, OpenAI Operator/Agent, neural attention mechanism, MatterGen; 'scaled autonomous physics labs'", "source": "https://web.archive.org/web/20251001033544/https://periodic.com/"}
+  ],
+  "departures": [],
+  "notes": [
+    "No team page: periodic.com lists only the five-member Scientific Advisory Board, so headcount comes from archived LinkedIn member counts (a lower bound on staff that also includes interns and contractors who list the company).",
+    "LinkedIn member count tripled in 11 months (28 -> 88) while the size band stayed at 11-50.",
+    "Seed lead is reported as a16z (company site lists a16z first; Maginative and The Logic say a16z led). Others: Felicis, DST, NVentures, Accel, Radical Ventures, Khosla Ventures; angels Jeff Bezos, Elad Gil, Eric Schmidt, Jeff Dean. Reported seed valuation ~USD 1.3B.",
+    "2026 round: Bloomberg (Mar 2026) reported talks to raise hundreds of millions at ~USD 7B; Caproasia reported USD 500M. Not announced by the company as of 2026-10-09, so amount left null.",
+    "SEC: no Form D found for Periodic Labs itself (EDGAR company search 'periodic labs' returns nothing). One Form D exists for a Sydecar-administered SPV, 'AGC Wealt Periodic Labs I a Series of AGC AI Nexus Fund LLC' (first sale 2026-05-28, USD 4.74M from 7 investors): https://www.sec.gov/Archives/edgar/data/2122824/000212282426000001/primary_doc.xml. That is secondary/SPV demand, not company funding.",
+    "Captured postings: 46 distinct Ashby posting IDs in Wayback (first capture 2025-09-30 to 2026-10-01) plus 10 live postings never captured, so >=56 postings in ~12 months. Quarter counts follow crawl timing (e.g., 13 first captured in one 2026-05-19 crawl).",
+    "Ashby publishedAt dates are reset on republish (a posting captured 2025-09-30 shows publishedAt 2026-07-09), so ATS dates were used only for postings Wayback never captured.",
+    "Titles of the 12 launch-day postings could not be recovered: the Wayback captures of individual Ashby pages are JS shells.",
+    "Some postings list Menlo Park and Montreal, Canada.",
+    "OpenAlex has no institution record for Periodic Labs; no registry headcount (US company)."
+  ]
+}

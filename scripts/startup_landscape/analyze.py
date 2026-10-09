@@ -12,6 +12,9 @@ import glob
 import json
 import math
 import os
+import re
+import statistics
+import sys
 from datetime import date
 
 import matplotlib
@@ -47,7 +50,9 @@ KIND = {
 }
 KINDS = ["Computational / software", "Self-driving or cloud lab",
          "AI + high-throughput experimentation"]
-CAPITAL = {"equity", "jv-capital", "ipo", "other"}  # grants and debt are listed, not summed
+CAPITAL = {"equity", "jv-capital", "ipo"}  # grants, debt and contracts are listed, not summed
+# Which headcount source to believe when several fall within a year of each other.
+METHOD_RANK = ["registry", "team-page", "press", "job-ad", "linkedin-band", "openalex", "other"]
 
 plt.rcParams.update({
     "figure.facecolor": SURFACE, "axes.facecolor": SURFACE, "savefig.facecolor": SURFACE,
@@ -109,13 +114,20 @@ def load():
             if v is None:
                 hi = hi if hi else lo
                 v = math.sqrt(max(lo, 1) * max(hi, 1))
+            # A count of part of the company (one subsidiary, the leadership page) is plotted
+            # hollow and never used as the company's team size.
+            partial = h.get("partial") or re.search(
+                r"not a total|leadership (team )?only|subsidiary only|uk (entity|subsidiary) only|"
+                r"aggregator|unverified", h.get("note") or "", re.I)
             hc.append({**h, "_d": when, "_v": float(v), "_band": h.get("value") is None,
-                       "_lo": lo, "_hi": hi})
+                       "_lo": lo, "_hi": hi, "_weak": bool(partial) or h.get("method") == "other"})
         d["_headcount"] = sorted(hc, key=lambda h: h["_d"])
         d["_postings"] = sorted(
             [{**p, "_d": quarter_mid(p.get("period"))} for p in d.get("postings") or []
              if quarter_mid(p.get("period")) and p.get("new_postings") is not None],
             key=lambda p: p["_d"])
+        # Chart label: drop parentheticals in scripts the plotting font lacks (e.g. CJK names).
+        d["_name"] = re.sub(r"\s*\([^)]*[^\x00-\x7f][^)]*\)", "", d["company"]).strip()
         d["_region"] = REGION.get(d.get("country"), "Canada & Asia")
         d["_kind"] = KIND.get(d.get("category"), "Computational / software")
         cos.append(d)
@@ -128,14 +140,19 @@ def capital_to(co, when):
 
 
 def best_headcount(co):
-    """Latest exact count if there is one within two years of the latest point, else the latest band."""
+    """Most trustworthy datapoint from the latest year of data: exact counts beat bands,
+    then by METHOD_RANK, then the most recent."""
     hc = co["_headcount"]
     if not hc:
         return None
-    exact = [h for h in hc if not h["_band"]]
-    if exact and (hc[-1]["_d"] - exact[-1]["_d"]).days < 730:
-        return exact[-1]
-    return hc[-1]
+    hc = [h for h in hc if not h["_weak"]] or hc
+    recent = [h for h in hc if (hc[-1]["_d"] - h["_d"]).days <= 120]
+
+    def rank(h):
+        m = h.get("method")
+        return (h["_band"], METHOD_RANK.index(m) if m in METHOD_RANK else len(METHOD_RANK),
+                -h["_d"].toordinal())
+    return min(recent, key=rank)
 
 
 def fmt_hc(h):
@@ -145,9 +162,10 @@ def fmt_hc(h):
     return f'{val} ({h["_d"]:%Y-%m}, {h.get("method")})'
 
 
-def short_round(f):
+def short_round(f, width=34):
     r = (f.get("round") or "").replace("Series ", "").replace("extension", "ext.")
-    if f.get("type") in ("grant", "debt") and f["type"] not in r.lower():
+    r = r if len(r) <= width else r[: width - 1].rstrip() + "…"
+    if f.get("type") in ("grant", "debt", "other") and f["type"] not in r.lower():
         r = f"{r} ({f['type']})".strip()
     return f'{money(f.get("amount_usd_m"))} {r}'.strip()
 
@@ -167,21 +185,25 @@ def timeline_grid(cos):
         ymax = max([h["_hi"] or h["_v"] for h in co["_headcount"]] + [10]) * 1.35
         ax.set_ylim(0, ymax)
         for f in co["_funding"]:
-            grant = (f.get("type") or "") in ("grant", "debt")
+            grant = (f.get("type") or "equity") not in CAPITAL
             ax.axvline(f["_d"], color=AXIS if grant else INK2, lw=0.7, zorder=1)
             ax.text(f["_d"], ymax * 0.98, " " + short_round(f), rotation=90, va="top",
                     ha="right", fontsize=5.6, color=MUTED if grant else INK2, zorder=2)
-        exact = [h for h in co["_headcount"] if not h["_band"]]
+        exact = [h for h in co["_headcount"] if not h["_band"] and not h["_weak"]]
+        weak = [h for h in co["_headcount"] if not h["_band"] and h["_weak"]]
         bands = [h for h in co["_headcount"] if h["_band"]]
         if exact:
             ax.plot([h["_d"] for h in exact], [h["_v"] for h in exact], "-", color=SLOTS[0],
                     lw=1.1, zorder=3, alpha=0.5)
             ax.plot([h["_d"] for h in exact], [h["_v"] for h in exact], "o", ms=4.2,
                     color=SLOTS[0], mec=SURFACE, mew=0.8, zorder=4)
+        if weak:
+            ax.plot([h["_d"] for h in weak], [h["_v"] for h in weak], "o", ms=4.2,
+                    mfc=SURFACE, mec=SLOTS[0], mew=1.0, zorder=4)
         for h in bands:
             ax.vlines(h["_d"], h["_lo"], h["_hi"] or h["_lo"], color=SLOTS[0], lw=2.2,
                       alpha=0.45, zorder=3)
-        ax.set_title(f'{co["company"]} ({co.get("country")})', loc="left")
+        ax.set_title(f'{co["_name"]} ({co.get("country")})', loc="left")
         ax.xaxis.set_major_locator(mdates.YearLocator(base=max(1, (2027 - x0.year) // 4)))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
         ax.tick_params(length=0, labelsize=6.5)
@@ -190,8 +212,8 @@ def timeline_grid(cos):
                     ha="center", color=MUTED, fontsize=7)
     for ax in list(axes.flat)[n:]:
         ax.axis("off")
-    fig.suptitle("Team size over time (points: counted; bars: reported size band) "
-                 "against funding rounds (dark: equity; light: grants/debt)",
+    fig.suptitle("Team size over time (filled: counted or stated; hollow: partial or aggregator; bars: size band) "
+                 "against funding (dark lines: equity; light: grants, debt, contracts)",
                  x=0.01, ha="left", fontsize=10, fontweight="bold")
     fig.text(0.01, 0.005, "Sources per company in docs/startup-landscape/companies/. "
              "Panels sorted by capital raised.", fontsize=7, color=MUTED)
@@ -204,7 +226,7 @@ def scatter(cos):
     """Headcount against capital raised to date, one trajectory per company."""
     fig, ax = plt.subplots(figsize=(8.5, 6))
     for co in cos:
-        pts = [(capital_to(co, h["_d"]), h["_v"]) for h in co["_headcount"]]
+        pts = [(capital_to(co, h["_d"]), h["_v"]) for h in co["_headcount"] if not h["_weak"]]
         pts = [(x, y) for x, y in pts if x > 0 and y > 0]
         if not pts:
             continue
@@ -212,7 +234,7 @@ def scatter(cos):
         xs, ys = zip(*pts)
         ax.plot(xs, ys, "-", color=col, lw=0.9, alpha=0.45, zorder=2)
         ax.plot(xs, ys, "o", color=col, ms=4, mec=SURFACE, mew=0.8, zorder=3)
-        ax.annotate(co["company"], (xs[-1], ys[-1]), xytext=(4, 2), textcoords="offset points",
+        ax.annotate(co["_name"], (xs[-1], ys[-1]), xytext=(4, 2), textcoords="offset points",
                     fontsize=6.5, color=INK2)
     ax.set_xscale("log")
     ax.set_yscale("log")
@@ -258,7 +280,7 @@ def postings_grid(cos):
             ax.axvline(f["_d"], color=INK2, lw=0.7, zorder=1)
             ax.text(f["_d"], top * 0.98, " " + short_round(f), rotation=90, va="top", ha="right",
                     fontsize=5.6, color=INK2)
-        ax.set_title(co["company"], loc="left")
+        ax.set_title(co["_name"], loc="left")
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
         ax.tick_params(length=0, labelsize=6.5)
     for ax in list(axes.flat)[len(cos):]:
@@ -285,7 +307,7 @@ def per_head(cos):
     ax.barh(list(ys), [r[0] for r in rows], height=0.62,
             color=[SLOTS[KINDS.index(r[1]["_kind"])] for r in rows], zorder=3)
     ax.set_yticks(list(ys))
-    ax.set_yticklabels([r[1]["company"] for r in rows], fontsize=7, color=INK2)
+    ax.set_yticklabels([r[1]["_name"] for r in rows], fontsize=7, color=INK2)
     for y, (v, co) in zip(ys, rows):
         ax.text(v, y, f"  {v:.2f}" if v < 10 else f"  {v:.0f}", va="center", fontsize=6.5, color=INK2)
     ax.set_xscale("log")
@@ -323,7 +345,7 @@ def openings_by_function(cos):
             left += other
         ax.text(left, y, f"  {left}", va="center", fontsize=6.5, color=INK2)
     ax.set_yticks(range(len(rows)))
-    ax.set_yticklabels([r[0]["company"] for r in rows], fontsize=7, color=INK2)
+    ax.set_yticklabels([r[0]["_name"] for r in rows], fontsize=7, color=INK2)
     ax.grid(axis="y", visible=False)
     ax.tick_params(length=0)
     ax.set_xlabel("Open roles on the public job board, 9 Oct 2026")
@@ -369,6 +391,104 @@ def backgrounds(cos):
     return "\n".join(lines)
 
 
+TITLE_RULES = [  # first match wins
+    ("leadership", r"\bhead of|\bchief\b|\bvp\b|vice president|\bdirector\b|general manager"),
+    ("lab-automation", r"automation|robot|mechanical|mechatron|electrical|equipment|technician|hardware|"
+                       r"controls|process engineer|process safety|facilit|\behs\b|safety|maintenance|"
+                       r"lab operations|laboratory|instrument"),
+    ("ml-research", r"machine learning|\bml\b|\bai\b|\brl\b|deep learning|\bllm|pretrain|midtrain|"
+                    r"post-?train|scaling|research scientist, data|data scien|reinforcement"),
+    ("materials-science", r"chemist|material|synthes|characteri|thin film|electrochem|catal|polymer|"
+                          r"physic|condensed matter|computational scientist|\bdft\b|simulation|"
+                          r"research associate|scientist|crystal|semiconductor|battery|powder"),
+    ("software-eng", r"software|engineer|developer|devops|infrastructure|platform|front-?end|back-?end|"
+                     r"full[- ]?stack|systems|security|\bsre\b"),
+]
+
+
+def classify(title):
+    t = (title or "").lower()
+    for func, rx in TITLE_RULES:
+        if re.search(rx, t):
+            return func
+    return "business-ops"
+
+
+def board_tokens(co):
+    """(vendor, token) pairs for the company's public job board, read from the cited source URL."""
+    src = ((co.get("current_openings") or {}).get("source") or "")
+    m = re.search(r"ashbyhq\.com/(?:posting-api/job-board/)?([^/?#]+)", src)
+    if m:
+        return [("ashby", m.group(1))]
+    m = re.search(r"greenhouse\.io/(?:v1/boards/)?([^/?#]+)", src)
+    if m and m.group(1) not in ("embed",):
+        return [("greenhouse", m.group(1))]
+    return []
+
+
+def posted_pay(cos):
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import fetch  # noqa: E402
+
+    rows = []
+    for co in cos:
+        for vendor, token in board_tokens(co):
+            try:
+                jobs = fetch.pay(vendor, token)
+            except Exception as err:  # a board can vanish between fetches
+                print(f"pay: {co['company']}: {err}", file=sys.stderr)
+                continue
+            for j in jobs:
+                if j.get("interval") not in (None, "1 YEAR") or not j.get("min"):
+                    continue
+                rows.append({"company": co["company"], "title": (j.get("title") or "").strip(),
+                             "function": classify(j.get("title")), "location": j.get("location"),
+                             "currency": j.get("currency"), "min": j["min"], "max": j.get("max") or j["min"],
+                             "url": j.get("url")})
+    if not rows:
+        return []
+    with open(os.path.join(OUT, "data", "posted_pay.csv"), "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
+    usd = [r for r in rows if r["currency"] == "USD"]
+    funcs = [f for f in FUNCTIONS if any(r["function"] == f for r in usd)]
+    if usd:
+        fig, ax = plt.subplots(figsize=(8.5, 0.75 * len(funcs) + 1.3))
+        for i, f in enumerate(funcs):
+            rs = sorted((r for r in usd if r["function"] == f), key=lambda r: (r["min"] + r["max"]) / 2)
+            n = len(rs)
+            for k, r in enumerate(rs):
+                y = i + (k - (n - 1) / 2) * min(0.6 / max(n - 1, 1), 0.08)
+                ax.plot([r["min"] / 1000, r["max"] / 1000], [y, y], color=SLOTS[0], lw=1.4,
+                        alpha=0.55, solid_capstyle="round", zorder=3)
+            med = statistics.median((r["min"] + r["max"]) / 2 for r in rs) / 1000
+            ax.plot([med], [i], "|", ms=16, mew=2, color=INK, zorder=4)
+            ax.text(med, i + 0.36, f"median ${med:.0f}K · n={n}", ha="center", fontsize=6.5, color=INK2)
+        ax.set_yticks(range(len(funcs)))
+        ax.set_yticklabels(funcs, fontsize=7.5, color=INK2)
+        ax.set_ylim(-0.6, len(funcs) - 0.4)
+        ax.grid(axis="y", visible=False)
+        ax.tick_params(length=0)
+        ax.set_xlabel("Posted base salary range, USD thousands per year (each line is one open role)")
+        ax.set_title("What the open roles pay (US postings with a published range, 9 Oct 2026)", loc="left")
+        fig.tight_layout()
+        fig.savefig(os.path.join(OUT, "figures", "posted_pay_by_function.png"), dpi=170)
+        plt.close(fig)
+    return rows
+
+
+def pay_table(rows):
+    if not rows:
+        return "No posted pay ranges found."
+    lines = ["| Company | Role | Function | Location | Posted range |", "|---|---|---|---|---|"]
+    sym = {"USD": "$", "EUR": "€", "GBP": "£"}
+    for r in sorted(rows, key=lambda r: (r["company"], FUNCTIONS.index(r["function"]), -r["max"])):
+        rng = f'{sym.get(r["currency"], "")}{r["min"] / 1000:.0f}K–{r["max"] / 1000:.0f}K'
+        lines.append(f'| {r["company"]} | [{r["title"]}]({r["url"]}) | {r["function"]} | {r["location"] or ""} | {rng} |')
+    return "\n".join(lines)
+
+
 def funding_response(cos):
     """For each equity round: postings in the two quarters before vs after, and team size
     at the nearest datapoints within 18 months either side."""
@@ -380,8 +500,8 @@ def funding_response(cos):
             d = f["_d"]
             before = sum(p["new_postings"] for p in co["_postings"] if 0 < (d - p["_d"]).days <= 183)
             after = sum(p["new_postings"] for p in co["_postings"] if 0 <= (p["_d"] - d).days <= 183)
-            hb = [h for h in co["_headcount"] if 0 <= (d - h["_d"]).days <= 548]
-            ha = [h for h in co["_headcount"] if 0 < (h["_d"] - d).days <= 548]
+            hb = [h for h in co["_headcount"] if not h["_weak"] and 0 <= (d - h["_d"]).days <= 548]
+            ha = [h for h in co["_headcount"] if not h["_weak"] and 0 < (h["_d"] - d).days <= 548]
             rows.append({
                 "company": co["company"], "date": f["_d"].isoformat(), "round": f.get("round"),
                 "amount_usd_m": f.get("amount_usd_m"),
@@ -414,7 +534,7 @@ def summary(cos):
         lines.append(
             f'| [{co["company"]}](companies/{co["slug"]}.md) | {co.get("hq", "")} | {co.get("founded", "")} '
             f'| {co["_kind"]} | {co.get("status", "")} | {cap} | {latest} | {fmt_hc(best_headcount(co))} '
-            f'| {op.get("count", "n/d") if op else "n/d"} |')
+            f'| {op.get("count") if op and op.get("count") is not None else "n/d"} |')
     opening_rows = ["| Company | " + " | ".join(FUNCTIONS) + " | unclassified | total |",
                     "|---|" + "---|" * (len(FUNCTIONS) + 2)]
     for co, vals, other in sorted(openings_by_function(cos), key=lambda r: -(sum(r[1]) + r[2])):
@@ -430,7 +550,11 @@ def summary(cos):
         fh.write("\n".join(opening_rows) + "\n\n")
         fh.write("## Leadership backgrounds\n\nFounders, executives and heads tracked in each profile, counted "
                  "by keywords in their published bios. A person can carry several tags; `·` is zero.\n\n")
-        fh.write(backgrounds(cos) + "\n")
+        fh.write(backgrounds(cos) + "\n\n")
+        fh.write("## Posted pay\n\nBase salary ranges published on the job boards (pay-transparency laws in CA, "
+                 "NY, CO and WA require them). Role functions are assigned from the title by keyword "
+                 "(`TITLE_RULES` in `analyze.py`).\n\n")
+        fh.write(pay_table(posted_pay(cos)) + "\n")
     return "\n".join(lines)
 
 

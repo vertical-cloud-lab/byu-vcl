@@ -1,0 +1,50 @@
+company,date,round,amount_usd_m,postings_6mo_before,postings_6mo_after,team_before,team_before_date,team_after,team_after_date
+Altrove,2024-07-03,Pre-seed,4.0,,,,,4,2025-02-20
+Altrove,2025-10-31,Seed,10.0,,,4,2025-02-20,,
+Chemify,2022-02-14,Seed,,0,0,0,2021-12-31,15,2022-12-31
+Chemify,2023-08-02,Series A (announced with seed as USD 43M total),43.0,0,0,15,2022-12-31,79,2024-12-31
+Chemify,2025-10-21,Series B,50.0,0,6,79,2024-12-31,200,2026-10-09
+Chemify,2025-12-12,"Series B1 extension (allotments 12 Dec 2025, 24 Feb 2026, 24 Jul 2026 per SH01; accounts say 27 Jul)",,0,11,79,2024-12-31,200,2026-10-09
+CuspAI,2024-06-18,Seed,30.0,0,0,,,30,2025-09-10
+CuspAI,2025-09-10,Series A,100.0,0,4,30,2025-09-10,,
+CuspAI,2026-07-20,Series B,450.0,5,11,30,2025-09-10,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-06-05,Seed,10,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-10-15,Seed+,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2024-11-15,Seed++,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2025-03-15,Pre-A (strategic),,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2025-11-24,Series A,14,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2026-03-15,Series A+,,,,,,,
+"Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)",2026-07-14,Series A3 (closes A series),,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2020-08-10,Angel,,,,,,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2021-03-05,Pre-A,,,,,,44,2022-05-26
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2021-08-05,Series A,,,,,,44,2022-05-26
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2022-01-17,Series B,,,,,,44,2022-05-26
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2023-08-22,Series B+ (new round),97,,,100,2023-08-22,,
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2024-10-15,Series B++,,,,100,2023-08-22,317,2025-03-11
+"DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",2025-12-24,Series C,114,,,317,2025-03-11,,
+Dunia Innovations,2024-10-23,Seed/Series A (sources differ),11.5,0,0,,,23,2026-03-26
+Emerald Cloud Lab,2010-09-22,"Seed / first priced round (Form D, as Emerald Therapeutics)",5.0,,,,,,
+Emerald Cloud Lab,2012-03-23,Unnamed equity (Form D),1.0,,,,,,
+Emerald Cloud Lab,2014-02-07,Series B,5.61,,,,,,
+Emerald Cloud Lab,2015-09-28,Series C,20.5,,,,,,
+Emerald Cloud Lab,2019-09-24,Series B (aggregator),,,,,,104,2020-09-19
+Emerald Cloud Lab,2022-06-03,Series C (aggregator),66.0,,,89,2021-12-07,107,2023-07-20
+Emerald Cloud Lab,2024-04-29,Series B extension (aggregator),,,,107,2023-07-20,96,2025-09-02
+Entalpic,2024-09-04,Seed,9.4,,,,,25,2025-12-31
+Intrepid Labs,2023-07-01,Pre-seed (Radical lists investment year 2023; unannounced until 2025-05),4.0,,,,,,
+Intrepid Labs,2025-05-12,Seed,7.0,,,,,,
+Materials Nexus (MatNex),2022-04-15,Pre-seed (accelerator / angel allotments),,,,3,2021-12-31,4,2022-12-31
+Materials Nexus (MatNex),2023-07-26,Seed,2.6,,,4,2022-12-31,17,2024-12-31
+Materials Nexus (MatNex),2025-01-17,Unannounced round (SH01 allotments 17 and 20 Jan 2025; Caplight lists a Series A on 21 Feb 2025),,,,17,2024-12-31,27,2025-12-31
+"Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2021-06-01,JV formation (paid-in capital),2.8,,,,,,
+"Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2024-06-03,Business-and-capital alliance (Mitsubishi joins as shareholder),,,,,,,
+Orbital Materials (now Orbital Industries),2023-07-15,Seed,4.8,0,0,,,13,2024-02-21
+Orbital Materials (now Orbital Industries),2024-02-21,Series A,16.0,0,0,13,2024-02-21,,
+Orbital Materials (now Orbital Industries),2024-10-22,Strategic (NVentures),,0,0,13,2024-02-21,,
+Orbital Materials (now Orbital Industries),2026-05-28,Series B,50.0,11,6,50,2026-05-28,,
+Periodic Labs,2025-09-30,Seed,300.0,12,6,,,88,2026-08-30
+Periodic Labs,2026-03-25,"Next round (reported, unconfirmed)",,6,33,46,2026-03-06,88,2026-08-30
+Polymerize (Polymerize Pte Ltd),2020-10-15,Seed,0.59,,,,,,
+Polymerize (Polymerize Pte Ltd),2022-05-25,Series A,4.2,,,,,,
+Polymerize (Polymerize Pte Ltd),2024-09-24,Series A-II (strategic),,,,,,,
+Polymerize (Polymerize Pte Ltd),2025-03-27,Strategic (undisclosed),,,,,,,
