@@ -41,8 +41,8 @@ CubOS at the Pi's commit `496819c`, and Opentrons' published pipette definitions
    are the capper BOM's 20 mL VOA vials (typically 28 × 57 mm), a tip end 35 mm below
    the rim sits ~20 mm above the bottom, and only reaches liquid when the vial holds
    ~10 mL or more. At 10 mL a 20 µL stroke is 0.2% of the liquid, and a whole `mix`
-   is 1.3%. Pipette-mixing protocols that state a volume cycle about half the
-   liquid or more: a 2025 survey of 96-well protocols found 50% and 80%
+   is 1.3%. In a 2025 survey of 96-well protocols, the few that give the mix
+   volume as a share of the well use values such as 50% and 80%
    ([King 2025](https://pmc.ncbi.nlm.nih.gov/articles/PMC12776400/)). By that rule
    the P20 suits about 25–40 µL, a few hundred times less than the vial holds.
 2. **The jet is small and slow.** 20 µL is a sphere 1.7 mm in radius. At ~8 µL/s
@@ -69,7 +69,7 @@ reach, where the tip draws from and where it returns to matters much more.
 | plunger speed | 10.9 mm/s, ~8 µL/s: the firmware's step floor | Opentrons' P20 GEN2 maximum is 24 µL/s, ~32 mm/s or ~25,600 steps/s at 796 steps/mm. Needs firmware work: faster step timing plus an acceleration ramp, then the post-run `HOME` check for lost steps | ~3× the jet speed and ~0.7 mL/min through the tip instead of 0.24. Still 20 µL per stroke |
 | stroke volume | 20 µL | None. A 20 µL tip holds 20 µL; drawing more pulls liquid into the pipette | — |
 
-Even with every setting at its limit, the P20 passes well under 1 mL a minute through
+Even with every setting at its limit, the P20 passes under 1 mL a minute through
 its tip, and passing liquid through the tip is not the same as mixing it.
 
 ### Draw low, return high, with `transfer` (not run)
@@ -77,7 +77,7 @@ its tip, and passing liquid through the tip is not the same as mixing it.
 The YAML can't send a bare `dispense`: CubOS keeps it off the protocol commands
 ([`pipette.py`](https://github.com/Ursa-Laboratories/CubOS/blob/496819c/packages/core/src/cubos/protocol_engine/commands/pipette.py#L316-L327)).
 But `transfer` takes separate `source_height` and `destination_height`, and splits
-any volume over 20 µL into 20 µL strokes
+a volume over the model's 20 µL into equal strokes of up to 20 µL
 ([`pipette.py`](https://github.com/Ursa-Laboratories/CubOS/blob/496819c/packages/core/src/cubos/protocol_engine/commands/pipette.py#L496-L506)).
 A transfer from a vial into the same vial is therefore a vertical mix:
 
@@ -97,9 +97,9 @@ Before running it:
   but a 20 mL VOA vial is about 57 mm tall. A `source_height` past the bottom drives
   the tip into the glass, and `validate_setup` checks reachability, not whether the
   vial is that deep.
-- Check that `transfer` accepts the same vial as source and destination, and what
-  path the gantry takes between the two heights. The validate and mock gates show
-  both before anything moves.
+- Check in the validate and mock gates, before anything moves, that `transfer`
+  accepts the same vial as source and destination, that it plans ten 20 µL strokes,
+  and what path the gantry takes between the two heights.
 - On this firmware the first `ASPIRATE` after a tip pick-up pushes ~21 µL of air
   out through the tip on its way down to prime, so the first stroke bubbles. With
   paint, that can foam. After that, each stroke draws ~23 µL rather than 20,
@@ -139,7 +139,7 @@ fits the present one.
 
 | option | how | for | against |
 |---|---|---|---|
-| **A. Stir plate under each vial** (rotating magnets) | A small 12 V brushless fan (30–40 mm) or N20 gear motor with two N52 disc magnets on the hub, one north-up and one south-up, spaced to the ends of the stir bar. Speed by PWM from a spare Arduino pin through a logic-level MOSFET (the capper BOM's IRLZ44s) | Cheap (roughly $10 a position), the classic DIY stir plate, strongest coupling for the money | Needs ~10–20 mm under the vial, so the rack goes up and the vial Z heights get re-taught. Moving parts |
+| **A. Stir plate under each vial** (rotating magnets) | A small 12 V brushless fan (30–40 mm) or N20 gear motor with two N52 disc magnets on the hub, one north-up and one south-up, spaced to the ends of the stir bar. Speed by PWM through a logic-level MOSFET (the capper BOM's IRLZ44s): a knob at first, later a spare pin on the PAW Arduino, which needs a new firmware command | Cheap (roughly $10–15 a position), the classic DIY stir plate, strongest coupling for the money | Needs ~10–20 mm under the vial, so the rack goes up and the vial Z heights get re-taught. Moving parts |
 | **B. Rotating field from fixed coils** (no moving parts) | Four small coils under the vial at 90°. Each opposite pair, wound or wired in opposition, is one phase of a bipolar stepper driver. The stir bar is then the rotor: one bar revolution per 4 full steps, so 600 rpm is 40 full steps/s. The Tic T500, now off the plunger, can drive it straight from the Pi over USB (`ticcmd --velocity`), and its current limit sets the field strength | Thin, quiet, no wear. One driver can run several vials with their coils in series. No Arduino firmware | Less torque than NdFeB magnets at the same gap. The coils warm the vial a little. Commercial "induction stirrers" work this way (e.g. [Heathrow Scientific's](https://heathrowscientific.com/magnetic-induction-1), 50–2,000 rpm), and [fablab RUC's open build](https://fablab.ruc.dk/magnetic-stirrer/) uses 3 coils, an Arduino and an L298N |
 | **C. Magnets on either side** (Ben's idea) | Magnets on opposite sides of the vial, one with north facing in and one with south, turning around the vial's axis | Works: the field across the vial is horizontal, so it turns a horizontal bar | The magnets have to orbit the vial, so they need a ring bearing and clearance all round, which the 33 mm pitch doesn't leave. As fixed coils at the sides, it becomes B with the same clearance problem |
 | D. Vortex or orbital shaking | A vibration motor or a small orbital shaker under the rack, with the vial capped first (the capper can) | Nothing goes into the vial | Shakes the vial positions that the capper and pipette rely on. Vial_1's decap has already been marginal |
