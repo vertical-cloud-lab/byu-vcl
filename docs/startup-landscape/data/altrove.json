@@ -9,24 +9,146 @@
   "status": "active",
   "website": "https://altrove.ai",
   "funding": [
-    {"date": "2024-07-03", "round": "Pre-seed", "amount_usd_m": 4.0, "original_amount": "EUR 3.7M", "type": "equity", "lead_investors": ["Contrarian Ventures"], "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"},
-    {"date": "2025-10-31", "round": "Seed", "amount_usd_m": 10.0, "original_amount": "USD 10M (Goodwin describes a EUR 7.7M Series Seed financing)", "type": "equity", "lead_investors": ["Alven"], "source": "https://tech.eu/2025/10/31/paris-based-altrove-raises-10-million-to-accelerate-ai-designed-alternatives-to-critical-materials/"}
+    {
+      "date": "2024-07-03",
+      "round": "Pre-seed",
+      "amount_usd_m": 4.0,
+      "original_amount": "EUR 3.7M",
+      "type": "equity",
+      "lead_investors": [
+        "Contrarian Ventures"
+      ],
+      "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"
+    },
+    {
+      "date": "2025-10-31",
+      "round": "Seed",
+      "amount_usd_m": 10.0,
+      "original_amount": "USD 10M (Goodwin describes a EUR 7.7M Series Seed financing)",
+      "type": "equity",
+      "lead_investors": [
+        "Alven"
+      ],
+      "source": "https://tech.eu/2025/10/31/paris-based-altrove-raises-10-million-to-accelerate-ai-designed-alternatives-to-critical-materials/"
+    }
   ],
   "headcount": [
-    {"date": "2024-12-31", "value": null, "low": 6, "high": 9, "method": "registry", "note": "INSEE tranche_effectif_salarie 03 (6-9 salaried staff), reference year 2024, Altrove Tech SAS", "source": "https://recherche-entreprises.api.gouv.fr/search?q=altrove"},
-    {"date": "2025-02-20", "value": null, "low": 2, "high": 10, "method": "linkedin-band", "note": "LinkedIn band 2-10; 'View all 12 employees'", "source": "https://web.archive.org/web/20250220101541/https://www.linkedin.com/company/altrove-ai/"}
+    {
+      "date": "2024-12-31",
+      "value": null,
+      "low": 6,
+      "high": 9,
+      "method": "registry",
+      "note": "INSEE tranche_effectif_salarie 03 (6-9 salaried staff), reference year 2024, Altrove Tech SAS",
+      "source": "https://recherche-entreprises.api.gouv.fr/search?q=altrove"
+    },
+    {
+      "date": "2025-02-20",
+      "value": 12,
+      "low": 2,
+      "high": 10,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 2-10; 'View all 12 employees'",
+      "source": "https://web.archive.org/web/20250220101541/https://www.linkedin.com/company/altrove-ai/"
+    }
   ],
   "postings": [],
-  "current_openings": {"date": "2026-10-09", "count": null, "by_function": {}, "titles": [], "source": "https://altrove.ai/about"},
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": null,
+    "by_function": {},
+    "titles": [],
+    "source": "https://altrove.ai/about"
+  },
   "people": [
-    {"name": "Thibaud Martin", "title": "Co-founder & CEO; Président (SAS legal representative)", "function": "leadership", "seniority": "founder", "start": "2024-01", "start_basis": "Registry: Altrove Tech SAS created 2024-01-22, Président de SAS", "end": null, "background": "Described as a repeat entrepreneur; degrees not stated in sources found", "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"},
-    {"name": "Joonatan Laulainen", "title": "Co-founder & CTO; Directeur Général", "function": "leadership", "seniority": "founder", "start": "2024-01", "start_basis": "Registry: Directeur Général of Altrove Tech SAS (created 2024-01-22)", "end": null, "background": "PhD in materials science; characterisation expert", "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"},
-    {"name": "Thomas Clozel", "title": "Advisor (also angel investor)", "function": "leadership", "seniority": "advisor", "start": "2024-07", "start_basis": "Angel in pre-seed per TechCrunch; listed as advisor on about page 2026-10-09", "end": null, "background": "MD; co-founder and CEO of Owkin", "source": "https://altrove.ai/about"},
-    {"name": "Luc Vincent", "title": "Advisor", "function": "leadership", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09 (first appearance not checked)", "end": null, "background": "Ex-VP at Meta, Lyft and Google", "source": "https://altrove.ai/about"},
-    {"name": "Michal Valko", "title": "Advisor (also angel investor)", "function": "leadership", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09; angel in the 2025 seed per tech.eu", "end": null, "background": "PhD; ex-DeepMind and Meta", "source": "https://altrove.ai/about"},
-    {"name": "Mickey Kertesz", "title": "Advisor", "function": "leadership", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Biotech founder with three exits/IPOs", "source": "https://altrove.ai/about"},
-    {"name": "Martin Gassinklo", "title": "Advisor", "function": "leadership", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Board advisor, Airbus", "source": "https://altrove.ai/about"},
-    {"name": "Anubhav Jain", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Staff scientist at Lawrence Berkeley National Lab; co-lead of the Materials Project", "source": "https://altrove.ai/about"}
+    {
+      "name": "Thibaud Martin",
+      "title": "Co-founder & CEO; Président (SAS legal representative)",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-01",
+      "start_basis": "Registry: Altrove Tech SAS created 2024-01-22, Président de SAS",
+      "end": null,
+      "background": "Described as a repeat entrepreneur; degrees not stated in sources found",
+      "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"
+    },
+    {
+      "name": "Joonatan Laulainen",
+      "title": "Co-founder & CTO; Directeur Général",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-01",
+      "start_basis": "Registry: Directeur Général of Altrove Tech SAS (created 2024-01-22)",
+      "end": null,
+      "background": "PhD in materials science; characterisation expert",
+      "source": "https://techcrunch.com/2024/07/03/altrove-uses-ai-models-and-lab-automation-to-create-new-materials/"
+    },
+    {
+      "name": "Thomas Clozel",
+      "title": "Advisor (also angel investor)",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": "2024-07",
+      "start_basis": "Angel in pre-seed per TechCrunch; listed as advisor on about page 2026-10-09",
+      "end": null,
+      "background": "MD; co-founder and CEO of Owkin",
+      "source": "https://altrove.ai/about"
+    },
+    {
+      "name": "Luc Vincent",
+      "title": "Advisor",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09 (first appearance not checked)",
+      "end": null,
+      "background": "Ex-VP at Meta, Lyft and Google",
+      "source": "https://altrove.ai/about"
+    },
+    {
+      "name": "Michal Valko",
+      "title": "Advisor (also angel investor)",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09; angel in the 2025 seed per tech.eu",
+      "end": null,
+      "background": "PhD; ex-DeepMind and Meta",
+      "source": "https://altrove.ai/about"
+    },
+    {
+      "name": "Mickey Kertesz",
+      "title": "Advisor",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Biotech founder with three exits/IPOs",
+      "source": "https://altrove.ai/about"
+    },
+    {
+      "name": "Martin Gassinklo",
+      "title": "Advisor",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Board advisor, Airbus",
+      "source": "https://altrove.ai/about"
+    },
+    {
+      "name": "Anubhav Jain",
+      "title": "Scientific advisor",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Staff scientist at Lawrence Berkeley National Lab; co-lead of the Materials Project",
+      "source": "https://altrove.ai/about"
+    }
   ],
   "staff_roles": [],
   "departures": [],

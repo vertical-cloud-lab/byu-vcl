@@ -9,21 +9,95 @@
   "status": "active",
   "website": "https://matlantis.com/en/",
   "funding": [
-    {"date": "2021-06-01", "round": "JV formation (paid-in capital)", "amount_usd_m": 2.8, "original_amount": "JPY 310M (PFN 51%, ENEOS 49%)", "type": "jv-capital", "lead_investors": ["Preferred Networks", "ENEOS"], "source": "https://matlantis.com/en/company/profile/"},
-    {"date": "2024-06-03", "round": "Business-and-capital alliance (Mitsubishi joins as shareholder)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "jv-capital", "lead_investors": ["Mitsubishi Corporation"], "source": "https://matlantis.com/news/business-and-capital-alliance-with-mc"}
+    {
+      "date": "2021-06-01",
+      "round": "JV formation (paid-in capital)",
+      "amount_usd_m": 2.8,
+      "original_amount": "JPY 310M (PFN 51%, ENEOS 49%)",
+      "type": "jv-capital",
+      "lead_investors": [
+        "Preferred Networks",
+        "ENEOS"
+      ],
+      "source": "https://matlantis.com/en/company/profile/"
+    },
+    {
+      "date": "2024-06-03",
+      "round": "Business-and-capital alliance (Mitsubishi joins as shareholder)",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "jv-capital",
+      "lead_investors": [
+        "Mitsubishi Corporation"
+      ],
+      "source": "https://matlantis.com/news/business-and-capital-alliance-with-mc"
+    }
   ],
   "headcount": [
-    {"date": "2025-07-01", "value": 46, "low": null, "high": null, "method": "other", "note": "Company Deck (published 2026-03-27): 従業員数 46, as of July 2025", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"}
+    {
+      "date": "2025-07-01",
+      "value": 46,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "Company Deck (published 2026-03-27): 従業員数 46, as of July 2025",
+      "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"
+    }
   ],
   "postings": [],
-  "current_openings": {"date": "2026-10-09", "count": 2, "by_function": {"business-ops": 2}, "titles": ["Domestic Account Manager", "Product Manager"], "source": "https://matlantis.com/en/careers/"},
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 2,
+    "by_function": {
+      "business-ops": 2
+    },
+    "titles": [
+      "Domestic Account Manager",
+      "Product Manager"
+    ],
+    "source": "https://matlantis.com/en/careers/"
+  },
   "people": [
-    {"name": "Daisuke Okanohara", "title": "President and CEO (代表取締役社長)", "function": "leadership", "seniority": "exec", "start": "2021-06", "start_basis": "representative since founding; named President and CEO on the 2022-07-01 first-anniversary page", "end": null, "background": "Co-founder of Preferred Networks (PFN COO, then Chief Executive Researcher 2021, CTO 2025, CEO from 2025-11 concurrently); computer-science PhD, University of Tokyo", "source": "https://www.preferred.jp/wp-content/uploads/2025/07/PFN_cofounders_biographies_en_20250701.pdf"},
-    {"name": "Ju Li", "title": "Technical Advisor", "function": "materials-science", "seniority": "advisor", "start": "2024-08", "start_basis": "company history on profile page", "end": null, "background": "Professor, Massachusetts Institute of Technology (nuclear science and engineering; materials science)", "source": "https://matlantis.com/en/company/profile/"}
+    {
+      "name": "Daisuke Okanohara",
+      "title": "President and CEO (代表取締役社長)",
+      "function": "leadership",
+      "seniority": "exec",
+      "start": "2021-06",
+      "start_basis": "representative since founding; named President and CEO on the 2022-07-01 first-anniversary page",
+      "end": null,
+      "background": "Co-founder of Preferred Networks (PFN COO, then Chief Executive Researcher 2021, CTO 2025, CEO from 2025-11 concurrently); computer-science PhD, University of Tokyo",
+      "source": "https://www.preferred.jp/wp-content/uploads/2025/07/PFN_cofounders_biographies_en_20250701.pdf"
+    },
+    {
+      "name": "Ju Li",
+      "title": "Technical Advisor",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": "2024-08",
+      "start_basis": "company history on profile page",
+      "end": null,
+      "background": "Professor, Massachusetts Institute of Technology (nuclear science and engineering; materials science)",
+      "source": "https://matlantis.com/en/company/profile/"
+    }
   ],
   "staff_roles": [
-    {"title": "Customer success engineer", "function": "materials-science", "first_seen": "2026-03", "last_seen": null, "background": "two profiled in the company deck; computational chemistry/materials support", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"},
-    {"title": "US-based employee (Cambridge, MA)", "function": "business-ops", "first_seen": "2025", "last_seen": null, "background": "first US hire, per deck timeline", "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"}
+    {
+      "title": "Customer success engineer",
+      "function": "materials-science",
+      "first_seen": "2026-03",
+      "last_seen": null,
+      "background": "two profiled in the company deck; computational chemistry/materials support",
+      "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"
+    },
+    {
+      "title": "US-based employee (Cambridge, MA)",
+      "function": "business-ops",
+      "first_seen": "2025",
+      "last_seen": null,
+      "background": "first US hire, per deck timeline",
+      "source": "https://speakerdeck.com/matlantis/matlantiszhu-shi-hui-she-company-deck"
+    }
   ],
   "departures": [],
   "notes": [

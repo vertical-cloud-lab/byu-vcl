@@ -80,7 +80,8 @@
       "high": null,
       "method": "team-page",
       "note": "leadership team only (10 named on cusp.ai); full staff not listed, so this is not a total headcount",
-      "source": "https://www.cusp.ai/"
+      "source": "https://www.cusp.ai/",
+      "partial": true
     }
   ],
   "postings": [

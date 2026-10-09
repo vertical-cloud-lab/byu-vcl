@@ -106,9 +106,16 @@ def load():
     for path in sorted(glob.glob(os.path.join(OUT, "data", "*.json"))):
         with open(path) as fh:
             d = json.load(fh)
-        d["_funding"] = sorted(
-            [{**f, "_d": parse_date(f.get("date"))} for f in d.get("funding") or []
-             if parse_date(f.get("date"))], key=lambda f: f["_d"])
+        funding = []
+        for f in d.get("funding") or []:
+            if not parse_date(f.get("date")):
+                continue
+            f = {**f, "_d": parse_date(f.get("date"))}
+            # Rounds known only from reported talks are drawn but never summed.
+            if re.search(r"unconfirmed|reported talks", f.get("round") or "", re.I):
+                f["type"] = "reported"
+            funding.append(f)
+        d["_funding"] = sorted(funding, key=lambda f: f["_d"])
         hc = []
         for h in d.get("headcount") or []:
             when = parse_date(h.get("date"))
@@ -149,7 +156,9 @@ def best_headcount(co):
     hc = co["_headcount"]
     if not hc:
         return None
-    hc = [h for h in hc if not h["_weak"]] or hc
+    hc = [h for h in hc if not h["_weak"]]
+    if not hc:
+        return None
     recent = [h for h in hc if (hc[-1]["_d"] - h["_d"]).days <= 120]
 
     def rank(h):
@@ -176,6 +185,8 @@ def chart_round(f):
         r += f" {kind}"
     elif kind == "other":
         r += " (non-equity)"
+    elif kind == "reported":
+        r = "talks (unconfirmed)"
     return f'{money(f.get("amount_usd_m"))} {r}'.strip()
 
 
@@ -189,7 +200,8 @@ def short_round(f, width=34):
 
 def timeline_grid(cos):
     """One panel per company: headcount over time, funding events as labelled hairlines."""
-    cos = [c for c in cos if c["_headcount"] or c["_funding"]]
+    left_out = sorted(c["_name"] for c in cos if not any(not h["_weak"] for h in c["_headcount"]))
+    cos = [c for c in cos if any(not h["_weak"] for h in c["_headcount"])]
     cos.sort(key=lambda c: (-(capital_to(c, TODAY)), c["company"]))
     n, ncol = len(cos), 4
     nrow = math.ceil(n / ncol)
@@ -232,9 +244,13 @@ def timeline_grid(cos):
     fig.suptitle("Team size over time (filled: counted or stated; hollow: partial or aggregator; bars: size band) "
                  "against funding (dark lines: equity; light: grants, debt, contracts)",
                  x=0.01, ha="left", fontsize=10, fontweight="bold")
-    fig.text(0.01, 0.005, "Sources per company in docs/startup-landscape/companies/. "
-             "Panels sorted by capital raised.", fontsize=7, color=MUTED)
-    fig.tight_layout(rect=(0, 0.01, 1, 0.97))
+    import textwrap
+    fig.text(0.01, 0.003, "\n".join(textwrap.wrap(
+        "Sources per company in docs/startup-landscape/companies/. Panels sorted by capital raised. "
+        "LinkedIn points are members listing the company, read from Wayback Machine captures. "
+        "No whole-company team size found for: " + ", ".join(left_out) + ".", 210)),
+        fontsize=7, color=MUTED, va="bottom")
+    fig.tight_layout(rect=(0, 0.02, 1, 0.97))
     fig.savefig(os.path.join(OUT, "figures", "team_size_vs_funding_timeline.png"), dpi=170)
     plt.close(fig)
 
@@ -300,6 +316,8 @@ def postings_grid(cos):
             ax.text(f["_d"], top * 0.98, " " + chart_round(f), rotation=90, va="top", ha="right",
                     fontsize=5.6, color=INK2)
         ax.set_title(co["_name"], loc="left")
+        span = 2027 - lo.year
+        ax.xaxis.set_major_locator(mdates.YearLocator(base=max(1, span // 5)))
         ax.xaxis.set_major_formatter(mdates.DateFormatter("%Y"))
         ax.tick_params(length=0, labelsize=6.5)
     for ax in list(axes.flat)[len(cos):]:
@@ -315,7 +333,7 @@ def per_head(cos):
     rows = []
     for co in cos:
         h = best_headcount(co)
-        cap = capital_to(co, TODAY)
+        cap = capital_to(co, h["_d"]) if h else 0  # capital raised by the date of that count
         if h and cap > 0:
             rows.append((cap / h["_v"], co))
     if not rows:
@@ -335,7 +353,7 @@ def per_head(cos):
     ax.xaxis.set_major_formatter(USD_M)
     ax.set_xlim(right=max(r[0] for r in rows) * 6)
     ax.grid(axis="y", visible=False)
-    ax.set_xlabel("Capital raised to date per team member at the latest team-size datapoint (USD, log)")
+    ax.set_xlabel("Capital raised by the date of the latest team-size datapoint, per team member (USD, log)")
     ax.set_title("Capital per person (pale bars: team size known only as a band)", loc="left")
     kinds = [k for k in KINDS if any(r[1]["_kind"] == k for r in rows)]
     handles = [plt.Rectangle((0, 0), 1, 1, color=SLOTS[KINDS.index(k)], label=k) for k in kinds]
@@ -374,8 +392,10 @@ def openings_by_function(cos):
     ax.tick_params(length=0)
     ax.set_xlabel("Open roles on the public job board, 9 Oct 2026")
     ax.set_title("What they are hiring for now", loc="left")
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c, label=f) for c, f in zip(SLOTS6, FUNCTIONS)]
-    handles.append(plt.Rectangle((0, 0), 1, 1, color=AXIS, label="unclassified"))
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c, label=f) for i, (c, f) in enumerate(zip(SLOTS6, FUNCTIONS))
+               if any(r[1][i] for r in rows)]
+    if any(r[2] for r in rows):
+        handles.append(plt.Rectangle((0, 0), 1, 1, color=AXIS, label="unclassified"))
     ax.legend(handles=handles, loc="lower right", fontsize=6.5, ncol=2)
     fig.tight_layout()
     fig.savefig(os.path.join(OUT, "figures", "openings_by_function.png"), dpi=170)
@@ -556,7 +576,7 @@ def summary(cos):
         latest = f'{short_round(last)}, {last["_d"]:%Y-%m}' if last else "n/d"
         op = co.get("current_openings") or {}
         lines.append(
-            f'| [{co["company"]}](companies/{co["slug"]}.md) | {co.get("hq", "")} | {co.get("founded", "")} '
+            f'| [{co["company"]}](companies/{co["slug"]}.md) | {co.get("hq") or ""} | {co.get("founded") or ""} '
             f'| {co["_kind"]} | {co.get("status", "")} | {cap} | {latest} | {fmt_hc(best_headcount(co))} '
             f'| {op.get("count") if op and op.get("count") is not None else "n/d"} |')
     opening_rows = ["| Company | " + " | ".join(FUNCTIONS) + " | unclassified | total |",

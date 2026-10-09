@@ -9,27 +9,169 @@
   "status": "active",
   "website": "https://atinary.com",
   "funding": [
-    {"date": "2023-10-03", "round": "Seed", "amount_usd_m": 5.0, "original_amount": "USD 5M", "type": "equity", "lead_investors": ["AgFunder"], "source": "https://ggba.swiss/en/atinary-technologies-raises-usd-5-million-to-accelerate-material-and-molecular-innovation/"},
-    {"date": "2026-08-14", "round": "Strategic minority investment", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["Bruker"], "source": "https://bioalps.org/bruker-expands-its-collaboration-with-atinary-and-makes-a-minority-investment/"}
+    {
+      "date": "2023-10-03",
+      "round": "Seed",
+      "amount_usd_m": 5.0,
+      "original_amount": "USD 5M",
+      "type": "equity",
+      "lead_investors": [
+        "AgFunder"
+      ],
+      "source": "https://ggba.swiss/en/atinary-technologies-raises-usd-5-million-to-accelerate-material-and-molecular-innovation/"
+    },
+    {
+      "date": "2026-08-14",
+      "round": "Strategic minority investment",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "Bruker"
+      ],
+      "source": "https://bioalps.org/bruker-expands-its-collaboration-with-atinary-and-makes-a-minority-investment/"
+    }
   ],
   "headcount": [
-    {"date": "2024-07-07", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50; 'View all 17 employees'", "source": "https://web.archive.org/web/20240707234322/https://www.linkedin.com/company/atinary/"},
-    {"date": "2025-11-03", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50; 'Discover all 22 employees'", "source": "https://web.archive.org/web/20251103081650/https://www.linkedin.com/company/atinary"}
+    {
+      "date": "2024-07-07",
+      "value": 17,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'View all 17 employees'",
+      "source": "https://web.archive.org/web/20240707234322/https://www.linkedin.com/company/atinary/"
+    },
+    {
+      "date": "2025-11-03",
+      "value": 22,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'Discover all 22 employees'",
+      "source": "https://web.archive.org/web/20251103081650/https://www.linkedin.com/company/atinary"
+    }
   ],
   "postings": [
-    {"period": "2026Q3", "new_postings": 3, "method": "ats", "source": "https://atinary.com/careers/"},
-    {"period": "2026Q4", "new_postings": 1, "method": "ats", "source": "https://atinary.com/careers/"}
+    {
+      "period": "2026Q3",
+      "new_postings": 3,
+      "method": "ats",
+      "source": "https://atinary.com/careers/"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 1,
+      "method": "ats",
+      "source": "https://atinary.com/careers/"
+    }
   ],
-  "current_openings": {"date": "2026-10-09", "count": 4, "by_function": {"ml-research": 1, "lab-automation": 1, "software-eng": 1, "business-ops": 1}, "titles": ["AI for Chemistry Scientist (Lausanne)", "Lab Technician (Boston)", "Full Stack Developer (Lausanne)", "Marketing & Social Media Associate (Lausanne)"], "source": "https://atinary.com/careers/"},
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 4,
+    "by_function": {
+      "ml-research": 1,
+      "lab-automation": 1,
+      "software-eng": 1,
+      "business-ops": 1
+    },
+    "titles": [
+      "AI for Chemistry Scientist (Lausanne)",
+      "Lab Technician (Boston)",
+      "Full Stack Developer (Lausanne)",
+      "Marketing & Social Media Associate (Lausanne)"
+    ],
+    "source": "https://atinary.com/careers/"
+  },
   "people": [
-    {"name": "Hermann Tribukait", "title": "Co-founder & CEO", "function": "leadership", "seniority": "founder", "start": "2019", "start_basis": "Company founded 2019 (GGBA); founders working together on Self-Driving Labs since 2017 (company site)", "end": null, "background": "PhD; economist, entrepreneur, innovation and technology development", "source": "https://atinary.com/about-us/"},
-    {"name": "Loïc Roch", "title": "Co-founder & CTO", "function": "leadership", "seniority": "founder", "start": "2019", "start_basis": "Company founded 2019 (GGBA)", "end": null, "background": "PhD chemist; AI/ML for materials discovery, software design, autonomous experimentation", "source": "https://atinary.com/about-us/"},
-    {"name": "Horst Simon", "title": "Scientific Advisory Board", "function": "ml-research", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Founding director, ADIA AI Lab; retired Deputy Director and Chief Research Officer, Lawrence Berkeley National Lab", "source": "https://atinary.com/about-us/"},
-    {"name": "Joshua Schrier", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Professor, Fordham University; AI for materials discovery", "source": "https://atinary.com/about-us/"},
-    {"name": "Alex Norquist", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Professor, Haverford College; chemistry and materials science", "source": "https://atinary.com/about-us/"},
-    {"name": "José Miguel Hernández-Lobato", "title": "Scientific Advisory Board", "function": "ml-research", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Professor, University of Cambridge; machine learning", "source": "https://atinary.com/about-us/"},
-    {"name": "Paco Laveille", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "ETH Zurich Catalysis Hub / SwissCAT+ East; chemistry and catalysis", "source": "https://atinary.com/about-us/"},
-    {"name": "Stephen Buchwald", "title": "Scientific Advisory Board", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "Listed on about page 2026-10-09", "end": null, "background": "Camille Dreyfus Professor of Chemistry, MIT", "source": "https://atinary.com/about-us/"}
+    {
+      "name": "Hermann Tribukait",
+      "title": "Co-founder & CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2019",
+      "start_basis": "Company founded 2019 (GGBA); founders working together on Self-Driving Labs since 2017 (company site)",
+      "end": null,
+      "background": "PhD; economist, entrepreneur, innovation and technology development",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Loïc Roch",
+      "title": "Co-founder & CTO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2019",
+      "start_basis": "Company founded 2019 (GGBA)",
+      "end": null,
+      "background": "PhD chemist; AI/ML for materials discovery, software design, autonomous experimentation",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Horst Simon",
+      "title": "Scientific Advisory Board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Founding director, ADIA AI Lab; retired Deputy Director and Chief Research Officer, Lawrence Berkeley National Lab",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Joshua Schrier",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, Fordham University; AI for materials discovery",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Alex Norquist",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, Haverford College; chemistry and materials science",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "José Miguel Hernández-Lobato",
+      "title": "Scientific Advisory Board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, University of Cambridge; machine learning",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Paco Laveille",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "ETH Zurich Catalysis Hub / SwissCAT+ East; chemistry and catalysis",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Stephen Buchwald",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Camille Dreyfus Professor of Chemistry, MIT",
+      "source": "https://atinary.com/about-us/"
+    }
   ],
   "staff_roles": [],
   "departures": [],

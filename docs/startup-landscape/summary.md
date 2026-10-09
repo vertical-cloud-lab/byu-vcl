@@ -7,8 +7,8 @@ Capital raised counts equity, JV capital and IPO proceeds; grants and debt are l
 | Company | HQ | Founded | Type | Status | Capital raised | Latest round | Team size (date, method) | Open roles (2026-10-09) |
 |---|---|---|---|---|---|---|---|---|
 | [CuspAI](companies/cuspai.md) | Cambridge, UK | 2024 | Computational / software | active | $580M | $450M B, 2026-07 | 85 (2026-08, linkedin-band) | 14 |
-| [Lila Sciences](companies/lila-sciences.md) | Cambridge, MA, US | 2023 | Self-driving or cloud lab | active | $550M | n/d B (reported talks, unconfirmed), 2026-06 | 33 (2026-09, team-page) | 106 |
-| [Periodic Labs](companies/periodic-labs.md) | Menlo Park, US | 2025 | Self-driving or cloud lab | active | $300M | n/d Next round (reported, unconfirmed), 2026-03 | 88 (2026-08, linkedin-band) | 33 |
+| [Lila Sciences](companies/lila-sciences.md) | Cambridge, MA, US | 2023 | Self-driving or cloud lab | active | $550M | $115M A ext., 2025-10 | 550 (2026-10, linkedin-band) | 106 |
+| [Periodic Labs](companies/periodic-labs.md) | Menlo Park, US | 2025 | Self-driving or cloud lab | active | $300M | $300M Seed, 2025-09 | 88 (2026-08, linkedin-band) | 33 |
 | [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)](companies/dp-technology.md) | Beijing, China | 2018 | Computational / software | active | $211M | $114M C, 2025-12 | 201–500 (2025-03, linkedin-band) | n/d |
 | [Emerald Cloud Lab](companies/emerald-cloud-lab.md) | Austin, US | 2010 | Self-driving or cloud lab | active | $98M | n/d B ext. (aggregator), 2024-04 | 101 (2026-10, team-page) | n/d |
 | [Chemify](companies/chemify.md) | Glasgow, UK | 2019 | Self-driving or cloud lab | active | $93M (+$30M grants) | n/d B1 ext. (allotments 12 Dec 2025,…, 2025-12 | 200 (2026-10, team-page) | 33 |
@@ -19,16 +19,16 @@ Capital raised counts equity, JV capital and IPO proceeds; grants and debt are l
 | [Radical AI](companies/radical-ai.md) | New York (Brooklyn Navy Yard), US | 2024 | Self-driving or cloud lab | active | $55M (+$2.0M grants) | $55M Seed+, 2025-07 | 34 (2026-01, press) | n/d |
 | [Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)](companies/deep-principle.md) | Hangzhou, China | 2023 | Computational / software | active | $24M | n/d A3 (closes A series), 2026-07 | n/d | n/d |
 | [Kebotix](companies/kebotix.md) | Cambridge, US | 2017 | Self-driving or cloud lab | active | $24M | $5.0M Unannounced equity (Form D), 2024-07 | n/d | 0 |
-| [Mattiq (formerly Stoicheia)](companies/mattiq.md) | Chicago, US | 2020 | AI + high-throughput experimentation | active | $19M | $4.5M Unnamed equity (Form D), 2024-12 | 17–17 (2023-03, team-page) | 0 |
-| [Altrove](companies/altrove.md) | Paris, France | 2024 | Self-driving or cloud lab | active | $14M | $10M Seed, 2025-10 | 6–9 (2024-12, registry) | n/d |
-| [Dunia Innovations](companies/dunia-innovations.md) | Berlin, Germany | 2022 | Self-driving or cloud lab | active | $12M | $12M Seed/A (sources differ), 2024-10 | 11–50 (2026-03, linkedin-band) | 13 |
+| [Mattiq (formerly Stoicheia)](companies/mattiq.md) | Chicago, US | 2020 | AI + high-throughput experimentation | active | $19M | $4.5M Unnamed equity (Form D), 2024-12 | n/d | 0 |
+| [Altrove](companies/altrove.md) | Paris, France | 2024 | Self-driving or cloud lab | active | $14M | $10M Seed, 2025-10 | 12 (2025-02, linkedin-band) | n/d |
+| [Dunia Innovations](companies/dunia-innovations.md) | Berlin, Germany | 2022 | Self-driving or cloud lab | active | $12M | $12M Seed/A (sources differ), 2024-10 | 54 (2026-03, linkedin-band) | 13 |
 | [Aionics](companies/aionics.md) | Palo Alto, US | 2020 | Computational / software | active | $11M | $0.5M Unannounced equity/options (Form…, 2026-03 | n/d | 0 |
-| [Intrepid Labs](companies/intrepid-labs.md) | Toronto, Canada | 2023 | Self-driving or cloud lab | active | $11M | $7.0M Seed, 2025-05 | 1–10 (2026-10, other) | 0 |
+| [Intrepid Labs](companies/intrepid-labs.md) | Toronto, Canada | 2023 | Self-driving or cloud lab | active | $11M | $7.0M Seed, 2025-05 | n/d | 0 |
 | [Entalpic](companies/entalpic.md) | Paris, France | 2024 | Computational / software | active | $9.4M | $9.4M Seed, 2024-09 | 25 (2025-12, press) | n/d |
-| [Telescope Innovations](companies/telescope-innovations.md) | Vancouver, Canada | None | Self-driving or cloud lab | active | $5.8M | $0.9M Private placement, tranche 2, 2025-10 | n/d | n/d |
-| [Atinary Technologies](companies/atinary.md) | Lausanne, Switzerland | 2019 | Self-driving or cloud lab | active | $5.0M | n/d Strategic minority investment, 2026-08 | 11–50 (2025-11, linkedin-band) | 4 |
-| [Polymerize (Polymerize Pte Ltd)](companies/polymerize.md) | Singapore, Singapore | 2020 | Computational / software | active | $4.8M | n/d Strategic (undisclosed), 2025-03 | 11–50 (2026-10, other) | n/d |
-| [Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)](companies/matlantis.md) | Tokyo, Japan | 2021 | Computational / software | active | $2.8M | n/d Business-and-capital alliance (Mi…, 2024-06 | 46 (2025-07, other) | 2 |
+| [Telescope Innovations](companies/telescope-innovations.md) | Vancouver, Canada |  | Self-driving or cloud lab | active | $5.8M | $0.9M Private placement, tranche 2, 2025-10 | n/d | n/d |
+| [Atinary Technologies](companies/atinary.md) | Lausanne, Switzerland | 2019 | Self-driving or cloud lab | active | $5.0M | n/d Strategic minority investment, 2026-08 | 22 (2025-11, linkedin-band) | 4 |
+| [Polymerize (Polymerize Pte Ltd)](companies/polymerize.md) | Singapore, Singapore | 2020 | Computational / software | active | $4.8M | n/d Strategic (undisclosed), 2025-03 | n/d | n/d |
+| [Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)](companies/matlantis.md) | Tokyo, Japan | 2021 | Computational / software | active | $2.8M | n/d Business-and-capital alliance (Mi…, 2024-06 | 46 (2025-07, press) | 2 |
 | [Tetsuwan Scientific](companies/tetsuwan-scientific.md) | San Francisco, US | 2023 | Self-driving or cloud lab | active | $2.7M | $2.7M Pre-seed, 2024-11 | n/d | 2 |
 | [Materials Nexus (MatNex)](companies/materials-nexus.md) | London, UK | 2020 | Computational / software | active | $2.6M | n/d Unannounced round (SH01 allotment…, 2025-01 | 25 (2026-10, team-page) | 0 |
 

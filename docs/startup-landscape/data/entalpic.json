@@ -9,28 +9,151 @@
   "status": "active",
   "website": "https://entalpic.ai",
   "funding": [
-    {"date": "2024-09-04", "round": "Seed", "amount_usd_m": 9.4, "original_amount": "EUR 8.5M", "type": "equity", "lead_investors": ["Cathay Innovation", "Breega", "Felicis"], "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"}
+    {
+      "date": "2024-09-04",
+      "round": "Seed",
+      "amount_usd_m": 9.4,
+      "original_amount": "EUR 8.5M",
+      "type": "equity",
+      "lead_investors": [
+        "Cathay Innovation",
+        "Breega",
+        "Felicis"
+      ],
+      "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"
+    }
   ],
   "headcount": [
-    {"date": "2024-09-06", "value": null, "low": 2, "high": 10, "method": "linkedin-band", "note": "LinkedIn band 2-10; 'View all 3 employees'", "source": "https://web.archive.org/web/20240906003924/https://www.linkedin.com/company/entalpic/"},
-    {"date": "2024-12-31", "value": null, "low": 10, "high": 19, "method": "registry", "note": "INSEE tranche_effectif_salarie 11 (10-19 salaried staff), reference year 2024", "source": "https://recherche-entreprises.api.gouv.fr/search?q=entalpic"},
-    {"date": "2025-01-31", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50; 'View all 15 employees'", "source": "https://web.archive.org/web/20250131033718/https://www.linkedin.com/company/entalpic"},
-    {"date": "2025-05-29", "value": null, "low": 11, "high": 50, "method": "linkedin-band", "note": "LinkedIn band 11-50; 'Discover all 21 employees'", "source": "https://web.archive.org/web/20250529080650/https://www.linkedin.com/company/entalpic/?viewAsMember=true"},
-    {"date": "2025-12-31", "value": 25, "low": null, "high": null, "method": "press", "note": "Company roadmap on homepage: '2025 - Team growth to 25 and end-to-end technical proof-point'", "source": "https://entalpic.ai/"}
+    {
+      "date": "2024-09-06",
+      "value": 3,
+      "low": 2,
+      "high": 10,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 2-10; 'View all 3 employees'",
+      "source": "https://web.archive.org/web/20240906003924/https://www.linkedin.com/company/entalpic/"
+    },
+    {
+      "date": "2024-12-31",
+      "value": null,
+      "low": 10,
+      "high": 19,
+      "method": "registry",
+      "note": "INSEE tranche_effectif_salarie 11 (10-19 salaried staff), reference year 2024",
+      "source": "https://recherche-entreprises.api.gouv.fr/search?q=entalpic"
+    },
+    {
+      "date": "2025-01-31",
+      "value": 15,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'View all 15 employees'",
+      "source": "https://web.archive.org/web/20250131033718/https://www.linkedin.com/company/entalpic"
+    },
+    {
+      "date": "2025-05-29",
+      "value": 21,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'Discover all 21 employees'",
+      "source": "https://web.archive.org/web/20250529080650/https://www.linkedin.com/company/entalpic/?viewAsMember=true"
+    },
+    {
+      "date": "2025-12-31",
+      "value": 25,
+      "low": null,
+      "high": null,
+      "method": "press",
+      "note": "Company roadmap on homepage: '2025 - Team growth to 25 and end-to-end technical proof-point'",
+      "source": "https://entalpic.ai/"
+    }
   ],
   "postings": [],
-  "current_openings": {"date": "2026-10-09", "count": null, "by_function": {}, "titles": [], "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057"},
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": null,
+    "by_function": {},
+    "titles": [],
+    "source": "https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057"
+  },
   "people": [
-    {"name": "Mathieu Galtier", "title": "Co-founder & CEO; Président (SAS legal representative)", "function": "leadership", "seniority": "founder", "start": "2024-05", "start_basis": "Registry: company created 2024-05-06 with him as Président de SAS; CEO per lead investor", "end": null, "background": "Early employee and former Chief Data & Platform Officer at Owkin", "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"},
-    {"name": "Victor Schmidt", "title": "Co-founder & CTO", "function": "leadership", "seniority": "founder", "start": "2024-05", "start_basis": "Company creation 2024-05-06; CTO per seed announcement", "end": null, "background": "Mila (Yoshua Bengio's lab) researcher; ML for materials and climate", "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"},
-    {"name": "Alexandre Duval", "title": "Co-founder & CSO", "function": "leadership", "seniority": "founder", "start": "2024-05", "start_basis": "Company creation 2024-05-06; CSO per seed announcement", "end": null, "background": "Mila researcher (labs of Yoshua Bengio and David Rolnick); BSc Mathematical Sciences, University of Warwick (2019)", "source": "https://mila.quebec/en/news/entalpic-a-startup-leveraging-generative-ai-to-reduce-co2-emissions"}
+    {
+      "name": "Mathieu Galtier",
+      "title": "Co-founder & CEO; Président (SAS legal representative)",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-05",
+      "start_basis": "Registry: company created 2024-05-06 with him as Président de SAS; CEO per lead investor",
+      "end": null,
+      "background": "Early employee and former Chief Data & Platform Officer at Owkin",
+      "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"
+    },
+    {
+      "name": "Victor Schmidt",
+      "title": "Co-founder & CTO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-05",
+      "start_basis": "Company creation 2024-05-06; CTO per seed announcement",
+      "end": null,
+      "background": "Mila (Yoshua Bengio's lab) researcher; ML for materials and climate",
+      "source": "https://www.cathaycapital.com/behind-the-term-sheet-entalpics-8-5m-seed/"
+    },
+    {
+      "name": "Alexandre Duval",
+      "title": "Co-founder & CSO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2024-05",
+      "start_basis": "Company creation 2024-05-06; CSO per seed announcement",
+      "end": null,
+      "background": "Mila researcher (labs of Yoshua Bengio and David Rolnick); BSc Mathematical Sciences, University of Warwick (2019)",
+      "source": "https://mila.quebec/en/news/entalpic-a-startup-leveraging-generative-ai-to-reduce-co2-emissions"
+    }
   ],
   "staff_roles": [
-    {"title": "Materials Scientist - ML for synthesisability", "function": "materials-science", "first_seen": null, "last_seen": null, "background": "job ad (undated); reports to CSO, Paris", "source": "https://jobs.breega.com/jobs/4582598-materials-scientist-ml-for-synthesisability-entalpic"},
-    {"title": "Machine Learning Engineer - Property Prediction", "function": "ml-research", "first_seen": null, "last_seen": null, "background": "job ad (undated)", "source": "https://jobs.breega.com/jobs/4569757-machine-learning-engineer-property-prediction-entalpic"},
-    {"title": "LLM Research Engineer for Chemistry", "function": "ml-research", "first_seen": null, "last_seen": null, "background": "job ad", "source": "https://jobs.breega.com/jobs/4756998-llm-research-engineer-for-chemistry"},
-    {"title": "Senior Full-Stack ML Software Engineer", "function": "software-eng", "first_seen": null, "last_seen": null, "background": "job ad", "source": "https://jobs.breega.com/jobs/4775728-senior-full-stack-ml-software-engineer-entalpic"},
-    {"title": "ML Scientist for Chemistry", "function": "ml-research", "first_seen": null, "last_seen": null, "background": "job ad reposted by UK Catalysis Hub", "source": "https://ukcatalysishub.co.uk/?p=9552"}
+    {
+      "title": "Materials Scientist - ML for synthesisability",
+      "function": "materials-science",
+      "first_seen": null,
+      "last_seen": null,
+      "background": "job ad (undated); reports to CSO, Paris",
+      "source": "https://jobs.breega.com/jobs/4582598-materials-scientist-ml-for-synthesisability-entalpic"
+    },
+    {
+      "title": "Machine Learning Engineer - Property Prediction",
+      "function": "ml-research",
+      "first_seen": null,
+      "last_seen": null,
+      "background": "job ad (undated)",
+      "source": "https://jobs.breega.com/jobs/4569757-machine-learning-engineer-property-prediction-entalpic"
+    },
+    {
+      "title": "LLM Research Engineer for Chemistry",
+      "function": "ml-research",
+      "first_seen": null,
+      "last_seen": null,
+      "background": "job ad",
+      "source": "https://jobs.breega.com/jobs/4756998-llm-research-engineer-for-chemistry"
+    },
+    {
+      "title": "Senior Full-Stack ML Software Engineer",
+      "function": "software-eng",
+      "first_seen": null,
+      "last_seen": null,
+      "background": "job ad",
+      "source": "https://jobs.breega.com/jobs/4775728-senior-full-stack-ml-software-engineer-entalpic"
+    },
+    {
+      "title": "ML Scientist for Chemistry",
+      "function": "ml-research",
+      "first_seen": null,
+      "last_seen": null,
+      "background": "job ad reposted by UK Catalysis Hub",
+      "source": "https://ukcatalysishub.co.uk/?p=9552"
+    }
   ],
   "departures": [],
   "notes": [
