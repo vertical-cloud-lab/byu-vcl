@@ -14,6 +14,7 @@ per host with a lock file, so several agents on one machine share one budget.
     python scripts/startup_landscape/fetch.py cdx-urls 'jobs.ashbyhq.com/example/*'
     python scripts/startup_landscape/fetch.py snap 20240101000000 https://example.com/team
     python scripts/startup_landscape/fetch.py ats example
+    python scripts/startup_landscape/fetch.py pay ashby example
     python scripts/startup_landscape/fetch.py openalex-inst "Citrine Informatics"
     python scripts/startup_landscape/fetch.py openalex-authors I4210123456
     python scripts/startup_landscape/fetch.py ch-search "orbital materials"
@@ -195,6 +196,54 @@ def ats(token):
     return out
 
 
+PAY_RE = re.compile(
+    r"([$€£])\s?(\d{2,3}(?:,\d{3})+|\d{2,3}(?:\.\d)?\s?[kK])\s*(?:-|–|—|to)\s*[$€£]?\s?(\d{2,3}(?:,\d{3})+|\d{2,3}(?:\.\d)?\s?[kK])")
+
+
+def _money(tok):
+    tok = tok.replace(",", "").replace(" ", "")
+    return int(float(tok[:-1]) * 1000) if tok[-1] in "kK" else int(tok)
+
+
+def pay(vendor, token):
+    """Posted pay ranges (US pay-transparency laws make many boards publish them).
+
+    vendor is ashby or greenhouse. Ashby returns structured salary components;
+    for Greenhouse the range is pulled out of the posting text.
+    """
+    out = []
+    if vendor == "ashby":
+        data = json.loads(get(f"https://api.ashbyhq.com/posting-api/job-board/{token}?includeCompensation=true"))
+        for j in data.get("jobs", []):
+            found = False
+            for tier in (j.get("compensation") or {}).get("compensationTiers") or []:
+                for c in tier.get("components") or []:
+                    if c.get("compensationType") == "Salary" and c.get("minValue") and not found:
+                        found = True
+                        out.append({"title": j.get("title"), "team": j.get("department") or j.get("team"),
+                                    "location": j.get("location"), "currency": c.get("currencyCode"),
+                                    "min": c.get("minValue"), "max": c.get("maxValue"),
+                                    "interval": c.get("interval"), "url": j.get("jobUrl")})
+            m = None if found else PAY_RE.search(j.get("descriptionPlain") or "")
+            if m:
+                out.append({"title": j.get("title"), "team": j.get("department") or j.get("team"),
+                            "location": j.get("location"),
+                            "currency": {"$": "USD", "€": "EUR", "£": "GBP"}[m.group(1)],
+                            "min": _money(m.group(2)), "max": _money(m.group(3)),
+                            "interval": "1 YEAR", "url": j.get("jobUrl")})
+    elif vendor == "greenhouse":
+        data = json.loads(get(f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=true"))
+        for j in data.get("jobs", []):
+            text = html_to_text(html.unescape(j.get("content") or ""))
+            m = PAY_RE.search(text)
+            if m:
+                out.append({"title": j.get("title"), "location": (j.get("location") or {}).get("name"),
+                            "currency": {"$": "USD", "€": "EUR", "£": "GBP"}[m.group(1)],
+                            "min": _money(m.group(2)), "max": _money(m.group(3)),
+                            "interval": "1 YEAR", "url": j.get("absolute_url")})
+    return out
+
+
 # --- OpenAlex ----------------------------------------------------------------
 
 def openalex_inst(query):
@@ -292,6 +341,9 @@ def main():
     s.add_argument("--raw", action="store_true")
     for name in ("ats", "openalex-inst", "openalex-authors", "ch-search", "ch-officers", "ch-filings", "fr", "pdf"):
         sub.add_parser(name).add_argument("arg")
+    y = sub.add_parser("pay", help="posted pay ranges from an ashby or greenhouse board")
+    y.add_argument("vendor", choices=["ashby", "greenhouse"])
+    y.add_argument("token")
     g = sub.add_parser("get", help="cached, throttled GET of any URL, printed as text")
     g.add_argument("url")
     g.add_argument("--raw", action="store_true")
@@ -308,6 +360,8 @@ def main():
     elif a.cmd == "get":
         body = get(a.url)
         print(body if a.raw else html_to_text(body))
+    elif a.cmd == "pay":
+        print(json.dumps(pay(a.vendor, a.token), indent=1, ensure_ascii=False))
     elif a.cmd in ("ch-officers", "ch-filings", "pdf"):
         print({"ch-officers": ch_officers, "ch-filings": ch_filings, "pdf": pdf_text}[a.cmd](a.arg))
     else:
