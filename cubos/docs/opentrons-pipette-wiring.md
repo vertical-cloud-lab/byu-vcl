@@ -3248,3 +3248,125 @@ about 56 mm at the Tic's 1/8, past the 46.5 mm drop-tip plane. Confirm 796/mm
 CubOS connects. The Tic was left de-energized to stop the 4 W idle heating, so
 send `ticcmd --energize` first. Record:
 [`results/pipette_switch_search_20260929/`](../results/pipette_switch_search_20260929/README.md).
+
+## 24. 2026-10-06: the firmware asks the TMC2209 for about a tenth of the current
+
+A new TMC2209 board passed Ben's meter checks: VM 12.4 V, VDD 5 V, VREF 0.586 V, coils
+3.4 Ω, and DIAG 0 V with EN high and after EN went back on A4. It still moved the plunger
+neither way under `tmc2209_probe.py` and the down-probe
+([`results/tmc2209_probe_20261006/`](../results/tmc2209_probe_20261006/README.md)). The
+likely reason is in the library rather than the board.
+
+[janelia-arduino/TMC2209](https://github.com/janelia-arduino/TMC2209) 10.1.1's
+`initialize()`, which §4 quotes, ends with `disableAutomaticCurrentScaling()` and
+`disableAutomaticGradientAdaptation()`. `setupMotor()` then calls `enableStealthChop()`
+and never re-enables either. With `TPWMTHRS` 0, StealthChop runs at every speed, and with
+`pwm_autoscale` 0 it doesn't regulate current. The datasheet's PWMCONF table: *"The
+current settings IRUN and IHOLD are not enforced by regulation but scale the PWM
+amplitude, only! … PWM_OFS * ((CS_ACTUAL+1) / 32) + PWM_GRAD * 256 / TSTEP"*.
+`setRegistersToDefaults()` writes `PWM_OFS` 36 and `PWM_GRAD` 0, so:
+
+```
+I_rms = VM * PWM_SCALE / (374 * R_coil)          datasheet §6.4 p. 43, 12.4 V, 3.4 Ohm
+
+moving   IRUN 6:   PWM 36 * 7/32 = 7.9   ->  ~0.08 A rms (0.11 A peak)
+at rest  IHOLD 1:  PWM 36 * 2/32 = 2.3   ->  ~0.02 A rms (0.03 A peak)
+intended IRUN 6, regulated, 0.05 Ohm:        0.72 A rms (1.02 A peak) -- would need PWM ~74
+```
+
+That fits the 10-05 sequence. The board was hot in standalone mode before any port open,
+because there StealthChop's automatic scaling regulates to the trimmer. It went cold after
+the writes landed, with no motion, no buzz and DIAG low.
+
+🔴 **Corrections.** §22.4 and §22.5b say the trimmer and `RUN_CURRENT_PERCENT 20` *"agree
+within 7%, so it stops mattering"* which one is in force. That holds only if the firmware's
+setting is a regulated current, and here it isn't. Once the writes land, the coil current
+is ~0.1 A whatever VREF says. Every TMC2209 image on this machine was affected: upstream's
+`RUN_CURRENT_PERCENT 50` (CS 15) gives ≈0.23 A. The 09-26 board's DIAG fault (§22) is
+separate and stands.
+
+**Not yet measured.** It depends on the writes landing, and with `comm = 0` that's inferred
+from the hot-then-cold sequence. The two tests in the record separate the cases: take the
+UART wire off pin 9 (standalone mode), or flash `disableStealthChop()` in `setupMotor()`.
+SpreadCycle regulates `IRUN`/`IHOLD` against the sense resistors, as the Tic does, and
+doesn't need StealthChop's tuning for the firmware's unramped starts.
+
+## 25. 2026-10-07: with the UART wire off pin 9, the TMC2209 moves the plunger at every rate
+
+> **Correction (§26).** The wire that came off for this run was EN from A4, not UART from pin
+> 9. The UART wire stayed on. The section is left as written.
+
+Ben's free check first: with the wire on pin 9 and nothing moving, the board and pipette were
+**cold**. With the wire off (standalone mode) they turned **warm**. `tmc2209_probe.py` then
+exited 0 ([`results/tmc2209_probe_20261007/`](../results/tmc2209_probe_20261007/README.md)):
+
+| | TMC2209, standalone, 10-07 | Tic, 09-29 |
+|---|---|---|
+| UP search | switch opened after ~1.65 mm: DIR LOW is up | DIR LOW is up |
+| ladder: switch reopened after a 2 mm back-off | ~2.05 / 2.12 / 2.13 mm at 1,000 / 2,500 / 10,000 microsteps/s | ~2.11 mm at 2,500 |
+| time to the trip at 2,500/s | 0.774 s | 0.770 s |
+| `HOME` from 2 mm below | `OK` in 1.348 s | `OK` in 1.356 s |
+
+So §24 holds as far as it can be tested without readback. The firmware's UART writes land,
+and they're what stops the motor. The new board is fine, with no damage from the 10-05 heat.
+Which register does it is still inferred from the library source.
+
+What runs now is the chip's standalone defaults: the trimmer's current (VREF 0.586 V ≈ 0.77 A
+rms, 1.09 A peak, on a 6121's 0.05 Ω), StealthChop with automatic scaling (if the board leaves
+`SPREAD` on its internal pull-down), and 1/8 step (`MS1`/`MS2`'s). In this mode the motor
+followed the firmware's unramped starts up to ~8,700 microsteps/s.
+
+🔑 **`PDN_UART` has no internal pull.** The datasheet's pin table gives it `DIO`, where `MS1`,
+`MS2`, `SPREAD` and `DIR` are `DI (pd)`. With the wire off, pin 9 floats, and that pin decides
+standstill reduction: low cuts the current at rest to `IHOLD` (16, 53% of `IRUN`, with the OTP
+bits at their factory 0), and high keeps it at the full run current. If the wire stays off for
+good, tie pin 9 through 1–10 kΩ: to GND for the reduced hold, or to `VDD` for the full hold the
+Tic gives. The resistor protects A1 if the wire is ever put back by mistake.
+
+The two ways to keep the TMC2209: the wire off for good with pin 9 tied, or fix B
+(`disableStealthChop()`) with the wire back on (§24).
+
+## 26. 2026-10-07: spreadCycle firmware moves the TMC2209 with every wire on
+
+Ben then found that the wire he had pulled for §25 was **EN from A4**, not UART from pin 9.
+With EN back on A4 and everything plugged in, the 10-01 image didn't move the plunger in two
+probes (18:40Z and 18:49Z). He asked for fix B, so the firmware was rebuilt with one line
+changed in `setupMotor()`, `enableStealthChop()` → `disableStealthChop()`, and flashed. The two
+images differ by one instruction, the one that sets GCONF bit 2 (`en_SpreadCycle`).
+`tmc2209_probe.py` then passed, and `pipette_test` ran 12/12 with `cubxl_run.py --no-tic`
+([`results/tmc2209_spreadcycle_20261007/`](../results/tmc2209_spreadcycle_20261007/README.md)).
+
+| | 10-01 image (StealthChop), 18:49Z | fix B (spreadCycle), 18:52Z |
+|---|---|---|
+| wiring, 12 V | everything on | the same, three minutes later |
+| UP search | no switch within 3 mm | switch after ~1.05 mm |
+| ladder at 1,000 / 2,500 / 10,000 | not reached | trips at ~2.05 / 2.10 / 2.12 mm |
+| `HOME` | not sent | `OK` in 1.347 s |
+
+That is the A/B §24 asked for. The UART writes land with every wire on, and StealthChop with
+`pwm_autoscale` off (as the library's `initialize()` leaves it) is what starved the motor. In
+spreadCycle the chip regulates to `IRUN`/`IHOLD`, so the firmware's own table in
+[`../firmware/README.md`](../firmware/README.md) holds now: 0.72 A rms moving and 0.21 A rms
+at rest on a 6121. The trimmer only matters when the writes don't land, for instance if the
+12 V comes on after the Arduino's last reset. Then it runs as in §25 until the next port open.
+
+§25's pass is still unexplained. EN is low whether its wire is on or off: the firmware drives
+A4 low, and the 6121 pulls EN down with 20 kΩ. So for the StealthChop image to have moved the
+plunger, its writes can't have reached the chip in that run. A UART wire that wasn't making
+contact would do it. The 18:33Z USB drop, while Ben was at the header, is when it could have
+been reseated. Nothing recorded can confirm it.
+
+`pipette_test_20261007`'s plunger timings match the Tic's 10-06 run to the hundredth of a
+second, and its post-run `HOME` came out at +0.04 mm. Everything stays plugged in now. If the
+pipette goes back on the Tic, no reflash is needed: the Tic's STEP/DIR input ignores the UART
+writes.
+
+**Afterwards, Ben confirmed two things.** The new board is an **Adafruit 6121**, so the
+figures above hold, from its 0.05 Ω sense resistors (§10). And at idle after the run it was at
+**room temperature**. Assuming the 12 V was on, that means the writes landed and the chip is
+holding `IHOLD`: on the trimmer it would hold ≈0.77 A rms at rest and turn warm, as in §25.
+Feeling the board at idle is the check to repeat whenever the wiring or the power-up order
+changes. He also felt vibration on what he thinks was the first probe of the afternoon. Both
+probes before the flash ran the 10-01 image, so that fits §24, current reaching the coils but
+too little to turn the plunger. It is light evidence, though: on 10-05 a 30 s buzz in what
+should have been the same state gave nothing he could feel.

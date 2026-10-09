@@ -1,0 +1,27 @@
+VCL PANDA firmware: fix B, spreadCycle instead of StealthChop for the TMC2209.
+Apply on top of panda-arduino-tic796-and-fast-moveto.patch, with `patch -p1`
+or `git apply` from the firmware tree's root.
+
+2026-10-07, TMC2209 back on the plunger: the janelia library's initialize()
+turns pwm_autoscale off, and the firmware never turns it back on. In
+StealthChop that leaves IRUN/IHOLD scaling a fixed PWM amplitude (datasheet
+§6.4) instead of regulating the coil current, about 0.1 A against the 0.72 A rms
+RUN_CURRENT_PERCENT asks for, and the plunger did not move. SpreadCycle
+regulates to IRUN/IHOLD. The image differs from the 10-01 one by one
+instruction, which sets GCONF bit 2 (en_SpreadCycle).
+Image: panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex.
+
+Generated with diff -u between ~/panda_fw_vcl_tic796_fast (built the 10-01
+image) and ~/panda_fw_vcl_tic796_fast_spread on the CubXL Pi.
+
+--- panda_fw_vcl_tic796_fast/src/Pipette.cpp
++++ panda_fw_vcl_tic796_fast_spread/src/Pipette.cpp
+@@ -63,7 +63,7 @@
+     stepperDriver.setMicrostepsPerStep(MICROSTEPPING);
+ 
+     // Enable additional features
+-    stepperDriver.enableStealthChop();
++    stepperDriver.disableStealthChop(); // [VCL] spreadCycle: initialize() turns pwm_autoscale off, and StealthChop without it does not regulate current to IRUN/IHOLD
+     stepperDriver.enableCoolStep();
+ 
+     // Enable the driver

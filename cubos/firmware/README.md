@@ -8,7 +8,32 @@ applied casually.
 Upstream: [`BU-KABlab/PANDA_Arduino`](https://github.com/BU-KABlab/PANDA_Arduino)
 @ `228615b` ("fixed mixing function for pipette", 2025-08-27).
 
-## 2026-10-01: the board runs `panda_vcl_p20gen2_tic796_fastmove_20261001.hex`
+## 2026-10-07: the board runs `panda_vcl_p20gen2_tic796_fastmove_spread_20261007.hex`
+
+Fix B for the TMC2209: the 10-01 image with spreadCycle instead of StealthChop, one line in
+`setupMotor()` ([`panda-arduino-spreadcycle.patch`](panda-arduino-spreadcycle.patch)):
+
+| call | was | now |
+| --- | --- | --- |
+| `setupMotor()` | `enableStealthChop()` | **`disableStealthChop()`** |
+
+The library's `initialize()` turns `pwm_autoscale` off and nothing turns it back on. In
+StealthChop that leaves `IRUN`/`IHOLD` scaling a fixed PWM amplitude instead of regulating the
+current, about 0.1 A, and the plunger didn't move. In spreadCycle the chip regulates to them,
+so the current table below is now what the coils get whenever the writes land. Built in
+`~/panda_fw_vcl_tic796_fast_spread`, a copy of `~/panda_fw_vcl_tic796_fast`. The copy rebuilt
+to the 10-01 image byte-for-byte before the edit. The new image is the same 17,468 bytes and
+differs in one instruction: `andi r24, 0xFB` → `ori r24, 0x04`, setting GCONF bit 2
+(`en_SpreadCycle`). `avrdude -U flash:v` matched the 10-01 image before the upload and this one
+after it. The flash was read back first, as
+[`../results/tmc2209_spreadcycle_20261007/flash_before_20261007.hex`](../results/tmc2209_spreadcycle_20261007/flash_before_20261007.hex).
+On hardware: `tmc2209_probe.py` passed and `pipette_test` ran 12/12
+([`../results/tmc2209_spreadcycle_20261007/`](../results/tmc2209_spreadcycle_20261007/README.md)).
+The Tic ignores the UART writes, so this image also serves the Tic. To go back, flash
+`panda_vcl_p20gen2_tic796_fastmove_20261001.hex` with the `avrdude` command at the end of this
+file.
+
+## 2026-10-01: the board ran `panda_vcl_p20gen2_tic796_fastmove_20261001.hex`
 
 The 796 image with `MOVE_TO` sped up (speed change 3 in
 [`../docs/pipette-setup-and-troubleshooting.md`](../docs/pipette-setup-and-troubleshooting.md#speed)).

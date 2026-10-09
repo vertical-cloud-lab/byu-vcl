@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-09-30**. This is the map; the detail is in
+Status as of **2026-10-07**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,6 +13,52 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ✅ **2026-10-07, later: fix B is flashed, and `pipette_test` ran 12/12 on the TMC2209 with
+> every wire on.** The wire pulled for the earlier entry was EN from A4, not UART. With EN back
+> on, the 10-01 image didn't move the plunger in two probes. The firmware was rebuilt with
+> `disableStealthChop()` in `setupMotor()`, which changes one instruction (GCONF
+> `en_SpreadCycle`), and flashed. `tmc2209_probe.py` then passed, and `cubxl_run.py --no-tic`
+> ran 12/12 with a post-run `HOME` of +0.04 mm. Its plunger timings match the Tic's 10-06 run.
+> The chip now runs on the firmware's regulated current, 0.72 A rms moving and 0.21 A rms at
+> rest on a 6121 (Ben has confirmed the new board is one), so everything can stay plugged in at
+> idle. Ben found the board at room temperature at idle after the run, the sign that the
+> firmware's settings are in force rather than the trimmer's. Run with `--no-tic` while the
+> TMC2209 is on. Record:
+> [`tmc2209_spreadcycle_20261007`](../results/tmc2209_spreadcycle_20261007/README.md), wiring
+> doc §26, firmware in [`../firmware/README.md`](../firmware/README.md).
+>
+> ✅ **2026-10-07: with the UART wire off, the TMC2209 moves the plunger.** *(Corrected: the
+> wire that was off was EN, not UART. See the entry above.)* The board was
+> cold with the wire on pin 9 and turned warm with it off. `tmc2209_probe.py` then proved the
+> direction (DIR LOW is up), passed the rate ladder up to the ~8,700 steps/s `MOVE_TO` rate,
+> and homed, matching the Tic's 09-29 numbers. So the board is fine, and the firmware's UART
+> writes were what stopped it (wiring doc §25). Next is `pipette_test` with the wire off and
+> `cubxl_run.py --no-tic`. Long term, either leave the wire off with pin 9 tied to a level, or
+> flash `disableStealthChop()` and put the wire back. Record:
+> [`tmc2209_probe_20261007`](../results/tmc2209_probe_20261007/README.md).
+>
+> 🔑 **2026-10-06: the board checks out, and the firmware may be what starves it.**
+> Ben's meter readings on the TMC2209 were healthy: VM 12.4 V, VDD 5 V, VREF 0.586 V,
+> coils 3.4 Ω, and DIAG 0 V once enabled. `tmc2209_probe.py` and the down-probe still saw
+> no motion either way. The janelia library's `initialize()` switches off StealthChop's
+> automatic current scaling, and `setupMotor()` never switches it back on. In that mode
+> `IRUN 6` scales a fixed PWM amplitude, 36 × 7/32 of 256, instead of setting a regulated
+> current. That works out to ≈0.1 A in the coils against the 1 A intended (wiring doc
+> §24). Two tests are in
+> [`tmc2209_probe_20261006`](../results/tmc2209_probe_20261006/README.md#next-two-ways-to-test-it):
+> pull the UART wire (standalone mode), or flash `disableStealthChop()`.
+>
+> 🔴 **2026-10-05: the TMC2209 board was tried again, and it doesn't drive the
+> plunger.** Ben swapped the Tic out for it. With the board plugged in, limit-switch
+> probes sent 9 mm of moves in both directions, and none reached the switch. They
+> started where the 10-02 run's last `HOME` left the plunger. Ben stood at the
+> pipette for a 30 s buzz at 100 full steps/s and felt nothing. `CMD 29` read
+> `comm = 0`. `pipette_test` was not run, and the pipette is going back on the Tic.
+> The record and a checklist for another try are in
+> [`tmc2209_probe_20261005`](../results/tmc2209_probe_20261005/README.md). If the
+> TMC2209 goes back in, run its `tmc2209_probe.py` before any protocol, and give
+> the runner `--no-tic`.
+>
 > ⚡ **2026-10-01: the trio runs in about 2 minutes, and there is a runner.** All
 > three speed changes are in (CubOS status polling, F3000, fast `MOVE_TO`):
 > 12/12 in 124 s against 238 s on 09-30, with no plunger steps lost (see

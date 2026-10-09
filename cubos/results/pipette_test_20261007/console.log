@@ -1,0 +1,68 @@
+18:54:47Z  == pipette_test_20261007: cub_xl_ben_3_instrument.yaml | ben_2vials_tiprack.yaml | pipette_test.yaml
+18:54:47Z  -- 1. checks
+18:54:47Z  byu-vcl 021ad70 | CubOS 496819c + 4 patch(es): grbl-prompt-status-polling.patch, p20-gen2-plunger-constants.patch, pipette-connect-tolerate-failed-home-main.patch, tipped-hover-clamp-main.patch
+18:54:47Z  Pi up 21 hours, 39 minutes, throttled=0x0
+18:54:47Z  ports: gantry /dev/ttyUSB0 -> /dev/ttyUSB0, vial_capper_decapper /dev/ttyACM0 -> /dev/ttyACM0, pipette /dev/ttyACM0 -> /dev/ttyACM0 (none held open)
+18:54:47Z  protocol: 12 steps, step 0 = home
+18:54:50Z  GRBL: <Alarm|WPos:364.000,281.000,125.000|FS:0,0|WCO:-364.000,-281.000,-125.000> | $20=1 $21=1 travel [364.0, 281.0, 125.0] G54 [-364.0, -281.0, -125.0] | feed F3000 vs max [5000.0, 5000.0, 5000.0]
+18:54:50Z  Arduino:
+18:54:54Z                 connect          dt=  3.770s  ok
+18:54:54Z    18:54:54.423 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:54:54Z    18:54:54.431 cap sensor       dt=  0.004s  OK:{"value1":0}
+18:54:54Z    18:54:54.435 EMAG_OFF         dt=  0.005s  OK:{"msg":"Electromagnet off"}
+18:54:54Z  -- 2. gates
+18:54:54Z  gate validate         PASS  (0.4 s)  Instrument 'vial_capper_decapper' (capper): YAML field 'park_position' is no longer used and was ign
+18:54:59Z  gate mock             PASS  (4.5 s)  OpentronsPipette cannot reach safe_z 115.000 (tool point rides 35.000 below the carriage; ceiling 12
+18:55:03Z  gate shadow           PASS  (4.6 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+18:55:08Z  gate shadow_tipstuck  PASS  (4.5 s)  No interference. (Deck labware only -- holders, brackets and cabling are not in the deck file and ar
+18:55:08Z  -- 3. run
+18:55:08Z  RUN start 18:55:08Z (12:55:08 lab)
+18:57:25Z  RUN end   18:57:25Z (12:57:25 lab), 137.3 s, rc=0
+18:57:25Z  -- 4. post-run
+18:57:25Z  post-run Arduino:
+18:57:42Z                 connect          dt=  3.767s  ok
+18:57:42Z    18:57:29.538 EMAG_OFF         dt=  0.008s  OK:{"msg":"Electromagnet off"}
+18:57:42Z    18:57:29.545 cap sensor       dt=  0.004s  OK:{"value1":0}
+18:57:42Z    18:57:29.549 STATUS           dt=  0.008s  OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:57:42Z    18:57:29.557 HOME             dt= 12.698s  OK:{"msg":"Pipette homed"}
+18:57:42Z  HOME check: plunger ended at 28.0 mm (firmware); HOME took 12.698 s, which implies 28.04 mm (+0.04 mm)
+18:57:42Z  -- 5. summary
+# pipette_test_20261007
+
+✅ **12/12 steps, protocol complete**
+
+- **When:** 2026-10-07 18:55:08Z → 18:57:25Z (12:55:08–12:57:25 lab), **137 s** wall, run process start to end; steps themselves 114 s
+- **Code:** byu-vcl `021ad70` · CubOS `496819c` + `grbl-prompt-status-polling`, `p20-gen2-plunger-constants`, `pipette-connect-tolerate-failed-home-main`, `tipped-hover-clamp-main`
+- **GRBL:** travel [364.0, 281.0, 125.0], G54 [-364.0, -281.0, -125.0], `$20=1` `$21=1`, feed F3000
+- **G-code:** 45 `G01` in 60.9 s (median 1.164 s, shortest 0.207 s), F 3000; `$H` [7.9, 22.3] s
+- **Kernel:** 0 USB line(s) during the run
+- **Plunger HOME check:** ended at 28.0 mm by the firmware; HOME took 12.698 s ⇒ 28.04 mm (**+0.04 mm**)
+
+| step | command | s |
+|---:|---|---:|
+| 0 | home | 7.9 |
+| 1 | move | 9.5 |
+| 2 | decap | 7.3 |
+| 3 | pick_up_tip | 8.4 |
+| 4 | aspirate | 12.8 |
+| 5 | move | 5.0 |
+| 6 | cap | 7.0 |
+| 7 | decap | 5.9 |
+| 8 | blowout | 7.2 |
+| 9 | drop_tip | 12.8 |
+| 10 | cap | 7.4 |
+| 11 | home | 22.3 |
+
+| plunger (UTC) | command | args | s | reply |
+|---|---|---|---:|---|
+| 18:55:18 | STATUS |  | 0.01 | `OK:{"homed":0,"pos":0.00,"max_vol":20.00}` |
+| 18:55:19 | HOME |  | 0.94 | `OK:{"msg":"Pipette homed"}` |
+| 18:55:21 | MOVE_TO | 28.0, 0.0 | 2.56 | `OK:{"msg":"Pipette moved","v":[28.00]}` |
+| 18:55:56 | MOVE_TO | 0.0, 0.0 | 2.56 | `OK:{"msg":"Pipette moved"}` |
+| 18:56:10 | ASPIRATE | 20.0, 0.0 | 5.00 | `OK:{"msg":"Pipette aspirated","v":[20.00,1.20]}` |
+| 18:56:37 | MOVE_TO | 32.5, 0.0 | 2.86 | `OK:{"msg":"Pipette moved","v":[32.50]}` |
+| 18:56:49 | MOVE_TO | 46.5, 0.0 | 4.65 | `OK:{"msg":"Pipette moved","v":[46.50]}` |
+| 18:56:51 | MOVE_TO | 28.0, 0.0 | 1.70 | `OK:{"msg":"Pipette moved","v":[28.00]}` |
+
+Files: `runner.log` (everything), `checks.json`, `gate_*.log`, `run_hardware.log`, `step_trace.json`, `plunger_trace.json`, `gantry_*.log`, `tic_*`, `arduino_*.log`, `frames/`.
+

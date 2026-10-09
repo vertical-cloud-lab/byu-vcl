@@ -1,0 +1,13 @@
+18:40:05.967Z  connected in 3.77 s (the port open reset the Arduino)
+18:40:05.976Z  STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+18:40:06.132Z  CMD 29 before: comm=0 (no UART reply) flags=0 [] CS=-1
+18:40:06.172Z  start                      switch closed (below the top)  dt=0.020 s  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+18:40:07.188Z  UP search 1/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:08.204Z  UP search 2/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:09.220Z  UP search 3/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:10.236Z  UP search 4/6              UP    0.5 mm @   400/s  dt= 1.015 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:11.252Z  UP search 5/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:12.268Z  UP search 6/6              UP    0.5 mm @   400/s  dt= 1.016 s (full move  0.995 s)  completed  -> OK:{"msg":"Moved relative","v":[0.00,398.00,400.00]}
+18:40:12.268Z  RESULT: no switch within 3 mm UP. Either the motor doesn't turn, DIR LOW is down (the plunger went 3 mm down, which is harmless), or it sat lower than expected. Stopping with no HOME, since a reversed HOME would drive ~63 mm down.
+18:40:12.275Z  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+18:40:12.278Z  disconnected; exit 1

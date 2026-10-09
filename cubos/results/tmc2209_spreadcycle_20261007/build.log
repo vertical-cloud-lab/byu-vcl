@@ -1,0 +1,25 @@
+build: 2026-10-07T18:51:48Z
+src/Pipette.cpp:201:10: warning: variable 'errorOccurred' set but not used [-Wunused-but-set-variable]
+     bool errorOccurred = false;
+RAM:   [=======   ]  69.8% (used 1429 bytes from 2048 bytes)
+Flash: [=====     ]  54.2% (used 17468 bytes from 32256 bytes)
+========================= [SUCCESS] Took 2.49 seconds =========================
+unchanged rebuild: 6d2dc97741a4e5ee0f05b8c7d7ba7254c1e04b6e1f77438eb714d2af7223437f
+  = the 10-01 image
+--- /home/<user>/panda_fw_vcl_tic796_fast/src/Pipette.cpp	2026-10-01 15:13:27.867544759 -0600
++++ src/Pipette.cpp	2026-10-07 12:51:54.289801748 -0600
+@@ -63,7 +63,7 @@
+     stepperDriver.setMicrostepsPerStep(MICROSTEPPING);
+ 
+     // Enable additional features
+-    stepperDriver.enableStealthChop();
++    stepperDriver.disableStealthChop(); // [VCL] spreadCycle: initialize() turns pwm_autoscale off, and StealthChop without it does not regulate current to IRUN/IHOLD
+     stepperDriver.enableCoolStep();
+ 
+     // Enable the driver
+src/Pipette.cpp:201:10: warning: variable 'errorOccurred' set but not used [-Wunused-but-set-variable]
+     bool errorOccurred = false;
+RAM:   [=======   ]  69.8% (used 1429 bytes from 2048 bytes)
+Flash: [=====     ]  54.2% (used 17468 bytes from 32256 bytes)
+========================= [SUCCESS] Took 1.19 seconds =========================
+fix B: e8ddfe3dfc66f98add2e2f92b0cc5a9fe7d972db42fb1e1b6aac11420f3422c4

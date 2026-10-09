@@ -1,0 +1,5 @@
+22:15:29.650Z  connected; STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+22:15:29.650Z  BUZZ START: 0.5 mm UP / 0.5 mm DOWN at 800/s for 30 s
+22:16:00.613Z  BUZZ END: 30 full cycles
+22:16:00.618Z  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+22:16:00.622Z  disconnected

@@ -1,0 +1,29 @@
+22:03:44.725Z  connected; STATUS -> OK:{"homed":0,"pos":0.00,"max_vol":20.00}
+22:03:44.762Z  start: switch closed  -> OK:{"msg":"Moved relative","v":[0.00,2.00,200.00]}
+22:03:45.311Z  DOWN  0.25 mm sent (dt 0.512 s): switch closed
+22:03:45.860Z  DOWN  0.50 mm sent (dt 0.512 s): switch closed
+22:03:46.410Z  DOWN  0.75 mm sent (dt 0.512 s): switch closed
+22:03:46.961Z  DOWN  1.00 mm sent (dt 0.511 s): switch closed
+22:03:47.511Z  DOWN  1.25 mm sent (dt 0.512 s): switch closed
+22:03:48.064Z  DOWN  1.50 mm sent (dt 0.512 s): switch closed
+22:03:48.617Z  DOWN  1.75 mm sent (dt 0.512 s): switch closed
+22:03:49.167Z  DOWN  2.00 mm sent (dt 0.512 s): switch closed
+22:03:49.716Z  DOWN  2.25 mm sent (dt 0.512 s): switch closed
+22:03:50.265Z  DOWN  2.50 mm sent (dt 0.512 s): switch closed
+22:03:50.817Z  DOWN  2.75 mm sent (dt 0.511 s): switch closed
+22:03:51.366Z  DOWN  3.00 mm sent (dt 0.512 s): switch closed
+22:03:51.919Z  DOWN  3.25 mm sent (dt 0.512 s): switch closed
+22:03:52.473Z  DOWN  3.50 mm sent (dt 0.512 s): switch closed
+22:03:53.022Z  DOWN  3.75 mm sent (dt 0.512 s): switch closed
+22:03:53.571Z  DOWN  4.00 mm sent (dt 0.512 s): switch closed
+22:03:54.120Z  DOWN  4.25 mm sent (dt 0.512 s): switch closed
+22:03:54.672Z  DOWN  4.50 mm sent (dt 0.511 s): switch closed
+22:03:55.226Z  DOWN  4.75 mm sent (dt 0.512 s): switch closed
+22:03:55.775Z  DOWN  5.00 mm sent (dt 0.512 s): switch closed
+22:03:56.328Z  DOWN  5.25 mm sent (dt 0.512 s): switch closed
+22:03:56.877Z  DOWN  5.50 mm sent (dt 0.512 s): switch closed
+22:03:57.427Z  DOWN  5.75 mm sent (dt 0.512 s): switch closed
+22:03:57.976Z  DOWN  6.00 mm sent (dt 0.512 s): switch closed
+22:03:57.976Z  RESULT: no switch within 6.0 mm of DOWN commands: not reversed (from the 10-02 position), or the motor doesn't turn.
+22:03:57.984Z  EMAG_OFF -> OK:{"msg":"Electromagnet off"}
+22:03:57.987Z  disconnected; exit 1
