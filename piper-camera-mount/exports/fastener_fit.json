@@ -1,0 +1,1309 @@
+{
+  "assumptions": {
+    "nut heights (ISO 4032 max, mm)": {
+      "M2": 1.6,
+      "M2.5": 2.0,
+      "M3": 2.4
+    },
+    "HQ board (mm)": "2.0 measured (lid mount, #234); drawing says 1.4",
+    "clamp": "split closed (the tightened state); with it open, every clamp tip is 0.6 mm shorter",
+    "on hand": {
+      "Prototyping Lab drawer (stainless Phillips pan)": {
+        "M2": [
+          6,
+          12,
+          18,
+          25
+        ],
+        "M3": [
+          6,
+          10,
+          18,
+          25,
+          40
+        ]
+      },
+      "COMRUN nylon kit (Phillips pan)": {
+        "M2.5": [
+          6,
+          8,
+          12
+        ]
+      }
+    }
+  },
+  "joints": {
+    "tab: pad -> gripper tab inserts": {
+      "size": "M3",
+      "count": 2,
+      "thread": "the tab's insert",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        6.02,
+        12.52
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -6.52,
+          "engaged": 0.0,
+          "behind_flange_face": -50.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -4.52,
+          "engaged": 1.98,
+          "behind_flange_face": -52.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": -2.52,
+          "engaged": 3.98,
+          "behind_flange_face": -54.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -0.52,
+          "engaged": 5.98,
+          "behind_flange_face": -56.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 1.48,
+          "engaged": 6.5,
+          "behind_flange_face": -58.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 0.148
+          }
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 3.48,
+          "engaged": 6.5,
+          "behind_flange_face": -60.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 3.949
+          }
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 5.48,
+          "engaged": 6.5,
+          "behind_flange_face": -62.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 12.326
+          }
+        },
+        {
+          "length": 20,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 7.48,
+          "engaged": 6.5,
+          "behind_flange_face": -64.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 21.293
+          }
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 12.48,
+          "engaged": 6.5,
+          "behind_flange_face": -69.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 43.709
+          }
+        },
+        {
+          "length": 40,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 27.48,
+          "engaged": 6.5,
+          "behind_flange_face": -84.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "HQ view": 56.567,
+            "Wide view": 25.954
+          }
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.75,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.7,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.5,
+          "may_not_drop_in_as_printed": false
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          150.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          150.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          -45.91,
+          20.5,
+          7.92
+        ],
+        [
+          -45.91,
+          20.5,
+          -4.08
+        ]
+      ]
+    },
+    "clamp: carrier -> nuts in the bracket's ears": {
+      "size": "M3",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 16.0,
+      "thread_from_seat_mm": [
+        10.9,
+        13.3
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -7.3,
+          "engaged": 0.0,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": false,
+          "past_far_face": -5.3,
+          "engaged": 0.0,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -3.3,
+          "engaged": 0.0,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.3,
+          "engaged": 1.1,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 0.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 0.619
+          }
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 2.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 4.379
+          }
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 4.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 11.739
+          }
+        },
+        {
+          "length": 20,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 6.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 20.669
+          }
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 11.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 43.035
+          }
+        },
+        {
+          "length": 40,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 26.7,
+          "engaged": 2.4,
+          "behind_flange_face": -26.48,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {
+            "Wide view": 110.132
+          }
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.5,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.45,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.25,
+          "may_not_drop_in_as_printed": false
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          35.3,
+          35.3,
+          35.3,
+          35.3
+        ],
+        "hex key (3 mm)": [
+          35.3,
+          35.3,
+          35.3,
+          35.3
+        ]
+      },
+      "seats": [
+        [
+          -2.41,
+          22.0,
+          -36.73
+        ],
+        [
+          -2.41,
+          38.5,
+          -36.73
+        ],
+        [
+          -2.41,
+          22.0,
+          40.57
+        ],
+        [
+          -2.41,
+          38.5,
+          40.57
+        ]
+      ]
+    },
+    "pod: pod -> nuts in the seat": {
+      "size": "M3",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 16.0,
+      "thread_from_seat_mm": [
+        12.8,
+        15.2
+      ],
+      "longest_clear_mm": 20.29,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -9.2,
+          "engaged": 0.0,
+          "behind_flange_face": -9.82,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": false,
+          "past_far_face": -7.2,
+          "engaged": 0.0,
+          "behind_flange_face": -11.73,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -5.2,
+          "engaged": 0.0,
+          "behind_flange_face": -13.65,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": false,
+          "reaches_thread": false,
+          "past_far_face": -3.2,
+          "engaged": 0.0,
+          "behind_flange_face": -15.56,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.2,
+          "engaged": 1.2,
+          "behind_flange_face": -17.47,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 0.8,
+          "engaged": 2.4,
+          "behind_flange_face": -19.38,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 2.8,
+          "engaged": 2.4,
+          "behind_flange_face": -21.3,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 20,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 4.8,
+          "engaged": 2.4,
+          "behind_flange_face": -23.21,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 9.8,
+          "engaged": 2.4,
+          "behind_flange_face": -27.99,
+          "runs_into": {
+            "bracket": 21.025
+          },
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 40,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 24.8,
+          "engaged": 2.4,
+          "behind_flange_face": -42.34,
+          "runs_into": {
+            "bracket": 86.337
+          },
+          "in_a_camera_view_mm3": {
+            "Wide view": 27.584
+          }
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {}
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {}
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {}
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          -54.96,
+          58.27,
+          20.92
+        ],
+        [
+          -54.96,
+          58.27,
+          -17.08
+        ],
+        [
+          -46.35,
+          60.9,
+          20.92
+        ],
+        [
+          -46.35,
+          60.9,
+          -17.08
+        ]
+      ]
+    },
+    "HQ Camera: pod -> nuts on the camera": {
+      "size": "M2.5",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        10.0,
+        12.0
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -6.0,
+          "engaged": 0.0,
+          "behind_flange_face": -8.02,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -4.0,
+          "engaged": 0.0,
+          "behind_flange_face": -6.11,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -2.0,
+          "engaged": 0.0,
+          "behind_flange_face": -4.19,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 0.0,
+          "engaged": 2.0,
+          "behind_flange_face": -2.28,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 2.0,
+          "engaged": 2.0,
+          "behind_flange_face": -0.37,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 4.0,
+          "engaged": 2.0,
+          "behind_flange_face": 1.54,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 6.0,
+          "engaged": 2.0,
+          "behind_flange_face": 3.46,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {
+            "bracket": 7.59
+          },
+          "radial_room_in_counterbore_mm": 0.25,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.0,
+          "may_not_drop_in_as_printed": true
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {
+            "bracket": 0.178
+          },
+          "radial_room_in_counterbore_mm": 0.0,
+          "may_not_drop_in_as_printed": true
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          0.0,
+          150.0,
+          0.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          0.0,
+          150.0,
+          0.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          -64.31,
+          51.22,
+          16.92
+        ],
+        [
+          -93.0,
+          42.45,
+          16.92
+        ],
+        [
+          -64.31,
+          51.22,
+          -13.08
+        ],
+        [
+          -93.0,
+          42.45,
+          -13.08
+        ]
+      ]
+    },
+    "Wide: pod -> nuts on the camera": {
+      "size": "M2",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 10.0,
+      "thread_from_seat_mm": [
+        7.62,
+        9.22
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -3.22,
+          "engaged": 0.0,
+          "behind_flange_face": -9.33,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.22,
+          "engaged": 0.38,
+          "behind_flange_face": -7.42,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 0.78,
+          "engaged": 1.6,
+          "behind_flange_face": -5.51,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 2.78,
+          "engaged": 1.6,
+          "behind_flange_face": -3.6,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 4.78,
+          "engaged": 1.6,
+          "behind_flange_face": -1.68,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 6.78,
+          "engaged": 1.6,
+          "behind_flange_face": 0.23,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 8.78,
+          "engaged": 1.6,
+          "behind_flange_face": 2.14,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 15.78,
+          "engaged": 1.6,
+          "behind_flange_face": 8.84,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.2,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.1,
+          "may_not_drop_in_as_printed": true
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.1,
+          "may_not_drop_in_as_printed": true
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          -88.69,
+          43.77,
+          33.42
+        ],
+        [
+          -88.69,
+          43.77,
+          45.92
+        ],
+        [
+          -68.61,
+          49.91,
+          33.42
+        ],
+        [
+          -68.61,
+          49.91,
+          45.92
+        ]
+      ]
+    },
+    "Pi 5: board -> spacers -> nuts in the carrier": {
+      "size": "M2.5",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        8.3,
+        10.3
+      ],
+      "longest_clear_mm": 16.9,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -4.3,
+          "engaged": 0.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -2.3,
+          "engaged": 0.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -0.3,
+          "engaged": 1.7,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 1.7,
+          "engaged": 2.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 3.7,
+          "engaged": 2.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 5.7,
+          "engaged": 2.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 7.7,
+          "engaged": 2.0,
+          "behind_flange_face": -4.98,
+          "runs_into": {
+            "gripper body": 2.346
+          },
+          "in_a_camera_view_mm3": {}
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {}
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {}
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {}
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          150.0,
+          150.0,
+          150.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          37.6,
+          60.0,
+          -37.08
+        ],
+        [
+          37.6,
+          11.0,
+          -37.08
+        ],
+        [
+          37.6,
+          60.0,
+          20.92
+        ],
+        [
+          37.6,
+          11.0,
+          20.92
+        ]
+      ]
+    },
+    "HQ Camera: pod -> nuts on the camera (board 1.4 mm, drawing)": {
+      "size": "M2.5",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        9.4,
+        11.4
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -5.4,
+          "engaged": 0.0,
+          "behind_flange_face": -8.02,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -3.4,
+          "engaged": 0.0,
+          "behind_flange_face": -6.11,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.4,
+          "engaged": 0.6,
+          "behind_flange_face": -4.19,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 0.6,
+          "engaged": 2.0,
+          "behind_flange_face": -2.28,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 2.6,
+          "engaged": 2.0,
+          "behind_flange_face": -0.37,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 4.6,
+          "engaged": 2.0,
+          "behind_flange_face": 1.54,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 6.6,
+          "engaged": 2.0,
+          "behind_flange_face": 3.46,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        }
+      ]
+    },
+    "HQ Camera with M2: pod -> nuts on the camera": {
+      "size": "M2",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        10.0,
+        11.6
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -5.6,
+          "engaged": 0.0,
+          "behind_flange_face": -8.02,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": false,
+          "past_far_face": -3.6,
+          "engaged": 0.0,
+          "behind_flange_face": -6.11,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.6,
+          "engaged": 0.0,
+          "behind_flange_face": -4.19,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 0.4,
+          "engaged": 1.6,
+          "behind_flange_face": -2.28,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 2.4,
+          "engaged": 1.6,
+          "behind_flange_face": -0.37,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 4.4,
+          "engaged": 1.6,
+          "behind_flange_face": 1.54,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 6.4,
+          "engaged": 1.6,
+          "behind_flange_face": 3.46,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 13.4,
+          "engaged": 1.6,
+          "behind_flange_face": 10.15,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        }
+      ],
+      "heads": {
+        "socket (ISO 4762)": {
+          "min_gap_mm": 0.0,
+          "runs_into": {
+            "bracket": 0.111
+          },
+          "radial_room_in_counterbore_mm": 0.6,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (ISO 7045)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.5,
+          "may_not_drop_in_as_printed": false
+        },
+        "Phillips pan (DIN 7985)": {
+          "min_gap_mm": 0.01,
+          "runs_into": {},
+          "radial_room_in_counterbore_mm": 0.5,
+          "may_not_drop_in_as_printed": false
+        }
+      },
+      "driver_reach_mm": {
+        "#1 Phillips screwdriver (shaft 5 mm)": [
+          0.0,
+          150.0,
+          0.0,
+          150.0
+        ],
+        "hex key (3 mm)": [
+          0.0,
+          150.0,
+          0.0,
+          150.0
+        ]
+      },
+      "seats": [
+        [
+          -64.31,
+          51.22,
+          16.92
+        ],
+        [
+          -93.0,
+          42.45,
+          16.92
+        ],
+        [
+          -64.31,
+          51.22,
+          -13.08
+        ],
+        [
+          -93.0,
+          42.45,
+          -13.08
+        ]
+      ]
+    },
+    "HQ Camera with M2: pod -> nuts on the camera (board 1.4 mm, drawing)": {
+      "size": "M2",
+      "count": 4,
+      "thread": "nut",
+      "design_length": 12.0,
+      "thread_from_seat_mm": [
+        9.4,
+        11.0
+      ],
+      "longest_clear_mm": null,
+      "lengths": [
+        {
+          "length": 6,
+          "on_hand": true,
+          "reaches_thread": false,
+          "past_far_face": -5.0,
+          "engaged": 0.0,
+          "behind_flange_face": -8.02,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 8,
+          "on_hand": false,
+          "reaches_thread": false,
+          "past_far_face": -3.0,
+          "engaged": 0.0,
+          "behind_flange_face": -6.11,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 10,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": -1.0,
+          "engaged": 0.6,
+          "behind_flange_face": -4.19,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 12,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 1.0,
+          "engaged": 1.6,
+          "behind_flange_face": -2.28,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 14,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 3.0,
+          "engaged": 1.6,
+          "behind_flange_face": -0.37,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 16,
+          "on_hand": false,
+          "reaches_thread": true,
+          "past_far_face": 5.0,
+          "engaged": 1.6,
+          "behind_flange_face": 1.54,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 18,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 7.0,
+          "engaged": 1.6,
+          "behind_flange_face": 3.46,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        },
+        {
+          "length": 25,
+          "on_hand": true,
+          "reaches_thread": true,
+          "past_far_face": 14.0,
+          "engaged": 1.6,
+          "behind_flange_face": 10.15,
+          "runs_into": {},
+          "in_a_camera_view_mm3": {}
+        }
+      ]
+    }
+  }
+}

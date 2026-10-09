@@ -29,8 +29,8 @@ show two features to hold on to:
 1. **The finger plate's side tab**, which AgileX calls the *reserved camera mounting platform*. It
    has **two M3 brass inserts**, 12 mm apart and 6.5 mm deep, opening toward the arm (at x = -45.91,
    z = 7.92 and -4.08 in the STEP's frame, 38 mm off the axis). AgileX's own D435 wrist bracket
-   bolts to it, and the gold inserts show in AgileX's 1080p setup video. Two M3 x 12 screws through
-   the bracket's pad go into them. They locate the mount and stop it turning, without touching the
+   bolts to it, and the gold inserts show in AgileX's 1080p setup video. Two M3 screws through the
+   bracket's pad go into them (M3 x 10 from the Prototyping Lab drawer, 4 mm into each insert). They locate the mount and stop it turning, without touching the
    screws that hold the gripper to its flange.
 2. **A plain O57 mm body** from the back of the finger plate to the J6 flange (motor housing, back
    cover and flange, y = 14.5 to 65). A two-piece collar clamps round the first 31 mm of it with
@@ -71,8 +71,8 @@ either side of the lens:
 
 - **987 mm² of contact** (3 times as much), measured by `piper_mount.py` (`pod_joint` in
   `checks.json`).
-- **4 x M3 x 16**, 38 mm apart vertically and 9 mm across, into nuts dropped into slots in the
-  seat's top and bottom faces. The heads are on the pod's back, clear of the HQ ribbon.
+- **4 x M3** (16 to 20 mm long; the drawer's M3 x 18), 38 mm apart vertically and 9 mm across, into
+  nuts dropped into slots in the seat's top and bottom faces. The heads are on the pod's back, clear of the HQ ribbon.
 - The lens and its mount sit in a cradle cut through the seat with 1.5 mm to spare, so the pod goes
   on and off straight down its lens axis with the lens fitted.
 - **Neither camera sees it.** The HQ sees no printed part at all. The seat's top corner is bevelled
@@ -169,15 +169,21 @@ models on the wrist) is in [`compute/README.md`](compute/README.md).
 
 | Qty | Part | Where |
 |---|---|---|
-| 2 | M3 x 12 socket head (ISO 4762) | Bracket pad into the tab's brass inserts, down the O7 channels with a 2.5 mm hex key. Snug only |
-| 4 | M3 x 16 socket head + 4 M3 nuts | Collar clamp. Heads on the carrier side, nuts in the bracket's ears |
-| 4 | M3 x 16 socket head + 4 M3 nuts | Pod onto the seat. Nuts dropped into the seat's top and bottom slots |
-| 4 | M2.5 x 12 + 4 M2.5 nuts | HQ Camera: heads in counterbores on the pod's front, nuts on the camera's back |
-| 4 | M2 x 10 + 4 M2 nuts | Camera Module 3 Wide, the same way |
-| 4 | M2.5 x 12 | Pi 5, through the spacers into the nut traps in the carrier |
+| 2 | M3 x 10 Phillips pan head | Bracket pad into the tab's brass inserts, down the O7 channels with a #1 Phillips (shaft 45 mm or more). Snug only |
+| 4 | M3 x 18 Phillips pan head + 4 M3 nuts | Collar clamp. Heads on the carrier side, nuts in the bracket's ears |
+| 4 | M3 x 18 Phillips pan head + 4 M3 nuts | Pod onto the seat. Nuts dropped into the seat's top and bottom slots |
+| 4 | M2 x 12 Phillips pan head + 4 M2 nuts | HQ Camera: heads in the counterbores on the pod's front, nuts on the camera's back. M2 through the camera's M2.5 holes; all four heads must sit below the face, because the seat covers two |
+| 4 | M2 x 12 Phillips pan head + 4 M2 nuts | Camera Module 3 Wide, the same way |
+| 4 | Nylon M2.5 x 12 pan head + 4 nylon nuts | Pi 5, through the spacers into the nut traps in the carrier |
 | 2 | Raspberry Pi Standard-Mini camera cable, 300 or 500 mm | Routes are about 206 mm (HQ) and 212 mm (Wide), so the 200 mm cable is too short. 500 mm works with the extra folded on the carrier; 300 mm leaves nothing to fold |
 | 1 | Pi 5 Active Cooler | Faces outward (+X) |
 | 1 | 24 V supply at the base, a 24 V to 5 V / 5 A USB-C buck converter on the carrier, and a magnetic breakaway | Along the arm; see below and [`power/`](power/README.md) |
+
+The steel screws and nuts are the stainless ones in the ME Prototyping Lab's drawer, and the M2.5s come
+from the lab's nylon kit, so none need ordering. [`cad/fastener_fit.py`](cad/fastener_fit.py) checks
+every length and head against the model; the numbers, and the screws not to use, are in
+[`BOM.md`](BOM.md#fasteners). The assembly GIF still draws the socket heads the CAD was first drawn
+with.
 
 **Power** ([`power/README.md`](power/README.md) has the numbers and a shopping list). The Pi 5 gets
 its own lead up the arm, with a service loop at each joint. It does not share the gripper's supply:
@@ -760,6 +766,7 @@ python piper_mount.py                                                # checks + 
 xvfb-run -a -s "-screen 0 1920x1080x24" python render.py            # renders/*.png
 xvfb-run -a -s "-screen 0 1920x1080x24" python fiducials.py         # renders/view_*.png, exports/fiducials/
 python envelope.py                                                   # renders/tight_spaces.png
+python fastener_fit.py                                               # exports/fastener_fit.json: screw lengths, heads, tool room (about 15 min)
 xvfb-run -a -s "-screen 0 1920x1080x24" python animate.py           # renders/assembly_steps.gif (gifsicle shrinks it)
 python ../slice/slice_a1mini.py --bambu ~/bambu/squashfs-root       # see slice/README.md
 python ../slice/slice_configs.py --bambu ~/bambu/squashfs-root      # each part alone, 3 printer/material setups
