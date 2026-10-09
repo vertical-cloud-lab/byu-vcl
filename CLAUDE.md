@@ -424,7 +424,11 @@ frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab
   is not), with a static ffmpeg in `~/ytframes/bin`. That ffmpeg **cannot resolve DNS** —
   statically linked glibc has no NSS — so fetch HLS segments with urllib/curl and only ever
   hand ffmpeg a local file. `~/ytframes/grab.py` does exactly that and is the thing to
-  reuse.
+  reuse. It is not on the Pi behind `OT2_STREAM_CAM_HOSTNAME` (checked 2026-10-09), so it is
+  presumably on the one behind `RPI_STREAM_CAM_HOSTNAME`, which the OT-2 is cabled to. When
+  that Pi is offline, the CubXL Pi has `~/.venvs/ytframes/bin/yt-dlp` too (2026-10-09),
+  with no JS runtime and no ffmpeg. Ordinary uploads still download there as separate video
+  and audio files; see [`atomizer-runs/README.md`](atomizer-runs/README.md).
 - **The archive timeline is not wall clock.** `release_timestamp` is where video offset 0
   sits at the very start, but for `bQDrYpT3vaE` everything from the third hour onward is
   **67 s later** than `release + offset` — a step, not a drift, i.e. an archive
