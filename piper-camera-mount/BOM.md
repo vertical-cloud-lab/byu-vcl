@@ -55,6 +55,14 @@ screws and nuts for the Pi 5 come from the lab's nylon kit.
 
 **Total: $288.78, plus PiShop's shipping.**
 
+**On campus first** ([`campus/README.md`](campus/README.md), read the same day):
+
+- **Zip ties:** the PSC (107 EB) gives them away, which saves the $6.99 Amazon pack.
+- **USB-C extension:** the ELC sells a $3.14 one, but its catalogue gives no length or rating. Read
+  the label at the desk before choosing it over the AINOPE.
+- **Pi 5 8 GB:** the ELC had two, at $188.00. That's $13 more than PiShop, but you'd have it the
+  same day.
+
 ### Only if the lab's aren't there
 
 All three were on the [#164](https://github.com/vertical-cloud-lab/byu-vcl/issues/164#issuecomment-5097723625)
@@ -84,7 +92,7 @@ are in [`exports/fastener_fit.json`](exports/fastener_fit.json).
 | Pi 5 → spacers → carrier | 4 | 4 × M2.5 | **Nylon M2.5 × 12**, the kit's longest | 1.7 mm past the nut. An 18 would hit the gripper | Nylon kit |
 
 "Past the nut" is from the tip to the nut's far face, with each nut at its thickest (ISO 4032) and
-pulled up against its trap. A negative number means the screw doesn't fill the nut.
+pulled up against its trap.
 
 **Why not M2.5 on the HQ Camera.** The bracket's seat covers two of the four HQ heads, so all four
 must sit inside their counterbores, which are Ø5.0 mm and 2.0 mm deep.
@@ -122,8 +130,8 @@ Wide's 102° view, at mid-height. The design's 16 would just graze it too. If it
 - A #0 Phillips for the M2s. Some M2 pan heads take a #1, as McMaster's do.
 - Hex keys aren't needed unless you swap in socket heads.
 
-**Order of work:** the same as the README's [assembly order](README.md#hardware), with three
-additions.
+**Order of work:** the README's [assembly order](README.md#hardware) already suits these screws.
+Three things to know:
 
 - **Drive the clamp screws before the Pi 5 goes on.** The board covers their channels, 35 mm above
   the heads.
