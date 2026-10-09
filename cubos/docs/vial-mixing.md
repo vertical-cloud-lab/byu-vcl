@@ -47,8 +47,8 @@ CubOS at the Pi's commit `496819c`, and Opentrons' published pipette definitions
    the P20 suits about 25–40 µL, a few hundred times less than the vial holds.
 2. **The jet is small and slow.** 20 µL is a sphere 1.7 mm in radius. At ~8 µL/s
    through a ~0.5 mm orifice (my estimate for a 20 µL tip, not measured) it leaves
-   at ~4 cm/s, a Reynolds number around 20 in water. That jet is laminar and stops
-   within a few millimetres. Paint is far more viscous than water, so in paint it
+   at ~4 cm/s, a Reynolds number around 20 in water. That jet is laminar and loses
+   its speed close to the tip. Paint is far more viscous than water, so in paint it
    travels even less.
 3. **In and out at the same spot mostly undoes itself.** At low Reynolds number,
    drawing a volume in and pushing it back out from the same place returns most of
@@ -124,7 +124,7 @@ From Opentrons' own definitions
 
 So the P300 does make a big difference: 15× per stroke and ~12× per second at the
 same plunger speed, with a much stronger jet. It uses the same 10-pin header, and
-Ursa's stack was built around one (the upstream firmware shipped with P300
+Ursa's stack was built around one (the PANDA firmware it runs shipped with P300
 constants; [wiring doc §7](opentrons-pipette-wiring.md#7-consequences-that-outlive-the-wiring-fix)).
 But 300 µL is still only 3–6% of a few-mL fill, its minimum is 20 µL, and it needs
 its own firmware constants, 300 µL tips, a tip rack and new Z heights.
