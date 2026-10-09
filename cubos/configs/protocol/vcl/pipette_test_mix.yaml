@@ -3,15 +3,16 @@
 # #169, 2026-10-09 21:17Z. Every other step, position and comment below is
 # pipette_test.yaml's, verbatim; see that file's header for their history.
 #
-# Both mixes keep the replaced step's plane, height -35.0 (tip end at deck Z
-# 20, gantry Z 55), and the 20 uL the aspirate used. cycles: 3 is CubOS's
+# Both mixes keep the replaced step's plane, height -35.0, and the 20 uL the
+# aspirate used. With the rims at deck Z 56 in ben_2vials_tiprack.yaml, that
+# puts the tip end at deck Z 21 and the gantry at Z 56. cycles: 3 is CubOS's
 # default, written out.
 #
 # What one cycle sends (PipetteInstrument.mix at CubOS 496819c; the
 # OpentronsPipette driver does not override it):
 #
-#   ASPIRATE 20 -> G01 Z56 (up 1 mm) -> DISPENSE 20 -> ASPIRATE 20
-#               -> G01 Z55 (back down) -> DISPENSE 20
+#   ASPIRATE 20 -> G01 Z57 (up 1 mm) -> DISPENSE 20 -> ASPIRATE 20
+#               -> G01 Z56 (back down) -> DISPENSE 20
 #
 # On the flashed PANDA firmware (src/Pipette.cpp), ASPIRATE first moves the
 # plunger to PRIME_POSITION 28.0, then up 20 x 1.34 = 26.8 mm to 1.2 mm.
