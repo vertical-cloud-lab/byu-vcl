@@ -6,7 +6,7 @@ This is the run-by-run record behind the repeatability study in
 
 | Run | Write-up | In short |
 | --- | --- | --- |
-| 2026-10-08 | [`2026-10-08/`](2026-10-08/README.md) | The melt dripped onto a frozen lump on the plate's tip, or past it, and hardly atomized. O2 took at least three gas washes at 500 °C to reach the mid 20s ppm. |
+| 2026-10-08 | [`2026-10-08/`](2026-10-08/README.md) | The melt dripped onto a frozen lump on the plate's tip, or past it, and hardly atomized. It is the third run in a row to go wrong where the melt meets the plate. O2 took at least three gas washes at 500 °C to reach the mid 20s ppm. |
 
 Run 1 (2026-10-06) has no video, only the notes and photo in #261.
 
@@ -14,7 +14,7 @@ Run 1 (2026-10-06) has no video, only the notes and photo in #261.
 
 Run videos are phone recordings uploaded unlisted to the BYU Vertical Cloud Lab channel.
 YouTube refuses player extraction from GitHub Actions runners (*"Sign in to confirm you're
-not a bot"*), so download them on a Pi and copy them back. The OT-2 Pi that holds
+not a bot"*), so download them on a Pi and copy them back. The stream-cam Pi that holds
 `~/ytframes/grab.py` (see [`CLAUDE.md`](../CLAUDE.md)) was offline on 2026-10-09, so the
 CubXL Pi was used:
 

@@ -34,13 +34,18 @@ is in [`transcript.md`](transcript.md), with every line linked to its moment in 
 - **After the run**, a solid puddle of aluminium sits in the white cup, and a little fine
   powder is spread over the cone and the collection port. Most of the charge likely froze
   rather than atomized, but only weighing the puddle, the lump and the powder will say.
+- **This is the third run in a row where the pour failed at the plate.** On Oct 2 the
+  pour pressure was too high and the plate too far away, and on Oct 6 the stream hit the
+  upper sonotrode. The trainer's advice is to put a slow stream high on the plate's face and to
+  check where it will land before heating. See [Compared with earlier
+  runs](#compared-with-earlier-runs).
 
 ## The pour (pt2)
 
 ![Six viewport frames from pt2: the plate enters from the upper left with a bright lump of aluminium on its tip; a thin stream comes down from above; the white cup sits below](pt2_viewport.jpg)
 
 *Viewport frames from pt2 at 0:03, 1:39, 1:51, 2:03.5, 2:09 and 2:15. The dark bar from
-the upper left is the plate, at 45°. The bright crumpled lump is aluminium frozen onto its
+the upper left is the plate. The bright crumpled lump is aluminium frozen onto its
 tip. The thin vertical line is the melt stream. The white cup below catches what falls past.*
 
 **The lump was there before the footage starts.** At [0:03](https://youtu.be/dTyuZmqYxHA?t=3) it
@@ -106,8 +111,9 @@ frequency, 39.88 kHz at 92 %, is about 200 Hz above the scanned resonance.
 
 ![Panel at 13:00 and 13:26 of pt1: chamber pressure 141 then 151 mbar, Indutherm temperature 32 °C, oxygen 1000 then 816 ppm](pt1_hmi_oxygen.jpg)
 
-The 1000 ppm at 13:00 may be the top of the sensor's range rather than a measurement. For
-comparison, run 1 (Oct 6) logged 19 ppm at the start and 140 ppm at the end.
+The 1000 ppm at 13:00 is the display's maximum (trainer, Video 1 25:03 in the
+[#255 notes](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/notes/groupA.md)), not a measurement. For comparison, run 1 (Oct 6)
+logged 19 ppm at the start and 140 ppm at the end.
 
 ## After the run (results short)
 
@@ -156,7 +162,7 @@ The operator works from Gage's notes in a Slack message. Transcribed from the fr
 > - Change temp to 500 C, wait for […]
 >
 > […] Check plate if it is in the right position to catch the aluminum stream. Use
-> [Turbo Pump] as needed to 1. Increase flow onto the plate to initiate atomizing,
+> [Turbo Pump, which the training videos call turbo pressure] as needed to 1. Increase flow onto the plate to initiate atomizing,
 > 2. Correct stream direction, 3. Push out nozzle in case of clog (especially when at the
 > end of the atomizing run). Once finished, press Sealing Rod, Melting Pressure, Generator
 > Stop, and Ultrasonic Start (to turn off ultrasonic). Then also turn off Transducer
@@ -172,11 +178,44 @@ The steps between *"wait for"* at 500 °C and *"Check plate"* (the melt and the 
 itself, including the 850 °C setpoint, the graining pressure and when to start the
 ultrasonics) aren't legible in any frame.
 
+## Compared with earlier runs
+
+The transcript notes for the training and Oct 2 videos, in
+[#255](https://github.com/vertical-cloud-lab/byu-vcl/pull/255) at `88eeace`, show the same
+kind of failure before:
+
+| Run | What went wrong with the pour | Source |
+| --- | --- | --- |
+| Sep 30, training video 9 | *"Nice atomization on the top of the plate, but at the bottom the material gathers and stops the atomization, so it drips un-atomized"* (21:07) | [groupC.md](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/notes/groupC.md) |
+| Oct 2, part 2 | *"Most of it did not get atomized."* The 0.17 bar pour pressure *"was definitely too high"*, and *"the plate needed to be a lot closer so [it] had more time to run down it"* (27:00–27:33) | [groupD.md](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/notes/groupD.md) |
+| Oct 6, run 1 | The stream landed on the upper sonotrode; little powder | [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6025960787) |
+| Oct 8 | The stream landed on a frozen lump at the plate's tip, or fell past it, and dripped without atomizing | this page |
+
+In each of the last three runs, the most visible problem was where and how the melt met
+the plate. The trainer's guidance in the same notes:
+
+- **A thin stream is fine.** *"A very thin stream or single droplets would atomize stably"*,
+  and the ideal is a slow drip or slow stream (Video 9, 20:51 and 24:12). So the dripping
+  on Oct 8 wasn't the problem in itself; where it landed was.
+- **Pour high on the plate.** In Video 3 the follow-up to *"some of it is dropping"* is to
+  pour higher on the plate (43:05), and wider or longer Mo plates are recommended for
+  aluminium (47:28).
+- **Check the landing point before heating**, for example with a laser pointer down the pour
+  path (Video 8, 09:53, an idea raised in training).
+- **0 W is the normal idle reading** (Oct 2 pt1, 21:09). None of the notes say what POWER
+  reads during a pour.
+- **Oxygen**: don't work above 100 ppm, and 40–50 ppm is best (Video 1, 25:03). On Oct 2 a
+  single wash at 500 °C reached the low 20s.
+
+For the repeatability runs in #261 this argues for fixing the landing point first: the
+same spot on the plate's face, checked before heating. In a run where the melt misses the
+plate, the spread between runs measures the alignment, not the process.
+
 ## Not in the footage
 
 Nothing shows the pour starting, so these are unknown for this run: when the sealing rod
 opened, the O2 and melt temperature at that moment, the graining pressure, the charge mass,
-the booster, and the plate type. The issue's notes for run 1 have most of them. Run 2's
+the booster, and the plate type. The issue's notes for run 1 have most of them. This run's
 need adding to [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261) from
 memory or the machine's log.
 
