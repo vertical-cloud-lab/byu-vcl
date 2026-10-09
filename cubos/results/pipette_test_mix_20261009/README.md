@@ -1,5 +1,10 @@
 # pipette_test_mix_20261009: stopped at step 2, the capper never caught vial_1's cap
 
+**Cause: the capper was wired incorrectly.** Ben found and fixed it at 21:37Z,
+and the re-run,
+[`../pipette_test_mix_20261009b/`](../pipette_test_mix_20261009b/README.md),
+completed 12/12 with both decaps catching on the first engage.
+
 `pipette_test_mix.yaml` (`pipette_test` with `mix` in place of `aspirate` and
 `blowout`) on the CubXL for issue #169, 2026-10-09. Ben's 10-02 gantry and deck
 files. The plunger runs on the TMC2209 (Adafruit 6121) with the 10-07
@@ -57,12 +62,14 @@ The plunger did what it should: `HOME`, prime to 28.0, and after the run a
 
 The photos in [`after_stop/`](after_stop/) were taken from the stopped
 position. Compared with the 10-07 frames, the close-up camera now sits
-differently on the head: the capper and its red-wired board, both on the head, sit about 190 px further right in the
-frame. So the photos can't show whether vial_1 moved relative to the capper.
+differently on the head: the capper and its red-wired board sit about 190 px
+further right in the frame. So the photos can't show whether vial_1 moved
+relative to the capper.
 
-## Why it might not have caught the cap
+## What was considered before Ben found the wiring
 
-Untested, most likely first:
+Written before his reply, most likely first. Ben's fix was to the capper's
+wiring:
 
 1. **The cap sits differently on vial_1**, for example pressed on harder after a
    refill. On 10-06 the first engage already missed, so vial_1's decap has been
@@ -70,3 +77,15 @@ Untested, most likely first:
 2. **The vial holder or vial_1 moved** relative to the capper since 10-07.
 3. **The magnet isn't pulling**, from its supply or wiring. The plunger's 12 V
    is fine: the probe and both `HOME`s were normal.
+
+## A CubOS bug the stop exposed
+
+After the failed decap, CubOS's protocol-level failure retract raised
+`Unknown instrument 'PawduinoCapper'. Available: camera_3, pipette,
+vial_capper_decapper` ([`run_hardware.log`](run_hardware.log)).
+`last_commanded_pose` records the instrument's `name`, which defaults to its
+class name when the gantry file gives none, and the retract looks that up among
+the gantry file's keys (`protocol_engine/setup.py`, `_best_effort_retract_to_safe_z`,
+at CubOS `496819c`). It did no harm here, because the decap
+command had already retracted the capper to Z 99. A failure that leaves a tool
+low would not get this second retract.
