@@ -35,7 +35,7 @@ the read height. Use these unless a later entry below changes them:
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
 | paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
-| sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
+| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), read off the chip itself; the same for every reading on record. **Since 10-09 a reading can ask for another gain:** `link.read(settings={"gain": 512})`. Integration time is fixed. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/)) | 10-09 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
 
 ```
@@ -1195,6 +1195,9 @@ no slip, released seated. The plate had been moved to **slot 7**, so the driver 
 - **Gain and integration time are fixed in the firmware, and the gain was never set:**
   the chip runs at its 256x default. [`../pico/`](../pico/) makes both settable per
   reading over MQTT; it needs one USB visit to flash.
+  *(Corrected 10-09: wrong. The board runs an older `as7341_sensor.py` than upstream, which
+  does set the gain: 128x, 2 × 281 ms, read off the chip's registers. Only the gain was made
+  settable, on 10-09; see the 10-09 firmware entry.)*
 - The paints were ~19 h old. Confirm on fresh paint before moving the read height.
 
 ## 2026-10-02 — why landing on H12 twice read 12% apart: the H10 landing pushed the enclosure up the nozzle (no motion)
@@ -1281,7 +1284,8 @@ found again in a separately downloaded copy of its source. Two checks from runs 
   passband within it changes the miss by at most ±0.015.
 - **Two earlier statements corrected:** the gain is 256x, not 128x (here and in
   [`accuracy-provenance.md`](accuracy-provenance.md)), and the board's own LED never saturated
-  upstream; it made the colours indistinguishable.
+  upstream; it made the colours indistinguishable. *(10-09: the first of these "corrections"
+  was itself wrong. The gain is 128x, read off the chip; see the 10-09 firmware entry.)*
 
 ## 2026-10-02 (evening) — which diffuser? White PTFE tape on the chip, with the hole blackened; a modest fix (no motion)
 
@@ -1424,6 +1428,32 @@ sensor's maker recommends. All of it is in
   (average ΔE 0.98 on its own 24 patches).
 
 ![points off at each read height](read-height-2026-10-09.png)
+
+## 2026-10-09 (night) — the Pico W backed up, and gain made settable per reading (gain only)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins, with the board on the robot Pi's USB: check every version on the board so
+it can be flashed back, then install the gain change and nothing else. Details, rollback
+steps and test numbers are in [`../pico/README.md`](../pico/README.md).
+
+- **Versions:** MicroPython v1.29.0 (2026-08-24), byte-identical to the official download.
+  32 files, all identical to the 09-03 backup except `main.py` (`SoftI2C` → `I2C(0)` and a
+  comment). AS7341 ID `0x24`, revision 0.
+- **Backups**, all checked byte for byte against the board: every file, a full 2 MB flash
+  image and a UF2 of it, on the Pi in `~/pico-backups/20261009_165748_before-gain/`; the
+  non-secret files also in [`../pico/board-2026-10-09/`](../pico/board-2026-10-09/).
+- **The chip reads at 128x, 2 × 281 ms**, not the 256x and 2 × 559 ms claimed on 10-01. That
+  came from upstream's newer `as7341_sensor.py`; the board's older one sets gain code 8,
+  ATIME 100, ASTEP 999, and the registers read live said the same. It hasn't changed since at
+  least 09-03, so this holds for every reading on record. The 10-01 change was withdrawn: its
+  defaults would have changed every reading 4×.
+- **Installed:** `settings: {"gain": G}` in a read command, G from 0.5 to 512; without it a
+  reading is at 128x as before. Each reply now says the gain used and the chip's own gain
+  code. Integration time is not settable.
+- **Tested on the board:** 32x 601, 64x 1,185, 128x 2,382–2,385, 256x 4,696, 512x
+  9,146–9,157 (8-channel totals), each with the right code; plain reads unchanged; bad
+  settings refused. 512x is 3.84× the 128x counts, not 4×, so re-read white and black at each
+  gain.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
@@ -1592,7 +1622,9 @@ source rather than inferred:
   trip. `Clear` is sampled in both cycles and discarded in both. Gain is 256×
   against a 512× maximum: the firmware asks for 128×, but `set_again()` ignores
   that value and the chip keeps its default (found 2026-10-01, corrected here
-  2026-10-02).
+  2026-10-02). *(Corrected 2026-10-09: on our board each integration is 280.8 ms
+  (`atime=100`) and the gain is 128×, read off the chip; that was upstream's newer
+  wrapper, not the board's. See [`../pico/`](../pico/).)*
 
 ---
 

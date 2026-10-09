@@ -166,11 +166,12 @@ class SensorLink:
     def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2, settings=None):
         """Command one reading and return a dict of the 8 channels plus metadata.
 
-        ``settings`` (e.g. ``{"gain": 512, "atime": 200, "astep": 999}``) asks the
-        board for a different gain and integration time for this one reading. It
-        needs the firmware change in ``../pico/`` (sensor_settings.py); a board
-        without it ignores the key, so a reply that does not echo
-        ``sensor_settings`` back is refused rather than mislabelled.
+        ``settings`` (e.g. ``{"gain": 512}``) asks the board for a different gain
+        for this one reading; gain is the only setting (0.5, 1, 2, ... 512; the
+        default is 128x). It needs the firmware in ``../pico/`` (installed
+        2026-10-09); a board without it ignores the key, so a reply that does not
+        echo ``sensor_settings`` back, or echoes a different gain, is refused
+        rather than mislabelled.
         """
         timeout = timeout or self.timeout
         r, y, b = rgb
@@ -209,7 +210,11 @@ class SensorLink:
                     if settings is not None and "sensor_settings" not in body:
                         raise SensorError(
                             "the board ignored the settings: it is running firmware "
-                            "without sensor_settings.py (see wireless-color-sensor/pico/)")
+                            "without the per-reading gain (see wireless-color-sensor/pico/)")
+                    if (settings is not None and "gain" in settings
+                            and (body["sensor_settings"] or {}).get("gain") != settings["gain"]):
+                        raise SensorError(f"asked for gain {settings['gain']}, the board "
+                                          f"reports {body['sensor_settings']}")
                     answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {

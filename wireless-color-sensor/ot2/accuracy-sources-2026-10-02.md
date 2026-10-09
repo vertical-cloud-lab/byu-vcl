@@ -221,7 +221,8 @@ reference as having "low to no reflectance (for example a black light trap)".
    - ams: "The higher the counts (before saturation), the better the accuracy." (UG000400, PDF
      p. 40); its liquid guide aims "to achieve stable values for the sensor result to be greater than
      10,000 digits or more" (QG000121 §7.6). **Our brightest channel on 10-01 was 1,464–2,402 counts,
-     2–4% of full scale.** 512x instead of 256x roughly doubles that (typical ratio 7.75 ÷ 3.95); more needs a
+     2–4% of full scale.** 512x instead of 256x roughly doubles that (typical ratio 7.75 ÷ 3.95) *(10-09: the
+     chip was at 128x, so 512x gives about 4×; measured 3.84× on the board)*; more needs a
      longer integration, e.g. `astep` 2999 with `atime` 255 is about 2.1 s per half-reading. Expect
      it to help the weak 410 nm channel, not the stray-light floor: gain scales both alike.
    - ams normalises every reading to "Basic_Counts" = raw counts ÷ (gain × integration time) and says
@@ -480,7 +481,7 @@ tolerance's.** Measuring our unit's channel centres would matter only once the r
 | claim (where) | verdict |
 | --- | --- |
 | gain ratios: 256x is 3.75–4.25× and 512x 7.25–8.25× the 64x response (10-01) | **right** (DS000504 Fig. 17; typical 3.95 and 7.75) |
-| the chip's power-on gain is code 9 = 256x, and `set_again(128)` is ignored (10-01) | **right** (CFG1 0xAA default 9; upstream `set_again` only writes codes 0–10) |
+| the chip's power-on gain is code 9 = 256x, and `set_again(128)` is ignored (10-01) | **right** (CFG1 0xAA default 9; upstream `set_again` only writes codes 0–10) — *but 10-09 found our board doesn't run that upstream code: its older wrapper sets code 8, and the chip read 128x* |
 | every channel's figures are measured with an ED1-C50 diffuser on top (10-01) | **right** (footnote to Figs. 8–15) |
 | "nano-optic deposited interference" filters behind a built-in aperture; 40° half-cone (10-01) | **right** (§1 and p. 15) |
 | dark counts 0–3 (ADC 0–4) and 0–5 (ADC 5) at 512x and 98 ms, auto-zero before every integration (10-01) | **right about the datasheet, but it doesn't describe our board**: the spec assumes `AZ_CONFIG` = 1, and our firmware leaves it at 255 |

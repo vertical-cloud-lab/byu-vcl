@@ -199,6 +199,12 @@ were backed up on 2026-09-03 (`~/pico-backups/` on the Pi) with an older wrapper
 out unless something else adds ~0.8 s per reading. Reading register 0xAA settles
 it, and the firmware change below reports it in every reply.
 
+> **Correction, 2026-10-09.** Register 0xAA settled it the other way: the board still runs
+> that older wrapper, and the chip read CFG1 8 (**128x**), ATIME 100, ASTEP 999. Something
+> else does add ~0.8 s per reading: on 10-09, 2 × 280.8 ms of integration gave the same
+> 1.41–1.43 s round trip. The firmware change below was withdrawn, and a gain-only one
+> installed instead; see [`../pico/README.md`](../pico/README.md).
+
 **What more gain or integration would and would not do:**
 
 - The brightest channel at the plate is 1,464 counts and 2,402 hanging at z 125:

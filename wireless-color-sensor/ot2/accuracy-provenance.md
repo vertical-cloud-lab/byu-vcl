@@ -178,6 +178,13 @@ and thrown away in both — it is exactly the factor needed to stitch the halves
   > code (0–10), not a factor, and ignores 128, so the chip stays at its power-on code 9
   > (DS000504, CFG1 0xAA). That leaves 2x of unused gain, not 4x. See
   > [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md) §4.
+
+  > **Correction, 2026-10-09.** Both of the above describe upstream's `as7341_sensor.py`, not
+  > the board's. The board runs an older one, `Sensor(atime=100, astep=999, gain=8)`, and the
+  > chip's registers read live on 10-09 said CFG1 8 (**128x**), ATIME 100, ASTEP 999. So each
+  > cycle is **280.8 ms** (0.56 s per 8-channel reading, ~40% of the round trip), and there is
+  > 4x of unused gain. Since 10-09 a reading can ask for another gain; see
+  > [`../pico/README.md`](../pico/README.md).
 - Largest single channel ever recorded here with the rail lights on: **3216
   counts of 65535 full scale = 4.9%**.
 
