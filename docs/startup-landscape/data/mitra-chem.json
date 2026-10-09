@@ -1,0 +1,192 @@
+{
+ "company": "Mitra Chem",
+ "slug": "mitra-chem",
+ "hq": "Mountain View, US",
+ "country": "US",
+ "founded": "2021",
+ "category": "AI + high-throughput experimentation",
+ "focus": "ML-guided iron-based (LFP/LMFP) cathode materials and manufacturing; legal entity Mitra Future Technologies",
+ "status": "active",
+ "website": "https://www.mitrachem.com",
+ "funding": [
+  {
+   "date": "2021-11-17",
+   "round": "Series A",
+   "amount_usd_m": 20.0,
+   "original_amount": "USD 20M",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.energetica-india.net/keyword/mitra-chem"
+  },
+  {
+   "date": "2023-08",
+   "round": "Series B first close (of $60M round)",
+   "amount_usd_m": 40.0,
+   "original_amount": "USD 40M first close of USD 60M",
+   "type": "equity",
+   "lead_investors": [
+    "General Motors"
+   ],
+   "source": "https://www.orrick.com/en/News/2023/08/Enabling-Mass-Market-Electrification-For-EVs-Energy-Storage-and-Beyond"
+  },
+  {
+   "date": "2024-09-20",
+   "round": "DOE MESC award (AmPLIFI LFP cathode plant, Muskegon MI; with Michigan, up to $125M total)",
+   "amount_usd_m": 100.0,
+   "original_amount": "USD 100M DOE share",
+   "type": "grant",
+   "lead_investors": [
+    "US DOE Office of Manufacturing and Energy Supply Chains"
+   ],
+   "source": "https://metaltechnews.com/story/2024/09/25/tech-bytes/doe-and-michigan-fund-mitra-chem-cathodes/1959.html"
+  }
+ ],
+ "headcount": [],
+ "postings": [],
+ "current_openings": {
+  "date": "2026-10-09",
+  "count": 2,
+  "by_function": {
+   "lab-automation": 1,
+   "business-ops": 1
+  },
+  "titles": [
+   "Laboratory Technician (Mountain View)",
+   "General Application"
+  ],
+  "source": "https://www.mitrachem.com/join-us"
+ },
+ "people": [
+  {
+   "name": "Vivas Kumar",
+   "title": "Co-founder and CEO",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2021-01",
+   "start_basis": "Stanford GSB case study; founding 2021",
+   "end": null,
+   "background": "Stanford GSB case subject; co-founder",
+   "source": "https://www.gsb.stanford.edu/faculty-research/case-studies/mitra-chem-charging-ahead-battery-materials-manufacturing"
+  },
+  {
+   "name": "Chirranjeevi Gopal",
+   "title": "CTO and co-founder",
+   "function": "materials-science",
+   "seniority": "founder",
+   "start": "2021",
+   "start_basis": "founding; live team page 2026-10",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "William Chueh",
+   "title": "Co-founder, director, chief scientific advisor",
+   "function": "materials-science",
+   "seniority": "founder",
+   "start": "2021",
+   "start_basis": "founding; live team page 2026-10",
+   "end": null,
+   "background": "Professor of materials science, Stanford",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Vikas Kante",
+   "title": "CFO",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Ross Kirschner",
+   "title": "Chief Legal Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Xiaofei Ye",
+   "title": "Chief Industrialization Engineer",
+   "function": "materials-science",
+   "seniority": "exec",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Scott Morehouse",
+   "title": "Head of Manufacturing",
+   "function": "materials-science",
+   "seniority": "head",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Heather Medina",
+   "title": "Head of People & Grant Administration",
+   "function": "business-ops",
+   "seniority": "head",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Denise Gray",
+   "title": "Independent director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Will Drewery",
+   "title": "Independent director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "not stated",
+   "source": "https://www.mitrachem.com/team"
+  },
+  {
+   "name": "Elan Frantz",
+   "title": "Director",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2026-10",
+   "start_basis": "live team page (start unknown)",
+   "end": null,
+   "background": "Alpha Wave Global, EIR",
+   "source": "https://www.mitrachem.com/team"
+  }
+ ],
+ "staff_roles": [],
+ "departures": [],
+ "notes": [
+  "The DOE amount is a selection for award negotiation, not disbursed equity.",
+  "2025 Series B extension reports conflict ($50M per one tracker, ~$16M per others); excluded until a primary source is found.",
+  "Total confirmed equity ~$60M (Series A $20M + Series B first close $40M); the Stanford case puts total raised at $80M.",
+  "EDGAR full-text search for 'Mitra Chem' Form D returned no hits; the legal name 'Mitra Future Technologies' was not searched for time.",
+  "Skipped for time: Wayback team pages, archived LinkedIn, job boards, OpenAlex, No headcount data collected (third-party estimates of ~55-61 not used).",
+  "Live team page lists 7 leaders and a 5-person board (11 people); it shows leadership only, not total staff. Openings are on TrineHire (app.trinethire.com/companies/913890-mitra-chem)."
+ ]
+}

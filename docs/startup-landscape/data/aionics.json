@@ -1,0 +1,114 @@
+{
+ "company": "Aionics",
+ "slug": "aionics",
+ "hq": "Palo Alto, US",
+ "country": "US",
+ "founded": "2020",
+ "category": "AI-for-materials (computational)",
+ "focus": "ML-designed battery electrolytes (EV, then electric aviation); Stanford and CMU/Michigan founders",
+ "status": "active",
+ "website": "https://aionics.io",
+ "funding": [
+  {
+   "date": "2023-10-14",
+   "round": "Seed (reported cumulative)",
+   "amount_usd_m": 3.5,
+   "original_amount": "USD 3.5M raised to date incl. USD 3.2M seed",
+   "type": "equity",
+   "lead_investors": [
+    "UP.Partners"
+   ],
+   "source": "https://techcrunch.com/2023/10/14/how-generative-ai-is-creeping-into-ev-battery-development/"
+  },
+  {
+   "date": "2024-05-06",
+   "round": "Seed extension (Form D first sale; amended 2025-10)",
+   "amount_usd_m": 7.3,
+   "original_amount": "USD 4,654,331 sold (2024-05 filing), 7,304,324 sold of 7,407,636 (2025-10 amendment), 8 investors",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313325000002/primary_doc.xml"
+  },
+  {
+   "date": "2026-03-31",
+   "round": "Unannounced equity/options (Form D)",
+   "amount_usd_m": 0.5,
+   "original_amount": "USD 501,651 sold of 1,426,530 offered, 1 investor",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml"
+  }
+ ],
+ "headcount": [],
+ "postings": [],
+ "current_openings": {
+  "date": "2026-10-09",
+  "count": 0,
+  "by_function": {},
+  "titles": [],
+  "source": "https://aionics.io/"
+ },
+ "people": [
+  {
+   "name": "Austin Sendek",
+   "title": "Co-founder; CEO; director",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2020",
+   "start_basis": "founding (press); Form D 2024 executive officer and director",
+   "end": "by 2026-03 (inferred from Form D)",
+   "background": "PhD Stanford (battery materials ML)",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313324000001/primary_doc.xml"
+  },
+  {
+   "name": "Lenson Pellouchoud",
+   "title": "Co-founder",
+   "function": "materials-science",
+   "seniority": "founder",
+   "start": "2020",
+   "start_basis": "founding (press)",
+   "end": null,
+   "background": "PhD Stanford",
+   "source": "https://theaircurrent.com/feed/dispatches/aionics-aviation-expansion-evtol-battery-electrolytes/"
+  },
+  {
+   "name": "Venkat Viswanathan",
+   "title": "Co-founder; director; executive officer by 2026",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2020",
+   "start_basis": "founding (press); Form D 2024 director; 2026 executive officer and director",
+   "end": null,
+   "background": "professor, Univ. of Michigan (previously Carnegie Mellon)",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml"
+  },
+  {
+   "name": "Gary Gysin",
+   "title": "Advisor",
+   "function": "business-ops",
+   "seniority": "advisor",
+   "start": "2024-05",
+   "start_basis": "press coverage May 2024",
+   "end": null,
+   "background": "former CEO, Wisk",
+   "source": "https://theaircurrent.com/feed/dispatches/aionics-aviation-expansion-evtol-battery-electrolytes/"
+  }
+ ],
+ "staff_roles": [],
+ "departures": [
+  {
+   "who": "Austin Sendek",
+   "title": "CEO",
+   "date": "2025-10 to 2026-03",
+   "basis": "listed on the 2024 Form D and its 2025 amendment, absent from the 2026 Form D, where Viswanathan is the sole executive officer; not confirmed by news",
+   "source": "https://www.sec.gov/Archives/edgar/data/2023133/000202313326000001/primary_doc.xml"
+  }
+ ],
+ "notes": [
+  "Total raised ~$11.3M (TechCrunch to Oct 2023 plus Form D 2024-2026); no Series A found.",
+  "A December 2024 seed extension reportedly led by Trousdale Ventures and UP.Partners likely corresponds to the 2024 Form D offering (amended 2025-10); not verified against a primary release.",
+  "Possible CEO change by 2026 inferred only from Form D related persons.",
+  "Skipped for time: Wayback team pages, archived LinkedIn, job boards, OpenAlex. No headcount data collected.",
+  "Site cites Fast Company 2024 World Changing Ideas 'Small and Mighty' (under-50-employees) category: implies <50 staff in 2024 (inference)."
+ ]
+}

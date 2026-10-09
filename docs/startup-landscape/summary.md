@@ -7,35 +7,47 @@ Capital raised counts equity, JV capital and IPO proceeds; grants and debt are l
 | Company | HQ | Founded | Type | Status | Capital raised | Latest round | Team size (date, method) | Open roles (2026-10-09) |
 |---|---|---|---|---|---|---|---|---|
 | [CuspAI](companies/cuspai.md) | Cambridge, UK | 2024 | Computational / software | active | $580M | $450M B, 2026-07 | 85 (2026-08, linkedin-band) | 14 |
+| [Lila Sciences](companies/lila-sciences.md) | Cambridge, MA, US | 2023 | Self-driving or cloud lab | active | $550M | n/d B (reported talks, unconfirmed), 2026-06 | 33 (2026-09, team-page) | 106 |
 | [Periodic Labs](companies/periodic-labs.md) | Menlo Park, US | 2025 | Self-driving or cloud lab | active | $300M | n/d Next round (reported, unconfirmed), 2026-03 | 88 (2026-08, linkedin-band) | 33 |
 | [DP Technology (深势科技, Beijing DP Technology Co., Ltd.)](companies/dp-technology.md) | Beijing, China | 2018 | Computational / software | active | $211M | $114M C, 2025-12 | 201–500 (2025-03, linkedin-band) | n/d |
 | [Emerald Cloud Lab](companies/emerald-cloud-lab.md) | Austin, US | 2010 | Self-driving or cloud lab | active | $98M | n/d B ext. (aggregator), 2024-04 | 101 (2026-10, team-page) | n/d |
 | [Chemify](companies/chemify.md) | Glasgow, UK | 2019 | Self-driving or cloud lab | active | $93M (+$30M grants) | n/d B1 ext. (allotments 12 Dec 2025,…, 2025-12 | 200 (2026-10, team-page) | 33 |
 | [Orbital Materials (now Orbital Industries)](companies/orbital-materials.md) | London, UK | 2022 | Computational / software | active | $71M | $50M B, 2026-05 | 50 (2026-05, press) | 7 |
 | [Citrine Informatics](companies/citrine-informatics.md) | Redwood City, US | 2013 | Computational / software | active | $66M | $2.6M Unannounced equity/options (Form…, 2025-01 | 68 (2026-07, linkedin-band) | 5 |
+| [Medra](companies/medra.md) | San Francisco, US | 2022 | Self-driving or cloud lab | active | $63M | $52M A, 2025-12 | n/d | 15 |
+| [Mitra Chem](companies/mitra-chem.md) | Mountain View, US | 2021 | AI + high-throughput experimentation | active | $60M (+$100M grants) | $40M B first close (of $60M round), 2023-08 | n/d | 2 |
+| [Radical AI](companies/radical-ai.md) | New York (Brooklyn Navy Yard), US | 2024 | Self-driving or cloud lab | active | $55M (+$2.0M grants) | $55M Seed+, 2025-07 | 34 (2026-01, press) | n/d |
 | [Deep Principle (深度原理, Hangzhou Deep Principle Technology Co., Ltd.)](companies/deep-principle.md) | Hangzhou, China | 2023 | Computational / software | active | $24M | n/d A3 (closes A series), 2026-07 | n/d | n/d |
+| [Kebotix](companies/kebotix.md) | Cambridge, US | 2017 | Self-driving or cloud lab | active | $24M | $5.0M Unannounced equity (Form D), 2024-07 | n/d | 0 |
+| [Mattiq (formerly Stoicheia)](companies/mattiq.md) | Chicago, US | 2020 | AI + high-throughput experimentation | active | $19M | $4.5M Unnamed equity (Form D), 2024-12 | 17–17 (2023-03, team-page) | 0 |
 | [Altrove](companies/altrove.md) | Paris, France | 2024 | Self-driving or cloud lab | active | $14M | $10M Seed, 2025-10 | 6–9 (2024-12, registry) | n/d |
 | [Dunia Innovations](companies/dunia-innovations.md) | Berlin, Germany | 2022 | Self-driving or cloud lab | active | $12M | $12M Seed/A (sources differ), 2024-10 | 11–50 (2026-03, linkedin-band) | 13 |
+| [Aionics](companies/aionics.md) | Palo Alto, US | 2020 | Computational / software | active | $11M | $0.5M Unannounced equity/options (Form…, 2026-03 | n/d | 0 |
 | [Intrepid Labs](companies/intrepid-labs.md) | Toronto, Canada | 2023 | Self-driving or cloud lab | active | $11M | $7.0M Seed, 2025-05 | 1–10 (2026-10, other) | 0 |
 | [Entalpic](companies/entalpic.md) | Paris, France | 2024 | Computational / software | active | $9.4M | $9.4M Seed, 2024-09 | 25 (2025-12, press) | n/d |
 | [Telescope Innovations](companies/telescope-innovations.md) | Vancouver, Canada | None | Self-driving or cloud lab | active | $5.8M | $0.9M Private placement, tranche 2, 2025-10 | n/d | n/d |
 | [Atinary Technologies](companies/atinary.md) | Lausanne, Switzerland | 2019 | Self-driving or cloud lab | active | $5.0M | n/d Strategic minority investment, 2026-08 | 11–50 (2025-11, linkedin-band) | 4 |
 | [Polymerize (Polymerize Pte Ltd)](companies/polymerize.md) | Singapore, Singapore | 2020 | Computational / software | active | $4.8M | n/d Strategic (undisclosed), 2025-03 | 11–50 (2026-10, other) | n/d |
 | [Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)](companies/matlantis.md) | Tokyo, Japan | 2021 | Computational / software | active | $2.8M | n/d Business-and-capital alliance (Mi…, 2024-06 | 46 (2025-07, other) | 2 |
+| [Tetsuwan Scientific](companies/tetsuwan-scientific.md) | San Francisco, US | 2023 | Self-driving or cloud lab | active | $2.7M | $2.7M Pre-seed, 2024-11 | n/d | 2 |
 | [Materials Nexus (MatNex)](companies/materials-nexus.md) | London, UK | 2020 | Computational / software | active | $2.6M | n/d Unannounced round (SH01 allotment…, 2025-01 | 25 (2026-10, team-page) | 0 |
 
 ## Open roles by function (table view of `figures/openings_by_function.png`)
 
 | Company | ml-research | materials-science | lab-automation | software-eng | business-ops | leadership | unclassified | total |
 |---|---|---|---|---|---|---|---|---|
+| Lila Sciences | 17 | 18 | 18 | 25 | 28 | · | · | 106 |
 | Chemify | 4 | 7 | 6 | 8 | 8 | · | · | 33 |
 | Periodic Labs | 5 | 10 | 6 | 4 | 8 | · | · | 33 |
+| Medra | 1 | 6 | 3 | 3 | 2 | · | · | 15 |
 | CuspAI | 2 | 2 | · | 1 | 9 | · | · | 14 |
 | Dunia Innovations | 5 | 2 | 4 | 1 | 1 | · | · | 13 |
 | Orbital Materials (now Orbital Industries) | 1 | 1 | 1 | 3 | 1 | · | · | 7 |
 | Citrine Informatics | 1 | 1 | · | · | 3 | · | · | 5 |
 | Atinary Technologies | 1 | · | 1 | 1 | 1 | · | · | 4 |
 | Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC) | · | · | · | · | 2 | · | · | 2 |
+| Mitra Chem | · | · | 1 | · | 1 | · | · | 2 |
+| Tetsuwan Scientific | · | · | · | 2 | · | · | · | 2 |
 
 ## Leadership backgrounds
 
@@ -43,6 +55,7 @@ Founders, executives and heads tracked in each profile, counted by keywords in t
 
 | Company | Leaders tracked | PhD | professor / faculty | frontier AI lab / big tech | national lab | chemicals / materials industry | prior startup / founder | finance / consulting |
 |---|---|---|---|---|---|---|---|---|
+| Aionics | 3 | 2 | 1 | · | · | · | · | · |
 | Altrove | 2 | 1 | · | · | · | · | · | · |
 | Atinary Technologies | 2 | 2 | · | · | · | · | · | · |
 | Chemify | 7 | 2 | · | 1 | · | · | 1 | · |
@@ -54,13 +67,20 @@ Founders, executives and heads tracked in each profile, counted by keywords in t
 | Emerald Cloud Lab | 3 | 2 | · | · | · | · | · | · |
 | Entalpic | 3 | · | · | · | · | · | · | · |
 | Intrepid Labs | 4 | 2 | 2 | · | · | · | · | · |
+| Kebotix | 5 | 1 | 1 | · | · | · | · | 1 |
+| Lila Sciences | 26 | 13 | · | · | · | · | · | · |
 | Materials Nexus (MatNex) | 2 | · | · | · | · | · | · | · |
 | Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC) | 1 | 1 | · | · | · | · | 1 | · |
+| Mattiq (formerly Stoicheia) | 5 | 1 | 1 | · | · | · | · | · |
+| Medra | 1 | 1 | 1 | 1 | · | · | · | 1 |
+| Mitra Chem | 8 | · | 1 | · | · | · | 1 | · |
 | Orbital Materials (now Orbital Industries) | 3 | · | · | 1 | · | · | · | · |
 | Periodic Labs | 3 | 1 | · | 3 | · | · | · | · |
 | Polymerize (Polymerize Pte Ltd) | 2 | 1 | · | · | · | · | · | 1 |
+| Radical AI | 2 | · | · | · | · | · | · | · |
 | Telescope Innovations | 2 | · | 1 | · | · | · | · | · |
-| **All** | **73** | **18** | **4** | **10** | **1** | **1** | **2** | **2** |
+| Tetsuwan Scientific | 2 | · | · | · | · | · | 1 | · |
+| **All** | **125** | **36** | **9** | **11** | **1** | **1** | **4** | **4** |
 
 ## Posted pay
 
@@ -68,6 +88,117 @@ Base salary ranges published on the job boards (pay-transparency laws in CA, NY,
 
 | Company | Role | Function | Location | Posted range |
 |---|---|---|---|---|
+| Lila Sciences | [Senior / Principal ML Scientist, Foundation Models for Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4222034009) | ml-research | San Francisco, CA USA | $268K–384K |
+| Lila Sciences | [Senior/Principal ML Scientist, Translational Biology](https://job-boards.greenhouse.io/lilasciences/jobs/4395727009) | ml-research | San Francisco, CA USA | $268K–384K |
+| Lila Sciences | [ML Engineer, LS AI](https://job-boards.greenhouse.io/lilasciences/jobs/4222224009) | ml-research | San Francisco, CA USA | $252K–374K |
+| Lila Sciences | [Principal Engineer, AI Security](https://job-boards.greenhouse.io/lilasciences/jobs/4403714009) | ml-research | Cambridge, MA USA | $252K–374K |
+| Lila Sciences | [Scientist II / Senior ML Scientist, Data-Efficient Learning for Drug Discovery](https://job-boards.greenhouse.io/lilasciences/jobs/4340147009) | ml-research | Cambridge, MA USA; London, UK; San Francisco, CA USA | $228K–358K |
+| Lila Sciences | [Senior ML Scientist, AI for Protein Engineering](https://job-boards.greenhouse.io/lilasciences/jobs/4392247009) | ml-research | San Francisco, CA USA | $268K–358K |
+| Lila Sciences | [Senior ML Scientist, Biological Systems](https://job-boards.greenhouse.io/lilasciences/jobs/4395725009) | ml-research | San Francisco, CA USA | $268K–358K |
+| Lila Sciences | [Principal Engineer, AI Security](https://job-boards.greenhouse.io/lilasciences/jobs/4210497009) | ml-research | Cambridge, MA USA | $255K–348K |
+| Lila Sciences | [Principal Machine Learning Engineer, Applied AI](https://job-boards.greenhouse.io/lilasciences/jobs/4400744009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $252K–336K |
+| Lila Sciences | [Machine Learning Scientist I / II, Protein Design](https://job-boards.greenhouse.io/lilasciences/jobs/4396760009) | ml-research | San Francisco, CA USA | $176K–304K |
+| Lila Sciences | [ML Scientist, Foundation Models for Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4222051009) | ml-research | San Francisco, CA USA | $176K–304K |
+| Lila Sciences | [ML Scientist I/II, AI for Protein Engineering](https://job-boards.greenhouse.io/lilasciences/jobs/4392245009) | ml-research | San Francisco, CA USA | $176K–304K |
+| Lila Sciences | [ML Scientist, Nucleic Acid Design](https://job-boards.greenhouse.io/lilasciences/jobs/4324969009) | ml-research | San Francisco, CA USA | $176K–304K |
+| Lila Sciences | [Senior / Staff Machine Learning Engineer, Applied AI](https://job-boards.greenhouse.io/lilasciences/jobs/4400741009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $180K–298K |
+| Lila Sciences | [Senior / Staff Machine Learning Engineer, Applied AI](https://job-boards.greenhouse.io/lilasciences/jobs/4302917009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $180K–298K |
+| Lila Sciences | [Product Lead, Software/Applied AI](https://job-boards.greenhouse.io/lilasciences/jobs/4182437009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $180K–288K |
+| Lila Sciences | [Technical Program Manager, AI Data](https://job-boards.greenhouse.io/lilasciences/jobs/4259557009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $192K–272K |
+| Lila Sciences | [Senior Software Engineer, Applied AI](https://job-boards.greenhouse.io/lilasciences/jobs/4031455009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $144K–270K |
+| Lila Sciences | [Senior / Engineer II, AI Lab Research Engineer](https://job-boards.greenhouse.io/lilasciences/jobs/4029507009) | ml-research | Cambridge, MA USA; San Francisco, CA USA | $148K–240K |
+| Lila Sciences | [Software Engineer, AI Platform](https://job-boards.greenhouse.io/lilasciences/jobs/4031328009) | ml-research | Cambridge, MA USA | $148K–210K |
+| Lila Sciences | [Scientist II/ Senior Scientist, BioML](https://job-boards.greenhouse.io/lilasciences/jobs/4395729009) | materials-science | San Francisco, CA USA | $228K–358K |
+| Lila Sciences | [Research Scientist, Computational Condensed Matter Physics](https://job-boards.greenhouse.io/lilasciences/jobs/4324886009) | materials-science | Cambridge, MA USA | $176K–304K |
+| Lila Sciences | [Research Scientist I/II, Computational Organic Electronics](https://job-boards.greenhouse.io/lilasciences/jobs/4376824009) | materials-science | Cambridge, MA USA | $176K–304K |
+| Lila Sciences | [Staff Forward Deployed Engineer, Physical Sciences (Level Flexible)](https://job-boards.greenhouse.io/lilasciences/jobs/4031303009) | materials-science | Cambridge, MA USA; San Francisco, CA USA | $192K–256K |
+| Lila Sciences | [Senior Data Engineer, Bioinformatics, Cheminformatics, Materials](https://job-boards.greenhouse.io/lilasciences/jobs/4377096009) | materials-science | San Francisco, CA USA | $144K–240K |
+| Lila Sciences | [Scientist II/Senior Scientist, Computational Biophysics](https://job-boards.greenhouse.io/lilasciences/jobs/4340155009) | materials-science | Cambridge, MA USA; London, UK; San Francisco, CA USA | $141K–218K |
+| Lila Sciences | [Senior/Principal Scientist, Small Molecule Therapeutics](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009) | materials-science | Cambridge, MA USA | $148K–208K |
+| Lila Sciences | [Scientist II/Senior Characterization Scientist,  Condensed Matter](https://job-boards.greenhouse.io/lilasciences/jobs/4246305009) | materials-science | Cambridge, MA USA | $128K–198K |
+| Lila Sciences | [Scientist II / Senior Scientist, Electron Diffraction Characterization](https://job-boards.greenhouse.io/lilasciences/jobs/4378383009) | materials-science | Cambridge, MA USA | $128K–198K |
+| Lila Sciences | [Scientist II/Senior Scientist, Solid-State Materials](https://job-boards.greenhouse.io/lilasciences/jobs/4271809009) | materials-science | Cambridge, MA USA | $126K–198K |
+| Lila Sciences | [Manager / Senior Manager, Enterprise GTM, Materials](https://job-boards.greenhouse.io/lilasciences/jobs/4353656009) | materials-science | Cambridge, MA USA | $108K–187K |
+| Lila Sciences | [Chemistry Technical Program Manager](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009) | materials-science | Cambridge, MA USA | $128K–172K |
+| Lila Sciences | [Microfabrication Scientist I/II](https://job-boards.greenhouse.io/lilasciences/jobs/4400746009) | materials-science | Cambridge, MA USA | $108K–170K |
+| Lila Sciences | [Scientist I/II, Characterization and Composition Analysis](https://job-boards.greenhouse.io/lilasciences/jobs/4384606009) | materials-science | Cambridge, MA USA | $108K–170K |
+| Lila Sciences | [Scientist I/II, X-ray Diffraction Characterization](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009) | materials-science | Cambridge, MA USA | $108K–170K |
+| Lila Sciences | [Scientist II, Silicon Photonics](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009) | materials-science | Cambridge, MA USA | $128K–170K |
+| Lila Sciences | [Scientist, Epitaxial Thin Film Synthesis](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009) | materials-science | Cambridge, MA USA | $108K–150K |
+| Lila Sciences | [Associate Scientist/Scientist I, Protein Science Developability](https://job-boards.greenhouse.io/lilasciences/jobs/4299967009) | materials-science | Cambridge, MA USA | $88K–144K |
+| Lila Sciences | [Associate Scientist/Scientist I, Translational Biology](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009) | materials-science | Cambridge, MA USA | $88K–144K |
+| Lila Sciences | [Senior Research Associate , Automated Chemistry](https://job-boards.greenhouse.io/lilasciences/jobs/4254693009) | materials-science | Cambridge, MA USA | $80K–118K |
+| Lila Sciences | [Principal Software Engineer, Instrument Simulations](https://job-boards.greenhouse.io/lilasciences/jobs/4186530009) | lab-automation | Cambridge, MA USA | $204K–270K |
+| Lila Sciences | [Senior Human Factors Engineer I/II, Robotics](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009) | lab-automation | Cambridge, MA USA | $144K–240K |
+| Lila Sciences | [Senior Software Engineer I/II, Back-end/Data, Robotics](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009) | lab-automation | Cambridge, MA USA | $144K–240K |
+| Lila Sciences | [Senior Software Engineer I/II, Test Robotics](https://job-boards.greenhouse.io/lilasciences/jobs/4332043009) | lab-automation | Cambridge, MA USA | $144K–240K |
+| Lila Sciences | [Senior II/Staff Mechatronics Engineer](https://job-boards.greenhouse.io/lilasciences/jobs/4337828009) | lab-automation | Cambridge, MA USA | $137K–218K |
+| Lila Sciences | [Senior / Principal Chemist, AI Safety](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009) | lab-automation | Cambridge, MA USA; London, UK; San Francisco, CA USA | $148K–208K |
+| Lila Sciences | [Platform Scientist I/II, Functional Materials Instrumentation](https://job-boards.greenhouse.io/lilasciences/jobs/4423504009) | lab-automation | Cambridge, MA USA | $108K–170K |
+| Lila Sciences | [Engineer II/ Senior Engineer, Robotics Platform Evaluation](https://job-boards.greenhouse.io/lilasciences/jobs/4404771009) | lab-automation | Cambridge, MA USA | $94K–158K |
+| Lila Sciences | [Controls Engineer II, Sustaining Engineering](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009) | lab-automation | Cambridge, MA USA | $94K–139K |
+| Lila Sciences | [Robotics Operations Engineer I, First Shift](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009) | lab-automation | Cambridge, MA USA | $76K–109K |
+| Lila Sciences | [Lab Operations Specialist](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009) | lab-automation | Cambridge, MA USA | $68K–103K |
+| Lila Sciences | [Principal Software Engineer, Data](https://job-boards.greenhouse.io/lilasciences/jobs/4250071009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $204K–348K |
+| Lila Sciences | [Sr Principal/Principal Software Engineer, App](https://job-boards.greenhouse.io/lilasciences/jobs/4248036009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $204K–348K |
+| Lila Sciences | [Sr Principal/ Principal Software Engineer, Scientific System of Record](https://job-boards.greenhouse.io/lilasciences/jobs/4193827009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $204K–348K |
+| Lila Sciences | [Principal Engineer, Software (Enterprise Platform)](https://job-boards.greenhouse.io/lilasciences/jobs/4247103009) | software-eng | San Francisco, CA USA | $204K–310K |
+| Lila Sciences | [Senior Software Engineer, Data](https://job-boards.greenhouse.io/lilasciences/jobs/4250077009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $144K–288K |
+| Lila Sciences | [Staff Software Engineer, Scientific System of Record](https://job-boards.greenhouse.io/lilasciences/jobs/4248045009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $144K–288K |
+| Lila Sciences | [Senior II/ Staff Software Engineer, Platform Operations](https://job-boards.greenhouse.io/lilasciences/jobs/4212473009) | software-eng | San Francisco, CA USA | $180K–280K |
+| Lila Sciences | [Staff Engineer, Data Platform](https://job-boards.greenhouse.io/lilasciences/jobs/4222065009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $192K–272K |
+| Lila Sciences | [Staff Engineer, Enterprise Externalization](https://job-boards.greenhouse.io/lilasciences/jobs/4390579009) | software-eng | San Francisco, CA USA | $192K–272K |
+| Lila Sciences | [Senior Software Engineer II, Enterprise Platform](https://job-boards.greenhouse.io/lilasciences/jobs/4299652009) | software-eng | San Francisco, CA USA | $180K–256K |
+| Lila Sciences | [Senior Software Engineer, Operations Research](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009) | software-eng | Cambridge, MA USA | $180K–256K |
+| Lila Sciences | [Staff Forward Deployed Engineer, Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4031282009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $192K–256K |
+| Lila Sciences | [Senior Software Engineer, App](https://job-boards.greenhouse.io/lilasciences/jobs/4248042009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $144K–240K |
+| Lila Sciences | [Senior Software Engineer, Scientific System of Record](https://job-boards.greenhouse.io/lilasciences/jobs/4248049009) | software-eng | Cambridge, MA USA; San Francisco, CA USA | $144K–240K |
+| Lila Sciences | [Staff / Principal Automated Systems Engineer](https://job-boards.greenhouse.io/lilasciences/jobs/4110350009) | software-eng | Cambridge, MA USA | $163K–228K |
+| Lila Sciences | [Global Security Operations Center Manager](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009) | software-eng | Cambridge, MA USA | $108K–187K |
+| Lila Sciences | [Senior Automated Systems Engineer](https://job-boards.greenhouse.io/lilasciences/jobs/4110339009) | software-eng | Cambridge, MA USA | $119K–182K |
+| Lila Sciences | [Operations and Quality Engineer, Sustaining Engineering](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009) | software-eng | Cambridge, MA USA | $94K–158K |
+| Lila Sciences | [Engineer I, Research Operations, (1st shift)](https://job-boards.greenhouse.io/lilasciences/jobs/4277806009) | software-eng | Cambridge, MA USA | $76K–101K |
+| Lila Sciences | [Engineer I, Research Operations (2nd Shift)](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009) | software-eng | Cambridge, MA USA | $76K–101K |
+| Lila Sciences | [Research Product Manager, Fine-tuning](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009) | business-ops | Cambridge, MA USA; San Francisco, CA USA | $204K–310K |
+| Lila Sciences | [Research Product Manager, Post Training](https://job-boards.greenhouse.io/lilasciences/jobs/4310498009) | business-ops | Cambridge, MA USA; San Francisco, CA USA | $204K–310K |
+| Lila Sciences | [Portfolio Manager, Government Partnerships (DARPA & ARPA-H)](https://job-boards.greenhouse.io/lilasciences/jobs/4297690009) | business-ops | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [Principal Technical Program Manager, App](https://job-boards.greenhouse.io/lilasciences/jobs/4087979009) | business-ops | Cambridge, MA USA | $204K–270K |
+| Lila Sciences | [Senior Product Designer II / Staff Product Designer](https://job-boards.greenhouse.io/lilasciences/jobs/4376188009) | business-ops | Cambridge, MA USA | $180K–256K |
+| Lila Sciences | [Manager / Senior Manager, Enterprise GTM, Chemicals](https://job-boards.greenhouse.io/lilasciences/jobs/4353659009) | business-ops | Cambridge, MA USA | $108K–187K |
+| Lila Sciences | [Manager / Senior Manager, Finance, Fixed Asset Accounting](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009) | business-ops | Cambridge, MA USA; San Francisco, CA USA | $108K–187K |
+| Lila Sciences | [Manager, Revenue Accounting](https://job-boards.greenhouse.io/lilasciences/jobs/4195605009) | business-ops | Cambridge, MA USA | $126K–186K |
+| Lila Sciences | [Manager / Senior Manager, Multimedia](https://job-boards.greenhouse.io/lilasciences/jobs/4157130009) | business-ops | Cambridge, MA USA | $108K–186K |
+| Lila Sciences | [Shift Supervisor, Research Operations](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009) | business-ops | Cambridge, MA USA | $119K–182K |
+| Lila Sciences | [Senior Manager, Scientific Discovery Capacity Planning](https://job-boards.greenhouse.io/lilasciences/jobs/4359834009) | business-ops | Cambridge, MA USA | $140K–173K |
+| Lila Sciences | [Technical Program Manager, AISF](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009) | business-ops | Cambridge, MA USA | $128K–170K |
+| Lila Sciences | [Supply Chain Demand Planner](https://job-boards.greenhouse.io/lilasciences/jobs/4423502009) | business-ops | Cambridge, MA USA | $88K–126K |
+| Lila Sciences | [Head of Software Product](https://job-boards.greenhouse.io/lilasciences/jobs/4205624009) | leadership | Cambridge, MA USA; San Francisco, CA USA | $400K–500K |
+| Lila Sciences | [Principal Scientist / Associate Director, Agentic AI Research for Materials Science](https://job-boards.greenhouse.io/lilasciences/jobs/4273850009) | leadership | Cambridge, MA USA; San Francisco, CA USA | $288K–420K |
+| Lila Sciences | [Senior Director, Data Platform Engineering](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009) | leadership | San Francisco, CA USA | $300K–390K |
+| Lila Sciences | [Senior Director, Software Development, Test Automation](https://job-boards.greenhouse.io/lilasciences/jobs/4294875009) | leadership | San Francisco, CA USA | $300K–390K |
+| Lila Sciences | [Director, Materials AISF Program Lead](https://job-boards.greenhouse.io/lilasciences/jobs/4287216009) | leadership | Cambridge, MA USA | $320K–380K |
+| Lila Sciences | [Chief of Staff to the CEO](https://job-boards.greenhouse.io/lilasciences/jobs/4285660009) | leadership | Cambridge, MA USA | $250K–350K |
+| Lila Sciences | [Senior Director / Vice President, Chemistry Experiment](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009) | leadership | Cambridge, MA USA | $204K–346K |
+| Lila Sciences | [Associate Director/Director, Commercial Counsel](https://job-boards.greenhouse.io/lilasciences/jobs/4174259009) | leadership | Cambridge, MA USA; San Francisco, CA USA | $232K–327K |
+| Lila Sciences | [Director/Senior Director, Molecular Discovery](https://job-boards.greenhouse.io/lilasciences/jobs/4273680009) | leadership | Cambridge, MA USA; London, UK; San Francisco, CA USA | $202K–323K |
+| Lila Sciences | [Associate Director, App](https://job-boards.greenhouse.io/lilasciences/jobs/4371404009) | leadership | Cambridge, MA USA; San Francisco, CA USA | $204K–306K |
+| Lila Sciences | [Director, Enterprise Account Management, Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4423498009) | leadership | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [Director, Enterprise Account Management, Physical Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4423477009) | leadership | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [Director / Senior Director, Origins](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009) | leadership | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [Director/ Senior Director, Product, Materials Chemistry](https://job-boards.greenhouse.io/lilasciences/jobs/4320806009) | leadership | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [(Senior) Director, Portfolio Strategy, Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4258093009) | leadership | Cambridge, MA USA | $168K–272K |
+| Lila Sciences | [Director of Product, Life Sciences (Chemistry)](https://job-boards.greenhouse.io/lilasciences/jobs/4048370009) | leadership | Cambridge, MA USA | $184K–256K |
+| Lila Sciences | [Director, Product Marketing, Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4420035009) | leadership | Cambridge, MA USA | $168K–238K |
+| Lila Sciences | [Associate Director / Director, Customer Program Management, Life Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4184652009) | leadership | Cambridge, MA USA | $148K–224K |
+| Lila Sciences | [Associate Director / Director, Customer Program Management, Physical Sciences](https://job-boards.greenhouse.io/lilasciences/jobs/4290011009) | leadership | Cambridge, MA USA | $148K–224K |
+| Lila Sciences | [Associate Director / Director, Strategic Finance](https://job-boards.greenhouse.io/lilasciences/jobs/4353595009) | leadership | Cambridge, MA USA | $148K–224K |
+| Lila Sciences | [Principal Scientist / Associate Director, Soft Materials Experimentation](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009) | leadership | Cambridge, MA USA | $156K–214K |
+| Medra | [Scientist, Biology](https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e) | materials-science | San Francisco | $140K–175K |
+| Medra | [Scientist, Cell Biology & Antibody Engineering](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684) | materials-science | San Francisco | $140K–175K |
+| Medra | [Mechanical Engineer](https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a) | lab-automation | San Francisco | $110K–200K |
+| Medra | [Full Stack Software Engineer](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b) | software-eng | San Francisco | $170K–210K |
+| Medra | [Engagement Manager](https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b) | business-ops | San Francisco | $140K–215K |
+| Medra | [Business Operations](https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79) | business-ops | San Francisco | $90K–180K |
 | Periodic Labs | [Research Scientist, Data](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77) | ml-research | Menlo Park, CA | $250K–350K |
 | Periodic Labs | [ML Systems Engineer](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c) | ml-research | Menlo Park, CA | $250K–350K |
 | Periodic Labs | [Research Scientist/Research Engineer, Midtraining](https://jobs.ashbyhq.com/periodic-labs/168dbf20-2230-49a0-9f00-f2ff58dad5c8) | ml-research | Menlo Park, CA | $250K–350K |
@@ -97,3 +228,5 @@ Base salary ranges published on the job boards (pay-transparency laws in CA, NY,
 | Periodic Labs | [Technical Recruiter](https://jobs.ashbyhq.com/periodic-labs/a9b28b1c-8a7f-456d-bea5-f2cb787c4eba) | business-ops | Menlo Park, CA | $175K–275K |
 | Periodic Labs | [Head of People](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3) | leadership | Menlo Park, CA | $350K–450K |
 | Periodic Labs | [Head of Environmental Health & Safety (EHS)](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a) | leadership | Menlo Park, CA | $250K–325K |
+| Tetsuwan Scientific | [Software Engineer](https://jobs.ashbyhq.com/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed) | software-eng | San Francisco, CA | $140K–180K |
+| Tetsuwan Scientific | [Product Designer](https://jobs.ashbyhq.com/tetsuwan/e0ac09e0-9635-4465-9d7d-a773da015154) | business-ops | San Francisco, CA | $120K–160K |

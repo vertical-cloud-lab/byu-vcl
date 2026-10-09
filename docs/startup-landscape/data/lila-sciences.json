@@ -1,0 +1,562 @@
+{
+ "company": "Lila Sciences",
+ "slug": "lila-sciences",
+ "hq": "Cambridge, MA, US",
+ "country": "US",
+ "founded": "2023",
+ "category": "self-driving lab",
+ "focus": "Flagship-founded 'scientific superintelligence': AI models plus autonomous 'AI Science Factories' across life, chemical and materials science",
+ "status": "active",
+ "website": "https://www.lila.ai",
+ "funding": [
+  {
+   "date": "2025-03-10",
+   "round": "Seed (committed capital)",
+   "amount_usd_m": 200.0,
+   "original_amount": "USD 200M",
+   "type": "equity",
+   "lead_investors": [
+    "Flagship Pioneering"
+   ],
+   "source": "https://www.fiercebiotech.com/biotech/lila-sciences-adds-115m-series-bringing-total-haul-350m-and-securing-backing-nvidia"
+  },
+  {
+   "date": "2025-09-17",
+   "round": "Series A",
+   "amount_usd_m": 235.0,
+   "original_amount": "USD 235M",
+   "type": "equity",
+   "lead_investors": [
+    "Braidwell",
+    "Collective Global"
+   ],
+   "source": "https://www.lila.ai/news/series-a-235-million"
+  },
+  {
+   "date": "2025-10-14",
+   "round": "Series A extension",
+   "amount_usd_m": 115.0,
+   "original_amount": "USD 115M",
+   "type": "equity",
+   "lead_investors": [
+    "NVentures (NVIDIA)"
+   ],
+   "source": "https://www.fiercebiotech.com/biotech/lila-sciences-adds-115m-series-bringing-total-haul-350m-and-securing-backing-nvidia"
+  },
+  {
+   "date": "2026-06-03",
+   "round": "Series B (reported talks, unconfirmed)",
+   "amount_usd_m": null,
+   "original_amount": "reported ~USD 2B at ~USD 8.5B pre-money; CalPERS and NVentures as anchors",
+   "type": "equity",
+   "lead_investors": [],
+   "source": "https://news.bloomberglaw.com/private-equity/lila-sciences-said-in-talks-for-funds-at-8-5-billion-valuation"
+  }
+ ],
+ "headcount": [
+  {
+   "date": "2025-03-10",
+   "value": 15,
+   "low": null,
+   "high": null,
+   "method": "team-page",
+   "note": "leadership listed only (15 execs + 4 board/advisors)",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "date": "2025-03-13",
+   "value": null,
+   "low": 51,
+   "high": 200,
+   "method": "linkedin-band",
+   "note": "LinkedIn size band at public launch",
+   "source": "https://web.archive.org/web/20250313051747/https://www.linkedin.com/company/lila-sciences"
+  },
+  {
+   "date": "2026-03-12",
+   "value": 326,
+   "low": 201,
+   "high": 500,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 326 employees'",
+   "source": "https://web.archive.org/web/20260312094141/https://www.linkedin.com/company/lila-sciences"
+  },
+  {
+   "date": "2026-09-24",
+   "value": 33,
+   "low": null,
+   "high": null,
+   "method": "team-page",
+   "note": "leadership listed only (33 VP-and-above + 5 board)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "date": "2026-10-01",
+   "value": 550,
+   "low": 201,
+   "high": 500,
+   "method": "linkedin-band",
+   "note": "LinkedIn 'View all 550 employees'; band lags",
+   "source": "https://web.archive.org/web/20261001133542/https://www.linkedin.com/company/lila-sciences"
+  }
+ ],
+ "postings": [
+  {
+   "period": "2025Q4",
+   "new_postings": 22,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20251014074753/https://job-boards.greenhouse.io/lilasciences/jobs/4031437009"
+  },
+  {
+   "period": "2026Q1",
+   "new_postings": 7,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260301000000*/job-boards.greenhouse.io/lilasciences/jobs/*"
+  },
+  {
+   "period": "2026Q2",
+   "new_postings": 89,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260601000000*/job-boards.greenhouse.io/lilasciences/jobs/*"
+  },
+  {
+   "period": "2026Q2",
+   "new_postings": 14,
+   "method": "ats",
+   "source": "https://job-boards.greenhouse.io/lilasciences"
+  },
+  {
+   "period": "2026Q3",
+   "new_postings": 4,
+   "method": "wayback-cdx",
+   "source": "https://web.archive.org/web/20260901000000*/job-boards.greenhouse.io/lilasciences/jobs/*"
+  },
+  {
+   "period": "2026Q3",
+   "new_postings": 54,
+   "method": "ats",
+   "source": "https://job-boards.greenhouse.io/lilasciences"
+  },
+  {
+   "period": "2026Q4",
+   "new_postings": 10,
+   "method": "ats",
+   "source": "https://job-boards.greenhouse.io/lilasciences"
+  }
+ ],
+ "current_openings": {
+  "date": "2026-10-09",
+  "count": 106,
+  "by_function": {
+   "business-ops": 28,
+   "software-eng": 25,
+   "materials-science": 18,
+   "lab-automation": 18,
+   "ml-research": 17
+  },
+  "titles": [
+   "Senior/Staff Mechatronics Engineer",
+   "Robotics Operations Engineer I",
+   "Engineer I, Research Operations (1st/2nd shift)",
+   "Shift Supervisor, Research Operations",
+   "Senior Research Associate, Automated Chemistry",
+   "Scientist, Epitaxial Thin Film Synthesis",
+   "Scientist I/II, X-ray Diffraction Characterization",
+   "Scientist II/Senior Scientist, Solid-State Materials",
+   "Research Scientist, Computational Condensed Matter Physics",
+   "Principal Scientist/Associate Director, Agentic AI Research for Materials Science",
+   "ML Scientist, Foundation Models for Life Sciences",
+   "Senior ML Scientist, AI for Protein Engineering",
+   "Research Product Manager, Post Training",
+   "Sr Principal/Principal Software Engineer, Scientific System of Record",
+   "Principal Engineer, AI Security",
+   "Director, Materials AISF Program Lead",
+   "Portfolio Manager, Government Partnerships (DARPA & ARPA-H)",
+   "Manager/Senior Manager, Enterprise GTM, Materials",
+   "Director, Enterprise Account Management, Physical Sciences",
+   "Chief of Staff to the CEO"
+  ],
+  "source": "https://job-boards.greenhouse.io/lilasciences"
+ },
+ "people": [
+  {
+   "name": "Geoffrey von Maltzahn",
+   "title": "CEO, co-founder, board member",
+   "function": "leadership",
+   "seniority": "founder",
+   "start": "2023-01",
+   "start_basis": "co-founder (Flagship, 2023); on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "on team page at public launch (Wayback 2025-03-10)",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Noubar Afeyan",
+   "title": "Chairman of the Board (2025); board member (2026)",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "Flagship Pioneering founder/CEO",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "John Kim",
+   "title": "Sr. Advisor (2025) -> Chair and President, Corporate Development (2026)",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Andrew (Andy) Beam",
+   "title": "CTO (AI Research)",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Rafael Gomez-Bombarelli",
+   "title": "CSO, Materials -> CSO, Physical Sciences",
+   "function": "materials-science",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "John Gregoire",
+   "title": "SVP Materials Science -> Chief Autonomous Science Officer",
+   "function": "lab-automation",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Kenneth Stanley",
+   "title": "SVP, Open-endedness",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Chris Fussell",
+   "title": "President, Operations",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Jon Hennek",
+   "title": "Chief Product Officer -> Chief Revenue & Product Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Amit Aggarwal",
+   "title": "Chief Information Security Officer",
+   "function": "software-eng",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Sue Kwon",
+   "title": "Chief Communications Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Jack Milwid",
+   "title": "Chief Culture Officer -> Office of the CEO",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Chris O'Donnell",
+   "title": "Chief Business Officer -> Chief Government Affairs Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "George Church",
+   "title": "Chief Scientist",
+   "function": "materials-science",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": "2026-09",
+   "background": "PhD; Harvard geneticist",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Jake Feala",
+   "title": "SVP Autonomous Platform",
+   "function": "lab-automation",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": "2026-09",
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Molly Gibson",
+   "title": "President, Future Science",
+   "function": "leadership",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": "2026-09",
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Scott Robertson",
+   "title": "Chief Commercial Officer",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": "2026-09",
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Josh Waitzkin",
+   "title": "Sr. Advisor",
+   "function": "leadership",
+   "seniority": "advisor",
+   "start": "2025-03",
+   "start_basis": "on team page at public launch (Wayback 2025-03-10)",
+   "end": "2026-09",
+   "background": "",
+   "source": "https://web.archive.org/web/20250310191806/https://www.lila.ai/team"
+  },
+  {
+   "name": "Jawad Ahsan",
+   "title": "COO & CFO",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Julie Shah",
+   "title": "Chief Robotics Officer",
+   "function": "lab-automation",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Joshua Roth",
+   "title": "Chief Software & Systems Officer",
+   "function": "software-eng",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Raghav Kohli",
+   "title": "Chief Legal Officer & Corporate Secretary",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Atul Mistry",
+   "title": "Chief Software Architect",
+   "function": "software-eng",
+   "seniority": "exec",
+   "start": "2026-04",
+   "start_basis": "team bio page first captured 2026-04-14",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260414064159/https://www.lila.ai/team/atul-mistry"
+  },
+  {
+   "name": "Milad Abolhasani",
+   "title": "SVP, Chemistry",
+   "function": "lab-automation",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Tommaso Biancalani",
+   "title": "SVP, Generative Biology",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Mary Jacobs",
+   "title": "VP, People",
+   "function": "business-ops",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Gaurav Garg",
+   "title": "VP, Software",
+   "function": "software-eng",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Ben Kompa",
+   "title": "VP, Head of AI Lab Innovation",
+   "function": "ml-research",
+   "seniority": "exec",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "PhD",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Daniel de Faro Adamson",
+   "title": "Board member",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "name": "Alex Karnal",
+   "title": "Board member",
+   "function": "leadership",
+   "seniority": "board",
+   "start": "2026-09",
+   "start_basis": "listed on team page (Wayback 2026-09-24)",
+   "end": null,
+   "background": "",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  }
+ ],
+ "staff_roles": [],
+ "departures": [
+  {
+   "who": "George Church",
+   "title": "Chief Scientist",
+   "date": "2026-09",
+   "basis": "on 2025-03-10 team page, absent from 2026-09-24 team page (may have changed role rather than left)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "who": "Jake Feala",
+   "title": "SVP Autonomous Platform",
+   "date": "2026-09",
+   "basis": "on 2025-03-10 team page, absent from 2026-09-24 team page (may have changed role rather than left)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "who": "Molly Gibson",
+   "title": "President, Future Science",
+   "date": "2026-09",
+   "basis": "on 2025-03-10 team page, absent from 2026-09-24 team page (may have changed role rather than left)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "who": "Scott Robertson",
+   "title": "Chief Commercial Officer",
+   "date": "2026-09",
+   "basis": "on 2025-03-10 team page, absent from 2026-09-24 team page (may have changed role rather than left)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  },
+  {
+   "who": "Josh Waitzkin",
+   "title": "Sr. Advisor",
+   "date": "2026-09",
+   "basis": "on 2025-03-10 team page, absent from 2026-09-24 team page (may have changed role rather than left)",
+   "source": "https://web.archive.org/web/20260924090313/https://www.lila.ai/team"
+  }
+ ],
+ "notes": [
+  "Team page lists leadership only (VP and above), so total headcount comes from archived LinkedIn member counts: 326 (2026-03) -> 550 (2026-10).",
+  "Funding total confirmed: USD 550M (200 seed + 235 Series A + 115 extension). Series B (~USD 2B, ~USD 8.5B pre-money) reported by Bloomberg 2026-06-03; some trackers date a close to 2026-07-31, not confirmed by the company.",
+  "Series A date 2025-09-17 is approximate (announcement month Sept 2025 per Fierce Biotech, 'last month' relative to the Oct 2025 extension).",
+  "Greenhouse board token 'lilasciences': 107 live postings incl. a talent-community form; 122 distinct posting IDs captured in Wayback 2025-10-14..2026-09-19, 78 live postings never captured; >=200 postings in 12 months. Function split is keyword-based.",
+  "Locations: Cambridge MA (most), San Francisco, some London.",
+  "Pre-Oct-2025 job board not found in Wayback (not on boards.greenhouse.io).",
+  "Postings 2026Q3 wayback count is low only because Wayback crawled the board less; ATS first_published shows 54 new that quarter.",
+  "Other news: joined DOE Genesis Mission; named to CNBC Disruptor 50 2026 (lila.ai/news).",
+  "Leadership start dates are first appearance on the team page, not hire dates; backgrounds not researched in the time budget."
+ ]
+}

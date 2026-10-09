@@ -1,4 +1,115 @@
 company,title,function,location,currency,min,max,url
+Lila Sciences,"Associate Director, App",leadership,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,306000,https://job-boards.greenhouse.io/lilasciences/jobs/4371404009
+Lila Sciences,"Associate Director/Director, Commercial Counsel",leadership,"Cambridge, MA USA; San Francisco, CA USA",USD,232000,327000,https://job-boards.greenhouse.io/lilasciences/jobs/4174259009
+Lila Sciences,"Associate Director / Director, Customer Program Management, Life Sciences",leadership,"Cambridge, MA USA",USD,148000,224000,https://job-boards.greenhouse.io/lilasciences/jobs/4184652009
+Lila Sciences,"Associate Director / Director, Customer Program Management, Physical Sciences",leadership,"Cambridge, MA USA",USD,148000,224000,https://job-boards.greenhouse.io/lilasciences/jobs/4290011009
+Lila Sciences,"Associate Director / Director, Strategic Finance",leadership,"Cambridge, MA USA",USD,148000,224000,https://job-boards.greenhouse.io/lilasciences/jobs/4353595009
+Lila Sciences,"Associate Scientist/Scientist I, Protein Science Developability",materials-science,"Cambridge, MA USA",USD,88000,144000,https://job-boards.greenhouse.io/lilasciences/jobs/4299967009
+Lila Sciences,"Associate Scientist/Scientist I, Translational Biology",materials-science,"Cambridge, MA USA",USD,88000,144000,https://job-boards.greenhouse.io/lilasciences/jobs/4415281009
+Lila Sciences,Chemistry Technical Program Manager,materials-science,"Cambridge, MA USA",USD,128000,172000,https://job-boards.greenhouse.io/lilasciences/jobs/4204188009
+Lila Sciences,Chief of Staff to the CEO,leadership,"Cambridge, MA USA",USD,250000,350000,https://job-boards.greenhouse.io/lilasciences/jobs/4285660009
+Lila Sciences,"Controls Engineer II, Sustaining Engineering",lab-automation,"Cambridge, MA USA",USD,93600,138600,https://job-boards.greenhouse.io/lilasciences/jobs/4294210009
+Lila Sciences,"Director, Enterprise Account Management, Life Sciences",leadership,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4423498009
+Lila Sciences,"Director, Enterprise Account Management, Physical Sciences",leadership,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4423477009
+Lila Sciences,"Director, Materials AISF Program Lead",leadership,"Cambridge, MA USA",USD,320000,380000,https://job-boards.greenhouse.io/lilasciences/jobs/4287216009
+Lila Sciences,"Director of Product, Life Sciences (Chemistry)",leadership,"Cambridge, MA USA",USD,184000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4048370009
+Lila Sciences,"Director, Product Marketing, Life Sciences",leadership,"Cambridge, MA USA",USD,168000,238000,https://job-boards.greenhouse.io/lilasciences/jobs/4420035009
+Lila Sciences,"Director/Senior Director, Molecular Discovery",leadership,"Cambridge, MA USA; London, UK; San Francisco, CA USA",USD,202400,323400,https://job-boards.greenhouse.io/lilasciences/jobs/4273680009
+Lila Sciences,"Director / Senior Director, Origins",leadership,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4314463009
+Lila Sciences,"Director/ Senior Director, Product, Materials Chemistry",leadership,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4320806009
+Lila Sciences,"Engineer II/ Senior Engineer, Robotics Platform Evaluation",lab-automation,"Cambridge, MA USA",USD,93600,158400,https://job-boards.greenhouse.io/lilasciences/jobs/4404771009
+Lila Sciences,"Engineer I, Research Operations, (1st shift)",software-eng,"Cambridge, MA USA",USD,75600,100800,https://job-boards.greenhouse.io/lilasciences/jobs/4277806009
+Lila Sciences,"Engineer I, Research Operations (2nd Shift)",software-eng,"Cambridge, MA USA",USD,75600,100800,https://job-boards.greenhouse.io/lilasciences/jobs/4386306009
+Lila Sciences,Global Security Operations Center Manager,software-eng,"Cambridge, MA USA",USD,108000,186667,https://job-boards.greenhouse.io/lilasciences/jobs/4331069009
+Lila Sciences,Head of Software Product,leadership,"Cambridge, MA USA; San Francisco, CA USA",USD,400000,500000,https://job-boards.greenhouse.io/lilasciences/jobs/4205624009
+Lila Sciences,Lab Operations Specialist,lab-automation,"Cambridge, MA USA",USD,68000,102667,https://job-boards.greenhouse.io/lilasciences/jobs/4395906009
+Lila Sciences,"Machine Learning Scientist I / II, Protein Design",ml-research,"San Francisco, CA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4396760009
+Lila Sciences,"Manager, Revenue Accounting",business-ops,"Cambridge, MA USA",USD,126000,186000,https://job-boards.greenhouse.io/lilasciences/jobs/4195605009
+Lila Sciences,"Manager / Senior Manager, Enterprise GTM, Chemicals",business-ops,"Cambridge, MA USA",USD,108000,186667,https://job-boards.greenhouse.io/lilasciences/jobs/4353659009
+Lila Sciences,"Manager / Senior Manager, Enterprise GTM, Materials",materials-science,"Cambridge, MA USA",USD,108000,186667,https://job-boards.greenhouse.io/lilasciences/jobs/4353656009
+Lila Sciences,"Manager / Senior Manager, Finance, Fixed Asset Accounting",business-ops,"Cambridge, MA USA; San Francisco, CA USA",USD,108000,186667,https://job-boards.greenhouse.io/lilasciences/jobs/4195640009
+Lila Sciences,"Manager / Senior Manager, Multimedia",business-ops,"Cambridge, MA USA",USD,108000,186000,https://job-boards.greenhouse.io/lilasciences/jobs/4157130009
+Lila Sciences,Microfabrication Scientist I/II,materials-science,"Cambridge, MA USA",USD,108000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4400746009
+Lila Sciences,"ML Engineer, LS AI",ml-research,"San Francisco, CA USA",USD,252000,374000,https://job-boards.greenhouse.io/lilasciences/jobs/4222224009
+Lila Sciences,"ML Scientist, Foundation Models for Life Sciences",ml-research,"San Francisco, CA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4222051009
+Lila Sciences,"ML Scientist I/II, AI for Protein Engineering",ml-research,"San Francisco, CA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4392245009
+Lila Sciences,"ML Scientist, Nucleic Acid Design",ml-research,"San Francisco, CA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4324969009
+Lila Sciences,"Operations and Quality Engineer, Sustaining Engineering",software-eng,"Cambridge, MA USA",USD,93600,158400,https://job-boards.greenhouse.io/lilasciences/jobs/4277749009
+Lila Sciences,"Platform Scientist I/II, Functional Materials Instrumentation",lab-automation,"Cambridge, MA USA",USD,108000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4423504009
+Lila Sciences,"Portfolio Manager, Government Partnerships (DARPA & ARPA-H)",business-ops,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4297690009
+Lila Sciences,"Principal Engineer, AI Security",ml-research,"Cambridge, MA USA",USD,255000,348000,https://job-boards.greenhouse.io/lilasciences/jobs/4210497009
+Lila Sciences,"Principal Engineer, AI Security",ml-research,"Cambridge, MA USA",USD,252000,374000,https://job-boards.greenhouse.io/lilasciences/jobs/4403714009
+Lila Sciences,"Principal Engineer, Software (Enterprise Platform)",software-eng,"San Francisco, CA USA",USD,204000,310000,https://job-boards.greenhouse.io/lilasciences/jobs/4247103009
+Lila Sciences,"Principal Machine Learning Engineer, Applied AI",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,252000,336000,https://job-boards.greenhouse.io/lilasciences/jobs/4400744009
+Lila Sciences,"Principal Scientist / Associate Director, Agentic AI Research for Materials Science",leadership,"Cambridge, MA USA; San Francisco, CA USA",USD,288000,420000,https://job-boards.greenhouse.io/lilasciences/jobs/4273850009
+Lila Sciences,"Principal Scientist / Associate Director, Soft Materials Experimentation",leadership,"Cambridge, MA USA",USD,156000,214000,https://job-boards.greenhouse.io/lilasciences/jobs/4403708009
+Lila Sciences,"Principal Software Engineer, Data",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,348000,https://job-boards.greenhouse.io/lilasciences/jobs/4250071009
+Lila Sciences,"Principal Software Engineer, Instrument Simulations",lab-automation,"Cambridge, MA USA",USD,204000,270000,https://job-boards.greenhouse.io/lilasciences/jobs/4186530009
+Lila Sciences,"Principal Technical Program Manager, App",business-ops,"Cambridge, MA USA",USD,204000,270000,https://job-boards.greenhouse.io/lilasciences/jobs/4087979009
+Lila Sciences,"Product Lead, Software/Applied AI",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,180000,288000,https://job-boards.greenhouse.io/lilasciences/jobs/4182437009
+Lila Sciences,"Research Product Manager, Fine-tuning",business-ops,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,310000,https://job-boards.greenhouse.io/lilasciences/jobs/4339607009
+Lila Sciences,"Research Product Manager, Post Training",business-ops,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,310000,https://job-boards.greenhouse.io/lilasciences/jobs/4310498009
+Lila Sciences,"Research Scientist, Computational Condensed Matter Physics",materials-science,"Cambridge, MA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4324886009
+Lila Sciences,"Research Scientist I/II, Computational Organic Electronics",materials-science,"Cambridge, MA USA",USD,176000,304000,https://job-boards.greenhouse.io/lilasciences/jobs/4376824009
+Lila Sciences,"Robotics Operations Engineer I, First Shift",lab-automation,"Cambridge, MA USA",USD,75600,109200,https://job-boards.greenhouse.io/lilasciences/jobs/4410043009
+Lila Sciences,"Scientist, Epitaxial Thin Film Synthesis",materials-science,"Cambridge, MA USA",USD,108000,150000,https://job-boards.greenhouse.io/lilasciences/jobs/4253548009
+Lila Sciences,"Scientist I/II, Characterization and Composition Analysis",materials-science,"Cambridge, MA USA",USD,108000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4384606009
+Lila Sciences,"Scientist I/II, X-ray Diffraction Characterization",materials-science,"Cambridge, MA USA",USD,108000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4378385009
+Lila Sciences,"Scientist II/Senior Characterization Scientist,  Condensed Matter",materials-science,"Cambridge, MA USA",USD,128000,198000,https://job-boards.greenhouse.io/lilasciences/jobs/4246305009
+Lila Sciences,"Scientist II / Senior ML Scientist, Data-Efficient Learning for Drug Discovery",ml-research,"Cambridge, MA USA; London, UK; San Francisco, CA USA",USD,228000,358000,https://job-boards.greenhouse.io/lilasciences/jobs/4340147009
+Lila Sciences,"Scientist II/ Senior Scientist, BioML",materials-science,"San Francisco, CA USA",USD,228000,358000,https://job-boards.greenhouse.io/lilasciences/jobs/4395729009
+Lila Sciences,"Scientist II/Senior Scientist, Computational Biophysics",materials-science,"Cambridge, MA USA; London, UK; San Francisco, CA USA",USD,140800,217800,https://job-boards.greenhouse.io/lilasciences/jobs/4340155009
+Lila Sciences,"Scientist II / Senior Scientist, Electron Diffraction Characterization",materials-science,"Cambridge, MA USA",USD,128000,198000,https://job-boards.greenhouse.io/lilasciences/jobs/4378383009
+Lila Sciences,"Scientist II/Senior Scientist, Solid-State Materials",materials-science,"Cambridge, MA USA",USD,126000,198000,https://job-boards.greenhouse.io/lilasciences/jobs/4271809009
+Lila Sciences,"Scientist II, Silicon Photonics",materials-science,"Cambridge, MA USA",USD,128000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4383465009
+Lila Sciences,Senior Automated Systems Engineer,software-eng,"Cambridge, MA USA",USD,118800,182400,https://job-boards.greenhouse.io/lilasciences/jobs/4110339009
+Lila Sciences,"Senior Data Engineer, Bioinformatics, Cheminformatics, Materials",materials-science,"San Francisco, CA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4377096009
+Lila Sciences,"Senior Director, Data Platform Engineering",leadership,"San Francisco, CA USA",USD,300000,390000,https://job-boards.greenhouse.io/lilasciences/jobs/4202443009
+Lila Sciences,"(Senior) Director, Portfolio Strategy, Life Sciences",leadership,"Cambridge, MA USA",USD,168000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4258093009
+Lila Sciences,"Senior Director, Software Development, Test Automation",leadership,"San Francisco, CA USA",USD,300000,390000,https://job-boards.greenhouse.io/lilasciences/jobs/4294875009
+Lila Sciences,"Senior Director / Vice President, Chemistry Experiment",leadership,"Cambridge, MA USA",USD,204000,346000,https://job-boards.greenhouse.io/lilasciences/jobs/4300718009
+Lila Sciences,"Senior / Engineer II, AI Lab Research Engineer",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,148000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4029507009
+Lila Sciences,"Senior Human Factors Engineer I/II, Robotics",lab-automation,"Cambridge, MA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4332442009
+Lila Sciences,Senior II/Staff Mechatronics Engineer,lab-automation,"Cambridge, MA USA",USD,136800,217866,https://job-boards.greenhouse.io/lilasciences/jobs/4337828009
+Lila Sciences,"Senior II/ Staff Software Engineer, Platform Operations",software-eng,"San Francisco, CA USA",USD,180000,280000,https://job-boards.greenhouse.io/lilasciences/jobs/4212473009
+Lila Sciences,"Senior Manager, Scientific Discovery Capacity Planning",business-ops,"Cambridge, MA USA",USD,140000,172667,https://job-boards.greenhouse.io/lilasciences/jobs/4359834009
+Lila Sciences,"Senior ML Scientist, AI for Protein Engineering",ml-research,"San Francisco, CA USA",USD,268000,358000,https://job-boards.greenhouse.io/lilasciences/jobs/4392247009
+Lila Sciences,"Senior ML Scientist, Biological Systems",ml-research,"San Francisco, CA USA",USD,268000,358000,https://job-boards.greenhouse.io/lilasciences/jobs/4395725009
+Lila Sciences,"Senior / Principal Chemist, AI Safety",lab-automation,"Cambridge, MA USA; London, UK; San Francisco, CA USA",USD,148000,208000,https://job-boards.greenhouse.io/lilasciences/jobs/4423500009
+Lila Sciences,"Senior / Principal ML Scientist, Foundation Models for Life Sciences",ml-research,"San Francisco, CA USA",USD,268000,384000,https://job-boards.greenhouse.io/lilasciences/jobs/4222034009
+Lila Sciences,"Senior/Principal ML Scientist, Translational Biology",ml-research,"San Francisco, CA USA",USD,268000,384000,https://job-boards.greenhouse.io/lilasciences/jobs/4395727009
+Lila Sciences,"Senior/Principal Scientist, Small Molecule Therapeutics",materials-science,"Cambridge, MA USA",USD,148000,208000,https://job-boards.greenhouse.io/lilasciences/jobs/4296054009
+Lila Sciences,Senior Product Designer II / Staff Product Designer,business-ops,"Cambridge, MA USA",USD,180000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4376188009
+Lila Sciences,"Senior Research Associate , Automated Chemistry",materials-science,"Cambridge, MA USA",USD,80000,118000,https://job-boards.greenhouse.io/lilasciences/jobs/4254693009
+Lila Sciences,"Senior Software Engineer, App",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4248042009
+Lila Sciences,"Senior Software Engineer, Applied AI",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,144000,270000,https://job-boards.greenhouse.io/lilasciences/jobs/4031455009
+Lila Sciences,"Senior Software Engineer, Data",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,144000,288000,https://job-boards.greenhouse.io/lilasciences/jobs/4250077009
+Lila Sciences,"Senior Software Engineer II, Enterprise Platform",software-eng,"San Francisco, CA USA",USD,180000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4299652009
+Lila Sciences,"Senior Software Engineer I/II, Back-end/Data, Robotics",lab-automation,"Cambridge, MA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4339324009
+Lila Sciences,"Senior Software Engineer I/II, Test Robotics",lab-automation,"Cambridge, MA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4332043009
+Lila Sciences,"Senior Software Engineer, Operations Research",software-eng,"Cambridge, MA USA",USD,180000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4246973009
+Lila Sciences,"Senior Software Engineer, Scientific System of Record",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,144000,240000,https://job-boards.greenhouse.io/lilasciences/jobs/4248049009
+Lila Sciences,"Senior / Staff Machine Learning Engineer, Applied AI",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,180000,298000,https://job-boards.greenhouse.io/lilasciences/jobs/4400741009
+Lila Sciences,"Senior / Staff Machine Learning Engineer, Applied AI",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,180000,298000,https://job-boards.greenhouse.io/lilasciences/jobs/4302917009
+Lila Sciences,"Shift Supervisor, Research Operations",business-ops,"Cambridge, MA USA",USD,118800,182400,https://job-boards.greenhouse.io/lilasciences/jobs/4277904009
+Lila Sciences,"Software Engineer, AI Platform",ml-research,"Cambridge, MA USA",USD,148000,210000,https://job-boards.greenhouse.io/lilasciences/jobs/4031328009
+Lila Sciences,"Sr Principal/Principal Software Engineer, App",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,348000,https://job-boards.greenhouse.io/lilasciences/jobs/4248036009
+Lila Sciences,"Sr Principal/ Principal Software Engineer, Scientific System of Record",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,204000,348000,https://job-boards.greenhouse.io/lilasciences/jobs/4193827009
+Lila Sciences,"Staff Engineer, Data Platform",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,192000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4222065009
+Lila Sciences,"Staff Engineer, Enterprise Externalization",software-eng,"San Francisco, CA USA",USD,192000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4390579009
+Lila Sciences,"Staff Forward Deployed Engineer, Life Sciences",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,192000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4031282009
+Lila Sciences,"Staff Forward Deployed Engineer, Physical Sciences (Level Flexible)",materials-science,"Cambridge, MA USA; San Francisco, CA USA",USD,192000,256000,https://job-boards.greenhouse.io/lilasciences/jobs/4031303009
+Lila Sciences,Staff / Principal Automated Systems Engineer,software-eng,"Cambridge, MA USA",USD,163400,228000,https://job-boards.greenhouse.io/lilasciences/jobs/4110350009
+Lila Sciences,"Staff Software Engineer, Scientific System of Record",software-eng,"Cambridge, MA USA; San Francisco, CA USA",USD,144000,288000,https://job-boards.greenhouse.io/lilasciences/jobs/4248045009
+Lila Sciences,Supply Chain Demand Planner,business-ops,"Cambridge, MA USA",USD,88000,126000,https://job-boards.greenhouse.io/lilasciences/jobs/4423502009
+Lila Sciences,"Technical Program Manager, AI Data",ml-research,"Cambridge, MA USA; San Francisco, CA USA",USD,192000,272000,https://job-boards.greenhouse.io/lilasciences/jobs/4259557009
+Lila Sciences,"Technical Program Manager, AISF",business-ops,"Cambridge, MA USA",USD,128000,170000,https://job-boards.greenhouse.io/lilasciences/jobs/4289723009
+Medra,"Scientist, Biology",materials-science,San Francisco,USD,140000,175000,https://jobs.ashbyhq.com/medraai/f1c3a0b6-1f65-4640-8be9-39841c32198e
+Medra,Full Stack Software Engineer,software-eng,San Francisco,USD,170000,210000,https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b
+Medra,Mechanical Engineer,lab-automation,San Francisco,USD,110000,200000,https://jobs.ashbyhq.com/medraai/171c1758-4a70-471c-8372-b27dbae52f4a
+Medra,"Scientist, Cell Biology & Antibody Engineering",materials-science,San Francisco,USD,140000,175000,https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684
+Medra,Engagement Manager,business-ops,San Francisco,USD,140000,215000,https://jobs.ashbyhq.com/medraai/5e943078-2070-49d7-9cb4-0202cecba60b
+Medra,Business Operations,business-ops,San Francisco,USD,90000,180000,https://jobs.ashbyhq.com/medraai/13e93fc3-fd20-4e7c-a748-00ccbc2a7f79
 Periodic Labs,Head of Environmental Health & Safety (EHS),leadership,"Menlo Park, CA",USD,250000,325000,https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a
 Periodic Labs,Automation Engineer,lab-automation,"Menlo Park, CA",USD,200000,250000,https://jobs.ashbyhq.com/periodic-labs/5e692aeb-234b-4112-b318-7ff464977303
 Periodic Labs,"Research Scientist, Materials Characterization",materials-science,"Menlo Park, CA",USD,250000,350000,https://jobs.ashbyhq.com/periodic-labs/e90c6050-e544-4a2b-ae30-7c41e5eb4f16
@@ -28,3 +139,5 @@ Periodic Labs,Equipment Engineer,lab-automation,"Menlo Park, CA",USD,200000,2750
 Periodic Labs,"Research Associate, Thin Films",materials-science,"Menlo Park, CA",USD,180000,225000,https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e
 Periodic Labs,"Research Scientist, Scaling RL",ml-research,"Menlo Park, CA; Montreal, Canada",USD,225000,350000,https://jobs.ashbyhq.com/periodic-labs/20b122c9-b8ec-4fb0-aaf4-9b45902affe0
 Periodic Labs,Process Safety Engineer,lab-automation,"Menlo Park, CA",USD,200000,250000,https://jobs.ashbyhq.com/periodic-labs/1d57d49b-e538-4d9a-86d3-6be17339016f
+Tetsuwan Scientific,Software Engineer,software-eng,"San Francisco, CA",USD,140000,180000,https://jobs.ashbyhq.com/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed
+Tetsuwan Scientific,Product Designer,business-ops,"San Francisco, CA",USD,120000,160000,https://jobs.ashbyhq.com/tetsuwan/e0ac09e0-9635-4465-9d7d-a773da015154

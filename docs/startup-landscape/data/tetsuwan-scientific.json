@@ -1,0 +1,78 @@
+{
+  "company": "Tetsuwan Scientific",
+  "slug": "tetsuwan-scientific",
+  "hq": "San Francisco, US",
+  "country": "US",
+  "founded": "2023",
+  "category": "self-driving lab",
+  "focus": "Autonomous 'AI scientist' software and sensors retrofitted onto existing liquid-handling robots (ResearchOS); first system in a rare-disease gene-therapy lab",
+  "status": "active",
+  "website": "https://www.tetsuwan.com",
+  "funding": [
+    {
+      "date": "2024-11-19",
+      "round": "Pre-seed",
+      "amount_usd_m": 2.7,
+      "original_amount": "USD 2.7M (oversubscribed)",
+      "type": "equity",
+      "lead_investors": [
+        "2048 Ventures"
+      ],
+      "source": "https://www.synbiobeta.com/read/first-autonomous-robotic-scientist-launched-as-tetsuwan-scientific-secures-2-7m"
+    }
+  ],
+  "headcount": [],
+  "postings": [
+    {
+      "period": "2026Q2",
+      "new_postings": 2,
+      "method": "ats",
+      "source": "https://jobs.ashbyhq.com/tetsuwan"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 2,
+    "by_function": {
+      "software-eng": 2
+    },
+    "titles": [
+      "Software Engineer",
+      "Product Designer"
+    ],
+    "source": "https://jobs.ashbyhq.com/tetsuwan"
+  },
+  "people": [
+    {
+      "name": "Cristian Ponce",
+      "title": "Co-founder & CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "Founding year in pre-seed coverage",
+      "end": null,
+      "background": "Full-genome engineering research at Caltech (Wang Lab); left to found the company; met co-founder via Entrepreneur First",
+      "source": "https://www.synbiobeta.com/read/first-autonomous-robotic-scientist-launched-as-tetsuwan-scientific-secures-2-7m"
+    },
+    {
+      "name": "Théo Schäfer",
+      "title": "Co-founder & CTO",
+      "function": "lab-automation",
+      "seniority": "founder",
+      "start": "2023",
+      "start_basis": "Founding year in pre-seed coverage",
+      "end": null,
+      "background": "MSc mechanical engineering, ETH Zurich (thesis work at MIT); Entrepreneur First",
+      "source": "https://www.synbiobeta.com/read/first-autonomous-robotic-scientist-launched-as-tetsuwan-scientific-secures-2-7m"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "Pre-seed co-investors: Carbon Silicon, Everywhere Ventures, and angels Sonia Arrison (Foresight Institute) and Eduardo Torrealba (Formlabs). Entrepreneur First backed the founders (EF lists founding as 2024).",
+    "Conflicting: StartupIntros lists a USD 3M seed in April 2024 and USD 5.7M total; VC Backed dates the pre-seed to April 2024. Neither is corroborated, so only the 2024-11-19 USD 2.7M round is recorded. No Form D was found in EDGAR full-text search for 'Tetsuwan'.",
+    "Openings: 2 on Ashby (board 'tetsuwan'), both published 2026-06-03. 'Product Designer' is counted under software-eng.",
+    "Not done (time and Wayback budget): team-page or LinkedIn headcount via Wayback, posting history, OpenAlex. No headcount datapoint was found. Bio-lab focused, not materials.",
+    "Positioning shift: the live homepage (2026-10-09) reads 'Building a biology lab you can use from your browser'. Researchers run experiments on 'our cloud lab' via ResearchOS. The 2024 pitch was retrofitting liquid handlers inside customer labs, so the company is moving toward a cloud-lab model. Source: https://www.tetsuwan.com"
+  ]
+}

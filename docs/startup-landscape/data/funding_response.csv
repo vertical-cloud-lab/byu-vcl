@@ -1,4 +1,7 @@
 company,date,round,amount_usd_m,postings_6mo_before,postings_6mo_after,team_before,team_before_date,team_after,team_after_date
+Aionics,2023-10-14,Seed (reported cumulative),3.5,,,,,,
+Aionics,2024-05-06,Seed extension (Form D first sale; amended 2025-10),7.3,,,,,,
+Aionics,2026-03-31,Unannounced equity/options (Form D),0.5,,,,,,
 Altrove,2024-07-03,Pre-seed,4.0,,,,,4,2025-02-20
 Altrove,2025-10-31,Seed,10.0,,,4,2025-02-20,,
 Atinary Technologies,2023-10-03,Seed,5.0,0,0,,,23,2024-07-07
@@ -41,11 +44,26 @@ Emerald Cloud Lab,2024-04-29,Series B extension (aggregator),,,,107,2023-07-20,9
 Entalpic,2024-09-04,Seed,9.4,,,,,25,2025-12-31
 Intrepid Labs,2023-07-01,Pre-seed (Radical lists investment year 2023; unannounced until 2025-05),4.0,,,,,,
 Intrepid Labs,2025-05-12,Seed,7.0,,,,,,
+Kebotix,2018-07-23,Seed (Form D first sale),5.06,,,,,,
+Kebotix,2020-04-02,Series A (announced April 2020 as $11.4M),11.39,,,,,,
+Kebotix,2023-03-29,Unannounced equity (Form D),2.21,,,,,,
+Kebotix,2024-07-22,Unannounced equity (Form D),5.0,,,,,,
+Lila Sciences,2025-03-10,Seed (committed capital),200.0,0,0,15,2025-03-10,326,2026-03-12
+Lila Sciences,2025-09-17,Series A,235.0,0,29,101,2025-03-13,550,2026-10-01
+Lila Sciences,2025-10-14,Series A extension,115.0,0,29,101,2025-03-13,550,2026-10-01
+Lila Sciences,2026-06-03,"Series B (reported talks, unconfirmed)",,110,68,326,2026-03-12,550,2026-10-01
 Materials Nexus (MatNex),2022-04-15,Pre-seed (accelerator / angel allotments),,,,3,2021-12-31,4,2022-12-31
 Materials Nexus (MatNex),2023-07-26,Seed,2.6,,,4,2022-12-31,17,2024-12-31
 Materials Nexus (MatNex),2025-01-17,Unannounced round (SH01 allotments 17 and 20 Jan 2025; Caplight lists a Series A on 21 Feb 2025),,,,17,2024-12-31,27,2025-12-31
 "Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2021-06-01,JV formation (paid-in capital),2.8,,,,,,
 "Matlantis Corporation (formerly Preferred Computational Chemistry, PFCC)",2024-06-03,Business-and-capital alliance (Mitsubishi joins as shareholder),,,,,,,
+Mattiq (formerly Stoicheia),2020-12-18,"Seed (as Stoicheia, Inc.)",5.0,,,,,,
+Mattiq (formerly Stoicheia),2022-07-15,Unnamed equity (Form D),9.1,,,,,17,2023-03-26
+Mattiq (formerly Stoicheia),2024-12-12,Unnamed equity (Form D),4.5,,,,,,
+Medra,2025-09-11,Seed (announced on leaving stealth),11.0,0,0,,,,
+Medra,2025-12-11,Series A,52.0,0,6,,,,
+Mitra Chem,2021-11-17,Series A,20.0,,,,,,
+Mitra Chem,2023-08-15,Series B first close (of $60M round),40.0,,,,,,
 Orbital Materials (now Orbital Industries),2023-07-15,Seed,4.8,0,0,,,13,2024-02-21
 Orbital Materials (now Orbital Industries),2024-02-21,Series A,16.0,0,0,13,2024-02-21,,
 Orbital Materials (now Orbital Industries),2024-10-22,Strategic (NVentures),,0,0,13,2024-02-21,,
@@ -56,6 +74,8 @@ Polymerize (Polymerize Pte Ltd),2020-10-15,Seed,0.59,,,,,,
 Polymerize (Polymerize Pte Ltd),2022-05-25,Series A,4.2,,,,,,
 Polymerize (Polymerize Pte Ltd),2024-09-24,Series A-II (strategic),,,,,,,
 Polymerize (Polymerize Pte Ltd),2025-03-27,Strategic (undisclosed),,,,,,,
+Radical AI,2025-07-21,Series Seed+,55.0,,,,,34,2026-01-27
 Telescope Innovations,2022-11-10,Non-brokered private placement,1.08,,,,,,
 Telescope Innovations,2025-09-15,"Private placement, tranche 1 (LIFE exemption)",3.75,,,,,,
 Telescope Innovations,2025-10-15,"Private placement, tranche 2",0.93,,,,,,
+Tetsuwan Scientific,2024-11-19,Pre-seed,2.7,0,0,,,,
