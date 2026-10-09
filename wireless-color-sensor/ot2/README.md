@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-06 evening)
+## Standing settings for the colour read (as of 2026-10-09)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -33,7 +33,7 @@ the read height. Use these unless a later entry below changes them:
 | candidate | **z 92–100** (foot ~4–12 mm up). z 100 scored best of ten heights on 10-01 and over white paper on 10-06; over black paper z 92 scored 0.12, z 95 0.13, z 100 0.14, against 0.50 resting. Resting on the plate scored worst every time. Recommended; not switched until @timothy-commins says so | [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
 | pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)) | [`landing_shift.py`](landing_shift.py), 10-02, 10-06 |
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
-| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
+| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **256x** (the chip default; the firmware's 128x is ignored), 2 × 558.8 ms per reading; not settable without [`../pico/`](../pico/) | 10-01 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
@@ -1370,6 +1370,31 @@ afternoon and runs the backing test.
   colours; thicker colours.
 
 ![scores against the white-paper afternoon](black-paper-2026-10-06.png)
+
+## 2026-10-09 — accuracy so far, on one scale: 29% error at first, 12% at best, 44–50% resting (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by
+@timothy-commins: the factors, every attempt and how much each helped, the current accuracy
+per colour, and what is half-tested or untried. All of it is in
+[`accuracy-summary-2026-10-09.md`](accuracy-summary-2026-10-09.md);
+[`analyse_accuracy_summary.py`](analyse_accuracy_summary.py) re-scores every paint run from
+the committed analyses on one scale (error = mean distance from the published pigment range,
+440–670 nm, % of white; accuracy = 100% − error).
+
+- **First paint reading 29%, best so far 12%** (z 92 over black paper): 58% better. The
+  biggest single gain is the read height: 4–12 mm above the plate beat resting on it by
+  68–76% in 3 runs of 3.
+- **Resting on the plate, still the standing height, has scored 44–50% since the plate
+  moved to slot 7** (14% in slot 1 on 09-30). A sensor that sees no colour (one grey for
+  every paint) would score 20%.
+- **Per colour, 4–12 mm above:** yellow 73–86%, red 83–87%, blue 95–99% accurate. Blue's
+  number says little: published blue is dark everywhere, so even the colour-blind grey
+  scores 99% on it. Yellow's bright half reads 40–65% as bright as it should.
+- **The AC's 10:1 dilution is not the main problem** (4–11% of each colour's light came
+  through the paint), so thicker colours are off the next steps. The AC's success was
+  repeatability and same-sensor colour matching, not agreement with published spectra.
+
+![colour error in every paint run](accuracy-summary-2026-10-09.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
