@@ -16,13 +16,23 @@ The paper cannot be submitted until these are done. Everything else is a confirm
 
 | # | Item | Owner | IDs |
 | --- | --- | --- | --- |
-| 1 | Work-in-progress repositories for **P1 Powder dispensing module** and **P3 Rolling ball viscometer** | DTU team (Chang, Gambhir, Ziskason, Nyeland); escalation: Tejs Vegge | TV-1 |
-| 2 | Work-in-progress repository for **P7 Electrochemical workflow** | Yang Cao, Ethan Rajkumar, Ilya Yakavets; escalation: SGB / Jason Hein | P7-1 |
+| 1 | A public work-in-progress repository for **P3 Rolling ball viscometer**, the only project with nothing public (checked 2026-10-10) | DTU team (Chang, Gambhir, Ziskason, Nyeland); escalation: Tejs Vegge | TV-1 |
+| 2 | Confirm that the files found by search are the projects' own: **P1** `github.com/loppe35/PowderDispensing_and_Weighing_Module` and **P7** `github.com/ethraj2001/jubilee` + `github.com/cyrilcaoyang/jubilee-sdl2` | DTU team; P7 team | TV-1, P7-1 |
 | 3 | Agreement to the archival-deposit commitment in §6, from every team | all project teams | TV-6, OM-5, TB-4, BP-9, P7-5, SGB-11, JEH-3 |
 | 4 | Consent to publish each team's Table 5 row | all project teams | TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2 |
 | 5 | Every author approves the final text and agrees to submission (RSC requires this) | all 28 authors | ALL-1 |
 
-**The bar for items 1–2 is low.** The editor wrote that he would accept "at least the current 'work in progress' repositories". A public repository with the CAD files, a bill of materials, the control code as it stands, a licence, and a README that says "pre-release; documentation incomplete" is enough. It takes an afternoon. If a team cannot do it, that project comes out of Table 1. See [`revision-notes-v3.md`](revision-notes-v3.md) §5 for exactly what changes in that case.
+**The bar for item 1 is low.** The editor wrote that he would accept "at least the current 'work in progress' repositories". A public repository is enough if it contains:
+
+- the CAD files;
+- a bill of materials;
+- the control code as it stands;
+- a licence;
+- a README that says "pre-release; documentation incomplete".
+
+It takes an afternoon. If it cannot be done, P3 comes out of Table 1. See [`revision-notes-v3.md`](revision-notes-v3.md) §5 for exactly what changes in that case.
+
+**What changed on 2026-10-10.** v2 thought three projects had no public files. A search found public files for two of them, P1 (a release with a DOI, since January 2025) and P7 (tool files and code in two personal forks). The original manuscript simply never linked them. That turns two blocking asks into two confirmations, and §5 now uses the episode as evidence that documentation must also be findable.
 
 ---
 
@@ -85,8 +95,17 @@ Two people are named as project developers in Table 1 but are **not** in the aut
 - [ ] **SGB-4.** Mint the Zenodo DOI for `analysis/` from the final commit, then paste it into the Data availability statement and Table 1 of the response letter. Metadata is ready in `analysis/.zenodo.json`. I did not create the deposit, because publishing a DOI is irreversible and publicly visible; I can do it on request.
 - [ ] **SGB-5.** Authorship of Basita Das and Ilya Yakavets, decided with TB-2 and P7-3. If either is added, the response letter (Other changes, item 5) must say so and why.
 - [ ] **SGB-6.** Funding. v1 has no acknowledgement for you, Chance Hattrick, Kenzo Aspuru-Takata or Ethan Rajkumar, although all were at the Acceleration Consortium (plausibly CFREF-2022-00042, as listed for the other AC authors). There is also no line for BYU support of the revision.
-- [ ] **SGB-7.** **P8 archival deposit** (with Chance Hattrick). P8 is documented only by two Discourse threads, which the paper itself says do not count. Deposit the CAD, firmware and integration code on Zenodo, or point to an existing repository and mint a DOI from it. Then confirm the P8 row: $100, 3 h, "reproduced by several groups". Who are they? Naming one or two would strengthen §5.
-- [ ] **SGB-8.** **P9 link** (with Kenzo Aspuru-Takata). The repository was renamed `ac-training-lab` → `ac-dev-lab`. Confirm which URL is permanent and whether to cite the docs, the repository, or a Zenodo DOI. Then confirm the P9 row: $300, 30 h including the microscope build.
+- [ ] **SGB-7.** **P8** (with Chance Hattrick). Table 1 now cites the `ac-dev-lab` folder `src/ac_training_lab/picow/digital-pipette`, which holds the firmware and both STLs; the forum threads are dropped. Before publication:
+  - move the parts list from the Google Doc into the folder;
+  - **add attribution to the CC BY 4.0 Digital Pipette design** it modifies;
+  - tag an `ac-dev-lab` release with Zenodo enabled (the repository has no releases yet).
+
+  Also confirm the P8 row: $100, 3 h, "reproduced by several groups". Who are they? Naming one or two would strengthen §5. Do not confuse P8 with science-jubilee's HTTP syringe tool or with the ac-rad Digital Pipette v2; both are separate projects.
+- [ ] **SGB-8.** **P9** (with Kenzo Aspuru-Takata). Table 1 cites the docs at `ac-training-lab.readthedocs.io` (still canonical; `ac-dev-lab.readthedocs.io` returns 404) and the renamed repository `ac-dev-lab`. Table 5 now scores Configure and Run ◐, not ●, for two reasons:
+  - the microscope-side code is not in the repository (issue #37, open since 2024-09-16);
+  - both Hugging Face Spaces were down on 2026-10-10.
+
+  Fix either and the score goes back up. Also confirm the P9 row: $300, 30 h including the microscope build.
 - [ ] **SGB-9.** **Table 2 relabelling.** v2 marked P1, P3 and P7 as *contradicting* Claims 2 and 3. But v2's own §5 argued that they behave exactly as those claims predict, which a referee would spot. v3 marks them *S⁻* (supports, as a negative case), states the criteria in the caption, and moves P2 and P4 on Claim 2 from S to "—" until their teams report replications (OM-2, TV-3). See `revision-notes-v3.md` §3.
 - [ ] **SGB-10.** Consent to the P8 and P9 rows of Table 5.
 - [ ] **SGB-11.** Agreement to the §6 commitment for P8 and P9.
@@ -111,8 +130,8 @@ Seth has left the group. Authorship still requires his consent: RSC requires eve
 - [ ] **BP-5.** The "manifesto" you and Lilo mentioned. Send it, or confirm that the v3 thesis and the §6 obligations cover it.
 - [ ] **BP-6.** Handover of corresponding authorship to SGB, and the author order (you remain first).
 - [ ] **BP-7.** P6 science-jubilee row of Table 1: $2,000, 100 h, docs link.
-- [ ] **BP-8.** Consent to the P6 row of Table 5. Under the stated rubric, Troubleshoot is ◐ unless written troubleshooting/FAQ pages exist; if they do, send the URL and it becomes ●.
-- [ ] **BP-9.** §6 commitment: a Zenodo DOI for science-jubilee (if none exists, mint one from a GitHub release).
+- [ ] **BP-8.** Consent to the P6 row of Table 5. All five cells are ●; Troubleshoot rests on the written "first-line troubleshooting" section of the new-user guide, not on Discord.
+- [ ] **BP-9.** §6 commitment: a Zenodo DOI for science-jubilee. None exists, and the last release is v0.3.2 (2024-05-29). Cut a release with the Zenodo integration on. The repository URL is now `machineagency/science-jubilee` (renamed).
 - [ ] **BP-10.** UW funding lines for the P6 authors.
 
 ## 5. Lilo D. Pozzo (LDP): senior author
@@ -125,11 +144,16 @@ Seth has left the group. Authorship still requires his consent: RSC requires eve
 
 Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland; Tejs Vegge as PI.
 
-- [ ] **TV-1. BLOCKING.** Public work-in-progress repositories for **P1 Powder dispensing module** and **P3 Rolling ball viscometer**, with URLs for Table 1. Also confirm the P1, P3 and P4 rows ($300, 10 h each) and the developer lists.
+- [ ] **TV-1. BLOCKING (P3).** A public work-in-progress repository for **P3 Rolling ball viscometer**, with its URL for Table 1 and the response letter.
+- [ ] **TV-1 (P1).** Confirm that `github.com/loppe35/PowderDispensing_and_Weighing_Module` (release v1.0.0, 2025-01-27, Zenodo 10.5281/zenodo.14746532) is P1. It credits only Louie Nyeland. While you are there, please fix the three defects the audit found. §6 reports them in the past tense either way, and fixing them is the better outcome:
+  - 11 files in `PowderDispenser_FWSW` contain unresolved merge-conflict markers (`platformio.ini`, all five headers, `requirements.txt`, `LICENSE.md` and others), so the documented build and install steps fail as written;
+  - the Zenodo deposit contains empty `BuildFiles/`, `FWSW/` and `Data/` folders, because Zenodo does not capture git submodules. Re-release with the files vendored in, or upload them manually;
+  - 16 of the 22 file names cited in the BuildFiles README do not exist in the repository.
+- [ ] **TV-1 (rows).** Confirm the P1, P3 and P4 rows ($300 and 10 h each) and the developer lists.
 - [ ] **TV-2.** **Figure 4** (viscometer) was recovered from slide 4 of your showcase deck and has never been approved for publication. Approve it, or send a better view; CAD renders are in `figures/source/`. Figures 2 and 5 are unchanged from v1.
 - [ ] **TV-3.** Has the color mixing bot (P4) been built by anyone outside the four developers, e.g. multiple units for course 47332? If yes, Table 2 C2 becomes S. The same question applies to P1 and P3.
-- [ ] **TV-4.** Consent to the P1, P3 and P4 rows of Table 5. P1 and P3 are currently empty rows; once the repositories exist they will be re-scored from what is in them.
-- [ ] **TV-5.** Add a licence to `gitlab.com/auto_lab/47332-student-excercises` (P4). It has none, so under default copyright no one may legally build from it, and the paper's own licence column reports this. CERN-OHL-S or CC BY-SA 4.0 for hardware and MIT or Apache-2.0 for code takes minutes.
+- [ ] **TV-4.** Consent to the P1, P3 and P4 rows of Table 5: P1 ◐◐◐●● from the public release, P3 all ○, P4 ○○◐●◐. P3 will be re-scored once its repository exists.
+- [ ] **TV-5.** Licences. P4 (`gitlab.com/auto_lab/47332-student-excercises`) has no licence file; MPL-2.0 is declared only in `setup.py`. P1 declares different licences in different places (CERN-OHL-W-2.0, a corrupted MIT file, and CC BY 4.0 on Zenodo). Add one licence file to each. P4 also has no BOM, CAD or wiring diagram (Table 5: Procure ○, Build ○), and its notebooks live on a non-default branch.
 - [ ] **TV-6.** §6 commitment: Zenodo deposits for P1, P3 and P4 by publication.
 - [ ] **TV-7.** DTU funding lines (CAPeX DNRF P3; BIG-MAP 957189), unchanged from v1. Should anyone else on the team be added?
 
@@ -137,17 +161,17 @@ Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason, Louie Lucas Bisgaard Nyeland; 
 
 Owen A. Melville, Monique Ngan, Jeffrey Watchorn.
 
-- [ ] **OM-1.** P2 row of Table 1: $80–160, 24 h, repository link.
+- [ ] **OM-1.** P2 row of Table 1: $80–160, 24 h. The repository link is updated to `github.com/AC-SDL4/photo-reactor`, where the old URL now redirects. The audit found that the README documents `turn_on_led` and `set_led_brightness`, but the code defines `turn_on_LED` and `set_brightness`; fixing this is a two-minute edit.
 - [ ] **OM-2.** Has LEDbyXample been built outside your team? If yes, by whom? Table 2 C2 becomes S.
 - [ ] **OM-3.** Consent to the P2 row of Table 5.
-- [ ] **OM-4.** Add a licence to `github.com/owen-melville/photo-reactor` (none found). This is the better outcome; the Licence column will then read ● and the sentence about unlicensed repositories in §6 can be cut or narrowed.
+- [ ] **OM-4.** Add a licence to `github.com/AC-SDL4/photo-reactor` (none found). This is the better outcome; the Licence column will then show it, and §6's count of projects without a licence file drops from two to one.
 - [ ] **OM-5.** §6 commitment: a Zenodo DOI (GitHub release → Zenodo integration).
 
 ## 8. Tonio Buonassisi (TB) and MIT team: P5 DiSCO
 
 Alexander E. Siemenn, Eunice Aissi, Basita Das; Tonio Buonassisi as PI.
 
-- [ ] **TB-1.** P5 row of Table 1: $30–40 K, 3 months (analysed as 480 h at 1 FTE), three repositories. Does a DiSCO-level repository or paper now exist?
+- [ ] **TB-1.** P5 row of Table 1: $30–40 K, 3 months (analysed as 480 h at 1 FTE), three module repositories. `github.com/PV-Lab/DiSCO` exists but has been an empty placeholder since 2024-02-01, so v3 does not cite it. The platform uses Archerfish 4.0 (ten precursors), whose files are not released. Table 5 scores the integrated platform ◐◐◐◐○ from module-level material. Populating the DiSCO repository, even as a work in progress, would raise that score.
 - [ ] **TB-2.** **Basita Das** is a P5 developer in Table 1 and a co-author on all three cited DiSCO module papers, but was never in the author list. Intended or an omission? Ask Basita directly; do not add or leave out without asking.
 - [ ] **TB-3.** Consent to the P5 row of Table 5 and to the characterization in §§4–5: DiSCO's parts outweigh labour at $50/h, it is "designed to be learned from" rather than replicated, and the modules are published while the integrated platform has no build guide.
 - [ ] **TB-4.** §6 commitment: Zenodo DOIs for the DiSCO repositories (some may already exist through the papers' code-availability statements).
@@ -160,18 +184,22 @@ Tonio's own read of the decision letter, which v3 is built on: *"present a stron
 Wenyu Zhang, Lucy Hao, Jason E. Hein. Jason is also the likely escalation point for P7.
 
 - [ ] **JEH-1.** P10 row of Table 1: $0, 0–1 h per integration, GitLab link plus Zenodo concept DOI 10.5281/zenodo.15272617.
-- [ ] **JEH-2.** Consent to the P10 row of Table 5 and to §7's reading of IvoryOS as *complicating* Claim 4.
-- [ ] **JEH-3.** §6 commitment: already met by the existing Zenodo deposit.
+- [ ] **JEH-2.** Consent to the P10 row of Table 5. Troubleshoot is now ●, on the strength of the "Workflow step warnings" and "Human intervention and errors" pages. Also consent to §7's reading of IvoryOS as *complicating* Claim 4.
+- [ ] **JEH-3.** §6 commitment: met by the Zenodo deposit (concept 10.5281/zenodo.15272617). However, it is a single 2025-04-24 snapshot, while v1.7.0 shipped on 2026-10-07, and it declares CC BY 4.0 while the repository is MIT. Consider enabling automatic release archiving and correcting the licence on the deposit.
 - [ ] Your three affiliations (AC; UBC; University of Bergen), as in v1.
 
 ## 10. P7 team: electrochemical workflow
 
 Yang Cao, Ethan Rajkumar, Ilya Yakavets. Escalation: SGB / Jason Hein.
 
-- [ ] **P7-1. BLOCKING.** A public work-in-progress repository for the workflow (science-jubilee configuration, the rotating-disk-electrode tool CAD as it stands, control scripts, README), with its URL for Table 1. Also confirm the P7 row: $20 K, 300 h.
+- [ ] **P7-1.** Confirm that these public files are P7's, since Table 1 now cites them:
+  - `github.com/ethraj2001/jubilee`, commit d5c5969 (2024-08-27): the RDE adapter print files, offered upstream as machineagency/jubilee#204, still unmerged;
+  - `github.com/cyrilcaoyang/jubilee-sdl2`, commit bc548db (2025-02-13, archived): the tool class and configuration.
+
+  **Strongly preferred:** consolidate them into one work-in-progress repository with a README, a parts list (electrode, potentiostat, cell, fasteners), the source CAD, and whatever CV workflow code exists, then send the URL. No electrochemistry code is public yet. Also confirm the P7 row: $20 K, 300 h.
 - [ ] **P7-2.** **Figure 8** comes from the original showcase-form figure set. For v3 the UBC/UofT/AC logo strip was cropped and a spell-check underline under "Opentrons" removed; the original is in `figures/source/`. Confirm the schematic is current.
 - [ ] **P7-3.** **Ilya Yakavets** is a P7 developer in Table 1 but is not in the author list. Intended or an omission?
-- [ ] **P7-4.** Consent to the P7 row of Table 5. It is currently empty and will be re-scored from the repository.
+- [ ] **P7-4.** Consent to the P7 row of Table 5, which reads ◐◐○○○ from the public print files and tool class. A consolidated repository would be re-scored.
 - [ ] **P7-5.** §6 commitment: a Zenodo deposit by publication.
 
 ## 11. Nadya Peek (NP) and UW science-jubilee team: P6
@@ -194,6 +222,6 @@ Blair Subbaraman, Danli Luo, Sonya Vasquez, Wm Salt Hale; Maria Politi is now at
 | Category | Count |
 | --- | --- |
 | v2 `[NEEDED]` markers | 18 occurrences, 12 distinct items; all resolved or turned into an owned ID above (`revision-notes-v3.md` §2) |
-| `[TO SUPPLY]` placeholders left in v3 | 5: three repositories, one deposit, one DOI |
+| `[TO SUPPLY]` placeholders left | 2: the P3 repository (manuscript and response letter) and the survey material in Note S2 |
 | Sign-off IDs | listed by `tools/check_manuscript.py` |
-| Blocking items | 2 repositories (DTU ×2 in one ask; P7) plus consents |
+| Blocking items | 1 repository (P3), two confirmations that found files are the projects' own (P1, P7), plus consents |

@@ -48,25 +48,34 @@ Thank you for your assessment of our Perspective and for the invitation to submi
 
 > *"Three projects do not have electronic supporting materials (i.e., github repos) that would support the work. We would generally expect to see at least the current "work in progress" repositories for the current state of the work, in keeping with the journal's broader data & code policies."*
 
-**Response.** Every project now has a public repository, and their status is reported in Table 1. We have also used this point as evidence: in a Perspective arguing that documentation is the binding constraint, it is telling that three of our own ten projects had no public design files more than two years after the workshop. Sections 5 and 6 discuss this directly.
+**Response.** We re-checked every project against its live public resources on 10 October 2026 and report the result in Table 1, with the evidence in Supplementary Note S3. The finding was more interesting than a simple gap:
 
-<!-- SIGN-OFF: TV-1 / P7-1. The first sentence of this response is true only once the three work-in-progress
-     repositories below exist. Do not submit until they do, or until the projects are removed (revision-notes-v3.md §5). -->
+- Two of the three projects the original submission listed as "manuscript in progress" had in fact put their files in public, P1 as a versioned release with a DOI and P7 as tool files in a public fork. But nothing in the manuscript linked to them, so no reader could have found them.
+- The third project, P3, has nothing public. Its developers are creating a work-in-progress repository, and the manuscript will not be submitted without it.
+
+In a Perspective arguing that documentation is the binding constraint, this is evidence and not only an omission, and Sections 5 and 6 treat it that way: a design file that cannot be found does not get replicated.
+
+<!-- SIGN-OFF: TV-1. The P3 row below must be filled before submission. -->
 
 | Project | Status in the original submission | Status in this revision |
 | --- | --- | --- |
-| P1 Powder dispensing module (DTU) | "Manuscript in progress" | Work-in-progress repository: **[TO SUPPLY: URL, DTU team]** |
+| P1 Powder dispensing module (DTU) | "Manuscript in progress" | Public since 27 January 2025 (release v1.0.0 with a Zenodo DOI), but not linked; now cited in Table 1 |
 | P3 Rolling ball viscometer (DTU) | "Manuscript in progress" | Work-in-progress repository: **[TO SUPPLY: URL, DTU team]** |
-| P7 Electrochemical workflow (AC/UBC) | "Manuscript in progress" | Work-in-progress repository: **[TO SUPPLY: URL, P7 team]** |
-| P8 Digital pipette integration | Two forum threads | Archival deposit: **[TO SUPPLY: DOI]**. Forum threads are no longer cited as documentation (Table 1 footnote). |
-| P2, P4, P5, P6, P9, P10 | Repository or documentation links | Re-verified on 2026-10-10. Licences are reported in Table 5, and existing archival deposits are listed in Table 1. |
-| Analysis in this Perspective | — | Script, derived values and sensitivity sweep in the ESI and on Zenodo: **[TO SUPPLY: DOI]** |
+| P7 Electrochemical workflow (AC/UBC) | "Manuscript in progress" | Electrode tool files public since August 2024 and tool control code since February 2025, but not linked; now cited in Table 1 |
+| P8 Digital pipette integration | Two forum threads | Repository folder with the firmware and print files. Forum threads are no longer cited as documentation (Table 1 footnote) |
+| P2, P4, P5, P6, P9, P10 | Repository or documentation links | All re-verified. Three renamed repositories updated (P2, P6, P9). Licences and archival deposits reported in Table 5 and Note S3 |
+| Analysis in this Perspective | — | Script, derived values and sensitivity sweep provided as ESI and in a public GitHub repository; Zenodo DOI at acceptance, as the journal's code policy requires |
+
+<!-- Checked 2026-10-10. P1's release (2025-01-27) postdates the original submission (December 2024) but predates
+     the preprint (2025-02-12), whose Table 1 still said "manuscript in progress"; "not linked" is accurate for both.
+     SIGN-OFF: TV-1 / P7-1 (teams confirm these are their files). -->
 
 **Changes.**
 
-- **Table 1** has a *Design files and documentation* column that reports the current, verified status of every project, including deposits with persistent identifiers.
-- **Section 6** asks builders to deposit designs archivally from the first release, and we hold ourselves to that: every project has a public repository at submission and will have an archival deposit with a persistent identifier by publication.
-- **Data availability statement** covers the analysis code and the evidence for every documentation score.
+- **Table 1** now gives, for every project, the verified location of its design files and documentation.
+- **Table 5 and Note S3** report every project's licence and archival deposits alongside its documentation.
+- **Section 6** asks builders to deposit designs archivally from the first release and to check that the deposit actually contains the design; one of our own deposits archives empty folders. We hold ourselves to that: every project has a public repository at submission and will have an archival deposit with a persistent identifier by publication.
+- **The Data availability statement** covers the analysis code and the evidence for every documentation score.
 
 ---
 

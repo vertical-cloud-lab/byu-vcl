@@ -14,7 +14,7 @@ The manuscript now argues a single, contestable hypothesis from its first senten
 
 - Labour, not parts, dominates first-build cost. The median break-even wage is $30/h and the maximum $73/h.
 - User-developed automation therefore saves money only when it is replicated.
-- In our own sample, replication tracks documentation. That includes the three projects that published no design files for more than two years.
+- In our own sample, replication tracks documentation. That includes three projects first submitted without design files, two of which turned out to have published files that nothing linked.
 
 Before arguing any claim, we state for every project whether it supports, complicates or contradicts each of five sub-claims, and the projects that undermine our position are discussed rather than removed.
 
@@ -22,9 +22,9 @@ We address each point of your decision in the enclosed point-by-point response. 
 
 1. **Position and validation.** The paper is organized around one hypothesis, broken into five claims, each tested in its own section, with a new quantitative analysis built from data the original manuscript collected but never analysed.
 2. **How each project supports or undermines the position.** A project-by-claim matrix (Table 2) with stated criteria. Every project description ends with what it is evidence for, and a documentation self-audit of all ten projects (Table 5) is backed by public evidence for every score.
-3. **Supporting materials.** Every project now has a public repository (Table 1), the analysis code is archived on Zenodo, and the paper turns the absence of those repositories into evidence for its own thesis.
+3. **Supporting materials.** We re-verified every project's design files and documentation, and Table 1 now links them all. The analysis code is public and will be archived on Zenodo at acceptance. The paper treats what we found as evidence for its own thesis: two of the three "missing" projects had public files that nothing linked, and the third had none.
 
-<!-- SIGN-OFF: TV-1 / P7-1 / SGB-4. Point 3 is true only once the three WIP repositories and the analysis DOI exist. -->
+<!-- SIGN-OFF: TV-1 / P7-1. Point 3 is true only once P3 has a public repository and the P1 and P7 teams confirm their files. -->
 
 We also draw your attention to Doloi *et al.*, "Democratizing self-driving labs: advances in low-cost 3D printing for laboratory automation", published in *Digital Discovery* in 2025, after our original submission. We have changed our title to avoid a collision, and we cite and differentiate from that work explicitly. It catalogues what can be built cheaply. We argue that capital cost is close to irrelevant to whether anything is democratized. The two papers are complementary rather than duplicative.
 

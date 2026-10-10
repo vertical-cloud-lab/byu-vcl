@@ -80,7 +80,156 @@ A survey of attendees was administered during the Democratizing Self-Driving Lab
 
 ## Note S3. Evidence for the documentation self-audit (Table 5)
 
-*Populated from the 2026-10-10 verification; see below.*
+**Method.** On 2026-10-10 we checked every project against its live public resources: repositories via the GitHub and GitLab APIs, documentation sites, Zenodo, Software Heritage, Crossref and OpenAlex. Scores use one rubric for all projects:
+
+- **Procure:** a bill of materials with parts, quantities and sources (print files count for printed parts).
+- **Build:** assembly or fabrication instructions together with CAD or fabrication files.
+- **Configure:** installation, wiring and calibration.
+- **Run:** operating instructions with an example.
+- **Troubleshoot:** written troubleshooting, FAQ or known-issues content scores ● (complete); a support channel only (an issue tracker with maintainer replies, a forum or a chat server), or scattered notes, scores ◐ (partial); nothing scores ○ (absent).
+
+Software-only projects are n/a (not applicable) for Procure and Build. The scores were proposed with the assistance of a large language model working from the resources listed here (see Acknowledgements), and each project team reviewed its own row. Negative results (nothing found) are recorded, with the exact searches that produced them, in the audit files (`audit/`) of the repository named in the Data availability statement.
+
+<!-- SIGN-OFF: every team (TV-4, OM-3, TB-3, BP-8, P7-4, SGB-10, JEH-2). "Each project team reviewed its own row" becomes true only when they have. -->
+
+### P1 Powder dispensing module
+
+- **Repository:** github.com/loppe35/PowderDispensing_and_Weighing_Module, with submodules PowderDispenser_BuildFiles, PowderDispenser_FWSW and PowderDispenser_Data. Created 2024-12-12; release v1.0.0 on 2025-01-27.
+- **Deposit:** Zenodo 10.5281/zenodo.14746532 (concept DOI 10.5281/zenodo.14746531). The archive holds the README, the licence texts and **empty submodule folders**, because Zenodo's GitHub integration does not capture git submodules. The README still says a DOI "will be added once available".
+- **Not linked:** the original submission listed this project as "manuscript in progress".
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ◐ | BuildFiles README, "Additional Hardware Components": main electronics are linked to vendors, but there are no quantities or costs, and fasteners, fan, auger, bearings, tubing and power supply are missing |
+| Build | ◐ | STEP and STL files for 18 parts, renders, `Circuit.png`, print settings. The 7-step assembly text is skeletal, and 16 of the 22 file names it cites are not in the repository |
+| Configure | ◐ | PlatformIO build, pip install and `config.json` calibration are documented. However, 11 FWSW files (including `platformio.ini`, all five firmware headers and `requirements.txt`) contain unresolved merge-conflict markers on `main` and in the v1.0.0 commit, so these steps fail as written |
+| Run | ● | `Use_Example.ipynb` (73 cells: checks, demo, calibration, sensitivity/accuracy/stability tests) |
+| Troubleshoot | ● | Dedicated "Troubleshooting / Common Issues" section (three items) |
+| Licence | inconsistent | Hardware CERN-OHL-W-2.0 (BuildFiles); software MIT intended, but `LICENSE.md` contains merge-conflict markers; no licence at the repository root; Zenodo metadata says CC BY 4.0 |
+
+### P2 LEDbyXample modular photoreactor
+
+- **Repository:** github.com/AC-SDL4/photo-reactor. The URL in the original submission, github.com/owen-melville/photo-reactor, now redirects there.
+- **Activity:** last commit 2025-01-28; no releases.
+- **Deposit:** none.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ● | README "Step 1" tables: supplier, part number, quantity, cost, link (stir bar, vials and fasteners not listed) |
+| Build | ● | Steps 3a–3g with photographs and circuit diagrams; STL and Fusion 360 sources |
+| Configure | ◐ | MicroPython flashing, upload and wiring are covered. There is no LED, temperature or stirring calibration, and host-side control is only in the undocumented `serial_test.py` |
+| Run | ◐ | The README documents `turn_on_led` and `set_led_brightness`, but the code defines `turn_on_LED` and `set_brightness`; `reactor_test.py` defines functions only |
+| Troubleshoot | ◐ | Scattered notes ("Tricky step" alerts, fan initialization caveat); issue tracker with one maintainer reply (#1); issue #2 (2026-09-10) unanswered |
+| Licence | none | No licence file |
+
+### P3 Rolling ball viscometer
+
+**Nothing public was found:** no repository on GitHub or GitLab (including every project in the `auto_lab` group), no deposit on Zenodo, Figshare or OSF, and no publication. Every cell is ○.
+
+### P4 Color mixing bot
+
+- **Repository:** gitlab.com/auto_lab/47332-student-excercises, with branches `main`, `student_excercises` and `ph`. Last commit 2024-07-30; no releases. Mirrors: github.com/dtu-energy/color_mixing_pumpbot and github.com/gambhirkshitij/47332-2024.
+- **Deposit:** none.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ○ | No bill of materials in any branch or mirror; parts can only be inferred from firmware `#include`s |
+| Build | ○ | No CAD, assembly instructions or wiring diagram |
+| Configure | ◐ | Calibration notebook 01, Excel and configuration templates, pip install; no flashing instructions; wiring given as pin numbers only |
+| Run | ● | Eight notebooks (00–07). They sit on the non-default `student_excercises` branch, and the pH (multi-objective) extension described in the main text exists as code on the `ph` branch with no example |
+| Troubleshoot | ◐ | Scattered tips (Arduino reset, serial-port fallback, a "may contain bugs" banner) |
+| Licence | none | No licence file; `setup.py` declares MPL-2.0 |
+
+### P5 DiSCO platform
+
+- **Repositories:** github.com/PV-Lab/Archerfish (Apache-2.0), github.com/PV-Lab/SDCNN (MIT) and github.com/PV-Lab/Autocharacterization-Bandgap (MIT). github.com/PV-Lab/DiSCO exists but has been an empty placeholder since 2024-02-01.
+- **Deposits:** SDCNN only, Zenodo 10.5281/zenodo.15556275, which archives a fork.
+- **Description:** the integrated platform is described only in a 2025 MIT doctoral thesis (hdl.handle.net/1721.1/165609). The platform uses Archerfish 4.0 (ten precursors), whose files have not been released; the repository holds Archerfish 1.0.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ◐ | `Archefish BOM.xlsx` covers Archerfish 1.0 only (about USD 507); nothing for the rest of the platform |
+| Build | ◐ | Archerfish 1.0 CAD; assembly steps only in the paper's SI and the thesis; nothing for platform integration |
+| Configure | ◐ | Software installation documented; wiring and PWM settings only in the thesis |
+| Run | ◐ | SDCNN and Bandgap example notebooks; no Archerfish operating procedure and no platform orchestration code |
+| Troubleshoot | ○ | Nothing in any repository; no issues filed |
+| Licence | Apache-2.0, MIT | Per module repository |
+
+### P6 Science-jubilee
+
+- **Repository:** github.com/machineagency/science-jubilee, renamed from `science_jubilee`, which redirects. Last release v0.3.2 on 2024-05-29.
+- **Documentation:** science-jubilee.readthedocs.io.
+- **Deposit:** none. Software Heritage holds only a 2024-08-17 snapshot under the old URL.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ● | `building/building_a_jubilee` (kit sources, tool list with vendor links); jubilee3d.com Getting_Parts; parts tables with quantity, vendor and cost in the tool build pages; STL, STEP and F3D files in `tool_library/` |
+| Build | ● | Step-by-step frame, axis, toolchanger, wiring and per-tool build pages; assembly PDFs |
+| Configure | ● | `getting_started/installation`, `tool_offsets`, `wiring`; Duet configuration files |
+| Run | ● | `new_user_guide`, `pipette_guide`, `color_mixing_setup`; nine notebooks |
+| Troubleshoot | ● | `new_user_guide#first-line-troubleshooting` (no power, axis not moving, endstop crash, probing); "If it doesn't:" checklist in the syringe tool page; plus two Discord servers and the issue tracker |
+| Licence | MIT, CC BY 4.0 | Software MIT; Jubilee hardware CC BY 4.0 |
+
+### P7 Electrochemical workflow
+
+- **Tool files:** github.com/ethraj2001/jubilee, commit d5c5969 (2024-08-27), "added a new RDE tool for Jubilee 2.2". It adds three STL files for the rotating-disk-electrode adapter. They were offered upstream as machineagency/jubilee pull request #204, which is still open and unmerged.
+- **Control code:** github.com/cyrilcaoyang/jubilee-sdl2 (archived, MIT), commit bc548db (2025-02-13). It contains an RDE tool class adapted from the science-jubilee pipette tool, a configuration file and a deck definition.
+- **Deposit:** none. Not linked from the original submission.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ◐ | Print files only; no parts list for the electrode, potentiostat, fasteners or cell |
+| Build | ◐ | Print files only (no source CAD, no assembly steps) |
+| Configure | ○ | Configuration stubs without instructions |
+| Run | ○ | `demo.py` only picks up and parks the tool; no electrochemistry workflow is public |
+| Troubleshoot | ○ | None |
+| Licence | MIT, CC BY 4.0 | Code MIT; the print files inherit CC BY 4.0 from the Jubilee repository |
+
+### P8 Digital pipette integration
+
+- **Code and print files:** github.com/AccelerationConsortium/ac-dev-lab, folder `src/ac_training_lab/picow/digital-pipette`. It contains Pico W MQTT firmware, a secrets template, time-synchronization and web-app scripts, and `designs/Science_Jubille_Adapter v0.stl` and `designs/pipettecase1 v2.stl`.
+- **Documentation:** a docs page at ac-training-lab.readthedocs.io/en/latest/devices/picow-digital-pipette.html, and a parts list (12 items, quantities, no suppliers) in a Google Doc linked from forum thread accelerated-discovery.org/t/236.
+- **Deposit:** none; the repository has no releases.
+- **Attribution:** the folder carries no attribution to the CC BY 4.0 Digital Pipette design it modifies.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ◐ | Parts list with quantities but no suppliers, outside the repository; print files |
+| Build | ◐ | Print files and videos; no written assembly steps |
+| Configure | ◐ | Firmware and configuration template; no written setup |
+| Run | ◐ | Example scripts; no operating instructions |
+| Troubleshoot | ◐ | Forum thread /t/236 with maintainer and original-author replies; open issues #138 and #146 |
+| Licence | MIT | Repository licence |
+
+### P9 OpenFlexure public control
+
+- **Repository:** github.com/AccelerationConsortium/ac-dev-lab, renamed from `ac-training-lab`, which redirects. The canonical documentation remains ac-training-lab.readthedocs.io; ac-dev-lab.readthedocs.io returns 404.
+- **Missing:** the code that runs on the microscope itself is not in the repository (issue #37, open since 2024-09-16).
+- **Public interface:** on 2026-10-10, the two Hugging Face Spaces that host it were sleeping and in a runtime error.
+- **Deposit:** none.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | ◐ | Delegated to the commercial kit and the upstream OpenFlexure parts list, reachable via forum thread /t/231 |
+| Build | ◐ | Upstream build documentation via /t/231 and /t/254 |
+| Configure | ◐ | Network setup notes only; microscope-side MQTT service and broker setup missing |
+| Run | ◐ | `use.py` example and MQTT client in the code; the docs page has no operating instructions, and the public interface was not running |
+| Troubleshoot | ◐ | Issues #58 and #81 with maintainer replies; forum thread /t/254 |
+| Licence | MIT | Repository licence |
+
+### P10 IvoryOS
+
+- **Repository:** gitlab.com/heingroup/ivoryos (canonical), mirrored at github.com/ivoryos-ai/IvoryOS. Release v1.7.0 on 2026-10-07.
+- **Deposit:** Zenodo concept DOI 10.5281/zenodo.15272617 resolves to a single version (10.5281/zenodo.15272618, 2025-04-24). No later release is archived, and the deposit declares CC BY 4.0 while the repository is MIT.
+
+| Capability | Score | Evidence |
+|---|:-:|---|
+| Procure | n/a | Software |
+| Build | n/a | Software |
+| Configure | ● | README installation; integrator quick-start; contributor setup |
+| Run | ● | UI guide, run-behaviour page, examples, video tutorials |
+| Troubleshoot | ● | "Workflow step warnings" in the deck-compatibility page; "Human intervention and errors" in the run-behaviour page; plus Discord, Slack and the issue tracker |
+| Licence | MIT | Repository licence (deposit declares CC BY 4.0) |
 
 ---
 

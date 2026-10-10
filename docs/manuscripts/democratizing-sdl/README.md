@@ -14,6 +14,7 @@ Self-Driving Labs" workshop Perspective. Tracked in
 | [`cover-letter.md`](cover-letter.md) | Cover letter for the resubmission |
 | [`esi/supplementary-information.md`](esi/supplementary-information.md) | ESI: Note S1 (project descriptions as contributed), S2 (survey), S3 (evidence for every Table 5 cell), S4 (labour analysis) |
 | [`revision-notes-v3.md`](revision-notes-v3.md) | Changelog v2 → v3, what happened to every v2 `[NEEDED]` marker, and the 2026-10-10 verification of all ten projects |
+| [`audit/`](audit/) | The 2026-10-10 verification reports (projects P1–P5 and P6–P10, references, journal policy), including the exact searches behind every negative result |
 | [`tools/check_manuscript.py`](tools/check_manuscript.py) | Renumbers citations into first-appearance order and lists open sign-off IDs and placeholders. Run it after any edit that adds a reference |
 | [`manuscript-v2.md`](manuscript-v2.md) | v2: the first restructure around the thesis. Superseded by v3 |
 | [`revision-notes-v2.md`](revision-notes-v2.md) | Changelog v1 → v2 and the title shortlist (§2) |
@@ -126,9 +127,11 @@ no new data — and rewrites `table1-derived.csv`, `sensitivity.csv` and
 corresponding author; Seth Leavitt, who coordinated v2, is kept as an author. Everything an
 agent can resolve has been resolved. What remains is in
 [`sign-off-checklist.md`](sign-off-checklist.md), led by the one item writing cannot fix:
-work-in-progress repositories for the powder dispensing module and rolling ball viscometer
-(DTU) and the electrochemical workflow (P7 team). The editor said he would accept
-"work in progress" repositories, so the bar is low.
+a work-in-progress repository for the rolling ball viscometer (P3, DTU), the only project
+with nothing public. A search on 2026-10-10 found that the other two "missing" projects
+(P1 and P7) had public files all along that the manuscript never linked; their teams only
+need to confirm them. The editor said he would accept "work in progress" repositories, so
+the bar is low.
 
 Check the manuscript after any edit:
 
