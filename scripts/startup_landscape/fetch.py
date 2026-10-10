@@ -60,6 +60,24 @@ def _throttle(host):
         fh.write(str(time.time()))
 
 
+def _read_capped(resp):
+    """Read a response, holding the average under $SL_MAX_BPS bytes/s if set
+    (for fetching from a Pi on shared Wi-Fi)."""
+    cap = float(os.environ.get("SL_MAX_BPS") or 0)
+    if not cap:
+        return resp.read()
+    chunks, got, t0 = [], 0, time.time()
+    while True:
+        chunk = resp.read(16384)
+        if not chunk:
+            return b"".join(chunks)
+        chunks.append(chunk)
+        got += len(chunk)
+        ahead = got / cap - (time.time() - t0)
+        if ahead > 0:
+            time.sleep(ahead)
+
+
 def get(url, *, data=None, headers=None, tries=4, timeout=60):
     """GET (or POST if data) with cache, per-host throttle and backoff on 429/5xx."""
     key = hashlib.sha256((url + (data or "")).encode()).hexdigest()
@@ -77,7 +95,7 @@ def get(url, *, data=None, headers=None, tries=4, timeout=60):
         )
         try:
             with urllib.request.urlopen(req, timeout=timeout) as resp:
-                blob = resp.read()
+                blob = _read_capped(resp)
             # Wayback's id_ playback can return the original gzip body undecoded.
             if blob[:2] == b"\x1f\x8b":
                 blob = gzip.decompress(blob)
