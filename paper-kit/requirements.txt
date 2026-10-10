@@ -1,0 +1,6 @@
+# Pinned so that make rebuild-check can rebuild every figure byte for byte.
+# Change a pin on purpose, rebuild, and commit the new figures with it.
+matplotlib==3.11.2
+numpy==2.5.4
+pandas==3.0.6
+pillow==12.3.0

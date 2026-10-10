@@ -1,0 +1,22 @@
+# LaTeX build output (make pdf / todos / diff write into build/)
+build/
+manuscript/*-diff.tex
+manuscript/*.aux
+manuscript/*.bbl
+manuscript/*.blg
+manuscript/*.fdb_latexmk
+manuscript/*.fls
+manuscript/*.log
+manuscript/*.out
+manuscript/*.synctex.gz
+manuscript/*.tdo
+manuscript/*.toc
+manuscript/*.spl
+
+# Publisher classes fetched by make fetch (licences vary; see manuscript/vendor/README.md)
+manuscript/vendor/*/
+
+# Colour-vision simulations from make colorblind (regenerated on demand)
+figures/out/cvd/
+
+__pycache__/
