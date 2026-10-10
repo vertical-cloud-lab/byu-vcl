@@ -89,15 +89,28 @@ rebuild-check:
 credit:
 	$(PY) scripts/credit.py
 
-# Classes that are not in TeX Live; elsarticle and asmejour are.
+# Classes that are not in TeX Live (elsarticle and asmejour are). Their licences
+# do not clearly allow redistribution, so they are fetched, checked against the
+# SHA-256 of the version this kit was tested with, and never committed. When a
+# publisher updates a template the check fails: compare, then update the hash.
 SNJNL_URL ?= https://resource-cms.springernature.com/springer-cms/rest/v1/content/18782940/data/v12
-RSC_URL   ?= https://www.rsc.org/images/RSC_LaTeX_Templates_tcm18-186297.zip
+SNJNL_SHA ?= 812e76dcaa9c28dc1bff1fb6065d51729b67d4ea140552a05088317414a3ecae
+RSC_URL   ?= https://www.rsc.org/getContentAsset/5484c665-5d01-46eb-9b23-121b16e8ecd4/f4c91d86-ac3e-4675-bdf3-f8325ded9710/royal-society-of-chemistry-article-template.zip
+RSC_SHA   ?= e481548ff4c520b25e341dcf84a55bc58752064fd1e584a834f7c2767174b6c5
 fetch:
 	mkdir -p $(VENDOR)/sn-jnl $(VENDOR)/rsc
-	curl -fsSL "$(SNJNL_URL)" -o $(VENDOR)/sn-jnl.zip && \
-	  unzip -oq -j $(VENDOR)/sn-jnl.zip -d $(VENDOR)/sn-jnl && rm $(VENDOR)/sn-jnl.zip
-	curl -fsSL "$(RSC_URL)" -o $(VENDOR)/rsc.zip && \
-	  unzip -oq $(VENDOR)/rsc.zip -d $(VENDOR)/rsc && rm $(VENDOR)/rsc.zip
+	curl -fsSL "$(SNJNL_URL)" -o $(VENDOR)/sn-jnl.zip
+	echo "$(SNJNL_SHA)  $(VENDOR)/sn-jnl.zip" | sha256sum -c --quiet
+	unzip -oq -j $(VENDOR)/sn-jnl.zip -d $(VENDOR)/sn-jnl && rm $(VENDOR)/sn-jnl.zip
+	curl -fsSL "$(RSC_URL)" -o $(VENDOR)/rsc.zip
+	echo "$(RSC_SHA)  $(VENDOR)/rsc.zip" | sha256sum -c --quiet
+	unzip -oq $(VENDOR)/rsc.zip -d $(VENDOR)/rsc && rm $(VENDOR)/rsc.zip
+	@# RSC ships one main.tex; main-rsc.tex inputs its preamble (minus the sample
+	@# bibliography preamble) and its in-document page set-up, unchanged.
+	sed -n '1,/^\\begin{document}/p' $(VENDOR)/rsc/main.tex | sed '$$d' \
+	  | sed '/^%%%%%%%%% Preamble of the bibliography/,/^%%%%%%%%% *$$/d' > $(VENDOR)/rsc/rsc-preamble.tex
+	sed -n '/^\\begin{document}/,/^%%%END OF FIGURE SETUP%%%/p' $(VENDOR)/rsc/main.tex | sed '1d' \
+	  > $(VENDOR)/rsc/rsc-pagesetup.tex
 	@echo "classes in $(MS)/vendor/ (not committed: see $(MS)/vendor/README.md)"
 
 clean:

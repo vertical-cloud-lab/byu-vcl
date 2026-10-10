@@ -1,0 +1,77 @@
+% =============================================================================
+% main-rsc.tex: Royal Society of Chemistry skeleton (the RSC article template,
+% https://www.rsc.org/publishing/publish-with-us/publish-a-journal-article/article-templates).
+% RSC ships one main.tex rather than a class. make fetch puts it in
+% vendor/rsc/ and splits off its preamble and page set-up, which this file
+% inputs unchanged ("Please don't disable any packages in the preamble").
+% For Digital Discovery, J. Mater. Chem. A, Reaction Chem. Eng., etc.; the
+% template is optional for RSC articles, but the submitted PDF should look
+% like this.
+%   make pdf J=rsc    make todos J=rsc
+% =============================================================================
+\input{rsc-preamble}
+\input{macros}
+
+\begin{document}
+\input{rsc-pagesetup}
+
+%%% Title, authors and abstract: the template's own block %%%
+\twocolumn[
+  \begin{@twocolumnfalse}
+{\includegraphics[height=30pt]{head_foot/journal_name}\hfill\raisebox{0pt}[0pt][0pt]{\includegraphics[height=55pt]{head_foot/RSC_LOGO_CMYK}}\\[1ex]
+\includegraphics[width=18.5cm]{head_foot/header_bar}}\par
+\vspace{1em}
+\sffamily
+\begin{tabular}{m{4.5cm} p{13.5cm} }
+\includegraphics{head_foot/DOI} & \noindent\LARGE{\textbf{\fillme{Title}$^\dag$}} \\
+\vspace{0.3cm} & \vspace{0.3cm} \\
+ & \noindent\large{\fillme{First Author}\textit{$^{a}$} and Sterling G. Baird$^{\ast}$\textit{$^{a}$}} \\
+\includegraphics{head_foot/dates} & \noindent\normalsize{\input{sections/abstract}} \\
+\end{tabular}
+ \end{@twocolumnfalse} \vspace{0.6cm}
+  ]
+
+\renewcommand*\rmdefault{bch}\normalfont\upshape
+\rmfamily
+\section*{}
+\vspace{-1cm}
+
+\footnotetext{\textit{$^{a}$~Department of Mechanical Engineering, Brigham Young University,
+  Provo, UT 84602, USA. E-mail: sterling.baird@byu.edu}}
+\footnotetext{\dag~Electronic supplementary information (ESI) available:
+  \fillme{what the ESI holds}. See DOI: \fillme{assigned by RSC}}
+
+\listoftodos
+
+\input{sections/introduction}
+\input{sections/methods}
+% RSC: the AI statement, with the prompts, goes in Experimental / Methods;
+% the tool's name and version again in Acknowledgements; declare it in the
+% cover letter as well.
+\subsection*{Use of generative AI}
+\input{declarations/genai}
+\input{declarations/genai-methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\section*{Author contributions}
+\input{declarations/credit-statement}
+
+\section*{Conflicts of interest}
+% RSC's wording when there are none: "There are no conflicts to declare."
+\input{declarations/coi}
+
+\section*{Data availability}
+\input{declarations/availability}
+
+\section*{Acknowledgements}
+\input{declarations/acknowledgements}
+\input{declarations/funding}
+\fillme{Generative AI: the tool and version, as in the statement in Methods.}
+
+\balance
+
+\bibliography{references}
+\bibliographystyle{rsc}
+\end{document}

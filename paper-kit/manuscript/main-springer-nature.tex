@@ -1,0 +1,79 @@
+% =============================================================================
+% main-springer-nature.tex: Springer Nature skeleton (sn-jnl, template v3.1,
+% December 2024, from https://www.springernature.com/gp/authors/campaigns/latex-author-support).
+% The class is not in TeX Live: make fetch puts it in vendor/sn-jnl/.
+% Springer publishes the TMS journals (JOM, IMMI, Metall. Mater. Trans. A/B,
+% J. Sustain. Metall.) as well as npj and Scientific Reports, all on sn-jnl.
+%   make pdf J=springer-nature    make todos J=springer-nature
+%
+% Reference style: sn-mathphys-num (numbered) suits most engineering titles;
+% check the journal's own guide (sn-basic, sn-vancouver-num, sn-nature...).
+% referee: double spacing for review; lineno: line numbers; iicol: two columns.
+% =============================================================================
+\documentclass[pdflatex,sn-mathphys-num,referee,lineno]{sn-jnl}
+\input{macros}
+
+\begin{document}
+
+\title[\fillme{Short title}]{\fillme{Title}}
+
+\author[1]{\fnm{\fillme{First}} \sur{\fillme{Author}}}\email{\fillme{netid@byu.edu}}
+\author*[1]{\fnm{Sterling G.} \sur{Baird}}\email{sterling.baird@byu.edu}
+\affil*[1]{\orgdiv{Department of Mechanical Engineering}, \orgname{Brigham Young University},
+  \orgaddress{\city{Provo}, \state{UT}, \postcode{84602}, \country{USA}}}
+
+\abstract{\input{sections/abstract}}
+
+\keywords{\fillme{keyword one}, \fillme{keyword two}, \fillme{keyword three}}
+
+\maketitle
+\listoftodos
+
+\input{sections/introduction}
+\input{sections/methods}
+% Springer Nature: the AI paragraph goes in Methods (or "a suitable
+% alternative part" if there is none); research use with it.
+\subsection*{Use of generative AI}
+\input{declarations/genai}
+\input{declarations/genai-methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\backmatter
+
+\bmhead{Acknowledgements}
+\input{declarations/acknowledgements}
+
+\section*{Declarations}
+% The template's list; some journals say "Competing interests", others
+% "Conflict of interest": use the journal's word. Delete what does not apply.
+\bmhead{Funding}
+\input{declarations/funding}
+
+\bmhead{Competing interests}
+\input{declarations/coi}
+
+\bmhead{Ethics approval and consent to participate}
+Not applicable.\fillme{Confirm: no human participants, human data or animals.}
+
+\bmhead{Consent for publication}
+Not applicable.\fillme{Confirm: no identifiable images or data of people.}
+
+\bmhead{Data availability}
+\input{declarations/availability}
+
+\bmhead{Materials availability}
+\fillme{Where the hardware designs, samples or materials can be obtained; or
+not applicable.}
+
+\bmhead{Code availability}
+\fillme{The code is part of the Zenodo record above; or state its own DOI and
+licence.}
+
+\bmhead{Author contribution}
+\input{declarations/credit-statement}
+
+\bibliography{references}
+
+\end{document}

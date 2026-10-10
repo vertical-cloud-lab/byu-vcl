@@ -66,7 +66,7 @@ def data_problems() -> list[str]:
 def placeholders() -> list[str]:
     out = []
     for tex in sorted((KIT / "manuscript").rglob("*.tex")):
-        if "vendor" in tex.parts or tex.name.endswith("-diff.tex"):
+        if "vendor" in tex.parts or tex.name.endswith("-diff.tex") or tex.name == "macros.tex":
             continue
         for i, line in enumerate(tex.read_text(encoding="utf-8").splitlines(), 1):
             if line.lstrip().startswith("%"):
