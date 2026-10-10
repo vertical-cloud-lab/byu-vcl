@@ -52,9 +52,9 @@ The claims, and the meeting whiteboard's wants that each one answers:
 
 | Claim | Whiteboard wants | Runs |
 | --- | --- | --- |
-| **C1 Capability.** A 250 g custom charge becomes LPBF-range powder in an academic-lab ultrasonic atomizer. | 15–45 µm, sphericity, flowability, low oxide, yield | A |
-| **C2 Repeatability.** The run-to-run spread at fixed settings. Only one replicate study of ultrasonic atomization has been published, for any alloy, and none for Al ([lit check](https://github.com/vertical-cloud-lab/byu-vcl/blob/7a18b9c/outputs/issue-261-repeatability/README.md)), so this would be new. | Homogeneity within a batch | A |
-| **C3 Composition set by the charge.** Measured Si follows the Si in the charge across the spread, and the powder is homogeneous within each particle and across the batch. | Target composition, homogeneity within a particle | B, with A as the 0 wt% point |
+| **C1 Capability.** A 250 g charge becomes LPBF-range powder in an academic-lab ultrasonic atomizer. | 15–45 µm, sphericity, flowability, low oxide, yield | A |
+| **C2 Repeatability.** The run-to-run spread at fixed settings. As of the October 2026 search, only one replicate study of ultrasonic atomization had been published, for any alloy, and none for Al ([lit check](https://github.com/vertical-cloud-lab/byu-vcl/blob/7a18b9c/outputs/issue-261-repeatability/README.md)), so this would be new. | All of C1's, run after run: #264's "consistent powder" for the print | A |
+| **C3 Composition set by the charge.** Measured Si follows the Si in the charge across the spread, and the powder is homogeneous within each particle and across the batch. | Target composition, homogeneity within a particle and a batch | B, with A as the 0 wt% point |
 | **C4 Printability.** One print on the Aconity MIDI from in-house powder, compared with commercial AlSi10Mg. | Everything above, end to end | C |
 
 The rest of the article, including the FLAIME scope in `digital-alloy-lab-private#111`,
@@ -67,11 +67,12 @@ much 4047 powder is in the charge.
 
 | Setting | Proposed | Why |
 | --- | --- | --- |
-| Charge | **250 ± 2 g of 6063, one bar lot**, every part weighed | Start-up and end losses are fixed amounts, so yield as a percentage depends on charge mass. Holding it at 250 g in every block lets Block A serve as Block B's 0 wt% point. 250 g is the low end of #264's 250–350 g, which leaves cups enough room to reach 30 wt% (see the [spread](#composition-spread-block-b)). |
+| Charge | **250 ± 2 g in total**: 6063 from one bar lot, plus the 4047 powder in Block B. Weigh every part. | Start-up and end losses are fixed amounts, so yield as a percentage depends on charge mass. Holding it at 250 g in every block lets Block A serve as Block B's 0 wt% point. 250 g is the low end of #264's 250–350 g, which leaves cups enough room to reach 30 wt% (see the [spread](#composition-spread-block-b)). |
 | Plate | **Mo**, labelled, used only for the 6063 family. Log how many runs each plate has done. | Bartosz says CF doesn't atomize with the 1.5:1 booster ([Oct 8](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6088484430)). Oct 2 (u23y78), on Mo, is the only run that made a useful amount of powder. A metal plate lasts about 4–6 runs with the reverse booster and a low-melting alloy, 1–3 otherwise, with no guarantee either way ([SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/sop.md#cleaning-and-maintenance)). Expect plate changes, and log them as a covariate. |
 | Booster, amplitude | **1.5:1, amplitude set to 90 %**. Record the HMI's "amplitude real". | [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6032139581), aimed at 15–45 µm |
 | Nozzle | One bore for the whole study (0.5 mm on Oct 2). Inspect it and clear globs before every run. | Ronnie found [globs at the exit](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6089539052) after Oct 8 |
-| Temperature | One schedule, picked before A1. The trainer's default is 850 °C to drop the charge, 780–800 °C at the pour, and a 2 min hold. | Oct 2 used 830 °C as a guess ([SOP lessons](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/sop.md#lessons-from-the-first-unsupervised-run-oct-2)) |
+| Temperature | One schedule, picked before A1. The trainer's default is 850 °C to drop the charge and 780–800 °C at the pour. | Oct 2 used 830 °C as a guess ([SOP lessons](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/sop.md#lessons-from-the-first-unsupervised-run-oct-2)) |
+| Hold before the pour | **One hold for Blocks A and B, picked before A1.** If mixing is the question, 5 min is the safer choice. | Every run so far held 2 min. Indutherm's manual says 5 min once molten, and 10 min when alloying in the furnace ([PR #232](https://github.com/vertical-cloud-lab/byu-vcl/pull/232)), which is what Block B does. A longer hold loses some Mg, but slowly while the melt is under argon rather than vacuum (PR #232). Changing the hold between blocks would mix it up with composition. |
 | Pour pressure | Start at **0.19 bar**, and at G0 confirm with Bartosz what the HMI number means | 0.19 bar gave the slow drip on Oct 8, but that nozzle may have been partly blocked: globs were found at its exit afterwards. 0.17 bar was "too high" on Oct 2, which only makes sense if the number is a differential (an [open question](https://github.com/vertical-cloud-lab/byu-vcl/blob/88eeace/atomizer-training/sop.md#open-questions)). |
 | O₂ at the pour | **≤ 30 ppm when the sealing rod goes up**, otherwise wash again | The trainer said never to work above 100 ppm, and that 40–50 is best ([T1 25:03](https://www.youtube.com/embed/wRc8p2_FnJo?start=1503)). The team has been reaching the low 20s: one wash at 500 °C did it on Oct 2, Oct 8 needed three. What matters most for the repeats is that it's the same every run. |
 | Landing point | **On the plate's face, at a fixed distance from the tip**, set at G0. Check it before heating and mark the stack's slide position. | Three runs in a row went wrong here ([runs so far](runs-so-far.md)) |
@@ -136,17 +137,19 @@ completion rate.
 | Completion | valid runs ÷ attempted runs | ≥ 4 of the first 5 | Bałasz 2024 aborted 5 of 16 runs to build-up on the sonotrode. Our last 3 of 3 failed at the plate. |
 | D50 (by volume) | SEM sizing, checked against the sieve fractions | CV ≤ 10 % | At 10 %, the 29 % D50 shift from amplitude 75 → 100 % (Priyadarshi 2024) is 3σ, which 4 runs per setting detect. Hinrichs 2021 measured a d90 CV of 11 %. |
 | D10, D90 | same | CV ≤ 15 % | The tails are noisier in every study (Yankin 2025: D10 ±7 %) |
-| In-range yield | mass between the sieves ÷ charge mass | SD ≤ 5 points | Sets how many runs a print needs. At a 25 % mean, ±5 points means 6–9 runs for a full build cylinder. |
+| In-range yield | sieved mass under 45 µm, less SEM's share under 15 µm, ÷ charge mass | SD ≤ 5 points | Sets how many runs a print needs. At a 25 % mean, ±5 points means 6–9 runs for a full build cylinder. |
 | Powder yield | all powder ÷ charge mass | SD ≤ 10 points | Yield is the noisiest metric in the literature |
 | Circularity | SEM, ≥ 400 particles per split | SD of the run means ≤ 0.02 | One sample is good to ±0.01 at 400 particles, if the per-particle SD is about 0.1 |
 | Powder O | inert-gas fusion on the retained samples (in 2027) | CV ≤ 15 % | Hinrichs: 6 % at fixed settings. Al fines carry more oxide. |
 | Measurement check | two splits per run | split-to-split SD ≤ half the run-to-run SD | Otherwise we'd be measuring the measurement |
 | Mass balance | sum of everything weighed out ÷ charge | ≥ 95 % every run | A quality check on the record, not a process metric |
 
-**After n = 5:**
+**After n = 5:** powder O won't be measured until 2027, so this decision uses the other
+metrics, and O is checked against the bar afterwards.
 
 - **Everything passes with room to spare** (no metric within 20 % of its limit): the process
-  counts as repeatable. Go on to Block B with one run per point and both ends repeated.
+  counts as repeatable. Go on to Block B with one run per point, and repeat the 7.5 and
+  30 wt% points.
 - **A metric is close to its limit, or a run was invalid:** run A6–A8, then decide at n = 8.
 - **A metric still fails at n = 8:** report the SD as measured. It's still the first such
   number for Al. Block B then needs more repeats per point: 4 runs per setting for a 3σ
@@ -199,7 +202,7 @@ move.
 
 | Item | Needed for | Without an order | Verdict |
 | --- | --- | --- | --- |
-| **Sieves**: No. 60, No. 230, pan and cover, $199.20 ([PR #262](https://github.com/vertical-cloud-lab/byu-vcl/blob/d301844/docs/sieve-order.md)). **Add the No. 325 (45 µm, $74.50)**, because the article's window is 15–45 µm and the planned stack stops at 63. | PSD, in-range yield, sieving before the doser (unsieved 4047 clogged it), the MIDI powder | Borrow: ask Chem Stores (801-422-2678) and nearby labs. Without sieves, Block A gives only powder yield and SEM sizing, and three bar metrics can't be measured. | **Can't wait**, unless it can be borrowed or has already been ordered |
+| **Sieves**: No. 60, No. 230, pan and cover, $199.20 ([PR #262](https://github.com/vertical-cloud-lab/byu-vcl/blob/d301844/docs/sieve-order.md)). **Add the No. 325 (45 µm, $74.50)**, because the article's window is 15–45 µm and the planned stack stops at 63. | PSD, in-range yield, sieving before the doser (unsieved 4047 clogged it), the MIDI powder | Borrow: ask Chem Stores (801-422-2678) and nearby labs. Without sieves, Block A loses in-range yield (the metric that sizes Block C), the doser test (unsieved powder clogs it), and the check of SEM D50 against the sieve masses. | **Can't wait**, unless it can be borrowed or has already been ordered |
 | **Mo plates** | Blocks A and B: 12–15 runs at 4–6 runs per plate means 2–4 plates, more if any crack | Count the labelled, uncracked Mo plates now. The fallback is CF with the amplifying 1:1.5, which made coarse powder on Sep 29, so the article would lose its 15–45 µm claim. | **Can't wait if fewer than 3** (an AMAZEMET consumable, with lead time) |
 | **6063 bar, one lot** | 4.6 kg ([`plan_numbers.py`](plan_numbers.py)): 2.0 kg for 8 Block A runs, 1.5 kg for Block B, 0.66 kg of chips from boring 23 cups, and 0.5 kg for two failed runs | Weigh what's on hand and find its lot or heat number. If a second lot can't be avoided, keep a slice of each and tag each run with its lot. The 6063 spec allows Si 0.2–0.6 and Mg 0.45–0.9, which is wider than the spread's Mg steps. | **Can't wait if under ~5 kg** |
 | **Run consumables**: graphite nozzles, sealing rods, crucible, BN spray, filters, pump oil, argon | Every run, about 15 in Oct–Dec | Count them against 15 runs. Argon: the booth may hold at most two Ar/N₂ cylinders, not manifolded (Bryant Brown, 2026-10-08, [#126](https://github.com/vertical-cloud-lab/byu-vcl/issues/126)). | **Can't wait** for anything that won't last 15 runs |
@@ -221,8 +224,8 @@ move.
 | --- | --- |
 | Oct 2026 | Inventory (plates, 6063, 4047 powder, consumables, sieves), G0, A1. Start machining thin cups. Ask Utah. |
 | Nov 2026 | A2–A5, about two runs a week as on Oct 6 and 8. The n = 5 decision, then A6–A8 if needed. |
-| Late Nov – mid Dec 2026 | Block B (7 runs). If Block A runs late, cut Block B to its two ends. |
-| Dec 2026 – Jan 2027 | Catch up on characterization. Seal and send the retained samples for O and ICP-OES once ordering reopens. |
+| Late Nov – mid Dec 2026 | Block B (7 runs). If Block A runs late, cut Block B to the 30 wt% point (B3, B6) and the drift check (B4). |
+| Dec 2026 – Jan 2027 | Catch up on characterization. Send the retained samples for O and ICP-OES once ordering reopens. |
 | Jan – Apr 2027 | Orders that waited. Block C, and the MIDI print. Block D once feedstock arrives. |
 | May – Oct 2027 | Characterize the print, make the figures, draft in `digital-alloy-lab-private` |
 | Early 2028 | Submit |
