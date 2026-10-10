@@ -1,0 +1,311 @@
+{
+ "5": {
+  "minutes": 10.94,
+  "teams_overlap_min": {
+   "@3": 9.62
+  },
+  "top_chapters": {
+   "Reading the GitHub discussion thread (screen share)": 2.14,
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 1.72,
+   "The e-bike analogy: complacency vs. competency": 1.55,
+   "Breakout instructions: pair discussions recorded for the channel": 1.09,
+   "Conference-talk logistics; troubleshooting vs. timeline": 0.79
+  },
+  "samples": [
+   {
+    "at": "00:17:49",
+    "text": "I think using AI as a tool to give a human some design suggestions is very helpful, but it takes away from the researcher if they don't improve their ability to reason, create, and learn from the process of thinking invo"
+   },
+   {
+    "at": "00:36:58",
+    "text": "you might be in the situation. Well, do I step back and take the time to dig into some of these things, or do I try to get, finish up the experimental campaign so that we have the results to present on? Like, you're prob"
+   },
+   {
+    "at": "00:15:42",
+    "text": "those high level thoughts about use of the in the lab and to save my"
+   },
+   {
+    "at": "00:40:27",
+    "text": "That was actually not the case. Apparently pushing that button"
+   }
+  ]
+ },
+ "2": {
+  "minutes": 10.48,
+  "teams_overlap_min": {
+   "@2": 8.61,
+   "@3": 0.67,
+   "@4": 0.42
+  },
+  "top_chapters": {
+   "Audrey & Carl: what lab culture do we want around AI": 5.1,
+   "Online breakout: Audrey & Carl \u2014 where AI helped learning and productivity": 4.42,
+   "Debrief: action items and suggestions": 0.3,
+   "Reading papers deeply vs. a \"SparkNotes education\"": 0.19,
+   "Recording start \u2014 participants joining online": 0.18
+  },
+  "samples": [
+   {
+    "at": "00:55:44",
+    "text": "I spent, I spent probably a quarter to a half of my day, every day, using those tools and either trying to break them, trying to make them work quicker, or trying to find ways to, like, share them on, like, a larger scal"
+   },
+   {
+    "at": "00:57:43",
+    "text": "it's interesting, very interesting. When it comes back to, like, school, like, I feel like how I always use the AI is, like a better way where, like, I use it a lot to, like, study for things, but not necessarily to solv"
+   },
+   {
+    "at": "00:48:45",
+    "text": "And so I think this applies to the lab to it. It does a lot of like easy grunt work very quickly and effectively."
+   },
+   {
+    "at": "00:45:18",
+    "text": "If you don't know how to use it, you're going to fall behind."
+   }
+  ]
+ },
+ "7": {
+  "minutes": 7.97,
+  "teams_overlap_min": {
+   "@3": 7.28
+  },
+  "top_chapters": {
+   "Using AI like a teacher or TA": 1.49,
+   "Debrief: action items and suggestions": 0.87,
+   "Generative CAD on the powder doser; AI for \"grunt work\"": 0.83,
+   "Recording start \u2014 participants joining online": 0.7,
+   "Research vs. industry expectations": 0.61
+  },
+  "samples": [
+   {
+    "at": "00:11:03",
+    "text": "Dearly Father, we're grateful for the same. We're grateful to meet together as a rap. So I'm discussed by progression of different projects and how domestic continue to progress and bless this with a spirit with knowledg"
+   },
+   {
+    "at": "00:19:21",
+    "text": "I get added to this because I haven't come here on this meeting on this discussion, but similarly, I think, and super, super helpful to me and just like giving up to speed and learning about the mechanical experience of "
+   },
+   {
+    "at": "00:30:32",
+    "text": "I was going to say with that, I think, you know, even though it's fictional, I think prime examples like Tony Stark, who,"
+   },
+   {
+    "at": "00:37:22",
+    "text": "Half the time with equipment, it has no idea what's going to all the equipment."
+   }
+  ]
+ },
+ "1": {
+  "minutes": 6.22,
+  "teams_overlap_min": {
+   "@4": 5.32,
+   "@3": 0.57,
+   "@2": 0.27
+  },
+  "top_chapters": {
+   "Online breakout: Audrey & Carl \u2014 where AI helped learning and productivity": 3.45,
+   "Audrey & Carl: what lab culture do we want around AI": 1.98,
+   "Debrief: action items and suggestions": 0.43,
+   "Breakout instructions: pair discussions recorded for the channel": 0.18,
+   "Using AI like a teacher or TA": 0.05
+  },
+  "samples": [
+   {
+    "at": "00:54:54",
+    "text": "Yeah, I think that's useful. I've definitely had semesters where I feel I'd maybe too much on AI, and that wasn't helpful for me, for my... learning, so I'm definitely a little more like, use it as little as possible, bu"
+   },
+   {
+    "at": "00:43:07",
+    "text": "worried about the real things where we've got a lot of AI generate a lot of what we're writing to the point where, like, I spent a lot of time writing my abstract, and we ended up feeding it through AI, added a bunch of "
+   },
+   {
+    "at": "00:50:42",
+    "text": "but I think it's ultimately better writing my own code because then I know exactly how it works and how I want it to be working."
+   },
+   {
+    "at": "00:59:17",
+    "text": "it can be awesome. You're not allowed to use AIMA to watch out."
+   }
+  ]
+ },
+ "0": {
+  "minutes": 4.83,
+  "teams_overlap_min": {
+   "@3": 2.95,
+   "@4": 0.29,
+   "@2": 0.17
+  },
+  "top_chapters": {
+   "Generative CAD on the powder doser; AI for \"grunt work\"": 0.94,
+   "Recording start \u2014 participants joining online": 0.74,
+   "Online breakout: Audrey & Carl \u2014 where AI helped learning and productivity": 0.47,
+   "Using AI like a teacher or TA": 0.4,
+   "The e-bike analogy: complacency vs. competency": 0.33
+  },
+  "samples": [
+   {
+    "at": "00:35:02",
+    "text": "and not the sense of the other, if you have different, and really assisting their robot, like different things, and that you"
+   },
+   {
+    "at": "00:23:53",
+    "text": "power that you can find those in the order which you get a supernames you need to be in a way now and"
+   },
+   {
+    "at": "00:22:52",
+    "text": "like YouTube, they're going to trench run, and what about the experience in."
+   },
+   {
+    "at": "00:23:16",
+    "text": "for the world as to be able to have a lot of time. The language,"
+   }
+  ]
+ },
+ "4": {
+  "minutes": 4.0,
+  "teams_overlap_min": {
+   "@3": 3.14
+  },
+  "top_chapters": {
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 0.76,
+   "The e-bike analogy: complacency vs. competency": 0.48,
+   "Wrap-up: upload reminders and scheduling poll": 0.47,
+   "Reading the GitHub discussion thread (screen share)": 0.36,
+   "Conference-talk logistics; troubleshooting vs. timeline": 0.29
+  },
+  "samples": [
+   {
+    "at": "00:28:22",
+    "text": "Yes, yeah, I definitely took that approach for all of my degrees."
+   },
+   {
+    "at": "00:28:22",
+    "text": "Yes, yeah, I definitely took that approach for all of my degrees."
+   },
+   {
+    "at": "00:28:22",
+    "text": "Yes, yeah, I definitely took that approach for all of my degrees."
+   }
+  ]
+ },
+ "8": {
+  "minutes": 3.28,
+  "teams_overlap_min": {
+   "@3": 3.19
+  },
+  "top_chapters": {
+   "Reading papers deeply vs. a \"SparkNotes education\"": 2.54,
+   "Research vs. industry expectations": 0.35,
+   "The e-bike analogy: complacency vs. competency": 0.22,
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 0.06,
+   "Debrief: action items and suggestions": 0.06
+  },
+  "samples": [
+   {
+    "at": "01:07:26",
+    "text": "Something that's been useful for me is, and this point should be because of the nature of my research, it's like reading a few papers and I'm implementing them into these, you know, I'm coding them or adjusting them for "
+   },
+   {
+    "at": "01:08:30",
+    "text": "But then you read another paper that would still be expected to understand, but because you only have a Sparks Note version of that, you don't know the details, you read a paper that's related and then you don't understa"
+   },
+   {
+    "at": "01:10:10",
+    "text": "rather than if I just said, okay, search and give me the results of these papers, it probably would not have, I would actually bet that it would not have found it, but because I was able to go through and read through th"
+   },
+   {
+    "at": "01:07:20",
+    "text": "a bigger commitment to reading recent relevant research paper."
+   }
+  ]
+ },
+ "6": {
+  "minutes": 1.96,
+  "teams_overlap_min": {
+   "@3": 1.59,
+   "@1": 0.12
+  },
+  "top_chapters": {
+   "Tony Stark / Jarvis framing; calculator analogy; AI-written papers": 1.34,
+   "Recording start \u2014 participants joining online": 0.23,
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 0.11,
+   "Debrief: action items and suggestions": 0.06,
+   "Conference-talk logistics; troubleshooting vs. timeline": 0.05
+  },
+  "samples": [
+   {
+    "at": "00:31:40",
+    "text": "for example, some of these research papers we've been working on, it's all done by AI, and I know the difference of myself, personally, like, when I write out whole paper, I really understand everything that's going to d"
+   },
+   {
+    "at": "00:31:22",
+    "text": "We taught how to do it. math and only after you understand how to that then you get to calculate and do things for you, right? And the reason for that is, I think it's powerful and helping us learn and understand and als"
+   },
+   {
+    "at": "00:31:08",
+    "text": "I guess I'm the guys with the idea that our education is super important."
+   },
+   {
+    "at": "00:32:46",
+    "text": "If I don't use the ad, I'd write it, the first draft, or whatever it is,"
+   }
+  ]
+ },
+ "10": {
+  "minutes": 1.27,
+  "teams_overlap_min": {
+   "@3": 1.04
+  },
+  "top_chapters": {
+   "Debrief: action items and suggestions": 0.21,
+   "Tony Stark / Jarvis framing; calculator analogy; AI-written papers": 0.14,
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 0.12,
+   "Recording start \u2014 participants joining online": 0.11,
+   "Online breakout: Audrey & Carl \u2014 where AI helped learning and productivity": 0.11
+  },
+  "samples": [
+   {
+    "at": "00:26:01",
+    "text": "ago, and he's talking about one of his co -workers in a national lab, and he's like,"
+   },
+   {
+    "at": "00:26:01",
+    "text": "ago, and he's talking about one of his co -workers in a national lab, and he's like,"
+   },
+   {
+    "at": "00:26:01",
+    "text": "ago, and he's talking about one of his co -workers in a national lab, and he's like,"
+   }
+  ]
+ },
+ "9": {
+  "minutes": 0.88,
+  "teams_overlap_min": {
+   "@3": 0.81
+  },
+  "top_chapters": {
+   "Debrief: action items and suggestions": 0.22,
+   "Online breakout: Audrey & Carl \u2014 where AI helped learning and productivity": 0.12,
+   "Reconvene; uploading the discussion clips to the channel": 0.09,
+   "Recording start \u2014 participants joining online": 0.08,
+   "Topic intro: AI use and lab culture; GitHub discussion as shared journal": 0.07
+  },
+  "samples": [
+   {
+    "at": "01:03:25",
+    "text": "compile them. That's what I will do after the session. Probably,"
+   },
+   {
+    "at": "01:03:34",
+    "text": "would be an example of a specific suggestion, so thank you for offering"
+   },
+   {
+    "at": "00:17:15",
+    "text": "So in regards to using, oh sorry, AI was used to make tips for the"
+   },
+   {
+    "at": "01:04:21",
+    "text": "Audrey and Carl, did you guys want to start off with anything?"
+   }
+  ]
+ }
+}

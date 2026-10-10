@@ -1,0 +1,562 @@
+[00:04:53] @1: Carl, can you hear me?
+[00:05:00] @2: Yep.
+[00:05:04] @1: How you doing?
+[00:05:07] @2: Not add yourself.
+[00:05:09] @1: Pretty good.
+[00:05:13] @1: Just driving down to BYU right now.
+[00:05:18] @2: About to say work from.
+[00:05:18] @1: Call.
+[00:05:21] @1: What's that?
+[00:05:23] @2: Where from?
+[00:05:28] @1: Saratoga Springs.
+[00:05:30] @2: There you go. Oh, so not like crazy park.
+[00:05:33] @1: Yeah.
+[00:05:33] @3: And.
+[00:05:35] @3: I think it's another.
+[00:05:35] @1: I think.
+[00:05:39] @1: Is the meeting on yet?
+[00:05:41] @2: It is gone.
+[00:05:42] @3: Yeah, sorry, yeah, it's on now.
+[00:05:49] @1: How's it going?
+[00:05:52] @3: Good, are you?
+[00:05:53] @1: Great, I'm on my way, but I'll be digital until then.
+[00:05:57] @3: Okay, yeah, all good. Thanks, sir.
+[00:06:00] @1: SN.
+[00:06:03] @3: Carl, thanks for joining too.
+[00:06:07] @2: Are you doing?
+[00:06:08] @3: Good, how about yourself?
+[00:06:11] @2: Can't complain.
+[00:06:11] @3: OK, no, I just explained, yeah, internship going OK for you, Carl?
+[00:06:16] @2: Good to see you guys. Yeah, no, it's been really fun. It's been really good. I'll be up in Lehigh, so I'll just be online the whole time, but...
+[00:06:21] @3: So.
+[00:06:25] @3: Yeah, yeah, yeah, no, that that makes sense. Thanks for making the time to jump on stuff. Hey, David.
+[00:06:29] @2: Course.
+[00:06:32] @3: What's before the normal speech in the?
+[00:06:45] @3: Yeah.
+[00:06:47] @3: Please.
+[00:06:49] @3: Actually, I did all as well.
+[00:06:55] @3: Thank you.
+[00:06:59] @3: It's something.
+[00:07:03] @3: I think it's to be better, so that I understand it.
+[00:07:17] @3: Yes.
+[00:07:19] @3: Solution.
+[00:07:22] @3: If you have questions then.
+[00:07:25] @3: Set this, and I said, the morning.
+[00:07:30] @3: The number of times I've heard, "Ohh yeah, I talked with Xavier, and then things make so much more sense, so...
+[00:07:40] @3: Highly recommend it.
+[00:07:46] @3: You know, if you saw like a picture or something in the...
+[00:07:54] @3: Oh.
+[00:08:00] @3: Hey, Audrey.
+[00:08:02] @3: That's like.
+[00:08:05] @3: Alright, we.
+[00:08:08] @4: Morning.
+[00:08:13] @3: Yeah.
+[00:08:16] @3: I'm sorry, maybe we can say that, we're twins, we might be choosing that, yeah, we might have, so typically, we're just saying we're two to the far, 'cause we are, did you ever like get that, under like, only on the hike?
+[00:08:39] @3: OK, a joke, so yeah, like a lot of know how he works out. What's funny is that the the net IDs are so similar. For me, I'm just like, it gets me feeling like, like, no, OK, same last name, like three different names, yeah, like a Chris, yeah, something, something, yeah.
+[00:08:59] @3: Ohh, it's like, it's so extend.
+[00:09:15] @3: Listen.
+[00:09:17] @3: Okay.
+[00:09:19] @3: Yeah, yeah.
+[00:09:24] @3: Yeah, if it was over a year, if it was over a year, that was when we first started, probably all that. I was trying to, I think.
+[00:09:40] @3: That's so funny, yes, so.
+[00:09:47] @3: Oh, that's terrifying. That's it. It's like, it's like, it's like, it's like one time like, look at like each other with four in the same place where the community of parts and beholden, like, what was her last name? OK, you know she spelled it wrong.
+[00:10:12] @3: I will feel that, yeah.
+[00:10:16] @3: This.
+[00:10:20] @3: Well, tactic transcription, I've heard it, so that's recorded now, yeah.
+[00:10:31] @3: Good. Yeah.
+[00:10:36] @3: Ohh wow, yeah, yeah.
+[00:10:51] @3: Okay. Yeah, let's get started.
+[00:10:59] @3: Andrew, would you mind start us off with Brady?
+[00:11:04] @3: Dear heavenly Father, we're grateful for the same, grateful to meet together as a wrap, say, and express that freshen up different projects and how domestic continue to progress, and this is what I started with technology this time as we we all have to see forward.
+[00:11:26] @3: Help me there with the help, and the name of Jesus Christ, you know. So, let's get started. AI discussion lab culture. I asked Xavier the other day when we were meeting.
+[00:11:43] @3: So, is the Lab culture falling apart? And I think your response was, what did I respond with that? Your response was, well, the voice, maybe, maybe that will.
+[00:12:02] @3: Yeah, I think you said, well, not all of them. So anyway, this topic has been on my mind a lot and just how we're using what is being termed AI and generative AI in the lab.
+[00:12:20] @3: What's?
+[00:12:21] @3: The, yeah, what's the lab culture around it? And I think that this would be a good time to just talk about what we want that to look like in the lab, what's gone well, what hasn't. I've...
+[00:12:37] @3: Appreciated.
+[00:12:39] @3: People's willingness to.
+[00:12:41] @3: take the conversations to GitHub which
+[00:12:47] @3: does a couple things. It gives me some visibility on how AI is being used in the lab.
+[00:12:55] @3: And maybe just kind of another point, even if Claude or Copilot or any of these things didn't exist, my hope and expectation would still be to have that kind of interactions on GitHub.
+[00:13:09] @3: From kind of like this project management, like documentation perspective, and Claude getting injected into that is kind of a nice convenience, and along with that workflow too, like an extra benefit.
+[00:13:24] @3: Well, maybe, hopefully, a little extra motivation to kind of keep going with the GitHub, some GitHub things there. There are...
+[00:13:34] @3: A couple things.
+[00:13:37] @3: Wanted to go through one is I'm just going to screen share the.
+[00:13:45] @3: that GitHub discussion and everybody's responses so far, and we're just going to read through those. And then we'll do some breakout.
+[00:13:54] @3: discussions and then come back together. And I will actually have us find isolated spots to go chat. And I'm going to ask that one of you records it, a video.
+[00:14:10] @3: just because videos are easiest to put on YouTube. So, like, just take a video to get the audio of the conversation. We'll come back, we'll discuss, and just like collect all of that. And those videos will get uploaded to the BYU VCL channel.
+[00:14:29] @3: So, I think I will kind of pull a discussion. Is that OK, folks?
+[00:14:36] @3: David, yeah, OK. Sorry for picking on you. That was fine. I have the instigator, yeah, and then online, Audrey, Gage, Carl, does that sound OK for you guys? Who of the three of you, who's able to?
+[00:14:57] @3: talk like would the three of you be able to have a conversation just online?
+[00:15:02] @3: Okay.
+[00:15:02] @2: I think so.
+[00:15:04] @1: I'm pulling up at BYU right now, so I'll be in person in just a minute.
+[00:15:07] @3: Oh, that's right, that's right. Audrey and Carl, are you in, Carl, I think you said yes. Audrey, are you in a position where you could unmute and chat with Carl?
+[00:15:15] @4: Yeah, I can, yeah, I can talk.
+[00:15:17] @3: Okay, cool, cool. Sounds good.
+[00:15:20] @3: Okay, so let me go ahead and do a screen share. Any questions before we jump in?
+[00:15:26] @3: Okay.
+[00:15:27] @3: Let me pull up that discussion.
+[00:15:34] @3: So the link was in Slack, but you can also get to it. So we've got BYU VCL discussions.
+[00:15:43] @3: And those high-level thoughts about use of AI in the lab and to save my voice a little bit.
+[00:15:52] @3: If you were the one who posted it, if I could ask you to read it also. So this is a space to journal our perception. Oh, sorry, folks online. Let me.
+[00:16:04] @3: Actually, screen share.
+[00:16:15] @3: So this is a space to journal our perceptions and observations of AI. Please include direct links to the specific GitHub comments that are being discussed. I'll go ahead and read Tim's.
+[00:16:34] @3: So in regards in using AI for CAD modeling, AI was used to make tips for the wireless color sensor.
+[00:16:43] @3: I'm sorry. These are the three questions we'll talk about. So kind of keep these in mind while we're going through. Like an experience where use of AI has helped you learn something or has been productive.
+[00:17:01] @3: a time when it's felt uneasy, unproductive, or crippling. Maybe that's an extreme word, but I was having trouble thinking of a synonym. And then what kind of lab culture would you support establishing any specifics?
+[00:17:16] @3: So in regards to using, oh, sorry, AI was used to make tips for the wireless color sensor. It actually did a good job with making tips for my specific usage, but it lacked in creating a part with a design that would be improved for ease of changing out the part. While we used AI for the purpose of documentation, I think I would have been able to make a part
+[00:17:35] @3: and eventually made a part that would fit our needs more directly. I enjoy the process of thinking and pondering over how to improve a design, and currently AI does not come close to my capacity to ponder complex designs.
+[00:17:50] @3: I think using AI as a tool to give a human some design suggestions is very helpful, but it takes away from the researcher if they don't improve their ability to reason, create, and learn from the process of thinking involved in the creative process. As shown here, AI's ability to automate tasks and make simple decisions is amazing and give the researcher more time to work on tasks.
+[00:18:12] @3: that require higher level thinking. In this instance, AI was able to run a test for me and collect data. This will be very helpful because it can run 24-7. And then I'll see if this pulls up.
+[00:18:27] @3: So Tim's on at Claude, can you pick up move, run the following Google Colab code, post here the results, and then return the enclosure to its housing?
+[00:18:36] @3: Seems giving it this.
+[00:18:39] @3: This code here.
+[00:18:45] @3: And...
+[00:18:47] @3: Cloud took 42 minutes, picked it up, sensor test ran, went down mid-cycle.
+[00:18:57] @3: So, this was the one that he pointed out here.
+[00:19:04] @3: But.
+[00:19:07] @3: Any thoughts before we jump on? We have, I think, five more of these to go through about kind of similar length, but anything jump out to you?
+[00:19:17] @3: Chun.
+[00:19:21] @3: Yeah, I gotta add to this, 'cause I haven't come to this discussion, but similarly, I think they add super, super helpful to me for just like getting up to speed and learning about it and seeing the chance of what I'm doing in my specific area.
+[00:19:40] @3: But when it comes to doing complex things, so designing a part, I think that's where it kind of falls short, whereas like, I'm able to do it, and then it takes AI multiple iterations to get a simple working 3D model, and now there's a I've just experienced a very significant.
+[00:19:59] @3: Yeah, yeah, was that by chance with the the pipette? Yeah, I was like, let's make a dummy pipette, and then in the end, did you did you end up? I ended up this one.
+[00:20:13] @3: Yeah, yeah.
+[00:20:17] @3: Um...
+[00:20:20] @3: Second here.
+[00:20:44] @3: Save that for later, a little bit.
+[00:20:59] @3: Sorry, you didn't know that I was going to do that, but it's OK, yeah, yeah, so...
+[00:21:07] @3: Then, Gage. Let's come back to Gage's, just because you said you're on your way parking, so that you can be here. Let's jump to Sam's.
+[00:21:20] @3: Yeah, that would be good. A little bit of a dough, that, and how does this project develop, should be developed? I think it was the signature, of course, in your situation.
+[00:21:40] @3: Now, because I look, it's a major understanding, and how do you get it? 67 jobs, while the situation is very, probably shouldn't do, I'll pull that up real quick. So, this is from the Powderdozer project, where generative CAD was such a huge focus, especially initially.
+[00:22:02] @3: And so lots of comments here and discussion.
+[00:22:08] @3: There were some fun ones here. Let's see if I can find one.
+[00:22:29] @3: Uh...
+[00:22:32] @3: At least I remember there being some.
+[00:22:35] @3: Supplies.
+[00:22:45] @3: Okay, never mind. Sorry.
+[00:22:50] @3: Yeah, and so I think that, but all service needs, obviously.
+[00:23:10] @3: Questions to this that I need to playbook.
+[00:23:15] @3: This year, with all this, when is not time. For example, you know this.
+[00:23:35] @3: It's been very one as much, and there is time to very end.
+[00:23:42] @3: And then in that calibration test.
+[00:23:51] @3: What do you do need to send in five? The expense on down the payments in five days.
+[00:23:58] @3: Which is a super nice and easy way, just learning stuff right now. I have to try to, like, right now. It's, I think so. OK, I had to check. OK, yeah, yeah, I got to it.
+[00:24:15] @3: Yeah, happened.
+[00:24:24] @3: Yeah, gotta get new lab coats, so budget is a little tighter than what I ordered this initially.
+[00:24:38] @3: And that's a super helpful interesting background tasks like documentation. Very helpful. I also think that in the long run.
+[00:24:58] @3: Student.
+[00:25:04] @3: I agree.
+[00:25:07] @3: Yeah, any for into the next one, any ohh, nice.
+[00:25:12] @3: Any, uh, any thoughts or things that kinda come to mind?
+[00:25:16] @3: I think one thing that came in mind doing this again was...
+[00:25:22] @3: The workloads that we have are different than industry standards, whereas for research, if somebody asks you a question about your paper, you're expected to know everything about what you just researched. Like, you are considered the expert, and if there's some portion of your research that you're like, oh, I don't know, I often voted it.
+[00:25:41] @3: whatever. In industry, they're like, yeah, that's fine. Like, as long as it's working, it's working. If you say that to another researcher, they're gonna be like, why are you qualifying? Like, and the purpose of a masters or a PhD or a bachelor is to show that you have a certain level of competency and they just must gain skills. I was just talking to my brother a month ago and.
+[00:26:02] @3: I was talking about one of his coworkers at a national lab, and he's like, "I came out of my PhD with no workable skills. Like, that was just like how his PhD ended development, and he was like, 'Fortunately, I was able to get a job, but you can come out of a whole education with no workable skills.
+[00:26:23] @3: AI is.
+[00:26:26] @3: just a way that makes that easier to happen, then that's a big.
+[00:26:31] @3: One of the reasons why I will try really hard to prevent myself from getting an e-bike anytime in the near future is that...
+[00:26:43] @3: And a second car for as long as we, as long as we can, that I know.
+[00:26:50] @3: A bike is the only mode of transportation I have from my house to work. And so I take the 20, 25 minute bike ride each way every day, except for occasional times when it's raining ash, for example.
+[00:27:09] @3: Uh, whatever happens in, uh, and so, like...
+[00:27:16] @3: If I had an e-bike, I know myself well enough that I would probably start relying on the e-bike intensively rather than getting a workout that I need every day, kind of going back and forth specifically. Well, I can get there faster, and then also I don't like being sweaty, like it's distracting to me and all these other things, and so it's just so much easier to be complacent when the tool is there.
+[00:27:38] @3: Whereas like some people will use e-bikes for mountain biking and they'll still get really good workouts out of it. And so there's kind of a...
+[00:27:49] @3: But they get less of some of the kind of tedious, grueling parts of it. They get a little more of the fun part.
+[00:27:57] @3: So, I think some really good, like, good points there, just by fact of being there, it's easier to become complacent.
+[00:28:07] @3: I don't know if you have any other thoughts here. Well, this is an education and that that should be the primary focus. Even as you enter graduate work. Yeah. Your advisor might not care so much about your education necessarily, but you should be focused of your orders. Yes, yeah, exactly. I definitely took that approach.
+[00:28:26] @3: For all of my degrees, to be honest, if I wasn't learning something.
+[00:28:33] @3: if there wasn't a challenge, something challenging for me to kind of wrap my head around.
+[00:28:41] @3: I wasn't interested and I didn't really think I would still try to meet expectations, but that also caused some friction at times. And overall, I think things turned out pretty well, but that was really important to me. So anyone in the lab feels like...
+[00:28:59] @3: they're getting that friction with me, then I need to sit down and kind of reflect on my own actions and love to kind of chat about that. And so I really valued that as I was going through research and I do not want to.
+[00:29:15] @3: Set the culture where that gets taken away, yeah, but you said...
+[00:29:22] @3: My, my question is...
+[00:29:26] @3: I don't know if this will open, like, the Xbox with that, but...
+[00:29:31] @3: It's not like we can choose to not buy the e-bike.
+[00:29:35] @3: Like, yeah, it's like the e-bike is there, yes, and like, ohh, sorry, I bought it, yeah, I bought it for, like, I literally bought it for everybody, the world has to, and the question I ask is, yeah, how important is it for us as students going into the professional world soon?
+[00:29:56] @3: to be competent in not only using AI, but using AI fruitfully, where we learn a lot from it and also we get effective results with AI and our own competency. And so just a little bit of, okay, we do need to find the response because it's not like we could just say, okay, I'm not going to get this. I'm not going to use this AI because it's there.
+[00:30:20] @3: And, and so that, that I think it is important thing to discuss, and who of us has driven to the gym before? So, yeah, I was gonna say with that, like, I think you know, even though it's fictional, I think prime examples like Tony Stark.
+[00:30:40] @3: who, you know, he knows all the math, he knows everything that he needs to do, but, you know, he uses his AI Jarvis to also, you know, be his tool to, you know, be there to run the tests that he already worked out or to support his reasoning.
+[00:30:59] @3: Stuff like that, so kind of like that, where where Jarvis is a support to Tony Stark and not doing Tony Stark's work.
+[00:31:09] @3: I can't sympathize with the idea that our education is super important. And I think there's a good relationship to the good. It relates a lot to how we learn things in general, like all through school, you're taught how to do math. And only after you understand how to do that, then you get the calculator and do things for you, right?
+[00:31:30] @3: And the reason for that is I think it's powerful in helping us learn, understand, and also build the ability to think. I think it comes to a point when, like, for example, some of these research papers we've been working on, it's all done by AI. And I know the difference of myself personally, like when I...
+[00:31:50] @3: Write out whole paper. I really understand everything, yeah, right, but when AI writes it for me, then I'm going like backtracking, okay, what does this mean? I don't know, can you see better? I don't know, but there's so much going on here, but I think that happens a lot of data everywhere. It has so much output you're trying to go through, like, is this right? Is this right?
+[00:32:11] @3: There's so many assumptions in the stuff they, if you construct it yourself, yeah, there's a...
+[00:32:17] @3: It's a sense of like, there's a vagueness to it. You don't know what the conclusions are coming from. And so like from personally, I want to find a balance of.
+[00:32:31] @3: of learning the skills that having to do it for me and then applying it to it after that or with it. I just don't know where that balance sits.
+[00:32:43] @3: People are going to write papers a lot faster than I will. If I don't usually write it the first draft of letter, maybe there's less option. Yeah, writing's been a pretty recurring theme. This might be a good.
+[00:32:58] @3: Segue to, uh, you don't mind me jumping to...
+[00:33:07] @3: That's a perfect, I'll try not to put it off of mine already, yeah, but that was a partner I mentioned, I mean it's...
+[00:33:16] @3: Up.
+[00:33:17] @3: So, this is good.
+[00:33:24] @3: Ronnie, you had something. I say, where we jumped in, yes, yes.
+[00:33:33] @3: to learn and the fact that it is offered because. Let's do some of the things.
+[00:33:39] @3: There, there's a lot of things for my private value that we don't understand.
+[00:33:46] @3: So, I can probably understand the parts that I need to, and instead of me having to go through.
+[00:33:55] @3: Filter through all this information from.
+[00:34:01] @3: Whatever other source I can find, it just switches for me and helps me not expand it, and then when I have ideas based off where it's on me, I can bounce my views off of it, and then sometimes I find it, start asking me questions, they give me something wrong.
+[00:34:21] @3: Like, and so, using it almost like a...
+[00:34:28] @3: Like, a professor or a teacher has been really nice and person can see me what I need to know about me having to go and find things and able to go online. I was just in a Google search now, but yeah, so.
+[00:34:44] @3: I'm gonna need to.
+[00:34:47] @3: I made it really nice to be able to.
+[00:34:51] @3: I probably, like, hope those are my ideas, and my...
+[00:35:00] @3: I know you, yeah, yeah, because they hear that, and I'm not essentially, so, yeah, and...
+[00:35:08] @3: Be able to sustain that robot, and I'll be doing things that, like, when we get in the trouble is where it's doing extremely research, right, and research those roles, so I have an assistant to AI, AI is doing work, and...
+[00:35:23] @3: That means if you stop there too, like, yes, if you use that because that's not your goal, like, yeah, I don't really care about blank, I want to get over that so that I can focus on, yes, this part, but if you just, yeah, well, yes, if you have a research and write a paper about it, then we'd really conference to present that paper.
+[00:35:43] @3: And it's like I know what that word means, yeah, but that that's where people get in trouble, and that's where we let it get broad things for us, as we say.
+[00:35:53] @3: Yeah, treating it like a T.A. that, OK, I wanna do this thing. Help me do this before, especially if that context is for for the paper for the doing more research later on, yeah.
+[00:36:10] @3: Yeah, could you have Jinkwan record the presentation next week, too? Yeah, you guys are, so Marcus will be giving the first oral talk of the group at a conference, I think, right? Am I? Yeah, so again, I beg.
+[00:36:30] @3: Yeah, yeah, Marcus is the guinea pig, so, yeah, and that's been a talk to me. OK, let me make sure that you have the understanding that you need to be able to do it, and...
+[00:36:43] @3: We'll see. Time is what I mean is like.
+[00:36:47] @3: The experimental timeline was...
+[00:36:50] @3: delayed to the, you know, the unexpected delays that are, that should always be expected. There will be unexpected delays.
+[00:36:58] @3: to the point where it's like, you might be in this situation. Well, do I step back and take the time to dig into some of these things, or do I try to get, finish up the experimental campaign so that we have the results to present on? Like, you're probably in that. Yeah, that's been a huge back and forth thing over the last few weeks. It takes a lot of time to.
+[00:37:17] @3: go through to troubleshoot the equipment, to read what AI thinks is wrong, and half the time what the equipment, it has no idea what's going on with the equipment, and also to like figure out, well, how is this experiment working, and what will the results mean when we get them, all that stuff. Yeah, it's been back and forth between those two coming up with it.
+[00:37:37] @3: Constant app, yeah, so I got.
+[00:37:40] @3: So maybe we got about 20 minutes left. Let's.
+[00:37:50] @3: I'd like to save some time for discussion of.
+[00:37:56] @3: Will's.
+[00:37:59] @3: So I guess my invitation would be to go back to this thread and look at.
+[00:38:07] @3: Some of the other comments from people, add your own replies in if you.
+[00:38:12] @3: Feel Zoom um be great, but let's uh let's jump over to.
+[00:38:19] @3: this. So we are going to break out a little bit. You could maybe find...
+[00:38:27] @3: It might be best to go out into the hall and just find a space where you can talk without.
+[00:38:33] @3: somebody else's conversation right in your ear sort of thing. But what's an experience where the use of AI has helped you learn in the lab or enhance productivity? And if one of you could take a video.
+[00:38:47] @3: So, how long about 5 minutes? Yeah, well, we'll come back soon, and then online, all mute.
+[00:38:59] @3: So for those online, so Audrey and Carl, I will.
+[00:39:06] @3: Yeah, just groups of, yeah, groups of two. Oh, wait, do we have two? We have seven, 6. OK. No, 3, 4, 6. No, no, I'll be discussing with some of these. Ohh, yeah, count, count me, count me. Sorry, no, no, it's OK. Yeah, 8, yeah, so we've got even even numbers. I'm gonna...
+[00:39:28] @3: Oh, I just realized my audio output. Sorry, Audrey and Carl. If you said something, I may have had that muted accidentally.
+[00:39:38] @3: Um...
+[00:39:40] @4: Can you hear us now?
+[00:39:42] @3: I'm so sorry. Yes. There's a button on my laptop that mutes and I think I accidentally clicked it. Okay.
+[00:39:50] @4: All right, no words. I wasn't saying anything. I don't know if Carl was saying anything, but I was just finishing typing up my essay that I wrote. So, yeah.
+[00:39:58] @3: Oh, awesome, awesome. I think I saw that I get posted just now. Okay, I'm gonna...
+[00:40:03] @4: Why is so long? I didn't realize how long it was getting.
+[00:40:08] @3: I'll get the audio here muted, and then I'll turn it back on after we all kind of come back together, so...
+[00:40:17] @3: Like on my on my computer, so it's not, um, yeah, OK, and then that way you guys can just chat.
+[00:40:28] @3: That was actually not the case. Apparently pushing that button doesn't.
+[00:40:32] @3: Mute everything, and then...
+[00:40:41] @3: It's yeah, like, like an experience where it's helped you learn, or like, like a positive experience, something that...
+[00:40:48] @2: Audrey, you should just give me like a quick rundown of what you just did, because I have not read it yet.
+[00:40:53] @3: Yeah.
+[00:40:58] @3: Okay, we're all going out.
+[00:41:02] @3: You guys will get in the room to yourself to just chat for the entire space, so yeah.
+[00:41:02] @2: My bad.
+[00:41:13] @3: I can't mute audio.
+[00:41:19] @2: And then you're still on mute.
+[00:41:28] @2: Andrew, you're on mute.
+[00:41:29] @3: Mhm.
+[00:41:33] @4: Okay, sorry about that.
+[00:41:34] @3: Student.
+[00:41:37] @4: Freaking Zoom calls, man.
+[00:41:41] @4: Okay, I kind of talked about...
+[00:41:42] @3: My *******.
+[00:41:44] @4: how using it for model generation feels a little limiting because we can't directly edit those models. You could pull them into Onshape and you could add a little bit to them, but it doesn't work very well.
+[00:41:55] @3: Understand.
+[00:41:57] @3: Thank you.
+[00:42:01] @4: Sorry, I feel like I'm a little echo right.
+[00:42:04] @2: You are Sterling left his computer on.
+[00:42:07] @3: Ohh.
+[00:42:07] @4: So...
+[00:42:08] @3: No.
+[00:42:09] @2: No worries, though.
+[00:42:09] @4: Whoops.
+[00:42:13] @4: And then I agree with these points that it doesn't feel like our school or our skills are being utilized very well with this model generation. It would be way easier to just make a bunch of configurations on one cat model rather than having AI generate.
+[00:42:16] @3: What is it?
+[00:42:18] @3: 5:35.
+[00:42:24] @3: Open.
+[00:42:26] @3: Did you?
+[00:42:28] @3: Great reason.
+[00:42:32] @4: everything having to tune every little structure that it creates.
+[00:42:34] @3: OK, got you.
+[00:42:37] @3: Okay.
+[00:42:39] @4: And if making those models, you don't get to know those models as well, which means that it's harder to fix them if they're having issues or sometimes they have geometry errors, the mess of things that if a human had made them, it would have been fine because we wouldn't have done that.
+[00:42:39] @3: Thank you.
+[00:42:44] @3: Up the schedule, what is it?
+[00:42:58] @4: right off the bat.
+[00:43:02] @4: Oops.
+[00:43:06] @4: Yeah, I'm really worried about the things where we've had a lot of AI generate a lot of what we're writing to the point where, like, I spent a lot of time writing my abstract and we ended up feeding it through AI. It added a bunch of sources and it...
+[00:43:08] @3: Or.
+[00:43:11] @3: No.
+[00:43:12] @3: I have to.
+[00:43:17] @3: Discuss.
+[00:43:20] @3: Thank you.
+[00:43:26] @3: One.
+[00:43:26] @4: Like me afterward, and I didn't.
+[00:43:30] @4: That was the way to go. I think we should have read our sources.
+[00:43:31] @3: Cortana.
+[00:43:37] @4: And yeah, that's about the helpful AI is that it can teach you things, and I think that's...
+[00:43:37] @3: Okay.
+[00:43:40] @3: Not cool.
+[00:43:42] @3: Still be cool.
+[00:43:44] @3: Okay.
+[00:43:46] @4: The best use as a resource, and so it was really helpful for debugging into the 3D printer for me.
+[00:43:46] @3: Yeah.
+[00:43:48] @3: Thank you, Jorge.
+[00:43:51] @3: Cortana.
+[00:43:53] @3: Isn't it?
+[00:43:58] @4: I feel like it, I feel like we're pushing a bit apart in other areas.
+[00:43:59] @3: Okay.
+[00:44:00] @3: What?
+[00:44:03] @3: Okay.
+[00:44:04] @4: And yeah, that's about it.
+[00:44:08] @4: What do you think?
+[00:44:08] @2: I think it, I think it has been super good as like, I've been thinking of it as like an assistant.
+[00:44:10] @3: Thank you.
+[00:44:13] @3: What can you update?
+[00:44:15] @2: in a lot of ways where like I use AI a ton for the lab and then for like my work and stuff just to like help myself stay organized. I have found that super useful.
+[00:44:32] @2: I've also found it super useful to like be able to like write code and stuff with it, but when doing that, I think it's essential to like go back and actually understand what the code is doing. So like I'll use AI and generate a ton of code.
+[00:44:35] @4: Oh
+[00:44:46] @2: And then I'll go back through all of it and figure out what the heck it just did and what I want to change or what I need to optimize. Because it doesn't usually get it quite right. It might make it function, but it won't quite work exactly like I want or need it to. So I found that super interesting. I think the biggest thing is just recognizing that we're going to have...
+[00:45:00] @4: Mhm.
+[00:45:06] @2: AI forever. Like, there's no getting away from any of that. We really need to find a way to harness the power that it has to make us more like effective and efficient. If you don't know how to use it, you're going to fall behind. That being said, if that's all you use.
+[00:45:14] @4: Search.
+[00:45:25] @2: you're useless because anyone can use AI.
+[00:45:28] @4: Wright.
+[00:45:30] @2: That's kind of my thoughts. I don't know. So like, as far as using it in the lab, I guess I don't know. Like I use it a lot in the lab to like research stuff, just because it seems to do, it's a really quick way to like compare stuff that takes a lot of the grunt work out of it. And oftentimes it seems, yeah, like when I ask it to compare a mass amount of
+[00:45:30] @4: Okay.
+[00:45:39] @4: Beats.
+[00:45:44] @4: Yeah, and it's good at finding information really fast, too, yeah.
+[00:45:51] @2: 3D model printers. Like it's really good at going to websites and pulling data and giving me a table that displays those results. And that saves me a ton of time, right? I don't have to go track down all that information. Like it's just given to me. I think it's right. You know what I mean? It's accurate. It pulled that from their site.
+[00:46:07] @4: Sure.
+[00:46:11] @2: When I ask AI to do other things, sometimes it'll like just completely hallucinate. When I ask it for like, how can I build this equation to optimize this process? It has no idea. And so it'll just spit something random. And if I run with it, like I am an idiot for trusting it completely and not trying to verify what it's doing.
+[00:46:18] @4: Yes.
+[00:46:27] @4: Yes.
+[00:46:33] @4: Yeah, I agree with that, especially with finding sources. I think it's important to go and read through those ourselves, or at least skin, you know, make sure that we're talking about the right things.
+[00:46:46] @2: Yeah, and like just from like my short internship work experience that I've seen, it's everywhere. Like literally half of my day is working with AI to optimize a process.
+[00:46:56] @4: Yes.
+[00:47:00] @2: Like, thanks, thanks.
+[00:47:00] @4: Oh, are you in an internship right now?
+[00:47:02] @2: Yeah, I am.
+[00:47:04] @4: Oh, nice. What are you doing?
+[00:47:06] @2: Oh, like structural engineering stuff.
+[00:47:10] @2: So not quite mechanical, but close enough, and it's a work experience. But I found it, I found it so, yeah, and I found it just so interesting, like how often they use Gemini and Clog and all these things. Like they are into it really deep. And so a lot of like my internship has been like finding
+[00:47:15] @4: Main and Engineering.
+[00:47:31] @2: the limits of AI for them and then say, hey, this is as far as we can push this.
+[00:47:33] @4: I.
+[00:47:39] @2: Like a lot of their tools are using AI to verify human work. And in the process, like they will be able to really cut down in like the amount of man hours and manpower that they need to do stuff because AIs are so effective at doing what I call the grunt work.
+[00:48:02] @2: And so I think that's super interesting to see. It's like this isn't going anywhere. Like any business that's like wants to be strong is going to use this and then have someone verify it.
+[00:48:04] @4: Bing.
+[00:48:15] @2: So I think it's really interesting to see like what the world will become because all of a sudden you're, I don't know, I think it's really interesting. You just have to verify. You verify your sources, verify the work, verify the equations.
+[00:48:29] @2: And once you kind of do that, like it got it gets the the math, it usually does pretty well on, especially where like a lot of the stuff I'm working with is kind of like our...
+[00:48:41] @2: material, not material science, but mechanics of materials class. And so I think this applies to the lab too. It's like it does a lot of like easy grunt work very quickly and effectively. It just can't be allowed to make like core decisions or like core path or else it'll just belly flop.
+[00:48:42] @4: Tools.
+[00:48:45] @4: Mhm.
+[00:48:59] @4: S.C.
+[00:49:03] @4: Yeah, Gupta.
+[00:49:06] @4: Yeah. And part of it is figuring out what is actually grunt work that it can manage too, right? Like, I mean, we spent months trying to get it to work with the CAD models and it's just not doing very well. And I think.
+[00:49:08] @2: Alright, that was a rant.
+[00:49:22] @4: I think that's okay because I think plenty of us actually enjoy doing CAD, you know.
+[00:49:27] @4: And every CAD model is going to be different. It wouldn't be like recording data and sorting it and stuff like that's something that AI would be amazing for. But
+[00:49:37] @2: Yeah.
+[00:49:38] @4: Yeah, it's a little, yeah, that's one of the limits I think that AI has is it's not very good at generating those structures that we needed.
+[00:49:48] @2: Yeah, like generating images and like spatial awareness, AI is very poor at. It does really well with like analyzing information and like things to do with like words and things like that. It does very good at image analysis, spatial analysis, things like that. It's not there yet.
+[00:49:53] @4: Yeah.
+[00:50:00] @4: Yeah.
+[00:50:03] @4: It just, it doesn't, yeah, it doesn't live in the 3D world with us. It's all just code and stuff. And it can be super helpful for code. I mean, I've been a little more careful with generating so much code at once because often it'll come up with like a function or something that I haven't ever used before. And I'll be like, hey, what's that?
+[00:50:25] @4: and then it takes a little more time, but then you're still learning with it, but often it can feel a little like you're trying to catch up to where AI is at and you're never going to get to that point, but you
+[00:50:41] @4: You learn A lot.
+[00:50:43] @4: But I think it's ultimately better writing my own code, because then I know exactly how it works and how I want it to be working.
+[00:50:54] @4: Um...
+[00:50:55] @4: Well, that's my opinion, if you have had lots of it last time.
+[00:50:57] @3: One of those sub-team microphone, so we might, uh, I think we'll jump back together to...
+[00:51:07] @4: I.
+[00:51:09] @3: Yeah, let's jump to the next question. So...
+[00:51:13] @3: Let's just kind of shift it over to lab culture. So like in the vertical cloud lab at BYU specifically.
+[00:51:23] @3: What kind of things could we do? Like, what kind of conversations could we have to help out? Like, what kind of lab culture do we want? How do we set that kind of culture here, especially as new people come in, as people graduate, and then pass off the baton? You know, what does the lab culture look like there? So, regarding AI or just...
+[00:51:45] @3: Janelle.
+[00:51:48] @3: Yeah, yeah, and then I think it would be good to, in future, we'll do a break off, yeah, another break off, yeah, yeah, same people, yep, and report it too.
+[00:52:02] @3: Sorry, you guys can keep going. Sorry for interrupting.
+[00:52:12] @2: What do you think, Audrey?
+[00:52:15] @4: Tag, you're it.
+[00:52:17] @2: I don't know, I'm bad. I use AI a lot, like a lot, a lot.
+[00:52:26] @2: As far as like the culture of it, I think that's very personal. I know like Xavier doesn't use it very much at all.
+[00:52:35] @4: Yeah. I mean, do you feel, do you still feel like you're learning and that you're capable when you're using it though?
+[00:52:43] @2: Yes and no.
+[00:52:45] @2: Yes and no. There are times, kind of like what you're saying at the end, I literally will chase AI through like tons of code trying to figure out how it's doing, what it's doing. And at the end of the day, I come back to it and kind of just like look at it and it's like, well, it's working. I have a kind of a grasp of what I think it's doing.
+[00:53:05] @2: I went to doing it. I don't know how that function exactly works. Like, I really don't know.
+[00:53:11] @2: But it works, and I think I know kind of what it's doing. Can I, like, teach someone else what it's doing? No.
+[00:53:11] @4: Yeah.
+[00:53:19] @4: Yeah, yeah.
+[00:53:20] @2: And so I guess I trust it maybe too much in that sense.
+[00:53:27] @2: That being said.
+[00:53:30] @2: Like...
+[00:53:32] @2: For me, it's kind of like the means to the end on like certain things. Like I would prefer not to be coding stuff my whole life. And so that's not something that intrigues me. And so maybe I am short circuit, like short circuiting my education in that aspect. But at the same time,
+[00:53:43] @4: Okay.
+[00:53:49] @2: It's something that I don't hope to be doing my whole life.
+[00:53:53] @4: Gotcha. So you're not as worried about your coding skills because you don't see yourself using them very much.
+[00:53:53] @2: If that makes sense.
+[00:53:56] @2: Yeah, so like...
+[00:54:01] @2: Like long term, yeah, I'm not as worried about that. Where I do spend like a lot more time understanding is things with like the 3D printers and like material science stuff. Like that's just information that I need to know like forever. And so like.
+[00:54:04] @4: Okay.
+[00:54:15] @4: Yeah.
+[00:54:17] @2: When it comes to those things and I'm using AI, like even right now, like the amount of times I say, okay, walk me through and teach me what you just did.
+[00:54:27] @2: And...
+[00:54:29] @2: It will take, I will spend a ton of time going down that wormhole.
+[00:54:34] @2: But I think it's still valuable and I think it helps me not shortly.
+[00:54:39] @2: circuit, the educational experience. I think for me, I'm using AI mostly as like a way to get out of things that I don't really want to spend a lot of time on. If that makes sense. And I don't particularly see myself as like using them down the road.
+[00:54:40] @4: Seth.
+[00:54:52] @4: Yeah.
+[00:54:56] @4: Yeah, I think that's useful. I've definitely had semesters where I feel like maybe too much on AI and that wasn't helpful for me for my learning. So I'm definitely a little more like, use it as little as possible. But like for things that it can easily automate, that's so, so beneficial.
+[00:55:14] @4: I just...
+[00:55:16] @4: I think we're on 2 opposites of the spectrum right now where you have you're relying on it like a lot right now and I'm like, I don't want to touch this stuff, but...
+[00:55:26] @2: Yeah, and it's been hard because my internship, honestly, I thought it would be like showing me that like I need to not use AI as much. And then like I got here and I don't know if you're familiar with like Gemini notebooks and like Gemini gems and like all of those new features.
+[00:55:28] @4: And.
+[00:55:42] @4: Yeah, I am.
+[00:55:45] @2: I spent probably 1/4 to 1/2 of my day every day using those tools and either trying to break them, trying to make them work quicker, or trying to find ways to like share them on like a larger scale. Like, that's all I'm doing. And then like, of course, going through as they work.
+[00:56:04] @2: to like make sure they did the math right and they have the equations right. And you know what I mean, that like their reasoning isn't vlogged, but I don't think I've had, I mean, I've been here since May. I can count on one hand. I think the times the AI has gotten like the equation wrong for something like.
+[00:56:08] @4: Right.
+[00:56:24] @2: engineering related in the sense that like it performed a calculation that was just fault or it was just wrong.
+[00:56:31] @2: You know what I mean? Like maybe four times.
+[00:56:33] @4: Yeah.
+[00:56:35] @2: And so...
+[00:56:38] @2: This thing like me knowing how to do it those four times was incredibly helpful, but I think what it really has done is like really lowered the barrier to entry of like going in and deep diving into like specific things.
+[00:56:51] @2: I don't know.
+[00:56:53] @4: Okay, yeah, no, I can see that.
+[00:56:55] @2: As far as like the culture though, like I think there has to be a balance. Like we have to use it. We can't say, hey, we are not going to touch that. That being said, I'm probably overusing it to the extent where like I'm...
+[00:57:02] @4: Yeah.
+[00:57:04] @4: West.
+[00:57:05] @4: And probably under using it, so we just need to.
+[00:57:08] @2: Yeah.
+[00:57:31] @4: I will.
+[00:57:31] @2: things. When I plus run and it runs and it works like it's supposed to, I don't ask a ton of questions and just if I and once I kind of like understand it a little bit.
+[00:57:41] @2: Because I just don't, I don't know. It's interesting, very interesting. When it comes back to like school, like I feel like how I always used AI is like a better way where like I used it a lot to like study for things, but not necessarily to solve the exact problems I was solving, but maybe to solve.
+[00:57:55] @4: Mhm.
+[00:58:00] @2: Other problems, if it makes any sense, like just create additional problems.
+[00:58:04] @4: Yeah, so you can see the workflow so that you can go do your own.
+[00:58:08] @2: Yeah, but it was also very interesting in like, in my thermodynamics class, the teacher really encouraged AI usage, although he's no longer teaching here.
+[00:58:18] @4: Who is the teacher?
+[00:58:20] @2: I forgot, he was an older, bald man.
+[00:58:23] @4: Yes.
+[00:58:24] @4: Okay, so it wasn't Magleby then, right?
+[00:58:27] @2: No, it wasn't Magleby, it wasn't Dillon, it was someone else. I recommend taking it from Doctor Dillon.
+[00:58:31] @4: Mum.
+[00:58:36] @4: I already took it, but thank you.
+[00:58:37] @2: No, right? Oh, who'd you take it with?
+[00:58:40] @4: I take it with Dillon.
+[00:58:42] @2: Did you? Okay, yeah.
+[00:58:44] @2: I like mine in the class, but it was a very interesting perspective on using AI to learn.
+[00:58:49] @4: Yeah, where are you, where are you actually at in the program right now? Because I'm starting capstone, but it seems like I just took thermal, so.
+[00:58:58] @2: I've got two more years still.
+[00:59:00] @4: Okay.
+[00:59:01] @2: I'm trying to do the program in four years, so I've got two more.
+[00:59:08] @2: Like, this is the semester I'm taking, like, manufacturing and mechatron it, things like that.
+[00:59:08] @4: Play music.
+[00:59:13] @4: Manufacturing is awesome. Mechatronics.
+[00:59:18] @4: It can be awesome. You're not allowed to use AI for mechatronics, so watch out.
+[00:59:22] @2: No.
+[00:59:24] @4: Yeah, but.
+[00:59:28] @4: Ah, it can be so rewarding when something works, and when it doesn't work, it's like...
+[00:59:38] @4: Oh, that's an interesting classical drawings.
+[00:59:43] @2: Okay.
+[00:59:46] @4: Manufacturing is so much fun though.
+[00:59:51] @4: And enjoy that.
+[00:59:53] @2: Yeah, MechEng.
+[00:59:55] @4: What else were you in?
+[00:59:59] @2: Hold up, I don't know offhand, like the writing class.
+[01:00:04] @4: Mhm.
+[01:00:07] @4: Yeah, that one's just a lot of work. That one's whatever.
+[01:00:07] @2: What else?
+[01:00:11] @2: Is it is it fun or is it just kind of busy work?
+[01:00:15] @4: Parts of it are fun. Like, I mean, assuming every class has the same kind of flow, like the first project is like, you're going to write a set of instructions for someone and you need to make it really pretty easy to follow and stuff like that. And that's actually fun. And then you have like your assortment of
+[01:00:33] @3: Yes.
+[01:00:33] @4: that you have to do that are less fun, but you get them done and it's whatever.
+[01:00:39] @2: Yeah, I feel like that's a good use of AI to like use it to write instructions, like give it a bunch of data and processes and then have it write the instructions and then just verify that it was good. I don't know.
+[01:00:40] @3: And I'm switching over here, but it's also.
+[01:00:42] @4: Bing.
+[01:00:46] @4: Yeah.
+[01:00:49] @4: Okay.
+[01:00:51] @3: No, I say the.
+[01:00:52] @2: Maybe not, though.
+[01:00:52] @4: That's good. I mean, you also have to, everything you submit, you have to say what you used AI for and stuff like that. So just make sure, whatever you use it for, you're comfortable declaring to the professor.
+[01:01:00] @3: Did you guys skip your video?
+[01:01:01] @2: It's so interesting.
+[01:01:06] @2: Yeah.
+[01:01:07] @3: I'm sorry, say if you uploaded it yet, or yeah, if you guys can take a second, yeah, like we can, as long as it's uploaded, then yeah, we can get everything.
+[01:01:08] @4: No.
+[01:01:24] @3: And then, Audrey and Carl, you get you get off easy because it's already, you know, recorded and stuff, so now I need to do the the upload to the the channel.
+[01:01:35] @3: Um, no.
+[01:01:45] @3: Let me see.
+[01:01:51] @3: Yeah, I've been putting like discussion between Ben Whitney and Sterling Baird about AI, like lab culture AI. I'll do the AI experience of a tweak in one, yeah, yeah, yeah, so that does sound like a that's.
+[01:02:10] @3: That's a great podcast episode.
+[01:02:16] @3: Hey, we, we about to get YouTube famous, you know, with the content that's looking up, alright.
+[01:02:25] @3: Alright, so if we get 1000 bikes on this, where it's on this, we're changing our career. I've been putting these ones as public, we don't wanna make it public. I just gotta, you get my, and then we know what our, we know what our future career is if we get some some random person on our.
+[01:02:43] @3: You challenge me like, what is it? So, I was happening, no context like this, we good. Okay, I why did you two recommend me still? I take it no one had a hard stop at 11, otherwise you probably would have gone. I won't go too much over, but I think just to kind of coming coming back together.
+[01:03:04] @3: A...
+[01:03:07] @3: Action items, specific suggestions people had or thought of, and we can take things a little bit more asynchronously afterwards, like...
+[01:03:19] @3: Can we filter down those suggestions? Kind of pick pick a few things that we that we focus on in the lab to kind of, we can use the transcript to compile them. That's what I will do after the after the session, so I build a charter and sign in.
+[01:03:35] @3: That would be an example of a specific suggestion, so thank you for offering the, you know, the second one after. A.I. are, yeah, and we could also have the goal to have one lab meeting where we don't use the word AI a single time.
+[01:03:56] @3: No, so, okay, but yeah, one one that came from, should I go ahead? I swear draw, we all had, you know, yeah, more like highest, highest speaker has to bring donuts in his speakers. Yeah, yeah, I would probably be bringing donuts every week. I'm okay, that's okay.
+[01:04:17] @3: Let's skip the math ********. Yeah. Don't say one person. Audrey and Carl, did you guys want to start off with anything like that kind of stuck out?
+[01:04:28] @3: Okay.
+[01:04:29] @2: We just we just talked about having balance and making sure that we were using AI for like good things and just kind of talked about where we personally were with using AI and how we can use it better in the lab and
+[01:04:30] @3: Yeah.
+[01:04:40] @3: Yeah.
+[01:04:43] @2: Kind of set that culture, I think.
+[01:04:48] @3: Okay.
+[01:04:51] @3: Sounds good.
+[01:04:52] @3: Yeah, agreed on balance. There was a...
+[01:04:54] @4: Where do you go?
+[01:04:56] @4: Sorry, I'm just wondering, would it be helpful like when new people come into the lab, we would run them through, hey, this is good ways to be using AI, like using it to teach you to do things, and using it to maybe like debug stuff, and like, I mean, just like things that are helpful, you know, things that are...
+[01:05:13] @3: Hey, Cortana.
+[01:05:15] @3: Yeah, yeah.
+[01:05:17] @4: Borderline, I don't know if this is right or not, maybe like...
+[01:05:21] @4: We need some kind of like tutorial to show people, I guess.
+[01:05:22] @3: Yeah.
+[01:05:27] @3: Yeah, I like that, Audrey. That gets me thinking. We can probably pull this, some of the things from this discussion, and when I am doing onboarding with people, you guys all kind of know, I sent out a few links of videos to watch. I think I can add, probably add this in with one of those kind of like onboarding things, like.
+[01:05:47] @3: Yeah, or maybe I misheard Audrey, but I think I heard her say real, so like, you know, we could make like a real of us like being, this is good, this is bad. Yeah, so some, yeah, so yeah, I think some examples would be would be really good, yeah.
+[01:06:04] @3: Yeah, we'll go a few more minutes. OK, with with folks, yeah, other specific thoughts or suggestions? I think just what we were talking about earlier, like, is an assistant at like...
+[01:06:18] @3: Treating it as...
+[01:06:21] @3: I don't know if it appears the right word, but...
+[01:06:26] @3: Are you with that? Yeah, it's cool, but then hopefully you refine your list. Something I think you might talk about is that instead of saying create this, we give it specific ideas, and then have it refine out our ideas, then force us to think beforehand, so it's learning the whole thing, yeah, yeah.
+[01:06:45] @3: And get the level one of understanding someone was talking about, so, like, OK, this was our idea at the first place to understand why we have been different funds for this idea, but yeah, it's just up to us.
+[01:06:57] @3: get rid of maybe some of the time we would have lost. Part of our idea wasn't even going to run any fruitful, wasn't going to profit. Like, they would just get rid of the time wasting stuff, I guess. Yeah, yeah.
+[01:07:16] @3: Does it? Something Sam and I talked about was...
+[01:07:21] @3: making a bigger commitment to reading relevant research papers. Something that's been useful for me is, and this point should be because of the nature of my research, is that reading a few papers and I'm implementing them into these, you know, I'm coding them up or adjusting them for our specific research.
+[01:07:41] @3: And so I read them, I like look at the code, and then I'm like, okay, I think I need to do this. And I'm like, wait, this makes sense. And then I read them again, and I'm like, oh, I didn't read this closely enough. Okay, this makes sense. And then I can go back and I have a better understanding and back and forth. And that has helped me understand.
+[01:08:00] @3: exactly what then I know the code is doing. And it avoids me having like a, if I can read that paper, that means I can understand all the things that are relevant to it. And then I avoid having just a summary education of the topic.
+[01:08:19] @3: which is currently how we use AI, is, oh, this is, give me the SparkNotes version. And so then you get a SparkNotes education of that. But then you read another paper that you would still be expected to understand, but because you only have a SparkNote version of that, you don't know.
+[01:08:38] @3: the details, you read a paper that's related, and then you don't understand that again, and so you ask for a Sparks notes education of that, and so you miss out on having a good quality education of the topic broadly, so then you can read many research papers and understand.
+[01:08:57] @3: Be able to explain it to other people or them.
+[01:09:01] @3: You know, I think lab culture involving...
+[01:09:05] @3: Reading the source manuscript material and.
+[01:09:10] @3: I don't know how you feel about this, but maybe like spend time with the manuscripts, maybe say it's still okay if you're like paying flaws to help with things, but while you're waiting, it's like keep reading, you know, try to.
+[01:09:25] @3: Yeah, but like have the PDF of the manuscripts that you're like the really core manuscripts that you want to understand in front of you.
+[01:09:34] @3: As an anecdote, for finishing my last math paper, we are on this last part of the proof, and the way that we had thought we were going to do it ended up not working. We could figure it out. And so I just, there were three types of theorems that I was like, if you have anything related to these type of results,
+[01:09:53] @3: I need these, and so I had Claude search them up and it gave me like 5 for each type, and then I just I clicked through them and I read them and I was like, I found it. Yeah, like this theorem, as it was published, was able to work, and then we were able to make a proof off of that, rather than if I just said.
+[01:10:13] @3: okay, search and give me the results of these papers, it probably would not have, I would actually bet that it would not have found it. But because I was able to go through and read through these, like it is really good at finding relevant papers, but giving them out, it probably doesn't do as well as the job.
+[01:10:32] @3: Like, surprise.
+[01:10:34] @3: Send this in the way, like this: this idea of summary of figures with that. If I do research and have AI write it in science and language and get a paper, somebody takes that paper and has AI summarize it out of science. You know, it's like, why are we taking all these steps? You need to be able to read the stuff and get right there, right? In both writing and processed.
+[01:10:54] @3: And if we let AI, AI is talking to different AIs are talking to different AIs about research, then that's a self-directed lab that's not straight research. Yeah, we want to get to the point where we have to also with the automated stuff that we don't be doing, so that we can do research, read the papers, write the papers.
+[01:11:13] @3: And, yeah.
+[01:11:18] @3: Yeah, thanks everybody for joining me in the discussion. We'll get the, please make sure you get the videos uploaded and then the last.
+[01:11:29] @3: Two minutes. Does everybody have Slack? Can they can they get Slack open pretty quickly?
+[01:11:40] @3: I would like you to, so this is in the social channel.
+[01:11:48] @3: Um...
+[01:11:51] @3: Name a couple animals for me, this tiger.
+[01:11:56] @3: Lion, zebra, elephant.
+[01:12:02] @3: K.
+[01:12:05] @3: We might only need 4.
+[01:12:18] @3: There we go.
+[01:12:53] @3: Was that August 5th?
+[01:13:07] @3: One more animal.
+[01:13:18] @3: Thank you.
+[01:13:20] @3: We're gonna wait for next weekend.
+[01:13:24] @3: Yeah.
+[01:13:58] @3: Yeah, um, so if you could put uh...
+[01:14:08] @3: Your.
+[01:14:11] @3: Availability in here that would be much appreciated. I think September 5th is a Saturday. Let me.
+[01:14:19] @4: If multiple times work, do you want us to include those?
+[01:14:23] @3: Yeah, multiple times, just trying to find the one that works for everybody. Yeah, you can.
+[01:14:25] @4: Yes.
+[01:14:28] @4: Yeah.
+[01:14:30] @3: 7th, 5th and 6th are Saturday, Sunday. So 4th.
+[01:14:36] @3: OK, thanks.
+[01:14:39] @3: Yeah, my bad, I just...
+[01:14:45] @3: Oh, sorry, Ronnie, if you could, yeah, just, oh no, that's good. Thanks.
+[01:14:51] @3: Oh, meant to do an app channel for that.
+[01:15:11] @3: Wow, that's a lot of zebras.
+[01:15:14] @3: Oh, and crocodiles too.
+[01:15:15] @4: Run the episode of Deepak.
+[01:15:18] @3: Okay, cool.
+[01:15:25] @3: Okay, well, we'll probably call it good there. Thanks, Audrey, Carl. Thanks, everybody.
+[01:15:30] @3: Well, uh, will break.
