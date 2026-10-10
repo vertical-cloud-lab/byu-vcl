@@ -119,6 +119,19 @@ pins 1 + 2 and goes to `B1` + `B2`. Swapping the two wires of *one* coil only
 reverses the direction of travel. Never split one coil across `A` and `B`:
 that leaves the motor silent, with no buzzing (§16.3 of the wiring doc).
 
+**Header pin numbers.** The numbers in the table and in Figure 1 are the ribbon
+numbering: with the motor rows at the bottom, pin 1 is the bottom-right hole.
+Counting left to right from the bottom row instead swaps every pair (1↔2 …
+9↔10). That count puts the switch on 5 (return) and 8 (signal), which are the
+same two holes. It is how Ben reads the switch wiring that has worked since
+2026-09-29. On the coils the swap is harmless: each coil fills one row, so both
+coils reverse together and the direction stays the same. On the switch it is
+not, because the left-to-right "6 and 7" are the pipette's ID-chip pins. Go by
+position: the switch return is the left hole of the middle row, and the switch
+signal is the right hole of the row above it. §27 of the
+[wiring doc](./opentrons-pipette-wiring.md) has all three numberings,
+Opentrons' own included.
+
 ### Tic settings (Tic Control Center → Apply settings)
 
 | setting | value | why |
