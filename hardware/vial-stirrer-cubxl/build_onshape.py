@@ -74,7 +74,11 @@ def new_document(api: Onshape) -> dict:
     els = api.get(f"documents/d/{did}/w/{wid}/elements").json()
     ps = next(e["id"] for e in els if e["elementType"] == "PARTSTUDIO")
     fs = api.post(f"featurestudios/d/{did}/w/{wid}", json={"name": "vial_stirrer.fs"}).json()["id"]
-    doc = {"did": did, "wid": wid, "partstudio": ps, "featurestudio": fs,
+    asm = next(e["id"] for e in els if e["elementType"] == "ASSEMBLY")
+    # the whole Part Studio as one assembly instance, so Onshape's BOM element lists every part
+    api.post(f"assemblies/d/{did}/w/{wid}/e/{asm}/instances",
+             json={"documentId": did, "elementId": ps, "isWholePartStudio": True, "includePartTypes": ["PARTS"]}).raise_for_status()
+    doc = {"did": did, "wid": wid, "partstudio": ps, "featurestudio": fs, "assembly": asm,
            "url": f"https://cad.onshape.com/documents/{did}/w/{wid}/e/{ps}"}
     DOC_FILE.write_text(json.dumps(doc, indent=1) + "\n")
     return doc

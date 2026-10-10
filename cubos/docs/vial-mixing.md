@@ -152,6 +152,10 @@ moving parts become a problem. Stirring is routine in electrochemistry anyway: s
 to homogenise, then a quiet period before the measurement. So the same hardware
 serves the potentiostat plans.
 
+A design for A, after the Pioreactor's stirrer and keyed to the CubXL deck, is in
+[`hardware/vial-stirrer-cubxl/`](../../hardware/vial-stirrer-cubxl/README.md)
+(2026-10-10, not built yet).
+
 ```
  A. Side view, one vial                    B. Top view, four coils under the vial
 

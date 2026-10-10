@@ -380,9 +380,8 @@ function makeHall(context is Context, id is Id) returns Query
         leads = append(leads, mkBox(context, id + ("ld" ~ k), -21.9, y - 0.25, z1 - 1.0, -13.3, y + 0.25, z1 - 0.5));
         leads = append(leads, mkBox(context, id + ("dn" ~ k), -22.2, y - 0.3, FLOOR_T + 3.0, -21.6, y + 0.3, z1 - 0.5));
     }
-    const w = qUnion(leads);
-    mkUnite(context, id + "wu", w);
-    mkLook(context, qCreatedBy(id + "ld0", EntityType.BODY), "Hall sensor leads", color(0.75, 0.75, 0.78));
+    mkUnite(context, id + "wu", qUnion(leads));
+    mkLook(context, qSubtraction(qCreatedBy(id, EntityType.BODY), body), "US1881 leads (cosmetic)", color(0.75, 0.75, 0.78));
     return qCreatedBy(id, EntityType.BODY);
 }
 
@@ -402,9 +401,9 @@ function makeDriver(context is Context, id is Id) returns Query
         leads = append(leads, mkBox(context, id + ("ld" ~ k), -0.5, (k - 1) * 2.54 - 0.4, z0 + 1.6, 6.01, (k - 1) * 2.54 + 0.4, z0 + 2.1));
     }
     mkUnite(context, id + "u", qUnion(leads));
-    mkLook(context, qCreatedBy(id + "tab", EntityType.BODY), "MOSFET tab and leads", color(0.78, 0.78, 0.80));
     const diode = mkCylX(context, id + "diode", 4.0, 9.2, -9.5, z0 + 1.35, 1.35);
     mkLook(context, diode, "Flyback diode 1N5819, DO-41 (purchased)", color(0.12, 0.12, 0.12));
+    mkLook(context, qSubtraction(qCreatedBy(id, EntityType.BODY), qUnion([body, diode])), "IRLZ44N tab and leads (cosmetic)", color(0.78, 0.78, 0.80));
     return qCreatedBy(id, EntityType.BODY);
 }
 
@@ -444,9 +443,9 @@ function makeController(context is Context, id is Id) returns Query
     const pcb = mkBox(context, id + "pcb", -22.6, -8.9, z0, -1.6, 8.9, z0 + 1.2);
     mkLook(context, pcb, "Seeed XIAO RP2040 (purchased)", color(0.05, 0.25, 0.45));
     const usb = mkBox(context, id + "usb", -23.6, -4.47, z0 + 1.2, -16.25, 4.47, z0 + 1.2 + 3.26);
-    mkLook(context, usb, "XIAO USB-C receptacle", color(0.78, 0.78, 0.80));
+    mkLook(context, usb, "XIAO RP2040 USB-C receptacle (cosmetic)", color(0.78, 0.78, 0.80));
     const chip = mkBox(context, id + "chip", -12.5, -3.5, z0 + 1.2, -5.5, 3.5, z0 + 2.0);
-    mkLook(context, chip, "XIAO RP2040 chip", color(0.06, 0.06, 0.06));
+    mkLook(context, chip, "XIAO RP2040 chip (cosmetic)", color(0.06, 0.06, 0.06));
     return qCreatedBy(id, EntityType.BODY);
 }
 
