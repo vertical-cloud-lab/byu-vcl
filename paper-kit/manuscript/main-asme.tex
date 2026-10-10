@@ -1,0 +1,83 @@
+% =============================================================================
+% main-asme.tex: ASME journal skeleton (asmejour class, in TeX Live and on
+% CTAN: https://ctan.org/pkg/asmejour), after tensegrity-optimization PR 76.
+%   make pdf J=asme     clean PDF        make todos J=asme   review PDF
+%   make diff J=asme REV=<tag or commit>  latexdiff against that revision
+%
+% ASME's generative-AI rule is the strictest of the four publishers: no
+% AI-drafted text, data, analysis or images, and every editing use reported
+% in the Acknowledgment (boilerplate/generative-ai.md). Check it before
+% choosing ASME for a paper an agent helped write.
+% =============================================================================
+\DocumentMetadata{lang = en-US, pdfstandard = A-3u, pdfversion = 1.7}
+% lineno: numbered lines for review; drop it (and nocopyright, after
+% acceptance) for the two-column final layout. singlecolumn for a draft.
+\documentclass[lineno,nocopyright,upint,varvw,hyphenate]{asmejour}
+\input{macros}
+
+\hypersetup{%
+  pdfauthor   = {\fillme{Authors}},
+  pdftitle    = {\fillme{Title}},
+  pdfkeywords = {\fillme{keywords}},
+}
+\JourName{\fillme{Mechanical Design}}  % the journal's name without "Journal of"
+
+\begin{document}
+
+% One \SetAuthorBlock per author; \CorrespondingAuthor (no space before it)
+% marks the corresponding author(s).
+\SetAuthorBlock{\fillme{First Author}}{%
+  Department of Mechanical Engineering,\\
+  Brigham Young University,\\
+  Provo, UT 84602, USA}
+\SetAuthorBlock{Sterling G. Baird\CorrespondingAuthor}{%
+  Department of Mechanical Engineering,\\
+  Brigham Young University,\\
+  Provo, UT 84602, USA\\
+  email: sterling.baird@byu.edu}
+
+\title{\fillme{Title}}
+\keywords{\fillme{keyword one}, \fillme{keyword two}}
+
+\begin{abstract}
+% ASME: 150 to 200 words, Latin characters only (no symbols or math).
+\input{sections/abstract}
+\end{abstract}
+
+\date{\today}
+\maketitle
+\listoftodos
+
+\input{sections/introduction}
+\input{sections/methods}
+% ASME wants research use of AI (code, analysis) described in Methods.
+\input{declarations/genai-methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\section*{Acknowledgment} % ASME's spelling, singular
+\input{declarations/acknowledgements}
+% ASME: report any use of AI tools here (or in the nearest place if there is
+% no Acknowledgment), and confirm it in the submission system.
+\input{declarations/genai}
+
+\section*{Author Contributions}
+\input{declarations/credit-statement}
+
+\section*{Funding Data}
+% ASME lists awards as items: funder (award number).
+\begin{itemize}
+\item \input{declarations/funding}
+\end{itemize}
+
+\section*{Conflict of Interest}
+\input{declarations/coi}
+
+\section*{Data Availability Statement}
+\input{declarations/availability}
+
+\bibliographystyle{asmejour}
+\bibliography{references}
+
+\end{document}

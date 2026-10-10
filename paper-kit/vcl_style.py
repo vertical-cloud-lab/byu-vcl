@@ -279,9 +279,11 @@ def readme_problems(readme: Path) -> list[str]:
     """The fields a data README must state that it does not."""
     if not readme.exists():
         return [f"no {readme.name}"]
-    found = {m.lower() for m in README_FIELD.findall(readme.read_text(encoding="utf-8"))}
-    return [f"{readme.name} does not state {f}" for f in ("units", "n", "provenance")
-            if f not in found]
+    text = readme.read_text(encoding="utf-8")
+    found = {m.lower() for m in README_FIELD.findall(text)}
+    missing = [f"{readme.name} does not state {f}" for f in ("units", "n", "provenance")
+               if f not in found]
+    return missing + ([f"{readme.name} still has FILL lines"] if "FILL" in text else [])
 
 
 def data_path(name: str) -> Path:

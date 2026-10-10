@@ -1,0 +1,61 @@
+% =============================================================================
+% macros.tex: shared by every main-*.tex; \input it right after \documentclass
+% (and the class's own front-matter set-up).
+%
+% \TODOOPTS decides whether todonotes show. The Makefile sets it:
+%   make pdf    \def\TODOOPTS{disable}  clean PDF, every \todo hidden
+%   make todos  \def\TODOOPTS{}         margin notes and \listoftodos
+% Compiled any other way (Overleaf, an editor), the todos show.
+% =============================================================================
+\providecommand{\TODOOPTS}{}
+\usepackage[\TODOOPTS,colorinlistoftodos,textsize=footnotesize]{todonotes}
+\setlength{\marginparwidth}{2cm}
+\usepackage{graphicx,booktabs,catchfile,xcolor}
+\ifdefined\Bbbk\else\usepackage{amssymb}\fi % asmejour's newtxmath already has the AMS symbols
+% max width: a 175 mm figure shrinks to fit a narrower review layout; at the
+% journal's final layout it is placed at its own size.
+\usepackage[export]{adjustbox}
+\usepackage{siunitx}
+\sisetup{separate-uncertainty = true}
+
+% Figures come only from figures/out/, written by make figures.
+\graphicspath{{../figures/out/}}
+\newcommand{\vclfigdir}{../figures/out/}
+
+% \figcaption{fig1_slug}: the caption stub figures/fig1_slug.py wrote, which
+% states n and what the error bars are. Edit the words in the script.
+\newcommand{\figcaption}[1]{%
+  \CatchFileDef{\vclcaption}{\vclfigdir#1.caption.tex}{}\caption{\vclcaption}}
+
+% \fillme{...}: something to fill in from the record, never to invent. Violet
+% in BOTH builds, so a PDF that leaves the lab cannot hide one;
+% make submission-check lists every one left.
+\definecolor{fillme}{RGB}{142,68,173}
+\NewDocumentCommand{\fillme}{m}{\textcolor{fillme}{[#1]}}
+% \dummy{1.23}: a stand-in number, violet in both builds (tensegrity PR 76).
+\NewDocumentCommand{\dummy}{m}{\textcolor{fillme}{#1}}
+
+% Placeholders for a figure or table that has no script or data yet; both
+% vanish into a todo in the review build (from tensegrity PR 76).
+\newcommand{\figplaceholder}[2]{% #1 label, #2 what it will show
+  \begin{figure}[ht]
+    \centering
+    \fbox{\parbox[c][3.2cm][c]{0.85\linewidth}{\centering\textit{Figure placeholder: #2}}}%
+    \caption{\fillme{Placeholder.} #2}
+    \label{fig:#1}
+  \end{figure}%
+  \todo[inline,color=orange!30]{Figure \texttt{#1}: #2}}
+\newcommand{\tabplaceholder}[2]{% #1 label, #2 what it will hold
+  \begin{table}[ht]
+    \centering
+    \caption{\fillme{Placeholder.} #2}
+    \label{tab:#1}
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      Column A & Column B & Column C \\
+      \midrule
+      \multicolumn{3}{c}{\textit{(table contents pending)}} \\
+      \bottomrule
+    \end{tabular}
+  \end{table}%
+  \todo[inline,color=orange!30]{Table \texttt{#1}: #2}}

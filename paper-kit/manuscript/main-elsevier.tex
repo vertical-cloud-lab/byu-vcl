@@ -1,0 +1,78 @@
+% =============================================================================
+% main-elsevier.tex: Elsevier journal skeleton (elsarticle, in TeX Live; see
+% https://www.elsevier.com/researcher/author/policies-and-guidelines/latex-instructions).
+% For HardwareX use main-hardwarex.tex, which adds the specifications table
+% and HardwareX's own sections.
+%   make pdf J=elsevier     make todos J=elsevier     make diff J=elsevier REV=...
+% =============================================================================
+% preprint,12pt: the one-column review layout; final,5p,times,twocolumn
+% previews the two-column page.
+\documentclass[preprint,12pt]{elsarticle}
+\input{macros}
+\usepackage{lineno}
+\usepackage{hyperref}
+
+\journal{\fillme{Journal name}}
+
+\begin{document}
+\linenumbers
+
+\begin{frontmatter}
+\title{\fillme{Title}}
+
+\author[byu]{\fillme{First Author}}
+\author[byu]{Sterling G. Baird\corref{cor}}
+\ead{sterling.baird@byu.edu}
+\cortext[cor]{Corresponding author}
+\affiliation[byu]{organization={Department of Mechanical Engineering, Brigham Young University},
+  city={Provo}, state={UT}, postcode={84602}, country={USA}}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+% Most Elsevier journals ask for 3 to 5 highlights, each at most 85 characters.
+\begin{highlights}
+\item \fillme{Highlight one}
+\item \fillme{Highlight two}
+\item \fillme{Highlight three}
+\end{highlights}
+
+\begin{keyword}
+\fillme{keyword one} \sep \fillme{keyword two} \sep \fillme{keyword three}
+\end{keyword}
+\end{frontmatter}
+
+\listoftodos
+
+\input{sections/introduction}
+\input{sections/methods}
+% Elsevier: AI used in the research itself (code, analysis) goes in Methods.
+\input{declarations/genai-methods}
+\input{sections/results}
+\input{sections/discussion}
+\input{sections/conclusions}
+
+\section*{CRediT authorship contribution statement}
+\input{declarations/credit-statement}
+
+\section*{Declaration of competing interest}
+\input{declarations/coi}
+
+\section*{Data availability}
+\input{declarations/availability}
+
+\section*{Acknowledgements}
+\input{declarations/acknowledgements}
+
+\section*{Funding}
+\input{declarations/funding}
+
+% Elsevier: its own section, at the end, immediately before the references.
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+\input{declarations/genai}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
