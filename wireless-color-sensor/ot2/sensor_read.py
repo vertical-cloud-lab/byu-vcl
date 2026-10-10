@@ -163,18 +163,35 @@ class SensorLink:
             "Grant this credential both publish AND subscribe."
         )
 
-    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2):
-        """Command one reading and return a dict of the 8 channels plus metadata."""
+    def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2, settings=None):
+        """Command one reading and return a dict of the 8 channels plus metadata.
+
+        ``settings`` (e.g. ``{"gain": 32, "led_ma": 10}``) asks the board for
+        different settings for this one reading: ``gain`` (0.5, 1, 2, ... 512;
+        default 128x), ``atime`` (0-255, default 100), ``astep`` (0-65534,
+        default 999) and ``led_ma`` (the breakout's white LED: 0 = off, the
+        default, or an even 4-20 mA). It needs the firmware in ``../pico/``
+        (gain since 2026-10-09, the rest since 2026-10-10); a board without it
+        ignores or refuses the keys, so a reply that does not echo each one back
+        in ``sensor_settings`` is refused rather than mislabelled.
+        """
         timeout = timeout or self.timeout
         r, y, b = rgb
         last_error = None
         for attempt in range(1, retries + 2):
             # One clock read feeds both the id and the timestamp, so the epoch
             # baked into experiment_id and the explicit field cannot disagree.
-            started = time.time()
+            # Truncate to whole milliseconds once, and derive the id, the ISO
+            # string and the epoch field from that single value. Rounding one
+            # and truncating another let them disagree by 1 ms, which is
+            # harmless but makes the id and the field stop being interchangeable
+            # for anything matching on them.
+            started = int(time.time() * 1000) / 1000.0
             experiment_id = f"{label or 'read'}-{int(started * 1000)}"
             payload = {"command": {"R": r, "Y": y, "B": b},
                        "experiment_id": experiment_id}
+            if settings is not None:
+                payload["settings"] = settings
             self._drain()
             self._client.publish(self.command_topic, json.dumps(payload), qos=1)
 
@@ -187,10 +204,20 @@ class SensorLink:
                         body = json.loads(raw.decode("utf-8", "replace"))
                     except ValueError:
                         continue
+                    if body.get("experiment_id") == experiment_id and "error" in body:
+                        raise SensorError(f"the board refused the settings: {body['error']}")
                     data = body.get("sensor_data") or body
                     if not any(c in data for c in CHANNELS):
                         continue
-                    answered = time.time()
+                    if settings is not None and "sensor_settings" not in body:
+                        raise SensorError(
+                            "the board ignored the settings: it is running firmware "
+                            "without the per-reading gain (see wireless-color-sensor/pico/)")
+                    for key, want in (settings or {}).items():
+                        if (body["sensor_settings"] or {}).get(key) != want:
+                            raise SensorError(f"asked for {key} {want}, the board reports "
+                                              f"{body['sensor_settings']}")
+                    answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {
                         "experiment_id": experiment_id,
@@ -205,10 +232,14 @@ class SensorLink:
                         # a precision the round trip does not have.
                         "t_request_utc": _iso(started),
                         "t_response_utc": _iso(answered),
-                        "t_request_epoch": round(started, 3),
-                        "t_response_epoch": round(answered, 3),
+                        "t_request_epoch": started,
+                        "t_response_epoch": answered,
                         "latency_s": round(answered - started, 3),
                         "attempt": attempt,
+                        "sensor_settings": body.get("sensor_settings"),
+                        # Clear and NIR from each half of the reading (F1-F4, F5-F8),
+                        # sent by the firmware since 2026-10-10; None before.
+                        "sensor_extra": body.get("sensor_extra"),
                         "raw": body,
                     }
                 time.sleep(0.02)

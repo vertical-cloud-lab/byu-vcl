@@ -1,0 +1,304 @@
+{
+ "date": "2026-09-29",
+ "lab_time": "MDT (UTC-6)",
+ "request": "PR #202: test that the enclosure won't fall off, then calibrate its height over the 96-well plate, then tips and liquid; stop if the enclosure unexpectedly falls",
+ "outcome": "height found (touches the plate at nozzle z ~98.9; set at 99.5), then the enclosure fell off the nozzle on the way back to its base; stopped, tips stage not started",
+ "robot": {
+  "serial": "OT2CEP20210722R13",
+  "api": "8.8.1",
+  "maintenance_runs": [
+   "06905731-71fc-460b-9fea-88ee6f54df09",
+   "b72e3dfb-d472-4c76-bf99-abf5fa84a8ad"
+  ]
+ },
+ "deck": {
+  "base": "slot 10, enclosure in the right socket (A2)",
+  "plate": "slot 1, clear 96-well flat",
+  "tip_rack": "300 uL, right-hand column",
+  "livestream": "the 'OT-2 stream picam-ot2' camera still points at another machine; robot camera only"
+ },
+ "script": {
+  "args": "--press-z 89.5 --carry-z 125 --carry-segment 400 --drop-dx 0 --no-live (test 2 also --max-speed 3)",
+  "pickup_xy": [
+   92.8,
+   316.5
+  ],
+  "plate_target_xy": [
+   63.88,
+   42.74
+  ]
+ },
+ "precheck": {
+  "hover_z120_vs_0929_px": "within 0.03 on every patch",
+  "z99_vs_0929_px": {
+   "nozzle": 0.0,
+   "enclosure": 0.04
+  }
+ },
+ "measure": "grip_shift.py: rows of the enclosure's front face vs the bare-nozzle frame at z 99; negative = above its seat; ~1 px per mm",
+ "test1": {
+  "speed_mm_s": 10,
+  "press_z": 89.5,
+  "press_nozzle_px": {
+   "97.5": 1.91,
+   "96": 2.98,
+   "94": 5.29,
+   "92": 7.72,
+   "90": 9.77,
+   "89.5": 10.05
+  },
+  "press_enclosure_px_at_89.5": 0.75,
+  "lift_to": 93.5,
+  "enclosure_px_after_lift": -0.99,
+  "reads_after_lift": [
+   828,
+   829
+  ],
+  "enclosure_px_1min_later": -1.04,
+  "shake": "jiggle y 0.3 40 10 (80 jolts)",
+  "enclosure_px_after_shake": -0.65,
+  "seam_contrast_before_after": [
+   58.2,
+   23.3
+  ],
+  "verdict": "slid: gap nearly closed",
+  "released_in_place_reads": [
+   506,
+   505
+  ],
+  "enclosure_px_after_release": -0.04
+ },
+ "test2": {
+  "speed_mm_s": 3,
+  "press_z": 89.5,
+  "press_nozzle_px": {
+   "97.5": 1.88,
+   "96": 3.03,
+   "94": 5.22,
+   "92": 7.64,
+   "90": 9.64,
+   "89.5": 9.88
+  },
+  "lift_to": 93.5,
+  "enclosure_px_after_lift": -2.18,
+  "reads_after_lift": [
+   1064,
+   1065
+  ],
+  "shakes": [
+   {
+    "cmd": "jiggle y 0.3 40 3",
+    "enclosure_px": -2.21,
+    "seam": 60.8
+   },
+   {
+    "cmd": "jiggle x 0.3 40 3",
+    "enclosure_px": -2.2,
+    "seam": 58.0
+   },
+   {
+    "cmd": "jiggle z 1.0 20 3",
+    "enclosure_px": -2.18,
+    "seam": 58.9
+   }
+  ],
+  "reads_after_shakes": [
+   1065,
+   1066
+  ],
+  "verdict": "no slip in 240 jolts",
+  "up_110_reads": [
+   5650,
+   5650
+  ],
+  "grip_ratio": 11.2,
+  "seated_baseline": [
+   505,
+   503
+  ]
+ },
+ "carry": {
+  "route": "straight up to z 125, straight out to the front at x 92.8, then across to the plate",
+  "start_local": "17:20:34",
+  "at_plate_local": "17:22:32",
+  "reads_at_carry_start_z125": [
+   8324,
+   8323
+  ],
+  "reads_over_plate_z125": [
+   11918,
+   11932
+  ]
+ },
+ "ladder": [
+  {
+   "z": 118.0,
+   "reads": [
+    11757,
+    11738
+   ],
+   "t_local": "17:23:38",
+   "photo": "19_z118_robot.jpg"
+  },
+  {
+   "z": 114.0,
+   "reads": [
+    11629,
+    11629
+   ],
+   "t_local": "17:23:49",
+   "photo": "20_z114_robot.jpg"
+  },
+  {
+   "z": 110.0,
+   "reads": [
+    11461,
+    11462
+   ],
+   "t_local": "17:24:00",
+   "photo": "21_z110_robot.jpg"
+  },
+  {
+   "z": 108.0,
+   "reads": [
+    11345,
+    11349
+   ],
+   "t_local": "17:24:10",
+   "photo": "22_z108_robot.jpg"
+  },
+  {
+   "z": 106.0,
+   "reads": [
+    11208,
+    11204
+   ],
+   "t_local": "17:24:19",
+   "photo": "23_z106_robot.jpg"
+  },
+  {
+   "z": 105.0,
+   "reads": [
+    11129,
+    11131
+   ],
+   "t_local": "17:25:01",
+   "photo": "24_z105_robot.jpg"
+  },
+  {
+   "z": 104.0,
+   "reads": [
+    11051,
+    11049
+   ],
+   "t_local": "17:25:11",
+   "photo": "25_z104_robot.jpg"
+  },
+  {
+   "z": 103.0,
+   "reads": [
+    10967,
+    10964
+   ],
+   "t_local": "17:25:20",
+   "photo": "26_z103_robot.jpg"
+  },
+  {
+   "z": 102.0,
+   "reads": [
+    10886,
+    10883
+   ],
+   "t_local": "17:25:30",
+   "photo": "27_z102_robot.jpg"
+  },
+  {
+   "z": 101.0,
+   "reads": [
+    10796,
+    10785
+   ],
+   "t_local": "17:25:39",
+   "photo": "28_z101_robot.jpg"
+  },
+  {
+   "z": 100.0,
+   "reads": [
+    10703,
+    10704
+   ],
+   "t_local": "17:25:49",
+   "photo": "29_z100_robot.jpg"
+  },
+  {
+   "z": 99.0,
+   "reads": [
+    10605,
+    10602
+   ],
+   "t_local": "17:26:16",
+   "photo": "30_z99_robot.jpg"
+  },
+  {
+   "z": 98.5,
+   "reads": [
+    10549,
+    10549
+   ],
+   "t_local": "17:26:26",
+   "photo": "31_z98.5_robot.jpg"
+  },
+  {
+   "z": 99.0,
+   "reads": [
+    10597,
+    10598
+   ],
+   "t_local": "17:27:25",
+   "photo": "32_z99_robot.jpg"
+  },
+  {
+   "z": 99.5,
+   "reads": [
+    10636,
+    10643
+   ],
+   "t_local": "17:28:03",
+   "photo": "33_z99.5_robot.jpg"
+  }
+ ],
+ "contact": {
+  "step_px_expected_per_mm": 1.31,
+  "steps_px": {
+   "101->100": 1.3,
+   "100->99": 1.32,
+   "99->98.5": 0.13
+  },
+  "z99_again_vs_z99_before_px": 0.0,
+  "nozzle_z_touch": 98.9,
+  "set_at": 99.5,
+  "clearance_mm_estimate": 0.6,
+  "foot_below_nozzle_mm_if_plate_top_14.22": 84.7,
+  "note": "valid for this pick-up (3 mm/s lift, press 89.5); a 10 mm/s lift lets the enclosure hang ~1 mm lower"
+ },
+ "return": {
+  "cmd_local": "17:28:54",
+  "moves_utc_completed": {
+   "lift_to_125": "23:29:03",
+   "across_to_x92.8": "23:29:13",
+   "back_to_y316.5": "23:30:44",
+   "down_to_110": "23:30:50",
+   "down_to_100": "23:30:53"
+  },
+  "fell": "between 17:29:13 and 17:30:44 MDT, during the straight run back towards the base; found on the deck against the base's front, in the A2 column",
+  "reads_on_deck": [
+   10546,
+   10545,
+   10544,
+   10544,
+   10336,
+   10211
+  ],
+  "after": "empty nozzle homed (17:33:14), maintenance run closed (17:33:21), rail lights back off"
+ }
+}

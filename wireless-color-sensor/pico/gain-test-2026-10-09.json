@@ -1,0 +1,699 @@
+{
+ "date": "2026-10-09",
+ "board": {
+  "usb_serial": "e6647c15673a2438",
+  "micropython": "v1.29.0 on 2026-08-24 (GNU 16.1.0 MinSizeRel)",
+  "build": "RPI_PICO_W",
+  "firmware_matches_official_uf2": "RPI_PICO_W-20260824-v1.29.0.uf2 (sha256 f918c0a0...6794), all 3538 blocks",
+  "full_flash_sha256": "c99441366371e881b5d8d9cab77e494af1b5cfcd0d8c7a2b102826c655ac135c"
+ },
+ "as7341_registers_before": {
+  "STATUS2_0xA3": 64,
+  "CFG1_0xAA": 8,
+  "AUXID_0x90": 0,
+  "ID_0x92": 36,
+  "ATIME_0x81": 100,
+  "ENABLE_0x80": 3,
+  "ASTEP_L_0xCA": 231,
+  "CFG0_0xA9": 64,
+  "ASTEP_H_0xCB": 3,
+  "CFG6_0xAF": 16,
+  "REVID_0x91": 0
+ },
+ "as7341_registers_after": {
+  "STATUS2_0xA3": 64,
+  "CFG1_0xAA": 8,
+  "AUXID_0x90": 0,
+  "ID_0x92": 36,
+  "ATIME_0x81": 100,
+  "ENABLE_0x80": 3,
+  "ASTEP_L_0xCA": 231,
+  "CFG0_0xA9": 64,
+  "ASTEP_H_0xCB": 3,
+  "CFG6_0xAF": 16,
+  "REVID_0x91": 0
+ },
+ "register_notes": "ID 0x92 = 0x24 (AS7341). CFG1 8 = AGAIN 128x; ATIME 100, ASTEP 0x03E7 = 999 -> (100+1)*(999+1)*2.78 us = 280.78 ms per half. 'before' was read straight after interrupting the old main.py; 'after' after the new one had taken 14 readings at other gains.",
+ "main_py": {
+  "before_sha256": "469a5a6d03f4b673c3645b7369ab2ec526c4f404592ce2dae932278640476196",
+  "before_bytes": 6432,
+  "after_sha256": "0876445a803439e469aa9795b105832de9ff738f70770872b34889572fef4a94",
+  "after_bytes": 8990
+ },
+ "runs": [
+  {
+   "name": "ram-1",
+   "where": "new main.py run from RAM with mpremote run (nothing written to flash), first version",
+   "note": "again_code came from the driver's bulk-read buffer and read 8 at every gain, while the counts scaled with gain. A direct ASTATUS read straight after the reading gave the right code (see astatus_diag); main.py was changed to that before ram-2.",
+   "readings": [
+    {
+     "label": "plain",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2384,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.569,
+     "t_response_utc": "2026-10-09T23:04:47.270Z"
+    },
+    {
+     "label": "plain",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2383,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.408,
+     "t_response_utc": "2026-10-09T23:04:48.678Z"
+    },
+    {
+     "label": "g128",
+     "settings": {
+      "gain": 128
+     },
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2385,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.427,
+     "t_response_utc": "2026-10-09T23:04:50.105Z"
+    },
+    {
+     "label": "g256",
+     "settings": {
+      "gain": 256
+     },
+     "channels": {
+      "ch410": 73,
+      "ch440": 206,
+      "ch470": 215,
+      "ch510": 737,
+      "ch550": 983,
+      "ch583": 916,
+      "ch620": 947,
+      "ch670": 621
+     },
+     "total": 4698,
+     "sensor_settings": {
+      "gain": 256,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:04:51.533Z"
+    },
+    {
+     "label": "g512",
+     "settings": {
+      "gain": 512
+     },
+     "channels": {
+      "ch410": 141,
+      "ch440": 400,
+      "ch470": 419,
+      "ch510": 1439,
+      "ch550": 1905,
+      "ch583": 1778,
+      "ch620": 1847,
+      "ch670": 1214
+     },
+     "total": 9143,
+     "sensor_settings": {
+      "gain": 512,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.408,
+     "t_response_utc": "2026-10-09T23:04:52.941Z"
+    },
+    {
+     "label": "g64",
+     "settings": {
+      "gain": 64
+     },
+     "channels": {
+      "ch410": 18,
+      "ch440": 52,
+      "ch470": 54,
+      "ch510": 185,
+      "ch550": 249,
+      "ch583": 232,
+      "ch620": 239,
+      "ch670": 156
+     },
+     "total": 1185,
+     "sensor_settings": {
+      "gain": 64,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.448,
+     "t_response_utc": "2026-10-09T23:04:54.389Z"
+    },
+    {
+     "label": "g32",
+     "settings": {
+      "gain": 32
+     },
+     "channels": {
+      "ch410": 9,
+      "ch440": 27,
+      "ch470": 27,
+      "ch510": 94,
+      "ch550": 126,
+      "ch583": 117,
+      "ch620": 121,
+      "ch670": 79
+     },
+     "total": 600,
+     "sensor_settings": {
+      "gain": 32,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:04:55.817Z"
+    },
+    {
+     "label": "g512b",
+     "settings": {
+      "gain": 512
+     },
+     "channels": {
+      "ch410": 141,
+      "ch440": 400,
+      "ch470": 419,
+      "ch510": 1440,
+      "ch550": 1903,
+      "ch583": 1778,
+      "ch620": 1845,
+      "ch670": 1214
+     },
+     "total": 9140,
+     "sensor_settings": {
+      "gain": 512,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:04:57.245Z"
+    },
+    {
+     "label": "plain-after",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2385,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:04:58.673Z"
+    },
+    {
+     "label": "bad-gain",
+     "settings": {
+      "gain": 300
+     },
+     "error": "the board refused the settings: gain must be one of 0.5, 1, 2, 4, ... 512; got 300"
+    },
+    {
+     "label": "bad-key",
+     "settings": {
+      "atime": 50
+     },
+     "error": "the board refused the settings: only gain can be set, not 'atime'"
+    },
+    {
+     "label": "plain-end",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 374,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2386,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.407,
+     "t_response_utc": "2026-10-09T23:05:01.006Z"
+    }
+   ]
+  },
+  {
+   "name": "astatus_diag",
+   "where": "diagnostic on the board",
+   "readings": [
+    {
+     "set_code": 10,
+     "driver_buffer_astatus": 8,
+     "direct_astatus": 10,
+     "fresh_burst_astatus": 10,
+     "same_counts": true
+    },
+    {
+     "set_code": 6,
+     "driver_buffer_astatus": 8,
+     "direct_astatus": 6,
+     "fresh_burst_astatus": 6,
+     "same_counts": true
+    }
+   ]
+  },
+  {
+   "name": "ram-2",
+   "where": "final main.py run from RAM",
+   "readings": [
+    {
+     "label": "plain",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 314
+     },
+     "total": 2384,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.569,
+     "t_response_utc": "2026-10-09T23:07:27.605Z"
+    },
+    {
+     "label": "plain",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2385,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:07:29.033Z"
+    },
+    {
+     "label": "g128",
+     "settings": {
+      "gain": 128
+     },
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 314
+     },
+     "total": 2383,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.448,
+     "t_response_utc": "2026-10-09T23:07:30.481Z"
+    },
+    {
+     "label": "g256",
+     "settings": {
+      "gain": 256
+     },
+     "channels": {
+      "ch410": 73,
+      "ch440": 206,
+      "ch470": 215,
+      "ch510": 737,
+      "ch550": 981,
+      "ch583": 915,
+      "ch620": 948,
+      "ch670": 621
+     },
+     "total": 4696,
+     "sensor_settings": {
+      "gain": 256,
+      "analog_saturated": false,
+      "again_code": 9
+     },
+     "latency_s": 1.408,
+     "t_response_utc": "2026-10-09T23:07:31.889Z"
+    },
+    {
+     "label": "g512",
+     "settings": {
+      "gain": 512
+     },
+     "channels": {
+      "ch410": 142,
+      "ch440": 400,
+      "ch470": 420,
+      "ch510": 1441,
+      "ch550": 1906,
+      "ch583": 1778,
+      "ch620": 1845,
+      "ch670": 1214
+     },
+     "total": 9146,
+     "sensor_settings": {
+      "gain": 512,
+      "analog_saturated": false,
+      "again_code": 10
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:07:33.317Z"
+    },
+    {
+     "label": "g64",
+     "settings": {
+      "gain": 64
+     },
+     "channels": {
+      "ch410": 18,
+      "ch440": 52,
+      "ch470": 54,
+      "ch510": 185,
+      "ch550": 249,
+      "ch583": 232,
+      "ch620": 239,
+      "ch670": 156
+     },
+     "total": 1185,
+     "sensor_settings": {
+      "gain": 64,
+      "analog_saturated": false,
+      "again_code": 7
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:07:34.745Z"
+    },
+    {
+     "label": "g32",
+     "settings": {
+      "gain": 32
+     },
+     "channels": {
+      "ch410": 9,
+      "ch440": 27,
+      "ch470": 28,
+      "ch510": 94,
+      "ch550": 126,
+      "ch583": 117,
+      "ch620": 121,
+      "ch670": 79
+     },
+     "total": 601,
+     "sensor_settings": {
+      "gain": 32,
+      "analog_saturated": false,
+      "again_code": 6
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:07:36.173Z"
+    },
+    {
+     "label": "g512b",
+     "settings": {
+      "gain": 512
+     },
+     "channels": {
+      "ch410": 142,
+      "ch440": 400,
+      "ch470": 420,
+      "ch510": 1441,
+      "ch550": 1910,
+      "ch583": 1780,
+      "ch620": 1848,
+      "ch670": 1216
+     },
+     "total": 9157,
+     "sensor_settings": {
+      "gain": 512,
+      "analog_saturated": false,
+      "again_code": 10
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:07:37.601Z"
+    },
+    {
+     "label": "plain-after",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 374,
+      "ch550": 499,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 314
+     },
+     "total": 2384,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.408,
+     "t_response_utc": "2026-10-09T23:07:39.009Z"
+    },
+    {
+     "label": "bad-gain",
+     "settings": {
+      "gain": 300
+     },
+     "error": "the board refused the settings: gain must be one of 0.5, 1, 2, 4, ... 512; got 300"
+    },
+    {
+     "label": "bad-key",
+     "settings": {
+      "atime": 50
+     },
+     "error": "the board refused the settings: only gain can be set, not 'atime'"
+    },
+    {
+     "label": "plain-end",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 465,
+      "ch620": 480,
+      "ch670": 314
+     },
+     "total": 2382,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.408,
+     "t_response_utc": "2026-10-09T23:07:41.342Z"
+    }
+   ]
+  },
+  {
+   "name": "flash",
+   "where": "final main.py installed to flash, board hard-reset, still on the Pi's USB with no reader on its serial port",
+   "readings": [
+    {
+     "label": "flash-plain",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 465,
+      "ch620": 481,
+      "ch670": 315
+     },
+     "total": 2383,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.59,
+     "t_response_utc": "2026-10-09T23:09:19.042Z"
+    },
+    {
+     "label": "flash-g512",
+     "settings": {
+      "gain": 512
+     },
+     "channels": {
+      "ch410": 141,
+      "ch440": 400,
+      "ch470": 419,
+      "ch510": 1442,
+      "ch550": 1907,
+      "ch583": 1778,
+      "ch620": 1846,
+      "ch670": 1214
+     },
+     "total": 9147,
+     "sensor_settings": {
+      "gain": 512,
+      "analog_saturated": false,
+      "again_code": 10
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:09:20.471Z"
+    },
+    {
+     "label": "flash-g256",
+     "settings": {
+      "gain": 256
+     },
+     "channels": {
+      "ch410": 73,
+      "ch440": 205,
+      "ch470": 216,
+      "ch510": 738,
+      "ch550": 980,
+      "ch583": 915,
+      "ch620": 947,
+      "ch670": 622
+     },
+     "total": 4696,
+     "sensor_settings": {
+      "gain": 256,
+      "analog_saturated": false,
+      "again_code": 9
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:09:21.899Z"
+    },
+    {
+     "label": "flash-g64",
+     "settings": {
+      "gain": 64
+     },
+     "channels": {
+      "ch410": 18,
+      "ch440": 52,
+      "ch470": 54,
+      "ch510": 185,
+      "ch550": 249,
+      "ch583": 232,
+      "ch620": 239,
+      "ch670": 156
+     },
+     "total": 1185,
+     "sensor_settings": {
+      "gain": 64,
+      "analog_saturated": false,
+      "again_code": 7
+     },
+     "latency_s": 1.428,
+     "t_response_utc": "2026-10-09T23:09:23.327Z"
+    },
+    {
+     "label": "flash-bad",
+     "settings": {
+      "gain": 1000
+     },
+     "error": "the board refused the settings: gain must be one of 0.5, 1, 2, 4, ... 512; got 1000"
+    },
+    {
+     "label": "flash-plain-end",
+     "settings": null,
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 500,
+      "ch583": 466,
+      "ch620": 480,
+      "ch670": 315
+     },
+     "total": 2385,
+     "sensor_settings": {
+      "gain": 128,
+      "analog_saturated": false,
+      "again_code": 8
+     },
+     "latency_s": 1.409,
+     "t_response_utc": "2026-10-09T23:09:25.199Z"
+    }
+   ]
+  }
+ ]
+}

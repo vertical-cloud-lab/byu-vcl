@@ -1,0 +1,565 @@
+# 2026-10-02 — What the manufacturers and the standards say would make the colour readings more accurate
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @timothy-commins:
+
+> please pull from manufacturer pages and acredited pages about what can get done to make the
+> sensor more accurate. double check your info to make sure it is correct. Also look at what we
+> have already done. Some things we have done have increased accuracy but maybe there is more we
+> can do with those specific factors
+
+No hardware moved. **How the sources were checked:** every quotation below was copied from a
+downloaded copy of the source and then found again, word for word, by
+[`check_quotes.py`](check_quotes.py) (details at the end). The ams documents, the NPL guides and
+two of the ISO previews were downloaded a second time to do that, and matched the first copies byte
+for byte. Standards that are sold rather than published (ISO, CIE, ASTM) were read only as their
+official free preview pages; the sources table says which, and nothing is claimed about the rest.
+
+## The number that says how far there is to go: black ÷ white
+
+A zero reference should read close to zero. Published dried Mars black reflects **0.02** of what
+titanium white does at 440–670 nm (the same reference spectra as every score since 09-30). Ours,
+board lamp subtracted ([`analyse_source_checks.py`](analyse_source_checks.py) →
+[`source-checks-2026-10-02.json`](source-checks-2026-10-02.json)):
+
+| run | black ÷ white, 440–670 nm | white well's reading that isn't the white paint |
+| --- | --- | --- |
+| 09-30 15:47, white and black next to the colours, on the plate | 0.68–0.89 | 62–89% |
+| **09-30 19:15, empty wells between the paints, on the plate** | **0.52–0.73** | **42–73%** |
+| 10-01, z 125 (foot ~37 mm up) | 0.81–0.91 | 78–91% |
+| 10-01, z 100 (foot ~12 mm up; best accuracy score of ten heights) | 0.66–0.83 | 59–83% |
+| 10-01, z 92 (foot ~4.5 mm up) | 0.62–0.80 | 54–80% |
+| 10-01, z 86.5 (pressed ~1 mm)¹ | 0.72–0.82 | 67–81% |
+
+¹ The white was read before the H10 landing moved the enclosure on the nozzle, the black after it
+([`landing_shift.py`](landing_shift.py)), so this row mixes two states.
+
+The last column assumes every well reads `s + k·R`: `s` is light that doesn't depend on the paint
+(through and across the plate, the deck, reflections inside the enclosure), `R` is the paint's
+reflectance. Then black ÷ white = (s + k·R_black) / (s + k·R_white). The range covers R_black from
+the published 0.02 up to 0.15, for a watered-down black that looks grey.
+
+**So between about half and nine-tenths of what the sensor sees over the white well is not the white
+paint.** The white/black correction cancels `s` only where it is the same in every well. It isn't:
+it changes with the neighbours (09-30), with the height (10-01), with how the enclosure sits on the
+nozzle (10-02), and with how much light a semi-opaque paint lets through from below. That is the
+floor of 0.24–0.36 left after the correction. Every recommendation below either makes `s` smaller
+or makes it the same in every well, and **black ÷ white measures the first in one run, with no
+colours needed.** For comparison, the colour-measurement standard ISO 18314-1 describes the zero
+reference as having "low to no reflectance (for example a black light trap)".
+
+## Things we did that helped, and what the sources say is left in each
+
+### 1. White and black reference wells — took out about half of the error
+
+- **What we did and got:** with empty wells between the paints, the two-point correction halved the
+  miss (0.29 → 0.14), the floor (0.55 → 0.27) and the squeeze (2.6× → 1.3×)
+  ([`results-white-black-correction-2026-10-01.md`](results-white-black-correction-2026-10-01.md)).
+- **The manufacturer calls this the simplest of its calibrations.** ams OSRAM's calibration note
+  (AN000633 §2.4) names it the "Black/White Scale", `(X − Xmin)/(Xmax − Xmin)`, and goes on:
+  > "The results in the diagram(s) are good for such a primitive correction method but can be better
+  > using matrices. The difference between scale and matric methods is the number of used targets. A
+  > higher number of reference targets can increase accuracy for calibration dramatically."
+- **And it wants the references in the same conditions as the samples** (AN000633 §2.5):
+  > "It is important to make all measurements with the Sensor and reference device under identical
+  > conditions closed to the application. Each deviation from calibration and application decreases
+  > the accuracy."
+- **More along the same line:**
+  1. **A black that is really black.** Ours reads 0.52–0.91 of the white where Mars black should read
+     0.02. Liquitex itself describes Mars Black as "A dense opaque single pigment, with a brown
+     undertone", so even undiluted it is a warm black, not a neutral one. Use it undiluted, or use a
+     light trap (see the standards section).
+  2. **A white that is really white and opaque.** Liquitex calls Titanium White "the strongest, most
+     opaque of all whites", but watered down it no longer hides what is under it. Use it undiluted,
+     or an opaque white standard of known reflectance.
+  3. **More references than two.** A matrix calibration needs at least as many targets as channels:
+     "Be attended to the number of linearly independent targets, which must be greater than or equal
+     to the number of filters used in the sensor to obtain a stable matrix" (AN000633, PDF p. 29), so
+     8 or more. Mixtures of our own three paints, each measured once on a reference instrument, are
+     what ams calls a "local correction" (§2.5); in its example, narrowing a 24-colour chart to the 12
+     colours nearest one target cut that colour's error from ΔE 1.7 to 1.4. The reference "should be
+     at least ten times more accurate or higher than the sensor requires" (§1.4). For scale, ams's own
+     per-device calibration on a 24-patch colour chart reached "Average DeltaE 0,98487" and "Max
+     DeltaE 2,30337" (AN000633, PDF p. 24).
+  4. **A per-well empty reading before the paint goes in.** For liquids ams subtracts the empty
+     container first: "The influences of the cuvette and the optical path should be eliminated using
+     differential measurement. To do this, first measure the empty cuvette in the setup." (miniLiquid
+     guide QG000121 §1). It is also what the AC's March 2026 recovery did, per well. It captures each
+     position's own light; it cannot capture light that a paint lets through from below.
+  5. **Read white and black in the same pick-up, at the same height, within ~10 min of the colours**
+     (already the rule since 10-01; drift is −0.06%/min).
+
+### 2. Empty wells between the paints — the black became the darkest well
+
+- **What we did and got:** on 09-30, putting black paint in A5 took 7–13% off the empty well next to
+  it, and white in A4 took 2–5% off the blue next to it
+  ([`results-white-black-2026-09-30.md`](results-white-black-2026-09-30.md)). With empty wells
+  between the paints the black became the darkest well in every channel, and the miss went from 0.20
+  (references next to the colours) to 0.14
+  ([`results-spaced-wells-2026-09-30.md`](results-spaced-wells-2026-09-30.md)).
+- **The plate makers say clear plates leak the most light between wells.** Revvity's microplate
+  guide (p. 9):
+  > "Cross-talk occurs when light from one well travels through the well walls into adjacent wells and
+  > is then detected, adding non-specific counts to that well."
+  >
+  > "Clear plates can have the highest cross talk, with black plates having the lowest. White plates
+  > give medium cross-talk, with the magnitude of the cross-talk being dependent on the concentration
+  > of titanium dioxide used as whitener."
+
+  Corning, whose plate definition the protocols load (`corning_96_wellplate_360ul_flat`), says clear
+  polystyrene plates "are used for cell culture and colorimetric (absorbance) assays", and of its
+  black- and white-walled clear-bottom plates: "Opaque walls prevent well-to-well crosstalk".
+- **More along the same line:** an opaque-walled plate. Solid black has the least cross-talk and
+  lets nothing up from below; black walls with a clear bottom keep the option of a transmission
+  reading later (the AC's 2026 run read through the plate with a light panel under it). Spacing
+  should then matter much less; that is untested.
+
+### 3. Blacking out the OT-2 — less stray light, steadier readings
+
+- **What we did and got:** 28–35% less light at fixed spots over the base, and no pair of readings
+  more than 0.24% apart on 10-01; no measurable colour gain on its own
+  ([`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md)).
+- **The manufacturer lists the light that's left as accuracy errors to remove.** AN000633 §1.3,
+  "Disturbances", includes "Ambient Light" and "Reflections inside the Sensor System", and says "a
+  verification and optimization process must correct or eliminate all these negative effects".
+- **More along the same line:**
+  1. **A defined backing under the plate.** Today the deck is the backing. Black paper (planned)
+     stops deck light coming up through semi-opaque paint; ISO 13655 accepts black or white and asks
+     for white when the sample is see-through (standards section below). Try both.
+  2. **Black inside the enclosure's lower opening.** The enclosure is printed in white, so its inner
+     walls bounce light towards the sensor: the "Reflections inside the Sensor System" item.
+     (Upstream once printed a black enclosure. The only result on record is with the board's own LED
+     switched on as well, which made similar colours harder to tell apart, so it says nothing about a
+     black interior under the rail lights;
+     [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152).)
+  3. **Black paper instead of the brown cardboard**, then re-read the white and black.
+
+### 4. Read height — z 100 scored best of ten heights; pressing onto the plate scored worst
+
+- **What we did and got:** miss 0.12 at z 100 against 0.44 (corrected) pressed onto the plate; one
+  hard landing moved the enclosure 0.7 mm on the nozzle and changed a reading by 12%
+  ([`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md)).
+- **The manufacturer explains why position and tilt change the colour.** The AS7341 package has a
+  pinhole aperture, not a diffuser, and each colour channel is a different photodiode in a 4×4 array
+  under that one pinhole. ams's optomechanical design note (AN001054 §5) says the angular response
+  "is limited to ±40° over all the channels", and:
+  > "Due to the structured detector (4 x 4 array), the field of view is individual for each
+  > photodiode; almost symmetrical for the centered photodiodes and more asymmetrical for those in
+  > distance to the center. To avoid a blurred imaging of a light source or its position onto the
+  > sensors array the diffuser is also used"
+
+  and, of a diffuser that is not perfectly Lambertian: "In the case of a tilted light incidence, the
+  response may shift to an asymmetrical shape. This causes different color measurements in relation
+  to the positioning light source and sensor and decreases the accuracy." Its Figure 10 shows a light
+  source that is "partly shadowed blue channel; detected as yellowish light". The datasheet lists a
+  half-cone angle of 40° "on the sensor".
+- **More along the same line:**
+  1. **A diffuser over the sensor** (next section). It is the manufacturer's fix for exactly this.
+  2. **A fixed gap, never a press.** Read lifted (z 95–100 scored best) so nothing pushes the
+     enclosure up the nozzle.
+  3. **Limit what the sensor can see to one well.** If nothing in the enclosure narrows it, a 40°
+     half-cone 12 mm up takes in a circle about 20 mm across, enough to include the neighbouring
+     wells 9 mm away (an estimate: how deep the sensor sits inside the enclosure isn't recorded).
+     That fits z 100 still squeezing colours 2.7×. A short matte-black tube under the sensor, as wide
+     as a well, would narrow it.
+
+### 5. Rail lights on — 5.6× the signal
+
+- **What we did and got:** the rail lights are now the only light (10-01, lights off = board lamp
+  only).
+- **The manufacturer lists the light source's drift as an error.** AN000633 §1.3: "Temperature and
+  ageing effects from Sensor and luminary (e.g. LEDs)"; §1.4: "The test setup should be stable and free
+  of any disturbances and drifts."
+- **More along the same line:** warm the rail lights up before the first reading. For its own liquid
+  kit ams says "Switch them on and wait 30 minutes to get the working temperature." (QG000121 §7.6).
+  Keep re-reading white and black within ~10 min of the colours, and record the rail light's spectrum
+  once: it has little light at 410 nm, which is why that channel is unreliable. ams's balancing guide
+  prefers broadband sources ("Width-banded light sources (e.g. D65, A, or high CRI LED)",
+  QG000139, PDF p. 9).
+
+### 6. Repeated readings — one landing repeats to 0.04–0.12%
+
+- **Enough.** ams: "The higher the Gain and TINT, the better the ratio between signal and noise"
+  (AN000633 §2.1), but the noise is already 100× smaller than the landing error. Average over
+  separate landings instead, if contact readings are kept.
+- **A free check that comes with every reading.** Each reading is two integrations (`F1F4CN`, then
+  `F5F8CN`), and both measure the Clear and NIR channels, as in ams's own two-pass example (SMUX note
+  AN000666). The firmware throws them away; comparing them between the two halves would flag light
+  that changed mid-reading.
+
+## New things the sources recommend that we haven't tried
+
+1. **A diffuser over the sensor — the manufacturer's first requirement, and probably missing.**
+   - Datasheet §11.3: "For optimal performance, an achromatic diffuser shall be placed above the
+     device aperture. The recommended solution is a bulk diffuser that meets the minimum recommended
+     scattering characteristic shown below."
+   - AN001054 §3: "It is also important to note that the technical parameters listed in the datasheet
+     [1] apply to a diffuser in front of the sensor. Different diffusers, and the use without a
+     diffuser, lead to different sensor parameters." Every channel's figures in the datasheet carry
+     the footnote "The following diffuser is used in final test on top of AS7341: ED1-C50". The kit's
+     user guide puts it plainly: "Customers should add a diffuser in front of the sensor in the case
+     of a nondiffusible application." (UG000400, PDF p. 5).
+   - **Which kind.** For light whose direction changes, as ours does with height: "a volume diffuser
+     with nearly Lambertian and achromatic characteristics is the best choice" (AN001054 §4), with
+     "a smooth angular response (no spikes in the angular response curves) exceeding ±45° (FHWM)"
+     (§3). The note's examples are "Lexan 8B28" opaque white film, 250 µm, and the Kimoto 100 PBU film
+     on ams's own evaluation kit (125 µm, 66% transmission, 89.5% haze, 35.5° half-angle, Fig. 9).
+   - **Costs:** a volume diffuser passes less light ("the transmission efficiency of cosine volume
+     diffusers is smaller than 50%"), which is a reason to raise the gain (item 2), and fitting one
+     "typically changes the calibration parameters and requires recalibration", so re-read white and
+     black after.
+   - The upstream build docs never mention one, and no photo on file shows the sensor side. **Check
+     by looking up into the enclosure's opening:** a white film over the sensor means there is one; a
+     small dark chip with a pinhole means there isn't.
+   - **Correction (10-02 evening): smaller than this item makes it sound.** ams's requirement is for
+     light from a source; its own kit for coloured surfaces has no diffuser, because reflected light
+     is "mostly diffused" (UG000400 §1, §4). The PR comment that posted this list also called a
+     missing diffuser "a likely part of the 12% landing error"; that error was light getting in after
+     the enclosure rode 0.7 mm up the nozzle ([`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md)
+     §2), which a diffuser does not block. What kind to fit, and where, is in
+     [the next section](#which-diffuser-and-whether-tape-will-do-added-10-02-evening).
+2. **More counts, at one fixed gain, once [`../pico/`](../pico/) is flashed.**
+   - ams: "The higher the counts (before saturation), the better the accuracy." (UG000400, PDF
+     p. 40); its liquid guide aims "to achieve stable values for the sensor result to be greater than
+     10,000 digits or more" (QG000121 §7.6). **Our brightest channel on 10-01 was 1,464–2,402 counts,
+     2–4% of full scale.** 512x instead of 256x roughly doubles that (typical ratio 7.75 ÷ 3.95) *(10-09: the
+     chip was at 128x, so 512x gives about 4×; measured 3.84× on the board)*; more needs a
+     longer integration, e.g. `astep` 2999 with `atime` 255 is about 2.1 s per half-reading. Expect
+     it to help the weak 410 nm channel, not the stray-light floor: gain scales both alike.
+   - ams normalises every reading to "Basic_Counts" = raw counts ÷ (gain × integration time) and says
+     "For all corrections and calibrations, always use Basic_Counts or other calculated values
+     without dependence on the setup and parameters, especially for dynamic gain and the like."
+   - **Pick one gain and keep it for references and samples alike.** The gains are not exact powers of
+     two (Fig. 17: 256x is 3.75–4.25× the 64x response, 512x 7.25–8.25×), and ams's own published
+     gain-correction tables disagree with each other in direction at 256x and 512x; its user guide
+     says "Customers should verify them and make an individual gain correction in the case of the
+     highest accuracy requirements." (UG000400, PDF p. 27). The chip's automatic gain control changes
+     the gain between readings ("The gain from this status read is required to calculate spectral
+     results if AGC is enabled"), so leave it off.
+   - Check the saturation bit (`ASAT_STATUS`) in every reply; the firmware change already reports it.
+3. **Auto-zero every cycle.** The datasheet's dark-count figures assume "auto zero done before every
+   integration cycle" (`AZ_CONFIG` = 1), which resets the offsets "to compensate for changes of the
+   device temperature". The upstream driver never writes that register, so it stays at its default,
+   255: "Only before first measurement cycle". A one-line firmware change; cost ~15 ms per cycle.
+4. **Paint that hides what is under it.** Liquitex rates all three colours **Semi-Opaque** (Primary
+   Yellow PY74, Cadmium Red Medium Hue PR170 + PR9, Primary Blue PB15:3) and only the white and the
+   black **Opaque**. Watered down, the colours let light through from below and the black doesn't,
+   which fits the floor. Less water, a defined backing (see the standards section), or both.
+5. **Calibrate against a reference instrument and more targets** (item 3 of §1). AN000633 §2.5:
+   "Device Calibration: This method is the most complex but has the highest accuracy."
+
+## Which diffuser, and whether tape will do (added 10-02 evening)
+
+Asked on PR #202 by @timothy-commins: "what kind of difusser is desired? i considered putting a
+semi-transparent piece of tape over the sensor to act as a diffuser". No hardware moved. The new
+quotations are in the same JSON and pass the same check.
+
+**What ams specifies**
+
+- **Spread:** "Select a diffuser with sufficient diffusing power such that the sensor has a smooth
+  angular response (no spikes in the angular response curves) exceeding ±45° (FHWM)" (AN001054 §3).
+  Datasheet Fig. 94 draws the minimum: read off the figure, about 60% of the straight-on response at
+  40°, 40% at 50° and nothing past 70°. A perfect cosine diffuser is still at 50% at 60°.
+- **Volume, not surface:** in a volume diffuser "The result is a nearly perfect cosine and
+  wavelength-independent/achromatic characteristic even in near field", whereas "surface diffusers do
+  not reach perfect cosine characteristics" and "This makes it necessary to prove the chosen diffuser
+  individually for the use case." (AN001054 §4).
+- **Fine grain, right on the chip:** "If the diffuser is placed very close to or directly on the
+  AS7341 package, its structure has to be very fine to get the same distribution to each photodiode
+  of the detector array." (§3). The window to cover is the package's Ø0.90 mm pinhole (Figs. 4–5).
+  ams characterised the chip with a "diffuser mounted on top of package surface" (DS000504 Fig. 19).
+- **ams's examples** (AN001054 §4 and Fig. 9; UG000400 Fig. 11; final test: ED1-C50):
+
+  | film | kind | thickness | transmission | haze | half-angle |
+  | --- | --- | --- | --- | --- | --- |
+  | Kimoto 100 PBU (on the evaluation kit) | surface, both sides | 125 µm | 66% | 89.5% | 35.5° |
+  | Kimoto OptSaver L-57 (alternative kit fit) | — | 100 µm | 60% | 93.1% | 57° |
+  | Lexan 8B28, opaque white | volume, "nearly Lambertian" | 250 µm | — | — | — |
+
+- **Handling:** "The surface of the diffusers is very sensitive, and any touch, mechanical stress, or
+  dirt can dramatically change the optical behavior." Fitting one "typically changes the calibration
+  parameters and requires recalibration", and a cosine volume diffuser passes under 50% of the light.
+
+**Why it is a modest fix here, not the first one**
+
+- **ams's own kit for coloured surfaces has no diffuser.** "The extended kit (Reflection mode) is for
+  contact measurement of colored surfaces (see Figure 2) and consists of the sensor hardware but with a
+  pre-assembled LED and a special adapter in front of the sensor with 0° (Sensor)/45° (LEDs) geometry",
+  listed as "Evaluation Kit with a pre-assembled LED and 0°/45° front adapter (without a diffuser".
+  The diffuser is for non-diffuse light, "as light detection from a light source, a translucent
+  diffuser in front of the AS7341 EVK is required", with the footnote "e.g. ALS (Ambient Light
+  Sensing) in contrast to reflections which are mostly diffused." (UG000400 §1, §4). Our light is
+  mostly scattered by paint, so the datasheet's "For optimal performance" applies less than §1 above
+  suggested.
+- **What it still does for us.** ams's reflection kit presses onto a uniform surface that fills its
+  view; ours looks at a 6.9 mm well with brighter plate around it. "The VIS channels are arranged in a
+  4 x 4 matrix with two photodiodes per channel", and in Fig. 4 each channel's pair sits diagonally
+  opposite across the centre. That cancels a left–right or front–back gradient, but not centre
+  versus edge: the centre four photodiodes look nearly straight down and the corner ones furthest out
+  (§5: "almost symmetrical for the centered photodiodes and more asymmetrical for those in distance to
+  the center"). So over a dark well the outer channels should see more plate than the inner ones.
+  That is our inference from Fig. 4 and §5; which wavelengths sit where on the chip isn't labelled
+  in the figure. A diffuser gives every photodiode the same light.
+- **What it can't do:** block light. The black ÷ white floor at the top of this file is light that
+  isn't the paint, and a diffuser passes it too.
+- **What it can make worse:** the bare chip takes in a 40° half-cone. The kit with a diffuser has
+  "a diffuser in front of the sensor with a maximum field of view", and spectrometer cosine correctors
+  "collect signal from 180° field of view" (Ocean Optics). For a cosine response under even light, the
+  share arriving within 40° of straight on is sin² 40° = 41% (our arithmetic). So the white plastic the
+  sensor looks past starts to count: blacken it at the same time.
+
+**The enclosure's sensor end, from the upstream CAD**
+
+From [`Sensor package main enclosure.step`](https://github.com/AccelerationConsortium/wireless-color-sensor/blob/07efedd7302bd1def93ef81ceadba38e1ae96853/CAD-File/STEP/Sensor%20package%20main%20enclosure.step),
+assuming ours was printed from it (not checked): the sensor end is a cone with 30° sides, Ø11 mm at
+the body narrowing to a Ø5.2 mm tip over 5 mm. Through it runs a Ø4.5 mm bore, 3.4 mm long, which then
+widens upwards at 30° to Ø8.7 mm 3.6 mm higher, where the sensor board sits face down on its stand
+("The yellow square on AS7341 should be visible from the hole", upstream build guide, step 7).
+
+- The tip fits inside a Ø6.86 mm well until the cone meets the rim about 1.4 mm in. That matches the
+  upstream protocol's `top(z=-1.3)`: what our runs call "touching the plate" is the cone seating in
+  the well's rim.
+- The chip looks out through a white funnel and bore at least ~7 mm long. That is the part to blacken.
+
+**Materials**
+
+| material | verdict | why |
+| --- | --- | --- |
+| clear tape (packing, glossy office) | no | not a diffuser |
+| frosted office tape (e.g. Scotch Magic) | probably too weak; screen it | a surface diffuser; no published scattering angle found |
+| masking or painter's tape | no | tinted, coarse paper, little light through |
+| **white PTFE thread-seal ("plumber's") tape, 2–4 layers** | **yes, as a first try** | "Cosine correctors are optical diffusers (opaline glass, PTFE or Spectralon) that couple to fibers and spectrometers to collect signal from 180° field of view." (Ocean Optics); "PTFE foils or thin white glass sheets" (Klüppel *et al.* 2026). Thread-seal tape isn't sold as an optical material, so its thickness varies: lay it flat, unstretched |
+| white diffuser film (Lexan 8B28, Kimoto) | the proper part | ams's own examples; 8B28 is sold in sheets by plastic-film suppliers (e.g. Goodfellow) |
+| white paper, printed white PLA | avoid | fibres or layer lines coarser than the 0.9 mm window (general knowledge, not checked against a source here) |
+
+**A screen anyone can do:** hold the material about 1 cm above printed text. Light leaving a ±45°
+diffuser 10 mm up comes from a patch ~20 mm across, so the letters vanish; a few-degree diffuser
+blurs them by 1–2 mm and they stay readable. That is our geometry, not an ams test. Add layers until
+the letters are gone.
+
+**Fitting**
+
+- On the chip, inside the enclosure, covering the Ø0.9 mm window completely. Not across the outside
+  of the tip: there it would touch the well rim and the paint, and read 12 mm up it would take in
+  several wells.
+- Keep it off the board's LEDs, or it can carry their light to the window.
+- No adhesive or fingerprints over the window; hold it by its edges.
+- Blacken the funnel and bore: matte black paint, or a black marker if that's all there is.
+
+**Testing it**
+
+- Read the same wells at fixed heights (z 92, 100, 110) just before and just after fitting, the same
+  day, re-reading white and black on both trips. Compare black ÷ white per channel, the miss against
+  the published spectra, and how each well's colour changes with height. Expect the counts to fall to
+  half or less.
+- Blackening the funnel in the same visit measures both changes together; one change per read
+  separates them.
+
+## What the standards and metrology institutes add
+
+Standards bodies sell their standards, so for ISO only the official free preview pages were read
+(they include every clause quoted). The NPL guides, the NIST-hosted book and the NIH guide are free in
+full.
+
+- **The zero.** NPL's *Surface Colour Measurement* guide (GPG 96 §3.1.1): "Detector noise and stray
+  light within the instrument optics will produce a signal for zero reflectance … This value must be
+  accurately determined and then subtracted from all subsequent readings." The zero is a light trap,
+  not a paint: "As a good rule of thumb, a wedge whose end cannot be seen under standard laboratory
+  illumination is usually a good zero reflectance specimen." ISO 18314-1 §5.4 says the same: "A black
+  calibration standard is a standard which has low to no reflectance (for example a black light
+  trap)." Our Mars black well reads 0.52–0.91 of our white. If the black can't be near zero, ISO 2469
+  §5.4 gives the fallback: "the instrument shall be adjusted to the nominal value of the black
+  cavity", i.e. use its known value (which is what our calibration does with the published Mars black
+  spectrum).
+- **The white.** The ratio to the white is then multiplied by the white's own reflectance factor (NIST
+  book §10.3.3), and that white should be "traceable to a national metrology institute" (NPL §3.1.2),
+  "made of a durable material, like ceramic, glass, or enamel" (ISO 18314-1 §5.3). NPL: "it is good
+  practice to measure matt samples against a matt white standard and glossy samples against a glossy
+  white standard." Watered-down paint in a clear well has no known reflectance, so our calibrated
+  values are relative.
+- **A control.** ISO 18314-1 §5.5: "After certain time intervals it is recommended to verify the
+  accuracy of the measurements through the use of coloured control standards", and "The white
+  calibration standard may not be used for control measurements." We have never had a control: a few
+  stable coloured samples read every run would show whether a change actually helped.
+- **What lights the well must be what the sensor sees.** ISO 5-4 §6.2: "The specimen characteristics
+  over the illuminator region should be the same as those over the receiver region." The rail lights
+  light the whole plate, neighbours included, which is the 09-30 neighbour effect. The NIH/NCATS
+  *Assay Guidance Manual* (2020) describes the symptom: "Suboptimal choice of microplate color will
+  often manifest as [1] lower signal-to-background ratios compared to the optimal microplate color,
+  and/or [2] well-to-well crosstalk when highly active and inactive samples are adjacent to one
+  another." It notes "Clear microplates are typically used for absorbance (colorimetric)-based
+  readouts", while white and black plates "can reduce well-to-well crosstalk".
+- **Stray light inside the instrument.** ISO 5-4 §6.8: "Scattered flux shall be reduced to a
+  negligible amount by the use of clean optical components and appropriate baffles, and by suitable
+  blackening of surfaces exposed to the specimen, in accordance with good photometric practice." Our
+  enclosure's inside is white.
+- **See-through samples.** ISO 2469 §3.6 defines an opaque pad as "thick enough to be opaque, i.e.
+  such that increasing the thickness of the pad by doubling the number of sheets results in no change
+  in the measured reflectance factor", and adds "The reflectance factor of a single non-opaque sheet is
+  dependent on the background and is not a material property." ISO 18314-1 §3: "In the case of paint
+  films that do not completely hide the substrate, the colour depends on the colour of the substrate
+  and the film thickness". ISO 13655 measures this as opacity, the reading over black backing divided
+  by the reading over white (§3.7), and requires a defined backing: "The specimen shall be backed by
+  either a black or a white material that conforms to A.2 or A.3", and "Where samples being measured by
+  reflection are transparent, the backing used shall be white" (§4.2.3). **So: one run over black paper
+  and one over white paper, same wells.** If a paint reads differently, it isn't opaque, and its
+  reading depends on what is under the plate. Then either thicken it until it stops changing, or keep
+  one defined backing for every run.
+- **Geometry.** ISO 13655 §4.2.4: "The measurement geometry shall be (45°:0°) or (0°:45°), annular
+  or circumferential", and "The instrument base and the sample surface shall lie in the same plane."
+  The NIST-hosted book: 45:0 and 0:45 "illumination/viewing geometries are best for measuring color
+  since they produce results that correlate well with human perception". Ours is light from overhead
+  and from the deck, with the sensor looking straight down at a liquid surface below the well rim. A
+  ring of light at 45° inside the enclosure, with the rail lights off, would be the standard geometry:
+  a bigger change than the others.
+- **Repeatability is not reproducibility.** NPL §2.5: repeatability is "measuring a sample, leaving it
+  in place and making another measurement"; reproducibility is "removing the sample, replacing the
+  sample and making another measurement". Our 0.04–0.12% is repeatability; the 12% re-landing is
+  reproducibility. NPL GPG 95: "Repeated measurements will reduce the effect of random components in
+  the measurement process, but not the systematic components." Track both, every run.
+- **Warm-up.** NPL §2.3: warm up for "never less than the time suggested by instrument's
+  manufacturer, or thirty minutes", the same 30 minutes ams gives.
+- **The liquid surface.** About 4% of light reflects off any surface regardless of colour (ISO 18314-1
+  §7), and in top-read assays "centrifugation will increase variability by creating uneven menisci
+  across the microplate" (NIH guide). Keep every well's volume the same and free of bubbles.
+- **What an 8-channel sensor can claim.** ISO 13655's introduction: "The use of instruments with wider
+  sampling intervals and bandpass has been deprecated with the exception of the use of such
+  non-standard instruments to monitor the state of previously characterized materials or objects."
+  So the realistic target for the AS7341 is consistent readings of our own characterised paints,
+  which is what colour matching needs, rather than absolute colour. NIST's book recommends that
+  filter colorimeters read "a set of stable color standards which span the gamut of color space … as a
+  matter of routine".
+
+## What peer-reviewed AS7341 studies add
+
+About 60 candidate papers were screened (OpenAlex, Crossref, Europe PMC, arXiv) and 30 read in full.
+**None measured paint, or anything in a 96-well plate, and none reports a colour error (ΔE) against a
+reference spectrophotometer on a colour chart.** So nobody has published how accurate a setup like
+ours can be. What they did measure:
+
+| what | finding | source |
+| --- | --- | --- |
+| fix the gain | count scatter was more than 10× larger when the gain was changed than when the integration time was (their Tables 3–4): "the analogue gain should be fixed and exposure regulated exclusively through the integration time." They kept "Only measurements yielding raw counts between 10 % and 80 % of the full-scale (FS) range" | Besozzi *et al.* 2026, *ACTA IMEKO* 15(2), [10.21014/actaimeko.v15i2.2267](https://doi.org/10.21014/actaimeko.v15i2.2267) |
+| angle of incidence | "an increased angle of incidence of light leads to a blueshift of the filter peak wavelength", with "a reduced peak response and an increased full-width at half-maximum (FWHM)"; as diffuser materials that don't age under UV, "PTFE foils or thin white glass sheets" | Klüppel *et al.* 2026, *IEEE Sensors J.*, [10.1109/jsen.2026.3711363](https://doi.org/10.1109/jsen.2026.3711363) |
+| each channel sees differently | "Due to the matrix arrangement, the channel's response to light from different directions is different." | Klüppel *et al.* 2026, *Measurement* 270:120734, [10.1016/j.measurement.2026.120734](https://doi.org/10.1016/j.measurement.2026.120734) |
+| use the Clear and NIR channels | "some channels in the blue and green regions exhibit spectral leakage in the NIR range"; adding Clear and NIR to the calibration raised R² from 79.9% to 94.8% | same |
+| calibrate each unit | "the wavelength of peak sensitivity for each channel may deviate by 10 nm, and the gain may vary by up to 66% between sensors of the same model"; use "noticeably greater" numbers of calibration conditions than channels | Rodriguez *et al.* 2025, *Sensors* 25:7269, [10.3390/s25237269](https://doi.org/10.3390/s25237269) |
+| colour-chart calibration | the only AS7341 reflectance calibration on a colour chart ("24 patches with known reflectance curves", a small neural network) cut the error on 9 new coloured papers "from 0.1137 to 0.03901" (reflectance) | Botero-Valencia *et al.* 2024, *Instruments* 8:24, [10.3390/instruments8010024](https://doi.org/10.3390/instruments8010024) |
+| references close in time | AS7341 drift "below 1% over all testing time" (60 min), "or below 0.5% considering a time period below 5 min" | Crivellaro *et al.* 2024, *Sensors* 24:6154, [10.3390/s24186154](https://doi.org/10.3390/s24186154) |
+| average repeats | "Averaging the five replicates before comparison reduces the RMSE", 0.0413 → 0.0355 | Zainuddin *et al.* 2026, *Engineering Journal* 30(8), [10.4186/ej.2026.30.8.81](https://doi.org/10.4186/ej.2026.30.8.81) |
+| liquids | 3D-printed reflectance photometers with an AS7341, dyes in solution: "sensitivity comparable to a conventional spectrophotometer" (abstract only; the paper is closed) | Machado *et al.* 2024, *Anal. Methods* 16:8427, [10.1039/d4ay01831a](https://doi.org/10.1039/d4ay01831a) |
+| geometry | for matt surfaces, low-cost spectrophotometers use "45°/0° or 0°/45° geometry … due to excluded gloss" | Samec *et al.* 2024, *Sensors* 24:8208, [10.3390/s24248208](https://doi.org/10.3390/s24248208) |
+
+The Acceleration Consortium's own protocol paper gives no accuracy figures, only the caveat
+"Environmental noise (e.g., light conditions) and hardware variation (LED, sensor, sensor positioning,
+etc.) may affect the results obtained." (Baird & Sparks 2023, *STAR Protocols*,
+[10.1016/j.xpro.2023.102329](https://doi.org/10.1016/j.xpro.2023.102329)).
+
+**What this adds to the list above:** fix the gain and raise the counts with the integration time
+(item 2 of the new things); feed the Clear and NIR channels, which the firmware currently discards,
+into any calibration; and treat the datasheet's channel centres as ±10 nm until our own unit is
+calibrated. These papers were each downloaded once; their quotations were found again in that copy.
+
+## Our own check: the channel tolerance is not what limits the score
+
+The datasheet guarantees each visible channel's centre wavelength only to **typ ± 10 nm** (Figs. 8–15:
+e.g. F1 405/415/425 nm), "measured on a production ongoing sample bases on glass using diffused
+light". Every score since 09-30 used the typical centres. Re-scoring with the passbands moved within
+those limits ([`analyse_source_checks.py`](analyse_source_checks.py)):
+
+| run | miss at typical centres | all channels −10 … +10 nm | each channel independently ±10 nm (5th–95th pct) |
+| --- | --- | --- | --- |
+| 09-30 19:15, spaced, on the plate | 0.142 | 0.155 … 0.127 | 0.135–0.149 |
+| 10-01, z 100 | 0.118 | 0.118 … 0.126 | 0.114–0.125 |
+| 10-01, z 125 | 0.154 | 0.162 … 0.147 | 0.148–0.159 |
+
+A single published value moves by up to 0.10 (yellow at 510 nm, red at 620 nm, on the steep edges),
+but the run's miss moves by at most ±0.015. **The error we see is the setup's, not the datasheet
+tolerance's.** Measuring our unit's channel centres would matter only once the rest is fixed.
+
+## Earlier claims on PR #202, re-checked against the sources
+
+| claim (where) | verdict |
+| --- | --- |
+| gain ratios: 256x is 3.75–4.25× and 512x 7.25–8.25× the 64x response (10-01) | **right** (DS000504 Fig. 17; typical 3.95 and 7.75) |
+| the chip's power-on gain is code 9 = 256x, and `set_again(128)` is ignored (10-01) | **right** (CFG1 0xAA default 9; upstream `set_again` only writes codes 0–10) — *but 10-09 found our board doesn't run that upstream code: its older wrapper sets code 8, and the chip read 128x* |
+| every channel's figures are measured with an ED1-C50 diffuser on top (10-01) | **right** (footnote to Figs. 8–15) |
+| "nano-optic deposited interference" filters behind a built-in aperture; 40° half-cone (10-01) | **right** (§1 and p. 15) |
+| dark counts 0–3 (ADC 0–4) and 0–5 (ADC 5) at 512x and 98 ms, auto-zero before every integration (10-01) | **right about the datasheet, but it doesn't describe our board**: the spec assumes `AZ_CONFIG` = 1, and our firmware leaves it at 255 |
+| the chip is "rated −30 to 85 °C" (10-01) | **imprecise**: 85 °C is the absolute maximum; the operating range is −30 to 70 °C, with "functionality will vary with temperature". The datasheet gives no temperature coefficient |
+| the AS7341's own LED was "rejected for saturating the enclosure walls" (09-12, `accuracy-provenance.md`) | **overstated**: upstream it raised most channels to 10k–20k counts (410 nm to ~2k; of 65,535, so not saturated) "possibly due to reflection from the enclosure walls", and the colours stopped being distinguishable ([ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87)) |
+| the green power LED is a fixed offset that the white/black correction cancels (10-02) | **right**; and Adafruit's newer boards have "a cuttable jumper to disable the onboard ON power LED" if it is ever wanted gone |
+| a diffuser is "the manufacturer's first requirement" (10-02, item 1 above) | **overstated**: it is ams's requirement for light from a source; ams's own colour-surface kit ships without one (UG000400 §1, §4). Still worth trying here, for the reasons in [Which diffuser](#which-diffuser-and-whether-tape-will-do-added-10-02-evening) |
+| a missing diffuser is "a likely part of the 12% landing error" (10-02 PR comment) | **wrong**: that error was light getting in after the enclosure rode 0.7 mm up the nozzle (10-02 morning, [`landing_shift.py`](landing_shift.py)); a diffuser doesn't block light |
+
+## How the quotes were checked
+
+1. Each source was saved and converted to text twice, with `pdftotext -layout` and with plain
+   `pdftotext` (web pages: their saved text).
+2. The ams documents, the two NPL guides and the ISO 5-4 and ISO 2469 previews were downloaded a
+   second time, separately, and compared byte for byte with the first copies; all were identical.
+   The papers were downloaded once (every DOI checked against Crossref).
+3. Every quotation in this file was then searched for in those texts, with only whitespace,
+   line-break hyphens, quote marks and ligatures normalised, by [`check_quotes.py`](check_quotes.py)
+   with the list in [`accuracy-sources-quotes-2026-10-02.json`](accuracy-sources-quotes-2026-10-02.json)
+   (149 quotations, each with its source, section and download link). **All 133 of the first
+   session were found; the 16 added for the diffuser section on 10-02 evening were checked the same
+   way, against one fresh download each, and were all found too.** Two
+   (Revvity's "medium cross-talk" and Klüppel's "full-width") match only with the line-break hyphen
+   ignored, which is how those PDFs break the word.
+4. Numbers read from tables (gain ratios, centre wavelengths, dark counts) were also checked against
+   the table's column positions, because `pdftotext` can shift a value into the wrong column.
+
+The sources are not copied into the repository. To re-run the check, download them from the links
+in the JSON into one folder, under the file names it gives, and run
+`python3 check_quotes.py accuracy-sources-quotes-2026-10-02.json --dir <folder>`.
+
+## Sources
+
+**Manufacturer: ams OSRAM (the AS7341)**, all from ams-osram.com:
+
+| short name | document | used for |
+| --- | --- | --- |
+| DS000504 | [AS7341 datasheet](https://look.ams-osram.com/m/24266a3e584de4db/original/AS7341-DS000504.pdf), v3-00, 2020-06-25 (current) | gain ratios, centre-wavelength limits, dark counts, half-cone angle, auto-zero, AGC, saturation, §11.3 diffuser |
+| AN001054 | [AS7341 Details for Optomechanical Design](https://look.ams-osram.com/m/436a32f63ba06bad/original/AS7341-Details-for-Optomechanical-Design.pdf), v1-00, 2022-09-21 | diffuser requirement, angle of incidence, per-photodiode field of view |
+| AN000633 | [Spectral Sensor Calibration Methods](https://look.ams-osram.com/m/269928fe0dba7511/original/Spectral-Sensor-Calibration-Methods.pdf), v2-00, 2021-05-20 | disturbances, Basic_Counts, black/white scale, matrix calibration, reference instrument |
+| UG000400 | [AS7341 Evaluation Kit user guide](https://look.ams-osram.com/m/2a3e700eb3b0a0cf/original/AS7341_UG000400_6-00.pdf), v6-00, 2022-09-08 | counts vs accuracy, diffuser, gain correction |
+| QG000121 | [miniLiquid – Measurement in Liquids](https://look.ams-osram.com/m/dfeb820072a6e472/original/SpectralSensing_QG000121_2-00.pdf), v2-00, 2021-01-11 | empty-container subtraction, warm-up, count level |
+| AN000660 | [AS7341 Demo for Fast Measurement Using Unicom Board](https://look.ams-osram.com/m/7dd996b7759236a3/original/AS7341-Demo-for-Fast-Measurement-Using-Unicom-Board.pdf), v1-00, 2019-12-09 | one of ams's gain-correction tables |
+| QG000139, AN000666, ChipLib docs | inside the evaluation-software downloads on the [AS7341 product page](https://ams-osram.com/products/sensor-solutions/ambient-light-color-spectral-proximity-sensors/ams-as7341-11-channel-spectral-color-sensor) (ALS bundle v1-26-3) | broadband light for balancing; the two-pass SMUX example; the other gain-correction table |
+
+**Other manufacturers**
+
+| maker | page | used for |
+| --- | --- | --- |
+| Adafruit (the breakout board) | [product 4698](https://www.adafruit.com/product/4698) | the power-LED jumper |
+| Ocean Optics (spectrometer accessories) | [Cosine Correctors](https://www.oceanoptics.com/accessories/sampling-accessories/cosine-correctors/) product page, saved 2026-10-02 | which materials make a cosine diffuser; 180° field of view |
+| Revvity (microplates) | [Guide to selecting a microplate](https://resources.revvity.com/pdfs/gde-selecting-a-mircoplate.pdf), p. 9 | well-to-well cross-talk by plate colour |
+| Corning (microplates) | [Microplate Selection Guide](https://www.fishersci.com/content/dam/fssite/north-america/us/documents/brands/c/corning/corning-microplate-selection-guide.pdf), CLS-MP-014 REV7, ©2011, pp. 6, 10 (via Fisher Scientific; corning.com refused the download) | clear plates for absorbance; opaque walls prevent cross-talk; solid black/white plates of the same standard 360 µL flat-well format (e.g. 3915 black, 3912 white) |
+| Liquitex (the paints) | product pages for BASICS [Primary Yellow](https://www.liquitex.com/products/basics-acrylic-color-primary-yellow), [Cadmium Red Medium Hue](https://www.liquitex.com/products/basics-acrylic-color-cadmium-red-medium-hue), [Primary Blue](https://www.liquitex.com/products/basics-acrylic-color-primary-blue), [Titanium White](https://www.liquitex.com/products/basics-acrylic-color-titanium-white), [Mars Black](https://www.liquitex.com/products/basics-acrylic-color-mars-black) | opacity ratings, pigments |
+
+**Standards and metrology**
+
+| source | read | used for |
+| --- | --- | --- |
+| Clarke PJ, *Surface Colour Measurement*, NPL Measurement Good Practice Guide No. 96, National Physical Laboratory (UK), 2006 | [full text](https://eprintspublications.npl.co.uk/3656/1/mgpg96.pdf) | the zero (light trap), traceable white, warm-up, stray-light check, repeatability vs reproducibility |
+| Gardner JL, *Uncertainties in Surface Colour Measurements*, NPL GPG No. 95, 2006 | [full text](https://eprintspublications.npl.co.uk/3657/1/mgpg95.pdf) | averaging removes random error, not systematic |
+| Germer TA, Zwinkels JC, Tsai BK (eds.), *Spectrophotometry: Accurate Measurement of Optical Properties of Materials*, Academic Press, 2014 | [full text via NIST](https://tsapps.nist.gov/publication/get_pdf.cfm?pub_id=915098); §10.3 only | light-trap zero, multiplying by the white's reflectance, 45:0 geometry, routine colour standards |
+| ISO 13655:2017, *Graphic technology — Spectral measurement and colorimetric computation for graphic arts images* | [free preview](https://cdn.standards.iteh.ai/samples/65430/dac5ec12152e4ed788d2ba4b4c234ba0/ISO-13655-2017.pdf), introduction and §1–4.2.5 | defined backing, opacity, 45°:0° geometry, sample plane, wide-band instruments |
+| ISO 18314-1:2015, *Analytical colorimetry — Part 1: Practical colour measurement* | [free preview](https://cdn.standards.iteh.ai/samples/62103/f16f626869b0488ba27387bd3f1030f4/ISO-18314-1-2015.pdf) | white and black standards, control standards, paint over a substrate, first-surface reflection |
+| ISO 5-4:2009, *Density measurements — Geometric conditions for reflection density* | [free preview](https://cdn.standards.iteh.ai/samples/52916/3f6c3dabfed344cda644b3062133c320/ISO-5-4-2009.pdf), §1–6.8 | baffles and blackening; same specimen under the light as in view |
+| ISO 2469:2014, *Paper, board and pulps — Measurement of diffuse radiance factor* | [free preview](https://cdn.standards.iteh.ai/samples/51631/99309489d17e42a68151a1392d5e6131/ISO-2469-2014.pdf), §1–6.2 | opacity by the doubling test; a black of known value |
+| Auld DS *et al.*, "Microplate Selection and Recommended Practices in High-throughput Screening and Quantitative Biology", *Assay Guidance Manual*, NIH/NCATS, 2020 | [full text](https://www.ncbi.nlm.nih.gov/books/NBK558077/) | plate colour and cross-talk; menisci in top-read assays |
+
+Not read in full, so nothing is claimed from them: CIE 015:2018 *Colorimetry* (table of contents only)
+and the ASTM practices E1164, E2214, E1349 and E1331 (public scope pages only).
+
+**Upstream and this repository**
+
+- [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87) and
+  [#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152): the board-LED and
+  black-enclosure tests.
+- [`wireless-color-sensor@07efedd`](https://github.com/AccelerationConsortium/wireless-color-sensor/tree/07efedd7302bd1def93ef81ceadba38e1ae96853/CAD-File/STEP):
+  `Sensor package main enclosure.step` (the cone, bore and funnel in the diffuser section, read from
+  its circles and cones) and the build guide `_build/html/_sources/index.md` (step 7, the sensor stand).
+- [`wireless-color-sensor@07efedd`](https://github.com/AccelerationConsortium/wireless-color-sensor/tree/07efedd7302bd1def93ef81ceadba38e1ae96853/sensor_file):
+  `lib/as7341.py` (never writes `AZ_CONFIG`; `set_again` takes codes 0–10).
