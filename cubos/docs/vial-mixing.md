@@ -2,7 +2,7 @@
 
 @benwhitney5463 asked on [#169](https://github.com/vertical-cloud-lab/byu-vcl/issues/169)
 (2026-10-09) after `pipette_test_mix` ran 12/12
-([`pipette_test_mix_20261009b`](https://github.com/vertical-cloud-lab/byu-vcl/blob/04740d3/cubos/results/pipette_test_mix_20261009b/README.md)).
+([`pipette_test_mix_20261009b`](../results/pipette_test_mix_20261009b/README.md)).
 Vial_2 held water-based acrylic paint, and the mix "really only mixed in a very
 small area". How much harder can the pipette mix, and would magnetic stirring be
 better?

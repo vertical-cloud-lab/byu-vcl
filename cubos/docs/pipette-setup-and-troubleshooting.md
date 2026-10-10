@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-10-07**. This is the map; the detail is in
+Status as of **2026-10-09**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,12 +13,26 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ✅ **2026-10-09: `mix` runs 12/12 on the TMC2209.**
+> `pipette_test_mix` is `pipette_test` with steps 4 and 8 replaced by `mix` (20 µL, 3 cycles,
+> height −35). It ran 12/12 in 218 s with a post-run `HOME` of −0.03 mm. On this firmware
+> every `DISPENSE` goes to the blowout plane, so each mix stroke ends in a full blowout, and
+> from the second stroke on each `ASPIRATE` draws ~23 µL. Ben's acrylic paint in vial_2 mixed
+> only in a small area. A stroke is about 0.2% of the ~10 mL it takes for the tip to reach the
+> liquid, and CubOS's `mix` lifts only 1 mm between strokes. [`vial-mixing.md`](./vial-mixing.md)
+> has how far the P20 can go and the stirring options. The first attempt stopped at
+> `decap vial_1` (the capper was miswired) and showed that CubOS's failure retract looks the
+> capper up by its class name, so the retract fails. Records:
+> [`pipette_test_mix_20261009b`](../results/pipette_test_mix_20261009b/README.md),
+> [`pipette_test_mix_20261009`](../results/pipette_test_mix_20261009/README.md).
+>
 > ✅ **2026-10-07, later: fix B is flashed, and `pipette_test` ran 12/12 on the TMC2209 with
 > every wire on.** The wire pulled for the earlier entry was EN from A4, not UART. With EN back
 > on, the 10-01 image didn't move the plunger in two probes. The firmware was rebuilt with
 > `disableStealthChop()` in `setupMotor()`, which changes one instruction (GCONF
 > `en_SpreadCycle`), and flashed. `tmc2209_probe.py` then passed, and `cubxl_run.py --no-tic`
-> ran 12/12 with a post-run `HOME` of +0.04 mm. Its plunger timings match the Tic's 10-06 run.
+> ran 12/12 with a post-run `HOME` of +0.04 mm. Its plunger timings match the Tic's
+> [10-06 run](../results/pipette_test_20261006/README.md).
 > The chip now runs on the firmware's regulated current, 0.72 A rms moving and 0.21 A rms at
 > rest on a 6121 (Ben has confirmed the new board is one), so everything can stay plugged in at
 > idle. Ben found the board at room temperature at idle after the run, the sign that the

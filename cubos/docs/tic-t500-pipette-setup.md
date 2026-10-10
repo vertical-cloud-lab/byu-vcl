@@ -2,6 +2,12 @@
 
 Written 2026-09-29, as a candidate replacement for the condemned Adafruit 6121
 TMC2209 board (§22 of [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md)).
+**2026-10-07: the pipette is back on the TMC2209.** With the spreadCycle firmware
+(§26 of the wiring doc) it ran `pipette_test` 12/12
+([record](../results/tmc2209_spreadcycle_20261007/README.md)), and runs since
+then have used it, with `cubxl_run.py --no-tic`. The last run on the Tic was
+`pipette_test_20261006`, 12/12 after the 10-05 rewire
+([record](../results/pipette_test_20261006/README.md)).
 **2026-10-05: the newly bought TMC2209 board did not turn the plunger** in either
 direction ([record](https://github.com/vertical-cloud-lab/byu-vcl/blob/1e35861/cubos/results/tmc2209_probe_20261005/README.md)),
 so Ben is moving the pipette back to the Tic. Figure 1 is the wiring to restore.
