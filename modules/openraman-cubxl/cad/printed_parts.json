@@ -1,0 +1,38 @@
+{
+  "P00001_BASEPLATE": {
+    "volume_cm3": 421.2,
+    "source": "openraman cad.git@778dfda exports/spectrometer/P00001 - BASEPLATE.step"
+  },
+  "P00002_COVER": {
+    "volume_cm3": 95.8,
+    "source": "openraman cad.git@778dfda exports/spectrometer/P00002 - COVER.step"
+  },
+  "P00003_LASER_HOLDER": {
+    "volume_cm3": 21.8,
+    "source": "openraman cad.git@778dfda exports/spectrometer/P00003 - LASER HOLDER.step"
+  },
+  "P00004_GRATING_HOLDER": {
+    "volume_cm3": 8.6,
+    "source": "openraman cad.git@778dfda exports/spectrometer/P00004 - GRATING HOLDER.step"
+  },
+  "P00005_CAMERA_BRACKET": {
+    "volume_cm3": 6.1,
+    "source": "openraman cad.git@778dfda exports/spectrometer/P00005 - CAMERA BRACKET.step"
+  },
+  "P00009_BODY": {
+    "volume_cm3": 148.2,
+    "source": "openraman cad.git@778dfda exports/cuvettes/standard liquid/P00009 BODY.step"
+  },
+  "P00010_CAP": {
+    "volume_cm3": 47.8,
+    "source": "openraman cad.git@778dfda exports/cuvettes/standard liquid/P00010 CAP.step"
+  },
+  "P00011_LENS_BARREL": {
+    "volume_cm3": 8.5,
+    "source": "openraman cad.git@778dfda exports/cuvettes/standard liquid/P00011 LENS BARREL.step"
+  },
+  "P00012_SPACER_BLOCK": {
+    "volume_cm3": 2.6,
+    "source": "openraman cad.git@778dfda exports/cuvettes/standard liquid/P00012 SPACER BLOCK.step"
+  }
+}
