@@ -714,7 +714,8 @@ def timeline_figure(rows, meta, path):
                title="Function (top lane to bottom lane in each row)", title_fontsize=7)
     fig.suptitle("Job postings by first-seen date, with equity rounds (vertical lines)", y=1.035, fontsize=9,
                  fontweight="bold")
-    fig.text(0.99, 0.002, "Sources: live job-board APIs and Wayback Machine captures. Rounds before 2021 are not drawn.",
+    fig.text(0.99, 0.002, "Sources: live job-board APIs, Wayback Machine captures and portfolio job boards. Rounds before 2021 "
+             "are not drawn; postings first seen before 2021 sit at the left edge.",
              ha="right", fontsize=6, color=analyze.MUTED)
     fig.tight_layout(rect=(0, 0.01, 1, 0.97))
     fig.savefig(path, dpi=170, bbox_inches="tight")
