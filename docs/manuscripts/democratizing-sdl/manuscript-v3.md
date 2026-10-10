@@ -30,16 +30,16 @@ Brenden Pelkie<sup>1</sup>, Sterling G. Baird<sup>2,3,\*</sup>, Eunice Aissi<sup
      SIGN-OFF: ALL-2 (every author: full departmental address; RSC needs department, city, postcode, country).
      AUTHOR-LIST DECISIONS still open, carried over from v2 and NOT resolved here:
      (a) Sonya Vasquez had no affiliation superscript in v1; set to 1 (University of Washington), consistent with
-         ref. 21. SIGN-OFF: NP-2.
-     (b) Basita Das is credited as a DiSCO (P5) developer in Table 1 and is a co-author on refs 17-19, but has
-         never been in the author list. SIGN-OFF: TB-2. Ask Basita Das and the P5 team before changing anything.
+         the Jubilee CHI '20 paper. SIGN-OFF: NP-2.
+     (b) Basita Das is credited as a DiSCO (P5) developer in Table 1 and is a co-author on the Archerfish, computer-
+         vision and contact-mapping papers cited for P5, but has never been in the author list. SIGN-OFF: TB-2. Ask Basita Das and the P5 team before changing anything.
      (c) Ilya Yakavets is credited as a P7 developer in Table 1 but is not in the author list. SIGN-OFF: P7-3.
      (d) Author order: Seth Leavitt is inserted alphabetically in the contributor block, which is the least
          presumptuous position. SIGN-OFF: SGB-2 / BP-6. -->
 
 ## Abstract
 
-We hypothesize that documentation, not hardware, is the rate-limiting step for democratizing self-driving labs (SDLs). The case for user-developed, openly shared laboratory automation is usually made on price. We argue that price is the wrong variable. Build labour, not the bill of materials, dominates the cost of a first build, so user-developed automation lowers the cost of access only when a design is replicated. A design is replicated only when its documentation can carry a new user through procurement, assembly, configuration, operation and troubleshooting. We test this hypothesis against ten user-developed automation projects contributed to the Democratizing Self-Driving Labs workshop at the 2024 Accelerate Conference. Before arguing any claim, we state for every project whether it supports, complicates or contradicts each of five sub-claims. The projects' own reported build costs and times give every one of them a break-even wage (the hourly rate at which build labour costs as much as the parts) of at most $73 per hour, with a median of $30 per hour. Median rebuild time is 17 hours. The exceptions are informative. Only two bespoke research platforms, each costing $20 000 or more, have break-even wages above $50 per hour. Three projects released no design files for more than two years after the workshop, so no one outside their developers could build them. A self-audit of the projects' public documentation finds troubleshooting guidance to be the scarcest capability. We conclude that funders, journals, institutions and builders should treat documentation as the primary deliverable of open laboratory hardware. We also set out where user-developed automation should give way to commercial instruments.
+We hypothesize that documentation, not hardware, is the rate-limiting step for democratizing self-driving labs (SDLs). The case for user-developed laboratory automation is usually made on price, and we argue that price is the wrong variable. Build labour, not the bill of materials, dominates the cost of a first build, so user-developed automation lowers the cost of access only when a design is replicated. A design is replicated only when its documentation can carry a new user through procurement, assembly, configuration, operation and troubleshooting. We test it against ten projects contributed to the Democratizing Self-Driving Labs workshop at Accelerate 2024. Before arguing any claim, we state whether each project supports, complicates or contradicts each of five sub-claims. From the projects' self-reported build costs and times, every project has a break-even wage (the hourly rate at which labour costs as much as parts) of at most $73 per hour; the median is $30 per hour. Median rebuild time is 17 hours. The exceptions are informative. Only two bespoke research platforms, each costing $20 000 or more, break even above $50 per hour. Three projects released no design files for more than two years after the workshop, so no one outside their developers could build them. A self-audit of the projects' documentation finds troubleshooting guidance the scarcest capability. We conclude that funders, journals, institutions and builders should treat documentation as the primary deliverable of open laboratory hardware, and we set out where user-developed automation should give way to commercial instruments.
 
 <!-- SIGN-OFF: TV-1 / P7-1. "Released no design files for more than two years after the workshop" is true as of
      2026-10-10 (verified; see revision-notes-v3.md §4). If work-in-progress repositories are published before
@@ -54,7 +54,7 @@ We hypothesize that documentation, not hardware, is the rate-limiting step for d
 
 Self-driving labs (SDLs) are gaining broad adoption throughout chemicals and materials research.<sup>1–3</sup> These systems, also called autonomous experimentation platforms or materials acceleration platforms, combine automated experimentation with machine-learning-directed experimental design to optimize material properties or discover new materials. Building one means integrating sample preparation, sample characterization, active learning, data management and orchestration. Automating sample preparation and characterization accounts for much of that complexity,<sup>4</sup> so many SDL implementations rely on commercial automation.<sup>5,6</sup> Commercial SDLs have enabled important work. However, their expense and complexity put them out of reach for many scientists, and if they become the norm, SDLs risk becoming specialized equipment reserved for the best-resourced researchers.
 
-The community's answer to this has been democratization, and the case for democratization is usually made on price. Reviews of low-cost SDLs promote "frugal twin" platforms that reproduce the function of expensive systems at a fraction of the capital cost.<sup>7</sup> Recent work in this journal surveys how low-cost 3D printing can substitute for commercial laboratory automation.<sup>8</sup> The implied argument is simple: commercial automation is expensive, user-developed automation has a small bill of materials, and so user-developed automation democratizes access.
+The community's answer to this has been democratization, and the case for democratization is usually made on price. Reviews of low-cost SDLs promote "frugal twin" platforms that reproduce the function of expensive systems at a fraction of the capital cost.<sup>7</sup> Recent work in this journal surveys how low-cost 3D printing can substitute for commercial laboratory automation.<sup>8</sup> The wider case for open scientific hardware also rests heavily on access and cost,<sup>105</sup> and a review of open scientific hardware reported average savings of 87% relative to proprietary equivalents.<sup>106</sup> The implied argument is simple: commercial automation is expensive, user-developed automation has a small bill of materials, and so user-developed automation democratizes access.
 
 **This Perspective tests a different hypothesis: documentation, not hardware, is the rate-limiting step for democratized SDLs.** The argument has three steps. First, the bill of materials is not the main cost of user-developed automation. Skilled human time is, and unlike a stepper motor, skilled time is scarce, expensive and not getting cheaper. Second, user-developed automation therefore lowers the cost of access only when a design built once is built again by others, because only then is the development labour amortized. Third, a design is built again only when its documentation can carry a stranger from an empty bench to a working instrument. If this hypothesis is right, the community has been optimizing the wrong variable. Effort spent making hardware cheaper buys little, and effort spent making it reproducible buys a great deal.
 
@@ -86,14 +86,14 @@ Two strands of the open-hardware literature anticipate parts of this argument, a
 
 ## 2. The workshop and the survey
 
-Successful adoption of user-developed automation requires community involvement. To support it, we organized the "Democratizing Self-Driving Labs" workshop at the 2024 Accelerate Conference in Vancouver, BC. The workshop combined talks, discussions and demonstrations aimed at building community alignment around democratized automation. At its core was a showcase of 14 user-developed automation projects contributed by the community. They ranged from niche enhancements of existing tools to complete end-to-end pipelines, from hundreds to tens of thousands of dollars in cost, and from one-off solutions to widely deployed open hardware.
+Successful adoption of user-developed automation requires community involvement. To support it, several of us co-organized the "Democratizing Self-Driving Labs" workshop at the 2024 Accelerate Conference (University of British Columbia, Vancouver, BC, 6 August 2024). The workshop combined talks, discussions and a hardware exhibition aimed at building community alignment around democratized automation. At its core was a showcase of 14 user-developed automation projects contributed by the community. They ranged from niche enhancements of existing tools to complete end-to-end pipelines, from hundreds to tens of thousands of dollars in cost, and from one-off solutions to widely deployed open hardware.
 
 Ten of the 14 showcased projects are analysed here: those whose developers contributed a written description, with reproduction cost and time estimates, for this Perspective. The developers of the other four did not contribute one, so those four projects could not enter Table 1 or the analysis in Section 4.
 
 <!-- SIGN-OFF: BP-1. The selection criterion above is the most likely one but has not been confirmed. Brenden
      must confirm or correct it. If the true criterion differs, rewrite the sentence; do not delete it. -->
 
-During the workshop we also surveyed attendees on what the community needs to adopt democratized SDLs. Respondents (n = 58) ranked "developing low-cost SDL equipment and shared blueprints" as a top priority for advancing democratized SDLs, and over 70% said they were willing to publish hardware designs and related software. The survey items and the aggregate responses available to us are given in Supplementary Note S2.
+During the workshop we also surveyed attendees on what the community needs to adopt democratized SDLs. Respondents (n = 58) ranked "developing low-cost SDL equipment and shared blueprints" as a top priority for advancing democratized SDLs, and over 70% said they were willing to publish hardware designs and related software. The survey items, the aggregate responses available to us, and the survey's ethics and consent information are given in Supplementary Note S2.
 
 <!-- SIGN-OFF: BP-2 / LDP-1. Supplementary Note S2 needs the instrument and full response distribution. If they
      cannot be recovered, use the fallback wording in sign-off-checklist.md (BP-2), which says so plainly.
@@ -274,11 +274,11 @@ P5 complicates the claim differently. DiSCO's modules are open source, but the p
 
 Claims 1 and 2 together imply that the binding constraint on democratized SDLs is whatever determines replication. We argue that the constraint is documentation.
 
-For other researchers to adopt it, automation infrastructure needs documentation that thoroughly describes how to **procure, build, configure, run and troubleshoot** the system. Sharing CAD files and a parts list is not enough to enable a new user. In her closing keynote at Accelerate 2024, Nadya Peek described documentation as mandatory for open-source hardware. For hardware, she argued, documentation *is* the source: it is how a new user turns a box of screws and a spool of filament into a working part of their automation ecosystem. Without documentation there is no open hardware, only published hardware. The OSHWA definition requires the same thing in substance,<sup>9</sup> Bonvoisin *et al.* found that open-hardware projects meet it very unevenly,<sup>102</sup> and our field applies it to itself unevenly at best.
+For other researchers to adopt it, automation infrastructure needs documentation that thoroughly describes how to **procure, build, configure, run and troubleshoot** the system. Sharing CAD files and a parts list is not enough to enable a new user. In her closing keynote at Accelerate 2024, Nadya Peek described documentation as mandatory for open-source hardware. For hardware, she argued, documentation *is* the source: it is how a new user turns a box of screws and a spool of filament into a working part of their automation ecosystem. Without documentation there is no open hardware, only published hardware. The OSHWA definition requires the same thing in substance.<sup>9</sup> Bonvoisin *et al.* found that open-hardware projects meet it very unevenly,<sup>102</sup> and Antoniou *et al.* found that a bill of materials and assembly instructions are not enough to make a design replicable.<sup>107</sup> Our field applies the standard to itself unevenly at best.
 
 <!-- SIGN-OFF: NP-1. Nadya Peek confirms the paraphrase of her keynote. -->
 
-Table 5 audits our own ten projects against the five capabilities, plus the licence that the OSHWA definition makes a precondition of open hardware. We are not aware of another Perspective in this area that audits its own exemplars, and we think that omission is part of the problem. Every cell is tied to a specific public resource in Supplementary Note S3, so readers can check our scoring.
+Table 5 audits our own ten projects against the five capabilities, plus the licence that the OSHWA definition makes a precondition of open hardware. Audits of open hardware against a documentation standard have found deficits that block reproduction.<sup>108</sup> We are not aware of another Perspective in this area that audits its own exemplars, and we think that omission is part of the problem. Every cell is tied to a specific public resource in Supplementary Note S3, so readers can check our scoring.
 
 **Table 5. Documentation self-audit against the five capabilities a replicator needs, plus licensing.** ● complete · ◐ partial · ○ absent · n/a not applicable. Assessed from public resources on 2026-10-10; evidence for every cell is in Supplementary Note S3.
 
@@ -309,7 +309,7 @@ This is not a story about careless researchers. Every contributor here is a capa
 The implications are concrete, and we state them as obligations rather than aspirations:
 
 - **Funders** should treat documentation and user support as fundable, reportable deliverables with named effort attached, not as unfunded overhead on an instrumentation grant. A hardware development award that does not budget for documentation is buying an artefact, not a capability.
-- **Journals**, including this one, should require hardware papers and Perspectives to state which of the five capabilities their supporting materials cover, as data availability statements are now required. The bar should be a description of what exists, not a promise. Article formats that publish updates to existing hardware and code, such as this journal's Commit articles,<sup>103</sup> give documentation work a citable home and deserve wider use.
+- **Journals** should require hardware papers, and Perspectives that hold hardware up as exemplars, to state which of the five capabilities their supporting materials cover, as data availability statements are now required. The bar should be a description of what exists, not a promise. This journal has published guidelines for hardware-focused articles,<sup>109</sup> and it already requires hardware papers to include a bill of materials and a construction guide, with design files in a public, persistent repository.<sup>110</sup> Those requirements cover procurement and building. We would extend them to configuration, operation and, above all, troubleshooting. Article formats that publish incremental updates to existing work, such as this journal's Commit articles,<sup>111</sup> already used to publish an improved Digital Pipette,<sup>103</sup> give documentation work a citable home and deserve wider use.
 - **Institutions and hiring committees** should count sustained, used documentation as scholarly output. It has more in common with a methods paper than with a README.
 - **Builders** should deposit their designs archivally with a persistent identifier from the first release (for example a Zenodo DOI minted from the repository, not a forum thread), choose an open licence at the same moment, and treat troubleshooting notes as a first-class artefact recorded during the build rather than reconstructed afterwards.
 - **The community** should build shared documentation infrastructure: templates for the five capabilities, building on existing documentation standards for open hardware,<sup>104</sup> a hosting venue that does not decay, and review so that someone other than its author assesses documentation quality.
@@ -373,22 +373,12 @@ Building SDLs is hard. Building them so that someone else can build them again i
 
 ---
 
-## Data availability
-
-The analysis underlying Figure 1 and Tables 3 and 4 uses only the self-reported figures in Table 1. The analysis script (`labor_cost_analysis.py`), the derived per-project values (`table1-derived.csv`) and the full rate-sensitivity sweep (`sensitivity.csv`) are provided as ESI and archived at Zenodo, **[TO SUPPLY: DOI, SGB]**. The evidence behind every cell of Table 5 is given in Supplementary Note S3, and the project descriptions as contributed are given in Supplementary Note S1.
-
-Design files and documentation for the contributed projects are listed in Table 1.
-
-The survey items and aggregate results are provided as Supplementary Note S2.
-
-<!-- SIGN-OFF: SGB-4. Mint the Zenodo DOI for the analysis folder from the final commit. A ready .zenodo.json is
-     in analysis/; see sign-off-checklist.md. -->
-
 ## Author contributions
 
-Using the CRediT taxonomy. **BP**: conceptualization, data curation (compilation and organization of the project contributions), writing – original draft (original submission), writing – review and editing. **SGB**: conceptualization, formal analysis (labour-cost analysis and documentation audit), project administration and supervision (revision), writing – original draft (revision), writing – review and editing. **SL**: conceptualization (revised argument), project administration (coordination of the revision, August–September 2026), writing – review and editing. **LDP, TV, TB**: conceptualization, writing – review and editing. **All other authors**: investigation (contribution of project descriptions and reproduction cost and time estimates), writing – review and editing.
+CRediT roles. **Brenden Pelkie (BP)**: conceptualization, data curation (compilation and organization of the project contributions), investigation (P6), writing – original draft (original submission), writing – review and editing. **Sterling G. Baird (SGB)**: conceptualization, formal analysis (labour-cost analysis and documentation audit), investigation (P8, P9), project administration and supervision (revision), writing – original draft (revision), writing – review and editing. **Seth Leavitt (SL)**: conceptualization (revised argument), project administration (coordination of the revision, August–September 2026), writing – review and editing. **Lilo D. Pozzo (LDP), Tejs Vegge (TV), Tonio Buonassisi (TB)**: conceptualization, writing – review and editing. **Investigation (contribution of a project description and its reproduction cost and time estimates) and writing – review and editing**, by project: P1, P3 and P4, Jin Hyun Chang, Kshitij Gambhir, Rógvi Ziskason and Louie Lucas Bisgaard Nyeland; P2, Owen A. Melville, Monique Ngan and Jeffrey Watchorn; P5, Alexander E. Siemenn, Eunice Aissi and Tonio Buonassisi; P6, Maria Politi, Blair Subbaraman, Danli Luo, Nadya Peek, Sonya Vasquez and Wm Salt Hale; P7, Yang Cao and Ethan Rajkumar; P8, Chance Hattrick; P9, Kenzo Aspuru-Takata; P10, Wenyu Zhang, Lucy Hao and Jason E. Hein.
 
-<!-- SIGN-OFF: SGB-3, SL-1, BP-6 and ALL-3. Every author confirms their own roles. -->
+<!-- SIGN-OFF: SGB-3, SL-1, BP-6 and ALL-3. Every author confirms their own roles. RSC requires a per-author statement
+     for papers with more than ten authors. -->
 
 ## Conflicts of interest
 
@@ -397,15 +387,21 @@ There are no conflicts to declare.
 <!-- SIGN-OFF: ALL-4. Every author re-confirms; anything new since 2024 (e.g. commercial sales of kits or
      instruments described here) must be declared. -->
 
-## Use of generative AI
+## Data availability
 
-The restructured text of this revision, the labour-cost analysis code and the documentation audit were drafted with the assistance of a large language model (Claude, Anthropic), working at the direction of S. G. B. and S. L. in a version-controlled repository. Every bibliographic reference was checked against Crossref, and every repository, licence and deposit cited in Tables 1 and 5 was checked against the live resource. The authors reviewed, edited and verified all AI-assisted content and take full responsibility for the content of this article.
+The code for the labour-cost analysis (`labor_cost_analysis.py`), the derived per-project values (`table1-derived.csv`) and the full rate-sensitivity sweep (`sensitivity.csv`) are provided as ESI. They can also be found at https://github.com/vertical-cloud-lab/byu-vcl/tree/main/docs/manuscripts/democratizing-sdl/analysis, and a Zenodo DOI for the archived version will be added at acceptance. The analysis uses only the self-reported figures in Table 1. The public resource behind every cell of Table 5 is listed in Supplementary Note S3. The project descriptions as contributed are given in Supplementary Note S1. Design files and documentation for the contributed projects are at the URLs listed in Table 1. The survey items and aggregate results are given in Supplementary Note S2; individual survey responses are not available for confidentiality reasons.
 
-<!-- SIGN-OFF: SGB-3. Placement and wording to match RSC policy; see revision-notes-v3.md §6. -->
+<!-- SIGN-OFF: SGB-4. Pin the GitHub URL to the submission commit (or merge PR #193 first so /main/ resolves), and
+     mint the Zenodo DOI from that commit by acceptance; metadata is ready in analysis/.zenodo.json. -->
 
 ## Acknowledgements
 
-We thank the attendees of the Democratizing Self-Driving Labs workshop at Accelerate 2024 for their participation and survey responses.
+We thank the attendees of the Democratizing Self-Driving Labs workshop at Accelerate 2024 for their participation and survey responses, and its co-organizers, including Milad Abolhasani and Curtis Berlinguette.
+
+During the preparation of this manuscript, the authors used Claude (Anthropic; Claude Opus 5 and Claude Opus 5.5, through Claude Code, August–October 2026). They used it to restructure and draft the revised text; to write the analysis code that generates Figure 1 and Tables 3 and 4; to propose the documentation scores in Table 5 from public resources; to check references against Crossref and repositories, licences and deposits against the live resources; and to crop institutional logos and a spell-check mark from Figure 8. The prompts and the model's responses are preserved in the public issue and pull-request threads of the repository named in the Data availability statement. The authors have reviewed and edited the output and take full responsibility for the content of this publication.
+
+<!-- SIGN-OFF: SGB-3. RSC requires this declaration in the cover letter and the tool and model in the
+     Acknowledgements (a Perspective has no Methods section). Confirm the model list against the Actions run logs. -->
 
 - Wenyu Zhang, Lucy Hao and Jason Hein acknowledge Canada Foundation for Innovation (CFI-35833), Natural Sciences and Engineering Research Council of Canada (RGPIN-2021-03168, Discovery Accelerator), and the University of British Columbia.
 - Jin Hyun Chang and Tejs Vegge acknowledge Pioneer Center for Accelerating P2X Materials Discovery (CAPeX), DNRF grant number P3.
@@ -416,7 +412,8 @@ We thank the attendees of the Democratizing Self-Driving Labs workshop at Accele
 <!-- SIGN-OFF: ALL-5. The funding list is v1's, unchanged. Known gaps: no line for Sterling G. Baird, Chance
      Hattrick, Kenzo Aspuru-Takata or Ethan Rajkumar (Acceleration Consortium, plausibly CFREF-2022-00042; SGB-6),
      none for MIT (TB-5), none for most UW authors (BP-10/NP-3), none for BYU (SGB-6). Each author supplies or
-     confirms their own line. -->
+     confirms their own line. Abolhasani and Berlinguette are named as workshop co-organizers on the official
+     programme but are not authors; SGB-14 confirms they are content to be thanked by name. -->
 
 ## References
 
@@ -425,14 +422,14 @@ We thank the attendees of the Democratizing Self-Driving Labs workshop at Accele
 3. Strieth-Kalthoff, F.; Hao, H.; Rathore, V.; Derasp, J.; Gaudin, T.; Angello, N. H.; Seifrid, M.; Trushina, E.; Guy, M.; Liu, J.; Tang, X.; Mamada, M.; Wang, W.; Tsagaantsooj, T.; Lavigne, C.; Pollice, R.; Wu, T. C.; Hotta, K.; Bodo, L.; Li, S.; Haddadnia, M.; Wołos, A.; Roszak, R.; Ser, C. T.; Bozal-Ginesta, C.; Hickman, R. J.; Vestfrid, J.; Aguilar-Granda, A.; Klimareva, E. L.; Sigerson, R. C.; Hou, W.; Gahler, D.; Lach, S.; Warzybok, A.; Borodin, O.; Rohrbach, S.; Sanchez-Lengeling, B.; Adachi, C.; Grzybowski, B. A.; Cronin, L.; Hein, J. E.; Burke, M. D.; Aspuru-Guzik, A. Delocalized, Asynchronous, Closed-Loop Discovery of Organic Laser Emitters. *Science* **2024**, *384* (6697), eadk9227. https://doi.org/10.1126/science.adk9227.
 4. Christensen, M.; Yunker, L. P. E.; Shiri, P.; Zepel, T.; Prieto, P. L.; Grunert, S.; Bork, F.; Hein, J. E. Automation Isn't Automatic. *Chem. Sci.* **2021**, *12* (47), 15473–15490. https://doi.org/10.1039/D1SC04588A.
 5. Vescovi, R.; Ginsburg, T.; Hippe, K.; Ozgulbas, D.; Stone, C.; Stroka, A.; Butler, R.; Blaiszik, B.; Brettin, T.; Chard, K.; Hereld, M.; Ramanathan, A.; Stevens, R.; Vriza, A.; Xu, J.; Zhang, Q.; Foster, I. Towards a Modular Architecture for Science Factories. *Digit. Discov.* **2023**, *2* (6), 1980–1998. https://doi.org/10.1039/D3DD00142C.
-6. Szymanski, N. J.; Rendy, B.; Fei, Y.; Kumar, R. E.; He, T.; Milsted, D.; McDermott, M. J.; Gallant, M.; Cubuk, E. D.; Merchant, A.; Kim, H.; Jain, A.; Bartel, C. J.; Persson, K.; Zeng, Y.; Ceder, G. An Autonomous Laboratory for the Accelerated Synthesis of Novel Materials. *Nature* **2023**, *624* (7990), 86–91. https://doi.org/10.1038/s41586-023-06734-w.
+6. Szymanski, N. J.; Rendy, B.; Fei, Y.; Kumar, R. E.; He, T.; Milsted, D.; McDermott, M. J.; Gallant, M.; Cubuk, E. D.; Merchant, A.; Kim, H.; Jain, A.; Bartel, C. J.; Persson, K.; Zeng, Y.; Ceder, G. An Autonomous Laboratory for the Accelerated Synthesis of Inorganic Materials. *Nature* **2023**, *624* (7990), 86–91. https://doi.org/10.1038/s41586-023-06734-w. Author Correction: *Nature* **2026**, *650* (8100), E1. https://doi.org/10.1038/s41586-025-09992-y.
 7. Lo, S.; Baird, S. G.; Schrier, J.; Blaiszik, B.; Carson, N.; Foster, I.; Aguilar-Granda, A.; Kalinin, S. V.; Maruyama, B.; Politi, M.; Tran, H.; Sparks, T. D.; Aspuru-Guzik, A. Review of Low-Cost Self-Driving Laboratories in Chemistry and Materials Science: The "Frugal Twin" Concept. *Digit. Discov.* **2024**, *3* (5), 842–868. https://doi.org/10.1039/D3DD00223C.
 8. Doloi, S.; Das, M.; Li, Y.; Cho, Z. H.; Xiao, X.; Hanna, J. V.; Osvaldo, M.; Ng Wei Tat, L. Democratizing Self-Driving Labs: Advances in Low-Cost 3D Printing for Laboratory Automation. *Digit. Discov.* **2025**, *4* (7), 1685–1721. https://doi.org/10.1039/D4DD00411F.
-9. Open Source Hardware Association. Open Source Hardware (OSHW) Definition 1.0. https://www.oshwa.org/definition/ (accessed 2026-10-10).
+9. Open Source Hardware Association. Open Source Hardware (OSHW) Definition 1.0. https://oshwa.org/definition/ (accessed 2026-10-10).
 10. Bao, R. eamars/OpenTrickler, 2024. https://github.com/eamars/OpenTrickler (accessed 2026-10-10).
 11. Lampkin, P. P.; Thompson, B. J.; Gellman, S. H. Versatile Open-Source Photoreactor Architecture for Photocatalysis Across the Visible Spectrum. *Org. Lett.* **2021**, *23* (13), 5277–5281. https://doi.org/10.1021/acs.orglett.1c01910.
 12. Pioreactor. https://pioreactor.com/ (accessed 2026-10-10).
-13. ASTM International. *Standard Test Method for Viscosity by Ford Viscosity Cup*, ASTM D1200-10(2018). https://www.astm.org/d1200-10r18.html (accessed 2026-10-10).
+13. ASTM International. *Standard Test Method for Viscosity by Ford Viscosity Cup*; ASTM D1200-23; ASTM International: West Conshohocken, PA, 2023. https://doi.org/10.1520/D1200-23.
 14. Soh, B. W.; Chitre, A.; Lee, W. Y.; Bash, D.; Kumar, J. N.; Hippalgaonkar, K. Automated Pipetting Robot for Proxy High-Throughput Viscometry of Newtonian Fluids. *Digit. Discov.* **2023**, *2* (2), 481–488. https://doi.org/10.1039/D2DD00126H.
 15. Ginsburg, T.; Hippe, K.; Lewis, R.; Cleary, A.; Ozgulbas, D.; Butler, R.; Stone, C.; Stroka, A.; Vescovi, R.; Foster, I. Exploring Benchmarks for Self-Driving Labs Using Color Matching. In *Proceedings of the SC '23 Workshops of the International Conference on High Performance Computing, Network, Storage, and Analysis*; ACM: New York, NY, USA, 2023; pp 2147–2152. https://doi.org/10.1145/3624062.3624615.
 16. Baird, S. G.; Sparks, T. D. Building a "Hello World" for Self-Driving Labs: The Closed-Loop Spectroscopy Lab Light-Mixing Demo. *STAR Protoc.* **2023**, *4* (2), 102329. https://doi.org/10.1016/j.xpro.2023.102329.
@@ -457,12 +454,19 @@ We thank the attendees of the Democratizing Self-Driving Labs workshop at Accele
 101. Pearce, J. M. Return on Investment for Open Source Scientific Hardware Development. *Sci. Public Policy* **2016**, *43* (2), 192–195. https://doi.org/10.1093/scipol/scv034.
 102. Bonvoisin, J.; Mies, R.; Boujut, J.-F.; Stark, R. What Is the "Source" of Open Source Hardware? *J. Open Hardw.* **2017**, *1* (1), 5. https://doi.org/10.5334/joh.7.
 103. Yoshikawa, N.; Angers, K.; Darvish, K.; Okhovatian, S.; Bannerman, D.; Yakavets, I.; Radisic, M.; Aspuru-Guzik, A. Commit: Digital Pipette: Open Hardware for Liquid Transfer in Self-Driving Laboratories. *Digit. Discov.* **2026**, *5* (1), 93–97. https://doi.org/10.1039/D5DD00336A.
-104. DIN SPEC 3105-1:2020-09. Open Source Hardware – Part 1: Requirements for Technical Documentation; Beuth Verlag: Berlin, 2020. https://gitlab.com/OSEGermany/OHS-3105 (accessed 2026-10-10).
+104. DIN SPEC 3105-1:2020-07. *Open Source Hardware – Part 1: Requirements for Technical Documentation* (text in English); DIN Media: Berlin, 2020. https://doi.org/10.31030/3173063.
+105. Maia Chagas, A. Haves and Have Nots Must Find a Better Way: The Case for Open Scientific Hardware. *PLoS Biol.* **2018**, *16* (9), e3000014. https://doi.org/10.1371/journal.pbio.3000014.
+106. Pearce, J. M. Economic Savings for Scientific Free and Open Source Technology: A Review. *HardwareX* **2020**, *8*, e00139. https://doi.org/10.1016/j.ohx.2020.e00139.
+107. Antoniou, R.; Pinquié, R.; Boujut, J.-F.; Ezoji, A.; Dekoninck, E. Identifying the Factors Affecting the Replicability of Open Source Hardware Designs. *Proc. Des. Soc.* **2021**, *1*, 1817–1826. https://doi.org/10.1017/pds.2021.443.
+108. Saubke, D.; Krenz, P.; Redlich, T. Howling for a New Standard – Deficits in Open Source Hardware Documentation. *Procedia CIRP* **2025**, *136*, 195–200. https://doi.org/10.1016/j.procir.2025.08.035.
+109. Hein, J. E.; Schrier, J. Guidelines for Hardware-Focused Articles. *Digit. Discov.* **2024**, *3* (3), 447–448. https://doi.org/10.1039/D4DD90009J.
+110. Royal Society of Chemistry. Digital Discovery: Author Guidelines. https://www.rsc.org/publishing/publish-with-us/publish-a-journal-article/digital-discovery (accessed 2026-10-10).
+111. Aspuru-Guzik, A.; Hein, J. E.; Schrier, J. Commit: Mini Article for Dynamic Reporting of Incremental Improvements to Previous Scholarly Work. *Digit. Discov.* **2025**, *4* (2), 301–302. https://doi.org/10.1039/D4DD90053G.
 
 ---
 
 ## Table of contents entry
 
-**One sentence (≤ 30 words):** The parts are the cheap part: across ten user-developed self-driving-lab projects, labour dominates first-build cost, so open lab automation pays off only when documentation makes replication possible.
+**Text (1–2 sentences, ≤ 250 characters):** Ten teams reported what their lab automation costs to rebuild, in dollars and in hours. The hours are the bigger bill, so open hardware pays off only once someone else can build it from the documentation.
 
-**Graphic:** Figure 1(b) (break-even wage by project) at 8 cm × 4 cm.
+**Graphic:** required at the revision stage (8 cm × 4 cm, ≥ 600 dpi TIFF, original, no logos). A simplified Figure 1(b) is the natural candidate.

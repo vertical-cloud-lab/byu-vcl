@@ -8,8 +8,15 @@ Self-Driving Labs" workshop Perspective. Tracked in
 
 | File | What it is |
 |---|---|
-| [`manuscript-v2.md`](manuscript-v2.md) | **The working source.** Restructured around a single thesis, with the labour-cost analysis, the per-claim evidence matrix and the documentation self-audit |
-| [`revision-notes-v2.md`](revision-notes-v2.md) | Changelog v1 → v2, the title shortlist, and the list of things only the co-authors can resolve |
+| [`manuscript-v3.md`](manuscript-v3.md) | **The submission text.** Hypothesis-first, Sterling G. Baird as corresponding author. Every statement a co-author must still confirm carries a `<!-- SIGN-OFF: ID -->` comment; the few values that do not exist yet are marked `[TO SUPPLY: …]` |
+| [`sign-off-checklist.md`](sign-off-checklist.md) | **What each co-author has to confirm**, by person and team, with the blocking items first |
+| [`response-to-decision-letter.md`](response-to-decision-letter.md) | Point-by-point response to the DD-PER-12-2024-000410 decision |
+| [`cover-letter.md`](cover-letter.md) | Cover letter for the resubmission |
+| [`esi/supplementary-information.md`](esi/supplementary-information.md) | ESI: Note S1 (project descriptions as contributed), S2 (survey), S3 (evidence for every Table 5 cell), S4 (labour analysis) |
+| [`revision-notes-v3.md`](revision-notes-v3.md) | Changelog v2 → v3, what happened to every v2 `[NEEDED]` marker, and the 2026-10-10 verification of all ten projects |
+| [`tools/check_manuscript.py`](tools/check_manuscript.py) | Renumbers citations into first-appearance order and lists open sign-off IDs and placeholders. Run it after any edit that adds a reference |
+| [`manuscript-v2.md`](manuscript-v2.md) | v2: the first restructure around the thesis. Superseded by v3 |
+| [`revision-notes-v2.md`](revision-notes-v2.md) | Changelog v1 → v2 and the title shortlist (§2) |
 | [`analysis/`](analysis/) | Self-contained script deriving the break-even wage and labour shares from Table 1, plus its CSV outputs |
 | [`manuscript-v1.md`](manuscript-v1.md) | Editable markdown recreation of the v1 text — kept as the baseline to diff against |
 | [`submitted/`](submitted/) | **The as-submitted Word source**, contributed by Brenden Pelkie. The authoritative v1 record |
@@ -95,7 +102,7 @@ was approved for publication.
 | 5 | `fig5-color-mixing-bot.jpg` | DTU slide deck, 3302 × 2476 (beats the Word copy's 2500 × 1874) |
 | 6 | `fig6-disco.png` | Word source, 2048 × 579 |
 | 7 | `fig7-science-jubilee.png` | Word source, 2048 × 1012 |
-| **8** | `fig8-electrochemical-workflow.png` | **new** — original Google Form figure set, 1842 × 808 |
+| **8** | `fig8-electrochemical-workflow.png` | **new** — original Google Form figure set; logo strip cropped and a spell-check underline removed for v3 (1842 × 652). Original in `figures/source/` |
 | 9 | `fig9-ivoryos.png` | downscaled from the 16039 × 6235 TIFF in `figures/source/` |
 
 `figures/source/` holds what is not used: the IvoryOS TIFF at full size, the DTU slide
@@ -115,16 +122,17 @@ no new data — and rewrites `table1-derived.csv`, `sensitivity.csv` and
 
 ## Status
 
-**Draft v2 complete and ready for co-author review.** Everything that can be done without
-the co-authors is done: the restructure, the labour analysis, the reference corrections,
-the figures. See [`revision-notes-v2.md`](revision-notes-v2.md) §7 for what is outstanding;
-each item is marked `[NEEDED]` in the manuscript itself.
+**v3 is the submission text (2026-10-10).** Sterling G. Baird owns the revision and is
+corresponding author; Seth Leavitt, who coordinated v2, is kept as an author. Everything an
+agent can resolve has been resolved. What remains is in
+[`sign-off-checklist.md`](sign-off-checklist.md), led by the one item writing cannot fix:
+work-in-progress repositories for the powder dispensing module and rolling ball viscometer
+(DTU) and the electrochemical workflow (P7 team). The editor said he would accept
+"work in progress" repositories, so the bar is low.
 
-The blocking item is unchanged and is the one thing writing cannot fix: electronic
-supporting material (repositories or Zenodo deposits) for the powder dispensing module,
-the rolling ball viscometer, and the electrochemical workflow.
+Check the manuscript after any edit:
 
-Checked 2026-09-14: all eight project URLs in Table 1 return HTTP 200, and the analysis
-reproduces every headline number in §4 from a clean environment. Three findings from that
-check are recorded as §7 items 7–9 — P10 already has a Zenodo deposit, two repositories
-carry no licence, and P9's repository has been renamed.
+```
+python tools/check_manuscript.py manuscript-v3.md             # lint and report open items
+python tools/check_manuscript.py manuscript-v3.md --renumber  # after adding a reference
+```
