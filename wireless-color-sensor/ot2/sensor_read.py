@@ -166,12 +166,14 @@ class SensorLink:
     def read(self, label=None, rgb=(0, 0, 0), timeout=None, retries=2, settings=None):
         """Command one reading and return a dict of the 8 channels plus metadata.
 
-        ``settings`` (e.g. ``{"gain": 512}``) asks the board for a different gain
-        for this one reading; gain is the only setting (0.5, 1, 2, ... 512; the
-        default is 128x). It needs the firmware in ``../pico/`` (installed
-        2026-10-09); a board without it ignores the key, so a reply that does not
-        echo ``sensor_settings`` back, or echoes a different gain, is refused
-        rather than mislabelled.
+        ``settings`` (e.g. ``{"gain": 32, "led_ma": 10}``) asks the board for
+        different settings for this one reading: ``gain`` (0.5, 1, 2, ... 512;
+        default 128x), ``atime`` (0-255, default 100), ``astep`` (0-65534,
+        default 999) and ``led_ma`` (the breakout's white LED: 0 = off, the
+        default, or an even 4-20 mA). It needs the firmware in ``../pico/``
+        (gain since 2026-10-09, the rest since 2026-10-10); a board without it
+        ignores or refuses the keys, so a reply that does not echo each one back
+        in ``sensor_settings`` is refused rather than mislabelled.
         """
         timeout = timeout or self.timeout
         r, y, b = rgb
@@ -211,10 +213,10 @@ class SensorLink:
                         raise SensorError(
                             "the board ignored the settings: it is running firmware "
                             "without the per-reading gain (see wireless-color-sensor/pico/)")
-                    if (settings is not None and "gain" in settings
-                            and (body["sensor_settings"] or {}).get("gain") != settings["gain"]):
-                        raise SensorError(f"asked for gain {settings['gain']}, the board "
-                                          f"reports {body['sensor_settings']}")
+                    for key, want in (settings or {}).items():
+                        if (body["sensor_settings"] or {}).get(key) != want:
+                            raise SensorError(f"asked for {key} {want}, the board reports "
+                                              f"{body['sensor_settings']}")
                     answered = int(time.time() * 1000) / 1000.0
                     reading = {c: data.get(c) for c in CHANNELS}
                     return {
@@ -235,6 +237,9 @@ class SensorLink:
                         "latency_s": round(answered - started, 3),
                         "attempt": attempt,
                         "sensor_settings": body.get("sensor_settings"),
+                        # Clear and NIR from each half of the reading (F1-F4, F5-F8),
+                        # sent by the firmware since 2026-10-10; None before.
+                        "sensor_extra": body.get("sensor_extra"),
                         "raw": body,
                     }
                 time.sleep(0.02)

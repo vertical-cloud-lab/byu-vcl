@@ -64,110 +64,30 @@ def sign_of_life(led, first, blink_interval_ms=5000):
 # See micropython/micropython#19087 and #18257.
 sensor = Sensor(i2c = I2C(0, scl=Pin(5), sda=Pin(4)))
 
-# Per-reading settings: gain (added 2026-10-09), integration time and the
-# breakout's white LED (added 2026-10-10). A read command may carry
-# "settings": {"gain": G, "atime": A, "astep": S, "led_ma": L}, any subset.
-# A setting left out reads as Sensor() has always set it: 128x, ATIME 100,
-# ASTEP 999 (2 x 281 ms), LED off. So a command without "settings" reads
-# exactly as before, and every setting is put back after each reading.
+# Per-reading gain (added 2026-10-09, gain only). A read command may carry
+# "settings": {"gain": G} with G one of GAINS. Without it the reading uses
+# DEFAULT_GAIN_CODE, the 128x that Sensor() has always set, so a command
+# without "settings" reads exactly as before. Integration time is not
+# settable: it stays at Sensor()'s atime=100, astep=999 (2 x 281 ms).
 GAINS = (0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512)  # index = AGAIN code
 DEFAULT_GAIN_CODE = 8  # Sensor(gain=8): code 8 = 128x
-DEFAULT_ATIME, DEFAULT_ASTEP = 100, 999  # Sensor() defaults
-MAX_INTEGRATION_MS = 1500  # per half; a reading takes two halves
-LED_MA_MIN, LED_MA_MAX = 4, 20  # lib/as7341.py's own limits, even mA only
 
 
-def whole(settings, key, default, lo, hi):
-    value = settings.get(key, default)
-    if isinstance(value, bool) or not isinstance(value, int) or not lo <= value <= hi:
-        raise ValueError("%s must be a whole number from %d to %d; got %r" % (key, lo, hi, value))
-    return value
-
-
-def read_settings(settings):
-    """(AGAIN code, ATIME, ASTEP, LED mA) for a command's optional "settings"."""
+def gain_code(settings):
+    """AGAIN code (0-10) for a command's optional "settings" object."""
     if settings is None:
-        settings = {}
+        return DEFAULT_GAIN_CODE
     if not isinstance(settings, dict):
         raise ValueError("settings must be an object")
     for key in settings:
-        if key not in ("gain", "atime", "astep", "led_ma"):
-            raise ValueError("unknown setting %r: use gain, atime, astep or led_ma" % (key,))
-    code = None
+        if key != "gain":
+            raise ValueError("only gain can be set, not %r" % (key,))
     gain = settings.get("gain", GAINS[DEFAULT_GAIN_CODE])
     if not isinstance(gain, bool):
-        for c, g in enumerate(GAINS):
+        for code, g in enumerate(GAINS):
             if gain == g:
-                code = c
-    if code is None:
-        raise ValueError("gain must be one of 0.5, 1, 2, 4, ... 512; got %r" % (gain,))
-    atime = whole(settings, "atime", DEFAULT_ATIME, 0, 255)
-    astep = whole(settings, "astep", DEFAULT_ASTEP, 0, 65534)
-    if integration_ms(atime, astep) > MAX_INTEGRATION_MS:
-        raise ValueError("(atime + 1) x (astep + 1) x 2.78 us must be at most %d ms; got %.1f"
-                         % (MAX_INTEGRATION_MS, integration_ms(atime, astep)))
-    led = whole(settings, "led_ma", 0, 0, LED_MA_MAX)
-    if led and (led < LED_MA_MIN or led % 2):
-        raise ValueError("led_ma must be 0 (off) or an even number from 4 to 20; got %r" % (led,))
-    return code, atime, astep, led
-
-
-def integration_ms(atime, astep):
-    return (atime + 1) * (astep + 1) * 2.78 / 1000
-
-
-CHANNEL_NAMES = ("ch410", "ch440", "ch470", "ch510", "ch550", "ch583", "ch620", "ch670")
-
-
-def read_with(code, atime, astep, led):
-    """One reading at these settings, then the defaults back whatever happens.
-
-    Returns F1-F8 as read_sensor_data() does, plus each half's Clear, NIR and
-    ASTATUS (0x94, read straight after the counts: the gain code the chip used
-    in bits 0-3, analog saturation in bit 7; the driver's own copy from its bulk
-    read always showed code 8 on 2026-10-09, whatever the gain).
-    """
-    chip = sensor.sensor
-    timing = (atime, astep) != (DEFAULT_ATIME, DEFAULT_ASTEP)
-    chip.set_again(code)
-    try:
-        if timing:
-            chip.set_atime(atime)
-            chip.set_astep(astep)
-        if led:
-            chip.set_led_current(led)  # also waits 100 ms
-        counts, clear, nir, astatus = [], [], [], []
-        for half in ("F1F4CN", "F5F8CN"):  # the two halves Sensor.all_channels reads
-            chip.start_measure(half)
-            data = chip.get_spectral_data()
-            counts += list(data[:4])
-            clear.append(data[4])
-            nir.append(data[5])
-            try:
-                astatus.append(sensor.i2c.readfrom_mem(0x39, 0x94, 1)[0])
-            except OSError:
-                astatus.append(None)
-    finally:
-        if led:
-            chip.set_led_current(0)
-        if timing:
-            chip.set_atime(DEFAULT_ATIME)
-            chip.set_astep(DEFAULT_ASTEP)
-        chip.set_again(DEFAULT_GAIN_CODE)
-    known = None not in astatus
-    sensor_data = dict(zip(CHANNEL_NAMES, counts))
-    print(sensor_data)
-    return sensor_data, {
-        "gain": GAINS[code],
-        "again_code": astatus[-1] & 0x0F if known else None,
-        "analog_saturated": any(s & 0x80 for s in astatus) if known else None,
-        "atime": atime,
-        "astep": astep,
-        "integration_ms": round(integration_ms(atime, astep), 1),
-        "full_scale": min(65535, (atime + 1) * (astep + 1)),
-        "led_ma": led,
-    }, {"clear": clear, "nir": nir}
-
+                return code
+    raise ValueError("gain must be one of 0.5, 1, 2, 4, ... 512; got %r" % (gain,))
 
 
 def read_sensor_data():
@@ -288,22 +208,37 @@ async def messages(client):  # Respond to incoming messages
                 B = command["B"]
                 
 
-                # Settings for this reading; a bad "settings" gets an error reply
+                # Gain for this reading; a bad "settings" gets an error reply
                 try:
-                    code, atime, astep, led = read_settings(incoming_dict.get("settings"))
+                    code = gain_code(incoming_dict.get("settings"))
                 except ValueError as e:
                     await client.publish(sensor_data_topic, json.dumps(
                         {"experiment_id": experiment_id, "error": str(e)}))
                     continue
 
-                # Read at those settings; read_with() puts the defaults back
-                sensor_data, sensor_settings, extra = read_with(code, atime, astep, led)
+                # Run the color experiment with the specified RGB values,
+                # then put the default gain back whatever happens
+                sensor.sensor.set_again(code)
+                try:
+                    sensor_data = run_color_experiment(R, Y, B)
+                    # ASTATUS (0x94), read straight after the counts: the gain
+                    # code the chip used (bits 0-3) and saturation (bit 7).
+                    # The driver's own copy from its bulk read always showed
+                    # code 8 here on 2026-10-09, whatever the gain.
+                    try:
+                        astatus = sensor.i2c.readfrom_mem(0x39, 0x94, 1)[0]
+                    except OSError:
+                        astatus = None
+                finally:
+                    sensor.sensor.set_again(DEFAULT_GAIN_CODE)
 
                 # Combine the sensor data with the original command
                 payload_data = incoming_dict.copy()
                 payload_data.update({"sensor_data": sensor_data,
-                                     "sensor_settings": sensor_settings,
-                                     "sensor_extra": extra})
+                                     "sensor_settings": {
+                                         "gain": GAINS[code],
+                                         "again_code": None if astatus is None else astatus & 0x0F,
+                                         "analog_saturated": None if astatus is None else bool(astatus & 0x80)}})
                 #payload_data["course_id"] = COURSE_ID
 
                 # Convert the payload data to a JSON string

@@ -4,7 +4,9 @@
     python3 test_gain.py
 
 1. main.py.gain.patch turns the board's own main.py (board-2026-10-09/main.py,
-   copied off the board before the change) into main.py, byte for byte.
+   copied off the board before the change) into the gain-only main.py, byte for
+   byte. Since 2026-10-10 that file is board-2026-10-10/main.py, as found on the
+   board before the settings change; test_settings.py tests the main.py after it.
 2. Both main.py files are run under CPython with the MicroPython modules
    stubbed and a fake AS7341 that behaves like the board's lib/as7341.py
    (set_again() ignores codes outside 0-10; ASTATUS read straight after a
@@ -28,7 +30,7 @@ import types
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 BEFORE = os.path.join(HERE, "board-2026-10-09", "main.py")
-AFTER = os.path.join(HERE, "main.py")
+AFTER = os.path.join(HERE, "board-2026-10-10", "main.py")   # the gain-only main.py
 GAINS = (0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256, 512)
 failures = 0
 
@@ -193,7 +195,7 @@ def patch_applies():
         r = subprocess.run(["patch", "-p1", "--quiet", "-i", os.path.join(HERE, "main.py.gain.patch")],
                            cwd=tmp, capture_output=True, text=True)
         same = r.returncode == 0 and open(os.path.join(tmp, "main.py"), "rb").read() == open(AFTER, "rb").read()
-        check("main.py.gain.patch turns the board's main.py into main.py", same, (r.stdout + r.stderr).strip())
+        check("main.py.gain.patch turns the board's 10-09 main.py into the gain-only main.py", same, (r.stdout + r.stderr).strip())
 
 
 def unit():
