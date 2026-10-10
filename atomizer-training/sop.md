@@ -16,7 +16,7 @@ Print this page. One line per item, in run order; details and reasons are in the
 - [ ] Vacuum pump oil between min and max; oil-mist canister drained if due [T1 13:14](https://www.youtube.com/embed/wRc8p2_FnJo?start=794)
 - [ ] Heat-exchanger water level OK; facility chilled-water valve barely open [T1 14:56](https://www.youtube.com/embed/wRc8p2_FnJo?start=896) [SP 01:28](https://www.youtube.com/embed/2wMgeI-E7zw?start=88)
 - [ ] Compressed air on: 8 bar supply, ~4 bar regulated [T1 01:27](https://www.youtube.com/embed/wRc8p2_FnJo?start=87)
-- [ ] Argon (5N) on, regulator at 8 bar, both lines fed [OCT2a 01:26](https://www.youtube.com/embed/qYyT39D5Yzo?start=86)
+- [ ] Argon (5N) on, regulator at 8 bar, both lines fed; no more than two argon/nitrogen cylinders in the booth, none manifolded, no dewar ([lab safety](../SOP/lab-safety.md#inert-gas-in-the-booth-no-oxygen-detection-within-limits)) [OCT2a 01:26](https://www.youtube.com/embed/qYyT39D5Yzo?start=86)
 - [ ] Water fittings dry, no drips that are not condensation [OCT2b 29:26](https://www.youtube.com/embed/of5-LhkX_VQ?start=1766)
 - [ ] Power on, HMI login, wait 10 s for furnace communication [T1 24:29](https://www.youtube.com/embed/wRc8p2_FnJo?start=1469)
 - [ ] Choose booster and plate for the target powder; log plate ID and alloy [T5 08:43](https://www.youtube.com/embed/58wJ_Khwgyk?start=523) [T7 18:16](https://www.youtube.com/embed/FDRTt68Vfvo?start=1096)
@@ -70,7 +70,8 @@ Print this page. One line per item, in run order; details and reasons are in the
 - A used HEPA filter goes in a metal tray or basket with sand nearby: fine dust (magnesium, overheated evaporate) can self-ignite [T1 08:51](https://www.youtube.com/embed/wRc8p2_FnJo?start=531).
 - Any displayed error stops heating instantly [T1 17:49](https://www.youtube.com/embed/wRc8p2_FnJo?start=1069); the machine does not block a run on high O₂, you watch the value and set the alarms yourself [T5 33:00](https://www.youtube.com/embed/58wJ_Khwgyk?start=1980).
 - The chamber door locks whenever pressure is off atmospheric; it cannot be opened under pressure or vacuum [T5 44:19](https://www.youtube.com/embed/58wJ_Khwgyk?start=2659) [T1 30:22](https://www.youtube.com/embed/wRc8p2_FnJo?start=1822). Always vent before opening [T5 77:17](https://www.youtube.com/embed/58wJ_Khwgyk?start=4637).
-- Fit a room oxygen sensor: the trainer judged the argon flow too small to be a danger but agreed one should be fitted [T4 09:30](https://www.youtube.com/embed/1F9_4ccwhss?start=570). Tacky mats at the enclosure exit keep powder off shoes (pre-install call).
+- Oxygen detection is not required while the inert-gas booth in 154 CB holds at most two argon or nitrogen cylinders, not manifolded (each on its own piece of equipment), and no dewar. A spare cylinder in the booth counts toward the two. A third cylinder, a manifold, a dewar or any other increase in inert gas means asking Bryant Brown (Industrial Hygienist, College of Engineering) first. Source: his email of 8 Oct 2026 and Sterling's reply the same day; quote and details on the [lab safety page](../SOP/lab-safety.md#inert-gas-in-the-booth-no-oxygen-detection-within-limits). The trainer had judged the argon flow too small to be a danger but suggested a room oxygen sensor [T4 09:30](https://www.youtube.com/embed/1F9_4ccwhss?start=570); this ruling settles that for the current setup.
+- Tacky mats at the enclosure exit keep powder off shoes (pre-install call).
 - Prolonged vibration with solidified metal on the plate can break the plate [T2 32:09](https://www.youtube.com/embed/naePD8o9_Gk?start=1929). Hot metals such as copper splash when atomization goes wrong; the splash plates exist for that [T5 02:21](https://www.youtube.com/embed/58wJ_Khwgyk?start=141).
 
 ## Utilities and daily pre-checks
@@ -93,7 +94,7 @@ Daily, before power-up (the team reads its own version from a phone at [OCT2a 01
 1. Breakers on; module doors closed [T1 00:16](https://www.youtube.com/embed/wRc8p2_FnJo?start=16).
 2. Pump oil in the sight glass; oil-mist canister emptied if due [T1 13:14](https://www.youtube.com/embed/wRc8p2_FnJo?start=794).
 3. Heat-exchanger level; facility chilled-water valve barely open; fittings dry [T1 14:56](https://www.youtube.com/embed/wRc8p2_FnJo?start=896) [SP 01:28](https://www.youtube.com/embed/2wMgeI-E7zw?start=88).
-4. Argon regulator at 8 bar; cylinder pressure noted [OCT2a 01:26](https://www.youtube.com/embed/qYyT39D5Yzo?start=86).
+4. Argon regulator at 8 bar; cylinder pressure noted [OCT2a 01:26](https://www.youtube.com/embed/qYyT39D5Yzo?start=86). Swap an empty cylinder out rather than adding one: the booth limit is two cylinders, unmanifolded, no dewar (see Safety and PPE).
 5. Compressed air on [OCT2a 00:53](https://www.youtube.com/embed/qYyT39D5Yzo?start=53).
 6. Power button; green light [OCT2a 07:24](https://www.youtube.com/embed/qYyT39D5Yzo?start=444). Log in to the HMI (admin plus numbered users; settings hold the high and critical O₂ warnings; the clock is on Polish time) [T1 18:11](https://www.youtube.com/embed/wRc8p2_FnJo?start=1091) [T1 19:22](https://www.youtube.com/embed/wRc8p2_FnJo?start=1162).
 7. Enter the induction atomization program and wait 10 s for furnace communication [T1 24:29](https://www.youtube.com/embed/wRc8p2_FnJo?start=1469).
