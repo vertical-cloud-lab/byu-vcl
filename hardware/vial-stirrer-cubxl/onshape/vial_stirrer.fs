@@ -33,8 +33,8 @@ const MAG_CC = 12.0;          // centre-to-centre, one N up and one S up
 const FOOT = 56.0;            // square footprint
 const FOOT_R = 5.0;
 const CAV = 47.0;             // base cavity
-const FLOOR_T = 2.5;
-const Z_FAN0 = 8.0;           // fan bottom face
+const FLOOR_T = 3.2;           // 1.1 mm left above the 2.1 mm key pockets
+const Z_FAN0 = 9.0;           // fan bottom face (clears the XIAO's USB-C)
 const Z_FAN1 = Z_FAN0 + FAN_T;
 const Z_WALL = Z_FAN1 + 0.5;  // base wall top = holder underside
 const FLANGE_T = 6.0;
@@ -52,11 +52,23 @@ const INSERT_HOLE = 4.0;      // M3 x 5.7 heat-set insert
 const INSERT_OD = 4.6;
 const INSERT_L = 5.7;
 
-// ---- CubXL peg interface (PLACEHOLDER until the deck is measured) --------
-const PEG_D = 6.0;
-const PEG_L = 5.0;
-const PEG_PITCH = 25.0;
-const BOARD_T = 6.0;
+// ---- CubXL+ deck (Cubware PandaDeck.step, from PANDA-BEAR) ----------------
+// 10 mm polycarbonate plate with 10 x 25 mm pill slots (R5 ends), long axis
+// along deck Y, on a 25 mm (X) x 45 mm (Y) grid. Holders locate with glued-in
+// pill keys (Cubware 9VialHolder-key.step): 9.8 x 24.8 mm (R4.9 ends, centres
+// 15 apart), 10 mm tall, with a 2 mm rounded-triangle nub that is glued into a
+// 2.1 mm pocket in the holder. Two keys here, one slot column apart.
+const BOARD_T = 10.0;
+const SLOT_W = 10.0;
+const SLOT_C = 15.0;          // slot / key end-centre spacing
+const PITCH_X = 25.0;
+const PITCH_Y = 45.0;
+const KEY_W = 9.8;
+const KEY_L = 10.0;
+const KEY_X = 12.5;           // keys at x = +-12.5: the vial sits midway between two columns
+const NUB_H = 2.0;
+const NUB_R = 1.0;            // key nub corner radius; the pocket uses 1.1
+const TRI_R = 3.1;            // circumradius of the nub's sharp triangle
 
 // ---- assembly sequence -------------------------------------------------------
 const S_BASE = 1;
@@ -151,6 +163,46 @@ function mkLook(context is Context, q is Query, name is string, c is Color)
     setProperty(context, { "entities" : q, "propertyType" : PropertyType.APPEARANCE, "value" : c });
 }
 
+
+// Rounded equilateral triangle (corner radius r around a sharp triangle of
+// circumradius TRI_R, one vertex toward -y), extruded from z0 to z1 at (cx, cy).
+function mkNub(context is Context, id is Id, cx is number, cy is number, z0 is number, z1 is number, r is number) returns Query
+{
+    const V = [[0, -TRI_R], [TRI_R * sqrt(3) / 2, TRI_R / 2], [-TRI_R * sqrt(3) / 2, TRI_R / 2]];
+    // outward edge normals: AB, BC, CA
+    const N = [[sqrt(3) / 2, -0.5], [0, 1], [-sqrt(3) / 2, -0.5]];
+    const sk = newSketchOnPlane(context, id + "sk", { "sketchPlane" : plane(pt(0, 0, z0), vector(0, 0, 1)) });
+    for (var e = 0; e < 3; e += 1)
+    {
+        const a = V[e];
+        const b = V[(e + 1) % 3];
+        const n = N[e];
+        skLineSegment(sk, "l" ~ e, { "start" : vector(cx + a[0] + r * n[0], cy + a[1] + r * n[1]) * millimeter,
+                                     "end" : vector(cx + b[0] + r * n[0], cy + b[1] + r * n[1]) * millimeter });
+        // arc at vertex b, from this edge's normal to the next edge's normal
+        const n2 = N[(e + 1) % 3];
+        const len = sqrt(b[0] * b[0] + b[1] * b[1]);
+        skArc(sk, "a" ~ e, { "start" : vector(cx + b[0] + r * n[0], cy + b[1] + r * n[1]) * millimeter,
+                             "mid" : vector(cx + b[0] + r * b[0] / len, cy + b[1] + r * b[1] / len) * millimeter,
+                             "end" : vector(cx + b[0] + r * n2[0], cy + b[1] + r * n2[1]) * millimeter });
+    }
+    skSolve(sk);
+    opExtrude(context, id + "ex", { "entities" : qSketchRegion(id + "sk"), "direction" : vector(0, 0, 1),
+                                     "endBound" : BoundingType.BLIND, "endDepth" : (z1 - z0) * millimeter });
+    opDeleteBodies(context, id + "delsk", { "entities" : qCreatedBy(id + "sk") });
+    return qCreatedBy(id + "ex", EntityType.BODY);
+}
+
+// Pill (stadium) prism, long axis along y: width w, end-centre spacing c.
+function mkPill(context is Context, id is Id, cx is number, cy is number, w is number, c is number, z0 is number, z1 is number) returns Query
+{
+    mkBox(context, id + "m", cx - w / 2, cy - c / 2, z0, cx + w / 2, cy + c / 2, z1);
+    mkCyl(context, id + "e1", cx, cy - c / 2, z0, z1, w / 2);
+    mkCyl(context, id + "e2", cx, cy + c / 2, z0, z1, w / 2);
+    mkUnite(context, id + "u", qCreatedBy(id, EntityType.BODY));
+    return qCreatedBy(id, EntityType.BODY);
+}
+
 // ---------------------------------------------------------------------------
 // Parts
 // ---------------------------------------------------------------------------
@@ -172,12 +224,9 @@ function makeBase(context is Context, id is Id) returns Query
         }
     }
     // controller rails and stop
-    mkBox(context, id + "rail1", -22.6, -8.9, FLOOR_T - 0.01, -2.0, -7.4, 3.0);
-    mkBox(context, id + "rail2", -22.6, 7.4, FLOOR_T - 0.01, -2.0, 8.9, 3.0);
-    mkBox(context, id + "stop", -1.6, -5.0, FLOOR_T - 0.01, -0.4, 5.0, 5.5);
-    // pegs into the CubXL deck (placeholder geometry)
-    mkCyl(context, id + "peg1", -PEG_PITCH, 0, -PEG_L, 0.01, PEG_D / 2 - 0.1);
-    mkCyl(context, id + "peg2", PEG_PITCH, 0, -PEG_L, 0.01, PEG_D / 2 - 0.1);
+    mkBox(context, id + "rail1", -22.6, -8.9, FLOOR_T - 0.01, -2.0, -7.4, FLOOR_T + 0.5);
+    mkBox(context, id + "rail2", -22.6, 7.4, FLOOR_T - 0.01, -2.0, 8.9, FLOOR_T + 0.5);
+    mkBox(context, id + "stop", -1.6, -5.0, FLOOR_T - 0.01, -0.4, 5.0, FLOOR_T + 3.0);
     mkUnite(context, id + "u1", qCreatedBy(id, EntityType.BODY));
     // insert holes
     i = 0;
@@ -191,17 +240,19 @@ function makeBase(context is Context, id is Id) returns Query
         }
     }
     // USB-C notch (-x wall), vents (+-y and +x walls)
-    mkBox(context, id + "usb", -FOOT / 2 - 1, -6.5, 2.0, -CAV / 2 + 0.5, 6.5, Z_WALL + 1);
+    mkBox(context, id + "usb", -FOOT / 2 - 1, -6.5, FLOOR_T - 0.6, -CAV / 2 + 0.5, 6.5, Z_WALL + 1);
     for (var k = 0; k < 3; k += 1)
     {
-        const z0 = 9.5 + k * 3.0;
+        const z0 = Z_FAN0 + 1.5 + k * 3.0;
         mkBox(context, id + ("vy" ~ k), -13, -FOOT / 2 - 1, z0, 13, FOOT / 2 + 1, z0 + 1.6);
         mkBox(context, id + ("vx" ~ k), 0, -13, z0, FOOT / 2 + 1, 13, z0 + 1.6);
     }
     const cuts = qUnion([qCreatedBy(id + "fh0", EntityType.BODY), qCreatedBy(id + "fh1", EntityType.BODY), qCreatedBy(id + "fh2", EntityType.BODY), qCreatedBy(id + "fh3", EntityType.BODY),
                 qCreatedBy(id + "ch0", EntityType.BODY), qCreatedBy(id + "ch1", EntityType.BODY), qCreatedBy(id + "ch2", EntityType.BODY), qCreatedBy(id + "ch3", EntityType.BODY),
                 qCreatedBy(id + "usb", EntityType.BODY), qCreatedBy(id + "vy0", EntityType.BODY), qCreatedBy(id + "vy1", EntityType.BODY), qCreatedBy(id + "vy2", EntityType.BODY),
-                qCreatedBy(id + "vx0", EntityType.BODY), qCreatedBy(id + "vx1", EntityType.BODY), qCreatedBy(id + "vx2", EntityType.BODY)]);
+                qCreatedBy(id + "vx0", EntityType.BODY), qCreatedBy(id + "vx1", EntityType.BODY), qCreatedBy(id + "vx2", EntityType.BODY),
+                mkNub(context, id + "pocket1", -KEY_X, 0, -0.01, NUB_H + 0.1, NUB_R + 0.1),
+                mkNub(context, id + "pocket2", KEY_X, 0, -0.01, NUB_H + 0.1, NUB_R + 0.1)]);
     mkSub(context, id + "s2", qSubtraction(qCreatedBy(id, EntityType.BODY), cuts), cuts);
     const q = qCreatedBy(id, EntityType.BODY);
     mkLook(context, q, "Base (printed)", color(0.27, 0.29, 0.33));
@@ -337,11 +388,12 @@ function makeInsert(context is Context, id is Id, x is number, y is number, zTop
 
 function makeController(context is Context, id is Id) returns Query
 {
-    const pcb = mkBox(context, id + "pcb", -22.6, -8.9, 3.0, -1.6, 8.9, 4.2);
+    const z0 = FLOOR_T + 0.5;
+    const pcb = mkBox(context, id + "pcb", -22.6, -8.9, z0, -1.6, 8.9, z0 + 1.2);
     mkLook(context, pcb, "Seeed XIAO RP2040 (purchased)", color(0.05, 0.25, 0.45));
-    const usb = mkBox(context, id + "usb", -23.6, -4.47, 4.2, -16.25, 4.47, 7.46);
+    const usb = mkBox(context, id + "usb", -23.6, -4.47, z0 + 1.2, -16.25, 4.47, z0 + 1.2 + 3.26);
     mkLook(context, usb, "XIAO USB-C receptacle", color(0.78, 0.78, 0.80));
-    const chip = mkBox(context, id + "chip", -12.5, -3.5, 4.2, -5.5, 3.5, 5.0);
+    const chip = mkBox(context, id + "chip", -12.5, -3.5, z0 + 1.2, -5.5, 3.5, z0 + 2.0);
     mkLook(context, chip, "XIAO RP2040 chip", color(0.06, 0.06, 0.06));
     return qCreatedBy(id, EntityType.BODY);
 }
@@ -390,20 +442,30 @@ function makeBar(context is Context, id is Id) returns Query
 
 function makeBoard(context is Context, id is Id) returns Query
 {
-    const body = mkBox(context, id + "plate", -62.5, -50, -BOARD_T, 62.5, 50, 0);
+    const body = mkBox(context, id + "plate", -3 * PITCH_X, -1.5 * PITCH_Y, -BOARD_T, 3 * PITCH_X, 1.5 * PITCH_Y, 0);
     var tools = [];
     var i = 0;
-    for (var ix = -2; ix <= 2; ix += 1)
+    for (var ix = -2; ix <= 3; ix += 1)
     {
         for (var iy = -1; iy <= 1; iy += 1)
         {
-            tools = append(tools, mkCyl(context, id + ("h" ~ i), ix * PEG_PITCH, iy * PEG_PITCH, -BOARD_T - 1, 1, PEG_D / 2 + 0.1));
+            tools = append(tools, mkPill(context, id + ("slot" ~ i), (ix - 0.5) * PITCH_X, iy * PITCH_Y, SLOT_W, SLOT_C, -BOARD_T - 1, 1));
             i += 1;
         }
     }
     mkSub(context, id + "s", body, qUnion(tools));
     const q = qCreatedBy(id, EntityType.BODY);
-    mkLook(context, q, "CubXL deck plate (section, reference only)", color(0.72, 0.74, 0.77));
+    mkLook(context, q, "CubXL+ deck plate, 10 mm polycarbonate (section, reference only)", color(0.80, 0.85, 0.90, 0.55));
+    return q;
+}
+
+function makeKey(context is Context, id is Id, cx is number) returns Query
+{
+    const pill = mkPill(context, id + "pill", cx, 0, KEY_W, SLOT_C, -KEY_L, 0.01);
+    const nub = mkNub(context, id + "nub", cx, 0, 0, NUB_H, NUB_R);
+    mkUnite(context, id + "u", qUnion([pill, nub]));
+    const q = qCreatedBy(id, EntityType.BODY);
+    mkLook(context, q, "Deck key (printed, Cubware 9VialHolder-key)", color(0.92, 0.92, 0.88));
     return q;
 }
 
@@ -428,9 +490,12 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
         {
         // [query, install step, explode offset (mm, z), exploded-view z]
         var groups = [];
-        groups = append(groups, [makeBoard(context, id + "board"), 0, 0, -40]);
+        groups = append(groups, [makeBoard(context, id + "board"), 0, 0, -48]);
         setVariable(context, "dbg", "board");
         groups = append(groups, [makeBase(context, id + "base"), S_BASE, 0, 0]);
+        const k1 = makeKey(context, id + "key1", -KEY_X);
+        const k2 = makeKey(context, id + "key2", KEY_X);
+        groups = append(groups, [qUnion([k1, k2]), S_BASE, -16, -20]);
         setVariable(context, "dbg", "base");
         var ins = [];
         var i = 0;
