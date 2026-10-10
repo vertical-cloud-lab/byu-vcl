@@ -1,0 +1,252 @@
+{
+ "rest": [
+  {
+   "a": "furnace_body",
+   "b": "oring",
+   "depth": 2.5,
+   "at": [
+    123,
+    -39,
+    1342
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "tc_plug",
+   "depth": 8.9,
+   "at": [
+    65,
+    83,
+    1345
+   ]
+  },
+  {
+   "a": "furnace_body",
+   "b": "hood_hinge",
+   "depth": 5.8,
+   "at": [
+    -135,
+    -6,
+    1320
+   ]
+  },
+  {
+   "a": "lever_clevis",
+   "b": "lever_pin",
+   "depth": 2.5,
+   "at": [
+    114,
+    10,
+    1395
+   ]
+  },
+  {
+   "a": "coil_lead0",
+   "b": "coil_lead1",
+   "depth": 1.7,
+   "at": [
+    -197,
+    -6,
+    1198
+   ]
+  },
+  {
+   "a": "hood",
+   "b": "hood_knob",
+   "depth": 4.3,
+   "at": [
+    109,
+    -19,
+    1468
+   ]
+  },
+  {
+   "a": "chamber",
+   "b": "viewport_flange",
+   "depth": 21.6,
+   "at": [
+    -37,
+    -120,
+    1084
+   ]
+  },
+  {
+   "a": "base_frame",
+   "b": "feet",
+   "depth": 2.0,
+   "at": [
+    621,
+    530,
+    110
+   ]
+  },
+  {
+   "a": "side_door_r",
+   "b": "hmi_arm",
+   "depth": 3.0,
+   "at": [
+    633,
+    207,
+    1410
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi",
+   "depth": 19.8,
+   "at": [
+    745,
+    50,
+    1407
+   ]
+  },
+  {
+   "a": "hmi_arm",
+   "b": "hmi_screen",
+   "depth": 18.8,
+   "at": [
+    746,
+    51,
+    1407
+   ]
+  },
+  {
+   "a": "argon_regulator",
+   "b": "argon_gauges",
+   "depth": 4.0,
+   "at": [
+    -540,
+    734,
+    1479
+   ]
+  }
+ ],
+ "anims": {
+  "summary": {
+   "events": [],
+   "below_floor": [],
+   "substeps": [
+    {
+     "label": "F.1",
+     "caption": "Lid open, lever up",
+     "start_frame": 0,
+     "end_frame": 73
+    },
+    {
+     "label": "F.2",
+     "caption": "Holder screwed into the crucible (sped up)",
+     "start_frame": 74,
+     "end_frame": 123
+    },
+    {
+     "label": "F.3",
+     "caption": "Bottom insulation, then the crucible down into the coil",
+     "start_frame": 124,
+     "end_frame": 218
+    },
+    {
+     "label": "F.4",
+     "caption": "Door open, the graphite nut on from below (sped up)",
+     "start_frame": 219,
+     "end_frame": 307
+    },
+    {
+     "label": "F.5",
+     "caption": "Side and top insulation",
+     "start_frame": 308,
+     "end_frame": 350
+    },
+    {
+     "label": "F.6",
+     "caption": "Thermocouple in (sped up)",
+     "start_frame": 351,
+     "end_frame": 380
+    },
+    {
+     "label": "F.7",
+     "caption": "Sealing rod in",
+     "start_frame": 381,
+     "end_frame": 422
+    },
+    {
+     "label": "F.8",
+     "caption": "Lever down, pin in, rod down (sped up)",
+     "start_frame": 423,
+     "end_frame": 454
+    },
+    {
+     "label": "F.9",
+     "caption": "The charge",
+     "start_frame": 455,
+     "end_frame": 510
+    },
+    {
+     "label": "F.10",
+     "caption": "Lid closed",
+     "start_frame": 511,
+     "end_frame": 570
+    },
+    {
+     "label": "S.1",
+     "caption": "Transducer",
+     "start_frame": 571,
+     "end_frame": 621
+    },
+    {
+     "label": "S.2",
+     "caption": "Booster and sonotrode on (sped up)",
+     "start_frame": 622,
+     "end_frame": 666
+    },
+    {
+     "label": "S.3",
+     "caption": "Into the door; connector, plate, upper sonotrode (sped up)",
+     "start_frame": 667,
+     "end_frame": 723
+    },
+    {
+     "label": "S.4",
+     "caption": "Cover on, door shut, stack slid in",
+     "start_frame": 724,
+     "end_frame": 792
+    },
+    {
+     "label": "S.5",
+     "caption": "Three bolts (sped up)",
+     "start_frame": 793,
+     "end_frame": 837
+    },
+    {
+     "label": "R.1",
+     "caption": "Argon in; the coil melts the charge",
+     "start_frame": 838,
+     "end_frame": 969
+    },
+    {
+     "label": "R.1b",
+     "caption": "The coil stirs the melt",
+     "start_frame": 970,
+     "end_frame": 999
+    },
+    {
+     "label": "R.1c",
+     "caption": "The coil stirs the melt",
+     "start_frame": 1000,
+     "end_frame": 1059
+    },
+    {
+     "label": "R.2",
+     "caption": "Vibration on, rod up: the melt onto the plate",
+     "start_frame": 1060,
+     "end_frame": 1188
+    },
+    {
+     "label": "R.3",
+     "caption": "Droplets freeze into powder, down into the container",
+     "start_frame": 1189,
+     "end_frame": 1326
+    }
+   ]
+  }
+ }
+}

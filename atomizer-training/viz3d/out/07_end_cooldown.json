@@ -1,0 +1,59 @@
+{
+ "name": "07_end_cooldown",
+ "fps": 15,
+ "n_frames": 586,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "6.1",
+   "caption": "Crucible empty: one TURBO push clears the last drops and the nozzle.",
+   "start_frame": 0,
+   "end_frame": 67
+  },
+  {
+   "label": "6.2",
+   "caption": "Within seconds: sealing rod DOWN, melting pressure, generator STOP, ultrasonics STOP. Vibrating against solidified metal cracks the plate.",
+   "start_frame": 68,
+   "end_frame": 127
+  },
+  {
+   "label": "7.1",
+   "caption": "Set 250 °C for next time and let it cool. Open at or below 400 °C: above 500 °C graphite burns in air. Cooling water stays on until about 100 °C.",
+   "start_frame": 128,
+   "end_frame": 202
+  },
+  {
+   "label": "7.2",
+   "caption": "Pressure control OFF, press VENT. The door stays locked while the pressure is off atmospheric. Masks and lab coat on.",
+   "start_frame": 203,
+   "end_frame": 262
+  },
+  {
+   "label": "7.3",
+   "caption": "Swing the three bolts back and open the door: the plate comes out with it. If the upper sonotrode would catch the opening's edge, pull the stack back in its housing first. The chamber and cone are water-cooled and wet; the furnace parts are still hot.",
+   "start_frame": 263,
+   "end_frame": 345
+  },
+  {
+   "label": "7.4",
+   "caption": "Brush the plate, bowl, walls and view port down into the container, in a circle, before it comes off. Let the dust settle before reaching in.",
+   "start_frame": 346,
+   "end_frame": 428
+  },
+  {
+   "label": "8.1",
+   "caption": "Close the container valve first (pull down and across: it is heavier than it looks), brush the top, release the clamp and lift it off. Argon stays inside, a semi-protective atmosphere.",
+   "start_frame": 429,
+   "end_frame": 503
+  },
+  {
+   "label": "8.2",
+   "caption": "Pour onto paper, pick out chunks, sieve, bag, 6-character ID label, photo on GitHub. At about 100 °C: heat exchanger, water, air, argon, power off, in any order.",
+   "start_frame": 504,
+   "end_frame": 585
+  }
+ ]
+}

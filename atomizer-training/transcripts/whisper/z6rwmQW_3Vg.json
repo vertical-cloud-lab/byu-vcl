@@ -1,0 +1,112 @@
+{
+"video_id": "z6rwmQW_3Vg",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 94.3659375,
+"segments": [
+{
+"start": 0.11,
+"end": 3.35,
+"text": "over or 2.75 should we cut this?"
+},
+{
+"start": 5.0,
+"end": 6.9,
+"text": "Like a quarter inch more?"
+},
+{
+"start": 10.23,
+"end": 10.87,
+"text": "Sorry what?"
+},
+{
+"start": 11.09,
+"end": 13.31,
+"text": "How much more than 2.75 should we cut this at?"
+},
+{
+"start": 14.07,
+"end": 19.8,
+"text": "The what sorry?"
+},
+{
+"start": 20.58,
+"end": 21.68,
+"text": "Quarter inch more?"
+},
+{
+"start": 22.78,
+"end": 25.94,
+"text": "Okay so here's our plan."
+},
+{
+"start": 27.53,
+"end": 32.69,
+"text": "Cut this in the band saw, the pieces, and then we're going to drill out on the lathe, the interior hole."
+},
+{
+"start": 33.26,
+"end": 40.75,
+"text": "And then we'll also turn out on the blade the plugs."
+},
+{
+"start": 41.51,
+"end": 41.91,
+"text": "Yeah."
+},
+{
+"start": 42.94,
+"end": 44.74,
+"text": "All right, so we've got all that cut."
+},
+{
+"start": 44.96,
+"end": 47.94,
+"text": "Now we have our three three-inch pieces."
+},
+{
+"start": 48.0,
+"end": 50.3,
+"text": "And then this is about one and three-eighths, I think."
+},
+{
+"start": 50.8,
+"end": 51.66,
+"text": "That's what I measured it to."
+},
+{
+"start": 51.78,
+"end": 58.26,
+"text": "So we just left some extra on then so we can turn off the edges, make them flatter and more exact."
+},
+{
+"start": 61.63,
+"end": 62.03,
+"text": "Cool."
+},
+{
+"start": 62.29,
+"end": 63.09,
+"text": "I'll get it just a little bit."
+},
+{
+"start": 63.13,
+"end": 63.77,
+"text": "That's all you need, huh?"
+},
+{
+"start": 64.05,
+"end": 64.99,
+"text": "You just need a guide holder."
+},
+{
+"start": 74.57,
+"end": 75.75,
+"text": "This is the first one."
+},
+{
+"start": 75.85,
+"end": 81.11,
+"text": "We cut the ends so they're flat on both sides and now it's perfectly at 2.75 inches."
+}
+]
+}

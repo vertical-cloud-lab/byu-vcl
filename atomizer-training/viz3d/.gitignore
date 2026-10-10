@@ -1,0 +1,5 @@
+out/mp4/
+.cache/
+__pycache__/
+out/clean/
+out/hd/

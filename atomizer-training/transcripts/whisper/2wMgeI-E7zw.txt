@@ -1,0 +1,232 @@
+[00:02] so we have the main power connection on the back so the whole system is connected to the plug in there and then you
+[00:14] have the backing pump connected here
+[00:18] And the lower port is used for the heat exchanger, on the other side of the device.
+[00:23] We have the argon, connected here with a T, there are two lines where it goes in, and one line for the compressed air, with the blue one.
+[00:33] Plus you can see the two hoses for the cooling of the box, the supply return.
+[00:39] Those are connected to the heat exchanger.
+[00:43] Okay, these two?
+[00:44] Yeah, those two.
+[00:46] While the heat exchanger is connected to your facility at the same time.
+[00:52] The water and the facility here is really cold.
+[00:55] They are going to put something on it.
+[00:58] To isolate it so that there is no conversation.
+[01:04] To be honest, to make it work, we just need to open it.
+[01:07] Very very little bit.
+[01:09] We don't get too much.
+[01:10] Okay, gotcha.
+[01:10] Because the water is so cold that without like applying energy to the system it gave water to cold error.
+[01:18] Oh really?
+[01:19] Okay.
+[01:19] I lowered the threshold a little bit because the threshold is 10 degrees Celsius.
+[01:24] Okay.
+[01:24] As we show in 9.3.
+[01:26] I lowered it to 7 just in case.
+[01:28] Yeah, I gotcha.
+[01:28] But if it will be heated up then there will be no problem.
+[01:32] Okay.
+[01:32] But those we need to keep them.
+[01:35] Open just a little bit.
+[01:36] That's going to be enough.
+[01:38] And then we will observe if the temperature of the water in the exchanger will be rising.
+[01:43] We will adjust it based on that.
+[01:45] The heat exchanger is pretty simple.
+[01:48] So we have the Holland's tank here.
+[01:50] If the water level will be too low...
+[01:53] There is the sensor.
+[01:56] If the water level will be too low, it will just stop working.
+[02:02] or if the temperature will be too high it will stop working or anything else that happens but it's pretty simple and we just have the main switch in here basically we turn it on and
+[02:16] the inverter inside will start working the pump will start pumping you see the pressure here okay and now we have the coolant going to the
+[02:28] system on the screen of the system here you will see the error of cooling water below
+[02:35] which should disappear in the moment.
+[02:37] We can also go to the service mode and check it.
+[02:45] It has a small delay, but you can see we have the three thirds per minute flow rate.
+[02:50] It just needs two.
+[02:51] It doesn't require too much.
+[02:55] This panel is quite level shutting down for now.
+[02:59] In case of the noise, it's possible to open it and even add some insulation inside.
+[03:05] It will bother you, especially if it's pretty closed.
+[03:08] So that's possible.
+[03:11] you know add this like insulation stickers kind of for to reduce the noise from the inside on the so like yeah the inside you can just remove that panel like this uh okay here take it out
+[03:23] put some noise okay okay that makes sense uh you turn on the whole system with the main switch here okay uh this panel controls the
+[03:35] furnace so it controls the pressure and the temperature of the furnace
+[03:39] while we have another panel here which controls the transforming system and what happens in the chamber.
+[03:45] So this one is a version which is equipped in the accounts so you can basically make accounts for everybody so nobody else can use the system.
+[03:57] This is just like what you have normally, the passwords are simple and you can just change them and make new accounts through the account manager.
+[04:08] This program is used to test the ultrasonic vibrations and this one is just used to control the whole system.
+[04:17] Okay, yeah.
+[04:22] It's relatively simple once we go through the whole training and everything.
+[04:26] And that'll be like loading in, doing everything with the...
+[04:29] Yeah, so I know that the schedule for everybody is like mixed but to be honest for most of the time we'll be going through the same things.
+[04:38] Okay.
+[04:40] in the morning we can cover more and whoever is available can come and get the proper training but we can make some notes, some possible changes, some modifications
+[04:52] about the custom models so I already heard that so I know that you want to go with like a new model
+[05:01] For example, if you would like to work with other components on more magnesium, there is an upgrade that helps.
+[05:08] Oh, okay.
+[05:09] What's the upgrade?
+[05:10] A viewport with argon connection, so that we blow a little bit of argon through here to keep the visibility.
+[05:17] Okay, gotcha.
+[05:18] Even though we have the magnesium vapor.
+[05:21] So I know that I think that the whole order was probably processed with the chiller instead of heat exchanger, which means that you basically have a credit.
+[05:30] Oh, okay, got it.
+[05:32] I think it was somewhere in the conversation I also mentioned that Steven, but I think the order wasn't changed to make it just go through.
+[05:41] Yeah, that's right.
+[05:41] So you paid more than you should, which means that you have a few K of credit with us that you can use for extra consumables and extra parts when you will do that.
+[05:50] Okay, perfect.
+[05:52] Okay, lots of crucibles.
+[05:54] You have, because you've got it with additional consumables.
+[05:58] We have a lot of equipment, so it will be very easy to use.
+[06:01] On my side I have rods of aluminum 4047 here, which will be used for the basic training.
+[06:10] I will just show you how to atomize it and how to control the particle size that you're getting.
+[06:16] Because to be honest, with what we have here, we both achieved here.
+[06:21] By changing some parts you can drastically change the outcome of the process in case of particle size distribution.
+[06:32] Every combination doesn't work for every album, but in general there are some tricks that we know, especially for aluminum.
+[06:43] How to get large particles and how to get as small particles as possible.
+[06:50] lower the density, the larger particles you're getting.
+[06:53] So this is something that you will not be able to resist.
+[06:57] Okay.
+[06:58] Yeah, that makes sense.
+[06:59] And then I'm guessing that's just like from the setup.
+[07:01] Like some of the water was just from the setup.
+[07:03] Can this be moved back once that's dry?
+[07:06] Or does it need to...
+[07:06] It would be hard because of...
+[07:09] Oh, yeah, yeah.
+[07:09] Gotcha.
+[07:10] Okay.
+[07:10] To be honest, longer flexible hoses, maybe some kind of...
+[07:17] Okay.
+[07:18] angle here and then we can place it.
+[07:20] But right now it's just too stiff.
+[07:22] I don't want to break it.
+[07:24] For the training, keep it that way.
+[07:29] This is the core of the ultrasonic system, so the ultrasonic traducer that we basically connect.
+[07:37] Okay, here we connect the coolant.
+[07:40] So there was one key with the system.
+[07:42] It was right now we used to connect the jargon, but I think I have another one with me in the bog.
+[07:47] Otherwise, I will just visit his house or anything and figure something out.
+[07:52] It's compressed there, so it doesn't have to be perfectly tight.
+[07:55] But I know that the threads are different with a bit of tough on tape.
+[08:00] I can make them fit.
+[08:02] I will cover it but we want to have as much compressor flow as possible in the transistors to keep it cold.
+[08:10] It's worse in case of plasma process where you have ultrasonic system working continuously for hours and in here it's just 10 minutes.
+[08:18] We just connect it in here, choose the right plate, the vibrating plate and go on.
+[08:28] This is something you don't want to drop, you don't want it to be affected by moisture or anything.
+[08:33] Okay, gotcha.
+[08:36] And so that basically gets installed and then taken off each time or just installed once usually?
+[08:41] So it's installed, there will be like one rod here and then you put on the plate and the final rod to keep the vibrating plate in position.
+[08:51] The plate is a consumable.
+[08:54] Depending on what you do, it may handle one process or it may handle a few processes.
+[08:58] If it breaks, you just need to open the chamber, change it, and go on.
+[09:02] One process meaning like one 10 minute run?
+[09:05] Yeah, one pouring.
+[09:06] It's usually, it may, even if it cracks a little bit or something happens to it, usually once it runs, it's able to run.
+[09:13] But then if you try to run it again, it may not work.
+[09:17] And if it does break and like...
+[09:20] would molten metal start dripping into the bottom of the chamber?
+[09:23] Yeah, that's why you have like a crucible there.
+[09:26] Okay, gotcha.
+[09:26] So this is like the one we use, but you can put anything you want in there.
+[09:30] Yeah, gotcha.
+[09:30] Just a ceramic crucible that will catch it.
+[09:33] And about how much is one sonotrode usually?
+[09:37] It's only one plate.
+[09:38] Depends, but from 10, 12 dollars to the most expensive is like 70, 80.
+[09:45] Oh, okay.
+[09:46] Yeah, not hundreds.
+[09:47] No, no.
+[09:47] Okay.
+[09:47] Okay.
+[09:48] Although the extensive one is a one that's like highly specialized carbon fiber coated with tanks and plasma metal that we have like order from Korea.
+[10:00] Okay, yeah, I gotcha.
+[10:01] Where we supply in larger quantities.
+[10:04] Okay, so replacing that isn't going to be a big thing to do.
+[10:07] For example, in general if you are in for smaller particles, the plates are going to last longer.
+[10:12] Okay.
+[10:12] Because we will then try to limit the amplitude, try to limit the intensity of vibrations and that causes everything to just like have a longer life time.
+[10:22] Okay, that makes sense.
+[10:23] The furnace where we load the material, so you have a bunch of crucibles, you have a bunch of everything.
+[10:33] So the one thing is, I am not sure if you move into those consumables, if it is normal.
+[10:40] If you have the boron nitrate spray, I think you give it to plasma.
+[10:47] But in general, if you want to work with materials that are going to be slightly reactive, it's good to coat the crucible.
+[10:56] So we usually work with the boron nitrate spray.
+[11:01] I can just let you know exactly which one.
+[11:04] you can also get some options in states.
+[11:08] I think in Oak Ridge there is also a company that makes some kinds of coding.
+[11:17] Because you can use each file, you can use basically anything that you think will work.
+[11:22] From our experience, Boral Maelstrike is usually the best or is the most flexible one.
+[11:33] For aluminum and magnesium, do you think this will be fine?
+[11:35] Yeah, it will be fine without magnesium.
+[11:38] One question, and this might be a repeat of some previous conversations, but if we're switching out the...
+[11:45] If we're not doing the same material system every time, like let's say it's always going to have aluminum and magnesium, but we're going to try different ones.
+[11:52] You can use the same one.
+[11:54] Yeah, okay.
+[11:55] Because...
+[11:55] After the process you should be able to remove almost everything.
+[11:59] There's always some more slag left over that you just peel off from the bottom.
+[12:03] You may see some micro leftovers on the walls but it's not going to affect too much.
+[12:09] Same with the sealing rods.
+[12:11] In most cases you can just peel this kind of slag from them.
+[12:15] There may be some leftovers you just polish them.
+[12:18] As long as the tip is smooth it's going to work fine.
+[12:22] Are these graphite or what?
+[12:24] Yeah, graphite.
+[12:25] Graphite, but you also have some exceptions because the extended consumable pack that you have, it's not only the same consumables but more, but there are also a few extra
+[12:38] things that we use.
+[12:40] So like special cover, some materials may have a tendency to create some splashes.
+[12:47] A different type of insulation, which is like...
+[12:51] let's say it's creating less dust it's denser and generally meant for higher temperatures okay uh so for some processes like where you want to keep extra purity it may be helpful yeah and
+[13:03] i'm seeing two two full masks yeah you are getting like the masks you are getting uh the air protection you are getting the filters like yeah it's ear protection
+[13:15] Because of the ultrasonic.
+[13:17] You should have it.
+[13:19] But you will see that the induction system itself is also a bit noisy.
+[13:23] The induction coil, when it works, for some people it may not be pleasant.
+[13:29] How do you think it's going to be for people outside of the lab?
+[13:33] Fine.
+[13:34] They will feel here that the device is working but it will not bother you that much.
+[13:40] How do you feel about the space here?
+[13:43] Does it seem good for the...
+[13:44] Okay.
+[13:45] Yeah.
+[13:46] Okay.
+[13:48] Did Gage show you some of the rods that we're hoping to test on Wednesday?
+[13:53] Not yet.
+[13:53] He might have...
+[13:54] I wonder if he has it here.
+[14:02] He might not.
+[14:11] Well, I guess it's very similar to the rods that you have, but where we bored a hole into it, and then we're loading some powder, and then putting a cap on, basically.
+[14:22] So, maybe...
+[14:24] Maybe that'll work.
+[14:25] If it doesn't, then we'll do arc melting and stuff.
+[14:27] I mean, it's always, yeah, it's always better to, or sinter it at least.
+[14:30] Yeah.
+[14:30] Any kind of concentration will be helpful.
+[14:33] But if it's not pure powder, it has higher chance to work.
+[14:37] Because the powder may just get dissolved.
+[14:39] Okay.
+[14:40] Yeah.
+[14:40] Okay.
+[14:43] That sounds...
+[14:43] Yeah.
+[14:44] Everything did go really smoothly.
+[14:46] Other than they go really fast.
+[14:48] Yeah.
+[14:49] We didn't need to look for anything for work.
+[14:52] Yeah.
+[14:53] i think it was 8 30 a.m is that right when we're getting getting started yeah okay yeah yeah cool and then yeah we've done some tests with the vacuum and it'd be nice
+[15:05] if we could also i guess use the vacuum during the during the runs to all right well right now i my car is
+[15:17] DRAM because the oh okay okay gotcha so i think
+[15:22] He was supposed to be told that he will take care of the parking pass.
+[15:27] Oh, okay.
+[15:29] He will be able to confirm it before tomorrow.
+[15:32] Okay, okay, gotcha.
+[15:34] Where is the best place to park?
+[15:36] So, if you're coming at 8.30, the visitor's lot I think would have some space in it.
+[15:41] When did you come this morning?
+[15:43] 8.45.
+[15:44] And the visitor's lot was totally full?
+[15:46] I'm not sure if it was the lot right next to the department.
+[15:50] That's where we were aiming.
+[15:51] Oh, okay.
+[15:52] I'll show you.
+[15:53] I'll drop you a pin for the visitor slot, and that's usually...
+[15:56] Okay, perfect.

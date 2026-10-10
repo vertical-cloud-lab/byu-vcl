@@ -1,0 +1,202 @@
+{
+"video_id": "u-KjR5TENN4",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, no vad)",
+"duration": 1124.8906875,
+"segments": [
+{
+"start": 2.42,
+"end": 3.38,
+"text": "Let's do it."
+},
+{
+"start": 57.18,
+"end": 59.98,
+"text": "So, let's go."
+},
+{
+"start": 87.18,
+"end": 89.98,
+"text": "So, let's go."
+},
+{
+"start": 90.0,
+"end": 92.46,
+"text": "Let's go."
+},
+{
+"start": 147.18,
+"end": 149.98,
+"text": "So, let's go."
+},
+{
+"start": 157.02,
+"end": 158.42,
+"text": "So..."
+},
+{
+"start": 201.84,
+"end": 209.9,
+"text": "I'm going to go to the top of the pan."
+},
+{
+"start": 210.0,
+"end": 236.5,
+"text": "I'm going"
+},
+{
+"start": 236.5,
+"end": 239.9,
+"text": "to put it in the pan."
+},
+{
+"start": 261.1,
+"end": 269.9,
+"text": "I'm going to put it in the oven."
+},
+{
+"start": 278.7,
+"end": 279.12,
+"text": "Thank you."
+},
+{
+"start": 317.92,
+"end": 323.2,
+"text": "I don't know."
+},
+{
+"start": 334.42,
+"end": 335.82,
+"text": "so"
+},
+{
+"start": 360.36,
+"end": 361.76,
+"text": "Okay."
+},
+{
+"start": 393.5,
+"end": 394.9,
+"text": "Okay."
+},
+{
+"start": 425.82,
+"end": 427.22,
+"text": "so"
+},
+{
+"start": 452.6,
+"end": 454.0,
+"text": "Okay."
+},
+{
+"start": 482.3,
+"end": 483.7,
+"text": "Hmm."
+},
+{
+"start": 516.86,
+"end": 518.26,
+"text": "Thank you."
+},
+{
+"start": 567.18,
+"end": 569.98,
+"text": "So, I'm going to go ahead and put it in the bag."
+},
+{
+"start": 571.78,
+"end": 573.18,
+"text": "Okay."
+},
+{
+"start": 602.02,
+"end": 603.42,
+"text": "Okay."
+},
+{
+"start": 630.0,
+"end": 631.8,
+"text": "I'm sorry."
+},
+{
+"start": 660.0,
+"end": 660.04,
+"text": "Thank you."
+},
+{
+"start": 691.66,
+"end": 693.06,
+"text": "Okay."
+},
+{
+"start": 725.92,
+"end": 728.42,
+"text": "I love you."
+},
+{
+"start": 771.86,
+"end": 779.48,
+"text": "I'm going to go ahead and cook."
+},
+{
+"start": 783.24,
+"end": 784.88,
+"text": "Thank you."
+},
+{
+"start": 814.34,
+"end": 816.44,
+"text": "Thank you."
+},
+{
+"start": 846.28,
+"end": 847.78,
+"text": "Thank you."
+},
+{
+"start": 877.32,
+"end": 878.72,
+"text": "so"
+},
+{
+"start": 904.52,
+"end": 905.92,
+"text": "Okay."
+},
+{
+"start": 930.0,
+"end": 930.54,
+"text": "Okay."
+},
+{
+"start": 967.8,
+"end": 969.2,
+"text": "so"
+},
+{
+"start": 991.82,
+"end": 993.22,
+"text": "Okay."
+},
+{
+"start": 1029.34,
+"end": 1030.74,
+"text": "So..."
+},
+{
+"start": 1053.14,
+"end": 1054.54,
+"text": "Okay."
+},
+{
+"start": 1084.88,
+"end": 1086.28,
+"text": "Okay."
+},
+{
+"start": 1116.42,
+"end": 1118.48,
+"text": "so you"
+}
+]
+}

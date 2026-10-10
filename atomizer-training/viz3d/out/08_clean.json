@@ -1,0 +1,47 @@
+{
+ "name": "08_clean",
+ "fps": 15,
+ "n_frames": 666,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "9.1",
+   "caption": "Same alloy next: open, brush, vacuum. A material change takes about an hour: vacuum, then wipe everything. Brushes, paper towels and isopropanol only.",
+   "start_frame": 0,
+   "end_frame": 89
+  },
+  {
+   "label": "9.2",
+   "caption": "Upper sonotrode off, then the plate off the connector. Never grind or clean a plate: one per alloy, logged (1–3 runs each). A stainless scraper for stuck particles, never plastic.",
+   "start_frame": 90,
+   "end_frame": 164
+  },
+  {
+   "label": "9.3",
+   "caption": "Once the furnace can be touched (150 °C is too hot): lid open, SEALING ROD up, safety pin out, lever up, rod out. Scrape Al off its shaft and keep the tip smooth.",
+   "start_frame": 165,
+   "end_frame": 254
+  },
+  {
+   "label": "9.4",
+   "caption": "Strip it in order: thermocouple, top and side insulation; through the door, hold the graphite nut and unscrew it from below with the seal, so nothing falls; then the crucible comes up and out, and the bottom insulation.",
+   "start_frame": 255,
+   "end_frame": 407
+  },
+  {
+   "label": "9.5",
+   "caption": "On the bench, unscrew the holder and lift the nozzle out. Look through it for light; unclog it with a needle or drill it to Ø0.7; swap it if a new charge would not push through.",
+   "start_frame": 408,
+   "end_frame": 500
+  },
+  {
+   "label": "9.6",
+   "caption": "Reassemble in the same order as before a run: nozzle, holder, bottom insulation, crucible, nut, insulation, thermocouple, rod, lever. Wipe the O-rings; HEPA filter about every two months (sand tray).",
+   "start_frame": 501,
+   "end_frame": 665
+  }
+ ]
+}

@@ -1,0 +1,784 @@
+1
+00:00:05,710 --> 00:01:29,160
+Probably, but
+
+2
+00:01:29,160 --> 00:01:36,180
+we can wipe it down.
+
+3
+00:01:36,300 --> 00:01:36,640
+Okay.
+
+4
+00:01:55,480 --> 00:01:56,200
+What time is it?
+
+5
+00:01:59,800 --> 00:02:00,200
+Uh-oh.
+
+6
+00:02:06,860 --> 00:02:07,980
+I'm supposed to meet Dr.
+
+7
+00:02:08,060 --> 00:02:11,000
+Barrett at 2.30, but I'll just tell him.
+
+8
+00:02:12,020 --> 00:02:12,200
+Wait.
+
+9
+00:02:24,780 --> 00:02:32,370
+We've just figured out some kinks and are about to start purging period.
+
+10
+00:02:36,220 --> 00:02:39,100
+Can we move our meeting back to 3 p.m.
+
+11
+00:02:39,160 --> 00:02:39,480
+push mark?
+
+12
+00:02:43,240 --> 00:02:45,240
+Maybe even 3.15 push mark?
+
+13
+00:03:00,270 --> 00:03:01,270
+Uh, you wiped it down?
+
+14
+00:03:01,510 --> 00:03:01,610
+Yeah.
+
+15
+00:03:04,730 --> 00:03:06,150
+Okay, which orientation should we put it in?
+
+16
+00:03:06,870 --> 00:03:07,430
+Just this way.
+
+17
+00:03:09,540 --> 00:03:10,280
+Probably the best.
+
+18
+00:03:15,910 --> 00:03:21,210
+I don't know.
+
+19
+00:03:21,430 --> 00:03:24,370
+I really don't know how fragile graphite is.
+
+20
+00:03:25,970 --> 00:03:28,170
+Barthage may sound like if you dropped it at all.
+
+21
+00:03:28,530 --> 00:03:45,470
+I don't like that at all, but I dropped
+
+22
+00:03:45,470 --> 00:03:45,710
+it.
+
+23
+00:03:48,180 --> 00:03:49,660
+Probably sound good.
+
+24
+00:03:59,010 --> 00:03:59,790
+That is down.
+
+25
+00:04:03,110 --> 00:04:03,970
+Alright, so.
+
+26
+00:04:05,070 --> 00:04:06,330
+Set at 250 degrees.
+
+27
+00:04:08,570 --> 00:04:09,270
+Still recording?
+
+28
+00:04:09,830 --> 00:04:09,930
+Yeah.
+
+29
+00:04:11,560 --> 00:04:17,700
+All right, green light is on.
+
+30
+00:04:18,470 --> 00:04:19,730
+Turn on pressure control.
+
+31
+00:04:23,110 --> 00:04:27,390
+All right, now we're going to put some vacuum pump and gas wash.
+
+32
+00:04:48,060 --> 00:04:53,720
+Yeah, so and then we'll do it.
+
+33
+00:04:53,740 --> 00:04:56,480
+We're doing it right now before we go temperature at almost.
+
+34
+00:04:57,180 --> 00:04:58,700
+Right now it's only sitting at 30 degrees.
+
+35
+00:05:05,350 --> 00:05:07,510
+Three washes, well, it's like four washes total.
+
+36
+00:05:08,200 --> 00:05:19,570
+So, yeah, one wash of the whole system at room temperature, then one wash at 250, then two washes at 500 if needed.
+
+37
+00:05:19,890 --> 00:05:27,640
+From the oxygen, accurate.
+
+38
+00:05:28,430 --> 00:05:31,290
+If it's under, if it's like low 20s, he says that's good.
+
+39
+00:06:32,220 --> 00:06:33,140
+Melting pressure.
+
+40
+00:06:54,140 --> 00:07:00,460
+It's kind of nice to know that all of this is for the chamber, and this is for like...
+
+41
+00:07:02,960 --> 00:07:06,460
+There's like two different, entirely different sections.
+
+42
+00:07:06,760 --> 00:07:07,240
+Yeah.
+
+43
+00:07:08,440 --> 00:07:11,410
+I don't know.
+
+44
+00:07:19,300 --> 00:07:20,940
+Maybe just put a date on that.
+
+45
+00:08:01,410 --> 00:08:03,190
+Now it's going back up with argon.
+
+46
+00:08:04,430 --> 00:08:07,580
+All right, now turn on this guy.
+
+47
+00:08:08,950 --> 00:08:10,430
+Open these a little bit.
+
+48
+00:08:19,850 --> 00:08:22,790
+Wait for cooling water flow to go off.
+
+49
+00:08:24,690 --> 00:08:25,210
+What's that say?
+
+50
+00:08:26,900 --> 00:08:27,660
+I know.
+
+51
+00:08:31,350 --> 00:08:43,740
+Seems like we could yeah, maybe we can figure out a way to Uh-huh 80
+
+52
+00:08:46,620 --> 00:08:47,160
+psi.
+
+53
+00:08:47,180 --> 00:08:48,260
+Hey, that's high.
+
+54
+00:09:04,960 --> 00:09:12,250
+Okay, so that's good now generator start.
+
+55
+00:09:18,710 --> 00:09:19,910
+Why is everything a whistle?
+
+56
+00:09:20,190 --> 00:09:32,470
+All right, so once that gets up to 250 degrees I'm gonna press vacuum pump and gas wash
+
+57
+00:09:32,470 --> 00:09:39,990
+again, right?
+
+58
+00:10:12,050 --> 00:10:12,310
+Yeah
+
+59
+00:10:39,880 --> 00:10:41,260
+No, it all does.
+
+60
+00:10:41,400 --> 00:10:43,220
+It just seems way faster.
+
+61
+00:10:44,580 --> 00:10:46,440
+Yeah, it's because this does five cycles.
+
+62
+00:10:47,160 --> 00:10:48,100
+Sorry, that's what I meant.
+
+63
+00:10:48,300 --> 00:10:50,220
+So five cycles per wash.
+
+64
+00:10:50,580 --> 00:10:52,160
+And only one cycle per wash.
+
+65
+00:10:52,720 --> 00:11:18,320
+Same cycle.
+
+66
+00:11:18,740 --> 00:11:20,380
+The washing cycle, you just press gas wash.
+
+67
+00:11:21,040 --> 00:11:23,000
+So vacuum pump, gas wash.
+
+68
+00:11:23,760 --> 00:11:26,040
+So then it has the ability to suck it out.
+
+69
+00:11:49,910 --> 00:11:50,830
+Melting pressure.
+
+70
+00:11:53,050 --> 00:11:53,570
+Then press.
+
+71
+00:11:59,400 --> 00:12:02,100
+So pressure control keeps this at 150 M bar.
+
+72
+00:12:02,720 --> 00:12:04,320
+I'm going to turn that off so we can suck it out.
+
+73
+00:12:04,520 --> 00:12:04,860
+Okay.
+
+74
+00:12:06,250 --> 00:12:12,130
+We just watch here now.
+
+75
+00:12:12,950 --> 00:12:42,190
+It's just
+
+76
+00:12:42,190 --> 00:12:42,570
+here.
+
+77
+00:12:42,750 --> 00:13:07,030
+Now we
+
+78
+00:13:07,030 --> 00:13:10,470
+can change this temperature up to 500.
+
+79
+00:13:18,240 --> 00:13:22,880
+It kind of surprises me there's no like manual setting where you can just like a keypad or something.
+
+80
+00:13:23,630 --> 00:13:24,210
+The what, sorry?
+
+81
+00:13:24,530 --> 00:13:28,030
+It surprises me there's no keypad or anything to type in an exact number.
+
+82
+00:13:28,370 --> 00:13:28,770
+All right.
+
+83
+00:13:29,730 --> 00:13:41,030
+Bartos are saying that the furnace system is like a different company and they won't let them like interface with each other.
+
+84
+00:13:41,390 --> 00:13:43,070
+And so that's why these are separate.
+
+85
+00:13:43,410 --> 00:13:49,670
+That's why it should be really easy to do a single button that does this entire cycle that we're doing.
+
+86
+00:13:49,970 --> 00:13:54,130
+But they can't because this company won't let them access it or something.
+
+87
+00:13:54,430 --> 00:13:54,610
+What?
+
+88
+00:13:57,270 --> 00:13:58,870
+And I don't know what the whole situation is.
+
+89
+00:13:58,950 --> 00:14:00,670
+Maybe it's not like that.
+
+90
+00:14:00,910 --> 00:14:02,330
+There's another reason.
+
+91
+00:14:02,990 --> 00:14:04,190
+That's what you made it sound like.
+
+92
+00:14:05,350 --> 00:14:06,190
+Yeah, I don't know.
+
+93
+00:14:06,390 --> 00:14:11,390
+That's what it sounds like to me, but I don't know what the real situation is.
+
+94
+00:14:20,390 --> 00:14:21,770
+Okay, so that's at 500.
+
+95
+00:14:22,410 --> 00:14:25,830
+Now we press vacuum pump and gas wash again.
+
+96
+00:14:33,890 --> 00:14:38,170
+These guys?
+
+97
+00:14:39,330 --> 00:14:40,730
+These are the chilled water.
+
+98
+00:14:46,850 --> 00:14:47,330
+Do you feel it?
+
+99
+00:14:47,410 --> 00:14:48,150
+It's like really cold.
+
+100
+00:14:50,460 --> 00:14:51,160
+This too.
+
+101
+00:15:02,180 --> 00:15:04,460
+So see that little white hat hose right there?
+
+102
+00:15:04,960 --> 00:15:06,440
+That's the argon into this tank.
+
+103
+00:15:06,580 --> 00:15:07,880
+I don't know where it comes from this side.
+
+104
+00:15:41,980 --> 00:15:44,140
+He said we could atomize gold and silver in this.
+
+105
+00:15:45,710 --> 00:15:47,010
+Can you imagine atomizing gold?
+
+106
+00:15:52,990 --> 00:15:53,890
+A bag of powder.
+
+107
+00:15:54,510 --> 00:15:58,450
+Yeah, I wonder what percent you'd actually get back on your wedding ring.
+
+108
+00:16:01,770 --> 00:16:02,210
+Yeah.
+
+109
+00:16:06,810 --> 00:16:17,230
+A 3D printed gold ring?
+
+110
+00:16:17,630 --> 00:16:18,650
+That'd be crazy.
+
+111
+00:16:26,170 --> 00:16:27,030
+Yeah, that's a good question.
+
+112
+00:16:31,590 --> 00:16:33,110
+All right, I'm going to turn off pressure control.
+
+113
+00:16:34,810 --> 00:17:40,750
+Okay, so
+
+114
+00:17:40,750 --> 00:17:42,010
+now pressure control.
+
+115
+00:18:10,190 --> 00:18:22,660
+okay so it's in low 20s so i think we're good we don't have to do the we don't have to do another purge cycle um so just write down
+
+116
+00:18:22,660 --> 00:19:15,880
+the m
+
+117
+00:19:15,880 --> 00:19:28,400
+bar all right now we can bring this up to 800.
+
+118
+00:19:33,020 --> 00:19:45,050
+is there a reason that you went to remember you went to 850 and then brought it down to 800 um that yeah i can't remember what that was about i think you just like felt like that was
+
+119
+00:19:45,050 --> 00:19:47,820
+a good amount so i guess we'll just have to play with it
+
+120
+00:19:48,460 --> 00:20:01,270
+it's not like exactly yeah i'm gonna set it to 8 30 and see how that does so we're hoping is that this is gonna mix well this is
+
+121
+00:20:01,270 --> 00:20:20,120
+still recording yep we're hoping this is gonna mix well oh it's starting to glow that'd be
+
+122
+00:20:20,120 --> 00:22:02,030
+sweet i'd invest in that i don't
+
+123
+00:22:02,030 --> 00:22:15,390
+think it's melting just yet though so how
+
+124
+00:22:15,390 --> 00:22:31,600
+many um how long were these uh caps that you made just looks
+
+125
+00:22:31,600 --> 00:22:33,500
+like maybe we don't need to make them so long since
+
+126
+00:22:34,600 --> 00:22:36,440
+It didn't go hardly in at all, you know?
+
+127
+00:22:48,780 --> 00:23:16,280
+What ordering could
+
+128
+00:23:16,280 --> 00:23:16,780
+explode.
+
+129
+00:23:27,890 --> 00:23:33,170
+I guess we'll see if .17 bar is high enough.
+
+130
+00:23:33,710 --> 00:23:34,870
+He kept turning it down.
+
+131
+00:23:37,180 --> 00:23:38,140
+Oh, hey, it's melting.
+
+132
+00:23:41,190 --> 00:23:41,850
+Oh, it's gone.
+
+133
+00:23:44,550 --> 00:23:45,930
+Definitely not a lot in there.
+
+134
+00:23:48,530 --> 00:23:50,170
+I'm not seeing...
+
+135
+00:23:50,520 --> 00:23:51,240
+Oh, wait.
+
+136
+00:23:54,360 --> 00:23:57,680
+I see something that looks like the powder might be clumped up again.
+
+137
+00:23:59,370 --> 00:24:00,630
+No, I think it's mixing.
+
+138
+00:24:02,220 --> 00:24:07,240
+Yeah, I think it wasn't there a little bit and then it melted or might be still something.
+
+139
+00:24:07,520 --> 00:24:11,990
+As the induction happens, it mixes it a little bit.
+
+140
+00:24:12,250 --> 00:24:13,930
+Yeah, exactly.
+
+141
+00:24:18,610 --> 00:24:21,670
+It's kind of amazing the heat from the window versus like...
+
+142
+00:24:23,460 --> 00:24:24,620
+Oh, this is like full.
+
+143
+00:24:24,960 --> 00:24:25,200
+Yeah.
+
+144
+00:24:27,380 --> 00:24:30,420
+Okay, so we let that go for about two minutes.
+
+145
+00:24:32,470 --> 00:24:36,550
+And then all hell is going to break loose when we try to get this to atomize properly.
+
+146
+00:24:37,030 --> 00:25:00,020
+Yeah, it
+
+147
+00:25:00,020 --> 00:25:02,310
+might be too much.
+
+148
+00:25:02,540 --> 00:25:06,430
+So I'm going to bring it to about 90.
+
+149
+00:25:09,160 --> 00:25:21,090
+What's interesting about this is you can't really know what that's set to.
+
+150
+00:25:23,670 --> 00:25:26,350
+So we're going to have to create digital readouts.
+
+151
+00:25:26,950 --> 00:25:30,330
+So we know, okay, this is 90, maybe, you know.
+
+152
+00:25:31,310 --> 00:25:32,810
+It's like 88 to 100 there.
+
+153
+00:25:34,580 --> 00:25:35,620
+Around 90, yeah.
+
+154
+00:25:48,940 --> 00:25:50,400
+All right, so I'm going to do the thing now.
+
+155
+00:25:52,980 --> 00:25:53,740
+Check the plate.
+
+156
+00:25:59,330 --> 00:26:00,290
+What plate is this?
+
+157
+00:26:03,380 --> 00:26:03,820
+Yeah.
+
+158
+00:26:06,100 --> 00:26:07,380
+I'm not going to go to the carpet.
+
+159
+00:26:09,470 --> 00:26:25,470
+All right,
+
+160
+00:26:25,510 --> 00:26:26,250
+hopefully this goes well.
+
+161
+00:26:26,390 --> 00:26:26,730
+We'll see.
+
+162
+00:26:26,890 --> 00:26:28,250
+Ceiling rod, grinning pressure.
+
+163
+00:26:48,670 --> 00:26:49,710
+Will you turn off the frequency?
+
+164
+00:26:50,190 --> 00:27:00,990
+Hey, look at that.
+
+165
+00:27:01,570 --> 00:27:02,550
+It's totally working.
+
+166
+00:27:08,710 --> 00:27:09,410
+Yep, I think so.
+
+167
+00:27:11,050 --> 00:27:13,070
+Most of it did not get atomized, unfortunately.
+
+168
+00:27:24,510 --> 00:27:27,830
+Okay, so it was definitely too high.
+
+169
+00:27:27,970 --> 00:27:29,270
+It should have been a lot lower, I think.
+
+170
+00:27:29,390 --> 00:27:30,170
+That would have helped a lot.
+
+171
+00:27:31,490 --> 00:27:32,050
+Let's see.
+
+172
+00:27:33,430 --> 00:27:37,430
+The plate needed to be a lot closer to the thing.
+
+173
+00:27:37,770 --> 00:27:39,670
+So I have more time to run down it.
+
+174
+00:27:41,550 --> 00:27:42,910
+Once I have a ceiling rod.
+
+175
+00:27:44,550 --> 00:27:45,610
+Dinner to stop.
+
+176
+00:27:47,230 --> 00:27:48,330
+And ultrasonic to start.
+
+177
+00:27:50,020 --> 00:27:50,740
+Cooler, yeah.
+
+178
+00:27:59,630 --> 00:28:00,150
+Temperature.
+
+179
+00:28:00,430 --> 00:28:03,660
+Bring this down to 250.
+
+180
+00:28:06,910 --> 00:28:07,910
+Well, we got some.
+
+181
+00:28:08,090 --> 00:28:10,590
+I don't know how much, but definitely some.
+
+182
+00:28:14,890 --> 00:28:15,110
+Yeah?
+
+183
+00:28:15,990 --> 00:28:16,990
+Like, you can see a pile?
+
+184
+00:28:17,890 --> 00:28:19,050
+Oh, good.
+
+185
+00:28:23,710 --> 00:28:24,230
+250.
+
+186
+00:28:37,410 --> 00:28:40,090
+Okay, now we seem to wait until it's 400 degrees up here.
+
+187
+00:28:40,810 --> 00:28:42,010
+Then we can...
+
+188
+00:28:42,600 --> 00:28:55,040
+Open this and cool up faster and then we'll clean it It's the the
+
+189
+00:28:55,040 --> 00:29:01,580
+graphite when exposed to oxygen above 400 degrees or above 500 degrees Reacts with oxygen.
+
+190
+00:29:01,720 --> 00:29:06,720
+Okay, and so when it's below 400 or once it's at 400 degrees, it's safe to expose it to oxygen.
+
+191
+00:29:07,880 --> 00:29:08,980
+Kind of interesting, huh?
+
+192
+00:29:20,430 --> 00:29:27,860
+Right, I love it like water dripping on
+
+193
+00:29:30,750 --> 00:29:55,170
+No, this is leaking so we need to get up we need to tighten that more something Yeah, first atomizer
+
+194
+00:29:55,170 --> 00:29:56,450
+run by ourselves.
+
+195
+00:29:56,630 --> 00:30:11,290
+Whoo pause the
+
+196
+00:30:11,290 --> 00:30:11,510
+video
+
