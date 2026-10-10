@@ -2,43 +2,57 @@
 
 Back to [all companies](README.md) · [company profile](../companies/periodic-labs.md)
 
-**46 postings recovered**, 36 with the full description; 34 still open on 2026-10-10. First seen 2025-09-18, latest 2026-10-08. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**59 postings recovered**, 56 with the full description; 34 still open on 2026-10-10. First seen 2025-09-18, latest 2026-10-07. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2025-09-18 | 2025-10-01 | [Supercompute Infrastructure Engineer](#supercompute-infrastructure-engineer-2025-09-18) | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930191254/https://jobs.ashbyhq.com/periodic-labs/58d01f5b-c1c2-4e2e-88e3-32baf1882f50) [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | open | [Automation Engineer](#automation-engineer-2025-09-22) | lab-automation | Science | Menlo Park, CA | BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/5e692aeb-234b-4112-b318-7ff464977303) [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Controls Engineer | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Facilities Manager | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-10-01 | [Mechanical Engineer](#mechanical-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20250930191252/https://jobs.ashbyhq.com/periodic-labs/67dacac9-2d10-4c7d-b696-eae4fb17b45a) [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Reliability Engineer | software-eng | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Research Engineer, Lab Automation | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | open | [Research Scientist, Materials Characterization](#research-scientist-materials-characterization-2025-09-22) | materials-science | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e90c6050-e544-4a2b-ae30-7c41e5eb4f16) [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Robotics Engineer | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-22 | 2025-09-30 | Systems Engineer | software-eng | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-24 | 2025-09-30 | CUDA Kernel Engineer | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-24 | 2025-09-30 | Distributed Training Engineer | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-24 | 2025-09-30 | LLM Inference Engineer | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-29 | open | [Don't See Your Role? Apply Here!](#don-t-see-your-role-apply-here-2025-09-29) | general-application | General Interest | Menlo Park, Remote |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/67f49f4e-2d0c-49f4-9f4b-15dbc840f8f5) [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-09-30 | 2025-09-30 | Research Engineer - Midtraining | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930160430/https://jobs.ashbyhq.com/periodic-labs) |
-| 2025-11-12 | open | [Research Scientist, Condensed Matter Theory](#research-scientist-condensed-matter-theory-2025-11-12) | materials-science | Science | Menlo Park, CA; Montreal, Canada | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) |
-| 2025-11-13 | open | [Product Engineer](#product-engineer-2025-11-13) | software-eng | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d88a6590-a2fa-48c5-86bc-61612b5bb0bc) |
-| 2026-02-10 | open | [Software Engineer](#software-engineer-2026-02-10) | software-eng | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/1d6ade4f-ae4c-4bde-baf7-82c401063e42) |
-| 2026-03-10 | open | [Research Associate, Thin Films](#research-associate-thin-films-2026-03-10) | materials-science | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e) |
-| 2026-04-16 | open | [Research Scientist, Thin Films](#research-scientist-thin-films-2026-04-16) | materials-science | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5) |
-| 2026-04-29 | open | [ML Systems Engineer](#ml-systems-engineer-2026-04-29) | ml-research | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c) |
-| 2026-05-08 | open | [Process Engineer, Powder](#process-engineer-powder-2026-05-08) | lab-automation | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/21b61a4d-92ff-4f98-9a7c-251f02966988) |
-| 2026-05-19 | open | [Computational Scientist, Structural & Thermal](#computational-scientist-structural-thermal-2026-05-19) | materials-science | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c) |
-| 2026-05-19 | open | [Head of People](#head-of-people-2026-05-19) | leadership | Business and Operations | Menlo Park, CA |  | 15 |  | [live](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3) |
-| 2026-05-19 | open | [Research Scientist, Data](#research-scientist-data-2026-05-19) | ml-research | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77) |
-| 2026-05-21 | open | [Procurement & Finance Operations Manager](#procurement-finance-operations-manager-2026-05-21) | business-ops | Business and Operations | Menlo Park, CA |  | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e58cc4ac-39a8-4f46-a660-4cab443922cc) |
-| 2026-05-26 | open | [Research Intern, Thin Films](#research-intern-thin-films-2026-05-26) | materials-science | Science | Menlo Park, CA | PhD/MS/BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/2cfb099d-42f1-4dff-93f4-1862b13f914a) |
-| 2026-06-03 | open | [Forward Deployed Engineer, Physics & Simulation](#forward-deployed-engineer-physics-simulation-2026-06-03) | materials-science | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626) |
-| 2026-06-11 | open | [Senior Equipment Maintenance Technician](#senior-equipment-maintenance-technician-2026-06-11) | lab-automation | Science | Menlo Park, CA |  | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1) |
-| 2026-07-16 | open | [Laboratory Technician](#laboratory-technician-2026-07-16) | lab-automation | Science | Menlo Park, CA | BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47) |
+| 2025-09-18 | 2026-02-15 | [Supercompute Infrastructure Engineer](#supercompute-infrastructure-engineer-2025-09-18) | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930191254/https://jobs.ashbyhq.com/periodic-labs/58d01f5b-c1c2-4e2e-88e3-32baf1882f50) |
+| 2025-09-22 | open | [Automation Engineer](#automation-engineer-2025-09-22) | lab-automation | Science | Menlo Park, CA | BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/5e692aeb-234b-4112-b318-7ff464977303) [Wayback](https://web.archive.org/web/20250930191519/https://jobs.ashbyhq.com/periodic-labs/5e692aeb-234b-4112-b318-7ff464977303) |
+| 2025-09-22 | 2026-05-19 | [Controls Engineer](#controls-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20250930191457/https://jobs.ashbyhq.com/periodic-labs/581fcea4-d77d-4987-845c-a3fa12f31ab6) |
+| 2025-09-22 | 2025-10-01 | [Facilities Manager](#facilities-manager-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park |  | 5 |  | [Wayback](https://web.archive.org/web/20250930191405/https://jobs.ashbyhq.com/periodic-labs/8f7500cc-d8b1-45c8-908d-ae7641888e58) |
+| 2025-09-22 | 2026-02-15 | [Mechanical Engineer](#mechanical-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20250930191252/https://jobs.ashbyhq.com/periodic-labs/67dacac9-2d10-4c7d-b696-eae4fb17b45a) |
+| 2025-09-22 | 2025-10-01 | [Reliability Engineer](#reliability-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | MS/BS | 5 |  | [Wayback](https://web.archive.org/web/20251001033547/https://jobs.ashbyhq.com/periodic-labs/98e4506a-3555-4ab4-bc47-a4c76c8b8c3a) |
+| 2025-09-22 | 2026-05-19 | [Research Engineer, Lab Automation](#research-engineer-lab-automation-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | PhD |  |  | [Wayback](https://web.archive.org/web/20250930191402/https://jobs.ashbyhq.com/periodic-labs/02ba0208-cfee-4218-9065-2f81f52d0b17) |
+| 2025-09-22 | open | [Research Scientist, Materials Characterization](#research-scientist-materials-characterization-2025-09-22) | materials-science | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e90c6050-e544-4a2b-ae30-7c41e5eb4f16) [Wayback](https://web.archive.org/web/20250930191413/https://jobs.ashbyhq.com/periodic-labs/e90c6050-e544-4a2b-ae30-7c41e5eb4f16) |
+| 2025-09-22 | 2025-10-01 | [Robotics Engineer](#robotics-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20250930191523/https://jobs.ashbyhq.com/periodic-labs/8386f6f6-1497-426a-be0f-76171723fafe) |
+| 2025-09-22 | 2026-03-26 | [Systems Engineer](#systems-engineer-2025-09-22) | lab-automation | Atoms: Lab, physics, chemistry, etc. | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20250930191519/https://jobs.ashbyhq.com/periodic-labs/bc8a546c-77ab-491c-9159-808ec6099025) |
+| 2025-09-24 | 2025-10-01 | [CUDA Kernel Engineer](#cuda-kernel-engineer-2025-09-24) | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930191519/https://jobs.ashbyhq.com/periodic-labs/401fbc48-f21e-4331-bab0-281fde663c76) |
+| 2025-09-24 | 2026-05-19 | [Distributed Training Engineer](#distributed-training-engineer-2025-09-24) | software-eng | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20251001033626/https://jobs.ashbyhq.com/periodic-labs/f98c0ec8-eacb-4651-8218-03646643e2de) |
+| 2025-09-24 | 2026-02-15 | [LLM Inference Engineer](#llm-inference-engineer-2025-09-24) | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930191422/https://jobs.ashbyhq.com/periodic-labs/ad93b9c5-e5e5-4840-a250-e6c332c8fb53) |
+| 2025-09-29 | open | [Don't See Your Role? Apply Here!](#don-t-see-your-role-apply-here-2025-09-29) | general-application | General Interest | Menlo Park, Remote |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/67f49f4e-2d0c-49f4-9f4b-15dbc840f8f5) [Wayback](https://web.archive.org/web/20251001033534/https://jobs.ashbyhq.com/periodic-labs/67f49f4e-2d0c-49f4-9f4b-15dbc840f8f5) |
+| 2025-09-30 | 2026-03-26 | [Research Engineer - Midtraining](#research-engineer-midtraining-2025-09-30) | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20250930191401/https://jobs.ashbyhq.com/periodic-labs/bab1c42a-a0d8-4077-b275-ad8bdf68342b) |
+| 2025-10-17 | 2026-02-15 | Research Engineer - Posttraining | ml-research | Bits: LLMs, machine learning, infra, etc | Menlo Park, Remote |  |  |  | [Wayback](https://web.archive.org/web/20260215134441/https://jobs.ashbyhq.com/periodic-labs) |
+| 2025-10-22 | 2026-05-19 | [Lead IT Engineer](#lead-it-engineer-2025-10-22) | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/0eaf63d2-bc48-4f05-8ce8-8dcd1fc7158c?employmentType=FullTime) |
+| 2025-10-31 | open | [Research Scientist, Thin Films](#research-scientist-thin-films-2025-10-31) | materials-science | Science | Menlo Park, CA | PhD | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5) [Wayback](https://web.archive.org/web/20260416225009/https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16) |
+| 2025-11-12 | open | [Research Scientist, Condensed Matter Theory](#research-scientist-condensed-matter-theory-2025-11-12) | materials-science | Science | Menlo Park, CA; Montreal, Canada | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) [Wayback](https://web.archive.org/web/20260309120218/https://jobs.ashbyhq.com/periodic-labs/01d2c4b2-d848-4426-ad5f-7f1052db3a63) |
+| 2025-11-13 | open | [Product Engineer](#product-engineer-2025-11-13) | software-eng | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d88a6590-a2fa-48c5-86bc-61612b5bb0bc) [Wayback](https://web.archive.org/web/20260326152758/https://jobs.ashbyhq.com/periodic-labs/d88a6590-a2fa-48c5-86bc-61612b5bb0bc?departmentId=6cd1bfc2-3e28-45b7-849f-619cdd1f0847) |
+| 2025-12-03 | open | [Computational Scientist, Structural & Thermal](#computational-scientist-structural-thermal-2025-12-03) | materials-science | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c?employmentType=FullTime) |
+| 2026-02-10 | open | [Software Engineer](#software-engineer-2026-02-10) | software-eng | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/1d6ade4f-ae4c-4bde-baf7-82c401063e42) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/1d6ade4f-ae4c-4bde-baf7-82c401063e42?employmentType=FullTime) |
+| 2026-03-10 | open | [Research Associate - Thin Films (Fixed Term)](#research-associate-thin-films-fixed-term-2026-03-10) | materials-science | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e) [Wayback](https://web.archive.org/web/20260416225018/https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e?departmentId=a18cbbfb-4bc3-4f60-be38-fe177745ad16) |
+| 2026-03-26 | 2026-07-25 | [Process Development Engineer](#process-development-engineer-2026-03-26) | lab-automation | Atoms: Research Lab, physics, chemistry | Menlo Park | PhD/MS/BS |  |  | [Wayback](https://web.archive.org/web/20260514180037/https://jobs.ashbyhq.com/periodic-labs/77f48dbb-a1b7-4f2c-9434-06be4a6c0d3e) |
+| 2026-03-30 | 2026-05-19 | [Research Scientist, Materials Synthesis](#research-scientist-materials-synthesis-2026-03-30) | materials-science | Atoms: Research Lab, physics, chemistry | Menlo Park | PhD/BS | 5 |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/dfd4f94a-7b94-4877-96d2-9a91c0f0780a?employmentType=FullTime) |
+| 2026-04-15 | 2026-07-25 | [Lead Security Engineer](#lead-security-engineer-2026-04-15) | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/32f7c36e-3730-4cbf-8d99-39ec11f7c1f2?employmentType=FullTime) |
+| 2026-04-22 | 2026-05-19 | [Business Operations Associate](#business-operations-associate-2026-04-22) | business-ops | Business | Menlo Park | PhD | 7 |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/75660686-5b6f-430b-bc8f-83e29c635669?employmentType=FullTime) |
+| 2026-04-23 | 2026-05-19 | [Forward Deployed Engineer - LLM Systems](#forward-deployed-engineer-llm-systems-2026-04-23) | ml-research | Bits: Research, LLMs, machine learning,  | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc) |
+| 2026-04-25 | open | [Founding HR Leader](#founding-hr-leader-2026-04-25) | leadership | Business and Operations | Menlo Park, CA |  | 15 |  | [live](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3?employmentType=FullTime) |
+| 2026-04-25 | 2026-05-19 | [Strategic Finance Lead](#strategic-finance-lead-2026-04-25) | business-ops | Business | Menlo Park | BS |  |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/7d7bcca9-60d2-4afe-b8e4-7d1354fec7e0?employmentType=FullTime) |
+| 2026-04-25 | 2026-05-19 | [Technical Sourcer - physical sciences](#technical-sourcer-physical-sciences-2026-04-25) | business-ops | Business | Menlo Park, Remote | BS | 5 |  | [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/c8a1217f-034c-4b56-a7f1-59b974da0055?employmentType=FullTime) |
+| 2026-04-29 | open | [ML Systems Engineer](#ml-systems-engineer-2026-04-29) | ml-research | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d9180228-c113-4d5f-a4d6-793994e50b7c) [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-04-30 | 2026-05-16 | Supercompute Engineer | software-eng | Bits: Research, LLMs, machine learning,  | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-05-05 | open | [Research Scientist, Data](#research-scientist-data-2026-05-05) | ml-research | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77) [Wayback](https://web.archive.org/web/20260516172510/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-05-08 | open | [Process Engineer, Powder](#process-engineer-powder-2026-05-08) | lab-automation | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/21b61a4d-92ff-4f98-9a7c-251f02966988) [Wayback](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/21b61a4d-92ff-4f98-9a7c-251f02966988?employmentType=FullTime) |
+| 2026-05-21 | open | [Procurement & Finance Operations Manager](#procurement-finance-operations-manager-2026-05-21) | business-ops | Business and Operations | Menlo Park, CA |  | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/e58cc4ac-39a8-4f46-a660-4cab443922cc) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-05-26 | open | [Research Intern, Thin Films](#research-intern-thin-films-2026-05-26) | materials-science | Science | Menlo Park, CA | PhD/MS/BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/2cfb099d-42f1-4dff-93f4-1862b13f914a) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-06-03 | open | [Forward Deployed Engineer, Physics & Simulation](#forward-deployed-engineer-physics-simulation-2026-06-03) | materials-science | Engineering | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/1bab7e17-20fd-4b82-a152-98b96375a626) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-06-11 | open | [Senior Equipment Maintenance Technician](#senior-equipment-maintenance-technician-2026-06-11) | lab-automation | Science | Menlo Park, CA |  | 5 |  | [live](https://jobs.ashbyhq.com/periodic-labs/b1ad8632-f489-4922-8805-42d84711cda1) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-07-16 | open | [Laboratory Technician](#laboratory-technician-2026-07-16) | lab-automation | Science | Menlo Park, CA | BS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-07-25 | 2026-07-25 | Forward Deployed Engineer, Quantum Simulations | materials-science |  | Menlo Park |  |  |  | [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
+| 2026-07-25 | open | [Head of Environmental Health & Safety (EHS)](#head-of-environmental-health-safety-ehs-2026-07-25) | leadership | Science | Menlo Park, CA |  | 10 | $250–325K | [live](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a) [Wayback](https://web.archive.org/web/20260725114625/https://jobs.ashbyhq.com/periodic-labs) |
 | 2026-08-05 | open | [Electrical Technician](#electrical-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/caf8f0b8-dbbb-4104-bc7f-e6a7916d7831) |
 | 2026-08-05 | open | [Environmental Health & Safety (EHS) Technician](#environmental-health-safety-ehs-technician-2026-08-05) | lab-automation | Science | Menlo Park, CA | BS | 1 |  | [live](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e) |
 | 2026-08-08 | open | [Research Engineer, Semiconductor](#research-engineer-semiconductor-2026-08-08) | materials-science | Science | Menlo Park, CA | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/95d290bd-6420-42e8-82a0-f0230722c19c) |
+| 2026-08-15 | 2026-08-15 | [Mechanical Engineer](#mechanical-engineer-2026-08-15) | lab-automation | Science | Menlo Park |  | 2 | $200K - $300K | [Wayback](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/fe3b323e-34e8-41fe-9da3-26a8b6b941cd) |
+| 2026-08-15 | 2026-08-15 | [Research Engineer - Midtraining](#research-engineer-midtraining-2026-08-15) | ml-research | Engineering | Menlo Park, CA |  |  |  | [Wayback](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/d3be5ecc-c4d3-4c9e-9a4d-519ab6147474) |
 | 2026-08-15 | open | [Research Engineer, Lab Automation](#research-engineer-lab-automation-2026-08-15) | lab-automation | Science | Menlo Park, CA | PhD |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/a16ee7dd-021d-4f37-823d-7a8b520c6d8a) |
 | 2026-08-18 | open | [Business Operations, Product & Science](#business-operations-product-science-2026-08-18) | business-ops | Business and Operations | Menlo Park, CA | PhD | 4 |  | [live](https://jobs.ashbyhq.com/periodic-labs/fd89f03f-545f-4ffb-a051-8581a3ec686a) |
 | 2026-08-18 | open | [Process Technician, Thin Films](#process-technician-thin-films-2026-08-18) | lab-automation | Science | Menlo Park, CA |  | 3 |  | [live](https://jobs.ashbyhq.com/periodic-labs/19e2cc72-0f04-44b3-a9c3-0240a0fb9fe4) |
@@ -51,15 +65,16 @@ Back to [all companies](README.md) · [company profile](../companies/periodic-la
 | 2026-10-01 | open | [Research Scientist, Scaling RL](#research-scientist-scaling-rl-2026-10-01) | ml-research | Engineering | Menlo Park, CA; Montreal, Canada |  |  |  | [live](https://jobs.ashbyhq.com/periodic-labs/20b122c9-b8ec-4fb0-aaf4-9b45902affe0) |
 | 2026-10-05 | open | [Controller](#controller-2026-10-05) | business-ops | Business and Operations | Menlo Park, CA | BS | 10 |  | [live](https://jobs.ashbyhq.com/periodic-labs/6c188bbb-1f81-4145-aac3-28cb0e47e3cc) |
 | 2026-10-07 | open | [Process Safety Engineer](#process-safety-engineer-2026-10-07) | lab-automation | Engineering | Menlo Park, CA |  | 7 |  | [live](https://jobs.ashbyhq.com/periodic-labs/1d57d49b-e538-4d9a-86d3-6be17339016f) |
-| 2026-10-08 | open | [Head of Environmental Health & Safety (EHS)](#head-of-environmental-health-safety-ehs-2026-10-08) | leadership | Science | Menlo Park, CA |  | 10 | $250–325K | [live](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a) |
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="supercompute-infrastructure-engineer-2025-09-18"></a>
 
 ### Supercompute Infrastructure Engineer (2025-09-18)
 
-2025-09-18 → 2025-10-01 · software-eng · Menlo Park, Remote · [source](https://web.archive.org/web/20250930191254/https://jobs.ashbyhq.com/periodic-labs/58d01f5b-c1c2-4e2e-88e3-32baf1882f50)
+2025-09-18 → 2026-02-15 · software-eng · Menlo Park, Remote · [source](https://web.archive.org/web/20250930191254/https://jobs.ashbyhq.com/periodic-labs/58d01f5b-c1c2-4e2e-88e3-32baf1882f50)
 
 <details><summary>Description</summary>
 
@@ -77,6 +92,8 @@ You might thrive in this role if you have experience with:
 - GitOps tools like Github CI and ArgoCD
 
 </details>
+
+<a id="automation-engineer-2025-09-22"></a>
 
 ### Automation Engineer (2025-09-22)
 
@@ -103,12 +120,82 @@ What You’ll Do
 - Background in lab informatics or scientific data management.
 Mechanics
 - Location: Menlo Park, CA
+- Compensation: $200,000-$250,000 + equity
+- Visa sponsorship: Yes, we sponsor visas.
 
 </details>
 
+<a id="controls-engineer-2025-09-22"></a>
+
+### Controls Engineer (2025-09-22)
+
+2025-09-22 → 2026-05-19 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191457/https://jobs.ashbyhq.com/periodic-labs/581fcea4-d77d-4987-845c-a3fa12f31ab6)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+We’re building an autonomous lab to speed up materials discovery, and we are looking for a Controls Engineer who loves turning complex equipment into reliable, safe, and observable systems. You’ll design the controls architecture for outsourced tools and in-house automation, then work with integrators to bring it to life. You’ll be hands-on from specification through installation and production handoff, partnering with scientists, facilities, and vendors to make the whole lab run as one coherent system.
+
+**Responsibilities**
+- Define the controls architecture: states, alarms, naming, and data flows that make systems understandable and maintainable.
+- Specify platforms and components (PLC/robot controller, operator interface, motion, I/O, networks) to meet safety and performance needs.
+- Build and execute bring-up plans: I/O checkout, sequence dry runs, and end-to-end workflow trials; drive issues to closure.
+- Design and roll out real-time supervisory dashboards (Ignition or similar)
+- Implement observability: trending, diagnostics, alarm rationalization, and set sensible thresholds and responses.
+
+**Qualifications**
+- BS in EE/ME/Controls or equivalent.
+- 3+ years in industrial automation for labs/pilot/manufacturing.
+- Hands-on experience with PLCs, HMIs, motion, and industrial networks.
+- Experience with safety PLCs, functional safety validation, and LOTO practices.
+- Scripting for test/diagnostics (Python preferred) and practical electrical debugging.
+- Experience with SCADA platforms (e.g., Ignition), data historians, and OPC UA or similar data standards.
+
+**Bonus Qualifications**
+- Experience with robotic cells or vision integration; basic electrical panel practices.
+- Containers or CI/CD for deploying controls logic; Git-based workflows.
+- Functional safety coursework or certification.
+- Demonstrated accomplishments recognized in your field
+
+</details>
+
+<a id="facilities-manager-2025-09-22"></a>
+
+### Facilities Manager (2025-09-22)
+
+2025-09-22 → 2025-10-01 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191405/https://jobs.ashbyhq.com/periodic-labs/8f7500cc-d8b1-45c8-908d-ae7641888e58)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+The Periodic Labs team is developing AI that can both simulate science as well as verify its predictions to train on the full scientific method. As part of this mission, the team is building a high throughput experimental materials science lab. For this facility, we are seeking a detail-oriented, proactive Facilities Manager to oversee the day-to-day management of our autonomous lab/office HQ’s physical infrastructure. This role spans building operations, IT coordination, environmental health and safety, and security systems — ensuring seamless integration of lab and office environments that enable robust and reliable training workflows.
+
+**Responsibilities**
+- Oversee building systems including HVAC, electrical, plumbing, security, and access control.
+- Implement and manage Life Safety Systems (fire detection, suppression, emergency protocols).
+- Maintain and evolve IT infrastructure, coordinating with internal/external vendors.
+- Serve as point of contact for building compliance and inspections (EHS, OSHA, local codes).
+- Coordinate space planning, renovations, and both office and lab layout modifications.
+- Manage vendor relationships and service contracts for facilities operations.
+- Own office and lab security policies and execution.
+- Hire and train facilities associates to maintain implemented systems
+
+**Qualifications**
+- 5+ years experience in facilities or operations management for state-of-the-art research labs, especially related to solid-state chemistry or thin film processing.
+- Strong understanding of building mechanical/electrical systems, building management systems, and IT infrastructure.
+- Recognized contribution to shaping relevant industry best practices or standards, e.g P.E certification, IFMA, BOC, LEED AP, ASHRAE technical committee member
+- Familiarity with and/or contributions to NFPA 45, NFPA 70E, and/or NFPA 101
+- Fluency in smart building protocol standards (BACnet, Modbus, etc.)
+
+</details>
+
+<a id="mechanical-engineer-2025-09-22"></a>
+
 ### Mechanical Engineer (2025-09-22)
 
-2025-09-22 → 2025-10-01 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191252/https://jobs.ashbyhq.com/periodic-labs/67dacac9-2d10-4c7d-b696-eae4fb17b45a)
+2025-09-22 → 2026-02-15 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191252/https://jobs.ashbyhq.com/periodic-labs/67dacac9-2d10-4c7d-b696-eae4fb17b45a)
 
 <details><summary>Description</summary>
 
@@ -139,6 +226,73 @@ Periodic Labs is seeking an experienced Mechanical Engineer to participate in th
 
 </details>
 
+<a id="reliability-engineer-2025-09-22"></a>
+
+### Reliability Engineer (2025-09-22)
+
+2025-09-22 → 2025-10-01 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20251001033547/https://jobs.ashbyhq.com/periodic-labs/98e4506a-3555-4ab4-bc47-a4c76c8b8c3a)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+The Periodic Labs team is developing AI that can both simulate science as well as verify its predictions to train on the full scientific method. As part of this mission, the team is building a high throughput experimental materials science lab. For this facility, we are seeking a hands-on Reliability Engineer to drive uptime and throughput across our experimental platforms. You’ll lead maintenance operations, plan and manage the associated machine shop buildout, and design and integrate custom labware and fixtures to improve experimental efficiency and repeatability.
+
+**Responsibilities**
+- Establish preventive and predictive maintenance programs for lab and automation systems and associated CMMS.
+- Lead root cause analysis and develop corrective actions for system failures or bottlenecks.
+- Build and manage a machine shop for fabricating custom components.
+- Design, prototype, and test custom labware tailored to automated experimental workflows.
+- Collaborate with automation, controls, and scientific teams to integrate fixtures into processes.
+- Track and improve equipment uptime, MTBF, and OEE.
+- Build and train a world-class maintenance team of technicians to support the above systems
+
+**Qualifications**
+- Bachelor's or Master's degree in an engineering field.
+- 5+ years experience in reliability, mechanical, or systems engineering, especially related to supporting materials science/solid-state chemistry and/or thin-film processing research equipment
+- Familiarity with precision machining, mechatronics, or custom part design.
+- Experience with CAD (SolidWorks/Fusion), shop tooling, and rapid prototyping.
+- Strong knowledge of preventive maintenance systems.
+- Comfortable collaborating across engineering, automation, and scientific teams.
+- Certification and preferably contribution to accredited standards or bodies relevant to your field - e.g. SMRP, IEEE Reliability Society, relevant ASTMs.
+
+**Bonus Qualifications**
+- We’d love to hear about your accomplishments in globally recognized competitions relevant to your field (e.g. NASA Lunabotics, ASME’s competitions, etc.)
+
+</details>
+
+<a id="research-engineer-lab-automation-2025-09-22"></a>
+
+### Research Engineer, Lab Automation (2025-09-22)
+
+2025-09-22 → 2026-05-19 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191402/https://jobs.ashbyhq.com/periodic-labs/02ba0208-cfee-4218-9065-2f81f52d0b17)
+
+<details><summary>Description</summary>
+
+**Responsibilities**
+- Translate scientific goals into an automation roadmap: identify high-value targets, outline benefits and risks, and prioritize what to build next.
+- Plan, run, and analyze proof-of-concept experiments
+- Write clear user requirements and partner with engineers and vendors to turn them into practical designs and build plans.
+- Co-develop and evaluate prototypes designs—iterate quickly with mechanical, robotics, and controls engineers to develop reliable lab automation systems
+- Define data and metadata needs so automated workflows produce trustworthy, reusable results.
+- Support installation and commissioning; ensure the resulting system fits the lab’s safety, usability, and reliability standards.
+
+**Qualifications**
+- PhD in Materials Science (or related field) or equivalent experience, with a track record of hands-on experimental work.
+- Demonstrated engineering instincts—custom instruments, automation-focused PhD work, or post-PhD industry experience in automation.
+- Strong experimental design and data analysis (e.g., Python or similar), with a bias toward measurable results.
+- Familiarity with one or more relevant domains: thin films, solid-state synthesis, in-situ characterization, or automated property testing.
+- Clear communicator who can translate between scientists, engineers, and vendor partners.
+
+**Bonus Qualifications**
+- Broad general experience with inorganic materials synthesis, characterization, and testing
+- Experience selecting, operating, and maintaining scientific instruments
+- Accomplishments recognized in your field
+
+</details>
+
+<a id="research-scientist-materials-characterization-2025-09-22"></a>
+
 ### Research Scientist, Materials Characterization (2025-09-22)
 
 2025-09-22 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/e90c6050-e544-4a2b-ae30-7c41e5eb4f16)
@@ -168,6 +322,131 @@ What You’ll Do
 
 </details>
 
+<a id="robotics-engineer-2025-09-22"></a>
+
+### Robotics Engineer (2025-09-22)
+
+2025-09-22 → 2025-10-01 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191523/https://jobs.ashbyhq.com/periodic-labs/8386f6f6-1497-426a-be0f-76171723fafe)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+We’re building an autonomous lab to speed up materials discovery, and we’re looking for a Robotics Engineer who loves turning ideas into dependable motion. You’ll set the strategy for how robots, end effectors, and labware come together by owning gripper and nest designs, planning labware storage (hotels) and flow, and defining the safety approach that keeps people and equipment protected. You’ll partner with scientists to translate workflows into cell layouts and handling routines, then guide integrators and fabricators to design, build, and bring up systems that run every day. You’ll also shape how Autonomous Mobile Robots (AMRs) move samples and consumables between cells, designing routes and handoff points, so everything plays well together day to day.
+
+**Responsibilities**
+- Own the robotics architecture for new cells: end effector strategy, labware plan (nests, racks, hotels), and material flow.
+- Define safety standards for robotic workcells, including guarding, E-stops, and interlocks, and align it with facilities and operations.
+- Set standards for EOAT and fixture design so new tools feel consistent, reliable, and scalable.
+- Plan layouts and kinematics to hit throughput and accuracy targets; balance cost, complexity, and serviceability.
+- Introduce observability for robots and cells: simple diagnostics, trends, and clear runbooks for daily operations.
+- Guide adoption of mobile robots—routes, handoff points, and safety—integrated with fixed cells.
+
+**Qualifications**
+- BS in Mechanical, Robotics, Mechatronics, or related field (or equivalent experience).
+- 3+ years building robotic cells or automation equipment from design through commissioning.
+- Strong mechanical design skills (CAD, tolerances, materials) with a track record of end effectors and fixtures.
+- Practical experience with robot integration: payload/inertia, reach studies, grasping methods, alignment, and error recovery.
+- Safety-minded engineer comfortable specifying guards, setting speed limits, and validating safe operation.
+- Clear communicator who can lead vendors and explain tradeoffs to scientists and operators.
+
+**Bonus Qualifications**
+- Experience with microplate and common labware standards and the deck geometry that goes with them.
+- Thermal or vibration considerations for sensitive instruments; cleanability and low-particulate design.
+- Exposure to mobile robots, conveyors, or part feeders and how they hand off to articulated arms.
+- We’d love to hear about your accomplishments recognized in your field
+
+</details>
+
+<a id="systems-engineer-2025-09-22"></a>
+
+### Systems Engineer (2025-09-22)
+
+2025-09-22 → 2026-03-26 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20250930191519/https://jobs.ashbyhq.com/periodic-labs/bc8a546c-77ab-491c-9159-808ec6099025)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+As our Systems Engineer, you’ll turn ideas from our scientists into working systems: shaping requirements, partnering with automation vendors to design and build, and leading installation and bring-up on site. From the first concept to the moment a tool runs every day, you’ll align teams, sequence work, and turn complex interfaces into dependable operations. If you’re motivated by turning ideas into trustworthy instruments that help science move faster, this is a place to elevate your craft and push discovery forward.
+
+**Responsibilities**
+- Partner with world-class physicists, chemists and materials scientists to translate experiments and workflows into clear system requirements and interfaces.
+- Lead vendor engagements: scope the work, review designs, guide build decisions, and keep schedules and deliverables on track.
+- Coordinate site prep and installation with facilities and contractors
+- Plan and execute acceptance testing (FAT/SAT) with vendors; define criteria, run tests, and close punch lists.
+- Create runbooks and user training to seamlessly transfer delivered lab systems to operations.
+
+**Qualifications**
+- BS in Mechanical, Electrical, Systems, or related engineering field.
+- 3+ years commissioning or bringing up complex lab, pilot, or manufacturing equipment.
+- Comfortable with instrumentation and controls basics (sensors/actuators, data acquisition, programmable controllers, operator interfaces).
+- Hands-on experience with installation and testing of complex lab equipment.
+- Excellent documentation and cross-functional communication with vendors and internal teams.
+
+**Bonus Qualifications**
+- Experience with formal acceptance and qualification (factory/site acceptance; installation/operational qualification).
+- Exposure to motion systems, robotics cells, precision alignment, and vibration/thermal characterization.
+- Familiarity with supervisory control systems and data historians.Background in labs, pilot plants, or advanced manufacturing; comfort interfacing with facilities and utilities.
+- Demonstrated accomplishments recognized in your field.
+
+</details>
+
+<a id="cuda-kernel-engineer-2025-09-24"></a>
+
+### CUDA Kernel Engineer (2025-09-24)
+
+2025-09-24 → 2025-10-01 · software-eng · Menlo Park, Remote · [source](https://web.archive.org/web/20250930191519/https://jobs.ashbyhq.com/periodic-labs/401fbc48-f21e-4331-bab0-281fde663c76)
+
+<details><summary>Description</summary>
+
+**About the role**
+You will develop, integrate and optimize state-of-the art CUDA kernels to power AI scientific research. You will integrate CUDA kernels into training, inference and reinforcement learning systems running on thousands of GPUs. You will build tools and directly support frontier-scale experiments to make Periodic Labs the world’s best AI + science lab. You will release your kernels as contributions to the open-source AI stack.
+You might thrive in this role if you have experience with:
+- Writing and optimizing CUDA kernels: attention, mixture-of-experts, dispatch-and-combine, and others
+- Working with the latest generation of Nvidia hardware
+- Integrating kernels into state-of-the-art inference (vLLM, SGLang) and training frameworks (Megatron, TorchTitan)
+
+</details>
+
+<a id="distributed-training-engineer-2025-09-24"></a>
+
+### Distributed Training Engineer (2025-09-24)
+
+2025-09-24 → 2026-05-19 · software-eng · Menlo Park, Remote · [source](https://web.archive.org/web/20251001033626/https://jobs.ashbyhq.com/periodic-labs/f98c0ec8-eacb-4651-8218-03646643e2de)
+
+<details><summary>Description</summary>
+
+**About the role**
+You will optimize, operate and develop large-scale distributed LLM training systems that power AI scientific research. You will work closely with researchers to bring up, debug, and maintain mid-training and reinforcement learning workflows. You will build tools and directly support frontier-scale experiments to make Periodic Labs the world’s best AI + science lab for physicists, computational materials scientists, AI researchers, and engineers. You will contribute open-source large scale LLM training frameworks.
+You might thrive in this role if you have experience with:
+- Training on clusters with ≥5,000 GPUs
+- 5D parallel LLM training
+- Distributed training frameworks such as Megatron-LM, FSDP, DeepSpeed, TorchTitan
+- Optimizing training throughput for large scale Mixture-of-Expert models
+
+</details>
+
+<a id="llm-inference-engineer-2025-09-24"></a>
+
+### LLM Inference Engineer (2025-09-24)
+
+2025-09-24 → 2026-02-15 · ml-research · Menlo Park, Remote · [source](https://web.archive.org/web/20250930191422/https://jobs.ashbyhq.com/periodic-labs/ad93b9c5-e5e5-4840-a250-e6c332c8fb53)
+
+<details><summary>Description</summary>
+
+**About the role**
+You will integrate, optimize, and operate large-scale inference systems to power AI scientific research. You will build and maintain high-performance serving infrastructure that delivers low-latency, high-throughput access to large language models across thousands of GPUs. You will work closely with researchers and engineers to integrate cutting-edge inference into large-scale reinforcement learning workloads. You will build tools and directly support frontier-scale experiments to make Periodic Labs the world’s best AI + science lab. You will make contributions to open-source LLM inference software.
+You might thrive in this role if you have experience with:
+- Optimizing inference for the largest open-source model
+- High-performance model serving frameworks such as TensorRT-LLM, vLLM, SGLang
+- Distributed inference techniques (tensor/expert/pipeline parallelism, speculative decoding, KV cache management)
+- Optimizing GPU utilization and latency for reinforcement learning
+
+</details>
+
+<a id="don-t-see-your-role-apply-here-2025-09-29"></a>
+
 ### Don't See Your Role? Apply Here! (2025-09-29)
 
 2025-09-29 → open · general-application · Menlo Park, Remote · [source](https://jobs.ashbyhq.com/periodic-labs/67f49f4e-2d0c-49f4-9f4b-15dbc840f8f5)
@@ -179,6 +458,96 @@ We’re always on the lookout for exceptional people - even if there’s no open
 If you believe your skills and experience align with our mission and you're excited about what we're building, we’d love to hear from you.
 
 </details>
+
+<a id="research-engineer-midtraining-2025-09-30"></a>
+
+### Research Engineer - Midtraining (2025-09-30)
+
+2025-09-30 → 2026-03-26 · ml-research · Menlo Park, Remote · [source](https://web.archive.org/web/20250930191401/https://jobs.ashbyhq.com/periodic-labs/bab1c42a-a0d8-4077-b275-ad8bdf68342b)
+
+<details><summary>Description</summary>
+
+**About the role**
+You will train frontier models to be highly knowledgeable scientific experts that serve as the foundation for reinforcement learning. You will develop methods for synthetic data generation, distillation, and continual learning at scale. You will work closely with RL researchers, physicists, and chemists to create evals that guide scientific data curation. You will collaborate with supercompute engineers to scale compute-efficient LLM training to thousands of GPUs. You will build high-performance tools for yourself to investigate how data shapes intelligence.
+You might thrive in this role if you have experience with:
+- Training LLMs on curated mixes of trillions of tokens
+- Calculating scaling laws and compute-optimal hyperparameters
+- Generating billions of tokens of high-quality synthetic data
+- Building evals that correlate with downstream task performance
+
+</details>
+
+<a id="lead-it-engineer-2025-10-22"></a>
+
+### Lead IT Engineer (2025-10-22)
+
+2025-10-22 → 2026-05-19 · software-eng · Menlo Park · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/0eaf63d2-bc48-4f05-8ce8-8dcd1fc7158c?employmentType=FullTime)
+
+<details><summary>Description</summary>
+
+**About the Role**
+You will lead, design, build, and operate Periodic Labs’ internal IT systems and workflows. You will own workforce identity, endpoint lifecycle, SaaS administration, office and lab networking, and the day-to-day IT systems and workflows that keep the company productive.
+You will write automation, integrate systems, and set a high bar for reliability, usability, and operational discipline. You will work closely with research, infra, lab, and operations teams to make our environments fast, well-run, and easy to support as the company scales.
+What You’ll Do
+- Own workforce identity and access operations, including SSO, MFA, group management, onboarding, offboarding, and lifecycle automation
+- Own the end-to-end lifecycle for company endpoints across macOS, Windows, and Linux, including procurement, zero-touch provisioning, MDM, inventory, configuration baselines, repair and replacement, and secure deprovisioning
+- Operate the core security controls on company devices, including EDR, full-disk encryption, host firewall baselines, app controls, and extension approvals
+- Administer core internal systems such as Google Workspace, Slack, GitHub, and other business-critical SaaS tools, with clear group design and sensible permission boundaries
+- Build automation and self-service workflows for common IT tasks so employees can get what they need quickly without manual ticket routing
+- Own the employee onboarding and offboarding experience, including account setup, device readiness, access coordination, and operational hygiene
+- Run office, lab, and remote connectivity, including Wi-Fi, VPN or Tailscale, conference rooms, printers, and lab-adjacent device connectivity
+- Partner with lab and infra teams on network topology that supports physical devices and critical internal systems while remaining reliable and easy to operate
+- Build documentation, playbooks, and operating rhythms that make internal IT support fast, consistent, and trusted across the company
+- Experience with identity and SSO platforms such as Okta or Entra, including SAML, OIDC, SCIM, RBAC, and lifecycle automation
+- End-to-end endpoint management at scale across macOS, Windows, and Linux
+- Experience with MDM and device management tooling such as Jamf, Intune, Kandji, or similar systems
+- Experience running endpoint security controls including EDR, disk encryption, patching, device compliance baselines, and app policy enforcement
+- Experience administering Google Workspace, Slack, GitHub, and other core internal SaaS systems with strong directory hygiene and low permissions sprawl
+- Familiarity with GitOps, infrastructure as code, and automation with Python, Bash, Terraform, or similar tools
+- Experience with coding agents such as Codex or Claude Code
+- Experience operating office and lab networks, remote access systems, and device connectivity in environments that mix software, hardware, and physical operations
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="research-scientist-thin-films-2025-10-31"></a>
+
+### Research Scientist, Thin Films (2025-10-31)
+
+2025-10-31 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
+As a Research Scientist in Thin Film Materials Discovery, you will lead thin-film synthesis efforts using advanced PVD platforms, building the experimental foundation for autonomous discovery loops. You will collaborate with computational and AI scientists, and partner with engineers designing next-generation automated laboratory infrastructure.
+What You’ll Do
+- Develop synthesis strategies to realize novel thin-film materials predicted by AI
+- Determine and control crystal structures, defects, microstructures, and properties of previously unrealized compounds
+- Partner with AI and computation teams to build predictive models of materials growth and properties grounded in physics and chemistry
+- Work with engineers to design, test, and deploy automated growth and characterization hardware
+- PhD in chemistry, physics, or materials science, with 5+ years of hands-on experience
+- Deep expertise with thin-film synthesis methods such as sputtering, PLD, and MBE, with demonstrated experience and creativity across diverse chemistries
+- Strong skills in structural and chemical characterization, particularly of thin films and materials with structures or compositions never before realized experimentally — including diffraction, microscopy, and spectroscopy
+- Experience probing the optical, electronic, magnetic, thermal, and/or other properties of thin films
+- Proven record of collaboration with computational groups, especially for high-throughput materials discovery
+- Demonstrated commitment to laboratory safety and stewardship, with hands-on experience in hazardous chemistries
+- Strong track record of highly impactful research demonstrated by publications in top-tier journals and/or inventions, and recognized leadership in the field
+- Experience working in national user facilities such as synchrotrons or neutron sources
+- Development of novel synthesis or characterization techniques
+- Comfort with large experimental datasets and analysis pipelines
+- Experience with automation and scripting in laboratory environments
+Mechanics
+Location: Menlo Park, CA
+
+**Compensation: $250,000-350,000 + equity**
+Visa sponsorship: Yes, we sponsor visas.
+We’re building a team of the world’s best — the scientists, engineers, and problem-solvers who don’t just follow the frontier, they define it. If you’re driven to bring AI to life in the physical world and make discoveries that have never been made before, you belong here.
+
+</details>
+
+<a id="research-scientist-condensed-matter-theory-2025-11-12"></a>
 
 ### Research Scientist, Condensed Matter Theory (2025-11-12)
 
@@ -206,7 +575,12 @@ What You’ll Do
 Mechanics
 Location: Menlo Park, CA or Montreal, Canada
 
+**Compensation: $225,000–$325,000 + equity**
+Visa sponsorship: Yes, we sponsor visas.
+
 </details>
+
+<a id="product-engineer-2025-11-13"></a>
 
 ### Product Engineer (2025-11-13)
 
@@ -234,6 +608,37 @@ Location: Menlo Park, CA
 Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist in this process.
 
 </details>
+
+<a id="computational-scientist-structural-thermal-2025-12-03"></a>
+
+### Computational Scientist, Structural & Thermal (2025-12-03)
+
+2025-12-03 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Periodic Labs is building AI systems that can simulate physical science, verify predictions, and train on the full scientific method. We are looking for a Computational Scientist to develop structural, thermal, and coupled thermo-mechanical simulation capabilities for semiconductor systems and advanced materials.
+This role is for someone who thinks of themselves as both a scientist and a software engineer. You understand solid mechanics and heat transfer at a level that goes beyond configuring a commercial FEA package, and you are comfortable building, extending, or automating solvers when the physics or scale of the problem requires it.
+
+**What You'll Do**
+- Develop agent-based structural and thermal simulation capabilities for semiconductor systems, including wafer stress and warpage, thin-film residual stress, thermo-mechanical reliability, thermal budget modeling, process-induced deformation, fracture and delamination, and coupled heat-stress problems.
+- Build or extend custom solvers where commercial FEA tools are too slow, too opaque, or insufficiently flexible. This may include custom FEM implementations, phase-field fracture models, crystal plasticity codes, thin-film mechanics frameworks, or reduced-order mechanical models, written in Python, C++, or Julia.
+- Model materials behavior at the level the physics requires: elasticity, plasticity, viscoelasticity, creep, fracture, diffusion-induced stress, thermal expansion mismatch, interfacial mechanics, and materials evolution under process conditions.
+- Validate models against experimental measurements including wafer metrology, curvature and bow measurements, DIC, profilometry, nanoindentation, or failure analysis data.
+- Design and curate evaluation datasets in collaboration with RL researchers to train LLMs capable of directing complex simulation pipelines.
+- Generate simulated datasets for ML training in regimes where experimental coverage is expensive or difficult to achieve.
+- Build and automate simulation pipelines at scale, architecting workflows that connect simulation outputs to data infrastructure, ML systems, and autonomous experimentation loops.
+
+**You Will Thrive Here If You Have**
+- Periodic Labs is an early-stage startup, and we're looking for someone who can bring technical leadership to modeling structural and thermal behavior in semiconductor devices, not necessarily someone who already has every skill listed below. A strong growth mindset, demonstrated ownership, and a track record of getting up to speed quickly in new technical areas are much more important than experience in semiconductors.
+- A PhD or equivalent research experience in mechanical engineering, materials science, aerospace engineering, or a closely related field, with a strong foundation in solid mechanics and heat transfer. Early-career candidates with strong research or engineering output are encouraged to apply.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="software-engineer-2026-02-10"></a>
 
 ### Software Engineer (2026-02-10)
 
@@ -270,7 +675,9 @@ You do not need experience in every area below. Depth in one or more may help us
 
 </details>
 
-### Research Associate, Thin Films (2026-03-10)
+<a id="research-associate-thin-films-fixed-term-2026-03-10"></a>
+
+### Research Associate - Thin Films (Fixed Term) (2026-03-10)
 
 2026-03-10 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/98837207-657f-4116-a112-d8dc6184b49e)
 
@@ -296,36 +703,265 @@ What You’ll Do
 
 </details>
 
-### Research Scientist, Thin Films (2026-04-16)
+<a id="process-development-engineer-2026-03-26"></a>
 
-2026-04-16 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/7f36ea6e-3e67-40df-82c6-5540859a2ac5)
+### Process Development Engineer (2026-03-26)
+
+2026-03-26 → 2026-07-25 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20260514180037/https://jobs.ashbyhq.com/periodic-labs/77f48dbb-a1b7-4f2c-9434-06be4a6c0d3e)
+
+<details><summary>Description</summary>
+
+**About the Role**
+As a Process Development Engineer, you will play a crucial role in designing and optimizing the workflows and tools that enable high-efficiency process technologies, primarily for the semiconductor industry. You will contribute to lab design and expansion, define hardware engineering specs, perform hardware characterization, and troubleshoot complex engineering issues.
+You will also be hands-on in establishing and standardizing process flows, generating and analyzing data, creating technical documentation, and engaging with customers to ensure alignment between lab capabilities and market needs. In this role, you will experiment, learn, and collaborate daily with internal teams spanning AI/ML, simulation, automation, and physics/chemistry to build scalable solutions for high-value problems.
+What You’ll Do
+- Process Engineering: Bring structure to unstructured workflows by establishing process control metrics. Conduct complex design of experiments (DOE), define recipe structures from scratch, implement statistical process control (SPC) and fault detection and classification (FDC), and extend these practices across a wide range of equipment.
+- Lab Development: Contribute to the design, construction, and scale-up of an AI-accelerated thin-film and semiconductor processing laboratory, enabling scientists to pursue materials discovery.
+- Customer & Vendor Engagement: Communicate and engage directly with key customers and vendors to resolve highly complex process engineering issues and address customer High Value Problems (HVPs). Build modular test stands or hardware needed for proof-of-concept experiments.
+- Documentation & Data: Create internal and external documentation, strategies, procedures, presentations, and technical reports, and establish standardized data pipelines to feed into AI training infrastructure.
+- BS, MS, or PhD in Engineering (Mechanical, Chemical, Electrical), Materials Science, or a related field.
+- Extensive hands-on experience in process engineering or equipment engineering in the semiconductor manufacturing industry.
+- Strong understanding of overall semiconductor process flows and cross-module process integrations.
+- Expertise in the hardware design and underlying mechanisms of high-vacuum systems, advanced deposition/etch platforms, or metrology tools.
+- Startup-ready mindset: able to operate effectively in a fast-paced, ambiguous environment while implementing industry-standard best practices.
+Mechanics
+Minimum education: Bachelor’s degree or an equivalent combination of education and training or experience
+Location: Our lab is located in Menlo Park and we prefer folks to be located in Menlo Park or San Francisco but can be flexible based on role
+Compensation: The annual compensation range for this role — $175,000-$275,000
+Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist in this process with our legal support.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="research-scientist-materials-synthesis-2026-03-30"></a>
+
+### Research Scientist, Materials Synthesis (2026-03-30)
+
+2026-03-30 → 2026-05-19 · materials-science · Menlo Park · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/dfd4f94a-7b94-4877-96d2-9a91c0f0780a?employmentType=FullTime)
 
 <details><summary>Description</summary>
 
 **About the Role**
 Join a world-class team of scientists and engineers pushing the boundaries of materials research in a groundbreaking lab where AI and automation unlock discoveries at unprecedented speed and scale.
-As a Research Scientist in Thin Film Materials Discovery, you will lead thin-film synthesis efforts using advanced PVD platforms, building the experimental foundation for autonomous discovery loops. You will collaborate with computational and AI scientists, and partner with engineers designing next-generation automated laboratory infrastructure.
+As a Research Scientist within the Periodic Labs experimental effort, you bring computational predictions into reality through solid state materials chemistry. In this role, you will both develop new materials synthesis approaches and be part of the team developing autonomous discovery loops.
 What You’ll Do
-- Develop synthesis strategies to realize novel thin-film materials predicted by AI
-- Determine and control crystal structures, defects, microstructures, and properties of previously unrealized compounds
-- Partner with AI and computation teams to build predictive models of materials growth and properties grounded in physics and chemistry
-- Work with engineers to design, test, and deploy automated growth and characterization hardware
+- Develop strategies to synthesize novel solid state materials
+- Reveal and control the atomic structure of these materials through advanced characterization
+- Collaborate with the AI team in the development of predictive tools and analysis techniques grounded in chemistry and materials science
+- Collaborate with the engineering team to design and test new automated laboratory hardware for synthesis and characterization
 - PhD in chemistry, physics, or materials science, with 5+ years of hands-on experience
-- Deep expertise with thin-film synthesis methods such as sputtering, PLD, and MBE, with demonstrated experience and creativity across diverse chemistries
-- Strong skills in structural and chemical characterization, particularly of thin films and materials with structures or compositions never before realized experimentally — including diffraction, microscopy, and spectroscopy
-- Experience probing the optical, electronic, magnetic, thermal, and/or other properties of thin films
-- Proven record of collaboration with computational groups, especially for high-throughput materials discovery
-- Demonstrated commitment to laboratory safety and stewardship, with hands-on experience in hazardous chemistries
+- Proficiency with a diverse range of synthesis methods within solid state materials chemistry, including air-sensitive materials
+- Strong structural characterization skills across diffraction, microscopy, and spectroscopy
+- Experience in characterizing the properties of crystalline materials
+- Motivation by fundamental science questions that ultimately enable transformative applied materials
 - Strong track record of highly impactful research demonstrated by publications in top-tier journals and/or inventions, and recognized leadership in the field
-- Experience working in national user facilities such as synchrotrons or neutron sources
-- Development of novel synthesis or characterization techniques
-- Comfort with large experimental datasets and analysis pipelines
-- Experience with automation and scripting in laboratory environments
+- Experience with collaborations between computational and experimental researchers
+- Demonstrated commitment to laboratory safety
+- Experience collaborating with national user facilities
+- Novel synthesis or characterization technique or instrument development
+- Experience handling experimental data at scale
+- Experience with lab automation, software development, or similar tools to accelerate R&D data generation
 Mechanics
-Location: Menlo Park, CA
+Minimum education: Bachelor’s degree or an equivalent combination of education and training or experience
+Location: Our lab is located in Menlo Park and we prefer folks to be located in Menlo Park or San Francisco but can be flexible based on role
+Compensation: The annual base compensation range for this role is $160,000–$220,000, commensurate with experience
+Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist in this process with our legal support.
 We’re building a team of the world’s best — the scientists, engineers, and problem-solvers who don’t just follow the frontier, they define it. If you’re driven to bring AI to life in the physical world and make discoveries that have never been made before, you belong here.
 
 </details>
+
+<a id="lead-security-engineer-2026-04-15"></a>
+
+### Lead Security Engineer (2026-04-15)
+
+2026-04-15 → 2026-07-25 · software-eng · Menlo Park · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/32f7c36e-3730-4cbf-8d99-39ec11f7c1f2?employmentType=FullTime)
+
+<details><summary>Description</summary>
+
+**About the Role**
+You will lead, design, build, and operate security engineering at Periodic Labs. You will secure the systems that power our research and operations, including cloud environments, clusters, internal developer platforms, identity systems, secrets, SaaS access patterns, and lab-adjacent infrastructure. You will work closely with research, infra, lab, and operations teams to reduce risk without slowing down experimentation.
+This is a hands-on engineering role. You will write automation, ship controls, lead incident response, and raise the bar for how we design secure systems. You will set pragmatic standards and build tooling that makes the secure path the easy path for the rest of the company.
+What You’ll Do
+- Own security architecture across cloud, Kubernetes, internal services, and research infrastructure
+- Design and operate identity and access systems for both people and workloads, including SSO, MFA, RBAC, SCIM lifecycle automation, workload identity, and least-privilege access patterns
+- Build and improve secrets management across the company, including KMS, GitHub and CI credentials, 1Password or equivalent systems, and secure service-to-service authentication
+- Harden software delivery and developer workflows, including CI/CD, dependency security, build provenance, artifact integrity, and secure GitHub administration
+- Lead threat modeling, secure design reviews, and risk assessments for internal platforms, lab systems, and any externally exposed products
+- Build detection and response capabilities across cloud, identity, network, and endpoint telemetry, and drive incidents through containment, root cause analysis, and remediation
+- Own vulnerability management and remediation automation across hosts, containers, dependencies, SaaS, and infrastructure-as-code
+- Partner with infra and lab engineering on segmentation, remote access, firewall policy, certificates, DNS, and secure device-to-cloud patterns
+- Set pragmatic security standards, run tabletop exercises, and help the rest of the company make sound security decisions without adding unnecessary process
+- Experience building and operating security controls in AWS, GCP, or Azure and in Kubernetes-based environments
+- Strong hands-on engineering with a scripting language such as Python or Bash, and Terraform
+- Experience with identity systems such as Okta or Entra, SAML, OIDC, SCIM, IAM, workload identity, and least-privilege design
+- Experience with secrets management and secure credential flows, including KMS, CI/CD secrets, GitHub OIDC, or service-to-service authentication
+- Familiarity with secure SDLC and supply chain controls, including code review, threat modeling, dependency management, signed builds or attestations, and CI hardening
+- Experience with detection and response, vulnerability management, and incident handling in fast-moving engineering environments
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="business-operations-associate-2026-04-22"></a>
+
+### Business Operations Associate (2026-04-22)
+
+2026-04-22 → 2026-05-19 · business-ops · Menlo Park · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/75660686-5b6f-430b-bc8f-83e29c635669?employmentType=FullTime)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Periodic Labs is scaling fast, and the systems, decisions, and operations that underpin our growth need to scale with us. As a Business Operations Associate, you’ll work at the center of the company — supporting our leadership team, driving cross-functional initiatives, and solving problems that don’t yet have playbooks. You’ll work directly with our founders and senior leadership across strategy, planning, finance, and operations.
+This is a role for someone who is extraordinarily high agency, learns at an uncommon pace, and brings genuine intellectual curiosity to the work. A background in physics or quantitative science is a strong signal — not because the work is technical in the traditional sense, but because the mindset it develops is exactly what we’re looking for: comfort with ambiguity, rigorous first-principles thinking, and the ability to model complex systems. You’ll grow quickly here, take on real ownership early, and have a front-row seat to building a company at the frontier of AI and physical science.
+What You’ll Do
+- Partner directly with founders and senior leaders on strategic planning, operational priorities, and high-stakes decisions — context-switching across the full breadth of the company’s needs
+- Own and manage critical cross-functional projects end-to-end, from scoping through execution and retrospective, often operating with a high degree of ambiguity and no prior template
+- Build frameworks, models, and analyses that drive company decisions — headcount planning, resource allocation, OKR tracking, vendor assessments, and more
+- Support the operating cadence of the company: leadership meetings, board prep, offsites, and key internal communications
+- Identify process gaps and inefficiencies across the organization and design lightweight systems to address them — acting as an internal consultant and operator simultaneously
+- Support finance and business operations: budgeting, vendor contracts, spend tracking, and coordination with legal and finance partners
+- Assist in preparing external materials — investor updates, partnership decks, and strategic narratives — with precision and polish
+- Take on ad hoc research and analysis across scientific, market, or operational topics, synthesizing findings into clear recommendations for leadership
+- A degree in physics, mathematics, engineering, or another rigorous quantitative discipline from a top university — or an equivalent track record that demonstrates the same caliber of thinking
+- 7+ years of experience in a high-velocity environment: a startup, investment firm, consulting practice, research lab, or similarly demanding setting
+- Exceptional analytical ability — you can build a model, stress-test an assumption, and communicate the answer clearly in the same afternoon
+- Outstanding written and verbal communication skills; you write with clarity and economy and can synthesize complexity into something leadership can act on
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="forward-deployed-engineer-llm-systems-2026-04-23"></a>
+
+### Forward Deployed Engineer - LLM Systems (2026-04-23)
+
+2026-04-23 → 2026-05-19 · ml-research · Menlo Park · [source](https://web.archive.org/web/20260428022744/https://jobs.ashbyhq.com/periodic-labs/dbac407f-a408-44a3-9e7a-895d42649edc)
+
+<details><summary>Description</summary>
+
+**About the Role**
+You will be a key builder behind the world's first on-prem LLM system for atoms, deploying inference and reinforcement learning systems directly into semiconductor fabs where the science happens. The role splits roughly 80% LLM system development and deployment, and 20% semiconductor customer interaction — translating fab requirements into engineering specs and ensuring our systems meet the realities of production.
+You will move fluidly between improving LLM systems, managing Kubernetes clusters, and interacting with semiconductor experts — owning deployments end-to-end and serving as the technical face of our system to vendor partners. You will also work closely with LLM systems and modeling experts from OpenAI, Anthorpic, xAI, Google, and other frontier labs.
+
+**What You'll Do**
+- Deploy and operate inference and reinforcement learning systems on-site at semiconductor partner facilities, from bring-up through ongoing operation
+- Build and maintain the on-prem LLM platform powering our atomic-scale science workflows, including orchestration, scheduling, observability, and reliability
+- Develop and extend open-source LLM frameworks (SGLang, vLLM, Megatron, Slime) to meet the performance and integration needs of on-prem deployments
+- Build custom Kubernetes operators and Slurm integrations to run ML workloads in heterogeneous on-prem environments
+- Own metrics, dashboards, and alerting in Prometheus, Grafana, and PagerDuty
+- Partner with semiconductor process engineers to translate fab requirements into engineering specs, with a focus on New Product Introduction (NPI) flows
+You will thrive in this role if you have experience in:
+- Deploying inference and/or RL systems in production, including new-cluster bring-up and integration with existing infrastructure
+- Kubernetes and/or Slurm — for example, building a custom Kubernetes operator for ML systems, or running large-scale workloads on Slurm
+- Prometheus, Grafana, and PagerDuty, with a strong grasp of how to set up dashboards and reason about system performance
+- Hands-on framework-level work with SGLang, vLLM, Megatron, Slime, or other open-source inference and RL engines
+- Systems engineering fundamentals: Linux, networking, distributed systems, GPU computing, and performance debugging
+- Direct semiconductor process experience across wafer processing modules (deposition, etch, litho, packaging, metrology), FEOL/MEOL/BEOL integration, NPI spec definition, device performance/yield/reliability, and DOE/SPC/APC, with the ability to engage directly with customers
+- Deployed ML or LLM systems in air-gapped, on-prem, or otherwise constrained environments
+- Contributed upstream to open-source inference or training frameworks
+- Shipped real systems in both software systems and semiconductor process engineering
+- Worked on RL infrastructure at scale, including rollout systems, training/inference co-location, and reward modeling pipelines
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="founding-hr-leader-2026-04-25"></a>
+
+### Founding HR Leader (2026-04-25)
+
+2026-04-25 → open · leadership · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Periodic Labs is growing fast, and we're building the people infrastructure to match. As our Head of People, you'll run the full people function and partner directly with the leadership team to build the organization that will define the next era of AI-driven scientific discovery. You'll design the systems, shape the culture, and lead the people and talent functions that make Periodic Labs a place where exceptional people do the best work of their lives.
+This isn't a traditional HR leadership role. We need someone who has operated inside engineering-forward organizations, ideally in frontier AI, physical products, semiconductors, or hardware-forward startups, and who deeply understands how technical teams operate under pressure. You'll be a trusted advisor to founders and senior leaders, bringing both strategic vision and operational rigor.
+
+**What You'll Do**
+- Run all things people related, spanning talent, HR business partnering, onboarding, performance, compensation, learning and development.
+- Lead and scale talent acquisition, including building the recruiting team, evolving hiring processes and infrastructure, and shaping the company’s hiring strategy as it grows.
+- Partner directly with the leadership team on organizational design, workforce planning, and growth strategy as the company grows through its next phase
+- Lead employee relations work with professionalism and sound judgment, handling sensitive situations, investigations, and executive coaching with discretion and care
+- Design the people systems that help our scientific and engineering teams grow, get recognized, and get paid fairly, built for how technical people actually work, not borrowed from a playbook.
+- Design onboarding programs that integrate new engineers and scientists quickly into the Periodic Labs culture and way of working
+- Shape how we scale as an organization. This isn't a traditional hierarchy-building exercise, it's figuring out how a lab-first company adds people and structure without losing what makes it work.
+- Use people data and analytics to surface insights and drive evidence-based decisions on headcount, attrition, engagement, and team effectiveness
+- 15+ years of HR experience, with meaningful time in a senior people leadership role at a technology, research, or engineering-forward company
+- Experience building and leading a talent acquisition function, including hiring and managing recruiters, as the company scales
+- A background supporting teams in physical products, semiconductors, manufacturing, or hardware-forward startups. You understand the operational rhythms and talent profiles of these environments
+- Experience navigating the intersection of research and engineering cultures, where intellectual rigor, speed, and hands-on problem-solving coexist
+- Strong command of the full HR spectrum: performance management, compensation design, employee relations, organizational design, and people operations
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="strategic-finance-lead-2026-04-25"></a>
+
+### Strategic Finance Lead (2026-04-25)
+
+2026-04-25 → 2026-05-19 · business-ops · Menlo Park · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/7d7bcca9-60d2-4afe-b8e4-7d1354fec7e0?employmentType=FullTime)
+
+<details><summary>Description</summary>
+
+**About the Role**
+You will be the founding member of our strategic finance function, reporting to the Head of Operations. You’ll be responsible for the processes, reports, and insights that will drive our next stage of growth. This is a hands-on role with a broad scope. You’ll handle everything from bookkeeping processes to board-level financial reporting and forecasting of our business.
+The ideal candidate will understand a R&D heavy business, and will have experience in procurement, lab buildouts, and/or physical infrastructure.
+What You’ll Do
+- Lead both short-term and long-range capital planning for the company. Translate technical roadmaps from the R&D team into financial operating plans, integrating assumptions around headcount ramps, compute spend, staffing mix, lab capital equipment purchases, and development timelines.
+- As the company scales, establish a BvA and rolling forecast process to manage burn and resource allocation. Define and report on key metrics to management on a regular cadence and surface insights where needed.
+- Track cash runway and working capital, and optimize yield on our cash balance.
+- Work closely with leadership on financial strategy, commercialization approaches, and scenario planning. Provide analysis and recommendations to support major decisions (compute, pricing, hiring, expansion) and challenge assumptions with data.
+- Frame tradeoffs that inform executive decisions on capital deployment and investment sequencing. Drive capital and investment efficiency by proactively identifying scope creep and budget efficiencies before spend is committed.
+- Support commercialization through developing pricing strategy, analyzing unit economics, and modeling revenue ramps.
+- Manage and implement finance infrastructure (tools/software) as needed (e.g. ERP, AR/AP management, financial modeling in Google Sheets). Establish internal controls and financial policies to enable scalable growth.
+- Prepare monthly/quarterly financial reports for our board and investors. Support future fundraising by owning data room prep, due diligence requests, closing process, and more.
+- Own the monthly close process, ensure financial records are accurate and GAAP-compliant, and manage invoices, payables, and receivables. Implement proper costing procedures to ensure that lab-level opex and capex are properly captured and reported on.
+- 10+ years in finance and accounting roles, with hardware and AI experience strongly preferred
+- Demonstrated expertise in financial modeling and analysis in a fast-paced, R&D environment
+- Experience with procurement, lab buildouts, or physical infrastructure
+- A hands-on approach and excitement to build processes where little currently exists
+- Strong judgment and the ability to communicate complex financial information clearly to technical and non-technical stakeholders
+Mechanics
+- Minimum education: Bachelor’s degree or an equivalent combination of education and training or experience
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="technical-sourcer-physical-sciences-2026-04-25"></a>
+
+### Technical Sourcer - physical sciences (2026-04-25)
+
+2026-04-25 → 2026-05-19 · business-ops · Menlo Park, Remote · [source](https://web.archive.org/web/20260519060548/https://jobs.ashbyhq.com/periodic-labs/c8a1217f-034c-4b56-a7f1-59b974da0055?employmentType=FullTime)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Periodic Labs is hiring a Technical Sourcer to help us find and engage the exceptional talent that defines our team. You’ll work across both our “bits” and “atoms” sides — sourcing for software engineers, ML researchers, and AI scientists as well as materials scientists, chemists, physicists, and lab engineers. This is a high-impact, high-craft role: we hire for rare combinations of skill and curiosity, and great sourcing is the first step in finding people the world doesn’t expect to find.
+You’ll work directly with our Head of Recruiting and partner with researchers and engineers across the company to build candidate pipelines that match our ambition. You’re comfortable operating in uncharted territory, can craft outreach that actually gets responses, and know how to evaluate technical profiles across diverse disciplines.
+What You’ll Do
+- Own full-cycle sourcing across technical roles spanning AI/ML research, software infrastructure, and physical sciences (materials, chemistry, physics, lab engineering)
+- Build and manage diverse, high-quality talent pipelines using LinkedIn Recruiter, GitHub, Google Scholar, academic databases, conference publications, and domain-specific communities
+- Craft compelling, personalized outreach that resonates with highly specialized candidates who aren’t actively looking — and convert them into engaged prospects
+- Partner closely with hiring managers and researchers to deeply understand role requirements, ideal profiles, and the nuances that separate a great candidate from a good one
+- Develop and maintain sourcing strategies for hard-to-fill roles, including niche scientific disciplines and emerging fields at the intersection of AI and physical science
+- Track pipeline health and sourcing metrics in Ashby (our ATS), including outreach response rates, conversion rates, and time-to-pipeline, and surface insights proactively
+- Continuously research the competitive landscape — knowing where top talent works, studies, and publishes, and staying ahead of hiring trends in both AI and deep tech
+- Attend conferences, research symposia, and recruiting events to build Periodic Labs’ presence and network in key talent communities
+- Collaborate with the recruiting coordinator and Head of Recruiting to ensure sourced candidates have a seamless handoff and excellent early experience
+- Contribute to employer branding efforts by helping articulate what makes Periodic Labs unique to candidates across scientific and engineering disciplines
+- 5+ years of sourcing or recruiting experience, with a focus on technical roles in software, AI/ML, or deep tech
+- A proven track record of building pipelines for hard-to-fill, highly specialized roles — including research scientists, engineers, or other niche technical profiles
+- Deep familiarity with sourcing tools and platforms: LinkedIn Recruiter, GitHub, Google Scholar, Semantic Scholar, ResearchGate, and Boolean search strategies
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="ml-systems-engineer-2026-04-29"></a>
 
 ### ML Systems Engineer (2026-04-29)
 
@@ -362,9 +998,43 @@ Mechanics
 Location: Menlo Park, CA
 
 **Compensation: $250,000-$350,000 base + equity**
+Visa sponsorship: Yes, we sponsor visas.
 We’re building a team of the world’s best — the scientists, engineers, and problem-solvers who don’t just follow the frontier, they define it. If you’re driven to bring AI to life in the physical world and make discoveries that have never been made before, you belong here.
 
 </details>
+
+<a id="research-scientist-data-2026-05-05"></a>
+
+### Research Scientist, Data (2026-05-05)
+
+2026-05-05 → open · ml-research · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77)
+
+<details><summary>Description</summary>
+
+**About the Role**
+You will work on the most important aspect of Scientific AI creation: evaluations and data. This means constructing cutting-edge evaluations based on advanced scientific use cases, sourcing and procuring external datasets, integrating internally generated experimental data into the training stack, constructing training environments for RL. You’ll ensure that the team always has the right assets, in the right shape, to evaluate and improve AI models.
+You will work with computational and experimental scientists to translate complex scientific workflows into rigorous evaluations and agentic benchmarks, and partner with pretraining, midtraining, and reinforcement learning researchers to identify the data models needed, then build the datasets, environments, and pipelines to deliver it. Your goal will be to create a tight feedback loop between scientific use cases, model evaluation, and training data.
+What You’ll Do
+- Own the evaluation and data strategy across the training stack, identifying capability gaps and shaping the roadmap with leads of physical science and AI research
+- Work with domain experts to translate advanced scientific workflows into rigorous evals, benchmarks, and RL environments
+- Source, evaluate, and procure external datasets across chemistry, physics, materials science, mathematics, simulations, and laboratory instrumentation
+- Build robust pipelines to ingest, clean, and transform for training large-scale datasets from heterogeneous sources
+- Build tooling and analysis workflows that help researchers inspect data, understand model failures, and determine which evaluations or datasets to develop next
+- Designed evaluations, benchmarks, or RL environments for language models, agents, or scientific AI systems
+- Built large-scale data pipelines for LLM pretraining, midtraining, post-training, or evaluation
+- Strong judgment about dataset and evaluation quality, including scientific relevance, coverage, provenance, licensing, and contamination risks
+- Strong software and data engineering skills, including familiarity with data processing at scale, dataset versioning, lineage tracking
+- A research-oriented mindset: you form hypotheses about data, run controlled experiments, measure model outcomes, and iterate with rigor
+- Research experience in areas such as materials science, solid state chemistry, chemistry, computational physics, semiconductors
+Mechanics
+Location: Menlo Park, CA or Montreal, Canada
+
+**Compensation: $250,000-350,000 + equity**
+Visa sponsorship: Yes, we sponsor visas.
+
+</details>
+
+<a id="process-engineer-powder-2026-05-08"></a>
 
 ### Process Engineer, Powder (2026-05-08)
 
@@ -392,87 +1062,7 @@ What You’ll Do
 
 </details>
 
-### Computational Scientist, Structural & Thermal (2026-05-19)
-
-2026-05-19 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/0d96f03c-8f08-44ae-a7cb-8c4bbc80976c)
-
-<details><summary>Description</summary>
-
-**About the Role**
-Periodic Labs is building AI systems that can simulate physical science, verify predictions, and train on the full scientific method. We are looking for a Computational Scientist to develop structural, thermal, and coupled thermo-mechanical simulation capabilities for semiconductor systems and advanced materials.
-This role is for someone who thinks of themselves as both a scientist and a software engineer. You understand solid mechanics and heat transfer at a level that goes beyond configuring a commercial FEA package, and you are comfortable building, extending, or automating solvers when the physics or scale of the problem requires it.
-
-**What You'll Do**
-- Develop agent-based structural and thermal simulation capabilities for semiconductor systems, including wafer stress and warpage, thin-film residual stress, thermo-mechanical reliability, thermal budget modeling, process-induced deformation, fracture and delamination, and coupled heat-stress problems.
-- Build or extend custom solvers where commercial FEA tools are too slow, too opaque, or insufficiently flexible. This may include custom FEM implementations, phase-field fracture models, crystal plasticity codes, thin-film mechanics frameworks, or reduced-order mechanical models, written in Python, C++, or Julia.
-- Model materials behavior at the level the physics requires: elasticity, plasticity, viscoelasticity, creep, fracture, diffusion-induced stress, thermal expansion mismatch, interfacial mechanics, and materials evolution under process conditions.
-- Validate models against experimental measurements including wafer metrology, curvature and bow measurements, DIC, profilometry, nanoindentation, or failure analysis data.
-- Design and curate evaluation datasets in collaboration with RL researchers to train LLMs capable of directing complex simulation pipelines.
-- Generate simulated datasets for ML training in regimes where experimental coverage is expensive or difficult to achieve.
-- Build and automate simulation pipelines at scale, architecting workflows that connect simulation outputs to data infrastructure, ML systems, and autonomous experimentation loops.
-
-**You Will Thrive Here If You Have**
-- Periodic Labs is an early-stage startup, and we're looking for someone who can bring technical leadership to modeling structural and thermal behavior in semiconductor devices, not necessarily someone who already has every skill listed below. A strong growth mindset, demonstrated ownership, and a track record of getting up to speed quickly in new technical areas are much more important than experience in semiconductors.
-- A PhD or equivalent research experience in mechanical engineering, materials science, aerospace engineering, or a closely related field, with a strong foundation in solid mechanics and heat transfer. Early-career candidates with strong research or engineering output are encouraged to apply.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-### Head of People (2026-05-19)
-
-2026-05-19 → open · leadership · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/c398af52-085d-427c-8c0f-8537cfd96ff3)
-
-<details><summary>Description</summary>
-
-**About the Role**
-Periodic Labs is growing fast, and we're building the people infrastructure to match. As our Head of People, you'll run the full people function and partner directly with the leadership team to build the organization that will define the next era of AI-driven scientific discovery. You'll design the systems, shape the culture, and lead the people and talent functions that make Periodic Labs a place where exceptional people do the best work of their lives.
-This isn't a traditional HR leadership role. We need someone who has operated inside engineering-forward organizations, ideally in frontier AI, physical products, semiconductors, or hardware-forward startups, and who deeply understands how technical teams operate under pressure. You'll be a trusted advisor to founders and senior leaders, bringing both strategic vision and operational rigor.
-
-**What You'll Do**
-- Run all things people related, spanning talent, HR business partnering, onboarding, performance, compensation, learning and development.
-- Lead and scale talent acquisition, including building the recruiting team, evolving hiring processes and infrastructure, and shaping the company’s hiring strategy as it grows.
-- Partner directly with the leadership team on organizational design, workforce planning, and growth strategy as the company grows through its next phase
-- Lead employee relations work with professionalism and sound judgment, handling sensitive situations, investigations, and executive coaching with discretion and care
-- Design the people systems that help our scientific and engineering teams grow, get recognized, and get paid fairly, built for how technical people actually work, not borrowed from a playbook.
-- Design onboarding programs that integrate new engineers and scientists quickly into the Periodic Labs culture and way of working
-- Shape how we scale as an organization. This isn't a traditional hierarchy-building exercise, it's figuring out how a lab-first company adds people and structure without losing what makes it work.
-- Use people data and analytics to surface insights and drive evidence-based decisions on headcount, attrition, engagement, and team effectiveness
-- 15+ years of HR experience, with meaningful time in a senior people leadership role at a technology, research, or engineering-forward company
-- Experience building and leading a talent acquisition function, including hiring and managing recruiters, as the company scales
-- A background supporting teams in physical products, semiconductors, manufacturing, or hardware-forward startups. You understand the operational rhythms and talent profiles of these environments
-- Experience navigating the intersection of research and engineering cultures, where intellectual rigor, speed, and hands-on problem-solving coexist
-- Strong command of the full HR spectrum: performance management, compensation design, employee relations, organizational design, and people operations
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-### Research Scientist, Data (2026-05-19)
-
-2026-05-19 → open · ml-research · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/d039ec58-a97d-47e1-b1e5-db003d772f77)
-
-<details><summary>Description</summary>
-
-**About the Role**
-You will work on the most important aspect of Scientific AI creation: evaluations and data. This means constructing cutting-edge evaluations based on advanced scientific use cases, sourcing and procuring external datasets, integrating internally generated experimental data into the training stack, constructing training environments for RL. You’ll ensure that the team always has the right assets, in the right shape, to evaluate and improve AI models.
-You will work with computational and experimental scientists to translate complex scientific workflows into rigorous evaluations and agentic benchmarks, and partner with pretraining, midtraining, and reinforcement learning researchers to identify the data models needed, then build the datasets, environments, and pipelines to deliver it. Your goal will be to create a tight feedback loop between scientific use cases, model evaluation, and training data.
-What You’ll Do
-- Own the evaluation and data strategy across the training stack, identifying capability gaps and shaping the roadmap with leads of physical science and AI research
-- Work with domain experts to translate advanced scientific workflows into rigorous evals, benchmarks, and RL environments
-- Source, evaluate, and procure external datasets across chemistry, physics, materials science, mathematics, simulations, and laboratory instrumentation
-- Build robust pipelines to ingest, clean, and transform for training large-scale datasets from heterogeneous sources
-- Build tooling and analysis workflows that help researchers inspect data, understand model failures, and determine which evaluations or datasets to develop next
-- Designed evaluations, benchmarks, or RL environments for language models, agents, or scientific AI systems
-- Built large-scale data pipelines for LLM pretraining, midtraining, post-training, or evaluation
-- Strong judgment about dataset and evaluation quality, including scientific relevance, coverage, provenance, licensing, and contamination risks
-- Strong software and data engineering skills, including familiarity with data processing at scale, dataset versioning, lineage tracking
-- A research-oriented mindset: you form hypotheses about data, run controlled experiments, measure model outcomes, and iterate with rigor
-- Research experience in areas such as materials science, solid state chemistry, chemistry, computational physics, semiconductors
-Mechanics
-Location: Menlo Park, CA or Montreal, Canada
-
-</details>
+<a id="procurement-finance-operations-manager-2026-05-21"></a>
 
 ### Procurement & Finance Operations Manager (2026-05-21)
 
@@ -506,6 +1096,8 @@ What You’ll Do
 
 </details>
 
+<a id="research-intern-thin-films-2026-05-26"></a>
+
 ### Research Intern, Thin Films (2026-05-26)
 
 2026-05-26 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/2cfb099d-42f1-4dff-93f4-1862b13f914a)
@@ -532,6 +1124,8 @@ What You’ll Do
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="forward-deployed-engineer-physics-simulation-2026-06-03"></a>
 
 ### Forward Deployed Engineer, Physics & Simulation (2026-06-03)
 
@@ -565,6 +1159,8 @@ What You’ll Do
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="senior-equipment-maintenance-technician-2026-06-11"></a>
 
 ### Senior Equipment Maintenance Technician (2026-06-11)
 
@@ -601,6 +1197,8 @@ Automation & Controls Support
 
 </details>
 
+<a id="laboratory-technician-2026-07-16"></a>
+
 ### Laboratory Technician (2026-07-16)
 
 2026-07-16 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/50a878d1-f9a6-4234-950d-f18d73c65c47)
@@ -632,6 +1230,32 @@ What You’ll Do
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="head-of-environmental-health-safety-ehs-2026-07-25"></a>
+
+### Head of Environmental Health & Safety (EHS) (2026-07-25)
+
+2026-07-25 → open · leadership · Menlo Park, CA · $250–325K · [source](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Periodic Labs is building an AI that can simulate science and verify its own predictions — training on the full scientific method. Central to that mission is a high-throughput experimental materials science lab that handles hazardous chemistries, high-pressure and high-temperature processes, air-sensitive synthesis, toxic gas exposure risks, and an expanding suite of thin-film deposition tools including PVD, PLD and the complexity of what we run overnight and autonomously is increasing every month.
+We believe EHS is integral to this ambition, not a compliance function bolted on after the fact, but a core design discipline that makes autonomous science possible. This EHS leadership role will build our safety architecture, defining permitting strategy, designing life safety systems, conducting process hazard analyses, and ultimately training our AI to reason about risk during experimental planning and execution.
+What You’ll Do
+- Lead the site EH&S team through a hands-on approach to problem solving and operational support while promoting a strong safety and environmental culture. Ensure compliance with applicable EH&S regulations and standards, develop and improve programs aligned with company goals, and actively partner with lab and operations teams on day-to-day safety challenges. Own the digital EHS infrastructure, integrating inspections, training records, incident reporting, compliance tracking, KPI dashboards, action-item tracking, and audit workflows into a unified operational safety platform.
+- Own and manage all permitting processes with local, state, and federal agencies: Fire Department/CUPA via Accela, CERS submissions for hazardous materials, AQMD/BAAQMD air permits, and TSDF coordination for hazardous waste.
+- Maintain and update chemical inventory systems, SDS library, and hazard labeling in compliance with OSHA, CalEPA, and permitted MAQ thresholds including managing the expansion of our chemical inventory as new thin-film processes introduce HF-based wet chemistry, fluoride compounds, and specialty gases.
+- Lead Hazard Communication (HazCom) and SDS training programs for lab staff, including night shift and autonomous overnight operation protocols.
+- Coordinate EHS inspections and maintain required documentation and postings across both the existing powder lab and thin-film facility.
+- Design and review life safety systems, including fire suppression, e-stop networks, gas detection (including toxic gas alarms for HF, H2Se, and other process chemistries), interlocks, alarm interfaces, and emissions/waste abatement systems such as baghouses and scrubbers.
+- Conduct and document HAZOPs, PHA/FMEA, and risk assessments for new processes and lab systems, including high-pressure furnace operations, glovebox workflows, and thin-film deposition platforms.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="electrical-technician-2026-08-05"></a>
 
 ### Electrical Technician (2026-08-05)
 
@@ -681,6 +1305,8 @@ Mechanics
 
 </details>
 
+<a id="environmental-health-safety-ehs-technician-2026-08-05"></a>
+
 ### Environmental Health & Safety (EHS) Technician (2026-08-05)
 
 2026-08-05 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/60f43e1c-08ac-4701-a7d5-0221e361df4e)
@@ -716,6 +1342,8 @@ Working closely with the EHS Engineer, Facilities team, scientists, and technici
 
 </details>
 
+<a id="research-engineer-semiconductor-2026-08-08"></a>
+
 ### Research Engineer, Semiconductor (2026-08-08)
 
 2026-08-08 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/95d290bd-6420-42e8-82a0-f0230722c19c)
@@ -749,6 +1377,80 @@ Mechanics
 
 </details>
 
+<a id="mechanical-engineer-2026-08-15"></a>
+
+### Mechanical Engineer (2026-08-15)
+
+2026-08-15 → 2026-08-15 · lab-automation · Menlo Park · [source](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/fe3b323e-34e8-41fe-9da3-26a8b6b941cd)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Join a tight-knit engineering team building the integrated lab systems that scale our materials synthesis and characterization, alongside our frontier models, scientific data, and the scientists who use them.
+Periodic Labs is seeking a Mechanical Engineer to help build the environment where materials scientists work alongside AI agents to plan experiments, run analyses, coordinate workflows, and turn results into decisions. You'll work with the team to translate vague, early-stage problems from scientists and engineers into clear requirements and build-ready hardware, owning the mechanical design of lab systems and instrumentation end to end and seeing them through fabrication, assembly, and operational bring-up.
+This role will help define what engineering looks like at Periodic: technically deep, ambitious in scope, and tightly coupled to scientific work.
+
+**What You'll Do**
+- Collaborate with a multidisciplinary team of materials scientists and engineers to synthesize vague, early-stage problems into clear requirements and hardware that solves them.
+- Own the design and build of systems and subsystems for lab automation and workflows, from concept through installation.
+- Layout and design core lab systems, including gloveboxes, furnaces, presses, deposition equipment, and consumables.
+- Design and customize lab machines and instrumentation to fit evolving scientific needs.
+- Program and troubleshoot robots integrated into lab workflows.
+- Engage directly with scientists and technicians to understand how they actually work, getting past stated requirements to uncover the real needs behind them, and translate that into clear engineering specifications.
+- Produce CAD, mechanical drawings and design documentation, including GD&T, to support both in-house builds and subcontracted manufacturing.
+- Assemble and build hardware hands-on, and manage subcontracted manufacturing across machining, additive, sheet metal, and welding.
+- Apply a strong safety mindset throughout design and build, with attention to engineering and process controls.
+- 2+ years of mechanical design experience, with hands-on and vendor-facing manufacturing exposure (machining, additive, sheet metal, welding).
+- Proficiency in CAD (Onshape or equivalent) and hand calculations.
+- Demonstrated ability to discover and write clear requirements, with strong project ownership from concept to completion.
+- Experience assembling and building physical hardware, not just designing it on paper.
+- Comfort working closely with scientists and technicians to translate workflow needs into engineering requirements and real hardware that solves problems.
+- Experience programming and controlling robots or other automated lab systems.
+- Experience working in software repos with agentic collaboration.
+- Experience dispensing challenging materials.
+- Measurement and test experience.
+- Design experience for high-temperature service.
+- Experience with test planning and bring-up.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="research-engineer-midtraining-2026-08-15"></a>
+
+### Research Engineer - Midtraining (2026-08-15)
+
+2026-08-15 → 2026-08-15 · ml-research · Menlo Park, CA · [source](https://web.archive.org/web/20260815154438/https://jobs.ashbyhq.com/periodic-labs/d3be5ecc-c4d3-4c9e-9a4d-519ab6147474)
+
+<details><summary>Description</summary>
+
+**About the Role**
+We're training frontier models to develop deep scientific knowledge and reasoning for scientific discovery. As a Midtraining Research Engineer, you'll take base models and improve their scientific reasoning: curating and generating data, building evals, and running large-scale training experiments. Your work will also lay the groundwork for our pre-training efforts down the line.
+
+**What You'll Do**
+- Identify, process, and curate novel sources of scientific data for large-scale model training.
+- Generate high-quality synthetic data to fill gaps in scientific knowledge and reasoning.
+- Build evaluations that correlate with downstream scientific task performance, working closely with RL researchers, physicists, and chemists.
+- Develop and apply techniques such as self-distillation and on-policy distillation to improve model capability.
+- Design and run large-scale training experiments, partnering with supercompute engineers to scale efficiently across thousands of GPUs.
+- Build tools for yourself and the team to investigate how data choices shape model intelligence.
+- Experience training LLMs on curated mixes of trillions of tokens.
+- Experience on a dedicated evals team supporting a large production training run.
+- Hands-on use of self-distillation, on-policy distillation, or similar methods in a real training pipeline.
+- Experience with scaling laws and compute-optimal hyperparameters.
+- Comfort working across data, evals, and training infrastructure.
+- Experience optimizing throughput and reliability for large-scale distributed training runs.
+- A background in AI for science or training on specialized domain data (e.g., protein, materials, or other scientific datasets).
+- Experience creating evals or synthetic data for non verifiable tasks and tracking performance over live runs.
+Mechanics
+- Location: Menlo Park, CA (Soon: San Francisco, too)
+- Compensation: $250,000–$350,000 + equity
+- Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist in this process.
+
+</details>
+
+<a id="research-engineer-lab-automation-2026-08-15"></a>
+
 ### Research Engineer, Lab Automation (2026-08-15)
 
 2026-08-15 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/a16ee7dd-021d-4f37-823d-7a8b520c6d8a)
@@ -779,8 +1481,12 @@ As our Research Engineer, you'll work directly with scientists to understand wha
 Mechanics
 - Minimum education: PhD or equivalent combination of education and hands-on research experience
 - Location: Menlo Park, CA
+- Compensation: $200,000-$250,000 + equity
+- Visa sponsorship: Yes, we sponsor visas.
 
 </details>
+
+<a id="business-operations-product-science-2026-08-18"></a>
 
 ### Business Operations, Product & Science (2026-08-18)
 
@@ -807,6 +1513,8 @@ What You’ll Do
 
 </details>
 
+<a id="process-technician-thin-films-2026-08-18"></a>
+
 ### Process Technician, Thin Films (2026-08-18)
 
 2026-08-18 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/19e2cc72-0f04-44b3-a9c3-0240a0fb9fe4)
@@ -832,6 +1540,8 @@ This is a contract position, on-site, with the possibility of extension or conve
 
 </details>
 
+<a id="technical-recruiter-2026-08-20"></a>
+
 ### Technical Recruiter (2026-08-20)
 
 2026-08-20 → open · business-ops · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/a9b28b1c-8a7f-456d-bea5-f2cb787c4eba)
@@ -854,6 +1564,8 @@ Location: Menlo Park, CA
 
 </details>
 
+<a id="research-scientist-research-engineer-materials-data-2026-09-01"></a>
+
 ### Research Scientist/Research Engineer, Materials Data (2026-09-01)
 
 2026-09-01 → open · materials-science · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/c4e0774f-0f3e-4ea7-be27-fb89130c0d01)
@@ -875,8 +1587,12 @@ Mechanics
 - Minimum experience: 4+ years of research or industry experience in experimental or computational materials science and working with data at scale.
 - Minimum education: PhD in Materials Science, Chemistry, or a related field, or equivalent industry experience.
 - Location : Menlo Park, CA
+- Compensation: $250,000-350,000 + equity
+- Visa sponsorship: Yes, we sponsor visas.
 
 </details>
+
+<a id="computational-scientist-differentiable-physics-2026-09-04"></a>
 
 ### Computational Scientist, Differentiable Physics (2026-09-04)
 
@@ -911,9 +1627,12 @@ Strong Candidates May Also Have
 - Experience connecting simulation to experiments, engineering decisions, semiconductors, or autonomous workflows.
 Mechanics
 - Location : Menlo Park, CA
+- Compensation : $250,000-350,000 + equity
 - Visa sponsorship : Yes, we sponsor visas and will do everything we can to assist in this process.
 
 </details>
+
+<a id="equipment-engineer-2026-09-14"></a>
 
 ### Equipment Engineer (2026-09-14)
 
@@ -942,6 +1661,8 @@ Mechanics
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="xrd-facility-manager-2026-09-15"></a>
 
 ### XRD Facility Manager (2026-09-15)
 
@@ -975,6 +1696,8 @@ You will also help specify and commission new instruments, write the SOPs and qu
 
 </details>
 
+<a id="research-scientist-research-engineer-midtraining-2026-09-30"></a>
+
 ### Research Scientist/Research Engineer, Midtraining (2026-09-30)
 
 2026-09-30 → open · ml-research · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/168dbf20-2230-49a0-9f00-f2ff58dad5c8)
@@ -1001,9 +1724,12 @@ We're training frontier models to develop deep scientific knowledge and reasonin
 - Experience creating evals or synthetic data for non verifiable tasks and tracking performance over live runs.
 Mechanics
 - Location: Menlo Park, CA
+- Compensation: $250,000–$350,000 + equity
 - Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist in this process.
 
 </details>
+
+<a id="research-scientist-scaling-rl-2026-10-01"></a>
 
 ### Research Scientist, Scaling RL (2026-10-01)
 
@@ -1032,6 +1758,8 @@ Visa sponsorship: Yes, we sponsor visas and will do everything we can to assist 
 
 </details>
 
+<a id="controller-2026-10-05"></a>
+
 ### Controller (2026-10-05)
 
 2026-10-05 → open · business-ops · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/6c188bbb-1f81-4145-aac3-28cb0e47e3cc)
@@ -1059,6 +1787,8 @@ What You’ll Do
 
 </details>
 
+<a id="process-safety-engineer-2026-10-07"></a>
+
 ### Process Safety Engineer (2026-10-07)
 
 2026-10-07 → open · lab-automation · Menlo Park, CA · [source](https://jobs.ashbyhq.com/periodic-labs/1d57d49b-e538-4d9a-86d3-6be17339016f)
@@ -1078,28 +1808,6 @@ What You’ll Do
 - Lead incident investigations and root cause analyses, own injury reporting and recordkeeping (Cal/OSHA 300 log, serious-injury reporting), and drive corrective actions to closure.
 - Assess permitting and MAQ implications of new processes and chemistries across our labs, represent process safety during fire marshal and CUPA inspections, and partner with EHS operations on CERS and BAAQMD compliance.
 - Serve as Chemical Hygiene Officer, maintaining the Chemical Hygiene Plan across our labs.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-### Head of Environmental Health & Safety (EHS) (2026-10-08)
-
-2026-10-08 → open · leadership · Menlo Park, CA · $250–325K · [source](https://jobs.ashbyhq.com/periodic-labs/0335ea7e-436c-4e50-a766-6b7d0b75e70a)
-
-<details><summary>Description</summary>
-
-**About the Role**
-Periodic Labs is building an AI that can simulate science and verify its own predictions — training on the full scientific method. Central to that mission is a high-throughput experimental materials science lab that handles hazardous chemistries, high-pressure and high-temperature processes, air-sensitive synthesis, toxic gas exposure risks, and an expanding suite of thin-film deposition tools including PVD, PLD and the complexity of what we run overnight and autonomously is increasing every month.
-We believe EHS is integral to this ambition, not a compliance function bolted on after the fact, but a core design discipline that makes autonomous science possible. This EHS leadership role will build our safety architecture, defining permitting strategy, designing life safety systems, conducting process hazard analyses, and ultimately training our AI to reason about risk during experimental planning and execution.
-What You’ll Do
-- Lead the site EH&S team through a hands-on approach to problem solving and operational support while promoting a strong safety and environmental culture. Ensure compliance with applicable EH&S regulations and standards, develop and improve programs aligned with company goals, and actively partner with lab and operations teams on day-to-day safety challenges. Own the digital EHS infrastructure, integrating inspections, training records, incident reporting, compliance tracking, KPI dashboards, action-item tracking, and audit workflows into a unified operational safety platform.
-- Own and manage all permitting processes with local, state, and federal agencies: Fire Department/CUPA via Accela, CERS submissions for hazardous materials, AQMD/BAAQMD air permits, and TSDF coordination for hazardous waste.
-- Maintain and update chemical inventory systems, SDS library, and hazard labeling in compliance with OSHA, CalEPA, and permitted MAQ thresholds including managing the expansion of our chemical inventory as new thin-film processes introduce HF-based wet chemistry, fluoride compounds, and specialty gases.
-- Lead Hazard Communication (HazCom) and SDS training programs for lab staff, including night shift and autonomous overnight operation protocols.
-- Coordinate EHS inspections and maintain required documentation and postings across both the existing powder lab and thin-film facility.
-- Design and review life safety systems, including fire suppression, e-stop networks, gas detection (including toxic gas alarms for HF, H2Se, and other process chemistries), interlocks, alarm interfaces, and emissions/waste abatement systems such as baghouses and scrubbers.
-- Conduct and document HAZOPs, PHA/FMEA, and risk assessments for new processes and lab systems, including high-pressure furnace operations, glovebox workflows, and thin-film deposition platforms.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

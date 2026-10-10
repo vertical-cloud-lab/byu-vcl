@@ -14,7 +14,9 @@ Back to [all companies](README.md) · [company profile](../companies/citrine-inf
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="general-opportunities-2025-05-20"></a>
 
 ### General Opportunities (2025-05-20)
 
@@ -26,6 +28,8 @@ Thanks for your interest in joining our team! In the event we are not actively r
 We review these applications periodically and may reach out if your background aligns with a new role. Please note that you will not receive a declination email if your application isn't selected if you apply to this post.
 
 </details>
+
+<a id="materials-informatics-consultant-iii-2026-06-22"></a>
 
 ### Materials Informatics Consultant III (2026-06-22)
 
@@ -63,6 +67,8 @@ Nice-to-Haves
 
 </details>
 
+<a id="customer-success-manager-l3-2026-08-27"></a>
+
 ### Customer Success Manager, L3 (2026-08-27)
 
 2026-08-27 → open · business-ops · Remote (Germany) · [source](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38)
@@ -93,6 +99,8 @@ Ideal candidates will be located in Germany and open to working fully remote.
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="business-operations-manager-l3-2026-09-16"></a>
 
 ### Business Operations Manager, L3 (2026-09-16)
 
@@ -131,6 +139,8 @@ Board and investor reporting
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="data-artificial-intelligence-research-engineer-l4-2026-10-01"></a>
 
 ### Data & Artificial Intelligence Research Engineer, L4 (2026-10-01)
 

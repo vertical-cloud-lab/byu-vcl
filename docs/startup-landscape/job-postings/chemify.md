@@ -41,7 +41,9 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="project-manager-2026-01-16"></a>
 
 ### Project Manager (2026-01-16)
 
@@ -79,6 +81,8 @@ What you’ll bring
 
 </details>
 
+<a id="analytical-technician-2026-02-03"></a>
+
 ### Analytical Technician (2026-02-03)
 
 2026-02-03 → open · lab-automation · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a024d53d-87b5-49f6-aa74-f29d592a2096)
@@ -108,6 +112,8 @@ Apply for this job
 Share this job
 
 </details>
+
+<a id="senior-staff-machine-learning-scientist-2026-05-14"></a>
 
 ### Senior / Staff Machine Learning Scientist (2026-05-14)
 
@@ -142,6 +148,8 @@ You are an experienced ML scientist who is equally comfortable training models a
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="staff-cadd-scientist-usa-2026-05-14"></a>
 
 ### Staff CADD Scientist USA (2026-05-14)
 
@@ -179,6 +187,8 @@ You are a rare hybrid: a deeply credible computational chemist who is equally co
 
 </details>
 
+<a id="product-operations-manager-synthetic-chemistry-2026-06-02"></a>
+
 ### Product Operations Manager - Synthetic Chemistry (2026-06-02)
 
 2026-06-02 → open · materials-science · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c24a1bdb-8779-4ab5-9e80-ce369ed3bd03)
@@ -215,6 +225,8 @@ Essential Experience and Knowledge
 
 </details>
 
+<a id="tech-director-cto-office-2026-06-28"></a>
+
 ### Tech Director, CTO Office (2026-06-28)
 
 2026-06-28 → open · leadership · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af1017a4-542d-4c51-ba80-be95d180fd6f)
@@ -243,6 +255,8 @@ The work spans machine learning, software-defined robotics and modern agile deli
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="engineering-project-manager-2026-07-07"></a>
 
 ### Engineering Project Manager (2026-07-07)
 
@@ -279,6 +293,8 @@ Beneficial Skills
 
 </details>
 
+<a id="lead-full-stack-sw-engineer-2026-07-07"></a>
+
 ### Lead Full Stack SW Engineer (2026-07-07)
 
 2026-07-07 → open · software-eng · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc23e611-5771-4450-83b5-9f0672fd1759)
@@ -309,6 +325,8 @@ You are a technical leader who multiplies the people around you. You have shippe
 - Experience standing up or scaling a new engineering team or site.
 
 </details>
+
+<a id="health-safety-advisor-2026-07-13"></a>
 
 ### Health & Safety Advisor (2026-07-13)
 
@@ -378,6 +396,8 @@ Desirable
 
 </details>
 
+<a id="junior-full-stack-engineer-2026-07-15"></a>
+
 ### Junior Full Stack Engineer (2026-07-15)
 
 2026-07-15 → open · software-eng · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ada9c0a4-0d8f-4f3e-bdb4-1753ef0c6501)
@@ -408,6 +428,8 @@ Beneficial Skills
 • Any exposure to robotics, hardware, lab automation, or scientific computing.
 
 </details>
+
+<a id="senior-firmware-engineer-2026-07-15"></a>
 
 ### Senior Firmware Engineer (2026-07-15)
 
@@ -446,6 +468,8 @@ Beneficial Skills
 
 </details>
 
+<a id="senior-full-stack-sw-engineer-2026-07-15"></a>
+
 ### Senior Full Stack SW Engineer (2026-07-15)
 
 2026-07-15 → open · software-eng · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=cf62767d-6745-4a60-8b0c-a75d599186d8)
@@ -479,6 +503,8 @@ Beneficial Skills
 • Cloud infrastructure and containerisation.
 
 </details>
+
+<a id="senior-manufacturing-engineer-2026-07-15"></a>
 
 ### Senior Manufacturing Engineer (2026-07-15)
 
@@ -516,6 +542,8 @@ Beneficial Skills
 
 </details>
 
+<a id="senior-manager-operations-dev-2026-07-22"></a>
+
 ### Senior Manager, Operations Dev (2026-07-22)
 
 2026-07-22 → open · business-ops · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=af5bd889-8d86-41ab-8ca0-d8d8dbb3004f)
@@ -549,6 +577,8 @@ You'll thrive in this role if you enjoy bringing clarity to complex programmes, 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="production-chemist-2026-08-04"></a>
 
 ### Production Chemist (2026-08-04)
 
@@ -584,6 +614,8 @@ Share this job
 
 </details>
 
+<a id="cadd-scientist-senior-cadd-scientist-2026-08-06"></a>
+
 ### CADD Scientist / Senior CADD Scientist (2026-08-06)
 
 2026-08-06 → open · materials-science · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=946e4048-c264-4e91-8eff-753690a0a8ab)
@@ -616,6 +648,8 @@ You are a credible computational chemist who is equally comfortable reasoning ab
 
 </details>
 
+<a id="senior-software-engineer-2026-08-06"></a>
+
 ### Senior Software Engineer (2026-08-06)
 
 2026-08-06 → open · software-eng · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3388ae22-606d-489e-b24c-e1f6c08d10c9)
@@ -644,6 +678,8 @@ Reconciling sources that disagree. External datasets, vendor systems, and instru
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="payroll-clerk-2026-08-31"></a>
 
 ### Payroll Clerk (2026-08-31)
 
@@ -679,6 +715,8 @@ Apply for this job
 Share this job
 
 </details>
+
+<a id="business-support-assistant-2026-09-02"></a>
 
 ### Business Support Assistant (2026-09-02)
 
@@ -738,6 +776,8 @@ Competitive, dependent on experience.
 
 </details>
 
+<a id="senior-full-stack-software-engineer-2026-09-04"></a>
+
 ### Senior Full Stack Software Engineer (2026-09-04)
 
 2026-09-04 → open · software-eng · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=8f24fb3f-3618-452b-8403-e938d1ccdaf0)
@@ -777,6 +817,8 @@ Beneficial Skills
 
 </details>
 
+<a id="senior-product-owner-2026-09-25"></a>
+
 ### Senior Product Owner (2026-09-25)
 
 2026-09-25 → open · business-ops · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f5a5b82f-0033-4314-973f-97d0381695fa)
@@ -804,6 +846,8 @@ This role combines product direction with hands-on product ownership, and is bui
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="synthetic-chemist-2026-09-25"></a>
 
 ### Synthetic Chemist (2026-09-25)
 
@@ -841,6 +885,8 @@ Growth opportunities
 
 </details>
 
+<a id="automation-scientist-2026-09-26"></a>
+
 ### Automation Scientist (2026-09-26)
 
 2026-09-26 → open · lab-automation · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6606cff1-deca-4355-8705-65766307d6bd)
@@ -875,6 +921,8 @@ You are a scientist who likes machines — as comfortable reasoning about a reac
 
 </details>
 
+<a id="mechanical-engineer-2026-09-26"></a>
+
 ### Mechanical Engineer (2026-09-26)
 
 2026-09-26 → open · lab-automation · location not stated · [source](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=03dbc4ce-fa64-471d-8ee8-fa76fac920af)
@@ -907,6 +955,8 @@ You are a hands-on mechanical engineer who enjoys taking a design from sketch to
 - FEA or tolerance-stack analysis.
 
 </details>
+
+<a id="senior-mechanical-engineer-2026-09-26"></a>
 
 ### Senior Mechanical Engineer (2026-09-26)
 

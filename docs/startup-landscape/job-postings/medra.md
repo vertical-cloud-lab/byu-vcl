@@ -24,7 +24,9 @@ Back to [all companies](README.md) · [company profile](../companies/medra.md)
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="mechanical-engineer-2026-04-03"></a>
 
 ### Mechanical Engineer (2026-04-03)
 
@@ -62,6 +64,8 @@ We are looking for a Mechanical Engineer to help make our vision a reality. As o
 
 </details>
 
+<a id="research-associate-foundry-2026-04-09"></a>
+
 ### Research Associate - Foundry (2026-04-09)
 
 2026-04-09 → open · materials-science · San Francisco · [source](https://jobs.ashbyhq.com/medraai/eabc0734-62bf-43b9-aafe-aace259e82fe)
@@ -90,6 +94,8 @@ What You Bring to the Team
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="scientific-operations-2026-04-28"></a>
 
 ### Scientific Operations (2026-04-28)
 
@@ -131,6 +137,8 @@ The Scientific Operations role is a highly operational role responsible for the 
 
 </details>
 
+<a id="scientist-cell-biology-antibody-engineering-2026-04-30"></a>
+
 ### Scientist, Cell Biology & Antibody Engineering (2026-04-30)
 
 2026-04-30 → open · materials-science · San Francisco · $140–175K · [source](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684)
@@ -160,6 +168,8 @@ This is a role for someone who blends scientific judgment with hands-on craft �
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="tech-lead-manager-full-stack-2026-05-09"></a>
 
 ### Tech Lead Manager - Full Stack (2026-05-09)
 
@@ -192,6 +202,8 @@ This is a role for someone who blends scientific judgment with hands-on craft �
 
 </details>
 
+<a id="full-stack-software-engineer-2026-05-13"></a>
+
 ### Full Stack Software Engineer (2026-05-13)
 
 2026-05-13 → open · software-eng · San Francisco · $170–210K · [source](https://jobs.ashbyhq.com/medraai/4b14a964-094b-4bb8-9e92-d0ae183b8e1b)
@@ -222,6 +234,8 @@ We shipped our first production system over a year ago, recently raised a $52M S
 - Genuine curiosity about what you're building and who you're building it for
 
 </details>
+
+<a id="business-operations-2026-07-06"></a>
 
 ### Business Operations (2026-07-06)
 
@@ -260,6 +274,8 @@ We're a startup doing the work of a company five times our size. There are no es
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="robotics-manufacturing-technician-2026-07-09"></a>
 
 ### Robotics Manufacturing Technician (2026-07-09)
 
@@ -302,6 +318,8 @@ We are looking for a Manufacturing Technician to help scale our production. As o
 
 </details>
 
+<a id="robotics-software-engineer-2026-07-14"></a>
+
 ### Robotics Software Engineer (2026-07-14)
 
 2026-07-14 → open · lab-automation · San Francisco · [source](https://jobs.ashbyhq.com/medraai/d320da8d-ef93-46c3-ba46-6b0f45bd6ff8)
@@ -342,6 +360,8 @@ We have been quietly building the foundational layers of our Physical AI Scienti
 
 </details>
 
+<a id="systems-test-engineer-contract-2026-07-27"></a>
+
 ### Systems Test Engineer - Contract (2026-07-27)
 
 2026-07-27 → open · software-eng · San Francisco · [source](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d)
@@ -376,6 +396,8 @@ This is a high-impact role where your reliability directly enables cutting-edge 
 
 </details>
 
+<a id="scientist-biophysical-characterization-spr-bli-2026-08-04"></a>
+
 ### Scientist, Biophysical Characterization (SPR/BLI) (2026-08-04)
 
 2026-08-04 → open · materials-science · San Francisco · [source](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1)
@@ -401,6 +423,8 @@ What You Bring to the Team
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="research-associate-protein-purification-quality-control-2026-08-31"></a>
 
 ### Research Associate, Protein Purification & Quality Control (2026-08-31)
 
@@ -429,6 +453,8 @@ What You Bring to the Team
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="engagement-manager-2026-09-08"></a>
 
 ### Engagement Manager (2026-09-08)
 
@@ -474,6 +500,8 @@ We have been quietly building the foundational layers of our Physical AI Scienti
 
 </details>
 
+<a id="research-engineer-post-training-2026-10-01"></a>
+
 ### Research Engineer, Post-training (2026-10-01)
 
 2026-10-01 → open · ml-research · San Francisco · [source](https://jobs.ashbyhq.com/medraai/7b68aa54-c168-41c8-a817-f80f8ff16119)
@@ -504,6 +532,8 @@ We shipped our first production system over a year ago, recently raised a $52M S
 - Experience with LLMs, post-training, reinforcement learning, or agentic systems
 
 </details>
+
+<a id="scientist-biology-2026-10-06"></a>
 
 ### Scientist, Biology (2026-10-06)
 

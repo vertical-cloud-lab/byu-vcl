@@ -11,7 +11,9 @@ Back to [all companies](README.md) · [company profile](../companies/tetsuwan-sc
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="product-designer-2026-06-03"></a>
 
 ### Product Designer (2026-06-03)
 
@@ -42,6 +44,8 @@ Logistics
 - Process: intro call → portfolio review and design conversation → onsite with the team including a paid design exercise → references → offer.
 
 </details>
+
+<a id="software-engineer-2026-06-03"></a>
 
 ### Software Engineer (2026-06-03)
 

@@ -271,17 +271,26 @@ def strip_boilerplate(rows):
             r["role_text"] = rt
             r["degrees_mentioned"], r["years_min"] = degrees(rt), years_min(rt)
             r["skills"] = [k for k, rx in SKILLS.items() if rx.search(rt)]
-            r["function"] = classify(r["title"])
+            r["function"] = classify(r["title"], r.get("team"))
 
 
-EXTRA_RULES = [("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument")]
+EXTRA_RULES = [  # checked before analyze.TITLE_RULES
+    ("leadership", r"\bfounding .*lead(er)?\b|\bhead\b"),
+    ("business-ops", r"sourcer|recruit|talent|people partner|\bhr\b"),
+    ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development"),
+]
 
 
-def classify(title):
+def classify(title, team=None):
+    t = (title or "").lower()
     for func, rx in EXTRA_RULES:
-        if re.search(rx, (title or "").lower()) and not re.search(r"\bhead of|\bchief\b|\bvp\b|director", (title or "").lower()):
+        if re.search(rx, t) and (func == "leadership" or not re.search(r"\bhead of|\bchief\b|\bvp\b|director", t)):
             return func
-    return analyze.classify(title)
+    func = analyze.classify(title)
+    # A generic "engineer" on a lab or hardware team (Periodic's "Atoms" team) is lab engineering.
+    if func == "software-eng" and re.search(r"(?i)atoms|\blab\b|hardware|automation", team or ""):
+        return "lab-automation"
+    return func
 
 
 def _days(a, b):
@@ -339,7 +348,32 @@ def link(url, label):
     return f"[{label}]({url})" if url else label
 
 
-def company_page(slug, rows, careers, meta):
+SPLIT_AT = 70  # companies with more described postings get one description page per function
+
+
+def anchor(r):
+    return re.sub(r"[^a-z0-9]+", "-", f'{r["title"]}-{r["first_seen"]}'.lower()).strip("-")
+
+
+def desc_file(slug, r, split):
+    return f"{slug}-{r['function']}.md" if split else ""
+
+
+def descriptions(rows):
+    lines = []
+    for r in rows:
+        src = r["sources"][0] if r["sources"] else ""
+        if r["text_source"] and r["text_source"] != "live":
+            src = r["text_source"]
+        when = f'{r["first_seen"]} → {"open" if r["open_on_2026_10_10"] else r["last_seen"]}'
+        lines += [f'<a id="{anchor(r)}"></a>', "", f'### {r["title"]} ({r["first_seen"]})', "",
+                  f'{when} · {r["function"]} · {r["location"] or "location not stated"}'
+                  + (f' · {money(r["salary"])}' if r["salary"] else "") + f" · {link(src, 'source')}", "",
+                  "<details><summary>Description</summary>", "", trim(r.get("role_text") or r["text"]), "", "</details>", ""]
+    return lines
+
+
+def company_page(slug, rows, careers, meta, split=False):
     name = meta.get("company", slug)
     lines = [f"# {name}: job postings and descriptions", "",
              f"Back to [all companies](README.md) · [company profile](../companies/{slug}.md)", ""]
@@ -353,8 +387,7 @@ def company_page(slug, rows, careers, meta):
     lines += ["", "| First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |",
               "|---|---|---|---|---|---|---|---|---|---|"]
     for r in rows:
-        anchor = re.sub(r"[^a-z0-9]+", "-", f'{r["title"]}-{r["first_seen"]}'.lower()).strip("-")
-        title = f'[{r["title"]}](#{anchor})' if r["has_description"] else r["title"]
+        title = f'[{r["title"]}]({desc_file(slug, r, split)}#{anchor(r)})' if r["has_description"] else r["title"]
         src = " ".join(link(u, "live" if "web.archive.org" not in u else "Wayback") for u in r["sources"][:2])
         last = "open" if r["open_on_2026_10_10"] else (r["last_seen"] or "")
         lines.append(f'| {r["first_seen"] or ""} | {last} | {title} | {r["function"]} | {(r["team"] or "")[:40]} | '
@@ -377,20 +410,21 @@ def company_page(slug, rows, careers, meta):
             excerpt = excerpt[:2500].rsplit("\n", 1)[0]
             lines += [f"<details><summary>{d}: {link(c['capture'], 'capture')}</summary>", "", excerpt, "", "</details>", ""]
     described = [r for r in rows if r["has_description"]]
-    if described:
-        lines += ["", "## Descriptions", "",
-                  "Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, "
-                  "benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.", ""]
-        for r in described:
-            src = r["sources"][0] if r["sources"] else ""
-            if r["text_source"] and r["text_source"] != "live":
-                src = r["text_source"]
-            when = f'{r["first_seen"]} → {"open" if r["open_on_2026_10_10"] else r["last_seen"]}'
-            lines += [f'### {r["title"]} ({r["first_seen"]})', "",
-                      f'{when} · {r["function"]} · {r["location"] or "location not stated"}'
-                      + (f' · {money(r["salary"])}' if r["salary"] else "") + f" · {link(src, 'source')}", "",
-                      "<details><summary>Description</summary>", "", trim(r.get("role_text") or r["text"]), "", "</details>", ""]
+    note = ("Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and "
+            "equal-opportunity text are dropped, and so are email addresses and phone numbers.")
+    if described and split:
+        funcs = [f for f in FUNCTIONS + ["general-application"] if any(r["function"] == f for r in described)]
+        lines += ["", "## Descriptions", "", note + " They are split by function: "
+                  + ", ".join(f"[{f}]({slug}-{f}.md)" for f in funcs) + "."]
+    elif described:
+        lines += ["", "## Descriptions", "", note, ""] + descriptions(described)
     return "\n".join(lines) + "\n"
+
+
+def function_page(slug, func, rows, meta):
+    name = meta.get("company", slug)
+    head = [f"# {name}: {func} postings", "", f"Back to [{name}'s postings]({slug}.md) · [all companies](README.md)", ""]
+    return "\n".join(head + descriptions(rows)) + "\n"
 
 
 def build():
@@ -407,9 +441,19 @@ def build():
     by_co = defaultdict(list)
     for r in rows:
         by_co[r["company"]].append(r)
+    for old in glob.glob(os.path.join(OUT, "*.md")):
+        if os.path.basename(old) not in ("README.md",):
+            os.remove(old)
     for slug in sorted(set(by_co) | set(careers)):
+        rs = by_co.get(slug, [])
+        split = sum(r["has_description"] for r in rs) > SPLIT_AT
         with open(os.path.join(OUT, f"{slug}.md"), "w", encoding="utf-8") as fh:
-            fh.write(company_page(slug, by_co.get(slug, []), careers.get(slug, []), meta.get(slug, {})))
+            fh.write(company_page(slug, rs, careers.get(slug, []), meta.get(slug, {}), split))
+        if split:
+            for f in {r["function"] for r in rs if r["has_description"]}:
+                with open(os.path.join(OUT, f"{slug}-{f}.md"), "w", encoding="utf-8") as fh:
+                    fh.write(function_page(slug, f, [r for r in rs if r["has_description"] and r["function"] == f],
+                                           meta.get(slug, {})))
     os.makedirs(os.path.join(DOCS, "figures"), exist_ok=True)
     timeline_figure(rows, meta, os.path.join(DOCS, "figures", "postings_timeline_by_function.png"))
     with open(os.path.join(OUT, "summary.md"), "w", encoding="utf-8") as fh:
@@ -518,13 +562,21 @@ def timeline_figure(rows, meta, path):
             pts = [max(p, lo) for p in pts]
             ax.scatter(pts, [len(FUNCTIONS) - i] * len(pts), s=16, color=analyze.SLOTS6[i],
                        edgecolor=analyze.SURFACE, linewidth=0.8, zorder=3)
-        for fr in meta.get(slug, {}).get("funding", []):
-            d = analyze.parse_date(fr.get("date"))
-            if d and fr.get("type") in ("equity", "jv-capital") and d >= lo:
-                ax.axvline(d, color=analyze.INK2, linewidth=0.8, zorder=1)
-                amt = fr.get("amount_usd_m")
-                ax.text(d, len(FUNCTIONS) + 0.9, f" ${amt:g}M" if amt else " round", fontsize=6, color=analyze.INK2,
-                        va="top", ha="left")
+        rounds = sorted((analyze.parse_date(fr.get("date")), fr.get("amount_usd_m"))
+                        for fr in meta.get(slug, {}).get("funding", [])
+                        if fr.get("type") in ("equity", "jv-capital") and analyze.parse_date(fr.get("date")))
+        labels = []  # rounds within 120 days of each other share one label
+        for d, amt in rounds:
+            if d < lo:
+                continue
+            ax.axvline(d, color=analyze.INK2, linewidth=0.8, zorder=1)
+            if labels and (d - labels[-1][0]).days <= 120:
+                labels[-1][1].append(amt)
+            else:
+                labels.append((d, [amt]))
+        for d, amts in labels:
+            txt = "+".join(f"${a:g}M" for a in amts if a) or "round"
+            ax.text(d, len(FUNCTIONS) + 0.9, " " + txt, fontsize=6, color=analyze.INK2, va="top", ha="left")
         ax.set_ylim(0.3, len(FUNCTIONS) + 1)
         ax.set_yticks([])
         ax.grid(axis="y", visible=False)

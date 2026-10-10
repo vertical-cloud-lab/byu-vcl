@@ -52,19 +52,25 @@ BOARDS = {
                       "pattern": ["job-boards.greenhouse.io/lilasciences", "boards.greenhouse.io/lilasciences"]},
     "citrine-informatics": {"live": [("rippling", "citrine-informatics")],
                             "pattern": ["ats.rippling.com/citrine-informatics", "citrine.io/careers",
-                                        "boards.greenhouse.io/citrine"]},
+                                        "boards.greenhouse.io/citrine", "boards.greenhouse.io/embed/job_app?for=citrine",
+                                        "boards.greenhouse.io/embed/job_board?for=citrine"]},
     "dunia-innovations": {"live": [("personio", "dunia")], "pattern": ["dunia.jobs.personio.com"]},
     "chemify": {"live": [("peoplehr", "https://www.chemify.io/careers")],
                 "pattern": ["chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx", "www.chemify.io/careers"]},
     "aionics": {"live": [("wordpress", "https://aionics.io/wp-json/wp/v2/job?per_page=100")],
                 "pattern": ["aionics.io/job/"]},
+    "entalpic": {"live": [("notion", "entalpic.notion.site|9f29b9a6-9fb8-4050-8cd3-f9a7c1c0d057")],
+                 "pattern": ["entalpic.notion.site"]},
     "matlantis": {"pattern": ["matlantis.com/careers/", "matlantis.com/en/careers"]},
-    "mitra-chem": {"pattern": ["mitrachem.com/job/", "www.mitrachem.com/join-us", "jobs.lever.co/mitrachem",
-                               "jobs.ashbyhq.com/mitrachem"]},
+    "mitra-chem": {"live": [("links", r"https://www.mitrachem.com/join-us|https://app\.trinethire\.com/companies/913890-mitra-chem/jobs/[\w-]+")],
+                   "pattern": ["mitrachem.com/job/", "www.mitrachem.com/join-us", "jobs.lever.co/mitrachem",
+                               "app.trinethire.com/companies/913890-mitra-chem/jobs/"]},
     "materials-nexus": {"pattern": ["www.materialsnexus.com/jobs/", "www.materialsnexus.com/careers"]},
-    "kebotix": {"pattern": ["www.kebotix.com/jobs", "www.kebotix.com/careers", "boards.greenhouse.io/kebotix"]},
+    "kebotix": {"pattern": ["www.kebotix.com/jobs", "www.kebotix.com/careers", "boards.greenhouse.io/kebotix",
+                            "boards.greenhouse.io/embed/job_app?for=kebotix", "boards.greenhouse.io/embed/job_board?for=kebotix"]},
+    "polymerize": {"pattern": ["polymerize.io/company-pages/careers"]},
     "emerald-cloud-lab": {"pattern": ["www.emeraldcloudlab.com/careers", "www.emeraldcloudlab.com/company-culture/careers",
-                                      "www.emeraldcloudlab.com/page-data/careers/page-data.json"]},
+                                      "www.emeraldcloudlab.com/about/careers"]},
     "mattiq": {"pattern": ["mattiq.com/careers"]},
     "atinary": {"pattern": ["atinary.com/careers"]},
     "deep-principle": {"pattern": ["www.deepprinciple.com/join.html", "www.deepprinciple.com/cn/join.html"]},
@@ -392,7 +398,69 @@ def live_wordpress(url):
     return out
 
 
-LIVE = {"ashby": live_ashby, "greenhouse": live_greenhouse, "rippling": live_rippling,
+def live_links(spec):
+    """'careers-page-url|link-regex': every linked posting page on a careers page, parsed generically."""
+    careers_url, rx = spec.split("|", 1)
+    out = []
+    for url in sorted(set(re.findall(rx, fetch.get(careers_url)))):
+        for p in parse_page(url, fetch.get(url)):
+            out.append({**p, "posting_id": url.rstrip("/").rsplit("/", 1)[-1], "url": url})
+    return out
+
+
+def _notion(site, path, payload):
+    return json.loads(fetch.get(f"https://{site}/api/v3/{path}", data=json.dumps(payload),
+                                headers={"Content-Type": "application/json"}))
+
+
+def _notion_blocks(site, page_id):
+    rm = _notion(site, "loadCachedPageChunk", {"page": {"id": page_id}, "limit": 300, "cursor": {"stack": []},
+                                                "chunkNumber": 0, "verticalColumns": False})["recordMap"]["block"]
+    return {k: (v.get("value") or {}).get("value", v.get("value") or {}) for k, v in rm.items()}
+
+
+def _notion_title(block):
+    return "".join(x[0] for x in (block.get("properties") or {}).get("title") or [])
+
+
+def live_notion(spec):
+    """A public Notion hiring page whose roles sit in a database: 'site|page-uuid'.
+    Notion's page API serves the same JSON the page renders from, no browser needed."""
+    import datetime
+    site, page_id = spec.split("|")
+    blocks = _notion_blocks(site, page_id)
+    out = []
+    for b in blocks.values():
+        if b.get("type") != "collection_view" or not b.get("collection_id"):
+            continue
+        space = b.get("space_id") or blocks[page_id].get("space_id")
+        res = _notion(site, "queryCollection?src=initial_load", {
+            "source": {"type": "collection", "id": b["collection_id"], "spaceId": space},
+            "collectionView": {"id": b["view_ids"][0], "spaceId": space},
+            "loader": {"type": "reducer", "reducers": {"collection_group_results": {"type": "results", "limit": 100}},
+                       "searchQuery": "", "userTimeZone": "UTC"}})
+        rm = res["recordMap"]["block"]
+        for rid in res["result"]["reducerResults"]["collection_group_results"]["blockIds"]:
+            row = (rm.get(rid, {}).get("value") or {})
+            row = row.get("value", row)
+            title = _notion_title(row)
+            if not title:
+                continue
+            page = _notion_blocks(site, rid)
+            lines = []
+            for cid in (page.get(rid) or {}).get("content") or []:
+                c = page.get(cid) or {}
+                t = _notion_title(c)
+                if t:
+                    lines.append(("- " if "list" in (c.get("type") or "") else "") + t)
+            ts = row.get("created_time")
+            out.append({"posting_id": rid, "title": title,
+                        "published": datetime.datetime.fromtimestamp(ts / 1000, datetime.timezone.utc).date().isoformat() if ts else None,
+                        "url": f"https://{site}/{rid.replace('-', '')}", "text": clean("\n".join(lines))})
+    return out
+
+
+LIVE = {"notion": live_notion, "links": live_links, "ashby": live_ashby, "greenhouse": live_greenhouse, "rippling": live_rippling,
         "personio": live_personio, "peoplehr": live_peoplehr, "wordpress": live_wordpress}
 
 
@@ -473,7 +541,7 @@ def cmd_history(slug, max_pages):
             if re.search(r"\.(js|css|png|jpe?g|svg|ico|woff2?|pdf|xml)(\?|$)", url, re.I) or "/application" in url:
                 continue
             k = posting_key(url)
-            if not k and pattern.endswith("/") and _root(url) != _root(pattern):
+            if not k and _root(url).startswith(_root(pattern).rstrip("/") + "/") and _root(url) != _root(pattern):
                 k = _root(url)  # a company's own page per job (WordPress etc.)
             if k:
                 by_key[k].append(r)
@@ -508,8 +576,8 @@ def cmd_history(slug, max_pages):
     fetched = 0
     for is_live, ts, k, url, first, last, n in todo:
         cap = f"https://web.archive.org/web/{ts}/{url}"
-        if f"{k or ''}|{cap}" in seen:
-            continue
+        if f"{k or ''}|{cap}" in seen or is_live:
+            continue  # a posting still live has its text from the API; its span is in done["spans"]
         if fetched >= max_pages:
             break
         try:

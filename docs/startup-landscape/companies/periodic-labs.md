@@ -76,6 +76,6 @@ Hiring opened on the same day as the $300M seed announcement (2025-09-30), with 
 ## Coverage and caveats
 
 - LinkedIn counts are members who list the company, so they can include interns and contractors. The 11-50 band is stale.
-- Wayback captures of the Ashby board are uneven, and posting quarters follow crawl dates. The titles of the launch-day postings were not recoverable, because those captures are JavaScript shells.
+- Wayback captures of the Ashby board are uneven, and posting quarters follow crawl dates. The launch-day board is recoverable: the archived page is gzip-encoded and embeds every posting as JSON. Its 14 roles, and the full descriptions of 30 postings that have since closed, are on the [job-postings page](../job-postings/periodic-labs.md).
 - The 2026 round is press-reported only, so its amount is left blank.
 - Not found: a Form D for the company, an OpenAlex institution, registry headcount, or a team page.

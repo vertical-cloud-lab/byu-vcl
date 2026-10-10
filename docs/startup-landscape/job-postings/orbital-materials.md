@@ -16,7 +16,9 @@ Back to [all companies](README.md) · [company profile](../companies/orbital-mat
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="machine-learning-research-engineer-2026-02-16"></a>
 
 ### Machine Learning Research Engineer (2026-02-16)
 
@@ -55,6 +57,8 @@ Push the frontier of ML research
 
 </details>
 
+<a id="prototype-researcher-2026-08-11"></a>
+
 ### Prototype Researcher (2026-08-11)
 
 2026-08-11 → open · business-ops · San Francisco, CA · [source](https://jobs.ashbyhq.com/orbitalindustries/00042379-3532-42df-a20f-c71b57cca97c)
@@ -89,6 +93,8 @@ What We’re Looking For
 - Experience with fluid systems or test instrumentation is a strong plus
 
 </details>
+
+<a id="test-engineer-2026-08-11"></a>
 
 ### Test Engineer (2026-08-11)
 
@@ -127,6 +133,8 @@ What We’re Looking For
 
 </details>
 
+<a id="forward-deployed-engineer-2026-08-25"></a>
+
 ### Forward Deployed Engineer (2026-08-25)
 
 2026-08-25 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/f61de282-ee9a-4849-a0de-6c9f13328bf7)
@@ -158,6 +166,8 @@ What We’re Looking For
 - Experience deploying software into complex production environments
 
 </details>
+
+<a id="senior-backend-engineer-2026-08-25"></a>
 
 ### Senior Backend Engineer (2026-08-25)
 
@@ -194,6 +204,8 @@ Bonus : Previous experience working in an AI/ML environment, familiarity with th
 
 </details>
 
+<a id="forward-deployed-engineering-lead-2026-08-26"></a>
+
 ### Forward Deployed Engineering Lead (2026-08-26)
 
 2026-08-26 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/orbitalindustries/47c0edc0-7f3f-4aac-85a8-fe32a3628ab4)
@@ -228,6 +240,8 @@ What We’re Looking For
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="communications-lead-2026-09-08"></a>
 
 ### Communications Lead (2026-09-08)
 

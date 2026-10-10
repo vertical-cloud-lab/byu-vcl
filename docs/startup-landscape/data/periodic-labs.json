@@ -66,7 +66,7 @@
     "SEC: no Form D found for Periodic Labs itself (EDGAR company search 'periodic labs' returns nothing). One Form D exists for a Sydecar-administered SPV, 'AGC Wealt Periodic Labs I a Series of AGC AI Nexus Fund LLC' (first sale 2026-05-28, USD 4.74M from 7 investors): https://www.sec.gov/Archives/edgar/data/2122824/000212282426000001/primary_doc.xml. That is secondary/SPV demand, not company funding.",
     "Captured postings: 46 distinct Ashby posting IDs in Wayback (first capture 2025-09-30 to 2026-10-01) plus 10 live postings never captured, so >=56 postings in ~12 months. Quarter counts follow crawl timing (e.g., 13 first captured in one 2026-05-19 crawl).",
     "Ashby publishedAt dates are reset on republish (a posting captured 2025-09-30 shows publishedAt 2026-07-09), so ATS dates were used only for postings Wayback never captured.",
-    "Titles of the 12 launch-day postings could not be recovered: the Wayback captures of individual Ashby pages are JS shells.",
+    "The launch-day board (2025-09-30) lists 14 roles plus a general application; the Wayback capture is gzip-encoded and embeds the postings as JSON (see job-postings/periodic-labs.md).",
     "Some postings list Menlo Park and Montreal, Canada.",
     "OpenAlex has no institution record for Periodic Labs; no registry headcount (US company)."
   ]

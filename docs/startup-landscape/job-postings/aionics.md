@@ -16,7 +16,9 @@ Back to [all companies](README.md) · [company profile](../companies/aionics.md)
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="materials-informatics-scientist-2023-11-27"></a>
 
 ### Materials Informatics Scientist (2023-11-27)
 
@@ -38,6 +40,8 @@ Role-specific sections only (responsibilities, requirements, pay); the company b
 - Fluency with software development tools and ability to work coherently across computational environments
 
 </details>
+
+<a id="software-engineering-manager-2023-11-27"></a>
 
 ### Software Engineering Manager (2023-11-27)
 
@@ -72,6 +76,8 @@ Role-specific sections only (responsibilities, requirements, pay); the company b
 
 </details>
 
+<a id="office-manager-2024-02-06"></a>
+
 ### Office Manager (2024-02-06)
 
 2024-02-06 → open · business-ops · location not stated · [source](https://aionics.io/job/office-manager/)
@@ -97,6 +103,8 @@ Role-specific sections only (responsibilities, requirements, pay); the company b
 
 </details>
 
+<a id="financial-modeling-internship-technoeconomics-2024-05-01"></a>
+
 ### Financial Modeling Internship (Technoeconomics) (2024-05-01)
 
 2024-05-01 → open · business-ops · location not stated · [source](https://aionics.io/job/financial-modeling-internship-technoeconomics/)
@@ -115,6 +123,8 @@ Role-specific sections only (responsibilities, requirements, pay); the company b
 - Experience with energy storage and mobility technologies or markets is a plus
 
 </details>
+
+<a id="head-of-business-development-2024-12-18"></a>
 
 ### Head of Business Development (2024-12-18)
 

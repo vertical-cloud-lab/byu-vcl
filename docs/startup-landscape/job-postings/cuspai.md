@@ -21,7 +21,9 @@ Back to [all companies](README.md) · [company profile](../companies/cuspai.md)
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="application-scientist-ai-materials-science-singapore-2026-03-16"></a>
 
 ### Application Scientist (AI Materials Science), Singapore (2026-03-16)
 
@@ -60,6 +62,8 @@ Product Improvement
 
 </details>
 
+<a id="head-of-scientific-applications-singapore-2026-04-14"></a>
+
 ### Head of Scientific Applications, Singapore (2026-04-14)
 
 2026-04-14 → open · leadership · Singapore, SG · [source](https://jobs.ashbyhq.com/cuspai/d2842e32-0347-49b3-a035-0e378d466fb8)
@@ -92,6 +96,8 @@ Interdisciplinary Collaboration
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="data-engineer-2026-05-13"></a>
 
 ### Data Engineer (2026-05-13)
 
@@ -128,6 +134,8 @@ Collaboration & Integration
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="mlff-distillation-gcmc-integration-internship-2026-07-16"></a>
 
 ### MLFF Distillation & GCMC Integration - Internship (2026-07-16)
 
@@ -171,6 +179,8 @@ Science & Collaboration
 
 </details>
 
+<a id="scientific-developer-relations-manager-2026-07-28"></a>
+
 ### Scientific Developer Relations Manager (2026-07-28)
 
 2026-07-28 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/cuspai/0ed7a3da-fdd1-4952-83cc-7a3a8c8af92e)
@@ -204,6 +214,8 @@ Cross-Functional Feedback Loop
 
 </details>
 
+<a id="senior-talent-partner-singapore-2026-07-31"></a>
+
 ### Senior Talent Partner (Singapore) (2026-07-31)
 
 2026-07-31 → open · business-ops · Singapore, SG · [source](https://jobs.ashbyhq.com/cuspai/1fff66e7-aa3a-4618-be54-4d297cad0f95)
@@ -231,6 +243,8 @@ Strategic Partnering
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="technical-program-manager-ai-ml-2026-08-04"></a>
 
 ### Technical Program Manager (AI/ML) (2026-08-04)
 
@@ -269,6 +283,8 @@ Process & Operations
 
 </details>
 
+<a id="technical-program-manager-science-2026-08-10"></a>
+
 ### Technical Program Manager (Science) (2026-08-10)
 
 2026-08-10 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/cuspai/79551bc5-137b-4579-a6fc-7fafa5634037)
@@ -306,6 +322,8 @@ Process & Operations
 
 </details>
 
+<a id="applied-ai-ml-engineer-agents-2026-08-13"></a>
+
 ### Applied AI/ML Engineer (Agents) (2026-08-13)
 
 2026-08-13 → open · ml-research · Amsterdam, NL · [source](https://jobs.ashbyhq.com/cuspai/916e1489-6624-4a87-90e6-218dc7ebb6fb)
@@ -340,6 +358,8 @@ Interdisciplinary Collaboration
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="ecosystem-manager-ai-materials-foundry-2026-09-25"></a>
 
 ### Ecosystem Manager, AI Materials Foundry (2026-09-25)
 
@@ -377,6 +397,8 @@ Interdisciplinary Collaboration
 
 </details>
 
+<a id="talent-acquisition-operations-specialist-2026-09-25"></a>
+
 ### Talent Acquisition Operations Specialist (2026-09-25)
 
 2026-09-25 → open · business-ops · Amsterdam, NL · [source](https://jobs.ashbyhq.com/cuspai/543c8d46-fec0-4d1e-803c-c2c5b42eeaf3)
@@ -411,6 +433,8 @@ Interdisciplinary & Stakeholder Collaboration
 *(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
+
+<a id="strategic-partnerships-manager-platform-partnerships-2026-09-30"></a>
 
 ### Strategic Partnerships Manager (Platform Partnerships) (2026-09-30)
 

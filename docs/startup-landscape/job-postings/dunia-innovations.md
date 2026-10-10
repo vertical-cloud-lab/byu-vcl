@@ -22,7 +22,9 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 
 ## Descriptions
 
-Role-specific sections only (responsibilities, requirements, pay); the company boilerplate, benefits and equal-opportunity text are dropped. Email addresses and phone numbers are removed.
+Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="business-development-manager-2025-07-29"></a>
 
 ### Business Development Manager (2025-07-29)
 
@@ -59,6 +61,8 @@ At Dunia, we are transforming materials innovation to accelerate climate solutio
 - A genuine interest in climate technology, science-driven innovation, and building things that matter
 
 </details>
+
+<a id="head-of-ai-research-2026-02-02"></a>
 
 ### Head of AI Research (2026-02-02)
 
@@ -100,6 +104,8 @@ Shape the external field
 - English fluency, additional  languages preferred
 
 </details>
+
+<a id="materials-informatics-scientist-evaluation-focused-2026-02-02"></a>
 
 ### Materials Informatics Scientist (Evaluation-focused) (2026-02-02)
 
@@ -145,6 +151,8 @@ Communicate truth clearly
 
 </details>
 
+<a id="chemical-data-scientist-2026-02-04"></a>
+
 ### Chemical Data Scientist (2026-02-04)
 
 2026-02-04 → open · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2519182?language=en)
@@ -185,6 +193,8 @@ Influence the system, not just the analysis
 - English fluency
 
 </details>
+
+<a id="lab-operations-procurement-manager-2026-02-04"></a>
 
 ### Lab Operations & Procurement Manager (2026-02-04)
 
@@ -243,6 +253,8 @@ You ensure equipment is operational on time and at spec.
 
 </details>
 
+<a id="lab-technicians-2026-02-04"></a>
+
 ### Lab Technicians (2026-02-04)
 
 2026-02-04 → open · lab-automation · Berlin · [source](https://dunia.jobs.personio.com/job/2519206?language=en)
@@ -282,6 +294,8 @@ Grow your technical craft
 - Good command of English (B1), German skills are a plus
 
 </details>
+
+<a id="research-scientist-thermocatalysis-2026-02-04"></a>
 
 ### Research Scientist, Thermocatalysis (2026-02-04)
 
@@ -323,6 +337,8 @@ Operate with rigor and discipline
 
 </details>
 
+<a id="software-engineer-infrastructure-2026-02-04"></a>
+
 ### Software Engineer, Infrastructure (2026-02-04)
 
 2026-02-04 → open · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2519188?language=en)
@@ -360,6 +376,8 @@ The full loop: software → compute → science
 - English fluency,  additional  languages preferred
 
 </details>
+
+<a id="ml-engineer-agents-reasoning-2026-02-06"></a>
 
 ### ML Engineer, Agents & Reasoning (2026-02-06)
 
@@ -407,6 +425,8 @@ Ship reliable, production-grade systems
 
 </details>
 
+<a id="ml-researcher-representation-learning-2026-02-06"></a>
+
 ### ML Researcher, Representation Learning (2026-02-06)
 
 2026-02-06 → open · ml-research · Berlin · [source](https://dunia.jobs.personio.com/job/2521638?language=en)
@@ -450,6 +470,8 @@ Push representation learning forward
 
 </details>
 
+<a id="manufacturing-systems-engineer-2026-02-06"></a>
+
 ### Manufacturing Systems Engineer (2026-02-06)
 
 2026-02-06 → open · software-eng · Berlin · [source](https://dunia.jobs.personio.com/job/2521931?language=en)
@@ -490,6 +512,8 @@ Embed data and learning into manufacturing
 - English fluency;  additional  languages  desirable
 
 </details>
+
+<a id="quantum-chemistry-specialist-2026-02-06"></a>
 
 ### Quantum Chemistry Specialist (2026-02-06)
 
@@ -533,6 +557,8 @@ Operate in a real system
 - Fluent in English, additional  language  desirable
 
 </details>
+
+<a id="reliability-test-engineer-2026-02-06"></a>
 
 ### Reliability & Test Engineer (2026-02-06)
 
