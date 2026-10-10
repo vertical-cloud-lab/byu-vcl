@@ -1,0 +1,211 @@
+{
+ "captures": {
+  "mattiq.com/careers": [
+   {
+    "urlkey": "com,mattiq)/careers",
+    "first": "20230326060951",
+    "last": "20251014102912",
+    "n": 27,
+    "original": "https://mattiq.com/careers"
+   }
+  ]
+ },
+ "board_captures": {
+  "mattiq.com/careers": [
+   [
+    "20230326060951",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20230423033745",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20230930030801",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20231208124927",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20240301174428",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20240518133306",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20240708002747",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20241005154721",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20250122112139",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20250430232617",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20250804063830",
+    "https://mattiq.com/careers"
+   ],
+   [
+    "20251014102912",
+    "https://mattiq.com/careers"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230326060951/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20230326060951",
+   "last_seen": "20230326060951",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230423033745/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20230423033745",
+   "last_seen": "20230423033745",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230930030801/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20230930030801",
+   "last_seen": "20230930030801",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20231208124927/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20231208124927",
+   "last_seen": "20231208124927",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240301174428/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20240301174428",
+   "last_seen": "20240301174428",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240518133306/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20240518133306",
+   "last_seen": "20240518133306",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240708002747/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20240708002747",
+   "last_seen": "20240708002747",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20241005154721/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20241005154721",
+   "last_seen": "20241005154721",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250122112139/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20250122112139",
+   "last_seen": "20250122112139",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250430232617/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20250430232617",
+   "last_seen": "20250430232617",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250804063830/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20250804063830",
+   "last_seen": "20250804063830",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mattiq",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251014102912/https://mattiq.com/careers",
+   "url": "https://mattiq.com/careers",
+   "first_seen": "20251014102912",
+   "last_seen": "20251014102912",
+   "n_captures": 1,
+   "title": "Careers at Mattiq",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

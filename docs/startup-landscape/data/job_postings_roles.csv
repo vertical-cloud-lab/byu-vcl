@@ -1,0 +1,291 @@
+company,title,first_seen,archetype,degree_coded
+aionics,"Materials Informatics (Data Science) Intern, Undergraduate Level",2021-07-27,ML researchers and engineers,
+aionics,"Materials Informatics Intern, Ph.D. Level",2021-07-27,ML researchers and engineers,
+aionics,Materials Informatics Scientist,2023-11-27,forward-deployed and application,PhD|MS
+atinary,Full Stack Developer,2024-11-21,lab-software engineers,
+atinary,Head of lab,2024-11-28,"lab operations, facilities and EHS",
+atinary,Lead AI Scientist,2025-09-24,ML researchers and engineers,
+atinary,"Synthetic Chemist, Self-Driving Lab (Boston, MA)",2025-09-24,materials and chemistry scientists,
+atinary,Machine Learning Engineer,2025-12-01,ML researchers and engineers,
+atinary,"Full Stack Developer (Lausanne, Switzerland)",2026-03-26,lab-software engineers,
+chemify,Senior Full Stack Software Engineer,2025-11-22,lab-software engineers,BS
+chemify,Senior Scientific Data Engineer,2025-11-22,lab-software engineers,BS
+chemify,Senior/Staff Scientist – Full Stack Cheminformatics Developer,2025-11-22,lab-software engineers,PhD
+chemify,Inventory Associate,2025-12-29,"lab operations, facilities and EHS",none
+chemify,Senior Data Scientist - AI/ML (CADD),2025-12-29,ML researchers and engineers,MS
+chemify,Production Chemist (Dispensary),2026-01-29,"research associates, technicians and operators",
+chemify,Engineering Operations Engineer/Technician,2026-02-01,"research associates, technicians and operators",sub
+chemify,Production Chemist,2026-02-01,"research associates, technicians and operators",secondary
+chemify,Analytical Technician,2026-02-03,"research associates, technicians and operators",sub
+chemify,Senior/ Staff Analytical Technician,2026-02-03,"research associates, technicians and operators",
+chemify,Chemistry Procurement & Inventory Specialist (Product Operations),2026-03-01,"lab operations, facilities and EHS",BS
+chemify,Principal Data Architect,2026-03-01,lab-software engineers,BS
+chemify,Purification Technician/Senior Purification Technician,2026-03-01,"research associates, technicians and operators",sub
+chemify,Synthetic Chemist,2026-03-01,materials and chemistry scientists,PhD-pref
+chemify,Principal Architect – Robotics & Hardware Abstraction,2026-03-03,lab-software engineers,none
+chemify,Senior ML Infrastructure Engineer,2026-04-01,ML researchers and engineers,degree
+chemify,Senior / Staff Machine Learning Scientist,2026-05-14,ML researchers and engineers,PhD
+chemify,Senior / Staff Machine Learning Scientist USA,2026-05-14,ML researchers and engineers,
+chemify,Staff CADD Scientist USA,2026-05-14,computational scientists,PhD
+chemify,Product Operations Manager - Synthetic Chemistry,2026-06-02,forward-deployed and application,PhD|MS
+chemify,Lead Full Stack SW Engineer,2026-07-07,lab-software engineers,none
+chemify,Health & Safety Advisor,2026-07-13,"lab operations, facilities and EHS",sub
+chemify,Junior Full Stack Engineer,2026-07-15,lab-software engineers,none
+chemify,Senior Firmware Engineer,2026-07-15,lab automation and robotics,none
+chemify,Senior Full Stack SW Engineer,2026-07-15,lab-software engineers,none
+chemify,Senior Manufacturing Engineer,2026-07-15,lab automation and robotics,none
+chemify,CADD Scientist / Senior CADD Scientist,2026-08-06,computational scientists,PhD
+chemify,Senior Software Engineer,2026-08-06,lab-software engineers,none
+chemify,Laboratory Coordinator,2026-08-10,"lab operations, facilities and EHS",
+chemify,Senior Full Stack Software Engineer,2026-09-04,lab-software engineers,BS
+chemify,Synthetic Chemist,2026-09-25,"research associates, technicians and operators",PhD
+chemify,Automation Scientist,2026-09-26,lab automation and robotics,degree
+chemify,Mechanical Engineer,2026-09-26,lab automation and robotics,none
+chemify,Mechatronics Engineer,2026-09-26,lab automation and robotics,
+chemify,Senior Mechanical Engineer,2026-09-26,lab automation and robotics,none
+citrine-informatics,Research Engineering Manager,2025-08-25,ML researchers and engineers,MS
+citrine-informatics,Materials Informatics Consultant III,2026-06-22,forward-deployed and application,degree
+citrine-informatics,"Data & Artificial Intelligence Research Engineer, L4",2026-10-01,ML researchers and engineers,MS
+cuspai,Applied AI/ML Engineer (Agents),2025-10-14,ML researchers and engineers,PhD
+cuspai,Applied AI/ML Engineer (Materials Foundational Models),2025-10-14,ML researchers and engineers,
+cuspai,Application Scientist (Lab Automation & Informatics),2025-10-19,forward-deployed and application,
+cuspai,ML Infrastructure Engineer (ML Platform),2025-10-22,ML researchers and engineers,
+cuspai,Applied ML Researcher (Generative Models),2025-12-14,ML researchers and engineers,none
+cuspai,Applied AI/ML Engineer (Property Prediction Foundational Models),2025-12-30,ML researchers and engineers,MS
+cuspai,Applied ML Researcher (Molecular Simulation),2026-01-05,ML researchers and engineers,
+cuspai,"Application Scientist (AI Materials Science), Singapore",2026-03-16,forward-deployed and application,none
+cuspai,Application Scientist (Mesoscale / Coarse Grained Force Fields),2026-03-31,forward-deployed and application,
+cuspai,"Head of Scientific Applications, Singapore",2026-04-14,forward-deployed and application,PhD
+cuspai,MLFF Distillation & GCMC Integration - Internship,2026-07-16,computational scientists,student
+cuspai,Applied ML Researcher (Force Fields and Simulation),2026-07-24,ML researchers and engineers,
+cuspai,Scientific Developer Relations Manager,2026-07-28,forward-deployed and application,none
+dunia-innovations,Head of AI Research,2026-02-02,ML researchers and engineers,PhD
+dunia-innovations,Materials Informatics Scientist (Evaluation-focused),2026-02-02,computational scientists,PhD
+dunia-innovations,Chemical Data Scientist,2026-02-04,ML researchers and engineers,MS
+dunia-innovations,Lab Operations & Procurement Manager,2026-02-04,"lab operations, facilities and EHS",none
+dunia-innovations,Lab Technicians,2026-02-04,"research associates, technicians and operators",sub
+dunia-innovations,"Research Scientist, Thermocatalysis",2026-02-04,materials and chemistry scientists,PhD
+dunia-innovations,"ML Engineer, Agents & Reasoning",2026-02-06,ML researchers and engineers,none
+dunia-innovations,"ML Researcher, Representation Learning",2026-02-06,ML researchers and engineers,PhD
+dunia-innovations,Quantum Chemistry Specialist,2026-02-06,computational scientists,PhD
+dunia-innovations,Reliability & Test Engineer,2026-02-06,lab automation and robotics,degree
+entalpic,ML Scientist for Chemisty Intern (Internship),2025-04-07,ML researchers and engineers,student
+entalpic,Computational Chemist,2025-04-08,computational scientists,PhD
+entalpic,Computational Chemist Liquid Molecular Systems (CDI),2025-04-08,computational scientists,
+entalpic,Material & ML Scientist Intern (Internship),2025-04-08,ML researchers and engineers,MS
+entalpic,Senior ML Engineer (CDI),2025-04-13,ML researchers and engineers,
+entalpic,Computational Chemist — Electronic & Functional Materials (CDI),2026-06-24,computational scientists,PhD
+entalpic,Application Lead (Vapor Deposition Precursor Chemistry),2026-09-24,forward-deployed and application,PhD|exp
+entalpic,"Scientific Software Engineer, AI for Materials",2026-09-28,ML researchers and engineers,MS
+lila-sciences,"AI Residency Program, Material Science (2026 Cohort)",2025-10-06,ML researchers and engineers,BS
+lila-sciences,"Co-Op/Intern, Characterization, Electron Microscopy",2025-10-06,"research associates, technicians and operators",student
+lila-sciences,"Intern, Physical Sciences Team - Electroanalytical",2025-10-06,"research associates, technicians and operators",student
+lila-sciences,"Machine Learning Engineer, Distributed & Scalable Training",2025-10-06,ML researchers and engineers,none
+lila-sciences,"Machine Learning Scientist, Interatomic Potentials",2025-10-06,ML researchers and engineers,PhD
+lila-sciences,"Machine Learning Scientist, Scientific Reasoning",2025-10-06,ML researchers and engineers,PhD
+lila-sciences,Mechatronics Engineer (Controls Focus),2025-10-06,lab automation and robotics,BS
+lila-sciences,"Research Scientist I/II, Statistical Mechanics and Dynamics",2025-10-06,computational scientists,PhD
+lila-sciences,"Research Scientist, Frontier Capabilities",2025-10-06,ML researchers and engineers,MS
+lila-sciences,"Research Scientist, Porous Materials",2025-10-06,materials and chemistry scientists,PhD|MS
+lila-sciences,"Senior / Engineer II, AI Lab Research Engineer",2025-10-06,ML researchers and engineers,PhD
+lila-sciences,"Senior / Principal Robotics Engineer, Systems Architecture",2025-10-06,lab automation and robotics,BS
+lila-sciences,"Senior Data Scientist, Life Sciences",2025-10-06,lab-software engineers,none
+lila-sciences,"Senior Research Associate, Assay Development",2025-10-06,"research associates, technicians and operators",BS
+lila-sciences,"Senior Software Engineer, Applied AI",2025-10-06,ML researchers and engineers,BS
+lila-sciences,"Senior Software Engineer, Backend",2025-10-06,lab-software engineers,BS
+lila-sciences,"Software Engineer, AI Platform",2025-10-06,ML researchers and engineers,none
+lila-sciences,"Staff Forward Deployed Engineer, Life Sciences",2025-10-06,forward-deployed and application,none
+lila-sciences,"Staff Forward Deployed Engineer, Physical Sciences (Level Flexible)",2025-10-06,forward-deployed and application,none
+lila-sciences,"Senior / Principal Scientist, Functional Materials",2025-10-07,materials and chemistry scientists,PhD
+lila-sciences,"Research Scientist, In Silico Materials Discovery",2025-10-16,computational scientists,PhD
+lila-sciences,"ML Research Scientist I/II, Multimodal Data Extraction",2025-11-03,ML researchers and engineers,PhD
+lila-sciences,"Research Scientist, Dexterous Manipulation & Robot Learning",2025-12-22,lab automation and robotics,PhD
+lila-sciences,"Platform Scientist, Soft Materials",2025-12-23,lab automation and robotics,PhD|MS
+lila-sciences,Staff / Principal Mechanical Engineer,2026-01-13,lab automation and robotics,BS
+lila-sciences,"Scientist I / II, Robotics",2026-01-20,lab automation and robotics,PhD
+lila-sciences,"Research Scientist I/II, AI for Process Engineering",2026-01-23,ML researchers and engineers,PhD
+lila-sciences,Senior Automated Systems Engineer,2026-01-23,lab automation and robotics,none
+lila-sciences,Staff / Principal Industrial Engineer,2026-01-23,"lab operations, facilities and EHS",BS
+lila-sciences,Staff / Principal Automated Systems Engineer,2026-01-28,lab automation and robotics,BS
+lila-sciences,"Operations Research Scientist I/II, Robotics",2026-02-02,lab-software engineers,PhD
+lila-sciences,"Director, Facilities",2026-03-03,"lab operations, facilities and EHS",BS
+lila-sciences,"Director, Nucleic Acid Delivery",2026-03-11,biology scientists,PhD
+lila-sciences,"Senior Machine Learning Research Engineer I/ II, Open-Endedness",2026-03-17,ML researchers and engineers,none
+lila-sciences,"Principal Software Engineer, Instrument Simulations",2026-03-20,lab-software engineers,BS
+lila-sciences,"Software Engineer I, Instrument Software",2026-03-20,lab-software engineers,none
+lila-sciences,"Sr Principal/ Principal Software Engineer, Scientific System of Record",2026-03-23,lab-software engineers,BS
+lila-sciences,"Director, Discovery Chemistry",2026-03-25,materials and chemistry scientists,PhD
+lila-sciences,"Scientist I/II, Organic Chemistry",2026-03-25,materials and chemistry scientists,PhD
+lila-sciences,"Scientist I/II, Process Chemistry",2026-03-25,materials and chemistry scientists,PhD
+lila-sciences,"Senior Research Associate / Associate Scientist, Targeted LNP Delivery",2026-03-25,"research associates, technicians and operators",BS
+lila-sciences,"Senior Scientist, Analytical Chemistry",2026-03-25,materials and chemistry scientists,PhD
+lila-sciences,"Scientist I/II, mRNA Translation Dynamics",2026-04-09,biology scientists,MS
+lila-sciences,SCADA Engineer,2026-04-13,lab automation and robotics,none
+lila-sciences,"Engineer II / Senior Mechatronics Engineer, Hardware & Controls Engineering",2026-04-14,lab automation and robotics,BS
+lila-sciences,"Director, Sustaining Engineering & Lab Operations",2026-04-22,"lab operations, facilities and EHS",none
+lila-sciences,"Scientist I/II, Drug Delivery Chemistry",2026-04-27,materials and chemistry scientists,PhD
+lila-sciences,"Senior / Principal ML Scientist, Foundation Models for Life Sciences",2026-04-27,ML researchers and engineers,MS
+lila-sciences,"ML Scientist, Foundation Models for Life Sciences",2026-04-28,ML researchers and engineers,PhD
+lila-sciences,"Principal, Machine Learning Engineer",2026-04-28,ML researchers and engineers,MS
+lila-sciences,"Research Associate, Protein Science, Cell-Free Expression",2026-05-02,"research associates, technicians and operators",BS
+lila-sciences,"Senior / Principal Scientist, AI for Protein Engineering",2026-05-04,ML researchers and engineers,PhD
+lila-sciences,"Staff ML Engineer, Life Sciences AI",2026-05-07,ML researchers and engineers,MS
+lila-sciences,"Project Manager, Facilities Management",2026-05-12,"lab operations, facilities and EHS",BS
+lila-sciences,"Contractor, Robotics Engineer",2026-05-13,lab automation and robotics,BS
+lila-sciences,"Sr. Principal / Distinguished ML Scientist, Autonomous Science for Cell Biology",2026-05-13,ML researchers and engineers,PhD
+lila-sciences,"Senior Engineer II / Staff Engineer, Electromechanical Technician",2026-05-14,"research associates, technicians and operators",sub
+lila-sciences,Principal ML Research Engineer,2026-05-15,ML researchers and engineers,MS
+lila-sciences,"Associate / Engineer I, ResOps, Formulations and Characterization",2026-05-19,"research associates, technicians and operators",BS
+lila-sciences,"Associate / Engineer I, ResOps, Synthesis",2026-05-19,"research associates, technicians and operators",BS
+lila-sciences,Lab Operations Specialist I (Contract),2026-05-20,"lab operations, facilities and EHS",none
+lila-sciences,Principal / Sr. Principal BioML Scientist,2026-05-21,ML researchers and engineers,PhD
+lila-sciences,"Sr Principal/Principal Software Engineer, App",2026-05-21,lab-software engineers,BS
+lila-sciences,"Staff Software Engineer, Scientific System of Record",2026-05-21,lab-software engineers,BS
+lila-sciences,"Contractor, Facility Layout & 3D Modeling Specialist",2026-05-22,"lab operations, facilities and EHS",none
+lila-sciences,"Contractor, Support Engineer I, Automation (2nd shift)",2026-05-22,"research associates, technicians and operators",BS
+lila-sciences,"Scientist II/Senior Characterization Scientist, Condensed Matter",2026-05-26,materials and chemistry scientists,PhD
+lila-sciences,"Senior Research Associate/Associate Scientist, Platform Scientist",2026-05-26,lab automation and robotics,BS
+lila-sciences,"Senior Software Engineer, App",2026-05-26,lab-software engineers,BS
+lila-sciences,"Senior Software Engineer, Data",2026-05-26,lab-software engineers,BS
+lila-sciences,"Senior Software Engineer, Operations Research",2026-05-26,lab-software engineers,BS
+lila-sciences,"Co-op, Protein Sciences",2026-05-27,"research associates, technicians and operators",student
+lila-sciences,"Principal Software Engineer, Data",2026-05-29,lab-software engineers,BS
+lila-sciences,Electrical Engineer I/II,2026-06-01,lab automation and robotics,none
+lila-sciences,"Scientist II, Mechanics & Extreme Materials",2026-06-01,materials and chemistry scientists,PhD
+lila-sciences,"Senior Research Associate , Automated Chemistry",2026-06-01,"research associates, technicians and operators",BS
+lila-sciences,"Senior Software Engineer, Scientific System of Record",2026-06-03,lab-software engineers,BS
+lila-sciences,"Co-Op, Data Extraction",2026-06-11,ML researchers and engineers,student
+lila-sciences,"Co-op, Machine Learning for Digital Twins",2026-06-11,ML researchers and engineers,student
+lila-sciences,"Scientist, Epitaxial Thin Film Synthesis",2026-06-11,materials and chemistry scientists,PhD
+lila-sciences,"Operations and Quality Engineer, Sustaining Engineering",2026-07-01,"lab operations, facilities and EHS",none
+lila-sciences,"Senior / Staff Machine Learning Engineer, Applied AI",2026-07-01,ML researchers and engineers,none
+lila-sciences,"Senior/Principal Scientist, Small Molecule Therapeutics",2026-07-01,biology scientists,PhD
+lila-sciences,"Shift Supervisor, Research Operations",2026-07-01,"lab operations, facilities and EHS",none
+lila-sciences,"Senior Director / Vice President, Chemistry Experiment",2026-07-02,materials and chemistry scientists,PhD
+lila-sciences,"Senior Director, Software Development, Test Automation",2026-07-09,lab-software engineers,none
+lila-sciences,"Principal Scientist / Associate Director, Agentic AI Research for Materials Science",2026-07-10,ML researchers and engineers,PhD
+lila-sciences,"Associate Scientist/Scientist I, Protein Science Developability",2026-07-20,biology scientists,MS
+lila-sciences,"Controls Engineer II, Sustaining Engineering",2026-07-20,lab automation and robotics,none
+lila-sciences,"ML Scientist, Nucleic Acid Design",2026-07-27,ML researchers and engineers,PhD
+lila-sciences,"Research Scientist, Computational Condensed Matter Physics",2026-07-28,computational scientists,PhD
+lila-sciences,"Scientist II/Senior Scientist, Computational Biophysics",2026-08-03,computational scientists,PhD
+lila-sciences,"Director / Senior Director, Research Engineering, Life Sciences AI",2026-08-05,ML researchers and engineers,none
+lila-sciences,Senior II/Staff Mechatronics Engineer,2026-08-06,lab automation and robotics,BS
+lila-sciences,"Senior Software Engineer I/II, Back-end/Data, Robotics",2026-08-10,lab-software engineers,none
+lila-sciences,"Senior Software Engineer I/II, Test Robotics",2026-08-10,lab-software engineers,none
+lila-sciences,"Senior Manager, Scientific Discovery Capacity Planning",2026-08-14,"lab operations, facilities and EHS",BS
+lila-sciences,"Research Scientist I/II, Computational Organic Electronics",2026-08-21,computational scientists,PhD
+lila-sciences,"Senior Data Engineer, Bioinformatics, Cheminformatics, Materials",2026-09-01,lab-software engineers,none
+lila-sciences,"Engineer I, Research Operations (2nd Shift)",2026-09-08,"research associates, technicians and operators",BS
+lila-sciences,Microfabrication Scientist I/II,2026-09-14,materials and chemistry scientists,BS
+lila-sciences,"Scientist I/II, Characterization and Composition Analysis",2026-09-14,materials and chemistry scientists,PhD|MS
+lila-sciences,"Scientist I/II, X-ray Diffraction Characterization",2026-09-14,materials and chemistry scientists,PhD|MS
+lila-sciences,"Scientist II / Senior Scientist, Electron Diffraction Characterization",2026-09-14,materials and chemistry scientists,PhD|MS
+lila-sciences,"Scientist II, Silicon Photonics",2026-09-14,materials and chemistry scientists,PhD
+lila-sciences,"ML Scientist I/II, AI for Protein Engineering",2026-09-15,ML researchers and engineers,PhD
+lila-sciences,"Machine Learning Scientist I / II, Protein Design",2026-09-15,ML researchers and engineers,MS
+lila-sciences,"Scientist II/ Senior Scientist, BioML",2026-09-15,ML researchers and engineers,PhD
+lila-sciences,"Senior ML Scientist, AI for Protein Engineering",2026-09-15,ML researchers and engineers,PhD
+lila-sciences,"Senior ML Scientist, Biological Systems",2026-09-15,ML researchers and engineers,PhD
+lila-sciences,"Senior/Principal ML Scientist, Translational Biology",2026-09-15,ML researchers and engineers,PhD
+lila-sciences,"Robotics Operations Engineer I, First Shift",2026-09-22,"research associates, technicians and operators",none
+lila-sciences,"Principal Scientist / Associate Director, Soft Materials Experimentation",2026-09-24,materials and chemistry scientists,PhD
+lila-sciences,Lab Operations Specialist,2026-09-28,"lab operations, facilities and EHS",none
+lila-sciences,"Scientist II/Senior Scientist, Solid-State Materials",2026-09-28,materials and chemistry scientists,PhD
+lila-sciences,"Associate Scientist/Scientist I, Translational Biology",2026-09-29,biology scientists,BS
+lila-sciences,"Engineer I, Research Operations, (1st shift)",2026-09-30,"research associates, technicians and operators",BS
+lila-sciences,"Platform Scientist I/II, Functional Materials Instrumentation",2026-10-05,lab automation and robotics,PhD
+lila-sciences,"Principal Machine Learning Engineer, Applied AI",2026-10-07,ML researchers and engineers,none
+lila-sciences,"Engineer II/ Senior Engineer, Robotics Platform Evaluation",2026-10-08,lab automation and robotics,none
+lila-sciences,"Contractor, Robotics Lab Technician",2026-10-09,"research associates, technicians and operators",none
+lila-sciences,"Senior Engineer II, Robotics Mechanical Design",2026-10-09,lab automation and robotics,none
+lila-sciences,Senior II/ Staff Robotics Platform Evaluation Engineer,2026-10-09,lab automation and robotics,none
+materials-nexus,Materials Informatician,2022-10-13,computational scientists,degree
+matlantis,MATLANTIS,2023-06-07,forward-deployed and application,BS
+matlantis,Customer Success Engineer,2024-03-04,forward-deployed and application,none
+medra,Full Stack Software Engineer,2025-09-17,lab-software engineers,none
+medra,Robotics Software Engineer,2025-09-17,lab automation and robotics,BS
+medra,Full Stack Software Engineer - Winter 2026 Internship,2025-10-02,lab-software engineers,none
+medra,Robotics Software Engineer - Winter 2026 Internship,2025-10-02,lab automation and robotics,
+medra,Mechanical Engineer,2025-10-03,lab automation and robotics,BS
+medra,Mechanical Engineer - Winter 2026 Internship,2025-10-13,lab automation and robotics,
+medra,Forward Deployed Robotics Engineer,2025-10-23,forward-deployed and application,BS
+medra,Full Stack Software Engineer - Summer 2026 Internship,2025-10-28,lab-software engineers,
+medra,Robotics Software Engineer - Summer 2026 Internship,2025-10-28,lab automation and robotics,none
+medra,AI Product Engineer (Applied AI),2025-12-11,ML researchers and engineers,none
+medra,General Software Engineer,2025-12-11,lab-software engineers,none
+medra,"Lead Scientist, Protein Engineering",2025-12-11,biology scientists,PhD
+medra,Machine Learning Scientist,2025-12-11,ML researchers and engineers,MS
+medra,Tech Lead Manager - Full Stack,2025-12-11,lab-software engineers,none
+medra,Robotics Manufacturing Technician,2026-01-07,"research associates, technicians and operators",secondary
+medra,"Scientist, Biology",2026-02-17,forward-deployed and application,PhD|MS
+medra,Research Associate - General Biology,2026-04-05,"research associates, technicians and operators",
+medra,Research Associate - Foundry,2026-04-09,"research associates, technicians and operators",BS
+medra,Systems Test Engineer - Summer 2026 Internship,2026-04-23,"research associates, technicians and operators",student
+medra,Scientific Operations,2026-04-28,"lab operations, facilities and EHS",BS
+medra,"Scientist, Cell Biology & Antibody Engineering",2026-04-30,biology scientists,PhD
+medra,Systems Test Engineer - Contract,2026-07-27,"research associates, technicians and operators",none
+medra,"Scientist, Biophysical Characterization (SPR/BLI)",2026-08-04,biology scientists,PhD
+medra,"Research Associate, Protein Purification & Quality Control",2026-08-31,"research associates, technicians and operators",BS
+medra,"Research Engineer, Post-training",2026-10-01,ML researchers and engineers,none
+mitra-chem,Battery Materials Scientist,2021-08-11,materials and chemistry scientists,
+mitra-chem,Lab Technician,2026-10-10,"research associates, technicians and operators",none
+orbital-materials,Researcher (Generative Models & Simulation),2024-10-02,ML researchers and engineers,
+orbital-materials,Researcher (LLMs),2024-10-02,ML researchers and engineers,
+orbital-materials,Lab & Office Manager,2024-12-06,"lab operations, facilities and EHS",
+orbital-materials,Full Stack Software & AIEngineer,2025-01-15,lab-software engineers,MS
+orbital-materials,AI Technical Lead,2025-10-31,ML researchers and engineers,none
+orbital-materials,Machine Learning Research Engineer,2025-12-11,ML researchers and engineers,none
+orbital-materials,AI Residency Program,2026-01-24,ML researchers and engineers,
+orbital-materials,Senior Machine Learning Researcher,2026-02-16,ML researchers and engineers,
+orbital-materials,Forward Deployed Engineer,2026-08-25,forward-deployed and application,none
+orbital-materials,Forward Deployed Engineering Lead,2026-08-26,forward-deployed and application,none
+periodic-labs,Supercompute Infrastructure Engineer,2025-09-18,ML researchers and engineers,none
+periodic-labs,Automation Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,Controls Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,Facilities Manager,2025-09-22,"lab operations, facilities and EHS",none
+periodic-labs,Mechanical Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,Reliability Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,"Research Engineer, Lab Automation",2025-09-22,lab automation and robotics,PhD
+periodic-labs,"Research Scientist, Materials Characterization",2025-09-22,materials and chemistry scientists,PhD
+periodic-labs,Robotics Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,Systems Engineer,2025-09-22,lab automation and robotics,BS
+periodic-labs,CUDA Kernel Engineer,2025-09-24,ML researchers and engineers,none
+periodic-labs,Distributed Training Engineer,2025-09-24,ML researchers and engineers,none
+periodic-labs,LLM Inference Engineer,2025-09-24,ML researchers and engineers,none
+periodic-labs,Research Engineer - Midtraining,2025-09-30,ML researchers and engineers,none
+periodic-labs,Research Engineer - Posttraining,2025-10-17,ML researchers and engineers,
+periodic-labs,"Research Scientist, Thin Films",2025-10-31,materials and chemistry scientists,PhD
+periodic-labs,"Research Scientist, Condensed Matter Theory",2025-11-12,computational scientists,PhD
+periodic-labs,Product Engineer,2025-11-13,lab-software engineers,BS
+periodic-labs,"Computational Scientist, Structural & Thermal",2025-12-03,computational scientists,PhD
+periodic-labs,Software Engineer,2026-02-10,lab-software engineers,BS
+periodic-labs,Research Associate - Thin Films (Fixed Term),2026-03-10,"research associates, technicians and operators",PhD
+periodic-labs,Process Development Engineer,2026-03-26,lab automation and robotics,BS
+periodic-labs,"Research Scientist, Materials Synthesis",2026-03-30,materials and chemistry scientists,PhD
+periodic-labs,Forward Deployed Engineer - LLM Systems,2026-04-23,forward-deployed and application,BS
+periodic-labs,ML Systems Engineer,2026-04-29,ML researchers and engineers,BS
+periodic-labs,Supercompute Engineer,2026-04-30,ML researchers and engineers,
+periodic-labs,"Research Scientist, Data",2026-05-05,ML researchers and engineers,BS
+periodic-labs,"Process Engineer, Powder",2026-05-08,lab automation and robotics,BS
+periodic-labs,"Research Intern, Thin Films",2026-05-26,"research associates, technicians and operators",student
+periodic-labs,"Forward Deployed Engineer, Physics & Simulation",2026-06-03,forward-deployed and application,BS
+periodic-labs,Senior Equipment Maintenance Technician,2026-06-11,"research associates, technicians and operators",sub
+periodic-labs,Laboratory Technician,2026-07-16,"research associates, technicians and operators",BS
+periodic-labs,"Forward Deployed Engineer, Quantum Simulations",2026-07-25,forward-deployed and application,
+periodic-labs,Head of Environmental Health & Safety (EHS),2026-07-25,"lab operations, facilities and EHS",BS
+periodic-labs,Electrical Technician,2026-08-05,"research associates, technicians and operators",none
+periodic-labs,Environmental Health & Safety (EHS) Technician,2026-08-05,"lab operations, facilities and EHS",sub
+periodic-labs,"Research Engineer, Semiconductor",2026-08-08,materials and chemistry scientists,MS
+periodic-labs,Mechanical Engineer,2026-08-15,lab automation and robotics,BS
+periodic-labs,Research Engineer - Midtraining,2026-08-15,ML researchers and engineers,BS
+periodic-labs,"Research Engineer, Lab Automation",2026-08-15,lab automation and robotics,PhD
+periodic-labs,"Process Technician, Thin Films",2026-08-18,"research associates, technicians and operators",secondary
+periodic-labs,"Research Scientist/Research Engineer, Materials Data",2026-09-01,ML researchers and engineers,PhD
+periodic-labs,"Computational Scientist, Differentiable Physics",2026-09-04,computational scientists,PhD
+periodic-labs,Equipment Engineer,2026-09-14,lab automation and robotics,BS
+periodic-labs,XRD Facility Manager,2026-09-15,materials and chemistry scientists,PhD
+periodic-labs,"Research Scientist/Research Engineer, Midtraining",2026-09-30,ML researchers and engineers,BS
+periodic-labs,"Research Scientist, Scaling RL",2026-10-01,ML researchers and engineers,BS
+periodic-labs,Process Safety Engineer,2026-10-07,"lab operations, facilities and EHS",BS
+tetsuwan-scientific,Software Engineer,2026-06-03,lab-software engineers,none

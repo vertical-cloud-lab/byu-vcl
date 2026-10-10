@@ -1,0 +1,291 @@
+{
+ "captures": {
+  "portfolio.joinef.com/companies/altrove-2": [
+   {
+    "urlkey": "com,joinef,portfolio)/companies/altrove-2",
+    "first": "20250517174842",
+    "last": "20260608200703",
+    "n": 6,
+    "original": "https://portfolio.joinef.com/companies/altrove-2"
+   },
+   {
+    "urlkey": "com,joinef,portfolio)/companies/altrove-2/jobs/59864586-laboratory-technician-advanced-materials",
+    "first": "20251007084937",
+    "last": "20260711202736",
+    "n": 2,
+    "original": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864586-laboratory-technician-advanced-materials"
+   },
+   {
+    "urlkey": "com,joinef,portfolio)/companies/altrove-2/jobs/59864587-business-development-associate-strategic-materials",
+    "first": "20251007094623",
+    "last": "20260520201514",
+    "n": 2,
+    "original": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864587-business-development-associate-strategic-materials"
+   },
+   {
+    "urlkey": "com,joinef,portfolio)/companies/altrove-2?q=business+development+manager",
+    "first": "20251117130329",
+    "last": "20251117130329",
+    "n": 1,
+    "original": "https://portfolio.joinef.com/companies/altrove-2?q=Business+Development+Manager"
+   },
+   {
+    "urlkey": "com,joinef,portfolio)/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design",
+    "first": "20251118043005",
+    "last": "20251118043005",
+    "n": 1,
+    "original": "https://portfolio.joinef.com/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design"
+   }
+  ],
+  "jobs.cventures.vc/companies/altrove-2": [
+   {
+    "urlkey": "vc,cventures,jobs)/companies/altrove-2",
+    "first": "20260317160842",
+    "last": "20260317160842",
+    "n": 1,
+    "original": "https://jobs.cventures.vc/companies/altrove-2"
+   },
+   {
+    "urlkey": "vc,cventures,jobs)/companies/altrove-2/jobs/73499174-ml-engineer",
+    "first": "20260414160237",
+    "last": "20260414160237",
+    "n": 1,
+    "original": "https://jobs.cventures.vc/companies/altrove-2/jobs/73499174-ml-engineer"
+   },
+   {
+    "urlkey": "vc,cventures,jobs)/companies/altrove-2/jobs/76190843-cto-associate",
+    "first": "20260610180229",
+    "last": "20260610180229",
+    "n": 1,
+    "original": "https://jobs.cventures.vc/companies/altrove-2/jobs/76190843-cto-associate"
+   }
+  ],
+  "jobs.alven.co/companies/altrove": []
+ },
+ "board_captures": {
+  "jobs.cventures.vc/companies/altrove-2": [
+   [
+    "20260317160842",
+    "https://jobs.cventures.vc/companies/altrove-2"
+   ]
+  ],
+  "portfolio.joinef.com/companies/altrove-2": [
+   [
+    "20250517174842",
+    "https://portfolio.joinef.com/companies/altrove-2"
+   ],
+   [
+    "20250807121739",
+    "https://portfolio.joinef.com/companies/altrove-2"
+   ],
+   [
+    "20251117121503",
+    "https://portfolio.joinef.com/companies/altrove-2"
+   ],
+   [
+    "20260215131644",
+    "https://portfolio.joinef.com/companies/altrove-2"
+   ],
+   [
+    "20260608200703",
+    "https://portfolio.joinef.com/companies/altrove-2"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250517174842/https://portfolio.joinef.com/companies/altrove-2",
+   "url": "https://portfolio.joinef.com/companies/altrove-2",
+   "first_seen": "20250517174842",
+   "last_seen": "20250517174842",
+   "n_captures": 1,
+   "title": "Entrepreneurs First Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250807121739/https://portfolio.joinef.com/companies/altrove-2",
+   "url": "https://portfolio.joinef.com/companies/altrove-2",
+   "first_seen": "20250807121739",
+   "last_seen": "20250807121739",
+   "n_captures": 1,
+   "title": "Entrepreneurs First Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007084937/https://portfolio.joinef.com/companies/altrove-2/jobs/59864586-laboratory-technician-advanced-materials",
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864586-laboratory-technician-advanced-materials",
+   "first_seen": "20251007084937",
+   "last_seen": "20260711202736",
+   "n_captures": 2,
+   "title": "Laboratory Technician - Advanced Materials",
+   "location": "Paris, France",
+   "employment_type": "",
+   "published": "2025-10-03T12:41:23.304Z",
+   "valid_through": "2026-01-05",
+   "salary": null,
+   "org": "altrove",
+   "text": "*Only candidates based in France and with a Valid Work Permit will be considered*\nAbout us\nAltrove is a rapidly growing startup developing new inorganic materials using cutting edge AI and lab automation. We are supported by top investors and partners and have built a very strong team of stellar talent and ambition. At altrove, you will be tackling the biggest materials challenges of the century, solving the mineral crisis threatening the energy transition.\nRole and responsibility\nWe're looking for a motivated, get-s*it-done attitude lab technician to join our great team in the early days.\nYour responsibilities include :\n- Prepare the inorganic powder samples by weighing, mixing and grinding.\n- Sample handling and moving to the designated stations.\n- Prepare and characterize the physical and chemical properties of inorganic materials.\n- Accurately record data and prepare detailed reports.\n- Ensure compliance with safety protocols and maintain a clean and organized lab environment.\n- Working with and assisting our team of experts with the synthesis of groundbreaking materials.\n- Assist in the development and optimization of new laboratory methods and procedures.\nQualifications\n- You have previous experience as a lab technician or a similar role.\n- Skills in electronics, including maintenance and repair of laboratory equipment is a plus.\n- You speak fluent English (the day-to-day language is in English) and French.\n- Strong attention to detail and problem-solving skills.\n- Knowledge of laboratory safety protocols and best practices.\n- Organized, and ability to accurately record data.\n- Ability to work independently as well as part of a team.\n- Must have a valid work permit for France.\nThis is a job for an early stage, ambitious and fast growing startup, which involves high ownership and responsibility and requires flexibility. It is also highly rewarding. You will have a strong and direct impact on the startup.\nYou will have a competitive package, have the possibility to own shares in the company and will work on the most fascinating topics you can imagine.",
+   "posting_id": "59864586"
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007094623/https://portfolio.joinef.com/companies/altrove-2/jobs/59864587-business-development-associate-strategic-materials",
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864587-business-development-associate-strategic-materials",
+   "first_seen": "20251007094623",
+   "last_seen": "20260520201514",
+   "n_captures": 2,
+   "title": "Business Development Associate - Strategic Materials",
+   "location": "Paris, France",
+   "employment_type": "",
+   "published": "2025-10-03T12:41:24.158Z",
+   "valid_through": "2026-01-05",
+   "salary": null,
+   "org": "altrove",
+   "text": "About Altrove\nFounded by a successful repeat entrepreneur and a top technical CTO (PhD Materials Science from Cambridge University), we're a rapidly growing company revolutionizing materials discovery through AI.\nWe automate the synthesis process of novel inorganic materials with artificial intelligence, making the process 100x faster. We raised with top tier VCs and we are tackling the biggest materials challenges of the century, solving the mineral crisis threatening the energy transition.\nAbout the Role\nWe're seeking a highly proactive and motivated individual to support our Go-to-Market. You'll contribute to a cutting-edge field working directly with our head of GTM on our commercial and partnership activities. You’ll interact directly with senior executives in critical industries, giving you exceptional exposure to high-level decision-making processes and business development.\nKey Responsibilities\nA. Build strategic partnerships\n- Identify and qualify high-value partnership opportunities\n- Lead generation and prospecting\n- Coordinate conferences and events\n- Build lasting relationships with industrial partners\nB. Strategy and analytics support\n- Manage our CRM and team analytics and reporting\n- Contribute to Altrove’s go-to-market strategy\nWhat we’re looking for\n- Motivated, self-starter and objective-driven\n- Experience in industrial business development or related\n- Nice to have: Tech background, deep-tech experience\n- Strong communication skills\n- Valid French working visa\n- Fluent in English\nWhy join us\nYou will work on solving a generational problem along with a world-class team, in a fast-paced, fascinating environment.\nDetails\n- Expected Starting Date : January 2026\nPerks\n- Competitive salary\n- Stock options (BSPCE)\n- Full Navigo Pass coverage\n- Meal vouchers: €11/day via Swile (50% company contribution)\n- Convenient office location: Adjacent to Line 14, one stop from Paris\n- Remote two days a week\n- Regular team lunches and drinks",
+   "posting_id": "59864587"
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251117121503/https://portfolio.joinef.com/companies/altrove-2",
+   "url": "https://portfolio.joinef.com/companies/altrove-2",
+   "first_seen": "20251117121503",
+   "last_seen": "20251117121503",
+   "n_captures": 1,
+   "title": "Entrepreneurs First Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251118043005/https://portfolio.joinef.com/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design",
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design",
+   "first_seen": "20251118043005",
+   "last_seen": "20251118043005",
+   "n_captures": 1,
+   "title": "Inorganic Materials Engineer - Manufacturing and Process Design",
+   "location": "France",
+   "employment_type": "",
+   "published": "2025-10-18T12:27:30.964Z",
+   "valid_through": "2025-11-08",
+   "salary": null,
+   "org": "altrove",
+   "text": "About Altrove\nFounded by a successful repeat CEO and a top technical CTO (PhD Materials Science from Cambridge University), Altrove is a rapidly growing startup, supported by top investors and partners. We're tackling the biggest materials challenges of the century, creating alternatives to insecure materials needed to reach Net Zero and technological sovereignty. At Altrove, we are bridging the gap between crystal structure prediction and inorganic material synthesis by using our deep AI expertise and high-throughput laboratory.\nRole and responsibility\nWe're looking for a seasoned expert in materials manufacturing, who understands and has experience in bringing production from lab to industrial scale. Altrove is a small team, you’ll be working closely with the entire team and the founders. You will need to take responsibility for decision and execution on:\n- Production - determine the technical requirements (costs, processes…) needed to scale-up production of key inorganic materials.\n- Customer Manufacturing and GTM success - successfully design and conduct quality assessment and quality control with customers’ Manufacturing, R&D and Engineering teams to completion.\n- Distribution - assess cost structures, distribution channels, geographical challenges and regulatory obligations\n- Partnerships - scout, approach, negotiate and close the most relevant partners to safely (and in full trust) distribute or co-manufacture with.\nExperience & Qualifications\n- Technical background or proven track record working in a technical environment\n- Significant experience tackling manufacturing challenges and onboarding key industrial partners\n- Previous success working with executives at medium and large industrial companies\n- Savviness on AI and materials development challenges\n- Ability to take responsibility and be autonomous\n- Get-s*it-done attitude\n- Fluent English\nYou will work on solving a generational problem along with a world-class team. You will have the possibility to own shares in the company and will work in a fast-paced, fascinating environment.",
+   "posting_id": "60756213"
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260215131644/https://portfolio.joinef.com/companies/altrove-2",
+   "url": "https://portfolio.joinef.com/companies/altrove-2",
+   "first_seen": "20260215131644",
+   "last_seen": "20260215131644",
+   "n_captures": 1,
+   "title": "Entrepreneurs First Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260317160842/https://jobs.cventures.vc/companies/altrove-2",
+   "url": "https://jobs.cventures.vc/companies/altrove-2",
+   "first_seen": "20260317160842",
+   "last_seen": "20260317160842",
+   "n_captures": 1,
+   "title": "Contrarian Ventures Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260414160237/https://jobs.cventures.vc/companies/altrove-2/jobs/73499174-ml-engineer",
+   "url": "https://jobs.cventures.vc/companies/altrove-2/jobs/73499174-ml-engineer",
+   "first_seen": "20260414160237",
+   "last_seen": "20260414160237",
+   "n_captures": 1,
+   "title": "ML Engineer",
+   "location": "Paris, France",
+   "employment_type": "",
+   "published": "2026-04-06T15:10:16.225Z",
+   "valid_through": "2026-07-13",
+   "salary": null,
+   "org": "altrove",
+   "text": "About Altrove\nFounded by a successful repeat entrepreneur and a top technical CTO (PhD Materials Science from Cambridge University), we're a rapidly growing startup, supported by Tier 1 investors and partners. We're tackling the biggest materials challenges of the century, creating better alternatives to the most critical materials. At altrove, we are bridging the gap between crystal structure prediction and inorganic material synthesis by using our deep AI expertise and high-throughput laboratory.\nJob Description\nWe are looking for a Research Scientist/Engineer with strong machine learning fundamentals to fine-tune, deploy, and operationalize in order to power Altrove's internal AI scientist. You'll be building models and pipelines to help understand the modelling and reasoning of scientific research in Altrove's high-throughput lab. You will be deploying tasks at the intersection of ML research, software engineering, and materials science.\nWhat you'll do:\n- Build and maintain ML training and inference pipelines that directly interface with scientific experiments\n- Develop algorithms that operate well in high-noise environments while reasoning on obtained results\n- Deploy pipelines across distributed HPC/Cloud systems\n- Collaborate with computational and experimental materials scientists\n- Contribute to data management\nQualifications\n- A degree in Computer Science, Applied Mathematics or a related technical field, as well as subsequent work experience (of PhD) applying ML methods\n- Strong machine learning fundamentals\n- Solid PyTorch experience and ability to build reliable training pipelines\n- Experience fine-tuning pretrained models\n- Deep learning experience on multimodal or scientific data\n- Good judgment in low-data, noisy-data settings\n- Rigorous evaluation habits and strong experimental discipline\nNice to have\n- Experience with Markov Processes, active learning, and/or Bayesian optimisation\n- Experience with materials foundation models\n- Familiarity with LLM-based scientific workflows\n- Experience with modern ML development (training, evaluation, inference, distributed systems).\nYou will work on solving a generational problem along with a world-class team. You will have the possibility to own shares in the company and will work in a fast-paced, fascinating environment.",
+   "posting_id": "73499174"
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260608200703/https://portfolio.joinef.com/companies/altrove-2",
+   "url": "https://portfolio.joinef.com/companies/altrove-2",
+   "first_seen": "20260608200703",
+   "last_seen": "20260608200703",
+   "n_captures": 1,
+   "title": "Entrepreneurs First Job Board",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "altrove",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260610180229/https://jobs.cventures.vc/companies/altrove-2/jobs/76190843-cto-associate",
+   "url": "https://jobs.cventures.vc/companies/altrove-2/jobs/76190843-cto-associate",
+   "first_seen": "20260610180229",
+   "last_seen": "20260610180229",
+   "n_captures": 1,
+   "title": "CTO Associate",
+   "location": "Paris, France",
+   "employment_type": "",
+   "published": "2026-04-24T22:37:56.029Z",
+   "valid_through": "2026-09-08",
+   "salary": null,
+   "org": "altrove",
+   "text": "About Altrove\nFounded by a repeat entrepreneur and a top technical CTO (PhD Materials Science, Cambridge), Altrove is tackling the biggest materials challenges of the century, solving the mineral crisis by discovering new inorganic materials using AI and robotic experimentation.\nBacked by top European investors (Contrarian Ventures, Alven, Emblem, BPIfrance), we're a team of highly ambitious builders. Work on the future of materials using cutting edge AI and robotics.\nRole and responsibility\nWe're looking for a highly organized and proactive individual with practical experience in materials science to act as the CTO's structured extension. The CTO is currently the central hub connecting everything technical and everything commercial. Your job is to make it scale. Responsibilities will be transversal and include:\n1. Communication\n- Act as the translation layer between the CTO and technical and non-technical stakeholders.\n- Ensure alignment between the three technical teams (Lab, AI, Materials) around shared priorities and dependencies.\n2. Operations\n- Track priorities, dependencies, risks, and commitments across the CTO's scope.\n- Manage relationships with external technical suppliers and partners\n- Prepare and consolidate technical updates for board meetings, investor communications, and partner reviews.\n- Assist in structuring IP strategy inputs — patent timelines, external counsel coordination, documentation.\n- Surface issues early with clear synthesis and proposed solutions.\n- Coordinate technical admin\n- Support the planning and monitoring of key technical milestones\n3. Strategy\n- Stay deeply up-to-date on Altrove's technical strategy and roadmap.\n- Structure technical narrative for Altrove's next fundraise.\nQualifications\n- MSc or PhD in a scientific or engineering field (materials science, chemistry, physics, or related fields).\n- 1-3 years experience required (PhD, deeptech, biotech, industrial technology, consulting, or venture-backed startup environments)\n- Expertise in materials science.\n- Familiarity with AI/ML concepts and their application to scientific discovery.\n- Excellent communicator - can explain complex technical topics to non-technical people clearly and concisely\n- Very organized and thorough\n- Get-s*it-done attitude, stellar ownership and autonomy\n- Fluent English a must, French a bonus.\nYou will work on solving a generational problem along with a world-class team. You will have the possibility to own shares in the company and will work in a fast-paced, fascinating environment.\nWhat We Offer\n- A CDI (permanent contract) with competitive compensation.\n- A front-row seat to one of the most ambitious deeptech ventures in Europe, working directly with the founding team.\n- Equity (BSPCE)\n- Employees benefit (swile 11€/day, full navigo coverage, team lunch every other week)",
+   "posting_id": "76190843"
+  }
+ ],
+ "spans": {
+  "59864586": {
+   "first": "20251007084937",
+   "last": "20260711202736",
+   "n": 2,
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864586-laboratory-technician-advanced-materials"
+  },
+  "59864587": {
+   "first": "20251007094623",
+   "last": "20260520201514",
+   "n": 2,
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/59864587-business-development-associate-strategic-materials"
+  },
+  "60756213": {
+   "first": "20251118043005",
+   "last": "20251118043005",
+   "n": 1,
+   "url": "https://portfolio.joinef.com/companies/altrove-2/jobs/60756213-inorganic-materials-engineer-manufacturing-and-process-design"
+  },
+  "73499174": {
+   "first": "20260414160237",
+   "last": "20260414160237",
+   "n": 1,
+   "url": "https://jobs.cventures.vc/companies/altrove-2/jobs/73499174-ml-engineer"
+  },
+  "76190843": {
+   "first": "20260610180229",
+   "last": "20260610180229",
+   "n": 1,
+   "url": "https://jobs.cventures.vc/companies/altrove-2/jobs/76190843-cto-associate"
+  }
+ }
+}

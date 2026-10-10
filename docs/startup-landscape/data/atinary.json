@@ -1,0 +1,186 @@
+{
+  "company": "Atinary Technologies",
+  "slug": "atinary",
+  "hq": "Lausanne, Switzerland",
+  "country": "CH",
+  "founded": "2019",
+  "category": "self-driving lab",
+  "focus": "SDLabs no-code AI/Bayesian-optimisation platform for self-driving labs, plus its own autonomous lab in Boston (opened early 2026, Chemspeed robots and Bruker NMR)",
+  "status": "active",
+  "website": "https://atinary.com",
+  "funding": [
+    {
+      "date": "2023-10-03",
+      "round": "Seed",
+      "amount_usd_m": 5.0,
+      "original_amount": "USD 5M",
+      "type": "equity",
+      "lead_investors": [
+        "AgFunder"
+      ],
+      "source": "https://ggba.swiss/en/atinary-technologies-raises-usd-5-million-to-accelerate-material-and-molecular-innovation/"
+    },
+    {
+      "date": "2026-08-14",
+      "round": "Strategic minority investment",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "Bruker"
+      ],
+      "source": "https://bioalps.org/bruker-expands-its-collaboration-with-atinary-and-makes-a-minority-investment/"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2024-07-07",
+      "value": 17,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'View all 17 employees'",
+      "source": "https://web.archive.org/web/20240707234322/https://www.linkedin.com/company/atinary/"
+    },
+    {
+      "date": "2025-11-03",
+      "value": 22,
+      "low": 11,
+      "high": 50,
+      "method": "linkedin-band",
+      "note": "LinkedIn band 11-50; 'Discover all 22 employees'",
+      "source": "https://web.archive.org/web/20251103081650/https://www.linkedin.com/company/atinary"
+    }
+  ],
+  "postings": [
+    {
+      "period": "2026Q3",
+      "new_postings": 3,
+      "method": "ats",
+      "source": "https://atinary.com/careers/"
+    },
+    {
+      "period": "2026Q4",
+      "new_postings": 1,
+      "method": "ats",
+      "source": "https://atinary.com/careers/"
+    }
+  ],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 4,
+    "by_function": {
+      "ml-research": 1,
+      "lab-automation": 1,
+      "software-eng": 1,
+      "business-ops": 1
+    },
+    "titles": [
+      "AI for Chemistry Scientist (Lausanne)",
+      "Lab Technician (Boston)",
+      "Full Stack Developer (Lausanne)",
+      "Marketing & Social Media Associate (Lausanne)"
+    ],
+    "source": "https://atinary.com/careers/"
+  },
+  "people": [
+    {
+      "name": "Hermann Tribukait",
+      "title": "Co-founder & CEO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2019",
+      "start_basis": "Company founded 2019 (GGBA); founders working together on Self-Driving Labs since 2017 (company site)",
+      "end": null,
+      "background": "PhD; economist, entrepreneur, innovation and technology development",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Loïc Roch",
+      "title": "Co-founder & CTO",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2019",
+      "start_basis": "Company founded 2019 (GGBA)",
+      "end": null,
+      "background": "PhD chemist; AI/ML for materials discovery, software design, autonomous experimentation",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Horst Simon",
+      "title": "Scientific Advisory Board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Founding director, ADIA AI Lab; retired Deputy Director and Chief Research Officer, Lawrence Berkeley National Lab",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Joshua Schrier",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, Fordham University; AI for materials discovery",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Alex Norquist",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, Haverford College; chemistry and materials science",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "José Miguel Hernández-Lobato",
+      "title": "Scientific Advisory Board",
+      "function": "ml-research",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Professor, University of Cambridge; machine learning",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Paco Laveille",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "ETH Zurich Catalysis Hub / SwissCAT+ East; chemistry and catalysis",
+      "source": "https://atinary.com/about-us/"
+    },
+    {
+      "name": "Stephen Buchwald",
+      "title": "Scientific Advisory Board",
+      "function": "materials-science",
+      "seniority": "advisor",
+      "start": null,
+      "start_basis": "Listed on about page 2026-10-09",
+      "end": null,
+      "background": "Camille Dreyfus Professor of Chemistry, MIT",
+      "source": "https://atinary.com/about-us/"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "Seed (2023-10-03, USD 5M) led by AgFunder with Cherubic Ventures; 'existing pre-seed investors from the US and Europe' also took part, but no pre-seed amount or date was found. Third-party trackers give totals of USD 5M or USD 7M.",
+    "Bruker took a minority stake (announced 2026-08-14, terms undisclosed) alongside a collaboration that put Bruker benchtop NMR into the Boston autonomous lab, which opened in early 2026 with Chemspeed robotics.",
+    "Site footer now reads 'Atinary Technologies Inc.' (a US entity), while LinkedIn and the 2023 seed coverage place HQ in Lausanne/Epalinges, Vaud. The Swiss registry (zefix/moneyhouse) was not checked for lack of time, so board changes are unknown.",
+    "About page: 'With 13 nationalities represented' (no headcount). LinkedIn grew from 17 (2024-07) to 22 (2025-11) people, so the team stayed small after the seed.",
+    "Current openings are on Zoho Recruit (atinary.zohorecruit.eu), linked from the careers page, with posting dates shown there. A 'Talent Community' general application (2026-10-05) is excluded from the count.",
+    "Skipped: Wayback team-page history (the about page lists founders and advisors only), Wayback posting history, OpenAlex, Swiss registry."
+  ]
+}

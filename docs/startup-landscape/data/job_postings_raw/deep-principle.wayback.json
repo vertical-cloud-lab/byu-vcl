@@ -1,0 +1,590 @@
+{
+ "captures": {
+  "www.deepprinciple.com/join.html": [
+   {
+    "urlkey": "com,deepprinciple)/join.html",
+    "first": "20250712094015",
+    "last": "20260218064659",
+    "n": 3,
+    "original": "https://www.deepprinciple.com/join.html"
+   }
+  ],
+  "www.deepprinciple.com/cn/join.html": [
+   {
+    "urlkey": "com,deepprinciple)/cn/join.html",
+    "first": "20250617235301",
+    "last": "20260411021424",
+    "n": 6,
+    "original": "https://www.deepprinciple.com/cn/join.html"
+   }
+  ]
+ },
+ "board_captures": {
+  "deepprinciple.com/cn/join.html": [
+   [
+    "20250617235301",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20250702090211",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20251007154152",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20260218060930",
+    "http://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20260411021424",
+    "http://www.deepprinciple.com/cn/join.html"
+   ]
+  ],
+  "deepprinciple.com/join.html": [
+   [
+    "20250712094015",
+    "https://www.deepprinciple.com/join.html"
+   ],
+   [
+    "20251217085811",
+    "https://www.deepprinciple.com/join.html"
+   ],
+   [
+    "20260218064659",
+    "http://www.deepprinciple.com/join.html"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "AI部门负责人",
+   "text": "岗位职责：\n1、AI原创性算法开发：主导化学材料的原创性AI算法及行业大模型的开发，构筑具有差异化优势的技术壁垒。\n2、技术产品化与价值实现：将原创AI算法与实际业务场景深度融合，打造高效可扩展的AI产品，提升商业价值。\n3、团队领导能力：搭建并管理AI团队，覆盖数据科学、算法研发和工程开发。\n岗位要求：\n1、硕士及以上学位，专业涵盖计算机科学、数据科学、机器学习、计算化学等相关领域。\n2、8年以上AI研发与管理经验，曾主导开创性算法或大模型技术栈的成功落地。\n3、具备从0到1构建AI团队及推动技术产品化的实战履历，有知名企业高级技术管理岗位经验者优先。\n4、具备基于Transformer的生成式模型、基于图的深度学习模型或几何深度学习模型的研发经验。\n5、具备从数据预处理、模型训练到上线部署的全栈掌控能力。\n6、精通PyTorch、TensorFlow、JAX、Warp 等主流深度学习框架及大数据和分布式计算工具。\n7、精通C/C++、CUDA及Docker开发，深入理解机器学习工程化与MLOps实践，熟悉云计算平台与DevOps流程。\n加分项：\n1、深入了解生物学、化学、材料科学领域AI for Science应用中的开创性算法和几何模型，或在相关领域中使用的主要代码库中有贡献。\n2、在生物、化学或材料科学领域的研究、应用或合作经验丰富，能够准确理解并推动AI技术与科学领域的深度融合。\n3、曾获得顶级学术期刊或会议的认可，在AI for Science方向发表有影响力的论文或成果。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "高通量实验负责人",
+   "text": "岗位职责：\n1、制定实验室管理制度与标准操作流程(SOP)，提升实验室运营效率和合规性。\n2、监督设施、高通量设备和试剂的运行与维护，优化资源配置，确保高效运作。\n3、管理实验室团队，协调组内与跨部门的协作，解决实验推进中的问题。\n4、组织技术培训与安全教育，强化实验室人员的操作技能和安全意识。\n5、主导实验室新设施与设备的规划、引进与部署，满足高通量研发和测试需求。\n6、设计并执行自动化实验方案，优化化学合成、分析与纯化流程、安全管理与风险控制。\n7、构建全面的实验室安全管理体系，确保操作流程符合法律法规和行业标准。\n8、定期开展实验室安全检查，建立应急响应机制，提升团队应对突发事件的能力。\n岗位要求：\n1、生化环材及相关领域博士学位，或硕士学位且具备5年以上相关行业经验。\n2、对高通量实验和材料研发具有深刻理解，有机化学、药物化学背景优先。\n3、熟悉高通量实验室的自动化系统和操作平台(如Chemspeed、Syrris等)。\n4、具备独立开展多步合成和工艺优化的能力，精通LC-MS、HPLC、NMR等分析技术，能够评估化合物纯度及特性。\n5、掌握实验室信息管理系统(LIMS)和数字化工具的使用，具备数据分析与信息管理能力。\n6、具备优秀的实验室管理能力和跨部门沟通能力，能够独立领导团队并推动项目落地。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "政府及公共关系",
+   "text": "岗位职责：\n1、根据公司战略，制定并执行政府关系计划，拓展并维护各级政府部门的关系。\n2、跟踪行业相关政策法规，开展政策研究，为公司决策提供支持;推动公司与政府在项目合作中的深度对接与实施落地。\n3、管理并运维公司国内外社交媒体矩阵(如微信公众号、LinkedIn等)，策划内容并提升传播影响力。\n4、管理官网内容更新及品牌宣传物料(如品牌画册、公司宣传Deck等)输出，增强公司外部形象。\n5、建立政策与公关风险预警机制，预防潜在政策和监管风险。\n6、支持各部门处理与政府相关的应急事务，妥善解决突发事件。\n岗位要求：\n1、本科及以上学历，公共政策、政治学、国际关系或新闻相关专业优先。\n2、5年以上政府关系、公共事务或品牌宣传相关工作经验，有丰富的政府资源或大型企业相关岗位经验者优先。\n3、熟悉To B行业特点，具备服务高端客户或技术型企业的从业经历者优先。\n4、熟悉政府部门工作机制，具备独立拓展政企关系与处理复杂问题的能力。\n5、优秀的品牌管理能力，具备高质量内容策划与宣传执行能力。\n6、熟练使用PPT排版美化工具，熟悉PS、AI等设计软件者优先。\n7、具备中英双语流利沟通能力，能适应国际化工作环境。\n8、出色的跨文化沟通与人际交往能力，能与不同背景的人群高效协作。\n9、主动适应变化，具备团队合作精神和较强的资源整合能力。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "计算化学研究科学家",
+   "text": "岗位职责 :\n1、关于前沿化学，材料的计算流程开发。\n2、与云端和软件工程师合作，设计以化学和材料为核心的数据基础架构及流程。\n3、与公司内部商业及技术团队合作，确认并解决团队的未来计算需求。\n4、与合作企业、客户相配合，实现行业突破。\n岗位要求：\n1、拥有计算化学和材料的相关研究经验\n（如熟练使用PySCF，Orca等量子化学软件），完成并取得材料科学、化学、化学工程，物理或相关领域硕士以上学位。有工业背景经验者优先。\n2、对化学或材料科学有深刻的理解。有使用计算工作流（firework、aiida、automate等）催化研究经验者优先。\n3、具有出色的问题解决能力，能够独立对一个科学或者工业问题开展研究。\n4、精通Python、C++等编程语言，有较强的算法开发和编程实现能力。\n5、具备跨学科合作能力，擅长与不同技术背景的非专业人员沟通技术概念。可以与团队共同成长致力于通过技术解决当今科学发现的关键问题。\n加分项：\n1、具备构建深度学习研究管线的经验；主要集中于分子和材料设计的管线开发（比如GuacaMol、Open Catalyst Project）。\n2、有云端基础架构和开发经验（如Docker、Kubernetes、容器化等）。\n3、具有创业经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "机器学习研究科学家",
+   "text": "岗位职责：\n1、开发和应用前沿的深度学习模型，以推动化学和材料科学创新。\n2、设计、开发和维护以化学和材料数据为中心的机器学习 pipeline，包括数据收集、预处理、特征工程、模型训练和评估等环节。\n3、与云端和软件工程师密切合作，设计和实施以化学和材料为核心的数据基础架构与工作流程。\n4、与公司内部的商业和技术团队合作，理解业务需求，并将机器学习技术应用于解决实际问题，推动商业价值实现。\n5、紧跟机器学习领域的前沿进展，并将最新的研究成果应用于实际项目中，不断提升团队的技术水平。\n职位要求：\n1、拥有相关领域的硕士学位（化学、计算机科学、材料科学等），并具备深度学习相关经验。\n2、精通至少一种深度学习框架，例如 TensorFlow, PyTorch等，并具备丰富的模型开发经验。\n3、理解机器学习算法和理论，特别是深度学习领域，例如图神经网络 (GNNs), 循环神经网络 (RNNs), 卷积神经网络 (CNNs) 等。\n4、具有较强的编程能力，精通Python或C++，具备出色的算法开发和实现能力。\n5、对数据有较强敏感性，具备对数据进行清洗、预处理和特征工程的经验，并能从中提取有效信息。\n6、对AI for Science 充满兴趣和热情，并致力于用人工智能技术推动化学和材料科学的发展。\n加分项：\n1、了解化学和材料科学。有分子、蛋白质或材料相关的机器学习经验者优先。\n2、熟悉云计算平台 (例如 AWS, Azure, GCP) 和容器化技术 (例如 Docker, Kubernetes)。\n3、具备大型软件项目开发经验，熟悉版本控制系统 (例如 Git) 和代码测试流程。\n4、具有在初创公司内工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "技术产品经理",
+   "text": "岗位职责：\n1、主导产品路线图的开发和执行，使其与业务目标和技术可行性保持一致。\n2、开展市场调研，分析用户反馈，并紧跟行业趋势，发掘新的机会。\n3、定义产品成功指标，积极跟踪和分析性能数据及其影响，为未来产品迭代提供信息。\n4、有效地弥合技术团队和非技术相关者之间的背景差异，将复杂的概念转化为清晰可行的表述。与工程团队合作，将产品需求转化为技术要求和开发任务。\n5、确定功能的优先级并管理产品积压，确保资源的有效分配和及时交付。\n岗位要求：\n1、至少具备5-7年的产品管理经验，B2B技术领域工作经验者优先。\n2、有成功推动和管理复杂技术产品的成功经验。\n3、对材料/化学中使用的人工智能原理和机器学习算法有深刻理解。\n4、拥有高效的开发方式，产品开发迭代的热情。\n5、具备出色的沟通、人际交往和问题解决能力。\n加分项：\n1、对人工智能和机器学习在材料和化学领域的应用有深入了解。\n2、具有创业公司工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "业务拓展经理",
+   "text": "岗位职责：\n1、 制定和执行全面的业务发展战略，以支持公司的总体目标。\n2、识别、开发并管理化学材料、医药中间体、合成生物及相关行业的潜在客户和合作伙伴。\n3、 建立并巩固与潜在客户和合作伙伴关键决策者的牢固关系。\n4、管理谈判过程，确保签订的合同符合业务和财务目标。\n5、 持续监测行业趋势和竞争动态，积极发现新的业务机会和合作伙伴关系。\n岗位要求：\n1、5-10年以上业务拓展经验，优先考虑在化学材料、医药中间体、合成生物或人工智能、工业数字化相关领域的经验。\n2、成功发展、维护和管理战略合作伙伴关系的经验。\n3、深入了解B2B销售周期，能够处理复杂的销售流程。\n4、出色的沟通、人际交往和表达能力。\n5、能够建立信任和融洽的合作关系，自我驱动、结果导向，并具备强烈的职业道德。\n加分项：\n1、创业公司工作经验。\n2、对人工智能和机器学习在生物医药和材料化学领域的应用有深入理解。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "AI部门负责人",
+   "text": "岗位职责：\n1、AI原创性算法开发：主导化学材料的原创性AI算法及行业大模型的开发，构筑具有差异化优势的技术壁垒。\n2、技术产品化与价值实现：将原创AI算法与实际业务场景深度融合，打造高效可扩展的AI产品，提升商业价值。\n3、团队领导能力：搭建并管理AI团队，覆盖数据科学、算法研发和工程开发。\n岗位要求：\n1、硕士及以上学位，专业涵盖计算机科学、数据科学、机器学习、计算化学等相关领域。\n2、8年以上AI研发与管理经验，曾主导开创性算法或大模型技术栈的成功落地。\n3、具备从0到1构建AI团队及推动技术产品化的实战履历，有知名企业高级技术管理岗位经验者优先。\n4、具备基于Transformer的生成式模型、基于图的深度学习模型或几何深度学习模型的研发经验。\n5、具备从数据预处理、模型训练到上线部署的全栈掌控能力。\n6、精通PyTorch、TensorFlow、JAX、Warp 等主流深度学习框架及大数据和分布式计算工具。\n7、精通C/C++、CUDA及Docker开发，深入理解机器学习工程化与MLOps实践，熟悉云计算平台与DevOps流程。\n加分项：\n1、深入了解生物学、化学、材料科学领域AI for Science应用中的开创性算法和几何模型，或在相关领域中使用的主要代码库中有贡献。\n2、在生物、化学或材料科学领域的研究、应用或合作经验丰富，能够准确理解并推动AI技术与科学领域的深度融合。\n3、曾获得顶级学术期刊或会议的认可，在AI for Science方向发表有影响力的论文或成果。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "高通量实验负责人",
+   "text": "岗位职责：\n1、制定实验室管理制度与标准操作流程(SOP)，提升实验室运营效率和合规性。\n2、监督设施、高通量设备和试剂的运行与维护，优化资源配置，确保高效运作。\n3、管理实验室团队，协调组内与跨部门的协作，解决实验推进中的问题。\n4、组织技术培训与安全教育，强化实验室人员的操作技能和安全意识。\n5、主导实验室新设施与设备的规划、引进与部署，满足高通量研发和测试需求。\n6、设计并执行自动化实验方案，优化化学合成、分析与纯化流程、安全管理与风险控制。\n7、构建全面的实验室安全管理体系，确保操作流程符合法律法规和行业标准。\n8、定期开展实验室安全检查，建立应急响应机制，提升团队应对突发事件的能力。\n岗位要求：\n1、生化环材及相关领域博士学位，或硕士学位且具备5年以上相关行业经验。\n2、对高通量实验和材料研发具有深刻理解，有机化学、药物化学背景优先。\n3、熟悉高通量实验室的自动化系统和操作平台(如Chemspeed、Syrris等)。\n4、具备独立开展多步合成和工艺优化的能力，精通LC-MS、HPLC、NMR等分析技术，能够评估化合物纯度及特性。\n5、掌握实验室信息管理系统(LIMS)和数字化工具的使用，具备数据分析与信息管理能力。\n6、具备优秀的实验室管理能力和跨部门沟通能力，能够独立领导团队并推动项目落地。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "政府及公共关系",
+   "text": "岗位职责：\n1、根据公司战略，制定并执行政府关系计划，拓展并维护各级政府部门的关系。\n2、跟踪行业相关政策法规，开展政策研究，为公司决策提供支持;推动公司与政府在项目合作中的深度对接与实施落地。\n3、管理并运维公司国内外社交媒体矩阵(如微信公众号、LinkedIn等)，策划内容并提升传播影响力。\n4、管理官网内容更新及品牌宣传物料(如品牌画册、公司宣传Deck等)输出，增强公司外部形象。\n5、建立政策与公关风险预警机制，预防潜在政策和监管风险。\n6、支持各部门处理与政府相关的应急事务，妥善解决突发事件。\n岗位要求：\n1、本科及以上学历，公共政策、政治学、国际关系或新闻相关专业优先。\n2、5年以上政府关系、公共事务或品牌宣传相关工作经验，有丰富的政府资源或大型企业相关岗位经验者优先。\n3、熟悉To B行业特点，具备服务高端客户或技术型企业的从业经历者优先。\n4、熟悉政府部门工作机制，具备独立拓展政企关系与处理复杂问题的能力。\n5、优秀的品牌管理能力，具备高质量内容策划与宣传执行能力。\n6、熟练使用PPT排版美化工具，熟悉PS、AI等设计软件者优先。\n7、具备中英双语流利沟通能力，能适应国际化工作环境。\n8、出色的跨文化沟通与人际交往能力，能与不同背景的人群高效协作。\n9、主动适应变化，具备团队合作精神和较强的资源整合能力。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "计算化学研究科学家",
+   "text": "岗位职责 :\n1、关于前沿化学，材料的计算流程开发。\n2、与云端和软件工程师合作，设计以化学和材料为核心的数据基础架构及流程。\n3、与公司内部商业及技术团队合作，确认并解决团队的未来计算需求。\n4、与合作企业、客户相配合，实现行业突破。\n岗位要求：\n1、拥有计算化学和材料的相关研究经验\n（如熟练使用PySCF，Orca等量子化学软件），完成并取得材料科学、化学、化学工程，物理或相关领域硕士以上学位。有工业背景经验者优先。\n2、对化学或材料科学有深刻的理解。有使用计算工作流（firework、aiida、automate等）催化研究经验者优先。\n3、具有出色的问题解决能力，能够独立对一个科学或者工业问题开展研究。\n4、精通Python、C++等编程语言，有较强的算法开发和编程实现能力。\n5、具备跨学科合作能力，擅长与不同技术背景的非专业人员沟通技术概念。可以与团队共同成长致力于通过技术解决当今科学发现的关键问题。\n加分项：\n1、具备构建深度学习研究管线的经验；主要集中于分子和材料设计的管线开发（比如GuacaMol、Open Catalyst Project）。\n2、有云端基础架构和开发经验（如Docker、Kubernetes、容器化等）。\n3、具有创业经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "机器学习研究科学家",
+   "text": "岗位职责：\n1、开发和应用前沿的深度学习模型，以推动化学和材料科学创新。\n2、设计、开发和维护以化学和材料数据为中心的机器学习 pipeline，包括数据收集、预处理、特征工程、模型训练和评估等环节。\n3、与云端和软件工程师密切合作，设计和实施以化学和材料为核心的数据基础架构与工作流程。\n4、与公司内部的商业和技术团队合作，理解业务需求，并将机器学习技术应用于解决实际问题，推动商业价值实现。\n5、紧跟机器学习领域的前沿进展，并将最新的研究成果应用于实际项目中，不断提升团队的技术水平。\n职位要求：\n1、拥有相关领域的硕士学位（化学、计算机科学、材料科学等），并具备深度学习相关经验。\n2、精通至少一种深度学习框架，例如 TensorFlow, PyTorch等，并具备丰富的模型开发经验。\n3、理解机器学习算法和理论，特别是深度学习领域，例如图神经网络 (GNNs), 循环神经网络 (RNNs), 卷积神经网络 (CNNs) 等。\n4、具有较强的编程能力，精通Python或C++，具备出色的算法开发和实现能力。\n5、对数据有较强敏感性，具备对数据进行清洗、预处理和特征工程的经验，并能从中提取有效信息。\n6、对AI for Science 充满兴趣和热情，并致力于用人工智能技术推动化学和材料科学的发展。\n加分项：\n1、了解化学和材料科学。有分子、蛋白质或材料相关的机器学习经验者优先。\n2、熟悉云计算平台 (例如 AWS, Azure, GCP) 和容器化技术 (例如 Docker, Kubernetes)。\n3、具备大型软件项目开发经验，熟悉版本控制系统 (例如 Git) 和代码测试流程。\n4、具有在初创公司内工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "技术产品经理",
+   "text": "岗位职责：\n1、主导产品路线图的开发和执行，使其与业务目标和技术可行性保持一致。\n2、开展市场调研，分析用户反馈，并紧跟行业趋势，发掘新的机会。\n3、定义产品成功指标，积极跟踪和分析性能数据及其影响，为未来产品迭代提供信息。\n4、有效地弥合技术团队和非技术相关者之间的背景差异，将复杂的概念转化为清晰可行的表述。与工程团队合作，将产品需求转化为技术要求和开发任务。\n5、确定功能的优先级并管理产品积压，确保资源的有效分配和及时交付。\n岗位要求：\n1、至少具备5-7年的产品管理经验，B2B技术领域工作经验者优先。\n2、有成功推动和管理复杂技术产品的成功经验。\n3、对材料/化学中使用的人工智能原理和机器学习算法有深刻理解。\n4、拥有高效的开发方式，产品开发迭代的热情。\n5、具备出色的沟通、人际交往和问题解决能力。\n加分项：\n1、对人工智能和机器学习在材料和化学领域的应用有深入了解。\n2、具有创业公司工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "业务拓展经理",
+   "text": "岗位职责：\n1、 制定和执行全面的业务发展战略，以支持公司的总体目标。\n2、识别、开发并管理化学材料、医药中间体、合成生物及相关行业的潜在客户和合作伙伴。\n3、 建立并巩固与潜在客户和合作伙伴关键决策者的牢固关系。\n4、管理谈判过程，确保签订的合同符合业务和财务目标。\n5、 持续监测行业趋势和竞争动态，积极发现新的业务机会和合作伙伴关系。\n岗位要求：\n1、5-10年以上业务拓展经验，优先考虑在化学材料、医药中间体、合成生物或人工智能、工业数字化相关领域的经验。\n2、成功发展、维护和管理战略合作伙伴关系的经验。\n3、深入了解B2B销售周期，能够处理复杂的销售流程。\n4、出色的沟通、人际交往和表达能力。\n5、能够建立信任和融洽的合作关系，自我驱动、结果导向，并具备强烈的职业道德。\n加分项：\n1、创业公司工作经验。\n2、对人工智能和机器学习在生物医药和材料化学领域的应用有深入理解。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Head of Artificial Intellgence",
+   "text": "Responsibilities:\n1. AI Algorithm Development: Lead the development of original AI algorithms and industry-specific large models for chemistry and materials, building differentiated technical barriers.\n2. Technology Productization: Deeply integrate original AI algorithms with practical business scenarios to create efficient and scalable AI products that enhance commercial value.\n3. Team Leadership: Build and manage AI teams covering data science, algorithm development, and engineering.\nRequirements:\n1. Master's degree or above in Computer Science, Data Science, Machine Learning, Computational Chemistry, or related fields.\n2. 8+ years of AI R&D and management experience, with successful track record in leading innovative algorithms or large model technology implementation.\n3. Experience in building AI teams from scratch and driving technology productization. Priority given to candidates with senior technical management roles in renowned companies.\n4. Experience in developing Transformer-based generative models, graph-based deep learning models, or geometric deep learning models.\n5. Full-stack capabilities from data preprocessing to model training and deployment.\n6. Mastery of mainstream deep learning frameworks (PyTorch, TensorFlow, JAX, Warp) and big data/distributed computing tools.\n7. Proficiency in C/C++, CUDA, and Docker development; deep understanding of machine learning engineering and MLOps practices; familiarity with cloud computing platforms and DevOps processes.\nPreferred Qualifications:\n1. Deep understanding of innovative algorithms and geometric models in AI for Science applications in biology, chemistry, and materials science, or contributions to major codebases in related fields.\n2. Rich experience in research, applications, or collaborations in biology, chemistry, or materials science, with ability to accurately understand and drive deep integration of AI technology with scientific domains.\n3. Recognition from top academic journals or conferences, with influential publications or achievements in AI for Science.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Head of Laboratory, HTE",
+   "text": "Responsibilities:\n1. Establish laboratory management systems and Standard Operating Procedures (SOPs) to improve operational efficiency and compliance.\n2. Oversee facility, high-throughput equipment, and reagent operations and maintenance to optimize resource allocation and ensure efficient operations.\n3. Manage laboratory teams, coordinate internal and cross-departmental collaboration, and resolve experimental challenges.\n4. Organize technical training and safety education to enhance operational skills and safety awareness.\n5. Lead planning, introduction, and deployment of new laboratory facilities and equipment to meet high-throughput R&D and testing needs.\n6. Design and implement automated experimental protocols, optimize chemical synthesis, analysis, purification processes, safety management, and risk control.\n7. Build comprehensive laboratory safety management systems to ensure compliance with legal regulations and industry standards.\n8. Conduct regular laboratory safety inspections, establish emergency response mechanisms, and enhance team capability in handling emergencies.\nRequirements:\n1. Ph.D. in biochemistry, environmental science, materials science, or related fields; or Master's degree with 5+ years of relevant industry experience.\n2. Deep understanding of high-throughput experimentation and materials R&D; background in organic chemistry or medicinal chemistry preferred.\n3. Familiarity with high-throughput laboratory automation systems and platforms (e.g., Chemspeed, Syrris).\n4. Ability to independently conduct multi-step synthesis and process optimization; expertise in analytical techniques (LC-MS, HPLC, NMR); ability to evaluate compound purity and characteristics.\n5. Proficiency in Laboratory Information Management Systems (LIMS) and digital tools, with data analysis and information management capabilities.\n6. Excellent laboratory management and cross-departmental communication skills, ability to independently lead teams and drive project implementation.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Government and Public Relations",
+   "text": "Responsibilities:\n1. Develop and execute government relations plans based on company strategy, expand and maintain relationships with government agencies at various levels.\n2. Track industry-related policies and regulations, conduct policy research to support company decision-making; facilitate deep integration and implementation of company-government project cooperation.\n3. Manage and maintain company's domestic and international social media matrix (WeChat Official Account, LinkedIn, etc.), plan content and enhance communication impact.\n4. Manage official website content updates and brand promotional materials (brand brochures, company presentation decks, etc.) to strengthen external company image.\n5. Establish policy and public relations risk early warning mechanisms to prevent potential policy and regulatory risks.\n6. Support various departments in handling government-related emergencies and appropriately resolve unexpected incidents.\nRequirements:\n1. Bachelor's degree or above, preferably in Public Policy, Political Science, International Relations, or Journalism.\n2. 5+ years of experience in government relations, public affairs, or brand communications; priority given to candidates with rich government resources or relevant positions in large enterprises.\n3. Familiarity with B2B industry characteristics; priority given to candidates with experience serving high-end clients or technology companies.\n4. Understanding of government department work mechanisms; ability to independently develop government-enterprise relations and handle complex issues.\n5. Excellent brand management skills with high-quality content planning and execution capabilities.\n6. Proficient in PPT layout and beautification tools; familiarity with design software like PS, AI preferred.\n7. Fluent in both Chinese and English communication, able to adapt to international work environment.\n8. Outstanding cross-cultural communication and interpersonal skills, ability to collaborate efficiently with people from diverse backgrounds.\n9. Proactive adaptation to change, strong team spirit and resource integration capabilities.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Computational Chemistry Research Scientist",
+   "text": "Responsibilities:\n1. Develop computational workflows to support cutting-edge research in chemistry and materials science.\n2. Collaborate with cloud and software engineers to design robust data infrastructures\nand workflows tailored for chemistry and materials applications.\n3. Partner with internal business and technical teams to identify and address emerging\ncomputational needs.\n4. Work closely with enterprises and clients to drive industry breakthroughs.\nRequirements:\n1. Research experience in computational chemistry and materials (e.g., proficiency\nwith\nquantum chemistry software like PySCF, Orca). A Master’s degree or higher in\nmaterials\nscience, chemistry, chemical engineering, physics, or a related field is required.\nIndustry experience is a plus.\n2. Strong understanding of chemistry or materials science. Experience with\ncomputational\nworkflows (e.g., FireWorks, AiiDA, Atomate) for catalytic research is preferred.\n3. Excellent problem-solving skills, with the ability to independently research\nscientific or industrial problems.\n4. Proficiency in programming languages such as Python or C++, with strong algorithm\ndevelopment and implementation capabilities.\n5. Interdisciplinary collaboration skills, with the ability to effectively\ncommunicate\ntechnical concepts to non-specialists. A growth mindset and commitment to solving\ncritical scientific discovery challenges through technology.\nPreferred Qualifications:\n1. Experience building deep learning pipelines, particularly for molecular and\nmaterials\ndesign (e.g., GuacaMol, Open Catalyst Project).\n2. Hands-on experience with cloud infrastructure and development (e.g., Docker,\nKubernetes, containerization).\n3. Startup or entrepreneurial experience is a significant advantage.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Machine Learning Research Scientist",
+   "text": "Responsibilities:\n1. Develop and apply cutting-edge deep learning models to drive innovation in\nchemistry\nand materials science.\n2. Design, develop, and maintain machine learning pipelines focused on chemical and\nmaterial data, including data collection, preprocessing, feature engineering, model\ntraining, and evaluation.\n3. Collaborate closely with cloud and software engineers to design and implement\ndata\ninfrastructure and workflows centered on chemistry and materials.\n4. Work with internal business and technical teams to understand business\nrequirements\nand apply machine learning technologies to solve real-world problems, driving\ncommercial\nvalue.\n5. Stay at the forefront of machine learning advancements, applying the latest\nresearch\noutcomes to projects and continuously improving team expertise.\nRequirements:\n1. Master’s degree or higher in a relevant field (e.g., Chemistry, Computer Science,\nMaterials Science) with experience in deep learning.\n2. Proficiency in at least one deep learning framework (e.g., TensorFlow, PyTorch)\nwith\nsubstantial experience in model development.\n3. Strong understanding of machine learning algorithms and theories, particularly in\ndeep learning areas such as Graph Neural Networks (GNNs), Recurrent Neural Networks\n(RNNs), and Convolutional Neural Networks (CNNs).\n4. Excellent programming skills in Python or C++, with strong algorithm development\nand\nimplementation capabilities.\n5. Strong sensitivity to data, with experience in data cleaning, preprocessing, and\nfeature engineering, as well as extracting valuable insights from data.\n6. Passion for AI for Science, with a commitment to advancing chemistry and\nmaterials\nscience through AI technologies.\nPreferred Qualifications:\n1. Familiarity with chemistry and materials science. Machine learning experience\nrelated\nto molecules, proteins, or materials is highly valued.\n2. Experience with cloud computing platforms (e.g., AWS, Azure, GCP) and\ncontainerization technologies (e.g., Docker, Kubernetes).\n3. Experience in developing large-scale software projects, with knowledge of version\ncontrol systems (e.g., Git) and code testing processes.\n4. Startup or entrepreneurial experience is a strong plus.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Technical Product Manager",
+   "text": "Responsibilities:\n1. Lead the development and execution of product roadmaps, ensuring alignment with\nbusiness objectives and technical feasibility.\n2. Conduct market research, analyze user feedback, and stay up-to-date on industry\ntrends to identify new opportunities.\n3. Define product success metrics, track and analyze performance data, and use\ninsights\nto inform future product iterations.\n4. Bridge the gap between technical teams and non-technical stakeholders by\ntranslating\ncomplex concepts into clear, actionable plans. Collaborate with engineering teams to\nturn product requirements into technical specifications and development tasks.\n5. Prioritize features and manage the product backlog to ensure efficient resource\nallocation and timely delivery.\nRequirements:\n1. 5-7+ years of product management experience, with a preference for candidates\nfrom\nB2B technology sectors.\n2. Proven track record of driving and managing the success of complex technical\nproducts.\n3. Strong understanding of AI principles and machine learning algorithms used in\nmaterials or chemistry.\n4. Passion for efficient product development and iterative improvement.\n5. Exceptional communication, interpersonal, and problem-solving skills.\nPreferred Qualifications:\n1. Deep understanding of AI and machine learning applications in materials and\nchemistry.\n2. Startup or entrepreneurial experience is a significant advantage.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Business Development Manager",
+   "text": "Responsibilities:\n1. Develop and implement comprehensive business development strategies to support\nthe\ncompany’s overarching goals.\n2. Identify, develop, and manage potential clients and partners in industries such\nas\nchemical materials, pharmaceutical intermediates, synthetic biology, and related\nfields.\n3. Build and strengthen relationships with key decision-makers at potential clients\nand\npartners.\n4. Oversee negotiation processes to ensure contracts align with business and\nfinancial\nobjectives.\n5. Continuously monitor industry trends and competitive dynamics, proactively\nidentifying new business opportunities and partnerships.\nRequirements:\n1. 5-10+ years of business development experience, with preference for candidates\nwith\nexpertise in chemical materials, pharmaceutical intermediates, synthetic biology,\nAI, or\nindustrial digitization.\n2. Proven experience in developing, maintaining, and managing strategic\npartnerships.\n3. In-depth understanding of B2B sales cycles and the ability to handle complex\nsales\nprocesses.\n4. Exceptional communication, interpersonal, and presentation skills.\n5. Self-motivated, results-oriented, and capable of building trust and rapport with\nstakeholders.\nPreferred Qualifications:\n1. Startup or entrepreneurial experience is highly valued.\n2. Deep understanding of AI and machine learning applications in biopharma and\nmaterials chemistry.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "AI部门负责人",
+   "text": "岗位职责：\n1、AI原创性算法开发：主导化学材料的原创性AI算法及行业大模型的开发，构筑具有差异化优势的技术壁垒。\n2、技术产品化与价值实现：将原创AI算法与实际业务场景深度融合，打造高效可扩展的AI产品，提升商业价值。\n3、团队领导能力：搭建并管理AI团队，覆盖数据科学、算法研发和工程开发。\n岗位要求：\n1、硕士及以上学位，专业涵盖计算机科学、数据科学、机器学习、计算化学等相关领域。\n2、8年以上AI研发与管理经验，曾主导开创性算法或大模型技术栈的成功落地。\n3、具备从0到1构建AI团队及推动技术产品化的实战履历，有知名企业高级技术管理岗位经验者优先。\n4、具备基于Transformer的生成式模型、基于图的深度学习模型或几何深度学习模型的研发经验。\n5、具备从数据预处理、模型训练到上线部署的全栈掌控能力。\n6、精通PyTorch、TensorFlow、JAX、Warp 等主流深度学习框架及大数据和分布式计算工具。\n7、精通C/C++、CUDA及Docker开发，深入理解机器学习工程化与MLOps实践，熟悉云计算平台与DevOps流程。\n加分项：\n1、深入了解生物学、化学、材料科学领域AI for Science应用中的开创性算法和几何模型，或在相关领域中使用的主要代码库中有贡献。\n2、在生物、化学或材料科学领域的研究、应用或合作经验丰富，能够准确理解并推动AI技术与科学领域的深度融合。\n3、曾获得顶级学术期刊或会议的认可，在AI for Science方向发表有影响力的论文或成果。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "高通量实验负责人",
+   "text": "岗位职责：\n1、制定实验室管理制度与标准操作流程(SOP)，提升实验室运营效率和合规性。\n2、监督设施、高通量设备和试剂的运行与维护，优化资源配置，确保高效运作。\n3、管理实验室团队，协调组内与跨部门的协作，解决实验推进中的问题。\n4、组织技术培训与安全教育，强化实验室人员的操作技能和安全意识。\n5、主导实验室新设施与设备的规划、引进与部署，满足高通量研发和测试需求。\n6、设计并执行自动化实验方案，优化化学合成、分析与纯化流程、安全管理与风险控制。\n7、构建全面的实验室安全管理体系，确保操作流程符合法律法规和行业标准。\n8、定期开展实验室安全检查，建立应急响应机制，提升团队应对突发事件的能力。\n岗位要求：\n1、生化环材及相关领域博士学位，或硕士学位且具备5年以上相关行业经验。\n2、对高通量实验和材料研发具有深刻理解，有机化学、药物化学背景优先。\n3、熟悉高通量实验室的自动化系统和操作平台(如Chemspeed、Syrris等)。\n4、具备独立开展多步合成和工艺优化的能力，精通LC-MS、HPLC、NMR等分析技术，能够评估化合物纯度及特性。\n5、掌握实验室信息管理系统(LIMS)和数字化工具的使用，具备数据分析与信息管理能力。\n6、具备优秀的实验室管理能力和跨部门沟通能力，能够独立领导团队并推动项目落地。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "政府及公共关系",
+   "text": "岗位职责：\n1、根据公司战略，制定并执行政府关系计划，拓展并维护各级政府部门的关系。\n2、跟踪行业相关政策法规，开展政策研究，为公司决策提供支持;推动公司与政府在项目合作中的深度对接与实施落地。\n3、管理并运维公司国内外社交媒体矩阵(如微信公众号、LinkedIn等)，策划内容并提升传播影响力。\n4、管理官网内容更新及品牌宣传物料(如品牌画册、公司宣传Deck等)输出，增强公司外部形象。\n5、建立政策与公关风险预警机制，预防潜在政策和监管风险。\n6、支持各部门处理与政府相关的应急事务，妥善解决突发事件。\n岗位要求：\n1、本科及以上学历，公共政策、政治学、国际关系或新闻相关专业优先。\n2、5年以上政府关系、公共事务或品牌宣传相关工作经验，有丰富的政府资源或大型企业相关岗位经验者优先。\n3、熟悉To B行业特点，具备服务高端客户或技术型企业的从业经历者优先。\n4、熟悉政府部门工作机制，具备独立拓展政企关系与处理复杂问题的能力。\n5、优秀的品牌管理能力，具备高质量内容策划与宣传执行能力。\n6、熟练使用PPT排版美化工具，熟悉PS、AI等设计软件者优先。\n7、具备中英双语流利沟通能力，能适应国际化工作环境。\n8、出色的跨文化沟通与人际交往能力，能与不同背景的人群高效协作。\n9、主动适应变化，具备团队合作精神和较强的资源整合能力。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "计算化学研究科学家",
+   "text": "岗位职责 :\n1、关于前沿化学，材料的计算流程开发。\n2、与云端和软件工程师合作，设计以化学和材料为核心的数据基础架构及流程。\n3、与公司内部商业及技术团队合作，确认并解决团队的未来计算需求。\n4、与合作企业、客户相配合，实现行业突破。\n岗位要求：\n1、拥有计算化学和材料的相关研究经验\n（如熟练使用PySCF，Orca等量子化学软件），完成并取得材料科学、化学、化学工程，物理或相关领域硕士以上学位。有工业背景经验者优先。\n2、对化学或材料科学有深刻的理解。有使用计算工作流（firework、aiida、automate等）催化研究经验者优先。\n3、具有出色的问题解决能力，能够独立对一个科学或者工业问题开展研究。\n4、精通Python、C++等编程语言，有较强的算法开发和编程实现能力。\n5、具备跨学科合作能力，擅长与不同技术背景的非专业人员沟通技术概念。可以与团队共同成长致力于通过技术解决当今科学发现的关键问题。\n加分项：\n1、具备构建深度学习研究管线的经验；主要集中于分子和材料设计的管线开发（比如GuacaMol、Open Catalyst Project）。\n2、有云端基础架构和开发经验（如Docker、Kubernetes、容器化等）。\n3、具有创业经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "机器学习研究科学家",
+   "text": "岗位职责：\n1、开发和应用前沿的深度学习模型，以推动化学和材料科学创新。\n2、设计、开发和维护以化学和材料数据为中心的机器学习 pipeline，包括数据收集、预处理、特征工程、模型训练和评估等环节。\n3、与云端和软件工程师密切合作，设计和实施以化学和材料为核心的数据基础架构与工作流程。\n4、与公司内部的商业和技术团队合作，理解业务需求，并将机器学习技术应用于解决实际问题，推动商业价值实现。\n5、紧跟机器学习领域的前沿进展，并将最新的研究成果应用于实际项目中，不断提升团队的技术水平。\n职位要求：\n1、拥有相关领域的硕士学位（化学、计算机科学、材料科学等），并具备深度学习相关经验。\n2、精通至少一种深度学习框架，例如 TensorFlow, PyTorch等，并具备丰富的模型开发经验。\n3、理解机器学习算法和理论，特别是深度学习领域，例如图神经网络 (GNNs), 循环神经网络 (RNNs), 卷积神经网络 (CNNs) 等。\n4、具有较强的编程能力，精通Python或C++，具备出色的算法开发和实现能力。\n5、对数据有较强敏感性，具备对数据进行清洗、预处理和特征工程的经验，并能从中提取有效信息。\n6、对AI for Science 充满兴趣和热情，并致力于用人工智能技术推动化学和材料科学的发展。\n加分项：\n1、了解化学和材料科学。有分子、蛋白质或材料相关的机器学习经验者优先。\n2、熟悉云计算平台 (例如 AWS, Azure, GCP) 和容器化技术 (例如 Docker, Kubernetes)。\n3、具备大型软件项目开发经验，熟悉版本控制系统 (例如 Git) 和代码测试流程。\n4、具有在初创公司内工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "技术产品经理",
+   "text": "岗位职责：\n1、主导产品路线图的开发和执行，使其与业务目标和技术可行性保持一致。\n2、开展市场调研，分析用户反馈，并紧跟行业趋势，发掘新的机会。\n3、定义产品成功指标，积极跟踪和分析性能数据及其影响，为未来产品迭代提供信息。\n4、有效地弥合技术团队和非技术相关者之间的背景差异，将复杂的概念转化为清晰可行的表述。与工程团队合作，将产品需求转化为技术要求和开发任务。\n5、确定功能的优先级并管理产品积压，确保资源的有效分配和及时交付。\n岗位要求：\n1、至少具备5-7年的产品管理经验，B2B技术领域工作经验者优先。\n2、有成功推动和管理复杂技术产品的成功经验。\n3、对材料/化学中使用的人工智能原理和机器学习算法有深刻理解。\n4、拥有高效的开发方式，产品开发迭代的热情。\n5、具备出色的沟通、人际交往和问题解决能力。\n加分项：\n1、对人工智能和机器学习在材料和化学领域的应用有深入了解。\n2、具有创业公司工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "业务拓展经理",
+   "text": "岗位职责：\n1、 制定和执行全面的业务发展战略，以支持公司的总体目标。\n2、识别、开发并管理化学材料、医药中间体、合成生物及相关行业的潜在客户和合作伙伴。\n3、 建立并巩固与潜在客户和合作伙伴关键决策者的牢固关系。\n4、管理谈判过程，确保签订的合同符合业务和财务目标。\n5、 持续监测行业趋势和竞争动态，积极发现新的业务机会和合作伙伴关系。\n岗位要求：\n1、5-10年以上业务拓展经验，优先考虑在化学材料、医药中间体、合成生物或人工智能、工业数字化相关领域的经验。\n2、成功发展、维护和管理战略合作伙伴关系的经验。\n3、深入了解B2B销售周期，能够处理复杂的销售流程。\n4、出色的沟通、人际交往和表达能力。\n5、能够建立信任和融洽的合作关系，自我驱动、结果导向，并具备强烈的职业道德。\n加分项：\n1、创业公司工作经验。\n2、对人工智能和机器学习在生物医药和材料化学领域的应用有深入理解。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251217085811/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20251217085811",
+   "last_seen": "20251217085811",
+   "n_captures": 1,
+   "title": "Government and Public Relations",
+   "text": "Responsibilities:\n1. Develop and execute government relations plans based on company strategy, expand and maintain relationships with government agencies at various levels.\n2. Track industry-related policies and regulations, conduct policy research to support company decision-making; facilitate deep integration and implementation of company-government project cooperation.\n3. Manage and maintain company's domestic and international social media matrix (WeChat Official Account, LinkedIn, etc.), plan content and enhance communication impact.\n4. Manage official website content updates and brand promotional materials (brand brochures, company presentation decks, etc.) to strengthen external company image.\n5. Establish policy and public relations risk early warning mechanisms to prevent potential policy and regulatory risks.\n6. Support various departments in handling government-related emergencies and appropriately resolve unexpected incidents.\nRequirements:\n1. Bachelor's degree or above, preferably in Public Policy, Political Science, International Relations, or Journalism.\n2. 5+ years of experience in government relations, public affairs, or brand communications; priority given to candidates with rich government resources or relevant positions in large enterprises.\n3. Familiarity with B2B industry characteristics; priority given to candidates with experience serving high-end clients or technology companies.\n4. Understanding of government department work mechanisms; ability to independently develop government-enterprise relations and handle complex issues.\n5. Excellent brand management skills with high-quality content planning and execution capabilities.\n6. Proficient in PPT layout and beautification tools; familiarity with design software like PS, AI preferred.\n7. Fluent in both Chinese and English communication, able to adapt to international work environment.\n8. Outstanding cross-cultural communication and interpersonal skills, ability to collaborate efficiently with people from diverse backgrounds.\n9. Proactive adaptation to change, strong team spirit and resource integration capabilities.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251217085811/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20251217085811",
+   "last_seen": "20251217085811",
+   "n_captures": 1,
+   "title": "Computational Chemistry Research Scientist",
+   "text": "Responsibilities:\n1. Develop computational workflows to support cutting-edge research in chemistry and materials science.\n2. Collaborate with cloud and software engineers to design robust data infrastructures\nand workflows tailored for chemistry and materials applications.\n3. Partner with internal business and technical teams to identify and address emerging\ncomputational needs.\n4. Work closely with enterprises and clients to drive industry breakthroughs.\nRequirements:\n1. Research experience in computational chemistry and materials (e.g., proficiency\nwith\nquantum chemistry software like PySCF, Orca). A Master’s degree or higher in\nmaterials\nscience, chemistry, chemical engineering, physics, or a related field is required.\nIndustry experience is a plus.\n2. Strong understanding of chemistry or materials science. Experience with\ncomputational\nworkflows (e.g., FireWorks, AiiDA, Atomate) for catalytic research is preferred.\n3. Excellent problem-solving skills, with the ability to independently research\nscientific or industrial problems.\n4. Proficiency in programming languages such as Python or C++, with strong algorithm\ndevelopment and implementation capabilities.\n5. Interdisciplinary collaboration skills, with the ability to effectively\ncommunicate\ntechnical concepts to non-specialists. A growth mindset and commitment to solving\ncritical scientific discovery challenges through technology.\nPreferred Qualifications:\n1. Experience building deep learning pipelines, particularly for molecular and\nmaterials\ndesign (e.g., GuacaMol, Open Catalyst Project).\n2. Hands-on experience with cloud infrastructure and development (e.g., Docker,\nKubernetes, containerization).\n3. Startup or entrepreneurial experience is a significant advantage.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251217085811/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20251217085811",
+   "last_seen": "20251217085811",
+   "n_captures": 1,
+   "title": "Machine Learning Research Scientist",
+   "text": "Responsibilities:\n1. Develop and apply cutting-edge deep learning models to drive innovation in\nchemistry\nand materials science.\n2. Design, develop, and maintain machine learning pipelines focused on chemical and\nmaterial data, including data collection, preprocessing, feature engineering, model\ntraining, and evaluation.\n3. Collaborate closely with cloud and software engineers to design and implement\ndata\ninfrastructure and workflows centered on chemistry and materials.\n4. Work with internal business and technical teams to understand business\nrequirements\nand apply machine learning technologies to solve real-world problems, driving\ncommercial\nvalue.\n5. Stay at the forefront of machine learning advancements, applying the latest\nresearch\noutcomes to projects and continuously improving team expertise.\nRequirements:\n1. Master’s degree or higher in a relevant field (e.g., Chemistry, Computer Science,\nMaterials Science) with experience in deep learning.\n2. Proficiency in at least one deep learning framework (e.g., TensorFlow, PyTorch)\nwith\nsubstantial experience in model development.\n3. Strong understanding of machine learning algorithms and theories, particularly in\ndeep learning areas such as Graph Neural Networks (GNNs), Recurrent Neural Networks\n(RNNs), and Convolutional Neural Networks (CNNs).\n4. Excellent programming skills in Python or C++, with strong algorithm development\nand\nimplementation capabilities.\n5. Strong sensitivity to data, with experience in data cleaning, preprocessing, and\nfeature engineering, as well as extracting valuable insights from data.\n6. Passion for AI for Science, with a commitment to advancing chemistry and\nmaterials\nscience through AI technologies.\nPreferred Qualifications:\n1. Familiarity with chemistry and materials science. Machine learning experience\nrelated\nto molecules, proteins, or materials is highly valued.\n2. Experience with cloud computing platforms (e.g., AWS, Azure, GCP) and\ncontainerization technologies (e.g., Docker, Kubernetes).\n3. Experience in developing large-scale software projects, with knowledge of version\ncontrol systems (e.g., Git) and code testing processes.\n4. Startup or entrepreneurial experience is a strong plus.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251217085811/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20251217085811",
+   "last_seen": "20251217085811",
+   "n_captures": 1,
+   "title": "Business Development Manager",
+   "text": "Responsibilities:\n1. Develop and implement comprehensive business development strategies to support\nthe\ncompany’s overarching goals.\n2. Identify, develop, and manage potential clients and partners in industries such\nas\nchemical materials, pharmaceutical intermediates, synthetic biology, and related\nfields.\n3. Build and strengthen relationships with key decision-makers at potential clients\nand\npartners.\n4. Oversee negotiation processes to ensure contracts align with business and\nfinancial\nobjectives.\n5. Continuously monitor industry trends and competitive dynamics, proactively\nidentifying new business opportunities and partnerships.\nRequirements:\n1. 5-10+ years of business development experience, with preference for candidates\nwith\nexpertise in chemical materials, pharmaceutical intermediates, synthetic biology,\nAI, or\nindustrial digitization.\n2. Proven experience in developing, maintaining, and managing strategic\npartnerships.\n3. In-depth understanding of B2B sales cycles and the ability to handle complex\nsales\nprocesses.\n4. Exceptional communication, interpersonal, and presentation skills.\n5. Self-motivated, results-oriented, and capable of building trust and rapport with\nstakeholders.\nPreferred Qualifications:\n1. Startup or entrepreneurial experience is highly valued.\n2. Deep understanding of AI and machine learning applications in biopharma and\nmaterials chemistry.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218060930/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260218060930",
+   "last_seen": "20260218060930",
+   "n_captures": 1,
+   "title": "政府及公共关系",
+   "text": "岗位职责：\n1、根据公司战略，制定并执行政府关系计划，拓展并维护各级政府部门的关系。\n2、跟踪行业相关政策法规，开展政策研究，为公司决策提供支持;推动公司与政府在项目合作中的深度对接与实施落地。\n3、管理并运维公司国内外社交媒体矩阵(如微信公众号、LinkedIn等)，策划内容并提升传播影响力。\n4、管理官网内容更新及品牌宣传物料(如品牌画册、公司宣传Deck等)输出，增强公司外部形象。\n5、建立政策与公关风险预警机制，预防潜在政策和监管风险。\n6、支持各部门处理与政府相关的应急事务，妥善解决突发事件。\n岗位要求：\n1、本科及以上学历，公共政策、政治学、国际关系或新闻相关专业优先。\n2、5年以上政府关系、公共事务或品牌宣传相关工作经验，有丰富的政府资源或大型企业相关岗位经验者优先。\n3、熟悉To B行业特点，具备服务高端客户或技术型企业的从业经历者优先。\n4、熟悉政府部门工作机制，具备独立拓展政企关系与处理复杂问题的能力。\n5、优秀的品牌管理能力，具备高质量内容策划与宣传执行能力。\n6、熟练使用PPT排版美化工具，熟悉PS、AI等设计软件者优先。\n7、具备中英双语流利沟通能力，能适应国际化工作环境。\n8、出色的跨文化沟通与人际交往能力，能与不同背景的人群高效协作。\n9、主动适应变化，具备团队合作精神和较强的资源整合能力。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218060930/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260218060930",
+   "last_seen": "20260218060930",
+   "n_captures": 1,
+   "title": "计算化学研究科学家",
+   "text": "岗位职责 :\n1、关于前沿化学，材料的计算流程开发。\n2、与云端和软件工程师合作，设计以化学和材料为核心的数据基础架构及流程。\n3、与公司内部商业及技术团队合作，确认并解决团队的未来计算需求。\n4、与合作企业、客户相配合，实现行业突破。\n岗位要求：\n1、拥有计算化学和材料的相关研究经验\n（如熟练使用PySCF，Orca等量子化学软件），完成并取得材料科学、化学、化学工程，物理或相关领域硕士以上学位。有工业背景经验者优先。\n2、对化学或材料科学有深刻的理解。有使用计算工作流（firework、aiida、automate等）催化研究经验者优先。\n3、具有出色的问题解决能力，能够独立对一个科学或者工业问题开展研究。\n4、精通Python、C++等编程语言，有较强的算法开发和编程实现能力。\n5、具备跨学科合作能力，擅长与不同技术背景的非专业人员沟通技术概念。可以与团队共同成长致力于通过技术解决当今科学发现的关键问题。\n加分项：\n1、具备构建深度学习研究管线的经验；主要集中于分子和材料设计的管线开发（比如GuacaMol、Open\nCatalyst Project）。\n2、有云端基础架构和开发经验（如Docker、Kubernetes、容器化等）。\n3、具有创业经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218060930/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260218060930",
+   "last_seen": "20260218060930",
+   "n_captures": 1,
+   "title": "机器学习研究科学家",
+   "text": "岗位职责：\n1、开发和应用前沿的深度学习模型，以推动化学和材料科学创新。\n2、设计、开发和维护以化学和材料数据为中心的机器学习\npipeline，包括数据收集、预处理、特征工程、模型训练和评估等环节。\n3、与云端和软件工程师密切合作，设计和实施以化学和材料为核心的数据基础架构与工作流程。\n4、与公司内部的商业和技术团队合作，理解业务需求，并将机器学习技术应用于解决实际问题，推动商业价值实现。\n5、紧跟机器学习领域的前沿进展，并将最新的研究成果应用于实际项目中，不断提升团队的技术水平。\n职位要求：\n1、拥有相关领域的硕士学位（化学、计算机科学、材料科学等），并具备深度学习相关经验。\n2、精通至少一种深度学习框架，例如 TensorFlow,\nPyTorch等，并具备丰富的模型开发经验。\n3、理解机器学习算法和理论，特别是深度学习领域，例如图神经网络\n(GNNs), 循环神经网络 (RNNs), 卷积神经网络 (CNNs) 等。\n4、具有较强的编程能力，精通Python或C++，具备出色的算法开发和实现能力。\n5、对数据有较强敏感性，具备对数据进行清洗、预处理和特征工程的经验，并能从中提取有效信息。\n6、对AI for Science\n充满兴趣和热情，并致力于用人工智能技术推动化学和材料科学的发展。\n加分项：\n1、了解化学和材料科学。有分子、蛋白质或材料相关的机器学习经验者优先。\n2、熟悉云计算平台 (例如 AWS, Azure, GCP) 和容器化技术\n(例如 Docker, Kubernetes)。\n3、具备大型软件项目开发经验，熟悉版本控制系统 (例如 Git)\n和代码测试流程。\n4、具有在初创公司内工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218060930/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260218060930",
+   "last_seen": "20260218060930",
+   "n_captures": 1,
+   "title": "业务拓展经理",
+   "text": "岗位职责：\n1、 制定和执行全面的业务发展战略，以支持公司的总体目标。\n2、识别、开发并管理化学材料、医药中间体、合成生物及相关行业的潜在客户和合作伙伴。\n3、 建立并巩固与潜在客户和合作伙伴关键决策者的牢固关系。\n4、管理谈判过程，确保签订的合同符合业务和财务目标。\n5、\n持续监测行业趋势和竞争动态，积极发现新的业务机会和合作伙伴关系。\n岗位要求：\n1、5-10年以上业务拓展经验，优先考虑在化学材料、医药中间体、合成生物或人工智能、工业数字化相关领域的经验。\n2、成功发展、维护和管理战略合作伙伴关系的经验。\n3、深入了解B2B销售周期，能够处理复杂的销售流程。\n4、出色的沟通、人际交往和表达能力。\n5、能够建立信任和融洽的合作关系，自我驱动、结果导向，并具备强烈的职业道德。\n加分项：\n1、创业公司工作经验。\n2、对人工智能和机器学习在生物医药和材料化学领域的应用有深入理解。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218064659/http://www.deepprinciple.com/join.html",
+   "url": "http://www.deepprinciple.com/join.html",
+   "first_seen": "20260218064659",
+   "last_seen": "20260218064659",
+   "n_captures": 1,
+   "title": "Government and Public Relations",
+   "text": "Responsibilities:\n1. Develop and execute government relations plans based on company strategy, expand and maintain relationships with government agencies at various levels.\n2. Track industry-related policies and regulations, conduct policy research to support company decision-making; facilitate deep integration and implementation of company-government project cooperation.\n3. Manage and maintain company's domestic and international social media matrix (WeChat Official Account, LinkedIn, etc.), plan content and enhance communication impact.\n4. Manage official website content updates and brand promotional materials (brand brochures, company presentation decks, etc.) to strengthen external company image.\n5. Establish policy and public relations risk early warning mechanisms to prevent potential policy and regulatory risks.\n6. Support various departments in handling government-related emergencies and appropriately resolve unexpected incidents.\nRequirements:\n1. Bachelor's degree or above, preferably in Public Policy, Political Science, International Relations, or Journalism.\n2. 5+ years of experience in government relations, public affairs, or brand communications; priority given to candidates with rich government resources or relevant positions in large enterprises.\n3. Familiarity with B2B industry characteristics; priority given to candidates with experience serving high-end clients or technology companies.\n4. Understanding of government department work mechanisms; ability to independently develop government-enterprise relations and handle complex issues.\n5. Excellent brand management skills with high-quality content planning and execution capabilities.\n6. Proficient in PPT layout and beautification tools; familiarity with design software like PS, AI preferred.\n7. Fluent in both Chinese and English communication, able to adapt to international work environment.\n8. Outstanding cross-cultural communication and interpersonal skills, ability to collaborate efficiently with people from diverse backgrounds.\n9. Proactive adaptation to change, strong team spirit and resource integration capabilities.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218064659/http://www.deepprinciple.com/join.html",
+   "url": "http://www.deepprinciple.com/join.html",
+   "first_seen": "20260218064659",
+   "last_seen": "20260218064659",
+   "n_captures": 1,
+   "title": "Computational Chemistry Research Scientist",
+   "text": "Responsibilities:\n1. Develop computational workflows to support cutting-edge research in chemistry and materials science.\n2. Collaborate with cloud and software engineers to design robust data infrastructures\nand workflows tailored for chemistry and materials applications.\n3. Partner with internal business and technical teams to identify and address emerging\ncomputational needs.\n4. Work closely with enterprises and clients to drive industry breakthroughs.\nRequirements:\n1. Research experience in computational chemistry and materials (e.g., proficiency\nwith\nquantum chemistry software like PySCF, Orca). A Master’s degree or higher in\nmaterials\nscience, chemistry, chemical engineering, physics, or a related field is required.\nIndustry experience is a plus.\n2. Strong understanding of chemistry or materials science. Experience with\ncomputational\nworkflows (e.g., FireWorks, AiiDA, Atomate) for catalytic research is preferred.\n3. Excellent problem-solving skills, with the ability to independently research\nscientific or industrial problems.\n4. Proficiency in programming languages such as Python or C++, with strong algorithm\ndevelopment and implementation capabilities.\n5. Interdisciplinary collaboration skills, with the ability to effectively\ncommunicate\ntechnical concepts to non-specialists. A growth mindset and commitment to solving\ncritical scientific discovery challenges through technology.\nPreferred Qualifications:\n1. Experience building deep learning pipelines, particularly for molecular and\nmaterials\ndesign (e.g., GuacaMol, Open Catalyst Project).\n2. Hands-on experience with cloud infrastructure and development (e.g., Docker,\nKubernetes, containerization).\n3. Startup or entrepreneurial experience is a significant advantage.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218064659/http://www.deepprinciple.com/join.html",
+   "url": "http://www.deepprinciple.com/join.html",
+   "first_seen": "20260218064659",
+   "last_seen": "20260218064659",
+   "n_captures": 1,
+   "title": "Machine Learning Research Scientist",
+   "text": "Responsibilities:\n1. Develop and apply cutting-edge deep learning models to drive innovation in\nchemistry\nand materials science.\n2. Design, develop, and maintain machine learning pipelines focused on chemical and\nmaterial data, including data collection, preprocessing, feature engineering, model\ntraining, and evaluation.\n3. Collaborate closely with cloud and software engineers to design and implement\ndata\ninfrastructure and workflows centered on chemistry and materials.\n4. Work with internal business and technical teams to understand business\nrequirements\nand apply machine learning technologies to solve real-world problems, driving\ncommercial\nvalue.\n5. Stay at the forefront of machine learning advancements, applying the latest\nresearch\noutcomes to projects and continuously improving team expertise.\nRequirements:\n1. Master’s degree or higher in a relevant field (e.g., Chemistry, Computer Science,\nMaterials Science) with experience in deep learning.\n2. Proficiency in at least one deep learning framework (e.g., TensorFlow, PyTorch)\nwith\nsubstantial experience in model development.\n3. Strong understanding of machine learning algorithms and theories, particularly in\ndeep learning areas such as Graph Neural Networks (GNNs), Recurrent Neural Networks\n(RNNs), and Convolutional Neural Networks (CNNs).\n4. Excellent programming skills in Python or C++, with strong algorithm development\nand\nimplementation capabilities.\n5. Strong sensitivity to data, with experience in data cleaning, preprocessing, and\nfeature engineering, as well as extracting valuable insights from data.\n6. Passion for AI for Science, with a commitment to advancing chemistry and\nmaterials\nscience through AI technologies.\nPreferred Qualifications:\n1. Familiarity with chemistry and materials science. Machine learning experience\nrelated\nto molecules, proteins, or materials is highly valued.\n2. Experience with cloud computing platforms (e.g., AWS, Azure, GCP) and\ncontainerization technologies (e.g., Docker, Kubernetes).\n3. Experience in developing large-scale software projects, with knowledge of version\ncontrol systems (e.g., Git) and code testing processes.\n4. Startup or entrepreneurial experience is a strong plus.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218064659/http://www.deepprinciple.com/join.html",
+   "url": "http://www.deepprinciple.com/join.html",
+   "first_seen": "20260218064659",
+   "last_seen": "20260218064659",
+   "n_captures": 1,
+   "title": "Business Development Manager",
+   "text": "Responsibilities:\n1. Develop and implement comprehensive business development strategies to support\nthe\ncompany’s overarching goals.\n2. Identify, develop, and manage potential clients and partners in industries such\nas\nchemical materials, pharmaceutical intermediates, synthetic biology, and related\nfields.\n3. Build and strengthen relationships with key decision-makers at potential clients\nand\npartners.\n4. Oversee negotiation processes to ensure contracts align with business and\nfinancial\nobjectives.\n5. Continuously monitor industry trends and competitive dynamics, proactively\nidentifying new business opportunities and partnerships.\nRequirements:\n1. 5-10+ years of business development experience, with preference for candidates\nwith\nexpertise in chemical materials, pharmaceutical intermediates, synthetic biology,\nAI, or\nindustrial digitization.\n2. Proven experience in developing, maintaining, and managing strategic\npartnerships.\n3. In-depth understanding of B2B sales cycles and the ability to handle complex\nsales\nprocesses.\n4. Exceptional communication, interpersonal, and presentation skills.\n5. Self-motivated, results-oriented, and capable of building trust and rapport with\nstakeholders.\nPreferred Qualifications:\n1. Startup or entrepreneurial experience is highly valued.\n2. Deep understanding of AI and machine learning applications in biopharma and\nmaterials chemistry.",
+   "lang": "en"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260411021424/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260411021424",
+   "last_seen": "20260411021424",
+   "n_captures": 1,
+   "title": "政府及公共关系",
+   "text": "岗位职责：\n1、根据公司战略，制定并执行政府关系计划，拓展并维护各级政府部门的关系。\n2、跟踪行业相关政策法规，开展政策研究，为公司决策提供支持;推动公司与政府在项目合作中的深度对接与实施落地。\n3、管理并运维公司国内外社交媒体矩阵(如微信公众号、LinkedIn等)，策划内容并提升传播影响力。\n4、管理官网内容更新及品牌宣传物料(如品牌画册、公司宣传Deck等)输出，增强公司外部形象。\n5、建立政策与公关风险预警机制，预防潜在政策和监管风险。\n6、支持各部门处理与政府相关的应急事务，妥善解决突发事件。\n岗位要求：\n1、本科及以上学历，公共政策、政治学、国际关系或新闻相关专业优先。\n2、5年以上政府关系、公共事务或品牌宣传相关工作经验，有丰富的政府资源或大型企业相关岗位经验者优先。\n3、熟悉To B行业特点，具备服务高端客户或技术型企业的从业经历者优先。\n4、熟悉政府部门工作机制，具备独立拓展政企关系与处理复杂问题的能力。\n5、优秀的品牌管理能力，具备高质量内容策划与宣传执行能力。\n6、熟练使用PPT排版美化工具，熟悉PS、AI等设计软件者优先。\n7、具备中英双语流利沟通能力，能适应国际化工作环境。\n8、出色的跨文化沟通与人际交往能力，能与不同背景的人群高效协作。\n9、主动适应变化，具备团队合作精神和较强的资源整合能力。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260411021424/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260411021424",
+   "last_seen": "20260411021424",
+   "n_captures": 1,
+   "title": "计算化学研究科学家",
+   "text": "岗位职责 :\n1、关于前沿化学，材料的计算流程开发。\n2、与云端和软件工程师合作，设计以化学和材料为核心的数据基础架构及流程。\n3、与公司内部商业及技术团队合作，确认并解决团队的未来计算需求。\n4、与合作企业、客户相配合，实现行业突破。\n岗位要求：\n1、拥有计算化学和材料的相关研究经验\n（如熟练使用PySCF，Orca等量子化学软件），完成并取得材料科学、化学、化学工程，物理或相关领域硕士以上学位。有工业背景经验者优先。\n2、对化学或材料科学有深刻的理解。有使用计算工作流（firework、aiida、automate等）催化研究经验者优先。\n3、具有出色的问题解决能力，能够独立对一个科学或者工业问题开展研究。\n4、精通Python、C++等编程语言，有较强的算法开发和编程实现能力。\n5、具备跨学科合作能力，擅长与不同技术背景的非专业人员沟通技术概念。可以与团队共同成长致力于通过技术解决当今科学发现的关键问题。\n加分项：\n1、具备构建深度学习研究管线的经验；主要集中于分子和材料设计的管线开发（比如GuacaMol、Open\nCatalyst Project）。\n2、有云端基础架构和开发经验（如Docker、Kubernetes、容器化等）。\n3、具有创业经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260411021424/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260411021424",
+   "last_seen": "20260411021424",
+   "n_captures": 1,
+   "title": "机器学习研究科学家",
+   "text": "岗位职责：\n1、开发和应用前沿的深度学习模型，以推动化学和材料科学创新。\n2、设计、开发和维护以化学和材料数据为中心的机器学习\npipeline，包括数据收集、预处理、特征工程、模型训练和评估等环节。\n3、与云端和软件工程师密切合作，设计和实施以化学和材料为核心的数据基础架构与工作流程。\n4、与公司内部的商业和技术团队合作，理解业务需求，并将机器学习技术应用于解决实际问题，推动商业价值实现。\n5、紧跟机器学习领域的前沿进展，并将最新的研究成果应用于实际项目中，不断提升团队的技术水平。\n职位要求：\n1、拥有相关领域的硕士学位（化学、计算机科学、材料科学等），并具备深度学习相关经验。\n2、精通至少一种深度学习框架，例如 TensorFlow,\nPyTorch等，并具备丰富的模型开发经验。\n3、理解机器学习算法和理论，特别是深度学习领域，例如图神经网络\n(GNNs), 循环神经网络 (RNNs), 卷积神经网络 (CNNs) 等。\n4、具有较强的编程能力，精通Python或C++，具备出色的算法开发和实现能力。\n5、对数据有较强敏感性，具备对数据进行清洗、预处理和特征工程的经验，并能从中提取有效信息。\n6、对AI for Science\n充满兴趣和热情，并致力于用人工智能技术推动化学和材料科学的发展。\n加分项：\n1、了解化学和材料科学。有分子、蛋白质或材料相关的机器学习经验者优先。\n2、熟悉云计算平台 (例如 AWS, Azure, GCP) 和容器化技术\n(例如 Docker, Kubernetes)。\n3、具备大型软件项目开发经验，熟悉版本控制系统 (例如 Git)\n和代码测试流程。\n4、具有在初创公司内工作经验者优先。",
+   "lang": "zh"
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260411021424/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260411021424",
+   "last_seen": "20260411021424",
+   "n_captures": 1,
+   "title": "业务拓展经理",
+   "text": "岗位职责：\n1、 制定和执行全面的业务发展战略，以支持公司的总体目标。\n2、识别、开发并管理化学材料、医药中间体、合成生物及相关行业的潜在客户和合作伙伴。\n3、 建立并巩固与潜在客户和合作伙伴关键决策者的牢固关系。\n4、管理谈判过程，确保签订的合同符合业务和财务目标。\n5、\n持续监测行业趋势和竞争动态，积极发现新的业务机会和合作伙伴关系。\n岗位要求：\n1、5-10年以上业务拓展经验，优先考虑在化学材料、医药中间体、合成生物或人工智能、工业数字化相关领域的经验。\n2、成功发展、维护和管理战略合作伙伴关系的经验。\n3、深入了解B2B销售周期，能够处理复杂的销售流程。\n4、出色的沟通、人际交往和表达能力。\n5、能够建立信任和融洽的合作关系，自我驱动、结果导向，并具备强烈的职业道德。\n加分项：\n1、创业公司工作经验。\n2、对人工智能和机器学习在生物医药和材料化学领域的应用有深入理解。",
+   "lang": "zh"
+  }
+ ]
+}

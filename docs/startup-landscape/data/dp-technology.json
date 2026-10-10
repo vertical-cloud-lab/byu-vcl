@@ -1,0 +1,187 @@
+{
+  "company": "DP Technology (深势科技, Beijing DP Technology Co., Ltd.)",
+  "slug": "dp-technology",
+  "hq": "Beijing, China",
+  "country": "CN",
+  "founded": "2018",
+  "category": "AI-for-materials (computational)",
+  "focus": "AI for Science platforms: Deep Potential / Uni-Mol models, Bohrium research cloud, Hermite drug design, Piloteye battery design, Uni-Lab lab OS",
+  "status": "active",
+  "website": "https://www.dp.tech/en",
+  "funding": [
+    {
+      "date": "2020-08-10",
+      "round": "Angel",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "Baidu Ventures"
+      ],
+      "source": "https://www.qbitai.com/2021/08/27213.html"
+    },
+    {
+      "date": "2021-03-05",
+      "round": "Pre-A",
+      "amount_usd_m": null,
+      "original_amount": "undisclosed",
+      "type": "equity",
+      "lead_investors": [
+        "Yuanjing Capital (元璟资本)"
+      ],
+      "source": "https://www.qbitai.com/2021/08/27213.html"
+    },
+    {
+      "date": "2021-08-05",
+      "round": "Series A",
+      "amount_usd_m": null,
+      "original_amount": "USD tens of millions (数千万美元)",
+      "type": "equity",
+      "lead_investors": [
+        "Hillhouse Ventures (高瓴创投)"
+      ],
+      "source": "https://www.qbitai.com/2021/08/27213.html"
+    },
+    {
+      "date": "2022-01-17",
+      "round": "Series B",
+      "amount_usd_m": null,
+      "original_amount": "USD tens of millions (数千万美元)",
+      "type": "equity",
+      "lead_investors": [
+        "Source Code Capital (源码资本)",
+        "Qiming Venture Partners (启明创投)"
+      ],
+      "source": "https://news.pedaily.cn/202201/485270.shtml"
+    },
+    {
+      "date": "2023-08-22",
+      "round": "Series B+ (new round)",
+      "amount_usd_m": 97,
+      "original_amount": "CNY >700M",
+      "type": "equity",
+      "lead_investors": [],
+      "source": "https://equalocean.com/news/2023082220088-ai-pharmaceutical-r-d-company-dp-technology-raises-new-round-over-cny-700-mn"
+    },
+    {
+      "date": "2024-10",
+      "round": "Series B++",
+      "amount_usd_m": null,
+      "original_amount": "CNY several hundred million (数亿元)",
+      "type": "equity",
+      "lead_investors": [
+        "Beijing AI Industry Investment Fund",
+        "Zhongguancun Science City"
+      ],
+      "source": "https://www.jiemian.com/article/11830121.html"
+    },
+    {
+      "date": "2025-12-24",
+      "round": "Series C",
+      "amount_usd_m": 114,
+      "original_amount": "CNY >800M",
+      "type": "equity",
+      "lead_investors": [
+        "Fortune Venture Capital (达晨财智)",
+        "Beijing Jingguorui Equity Investment Fund (京国瑞)"
+      ],
+      "source": "https://siliconangle.com/2025/12/24/dp-technology-raises-114m-accelerate-chinas-ai-science-industry/"
+    }
+  ],
+  "headcount": [
+    {
+      "date": "2022-05-26",
+      "value": null,
+      "low": 20,
+      "high": 99,
+      "method": "team-page",
+      "note": "About page: R&D team of 'several dozen' (数十名) young scientists and engineers; R&D only, band is an interpretation of 数十",
+      "source": "https://web.archive.org/web/20220526110108/https://dp.tech/about.html",
+      "partial": true
+    },
+    {
+      "date": "2023-08-22",
+      "value": null,
+      "low": 100,
+      "high": null,
+      "method": "press",
+      "note": "R&D team of 'over a hundred' scientists and engineers, per JiWei round coverage (page returned 502 when re-checked; text seen via search index)",
+      "source": "https://jw.ijiwei.com/n/873746",
+      "partial": true
+    },
+    {
+      "date": "2025-03-11",
+      "value": null,
+      "low": 201,
+      "high": 500,
+      "method": "linkedin-band",
+      "note": "LinkedIn company size 201-500; only 74 members linked their profiles (Chinese staff under-represented on LinkedIn). Same band in 2025-02-15 capture",
+      "source": "https://web.archive.org/web/20250311231859/https://www.linkedin.com/company/dptechnology/"
+    }
+  ],
+  "postings": [],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": null,
+    "by_function": {},
+    "titles": [],
+    "source": "https://dptechnology.jobs.feishu.cn/index"
+  },
+  "people": [
+    {
+      "name": "Sun Weijie (孙伟杰)",
+      "title": "Co-founder and CEO; legal representative",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2018-11",
+      "start_basis": "company registered 2018-11-29 (36Kr PitchHub registry data); CEO in all coverage since 2021",
+      "end": null,
+      "background": "Peking University Yuanpei College (PPE), PKU master's in education economics and management; former venture-capital investor",
+      "source": "https://news.pedaily.cn/202512/559044.shtml"
+    },
+    {
+      "name": "Zhang Linfeng (张林峰)",
+      "title": "Co-founder and Chief Scientist (CSO)",
+      "function": "leadership",
+      "seniority": "founder",
+      "start": "2018-11",
+      "start_basis": "founder; titled founder and chief scientist in 2021 Series A coverage",
+      "end": null,
+      "background": "PKU Yuanpei College (physics, mathematics, CS); PhD Princeton under Weinan E and Roberto Car; 2020 ACM Gordon Bell Prize team (Deep Potential); dean of the AI for Science Institute, Beijing",
+      "source": "https://news.pedaily.cn/202512/559044.shtml"
+    },
+    {
+      "name": "Weinan E (鄂维南)",
+      "title": "Chief Scientific Adviser",
+      "function": "leadership",
+      "seniority": "advisor",
+      "start": "2022-05",
+      "start_basis": "about page 2022-05 says core team is 'led by a CAS academician'; named as chief scientific adviser on 2023-03 capture",
+      "end": null,
+      "background": "Chinese Academy of Sciences academician; applied mathematician (Princeton, Peking University); Zhang Linfeng's doctoral adviser",
+      "source": "https://web.archive.org/web/20231206065907/https://dp.tech/about"
+    },
+    {
+      "name": "Wang Xiaoxu",
+      "title": "Vice President, intelligent R&D",
+      "function": "materials-science",
+      "seniority": "exec",
+      "start": "2024-07",
+      "start_basis": "named as VP in a 2024-07-05 news item on the company about page (first-seen, not hire date)",
+      "end": null,
+      "background": "PhD (titled Dr.); presented on battery R&D at a lithium-industry summit",
+      "source": "https://www.dp.tech/en/about"
+    }
+  ],
+  "staff_roles": [],
+  "departures": [],
+  "notes": [
+    "No Hong Kong or mainland IPO filing found (searched English and Chinese press, Oct 2026); a third-party database snippet mentions a possible HK IPO but nothing primary, so no prospectus headcount by function is available.",
+    "Disclosed funding ~USD 211M (2023 and 2025 rounds only); Pedaily (2025-12) says cumulative funding is 'several billion RMB' (数十亿元). Angel, Pre-A, A, B and B++ amounts undisclosed. 36Kr Japan put the Series C valuation at ~JPY 130bn (~USD 0.86bn).",
+    "OpenAlex has no institution record for DP Technology, so the publication-based headcount proxy was skipped despite a large publication record.",
+    "Careers run on a Feishu (Lark) board that renders client-side; openings could not be counted, and a Wayback CDX query of the board timed out. No posting history.",
+    "LinkedIn slug 'dp-technology' belongs to an unrelated US CAM-software firm (ESPRIT); the Beijing company is 'dptechnology'.",
+    "A 2026-cohort campus-recruitment ad (campus.niuqizp.com, 403 on fetch) reportedly states 'over a hundred' scientists and engineers with PhDs/postdocs >35% of staff; not independently verified, so not tabulated.",
+    "Offices: Beijing, Shanghai, Shenzhen, Yibin (Sichuan new-energy materials centre with 30+ technical staff per Sichuan press), plus US entity Atombeat Inc. (Jersey City, NJ)."
+  ]
+}

@@ -1,0 +1,44 @@
+[
+ {
+  "company": "tetsuwan-scientific",
+  "vendor": "ashby",
+  "basis": "live",
+  "seen": "2026-10-10",
+  "posting_id": "ad583fec-dc0a-4b6c-8171-416403a0e7ed",
+  "title": "Software Engineer",
+  "team": "Engineering",
+  "location": "San Francisco, CA",
+  "employment_type": "FullTime",
+  "published": "2026-06-03T22:51:36.066+00:00",
+  "salary": {
+   "currency": "USD",
+   "min": 140000,
+   "max": 180000,
+   "interval": "1 YEAR"
+  },
+  "pay_text": "$140K - $180K",
+  "url": "https://jobs.ashbyhq.com/tetsuwan/ad583fec-dc0a-4b6c-8171-416403a0e7ed",
+  "text": "About Tetsuwan Scientific\nFew fields touch human life as directly as biology does. But the pace of biological research is limited by how slowly and inconsistently experiments can be run by hand. We're building the infrastructure to make experimentation faster, more reproducible, and available to any scientist with questions worth asking.\nFor decades we've had incredible robotic tools capable of executing experiments without countless tiring hours of pipetting by hand and these instruments are more precise and accurate than manual methods. But the engineering and validation time required to automate them means they're rarely used outside of the most repetitive, high-throughput research tasks.\nOur team has built a user-friendly editor and compiler that ingests a scientist's protocol description, converts it into a structured high-level format, and then automatically compiles it into executable code for these robots. See a demo here: https://tinyurl.com/mrx63phb\nWe're a small, quickly growing team based in San Francisco. Joining now means shaping the product, the team, and the company at a stage where your decisions matter.\nThe role\nYou'll be joining a team of three software engineers, an automation engineer, and working directly with the founders and our designer. The monorepo codebase spans a compiler (OCaml), backend services (Python), and a protocol editor (TypeScript/React) and we expect you to grow into working across the full stack.\nOur engineering challenges go well beyond a typical web app or agent system, involving compiler design and the messy quirks of physical lab hardware. Turning a freeform scientific protocol into reliable robot instructions is a complex interdisciplinary problem with a mixture of context sensitive language problems, tacit knowledge embedded in domain experts, and hard optimization problems with fault intolerant and right-the-first time constraints that necessitate deterministic correctness.\nYou will be tackling problems with few points of comparisons, deciding how to model them, shipping it, and watching real scientists use what you make.\nQualifications\n- 3+ years building software professionally\n- You have demonstrated experience taking fuzzy ambiguous problems and turning them into working shipped features independently\n- Comfortable jumping between languages and parts of the stack. We don't expect you to know OCaml on day one, but we do expect you to be the kind of person who'd be excited to pick it up\n- You have strong opinions about code, held loosely. You should want to leave the codebase better than you found it while balancing engineering momentum\n- You like working in-person with a small team where the line between product and engineering is blurry\nNice to have\n- Experience or interest in domain specific languages, language design, and projectional editors\n- Background in the life sciences, lab automation, or software work in any domain where the user is an expert in something you're not.\n- Experience with OCaml, or with other ML-family languages (Haskell, F#, Rust's type system, etc.)\n- Experience with Next.js, Tailwind, FastAPI, NeonDB, & Zustand\n- Experience or interest in compilers, interpreters, heuristic algorithms and optimizing systems, especially unconventional and domain specific tools\n- Familiarity with LLM-in-the-loop systems: parsing, structured extraction, evals\n- Startup or small-team experience, especially earlier stage.\nLogistics\n- Location: San Francisco, in-person at our office in SoMa.\n- Compensation: $140K – $180K · Offers Equity\n- Process: intro call → take-home project → follow up technical conversation → onsite technical interview → offer."
+ },
+ {
+  "company": "tetsuwan-scientific",
+  "vendor": "ashby",
+  "basis": "live",
+  "seen": "2026-10-10",
+  "posting_id": "e0ac09e0-9635-4465-9d7d-a773da015154",
+  "title": "Product Designer",
+  "team": "Engineering",
+  "location": "San Francisco, CA",
+  "employment_type": "FullTime",
+  "published": "2026-06-03T22:58:32.975+00:00",
+  "salary": {
+   "currency": "USD",
+   "min": 120000,
+   "max": 160000,
+   "interval": "1 YEAR"
+  },
+  "pay_text": "$120K - $160K",
+  "url": "https://jobs.ashbyhq.com/tetsuwan/e0ac09e0-9635-4465-9d7d-a773da015154",
+  "text": "About Tetsuwan Scientific\nFew fields touch human life as directly as biology does. But the pace of biological research is limited by how slowly and inconsistently experiments can be run by hand. We're building the infrastructure to make experimentation faster, more reproducible, and available to any scientist with questions worth asking.\nFor decades we've had incredible robotic tools capable of executing experiments without countless tiring hours of pipetting by hand and these instruments are more precise and accurate than manual methods. However, the engineering and validation time required for automating these machines means they are rarely used with the exception of the most repetitive, high throughput research tasks.\nOur team has built a user-friendly editor and compiler that ingests a scientist's protocol description, converts it into a structured high-level format, and then automatically compiles it into executable code for these robots. See a demo here: https://tinyurl.com/mrx63phb\nWe're a small team in San Francisco, currently raising our seed round and growing quickly. Joining now means shaping the product, the team, and the company at a stage where your decisions matter.\nThe Role\nYou'll be the first dedicated product designer on the team, working alongside our current designer (who has been splitting design work with engineering), software engineers, automation engineers, and the founders. The right person will grow into owning design end-to-end.\nPart of our philosophy is to surface every editable detail to the scientist, so they retain full control over how decisions are made from pdf protocol to code. This poses a major design challenge. Surfacing this level of control to the users while making the UI a pleasant experience means we need to design novel interfaces to communicate lab automation to scientists.\nYou will be tackling problems with few points of comparison, doing user research, shaping the information architecture, designing the interface, and watching real scientists use what you make.\nQualifications\n- You have 3+ years professional experience designing software products\n- You can run a project end-to-end: research, sketches, prototypes, polished UI, and a clean handoff to engineers\n- Fluency in Figma and adjacent tools\n- You're comfortable with multi-discipline technical complexity. You should want to talk to our engineers and learn from our scientists\nNice to Have\n- Experience designing for the life sciences, lab workflows, or any technical domain where the user is an expert in something you're not.\n- Familiarity with dev-tool or visual programming tools: projectional editors, node graph tools, program state visualization, errors and diagnostics.\n- Startup or small-team experience, especially earlier stage.\n- Familiarity with frontend work and the interplay between design and technical trade-offs\n- A side practice — illustration, motion, printmaking, ceramics, anything that means you make things for the love of it.\nLogistics\n- Location: San Francisco, in-person at our office in SoMa.\n- Compensation: $120K – $160K · Offers Equity\n- Process: intro call → portfolio review and design conversation → onsite with the team including a paid design exercise → references → offer."
+ }
+]

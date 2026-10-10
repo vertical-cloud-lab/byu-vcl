@@ -1,0 +1,74 @@
+{
+  "company": "Materials Nexus (MatNex)",
+  "slug": "materials-nexus",
+  "hq": "London, UK",
+  "country": "UK",
+  "founded": "2020",
+  "category": "AI-for-materials (computational)",
+  "focus": "AI plus first-principles design of critical materials, starting with rare-earth-free permanent magnets; licenses material IP to manufacturing partners",
+  "status": "active",
+  "website": "https://www.materialsnexus.com",
+  "funding": [
+    {"date": "2022-04-15", "round": "Pre-seed (accelerator / angel allotments)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "equity", "lead_investors": ["Carbon13", "G-force", "Katapult", "ET Capital"], "source": "https://www.htgf.de/en/htgf-seed-materials-nexus/"},
+    {"date": "2023-07-26", "round": "Seed", "amount_usd_m": 2.6, "original_amount": "GBP 2M", "type": "equity", "lead_investors": ["Ada Ventures"], "source": "https://www.uktech.news/ai/materials-nexus-2m-funding-20230726"},
+    {"date": "2023-09-11", "round": "Innovate UK CLIMATES / Critical Materials for Magnets (with Less Common Metals)", "amount_usd_m": null, "original_amount": "undisclosed share of a GBP 6.6M, 16-project competition", "type": "grant", "lead_investors": ["Innovate UK"], "source": "https://lesscommonmetals.com/lcm-and-materials-nexus-awarded-funding-for-research-project-to-reduce-hre-in-high-performance-permanent-magnets/"},
+    {"date": "2025-01-17", "round": "Unannounced round (SH01 allotments 17 and 20 Jan 2025; Caplight lists a Series A on 21 Feb 2025)", "amount_usd_m": null, "original_amount": "undisclosed; issued share capital rose ~39% (GBP 19.70 to 27.29 nominal)", "type": "equity", "lead_investors": [], "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history"},
+    {"date": "2025-05", "round": "Innovate UK grant: Project DREAM (with Royce Institute, University of Sheffield)", "amount_usd_m": null, "original_amount": "undisclosed", "type": "grant", "lead_investors": ["Innovate UK"], "source": "https://iuk-business-connect.org.uk/wp-content/uploads/2025/05/Innovate-UK-Project-Dream-Materials-Nexus.pdf"},
+    {"date": "2026-02-02", "round": "UKAEA contract: project SHINE (fusion shielding intermetallics)", "amount_usd_m": null, "original_amount": "undisclosed share of GBP 8M across UK firms", "type": "other", "lead_investors": ["UK Atomic Energy Authority"], "source": "https://www.materialsnexus.com/news"}
+  ],
+  "headcount": [
+    {"date": "2021-12-31", "value": 3, "low": null, "high": null, "method": "registry", "note": "average monthly persons incl. directors, FY2021", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history/MzM5NDczNzg1M2FkaXF6a2N4/document?format=xhtml&download=1"},
+    {"date": "2022-12-31", "value": 4, "low": null, "high": null, "method": "registry", "note": "average monthly persons incl. directors, FY2022", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history/MzM5NDczNzg1M2FkaXF6a2N4/document?format=xhtml&download=1"},
+    {"date": "2023-12-31", "value": 9, "low": null, "high": null, "method": "registry", "note": "average monthly persons incl. directors, FY2023; the July 2023 seed release says the team 'doubled in the last six months'", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history/MzQzNzE3NzAyNGFkaXF6a2N4/document?format=xhtml&download=1"},
+    {"date": "2024-12-31", "value": 17, "low": null, "high": null, "method": "registry", "note": "average monthly persons incl. directors, FY2024", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history/MzQ3MDQwMDc2MGFkaXF6a2N4/document?format=xhtml&download=1"},
+    {"date": "2025-12-31", "value": 27, "low": null, "high": null, "method": "registry", "note": "average monthly persons incl. directors, FY2025", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/filing-history/MzU0ODQzODQxNGFkaXF6a2N4/document?format=xhtml&download=1"},
+    {"date": "2026-10-09", "value": 25, "low": null, "high": null, "method": "team-page", "note": "25 people on the homepage team grid (2 founders + 23 staff: 9 scientific computing, 6 machine learning, 2 technical programme management, 1 each software engineering, platform science, product management, operations, finance, people & talent); 11 advisors listed separately", "source": "https://www.materialsnexus.com/"}
+  ],
+  "postings": [],
+  "current_openings": {
+    "date": "2026-10-09",
+    "count": 0,
+    "by_function": {},
+    "titles": [],
+    "source": "https://www.materialsnexus.com/careers"
+  },
+  "people": [
+    {"name": "Jonathan Bean", "title": "Co-founder and CEO", "function": "leadership", "seniority": "founder", "start": "2020-12", "start_basis": "director from incorporation, 2 Dec 2020 (Companies House)", "end": null, "background": "Dr; theoretical physicist, former research associate at the University of Cambridge", "source": "https://www.htgf.de/en/htgf-seed-materials-nexus/"},
+    {"name": "Robert Forrest", "title": "Co-founder and CTO", "function": "leadership", "seniority": "founder", "start": "2020-12", "start_basis": "director from incorporation, 2 Dec 2020 (Companies House)", "end": null, "background": "Dr; computational physicist", "source": "https://www.htgf.de/en/htgf-seed-materials-nexus/"},
+    {"name": "David Plant", "title": "Director (incorporation)", "function": "leadership", "seniority": "board", "start": "2020-12", "start_basis": "director from incorporation (Companies House)", "end": "2021-04", "background": "Dr; not stated", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"},
+    {"name": "Michael Clark", "title": "Director and company secretary", "function": "leadership", "seniority": "board", "start": "2020-12", "start_basis": "secretary from incorporation; director from 4 Aug 2021 (Companies House)", "end": "2026-04", "background": "Dr; not stated", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"},
+    {"name": "Jon Pillow", "title": "Director; chemist", "function": "materials-science", "seniority": "board", "start": "2021-08", "start_basis": "director appointed 4 Aug 2021 (Companies House)", "end": "2023-06", "background": "Dr; chemist (named in the July 2023 seed release)", "source": "https://www.htgf.de/en/htgf-seed-materials-nexus/"},
+    {"name": "Nic Stirk", "title": "Director; commercial lead", "function": "business-ops", "seniority": "board", "start": "2021-08", "start_basis": "director appointed 4 Aug 2021 (Companies House)", "end": "2023-06", "background": "commercial lead (named in the July 2023 seed release)", "source": "https://www.htgf.de/en/htgf-seed-materials-nexus/"},
+    {"name": "Iván Markman", "title": "Non-executive director", "function": "leadership", "seniority": "board", "start": "2025-07", "start_basis": "director appointed 31 Jul 2025 (Companies House)", "end": null, "background": "ex-Yahoo, comScore", "source": "https://www.materialsnexus.com/"},
+    {"name": "Mike Payne", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, Cambridge; MIT", "source": "https://www.materialsnexus.com/"},
+    {"name": "Gábor Csányi", "title": "Scientific advisor", "function": "ml-research", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, Cambridge; MPI Mainz", "source": "https://www.materialsnexus.com/"},
+    {"name": "Eva Zurek", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, University at Buffalo", "source": "https://www.materialsnexus.com/"},
+    {"name": "Roy Chantrell", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, York; ex-Seagate", "source": "https://www.materialsnexus.com/"},
+    {"name": "Kathy Christofidou", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, Sheffield; Cambridge", "source": "https://www.materialsnexus.com/"},
+    {"name": "Gustavo Castelluccio", "title": "Scientific advisor", "function": "materials-science", "seniority": "advisor", "start": null, "start_basis": "listed on current site", "end": null, "background": "Professor, Cranfield; Georgia Tech", "source": "https://www.materialsnexus.com/"},
+    {"name": "Mike Eisenberg", "title": "Advisor (also seed investor)", "function": "business-ops", "seniority": "advisor", "start": "2023-07", "start_basis": "seed investor via Genuine Capital Ventures, July 2023", "end": null, "background": "ex-Splunk, Salesforce", "source": "https://www.materialsnexus.com/"}
+  ],
+  "staff_roles": [
+    {"title": "Scientific Computing (x9)", "function": "materials-science", "first_seen": "2026-10", "last_seen": null, "background": "mostly PhDs (computational physics/chemistry)", "source": "https://www.materialsnexus.com/"},
+    {"title": "Machine Learning (x6)", "function": "ml-research", "first_seen": "2026-10", "last_seen": null, "background": "mostly PhDs", "source": "https://www.materialsnexus.com/"},
+    {"title": "Technical Programme Management (x2)", "function": "business-ops", "first_seen": "2026-10", "last_seen": null, "background": "one PhD", "source": "https://www.materialsnexus.com/"},
+    {"title": "Software Engineering", "function": "software-eng", "first_seen": "2026-10", "last_seen": null, "background": "PhD", "source": "https://www.materialsnexus.com/"},
+    {"title": "Platform Science", "function": "materials-science", "first_seen": "2026-10", "last_seen": null, "background": "PhD", "source": "https://www.materialsnexus.com/"},
+    {"title": "Product Management", "function": "business-ops", "first_seen": "2026-10", "last_seen": null, "background": "not stated", "source": "https://www.materialsnexus.com/"},
+    {"title": "Finance; People & Talent; Operations (one each)", "function": "business-ops", "first_seen": "2026-10", "last_seen": null, "background": "not stated", "source": "https://www.materialsnexus.com/"}
+  ],
+  "departures": [
+    {"who": "David Plant", "title": "Director (incorporation)", "date": "2021-04", "basis": "Companies House resignation 29 Apr 2021", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"},
+    {"who": "Jon Pillow", "title": "Director; chemist", "date": "2023-06", "basis": "Companies House TM01, 12 Jun 2023; absent from the current team grid", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"},
+    {"who": "Nic Stirk", "title": "Director; commercial lead", "date": "2023-06", "basis": "Companies House TM01, 12 Jun 2023; absent from the current team grid", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"},
+    {"who": "Michael Clark", "title": "Director and company secretary", "date": "2025-07", "basis": "Companies House: director to 31 Jul 2025 (replaced on the board by an NED the same day); secretary to 24 Apr 2026", "source": "https://find-and-update.company-information.service.gov.uk/company/13057449/officers"}
+  ],
+  "notes": [
+    "Companies House 13057449 (MATERIALS NEXUS LIMITED), incorporated 2 Dec 2020. Rebranded as MatNex (matnex.ai e-mail; materialsnexus.com site).",
+    "SH01 allotments: 15 Apr and 19 Jul 2022 (pre-seed), 30 Jan 2023, 11 Jul and 11 Aug 2023 (seed), 5 Oct and 27 Dec 2023, 30 Aug 2024, 17 and 20 Jan 2025 (largest step in share capital, likely the round that brought in Conviction Partners and Founders Factory, both now listed as backers), 6 May and 13 Jun 2026 (small).",
+    "Only the GBP 2M (~USD 2.6M at ~1.29 USD/GBP) seed has a disclosed amount. Total disclosed equity is therefore about USD 2.6M plus undisclosed pre-seed and 2025 rounds; grant amounts for the Innovate UK projects were not found.",
+    "'MagNex' as a product name was not found; the company describes a patented rare-earth-free magnetic system and an AI-designed rare-earth-free magnet (Independent, June 2024).",
+    "Careers page says 'we grow carefully and hire selectively', with no open roles on 2026-10-09; no ATS board found under the obvious tokens (Ashby, Greenhouse, Lever, Workable, Recruitee). A Welcome to the Jungle listing ('Staff Engineer') exists but was not scraped.",
+    "Registry averages (3, 4, 9, 17, 27) are the cleanest series; the current site lists 25 people, consistent with FY2025's average of 27."
+  ]
+}
