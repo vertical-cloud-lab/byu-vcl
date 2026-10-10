@@ -200,9 +200,9 @@ class Scene:
     def view(self, name, Mm):
         S = {  # focal point (frame S), azimuth from S +x (deg), elevation (deg), distance (mm)
             "intro": ((150, 75, 0), -125, 38, 620), "s0": ((195, 50, 15), -110, 35, 360),
-            "s1": ((110, 35, 20), -140, 32, 380), "s2": ((205, 95, 20), -100, 38, 340),
+            "s1": ((115, 45, 15), -150, 42, 500), "s2": ((205, 95, 20), -100, 38, 340),
             "s3": ((160, 75, 20), -120, 45, 520), "s4": ((140, 95, 22), -75, 30, 360),
-            "s5": ((230, 95, 10), -60, 40, 420), "s6": ((90, 75, 25), -135, 35, 520),
+            "s5": ((230, 95, 10), -70, 42, 460), "s6": ((90, 75, 25), -135, 35, 520),
             "beam": ((170, 75, 15), -115, 62, 560), "adapter": ((160, 75, -12), -120, 18, 640),
             "dock": ((300, 95, 12), -40, 34, 420)}
         if name in S:
@@ -269,7 +269,7 @@ def main():
     gif = HERE / "openraman_cubxl_assembly.gif"
     import imageio_ffmpeg
     ff = imageio_ffmpeg.get_ffmpeg_exe()
-    flt = "fps=10,scale=720:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=128:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=4:diff_mode=rectangle"
+    flt = "fps=8,scale=640:-1:flags=lanczos,split[a][b];[a]palettegen=max_colors=96:stats_mode=diff[p];[b][p]paletteuse=dither=bayer:bayer_scale=5:diff_mode=rectangle"
     subprocess.run([ff, "-y", "-loglevel", "error", "-i", str(mp4), "-vf", flt, str(gif)], check=True)
     print(json.dumps({"mp4": str(mp4), "mp4_MB": round(mp4.stat().st_size / 1e6, 2),
                       "gif": str(gif), "gif_MB": round(gif.stat().st_size / 1e6, 2), "seconds": TOTAL}))
