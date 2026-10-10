@@ -37,7 +37,9 @@ STL = HERE / "stl"
 
 BASE = "https://cad.onshape.com/api/v6"
 HEADERS = {"Accept": "application/json;charset=UTF-8; qs=0.09", "Content-Type": "application/json"}
-PRINTED = {"Base (printed)": "base", "Vial holder (printed)": "vial_holder", "Magnet carrier (printed)": "magnet_carrier"}
+# Printed parts to export, by part-name prefix. Only one deck key is exported (two are printed).
+PRINTED = {"Base (printed": "base", "Vial holder (printed": "vial_holder",
+           "Magnet carrier (printed": "magnet_carrier", "Deck key (printed": "deck_key"}
 
 
 class Onshape:
@@ -134,7 +136,7 @@ def shaded(api: Onshape, doc: dict, view: str, w: int, h: int, pixel: float) -> 
     return base64.b64decode(r.json()["images"][0])
 
 
-def render(api: Onshape, doc: dict, spec: dict) -> None:
+def render(api: Onshape, doc: dict, spec: dict, only: set | None = None) -> None:
     from io import BytesIO
 
     from PIL import Image, ImageDraw, ImageFont
@@ -150,6 +152,9 @@ def render(api: Onshape, doc: dict, spec: dict) -> None:
     IMG.mkdir(exist_ok=True)
     seq = []
     for s in cfg["frames"]:
+        if only and s["key"] not in only:
+            continue
+        w, h = s.get("width", cfg["width"]), s.get("height", cfg["height"])
         set_feature(api, doc, spec, s["step"], s.get("exploded", False), s.get("section", False))
         v = {**cfg["view"], **s.get("view", {})}
         raw = shaded(api, doc, v["named"] if "named" in v else view_matrix(v["az"], v["el"], v["ty"]), w, h, v["px"])
@@ -167,9 +172,11 @@ def render(api: Onshape, doc: dict, spec: dict) -> None:
             seq.append(out)
         print("rendered", out.name, flush=True)
     set_feature(api, doc, spec, 0)
+    if only:
+        return
     # contact sheet and GIF of the numbered steps
     cols = cfg.get("sheet_cols", 4)
-    tw, th = w // 2, (h + cap) // 2
+    tw, th = cfg["width"] // 2, (cfg["height"] + cap) // 2
     rows = (len(seq) + cols - 1) // cols
     sheet = Image.new("RGB", (cols * tw, rows * th), "white")
     for i, f in enumerate(seq):
@@ -183,10 +190,12 @@ def export_stl(api: Onshape, doc: dict) -> None:
     did, wid, ps = doc["did"], doc["wid"], doc["partstudio"]
     STL.mkdir(exist_ok=True)
     parts = api.get(f"parts/d/{did}/w/{wid}/e/{ps}").json()
+    done = set()
     for p in parts:
-        stem = PRINTED.get(p["name"])
-        if not stem:
+        stem = next((v for k, v in PRINTED.items() if p["name"].startswith(k)), None)
+        if not stem or stem in done:
             continue
+        done.add(stem)
         r = api.get(f"parts/d/{did}/w/{wid}/e/{ps}/partid/{p['partId']}/stl",
                     params={"mode": "binary", "units": "millimeter", "angleTolerance": 0.04, "chordTolerance": 0.02},
                     headers={"Accept": "application/vnd.onshape.v1+octet-stream"}, allow_redirects=False)
@@ -202,6 +211,7 @@ if __name__ == "__main__":
     ap.add_argument("--new", action="store_true", help="create a fresh Onshape document first")
     ap.add_argument("--no-render", action="store_true")
     ap.add_argument("--no-stl", action="store_true")
+    ap.add_argument("--only", default="", help="comma-separated frame keys to re-render (skips the sheet and GIF)")
     a = ap.parse_args()
     api = Onshape()
     doc = new_document(api) if a.new else json.loads(DOC_FILE.read_text())
@@ -210,5 +220,5 @@ if __name__ == "__main__":
     if not a.no_stl:
         export_stl(api, doc)
     if not a.no_render:
-        render(api, doc, spec)
+        render(api, doc, spec, set(filter(None, a.only.split(","))) or None)
     print("document:", doc["url"])

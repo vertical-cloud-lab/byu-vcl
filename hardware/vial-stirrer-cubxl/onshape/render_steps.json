@@ -1,34 +1,129 @@
 {
- "width": 760, "height": 700, "caption_px": 96, "sheet_cols": 4,
- "view": {"az": 35, "el": 24, "ty": -0.050, "px": 0.00027},
+ "width": 760,
+ "height": 700,
+ "caption_px": 96,
+ "sheet_cols": 4,
+ "view": {
+  "az": 35,
+  "el": 24,
+  "ty": -0.022,
+  "px": 0.00018
+ },
  "frames": [
-  {"key": "step01_keys", "step": 1, "sequence": true, "title": "1  Glue the two deck keys into the base",
-   "caption": "Print the base and two Cubware deck keys. Superglue each key's\ntriangular nub into its 2.1 mm pocket under the base."},
-  {"key": "step02_inserts", "step": 2, "sequence": true, "title": "2  Press in eight M3 heat-set inserts",
-   "caption": "M3 x 5.7 mm brass inserts, with a soldering iron:\nfour in the fan posts, four in the corner posts."},
-  {"key": "step03_controller", "step": 3, "sequence": true, "title": "3  Drop in the XIAO RP2040, wired to the fan",
-   "caption": "USB-C goes into the notch in the wall. The rails and the stop\nlocate it; the fan above keeps it from lifting."},
-  {"key": "step04_fan", "step": 4, "sequence": true, "title": "4  Seat the 40 mm fan, rotor side up",
-   "caption": "40 x 40 x 10 mm fan on the four posts, label (rotor) side up,\ncable toward the XIAO."},
-  {"key": "step05_fan_screws", "step": 5, "sequence": true, "title": "5  Four M3 x 16 screws through the fan",
-   "caption": "Into the post inserts. Snug only: the fan frame is plastic."},
-  {"key": "step06_magnets", "step": 6, "sequence": true, "title": "6  Magnets into the carrier, carrier onto the hub",
-   "caption": "Two 1/4 x 1/8 in N52 discs, 12 mm apart: red = north up, blue = south up.\nCA glue; centre the carrier on the hub."},
-  {"key": "step07_holder", "step": 7, "sequence": true, "title": "7  Lower the vial holder over the fan",
-   "caption": "The magnets turn in a 35 mm pocket, 1 mm under a 1.2 mm printed floor.\nThe vial sits on that floor."},
-  {"key": "step08_holder_screws", "step": 8, "sequence": true, "title": "8  Four M3 x 12 screws through the flange",
-   "caption": "Into the corner-post inserts."},
-  {"key": "step09_deck", "step": 9, "sequence": true, "title": "9  Set the module on the CubXL deck",
-   "caption": "The keys drop into two adjacent slots, 25 mm apart. Slip fit held by gravity,\nlike Cubware's holders. The vial axis sits midway between the two slot columns."},
-  {"key": "step10_vial", "step": 10, "sequence": true, "title": "10  Stir bar into the vial, vial into the holder",
-   "caption": "15 x 6 mm PTFE bar. Three crush ribs in the bore grip the 28 mm vial\nso the capper can twist the cap."},
-  {"key": "assembled", "step": 0, "sequence": true, "title": "Assembled",
-   "caption": "56 x 56 mm footprint, 49.5 mm tall without the vial. Vial bottom 24.4 mm\nand vial rim ~81 mm above the deck."},
-  {"key": "exploded", "step": 0, "exploded": true, "title": "Exploded view",
-   "caption": "Printed: base, vial holder, magnet carrier, 2 deck keys. Bought: fan, XIAO RP2040,\n2 magnets, stir bar, 8 M3 inserts, 4 M3 x 16 and 4 M3 x 12 socket head screws.",
-   "view": {"px": 0.00040, "ty": -0.075, "el": 18}},
-  {"key": "section", "step": 0, "section": true, "title": "Section through the vial axis",
-   "caption": "Magnet top to the vial's inside floor: 1.0 mm gap + 1.2 mm print + ~1.6 mm glass\n= ~3.8 mm. Bar axis ~6.8 mm above the magnets.",
-   "view": {"named": "front", "px": 0.00016, "ty": 0}}
+  {
+   "key": "step01_keys",
+   "step": 1,
+   "sequence": true,
+   "title": "1  Glue the two deck keys into the base",
+   "caption": "Print the base and two Cubware deck keys. Superglue each key's\ntriangular nub into its 2.1 mm pocket under the base."
+  },
+  {
+   "key": "step02_inserts",
+   "step": 2,
+   "sequence": true,
+   "title": "2  Press in eight M3 heat-set inserts",
+   "caption": "M3 x 5.7 mm brass inserts, with a soldering iron:\nfour in the fan posts, four in the corner posts."
+  },
+  {
+   "key": "step03_electronics",
+   "step": 3,
+   "sequence": true,
+   "title": "3  Drop in the XIAO RP2040 and the fan driver",
+   "caption": "Low-side IRLZ44N with a 1N5819 flyback diode, as on the Pioreactor HAT.\nUSB-C sits in the wall notch; the fan above keeps the board down."
+  },
+  {
+   "key": "step04_fan",
+   "step": 4,
+   "sequence": true,
+   "title": "4  Seat the fan, rotor side up",
+   "caption": "Orion OD4010-12HSS, the Pioreactor's 40 x 40 x 10.5 mm 2-wire fan,\non the four posts with its leads toward the MOSFET."
+  },
+  {
+   "key": "step05_fan_screws",
+   "step": 5,
+   "sequence": true,
+   "title": "5  Four M3 x 16 screws through the fan",
+   "caption": "Into the post inserts. Snug only: the fan frame is plastic.\nUse stainless screws near the magnets."
+  },
+  {
+   "key": "step06_magnets",
+   "step": 6,
+   "sequence": true,
+   "title": "6  Magnets into the carrier, carrier onto the hub",
+   "caption": "Two 1/4 x 1/16 in N52 discs, 9.8 mm apart as on the Pioreactor:\nred = north up, blue = south up. CA glue; centre the carrier on the hub."
+  },
+  {
+   "key": "step07_holder",
+   "step": 7,
+   "sequence": true,
+   "title": "7  Glue in the Hall sensor, lower the vial holder",
+   "caption": "US1881 latch on the pocket ceiling beside the magnets, leads down a groove\nto the XIAO: one pulse per turn. The carrier turns under a 1.2 mm floor."
+  },
+  {
+   "key": "step08_holder_screws",
+   "step": 8,
+   "sequence": true,
+   "title": "8  Four M3 x 12 screws through the flange",
+   "caption": "Into the corner-post inserts."
+  },
+  {
+   "key": "step09_deck",
+   "step": 9,
+   "sequence": true,
+   "title": "9  Set the module on the CubXL deck",
+   "caption": "The keys drop into two adjacent slots, 25 mm apart: a slip fit held by gravity,\nlike Cubware's holders. The vial axis sits midway between the two slot columns.",
+   "view": {
+    "px": 0.00033,
+    "ty": -0.05
+   }
+  },
+  {
+   "key": "step10_vial",
+   "step": 10,
+   "sequence": true,
+   "title": "10  Stir bar into the vial, vial into the holder",
+   "caption": "15 x 6 mm PTFE bar. Three crush ribs in the bore grip the 28 mm vial\nso the capper can twist the cap.",
+   "view": {
+    "px": 0.00033,
+    "ty": -0.05
+   }
+  },
+  {
+   "key": "assembled",
+   "step": 0,
+   "sequence": true,
+   "title": "Assembled",
+   "caption": "56 x 56 mm footprint, 50 mm tall without the vial. The vial's bottom sits\n25 mm above the deck and its rim ~82 mm.",
+   "view": {
+    "px": 0.00033,
+    "ty": -0.05
+   }
+  },
+  {
+   "key": "exploded",
+   "step": 0,
+   "exploded": true,
+   "height": 1000,
+   "title": "Exploded view",
+   "caption": "Printed: base, vial holder, magnet carrier, 2 deck keys.\nBought: fan, XIAO, MOSFET, diode, Hall latch, magnets, stir bar, M3 hardware.",
+   "view": {
+    "px": 0.00032,
+    "ty": -0.068,
+    "el": 18
+   }
+  },
+  {
+   "key": "section",
+   "step": 0,
+   "section": true,
+   "title": "Section through the vial axis",
+   "caption": "Magnet faces to the vial's outside bottom: ~1.2 mm air + 1.2 mm print = 2.4 mm\n(Pioreactor v1.5: ~7 mm). Hall latch at left, MOSFET and diode at right.",
+   "view": {
+    "az": 0,
+    "el": 0,
+    "px": 0.000105,
+    "ty": -0.034
+   }
+  }
  ]
 }

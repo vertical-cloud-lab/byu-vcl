@@ -1,21 +1,30 @@
-# main.py -- single-vial stirrer, closed-loop fan speed on a Seeed XIAO RP2040.
+# main.py -- single-vial stirrer, closed-loop stirring on a Seeed XIAO RP2040.
 #
-# UNTESTED SKETCH (nothing has been built yet). MicroPython >= 1.22.
+# UNTESTED SKETCH: nothing has been built yet. MicroPython >= 1.22.
 #
-# Same idea as the Pioreactor's stirring job (pioreactor/background_jobs/stirring.py):
-# drive a PC fan that carries two magnets, read its tachometer, and close the loop
-# on rpm. Here the loop runs on the module itself, so the host only sends a target.
+# Follows the Pioreactor's stirring job (pioreactor/background_jobs/stirring.py at
+# 0ae14c0), moved onto the module so the host only sends a target rpm:
+#   - a 2-wire fan, PWM'd at 200 Hz through a low-side N-MOSFET (Pioreactor: GPIO17,
+#     software PWM, pwm_hz=200),
+#   - rpm from a Hall sensor that sees the two opposite-pole magnets go by: one
+#     pulse per turn (Pioreactor: DRV5021A3 switch on GPIO21, falling edges),
+#   - an additive P controller (each step clamped to +-7.5 % duty), a full-power
+#     kick from standstill, and a kick when it stalls.
+# Changes from the Pioreactor: a bipolar latch (US1881) instead of the DRV5021,
+# because the sensor sits beside the magnets rather than over them; updates
+# every 2 s instead of 23 s; and a setpoint ramp, so the bar is not asked to
+# jump speed (Edison coupling summary in outputs/issue-169-magnetic-stirrer/).
 #
 # Wiring (see ../README.md):
-#   D0  (GP26) -> fan PWM input (blue wire), 25 kHz
-#   D1  (GP27) <- fan tach (green/yellow wire), open collector, 10 k pull-up to 3V3
-#   D2  (GP28) -> gate of the low-side MOSFET in the fan's ground (true stop)
-#   5V  (VBUS) -> fan +5 V (red), GND -> MOSFET source; fan black -> MOSFET drain
+#   D1 (GP27) -> 100 R -> MOSFET gate; 10 k gate-to-source pull-down
+#   D2 (GP28) <- US1881 output (open drain; internal pull-up + 10 k to 3V3)
+#   5V (VBUS) -> fan red, US1881 VDD;  fan black -> MOSFET drain;  source -> GND
+#   1N5819 across the fan, cathode to 5V
 #
 # USB serial, one command per line:
-#   RPM <n>   set the target in rpm (0 stops). The setpoint ramps at RAMP rpm/s
+#   RPM <n>   target in rpm, 0 stops. The setpoint ramps at RAMP rpm/s
 #   STOP      same as RPM 0
-#   ?         one status line: target, setpoint, measured rpm, duty, flags
+#   ?         status line: target, setpoint, measured rpm, duty, stalled
 #   ID        firmware name and version
 import sys
 import time
@@ -23,19 +32,22 @@ import time
 import select
 from machine import PWM, Pin, disable_irq, enable_irq
 
-PWM_PIN, TACH_PIN, EN_PIN = 26, 27, 28
-PWM_HZ = 25_000            # Intel 4-wire fan spec
-PULSES_PER_REV = 2         # standard PC-fan tach
-RAMP = 150.0               # rpm per second; ramp so the bar stays coupled
-KP, KI = 0.00025, 0.0006   # duty per rpm error, per rpm*s; tune on the bench
-DUTY_MIN = 0.20            # below this many 4-wire fans run at their floor speed
-RPM_MAX = 2000             # safety ceiling; the bar decouples long before the fan's max
-PERIOD = 0.25              # control period, s
+GATE_PIN, HALL_PIN = 27, 28
+PWM_HZ = 200                 # as the Pioreactor
+PULSES_PER_REV = 1           # one latch toggle pair per turn (opposite-pole magnets)
+KP = 0.0002                  # duty fraction per rpm of error, per update. The Pioreactor's
+                             # Kp is 0.005 %/rpm, but it starts from a calibrated duty; this
+                             # starts from DC_START, so it needs more gain. Tune on the bench
+MAX_STEP = 0.075             # Pioreactor clamps each update to 7.5 points
+UPDATE_S = 2.0               # control update period
+RAMP = 100.0                 # setpoint ramp, rpm per second
+DC_START = 0.30              # Pioreactor initial_duty_cycle = 30
+RPM_MIN, RPM_MAX = 100, 2000  # Pioreactor: ~125 rpm practical floor, 2000 cap
 
-pwm = PWM(Pin(PWM_PIN))
+pwm = PWM(Pin(GATE_PIN))
 pwm.freq(PWM_HZ)
-en = Pin(EN_PIN, Pin.OUT, value=0)
-tach = Pin(TACH_PIN, Pin.IN, Pin.PULL_UP)
+pwm.duty_u16(0)
+hall = Pin(HALL_PIN, Pin.IN, Pin.PULL_UP)
 
 _count = 0
 
@@ -45,20 +57,26 @@ def _edge(_pin):
     _count += 1
 
 
-tach.irq(trigger=Pin.IRQ_FALLING, handler=_edge)
+hall.irq(trigger=Pin.IRQ_FALLING, handler=_edge)
 
 
 def set_duty(d):
     pwm.duty_u16(int(max(0.0, min(1.0, d)) * 65535))
 
 
+def kick(after):
+    """Full power briefly to break the fan free, then drop to `after`."""
+    set_duty(1.0)
+    time.sleep_ms(500)
+    set_duty(after)
+
+
 target = 0.0
 setpoint = 0.0
-integral = 0.0
 duty = 0.0
 rpm = 0.0
 stalled = False
-stall_t = 0.0
+zero_updates = 0
 poll = select.poll()
 poll.register(sys.stdin, select.POLLIN)
 line = ""
@@ -76,7 +94,8 @@ def handle(cmd):
         return
     word = parts[0].upper()
     if word == "RPM" and len(parts) == 2:
-        target = max(0.0, min(float(parts[1]), RPM_MAX))
+        t = float(parts[1])
+        target = 0.0 if t <= 0 else max(RPM_MIN, min(t, RPM_MAX))
         stalled = False
         print("ok", status())
     elif word == "STOP":
@@ -91,7 +110,6 @@ def handle(cmd):
 
 
 while True:
-    # read any complete command lines without blocking the loop
     while poll.poll(0):
         ch = sys.stdin.read(1)
         if ch in ("\n", "\r"):
@@ -102,8 +120,8 @@ while True:
 
     now = time.ticks_ms()
     dt = time.ticks_diff(now, last) / 1000
-    if dt < PERIOD:
-        time.sleep_ms(5)
+    if dt < UPDATE_S:
+        time.sleep_ms(10)
         continue
     last = now
 
@@ -112,29 +130,34 @@ while True:
     enable_irq(irq)
     rpm = n / PULSES_PER_REV / dt * 60
 
-    # ramp the setpoint toward the target
+    if target <= 0:
+        setpoint, duty, zero_updates = 0.0, 0.0, 0
+        set_duty(0)
+        continue
+
+    if setpoint == 0:                       # starting from rest
+        setpoint = min(target, RPM_MIN)
+        duty = DC_START
+        kick(duty)
+        continue
+
     step = RAMP * dt
     setpoint = min(target, setpoint + step) if setpoint < target else max(target, setpoint - step)
 
-    if setpoint <= 0:
-        en.value(0)
-        set_duty(0)
-        duty, integral = 0.0, 0.0
-        continue
-
-    en.value(1)
-    err = setpoint - rpm
-    integral = max(-1.0 / KI, min(1.0 / KI, integral + err * dt))   # anti-windup
-    duty = max(DUTY_MIN, min(1.0, KP * err + KI * integral))
-    set_duty(duty)
-
-    # stall: full duty for 3 s with no tach pulses -> cut power and flag it
-    if rpm < 1 and duty >= 0.99:
-        stall_t += dt
-        if stall_t > 3:
-            stalled, target, setpoint = True, 0.0, 0.0
-            en.value(0)
+    if rpm < 1:                             # spinning nothing: kick, give up after 5 tries
+        zero_updates += 1
+        if zero_updates > 5:
+            stalled, target = True, 0.0
             set_duty(0)
-            print("err stalled")
-    else:
-        stall_t = 0.0
+            print("err stalled: no Hall pulses")
+            continue
+        duty = min(duty * 1.01, 0.60)       # Pioreactor's "avoid the death spiral" cap
+        set_duty(0)
+        time.sleep_ms(750)
+        kick(duty)
+        continue
+    zero_updates = 0
+
+    delta = max(-MAX_STEP, min(MAX_STEP, KP * (setpoint - rpm)))
+    duty = max(0.0, min(1.0, duty + delta))
+    set_duty(duty)

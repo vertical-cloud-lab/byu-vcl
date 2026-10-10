@@ -16,18 +16,26 @@ const FILL_H = 19.4;          // ~10 mL in a 25.4 mm bore
 const BAR_L = 15.0;           // PTFE stir bar, length
 const BAR_D = 6.0;            // PTFE stir bar, diameter
 
-// ---- 40 x 40 x 10 mm fan ---------------------------------------------------
+// ---- 40 x 40 x 10.5 mm fan: the Pioreactor's Orion OD4010-12HSS ---------
+// (12 V, 2-wire, run from 5 V through a low-side MOSFET like the Pioreactor HAT)
 const FAN_W = 40.0;
-const FAN_T = 10.0;
+const FAN_T = 10.5;
 const FAN_PITCH = 32.0;
 const FAN_HOLE = 3.4;
 const FAN_BORE = 38.0;
 const HUB_D = 22.0;
 
-// ---- magnets ---------------------------------------------------------------
+// ---- magnets and carrier: the Pioreactor v1.5 magnet holder, re-modelled ---
+// Two 1/4 x 1/16 in N52 discs, opposite poles up, 9.8 mm apart, in blind
+// pockets open toward the vial. The carrier is 19 mm across instead of the
+// Pioreactor's 24 mm, to leave room for the Hall sensor beside it.
 const MAG_D = 6.35;           // 1/4 in
-const MAG_T = 3.175;          // 1/8 in
-const MAG_CC = 12.0;          // centre-to-centre, one N up and one S up
+const MAG_T = 1.59;           // 1/16 in
+const MAG_CC = 9.8;
+const CAR_D = 19.0;
+const CAR_T = 3.23;
+const POCKET_D = 6.66;
+const POCKET_T = 1.675;
 
 // ---- printed parts -----------------------------------------------------------
 const FOOT = 56.0;            // square footprint
@@ -38,10 +46,10 @@ const Z_FAN0 = 9.0;           // fan bottom face (clears the XIAO's USB-C)
 const Z_FAN1 = Z_FAN0 + FAN_T;
 const Z_WALL = Z_FAN1 + 0.5;  // base wall top = holder underside
 const FLANGE_T = 6.0;
-const RECESS_D = 35.0;        // pocket the magnets turn in
-const RUN_GAP = 1.0;          // magnet top to pocket ceiling
+const RECESS_D = 27.0;        // pocket the magnet carrier turns in
+const RUN_GAP = 1.1;          // carrier top to pocket ceiling (Pioreactor v1.5: ~1.1)
 const VFLOOR_T = 1.2;         // printed floor under the vial
-const Z_RECESS = Z_FAN1 + MAG_T + RUN_GAP;
+const Z_RECESS = Z_FAN1 + CAR_T + RUN_GAP;
 const Z_VIAL = Z_RECESS + VFLOOR_T;   // vial outer bottom
 const BORE_D = 28.8;
 const RIB_R = 14.0;           // crush-rib crest radius (28.0 mm vial)
@@ -270,6 +278,7 @@ function makeHolder(context is Context, id is Id) returns Query
     tools = append(tools, mkCyl(context, id + "bore", 0, 0, Z_VIAL, Z_TOP + 1, BORE_D / 2));
     tools = append(tools, mkCone(context, id + "lead", 0, 0, Z_TOP - 1.2, Z_TOP + 0.01, BORE_D / 2, BORE_D / 2 + 1.2));
     tools = append(tools, mkBox(context, id + "window", -3.5, -TOWER_D / 2 - 1, Z_VIAL + 3, 3.5, 0, Z_VIAL + 17));
+    tools = append(tools, mkBox(context, id + "groove", -22.8, -2.6, Z_WALL - 1, -RECESS_D / 2 + 0.5, 2.6, Z_RECESS));
     var i = 0;
     for (var sx in [-1, 1])
     {
@@ -327,33 +336,76 @@ function makeFan(context is Context, id is Id) returns Query
     const t2 = mkBox(context, id + "trimBot", -30, -30, Z_FAN0 - 10, 30, 30, Z_FAN0);
     mkSub(context, id + "s2", qSubtraction(keep, qUnion([t1, t2])), qUnion([t1, t2]));
     const q = qCreatedBy(id, EntityType.BODY);
-    mkLook(context, q, "Fan 40x40x10 mm, 5 V, 4-wire (purchased)", color(0.08, 0.08, 0.09));
+    mkLook(context, q, "Fan Orion OD4010-12HSS, 40x40x10.5 mm, 2-wire (purchased)", color(0.08, 0.08, 0.09));
     return q;
 }
 
 function makeCarrier(context is Context, id is Id) returns Query
 {
-    const disc = mkCyl(context, id + "disc", 0, 0, Z_FAN1, Z_FAN1 + MAG_T, HUB_D / 2 - 0.5);
-    const p1 = mkCyl(context, id + "p1", -MAG_CC / 2, 0, Z_FAN1 - 1, Z_FAN1 + MAG_T + 1, MAG_D / 2 + 0.15);
-    const p2 = mkCyl(context, id + "p2", MAG_CC / 2, 0, Z_FAN1 - 1, Z_FAN1 + MAG_T + 1, MAG_D / 2 + 0.15);
+    const disc = mkCyl(context, id + "disc", 0, 0, Z_FAN1, Z_FAN1 + CAR_T, CAR_D / 2);
+    const p1 = mkCyl(context, id + "p1", -MAG_CC / 2, 0, Z_FAN1 + CAR_T - POCKET_T, Z_FAN1 + CAR_T + 1, POCKET_D / 2);
+    const p2 = mkCyl(context, id + "p2", MAG_CC / 2, 0, Z_FAN1 + CAR_T - POCKET_T, Z_FAN1 + CAR_T + 1, POCKET_D / 2);
     mkSub(context, id + "s1", disc, qUnion([p1, p2]));
     const q = qCreatedBy(id, EntityType.BODY);
-    mkLook(context, q, "Magnet carrier (printed)", color(0.96, 0.55, 0.10));
+    mkLook(context, q, "Magnet carrier (printed, after Pioreactor's magnet holder)", color(0.96, 0.55, 0.10));
     return q;
 }
 
 function makeMagnet(context is Context, id is Id, x is number, northUp is boolean) returns Query
 {
-    const q = mkCyl(context, id, x, 0, Z_FAN1, Z_FAN1 + MAG_T, MAG_D / 2);
+    const z0 = Z_FAN1 + CAR_T - POCKET_T;
+    const q = mkCyl(context, id, x, 0, z0, z0 + MAG_T, MAG_D / 2);
     if (northUp)
     {
-        mkLook(context, q, "Magnet N52 1/4 x 1/8 in, N up", color(0.85, 0.13, 0.13));
+        mkLook(context, q, "Magnet N52 1/4 x 1/16 in, N up", color(0.85, 0.13, 0.13));
     }
     else
     {
-        mkLook(context, q, "Magnet N52 1/4 x 1/8 in, S up", color(0.13, 0.30, 0.85));
+        mkLook(context, q, "Magnet N52 1/4 x 1/16 in, S up", color(0.13, 0.30, 0.85));
     }
     return q;
+}
+
+// Hall latch (Melexis US1881, TO-92UA: 4.1 x 3.0 x 1.6 mm) glued to the pocket
+// ceiling beside the carrier, at the -x side, with its leads in a groove.
+function makeHall(context is Context, id is Id) returns Query
+{
+    const z1 = Z_RECESS;
+    const body = mkBox(context, id + "body", -13.3, -2.05, z1 - 1.6, -10.3, 2.05, z1);
+    mkLook(context, body, "Hall latch US1881, TO-92UA (purchased)", color(0.10, 0.10, 0.10));
+    var leads = [];
+    for (var k = 0; k < 3; k += 1)
+    {
+        const y = (k - 1) * 1.27;
+        leads = append(leads, mkBox(context, id + ("ld" ~ k), -21.9, y - 0.25, z1 - 1.0, -13.3, y + 0.25, z1 - 0.5));
+        leads = append(leads, mkBox(context, id + ("dn" ~ k), -22.2, y - 0.3, FLOOR_T + 3.0, -21.6, y + 0.3, z1 - 0.5));
+    }
+    const w = qUnion(leads);
+    mkUnite(context, id + "wu", w);
+    mkLook(context, qCreatedBy(id + "ld0", EntityType.BODY), "Hall sensor leads", color(0.75, 0.75, 0.78));
+    return qCreatedBy(id, EntityType.BODY);
+}
+
+// Low-side N-MOSFET (TO-220, e.g. IRLZ44N from the capper BOM) lying flat, plus
+// a DO-41 flyback diode across the fan.
+function makeDriver(context is Context, id is Id) returns Query
+{
+    const z0 = FLOOR_T;
+    const body = mkBox(context, id + "body", 6.0, -5.0, z0, 15.2, 5.0, z0 + 4.5);
+    mkLook(context, body, "N-MOSFET IRLZ44N, TO-220 (purchased)", color(0.10, 0.10, 0.10));
+    const tab = mkBox(context, id + "tab", 15.2, -5.0, z0, 21.6, 5.0, z0 + 1.3);
+    const hole = mkCyl(context, id + "hole", 18.8, 0, z0 - 1, z0 + 2, 1.8);
+    mkSub(context, id + "s", tab, hole);
+    var leads = [tab];
+    for (var k = 0; k < 3; k += 1)
+    {
+        leads = append(leads, mkBox(context, id + ("ld" ~ k), -0.5, (k - 1) * 2.54 - 0.4, z0 + 1.6, 6.01, (k - 1) * 2.54 + 0.4, z0 + 2.1));
+    }
+    mkUnite(context, id + "u", qUnion(leads));
+    mkLook(context, qCreatedBy(id + "tab", EntityType.BODY), "MOSFET tab and leads", color(0.78, 0.78, 0.80));
+    const diode = mkCylX(context, id + "diode", 4.0, 9.2, -9.5, z0 + 1.35, 1.35);
+    mkLook(context, diode, "Flyback diode 1N5819, DO-41 (purchased)", color(0.12, 0.12, 0.12));
+    return qCreatedBy(id, EntityType.BODY);
 }
 
 // M3 socket head cap screw, head on top, seat at z = zSeat
@@ -510,7 +562,7 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
         }
         groups = append(groups, [qUnion(ins), S_INSERTS, 14, 16]);
         setVariable(context, "dbg", "inserts");
-        groups = append(groups, [makeController(context, id + "ctrl"), S_CTRL, 16, 24]);
+        groups = append(groups, [qUnion([makeController(context, id + "ctrl"), makeDriver(context, id + "drv")]), S_CTRL, 16, 24]);
         setVariable(context, "dbg", "ctrl");
         groups = append(groups, [makeFan(context, id + "fan"), S_FAN, 18, 32]);
         setVariable(context, "dbg", "fan");
@@ -533,13 +585,13 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
         const m2 = makeMagnet(context, id + "mag2", MAG_CC / 2, false);
         groups = append(groups, [qUnion([m1, m2]), S_MAGNETS, 20, 68]);
         setVariable(context, "dbg", "magnets");
-        groups = append(groups, [makeHolder(context, id + "holder"), S_HOLDER, 26, 80]);
+        groups = append(groups, [qUnion([makeHolder(context, id + "holder"), makeHall(context, id + "hall")]), S_HOLDER, 26, 80]);
         setVariable(context, "dbg", "holder");
         groups = append(groups, [qUnion(hs), S_HSCREWS, 16, 100]);
         const vial = makeVial(context, id + "vial");
         const liq = makeLiquid(context, id + "liq");
         groups = append(groups, [qUnion([vial, liq]), S_VIAL, 45, 118]);
-        groups = append(groups, [makeBar(context, id + "bar"), S_VIAL, 85, 150]);
+        groups = append(groups, [makeBar(context, id + "bar"), S_VIAL, 112, 175]);
         setVariable(context, "dbg", "parts");
 
         const step = definition.step;
@@ -568,7 +620,7 @@ export const vialStirrer = defineFeature(function(context is Context, id is Id, 
                 {
                     dz = g[2];
                 }
-                if (!drop && s > 0 && s < S_PLACE && step <= S_PLACE)
+                if (!drop && s > 0 && s < S_PLACE && step == S_PLACE)
                 {
                     dz += LIFT;
                 }
