@@ -1,6 +1,8 @@
 # Job postings: the actual roles and descriptions
 
-Historical job postings survive, mostly with their full descriptions. This folder holds **465 postings from 15 companies, 433 of them with the full description**. They run from July 2021 to 10 October 2026; 237 had closed by then, 205 of those with their description intact.
+Historical job postings survive, mostly with their full descriptions. This folder holds **811 postings from 23 companies, 757 of them with the full description**. They run from March 2014 to 10 October 2026; 318 had closed by then, 264 of those with their description intact.
+
+The first version of this folder covered 15 companies and found only careers-page captures, or nothing, for the other ten. A second pass found postings for eight of those ten: it followed each careers page to the board behind it, and it checked the job boards that universities and investors run. [The ten companies the first pass missed](#the-ten-companies-the-first-pass-missed) covers how, and what those postings show. Only Mattiq and Intrepid Labs still have none.
 
 Each company has a page listing its postings by first-seen date. Underneath are the role-specific parts of each description: responsibilities, requirements and pay. The cross-company tables are in [summary.md](summary.md), the role-by-role reading is in [roles.md](roles.md), and the full text is in [`../data/job_postings.jsonl`](../data/job_postings.jsonl).
 
@@ -54,7 +56,7 @@ Scientists came later: protein engineering in December 2025, then biology resear
 
 ### 3. What the jobs are
 
-290 of the postings with descriptions were sorted by hand into seven archetypes (nine rows, since the scientists split three ways). The reading behind each row is in [roles.md](roles.md): what the job involves, which instruments and tools, required and preferred degrees, pay, and verbatim quotes. The coding is in [`../data/job_postings_roles.csv`](../data/job_postings_roles.csv).
+290 of the first pass's postings with descriptions were sorted by hand into seven archetypes (nine rows, since the scientists split three ways). The reading behind each row is in [roles.md](roles.md): what the job involves, which instruments and tools, required and preferred degrees, pay, and verbatim quotes. The coding is in [`../data/job_postings_roles.csv`](../data/job_postings_roles.csv).
 
 | Archetype | Postings (n) | Companies | Degree asked for most often | Median min. years | US posted pay (n) | Example |
 |---|---|---|---|---|---|---|
@@ -76,34 +78,34 @@ Some points from that reading:
 
 ### 4. What the descriptions ask for
 
-These figures cover the 433 postings with a description. The full table is in [summary.md](summary.md#what-the-descriptions-ask-for-by-function).
+These figures cover the 502 English-language postings with a description. DP Technology's postings are in Chinese and are left out, because the skill keywords are English. The full table is in [summary.md](summary.md#what-the-descriptions-ask-for-by-function).
 
 **Who needs a PhD.** It is the norm for materials scientists but not for the people who build the lab:
 
 | Function | Name a PhD | Name a bachelor's | Median "N+ years" |
 |---|---|---|---|
-| Materials science | 72% | 32% | 3 |
-| ML research | 43% | 18% | 5 |
-| Lab automation | 21% | 38% | 4 |
-| Software | 11% | 35% | 5 |
+| Materials science | 70% | 30% | 3 |
+| ML research | 46% | 22% | 4 |
+| Lab automation | 19% | 41% | 3 |
+| Software | 10% | 33% | 5 |
 
 "Name" means the degree appears anywhere in the text, required or preferred.
 
-**What lab-automation postings ask for.** Robots come up in 57%, safety (EHS) in 45%, CAD and mechanical design in 26%, and PLC and controls in 21%.
+**What lab-automation postings ask for.** Robots come up in 57%, safety (EHS) in 46%, CAD and mechanical design in 27%, and PLC and controls in 23%.
 
-**Software engineers are asked about the lab.** 43% of software postings mention robots or lab hardware, usually as a bonus. Lila's software postings, for example, add "experience with laboratory devices, robotics, or hardware drivers".
+**Software engineers are asked about the lab.** 41% of software postings mention robots, usually as a bonus. Lila's software postings, for example, add "experience with laboratory devices, robotics, or hardware drivers".
 
 **Posted pay.** For US postings that publish a range, the median range midpoint by function:
 
 | Function | Median midpoint |
 |---|---|
-| ML research | $294K |
-| Software | $218K |
-| Lab automation | $177K |
+| ML research | $291K |
+| Software | $224K |
+| Lab automation | $163K |
 | Materials science | $162K |
 | Business and operations | $156K |
 
-Materials science comes out low because most of those ranges are Lila's, for its Scientist I/II and research-associate levels. Periodic posts $250–350K for research scientists, $200–250K for its [Automation Engineer](periodic-labs.md#automation-engineer-2025-09-22) and $100–130K for its [Laboratory Technician](periodic-labs.md#laboratory-technician-2026-07-16). Lila posts $75.6–100.8K for an [Engineer I, Research Operations](lila-sciences-lab-automation.md#engineer-i-research-operations-2nd-shift-2026-09-08) on its second shift.
+Lab automation was $177K in the first version. The second pass added lower-paid lab roles: Radical AI's [Automation Technician](radical-ai.md#automation-technician-2026-08-21) ($66–103K) and [Laboratory Operations Specialist](radical-ai.md#laboratory-operations-specialist-2026-06-04) ($87–120K), and Emerald Cloud Lab's [Laboratory Operations Shift Manager](emerald-cloud-lab.md#laboratory-operations-shift-manager-2024-01-04) ($70–90K). Materials science comes out low because most of those ranges are Lila's, for its Scientist I/II and research-associate levels. Periodic posts $250–350K for research scientists, $200–250K for its [Automation Engineer](periodic-labs.md#automation-engineer-2025-09-22) and $100–130K for its [Laboratory Technician](periodic-labs.md#laboratory-technician-2026-07-16). Lila posts $75.6–100.8K for an [Engineer I, Research Operations](lila-sciences-lab-automation.md#engineer-i-research-operations-2nd-shift-2026-09-08) on its second shift.
 
 ### 5. How long a posting stays up depends on the company more than the role
 
@@ -117,24 +119,72 @@ For closed postings, the time between first and last sighting varies mostly by c
 
 These spans follow the archive's crawl dates, so they are rough. [roles.md](roles.md#what-the-closed-postings-add) has more on what the closed postings show.
 
+## The ten companies the first pass missed
+
+The first pass searched the archive for each company's careers-page URL, and it probed the usual ATS vendors by company name. It missed three things:
+- the links and embeds on those careers pages, which lead to the boards behind them;
+- ATS vendors outside its short list;
+- the job boards that universities and investors run for their companies.
+
+Fixing those found postings for eight of the ten:
+
+| Company | Postings (with description) | First seen to last | Where they were |
+|---|---|---|---|
+| [Emerald Cloud Lab](emerald-cloud-lab.md) | 43 (28) | 2014–2026 | Lever, first under its old name `emeraldtherapeutics` and then as `emeraldcloudlab`; BambooHR since 2024. Role names on its 2015–16 careers page |
+| [DP Technology](dp-technology.md) | 248 (248), all open | 2022–2026 | the JSON API behind its Feishu board, which issues a token to every visitor |
+| [Radical AI](radical-ai.md) | 31 (31) | 2024–2026 | Lever (`RadicalAI`: the token is case-sensitive), then Nodi; closed Lever postings on AlleyCorp's portfolio board |
+| [Deep Principle](deep-principle.md) | 7 (7) | 2025–2026 | inline on its own join pages, in Chinese and English |
+| [Polymerize](polymerize.md) | 7 (0) | 2023–2025 | titles of its careers pages, which load their text client-side |
+| [Altrove](altrove.md) | 6 (6) | 2025–2026 | Entrepreneurs First's and Contrarian Ventures' portfolio boards |
+| [Kebotix](kebotix.md) | 2 (2) | 2018–2019 | its Google Hire board |
+| [Telescope Innovations](telescope-innovations.md) | 2 (2) | 2024 | the MaRS tech-jobs board |
+| Mattiq | none | | its careers button links only to LinkedIn |
+| Intrepid Labs | none | | no careers page or ATS; its university and investor board pages listed no jobs |
+
+What they add:
+
+**Emerald Cloud Lab's postings are a cloud lab's staffing record.**
+- **Lab operators:** a [Laboratory Operator](emerald-cloud-lab.md#laboratory-operator-2014-03-26) posting was open almost continuously, on Lever from 2014 to 2021. It was posted again in Austin in 2023 and has been on BambooHR [since 2024](emerald-cloud-lab.md#laboratory-operator-i-ii-iii-2024-05-06), at $20–26 an hour.
+- **Locations:** the postings move from South San Francisco (to 2021) to Austin (from 2023). In 2024 they add Pittsburgh, for the Carnegie Mellon cloud lab: a [shift manager](emerald-cloud-lab.md#laboratory-operations-shift-manager-2024-01-04) ($70–90K), a [laboratory development engineer](emerald-cloud-lab.md#laboratory-development-engineer-i-2024-03-06), a [scientific operations](emerald-cloud-lab.md#scientific-operations-2024-01-09) role ($105–115K) and lab operators.
+- **Pay:** these are the lowest salaries posted anywhere in the survey.
+
+**DP Technology is building wet labs.**
+- **The board as a whole:** most of its 248 open postings are software, product, sales and operations for its AI-for-science platforms, and 95 are internships.
+- **2026 adds lab roles.** From January there are battery and electrolyte roles in Yibin, a battery-industry city.
+- **5 August 2026:** a batch of lab roles went up in Beijing:
+  - [ADME](dp-technology-materials-science.md#adme-engineer-2026-08-05), [analytical and separation](dp-technology-materials-science.md#analytical-and-separation-scientist-2026-08-05) and [chemical-analysis](dp-technology-materials-science.md#chemical-analysis-engineer-2026-08-05) scientists;
+  - an [automation-equipment engineer](dp-technology-lab-automation.md#automation-equipment-development-engineer-2026-08-05) and a [lab-automation application developer](dp-technology-lab-automation.md#lab-automation-application-developer-2026-08-05);
+  - a [facilities engineer](dp-technology-lab-automation.md#facilities-engineer-2026-08-05).
+- **By early September** came an [instrument-automation engineer](dp-technology-lab-automation.md#instrument-automation-engineer-2026-09-01) and an [EHS manager](dp-technology-lab-automation.md#ehs-manager-2026-09-03).
+- **The pattern:** that is the build-out Periodic posted at its launch (automation, facilities, safety). DP posted it eight months after its ~$114M Series C.
+
+**Radical AI hired scientists and lab engineers first.**
+- **August 2024:** its first postings were AI research scientists for [GNN and foundation models](radical-ai.md#ai-research-scientist-gnn-foundation-models-2024-08-22) and [generative models](radical-ai.md#ai-research-scientist-generative-models-2024-08-22), a [materials scientist](radical-ai.md#material-scientist-2024-08-22), and [mechanical](radical-ai.md#mechanical-engineer-2024-08-22) and [mechatronics](radical-ai.md#mechatronics-engineer-2024-08-22) engineers.
+- **Spring 2026:** computational chemists and materials scientists for metal alloys, robotics, and a [lab operations specialist](radical-ai.md#laboratory-operations-specialist-2026-06-04).
+- **Since August 2026, on Nodi:** an [automation technician](radical-ai.md#automation-technician-2026-08-21) ($66–103K), a [design mechanical engineer](radical-ai.md#mechanical-engineering-design-2026-08-21) ($140–185K), an [ML research engineer](radical-ai.md#ml-research-engineer-2026-09-17) ($235–295K) and software engineers ($165–295K).
+- **Context:** in January 2026 it committed to New York State to add 115 jobs.
+
+**Smaller companies hire one of each.**
+- **Altrove,** right after its $10M seed (October 2025): a [laboratory technician](altrove.md#laboratory-technician-advanced-materials-2025-10-03), an [inorganic-materials engineer for manufacturing and process design](altrove.md#inorganic-materials-engineer-manufacturing-and-process-design-2025-10-18) and a business-development associate. An ML engineer and a CTO associate followed in 2026.
+- **Telescope,** in August 2024: a [mechatronics engineer](telescope-innovations.md#mechatronics-engineer-automated-chemistry-technology-2024-08-16) (CAD 85–125K) and a [software engineer](telescope-innovations.md#software-engineer-automated-chemistry-technology-2024-08-20) (CAD 85–120K) for its automated chemistry technology.
+- **Deep Principle,** in 2025: a [Head of AI](deep-principle.md#head-of-artificial-intellgence-2025-06-17) and a [Head of Laboratory for high-throughput experimentation](deep-principle.md#head-of-laboratory-hte-2025-06-17). Both were gone from its page by December.
+
 ## Coverage and gaps
 
-Fifteen companies have postings here. Five more have only careers-page captures, and five have nothing.
-
-**Careers-page captures only:** Kebotix, Emerald Cloud Lab, Mattiq, Polymerize and Deep Principle. Their careers pages list jobs through embedded widgets that the archive did not capture, such as Greenhouse iframes, or they link out without naming the roles. So Kebotix's board (2019–21) and Emerald Cloud Lab's (2015–26) are lost apart from the page captures, which are linked from their pages here.
-
-**Nothing found:**
-- **Radical AI:** no public careers page or board.
-- **Telescope Innovations:** no careers pages in the archive.
-- **Intrepid Labs:** hires through the University of Toronto's entrepreneurship job board.
-- **DP Technology:** a Feishu job board that renders client-side, in Chinese.
-- **Altrove:** no public board.
+Twenty-three companies have postings here. Two have none:
+- **Mattiq.** Its careers page has one button, which links to its LinkedIn jobs tab. This survey does not read LinkedIn. Under its earlier name, Stoicheia, it had a one-page site, and no ATS board was ever archived under either name.
+- **Intrepid Labs.** It has no careers page and no ATS. Its pages on the University of Toronto and Radical Ventures job boards were archived in January and June 2026 with no jobs listed, and showed none on 9 October. A search snippet shows a "Director of Operations" posting on an aggregator, which was not read.
 
 **Thin coverage:**
 - **Citrine:** only from 2025 on. Its 2019–22 openings sat in a Greenhouse embed that was never captured.
+- **Kebotix:** two 2019 postings. Its 2020 Indeed widget and its 2021 Greenhouse board were never archived, under any form of their URLs.
+- **Emerald Cloud Lab:** nothing from 2017–19. Its 2015–16 roles have titles but no text, because their Lever pages were not archived.
+- **DP Technology:** only postings still open, dated by when they were published. Closed postings leave its board, and its posting pages were never archived.
+- **Polymerize:** seven titles with dates and no text. Its careers pages load their text client-side, and the archive never captured that data.
 - **Mitra Chem:** one 2021 posting plus today's.
 - **Materials Nexus:** two postings from 2022.
 - **Matlantis:** two postings from 2023–24.
+- **Telescope:** two 2024 postings.
 - **Entalpic:** its 2025 Notion role pages survive only as titles in their URLs.
 - **Tetsuwan:** two current postings.
 
@@ -160,7 +210,16 @@ Its partner is the bachelor's-level [Automation Engineer](periodic-labs.md#autom
 
 A university lab that runs unattended overnight will face the same staffing question.
 
-**For software, hire software engineers and teach them the lab.** 43% of software postings mention robots or lab hardware, but nearly always as a bonus rather than a requirement.
+**A cloud lab runs on hourly operators.** Emerald Cloud Lab is the closest commercial analogue to a university cloud lab. It has had a Laboratory Operator posting open for most of a decade, now at $20–26 an hour in Austin. When it set up Carnegie Mellon's cloud lab in 2024, it hired in Pittsburgh:
+- lab operators;
+- a [shift manager](emerald-cloud-lab.md#laboratory-operations-shift-manager-2024-01-04) ($70–90K);
+- a [laboratory development engineer](emerald-cloud-lab.md#laboratory-development-engineer-i-2024-03-06);
+- a [scientific operations](emerald-cloud-lab.md#scientific-operations-2024-01-09) role ($105–115K);
+- a junior IT administrator ($60–70K).
+
+That is the nearest thing in this survey to a staffing plan for an academic cloud lab.
+
+**For software, hire software engineers and teach them the lab.** 41% of software postings mention robots, but nearly always as a bonus rather than a requirement.
 
 **The descriptions work as templates.** When the VCL writes its own postings, the role-specific sections linked from each company page give concrete responsibilities and requirements at each level. They also show how the same title is scoped at a $300M startup and at a $10M one.
 
@@ -178,6 +237,10 @@ A university lab that runs unattended overnight will face the same staffing ques
 | Aionics | the WordPress REST API of its own site, which still serves postings from 2021–24 |
 | Mitra Chem | TriNet Hire pages linked from its careers page |
 | Entalpic | Notion's public page API |
+| Emerald Cloud Lab | BambooHR's careers API (`/careers/list` and `/careers/<id>/detail`) |
+| Radical AI | Lever's postings API (token `RadicalAI`) and Nodi's public job-offer endpoint |
+| DP Technology | the API behind its Feishu (Lark) Hire board, `POST /api/v1/search/job/posts`, with the token the board issues to every visitor |
+| Telescope, Altrove, Radical AI (closed postings) | posting pages on Getro boards run by MaRS, Entrepreneurs First and AlleyCorp, which keep a posting's page after it closes |
 
 The previous pass said Entalpic's Notion page could not be read without a browser. That was wrong: Notion's page API returns the hiring database as JSON.
 
@@ -188,8 +251,13 @@ The previous pass said Entalpic's Notion page could not be read without a browse
 Most applicant-tracking systems embed the posting in the page as JSON:
 - Ashby: `window.__appData`
 - Greenhouse: its Remix context
-- Rippling: `__NEXT_DATA__`
-- schema.org `JobPosting` on others
+- Rippling and Getro: `__NEXT_DATA__`
+- schema.org `JobPosting` on others (Lever, Google Hire)
+
+Others need their own readers:
+- **Lever board pages** list every opening with its team and location.
+- **BambooHR** keeps the title in `og:title`, and its archived `/careers/list` JSON lists the openings.
+- **Deep Principle** writes each posting into its join page's HTML.
 
 So one archived page yields the title, team, location, pay and full description, even where the page looks like an empty JavaScript app in a browser. The archive serves these pages gzip-encoded as originally sent, and [`fetch.get`](../../../scripts/startup_landscape/fetch.py) decodes them. The earlier note that Periodic's launch-day postings "could not be recovered" came from reading the undecoded bytes.
 
@@ -201,7 +269,20 @@ GitHub-hosted runners share outbound IP addresses, so other jobs' traffic counts
 - from a scratch directory, `~/jd-fetch`;
 - as one client, 6 s between requests, reads capped at 150 KB/s, at `nice 10`.
 
-The Pi was idle (load 0.00), and its camera script kept running throughout. The scratch directory was deleted afterwards and nothing else on the Pi was changed. The live job-board APIs were read from the runner. Nothing logged in anywhere, and no job aggregator was read: no LinkedIn, Indeed, Glassdoor or Wellfound.
+The Pi was idle (load 0.00), and its camera script kept running throughout. The scratch directory was deleted afterwards and nothing else on the Pi was changed.
+
+The second pass (10 October 2026) was refused by the archive after about 16 requests from the runner. It then sent its archive requests through the same Pi, using an `ssh -D` tunnel over Tailscale, with `$SL_SOCKS` pointing [`fetch.get`](../../../scripts/startup_landscape/fetch.py) at it.
+- The requests left from the Pi's address, but nothing ran or was stored on the Pi.
+- It was one client, 6 s between requests, reads capped at 150 KB/s: about 170 requests over 40 minutes.
+
+Both passes read the live job-board APIs from the runner.
+
+**What was not read.** Nothing logged in anywhere. No LinkedIn, Indeed, Glassdoor or Wellfound page was read, live or archived.
+
+**Getro boards.** Investors and universities run these boards to advertise their portfolio companies' jobs.
+- **Telescope** entered its own postings.
+- **Altrove's** reached the boards from its LinkedIn jobs tab, so their text is Getro's copy of Altrove's LinkedIn ad.
+- **Radical AI:** 13 of its 17 pages on AlleyCorp's board are also in the archive. The other 4 were found by checking the IDs next to the one the board still lists, because Getro numbers postings consecutively.
 
 **Building the tables.** [`scripts/startup_landscape/jobs_report.py`](../../../scripts/startup_landscape/jobs_report.py) does the following:
 - **Merges** the two sources by posting ID.
@@ -210,7 +291,7 @@ The Pi was idle (load 0.00), and its camera script kept running throughout. The 
 - **Reads requirements from the role-specific text only.** It drops lines that recur in at least 40% of one company's postings (the company pitch, perks, legal text) and sections headed "About us", "Benefits", "Equal opportunity" and the like. This keeps a pitch such as "we combine AI and robotics" from making every role look like a robotics role.
 - **Records three requirement fields** from what is left: the degrees named, the smallest "N+ years" figure, and a fixed list of skills.
 
-**Dates.** `first_seen` is the earliest of the board's publish date and the first Wayback capture. `last_seen` is the latest capture, or "open" if the posting was live on 10 October 2026. These are bounds from the inside: a posting was open at least that long.
+**Dates.** `first_seen` is the earliest of the board's publish date and the first Wayback capture. `last_seen` is the latest capture, or "open" if the posting was live on 10 October 2026. On a Getro board, `first_seen` is when the board first listed the posting, which can be later than the company posted it, and `last_seen` is when the board deactivated it. These are bounds from the inside: a posting was open at least that long.
 
 **Privacy and text.** Descriptions are the companies' own published wording. They are kept for research, and each one links to its source capture or live page. Email addresses and phone numbers are removed. A scan for people named in the descriptions found only executives, in line with the survey's leadership-only rule.
 
