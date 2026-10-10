@@ -44,7 +44,7 @@ Undated job ads on investor and partner boards (dates unknown, so they show role
 
 ## Job postings
 
-- **Current openings (2026-10-09):** unknown. Hiring runs through a JS-rendered Notion page ([Join Entalpic](https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057)) whose text cannot be read without a browser; no public Ashby, Greenhouse, Lever, Recruitee or Workable board answers to `entalpic`.
+- **Current openings (2026-10-09):** unknown. Hiring runs through a Notion page ([Join Entalpic](https://entalpic.notion.site/Join-Entalpic-9f29b9a69fb840508cd3f9a7c1c0d057)). No public Ashby, Greenhouse, Lever, Recruitee or Workable board answers to `entalpic`. The page renders in the browser, but Notion's page API serves its roles database as JSON. Four roles were open on 2026-10-10, and they and the 2025 postings are on the [job-postings page](../job-postings/entalpic.md).
 - **Captured posting history:** none recoverable. Wayback holds the Notion page from 2024-06-10 ("Entalpic is hiring") to 2026-05-19 ("Join Entalpic") but only as a script shell, so postings cannot be counted.
 
 | Period | New postings | Method | Source |

@@ -623,7 +623,7 @@ def timeline_figure(rows, meta, path):
     for r in dated:
         cos[r["company"]].append(r)
     order = sorted((c for c in cos if len(cos[c]) >= 3), key=lambda c: min(r["first_seen"] for r in cos[c]))
-    lo = date(2019, 1, 1)
+    lo = date(2021, 1, 1)
     fig, axes = plt.subplots(len(order), 1, figsize=(9, 0.62 * len(order) + 1.2), sharex=True)
     axes = [axes] if len(order) == 1 else axes
     for ax, slug in zip(axes, order):
@@ -645,7 +645,7 @@ def timeline_figure(rows, meta, path):
             else:
                 labels.append((d, [amt]))
         for d, amts in labels:
-            txt = "+".join(f"${a:g}M" for a in amts if a) or "round"
+            txt = "+".join(f"\\${a:g}M" for a in amts if a) or "round"  # escaped: "$…$" is mathtext
             ax.text(d, len(FUNCTIONS) + 0.9, " " + txt, fontsize=6, color=analyze.INK2, va="top", ha="left")
         ax.set_ylim(0.3, len(FUNCTIONS) + 1)
         ax.set_yticks([])
@@ -662,7 +662,7 @@ def timeline_figure(rows, meta, path):
                title="Function (top lane to bottom lane in each row)", title_fontsize=7)
     fig.suptitle("Job postings by first-seen date, with equity rounds (vertical lines)", y=1.035, fontsize=9,
                  fontweight="bold")
-    fig.text(0.99, 0.002, "Postings before 2019 are drawn at 2019. Sources: live job-board APIs and Wayback captures.",
+    fig.text(0.99, 0.002, "Sources: live job-board APIs and Wayback Machine captures. Rounds before 2021 are not drawn.",
              ha="right", fontsize=6, color=analyze.MUTED)
     fig.tight_layout(rect=(0, 0.01, 1, 0.97))
     fig.savefig(path, dpi=170, bbox_inches="tight")
