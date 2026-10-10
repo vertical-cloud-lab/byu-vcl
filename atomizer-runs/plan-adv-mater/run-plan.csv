@@ -1,0 +1,20 @@
+code,block,when,charge_g,powder_4047_wt_pct,cups,varies,meant_to_show,counts_toward,depends_on
+G0,gate,Oct 2026,0,,,none (no melt),"Landing point on the plate face set, checked (laser down the nozzle or door open), and recorded with the stack's slide mark; HMI camera in place; pour-pressure meaning confirmed with Bartosz; sieving, SEM and doser run on the u23y78, 4yghtr and kj0461 powder",none,"inventory of plates, 6063, consumables; sieves"
+A1,A baseline,Oct 2026,250,0,,none,"The gate works: the stream lands on the face and the plate atomizes; first run measured end to end",bar if valid; completion rate always,G0
+A2,A baseline,Oct-Nov 2026,250,0,,none,Run-to-run SD of every bar metric,bar,A1 valid
+A3,A baseline,Nov 2026,250,0,,none,Run-to-run SD; drift with run order,bar,
+A4,A baseline,Nov 2026,250,0,,none,Run-to-run SD; effect of a plate change if one falls here,bar,
+A5,A baseline,Nov 2026,250,0,,none,"Completes n = 5; check against the bar",bar,
+A6,A baseline (only if needed),Nov 2026,250,0,,none,"Tighter SD (95 % CI 0.62-2.45x at n = 6); only if a metric is within 20 % of its limit or a run was invalid",bar,A5 decision
+A7,A baseline (only if needed),Nov 2026,250,0,,none,Tighter SD,bar,A5 decision
+A8,A baseline (only if needed),Nov 2026,250,0,,none,"Final SD (95 % CI 0.66-2.04x); final call on the bar",bar,A5 decision
+B1,B spread,Late Nov 2026,250,22.5,4 thin cups 88 % full + 86.8 g rod,4047 in charge,"Measured Si against charge Si (about 3.0 wt%); first run on thin cups",spread,"thin cups machined; 4047 powder sieved"
+B2,B spread,Late Nov 2026,250,7.5,3 as-made cups 71 % full + 115.1 g rod,4047 in charge,"Smallest step up from 6063 (Si about 1.3 wt%): can EDS separate it from 0 wt%?",spread,
+B3,B spread,Dec 2026,250,30,5 thin cups 94 % full + 41.2 g rod,4047 in charge,"Top of the spread (Si about 3.9 wt%): does a fuller core still melt and mix? Candidate composition for the print",spread,"5 thin cups fit in the cold crucible (else 25 wt% with 4 full thin cups)"
+B4,B spread,Dec 2026,250,0,plain rod,none (drift check),"Has anything drifted since Block A (plate, nozzle, O2)? Compared against Block A's mean and SD",spread and bar,
+B5,B spread,Dec 2026,250,15,3 thin cups 78 % full + 132.2 g rod,4047 in charge,Middle of the spread (Si about 2.1 wt%),spread,
+B6,B spread,Dec 2026,250,30,5 thin cups 94 % full + 41.2 g rod,4047 in charge,Repeat of the top point: is the composition reproducible?,spread,
+B7,B spread,Dec 2026,250,7.5,3 as-made cups 71 % full + 115.1 g rod,4047 in charge,Repeat of the low point,spread,
+u23y78,B pilot (done Oct 2),Oct 2026,not recorded,~18.6,1 as-made cup,4047 in charge,"Pilot: a 4047 core melts in a 6063 cup; EDS mixing test (caliber#13)",pilot only,
+C1-Cn,C MIDI powder,Jan-Apr 2027,250,chosen after B,,none,"Enough powder for one MIDI print; each batch checked against the bar before blending. n = 1 for the 55 mm kit, about 8 for the full cylinder at 25 % in-range yield",print,"Utah time and build size; 4047 powder (about 75 g a run at 30 wt%)"
+D,D benchmarks,2027,,,,alloy,"In-house AlSi10Mg, Scalmalloy and others against purchased powder",separate plan,feedstock orders (ME Orders reopen)

@@ -1,0 +1,160 @@
+{
+ "charge_g": 250.0,
+ "sigma_ci": {
+  "3": [
+   0.52,
+   6.28
+  ],
+  "4": [
+   0.57,
+   3.73
+  ],
+  "5": [
+   0.6,
+   2.87
+  ],
+  "6": [
+   0.62,
+   2.45
+  ],
+  "8": [
+   0.66,
+   2.04
+  ],
+  "10": [
+   0.69,
+   1.83
+  ]
+ },
+ "runs_per_arm": {
+  "1": 17,
+  "1.5": 9,
+  "2": 6,
+  "3": 4,
+  "4": 3
+ },
+ "spread": [
+  {
+   "powder_wt_pct": 0.0,
+   "powder_g": 0.0,
+   "layout": null,
+   "Si": [
+    0.2,
+    0.6
+   ],
+   "Mg": [
+    0.45,
+    0.9
+   ]
+  },
+  {
+   "powder_wt_pct": 7.5,
+   "powder_g": 18.75,
+   "layout": {
+    "cup": "as_made",
+    "n_cups": 3,
+    "fill_frac": 0.71,
+    "fits": "easily",
+    "plain_6063_rod_g": 115.1
+   },
+   "Si": [
+    1.01,
+    1.53
+   ],
+   "Mg": [
+    0.42,
+    0.84
+   ]
+  },
+  {
+   "powder_wt_pct": 15.0,
+   "powder_g": 37.5,
+   "layout": {
+    "cup": "thin",
+    "n_cups": 3,
+    "fill_frac": 0.78,
+    "fits": "easily",
+    "plain_6063_rod_g": 132.2
+   },
+   "Si": [
+    1.82,
+    2.46
+   ],
+   "Mg": [
+    0.38,
+    0.78
+   ]
+  },
+  {
+   "powder_wt_pct": 22.5,
+   "powder_g": 56.25,
+   "layout": {
+    "cup": "thin",
+    "n_cups": 4,
+    "fill_frac": 0.88,
+    "fits": "easily",
+    "plain_6063_rod_g": 86.8
+   },
+   "Si": [
+    2.63,
+    3.39
+   ],
+   "Mg": [
+    0.35,
+    0.72
+   ]
+  },
+  {
+   "powder_wt_pct": 30.0,
+   "powder_g": 75.0,
+   "layout": {
+    "cup": "thin",
+    "n_cups": 5,
+    "fill_frac": 0.94,
+    "fits": "only if pushed to the wall",
+    "plain_6063_rod_g": 41.2
+   },
+   "Si": [
+    3.44,
+    4.32
+   ],
+   "Mg": [
+    0.32,
+    0.66
+   ]
+  }
+ ],
+ "spread_4047_powder_g": {
+  "one_pass": 187.5,
+  "endpoints_repeated": 281.25
+ },
+ "bar_6063": {
+  "block_a_g": 2000,
+  "block_b_g": 1469,
+  "cups_in_block_b": 23,
+  "chips_g": 657,
+  "spare_runs_g": 500,
+  "total_g": 4625
+ },
+ "midi_runs": {
+  "full_cylinder": {
+   "0.1": 18,
+   "0.15": 12,
+   "0.2": 9,
+   "0.25": 8,
+   "0.3": 6,
+   "0.4": 5,
+   "0.5": 4
+  },
+  "55mm_kit": {
+   "0.1": 2,
+   "0.15": 1,
+   "0.2": 1,
+   "0.25": 1,
+   "0.3": 1,
+   "0.4": 1,
+   "0.5": 1
+  }
+ },
+ "midi_4047_powder_g_per_run_at_top_point": 75.0
+}

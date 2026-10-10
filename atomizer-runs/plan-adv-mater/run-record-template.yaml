@@ -1,0 +1,155 @@
+# One copy per run, saved as atomizer-runs/<date>/run.yaml. Leave a field null rather than
+# guessing, and say where each value came from in `notes` if it wasn't read off the HMI.
+# What each field means and how to measure it: measurements.md in plan-adv-mater/.
+
+run:
+  bag_id: null            # six-character ID on the label (#249)
+  code: null              # plan code from run-plan.csv, e.g. A3, B5
+  date: null              # YYYY-MM-DD
+  run_order: null         # how many melt runs since Block A started, counting invalid runs
+  operators: []           # machine and transducer: trained operators only (#265)
+  videos: []              # YouTube links, start to end of the pour
+  valid: null             # true if every gate below passed
+  invalid_reason: null
+
+gate:                     # all must be true for the run to count toward the bar
+  landing_point_checked_before_heating: null
+  vibration_on_before_sealing_rod: null
+  o2_at_pour_le_30_ppm: null
+  fixed_settings_in_tolerance: null
+  pour_completed: null
+
+charge:
+  total_g: null           # target 250 +/- 2
+  bar_6063_lot: null      # lot or heat number of the bar
+  plain_rod_g: null
+  cups:                   # one entry per cup; omit for plain-rod runs
+    - id: null
+      type: null          # as_made | thin
+      cup_and_plug_6063_g: null
+      powder_g: null
+      powder_lot: null    # bag ID of the 4047 powder
+  powder_wt_pct: null     # from weighed masses (charge_composition() in PR #232)
+  cleaning: null          # e.g. 99 % IPA flush + swab, dried 80 C 30 min
+
+setup:
+  plate_id: null
+  plate_material: Mo
+  plate_runs_before: null # runs already done on this plate
+  booster: "1.5:1"
+  nozzle_id: null
+  nozzle_bore_mm: null
+  nozzle_runs_before: null
+  nozzle_cleared_of_globs: null
+  crucible_id: null
+  crucible_runs_before: null
+  stack_slide_mark: null  # mark on the stack's slide, set at G0
+  landing_point_from_tip_mm: null
+  landing_point_photo: null
+  room_rh_pct: null
+  room_temp_c: null
+
+process:
+  scan_peak_hz: null
+  amplitude_set_pct: 90
+  amplitude_real_pct: null    # from the HMI
+  power_w_during_pour: null   # filmed
+  melt_setpoint_c: null       # to drop the charge
+  pour_setpoint_c: null
+  pour_temp_reading_c: null
+  hold_min: null
+  chamber_pressure_mbar: null
+  pour_pressure_bar: null
+  turbo_pulses: null          # count, and times in notes
+  washes:                     # one entry per wash
+    - temp_c: null
+      o2_after_ppm: null
+  o2_at_sealing_rod_up_ppm: null
+  o2_end_of_pour_ppm: null
+  pour_start: null            # HMI clock or video time
+  pour_end: null
+  events: null                # clogs, stream bending, stack moved, etc.
+
+mass_balance_g:               # 0.01 g, each part weighed separately
+  jar_powder: null
+  cone_sweep_powder: null
+  plate_and_sonotrode_splats: null
+  cup_or_bowl_puddle: null
+  crucible_skull_and_nozzle_globs: null
+
+yields_pct:                   # computed from mass_balance_g and charge.total_g
+  powder: null
+  in_range: null
+  atomized_fraction: null
+  closure: null
+
+retained_sample:
+  mass_g: 5
+  sealed_under: null          # argon | desiccant
+  sealed_date: null
+
+psd:                          # one entry per half (A, B)
+  - half: A
+    sieved_g:
+      over_250: null
+      "63_250": null
+      "45_63": null
+      under_45: null
+    sem_particles: null
+    d10_um: null
+    d50_um: null
+    d90_um: null
+    under_15um_vol_pct: null
+  - half: B
+    sieved_g:
+      over_250: null
+      "63_250": null
+      "45_63": null
+      under_45: null
+    sem_particles: null
+    d10_um: null
+    d50_um: null
+    d90_um: null
+    under_15um_vol_pct: null
+
+morphology:                   # one entry per half
+  - half: A
+    particles: null
+    circularity_mean: null
+    circularity_sd: null
+    aspect_ratio_mean: null
+    satellites_pct: null
+    images: []
+  - half: B
+    particles: null
+    circularity_mean: null
+    circularity_sd: null
+    aspect_ratio_mean: null
+    satellites_pct: null
+    images: []
+
+composition:
+  eds_kv: 5
+  eds_si_wt_pct:              # mean and SD over particles, per jar position
+    top: {n: null, mean: null, sd: null}
+    middle: {n: null, mean: null, sd: null}
+    bottom: {n: null, mean: null, sd: null}
+  eds_contaminants: null      # Mo, W, Ni, Fe seen, if any
+  icp_oes: null               # filled in 2027 from the retained sample
+  powder_o_ppm: null          # filled in 2027, with storage days
+  storage_days_before_o: null
+
+flowability:
+  v_g: null                   # powder-doser docs/flowability, same-session AlSi10Mg reference
+  i_stop: null
+  reference_v_g: null
+  bulk_density_g_cm3: null
+  tap_density_g_cm3: null
+  hausner_ratio: null
+
+plate_after:
+  cracked: null
+  photos: []
+  retired: null
+
+notes: null
