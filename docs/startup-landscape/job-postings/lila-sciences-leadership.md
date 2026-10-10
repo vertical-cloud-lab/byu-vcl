@@ -35,6 +35,156 @@ Define success metrics and milestones (technical, product, commercial) and repor
 
 </details>
 
+<a id="senior-director-cloud-security-compliance-lead-2026-02-03"></a>
+
+### Senior Director, Cloud Security, Compliance Lead (2026-02-03)
+
+2026-02-03 → 2026-06-12 · leadership · San Francisco, CA USA · $260–346K · [source](https://web.archive.org/web/20260612173435/https://job-boards.greenhouse.io/lilasciences/jobs/4116721009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Cloud Security & Compliance Lead is responsible for the end-to-end security, governance, risk management, and regulatory compliance of Lila Sciences’ cloud environments and research workflows. You’ll own cloud security architecture, policy frameworks, data protection, and compliance programs across multi-cloud and on-premises contexts as appropriate. You’ll partner with Engineering, Data Science, IT, Legal, and Compliance to codify secure patterns, enable rapid yet safe experimentation, and maintain a robust governance program with auditable evidence for regulators and customers.
+What You'll Be Building
+Cloud Security Architecture & Governance
+- Define and maintain cloud security strategy, reference architectures, and security baselines for public cloud (AWS, Azure, GCP) and hybrid deployments.
+- Implement secure-by-default patterns for CI/CD is intentionally out of scope; focus on secure design patterns for cloud resources, data flows, and analytics.
+- Establish IAM least privilege, network segmentation, private endpoints, key/secret management, and centralized logging across AWS, Kubernetes (where applicable), and cloud-native services.
+Governance, Compliance & Risk Management
+- Develop, implement, and continuously improve policies, standards, and procedures aligned to applicable frameworks (e.g., NIST CSF, NIST 800-53, FedRamp, ISO 27001, SOC 2, GDPR/CCPA).
+- Lead data protection program: data classification, data minimization, data retention, and data lifecycle management; oversee DLP strategies where relevant.
+- Manage third-party risk assessments, vendor security questionnaires, and contract security annexes; maintain evidence for audits.
+Security Controls & Monitoring
+- Define and oversee security controls across cloud resources, including identity, access management, encryption, key management, log collection, and telemetry.
+- Collaborate with Security Operations to establish monitoring, alerting, incident response coordination, and evidence collection for audits.
+Compliance & Audit Readiness
+- Prepare for internal and external audits; map controls to frameworks and translate them into engineering artifacts and evidence.
+- Maintain alignment with SOC 2, ISO 27001, and other regulatory requirements, coordinate with Legal and Privacy on data protection controls.
+Data, ML/AI Security & Privacy
+- Ensure secure data movement, storage, and access patterns; implement data lineage and isolation for training vs. inference in ML workflows.
+- Address privacy-by-design considerations in data science processes; oversee secure handling of sensitive datasets. • Collaboration & Enablement
+- Partner with Engineering, IT, Legal, and Commercial teams to ensure cohesive risk management.
+- Provide security training and awareness for engineering, data science, and product teams; translate security requirements into actionable tasks.
+Evidence & Documentation
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="vice-president-head-of-marketing-2026-02-25"></a>
+
+### Vice President, Head of Marketing (2026-02-25)
+
+2026-02-25 → 2026-06-14 · leadership · Cambridge, MA USA · $228–304K · [source](https://web.archive.org/web/20260614204408/https://job-boards.greenhouse.io/lilasciences/jobs/4146076009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We’re seeking a Vice President / Head of Marketing focused on accelerating commercial growth and strategic partnerships. This role fuels pipeline, enables revenue, and increases partner-driven adoption across priority industry segments. Reporting line is flexible and can sit under our Chief Communication and works directly with the CEO/Founder, with day-to-day collaboration across Sales, Partnerships, Revenue, Product, and Scientific leadership. You will define and execute marketing motions that translate frontier science and technical capabilities into enterprise-ready programs that open doors, build trust, and close.
+What You'll Be Building
+Drive commercial demand and pipeline
+- Build and run an integrated demand engine targeting senior scientific and business buyers (R&D leadership, innovation executives, technical decision-makers).
+- Develop account-based marketing programs for enterprise and strategic accounts.
+- Plan and optimize channel mix across digital, field events, executive programs, and partner-led efforts.
+- Own reporting and iteration loops that connect marketing activity to pipeline outcomes.
+Enable partnerships and ecosystem growth
+- Create go-to-market motions with partners that generate qualified introductions and joint opportunities.
+- Develop partner-facing materials, co-marketing kits, and joint event strategies.
+- Identify and cultivate ecosystems that matter to LILA’s commercial expansion (scientific communities, industry networks, and mission-aligned institutions).
+Build segment-specific positioning and sales enablement
+- Translate LILA’s technical platform into clear, differentiated value propositions for priority verticals.
+- Partner with Commercial leadership to define ICPs, buyer personas, and qualification narratives.
+- Deliver sales enablement: pitch narratives, technical collateral, case studies, ROI framing, objection handling, and competitive context.
+- Support longer enterprise sales cycles with the right proof points at each stage.
+Produce content that supports revenue and credibility
+- Develop high-leverage content (technical briefs, case studies, webinars, white papers, executive narratives).
+- Package customer and partner outcomes into reusable assets that accelerate trust and decision-making.
+- Ensure marketing outputs are consistent with LILA’s brand and narrative, in close coordination with Corporate Communications.
+
+**What success looks like (first 6–12 months)**
+- Clear commercial messaging and a repeatable set of sales assets for core segments.
+- A measurable pipeline contribution engine tied to specific commercial targets.
+- Partner co-marketing motions that produce qualified opportunities.
+- A content and events strategy that materially improves credibility with enterprise scientific buyers.
+- 10+ years in B2B marketing, with senior leadership experience in high-consideration enterprise or technical markets.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="associate-director-director-strategic-events-2026-02-26"></a>
+
+### Associate Director/Director, Strategic Events (2026-02-26)
+
+2026-02-26 → 2026-06-10 · leadership · Cambridge, MA USA · $148–224K · [source](https://web.archive.org/web/20260610125132/https://job-boards.greenhouse.io/lilasciences/jobs/4147718009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Associate Director/Director, Strategic Events  will build and lead Lila’s global external events function. You will own a portfolio of high‑impact programs—flagship Lila events, executive summits, investor and partner gatherings, policy convenings, and key third‑party conferences—that drive pipeline, relationships, talent, and brand .
+This is not a logistics planner role. You own the “why” and “how” of events: which audiences we prioritize, what we say, and how each moment advances Lila’s goals with:
+- Investors – understanding our platform, business model, and roadmap
+- Commercial partners & customers – seeing AISF capabilities and use cases, ssi milestones and team capabilities
+- Policymakers – building trust in SSI, safety, and responsible deployment
+- AI & science talent – experiencing our mission, culture, and technical ambition. *NOTE: Events driving talent acquisition are a key priority in 2026. Experience with organizing engaging events for technical audiences is a plus.
+What You'll Be Building
+- Develop a 12–18 month strategic events roadmap aligned with company priorities and GTM motions (e.g., SLAS, JPM, NVIDIA GTC, Lila‑hosted summits, hackathons).
+- Define clear objectives and KPIs for each event (pipeline and revenue influence, investor and partner meetings, policy relationships, talent leads, brand reach).
+- Own strategy and execution for flagship and executive‑level events, including programming, formats, and audience journeys tailored for investors, partners/customers, policymakers, and technical talent.
+- Lead cross‑functional planning with MarCom, Commercial, BizOps, Federal/Policy, Talent, and Science/AI/Robotics teams to ensure events are fully integrated with product, PR, content, and recruiting.
+- Manage budgets, agencies, and vendors , including sponsorships and production partners, with clear forecasting and ROI tracking.
+- Design immersive experiences and demos that bring Lila’s AI platform, AI science factories and scientific breakthroughs to life for different audiences.
+- Build scalable playbooks and processes so future regional and functional teams can execute consistent, high‑quality events.
+- 10–15+ years in strategic events, event marketing, or experiential marketing, ideally in B2B tech, life sciences, or AI.
+- Proven track record owning a global events portfolio that serves multiple senior audiences (talent acquisition, investors, enterprise customers/partners, policymakers, technical communities).
+- Strong program management skills and comfort operating in a fast‑moving, highly cross‑functional environment.
+- Ability to define and track event ROI , working with CRM and marketing tools (e.g., Salesforce or equivalents).
+- Excellent storytelling and communication , with the range to speak credibly to investors, scientists, engineers, policymakers, and candidates.
+- Experience managing vendors and influencing C‑suite leaders.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-facilities-2026-03-03"></a>
+
+### Director, Facilities (2026-03-03)
+
+2026-03-03 → 2026-06-10 · leadership · Cambridge, MA USA · $168–224K · [source](https://web.archive.org/web/20260610121113/https://job-boards.greenhouse.io/lilasciences/jobs/4163575009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is looking for a strategic, hands-on Director of Facilities to lead the day-to-day and long-term management of multiple facilities. You’ll own a scalable facilities strategy, drive safety and compliance across sites, and oversee budgets, capital planning, vendor governance, and KPI reporting. This role is a cross-functional, cross-site leadership position with real responsibility for building and growing a world-class facilities team that scales with our growth and supports our scientific mission.
+What You'll Be Building
+- Strategy & Leadership
+- Define and execute a comprehensive facilities strategy across multiple sites that aligns with company growth, science programs, and operational risk posture.
+- Build, mentor, and lead a high-performing facilities organization. Establish clear career paths, succession plans, and a culture rooted in safety, reliability, and continuous improvement.
+- People & Team Management
+- Directly manage and develop facility managers, supervisors, and support staff; create a positive, collaborative culture with a strong focus on employee experience and professional growth.
+- Foster cross-functional collaboration with BD, tech, finance, legal, and HR to drive decisions and improvements.
+- Safety, Compliance, and Quality
+- Set and uphold enterprise-wide safety standards and facilities compliance across all sites; guide audits and corrective actions.
+- Lead capital planning, lifecycle management, and EOL decisions for critical equipment using ROI-driven analyses.
+- Financial Stewardship
+- Oversee multi-site budgets, long-range capital planning, and KPI achievement; optimize total cost of ownership.
+- Own the vendor management lifecycle, including RFPs, contract negotiations, SLAs, and performance reviews.
+- Operations & Process Excellence
+- Standardize and optimize maintenance processes with documentation, digital tools, and scalable playbooks; champion improvements with a strong emphasis on the employee and occupant experience.
+- Implement governance, risk management, and compliance controls; ensure audit readiness and transparent reporting.
+- Stakeholder & Client Liaison
+- Be the primary touchpoint with clients, senior leadership, Facilities Org, and key business teams; translate facilities strategy into tangible business value.
+- Partner with HR on workforce planning, safety training, and employee engagement initiatives.
+- Project Delivery & Portfolio Management
+- Lead major projects (renovations, expansions, high-impact maintenance) from scoping to closeout; manage schedule, budget, and risk.
+- Align cross-site efforts to ensure consistent service levels and performance metrics.
+- Performance Measurement & Improvement
+- Define and track key metrics (safety, reliability, lifecycle spend, uptime, cost-to-serve, work-order throughput, client satisfaction) and use data to drive improvements.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="associate-director-director-commercial-counsel-2026-03-09"></a>
 
 ### Associate Director/Director, Commercial Counsel (2026-03-09)
@@ -70,6 +220,35 @@ $232,000 — $327,000 USD
 
 </details>
 
+<a id="director-nucleic-acid-delivery-2026-03-11"></a>
+
+### Director, Nucleic Acid Delivery (2026-03-11)
+
+2026-03-11 → 2026-06-16 · leadership · Cambridge, MA USA · $184–256K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4179564009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Director of Nucleic Acid Delivery will lead the discovery and engineering of next-generation delivery systems for nucleic acid cargo. This role will drive the design of targeted lipid nanoparticles (tLNPs) and other biological delivery modalities to enable precise delivery of nucleic acids across diverse tissues and cell types.
+Leveraging the Lila Sciences AI platform and AI Science Factory , this leader will guide an interdisciplinary team of scientists in integrating AI-driven hypothesis generation, robotics-enabled experimentation, and biological insight to accelerate discovery of transformative delivery technologies. The role will focus on the biological targeting and functional delivery, while collaborating closely with formulation scientists responsible for lipid composition and formulation optimization.
+This position is ideal for a  creative scientific leader who believes that AI, automation, and integrated biological systems thinking will fundamentally reshape therapeutic discovery. The successful candidate will bring deep expertise in nucleic acid delivery and a passion for building collaborative teams.
+What You'll Be Building
+- Lead and build a high-performing team of senior scientists, scientists, and research associates focused on nucleic acid delivery technology development.
+- Drive the discovery and engineering of targeted lipid nanoparticle systems for delivery of nucleic acid therapeutics.
+- Design and evaluate targeting ligands, conjugation strategies, and nanoparticle architectures that enable tissue- and cell-specific delivery.
+- Develop and implement innovative biological assays and screening platforms to evaluate delivery efficiency, biodistribution, cellular uptake, and functional nucleic acid expression or editing.
+- Leverage the Lila AI platform and AI Science Factory to accelerate design–build–test–learn cycles through AI-driven experimental design and robotics-enabled experimentation.
+- Collaborate closely with formulation scientists to integrate biological targeting strategies with lipid chemistry and nanoparticle formulation optimization .
+- Explore and evaluate next-generation delivery modalities that extend beyond traditional LNPs.
+- Establish strategic scientific direction for nucleic acid delivery research and ensure alignment with company-wide therapeutic goals.
+- Foster a culture of innovation, collaboration, and scientific rigor , mentoring team members and developing future leaders in the field.
+- PhD in molecular biology, bioengineering, chemical biology, biomedical engineering, pharmacology, or a related discipline with 8–10+ years of relevant industry or academic experience , or a BS/MS with 12–15+ years of experience in nucleic acid delivery or genetic medicine.
+- Demonstrated expertise in lipid nanoparticle technologies, nucleic acid delivery systems, or related genetic medicine platforms .
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="associate-director-director-customer-program-management-life-sciences-2026-03-17"></a>
 
 ### Associate Director / Director, Customer Program Management, Life Sciences (2026-03-17)
@@ -97,6 +276,64 @@ Process & Scale
 - Lead the development of scalable project management practices, templates, and tools as Lila's partnership portfolio grows
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-discovery-chemistry-2026-03-25"></a>
+
+### Director, Discovery Chemistry (2026-03-25)
+
+2026-03-25 → 2026-06-10 · leadership · Cambridge, MA USA · $184–246K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4192648009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+The Director, Discovery Chemistry will lead the design, synthesis, and optimization of small molecules across Lila’s discovery platform, with a primary focus on organic synthesis, molecular design, and scalable chemistry execution . This leader will build and scale a world-class molecular chemistry program that translates AI-generated molecular hypotheses into high-quality, synthetically tractable, and functionally validated chemical matter.
+Working closely with Lila’s AI, automation, computational, biology, and platform teams, this role will establish the chemistry infrastructure required to rapidly progress novel molecules from concept to validated candidates across a broad range of discovery efforts. The Director will drive synthetic strategy, route design, analog generation, molecular property optimization, and chemistry-enabled innovation, while enabling seamless integration with robotic synthesis and platform-based experimentation.
+This leader will play a central role in shaping Lila’s molecular discovery engine by combining deep expertise in synthetic organic chemistry, molecular design, and data-enabled experimentation to accelerate the discovery of high-value molecules for therapeutic and broader platform applications.
+What You'll Be Building
+- Drive discovery chemistry strategy across discovery programs, with strong emphasis on small molecule design, synthetic innovation, analog generation, and optimization of chemical matter.
+- Lead the design and execution of synthetic routes for novel small molecules, emphasizing speed, robustness, scalability, and compatibility with automated synthesis platforms.
+- Develop and implement efficient workflows for molecular design, compound prioritization, analog generation, and iterative design–make–test cycles in collaboration with AI and computational teams.
+- Partner closely with automation and platform teams to establish robotic and high-throughput chemistry capabilities that expand accessible chemical space and accelerate molecule generation.
+- Guide the selection of reagents, reaction modalities, and synthetic methodologies to enable rapid exploration of structurally diverse and functionally relevant chemical matter.
+- Drive discovery chemistry strategy across discovery programs, with strong emphasis on small molecule design, synthetic innovation, analog generation, and optimization of chemical matter.
+- Lead the design and execution of synthetic routes for novel small molecules, emphasizing speed, robustness, scalability, and compatibility with automated synthesis platforms.
+- Develop and implement efficient workflows for molecular design, compound prioritization, analog generation, and iterative design–make–test cycles in collaboration with AI and computational teams.
+- Partner closely with automation and platform teams to establish robotic and high-throughput chemistry capabilities that expand accessible chemical space and accelerate molecule generation.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-federal-strategy-and-capture-government-partnerships-2026-03-30"></a>
+
+### Director, Federal Strategy and Capture, Government Partnerships (2026-03-30)
+
+2026-03-30 → 2026-06-10 · leadership · Cambridge, MA USA · $168–238K · [source](https://web.archive.org/web/20260610131336/https://job-boards.greenhouse.io/lilasciences/jobs/4202459009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is looking for a Director of Federal Strategy & Capture to convert senior agency relationships and deep policy fluency into real government partnerships and funding wins. This role sits within our Government Partnerships organization and operates at the front end of capture — shaping the competitive environment before opportunities are formally announced, reading where the federal funding landscape is heading, and opening doors that demand genuine scientific and policy credibility.
+This is not a policy role. It's a capture role that requires someone with unusually deep federal experience.
+What You'll Be Building
+Named Account Ownership — Build, manage, and advance senior relationships at DOE, ARPA-E, NIH, and adjacent US mission agencies. You own the health, depth, and trajectory of those relationships over time.
+Opportunity Shaping — Engage agencies early enough to influence how funding opportunities are scoped and structured before they become RFPs, ensuring alignment with Lila's strategic roadmap.
+Cross-Agency Narrative Development — Partner with the Head of Government Partnerships to connect Lila's portfolio to national science priorities and build a prioritized federal pipeline.
+Institution Building — Help stand up Lila's federal capture function, including how we track relationships, manage pipeline, and engage agencies systematically over time.
+- Senior US federal experience at the intersection of science, policy, and strategy — agency, NSC, interagency, or equivalent background
+- Scientific fluency in life sciences, biotechnology, or adjacent domains
+- A demonstrated track record of turning relationships into concrete outcomes: funded programs, formal partnerships, or procurement pathways
+- Experience standing up new government functions, programs, or divisions from scratch
+- Comfort operating in a fast-moving, resource-constrained environment where you're building as you go
+
+**Bonus Points For**
+- Familiarity with federal funding mechanisms — OTAs, cooperative agreements, SBIRs, BAAs — and how to position a company advantageously within each
+- Existing relationships within DOE, ARPA-E, DARPA, BARDA, DoD, NSC, or interagency bioeconomy and biosecurity networks
+- Experience working with or inside a startup, venture-backed company, or other resource-constrained private sector environment
+- Familiarity with Congressional authorization and appropriations processes as they relate to agency R&D priorities
+- Comfort with CRM or pipeline tracking tools to systematize relationship and opportunity management
 
 </details>
 
@@ -152,6 +389,94 @@ What You'll Be Building
 
 **Compensation**
 $400,000 — $500,000 USD
+
+</details>
+
+<a id="director-senior-director-talent-acquisition-2026-04-15"></a>
+
+### Director / Senior Director, Talent Acquisition (2026-04-15)
+
+2026-04-15 → 2026-06-06 · leadership · Cambridge, MA USA · $168–272K · [source](https://web.archive.org/web/20260606054020/https://job-boards.greenhouse.io/lilasciences/jobs/4219171009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building at the frontier of AI-driven science, and the quality of our team is the most important variable in our success. As Director of Talent Acquisition, you will lead a team of recruiters, sourcers, and TA Operations professionals maintaining a critically high talent bar across AI, Software, and Scientific hiring.
+You will set the strategic direction for how Lila finds, attracts, and closes exceptional talent in some of the most competitive markets in the world, designing interview processes, developing bespoke sourcing strategies, and building the metrics infrastructure to track what's working. You will also coach and mentor your team, raising the overall craft of the function.
+The right person is deeply curious about highly technical disciplines, well-networked across AI, Software, and Science talent communities, and driven to multiply the brilliance and culture of the company with every hire. You operate with high autonomy and are motivated by building a talent function that is itself a competitive advantage.
+What You'll Be Building
+- Lead and develop a team of recruiters, sourcers, and TA Operations professionals, setting high standards for performance, craft, and candidate experience
+- Own full-cycle recruiting strategy across the entire company, scaling the organization across multiple technical disciplines, functions, and geographies
+- Design and continuously improve interview processes, sourcing strategies, and closing approaches for highly technical and competitive roles
+- Build and deploy AI-powered tools and custom sourcing methodologies that raise the ceiling on how Lila recruits, and socialize best practices up to and including the C-suite
+- Build and manage recruiting metrics and reporting infrastructure to track pipeline health, conversion rates, time-to-fill, and quality of hire
+- Serve as a thought partner to senior leadership on talent market trends, hiring forecasts, and team-building strategy
+- 10+ years of recruiting experience, with at least 3 years building and leading high-performing TA teams in a fast-growing company
+- Demonstrated success developing recruiter capability, raising the bar on sourcing craft, candidate quality, and team-wide performance
+- Deep technical recruiting expertise across multiple of the following: AI/ML, Software Engineering, Scientific research
+- Proven ability to scale a recruiting function across disciplines, geographies, and role types as a company grows
+- Track record of building and deploying AI-powered tools and custom sourcing methodologies that give the team a structural advantage
+- Strong command of recruiting metrics and the ability to translate data into team priorities and hiring strategy
+- Advises senior leadership and hiring managers on talent strategy and how to build world-class teams at scale
+
+**Bonus Points For**
+- Experience scaling TA functions at high-growth companies from early stage through significant organizational expansion
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-sustaining-engineering-lab-operations-2026-04-22"></a>
+
+### Director, Sustaining Engineering & Lab Operations (2026-04-22)
+
+2026-04-22 → 2026-06-10 · leadership · Cambridge, MA USA · $168–224K · [source](https://web.archive.org/web/20260602011834/https://job-boards.greenhouse.io/lilasciences/jobs/4227385009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is building AI Science Factories (AISFs) — highly automated, AI-directed labs that generate the proprietary experimental data powering our AI platform. As we scale from one AISF to many, the operational infrastructure that keeps those factories running is a first-class strategic capability.
+The Director of Sustaining Engineering & LabOps owns that execution layer: fleet reliability, incident response, AISF health, root cause analysis, site-level continuous improvement, and the execution of platform releases and change control at the site — alongside the operational foundation that makes it possible (consumables, reagents, CMMS, asset management, PM, first-response maintenance, multi-shift logistics).
+This role will build out Lila's Local Site Sustaining Engineering capability from the ground up, incorporating Maintenance Engineering (ME) as a sub-function. It reports solid-line to the VP, ASP Strategy and Operations with a dotted line to the Director of Sustaining Engineering (Global / Cambridge Core Engineering) for platform standards, change control, and equivalence evidence. The function executes within centrally defined platform constraints and feeds structured signal back to Global Engineering through the operating cadences defined in the ASP Engineering operating model.
+You'll define the operating model, lead its expansion to new sites, drive AI-enabled innovation in equipment health and lab operations, and author the standards that travel with every AISF we open. You'll be a principal contributor to the Blueprint program — the global deployment framework defining how Lila builds and runs AISFs at scale.
+What You'll Be Building
+Local Site Sustaining Engineering (incl. Maintenance Engineering)
+The site-level execution layer described in the ASP Engineering operating model — executes within centrally defined platform constraints and feeds structured signal back to Cambridge Core Engineering.
+- Build the Local Site Sustaining Engineering function from scratch in partnership with HCE and Global Engineering; incorporates Maintenance Engineering (instrument PM, calibration, first-response troubleshooting) as a sub-capability
+- Own fleet reliability, incident response, and AISF health at the site — on-call rotations, severity policy, incident playbooks, RCA library
+- Own deployment, commissioning, and operational readiness; partner with the Deployment Project team during stand-up and own steady-state post-handoff
+- Execute the two-lane change model : route platform-critical changes (Lane A) through Global Change Control; manage bounded site-local changes (Lane B) within explicit guardrails; document and time-box emergency-path bypasses
+- Provide the site signature for the dual-signoff go-live model (Platform Release Certification + Site/Workcell Commissioning acceptance)
+- Drive site-level continuous improvement within platform guardrails; surface candidates for promotion into platform releases
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="vice-president-engineering-2026-04-25"></a>
+
+### Vice President, Engineering (2026-04-25)
+
+2026-04-25 → 2026-06-14 · leadership · Cambridge, MA USA · $310–380K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4232839009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+As Lila scales its AI Science Factories globally, the VP of Engineering will create and sustain an engineering model for a unified, scalable platform for autonomous experimentation. This role will be responsible for defining and implementing that platform across hardware, automation, and systems engineering. This executive will own strategy, execution, and talent across Lila’s systems, hardware, and automation engineering. The role sits on the senior leadership team, reports directly to the Chief Autonomous Science Officer, and interfaces directly with Robotics, Software, Operations, and Science teams.
+The VP Engineering will bring deep technical experience in automation of lab science, a track record of building and leading multi-disciplinary engineering organizations, mentorship practices that foster career development of engineers at all levels, and the judgment to balance near-term delivery with long-term platform development. This is a hands-on leadership role in a fast-moving environment, requiring brilliance and dynamism to realize autonomous experimentation across materials science, chemistry, and life science. The role requires engineering innovations to achieve an unprecedented depth of AI integration in lab science, which combined with aggressive scaling of Lila’s AI Science Factories (AISFs) will produce the highest degree of scientific intelligence on earth.
+What You'll Be Building
+- Set the engineering roadmap for ASP Engineering, including objectives, risks, and platform priorities via collaboration with the Robotics, Software, Science, and Product teams.
+- Define and drive a unified platform architecture across hardware, automation, and systems engineering, reducing one-off designs and enabling repeatable system deployment across sites
+- Establish system-level ownership of architecture, interfaces, and requirements to ensure consistent integration across all engineering domains
+- Implement efficient processes for lifecycle, design controls, safety and compliance, change management, and deployment of autonomous laboratories to support rapid scaling without compromising system consistency
+- Develop a repeatable deployment model for standing up global AI Science Factory sites with predictable performance and reliability
+- Create a culture of mentorship that supports execution of the roadmap while fostering career development of engineers
+- Partner with Robotics and Software to build, industrialize, and scale all-of-science autonomous labs with a focus on reliability, throughput, and quality
+- Integrate AI into the engineering lifecycle to bolster engineering speed and quality, decision making, and continuous improvement
+- Collaborate with Talent Acquisition to establish hiring practices that accelerate identification and onboarding of brilliant, culturally-aligned engineers
+- Partner with AI Research, Software, Product, and Science to align platform capabilities with scientific and commercial priorities
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -411,6 +736,41 @@ What You'll Be Building
 - Scientific fluency sufficient to engage credibly with technical partners and represent Lila's platform with authority
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="director-senior-director-research-engineering-life-sciences-ai-2026-08-05"></a>
+
+### Director / Senior Director, Research Engineering, Life Sciences AI (2026-08-05)
+
+2026-08-05 → 2026-08-20 · leadership · San Francisco, CA USA · $320–490K · [source](https://web.archive.org/web/20260820014817/https://job-boards.greenhouse.io/lilasciences/jobs/4343454009?utm_source=bandana)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+LSAI (Life Sciences Artificial Intelligence) is building the computational platform that powers Lila's work in the life sciences. We are looking for a Research Engineer to own and build the core codebase that our models plug into, the foundation on which our scientists build and ship their work. This role is part of the LSAI leadership team and reports to the SVP of Generative Biology.
+This role combines deep hands-on IC work with growing management responsibility. You will personally architect and build the core platform while also building and leading a team as headcount grows. IC contribution remains the top priority for this role.
+What You'll Be Building
+- Design, build, and own the foundation of the LSAI codebase, the core infrastructure that scientist-owned models plug into.
+- Set and enforce engineering standards for code quality, testing, versioning, documentation, and repository structure.
+- Make architectural decisions that balance rigor with the reality that most contributors are scientists first, engineers second.
+- Anticipate infrastructure bottlenecks and define the platform roadmap to enable rapid iteration while maintaining quality and reproducibility.
+- Build and manage an engineering team over time while remaining a primary hands-on contributor.
+- Strong track record designing and building core software platforms or frameworks that scientists and engineers depend on.
+- Deep platform architecture expertise, with biological applications such as protein design, nucleic-acid design, or cell foundation models as a plus.
+- Experience building infrastructure and tooling alongside scientists in a research environment without sacrificing velocity.
+- Full ML lifecycle expertise across data, training, evaluation, and MLOps, with a track record of taking research code to production.
+- Comfort shifting between hands-on building and strategic leadership without letting either crowd out the other.
+- Experience mentoring people and setting technical practices across a team or organization, beyond individual output.
+
+**Bonus Points For**
+- Experience in a bioML lab or scientific computing environment.
+- Familiarity with or curiosity about computational biology, protein modeling, or ML-adjacent codebases.
+- Comfort working around model builders, even if you do not build the models yourself.
+- Performance engineering experience, including profiling and optimizing training and inference.
+- Experience writing or tuning CUDA or Triton kernels.
+- Ability to reason about GPU utilization, MFU/HFU, memory bandwidth, and kernel-level bottlenecks.
+- Deep expertise in the modern ML systems stack, including PyTorch internals, mixed precision, and distributed training across multi-GPU or multi-node clusters.
 
 </details>
 

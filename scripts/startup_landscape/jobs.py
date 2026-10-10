@@ -272,7 +272,52 @@ def parse_page(url, body):
         return out
     # Company's own page (WordPress job post, careers page, PeopleHR opening).
     art = (re.search(r'(?is)<article[^>]*>(.*?)</article>', body) or re.search(r'(?is)<main[^>]*>(.*?)</main>', body))
-    out.append({"title": page_title(body), "text": to_text(art.group(1) if art else body), "generic": True})
+    text = to_text(art.group(1) if art else body)
+    out.append({"title": page_title(body), "text": text, "generic": True})
+    out += dated_listings(to_text(body))
+    out += linked_listings(body)
+    return out
+
+
+ATS_LINK = re.compile(
+    r'(?is)<a[^>]+href="([^"]*(?:trinethire\.com/companies/[^"/]+/jobs/(\d+)-([\w-]+)|'
+    r'greenhouse\.io/[^"/]+/jobs/(\d+)|[?&]gh_jid=(\d+)|lever\.co/[^"/]+/([0-9a-f-]{36})|'
+    r'ashbyhq\.com/[^"/]+/([0-9a-f-]{36})|workable\.com/[^"]*?/j/(\w+)|bamboohr\.com/[^"]*?id=(\d+)|'
+    r'applytojob\.com/apply/(\w+)))"[^>]*>(.*?)</a>')
+
+
+def linked_listings(body):
+    """Openings a careers page links to on an applicant-tracking system: the link
+    text (or the URL slug) is the title, the ATS id the key. Older careers pages
+    often list jobs this way while the posting pages themselves were never archived."""
+    out, seen = [], set()
+    for m in ATS_LINK.finditer(body):
+        ids = [g for g in m.groups()[1:-1] if g]
+        pid = ids[0] if ids else None
+        title = to_text(m.group(m.lastindex)) if m.lastindex else ""
+        if (not title or re.match(r"(?i)^(apply|learn more|view|details|read more|see|more)\b", title)) and m.group(3):
+            title = m.group(3).replace("-", " ").title()
+        if not pid or not title or pid in seen or len(title) > 120:
+            continue
+        seen.add(pid)
+        out.append({"posting_id": pid, "title": title, "listing_only": True, "url": m.group(1)})
+    return out
+
+
+MONTH = r"(?:January|February|March|April|May|June|July|August|September|October|November|December)"
+
+
+def dated_listings(text):
+    """A careers page that lists each opening as 'Month D, YYYY / Title / blurb / Apply' (Atinary)."""
+    from datetime import datetime
+    out = []
+    for when, title, blurb in re.findall(rf"(?m)^({MONTH} \d{{1,2}}, \d{{4}})\n(.{{4,120}})\n(.+?)\nApply\b", text):
+        try:
+            d = datetime.strptime(when, "%B %d, %Y").date().isoformat()
+        except ValueError:
+            continue
+        out.append({"posting_id": "title:" + re.sub(r"[^a-z0-9]+", "-", title.lower()).strip("-"),
+                    "title": title.strip(), "published": d, "text": clean(blurb)})
     return out
 
 

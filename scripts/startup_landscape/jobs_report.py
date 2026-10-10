@@ -147,7 +147,8 @@ def quarter(d):
 
 GENERIC_TITLE = re.compile(r"(?i)^(careers?|jobs?|job openings|join us|join our team|open positions|work with us)\b")
 NOT_A_JOB = re.compile(r"(?i)privacy|data protection|processing of \(personal\) data|cookie|imprint|impressum|"
-                       r"\{\{|uses ai to analy[sz]e applications")
+                       r"\{\{|uses ai to analy[sz]e applications|^(apply|learn more|view|details|read more)\b|^notion$|"
+                       r"connected workspace")
 
 
 def salary_from_text(*texts):
@@ -191,6 +192,22 @@ def merge():
             continue
         for k, v in (data.get("spans") or {}).items():
             spans[(slug, k)] = v
+        for pattern, caps in (data.get("captures") or {}).items():
+            if "notion.site" not in pattern:
+                continue
+            # Notion pages render client-side, but each role page's URL is "<Title-Words>-<page id>".
+            pages = {}
+            for c in caps:
+                m = re.match(r"https?://[^/]+/([^/?#]+)-([0-9a-f]{32})(?:[?#].*)?$", c["original"])
+                if m and not re.search(r"(?i)hiring|^join", m.group(1)):
+                    a = pages.setdefault(m.group(2), {"slug": m.group(1), "first": c["first"], "last": c["last"],
+                                                      "url": c["original"]})
+                    a["first"], a["last"] = min(a["first"], c["first"]), max(a["last"], c["last"])
+            for pid, a in pages.items():
+                title = re.sub(r"-(Internship|CDI|CDD)$", r" (\1)", a["slug"]).replace("-", " ")
+                by[slug][pid].append({"basis": "wayback", "listing_only": True, "title": title,
+                                      "capture": f'https://web.archive.org/web/{a["first"]}/{a["url"]}',
+                                      "first_seen": a["first"], "last_seen": a["last"]})
         for r in data["postings"]:
             pid = str(r.get("posting_id") or "").lower()
             if r.get("listing_only") and "/" in pid:
@@ -226,7 +243,9 @@ def merge():
                     dates.append(ts_date(r["last_seen"]))
                 if r.get("basis") == "wayback":
                     cap = re.search(r"/web/(\d{14})/", r.get("capture") or "")
-                    if r.get("listing_only") and cap:
+                    if r.get("listing_only") and r.get("first_seen") and not r.get("board_capture"):
+                        dates += [ts_date(r["first_seen"]), ts_date(r.get("last_seen"))]
+                    elif r.get("listing_only") and cap:
                         dates.append(ts_date(cap.group(1)))
                     else:
                         dates += [ts_date(r.get("first_seen")), ts_date(r.get("last_seen"))]
@@ -279,7 +298,7 @@ def merge():
     return rows, careers_pages
 
 
-GENERAL = re.compile(r"(?i)don'?t see|general (interest|application|opportunit)|open application|talent (pool|community)|"
+GENERAL = re.compile(r"(?i)don'?t see|general (interest|application|opportunit)|open application|talent (pool|community)|stay up to date|"
                      r"spontaneous|future opportunit|initiativbewerbung|^apply here")
 
 
@@ -314,9 +333,9 @@ EXTRA_RULES = [  # checked in order, before analyze.TITLE_RULES
     ("business-ops", r"partnership|ecosystem|program manager|developer relations|communications|counsel|controller|"
                      r"financ|strategy|\bsales\b|marketing|content|procurement|\boffice\b|payroll|talent|recruit|"
                      r"sourcer|\bpeople\b|\bhr\b|business"),
-    ("software-eng", r"front-?end|back-?end|full[- ]?stack|tech lead|engineering manager|architect|devops|data engineer"),
+    ("software-eng", r"front-?end|back-?end|full[- ]?stack|tech lead|engineering manager|\barchitect\b|devops|mlops|data engineer"),
     ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development|"
-                       r"pilot plant|prototype"),
+                       r"pilot plant|prototype|research operations|robot operator"),
     ("ml-research", r"\bmlff\b"),
 ]
 
@@ -489,7 +508,7 @@ def build():
     for r in rows:
         by_co[r["company"]].append(r)
     for old in glob.glob(os.path.join(OUT, "*.md")):
-        if os.path.basename(old) not in ("README.md",):
+        if os.path.basename(old) not in ("README.md", "roles.md"):  # hand-written
             os.remove(old)
     for slug in sorted(set(by_co) | set(careers)):
         rs = by_co.get(slug, [])

@@ -1,0 +1,1203 @@
+{
+ "captures": {
+  "www.emeraldcloudlab.com/careers": [
+   {
+    "urlkey": "com,emeraldcloudlab)/careers",
+    "first": "20230720053035",
+    "last": "20260910083210",
+    "n": 26,
+    "original": "https://www.emeraldcloudlab.com/careers/"
+   }
+  ],
+  "www.emeraldcloudlab.com/company-culture/careers": [
+   {
+    "urlkey": "com,emeraldcloudlab)/company-culture/careers",
+    "first": "20200814010629",
+    "last": "20230521085243",
+    "n": 26,
+    "original": "https://www.emeraldcloudlab.com/company-culture/careers/"
+   }
+  ],
+  "www.emeraldcloudlab.com/about/careers": [
+   {
+    "urlkey": "com,emeraldcloudlab)/about/careers",
+    "first": "20150320015949",
+    "last": "20161026052448",
+    "n": 21,
+    "original": "http://www.emeraldcloudlab.com:80/about/careers"
+   }
+  ]
+ },
+ "board_captures": {
+  "emeraldcloudlab.com/about/careers": [
+   [
+    "20150320015949",
+    "http://www.emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20150420204712",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20150919214553",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20151020081150",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20160120184803",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20160422120023",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20160723004357",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ],
+   [
+    "20161026052448",
+    "http://emeraldcloudlab.com:80/about/careers"
+   ]
+  ],
+  "emeraldcloudlab.com/careers": [
+   [
+    "20230720053035",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20240313224414",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20240407080917",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20240705150510",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20241102064944",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20250210181037",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20250404074018",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20250722020316",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20251231054147",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20260101055838",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20260425093810",
+    "https://www.emeraldcloudlab.com/careers/"
+   ],
+   [
+    "20260910083210",
+    "https://www.emeraldcloudlab.com/careers/"
+   ]
+  ],
+  "emeraldcloudlab.com/company-culture/careers": [
+   [
+    "20200814010629",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20201029103555",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20210122185454",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20210416110327",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20210805143721",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20211014235912",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20220120140000",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20220514062731",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20220725225910",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20221005182856",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20230307190403",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ],
+   [
+    "20230412061531",
+    "https://www.emeraldcloudlab.com/company-culture/careers/"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150320015949/http://www.emeraldcloudlab.com:80/about/careers",
+   "url": "http://www.emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20150320015949",
+   "last_seen": "20150320015949",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150320015949/http://www.emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20150320015949",
+   "last_seen": "20150320015949",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150320015949/http://www.emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20150320015949",
+   "last_seen": "20150320015949",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150320015949/http://www.emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20150320015949",
+   "last_seen": "20150320015949",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150420204712/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20150420204712",
+   "last_seen": "20150420204712",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150420204712/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20150420204712",
+   "last_seen": "20150420204712",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150420204712/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20150420204712",
+   "last_seen": "20150420204712",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150420204712/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20150420204712",
+   "last_seen": "20150420204712",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/05677a0c-8d5e-4d64-a779-d800af88425a",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "05677a0c-8d5e-4d64-a779-d800af88425a",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20150919214553/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "first_seen": "20150919214553",
+   "last_seen": "20150919214553",
+   "n_captures": 1,
+   "posting_id": "a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/05677a0c-8d5e-4d64-a779-d800af88425a",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "05677a0c-8d5e-4d64-a779-d800af88425a",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/2333d28c-2127-4780-a222-8608c52328c9",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "2333d28c-2127-4780-a222-8608c52328c9",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20151020081150/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/35efda5a-41af-4c1f-a948-29db335497ea",
+   "first_seen": "20151020081150",
+   "last_seen": "20151020081150",
+   "n_captures": 1,
+   "posting_id": "35efda5a-41af-4c1f-a948-29db335497ea",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/05677a0c-8d5e-4d64-a779-d800af88425a",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "05677a0c-8d5e-4d64-a779-d800af88425a",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "a64c4dfe-b8ef-403e-bff9-9e02ad13625f",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/2333d28c-2127-4780-a222-8608c52328c9",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "2333d28c-2127-4780-a222-8608c52328c9",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160120184803/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/35efda5a-41af-4c1f-a948-29db335497ea",
+   "first_seen": "20160120184803",
+   "last_seen": "20160120184803",
+   "n_captures": 1,
+   "posting_id": "35efda5a-41af-4c1f-a948-29db335497ea",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/05677a0c-8d5e-4d64-a779-d800af88425a",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "05677a0c-8d5e-4d64-a779-d800af88425a",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/2333d28c-2127-4780-a222-8608c52328c9",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "2333d28c-2127-4780-a222-8608c52328c9",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160422120023/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/35efda5a-41af-4c1f-a948-29db335497ea",
+   "first_seen": "20160422120023",
+   "last_seen": "20160422120023",
+   "n_captures": 1,
+   "posting_id": "35efda5a-41af-4c1f-a948-29db335497ea",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "41d29dfc-f76d-4427-88d4-7df8fca6d0d3",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/05677a0c-8d5e-4d64-a779-d800af88425a",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "05677a0c-8d5e-4d64-a779-d800af88425a",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20160723004357/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/35efda5a-41af-4c1f-a948-29db335497ea",
+   "first_seen": "20160723004357",
+   "last_seen": "20160723004357",
+   "n_captures": 1,
+   "posting_id": "35efda5a-41af-4c1f-a948-29db335497ea",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "http://emeraldcloudlab.com:80/about/careers",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "posting_id": "3d6be93c-5a70-4b2e-8b68-e2ce7af322c0",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/725edff4-4137-4295-9471-12a36e57b332",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "posting_id": "725edff4-4137-4295-9471-12a36e57b332",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "posting_id": "ed6e8d99-cb94-4904-b500-d96faa1d8a24",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "posting_id": "70e2f187-eb96-47a9-a8b8-0e51c6f9037c",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20161026052448/http://emeraldcloudlab.com:80/about/careers",
+   "url": "https://jobs.lever.co/emeraldtherapeutics/35efda5a-41af-4c1f-a948-29db335497ea",
+   "first_seen": "20161026052448",
+   "last_seen": "20161026052448",
+   "n_captures": 1,
+   "posting_id": "35efda5a-41af-4c1f-a948-29db335497ea",
+   "title": "Learn more & apply",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20200814010629/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20200814010629",
+   "last_seen": "20200814010629",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20201029103555/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20201029103555",
+   "last_seen": "20201029103555",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20210122185454/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20210122185454",
+   "last_seen": "20210122185454",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20210416110327/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20210416110327",
+   "last_seen": "20210416110327",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20210805143721/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20210805143721",
+   "last_seen": "20210805143721",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20211014235912/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20211014235912",
+   "last_seen": "20211014235912",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220120140000/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20220120140000",
+   "last_seen": "20220120140000",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220514062731/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20220514062731",
+   "last_seen": "20220514062731",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220725225910/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20220725225910",
+   "last_seen": "20220725225910",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20221005182856/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20221005182856",
+   "last_seen": "20221005182856",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230307190403/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20230307190403",
+   "last_seen": "20230307190403",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230412061531/https://www.emeraldcloudlab.com/company-culture/careers/",
+   "url": "https://www.emeraldcloudlab.com/company-culture/careers/",
+   "first_seen": "20230412061531",
+   "last_seen": "20230412061531",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230720053035/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20230720053035",
+   "last_seen": "20230720053035",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240313224414/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20240313224414",
+   "last_seen": "20240313224414",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240407080917/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20240407080917",
+   "last_seen": "20240407080917",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240705150510/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20240705150510",
+   "last_seen": "20240705150510",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20241102064944/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20241102064944",
+   "last_seen": "20241102064944",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250210181037/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20250210181037",
+   "last_seen": "20250210181037",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250404074018/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20250404074018",
+   "last_seen": "20250404074018",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250722020316/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20250722020316",
+   "last_seen": "20250722020316",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251231054147/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20251231054147",
+   "last_seen": "20251231054147",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260101055838/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20260101055838",
+   "last_seen": "20260101055838",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260425093810/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20260425093810",
+   "last_seen": "20260425093810",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "emerald-cloud-lab",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260910083210/https://www.emeraldcloudlab.com/careers/",
+   "url": "https://www.emeraldcloudlab.com/careers/",
+   "first_seen": "20260910083210",
+   "last_seen": "20260910083210",
+   "n_captures": 1,
+   "title": "About Us",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

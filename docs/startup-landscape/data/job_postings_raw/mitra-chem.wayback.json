@@ -28,7 +28,74 @@
   "jobs.lever.co/mitrachem": [],
   "app.trinethire.com/companies/913890-mitra-chem/jobs/": []
  },
- "board_captures": {},
+ "board_captures": {
+  "mitrachem.com/join-us": [
+   [
+    "20220809082659",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20221202034136",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20230202090002",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20230602092613",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20230816185042",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20231210080102",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20240304055653",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20240413005154",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20240811063334",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20241105135104",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20250122085115",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20250419150911",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20250720070947",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20251007031603",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20260117231731",
+    "https://www.mitrachem.com/join-us"
+   ],
+   [
+    "20260519052416",
+    "https://www.mitrachem.com/join-us"
+   ]
+  ]
+ },
  "postings": [
   {
    "company": "mitra-chem",
@@ -47,6 +114,198 @@
    "org": "Mitra Chem",
    "text": "Mitra Chem is a Silicon Valley startup working at the intersection of machine learning and battery development. We live at the cutting-edge of battery technology and aim to deliver world-class materials for the EV market within the next few years. Our goal is to be the first lithium-ion battery materials manufacturer to shorten the lab-to-production timeline by >90% through accelerated R&D and vertically integrated process optimization. We will first focus on Li-ion battery cathodes, converting them from commodity chemicals into a product platform, customized for different applications. We are setting up a state-of-the-art 10,000 sq ft industrial R&D center (located on the San Francisco Peninsula). Join our team to be a part of the growing battery revolution.\nWe are looking for a Battery Materials Scientist to design, develop and scale-up production of innovative materials, leveraging Mitra Chem’s accelerated R&D infrastructure.",
    "posting_id": "mitrachem.com/job/battery-materials-scientist"
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220809082659/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20220809082659",
+   "last_seen": "20220809082659",
+   "n_captures": 1,
+   "title": "Join Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20221202034136/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20221202034136",
+   "last_seen": "20221202034136",
+   "n_captures": 1,
+   "title": "Join Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230202090002/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20230202090002",
+   "last_seen": "20230202090002",
+   "n_captures": 1,
+   "title": "Join Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230602092613/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20230602092613",
+   "last_seen": "20230602092613",
+   "n_captures": 1,
+   "title": "Join Us",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230816185042/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20230816185042",
+   "last_seen": "20230816185042",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20231210080102/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20231210080102",
+   "last_seen": "20231210080102",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240304055653/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20240304055653",
+   "last_seen": "20240304055653",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240413005154/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20240413005154",
+   "last_seen": "20240413005154",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240811063334/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20240811063334",
+   "last_seen": "20240811063334",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20241105135104/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20241105135104",
+   "last_seen": "20241105135104",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250122085115/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20250122085115",
+   "last_seen": "20250122085115",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250419150911/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20250419150911",
+   "last_seen": "20250419150911",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250720070947/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20250720070947",
+   "last_seen": "20250720070947",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007031603/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20251007031603",
+   "last_seen": "20251007031603",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260117231731/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20260117231731",
+   "last_seen": "20260117231731",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260519052416/https://www.mitrachem.com/join-us",
+   "url": "https://www.mitrachem.com/join-us",
+   "first_seen": "20260519052416",
+   "last_seen": "20260519052416",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
   }
  ],
  "spans": {

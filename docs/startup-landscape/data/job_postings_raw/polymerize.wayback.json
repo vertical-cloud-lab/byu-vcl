@@ -1,0 +1,35 @@
+{
+ "captures": {
+  "polymerize.io/company-pages/careers": [
+   {
+    "urlkey": "io,polymerize)/company-pages/careers",
+    "first": "20260511111324",
+    "last": "20260511111324",
+    "n": 1,
+    "original": "https://polymerize.io/company-pages/careers"
+   }
+  ]
+ },
+ "board_captures": {
+  "polymerize.io/company-pages/careers": [
+   [
+    "20260511111324",
+    "https://polymerize.io/company-pages/careers"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260511111324/https://polymerize.io/company-pages/careers",
+   "url": "https://polymerize.io/company-pages/careers",
+   "first_seen": "20260511111324",
+   "last_seen": "20260511111324",
+   "n_captures": 1,
+   "title": "Join Us",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

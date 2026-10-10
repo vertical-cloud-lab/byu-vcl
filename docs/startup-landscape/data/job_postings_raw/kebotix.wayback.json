@@ -1,0 +1,136 @@
+{
+ "captures": {
+  "www.kebotix.com/jobs": [
+   {
+    "urlkey": "com,kebotix)/jobs",
+    "first": "20190715185151",
+    "last": "20210827173506",
+    "n": 4,
+    "original": "https://www.kebotix.com/jobs"
+   },
+   {
+    "urlkey": "com,kebotix)/jobs?gh_src=4cccba1e4us",
+    "first": "20210827172458",
+    "last": "20210827172458",
+    "n": 1,
+    "original": "https://www.kebotix.com/jobs?gh_src=4cccba1e4us"
+   }
+  ],
+  "www.kebotix.com/careers": [
+   {
+    "urlkey": "com,kebotix)/careers",
+    "first": "20190715185726",
+    "last": "20201101022847",
+    "n": 7,
+    "original": "https://www.kebotix.com/careers"
+   }
+  ],
+  "boards.greenhouse.io/kebotix": [],
+  "boards.greenhouse.io/embed/job_app?for=kebotix": [],
+  "boards.greenhouse.io/embed/job_board?for=kebotix": []
+ },
+ "board_captures": {
+  "kebotix.com/careers": [
+   [
+    "20190715185726",
+    "https://www.kebotix.com/careers"
+   ],
+   [
+    "20191019081416",
+    "https://www.kebotix.com/careers"
+   ],
+   [
+    "20201003220109",
+    "https://www.kebotix.com/careers/"
+   ]
+  ],
+  "kebotix.com/jobs": [
+   [
+    "20190715185151",
+    "https://www.kebotix.com/jobs"
+   ],
+   [
+    "20191019080624",
+    "https://www.kebotix.com/jobs"
+   ],
+   [
+    "20210827173506",
+    "https://www.kebotix.com/jobs"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20190715185151/https://www.kebotix.com/jobs",
+   "url": "https://www.kebotix.com/jobs",
+   "first_seen": "20190715185151",
+   "last_seen": "20190715185151",
+   "n_captures": 1,
+   "title": "Jobs",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20190715185726/https://www.kebotix.com/careers",
+   "url": "https://www.kebotix.com/careers",
+   "first_seen": "20190715185726",
+   "last_seen": "20190715185726",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20191019080624/https://www.kebotix.com/jobs",
+   "url": "https://www.kebotix.com/jobs",
+   "first_seen": "20191019080624",
+   "last_seen": "20191019080624",
+   "n_captures": 1,
+   "title": "Jobs",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20191019081416/https://www.kebotix.com/careers",
+   "url": "https://www.kebotix.com/careers",
+   "first_seen": "20191019081416",
+   "last_seen": "20191019081416",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20201003220109/https://www.kebotix.com/careers/",
+   "url": "https://www.kebotix.com/careers/",
+   "first_seen": "20201003220109",
+   "last_seen": "20201003220109",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20210827173506/https://www.kebotix.com/jobs",
+   "url": "https://www.kebotix.com/jobs",
+   "first_seen": "20210827173506",
+   "last_seen": "20210827173506",
+   "n_captures": 1,
+   "title": "Jobs",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

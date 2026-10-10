@@ -6,35 +6,35 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2025-11-22 | 2025-11-22 | [Senior Full Stack Software Engineer](#senior-full-stack-software-engineer-2025-11-22) | software-eng |  |  | BS | 5 |  | [Wayback](https://web.archive.org/web/20251122111506/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=18414ec4-509b-4bf5-b73b-14cdd0584eca) |
-| 2025-11-22 | 2025-11-22 | [Senior Scientific Data Engineer](#senior-scientific-data-engineer-2025-11-22) | software-eng |  |  | BS | 5 |  | [Wayback](https://web.archive.org/web/20251122113042/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7d723987-406c-4ffd-8149-0529b76f373e) |
-| 2025-11-22 | 2025-11-22 | [Senior/Staff Scientist](#senior-staff-scientist-2025-11-22) | materials-science |  |  | PhD | 3 |  | [Wayback](https://web.archive.org/web/20251122113353/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f7226a3c-9c9a-4c77-aadf-633a74742738) |
-| 2025-11-22 | 2025-11-22 | [Talent and Acquisition Specialist](#talent-and-acquisition-specialist-2025-11-22) | business-ops |  |  | BS | 2 |  | [Wayback](https://web.archive.org/web/20251122111537/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=82681951-0a49-4e04-b3ad-3a03bcf4c21c) |
-| 2025-12-29 | 2025-12-29 | [Computer-Aided Drug Design (CADD) Software Developer](#computer-aided-drug-design-cadd-software-developer-2025-12-29) | software-eng |  |  | MS/BS |  |  | [Wayback](https://web.archive.org/web/20251229175550/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=59326468-3e17-4c9c-99fb-40e350a45511) |
-| 2025-12-29 | 2025-12-29 | [Director of IT](#director-of-it-2025-12-29) | leadership |  |  | BS | 10 |  | [Wayback](https://web.archive.org/web/20251229175257/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c61d6222-ecd9-4ada-9a85-a04711d1f4cf) |
-| 2025-12-29 | 2026-02-01 | [Inventory Associate](#inventory-associate-2025-12-29) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20251229175159/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a8f113e9-13f1-4c31-9063-b5e91335b55b) [Wayback](https://web.archive.org/web/20260201112920/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e315cbef-41bf-4a88-b5aa-b5117f3d1f12) |
-| 2025-12-29 | 2025-12-29 | [Senior Computer-Aided Drug Design (CADD) Software Developer](#senior-computer-aided-drug-design-cadd-software-developer-2025-12-29) | software-eng |  |  | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20251229220119/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7a5df2cd-b605-46ed-a61b-530551e4259a) |
-| 2025-12-29 | 2025-12-29 | [Senior Data Scientist - AI/ML (CADD)](#senior-data-scientist-ai-ml-cadd-2025-12-29) | ml-research |  |  | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20251229175205/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6b531d7d-7098-4a19-9bb3-a8487b741d11) |
-| 2025-12-29 | 2025-12-29 | [Senior DevOps Engineer](#senior-devops-engineer-2025-12-29) | software-eng |  |  | BS | 5 |  | [Wayback](https://web.archive.org/web/20251229175228/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3a59972c-aae9-4382-a537-efe462be3d67) |
+| 2025-11-22 | 2025-11-22 | [Senior Full Stack Software Engineer](#senior-full-stack-software-engineer-2025-11-22) | software-eng | Software | Glasgow, United Kingdom | BS | 5 |  | [Wayback](https://web.archive.org/web/20251122111506/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=18414ec4-509b-4bf5-b73b-14cdd0584eca) |
+| 2025-11-22 | 2025-11-22 | [Senior Scientific Data Engineer](#senior-scientific-data-engineer-2025-11-22) | software-eng | Software | Glasgow, United Kingdom | BS | 5 |  | [Wayback](https://web.archive.org/web/20251122113042/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7d723987-406c-4ffd-8149-0529b76f373e) |
+| 2025-11-22 | 2025-11-22 | [Senior/Staff Scientist – Full Stack Cheminformatics Developer](#senior-staff-scientist-full-stack-cheminformatics-developer-2025-11-22) | software-eng | Cheminformatics | Glasgow, United Kingdom | PhD | 3 |  | [Wayback](https://web.archive.org/web/20251122113353/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f7226a3c-9c9a-4c77-aadf-633a74742738) |
+| 2025-11-22 | 2025-11-22 | [Talent and Acquisition Specialist](#talent-and-acquisition-specialist-2025-11-22) | business-ops | HR | Glasgow, United Kingdom | BS | 2 |  | [Wayback](https://web.archive.org/web/20251122111537/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=82681951-0a49-4e04-b3ad-3a03bcf4c21c) |
+| 2025-12-29 | 2025-12-29 | [Computer-Aided Drug Design (CADD) Software Developer](#computer-aided-drug-design-cadd-software-developer-2025-12-29) | software-eng | Cheminformatics | Glasgow, United Kingdom | MS/BS |  |  | [Wayback](https://web.archive.org/web/20251229175550/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=59326468-3e17-4c9c-99fb-40e350a45511) |
+| 2025-12-29 | 2025-12-29 | [Director of IT](#director-of-it-2025-12-29) | leadership | IT | Glasgow, United Kingdom | BS | 10 |  | [Wayback](https://web.archive.org/web/20251229175257/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c61d6222-ecd9-4ada-9a85-a04711d1f4cf) |
+| 2025-12-29 | 2026-02-01 | [Inventory Associate](#inventory-associate-2025-12-29) | business-ops | Stores | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20251229175159/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a8f113e9-13f1-4c31-9063-b5e91335b55b) [Wayback](https://web.archive.org/web/20260201112920/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e315cbef-41bf-4a88-b5aa-b5117f3d1f12) |
+| 2025-12-29 | 2025-12-29 | [Senior Computer-Aided Drug Design (CADD) Software Developer](#senior-computer-aided-drug-design-cadd-software-developer-2025-12-29) | software-eng | Cheminformatics | Glasgow, United Kingdom | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20251229220119/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7a5df2cd-b605-46ed-a61b-530551e4259a) |
+| 2025-12-29 | 2025-12-29 | [Senior Data Scientist - AI/ML (CADD)](#senior-data-scientist-ai-ml-cadd-2025-12-29) | ml-research | Cheminformatics | Glasgow, United Kingdom | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20251229175205/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6b531d7d-7098-4a19-9bb3-a8487b741d11) |
+| 2025-12-29 | 2025-12-29 | [Senior DevOps Engineer](#senior-devops-engineer-2025-12-29) | software-eng | Software | Glasgow, United Kingdom | BS | 5 |  | [Wayback](https://web.archive.org/web/20251229175228/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3a59972c-aae9-4382-a537-efe462be3d67) |
 | 2026-01-16 | open | [Project Manager](#project-manager-2026-01-16) | business-ops | Projects | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=8b897cea-5b23-41e9-8f3b-55334ece1fd4) |
 | 2026-01-29 | open | [Production Chemist (Dispensary)](#production-chemist-dispensary-2026-01-29) | materials-science |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3ebf499e-c459-4743-853a-f33bb29aa439) |
-| 2026-02-01 | 2026-02-01 | [Associate / Senior Associate](#associate-senior-associate-2026-02-01) | business-ops |  |  | BS | 1 |  | [Wayback](https://web.archive.org/web/20260201093736/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=553d0004-8050-46ec-98e9-0417f5bbd4e7) |
-| 2026-02-01 | 2026-02-01 | [Customer Success Director, USA](#customer-success-director-usa-2026-02-01) | leadership |  |  | PhD/MS | 6 |  | [Wayback](https://web.archive.org/web/20260201123203/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9d7a715c-a702-4a5e-8471-7220b7b3c7d0) |
-| 2026-02-01 | 2026-02-01 | [Engineering Operations Engineer/Technician](#engineering-operations-engineer-technician-2026-02-01) | lab-automation |  |  | BS | 2 |  | [Wayback](https://web.archive.org/web/20260201094250/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ce9d1be6-49a1-48b4-908a-5e239efe0879) |
-| 2026-02-01 | 2026-02-01 | [Management Accountant](#management-accountant-2026-02-01) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260201093104/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e79efc20-9728-4a4d-bf5e-4a71127c3edd) |
-| 2026-02-01 | 2026-02-01 | [Operations Development Expert](#operations-development-expert-2026-02-01) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260201114936/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=10546142-16b9-42be-9621-3148d2726ce4) |
+| 2026-02-01 | 2026-02-01 | [Associate / Senior Associate - Strategy & Business Operations](#associate-senior-associate-strategy-business-operations-2026-02-01) | business-ops | Business Development | Any, United States Of America | BS | 1 |  | [Wayback](https://web.archive.org/web/20260201093736/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=553d0004-8050-46ec-98e9-0417f5bbd4e7) |
+| 2026-02-01 | 2026-02-01 | [Customer Success Director, USA](#customer-success-director-usa-2026-02-01) | leadership | Business Development | Any, United States - Remote | PhD/MS | 6 |  | [Wayback](https://web.archive.org/web/20260201123203/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9d7a715c-a702-4a5e-8471-7220b7b3c7d0) |
+| 2026-02-01 | 2026-02-01 | [Engineering Operations Engineer/Technician](#engineering-operations-engineer-technician-2026-02-01) | lab-automation | Engineering Operations | Glasgow, United Kingdom | BS | 2 |  | [Wayback](https://web.archive.org/web/20260201094250/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ce9d1be6-49a1-48b4-908a-5e239efe0879) |
+| 2026-02-01 | 2026-02-01 | [Management Accountant](#management-accountant-2026-02-01) | business-ops | Finance | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20260201093104/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e79efc20-9728-4a4d-bf5e-4a71127c3edd) |
+| 2026-02-01 | 2026-02-01 | [Operations Development Expert](#operations-development-expert-2026-02-01) | business-ops | Projects | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20260201114936/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=10546142-16b9-42be-9621-3148d2726ce4) |
 | 2026-02-01 | open | [Production Chemist](#production-chemist-2026-02-01) | materials-science | Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=b8e7d01d-30ce-4050-aa97-2992f5ad28ab) |
 | 2026-02-03 | open | [Analytical Technician](#analytical-technician-2026-02-03) | lab-automation | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a024d53d-87b5-49f6-aa74-f29d592a2096) |
 | 2026-02-03 | open | [Senior/ Staff Analytical Technician](#senior-staff-analytical-technician-2026-02-03) | lab-automation |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=73eaa73f-79b9-4613-ac1c-1cf6a0ac6acf) |
-| 2026-03-01 | 2026-03-01 | [Chemistry Procurement & Inventory Specialist (Product Operations)](#chemistry-procurement-inventory-specialist-product-operations-2026-03-01) | business-ops |  |  | PhD/MS/BS |  |  | [Wayback](https://web.archive.org/web/20260301123348/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=09a82aa6-2405-4177-86f4-e3a7488fdfd2) |
-| 2026-03-01 | 2026-03-01 | [Operational Finance Analyst](#operational-finance-analyst-2026-03-01) | business-ops |  |  | MS |  |  | [Wayback](https://web.archive.org/web/20260301105720/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4f8407c7-b405-4328-a8d0-12dddbdd49ee) |
-| 2026-03-01 | 2026-03-01 | [Principal Data Architect](#principal-data-architect-2026-03-01) | software-eng |  |  | BS | 8 |  | [Wayback](https://web.archive.org/web/20260301103529/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e51a8114-537d-45c7-98ec-fe976abb998a) |
-| 2026-03-01 | 2026-03-01 | [Purification Technician/Senior Purification Technician](#purification-technician-senior-purification-technician-2026-03-01) | lab-automation |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260301105421/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=404dbf21-6abb-4386-96ec-f2994db1578f) |
-| 2026-03-01 | 2026-03-01 | [Synthetic Chemist](#synthetic-chemist-2026-03-01) | materials-science |  |  | PhD/MS | 2 |  | [Wayback](https://web.archive.org/web/20260301214412/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=acde067e-2a0f-448a-a9f4-2f7ffa544de4) |
-| 2026-03-03 | 2026-03-03 | [Principal Architect](#principal-architect-2026-03-03) | software-eng |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260303051436/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=afbda2d3-3e50-4fbd-8e41-a190af8b9305) |
+| 2026-03-01 | 2026-03-01 | [Chemistry Procurement & Inventory Specialist (Product Operations)](#chemistry-procurement-inventory-specialist-product-operations-2026-03-01) | business-ops | Supply Chain | Glasgow, United Kingdom | PhD/MS/BS |  |  | [Wayback](https://web.archive.org/web/20260301123348/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=09a82aa6-2405-4177-86f4-e3a7488fdfd2) |
+| 2026-03-01 | 2026-03-01 | [Operational Finance Analyst](#operational-finance-analyst-2026-03-01) | business-ops | Finance | Glasgow, United Kingdom | MS |  |  | [Wayback](https://web.archive.org/web/20260301105720/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4f8407c7-b405-4328-a8d0-12dddbdd49ee) |
+| 2026-03-01 | 2026-03-01 | [Principal Data Architect](#principal-data-architect-2026-03-01) | software-eng | IT | Glasgow or London (King’s Cross), United | BS | 8 |  | [Wayback](https://web.archive.org/web/20260301103529/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e51a8114-537d-45c7-98ec-fe976abb998a) |
+| 2026-03-01 | 2026-03-01 | [Purification Technician/Senior Purification Technician](#purification-technician-senior-purification-technician-2026-03-01) | lab-automation | Chemistry- Product Operations | Glasgow, United Kingdom |  |  |  | [Wayback](https://web.archive.org/web/20260301105421/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=404dbf21-6abb-4386-96ec-f2994db1578f) |
+| 2026-03-01 | 2026-03-01 | [Synthetic Chemist](#synthetic-chemist-2026-03-01) | materials-science | Chemistry- Product Operations | Glasgow | PhD/MS | 2 |  | [Wayback](https://web.archive.org/web/20260301214412/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=acde067e-2a0f-448a-a9f4-2f7ffa544de4) |
+| 2026-03-03 | 2026-03-03 | [Principal Architect – Robotics & Hardware Abstraction](#principal-architect-robotics-hardware-abstraction-2026-03-03) | software-eng | IT | Glasgow or London (King’s Cross), United |  |  |  | [Wayback](https://web.archive.org/web/20260303051436/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=afbda2d3-3e50-4fbd-8e41-a190af8b9305) |
 | 2026-03-20 | open | [Staff Product Designer](#staff-product-designer-2026-03-20) | business-ops |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=138b2564-a877-4ce7-84dd-d7136720aa99) |
-| 2026-04-01 | 2026-04-01 | [Executive Assistant](#executive-assistant-2026-04-01) | business-ops |  |  | BS |  |  | [Wayback](https://web.archive.org/web/20260401103803/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=11c4d103-d07a-422f-8c66-5359783d530a) |
-| 2026-04-01 | 2026-04-01 | [Senior ML Infrastructure Engineer](#senior-ml-infrastructure-engineer-2026-04-01) | ml-research |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260401134621/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=daf6755c-c68a-46fe-b98a-0bd6319fdb93) |
+| 2026-04-01 | 2026-04-01 | [Executive Assistant](#executive-assistant-2026-04-01) | business-ops | Business Support | Glasgow, United Kingdom | BS |  |  | [Wayback](https://web.archive.org/web/20260401103803/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=11c4d103-d07a-422f-8c66-5359783d530a) |
+| 2026-04-01 | 2026-04-01 | [Senior ML Infrastructure Engineer](#senior-ml-infrastructure-engineer-2026-04-01) | ml-research | IT | Glasgow |  |  |  | [Wayback](https://web.archive.org/web/20260401134621/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=daf6755c-c68a-46fe-b98a-0bd6319fdb93) |
 | 2026-05-14 | open | [Senior / Staff Machine Learning Scientist](#senior-staff-machine-learning-scientist-2026-05-14) | ml-research | Design Retro & Advanced ML | Glasgow or Remote, United Kingdom | PhD |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c32c8ec9-0784-4cbd-8273-cf593f08e8cc) |
 | 2026-05-14 | open | [Senior / Staff Machine Learning Scientist USA](#senior-staff-machine-learning-scientist-usa-2026-05-14) | ml-research |  |  |  |  |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=95e3c8d3-83ef-4535-93d1-cd8ec43c19f4) |
 | 2026-05-14 | open | [Staff CADD Scientist USA](#staff-cadd-scientist-usa-2026-05-14) | materials-science | Design Retro & Advanced ML | San Francisco (Hybrid) or Remote from Bo | PhD | 8 |  | [live](https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=fc48c004-2509-49f6-9067-ef3aa17fd640) |
@@ -74,7 +74,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Senior Full Stack Software Engineer (2025-11-22)
 
-2025-11-22 → 2025-11-22 · software-eng · location not stated · [source](https://web.archive.org/web/20251122111506/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=18414ec4-509b-4bf5-b73b-14cdd0584eca)
+2025-11-22 → 2025-11-22 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251122111506/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=18414ec4-509b-4bf5-b73b-14cdd0584eca)
 
 <details><summary>Description</summary>
 
@@ -121,7 +121,7 @@ If you enjoy problem solving complex technical challenges that make a real-world
 
 ### Senior Scientific Data Engineer (2025-11-22)
 
-2025-11-22 → 2025-11-22 · software-eng · location not stated · [source](https://web.archive.org/web/20251122113042/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7d723987-406c-4ffd-8149-0529b76f373e)
+2025-11-22 → 2025-11-22 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251122113042/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7d723987-406c-4ffd-8149-0529b76f373e)
 
 <details><summary>Description</summary>
 
@@ -162,11 +162,11 @@ If you enjoy problem solving complex technical challenges that make a real-world
 
 </details>
 
-<a id="senior-staff-scientist-2025-11-22"></a>
+<a id="senior-staff-scientist-full-stack-cheminformatics-developer-2025-11-22"></a>
 
-### Senior/Staff Scientist (2025-11-22)
+### Senior/Staff Scientist – Full Stack Cheminformatics Developer (2025-11-22)
 
-2025-11-22 → 2025-11-22 · materials-science · location not stated · [source](https://web.archive.org/web/20251122113353/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f7226a3c-9c9a-4c77-aadf-633a74742738)
+2025-11-22 → 2025-11-22 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251122113353/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=f7226a3c-9c9a-4c77-aadf-633a74742738)
 
 <details><summary>Description</summary>
 
@@ -201,7 +201,7 @@ Collaboration will be central to your success: you will work closely with chemin
 
 ### Talent and Acquisition Specialist (2025-11-22)
 
-2025-11-22 → 2025-11-22 · business-ops · location not stated · [source](https://web.archive.org/web/20251122111537/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=82681951-0a49-4e04-b3ad-3a03bcf4c21c)
+2025-11-22 → 2025-11-22 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251122111537/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=82681951-0a49-4e04-b3ad-3a03bcf4c21c)
 
 <details><summary>Description</summary>
 
@@ -228,20 +228,6 @@ At Chemify Limited, we believe that our people are our greatest asset. As a dyna
 - Ability to handle multiple roles and priorities in a fast-paced environment.
 - Knowledge: Familiarity with employment laws and best practices in recruitment.
 - Attitude: A positive, proactive attitude with a passion for finding and engaging top talent.
-Apply for this job
-Share this job
-Closing Date
-24/01/2026
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-HR
-Job Title
-Talent and Acquisition Specialist
-City
-Glasgow
-Country
-United Kingdom
 
 </details>
 
@@ -249,7 +235,7 @@ United Kingdom
 
 ### Computer-Aided Drug Design (CADD) Software Developer (2025-12-29)
 
-2025-12-29 → 2025-12-29 · software-eng · location not stated · [source](https://web.archive.org/web/20251229175550/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=59326468-3e17-4c9c-99fb-40e350a45511)
+2025-12-29 → 2025-12-29 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229175550/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=59326468-3e17-4c9c-99fb-40e350a45511)
 
 <details><summary>Description</summary>
 
@@ -284,7 +270,7 @@ If you are passionate about solving problems at the intersection of chemistry, c
 
 ### Director of IT (2025-12-29)
 
-2025-12-29 → 2025-12-29 · leadership · location not stated · [source](https://web.archive.org/web/20251229175257/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c61d6222-ecd9-4ada-9a85-a04711d1f4cf)
+2025-12-29 → 2025-12-29 · leadership · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229175257/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=c61d6222-ecd9-4ada-9a85-a04711d1f4cf)
 
 <details><summary>Description</summary>
 
@@ -326,7 +312,7 @@ Beneficial Skills
 
 ### Inventory Associate (2025-12-29)
 
-2025-12-29 → 2026-02-01 · business-ops · location not stated · [source](https://web.archive.org/web/20251229175159/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a8f113e9-13f1-4c31-9063-b5e91335b55b)
+2025-12-29 → 2026-02-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229175159/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=a8f113e9-13f1-4c31-9063-b5e91335b55b)
 
 <details><summary>Description</summary>
 
@@ -358,20 +344,6 @@ Beneficial Skills
 - Safety-conscious
 - Works efficiently alone or as part of a team.
 - Driving license would be advantageous.
-Apply for this job
-Share this job
-Closing Date
-31/01/2026
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-Stores
-Job Title
-Inventory Associate
-City
-Glasgow
-
-*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -379,7 +351,7 @@ Glasgow
 
 ### Senior Computer-Aided Drug Design (CADD) Software Developer (2025-12-29)
 
-2025-12-29 → 2025-12-29 · software-eng · location not stated · [source](https://web.archive.org/web/20251229220119/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7a5df2cd-b605-46ed-a61b-530551e4259a)
+2025-12-29 → 2025-12-29 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229220119/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=7a5df2cd-b605-46ed-a61b-530551e4259a)
 
 <details><summary>Description</summary>
 
@@ -411,7 +383,7 @@ If you are passionate about solving complex problems at the intersection of chem
 
 ### Senior Data Scientist - AI/ML (CADD) (2025-12-29)
 
-2025-12-29 → 2025-12-29 · ml-research · location not stated · [source](https://web.archive.org/web/20251229175205/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6b531d7d-7098-4a19-9bb3-a8487b741d11)
+2025-12-29 → 2025-12-29 · ml-research · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229175205/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=6b531d7d-7098-4a19-9bb3-a8487b741d11)
 
 <details><summary>Description</summary>
 
@@ -448,7 +420,7 @@ If you are passionate about applying state-of-the-art AI to solve fundamental ch
 
 ### Senior DevOps Engineer (2025-12-29)
 
-2025-12-29 → 2025-12-29 · software-eng · location not stated · [source](https://web.archive.org/web/20251229175228/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3a59972c-aae9-4382-a537-efe462be3d67)
+2025-12-29 → 2025-12-29 · software-eng · Glasgow, United Kingdom · [source](https://web.archive.org/web/20251229175228/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=3a59972c-aae9-4382-a537-efe462be3d67)
 
 <details><summary>Description</summary>
 
@@ -561,11 +533,11 @@ This vacancy has now been closed. Thank you for your interest.
 
 </details>
 
-<a id="associate-senior-associate-2026-02-01"></a>
+<a id="associate-senior-associate-strategy-business-operations-2026-02-01"></a>
 
-### Associate / Senior Associate (2026-02-01)
+### Associate / Senior Associate - Strategy & Business Operations (2026-02-01)
 
-2026-02-01 → 2026-02-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260201093736/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=553d0004-8050-46ec-98e9-0417f5bbd4e7)
+2026-02-01 → 2026-02-01 · business-ops · Any, United States Of America · [source](https://web.archive.org/web/20260201093736/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=553d0004-8050-46ec-98e9-0417f5bbd4e7)
 
 <details><summary>Description</summary>
 
@@ -613,7 +585,7 @@ Commercial & Business Operations
 
 ### Customer Success Director, USA (2026-02-01)
 
-2026-02-01 → 2026-02-01 · leadership · location not stated · [source](https://web.archive.org/web/20260201123203/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9d7a715c-a702-4a5e-8471-7220b7b3c7d0)
+2026-02-01 → 2026-02-01 · leadership · Any, United States - Remote · [source](https://web.archive.org/web/20260201123203/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=9d7a715c-a702-4a5e-8471-7220b7b3c7d0)
 
 <details><summary>Description</summary>
 
@@ -645,7 +617,7 @@ The Customer Success Director, USA is responsible for maintaining and expanding 
 
 ### Engineering Operations Engineer/Technician (2026-02-01)
 
-2026-02-01 → 2026-02-01 · lab-automation · location not stated · [source](https://web.archive.org/web/20260201094250/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ce9d1be6-49a1-48b4-908a-5e239efe0879)
+2026-02-01 → 2026-02-01 · lab-automation · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260201094250/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=ce9d1be6-49a1-48b4-908a-5e239efe0879)
 
 <details><summary>Description</summary>
 
@@ -687,18 +659,6 @@ Essential Experience
 · Customer-service mindset with a proactive approach.
 · Interest in automation technologies and continuous improvement.
 ​
-Apply for this job
-Share this job
-Location
-Maryhill
-Department
-Engineering Operations
-Job Title
-Engineering Operations Engineer/Technician
-City
-Glasgow
-Country
-United Kingdom
 
 </details>
 
@@ -706,7 +666,7 @@ United Kingdom
 
 ### Management Accountant (2026-02-01)
 
-2026-02-01 → 2026-02-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260201093104/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e79efc20-9728-4a4d-bf5e-4a71127c3edd)
+2026-02-01 → 2026-02-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260201093104/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e79efc20-9728-4a4d-bf5e-4a71127c3edd)
 
 <details><summary>Description</summary>
 
@@ -753,21 +713,6 @@ Personal Attributes
 - Commercially aware, able to challenge constructively and provide insight.
 - High integrity and commitment to maintaining financial accuracy.
 ​
-Apply for this job
-Share this job
-Closing Date
-28/02/2026
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-Finance
-Job Title
-Management Accountant
-City
-Glasgow
-Country
-
-*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -775,7 +720,7 @@ Country
 
 ### Operations Development Expert (2026-02-01)
 
-2026-02-01 → 2026-02-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260201114936/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=10546142-16b9-42be-9621-3148d2726ce4)
+2026-02-01 → 2026-02-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260201114936/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=10546142-16b9-42be-9621-3148d2726ce4)
 
 <details><summary>Description</summary>
 
@@ -907,7 +852,7 @@ This vacancy has now been closed. Thank you for your interest.
 
 ### Chemistry Procurement & Inventory Specialist (Product Operations) (2026-03-01)
 
-2026-03-01 → 2026-03-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260301123348/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=09a82aa6-2405-4177-86f4-e3a7488fdfd2)
+2026-03-01 → 2026-03-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260301123348/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=09a82aa6-2405-4177-86f4-e3a7488fdfd2)
 
 <details><summary>Description</summary>
 
@@ -957,7 +902,7 @@ This vacancy has now been closed. Thank you for your interest.
 
 ### Operational Finance Analyst (2026-03-01)
 
-2026-03-01 → 2026-03-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260301105720/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4f8407c7-b405-4328-a8d0-12dddbdd49ee)
+2026-03-01 → 2026-03-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260301105720/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=4f8407c7-b405-4328-a8d0-12dddbdd49ee)
 
 <details><summary>Description</summary>
 
@@ -990,18 +935,6 @@ Cost Analysis & Procurement Support
 - Problem Solving: A "detective" mindset—you enjoy finding the root cause of data discrepancies.
 - Process Oriented: The ability to look at a chaotic workflow and visualize a structured flow chart.
 ​
-Apply for this job
-Share this job
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-Finance
-Job Title
-Operational Finance Analyst
-City
-Glasgow
-Country
-United Kingdom
 
 </details>
 
@@ -1009,7 +942,7 @@ United Kingdom
 
 ### Principal Data Architect (2026-03-01)
 
-2026-03-01 → 2026-03-01 · software-eng · location not stated · [source](https://web.archive.org/web/20260301103529/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e51a8114-537d-45c7-98ec-fe976abb998a)
+2026-03-01 → 2026-03-01 · software-eng · Glasgow or London (King’s Cross), United Kingdom · [source](https://web.archive.org/web/20260301103529/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=e51a8114-537d-45c7-98ec-fe976abb998a)
 
 <details><summary>Description</summary>
 
@@ -1043,7 +976,7 @@ Governance & Enterprise Readiness
 
 ### Purification Technician/Senior Purification Technician (2026-03-01)
 
-2026-03-01 → 2026-03-01 · lab-automation · location not stated · [source](https://web.archive.org/web/20260301105421/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=404dbf21-6abb-4386-96ec-f2994db1578f)
+2026-03-01 → 2026-03-01 · lab-automation · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260301105421/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=404dbf21-6abb-4386-96ec-f2994db1578f)
 
 <details><summary>Description</summary>
 
@@ -1073,18 +1006,6 @@ Desirable (But not essential)Experience of working in industry / CRO environment
 - Experience with electronic tools such as Electronic Laboratory Notebooks, etc
 UK Right to Work
 We are unable to provide visa sponsorship for this role.
-Apply for this job
-Share this job
-Location
-Maryhill
-Department
-Chemistry- Product Operations
-Job Title
-Purification Technician/Senior Purification Technician
-City
-Glasgow
-Country
-United Kingdom
 
 </details>
 
@@ -1092,7 +1013,7 @@ United Kingdom
 
 ### Synthetic Chemist (2026-03-01)
 
-2026-03-01 → 2026-03-01 · materials-science · location not stated · [source](https://web.archive.org/web/20260301214412/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=acde067e-2a0f-448a-a9f4-2f7ffa544de4)
+2026-03-01 → 2026-03-01 · materials-science · Glasgow · [source](https://web.archive.org/web/20260301214412/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=acde067e-2a0f-448a-a9f4-2f7ffa544de4)
 
 <details><summary>Description</summary>
 
@@ -1123,11 +1044,11 @@ We believe in a flat organizational structure and provide the opportunity for al
 
 </details>
 
-<a id="principal-architect-2026-03-03"></a>
+<a id="principal-architect-robotics-hardware-abstraction-2026-03-03"></a>
 
-### Principal Architect (2026-03-03)
+### Principal Architect – Robotics & Hardware Abstraction (2026-03-03)
 
-2026-03-03 → 2026-03-03 · software-eng · location not stated · [source](https://web.archive.org/web/20260303051436/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=afbda2d3-3e50-4fbd-8e41-a190af8b9305)
+2026-03-03 → 2026-03-03 · software-eng · Glasgow or London (King’s Cross), United Kingdom · [source](https://web.archive.org/web/20260303051436/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=afbda2d3-3e50-4fbd-8e41-a190af8b9305)
 
 <details><summary>Description</summary>
 
@@ -1196,7 +1117,7 @@ This vacancy has now been closed. Thank you for your interest.
 
 ### Executive Assistant (2026-04-01)
 
-2026-04-01 → 2026-04-01 · business-ops · location not stated · [source](https://web.archive.org/web/20260401103803/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=11c4d103-d07a-422f-8c66-5359783d530a)
+2026-04-01 → 2026-04-01 · business-ops · Glasgow, United Kingdom · [source](https://web.archive.org/web/20260401103803/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=11c4d103-d07a-422f-8c66-5359783d530a)
 
 <details><summary>Description</summary>
 
@@ -1248,18 +1169,6 @@ Strong judgment and problem‑solving
 Adaptability and resilience
 Excellent interpersonal skills
 Ability to manage pressure and shifting priorities
-Apply for this job
-Share this job
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-Business Support
-Job Title
-Executive Assistant
-City
-Glasgow
-Country
-United Kingdom
 
 </details>
 
@@ -1267,7 +1176,7 @@ United Kingdom
 
 ### Senior ML Infrastructure Engineer (2026-04-01)
 
-2026-04-01 → 2026-04-01 · ml-research · location not stated · [source](https://web.archive.org/web/20260401134621/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=daf6755c-c68a-46fe-b98a-0bd6319fdb93)
+2026-04-01 → 2026-04-01 · ml-research · Glasgow · [source](https://web.archive.org/web/20260401134621/https://chemifyltd.peoplehr.net/Pages/JobBoard/Opening.aspx?v=daf6755c-c68a-46fe-b98a-0bd6319fdb93)
 
 <details><summary>Description</summary>
 
@@ -1296,16 +1205,6 @@ United Kingdom
 - Scientific computing environments.
 - Internal developer platform or CLI tooling experience.
 - Experience in Cyber Security and operating in regulated environments.
-Apply for this job
-Share this job
-Location
-Advanced Research Centre, University of Glasgow, 11 Chapel Lane, G11 6EW
-Department
-IT
-Job Title
-Senior ML Infrastructure Engineer
-City
-Glasgow
 
 </details>
 

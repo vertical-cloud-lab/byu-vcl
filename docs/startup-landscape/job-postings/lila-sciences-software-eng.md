@@ -2,6 +2,129 @@
 
 Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.md)
 
+<a id="intern-it-security-2025-10-06"></a>
+
+### Intern, IT & Security (2025-10-06)
+
+2025-10-06 → 2025-10-20 · software-eng · Cambridge, MA USA · [source](https://web.archive.org/web/20251020005236/https://job-boards.greenhouse.io/lilasciences/jobs/4033998009)
+
+<details><summary>Description</summary>
+
+**Your Impact at Lila**
+As an IT & Security Intern, you will work closely with the team to support day-to-day operations, help maintain security best practices, and assist in troubleshooting technical issues across the company. This role is ideal for someone eager to learn about IT infrastructure, cybersecurity, and enterprise-level systems management.
+What You'll Be Building
+Technical Support
+- Assist in troubleshooting and resolving hardware, software, and network issues.
+- Support onboarding and offboarding processes, including account provisioning and device setup.
+- Help maintain asset inventory and ensure proper documentation.
+Security Operations
+- Monitor and triage basic security alerts and incidents.
+- Support vulnerability assessments and patch management processes.
+- Assist with access control reviews and security audits.
+- Help develop and maintain security documentation, policies, and playbooks.
+Project Support
+- Participate in IT infrastructure and security-related projects.
+- Research and evaluate new tools, technologies, and best practices.
+- Assist in implementing improvements to streamline operations and provide application support
+Documentation & Reporting
+- Maintain detailed records of issues, solutions, and procedures.
+- Generate basic reports on system performance and security events. </aside>
+- Currently enrolled in a degree program related to Information Technology, Computer Science, Cybersecurity, or a related field.
+- Basic knowledge of IT fundamentals, including networking, operating systems, and cloud services.
+- Familiarity with security concepts such as authentication, authorization, and endpoint protection.
+- Strong problem-solving skills and attention to detail.
+- Excellent communication and teamwork skills.
+
+**Bonus Points For**
+- Hands-on experience with Windows, macOS, or Linux environments.
+- Exposure to security tools such as antivirus software, endpoint detection, or SIEM solutions.
+- Familiarity with cloud platforms (AWS, Azure, or Google Cloud).
+- Knowledge of scripting languages (e.g., Python, Bash, or PowerShell).
+We’re All In
+A Note to Agencies
+
+</details>
+
+<a id="intern-security-cloud-engineering-2025-10-06"></a>
+
+### Intern, Security & Cloud Engineering (2025-10-06)
+
+2025-10-06 → 2025-10-20 · software-eng · Cambridge, MA USA · [source](https://web.archive.org/web/20251020005240/https://job-boards.greenhouse.io/lilasciences/jobs/4034001009)
+
+<details><summary>Description</summary>
+
+**Your Impact at Lila**
+We are seeking a motivated and curious individual to join our IT & Security team as a Co-op. This role is ideal for someone interested in cloud infrastructure, cybersecurity, and AI tool development. You’ll gain exposure to modern cloud platforms, help strengthen our security posture, and assist in building AI-driven automation to improve IT operations and security workflows.
+This is a highly collaborative role with opportunities to work across infrastructure, security engineering, and automation initiatives.
+What You'll Be Building
+- IT & End-User Support
+- Provide technical support to employees, including troubleshooting hardware, software, and network issues.
+- Assist with employee onboarding/offboarding, including provisioning laptops, accounts, and security access.
+- Maintain IT asset inventory and improve documentation for support processes.
+- Cloud Infrastructure & Automation
+- Support the deployment and maintenance of cloud services (AWS, GCP, or Azure).
+- Assist with building and improving infrastructure as code using tools like Terraform or Pulumi.
+- Help monitor cloud performance, cost optimization, and scaling strategies.
+- Develop internal AI-powered agents to automate repetitive IT and security workflows.
+- Cybersecurity & Compliance
+- Monitor and respond to security alerts and assist with incident investigations.
+- Support vulnerability scanning and remediation processes for systems and cloud environments.
+- Assist with compliance activities such as access reviews, audits, and policy updates.
+- Help strengthen endpoint and identity security using tools like Okta, Google Workspace, and EDR solutions.
+- Project Support
+- Participate in cross-functional projects involving cloud migrations, new tool integrations, or security improvements.
+- Contribute to documentation for cloud environments, security runbooks, and AI agent workflows.
+- Currently enrolled in a Computer Science, Information Technology, Cybersecurity, Data Science, or related degree program.
+- Foundational knowledge of:
+- Cloud platforms such as AWS, Azure, or GCP.
+- Networking concepts (IP, DNS, VPN, firewalls).
+- Cybersecurity fundamentals (authentication, encryption, phishing prevention).
+- Basic programming or scripting (Python preferred).
+- Strong problem-solving skills and eagerness to learn new technologies.
+- Effective communicator and team player with good documentation habits.
+
+**Bonus Points For**
+- Experience with cloud-native tools (e.g., Kubernetes, Docker, serverless functions).
+- Familiarity with infrastructure as code (e.g., Terraform, Pulumi).
+- Exposure to cybersecurity tools like SIEMs, vulnerability scanners, or EDR platforms.
+- Knowledge of AI agent frameworks or automation platforms.
+- Previous internship, co-op, or significant project experience in cloud or security engineering.
+We’re All In
+A Note to Agencies
+
+</details>
+
+<a id="senior-software-engineer-backend-2025-10-06"></a>
+
+### Senior Software Engineer, Backend (2025-10-06)
+
+2025-10-06 → 2026-03-09 · software-eng · Cambridge, MA USA · $144–210K · [source](https://web.archive.org/web/20260309115419/https://job-boards.greenhouse.io/lilasciences/jobs/4031451009?utm_source=General+Catalyst+job+board&utm_medium=getro.com&gh_src=General+Catalyst+job+board)
+
+<details><summary>Description</summary>
+
+**Your Impact at Lila**
+Join us in shaping the future of science! We are seeking an experienced Senior Software Engineer with a backend focus to join our software platform team, where you’ll collaborate with software engineers, lab scientists, and machine learning engineers to build cutting-edge tools for automated scientific analysis and more. This role spans web services and data engineering, with a strong emphasis on Python development for scientific applications. If you thrive in a collaborative, fast-paced environment and bring best practices in git, development workflows, and user-centered design, we want to hear from you!
+What You'll Be Building
+- Design & Build Services: Design and build high-performance, secure, and well-documented code that integrate with an ecosystem of existing services and apps.
+- Performance & Reliability: Diagnose and optimize system bottlenecks, ensuring high availability and low-latency performance across large-scale workloads.
+- Cloud & Infrastructure: Leverage AWS services, Kubernetes and modern DevOps practices to build and deploy production-grade systems at scale.
+- Cross-Functional Collaboration: Work with ML researchers, engineers, and scientists to integrate data pipelines, APIs, and cloud infrastructure into scientific workflows and services.
+- Bachelor’s or Master’s degree in Computer Science, Engineering, or related field.
+- 4-8 years of experience writing software in a commercial setting.
+- Full Stack Development : Experience developing web apps across the full stack (React, TypeScript, Monorepos like Nx, TailWind, FastAPI, SQL/NoSQL, Python, Pydantic)
+- Cloud & DevOps Knowledge:  Hands-on experience with AWS, GCP, or Azure; strong understanding of Kubernetes and containerization, infrastructure-as-code (Terraform, CloudFormation), and CI/CD pipelines (GitHub Actions).
+- Communication & Collaboration : Acute listening skills, and a proven track record of working cross-functionally with scientists, data engineers, and product teams; able to explain complex ideas to diverse audiences.
+- Problem Solving : Proven ability to take ownership of complex backend challenges, balancing trade-offs between scalability, performance, and maintainability.
+
+**Bonus Points For**
+- Hands-On with Latest AI Tools:  Exposure to AI technologies such as Large Language Models (LLMs), Retrieval-Augmented Generation (RAG), or agentic frameworks, as well as experience leveraging AI to improve development performance.
+- Experience with ORMs: Experience with and web services for CRUD services (SQLModel, FastAPI, Django).
+- Orchestration Systems: Experience with orchestrators tools (Airflow, Prefect, Temporal, Dagster).
+- Familiarity with Python for Science : Familiarity with data science and ML libraries (pandas, numpy, scipy, jax, pytorch).
+- Domain Background:  Exposure to laboratory software or analytics for life sciences, material sciences, or related fields.
+
+</details>
+
 <a id="staff-forward-deployed-engineer-life-sciences-2025-10-06"></a>
 
 ### Staff Forward Deployed Engineer, Life Sciences (2025-10-06)
@@ -44,6 +167,38 @@ $192,000 — $256,000 USD
 
 </details>
 
+<a id="staff-principal-industrial-engineer-2026-01-23"></a>
+
+### Staff / Principal Industrial Engineer (2026-01-23)
+
+2026-01-23 → 2026-06-16 · software-eng · Cambridge, MA USA · $163–228K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4110355009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila Sciences is seeking an Industrial Engineer to own and architect the physical layout of our AI Science Factories.  In this role, you will be responsible for integrating lab instrumentation and robotics into a cohesive, efficient factory design. You will collaborate closely with hardware engineering, science teams, robotics, facilities, and operations to create layouts that are safe, scalable, and engineered for high-throughput autonomous research. This role is central to translating complex cross-functional requirements into a factory environment that enables Lila’s next-generation scientific capabilities.
+What You'll Be Building
+- Own the end-to-end factory layout, including spatial planning, adjacency mapping, and utility requirements
+- Integrate lab instrumentation layouts from diverse scientific and engineering domains into a unified, high-performance factory design.
+- Collaborate with hardware, robotics, science, automation, safety, and facilities teams to incorporate requirements for utilities, safety, accessibility, maintenance, and environmental controls.
+- Build and maintain accurate 2D and 3D CAD models of the full factory layout; drive version control and change management for layout updates.
+- Work with robotic teams to run simulations and scenario analyses to assess throughput, operational efficiency, and bottlenecks.
+- Partner with construction, facilities, and external vendors to ensure physical buildouts reflect the intended design and can scale with future demand.
+- Develop standards, documentation, and layout guidelines for new lab instrumentation and factory expansions.
+- BS/MS degree in Industrial Engineering, Mechanical Engineering, Manufacturing Engineering, Systems Engineering, or related field.
+- Experience designing factory, lab, or production layouts in high-complexity environments.
+- Proficiency with CAD tools (e.g., AutoCAD, REVIT, SolidWorks).
+- Strong understanding of workflow optimization, material flow, ergonomics, and spatial systems.
+- Ability to collaborate across multidisciplinary engineering and scientific teams.
+- Clear communication and documentation skills.
+
+**Bonus Points For**
+- Experience with robotic or automated systems and their physical integration into facilities.
+- Familiarity with lab/industrial utility requirements (HVAC, gases, power, chemicals, drainage).
+- Experience in R&D facilities, pilot plants, or advanced automation environments.
+
+</details>
+
 <a id="sr-principal-principal-software-engineer-scientific-system-of-record-2026-03-23"></a>
 
 ### Sr Principal/ Principal Software Engineer, Scientific System of Record (2026-03-23)
@@ -67,6 +222,81 @@ What You'll Be Building
 - Data and System Modeling: Establish durable domain models, schemas, and data contracts across SQL, NoSQL, vector databases, data lakehouses, and other scientific data systems.
 - Reliability, Performance, and Scale: Set technical standards for high availability, low latency, observability, fault tolerance, and operational excellence
 - Cloud and Infrastructure: Guide the use of AWS services, Kubernetes, and modern DevOps practices to build production-grade systems that scale across teams and workloads.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="staff-principal-engineer-technical-mitigations-research-2026-04-07"></a>
+
+### Staff / Principal Engineer, Technical Mitigations Research (2026-04-07)
+
+2026-04-07 → 2026-06-02 · software-eng · Cambridge, MA USA; London, UK; San Francisco, CA USA · $224–336K · [source](https://web.archive.org/web/20260414052227/https://job-boards.greenhouse.io/lilasciences/jobs/4210472009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+We're building a talent-dense, high-agency AI safety team at Lila that will engage all core teams within the organization (science, model training, lab integration, etc.), to prepare for risks from scientific superintelligence. The initial focus of this team will be to build and implement a bespoke safety strategy for Lila, tailored to its specific goals and deployment strategies. This will involve technical safety strategy development, broader ecosystem engagement, safety-focused evaluations, safety systems to mitigate risks, and a safety research agenda that explores longer-term needs such as oversight of superintelligent scientific systems.
+We’re seeking a Technical Mitigations Lead, to lead the build out of safety systems at Lila for the safe deployment of our scientific capabilities to the world. Given the novelty of Lila’s workflows, integrating frontier-class language models with narrow scientific tools and lab-based automation, this role will require the design and deployment of technical safeguards beyond the current state-of-the-art.
+We expect the person in this role to start off the initial mitigations build-out, and then slowly build a team to support this function.
+What You'll Be Building
+- Set the build and research strategy for Lila’s safety systems, across scientific data analysis and generation pipelines, safety post-training, refusal classifiers, automated safety-testing / red-teaming systems, and monitoring systems.
+- Conduct initial safeguards experimentation and buildout for Lila’s specific scientific needs, and subsequently lead a small team to execute on the build and research agenda
+- Lead safety systems research to iterate Lila’s systems beyond the state of the art, given the needs of technical safeguards for both in silico and lab-based scientific workflows.
+- Partner closely with
+- Other members of the safety team, such as domain-specific experts (bio, chem, materials) and eval buildout teams, and
+- Non-safety teams, such as core AI, lab automation, and product teams,
+- Contributing to broader, high-quality research efforts - as and when needed - for scientific capability evaluation and restriction.
+- Contribute to external communications on Lila’s safety efforts.
+- Track record of building safety systems, classifiers, or conducting post-training for frontier-class problems - science, reasoning, programming, etc.
+- 4-6+ years working in technically engineering with ML systems.
+- Experience building scalable, production systems, not just prototypes.
+- Demonstrated ability to set research directions for open problems in post-training, classifier buildouts, and other relevant systems.
+- Ability to communicate complex technical concepts and concerns to non-expert audiences effectively.
+
+**Bonus Points For**
+- Experience in developing or applying ML to biological or physical sciences
+- Experience in building safeguards for scientific risks for frontier models / narrow scientific tools.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="scada-engineer-2026-04-13"></a>
+
+### SCADA Engineer (2026-04-13)
+
+2026-04-13 → 2026-06-10 · software-eng · Cambridge, MA USA · $76–125K · [source](https://web.archive.org/web/20260602011835/https://job-boards.greenhouse.io/lilasciences/jobs/4209788009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila is seeking a motivated SCADA Engineer to contribute to the design, development, and implementation of control systems for automated scientific equipment. This role involves applying core engineering principles to support PLC controls, robotics integration, troubleshooting systems, and collaborating within cross-functional teams to enhance laboratory automation.
+What You'll Be Building
+- Assist in designing, programming, and deploying control systems using PLC and SCADA technologies to optimize laboratory workflows.
+- Support the integration and testing of advanced robotics and conveyance systems within existing automation frameworks.
+- Assist in integrating 3rd party equipment and vendor software into SCADA and make custom HMIs to aid in user controls.
+- Contribute to the design and implementation of safety systems to safely operate a mix of lab equipment and robotics.
+- Collaborate with software teams to support the integration of control systems with broader IT/OT factory infrastructure.
+- Create, update, and maintain engineering documentation, including P&ID diagrams, wiring schematics, control narratives, and instrument IO lists.
+- Support multi-team automation projects by independently executing technical tasks, meeting milestones, and adhering to engineering best practices.
+- Perform calibration, testing, troubleshooting, and validation of control systems to ensure they meet performance, accuracy, and safety standards.
+- Work closely with subject matter experts (SMEs) and project teams to understand technical requirements and solve moderately complex hardware/software challenges.
+- Identify recurring technical issues and implement improvements to enhance system reliability and operational efficiency.
+- 2–4 years of experience in designing, implementing, or maintaining control systems, preferably in automated manufacturing or laboratory environments.
+- Solid understanding of PLCs, HMI, SCADA, and related automation software and hardware.
+- Familiarity with industrial networking basics in OT deployments (e.g., IP addressing, basic routing).
+- Experience reading and creating detailed engineering documents and schematics using tools like AutoCAD, SolidWorks Electrical, or similar.
+- Hands-on experience or academic background in robotics integration and programming.
+- Effective communication and collaborative skills for working within project teams and with internal stakeholders.
+- Strong analytical and problem-solving skills, with the ability to independently execute solutions for well-defined technical issues.
+
+**Bonus Points For**
+- Ignition SCADA Core training and HMI design experience.
+- Structured text programming experience in TwinCAT, Python, C++, etc.
+- Familiarity with communication protocols like OPC-UA, MQTT, and REST APIs.
+- Exposure to safety system design concepts and classifications like SIL or PL.
+- Basic understanding of managed network switches, port addressing/IP subnetting, and DHCP services.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
@@ -519,35 +749,6 @@ $144,000 — $240,000 USD
 
 </details>
 
-<a id="engineer-i-research-operations-2nd-shift-2026-09-08"></a>
-
-### Engineer I, Research Operations (2nd Shift) (2026-09-08)
-
-2026-09-08 → open · software-eng · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila Sciences’ Research Operations team executes the automated laboratory workflows that power our scientific platform. We are seeking a motivated and detail-oriented Engineer I to join our high-throughput Research Operations team in an on-site, second-shift role with working hours of 2:00 PM to 10:00 PM.
-In this role, you will operate integrated laboratory automation, prepare materials, monitor active workflows, troubleshoot issues, and help ensure reliable execution across the shift. You will apply your prior laboratory experience while collaborating with scientists and engineers across life sciences and physical sciences to support diverse research programs. This role is well suited to a candidate with a strong laboratory foundation who is ready to deepen their expertise in high-throughput automation, engineering principles, and science operations.
-What You'll Be Building
-- Execute high-throughput automated and manual laboratory workflows using integrated workcells and liquid-handling platforms, such as Hamilton, Lynx, Echo, or similar systems.
-- Prepare, organize, and verify reagents, samples, labware, and consumables required for workflow execution.
-- Follow standard operating procedures, work instructions, and safety requirements to support accurate, reproducible, and timely results.
-- Monitor workflows in real time, identify equipment or process issues, perform first-line troubleshooting and recovery, and escalate complex issues when necessary.
-- Perform routine equipment checks, cleaning, maintenance, and readiness activities to support reliable operation of automated systems.
-- Review quality-control outputs and accurately record experimental, equipment, and process data to maintain data integrity and sample traceability.
-- Provide clear end-of-shift handoffs and partner with scientists, automation engineers, and operational teams to communicate workflow status, open issues, and follow-up actions.
-- Contribute to continuous improvement and cross-training efforts that strengthen workflow efficiency, robustness, scalability, and operational coverage.
-- Bachelor’s degree in Biology, Biotechnology, Biochemistry, Molecular Biology, Bioengineering, or a related scientific or engineering field, or an equivalent combination of education and relevant laboratory experience.
-- Minimum 3 years of relevant Co-Op and industry laboratory experience.
-- Hands-on laboratory experience performing core techniques, including pipetting, reagent preparation, and aseptic technique, within Molecular Biology, Microbiology, Biotechnology, Protein Science, or a related field.
-- Strong attention to detail and demonstrated ability to follow standard operating procedures and technical instructions while maintaining accurate, complete, and traceable documentation.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="staff-engineer-enterprise-externalization-2026-09-21"></a>
 
 ### Staff Engineer, Enterprise Externalization (2026-09-21)
@@ -600,37 +801,6 @@ What You'll Be Building
 - 5+ years (L5) to 8+ years (L6) of experience in corporate/physical security operations, a GSOC/SOC environment, law enforcement, or military service.
 - Hands-on experience with access control systems and video management systems.
 - Experience monitoring and managing intrusion detection/alarm systems.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="engineer-i-research-operations-1st-shift-2026-09-30"></a>
-
-### Engineer I, Research Operations, (1st shift) (2026-09-30)
-
-2026-09-30 → open · software-eng · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277806009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila Sciences’ Research Operations team executes the high-throughput laboratory workflows that power our scientific platform. We are seeking a motivated and detail-oriented Engineer I to support mammalian cell-based workflows, including electroporation, lipid nanoparticle (LNP) dosing, and chemical transfection. This is an on-site, first-shift role, with scheduled hours of either 7:00 AM to 3:00 PM or 9:00 AM to 5:00 PM based on operational needs.
-In this role, you will combine hands-on cell culture with laboratory automation to deliver consistent, high-quality materials for downstream applications. You will maintain mammalian cell cultures, operate automated liquid handlers and specialized instruments, monitor cell health and quality-control results, troubleshoot issues, and perform downstream characterization. You will partner with scientists and engineers to improve workflow reliability, scalability, and traceability.
-What You'll Be Building
-- Execute high-throughput automated and manual workflows, including electroporation, lipid nanoparticle (LNP) dosing, and chemical transfection.
-- Maintain and passage mammalian cell lines and primary cells using aseptic technique, including cell counting and viability assessment.
-- Prepare workflow materials and operate automated liquid handlers, electroporation instruments, and related laboratory equipment.
-- Perform downstream characterization using flow cytometry, plate reader-based assays, or imaging-based methods.
-- Monitor cell health, workflow performance, and quality-control results; troubleshoot issues and escalate as needed.
-- Maintain traceable records, provide clear handoffs, and partner with scientists and engineers to improve standard operating procedures (SOPs) and workflows.
-- Bachelor’s degree in Biology, Biotechnology, Biochemistry, Cell Biology, Bioengineering, or a related scientific or engineering field, or an equivalent combination of education and relevant laboratory experience.
-- Minimum 3 years of relevant Co-Op and industry laboratory experience.
-- Hands-on mammalian cell culture experience, including aseptic technique, routine maintenance, passaging, cell counting, and viability assessment.
-- Experience with mammalian cell transfection methods, including chemical transfection, electroporation, or related delivery technologies.
-- Strong attention to detail and ability to follow SOPs and technical instructions while maintaining accurate, complete, and traceable documentation.
-- Strong analytical and problem-solving skills, including recognizing deviations, performing initial troubleshooting, and escalating appropriately.
-- Demonstrated ability to manage multiple priorities and execute reliably in a fast-paced, high-throughput laboratory environment.
-- Strong communication and collaboration skills, with the ability to provide clear status updates and work effectively across teams.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 
