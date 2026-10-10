@@ -97,9 +97,17 @@ Commands -- write one line to ``cmd`` in the working directory, atomically
     z <mm>          move the nozzle to this Z over the target (bounded, stepped)
     xy <x> <y>      move the target, at the current Z, only when Z >= 125
     floor <mm>      change the lowest Z that ``z`` will accept
-    read [n] [tag]  take n sensor readings where it is (default 3). Every
+    read [n] [tag] [key=value ...]
+                    take n sensor readings where it is (default 3). Every
                     reading the script takes, here or at a step, is also
-                    appended in full (8 channels) to ``readings.jsonl``
+                    appended in full (8 channels) to ``readings.jsonl``.
+                    key=value pairs are the board's per-reading settings
+                    (pico/ firmware of 2026-10-10): gain=4 atime=50 astep=999
+                    led_ma=10 (the breakout's white LED: 0 or 4-20 mA)
+    lights on|off   switch the rail lights without moving. Readings with them
+                    off are the only ones the board LED lights alone. Any
+                    command that moves switches them back on first, so the
+                    step photos can still see a slip
     photo           photograph again without moving
     return          lift, carry back the way it came (up to --approach-z before
                     the base), down into the pocket, let go from the
@@ -207,6 +215,7 @@ class Cal:
         self.drop_dx = args.drop_dx
         self.seated_total = None
         self.lights_before = None
+        self.lights_off = False           # switched off by a ``lights off`` command
         self.history = []
         self.last_note = ""
         self.release_tries = 0
@@ -334,7 +343,7 @@ class Cal:
         self.save_state()
         return out
 
-    def read(self, n, label):
+    def read(self, n, label, settings=None):
         totals = []
         if self.args.no_sensor:
             return totals
@@ -342,14 +351,18 @@ class Cal:
             if self.link is None:
                 self.link = SensorLink().connect()
             for i in range(n):
-                r = self.link.read(label=f"cal-{label}-{i + 1}")
+                r = self.link.read(label=f"cal-{label}-{i + 1}", settings=settings)
                 totals.append(r["total"])
                 # Every reading's 8 channels, not just its total: until
                 # 2026-09-30 the spectra had to be read separately from the
                 # runner while the enclosure sat still.
                 row = {k: r[k] for k in ("experiment_id", "channels", "total",
                                          "t_request_utc", "t_response_utc")}
-                row.update(label=label, pos=self.pos, seq=self.seq)
+                row.update(label=label, pos=self.pos, seq=self.seq,
+                           lights="off" if self.lights_off else self.args.lights)
+                if settings:
+                    row.update(settings=settings, sensor_settings=r.get("sensor_settings"),
+                               sensor_extra=r.get("sensor_extra"))
                 with open(READINGS, "a") as fh:
                     fh.write(json.dumps(row) + "\n")
         except Exception as exc:  # noqa: BLE001 - the sensor is a cross-check only
@@ -807,6 +820,11 @@ class Cal:
         while self.phase not in ("done", "parked"):
             cmd = self.wait(self.prompt())
             op = cmd[0]
+            if self.lights_off and op not in ("read", "photo", "lights", "floor"):
+                if not self.args.simulate:
+                    robot_lights(ROBOT_IP, on=True)
+                self.lights_off = False
+                self.log(f"rail lights back on before '{op}'")
             try:
                 if op == "timeout" and self.phase == "release?":
                     self.log("no instruction and no sensor: holding still, no motion")
@@ -848,8 +866,17 @@ class Cal:
                 elif op == "read":
                     n = int(cmd[1]) if len(cmd) > 1 else 3
                     tag = cmd[2] if len(cmd) > 2 else "extra"
+                    settings = read_settings(cmd[3:])
                     self.history.append({"label": f"read-{tag}", "pos": self.pos,
-                                         "reads": self.read(n, tag)})
+                                         "settings": settings,
+                                         "reads": self.read(n, tag, settings)})
+                elif op == "lights":
+                    if len(cmd) != 2 or cmd[1] not in ("on", "off"):
+                        raise ValueError("lights on|off")
+                    if not self.args.simulate:
+                        robot_lights(ROBOT_IP, on=cmd[1] == "on")
+                    self.lights_off = cmd[1] == "off"
+                    self.log(f"rail lights {cmd[1]}")
                 elif op == "photo":
                     self.photos("again", reads=2)
                 elif op == "return" and self.aboard and self.phase in ("pickup", "carry", "ladder"):
@@ -884,6 +911,17 @@ class Cal:
                 self.last_note = f"REFUSED: {exc}"
                 self.log(self.last_note)
             self.save_state()
+
+
+def read_settings(pairs):
+    """``gain=4 led_ma=10`` -> {"gain": 4, "led_ma": 10}; the board checks the ranges."""
+    out = {}
+    for pair in pairs:
+        key, sep, value = pair.partition("=")
+        if not sep or key not in ("gain", "atime", "astep", "led_ma"):
+            raise ValueError(f"setting {pair!r}: use gain=, atime=, astep= or led_ma=")
+        out[key] = float(value) if key == "gain" and "." in value else int(value)
+    return out or None
 
 
 def main():
