@@ -1,0 +1,71 @@
+{
+ "name": "sieving",
+ "fps": 15,
+ "n_frames": 932,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "1 · pour out",
+   "caption": "After a run, with the dust settled: tip the powder container out onto a grounded stainless tray (Bartosz pours onto paper, T2 50:51; paper is an insulator and NFPA 484 practice says never pour powder over one). The heap is mostly spheres with unatomized pieces in it.",
+   "start_frame": 0,
+   "end_frame": 100
+  },
+  {
+   "label": "2 · pieces out",
+   "caption": "Pick the pieces out by hand: splats, beads and anything over a few millimetres go to the dish. They are feedstock again (TA 04:50), not waste.",
+   "start_frame": 101,
+   "end_frame": 170
+  },
+  {
+   "label": "3 · into the No. 60",
+   "caption": "A conductive scoop carries the powder to a funnel on the top sieve, the No. 60 (250 µm): it scalps what the hand missed and keeps the fine meshes safe. 50 g is a 7.7 mm bed on a 3 in mesh; feed it in parts rather than all at once.",
+   "start_frame": 171,
+   "end_frame": 293
+  },
+  {
+   "label": "3 · cover on",
+   "caption": "Cover on before anything is shaken. Fine aluminium is a combustible dust and the cover is the containment.",
+   "start_frame": 294,
+   "end_frame": 338
+  },
+  {
+   "label": "4 · sieve",
+   "caption": "Rotate the stack in a flat circle and tap the frame with the other hand, about 3 minutes. Cut open here: pieces stay on the No. 60, 63-250 µm on the No. 230, the 20-63 µm print fraction on the No. 635, dust in the pan. The fine meshes blind: tap, and do 10-20 g at a time.",
+   "start_frame": 339,
+   "end_frame": 467
+  },
+  {
+   "label": "5 · unstack",
+   "caption": "Cover off, then the No. 60: what it held joins the pieces in the dish.",
+   "start_frame": 468,
+   "end_frame": 557
+  },
+  {
+   "label": "5 · No. 230",
+   "caption": "The No. 230 next, through the funnel into its own jar: 63-250 µm, too coarse for the bed. Keep it; it can be re-atomized (E6 in #222).",
+   "start_frame": 558,
+   "end_frame": 647
+  },
+  {
+   "label": "5 · No. 635",
+   "caption": "The No. 635 holds the print fraction, 20-63 µm. It goes through the funnel into a jar already tared on the balance. Weigh every fraction: the yield says how many runs a print needs.",
+   "start_frame": 648,
+   "end_frame": 750
+  },
+  {
+   "label": "5 · pan",
+   "caption": "The pan last: under 20 um is dust. It flows badly on a bed and it is the fraction most likely to go airborne, so it gets its own closed jar, not the bin.",
+   "start_frame": 751,
+   "end_frame": 833
+  },
+  {
+   "label": "6 · label, store, dose",
+   "caption": "Lids on, a 6-character ID on the print jar (#249), and the jar lives in the desiccant box. The 20-63 µm jar is what feeds the doser's 25 mm cartridge: the Sep 30 clog was unsieved powder.",
+   "start_frame": 834,
+   "end_frame": 931
+  }
+ ]
+}
