@@ -1,0 +1,109 @@
+# ben_2vials_tiprack.yaml -- @benwhitney5463's two vials plus the 2x15 tip
+# rack, CubXL, 2026-10-02 rev: the deck re-set-up after the 2026-10-02
+# recalibration (cub_xl_ben_3_instrument.yaml).
+#
+# Attached to issue #169 on 2026-10-02 at 19:54Z, replacing his 19:35Z
+# attachment, which "didn't save the changes". THE BODY BELOW IS BEN'S,
+# VERBATIM (parsed YAML identical to the attachment; only CRLF -> LF). Ben
+# converted the tip rack himself: "I already adjusted the tiprack location
+# according to the offset".
+#
+# Changes vs. the 19:35Z attachment (previous rev of this file):
+#   vial_1 location x / y          115 / 45.08    ->  136.668 / 45
+#   vial_2 location x / y          115 / 78.08    ->  136.668 / 78
+#   tip_rack calibration.a1        (294, 92)      ->  (291.332, 89)
+#   tip_rack calibration.a2        (285.5, 92)    ->  (282.832, 89)
+#   tip_rack location              (294, 92, 62)  ->  (291.332, 89, 59)
+#   tip_rack pickup_z              62  ->  59
+#   vial rims (z 56), heights, tip_length 35: unchanged
+#
+# What the gantry is sent (CubOS commands gantry = deck - instrument offset;
+# capper offset (0, 0), pipette offset (55.0, 11.0)):
+#   capper  -> vial_1 / vial_2         gantry (136.668, 45) / (136.668, 78)
+#   pipette -> vial_1 / vial_2         gantry ( 81.668, 34) / ( 81.668, 67)
+#   pipette -> tip_rack.A1 pick-up     gantry (236.332, 78, 59)
+
+labware:
+  vial_1:
+    type: vial
+    name: vial_1
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 136.668
+      y: 45
+      z: 56
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  vial_2:
+    type: vial
+    name: vial_2
+    model_name: ''
+    height: 83
+    diameter: 28
+    location:
+      x: 136.668
+      y: 78
+      z: 56
+    capacity_ul: 1500
+    working_volume_ul: 1200
+    dead_volume_ul: 0
+  tip_rack:
+    type: tip_rack
+    name: tip_rack
+    model_name: panda_2x15_tip_rack
+    rows: 15
+    columns: 2
+    length: 138
+    width: 20
+    height: 66
+    tip_length: 35
+    drop_z:
+    x_offset: 8.5
+    y_offset: 8.5
+    calibration:
+      a1:
+        x: 291.332
+        y: 89
+      a2:
+        x: 282.832
+        y: 89
+    pickup_z: 59
+    location:
+      x: 291.332
+      y: 89
+      z: 59
+    slots: {}
+    tip_present:
+      A1: true
+      A2: true
+      B1: true
+      B2: true
+      C1: true
+      C2: true
+      D1: true
+      D2: true
+      E1: true
+      E2: true
+      F1: true
+      F2: true
+      G1: true
+      G2: true
+      H1: true
+      H2: true
+      I1: true
+      I2: true
+      J1: true
+      J2: true
+      K1: true
+      K2: true
+      L1: true
+      L2: true
+      M1: true
+      M2: true
+      N1: true
+      N2: true
+      O1: true
+      O2: true
