@@ -26,21 +26,22 @@ from a paper, the text says so. Nothing here has been bought or built yet.
 | What | make blind test sets for his spectrum → species model, then do active learning | electrodeposit Ni–Fe(–Co/–Mo) films, then test OER/HER in KOH | droplet-cell corrosion of our own AlSi10Mg vs. Valimet's |
 | Alloy-relevant | no | **yes**: the films are alloys | **yes**: the atomizer program's alloy |
 | Uses Porter's modalities | **all three** | UV-Vis + conductivity on the bath; Raman on the film | hardly |
-| New hardware | phase 0: none. Phase 1: a ~$230 conductivity kit | potentiostat, electrode head, substrate plate, rinse station | the potentiostat from (2), plus a droplet cell |
+| New hardware | phase 0: a printed tube rack. Phase 1: a ~$230 conductivity kit | potentiostat, electrode head, substrate plate, rinse station | the potentiostat from (2), plus a droplet cell |
 | New as a self-driving lab? | spectroscopy in the loop: **yes** | bath monitoring: **probably** | in general **no**; for AlSi10Mg, **yes** |
 | First thing that goes wrong | sample volume (§2.4) | Fe impurities in KOH (§3) | polishing coupons is manual |
 
 1. **Start with use-case 1.** It is the only one where someone is already waiting for the result,
    and the gap is one a robot fills directly. Porter has enough data to train his model but not to
    test it. This semester three undergraduates are making his samples by hand (13:22–14:08). It runs
-   in open air on aqueous solutions, as he proposed (04:10–04:25). **Phase 0 needs no new
-   hardware:** the CubXL makes capped, blinded vials and his lab measures them on its own ATR-FTIR.
+   in open air on aqueous solutions, as he proposed (04:10–04:25). **Phase 0 needs nothing beyond
+   a printed tube rack:** the CubXL makes capped, blinded samples and his lab measures them on its
+   own ATR-FTIR.
 2. **Use-case 2 is the alloy one, and the right second step.** AMPERE-2 and CatBot already do
    this. PANDA-film, the system the CubXL's pipette firmware and capper come from, already shows the
    electrode head and well plate for it on a gantry. The new part would be Porter's contribution:
-   check every plating bath by UV-Vis and conductivity before it is used. AMPERE-2's code measures
-   nothing about the bath beyond what EIS sees, and the literature search found no automated setup
-   that monitors a Ni/Fe/Co bath this way.
+   check every plating bath by UV-Vis and conductivity before it is used. AMPERE-2's code takes no
+   spectra and no conductivity readings (EIS only), and the literature search found no automated
+   setup that monitors a Ni/Fe/Co bath this way.
 3. **Use-case 3 is the most directly alloy-relevant, but the least new**, and it needs polished
    coupons. Once use-case 2 has bought the potentiostat, it makes good TMS material. It would be a
    poor first demo.
@@ -135,7 +136,7 @@ is exactly the job a dosing robot is for.
 
 | Phase | CubXL does | Measured where | New hardware | Done when |
 |---|---|---|---|---|
-| 0 | makes capped, blinded samples from 3–6 stocks, logging every dispense | Porter's ATR-FTIR and conductivity cell | none, if volumes fit (§2.4) | his model is scored on a set it never saw |
+| 0 | makes capped, blinded samples from 3–6 stocks, logging every dispense | Porter's ATR-FTIR and conductivity cell | a printed rack of sample tubes (§2.4) | his model is scored on a set it never saw |
 | 1 | phase 0, plus on-deck conductivity and a visible-absorbance reading | CubXL | conductivity kit; stirring; a fixed cuvette or flow holder for the AS7341 | conductivity matches KCl standards; absorbance is linear across a dye dilution series |
 | 2 | closes the loop, picking the next compositions from model uncertainty | CubXL plus Raman, or CubXL feeding his flow cell | OpenRAMAN (separate thread on #213), or a transfer line into his cell | model error falls faster than with random picks |
 | 3 | handles non-aqueous, moisture-sensitive chemistry (LiPF₆/carbonates, polysulfides) | in a glove box | glove-box integration ([PR #217 research](https://github.com/vertical-cloud-lab/byu-vcl/pull/217)) | — |
@@ -156,7 +157,7 @@ which instrument is looking.
 
 | Chemistry | What the spectrum sees | Conductivity | Instrument | Notes |
 |---|---|---|---|---|
-| **Cu(II) in LiCl or CaCl₂** (optionally Co(II)) | visible colour shifts as chloro-complexes form ([Brugger et al. 2001](https://doi.org/10.1016/s0016-7037(01)00614-7); [Lacarbonara et al. 2023](https://doi.org/10.1016/j.electacta.2023.142514)) | changes with chloride content and pairing | **UV-Vis / AS7341**; the only coloured option | cheap, and Cu is the safer metal. Co speciation in choline chloride–water has been resolved from UV-Vis plus XAS by MCR ([Mannucci et al. 2026](https://doi.org/10.1021/acs.inorgchem.6c01344)), which is close to his solvent work |
+| **Cu(II) in LiCl or CaCl₂** (optionally Co(II)) | visible colour shifts as chloro-complexes form ([Brugger et al. 2001](https://doi.org/10.1016/s0016-7037%2801%2900614-7); [Lacarbonara et al. 2023](https://doi.org/10.1016/j.electacta.2023.142514)) | changes with chloride content and pairing | **UV-Vis / AS7341**; the only coloured option | cheap, and Cu is the safer metal. Co speciation in choline chloride–water has been resolved from UV-Vis plus XAS by MCR ([Mannucci et al. 2026](https://doi.org/10.1021/acs.inorgchem.6c01344)), which is close to his solvent work |
 | **MgSO₄** | Raman ν₁ ≈ 980 cm⁻¹, with a contact-ion-pair mode at 993 cm⁻¹ ([Rudolph et al. 2003](https://doi.org/10.1039/b308951g)); three kinds of ion pair coexist ([Buchner et al. 2004](https://doi.org/10.1021/jp034870p)) | association constants from conductivity ([Katayama 1973](https://doi.org/10.1246/bcsj.46.106)) | Raman | Epsom salt; the nonlinearity is real but subtle at 25 °C |
 | **NaNO₃ / LiNO₃** | Raman and IR resolve ion-paired from solvated nitrate, in D₂O ([Riddell et al. 1972](https://doi.org/10.1139/v72-474)) | measured in the same paper; concentrated-solution data in [Isono 1984](https://doi.org/10.1021/je00035a016) | Raman or IR | cheap; alkali nitrates pair only weakly |
 | **LiTFSI in water** ("water-in-salt", [Suo et al. 2015](https://doi.org/10.1126/science.aab1595)) | FTIR and X-ray show the water network breaking into small clusters by 20 m ([Zhang et al. 2021](https://doi.org/10.1021/acs.jpcb.1c02189)) | a full conductivity data set exists ([Ding & Xu 2018](https://doi.org/10.1021/acs.jpcc.8b05193)) | IR (his ATR) | closest to his battery work and to his own TFSI band assignments ([ECS 2022](https://doi.org/10.1149/ma2022-011113mtgabs)); expensive at ~21 m |
@@ -187,12 +188,15 @@ here. Either way, record an empty-tip blank first.
   3. A micro-volume flow or capillary cell. This is the geometry Porter already uses, and his 2022
      abstract aims at small-volume screening.
 
+Phase 0 has an easier time of it, because an ATR reading only needs enough liquid to cover the
+crystal. The volume he needs for his own flow cell is a question for him.
+
 Smaller samples cut the chemical cost of each point, just as active learning cuts the number of
 points. Both levers apply to his $1,000 matrix.
 
 ## 3. Use-case 2: alloy films for alkaline water electrolysis
 
-### The template exists, in three published systems
+### The template already exists
 
 - **PANDA-film** ([Quinn et al. 2026, arXiv:2601.07043](https://arxiv.org/abs/2601.07043); PDF in
   [`modules/electromagnetic-capper/paper/`](../modules/electromagnetic-capper/paper/README.md)).
@@ -224,9 +228,9 @@ points. Both levers apply to his $1,000 matrix.
   [code](https://github.com/Pele905/CatBot_public)), for HER.
   - It deposits onto roll-to-roll Ni wire, optimises Ni–Mo, and uses a Squidstat Plus.
   - Its example run tests in 30 wt% KOH at 80 °C.
-  - Its sibling **FastCat** ([Fisker-Bødker et al. 2025](https://doi.org/10.1002/aidi.202500138))
-    made over 500 Ni-based multi-element OER catalysts in a closed loop. It found Ni–Fe–Cr–Co
-    reaching 20 mA cm⁻² at 231 mV overpotential (abstract).
+- **FastCat** ([Fisker-Bødker et al. 2025](https://doi.org/10.1002/aidi.202500138); same first author
+  as AMPERE-2) made over 500 Ni-based multi-element OER catalysts in a closed loop. It found
+  Ni–Fe–Cr–Co reaching 20 mA cm⁻² at 231 mV overpotential (abstract).
 
 So the CubXL would not be first to electrodeposit alloys for OER. It can add three things:
 
@@ -264,8 +268,8 @@ So the CubXL would not be first to electrodeposit alloys for OER. It can add thr
   - The atomizer program plans to arc-melt a master alloy from AlSi10Mg powder, atomize it here,
     and compare the result with commercial Valimet AlSi10Mg
     ([`new-arc-melt-utah.md`](meetings/2026-09-17-repowder-install/posts/new-arc-melt-utah.md)).
-  - The target is a 20–63 µm cut for laser powder-bed fusion (LPBF)
-    ([PR #262](https://github.com/vertical-cloud-lab/byu-vcl/pull/262)).
+  - The first atomized powder, Al 4047 (also an Al–Si alloy), is being sieved to a 20–63 µm cut for
+    laser powder-bed fusion ([PR #262](https://github.com/vertical-cloud-lab/byu-vcl/pull/262)).
 - **Why corrosion would tell us something.**
   - Laser-melted AlSi10Mg was 2–3× more corrosion-resistant than cast in 0.1 M NaCl, by
     potentiodynamic polarisation and EIS ([Tiwari et al. 2023](https://doi.org/10.3390/coatings13020225)).
@@ -276,7 +280,7 @@ So the CubXL would not be first to electrodeposit alloys for OER. It can add thr
   - Recycled powder coarsened that network, although salt-spray behaviour was "almost the same"
     ([Barile et al. 2022](https://doi.org/10.1007/s43452-022-00375-y)).
   - Oxide on the powder particles grew from ~4 to ~38 nm over ~30 months of reuse
-    ([Raza et al. 2020](https://doi.org/10.1016/j.matdes.2020.109358)).
+    ([Raza et al. 2021](https://doi.org/10.1016/j.matdes.2020.109358)).
   - So "our own powder vs. Valimet" and "fresh vs. reused" are real questions.
 - **On the CubXL.**
   - A droplet or O-ring cell sits on a polished coupon: a cross-section of an arc-melted button, or
@@ -336,7 +340,7 @@ What to check a candidate against:
   only work on a Windows X86_64 platform". Admiral's current API ships Python wheels only for
   Windows, macOS and x86_64 Linux
   ([AdmiralSquidstatAPI](https://github.com/Admiral-Instruments/AdmiralSquidstatAPI/tree/main/SquidstatLibrary),
-  checked 2026-10-10). Neither has an ARM build, so a Squidstat needs an x86 host beside the CubXL.
+  checked 2026-10-10). There is no ARM Linux wheel, so a Squidstat needs an x86 host beside the CubXL's Pi.
 - **Ask Porter first.** He offered to show what his lab has (07:00–07:18). Ask whether a loan is
   possible before buying.
 
