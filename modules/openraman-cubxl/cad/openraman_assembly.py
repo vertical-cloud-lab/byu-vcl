@@ -95,9 +95,9 @@ STEPS = [  # official drawing P00000, sheets 2..7 then 1
     "Sheet 1: cover, three M4x10",
 ]
 
-C_ALU = "#2b2b2e"        # black-anodised aluminium
-C_PLASTIC = "#1a1a1a"
-C_THOR = "#3a3a3d"       # Thorlabs black anodise
+C_ALU = "#34343a"        # black-anodised aluminium
+C_PLASTIC = "#26262b"
+C_THOR = "#45454b"       # Thorlabs black anodise
 C_STEEL = "#b9bcc2"
 C_GLASS = "#9ad0ec"
 C_MIRROR = "#d9dde3"
@@ -207,14 +207,14 @@ def build(openraman_cad: Path):
     optics6 = imp("P00006 - OPTICAL PATH").solids().vals()
     # index -> (name, colour, step); order as stored in the STEP (checked by centroid)
     roles6 = {0: ("dock lens AC127-019-A (front)", C_GLASS, -1), 1: ("dock lens AC127-019-A (rear)", C_GLASS, -1),
-              2: ("DMLP550 dichroic", "#f2b5d4", 4), 3: ("FELH0550 longpass", "#e8743b", 3),
-              4: ("WG41050-A plate", C_GLASS, 3), 5: ("AC127-019-A (front)", C_GLASS, 5),
-              6: ("AC127-019-A (rear)", C_GLASS, 5), 7: ("S50K slit", "#111111", 5),
-              8: ("AC254-050-A (front)", C_GLASS, 5), 9: ("AC254-050-A (rear)", C_GLASS, 5),
-              10: ("GR25-1205 grating", C_GRATING, 4), 11: ("lens element", C_GLASS, 2),
-              12: ("lens element", C_GLASS, 2), 13: ("lens element", C_GLASS, 2),
-              14: ("lens element", C_GLASS, 2), 15: ("sensor window", C_GLASS, 2),
-              16: ("IMX265 sensor", "#3b2f63", 2)}
+              2: ("DMLP550 dichroic", "#f2b5d4", 3), 3: ("FELH0550 longpass", "#e8743b", 2),
+              4: ("WG41050-A plate", C_GLASS, 2), 5: ("AC127-019-A (front)", C_GLASS, 4),
+              6: ("AC127-019-A (rear)", C_GLASS, 4), 7: ("S50K slit", "#111111", 4),
+              8: ("AC254-050-A (front)", C_GLASS, 4), 9: ("AC254-050-A (rear)", C_GLASS, 4),
+              10: ("GR25-1205 grating", C_GRATING, 3), 11: ("lens element", C_GLASS, 1),
+              12: ("lens element", C_GLASS, 1), 13: ("lens element", C_GLASS, 1),
+              14: ("lens element", C_GLASS, 1), 15: ("sensor window", C_GLASS, 1),
+              16: ("IMX265 sensor", "#3b2f63", 1)}
     for i, s in enumerate(optics6):
         name, col, step = roles6[i]
         if step < 0:
@@ -224,7 +224,7 @@ def build(openraman_cad: Path):
     R7 = R6 @ np.diag([-1.0, -1.0, 1.0])                 # P00007 is P00006 turned 180 deg about its z
     t7 = t6 + R6 @ np.array([0.0, -50.0, -80.0])
     mirror = imp("P00007 - LASER PATH").solids().vals()[0]
-    parts.append(Part("PF10-03-G01 mirror", place(mirror, R7, t7), C_MIRROR, 4, (0, 0, 1), tags={"optic": True}))
+    parts.append(Part("PF10-03-G01 mirror", place(mirror, R7, t7), C_MIRROR, 3, (0, 0, 1), tags={"optic": True}))
     dock_lens = [place(optics6[i], R6, t6) for i in (0, 1)]
 
     # -- sheet 2: laser holder, CPS532, SS4MN4
