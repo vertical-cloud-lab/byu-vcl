@@ -243,38 +243,6 @@ What You'll Be Building
 
 </details>
 
-<a id="technical-program-manager-ai-data-2026-06-01"></a>
-
-### Technical Program Manager, AI Data (2026-06-01)
-
-2026-06-01 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4259557009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila is building toward scientific superintelligence, which depends on a steady supply of high-quality, purpose-built AI data. We're looking for a Senior or Principal Technical Program Manager to join our AI Research team to drive multiple AI data generation and curation workstreams — standing up new project teams, keeping them on schedule, and incorporating that data into the model training pipeline.
-You don't need to be an ML researcher, but you must be genuinely curious about how AI data fuels model development and able to clearly articulate what your programs will deliver. The successful candidate thrives in ambiguity, communicates exceptionally well across audiences, and knows how to build clarity and momentum on a fast-paced, rapidly scaling team.
-What You'll Be Building
-- Launch and operate cross-functional project teams that produce AI data for scientific superintelligence, ensuring each team executes with at high velocity and delivers standardized outputs the model training team can directly consume.
-- Serve as the key communication interface between project teams and the research, science, and model training organizations; set up the organizational information flows that allow this communication to happen with speed at scale.
-- Drive accountability across distributed, cross-functional teams without relying on direct authority; build consensus through clear communication and sound judgment.
-- Define and enforce data delivery standards, QA gates, and handoff protocols so model training receives consistent, high-quality inputs across all active project teams.
-- Implement best practices for rapid experimentation and iteration, enabling new project teams to ramp efficiently as additional data initiatives come online.
-- Develop clear documentation and reporting to communicate vision, track progress, and align project team work with broader AI Research priorities; represent program status and risks accurately even when the picture is uncertain or evolving.
-- Bachelor's or Master's degree in Computer Science, Engineering, Life Sciences, or a related field.
-- 8+ years of program or project management experience in the technology or life sciences field.
-- Proven experience leading cross-functional programs and driving them to successful completion under tight delivery timelines.
-- Strong analytical and problem-solving skills, with the ability to turn technical and data requirements into actionable program roadmaps.
-- Exceptional written and verbal communication skills; track record of producing executive-quality documents, roadmaps, and updates that drive decisions.
-
-**Bonus Points For**
-- Direct experience in AI/ML research or product organizations, ideally in a program management or research operations capacity.
-- Working familiarity with model training data pipelines, dataset curation, or ML evaluation workflows — sufficient to engage credibly with researchers and ask good questions.
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="senior-staff-machine-learning-engineer-applied-ai-2026-07-01"></a>
 
 ### Senior / Staff Machine Learning Engineer, Applied AI (2026-07-01)
@@ -343,39 +311,6 @@ What You'll Be Building
 - Strong communication and collaboration skills, with a preference for team-based science and the ability to build shared technical direction across ML, engineering, platform, and experimental teams.
 
 **Bonus Points For**
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="finance-business-partner-ai-software-2026-08-14"></a>
-
-### Finance Business Partner, AI & Software (2026-08-14)
-
-2026-08-14 → open · ml-research · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4359832009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila Sciences is scaling its Scientific Superintelligence platform, and we’re building the finance backbone to match. As the Finance Business Partner for our AI/ML and Infrastructure teams, you’ll partner with Technology leaders to turn data into decisions and bring structure to ambiguity.
-You’re a builder-operator who partners with technical leaders to drive financial clarity across complex and fast-moving cost surfaces: compute and GPU infrastructure, LLM usage and API spend, data storage, and pipelines. You stand up dynamic planning processes, design the KPI and reporting engine leaders rely on, and shape resource allocation across cloud infrastructure and AI/ML workloads.
-What You'll Be Building
-- Serve as the primary finance business partner for AI/ML and Infrastructure teams, providing end-to-end financial leadership across planning, performance management, investment governance, and risk controls.
-- Partner with Technology leaders to translate AI and infrastructure roadmaps into financial outcomes with clear P&L, cash, and capital implications.
-- Produce Board and investor materials and support fundraising diligence with crisp analyses and data room preparation.
-- Assist with cash runway modeling and scenario planning across compute, AI/ML, and infrastructure cost vectors.
-- Lead headcount and capacity planning across rapidly growing technical teams, tracking hiring pace and resource allocation across critical projects.
-- Translate complex technical cost data into clear narratives, recommendations, and decision frameworks for executives and cross-functional leaders.
-- Own financial tracking and analysis of compute and GPU infrastructure spend, including utilization reporting and efficiency benchmarks.
-- Build and maintain LLM usage and API cost models, partnering with ML teams to track inference costs, training runs, and optimization opportunities.
-- Develop frameworks for data storage and pipeline cost visibility, driving accountability for storage efficiency and lifecycle management.
-- Co-own financial models and rolling forecasts across headcount, OPEX, CAPEX, cloud and GPU spend, LLM API costs, and data infrastructure.
-- Expand KPI frameworks, reporting packages, dashboards, and variance analyses for executives and budget owners.
-- Help implement and operationalize FP&A tooling through integrations with core business systems.
-- Partner with Accounting, IT, and Procurement to improve data quality, chart of accounts structure, and source-of-truth metrics for cloud and infrastructure cost allocation.
-- 7 to 10+ years in FP&A, strategic finance, investment banking, consulting, or similar analytical roles.
-- Startup or scale-up experience strongly preferred.
-- Demonstrated zero-to-one build experience across driver-based models, annual planning, rolling forecasts, KPI dashboards, and management reporting.
 
 *(truncated: full text in `data/job_postings.jsonl`)*
 

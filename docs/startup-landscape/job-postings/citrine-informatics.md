@@ -2,15 +2,24 @@
 
 Back to [all companies](README.md) · [company profile](../companies/citrine-informatics.md)
 
-**5 postings recovered**, 5 with the full description; 5 still open on 2026-10-10. First seen 2025-05-20, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**10 postings recovered**, 10 with the full description; 5 still open on 2026-10-10. First seen 2025-05-20, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2025-05-20 | open | [General Opportunities](#general-opportunities-2025-05-20) | general-application | F&A | Remote (United States); Remote (Germany) |  |  |  | [live](https://ats.rippling.com/citrine-informatics/jobs/c3f9c142-b6e4-41c8-8e87-e6d62690f61f) |
+| 2025-08-25 | 2025-08-26 | [Research Engineering Manager](#research-engineering-manager-2025-08-25) | software-eng | Engineering | Remote (United States) | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20250826155749/https://ats.rippling.com/citrine-informatics/jobs/c3fbb9c3-8c20-4b09-a1d6-5979769e0b9c?utm_content=344945475&utm_medium=social&utm_source=twitter&hss_channel=tw-2616421753) |
+| 2025-10-22 | 2025-11-15 | [Customer Success Manager L3](#customer-success-manager-l3-2025-10-22) | business-ops | Operations | Remote (Germany) | BS | 5 |  | [Wayback](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47) |
+| 2026-04-16 | 2026-06-24 | [{{companyName}} uses AI to analyze applications](#companyname-uses-ai-to-analyze-applications-2026-04-16) | ml-research |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260416202719/https://ats.rippling.com/citrine-informatics/jobs?rr_message=job_not_found) |
+| 2026-05-20 | 2026-07-28 | [Sr. Platform Engineer, L3](#sr-platform-engineer-l3-2026-05-20) | software-eng | Engineering | Remote (United States) |  |  |  | [Wayback](https://web.archive.org/web/20260523202430/https://ats.rippling.com/citrine-informatics/jobs/af37025c-377d-4d4a-a5ac-6e7f0efc57df?hss_channel=lcp-3288716) [Wayback](https://web.archive.org/web/20260728021150/https://ats.rippling.com/citrine-informatics/jobs/e31e9f4b-c413-4d4f-9e50-7f129b537eb4) |
 | 2026-06-22 | open | [Materials Informatics Consultant III](#materials-informatics-consultant-iii-2026-06-22) | materials-science | Operations | Germany |  |  |  | [live](https://ats.rippling.com/citrine-informatics/jobs/21652ad8-b131-4eba-be4f-08a5cc200db8) |
+| 2026-08-03 | 2026-08-14 | [Fractional Contract Manager (1099)](#fractional-contract-manager-1099-2026-08-03) | business-ops | Operations | Remote (United States) |  | 5 |  | [Wayback](https://web.archive.org/web/20260814143401/https://ats.rippling.com/citrine-informatics/jobs/93f5099f-29d3-4bab-ac52-f94bf53de4f5) |
 | 2026-08-27 | open | [Customer Success Manager, L3](#customer-success-manager-l3-2026-08-27) | business-ops | Operations | Remote (Germany) | BS | 5 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38) |
 | 2026-09-16 | open | [Business Operations Manager, L3](#business-operations-manager-l3-2026-09-16) | business-ops | Operations | Remote (United States) |  | 5 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/6734d37b-7e38-466b-812c-aaafbf820f92) |
 | 2026-10-01 | open | [Data & Artificial Intelligence Research Engineer, L4](#data-artificial-intelligence-research-engineer-l4-2026-10-01) | software-eng | Engineering | Remote (United States) | PhD/MS | 8 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/3418abba-4de2-4a0a-8dc3-9ad403db68f1) |
+
+## Careers-page captures
+
+27 archived captures of the company's own careers page. Their text is not reproduced here: these pages list postings through embedded widgets that the archive did not capture, and some feature named staff, whom this survey does not name. The captures: [2019-07-21](https://web.archive.org/web/20190721232506/https://citrine.io/careers/), [2019-10-17](https://web.archive.org/web/20191017125710/https://citrine.io/careers/), [2020-05-11](https://web.archive.org/web/20200511125510/https://citrine.io/careers/), [2020-08-12](https://web.archive.org/web/20200812001255/https://citrine.io/careers/), [2020-10-22](https://web.archive.org/web/20201022231043/https://citrine.io/careers/), [2021-01-23](https://web.archive.org/web/20210123101524/https://citrine.io/careers/), [2021-04-20](https://web.archive.org/web/20210420064430/https://citrine.io/careers/), [2021-07-25](https://web.archive.org/web/20210725114406/https://citrine.io/careers/), [2022-01-26](https://web.archive.org/web/20220126194349/https://citrine.io/careers/), [2022-04-01](https://web.archive.org/web/20220401172448/https://citrine.io/careers/), [2022-07-03](https://web.archive.org/web/20220703080022/https://citrine.io/careers/), [2022-11-30](https://web.archive.org/web/20221130063141/https://citrine.io/careers/), [2023-03-21](https://web.archive.org/web/20230321164929/https://citrine.io/careers/), [2023-05-17](https://web.archive.org/web/20230517221516/https://citrine.io/careers/), [2023-07-03](https://web.archive.org/web/20230703205242/https://citrine.io/careers/), [2023-12-03](https://web.archive.org/web/20231203143915/https://citrine.io/careers/), [2024-02-20](https://web.archive.org/web/20240220024810/https://citrine.io/careers/), [2024-04-02](https://web.archive.org/web/20240402135125/https://citrine.io/careers/), [2024-08-08](https://web.archive.org/web/20240808120143/https://citrine.io/careers/), [2024-10-04](https://web.archive.org/web/20241004202846/https://citrine.io/careers/), [2025-01-04](https://web.archive.org/web/20250104235852/https://citrine.io/careers/), [2025-04-09](https://web.archive.org/web/20250409011837/https://citrine.io/careers/), [2025-07-26](https://web.archive.org/web/20250726030459/https://citrine.io/careers/), [2025-10-05](https://web.archive.org/web/20251005195743/https://citrine.io/careers/), [2026-01-15](https://web.archive.org/web/20260115212540/https://citrine.io/careers/), [2026-04-11](https://web.archive.org/web/20260411151734/https://citrine.io/careers/), [2026-07-21](https://web.archive.org/web/20260721212701/https://citrine.io/careers/).
 
 ## Descriptions
 
@@ -26,6 +35,125 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 Thanks for your interest in joining our team! In the event we are not actively recruiting for a role that aligns with your skill set, please feel free to leave your resume with us.
 We review these applications periodically and may reach out if your background aligns with a new role. Please note that you will not receive a declination email if your application isn't selected if you apply to this post.
+
+</details>
+
+<a id="research-engineering-manager-2025-08-25"></a>
+
+### Research Engineering Manager (2025-08-25)
+
+2025-08-25 → 2025-08-26 · software-eng · Remote (United States) · [source](https://web.archive.org/web/20250826155749/https://ats.rippling.com/citrine-informatics/jobs/c3fbb9c3-8c20-4b09-a1d6-5979769e0b9c?utm_content=344945475&utm_medium=social&utm_source=twitter&hss_channel=tw-2616421753)
+
+<details><summary>Description</summary>
+
+**About the Role**
+As a Research Engineering Manager at Citrine Informatics, you will play a pivotal role in advancing our state-of-the-art AI platform for materials and chemical innovation. This is a unique opportunity to apply your expertise in machine learning and optimization to real-world challenges, contributing directly to the acceleration of sustainable, high-performing material discovery. You will be instrumental in bridging the gap between cutting-edge research and impactful product features, helping our customers achieve breakthroughs up to 98% faster than traditional methods.
+You will leverage your deep technical skills to develop and implement novel algorithms, validate their performance through rigorous experimentation, and guide their seamless integration into our no-code SaaS platform. Your contributions will directly influence the evolution of our generative AI capabilities, empowering product developers, researchers, and engineers with unparalleled tools for domain-specific data management and intelligent material design. This role demands a hands-on approach, a passion for scientific rigor, and a collaborative spirit to partner with cross-functional teams in bringing transformative solutions to market.
+
+**Responsibilities**
+- Lead & Mentor: Manage a team of applied and research scientists, providing technical guidance, mentoring, and career development support.
+- Drive Research-to-Product Pipeline: Translate research outcomes into production-ready features that create customer value.
+- Shape Research Programs: Collaborate with Product and Engineering to define and prioritize applied science initiatives aligned with strategic goals.
+- Hands-on Contribution: Develop prototypes, validate algorithms, and guide experiments that inform adoptions of cutting-edge ML methods.
+- Cross-functional Collaboration: Partner closely with engineers, designers, and product managers to ensure scientific rigor and seamless feature delivery.
+
+**Skills and Experience**
+- Advanced degree (PhD or MS with experience) in Computer Science, Applied Mathematics, Physics, Materials Science, or related field.
+- 5+ years of industry or research experience applying ML/optimization in real-world systems.
+- Excellent programming skills in Python and experience with ML frameworks (e.g., PyTorch, TensorFlow, scikit-learn, etc).
+- Demonstrated ability to implement new algorithms or optimization methods in code (beyond configuring pre-built libraries).
+- Experience managing or mentoring applied science or research teams, with a “hands-on” leadership style.
+- Deep understanding of experimental design, statistical analysis, and ML deployment best practices.
+Nice-to-Haves
+- Background in materials science, chemistry, or scientific computing domains.
+- Experience shipping ML-powered product features in SaaS or enterprise software.
+- Track record of publications, patents, or contributions to open-source ML/science software.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="customer-success-manager-l3-2025-10-22"></a>
+
+### Customer Success Manager L3 (2025-10-22)
+
+2025-10-22 → 2025-11-15 · business-ops · Remote (Germany) · [source](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Ensuring our customers thrive is fundamental to Citrine’s success. As a Customer Success Manager, your role is pivotal in orchestrating the customer journey and demonstrating the value provided by the Citrine platform to our valued customers. Citrine continues to scale the Citrine Platform to a number of customers across the chemicals and materials space; cultivating strong partnerships, gathering extensive product feedback, and rolling out the platform to entire data science, R&D, and product development organizations.
+As a key member of the Commercial team, the Customer Success Manager will manage customer relationships and be responsible for orchestrating the customer journey via best practice implementation and value capture. Your work will include daily interactions and collaboration with the Citrine data scientists, data engineers, and sales reps working with your assigned customers and serve as a liaison between the internal product development teams and the customer. You are a proactive people person with a positive attitude and unrelenting professionalism. You navigate seamlessly between interactions with customers, internal team members, and executives, and you know how to leverage project teams to ensure that your customers receive the best possible experience. You will be responsible for ensuring the post-sale success and satisfaction of Citrine customers.
+Ideal candidates will be located in Germany and open to working fully remote.
+
+**Responsibilities**
+- Manage the customer-facing experience from contract kickoff to renewal/upsell
+- Plan for, document, and track the value provided by the Citrine Platform to your group of customers
+- Collaborate with internal teams to build a best-in-class customer experience and satisfaction
+- Oversee all interactions and communication with the customer, ensuring delivery against all project milestones and advancing customer value realization, satisfaction, and platform engagement
+- Uncover and understand any risks that threaten customers’ platform adoption, satisfaction, or renewal; conceive and execute mitigation plans for all risks
+- Create trust-based relationships with customers, from junior-level through executives, to gather feedback and ensure customer value alignment
+- Structure, develop, and present on-target business analyses to highlight Citrine’s value propositions
+- Educate customers on updated features, capabilities, and new product offerings
+- Act as the liaison between product management and the customer, with a focus on feature collaboration and communicating the Citrine Platform roadmap
+- Identify and leverage company-wide resources to address customer satisfaction, growth, renewal, risk, and opportunity
+
+**Skills and Experience**
+- 5+ years of customer success enterprise SaaS experience, or other highly related experience.
+- Undergraduate degree, or equivalent experience, in a scientific or technical field such as statistics or CS
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="companyname-uses-ai-to-analyze-applications-2026-04-16"></a>
+
+### {{companyName}} uses AI to analyze applications (2026-04-16)
+
+2026-04-16 → 2026-06-24 · ml-research · location not stated · [source](https://web.archive.org/web/20260416202719/https://ats.rippling.com/citrine-informatics/jobs?rr_message=job_not_found)
+
+<details><summary>Description</summary>
+
+{{companyName}} uses AI technology to review, analyze, and summarize applications. Please note that all final hiring decisions are made by the hiring team — not by AI. If you do not wish for your application to be analyzed using Al, you can opt out by unchecking the box below and selecting "Save".
+
+</details>
+
+<a id="sr-platform-engineer-l3-2026-05-20"></a>
+
+### Sr. Platform Engineer, L3 (2026-05-20)
+
+2026-05-20 → 2026-07-28 · software-eng · Remote (United States) · [source](https://web.archive.org/web/20260523202430/https://ats.rippling.com/citrine-informatics/jobs/af37025c-377d-4d4a-a5ac-6e7f0efc57df?hss_channel=lcp-3288716)
+
+<details><summary>Description</summary>
+
+**About the Role**
+Citrine Informatics is looking for a Senior Infrastructure / Platform Engineer to help shape, implement, and operate scalable cloud infrastructure and platform systems. This role is a fit for someone with experience across infrastructure, automation, deployment, and production operations, and who enjoys working closely with others to improve reliability, developer workflows, and platform capabilities.
+This person will contribute to cloud infrastructure in AWS, infrastructure as code, Kubernetes operations, CI/CD, observability, and containerization. Just as important, they will bring sound judgment, adaptability, and a collaborative working style suited to a fast-moving environment where priorities can evolve and teams work together to solve complex problems.
+Team Fit and Working Style
+We are looking for someone who pairs technical depth with a collaborative and thoughtful approach to problem-solving. Successful candidates will likely bring:
+- Experience working closely with others in shared technical environments
+- A communication style that supports productive collaboration, knowledge sharing, and healthy decision-making
+- Comfort making progress in situations where not every variable is known at the outset
+- A practical, iterative mindset and willingness to learn as the team moves forward
+- Flexibility to take on a range of responsibilities depending on team priorities and current challenges
+- Good judgment in managing time, scope, and competing priorities
+
+**Responsibilities**
+- Design, implement, and maintain cloud infrastructure in AWS with attention to scalability, reliability, security, and automation
+- Manage infrastructure using Infrastructure as Code, including hands-on work with Terraform and experience with CloudFormation
+- Deploy, administer, and maintain Kubernetes clusters in production environments
+- Improve platform tooling, deployment workflows, and operational practices that support engineering teams and production systems
+- Implement and manage observability and monitoring solutions, ideally including experience with Datadog, across metrics, logging, alerting, and incident response
+- Work with containerized systems and deployment workflows, including image build pipelines and optimization techniques
+- Create and maintain CI/CD pipelines, including required experience with GitHub Actions; experience with Jenkins and/or ArgoCD is a plus
+- Partner with teammates across engineering to identify needs, evaluate options, and deliver practical infrastructure and platform solutions
+- Investigate platform and infrastructure issues, support root-cause analysis, and contribute to sustainable improvements
+- Participate in technical planning, architecture discussions, and continuous improvement efforts across the platform engineering function
+
+**Skills and Experience**
+- Experience in infrastructure engineering, platform engineering, DevOps, or site reliability engineering roles
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 
@@ -64,6 +192,46 @@ This is a customer-facing technical role that includes regular onsite engagement
 Nice-to-Haves
 
 *(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="fractional-contract-manager-1099-2026-08-03"></a>
+
+### Fractional Contract Manager (1099) (2026-08-03)
+
+2026-08-03 → 2026-08-14 · business-ops · Remote (United States) · [source](https://web.archive.org/web/20260814143401/https://ats.rippling.com/citrine-informatics/jobs/93f5099f-29d3-4bab-ac52-f94bf53de4f5)
+
+<details><summary>Description</summary>
+
+**About the Role**
+We are looking for an experienced Fractional Contract Manager to own commercial contract review. This is a fully remote contractor engagement at approximately 10 hours per week, with the flexibility to scale as needed.
+The ideal candidate brings in-house SaaS contract experience, strong independent judgment on standard commercial terms, and a track record of building repeatable contract processes. You will be the primary contract resource for our go-to-market team, working closely with our operations and business leadership.
+
+**Responsibilities**
+- Review, redline, and negotiate NDAs, MSAs, and order forms — both on Citrine paper and customer paper
+- Serve as the primary point of contact for the go-to-market team on contract questions and reviews
+- Build and maintain a contract playbook documenting Citrine's standard positions and acceptable fallback positions by clause type (indemnification, liability caps, IP ownership, data privacy, and others)
+- Identify and flag non-standard terms; recommend whether to accept, negotiate, or escalate
+- Provide guidance to internal stakeholders on contract language and commercial norms
+- Support evaluation of contract lifecycle management and AI-assisted review tooling
+
+**Skills and Experience**
+- 5+ years of contract management experience, ideally in-house at a SaaS or technology company
+- Strong working knowledge of MSAs, NDAs, SaaS licensing, and order forms
+- Proven ability to negotiate standard commercial agreements independently and make sound risk-based judgments
+- Experience developing contract playbooks, clause libraries, or standard position guides
+- Clear communicator; able to explain legal concepts and redline rationale to business stakeholders
+- Self-directed and comfortable working asynchronously with a remote team
+Nice-to-Haves
+- Experience in enterprise B2B software, life sciences, or chemicals/materials industries
+- Familiarity with contract lifecycle management tools (Ironclad, SpotDraft, Docusign CLM, or similar)
+- Experience with AI-assisted contract review tools
+- Prior fractional or multi-client consulting experience
+Engagement Details
+- Type: Independent contractor (1099)
+- Hours: ~10hrs/week; flexibility to scale during high-volume periods
+- Location: Fully remote; Eastern Time preferred
+- Rate: $85–$120/hr depending on experience and scope
 
 </details>
 
@@ -176,6 +344,9 @@ Data & AI Research Engineering (DARE) is a uniquely interdisciplinary team worki
 - Ability to communicate complex technical concepts and design choices to any audience
 - In depth knowledge of how core ML algorithms work and their design (random forest, neural networks, etc.)
 - Ability to write tested, production-quality code
+- Legally eligible to work in the United States
+
+**Preferred Skills and Experience**
 - Experience with or a degree in Materials Science
 - Extensive knowledge of statistics
 - Experience with LLMs

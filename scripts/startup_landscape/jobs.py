@@ -589,7 +589,7 @@ def cmd_history(slug, max_pages):
         for p in parse_page(url, body):
             rec = {"company": slug, "basis": "wayback", "capture": cap, "url": url,
                    "first_seen": first, "last_seen": last, "n_captures": n, **p}
-            if k:
+            if k and not p.get("listing_only"):
                 rec["posting_id"] = k
             elif p.get("posting_id"):
                 rec["posting_id"] = str(p["posting_id"]).lower()

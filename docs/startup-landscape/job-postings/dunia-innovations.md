@@ -10,7 +10,7 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | 2026-02-02 | open | [Head of AI Research](#head-of-ai-research-2026-02-02) | leadership |  | Berlin | PhD |  |  | [live](https://dunia.jobs.personio.com/job/2516220?language=en) |
 | 2026-02-02 | open | [Materials Informatics Scientist (Evaluation-focused)](#materials-informatics-scientist-evaluation-focused-2026-02-02) | materials-science |  | Berlin | PhD/MS |  |  | [live](https://dunia.jobs.personio.com/job/2516249?language=en) |
 | 2026-02-04 | open | [Chemical Data Scientist](#chemical-data-scientist-2026-02-04) | ml-research |  | Berlin | PhD/MS | 3 |  | [live](https://dunia.jobs.personio.com/job/2519182?language=en) |
-| 2026-02-04 | open | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) |
+| 2026-02-04 | open | [Lab Operations & Procurement Manager](#lab-operations-procurement-manager-2026-02-04) | business-ops |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519192?language=en) |
 | 2026-02-04 | open | [Lab Technicians](#lab-technicians-2026-02-04) | lab-automation |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2519206?language=en) |
 | 2026-02-04 | open | [Research Scientist, Thermocatalysis](#research-scientist-thermocatalysis-2026-02-04) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2519204?language=en) |
 | 2026-02-04 | open | [Software Engineer, Infrastructure](#software-engineer-infrastructure-2026-02-04) | software-eng |  | Berlin |  | 2 |  | [live](https://dunia.jobs.personio.com/job/2519188?language=en) |
@@ -198,7 +198,7 @@ Influence the system, not just the analysis
 
 ### Lab Operations & Procurement Manager (2026-02-04)
 
-2026-02-04 → open · lab-automation · Berlin · [source](https://dunia.jobs.personio.com/job/2519192?language=en)
+2026-02-04 → open · business-ops · Berlin · [source](https://dunia.jobs.personio.com/job/2519192?language=en)
 
 <details><summary>Description</summary>
 

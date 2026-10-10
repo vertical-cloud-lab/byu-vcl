@@ -169,6 +169,8 @@ def merge():
             spans[(slug, k)] = v
         for r in data["postings"]:
             pid = str(r.get("posting_id") or "").lower()
+            if r.get("listing_only") and "/" in pid:
+                pid = ""  # a board page fetched as if it were a posting: key its listings by title
             if r.get("generic") and not pid:
                 careers_pages[slug].append(r)
                 continue
@@ -274,17 +276,22 @@ def strip_boilerplate(rows):
             r["function"] = classify(r["title"], r.get("team"))
 
 
-EXTRA_RULES = [  # checked before analyze.TITLE_RULES
-    ("leadership", r"\bfounding .*lead(er)?\b|\bhead\b"),
-    ("business-ops", r"sourcer|recruit|talent|people partner|\bhr\b"),
-    ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development"),
+EXTRA_RULES = [  # checked in order, before analyze.TITLE_RULES
+    ("leadership", r"\bfounding .*lead(er)?\b|\bhead\b|\bchief\b|\bvp\b|vice president|\bdirector\b"),
+    ("business-ops", r"partnership|ecosystem|program manager|developer relations|communications|counsel|controller|"
+                     r"financ|strategy|\bsales\b|marketing|content|procurement|\boffice\b|payroll|talent|recruit|"
+                     r"sourcer|\bpeople\b|\bhr\b|business"),
+    ("software-eng", r"front-?end|back-?end|full[- ]?stack|tech lead|engineering manager"),
+    ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development|"
+                       r"pilot plant|prototype"),
+    ("ml-research", r"\bmlff\b"),
 ]
 
 
 def classify(title, team=None):
     t = (title or "").lower()
     for func, rx in EXTRA_RULES:
-        if re.search(rx, t) and (func == "leadership" or not re.search(r"\bhead of|\bchief\b|\bvp\b|director", t)):
+        if re.search(rx, t):
             return func
     func = analyze.classify(title)
     # A generic "engineer" on a lab or hardware team (Periodic's "Atoms" team) is lab engineering.
@@ -394,21 +401,12 @@ def company_page(slug, rows, careers, meta, split=False):
                      f'{(r["location"] or "")[:40]} | {"/".join(r["degrees_mentioned"])} | {r["years_min"] or ""} | '
                      f'{money(r["salary"]) or (r["pay_text"] or "")[:40]} | {src} |')
     if careers:
+        caps = sorted({c["capture"] for c in careers})
         lines += ["", "## Careers-page captures", "",
-                  "The company's own careers page as archived (no per-posting pages exist). Text is trimmed to the "
-                  "part that lists or describes roles.", ""]
-        seen = set()
-        for c in sorted(careers, key=lambda c: c["capture"]):
-            key = (c.get("text") or "")[:400]
-            if key in seen or not (c.get("text") or "").strip():
-                continue
-            seen.add(key)
-            d = ts_date(re.search(r"/web/(\d{14})/", c["capture"]).group(1))
-            body = c["text"]
-            m = re.search(r"(?i)(open (positions|roles)|current (openings|vacancies|positions)|we('| a)re hiring|join (us|our team)|positions)", body)
-            excerpt = body[m.start():] if m else body
-            excerpt = excerpt[:2500].rsplit("\n", 1)[0]
-            lines += [f"<details><summary>{d}: {link(c['capture'], 'capture')}</summary>", "", excerpt, "", "</details>", ""]
+                  f"{len(caps)} archived captures of the company's own careers page. Their text is not reproduced "
+                  "here: these pages list postings through embedded widgets that the archive did not capture, and "
+                  "some feature named staff, whom this survey does not name. The captures: "
+                  + ", ".join(link(c, ts_date(re.search(r"/web/(\d{14})/", c).group(1))) for c in caps) + "."]
     described = [r for r in rows if r["has_description"]]
     note = ("Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and "
             "equal-opportunity text are dropped, and so are email addresses and phone numbers.")
@@ -427,7 +425,23 @@ def function_page(slug, func, rows, meta):
     return "\n".join(head + descriptions(rows)) + "\n"
 
 
+def sanitize_raw():
+    """Careers-page captures can name ordinary staff (team photos, testimonials). Their
+    text is not used, so it is dropped from the raw files before they are committed."""
+    for path in glob.glob(os.path.join(RAW, "*.wayback.json")):
+        data = json.load(open(path, encoding="utf-8"))
+        changed = False
+        for r in data.get("postings", []):
+            if r.get("generic") and r.get("text") and (not r.get("posting_id") or GENERIC_TITLE.match(norm_title(r.get("title")))):
+                r["text"] = ""
+                changed = True
+        if changed:
+            with open(path, "w", encoding="utf-8") as fh:
+                json.dump(data, fh, indent=1, ensure_ascii=False)
+
+
 def build():
+    sanitize_raw()
     rows, careers = merge()
     os.makedirs(OUT, exist_ok=True)
     meta = {}

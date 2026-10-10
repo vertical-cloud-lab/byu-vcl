@@ -2,26 +2,151 @@
 
 Back to [all companies](README.md) · [company profile](../companies/cuspai.md)
 
-**12 postings recovered**, 12 with the full description; 12 still open on 2026-10-10. First seen 2026-03-16, latest 2026-09-30. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**22 postings recovered**, 15 with the full description; 12 still open on 2026-10-10. First seen 2025-10-14, latest 2026-09-30. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2026-03-16 | open | [Application Scientist (AI Materials Science), Singapore](#application-scientist-ai-materials-science-singapore-2026-03-16) | ml-research | Materials Science | Singapore, SG |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/10d89a8b-eaa3-449f-babd-26dc3ebb9098) |
-| 2026-04-14 | open | [Head of Scientific Applications, Singapore](#head-of-scientific-applications-singapore-2026-04-14) | leadership | Materials Science | Singapore, SG | PhD |  |  | [live](https://jobs.ashbyhq.com/cuspai/d2842e32-0347-49b3-a035-0e378d466fb8) |
-| 2026-05-13 | open | [Data Engineer](#data-engineer-2026-05-13) | software-eng | Platform & Engineering | EMEA | Europe |  | 3 |  | [live](https://jobs.ashbyhq.com/cuspai/bf41aa7b-0f08-439f-8985-4baecbcee3bb) |
-| 2026-07-16 | open | [MLFF Distillation & GCMC Integration - Internship](#mlff-distillation-gcmc-integration-internship-2026-07-16) | business-ops | AI/ML | London, UK | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/d7b80299-ed98-4dfe-b306-729cd10d3f04) |
-| 2026-07-28 | open | [Scientific Developer Relations Manager](#scientific-developer-relations-manager-2026-07-28) | software-eng | Strategy & Partnerships | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/0ed7a3da-fdd1-4952-83cc-7a3a8c8af92e) [live](https://jobs.ashbyhq.com/cuspai/5cad2ab9-7d21-456d-bb15-0fa35ed69d45) |
+| 2025-10-14 | open | [Applied AI/ML Engineer (Agents)](#applied-ai-ml-engineer-agents-2025-10-14) | ml-research | AI/ML | Amsterdam, NL | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/916e1489-6624-4a87-90e6-218dc7ebb6fb) [Wayback](https://web.archive.org/web/20251028181731/https://jobs.ashbyhq.com/cuspai) |
+| 2025-10-14 | 2025-10-28 | Applied AI/ML Engineer (Materials Foundational Models) | ml-research | AI/ML | Cambridge, UK |  |  |  | [Wayback](https://web.archive.org/web/20251028181731/https://jobs.ashbyhq.com/cuspai) |
+| 2025-10-19 | 2025-10-28 | Application Scientist (Lab Automation & Informatics) | lab-automation | Materials Science | Cambridge, UK |  |  |  | [Wayback](https://web.archive.org/web/20251028181731/https://jobs.ashbyhq.com/cuspai) |
+| 2025-10-22 | 2025-10-28 | ML Infrastructure Engineer (ML Platform) | ml-research | Tech | Cambridge, UK |  |  |  | [Wayback](https://web.archive.org/web/20251028181731/https://jobs.ashbyhq.com/cuspai) |
+| 2025-12-14 | 2026-04-28 | [Applied ML Researcher (Generative Models)](#applied-ml-researcher-generative-models-2025-12-14) | ml-research | AI/ML | Amsterdam, NL |  |  |  | [Wayback](https://web.archive.org/web/20260325104217/https://jobs.ashbyhq.com/cuspai/b8108ea8-81e9-43bd-941b-89f328f01454?utm_source=L5YoORzJE2) |
+| 2025-12-30 | 2026-01-08 | [Applied AI/ML Engineer (Property Prediction Foundational Models)](#applied-ai-ml-engineer-property-prediction-foundational-models-2025-12-30) | ml-research | AI/ML | Amsterdam, NL | PhD/MS | 4 |  | [Wayback](https://web.archive.org/web/20260108064407/https://jobs.ashbyhq.com/cuspai/90a8fa1d-e520-4807-8fbe-17ae6bd791d1) |
+| 2026-01-05 | 2026-01-07 | Applied ML Researcher (Molecular Simulation) | ml-research | AI/ML | Berlin, DE |  |  |  | [Wayback](https://web.archive.org/web/20260107181915/https://jobs.ashbyhq.com/cuspai) |
+| 2026-03-16 | open | [Application Scientist (AI Materials Science), Singapore](#application-scientist-ai-materials-science-singapore-2026-03-16) | ml-research | Materials Science | Singapore, SG |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/10d89a8b-eaa3-449f-babd-26dc3ebb9098) [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-03-31 | 2026-04-16 | Application Scientist (Mesoscale / Coarse Grained Force Fields) | materials-science | Materials Science | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260416102808/https://jobs.ashbyhq.com/cuspai) |
+| 2026-04-14 | open | [Head of Scientific Applications, Singapore](#head-of-scientific-applications-singapore-2026-04-14) | leadership | Materials Science | Singapore, SG | PhD |  |  | [live](https://jobs.ashbyhq.com/cuspai/d2842e32-0347-49b3-a035-0e378d466fb8) [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-05-13 | open | [Data Engineer](#data-engineer-2026-05-13) | software-eng | Platform & Engineering | EMEA | Europe |  | 3 |  | [live](https://jobs.ashbyhq.com/cuspai/bf41aa7b-0f08-439f-8985-4baecbcee3bb) [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-07-16 | open | [MLFF Distillation & GCMC Integration - Internship](#mlff-distillation-gcmc-integration-internship-2026-07-16) | ml-research | AI/ML | London, UK | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/d7b80299-ed98-4dfe-b306-729cd10d3f04) [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-07-24 | 2026-07-24 | Applied ML Researcher (Force Fields and Simulation) | ml-research |  | Amsterdam, NL |  |  |  | [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-07-24 | 2026-07-24 | Product Engineer | software-eng |  | London, UK |  |  |  | [Wayback](https://web.archive.org/web/20260724175720/https://jobs.ashbyhq.com/cuspai) |
+| 2026-07-28 | open | [Scientific Developer Relations Manager](#scientific-developer-relations-manager-2026-07-28) | business-ops | Strategy & Partnerships | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/0ed7a3da-fdd1-4952-83cc-7a3a8c8af92e) [live](https://jobs.ashbyhq.com/cuspai/5cad2ab9-7d21-456d-bb15-0fa35ed69d45) |
 | 2026-07-31 | open | [Senior Talent Partner (Singapore)](#senior-talent-partner-singapore-2026-07-31) | business-ops | Business Operations | Singapore, SG | PhD |  |  | [live](https://jobs.ashbyhq.com/cuspai/1fff66e7-aa3a-4618-be54-4d297cad0f95) |
-| 2026-08-04 | open | [Technical Program Manager (AI/ML)](#technical-program-manager-ai-ml-2026-08-04) | ml-research | Program Management | Berlin, DE |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/6d9b9d92-942c-4d89-a672-65611b62ae46) |
+| 2026-08-02 | 2026-08-02 | [Head of Data](#head-of-data-2026-08-02) | leadership | Platform & Engineering | Singapore, SG | PhD |  |  | [Wayback](https://web.archive.org/web/20260802125345/https://jobs.ashbyhq.com/cuspai/d18221f2-588e-459c-a960-f92d3116f0b8) |
+| 2026-08-04 | open | [Technical Program Manager (AI/ML)](#technical-program-manager-ai-ml-2026-08-04) | business-ops | Program Management | Berlin, DE |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/6d9b9d92-942c-4d89-a672-65611b62ae46) |
 | 2026-08-10 | open | [Technical Program Manager (Science)](#technical-program-manager-science-2026-08-10) | business-ops | Program Management | London, UK |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/79551bc5-137b-4579-a6fc-7fafa5634037) |
-| 2026-08-13 | open | [Applied AI/ML Engineer (Agents)](#applied-ai-ml-engineer-agents-2026-08-13) | ml-research | AI/ML | Amsterdam, NL | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/916e1489-6624-4a87-90e6-218dc7ebb6fb) |
-| 2026-09-25 | open | [Ecosystem Manager, AI Materials Foundry](#ecosystem-manager-ai-materials-foundry-2026-09-25) | ml-research | Strategy & Partnerships | West Coast, US |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/d4a02fb9-ac9c-44ce-997f-b99723a2d743) |
+| 2026-09-25 | open | [Ecosystem Manager, AI Materials Foundry](#ecosystem-manager-ai-materials-foundry-2026-09-25) | business-ops | Strategy & Partnerships | West Coast, US |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/d4a02fb9-ac9c-44ce-997f-b99723a2d743) |
 | 2026-09-25 | open | [Talent Acquisition Operations Specialist](#talent-acquisition-operations-specialist-2026-09-25) | business-ops | Business Operations | Amsterdam, NL |  |  |  | [live](https://jobs.ashbyhq.com/cuspai/543c8d46-fec0-4d1e-803c-c2c5b42eeaf3) |
-| 2026-09-30 | open | [Strategic Partnerships Manager (Platform Partnerships)](#strategic-partnerships-manager-platform-partnerships-2026-09-30) | software-eng | Strategy & Partnerships | London, UK | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/412b7644-7c41-4e66-9d5c-4170807cf066) |
+| 2026-09-30 | open | [Strategic Partnerships Manager (Platform Partnerships)](#strategic-partnerships-manager-platform-partnerships-2026-09-30) | business-ops | Strategy & Partnerships | London, UK | PhD/MS |  |  | [live](https://jobs.ashbyhq.com/cuspai/412b7644-7c41-4e66-9d5c-4170807cf066) |
 
 ## Descriptions
 
 Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="applied-ai-ml-engineer-agents-2025-10-14"></a>
+
+### Applied AI/ML Engineer (Agents) (2025-10-14)
+
+2025-10-14 → open · ml-research · Amsterdam, NL · [source](https://jobs.ashbyhq.com/cuspai/916e1489-6624-4a87-90e6-218dc7ebb6fb)
+
+<details><summary>Description</summary>
+
+**The Role**
+Due to rapid growth in our core AI capabilities, we are seeking an experienced Applied AI/ML Engineer (Agents) to design and build the intelligent agents that power our autonomous materials discovery engine.
+
+**Your Impact**
+You will be instrumental in developing the "artificial brain" of our agentic materials discovery engine. This is responsible for orchestrating complex, closed-loop scientific workflows, autonomously making decisions, running simulations , and driving experimental campaigns to find breakthrough materials faster than ever before.
+Your work will directly accelerate CuspAI’s path to finding solutions for global sustainability challenges.
+
+**What You Will Do**
+Agentic systems
+- Design the agentic framework that powers our platform to discover new materials. This includes spanning dynamic, multi-stage simulation workflows from literature-grounded hypothesis generation through to computational and experimental validation
+- Build the integration that connects agents to ML models, simulation engines, databases, and heterogeneous compute backends
+- Design pipelines that let agents autonomously plan, schedule, execute, and interpret computational tasks at scale and over long periods of time
+- Use expert annotations from the Chemistry team to drive targeted improvements in agent planning, retrieval, and decision-making
+- Create evaluations to measure the effectiveness of agents
+Experimental design
+- Build agents that perform experimental design — applying Bayesian optimization, active learning, or related sequential decision-making methods to decide what to compute or measure next, and to balance exploration and exploitation across long-running discovery campaigns
+- Help close the loop between simulation and physical experiments so that outcomes become durable knowledge — feeding back into what agents know and how their models reason — compounding across campaigns.
+- Develop strategies for multi-fidelity and multi-objective decision-making , where agents must trade off cost, time, and uncertainty across simulations and physical experiments
+Interdisciplinary Collaboration
+- Work closely with Chemists, Materials Scientists, and the rest of the Agent team to co-develop our core orchestration intelligence
+- Work on customer projects and implement the direct needs required for these projects
+- You are someone who gets excited about the opportunity to enable scientists to work on world changing challenges in this domain , with a personal interest in the potential applications of the technology that CuspAI is building.
+- Proficiency in the modern ML ecosystem such as PyTorch or JAX , with experience taking ML-driven systems from prototype to production
+- Strong software engineering skills (building systems at scale in a production environment): testing, modular design, CI/CD, and scalable ML operations in production environments
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="applied-ml-researcher-generative-models-2025-12-14"></a>
+
+### Applied ML Researcher (Generative Models) (2025-12-14)
+
+2025-12-14 → 2026-04-28 · ml-research · Amsterdam, NL · [source](https://web.archive.org/web/20260325104217/https://jobs.ashbyhq.com/cuspai/b8108ea8-81e9-43bd-941b-89f328f01454?utm_source=L5YoORzJE2)
+
+<details><summary>Description</summary>
+
+**The Role**
+Due to growth, we are seeking an experienced Applied ML Researcher (Generative Models)* to join our growing team and build SOTA generative models to design new materials at CuspAI.
+*Note that you would be joining as a ‘Member of Technical Staff’, but the indicative job title above hopefully helps to explain the nature of this role.
+
+**Your Impact**
+In this role you will be building novel generative models that transform how we design new materials, which is critical for accelerating the discovery of next-generation materials for energy and sustainability challenges .
+Your main focus initially will be ideating and implementing generative models for inorganic crystals at the atomistic scale that can be effectively conditioned on complex target physical properties. You will also integrate these models into our core platform.
+Over time, you will get involved in modelling materials at different length and time scales, other material classes, and end-to-end discovery campaigns.
+
+**What You Will Do**
+Generative Model Development
+- Develop and prototype new ideas for generative models of material candidates that can be effectively conditioned on multiple target properties. The initial focus will be on inorganic crystals at the atomistic scale.
+- Implement, train, and rigorously evaluate these models against scientific benchmarks.
+- Translate theoretical concepts from research papers into functional, high-performance code.
+Integration & Engineering
+- Integrate your models into the wider CuspAI platform, ensuring they are robust, scalable, and accessible for material discovery workflows.
+- Collaborate with the software engineering team to adhere to best practices in coding, testing, and deployment.
+Discovery Campaigns
+- Run material discovery campaigns that utilise your generative tools to identify promising candidates for real-world applications (e.g. carbon capture or battery materials).
+- Analyse the outputs of these campaigns to iteratively improve model performance and domain relevance.
+Interdisciplinary Collaboration
+- Work together with the existing material generation team and the wider Cusp technical team, to align model capabilities with experimental realities.
+- Partner with computational chemists to understand the physical constraints and properties required for valid and novel materials generation.
+- Machine Learning Mastery: You possess deep experience designing, building and training generative machine learning models (ideally diffusion, flow models or VAEs).
+- Engineering Capability: You are a proficient coder (Python, PyTorch/JAX) with the ability to "get things done" - moving quickly from idea to working prototype to integrated solution.
+- Collaborative Spirit: You have a demonstrated ability to work well in a team, communicating complex technical concepts to colleagues from different scientific backgrounds.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="applied-ai-ml-engineer-property-prediction-foundational-models-2025-12-30"></a>
+
+### Applied AI/ML Engineer (Property Prediction Foundational Models) (2025-12-30)
+
+2025-12-30 → 2026-01-08 · ml-research · Amsterdam, NL · [source](https://web.archive.org/web/20260108064407/https://jobs.ashbyhq.com/cuspai/90a8fa1d-e520-4807-8fbe-17ae6bd791d1)
+
+<details><summary>Description</summary>
+
+**The Role**
+Due to the rapid scaling of our scientific intelligence and data curation capabilities, we are seeking an Applied AI/ML Engineer to build and apply multi-modal foundation models to solve a broad range of materials discovery tasks.
+*Note that you would be joining as a ‘Member of Technical Staff’, but the indicative job title above hopefully helps to explain the nature of this role.
+Hiring timelines: We’re aiming to start interviewing for this role in mid-January and would like to make an offer by mid-February.
+
+**Your Impact**
+You will be building and refining the property prediction and material characterization models that accelerate the discovery of world-changing molecules.
+You will be joining a world-class team, where your work will bridge the gap between frontier AI research and production-grade scientific applications.
+Your initial focus will be on owning the development and integration of property prediction models and applying them to existing and future project workflows. Over time you will play a key role in evolving our multi-modal foundation models to handle increasingly complex scientific modalities.
+
+**What You Will Do**
+Model Development & Application
+- Own the development, integration, and evaluation of property prediction models within customer workflows, ensuring reliable deployment and performance.
+- Adapt and fine-tune our core foundation models for specific property prediction applications to meet high-stakes scientific requirements.
+- Contribute to the ongoing development of multi-modal foundation models for molecular systems, designing architectures that handle diverse input and output modalities.
+- Implement uncertainty quantification methods to support Bayesian optimization pipelines, helping scientists navigate the vast space of potential materials.
+Engineering Excellence
+- Build robust learned representations that generalize across various downstream tasks.
+- Apply strong software engineering best practices to ensure all systems are scalable, reliable, and maintainable.
+- Support the deployment and integration of production-grade foundation models into our core platform.
+Scientific Collaboration & Integration
+- Partner closely with our internal Chemists and Materials Scientists to integrate computational and experimental workflows into one seamless optimization loop.
+- Proactively learn the technical vocabulary of materials science and experimental chemistry to facilitate deep, meaningful interactions with domain experts.
+- Contribute to our mission by ensuring all system designs align with CuspAI's commitment to sustainability and solving the world’s most pressing physical challenges.
+- Strong software engineering skills and a proven track record of building complex systems in a production or industrial environment.
+- Significant experience building, training, and evaluating relevant ML models (e.g. Graph Neural Networks, Transformers, or Generative Models).
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
 
 <a id="application-scientist-ai-materials-science-singapore-2026-03-16"></a>
 
@@ -139,7 +264,7 @@ Collaboration & Integration
 
 ### MLFF Distillation & GCMC Integration - Internship (2026-07-16)
 
-2026-07-16 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/cuspai/d7b80299-ed98-4dfe-b306-729cd10d3f04)
+2026-07-16 → open · ml-research · London, UK · [source](https://jobs.ashbyhq.com/cuspai/d7b80299-ed98-4dfe-b306-729cd10d3f04)
 
 <details><summary>Description</summary>
 
@@ -183,7 +308,7 @@ Science & Collaboration
 
 ### Scientific Developer Relations Manager (2026-07-28)
 
-2026-07-28 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/cuspai/0ed7a3da-fdd1-4952-83cc-7a3a8c8af92e)
+2026-07-28 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/cuspai/0ed7a3da-fdd1-4952-83cc-7a3a8c8af92e)
 
 <details><summary>Description</summary>
 
@@ -244,11 +369,50 @@ Strategic Partnering
 
 </details>
 
+<a id="head-of-data-2026-08-02"></a>
+
+### Head of Data (2026-08-02)
+
+2026-08-02 → 2026-08-02 · leadership · Singapore, SG · [source](https://web.archive.org/web/20260802125345/https://jobs.ashbyhq.com/cuspai/d18221f2-588e-459c-a960-f92d3116f0b8)
+
+<details><summary>Description</summary>
+
+**The Role**
+Due to rapid company growth and expanding external data partnerships, we are seeking a Head of Data to lead the team and set CuspAI’s data strategy.
+
+**Your impact**
+This is a rare opportunity to define the data foundation of a frontier AI company, working closely with world-leading AI experts, materials science researchers and partnerships to drive the expansion of our data portfolio and consequent modeling capabilities.
+
+**What You Will Do**
+Data Strategy
+- Build and own CuspAI's data strategy in close partnership with the leadership team, translating research and commercial priorities into a clear, prioritised view of the data assets we need and the sequence in which we need them.
+- Establish and maintain a rigorous, evidence-led framework to identify high-value data opportunities and architect scalable acquisition or generation pathways.
+- Make and defend build-vs-buy-vs-partner decisions, and be accountable for the outcomes.
+Data Acquisition & Asset Creation
+- Set up and drive initiatives to acquire and build proprietary data assets including commercial licensing, academic and national lab collaborations, targeted experimental campaigns, high-throughput computational generation, and internal lab data generation.
+- Scope, stand up and oversee data generation programmes end to end, from experimental design and cost model through to delivery of ML-ready assets.
+- Build and maintain a pipeline of prospective data partners across industry, academia, instrument and simulation vendors, and commercial data providers.
+Key collaborators
+- Own the relationship with our research leads: understanding their data and codesigning data strategies in their research areas
+- Identify, evaluate and propose new data partnerships and deals to our Partnerships team, arriving with a clear thesis on strategic value, data quality, exclusivity, cost and integration effort.
+- Collaborate with Finance on the data budget allocating spends against strategic priority and expected return.
+- Design and run the data request process - how requests are submitted, triaged, prioritised, resourced and tracked
+- Act as the single point of accountability for data commitments made to the research organisation.
+Leadership
+- Lead, grow and develop the Data team, spanning data acquisition, curation, data architecture and data engineering.
+- Set the standards for data quality, provenance and interoperability that the team works to, and hold the bar.
+- Represent CuspAI's data work to external partners, research collaborators, and across the company
+- Substantial experience owning data strategy or a data acquisition function at a research-intensive organisation - a frontier AI lab, a deep-tech or materials/chemicals/energy company, a national lab, or a research institute - with clear accountability for outcomes rather than execution alone.
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
 <a id="technical-program-manager-ai-ml-2026-08-04"></a>
 
 ### Technical Program Manager (AI/ML) (2026-08-04)
 
-2026-08-04 → open · ml-research · Berlin, DE · [source](https://jobs.ashbyhq.com/cuspai/6d9b9d92-942c-4d89-a672-65611b62ae46)
+2026-08-04 → open · business-ops · Berlin, DE · [source](https://jobs.ashbyhq.com/cuspai/6d9b9d92-942c-4d89-a672-65611b62ae46)
 
 <details><summary>Description</summary>
 
@@ -322,48 +486,11 @@ Process & Operations
 
 </details>
 
-<a id="applied-ai-ml-engineer-agents-2026-08-13"></a>
-
-### Applied AI/ML Engineer (Agents) (2026-08-13)
-
-2026-08-13 → open · ml-research · Amsterdam, NL · [source](https://jobs.ashbyhq.com/cuspai/916e1489-6624-4a87-90e6-218dc7ebb6fb)
-
-<details><summary>Description</summary>
-
-**The Role**
-Due to rapid growth in our core AI capabilities, we are seeking an experienced Applied AI/ML Engineer (Agents) to design and build the intelligent agents that power our autonomous materials discovery engine.
-
-**Your Impact**
-You will be instrumental in developing the "artificial brain" of our agentic materials discovery engine. This is responsible for orchestrating complex, closed-loop scientific workflows, autonomously making decisions, running simulations , and driving experimental campaigns to find breakthrough materials faster than ever before.
-Your work will directly accelerate CuspAI’s path to finding solutions for global sustainability challenges.
-
-**What You Will Do**
-Agentic systems
-- Design the agentic framework that powers our platform to discover new materials. This includes spanning dynamic, multi-stage simulation workflows from literature-grounded hypothesis generation through to computational and experimental validation
-- Build the integration that connects agents to ML models, simulation engines, databases, and heterogeneous compute backends
-- Design pipelines that let agents autonomously plan, schedule, execute, and interpret computational tasks at scale and over long periods of time
-- Use expert annotations from the Chemistry team to drive targeted improvements in agent planning, retrieval, and decision-making
-- Create evaluations to measure the effectiveness of agents
-Experimental design
-- Build agents that perform experimental design — applying Bayesian optimization, active learning, or related sequential decision-making methods to decide what to compute or measure next, and to balance exploration and exploitation across long-running discovery campaigns
-- Help close the loop between simulation and physical experiments so that outcomes become durable knowledge — feeding back into what agents know and how their models reason — compounding across campaigns.
-- Develop strategies for multi-fidelity and multi-objective decision-making , where agents must trade off cost, time, and uncertainty across simulations and physical experiments
-Interdisciplinary Collaboration
-- Work closely with Chemists, Materials Scientists, and the rest of the Agent team to co-develop our core orchestration intelligence
-- Work on customer projects and implement the direct needs required for these projects
-- You are someone who gets excited about the opportunity to enable scientists to work on world changing challenges in this domain , with a personal interest in the potential applications of the technology that CuspAI is building.
-- Proficiency in the modern ML ecosystem such as PyTorch or JAX , with experience taking ML-driven systems from prototype to production
-- Strong software engineering skills (building systems at scale in a production environment): testing, modular design, CI/CD, and scalable ML operations in production environments
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="ecosystem-manager-ai-materials-foundry-2026-09-25"></a>
 
 ### Ecosystem Manager, AI Materials Foundry (2026-09-25)
 
-2026-09-25 → open · ml-research · West Coast, US · [source](https://jobs.ashbyhq.com/cuspai/d4a02fb9-ac9c-44ce-997f-b99723a2d743)
+2026-09-25 → open · business-ops · West Coast, US · [source](https://jobs.ashbyhq.com/cuspai/d4a02fb9-ac9c-44ce-997f-b99723a2d743)
 
 <details><summary>Description</summary>
 
@@ -438,7 +565,7 @@ Interdisciplinary & Stakeholder Collaboration
 
 ### Strategic Partnerships Manager (Platform Partnerships) (2026-09-30)
 
-2026-09-30 → open · software-eng · London, UK · [source](https://jobs.ashbyhq.com/cuspai/412b7644-7c41-4e66-9d5c-4170807cf066)
+2026-09-30 → open · business-ops · London, UK · [source](https://jobs.ashbyhq.com/cuspai/412b7644-7c41-4e66-9d5c-4170807cf066)
 
 <details><summary>Description</summary>
 

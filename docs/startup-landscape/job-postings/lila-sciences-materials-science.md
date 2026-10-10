@@ -44,38 +44,6 @@ $192,000 — $256,000 USD
 
 </details>
 
-<a id="chemistry-technical-program-manager-2026-04-24"></a>
-
-### Chemistry Technical Program Manager (2026-04-24)
-
-2026-04-24 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila Sciences is using its autonomous science platform to accelerate chemical discovery — from smarter synthesis pathways and next-generation catalysts to molecular design for clean energy and industrial applications. The Chemistry experiment team is running programs at a pace and scale that demands serious operational rigor, and we're looking for a Technical Program Manager to provide it. You'll work closely with the Chemistry domain lead who sets scientific strategy and direction, while you own the execution layer: the project plans, the cross-functional dependencies, and the blockers that need to be surfaced and resolved before they become problems. You won't be directing scientific work — you'll be creating the conditions for it to happen at speed and at scale. This is a role for someone who genuinely loves the craft of program management in complex, technical environments.
-What You'll Be Building
-- Own day-to-day program execution within the Chemistry experiment team — maintaining project plans, tracking milestones, and ensuring agentic science programs are delivered on time and with rigor
-- Serve as the primary operational interface between the Chemistry team and platform partners (Automation, ML, Engineering) — communicating needs, aligning on priorities, and keeping dependencies visible and resolved
-- Translate scientific program goals into structured workstreams that enable autonomous experimentation to run efficiently and at scale
-- Run program rituals including sprint planning, stand-ups, and retrospectives with a bias toward purposeful meetings, documentation, and follow-through
-- Partner with the Chemistry domain leads to surface blockers, risks, and interdependencies early and drive them to resolution
-- Support the delivery of commercial contracts by working with the Product & Revenue team to ensure program commitments are well-scoped, tracked, and clearly communicated to all stakeholders
-- Contribute to capacity planning and resource coordination in partnership with scientific leadership
-- 10+ years of program or project management experience in a chemistry, pharmaceutical, or deep tech environment
-- A Bachelor's degree in Chemistry, Chemical Engineering, or a related field
-- A track record of managing multiple concurrent programs in fast-paced, ambiguous environments and energized by building programs from the ground up; early-stage start-up experience is a strong plus
-- Demonstrated ability to coordinate across scientific and operational stakeholders and manage complex cross-functional dependencies
-- Sufficient scientific fluency to understand Chemistry program goals and communicate them clearly to partner teams
-- Experience supporting commercial program delivery and working with external partners or customers
-- Exceptional written and verbal communication skills — able to break complex goals into clear, achievable units of work and keep stakeholders consistently well-informed
-
-**Bonus Points For**
-
-*(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
 <a id="scientist-ii-senior-characterization-scientist-condensed-matter-2026-05-26"></a>
 
 ### Scientist II/Senior Characterization Scientist, Condensed Matter (2026-05-26)

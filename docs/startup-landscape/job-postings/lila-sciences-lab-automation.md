@@ -232,42 +232,6 @@ $144,000 — $240,000 USD
 
 </details>
 
-<a id="senior-software-engineer-i-ii-back-end-data-robotics-2026-08-10"></a>
-
-### Senior Software Engineer I/II, Back-end/Data, Robotics (2026-08-10)
-
-2026-08-10 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-You will build the back-end and data foundations of the systems that schedule work across our autonomous labs, model them as digital twins, and turn raw experimental output into trustworthy, queryable data. In Robotics, you'll own core services scientists, operators, and engineers rely on daily — the ones that decide how efficiently our robots run and how much our scientists trust their data.
-What You'll Be Building
-- Design scheduling systems: allocate experiments, instruments, and compute across autonomous labs, modeling long-running jobs as durable Temporal workflows.
-- Model digital twins: stand up the simulation/digital-twin data layer so teams predict factory behavior before committing resources.
-- Own technical data management: build the Flyte pipelines, S3 lakehouse, and PostgreSQL models that turn instrument output into governed, trustworthy data.
-- Enable data science: ship batch and event-driven pipelines that put clean data in the hands of scientists and models.
-- Deliver capacity planning: create customer-facing services that help teams forecast factory capacity.
-- Operate for scale: run services on AWS EKS with Docker/ECR, Terraform, and GitHub Actions, reliable as the factory grows.
-- 4–8 years of back-end engineering: production services in Python (FastAPI) at scale.
-- Data engineering: pipelines on a workflow orchestrator such as Flyte, Temporal, or similar.
-- Data modeling across stores: hands-on SQL (PostgreSQL), object storage (S3), and data lakehouse architectures.
-- Cloud-native delivery: a major cloud with containers, infrastructure as code, and CI/CD — ideally AWS EKS (Docker/ECR), Terraform, and GitHub Actions.
-- End-to-end ownership: taking services from design through delivery, reliability, and iteration.
-- Clear collaboration: communicating technical tradeoffs plainly with engineers, scientists, and business partners.
-
-**Bonus Points For**
-- Systems engineering in regulated industries: systems-thinking rigor in safety- or quality-critical settings — aerospace, manufacturing, or healthcare/life sciences. Exposure to 21 CFR Part 11, ALCOA+, GAMP 5 / FDA CSA, or ISA-95 a plus.
-- Domain exposure: robotics, lab automation, LIMS, or manufacturing/MES environments.
-- Scheduling & optimization: job scheduling, resource allocation, or constraint/optimization problems.
-- Data-science enablement: distributed compute (Ray), experiment tracking (Weights & Biases), or model serving.
-- Event-driven messaging: NATS, MQTT, or similar pub/sub for high-volume telemetry.
-
-**Compensation**
-$144,000 — $240,000 USD
-
-</details>
-
 <a id="senior-software-engineer-i-ii-test-robotics-2026-08-10"></a>
 
 ### Senior Software Engineer I/II, Test Robotics (2026-08-10)
