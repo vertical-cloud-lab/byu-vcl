@@ -35,7 +35,7 @@ the read height. Use these unless a later entry below changes them:
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
 | paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
-| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), read off the chip itself; the same for every reading on record. **Since 10-09 a reading can ask for another gain:** `link.read(settings={"gain": 512})`. Integration time is fixed. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/)) | 10-09 |
+| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), read off the chip itself; the same for every reading on record. **Since 10-09 a reading can ask for another gain:** `link.read(settings={"gain": 512})`. Integration time is fixed. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/)). The board's white LED was off in every reading on record. Firmware changes go in over USB only, no OTA (@sgbaird, 10-10) | 10-09, 10-10 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
 
 ```
@@ -1422,6 +1422,7 @@ sensor's maker recommends. All of it is in
 - **No over-the-air update path on the board**: its `main.py` (upstream and the 09-03
   backup) only subscribes to the read command. One USB visit could add a signed updater
   (HiveMQ free tier: every login can publish anywhere). Not written; @sgbaird's call.
+  *(Declined 2026-10-10 by @sgbaird: no OTA updates. Firmware stays USB-only.)*
 - **ams (AN000633)**: our white/black is its "primitive" two-point scale; it calibrates with
   a 24-patch X-Rite ColorChecker whose true colours come from a reference spectrometer,
   under the application's own conditions, then a least-squares matrix from ≥ 8 targets
@@ -1454,6 +1455,63 @@ steps and test numbers are in [`../pico/README.md`](../pico/README.md).
   9,146–9,157 (8-channel totals), each with the right code; plain reads unchanged; bad
   settings refused. 512x is 3.84× the 128x counts, not 4×, so re-read white and black at each
   gain.
+
+## 2026-10-10 — the board's white LED switched on from the Pi; no background reads on any paint run; FWHM; no OTA (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @sgbaird
+(10-09, 23:10 MDT): find the upstream LED tests and, with the board still on the robot Pi's
+USB, see if the LED turns on. Also: was the datasheet's FWHM used, did every test have a
+background measurement, and no over-the-air updates. LED details, data and chart are in
+[`../pico/README.md`](../pico/README.md#the-as7341s-white-led-switched-on-2026-10-10-off-in-every-reading-on-record).
+
+- **The LED turns on, and the current sets its brightness.** Run from the board's RAM, with flash
+  untouched: at 4, 10 and 20 mA the chip's LED register read 0x80, 0x83 and 0x88, and the light
+  the sensor saw scaled 2.38–2.51× (10 mA) and 5.09–5.12× (20 mA) over 4 mA. Even 4 mA, the
+  minimum, saturated 128x on the bench. Put back: LED off, board reset, plain reads 2,370 against 2,377 before.
+- **It's bluer than the rail lights but just as weak at 410 nm:** 1.6–2.1× the rail lights'
+  share at 440–470 nm, 1.2× at 410, relative to each light's brightest channel. That's as the
+  sensor saw it on the bench, facing unknown surroundings.
+- **Upstream dropped it for a reason that still applies.**
+  [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87#issuecomment-2508247754),
+  2024-11-29, LED at 10 mA: the blue, red and yellow wells read within 2% of each other in
+  every channel (up to 60,002 of 65,535), "possibly due to reflection from the enclosure walls".
+  [12-05](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87#issuecomment-2521312788):
+  mixtures and Y/B/R "not distinguishable" with it on.
+  [#152, 2025-02-07](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2643136155):
+  a black-printed enclosure "made some channels less distinguishable". They went with the LED off
+  plus a per-well white. The LED sits beside the sensor and points the same way, so its light can
+  bounce back off the bore walls and the wet surface without picking up the paint's colour.
+- **Worth one bounded test, not a run.** With the enclosure resting on the plate the rail light
+  is blocked, which is why resting reads worst; the LED would light every well the same. The
+  test: read the black and white wells with the LED on and the rail lights off. If black ÷ white
+  falls well below the rail lights' 0.55–0.72 (10-06 eve, z 100 and resting), it's worth a paint
+  run; near 1, upstream's result stands. It needs the LED switchable with the board in the
+  enclosure: a per-reading `led_ma` setting like `gain`, installed over USB. Not done.
+- **Background: no paint run has had one.** No well was read empty before its paint went in;
+  09-30 to 10-06 used a same-plate empty well (A6, H5), the white and black wells, and the lamp
+  offset. Only the 09-09/09-10 slot scans had a same-position blank
+  ([`blank_correction.py`](blank_correction.py)). That's how a neighbour's blank was found to
+  inject 0.3 share points. Over black paper an empty well reads 1.03–1.08× the black well (10-06
+  eve, z 100), so an empty read of the same well is a black reference at the right position, which is
+  what the separate black well can't be. Cost: one more enclosure trip per plate, the workflow
+  @sgbaird gave in [ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87#issuecomment-2685924623).
+  Read empty and painted at the same height above the plate (z 92), so no landing moves the
+  enclosure between them.
+- **FWHM: yes, as Gaussians.** DS000504 v3-00's centre and FWHM for F1–F8
+  (415/26 … 680/52 nm) are the passbands in every comparison with published pigment spectra
+  (`analyse_paint_accuracy.py`). Shifting them ±10 nm, the datasheet's tolerance, moved the score
+  by ≤ 0.015 (10-02). The measured response curves themselves were not used (their side lobes and
+  out-of-band leakage). Absolute responsivity cancels in the white/black ratio.
+- **Drying and ground truth (@sgbaird): agreed.** Wet acrylic dries darker; our reads were 0.5–19 h
+  after dispensing, and the published ranges are dried films of the pigments, not BASICS at ~10:1 in
+  a well. So "points off" is distance from a proxy, not accuracy. A real reference needs the same
+  wells measured on a reference instrument, or a target whose spectrum is known and stable.
+- **No OTA** (@sgbaird): firmware goes in over USB, and the board can stay wired for tests. The
+  10-09 offer of a signed updater is withdrawn.
+- **Fixed:** the 10-09 board snapshot was missing `lib/`, because the repo's `.gitignore` ignores
+  `lib/`. All 18 files are now added; their hashes match [`MANIFEST.md`](../pico/board-2026-10-09/MANIFEST.md).
+
+![the board LED's colour against the rail lights'](../pico/led-test-2026-10-10.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 
@@ -1616,7 +1674,9 @@ source rather than inferred:
   disabled by two commented-out lines in the board's `main.py`. It was tried
   upstream and deliberately rejected: with it on, most channels rose to 10k–20k
   counts (410 nm to ~2k) and the colours stopped being distinguishable. (Corrected 2026-10-02: an
-  earlier version said it "saturates the enclosure walls"; nothing saturated.)
+  earlier version said it "saturates the enclosure walls"; nothing saturated.) *(2026-10-10: switched on from the robot Pi: it works, and
+  4–20 mA sets the brightness. Upstream's first test, at 10 mA, read up to 60,002 of 65,535, with the three
+  colours within 2% of each other. See the 10-10 entry above.)*
 - **One reading is two SMUX integrations** (`F1F4CN` then `F5F8CN`), 558.8 ms
   each at the shipped `atime=200, astep=999`, so 1.118 s of the ~1.42 s round
   trip. `Clear` is sampled in both cycles and discarded in both. Gain is 256×

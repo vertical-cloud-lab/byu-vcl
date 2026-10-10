@@ -92,6 +92,10 @@ millimetre. **Standing read height not switched**: still z 86.5, @timothy-commin
 
 ## Can the Pico W be updated over the MQTT broker?
 
+> **Decided 2026-10-10 (@sgbaird): no OTA updates for the microcontroller.** Firmware goes in
+> over USB; the board can stay wired for testing. The updater sketched below will not be
+> written. It is kept as the record of what was considered.
+
 **Not with the code on the board now.** Upstream `sensor_file/main.py` (`07efedd`) and the
 board's own copy (both backups on the `RPI_STREAM_CAM_HOSTNAME` Pi, `~/pico-backups/`, 09-03)
 subscribe to one topic, `command/picow/{PICO_ID}/as7341/read`. The handler only reads `R`,

@@ -8,6 +8,12 @@ The full backup, including the withheld files and a 2 MB image of the whole flas
 is on the robot Pi (`RPI_STREAM_CAM_HOSTNAME`) in
 `~/pico-backups/20261009_165748_before-gain/`. See [`../README.md`](../README.md) to restore.
 
+> **Added 2026-10-10: `lib/`.** The 10-09 commit left out all 18 `lib/` files below, though
+> this table said "in this folder": the repo's top-level `.gitignore` ignores every `lib/`
+> directory. They were copied from the Pi backup's `files/lib/`, every size and sha256
+> matched the table, and they were added with `git add -f`. Anything else added under a
+> `lib/` folder needs `-f` as well.
+
 | file | bytes | sha256 (on the board) | |
 | --- | --- | --- | --- |
 | `as7341_test.py` | 2052 | `9c5381b440f284e9fdb63733ea5e474af3bb9be861e2695a2b473bd40e3409c8` | in this folder |

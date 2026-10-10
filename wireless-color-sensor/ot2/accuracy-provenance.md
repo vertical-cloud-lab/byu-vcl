@@ -116,6 +116,13 @@ enclosure walls and *reduces* the contrast between similar colours.
 > stopped being distinguishable
 > ([ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87)).
 > Nothing saturated; the contrast loss is the finding.
+>
+> **Added 2026-10-10.** That was the second test (2024-12-05, 10k–20k counts). The first, at
+> 10 mA ([2024-11-29](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87#issuecomment-2508247754)),
+> read up to 60,002 of 65,535, and the blue, red and yellow wells came within 2% of each other in every channel.
+> A black-printed enclosure was tried on 2025-02-07 ([#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2643136155)):
+> "made some channels less distinguishable". On our board the LED switches on and its current sets the brightness
+> (10-10, [`../pico/README.md`](../pico/README.md)); it has been off in every reading on record.
 
 ---
 

@@ -5,6 +5,10 @@ The colour sensor's Pico W (USB serial `e6647c15673a2438`) runs the board's own 
 `sensor_file/`. On 2026-10-09 one change went in: **a read command can now ask for a gain.**
 Nothing else changed. Integration time, Wi-Fi, MQTT and every other file are as they were.
 
+**Firmware goes in over USB, never over the air** (@sgbaird, 2026-10-10). The board can
+stay on the robot Pi's USB for testing. The signed MQTT updater offered on 10-09 is not
+going to be written.
+
 | file | what |
 | --- | --- |
 | [`main.py`](main.py) | what is on the board now: the old `main.py` plus the gain change |
@@ -12,6 +16,8 @@ Nothing else changed. Integration time, Wi-Fi, MQTT and every other file are as 
 | [`board-2026-10-09/`](board-2026-10-09/) | every non-secret file as it was on the board before the change; [`MANIFEST.md`](board-2026-10-09/MANIFEST.md) lists all 32 with their on-board hashes |
 | [`test_gain.py`](test_gain.py) | 40 checks without the board: the patch, the gain parsing, and both `main.py` files driven with fake MQTT messages |
 | [`gain-test-2026-10-09.json`](gain-test-2026-10-09.json) | every reading taken on the board while testing, plus the chip's registers before and after |
+| [`led_check.py`](led_check.py), [`led_hold.py`](led_hold.py) | 2026-10-10: switch the AS7341's white LED on at 4, 10 and 20 mA and read it, run from RAM ([below](#the-as7341s-white-led-switched-on-2026-10-10-off-in-every-reading-on-record)) |
+| [`led-test-2026-10-10.json`](led-test-2026-10-10.json), [`analyse_led.py`](analyse_led.py) | every LED reading and register value; the analysis writes [`led-test-analysis-2026-10-10.json`](led-test-analysis-2026-10-10.json) and the chart |
 
 ## What is on the board
 
@@ -133,6 +139,52 @@ still plugged into the Pi's USB, with no program reading its serial port (every 
 because nothing had opened the port since the reset: as I read MicroPython's USB code, it
 drops output when no program has the port open, and only waits when one has it open but
 isn't reading. Not tested further.
+
+## The AS7341's white LED: switched on 2026-10-10, off in every reading on record
+
+The breakout's white LED is switched by the AS7341's own LED driver (its LDR pin). In
+register bank 1, CONFIG (0x70) bit 3 hands that pin to register LED (0x74); there, bit 7
+turns the LED on and bits 6:0 set the current, 4 mA + 2 mA per step (4–258 mA).
+`lib/as7341.py`'s `set_led_current(mA)` does both and accepts only 4–20 mA.
+`lib/as7341_sensor.py` wraps it as `Sensor.LED` (4 mA). `main.py` has `sensor.LED = True`
+and `sensor.LED = False` commented out, so **every reading on record was taken with it
+off, and a read command can't turn it on.** Upstream dropped it deliberately
+([ac-dev-lab#87](https://github.com/AccelerationConsortium/ac-dev-lab/issues/87#issuecomment-2521312788),
+[#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2643136155)):
+with it on, the colours stopped being distinguishable.
+
+**Tested 2026-10-09, 23:16–23:20 MDT (05:16 UTC on 10-10), with the board on the robot Pi's
+USB. Run from RAM; nothing written to flash.** [`led_check.py`](led_check.py) builds `Sensor()` exactly as `main.py`
+does (128x, ATIME 100, ASTEP 999), reads with the LED off, at 4, 10 and 20 mA, and off again,
+and repeats a block at 32x when 128x saturates. [`led_hold.py`](led_hold.py) held it at 4 mA
+for a robot-camera photo:
+
+| | 4 mA | 10 mA | 20 mA |
+| --- | --- | --- | --- |
+| LED register (CONFIG = 0x08 for all three) | 0x80 | 0x83 | 0x88 |
+| at 128x | 3 channels and Clear at 65,535 | 7 channels at 65,535 | 7 channels at 65,535 |
+| at 32x, ch410 / ch440 | 1,836 / 12,025 | 4,568 / 30,222 | 9,346 / 61,567 |
+
+- **The current sets the brightness.** At 32x, 10 mA read 2.38–2.51× the 4 mA counts in every
+  channel, and 20 mA 5.09–5.12× in the two that didn't saturate. Three 4 mA readings agreed to
+  0.11%. From 10 mA the chip's analog-saturation flag was set even at 32x, most likely by the
+  Clear channel, which read 65,535.
+- **It's bright.** At the minimum current, the sensor got ~51× as much light as the rail
+  lights give it over the white well (10-06, z 125). That ratio is rough: the sensor was
+  facing whatever happened to be next to it, which nobody could see. The robot camera's
+  photos with the LED on and off looked the same, so the board wasn't in its view.
+- **Its colour**, as the sensor saw it there: relative to the brightest channel,
+  1.6–2.1× the rail lights' share at 440–470 nm, but only 1.2× at 410 nm. So it wouldn't
+  rescue the weak 410 nm channel.
+- **Put back:** registers CONFIG 0 and LED 0 straight afterwards, then `mpremote reset`. Plain
+  128x reads over MQTT gave 2,370–2,371 counts, against 2,376–2,377 before.
+  `main.py`'s `Sensor()` also clears CONFIG on every boot (`AS7341.reset()` → `disable()`),
+  so a reset always leaves the LED off.
+
+![the board LED's colour against the rail lights'](led-test-2026-10-10.png)
+
+Using it in a reading would need a firmware change, for example an `led_ma` key next to
+`gain`, installed over USB like the gain change. Not done.
 
 ## The 10-01 version, withdrawn
 

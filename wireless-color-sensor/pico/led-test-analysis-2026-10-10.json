@@ -1,0 +1,162 @@
+{
+ "registers": [
+  {
+   "event": "start",
+   "mA": null,
+   "CONFIG": 0,
+   "LED": 0,
+   "CFG1": 8
+  },
+  {
+   "event": "led",
+   "mA": 4,
+   "CONFIG": 8,
+   "LED": 128,
+   "CFG1": 8
+  },
+  {
+   "event": "led",
+   "mA": 10,
+   "CONFIG": 8,
+   "LED": 131,
+   "CFG1": 8
+  },
+  {
+   "event": "led",
+   "mA": 20,
+   "CONFIG": 8,
+   "LED": 136,
+   "CFG1": 8
+  },
+  {
+   "event": "off",
+   "mA": null,
+   "CONFIG": 0,
+   "LED": 0,
+   "CFG1": 8
+  },
+  {
+   "event": "end",
+   "mA": null,
+   "CONFIG": 0,
+   "LED": 0,
+   "CFG1": 8
+  }
+ ],
+ "saturation": {
+  "on 4 mA": {
+   "channels_at_cap": 3,
+   "analog_flag": true
+  },
+  "on 10 mA": {
+   "channels_at_cap": 7,
+   "analog_flag": true
+  },
+  "on 20 mA": {
+   "channels_at_cap": 7,
+   "analog_flag": true
+  },
+  "on-32x 4 mA": {
+   "channels_at_cap": 0,
+   "analog_flag": false
+  },
+  "on-32x 10 mA": {
+   "channels_at_cap": 0,
+   "analog_flag": true
+  },
+  "on-32x 20 mA": {
+   "channels_at_cap": 6,
+   "analog_flag": true
+  }
+ },
+ "gain_128x_over_32x_ch410": 3.984,
+ "current_ratios_32x": {
+  "10/4 mA": {
+   "expected": 2.5,
+   "channels": {
+    "ch410": 2.489,
+    "ch440": 2.513,
+    "ch470": 2.381,
+    "ch510": 2.458,
+    "ch550": 2.462,
+    "ch583": 2.457,
+    "ch620": 2.446,
+    "ch670": 2.442
+   }
+  },
+  "20/4 mA": {
+   "expected": 5.0,
+   "channels": {
+    "ch410": 5.091,
+    "ch440": 5.12
+   }
+  }
+ },
+ "repeat_spread_32x_4mA_pct": 0.11,
+ "colour": {
+  "led_4mA_32x_net": [
+   1826.4,
+   11999.2,
+   15186.6,
+   15427.0,
+   18252.8,
+   17790.4,
+   19566.5,
+   14685.2
+  ],
+  "led_norm": [
+   0.093,
+   0.613,
+   0.776,
+   0.788,
+   0.933,
+   0.909,
+   1.0,
+   0.751
+  ],
+  "rail_white_z125_net": [
+   143.2,
+   713.8,
+   674.8,
+   1092.2,
+   1540.5,
+   1812.8,
+   1807.8,
+   1105.0
+  ],
+  "rail_norm": [
+   0.079,
+   0.394,
+   0.372,
+   0.603,
+   0.85,
+   1.0,
+   0.997,
+   0.61
+  ],
+  "led_over_rail": [
+   1.18,
+   1.56,
+   2.09,
+   1.31,
+   1.1,
+   0.91,
+   1.0,
+   1.23
+  ],
+  "rail_readings": 4
+ },
+ "brightness_led4mA_over_rail_white": 51.4,
+ "off_before_total": 2379.0,
+ "off_after_total": 2357.8,
+ "mqtt_before_total": [
+  2377,
+  2376,
+  2376
+ ],
+ "mqtt_after_total": [
+  2371,
+  2370,
+  2370
+ ]
+}
