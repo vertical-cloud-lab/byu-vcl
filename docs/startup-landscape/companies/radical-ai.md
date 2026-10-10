@@ -30,7 +30,13 @@ None captured, because the site has no team page.
 
 ## Job postings
 
-No public ATS board was found. The careers link on the site goes to a third-party page ([nodi.global](https://nodi.global/company/radical%20ai)). The probes for ATS tokens `radical-ai`, `radicalai` and `radical` found nothing usable. No posting history was collected.
+- **Recovered: 31 postings, 2024-08 to 2026-10, 31 with full descriptions; 9 open on 2026-10-10** ([job-postings/radical-ai.md](../job-postings/radical-ai.md)). The sources:
+  - Lever, as `RadicalAI`. The token is case-sensitive, which is why `radicalai` failed before. Two postings are live, and the rest come from archived posting pages and board captures.
+  - [Nodi](https://nodi.global/company/radical%20ai), an AI-screening ATS that Radical AI moved to in 2026, read through its public job-offer endpoint.
+  - AlleyCorp's portfolio job board, which still serves the closed Lever postings it copied.
+- **Who it hired, in order:**
+  - **2024-08:** the first roles were AI research scientists for GNN/foundation and generative models, a materials scientist, and mechanical and mechatronics engineers.
+  - **2026:** computational chemists and materials scientists for metal alloys, robotics and lab-operations roles, then on Nodi an automation technician ($66–103K), a design mechanical engineer ($140–185K), an ML research engineer ($235–295K) and software engineers ($165–295K).
 
 ## Turnover
 

@@ -11,7 +11,7 @@ Back to [all companies](README.md) · [company profile](../companies/materials-n
 
 ## Careers-page captures
 
-2 archived captures of the company's own careers page. Their text is not reproduced here: these pages list postings through embedded widgets that the archive did not capture, and some feature named staff, whom this survey does not name. The captures: [2024-03-15](https://web.archive.org/web/20240315114328/https://www.materialsnexus.com/careers), [2024-04-19](https://web.archive.org/web/20240419232903/https://www.materialsnexus.com/careers).
+2 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2024-03-15](https://web.archive.org/web/20240315114328/https://www.materialsnexus.com/careers), [2024-04-19](https://web.archive.org/web/20240419232903/https://www.materialsnexus.com/careers).
 
 ## Descriptions
 

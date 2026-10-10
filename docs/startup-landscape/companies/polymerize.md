@@ -34,8 +34,11 @@ No staff roles were observed. The about page shows the team as an unlabelled ima
 
 ## Job postings
 
-- **Current openings:** none found. The [careers page](https://www.polymerize.io/company-pages/careers) lists no roles in its static HTML, and the `polymerize` and `polymerizeio` board tokens returned nothing.
-- **Captured-posting history:** none.
+- **Recovered: 7 posting titles with dates, no descriptions** ([job-postings/polymerize.md](../job-postings/polymerize.md)): QA engineer, front-end developer, product designer, content writer, director of product marketing, director/VP engineering and key account manager.
+  - Their pages under [`polymerize.io/careers/`](https://web.archive.org/web/20220524183252/https://polymerize.io/careers/) were archived from 2023-01 to 2025-08.
+  - The site is a Gatsby app that loads each description client-side, and the archive never captured that data. Only the titles survive.
+- **Current:** none. The 2026 careers page says "Coming Soon!".
+- Singapore's MyCareersFuture portal lists no open Polymerize roles. It only searches open jobs.
 
 ## Turnover
 

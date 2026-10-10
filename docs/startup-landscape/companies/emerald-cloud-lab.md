@@ -62,8 +62,15 @@ The page groups people by department and gives no individual titles.
 
 ## Job postings
 
-- **Current openings: not countable.** The [careers page](https://www.emeraldcloudlab.com/careers/) loads its position list client-side, and no public Ashby, Greenhouse, Lever, Workable or Recruitee board answers to `emeraldcloudlab`.
-- **Captured posting history: none collected.** The postings are not separate URLs on a known board, and the Wayback budget went to the team page.
+- **Recovered: 43 postings from 2014 to 2026, 28 with full descriptions; 7 open on 2026-10-10** ([job-postings/emerald-cloud-lab.md](../job-postings/emerald-cloud-lab.md)). They come from three boards in turn:
+  - the 2015–16 careers page, which names each role and links it to Lever, as `emeraldtherapeutics`;
+  - Lever as `emeraldcloudlab` (2019–24), archived posting by posting;
+  - BambooHR since 2024, read live through its careers API.
+- **What they show:**
+  - A *Laboratory Operator* posting was open almost continuously: 2014–21 on Lever, then again from 2023, and on BambooHR since 2024 at $20–26 an hour.
+  - The locations trace the company's moves: South San Francisco until 2021, Austin from 2023, and Pittsburgh in 2024 for the Carnegie Mellon cloud lab.
+  - The posted salaries are the survey's lowest. Shift manager $70–90K, operations team lead $50–63K, junior IT administrator $60–70K and platform engineer $115K (2023–24).
+- **Gaps:** nothing from 2017–19. The 2015–16 roles have titles only, because their Lever pages were not archived.
 
 ## Turnover
 

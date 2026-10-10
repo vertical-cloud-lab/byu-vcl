@@ -43,8 +43,10 @@ None recorded. The team pages were not read; see Coverage.
 
 ## Job postings
 
-- **Current openings: none listed** as of 2026-10-09. No public Ashby, Greenhouse, Lever, Workable or Recruitee board exists for `mattiq`, and the [site](https://mattiq.com/) has only a "Join the mission / Let's Talk" contact link.
-- **Captured posting history: none.** A `/careers` page was captured in 2023-03 but not read.
+- **None recovered.** The [careers page](https://web.archive.org/web/20230326060951/https://mattiq.com/careers) (2023–25) has one "View Career Opportunities" button. It links to Mattiq's LinkedIn jobs tab, which this survey does not read.
+- **Other places checked:**
+  - Under its earlier name, Stoicheia, it had a one-page Squarespace site with no careers page ([stoicheia.ai](https://web.archive.org/web/20210421194625/https://www.stoicheia.ai/)).
+  - No Lever, Greenhouse, Workable or BambooHR board exists, or was ever archived, under `mattiq` or `stoicheia`.
 
 ## Turnover
 

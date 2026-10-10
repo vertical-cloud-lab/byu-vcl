@@ -505,9 +505,10 @@ def company_page(slug, rows, careers, meta, split=False):
     if careers:
         caps = sorted({c["capture"] for c in careers})
         lines += ["", "## Careers-page captures", "",
-                  f"{len(caps)} archived captures of the company's own careers page. Their text is not reproduced "
-                  "here: these pages list postings through embedded widgets that the archive did not capture, and "
-                  "some feature named staff, whom this survey does not name. The captures: "
+                  f"{len(caps)} archived captures of the company's careers page, or of its page on a job board. Their "
+                  "text is not reproduced here: where they list openings, those are in the table above or sat in "
+                  "embedded widgets the archive did not capture, and some pages feature named staff, whom this "
+                  "survey does not name. The captures: "
                   + ", ".join(link(c, ts_date(re.search(r"/web/(\d{14})/", c).group(1))) for c in caps) + "."]
     described = [r for r in rows if r["has_description"]]
     note = ("Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and "

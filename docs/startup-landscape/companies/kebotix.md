@@ -37,7 +37,9 @@ None collected (skipped for time).
 
 ## Job postings
 
-Current (2026-10-09): none listed on the [site](https://www.kebotix.com/). Posting history was not collected.
+- **Recovered: 2 postings, both with full descriptions** ([job-postings/kebotix.md](../job-postings/kebotix.md)). They are an *Intern - Machine Learning Scientist* and a *Computational/Theoretical Chemist with experience in Data Science*, from its [Google Hire board](https://web.archive.org/web/20190828081139/https://hire.withgoogle.com/public/jobs/kebotixcom) (posted 2018-11 and 2019; archived 2019-08).
+- **Lost:** its careers page embedded an Indeed widget in 2020 and a [Greenhouse board](https://web.archive.org/web/20210827173506/https://www.kebotix.com/jobs) (`for=kebotix`) in 2021. Neither the widget nor the board was ever archived, under any form of its URL.
+- **Current:** none; the site no longer lists jobs.
 
 ## Turnover
 

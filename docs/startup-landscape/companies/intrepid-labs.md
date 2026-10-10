@@ -34,8 +34,9 @@ No staff roles were observed. The website lists only the CEO.
 
 ## Job postings
 
-- **Current openings (2026-10-09):** 0 on the [U of T startup job board](https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe). The website has no careers page, and the board tokens `intrepidlabs`, `intrepid-labs` and `intrepidlabsinc` returned nothing.
-- **Captured-posting history:** none.
+- **None recovered.** The website has no careers page, and no ATS board answers to `intrepidlabs`, `intrepid-labs` or about 20 other variants.
+- **Job boards checked:** its company pages on the [U of T entrepreneurship board](https://web.archive.org/web/20260114111416/https://jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe) and Radical Ventures' board. Both listed no jobs when archived in 2026-01 and 2026-06, and none on 2026-10-09.
+- **A lead not followed:** a search snippet shows a "Director of Operations" posting on an aggregator (CareerBeacon), which this survey does not read.
 
 ## Turnover
 

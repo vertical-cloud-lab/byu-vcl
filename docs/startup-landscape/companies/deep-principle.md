@@ -36,7 +36,13 @@ None collected.
 
 ## Job postings
 
-None collected. The careers channel was not identified within the time budget.
+**Recovered: 7 roles, all with full descriptions, in Chinese and English** ([job-postings/deep-principle.md](../job-postings/deep-principle.md)).
+- **Where:** they are listed inline on its own [join page](https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html), archived 2025-06 to 2026-04.
+- **Roles:**
+  - a Head of AI and a Head of Laboratory for high-throughput experimentation (HTE);
+  - a machine-learning research scientist and a computational-chemistry research scientist;
+  - a technical product manager, a business development manager, and government and public relations.
+- **Change:** both heads and the product manager were gone from the page by December 2025.
 
 ## Turnover
 

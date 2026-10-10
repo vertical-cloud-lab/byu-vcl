@@ -32,7 +32,10 @@ Not collected.
 
 ## Job postings
 
-Not collected (no careers page or ATS checked).
+- **Recovered: 2 postings with full descriptions, both closed** ([job-postings/telescope-innovations.md](../job-postings/telescope-innovations.md)). They are a *Mechatronics Engineer* (CAD 85–125K) and a *Software Engineer* (CAD 85–120K), both for "Automated Chemistry Technology" in Vancouver.
+  - The company posted them itself on the [MaRS tech-jobs board](https://techjobs.marsdd.com/companies/telescope-innovations/jobs/39623303-mechatronics-engineer-automated-chemistry-technology), open 2024-08-16 to 2024-09-19.
+  - That board keeps a posting's page after it expires.
+- **Not found:** the company site (WordPress) has no careers page or job post type, now or in the archive, and no ATS board answers to its name.
 
 ## Turnover
 

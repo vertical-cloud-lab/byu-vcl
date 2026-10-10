@@ -37,12 +37,12 @@ None by title. The about page says the tech team spans "crystal simulation, high
 
 ## Job postings
 
-- **Current openings (2026-10-09):** unknown. The site's Careers link goes to the LinkedIn jobs tab, which this survey does not read; no Ashby, Greenhouse, Lever, Recruitee or Workable board answers to `altrove`.
-- **Captured posting history:** none (no ATS to query).
-
-| Period | New postings | Method | Source |
-| --- | --- | --- | --- |
-| all | unknown | no public board | [about](https://altrove.ai/about) |
+- **Recovered: 6 postings with full descriptions, 2025-10 to 2026-09; 1 open on 2026-10-10** ([job-postings/altrove.md](../job-postings/altrove.md)).
+  - They come from the portfolio job boards of its investors Entrepreneurs First and Contrarian Ventures (both run on Getro). Those boards copy postings from the company's LinkedIn jobs tab and keep each page after the role closes.
+  - The site itself links only to LinkedIn.
+- **Roles, in order:**
+  - **2025-10, right after the $10M seed:** a laboratory technician (advanced materials), an inorganic-materials engineer for manufacturing and process design, and a business development associate for strategic materials.
+  - **2026:** an ML engineer, a CTO associate and a part-time logistics and admin assistant.
 
 ## Turnover
 

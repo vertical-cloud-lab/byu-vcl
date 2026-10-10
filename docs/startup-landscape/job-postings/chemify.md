@@ -64,7 +64,7 @@ Back to [all companies](README.md) · [company profile](../companies/chemify.md)
 
 ## Careers-page captures
 
-3 archived captures of the company's own careers page. Their text is not reproduced here: these pages list postings through embedded widgets that the archive did not capture, and some feature named staff, whom this survey does not name. The captures: [2025-11-22](https://web.archive.org/web/20251122111057/https://www.chemify.io/careers), [2026-01-01](https://web.archive.org/web/20260101093842/https://www.chemify.io/careers), [2026-04-01](https://web.archive.org/web/20260401094404/https://www.chemify.io/careers).
+3 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2025-11-22](https://web.archive.org/web/20251122111057/https://www.chemify.io/careers), [2026-01-01](https://web.archive.org/web/20260101093842/https://www.chemify.io/careers), [2026-04-01](https://web.archive.org/web/20260401094404/https://www.chemify.io/careers).
 
 ## Descriptions
 

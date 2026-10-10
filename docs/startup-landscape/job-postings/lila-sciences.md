@@ -206,7 +206,7 @@ Back to [all companies](README.md) · [company profile](../companies/lila-scienc
 
 ## Careers-page captures
 
-3 archived captures of the company's own careers page. Their text is not reproduced here: these pages list postings through embedded widgets that the archive did not capture, and some feature named staff, whom this survey does not name. The captures: [2025-10-20](https://web.archive.org/web/20251020021357/https://job-boards.greenhouse.io/lilasciences), [2026-06-02](https://web.archive.org/web/20260602011833/https://job-boards.greenhouse.io/lilasciences), [2026-07-28](https://web.archive.org/web/20260728103744/https://job-boards.greenhouse.io/lilasciences).
+3 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2025-10-20](https://web.archive.org/web/20251020021357/https://job-boards.greenhouse.io/lilasciences), [2026-06-02](https://web.archive.org/web/20260602011833/https://job-boards.greenhouse.io/lilasciences), [2026-07-28](https://web.archive.org/web/20260728103744/https://job-boards.greenhouse.io/lilasciences).
 
 ## Descriptions
 

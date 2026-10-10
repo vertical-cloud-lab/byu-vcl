@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/radical-ai.md)
 
-**30 postings recovered**, 30 with the full description; 9 still open on 2026-10-10. First seen 2024-08-22, latest 2026-10-02. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**32 postings recovered**, 32 with the full description; 9 still open on 2026-10-10. First seen 2024-08-22, latest 2026-10-02. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -20,11 +20,13 @@ Back to [all companies](README.md) · [company profile](../companies/radical-ai.
 | 2025-05-29 | 2025-12-22 | [Full Stack Software Engineer](#full-stack-software-engineer-2025-05-29) | software-eng |  | New York, NY |  |  |  | [Wayback](https://web.archive.org/web/20250615055559/https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091) |
 | 2025-10-24 | 2025-11-18 | [Data Engineer](#data-engineer-2025-10-24) | software-eng |  | New York, NY | MS/BS | 6 |  | [Wayback](https://web.archive.org/web/20251118005935/https://jobs.lever.co/RadicalAI/fdc7465f-a4e4-4b09-836e-7fe12c37b493) |
 | 2026-02-18 | 2026-02-23 | [Narrative Content Manager](#narrative-content-manager-2026-02-18) | business-ops |  | New York, NY |  |  | $120–140K | [Wayback](https://web.archive.org/web/20260223151633/https://jobs.lever.co/RadicalAI/93552615-b1f1-4f98-8b8a-090f58bdd361) |
-| 2026-04-08 | 2026-06-09 | [Computational Chemist](#computational-chemist-2026-04-08) | materials-science |  | California, USA; California City, CA, US |  |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774121) |
-| 2026-04-08 | 2026-06-09 | [Computational Chemist/Material Scientist - Metal Alloys](#computational-chemist-material-scientist-metal-alloys-2026-04-08) | materials-science |  | New York, NY, USA | PhD |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774122) |
-| 2026-04-08 | 2026-06-09 | [Computational Materials Scientist](#computational-materials-scientist-2026-04-08) | materials-science |  | California, USA; California City, CA, US |  |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774123) |
-| 2026-04-08 | 2026-06-09 | [Robotics Engineer](#robotics-engineer-2026-04-08) | lab-automation |  | New York, NY, USA | MS/BS |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774128) |
-| 2026-04-08 | 2026-06-09 | [Software Engineer - Systems](#software-engineer-systems-2026-04-08) | software-eng |  | New York, NY, USA | MS/BS |  | $200–250K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774130) |
+| 2026-04-08 | 2026-06-09 | [Computational Chemist](#computational-chemist-2026-04-08) | materials-science |  | California, USA; California City, CA, US |  |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774121) [Wayback](https://web.archive.org/web/20260422182905/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774121-computational-chemist) |
+| 2026-04-08 | 2026-06-09 | [Computational Chemist/Material Scientist - Metal Alloys](#computational-chemist-material-scientist-metal-alloys-2026-04-08) | materials-science |  | New York, NY, USA | PhD |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774122) [Wayback](https://web.archive.org/web/20260422181627/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774122-computational-chemist-material-scientist-metal-alloys) |
+| 2026-04-08 | 2026-06-09 | [Computational Materials Scientist](#computational-materials-scientist-2026-04-08) | materials-science |  | California, USA; California City, CA, US |  |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774123) [Wayback](https://web.archive.org/web/20260422172655/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774123-computational-materials-scientist) |
+| 2026-04-08 | 2026-04-22 | [Material Scientist - Metal Alloys](#material-scientist-metal-alloys-2026-04-08) | materials-science |  | New York, NY, USA | PhD/MS |  |  | [Wayback](https://web.archive.org/web/20260422172024/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774125-material-scientist-metal-alloys) |
+| 2026-04-08 | 2026-06-09 | [Robotics Engineer](#robotics-engineer-2026-04-08) | lab-automation |  | New York, NY, USA | MS/BS |  |  | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774128) [Wayback](https://web.archive.org/web/20260422175346/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774128-robotics-engineer) |
+| 2026-04-08 | 2026-06-09 | [Software Engineer - Systems](#software-engineer-systems-2026-04-08) | software-eng |  | New York, NY, USA | MS/BS |  | $200–250K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774130) [Wayback](https://web.archive.org/web/20260422180316/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774130-software-engineer-systems) |
+| 2026-04-08 | 2026-04-22 | [Software Engineer, Platform](#software-engineer-platform-2026-04-08) | software-eng |  | New York, NY, USA |  | 5 | $200–250K | [Wayback](https://web.archive.org/web/20260422181541/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774131-software-engineer-platform) |
 | 2026-06-03 | open | [Director of Software Engineering](#director-of-software-engineering-2026-06-03) | leadership | Core Software | New York, NY |  | 10 | $237–350K | [live](https://jobs.lever.co/RadicalAI/caaac405-c8a5-4daa-ae6d-0a0e51e199b8) [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655547) |
 | 2026-06-04 | 2026-06-16 | [Laboratory Operations Specialist](#laboratory-operations-specialist-2026-06-04) | lab-automation |  | New York, NY, USA | BS | 1 | $87–120K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655548) |
 | 2026-06-04 | 2026-07-15 | [Product Manager](#product-manager-2026-06-04) | business-ops |  | New York, NY, USA |  |  | $195–265K | [live](https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/81655549) |
@@ -36,6 +38,10 @@ Back to [all companies](README.md) · [company profile](../companies/radical-ai.
 | 2026-09-18 | open | [Software Engineer, Full Stack](#software-engineer-full-stack-2026-09-18) | software-eng | Engineering | Brooklyn Navy Yard |  | 5 | $165–265K | [live](https://app.nodi.global/jobs/public/1de1fd23-e074-4d59-9078-9b5801c8acae) |
 | 2026-10-02 | open | [Software Engineer, Agent Platform](#software-engineer-agent-platform-2026-10-02) | software-eng | Engineering | Brooklyn Navy Yard |  | 7 | $165–295K | [live](https://app.nodi.global/jobs/public/a73c5b6d-39c1-490e-8fd6-7ed74537b571) |
 | 2026-10-02 | open | [Software Engineer, Core Infrastructure](#software-engineer-core-infrastructure-2026-10-02) | software-eng | Engineering | Brooklyn Navy Yard |  | 7 | $210–295K | [live](https://app.nodi.global/jobs/public/9f1b5385-c530-4c0e-9cfd-860b22d440d8) |
+
+## Careers-page captures
+
+1 archived captures of the company's careers page, or of its page on a job board. Their text is not reproduced here: where they list openings, those are in the table above or sat in embedded widgets the archive did not capture, and some pages feature named staff, whom this survey does not name. The captures: [2026-04-14](https://web.archive.org/web/20260414162446/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee).
 
 ## Descriptions
 
@@ -504,6 +510,36 @@ As a Computational Materials Scientist, you will be engaging in materials simula
 
 </details>
 
+<a id="material-scientist-metal-alloys-2026-04-08"></a>
+
+### Material Scientist - Metal Alloys (2026-04-08)
+
+2026-04-08 → 2026-04-22 · materials-science · New York, NY, USA · [source](https://web.archive.org/web/20260422172024/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774125-material-scientist-metal-alloys)
+
+<details><summary>Description</summary>
+
+**The opportunity**
+We are seeking a talented and forward-thinking alloys Materials Scientist with expertise in materials research and development to join our innovative team at the forefront of interdisciplinary research. In this role, you will leverage cutting edge experimental techniques to accelerate materials discovery, design, and optimization, contributing to groundbreaking advancements in materials science.
+
+**About you**
+- PhD or Masters degree in Materials Science, Chemistry, Chemical Engineering, Polymers, or a related field
+- Strong background in materials science principles, including materials synthesis and characterization.
+- Deep knowledge of materials characterization and testing, as well as familiarity with laboratory safety protocols.
+- In-depth industry knowledge of metal synthesis, including potentials, limitations, and key process and equipment suppliers.
+- Specialized metallurgical knowledge and experience in metallographic and fractographic interpretation, corrosion, oxidation and materials characterization techniques is desired.
+- Excellent analytical and problem-solving skills, with the ability to analyze complex datasets, identify patterns, and draw meaningful conclusions.
+- Strong written and verbal communication skills, with the ability to convey technical concepts and research findings to diverse audiences.
+Pluses
+- Experience with AI-driven materials research, including machine learning models for materials property prediction, materials informatics, and data-driven materials discovery.
+- Familiarity with one or more software languages (Python, C++, MATLAB, etc.)
+- Prior experience in transitioning AI + computational research into production environments.
+
+**Salary Description**
+Competitive salary + Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.
+Disclosure
+
+</details>
+
 <a id="robotics-engineer-2026-04-08"></a>
 
 ### Robotics Engineer (2026-04-08)
@@ -561,6 +597,40 @@ Pluses
 - Comfort with a wide variety of industrial protocols - OPC-UA, ModBUS, TCP /IP
 - Prior experience deploying software to production robotics or automation environments
 - Prior startup experience or ownership of systems from early prototype through production
+
+</details>
+
+<a id="software-engineer-platform-2026-04-08"></a>
+
+### Software Engineer, Platform (2026-04-08)
+
+2026-04-08 → 2026-04-22 · software-eng · New York, NY, USA · $200–250K · [source](https://web.archive.org/web/20260422181541/https://jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/73774131-software-engineer-platform)
+
+<details><summary>Description</summary>
+
+**About you**
+- 5+ years of experience building backend systems in production environments.
+- Strong software engineering fundamentals (design, implementation, testing, reliability).
+- Fluency in at least one backend language: e.g., Python, Go, Rust, TypeScript, etc.
+- Experience with Infrastructure-as-Code (IaC) tools such as Terraform or CloudFormation.
+- Comfort operating services in the real world: on-call, debugging, performance bottlenecks, failure modes.
+- Experience with CI/CD tools (e.g., GitHub Actions, Jenkins, CircleCI) and integrating security checks within them.
+- Ability to build clean abstractions that other engineers actually want to use.
+- Solid understanding of Linux/Unix systems administration.
+- Experience with monitoring, logging, and tracing tools (Datadog, Prometheus, Grafana, Splunk, ELK, etc.).
+- Understanding of network security concepts (e.g., firewalls, VPNs, network segmentation, Tailscale).
+- Strong ownership and bias toward action: you find the sharp edges and sand them down.
+Pluses
+- Exposure to machine learning lifecycles or MLOps concepts.
+- Experience with distributed systems (queues, schedulers, event-driven architectures, consistency tradeoffs).
+- Background in scientific computing, robotics, or automation-heavy environments.
+- Solid understanding of security principles, practices, and common security tools (e.g., vulnerability scanners, intrusion detection systems).
+- Experience with security and compliance software (e.g., Drata, Apptega).
+
+**Salary Description**
+Competitive salary + Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.
+Disclosure
+[phone removed] USD a year
 
 </details>
 

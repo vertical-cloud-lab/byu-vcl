@@ -41,8 +41,13 @@ No staff roles were observed. The careers board renders client-side and the team
 
 ## Job postings
 
-- **Current openings:** not counted. Careers run on a [Feishu board](https://dptechnology.jobs.feishu.cn/index) that renders client-side.
-- **Captured-posting history:** none. The Wayback CDX query for the board timed out.
+- **Recovered: 248 postings, all with full descriptions (in Chinese), all open on 2026-10-10, published 2022-02 to 2026-10** ([job-postings/dp-technology.md](../job-postings/dp-technology.md)). English titles are in [`data/dp_technology_titles_en.json`](../data/dp_technology_titles_en.json).
+  - They come from the API behind its [Feishu board](https://dptechnology.jobs.feishu.cn/index), which the board calls with a token it issues to every visitor.
+  - There are two boards, experienced hires (`index`) and campus (`305722`). Both were created on 2021-12-02.
+- **Limit:** only open postings are listed. Closed ones leave the board, and their pages were never archived, so this is a snapshot of what is open now, back-dated by publish date.
+- **What they show:**
+  - Most of the board is software, product, sales and operations for its AI-for-science platforms, and 95 postings are internships.
+  - 2026 adds lab roles: battery and electrolyte work in Yibin from January, then a batch in Beijing on 2026-08-05. That batch was ADME, analytical and separation science, chemical analysis, automation equipment, lab-automation application development and facilities. It was followed by bioassay, optical hardware, instrument automation and an EHS manager.
 
 ## Turnover
 
