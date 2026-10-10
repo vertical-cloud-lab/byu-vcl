@@ -44,8 +44,9 @@ The Onshape document is
 [`single-vial-stirrer-cubxl (byu-vcl #169)`](https://cad.onshape.com/documents/80ec0345c92398198316197e/w/96eb770a6ced683a7077e0ec/e/033fb4b0b500e5c15762a06c).
 It holds the Feature Studio, a Part Studio with the one feature, an Assembly with that
 Part Studio inserted, and Onshape's BOM of the assembly. It was made through the API
-with the lab's key, so it sits in @sgbaird's Onshape account, unshared. It is disposable: `build_onshape.py --new` rebuilds it from the
-FeatureScript in a fresh document.
+with the lab's key, so it sits in @sgbaird's Onshape account, unshared. It is
+disposable: `build_onshape.py --new` rebuilds it from the FeatureScript in a fresh
+document.
 
 ## What comes from the Pioreactor, and what changed
 
