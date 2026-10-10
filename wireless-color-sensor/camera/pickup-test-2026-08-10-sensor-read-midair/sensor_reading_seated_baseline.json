@@ -1,0 +1,18 @@
+{
+  "sensor_data": {
+    "ch583": 59,
+    "ch670": 51,
+    "ch510": 175,
+    "ch410": 8,
+    "ch620": 52,
+    "ch470": 14,
+    "ch550": 185,
+    "ch440": 7
+  },
+  "command": {
+    "R": 0,
+    "Y": 0,
+    "B": 0
+  },
+  "note": "seated baseline, taken before any robot motion"
+}
