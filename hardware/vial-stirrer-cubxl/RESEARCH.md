@@ -3,7 +3,8 @@
 This is the background for [`README.md`](README.md): what the Pioreactor actually
 does, the other published fan-and-magnet stirrers, and what recurs across them.
 Gathered on 2026-10-10 from the Pioreactor's repositories, docs, forum and shop, two
-Edison literature queries, and a search of GitHub and the open-hardware literature.
+Edison literature queries, accelerated-discovery.org, the Acceleration Consortium's
+repositories, and a search of GitHub and the open-hardware literature.
 
 ## The Pioreactor's stirring, in detail
 
@@ -94,7 +95,76 @@ Its order-of-magnitude heat check: 1 W fully into 20 mL of water is at most
 6. **Low-side MOSFET PWM from a microcontroller** is the common driver (Pioreactor,
    OptoPACE).
 
-## GitHub and accelerated-discovery.org
+## accelerated-discovery.org and the Acceleration Consortium
 
-*(Pending: a broader search of GitHub projects, accelerated-discovery.org and the
-Acceleration Consortium's repositories is still running and will be added here.)*
+[accelerated-discovery.org](https://accelerated-discovery.org) is a Discourse forum, "a
+community for all self-driving lab enthusiasts supported by the Acceleration
+Consortium". It is not a hardware catalogue. A search of it for stir, stirrer, magnetic,
+mixing, vial, fan, rpm and Pioreactor turned up:
+
+- [t/510](https://accelerated-discovery.org/t/electrode-lifecycle-enhancement-through-computational-testing-and-research-automation/510),
+  post 4: a "redesigned … stir plate module (which was developed with assistance from SDL5
+  at the AC) to hold six vials". It is probably AC-SDL4's module below (inferred).
+- [t/563](https://accelerated-discovery.org/t/engagement-with-industry-vendors/563), post 5:
+  "20 mL vials are fairly standard at the Acceleration Consortium", linking the
+  Pioreactor's 20 mL vial with a 12 mm bar.
+
+The AC's own stirrers, all fan-and-magnet:
+
+| Repo | What | Drive and control | Notes |
+|---|---|---|---|
+| [AC-SDL4/Stirring-Module](https://github.com/AC-SDL4/Stirring-Module/blob/5b3d5cd4babe28addfcda56175587d295a80628a/README.md) (no licence) | 6 × 28 mm vials on a 127.5 × 85 mm plate footprint | Six Sunon 25 mm 5 V 2-wire fans in parallel on **one IRLZ44N** with a 1N4001 flyback; Pico, 1 kHz PWM, 60 ms kick; open loop | Fans turn at different speeds; all start only above 45 %; shakes above 92 %; 50 % PEG not possible. Measured from its STL: ~4 mm PLA floor + ~2 mm air (inferred), which may explain the weak coupling. Fusion 360 + STL |
+| [opentrons_labware "MatterLab 6 Well Stirrer 20mL"](https://github.com/AccelerationConsortium/opentrons_labware/blob/6c004322715547e7dd6aa92b2138b7137776b218/README.md) (MIT) | 2 × 3 × 20 mL at 35 × 40.5 mm | Mini fans with magnets, on/off; stirrer firmware not published | STL only |
+| [photo-reactor "LEDbyXample"](https://github.com/AccelerationConsortium/photo-reactor/blob/460cc342ca0e9b85737ab1c46291fc89a8cf2f1d/README.md) (no licence) | 8 mL vial | 20 mm 5 V tach fan, 2 × 6 × 2 mm magnets on the hub; **closed loop** through an EMC2101 fan controller on a Pico WH, ±1 % duty every 0.2 s | "the fan may not initialize if the stir bar is too close or too far away from the magnets". ~US$83 |
+| [lumastir](https://github.com/AccelerationConsortium/lumastir/blob/b6adc4e1a778d681dd7d778fbf65b9ea417258af/README.md) (MIT) | 3 or 6 vials for an Opentrons deck | 30 mm Pi case fans, PCA9685 PWM at 500 Hz, Pi Zero 2W on a battery; open loop | Claim/heartbeat API that auto-stops; "Do not infer successful mixing from an HTTP response" |
+
+None of these closes the loop on a single 20 mL vial, so the Pioreactor stays the closest
+match.
+
+## Other open designs worth knowing
+
+| Design | Drive | Speed and sensing | Notes |
+|---|---|---|---|
+| [eVOLVER hardware](https://github.com/FYNCH-BIO/hardware) ([paper](https://doi.org/10.1038/nbt.4151)) | 40 mm 12 V fan, 2 NdFeB magnets, 28 mm vials | Open loop, ms bursts at 12 V; ~500–1400 rpm by video | Magnets came unglued at constant 12 V and needed a bracer; a jumping bar was fixed by "increasing the space" |
+| Chi.Bio ([paper](https://doi.org/10.1371/journal.pbio.3000794)) | PC fan, 2 × N35 Ø9.53 × 3.18 mm, opposite poles up | Open loop, 1.5 s kick | "Non magnetic … spacers … are required" |
+| [Markovitch 2020](https://doi.org/10.1038/s42004-020-00427-5) ([files](https://zenodo.org/record/4118046), CC BY 4.0) | DC motor turning one magnet plate under 48 UPLC vials | 200–1200 rpm, magnetic-sensor closed loop, 0.98–0.99 of setpoint by video | Outer positions get a weaker field |
+| [rio-controller heating-stirring](https://github.com/wenzel-lab/rio-controller/blob/69cba2a/hardware-modules/heating-stirring/README.md) (CERN-OHL-W-2.0) | 40 mm 3-wire fan, 2 × Ø6 × 2 mm magnets, opposite poles | Tach PI loop on a PIC | Magnets raised 3–4 mm off the hub so the fan still runs |
+| [SimonLane/MagStir](https://github.com/SimonLane/MagStir) (MIT / CC BY 4.0) | 30 mm 5 V PWM + tach fan, USB powered | Arduino PID on the tach | Balance the carrier, "otherwise vibration will be a problem" |
+| [KopfLab micrologger](https://github.com/KopfLab/micrologger_device) (non-commercial) | Brushless motor | 100-pulse/rev encoder, 50–5000 rpm, ramps 500 rpm/s up | Stops stirring before each read |
+| [micworg/stir](https://github.com/micworg/stir) | 80–140 mm 4-wire fans, N52 magnets | Tach loop at 25 kHz; "CATCH" stops and restarts to recapture a thrown bar | Parametric OpenSCAD magnet mount |
+| [Ludnie/StirDuino](https://github.com/Ludnie/StirDuino) (GPL-3.0 / CC BY-SA 4.0) | Brushed DC motor, encoder, PID | ≤ 1500 rpm | "Detecting a slipping stir bar" is still on its to-do list |
+| [Hoffmann 2017 turbidostat](https://doi.org/10.1371/journal.pone.0181923) | 80 mm fan | Hall sensor (TLE4905L) closed loop | |
+| [Dutreuil & Pinheiro 2026, HardwareX](https://doi.org/10.1016/j.ohx.2026.e00816) | 80 mm fan | Open loop | The one dedicated stirrer in HardwareX's 828 titles |
+
+Further papers: [Cook 2022, *Lab Chip*](https://doi.org/10.1039/d1lc01081f) ("when the
+distance … was equal to the length of the stirrer, the impeller rotation was stable");
+[Omari 2021, *Chemistry–Methods*](https://doi.org/10.1002/cmtd.202000066) (fixed vial
+placement roughly halves variability); [Cherepanova 2025, *JACS Au*](https://doi.org/10.1021/jacsau.5c00412)
+(off-centre bars tilt, rub the wall and crack vials); [Baldwin 2018, *PRL*](https://doi.org/10.1103/PhysRevLett.121.064502)
+(why bars jump). No Digital Discovery paper describes a stirrer, and
+[Science Jubilee](https://doi.org/10.1039/D3DD00033H) has no stirrer tool.
+
+**Coil drives are patented in one form.** Four coils per vial with diagonal pairs in
+series, each pair one phase of a stepper driver, is GE's
+[US8398297](https://patents.google.com/patent/US8398297B2/en), which Google Patents lists
+as active until 2031-07-12. That is option B in
+[`vial-mixing.md`](../../cubos/docs/vial-mixing.md). Its claim 1 also needs steel pole
+pieces and adjacent coil groups. Check before building it beyond research; this is not
+legal advice.
+
+## More lessons from the wider survey
+
+- **The gap is a window, not just "as small as possible".** Pioreactor moved its magnets
+  closer for stronger agitation, then fixed a stall by backing off ~1 mm. eVOLVER fixed a
+  jumping bar by adding space. LEDbyXample's fan won't start if the bar is too close or
+  too far. No source gives an optimum in mm, so this design makes the gap adjustable.
+- **The magnet spacing should be about the bar length** (Cook 2022; gharris012's
+  StirPlate parameter "stirBarLength" is literally the magnet spacing). The 9.8 mm here
+  suits the 12 mm bar best; for the 15 mm bar, `MAG_CC = 12` is worth a try.
+- **Every DIY sensor sees the drive, not the bar.** Only a coil drive's Hall sensors see
+  the bar itself. Watch the bar when commissioning.
+- **Have a stop that doesn't depend on the software.** Lumastir's docs warn that a
+  software timer is no guarantee. Here the gate pull-down turns the fan off whenever the
+  XIAO resets or loses USB power, and the firmware runs a watchdog.
+- **Stop before measuring.** Chi.Bio settles for 5–10 s, eVOLVER ~20 s, and KopfLab stops
+  before each read.

@@ -22,15 +22,19 @@
 #   1N5819 across the fan, cathode to 5V
 #
 # USB serial, one command per line:
-#   RPM <n>   target in rpm, 0 stops. The setpoint ramps at RAMP rpm/s
-#   STOP      same as RPM 0
+#   RPM <n> [s]  target in rpm, 0 stops; optional run time in seconds, then it stops
+#                itself. The setpoint ramps at RAMP rpm/s
+#   STOP         same as RPM 0
+#
+# Safety: a 10 k gate pull-down holds the fan off whenever this board resets or loses
+# USB power, and a watchdog resets the board if this loop ever hangs.
 #   ?         status line: target, setpoint, measured rpm, duty, stalled
 #   ID        firmware name and version
 import sys
 import time
 
 import select
-from machine import PWM, Pin, disable_irq, enable_irq
+from machine import PWM, WDT, Pin, disable_irq, enable_irq
 
 GATE_PIN, HALL_PIN = 27, 28
 PWM_HZ = 200                 # as the Pioreactor
@@ -58,6 +62,7 @@ def _edge(_pin):
 
 
 hall.irq(trigger=Pin.IRQ_FALLING, handler=_edge)
+wdt = WDT(timeout=8000)   # ms; fed every pass of the main loop
 
 
 def set_duty(d):
@@ -72,6 +77,7 @@ def kick(after):
 
 
 target = 0.0
+stop_at = None            # ticks_ms deadline for a timed run, or None
 setpoint = 0.0
 duty = 0.0
 rpm = 0.0
@@ -88,18 +94,24 @@ def status():
 
 
 def handle(cmd):
-    global target, stalled
+    global target, stalled, stop_at
     parts = cmd.strip().split()
     if not parts:
         return
     word = parts[0].upper()
-    if word == "RPM" and len(parts) == 2:
-        t = float(parts[1])
+    if word == "RPM" and len(parts) in (2, 3):
+        try:
+            t = float(parts[1])
+            secs = float(parts[2]) if len(parts) == 3 else None
+        except ValueError:
+            print("err bad number:", cmd.strip())
+            return
         target = 0.0 if t <= 0 else max(RPM_MIN, min(t, RPM_MAX))
+        stop_at = time.ticks_add(time.ticks_ms(), int(secs * 1000)) if secs and target > 0 else None
         stalled = False
         print("ok", status())
     elif word == "STOP":
-        target = 0.0
+        target, stop_at = 0.0, None
         print("ok", status())
     elif word == "?":
         print(status())
@@ -110,6 +122,7 @@ def handle(cmd):
 
 
 while True:
+    wdt.feed()
     while poll.poll(0):
         ch = sys.stdin.read(1)
         if ch in ("\n", "\r"):
@@ -119,6 +132,9 @@ while True:
             line += ch
 
     now = time.ticks_ms()
+    if stop_at is not None and time.ticks_diff(now, stop_at) >= 0:
+        target, stop_at = 0.0, None
+        print("ok timed run done")
     dt = time.ticks_diff(now, last) / 1000
     if dt < UPDATE_S:
         time.sleep_ms(10)

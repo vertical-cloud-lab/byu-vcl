@@ -146,6 +146,11 @@ fits the present one.
 | E. Stir with the tip | Small XY circles with the tip submerged (GRBL `G2`/`G3`) | No new hardware | Needs a new CubOS command and collision checks. The neck limits the circle (the press-fit caps are `VialCap16mm`), and a P20 tip is a weak paddle that paint could pull off |
 | F. Overhead stirrer tool | A small DC motor with a paddle on the head | High torque, handles paint | Wash or swap the paddle between vials. Another tool on the head |
 
+B as drawn below (four coils per vial, opposite pairs as the two phases of a stepper
+driver) is close to GE's [US8398297](https://patents.google.com/patent/US8398297B2/en),
+listed by Google Patents as active until 2031-07-12. Check it before building B beyond
+research use ([survey](../../hardware/vial-stirrer-cubxl/RESEARCH.md)).
+
 **My suggestion:** start with A under one vial position. It is the cheapest and
 strongest, and it answers the paint question quickly. Move to B if the height or the
 moving parts become a problem. Stirring is routine in electrochemistry anyway: stir

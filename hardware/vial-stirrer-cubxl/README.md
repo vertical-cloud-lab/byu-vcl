@@ -37,7 +37,7 @@ until a first build.
 | [`stl/`](stl) | Printed parts, in assembly position: `base`, `vial_holder`, `magnet_carrier`, `deck_key` (print two) |
 | [`img/`](img) | Renders: steps 1–10, assembled, exploded, section, contact sheet, GIF |
 | [`firmware/main.py`](firmware/main.py) | MicroPython speed controller for the XIAO RP2040 (untested) |
-| [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, other open-source stirrers, design lessons |
+| [`RESEARCH.md`](RESEARCH.md) | What the Pioreactor does, the AC's and other open-source stirrers, design lessons |
 | [`../../outputs/issue-169-magnetic-stirrer/`](../../outputs/issue-169-magnetic-stirrer) | Edison answers and the raw vendor lookups |
 
 The Onshape document is
@@ -189,10 +189,12 @@ Pioreactor's `stirring.py`:
 - Falling edges from the Hall latch, 1 per turn.
 - An additive P loop, each step clamped to ±7.5 % duty.
 - A full-power kick from rest, and stall kicks capped at 60 % duty.
-- Its own addition: the setpoint ramps at 100 rpm/s.
+- Its own additions: the setpoint ramps at 100 rpm/s, timed runs stop themselves, and a
+  watchdog resets the board if the loop hangs. The gate pull-down then holds the fan off.
 
-Commands over USB serial, one per line: `RPM 600`, `STOP`, `?` (status), `ID`. It is a
-sketch and has not been run. Expect to tune `KP`, `DC_START` and `RAMP` on the bench.
+Commands over USB serial, one per line: `RPM 600`, `RPM 600 300` (stop after 300 s),
+`STOP`, `?` (status), `ID`. It is a sketch and has not been run. Expect to tune `KP`,
+`DC_START` and `RAMP` on the bench.
 
 On the CubXL Pi, address the board by its USB serial, never by `/dev/ttyACM*`. The PAW
 Arduino already owns `ttyACM0`, and the CLAUDE.md notes on enumeration order apply here
