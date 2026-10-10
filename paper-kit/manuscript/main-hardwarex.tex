@@ -1,0 +1,152 @@
+% =============================================================================
+% main-hardwarex.tex: HardwareX skeleton (Elsevier; elsarticle, in TeX Live),
+% with HardwareX's specifications table and its fixed sections in its order.
+% The figures, declarations and references are shared with the other
+% skeletons; the body is HardwareX's own, not the IMRaD sections.
+%   make pdf J=hardwarex    make todos J=hardwarex
+% =============================================================================
+\documentclass[preprint,12pt]{elsarticle}
+\input{macros}
+\usepackage{lineno}
+\usepackage{hyperref}
+\usepackage{tabularx}
+
+\journal{HardwareX}
+
+\begin{document}
+\linenumbers
+
+\begin{frontmatter}
+\title{\fillme{Title}}
+
+\author[byu]{\fillme{First Author}}
+\author[byu]{Sterling G. Baird\corref{cor}}
+\ead{sterling.baird@byu.edu}
+\cortext[cor]{Corresponding author}
+\affiliation[byu]{organization={Department of Mechanical Engineering, Brigham Young University},
+  city={Provo}, state={UT}, postcode={84602}, country={USA}}
+
+\begin{abstract}
+\input{sections/abstract}
+\end{abstract}
+
+\begin{keyword}
+\fillme{keyword one} \sep \fillme{keyword two} \sep \fillme{keyword three}
+\end{keyword}
+\end{frontmatter}
+
+\listoftodos
+
+% --- Specifications table: HardwareX's rows, in its order --------------------
+\section*{Specifications table}
+\noindent
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.3\linewidth}X@{}}
+\toprule
+Hardware name & \fillme{name} \\
+\midrule
+Subject area & \fillme{one of HardwareX's subject areas, e.g. Engineering and
+  materials science} \\
+\midrule
+Hardware type & \fillme{one of HardwareX's hardware types, e.g. Mechanical
+  engineering and materials science} \\
+\midrule
+Closest commercial analog & \fillme{name and price; or ``No commercial analog
+  is available.''} \\
+\midrule
+Open source license & \fillme{e.g. CERN-OHL-S-2.0 for hardware, MIT for
+  code, CC BY 4.0 for documentation} \\
+\midrule
+Cost of hardware & \fillme{total in USD, from the bill of materials} \\
+\midrule
+Source file repository & \fillme{https://doi.org/10.5281/zenodo.NNNNNNN} \\
+\midrule
+OSHWA certification UID \textit{(optional)} & \fillme{UID, or delete the row} \\
+\bottomrule
+\end{tabularx}
+
+\section{Hardware in context}\label{sec:context}
+\fillme{What it replaces or makes possible, and for whom; what exists
+(commercial and open), what it costs, and what is missing.}
+
+\section{Hardware description}\label{sec:description}
+\fillme{What it is and how it works, and how it differs from what exists.}
+\begin{itemize}
+\item \fillme{Bullet: what a researcher can do with it that they could not before.}
+\item \fillme{Bullet: a second capability or saving.}
+\end{itemize}
+
+\section{Design files summary}\label{sec:design-files}
+{\footnotesize
+\begin{tabularx}{\linewidth}{@{}*{4}{>{\raggedright\arraybackslash}X}@{}}
+\toprule
+Design file name & File type & Open source license & Location of the file \\
+\midrule
+\fillme{name} & \fillme{e.g. STEP, STL, KiCad} & \fillme{licence} & \fillme{DOI link} \\
+\bottomrule
+\end{tabularx}}
+
+\section{Bill of materials summary}\label{sec:bom}
+{\footnotesize
+\begin{tabularx}{\linewidth}{@{}*{7}{>{\raggedright\arraybackslash}X}@{}}
+\toprule
+Designator & Component & Number & Cost per unit (USD) & Total cost (USD) &
+  Source of materials & Material type \\
+\midrule
+\fillme{D1} & \fillme{part} & \fillme{1} & \fillme{0.00} & \fillme{0.00} &
+  \fillme{supplier link} & \fillme{e.g. polymer, metal} \\
+\bottomrule
+\end{tabularx}}
+
+\section{Build instructions}\label{sec:build}
+\fillme{Step by step, with photographs and the design files by name; safety
+notes where a step needs them.}
+
+\section{Operation instructions}\label{sec:operation}
+\fillme{How to use it, step by step; hazards and how to avoid them.}
+
+\section{Validation and characterization}\label{sec:validation}
+\fillme{What it achieves, measured: accuracy, precision, throughput, limits,
+against a reference where one exists. One figure per claim.}
+
+% Example figures from the kit (powder-doser salt campaign); replace them.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[max width=\linewidth]{fig1_time_vs_error}
+  \figcaption{fig1_time_vs_error}
+  \label{fig:time-vs-error}
+\end{figure}
+\begin{figure*}[ht]
+  \centering
+  \includegraphics[max width=\linewidth]{fig2_group_spread}
+  \figcaption{fig2_group_spread}
+  \label{fig:group-spread}
+\end{figure*}
+% HardwareX: AI used in the research itself (code, analysis) is described
+% here, as Elsevier wants it in the methods.
+\input{declarations/genai-methods}
+
+\section*{Ethics statements}
+\fillme{HardwareX asks every article for one: say that the work involved no
+human participants or animals, or give the approval and consent details.}
+
+\section*{CRediT authorship contribution statement}
+\input{declarations/credit-statement}
+
+\section*{Declaration of competing interest}
+\input{declarations/coi}
+
+\section*{Data availability}
+\input{declarations/availability}
+
+\section*{Acknowledgements}
+\input{declarations/acknowledgements}
+\input{declarations/funding}
+
+% Elsevier: its own section, at the end, immediately before the references.
+\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
+\input{declarations/genai}
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}

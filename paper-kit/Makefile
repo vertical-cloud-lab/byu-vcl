@@ -61,6 +61,8 @@ todos: $(MS)/main-$(J).tex
 diff: $(MS)/main-$(J).tex
 	@git rev-parse --verify --quiet "$(REV)^{commit}" >/dev/null || \
 	  { echo "REV=$(REV) is not a git revision"; exit 1; }
+	@git cat-file -e "$(REV):$(PREFIX)$(MS)/main-$(J).tex" 2>/dev/null || \
+	  { echo "$(MS)/main-$(J).tex did not exist at REV=$(REV)"; exit 1; }
 	rm -rf $(BUILD)/old && mkdir -p $(BUILD)/old
 	git -C "$$(git rev-parse --show-toplevel)" archive --format=tar "$(REV)" -- "$(PREFIX)$(MS)" \
 	  | tar -x -C $(BUILD)/old
