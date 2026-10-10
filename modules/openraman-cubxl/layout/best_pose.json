@@ -1,0 +1,237 @@
+{
+  "best": {
+    "theta": 90,
+    "tx": 204.0,
+    "ty": -486.0,
+    "lost_cm2": 125.2,
+    "score": 122.88193619653954,
+    "tip_deck": [
+      108.91,
+      -172.42
+    ],
+    "tip_cubos": [
+      58.91,
+      127.42
+    ],
+    "capper_deck": [
+      54.91,
+      -159.42
+    ],
+    "n_keys": 6,
+    "keys": [
+      [
+        77.5,
+        -450.0
+      ],
+      [
+        177.5,
+        -450.0
+      ],
+      [
+        102.5,
+        -180.0
+      ],
+      [
+        177.5,
+        -225.0
+      ],
+      [
+        77.5,
+        -315.0
+      ],
+      [
+        102.5,
+        -315.0
+      ]
+    ],
+    "capper_ok": true,
+    "labware_ok": true,
+    "keys_ok": true
+  },
+  "scenarios": {
+    "keep Ben's labware": {
+      "n_feasible": 41,
+      "by_theta": {
+        "0": 0,
+        "90": 41,
+        "180": 0,
+        "270": 0
+      },
+      "best": {
+        "theta": 90,
+        "tx": 204.0,
+        "ty": -486.0,
+        "lost_cm2": 125.2,
+        "score": 122.88193619653954,
+        "tip_deck": [
+          108.91,
+          -172.42
+        ],
+        "tip_cubos": [
+          58.91,
+          127.42
+        ],
+        "capper_deck": [
+          54.91,
+          -159.42
+        ],
+        "n_keys": 6,
+        "keys": [
+          [
+            77.5,
+            -450.0
+          ],
+          [
+            177.5,
+            -450.0
+          ],
+          [
+            102.5,
+            -180.0
+          ],
+          [
+            177.5,
+            -225.0
+          ],
+          [
+            77.5,
+            -315.0
+          ],
+          [
+            102.5,
+            -315.0
+          ]
+        ],
+        "capper_ok": true,
+        "labware_ok": true,
+        "keys_ok": true
+      }
+    },
+    "labware can move": {
+      "n_feasible": 1562,
+      "by_theta": {
+        "0": 0,
+        "90": 1166,
+        "180": 396,
+        "270": 0
+      },
+      "best": {
+        "theta": 90,
+        "tx": 204.0,
+        "ty": -486.0,
+        "lost_cm2": 125.2,
+        "score": 122.88193619653954,
+        "tip_deck": [
+          108.91,
+          -172.42
+        ],
+        "tip_cubos": [
+          58.91,
+          127.42
+        ],
+        "capper_deck": [
+          54.91,
+          -159.42
+        ],
+        "n_keys": 6,
+        "keys": [
+          [
+            77.5,
+            -450.0
+          ],
+          [
+            177.5,
+            -450.0
+          ],
+          [
+            102.5,
+            -180.0
+          ],
+          [
+            177.5,
+            -225.0
+          ],
+          [
+            77.5,
+            -315.0
+          ],
+          [
+            102.5,
+            -315.0
+          ]
+        ],
+        "capper_ok": true,
+        "labware_ok": true,
+        "keys_ok": true
+      }
+    }
+  },
+  "constraint_counts_by_theta": {
+    "0": {
+      "on_deck_and_reachable": 1288,
+      "capper_collides": 1288,
+      "overlaps_labware": 1288,
+      "too_few_key_slots": 0
+    },
+    "90": {
+      "on_deck_and_reachable": 1166,
+      "capper_collides": 0,
+      "overlaps_labware": 1125,
+      "too_few_key_slots": 0
+    },
+    "180": {
+      "on_deck_and_reachable": 396,
+      "capper_collides": 0,
+      "overlaps_labware": 396,
+      "too_few_key_slots": 0
+    },
+    "270": {
+      "on_deck_and_reachable": 0,
+      "capper_collides": 0,
+      "overlaps_labware": 0,
+      "too_few_key_slots": 0
+    }
+  },
+  "footprint_cm2": 506.3,
+  "reach_cm2": 906.6,
+  "assumptions": {
+    "cubos_from_deck": {
+      "x0": 50.0,
+      "y0": 45.0
+    },
+    "pipette_reach": {
+      "x": [
+        54.0,
+        442.0
+      ],
+      "y": [
+        12.999,
+        246.664
+      ]
+    },
+    "capper_from_pipette": [
+      -54.0,
+      -12.999
+    ],
+    "capper_box": [
+      50.0,
+      32.0
+    ],
+    "tall_threshold_mm": 31.0,
+    "reserved_cubos": {
+      "vial column (6 x 20 mL)": [
+        167.0,
+        6.0,
+        211.0,
+        213.0
+      ],
+      "2 x 15 tip rack": [
+        281.75,
+        36.2,
+        347.75,
+        174.2
+      ]
+    }
+  },
+  "seconds": 45.2
+}
