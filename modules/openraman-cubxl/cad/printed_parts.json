@@ -34,5 +34,13 @@
   "P00012_SPACER_BLOCK": {
     "volume_cm3": 2.6,
     "source": "openraman cad.git@778dfda exports/cuvettes/standard liquid/P00012 SPACER BLOCK.step"
+  },
+  "CUBXL_DECK_ADAPTER": {
+    "volume_cm3": 353.5,
+    "source": "cad/export/cubxl_deck_adapter.step (this repo)"
+  },
+  "CUBXL_TIP_DOCK": {
+    "volume_cm3": 62.3,
+    "source": "cad/export/cubxl_tip_dock.step (this repo)"
   }
 }

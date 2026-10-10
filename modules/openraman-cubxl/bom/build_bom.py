@@ -65,6 +65,10 @@ ASA_DENSITY = 1.07      # g/cm^3, Polymaker ASA datasheet value
 FILL = 0.65             # effective solid fraction: 4 walls + 40 % gyroid, typical for these sizes
 
 
+_bp = HERE.parent / "layout" / "best_pose.json"
+N_KEYS = json.loads(_bp.read_text())["best"]["n_keys"] if _bp.exists() else "?"
+
+
 def printed(name, desc, qty=1, official=None):
     if name not in PRINTED:  # part not generated yet
         return dict(vendor="Print in-house (Bambu H2D)", part_no=name, title=desc, unit_price=0.0, url="",
@@ -124,15 +128,15 @@ S["D. Needed to run it, not in the official BOM"] = [
     ("camera link", 1, 1, page(AMZ + "B0CP9XGZKM", "Amazon", "B0CP9XGZKM", "Cable Matters Cat 6 snagless cable, 6 ft"), "to the CubXL Pi's free eth0"),
 ]
 S["E. CubXL integration (new parts in ../cad/)"] = [
-    ("deck adapter", 1, 1, printed("CUBXL_DECK_ADAPTER", "OpenRAMAN → PandaDeck adapter plate with 8 deck keys"), ""),
+    ("deck adapter", 1, 1, printed("CUBXL_DECK_ADAPTER", f"OpenRAMAN → PandaDeck adapter plate, {N_KEYS} deck keys"), ""),
     ("tip dock", 1, 1, printed("CUBXL_TIP_DOCK", "Pipette-tip sampling dock (sample port, beam dump)"), ""),
-    ("adapter inserts", 6, 50, page(AMZ + "B07YSV66Y5", "Amazon", "B07YSV66Y5",
-                                    "ruthex M4 heat-set inserts RX-M4x8.1, 50 pcs"), "4 baseplate corners + 2 dock"),
-    ("adapter screws", 4, 50, thorlabs("SH4MS16"), "M4 × 16, through the baseplate's corner counterbores"),
+    ("adapter inserts", 4, 50, page(AMZ + "B07YSV66Y5", "Amazon", "B07YSV66Y5",
+                                    "ruthex M4 heat-set inserts RX-M4x8.1, 50 pcs"), "one under each baseplate corner counterbore"),
+    ("adapter screws", 4, 50, None, "M4 × 12 from section B's 50-pack (43 spare): 5.6 mm of baseplate + 6.4 mm of insert"),
     ("dock lens", 1, 1, thorlabs("AC127-019-A"), "focuses the beam into the tip, as in the official liquid cuvette"),
-    ("dock cage plate", 1, 1, thorlabs("CP33/M"), "holds the dock lens on the sample-port bracket"),
-    ("dock cage rods", 2, 1, thorlabs("ER1"), ""),
-    ("dock lens retaining ring", 1, 1, thorlabs("SM05RR"), "holds the Ø1/2\" lens in the dock's SM05 bore"),
+    ("dock cage rods", 2, 1, thorlabs("ER1"), "from the sample-port CP33B into the dock, as the official cuvette does"),
+    ("dock rod setscrews", 2, 10, None, "SS4MN4 from section B's 10-pack (9 spare)"),
+    ("dock lens glue", 1, 1, None, "G14250 epoxy from section B, as the official cuvette glues its lens"),
 ]
 # Optional, not in the CubXL total: the official vial-based sample interface, for comparison
 S["F. Optional: official Standard Liquid Cuvette (vials instead of a pipette tip; P00008)"] = [
@@ -149,9 +153,13 @@ S["F. Optional: official Standard Liquid Cuvette (vials instead of a pipette tip
 ]
 
 
+SPARE = dict(vendor="(already bought)", part_no="—", title="covered by an earlier line", unit_price=0.0, url="", status="")
+
+
 def rows():
     for section, items in S.items():
         for ref, need, pack, it, note in items:
+            it = it or SPARE
             buy = math.ceil(need / pack)
             yield dict(section=section, bom_ref=ref, qty_needed=need, pack_size=pack, buy=buy,
                        vendor=it["vendor"], part_no=it["part_no"], title=it["title"],
@@ -195,7 +203,7 @@ def main():
     out.append("### Shopping list by vendor\n")
     by = defaultdict(list)
     for r in R:
-        if not r["section"].startswith("F."):
+        if not r["section"].startswith("F.") and r["vendor"] != SPARE["vendor"]:
             by[r["vendor"]].append(r)
     out.append("| Vendor | Lines | Items | USD |")
     out.append("|---|---:|---|---:|")

@@ -59,15 +59,15 @@
 
 | BOM ref | Buy | Vendor | Part | Description | Unit | Ext. | Note |
 |---|---:|---|---|---|---:|---:|---|
-| deck adapter | 1 | Print in-house (Bambu H2D) | CUBXL_DECK_ADAPTER | OpenRAMAN → PandaDeck adapter plate with 8 deck keys | $0.00 | $0.00 | volume pending: run ../cad/build_cad.py |
-| tip dock | 1 | Print in-house (Bambu H2D) | CUBXL_TIP_DOCK | Pipette-tip sampling dock (sample port, beam dump) | $0.00 | $0.00 | volume pending: run ../cad/build_cad.py |
-| adapter inserts | 1 | Amazon | [B07YSV66Y5](https://www.amazon.com/dp/B07YSV66Y5) | ruthex M4 heat-set inserts RX-M4x8.1, 50 pcs | $9.99 | $9.99 | 4 baseplate corners + 2 dock |
-| adapter screws | 1 | Thorlabs | [SH4MS16](https://www.thorlabs.com/item/SH4MS16) | M4 x 0.7 Stainless Steel Cap Screw, 16 mm Long, 50 Pack | $8.77 | $8.77 | M4 × 16, through the baseplate's corner counterbores |
+| deck adapter | 1 | Print in-house (Bambu H2D) | CUBXL_DECK_ADAPTER | OpenRAMAN → PandaDeck adapter plate, 6 deck keys | $6.02 | $6.02 | 353.5 cm³ solid → ≈246 g ASA |
+| tip dock | 1 | Print in-house (Bambu H2D) | CUBXL_TIP_DOCK | Pipette-tip sampling dock (sample port, beam dump) | $1.06 | $1.06 | 62.3 cm³ solid → ≈43 g ASA |
+| adapter inserts | 1 | Amazon | [B07YSV66Y5](https://www.amazon.com/dp/B07YSV66Y5) | ruthex M4 heat-set inserts RX-M4x8.1, 50 pcs | $9.99 | $9.99 | one under each baseplate corner counterbore |
+| adapter screws | 1 | (already bought) | — | covered by an earlier line | $0.00 | $0.00 | M4 × 12 from section B's 50-pack (43 spare): 5.6 mm of baseplate + 6.4 mm of insert |
 | dock lens | 1 | Thorlabs | [AC127-019-A](https://www.thorlabs.com/item/AC127-019-A) | f = 19 mm, Ø1/2" Achromatic Doublet, ARC: 400 - 700 nm | $64.83 | $64.83 | focuses the beam into the tip, as in the official liquid cuvette |
-| dock cage plate | 1 | Thorlabs | [CP33/M](https://www.thorlabs.com/item/CP33_M) | SM1-Threaded 30 mm Cage Plate, 0.35" Thick, 2 Retaining Rings, M4 Tap | $20.43 | $20.43 | holds the dock lens on the sample-port bracket |
-| dock cage rods | 2 | Thorlabs | [ER1](https://www.thorlabs.com/item/ER1) | Cage Assembly Rod, 1" Long, Ø6 mm | $5.99 | $11.98 |  |
-| dock lens retaining ring | 1 | Thorlabs | [SM05RR](https://www.thorlabs.com/item/SM05RR) | SM05 Retaining Ring for  Ø1/2" Lens Tubes and Mounts | $4.63 | $4.63 | holds the Ø1/2" lens in the dock's SM05 bore |
-| | | | | **Subtotal** | | **$120.63** | |
+| dock cage rods | 2 | Thorlabs | [ER1](https://www.thorlabs.com/item/ER1) | Cage Assembly Rod, 1" Long, Ø6 mm | $5.99 | $11.98 | from the sample-port CP33B into the dock, as the official cuvette does |
+| dock rod setscrews | 1 | (already bought) | — | covered by an earlier line | $0.00 | $0.00 | SS4MN4 from section B's 10-pack (9 spare) |
+| dock lens glue | 1 | (already bought) | — | covered by an earlier line | $0.00 | $0.00 | G14250 epoxy from section B, as the official cuvette glues its lens |
+| | | | | **Subtotal** | | **$93.88** | |
 
 ### F. Optional: official Standard Liquid Cuvette (vials instead of a pipette tip; P00008)
 
@@ -93,17 +93,17 @@
 | B. Base spectrometer: fasteners (official BOM P00000) | $56.91 |
 | C. Base spectrometer: custom parts, printed in-house (official P00001–P00005) | $9.42 |
 | D. Needed to run it, not in the official BOM | $70.72 |
-| E. CubXL integration (new parts in ../cad/) | $120.63 |
+| E. CubXL integration (new parts in ../cad/) | $93.88 |
 | F. Optional: official Standard Liquid Cuvette (vials instead of a pipette tip; P00008) | $214.14 |
 | **Spectrometer as specified (A + B + C)** | **$2,750.12** |
-| **Running on the CubXL with the tip dock (A–E)** | **$2,941.47** |
+| **Running on the CubXL with the tip dock (A–E)** | **$2,914.72** |
 | Optional official vial cuvette instead (F) | +$214.14 |
 
 ### Shopping list by vendor
 
 | Vendor | Lines | Items | USD |
 |---|---:|---|---:|
-| Thorlabs | 28 | MVL50M23, CPS532, DMLP550, FELH0550, GR25-1205, WG41050-A, S50K, AC254-050-A, AC127-019-A ×2, PF10-03-G01, KM100 ×3, FMP1/M ×2, CRM1T/M, CP14, CP35/M, CP33B ×2, ER3 ×4, SM1RR, SH4MS10, SH4MS12, SH4MS06, SS4MN4, G14250, CPSA, SH4MS16, CP33/M, ER1 ×2, SM05RR | $2,039.49 |
+| Thorlabs | 25 | MVL50M23, CPS532, DMLP550, FELH0550, GR25-1205, WG41050-A, S50K, AC254-050-A, AC127-019-A ×2, PF10-03-G01, KM100 ×3, FMP1/M ×2, CRM1T/M, CP14, CP35/M, CP33B ×2, ER3 ×4, SM1RR, SH4MS10, SH4MS12, SH4MS06, SS4MN4, G14250, CPSA, ER1 ×2 | $2,005.66 |
 | Teledyne FLIR | 1 | BFS-PGE-31S4M-C | $850.50 |
 | Amazon | 4 | B0F54D5ZC4, B001PS9E5I, B0CP9XGZKM, B07YSV66Y5 | $42.06 |
-| Print in-house (Bambu H2D) | 7 | P00001_BASEPLATE, P00002_COVER, P00003_LASER_HOLDER, P00004_GRATING_HOLDER, P00005_CAMERA_BRACKET, CUBXL_DECK_ADAPTER, CUBXL_TIP_DOCK | $9.42 |
+| Print in-house (Bambu H2D) | 7 | P00001_BASEPLATE, P00002_COVER, P00003_LASER_HOLDER, P00004_GRATING_HOLDER, P00005_CAMERA_BRACKET, CUBXL_DECK_ADAPTER, CUBXL_TIP_DOCK | $16.50 |

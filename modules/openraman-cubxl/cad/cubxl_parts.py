@@ -160,6 +160,15 @@ def deck_adapter(theta_deg, tx, ty, keys_deck):
     plate = plate.cut(box(40.0, 14.0, ADAPTER_T + 2, 130.0, -4.0, -10.0 - ADAPTER_T - 1))
     R, t = pose_matrix(theta_deg, tx, ty)
     Rinv = R[:2, :2].T
+    # lightening windows, skipped wherever a key lands
+    key_s = [Rinv @ (np.array(k) - t[:2]) for k in keys_deck]
+    for x0, x1 in ((22.0, 94.0), (106.0, 194.0), (206.0, 278.0)):
+        for y0, y1 in ((22.0, 70.0), (82.0, 128.0)):
+            if any(x0 - 18 < kx < x1 + 18 and y0 - 18 < ky < y1 + 18 for kx, ky in key_s):
+                continue
+            win = (cq.Workplane("XY").workplane(offset=-10.0 - ADAPTER_T - 1).center((x0 + x1) / 2, (y0 + y1) / 2)
+                   .rect(x1 - x0, y1 - y0).extrude(ADAPTER_T + 2).edges("|Z").fillet(6.0).val())
+            plate = plate.cut(win)
     for X, Y in keys_deck:
         xs, ys = Rinv @ (np.array([X, Y]) - t[:2])
         key = slot_solid(xs, ys, KEY_W, KEY_L, -10.0 - ADAPTER_T - KEY_H, KEY_H + 0.5, angle_deg=-theta_deg)
