@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-09)
+## Standing settings for the colour read (as of 2026-10-10)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -35,7 +35,7 @@ the read height. Use these unless a later entry below changes them:
 | plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
 | paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
-| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), read off the chip itself; the same for every reading on record. **Since 10-09 a reading can ask for another gain:** `link.read(settings={"gain": 512})`. Integration time is fixed. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/)). The board's white LED was off in every reading on record. Firmware changes go in over USB only, no OTA (@sgbaird, 10-10) | 10-09, 10-10 |
+| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), LED off, read off the chip itself; the same for every reading on record. **Since 10-10 a reading can ask for its own gain, integration time and LED current:** `link.read(settings={"gain": 4, "atime": 50, "led_ma": 10})`, or `read 8 tag gain=4 led_ma=10` in `enclosure_height_cal.py`; anything left out reads as before. Bracket with integration time at a fixed gain, not with gain. LED: 0 (off) or 4–20 mA. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/).) Firmware changes go in over USB only, no OTA (@sgbaird, 10-10) | 10-09, 10-10 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
 
 ```
@@ -1512,6 +1512,68 @@ background measurement, and no over-the-air updates. LED details, data and chart
   `lib/`. All 18 files are now added; their hashes match [`MANIFEST.md`](../pico/board-2026-10-09/MANIFEST.md).
 
 ![the board LED's colour against the rail lights'](../pico/led-test-2026-10-10.png)
+
+## 2026-10-10 (morning) — measured channel curves, LED and integration time settable, the LED's colour vs current; the robot tests wait for the board (no motion)
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @sgbaird: use
+the datasheet's measured response curves; read wells empty before dispensing and subtract; try
+the board LED on the black and white wells with the rail lights off; make the LED (and other
+settings) settable per reading over USB; and does reading at several LED brightnesses give more
+information? Send an Edison query on that.
+
+- **Measured channel curves: scores move by about a point, no conclusion changes.**
+  DS000504 v3-00 Figure 19 is vector paths in the PDF, so
+  [`extract_as7341_response.py`](extract_as7341_response.py) reads all 11 curves out exactly
+  (351 points, 350–1050 nm; [`as7341-response-fig19.csv`](as7341-response-fig19.csv)). The
+  runner downloaded the datasheet directly; the Pi wasn't needed. Re-scored by
+  [`analyse_response_curves.py`](analyse_response_curves.py) under CIE LED-B4, the standard
+  white LED that best matches the white well's channel ratios (10% rms; even light 28%): black
+  paper z 92 12.2 → 11.3 points off, resting 49.9 → 49.0, every height of every run within 1.2
+  points, best heights unchanged. The near-infrared leakage (8–42% of each channel's area)
+  doesn't matter under a white LED (≤ 0.2 points). **It explains most of the 410 nm puzzle:**
+  66% of what F1 reads over the white well comes from outside 390–440 nm, which lifts yellow's
+  expected 410 from 0.04–0.14 to 0.54–0.63 (read: 0.62–0.69). 410 stays out of the score, since
+  the white well's 410 still reads 62% above the model. Write-up:
+  [`results-response-curves-2026-10-10.md`](results-response-curves-2026-10-10.md).
+- **Firmware: gain, ATIME, ASTEP and the LED current are now per reading** (installed 10:42 MDT
+  over USB after backing up all 33 files, tested from RAM first). Details, rollback and tests in
+  [`../pico/README.md`](../pico/README.md). `enclosure_height_cal.py` passes them through
+  (`read 8 tag gain=4 led_ma=10`) and has `lights on|off`; any command that moves switches the
+  rail lights back on first. Dry-run in `--simulate` against the real board.
+- **Several LED brightnesses: same colour, scaled.** On the bench (board on the Pi's USB), the
+  LED's light tracks its current within ±2% from 4 to 20 mA, and its colour shifts by one small
+  component: 440 nm's share +4.7%, 470 nm's −6.7%, a second component 1.0% the size of the first,
+  with nothing left above the 0.03% repeat noise
+  ([`../pico/analyse_led_currents.py`](../pico/analyse_led_currents.py)). So several brightnesses
+  are nearly copies of one reading: they buy dynamic range, not colour information. What does
+  add information is **LED off vs on**, which separates the LED-lit light from the rail lights
+  and room. The Edison literature search
+  ([`edison-led-brightness-2026-10-10/answer.md`](edison-led-brightness-2026-10-10/answer.md))
+  says the same: one LED-off and one well-exposed LED-on reading per well; a current sweep only
+  to characterise the LED once; on/off differencing does **not** remove LED light that reaches
+  the sensor off the walls, plate or meniscus without passing through the paint, which is the
+  failure upstream saw; bracket with integration time at a fixed gain (CV ~10⁻⁴) rather than
+  gain (~10⁻²; Besozzi 2026); and baffles and a black shroud before more readings.
+- **Not run: the background test and the LED-on black/white test.** At 10:28 MDT the sensor
+  board was still on the Pi's USB, out of its enclosure, and a white 96-well plate in a black
+  frame had appeared at the front of the deck (no module attached, so unpowered; height
+  unknown). The loaded-tip route of `paint_transfer.py` runs along the front edge, so the
+  transfer needs that object's height, or the object moved, before it can run. The robot didn't
+  move.
+
+**Next run, once the board is back in the enclosure (seated in A2, right way up):** one trip
+before any new paint, one after, both at z 92 over the same wells, rail lights on for every
+move:
+
+1. Trip 1: over empty F3, F6 and F9 (x 32.38 / 59.38 / 86.38, y 210.24) and over black H7 and
+   white H12: `read 4 empty` (rail lights on, LED off). Then at H7 and H12 only:
+   `lights off`, `read 2 dark gain=4`, `read 2 led4 gain=4 led_ma=4`, `read 2 led10 gain=4 led_ma=10`,
+   `read 2 led20 gain=4 led_ma=20` (lower the gain if `analog_saturated`), then the same at
+   rest last, since a landing can move the enclosure up the nozzle.
+2. Transfer yellow → F3, red → F6, blue → F9 (200 µL, fresh tips B3, C3, D3).
+3. Trip 2: the same reads over F3, F6, F9, H7 and H12. Background-corrected =
+   painted − empty, same well, same height; compare with the black-well correction.
+4. Robot-camera photo at every step; the GIF of them is the record.
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

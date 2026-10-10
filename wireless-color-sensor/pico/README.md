@@ -1,9 +1,15 @@
-# Pico W firmware: per-reading gain (installed 2026-10-09)
+# Pico W firmware: per-reading gain, integration time and LED (installed 2026-10-09 and 2026-10-10)
 
 The colour sensor's Pico W (USB serial `e6647c15673a2438`) runs the board's own copy of
 [`AccelerationConsortium/wireless-color-sensor`](https://github.com/AccelerationConsortium/wireless-color-sensor)
-`sensor_file/`. On 2026-10-09 one change went in: **a read command can now ask for a gain.**
-Nothing else changed. Integration time, Wi-Fi, MQTT and every other file are as they were.
+`sensor_file/`. Two changes have gone in, both to `main.py` only:
+
+- **2026-10-09: a read command can ask for a gain.**
+- **2026-10-10: it can also ask for an integration time (ATIME, ASTEP) and switch on the
+  breakout's white LED (4–20 mA)**, and every reply now carries both halves' Clear and NIR
+  counts. A command that asks for nothing reads exactly as before: 128x, 2 × 281 ms, LED off.
+
+Wi-Fi, MQTT and every other file are as they were.
 
 **Firmware goes in over USB, never over the air** (@sgbaird, 2026-10-10). The board can
 stay on the robot Pi's USB for testing. The signed MQTT updater offered on 10-09 is not
@@ -11,15 +17,27 @@ going to be written.
 
 | file | what |
 | --- | --- |
-| [`main.py`](main.py) | what is on the board now: the old `main.py` plus the gain change |
-| [`main.py.gain.patch`](main.py.gain.patch) | the change on its own (two hunks) |
-| [`board-2026-10-09/`](board-2026-10-09/) | every non-secret file as it was on the board before the change; [`MANIFEST.md`](board-2026-10-09/MANIFEST.md) lists all 32 with their on-board hashes |
-| [`test_gain.py`](test_gain.py) | 40 checks without the board: the patch, the gain parsing, and both `main.py` files driven with fake MQTT messages |
+| [`main.py`](main.py) | what is on the board now (since 2026-10-10 10:42 MDT): gain, ATIME, ASTEP and LED per reading |
+| [`main.py.settings.patch`](main.py.settings.patch) | the 10-10 change on its own, against the gain-only `main.py` |
+| [`board-2026-10-10/`](board-2026-10-10/) | the gain-only `main.py` as found on the board before the 10-10 change, and a [`MANIFEST.md`](board-2026-10-10/MANIFEST.md) of all 33 files with their on-board hashes |
+| [`test_settings.py`](test_settings.py) | 52 checks without the board: the patch, the settings parsing, and `main.py` driven with fake MQTT messages and a fake chip that has the driver's LED call |
+| [`settings-test-2026-10-10.json`](settings-test-2026-10-10.json) | every reading taken on the board while testing the 10-10 change, and the chip's registers before and after |
+| [`inventory.py`](inventory.py) | read-only, from RAM: every file's size and sha256, the MicroPython version, and the AS7341's gain, timing and LED registers |
+| [`led-currents-2026-10-10.json`](led-currents-2026-10-10.json), [`analyse_led_currents.py`](analyse_led_currents.py) | the LED at every even current 4–20 mA; the analysis writes [`led-currents-analysis-2026-10-10.json`](led-currents-analysis-2026-10-10.json) and the chart ([below](#does-the-led-give-different-information-at-different-brightnesses-2026-10-10)) |
+| [`main.py.gain.patch`](main.py.gain.patch) | the 10-09 change on its own (two hunks), against the board's earlier `main.py` |
+| [`board-2026-10-09/`](board-2026-10-09/) | every non-secret file as it was on the board before the 10-09 change; [`MANIFEST.md`](board-2026-10-09/MANIFEST.md) lists all 32 with their on-board hashes |
+| [`test_gain.py`](test_gain.py) | 40 checks of the gain-only version (`board-2026-10-10/main.py`): the patch, the gain parsing, and both files driven with fake MQTT messages |
 | [`gain-test-2026-10-09.json`](gain-test-2026-10-09.json) | every reading taken on the board while testing, plus the chip's registers before and after |
 | [`led_check.py`](led_check.py), [`led_hold.py`](led_hold.py) | 2026-10-10: switch the AS7341's white LED on at 4, 10 and 20 mA and read it, run from RAM ([below](#the-as7341s-white-led-switched-on-2026-10-10-off-in-every-reading-on-record)) |
 | [`led-test-2026-10-10.json`](led-test-2026-10-10.json), [`analyse_led.py`](analyse_led.py) | every LED reading and register value; the analysis writes [`led-test-analysis-2026-10-10.json`](led-test-analysis-2026-10-10.json) and the chart |
 
 ## What is on the board
+
+**Since 2026-10-10 10:42 MDT:** `main.py` is [`main.py`](main.py) (11,514 bytes, `eb550154…`),
+and `main.py.before-settings` is the gain-only version (8,990 bytes, `0876445a…`,
+[`board-2026-10-10/main.py`](board-2026-10-10/main.py)). Everything else, MicroPython included,
+is as in the table below, read on 10-10 at 10:38 MDT with [`inventory.py`](inventory.py)
+(MicroPython `v1.29.0 on 2026-08-24`; registers CFG1 8, ATIME 100, ASTEP 999, CONFIG 0, LED 0).
 
 Read off the board on 2026-10-09 at 16:56 MDT, before anything changed.
 
@@ -41,8 +59,15 @@ on record was taken at 128x, 2 × 281 ms.**
 
 ## Backups
 
-On the robot Pi (`RPI_STREAM_CAM_HOSTNAME`), in `~/pico-backups/20261009_165748_before-gain/`
-(mode 700, as it holds the Wi-Fi and MQTT credentials):
+**Before the 10-10 change**, in `~/pico-backups/20261010_103827_before-settings/` on the robot
+Pi (mode 700): all 33 files in `files/`, each sha256 matched against the one computed on the
+board; and `inventory.out`. Only `main.py` differs from 10-09 (see
+[`board-2026-10-10/MANIFEST.md`](board-2026-10-10/MANIFEST.md)). The board also keeps the
+gain-only `main.py` as `main.py.before-settings`.
+
+**Before the 10-09 change**, on the robot Pi (`RPI_STREAM_CAM_HOSTNAME`), in
+`~/pico-backups/20261009_165748_before-gain/` (mode 700, as it holds the Wi-Fi and MQTT
+credentials):
 
 | file | what | checked |
 | --- | --- | --- |
@@ -63,7 +88,11 @@ M="$HOME/.venvs/mpremote/bin/mpremote connect id:e6647c15673a2438"
 B=~/pico-backups/20261009_165748_before-gain
 ```
 
-1. **Undo the gain change only** (the usual case):
+0. **Undo the 10-10 change only** (back to gain-only):
+   ```bash
+   $M fs cp ~/pico-backups/20261010_103827_before-settings/files/main.py :main.py + reset
+   ```
+1. **Undo both changes** (the board's `main.py` as it was before 10-09):
    ```bash
    $M fs cp $B/files/main.py :main.py + reset
    ```
@@ -79,37 +108,89 @@ B=~/pico-backups/20261009_165748_before-gain
    `RPI_PICO_W-20260824-v1.29.0.uf2` instead: it ends at `0x100DD200`, well before the
    filesystem.
 
-## Using the gain
+## Using the settings
 
 From the runner or the Pi:
 
 ```python
 with sensor_read.SensorLink() as link:
-    r = link.read(settings={"gain": 512})      # one reading at 512x
-    r = link.read()                            # 128x, exactly as before
+    r = link.read(settings={"gain": 512})                  # one reading at 512x
+    r = link.read(settings={"gain": 4, "led_ma": 10})      # LED on at 10 mA, 4x
+    r = link.read(settings={"atime": 50})                  # half the integration time
+    r = link.read()                                        # 128x, 2 x 281 ms, LED off, as before
 ```
 
-On the wire, a read command may carry `settings`; **gain is the only key accepted**:
+In `../ot2/enclosure_height_cal.py`: `read 8 white gain=4 led_ma=10`, and `lights off` /
+`lights on` for the rail lights.
+
+On the wire, a read command may carry `settings`, with any of these keys:
 
 ```json
-{"command": {"R": 0, "Y": 0, "B": 0}, "experiment_id": "...", "settings": {"gain": 512}}
+{"command": {"R": 0, "Y": 0, "B": 0}, "experiment_id": "...", "settings": {"gain": 4, "atime": 100, "astep": 999, "led_ma": 10}}
 ```
 
-- **gain:** 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256 or 512. Leaving `settings` out reads at 128x.
-- **The gain applies to that one reading.** 128x is put back straight afterwards, even if
-  the reading fails.
-- **Every reply now says what gain it used:**
-  `"sensor_settings": {"gain": 512, "again_code": 10, "analog_saturated": false}`. The code
-  and the saturation flag come from the chip's ASTATUS register, read straight after the
-  counts.
-- **Anything else** (another key, a gain not in the list) gets an `error` reply and no reading.
-- `SensorLink.read()` refuses a reply that doesn't confirm the gain it asked for.
+| key | values | default |
+| --- | --- | --- |
+| `gain` | 0.5, 1, 2, 4, 8, 16, 32, 64, 128, 256 or 512 | 128 |
+| `atime` | 0–255 | 100 |
+| `astep` | 0–65534 | 999 |
+| `led_ma` | 0 (off), or an even number from 4 to 20 | 0 |
+
+- **Integration time per half** is (ATIME + 1) × (ASTEP + 1) × 2.78 µs, at most 1,500 ms;
+  a reading takes two halves (F1–F4, then F5–F8). The counts can't exceed
+  (ATIME + 1) × (ASTEP + 1) or 65,535, whichever is smaller (`full_scale` in the reply).
+- **LED: 4–20 mA only**, the limits of the board's own driver (`lib/as7341.py`). The chip goes
+  to 258 mA, but the LED's rating isn't known, so nothing above 20 mA is offered. The LED is
+  switched on for that one reading (the driver waits 100 ms after switching it) and off
+  straight afterwards.
+- **Every setting applies to that one reading** and is put back straight afterwards, even if
+  the reading fails. ATIME and ASTEP are only written when a reading changes them.
+- **Every reply says what it used:** `"sensor_settings": {"gain": 4, "again_code": 3,
+  "analog_saturated": false, "atime": 100, "astep": 999, "integration_ms": 280.8,
+  "full_scale": 65535, "led_ma": 10}`. The code and the saturation flag come from the chip's
+  ASTATUS register, read straight after each half's counts. **`sensor_extra`** carries both
+  halves' Clear and NIR (`{"clear": [a, b], "nir": [a, b]}`): Clear is the channel that
+  saturates first, and the two halves' Clear disagreeing means the light changed mid-reading.
+- **Anything else** (another key, a value out of range, an integration over 1,500 ms) gets an
+  `error` reply and no reading.
+- `SensorLink.read()` refuses a reply that doesn't echo every setting it asked for.
+- **To bracket exposure, change ATIME or ASTEP at one gain, not the gain.** Counts follow the
+  integration time exactly (ATIME 50 read 0.504× of ATIME 100, against 0.505 expected), but gain
+  steps don't (512x read 3.84× of 128x, 16x 3.87× of 4x).
 
 **Gain ratios aren't exact powers of two.** On the board, 512x read 3.84× the 128x counts,
 not 4×; the datasheet allows 7.25–8.25× between 64x and 512x. So re-read the white and
 black wells at every gain you use; never scale one gain's readings to another.
 
 ## How it was tested
+
+### 2026-10-10: gain, integration time and LED
+
+1. `python3 test_settings.py` (52 checks, no board): the patch turns the gain-only `main.py`
+   into [`main.py`](main.py) byte for byte; plain reads give exactly the gain-only firmware's
+   counts; each setting applies to its own reading, both halves, and the defaults come back
+   after it, including after a failed read with the LED on; bad settings are refused with no
+   reading. Four deliberate bugs (no LED-off afterwards, no timing restore, timing always
+   written, an off-by-one LED limit) each made it fail. `mpy-cross` 1.29.0 compiles `main.py`
+   for armv6m.
+2. **On the board, from RAM first** (`mpremote run`, flash untouched), then **installed and
+   after a hard reset**, over MQTT from the runner, the board on the Pi's USB facing the same
+   thing throughout:
+
+   | reading | total (8 channels) |
+   | --- | --- |
+   | plain, before / after | 2,378–2,380 / 2,366 (RAM); 2,373–2,374 / 2,368 (flash) |
+   | 512x / 32x | 9,134 / 599 |
+   | ATIME 50 / ASTEP 499 / ASTEP 4999 (1,404 ms) | 1,200 / 1,186 / 11,891 |
+   | 4x, LED off / 4 / 10 / 20 mA | 78 / 15,034 / 36,875 / 73,209 |
+   | 4x, ATIME 29, ASTEP 599 (50 ms), 20 mA | 13,038 |
+
+   `led_ma` 30 and 5, `atime` 300, an unknown key and a 46.6 s integration were refused.
+3. After the install the chip's registers read CFG1 8, ATIME 100, ASTEP 999, CONFIG 0, LED 0,
+   and the only file differences on the board were `main.py` and the added
+   `main.py.before-settings`.
+
+### 2026-10-09: gain
 
 1. `python3 test_gain.py` (40 checks, no board). Among them: the patch turns the board's own
    `main.py` into [`main.py`](main.py) byte for byte; a plain read gives exactly the old
@@ -183,8 +264,41 @@ for a robot-camera photo:
 
 ![the board LED's colour against the rail lights'](led-test-2026-10-10.png)
 
-Using it in a reading would need a firmware change, for example an `led_ma` key next to
-`gain`, installed over USB like the gain change. Not done.
+*(10-10: done. `led_ma` is now a per-reading setting; see [Using the settings](#using-the-settings).)*
+
+## Does the LED give different information at different brightnesses? (2026-10-10)
+
+**Mostly no: brighter is the same colour, scaled.** With the new firmware, the LED at every
+even current from 4 to 20 mA, twice each in an up-and-down order, with LED-off readings
+between and subtracted, at 4x so nothing saturates. Board on the robot Pi's USB, facing the
+same unknown scene throughout ([`analyse_led_currents.py`](analyse_led_currents.py)).
+
+- **Brightness tracks the current within ±2%** (light per mA, 4–20 mA, against 10 mA).
+- **The colour shifts a little, in one direction.** From 4 to 20 mA the 440 nm channel's
+  share of the light rises 4.7% and the 470 nm channel's falls 6.7%; the others move ≤ 1.3%.
+  That is the LED's blue peak moving to shorter wavelengths as the current rises.
+- **That is all a current sweep adds.** The nine currents' colours have one extra component,
+  1.0% the size of the main one; after removing those two, 0.028% rms is left, the same as
+  the noise of 12 repeat readings (0.025%). So several brightnesses give one reading's
+  information plus a 1% change confined to 440–470 nm. They buy dynamic range, not colour
+  information.
+- **What does add information is LED off against LED on**, which separates the light the LED
+  provides from the rail lights and the room. It does not remove LED light that reaches the
+  sensor off the enclosure walls, the plate or the liquid's surface without passing through the
+  paint, which is what upstream ran into.
+- **Literature** (Edison, [`../ot2/edison-led-brightness-2026-10-10/answer.md`](../ot2/edison-led-brightness-2026-10-10/answer.md)):
+  the same advice. One LED-off and one well-exposed LED-on reading per well; sweep the current
+  only to characterise the LED once; change integration time at a fixed gain to bracket; no
+  published accuracy gain from dimming one white LED; a light-tight black shroud and a baffle
+  between the LED and the sensor first. Genuinely different illuminants (LEDs of different
+  colours) are what add spectral information.
+- Other checks: 16x over 4x read 3.87× at 4 and 8 mA with the same colour (≤ 0.2%); the first
+  of 12 back-to-back readings at 20 mA read 0.15% above the rest (warm-up).
+
+![the LED's colour against its current](led-currents-2026-10-10.png)
+
+Not yet known: how the LED performs on the plate. That needs the board back in the
+enclosure; the plan is in the [10-10 entry of the OT-2 README](../ot2/README.md).
 
 ## The 10-01 version, withdrawn
 
