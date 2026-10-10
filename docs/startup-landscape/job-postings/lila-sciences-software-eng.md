@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Staff Forward Deployed Engineer, Life Sciences (2025-10-06)
 
-2025-10-06 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031282009)
+2025-10-06 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $192–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031282009)
 
 <details><summary>Description</summary>
 
@@ -48,7 +48,7 @@ $192,000 — $256,000 USD
 
 ### Sr Principal/ Principal Software Engineer, Scientific System of Record (2026-03-23)
 
-2026-03-23 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4193827009)
+2026-03-23 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4193827009)
 
 <details><summary>Description</summary>
 
@@ -76,7 +76,7 @@ What You'll Be Building
 
 ### Senior II/ Staff Software Engineer, Platform Operations (2026-04-29)
 
-2026-04-29 → open · software-eng · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4212473009)
+2026-04-29 → open · software-eng · San Francisco, CA USA · $180–280K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4212473009)
 
 <details><summary>Description</summary>
 
@@ -116,7 +116,7 @@ What You'll Be Building
 
 ### Sr Principal/Principal Software Engineer, App (2026-05-21)
 
-2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248036009)
+2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248036009)
 
 <details><summary>Description</summary>
 
@@ -151,7 +151,7 @@ What You'll Be Building
 
 ### Staff Software Engineer, Scientific System of Record (2026-05-21)
 
-2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248045009)
+2026-05-21 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248045009)
 
 <details><summary>Description</summary>
 
@@ -183,7 +183,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, App (2026-05-26)
 
-2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248042009)
+2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248042009)
 
 <details><summary>Description</summary>
 
@@ -218,7 +218,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Data (2026-05-26)
 
-2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250077009)
+2026-05-26 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250077009)
 
 <details><summary>Description</summary>
 
@@ -249,7 +249,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Operations Research (2026-05-26)
 
-2026-05-26 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
+2026-05-26 → open · software-eng · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246973009)
 
 <details><summary>Description</summary>
 
@@ -278,7 +278,7 @@ What You'll Be Building
 
 ### Principal Software Engineer, Data (2026-05-29)
 
-2026-05-29 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250071009)
+2026-05-29 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $204–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4250071009)
 
 <details><summary>Description</summary>
 
@@ -310,7 +310,7 @@ What You'll Be Building
 
 ### Staff Engineer, Data Platform (2026-06-02)
 
-2026-06-02 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222065009)
+2026-06-02 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $192–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222065009)
 
 <details><summary>Description</summary>
 
@@ -335,7 +335,7 @@ What You'll Be Building
 
 ### Senior Software Engineer, Scientific System of Record (2026-06-03)
 
-2026-06-03 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248049009)
+2026-06-03 → open · software-eng · Cambridge, MA USA; San Francisco, CA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4248049009)
 
 <details><summary>Description</summary>
 
@@ -366,7 +366,7 @@ What You'll Be Building
 
 ### Principal Engineer, Software (Enterprise Platform) (2026-06-23)
 
-2026-06-23 → open · software-eng · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4247103009)
+2026-06-23 → open · software-eng · San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4247103009)
 
 <details><summary>Description</summary>
 
@@ -390,7 +390,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Operations and Quality Engineer, Sustaining Engineering (2026-07-01)
 
-2026-07-01 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
+2026-07-01 → open · software-eng · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277749009)
 
 <details><summary>Description</summary>
 
@@ -424,7 +424,7 @@ Cross-Functional Standards & Leadership
 
 ### Senior Software Engineer II, Enterprise Platform (2026-07-07)
 
-2026-07-07 → open · software-eng · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299652009)
+2026-07-07 → open · software-eng · San Francisco, CA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299652009)
 
 <details><summary>Description</summary>
 
@@ -452,7 +452,7 @@ Enterprise infrastructure is foundational to making autonomous science deployabl
 
 ### Senior Software Engineer I/II, Back-end/Data, Robotics (2026-08-10)
 
-2026-08-10 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009)
+2026-08-10 → open · software-eng · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339324009)
 
 <details><summary>Description</summary>
 
@@ -484,11 +484,46 @@ $144,000 — $240,000 USD
 
 </details>
 
+<a id="senior-data-engineer-bioinformatics-cheminformatics-materials-2026-09-01"></a>
+
+### Senior Data Engineer, Bioinformatics, Cheminformatics, Materials (2026-09-01)
+
+2026-09-01 → open · software-eng · San Francisco, CA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4377096009)
+
+<details><summary>Description</summary>
+
+**Your Impact at LILA**
+Lila’s mission is to accelerate scientific discovery with AI, and that depends on trustworthy scientific data. As a Data Engineer, you’ll build ETL pipelines and data models for Lila’s scientific data platform, working at the intersection of data engineering, computational biology, chemistry, and materials science.
+You’ll partner with AI researchers and experimentalists to turn raw lab instrument outputs into validated, analysis-ready datasets. The core challenge is data modeling: transforming messy, per-instrument measurements into clean, well-typed data that is efficient to query, reliable to use, and ready for downstream analysis.
+You’ll also build domain-specific analysis functions and reusable data pipelines that help scientists and AI researchers move faster without re-deriving bespoke solutions.
+What You'll Be Building
+• Design pipelines that turn raw lab output into analysis-ready scientific data. • Model heterogeneous data from bio, chemistry, and materials instruments. • Build validation checks, schema-evolution gates, and data quality workflows. • Develop reusable analysis functions for scientific and AI research workflows. • Improve automation and observability across instrument-to-result data flows. • Build canonical datasets that scientists and AI researchers can trust. • Use AI coding tools to accelerate pipeline development and team velocity.
+• 2–6 years of experience in data engineering, bioinformatics, cheminformatics, or computational science. •
+Strong Python skills, including typed, tested, production-quality code.
+• Strong SQL skills, especially with Postgres or similar relational databases.
+• Experience building ETL pipelines, data models, and reusable data transformations.
+• Data science foundation, including statistics and pandas, NumPy, or similar tools.
+• Experience translating noisy scientific measurements into accurate, validated datasets.
+• Workflow orchestration experience, ideally Flyte, Airflow, Prefect, Dagster, or Nextflow.
+• Active use of AI coding tools in day-to-day engineering work.
+
+**Bonus Points For**
+• Experience with columnar or lakehouse stacks such as Parquet, Iceberg, DuckDB, Polars, or Ibis.
+• Familiarity with event-driven pipelines such as NATS or Kafka. • Exposure to lab instrument data formats, LIMS, or ELN systems.
+• Familiarity with life sciences assays, sequencing, imaging, or flow cytometry.
+• Familiarity with materials or chemistry methods such as XRD, XRF, SEM, TGA, or DSC.
+• Experience with curve fitting, peak detection, or unit and dimensional analysis.
+
+**Compensation**
+$144,000 — $240,000 USD
+
+</details>
+
 <a id="engineer-i-research-operations-2nd-shift-2026-09-08"></a>
 
 ### Engineer I, Research Operations (2nd Shift) (2026-09-08)
 
-2026-09-08 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
+2026-09-08 → open · software-eng · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4386306009)
 
 <details><summary>Description</summary>
 
@@ -517,7 +552,7 @@ What You'll Be Building
 
 ### Staff Engineer, Enterprise Externalization (2026-09-21)
 
-2026-09-21 → open · software-eng · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4390579009)
+2026-09-21 → open · software-eng · San Francisco, CA USA · $192–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4390579009)
 
 <details><summary>Description</summary>
 
@@ -541,7 +576,7 @@ You’ll help define the platform primitives that make that possible.
 
 ### Global Security Operations Center Manager (2026-09-29)
 
-2026-09-29 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
+2026-09-29 → open · software-eng · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4331069009)
 
 <details><summary>Description</summary>
 
@@ -574,7 +609,7 @@ What You'll Be Building
 
 ### Engineer I, Research Operations, (1st shift) (2026-09-30)
 
-2026-09-30 → open · software-eng · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277806009)
+2026-09-30 → open · software-eng · Cambridge, MA USA · $76–101K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277806009)
 
 <details><summary>Description</summary>
 

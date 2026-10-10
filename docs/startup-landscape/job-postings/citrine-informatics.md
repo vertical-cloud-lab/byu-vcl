@@ -2,18 +2,17 @@
 
 Back to [all companies](README.md) · [company profile](../companies/citrine-informatics.md)
 
-**10 postings recovered**, 10 with the full description; 5 still open on 2026-10-10. First seen 2025-05-20, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**9 postings recovered**, 9 with the full description; 5 still open on 2026-10-10. First seen 2025-05-20, latest 2026-10-01. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
 | 2025-05-20 | open | [General Opportunities](#general-opportunities-2025-05-20) | general-application | F&A | Remote (United States); Remote (Germany) |  |  |  | [live](https://ats.rippling.com/citrine-informatics/jobs/c3f9c142-b6e4-41c8-8e87-e6d62690f61f) |
 | 2025-08-25 | 2025-08-26 | [Research Engineering Manager](#research-engineering-manager-2025-08-25) | software-eng | Engineering | Remote (United States) | PhD/MS | 5 |  | [Wayback](https://web.archive.org/web/20250826155749/https://ats.rippling.com/citrine-informatics/jobs/c3fbb9c3-8c20-4b09-a1d6-5979769e0b9c?utm_content=344945475&utm_medium=social&utm_source=twitter&hss_channel=tw-2616421753) |
-| 2025-10-22 | 2025-11-15 | [Customer Success Manager L3](#customer-success-manager-l3-2025-10-22) | business-ops | Operations | Remote (Germany) | BS | 5 |  | [Wayback](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47) |
-| 2026-04-16 | 2026-06-24 | [{{companyName}} uses AI to analyze applications](#companyname-uses-ai-to-analyze-applications-2026-04-16) | ml-research |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260416202719/https://ats.rippling.com/citrine-informatics/jobs?rr_message=job_not_found) |
+| 2025-10-22 | 2025-11-15 | [Customer Success Manager L3](#customer-success-manager-l3-2025-10-22) | business-ops | Operations | Remote (Germany) | BS | 5 | €55–72K | [Wayback](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47) |
 | 2026-05-20 | 2026-07-28 | [Sr. Platform Engineer, L3](#sr-platform-engineer-l3-2026-05-20) | software-eng | Engineering | Remote (United States) |  |  |  | [Wayback](https://web.archive.org/web/20260523202430/https://ats.rippling.com/citrine-informatics/jobs/af37025c-377d-4d4a-a5ac-6e7f0efc57df?hss_channel=lcp-3288716) [Wayback](https://web.archive.org/web/20260728021150/https://ats.rippling.com/citrine-informatics/jobs/e31e9f4b-c413-4d4f-9e50-7f129b537eb4) |
-| 2026-06-22 | open | [Materials Informatics Consultant III](#materials-informatics-consultant-iii-2026-06-22) | materials-science | Operations | Germany |  |  |  | [live](https://ats.rippling.com/citrine-informatics/jobs/21652ad8-b131-4eba-be4f-08a5cc200db8) |
+| 2026-06-22 | open | [Materials Informatics Consultant III](#materials-informatics-consultant-iii-2026-06-22) | materials-science | Operations | Germany |  |  | €70–100K | [live](https://ats.rippling.com/citrine-informatics/jobs/21652ad8-b131-4eba-be4f-08a5cc200db8) |
 | 2026-08-03 | 2026-08-14 | [Fractional Contract Manager (1099)](#fractional-contract-manager-1099-2026-08-03) | business-ops | Operations | Remote (United States) |  | 5 |  | [Wayback](https://web.archive.org/web/20260814143401/https://ats.rippling.com/citrine-informatics/jobs/93f5099f-29d3-4bab-ac52-f94bf53de4f5) |
-| 2026-08-27 | open | [Customer Success Manager, L3](#customer-success-manager-l3-2026-08-27) | business-ops | Operations | Remote (Germany) | BS | 5 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38) |
+| 2026-08-27 | open | [Customer Success Manager, L3](#customer-success-manager-l3-2026-08-27) | business-ops | Operations | Remote (Germany) | BS | 5 | €65–75K | [live](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38) |
 | 2026-09-16 | open | [Business Operations Manager, L3](#business-operations-manager-l3-2026-09-16) | business-ops | Operations | Remote (United States) |  | 5 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/6734d37b-7e38-466b-812c-aaafbf820f92) |
 | 2026-10-01 | open | [Data & Artificial Intelligence Research Engineer, L4](#data-artificial-intelligence-research-engineer-l4-2026-10-01) | software-eng | Engineering | Remote (United States) | PhD/MS | 8 |  | [live](https://ats.rippling.com/citrine-informatics/jobs/3418abba-4de2-4a0a-8dc3-9ad403db68f1) |
 
@@ -77,7 +76,7 @@ Nice-to-Haves
 
 ### Customer Success Manager L3 (2025-10-22)
 
-2025-10-22 → 2025-11-15 · business-ops · Remote (Germany) · [source](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47)
+2025-10-22 → 2025-11-15 · business-ops · Remote (Germany) · €55–72K · [source](https://web.archive.org/web/20251103002857/https://ats.rippling.com/citrine-informatics/jobs/da9651f2-0d6f-47dc-924e-716ceabfad47)
 
 <details><summary>Description</summary>
 
@@ -103,18 +102,6 @@ Ideal candidates will be located in Germany and open to working fully remote.
 - Undergraduate degree, or equivalent experience, in a scientific or technical field such as statistics or CS
 
 *(truncated: full text in `data/job_postings.jsonl`)*
-
-</details>
-
-<a id="companyname-uses-ai-to-analyze-applications-2026-04-16"></a>
-
-### {{companyName}} uses AI to analyze applications (2026-04-16)
-
-2026-04-16 → 2026-06-24 · ml-research · location not stated · [source](https://web.archive.org/web/20260416202719/https://ats.rippling.com/citrine-informatics/jobs?rr_message=job_not_found)
-
-<details><summary>Description</summary>
-
-{{companyName}} uses AI technology to review, analyze, and summarize applications. Please note that all final hiring decisions are made by the hiring team — not by AI. If you do not wish for your application to be analyzed using Al, you can opt out by unchecking the box below and selecting "Save".
 
 </details>
 
@@ -161,7 +148,7 @@ We are looking for someone who pairs technical depth with a collaborative and th
 
 ### Materials Informatics Consultant III (2026-06-22)
 
-2026-06-22 → open · materials-science · Germany · [source](https://ats.rippling.com/citrine-informatics/jobs/21652ad8-b131-4eba-be4f-08a5cc200db8)
+2026-06-22 → open · materials-science · Germany · €70–100K · [source](https://ats.rippling.com/citrine-informatics/jobs/21652ad8-b131-4eba-be4f-08a5cc200db8)
 
 <details><summary>Description</summary>
 
@@ -239,7 +226,7 @@ Engagement Details
 
 ### Customer Success Manager, L3 (2026-08-27)
 
-2026-08-27 → open · business-ops · Remote (Germany) · [source](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38)
+2026-08-27 → open · business-ops · Remote (Germany) · €65–75K · [source](https://ats.rippling.com/citrine-informatics/jobs/b81268f5-bdc0-4937-841a-274ea3c22c38)
 
 <details><summary>Description</summary>
 

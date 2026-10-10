@@ -1,0 +1,760 @@
+{
+ "captures": {
+  "dunia.jobs.personio.com": [
+   {
+    "urlkey": "com,personio,jobs,dunia)/",
+    "first": "20250708180405",
+    "last": "20260618213449",
+    "n": 4,
+    "original": "https://dunia.jobs.personio.com/"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2205674?language=en",
+    "first": "20250916072056",
+    "last": "20260310155505",
+    "n": 2,
+    "original": "https://dunia.jobs.personio.com/job/2205674?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2267425?language=en",
+    "first": "20250916072721",
+    "last": "20260310160113",
+    "n": 3,
+    "original": "https://dunia.jobs.personio.com/job/2267425?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/?language=de",
+    "first": "20250916075752",
+    "last": "20260310163007",
+    "n": 2,
+    "original": "https://dunia.jobs.personio.com/?language=de"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job?language=de",
+    "first": "20251011061245",
+    "last": "20251011061245",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/?language=de"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/?language=en",
+    "first": "20251011070536",
+    "last": "20251011070536",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job?language=en",
+    "first": "20251107094417",
+    "last": "20251107094417",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2420056?language=en",
+    "first": "20251204232634",
+    "last": "20251204232634",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2420056?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521947?language=en",
+    "first": "20260310150118",
+    "last": "20260310150118",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521947?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521638?language=en",
+    "first": "20260310153052",
+    "last": "20260310153052",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521638?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521891?language=en",
+    "first": "20260310153124",
+    "last": "20260310153124",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521891?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521701?language=en",
+    "first": "20260310155616",
+    "last": "20260310155616",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521701?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521931?language=en",
+    "first": "20260310161640",
+    "last": "20260310161640",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521931?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516220?language=en",
+    "first": "20260310163222",
+    "last": "20260617195907",
+    "n": 2,
+    "original": "https://dunia.jobs.personio.com/job/2516220?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519192?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410185734",
+    "last": "20260410185734",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519192?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521638?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410190107",
+    "last": "20260410190107",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521638?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521891?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410190428",
+    "last": "20260410190428",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521891?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519204?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410190613",
+    "last": "20260410190613",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519204?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516249",
+    "first": "20260410190807",
+    "last": "20260410190807",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516249"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519206?language=en",
+    "first": "20260410190928",
+    "last": "20260410190928",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519206?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2515890",
+    "first": "20260410191200",
+    "last": "20260410191200",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2515890"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519182?language=en",
+    "first": "20260410192243",
+    "last": "20260410192243",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519182?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521701?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410192315",
+    "last": "20260410192315",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521701?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521947",
+    "first": "20260410192715",
+    "last": "20260410192715",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521947"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521947?gh_src=deep+science+ventures+job+board&language=en&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260410193558",
+    "last": "20260410193558",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521947?language=en&utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519204?language=en",
+    "first": "20260410193838",
+    "last": "20260410193838",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519204?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519206",
+    "first": "20260410193954",
+    "last": "20260410193954",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519206"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519188?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410194255",
+    "last": "20260410194255",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519188?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521931?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410194748",
+    "last": "20260410194748",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521931?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519182",
+    "first": "20260410195028",
+    "last": "20260410195028",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519182"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519192",
+    "first": "20260410195300",
+    "last": "20260410195300",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519192"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521638",
+    "first": "20260410195410",
+    "last": "20260410195410",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521638"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521891",
+    "first": "20260410195447",
+    "last": "20260812134035",
+    "n": 2,
+    "original": "https://dunia.jobs.personio.com/job/2521891"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519204",
+    "first": "20260410200237",
+    "last": "20260410200237",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519204"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521701",
+    "first": "20260410201627",
+    "last": "20260410201627",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521701"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2267425",
+    "first": "20260410202020",
+    "last": "20260410202020",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2267425"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521947?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410203059",
+    "last": "20260410203059",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521947?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519188",
+    "first": "20260410203111",
+    "last": "20260410203111",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519188"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521931",
+    "first": "20260410203537",
+    "last": "20260410203537",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521931"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516252",
+    "first": "20260410203801",
+    "last": "20260410203801",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516252"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519206?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410203922",
+    "last": "20260410203922",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519206?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/privacy-policy",
+    "first": "20260410205054",
+    "last": "20260410205054",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/privacy-policy"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519182?gh_src=kindred+capital+job+board&language=en&utm_medium=getro.com&utm_source=kindred+capital+job+board",
+    "first": "20260410211131",
+    "last": "20260410211131",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519182?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516220",
+    "first": "20260410212341",
+    "last": "20260410212341",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516220"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516249?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514123641",
+    "last": "20260514123641",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516249?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2515890?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514124504",
+    "last": "20260514124504",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2515890?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521947?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514130100",
+    "last": "20260514130100",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521947?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519206?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514131321",
+    "last": "20260514131321",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519206?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519182?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514132629",
+    "last": "20260514132629",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519182?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519192?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514132821",
+    "last": "20260514132821",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519192?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521638?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514132900",
+    "last": "20260514132900",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521638?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521891?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514132939",
+    "last": "20260514132939",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521891?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519204?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514133641",
+    "last": "20260514133641",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519204?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521701?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514135020",
+    "last": "20260514135020",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521701?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2267425?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514135354",
+    "last": "20260514135354",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2267425?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2267425?gh_src=deep+science+ventures+job+board&language=en&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514140115",
+    "last": "20260514140115",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2267425?language=en&utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519188?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514140527",
+    "last": "20260514140527",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519188?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2521931?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514140950",
+    "last": "20260514140950",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2521931?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516252?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514141226",
+    "last": "20260514141226",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516252?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516249?language=en",
+    "first": "20260514141625",
+    "last": "20260514141625",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516249?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2515890?language=en",
+    "first": "20260514142016",
+    "last": "20260514142016",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2515890?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516220?gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260514142430",
+    "last": "20260514142430",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516220?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516220?apply&gh_src=deep+science+ventures+job+board&utm_medium=getro.com&utm_source=deep+science+ventures+job+board",
+    "first": "20260617184256",
+    "last": "20260617184256",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516220?utm_source=Deep+Science+Ventures+job+board&utm_medium=getro.com&gh_src=Deep+Science+Ventures+job+board&apply"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2519188?language=en",
+    "first": "20260617194148",
+    "last": "20260617194148",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2519188?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/?language=",
+    "first": "20260617194234",
+    "last": "20260617194234",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/?language="
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516252?language=en",
+    "first": "20260617194755",
+    "last": "20260617194755",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516252?language=en"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2516220?language=null",
+    "first": "20260617195510",
+    "last": "20260617195510",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2516220?language=null"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/job/2630177",
+    "first": "20260617195805",
+    "last": "20260617195805",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/job/2630177"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/_next/static/chunks/304-276dede7eb93516f.js",
+    "first": "20260618213450",
+    "last": "20260618213450",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/_next/static/chunks/304-276dede7eb93516f.js"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/_next/static/chunks/386-83d3f79342eae16f.js",
+    "first": "20260618213450",
+    "last": "20260618213450",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/_next/static/chunks/386-83d3f79342eae16f.js"
+   },
+   {
+    "urlkey": "com,personio,jobs,dunia)/_next/static/chunks/app/company/[subdomain]/page-54657256eeb51c5b.js",
+    "first": "20260618213450",
+    "last": "20260618213450",
+    "n": 1,
+    "original": "https://dunia.jobs.personio.com/_next/static/chunks/app/company/%5Bsubdomain%5D/page-54657256eeb51c5b.js"
+   }
+  ]
+ },
+ "board_captures": {
+  "dunia.jobs.personio.com": [
+   [
+    "20250708180405",
+    "https://dunia.jobs.personio.com/"
+   ],
+   [
+    "20251011072352",
+    "https://dunia.jobs.personio.com/"
+   ],
+   [
+    "20260618213449",
+    "https://dunia.jobs.personio.com/"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250708180405/https://dunia.jobs.personio.com/",
+   "url": "https://dunia.jobs.personio.com/",
+   "first_seen": "20250708180405",
+   "last_seen": "20250708180405",
+   "n_captures": 1,
+   "title": null,
+   "text": ""
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250916072056/https://dunia.jobs.personio.com/job/2205674?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2205674?language=en",
+   "first_seen": "20250916072056",
+   "last_seen": "20260310155505",
+   "n_captures": 2,
+   "title": null,
+   "text": "",
+   "posting_id": "2205674"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251011061245/https://dunia.jobs.personio.com/job/?language=de",
+   "url": "https://dunia.jobs.personio.com/job/?language=de",
+   "first_seen": "20251011061245",
+   "last_seen": "20251107094417",
+   "n_captures": 2,
+   "title": null,
+   "text": "",
+   "posting_id": "dunia.jobs.personio.com/job"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251011072352/https://dunia.jobs.personio.com/",
+   "url": "https://dunia.jobs.personio.com/",
+   "first_seen": "20251011072352",
+   "last_seen": "20251011072352",
+   "n_captures": 1,
+   "title": null,
+   "text": ""
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251204232634/https://dunia.jobs.personio.com/job/2420056?language=en",
+   "url": "https://dunia.jobs.personio.com/job/2420056?language=en",
+   "first_seen": "20251204232634",
+   "last_seen": "20251204232634",
+   "n_captures": 1,
+   "title": null,
+   "text": "",
+   "posting_id": "2420056"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890",
+   "url": "https://dunia.jobs.personio.com/job/2515890",
+   "first_seen": "20260410191200",
+   "last_seen": "20260514142016",
+   "n_captures": 3,
+   "title": "Head of People",
+   "text": "Your mission\nBuild a company where exceptional people do the best work of their careers, even as we scale.\nAt Dunia, we are transforming materials innovation to build a utopian future of abundance. That only works if we build an exceptional people organization around it.\nAs our Head of People, you will work directly with the leadership team to design and scale the human engine behind Dunia. You will shape how we hire, grow, evaluate, and retain top talent in a highly technical, fast-scaling deep tech environment.\nYour mandate is simple but high-stakes: ensure that Dunia consistently attracts the best people in their field, helps them do the best work of their careers, and scales without losing speed, rigor, or culture\nYour tasks will include:\nBuild a world-class hiring engine\n- Design and run scalable technical and non-technical hiring processes\n- Partner closely with leadership to continuously refine the org and hiring priorities\n- Define methods to maintain a high hiring bar without slowing the company down\nPeople as force multipliers\n- Build onboarding that accelerates productivity, ownership, and context\n- Design and  operate  performance / feedback systems that reward impact\nBe a true partner to talent\n- Coach leaders  and  high-potentials  on team design, feedback, and people systems\n- Provide thought-leadership around  culture, incentives, and long-term talent strategy\nOwn the operational backbone of People\n- Oversee HR operations including  contracts,  payroll, benefits, visas, and compliance (with Finance and external partners)\n- Ensure alignment with German labor law while keeping processes pragmatic and  startup -friendly\n- Anticipate people-related risks before they become bottlenecks\nProtect and evolve company culture\n- Translate values into everyday behaviors, rituals, and decisions\n- Design offsites and culture initiatives that actually matter\n- Build retention strategies focused on top performers and critical talent\nYour profile\n- You are a senior People leader who has already helped scale a company through real growth, complexity, and tradeoffs.\n- Proven experience building and scaling  People functions in fast-growing startups.  You have had ownership over hiring, performance, and org design (typically 5+ years, but we care more about scope and impact than titles or timelines)\n- Knowledge of German labor law , paired with the judgment to apply it pragmatically in a startup environment\n- Credibility with senior leaders and highly technical talent . You can challenge, coach, and support founders, managers, and ICs with equal clarity\n- Strong systems thinker who knows when to introduce structure and when to stay out of the way\n- High bar for talent and performance , combined with fairness in how decisions are made\n- Comfortable operating in ambiguity , setting direction where no playbook exists yet\n- Clear communicator who can turn complex people topics into simple, actionable decisions\n- Fluent in English and German\nMost importantly, you believe that\n- Great companies are built through people,\n- The bar for high performance should constantly increase, and\n- Bureaucracy is a failure of imagination, not a necessity of scale.\nAbout us\nDunia , meaning “world” in over 20 languages, reflects our focus on building technologies that deliver abundance globally. By combining physics, AI, and automation, we accelerate materials discovery for next-generation energy and industrial systems. Our work helps make energy more accessible and materials more affordable and resilient while reshaping how science moves from idea to impact. Join us to work on problems where progress truly compounds.\nNeed more convincing? -->   Watch this video\nWe strive to create a diverse and inclusive workplace where everyone feels welcome and safe to be their authentic self. Non-traditional career paths are welcome and valued. If you share our vision, you can be certain that we want you to succeed. You might be just the right candidate for this or for other roles that have not opened yet.\nReach out, and follow us on  LinkedIn !\nApply for this job",
+   "posting_id": "2515890"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252",
+   "url": "https://dunia.jobs.personio.com/job/2516252",
+   "first_seen": "20260410203801",
+   "last_seen": "20260617194755",
+   "n_captures": 3,
+   "title": "Partnership Manager",
+   "text": "Your mission\nTurn signed commercial partnerships into delivered outcomes and long-term trust\nDunia is building AI for one of the hardest unsolved problems in science: turning materials discovery from an academic, trial-and-error process into a programmable, scalable discipline.\nAt Dunia, signing a deal is the beginning, not the finish line. Our commercial partners come to us with complex, high-stakes problems at the intersection of AI, chemistry, and automation. Delivery is where trust is earned or lost.\nAs Partnership Manager, you own that moment.\nYou take over once a commercial partnership is signed and are accountable for ensuring intent becomes results: the right work gets done, by the right teams, at the right time, with no surprises. When delivery is excellent, partnerships deepen.\nThis is not a sales role'; it's an ownership role.\nYour tasks will include:\nOwn commercial partner success end-to-end\n- Become the trusted counterpart for a portfolio of strategic commercial partners\n- Understand what success truly looks like for them, beyond the contract language\n- Be an advocate for the commercial partner internally, and  an  advocate for Dunia externally, with equal clarity\nDrive delivery through influence, not authority\n- Translate partner goals into clear scopes, milestones, and priorities\n- Coordinate execution across AI, chemistry, automation, and lab teams\n- Resolve ambiguity, manage tradeoffs, and keep momentum\nProtect trust\n- Communicate clearly and early when risks or changes arise\n- Keep expectations  aligned with reality at all times\n- Build credibility by doing what you say you will do\nGrow what works\n- Spot opportunities where delivered value can turn into deeper collaboration\n- Work with Business Development to shape follow-on engagements\n- Help turn successful projects into long-term strategic partnerships\nYour profile\n- 5+  years experience  in partnerships, consulting, customer success, or account management in complex technical environments\n- Proven  track record  of owning delivery across multiple stakeholders\n- Strong project coordination and stakeholder management skills\n- Technical literacy in deep tech, science, or engineering domains\n- Calm under pressure, with a high sense of ownership and accountability\n- Clear communicator who builds trust through precision and honesty\n- English fluency,  additional  languages preferred\nAbout us\nDunia , meaning “world” in over 20 languages, reflects our focus on building technologies that deliver abundance globally. By combining physics, AI, and automation, we accelerate materials discovery for next-generation energy and industrial systems. Our work helps make energy more accessible and materials more affordable and resilient while reshaping how science moves from idea to impact. Join us to work on problems where progress truly compounds.\nNeed more convincing? -->   Watch this video\nWe strive to create a diverse and inclusive workplace where everyone feels welcome and safe to be their authentic self. Non-traditional career paths are welcome and valued. If you share our vision, you can be certain that we want you to succeed. You might be just the right candidate for this or for other roles that have not opened yet.\nReach out, and follow us on  LinkedIn !\nApply for this job",
+   "posting_id": "2516252"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260410205054/https://dunia.jobs.personio.com/privacy-policy",
+   "url": "https://dunia.jobs.personio.com/privacy-policy",
+   "first_seen": "20260410205054",
+   "last_seen": "20260410205054",
+   "n_captures": 1,
+   "title": "Processing of (personal) data by the entity in charge of the online application process",
+   "text": "",
+   "posting_id": "dunia.jobs.personio.com/privacy-policy"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177",
+   "url": "https://dunia.jobs.personio.com/job/2630177",
+   "first_seen": "20260617195805",
+   "last_seen": "20260617195805",
+   "n_captures": 1,
+   "title": "Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid",
+   "text": "Ihre Aufgaben\nDie Rolle\nDu verantwortest die operative Finance-Funktion von A bis Z: Buchhaltung, Fördermitteldokumentation, Rechnungsmanagement und Monatsabschluss. Du arbeitest direkt mit unserer Fractional CFO (2 Tage/Woche) zusammen und berichtest an den COO. Hands-on — du bist die Person, die wirklich weiß, wo jeder Euro steckt.\nDeine Aufgaben\n- Finanzbuchhaltung in DATEV — du buchst selbst bzw. verantwortest die geplante Automatisierung der Buchungen\n- Verantwortung für den gesamten Rechnungs- und Zahlungsprozess: Erfassen, kategorisieren, freigeben und Zahlungen initiieren\n- Finanzielle Dokumentation und Berichterstattung für öffentliche Förderprogramme: Kostenzuordnung, Mittelanforderungen, Budgetabweichungsberichte (IBB, PTJ, EU)\n- Pflege des Anlagenregisters inkl. Abschreibungsplanung (CAPEX-intensives Umfeld)\n- Monatsabschluss: Abstimmungen, Ausgabenkategorisierung, Cash-Flow-Input\n- Potenziell Lohnbuchhaltung\n- Weiterentwicklung und Teilautomatisierung von Finance-Prozessen\nIhr Profil\n- Abschluss als Bilanzbuchhalter/in (IHK) oder vergleichbare Qualifikation; alternativ betriebswirtschaftliches Studium mit mind. 4 Jahren Buchhaltungspraxis\n- DATEV-Kenntnisse — du führst die Buchungen eigenständig durch\n- Fundierte HGB-Kenntnisse; Jahresabschlusserfahrung ist ein Plus\n- Erfahrung mit der finanziellen Abwicklung öffentlicher Förderprogramme (IBB, PTJ, EU) — großes Plus, kein Muss\n- Sehr gute Deutschkenntnisse (C2), gutes Englisch (interne Kommunikation auf Englisch)\n- Startup-Mentalität: Dinge ändern sich, du findest Lösungen\n- Erfahrung  in Lohnbuchhaltung ist ein Plus\nWarum wir?\n- Vollständige Verantwortung für die Finance-Funktion — keine Hierarchieebenen dazwischen\n- Kleines, internationales Team Wachsendes Unternehmen und damit die Möglichkeit, mit dem Unternehmen zu wachsen\n- Hybrides Arbeiten möglich (alle ~2 Monate Präsenz vor Ort wünschenswert)\n- Kompetitives Gehalt plus Deutschlandticket oder Mitgliedschaft bei Urban Sports\n- Direkte Zusammenarbeit mit einer erfahrenen Fractional CFO\nÜber uns\nDunia bedeutet „Welt\" in über 20 Sprachen – und spiegelt unseren Anspruch wider, Technologien zu entwickeln, die weltweit Wohlstand schaffen. Durch die Kombination von Physik, KI und Automatisierung beschleunigen wir die Materialentdeckung für Energiesysteme und Industrieanwendungen der nächsten Generation. Unsere Arbeit trägt dazu bei, Energie zugänglicher und Materialien erschwinglicher und widerstandsfähiger zu machen – und verändert, wie Wissenschaft von der Idee zur Wirkung gelangt. Werde Teil unseres Teams und arbeite an Problemen, bei denen Fortschritt sich wirklich verzinst.\nNoch nicht überzeugt? →  Schau dir dieses Video an\nWir sind bestrebt, ein diverses und inklusives Arbeitsumfeld zu schaffen, in dem sich alle willkommen und sicher fühlen, sie selbst zu sein. Unkonventionelle Karrierewege sind bei uns ausdrücklich willkommen. Wenn du unsere Vision teilst, kannst du sicher sein: Wir wollen, dass du erfolgreich bist. Vielleicht bist du genau die richtige Person für diese oder eine andere Stelle, die noch nicht ausgeschrieben ist.\nMelde dich gern und folge uns auf LinkedIn !\nAuf diese Stelle bewerben",
+   "posting_id": "2630177"
+  },
+  {
+   "company": "dunia-innovations",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260618213449/https://dunia.jobs.personio.com/",
+   "url": "https://dunia.jobs.personio.com/",
+   "first_seen": "20260618213449",
+   "last_seen": "20260618213449",
+   "n_captures": 1,
+   "title": "Open positions",
+   "text": ""
+  }
+ ],
+ "spans": {
+  "2205674": {
+   "first": "20250916072056",
+   "last": "20260310155505",
+   "n": 2,
+   "url": "https://dunia.jobs.personio.com/job/2205674?language=en"
+  },
+  "2267425": {
+   "first": "20250916072721",
+   "last": "20260514140115",
+   "n": 6,
+   "url": "https://dunia.jobs.personio.com/job/2267425?language=en"
+  },
+  "dunia.jobs.personio.com/job": {
+   "first": "20251011061245",
+   "last": "20251107094417",
+   "n": 2,
+   "url": "https://dunia.jobs.personio.com/job/?language=de"
+  },
+  "2420056": {
+   "first": "20251204232634",
+   "last": "20251204232634",
+   "n": 1,
+   "url": "https://dunia.jobs.personio.com/job/2420056?language=en"
+  },
+  "2521947": {
+   "first": "20260310150118",
+   "last": "20260514130100",
+   "n": 5,
+   "url": "https://dunia.jobs.personio.com/job/2521947?language=en"
+  },
+  "2521638": {
+   "first": "20260310153052",
+   "last": "20260514132900",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2521638?language=en"
+  },
+  "2521891": {
+   "first": "20260310153124",
+   "last": "20260812134035",
+   "n": 5,
+   "url": "https://dunia.jobs.personio.com/job/2521891?language=en"
+  },
+  "2521701": {
+   "first": "20260310155616",
+   "last": "20260514135020",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2521701?language=en"
+  },
+  "2521931": {
+   "first": "20260310161640",
+   "last": "20260514140950",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2521931?language=en"
+  },
+  "2516220": {
+   "first": "20260310163222",
+   "last": "20260617195907",
+   "n": 6,
+   "url": "https://dunia.jobs.personio.com/job/2516220?language=en"
+  },
+  "2519192": {
+   "first": "20260410185734",
+   "last": "20260514132821",
+   "n": 3,
+   "url": "https://dunia.jobs.personio.com/job/2519192?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+  },
+  "2519204": {
+   "first": "20260410190613",
+   "last": "20260514133641",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2519204?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+  },
+  "2516249": {
+   "first": "20260410190807",
+   "last": "20260514141625",
+   "n": 3,
+   "url": "https://dunia.jobs.personio.com/job/2516249"
+  },
+  "2519206": {
+   "first": "20260410190928",
+   "last": "20260514131321",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2519206?language=en"
+  },
+  "2515890": {
+   "first": "20260410191200",
+   "last": "20260514142016",
+   "n": 3,
+   "url": "https://dunia.jobs.personio.com/job/2515890"
+  },
+  "2519182": {
+   "first": "20260410192243",
+   "last": "20260514132629",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2519182?language=en"
+  },
+  "2519188": {
+   "first": "20260410194255",
+   "last": "20260617194148",
+   "n": 4,
+   "url": "https://dunia.jobs.personio.com/job/2519188?language=en&utm_source=Kindred+Capital+job+board&utm_medium=getro.com&gh_src=Kindred+Capital+job+board"
+  },
+  "2516252": {
+   "first": "20260410203801",
+   "last": "20260617194755",
+   "n": 3,
+   "url": "https://dunia.jobs.personio.com/job/2516252"
+  },
+  "dunia.jobs.personio.com/privacy-policy": {
+   "first": "20260410205054",
+   "last": "20260410205054",
+   "n": 1,
+   "url": "https://dunia.jobs.personio.com/privacy-policy"
+  },
+  "2630177": {
+   "first": "20260617195805",
+   "last": "20260617195805",
+   "n": 1,
+   "url": "https://dunia.jobs.personio.com/job/2630177"
+  }
+ }
+}

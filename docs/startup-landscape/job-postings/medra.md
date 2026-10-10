@@ -33,7 +33,7 @@ Back to [all companies](README.md) · [company profile](../companies/medra.md)
 | 2026-04-23 | 2026-06-11 | [Systems Test Engineer - Summer 2026 Internship](#systems-test-engineer-summer-2026-internship-2026-04-23) | software-eng | Internships | Boston |  | 1 |  | [Wayback](https://web.archive.org/web/20260611100703/https://jobs.ashbyhq.com/medraai/e101fbcf-5d99-4c7e-8ec3-125a1b638905) |
 | 2026-04-28 | open | [Scientific Operations](#scientific-operations-2026-04-28) | business-ops | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/f9e3c4ae-010b-4903-97a4-0bccdbc74624) |
 | 2026-04-30 | open | [Scientist, Cell Biology & Antibody Engineering](#scientist-cell-biology-antibody-engineering-2026-04-30) | materials-science | Science | San Francisco | PhD/MS/BS | 2 | $140–175K | [live](https://jobs.ashbyhq.com/medraai/9a0e875e-b40f-4caa-9ab9-49c3a8f51684) |
-| 2026-05-21 | 2026-06-11 | [Office Manager](#office-manager-2026-05-21) | business-ops | Operations | San Francisco |  |  | $70K - $90K | [Wayback](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40) |
+| 2026-05-21 | 2026-06-11 | [Office Manager](#office-manager-2026-05-21) | business-ops | Operations | San Francisco |  |  | $70–90K | [Wayback](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40) |
 | 2026-07-27 | open | [Systems Test Engineer - Contract](#systems-test-engineer-contract-2026-07-27) | software-eng | Engineering | San Francisco |  | 1 |  | [live](https://jobs.ashbyhq.com/medraai/cfaca7f4-d35b-4b5e-a5f4-5dd08abc8b5d) |
 | 2026-08-04 | open | [Scientist, Biophysical Characterization (SPR/BLI)](#scientist-biophysical-characterization-spr-bli-2026-08-04) | materials-science | Science | San Francisco | PhD/MS/BS | 2 |  | [live](https://jobs.ashbyhq.com/medraai/b6979689-9465-46ae-8026-6af2819f5fa1) |
 | 2026-08-31 | open | [Research Associate, Protein Purification & Quality Control](#research-associate-protein-purification-quality-control-2026-08-31) | materials-science | Science | San Francisco | MS/BS |  |  | [live](https://jobs.ashbyhq.com/medraai/3adae454-8f38-40af-825b-fea9a7da9a10) |
@@ -763,7 +763,7 @@ This is a role for someone who blends scientific judgment with hands-on craft �
 
 ### Office Manager (2026-05-21)
 
-2026-05-21 → 2026-06-11 · business-ops · San Francisco · [source](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40)
+2026-05-21 → 2026-06-11 · business-ops · San Francisco · $70–90K · [source](https://web.archive.org/web/20260611104107/https://jobs.ashbyhq.com/medraai/6cb15bd8-98d8-462b-8ba1-7b1f4e8e9b40)
 
 <details><summary>Description</summary>
 

@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Staff Forward Deployed Engineer, Physical Sciences (Level Flexible) (2025-10-06)
 
-2025-10-06 → open · materials-science · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031303009)
+2025-10-06 → open · materials-science · Cambridge, MA USA; San Francisco, CA USA · $192–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031303009)
 
 <details><summary>Description</summary>
 
@@ -48,7 +48,7 @@ $192,000 — $256,000 USD
 
 ### Scientist II/Senior Characterization Scientist, Condensed Matter (2026-05-26)
 
-2026-05-26 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246305009)
+2026-05-26 → open · materials-science · Cambridge, MA USA · $128–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4246305009)
 
 <details><summary>Description</summary>
 
@@ -87,7 +87,7 @@ What You'll Be Building
 
 ### Senior Research Associate , Automated Chemistry (2026-06-01)
 
-2026-06-01 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4254693009)
+2026-06-01 → open · materials-science · Cambridge, MA USA · $80–118K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4254693009)
 
 <details><summary>Description</summary>
 
@@ -126,7 +126,7 @@ What You'll Be Building
 
 ### Scientist, Epitaxial Thin Film Synthesis (2026-06-11)
 
-2026-06-11 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
+2026-06-11 → open · materials-science · Cambridge, MA USA · $108–150K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4253548009)
 
 <details><summary>Description</summary>
 
@@ -163,7 +163,7 @@ What You'll Be Building
 
 ### Senior/Principal Scientist, Small Molecule Therapeutics (2026-07-01)
 
-2026-07-01 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
+2026-07-01 → open · materials-science · Cambridge, MA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4296054009)
 
 <details><summary>Description</summary>
 
@@ -190,7 +190,7 @@ What You'll Be Building
 
 ### Associate Scientist/Scientist I, Protein Science Developability (2026-07-20)
 
-2026-07-20 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299967009)
+2026-07-20 → open · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4299967009)
 
 <details><summary>Description</summary>
 
@@ -217,7 +217,7 @@ What You'll Be Building
 
 ### Research Scientist, Computational Condensed Matter Physics (2026-07-28)
 
-2026-07-28 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324886009)
+2026-07-28 → open · materials-science · Cambridge, MA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324886009)
 
 <details><summary>Description</summary>
 
@@ -253,7 +253,7 @@ What You'll Be Building
 
 ### Manager / Senior Manager, Enterprise GTM, Materials (2026-08-03)
 
-2026-08-03 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353656009)
+2026-08-03 → open · materials-science · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353656009)
 
 <details><summary>Description</summary>
 
@@ -281,7 +281,7 @@ What You'll Be Building
 
 ### Scientist II/Senior Scientist, Computational Biophysics (2026-08-03)
 
-2026-08-03 → open · materials-science · Cambridge, MA USA; London, UK; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4340155009)
+2026-08-03 → open · materials-science · Cambridge, MA USA; London, UK; San Francisco, CA USA · $141–218K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4340155009)
 
 <details><summary>Description</summary>
 
@@ -309,7 +309,7 @@ What You'll Be Building
 
 ### Research Scientist I/II, Computational Organic Electronics (2026-08-21)
 
-2026-08-21 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376824009)
+2026-08-21 → open · materials-science · Cambridge, MA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376824009)
 
 <details><summary>Description</summary>
 
@@ -338,46 +338,11 @@ What You'll Be Building
 
 </details>
 
-<a id="senior-data-engineer-bioinformatics-cheminformatics-materials-2026-09-01"></a>
-
-### Senior Data Engineer, Bioinformatics, Cheminformatics, Materials (2026-09-01)
-
-2026-09-01 → open · materials-science · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4377096009)
-
-<details><summary>Description</summary>
-
-**Your Impact at LILA**
-Lila’s mission is to accelerate scientific discovery with AI, and that depends on trustworthy scientific data. As a Data Engineer, you’ll build ETL pipelines and data models for Lila’s scientific data platform, working at the intersection of data engineering, computational biology, chemistry, and materials science.
-You’ll partner with AI researchers and experimentalists to turn raw lab instrument outputs into validated, analysis-ready datasets. The core challenge is data modeling: transforming messy, per-instrument measurements into clean, well-typed data that is efficient to query, reliable to use, and ready for downstream analysis.
-You’ll also build domain-specific analysis functions and reusable data pipelines that help scientists and AI researchers move faster without re-deriving bespoke solutions.
-What You'll Be Building
-• Design pipelines that turn raw lab output into analysis-ready scientific data. • Model heterogeneous data from bio, chemistry, and materials instruments. • Build validation checks, schema-evolution gates, and data quality workflows. • Develop reusable analysis functions for scientific and AI research workflows. • Improve automation and observability across instrument-to-result data flows. • Build canonical datasets that scientists and AI researchers can trust. • Use AI coding tools to accelerate pipeline development and team velocity.
-• 2–6 years of experience in data engineering, bioinformatics, cheminformatics, or computational science. •
-Strong Python skills, including typed, tested, production-quality code.
-• Strong SQL skills, especially with Postgres or similar relational databases.
-• Experience building ETL pipelines, data models, and reusable data transformations.
-• Data science foundation, including statistics and pandas, NumPy, or similar tools.
-• Experience translating noisy scientific measurements into accurate, validated datasets.
-• Workflow orchestration experience, ideally Flyte, Airflow, Prefect, Dagster, or Nextflow.
-• Active use of AI coding tools in day-to-day engineering work.
-
-**Bonus Points For**
-• Experience with columnar or lakehouse stacks such as Parquet, Iceberg, DuckDB, Polars, or Ibis.
-• Familiarity with event-driven pipelines such as NATS or Kafka. • Exposure to lab instrument data formats, LIMS, or ELN systems.
-• Familiarity with life sciences assays, sequencing, imaging, or flow cytometry.
-• Familiarity with materials or chemistry methods such as XRD, XRF, SEM, TGA, or DSC.
-• Experience with curve fitting, peak detection, or unit and dimensional analysis.
-
-**Compensation**
-$144,000 — $240,000 USD
-
-</details>
-
 <a id="microfabrication-scientist-i-ii-2026-09-14"></a>
 
 ### Microfabrication Scientist I/II (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4400746009)
+2026-09-14 → open · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4400746009)
 
 <details><summary>Description</summary>
 
@@ -415,7 +380,7 @@ $108,000 — $170,000 USD
 
 ### Scientist I/II, Characterization and Composition Analysis (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4384606009)
+2026-09-14 → open · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4384606009)
 
 <details><summary>Description</summary>
 
@@ -447,7 +412,7 @@ What You'll Be Building
 
 ### Scientist I/II, X-ray Diffraction Characterization (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
+2026-09-14 → open · materials-science · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378385009)
 
 <details><summary>Description</summary>
 
@@ -479,7 +444,7 @@ What You'll Be Building
 
 ### Scientist II / Senior Scientist, Electron Diffraction Characterization (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378383009)
+2026-09-14 → open · materials-science · Cambridge, MA USA · $128–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4378383009)
 
 <details><summary>Description</summary>
 
@@ -511,7 +476,7 @@ What You'll Be Building
 
 ### Scientist II, Silicon Photonics (2026-09-14)
 
-2026-09-14 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
+2026-09-14 → open · materials-science · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4383465009)
 
 <details><summary>Description</summary>
 
@@ -539,7 +504,7 @@ What You'll Be Building
 
 ### Scientist II/ Senior Scientist, BioML (2026-09-15)
 
-2026-09-15 → open · materials-science · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395729009)
+2026-09-15 → open · materials-science · San Francisco, CA USA · $228–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395729009)
 
 <details><summary>Description</summary>
 
@@ -561,7 +526,7 @@ What You'll Be Building
 
 ### Scientist II/Senior Scientist, Solid-State Materials (2026-09-28)
 
-2026-09-28 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4271809009)
+2026-09-28 → open · materials-science · Cambridge, MA USA · $126–198K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4271809009)
 
 <details><summary>Description</summary>
 
@@ -590,7 +555,7 @@ What You'll Be Building
 
 ### Associate Scientist/Scientist I, Translational Biology (2026-09-29)
 
-2026-09-29 → open · materials-science · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
+2026-09-29 → open · materials-science · Cambridge, MA USA · $88–144K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4415281009)
 
 <details><summary>Description</summary>
 

@@ -1,0 +1,131 @@
+{
+ "captures": {
+  "atinary.com/careers": [
+   {
+    "urlkey": "com,atinary)/careers",
+    "first": "20241211133212",
+    "last": "20260517124413",
+    "n": 19,
+    "original": "https://atinary.com/careers/"
+   }
+  ]
+ },
+ "board_captures": {
+  "atinary.com/careers": [
+   [
+    "20241211133212",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20250225105137",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20250428192253",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20250803221603",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20251010003543",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20260113192807",
+    "https://atinary.com/careers/"
+   ],
+   [
+    "20260415074105",
+    "https://atinary.com/careers/"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20241211133212/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20241211133212",
+   "last_seen": "20241211133212",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250225105137/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20250225105137",
+   "last_seen": "20250225105137",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250428192253/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20250428192253",
+   "last_seen": "20250428192253",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250803221603/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20250803221603",
+   "last_seen": "20250803221603",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251010003543/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20251010003543",
+   "last_seen": "20251010003543",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260113192807/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20260113192807",
+   "last_seen": "20260113192807",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "atinary",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260415074105/https://atinary.com/careers/",
+   "url": "https://atinary.com/careers/",
+   "first_seen": "20260415074105",
+   "last_seen": "20260415074105",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  }
+ ]
+}

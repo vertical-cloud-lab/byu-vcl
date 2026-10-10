@@ -21,6 +21,7 @@ processes, so run one history job at a time.
 """
 import argparse
 import glob
+import hashlib
 import html
 import json
 import os
@@ -245,6 +246,8 @@ def parse_page(url, body):
             out.append({"title": to_text(m.group(1)), "location": to_text(loc.group(1)) if loc else None,
                         "text": to_text(c.group(1)) if c else to_text(body)})
             return out
+    if "peoplehr.net" in host:
+        return [peoplehr(body)]
     if "personio." in host:
         t = re.search(r'(?is)<h1[^>]*>(.*?)</h1>', body)
         return [{"title": to_text(t.group(1)) if t else None, "text": personio_text(body)}]
@@ -268,11 +271,22 @@ def parse_page(url, body):
                         "employment_type": c.get("commitment"), "text": to_text(main.group(1) if main else body)})
         return out
     # Company's own page (WordPress job post, careers page, PeopleHR opening).
-    t = re.search(r'(?is)<h1[^>]*>(.*?)</h1>', body) or re.search(r'(?is)<title>(.*?)</title>', body)
     art = (re.search(r'(?is)<article[^>]*>(.*?)</article>', body) or re.search(r'(?is)<main[^>]*>(.*?)</main>', body))
-    out.append({"title": to_text(t.group(1)) if t else None, "text": to_text(art.group(1) if art else body),
-                "generic": True})
+    out.append({"title": page_title(body), "text": to_text(art.group(1) if art else body), "generic": True})
     return out
+
+
+def page_title(body):
+    """og:title, else <title>, else the first non-empty <h1>, without a ' | Site' suffix."""
+    cands = re.findall(r'(?is)<meta[^>]+property="og:title"[^>]+content="([^"]*)"', body)
+    cands += re.findall(r"(?is)<title[^>]*>(.*?)</title>", body)
+    cands += re.findall(r"(?is)<h1[^>]*>(.*?)</h1>", body)
+    for c in cands:
+        t = to_text(c)
+        t = re.split(r"\s+[|–—]\s+|\s+-\s+(?=[A-Z][\w .&]*$)", t)[0].strip() if t else t
+        if t:
+            return t
+    return None
 
 
 # --- live boards -------------------------------------------------------------------
@@ -381,12 +395,17 @@ def live_peoplehr(careers_url):
 
 
 def peoplehr(body):
-    t = re.search(r'(?is)id="[^"]*(?:lblVacancyTitle|VacancyName|JobTitle)[^"]*"[^>]*>(.*?)<', body) \
-        or re.search(r"(?is)<title>(.*?)</title>", body)
-    loc = re.search(r'(?is)id="[^"]*(?:Location)[^"]*"[^>]*>(.*?)<', body)
-    desc = re.search(r'(?is)id="[^"]*(?:VacancyDescription|JobDescription|Description)[^"]*"[^>]*>(.*?)</div>\s*</div>', body)
-    return {"title": to_text(t.group(1)) if t else None, "location": to_text(loc.group(1)) if loc else None,
-            "text": to_text(desc.group(1) if desc else body)}
+    """A PeopleHR opening: title, department and city fields, and the description
+    between pJobDescription and the location fields."""
+    def field(name):
+        m = re.search(rf'(?is)id="p{name}"[^>]*>(.*?)</p>', body)
+        return to_text(m.group(1)) if m else None
+    t = re.search(r'(?is)class="vacancynameforopening"[^>]*>(.*?)</h2>', body)
+    i, j = body.find('id="pJobDescription"'), body.find('id="pLocation"')
+    desc = body[body.find(">", i) + 1:j if j > i else None] if i >= 0 else body
+    return {"title": (to_text(t.group(1)) if t else None) or field("JobTitle"), "team": field("Department"),
+            "location": ", ".join(filter(None, (field("City"), field("Country")))) or field("Location"),
+            "text": to_text(desc.split("Apply for this job")[0])}
 
 
 def live_wordpress(url):
@@ -502,7 +521,7 @@ def posting_key(url):
 
 
 def _root(url):
-    u = re.sub(r"^https?://(www\.)?", "", url.split("?")[0].split("#")[0]).rstrip("/")
+    u = re.sub(r"^(https?://)?(www\.)?", "", url.split("?")[0].split("#")[0]).rstrip("/")
     return u.replace(":80", "")
 
 
@@ -601,6 +620,39 @@ def cmd_history(slug, max_pages):
     print(slug, "fetched", fetched, flush=True)
 
 
+def cmd_reparse(slug):
+    """Re-run the parsers over the captures already fetched (from the cache), so a
+    parser fix needs no new requests to the archive."""
+    out_path = os.path.join(RAW, f"{slug}.wayback.json")
+    done = json.load(open(out_path, encoding="utf-8"))
+    by_cap = {}
+    for r in done["postings"]:
+        k = r.get("posting_id") if not r.get("board_capture") and not r.get("listing_only") else None
+        by_cap.setdefault(r["capture"], (k, r["url"], r["first_seen"], r["last_seen"], r["n_captures"]))
+    rebuilt, missing = [], 0
+    for cap, (k, url, first, last, n) in by_cap.items():
+        ts = re.search(r"/web/(\d{14})/", cap).group(1)
+        key = hashlib.sha256(f"https://web.archive.org/web/{ts}id_/{url}".encode()).hexdigest()
+        if not os.path.exists(os.path.join(fetch.CACHE, key)):
+            missing += 1
+            rebuilt += [r for r in done["postings"] if r["capture"] == cap]
+            continue
+        body = fetch.get(f"https://web.archive.org/web/{ts}id_/{url}")
+        for p in parse_page(url, body):
+            rec = {"company": slug, "basis": "wayback", "capture": cap, "url": url,
+                   "first_seen": first, "last_seen": last, "n_captures": n, **p}
+            if k and not p.get("listing_only"):
+                rec["posting_id"] = k
+            elif p.get("posting_id"):
+                rec["posting_id"] = str(p["posting_id"]).lower()
+                rec["board_capture"] = True
+            rebuilt.append(rec)
+    done["postings"] = rebuilt
+    with open(out_path, "w", encoding="utf-8") as fh:
+        json.dump(done, fh, indent=1, ensure_ascii=False)
+    print(slug, len(by_cap), "captures reparsed;", missing, "not in cache")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -610,12 +662,17 @@ def main():
     hi = sub.add_parser("history")
     hi.add_argument("slug")
     hi.add_argument("--max-pages", type=int, default=400)
+    rp = sub.add_parser("reparse", help="re-run the parsers over cached captures")
+    rp.add_argument("slugs", nargs="+")
     sub.add_parser("build")
     a = ap.parse_args()
     if a.cmd == "live":
         cmd_live(a.slugs or [s for s, b in BOARDS.items() if b.get("live")], a.date)
     elif a.cmd == "history":
         cmd_history(a.slug, a.max_pages)
+    elif a.cmd == "reparse":
+        for slug in a.slugs:
+            cmd_reparse(slug)
     elif a.cmd == "build":
         import jobs_report
         jobs_report.build()

@@ -10,7 +10,7 @@ import statistics
 from collections import Counter, defaultdict
 
 import analyze
-from jobs import DOCS, RAW
+from jobs import DOCS, RAW, _root
 
 OUT = os.path.join(DOCS, "job-postings")
 FUNCTIONS = analyze.FUNCTIONS
@@ -145,12 +145,32 @@ def quarter(d):
 
 # --- merge ---------------------------------------------------------------------------------
 
-GENERIC_TITLE = re.compile(r"(?i)^(careers?|jobs|join us|join our team|open positions|work with us)\b")
+GENERIC_TITLE = re.compile(r"(?i)^(careers?|jobs?|job openings|join us|join our team|open positions|work with us)\b")
+NOT_A_JOB = re.compile(r"(?i)privacy|data protection|processing of \(personal\) data|cookie|imprint|impressum|"
+                       r"\{\{|uses ai to analy[sz]e applications")
 
 
-def norm_title(t):
+def salary_from_text(*texts):
+    """A posted range in the description or pay summary ("$144,000 — $240,000 USD", "£45K – £55K")."""
+    import fetch
+    for t in texts:
+        m = fetch.PAY_RE.search(t or "")
+        if m:
+            lo, hi = fetch._money(m.group(2)), fetch._money(m.group(3))
+            if 1000 <= lo <= hi:
+                return {"currency": {"$": "USD", "€": "EUR", "£": "GBP"}[m.group(1)], "min": lo, "max": hi,
+                        "interval": "1 YEAR", "from_text": True}
+    return None
+
+
+def norm_title(t, slug=""):
+    """Collapse whitespace and drop a trailing ' - Company, Inc.' or ' | Careers' suffix."""
     t = re.sub(r"\s+", " ", (t or "")).strip()
-    t = re.sub(r"\s*[|–-]\s*(jobs at|careers at)?\s*[A-Z][\w .&]+$", "", t) if " | " in t else t
+    words = [w for w in slug.split("-") if len(w) > 3]
+    m = re.match(r"^(.*)\s+[|–—-]\s+([^|–—]+)$", t)
+    if m and (re.search(r"(?i)\b(inc|ltd|llc|gmbh|sas|careers?|jobs)\b", m.group(2))
+              or any(w in m.group(2).lower() for w in words)):
+        t = m.group(1).strip()
     return t
 
 
@@ -163,7 +183,11 @@ def merge():
         data = json.load(open(path, encoding="utf-8"))
         if isinstance(data, list):  # live
             for r in data:
-                by[slug][str(r.get("posting_id") or r.get("url")).lower()].append(r)
+                pid = str(r.get("posting_id") or r.get("url")).lower()
+                if r.get("vendor") == "wordpress":  # same key as the archived copy of the page
+                    pid = _root(r["url"])
+                    r = {**r, "published": r.get("published"), "last_seen": r.get("updated")}
+                by[slug][pid].append(r)
             continue
         for k, v in (data.get("spans") or {}).items():
             spans[(slug, k)] = v
@@ -175,16 +199,19 @@ def merge():
                 careers_pages[slug].append(r)
                 continue
             if not pid:
-                pid = "title:" + norm_title(r.get("title")).lower()
+                pid = "title:" + norm_title(r.get("title"), slug).lower()
             by[slug][pid].append(r)
     rows = []
     for slug, groups in by.items():
         for pid, recs in groups.items():
-            live = [r for r in recs if r.get("basis") == "live"]
-            pages = [r for r in recs if r.get("basis") == "wayback" and not r.get("listing_only")]
+            # A WordPress job post stays published after the role closes (Aionics still serves its
+            # 2021 internships), so it is read like an archived page, not as an open posting.
+            live = [r for r in recs if r.get("basis") == "live" and r.get("vendor") != "wordpress"]
+            pages = [r for r in recs if (r.get("basis") == "wayback" and not r.get("listing_only"))
+                     or r.get("vendor") == "wordpress"]
             lists = [r for r in recs if r.get("listing_only")]
-            titles = [norm_title(r.get("title")) for r in live + pages + lists if r.get("title")]
-            titles = [t for t in titles if t and not GENERIC_TITLE.match(t)]
+            titles = [norm_title(r.get("title"), slug) for r in live + pages + lists if r.get("title")]
+            titles = [t for t in titles if t and not GENERIC_TITLE.match(t) and not NOT_A_JOB.search(t)]
             if not titles:
                 continue
             title = Counter(titles).most_common(1)[0][0]
@@ -195,6 +222,8 @@ def merge():
                 for f in ("published",):
                     if ts_date(r.get(f)):
                         dates.append(ts_date(r[f]))
+                if r.get("vendor") == "wordpress" and ts_date(r.get("last_seen")):
+                    dates.append(ts_date(r["last_seen"]))
                 if r.get("basis") == "wayback":
                     cap = re.search(r"/web/(\d{14})/", r.get("capture") or "")
                     if r.get("listing_only") and cap:
@@ -216,6 +245,8 @@ def merge():
                 return None
             sal = pick("salary")
             pay_text = pick("pay_text")
+            if not sal:
+                sal = salary_from_text(pay_text, best.get("text") if texts else "")
             sources = []
             for r in live:
                 if r.get("url"):
@@ -268,7 +299,9 @@ def strip_boilerplate(rows):
         freq = Counter(k for r in texts for k in {_line_key(l) for l in r["text"].splitlines() if len(l) > 25})
         common = {k for k, c in freq.items() if len(texts) >= 5 and c >= 0.4 * len(texts)}
         for r in rs:
-            own = "\n".join(l for l in (r["text"] or "").splitlines() if _line_key(l) not in common or len(l) <= 25)
+            # A shared line that states a requirement ("Minimum education: Bachelor's degree…") is kept.
+            own = "\n".join(l for l in (r["text"] or "").splitlines()
+                             if _line_key(l) not in common or len(l) <= 25 or degrees(l) or YEARS.search(l))
             rt = role_text(own, limit=10 ** 6)
             r["role_text"] = rt
             r["degrees_mentioned"], r["years_min"] = degrees(rt), years_min(rt)
@@ -281,7 +314,7 @@ EXTRA_RULES = [  # checked in order, before analyze.TITLE_RULES
     ("business-ops", r"partnership|ecosystem|program manager|developer relations|communications|counsel|controller|"
                      r"financ|strategy|\bsales\b|marketing|content|procurement|\boffice\b|payroll|talent|recruit|"
                      r"sourcer|\bpeople\b|\bhr\b|business"),
-    ("software-eng", r"front-?end|back-?end|full[- ]?stack|tech lead|engineering manager"),
+    ("software-eng", r"front-?end|back-?end|full[- ]?stack|tech lead|engineering manager|architect|devops|data engineer"),
     ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development|"
                        r"pilot plant|prototype"),
     ("ml-research", r"\bmlff\b"),
@@ -538,8 +571,9 @@ def summary(rows, by_co, careers, meta):
 
 
 def requirement_table(rows):
-    lines = ["| Function | Postings with text | Name a PhD | Name a master's | Name a bachelor's | Median min. years | Most-named skills |",
-             "|---|---|---|---|---|---|---|"]
+    lines = ["| Function | Postings with text | Name a PhD | Name a master's | Name a bachelor's | Median min. years | "
+             "Median US pay, range midpoint (n) | Most-named skills |",
+             "|---|---|---|---|---|---|---|---|"]
     for f in FUNCTIONS:
         rs = [r for r in rows if r["function"] == f and r["has_description"]]
         if not rs:
@@ -548,8 +582,11 @@ def requirement_table(rows):
         yrs = [r["years_min"] for r in rs if r["years_min"]]
         skills = Counter(s for r in rs for s in r["skills"] if s not in ("customer-facing", "Python"))
         top = ", ".join(f"{s} ({100 * c / len(rs):.0f}%)" for s, c in skills.most_common(6))
+        usd = [(r["salary"]["min"] + r["salary"]["max"]) / 2 for r in rows if r["function"] == f and r.get("salary")
+               and r["salary"].get("currency") == "USD" and r["salary"].get("min", 0) > 20000]
+        mid = f"${statistics.median(usd) / 1000:.0f}K ({len(usd)})" if usd else "—"
         lines.append(f"| {f} | {len(rs)} | {pct('PhD')} | {pct('MS')} | {pct('BS')} | "
-                     f"{statistics.median(yrs) if yrs else '—'} | {top} |")
+                     f"{statistics.median(yrs) if yrs else '—'} | {mid} | {top} |")
     return "\n".join(lines)
 
 

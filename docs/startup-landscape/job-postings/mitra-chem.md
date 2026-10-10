@@ -2,16 +2,30 @@
 
 Back to [all companies](README.md) · [company profile](../companies/mitra-chem.md)
 
-**2 postings recovered**, 2 with the full description; 2 still open on 2026-10-10. First seen 2026-10-10, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**3 postings recovered**, 3 with the full description; 2 still open on 2026-10-10. First seen 2021-08-11, latest 2026-10-10. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
+| 2021-08-11 | 2021-10-19 | [Battery Materials Scientist](#battery-materials-scientist-2021-08-11) | materials-science |  |  |  |  |  | [Wayback](https://web.archive.org/web/20211019143746/https://mitrachem.com/job/battery-materials-scientist/) |
 | 2026-10-10 | open | [General Application](#general-application-2026-10-10) | general-application |  |  |  |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/114753-general-application) |
 | 2026-10-10 | open | [Lab Technician](#lab-technician-2026-10-10) | lab-automation |  |  | MS |  |  | [live](https://app.trinethire.com/companies/913890-mitra-chem/jobs/123697-lab-technician) |
 
 ## Descriptions
 
 Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
+
+<a id="battery-materials-scientist-2021-08-11"></a>
+
+### Battery Materials Scientist (2021-08-11)
+
+2021-08-11 → 2021-10-19 · materials-science · location not stated · [source](https://web.archive.org/web/20211019143746/https://mitrachem.com/job/battery-materials-scientist/)
+
+<details><summary>Description</summary>
+
+Mitra Chem is a Silicon Valley startup working at the intersection of machine learning and battery development. We live at the cutting-edge of battery technology and aim to deliver world-class materials for the EV market within the next few years. Our goal is to be the first lithium-ion battery materials manufacturer to shorten the lab-to-production timeline by >90% through accelerated R&D and vertically integrated process optimization. We will first focus on Li-ion battery cathodes, converting them from commodity chemicals into a product platform, customized for different applications. We are setting up a state-of-the-art 10,000 sq ft industrial R&D center (located on the San Francisco Peninsula). Join our team to be a part of the growing battery revolution.
+We are looking for a Battery Materials Scientist to design, develop and scale-up production of innovative materials, leveraging Mitra Chem’s accelerated R&D infrastructure.
+
+</details>
 
 <a id="general-application-2026-10-10"></a>
 

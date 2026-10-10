@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Principal Technical Program Manager, App (2025-12-22)
 
-2025-12-22 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4087979009)
+2025-12-22 → open · business-ops · Cambridge, MA USA · $204–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4087979009)
 
 <details><summary>Description</summary>
 
@@ -40,7 +40,7 @@ $204,000 — $270,000 USD
 
 ### Manager / Senior Manager, Multimedia (2026-02-27)
 
-2026-02-27 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4157130009)
+2026-02-27 → open · business-ops · Cambridge, MA USA · $108–186K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4157130009)
 
 <details><summary>Description</summary>
 
@@ -81,7 +81,7 @@ $108,000 — $186,000 USD
 
 ### Manager, Revenue Accounting (2026-03-27)
 
-2026-03-27 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195605009)
+2026-03-27 → open · business-ops · Cambridge, MA USA · $126–186K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195605009)
 
 <details><summary>Description</summary>
 
@@ -124,7 +124,7 @@ Cross-Functional Partnership
 
 ### Manager / Senior Manager, Finance, Fixed Asset Accounting (2026-03-29)
 
-2026-03-29 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
+2026-03-29 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4195640009)
 
 <details><summary>Description</summary>
 
@@ -161,7 +161,7 @@ Audit, Compliance & Internal Controls
 
 ### Chemistry Technical Program Manager (2026-04-24)
 
-2026-04-24 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
+2026-04-24 → open · business-ops · Cambridge, MA USA · $128–172K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4204188009)
 
 <details><summary>Description</summary>
 
@@ -193,7 +193,7 @@ What You'll Be Building
 
 ### Technical Program Manager, AI Data (2026-06-01)
 
-2026-06-01 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4259557009)
+2026-06-01 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $192–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4259557009)
 
 <details><summary>Description</summary>
 
@@ -225,7 +225,7 @@ What You'll Be Building
 
 ### Shift Supervisor, Research Operations (2026-07-01)
 
-2026-07-01 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
+2026-07-01 → open · business-ops · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4277904009)
 
 <details><summary>Description</summary>
 
@@ -255,7 +255,7 @@ What You'll Be Building
 
 ### Technical Program Manager, AISF (2026-07-09)
 
-2026-07-09 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
+2026-07-09 → open · business-ops · Cambridge, MA USA · $128–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4289723009)
 
 <details><summary>Description</summary>
 
@@ -294,7 +294,7 @@ $128,000 — $170,000 USD
 
 ### Portfolio Manager, Government Partnerships (DARPA & ARPA-H) (2026-07-10)
 
-2026-07-10 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4297690009)
+2026-07-10 → open · business-ops · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4297690009)
 
 <details><summary>Description</summary>
 
@@ -316,7 +316,7 @@ What You'll Be Building
 
 ### Research Product Manager, Post Training (2026-07-17)
 
-2026-07-17 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4310498009)
+2026-07-17 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4310498009)
 
 <details><summary>Description</summary>
 
@@ -350,7 +350,7 @@ What You'll Be Building
 
 ### Manager / Senior Manager, Enterprise GTM, Chemicals (2026-08-03)
 
-2026-08-03 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353659009)
+2026-08-03 → open · business-ops · Cambridge, MA USA · $108–187K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353659009)
 
 <details><summary>Description</summary>
 
@@ -378,7 +378,7 @@ What You'll Be Building
 
 ### Research Product Manager, Fine-tuning (2026-08-03)
 
-2026-08-03 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
+2026-08-03 → open · business-ops · Cambridge, MA USA; San Francisco, CA USA · $204–310K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4339607009)
 
 <details><summary>Description</summary>
 
@@ -442,7 +442,7 @@ What You'll Be Building
 
 ### Senior Manager, Scientific Discovery Capacity Planning (2026-08-14)
 
-2026-08-14 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4359834009)
+2026-08-14 → open · business-ops · Cambridge, MA USA · $140–173K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4359834009)
 
 <details><summary>Description</summary>
 
@@ -476,7 +476,7 @@ What You'll Be Building
 
 ### Senior Product Designer II / Staff Product Designer (2026-09-11)
 
-2026-09-11 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376188009)
+2026-09-11 → open · business-ops · Cambridge, MA USA · $180–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4376188009)
 
 <details><summary>Description</summary>
 
@@ -516,7 +516,7 @@ $180,000 — $256,000 USD
 
 ### Supply Chain Demand Planner (2026-10-05)
 
-2026-10-05 → open · business-ops · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423502009)
+2026-10-05 → open · business-ops · Cambridge, MA USA · $88–126K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423502009)
 
 <details><summary>Description</summary>
 

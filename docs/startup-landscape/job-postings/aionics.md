@@ -2,27 +2,286 @@
 
 Back to [all companies](README.md) · [company profile](../companies/aionics.md)
 
-**7 postings recovered**, 5 with the full description; 7 still open on 2026-10-10. First seen 2021-07-27, latest 2024-12-18. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**8 postings recovered**, 8 with the full description; 0 still open on 2026-10-10. First seen 2021-07-27, latest 2024-12-18. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
-| 2021-07-27 | open | Materials Informatics (Data Science) Intern, Undergraduate Level | ml-research |  |  |  |  |  | [live](https://aionics.io/job/materials-informatics-data-science-intern-undergraduate-level/) |
-| 2021-07-27 | open | Materials Informatics Intern, Ph.D. Level | materials-science |  |  |  |  |  | [live](https://aionics.io/job/materials-informatics-intern-ph-d-level/) |
-| 2023-11-27 | open | [Materials Informatics Scientist](#materials-informatics-scientist-2023-11-27) | materials-science |  |  | PhD/MS |  |  | [live](https://aionics.io/job/materials-informatics-scientist/) |
-| 2023-11-27 | open | [Software Engineering Manager](#software-engineering-manager-2023-11-27) | software-eng |  |  | PhD/MS/BS | 2 |  | [live](https://aionics.io/job/software-engineering-manager/) |
-| 2024-02-06 | open | [Office Manager](#office-manager-2024-02-06) | business-ops |  |  |  |  |  | [live](https://aionics.io/job/office-manager/) |
-| 2024-05-01 | open | [Financial Modeling Internship (Technoeconomics)](#financial-modeling-internship-technoeconomics-2024-05-01) | business-ops |  |  | BS |  |  | [live](https://aionics.io/job/financial-modeling-internship-technoeconomics/) |
-| 2024-12-18 | open | [Head of Business Development](#head-of-business-development-2024-12-18) | leadership |  |  |  | 8 |  | [live](https://aionics.io/job/head-of-business-development/) |
+| 2021-07-27 | 2026-05-14 | [Materials Informatics (Data Science) Intern, Undergraduate Level](#materials-informatics-data-science-intern-undergraduate-level-2021-07-27) | ml-research |  |  |  |  |  | [Wayback](https://web.archive.org/web/20210926222718/https://aionics.io/job/materials-informatics-data-science-intern-undergraduate-level/) |
+| 2021-07-27 | 2026-05-14 | [Materials Informatics Intern, Ph.D. Level](#materials-informatics-intern-ph-d-level-2021-07-27) | materials-science |  |  | PhD |  |  | [Wayback](https://web.archive.org/web/20210926213016/https://aionics.io/job/materials-informatics-intern-ph-d-level/) |
+| 2023-11-27 | 2026-06-11 | [Materials Informatics Scientist](#materials-informatics-scientist-2023-11-27) | materials-science |  |  | PhD/MS |  |  | [Wayback](https://web.archive.org/web/20240222111817/https://aionics.io/job/materials-informatics-scientist/) |
+| 2023-11-27 | 2026-05-14 | [Software Engineering Manager](#software-engineering-manager-2023-11-27) | software-eng |  |  | PhD/MS/BS | 2 |  | [Wayback](https://web.archive.org/web/20240222095231/https://aionics.io/job/software-engineering-manager/) |
+| 2024-02-06 | 2026-04-10 | [Office Manager](#office-manager-2024-02-06) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20240222114050/https://aionics.io/job/office-manager/) |
+| 2024-05-01 | 2026-05-14 | [Financial Modeling Internship (Technoeconomics)](#financial-modeling-internship-technoeconomics-2024-05-01) | business-ops |  |  | BS |  |  | [Wayback](https://web.archive.org/web/20240521200047/https://aionics.io/job/financial-modeling-internship-technoeconomics/) |
+| 2024-09-13 | 2024-09-13 | [Senior Software Engineer - Python/Django](#senior-software-engineer-python-django-2024-09-13) | software-eng |  |  | BS | 5 |  | [Wayback](https://web.archive.org/web/20240913071043/https://aionics.io/job/senior-software-engineer-python-django/) |
+| 2024-12-18 | 2026-06-11 | [Head of Business Development](#head-of-business-development-2024-12-18) | leadership |  |  |  | 8 |  | [Wayback](https://web.archive.org/web/20250126140856/https://aionics.io/job/head-of-business-development/) |
+
+## Careers-page captures
+
+9 archived captures of the company's own careers page. Their text is not reproduced here: these pages list postings through embedded widgets that the archive did not capture, and some feature named staff, whom this survey does not name. The captures: [2021-09-26](https://web.archive.org/web/20210926220805/https://aionics.io/job/), [2021-11-27](https://web.archive.org/web/20211127234314/https://aionics.io/job/), [2022-05-17](https://web.archive.org/web/20220517043830/https://aionics.io/job/), [2022-08-09](https://web.archive.org/web/20220809015247/https://aionics.io/job/), [2022-10-05](https://web.archive.org/web/20221005153547/https://aionics.io/job/), [2023-02-09](https://web.archive.org/web/20230209092750/https://aionics.io/job/), [2023-06-04](https://web.archive.org/web/20230604173242/https://aionics.io/job/), [2024-05-21](https://web.archive.org/web/20240521195755/https://aionics.io/job/), [2024-12-07](https://web.archive.org/web/20241207181204/https://aionics.io/job/).
 
 ## Descriptions
 
 Role-specific sections only (responsibilities, requirements, pay): the company pitch, benefits and equal-opportunity text are dropped, and so are email addresses and phone numbers.
 
+<a id="materials-informatics-data-science-intern-undergraduate-level-2021-07-27"></a>
+
+### Materials Informatics (Data Science) Intern, Undergraduate Level (2021-07-27)
+
+2021-07-27 → 2026-05-14 · ml-research · location not stated · [source](https://web.archive.org/web/20210926222718/https://aionics.io/job/materials-informatics-data-science-intern-undergraduate-level/)
+
+<details><summary>Description</summary>
+
+-
+Materials Informatics (Data Science) Intern, Undergraduate Level - Aionics
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Menu
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Materials Informatics (Data Science) Intern, Undergraduate Level
+-
+July 27, 2021
+-
+aionics
+Send Us A Message
+Full Name
+Phone
+Email
+Send
+Aionics is committed to providing the best tools, data, and models, so materials innovators spend less time on data infrastructure and more time on the activities that build lasting internal expertise and enduring company value.
+Linkedin-in
+Twitter
+Youtube
+Quick links
+- Home
+- About
+- Case studies
+- Careers
+- News
+- Contact Us
+Menu
+- Home
+- About
+- Case studies
+- Careers
+- News
+- Contact Us
+Newsletter Subscription
+Subscribe to our newsletter and stay updated with the latest in material informatics.
+Name
+Email
+Subscribe
+© 2021 Aionics, Inc. All Rights Reserved.
+Menu
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Linkedin-in
+Twitter
+Youtube
+-
+
+</details>
+
+<a id="materials-informatics-intern-ph-d-level-2021-07-27"></a>
+
+### Materials Informatics Intern, Ph.D. Level (2021-07-27)
+
+2021-07-27 → 2026-05-14 · materials-science · location not stated · [source](https://web.archive.org/web/20210926213016/https://aionics.io/job/materials-informatics-intern-ph-d-level/)
+
+<details><summary>Description</summary>
+
+-
+Materials Informatics Intern, Ph.D. Level - Aionics
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Menu
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Materials Informatics Intern, Ph.D. Level
+-
+July 27, 2021
+-
+aionics
+Send Us A Message
+Full Name
+Phone
+Email
+Send
+Aionics is committed to providing the best tools, data, and models, so materials innovators spend less time on data infrastructure and more time on the activities that build lasting internal expertise and enduring company value.
+Linkedin-in
+Twitter
+Youtube
+Quick links
+- Home
+- About
+- Case studies
+- Careers
+- News
+- Contact Us
+Menu
+- Home
+- About
+- Case studies
+- Careers
+- News
+- Contact Us
+Newsletter Subscription
+Subscribe to our newsletter and stay updated with the latest in material informatics.
+Name
+Email
+Subscribe
+© 2021 Aionics, Inc. All Rights Reserved.
+Menu
+- About
+- Our Team
+- Our Advisory Board
+- Aionics Fortnightly
+- Partnership
+- Co-Innovation
+- Tools
+- Data
+- case studies
+- News
+- Careers
+- Contact
+- User Login
+Linkedin-in
+Twitter
+Youtube
+-
+
+</details>
+
 <a id="materials-informatics-scientist-2023-11-27"></a>
 
 ### Materials Informatics Scientist (2023-11-27)
 
-2023-11-27 → open · materials-science · location not stated · [source](https://aionics.io/job/materials-informatics-scientist/)
+2023-11-27 → 2026-06-11 · materials-science · location not stated · [source](https://web.archive.org/web/20240222111817/https://aionics.io/job/materials-informatics-scientist/)
 
 <details><summary>Description</summary>
 
@@ -32,12 +291,14 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 - Visualize complex, multi-dimensional data
 - Communicate key findings clearly and comprehensively to clients of widely varying backgrounds
 - Disciplined and secure handling of client data, company data, and your own work to maintain privacy and robustness against infrastructural issues
+Recommended Qualifications
 - Ph.D. or Master’s degree in STEM, preferably the physical sciences
 - Prior work or postdoc experience in the areas of materials informatics/cheminformatics and/or battery research
 - Extreme attention to detail and unyielding principles in data handling and computational tool building
 - Technical expertise with statistical learning and data-driven modeling
 - Demonstrable experience producing professional-grade scripts and software
 - Fluency with software development tools and ability to work coherently across computational environments
+- Strong interpersonal and communication skills
 
 </details>
 
@@ -45,7 +306,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Software Engineering Manager (2023-11-27)
 
-2023-11-27 → open · software-eng · location not stated · [source](https://aionics.io/job/software-engineering-manager/)
+2023-11-27 → 2026-05-14 · software-eng · location not stated · [source](https://web.archive.org/web/20240222095231/https://aionics.io/job/software-engineering-manager/)
 
 <details><summary>Description</summary>
 
@@ -80,7 +341,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Office Manager (2024-02-06)
 
-2024-02-06 → open · business-ops · location not stated · [source](https://aionics.io/job/office-manager/)
+2024-02-06 → 2026-04-10 · business-ops · location not stated · [source](https://web.archive.org/web/20240222114050/https://aionics.io/job/office-manager/)
 
 <details><summary>Description</summary>
 
@@ -94,6 +355,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 - Assisting teams with Project Management and other ad hoc tasks
 - Office vendor and partnership management – building relationships with vendors, partners and other third parties
 - Assisting with travel bookings
+Recommended Qualifications
 - Solid analytical and communication skills
 - Highly organized and able to determine and enforce priorities
 - Strong communication and problem-solving skills
@@ -107,7 +369,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Financial Modeling Internship (Technoeconomics) (2024-05-01)
 
-2024-05-01 → open · business-ops · location not stated · [source](https://aionics.io/job/financial-modeling-internship-technoeconomics/)
+2024-05-01 → 2026-05-14 · business-ops · location not stated · [source](https://web.archive.org/web/20240521200047/https://aionics.io/job/financial-modeling-internship-technoeconomics/)
 
 <details><summary>Description</summary>
 
@@ -116,11 +378,45 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 - Create financial (techno-economic) models for energy and mobility markets using economic principles, market knowledge, technology forecasts, and data science methods
 - Aggregate, clean and prepare datasets from multiple sources
 - Contribute to and help manage internal data repository of commercial data
+Recommended Qualifications
 - Enrolled in a Bachelor’s degree program or higher in related fields such as finance, economics, business, data science or STEM.
 - Experience conducting research on energy or technology markets and/or consumer behavior
 - Strong data analysis skills; experience with programming languages such as Python, R, or SQL is preferred
 - Ability to work independently and collaborate with a remote team
+- Strong interpersonal and communication skills
 - Experience with energy storage and mobility technologies or markets is a plus
+
+</details>
+
+<a id="senior-software-engineer-python-django-2024-09-13"></a>
+
+### Senior Software Engineer - Python/Django (2024-09-13)
+
+2024-09-13 → 2024-09-13 · software-eng · location not stated · [source](https://web.archive.org/web/20240913071043/https://aionics.io/job/senior-software-engineer-python-django/)
+
+<details><summary>Description</summary>
+
+**Job description**
+- Intermediate to Senior level experience (4-5 years) in Python Backend Development with strong focus on server-side development and strong object oriented programming skills
+- Basic knowledge of JavaScript and Angular to be able to influence FrontEnd development is a plus.
+- Experience and expertise with DJango framework
+- Proficiency with RDBMS databases like MySQL
+- Testing oriented development mindset with strong experience in PyTest or UnitTest frameworks
+- Experience with microservices architecture
+- Strong understanding of design patterns
+- Excellent communication skills
+- Ability to work independently
+- Collaboration: Comfortable working across different time zones and with cross-functional teams
+
+**Qualifications**
+- B.S. degree in Computer Science or Computer Engineering with at minimum of 5+ years of experience in software engineering with a focus on cloud-based solutions and distributed systems
+- Demonstrated experience in prioritizing software specifications and development process
+- Ability to set clear expectations and paint a compelling vision that inspires action
+- Strong proficiency in AWS cloud services and infrastructure automation
+- Demonstrated expertise in Python stack including Django framework.
+- Experience with data engineering tools and frameworks
+- Excellent communication skills, with the ability to effectively collaborate with cross-functional teams.
+- Strong problem-solving abilities and a passion for innovation and continuous learning.
 
 </details>
 
@@ -128,7 +424,7 @@ Role-specific sections only (responsibilities, requirements, pay): the company p
 
 ### Head of Business Development (2024-12-18)
 
-2024-12-18 → open · leadership · location not stated · [source](https://aionics.io/job/head-of-business-development/)
+2024-12-18 → 2026-06-11 · leadership · location not stated · [source](https://web.archive.org/web/20250126140856/https://aionics.io/job/head-of-business-development/)
 
 <details><summary>Description</summary>
 

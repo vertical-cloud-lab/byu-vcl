@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Senior Automated Systems Engineer (2026-01-23)
 
-2026-01-23 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4110339009)
+2026-01-23 → open · lab-automation · Cambridge, MA USA · $119–182K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4110339009)
 
 <details><summary>Description</summary>
 
@@ -42,7 +42,7 @@ Project Innovation
 
 ### Staff / Principal Automated Systems Engineer (2026-01-28)
 
-2026-01-28 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4110350009)
+2026-01-28 → open · lab-automation · Cambridge, MA USA · $163–228K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4110350009)
 
 <details><summary>Description</summary>
 
@@ -78,7 +78,7 @@ Project Innovation
 
 ### Principal Software Engineer, Instrument Simulations (2026-03-20)
 
-2026-03-20 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4186530009)
+2026-03-20 → open · lab-automation · Cambridge, MA USA · $204–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4186530009)
 
 <details><summary>Description</summary>
 
@@ -117,7 +117,7 @@ What You'll Be Building
 
 ### Controls Engineer II, Sustaining Engineering (2026-07-20)
 
-2026-07-20 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
+2026-07-20 → open · lab-automation · Cambridge, MA USA · $94–139K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294210009)
 
 <details><summary>Description</summary>
 
@@ -158,7 +158,7 @@ $93,600 — $138,600 USD
 
 ### Senior II/Staff Mechatronics Engineer (2026-08-06)
 
-2026-08-06 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4337828009)
+2026-08-06 → open · lab-automation · Cambridge, MA USA · $137–218K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4337828009)
 
 <details><summary>Description</summary>
 
@@ -200,7 +200,7 @@ $136,800 — $217,866 USD
 
 ### Senior Human Factors Engineer I/II, Robotics (2026-08-10)
 
-2026-08-10 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
+2026-08-10 → open · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332442009)
 
 <details><summary>Description</summary>
 
@@ -236,7 +236,7 @@ $144,000 — $240,000 USD
 
 ### Senior Software Engineer I/II, Test Robotics (2026-08-10)
 
-2026-08-10 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332043009)
+2026-08-10 → open · lab-automation · Cambridge, MA USA · $144–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4332043009)
 
 <details><summary>Description</summary>
 
@@ -271,7 +271,7 @@ $144,000 — $240,000 USD
 
 ### Robotics Operations Engineer I, First Shift (2026-09-22)
 
-2026-09-22 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
+2026-09-22 → open · lab-automation · Cambridge, MA USA · $76–109K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4410043009)
 
 <details><summary>Description</summary>
 
@@ -312,7 +312,7 @@ $75,600 — $109,200 USD
 
 ### Lab Operations Specialist (2026-09-28)
 
-2026-09-28 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
+2026-09-28 → open · lab-automation · Cambridge, MA USA · $68–103K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395906009)
 
 <details><summary>Description</summary>
 
@@ -354,7 +354,7 @@ $68,000 — $102,667 USD
 
 ### Platform Scientist I/II, Functional Materials Instrumentation (2026-10-05)
 
-2026-10-05 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423504009)
+2026-10-05 → open · lab-automation · Cambridge, MA USA · $108–170K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423504009)
 
 <details><summary>Description</summary>
 
@@ -389,7 +389,7 @@ $108,000 — $170,000 USD
 
 ### Senior / Principal Chemist, AI Safety (2026-10-05)
 
-2026-10-05 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009)
+2026-10-05 → open · lab-automation · Cambridge, MA USA; London, UK; San Francisco, CA USA · $148–208K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423500009)
 
 <details><summary>Description</summary>
 
@@ -415,7 +415,7 @@ What You'll Be Building
 
 ### Engineer II/ Senior Engineer, Robotics Platform Evaluation (2026-10-08)
 
-2026-10-08 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4404771009)
+2026-10-08 → open · lab-automation · Cambridge, MA USA · $94–158K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4404771009)
 
 <details><summary>Description</summary>
 
@@ -493,7 +493,7 @@ What You'll Be Building
 
 ### Senior Engineer II, Robotics Mechanical Design (2026-10-09)
 
-2026-10-09 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4412075009)
+2026-10-09 → open · lab-automation · Cambridge, MA USA · $137–191K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4412075009)
 
 <details><summary>Description</summary>
 
@@ -531,7 +531,7 @@ What You'll Be Building
 
 ### Senior II/ Staff Robotics Platform Evaluation Engineer (2026-10-09)
 
-2026-10-09 → open · lab-automation · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4404934009)
+2026-10-09 → open · lab-automation · Cambridge, MA USA · $137–218K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4404934009)
 
 <details><summary>Description</summary>
 

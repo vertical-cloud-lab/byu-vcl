@@ -1,0 +1,60 @@
+{
+ "captures": {
+  "mitrachem.com/job/": [
+   {
+    "urlkey": "com,mitrachem)/job/battery-materials-scientist",
+    "first": "20211019143746",
+    "last": "20211019143746",
+    "n": 1,
+    "original": "https://mitrachem.com/job/battery-materials-scientist/"
+   }
+  ],
+  "www.mitrachem.com/join-us": [
+   {
+    "urlkey": "com,mitrachem)/join-us",
+    "first": "20220809082659",
+    "last": "20260519052416",
+    "n": 34,
+    "original": "https://www.mitrachem.com/join-us"
+   },
+   {
+    "urlkey": "com,mitrachem)/join-us?ref=climatetechlist.com&ref=climatetechlist.com&utm_medium=referral&utm_source=climatetechlist.com",
+    "first": "20240524140355",
+    "last": "20260613063844",
+    "n": 4,
+    "original": "https://www.mitrachem.com/join-us?ref=climatetechlist.com&ref=climatetechlist.com&utm_source=climatetechlist.com&utm_medium=referral"
+   }
+  ],
+  "jobs.lever.co/mitrachem": [],
+  "app.trinethire.com/companies/913890-mitra-chem/jobs/": []
+ },
+ "board_captures": {},
+ "postings": [
+  {
+   "company": "mitra-chem",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20211019143746/https://mitrachem.com/job/battery-materials-scientist/",
+   "url": "https://mitrachem.com/job/battery-materials-scientist/",
+   "first_seen": "20211019143746",
+   "last_seen": "20211019143746",
+   "n_captures": 1,
+   "title": "Battery Materials Scientist",
+   "location": "",
+   "employment_type": "FULL_TIME",
+   "published": "2021-08-11T05:56:03-07:00",
+   "valid_through": null,
+   "salary": null,
+   "org": "Mitra Chem",
+   "text": "Mitra Chem is a Silicon Valley startup working at the intersection of machine learning and battery development. We live at the cutting-edge of battery technology and aim to deliver world-class materials for the EV market within the next few years. Our goal is to be the first lithium-ion battery materials manufacturer to shorten the lab-to-production timeline by >90% through accelerated R&D and vertically integrated process optimization. We will first focus on Li-ion battery cathodes, converting them from commodity chemicals into a product platform, customized for different applications. We are setting up a state-of-the-art 10,000 sq ft industrial R&D center (located on the San Francisco Peninsula). Join our team to be a part of the growing battery revolution.\nWe are looking for a Battery Materials Scientist to design, develop and scale-up production of innovative materials, leveraging Mitra Chem’s accelerated R&D infrastructure.",
+   "posting_id": "mitrachem.com/job/battery-materials-scientist"
+  }
+ ],
+ "spans": {
+  "mitrachem.com/job/battery-materials-scientist": {
+   "first": "20211019143746",
+   "last": "20211019143746",
+   "n": 1,
+   "url": "https://mitrachem.com/job/battery-materials-scientist/"
+  }
+ }
+}

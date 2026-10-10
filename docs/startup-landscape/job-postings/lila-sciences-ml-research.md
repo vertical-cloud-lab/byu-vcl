@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Senior / Engineer II, AI Lab Research Engineer (2025-10-06)
 
-2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4029507009)
+2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $148–240K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4029507009)
 
 <details><summary>Description</summary>
 
@@ -40,7 +40,7 @@ $148,000 — $240,000 USD
 
 ### Senior Software Engineer, Applied AI (2025-10-06)
 
-2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031455009)
+2025-10-06 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $144–270K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031455009)
 
 <details><summary>Description</summary>
 
@@ -73,7 +73,7 @@ What You'll Be Building
 
 ### Software Engineer, AI Platform (2025-10-06)
 
-2025-10-06 → open · ml-research · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031328009)
+2025-10-06 → open · ml-research · Cambridge, MA USA · $148–210K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4031328009)
 
 <details><summary>Description</summary>
 
@@ -108,7 +108,7 @@ $148,000 — $210,000 USD
 
 ### Product Lead, Software/Applied AI (2026-04-07)
 
-2026-04-07 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4182437009)
+2026-04-07 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $180–288K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4182437009)
 
 <details><summary>Description</summary>
 
@@ -160,7 +160,7 @@ Direct experience building software, tools, or platforms specifically designed f
 
 ### Principal Engineer, AI Security (2026-04-16)
 
-2026-04-16 → open · ml-research · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4210497009)
+2026-04-16 → open · ml-research · Cambridge, MA USA · $255–348K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4210497009)
 
 <details><summary>Description</summary>
 
@@ -187,7 +187,7 @@ What You'll Be Building
 
 ### Senior / Principal ML Scientist, Foundation Models for Life Sciences (2026-04-27)
 
-2026-04-27 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222034009)
+2026-04-27 → open · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222034009)
 
 <details><summary>Description</summary>
 
@@ -216,7 +216,7 @@ What You'll Be Building
 
 ### ML Scientist, Foundation Models for Life Sciences (2026-04-28)
 
-2026-04-28 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222051009)
+2026-04-28 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4222051009)
 
 <details><summary>Description</summary>
 
@@ -247,7 +247,7 @@ What You'll Be Building
 
 ### Senior / Staff Machine Learning Engineer, Applied AI (2026-07-01)
 
-2026-07-01 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4302917009)
+2026-07-01 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $180–298K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4302917009)
 
 <details><summary>Description</summary>
 
@@ -287,7 +287,7 @@ What You'll Be Building
 
 ### ML Scientist, Nucleic Acid Design (2026-07-27)
 
-2026-07-27 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324969009)
+2026-07-27 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4324969009)
 
 <details><summary>Description</summary>
 
@@ -320,7 +320,7 @@ What You'll Be Building
 
 ### ML Scientist I/II, AI for Protein Engineering (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4392245009)
+2026-09-15 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4392245009)
 
 <details><summary>Description</summary>
 
@@ -355,7 +355,7 @@ What You'll Be Building
 
 ### Machine Learning Scientist I / II, Protein Design (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4396760009)
+2026-09-15 → open · ml-research · San Francisco, CA USA · $176–304K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4396760009)
 
 <details><summary>Description</summary>
 
@@ -390,7 +390,7 @@ $176,000 — $304,000 USD
 
 ### Senior ML Scientist, AI for Protein Engineering (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4392247009)
+2026-09-15 → open · ml-research · San Francisco, CA USA · $268–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4392247009)
 
 <details><summary>Description</summary>
 
@@ -419,7 +419,7 @@ What You'll Be Building
 
 ### Senior ML Scientist, Biological Systems (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395725009)
+2026-09-15 → open · ml-research · San Francisco, CA USA · $268–358K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395725009)
 
 <details><summary>Description</summary>
 
@@ -443,7 +443,7 @@ What You'll Be Building
 
 ### Senior/Principal ML Scientist, Translational Biology (2026-09-15)
 
-2026-09-15 → open · ml-research · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395727009)
+2026-09-15 → open · ml-research · San Francisco, CA USA · $268–384K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4395727009)
 
 <details><summary>Description</summary>
 
@@ -466,7 +466,7 @@ What You'll Be Building
 
 ### Principal Machine Learning Engineer, Applied AI (2026-10-07)
 
-2026-10-07 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4400744009)
+2026-10-07 → open · ml-research · Cambridge, MA USA; San Francisco, CA USA · $252–336K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4400744009)
 
 <details><summary>Description</summary>
 

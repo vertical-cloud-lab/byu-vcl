@@ -2,7 +2,7 @@
 
 Back to [all companies](README.md) · [company profile](../companies/dunia-innovations.md)
 
-**13 postings recovered**, 13 with the full description; 13 still open on 2026-10-10. First seen 2025-07-29, latest 2026-02-06. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
+**16 postings recovered**, 16 with the full description; 13 still open on 2026-10-10. First seen 2025-07-29, latest 2026-06-17. Dates are the earliest and latest evidence of each posting: its publish date where the job board gives one, otherwise its first and last Wayback capture, so they bound how long it was open from inside.
 
 | First seen | Last seen | Title | Function | Team | Location | Degree named | Min. years | Posted pay | Source |
 |---|---|---|---|---|---|---|---|---|---|
@@ -19,6 +19,9 @@ Back to [all companies](README.md) · [company profile](../companies/dunia-innov
 | 2026-02-06 | open | [Manufacturing Systems Engineer](#manufacturing-systems-engineer-2026-02-06) | software-eng |  | Berlin |  |  |  | [live](https://dunia.jobs.personio.com/job/2521931?language=en) |
 | 2026-02-06 | open | [Quantum Chemistry Specialist](#quantum-chemistry-specialist-2026-02-06) | materials-science |  | Berlin | PhD | 3 |  | [live](https://dunia.jobs.personio.com/job/2521891?language=en) |
 | 2026-02-06 | open | [Reliability & Test Engineer](#reliability-test-engineer-2026-02-06) | software-eng |  | Berlin |  | 5 |  | [live](https://dunia.jobs.personio.com/job/2521947?language=en) |
+| 2026-04-10 | 2026-05-14 | [Head of People](#head-of-people-2026-04-10) | leadership |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890) |
+| 2026-04-10 | 2026-06-17 | [Partnership Manager](#partnership-manager-2026-04-10) | business-ops |  |  |  | 5 |  | [Wayback](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252) |
+| 2026-06-17 | 2026-06-17 | [Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid](#bilanzbuchhalter-in-ihk-finance-manager-m-w-d-20-std-woche-hybrid-2026-06-17) | business-ops |  |  |  |  |  | [Wayback](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177) |
 
 ## Descriptions
 
@@ -597,6 +600,140 @@ Turn failures into progress
 - Experience working with automated, hardware-software integrated environments
 - High standards , strong ownership mindset, and comfort saying “this isn’t ready”
 - Clear communicator who can align teams around quality and safety expectations
+
+</details>
+
+<a id="head-of-people-2026-04-10"></a>
+
+### Head of People (2026-04-10)
+
+2026-04-10 → 2026-05-14 · leadership · location not stated · [source](https://web.archive.org/web/20260410191200/https://dunia.jobs.personio.com/job/2515890)
+
+<details><summary>Description</summary>
+
+**Your mission**
+Build a company where exceptional people do the best work of their careers, even as we scale.
+At Dunia, we are transforming materials innovation to build a utopian future of abundance. That only works if we build an exceptional people organization around it.
+As our Head of People, you will work directly with the leadership team to design and scale the human engine behind Dunia. You will shape how we hire, grow, evaluate, and retain top talent in a highly technical, fast-scaling deep tech environment.
+Your mandate is simple but high-stakes: ensure that Dunia consistently attracts the best people in their field, helps them do the best work of their careers, and scales without losing speed, rigor, or culture
+
+**Your tasks will include**
+Build a world-class hiring engine
+- Design and run scalable technical and non-technical hiring processes
+- Partner closely with leadership to continuously refine the org and hiring priorities
+- Define methods to maintain a high hiring bar without slowing the company down
+People as force multipliers
+- Build onboarding that accelerates productivity, ownership, and context
+- Design and  operate  performance / feedback systems that reward impact
+Be a true partner to talent
+- Coach leaders  and  high-potentials  on team design, feedback, and people systems
+- Provide thought-leadership around  culture, incentives, and long-term talent strategy
+Own the operational backbone of People
+- Oversee HR operations including  contracts,  payroll, benefits, visas, and compliance (with Finance and external partners)
+- Ensure alignment with German labor law while keeping processes pragmatic and  startup -friendly
+- Anticipate people-related risks before they become bottlenecks
+Protect and evolve company culture
+- Translate values into everyday behaviors, rituals, and decisions
+- Design offsites and culture initiatives that actually matter
+- Build retention strategies focused on top performers and critical talent
+
+**Your profile**
+- You are a senior People leader who has already helped scale a company through real growth, complexity, and tradeoffs.
+- Proven experience building and scaling  People functions in fast-growing startups.  You have had ownership over hiring, performance, and org design (typically 5+ years, but we care more about scope and impact than titles or timelines)
+- Knowledge of German labor law , paired with the judgment to apply it pragmatically in a startup environment
+- Credibility with senior leaders and highly technical talent . You can challenge, coach, and support founders, managers, and ICs with equal clarity
+- Strong systems thinker who knows when to introduce structure and when to stay out of the way
+- High bar for talent and performance , combined with fairness in how decisions are made
+- Comfortable operating in ambiguity , setting direction where no playbook exists yet
+- Clear communicator who can turn complex people topics into simple, actionable decisions
+- Fluent in English and German
+
+*(truncated: full text in `data/job_postings.jsonl`)*
+
+</details>
+
+<a id="partnership-manager-2026-04-10"></a>
+
+### Partnership Manager (2026-04-10)
+
+2026-04-10 → 2026-06-17 · business-ops · location not stated · [source](https://web.archive.org/web/20260410203801/https://dunia.jobs.personio.com/job/2516252)
+
+<details><summary>Description</summary>
+
+**Your mission**
+Turn signed commercial partnerships into delivered outcomes and long-term trust
+At Dunia, signing a deal is the beginning, not the finish line. Our commercial partners come to us with complex, high-stakes problems at the intersection of AI, chemistry, and automation. Delivery is where trust is earned or lost.
+As Partnership Manager, you own that moment.
+You take over once a commercial partnership is signed and are accountable for ensuring intent becomes results: the right work gets done, by the right teams, at the right time, with no surprises. When delivery is excellent, partnerships deepen.
+This is not a sales role'; it's an ownership role.
+
+**Your tasks will include**
+Own commercial partner success end-to-end
+- Become the trusted counterpart for a portfolio of strategic commercial partners
+- Understand what success truly looks like for them, beyond the contract language
+- Be an advocate for the commercial partner internally, and  an  advocate for Dunia externally, with equal clarity
+Drive delivery through influence, not authority
+- Translate partner goals into clear scopes, milestones, and priorities
+- Coordinate execution across AI, chemistry, automation, and lab teams
+- Resolve ambiguity, manage tradeoffs, and keep momentum
+Protect trust
+- Communicate clearly and early when risks or changes arise
+- Keep expectations  aligned with reality at all times
+- Build credibility by doing what you say you will do
+Grow what works
+- Spot opportunities where delivered value can turn into deeper collaboration
+- Work with Business Development to shape follow-on engagements
+- Help turn successful projects into long-term strategic partnerships
+
+**Your profile**
+- 5+  years experience  in partnerships, consulting, customer success, or account management in complex technical environments
+- Proven  track record  of owning delivery across multiple stakeholders
+- Strong project coordination and stakeholder management skills
+- Technical literacy in deep tech, science, or engineering domains
+- Calm under pressure, with a high sense of ownership and accountability
+- Clear communicator who builds trust through precision and honesty
+- English fluency,  additional  languages preferred
+
+</details>
+
+<a id="bilanzbuchhalter-in-ihk-finance-manager-m-w-d-20-std-woche-hybrid-2026-06-17"></a>
+
+### Bilanzbuchhalter/in (IHK) / Finance Manager (m/w/d) — 20 Std./Woche, hybrid (2026-06-17)
+
+2026-06-17 → 2026-06-17 · business-ops · location not stated · [source](https://web.archive.org/web/20260617195805/https://dunia.jobs.personio.com/job/2630177)
+
+<details><summary>Description</summary>
+
+Ihre Aufgaben
+Die Rolle
+Du verantwortest die operative Finance-Funktion von A bis Z: Buchhaltung, Fördermitteldokumentation, Rechnungsmanagement und Monatsabschluss. Du arbeitest direkt mit unserer Fractional CFO (2 Tage/Woche) zusammen und berichtest an den COO. Hands-on — du bist die Person, die wirklich weiß, wo jeder Euro steckt.
+Deine Aufgaben
+- Finanzbuchhaltung in DATEV — du buchst selbst bzw. verantwortest die geplante Automatisierung der Buchungen
+- Verantwortung für den gesamten Rechnungs- und Zahlungsprozess: Erfassen, kategorisieren, freigeben und Zahlungen initiieren
+- Finanzielle Dokumentation und Berichterstattung für öffentliche Förderprogramme: Kostenzuordnung, Mittelanforderungen, Budgetabweichungsberichte (IBB, PTJ, EU)
+- Pflege des Anlagenregisters inkl. Abschreibungsplanung (CAPEX-intensives Umfeld)
+- Monatsabschluss: Abstimmungen, Ausgabenkategorisierung, Cash-Flow-Input
+- Potenziell Lohnbuchhaltung
+- Weiterentwicklung und Teilautomatisierung von Finance-Prozessen
+Ihr Profil
+- Abschluss als Bilanzbuchhalter/in (IHK) oder vergleichbare Qualifikation; alternativ betriebswirtschaftliches Studium mit mind. 4 Jahren Buchhaltungspraxis
+- DATEV-Kenntnisse — du führst die Buchungen eigenständig durch
+- Fundierte HGB-Kenntnisse; Jahresabschlusserfahrung ist ein Plus
+- Erfahrung mit der finanziellen Abwicklung öffentlicher Förderprogramme (IBB, PTJ, EU) — großes Plus, kein Muss
+- Sehr gute Deutschkenntnisse (C2), gutes Englisch (interne Kommunikation auf Englisch)
+- Startup-Mentalität: Dinge ändern sich, du findest Lösungen
+- Erfahrung  in Lohnbuchhaltung ist ein Plus
+Warum wir?
+- Vollständige Verantwortung für die Finance-Funktion — keine Hierarchieebenen dazwischen
+- Kleines, internationales Team Wachsendes Unternehmen und damit die Möglichkeit, mit dem Unternehmen zu wachsen
+- Hybrides Arbeiten möglich (alle ~2 Monate Präsenz vor Ort wünschenswert)
+- Kompetitives Gehalt plus Deutschlandticket oder Mitgliedschaft bei Urban Sports
+- Direkte Zusammenarbeit mit einer erfahrenen Fractional CFO
+Über uns
+Dunia bedeutet „Welt" in über 20 Sprachen – und spiegelt unseren Anspruch wider, Technologien zu entwickeln, die weltweit Wohlstand schaffen. Durch die Kombination von Physik, KI und Automatisierung beschleunigen wir die Materialentdeckung für Energiesysteme und Industrieanwendungen der nächsten Generation. Unsere Arbeit trägt dazu bei, Energie zugänglicher und Materialien erschwinglicher und widerstandsfähiger zu machen – und verändert, wie Wissenschaft von der Idee zur Wirkung gelangt. Werde Teil unseres Teams und arbeite an Problemen, bei denen Fortschritt sich wirklich verzinst.
+Noch nicht überzeugt? →  Schau dir dieses Video an
+
+*(truncated: full text in `data/job_postings.jsonl`)*
 
 </details>
 

@@ -6,7 +6,7 @@ Back to [Lila Sciences's postings](lila-sciences.md) · [all companies](README.m
 
 ### Director of Product, Life Sciences (Chemistry) (2025-10-20)
 
-2025-10-20 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4048370009)
+2025-10-20 → open · leadership · Cambridge, MA USA · $184–256K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4048370009)
 
 <details><summary>Description</summary>
 
@@ -39,7 +39,7 @@ Define success metrics and milestones (technical, product, commercial) and repor
 
 ### Associate Director/Director, Commercial Counsel (2026-03-09)
 
-2026-03-09 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4174259009)
+2026-03-09 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $232–327K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4174259009)
 
 <details><summary>Description</summary>
 
@@ -74,7 +74,7 @@ $232,000 — $327,000 USD
 
 ### Associate Director / Director, Customer Program Management, Life Sciences (2026-03-17)
 
-2026-03-17 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4184652009)
+2026-03-17 → open · leadership · Cambridge, MA USA · $148–224K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4184652009)
 
 <details><summary>Description</summary>
 
@@ -104,7 +104,7 @@ Process & Scale
 
 ### Senior Director, Data Platform Engineering (2026-04-01)
 
-2026-04-01 → open · leadership · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
+2026-04-01 → open · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4202443009)
 
 <details><summary>Description</summary>
 
@@ -125,7 +125,7 @@ What You'll Be Building
 
 ### Head of Software Product (2026-04-08)
 
-2026-04-08 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4205624009)
+2026-04-08 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $400–500K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4205624009)
 
 <details><summary>Description</summary>
 
@@ -159,7 +159,7 @@ $400,000 — $500,000 USD
 
 ### (Senior) Director, Portfolio Strategy, Life Sciences (2026-05-26)
 
-2026-05-26 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4258093009)
+2026-05-26 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4258093009)
 
 <details><summary>Description</summary>
 
@@ -185,7 +185,7 @@ What You'll Be Building
 
 ### Associate Director / Director, Customer Program Management, Physical Sciences (2026-06-18)
 
-2026-06-18 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4290011009)
+2026-06-18 → open · leadership · Cambridge, MA USA · $148–224K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4290011009)
 
 <details><summary>Description</summary>
 
@@ -214,7 +214,7 @@ Program Management
 
 ### Chief of Staff to the CEO (2026-06-21)
 
-2026-06-21 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4285660009)
+2026-06-21 → open · leadership · Cambridge, MA USA · $250–350K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4285660009)
 
 <details><summary>Description</summary>
 
@@ -239,7 +239,7 @@ What You'll Be Building
 
 ### Director/Senior Director, Molecular Discovery (2026-06-22)
 
-2026-06-22 → open · leadership · Cambridge, MA USA; London, UK; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273680009)
+2026-06-22 → open · leadership · Cambridge, MA USA; London, UK; San Francisco, CA USA · $202–323K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273680009)
 
 <details><summary>Description</summary>
 
@@ -266,7 +266,7 @@ What You'll Be Building
 
 ### Senior Director / Vice President, Chemistry Experiment (2026-07-02)
 
-2026-07-02 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
+2026-07-02 → open · leadership · Cambridge, MA USA · $204–346K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4300718009)
 
 <details><summary>Description</summary>
 
@@ -297,7 +297,7 @@ Chemistry Strategy & Innovation
 
 ### Senior Director, Software Development, Test Automation (2026-07-09)
 
-2026-07-09 → open · leadership · San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294875009)
+2026-07-09 → open · leadership · San Francisco, CA USA · $300–390K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4294875009)
 
 <details><summary>Description</summary>
 
@@ -333,7 +333,7 @@ Drive AI-driven test automation
 
 ### Principal Scientist / Associate Director, Agentic AI Research for Materials Science (2026-07-10)
 
-2026-07-10 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273850009)
+2026-07-10 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $288–420K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4273850009)
 
 <details><summary>Description</summary>
 
@@ -361,7 +361,7 @@ What You'll Be Building
 
 ### Director/ Senior Director, Product, Materials Chemistry (2026-07-20)
 
-2026-07-20 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4320806009)
+2026-07-20 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4320806009)
 
 <details><summary>Description</summary>
 
@@ -387,7 +387,7 @@ What You'll Be Building
 
 ### Director / Senior Director, Origins (2026-07-23)
 
-2026-07-23 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
+2026-07-23 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4314463009)
 
 <details><summary>Description</summary>
 
@@ -418,7 +418,7 @@ What You'll Be Building
 
 ### Director, Materials AISF Program Lead (2026-08-06)
 
-2026-08-06 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4287216009)
+2026-08-06 → open · leadership · Cambridge, MA USA · $320–380K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4287216009)
 
 <details><summary>Description</summary>
 
@@ -457,7 +457,7 @@ $320,000 — $380,000 USD
 
 ### Associate Director / Director, Strategic Finance (2026-08-14)
 
-2026-08-14 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353595009)
+2026-08-14 → open · leadership · Cambridge, MA USA · $148–224K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4353595009)
 
 <details><summary>Description</summary>
 
@@ -483,7 +483,7 @@ What You'll Be Building
 
 ### Associate Director, App (2026-08-27)
 
-2026-08-27 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4371404009)
+2026-08-27 → open · leadership · Cambridge, MA USA; San Francisco, CA USA · $204–306K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4371404009)
 
 <details><summary>Description</summary>
 
@@ -513,7 +513,7 @@ What You'll Be Building
 
 ### Principal Scientist / Associate Director, Soft Materials Experimentation (2026-09-24)
 
-2026-09-24 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
+2026-09-24 → open · leadership · Cambridge, MA USA · $156–214K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4403708009)
 
 <details><summary>Description</summary>
 
@@ -542,7 +542,7 @@ What You'll Be Building
 
 ### Director, Enterprise Account Management, Life Sciences (2026-10-05)
 
-2026-10-05 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423498009)
+2026-10-05 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423498009)
 
 <details><summary>Description</summary>
 
@@ -580,7 +580,7 @@ What You'll Be Building
 
 ### Director, Enterprise Account Management, Physical Sciences (2026-10-05)
 
-2026-10-05 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423477009)
+2026-10-05 → open · leadership · Cambridge, MA USA · $168–272K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4423477009)
 
 <details><summary>Description</summary>
 
@@ -615,7 +615,7 @@ What You'll Be Building
 
 ### Director, Product Marketing, Life Sciences (2026-10-06)
 
-2026-10-06 → open · leadership · Cambridge, MA USA · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4420035009)
+2026-10-06 → open · leadership · Cambridge, MA USA · $168–238K · [source](https://job-boards.greenhouse.io/lilasciences/jobs/4420035009)
 
 <details><summary>Description</summary>
 

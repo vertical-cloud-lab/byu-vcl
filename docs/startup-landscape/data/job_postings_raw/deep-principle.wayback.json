@@ -1,0 +1,158 @@
+{
+ "captures": {
+  "www.deepprinciple.com/join.html": [
+   {
+    "urlkey": "com,deepprinciple)/join.html",
+    "first": "20250712094015",
+    "last": "20260218064659",
+    "n": 3,
+    "original": "https://www.deepprinciple.com/join.html"
+   }
+  ],
+  "www.deepprinciple.com/cn/join.html": [
+   {
+    "urlkey": "com,deepprinciple)/cn/join.html",
+    "first": "20250617235301",
+    "last": "20260411021424",
+    "n": 6,
+    "original": "https://www.deepprinciple.com/cn/join.html"
+   }
+  ]
+ },
+ "board_captures": {
+  "deepprinciple.com/cn/join.html": [
+   [
+    "20250617235301",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20250702090211",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20251007154152",
+    "https://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20260218060930",
+    "http://www.deepprinciple.com/cn/join.html"
+   ],
+   [
+    "20260411021424",
+    "http://www.deepprinciple.com/cn/join.html"
+   ]
+  ],
+  "deepprinciple.com/join.html": [
+   [
+    "20250712094015",
+    "https://www.deepprinciple.com/join.html"
+   ],
+   [
+    "20251217085811",
+    "https://www.deepprinciple.com/join.html"
+   ],
+   [
+    "20260218064659",
+    "http://www.deepprinciple.com/join.html"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250617235301/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250617235301",
+   "last_seen": "20250617235301",
+   "n_captures": 1,
+   "title": "深度原理 ｜ 人工智能解锁新反应和材料",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250702090211/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20250702090211",
+   "last_seen": "20250702090211",
+   "n_captures": 1,
+   "title": "深度原理 ｜ 人工智能解锁新反应和材料",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250712094015/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20250712094015",
+   "last_seen": "20250712094015",
+   "n_captures": 1,
+   "title": "Deep Principle",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251007154152/https://www.deepprinciple.com/cn/join.html",
+   "url": "https://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20251007154152",
+   "last_seen": "20251007154152",
+   "n_captures": 1,
+   "title": "深度原理 ｜ 人工智能解锁新反应和材料",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251217085811/https://www.deepprinciple.com/join.html",
+   "url": "https://www.deepprinciple.com/join.html",
+   "first_seen": "20251217085811",
+   "last_seen": "20251217085811",
+   "n_captures": 1,
+   "title": "Deep Principle",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218060930/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260218060930",
+   "last_seen": "20260218060930",
+   "n_captures": 1,
+   "title": "深度原理 ｜ 人工智能解锁新反应和材料",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260218064659/http://www.deepprinciple.com/join.html",
+   "url": "http://www.deepprinciple.com/join.html",
+   "first_seen": "20260218064659",
+   "last_seen": "20260218064659",
+   "n_captures": 1,
+   "title": "Deep Principle",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "deep-principle",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260411021424/http://www.deepprinciple.com/cn/join.html",
+   "url": "http://www.deepprinciple.com/cn/join.html",
+   "first_seen": "20260411021424",
+   "last_seen": "20260411021424",
+   "n_captures": 1,
+   "title": "深度原理 ｜ 人工智能解锁新反应和材料",
+   "text": "",
+   "generic": true
+  }
+ ]
+}
