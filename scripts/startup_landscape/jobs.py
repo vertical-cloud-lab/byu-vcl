@@ -28,6 +28,7 @@ import os
 import re
 import sys
 import urllib.parse
+import urllib.request
 from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -67,14 +68,36 @@ BOARDS = {
                    "pattern": ["mitrachem.com/job/", "www.mitrachem.com/join-us", "jobs.lever.co/mitrachem",
                                "app.trinethire.com/companies/913890-mitra-chem/jobs/"]},
     "materials-nexus": {"pattern": ["www.materialsnexus.com/jobs/", "www.materialsnexus.com/careers"]},
-    "kebotix": {"pattern": ["www.kebotix.com/jobs", "www.kebotix.com/careers", "boards.greenhouse.io/kebotix",
+    "kebotix": {"pattern": ["hire.withgoogle.com/public/jobs/kebotixcom",
+                            "www.kebotix.com/jobs", "www.kebotix.com/careers", "boards.greenhouse.io/kebotix",
                             "boards.greenhouse.io/embed/job_app?for=kebotix", "boards.greenhouse.io/embed/job_board?for=kebotix"]},
-    "polymerize": {"pattern": ["polymerize.io/company-pages/careers"]},
-    "emerald-cloud-lab": {"pattern": ["www.emeraldcloudlab.com/careers", "www.emeraldcloudlab.com/company-culture/careers",
+    "polymerize": {"pattern": ["polymerize.io/careers", "polymerize.io/company-pages/careers"]},
+    "emerald-cloud-lab": {"live": [("bamboohr", "emeraldcloudlab")],
+                          "pattern": ["emeraldcloudlab.bamboohr.com", "jobs.lever.co/emeraldcloudlab", "jobs.lever.co/emeraldtherapeutics",
+                                      "www.emeraldcloudlab.com/careers", "www.emeraldcloudlab.com/company-culture/careers",
                                       "www.emeraldcloudlab.com/about/careers"]},
     "mattiq": {"pattern": ["mattiq.com/careers"]},
     "atinary": {"pattern": ["atinary.com/careers"]},
     "deep-principle": {"pattern": ["www.deepprinciple.com/join.html", "www.deepprinciple.com/cn/join.html"]},
+    # Radical AI moved from Lever to Nodi in 2026. AlleyCorp's portfolio board (Getro) kept its Lever
+    # postings after they closed; their ids were found next to the two the board still lists.
+    "radical-ai": {"live": [("lever", "RadicalAI"), ("nodi", "radical ai"),
+                            ("getro", "jobs.alleycorp.com|" + ",".join(
+                                f"radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee/jobs/{i}"
+                                for i in [*range(73774119, 73774132), *range(81655547, 81655551)]))],
+                   "pattern": ["jobs.lever.co/RadicalAI", "www.radical-ai.com/careers",
+                               "jobs.alleycorp.com/companies/radical-ai-2-91959a92-375e-4de8-968f-29c967d9b1ee"]},
+    "altrove": {"live": [("getro", "portfolio.joinef.com|altrove-2/jobs/94646394")],
+                "pattern": ["portfolio.joinef.com/companies/altrove-2", "jobs.cventures.vc/companies/altrove-2",
+                            "jobs.alven.co/companies/altrove"]},
+    "intrepid-labs": {"pattern": ["jobs.entrepreneurs.utoronto.ca/companies/intrepid-labs-2-e3db58f4-bb86-403c-8430-f8d64448d0fe",
+                                  "radical.getro.com/companies/intrepid-labs"]},
+    "dp-technology": {"live": [("feishu", "dptechnology.jobs.feishu.cn|index,305722")],
+                      "pattern": ["dptechnology.jobs.feishu.cn/index/position", "dptechnology.jobs.feishu.cn/305722/position"]},
+    "telescope-innovations": {"live": [("getro", "techjobs.marsdd.com|telescope-innovations/jobs/39623303-mechatronics-engineer-"
+                                                 "automated-chemistry-technology,telescope-innovations/jobs/39701379-software-"
+                                                 "engineer-automated-chemistry-technology")],
+                              "pattern": ["techjobs.marsdd.com/companies/telescope-innovations"]},
 }
 
 # --- text helpers --------------------------------------------------------------
@@ -269,11 +292,60 @@ def parse_page(url, body):
             c = {k: to_text(v) for k, v in cats}
             out.append({"title": to_text(t.group(1)), "location": c.get("location"), "team": c.get("department"),
                         "employment_type": c.get("commitment"), "text": to_text(main.group(1) if main else body)})
+        # A board page: one <a class="posting-title"> per opening, with its location, team and commitment.
+        for pid, name, rest in re.findall(r'(?is)<a class="posting-title" href="[^"]*/([0-9a-f-]{36})"[^>]*>\s*'
+                                          r'<h5[^>]*>(.*?)</h5>(.*?)</a>', body):
+            c = dict(re.findall(r'(?is)class="sort-by-(location|team|commitment)[^"]*"[^>]*>(.*?)</span>', rest))
+            out.append({"posting_id": pid, "title": to_text(name), "location": to_text(c.get("location")) or None,
+                        "team": to_text(c.get("team")) or None, "employment_type": to_text(c.get("commitment")) or None,
+                        "listing_only": True})
+        return out
+    if "bamboohr.com" in host:
+        # /careers/list is the JSON the careers page renders from; embed2.php is the widget companies
+        # put on their own site; a posting page carries its title in og:title (the text loads client-side).
+        if re.search(r"/careers/list\b", url):
+            try:
+                data = json.loads(body)
+            except ValueError:
+                return []
+            for j in data.get("result") or []:
+                loc, ats = j.get("location") or {}, j.get("atsLocation") or {}
+                out.append({"posting_id": str(j["id"]), "title": (j.get("jobOpeningName") or "").strip(),
+                            "team": re.sub(r"^\d+\s+", "", j.get("departmentLabel") or "") or None,
+                            "location": ", ".join(filter(None, (loc.get("city") or ats.get("city"),
+                                                                loc.get("state") or ats.get("state")))) or None,
+                            "employment_type": j.get("employmentStatusLabel"), "listing_only": True})
+            return out
+        for pid, name in re.findall(r'(?is)<a[^>]+href="[^"]*/careers/(\d+)"[^>]*>(.*?)</a>', body):
+            out.append({"posting_id": pid, "title": to_text(name), "listing_only": True})
+        t = re.search(r'(?is)<meta[^>]+property="og:title"[^>]+content="([^"]*)"', body)
+        if t and re.search(r"/careers/\d+|view\.php\?id=\d+", url):
+            out.append({"title": html.unescape(t.group(1)).strip()})
+        return out
+    if "jobs.feishu.cn" in host:
+        # Feishu posting pages render client-side but put the title in <title>: "药化科学家 - 加入DP Technology".
+        t = re.search(r"(?is)<title[^>]*>(.*?)</title>", body)
+        title = re.sub(r"\s*-\s*加入.*$", "", to_text(t.group(1)) if t else "")
+        return [{"title": title, "lang": "zh"}] if title and re.search(r"/position/\d+/detail", url) else []
+    if "__NEXT_DATA__" in body and '"currentJob"' in body:
+        rec = getro_job(body)
+        if rec:
+            return [{k: v for k, v in rec.items() if k not in ("status", "last_seen")}]
+    if "deepprinciple.com" in host:
+        # Deep Principle lists every opening inline on join.html: the title in div.d1, the description in div.d2.
+        for name, desc in re.findall(r'(?is)<div class="d1">\s*<p>(.*?)</p>.*?<div class="d2">\s*<div class="html">(.*?)</div>', body):
+            out.append({"title": to_text(name), "text": to_text(desc), "lang": "zh" if "/cn/" in url else "en"})
         return out
     # Company's own page (WordPress job post, careers page, PeopleHR opening).
     art = (re.search(r'(?is)<article[^>]*>(.*?)</article>', body) or re.search(r'(?is)<main[^>]*>(.*?)</main>', body))
     text = to_text(art.group(1) if art else body)
-    out.append({"title": page_title(body), "text": text, "generic": True})
+    title = page_title(body)
+    slug = re.search(r"/(?:careers?|jobs?)/([a-z0-9-]+)/?$", urllib.parse.urlparse(url).path)
+    if slug and not any(w in (title or "").lower() for w in slug.group(1).split("-") if len(w) > 3):
+        title = slug.group(1).replace("-", " ").title()  # a posting page whose <title> is the site's tagline
+    if len(text) < 300 or text.strip() == (title or "").strip():
+        text = ""  # a client-rendered page (Polymerize's Gatsby site) leaves only its header and footer
+    out.append({"title": title, "text": text, "generic": True})
     out += dated_listings(to_text(body))
     out += linked_listings(body)
     return out
@@ -295,8 +367,13 @@ def linked_listings(body):
         ids = [g for g in m.groups()[1:-1] if g]
         pid = ids[0] if ids else None
         title = to_text(m.group(m.lastindex)) if m.lastindex else ""
-        if (not title or re.match(r"(?i)^(apply|learn more|view|details|read more|see|more)\b", title)) and m.group(3):
-            title = m.group(3).replace("-", " ").title()
+        if not title or re.match(r"(?i)^(apply|learn more|view|details|read more|see|more)\b", title):
+            # "Learn more & apply" under a heading (Emerald's 2015-16 careers page): the heading is the title.
+            heads = re.findall(r"(?is)<h[1-6][^>]*>(.*?)</h[1-6]>", body[max(0, m.start() - 3000):m.start()])
+            if heads:
+                title = to_text(heads[-1])
+            elif m.group(3):
+                title = m.group(3).replace("-", " ").title()
         if not pid or not title or pid in seen or len(title) > 120:
             continue
         seen.add(pid)
@@ -328,6 +405,9 @@ def page_title(body):
     cands += re.findall(r"(?is)<h1[^>]*>(.*?)</h1>", body)
     for c in cands:
         t = to_text(c)
+        m = re.match(r"(?i)^careers?\s+\|\s+(.+?)\s+\|\s+job description\b", t or "")
+        if m:  # Polymerize: "Careers | QA Engineer | Job description | Polymerize"
+            return m.group(1)
         t = re.split(r"\s+[|–—]\s+|\s+-\s+(?=[A-Z][\w .&]*$)", t)[0].strip() if t else t
         if t:
             return t
@@ -352,6 +432,24 @@ def live_ashby(token):
                     "published": j.get("publishedAt"), "salary": sal,
                     "pay_text": (j.get("compensation") or {}).get("scrapeableCompensationSalarySummary"),
                     "url": j.get("jobUrl"), "text": to_text(j.get("descriptionHtml") or "")})
+    return out
+
+
+def live_lever(token):
+    """Lever's public postings API (the token is case-sensitive: Radical AI's is 'RadicalAI')."""
+    import datetime
+    out = []
+    for j in json.loads(fetch.get(f"https://api.lever.co/v0/postings/{token}?mode=json")):
+        c, sal = j.get("categories") or {}, j.get("salaryRange")
+        body = (j.get("description") or "") + "".join(f"<h3>{x.get('text')}</h3><ul>{x.get('content')}</ul>"
+                                                       for x in j.get("lists") or []) + (j.get("additional") or "")
+        out.append({"posting_id": j["id"], "title": j.get("text"), "team": c.get("team") or c.get("department"),
+                    "location": c.get("location"), "employment_type": c.get("commitment"),
+                    "published": datetime.datetime.fromtimestamp(j["createdAt"] / 1000, datetime.timezone.utc).date().isoformat(),
+                    "salary": {"currency": sal.get("currency"), "min": sal.get("min"), "max": sal.get("max"),
+                               "interval": "1 YEAR" if "year" in (sal.get("interval") or "") else sal.get("interval")}
+                    if sal and sal.get("min") else None,
+                    "url": j.get("hostedUrl"), "text": to_text(body)})
     return out
 
 
@@ -453,6 +551,124 @@ def peoplehr(body):
             "text": to_text(desc.split("Apply for this job")[0])}
 
 
+def live_bamboohr(token):
+    """BambooHR's careers site renders from /careers/list and /careers/<id>/detail (closed openings 404)."""
+    out = []
+    for j in json.loads(fetch.get(f"https://{token}.bamboohr.com/careers/list")).get("result") or []:
+        url = f"https://{token}.bamboohr.com/careers/{j['id']}"
+        jo = json.loads(fetch.get(url + "/detail"))["result"]["jobOpening"]
+        loc = jo.get("location") or {}
+        out.append({"posting_id": str(j["id"]), "title": jo.get("jobOpeningName"),
+                    "team": re.sub(r"^\d+\s+", "", jo.get("departmentLabel") or "") or None,
+                    "location": ", ".join(filter(None, (loc.get("city"), loc.get("state")))) or None,
+                    "employment_type": jo.get("employmentStatusLabel"), "published": jo.get("datePosted"),
+                    "pay_text": jo.get("compensation"), "url": url, "text": to_text(jo.get("description") or "")})
+    return out
+
+
+FEISHU_QUERY = {"keyword": "", "limit": 100, "offset": 0, "job_category_id_list": [], "tag_id_list": [],
+                "location_code_list": [], "subject_id_list": [], "recruitment_id_list": [], "portal_type": 6,
+                "job_function_id_list": [], "storefront_id_list": [], "portal_entrance": 1}
+
+
+def live_feishu(spec):
+    """A Feishu (Lark) Hire careers site, 'host|board,board' (DP Technology: 'index' for experienced
+    hires, '305722' for campus). The site renders from POST /api/v1/search/job/posts, with a CSRF
+    token it issues to every visitor; each posting comes back with its full text and publish time.
+    Asking without a board name returns a third list that overlaps both, so all three are merged."""
+    import datetime
+    import http.cookiejar
+    import time
+    host, boards = spec.split("|")
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
+
+    def post(path, body, headers=None):
+        req = urllib.request.Request(f"https://{host}/api/v1/{path}", data=json.dumps(body).encode(),
+                                     headers={"User-Agent": fetch.UA, "Content-Type": "application/json", **(headers or {})})
+        with opener.open(req, timeout=60) as resp:
+            return json.loads(resp.read())
+
+    token = post("csrf/token", {"portal_entrance": 1})["data"]["token"]
+    found = {}
+    for board in boards.split(",") + [None]:
+        offset = 0
+        while True:
+            time.sleep(1)
+            data = post("search/job/posts", {**FEISHU_QUERY, "offset": offset},
+                        {"x-csrf-token": token, **({"website-path": board} if board else {})})["data"]
+            for j in data["job_post_list"]:
+                found.setdefault(j["id"], (j, board))
+            offset += FEISHU_QUERY["limit"]
+            if offset >= data["count"]:
+                break
+    out = []
+    for pid, (j, board) in found.items():
+        rt = j.get("recruit_type") or {}
+        when = datetime.datetime.fromtimestamp(int(j["publish_time"]) / 1000, datetime.timezone(datetime.timedelta(hours=8)))
+        out.append({"posting_id": pid, "title": j["title"].strip(), "lang": "zh",
+                    "team": ((rt.get("parent") or {}).get("en_name") or None),
+                    "location": ", ".join(c.get("en_name") or c.get("name") for c in j.get("city_list") or []) or None,
+                    "employment_type": rt.get("en_name"), "published": when.date().isoformat(),
+                    "url": f"https://{host}/{board or 'index'}/position/{pid}/detail",
+                    "text": clean(f"Job description (职位描述):\n{j.get('description') or ''}\n\n"
+                                  f"Requirements (职位要求):\n{j.get('requirement') or ''}")})
+    return out
+
+
+def live_getro(spec):
+    """Postings a company published on a Getro job board (VC-portfolio and university boards), read
+    from the posting page's __NEXT_DATA__: 'board-host|job-id-slug,job-id-slug'. Getro keeps
+    expired and deactivated postings at their URLs, so these are records of closed roles too."""
+    host, slugs = spec.split("|")
+    out = []
+    for slug in slugs.split(","):
+        url = f"https://{host}/companies/{slug}"
+        rec = getro_job(fetch.get(url))
+        if not rec:
+            print("no job at", url, file=sys.stderr)
+            continue
+        ats = posting_key(rec.get("original_url") or "")
+        out.append({**rec, "posting_id": ats or rec["posting_id"], "getro_id": rec["posting_id"], "url": url,
+                    "closed": rec["status"] != "active"})
+    return out
+
+
+def getro_job(body):
+    """The posting on a Getro job page, from its __NEXT_DATA__ (live or archived)."""
+    data = json_after(body, '<script id="__NEXT_DATA__" type="application/json">')
+    j = (((data or {}).get("props") or {}).get("pageProps") or {}).get("initialState", {}).get("jobs", {}).get("currentJob")
+    if not j:
+        return None
+    sal = None
+    if j.get("compensationPublic") and j.get("compensationAmountMinCents"):
+        sal = {"currency": j.get("compensationCurrency"), "min": j["compensationAmountMinCents"] / 100,
+               "max": (j.get("compensationAmountMaxCents") or j["compensationAmountMinCents"]) / 100,
+               "interval": {"year": "1 YEAR"}.get(j.get("compensationPeriod"), j.get("compensationPeriod"))}
+    closed = j.get("closedAt") or j.get("deactivatedAt") or j.get("expiresAt")
+    return {"posting_id": str(j["id"]), "title": j.get("title"),
+            "location": "; ".join(x.get("name") or "" for x in j.get("locations") or []) or None,
+            "employment_type": ", ".join(j.get("employmentTypes") or []) or None,
+            "published": j.get("postedAt"), "salary": sal, "original_url": j.get("url"),
+            "getro_source": j.get("source"), "status": j.get("status"),
+            "last_seen": closed if j.get("status") != "active" else None, "text": to_text(j.get("description") or "")}
+
+
+def live_nodi(company):
+    """Nodi, an AI-screening ATS: its careers widget renders from this public endpoint. Only the
+    posting itself is kept (not the recruiter id or the screening rubric the endpoint also returns)."""
+    out = []
+    for j in json.loads(fetch.get(f"https://api.nodi.global/job-offers/active/company/{urllib.parse.quote(company)}")):
+        sal = None
+        if j.get("min_salary") and (j.get("frequency") or "").lower().startswith("annual"):
+            sal = {"currency": j.get("currency") or "USD", "min": j["min_salary"], "max": j.get("max_salary") or j["min_salary"],
+                   "interval": "1 YEAR"}
+        out.append({"posting_id": j["id"], "title": j.get("title"), "team": j.get("department"),
+                    "location": j.get("location"), "employment_type": j.get("type"), "published": j.get("created_at"),
+                    "salary": sal, "url": f"https://app.nodi.global/jobs/public/{j['id']}",
+                    "text": to_text(j.get("description") or "")})
+    return out
+
+
 def live_wordpress(url):
     out = []
     for p in json.loads(fetch.get(url)):
@@ -524,8 +740,9 @@ def live_notion(spec):
     return out
 
 
-LIVE = {"notion": live_notion, "links": live_links, "ashby": live_ashby, "greenhouse": live_greenhouse, "rippling": live_rippling,
-        "personio": live_personio, "peoplehr": live_peoplehr, "wordpress": live_wordpress}
+LIVE = {"lever": live_lever, "notion": live_notion, "links": live_links, "ashby": live_ashby, "greenhouse": live_greenhouse, "rippling": live_rippling,
+        "personio": live_personio, "peoplehr": live_peoplehr, "wordpress": live_wordpress, "bamboohr": live_bamboohr,
+        "feishu": live_feishu, "getro": live_getro, "nodi": live_nodi}
 
 
 def cmd_live(slugs, date):
@@ -554,6 +771,10 @@ ID_RX = [
     re.compile(r"lever\.co/[^/]+/([0-9a-f-]{36})"),
     re.compile(r"personio\.\w+/job/(\d+)"),
     re.compile(r"Opening\.aspx\?v=([0-9a-f-]{36})", re.I),
+    re.compile(r"hire\.withgoogle\.com/public/jobs/[^/]+/(?:view/|confirmation\?jobPosition=)(P_\w+)"),
+    re.compile(r"bamboohr\.com/(?:careers/|jobs/view\.php\?id=)(\d+)"),
+    re.compile(r"jobs\.feishu\.cn/[^/]+/position/(\d+)"),
+    re.compile(r"/companies/[^/]+/jobs/(\d+)(?:[-/?#]|$)"),  # Getro boards
 ]
 
 

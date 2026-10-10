@@ -102,8 +102,8 @@ def trim(body, limit=3000):
         "\n\n*(truncated: full text in `data/job_postings.jsonl`)*"
 
 
-DEGREE = [("PhD", r"\bph\.?\s?d\b|doctora"), ("MS", r"\bmaster'?s?\b|\bm\.?\s?sc?\b\.?|\bms\b"),
-          ("BS", r"\bbachelor'?s?\b|\bb\.?\s?sc?\b\.?|\bbs\b|\bba/bs\b|undergraduate degree")]
+DEGREE = [("PhD", r"\bph\.?\s?d\b|doctora|博士"), ("MS", r"\bmaster'?s?\b|\bm\.?\s?sc?\b\.?|\bms\b|硕士|研究生"),
+          ("BS", r"\bbachelor'?s?\b|\bb\.?\s?sc?\b\.?|\bbs\b|\bba/bs\b|undergraduate degree|本科")]
 
 
 def degrees(text):
@@ -114,12 +114,15 @@ YEARS = re.compile(r"(?i)\b(\d{1,2})\s*\+?\s*(?:-|–|to)?\s*(?:\d{1,2}\s*)?\+?\
                    r"(?:[\w/&,-]+\s+){0,6}?(?:experience|industry|hands-on|post-?doc|work)")
 
 
+YEARS_ZH = re.compile(r"(\d{1,2})\s*年(?:及)?以上")  # "5年以上" = 5+ years
+
+
 def years_min(text):
-    vals = [int(m.group(1)) for m in YEARS.finditer(text or "") if 0 < int(m.group(1)) <= 25]
+    vals = [int(m.group(1)) for rx in (YEARS, YEARS_ZH) for m in rx.finditer(text or "") if 0 < int(m.group(1)) <= 25]
     return min(vals) if vals else None
 
 
-SENIORITY = [("intern", r"\bintern|internship|co-?op\b|student"), ("leadership", r"\bhead of|\bchief\b|\bvp\b|vice president|\bdirector\b"),
+SENIORITY = [("intern", r"\bintern|internship|co-?op\b|student|实习"), ("leadership", r"\bhead of|\bchief\b|\bvp\b|vice president|\bdirector\b"),
              ("lead/principal", r"\blead\b|principal|staff\b|\bmanager\b"), ("senior", r"\bsenior\b|\bsr\.?\b|\biii\b|\bl[45]\b"),
              ("entry/associate", r"\bassociate\b|junior|\bjr\.?\b|technician|\bi\b$|graduate")]
 
@@ -175,7 +178,16 @@ def norm_title(t, slug=""):
     return t
 
 
+def translations():
+    """English titles for postings published in Chinese: data/<company>_titles_en.json."""
+    out = {}
+    for path in glob.glob(os.path.join(DOCS, "data", "*_titles_en.json")):
+        out.update({k: v for k, v in json.load(open(path, encoding="utf-8")).items() if not k.startswith("_")})
+    return out
+
+
 def merge():
+    en = translations()
     by = defaultdict(lambda: defaultdict(list))
     careers_pages = defaultdict(list)
     spans = {}
@@ -184,6 +196,8 @@ def merge():
         data = json.load(open(path, encoding="utf-8"))
         if isinstance(data, list):  # live
             for r in data:
+                if r.get("title") in en:
+                    r = {**r, "title_original": r["title"], "title": en[r["title"]]}
                 pid = str(r.get("posting_id") or r.get("url")).lower()
                 if r.get("vendor") == "wordpress":  # same key as the archived copy of the page
                     pid = _root(r["url"])
@@ -209,6 +223,8 @@ def merge():
                                       "capture": f'https://web.archive.org/web/{a["first"]}/{a["url"]}',
                                       "first_seen": a["first"], "last_seen": a["last"]})
         for r in data["postings"]:
+            if r.get("title") in en:
+                r = {**r, "title_original": r["title"], "title": en[r["title"]]}
             pid = str(r.get("posting_id") or "").lower()
             if r.get("listing_only") and "/" in pid:
                 pid = ""  # a board page fetched as if it were a posting: key its listings by title
@@ -223,9 +239,10 @@ def merge():
         for pid, recs in groups.items():
             # A WordPress job post stays published after the role closes (Aionics still serves its
             # 2021 internships), so it is read like an archived page, not as an open posting.
-            live = [r for r in recs if r.get("basis") == "live" and r.get("vendor") != "wordpress"]
+            # A posting a board still serves after it closed (Getro keeps expired roles) is read the same way.
+            live = [r for r in recs if r.get("basis") == "live" and r.get("vendor") != "wordpress" and not r.get("closed")]
             pages = [r for r in recs if (r.get("basis") == "wayback" and not r.get("listing_only"))
-                     or r.get("vendor") == "wordpress"]
+                     or r.get("vendor") == "wordpress" or r.get("closed")]
             lists = [r for r in recs if r.get("listing_only")]
             titles = [norm_title(r.get("title"), slug) for r in live + pages + lists if r.get("title")]
             titles = [t for t in titles if t and not GENERIC_TITLE.match(t) and not NOT_A_JOB.search(t)]
@@ -239,7 +256,7 @@ def merge():
                 for f in ("published",):
                     if ts_date(r.get(f)):
                         dates.append(ts_date(r[f]))
-                if r.get("vendor") == "wordpress" and ts_date(r.get("last_seen")):
+                if (r.get("vendor") == "wordpress" or r.get("closed")) and ts_date(r.get("last_seen")):
                     dates.append(ts_date(r["last_seen"]))
                 if r.get("basis") == "wayback":
                     cap = re.search(r"/web/(\d{14})/", r.get("capture") or "")
@@ -270,6 +287,7 @@ def merge():
             for r in live:
                 if r.get("url"):
                     sources.append(r["url"])
+            sources += [r["url"] for r in pages if r.get("closed") and r.get("url")][:1]
             caps = sorted({r["capture"] for r in pages if r.get("capture")})
             sources += caps[:1]
             if not caps and lists:
@@ -285,6 +303,7 @@ def merge():
                 "salary": sal, "pay_text": pay_text if not sal else None,
                 "degrees_mentioned": degrees(rt), "years_min": years_min(rt),
                 "skills": [k for k, rx in SKILLS.items() if rx.search(rt)],
+                "lang": pick("lang") or "en", "title_original": pick("title_original"),
                 "has_description": bool(text.strip()), "text_source": "live" if best.get("basis") == "live" else
                 (best.get("capture") if best else None),
                 "sources": sources, "text": text,
@@ -299,7 +318,8 @@ def merge():
 
 
 GENERAL = re.compile(r"(?i)don'?t see|general (interest|application|opportunit)|open application|talent (pool|community)|stay up to date|"
-                     r"spontaneous|future opportunit|initiativbewerbung|^apply here")
+                     r"spontaneous|future opportunit|initiativbewerbung|^apply here|internship programme|competition only|"
+                     r"campus ambassador|^elite$")
 
 
 def _line_key(line):
@@ -337,15 +357,45 @@ EXTRA_RULES = [  # checked in order, before analyze.TITLE_RULES
     ("lab-automation", r"automated systems|firmware|manufacturing engineer|mechatronic|instrument|process development|"
                        r"pilot plant|prototype|research operations|robot operator"),
     ("ml-research", r"\bmlff\b"),
+    ("software-eng", r"^software engineer(?!.*\b(ai|ml)\b)"),  # "Software Engineer: Automated Chemistry Technology"
+]
+# Lab titles the rules above would otherwise call software ("Electrolyte Development Engineer") or
+# business ("Lab Operator II", "Senior Biologist"); only applied to those two outcomes.
+LAB_FALLBACK = [("lab-automation", r"\blab operator|wet-lab"),
+                ("materials-science", r"biolog|assay|\badme\b|antibod|electrolyte|chemical analysis|analytical|medicinal")]
+
+
+# DP Technology posts in Chinese. Checked in order when a title has Chinese characters.
+ZH_RULES = [
+    ("general-application", r"比赛专用|宣讲会|实习生计划|追光"),
+    ("leadership", r"负责人|总监|首席|\bvp\b|副总裁"),
+    ("business-ops", r"销售|客户|运营|市场|品牌|设计师|视觉|剪辑|策划|法务|财务|会计|采购|行政|人事|\bhr\b|ssc|投资|投融资|"
+                     r"战略|项目经理|项目管理|产品经理|产品专家|产品运营|产品研究员|产品实习生|产品负责人|^产品|内容|seo|媒介|"
+                     r"课程|教学|教研|知识产权|合规|渠道|商业化|增长|布道|广告|供应链|招投标|售前|技术支持|交付|解决方案|"
+                     r"实施|标注|质检|大使|ux"),
+    ("lab-automation", r"自动化|机械|电气|嵌入式|仪器|硬件|工站|设备|光学|厂务|移液|ehs|技术员|cad|cae"),
+    ("ml-research", r"算法|大模型|多模态|机器学习|深度学习|\bnlp\b|\bcv\b|ai4s.*研究|ai.*数据|ai.*研究员|知识图谱|ai搜索"),
+    ("materials-science", r"电解液|电池|电芯|固态|材料|化学|化工|表征|药化|药物|生物|抗体|细胞|adme|bioassay|湿实验|实验|"
+                          r"科学家|研究员|研究助理|cadd|aidd|计算|分子|biologist|scientist"),
+    ("software-eng", r"开发|工程师|前端|后端|全栈|golang|python|java|sre|运维|\bit\b|架构师|中台|信息安全|云平台|系统管理"),
 ]
 
 
 def classify(title, team=None):
     t = (title or "").lower()
+    if re.search(r"[\u4e00-\u9fff]", t):
+        for func, rx in ZH_RULES:
+            if re.search(rx, t):
+                return func
+        return "business-ops"
     for func, rx in EXTRA_RULES:
         if re.search(rx, t):
             return func
     func = analyze.classify(title)
+    if func in ("business-ops", "software-eng"):
+        for f, rx in LAB_FALLBACK:
+            if re.search(rx, t):
+                return f
     # A generic "engineer" on a lab or hardware team (Periodic's "Atoms" team) is lab engineering.
     if func == "software-eng" and re.search(r"(?i)atoms|\blab\b|hardware|automation", team or ""):
         return "lab-automation"
@@ -576,8 +626,9 @@ def summary(rows, by_co, careers, meta):
           "Share of postings with a description that name each degree anywhere in the text (\"PhD or equivalent "
           "experience\" counts as naming a PhD), the median of the smallest \"N+ years\" figure in each description, "
           "and the skills most often named. Python is left out of the skills column because nearly every technical "
-          "posting names it.", "",
-          requirement_table(real), "",
+          "posting names it. Postings written in Chinese (DP Technology's) are left out, because the skill keywords "
+          "are English.", "",
+          requirement_table([r for r in real if r.get("lang", "en") == "en"]), "",
           "## Functions over time", "",
           "Postings by the half-year they were first seen.", ""]
     halves = sorted({f'{r["first_seen"][:4]}H{1 if int(r["first_seen"][5:7]) <= 6 else 2}' for r in real if r["first_seen"]})
@@ -650,7 +701,7 @@ def timeline_figure(rows, meta, path):
         ax.set_ylim(0.3, len(FUNCTIONS) + 1)
         ax.set_yticks([])
         ax.grid(axis="y", visible=False)
-        name = meta.get(slug, {}).get("company", slug)
+        name = re.sub(r"\s*\([^)]*[\u4e00-\u9fff][^)]*\)", "", meta.get(slug, {}).get("company", slug))  # no CJK font
         ax.set_ylabel(f"{name}\n({len(cos[slug])})", rotation=0, ha="right", va="center", fontsize=7, color=analyze.INK)
         ax.spines["left"].set_visible(False)
     axes[-1].set_xlim(lo, date(2026, 12, 31))

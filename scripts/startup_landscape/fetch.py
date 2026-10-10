@@ -78,6 +78,19 @@ def _read_capped(resp):
             time.sleep(ahead)
 
 
+def _open(req, host, timeout):
+    """urlopen, except that $SL_SOCKS (host:port, e.g. an `ssh -D` tunnel to a Pi)
+    carries requests to the Wayback Machine, which refuses GitHub runners' shared IPs."""
+    proxy = os.environ.get("SL_SOCKS")
+    if not proxy or host != "web.archive.org":
+        return urllib.request.urlopen(req, timeout=timeout)
+    import socks  # PySocks
+    from sockshandler import SocksiPyHandler
+    phost, pport = proxy.rsplit(":", 1)
+    opener = urllib.request.build_opener(SocksiPyHandler(socks.SOCKS5, phost, int(pport), rdns=True))
+    return opener.open(req, timeout=timeout)
+
+
 def get(url, *, data=None, headers=None, tries=4, timeout=60):
     """GET (or POST if data) with cache, per-host throttle and backoff on 429/5xx."""
     key = hashlib.sha256((url + (data or "")).encode()).hexdigest()
@@ -94,7 +107,7 @@ def get(url, *, data=None, headers=None, tries=4, timeout=60):
             headers={"User-Agent": UA, **(headers or {})},
         )
         try:
-            with urllib.request.urlopen(req, timeout=timeout) as resp:
+            with _open(req, host, timeout) as resp:
                 blob = _read_capped(resp)
             # Wayback's id_ playback can return the original gzip body undecoded.
             if blob[:2] == b"\x1f\x8b":

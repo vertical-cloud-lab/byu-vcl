@@ -27,7 +27,58 @@
   ],
   "boards.greenhouse.io/kebotix": [],
   "boards.greenhouse.io/embed/job_app?for=kebotix": [],
-  "boards.greenhouse.io/embed/job_board?for=kebotix": []
+  "boards.greenhouse.io/embed/job_board?for=kebotix": [],
+  "hire.withgoogle.com/public/jobs/kebotixcom": [
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom",
+    "first": "20190828081139",
+    "last": "20190828081139",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/view/p_aaaaaafaac3hlvj47wsung?trackingtag=googlesearch",
+    "first": "20190828081139",
+    "last": "20190828081139",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3HlVj47Wsung?trackingTag=googleSearch"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/view/p_aaaaaafaac3lymb7levd9t?trackingtag=googlesearch",
+    "first": "20190828081139",
+    "last": "20190828081139",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3LYMB7leVd9t?trackingTag=googleSearch"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/confirmation?jobposition=p_aaaaaafaac3hlvj47wsung",
+    "first": "20190828154846",
+    "last": "20190828154846",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/confirmation?jobPosition=P_AAAAAAFAAC3HlVj47Wsung"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/view/p_aaaaaafaac3hlvj47wsung",
+    "first": "20190828154846",
+    "last": "20190828154846",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3HlVj47Wsung"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/confirmation?jobposition=p_aaaaaafaac3lymb7levd9t",
+    "first": "20190828154847",
+    "last": "20190828154847",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/confirmation?jobPosition=P_AAAAAAFAAC3LYMB7leVd9t"
+   },
+   {
+    "urlkey": "com,withgoogle,hire)/public/jobs/kebotixcom/view/p_aaaaaafaac3lymb7levd9t",
+    "first": "20190828154847",
+    "last": "20190828154847",
+    "n": 1,
+    "original": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3LYMB7leVd9t"
+   }
+  ]
  },
  "board_captures": {
   "kebotix.com/careers": [
@@ -56,6 +107,12 @@
    [
     "20210827173506",
     "https://www.kebotix.com/jobs"
+   ]
+  ],
+  "hire.withgoogle.com/public/jobs/kebotixcom": [
+   [
+    "20190828081139",
+    "https://hire.withgoogle.com/public/jobs/kebotixcom"
    ]
   ]
  },
@@ -131,6 +188,68 @@
    "title": "Jobs",
    "text": "",
    "generic": true
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20190828081139/https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3HlVj47Wsung?trackingTag=googleSearch",
+   "url": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3HlVj47Wsung?trackingTag=googleSearch",
+   "first_seen": "20190828081139",
+   "last_seen": "20190828154846",
+   "n_captures": 3,
+   "title": "Intern - Machine Learning Scientist",
+   "location": "Cambridge, MA, US",
+   "employment_type": "Intern",
+   "published": "2018-11-07T20:13:54+00:00",
+   "valid_through": null,
+   "salary": null,
+   "org": "Kebotix",
+   "text": "Kebotix is a tech company leading the materials industry towards the age of high-speed innovation using artificial intelligence and robotic automation. Our technology is centered around smart algorithms that allow for discoveries of new materials that solve the problems around us.\nAre you a self-motivated learner? Do you enjoy solving problems? Want to build something with big impact? Then the dynamic environment at Kebotix is the right place for you. Join us and create the materials for tomorrow, today!\nWe are looking for a Machine Learning Scientist - Intern who will be a member of a multi-disciplinary team working in a fast-paced startup environment.  You will be responsible for investigating state of the art techniques in machine learning and probabilistic modeling. This includes the design, development, and deployment of scalable systems for innovative analytics applications in the field of functional materials, chemistry, and pharma.  Further, you will work on integrating the machine learning tools into the data and workflow pipelines and implement interfaces with automation systems. You will help Kebotix to prepare presentations and progress reports and keep at pace with the current research literature.\nWe are looking for a passionate applicant with strong communication skills and the human enthusiasm for Machine Learning.\nQualifications and Experience\n- graduate student or equivalent in Physics, Chemistry, Computer science, Statistics or a related field\n- experience with machine learning methods and model selection concepts as well as with at least one deep learning framework (e.g., Tensorflow, PyTorch, Keras, ...)\n- passionate learner with problem-solving skills\nWe offer an excellent career opportunity and an exciting working environment. With an entrepreneurial spirit and a dynamic friendly environment, we strive to ensure that the success of our company brings both professional and financial rewards to all of our employees. We look forward to receiving your application!\nKebotix is an Equal Opportunity Employer committed to no discrimination because of race, color, creed, marital status, age, religion, sex, national origin, citizenship, sexual orientation, gender identity or expression, genetic information, disability, protected veteran, or any other legally protected characteristic.",
+   "posting_id": "p_aaaaaafaac3hlvj47wsung"
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20190828081139/https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3LYMB7leVd9t?trackingTag=googleSearch",
+   "url": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3LYMB7leVd9t?trackingTag=googleSearch",
+   "first_seen": "20190828081139",
+   "last_seen": "20190828154847",
+   "n_captures": 3,
+   "title": "Computational/Theoretical Chemist with experience in Data Science",
+   "location": "Cambridge, MA, US",
+   "employment_type": "Full time",
+   "published": "2019-08-20T14:50:19+00:00",
+   "valid_through": null,
+   "salary": null,
+   "org": "Kebotix",
+   "text": "Kebotix is a tech company leading the materials industry towards the age of high-speed innovation using artificial intelligence and robotic automation. Our technology is centered around smart algorithms that allow for discoveries of new materials that solve the problems around us.\nYou are a self-motivated learner? Do you enjoy solving problems? Do you want to build something with big impact? Then the dynamic environment at Kebotix is the right place for you. Join us and create the materials for tomorrow, today!\nWe are looking for a Computational/Theoretical Chemist with experience in Data Science who will be a member of a multi-disciplinary team working in a fast-paced startup environment.  You will work on workflow pipelines embedded in a larger discovery platform for the design of functional materials, green chemistry, and pharmaceuticals. Specifically, you will be part of an exciting collaboration project with the Lopez Lab ( https://web.northeastern.edu/lopezlab/ ) at Northeastern University to use quantum mechanical calculations and machine learning to identify non-invasive cancer therapies (i.e. photodynamic therapy) . You will help Kebotix to prepare presentations and progress reports and keep at pace with the current research literature.\nQualifications and Experience\n- Ph.D. or equivalent in Physics or Chemistry\n- deep knowledge of molecular properties and chemical reactions\n- proficiency in Python or at least one compiled programming language (e.g. C++, Java)\n- experience with cheminformatics and related libraries (e.g., RDKit) is a plus\n- experience with state-of-the-art machine learning methods and model selection concepts as well as with deep learning frameworks (e.g., Tensorflow, PyTorch) is a plus\n- excellent oral and written communication, presentation, and analytical skills\nWe offer an excellent career opportunity and an exciting working environment. With an entrepreneurial spirit and a dynamic friendly environment, we strive to ensure that the success of our company brings both professional and financial rewards to all of our employees. We look forward to receiving your application!\nKebotix is an Equal Opportunity Employer committed to no discrimination because of race, color, creed, marital status, age, religion, sex, national origin, citizenship, sexual orientation, gender identity or expression, genetic information, disability, protected veteran, or any other legally protected characteristic.",
+   "posting_id": "p_aaaaaafaac3lymb7levd9t"
+  },
+  {
+   "company": "kebotix",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20190828081139/https://hire.withgoogle.com/public/jobs/kebotixcom",
+   "url": "https://hire.withgoogle.com/public/jobs/kebotixcom",
+   "first_seen": "20190828081139",
+   "last_seen": "20190828081139",
+   "n_captures": 1,
+   "title": "Jobs - kebotixcom",
+   "text": "",
+   "generic": true
   }
- ]
+ ],
+ "spans": {
+  "p_aaaaaafaac3hlvj47wsung": {
+   "first": "20190828081139",
+   "last": "20190828154846",
+   "n": 3,
+   "url": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3HlVj47Wsung?trackingTag=googleSearch"
+  },
+  "p_aaaaaafaac3lymb7levd9t": {
+   "first": "20190828081139",
+   "last": "20190828154847",
+   "n": 3,
+   "url": "https://hire.withgoogle.com/public/jobs/kebotixcom/view/P_AAAAAAFAAC3LYMB7leVd9t?trackingTag=googleSearch"
+  }
+ }
 }

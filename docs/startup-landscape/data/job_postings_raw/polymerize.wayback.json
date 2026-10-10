@@ -8,6 +8,71 @@
     "n": 1,
     "original": "https://polymerize.io/company-pages/careers"
    }
+  ],
+  "polymerize.io/careers": [
+   {
+    "urlkey": "io,polymerize)/careers",
+    "first": "20220524183252",
+    "last": "20240813084623",
+    "n": 8,
+    "original": "https://polymerize.io/careers/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/qa-engineer",
+    "first": "20230127101541",
+    "last": "20250619083803",
+    "n": 7,
+    "original": "https://polymerize.io/careers/qa-engineer/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/director-product-marketing",
+    "first": "20230127103625",
+    "last": "20250809160937",
+    "n": 8,
+    "original": "https://polymerize.io/careers/director-product-marketing/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/product-designer",
+    "first": "20230127104051",
+    "last": "20250719141507",
+    "n": 7,
+    "original": "https://polymerize.io/careers/product-designer/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/frontend-developer",
+    "first": "20230127105631",
+    "last": "20250809152155",
+    "n": 8,
+    "original": "https://polymerize.io/careers/frontend-developer/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/content-writer",
+    "first": "20230127113337",
+    "last": "20230127113337",
+    "n": 1,
+    "original": "https://polymerize.io/careers/content-writer/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/director-vp-engineering",
+    "first": "20230127114834",
+    "last": "20250809155112",
+    "n": 8,
+    "original": "https://polymerize.io/careers/director-vp-engineering/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/key-account-manager",
+    "first": "20230127121722",
+    "last": "20250619091616",
+    "n": 7,
+    "original": "https://polymerize.io/careers/key-account-manager/"
+   },
+   {
+    "urlkey": "io,polymerize)/careers/qa-engineer?source=qaremote.jobs",
+    "first": "20240420215102",
+    "last": "20240420215102",
+    "n": 1,
+    "original": "https://polymerize.io/careers/qa-engineer/?source=qaremote.jobs"
+   }
   ]
  },
  "board_captures": {
@@ -15,6 +80,32 @@
    [
     "20260511111324",
     "https://polymerize.io/company-pages/careers"
+   ]
+  ],
+  "polymerize.io/careers": [
+   [
+    "20220524183252",
+    "https://polymerize.io/careers/"
+   ],
+   [
+    "20230127113519",
+    "https://polymerize.io/careers/"
+   ],
+   [
+    "20230412102801",
+    "https://polymerize.io/careers/"
+   ],
+   [
+    "20231211223648",
+    "https://polymerize.io/careers/"
+   ],
+   [
+    "20240415222914",
+    "https://polymerize.io/careers/"
+   ],
+   [
+    "20240722234834",
+    "https://polymerize.io/careers/"
    ]
   ]
  },
@@ -30,6 +121,213 @@
    "title": "Join Us",
    "text": "",
    "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20220524183252/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20220524183252",
+   "last_seen": "20220524183252",
+   "n_captures": 1,
+   "title": "Polymerize is growing. Grow with us.",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127101541/https://polymerize.io/careers/qa-engineer/",
+   "url": "https://polymerize.io/careers/qa-engineer/",
+   "first_seen": "20230127101541",
+   "last_seen": "20250619083803",
+   "n_captures": 8,
+   "title": "QA Engineer",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/qa-engineer"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127103625/https://polymerize.io/careers/director-product-marketing/",
+   "url": "https://polymerize.io/careers/director-product-marketing/",
+   "first_seen": "20230127103625",
+   "last_seen": "20250809160937",
+   "n_captures": 8,
+   "title": "Director Product Marketing",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/director-product-marketing"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127104051/https://polymerize.io/careers/product-designer/",
+   "url": "https://polymerize.io/careers/product-designer/",
+   "first_seen": "20230127104051",
+   "last_seen": "20250719141507",
+   "n_captures": 7,
+   "title": "Product Designer",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/product-designer"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127105631/https://polymerize.io/careers/frontend-developer/",
+   "url": "https://polymerize.io/careers/frontend-developer/",
+   "first_seen": "20230127105631",
+   "last_seen": "20250809152155",
+   "n_captures": 8,
+   "title": "Frontend Developer",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/frontend-developer"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127113337/https://polymerize.io/careers/content-writer/",
+   "url": "https://polymerize.io/careers/content-writer/",
+   "first_seen": "20230127113337",
+   "last_seen": "20230127113337",
+   "n_captures": 1,
+   "title": "Content Writer",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/content-writer"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127113519/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20230127113519",
+   "last_seen": "20230127113519",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127114834/https://polymerize.io/careers/director-vp-engineering/",
+   "url": "https://polymerize.io/careers/director-vp-engineering/",
+   "first_seen": "20230127114834",
+   "last_seen": "20250809155112",
+   "n_captures": 8,
+   "title": "Director VP Engineering",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/director-vp-engineering"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230127121722/https://polymerize.io/careers/key-account-manager/",
+   "url": "https://polymerize.io/careers/key-account-manager/",
+   "first_seen": "20230127121722",
+   "last_seen": "20250619091616",
+   "n_captures": 7,
+   "title": "Key Account Manager",
+   "text": "",
+   "generic": true,
+   "posting_id": "polymerize.io/careers/key-account-manager"
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20230412102801/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20230412102801",
+   "last_seen": "20230412102801",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20231211223648/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20231211223648",
+   "last_seen": "20231211223648",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240415222914/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20240415222914",
+   "last_seen": "20240415222914",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
+  },
+  {
+   "company": "polymerize",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20240722234834/https://polymerize.io/careers/",
+   "url": "https://polymerize.io/careers/",
+   "first_seen": "20240722234834",
+   "last_seen": "20240722234834",
+   "n_captures": 1,
+   "title": "Careers",
+   "text": "",
+   "generic": true
   }
- ]
+ ],
+ "spans": {
+  "polymerize.io/careers/qa-engineer": {
+   "first": "20230127101541",
+   "last": "20250619083803",
+   "n": 8,
+   "url": "https://polymerize.io/careers/qa-engineer/"
+  },
+  "polymerize.io/careers/director-product-marketing": {
+   "first": "20230127103625",
+   "last": "20250809160937",
+   "n": 8,
+   "url": "https://polymerize.io/careers/director-product-marketing/"
+  },
+  "polymerize.io/careers/product-designer": {
+   "first": "20230127104051",
+   "last": "20250719141507",
+   "n": 7,
+   "url": "https://polymerize.io/careers/product-designer/"
+  },
+  "polymerize.io/careers/frontend-developer": {
+   "first": "20230127105631",
+   "last": "20250809152155",
+   "n": 8,
+   "url": "https://polymerize.io/careers/frontend-developer/"
+  },
+  "polymerize.io/careers/content-writer": {
+   "first": "20230127113337",
+   "last": "20230127113337",
+   "n": 1,
+   "url": "https://polymerize.io/careers/content-writer/"
+  },
+  "polymerize.io/careers/director-vp-engineering": {
+   "first": "20230127114834",
+   "last": "20250809155112",
+   "n": 8,
+   "url": "https://polymerize.io/careers/director-vp-engineering/"
+  },
+  "polymerize.io/careers/key-account-manager": {
+   "first": "20230127121722",
+   "last": "20250619091616",
+   "n": 7,
+   "url": "https://polymerize.io/careers/key-account-manager/"
+  }
+ }
 }

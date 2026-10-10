@@ -1,0 +1,1519 @@
+{
+ "captures": {
+  "jobs.lever.co/RadicalAI": [
+   {
+    "urlkey": "co,lever,jobs)/radicalai",
+    "first": "20250105193730",
+    "last": "20250716045716",
+    "n": 8,
+    "original": "https://jobs.lever.co/RadicalAI"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=foundation+model",
+    "first": "20250108093754",
+    "last": "20250716045619",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Foundation+Model"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+    "first": "20250108110447",
+    "last": "20250716045724",
+    "n": 5,
+    "original": "https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+    "first": "20250108121400",
+    "last": "20250910043853",
+    "n": 7,
+    "original": "https://jobs.lever.co/RadicalAI/f3f758ea-25bf-4756-ae6c-af1d0d9b586a"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/0ed60b43-a021-480d-aaff-9a38a69dc793",
+    "first": "20250108150759",
+    "last": "20250802233347",
+    "n": 7,
+    "original": "https://jobs.lever.co/RadicalAI/0ed60b43-a021-480d-aaff-9a38a69dc793"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=ml+engineering",
+    "first": "20250108154103",
+    "last": "20250716045619",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=ML+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=generative",
+    "first": "20250108154717",
+    "last": "20250716045724",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI?team=Generative&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?location=new+york,+ny",
+    "first": "20250108155540",
+    "last": "20250108155540",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?workplacetype=hybrid",
+    "first": "20250108171008",
+    "last": "20250716045512",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/025709b9-d365-4909-aecb-aba5669703da",
+    "first": "20250108174535",
+    "last": "20251010121029",
+    "n": 7,
+    "original": "https://jobs.lever.co/RadicalAI/025709b9-d365-4909-aecb-aba5669703da"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time",
+    "first": "20250108193528",
+    "last": "20250108193528",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml",
+    "first": "20250108231307",
+    "last": "20250716045619",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?workplacetype=remote",
+    "first": "20250108232341",
+    "last": "20250716045520",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?workplacetype=onsite",
+    "first": "20250109025414",
+    "last": "20250716045522",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/56ec9525-fab1-4f88-a465-36fb5a76aba4",
+    "first": "20250120222901",
+    "last": "20251013054228",
+    "n": 6,
+    "original": "https://jobs.lever.co/RadicalAI/56ec9525-fab1-4f88-a465-36fb5a76aba4"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/025709b9-d365-4909-aecb-aba5669703da/apply",
+    "first": "20250212232634",
+    "last": "20250814141519",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI/025709b9-d365-4909-aecb-aba5669703da/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e/apply",
+    "first": "20250306074120",
+    "last": "20250716045655",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+    "first": "20250328165021",
+    "last": "20250908032050",
+    "n": 5,
+    "original": "https://jobs.lever.co/RadicalAI/c0b925f5-4d08-495d-b58c-35d7f62bd06c"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+    "first": "20250328165216",
+    "last": "20251014105933",
+    "n": 5,
+    "original": "https://jobs.lever.co/RadicalAI/33655210-ec96-4f14-9baa-ea3d9a26cd6e"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/56ec9525-fab1-4f88-a465-36fb5a76aba4/apply",
+    "first": "20250420193413",
+    "last": "20250716045720",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI/56ec9525-fab1-4f88-a465-36fb5a76aba4/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/0ed60b43-a021-480d-aaff-9a38a69dc793/apply",
+    "first": "20250420203303",
+    "last": "20250716045741",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI/0ed60b43-a021-480d-aaff-9a38a69dc793/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/f3f758ea-25bf-4756-ae6c-af1d0d9b586a/apply",
+    "first": "20250428153624",
+    "last": "20251007175825",
+    "n": 3,
+    "original": "https://jobs.lever.co/RadicalAI/f3f758ea-25bf-4756-ae6c-af1d0d9b586a/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/9891a086-713a-4dc0-a70f-c6f07f0307f6",
+    "first": "20250523110331",
+    "last": "20251118001002",
+    "n": 5,
+    "original": "https://jobs.lever.co/RadicalAI/9891a086-713a-4dc0-a70f-c6f07f0307f6"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/45d0d15b-e683-4800-ad08-ede66ef695a4",
+    "first": "20250615045331",
+    "last": "20250912055801",
+    "n": 4,
+    "original": "https://jobs.lever.co/RadicalAI/45d0d15b-e683-4800-ad08-ede66ef695a4"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/d5f1267c-82c6-43af-8e72-6f04989d1091",
+    "first": "20250615055559",
+    "last": "20251222094654",
+    "n": 8,
+    "original": "https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/33655210-ec96-4f14-9baa-ea3d9a26cd6e/apply",
+    "first": "20250708060433",
+    "last": "20250716045549",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI/33655210-ec96-4f14-9baa-ea3d9a26cd6e/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=foundation%20model",
+    "first": "20250716045500",
+    "last": "20250716045500",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI/ML&team=Foundation%20Model"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab%20automation&team=hardware",
+    "first": "20250716045502",
+    "last": "20250716045502",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab%20Automation&team=Hardware"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=ml%20engineering",
+    "first": "20250716045506",
+    "last": "20250716045506",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI/ML&team=ML%20Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab%20automation&team=software",
+    "first": "20250716045508",
+    "last": "20250716045508",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab%20Automation&team=Software"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=ai/ml&team=foundation+model",
+    "first": "20250716045511",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Foundation+Model&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&location=new+york,+ny&team=foundation+model",
+    "first": "20250716045511",
+    "last": "20250716045644",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&department=AI%2FML&team=Foundation+Model"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=foundation+model&workplacetype=hybrid",
+    "first": "20250716045511",
+    "last": "20250716045522",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Foundation+Model&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=foundation+model&workplacetype=onsite",
+    "first": "20250716045511",
+    "last": "20250716045512",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Foundation+Model&workplaceType=onsite"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=foundation+model&workplacetype=remote",
+    "first": "20250716045511",
+    "last": "20250716045531",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=AI%2FML&team=Foundation+Model"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=lab+automation&team=hardware",
+    "first": "20250716045512",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Hardware&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=generative&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045619",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=AI%2FML&team=Generative"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=ml+engineering&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045734",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=AI%2FML&team=ML+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045724",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&location=new+york,+ny&team=hardware",
+    "first": "20250716045512",
+    "last": "20250716045656",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Hardware&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=hardware&workplacetype=hybrid",
+    "first": "20250716045512",
+    "last": "20250716045522",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Hardware&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=hardware&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045512",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Hardware&workplaceType=onsite"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=hardware&workplacetype=remote",
+    "first": "20250716045512",
+    "last": "20250716045531",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=Hardware&workplaceType=remote&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=software&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045512",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?team=Software&workplaceType=onsite&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045532",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&team=experimental&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045512",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science&team=Experimental&workplaceType=onsite"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045649",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=Material+Science"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&team=platform+engineering&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045607",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=Platform+Engineering&workplaceType=onsite&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045735",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?location=new+york,+ny&workplacetype=onsite",
+    "first": "20250716045512",
+    "last": "20250716045655",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=onsite&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software%20engineering",
+    "first": "20250716045514",
+    "last": "20250716045514",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software%20Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/9891a086-713a-4dc0-a70f-c6f07f0307f6/apply",
+    "first": "20250716045515",
+    "last": "20251012135129",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI/9891a086-713a-4dc0-a70f-c6f07f0307f6/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software%20engineering&team=platform%20engineering",
+    "first": "20250716045516",
+    "last": "20250716045516",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software%20Engineering&team=Platform%20Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=lab+automation&team=software",
+    "first": "20250716045521",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Software&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&location=new+york,+ny&team=software",
+    "first": "20250716045521",
+    "last": "20250716045653",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Software&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=software&workplacetype=hybrid",
+    "first": "20250716045521",
+    "last": "20250716045522",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=Software&workplaceType=hybrid&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=software&workplacetype=remote",
+    "first": "20250716045521",
+    "last": "20250716045531",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=Software&workplaceType=remote&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=generative&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045619",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Generative&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=ml+engineering&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045734",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=ML+Engineering&workplaceType=hybrid&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045724",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab%20automation",
+    "first": "20250716045522",
+    "last": "20250716045522",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab%20Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045532",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&team=experimental&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045700",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid&department=Material+Science&team=Experimental"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045654",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid&department=Material+Science"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&team=platform+engineering&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045611",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid&department=Software+Engineering&team=Platform+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045735",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=hybrid&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?location=new+york,+ny&workplacetype=hybrid",
+    "first": "20250716045522",
+    "last": "20250716045653",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&workplaceType=hybrid"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?location=new%20york,%20ny",
+    "first": "20250716045528",
+    "last": "20250716045528",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?location=New%20York,%20NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=generative&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045619",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=AI%2FML&team=Generative"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&team=ml+engineering&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045734",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=ML+Engineering&workplaceType=remote&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045724",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&workplaceType=remote"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045532",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&team=experimental&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045700",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=Material+Science&team=Experimental"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045646",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science&workplaceType=remote"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&team=platform+engineering&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045613",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=Software+Engineering&team=Platform+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045737",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?location=new+york,+ny&workplacetype=remote",
+    "first": "20250716045531",
+    "last": "20250716045655",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?workplaceType=remote&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full%20time",
+    "first": "20250716045532",
+    "last": "20250716045532",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?commitment=Full%20Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=lab+automation",
+    "first": "20250716045532",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&location=new+york,+ny",
+    "first": "20250716045532",
+    "last": "20250716045655",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material%20science",
+    "first": "20250716045601",
+    "last": "20250716045601",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material%20Science"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&location=new+york,+ny&team=platform+engineering",
+    "first": "20250716045608",
+    "last": "20250716045644",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software+Engineering&team=Platform+Engineering&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=software+engineering&team=platform+engineering",
+    "first": "20250716045611",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software+Engineering&team=Platform+Engineering&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=ai/ml&team=generative",
+    "first": "20250716045619",
+    "last": "20250716045622",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Generative&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&location=new+york,+ny&team=generative",
+    "first": "20250716045619",
+    "last": "20250716045655",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=Generative&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=hardware",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Hardware"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=lab+automation&team=software",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Lab+Automation&team=Software"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&team=experimental",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science&team=Experimental"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&team=platform+engineering",
+    "first": "20250716045619",
+    "last": "20250716045619",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Software+Engineering&team=Platform+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=ai/ml",
+    "first": "20250716045622",
+    "last": "20250716045724",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?commitment=Full+Time&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=ai/ml&team=ml+engineering",
+    "first": "20250716045622",
+    "last": "20250716045733",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=AI%2FML&team=ML+Engineering&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=material+science",
+    "first": "20250716045622",
+    "last": "20250716045653",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?commitment=Full+Time&department=Material+Science"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=material+science&team=experimental",
+    "first": "20250716045622",
+    "last": "20250716045700",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science&team=Experimental&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&department=software+engineering",
+    "first": "20250716045622",
+    "last": "20250716045738",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?commitment=Full+Time&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?commitment=full+time&location=new+york,+ny",
+    "first": "20250716045622",
+    "last": "20250716045655",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&commitment=Full+Time"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/45d0d15b-e683-4800-ad08-ede66ef695a4/apply",
+    "first": "20250716045636",
+    "last": "20250716045636",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/45d0d15b-e683-4800-ad08-ede66ef695a4/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&location=new+york,+ny&team=ml+engineering",
+    "first": "20250716045644",
+    "last": "20250716045734",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?team=ML+Engineering&location=New+York%2C+NY&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&location=new+york,+ny&team=experimental",
+    "first": "20250716045644",
+    "last": "20250716045700",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&department=Material+Science&team=Experimental"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material+science&location=new+york,+ny",
+    "first": "20250716045646",
+    "last": "20250716045654",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material+Science&location=New+York%2C+NY"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=material%20science&team=experimental",
+    "first": "20250716045649",
+    "last": "20250716045649",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?department=Material%20Science&team=Experimental"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=ai/ml&location=new+york,+ny",
+    "first": "20250716045655",
+    "last": "20250716045724",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&department=AI%2FML"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?department=software+engineering&location=new+york,+ny",
+    "first": "20250716045656",
+    "last": "20250716045737",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI?location=New+York%2C+NY&department=Software+Engineering"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/d5f1267c-82c6-43af-8e72-6f04989d1091/apply",
+    "first": "20250716045749",
+    "last": "20250716045749",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/c0b925f5-4d08-495d-b58c-35d7f62bd06c/apply",
+    "first": "20250716045751",
+    "last": "20250716045751",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/c0b925f5-4d08-495d-b58c-35d7f62bd06c/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/3f1aac34-ddc4-47dd-8f30-2c55420da58f",
+    "first": "20250811051405",
+    "last": "20250811051405",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/3f1aac34-ddc4-47dd-8f30-2c55420da58f"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/2885cd8e-f208-4bbc-86c2-d7b4d890fba0",
+    "first": "20250811060456",
+    "last": "20251104225024",
+    "n": 2,
+    "original": "https://jobs.lever.co/RadicalAI/2885cd8e-f208-4bbc-86c2-d7b4d890fba0"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e/apply?lever-source=linkedin",
+    "first": "20250826170311",
+    "last": "20250826170311",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e/apply?lever-source=LinkedIn"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/fdc7465f-a4e4-4b09-836e-7fe12c37b493",
+    "first": "20251118005935",
+    "last": "20251118005935",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/fdc7465f-a4e4-4b09-836e-7fe12c37b493"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai?trk=public_post_comment-text",
+    "first": "20251228165023",
+    "last": "20251228165023",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI?trk=public_post_comment-text"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/93552615-b1f1-4f98-8b8a-090f58bdd361",
+    "first": "20260223151633",
+    "last": "20260223151633",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/93552615-b1f1-4f98-8b8a-090f58bdd361"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/816633b8-b0eb-47ed-8359-9268bacd9103/apply",
+    "first": "20260810173803",
+    "last": "20260810173803",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/816633b8-b0eb-47ed-8359-9268bacd9103/apply"
+   },
+   {
+    "urlkey": "co,lever,jobs)/radicalai/caaac405-c8a5-4daa-ae6d-0a0e51e199b8/apply",
+    "first": "20260810173803",
+    "last": "20260810173803",
+    "n": 1,
+    "original": "https://jobs.lever.co/RadicalAI/caaac405-c8a5-4daa-ae6d-0a0e51e199b8/apply"
+   }
+  ],
+  "www.radical-ai.com/careers": []
+ },
+ "board_captures": {
+  "jobs.lever.co/RadicalAI": [
+   [
+    "20250105193730",
+    "https://jobs.lever.co/RadicalAI"
+   ],
+   [
+    "20250409152802",
+    "https://jobs.lever.co/RadicalAI"
+   ],
+   [
+    "20250716045434",
+    "https://jobs.lever.co/RadicalAI"
+   ]
+  ]
+ },
+ "postings": [
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da",
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250105193730/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250105193730",
+   "last_seen": "20250105193730",
+   "n_captures": 1,
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250108110447/https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "url": "https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "first_seen": "20250108110447",
+   "last_seen": "20250826170311",
+   "n_captures": 9,
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-12-03",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nAs an ML Engineer at Radical AI, you will be responsible for developing machine learning systems, data pipelines, and large-scale training infrastructure. You will orchestrate entire machine learning lifecycles, but also data ingestion, enrichment, model exporting and serving, and much more. Your work will directly impact the development of an end-to-end AI-driven approach to materials discovery and development.\nPositions are available at various levels of seniority: Senior, Staff, and Principal.\n\\n\nMission\n- Develop, train, and deploy machine learning models to solve complex problems in materials science and lab automation.\n- Experiment with cutting-edge ML algorithms and techniques to improve performance and scalability.\n- Collaborate with researchers on the pre- and post-training stages of model development.\n- Conduct production-level deployments of our machine learning models and infrastructure.\n- Continually evaluate model performance and maintain production integrity.\n- Ensure reproducibility and traceability of models by leveraging version control systems and orchestration tools.\n- Contribute to research initiatives and participate in knowledge-sharing across teams.\n- Document workflows, experiments, and deployment procedures for future reference.\n- Tackle challenging problems with new and different ideas, creativity and contrarian thinking.\n- Mentor and guide junior team members and interns, promoting an environment of continuous learning and innovation.\nAbout you\n- Ph.D., M.S., or B.S. in Computer Science, AI, Machine Learning, Applied Maths, Engineering or a closely related field, or equivalent practical experience.\n- Proven record of accomplishment in building machine learning systems, working with large generative and/or language models\n- An excellent understanding of machine learning infrastructure and systems fundamentals.\n- Strong background in algorithms, data structures, and software engineering principles.\n- Working knowledge of various generative AI architectures, including transformers, diffusion models, CNFs, and flow matching.\n- Proficiency in Python and relevant ML libraries (e.g., PyTorch), as well as tools for deploying ML models (e.g., MLflow, K8s, Docker).\n- Passion for staying current with the latest trends in AI/ML technologies.\n- Excellent collaboration and communication skills, capable of articulating complex technical ideas clearly and effectively.\nPluses\n- Familiarity with distributed computing frameworks such as Ray, Spark, etc.\n- Strong fundamental knowledge and practical experience using Linux systems, including working with large-scale computing clusters.\n- Hands-on experience with MLOps tools (e.g., Kubeflow, Seldon, CI/CD pipelines for ML).\n- Familiarity with serverless architecture and cost optimization for ML workflows.\n- Strong publication record in top-tier AI/ML conferences or journals.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n- Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\n\\n $100,000 - $250,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250108121400/https://jobs.lever.co/RadicalAI/f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "url": "https://jobs.lever.co/RadicalAI/f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "first_seen": "20250108121400",
+   "last_seen": "20251007175825",
+   "n_captures": 10,
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-12-03",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nThe vision for this opportunity is to create an intelligent system that operates in an experimental material science setting. Your core responsibility will be to lead the development of an agentic system for materials development, enhancing reasoning and planning throughout the development process, encompassing data acquisition, model evaluation, pre- and post-training, supervised fine-tuning, reward modeling, and reinforcement learning to drive overall performance of the system.\nYour expertise will contribute to the broader research community through publications in top-tier AI/ML venues like NeurIPS, ICML, and ICLR, alongside active participation in conferences and workshops. This role offers the unique opportunity to mentor and guide junior members of our technical team and research interns, fostering a culture of growth and innovation.\nPositions are available at various levels of seniority: Senior, Staff, and Principal.\n\\n\nMission\n- Drive the development of a system that can pursue complex, multi-objective goals in materials design with limited direct supervision, leveraging agents and multi-agents that can interact with third-party and in-house integrations, including APIs, code interpreters, and hardware components.\n- Leverage various LLM architectures and models to balance reasoning and continuous adaptation towards intelligent decision-making.\n- Synthesize large-scale, high-quality (multi-modal) data through methods such as rewriting, augmentation, and generation to improve the abilities of models in various stages.\n- Work in collaboration with various teams, in particular the experimental materials science team.\n- Develop and apply reliable evaluation methods to analyze model performance at different stages, uncover the mechanisms and origins of their capabilities, and leverage these insights to enhance model development.\n- Contribute to the AI and materials science research community through publications and active engagement in top-tier AI/ML venues like NeurIPS, ICML, ICLR, and our company blog, alongside active participation in conferences and workshops.\n- The ability to tackle challenging problems with new and different ideas, creativity and contrarian thinking.\n- Mentor and guide junior team members and interns, promoting an environment of continuous learning and innovation.\nAbout you\n- Ph.D., M.S., or B.S. in Computer Science, AI, Machine Learning, Applied Maths, or a closely related field, with a strong focus on LLMs.\n- At least 3 years of research experience in AI, with a proven track record of designing agentic systems.\n- Familiarity with large-scale model training.\n- Proficiency in Python and relevant ML libraries (e.g., PyTorch).\n- Strong publication record in top-tier AI/ML conferences or journals.\n- Excellent collaboration and communication skills, capable of articulating complex technical ideas clearly and effectively.\nPluses\n- Passionate about leveraging ML for science related problems and a commitment to doing world-class research.\n- Domain knowledge of materials and/or molecules.\n- Familiarity with large-scale model training.\n- Experience with LLM engineering.\n- Active involvement in the AI research community, with contributions beyond publications, such as organizing workshops or giving talks at conferences.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n- Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\n\\n $100,000 - $300,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250108150759/https://jobs.lever.co/RadicalAI/0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "url": "https://jobs.lever.co/RadicalAI/0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "first_seen": "20250108150759",
+   "last_seen": "20250802233347",
+   "n_captures": 9,
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-08-22",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nAs an AI Researcher specializing in generative models for materials discovery at Radical AI, you will help the development of the first commercial foundation model for materials science. Your role involves pioneering the application of generative models in the field of materials science, in particular by leveraging flow matching, diffusion, and LLMs. You will develop novel models and training techniques tailored for atomistic data in materials science.\nYour responsibilities include designing and conducting large-scale experiments to validate the most promising approaches in generative modeling. Collaborating closely with our engineering and computational materials science teams, you will play a crucial role in transitioning state-of-the-art models from research to production. Your expertise will contribute to the broader research community through publications in top-tier AI/ML venues like NeurIPS, ICML, and ICLR, alongside active participation in conferences and workshops. This role offers the unique opportunity to mentor and guide junior members of our technical team and research interns, fostering a culture of growth and innovation.\nPositions are available at various levels of seniority: Senior, Staff, and Principal.\n\\n\nMission\n- Lead and develop our generative foundation models in materials discovery.\n- Work in collaboration with various teams, in particular the quantum chemistry team, the atomistic simulation team, the engineering team, and the experimental team.\n- Conduct large-scale experiments to validate and refine promising approaches, collaborating closely with engineers to implement these models in production.\n- Develop rigorous benchmarks to validate and test the performance of our models.\n- Contribute to the AI and materials science research community through publications and active engagement in top-tier AI/ML venues like NeurIPS, ICML, ICLR, and our company blog, alongside active participation in conferences and workshops.\n- Tackle challenging problems with new and different ideas, creativity and contrarian thinking.\n- Mentor and guide junior team members and interns, promoting an environment of continuous learning and innovation.\nAbout you\n- Ph.D., M.S., or B.S. in Computer Science, AI, Machine Learning, Applied Maths, or a closely related field, with a strong focus on deep learning and generative models.\n- At least 3 years of research experience in AI, with a proven track record in generative modeling, particularly in fields adjacent to materials science.\n- Working knowledge of various generative AI architectures, including transformers, diffusion models, CNFs, and flow matching.\n- Demonstrated experience in designing and running large-scale experiments in AI and machine learning.\n- Passionate about leveraging ML for science related problems and a commitment to doing world-class research.\n- Proficiency in Python and relevant ML libraries (e.g., PyTorch).\n- Strong publication record in top-tier AI/ML conferences or journals.\n- Excellent collaboration and communication skills, capable of articulating complex technical ideas clearly and effectively.\nPluses\n- Prior experience in transitioning AI research into production environments.\n- Active involvement in the AI research community, with contributions beyond publications, such as organizing workshops or giving talks at conferences.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n- Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\n\\n $100,000 - $300,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250108174535/https://jobs.lever.co/RadicalAI/025709b9-d365-4909-aecb-aba5669703da",
+   "url": "https://jobs.lever.co/RadicalAI/025709b9-d365-4909-aecb-aba5669703da",
+   "first_seen": "20250108174535",
+   "last_seen": "20251010121029",
+   "n_captures": 10,
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-08-22",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nAs an AI Researcher focused on the development of our foundation model, you will be at the forefront of integrating advanced ML techniques with materials modeling to create a generalizable, robust, and scalable universal ML interatomic potential capable of accelerating materials discovery. Your work will play a critical role in enabling self-driving labs and advancing AI-driven materials science.\nYour expertise will contribute to the broader research community through publications in top-tier AI/ML venues like NeurIPS, ICML, ICLR, and our company blog, alongside active participation in conferences and workshops. This role offers the unique opportunity to mentor and guide junior members of our technical team and research interns, fostering a culture of growth and innovation.\nPositions are available at various levels of seniority: Senior, Staff, and Principal.\n\\n\nMission\n- Develop scalable MLIP frameworks capable of representing diverse chemical systems with high fidelity.\n- Innovate and implement state-of-the-art machine learning models, such as graph neural networks, equivariant architectures, or hybrid approaches for interatomic potential development.\n- Curate and integrate large-scale datasets from first-principles calculations (e.g., DFT) and experimental sources.\n- Explore active learning and automated data acquisition workflows for efficient dataset expansion.\n- Address challenges of scalability, generalizability, and transferability in MLIP designs.\n- Optimize training and inference pipelines to leverage high-performance computing resources effectively.\n- Contribute to the AI and materials science research community through publications and active engagement in top-tier AI/ML venues like NeurIPS, ICML, ICLR, and our company blog, alongside active participation in conferences and workshops.\n- Tackle challenging problems with new and different ideas, creativity and contrarian thinking.\n- Mentor and guide junior team members and interns, promoting an environment of continuous learning and innovation.\nAbout you\n- Ph.D., M.S., or B.S. in AI, Machine Learning, Physics, Materials Science, Computer Science, or a closely related field, with a strong focus on atomistic modeling.\n- At least 3 years of research experience in AI, especially in graph neural networks, deep learning architectures, or equivariant modeling techniques.\n- Solid understanding of materials modeling and interatomic potentials, including DFT and molecular dynamics simulations.\n- Familiarity with high-performance computing and distributed training methods.\n- Demonstrated experience in designing and running large-scale experiments in AI and machine learning.\n- Passionate about leveraging ML for science related problems and a commitment to doing world-class research.\n- Proficiency in Python and relevant ML libraries (e.g., PyTorch).\n- Strong publication record in top-tier AI/ML conferences or journals.\n- Excellent collaboration and communication skills, capable of articulating complex technical ideas clearly and effectively.\nPluses\n- Experience in developing or applying MLIPs such as Gemnet, MACE, NequIP, Allegro, or similar frameworks.\n- Familiarity with software engineering best practices.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n- Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\n\\n $100 - $300 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250120222901/https://jobs.lever.co/RadicalAI/56ec9525-fab1-4f88-a465-36fb5a76aba4",
+   "url": "https://jobs.lever.co/RadicalAI/56ec9525-fab1-4f88-a465-36fb5a76aba4",
+   "first_seen": "20250120222901",
+   "last_seen": "20251013054228",
+   "n_captures": 8,
+   "title": "Material Scientist",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-08-22",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nWe are seeking a talented and forward-thinking Materials Scientist with expertise in artificial intelligence (AI) and materials research to join our innovative team at the forefront of interdisciplinary research. In this role, you will leverage AI techniques to accelerate materials discovery, design, and optimization, contributing to groundbreaking advancements in materials science.\n\\n\nMission\n- Design and execute experiments to synthesize and characterize materials, leveraging AI algorithms to guide experimental design and interpretation.\n- Analyze and interpret large datasets generated from experiments, simulations, and external sources to extract valuable insights into materials properties and behavior.\n- Work closely with AI scientists and engineers to translate materials properties, identify structure-property relationships, and optimize materials performance for specific applications.\n- Stay current with advancements in materials science theory and experimentation and apply new methodologies and techniques to advance research objectives.\n- Communicate research findings effectively through technical reports, presentations, and scientific publications, contributing to the dissemination of knowledge and the development of intellectual property.\nAbout you\n- PhD or Masters degree in Materials Science, Chemistry, Chemical Engineering, Polymers, or a related field\n- Strong background in materials science principles, including materials synthesis and characterization.\n- Deep knowledge of materials characterization and testing, as well as familiarity with laboratory safety protocols.\n- Excellent analytical and problem-solving skills, with the ability to analyze complex datasets, identify patterns, and draw meaningful conclusions.\n- Strong written and verbal communication skills, with the ability to convey technical concepts and research findings to diverse audiences.\n- Familiarity with one or more software languages (Python, C++, MATLAB, etc.)\nPluses\n- Experience with AI-driven materials research, including machine learning models for materials property prediction, materials informatics, and data-driven materials discovery.\n- Prior experience in transitioning AI + computational research into production environments.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n\\n $125,000 - $175,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "56ec9525-fab1-4f88-a465-36fb5a76aba4"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250328165021/https://jobs.lever.co/RadicalAI/c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+   "url": "https://jobs.lever.co/RadicalAI/c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+   "first_seen": "20250328165021",
+   "last_seen": "20250908032050",
+   "n_captures": 6,
+   "title": "Mechatronics Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-08-22",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nAs a Mechatronics Engineer at Radical AI you will serve as the bridge between Mechanical Engineering and Software to operationalize a suite of novel robotic and autonomous systems to drive a first of its kind material science research and discovery laboratory. You will help ideate scalable designs for driving and automating state of the art lab equipment in part by specifying motors, motor drivers, actuators, encoders, sensors, and control systems. You will drive the integration of electromechanical systems and the foundational power and control systems, equipment, and hardware to operate our equipment safely and reliably.\nYour experience and vision will shape both the physical and systematic implementation of a lab-wide autonomous integrated control scheme. You will collaborate closely with Mechanical Engineering and Software to meet rigorous and sometimes dynamic design requirements at a profound deployment speed. You will maintain and optimize control system performance to meet throughput and reliability metrics that are critical to the success of the technology.\n\\n\nMission\n- Contribute to and actualize the vision of the Mechanical Engineering team as we tackle solving complex and interconnected material handling challenges, and innovate novel solutions to automating the operation of existing equipment and systems.\n- Leverage your industry experience to instill team-wide adoption and utilization of ‘right tool for the job’ off-shelf solutions to accelerate the deployment of control, power, safety, and sensing systems.\n- Execute on the design and implementation of precision motion control systems and associated sensors and encoders.\n- Design and assemble the power and control cabinets to drive our systems with a focus on design flexibility and industry standard best practices for safety systems to protect our people and our technology.\n- Swiftly debug and trouble shoot electromechanical systems to maximize facility and equipment uptime. Help shape the culture of the hardware team by leading from the front and demonstrating a disciplined sense of organization, eye for detail, and an impeccable level of polish and craftsmanship.\n- Bring an attitude of collaboration and openmindedness, to facilitate fearless and creative problem solving that empowers our team to ship world class technology at an unprecedented speed.\nAbout you\n- Minimum B.S. in Electrical, Mechanical, or Mechatronics Engineering or a closely related field.\n- 3-5 years industry experience in robotics, industrial automation, or a closely related field.\n- A strong fundamental understanding of electrical engineering and industry best practices.\n- Competency with CAD software, we use SOLIDWORKS.\n- Experience with PLCs, motor drivers, and industrial automation.\n- Knowledge of control systems, embedded systems, and automation technologies.\n- Excellent communication and interpersonal skills.\nPluses\n- Familiarity with programming languages like Python.\n- Familiarity with 6 DOF arms cobots, and their implementation.\n- Hands on experience with rapid prototyping and machine fabrication techniques.\n- Experience or exposure to the design and utilization of material handling systems (AMRs, ASRS, conveyance systems, etc)\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n- Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\n\\n $140,000 - $170,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "c0b925f5-4d08-495d-b58c-35d7f62bd06c"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250328165216/https://jobs.lever.co/RadicalAI/33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+   "url": "https://jobs.lever.co/RadicalAI/33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+   "first_seen": "20250328165216",
+   "last_seen": "20251014105933",
+   "n_captures": 7,
+   "title": "Mechanical Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-08-22",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nAs a Mechanical Engineer at Radical AI you will design and build a suite of novel robotic and autonomous systems to drive a first of its kind material science research and discovery laboratory. Our Mechanical Engineering team owns all aspects of the physical manifestation of our technology. You will help define design requirements from a greenfield solution space and then execute on 3D design, prototyping, validating, and installing mechanical systems within our lab. You will solve a vast array of interconnected problems involving material handling, precision motion control, and refitting state of the art laboratory and metallurgical equipment for automation and programmatic control.\nYou will take ownership of individual projects and subsystems and bring them to completion using your knowledge of rapid prototyping and low volume manufacturing techniques. Your hardware will fit in seamlessly with the Radical AI branding language and smoothly interface with peripheral systems and equipment. You’ll leverage your experience and expertise to become an indispensable contributor to collaborative engineering initiatives.\n\\n\nMission\n- Contribute to and actualize the vision of the Mechanical Engineering team as we tackle solving complex and interconnected material handling challenges, and innovate novel solutions to automating the operation of existing equipment and systems.\n- Use your 2D and 3D visualization skills to communicate complex ideas, designs, and geometries in group ideation sessions that include a non-technical audience.\n- Design complex systems and assemblies in CAD to demonstrate viable solutions to automation challenges.\n- Rapid prototype to prove design efficacy, then facilitate part fabrication from outside vendors to build your system and integrate it with software and controls.\n- Help shape the culture of the hardware team by leading from the front and demonstrating a disciplined sense of organization, eye for detail, and an impeccable level of polish and craftsmanship.\n- Bring an attitude of collaboration and openmindedness, to facilitate fearless and creative problem solving that empowers our team to ship world class technology at an unprecedented speed.\nAbout you\n- Minimum B.S. in Mechanical Engineering or a closely related field.\n- 3-5 years industry experience in mechanical engineering involving part and assembly design.\n- Proficiency with CAD software, we use SOLIDWORKS.\n- Well versed in common rapid prototyping and part fabrication techniques and DFM best practices.\n- CNC part design, sheet metal part design, 3D printing, metal casting, etc.\n- Proven track record of delivering novel mechanism and machine designs. Excellent hands on fabrication and assembly skills.\n- Excellent communication and interpersonal skills.\nPluses\n- Experience in industrial automation settings and design of automation equipment.\n- Familiarity with 6 DOF arms cobots, and their implementation.\n- Experience with PLCs, motor drivers, and motion control systems. Experience with simulation and analysis tools like FEA or CFD.\n- Experience or exposure to the design and utilization of material handling systems.\n- AMRs, ASRS, conveyance systems, etc.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n\\n $140,000 - $170,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "33655210-ec96-4f14-9baa-ea3d9a26cd6e"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da",
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+   "title": "Mechanical Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+   "title": "Mechatronics Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250409152802/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250409152802",
+   "last_seen": "20250409152802",
+   "n_captures": 1,
+   "posting_id": "56ec9525-fab1-4f88-a465-36fb5a76aba4",
+   "title": "Material Scientist",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250523110331/https://jobs.lever.co/RadicalAI/9891a086-713a-4dc0-a70f-c6f07f0307f6",
+   "url": "https://jobs.lever.co/RadicalAI/9891a086-713a-4dc0-a70f-c6f07f0307f6",
+   "first_seen": "20250523110331",
+   "last_seen": "20251118001002",
+   "n_captures": 7,
+   "title": "DevSecOps Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2025-04-24",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nAs a DevSecOps Engineer at Radical AI, you will be instrumental in building and maintaining a secure and efficient development and deployment pipeline for our cutting-edge AI and materials discovery platform. You will be responsible for integrating security practices throughout the software development lifecycle, automating security controls, and ensuring the resilience and integrity of our infrastructure and applications. Your work will be critical in enabling the rapid and secure delivery of our innovative solutions.\n\\n\nMission\n- Integrate security tools and practices into every stage of the development lifecycle, from code creation to deployment and monitoring.\n- Design, build, and maintain robust, secure and scalable CI/CD pipelines to automate software delivery processes.\n- Automate security testing (SAST, DAST, vulnerability scanning) and integrate the results into the development workflow.\n- Design and implement secure and optimized cloud (e.g., AWS, Azure, GCP) and on-prem infrastructure following security best practices and compliance standards.\n- Develop and maintain infrastructure-as-code (IaC) using tools like Terraform or CloudFormation, incorporating security configurations.\n- Implement and manage security monitoring and alerting systems to proactively identify and respond to potential threats.\n- Implement and manage monitoring and alerting systems to proactively identify and resolve infrastructure and application issues.\n- Troubleshoot and resolve infrastructure and deployment-related issues across development, staging, and production environments.\n- Implement and manage containerization and orchestration technologies (e.g., Docker, Kubernetes) to improve application portability and scalability.\n- Collaborate closely with software engineers, ML engineers, and research scientists to understand their needs and provide secure and efficient solutions.\n- Develop and maintain security policies, procedures, and documentation.\n- Stay up-to-date with the latest security threats, vulnerabilities, and best practices.\n- Promote a security-conscious culture within the engineering teams through training and knowledge sharing.\n- Troubleshoot and resolve security-related issues in development, staging, and production environments.\n- Mentor and guide junior team members and interns on DevSecOps principles and practices.\n- Conduct security assessments of our systems and applications.\nAbout you\n- B.S. or M.S. in Computer Science, Information Security, Engineering, or a related field, or equivalent practical experience.\n- Proven experience in a DevSecOps, Security Engineering, or DevOps role with a strong security focus.\n- Solid understanding of security principles, practices, and common security tools (e.g., vulnerability scanners, intrusion detection systems).\n- Experience with CI/CD tools (e.g., GitHub Actions, Jenkins, CircleCI) and integrating security checks within them.\n- Hands-on experience with cloud platforms (e.g., AWS, Azure, GCP) and their security services, as well as on-prem.\n- Proficiency in at least one scripting language (e.g., Python, Bash) for automation tasks.\n- Experience with Infrastructure-as-Code (IaC) tools such as Terraform or CloudFormation.\n- Familiarity with containerization technologies (e.g., Docker, Kubernetes) and their security considerations.\n- Understanding of network security concepts (e.g., firewalls, VPNs, network segmentation).\n- Solid understanding of Linux/Unix systems administration.\n- Strong analytical and problem-solving skills with a security-first mindset.\n- Excellent communication and collaboration skills, capable of explaining technical security concepts to both technical and non-technical audiences.\n- Passion for building secure and reliable systems.\nPluses\n- Relevant security certifications (e.g., CISSP, CISM, Security+, AWS Certified Security – Specialty, Certified Kubernetes Security Specialist (CKS)) and/or DevOps certifications (e.g.,  AWS Certified Solutions Architect,\n- Experience with security information and event management (SIEM) systems.\n- Familiarity with compliance frameworks (e.g., SOC 2, GDPR, HIPAA).\n- Experience with security and compliance software (e.g., Drata, Apptega).\n- Experience with security testing methodologies and tools (e.g., OWASP ZAP, Burp Suite).\n- Contributions to open-source security projects.\n- Experience with penetration testing.\n- Knowledge of machine learning concepts and security considerations in ML workflows.\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n\\n $140,000 - $240,000 a year\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "9891a086-713a-4dc0-a70f-c6f07f0307f6"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250615045331/https://jobs.lever.co/RadicalAI/45d0d15b-e683-4800-ad08-ede66ef695a4",
+   "url": "https://jobs.lever.co/RadicalAI/45d0d15b-e683-4800-ad08-ede66ef695a4",
+   "first_seen": "20250615045331",
+   "last_seen": "20250912055801",
+   "n_captures": 5,
+   "title": "Robotics Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2025-05-14",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe Opportunity\nAs a Roboticist at Radical AI, you’ll build intelligent robotic systems for a fully autonomous materials discovery lab. Your focus will span path planning, perception, control, and manipulation—enabling mobile robots and 6DOF arms to safely and reliably perform complex tasks in dynamic lab environments. You’ll work with ROS 2, Nav2, MoveIt, and simulation platforms like Isaac Sim to develop, test, and deploy robust autonomy stacks. Your code will control real robots that move through physical space, handle experimental materials, and bridge the sim2real divide in a highly interdisciplinary setting.\nYou are a robotics engineer with hands-on experience in perception, motion planning, and control for both mobile robots and manipulators. You think in terms of both software architecture and physical behavior. You’re comfortable with simulation tools and robotic middleware, and you’ve deployed code that controls real-world systems safely and autonomously.\nYou may not have done all of the following, but the prospect of learning and owning these technologies excites you.\n\\n\nAbout You\n- Proficiency with ROS2 and related frameworks like Nav2 and MoveIt\n- Experience with autonomous mobile robots (AMRs), including localization, obstacle avoidance, and navigation\n- Hands-on integration of 6DOF robotic arms, including motion planning and execution\n- Strong foundation in path planning, trajectory generation, and controls\n- Familiarity with computer vision with tasks such as object detection, pose estimation, and fiducial tracking\n- Comfort with simulation environments such as IsaacSim, Gazebo, or MujoCo\n- Understanding of sim2real challenges and strategies for bridging that gap\n- Skilled in C++ and/or Python for real-time, hardware-adjacent development\nPluses\n- Experience with multi-robot systems or coordination\n- Familiarity with task planning, behavior trees, or symbolic reasoning\n- Exposure to lab automation protocols or experimental R&D environments\n- Prior contributions to open-source robotics tools or frameworks\n- Deployment of robotic systems in production or high-availability settings (e.g. industrial automation)\nWhat we offer:\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n\\n $200,000 - $250,000 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "45d0d15b-e683-4800-ad08-ede66ef695a4"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250615055559/https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091",
+   "url": "https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091",
+   "first_seen": "20250615055559",
+   "last_seen": "20251222094654",
+   "n_captures": 9,
+   "title": "Full Stack Software Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2025-05-29",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nAs a Full Stack Engineer at Radical, you’ll design and build systems that bridge software and physical labs. You’ll develop services that orchestrate robotic hardware, manage asynchronous workflows, and expose them via APIs and interfaces to scientists and engineers. Your work will touch everything from real-time coordination of lab equipment, to building frontend tools for steering experiments, to high-performance backend services that run simulations and ML-powered feedback loops.\nWe work in a deeply technical domain—robotics, ML, and experimental automation—and your software will directly control and monitor systems in the real world.\nYou’re an engineer who thrives on building complex systems that touch real hardware, manage asynchronous workflows, and surface meaningful interfaces to end users. You’re comfortable moving between abstraction layers, and you take ownership of problems from design to debugging in production.\nYou may not have done all of the following, but the prospect of learning and owning these technologies excites you:\n\\n\nAbout You\n- Python expertise, especially with context managers and asynchronous programming using asyncio. You’ve built services that coordinate concurrent processes and understand event loops, clean cancellation, and backpressure.\n- Rust experience or a strong interest in systems programming. You appreciate its guarantees and have used it (or want to use it) for high-performance orchestration, drivers, or data handling where Python falls short.\n- Familiarity with distributed systems patterns such as idempotent task execution, event-driven workflows, pub/sub messaging, and retry semantics.\n- Experience with gRPC, protocol buffers, and versioned API design. You’ve worked on strongly typed service boundaries and understand the tradeoffs in service mesh vs monolith architectures.\n- Frontend engineering experience with Svelte, React, or similar frameworks. You’ve built responsive, real-time interfaces and care about state management, testing, and usability. You’ve worked with structured APIs and understand browser performance implications.\n- Comfort with telemetry, observability, and debugging tools—structlog, OpenTelemetry, Prometheus, Grafana, etc. You think about how systems fail and how to make failure modes easy to diagnose.\n- Experience with hardware-adjacent software: robotics SDKs, sensor interfaces, PLCs, or simulation environments (e.g. ROS, PyBullet, or custom test benches for hardware-in-the-loop testing).\n- Familiarity with CI/CD, containerization (Docker), and hybrid cloud/on-prem environments. You understand how to build for reproducibility and deploy in controlled lab settings.\n- You’re driven by technical depth and product impact. You want your code to directly influence what happens in the real world—and you’re eager to work alongside roboticists, ML engineers, and scientists to make that happen.\nPluses\n- Experience with robotic APIs, lab automation protocols, or hardware integration (e.g., ROS, Modbus, serial interfaces).\n- Familiarity with real-time systems, state machines, or control loops.\n- Experience writing developer-facing SDKs or command-line tools.\n- Exposure to scientific computing, simulation pipelines, or ML infrastructure.\n- Experience working with structured telemetry, logs, or time-series data.\n- Comfort developing and debugging in hybrid on-prem/cloud environments (e.g., Docker, k8s).\nWhat we offer\n- A competitive compensation package also includes the best in benefits:\n- Medical, dental, and vision insurance for you and your family\n- Mental health and wellness support\n- Unlimited PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research.\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery.\n\\n $200 - $250 a year\n+ Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Radical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "d5f1267c-82c6-43af-8e72-6f04989d1091"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "025709b9-d365-4909-aecb-aba5669703da",
+   "title": "AI Research Scientist - GNN / Foundation Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "f3f758ea-25bf-4756-ae6c-af1d0d9b586a",
+   "title": "AI Research Scientist - Agentic Systems",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "0ed60b43-a021-480d-aaff-9a38a69dc793",
+   "title": "AI Research Scientist - Generative Models",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e",
+   "title": "ML Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "33655210-ec96-4f14-9baa-ea3d9a26cd6e",
+   "title": "Mechanical Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "c0b925f5-4d08-495d-b58c-35d7f62bd06c",
+   "title": "Mechatronics Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "d5f1267c-82c6-43af-8e72-6f04989d1091",
+   "title": "Full Stack Software Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "45d0d15b-e683-4800-ad08-ede66ef695a4",
+   "title": "Robotics Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "56ec9525-fab1-4f88-a465-36fb5a76aba4",
+   "title": "Material Scientist",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250716045434/https://jobs.lever.co/RadicalAI",
+   "url": "https://jobs.lever.co/RadicalAI",
+   "first_seen": "20250716045434",
+   "last_seen": "20250716045434",
+   "n_captures": 1,
+   "posting_id": "9891a086-713a-4dc0-a70f-c6f07f0307f6",
+   "title": "DevSecOps Engineer",
+   "location": "New York, NY",
+   "team": null,
+   "employment_type": "Full Time",
+   "listing_only": true,
+   "board_capture": true
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20250811051405/https://jobs.lever.co/RadicalAI/3f1aac34-ddc4-47dd-8f30-2c55420da58f",
+   "url": "https://jobs.lever.co/RadicalAI/3f1aac34-ddc4-47dd-8f30-2c55420da58f",
+   "first_seen": "20250811051405",
+   "last_seen": "20250811051405",
+   "n_captures": 1,
+   "title": "Elite",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2024-09-18",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "If you are elite...tell us why and what you want to do here.\n\\n\n\\n",
+   "posting_id": "3f1aac34-ddc4-47dd-8f30-2c55420da58f"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20251118005935/https://jobs.lever.co/RadicalAI/fdc7465f-a4e4-4b09-836e-7fe12c37b493",
+   "url": "https://jobs.lever.co/RadicalAI/fdc7465f-a4e4-4b09-836e-7fe12c37b493",
+   "first_seen": "20251118005935",
+   "last_seen": "20251118005935",
+   "n_captures": 1,
+   "title": "Data Engineer",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2025-10-24",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI, Inc.  is an artificial intelligence company that is accelerating scientific research & development. We are at the forefront of innovation in the field of materials R&D, a critical driver for advancing our most cutting-edge industries and shaping the future. Breaking away from the traditionally slow and costly R&D process, Radical AI leverages artificial intelligence and machine learning to pioneer generative materials science. This innovative field blends AI, engineering, and materials science, revolutionizing how materials are created and discovered. Radical AI's approach speeds up R&D and addresses global challenges, setting new benchmarks in technology and sustainability.\nThe opportunity\nData is core to Radical AI's mission and as a Data Engineer, you'll collaborate with cross-functional teams (software, ML, materials science) to build robust data solutions.\nYou will be directly involved in designing, building and maintaining infrastructure to support agentic workflows for our AI materials design engine, as well as maturing our existing data infrastructure that relates to our autonomous lab. In this you'll create a best-in-class system to accelerate Radical AI's ability to develop the next evolution of scientific progress and get to work at the intersection of cutting edge models, autonomous experimentation, and materials science.\nAs a foundational member of the team, you'll have the opportunity to shape the standards, culture, and values of the data engineering team.\n\\n\nMission\n- Work side by side with AI researchers and engineers, shaping the next generation of autonomous systems for materials discovery.\n- Own the end-to-end planning, execution, and delivery of largescale data initiatives.\n- Drive a continuous improvement culture through retrospectives, process streamlining, and lean execution experiments.\n- Help define the roadmap for agentic AI automation, enabling intelligent workflows, process automation, and AI-driven decision-making within scientific discovery.\n- Design and implement data pipelines connecting our autonomous lab with operational and product systems, including our AI-driven discovery engine.\n- Build and support scalable, audit-proof architecture.\n- Define and enforce best practices for data modeling, lineage, observability, and reconciliation across finance data domains.\n- Ensure data systems are AI-ready and capable of supporting predictive analytics, autonomous agent workflows, and large-scale automation.\nAbout you\n- B.S. or M.S. in Computer Science, Information Security, Engineering, or a related field, or equivalent practical experience.\n- 6+ years in data engineering, with proven experience building and managing enterprise-scale, auditable ETL pipelines and complex datasets.\n- Strong background in computer science: algorithms, data structures, system design and data modeling.\n- Strong Python and/or Go skills and and experience deploying production-grade code (not just notebooks).\n- Experience with relational SQL/NoSQL databases and data lakehouse/warehouse frameworks (e.g., BigQuery, Snowflake, Redshift, Databricks).\n- Experience with data pipeline frameworks (e.g., Beam, Spark, Kafka, Pulsar, etc.), modern data orchestration frameworks (e.g., Dagster, Prefect), and cloud-native storage (e.g., S3, ADLS).\n- Experience with large scale distributed system design, operation and optimization.\n- Experience with lightweight, embedded analytical databases (e.g., Duckdb, SQLite).\n- Proficient at scaling up and managing high-volume document ingestion pipelines.\n- An experimental mindset: comfortable testing hypotheses, learning from failures, and iterating quickly; doesn’t shy away from problems with no right answer.\n- Proven ability to scope ambiguous problems, develop end-to-end solutions, and communicate outcomes effectively.\nPluses\n- Experience with vector databases (e.g. Pinecone, pgvector, Qdrant, TurboPuffer, etc.).\n- Knowledge of or experience with aagentic processes and/or frameworks (e.g., LangChain, CrewAI, PydanticAI, AutoGen, etc.).\n- Demonstrated experience with LLMOps (e.g., Google Cloud Vertex AI, Amazon SageMaker, Azure Machine Learning, etc.)\n- Experience with full-stack prototyping.\n\\n Salary Description\nCompetitive salary + Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\nDisclosure\nRadical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.",
+   "posting_id": "fdc7465f-a4e4-4b09-836e-7fe12c37b493"
+  },
+  {
+   "company": "radical-ai",
+   "basis": "wayback",
+   "capture": "https://web.archive.org/web/20260223151633/https://jobs.lever.co/RadicalAI/93552615-b1f1-4f98-8b8a-090f58bdd361",
+   "url": "https://jobs.lever.co/RadicalAI/93552615-b1f1-4f98-8b8a-090f58bdd361",
+   "first_seen": "20260223151633",
+   "last_seen": "20260223151633",
+   "n_captures": 1,
+   "title": "Narrative Content Manager",
+   "location": "New York, NY",
+   "employment_type": "Full Time",
+   "published": "2026-02-18",
+   "valid_through": null,
+   "salary": null,
+   "org": "Radical AI",
+   "text": "Radical AI is the fastest-moving materials science company in the world. From the Bronze Age to Silicon Valley, human progress has happened in novel materials, and this is your opportunity to narrate the next chapter.\nWe are looking for a Narrative Content Manager to partner with our Head of Comms and Marketing on telling the story of our technology, partnerships, and singular standing in the AI ecosystem. In your role, you will edit blog posts, oversee video production, manage our social channels, and have a front-row seat to rapid brand growth. This is a special opportunity to make a name for yourself in zero-to-one brand building with domain-specific mentorship and guidance that is extremely rare at seed-stage startups.\n\\n\nMission\n- Growing social audience 100% a quarter\n- Producing original videos with our freelance videographer and editor\n- Editing company blog posts to reach our targeted audiences\n- Producing quarterly research reports\n- Implementing AI systems to scale your work\nAbout You\n- Adept storyteller who enjoys flexing strategic creativity in writing and video\n- Social audience growth expert with inventive, data-based tactics to back you up\n- Experience building AI systems and processes that 10xed your output\n- Extreme attention to detail\n- Self-directed learner—you don’t need proven experience in every one of these dimensions, but you do need to show scrappy determination in how you built the competencies you do have and take high ownership for your work in general\nPluses\n- Deep writing and research background (doesn't need to be in science—your ability to translate complex concepts is what's most valuable)\n- Design fluency—much of the design work will be built for you, but the ability to further refine assets on the fly with freelancers is valuable\n- PR fluency—we have an agency that will be complementing your owned-media work with an ambitious earned-media program\n- Experience creating content to amplify event appearances—our leadership team will be speaking at several dozen industry events this year\nWhat We Offer\n- Medical, dental, and vision insurance for you and your family, covered at 100%\n- Mental health and wellness support\n- Flexible PTO and 14+ company holidays per year\n- 401K\n- Work closely with a team on the cutting edge of AI research\n- A mission: an opportunity to fundamentally change the way humanity makes progress through materials science discovery\n\\n $120,000 - $140,000 a year\nCompetitive salary + Equity + Benefits; base pay offered may vary depending on job-related knowledge, skills, and experience.\n\\n Disclosure\nRadical AI is committed to equal employment opportunity regardless of race, color, ancestry, national origin, religion, sex, age, sexual orientation, gender identity and expression, marital status, disability, or veteran status.\nShow us you can take initiative: If you’re interested in this role, send your pitch to [email removed]",
+   "posting_id": "93552615-b1f1-4f98-8b8a-090f58bdd361"
+  }
+ ],
+ "spans": {
+  "078f84f2-0e62-4d51-8d2f-ce898ef9ea6e": {
+   "first": "20250108110447",
+   "last": "20250826170311",
+   "n": 9,
+   "url": "https://jobs.lever.co/RadicalAI/078f84f2-0e62-4d51-8d2f-ce898ef9ea6e"
+  },
+  "f3f758ea-25bf-4756-ae6c-af1d0d9b586a": {
+   "first": "20250108121400",
+   "last": "20251007175825",
+   "n": 10,
+   "url": "https://jobs.lever.co/RadicalAI/f3f758ea-25bf-4756-ae6c-af1d0d9b586a"
+  },
+  "0ed60b43-a021-480d-aaff-9a38a69dc793": {
+   "first": "20250108150759",
+   "last": "20250802233347",
+   "n": 9,
+   "url": "https://jobs.lever.co/RadicalAI/0ed60b43-a021-480d-aaff-9a38a69dc793"
+  },
+  "025709b9-d365-4909-aecb-aba5669703da": {
+   "first": "20250108174535",
+   "last": "20251010121029",
+   "n": 10,
+   "url": "https://jobs.lever.co/RadicalAI/025709b9-d365-4909-aecb-aba5669703da"
+  },
+  "56ec9525-fab1-4f88-a465-36fb5a76aba4": {
+   "first": "20250120222901",
+   "last": "20251013054228",
+   "n": 8,
+   "url": "https://jobs.lever.co/RadicalAI/56ec9525-fab1-4f88-a465-36fb5a76aba4"
+  },
+  "c0b925f5-4d08-495d-b58c-35d7f62bd06c": {
+   "first": "20250328165021",
+   "last": "20250908032050",
+   "n": 6,
+   "url": "https://jobs.lever.co/RadicalAI/c0b925f5-4d08-495d-b58c-35d7f62bd06c"
+  },
+  "33655210-ec96-4f14-9baa-ea3d9a26cd6e": {
+   "first": "20250328165216",
+   "last": "20251014105933",
+   "n": 7,
+   "url": "https://jobs.lever.co/RadicalAI/33655210-ec96-4f14-9baa-ea3d9a26cd6e"
+  },
+  "9891a086-713a-4dc0-a70f-c6f07f0307f6": {
+   "first": "20250523110331",
+   "last": "20251118001002",
+   "n": 7,
+   "url": "https://jobs.lever.co/RadicalAI/9891a086-713a-4dc0-a70f-c6f07f0307f6"
+  },
+  "45d0d15b-e683-4800-ad08-ede66ef695a4": {
+   "first": "20250615045331",
+   "last": "20250912055801",
+   "n": 5,
+   "url": "https://jobs.lever.co/RadicalAI/45d0d15b-e683-4800-ad08-ede66ef695a4"
+  },
+  "d5f1267c-82c6-43af-8e72-6f04989d1091": {
+   "first": "20250615055559",
+   "last": "20251222094654",
+   "n": 9,
+   "url": "https://jobs.lever.co/RadicalAI/d5f1267c-82c6-43af-8e72-6f04989d1091"
+  },
+  "3f1aac34-ddc4-47dd-8f30-2c55420da58f": {
+   "first": "20250811051405",
+   "last": "20250811051405",
+   "n": 1,
+   "url": "https://jobs.lever.co/RadicalAI/3f1aac34-ddc4-47dd-8f30-2c55420da58f"
+  },
+  "2885cd8e-f208-4bbc-86c2-d7b4d890fba0": {
+   "first": "20250811060456",
+   "last": "20251104225024",
+   "n": 2,
+   "url": "https://jobs.lever.co/RadicalAI/2885cd8e-f208-4bbc-86c2-d7b4d890fba0"
+  },
+  "fdc7465f-a4e4-4b09-836e-7fe12c37b493": {
+   "first": "20251118005935",
+   "last": "20251118005935",
+   "n": 1,
+   "url": "https://jobs.lever.co/RadicalAI/fdc7465f-a4e4-4b09-836e-7fe12c37b493"
+  },
+  "93552615-b1f1-4f98-8b8a-090f58bdd361": {
+   "first": "20260223151633",
+   "last": "20260223151633",
+   "n": 1,
+   "url": "https://jobs.lever.co/RadicalAI/93552615-b1f1-4f98-8b8a-090f58bdd361"
+  },
+  "816633b8-b0eb-47ed-8359-9268bacd9103": {
+   "first": "20260810173803",
+   "last": "20260810173803",
+   "n": 1,
+   "url": "https://jobs.lever.co/RadicalAI/816633b8-b0eb-47ed-8359-9268bacd9103/apply"
+  },
+  "caaac405-c8a5-4daa-ae6d-0a0e51e199b8": {
+   "first": "20260810173803",
+   "last": "20260810173803",
+   "n": 1,
+   "url": "https://jobs.lever.co/RadicalAI/caaac405-c8a5-4daa-ae6d-0a0e51e199b8/apply"
+  }
+ }
+}
