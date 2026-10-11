@@ -102,17 +102,12 @@
   ],
   "root_front_y": -14.5,
   "beam_x": [
-   -22.0,
+   -27.6,
    6.0
   ],
   "beam_top": 38.8,
-  "web_x": [
-   -10.9,
-   -4.9
-  ],
-  "web_top": 52.0,
   "m2_clear": 2.4,
-  "m2_head_d": 4.2,
+  "m2_head_d": 4.4,
   "m2_head_depth": 2.0,
   "bearing_tap_d": 2.5,
   "bearing_tap_depth": 5.5
@@ -447,20 +442,20 @@
    ]
   },
   "finger_insert_upper": {
-   "volume_mm3": 21897.8,
-   "solid_pla_g": 27.2,
+   "volume_mm3": 28312.5,
+   "solid_pla_g": 35.1,
    "bbox_mm": [
     35.95,
-    64.76,
+    68.5,
     40.0
    ]
   },
   "finger_insert_lower": {
-   "volume_mm3": 21898.0,
-   "solid_pla_g": 27.2,
+   "volume_mm3": 29319.4,
+   "solid_pla_g": 36.4,
    "bbox_mm": [
     35.95,
-    64.76,
+    68.5,
     40.0
    ]
   },

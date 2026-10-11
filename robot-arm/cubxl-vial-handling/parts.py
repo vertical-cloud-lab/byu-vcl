@@ -110,12 +110,10 @@ class Params:
     cap_r: float = 14.0
     root_x: tuple = (-27.6, 2.0)
     root_front_y: float = -14.5
-    beam_x: tuple = (-22.0, 6.0)
-    beam_top: float = 38.8        # stays below the lower M2 heads, so a hex key reaches them from the front
-    web_x: tuple = (-10.9, -4.9)
-    web_top: float = 52.0
+    beam_x: tuple = (-27.6, 6.0)
+    beam_top: float = 38.8        # STEP z of the beam's top at the jaw; it deepens at 45 degrees to the root
     m2_clear: float = 2.4
-    m2_head_d: float = 4.2
+    m2_head_d: float = 4.4        # also the hex-key holes through the beam
     m2_head_depth: float = 2.0
     bearing_tap_d: float = 2.5
     bearing_tap_depth: float = 5.5
@@ -406,12 +404,14 @@ def jaw_block(z_apex):
     big = 40.0
     vcut = prism_xz([(0, z_apex), (-big, z_apex - big), (big, z_apex - big)], -hh - 1, hh + 1)
     blk = cut(blk, vcut)
+    # Rib: flat on top, 45 degrees underneath (so it prints, and bears on the groove's lower flank),
+    # filling the V's bottom out to rib_reach from the apex.
     r = P.rib_reach
-    tri = prism_xz([(-(r + 1), z_apex - r), (r + 1, z_apex - r), (0, z_apex + 1)], -P.rib_t, P.rib_t)
     zr = z_apex - r
     c, t2 = P.rib_chamfer, P.rib_t / 2
-    prof = prism_yz([(-t2 + c, zr), (t2 - c, zr), (t2, zr + c), (t2, z_apex + 2), (-t2, z_apex + 2), (-t2, zr + c)],
-                    -(r + 2), r + 2)
+    lo = -t2 - (z_apex + 2 - zr)
+    tri = prism_xz([(-(r + 1), zr), (r + 1, zr), (0, z_apex + 1)], lo - 1, t2 + 1)
+    prof = prism_yz([(-t2, zr), (t2 - c, zr), (t2, zr + c), (t2, z_apex + 2), (lo, z_apex + 2)], -(r + 2), r + 2)
     blk = fuse(blk, tri.intersect(prof))
     s0, s1 = P.pad_s
     rec = box(s0, s1, -P.pad_v, P.pad_v, -1.0, P.pad_recess).rotate(cq.Vector(0, 0, 0), cq.Vector(0, 1, 0), 45) \
@@ -422,7 +422,12 @@ def jaw_block(z_apex):
 
 def finger_insert(v_dir=1):
     """v_dir +1 for the upper (+z) carriage, -1 for the lower; the lower one is then mounted turned 180
-    degrees about the tool axis, so both V-grooves run the same way."""
+    degrees about the tool axis, so both V-grooves run the same way.
+
+    It prints standing on the jaw's lower face with the V upright, which is how it sits at the grasp:
+    every face is vertical or 45 degrees, and the beam rises from the jaw to the root at 45 degrees,
+    getting deeper until it is the root's full height. Four 4.4 mm holes through the beam reach the M2
+    heads."""
     g = S.gripper()
     xt, zt = g["tool_axis_xz"]
     ytcp = g["tcp"][1]
@@ -430,29 +435,39 @@ def finger_insert(v_dir=1):
     back = max(g["jaw_back_y"])
     top = g["jaw_bbox"][5]
     z_apex, _ = grip_states()
-    zb = z_apex + P.behind_apex
-    jb = jaw_block(z_apex).rotate(cq.Vector(0, 0, 0), cq.Vector(0, 0, 1), -45 * v_dir).translate(cq.Vector(xt, ytcp, 0))
-    root = box(P.root_x[0], P.root_x[1], P.root_front_y, back, zb - 0.5, top)
-    beam = box(P.beam_x[0], P.beam_x[1], ytcp - 2, P.root_front_y + 0.5, zb - 0.5, P.beam_top)
-    web = box(P.web_x[0], P.web_x[1], ytcp + 8, P.root_front_y + 0.5, P.beam_top - 0.5, P.web_top)
-    ins = fuse(root, beam, web, jb)
+    zb = z_apex + P.behind_apex - 0.5
+
+    def to_finger(shape):
+        return shape.rotate(cq.Vector(0, 0, 0), cq.Vector(0, 0, 1), -45 * v_dir).translate(cq.Vector(xt, ytcp, 0))
+
+    jb = to_finger(jaw_block(z_apex))
+    root = box(P.root_x[0], P.root_x[1], P.root_front_y, back, zb, top)
+    y_full = P.root_front_y
+    y_k = y_full - (top - P.beam_top)
+    beam = prism_yz([(ytcp - 20, zb), (y_full + 0.5, zb), (y_full + 0.5, top), (y_k, P.beam_top),
+                     (ytcp - 20, P.beam_top)], *P.beam_x)
+    ins = fuse(root, beam, jb)
     cx0, cy0, cz0, cx1, cy1, cz1 = car["bbox"]
     ins = cut(ins, box(cx0 - 0.2, cx1 + 0.2, car["front_y"], back + 1, cz0 - 0.2, cz1 + 0.2))
+    head_y = P.root_front_y + P.m2_head_depth
     for x, z in car["m2_holes_xz"]:
-        ins = cut(ins, cq.Solid.makeCylinder(P.m2_clear / 2, 20, cq.Vector(x, P.root_front_y - 5, z), cq.Vector(0, 1, 0)),
-                  cq.Solid.makeCylinder(P.m2_head_d / 2, P.m2_head_depth + 5, cq.Vector(x, P.root_front_y - 5, z),
-                                        cq.Vector(0, 1, 0)))
+        ins = cut(ins, cq.Solid.makeCylinder(P.m2_clear / 2, back + 2 - head_y + 0.5, cq.Vector(x, head_y - 0.5, z),
+                                             cq.Vector(0, 1, 0)),
+                  cq.Solid.makeCylinder(P.m2_head_d / 2, 80, cq.Vector(x, head_y, z), cq.Vector(0, -1, 0)))
     bx, bz = g["bearing"]["centre_xz"]
     ins = cut(ins, cq.Solid.makeCylinder(P.bearing_tap_d / 2, P.bearing_tap_depth + 1,
                                          cq.Vector(bx, back + 1, bz), cq.Vector(0, -1, 0)))
-    return ins
+    # flat bed face: nothing below the jaw block's lower face
+    keep = to_finger(box(-300, 300, -P.jaw_h / 2, 300, -300, 300))
+    return ins.intersect(keep).clean()
 
 
 # ------------------------------------------------------------------ print orientation and export
 def for_print(name, shape):
     """Each part as it goes on the bed: standing on z = 0, footprint centred on x = y = 0."""
-    if name.startswith("finger_insert"):
-        shape = shape.rotate(cq.Vector(0, 0, 0), cq.Vector(1, 0, 0), -90)   # back face down
+    if name.startswith("finger_insert"):  # jaw's lower face down, V upright
+        v = 1 if name.endswith("upper") else -1
+        shape = shape.rotate(cq.Vector(0, 0, 0), cq.Vector(1, -v, 0), 90)
     if name.startswith("plate"):
         shape = shape.rotate(cq.Vector(0, 0, 0), cq.Vector(1, 0, 0), 180)   # top face down, keys up
     bb = shape.BoundingBox()

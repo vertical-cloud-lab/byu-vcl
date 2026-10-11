@@ -65,8 +65,8 @@ def _plates_beds():
 # (bed name, [(part, x, y)]): x, y is where the centre of the part's footprint lands on the bed
 JOB = [
     ("Carrier", [("carrier_half_a", 40, 90), ("carrier_half_b", 88, 90), ("handle_post", 142, 90)]),
-    ("Dock and finger inserts", [("dock_block#1", 33, 58), ("dock_block#2", 93, 58),
-                                 ("finger_insert_upper", 150, 45), ("finger_insert_lower", 150, 125)]),
+    ("Dock and finger inserts", [("dock_block#1", 35, 55), ("dock_block#2", 100, 55),
+                                 ("finger_insert_upper", 44, 142), ("finger_insert_lower", 134, 142)]),
 ] + _plates_beds()
 PER_PART = [(p, [(p, 90, 90)]) for p in ["carrier_half_a", "carrier_half_b", "handle_post", "dock_block",
                                          "finger_insert_upper", "finger_insert_lower"] + PLATE_DESIGNS]
