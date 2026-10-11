@@ -1,0 +1,913 @@
+{
+ "params": {
+  "fit": 0.15,
+  "post_slot": 5,
+  "post_r": 8.0,
+  "post_top": 64.0,
+  "groove_z": 50.0,
+  "groove_depth": 2.5,
+  "groove_h": 6.0,
+  "flange_r": 16.5,
+  "flange_h": 8.0,
+  "tongue": [
+   4.0,
+   3.0
+  ],
+  "bolt_y": 12.0,
+  "m3_clear": 3.4,
+  "m3_head_d": 6.2,
+  "m3_head_bottom_z": 22.0,
+  "m3_nut_af": 5.8,
+  "m3_nut_pocket_h": 4.5,
+  "pin_y": 125.0,
+  "hole_d": 8.1,
+  "hole_depth": 9.0,
+  "hole_chamfer": 1.0,
+  "pin_slot_len": 12.0,
+  "pocket_chamfer": 1.0,
+  "floor_t": 6.0,
+  "cup_clear": 0.5,
+  "cup_wall": 4.5,
+  "cup_h": 12.0,
+  "lead_in": 3.0,
+  "cup_gap_half_deg": 40.0,
+  "pin_d": 7.9,
+  "pin_cyl_h": 4.0,
+  "pin_tip_d": 3.0,
+  "pin_half_angle_deg": 30.0,
+  "block_x": 26.0,
+  "block_y": [
+   -60.0,
+   30.0
+  ],
+  "dowel_d": 4.0,
+  "dowels": [
+   [
+    -14.0,
+    -25.0
+   ],
+   [
+    14.0,
+    -25.0
+   ]
+  ],
+  "dowel_slot": 6.0,
+  "dowel_depth_block": 4.5,
+  "m4_clear": 4.5,
+  "m4_head_d": 8.2,
+  "m4_head_depth": 4.0,
+  "plate_t": 6.0,
+  "plate_x": 24.0,
+  "plate_y": [
+   -58.0,
+   8.0
+  ],
+  "keys_y": [
+   0.0,
+   -50.0
+  ],
+  "dowel_depth_plate": 4.0,
+  "shifts_mm": [
+   1.0,
+   2.0,
+   3.0,
+   4.0
+  ],
+  "yaws_deg": [
+   2.0,
+   4.0
+  ],
+  "label_depth": 0.6,
+  "v_depth": 11.0,
+  "behind_apex": 3.0,
+  "jaw_w": 26.0,
+  "jaw_h": 20.0,
+  "pad_recess": 1.0,
+  "pad_t": 1.5,
+  "pad_s": [
+   8.0,
+   14.8
+  ],
+  "pad_v": 9.0,
+  "rib_reach": 5.4,
+  "rib_t": 2.0,
+  "rib_chamfer": 0.5,
+  "open_stock_mm": 60.0,
+  "approach_clear": 3.0,
+  "vial_r": 13.5,
+  "cap_r": 14.0,
+  "root_x": [
+   -27.6,
+   2.0
+  ],
+  "root_front_y": -14.5,
+  "beam_x": [
+   -22.0,
+   6.0
+  ],
+  "beam_top": 38.8,
+  "web_x": [
+   -10.9,
+   -4.9
+  ],
+  "web_top": 52.0,
+  "m2_clear": 2.4,
+  "m2_head_d": 4.2,
+  "m2_head_depth": 2.0,
+  "bearing_tap_d": 2.5,
+  "bearing_tap_depth": 5.5
+ },
+ "measured": {
+  "deck": {
+   "plate": [
+    480.0,
+    490.0
+   ],
+   "thickness": 10.0,
+   "slot_width": 10.0,
+   "slot_length": 25.0,
+   "slot_long_axis": "y",
+   "slot_x": [
+    27.5,
+    52.5,
+    77.5,
+    102.5,
+    127.5,
+    152.5,
+    177.5,
+    202.5,
+    227.5,
+    252.5,
+    277.5,
+    302.5,
+    327.5,
+    352.5,
+    377.5,
+    402.5,
+    427.5,
+    452.5
+   ],
+   "slot_y": [
+    -450.0,
+    -405.0,
+    -360.0,
+    -315.0,
+    -270.0,
+    -225.0,
+    -180.0,
+    -135.0,
+    -90.0,
+    -45.0
+   ],
+   "pitch_x": 25.0,
+   "pitch_y": 45.0,
+   "fixing_holes_d7": [
+    [
+     37.5,
+     -480.0
+    ],
+    [
+     37.5,
+     -10.0
+    ],
+    [
+     82.5,
+     -480.0
+    ],
+    [
+     82.5,
+     -10.0
+    ],
+    [
+     127.5,
+     -480.0
+    ],
+    [
+     127.5,
+     -10.0
+    ],
+    [
+     172.5,
+     -480.0
+    ],
+    [
+     172.5,
+     -10.0
+    ],
+    [
+     217.5,
+     -480.0
+    ],
+    [
+     217.5,
+     -10.0
+    ],
+    [
+     262.5,
+     -480.0
+    ],
+    [
+     262.5,
+     -10.0
+    ],
+    [
+     307.5,
+     -480.0
+    ],
+    [
+     307.5,
+     -10.0
+    ],
+    [
+     352.5,
+     -480.0
+    ],
+    [
+     352.5,
+     -10.0
+    ],
+    [
+     397.5,
+     -480.0
+    ],
+    [
+     397.5,
+     -10.0
+    ],
+    [
+     442.5,
+     -480.0
+    ],
+    [
+     442.5,
+     -10.0
+    ]
+   ]
+  },
+  "key": {
+   "stadium": [
+    9.8,
+    24.8
+   ],
+   "depth": 10.0,
+   "tenon_h": 2.0,
+   "tenon": [
+    7.369,
+    6.65
+   ]
+  },
+  "holder": {
+   "extents": [
+    33.4,
+    297.4,
+    35.0
+   ],
+   "x0": 0.005,
+   "pockets": [
+    [
+     0.005,
+     0.0
+    ],
+    [
+     0.005,
+     -33.0
+    ],
+    [
+     0.005,
+     -66.0
+    ],
+    [
+     0.005,
+     -99.0
+    ],
+    [
+     0.005,
+     -132.0
+    ],
+    [
+     0.005,
+     -165.0
+    ],
+    [
+     0.005,
+     -198.0
+    ],
+    [
+     0.005,
+     -231.0
+    ],
+    [
+     0.005,
+     -264.0
+    ]
+   ],
+   "pitch": 33.0,
+   "seat_z": 18.0,
+   "pocket_r_seat": 13.8,
+   "pocket_taper_deg": 3.0,
+   "pocket_r_top": 12.909,
+   "finger_top": 35.0,
+   "body_top": 20.0,
+   "horizontal_planes": [
+    0.0,
+    2.1,
+    18.0,
+    20.0,
+    35.0
+   ],
+   "outline_r": 16.7,
+   "key_sockets": [
+    [
+     -0.0,
+     0.0
+    ],
+    [
+     0.0,
+     -225.0
+    ]
+   ],
+   "key_spacing": 225.0
+  },
+  "gripper": {
+   "carriage": {
+    "bbox": [
+     -16.411,
+     -7.518,
+     33.859,
+     0.589,
+     -1.018,
+     56.359
+    ],
+    "front_y": -7.518,
+    "m2_holes_xz": [
+     [
+      -13.911,
+      41.109
+     ],
+     [
+      -13.911,
+      49.109
+     ],
+     [
+      -1.911,
+      41.109
+     ],
+     [
+      -1.911,
+      49.109
+     ]
+    ],
+    "m2_tap_d": 1.6
+   },
+   "bearing": {
+    "centre_xz": [
+     -22.561,
+     46.359
+    ],
+    "od": 9.0,
+    "y": [
+     -6.518,
+     -2.518
+    ],
+    "tap_d": 2.5,
+    "tap_found": true
+   },
+   "jaw_back_y": [
+    -9.018,
+    -7.518,
+    -6.518
+   ],
+   "jaw_bbox": [
+    -35.911,
+    -77.518,
+    33.109,
+    20.089,
+    -6.518,
+    57.609
+   ],
+   "jaw_volume": 23276.6,
+   "pad_volume": 4928.6,
+   "pad_face_z": 31.109,
+   "stock_opening": 58.376,
+   "tool_axis_xz": [
+    -7.911,
+    1.921
+   ],
+   "flange_face_y": 64.982,
+   "tcp": [
+    -7.911,
+    -55.018,
+    1.921
+   ],
+   "fingertip_y": -77.518
+  },
+  "sources": {
+   "PandaDeck.step": "https://raw.githubusercontent.com/Ursa-Laboratories/Cubware/352aa95/cubxl_plus/deck/polycarbonate_deck/PandaDeck.step",
+   "9VialHolder.step": "https://raw.githubusercontent.com/Ursa-Laboratories/Cubware/352aa95/cubxl_plus/labware/vial_holder/9VialHolder.step",
+   "9VialHolder-key.step": "https://raw.githubusercontent.com/Ursa-Laboratories/Cubware/352aa95/cubxl_plus/labware/vial_holder/9VialHolder-key.step",
+   "AgileX_Gripper.STEP": "https://cdn.shopify.com/s/files/1/0673/6848/5000/files/AgileX_Gripper-1-STP.STEP?v=1782224095"
+  },
+  "gripper_sha256": "6e6c9bb04d7e4b3c7ebcd452dd5e730a4eba2af08b1b80f1e1d2607956a5815d"
+ },
+ "parts": {
+  "carrier_half_a": {
+   "volume_mm3": 80918.3,
+   "solid_pla_g": 100.3,
+   "bbox_mm": [
+    33.4,
+    151.7,
+    35.0
+   ]
+  },
+  "carrier_half_b": {
+   "volume_mm3": 80119.2,
+   "solid_pla_g": 99.3,
+   "bbox_mm": [
+    33.4,
+    148.7,
+    35.0
+   ]
+  },
+  "handle_post": {
+   "volume_mm3": 13279.7,
+   "solid_pla_g": 16.5,
+   "bbox_mm": [
+    33.0,
+    33.0,
+    44.0
+   ]
+  },
+  "dock_block": {
+   "volume_mm3": 32717.3,
+   "solid_pla_g": 40.6,
+   "bbox_mm": [
+    52.0,
+    90.0,
+    18.0
+   ]
+  },
+  "finger_insert_upper": {
+   "volume_mm3": 21897.8,
+   "solid_pla_g": 27.2,
+   "bbox_mm": [
+    35.95,
+    64.76,
+    40.0
+   ]
+  },
+  "finger_insert_lower": {
+   "volume_mm3": 21898.0,
+   "solid_pla_g": 27.2,
+   "bbox_mm": [
+    35.95,
+    64.76,
+    40.0
+   ]
+  },
+  "plate_0": {
+   "volume_mm3": 23199.8,
+   "solid_pla_g": 28.8,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_x+1mm": {
+   "volume_mm3": 23184.5,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_x+2mm": {
+   "volume_mm3": 23182.8,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_x+3mm": {
+   "volume_mm3": 23182.5,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_x+4mm": {
+   "volume_mm3": 23182.2,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_y+1mm": {
+   "volume_mm3": 23187.1,
+   "solid_pla_g": 28.8,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_y+2mm": {
+   "volume_mm3": 23185.5,
+   "solid_pla_g": 28.8,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_y+3mm": {
+   "volume_mm3": 23185.2,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_y+4mm": {
+   "volume_mm3": 23184.9,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_yaw+2deg": {
+   "volume_mm3": 23180.6,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_yaw-2deg": {
+   "volume_mm3": 23184.9,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_yaw+4deg": {
+   "volume_mm3": 23180.0,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  },
+  "plate_yaw-4deg": {
+   "volume_mm3": 23184.3,
+   "solid_pla_g": 28.7,
+   "bbox_mm": [
+    48.0,
+    66.0,
+    16.0
+   ]
+  }
+ },
+ "dock_block": {
+  "pocket_centre_y": 7.0,
+  "cup_r": [
+   17.2,
+   21.7
+  ],
+  "cup_top_z": 18.0,
+  "lead_in_r_top": 20.2,
+  "pin_top_z": 14.243524478543751,
+  "pin_tip_h": 4.24352447854375
+ },
+ "plates": {
+  "plate_0": {
+   "dowels": [
+    [
+     -14.0,
+     -25.0
+    ],
+    [
+     14.0,
+     -25.0
+    ]
+   ],
+   "pin_moves_to": [
+    0.0,
+    0.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_x+1mm": {
+   "dowels": [
+    [
+     -13.0,
+     -25.0
+    ],
+    [
+     15.0,
+     -25.0
+    ]
+   ],
+   "pin_moves_to": [
+    1.0,
+    0.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_x+2mm": {
+   "dowels": [
+    [
+     -12.0,
+     -25.0
+    ],
+    [
+     16.0,
+     -25.0
+    ]
+   ],
+   "pin_moves_to": [
+    2.0,
+    0.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_x+3mm": {
+   "dowels": [
+    [
+     -11.0,
+     -25.0
+    ],
+    [
+     17.0,
+     -25.0
+    ]
+   ],
+   "pin_moves_to": [
+    3.0,
+    0.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_x+4mm": {
+   "dowels": [
+    [
+     -10.0,
+     -25.0
+    ],
+    [
+     18.0,
+     -25.0
+    ]
+   ],
+   "pin_moves_to": [
+    4.0,
+    0.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_y+1mm": {
+   "dowels": [
+    [
+     -14.0,
+     -24.0
+    ],
+    [
+     14.0,
+     -24.0
+    ]
+   ],
+   "pin_moves_to": [
+    0.0,
+    1.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_y+2mm": {
+   "dowels": [
+    [
+     -14.0,
+     -23.0
+    ],
+    [
+     14.0,
+     -23.0
+    ]
+   ],
+   "pin_moves_to": [
+    0.0,
+    2.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_y+3mm": {
+   "dowels": [
+    [
+     -14.0,
+     -22.0
+    ],
+    [
+     14.0,
+     -22.0
+    ]
+   ],
+   "pin_moves_to": [
+    0.0,
+    3.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_y+4mm": {
+   "dowels": [
+    [
+     -14.0,
+     -21.0
+    ],
+    [
+     14.0,
+     -21.0
+    ]
+   ],
+   "pin_moves_to": [
+    0.0,
+    4.0
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_yaw+2deg": {
+   "dowels": [
+    [
+     -17.481,
+     -25.55
+    ],
+    [
+     10.502,
+     -24.572
+    ]
+   ],
+   "pin_moves_to": [
+    -4.362,
+    -0.076
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_yaw-2deg": {
+   "dowels": [
+    [
+     -10.502,
+     -24.572
+    ],
+    [
+     17.481,
+     -25.55
+    ]
+   ],
+   "pin_moves_to": [
+    4.362,
+    -0.076
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_yaw+4deg": {
+   "dowels": [
+    [
+     -20.942,
+     -26.22
+    ],
+    [
+     6.99,
+     -24.267
+    ]
+   ],
+   "pin_moves_to": [
+    -8.72,
+    -0.304
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  },
+  "plate_yaw-4deg": {
+   "dowels": [
+    [
+     -6.99,
+     -24.267
+    ],
+    [
+     20.942,
+     -26.22
+    ]
+   ],
+   "pin_moves_to": [
+    8.72,
+    -0.304
+   ],
+   "key_slot_pitch": 25.0,
+   "keys_y": [
+    0.0,
+    -50.0
+   ]
+  }
+ },
+ "finger": {
+  "apex_z_in_step_frame": 28.609,
+  "states": {
+   "open": {
+    "apex_from_axis": 27.5,
+    "carriage_travel": 0.812,
+    "stock_opening": 60.0
+   },
+   "vial": {
+    "apex_from_axis": 19.799,
+    "carriage_travel": -6.889,
+    "stock_opening": 44.6
+   },
+   "post": {
+    "apex_from_axis": 12.021,
+    "carriage_travel": -14.667,
+    "stock_opening": 29.04
+   },
+   "vial, no pads": {
+    "apex_from_axis": 19.092,
+    "carriage_travel": -7.596,
+    "stock_opening": 43.18
+   },
+   "post, no pads": {
+    "apex_from_axis": 11.314,
+    "carriage_travel": -15.374,
+    "stock_opening": 27.63
+   }
+  },
+  "rib": {
+   "with pads": {
+    "vial_clearance": 0.899,
+    "rib_into_groove": 1.379,
+    "rib_to_groove_floor": 1.121
+   },
+   "no pads": {
+    "vial_clearance": 0.192,
+    "rib_into_groove": 2.086,
+    "rib_to_groove_floor": 0.414
+   }
+  }
+ }
+}
