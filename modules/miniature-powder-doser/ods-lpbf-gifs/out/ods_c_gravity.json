@@ -1,0 +1,65 @@
+{
+ "name": "ods_c_gravity",
+ "fps": 15,
+ "n_frames": 825,
+ "size": [
+  1280,
+  720
+ ],
+ "substeps": [
+  {
+   "label": "C.1",
+   "caption": "Can our doser go in as is? It is 190 × 260 × 103 mm. Upslope (left) of the stream there are about 95 mm to the door and 232 mm front to back, so it runs through the door and the back wall.",
+   "start_frame": 0,
+   "end_frame": 98
+  },
+  {
+   "label": "C.2",
+   "caption": "Downslope (right) it fits only flat, tilted it hits the roof, and it sits in the spray: the plate faces up and to the right, and the droplets fly through there. So: upslope, and smaller.",
+   "start_frame": 99,
+   "end_frame": 181
+  },
+  {
+   "label": "C.3",
+   "caption": "Folded from the same parts, with no funnel, spout or taper: the auger keeps PR 176's tested outlet, and a screw-on capillary at its own 3 mm bore carries the granules 35 mm to the stream. Fixed at 35°, on a slide on the door; a vibration motor on the front bracket.",
+   "start_frame": 182,
+   "end_frame": 296
+  },
+  {
+   "label": "C.4",
+   "caption": "Only the stepper, the vibration motor and a thermocouple go inside. The board stays in air on the door's outside: a KF25 multipin feedthrough carries the leads, as most in-vacuum motion is wired.",
+   "start_frame": 297,
+   "end_frame": 377
+  },
+  {
+   "label": "C.5",
+   "caption": "Loading: slide the stack 50 mm out first (the upper sonotrode would catch the back of the opening), then open the door; the module comes out with the plate. Refill the auger cartridge on the bench, weighing it before and after.",
+   "start_frame": 378,
+   "end_frame": 464
+  },
+  {
+   "label": "C.6",
+   "caption": "Calibrate in place: in argon, with the furnace hot but no pour, the module slides up and a cup on a load cell under the capillary gives mg per turn and per vibration setting, in the gas and heat the dose will see.",
+   "start_frame": 465,
+   "end_frame": 557
+  },
+  {
+   "label": "C.7",
+   "caption": "Pour with the feed on: granules leave the capillary and join the stream 8 mm above the plate. A camera at the view port counts them against the glowing stream, checked against the load-cell runs.",
+   "start_frame": 558,
+   "end_frame": 640
+  },
+  {
+   "label": "C.8",
+   "caption": "Entry height is the knob: raising the module 15 mm on its slide moves the entry from 8 to 23 mm above the plate, about 4 to 13 ms on the melt, at the same feed rate.",
+   "start_frame": 641,
+   "end_frame": 715
+  },
+  {
+   "label": "C.9",
+   "caption": "Pulse the feed within one pour as the in-run control, and weigh the cartridge after. PR 176's flight drops one big pulse a turn; the full capillary holds about one pulse, and its vibration sets the rate in between.",
+   "start_frame": 716,
+   "end_frame": 824
+  }
+ ]
+}
