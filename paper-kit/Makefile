@@ -39,7 +39,7 @@ FIGS     := $(sort $(wildcard figures/fig*.py))
         rebuild-check credit fetch clean
 
 help:
-	@sed -n '2,19p' Makefile | sed 's/^# \{0,1\}//'
+	@awk 'NR > 1 && /^#/ { sub(/^# ?/, ""); print; next } NR > 1 { exit }' Makefile
 
 figures:
 	@test -n "$(FIGS)" || { echo "no figures/fig*.py"; exit 1; }

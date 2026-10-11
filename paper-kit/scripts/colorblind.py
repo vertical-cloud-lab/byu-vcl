@@ -73,21 +73,16 @@ def to_lab(rgb):
 
 
 def series_colours(rgb, min_share=2e-4, min_chroma=40):
-    """The saturated colours covering at least min_share of the pixels, with
-    near-duplicates (dE < 3) merged."""
+    """The saturated colours covering at least min_share of the pixels, most
+    common first, with near-duplicates (dE < 3) merged."""
     px = rgb.reshape(-1, 3).astype(np.int32)
     packed = (px[:, 0] << 16) | (px[:, 1] << 8) | px[:, 2]
     vals, counts = np.unique(packed, return_counts=True)
-    keep = counts >= min_share * packed.size
-    cols = np.stack([(vals[keep] >> 16) & 255, (vals[keep] >> 8) & 255, vals[keep] & 255], 1)
-    cols = cols[(cols.max(1) - cols.min(1)) >= min_chroma]
-    order = np.argsort(-counts[keep][(np.stack([(vals[keep] >> 16) & 255, (vals[keep] >> 8) & 255,
-                                                 vals[keep] & 255], 1).max(1)
-                                       - np.stack([(vals[keep] >> 16) & 255,
-                                                   (vals[keep] >> 8) & 255,
-                                                   vals[keep] & 255], 1).min(1)) >= min_chroma])
+    cols = np.stack([(vals >> 16) & 255, (vals >> 8) & 255, vals & 255], 1)
+    keep = (counts >= min_share * packed.size) & ((cols.max(1) - cols.min(1)) >= min_chroma)
+    cols, counts = cols[keep], counts[keep]
     merged = []
-    for c in cols[order].astype(np.uint8):
+    for c in cols[np.argsort(-counts)].astype(np.uint8):
         if all(np.linalg.norm(to_lab(c) - to_lab(m)) >= 3 for m in merged):
             merged.append(c)
     return merged

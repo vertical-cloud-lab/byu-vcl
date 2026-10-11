@@ -1,6 +1,12 @@
 % =============================================================================
 % main-hardwarex.tex: HardwareX skeleton (Elsevier; elsarticle, in TeX Live),
-% with HardwareX's specifications table and its fixed sections in its order.
+% with HardwareX's specifications table and its fixed sections in its order,
+% from the HardwareX article template v2 (June 2021, Zenodo record 5078227,
+% read 2026-10-10): "We will only consider hardware articles submitted using
+% this template." and "All sections are mandatory." That template is a Word
+% file and a plain LaTeX file; this one puts the same content in elsarticle.
+% Also required by the 2023 guide: a graphical abstract (a separate file).
+% Abstract at most 200 words; 3 to 6 keywords.
 % The figures, declarations and references are shared with the other
 % skeletons; the body is HardwareX's own, not the IMRaD sections.
 %   make pdf J=hardwarex    make todos J=hardwarex
@@ -44,21 +50,31 @@
 \toprule
 Hardware name & \fillme{name} \\
 \midrule
-Subject area & \fillme{one of HardwareX's subject areas, e.g. Engineering and
-  materials science} \\
+Subject area & \fillme{one of: Engineering and materials science; Chemistry and
+  biochemistry; Medical (e.g., pharmaceutical science); Neuroscience; Biological
+  sciences (e.g., microbiology and biochemistry); Environmental, planetary and
+  agricultural sciences; Educational tools and open source alternatives to
+  existing infrastructure; General} \\
 \midrule
-Hardware type & \fillme{one of HardwareX's hardware types, e.g. Mechanical
-  engineering and materials science} \\
+Hardware type & \fillme{one of: Imaging tools; Measuring physical properties and
+  in-lab sensors; Biological sample handling and preparation; Field measurements
+  and sensors; Electrical engineering and computer science; Mechanical
+  engineering and materials science; Other [please specify]} \\
 \midrule
 Closest commercial analog & \fillme{name and price; or ``No commercial analog
   is available.''} \\
 \midrule
-Open source license & \fillme{e.g. CERN-OHL-S-2.0 for hardware, MIT for
-  code, CC BY 4.0 for documentation} \\
+Open source license & \fillme{an open-hardware licence for the designs, e.g.
+  CERN-OHL-S-2.0 (non-commercial licences are not accepted)} \\
 \midrule
-Cost of hardware & \fillme{total in USD, from the bill of materials} \\
+Cost of hardware & \fillme{approximate total in USD; the breakdown is the bill
+  of materials} \\
 \midrule
-Source file repository & \fillme{https://doi.org/10.5281/zenodo.NNNNNNN} \\
+Source file repository & \fillme{https://doi.org/10.5281/zenodo.NNNNNNN (OSF,
+  Mendeley Data or Zenodo only; public at submission)} \\
+\midrule
+Secondary repository \textit{(optional)} & \fillme{e.g. the GitHub repository; or
+  delete the row} \\
 \midrule
 OSHWA certification UID \textit{(optional)} & \fillme{UID, or delete the row} \\
 \bottomrule
@@ -70,9 +86,11 @@ OSHWA certification UID \textit{(optional)} & \fillme{UID, or delete the row} \\
 
 \section{Hardware description}\label{sec:description}
 \fillme{What it is and how it works, and how it differs from what exists.}
+% HardwareX asks for 3 to 5 bullet points on how it helps other researchers.
 \begin{itemize}
 \item \fillme{Bullet: what a researcher can do with it that they could not before.}
 \item \fillme{Bullet: a second capability or saving.}
+\item \fillme{Bullet: a third.}
 \end{itemize}
 
 \section{Design files summary}\label{sec:design-files}
@@ -81,7 +99,8 @@ OSHWA certification UID \textit{(optional)} & \fillme{UID, or delete the row} \\
 \toprule
 Design file name & File type & Open source license & Location of the file \\
 \midrule
-\fillme{name} & \fillme{e.g. STEP, STL, KiCad} & \fillme{licence} & \fillme{DOI link} \\
+\fillme{name} & \fillme{e.g. STEP, STL, KiCad} & \fillme{licence} &
+  \fillme{the repository URL, or ``Available with the article''} \\
 \bottomrule
 \end{tabularx}}
 
@@ -93,7 +112,9 @@ Designator & Component & Number & Cost per unit (USD) & Total cost (USD) &
   Source of materials & Material type \\
 \midrule
 \fillme{D1} & \fillme{part} & \fillme{1} & \fillme{0.00} & \fillme{0.00} &
-  \fillme{supplier link} & \fillme{e.g. polymer, metal} \\
+  \fillme{supplier link} & \fillme{Metal, Semi-conductor, Ceramic, Polymer,
+  Biomaterial, Organic, Inorganic, Composite, Nanomaterial, Non-specific or
+  Other} \\
 \bottomrule
 \end{tabularx}}
 
@@ -129,7 +150,7 @@ against a reference where one exists. One figure per claim.}
 \fillme{HardwareX asks every article for one: say that the work involved no
 human participants or animals, or give the approval and consent details.}
 
-\section*{CRediT authorship contribution statement}
+\section*{CRediT author statement}
 \input{declarations/credit-statement}
 
 \section*{Declaration of competing interest}
@@ -138,7 +159,7 @@ human participants or animals, or give the approval and consent details.}
 \section*{Data availability}
 \input{declarations/availability}
 
-\section*{Acknowledgements}
+\section*{Acknowledgments}
 \input{declarations/acknowledgements}
 \input{declarations/funding}
 
