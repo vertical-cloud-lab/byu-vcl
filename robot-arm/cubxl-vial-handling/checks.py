@@ -224,11 +224,14 @@ def main():
         res["offset_plates"][pname] = summarise(pairs(sub))
     print("plates", all(v["ok"] for v in res["offset_plates"].values()), time.time() - t0)
 
-    # 3. the gripper alone at each opening: inserts against the gripper and each other
+    # 3. the gripper alone at each opening: inserts and pads against the gripper and each other. AgileX's
+    #    own parts are not checked against each other: its model's carriages overlap its rail
     res["gripper"] = {}
     for st in ("open", "vial", "post"):
         gp = gripper_parts(parts, states[st]["carriage_travel"])
-        res["gripper"][st] = summarise(pairs(gp))
+        ours = {k: v for k, v in gp.items() if "insert" in k or "pads" in k}
+        theirs = {k: v for k, v in gp.items() if k not in ours}
+        res["gripper"][st] = summarise(pairs(ours) + pairs(ours, theirs))
     print("gripper", time.time() - t0)
 
     # 4. grasps: the gripper posed on the post and on vials, closed, and open on the way in
@@ -264,8 +267,8 @@ def main():
     res["grip_states"] = states
     res["rib"] = PT.rib_numbers()
     (PT.OUT / "checks.json").write_text(json.dumps(res, indent=1) + "\n")
-    print(json.dumps({k: v.get("ok") if isinstance(v, dict) else v for k, v in res.items()
-                      if k not in ("grip_states", "rib", "frame")}, indent=1))
+    print(json.dumps({k: (v.get("ok") if "ok" in v else all(x["ok"] for x in v.values())) if isinstance(v, dict)
+                      else v for k, v in res.items() if k not in ("grip_states", "rib", "frame")}, indent=1))
     print(f"done in {time.time() - t0:.0f} s")
 
 
