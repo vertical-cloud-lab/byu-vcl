@@ -94,7 +94,9 @@ class Params:
     label_depth: float = 0.6
     # ---- finger inserts
     v_depth: float = 11.0         # 90 degree V
-    behind_apex: float = 3.0
+    behind_apex: float = 4.0
+    reach_extension: float = 42.0  # jaw this much further out than AgileX's pad centre, so that at 45 degrees
+                                   # the gripper's palm stays above the caps of the vials nearer J1
     jaw_w: float = 26.0           # across the V (along the carrier at the grasp)
     jaw_h: float = 20.0           # along the V (vertical at the grasp)
     pad_recess: float = 1.0
@@ -365,6 +367,14 @@ def offset_plate(kind, value):
 
 
 # ------------------------------------------------------------------ finger inserts
+def tcp():
+    """The inserts' grasp centre in the STEP frame: AgileX's pad centre (120 mm past the flange, as in
+    analysis.py) moved reach_extension further out along the tool axis."""
+    g = S.gripper()
+    x, y, z = g["tcp"]
+    return x, y - P.reach_extension, z
+
+
 def grip_states():
     """Carriage travel from where AgileX modelled it, and the opening the SDK would report for AgileX's
     own fingers there, for each grasp. V apex distance from the tool axis: (r + pad)*sqrt(2)."""
@@ -425,12 +435,12 @@ def finger_insert(v_dir=1):
     degrees about the tool axis, so both V-grooves run the same way.
 
     It prints standing on the jaw's lower face with the V upright, which is how it sits at the grasp:
-    every face is vertical or 45 degrees, and the beam rises from the jaw to the root at 45 degrees,
-    getting deeper until it is the root's full height. Four 4.4 mm holes through the beam reach the M2
-    heads."""
+    every face is vertical or at most 45 degrees over, and the beam rises from the jaw to the root at
+    45 degrees, getting deeper until it is the root's full height. Four 4.4 mm holes through the beam
+    reach the M2 heads."""
     g = S.gripper()
     xt, zt = g["tool_axis_xz"]
-    ytcp = g["tcp"][1]
+    ytcp = tcp()[1]
     car = g["carriage"]
     back = max(g["jaw_back_y"])
     top = g["jaw_bbox"][5]
@@ -443,8 +453,7 @@ def finger_insert(v_dir=1):
     jb = to_finger(jaw_block(z_apex))
     root = box(P.root_x[0], P.root_x[1], P.root_front_y, back, zb, top)
     y_full = P.root_front_y
-    y_k = y_full - (top - P.beam_top)
-    beam = prism_yz([(ytcp - 20, zb), (y_full + 0.5, zb), (y_full + 0.5, top), (y_k, P.beam_top),
+    beam = prism_yz([(ytcp - 20, zb), (y_full + 0.5, zb), (y_full + 0.5, top), (ytcp + 12, P.beam_top),
                      (ytcp - 20, P.beam_top)], *P.beam_x)
     ins = fuse(root, beam, jb)
     cx0, cy0, cz0, cx1, cy1, cz1 = car["bbox"]

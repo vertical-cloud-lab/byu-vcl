@@ -79,7 +79,8 @@
   ],
   "label_depth": 0.6,
   "v_depth": 11.0,
-  "behind_apex": 3.0,
+  "behind_apex": 4.0,
+  "reach_extension": 42.0,
   "jaw_w": 26.0,
   "jaw_h": 20.0,
   "pad_recess": 1.0,
@@ -442,20 +443,20 @@
    ]
   },
   "finger_insert_upper": {
-   "volume_mm3": 28312.5,
-   "solid_pla_g": 35.1,
+   "volume_mm3": 50576.4,
+   "solid_pla_g": 62.7,
    "bbox_mm": [
     35.95,
-    68.5,
+    110.5,
     40.0
    ]
   },
   "finger_insert_lower": {
-   "volume_mm3": 29319.4,
-   "solid_pla_g": 36.4,
+   "volume_mm3": 51452.3,
+   "solid_pla_g": 63.8,
    "bbox_mm": [
     35.95,
-    68.5,
+    110.5,
     40.0
    ]
   },

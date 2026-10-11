@@ -119,8 +119,7 @@ PLATE_KEY = {PT.plate_name(k, v): (k, v) for k, v in PT.PLATES}
 # ------------------------------------------------------------------ the gripper
 def pads(z_apex, v_dir):
     """Silicone strips in an insert's recesses, in the insert's frame."""
-    g = S.gripper()
-    xt, ytcp = g["tool_axis_xz"][0], g["tcp"][1]
+    xt, ytcp = PT.tcp()[0], PT.tcp()[1]
     s0, s1 = P.pad_s
     strip = PT.box(s0 + 0.15, s1 - 0.15, -P.pad_v + 0.25, P.pad_v - 0.25, P.pad_recess - P.pad_t, P.pad_recess)
     strip = strip.rotate(cq.Vector(0, 0, 0), cq.Vector(0, 1, 0), 45).translate(cq.Vector(0, 0, z_apex))
@@ -154,8 +153,7 @@ def gripper_parts(parts, travel):
 
 def grasp_pose(point, back=0.0):
     """STEP frame -> carrier frame with the TCP on `point`, backed off `back` mm along the tool axis."""
-    g = S.gripper()
-    tcp = np.array(g["tcp"])
+    tcp = np.array(PT.tcp())
     R = np.array([[0, 0, -1], [-1 / SQ2, 1 / SQ2, 0], [1 / SQ2, 1 / SQ2, 0]])  # columns: x, y, z of the STEP
     a = np.array([0, -1, -1]) / SQ2                                            # approach, = -y of the STEP
     t = np.asarray(point, float) - R @ tcp - a * back
