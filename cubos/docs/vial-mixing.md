@@ -143,7 +143,7 @@ fits the present one.
 | **B. Rotating field from fixed coils** (no moving parts) | Four small coils under the vial at 90°. Each opposite pair, wound or wired in opposition, is one phase of a bipolar stepper driver. The stir bar is then the rotor: one bar revolution per 4 full steps, so 600 rpm is 40 full steps/s. The Tic T500, now off the plunger, can drive it straight from the Pi over USB (`ticcmd --velocity`), and its current limit sets the field strength | Thin, quiet, no wear. One driver can run several vials with their coils in series. No Arduino firmware | Less torque than NdFeB magnets at the same gap. The coils warm the vial a little. Commercial "induction stirrers" work this way (e.g. [Heathrow Scientific's](https://heathrowscientific.com/magnetic-induction-1), 50–2,000 rpm), and [fablab RUC's open build](https://fablab.ruc.dk/magnetic-stirrer/) uses 3 coils, an Arduino and an L298N |
 | **C. Magnets on either side** (Ben's idea) | Magnets on opposite sides of the vial, one with north facing in and one with south, turning around the vial's axis | Works: the field across the vial is horizontal, so it turns a horizontal bar | The magnets have to orbit the vial, so they need a ring bearing and clearance all round, which the 33 mm pitch doesn't leave. As fixed coils at the sides, it becomes B with the same clearance problem |
 | D. Vortex or orbital shaking | A vibration motor or a small orbital shaker under the rack, with the vial capped first (the capper can) | Nothing goes into the vial | Shakes the vial positions that the capper and pipette rely on. Vial_1's decap has already been marginal |
-| E. Stir with the tip | Small XY circles with the tip submerged (GRBL `G2`/`G3`) | No new hardware | Needs a new CubOS command and collision checks. The neck limits the circle (the press-fit caps are `VialCap16mm`), and a P20 tip is a weak paddle that paint could pull off |
+| E. Stir with the tip | Small XY circles with the tip submerged (GRBL `G2`/`G3`) | No new hardware. Plain YAML `move`s already do it, stopping at every corner (tried 2026-10-12, below) | Smooth circles need a new CubOS command. The neck limits the circle (the press-fit caps are `VialCap16mm`), and a P20 tip is a weak paddle that paint could pull off |
 | F. Overhead stirrer tool | A small DC motor with a paddle on the head | High torque, handles paint | Wash or swap the paddle between vials. Another tool on the head |
 
 B as drawn below (four coils per vial, opposite pairs as the two phases of a stepper
@@ -156,6 +156,13 @@ strongest, and it answers the paint question quickly. Move to B if the height or
 moving parts become a problem. Stirring is routine in electrochemistry anyway: stir
 to homogenise, then a quiet period before the measurement. So the same hardware
 serves the potentiostat plans.
+
+**E, tried 2026-10-12.** `pipette_test_stir` ran 74/74 with 61 single-axis `move`s in
+vial_2 at the dipped height, never more than 5 mm from the centre. Each move took 0.41–0.46 s
+and the tip only touched 46–50 mm/s mid-move, because CubOS waits for Idle after each `G01`
+and GRBL accelerates at 300 mm/s². Whether it mixed better than `mix` isn't clear from the
+cameras
+([`pipette_test_stir_20261012`](../results/pipette_test_stir_20261012/README.md)).
 
 A design for A, after the Pioreactor's stirrer and keyed to the CubXL deck, is in
 [`hardware/vial-stirrer-cubxl/`](../../hardware/vial-stirrer-cubxl/README.md)

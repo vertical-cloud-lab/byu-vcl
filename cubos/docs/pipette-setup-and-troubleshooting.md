@@ -1,6 +1,6 @@
 # The Opentrons P20 on the CubXL — setup and troubleshooting
 
-Status as of **2026-10-09**. This is the map; the detail is in
+Status as of **2026-10-12**. This is the map; the detail is in
 [`opentrons-pipette-wiring.md`](./opentrons-pipette-wiring.md), which is the
 durable technical record and is where new findings go.
 
@@ -13,6 +13,15 @@ the wiring doc, because conflating the two has cost real time.
 
 ## Where it stands
 
+> ✅ **2026-10-12: stirring with the tip runs 74/74.** `pipette_test_stir` is
+> `pipette_test_mix` with vial_2's `mix` replaced by 61 single-axis `move`s at the dipped
+> height: square laps both ways, then ±5 mm strokes along X and Y, never more than 5 mm from
+> the centre of the 21 mm ID. Each move took 0.41–0.46 s, so a lap took 1.8 s, with the tip
+> touching 46–50 mm/s mid-move. CubOS waits for Idle after every `G01`, and GRBL's 300 mm/s²
+> acceleration, not the feed rate, is what limits it. Whether it mixed better than `mix` isn't
+> clear from the cameras. Record:
+> [`pipette_test_stir_20261012`](../results/pipette_test_stir_20261012/README.md).
+>
 > ✅ **2026-10-09: `mix` runs 12/12 on the TMC2209.**
 > `pipette_test_mix` is `pipette_test` with steps 4 and 8 replaced by `mix` (20 µL, 3 cycles,
 > height −35). It ran 12/12 in 218 s with a post-run `HOME` of −0.03 mm. On this firmware
