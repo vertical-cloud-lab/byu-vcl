@@ -253,6 +253,25 @@ and 15 mm front-back of the mark. The drawing comes from
 Because the sensor's long axis is X, the plate's 12 columns should run **left to right**
 across the OT-2, which is how labware normally sits on the deck.
 
+### How much of the deck it sees
+
+![What the camera sees of the deck at each zoom setting](renders/deck_coverage.png)
+
+The camera can't pan or tilt; the zoom ring sets how much of the deck it takes in. At the
+25 mm working zoom that is one slot: the plate and about 12 mm around it. At the 8 mm end
+it sees 477 × 358 mm at a third of the resolution (8.5 px/mm, about 58 px across a well).
+From slot 5 that covers slots 1–9 and the front half of the back row. From the middle of the
+deck, halfway between slots 5 and 8 (x = 0, y = −35.8 mm from the window's centre), it covers
+all twelve, with about 8 mm to spare beyond the outermost wells front and back. Focus isn't
+what limits the view to one slot. The deck is flat, so a plate in any slot in view is as
+sharp as the one under the lens. What changes with height is the depth of field: at 25 mm
+and f/8 it runs from the deck to about 14 mm above a plate, so a tall tip rack beside the
+plate is soft. Away from the lens axis the camera also looks into the wells at an angle:
+about 5° at the corners of a plate under the lens, and up to 22° for the outermost slots in
+the 8 mm whole-deck view, where the near wall hides about 4 mm of a 6.9 mm well.
+[`cad/coverage.py`](cad/coverage.py) draws this and writes the numbers to
+[`exports/deck_coverage.json`](exports/deck_coverage.json).
+
 ## 4. Install, phase 1: tape, no cutting
 
 1. Home the robot (the gantry parks at the back right, out of view) and put a plate in
