@@ -223,7 +223,8 @@ The mount fits over **slots 4–11**. Over the front row (slots 1–3), `ot2_con
 210 mm³ of overlap with the frame. All of it is the front tape tab: its outer 14.5 mm would
 rest on the frame's rim, which stands 0.5 mm above the window there. Without that tab the base
 clears the rim by 1.5 mm, but its front edge then lands right on the window's front edge.
-**Slot 5** is the natural choice. It's in the middle column, clear of the gantry's home
+**Slot 5** is the default when the protocol doesn't decide it
+([below](#how-much-of-the-deck-it-sees)). It's in the middle column, clear of the gantry's home
 position at the back right, and 81 mm in front of the window's centre. That is closer
 to the front edge, which carries the panel, so it sags less there than in the middle.
 
@@ -262,7 +263,9 @@ The camera can't pan or tilt; the zoom ring sets how much of the deck it takes i
 it sees 477 × 358 mm at a third of the resolution (8.5 px/mm, about 58 px across a well).
 From slot 5 that covers slots 1–9 and the front half of the back row. From the middle of the
 deck, halfway between slots 5 and 8 (x = 0, y = −35.8 mm from the window's centre), it covers
-all twelve, with about 8 mm to spare beyond the outermost wells front and back. Focus isn't
+all twelve, with about 8 mm to spare beyond the outermost wells front and back. The corners
+may darken at that end: the base's aperture clears the whole view cone only from about 9 mm,
+and #84 saw a circular vignette on a frame taken near the wide end. Focus isn't
 what limits the view to one slot. The deck is flat, so a plate in any slot in view is as
 sharp as the one under the lens. What changes with height is the depth of field: at 25 mm
 and f/8 it runs from the deck to about 14 mm above a plate, so a tall tip rack beside the
@@ -271,6 +274,13 @@ about 5° at the corners of a plate under the lens, and up to 22° for the outer
 the 8 mm whole-deck view, where the near wall hides about 4 mm of a 6.9 mm well.
 [`cad/coverage.py`](cad/coverage.py) draws this and writes the numbers to
 [`exports/deck_coverage.json`](exports/deck_coverage.json).
+
+So pick the slot from the protocol. As of 2026-10-12 the colour-sensing runs on
+[PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) keep the plate in **slot 7**,
+with the tips in 6, the sensor dock in 10 and the paint in 3. For those runs, mount over slot 7
+(x −132.5, y +9.5 in the table above) or move the plate to slot 5. To watch the sensor at its
+dock as well as the plate, centre the mount halfway between slots 7 and 10 (x −132.5,
+y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a well.
 
 ## 4. Install, phase 1: tape, no cutting
 
