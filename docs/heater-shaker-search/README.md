@@ -10,7 +10,7 @@ shipping box, a worn reused Amazon box with *prime* tape and a "UPS 2ND DAY AIR 
 label. The module was probably put away somewhere no camera looks: a drawer, a closed
 cabinet or a box.
 
-![The trail, Apr 8 to Oct 6](heater-shaker-trail.jpg)
+![The trail, Apr 8 to Aug 8](heater-shaker-trail.jpg)
 
 ## The written trail
 
@@ -21,7 +21,7 @@ cabinet or a box.
 | Apr 10 | "Marcus brought over to the lab" | [#81](https://github.com/vertical-cloud-lab/byu-vcl/issues/81) |
 | May 14 | A pile of boxes set out to be thrown away, "assuming everything we need is emptied out". No box like the module's is visible in it (panel D) | [#82](https://github.com/vertical-cloud-lab/byu-vcl/issues/82) |
 | Jun 18 | CB154 under renovation, so deliveries go to the SMASH Lab (CB 152A) | [#133](https://github.com/vertical-cloud-lab/byu-vcl/issues/133) |
-| Aug 8 | The OT-2 camera shows the OT-2 on the same white bench as the CubXL gantry, so the OT-2 probably spent the renovation in the SMASH Lab too | livestream `yrrJtEpj9cA` at 6:00:00 |
+| Aug 8 | The OT-2 camera shows the OT-2 on the same white bench as the CubXL gantry, so the OT-2 probably spent the renovation in the SMASH Lab too (panel F) | livestream `yrrJtEpj9cA` at 6:00:00 |
 | Sep 22 | CubXL moved from the SMASH Lab back to CB154 | [#133](https://github.com/vertical-cloud-lab/byu-vcl/issues/133#issuecomment-5769300117) |
 
 "350 EB" and "UT 846 0-02" on a box look like the department mailroom's routing marks.
@@ -31,12 +31,12 @@ The hose box in the May 14 pile carries both, so they do not identify the module
 
 | Source | Amount | How |
 | --- | --- | --- |
-| *BYU Vertical Cloud Lab* channel, listed | 166 of 201 videos | Storyboard thumbnails, about one every 4 s. Skipped: anything before Apr 10, and screen recordings |
+| *BYU Vertical Cloud Lab* channel, listed | 166 of 201 videos | Storyboard thumbnails, about one every 4 s. Skipped: uploads from before April, and screen recordings |
 | Same channel, unlisted (linked from issues and branches), plus *Vertical Cloud Lab - SOPs* | 25 videos | Same |
 | Clips too short for storyboards | 8 of 23 | YouTube's own thumbnails, for the 8 that show more than a printer or test rig |
 | *VCL Hardware Streams* livestreams | 418 archives | One frame every 15 min, kept only when the scene changed: 246 frames from the OT-2 camera (Jul 31 – Oct 1), 1,137 from the powder-doser camera (Jul 30 – Oct 12). The 37 `atomizer` archives were skipped, because that camera has been 144p and pixelated since Oct 1 |
-| Photos and videos attached to issues since Mar 25 | 323 photos, 18 videos | All photos; 24 frames from each video |
-| Images on every branch | 285 | All |
+| Photos and videos attached to issues since Mar 25 | 323 photos, 18 videos | All photos; up to 24 frames from each video |
+| Images on every branch | 285 of 1,864 | The photos and camera frames; renders, plots and screenshots skipped |
 
 About 25 leads were pulled at full resolution and ruled out. They included a module on the
 OT-2 deck on Apr 27 (the Temperature Module, panel C), an Amazon box on the CubXL deck on
@@ -47,8 +47,11 @@ uploaded. `digital-wetlab` has no photos, and its issues predate the module.
 
 ## Where to look in person
 
-- **SMASH Lab (CB 152A)**: where things were staged during the renovation. Look in its
-  drawers and cabinets, and for boxes left behind.
+- **SMASH Lab (CB 152A)**: where things were staged during the renovation. The OT-2 seems
+  to have sat there beside the CubXL, so its accessories may have gone too. Look in the
+  tall built-in beige cabinets behind that bench (panel F, right), in the multi-drawer
+  cabinet under the drop-tower workbench ([`W2-wyqP9DH8` at 1:38](https://youtu.be/W2-wyqP9DH8?t=98)),
+  and for boxes left behind.
 - **CB154's closed storage**: the tall grey two-door cabinet, which is closed in every view
   before the renovation; the blue cabinets over the tool chest; and the rolling wooden cubby
   carts.
