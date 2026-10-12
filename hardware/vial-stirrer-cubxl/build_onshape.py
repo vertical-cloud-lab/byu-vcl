@@ -201,7 +201,8 @@ def export_stl(api: Onshape, doc: dict) -> None:
             continue
         done.add(stem)
         r = api.get(f"parts/d/{did}/w/{wid}/e/{ps}/partid/{p['partId']}/stl",
-                    params={"mode": "binary", "units": "millimeter", "angleTolerance": 0.04, "chordTolerance": 0.02},
+                    # 0.02 mm chord keeps the fits; a finer angle only multiplies triangles on the 0.3 mm rounds
+                    params={"mode": "binary", "units": "millimeter", "angleTolerance": 0.15, "chordTolerance": 0.02},
                     headers={"Accept": "application/vnd.onshape.v1+octet-stream"}, allow_redirects=False)
         if r.status_code in (302, 307):
             r = api.get(r.headers["Location"], headers={"Accept": "application/vnd.onshape.v1+octet-stream"})

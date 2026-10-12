@@ -9,16 +9,17 @@ the vial, a Hall sensor counting turns, and a closed speed loop. Asked for by
 @benwhitney5463's question on [#169](https://github.com/vertical-cloud-lab/byu-vcl/issues/169).
 
 **Status: designed, not built.** Nothing here has been printed, wired or run. The
-numbers that matter most (coupling, the Hall signal, the vial grip) are estimates
-until a first build.
+numbers that matter most (coupling, the Hall signal) are estimates until a first
+build. The vial cup is the exception: it is copied from the 9-vial holder already in
+use on the deck.
 
 ![Assembled on the CubXL deck](img/assembled.png)
 
 | | |
 |---|---|
 | Footprint | 56 × 56 mm, two deck keys in adjacent slots |
-| Height | 50 mm without the vial; vial bottom 25 mm and rim ~82 mm above the deck |
-| Vial | 28 mm OD, 20 mL VOA (Ben's), on a 1.2 mm printed floor |
+| Height | 42 mm without the vial; vial bottom 25 mm and rim ~82 mm above the deck |
+| Vial | 20 mL VOA (Ben's), in one cup of the 9-vial holder (3° pocket, four spring fingers), on a 1.2 mm printed floor |
 | Drive | Orion OD4010-12HSS fan (the Pioreactor's), 5 V, 200 Hz PWM through a low-side MOSFET |
 | Magnets | 2 × N52, 1/4 × 1/16 in, opposite poles up, 9.8 mm apart (the Pioreactor's) |
 | Speed sensing | US1881 Hall latch beside the magnets, 1 pulse per turn |
@@ -86,8 +87,44 @@ held by gravity
   coordinates, ±1.5 mm. Teach it like any new labware; this is only a starting point.
 - **Heights:** the vial's bottom is 25.0 mm above the plate. In the 9-vial holder it is
   18.0 mm, so every vial Z (rim, pipette and capper heights) moves up about **7 mm**.
+  The XIAO under the fan accounts for most of that. Getting to 18.0 would take moving
+  the XIAO and MOSFET beside the fan, setting the fan on a 2 mm floor (keys moved out
+  from under it) and clamping it under the holder. The footprint would grow to roughly
+  45 × 70 mm.
 - The deck plate's real thickness hasn't been measured. The STEP says 10 mm, and the
   keys are 10 mm like Cubware's, which already work on this deck.
+
+## The vial cup, copied from the 9-vial holder
+
+The part that holds the vial is one cup of the 9-vial holder, at @benwhitney5463's
+[suggestion](https://github.com/vertical-cloud-lab/byu-vcl/pull/269#issuecomment-6130203392).
+Its numbers were measured from the B-rep of Ben's Onshape copy,
+[`9_vial_holder`](https://cad.onshape.com/documents/5af67acecd97aa04cf37bc22/w/f00c22fec5665a553ba7f69e/e/6e152734f23403d28543e379).
+That model is PANDA-BEAR's `9VialHolder20mL_TightFit` (same 886 faces, same cone to the
+micron), which this repo already has as
+[`9VialHolder20mL_TightFit.step`](../../modules/electromagnetic-capper/cad/9VialHolder20mL_TightFit.step),
+GPL-2.0 per its [`NOTICE.txt`](../../modules/electromagnetic-capper/cad/NOTICE.txt).
+
+| | Copied, measured from the vial floor |
+|---|---|
+| Pocket | A 3° cone that narrows upward: Ø27.6 mm at the floor, Ø25.8 mm across the finger tips |
+| Ring | Full circle for the first 2 mm above the floor |
+| Fingers | Four, on the diagonals, from 2 to 17 mm above the floor; Ø33.4 mm outside |
+| Slots | 14 mm wide, on the x and y axes, so the bar shows through them |
+| Edges | R1 round the outside of each finger tip, R0.3 on the floor edge and the other finger and slot edges; the inside tip edge is sharp |
+
+The pocket narrows upward, so a vial pushes each finger out about 0.8 mm at the tip.
+That spring holds the vial while the capper lifts the cap. Only what is under the floor
+differs: the 9-vial holder is solid down to the deck, 18.0 mm, while here the floor is
+1.2 mm over the magnet carrier. Slicing both meshes at 13 heights from the floor to the
+tips, the pocket radius agrees within 0.015 mm and each cross-section within 2.4 mm²
+(of 100–290 mm²). The 9-vial holder's necks between cups account for most of the rest.
+
+**Vial size.** The ring under the fingers does not flex and is Ø27.6 mm at the floor,
+so it seats vials up to about 27.6 mm. 20 mL VOA vials like these are sold as
+28 × 57 mm nominal. A vial that goes all the way down in the 9-vial holder will here
+too. One that stops on the ring sits about 2 mm higher, which here also adds 2 mm to
+the magnet gap. The model uses 27.5 mm.
 
 ## Parts list
 
@@ -102,7 +139,7 @@ Amazon prices move; treat them as of that date.
 | Part | File | Qty | Volume | Print |
 |---|---|---|---|---|
 | Base | [`base.stl`](stl/base.stl) | 1 | 23.8 cm³ | Floor down. The key pockets are on the bed face |
-| Vial holder | [`vial_holder.stl`](stl/vial_holder.stl) | 1 | 27.5 cm³ | Flange top down. The 1.2 mm floor then bridges over the Ø28.8 mm bore, and the crush ribs print vertically |
+| Vial holder | [`vial_holder.stl`](stl/vial_holder.stl) | 1 | 17.1 cm³ | Flange down, so the fingers print upright as in the 9-vial holder. The 1.2 mm floor bridges the Ø27 mm carrier pocket underneath; support it if the bridge sags |
 | Magnet carrier | [`magnet_carrier.stl`](stl/magnet_carrier.stl) | 1 | 0.8 cm³ | Pockets up |
 | Deck key | [`deck_key.stl`](stl/deck_key.stl) | 2 | 2.3 cm³ | Nub up. Fix elephant's foot first; Cubware says to |
 
@@ -228,7 +265,7 @@ centre, and the bar sits where the tip goes.
 | ![](img/step07_holder.png) | **7. Glue in the Hall sensor, lower the vial holder.** Glue the US1881 flat on the pocket ceiling at −X, branded face down, beside (not over) the magnets' path. Lay its leads in the groove. Spin the fan by hand before closing up: nothing may touch the carrier. |
 | ![](img/step08_holder_screws.png) | **8. Four M3 × 12 screws through the flange.** These go into the corner-post inserts. |
 | ![](img/step09_deck.png) | **9. Set the stirrer on the deck.** The keys drop into two adjacent slots. Route the USB cable away from the gantry's path. |
-| ![](img/step10_vial.png) | **10. Stir bar into the vial, vial into the holder.** Three crush ribs grip the 28 mm vial. If the vial is loose or too tight, change `RIB_R` in the FeatureScript and reprint the holder. |
+| ![](img/step10_vial.png) | **10. Stir bar into the vial, vial into the holder.** Push the vial down past the four fingers. They spring out about 0.8 mm at the tips and grip it, as in the 9-vial holder. |
 
 ![Exploded view](img/exploded.png)
 
@@ -249,7 +286,8 @@ z is measured from the top of the deck plate, in mm.
 | 22.2 → 23.8 | Hall latch, beside the carrier at r 10.3–13.3 mm |
 | 23.8 → 25.0 | Printed floor, 1.2 mm |
 | 25.0 | Vial bottom (9-vial holder: 18.0) |
-| 50.1 | Top of the vial holder |
+| 27.0 | Top of the cup's full ring; the slots start |
+| 42.0 | Finger tips |
 | ~82 | Vial rim |
 
 From the magnet faces it is 2.4 mm to the vial's outside bottom, and ~4 mm to its inside
@@ -269,17 +307,18 @@ bottom with 1.6 mm glass. magpylib puts the horizontal field at the axis of a
    the vial, and try each.
 2. **A fan-side rpm is not the bar's rpm.** The Hall sensor measures the magnets. The
    Edison coupling summary is explicit that drive feedback cannot see the bar slip.
-   Confirm coupling by eye or on camera through the window in the holder's front; the
+   Confirm coupling by eye or on camera through the slots between the fingers; the
    deck cameras look down into the vial, which shows the bar too.
 3. **The vial must not lift out when the capper pulls a cap.** The keys are a gravity
-   slip fit. If the crush ribs grip the vial harder than the stirrer weighs (~80–100 g),
+   slip fit. The cup grips the vial as hard as the 9-vial holder does, but here no other
+   vials weigh the holder down. If the grip is more than the stirrer weighs (~80–100 g),
    the whole stirrer comes up with it. PANDA-BEAR has a slide-lock that hooks under the
    plate (`Pill_Slider` + `PillRetainingPin`) if that happens.
 4. **Hall margin** is an estimate (±19 mT against a ≤ 9.5 mT trip point). See Wiring
    for the SS49E fallback.
 5. **Not measured:** the deck plate (10 mm per the STEP, 9 mm recommended by PANDA-BEAR),
    the Orion hub height (modelled flush with the frame, ±0.5 mm on the fan's 10.5 mm),
-   and Ben's vials' actual OD and bottom.
+   and Ben's vials' actual OD and bottom (see "Vial size" above).
 6. **Heating** is unknown. The fan is rated 0.72 W at 12 V and runs here at 5 V. If
    temperature matters, measure the liquid with the stirrer on and off.
 

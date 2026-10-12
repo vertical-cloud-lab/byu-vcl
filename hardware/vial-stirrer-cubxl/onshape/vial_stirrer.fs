@@ -6,13 +6,15 @@ import(path : "onshape/std/common.fs", version : "3095.0");
 // vertical-cloud-lab/byu-vcl, PR #269 / issue #169. All lengths in mm.
 // z = 0 is the top face of the CubXL deck plate.
 
-// ---- vial (Ben's 20 mL vials: 28 mm OD in ben_2vials_tiprack.yaml) --------
-const VIAL_OD = 28.0;
+// ---- vial (Ben's 20 mL VOA vials, 28 x 57 mm nominal) ---------------------
+// Modelled at 27.5 mm, the size the 9-vial holder's pocket (27.6 mm at the
+// floor) seats. A full 28 mm vial would stop on its ring instead.
+const VIAL_OD = 27.5;
 const VIAL_H = 57.0;
 const VIAL_WALL = 1.3;
 const VIAL_BOT = 1.6;
 const NECK_OD = 24.0;
-const FILL_H = 19.4;          // ~10 mL in a 25.4 mm bore
+const FILL_H = 20.5;          // ~10 mL in a 24.9 mm bore
 const BAR_L = 15.0;           // PTFE stir bar, length
 const BAR_D = 6.0;            // PTFE stir bar, diameter
 
@@ -51,14 +53,26 @@ const RUN_GAP = 1.1;          // carrier top to pocket ceiling (Pioreactor v1.5:
 const VFLOOR_T = 1.2;         // printed floor under the vial
 const Z_RECESS = Z_FAN1 + CAR_T + RUN_GAP;
 const Z_VIAL = Z_RECESS + VFLOOR_T;   // vial outer bottom
-const BORE_D = 28.8;
-const RIB_R = 14.0;           // crush-rib crest radius (28.0 mm vial)
-const TOWER_D = 39.0;
-const Z_TOP = Z_VIAL + 25.1;
 const POST = 23.5;            // holder screw / insert positions, +-x +-y
 const INSERT_HOLE = 4.0;      // M3 x 5.7 heat-set insert
 const INSERT_OD = 4.6;
 const INSERT_L = 5.7;
+
+// ---- vial cup: one cup of the 9-vial holder ---------------------------------
+// Copied from Ben's Onshape copy of PANDA-BEAR's 9VialHolder20mL_TightFit
+// (GPL-2.0; also in modules/electromagnetic-capper/cad), measured from its
+// B-rep. Everything is relative to the floor, which that holder puts 18.0 mm
+// above the deck. The pocket narrows upward, so the four fingers flex out
+// around the vial and grip it.
+const CUP_OD = 33.4;
+const CUP_R0 = 13.8;          // pocket radius at the floor
+const CUP_DRAFT = 3.0;        // pocket half-angle, degrees
+const CUP_RING = 2.0;         // full ring above the floor; the slots start here
+const CUP_H = 17.0;           // floor to finger tips
+const CUP_SLOT = 14.0;        // slots between the fingers, on the x and y axes
+const CUP_TIP_R = 1.0;        // round on the outside edge of each finger tip
+const CUP_EDGE_R = 0.3;       // fillet on the floor edge and the other finger and slot edges
+const Z_TOP = Z_VIAL + CUP_H;
 
 // ---- CubXL+ deck (Cubware PandaDeck.step, from PANDA-BEAR) ----------------
 // 10 mm polycarbonate plate with 10 x 25 mm pill slots (R5 ends), long axis
@@ -270,14 +284,15 @@ function makeBase(context is Context, id is Id) returns Query
 function makeHolder(context is Context, id is Id) returns Query
 {
     mkRBox(context, id + "flange", 0, 0, FOOT, FOOT, Z_WALL, Z_WALL + FLANGE_T, FOOT_R);
-    mkCyl(context, id + "tower", 0, 0, Z_WALL, Z_TOP, TOWER_D / 2);
+    mkCyl(context, id + "cup", 0, 0, Z_WALL, Z_TOP, CUP_OD / 2);
     mkUnite(context, id + "u1", qCreatedBy(id, EntityType.BODY));
     const body = qUnion(evaluateQuery(context, qCreatedBy(id, EntityType.BODY)));
     var tools = [];
     tools = append(tools, mkCyl(context, id + "recess", 0, 0, Z_WALL - 1, Z_RECESS, RECESS_D / 2));
-    tools = append(tools, mkCyl(context, id + "bore", 0, 0, Z_VIAL, Z_TOP + 1, BORE_D / 2));
-    tools = append(tools, mkCone(context, id + "lead", 0, 0, Z_TOP - 1.2, Z_TOP + 0.01, BORE_D / 2, BORE_D / 2 + 1.2));
-    tools = append(tools, mkBox(context, id + "window", -3.5, -TOWER_D / 2 - 1, Z_VIAL + 3, 3.5, 0, Z_VIAL + 17));
+    // the 9-vial holder's pocket (a cone, widest at the floor) and the slots that leave four fingers
+    tools = append(tools, mkCone(context, id + "pocket", 0, 0, Z_VIAL, Z_TOP + 1, CUP_R0, CUP_R0 - (CUP_H + 1) * tan(CUP_DRAFT * degree)));
+    tools = append(tools, mkBox(context, id + "slotx", -CUP_OD, -CUP_SLOT / 2, Z_VIAL + CUP_RING, CUP_OD, CUP_SLOT / 2, Z_TOP + 1));
+    tools = append(tools, mkBox(context, id + "sloty", -CUP_SLOT / 2, -CUP_OD, Z_VIAL + CUP_RING, CUP_SLOT / 2, CUP_OD, Z_TOP + 1));
     tools = append(tools, mkBox(context, id + "groove", -22.8, -2.6, Z_WALL - 1, -RECESS_D / 2 + 0.5, 2.6, Z_RECESS));
     var i = 0;
     for (var sx in [-1, 1])
@@ -290,10 +305,38 @@ function makeHolder(context is Context, id is Id) returns Query
         }
     }
     mkSub(context, id + "s1", body, qUnion(tools));
-    // three crush ribs in the bore
-    const rib = mkBox(context, id + "rib0", RIB_R, -0.8, Z_VIAL + 1.0, BORE_D / 2 + 0.3, 0.8, Z_TOP - 1.5);
-    opPattern(context, id + "ribs", { "entities" : rib, "transforms" : [mkZRot(120), mkZRot(240)], "instanceNames" : ["r1", "r2"] });
-    mkUnite(context, id + "u2", qCreatedBy(id, EntityType.BODY));
+    // Edge rounds as on the 9-vial holder: R1 round the outside of each finger tip, then
+    // R0.3 on the floor edge and the other finger and slot edges. The inner tip edge is sharp.
+    var tipOut = [];
+    for (var e in evaluateQuery(context, qOwnedByBody(qCreatedBy(id, EntityType.BODY), EntityType.EDGE)))
+    {
+        const m = evEdgeTangentLine(context, { "edge" : e, "parameter" : 0.5 }).origin / millimeter;
+        if (abs(m[2] - Z_TOP) < 0.01 && abs(sqrt(m[0] * m[0] + m[1] * m[1]) - CUP_OD / 2) < 0.05)
+        {
+            tipOut = append(tipOut, e);
+        }
+    }
+    setVariable(context, "cupFillet", "failed");
+    try silent
+    {
+        opFillet(context, id + "tip", { "entities" : qUnion(tipOut), "radius" : CUP_TIP_R * millimeter });
+        setVariable(context, "cupFillet", "tips " ~ size(tipOut));
+        var edges = [];
+        for (var e in evaluateQuery(context, qSubtraction(qOwnedByBody(qCreatedBy(id, EntityType.BODY), EntityType.EDGE), qCreatedBy(id + "tip", EntityType.EDGE))))
+        {
+            const bb = evBox3d(context, { "topology" : e });
+            const z0 = bb.minCorner[2] / millimeter;
+            const z1 = bb.maxCorner[2] / millimeter;
+            const m = evEdgeTangentLine(context, { "edge" : e, "parameter" : 0.5 }).origin / millimeter;
+            const innerTip = abs(m[2] - Z_TOP) < 0.01 && sqrt(m[0] * m[0] + m[1] * m[1]) < CUP_R0;
+            if (!innerTip && (z0 > Z_VIAL + CUP_RING - 0.01 || (abs(z0 - Z_VIAL) < 0.01 && abs(z1 - Z_VIAL) < 0.01)))
+            {
+                edges = append(edges, e);
+            }
+        }
+        opFillet(context, id + "edges", { "entities" : qUnion(edges), "radius" : CUP_EDGE_R * millimeter, "tangentPropagation" : true });
+        setVariable(context, "cupFillet", "tips " ~ size(tipOut) ~ ", edges " ~ size(edges));
+    }
     const q = qCreatedBy(id, EntityType.BODY);
     mkLook(context, q, "Vial holder (printed)", color(0.10, 0.58, 0.60));
     return q;

@@ -82,7 +82,7 @@
    "step": 10,
    "sequence": true,
    "title": "10  Stir bar into the vial, vial into the holder",
-   "caption": "15 x 6 mm PTFE bar. Three crush ribs in the bore grip the 28 mm vial\nso the capper can twist the cap.",
+   "caption": "15 x 6 mm PTFE bar. The cup is copied from the 9-vial holder: a 3° taper\nand four spring fingers grip the vial while the capper lifts its cap.",
    "view": {
     "px": 0.00033,
     "ty": -0.05
@@ -93,7 +93,7 @@
    "step": 0,
    "sequence": true,
    "title": "Assembled",
-   "caption": "56 x 56 mm footprint, 50 mm tall without the vial. The vial's bottom sits\n25 mm above the deck and its rim ~82 mm.",
+   "caption": "56 x 56 mm footprint, 42 mm tall without the vial. The vial's bottom sits\n25 mm above the deck (18 mm in the 9-vial holder) and its rim ~82 mm.",
    "view": {
     "px": 0.00033,
     "ty": -0.05
