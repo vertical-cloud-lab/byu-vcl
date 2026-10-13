@@ -18,6 +18,7 @@ commits. Nothing in it has been bought, built or tested.
 | [`test-matrix.csv`](test-matrix.csv) | One row per specimen set: where it comes from, what it answers, what it waits on |
 | [`record-template.yaml`](record-template.yaml) | The per-spot record, keyed to the atomizer run ID |
 | [`corrosion_numbers.py`](corrosion_numbers.py) → [`corrosion_numbers.json`](corrosion_numbers.json) | Every computed number here: currents, charges, volumes, times, the spread's excess Si |
+| [`plot_current_ranges.py`](plot_current_ranges.py) → [`current-ranges.png`](current-ranges.png) | The chart in §5 |
 | [`references.md`](references.md) | Every reference, what it supports, and what was read (abstract, full text or metadata) |
 
 ## In short
@@ -306,6 +307,8 @@ Details and settings are in [`protocol.md`](protocol.md).
 
 Corrosion of Al in a small well runs from about 1 nA (LPR on a passive surface) to about 0.1 mA
 (the reversal current). Maximum current, the thing #231 has been optimising, barely matters here.
+
+![Currents a 3–4 mm well produces, against what each potentiostat resolves](current-ranges.png)
 
 | | Rodeostat HC | MYSTAT | EmStat Pico |
 | --- | --- | --- | --- |
