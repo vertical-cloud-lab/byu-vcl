@@ -29,9 +29,9 @@ commits. Nothing in it has been bought, built or tested.
   repassivation potential E_rp for each piece.
 - **Why it belongs to the alloy work:** the atomizer plan's claims are judged by composition,
   particle size, shape and (in 2027) a print. None of those says how the metal behaves in
-  service. Corrosion of Al–Si alloys in chloride is governed by exactly what the plan varies:
-  how Si is distributed, how much Si is left over after Mg₂Si, and cathodic impurities picked up
-  along the way (§1).
+  service. Corrosion of Al–Si alloys in chloride depends on what the plan varies: how Si is
+  distributed, how much Si is left over after Mg₂Si, and cathodic impurities picked up along the
+  way (§1).
 - **Specimens already exist.** Each run leaves splats, a puddle in the cup or a crucible skull, and
   the plan already weighs them. Keeping one piece per run, labelled with its ID, turns every run
   into a corrosion sample at no cost. Ronnie's polishing SOP already cuts pieces out with a bare
@@ -86,22 +86,22 @@ at 1.73:1 by mass.
   by purging the oxygen. Both studies concern wrought, aged alloys, not as-solidified metal, so
   this is a reason to look, not a prediction.
 - **Past silicon's solubility limit.** From the 15 % point onward, the Si left over (1.4–2.2 wt%)
-  is above Si's maximum solubility in solid Al, about 1.5 wt% at the eutectic temperature
+  reaches Si's maximum solubility in solid Al, about 1.5 wt% at the eutectic temperature
   ([Murray & McAlister 1984](https://doi.org/10.1007/BF02868729), as quoted by
-  [Cabrini et al. 2018](https://doi.org/10.3390/ma11071051)). So even near-equilibrium cooling
-  leaves eutectic Si.
+  [Cabrini et al. 2018](https://doi.org/10.3390/ma11071051)). Past that point, eutectic Si forms
+  even under slow, near-equilibrium cooling.
 - **Why that matters for corrosion.** In AlSi10Mg, how connected the Si network is decides how
   corrosion proceeds: the "silicon content… affected the level of connectivity of the Si network,
   and this, consequently, influenced the formation of micro-cracks during corrosion"
   ([Revilla & De Graeve 2018](https://doi.org/10.1149/2.0101814jes), AlSi7Mg to AlSi12). Our
-  spread starts well below those alloys, at the onset of a Si network. No corrosion study of that
-  range in rapidly solidified material turned up.
+  spread (0.4–3.9 wt% Si) sits below all three. So it should show how corrosion changes as a Si
+  network first appears. That is our inference; it hasn't been measured.
 - **Measure, don't assume.** Each piece's own Si comes from EDS on the polished face. Mg (the
   ~0.05 wt% steps are below EDS) comes from ICP on a chip, as the plan already says for Mg.
 
 ### 1.2 Same melt, different solidification
 
-Every run produces the same melt in up to four forms: the feedstock it came from, splats and
+Every run gives one composition in up to four forms: the feedstock it came from, splats and
 puddles that froze on the plate or in the cup, the powder, and (in 2027) the print.
 
 - **LPBF versus cast is not settled.** Laser-melted AlSi10Mg was "2–3 times" more
@@ -112,8 +112,9 @@ puddles that froze on the plate or in the cup, the powder, and (in 2027) the pri
   borders, in untreated and stress-relieved material
   ([Cabrini et al. 2016](https://doi.org/10.1016/j.electacta.2016.04.157)). The coarser eutectic
   Si there controls the electrochemical behaviour more than surface roughness does
-  ([Fathi et al. 2019](https://doi.org/10.1016/j.corsci.2019.05.032)). Heat treatment turns the
-  network into separate particles and changes the attack from superficial to penetrating, or back
+  ([Fathi et al. 2019](https://doi.org/10.1016/j.corsci.2019.05.032)). Heat treatment breaks the
+  network into separate particles. Stress-relieved material showed penetrating attack, where
+  untreated and artificially aged material showed superficial attack
   ([Rubben et al. 2019](https://doi.org/10.1016/j.corsci.2018.11.038)).
 - **The native oxide differs too.** On LPBF AlSi10Mg it "presented faster growth and superior
   passive behavior than those of the cast alloy"
@@ -131,9 +132,9 @@ polypropylene tube.
 - **What's in it.** 10 mC of anodic charge dissolves 0.93 µg of Al, 6.2 mg/L in a 150 µL cell. Even
   after diluting the NaCl 17.5-fold for ICP, that is about 350 µg/L.
 - **What it tells us.** Mg/Al and Si/Al in the liquid, against the same ratios in the bulk, show
-  whether the attack is congruent. Mg₂Si particles react and dissolve on their own in Al–Mg–Si
-  alloys ([Eckermann et al. 2008](https://doi.org/10.1016/j.electacta.2008.05.078), title and
-  metadata only). Selective dissolution of Al from AA2024, leaving Cu behind, has been measured
+  whether the attack is congruent. How MgSi particles react and dissolve during corrosion of Al–Mg–Si
+  alloys is the subject of [Eckermann et al. 2008](https://doi.org/10.1016/j.electacta.2008.05.078)
+  (only its title and metadata were read). Selective dissolution of Al from AA2024, leaving Cu behind, has been measured
   element by element ([Gharbi et al. 2016](https://doi.org/10.1149/2.1121605jes)).
 - **Precedent.** The online version is a scanning flow cell coupled to ICP-MS
   ([Klemm et al. 2011](https://doi.org/10.1016/j.elecom.2011.10.017)) or atomic emission
@@ -149,8 +150,9 @@ polypropylene tube.
 
 ### 1.4 Impurities: a sensitive check on what the atomizer picks up
 
-- Pits on Al alloys start at intermetallic particles. "Cu- or Fe-rich particles are noble to the Al
-  matrix, and exhibit enhanced cathodic kinetics" ([Frankel 1998](https://doi.org/10.1149/1.1838615)).
+- "Pits in Al alloys are typically associated with intermetallic particles", and "Cu- or Fe-rich
+  particles are noble to the Al matrix, and exhibit enhanced cathodic kinetics"
+  ([Frankel 1998](https://doi.org/10.1149/1.1838615)).
   In pure Al, trace Cu²⁺ deposits as Cu that "acts as an efficient cathode"
   ([Böhni & Uhlig 1969](https://doi.org/10.1149/1.2412167)).
 - The runs plan already has EDS look for Mo and W from the plate and sonotrode. Corrosion can't
@@ -159,7 +161,7 @@ polypropylene tube.
 
 ### 1.5 Anodizing, later
 
-Anodizing is the usual finish for aerospace Al, and Al–Si alloys are hard to anodize. "Al foundry
+Anodizing is a common finish for Al parts, and Al–Si alloys are hard to anodize. "Al foundry
 alloys are more difficult to be anodized", since "the high content of alloying elements prevents
 the uniform growth of the Al oxide layer" ([Scampone & Timelli 2022](https://doi.org/10.1002/adem.202101480)).
 In LPBF AlSi10Mg, Si morphology "determines the fraction of silicon that is oxidized during
@@ -174,7 +176,9 @@ electrode). So it comes after the corrosion baseline (row N1 of the matrix).
 
 Not much, which is why this is a separate PR from the Porter work.
 
-- The potentiostat is shared: it would read his four-electrode conductivity cell as well.
+- The potentiostat could be shared, but only if it has EIS. His four-electrode conductivity cell
+  needs AC ([#231, 5 Oct](https://github.com/vertical-cloud-lab/byu-vcl/issues/231)), which the
+  EmStat Pico has and the DC-only options don't.
 - The conductivity and pH probes from the #213 thread check the electrolyte stocks.
 - Spectroscopy has no part here.
 
@@ -204,7 +208,7 @@ for each paper, whether the abstract, the full text or only the metadata was rea
     ([Raza et al. 2021](https://doi.org/10.1016/j.matdes.2020.109358)).
   - Moisture lowers the density that can be reached
     ([Lubkowitz et al. 2024](https://doi.org/10.1016/j.procir.2024.08.086)).
-  - Both are reasons the atomizer's "low oxide" goal would show up in a print. Fresh versus aged
+  - Both suggest the atomizer's "low oxide" goal could show up in a print. Fresh versus aged
     powder is a 2027+ question.
 - **Automation.**
   - **MAP-E** ([Persaud et al. 2026](https://doi.org/10.1038/s41529-026-00822-8)) is the closest
@@ -241,8 +245,9 @@ for each paper, whether the abstract, the full text or only the metadata was rea
 | MIDI prints, in-house and purchased powder | Block C/D, [#77](https://github.com/vertical-cloud-lab/byu-vcl/issues/77) | LPBF as-built, XY and XZ faces | 2027 |
 
 **The one ask of the atomizer runs.** After the mass balance is weighed, put one piece of at least
-5 mm (a splat, the cup puddle, or a piece of skull, in that order of preference) in the run's bag
-with its ID. Add `corrosion_piece_kept` to the run record. Nothing else changes.
+5 mm in the run's bag with its ID. Prefer a splat, then the cup puddle, then a piece of skull:
+splats froze fastest, so they are closest to the powder, and the skull sat in the crucible
+longest. Add `corrosion_piece_kept` to the run record. Nothing else changes.
 
 **Not the powder itself.** Particles in Bakelite are insulated from each other, so they can't be
 one working electrode. Carbon-filled conductive mounts would couple a graphite cathode to the Al. The
@@ -270,12 +275,13 @@ Details and settings are in [`protocol.md`](protocol.md).
   - 0.6 M NaCl (3.5 wt%), open to air, for comparison with work like Wu 2022.
   - 0.1 M is the other common choice (Tiwari 2023; Rubben 2019), and a 0.006–0.6 M series covers
     both. Pitting severity "tends to vary with the logarithm of the bulk chloride concentration"
-    ([Frankel 1998](https://doi.org/10.1149/1.1838615)), so a series gives each material a slope as
-    well as a point.
+    ([Frankel 1998](https://doi.org/10.1149/1.1838615)). For pure Al, E_pit is "more active the
+    higher the Cl− concentration" ([Böhni & Uhlig 1969](https://doi.org/10.1149/1.2412167)). So a
+    series gives each material a slope as well as a point.
   - The CubXL mixes each well from three stocks; the stocks are checked by conductivity and pH.
 - **Sequence.**
-  - OCP for 30 min; LPR at ±10 mV and 0.167 mV/s; then cyclic polarization that reverses at
-    1 mA/cm².
+  - OCP for 30 min; LPR at ±10 mV and 0.167 mV/s (0.6 V/h); then cyclic polarization that
+    reverses at 1 mA/cm².
   - This is "G61-style": ASTM G61 is written for Fe-, Ni- and Co-based alloys, and MAP-E describes
     its own test the same way.
   - Outputs: E_corr, R_p, E_pit (at 10 and 100 µA/cm²), E_rp and anodic charge, plus before and
@@ -318,7 +324,7 @@ Corrosion of Al in a small well runs from about 1 nA (LPR on a passive surface) 
 | Slow linear sweep (0.167 mV/s) | yes, 0.49 mV steps | yes | yes |
 | Reverse on a current threshold | host stops and restarts | host software | `if`/`breakloop` in a script (in the manual, not tried on hardware) |
 | EIS | no | no | 0.016 Hz–200 kHz |
-| Potential window | ±1 V range and up | ±12 V | −1.2 to +2 V (WE vs RE) in its low-speed mode |
+| Potential window | ±1 to ±10 V ranges | ±12 V | −1.2 to +2 V (WE vs RE) in its low-speed mode |
 | CubOS driver | none | none | the EmStat driver names it, but defaults to the EmStat4 and shows no Pico test ([`emstat.py`](https://github.com/Ursa-Laboratories/CubOS/blob/38ccd0e7109926ac54cc90b018ff674161f87031/packages/core/src/cubos/instruments/potentiostat/vendors/emstat.py#L62-L75)) |
 | Price | $240 ([IO Rodeo](https://iorodeo.com/products/rodeostat-hc), sold out on 2026-10-13) | about $340 to build (#231) | about $580 in #231 on 2026-09-28; not re-checked, as Digi-Key blocks the runner |
 
@@ -328,7 +334,8 @@ Corrosion of Al in a small well runs from about 1 nA (LPR on a passive surface) 
   a passive surface (0.7–71 nA for R_p of 10⁶ down to 10⁴ Ω·cm²) is a handful of steps or fewer.
   The original Rodeostat has a ±1 µA range, with 10× finer steps. Neither model autoranges.
 - **The MYSTAT can do it.** Its software would need extending, and it has to be built.
-- **The EmStat Pico does all of it in firmware**, adds EIS, and runs from the Pi. But it isn't
+- **The EmStat Pico covers it in vendor firmware**, adds EIS, and runs from the Pi. Threshold
+  reversal would be a script, which the manual allows but nobody here has tried. And it isn't
   driven by CubOS yet in practice.
 - **Its window is the thing to check.** Al in NaCl sits near −0.8 V against SCE (Wu 2022), which is
   inside −1.2 V. A scan that starts well below OCP may need the Pico's −1.7 V range.
@@ -374,11 +381,12 @@ arrives.
 
 ## 8. Where results would go, and when
 
-- **The Advanced Materials collection article** (early 2028). A corrosion panel fits beside figures 3–4
-  (the spread), and figure 5 already compares the print with commercial AlSi10Mg. Whether corrosion belongs in that article or a separate one is Sterling's call.
-- **TMS 2027.** Abstracts closed on 2026-07-01. The paper gates in
-  [#273](https://github.com/vertical-cloud-lab/byu-vcl/issues/273) (draft to co-authors 29 Jan)
-  leave room only for a bench result from a borrowed potentiostat.
+- **The Advanced Materials collection article** (early 2028). A corrosion panel fits beside
+  figures 3–4 (the spread), and figure 5 already compares the print with commercial AlSi10Mg.
+  Whether corrosion belongs in that article or a separate one is Sterling's call.
+- **TMS 2027.** Abstracts closed on 2026-07-01. If one of the lab's TMS 2027 papers wanted a
+  corrosion result, the gates in [#273](https://github.com/vertical-cloud-lab/byu-vcl/issues/273)
+  (draft to co-authors 29 Jan) leave room only for a bench result from a borrowed potentiostat.
 
 | When | What | Orders? |
 | --- | --- | --- |

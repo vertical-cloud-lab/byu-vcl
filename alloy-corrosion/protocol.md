@@ -34,7 +34,7 @@ unchanged up to the cut-out, so one prepared piece serves both SEM/EDS and corro
 | Clamp | Printed tray. The piece sits face up on a spring contact (pogo pin) that touches its bare back. A lid with 2–4 stepped wells presses one FKM O-ring onto the face per well. | The O-ring sets the area. 2–4 wells per piece means one polish gives several spots. |
 | Well | O-ring ID 3 mm (0.071 cm²) or 4 mm (0.126 cm²). Above it a wider bore, 8 mm across, holds about 150 µL (50 µL per mm of height). | A stepped bore keeps the area small and still leaves room for two electrodes and a pipette tip. |
 | Reference | A **leak-free** Ag/AgCl mini-electrode, ≤ 2 mm across | See the two notes below |
-| Counter | Pt wire, coiled, with at least 10× the exposed area | Standard practice. PANDA-film coils Pt wire around its reference capillary ([Quinn et al. 2026](https://arxiv.org/abs/2601.07043)) |
+| Counter | Pt wire, coiled, with several times the sample's exposed area | So the counter never limits the current. PANDA-film coils Pt wire around its reference capillary ([Quinn et al. 2026](https://arxiv.org/abs/2601.07043)) |
 | Mount | Reference and counter on the CubXL head beside the pipette, as in PANDA-film. The holder doubles as a lid over the well. | A lid keeps evaporation from concentrating the chloride during a run of up to ~2 h |
 
 **Not an Ag-wire pseudo-reference.** PANDA-film's Ag pseudo-reference is fine for deposition, but in
@@ -53,7 +53,7 @@ nothing else (*choose* a limit, e.g. ±5 mV), and log the offset.
 ## 3. Electrolyte
 
 - **Baseline: 0.6 M NaCl** (3.5 wt%), reagent-grade NaCl in DI water, open to air, at room
-  temperature (log it). It is the usual corrosion-test concentration and has been used on LPBF
+  temperature (log it). It is a common corrosion-test concentration and has been used on LPBF
   AlSi10Mg ([Wu et al. 2022](https://doi.org/10.3390/ma15248786)). The other common choice, 0.1 M
   ([Tiwari et al. 2023](https://doi.org/10.3390/coatings13020225)), is inside the series below.
 - **Chloride series.** Mix each well's liquid in the well, from three stocks (0.6, 0.06 and
@@ -81,7 +81,7 @@ nothing else (*choose* a limit, e.g. ±5 mV), and log the offset.
 | --- | --- | --- | --- | --- |
 | 1 | Fill | 150 µL, mixed in the well; image the well | — | no liquid outside the O-ring after 2 min (camera) |
 | 2 | OCP | 30 min, ≥ 1 point/s | E_corr (mean of the last 60 s) and its drift | drift over the last 5 min below a limit (*choose*) |
-| 3 | LPR (after ASTM G59) | −10 → +10 mV about OCP at 0.167 mV/s (G59's 0.6 V/h), 2 min | R_p in Ω·cm², from the slope at zero current | the fit is linear (*choose* an R² limit) |
+| 3 | LPR (after ASTM G59) | −10 → +10 mV about OCP at 0.167 mV/s (0.6 V/h), 2 min | R_p in Ω·cm², from the slope at zero current | the fit is linear (*choose* an R² limit) |
 | 4 | Rest | OCP, 5 min | — | back within 5 mV of E_corr |
 | 5 | Cyclic polarization (G61-style) | Start 50 mV below OCP. Sweep up at 0.167 mV/s (G61's 0.6 V/h) or 1 mV/s for screening. Reverse at 1 mA/cm². Stop back at E_corr. | E_pit at 10 and at 100 µA/cm²; E_rp, where the reverse scan falls back below 10 µA/cm²; anodic charge | no attack at the O-ring edge (camera now, SEM later) |
 | 6 | Collect | Pipette the liquid plus one 150 µL water rinse into a capped polypropylene tube | tube ID, for ICP | — |
