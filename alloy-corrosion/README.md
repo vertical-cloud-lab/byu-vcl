@@ -242,7 +242,7 @@ for each paper, whether the abstract, the full text or only the metadata was rea
 | 6063 bar (Block A lot), 4047 rod, high-purity Al rod ([#222](https://github.com/vertical-cloud-lab/byu-vcl/issues/222)) | stock | wrought feedstock | **now** |
 | One piece per Block A and Block B run | runs plan | remelted, at known charge composition | as the runs happen (Nov–Dec 2026) |
 | Arc-melted AlSi10Mg button | [#223](https://github.com/vertical-cloud-lab/byu-vcl/issues/223) | cast, in-house AlSi10Mg | if the arc-melt happens |
-| MIDI prints, in-house and purchased powder | Block C/D, [#77](https://github.com/vertical-cloud-lab/byu-vcl/issues/77) | LPBF as-built, XY and XZ faces | 2027 |
+| MIDI prints from in-house powder and from purchased AlSi10Mg (the lot already in the lab, whose SDS is from Heeger Materials, or Valimet's, as [#223](https://github.com/vertical-cloud-lab/byu-vcl/issues/223) planned) | Block C/D, [#77](https://github.com/vertical-cloud-lab/byu-vcl/issues/77) | LPBF as-built, XY and XZ faces | 2027 |
 
 **The one ask of the atomizer runs.** After the mass balance is weighed, put one piece of at least
 5 mm in the run's bag with its ID. Prefer a splat, then the cup puddle, then a piece of skull:
