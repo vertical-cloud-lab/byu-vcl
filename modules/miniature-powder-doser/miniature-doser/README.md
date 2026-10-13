@@ -133,9 +133,9 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
 
 ![](tilt_motion.gif)
 
-- **Hinge:** PR 176's own, the x axis 10 mm behind the outlet at the auger's height. The module kept it when it was
-  folded. The outlet and the capillary, where the loose powder is, move least: between level and 35° the tip drops
-  28 mm and comes 9 mm nearer the hinge, and at park it rises 8 mm.
+- **Hinge:** PR 176's own axis, the x axis 10 mm behind the outlet at the auger's height. Folding the module didn't
+  move the outlet, so the axis is where PR 176 has it. The outlet and the capillary, where the loose powder is, move
+  least: between level and 35° the tip drops 28 mm and comes 9 mm nearer the hinge, and at park it rises 8 mm.
 - **Travel:** −10° (park, outlet up) through 0° (level, PR 176's rest pose) to 45°, with 35° to dispense.
 - **Drive:** one servo, direct, with no gears. It is the servo PR 176's parts list has for the tilt, Adafruit #1142, an
   MG996R-size metal-gear servo. Its spline is on the hinge axis on the +x side, and its round metal horn is screwed to
@@ -168,7 +168,7 @@ Fixed at 35°, the module rides outlet down with powder in its capillary wheneve
   the servo goes limp and its gears let the module turn, it falls towards park, not towards dispensing. A stop at the
   park angle would catch it.
 - **The cost:** a capillary that drains back has to refill before powder reaches the target. That is about 300 mg, one
-  pulse, or about 38 s at 10 mg/s. Parking level might keep it full, so the park angle is a bench question: run the
+  pulse, or about 30 s at 10 mg/s. Parking level might keep it full, so the park angle is a bench question: run the
   same moves parked at −10°, −5° and 0°, and weigh what falls out and how long the first dose takes to start.
 - **A possible bonus:** tilting up at the end of a dose may cut the tail after a stop, since the capillary stops
   feeding once its slope reverses.
