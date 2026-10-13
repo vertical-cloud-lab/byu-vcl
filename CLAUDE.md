@@ -429,6 +429,15 @@ frame rate needs the same patch, and it is worth upstreaming to `ac-training-lab
   that Pi is offline, the CubXL Pi has `~/.venvs/ytframes/bin/yt-dlp` too (2026-10-09),
   with no JS runtime and no ffmpeg. Ordinary uploads still download there as separate video
   and audio files; see [`atomizer-runs/README.md`](atomizer-runs/README.md).
+- **The CubXL Pi has Chromium too (2026-10-13, apt, `--no-install-recommends`), for a "Pi
+  with browser".** Run it headless over SSH: `chromium --headless=new --no-sandbox
+  --disable-gpu --disable-dev-shm-usage --dump-dom <url>` (or `--screenshot=`), one page at
+  a time, since the Pi has 1 GB of RAM and a page takes 30–90 s. Do not expect it to beat
+  bot checks: that Pi's address is BYU campus, not residential, and Google Scholar and
+  ScienceDirect both answered a headless page load with a CAPTCHA. DuckDuckGo
+  (`html.duckduckgo.com`), Nature, arXiv, PubMed Central and vendor sites loaded fine, and
+  MDPI, which blocks runners outright, is better fetched as Europe PMC full-text XML from
+  the runner anyway. See [`atomizer-runs/2026-10-08/README.md`](atomizer-runs/2026-10-08/README.md).
 - **The archive timeline is not wall clock.** `release_timestamp` is where video offset 0
   sits at the very start, but for `bQDrYpT3vaE` everything from the third hour onward is
   **67 s later** than `release + offset` — a step, not a drift, i.e. an archive

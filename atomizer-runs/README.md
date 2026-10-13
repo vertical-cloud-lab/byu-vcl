@@ -6,7 +6,7 @@ This is the run-by-run record behind the repeatability study in
 
 | Run | Write-up | In short |
 | --- | --- | --- |
-| 2026-10-08 | [`2026-10-08/`](2026-10-08/README.md) | The melt dripped onto a frozen lump on the plate's tip, or past it, and hardly atomized. It is the third run in a row to go wrong where the melt meets the plate. O2 took at least three gas washes at 500 °C to reach the mid 20s ppm. |
+| 2026-10-08 | [`2026-10-08/`](2026-10-08/README.md) | The melt dripped onto a frozen lump on the plate's tip, or past it, and hardly atomized. It is the third run in a row to go wrong where the melt meets the plate. O2 took at least three gas washes at 500 °C to reach the mid 20s ppm. Why: the 1.5:1 booster left the carbon-fibre plate with about two thirds of the 1:1 amplitude, and a CF plate only wets, and so only atomizes, once it is hot and vibrating hard enough to strip the melt's oxide; every 1.5:1 run so far has dripped (training transcripts, AMAZEMET's patent and papers, Edison literature search). |
 
 Run 1 (2026-10-06) has no video, only the notes and photo in #261.
 

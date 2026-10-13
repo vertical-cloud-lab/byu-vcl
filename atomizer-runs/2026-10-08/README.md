@@ -39,6 +39,13 @@ is in [`transcript.md`](transcript.md), with every line linked to its moment in 
   upper sonotrode. The trainer's advice is to put a slow stream high on the plate's face and to
   check where it will land before heating. See [Compared with earlier
   runs](#compared-with-earlier-runs).
+- **Why it pooled instead of atomizing: too little amplitude for a plate the melt had not
+  yet wetted.** Ronnie's notes give the set-up: carbon-fibre plate, 1.5:1 (reverse) booster,
+  0.19 bar. The reverse booster leaves the plate about two thirds of the 1:1 amplitude; the
+  trainer warned that this is where atomization can stop altogether, and a carbon-fibre
+  plate, unlike molybdenum, only wets once it is hot and vibrating hard enough to break the
+  melt's oxide skin. Every 1.5:1 run so far has dripped. See [Why it didn't atomize:
+  amplitude and plate material](#why-it-didnt-atomize-amplitude-and-plate-material).
 
 ## The pour (pt2)
 
@@ -211,13 +218,229 @@ For the repeatability runs in #261 this argues for fixing the landing point firs
 same spot on the plate's face, checked before heating. In a run where the melt misses the
 plate, the spread between runs measures the alignment, not the process.
 
+## Why it didn't atomize: amplitude and plate material
+
+Ronnie's notes on the run
+([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6088484430))
+fill in what the footage can't: a **carbon-fibre plate**, the **1.5:1 booster** (the
+1:1.5 booster mounted the other way round, which lowers the amplitude), a graining
+pressure of **0.19 bar**, three Al rods of about 5 in, and powder bag `kj0461`. The melt
+"just landed on the plate, building up and dripping off", and Bartosz told the team
+afterwards that "atomizing with the 1.5:1 booster and carbon fiber plates doesn't work".
+The training videos, AMAZEMET's own papers and patents, and the literature say why, and
+they say the two causes are coupled: the reverse booster cut the vibration below what
+this delivery needed, and a carbon-fibre plate depends on that vibration (and on heat)
+to be wetted at all.
+
+### The combination was new, but the dripping was not
+
+| Run | Charge | Plate | Booster | Slider | Pour | What happened | Source |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Sep 29, T5 | Al 4047 rod | bare CF | 1:1.5 | not recorded | stream | first drops lost heating the plate, then "every single piece is getting atomized"; large uniform powder | [T5 61:12](https://youtu.be/58wJ_Khwgyk?t=3672) |
+| Sep 29, T2 | Al 4047 rod | CF (inferred) | 1:1.5 (inferred) | not recorded | stream | at first "it's gathering, it's not atomizing, the plate cannot heat up"; Bartosz poured more and it recovered | [T2 20:29](https://youtu.be/naePD8o9_Gk?t=1229) |
+| Sep 29, T3 | Al 4047 rod | Mo alloy | 1:1 | ~90 | stream, pressure lowered | plate cracked; "some of it is dropping"; better after a piece broke off | [T3 43:05](https://youtu.be/txH397FGTAU?t=2585) |
+| Sep 30, T9 (`8rthq2`) | AlSi10Mg in a 6063 cup | "bad Mo" / W–Ni–Fe | **1.5:1** | not recorded | stream, "too fast" | "the flow is actually too much for this low amplitude"; atomized at the top of the plate, gathered at the bottom and dripped | [T9 20:33](https://youtu.be/9kn-HhXCr1o?t=1233) |
+| Oct 2 (`u23y78`) | Al 4047 powder in a 6063 cup | pure Mo | **1.5:1** | 90 | 0.17 bar, shot out | "most of it did not get atomized"; pressure too high, plate too far | [pt2 27:11](https://youtu.be/of5-LhkX_VQ?t=1631) |
+| Oct 6, run 1 | 180 g Al 6063 | small CF | 1:1 | 50 (not set) | 0.2 bar | stream hit the upper sonotrode; vibration started late; little powder | [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6028651764) |
+| Oct 8 (`kj0461`) | 3 Al rods | CF | **1.5:1** | 92 → 100 | 0.19 bar, slow drips | froze on the tip, built up, dripped; a little fine powder | this page |
+
+Plate and booster for the trainer's runs are from the [#255](https://github.com/vertical-cloud-lab/byu-vcl/pull/255)
+SOP's *Known runs* table at `88eeace`; the team's runs from
+[#249](https://github.com/vertical-cloud-lab/byu-vcl/issues/249) and #261. Oct 8 was the
+first run on CF with the reverse booster, so "1.5:1 + CF doesn't work" had not been tested
+before. But the table also shows that **no 1.5:1 run has atomized most of its melt yet**,
+on any plate, including the one Bartosz ran himself.
+
+### Amplitude: the reverse booster took the plate below what this delivery needed
+
+- **What the booster does.** The one physical booster gives 150 % of the transducer's
+  amplitude one way up and, reversed, "1.5 to 1 … 75 % of the normal amplitude" as said
+  ([T7 23:23](https://youtu.be/FDRTt68Vfvo?t=1403)); 1/1.5 is 67 %. The slider on the panel is
+  a separate, electrical control, "percentage of the set power from the generator … how much
+  current you're actually giving to the transducer" ([T7 23:41](https://youtu.be/FDRTt68Vfvo?t=1421)).
+  On Oct 8 the slider was already at 92 % and went to 100 % at
+  [pt2 1:17](https://youtu.be/dTyuZmqYxHA?t=77); a 9 % current step does not recover a 33 %
+  mechanical cut, and there was no headroom left.
+- **What the trainer said about low amplitude.** Lower amplitude "means smaller particles
+  but the atomization is slower, more sensitive, more fragile"
+  ([T3 39:27](https://youtu.be/txH397FGTAU?t=2367)); 80–90 on the slider "is like the best.
+  Lower means that there is a chance that there will be like no atomization suddenly because
+  the vibrations could be too weak" ([T3 40:15](https://youtu.be/txH397FGTAU?t=2415)); and
+  "if you go like all the way down, there may be like too little atomization that the
+  material will be flowing through" ([T3 39:06](https://youtu.be/txH397FGTAU?t=2346)).
+  "Not every material can be atomized with really no amplitude"
+  ([T5 09:25](https://youtu.be/58wJ_Khwgyk?t=565)). The reverse booster is the fine-powder
+  recipe, and it comes with conditions: "you need to have good pouring … slow enough that
+  there is not too much material" ([T5 08:57](https://youtu.be/58wJ_Khwgyk?t=537)); "if you
+  want to go with the reverse booster you want to know your material"
+  ([T9 21:27](https://youtu.be/9kn-HhXCr1o?t=1287)); his best reverse-booster run reached
+  90 % conversion only "with a very well controlled pouring"
+  ([T9 23:08](https://youtu.be/9kn-HhXCr1o?t=1388)). And the remedy when it is not atomizing
+  is the opposite of what the booster does: "you will need to go higher amplitude just even
+  by the slider" ([T9 45:20](https://youtu.be/9kn-HhXCr1o?t=2720)).
+- **His own reverse-booster run showed the Oct 8 picture in a milder form.** On the wide Mo
+  plate on Sep 30: "The flow is actually too much for this low amplitude, that's why we are
+  losing some. Because the atomization is very very slow … we have nice atomization
+  especially on the top part, but in the bottom the material gathers and stops the
+  atomization, so nothing at the bottom gets atomized, that's why it is dropping down"
+  ([T9 20:33](https://youtu.be/9kn-HhXCr1o?t=1233)). He chose the wider Mo plate for that run
+  precisely because at the lowest amplitude "we definitely need more time to wet"
+  ([T3 49:35](https://youtu.be/txH397FGTAU?t=2975)). The Oct 8 lump sat at the plate's tip,
+  the end with the least plate below it.
+- **The physics behind the warning.** AMAZEMET's own description of the process: "the main
+  principles of this technology are based on amplitude and surface wettability. When the
+  threshold vibrational amplitude in the liquid layer wetted to the sonotrode is exceeded,
+  standing capillary waves are generated (Lierke et al., 1967). Further increasing the
+  amplitude disrupts the internal forces of the liquid, thereby ejecting small droplets"
+  ([amazemet.com/repowder](https://amazemet.com/repowder/), read on the Pi 2026-10-13).
+  Below that threshold a melt film just sits, spreads or runs off. Priyadarshi, Choma,
+  Żrodowski and co-workers, in the 2024 mechanism paper written with AMAZEMET's CF plate,
+  state that "the continuous ultrasonic atomization of Al melts needs sufficient ultrasonic
+  vibration amplitude owing to its low density and rapid oxidation", and measured how
+  uneven the plate's amplitude is: at 20 kHz, 6–16 µm null-to-peak at the antinodes and
+  2–8 µm at the nodes along the plate; glycerol could not be atomized on the plate at all
+  and needed a horn with three times the amplitude "effectively surpassing the atomization
+  threshold" ([Additive Manufacturing 83, 104033](https://doi.org/10.1016/j.addma.2024.104033),
+  open-access copy via [Brunel](https://bura.brunel.ac.uk/handle/2438/28349)). So an
+  amplitude cut of a third is not a small change: it can take the melt from above the
+  threshold to below it, and where on the plate the stream lands moves it further.
+- **A side effect to keep in view.** With the reverse booster "the frequency tends to be
+  lower, so it gets under 40" ([T7 41:47](https://youtu.be/FDRTt68Vfvo?t=2507)). On Oct 8 the
+  scan found 39 675 Hz and the stack ran at about 39.88 kHz, within the normal spread. The
+  panel's 0 W is still unexplained; logging the generator's power output
+  ([#221](https://github.com/vertical-cloud-lab/byu-vcl/issues/221)) would say whether the
+  plate was loaded at all.
+
+### Material: a carbon-fibre plate has to be wetted, and that takes heat and vibration
+
+- **Wetting is the mechanism, not a detail.** "You need the specific conditions to get the
+  wetting. Wetting means that the material is having kind of connection to the plate so that
+  the vibrations can go through. If it's just like a droplet sitting on it, it will bounce.
+  If it's wetting, the vibrations will go through … it ends up in the droplets being released
+  from the surface" ([T2 24:16](https://youtu.be/naePD8o9_Gk?t=1456)). "You lose a droplet,
+  but the plate heats up, the material wets it, and everything else is atomizing very
+  quickly" ([T2 23:39](https://youtu.be/naePD8o9_Gk?t=1419)).
+- **CF versus Mo for aluminium, in the trainer's words.** Bare carbon fibre is "good for
+  aluminum" ([T9 38:43](https://youtu.be/9kn-HhXCr1o?t=2323)): "aluminium sticks to it very
+  well, it wets it, like penetrates it a little bit, and atomization is perfect"
+  ([T5 11:53](https://youtu.be/58wJ_Khwgyk?t=713)). Molybdenum is "right now … the best
+  option for aluminium", because "Molybdenum and aluminium, they will react at some point …
+  the same reactivity that helps us to get a good wetting and good atomization start"
+  ([T3 10:18](https://youtu.be/txH397FGTAU?t=618)); the "golden standard for most trials"
+  ([T9 40:48](https://youtu.be/9kn-HhXCr1o?t=2448)). And on heat: "Metal plates will heat up
+  faster. They are very thin. They will heat up in one spot"
+  ([T2 24:00](https://youtu.be/naePD8o9_Gk?t=1440)); the first droplets are "needed to heat up
+  the plates" ([T5 61:24](https://youtu.be/58wJ_Khwgyk?t=3684)). So the two plates reach the
+  wetted state by different routes: Mo by a chemical reaction that starts as soon as melt
+  touches it, CF by a reaction that needs a hot plate and a vibrating, oxide-free interface.
+- **AMAZEMET's patent says the same, more bluntly.** EP4192985B1, on composite waveguides
+  for atomization: a sonotrode surface must be kept "above the melting temperature of the
+  alloy, otherwise the crystallization of the alloy progresses on its surface"; a carbon or
+  SiC matrix "is characterized by the low wettability by a majority of non-carbide forming
+  metals … however it does not suit for ultrasound atomization, when the wettability of the
+  waveguide surface is a determining factor of correctness of a process"; and metallic
+  coatings (Ti, Nb, Ta, Re, W, Mo, Ir) are there because "increasing wettability of the
+  waveguide to liquid metals … is critical in a case of ultrasound atomization"
+  ([EP4192985B1](https://patents.google.com/patent/EP4192985B1/en)). Aluminium *is* a
+  carbide former (it makes Al₄C₃ at the interface), which is the only reason a bare CF plate
+  works for it; that reaction is what the trainer calls "penetrates it a little bit", and it
+  is slow and thermally activated.
+- **Where CF has worked for aluminium, the feed was strong and continuous.** Singh et al.
+  (Johns Hopkins, AMAZEMET system, CFC plate, 60 kHz, 800 °C) opened the sealing rod and
+  ramped the furnace from 150 to 850 mbar over 50 s: "In the initial moments, spattering was
+  observed due to insufficient wetting of the CFC surface; however, stable atomization was
+  quickly established once proper wetting was achieved", with 80–90 % yield
+  ([arXiv:2510.06446](https://arxiv.org/abs/2510.06446)). Priyadarshi et al. poured pure Al at
+  800 °C onto a CF plate at 60 kHz with a 200 mbar differential (about 50 cm³/min) and got
+  "atomization started instantly … all material was atomized", finer at 60 % input power
+  than at 100 %, which shows that a lower amplitude on CF is workable in itself, on a stack
+  with no de-amplifying booster, once the plate is wetted. On Oct 8 the feed was "slow
+  steady drips" at 0.19 bar: too little melt, too slowly, to warm the plate's tip, which the
+  trainer's remedy for a gathering stream anticipates: "pour more"
+  ([T2 20:29](https://youtu.be/naePD8o9_Gk?t=1229)), and use the turbo at the start, which
+  "helps to heat up the plate more at the very beginning"
+  ([T2 19:44](https://youtu.be/naePD8o9_Gk?t=1184)).
+- **Why amplitude and wetting are the same problem.** Molten aluminium carries an oxide
+  skin, and it is cavitation in the vibrating film that strips it and lets the melt spread
+  on a non-wetting surface. In ultrasonic-assisted soldering, where that effect is used on
+  purpose, the liquid spreads only where the acoustic pressure is above the cavitation
+  threshold, and a non-cavitating rim at the spreading front keeps its oxide and stops
+  spreading ([Li et al. 2022](https://doi.org/10.1016/j.ultsonch.2021.105893), read on the Pi
+  from [PMC](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8799618/)). Cutting the amplitude by a third therefore does two things at once on a
+  CF plate: it lowers the chance of atomizing a film that is wetted, and it lowers the
+  chance of the film becoming wetted in the first place. On Mo the reaction supplies the
+  wetting without that help, which is why the trainer's 1.5:1 runs went on Mo, and why the
+  same booster that merely slowed atomization on Mo stopped it on CF.
+
+### The sequence on Oct 8, as the evidence reads
+
+1. The reverse booster set the plate to about two thirds of the 1:1 amplitude, with the
+   slider already near its top.
+2. The first drips landed at the plate's tip, cold, and froze there: the lump is in place
+   before the footage starts ([pt2 0:03](https://youtu.be/dTyuZmqYxHA?t=3)). The patent's
+   "crystallization progresses on its surface" and the trainer's "lost to heating the plate".
+3. Slow drips at 0.19 bar carried too little heat to warm a CF plate that, unlike thin Mo,
+   does not "heat up in one spot", so the lump grew instead of melting back: Ronnie's
+   "building up and dripping off".
+4. Without wetting there was no coupling, and the melt that did touch the plate's face at
+   the reduced amplitude sat below the threshold, gathered and ran off: the T9 picture
+   ("the material gathers and stops the atomization … dropping down"), without the
+   atomizing top half.
+5. 92 → 100 % on the slider ([pt2 1:17](https://youtu.be/dTyuZmqYxHA?t=77)) could not make up
+   the difference. The only spray in the footage comes off the lump at
+   [2:08](https://youtu.be/dTyuZmqYxHA?t=128).
+
+### What it means for the repeatability runs
+
+- **Fix the amplitude before varying anything else.** The low-amplitude recipe is the
+  fragile one, and it has not yet worked for this team on any plate. For the
+  fixed-settings runs in #261, 1:1 (any plate) or 1:1.5 on CF, slider 80–90, is the
+  configuration the trainer ran reliably; go to 1.5:1 for fine powder once the pour is
+  repeatable, and on Mo.
+- **Treat the plate's first seconds as a heating step.** Pour high on the face, let the
+  first drops go, and use the turbo at the start; a drip-fed CF plate at low amplitude
+  never gets there.
+- **Two measurements would turn this from argument into data:** the generator's power
+  output during the pour (0 W or not), and a mass balance (lump, puddle, powder, crucible).
+- **The test that would settle "CF versus Mo"** is the one nobody has published (see the
+  Edison precedent search below): same charge, nozzle and pressure, CF and Mo at 1:1, then
+  Mo at 1.5:1.
+
+### Literature search (Edison Scientific)
+
+Four queries, submitted 2026-10-13 19:48 UTC; answers and full trajectories in
+[`edison/`](edison/), task ids in [`edison/_task_ids.json`](edison/_task_ids.json).
+
+| Query | Job | Answer |
+| --- | --- | --- |
+| What decides atomize-versus-pool for a melt on a vibrating plate: amplitude threshold, feed rate, wetting of CF versus Mo, plate temperature; numbers for aluminium | `LITERATURE_HIGH` | [q1](edison/q1-amplitude-threshold-and-wetting-al-ultrasonic-atomization-answer.md) |
+| Does molten aluminium wet carbon? Contact angle versus temperature and time, Al₄C₃, oxide skin; compared with molybdenum and the Mo–Al intermetallics | `LITERATURE` | [q2](edison/q2-molten-aluminium-wetting-carbon-vs-molybdenum-answer.md) |
+| Minimum amplitude or acceleration for ultrasonic atomization and what a film does below it; amplitude versus throughput and the flooding regime | `LITERATURE` | [q3](edison/q3-minimum-amplitude-for-ultrasonic-atomization-of-liquid-metals-answer.md) |
+| Has anyone reported aluminium pooling or dripping off a sonotrode, or compared carbon and Mo plates? | `PRECEDENT` | [q4](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md) |
+
+The three literature tasks were still running when this was written; their answers will be added here.
+
+### Sources read with the Pi browser
+
+The CubXL Pi now has Chromium (installed for this; see `CLAUDE.md`). Run headless over
+SSH it found, through DuckDuckGo, the AMAZEMET page and patent, the 2024 mechanism paper,
+the AlSi12 parameter study ([Sci. Rep. 2025](https://www.nature.com/articles/s41598-025-06086-7),
+where amplitude was the least influential of three parameters over 75–80 %), the Singh
+et al. preprint and the ultrasonic-soldering paper above, and fetched the Nature, arXiv,
+PMC, patent-office and AMAZEMET pages. Google Scholar and ScienceDirect both answered it
+with a CAPTCHA: the Pi's address is BYU campus, not residential, and a headless browser is
+easy to detect. MDPI blocks the runner but not Europe PMC, which is where the 2021
+cold-crucible paper came from. Nothing from the Pi's fetches is committed beyond what is
+quoted here; the pages are reproducible from the links.
+
 ## Not in the footage
 
-Nothing shows the pour starting, so these are unknown for this run: when the sealing rod
-opened, the O2 and melt temperature at that moment, the graining pressure, the charge mass,
-the booster, and the plate type. The issue's notes for run 1 have most of them. This run's
-need adding to [#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261) from
-memory or the machine's log.
+Nothing shows the pour starting. Ronnie's notes
+([#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261#issuecomment-6088484430))
+supply the booster (1.5:1), the plate (carbon fibre), the graining pressure (0.19 bar), the
+charge (three Al rods, about 5 in each) and the powder ID (`kj0461`). Still unknown for
+this run: when the sealing rod opened, the O2 and melt temperature at that moment, the
+charge mass, and what the ultrasonic panel's POWER read with melt on the plate.
 
 ## What would make the next run's video more useful
 
