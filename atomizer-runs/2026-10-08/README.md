@@ -418,7 +418,25 @@ Four queries, submitted 2026-10-13 19:48 UTC; answers and full trajectories in
 | Minimum amplitude or acceleration for ultrasonic atomization and what a film does below it; amplitude versus throughput and the flooding regime | `LITERATURE` | [q3](edison/q3-minimum-amplitude-for-ultrasonic-atomization-of-liquid-metals-answer.md) |
 | Has anyone reported aluminium pooling or dripping off a sonotrode, or compared carbon and Mo plates? | `PRECEDENT` | [q4](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md) |
 
-The three literature tasks were still running when this was written; their answers will be added here.
+What came back before the Edison platform went down (every endpoint has answered 503 since
+about 20:15 UTC on 2026-10-13; q1 and q2 had reported `success` by then, q3 was still
+running) is the precedent search, kept as a [partial copy](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md):
+
+- **Nobody has published a controlled carbon-versus-Mo (or Ti) plate comparison for
+  aluminium**, on an ATO, a rePowder or a research rig.
+- **The nearest published "it dripped instead of atomizing"** is Jedynak et al. 2024
+  (AlSi9Mg–SiC on a rePowder and an ATOLab+): too much melt for the ultrasonic system, so
+  "much of the melt fell off in large drops without atomizing"; 40 kHz gave about twice the
+  efficiency of 60 kHz because it allowed "higher ultrasonic parameters".
+- **Lierke and Griesshammer 1967**, the paper AMAZEMET cites for the threshold, found droplet
+  rupture at roughly 3–6 times the amplitude at which surface waves first appear, and that a
+  poorly wettable cover on the resonator lets melt drop off it instead of atomizing; they
+  prescribed a preheated atomizing surface.
+- Singh et al. 2026 and the AMAZEMET patent, as quoted above.
+
+To finish the search once the API is back: `python atomizer-runs/edison_tools.py fetch
+atomizer-runs/2026-10-08/edison` writes the four answers and their full trajectories; the
+task ids are in `_task_ids.json`.
 
 ### Sources read with the Pi browser
 

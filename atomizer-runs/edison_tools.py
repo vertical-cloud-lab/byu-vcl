@@ -60,7 +60,14 @@ def fetch(d: Path):
     meta = json.loads((d / "_task_ids.json").read_text())
     c = client()
     for t in meta["tasks"]:
-        task = c.get_task(task_id=t["task_id"], verbose=True)
+        try:
+            task = c.get_task(task_id=t["task_id"], verbose=True)
+        except Exception as e:  # transient 503s happen; leave the task for the next fetch
+            print("skipped", t["slug"], type(e).__name__, flush=True)
+            continue
+        if str(getattr(task, "status", "")) not in DONE:
+            print("not finished", t["slug"], str(getattr(task, "status", "")), flush=True)
+            continue
         data = to_jsonable(task)
         (d / f"{t['slug']}.json").write_text(json.dumps(data, indent=2) + "\n")
         status = str(getattr(task, "status", ""))
