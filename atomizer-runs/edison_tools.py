@@ -65,6 +65,12 @@ def fetch(d: Path):
         (d / f"{t['slug']}.json").write_text(json.dumps(data, indent=2) + "\n")
         status = str(getattr(task, "status", ""))
         answer = getattr(task, "formatted_answer", None) or getattr(task, "answer", None) or ""
+        if not answer:  # PRECEDENT and some LITERATURE responses only carry the answer inside the environment frame
+            try:
+                a = data["environment_frame"]["state"]["state"]["response"]["answer"]
+                answer = a.get("formatted_answer") or a.get("answer") or ""
+            except (KeyError, TypeError):
+                answer = ""
         head = f"# {t['slug']}\n\nEdison Scientific `{t['job_type']}` task `{t['task_id']}`, status `{status}`.\n\n## Query\n\n{t['query']}\n\n## Answer\n\n"
         (d / f"{t['slug']}-answer.md").write_text(head + answer.strip() + "\n")
         t["status"] = status
