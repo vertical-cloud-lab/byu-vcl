@@ -44,8 +44,10 @@ is in [`transcript.md`](transcript.md), with every line linked to its moment in 
   0.19 bar. The reverse booster leaves the plate about two thirds of the 1:1 amplitude; the
   trainer warned that this is where atomization can stop altogether, and a carbon-fibre
   plate, unlike molybdenum, only wets once it is hot and vibrating hard enough to break the
-  melt's oxide skin. Every 1.5:1 run so far has dripped. See [Why it didn't atomize:
-  amplitude and plate material](#why-it-didnt-atomize-amplitude-and-plate-material).
+  melt's oxide skin. Every 1.5:1 run so far has dripped. Bartosz has since put it as two
+  rules: CF plates "only work with 1:1,5 booster" and "require high initial flow to heat
+  up". See [Why it didn't atomize: amplitude and plate
+  material](#why-it-didnt-atomize-amplitude-and-plate-material).
 
 ## The pour (pt2)
 
@@ -227,6 +229,12 @@ fill in what the footage can't: a **carbon-fibre plate**, the **1.5:1 booster** 
 pressure of **0.19 bar**, three Al rods of about 5 in, and powder bag `kj0461`. The melt
 "just landed on the plate, building up and dripping off", and Bartosz told the team
 afterwards that "atomizing with the 1.5:1 booster and carbon fiber plates doesn't work".
+On 2026-10-13 he gave it as two rules, by WhatsApp
+([relayed on #268](https://github.com/vertical-cloud-lab/byu-vcl/pull/268#issuecomment-6157392044)):
+"the carbon fiber plates only work with 1:1,5 booster. Otherwise the amplitude is too low.
+They also require high initial flow to heat up." Both match what he did in training, and
+what the literature has to say about each is in [Bartosz's two rules, and the articles
+behind them](#bartoszs-two-rules-and-the-articles-behind-them).
 The training videos, AMAZEMET's own papers and patents, and the literature say why, and
 they say the two causes are coupled: the reverse booster cut the vibration below what
 this delivery needed, and a carbon-fibre plate depends on that vibration (and on heat)
@@ -249,7 +257,10 @@ SOP's *Known runs* table at `88eeace`; the team's runs from
 [#249](https://github.com/vertical-cloud-lab/byu-vcl/issues/249) and #261. Oct 8 was the
 first run on CF with the reverse booster, so "1.5:1 + CF doesn't work" had not been tested
 before. But the table also shows that **no 1.5:1 run has atomized most of its melt yet**,
-on any plate, including the one Bartosz ran himself.
+on any plate, including the one Bartosz ran himself. By his 2026-10-13 rule, Oct 6 run 1
+(CF at 1:1, slider 50) was under-amplitude too, although its stream also hit the upper
+sonotrode. The two CF runs on the amplifying booster atomized (T2's set-up is inferred),
+and the two CF runs without it did not.
 
 ### Amplitude: the reverse booster took the plate below what this delivery needed
 
@@ -353,8 +364,9 @@ on any plate, including the one Bartosz ran himself.
   ([arXiv:2510.06446](https://arxiv.org/abs/2510.06446)). Priyadarshi et al. poured pure Al at
   800 °C onto a CF plate at 60 kHz with a 200 mbar differential (about 50 cm³/min) and got
   "atomization started instantly … all material was atomized", finer at 60 % input power
-  than at 100 %, which shows that a lower amplitude on CF is workable in itself, on a stack
-  with no de-amplifying booster, once the plate is wetted. On Oct 8 the feed was "slow
+  (8.55 µm) than at 100 % (9.9 µm). So a modest amplitude on CF can work once the plate is
+  wetted and fed steadily, at least at 60 kHz; the paper doesn't say which booster the stack
+  had. On Oct 8 the feed was "slow
   steady drips" at 0.19 bar: too little melt, too slowly, to warm the plate's tip, which the
   trainer's remedy for a gathering stream anticipates: "pour more"
   ([T2 20:29](https://youtu.be/naePD8o9_Gk?t=1229)), and use the turbo at the start, which
@@ -390,21 +402,104 @@ on any plate, including the one Bartosz ran himself.
    the difference. The only spray in the footage comes off the lump at
    [2:08](https://youtu.be/dTyuZmqYxHA?t=128).
 
+### Bartosz's two rules, and the articles behind them
+
+No published paper states either rule, and none compares CF with Mo plates, or one booster
+with another (the Edison precedent search below found no such comparison either). The
+rules are a practitioner's knowledge of this machine. What the literature gives is the
+mechanism behind each rule, and one paper that partly cuts against both. Quotes were
+checked in each source's full text, except one marked as abstract-only (2026-10-13).
+
+**"The carbon fiber plates only work with 1:1,5 booster. Otherwise the amplitude is too
+low."**
+
+- **Aluminium needs amplitude to begin with.** "The continuous ultrasonic atomization of Al
+  melts needs sufficient ultrasonic vibration amplitude owing to its low density and rapid
+  oxidation of Al droplets" (Priyadarshi et al. 2024, above). An AlSi12 study on a 35 kHz
+  ATO Lab+ adds that "higher amplitudes improve efficiency, while lower values can halt the
+  atomization process entirely" ([Yankin et al. 2025, Sci. Rep. 15, 20524](https://doi.org/10.1038/s41598-025-06086-7)).
+  That is a general statement: they tested only 75–80 % and report no failed run.
+- **A carbon-composite plate absorbs vibration that a metal plate passes on.** AMAZEMET's
+  patent application on composite waveguides: composites are normally avoided for
+  sonotrodes "due to a high damping resulting from an interaction between the fiber and
+  the matrix", and theirs "is also characterized by relatively high loss … at an expense of
+  a higher loss power - dissipated during an elastic strain during the work"
+  ([WO2022034517A1 ¶0021](https://patents.google.com/patent/WO2022034517A1/en), the
+  application behind EP4192985B1). So for the same stack, expect less amplitude at a CF
+  plate's surface than at a metal one's.
+- **A bare carbon plate needs that vibration to be wetted at all.** AMAZEMET's 2026 paper on
+  C/C plates for a 40 kHz rePowder: "as-fabricated C/C is typically ill suited to prolonged
+  contact with molten metals: (i) it is weakly wettable by many alloys"
+  ([Choma et al., Materials 19, 2803](https://doi.org/10.3390/ma19132803)); in the patent,
+  a niobium coating on a composite plate doubled atomization efficiency by making it
+  wettable. For aluminium on carbon fibre, "the infiltratability of the alloys was
+  proportional to the maximum intensity of the acoustic cavitation"
+  ([Matsunaga et al. 2006, J. JILM 56, 226](https://doi.org/10.2464/jilm.56.226),
+  abstract-only). Cavitation has a threshold (Li et al. 2022, above), so a weaker plate
+  wets less, or not at all.
+- **The slider can't make up for the booster.** Priyadarshi et al. measured their CF plate
+  at 60 kHz: 9.9 µm at 100 % input power, 9 µm at 75 %, 8.55 µm at 60 %. Cutting power by
+  40 % cut the amplitude by 14 %, so the 92 → 100 % step on Oct 8 bought a few percent
+  against the reversed booster's 33 % cut.
+- **Against it:** that same CF plate atomized pure Al completely at 8.55 µm. But that was at
+  60 kHz, where capillary-wave break-up needs less amplitude than at 40 kHz, and the paper
+  doesn't name the booster. Nobody has measured what our CF plate reaches in µm at 1:1.5,
+  1:1 and 1.5:1. That measurement, or AMAZEMET's figure for it, is what would turn the rule
+  into a number.
+
+**"They also require high initial flow to heat up."**
+
+- **A cold plate freezes the melt.** "It is required to maintain a temperature of a
+  sonotrode surface above the melting temperature of the alloy, otherwise the
+  crystallization of the alloy progresses on its surface"
+  ([EP4192985B1](https://patents.google.com/patent/EP4192985B1/en) ¶0003). That is the
+  lump on the Oct 8 tip.
+- **Aluminium doesn't wet carbon under ordinary conditions.** "Under the temperature and
+  atmosphere conditions normally used in practice, liquid metals (Cu, Al, etc.) do not wet
+  ionocovalent ceramics such as alumina, silicon carbide or graphite"
+  ([Eustathopoulos 2015, Metals 5, 350](https://doi.org/10.3390/met5010350), §4.1). Bare CF
+  is wetted only through the reaction that heat and cavitation drive, so it needs both.
+- **Published CF start-ups lose material until the plate wets.** Singh et al. (AMAZEMET
+  system, CFC plate, 60 kHz): "In the initial moments, spattering was observed due to
+  insufficient wetting of the CFC surface; however, stable atomization was quickly
+  established once proper wetting was achieved", and flakes over 300 µm "are commonly
+  generated during the initial stages of ultrasonic atomization due to incomplete droplet
+  breakup or wetting of the sonotrode surface"
+  ([arXiv:2510.06446](https://arxiv.org/abs/2510.06446)). Their flow was continuous and
+  rising: the melt-side pressure went from 150 to 850 mbar over 50 s.
+- **AMAZEMET's own published start-up uses a burst.** Choma et al. (rePowder, 40 kHz, coated
+  C/C plates, CuSn8): "a short 'turbo' boost of 1.5 bar was applied at initiation to ensure
+  a clean, stable metal outflow before reverting to the 0.6 bar set-point". The reason
+  given is the nozzle, not the plate, but it is the practice Bartosz describes: the turbo
+  "helps to heat up the plate more at the very beginning"
+  ([T2 19:44](https://youtu.be/naePD8o9_Gk?t=1184)).
+- **Against it:** Priyadarshi et al. got atomization that "started instantly (to the naked
+  eye)" on a CF plate at 200 mbar (a "slow pouring" of about 50 cm³/min), close to Oct 8's
+  0.19 bar. But their melt was pure Al at 800 °C, 140 °C above its melting point, as a
+  continuous stream from a 0.5 mm nozzle at 60 kHz; Oct 8 delivered drips. What that run
+  shares with Bartosz's rule is a steady supply of heat to the plate from the first second.
+- **Not published:** how fast a CF plate heats compared with a thin Mo one. Bartosz's reason,
+  that metal plates "are very thin, they will heat up in one spot"
+  ([T2 24:00](https://youtu.be/naePD8o9_Gk?t=1440)), turns on plate thickness, and no paper
+  reports these plates' heat-up.
+
 ### What it means for the repeatability runs
 
-- **Fix the amplitude before varying anything else.** The low-amplitude recipe is the
-  fragile one, and it has not yet worked for this team on any plate. For the
-  fixed-settings runs in #261, 1:1 (any plate) or 1:1.5 on CF, slider 80–90, is the
-  configuration the trainer ran reliably; go to 1.5:1 for fine powder once the pour is
-  repeatable, and on Mo.
-- **Treat the plate's first seconds as a heating step.** Pour high on the face, let the
-  first drops go, and use the turbo at the start; a drip-fed CF plate at low amplitude
-  never gets there.
+- **Fix the amplitude before varying anything else, and pick it by plate.** The
+  low-amplitude recipe is the fragile one, and it has not yet worked for this team on any
+  plate. Bartosz's rule is that CF works only with the amplifying 1:1.5 booster, and in
+  training he kept that booster off metal plates because "they crack"
+  ([T5 9:39](https://youtu.be/58wJ_Khwgyk?t=579)). So for the fixed-settings runs in #261,
+  run CF at 1:1.5 or Mo at 1:1, slider 80–90, the configurations the trainer ran reliably.
+  Go to 1.5:1 for fine powder only on Mo, and only once the pour is repeatable.
+- **Treat the plate's first seconds as a heating step.** Start with a strong flow high on
+  the face (CF plates "require high initial flow to heat up"), let the first drops go, and
+  use the turbo at the start. A drip-fed CF plate never gets there.
 - **Two measurements would turn this from argument into data:** the generator's power
   output during the pour (0 W or not), and a mass balance (lump, puddle, powder, crucible).
 - **The test that would settle "CF versus Mo"** is the one nobody has published (see the
-  Edison precedent search below): same charge, nozzle and pressure, CF and Mo at 1:1, then
-  Mo at 1.5:1.
+  Edison precedent search below): same charge, nozzle and pressure, CF at 1:1.5 against Mo
+  at 1:1 (each on the booster Bartosz runs it with), then Mo at 1.5:1.
 
 ### Literature search (Edison Scientific)
 
@@ -419,8 +514,8 @@ Four queries, submitted 2026-10-13 19:48 UTC; answers and full trajectories in
 | Has anyone reported aluminium pooling or dripping off a sonotrode, or compared carbon and Mo plates? | `PRECEDENT` | [q4](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md) |
 
 What came back before the Edison platform went down (every endpoint has answered 503 since
-about 20:15 UTC on 2026-10-13; q1 and q2 had reported `success` by then, q3 was still
-running) is the precedent search, kept as a [partial copy](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md):
+about 20:15 UTC on 2026-10-13, and still did at 23:36 UTC; q1 and q2 had reported `success`
+by then, q3 was still running) is the precedent search, kept as a [partial copy](edison/q4-precedent-carbon-vs-mo-sonotrode-aluminium-answer.md):
 
 - **Nobody has published a controlled carbon-versus-Mo (or Ti) plate comparison for
   aluminium**, on an ATO, a rePowder or a research rig.
