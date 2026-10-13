@@ -1,0 +1,212 @@
+{
+ "mg_to_si_in_mg2si": 1.731,
+ "spread": [
+  {
+   "powder_wt_pct": 0.0,
+   "Si_mid": 0.4,
+   "Mg_mid": 0.68,
+   "Mg_over_Si_mid": 1.69,
+   "excess_Si_mid": 0.01,
+   "excess_Si_range": [
+    -0.32,
+    0.34
+   ]
+  },
+  {
+   "powder_wt_pct": 7.5,
+   "Si_mid": 1.27,
+   "Mg_mid": 0.63,
+   "Mg_over_Si_mid": 0.49,
+   "excess_Si_mid": 0.91,
+   "excess_Si_range": [
+    0.52,
+    1.29
+   ]
+  },
+  {
+   "powder_wt_pct": 15.0,
+   "Si_mid": 2.14,
+   "Mg_mid": 0.58,
+   "Mg_over_Si_mid": 0.27,
+   "excess_Si_mid": 1.8,
+   "excess_Si_range": [
+    1.37,
+    2.24
+   ]
+  },
+  {
+   "powder_wt_pct": 22.5,
+   "Si_mid": 3.01,
+   "Mg_mid": 0.53,
+   "Mg_over_Si_mid": 0.18,
+   "excess_Si_mid": 2.7,
+   "excess_Si_range": [
+    2.21,
+    3.19
+   ]
+  },
+  {
+   "powder_wt_pct": 30.0,
+   "Si_mid": 3.88,
+   "Mg_mid": 0.49,
+   "Mg_over_Si_mid": 0.13,
+   "excess_Si_mid": 3.6,
+   "excess_Si_range": [
+    3.06,
+    4.14
+   ]
+  }
+ ],
+ "currents": {
+  "3 mm": {
+   "area_cm2": 0.0707,
+   "lpr_current_nA": {
+    "1e+04 ohm cm2": 70.7,
+    "1e+05 ohm cm2": 7.1,
+    "1e+06 ohm cm2": 0.7
+   },
+   "pit_threshold_uA": {
+    "10 uA/cm2": 0.71,
+    "100 uA/cm2": 7.07
+   },
+   "reversal_uA": 70.7
+  },
+  "4 mm": {
+   "area_cm2": 0.1257,
+   "lpr_current_nA": {
+    "1e+04 ohm cm2": 125.7,
+    "1e+05 ohm cm2": 12.6,
+    "1e+06 ohm cm2": 1.3
+   },
+   "pit_threshold_uA": {
+    "10 uA/cm2": 1.26,
+    "100 uA/cm2": 12.57
+   },
+   "reversal_uA": 125.7
+  },
+  "5 mm": {
+   "area_cm2": 0.1963,
+   "lpr_current_nA": {
+    "1e+04 ohm cm2": 196.3,
+    "1e+05 ohm cm2": 19.6,
+    "1e+06 ohm cm2": 2.0
+   },
+   "pit_threshold_uA": {
+    "10 uA/cm2": 1.96,
+    "100 uA/cm2": 19.63
+   },
+   "reversal_uA": 196.3
+  }
+ },
+ "dissolution": {
+  "min_dilution_for_0.6M_NaCl": 17.5,
+  "rows": [
+   {
+    "charge_mC": 1.0,
+    "Al_ug": 0.09,
+    "Al_mg_per_L_in_cell": 0.6,
+    "Al_ug_per_L_after_min_dilution": 35.0
+   },
+   {
+    "charge_mC": 10.0,
+    "Al_ug": 0.93,
+    "Al_mg_per_L_in_cell": 6.2,
+    "Al_ug_per_L_after_min_dilution": 354.0
+   },
+   {
+    "charge_mC": 100.0,
+    "Al_ug": 9.32,
+    "Al_mg_per_L_in_cell": 62.1,
+    "Al_ug_per_L_after_min_dilution": 3545.0
+   }
+  ]
+ },
+ "counter_OH_mM_if_unneutralised": {
+  "1 mC": 0.07,
+  "10 mC": 0.69,
+  "100 mC": 6.91
+ },
+ "kcl_leak": {
+  "added_chloride_mM": 19.9,
+  "vs_targets": {
+   "0.006 M": "+331 %",
+   "0.01 M": "+199 %",
+   "0.02 M": "+99 %",
+   "0.06 M": "+33 %",
+   "0.1 M": "+20 %",
+   "0.2 M": "+10 %",
+   "0.6 M": "+3 %"
+  }
+ },
+ "mixing": [
+  {
+   "target_M": 0.006,
+   "stocks_uL": {
+    "0.006 M": 150.0
+   },
+   "p20_transfers": 8
+  },
+  {
+   "target_M": 0.01,
+   "stocks_uL": {
+    "0.06 M": 11.1,
+    "0.006 M": 138.9
+   },
+   "p20_transfers": 8
+  },
+  {
+   "target_M": 0.02,
+   "stocks_uL": {
+    "0.06 M": 38.9,
+    "0.006 M": 111.1
+   },
+   "p20_transfers": 8
+  },
+  {
+   "target_M": 0.06,
+   "stocks_uL": {
+    "0.06 M": 150.0
+   },
+   "p20_transfers": 8
+  },
+  {
+   "target_M": 0.1,
+   "stocks_uL": {
+    "0.6 M": 23.7,
+    "0.006 M": 126.3
+   },
+   "p20_transfers": 9
+  },
+  {
+   "target_M": 0.2,
+   "stocks_uL": {
+    "0.6 M": 49.0,
+    "0.006 M": 101.0
+   },
+   "p20_transfers": 9
+  },
+  {
+   "target_M": 0.6,
+   "stocks_uL": {
+    "0.6 M": 150.0
+   },
+   "p20_transfers": 8
+  }
+ ],
+ "timing": {
+  "ASTM G61 (0.6 V/h)": {
+   "lpr_min": 2.0,
+   "cpp_min": 75.0,
+   "spot_min": 107.0,
+   "spots_per_night": 6
+  },
+  "screening (1 mV/s)": {
+   "lpr_min": 2.0,
+   "cpp_min": 12.5,
+   "spot_min": 44.0,
+   "spots_per_night": 16
+  }
+ },
+ "p20_transfers_to_fill_cell": 8,
+ "well_bore_uL_per_mm": 50.3
+}
