@@ -15,6 +15,7 @@ to its cap (y = 288), and the hinge is the x axis through (0, 45.4, 38.25).
 """
 from __future__ import annotations
 
+import functools
 import hashlib
 import os
 import pickle
@@ -340,6 +341,109 @@ def compact_meshes(nose: bool = False, mirror: bool = False) -> dict[tuple[str, 
     if mirror:
         out = {k: _mirror_x(m.triangulate()) for k, m in out.items()}
     return {k: m.compute_normals(split_vertices=True, feature_angle=35.0) for k, m in out.items()}
+
+
+# ---------------------------------------------------------------------------------------------------- one-servo tilt
+# Sterling (2026-10-13): one servo to tilt the module, so that while the gantry moves it can go back to level, or a little
+# outlet-up, instead of riding at its dispensing tilt with powder in the capillary. The module turns about PR 176's own
+# hinge (HINGE: the x axis 10 mm behind the outlet, at the auger's height), which it kept, so the outlet and the
+# capillary, where the loose powder sits, move least. One of PR 176's two MG996R-size servos drives it directly: its
+# spline is on the hinge axis on the +x side, and its metal horn is screwed to a cheek on the cradle's +x edge. A second
+# cheek on -x turns on an M5 hinge screw. The servo and the -x arm hang from a top plate, the mounting face, so on the
+# CubXL's head nothing fixed hangs below the module.
+TILT_PARK, TILT_LEVEL, TILT_DISPENSE, TILT_MAX = -10.0, 0.0, 35.0, 45.0   # deg; positive lifts the cap end, outlet down
+SERVO_SHIFT = np.array([-12.1, 0.0, HINGE[2] - SERVO_AXES["pos"][2]])   # PR 176's +x servo, spline onto the hinge axis
+CHEEK_X = ((-52.0, -48.0), (32.0, 36.0))                # the cradle's cheeks (tilt): beside the upright, outside the vibrator
+CHEEK_FOOT_Y, CHEEK_R = (37.0, 60.0), 10.0              # foot on the cradle (z = 3), and the knuckle round the hinge
+HORN = ((36.0, 38.6, 12.5), (38.6, 42.8, 4.5))          # the #1142's round metal horn: disc, then hub over the spline
+ARM_X, ARM_R = (-58.0, -53.0), 9.0                      # the -x arm (fixed), 1 mm outside the cheek, its knuckle round
+SERVO_FRAME_X = (55.0, 60.0)                            # the servo's ears bear on its inner face, as on PR 176's cradles
+TOP_PLATE = (-58.0, 60.0, 20.0, 42.0, 76.0, 82.0)       # x0, x1, y0, y1, z0, z1: in front of the stepper's sweep
+
+
+def _hull_prism_x(yz, x0: float, x1: float) -> pv.PolyData:
+    """Closed prism along x, from x0 to x1, on the convex hull of the (y, z) points."""
+    pts = sorted(set((round(float(y), 6), round(float(z), 6)) for y, z in yz))
+
+    def half(seq):
+        h = []
+        for p in seq:
+            while len(h) >= 2 and ((h[-1][0] - h[-2][0]) * (p[1] - h[-2][1])
+                                   - (h[-1][1] - h[-2][1]) * (p[0] - h[-2][0])) <= 0:
+                h.pop()
+            h.append(p)
+        return h[:-1]
+    ring = half(pts) + half(pts[::-1])                  # counter-clockwise in (y, z)
+    n = len(ring)
+    p = np.array([(x0, y, z) for y, z in ring] + [(x1, y, z) for y, z in ring])
+    faces = []
+    for i in range(n):
+        j = (i + 1) % n
+        faces += [4, i, j, n + j, n + i]
+    for i in range(1, n - 1):
+        faces += [3, n, n + i, n + i + 1, 3, 0, i + 1, i]
+    return pv.PolyData(p, faces).triangulate()
+
+
+def _round(c, r, n=48):
+    return [(c[0] + r * np.cos(a), c[1] + r * np.sin(a)) for a in np.linspace(0.0, 2 * np.pi, n, endpoint=False)]
+
+
+def tilt_meshes(angle: float = TILT_DISPENSE, nose: bool = True) -> dict[tuple[str, str], pv.PolyData]:
+    """{(group, material): mesh} of the one-servo variant, with the module turned `angle` deg about the hinge (positive
+    lifts the cap end; TILT_PARK to TILT_MAX). Groups: module (it tilts, with the servo's horn and spline) and bracket
+    (fixed: the top plate, the -x arm, the servo's frame, its case and their screws)."""
+    module, bracket = _tilt_parts(nose)
+    out = {k: m.rotate_x(angle, point=HINGE, inplace=False) for k, m in module.items()}   # turns the normals too
+    out.update({k: m.copy() for k, m in bracket.items()})
+    return out
+
+
+@functools.lru_cache(maxsize=2)
+def _tilt_parts(nose: bool):
+    """(module, bracket) of tilt_meshes, at level."""
+    leaves = _leaf_cache()
+    acc: dict[tuple[str, str], list[pv.PolyData]] = {}
+
+    def put(key, mesh, shift=(0.0, 0.0, 0.0)):
+        acc.setdefault(key, []).append(mesh.translate(shift, inplace=False))
+
+    def leaf(name):
+        return next(_poly(*m) for p, m in leaves.items() if p.split("/")[-1] == name)
+
+    hy, hz = HINGE[1], HINGE[2]
+    for (_, mat), m in compact_meshes(nose=nose).items():
+        put(("module", mat), m)
+    for x0, x1 in CHEEK_X:
+        put(("module", "ss"), _hull_prism_x([(CHEEK_FOOT_Y[0], 3.0), (CHEEK_FOOT_Y[1], 3.0)]
+                                            + _round((hy, hz), CHEEK_R), x0, x1))
+    for x0, x1, r in HORN:
+        put(("module", "alu"), pv.Cylinder(center=((x0 + x1) / 2, hy, hz), direction=(1, 0, 0), radius=r,
+                                           height=x1 - x0, resolution=48))
+    put(("module", "ss"), leaf("servo_pos_output_spline"), SERVO_SHIFT)
+    module = {k: pv.merge(v) for k, v in acc.items()}
+
+    acc = {}
+    put(("bracket", "vac_motor"), leaf("servo_pos_case"), SERVO_SHIFT)
+    for path, m in leaves.items():
+        if path.startswith(("baseplate_hw/servo_screw_pos", "baseplate_hw/servo_nut_pos")):
+            put(("bracket", "fastener"), _poly(*m), SERVO_SHIFT)
+    # the -x hinge: PR 176's M5 hinge screw cut to 16 mm and turned head-out, its locknut inside the cheek
+    screw = _mirror_x(leaf("hinge_screw_neg").clip_box((-32.2, -13.4, 0, 100, 0, 100), invert=False).triangulate())
+    put(("bracket", "fastener"), screw, (ARM_X[0] - 16.15, 0.0, 0.0))
+    put(("bracket", "fastener"), leaf("hinge_locknut_neg"), (CHEEK_X[0][1] + 59.1, 0.0, 0.0))
+    x0, x1, y0, y1, z0, z1 = TOP_PLATE
+    put(("bracket", "alu"), pv.Box((x0, x1, y0, y1, z0, z1)))
+    put(("bracket", "alu"), _hull_prism_x(_round((hy, hz), ARM_R) + [(y0, z0 + 1.0), (y1, z0 + 1.0)], *ARM_X))
+    # the servo's frame: a window for the case, the ears on its inner face, and a web up to the top plate
+    s0, s1 = SERVO_FRAME_X
+    cy0, cy1, cz0, cz1 = 34.75, 76.05, 27.9, 48.6       # the case (35.05 to 75.75, 28.4 to 48.1) and 0.3 mm round it
+    for box in ((26.0, 85.0, 23.0, cz0), (26.0, 85.0, cz1, 53.0), (26.0, cy0, cz0, cz1), (cy1, 85.0, cz0, cz1),
+                (y0, y1, 53.0, z0 + 1.0)):
+        put(("bracket", "alu"), pv.Box((s0, s1, *box)))
+    bracket = {k: pv.merge(v) for k, v in acc.items()}
+    return tuple({k: m.triangulate().compute_normals(split_vertices=True, feature_angle=35.0) for k, m in g.items()}
+                 for g in (module, bracket))
 
 
 def holder_to_doser() -> np.ndarray:

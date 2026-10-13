@@ -31,7 +31,8 @@ PR 176's own part, moved along the auger axis. The only new parts are a cradle, 
   turns, and the open store keeps 58 mm of the 21 mm bore, about 20 cm³ (about 12 g of 1.2 g/cm³ granules half
   full). A real build could run the flight further back into the store.
 - **Dropped:**
-  - the two MG996R tilt servos, the baseplate and the hinged mounting plate: the tilt is fixed;
+  - the two MG996R tilt servos, the baseplate and the hinged mounting plate: the tilt is fixed ([one servo can come
+    back](#one-servo-tilting-back-for-moves));
   - the tap collar and its solenoid: the vibration motor takes over. The solenoid can come back on the side if the
     bench shows the tap is still needed.
 - **Added:**
@@ -40,7 +41,8 @@ PR 176's own part, moved along the auger axis. The only new parts are a cradle, 
   - a vibration motor on the front bracket's foot.
 - **Size:** 80 × 85 × 61 mm for the body in its own frame, 123 mm long with the collar and capillary (as built, with
   its PCB holder: 215 × 273 × 129 mm).
-- **Tilt:** fixed at 35°. PR 176's DEM gives the full dose per turn anywhere from 22.5° to 45° of tilt.
+- **Tilt:** fixed at 35°. PR 176's DEM gives the full dose per turn anywhere from 22.5° to 45° of tilt. The
+  [one-servo version](#one-servo-tilting-back-for-moves) tilts from −10° to 45°.
 - `compact_meshes(mirror=True)` builds the mirror image, with the stepper on the other side of the tube.
 
 ## The outlet: no funnel, no spout, no taper
@@ -121,6 +123,78 @@ the bench tests try 2 and 4 mm bores too.
   ([Breese 2021](https://doi.org/10.1007/s00170-021-07438-z)), and a 2025 review counts 34 camera-based methods
   against 4 weight-based ones ([Madeira Araujo 2025](https://doi.org/10.3390/pr13092995)).
 
+## One servo: tilting back for moves
+
+Fixed at 35°, the module rides outlet down with powder in its capillary whenever the gantry moves (Sterling,
+2026-10-13). This version puts one servo back, so the module can go level, or a little outlet up, between doses.
+[`doser_cad.py`](../ods-lpbf-gifs/doser_cad.py)'s `tilt_meshes(angle)` builds it and [`tilt_views.py`](tilt_views.py) draws it.
+
+![](tilt_views.png)
+
+![](tilt_motion.gif)
+
+- **Hinge:** PR 176's own, the x axis 10 mm behind the outlet at the auger's height. The module kept it when it was
+  folded. The outlet and the capillary, where the loose powder is, move least: between level and 35° the tip drops
+  28 mm and comes 9 mm nearer the hinge, and at park it rises 8 mm.
+- **Travel:** −10° (park, outlet up) through 0° (level, PR 176's rest pose) to 45°, with 35° to dispense.
+- **Drive:** one servo, direct, with no gears. It is the servo PR 176's parts list has for the tilt, Adafruit #1142, an
+  MG996R-size metal-gear servo. Its spline is on the hinge axis on the +x side, and its round metal horn is screwed to
+  a cheek on the cradle. Its case sits in a frame with its ears on the frame's inner face, as in PR 176's cradles. It
+  needs one of the two servo headers on PR 176's POWDER_DOSER_V2 board.
+- **Other side:** a second cheek on −x turns on PR 176's M5 hinge screw, cut to 16 mm, in a fixed arm.
+- **Bracket:** the arm and the servo's frame hang from a top plate, which is the mounting face. Nothing fixed is below
+  the module, so on the CubXL's head the module still reaches the target first. Like the cradle, the plate and arm are
+  placeholders.
+- **Added parts:** the two cheeks, the horn, the servo and its frame, the arm and the top plate. The rest is the
+  fixed module, unchanged.
+- **Size:** 142 × 123 × 81 mm at level, with the bracket. The servo's case sticks out 22 mm past its frame.
+- **Checked:** the sweep from −10° to 45° in 0.5° steps. The module clears the top plate by at least 8 mm (at 45°).
+  The other fixed parts are outside the module's width, apart from the hinge itself.
+
+**Why tilting back should stop the leaks:**
+
+- **What can come out.** In PR 176's DEM, the flight's pockets held their powder with the tube stopped at 45°, and taps
+  alone released nothing. What's loose is what sits below the flight, in the v4 funnel and the capillary. The
+  capillary alone holds about 300 mg, close to one pulse.
+- **The gantry's own acceleration is small.** The CubXL's controller limits it to 300 mm/s²
+  ([`$120` to `$122`](../../../cubos/configs/gantry/cub_xl_ben_pipette_capper.yaml#L40)), which tilts the apparent
+  gravity by about 1.8°. The risk is vibration and jolts. A tilted capillary is a vibratory feeder, and in the
+  literature its flow starts at about 2.5 m/s² of tube acceleration (1.1 to 3.9; [Edison 02](../doser-atomizer/edison/results/02-steady-low-rate-auger-feeding.md)).
+  How hard the head shakes hasn't been measured. An accelerometer on it during a run would show how close that is.
+- **Outlet up, the slope runs back.** At −10° the capillary slopes back into the tube, so whatever shaking moves the
+  powder moves it towards the funnel, not out of the tip. Level gives no slope either way, and vibratory conveyors move
+  powder along level troughs, so a few degrees up is the margin.
+- **Its weight turns it outlet up.** The module's centre of mass is about 33 mm behind the hinge and 8 mm below it. If
+  the servo goes limp and its gears let the module turn, it falls towards park, not towards dispensing. A stop at the
+  park angle would catch it.
+- **The cost:** a capillary that drains back has to refill before powder reaches the target. That is about 300 mg, one
+  pulse, or about 38 s at 10 mg/s. Parking level might keep it full, so the park angle is a bench question: run the
+  same moves parked at −10°, −5° and 0°, and weigh what falls out and how long the first dose takes to start.
+- **A possible bonus:** tilting up at the end of a dose may cut the tail after a stop, since the capillary stops
+  feeding once its slope reverses.
+
+**Servo sizing, estimated:**
+
+- **Mass:** about 0.41 kg in air. That counts the NEMA 11's 180 g, PR 176's printed parts, an aluminium cradle and
+  cheeks, the vibration motor, the 316L collar and capillary, and 12 g of powder.
+- **Torque:** at most about 0.14 N·m (1.4 kg·cm), near 13°. The #1142 gives 8.5 kg·cm at 4.8 V, about 6 times that.
+- **Speed:** the #1142 turns 60° in 0.20 s at 4.8 V, so park to dispense takes 0.15 s at full speed. Slew it in small
+  steps over a second or so, so that the tilt itself doesn't jolt powder out.
+- **A smaller servo:** a micro metal-gear servo, about 23 mm along its spline instead of 37 mm, would make the tool
+  about 15 mm narrower. At 2 to 3 kg·cm it would leave a margin of only 1.5 to 2.
+
+**Not checked, for this version:**
+
+- Whether parking outlet up holds the powder on the head, which park angle to use, and how long the capillary takes
+  to refill. The DEM was not re-run.
+- Whether the servo hunts, or wears, while the vibration motor shakes the module it holds.
+- The mass and centre of mass are estimates from assumed part masses. Nothing has been weighed.
+- At 35° the cradle's front edge is 6 mm lower than the capillary's tip, though 53 mm behind it, so a target near the
+  tip has to clear it. The fixed module has the same geometry. At 45° the tip is the lowest point.
+- The head's tool interface isn't defined. At 35° the stepper's end rises 11 mm above the top plate, behind it (19 mm
+  at 45°), so the head needs room there.
+- The horn's screws, how the cheeks fix to the cradle, and any end stops aren't drawn.
+
 ## Where it was first drawn: inside the atomizer chamber
 
 [`ods_c_gravity.gif`](../ods-lpbf-gifs/out/ods_c_gravity.gif) (5 fps; [`ods_c_gravity.mp4`](../ods-lpbf-gifs/out/mp4/ods_c_gravity.mp4) has every frame, and
@@ -154,7 +228,8 @@ none of that is needed:** PR 176's printed parts, its normal NEMA 11 and its boa
 ## Rendering
 
 [`module_views.py`](module_views.py) draws `module_views.png` and `module_turntable.gif`. Its docstring has the
-checkout and install commands. It needs the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
+checkout and install commands. [`tilt_views.py`](tilt_views.py) draws `tilt_views.png` and `tilt_motion.gif` the same
+way, from `doser_cad.tilt_meshes`. It needs the doser's STEP from the powder-doser repo, cadquery-ocp 7.9 (8.0 moved
 `TDF_LabelSequence`) and pyvista 0.49. [`doser_cad.py`](../ods-lpbf-gifs/doser_cad.py) reads the STEP once (about 10 s) and caches the
 meshes in `.cache/`. [`nose_insets.py`](../ods-lpbf-gifs/nose_insets.py) draws the cutaway; it takes its fonts from the atomizer GIFs' helper module, so to
 run it on its own, swap `gifkit.font` for PIL's `ImageFont.truetype`. The chamber GIF's scene code (`ods_gifs.py`) is
