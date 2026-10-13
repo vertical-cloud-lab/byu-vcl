@@ -3,12 +3,14 @@
 Our own documentation of the AMAZEMET rePowder ultrasonic atomizer, synthesized from the 26 atomizer-related videos on
 the BYU VCL YouTube channel: the installation clips (Sep 2026), the two training days with Bartosz Kalicki of AMAZEMET
 (Sep 29–30 2026), the custom-charge and dosing sessions, and the team's first unsupervised run (Oct 2 2026). Issue #124,
-with the training detail from #222 and the powder bags from #249.
+with the training detail from #222, the powder bags from #249, and the manual, equipment and PPE material from #126.
 
 | What | Where |
 | --- | --- |
 | **The procedure**: before / during / after a run, safety, utilities, cleaning, troubleshooting, known runs, open questions, with every step linked to the moment of video it comes from | [`sop.md`](sop.md) |
 | **Daily run SOP** (Gage Erickson, Oct 6): who does what on a run day, Gage, Ronnie and Paul, copied from #126 | [`daily-sop.md`](daily-sop.md) |
+| **What the manufacturer's manual requires**: PPE (the standard and advanced sets, what shipped), the 8.1 safety regulations, the pre-start checks, the maintenance schedule, filter handling and the index of the manual's 17 procedures, as Gage extracted them in #126 | [`manual.md`](manual.md) |
+| **Tools, consumables, PPE and waste**: Bartosz's list for our module, the manual's workshop list against the lab, what shipped and what was bought, the Risk Management waste route, with photos | [`equipment.md`](equipment.md), [`photos/`](photos/) |
 | **Runs, checked against the footage**: Oct 6, Gage's three videos placed on the clock of the pixelated room stream, then the daily SOP and the #261 parameters checked step by step; what to check or replace after it, and what to expect in its powder (`4yghtr`) | [`runs/2026-10-06.md`](runs/2026-10-06.md) |
 | **Timestamp log**: every substantive moment in every video, one row each, links open the player **paused** at that second (no autoplay) | [`timestamps.md`](timestamps.md) |
 | Per-video indexes: summary, timestamp table, procedural steps, parameters, quotes, open questions (what the SOP was built from) | [`notes/`](notes/) |

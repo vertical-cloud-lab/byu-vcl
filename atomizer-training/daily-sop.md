@@ -7,7 +7,12 @@ Gage's division of a run day between Gage, Ronnie and Paul, copied from
 unchanged; only the headings are one level down, and runs of blank lines are collapsed. Suggested corrections (units,
 spelling, a missing step) are listed there, not made here.
 
-The trainer-derived procedure, with every step linked to video, is [`sop.md`](sop.md).
+The trainer-derived procedure, with every step linked to video, is [`sop.md`](sop.md). The videos this SOP asks for go
+to the [Atomizer Runs playlist](https://www.youtube.com/playlist?list=PLZQwIo89me4c), titled *M/D/YYYY Atomizer Run
+Video N*; the Oct 6 and Oct 8 videos are listed under [Videos](sop.md#videos) in the SOP. The "6 digit code" is the
+powder ID of [#249](https://github.com/vertical-cloud-lab/byu-vcl/issues/249). The PPE it names and the buckets the
+waste goes into are in [`equipment.md`](equipment.md); the manufacturer's rules behind the setup steps are in
+[`manual.md`](manual.md).
 
 ---
 
