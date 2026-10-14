@@ -21,7 +21,7 @@ seated baseline read
 Every reading goes to `digital-wetlab.sensor-data` in MongoDB and to a local
 JSON file.
 
-## Standing settings for the colour read (as of 2026-10-10)
+## Standing settings for the colour read (as of 2026-10-14)
 
 Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) to remember
 the read height. Use these unless a later entry below changes them:
@@ -31,11 +31,11 @@ the read height. Use these unless a later entry below changes them:
 | **read height** | **nozzle z 86.5**: the enclosure's foot pressed ~1 mm onto the plate | picked by @timothy-commins on 2026-09-30 over A1 |
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
 | candidate | **z 92** (foot ~4 mm up) **over black paper**; z 100 without it. Over black paper z 92 scored 12.2 points off, z 95 12.9, z 100 14.3, resting 49.9; on white paper and bare deck z 100 was best (16.0, 12.8). Resting scored worst in all 3 runs. Recommended; not switched until @timothy-commins says so | [`results-read-height-2026-10-09.md`](results-read-height-2026-10-09.md), [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
-| pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)) | [`landing_shift.py`](landing_shift.py), 10-02, 10-06 |
-| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper | 10-06 |
+| pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)). **On 10-14 a landing lifted the plate:** rested on H7 at z 87, the enclosure brought the plate up with it on the way back to z 92, and it fell ~12 mm towards the front. Don't rest on an untaped plate | [`landing_shift.py`](landing_shift.py), 10-02, 10-06, [`results-led-background-2026-10-14.md`](results-led-background-2026-10-14.md) |
+| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper. **Since 10-14 ~12 mm towards the front of slot 7 and ~1 mm left**, after a landing lifted it: put it back and tape it down before the next run; every well position above is for the plate as it was | 10-06, 10-14 |
 | paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
-| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), LED off, read off the chip itself; the same for every reading on record. **Since 10-10 a reading can ask for its own gain, integration time and LED current:** `link.read(settings={"gain": 4, "atime": 50, "led_ma": 10})`, or `read 8 tag gain=4 led_ma=10` in `enclosure_height_cal.py`; anything left out reads as before. Bracket with integration time at a fixed gain, not with gain. LED: 0 (off) or 4–20 mA. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/).) Firmware changes go in over USB only, no OTA (@sgbaird, 10-10) | 10-09, 10-10 |
+| sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), LED off, read off the chip itself; the same for every reading on record. **Since 10-10 a reading can ask for its own gain, integration time and LED current:** `link.read(settings={"gain": 4, "atime": 50, "led_ma": 10})`, or `read 8 tag gain=4 led_ma=10` in `enclosure_height_cal.py`; anything left out reads as before. Bracket with integration time at a fixed gain, not with gain. LED: 0 (off) or 4–20 mA. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/).) Firmware changes go in over USB only, no OTA (@sgbaird, 10-10). **Keep the LED off:** on the plate (10-14, rail lights off) black ÷ white was 0.99 at z 92 and 0.97 resting, against 0.59 and 0.69 with the rail lights | 10-09, 10-10, 10-14 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
 
 ```
@@ -1574,6 +1574,39 @@ move:
 3. Trip 2: the same reads over F3, F6, F9, H7 and H12. Background-corrected =
    painted − empty, same well, same height; compare with the black-well correction.
 4. Robot-camera photo at every step; the GIF of them is the record.
+
+## 2026-10-14 — the board LED can't tell black from white; empty wells read; a landing lifted the plate, so no paint
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @timothy-commins:
+finish @sgbaird's 10-10 requests that waited for the board (the empty-well background test, and the
+LED on the black and white wells with the rail lights off), "as long as the rig looks normal". One
+enclosure trip, 14:29–14:54 MDT. Write-up: [`results-led-background-2026-10-14.md`](results-led-background-2026-10-14.md).
+
+- **LED: black ÷ white 0.99 at z 92, 0.97 resting**, at 4, 10 and 20 mA, every channel; rail lights
+  0.59 and 0.69. Near 1, so upstream's result stands and the LED stays off. Its light follows the
+  current (20 ÷ 4 mA = 4.89) and didn't saturate at 4x gain. In 128x units it puts 1.4× (z 92) to 15×
+  (resting) the rail lights' white-minus-black on the sensor, but under a shared glare 155× and 27×
+  that difference.
+- **Empty F3, F6, F9 at z 92:** 3,559, 3,711 and 4,052 counts (black H7 3,572, white H12 5,774);
+  0.89–1.45× the black well channel by channel, −0.24 to +0.46 on the white/black scale. The
+  background moves from well to well about as much as a paint does.
+- **No paint, because the plate moved.** Rested on H7 at z 87, the enclosure brought the plate up with
+  it on the way back to z 92 (the paint wells rose and tilted in that photo, and the light stayed at
+  its resting level), and the plate fell off before z 125, landing ~12.1 mm towards the front and
+  ~0.9 mm left. The cone at the foot (Ø5.2 mm tip, ~Ø6.8 mm 1.4 mm up) is the size of a well
+  (Ø6.86 mm), and the plate isn't held. The enclosure itself didn't move on the nozzle and went back
+  into A2 normally. Robot homed, lights off, run closed.
+- **Snapshots:** all 57 robot-camera step photos are in
+  [`led-background-2026-10-14.gif`](led-background-2026-10-14.gif), with eight key ones in
+  [`led-background-2026-10-14.jpg`](led-background-2026-10-14.jpg).
+- **The device at the front of the deck** (black frame, white face, cable; slot 1 into slot 2) was
+  left alone. The next paint transfer goes round it: vial → y 88 → x 262 → y 178 → the well, not
+  along the front edge.
+
+**Next:** put the plate back in slot 7 and tape it down, then the background test in one session at
+z 92 with no landings: empty trip, paint into F3/F6/F9, painted trip.
+
+![the LED against the rail lights, and the empty wells](led-background-2026-10-14.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

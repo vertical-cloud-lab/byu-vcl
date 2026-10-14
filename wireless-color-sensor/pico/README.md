@@ -234,6 +234,12 @@ off, and a read command can't turn it on.** Upstream dropped it deliberately
 [#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2643136155)):
 with it on, the colours stopped being distinguishable.
 
+**On the plate, 2026-10-14: the same result here, so it stays off.** With the board back in the
+enclosure and the rail lights off, the LED read black ÷ white = 0.99 at z 92 and 0.97 resting on
+the plate, at 4, 10 and 20 mA (gain 4, LED-off reading subtracted), against 0.59 and 0.69 with the
+rail lights. Almost all of its light reaches the sensor without touching the paint
+([`../ot2/results-led-background-2026-10-14.md`](../ot2/results-led-background-2026-10-14.md)).
+
 **Tested 2026-10-09, 23:16–23:20 MDT (05:16 UTC on 10-10), with the board on the robot Pi's
 USB. Run from RAM; nothing written to flash.** [`led_check.py`](led_check.py) builds `Sensor()` exactly as `main.py`
 does (128x, ATIME 100, ASTEP 999), reads with the LED off, at 4, 10 and 20 mA, and off again,
