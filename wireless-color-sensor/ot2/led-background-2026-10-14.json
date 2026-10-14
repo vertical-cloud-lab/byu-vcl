@@ -1,0 +1,4838 @@
+{
+ "date": "2026-10-14",
+ "asked": "PR #202, @sgbaird 2026-10-10 16:24 UTC; @timothy-commins 2026-10-14 ~20:18 UTC: 'please complete sterlings request above. The ones that your previously could not complete. The enclosure is back in its place'",
+ "request": [
+  "read wells empty, dispense, read again, subtract the empty reading (background); snapshots",
+  "board LED on, rail lights off, over the black and white wells; snapshots"
+ ],
+ "deck": {
+  "plate": "slot 7, same plate as 10-06 (dried paint: yellow H2, red H4, black H7, blue H10, white H12), on black paper; F3, F6, F9 empty",
+  "enclosure": "seated in A2 of the base in slot 10; z 102 hover photo matches 10-06 evening to 0.05 px",
+  "front_of_deck": "a device in a black frame with a white face and a cable, in slot 1 and into slot 2 (also there on 10-10); not touched",
+  "vials": "slot 3, blue / yellow / red, as on 10-06; not used",
+  "rail_lights_before": "off",
+  "maintenance_run": "b78281e6"
+ },
+ "driver": "enclosure_height_cal.py @ 914bd06 --socket-x 92.8 --socket-y 316.5 --press-z 89.0 --carry-z 125 --carry-segment 400 --drop-dx 0 --max-speed 3 --no-live --floor 86 --clear-z 90 --plate-slot 7 --target-x 86.38 --target-y 210.24",
+ "wells_xy": {
+  "F3": [
+   32.38,
+   210.24
+  ],
+  "F6": [
+   59.38,
+   210.24
+  ],
+  "F9": [
+   86.38,
+   210.24
+  ],
+  "H7": [
+   68.38,
+   192.24
+  ],
+  "H12": [
+   113.38,
+   192.24
+  ]
+ },
+ "commands_local_mdt": [
+  "[14:30:16] CMD: align 92.8 316.5 120",
+  "[14:30:23] CMD: align 92.8 316.5 110",
+  "[14:30:28] CMD: align 92.8 316.5 102",
+  "[14:30:47] CMD: pickup",
+  "[14:30:51] CMD: down 97",
+  "[14:30:56] CMD: down 95",
+  "[14:31:01] CMD: down 93",
+  "[14:31:06] CMD: down 91",
+  "[14:31:11] CMD: down 89",
+  "[14:31:23] CMD: lift 93",
+  "[14:31:40] CMD: jiggle y 0.3 40 3",
+  "[14:32:12] CMD: jiggle x 0.3 40 3",
+  "[14:32:47] CMD: up 110",
+  "[14:33:07] CMD: carry",
+  "[14:34:59] CMD: z 92",
+  "[14:35:19] CMD: read 4 empty-F9",
+  "[14:35:26] CMD: z 125",
+  "[14:35:46] CMD: xy 59.38 210.24",
+  "[14:36:02] CMD: z 92",
+  "[14:36:22] CMD: read 4 empty-F6",
+  "[14:36:33] CMD: z 125",
+  "[14:36:53] CMD: xy 32.38 210.24",
+  "[14:37:08] CMD: z 92",
+  "[14:37:28] CMD: read 4 empty-F3",
+  "[14:37:35] CMD: z 125",
+  "[14:37:54] CMD: xy 68.38 192.24",
+  "[14:38:14] CMD: z 92",
+  "[14:38:34] CMD: read 4 black-H7-z92",
+  "[14:38:46] CMD: lights off",
+  "[14:38:46] CMD: read 2 dark-H7-z92 gain=4",
+  "[14:38:49] CMD: read 2 led4-H7-z92 gain=4 led_ma=4",
+  "[14:39:02] CMD: read 2 led10-H7-z92 gain=4 led_ma=10",
+  "[14:39:06] CMD: read 2 led20-H7-z92 gain=4 led_ma=20",
+  "[14:39:10] CMD: read 2 dark2-H7-z92 gain=4",
+  "[14:39:22] CMD: z 125",
+  "[14:39:42] CMD: xy 113.38 192.24",
+  "[14:40:04] CMD: z 92",
+  "[14:40:23] CMD: read 4 white-H12-z92",
+  "[14:40:29] CMD: lights off",
+  "[14:40:30] CMD: read 2 dark-H12-z92 gain=4",
+  "[14:40:34] CMD: read 2 led4-H12-z92 gain=4 led_ma=4",
+  "[14:40:38] CMD: read 2 led10-H12-z92 gain=4 led_ma=10",
+  "[14:40:42] CMD: read 2 led20-H12-z92 gain=4 led_ma=20",
+  "[14:41:00] CMD: z 90",
+  "[14:41:09] CMD: z 89",
+  "[14:41:18] CMD: z 88.5",
+  "[14:41:27] CMD: z 88",
+  "[14:42:08] CMD: z 87.5",
+  "[14:42:25] CMD: read 4 white-H12-rest",
+  "[14:42:31] CMD: lights off",
+  "[14:42:32] CMD: read 2 dark-H12-rest gain=4",
+  "[14:42:36] CMD: read 2 led4-H12-rest gain=4 led_ma=4",
+  "[14:42:41] CMD: read 2 led10-H12-rest gain=4 led_ma=10",
+  "[14:42:45] CMD: read 2 led20-H12-rest gain=4 led_ma=20",
+  "[14:42:56] CMD: z 125",
+  "[14:43:17] CMD: xy 68.38 192.24",
+  "[14:43:39] CMD: z 92",
+  "[14:43:59] CMD: z 90",
+  "[14:44:08] CMD: z 89",
+  "[14:44:17] CMD: z 88.5",
+  "[14:44:26] CMD: z 88",
+  "[14:44:41] CMD: z 87.5",
+  "[14:44:50] CMD: z 87",
+  "[14:45:06] CMD: read 4 black-H7-rest",
+  "[14:45:13] CMD: lights off",
+  "[14:45:13] CMD: read 2 dark-H7-rest gain=4",
+  "[14:45:17] CMD: read 2 led4-H7-rest gain=4 led_ma=4",
+  "[14:45:21] CMD: read 2 led10-H7-rest gain=4 led_ma=10",
+  "[14:45:25] CMD: read 2 led20-H7-rest gain=4 led_ma=20",
+  "[14:45:48] CMD: z 92",
+  "[14:45:59] CMD: z 125",
+  "[14:46:18] CMD: xy 113.38 192.24",
+  "[14:46:40] CMD: z 92",
+  "[14:47:00] CMD: read 4 white-H12-z92-again",
+  "[14:50:50] CMD: return"
+ ],
+ "readings": [
+  {
+   "label": "seated",
+   "seq": 0,
+   "nozzle": null,
+   "well": null,
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-seated-1-1792009764888",
+   "channels": {
+    "ch410": 5,
+    "ch440": 5,
+    "ch470": 12,
+    "ch510": 163,
+    "ch550": 173,
+    "ch583": 41,
+    "ch620": 24,
+    "ch670": 22
+   },
+   "total": 445,
+   "t_request_utc": "2026-10-14T20:29:24.888Z",
+   "t_response_utc": "2026-10-14T20:29:26.473Z"
+  },
+  {
+   "label": "seated",
+   "seq": 0,
+   "nozzle": null,
+   "well": null,
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-seated-2-1792009766473",
+   "channels": {
+    "ch410": 4,
+    "ch440": 4,
+    "ch470": 12,
+    "ch510": 163,
+    "ch550": 174,
+    "ch583": 42,
+    "ch620": 24,
+    "ch670": 21
+   },
+   "total": 444,
+   "t_request_utc": "2026-10-14T20:29:26.473Z",
+   "t_response_utc": "2026-10-14T20:29:27.897Z"
+  },
+  {
+   "label": "lifted_z93",
+   "seq": 12,
+   "nozzle": [
+    92.8,
+    316.5,
+    93.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-lifted_z93-1-1792009891909",
+   "channels": {
+    "ch410": 10,
+    "ch440": 32,
+    "ch470": 39,
+    "ch510": 204,
+    "ch550": 232,
+    "ch583": 109,
+    "ch620": 101,
+    "ch670": 88
+   },
+   "total": 815,
+   "t_request_utc": "2026-10-14T20:31:31.909Z",
+   "t_response_utc": "2026-10-14T20:31:33.394Z"
+  },
+  {
+   "label": "lifted_z93",
+   "seq": 12,
+   "nozzle": [
+    92.8,
+    316.5,
+    93.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-lifted_z93-2-1792009893394",
+   "channels": {
+    "ch410": 10,
+    "ch440": 32,
+    "ch470": 40,
+    "ch510": 204,
+    "ch550": 232,
+    "ch583": 109,
+    "ch620": 101,
+    "ch670": 88
+   },
+   "total": 816,
+   "t_request_utc": "2026-10-14T20:31:33.394Z",
+   "t_response_utc": "2026-10-14T20:31:34.819Z"
+  },
+  {
+   "label": "up_z110",
+   "seq": 15,
+   "nozzle": [
+    92.8,
+    316.5,
+    110.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-up_z110-1-1792009980582",
+   "channels": {
+    "ch410": 63,
+    "ch440": 325,
+    "ch470": 300,
+    "ch510": 604,
+    "ch550": 778,
+    "ch583": 729,
+    "ch620": 732,
+    "ch670": 499
+   },
+   "total": 4030,
+   "t_request_utc": "2026-10-14T20:33:00.582Z",
+   "t_response_utc": "2026-10-14T20:33:02.027Z"
+  },
+  {
+   "label": "up_z110",
+   "seq": 15,
+   "nozzle": [
+    92.8,
+    316.5,
+    110.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-up_z110-2-1792009982027",
+   "channels": {
+    "ch410": 64,
+    "ch440": 325,
+    "ch470": 299,
+    "ch510": 604,
+    "ch550": 777,
+    "ch583": 728,
+    "ch620": 732,
+    "ch670": 499
+   },
+   "total": 4028,
+   "t_request_utc": "2026-10-14T20:33:02.027Z",
+   "t_response_utc": "2026-10-14T20:33:03.531Z"
+  },
+  {
+   "label": "carry_start_z190",
+   "seq": 16,
+   "nozzle": [
+    92.8,
+    316.5,
+    190.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-carry_start_z190-1-1792010017320",
+   "channels": {
+    "ch410": 145,
+    "ch440": 744,
+    "ch470": 687,
+    "ch510": 1231,
+    "ch550": 1665,
+    "ch583": 1778,
+    "ch620": 1765,
+    "ch670": 1100
+   },
+   "total": 9115,
+   "t_request_utc": "2026-10-14T20:33:37.320Z",
+   "t_response_utc": "2026-10-14T20:33:38.744Z"
+  },
+  {
+   "label": "carry_start_z190",
+   "seq": 16,
+   "nozzle": [
+    92.8,
+    316.5,
+    190.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-carry_start_z190-2-1792010018744",
+   "channels": {
+    "ch410": 146,
+    "ch440": 743,
+    "ch470": 688,
+    "ch510": 1230,
+    "ch550": 1664,
+    "ch583": 1778,
+    "ch620": 1765,
+    "ch670": 1100
+   },
+   "total": 9114,
+   "t_request_utc": "2026-10-14T20:33:38.744Z",
+   "t_response_utc": "2026-10-14T20:33:40.189Z"
+  },
+  {
+   "label": "over_plate_z125",
+   "seq": 19,
+   "nozzle": [
+    86.38,
+    210.24,
+    125.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-over_plate_z125-1-1792010089542",
+   "channels": {
+    "ch410": 94,
+    "ch440": 413,
+    "ch470": 426,
+    "ch510": 828,
+    "ch550": 1131,
+    "ch583": 1194,
+    "ch620": 1232,
+    "ch670": 812
+   },
+   "total": 6130,
+   "t_request_utc": "2026-10-14T20:34:49.542Z",
+   "t_response_utc": "2026-10-14T20:34:50.987Z"
+  },
+  {
+   "label": "over_plate_z125",
+   "seq": 19,
+   "nozzle": [
+    86.38,
+    210.24,
+    125.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-over_plate_z125-2-1792010090987",
+   "channels": {
+    "ch410": 94,
+    "ch440": 413,
+    "ch470": 426,
+    "ch510": 828,
+    "ch550": 1130,
+    "ch583": 1195,
+    "ch620": 1231,
+    "ch670": 812
+   },
+   "total": 6129,
+   "t_request_utc": "2026-10-14T20:34:50.987Z",
+   "t_response_utc": "2026-10-14T20:34:52.411Z"
+  },
+  {
+   "label": "z92",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010115565",
+   "channels": {
+    "ch410": 61,
+    "ch440": 255,
+    "ch470": 273,
+    "ch510": 574,
+    "ch550": 763,
+    "ch583": 761,
+    "ch620": 807,
+    "ch670": 556
+   },
+   "total": 4050,
+   "t_request_utc": "2026-10-14T20:35:15.565Z",
+   "t_response_utc": "2026-10-14T20:35:16.989Z"
+  },
+  {
+   "label": "z92",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010116989",
+   "channels": {
+    "ch410": 61,
+    "ch440": 255,
+    "ch470": 273,
+    "ch510": 573,
+    "ch550": 763,
+    "ch583": 762,
+    "ch620": 808,
+    "ch670": 557
+   },
+   "total": 4052,
+   "t_request_utc": "2026-10-14T20:35:16.989Z",
+   "t_response_utc": "2026-10-14T20:35:18.414Z"
+  },
+  {
+   "label": "empty-F9",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F9-1-1792010119420",
+   "channels": {
+    "ch410": 61,
+    "ch440": 255,
+    "ch470": 273,
+    "ch510": 574,
+    "ch550": 764,
+    "ch583": 762,
+    "ch620": 807,
+    "ch670": 556
+   },
+   "total": 4052,
+   "t_request_utc": "2026-10-14T20:35:19.420Z",
+   "t_response_utc": "2026-10-14T20:35:20.885Z"
+  },
+  {
+   "label": "empty-F9",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F9-2-1792010120885",
+   "channels": {
+    "ch410": 61,
+    "ch440": 255,
+    "ch470": 273,
+    "ch510": 574,
+    "ch550": 763,
+    "ch583": 762,
+    "ch620": 808,
+    "ch670": 557
+   },
+   "total": 4053,
+   "t_request_utc": "2026-10-14T20:35:20.885Z",
+   "t_response_utc": "2026-10-14T20:35:22.289Z"
+  },
+  {
+   "label": "empty-F9",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F9-3-1792010122289",
+   "channels": {
+    "ch410": 61,
+    "ch440": 255,
+    "ch470": 273,
+    "ch510": 574,
+    "ch550": 763,
+    "ch583": 761,
+    "ch620": 807,
+    "ch670": 557
+   },
+   "total": 4051,
+   "t_request_utc": "2026-10-14T20:35:22.289Z",
+   "t_response_utc": "2026-10-14T20:35:23.733Z"
+  },
+  {
+   "label": "empty-F9",
+   "seq": 20,
+   "nozzle": [
+    86.38,
+    210.24,
+    92.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F9-4-1792010123734",
+   "channels": {
+    "ch410": 61,
+    "ch440": 254,
+    "ch470": 273,
+    "ch510": 574,
+    "ch550": 763,
+    "ch583": 761,
+    "ch620": 808,
+    "ch670": 557
+   },
+   "total": 4051,
+   "t_request_utc": "2026-10-14T20:35:23.734Z",
+   "t_response_utc": "2026-10-14T20:35:25.158Z"
+  },
+  {
+   "label": "z125",
+   "seq": 21,
+   "nozzle": [
+    86.38,
+    210.24,
+    125.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010142257",
+   "channels": {
+    "ch410": 94,
+    "ch440": 412,
+    "ch470": 425,
+    "ch510": 828,
+    "ch550": 1129,
+    "ch583": 1193,
+    "ch620": 1230,
+    "ch670": 812
+   },
+   "total": 6123,
+   "t_request_utc": "2026-10-14T20:35:42.257Z",
+   "t_response_utc": "2026-10-14T20:35:43.701Z"
+  },
+  {
+   "label": "z125",
+   "seq": 21,
+   "nozzle": [
+    86.38,
+    210.24,
+    125.0
+   ],
+   "well": "F9",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010143702",
+   "channels": {
+    "ch410": 94,
+    "ch440": 412,
+    "ch470": 426,
+    "ch510": 828,
+    "ch550": 1129,
+    "ch583": 1192,
+    "ch620": 1230,
+    "ch670": 812
+   },
+   "total": 6123,
+   "t_request_utc": "2026-10-14T20:35:43.702Z",
+   "t_response_utc": "2026-10-14T20:35:45.126Z"
+  },
+  {
+   "label": "xy59.38_210.24",
+   "seq": 22,
+   "nozzle": [
+    59.38,
+    210.24,
+    125.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy59.38_210.24-1-1792010158517",
+   "channels": {
+    "ch410": 85,
+    "ch440": 368,
+    "ch470": 381,
+    "ch510": 759,
+    "ch550": 1031,
+    "ch583": 1076,
+    "ch620": 1114,
+    "ch670": 736
+   },
+   "total": 5550,
+   "t_request_utc": "2026-10-14T20:35:58.517Z",
+   "t_response_utc": "2026-10-14T20:35:59.941Z"
+  },
+  {
+   "label": "xy59.38_210.24",
+   "seq": 22,
+   "nozzle": [
+    59.38,
+    210.24,
+    125.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy59.38_210.24-2-1792010159941",
+   "channels": {
+    "ch410": 85,
+    "ch440": 368,
+    "ch470": 381,
+    "ch510": 759,
+    "ch550": 1031,
+    "ch583": 1076,
+    "ch620": 1114,
+    "ch670": 736
+   },
+   "total": 5550,
+   "t_request_utc": "2026-10-14T20:35:59.941Z",
+   "t_response_utc": "2026-10-14T20:36:01.626Z"
+  },
+  {
+   "label": "z92",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010178193",
+   "channels": {
+    "ch410": 56,
+    "ch440": 230,
+    "ch470": 246,
+    "ch510": 533,
+    "ch550": 706,
+    "ch583": 694,
+    "ch620": 739,
+    "ch670": 509
+   },
+   "total": 3713,
+   "t_request_utc": "2026-10-14T20:36:18.193Z",
+   "t_response_utc": "2026-10-14T20:36:19.617Z"
+  },
+  {
+   "label": "z92",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010179617",
+   "channels": {
+    "ch410": 56,
+    "ch440": 229,
+    "ch470": 247,
+    "ch510": 533,
+    "ch550": 706,
+    "ch583": 694,
+    "ch620": 739,
+    "ch670": 510
+   },
+   "total": 3714,
+   "t_request_utc": "2026-10-14T20:36:19.617Z",
+   "t_response_utc": "2026-10-14T20:36:21.022Z"
+  },
+  {
+   "label": "empty-F6",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F6-1-1792010182027",
+   "channels": {
+    "ch410": 56,
+    "ch440": 229,
+    "ch470": 246,
+    "ch510": 534,
+    "ch550": 705,
+    "ch583": 693,
+    "ch620": 738,
+    "ch670": 509
+   },
+   "total": 3710,
+   "t_request_utc": "2026-10-14T20:36:22.027Z",
+   "t_response_utc": "2026-10-14T20:36:23.451Z"
+  },
+  {
+   "label": "empty-F6",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F6-2-1792010183451",
+   "channels": {
+    "ch410": 56,
+    "ch440": 229,
+    "ch470": 247,
+    "ch510": 533,
+    "ch550": 705,
+    "ch583": 693,
+    "ch620": 739,
+    "ch670": 508
+   },
+   "total": 3710,
+   "t_request_utc": "2026-10-14T20:36:23.451Z",
+   "t_response_utc": "2026-10-14T20:36:24.876Z"
+  },
+  {
+   "label": "empty-F6",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F6-3-1792010184876",
+   "channels": {
+    "ch410": 56,
+    "ch440": 229,
+    "ch470": 246,
+    "ch510": 534,
+    "ch550": 704,
+    "ch583": 693,
+    "ch620": 739,
+    "ch670": 509
+   },
+   "total": 3710,
+   "t_request_utc": "2026-10-14T20:36:24.876Z",
+   "t_response_utc": "2026-10-14T20:36:26.280Z"
+  },
+  {
+   "label": "empty-F6",
+   "seq": 23,
+   "nozzle": [
+    59.38,
+    210.24,
+    92.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F6-4-1792010186280",
+   "channels": {
+    "ch410": 56,
+    "ch440": 229,
+    "ch470": 247,
+    "ch510": 534,
+    "ch550": 705,
+    "ch583": 693,
+    "ch620": 739,
+    "ch670": 509
+   },
+   "total": 3712,
+   "t_request_utc": "2026-10-14T20:36:26.280Z",
+   "t_response_utc": "2026-10-14T20:36:27.725Z"
+  },
+  {
+   "label": "z125",
+   "seq": 24,
+   "nozzle": [
+    59.38,
+    210.24,
+    125.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010209225",
+   "channels": {
+    "ch410": 86,
+    "ch440": 368,
+    "ch470": 382,
+    "ch510": 760,
+    "ch550": 1032,
+    "ch583": 1076,
+    "ch620": 1113,
+    "ch670": 737
+   },
+   "total": 5554,
+   "t_request_utc": "2026-10-14T20:36:49.225Z",
+   "t_response_utc": "2026-10-14T20:36:50.649Z"
+  },
+  {
+   "label": "z125",
+   "seq": 24,
+   "nozzle": [
+    59.38,
+    210.24,
+    125.0
+   ],
+   "well": "F6",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010210649",
+   "channels": {
+    "ch410": 86,
+    "ch440": 368,
+    "ch470": 381,
+    "ch510": 760,
+    "ch550": 1031,
+    "ch583": 1076,
+    "ch620": 1113,
+    "ch670": 737
+   },
+   "total": 5552,
+   "t_request_utc": "2026-10-14T20:36:50.649Z",
+   "t_response_utc": "2026-10-14T20:36:52.073Z"
+  },
+  {
+   "label": "xy32.38_210.24",
+   "seq": 25,
+   "nozzle": [
+    32.38,
+    210.24,
+    125.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy32.38_210.24-1-1792010225092",
+   "channels": {
+    "ch410": 84,
+    "ch440": 365,
+    "ch470": 376,
+    "ch510": 754,
+    "ch550": 1021,
+    "ch583": 1064,
+    "ch620": 1094,
+    "ch670": 718
+   },
+   "total": 5476,
+   "t_request_utc": "2026-10-14T20:37:05.092Z",
+   "t_response_utc": "2026-10-14T20:37:06.536Z"
+  },
+  {
+   "label": "xy32.38_210.24",
+   "seq": 25,
+   "nozzle": [
+    32.38,
+    210.24,
+    125.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy32.38_210.24-2-1792010226536",
+   "channels": {
+    "ch410": 84,
+    "ch440": 365,
+    "ch470": 376,
+    "ch510": 754,
+    "ch550": 1021,
+    "ch583": 1065,
+    "ch620": 1094,
+    "ch670": 718
+   },
+   "total": 5477,
+   "t_request_utc": "2026-10-14T20:37:06.536Z",
+   "t_response_utc": "2026-10-14T20:37:07.981Z"
+  },
+  {
+   "label": "z92",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010245029",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 682,
+    "ch583": 665,
+    "ch620": 707,
+    "ch670": 484
+   },
+   "total": 3557,
+   "t_request_utc": "2026-10-14T20:37:25.029Z",
+   "t_response_utc": "2026-10-14T20:37:26.454Z"
+  },
+  {
+   "label": "z92",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010246454",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 682,
+    "ch583": 665,
+    "ch620": 707,
+    "ch670": 484
+   },
+   "total": 3557,
+   "t_request_utc": "2026-10-14T20:37:26.454Z",
+   "t_response_utc": "2026-10-14T20:37:27.898Z"
+  },
+  {
+   "label": "empty-F3",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F3-1-1792010248403",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 682,
+    "ch583": 666,
+    "ch620": 707,
+    "ch670": 484
+   },
+   "total": 3558,
+   "t_request_utc": "2026-10-14T20:37:28.403Z",
+   "t_response_utc": "2026-10-14T20:37:29.827Z"
+  },
+  {
+   "label": "empty-F3",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F3-2-1792010249828",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 683,
+    "ch583": 666,
+    "ch620": 708,
+    "ch670": 485
+   },
+   "total": 3561,
+   "t_request_utc": "2026-10-14T20:37:29.828Z",
+   "t_response_utc": "2026-10-14T20:37:31.252Z"
+  },
+  {
+   "label": "empty-F3",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F3-3-1792010251252",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 683,
+    "ch583": 666,
+    "ch620": 707,
+    "ch670": 485
+   },
+   "total": 3560,
+   "t_request_utc": "2026-10-14T20:37:31.252Z",
+   "t_response_utc": "2026-10-14T20:37:32.696Z"
+  },
+  {
+   "label": "empty-F3",
+   "seq": 26,
+   "nozzle": [
+    32.38,
+    210.24,
+    92.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-empty-F3-4-1792010252697",
+   "channels": {
+    "ch410": 54,
+    "ch440": 216,
+    "ch470": 233,
+    "ch510": 516,
+    "ch550": 682,
+    "ch583": 665,
+    "ch620": 707,
+    "ch670": 484
+   },
+   "total": 3557,
+   "t_request_utc": "2026-10-14T20:37:32.697Z",
+   "t_response_utc": "2026-10-14T20:37:34.121Z"
+  },
+  {
+   "label": "z125",
+   "seq": 27,
+   "nozzle": [
+    32.38,
+    210.24,
+    125.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010271143",
+   "channels": {
+    "ch410": 85,
+    "ch440": 365,
+    "ch470": 376,
+    "ch510": 755,
+    "ch550": 1022,
+    "ch583": 1065,
+    "ch620": 1094,
+    "ch670": 719
+   },
+   "total": 5481,
+   "t_request_utc": "2026-10-14T20:37:51.143Z",
+   "t_response_utc": "2026-10-14T20:37:52.567Z"
+  },
+  {
+   "label": "z125",
+   "seq": 27,
+   "nozzle": [
+    32.38,
+    210.24,
+    125.0
+   ],
+   "well": "F3",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010272567",
+   "channels": {
+    "ch410": 84,
+    "ch440": 364,
+    "ch470": 376,
+    "ch510": 754,
+    "ch550": 1022,
+    "ch583": 1065,
+    "ch620": 1094,
+    "ch670": 719
+   },
+   "total": 5478,
+   "t_request_utc": "2026-10-14T20:37:52.567Z",
+   "t_response_utc": "2026-10-14T20:37:53.991Z"
+  },
+  {
+   "label": "xy68.38_192.24",
+   "seq": 28,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy68.38_192.24-1-1792010290954",
+   "channels": {
+    "ch410": 101,
+    "ch440": 434,
+    "ch470": 456,
+    "ch510": 882,
+    "ch550": 1215,
+    "ch583": 1294,
+    "ch620": 1332,
+    "ch670": 882
+   },
+   "total": 6596,
+   "t_request_utc": "2026-10-14T20:38:10.954Z",
+   "t_response_utc": "2026-10-14T20:38:12.419Z"
+  },
+  {
+   "label": "xy68.38_192.24",
+   "seq": 28,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy68.38_192.24-2-1792010292419",
+   "channels": {
+    "ch410": 101,
+    "ch440": 434,
+    "ch470": 456,
+    "ch510": 882,
+    "ch550": 1216,
+    "ch583": 1294,
+    "ch620": 1332,
+    "ch670": 882
+   },
+   "total": 6597,
+   "t_request_utc": "2026-10-14T20:38:12.419Z",
+   "t_response_utc": "2026-10-14T20:38:13.863Z"
+  },
+  {
+   "label": "z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010310441",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 493,
+    "ch550": 672,
+    "ch583": 675,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3572,
+   "t_request_utc": "2026-10-14T20:38:30.441Z",
+   "t_response_utc": "2026-10-14T20:38:31.885Z"
+  },
+  {
+   "label": "z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010311886",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 493,
+    "ch550": 672,
+    "ch583": 675,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3572,
+   "t_request_utc": "2026-10-14T20:38:31.886Z",
+   "t_response_utc": "2026-10-14T20:38:33.290Z"
+  },
+  {
+   "label": "black-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-z92-1-1792010314297",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 494,
+    "ch550": 671,
+    "ch583": 674,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3571,
+   "t_request_utc": "2026-10-14T20:38:34.297Z",
+   "t_response_utc": "2026-10-14T20:38:35.741Z"
+  },
+  {
+   "label": "black-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-z92-2-1792010315741",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 494,
+    "ch550": 671,
+    "ch583": 675,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3572,
+   "t_request_utc": "2026-10-14T20:38:35.741Z",
+   "t_response_utc": "2026-10-14T20:38:37.186Z"
+  },
+  {
+   "label": "black-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-z92-3-1792010317186",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 494,
+    "ch550": 672,
+    "ch583": 675,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3573,
+   "t_request_utc": "2026-10-14T20:38:37.186Z",
+   "t_response_utc": "2026-10-14T20:38:38.610Z"
+  },
+  {
+   "label": "black-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-z92-4-1792010318610",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 218,
+    "ch510": 494,
+    "ch550": 672,
+    "ch583": 675,
+    "ch620": 740,
+    "ch670": 544
+   },
+   "total": 3573,
+   "t_request_utc": "2026-10-14T20:38:38.610Z",
+   "t_response_utc": "2026-10-14T20:38:40.035Z"
+  },
+  {
+   "label": "dark-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H7-z92-1-1792010326571",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:38:46.571Z",
+   "t_response_utc": "2026-10-14T20:38:47.995Z"
+  },
+  {
+   "label": "dark-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H7-z92-2-1792010327995",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:38:47.995Z",
+   "t_response_utc": "2026-10-14T20:38:49.439Z"
+  },
+  {
+   "label": "led4-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8072,
+     8060
+    ],
+    "nir": [
+     564,
+     564
+    ]
+   },
+   "experiment_id": "cal-led4-H7-z92-1-1792010329944",
+   "channels": {
+    "ch410": 241,
+    "ch440": 1579,
+    "ch470": 2026,
+    "ch510": 2017,
+    "ch550": 2378,
+    "ch583": 2319,
+    "ch620": 2551,
+    "ch670": 1909
+   },
+   "total": 15020,
+   "t_request_utc": "2026-10-14T20:38:49.944Z",
+   "t_response_utc": "2026-10-14T20:38:51.649Z"
+  },
+  {
+   "label": "led4-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8062,
+     8060
+    ],
+    "nir": [
+     563,
+     563
+    ]
+   },
+   "experiment_id": "cal-led4-H7-z92-2-1792010331649",
+   "channels": {
+    "ch410": 241,
+    "ch440": 1578,
+    "ch470": 2025,
+    "ch510": 2014,
+    "ch550": 2377,
+    "ch583": 2317,
+    "ch620": 2549,
+    "ch670": 1910
+   },
+   "total": 15011,
+   "t_request_utc": "2026-10-14T20:38:51.649Z",
+   "t_response_utc": "2026-10-14T20:38:53.374Z"
+  },
+  {
+   "label": "led10-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19835,
+     19827
+    ],
+    "nir": [
+     1386,
+     1385
+    ]
+   },
+   "experiment_id": "cal-led10-H7-z92-1-1792010342380",
+   "channels": {
+    "ch410": 600,
+    "ch440": 3973,
+    "ch470": 4824,
+    "ch510": 4976,
+    "ch550": 5882,
+    "ch583": 5726,
+    "ch620": 6275,
+    "ch670": 4688
+   },
+   "total": 36944,
+   "t_request_utc": "2026-10-14T20:39:02.380Z",
+   "t_response_utc": "2026-10-14T20:39:04.085Z"
+  },
+  {
+   "label": "led10-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19818,
+     19820
+    ],
+    "nir": [
+     1385,
+     1384
+    ]
+   },
+   "experiment_id": "cal-led10-H7-z92-2-1792010344085",
+   "channels": {
+    "ch410": 599,
+    "ch440": 3971,
+    "ch470": 4821,
+    "ch510": 4970,
+    "ch550": 5879,
+    "ch583": 5722,
+    "ch620": 6272,
+    "ch670": 4686
+   },
+   "total": 36920,
+   "t_request_utc": "2026-10-14T20:39:04.085Z",
+   "t_response_utc": "2026-10-14T20:39:05.790Z"
+  },
+  {
+   "label": "led20-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39378,
+     39338
+    ],
+    "nir": [
+     2747,
+     2745
+    ]
+   },
+   "experiment_id": "cal-led20-H7-z92-1-1792010346295",
+   "channels": {
+    "ch410": 1213,
+    "ch440": 8094,
+    "ch470": 9243,
+    "ch510": 9923,
+    "ch550": 11751,
+    "ch583": 11415,
+    "ch620": 12448,
+    "ch670": 9279
+   },
+   "total": 73366,
+   "t_request_utc": "2026-10-14T20:39:06.295Z",
+   "t_response_utc": "2026-10-14T20:39:08.020Z"
+  },
+  {
+   "label": "led20-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39340,
+     39310
+    ],
+    "nir": [
+     2744,
+     2742
+    ]
+   },
+   "experiment_id": "cal-led20-H7-z92-2-1792010348020",
+   "channels": {
+    "ch410": 1212,
+    "ch440": 8086,
+    "ch470": 9240,
+    "ch510": 9908,
+    "ch550": 11744,
+    "ch583": 11406,
+    "ch620": 12438,
+    "ch670": 9266
+   },
+   "total": 73300,
+   "t_request_utc": "2026-10-14T20:39:08.020Z",
+   "t_response_utc": "2026-10-14T20:39:09.745Z"
+  },
+  {
+   "label": "dark2-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark2-H7-z92-1-1792010350749",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:39:10.749Z",
+   "t_response_utc": "2026-10-14T20:39:12.194Z"
+  },
+  {
+   "label": "dark2-H7-z92",
+   "seq": 29,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark2-H7-z92-2-1792010352194",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:39:12.194Z",
+   "t_response_utc": "2026-10-14T20:39:13.618Z"
+  },
+  {
+   "label": "z125",
+   "seq": 30,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010378732",
+   "channels": {
+    "ch410": 101,
+    "ch440": 432,
+    "ch470": 454,
+    "ch510": 878,
+    "ch550": 1209,
+    "ch583": 1288,
+    "ch620": 1327,
+    "ch670": 879
+   },
+   "total": 6568,
+   "t_request_utc": "2026-10-14T20:39:38.732Z",
+   "t_response_utc": "2026-10-14T20:39:40.176Z"
+  },
+  {
+   "label": "z125",
+   "seq": 30,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010380176",
+   "channels": {
+    "ch410": 101,
+    "ch440": 432,
+    "ch470": 454,
+    "ch510": 878,
+    "ch550": 1211,
+    "ch583": 1290,
+    "ch620": 1327,
+    "ch670": 880
+   },
+   "total": 6573,
+   "t_request_utc": "2026-10-14T20:39:40.176Z",
+   "t_response_utc": "2026-10-14T20:39:41.601Z"
+  },
+  {
+   "label": "xy113.38_192.24",
+   "seq": 31,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy113.38_192.24-1-1792010400679",
+   "channels": {
+    "ch410": 144,
+    "ch440": 690,
+    "ch470": 665,
+    "ch510": 1229,
+    "ch550": 1678,
+    "ch583": 1813,
+    "ch620": 1796,
+    "ch670": 1109
+   },
+   "total": 9124,
+   "t_request_utc": "2026-10-14T20:40:00.679Z",
+   "t_response_utc": "2026-10-14T20:40:02.144Z"
+  },
+  {
+   "label": "xy113.38_192.24",
+   "seq": 31,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy113.38_192.24-2-1792010402144",
+   "channels": {
+    "ch410": 144,
+    "ch440": 690,
+    "ch470": 665,
+    "ch510": 1230,
+    "ch550": 1678,
+    "ch583": 1812,
+    "ch620": 1795,
+    "ch670": 1109
+   },
+   "total": 9123,
+   "t_request_utc": "2026-10-14T20:40:02.144Z",
+   "t_response_utc": "2026-10-14T20:40:03.568Z"
+  },
+  {
+   "label": "z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010420127",
+   "channels": {
+    "ch410": 88,
+    "ch440": 346,
+    "ch470": 382,
+    "ch510": 781,
+    "ch550": 1072,
+    "ch583": 1134,
+    "ch620": 1180,
+    "ch670": 791
+   },
+   "total": 5774,
+   "t_request_utc": "2026-10-14T20:40:20.127Z",
+   "t_response_utc": "2026-10-14T20:40:21.551Z"
+  },
+  {
+   "label": "z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010421552",
+   "channels": {
+    "ch410": 87,
+    "ch440": 346,
+    "ch470": 382,
+    "ch510": 782,
+    "ch550": 1072,
+    "ch583": 1134,
+    "ch620": 1181,
+    "ch670": 792
+   },
+   "total": 5776,
+   "t_request_utc": "2026-10-14T20:40:21.552Z",
+   "t_response_utc": "2026-10-14T20:40:22.956Z"
+  },
+  {
+   "label": "white-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-1-1792010423462",
+   "channels": {
+    "ch410": 88,
+    "ch440": 346,
+    "ch470": 382,
+    "ch510": 781,
+    "ch550": 1072,
+    "ch583": 1134,
+    "ch620": 1180,
+    "ch670": 792
+   },
+   "total": 5775,
+   "t_request_utc": "2026-10-14T20:40:23.462Z",
+   "t_response_utc": "2026-10-14T20:40:24.907Z"
+  },
+  {
+   "label": "white-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-2-1792010424907",
+   "channels": {
+    "ch410": 88,
+    "ch440": 346,
+    "ch470": 382,
+    "ch510": 781,
+    "ch550": 1071,
+    "ch583": 1134,
+    "ch620": 1180,
+    "ch670": 792
+   },
+   "total": 5774,
+   "t_request_utc": "2026-10-14T20:40:24.907Z",
+   "t_response_utc": "2026-10-14T20:40:26.332Z"
+  },
+  {
+   "label": "white-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-3-1792010426332",
+   "channels": {
+    "ch410": 88,
+    "ch440": 346,
+    "ch470": 382,
+    "ch510": 781,
+    "ch550": 1071,
+    "ch583": 1133,
+    "ch620": 1180,
+    "ch670": 792
+   },
+   "total": 5773,
+   "t_request_utc": "2026-10-14T20:40:26.332Z",
+   "t_response_utc": "2026-10-14T20:40:27.756Z"
+  },
+  {
+   "label": "white-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-4-1792010427756",
+   "channels": {
+    "ch410": 88,
+    "ch440": 347,
+    "ch470": 382,
+    "ch510": 781,
+    "ch550": 1071,
+    "ch583": 1133,
+    "ch620": 1180,
+    "ch670": 792
+   },
+   "total": 5774,
+   "t_request_utc": "2026-10-14T20:40:27.756Z",
+   "t_response_utc": "2026-10-14T20:40:29.201Z"
+  },
+  {
+   "label": "dark-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H12-z92-1-1792010430736",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:40:30.736Z",
+   "t_response_utc": "2026-10-14T20:40:32.160Z"
+  },
+  {
+   "label": "dark-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H12-z92-2-1792010432161",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:40:32.161Z",
+   "t_response_utc": "2026-10-14T20:40:33.605Z"
+  },
+  {
+   "label": "led4-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8115,
+     8118
+    ],
+    "nir": [
+     567,
+     568
+    ]
+   },
+   "experiment_id": "cal-led4-H12-z92-1-1792010434615",
+   "channels": {
+    "ch410": 242,
+    "ch440": 1588,
+    "ch470": 2029,
+    "ch510": 2030,
+    "ch550": 2397,
+    "ch583": 2335,
+    "ch620": 2569,
+    "ch670": 1922
+   },
+   "total": 15112,
+   "t_request_utc": "2026-10-14T20:40:34.615Z",
+   "t_response_utc": "2026-10-14T20:40:36.320Z"
+  },
+  {
+   "label": "led4-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8118,
+     8118
+    ],
+    "nir": [
+     567,
+     567
+    ]
+   },
+   "experiment_id": "cal-led4-H12-z92-2-1792010436321",
+   "channels": {
+    "ch410": 242,
+    "ch440": 1589,
+    "ch470": 2029,
+    "ch510": 2030,
+    "ch550": 2397,
+    "ch583": 2334,
+    "ch620": 2569,
+    "ch670": 1922
+   },
+   "total": 15112,
+   "t_request_utc": "2026-10-14T20:40:36.321Z",
+   "t_response_utc": "2026-10-14T20:40:38.046Z"
+  },
+  {
+   "label": "led10-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19983,
+     19971
+    ],
+    "nir": [
+     1396,
+     1395
+    ]
+   },
+   "experiment_id": "cal-led10-H12-z92-1-1792010438552",
+   "channels": {
+    "ch410": 603,
+    "ch440": 3999,
+    "ch470": 4837,
+    "ch510": 5017,
+    "ch550": 5933,
+    "ch583": 5769,
+    "ch620": 6325,
+    "ch670": 4721
+   },
+   "total": 37204,
+   "t_request_utc": "2026-10-14T20:40:38.552Z",
+   "t_response_utc": "2026-10-14T20:40:40.277Z"
+  },
+  {
+   "label": "led10-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19964,
+     19959
+    ],
+    "nir": [
+     1394,
+     1394
+    ]
+   },
+   "experiment_id": "cal-led10-H12-z92-2-1792010440277",
+   "channels": {
+    "ch410": 602,
+    "ch440": 3997,
+    "ch470": 4831,
+    "ch510": 5010,
+    "ch550": 5928,
+    "ch583": 5765,
+    "ch620": 6317,
+    "ch670": 4716
+   },
+   "total": 37166,
+   "t_request_utc": "2026-10-14T20:40:40.277Z",
+   "t_response_utc": "2026-10-14T20:40:41.983Z"
+  },
+  {
+   "label": "led20-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39666,
+     39640
+    ],
+    "nir": [
+     2767,
+     2764
+    ]
+   },
+   "experiment_id": "cal-led20-H12-z92-1-1792010442988",
+   "channels": {
+    "ch410": 1219,
+    "ch440": 8142,
+    "ch470": 9263,
+    "ch510": 10004,
+    "ch550": 11855,
+    "ch583": 11503,
+    "ch620": 12554,
+    "ch670": 9346
+   },
+   "total": 73886,
+   "t_request_utc": "2026-10-14T20:40:42.988Z",
+   "t_response_utc": "2026-10-14T20:40:44.693Z"
+  },
+  {
+   "label": "led20-H12-z92",
+   "seq": 32,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39632,
+     39615
+    ],
+    "nir": [
+     2764,
+     2761
+    ]
+   },
+   "experiment_id": "cal-led20-H12-z92-2-1792010444693",
+   "channels": {
+    "ch410": 1218,
+    "ch440": 8135,
+    "ch470": 9261,
+    "ch510": 9988,
+    "ch550": 11845,
+    "ch583": 11500,
+    "ch620": 12539,
+    "ch670": 9339
+   },
+   "total": 73825,
+   "t_request_utc": "2026-10-14T20:40:44.693Z",
+   "t_response_utc": "2026-10-14T20:40:46.398Z"
+  },
+  {
+   "label": "z90",
+   "seq": 33,
+   "nozzle": [
+    113.38,
+    192.24,
+    90.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z90-1-1792010466029",
+   "channels": {
+    "ch410": 77,
+    "ch440": 282,
+    "ch470": 327,
+    "ch510": 696,
+    "ch550": 956,
+    "ch583": 1007,
+    "ch620": 1064,
+    "ch670": 733
+   },
+   "total": 5142,
+   "t_request_utc": "2026-10-14T20:41:06.029Z",
+   "t_response_utc": "2026-10-14T20:41:07.434Z"
+  },
+  {
+   "label": "z90",
+   "seq": 33,
+   "nozzle": [
+    113.38,
+    192.24,
+    90.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z90-2-1792010467434",
+   "channels": {
+    "ch410": 77,
+    "ch440": 282,
+    "ch470": 327,
+    "ch510": 696,
+    "ch550": 955,
+    "ch583": 1005,
+    "ch620": 1065,
+    "ch670": 733
+   },
+   "total": 5140,
+   "t_request_utc": "2026-10-14T20:41:07.434Z",
+   "t_response_utc": "2026-10-14T20:41:08.878Z"
+  },
+  {
+   "label": "z89",
+   "seq": 34,
+   "nozzle": [
+    113.38,
+    192.24,
+    89.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z89-1-1792010474707",
+   "channels": {
+    "ch410": 71,
+    "ch440": 241,
+    "ch470": 293,
+    "ch510": 642,
+    "ch550": 885,
+    "ch583": 929,
+    "ch620": 996,
+    "ch670": 700
+   },
+   "total": 4757,
+   "t_request_utc": "2026-10-14T20:41:14.707Z",
+   "t_response_utc": "2026-10-14T20:41:16.112Z"
+  },
+  {
+   "label": "z89",
+   "seq": 34,
+   "nozzle": [
+    113.38,
+    192.24,
+    89.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z89-2-1792010476112",
+   "channels": {
+    "ch410": 71,
+    "ch440": 242,
+    "ch470": 293,
+    "ch510": 642,
+    "ch550": 885,
+    "ch583": 930,
+    "ch620": 996,
+    "ch670": 701
+   },
+   "total": 4760,
+   "t_request_utc": "2026-10-14T20:41:16.112Z",
+   "t_response_utc": "2026-10-14T20:41:17.536Z"
+  },
+  {
+   "label": "z88.5",
+   "seq": 35,
+   "nozzle": [
+    113.38,
+    192.24,
+    88.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88.5-1-1792010483644",
+   "channels": {
+    "ch410": 67,
+    "ch440": 218,
+    "ch470": 272,
+    "ch510": 605,
+    "ch550": 836,
+    "ch583": 875,
+    "ch620": 950,
+    "ch670": 680
+   },
+   "total": 4503,
+   "t_request_utc": "2026-10-14T20:41:23.644Z",
+   "t_response_utc": "2026-10-14T20:41:25.088Z"
+  },
+  {
+   "label": "z88.5",
+   "seq": 35,
+   "nozzle": [
+    113.38,
+    192.24,
+    88.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88.5-2-1792010485088",
+   "channels": {
+    "ch410": 67,
+    "ch440": 219,
+    "ch470": 273,
+    "ch510": 604,
+    "ch550": 836,
+    "ch583": 875,
+    "ch620": 949,
+    "ch670": 679
+   },
+   "total": 4502,
+   "t_request_utc": "2026-10-14T20:41:25.088Z",
+   "t_response_utc": "2026-10-14T20:41:26.513Z"
+  },
+  {
+   "label": "z88",
+   "seq": 36,
+   "nozzle": [
+    113.38,
+    192.24,
+    88.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88-1-1792010492279",
+   "channels": {
+    "ch410": 64,
+    "ch440": 202,
+    "ch470": 256,
+    "ch510": 572,
+    "ch550": 792,
+    "ch583": 827,
+    "ch620": 906,
+    "ch670": 659
+   },
+   "total": 4278,
+   "t_request_utc": "2026-10-14T20:41:32.279Z",
+   "t_response_utc": "2026-10-14T20:41:33.684Z"
+  },
+  {
+   "label": "z88",
+   "seq": 36,
+   "nozzle": [
+    113.38,
+    192.24,
+    88.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88-2-1792010493684",
+   "channels": {
+    "ch410": 63,
+    "ch440": 202,
+    "ch470": 257,
+    "ch510": 573,
+    "ch550": 792,
+    "ch583": 827,
+    "ch620": 906,
+    "ch670": 659
+   },
+   "total": 4279,
+   "t_request_utc": "2026-10-14T20:41:33.684Z",
+   "t_response_utc": "2026-10-14T20:41:35.108Z"
+  },
+  {
+   "label": "z87.5",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87.5-1-1792010533287",
+   "channels": {
+    "ch410": 63,
+    "ch440": 200,
+    "ch470": 253,
+    "ch510": 567,
+    "ch550": 783,
+    "ch583": 817,
+    "ch620": 896,
+    "ch670": 654
+   },
+   "total": 4233,
+   "t_request_utc": "2026-10-14T20:42:13.287Z",
+   "t_response_utc": "2026-10-14T20:42:14.712Z"
+  },
+  {
+   "label": "z87.5",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87.5-2-1792010534712",
+   "channels": {
+    "ch410": 63,
+    "ch440": 199,
+    "ch470": 253,
+    "ch510": 567,
+    "ch550": 783,
+    "ch583": 817,
+    "ch620": 896,
+    "ch670": 653
+   },
+   "total": 4231,
+   "t_request_utc": "2026-10-14T20:42:14.712Z",
+   "t_response_utc": "2026-10-14T20:42:16.136Z"
+  },
+  {
+   "label": "white-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-rest-1-1792010545145",
+   "channels": {
+    "ch410": 63,
+    "ch440": 200,
+    "ch470": 253,
+    "ch510": 567,
+    "ch550": 783,
+    "ch583": 817,
+    "ch620": 896,
+    "ch670": 653
+   },
+   "total": 4232,
+   "t_request_utc": "2026-10-14T20:42:25.145Z",
+   "t_response_utc": "2026-10-14T20:42:26.589Z"
+  },
+  {
+   "label": "white-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-rest-2-1792010546590",
+   "channels": {
+    "ch410": 63,
+    "ch440": 199,
+    "ch470": 253,
+    "ch510": 568,
+    "ch550": 783,
+    "ch583": 817,
+    "ch620": 896,
+    "ch670": 653
+   },
+   "total": 4232,
+   "t_request_utc": "2026-10-14T20:42:26.590Z",
+   "t_response_utc": "2026-10-14T20:42:28.014Z"
+  },
+  {
+   "label": "white-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-rest-3-1792010548014",
+   "channels": {
+    "ch410": 63,
+    "ch440": 200,
+    "ch470": 254,
+    "ch510": 567,
+    "ch550": 783,
+    "ch583": 816,
+    "ch620": 896,
+    "ch670": 653
+   },
+   "total": 4232,
+   "t_request_utc": "2026-10-14T20:42:28.014Z",
+   "t_response_utc": "2026-10-14T20:42:29.478Z"
+  },
+  {
+   "label": "white-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-rest-4-1792010549479",
+   "channels": {
+    "ch410": 63,
+    "ch440": 200,
+    "ch470": 254,
+    "ch510": 567,
+    "ch550": 783,
+    "ch583": 816,
+    "ch620": 896,
+    "ch670": 654
+   },
+   "total": 4233,
+   "t_request_utc": "2026-10-14T20:42:29.479Z",
+   "t_response_utc": "2026-10-14T20:42:30.943Z"
+  },
+  {
+   "label": "dark-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H12-rest-1-1792010552987",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 6,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 14,
+   "t_request_utc": "2026-10-14T20:42:32.987Z",
+   "t_response_utc": "2026-10-14T20:42:34.411Z"
+  },
+  {
+   "label": "dark-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H12-rest-2-1792010554411",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:42:34.411Z",
+   "t_response_utc": "2026-10-14T20:42:35.836Z"
+  },
+  {
+   "label": "led4-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8346,
+     8350
+    ],
+    "nir": [
+     581,
+     581
+    ]
+   },
+   "experiment_id": "cal-led4-H12-rest-1-1792010556841",
+   "channels": {
+    "ch410": 247,
+    "ch440": 1621,
+    "ch470": 2061,
+    "ch510": 2094,
+    "ch550": 2476,
+    "ch583": 2409,
+    "ch620": 2654,
+    "ch670": 1977
+   },
+   "total": 15539,
+   "t_request_utc": "2026-10-14T20:42:36.841Z",
+   "t_response_utc": "2026-10-14T20:42:38.566Z"
+  },
+  {
+   "label": "led4-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8345,
+     8349
+    ],
+    "nir": [
+     581,
+     581
+    ]
+   },
+   "experiment_id": "cal-led4-H12-rest-2-1792010558566",
+   "channels": {
+    "ch410": 247,
+    "ch440": 1621,
+    "ch470": 2061,
+    "ch510": 2094,
+    "ch550": 2475,
+    "ch583": 2410,
+    "ch620": 2653,
+    "ch670": 1977
+   },
+   "total": 15538,
+   "t_request_utc": "2026-10-14T20:42:38.566Z",
+   "t_response_utc": "2026-10-14T20:42:40.271Z"
+  },
+  {
+   "label": "led10-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     20541,
+     20530
+    ],
+    "nir": [
+     1429,
+     1428
+    ]
+   },
+   "experiment_id": "cal-led10-H12-rest-1-1792010561276",
+   "channels": {
+    "ch410": 617,
+    "ch440": 4080,
+    "ch470": 4914,
+    "ch510": 5171,
+    "ch550": 6124,
+    "ch583": 5952,
+    "ch620": 6527,
+    "ch670": 4854
+   },
+   "total": 38239,
+   "t_request_utc": "2026-10-14T20:42:41.276Z",
+   "t_response_utc": "2026-10-14T20:42:42.981Z"
+  },
+  {
+   "label": "led10-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     20518,
+     20515
+    ],
+    "nir": [
+     1428,
+     1427
+    ]
+   },
+   "experiment_id": "cal-led10-H12-rest-2-1792010562981",
+   "channels": {
+    "ch410": 617,
+    "ch440": 4077,
+    "ch470": 4912,
+    "ch510": 5169,
+    "ch550": 6119,
+    "ch583": 5948,
+    "ch620": 6523,
+    "ch670": 4851
+   },
+   "total": 38216,
+   "t_request_utc": "2026-10-14T20:42:42.981Z",
+   "t_response_utc": "2026-10-14T20:42:44.706Z"
+  },
+  {
+   "label": "led20-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40780,
+     40774
+    ],
+    "nir": [
+     2834,
+     2832
+    ]
+   },
+   "experiment_id": "cal-led20-H12-rest-1-1792010565212",
+   "channels": {
+    "ch410": 1248,
+    "ch440": 8300,
+    "ch470": 9416,
+    "ch510": 10315,
+    "ch550": 12243,
+    "ch583": 11876,
+    "ch620": 12960,
+    "ch670": 9611
+   },
+   "total": 75969,
+   "t_request_utc": "2026-10-14T20:42:45.212Z",
+   "t_response_utc": "2026-10-14T20:42:46.917Z"
+  },
+  {
+   "label": "led20-H12-rest",
+   "seq": 37,
+   "nozzle": [
+    113.38,
+    192.24,
+    87.5
+   ],
+   "well": "H12",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40752,
+     40722
+    ],
+    "nir": [
+     2831,
+     2829
+    ]
+   },
+   "experiment_id": "cal-led20-H12-rest-2-1792010566918",
+   "channels": {
+    "ch410": 1248,
+    "ch440": 8296,
+    "ch470": 9417,
+    "ch510": 10304,
+    "ch550": 12223,
+    "ch583": 11861,
+    "ch620": 12945,
+    "ch670": 9599
+   },
+   "total": 75893,
+   "t_request_utc": "2026-10-14T20:42:46.918Z",
+   "t_response_utc": "2026-10-14T20:42:48.683Z"
+  },
+  {
+   "label": "z125",
+   "seq": 38,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010593926",
+   "channels": {
+    "ch410": 144,
+    "ch440": 688,
+    "ch470": 663,
+    "ch510": 1228,
+    "ch550": 1675,
+    "ch583": 1808,
+    "ch620": 1793,
+    "ch670": 1108
+   },
+   "total": 9107,
+   "t_request_utc": "2026-10-14T20:43:13.926Z",
+   "t_response_utc": "2026-10-14T20:43:15.370Z"
+  },
+  {
+   "label": "z125",
+   "seq": 38,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010595370",
+   "channels": {
+    "ch410": 144,
+    "ch440": 688,
+    "ch470": 664,
+    "ch510": 1229,
+    "ch550": 1677,
+    "ch583": 1810,
+    "ch620": 1793,
+    "ch670": 1108
+   },
+   "total": 9113,
+   "t_request_utc": "2026-10-14T20:43:15.370Z",
+   "t_response_utc": "2026-10-14T20:43:16.794Z"
+  },
+  {
+   "label": "xy68.38_192.24",
+   "seq": 39,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy68.38_192.24-1-1792010615830",
+   "channels": {
+    "ch410": 101,
+    "ch440": 431,
+    "ch470": 454,
+    "ch510": 880,
+    "ch550": 1211,
+    "ch583": 1289,
+    "ch620": 1327,
+    "ch670": 881
+   },
+   "total": 6574,
+   "t_request_utc": "2026-10-14T20:43:35.830Z",
+   "t_response_utc": "2026-10-14T20:43:37.254Z"
+  },
+  {
+   "label": "xy68.38_192.24",
+   "seq": 39,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy68.38_192.24-2-1792010617255",
+   "channels": {
+    "ch410": 101,
+    "ch440": 431,
+    "ch470": 454,
+    "ch510": 880,
+    "ch550": 1211,
+    "ch583": 1289,
+    "ch620": 1327,
+    "ch670": 881
+   },
+   "total": 6574,
+   "t_request_utc": "2026-10-14T20:43:37.255Z",
+   "t_response_utc": "2026-10-14T20:43:38.779Z"
+  },
+  {
+   "label": "z92",
+   "seq": 40,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010635312",
+   "channels": {
+    "ch410": 54,
+    "ch440": 177,
+    "ch470": 217,
+    "ch510": 495,
+    "ch550": 672,
+    "ch583": 674,
+    "ch620": 739,
+    "ch670": 544
+   },
+   "total": 3572,
+   "t_request_utc": "2026-10-14T20:43:55.312Z",
+   "t_response_utc": "2026-10-14T20:43:56.736Z"
+  },
+  {
+   "label": "z92",
+   "seq": 40,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010636736",
+   "channels": {
+    "ch410": 53,
+    "ch440": 177,
+    "ch470": 217,
+    "ch510": 495,
+    "ch550": 672,
+    "ch583": 674,
+    "ch620": 739,
+    "ch670": 544
+   },
+   "total": 3571,
+   "t_request_utc": "2026-10-14T20:43:56.736Z",
+   "t_response_utc": "2026-10-14T20:43:58.160Z"
+  },
+  {
+   "label": "z90",
+   "seq": 41,
+   "nozzle": [
+    68.38,
+    192.24,
+    90.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z90-1-1792010644892",
+   "channels": {
+    "ch410": 48,
+    "ch440": 151,
+    "ch470": 192,
+    "ch510": 452,
+    "ch550": 610,
+    "ch583": 602,
+    "ch620": 668,
+    "ch670": 503
+   },
+   "total": 3226,
+   "t_request_utc": "2026-10-14T20:44:04.892Z",
+   "t_response_utc": "2026-10-14T20:44:06.317Z"
+  },
+  {
+   "label": "z90",
+   "seq": 41,
+   "nozzle": [
+    68.38,
+    192.24,
+    90.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z90-2-1792010646317",
+   "channels": {
+    "ch410": 48,
+    "ch440": 151,
+    "ch470": 192,
+    "ch510": 451,
+    "ch550": 610,
+    "ch583": 602,
+    "ch620": 668,
+    "ch670": 503
+   },
+   "total": 3225,
+   "t_request_utc": "2026-10-14T20:44:06.317Z",
+   "t_response_utc": "2026-10-14T20:44:07.782Z"
+  },
+  {
+   "label": "z89",
+   "seq": 42,
+   "nozzle": [
+    68.38,
+    192.24,
+    89.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z89-1-1792010653682",
+   "channels": {
+    "ch410": 47,
+    "ch440": 147,
+    "ch470": 188,
+    "ch510": 444,
+    "ch550": 598,
+    "ch583": 587,
+    "ch620": 652,
+    "ch670": 493
+   },
+   "total": 3156,
+   "t_request_utc": "2026-10-14T20:44:13.682Z",
+   "t_response_utc": "2026-10-14T20:44:15.087Z"
+  },
+  {
+   "label": "z89",
+   "seq": 42,
+   "nozzle": [
+    68.38,
+    192.24,
+    89.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z89-2-1792010655087",
+   "channels": {
+    "ch410": 47,
+    "ch440": 147,
+    "ch470": 188,
+    "ch510": 444,
+    "ch550": 598,
+    "ch583": 588,
+    "ch620": 652,
+    "ch670": 493
+   },
+   "total": 3157,
+   "t_request_utc": "2026-10-14T20:44:15.087Z",
+   "t_response_utc": "2026-10-14T20:44:16.511Z"
+  },
+  {
+   "label": "z88.5",
+   "seq": 43,
+   "nozzle": [
+    68.38,
+    192.24,
+    88.5
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88.5-1-1792010662154",
+   "channels": {
+    "ch410": 46,
+    "ch440": 145,
+    "ch470": 185,
+    "ch510": 439,
+    "ch550": 589,
+    "ch583": 575,
+    "ch620": 640,
+    "ch670": 485
+   },
+   "total": 3104,
+   "t_request_utc": "2026-10-14T20:44:22.154Z",
+   "t_response_utc": "2026-10-14T20:44:23.579Z"
+  },
+  {
+   "label": "z88.5",
+   "seq": 43,
+   "nozzle": [
+    68.38,
+    192.24,
+    88.5
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88.5-2-1792010663579",
+   "channels": {
+    "ch410": 46,
+    "ch440": 145,
+    "ch470": 186,
+    "ch510": 439,
+    "ch550": 589,
+    "ch583": 576,
+    "ch620": 640,
+    "ch670": 485
+   },
+   "total": 3106,
+   "t_request_utc": "2026-10-14T20:44:23.579Z",
+   "t_response_utc": "2026-10-14T20:44:25.003Z"
+  },
+  {
+   "label": "z88",
+   "seq": 44,
+   "nozzle": [
+    68.38,
+    192.24,
+    88.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88-1-1792010671330",
+   "channels": {
+    "ch410": 46,
+    "ch440": 143,
+    "ch470": 184,
+    "ch510": 435,
+    "ch550": 584,
+    "ch583": 569,
+    "ch620": 633,
+    "ch670": 480
+   },
+   "total": 3074,
+   "t_request_utc": "2026-10-14T20:44:31.330Z",
+   "t_response_utc": "2026-10-14T20:44:32.754Z"
+  },
+  {
+   "label": "z88",
+   "seq": 44,
+   "nozzle": [
+    68.38,
+    192.24,
+    88.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z88-2-1792010672754",
+   "channels": {
+    "ch410": 46,
+    "ch440": 143,
+    "ch470": 184,
+    "ch510": 435,
+    "ch550": 584,
+    "ch583": 569,
+    "ch620": 633,
+    "ch670": 480
+   },
+   "total": 3074,
+   "t_request_utc": "2026-10-14T20:44:32.754Z",
+   "t_response_utc": "2026-10-14T20:44:34.179Z"
+  },
+  {
+   "label": "z87.5",
+   "seq": 45,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.5
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87.5-1-1792010686847",
+   "channels": {
+    "ch410": 46,
+    "ch440": 143,
+    "ch470": 183,
+    "ch510": 434,
+    "ch550": 582,
+    "ch583": 567,
+    "ch620": 629,
+    "ch670": 477
+   },
+   "total": 3061,
+   "t_request_utc": "2026-10-14T20:44:46.847Z",
+   "t_response_utc": "2026-10-14T20:44:48.331Z"
+  },
+  {
+   "label": "z87.5",
+   "seq": 45,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.5
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87.5-2-1792010688332",
+   "channels": {
+    "ch410": 46,
+    "ch440": 143,
+    "ch470": 183,
+    "ch510": 434,
+    "ch550": 583,
+    "ch583": 567,
+    "ch620": 629,
+    "ch670": 478
+   },
+   "total": 3063,
+   "t_request_utc": "2026-10-14T20:44:48.332Z",
+   "t_response_utc": "2026-10-14T20:44:49.776Z"
+  },
+  {
+   "label": "z87",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87-1-1792010695938",
+   "channels": {
+    "ch410": 45,
+    "ch440": 142,
+    "ch470": 182,
+    "ch510": 433,
+    "ch550": 580,
+    "ch583": 563,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3046,
+   "t_request_utc": "2026-10-14T20:44:55.938Z",
+   "t_response_utc": "2026-10-14T20:44:57.383Z"
+  },
+  {
+   "label": "z87",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z87-2-1792010697383",
+   "channels": {
+    "ch410": 46,
+    "ch440": 143,
+    "ch470": 182,
+    "ch510": 432,
+    "ch550": 580,
+    "ch583": 563,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3047,
+   "t_request_utc": "2026-10-14T20:44:57.383Z",
+   "t_response_utc": "2026-10-14T20:44:58.807Z"
+  },
+  {
+   "label": "black-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-rest-1-1792010706315",
+   "channels": {
+    "ch410": 45,
+    "ch440": 142,
+    "ch470": 182,
+    "ch510": 432,
+    "ch550": 580,
+    "ch583": 563,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3045,
+   "t_request_utc": "2026-10-14T20:45:06.315Z",
+   "t_response_utc": "2026-10-14T20:45:07.739Z"
+  },
+  {
+   "label": "black-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-rest-2-1792010707739",
+   "channels": {
+    "ch410": 46,
+    "ch440": 142,
+    "ch470": 182,
+    "ch510": 433,
+    "ch550": 580,
+    "ch583": 563,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3047,
+   "t_request_utc": "2026-10-14T20:45:07.739Z",
+   "t_response_utc": "2026-10-14T20:45:09.183Z"
+  },
+  {
+   "label": "black-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-rest-3-1792010709184",
+   "channels": {
+    "ch410": 45,
+    "ch440": 142,
+    "ch470": 182,
+    "ch510": 432,
+    "ch550": 580,
+    "ch583": 563,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3045,
+   "t_request_utc": "2026-10-14T20:45:09.184Z",
+   "t_response_utc": "2026-10-14T20:45:10.648Z"
+  },
+  {
+   "label": "black-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-black-H7-rest-4-1792010710648",
+   "channels": {
+    "ch410": 46,
+    "ch440": 142,
+    "ch470": 182,
+    "ch510": 432,
+    "ch550": 579,
+    "ch583": 562,
+    "ch620": 626,
+    "ch670": 475
+   },
+   "total": 3044,
+   "t_request_utc": "2026-10-14T20:45:10.648Z",
+   "t_response_utc": "2026-10-14T20:45:12.073Z"
+  },
+  {
+   "label": "dark-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H7-rest-1-1792010713617",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:45:13.617Z",
+   "t_response_utc": "2026-10-14T20:45:15.081Z"
+  },
+  {
+   "label": "dark-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4
+   },
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8,
+     8
+    ],
+    "nir": [
+     0,
+     0
+    ]
+   },
+   "experiment_id": "cal-dark-H7-rest-2-1792010715082",
+   "channels": {
+    "ch410": 0,
+    "ch440": 0,
+    "ch470": 0,
+    "ch510": 5,
+    "ch550": 6,
+    "ch583": 1,
+    "ch620": 1,
+    "ch670": 0
+   },
+   "total": 13,
+   "t_request_utc": "2026-10-14T20:45:15.082Z",
+   "t_response_utc": "2026-10-14T20:45:16.526Z"
+  },
+  {
+   "label": "led4-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8056,
+     8057
+    ],
+    "nir": [
+     567,
+     567
+    ]
+   },
+   "experiment_id": "cal-led4-H7-rest-1-1792010717034",
+   "channels": {
+    "ch410": 239,
+    "ch440": 1573,
+    "ch470": 2002,
+    "ch510": 2017,
+    "ch550": 2382,
+    "ch583": 2318,
+    "ch620": 2550,
+    "ch670": 1911
+   },
+   "total": 14992,
+   "t_request_utc": "2026-10-14T20:45:17.034Z",
+   "t_response_utc": "2026-10-14T20:45:18.760Z"
+  },
+  {
+   "label": "led4-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8056,
+     8056
+    ],
+    "nir": [
+     567,
+     567
+    ]
+   },
+   "experiment_id": "cal-led4-H7-rest-2-1792010718760",
+   "channels": {
+    "ch410": 239,
+    "ch440": 1573,
+    "ch470": 2001,
+    "ch510": 2016,
+    "ch550": 2382,
+    "ch583": 2317,
+    "ch620": 2550,
+    "ch670": 1910
+   },
+   "total": 14988,
+   "t_request_utc": "2026-10-14T20:45:18.760Z",
+   "t_response_utc": "2026-10-14T20:45:20.465Z"
+  },
+  {
+   "label": "led10-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19826,
+     19818
+    ],
+    "nir": [
+     1394,
+     1393
+    ]
+   },
+   "experiment_id": "cal-led10-H7-rest-1-1792010721470",
+   "channels": {
+    "ch410": 596,
+    "ch440": 3959,
+    "ch470": 4768,
+    "ch510": 4980,
+    "ch550": 5894,
+    "ch583": 5724,
+    "ch620": 6276,
+    "ch670": 4691
+   },
+   "total": 36888,
+   "t_request_utc": "2026-10-14T20:45:21.470Z",
+   "t_response_utc": "2026-10-14T20:45:23.195Z"
+  },
+  {
+   "label": "led10-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19812,
+     19792
+    ],
+    "nir": [
+     1393,
+     1392
+    ]
+   },
+   "experiment_id": "cal-led10-H7-rest-2-1792010723195",
+   "channels": {
+    "ch410": 596,
+    "ch440": 3959,
+    "ch470": 4769,
+    "ch510": 4976,
+    "ch550": 5889,
+    "ch583": 5719,
+    "ch620": 6271,
+    "ch670": 4689
+   },
+   "total": 36868,
+   "t_request_utc": "2026-10-14T20:45:23.195Z",
+   "t_response_utc": "2026-10-14T20:45:24.900Z"
+  },
+  {
+   "label": "led20-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39372,
+     39349
+    ],
+    "nir": [
+     2766,
+     2762
+    ]
+   },
+   "experiment_id": "cal-led20-H7-rest-1-1792010725908",
+   "channels": {
+    "ch410": 1206,
+    "ch440": 8063,
+    "ch470": 9139,
+    "ch510": 9935,
+    "ch550": 11780,
+    "ch583": 11418,
+    "ch620": 12461,
+    "ch670": 9290
+   },
+   "total": 73292,
+   "t_request_utc": "2026-10-14T20:45:25.908Z",
+   "t_response_utc": "2026-10-14T20:45:27.633Z"
+  },
+  {
+   "label": "led20-H7-rest",
+   "seq": 46,
+   "nozzle": [
+    68.38,
+    192.24,
+    87.0
+   ],
+   "well": "H7",
+   "rail_lights": "off",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39350,
+     39336
+    ],
+    "nir": [
+     2762,
+     2761
+    ]
+   },
+   "experiment_id": "cal-led20-H7-rest-2-1792010727633",
+   "channels": {
+    "ch410": 1205,
+    "ch440": 8058,
+    "ch470": 9139,
+    "ch510": 9922,
+    "ch550": 11774,
+    "ch583": 11415,
+    "ch620": 12454,
+    "ch670": 9288
+   },
+   "total": 73255,
+   "t_request_utc": "2026-10-14T20:45:27.633Z",
+   "t_response_utc": "2026-10-14T20:45:29.378Z"
+  },
+  {
+   "label": "z92",
+   "seq": 47,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010755184",
+   "channels": {
+    "ch410": 47,
+    "ch440": 147,
+    "ch470": 188,
+    "ch510": 442,
+    "ch550": 594,
+    "ch583": 583,
+    "ch620": 649,
+    "ch670": 492
+   },
+   "total": 3142,
+   "t_request_utc": "2026-10-14T20:45:55.184Z",
+   "t_response_utc": "2026-10-14T20:45:56.628Z"
+  },
+  {
+   "label": "z92",
+   "seq": 47,
+   "nozzle": [
+    68.38,
+    192.24,
+    92.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010756628",
+   "channels": {
+    "ch410": 47,
+    "ch440": 147,
+    "ch470": 188,
+    "ch510": 442,
+    "ch550": 595,
+    "ch583": 583,
+    "ch620": 649,
+    "ch670": 492
+   },
+   "total": 3143,
+   "t_request_utc": "2026-10-14T20:45:56.628Z",
+   "t_response_utc": "2026-10-14T20:45:58.033Z"
+  },
+  {
+   "label": "z125",
+   "seq": 48,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-1-1792010775106",
+   "channels": {
+    "ch410": 94,
+    "ch440": 401,
+    "ch470": 417,
+    "ch510": 824,
+    "ch550": 1121,
+    "ch583": 1184,
+    "ch620": 1227,
+    "ch670": 812
+   },
+   "total": 6080,
+   "t_request_utc": "2026-10-14T20:46:15.106Z",
+   "t_response_utc": "2026-10-14T20:46:16.530Z"
+  },
+  {
+   "label": "z125",
+   "seq": 48,
+   "nozzle": [
+    68.38,
+    192.24,
+    125.0
+   ],
+   "well": "H7",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z125-2-1792010776530",
+   "channels": {
+    "ch410": 94,
+    "ch440": 401,
+    "ch470": 418,
+    "ch510": 824,
+    "ch550": 1121,
+    "ch583": 1184,
+    "ch620": 1227,
+    "ch670": 812
+   },
+   "total": 6081,
+   "t_request_utc": "2026-10-14T20:46:16.530Z",
+   "t_response_utc": "2026-10-14T20:46:17.975Z"
+  },
+  {
+   "label": "xy113.38_192.24",
+   "seq": 49,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy113.38_192.24-1-1792010797022",
+   "channels": {
+    "ch410": 115,
+    "ch440": 505,
+    "ch470": 521,
+    "ch510": 984,
+    "ch550": 1352,
+    "ch583": 1452,
+    "ch620": 1492,
+    "ch670": 976
+   },
+   "total": 7397,
+   "t_request_utc": "2026-10-14T20:46:37.022Z",
+   "t_response_utc": "2026-10-14T20:46:38.466Z"
+  },
+  {
+   "label": "xy113.38_192.24",
+   "seq": 49,
+   "nozzle": [
+    113.38,
+    192.24,
+    125.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-xy113.38_192.24-2-1792010798466",
+   "channels": {
+    "ch410": 114,
+    "ch440": 505,
+    "ch470": 521,
+    "ch510": 985,
+    "ch550": 1354,
+    "ch583": 1453,
+    "ch620": 1492,
+    "ch670": 976
+   },
+   "total": 7400,
+   "t_request_utc": "2026-10-14T20:46:38.466Z",
+   "t_response_utc": "2026-10-14T20:46:39.891Z"
+  },
+  {
+   "label": "z92",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-1-1792010816398",
+   "channels": {
+    "ch410": 76,
+    "ch440": 294,
+    "ch470": 328,
+    "ch510": 672,
+    "ch550": 913,
+    "ch583": 951,
+    "ch620": 1016,
+    "ch670": 710
+   },
+   "total": 4960,
+   "t_request_utc": "2026-10-14T20:46:56.398Z",
+   "t_response_utc": "2026-10-14T20:46:57.823Z"
+  },
+  {
+   "label": "z92",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-z92-2-1792010817823",
+   "channels": {
+    "ch410": 76,
+    "ch440": 294,
+    "ch470": 328,
+    "ch510": 672,
+    "ch550": 913,
+    "ch583": 951,
+    "ch620": 1016,
+    "ch670": 710
+   },
+   "total": 4960,
+   "t_request_utc": "2026-10-14T20:46:57.823Z",
+   "t_response_utc": "2026-10-14T20:46:59.247Z"
+  },
+  {
+   "label": "white-H12-z92-again",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-again-1-1792010820254",
+   "channels": {
+    "ch410": 76,
+    "ch440": 293,
+    "ch470": 328,
+    "ch510": 671,
+    "ch550": 913,
+    "ch583": 952,
+    "ch620": 1015,
+    "ch670": 710
+   },
+   "total": 4958,
+   "t_request_utc": "2026-10-14T20:47:00.254Z",
+   "t_response_utc": "2026-10-14T20:47:01.679Z"
+  },
+  {
+   "label": "white-H12-z92-again",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-again-2-1792010821679",
+   "channels": {
+    "ch410": 76,
+    "ch440": 294,
+    "ch470": 328,
+    "ch510": 672,
+    "ch550": 913,
+    "ch583": 952,
+    "ch620": 1016,
+    "ch670": 710
+   },
+   "total": 4961,
+   "t_request_utc": "2026-10-14T20:47:01.679Z",
+   "t_response_utc": "2026-10-14T20:47:03.103Z"
+  },
+  {
+   "label": "white-H12-z92-again",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-again-3-1792010823103",
+   "channels": {
+    "ch410": 76,
+    "ch440": 294,
+    "ch470": 328,
+    "ch510": 671,
+    "ch550": 913,
+    "ch583": 952,
+    "ch620": 1016,
+    "ch670": 710
+   },
+   "total": 4960,
+   "t_request_utc": "2026-10-14T20:47:03.103Z",
+   "t_response_utc": "2026-10-14T20:47:04.548Z"
+  },
+  {
+   "label": "white-H12-z92-again",
+   "seq": 50,
+   "nozzle": [
+    113.38,
+    192.24,
+    92.0
+   ],
+   "well": "H12",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-white-H12-z92-again-4-1792010824548",
+   "channels": {
+    "ch410": 76,
+    "ch440": 293,
+    "ch470": 327,
+    "ch510": 671,
+    "ch550": 912,
+    "ch583": 951,
+    "ch620": 1016,
+    "ch670": 709
+   },
+   "total": 4955,
+   "t_request_utc": "2026-10-14T20:47:04.548Z",
+   "t_response_utc": "2026-10-14T20:47:05.972Z"
+  },
+  {
+   "label": "over_pocket",
+   "seq": 55,
+   "nozzle": [
+    92.8,
+    316.5,
+    100.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-over_pocket-1-1792011178109",
+   "channels": {
+    "ch410": 32,
+    "ch440": 139,
+    "ch470": 138,
+    "ch510": 362,
+    "ch550": 440,
+    "ch583": 341,
+    "ch620": 348,
+    "ch670": 269
+   },
+   "total": 2069,
+   "t_request_utc": "2026-10-14T20:52:58.109Z",
+   "t_response_utc": "2026-10-14T20:52:59.554Z"
+  },
+  {
+   "label": "over_pocket",
+   "seq": 55,
+   "nozzle": [
+    92.8,
+    316.5,
+    100.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-over_pocket-2-1792011179554",
+   "channels": {
+    "ch410": 32,
+    "ch440": 138,
+    "ch470": 139,
+    "ch510": 362,
+    "ch550": 441,
+    "ch583": 342,
+    "ch620": 347,
+    "ch670": 269
+   },
+   "total": 2070,
+   "t_request_utc": "2026-10-14T20:52:59.554Z",
+   "t_response_utc": "2026-10-14T20:53:01.319Z"
+  },
+  {
+   "label": "backed_out",
+   "seq": 56,
+   "nozzle": [
+    92.8,
+    316.5,
+    110.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-backed_out-1-1792011202467",
+   "channels": {
+    "ch410": 7,
+    "ch440": 7,
+    "ch470": 13,
+    "ch510": 174,
+    "ch550": 180,
+    "ch583": 44,
+    "ch620": 27,
+    "ch670": 24
+   },
+   "total": 476,
+   "t_request_utc": "2026-10-14T20:53:22.467Z",
+   "t_response_utc": "2026-10-14T20:53:23.911Z"
+  },
+  {
+   "label": "backed_out",
+   "seq": 56,
+   "nozzle": [
+    92.8,
+    316.5,
+    110.0
+   ],
+   "well": "socket A2",
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-backed_out-2-1792011203911",
+   "channels": {
+    "ch410": 6,
+    "ch440": 7,
+    "ch470": 13,
+    "ch510": 174,
+    "ch550": 180,
+    "ch583": 44,
+    "ch620": 26,
+    "ch670": 24
+   },
+   "total": 474,
+   "t_request_utc": "2026-10-14T20:53:23.911Z",
+   "t_response_utc": "2026-10-14T20:53:25.336Z"
+  },
+  {
+   "label": "homed",
+   "seq": 57,
+   "nozzle": null,
+   "well": null,
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-homed-1-1792011226511",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 12,
+    "ch510": 173,
+    "ch550": 178,
+    "ch583": 42,
+    "ch620": 26,
+    "ch670": 23
+   },
+   "total": 466,
+   "t_request_utc": "2026-10-14T20:53:46.511Z",
+   "t_response_utc": "2026-10-14T20:53:47.956Z"
+  },
+  {
+   "label": "homed",
+   "seq": 57,
+   "nozzle": null,
+   "well": null,
+   "rail_lights": "on",
+   "settings": null,
+   "sensor_settings": null,
+   "sensor_extra": null,
+   "experiment_id": "cal-homed-2-1792011227956",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 13,
+    "ch510": 173,
+    "ch550": 179,
+    "ch583": 42,
+    "ch620": 25,
+    "ch670": 23
+   },
+   "total": 467,
+   "t_request_utc": "2026-10-14T20:53:47.956Z",
+   "t_response_utc": "2026-10-14T20:53:49.380Z"
+  }
+ ]
+}
