@@ -252,6 +252,28 @@ publishing a probe to our own topic and waiting for the echo (a broker can grant
 a subscription and then deliver nothing), the sensor is proved by taking the
 seated baseline, and every coordinate is bounds-checked against its slot.
 
+**One controller at a time.** `POST /maintenance_runs` silently clears any
+maintenance run that already exists (robot-server 8.8.1: "If a maintenance run
+already exists, it will be cleared"). A second driver started while another is
+mid-move therefore cuts the first off wherever it stands, enclosure aboard or tip
+in a vial, and then homes. Two CI jobs can easily be alive at once: an `@claude`
+reply to a job that is still waiting starts a new job, and the old one keeps
+going. It happened on 2026-09-30 at midday, and again on 2026-10-14 evening,
+when "try the test again" started a job while the previous one was still waiting
+for the Pi to come back and intended to finish the test itself. Before opening
+a run, check all three:
+
+```bash
+gh run list --workflow claude.yml --status in_progress     # another job on this PR?
+pgrep -fa 'paint_transfer|enclosure_height_cal|tip_cal'     # on the Pi: a driver running?
+curl -s -H 'Opentrons-Version: 3' http://169.254.51.252:31950/maintenance_runs/current_run
+                                                            # NoCurrentRunFound = free
+```
+
+If another job is alive, watch it read-only and take over only after `gh run
+view <id>` reports it completed. Its drivers outlive it, and silence makes them
+put everything away, so waiting costs nothing but time.
+
 ## Files
 
 | file | what it is |
