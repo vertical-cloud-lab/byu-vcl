@@ -155,8 +155,8 @@ def main():
     ax.set_title(f"CB 154 to the Prototyping Lab (EB 117): about {round(length, -1):.0f} m",
                  fontsize=19, color=INK, loc="left", pad=12)
 
-    handles = [Line2D([], [], color=BLUE, lw=4.5, label="Floor 1: CB basement, EB bottom floor"),
-               Line2D([], [], color=ORANGE, lw=4.5, label="Street level: CB and EB floor 2, and outside")]
+    handles = [Line2D([], [], color=BLUE, lw=4.5, label="Floor 1 (CB 154's floor, and EB 117's)"),
+               Line2D([], [], color=ORANGE, lw=4.5, label="Floor 2 and outside (street level)")]
     fig.legend(handles=handles, loc="lower left", bbox_to_anchor=(0.05, 0.035), ncol=2,
                frameon=False, fontsize=13, labelcolor=INK)
     fig.text(0.95, 0.012, "Floor plans: BYU campus map (map.byu.edu).  Paths: © OpenStreetMap contributors.",
