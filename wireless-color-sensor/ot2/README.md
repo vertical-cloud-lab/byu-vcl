@@ -32,8 +32,8 @@ the read height. Use these unless a later entry below changes them:
 | first touch of the plate | z ≈ 87.9 at A1 and ≈ 88.4 at the centre (plate in slot 1); **z ≈ 87.5 on the H row with the plate in slot 7** | 09-30, 10-01 |
 | candidate | **z 92** (foot ~4 mm up) **over black paper**; z 100 without it. Over black paper z 92 scored 12.2 points off, z 95 12.9, z 100 14.3, resting 49.9; on white paper and bare deck z 100 was best (16.0, 12.8). Resting scored worst in all 3 runs. Recommended; not switched until @timothy-commins says so | [`results-read-height-2026-10-09.md`](results-read-height-2026-10-09.md), [`results-height-series-2026-10-01.md`](results-height-series-2026-10-01.md), [`results-white-paper-2026-10-06.md`](results-white-paper-2026-10-06.md), [`results-black-paper-2026-10-06.md`](results-black-paper-2026-10-06.md) |
 | pressing | a landing can push the enclosure up the nozzle, invisibly: one 10-01 landing that pressed ~2.5 mm past first touch moved it ~0.7 mm, and the same well then read 12% brighter; on 10-06 a press of ~1 mm past touch at H12 moved it 0.5 mm. In contact, re-read the first well at the end of a run. Over white paper the light no longer shows the touch: find it with the camera ([`analyse_white_paper.py`](analyse_white_paper.py)). **On 10-14 a landing lifted the plate:** rested on H7 at z 87, the enclosure brought the plate up with it on the way back to z 92, and it fell ~12 mm towards the front. Don't rest on an untaped plate | [`landing_shift.py`](landing_shift.py), 10-02, 10-06, [`results-led-background-2026-10-14.md`](results-led-background-2026-10-14.md) |
-| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper. **Since 10-14 ~12 mm towards the front of slot 7 and ~1 mm left**, after a landing lifted it: put it back and tape it down before the next run; every well position above is for the plate as it was | 10-06, 10-14 |
-| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38. Tips used through A3 (C2–H2 were already gone): next fresh tip B3 | [`paint_transfer.py`](paint_transfer.py), 10-06 |
+| plate | **slot 7** since 10-01 (moved by hand from slot 1): `--plate-slot 7`; H row at y 192.24, H1 x 14.38, 9 mm pitch. **On a sheet of black paper since 10-06 evening** (white paper that afternoon): lower colour error at every height above the plate. Find the touch with the camera over either paper. On 10-14 a landing lifted it ~12 mm towards the front; **put back and taped by hand the same afternoon, and back where it was to 0.0 px**, so the positions above hold again. The light differs a lot by position (empty F3 0.03 → F12 0.61 on the white/black scale), so keep each paint near its white and black wells | 10-06, 10-14 |
+| paint | yellow H2, red H4, blue H10 (200 µL from the vials), black H7 and white H12 undiluted by hand (volume not recorded: fill them to 200 µL like the colours), refilled 10-06. The colour vials follow the AC's ratio, ~10:1 water:paint "if not weaker" (@timothy-commins, 10-09; [ac-dev-lab#152](https://github.com/AccelerationConsortium/ac-dev-lab/issues/152#issuecomment-2599366053)). **The open vials lost ~1 cm in six days:** draw at tip-end z 28, not 38; **by 10-14 even z 28 came up air, so draw at z 20** (the floors are at z ~3) and top the vials up and cap them. 10-14: yellow F3, red F6, blue F9 added (200 µL, z 20). Tips used through E3 (C2–H2 were already gone): next fresh tip F3 | [`paint_transfer.py`](paint_transfer.py), 10-06, 10-14 |
 | enclosure | right-hand socket A2, (92.8, 316.5), label to the front; carried via z 190, 3 mm/s aboard | |
 | sensor | gain **128x**, 2 × 281 ms per reading (ATIME 100, ASTEP 999), LED off, read off the chip itself; the same for every reading on record. **Since 10-10 a reading can ask for its own gain, integration time and LED current:** `link.read(settings={"gain": 4, "atime": 50, "led_ma": 10})`, or `read 8 tag gain=4 led_ma=10` in `enclosure_height_cal.py`; anything left out reads as before. Bracket with integration time at a fixed gain, not with gain. LED: 0 (off) or 4–20 mA. (10-01 said 256x and 2 × 559 ms: wrong, see [`../pico/`](../pico/).) Firmware changes go in over USB only, no OTA (@sgbaird, 10-10). **Keep the LED off:** on the plate (10-14, rail lights off) black ÷ white was 0.99 at z 92 and 0.97 resting, against 0.59 and 0.69 with the rail lights | 10-09, 10-10, 10-14 |
 | light | rail lights on; the OT-2 blacked out: sides since 09-30 midday, cardboard and wood over the rest since 10-01. No measurable room light on 10-01; re-read the white and black after any change to the cover | [`results-blackout-2026-10-02.md`](results-blackout-2026-10-02.md) |
@@ -1607,6 +1607,35 @@ enclosure trip, 14:29–14:54 MDT. Write-up: [`results-led-background-2026-10-14
 z 92 with no landings: empty trip, paint into F3/F6/F9, painted trip.
 
 ![the LED against the rail lights, and the empty wells](led-background-2026-10-14.png)
+
+## 2026-10-14 (evening) — wells read empty, painted, read again: subtracting the empty reading makes it worse
+
+Asked on [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) by @sgbaird (10-10: read
+wells empty, dispense, read again, subtract; snapshots) and @timothy-commins ("its fixed, please
+continue", after putting the plate back and taping it). Two enclosure trips at nozzle z 92 over black
+paper, 15:26–17:23 MDT, with the paint pipetted in between. Write-up:
+[`results-background-subtraction-2026-10-14.md`](results-background-subtraction-2026-10-14.md).
+
+- **Points off (lower is better), black well subtracted → own empty reading subtracted:** yellow F3
+  32.3 → 35.7, red F6 16.7 → 25.6, blue F9 4.4 → 22.9; all three 17.8 → 28.1. The new way put 13 of 21
+  values below zero.
+- **Why:** where a pigment absorbs, its well read *less* painted than empty (blue in every channel, red
+  at 440–550 nm, yellow at 440–470 nm). An empty well's light comes largely up through the clear plate,
+  and the paint blocks it, so it isn't a background that stays when the paint goes in.
+- **The light changes with position:** empty F3, F6, F9, F12 read 0.03, 0.09, 0.24 and 0.61 on the
+  white/black scale, rising to the right towards white H12, and repeated the afternoon's values within
+  0.25%. The colours sit two rows behind the black and white wells, which is the likeliest reason even
+  the usual way scored worse than on 10-06 (17.8 against 12.2). An opaque-walled plate, or reference
+  wells beside each paint, are the fixes.
+- **The vials are low and the paint thicker:** the first yellow draw at z 28 came up air; all three were
+  drawn at z 20. Top them up and cap them.
+- **The Pi dropped off the network 16:00–16:52 MDT** mid-transfer, without rebooting. The transfer
+  driver's 15-minute timeout put the loaded red tip in the trash and homed the robot at 16:14, as
+  designed; red was redone with a fresh tip.
+- Snapshots: [`background-subtraction-2026-10-14.jpg`](background-subtraction-2026-10-14.jpg) (eight key
+  photos) and [`background-subtraction-2026-10-14.gif`](background-subtraction-2026-10-14.gif) (all 212).
+
+![the two methods against the published ranges](background-subtraction-2026-10-14.png)
 
 ## Calibrating with the Opentrons UI instead of hand-tuned offsets
 

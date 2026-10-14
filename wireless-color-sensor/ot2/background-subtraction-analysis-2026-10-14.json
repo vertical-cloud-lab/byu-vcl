@@ -1,0 +1,335 @@
+{
+ "what": "each well read empty, then painted, at nozzle z 92; the empty reading subtracted",
+ "channels": [
+  "ch410",
+  "ch440",
+  "ch470",
+  "ch510",
+  "ch550",
+  "ch583",
+  "ch620",
+  "ch670"
+ ],
+ "scored_nm": [
+  440,
+  470,
+  510,
+  550,
+  583,
+  620,
+  670
+ ],
+ "unchanged_wells": {
+  "black-H7": {
+   "total_trip2_over_trip1": 0.9782,
+   "largest_channel_change_pct": 3.59
+  },
+  "white-H12": {
+   "total_trip2_over_trip1": 0.9886,
+   "largest_channel_change_pct": 1.37
+  },
+  "empty-F12": {
+   "total_trip2_over_trip1": 0.984,
+   "largest_channel_change_pct": 1.88
+  }
+ },
+ "repeat_spread_within_a_read_pct": {
+  "trip 1 empty-F9": 0.025,
+  "trip 1 empty-F6": 0.054,
+  "trip 1 empty-F3": 0.084,
+  "trip 1 black-H7": 0.084,
+  "trip 1 white-H12": 0.052,
+  "trip 1 empty-F12": 0.06,
+  "trip 2 blue-F9": 0.057,
+  "trip 2 red-F6": 0.138,
+  "trip 2 yellow-F3": 0.025,
+  "trip 2 black-H7": 0.143,
+  "trip 2 white-H12": 0.07,
+  "trip 2 empty-F12": 0.143
+ },
+ "empty_wells_trip1": {
+  "wells": {
+   "F3": {
+    "total": 3562.0,
+    "over_black": [
+     1.026,
+     1.222,
+     1.071,
+     1.065,
+     1.022,
+     0.985,
+     0.954,
+     0.889
+    ],
+    "on_white_black_scale": [
+     0.041,
+     0.217,
+     0.1,
+     0.088,
+     0.045,
+     0.002,
+     -0.047,
+     -0.198
+    ],
+    "on_white_black_scale_mean_440_670": 0.03
+   },
+   "F6": {
+    "total": 3706.5,
+    "over_black": [
+     1.071,
+     1.294,
+     1.136,
+     1.114,
+     1.063,
+     1.026,
+     0.996,
+     0.932
+    ],
+    "on_white_black_scale": [
+     0.084,
+     0.282,
+     0.174,
+     0.141,
+     0.094,
+     0.054,
+     0.015,
+     -0.112
+    ],
+    "on_white_black_scale_mean_440_670": 0.093
+   },
+   "F9": {
+    "total": 4045.5,
+    "over_black": [
+     1.173,
+     1.438,
+     1.262,
+     1.235,
+     1.178,
+     1.132,
+     1.09,
+     1.022
+    ],
+    "on_white_black_scale": [
+     0.178,
+     0.412,
+     0.319,
+     0.269,
+     0.227,
+     0.191,
+     0.16,
+     0.067
+    ],
+    "on_white_black_scale_mean_440_670": 0.235
+   },
+   "F12": {
+    "total": 4968.8,
+    "over_black": [
+     1.469,
+     1.748,
+     1.557,
+     1.548,
+     1.486,
+     1.431,
+     1.369,
+     1.284
+    ],
+    "on_white_black_scale": [
+     0.45,
+     0.689,
+     0.657,
+     0.601,
+     0.585,
+     0.577,
+     0.586,
+     0.592
+    ],
+    "on_white_black_scale_mean_440_670": 0.612
+   }
+  },
+  "black_total": 3575.8,
+  "white_total": 5771.8
+ },
+ "paints": {
+  "yellow": {
+   "well": "F3",
+   "paint_total": 4020.5,
+   "empty_total": 3562.0,
+   "background_share_of_reading": [
+    0.953,
+    1.35,
+    1.149,
+    0.885,
+    0.787,
+    0.796,
+    0.831,
+    0.899
+   ],
+   "R_black_well": [
+    0.107,
+    -0.033,
+    -0.03,
+    0.271,
+    0.398,
+    0.354,
+    0.272,
+    0.024
+   ],
+   "R_own_empty": [
+    0.065,
+    -0.26,
+    -0.139,
+    0.165,
+    0.339,
+    0.346,
+    0.32,
+    0.224
+   ],
+   "published_lo": [
+    0.04,
+    0.042,
+    0.069,
+    0.251,
+    0.626,
+    0.786,
+    0.842,
+    0.878
+   ],
+   "published_hi": [
+    0.14,
+    0.153,
+    0.233,
+    0.503,
+    0.821,
+    0.907,
+    0.931,
+    0.948
+   ],
+   "points_off_black_well": 32.3,
+   "points_off_own_empty": 35.7,
+   "inside_range_black_well": 1,
+   "inside_range_own_empty": 0
+  },
+  "red": {
+   "well": "F6",
+   "paint_total": 3623.0,
+   "empty_total": 3706.5,
+   "background_share_of_reading": [
+    1.082,
+    1.29,
+    1.202,
+    1.224,
+    1.171,
+    0.988,
+    0.87,
+    0.922
+   ],
+   "R_black_well": [
+    0.027,
+    0.052,
+    -0.015,
+    -0.037,
+    -0.052,
+    0.098,
+    0.266,
+    0.069
+   ],
+   "R_own_empty": [
+    -0.057,
+    -0.238,
+    -0.197,
+    -0.195,
+    -0.159,
+    0.037,
+    0.251,
+    0.182
+   ],
+   "published_lo": [
+    0.011,
+    0.01,
+    0.011,
+    0.012,
+    0.027,
+    0.114,
+    0.507,
+    0.792
+   ],
+   "published_hi": [
+    0.021,
+    0.021,
+    0.021,
+    0.022,
+    0.029,
+    0.214,
+    0.598,
+    0.807
+   ],
+   "points_off_black_well": 16.7,
+   "points_off_own_empty": 25.6,
+   "inside_range_black_well": 0,
+   "inside_range_own_empty": 0
+  },
+  "blue": {
+   "well": "F9",
+   "paint_total": 3510.0,
+   "empty_total": 4045.5,
+   "background_share_of_reading": [
+    1.168,
+    1.102,
+    1.132,
+    1.231,
+    1.229,
+    1.198,
+    1.163,
+    1.111
+   ],
+   "R_black_well": [
+    0.041,
+    0.318,
+    0.176,
+    0.061,
+    0.006,
+    -0.023,
+    -0.053,
+    -0.116
+   ],
+   "R_own_empty": [
+    -0.137,
+    -0.099,
+    -0.148,
+    -0.224,
+    -0.233,
+    -0.22,
+    -0.212,
+    -0.182
+   ],
+   "published_lo": [
+    0.047,
+    0.064,
+    0.06,
+    0.038,
+    0.029,
+    0.029,
+    0.031,
+    0.031
+   ],
+   "published_hi": [
+    0.333,
+    0.44,
+    0.453,
+    0.358,
+    0.221,
+    0.15,
+    0.123,
+    0.113
+   ],
+   "points_off_black_well": 4.4,
+   "points_off_own_empty": 22.9,
+   "inside_range_black_well": 3,
+   "inside_range_own_empty": 0
+  }
+ },
+ "points_off_all": {
+  "black_well": 17.8,
+  "own_empty": 28.1
+ }
+}
