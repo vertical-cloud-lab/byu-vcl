@@ -1,4 +1,4 @@
-"""Presentation versions of the three machining clips from PR #232, for #248.
+"""Presentation versions of the three machining clips from PR #232, for #248, plus sawing the bar into blanks.
 
 The #232 clips (machining_cup.gif, machining_plug.gif, fill_and_vent.gif) carry a title, a step counter, a note,
 a caption line and leader-line callouts, and most steps are on screen for one to three and a half seconds. These
@@ -14,9 +14,10 @@ are for a slide instead:
 The motion is re-rendered from the same build123d model, with more frames per step, using machining.py's geometry
 and drawing helpers, rather than stretched from the old GIFs. The plug and fill clips end with an optional step
 each: a small channel across the plug's top face, and pressing the plug down with a ram, which covers the vent
-hole, so the channel is the way out for the air the powder gives up as it compacts.
+hole, so the channel is the way out for the air the powder gives up as it compacts. The saw clip comes before all
+three (PR #277): the 8 ft bar cut into equal blanks on a horizontal band saw, against a length stop.
 
-    xvfb-run -a python clips.py              # all three -> out/{cup,plug,fill}.{gif,mp4}
+    xvfb-run -a python clips.py              # all four -> out/{saw,cup,plug,fill}.{gif,mp4}
     xvfb-run -a python clips.py plug         # one of them
     xvfb-run -a python clips.py --preview    # two frames per move -> out/preview_<clip>.png, to check framing
 
@@ -33,7 +34,7 @@ import subprocess
 import sys
 
 import numpy as np
-from build123d import Align, Box, Cylinder, Pos
+from build123d import Align, Box, Cylinder, Pos, Rot
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -327,6 +328,241 @@ def end_mill():
 def ram():
     """Press ram, flat end at the origin, body running up."""
     return Cylinder(RAM_R, 40.0, align=(Align.CENTER, Align.CENTER, Align.MIN))
+
+
+# Before any of that, the 8 ft bar is cut into equal blanks on a horizontal band saw (PR #277). All to scale, in mm:
+# the bar lies along +X on the saw's bed (z = 0), the blade cuts at x = 0, the vise holds the bar on the -X side of
+# the blade, and the length stop sits on the +X side, so the piece between the blade and the stop is one blank.
+BAR_L = 96 * cad.IN  # the 8 ft bar
+BLANK_L = 3.0 * cad.IN  # Gage's cup blank: 2.750" finished, with a little over to face both ends
+KERF = 1.6  # a bimetal band's cut, with the teeth's set
+TRIM = 3.0  # squared off the factory end
+HEAD_UP, HEAD_DOWN = 2 * m.R + 26, -1.5  # blade edge: raised, and through the bar into the bed's slot
+JAW_OPEN = 6.0
+STOP_Y, STOP_Z = m.R + 26, 20.0  # the stop's rod, behind the bar
+FLOOR = -760.0
+STAND_X = -1750.0  # roller stand under the far end of the bar
+SAW_CAM = ((38.0, 0.0, 30.0), (0.5, -1.0, 0.75), 138.0)
+WIDE_CAM = ((-1068.0, 0.0, -330.0), (0.16, -1.0, 0.3), 700.0)
+HEAD_C = m.JAW_C  # the saw's head, lighter than the vise and stop so the three read apart
+
+
+def block(x0, x1, y0, y1, z0, z1):
+    return Pos(x0, y0, z0) * Box(x1 - x0, y1 - y0, z1 - z0, align=(Align.MIN, Align.MIN, Align.MIN))
+
+
+def rod_x(r, x0, x1, y=0.0, z=0.0):
+    return Pos(x0, y, z) * Rot(0, 90, 0) * Cylinder(r, x1 - x0, align=(Align.CENTER, Align.CENTER, Align.MIN))
+
+
+def rod_y(r, y0, y1, x=0.0, z=0.0):
+    return Pos(x, y0, z) * Rot(-90, 0, 0) * Cylinder(r, y1 - y0, align=(Align.CENTER, Align.CENTER, Align.MIN))
+
+
+def saw_base():
+    """The cabinet and the bed, slotted where the blade goes through."""
+    return block(-200, 200, -62, 62, FLOOR, -24) + block(-230, -3, -70, 70, -24, 0) + block(3, 230, -70, 70, -24, 0)
+
+
+def saw_fixed():
+    """The vise's fixed jaw, behind the bar, and the rod the length stop slides on."""
+    return block(-150, -6, m.R, m.R + 16, 0, 34) + rod_x(4.0, 6, 222, y=STOP_Y, z=STOP_Z)
+
+
+def saw_jaw():
+    """The vise's moving jaw, in front of the bar, with its screw and handwheel; closed on the bar."""
+    jaw = block(-150, -6, -m.R - 16, -m.R, 0, 34)
+    screw = rod_y(4.0, -m.R - 56, -m.R - 16, x=-78, z=17)
+    wheel = rod_y(20.0, -m.R - 62, -m.R - 56, x=-78, z=17) + rod_y(3.0, -m.R - 76, -m.R - 62, x=-78, z=31)
+    return jaw + screw + wheel
+
+
+def saw_head():
+    """Head, cutting edge at z = 0: two guides that hold the blade upright, the arm they hang from and the back
+    wheel's cover. The front wheel is left off, as it would sit right between the camera and the cut."""
+    guides = block(-7, 7, -48, -30, 4, 56) + block(-7, 7, 30, 48, 4, 56)
+    return guides + block(-12, 12, -56, 92, 56, 74) + rod_x(30.0, -13, 13, y=92, z=65)
+
+
+def saw_blade():
+    return block(-0.45, 0.45, -100, 100, 2.5, 12)
+
+
+def saw_teeth():
+    return block(-0.55, 0.55, -100, 100, 0, 2.5)
+
+
+def stop_block():
+    """The length stop's arm, its face at x = 0, reaching across from the rod behind to the bar's end."""
+    return block(0, 8, -14, STOP_Y + 6, 3, STOP_Z + 9)
+
+
+def roller_stand():
+    """A roller stand, its roller's top level with the bed, so the bar's far end runs on it."""
+    post = Pos(STAND_X, 0, FLOOR) * Cylinder(16, -32 - FLOOR, align=(Align.CENTER, Align.CENTER, Align.MIN))
+    feet = block(STAND_X - 190, STAND_X + 190, -18, 18, FLOOR, FLOOR + 14) + \
+        block(STAND_X - 18, STAND_X + 18, -190, 190, FLOOR, FLOOR + 14)
+    fork = block(STAND_X - 14, STAND_X + 14, -72, 72, -42, -32) + \
+        block(STAND_X - 14, STAND_X + 14, -72, -64, -32, -8) + block(STAND_X - 14, STAND_X + 14, 64, 72, -32, -8)
+    return post + feet + fork + rod_y(14.0, -64, 64, x=STAND_X, z=-14)
+
+
+def placed(trio, deg, centre, to):
+    """A mesh trio turned deg about the Y axis through centre, then moved so that centre lands on to."""
+    shift = np.subtract(to, centre)
+    out = []
+    for mesh in trio:
+        if mesh is not None:
+            mesh = mesh.rotate_y(deg, point=centre, inplace=False) if deg else mesh.copy()
+            mesh = mesh.translate(shift, inplace=False)
+        out.append(mesh)
+    return tuple(out)
+
+
+# ---------------------------------------------------------------------------
+# 0. Saw the bar into blanks
+# ---------------------------------------------------------------------------
+def saw():
+    c = Clip("saw")
+    stand = m.cached("saw_stand", roller_stand)
+    base = m.cached("saw_base", saw_base)
+    fixed = m.cached("saw_fixed", saw_fixed)
+    jaw_mesh = m.cached("saw_jaw", saw_jaw)
+    head_mesh = m.cached("saw_head", saw_head)
+    blade_mesh = m.cached("saw_blade", saw_blade)
+    teeth_mesh = m.cached("saw_teeth", saw_teeth)
+    stop_mesh = m.cached("saw_stop", stop_block)
+    bar = m.cached("bar_8ft", lambda: rod_x(m.R, 0, BAR_L, z=m.R))
+    blank = m.cached("blank", lambda: rod_x(m.R, 0, BLANK_L, z=m.R))
+    trim = m.cached("trim", lambda: rod_x(m.R, KERF / 2, TRIM, z=m.R))
+    park, stop_at = 196.0, KERF / 2 + BLANK_L  # the stop out of the way, and set for one blank
+    mid = (BLANK_L / 2, 0.0, m.R)  # a blank's centre, as tessellated
+    spots = [(122.0 + 26.0 * k, -44.0) for k in range(3)]  # where the blanks stand as they come off
+    teeth = [0.0]
+
+    def scene(bar_end, jaw=1.0, head=HEAD_UP, stop=park, pieces=(), cam=SAW_CAM, running=False):
+        pl = c.pl
+        pl.clear()
+        m.show(pl, stand, m.CHUCK_C, lw=0.7)
+        m.show(pl, base, m.CHUCK_C, lw=0.7)
+        m.show(pl, fixed, m.TOOL, lw=0.7)
+        m.show(pl, jaw_mesh, m.TOOL, lw=0.7, move=(0, -JAW_OPEN * (1 - jaw), 0))
+        m.show(pl, head_mesh, HEAD_C, lw=0.7, move=(0, 0, head))
+        m.show(pl, blade_mesh, m.STEEL, lw=0.5, move=(0, 0, head))
+        m.show(pl, teeth_mesh, m.CARBIDE, lw=0.5, move=(0, 0, head))
+        m.show(pl, stop_mesh, m.TOOL, lw=0.7, move=(stop, 0, 0))
+        m.show(pl, bar, AL, lw=1.1, move=(bar_end - BAR_L, 0, 0))
+        for trio in pieces:
+            m.show(pl, trio, AL, lw=1.1)
+        if running:  # marks running along the blade's edge, so you can see the band move, as the lathe's stripes do
+            teeth[0] = (teeth[0] + 3.3) % 9.0
+            marks = [pv.Line((0.6, y, head), (0.6, y, head + 2.5)) for y in np.arange(-98 + teeth[0], 98, 9.0)]
+            pl.add_mesh(pv.merge(marks), color=m.STRIPE, line_width=2.0 * m.SS)
+        c.camera(*cam)
+
+    def cut(bar_end, cap, piece, n_down, n_up, stop=park, pieces=()):
+        """Blade down through the bar and back up; the bar is two pieces from the moment it is through."""
+        for t in steps(n_down):
+            scene(bar_end, head=HEAD_UP + (HEAD_DOWN - HEAD_UP) * t, stop=stop, pieces=pieces, running=True)
+            c.grab(cap)
+        for t in steps(n_up):
+            scene(-KERF / 2, head=HEAD_DOWN + (HEAD_UP - HEAD_DOWN) * t, stop=stop, pieces=(*pieces, piece),
+                  running=t < 1)
+            c.grab(cap)
+
+    def stood(k, t):
+        """Blank k on its way from the saw to its spot: out from under the stop, then up, over and stood on end."""
+        sx, sy = spots[k]
+        a = min(1.0, t / 0.35)
+        b = max(0.0, (t - 0.25) / 0.75)
+        x = mid[0] + KERF / 2 + (sx - mid[0] - KERF / 2) * b
+        y = -30.0 * a + (sy + 30.0) * b
+        z = m.R + (BLANK_L / 2 - m.R) * b + 40.0 * math.sin(math.pi * b)
+        return placed(blank, -90.0 * b, mid, (x, y, z))
+
+    lying = placed(blank, 0.0, mid, (mid[0] + KERF / 2, 0.0, m.R))
+
+    cap = "Support the long end"
+    scene(TRIM, jaw=0.0, cam=WIDE_CAM)
+    c.grab(cap)
+    c.linger(2.3)
+    for t in steps(24):  # along the bar to the saw
+        f0, d0, s0 = WIDE_CAM
+        f1, d1, s1 = SAW_CAM
+        d = np.add(np.multiply(d0, 1 - t), np.multiply(d1, t))
+        scene(TRIM, jaw=0.0, cam=(tuple(np.add(np.multiply(f0, 1 - t), np.multiply(f1, t))), tuple(d),
+                                  s0 * (s1 / s0) ** t))
+        c.grab(cap)
+    c.linger(0.4)
+
+    cap = "Square the end first"
+    for t in steps(5):
+        scene(TRIM, jaw=t)
+        c.grab(cap)
+    cut(TRIM, cap, trim, 20, 8)
+    c.linger(1.9)
+
+    cap = "Set the stop for one blank"
+    scene(-KERF / 2, jaw=0.0)  # the offcut goes in the scrap; the vise opens
+    c.dissolve(cap)
+    for t in steps(22):
+        scene(-KERF / 2, jaw=0.0, stop=park + (stop_at - park) * t)
+        c.grab(cap)
+    c.linger(2.5)
+
+    cap = "Slide the bar to the stop"
+    for t in steps(24):
+        scene(-KERF / 2 + (stop_at + KERF / 2) * t, jaw=0.0, stop=stop_at)
+        c.grab(cap)
+    c.linger(2.8)
+
+    cap = "Clamp it, then cut"
+    for t in steps(5):
+        scene(stop_at, jaw=t, stop=stop_at)
+        c.grab(cap)
+    cut(stop_at, cap, lying, 20, 8, stop=stop_at)
+    c.linger(1.9)
+
+    cap = "Repeat down the bar"
+    done = []
+    for k in range(len(spots)):
+        if k:  # open, slide up to the stop, clamp, cut
+            for t in steps(2):
+                scene(-KERF / 2, jaw=1 - t, stop=stop_at, pieces=done)
+                c.grab(cap)
+            for t in steps(8):
+                scene(-KERF / 2 + (stop_at + KERF / 2) * t, jaw=0.0, stop=stop_at, pieces=done)
+                c.grab(cap)
+            for t in steps(2):
+                scene(stop_at, jaw=t, stop=stop_at, pieces=done)
+                c.grab(cap)
+            cut(stop_at, cap, lying, 9, 4, stop=stop_at, pieces=done)
+        for t in steps(10):  # and set it with the others
+            scene(-KERF / 2, stop=stop_at, pieces=(*done, stood(k, t)))
+            c.grab(cap)
+        done.append(stood(k, 1.0))
+    c.linger(0.6)
+
+    # The whole bar's worth, stood on end, then turned a little so they read as cylinders of one height
+    cap = "The blanks, all the same length"
+    rows, cols, pitch = 5, 6, 27.0
+    grid = [(pitch * (i - (cols - 1) / 2), pitch * (j - (rows - 1) / 2)) for j in range(rows) for i in range(cols)]
+    focal, view, scale = (0.0, 0.0, BLANK_L / 2 - 6.0), (0.42, -1.0, 0.62), 112.0
+
+    def blanks(deg):
+        pl = c.pl
+        pl.clear()
+        for gx, gy in grid:
+            m.show(pl, placed(blank, -90.0, mid, (gx, gy, BLANK_L / 2)), AL, lw=1.1)
+        c.camera(focal, turn_about_z(view, deg), scale)
+
+    blanks(-30)
+    c.dissolve(cap, n=8)
+    for t in steps(20):
+        blanks(-30 * (1 - t))
+        c.grab(cap)
+    c.linger(2.5)
+    c.save()
 
 
 # ---------------------------------------------------------------------------
@@ -644,7 +880,7 @@ def fill():
     c.save()
 
 
-CLIPS = {"cup": cup, "plug": plug, "fill": fill}
+CLIPS = {"saw": saw, "cup": cup, "plug": plug, "fill": fill}
 
 if __name__ == "__main__":
     names = [a for a in sys.argv[1:] if not a.startswith("--")] or list(CLIPS)

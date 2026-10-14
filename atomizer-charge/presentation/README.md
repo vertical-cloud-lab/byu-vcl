@@ -2,11 +2,14 @@
 
 Slide versions of the three CAD clips from PR [#232](https://github.com/vertical-cloud-lab/byu-vcl/pull/232)
 (`machining_cup.gif`, `machining_plug.gif`, `fill_and_vent.gif`), for
-[#248](https://github.com/vertical-cloud-lab/byu-vcl/issues/248). Each clip comes as an H.264 MP4 at 1920×1080 for
-PowerPoint or Keynote, and as a 1280×720 GIF that plays once and stops on its last frame, for Google Slides.
+[#248](https://github.com/vertical-cloud-lab/byu-vcl/issues/248), plus a fourth that comes before them: sawing the 8 ft
+bar into blanks ([#277](https://github.com/vertical-cloud-lab/byu-vcl/pull/277)). Each clip comes as an H.264 MP4 at
+1920×1080 for PowerPoint or Keynote, and as a 1280×720 GIF that plays once and stops on its last frame, for Google
+Slides.
 
 | Clip | MP4 (1080p) | GIF (720p, plays once) | Length | Captions, in order (seconds on screen) |
 | --- | --- | --- | --- | --- |
+| Saw | [saw.mp4](out/saw.mp4) | [saw.gif](out/saw.gif) | 39.9 s | Support the long end (5.2) · Square the end first (5.2) · Set the stop for one blank (5.2) · Slide the bar to the stop (5.2) · Clamp it, then cut (5.2) · Repeat down the bar (8.6) · The blanks, all the same length (5.3) |
 | Cup | [cup.mp4](out/cup.mp4) | [cup.gif](out/cup.gif) | 26.6 s | Face the end flat (5.2) · Drill the pocket (5.2) · Ream it smooth (5.1) · Cut the cup off (5.4) · The finished cup (5.7) |
 | Plug | [plug.mp4](out/plug.mp4) | [plug.gif](out/plug.gif) | 38.0 s | Turn it to fit its cup (5.2) · Taper the end that goes in (5.2) · Drill the air hole (5.7) · Chamfer the top edge (5.1) · Cut the plug off (5.2) · The finished plug (5.7) · Optional: a channel across the top (5.9) |
 | Fill | [fill.mp4](out/fill.mp4) | [fill.gif](out/fill.gif) | 29.2 s | Fill with weighed powder (5.2) · Close it with its own plug (5.2) · Vacuum pulls air out the hole (6.0) · Optional: press it down to compact (5.8) · Air escapes along the channel (7.0) |
@@ -22,6 +25,26 @@ PowerPoint or Keynote, and as a 1280×720 GIF that plays once and stops on its l
 - **Every caption stays up for at least 5 s.** `save()` refuses to write a clip that breaks this or the word limit.
 - 1920×1080 (16:9) on a pure white background, so the clips sit on a white slide without a visible box. The GIF is
   the same picture downscaled to 1280×720, written without a loop block so it plays once.
+
+## Sawing the bar into blanks
+
+The saw clip comes first: the 8 ft bar of 3/4" 6063 ([1640T16](https://www.mcmaster.com/1640T16/)) cut into equal
+blanks on a horizontal band saw, before anything goes on the lathe. The far end of the bar rests on a roller stand, the
+factory end is squared off, and a length stop sets every blank, so nothing is marked on the metal. Each blank is lifted
+out and stood with the others, and the clip ends on the whole bar's worth standing on end.
+
+The numbers are here rather than on screen:
+
+| | |
+| --- | --- |
+| Blank | 3.000", Gage's length for the cups: faced to 2.750", about 1/8" off each end |
+| Kerf | about 1/16" for a bimetal band |
+| From 96" | square the end (about 1/8"), then 30 blanks, with about 4" left over |
+| Mass | 58.4 g per 3" blank of 6063; 1.75 kg for 30, of the bar's 1.87 kg |
+
+A 3" blank can become a cup, a solid slug, or plug stock, so they don't need to be sorted at the saw. The Oct 8 run in
+[#261](https://github.com/vertical-cloud-lab/byu-vcl/issues/261) used three rods of about 5" instead; one run's worth
+of those takes 15-3/16" of bar, the same as five blanks.
 
 ## The optional press-fit steps
 
@@ -57,9 +80,9 @@ the smooth hole asked for in #248 for the hydraulic-press versions. The first cu
 
 ```bash
 pip install build123d pyvista matplotlib pillow numpy imageio-ffmpeg
-xvfb-run -a python clips.py              # all three -> out/{cup,plug,fill}.{gif,mp4}, about 15 minutes
+xvfb-run -a python clips.py              # all four -> out/{saw,cup,plug,fill}.{gif,mp4}
 xvfb-run -a python clips.py plug         # just one
-xvfb-run -a python clips.py --preview    # two frames per move -> out/preview_<clip>.png, about a minute
+xvfb-run -a python clips.py --preview    # two frames per move -> out/preview_<clip>.png
 ```
 
 Captions and their timing are in `clips.py`, next to the motion they label. `clips.py` reads `machining.py`,
