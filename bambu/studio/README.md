@@ -26,7 +26,7 @@ pre-flight under 15 min old, and a camera frame read before Send.
 | [`studio.sh`](studio.sh) | Starts Studio on display `:99` with software GL and WebKit compositing off (the login and home pages are WebKit views) |
 | [`ui.py`](ui.py) | `xdotool` wrapper: smooth pointer moves (they show in a recording), clicks, keys, and `typeenv VAR`, which types a secret from the environment through stdin, so it never appears in argv or a log |
 | [`shot.sh`](shot.sh) | Screenshot of `:99`, to find the next thing to click |
-| [`wait_code.py`](wait_code.py) | Checks the PR thread (#234, or `PR_NUMBER`) every 2 s for a 6-digit code from someone with write access, then types it into Studio's verification dialog. It never prints the code |
+| `bambu-totp` | Not in this folder: `claude-print.yml` installs it on the runner. Writes the account's current authenticator code to stdout, for piping into `xdotool` (see [Logging in](#logging-in-password-plus-an-authenticator-code)) |
 | [`watch_studio.py`](watch_studio.py) | Watches a print from Studio's Device page when the LAN route is shut (the H2D, 2026-10-08): reads temperatures and layer by OCR every 10 s, saves camera frames, stops on a new dialog, a hard limit, a stall or a blank camera |
 
 ## Setup (about 2 min on a runner)
@@ -56,28 +56,42 @@ To record it: `ffmpeg -f x11grab -framerate 15 -video_size 1920x1080 -i :99.0 -c
    - Three *Beta available* prompts: *Don't show me Beta updates again*.
    - A *Configuration update* (profile package): **Cancel**. That keeps the profiles bundled with
      the release, the ones `slice_a1mini.py` sliced with.
-4. **Login/Register** opens a WebKit page: e-mail, password, *I agree*, *Log In*.
+4. **Login/Register** opens a WebKit page: e-mail, password, *I agree*, *Log In*, then the
+   authenticator code. See [Logging in](#logging-in-password-plus-an-authenticator-code).
 5. **"Synchronise your personal data from Bambu Cloud?"**: *No*. The project brings its own
    presets.
 
-## The e-mail code: a person has to relay it every session
+## Logging in: password plus an authenticator code
 
-Bambu asks for an e-mailed verification code on every login from a new device, and every CI
-runner is a new device. On 2026-09-27:
-- **The first code expired unused.** A person posted it 20 min after it was sent, and Bambu
-  answered "Code does not exist or has expired".
-- **The dialog's *Send verification code* link sends a new one.** The second code was posted a
-  minute after it was sent. `wait_code.py` typed it 4 s later, and it worked.
+Since 2026-10-15 the lab account has authenticator-app 2-step verification, and only an
+approved `@claude-print` run can log in. That run is [`claude-print.yml`](../../.github/workflows/claude-print.yml);
+see "Printing on the lab's Bambu Lab printers" in [CLAUDE.md](../../CLAUDE.md). Plain `@claude`
+runs no longer get `BAMBU_USERNAME` or `BAMBU_PASSWORD`, so they can prepare a print but not
+send it.
 
-So ask for the code in the thread only when someone is ready to answer, and request a fresh one
-if more than a few minutes pass. Ask for the bare digits, without `@claude`: a comment that
-mentions it starts another run (2026-10-01; see [the third run](#third-run-plate-2-2026-10-01)).
-What the code proves is a person's inbox, so no session can get around it. That is the check
-working as intended.
+1. Type the e-mail address and password from the environment, never as arguments:
+   `python ui.py typeenv BAMBU_USERNAME`, then `python ui.py typeenv BAMBU_PASSWORD`. Tick *I
+   agree* and press *Log In*.
+2. Bambu then asks for the 6-digit code from the authenticator app. Click its field and type
+   the current code with `bambu-totp | DISPLAY=:99 xdotool type --delay 90 --file -`. Inside
+   the last 5 s of a 30 s window, `bambu-totp` waits for the next one, so the code can't expire
+   between typing and confirming. No run has seen this dialog yet: find the field from a
+   screenshot the first time, and record its coordinates here.
+3. If Bambu asks for an **e-mailed** code instead, stop and say so in the thread. **Never ask
+   anyone to post an e-mailed code, and never post one.** Bambu accepts the account's e-mail
+   address plus a current e-mailed code as a complete login, with no password, even with 2-step
+   verification on
+   ([robot-arms PR 10](https://github.com/vertical-cloud-lab/robot-arms/pull/10#issuecomment-6140001145),
+   [ha-bambulab PR 2058](https://github.com/greghesp/ha-bambulab/pull/2058)). A code posted in
+   this thread is the account until it expires.
 
-The typed e-mail address shows on screen until the login closes, and the verification dialog
-repeats it. So cut that stretch from any recording, mask it in any screenshot that leaves the
-runner, and delete the raw recording afterwards.
+The runs up to 2026-10-08 logged in with that e-mailed code: a person posted it here and
+`wait_code.py` typed it. The run logs below still describe that. `wait_code.py` has been
+deleted, but it is in git history.
+
+The typed e-mail address shows on screen until the login closes. So cut that stretch from any
+recording, mask it in any screenshot that leaves the runner, and delete the raw recording
+afterwards.
 
 ## The GUI resets a CLI project's changed settings
 

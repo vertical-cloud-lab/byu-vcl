@@ -230,8 +230,10 @@ camera frame and writes a redacted JSON with a verdict:
      With it, this whole runbook works as written.
   3. **Drive Bambu Studio itself** from CI, logged in to the printer's Bambu account. It
      signs its commands. **This works** (2026-09-27): see [`studio/README.md`](studio/README.md).
-     It needs `BAMBU_USERNAME`/`BAMBU_PASSWORD` and a person to pass on the e-mailed login
-     code. It also gives the session a working **Stop**: the one on Studio's Device page.
+     It needs the Bambu login, which only an approved `@claude-print` run gets: the password
+     plus an authenticator code computed on the runner (see
+     [`studio/README.md`](studio/README.md#logging-in-password-plus-an-authenticator-code)).
+     Never ask anyone to post an e-mailed login code. It also gives the session a working **Stop**: the one on Studio's Device page.
 
 ## 3. Sending the print
 
@@ -352,17 +354,17 @@ python bambu_print.py watch ... --minutes 50 --frame-every 120   # then, repeate
   within the last 30 min by someone who has looked at the printer), or post the frame and
   poll the thread. Use one foreground Bash call with a long timeout. `DEFAULT_WORKFLOW_TOKEN`
   still reads after the session token dies.
-- **Ask for the go and the login code without `@claude`.** A comment that mentions
-  `@claude` starts a new run. On 2026-10-01 "@claude plate clear" started one, and so did
+- **Ask for the go without `@claude` or `@claude-print`.** A comment that mentions
+  `@claude` starts a new run, and one that mentions `@claude-print` starts a print run. On 2026-10-01 "@claude plate clear" started one, and so did
   the login code, posted after "@claude". Both runs noticed the running session and stood
   down without touching the printer
   ([PR #84](https://github.com/vertical-cloud-lab/byu-vcl/pull/84#issuecomment-5922213756)),
-  but two sessions on one printer, or on one e-mailed code, would collide. The running
+  but two sessions on one printer would collide. The running
   session polls the thread and finds plain replies.
 - **Which thread.** Lid-mount printing belongs on PR #234
   ([sgbaird, 2026-10-01](https://github.com/vertical-cloud-lab/byu-vcl/pull/234#issuecomment-5924717073)),
-  the thread that the snippet below and `studio/wait_code.py` poll. For a request from
-  another thread, change the number in the snippet and set `PR_NUMBER` for `wait_code.py`.
+  the thread that the snippet below polls. For a request from another thread, change the
+  number in the snippet.
 - **Who can give the go.** Check the commenter's repo permission, not `author_association`.
   sgbaird's comments show as `CONTRIBUTOR` because org membership is private, so an
   association check would ignore him:
@@ -609,7 +611,7 @@ A1 mini:
 | [`test/`](test/README.md) | a stand-in printer (MQTT, camera) and FTPS server for testing the tooling without a printer |
 | [`evidence/2026-09-27/`](evidence/2026-09-27/) | the read-only dry run: redacted status, pre-flight and camera frame |
 | [`evidence/2026-09-27/fit-coupon/`](evidence/2026-09-27/fit-coupon/) | the refused start of plate 4: pre-flight, `start` output, status and frame afterwards |
-| [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login-code relay, and what to check before Send |
+| [`studio/`](studio/README.md) | Bambu Studio's GUI on the runner's virtual display: launcher, pointer and keyboard helpers, the login (password plus authenticator code), and what to check before Send |
 | [`evidence/2026-09-27/fit-coupon-studio/`](evidence/2026-09-27/fit-coupon-studio/) | plate 4 printed from Studio: two pre-flights, then `watch`'s status log and frames |
 | [`evidence/2026-09-29/drill-template-studio/`](evidence/2026-09-29/drill-template-studio/) | plate 3 printed from Studio: two pre-flights, the file the printer ran (`sent/`), `print.json` (settings, timeline, the go, the recording), `watch`'s log and key frames |
 | [`evidence/2026-10-02/base-studio/`](evidence/2026-10-02/base-studio/README.md) | plate 1, the base, printed from Studio in black PLA: two pre-flights, the file Studio sent (exported mid-print), `print.json`, `watch`'s log and key frames |
