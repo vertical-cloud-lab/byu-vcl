@@ -1,0 +1,70 @@
+# One record per corrosion spot. Copy, fill in, and keep next to the raw potentiostat files.
+# The run ID ties every result back to the atomizer run record (#249 IDs, PR #268 folders).
+
+spot_id:            # e.g. <run_id>-<piece>-<well>-<yyyymmdd>
+test_matrix_row:    # id from test-matrix.csv (S0, R0, R1, A, B, ...)
+
+specimen:
+  run_id:           # six-character bag ID from #249, or the feedstock lot for R0-R2
+  source_issue:     # e.g. 249, 222, 223, 77
+  piece:            # splat | cup puddle | skull | feedstock slice | print XY | print XZ | arc-melt button
+  composition_eds:  # Si wt% measured on this face (mean, SD, n), and Fe/Mo/W if seen
+  composition_icp:  # Mg, Si, Fe, Cu wt% if a chip went for ICP; else null
+  polished_by:
+  polish_finished:  # ISO time; the age at test follows from it
+  final_step:       # e.g. "0.1 um diamond film" (SOP #258)
+  storage:          # vacuum jar | desiccator | air
+  face_image:       # path to the CubXL camera image with the clamp in place
+
+cell:
+  clamp_version:
+  well_index:
+  oring_id_mm:
+  oring_material: FKM
+  area_cm2:
+  volume_uL:
+  reference_id:
+  reference_offset_mV:  # against the master reference, measured before this night
+  counter: Pt wire
+
+electrolyte:
+  nacl_M:
+  stocks:           # stock batch IDs and the volume of each, uL
+  stock_conductivity_mS_cm:
+  stock_pH:
+  temperature_C:
+  aerated: true
+
+potentiostat:
+  model:
+  serial:
+  firmware:
+  current_range:    # fixed range(s) used, or "autorange"
+
+steps:
+  ocp:   {duration_s: 1800, sample_period_s: 1}
+  lpr:   {from_mV_vs_ocp: -10, to_mV_vs_ocp: 10, rate_mV_s: 0.167}
+  rest:  {duration_s: 300}
+  cpp:   {start_mV_vs_ocp: -50, rate_mV_s: 0.167, reverse_at_uA_cm2: 1000, stop: "E_corr"}
+
+results:
+  E_corr_mV_vs_ref:
+  ocp_drift_mV_per_min:
+  Rp_ohm_cm2:
+  E_pit_10_mV:      # first potential where i >= 10 uA/cm2
+  E_pit_100_mV:     # same at 100 uA/cm2
+  E_rp_mV:          # reverse scan back below 10 uA/cm2
+  anodic_charge_mC:
+
+validity:
+  leak_free_at_fill: true
+  ocp_drift_ok:
+  lpr_linear_ok:
+  no_crevice_attack:   # camera after the test; SEM later
+  notes:
+
+collected:
+  icp_tube_id:
+  volume_uL:
+
+raw_files:          # potentiostat exports, camera images
