@@ -1,0 +1,642 @@
+{
+ "what": "the three 2026-09-30 paint runs scored on one scale, 440-670 nm",
+ "reference": "pigment alone to 1:1 with titanium white (red: PR170 to PR9); fits use the middle",
+ "channels": [
+  "ch410",
+  "ch440",
+  "ch470",
+  "ch510",
+  "ch550",
+  "ch583",
+  "ch620",
+  "ch670"
+ ],
+ "runs": {
+  "before": {
+   "label": "13:25, paint / empty A6",
+   "values": {
+    "yellow": [
+     0.728,
+     0.467,
+     0.578,
+     0.729,
+     0.824,
+     0.858,
+     0.879,
+     0.876
+    ],
+    "red": [
+     0.635,
+     0.457,
+     0.535,
+     0.528,
+     0.571,
+     0.689,
+     0.828,
+     0.851
+    ],
+    "blue": [
+     0.619,
+     0.589,
+     0.615,
+     0.56,
+     0.57,
+     0.607,
+     0.659,
+     0.738
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": 0.545,
+    "b_slope": 0.384,
+    "differences_too_small_by": 2.6,
+    "r2": 0.794
+   },
+   "fit_pure": {
+    "a_black_reads": 0.571,
+    "b_slope": 0.38,
+    "differences_too_small_by": 2.63,
+    "r2": 0.802
+   },
+   "fit_tinted": {
+    "a_black_reads": 0.532,
+    "b_slope": 0.358,
+    "differences_too_small_by": 2.79,
+    "r2": 0.72
+   },
+   "miss_mean": 0.291,
+   "miss_by_paint": {
+    "yellow": 0.127,
+    "red": 0.393,
+    "blue": 0.354
+   },
+   "inside_range": 2,
+   "dark_floor": {
+    "yellow": [
+     0.47,
+     0.58
+    ],
+    "red": [
+     0.46,
+     0.57
+    ],
+    "blue": [
+     0.57,
+     0.74
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.97,
+     "red": 0.62,
+     "blue": -0.95
+    },
+    "red": {
+     "yellow": 0.87,
+     "red": 0.93,
+     "blue": -0.88
+    },
+    "blue": {
+     "yellow": 0.53,
+     "red": 0.94,
+     "blue": -0.55
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "red"
+   },
+   "yellow_620_over_440": 1.88
+  },
+  "first_try": {
+   "label": "15:47, white A4 and black A5 next to the paints",
+   "values": {
+    "yellow": [
+     0.461,
+     -0.073,
+     0.058,
+     0.783,
+     1.195,
+     1.3,
+     1.346,
+     1.25
+    ],
+    "red": [
+     0.1,
+     -0.131,
+     -0.176,
+     -0.174,
+     -0.14,
+     0.328,
+     1.009,
+     0.983
+    ],
+    "blue": [
+     -0.019,
+     0.263,
+     0.12,
+     -0.09,
+     -0.198,
+     -0.184,
+     -0.151,
+     -0.245
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": -0.229,
+    "b_slope": 1.785,
+    "differences_too_small_by": 0.56,
+    "r2": 0.933
+   },
+   "fit_pure": {
+    "a_black_reads": -0.103,
+    "b_slope": 1.735,
+    "differences_too_small_by": 0.58,
+    "r2": 0.912
+   },
+   "fit_tinted": {
+    "a_black_reads": -0.301,
+    "b_slope": 1.694,
+    "differences_too_small_by": 0.59,
+    "r2": 0.879
+   },
+   "miss_mean": 0.205,
+   "miss_by_paint": {
+    "yellow": 0.27,
+    "red": 0.197,
+    "blue": 0.147
+   },
+   "inside_range": 2,
+   "dark_floor": {
+    "yellow": [
+     -0.07,
+     0.06
+    ],
+    "red": [
+     -0.18,
+     -0.13
+    ],
+    "blue": [
+     -0.25,
+     -0.15
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.97,
+     "red": 0.58,
+     "blue": -0.96
+    },
+    "red": {
+     "yellow": 0.77,
+     "red": 0.96,
+     "blue": -0.8
+    },
+    "blue": {
+     "yellow": -0.92,
+     "red": -0.55,
+     "blue": 0.9
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "blue"
+   },
+   "yellow_620_over_440": -18.5
+  },
+  "second_try": {
+   "label": "19:15, white H12 and black H7, empty wells between the paints",
+   "values": {
+    "yellow": [
+     0.508,
+     0.266,
+     0.358,
+     0.721,
+     0.911,
+     0.938,
+     0.982,
+     0.858
+    ],
+    "red": [
+     0.345,
+     0.339,
+     0.327,
+     0.288,
+     0.292,
+     0.503,
+     0.824,
+     0.734
+    ],
+    "blue": [
+     0.258,
+     0.596,
+     0.502,
+     0.327,
+     0.263,
+     0.241,
+     0.247,
+     0.259
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": 0.268,
+    "b_slope": 0.775,
+    "differences_too_small_by": 1.29,
+    "r2": 0.881
+   },
+   "fit_pure": {
+    "a_black_reads": 0.325,
+    "b_slope": 0.74,
+    "differences_too_small_by": 1.35,
+    "r2": 0.831
+   },
+   "fit_tinted": {
+    "a_black_reads": 0.231,
+    "b_slope": 0.748,
+    "differences_too_small_by": 1.34,
+    "r2": 0.859
+   },
+   "miss_mean": 0.142,
+   "miss_by_paint": {
+    "yellow": 0.093,
+    "red": 0.247,
+    "blue": 0.087
+   },
+   "inside_range": 1,
+   "dark_floor": {
+    "yellow": [
+     0.27,
+     0.36
+    ],
+    "red": [
+     0.29,
+     0.34
+    ],
+    "blue": [
+     0.24,
+     0.26
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.95,
+     "red": 0.51,
+     "blue": -0.93
+    },
+    "red": {
+     "yellow": 0.72,
+     "red": 0.93,
+     "blue": -0.75
+    },
+    "blue": {
+     "yellow": -0.93,
+     "red": -0.51,
+     "blue": 0.91
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "blue"
+   },
+   "yellow_620_over_440": 3.69
+  }
+ },
+ "controls": {
+  "first_try_old_way": {
+   "label": "15:47 readings / empty A6, as before",
+   "values": {
+    "yellow": [
+     0.819,
+     0.537,
+     0.652,
+     0.831,
+     0.933,
+     0.962,
+     0.976,
+     0.95
+    ],
+    "red": [
+     0.709,
+     0.519,
+     0.597,
+     0.594,
+     0.636,
+     0.765,
+     0.916,
+     0.921
+    ],
+    "blue": [
+     0.673,
+     0.639,
+     0.666,
+     0.615,
+     0.623,
+     0.661,
+     0.713,
+     0.785
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": 0.603,
+    "b_slope": 0.424,
+    "differences_too_small_by": 2.36,
+    "r2": 0.816
+   },
+   "fit_pure": {
+    "a_black_reads": 0.631,
+    "b_slope": 0.42,
+    "differences_too_small_by": 2.38,
+    "r2": 0.827
+   },
+   "fit_tinted": {
+    "a_black_reads": 0.589,
+    "b_slope": 0.395,
+    "differences_too_small_by": 2.53,
+    "r2": 0.738
+   },
+   "miss_mean": 0.353,
+   "miss_by_paint": {
+    "yellow": 0.192,
+    "red": 0.462,
+    "blue": 0.406
+   },
+   "inside_range": 0,
+   "dark_floor": {
+    "yellow": [
+     0.54,
+     0.65
+    ],
+    "red": [
+     0.52,
+     0.64
+    ],
+    "blue": [
+     0.62,
+     0.78
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.95,
+     "red": 0.56,
+     "blue": -0.94
+    },
+    "red": {
+     "yellow": 0.87,
+     "red": 0.93,
+     "blue": -0.88
+    },
+    "blue": {
+     "yellow": 0.56,
+     "red": 0.95,
+     "blue": -0.57
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "red"
+   },
+   "yellow_620_over_440": 1.82
+  },
+  "first_try_white_only": {
+   "label": "15:47 readings / white A4 x R_white, no black subtracted",
+   "values": {
+    "yellow": [
+     0.622,
+     0.573,
+     0.703,
+     0.89,
+     0.999,
+     1.02,
+     1.021,
+     0.987
+    ],
+    "red": [
+     0.538,
+     0.554,
+     0.645,
+     0.636,
+     0.681,
+     0.81,
+     0.959,
+     0.956
+    ],
+    "blue": [
+     0.511,
+     0.682,
+     0.718,
+     0.658,
+     0.668,
+     0.7,
+     0.746,
+     0.815
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": 0.645,
+    "b_slope": 0.433,
+    "differences_too_small_by": 2.31,
+    "r2": 0.818
+   },
+   "fit_pure": {
+    "a_black_reads": 0.674,
+    "b_slope": 0.426,
+    "differences_too_small_by": 2.35,
+    "r2": 0.821
+   },
+   "fit_tinted": {
+    "a_black_reads": 0.63,
+    "b_slope": 0.405,
+    "differences_too_small_by": 2.47,
+    "r2": 0.749
+   },
+   "miss_mean": 0.398,
+   "miss_by_paint": {
+    "yellow": 0.242,
+    "red": 0.504,
+    "blue": 0.447
+   },
+   "inside_range": 0,
+   "dark_floor": {
+    "yellow": [
+     0.57,
+     0.7
+    ],
+    "red": [
+     0.55,
+     0.68
+    ],
+    "blue": [
+     0.67,
+     0.81
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.94,
+     "red": 0.51,
+     "blue": -0.92
+    },
+    "red": {
+     "yellow": 0.88,
+     "red": 0.92,
+     "blue": -0.89
+    },
+    "blue": {
+     "yellow": 0.5,
+     "red": 0.92,
+     "blue": -0.51
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "red"
+   },
+   "yellow_620_over_440": 1.78
+  },
+  "second_try_white_only": {
+   "label": "19:15 readings / white H12 x R_white, no black subtracted",
+   "values": {
+    "yellow": [
+     0.607,
+     0.582,
+     0.676,
+     0.832,
+     0.926,
+     0.941,
+     0.96,
+     0.927
+    ],
+    "red": [
+     0.542,
+     0.618,
+     0.663,
+     0.631,
+     0.656,
+     0.767,
+     0.905,
+     0.893
+    ],
+    "blue": [
+     0.508,
+     0.744,
+     0.738,
+     0.65,
+     0.643,
+     0.662,
+     0.702,
+     0.763
+    ]
+   },
+   "fit_mid": {
+    "a_black_reads": 0.644,
+    "b_slope": 0.355,
+    "differences_too_small_by": 2.82,
+    "r2": 0.862
+   },
+   "fit_pure": {
+    "a_black_reads": 0.669,
+    "b_slope": 0.345,
+    "differences_too_small_by": 2.9,
+    "r2": 0.843
+   },
+   "fit_tinted": {
+    "a_black_reads": 0.629,
+    "b_slope": 0.336,
+    "differences_too_small_by": 2.97,
+    "r2": 0.81
+   },
+   "miss_mean": 0.373,
+   "miss_by_paint": {
+    "yellow": 0.196,
+    "red": 0.489,
+    "blue": 0.435
+   },
+   "inside_range": 1,
+   "dark_floor": {
+    "yellow": [
+     0.58,
+     0.68
+    ],
+    "red": [
+     0.62,
+     0.66
+    ],
+    "blue": [
+     0.64,
+     0.76
+    ]
+   },
+   "shape_correlation": {
+    "yellow": {
+     "yellow": 0.95,
+     "red": 0.55,
+     "blue": -0.93
+    },
+    "red": {
+     "yellow": 0.8,
+     "red": 0.94,
+     "blue": -0.82
+    },
+    "blue": {
+     "yellow": -0.23,
+     "red": 0.46,
+     "blue": 0.2
+    }
+   },
+   "shape_matches": {
+    "yellow": "yellow",
+    "red": "red",
+    "blue": "red"
+   },
+   "yellow_620_over_440": 1.65
+  }
+ },
+ "second_try_vs_before": {
+  "floor_removed_fraction": 0.51,
+  "squeeze_removed_fraction": 0.63,
+  "miss_removed_fraction": 0.51
+ },
+ "second_try_view_fraction": {
+  "f": 0.211,
+  "rms_one_parameter": 0.091,
+  "rms_free_line": 0.09,
+  "r_empty_440_670": [
+   1.26,
+   1.3,
+   1.23,
+   1.24,
+   1.23,
+   1.23,
+   1.27
+  ],
+  "empty_plate": "15:47 run's A6 / A4 ratio applied to the 19:15 white; this run read no empty well"
+ },
+ "second_try_red_by_visit": {
+  "1": [
+   0.309,
+   0.264,
+   0.26,
+   0.227,
+   0.235,
+   0.458,
+   0.82,
+   0.739
+  ],
+  "2": [
+   0.382,
+   0.414,
+   0.394,
+   0.349,
+   0.35,
+   0.549,
+   0.829,
+   0.729
+  ]
+ }
+}

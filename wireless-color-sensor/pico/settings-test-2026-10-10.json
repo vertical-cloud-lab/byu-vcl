@@ -1,0 +1,1010 @@
+{
+ "what": "Per-reading settings firmware (gain, atime, astep, led_ma), 2026-10-10. Board e6647c15673a2438 on the robot Pi's USB, out of its enclosure, facing whatever sat next to it (the same scene for every reading). Readings over MQTT from the runner with sensor_read.SensorLink.",
+ "registers_before_install": {
+  "CONFIG": 0,
+  "LED": 0,
+  "AZ_CONFIG": 255,
+  "ID": 36,
+  "CFG1_again": 8,
+  "ASTEP": 999,
+  "CFG0": 64,
+  "ATIME": 100
+ },
+ "registers_after_install": {
+  "CONFIG": 0,
+  "LED": 0,
+  "AZ_CONFIG": 255,
+  "ID": 36,
+  "CFG1_again": 8,
+  "ASTEP": 999,
+  "CFG0": 64,
+  "ATIME": 100
+ },
+ "ram_test": {
+  "when": "10:41-10:42 MDT, main.py run from RAM with mpremote run (flash untouched)",
+  "readings": [
+   {
+    "tag": "plain",
+    "settings": null,
+    "reading": {
+     "experiment_id": "set1010-plain-1791650529173",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 109,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 465,
+      "ch620": 478,
+      "ch670": 313
+     },
+     "total": 2378,
+     "t_request_utc": "2026-10-10T16:42:09.173Z",
+     "t_response_utc": "2026-10-10T16:42:10.680Z",
+     "latency_s": 1.507,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1221,
+       1221
+      ],
+      "nir": [
+       86,
+       86
+      ]
+     }
+    }
+   },
+   {
+    "tag": "plain",
+    "settings": null,
+    "reading": {
+     "experiment_id": "set1010-plain-1791650530680",
+     "channels": {
+      "ch410": 37,
+      "ch440": 105,
+      "ch470": 108,
+      "ch510": 373,
+      "ch550": 499,
+      "ch583": 465,
+      "ch620": 479,
+      "ch670": 314
+     },
+     "total": 2380,
+     "t_request_utc": "2026-10-10T16:42:10.680Z",
+     "t_response_utc": "2026-10-10T16:42:12.066Z",
+     "latency_s": 1.386,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1222,
+       1222
+      ],
+      "nir": [
+       86,
+       86
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g512",
+    "settings": {
+     "gain": 512
+    },
+    "reading": {
+     "experiment_id": "set1010-g512-1791650532066",
+     "channels": {
+      "ch410": 141,
+      "ch440": 400,
+      "ch470": 418,
+      "ch510": 1439,
+      "ch550": 1907,
+      "ch583": 1776,
+      "ch620": 1843,
+      "ch670": 1210
+     },
+     "total": 9134,
+     "t_request_utc": "2026-10-10T16:42:12.066Z",
+     "t_response_utc": "2026-10-10T16:42:13.452Z",
+     "latency_s": 1.386,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 512,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 10
+     },
+     "sensor_extra": {
+      "clear": [
+       4717,
+       4717
+      ],
+      "nir": [
+       324,
+       324
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g32",
+    "settings": {
+     "gain": 32
+    },
+    "reading": {
+     "experiment_id": "set1010-g32-1791650533452",
+     "channels": {
+      "ch410": 9,
+      "ch440": 26,
+      "ch470": 27,
+      "ch510": 94,
+      "ch550": 126,
+      "ch583": 117,
+      "ch620": 121,
+      "ch670": 79
+     },
+     "total": 599,
+     "t_request_utc": "2026-10-10T16:42:13.452Z",
+     "t_response_utc": "2026-10-10T16:42:14.858Z",
+     "latency_s": 1.406,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 32,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 6
+     },
+     "sensor_extra": {
+      "clear": [
+       307,
+       307
+      ],
+      "nir": [
+       22,
+       22
+      ]
+     }
+    }
+   },
+   {
+    "tag": "atime50",
+    "settings": {
+     "atime": 50
+    },
+    "reading": {
+     "experiment_id": "set1010-atime50-1791650534858",
+     "channels": {
+      "ch410": 18,
+      "ch440": 53,
+      "ch470": 55,
+      "ch510": 188,
+      "ch550": 252,
+      "ch583": 234,
+      "ch620": 242,
+      "ch670": 158
+     },
+     "total": 1200,
+     "t_request_utc": "2026-10-10T16:42:14.858Z",
+     "t_response_utc": "2026-10-10T16:42:16.003Z",
+     "latency_s": 1.145,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 50,
+      "integration_ms": 141.8,
+      "full_scale": 51000,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       616,
+       617
+      ],
+      "nir": [
+       43,
+       43
+      ]
+     }
+    }
+   },
+   {
+    "tag": "astep499",
+    "settings": {
+     "astep": 499
+    },
+    "reading": {
+     "experiment_id": "set1010-astep499-1791650536003",
+     "channels": {
+      "ch410": 18,
+      "ch440": 52,
+      "ch470": 54,
+      "ch510": 186,
+      "ch550": 249,
+      "ch583": 232,
+      "ch620": 239,
+      "ch670": 156
+     },
+     "total": 1186,
+     "t_request_utc": "2026-10-10T16:42:16.003Z",
+     "t_response_utc": "2026-10-10T16:42:17.168Z",
+     "latency_s": 1.165,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 140.4,
+      "full_scale": 50500,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 499,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       610,
+       610
+      ],
+      "nir": [
+       43,
+       43
+      ]
+     }
+    }
+   },
+   {
+    "tag": "long",
+    "settings": {
+     "atime": 100,
+     "astep": 4999
+    },
+    "reading": {
+     "experiment_id": "set1010-long-1791650537169",
+     "channels": {
+      "ch410": 187,
+      "ch440": 523,
+      "ch470": 545,
+      "ch510": 1866,
+      "ch550": 2491,
+      "ch583": 2318,
+      "ch620": 2393,
+      "ch670": 1568
+     },
+     "total": 11891,
+     "t_request_utc": "2026-10-10T16:42:17.169Z",
+     "t_response_utc": "2026-10-10T16:42:20.965Z",
+     "latency_s": 3.796,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 1403.9,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 4999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       6101,
+       6098
+      ],
+      "nir": [
+       429,
+       428
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-off",
+    "settings": {
+     "gain": 4
+    },
+    "reading": {
+     "experiment_id": "set1010-g4-off-1791650540965",
+     "channels": {
+      "ch410": 1,
+      "ch440": 3,
+      "ch470": 4,
+      "ch510": 12,
+      "ch550": 17,
+      "ch583": 15,
+      "ch620": 16,
+      "ch670": 10
+     },
+     "total": 78,
+     "t_request_utc": "2026-10-10T16:42:20.965Z",
+     "t_response_utc": "2026-10-10T16:42:22.372Z",
+     "latency_s": 1.407,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       40,
+       40
+      ],
+      "nir": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-led4",
+    "settings": {
+     "gain": 4,
+     "led_ma": 4
+    },
+    "reading": {
+     "experiment_id": "set1010-g4-led4-1791650542372",
+     "channels": {
+      "ch410": 239,
+      "ch440": 1566,
+      "ch470": 1985,
+      "ch510": 2025,
+      "ch550": 2396,
+      "ch583": 2331,
+      "ch620": 2568,
+      "ch670": 1924
+     },
+     "total": 15034,
+     "t_request_utc": "2026-10-10T16:42:22.372Z",
+     "t_response_utc": "2026-10-10T16:42:24.039Z",
+     "latency_s": 1.667,
+     "sensor_settings": {
+      "led_ma": 4,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       8078,
+       8074
+      ],
+      "nir": [
+       572,
+       572
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-led10",
+    "settings": {
+     "gain": 4,
+     "led_ma": 10
+    },
+    "reading": {
+     "experiment_id": "set1010-g4-led10-1791650544039",
+     "channels": {
+      "ch410": 595,
+      "ch440": 3936,
+      "ch470": 4725,
+      "ch510": 4986,
+      "ch550": 5907,
+      "ch583": 5735,
+      "ch620": 6288,
+      "ch670": 4703
+     },
+     "total": 36875,
+     "t_request_utc": "2026-10-10T16:42:24.039Z",
+     "t_response_utc": "2026-10-10T16:42:25.726Z",
+     "latency_s": 1.687,
+     "sensor_settings": {
+      "led_ma": 10,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       19817,
+       19802
+      ],
+      "nir": [
+       1401,
+       1400
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-led20",
+    "settings": {
+     "gain": 4,
+     "led_ma": 20
+    },
+    "reading": {
+     "experiment_id": "set1010-g4-led20-1791650545726",
+     "channels": {
+      "ch410": 1201,
+      "ch440": 8012,
+      "ch470": 9053,
+      "ch510": 9938,
+      "ch550": 11797,
+      "ch583": 11425,
+      "ch620": 12476,
+      "ch670": 9307
+     },
+     "total": 73209,
+     "t_request_utc": "2026-10-10T16:42:25.726Z",
+     "t_response_utc": "2026-10-10T16:42:27.394Z",
+     "latency_s": 1.668,
+     "sensor_settings": {
+      "led_ma": 20,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       39308,
+       39295
+      ],
+      "nir": [
+       2776,
+       2772
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-off2",
+    "settings": {
+     "gain": 4
+    },
+    "reading": {
+     "experiment_id": "set1010-g4-off2-1791650547394",
+     "channels": {
+      "ch410": 1,
+      "ch440": 3,
+      "ch470": 4,
+      "ch510": 12,
+      "ch550": 16,
+      "ch583": 15,
+      "ch620": 16,
+      "ch670": 10
+     },
+     "total": 77,
+     "t_request_utc": "2026-10-10T16:42:27.394Z",
+     "t_response_utc": "2026-10-10T16:42:28.800Z",
+     "latency_s": 1.406,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       40,
+       40
+      ],
+      "nir": [
+       2,
+       2
+      ]
+     }
+    }
+   },
+   {
+    "tag": "combo",
+    "settings": {
+     "gain": 4,
+     "atime": 29,
+     "astep": 599,
+     "led_ma": 20
+    },
+    "reading": {
+     "experiment_id": "set1010-combo-1791650548801",
+     "channels": {
+      "ch410": 213,
+      "ch440": 1428,
+      "ch470": 1612,
+      "ch510": 1769,
+      "ch550": 2102,
+      "ch583": 2035,
+      "ch620": 2221,
+      "ch670": 1658
+     },
+     "total": 13038,
+     "t_request_utc": "2026-10-10T16:42:28.801Z",
+     "t_response_utc": "2026-10-10T16:42:30.147Z",
+     "latency_s": 1.346,
+     "sensor_settings": {
+      "led_ma": 20,
+      "atime": 29,
+      "integration_ms": 50.0,
+      "full_scale": 18000,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 599,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       7002,
+       6999
+      ],
+      "nir": [
+       494,
+       494
+      ]
+     }
+    }
+   },
+   {
+    "tag": "led0",
+    "settings": {
+     "led_ma": 0
+    },
+    "reading": {
+     "experiment_id": "set1010-led0-1791650550147",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 108,
+      "ch510": 371,
+      "ch550": 495,
+      "ch583": 460,
+      "ch620": 476,
+      "ch670": 312
+     },
+     "total": 2363,
+     "t_request_utc": "2026-10-10T16:42:30.147Z",
+     "t_response_utc": "2026-10-10T16:42:31.533Z",
+     "latency_s": 1.386,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1213,
+       1213
+      ],
+      "nir": [
+       85,
+       85
+      ]
+     }
+    }
+   },
+   {
+    "tag": "bad-led30",
+    "settings": {
+     "led_ma": 30
+    },
+    "error": "the board refused the settings: led_ma must be a whole number from 0 to 20; got 30"
+   },
+   {
+    "tag": "bad-led5",
+    "settings": {
+     "led_ma": 5
+    },
+    "error": "the board refused the settings: led_ma must be 0 (off) or an even number from 4 to 20; got 5"
+   },
+   {
+    "tag": "bad-atime",
+    "settings": {
+     "atime": 300
+    },
+    "error": "the board refused the settings: atime must be a whole number from 0 to 255; got 300"
+   },
+   {
+    "tag": "bad-key",
+    "settings": {
+     "az": 1
+    },
+    "error": "the board refused the settings: unknown setting 'az': use gain, atime, astep or led_ma"
+   },
+   {
+    "tag": "bad-long",
+    "settings": {
+     "atime": 255,
+     "astep": 65534
+    },
+    "error": "the board refused the settings: (atime + 1) x (astep + 1) x 2.78 us must be at most 1500 ms; got 46640.0"
+   },
+   {
+    "tag": "plain-after",
+    "settings": null,
+    "reading": {
+     "experiment_id": "set1010-plain-after-1791650553683",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 108,
+      "ch510": 371,
+      "ch550": 496,
+      "ch583": 462,
+      "ch620": 476,
+      "ch670": 312
+     },
+     "total": 2366,
+     "t_request_utc": "2026-10-10T16:42:33.683Z",
+     "t_response_utc": "2026-10-10T16:42:35.089Z",
+     "latency_s": 1.406,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1214,
+       1215
+      ],
+      "nir": [
+       85,
+       85
+      ]
+     }
+    }
+   },
+   {
+    "tag": "plain-after",
+    "settings": null,
+    "reading": {
+     "experiment_id": "set1010-plain-after-1791650555089",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 108,
+      "ch510": 371,
+      "ch550": 496,
+      "ch583": 462,
+      "ch620": 476,
+      "ch670": 312
+     },
+     "total": 2366,
+     "t_request_utc": "2026-10-10T16:42:35.089Z",
+     "t_response_utc": "2026-10-10T16:42:36.476Z",
+     "latency_s": 1.387,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1215,
+       1215
+      ],
+      "nir": [
+       85,
+       85
+      ]
+     }
+    }
+   }
+  ]
+ },
+ "flash_test": {
+  "when": "10:43-10:44 MDT, after install and mpremote reset",
+  "readings": [
+   {
+    "tag": "plain",
+    "settings": null,
+    "reading": {
+     "experiment_id": "flash1010-plain-1791650635481",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 109,
+      "ch510": 372,
+      "ch550": 498,
+      "ch583": 463,
+      "ch620": 478,
+      "ch670": 313
+     },
+     "total": 2374,
+     "t_response_utc": "2026-10-10T16:43:56.988Z",
+     "latency_s": 1.507,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1218,
+       1218
+      ],
+      "nir": [
+       86,
+       86
+      ]
+     }
+    }
+   },
+   {
+    "tag": "plain",
+    "settings": null,
+    "reading": {
+     "experiment_id": "flash1010-plain-1791650636988",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 108,
+      "ch510": 372,
+      "ch550": 498,
+      "ch583": 463,
+      "ch620": 478,
+      "ch670": 313
+     },
+     "total": 2373,
+     "t_response_utc": "2026-10-10T16:43:58.375Z",
+     "latency_s": 1.387,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1218,
+       1218
+      ],
+      "nir": [
+       86,
+       86
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g512",
+    "settings": {
+     "gain": 512
+    },
+    "reading": {
+     "experiment_id": "flash1010-g512-1791650638375",
+     "channels": {
+      "ch410": 141,
+      "ch440": 398,
+      "ch470": 416,
+      "ch510": 1435,
+      "ch550": 1903,
+      "ch583": 1771,
+      "ch620": 1836,
+      "ch670": 1207
+     },
+     "total": 9107,
+     "t_response_utc": "2026-10-10T16:43:59.761Z",
+     "latency_s": 1.386,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 512,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 10
+     },
+     "sensor_extra": {
+      "clear": [
+       4705,
+       4703
+      ],
+      "nir": [
+       324,
+       324
+      ]
+     }
+    }
+   },
+   {
+    "tag": "atime50",
+    "settings": {
+     "atime": 50
+    },
+    "reading": {
+     "experiment_id": "flash1010-atime50-1791650639761",
+     "channels": {
+      "ch410": 18,
+      "ch440": 53,
+      "ch470": 54,
+      "ch510": 188,
+      "ch550": 251,
+      "ch583": 234,
+      "ch620": 241,
+      "ch670": 158
+     },
+     "total": 1197,
+     "t_response_utc": "2026-10-10T16:44:00.927Z",
+     "latency_s": 1.166,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 50,
+      "integration_ms": 141.8,
+      "full_scale": 51000,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       615,
+       615
+      ],
+      "nir": [
+       43,
+       43
+      ]
+     }
+    }
+   },
+   {
+    "tag": "g4-led10",
+    "settings": {
+     "gain": 4,
+     "led_ma": 10
+    },
+    "reading": {
+     "experiment_id": "flash1010-g4-led10-1791650640927",
+     "channels": {
+      "ch410": 594,
+      "ch440": 3937,
+      "ch470": 4722,
+      "ch510": 4980,
+      "ch550": 5903,
+      "ch583": 5729,
+      "ch620": 6284,
+      "ch670": 4700
+     },
+     "total": 36849,
+     "t_response_utc": "2026-10-10T16:44:02.596Z",
+     "latency_s": 1.669,
+     "sensor_settings": {
+      "led_ma": 10,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 4,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 3
+     },
+     "sensor_extra": {
+      "clear": [
+       19793,
+       19786
+      ],
+      "nir": [
+       1399,
+       1399
+      ]
+     }
+    }
+   },
+   {
+    "tag": "bad-led22",
+    "settings": {
+     "led_ma": 22
+    },
+    "error": "the board refused the settings: led_ma must be a whole number from 0 to 20; got 22"
+   },
+   {
+    "tag": "plain-after",
+    "settings": null,
+    "reading": {
+     "experiment_id": "flash1010-plain-after-1791650643018",
+     "channels": {
+      "ch410": 37,
+      "ch440": 104,
+      "ch470": 108,
+      "ch510": 372,
+      "ch550": 496,
+      "ch583": 462,
+      "ch620": 477,
+      "ch670": 312
+     },
+     "total": 2368,
+     "t_response_utc": "2026-10-10T16:44:04.384Z",
+     "latency_s": 1.366,
+     "sensor_settings": {
+      "led_ma": 0,
+      "atime": 100,
+      "integration_ms": 280.8,
+      "full_scale": 65535,
+      "gain": 128,
+      "analog_saturated": false,
+      "astep": 999,
+      "again_code": 8
+     },
+     "sensor_extra": {
+      "clear": [
+       1216,
+       1215
+      ],
+      "nir": [
+       86,
+       85
+      ]
+     }
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,349 @@
+{
+ "date": "2026-09-25",
+ "lab_time": "MDT (UTC-6)",
+ "request": "calibrate the colour-sensor enclosure to sit just above the 96-well plate (issue #197, PR #202)",
+ "outcome": "not calibrated: the enclosure fell off the nozzle during the carry and was put back by hand",
+ "robot": {
+  "serial": "OT2CEP20210722R13",
+  "api": "8.8.1",
+  "pipette": "p300_single_gen2 left",
+  "deck_calibration": "2026-01-27 (unchanged)",
+  "pipette_offset": "none stored"
+ },
+ "deck": {
+  "base": "slot 10",
+  "plate": "slot 1 (clear 96-well, flat)",
+  "tip_rack": "300 uL, right-hand column",
+  "enclosure_socket_found": "A2 (right); every September run used A1 (left)"
+ },
+ "link": {
+  "failed": "15:45:57 r8152 'Stop submitting intr, status -71' on USB 3 port 4-1, 8 min after boot",
+  "fix": "echo 1 > /sys/bus/usb/devices/4-0:1.0/usb4-port1/disable (runtime only)",
+  "result": "adapter re-enumerated at 480 Mbit/s on the companion port 3-1 at 15:51:26",
+  "pings_after_fix": 2787,
+  "pings_lost": 0
+ },
+ "sockets": {
+  "A1_proven_pickup_xy": [
+   36.55,
+   315.5
+  ],
+  "A2_first_try_xy": [
+   92.5,
+   315.5
+  ],
+  "A2_working_xy": [
+   92.8,
+   316.5
+  ],
+  "A2_mouth_z_estimate": 99.2
+ },
+ "first_try": {
+  "xy": [
+   92.5,
+   315.5
+  ],
+  "press_sent": 90.0,
+  "stalled_at_z": 97.0,
+  "lost_steps_mm": 7.0,
+  "after_lift": {
+   "photo": "run2/05_lifted_z110_live.jpg",
+   "z_sent": 110.0,
+   "shoulder_row": 42.34,
+   "nozzle_above_sent_mm": 6.98
+  },
+  "grip_reads": [
+   504,
+   507
+  ],
+  "seated_reads": [
+   502,
+   501
+  ],
+  "result": "came up empty; re-homed"
+ },
+ "camera_model": {
+  "ref_pose": [
+   92.5,
+   315.5,
+   102.0
+  ],
+  "n_poses": 9,
+  "poses": [
+   [
+    92.5,
+    315.5,
+    105.0
+   ],
+   [
+    92.5,
+    315.5,
+    101.0
+   ],
+   [
+    92.5,
+    315.5,
+    102.0
+   ],
+   [
+    95.5,
+    315.5,
+    102.0
+   ],
+   [
+    89.5,
+    315.5,
+    102.0
+   ],
+   [
+    92.5,
+    318.5,
+    102.0
+   ],
+   [
+    92.5,
+    312.5,
+    102.0
+   ],
+   [
+    92.5,
+    315.5,
+    108.0
+   ],
+   [
+    92.8,
+    316.5,
+    102.0
+   ]
+  ],
+  "live": {
+   "image_at_ref": [
+    523.8,
+    92.01
+   ],
+   "px_per_mm": {
+    "x": [
+     1.586,
+     -0.166
+    ],
+    "y": [
+     -0.409,
+     -0.498
+    ],
+    "z": [
+     -0.161,
+     -1.633
+    ]
+   },
+   "fit_rms_px": [
+    0.15,
+    0.28
+   ],
+   "tips_px": [
+    [
+     523.0,
+     86.5
+    ],
+    [
+     524.0,
+     93.5
+    ],
+    [
+     524.0,
+     92.5
+    ],
+    [
+     528.5,
+     91.5
+    ],
+    [
+     519.0,
+     92.5
+    ],
+    [
+     522.5,
+     90.5
+    ],
+    [
+     525.0,
+     93.5
+    ],
+    [
+     523.0,
+     82.5
+    ],
+    [
+     524.0,
+     91.5
+    ]
+   ]
+  },
+  "robot": {
+   "image_at_ref": [
+    237.35,
+    89.05
+   ],
+   "px_per_mm": {
+    "x": [
+     0.998,
+     0.165
+    ],
+    "y": [
+     -0.254,
+     -0.72
+    ],
+    "z": [
+     0.339,
+     -0.92
+    ]
+   },
+   "fit_rms_px": [
+    0.11,
+    0.17
+   ],
+   "tips_px": [
+    [
+     238.3,
+     86.3
+    ],
+    [
+     237.0,
+     90.2
+    ],
+    [
+     237.3,
+     89.3
+    ],
+    [
+     240.3,
+     89.3
+    ],
+    [
+     234.3,
+     88.3
+    ],
+    [
+     236.8,
+     87.0
+    ],
+    [
+     238.3,
+     91.3
+    ],
+    [
+     239.4,
+     83.6
+    ],
+    [
+     237.3,
+     88.3
+    ]
+   ]
+  }
+ },
+ "second_try": {
+  "xy": [
+   92.8,
+   316.5
+  ],
+  "press_steps": [
+   {
+    "photo": "02_align_hover_z120_live.jpg",
+    "z_sent": 120.0,
+    "shoulder_row": 36.43,
+    "expected_row": 36.57,
+    "nozzle_above_sent_mm": 0.08
+   },
+   {
+    "photo": "03_align_x92.8_y316.5_z102_live.jpg",
+    "z_sent": 102.0,
+    "shoulder_row": 67.09,
+    "expected_row": 67.64,
+    "nozzle_above_sent_mm": 0.32
+   },
+   {
+    "photo": "04_press_start_z99_live.jpg",
+    "z_sent": 99.0,
+    "shoulder_row": 72.22,
+    "expected_row": 72.82,
+    "nozzle_above_sent_mm": 0.35
+   },
+   {
+    "photo": "05_press_z97.5_live.jpg",
+    "z_sent": 97.5,
+    "shoulder_row": 74.71,
+    "expected_row": 75.41,
+    "nozzle_above_sent_mm": 0.4
+   },
+   {
+    "photo": "06_press_z96_live.jpg",
+    "z_sent": 96.0,
+    "shoulder_row": 77.08,
+    "expected_row": 78.0,
+    "nozzle_above_sent_mm": 0.53
+   },
+   {
+    "photo": "07_press_z94_live.jpg",
+    "z_sent": 94.0,
+    "shoulder_row": 79.97,
+    "expected_row": 81.45,
+    "nozzle_above_sent_mm": 0.86
+   },
+   {
+    "photo": "08_press_z92_live.jpg",
+    "z_sent": 92.0,
+    "shoulder_row": 83.27,
+    "expected_row": 84.9,
+    "nozzle_above_sent_mm": 0.95
+   },
+   {
+    "photo": "09_press_z90_live.jpg",
+    "z_sent": 90.0,
+    "shoulder_row": 86.69,
+    "expected_row": 88.35,
+    "nozzle_above_sent_mm": 0.96
+   },
+   {
+    "photo": "10_lifted_z110_live.jpg",
+    "z_sent": 110.0,
+    "shoulder_row": 53.35,
+    "expected_row": 53.83,
+    "nozzle_above_sent_mm": 0.28
+   }
+  ],
+  "grip_reads_lifted_z110": [
+   5382,
+   5368
+  ],
+  "seated_reads": [
+   501,
+   503
+  ],
+  "grip_ratio": 10.7
+ },
+ "drop": {
+  "carry_started_utc": "22:34:24",
+  "last_seen_aboard_local": "16:34:29",
+  "first_seen_on_deck_local": "16:34:31",
+  "robot_at_fall": "carry segments 6-8, x 87.5 y 266.7 -> 250.1, z 170",
+  "fall_height_mm": "about 85 (foot ~88 mm above the deck)",
+  "landed": "on its side, on the deck in front of the base",
+  "put_back_by_hand_local": "16:34:55-16:35:01, into socket A2",
+  "reads_during_rescue": [
+   9709,
+   797
+  ]
+ },
+ "after": {
+  "robot": "homed 16:37, maintenance run deleted, rail lights off",
+  "sensor_reads_on_base_lights_off": [
+   442,
+   442,
+   440
+  ],
+  "sensor_reads_before_run_lights_off": [
+   438,
+   437
+  ]
+ }
+}

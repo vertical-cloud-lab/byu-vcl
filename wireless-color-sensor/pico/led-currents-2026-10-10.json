@@ -1,0 +1,1728 @@
+{
+ "what": "AS7341 breakout white LED at every even current 4-20 mA, interleaved with LED-off readings, 2026-10-10 ~10:47 MDT. Board e6647c15673a2438 on the robot Pi's USB, out of its enclosure, facing the same unknown scene throughout; installed settings firmware (main.py eb550154). Readings over MQTT from the runner.",
+ "readings": [
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-shape-1791650761537",
+   "channels": {
+    "ch410": 1,
+    "ch440": 3,
+    "ch470": 4,
+    "ch510": 12,
+    "ch550": 17,
+    "ch583": 15,
+    "ch620": 16,
+    "ch670": 10
+   },
+   "total": 78,
+   "t_request_utc": "2026-10-10T16:46:01.537Z",
+   "t_response_utc": "2026-10-10T16:46:03.024Z",
+   "latency_s": 1.487,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40,
+     40
+    ],
+    "nir": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "experiment_id": "ledcur1010-shape-1791650763024",
+   "channels": {
+    "ch410": 239,
+    "ch440": 1565,
+    "ch470": 1983,
+    "ch510": 2020,
+    "ch550": 2393,
+    "ch583": 2328,
+    "ch620": 2564,
+    "ch670": 1921
+   },
+   "total": 15013,
+   "t_request_utc": "2026-10-10T16:46:03.024Z",
+   "t_response_utc": "2026-10-10T16:46:04.691Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8061,
+     8065
+    ],
+    "nir": [
+     570,
+     571
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-shape-1791650764691",
+   "channels": {
+    "ch410": 1201,
+    "ch440": 8018,
+    "ch470": 9056,
+    "ch510": 9942,
+    "ch550": 11799,
+    "ch583": 11423,
+    "ch620": 12473,
+    "ch670": 9304
+   },
+   "total": 73216,
+   "t_request_utc": "2026-10-10T16:46:04.691Z",
+   "t_response_utc": "2026-10-10T16:46:06.378Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39334,
+     39273
+    ],
+    "nir": [
+     2777,
+     2772
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 6
+   },
+   "experiment_id": "ledcur1010-shape-1791650766378",
+   "channels": {
+    "ch410": 359,
+    "ch440": 2363,
+    "ch470": 2931,
+    "ch510": 3022,
+    "ch550": 3582,
+    "ch583": 3482,
+    "ch620": 3829,
+    "ch670": 2867
+   },
+   "total": 22435,
+   "t_request_utc": "2026-10-10T16:46:06.378Z",
+   "t_response_utc": "2026-10-10T16:46:08.065Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 6,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     12044,
+     12051
+    ],
+    "nir": [
+     852,
+     852
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 18
+   },
+   "experiment_id": "ledcur1010-shape-1791650768065",
+   "channels": {
+    "ch410": 1062,
+    "ch440": 7088,
+    "ch470": 8100,
+    "ch510": 8820,
+    "ch550": 10473,
+    "ch583": 10144,
+    "ch620": 11086,
+    "ch670": 8272
+   },
+   "total": 65045,
+   "t_request_utc": "2026-10-10T16:46:08.065Z",
+   "t_response_utc": "2026-10-10T16:46:09.755Z",
+   "latency_s": 1.69,
+   "sensor_settings": {
+    "led_ma": 18,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     34930,
+     34912
+    ],
+    "nir": [
+     2466,
+     2466
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 8
+   },
+   "experiment_id": "ledcur1010-shape-1791650769755",
+   "channels": {
+    "ch410": 474,
+    "ch440": 3132,
+    "ch470": 3821,
+    "ch510": 3981,
+    "ch550": 4720,
+    "ch583": 4587,
+    "ch620": 5036,
+    "ch670": 3768
+   },
+   "total": 29519,
+   "t_request_utc": "2026-10-10T16:46:09.755Z",
+   "t_response_utc": "2026-10-10T16:46:11.427Z",
+   "latency_s": 1.672,
+   "sensor_settings": {
+    "led_ma": 8,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     15850,
+     15858
+    ],
+    "nir": [
+     1121,
+     1121
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 16
+   },
+   "experiment_id": "ledcur1010-shape-1791650771427",
+   "channels": {
+    "ch410": 946,
+    "ch440": 6303,
+    "ch470": 7284,
+    "ch510": 7867,
+    "ch550": 9341,
+    "ch583": 9056,
+    "ch620": 9900,
+    "ch670": 7392
+   },
+   "total": 58089,
+   "t_request_utc": "2026-10-10T16:46:11.427Z",
+   "t_response_utc": "2026-10-10T16:46:13.114Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 16,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     31193,
+     31195
+    ],
+    "nir": [
+     2203,
+     2203
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "experiment_id": "ledcur1010-shape-1791650773114",
+   "channels": {
+    "ch410": 593,
+    "ch440": 3929,
+    "ch470": 4717,
+    "ch510": 4966,
+    "ch550": 5890,
+    "ch583": 5719,
+    "ch620": 6273,
+    "ch670": 4691
+   },
+   "total": 36778,
+   "t_request_utc": "2026-10-10T16:46:13.114Z",
+   "t_response_utc": "2026-10-10T16:46:14.802Z",
+   "latency_s": 1.688,
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19749,
+     19754
+    ],
+    "nir": [
+     1396,
+     1397
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 14
+   },
+   "experiment_id": "ledcur1010-shape-1791650774802",
+   "channels": {
+    "ch410": 836,
+    "ch440": 5560,
+    "ch470": 6493,
+    "ch510": 6964,
+    "ch550": 8260,
+    "ch583": 8008,
+    "ch620": 8767,
+    "ch670": 6546
+   },
+   "total": 51434,
+   "t_request_utc": "2026-10-10T16:46:14.802Z",
+   "t_response_utc": "2026-10-10T16:46:16.489Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 14,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     27630,
+     27619
+    ],
+    "nir": [
+     1951,
+     1951
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 12
+   },
+   "experiment_id": "ledcur1010-shape-1791650776489",
+   "channels": {
+    "ch410": 718,
+    "ch440": 4766,
+    "ch470": 5639,
+    "ch510": 5993,
+    "ch550": 7110,
+    "ch583": 6898,
+    "ch620": 7555,
+    "ch670": 5647
+   },
+   "total": 44326,
+   "t_request_utc": "2026-10-10T16:46:16.489Z",
+   "t_response_utc": "2026-10-10T16:46:18.156Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 12,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     23807,
+     23804
+    ],
+    "nir": [
+     1682,
+     1682
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-shape-1791650778156",
+   "channels": {
+    "ch410": 1,
+    "ch440": 3,
+    "ch470": 4,
+    "ch510": 12,
+    "ch550": 16,
+    "ch583": 15,
+    "ch620": 16,
+    "ch670": 10
+   },
+   "total": 77,
+   "t_request_utc": "2026-10-10T16:46:18.156Z",
+   "t_response_utc": "2026-10-10T16:46:19.542Z",
+   "latency_s": 1.386,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40,
+     40
+    ],
+    "nir": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 12
+   },
+   "experiment_id": "ledcur1010-shape-1791650779542",
+   "channels": {
+    "ch410": 717,
+    "ch440": 4766,
+    "ch470": 5636,
+    "ch510": 5995,
+    "ch550": 7111,
+    "ch583": 6900,
+    "ch620": 7557,
+    "ch670": 5649
+   },
+   "total": 44331,
+   "t_request_utc": "2026-10-10T16:46:19.542Z",
+   "t_response_utc": "2026-10-10T16:46:21.250Z",
+   "latency_s": 1.708,
+   "sensor_settings": {
+    "led_ma": 12,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     23806,
+     23805
+    ],
+    "nir": [
+     1682,
+     1682
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 14
+   },
+   "experiment_id": "ledcur1010-shape-1791650781250",
+   "channels": {
+    "ch410": 836,
+    "ch440": 5556,
+    "ch470": 6491,
+    "ch510": 6959,
+    "ch550": 8259,
+    "ch583": 8009,
+    "ch620": 8766,
+    "ch670": 6547
+   },
+   "total": 51423,
+   "t_request_utc": "2026-10-10T16:46:21.250Z",
+   "t_response_utc": "2026-10-10T16:46:22.938Z",
+   "latency_s": 1.688,
+   "sensor_settings": {
+    "led_ma": 14,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     27618,
+     27616
+    ],
+    "nir": [
+     1951,
+     1951
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 10
+   },
+   "experiment_id": "ledcur1010-shape-1791650782938",
+   "channels": {
+    "ch410": 593,
+    "ch440": 3933,
+    "ch470": 4721,
+    "ch510": 4969,
+    "ch550": 5890,
+    "ch583": 5719,
+    "ch620": 6272,
+    "ch670": 4691
+   },
+   "total": 36788,
+   "t_request_utc": "2026-10-10T16:46:22.938Z",
+   "t_response_utc": "2026-10-10T16:46:24.606Z",
+   "latency_s": 1.668,
+   "sensor_settings": {
+    "led_ma": 10,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19764,
+     19758
+    ],
+    "nir": [
+     1397,
+     1396
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 16
+   },
+   "experiment_id": "ledcur1010-shape-1791650784606",
+   "channels": {
+    "ch410": 946,
+    "ch440": 6304,
+    "ch470": 7286,
+    "ch510": 7866,
+    "ch550": 9339,
+    "ch583": 9051,
+    "ch620": 9896,
+    "ch670": 7389
+   },
+   "total": 58077,
+   "t_request_utc": "2026-10-10T16:46:24.606Z",
+   "t_response_utc": "2026-10-10T16:46:26.273Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 16,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     31192,
+     31180
+    ],
+    "nir": [
+     2202,
+     2202
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 8
+   },
+   "experiment_id": "ledcur1010-shape-1791650786273",
+   "channels": {
+    "ch410": 474,
+    "ch440": 3136,
+    "ch470": 3825,
+    "ch510": 3984,
+    "ch550": 4720,
+    "ch583": 4585,
+    "ch620": 5036,
+    "ch670": 3767
+   },
+   "total": 29527,
+   "t_request_utc": "2026-10-10T16:46:26.273Z",
+   "t_response_utc": "2026-10-10T16:46:27.940Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 8,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     15862,
+     15858
+    ],
+    "nir": [
+     1121,
+     1121
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 18
+   },
+   "experiment_id": "ledcur1010-shape-1791650787940",
+   "channels": {
+    "ch410": 1063,
+    "ch440": 7085,
+    "ch470": 8104,
+    "ch510": 8813,
+    "ch550": 10461,
+    "ch583": 10135,
+    "ch620": 11076,
+    "ch670": 8263
+   },
+   "total": 65000,
+   "t_request_utc": "2026-10-10T16:46:27.940Z",
+   "t_response_utc": "2026-10-10T16:46:29.628Z",
+   "latency_s": 1.688,
+   "sensor_settings": {
+    "led_ma": 18,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     34914,
+     34896
+    ],
+    "nir": [
+     2465,
+     2463
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 6
+   },
+   "experiment_id": "ledcur1010-shape-1791650789628",
+   "channels": {
+    "ch410": 359,
+    "ch440": 2363,
+    "ch470": 2933,
+    "ch510": 3020,
+    "ch550": 3578,
+    "ch583": 3478,
+    "ch620": 3823,
+    "ch670": 2863
+   },
+   "total": 22417,
+   "t_request_utc": "2026-10-10T16:46:29.628Z",
+   "t_response_utc": "2026-10-10T16:46:31.294Z",
+   "latency_s": 1.666,
+   "sensor_settings": {
+    "led_ma": 6,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     12040,
+     12047
+    ],
+    "nir": [
+     851,
+     851
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-shape-1791650791295",
+   "channels": {
+    "ch410": 1201,
+    "ch440": 8016,
+    "ch470": 9057,
+    "ch510": 9925,
+    "ch550": 11780,
+    "ch583": 11410,
+    "ch620": 12457,
+    "ch670": 9289
+   },
+   "total": 73135,
+   "t_request_utc": "2026-10-10T16:46:31.295Z",
+   "t_response_utc": "2026-10-10T16:46:32.961Z",
+   "latency_s": 1.666,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39283,
+     39250
+    ],
+    "nir": [
+     2770,
+     2768
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 4
+   },
+   "experiment_id": "ledcur1010-shape-1791650792962",
+   "channels": {
+    "ch410": 238,
+    "ch440": 1563,
+    "ch470": 1981,
+    "ch510": 2012,
+    "ch550": 2382,
+    "ch583": 2319,
+    "ch620": 2555,
+    "ch670": 1913
+   },
+   "total": 14963,
+   "t_request_utc": "2026-10-10T16:46:32.962Z",
+   "t_response_utc": "2026-10-10T16:46:34.648Z",
+   "latency_s": 1.686,
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     8037,
+     8044
+    ],
+    "nir": [
+     568,
+     568
+    ]
+   }
+  },
+  {
+   "block": "shape",
+   "settings": {
+    "gain": 4,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-shape-1791650794648",
+   "channels": {
+    "ch410": 1,
+    "ch440": 3,
+    "ch470": 4,
+    "ch510": 12,
+    "ch550": 16,
+    "ch583": 15,
+    "ch620": 16,
+    "ch670": 10
+   },
+   "total": 77,
+   "t_request_utc": "2026-10-10T16:46:34.648Z",
+   "t_response_utc": "2026-10-10T16:46:36.055Z",
+   "latency_s": 1.407,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40,
+     40
+    ],
+    "nir": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "block": "gain16",
+   "settings": {
+    "gain": 16,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-gain16-1791650796055",
+   "channels": {
+    "ch410": 5,
+    "ch440": 14,
+    "ch470": 14,
+    "ch510": 47,
+    "ch550": 63,
+    "ch583": 59,
+    "ch620": 60,
+    "ch670": 40
+   },
+   "total": 302,
+   "t_request_utc": "2026-10-10T16:46:36.055Z",
+   "t_response_utc": "2026-10-10T16:46:37.461Z",
+   "latency_s": 1.406,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 16,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 5
+   },
+   "sensor_extra": {
+    "clear": [
+     154,
+     154
+    ],
+    "nir": [
+     11,
+     11
+    ]
+   }
+  },
+  {
+   "block": "gain16",
+   "settings": {
+    "gain": 16,
+    "led_ma": 4
+   },
+   "experiment_id": "ledcur1010-gain16-1791650797461",
+   "channels": {
+    "ch410": 923,
+    "ch440": 6066,
+    "ch470": 7670,
+    "ch510": 7810,
+    "ch550": 9241,
+    "ch583": 9004,
+    "ch620": 9898,
+    "ch670": 7422
+   },
+   "total": 58034,
+   "t_request_utc": "2026-10-10T16:46:37.461Z",
+   "t_response_utc": "2026-10-10T16:46:39.148Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 4,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 16,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 5
+   },
+   "sensor_extra": {
+    "clear": [
+     31068,
+     31073
+    ],
+    "nir": [
+     2216,
+     2217
+    ]
+   }
+  },
+  {
+   "block": "gain16",
+   "settings": {
+    "gain": 16,
+    "led_ma": 8
+   },
+   "experiment_id": "ledcur1010-gain16-1791650799148",
+   "channels": {
+    "ch410": 1837,
+    "ch440": 12162,
+    "ch470": 14796,
+    "ch510": 15435,
+    "ch550": 18272,
+    "ch583": 17776,
+    "ch620": 19481,
+    "ch670": 14591
+   },
+   "total": 114350,
+   "t_request_utc": "2026-10-10T16:46:39.148Z",
+   "t_response_utc": "2026-10-10T16:46:40.835Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 8,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 16,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 5
+   },
+   "sensor_extra": {
+    "clear": [
+     61137,
+     61116
+    ],
+    "nir": [
+     4364,
+     4362
+    ]
+   }
+  },
+  {
+   "block": "gain16",
+   "settings": {
+    "gain": 16,
+    "led_ma": 12
+   },
+   "experiment_id": "ledcur1010-gain16-1791650800835",
+   "channels": {
+    "ch410": 2778,
+    "ch440": 18469,
+    "ch470": 21799,
+    "ch510": 23188,
+    "ch550": 27492,
+    "ch583": 26713,
+    "ch620": 29202,
+    "ch670": 21850
+   },
+   "total": 171491,
+   "t_request_utc": "2026-10-10T16:46:40.835Z",
+   "t_response_utc": "2026-10-10T16:46:42.543Z",
+   "latency_s": 1.708,
+   "sensor_settings": {
+    "led_ma": 12,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 16,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 5
+   },
+   "sensor_extra": {
+    "clear": [
+     65535,
+     65535
+    ],
+    "nir": [
+     6539,
+     6538
+    ]
+   }
+  },
+  {
+   "block": "gain16",
+   "settings": {
+    "gain": 16,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-gain16-1791650802543",
+   "channels": {
+    "ch410": 5,
+    "ch440": 13,
+    "ch470": 14,
+    "ch510": 47,
+    "ch550": 63,
+    "ch583": 59,
+    "ch620": 60,
+    "ch670": 40
+   },
+   "total": 301,
+   "t_request_utc": "2026-10-10T16:46:42.543Z",
+   "t_response_utc": "2026-10-10T16:46:43.949Z",
+   "latency_s": 1.406,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 16,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 5
+   },
+   "sensor_extra": {
+    "clear": [
+     153,
+     153
+    ],
+    "nir": [
+     11,
+     11
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650803949",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8015,
+    "ch470": 9055,
+    "ch510": 9926,
+    "ch550": 11781,
+    "ch583": 11409,
+    "ch620": 12452,
+    "ch670": 9286
+   },
+   "total": 73124,
+   "t_request_utc": "2026-10-10T16:46:43.949Z",
+   "t_response_utc": "2026-10-10T16:46:45.636Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39290,
+     39239
+    ],
+    "nir": [
+     2771,
+     2767
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650805636",
+   "channels": {
+    "ch410": 1199,
+    "ch440": 8009,
+    "ch470": 9053,
+    "ch510": 9911,
+    "ch550": 11771,
+    "ch583": 11401,
+    "ch620": 12445,
+    "ch670": 9283
+   },
+   "total": 73072,
+   "t_request_utc": "2026-10-10T16:46:45.636Z",
+   "t_response_utc": "2026-10-10T16:46:47.323Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39240,
+     39229
+    ],
+    "nir": [
+     2767,
+     2765
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650807323",
+   "channels": {
+    "ch410": 1199,
+    "ch440": 8010,
+    "ch470": 9056,
+    "ch510": 9912,
+    "ch550": 11769,
+    "ch583": 11403,
+    "ch620": 12446,
+    "ch670": 9284
+   },
+   "total": 73079,
+   "t_request_utc": "2026-10-10T16:46:47.323Z",
+   "t_response_utc": "2026-10-10T16:46:48.990Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39246,
+     39231
+    ],
+    "nir": [
+     2768,
+     2766
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650808990",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8009,
+    "ch470": 9057,
+    "ch510": 9911,
+    "ch550": 11769,
+    "ch583": 11401,
+    "ch620": 12444,
+    "ch670": 9275
+   },
+   "total": 73066,
+   "t_request_utc": "2026-10-10T16:46:48.990Z",
+   "t_response_utc": "2026-10-10T16:46:50.657Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39234,
+     39224
+    ],
+    "nir": [
+     2767,
+     2765
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650810657",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8013,
+    "ch470": 9057,
+    "ch510": 9911,
+    "ch550": 11768,
+    "ch583": 11404,
+    "ch620": 12447,
+    "ch670": 9282
+   },
+   "total": 73082,
+   "t_request_utc": "2026-10-10T16:46:50.657Z",
+   "t_response_utc": "2026-10-10T16:46:52.324Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39247,
+     39236
+    ],
+    "nir": [
+     2767,
+     2766
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650812324",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8007,
+    "ch470": 9061,
+    "ch510": 9912,
+    "ch550": 11769,
+    "ch583": 11403,
+    "ch620": 12446,
+    "ch670": 9279
+   },
+   "total": 73077,
+   "t_request_utc": "2026-10-10T16:46:52.324Z",
+   "t_response_utc": "2026-10-10T16:46:53.992Z",
+   "latency_s": 1.668,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39235,
+     39231
+    ],
+    "nir": [
+     2767,
+     2765
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650813992",
+   "channels": {
+    "ch410": 1199,
+    "ch440": 8009,
+    "ch470": 9059,
+    "ch510": 9903,
+    "ch550": 11768,
+    "ch583": 11398,
+    "ch620": 12440,
+    "ch670": 9279
+   },
+   "total": 73055,
+   "t_request_utc": "2026-10-10T16:46:53.992Z",
+   "t_response_utc": "2026-10-10T16:46:55.659Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39211,
+     39216
+    ],
+    "nir": [
+     2765,
+     2763
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650815659",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8012,
+    "ch470": 9061,
+    "ch510": 9911,
+    "ch550": 11770,
+    "ch583": 11400,
+    "ch620": 12442,
+    "ch670": 9280
+   },
+   "total": 73076,
+   "t_request_utc": "2026-10-10T16:46:55.659Z",
+   "t_response_utc": "2026-10-10T16:46:57.327Z",
+   "latency_s": 1.668,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39241,
+     39230
+    ],
+    "nir": [
+     2766,
+     2764
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650817327",
+   "channels": {
+    "ch410": 1199,
+    "ch440": 8012,
+    "ch470": 9059,
+    "ch510": 9905,
+    "ch550": 11769,
+    "ch583": 11402,
+    "ch620": 12441,
+    "ch670": 9282
+   },
+   "total": 73069,
+   "t_request_utc": "2026-10-10T16:46:57.327Z",
+   "t_response_utc": "2026-10-10T16:46:59.014Z",
+   "latency_s": 1.687,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39230,
+     39232
+    ],
+    "nir": [
+     2766,
+     2764
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650819014",
+   "channels": {
+    "ch410": 1199,
+    "ch440": 8010,
+    "ch470": 9062,
+    "ch510": 9905,
+    "ch550": 11767,
+    "ch583": 11401,
+    "ch620": 12443,
+    "ch670": 9281
+   },
+   "total": 73068,
+   "t_request_utc": "2026-10-10T16:46:59.014Z",
+   "t_response_utc": "2026-10-10T16:47:00.702Z",
+   "latency_s": 1.688,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39224,
+     39230
+    ],
+    "nir": [
+     2766,
+     2764
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650820702",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8013,
+    "ch470": 9063,
+    "ch510": 9911,
+    "ch550": 11770,
+    "ch583": 11402,
+    "ch620": 12444,
+    "ch670": 9278
+   },
+   "total": 73081,
+   "t_request_utc": "2026-10-10T16:47:00.702Z",
+   "t_response_utc": "2026-10-10T16:47:02.530Z",
+   "latency_s": 1.828,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39249,
+     39236
+    ],
+    "nir": [
+     2765,
+     2764
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650822531",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8018,
+    "ch470": 9066,
+    "ch510": 9914,
+    "ch550": 11772,
+    "ch583": 11404,
+    "ch620": 12446,
+    "ch670": 9283
+   },
+   "total": 73103,
+   "t_request_utc": "2026-10-10T16:47:02.531Z",
+   "t_response_utc": "2026-10-10T16:47:04.198Z",
+   "latency_s": 1.667,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39258,
+     39244
+    ],
+    "nir": [
+     2767,
+     2766
+    ]
+   }
+  },
+  {
+   "block": "repeat20",
+   "settings": {
+    "gain": 4,
+    "led_ma": 0
+   },
+   "experiment_id": "ledcur1010-repeat20-1791650824198",
+   "channels": {
+    "ch410": 1,
+    "ch440": 3,
+    "ch470": 4,
+    "ch510": 12,
+    "ch550": 16,
+    "ch583": 15,
+    "ch620": 16,
+    "ch670": 10
+   },
+   "total": 77,
+   "t_request_utc": "2026-10-10T16:47:04.198Z",
+   "t_response_utc": "2026-10-10T16:47:05.604Z",
+   "latency_s": 1.406,
+   "sensor_settings": {
+    "led_ma": 0,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     40,
+     40
+    ],
+    "nir": [
+     2,
+     2
+    ]
+   }
+  },
+  {
+   "block": "atime",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20,
+    "atime": 50
+   },
+   "experiment_id": "ledcur1010-atime-1791650825604",
+   "channels": {
+    "ch410": 606,
+    "ch440": 4049,
+    "ch470": 4577,
+    "ch510": 5008,
+    "ch550": 5946,
+    "ch583": 5758,
+    "ch620": 6284,
+    "ch670": 4688
+   },
+   "total": 36916,
+   "t_request_utc": "2026-10-10T16:47:05.604Z",
+   "t_response_utc": "2026-10-10T16:47:07.030Z",
+   "latency_s": 1.426,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 50,
+    "integration_ms": 141.8,
+    "full_scale": 51000,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     19826,
+     19816
+    ],
+    "nir": [
+     1397,
+     1396
+    ]
+   }
+  },
+  {
+   "block": "atime",
+   "settings": {
+    "gain": 4,
+    "led_ma": 20
+   },
+   "experiment_id": "ledcur1010-atime-1791650827030",
+   "channels": {
+    "ch410": 1200,
+    "ch440": 8017,
+    "ch470": 9064,
+    "ch510": 9911,
+    "ch550": 11766,
+    "ch583": 11400,
+    "ch620": 12442,
+    "ch670": 9280
+   },
+   "total": 73080,
+   "t_request_utc": "2026-10-10T16:47:07.030Z",
+   "t_response_utc": "2026-10-10T16:47:08.698Z",
+   "latency_s": 1.668,
+   "sensor_settings": {
+    "led_ma": 20,
+    "atime": 100,
+    "integration_ms": 280.8,
+    "full_scale": 65535,
+    "gain": 4,
+    "analog_saturated": false,
+    "astep": 999,
+    "again_code": 3
+   },
+   "sensor_extra": {
+    "clear": [
+     39246,
+     39228
+    ],
+    "nir": [
+     2768,
+     2765
+    ]
+   }
+  }
+ ]
+}

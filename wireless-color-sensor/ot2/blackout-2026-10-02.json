@@ -1,0 +1,554 @@
+{
+ "what": "the OT-2 blackout, before and after, from runs already on file (no hardware)",
+ "stages": {
+  "none": "2026-09-30 morning runs",
+  "sides": "sides blacked out; 2026-09-30 from the 13:19 run",
+  "cardboard": "sides + cardboard and wood over the rest; 2026-10-01"
+ },
+ "outside_light_at_fixed_spots": {
+  "runs": [
+   {
+    "run": "09-30 10:22",
+    "stage": "none",
+    "z93": [
+     1027,
+     1026
+    ],
+    "z110": [
+     5752,
+     5753
+    ],
+    "z190": [
+     12764,
+     12760
+    ]
+   },
+   {
+    "run": "09-30 10:46",
+    "stage": "none",
+    "z93": [
+     1046,
+     1045
+    ],
+    "z110": [
+     5756,
+     5756
+    ],
+    "z190": [
+     12738,
+     12736
+    ]
+   },
+   {
+    "run": "09-30 11:18",
+    "stage": "none",
+    "z93": [
+     1030,
+     1031
+    ],
+    "z110": [
+     5755,
+     5754
+    ],
+    "z190": [
+     12767,
+     12767
+    ]
+   },
+   {
+    "run": "09-30 13:19",
+    "stage": "sides",
+    "z93": [
+     893,
+     893
+    ],
+    "z110": [
+     4433,
+     4424
+    ],
+    "z190": [
+     9995,
+     9998
+    ]
+   },
+   {
+    "run": "09-30 15:36",
+    "stage": "sides",
+    "z93": [
+     891,
+     890
+    ],
+    "z110": [
+     4464,
+     4469
+    ],
+    "z190": [
+     9953,
+     9952
+    ]
+   },
+   {
+    "run": "09-30 16:13",
+    "stage": "sides",
+    "z93": [
+     892,
+     889
+    ],
+    "z110": [
+     4473,
+     4474
+    ],
+    "z190": [
+     9921,
+     9921
+    ]
+   },
+   {
+    "run": "10-01 13:43",
+    "stage": "cardboard",
+    "z93": [
+     818,
+     816
+    ],
+    "z110": [
+     4036,
+     4035
+    ],
+    "z190": [
+     9321,
+     9319
+    ]
+   }
+  ],
+  "lamp_subtracted": 406.5,
+  "by_stage": {
+   "z93": {
+    "outside_light_counts": {
+     "none": 627.7,
+     "sides": 484.8,
+     "cardboard": 410.5
+    },
+    "run_to_run_range_counts": {
+     "none": [
+      620.0,
+      639.0
+     ],
+     "sides": [
+      484.0,
+      486.5
+     ],
+     "cardboard": [
+      410.5,
+      410.5
+     ]
+    },
+    "percent_of_no_blackout": {
+     "none": 100.0,
+     "sides": 77.2,
+     "cardboard": 65.4
+    },
+    "sides_removed_percent": 22.8,
+    "cardboard_removed_percent_of_what_sides_left": 15.3
+   },
+   "z110": {
+    "outside_light_counts": {
+     "none": 5347.8,
+     "sides": 4049.7,
+     "cardboard": 3629.0
+    },
+    "run_to_run_range_counts": {
+     "none": [
+      5346.0,
+      5349.5
+     ],
+     "sides": [
+      4022.0,
+      4067.0
+     ],
+     "cardboard": [
+      3629.0,
+      3629.0
+     ]
+    },
+    "percent_of_no_blackout": {
+     "none": 100.0,
+     "sides": 75.7,
+     "cardboard": 67.9
+    },
+    "sides_removed_percent": 24.3,
+    "cardboard_removed_percent_of_what_sides_left": 10.4
+   },
+   "z190": {
+    "outside_light_counts": {
+     "none": 12348.8,
+     "sides": 9550.2,
+     "cardboard": 8913.5
+    },
+    "run_to_run_range_counts": {
+     "none": [
+      12330.5,
+      12360.5
+     ],
+     "sides": [
+      9514.5,
+      9590.0
+     ],
+     "cardboard": [
+      8913.5,
+      8913.5
+     ]
+    },
+    "percent_of_no_blackout": {
+     "none": 100.0,
+     "sides": 77.3,
+     "cardboard": 72.2
+    },
+    "sides_removed_percent": 22.7,
+    "cardboard_removed_percent_of_what_sides_left": 6.7
+   }
+  },
+  "cardboard_step_spectra": {
+   "up_z110": {
+    "sides": [
+     72.0,
+     349.2,
+     322.5,
+     656.2,
+     851.5,
+     819.2,
+     830.2,
+     569.0
+    ],
+    "cardboard": [
+     64.0,
+     326.0,
+     301.0,
+     604.5,
+     778.0,
+     731.0,
+     733.0,
+     498.0
+    ],
+    "removed": [
+     8.0,
+     23.2,
+     21.5,
+     51.8,
+     73.5,
+     88.2,
+     97.2,
+     71.0
+    ],
+    "removed_440_over_620": 0.24,
+    "remaining_440_over_620": 0.44
+   },
+   "carry_start_z190": {
+    "sides": [
+     160.0,
+     787.8,
+     733.0,
+     1325.8,
+     1808.0,
+     1953.0,
+     1951.0,
+     1218.2
+    ],
+    "cardboard": [
+     149.0,
+     758.5,
+     703.0,
+     1254.0,
+     1699.0,
+     1821.0,
+     1809.0,
+     1126.5
+    ],
+    "removed": [
+     11.0,
+     29.2,
+     30.0,
+     71.8,
+     109.0,
+     132.0,
+     142.0,
+     91.8
+    ],
+    "removed_440_over_620": 0.21,
+    "remaining_440_over_620": 0.42
+   }
+  }
+ },
+ "rail_lights_off_at_contact_10_01": {
+  "channels": [
+   4.5,
+   2.0,
+   8.0,
+   162.2,
+   169.0,
+   33.7,
+   13.2,
+   8.3
+  ],
+  "total": 400.8,
+  "sealed_lamp_2026_09_10": [
+   4.0,
+   3.0,
+   8.0,
+   160.5,
+   168.5,
+   35.0,
+   16.0,
+   11.5
+  ],
+  "note": "equal to the board's own lamp in a closed box: no measurable room light"
+ },
+ "two_readings_in_a_row": [
+  {
+   "run": "09-30 09:53",
+   "stage": "none",
+   "pairs": 46,
+   "median_percent": 0.011,
+   "max_percent": 0.05,
+   "over_0.5_percent": 0,
+   "hanging_z92_up_max_percent": 0.05
+  },
+  {
+   "run": "09-30 10:31",
+   "stage": "none",
+   "pairs": 28,
+   "median_percent": 0.021,
+   "max_percent": 0.1,
+   "over_0.5_percent": 0,
+   "hanging_z92_up_max_percent": 0.1
+  },
+  {
+   "run": "09-30 10:54",
+   "stage": "none",
+   "pairs": 26,
+   "median_percent": 0.018,
+   "max_percent": 0.05,
+   "over_0.5_percent": 0,
+   "hanging_z92_up_max_percent": 0.05
+  },
+  {
+   "run": "09-30 11:26",
+   "stage": "none",
+   "pairs": 49,
+   "median_percent": 0.015,
+   "max_percent": 1.75,
+   "over_0.5_percent": 3,
+   "hanging_z92_up_max_percent": 0.54
+  },
+  {
+   "run": "09-30 13:19",
+   "stage": "sides",
+   "pairs": 52,
+   "median_percent": 0.13,
+   "max_percent": 2.3,
+   "over_0.5_percent": 10,
+   "hanging_z92_up_max_percent": 1.12
+  },
+  {
+   "run": "09-30 15:36",
+   "stage": "sides",
+   "pairs": 57,
+   "median_percent": 0.029,
+   "max_percent": 1.88,
+   "over_0.5_percent": 2,
+   "hanging_z92_up_max_percent": 0.49
+  },
+  {
+   "run": "09-30 16:13",
+   "stage": "sides",
+   "pairs": 49,
+   "median_percent": 0.019,
+   "max_percent": 0.34,
+   "over_0.5_percent": 0,
+   "hanging_z92_up_max_percent": 0.34
+  },
+  {
+   "run": "09-30 19:14",
+   "stage": "sides",
+   "pairs": 87,
+   "median_percent": 0.065,
+   "max_percent": 5.35,
+   "over_0.5_percent": 15,
+   "hanging_z92_up_max_percent": 0.21
+  },
+  {
+   "run": "10-01 13:49",
+   "stage": "cardboard",
+   "pairs": 151,
+   "median_percent": 0.022,
+   "max_percent": 0.24,
+   "over_0.5_percent": 0,
+   "hanging_z92_up_max_percent": 0.24
+  }
+ ],
+ "colour_error_same_wells_same_heights": {
+  "125.0": {
+   "sides_red_visit_1": {
+    "miss": 0.243,
+    "black_reads": 0.137,
+    "squeeze": 52.54
+   },
+   "sides_red_visit_2": {
+    "miss": 0.243,
+    "black_reads": 0.137,
+    "squeeze": 53.48
+   },
+   "cardboard": {
+    "miss": 0.154,
+    "black_reads": 0.283,
+    "squeeze": 2.36
+   }
+  },
+  "90.0": {
+   "sides_red_visit_1": {
+    "miss": 0.181,
+    "black_reads": 0.351,
+    "squeeze": 2.22
+   },
+   "sides_red_visit_2": {
+    "miss": 0.198,
+    "black_reads": 0.382,
+    "squeeze": 2.17
+   },
+   "cardboard": {
+    "miss": 0.365,
+    "black_reads": 0.529,
+    "squeeze": 1.46
+   },
+   "cardboard_rescored_second_white": 0.269
+  },
+  "89.0": {
+   "sides_red_visit_1": {
+    "miss": 0.095,
+    "black_reads": 0.191,
+    "squeeze": 1.59
+   },
+   "sides_red_visit_2": {
+    "miss": 0.159,
+    "black_reads": 0.294,
+    "squeeze": 1.71
+   },
+   "cardboard": {
+    "miss": 0.484,
+    "black_reads": 0.639,
+    "squeeze": 1.38
+   },
+   "cardboard_rescored_second_white": 0.344
+  },
+  "88.0": {
+   "sides_red_visit_1": {
+    "miss": 0.156,
+    "black_reads": 0.305,
+    "squeeze": 1.46
+   },
+   "sides_red_visit_2": {
+    "miss": 0.205,
+    "black_reads": 0.376,
+    "squeeze": 1.62
+   },
+   "cardboard": {
+    "miss": 0.763,
+    "black_reads": 0.893,
+    "squeeze": 1.25
+   },
+   "cardboard_rescored_second_white": 0.426
+  },
+  "87.0": {
+   "sides_red_visit_1": {
+    "miss": 0.121,
+    "black_reads": 0.242,
+    "squeeze": 1.29
+   },
+   "sides_red_visit_2": {
+    "miss": 0.183,
+    "black_reads": 0.337,
+    "squeeze": 1.45
+   },
+   "cardboard": {
+    "miss": 0.912,
+    "black_reads": 1.029,
+    "squeeze": 1.19
+   },
+   "cardboard_rescored_second_white": 0.441
+  },
+  "86.5": {
+   "sides_red_visit_1": {
+    "miss": 0.128,
+    "black_reads": 0.241,
+    "squeeze": 1.23
+   },
+   "sides_red_visit_2": {
+    "miss": 0.16,
+    "black_reads": 0.3,
+    "squeeze": 1.37
+   },
+   "cardboard": {
+    "miss": 0.92,
+    "black_reads": 1.036,
+    "squeeze": 1.18
+   },
+   "cardboard_rescored_second_white": 0.442
+  },
+  "cardboard_only_heights": {
+   "110.0": 0.133,
+   "100.0": 0.118,
+   "95.0": 0.15,
+   "92.0": 0.214
+  }
+ },
+ "colour_scatter_within_one_landing_at_contact": {
+  "sides": {
+   "yellow": {
+    "sd": 0.0014,
+    "max_from_mean": 0.004
+   },
+   "red, 1st landing": {
+    "sd": 0.0224,
+    "max_from_mean": 0.054
+   },
+   "red, 2nd landing": {
+    "sd": 0.0235,
+    "max_from_mean": 0.071
+   },
+   "blue": {
+    "sd": 0.0014,
+    "max_from_mean": 0.003
+   }
+  },
+  "sides_largest_jump": {
+   "totals": [
+    6040,
+    5725
+   ],
+   "calibrated_change_per_channel": [
+    0.069,
+    0.056,
+    0.059,
+    0.064,
+    0.095,
+    0.127,
+    0.169,
+    0.199
+   ]
+  },
+  "cardboard": {
+   "yellow": {
+    "sd": 0.001,
+    "max_from_mean": 0.003
+   },
+   "red": {
+    "sd": 0.0018,
+    "max_from_mean": 0.006
+   },
+   "blue": {
+    "sd": 0.0015,
+    "max_from_mean": 0.003
+   }
+  }
+ },
+ "confounded_with": "between the 09-30 evening and 10-01 runs the plate moved from slot 1 to slot 7 and the paint aged ~19 h; the enclosure hung from a different socket (A1 vs A2)"
+}

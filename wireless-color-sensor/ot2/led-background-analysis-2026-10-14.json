@@ -1,0 +1,394 @@
+{
+ "led": {
+  "z92": {
+   "4": {
+    "black_over_white": [
+     0.9959,
+     0.9937,
+     0.9983,
+     0.9928,
+     0.9918,
+     0.9929,
+     0.9926,
+     0.9935
+    ],
+    "total_black_over_white": 0.9936,
+    "black_total": 15002.5,
+    "white_total": 15099.0,
+    "white_minus_black_share_of_white": 0.0064
+   },
+   "10": {
+    "black_over_white": [
+     0.995,
+     0.9935,
+     0.9976,
+     0.9919,
+     0.9916,
+     0.9925,
+     0.9925,
+     0.9933
+    ],
+    "total_black_over_white": 0.9932,
+    "black_total": 36919.0,
+    "white_total": 37172.0,
+    "white_minus_black_share_of_white": 0.0068
+   },
+   "20": {
+    "black_over_white": [
+     0.9951,
+     0.994,
+     0.9978,
+     0.9919,
+     0.9913,
+     0.9921,
+     0.9918,
+     0.9925
+    ],
+    "total_black_over_white": 0.9929,
+    "black_total": 73320.0,
+    "white_total": 73842.5,
+    "white_minus_black_share_of_white": 0.0071
+   },
+   "span_vs_rail_at_128x": {
+    "led_4mA_white_minus_black": 3088,
+    "rail_white_minus_black": 2201.8,
+    "ratio": 1.4
+   }
+  },
+  "rest": {
+   "4": {
+    "black_over_white": [
+     0.9676,
+     0.9704,
+     0.9711,
+     0.9631,
+     0.9621,
+     0.9618,
+     0.961,
+     0.9664
+    ],
+    "total_black_over_white": 0.9647,
+    "black_total": 14977.0,
+    "white_total": 15525.0,
+    "white_minus_black_share_of_white": 0.0353
+   },
+   "10": {
+    "black_over_white": [
+     0.966,
+     0.9707,
+     0.9706,
+     0.9629,
+     0.9624,
+     0.9616,
+     0.9615,
+     0.9665
+    ],
+    "total_black_over_white": 0.9647,
+    "black_total": 36865.0,
+    "white_total": 38214.0,
+    "white_minus_black_share_of_white": 0.0353
+   },
+   "20": {
+    "black_over_white": [
+     0.9659,
+     0.9714,
+     0.9705,
+     0.9631,
+     0.9627,
+     0.9619,
+     0.9618,
+     0.9671
+    ],
+    "total_black_over_white": 0.965,
+    "black_total": 73260.5,
+    "white_total": 75917.5,
+    "white_minus_black_share_of_white": 0.035
+   },
+   "span_vs_rail_at_128x": {
+    "led_4mA_white_minus_black": 17536,
+    "rail_white_minus_black": 1187.0,
+    "ratio": 14.77
+   }
+  }
+ },
+ "rail_lights": {
+  "z92": {
+   "black_over_white": [
+    0.5833,
+    0.5069,
+    0.5615,
+    0.5375,
+    0.5572,
+    0.5824,
+    0.622,
+    0.6823
+   ],
+   "total_black_over_white": 0.5898,
+   "black_total": 3572.2,
+   "white_total": 5774.0
+  },
+  "rest": {
+   "black_over_white": [
+    0.7034,
+    0.7065,
+    0.7088,
+    0.6681,
+    0.6692,
+    0.6753,
+    0.6932,
+    0.7222
+   ],
+   "total_black_over_white": 0.6897,
+   "black_total": 3045.2,
+   "white_total": 4232.2
+  }
+ },
+ "led_vs_current": {
+  "H7 z92": {
+   "10/4": 2.461,
+   "20/4": 4.887
+  },
+  "H12 z92": {
+   "10/4": 2.462,
+   "20/4": 4.891
+  },
+  "H7 rest": {
+   "10/4": 2.461,
+   "20/4": 4.892
+  },
+  "H12 rest": {
+   "10/4": 2.461,
+   "20/4": 4.89
+  }
+ },
+ "led_saturation": {
+  "analog_saturated_readings": 0,
+  "highest_channel": 12960,
+  "highest_clear": 40780,
+  "full_scale": 65535
+ },
+ "empty_wells_z92": {
+  "over_black": {
+   "F3": [
+    1.0204,
+    1.2241,
+    1.0714,
+    1.066,
+    1.0219,
+    0.9859,
+    0.9548,
+    0.8883
+   ],
+   "F6": [
+    1.0612,
+    1.2989,
+    1.1357,
+    1.1192,
+    1.0661,
+    1.0285,
+    0.9983,
+    0.9338
+   ],
+   "F9": [
+    1.1633,
+    1.4468,
+    1.2619,
+    1.2399,
+    1.1824,
+    1.1356,
+    1.0932,
+    1.0239
+   ]
+  },
+  "calibrated_R": {
+   "F3": [
+    0.0286,
+    0.2304,
+    0.0915,
+    0.0767,
+    0.0275,
+    -0.0196,
+    -0.0744,
+    -0.2399
+   ],
+   "F6": [
+    0.0857,
+    0.3072,
+    0.1738,
+    0.1385,
+    0.0832,
+    0.0398,
+    -0.0028,
+    -0.1421
+   ],
+   "F9": [
+    0.2286,
+    0.4594,
+    0.3354,
+    0.2787,
+    0.2295,
+    0.1891,
+    0.1534,
+    0.0514
+   ]
+  },
+  "totals": {
+   "F3": 3559.0,
+   "F6": 3710.5,
+   "F9": 4051.8
+  },
+  "black_total": 3572.2,
+  "white_total": 5774.0
+ },
+ "repeatability_max_spread": {
+  "z92": 0.65153,
+  "empty-F9": 0.00049,
+  "z125": 0.56043,
+  "empty-F6": 0.00054,
+  "empty-F3": 0.00112,
+  "xy68.38_192.24": 0.00349,
+  "black-H7-z92": 0.00056,
+  "xy113.38_192.24": 0.20905,
+  "white-H12-z92": 0.00035,
+  "z90": 0.45826,
+  "z89": 0.40531,
+  "z88.5": 0.36779,
+  "z88": 0.32778,
+  "z87.5": 0.32136,
+  "white-H12-rest": 0.00024,
+  "black-H7-rest": 0.00099,
+  "white-H12-z92-again": 0.00121
+ },
+ "landings": [
+  {
+   "well": "H12",
+   "photo": 32,
+   "z": 92.0,
+   "total": 5775.0
+  },
+  {
+   "well": "H12",
+   "photo": 33,
+   "z": 90.0,
+   "total": 5141.0
+  },
+  {
+   "well": "H12",
+   "photo": 34,
+   "z": 89.0,
+   "total": 4758.5
+  },
+  {
+   "well": "H12",
+   "photo": 35,
+   "z": 88.5,
+   "total": 4502.5
+  },
+  {
+   "well": "H12",
+   "photo": 36,
+   "z": 88.0,
+   "total": 4278.5
+  },
+  {
+   "well": "H12",
+   "photo": 37,
+   "z": 87.5,
+   "total": 4232.0
+  },
+  {
+   "well": "H12",
+   "photo": 38,
+   "z": 125.0,
+   "total": 9110.0
+  },
+  {
+   "well": "H7",
+   "photo": 40,
+   "z": 92.0,
+   "total": 3571.5
+  },
+  {
+   "well": "H7",
+   "photo": 41,
+   "z": 90.0,
+   "total": 3225.5
+  },
+  {
+   "well": "H7",
+   "photo": 42,
+   "z": 89.0,
+   "total": 3156.5
+  },
+  {
+   "well": "H7",
+   "photo": 43,
+   "z": 88.5,
+   "total": 3105.0
+  },
+  {
+   "well": "H7",
+   "photo": 44,
+   "z": 88.0,
+   "total": 3074.0
+  },
+  {
+   "well": "H7",
+   "photo": 45,
+   "z": 87.5,
+   "total": 3062.0
+  },
+  {
+   "well": "H7",
+   "photo": 46,
+   "z": 87.0,
+   "total": 3046.5
+  },
+  {
+   "well": "H7",
+   "photo": 47,
+   "z": 92.0,
+   "total": 3142.5
+  },
+  {
+   "well": "H7",
+   "photo": 48,
+   "z": 125.0,
+   "total": 6080.5
+  },
+  {
+   "well": "H12",
+   "photo": 50,
+   "z": 92.0,
+   "total": 4960.0
+  }
+ ],
+ "after_h7_landing": {
+  "H7_z92_before": 3572.2,
+  "H7_z92_after": 3142.5,
+  "H7_rest": 3045.2,
+  "H12_z92_before": 5774.0,
+  "H12_z92_after": 4958.5
+ },
+ "plate_shift": {
+  "pixels_cols_rows": [
+   2.73,
+   11.27
+  ],
+  "match": 0.75,
+  "deck_mm_dx_dy": [
+   -0.9,
+   -12.14
+  ],
+  "px_per_mm_at_plate": {
+   "+x": [
+    0.995,
+    -0.006
+   ],
+   "+y": [
+    -0.299,
+    -0.927
+   ]
+  }
+ }
+}

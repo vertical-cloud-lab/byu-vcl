@@ -1,0 +1,3859 @@
+{
+ "what": "the 2026-10-06 run over white paper scored height for height against 2026-10-01",
+ "channels": [
+  "ch410",
+  "ch440",
+  "ch470",
+  "ch510",
+  "ch550",
+  "ch583",
+  "ch620",
+  "ch670"
+ ],
+ "heights": {
+  "125.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.245,
+      0.205,
+      0.229,
+      0.419,
+      0.479,
+      0.476,
+      0.451,
+      0.265
+     ],
+     "red": [
+      0.202,
+      0.216,
+      0.201,
+      0.22,
+      0.219,
+      0.33,
+      0.47,
+      0.336
+     ],
+     "blue": [
+      0.316,
+      0.466,
+      0.451,
+      0.406,
+      0.387,
+      0.39,
+      0.422,
+      0.469
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.314,
+     "b_slope": 0.136,
+     "differences_too_small_by": 7.36,
+     "r2": 0.17
+    },
+    "fit_pure": {
+     "a_black_reads": 0.332,
+     "b_slope": 0.1,
+     "differences_too_small_by": 9.96,
+     "r2": 0.096
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.297,
+     "b_slope": 0.161,
+     "differences_too_small_by": 6.21,
+     "r2": 0.25
+    },
+    "miss_mean": 0.191,
+    "miss_by_paint": {
+     "yellow": 0.216,
+     "red": 0.196,
+     "blue": 0.162
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.2,
+      0.23
+     ],
+     "red": [
+      0.2,
+      0.22
+     ],
+     "blue": [
+      0.39,
+      0.47
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.63,
+      "red": -0.03,
+      "blue": -0.61
+     },
+     "red": {
+      "yellow": 0.75,
+      "red": 0.77,
+      "blue": -0.78
+     },
+     "blue": {
+      "yellow": -0.37,
+      "red": 0.36,
+      "blue": 0.34
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "red"
+    },
+    "yellow_620_over_440": 2.2,
+    "black_over_white": [
+     0.759,
+     0.697,
+     0.752,
+     0.748,
+     0.76,
+     0.772,
+     0.807,
+     0.861
+    ],
+    "black_over_white_440_670": [
+     0.7,
+     0.86
+    ],
+    "black_over_white_mean_440_670": 0.771,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.427,
+      0.374,
+      0.403,
+      0.707,
+      0.774,
+      0.772,
+      0.721,
+      0.415
+     ],
+     "red": [
+      0.189,
+      0.177,
+      0.162,
+      0.194,
+      0.191,
+      0.363,
+      0.582,
+      0.339
+     ],
+     "blue": [
+      0.28,
+      0.432,
+      0.409,
+      0.344,
+      0.326,
+      0.326,
+      0.342,
+      0.415
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.283,
+     "b_slope": 0.424,
+     "differences_too_small_by": 2.36,
+     "r2": 0.525
+    },
+    "fit_pure": {
+     "a_black_reads": 0.322,
+     "b_slope": 0.376,
+     "differences_too_small_by": 2.66,
+     "r2": 0.427
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.252,
+     "b_slope": 0.439,
+     "differences_too_small_by": 2.28,
+     "r2": 0.59
+    },
+    "miss_mean": 0.154,
+    "miss_by_paint": {
+     "yellow": 0.17,
+     "red": 0.176,
+     "blue": 0.114
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.37,
+      0.4
+     ],
+     "red": [
+      0.16,
+      0.19
+     ],
+     "blue": [
+      0.33,
+      0.42
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.55,
+      "red": -0.12,
+      "blue": -0.53
+     },
+     "red": {
+      "yellow": 0.73,
+      "red": 0.71,
+      "blue": -0.76
+     },
+     "blue": {
+      "yellow": -0.54,
+      "red": 0.14,
+      "blue": 0.52
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "yellow",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.93,
+    "black_over_white": [
+     0.858,
+     0.813,
+     0.847,
+     0.848,
+     0.853,
+     0.86,
+     0.883,
+     0.912
+    ],
+    "black_over_white_440_670": [
+     0.81,
+     0.91
+    ],
+    "black_over_white_mean_440_670": 0.859,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.244,
+      0.204,
+      0.228,
+      0.418,
+      0.478,
+      0.475,
+      0.45,
+      0.265
+     ],
+     "red": [
+      0.202,
+      0.215,
+      0.201,
+      0.22,
+      0.218,
+      0.33,
+      0.469,
+      0.335
+     ],
+     "blue": [
+      0.315,
+      0.465,
+      0.45,
+      0.405,
+      0.386,
+      0.389,
+      0.421,
+      0.468
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.314,
+     "b_slope": 0.136,
+     "differences_too_small_by": 7.37,
+     "r2": 0.171
+    },
+    "fit_pure": {
+     "a_black_reads": 0.331,
+     "b_slope": 0.1,
+     "differences_too_small_by": 9.98,
+     "r2": 0.096
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.296,
+     "b_slope": 0.161,
+     "differences_too_small_by": 6.23,
+     "r2": 0.25
+    },
+    "miss_mean": 0.191,
+    "miss_by_paint": {
+     "yellow": 0.216,
+     "red": 0.196,
+     "blue": 0.161
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.2,
+      0.23
+     ],
+     "red": [
+      0.2,
+      0.22
+     ],
+     "blue": [
+      0.39,
+      0.47
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.63,
+      "red": -0.03,
+      "blue": -0.61
+     },
+     "red": {
+      "yellow": 0.75,
+      "red": 0.76,
+      "blue": -0.78
+     },
+     "blue": {
+      "yellow": -0.37,
+      "red": 0.36,
+      "blue": 0.34
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "red"
+    },
+    "yellow_620_over_440": 2.2,
+    "black_over_white": [
+     0.759,
+     0.696,
+     0.751,
+     0.748,
+     0.76,
+     0.772,
+     0.806,
+     0.861
+    ],
+    "black_over_white_440_670": [
+     0.7,
+     0.86
+    ],
+    "black_over_white_mean_440_670": 0.771,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.422,
+      0.37,
+      0.398,
+      0.7,
+      0.766,
+      0.765,
+      0.713,
+      0.41
+     ],
+     "red": [
+      0.187,
+      0.176,
+      0.161,
+      0.192,
+      0.189,
+      0.359,
+      0.577,
+      0.335
+     ],
+     "blue": [
+      0.302,
+      0.456,
+      0.436,
+      0.375,
+      0.358,
+      0.357,
+      0.374,
+      0.447
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.298,
+     "b_slope": 0.4,
+     "differences_too_small_by": 2.5,
+     "r2": 0.49
+    },
+    "fit_pure": {
+     "a_black_reads": 0.336,
+     "b_slope": 0.349,
+     "differences_too_small_by": 2.87,
+     "r2": 0.385
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.266,
+     "b_slope": 0.422,
+     "differences_too_small_by": 2.37,
+     "r2": 0.569
+    },
+    "miss_mean": 0.161,
+    "miss_by_paint": {
+     "yellow": 0.171,
+     "red": 0.175,
+     "blue": 0.137
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.37,
+      0.4
+     ],
+     "red": [
+      0.16,
+      0.19
+     ],
+     "blue": [
+      0.36,
+      0.45
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.55,
+      "red": -0.13,
+      "blue": -0.53
+     },
+     "red": {
+      "yellow": 0.73,
+      "red": 0.71,
+      "blue": -0.76
+     },
+     "blue": {
+      "yellow": -0.51,
+      "red": 0.18,
+      "blue": 0.48
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "yellow",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.93,
+    "black_over_white": [
+     0.856,
+     0.812,
+     0.845,
+     0.846,
+     0.851,
+     0.859,
+     0.882,
+     0.911
+    ],
+    "black_over_white_440_670": [
+     0.81,
+     0.91
+    ],
+    "black_over_white_mean_440_670": 0.858,
+    "colour_channels_brighter_than_white": 0
+   }
+  },
+  "110.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.201,
+      0.173,
+      0.186,
+      0.325,
+      0.376,
+      0.373,
+      0.362,
+      0.218
+     ],
+     "red": [
+      0.169,
+      0.175,
+      0.167,
+      0.178,
+      0.181,
+      0.283,
+      0.418,
+      0.33
+     ],
+     "blue": [
+      0.266,
+      0.403,
+      0.39,
+      0.333,
+      0.315,
+      0.32,
+      0.347,
+      0.395
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.261,
+     "b_slope": 0.114,
+     "differences_too_small_by": 8.75,
+     "r2": 0.171
+    },
+    "fit_pure": {
+     "a_black_reads": 0.276,
+     "b_slope": 0.086,
+     "differences_too_small_by": 11.61,
+     "r2": 0.1
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.247,
+     "b_slope": 0.133,
+     "differences_too_small_by": 7.5,
+     "r2": 0.243
+    },
+    "miss_mean": 0.182,
+    "miss_by_paint": {
+     "yellow": 0.26,
+     "red": 0.176,
+     "blue": 0.11
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.17,
+      0.19
+     ],
+     "red": [
+      0.17,
+      0.18
+     ],
+     "blue": [
+      0.32,
+      0.39
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.65,
+      "red": -0.01,
+      "blue": -0.63
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.85,
+      "blue": -0.81
+     },
+     "blue": {
+      "yellow": -0.47,
+      "red": 0.24,
+      "blue": 0.44
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.1,
+    "black_over_white": [
+     0.677,
+     0.599,
+     0.663,
+     0.658,
+     0.672,
+     0.69,
+     0.735,
+     0.806
+    ],
+    "black_over_white_440_670": [
+     0.6,
+     0.81
+    ],
+    "black_over_white_mean_440_670": 0.689,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.305,
+      0.251,
+      0.262,
+      0.491,
+      0.558,
+      0.56,
+      0.53,
+      0.322
+     ],
+     "red": [
+      0.161,
+      0.133,
+      0.122,
+      0.147,
+      0.151,
+      0.288,
+      0.475,
+      0.324
+     ],
+     "blue": [
+      0.217,
+      0.355,
+      0.331,
+      0.262,
+      0.249,
+      0.251,
+      0.264,
+      0.322
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.213,
+     "b_slope": 0.327,
+     "differences_too_small_by": 3.06,
+     "r2": 0.605
+    },
+    "fit_pure": {
+     "a_black_reads": 0.242,
+     "b_slope": 0.293,
+     "differences_too_small_by": 3.42,
+     "r2": 0.502
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.19,
+     "b_slope": 0.336,
+     "differences_too_small_by": 2.98,
+     "r2": 0.667
+    },
+    "miss_mean": 0.133,
+    "miss_by_paint": {
+     "yellow": 0.184,
+     "red": 0.148,
+     "blue": 0.068
+    },
+    "inside_range": 4,
+    "dark_floor": {
+     "yellow": [
+      0.25,
+      0.26
+     ],
+     "red": [
+      0.12,
+      0.15
+     ],
+     "blue": [
+      0.25,
+      0.32
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.65,
+      "red": -0.01,
+      "blue": -0.63
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.81,
+      "blue": -0.8
+     },
+     "blue": {
+      "yellow": -0.61,
+      "red": 0.05,
+      "blue": 0.58
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.11,
+    "black_over_white": [
+     0.775,
+     0.714,
+     0.76,
+     0.758,
+     0.767,
+     0.779,
+     0.812,
+     0.86
+    ],
+    "black_over_white_440_670": [
+     0.71,
+     0.86
+    ],
+    "black_over_white_mean_440_670": 0.778,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.201,
+      0.172,
+      0.186,
+      0.325,
+      0.376,
+      0.373,
+      0.361,
+      0.217
+     ],
+     "red": [
+      0.169,
+      0.175,
+      0.166,
+      0.178,
+      0.181,
+      0.283,
+      0.417,
+      0.329
+     ],
+     "blue": [
+      0.266,
+      0.402,
+      0.389,
+      0.332,
+      0.315,
+      0.319,
+      0.347,
+      0.394
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.261,
+     "b_slope": 0.114,
+     "differences_too_small_by": 8.76,
+     "r2": 0.171
+    },
+    "fit_pure": {
+     "a_black_reads": 0.275,
+     "b_slope": 0.086,
+     "differences_too_small_by": 11.62,
+     "r2": 0.101
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.247,
+     "b_slope": 0.133,
+     "differences_too_small_by": 7.52,
+     "r2": 0.243
+    },
+    "miss_mean": 0.182,
+    "miss_by_paint": {
+     "yellow": 0.261,
+     "red": 0.176,
+     "blue": 0.11
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.17,
+      0.19
+     ],
+     "red": [
+      0.17,
+      0.18
+     ],
+     "blue": [
+      0.31,
+      0.39
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.65,
+      "red": -0.01,
+      "blue": -0.63
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.85,
+      "blue": -0.81
+     },
+     "blue": {
+      "yellow": -0.47,
+      "red": 0.24,
+      "blue": 0.44
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.1,
+    "black_over_white": [
+     0.677,
+     0.598,
+     0.663,
+     0.658,
+     0.672,
+     0.69,
+     0.734,
+     0.806
+    ],
+    "black_over_white_440_670": [
+     0.6,
+     0.81
+    ],
+    "black_over_white_mean_440_670": 0.689,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.302,
+      0.25,
+      0.26,
+      0.488,
+      0.555,
+      0.556,
+      0.527,
+      0.32
+     ],
+     "red": [
+      0.16,
+      0.132,
+      0.121,
+      0.146,
+      0.15,
+      0.286,
+      0.472,
+      0.322
+     ],
+     "blue": [
+      0.232,
+      0.372,
+      0.349,
+      0.282,
+      0.27,
+      0.272,
+      0.285,
+      0.343
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.223,
+     "b_slope": 0.312,
+     "differences_too_small_by": 3.2,
+     "r2": 0.57
+    },
+    "fit_pure": {
+     "a_black_reads": 0.252,
+     "b_slope": 0.276,
+     "differences_too_small_by": 3.63,
+     "r2": 0.459
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.199,
+     "b_slope": 0.325,
+     "differences_too_small_by": 3.08,
+     "r2": 0.645
+    },
+    "miss_mean": 0.138,
+    "miss_by_paint": {
+     "yellow": 0.185,
+     "red": 0.148,
+     "blue": 0.08
+    },
+    "inside_range": 4,
+    "dark_floor": {
+     "yellow": [
+      0.25,
+      0.26
+     ],
+     "red": [
+      0.12,
+      0.15
+     ],
+     "blue": [
+      0.27,
+      0.34
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.65,
+      "red": -0.01,
+      "blue": -0.63
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.81,
+      "blue": -0.8
+     },
+     "blue": {
+      "yellow": -0.59,
+      "red": 0.07,
+      "blue": 0.56
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.11,
+    "black_over_white": [
+     0.773,
+     0.712,
+     0.758,
+     0.756,
+     0.766,
+     0.778,
+     0.811,
+     0.859
+    ],
+    "black_over_white_440_670": [
+     0.71,
+     0.86
+    ],
+    "black_over_white_mean_440_670": 0.777,
+    "colour_channels_brighter_than_white": 0
+   }
+  },
+  "100.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.228,
+      0.166,
+      0.207,
+      0.376,
+      0.46,
+      0.449,
+      0.432,
+      0.321
+     ],
+     "red": [
+      0.162,
+      0.159,
+      0.158,
+      0.167,
+      0.178,
+      0.294,
+      0.457,
+      0.394
+     ],
+     "blue": [
+      0.272,
+      0.444,
+      0.419,
+      0.342,
+      0.321,
+      0.321,
+      0.346,
+      0.393
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.254,
+     "b_slope": 0.22,
+     "differences_too_small_by": 4.55,
+     "r2": 0.421
+    },
+    "fit_pure": {
+     "a_black_reads": 0.277,
+     "b_slope": 0.184,
+     "differences_too_small_by": 5.43,
+     "r2": 0.306
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.234,
+     "b_slope": 0.238,
+     "differences_too_small_by": 4.2,
+     "r2": 0.517
+    },
+    "miss_mean": 0.16,
+    "miss_by_paint": {
+     "yellow": 0.212,
+     "red": 0.157,
+     "blue": 0.111
+    },
+    "inside_range": 4,
+    "dark_floor": {
+     "yellow": [
+      0.17,
+      0.21
+     ],
+     "red": [
+      0.16,
+      0.18
+     ],
+     "blue": [
+      0.32,
+      0.39
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.8,
+      "red": 0.2,
+      "blue": -0.78
+     },
+     "red": {
+      "yellow": 0.8,
+      "red": 0.91,
+      "blue": -0.83
+     },
+     "blue": {
+      "yellow": -0.68,
+      "red": -0.02,
+      "blue": 0.65
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.6,
+    "black_over_white": [
+     0.642,
+     0.548,
+     0.619,
+     0.611,
+     0.626,
+     0.648,
+     0.698,
+     0.776
+    ],
+    "black_over_white_440_670": [
+     0.55,
+     0.78
+    ],
+    "black_over_white_mean_440_670": 0.647,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.298,
+      0.176,
+      0.229,
+      0.468,
+      0.57,
+      0.583,
+      0.511,
+      0.361
+     ],
+     "red": [
+      0.15,
+      0.109,
+      0.102,
+      0.124,
+      0.132,
+      0.276,
+      0.503,
+      0.383
+     ],
+     "blue": [
+      0.228,
+      0.419,
+      0.38,
+      0.285,
+      0.261,
+      0.26,
+      0.27,
+      0.319
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.202,
+     "b_slope": 0.373,
+     "differences_too_small_by": 2.68,
+     "r2": 0.65
+    },
+    "fit_pure": {
+     "a_black_reads": 0.236,
+     "b_slope": 0.33,
+     "differences_too_small_by": 3.03,
+     "r2": 0.527
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.174,
+     "b_slope": 0.388,
+     "differences_too_small_by": 2.58,
+     "r2": 0.732
+    },
+    "miss_mean": 0.118,
+    "miss_by_paint": {
+     "yellow": 0.161,
+     "red": 0.121,
+     "blue": 0.072
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.18,
+      0.23
+     ],
+     "red": [
+      0.1,
+      0.13
+     ],
+     "blue": [
+      0.26,
+      0.32
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.76,
+      "red": 0.12,
+      "blue": -0.74
+     },
+     "red": {
+      "yellow": 0.79,
+      "red": 0.88,
+      "blue": -0.82
+     },
+     "blue": {
+      "yellow": -0.8,
+      "red": -0.23,
+      "blue": 0.77
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.9,
+    "black_over_white": [
+     0.734,
+     0.658,
+     0.712,
+     0.705,
+     0.72,
+     0.735,
+     0.773,
+     0.831
+    ],
+    "black_over_white_440_670": [
+     0.66,
+     0.83
+    ],
+    "black_over_white_mean_440_670": 0.733,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.224,
+      0.163,
+      0.203,
+      0.37,
+      0.452,
+      0.442,
+      0.425,
+      0.316
+     ],
+     "red": [
+      0.159,
+      0.156,
+      0.155,
+      0.165,
+      0.176,
+      0.29,
+      0.449,
+      0.388
+     ],
+     "blue": [
+      0.268,
+      0.436,
+      0.411,
+      0.337,
+      0.315,
+      0.316,
+      0.34,
+      0.386
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.25,
+     "b_slope": 0.216,
+     "differences_too_small_by": 4.63,
+     "r2": 0.422
+    },
+    "fit_pure": {
+     "a_black_reads": 0.273,
+     "b_slope": 0.181,
+     "differences_too_small_by": 5.52,
+     "r2": 0.307
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.231,
+     "b_slope": 0.234,
+     "differences_too_small_by": 4.28,
+     "r2": 0.518
+    },
+    "miss_mean": 0.16,
+    "miss_by_paint": {
+     "yellow": 0.215,
+     "red": 0.157,
+     "blue": 0.107
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.16,
+      0.2
+     ],
+     "red": [
+      0.16,
+      0.18
+     ],
+     "blue": [
+      0.32,
+      0.39
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.8,
+      "red": 0.2,
+      "blue": -0.78
+     },
+     "red": {
+      "yellow": 0.8,
+      "red": 0.91,
+      "blue": -0.83
+     },
+     "blue": {
+      "yellow": -0.68,
+      "red": -0.02,
+      "blue": 0.65
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.6,
+    "black_over_white": [
+     0.638,
+     0.543,
+     0.615,
+     0.607,
+     0.622,
+     0.644,
+     0.694,
+     0.773
+    ],
+    "black_over_white_440_670": [
+     0.54,
+     0.77
+    ],
+    "black_over_white_mean_440_670": 0.643,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.285,
+      0.169,
+      0.22,
+      0.448,
+      0.546,
+      0.559,
+      0.491,
+      0.347
+     ],
+     "red": [
+      0.144,
+      0.105,
+      0.098,
+      0.12,
+      0.127,
+      0.265,
+      0.483,
+      0.368
+     ],
+     "blue": [
+      0.248,
+      0.436,
+      0.402,
+      0.314,
+      0.292,
+      0.291,
+      0.302,
+      0.352
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.214,
+     "b_slope": 0.335,
+     "differences_too_small_by": 2.99,
+     "r2": 0.567
+    },
+    "fit_pure": {
+     "a_black_reads": 0.247,
+     "b_slope": 0.289,
+     "differences_too_small_by": 3.46,
+     "r2": 0.436
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.187,
+     "b_slope": 0.356,
+     "differences_too_small_by": 2.81,
+     "r2": 0.669
+    },
+    "miss_mean": 0.128,
+    "miss_by_paint": {
+     "yellow": 0.172,
+     "red": 0.122,
+     "blue": 0.09
+    },
+    "inside_range": 5,
+    "dark_floor": {
+     "yellow": [
+      0.17,
+      0.22
+     ],
+     "red": [
+      0.1,
+      0.13
+     ],
+     "blue": [
+      0.29,
+      0.35
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.76,
+      "red": 0.12,
+      "blue": -0.74
+     },
+     "red": {
+      "yellow": 0.79,
+      "red": 0.88,
+      "blue": -0.82
+     },
+     "blue": {
+      "yellow": -0.77,
+      "red": -0.19,
+      "blue": 0.75
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.91,
+    "black_over_white": [
+     0.725,
+     0.647,
+     0.702,
+     0.696,
+     0.711,
+     0.727,
+     0.765,
+     0.825
+    ],
+    "black_over_white_440_670": [
+     0.65,
+     0.82
+    ],
+    "black_over_white_mean_440_670": 0.724,
+    "colour_channels_brighter_than_white": 0
+   }
+  },
+  "95.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.317,
+      0.186,
+      0.237,
+      0.512,
+      0.634,
+      0.63,
+      0.619,
+      0.465
+     ],
+     "red": [
+      0.264,
+      0.234,
+      0.233,
+      0.239,
+      0.26,
+      0.44,
+      0.693,
+      0.609
+     ],
+     "blue": [
+      0.364,
+      0.623,
+      0.564,
+      0.446,
+      0.412,
+      0.408,
+      0.435,
+      0.485
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.333,
+     "b_slope": 0.358,
+     "differences_too_small_by": 2.8,
+     "r2": 0.517
+    },
+    "fit_pure": {
+     "a_black_reads": 0.366,
+     "b_slope": 0.314,
+     "differences_too_small_by": 3.18,
+     "r2": 0.413
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.306,
+     "b_slope": 0.372,
+     "differences_too_small_by": 2.69,
+     "r2": 0.584
+    },
+    "miss_mean": 0.178,
+    "miss_by_paint": {
+     "yellow": 0.12,
+     "red": 0.197,
+     "blue": 0.216
+    },
+    "inside_range": 1,
+    "dark_floor": {
+     "yellow": [
+      0.19,
+      0.24
+     ],
+     "red": [
+      0.23,
+      0.26
+     ],
+     "blue": [
+      0.41,
+      0.49
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.85,
+      "red": 0.29,
+      "blue": -0.83
+     },
+     "red": {
+      "yellow": 0.8,
+      "red": 0.92,
+      "blue": -0.82
+     },
+     "blue": {
+      "yellow": -0.8,
+      "red": -0.22,
+      "blue": 0.77
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 3.33,
+    "black_over_white": [
+     0.678,
+     0.584,
+     0.645,
+     0.635,
+     0.648,
+     0.67,
+     0.717,
+     0.786
+    ],
+    "black_over_white_440_670": [
+     0.58,
+     0.79
+    ],
+    "black_over_white_mean_440_670": 0.669,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.331,
+      0.147,
+      0.193,
+      0.552,
+      0.68,
+      0.673,
+      0.644,
+      0.453
+     ],
+     "red": [
+      0.239,
+      0.18,
+      0.173,
+      0.194,
+      0.205,
+      0.398,
+      0.712,
+      0.584
+     ],
+     "blue": [
+      0.331,
+      0.608,
+      0.538,
+      0.402,
+      0.366,
+      0.359,
+      0.366,
+      0.411
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.279,
+     "b_slope": 0.448,
+     "differences_too_small_by": 2.23,
+     "r2": 0.592
+    },
+    "fit_pure": {
+     "a_black_reads": 0.32,
+     "b_slope": 0.397,
+     "differences_too_small_by": 2.52,
+     "r2": 0.48
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.246,
+     "b_slope": 0.464,
+     "differences_too_small_by": 2.16,
+     "r2": 0.661
+    },
+    "miss_mean": 0.15,
+    "miss_by_paint": {
+     "yellow": 0.112,
+     "red": 0.167,
+     "blue": 0.17
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.15,
+      0.19
+     ],
+     "red": [
+      0.17,
+      0.21
+     ],
+     "blue": [
+      0.36,
+      0.41
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.82,
+      "red": 0.24,
+      "blue": -0.8
+     },
+     "red": {
+      "yellow": 0.79,
+      "red": 0.91,
+      "blue": -0.81
+     },
+     "blue": {
+      "yellow": -0.87,
+      "red": -0.37,
+      "blue": 0.84
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 4.38,
+    "black_over_white": [
+     0.728,
+     0.652,
+     0.703,
+     0.694,
+     0.707,
+     0.726,
+     0.763,
+     0.822
+    ],
+    "black_over_white_440_670": [
+     0.65,
+     0.82
+    ],
+    "black_over_white_mean_440_670": 0.724,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.296,
+      0.173,
+      0.223,
+      0.48,
+      0.595,
+      0.593,
+      0.584,
+      0.44
+     ],
+     "red": [
+      0.246,
+      0.218,
+      0.219,
+      0.225,
+      0.245,
+      0.415,
+      0.653,
+      0.577
+     ],
+     "blue": [
+      0.339,
+      0.576,
+      0.528,
+      0.418,
+      0.387,
+      0.384,
+      0.41,
+      0.46
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.312,
+     "b_slope": 0.339,
+     "differences_too_small_by": 2.95,
+     "r2": 0.524
+    },
+    "fit_pure": {
+     "a_black_reads": 0.343,
+     "b_slope": 0.299,
+     "differences_too_small_by": 3.34,
+     "r2": 0.422
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.287,
+     "b_slope": 0.351,
+     "differences_too_small_by": 2.85,
+     "r2": 0.588
+    },
+    "miss_mean": 0.168,
+    "miss_by_paint": {
+     "yellow": 0.134,
+     "red": 0.183,
+     "blue": 0.186
+    },
+    "inside_range": 2,
+    "dark_floor": {
+     "yellow": [
+      0.17,
+      0.22
+     ],
+     "red": [
+      0.22,
+      0.24
+     ],
+     "blue": [
+      0.38,
+      0.46
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.85,
+      "red": 0.3,
+      "blue": -0.83
+     },
+     "red": {
+      "yellow": 0.8,
+      "red": 0.92,
+      "blue": -0.83
+     },
+     "blue": {
+      "yellow": -0.78,
+      "red": -0.19,
+      "blue": 0.76
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 3.37,
+    "black_over_white": [
+     0.661,
+     0.564,
+     0.629,
+     0.619,
+     0.633,
+     0.656,
+     0.704,
+     0.777
+    ],
+    "black_over_white_440_670": [
+     0.56,
+     0.78
+    ],
+    "black_over_white_mean_440_670": 0.655,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.294,
+      0.131,
+      0.173,
+      0.493,
+      0.61,
+      0.605,
+      0.581,
+      0.411
+     ],
+     "red": [
+      0.213,
+      0.16,
+      0.155,
+      0.175,
+      0.186,
+      0.359,
+      0.643,
+      0.53
+     ],
+     "blue": [
+      0.343,
+      0.596,
+      0.542,
+      0.425,
+      0.395,
+      0.389,
+      0.399,
+      0.444
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.283,
+     "b_slope": 0.37,
+     "differences_too_small_by": 2.7,
+     "r2": 0.475
+    },
+    "fit_pure": {
+     "a_black_reads": 0.32,
+     "b_slope": 0.317,
+     "differences_too_small_by": 3.16,
+     "r2": 0.36
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.252,
+     "b_slope": 0.394,
+     "differences_too_small_by": 2.54,
+     "r2": 0.564
+    },
+    "miss_mean": 0.157,
+    "miss_by_paint": {
+     "yellow": 0.132,
+     "red": 0.148,
+     "blue": 0.19
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.13,
+      0.17
+     ],
+     "red": [
+      0.16,
+      0.19
+     ],
+     "blue": [
+      0.39,
+      0.44
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.82,
+      "red": 0.25,
+      "blue": -0.81
+     },
+     "red": {
+      "yellow": 0.79,
+      "red": 0.91,
+      "blue": -0.82
+     },
+     "blue": {
+      "yellow": -0.85,
+      "red": -0.33,
+      "blue": 0.82
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 4.44,
+    "black_over_white": [
+     0.703,
+     0.62,
+     0.677,
+     0.669,
+     0.684,
+     0.703,
+     0.744,
+     0.806
+    ],
+    "black_over_white_440_670": [
+     0.62,
+     0.81
+    ],
+    "black_over_white_mean_440_670": 0.7,
+    "colour_channels_brighter_than_white": 0
+   }
+  },
+  "92.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.453,
+      0.312,
+      0.385,
+      0.708,
+      0.864,
+      0.849,
+      0.845,
+      0.685
+     ],
+     "red": [
+      0.369,
+      0.349,
+      0.353,
+      0.337,
+      0.359,
+      0.577,
+      0.895,
+      0.822
+     ],
+     "blue": [
+      0.42,
+      0.742,
+      0.673,
+      0.524,
+      0.486,
+      0.475,
+      0.506,
+      0.563
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.421,
+     "b_slope": 0.519,
+     "differences_too_small_by": 1.93,
+     "r2": 0.714
+    },
+    "fit_pure": {
+     "a_black_reads": 0.466,
+     "b_slope": 0.475,
+     "differences_too_small_by": 2.11,
+     "r2": 0.618
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.39,
+     "b_slope": 0.522,
+     "differences_too_small_by": 1.92,
+     "r2": 0.754
+    },
+    "miss_mean": 0.231,
+    "miss_by_paint": {
+     "yellow": 0.108,
+     "red": 0.283,
+     "blue": 0.301
+    },
+    "inside_range": 2,
+    "dark_floor": {
+     "yellow": [
+      0.31,
+      0.39
+     ],
+     "red": [
+      0.34,
+      0.36
+     ],
+     "blue": [
+      0.48,
+      0.56
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.87,
+      "red": 0.33,
+      "blue": -0.85
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.94,
+      "blue": -0.8
+     },
+     "blue": {
+      "yellow": -0.82,
+      "red": -0.26,
+      "blue": 0.79
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.7,
+    "black_over_white": [
+     0.658,
+     0.566,
+     0.628,
+     0.607,
+     0.624,
+     0.648,
+     0.698,
+     0.772
+    ],
+    "black_over_white_440_670": [
+     0.57,
+     0.77
+    ],
+    "black_over_white_mean_440_670": 0.649,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.46,
+      0.293,
+      0.362,
+      0.752,
+      0.915,
+      0.895,
+      0.875,
+      0.685
+     ],
+     "red": [
+      0.344,
+      0.307,
+      0.309,
+      0.299,
+      0.316,
+      0.54,
+      0.92,
+      0.806
+     ],
+     "blue": [
+      0.402,
+      0.766,
+      0.682,
+      0.493,
+      0.448,
+      0.433,
+      0.444,
+      0.495
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.382,
+     "b_slope": 0.603,
+     "differences_too_small_by": 1.66,
+     "r2": 0.728
+    },
+    "fit_pure": {
+     "a_black_reads": 0.434,
+     "b_slope": 0.548,
+     "differences_too_small_by": 1.82,
+     "r2": 0.621
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.343,
+     "b_slope": 0.611,
+     "differences_too_small_by": 1.64,
+     "r2": 0.78
+    },
+    "miss_mean": 0.214,
+    "miss_by_paint": {
+     "yellow": 0.115,
+     "red": 0.255,
+     "blue": 0.272
+    },
+    "inside_range": 3,
+    "dark_floor": {
+     "yellow": [
+      0.29,
+      0.36
+     ],
+     "red": [
+      0.3,
+      0.32
+     ],
+     "blue": [
+      0.43,
+      0.5
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.84,
+      "red": 0.28,
+      "blue": -0.83
+     },
+     "red": {
+      "yellow": 0.77,
+      "red": 0.93,
+      "blue": -0.79
+     },
+     "blue": {
+      "yellow": -0.88,
+      "red": -0.39,
+      "blue": 0.86
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.98,
+    "black_over_white": [
+     0.699,
+     0.616,
+     0.672,
+     0.657,
+     0.673,
+     0.696,
+     0.738,
+     0.804
+    ],
+    "black_over_white_440_670": [
+     0.62,
+     0.8
+    ],
+    "black_over_white_mean_440_670": 0.694,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.422,
+      0.287,
+      0.356,
+      0.662,
+      0.808,
+      0.796,
+      0.792,
+      0.642
+     ],
+     "red": [
+      0.344,
+      0.321,
+      0.326,
+      0.315,
+      0.337,
+      0.541,
+      0.839,
+      0.77
+     ],
+     "blue": [
+      0.391,
+      0.679,
+      0.621,
+      0.49,
+      0.455,
+      0.446,
+      0.475,
+      0.529
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.392,
+     "b_slope": 0.49,
+     "differences_too_small_by": 2.04,
+     "r2": 0.72
+    },
+    "fit_pure": {
+     "a_black_reads": 0.433,
+     "b_slope": 0.449,
+     "differences_too_small_by": 2.23,
+     "r2": 0.627
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.362,
+     "b_slope": 0.491,
+     "differences_too_small_by": 2.04,
+     "r2": 0.755
+    },
+    "miss_mean": 0.206,
+    "miss_by_paint": {
+     "yellow": 0.1,
+     "red": 0.257,
+     "blue": 0.262
+    },
+    "inside_range": 2,
+    "dark_floor": {
+     "yellow": [
+      0.29,
+      0.36
+     ],
+     "red": [
+      0.32,
+      0.34
+     ],
+     "blue": [
+      0.45,
+      0.53
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.87,
+      "red": 0.33,
+      "blue": -0.85
+     },
+     "red": {
+      "yellow": 0.78,
+      "red": 0.94,
+      "blue": -0.81
+     },
+     "blue": {
+      "yellow": -0.81,
+      "red": -0.24,
+      "blue": 0.78
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.76,
+    "black_over_white": [
+     0.641,
+     0.543,
+     0.608,
+     0.59,
+     0.607,
+     0.633,
+     0.684,
+     0.76
+    ],
+    "black_over_white_440_670": [
+     0.54,
+     0.76
+    ],
+    "black_over_white_mean_440_670": 0.632,
+    "colour_channels_brighter_than_white": 0
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.403,
+      0.252,
+      0.315,
+      0.663,
+      0.808,
+      0.793,
+      0.775,
+      0.607
+     ],
+     "red": [
+      0.303,
+      0.264,
+      0.269,
+      0.265,
+      0.28,
+      0.479,
+      0.815,
+      0.714
+     ],
+     "blue": [
+      0.415,
+      0.737,
+      0.672,
+      0.518,
+      0.481,
+      0.47,
+      0.481,
+      0.529
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.377,
+     "b_slope": 0.491,
+     "differences_too_small_by": 2.04,
+     "r2": 0.622
+    },
+    "fit_pure": {
+     "a_black_reads": 0.423,
+     "b_slope": 0.432,
+     "differences_too_small_by": 2.31,
+     "r2": 0.499
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.34,
+     "b_slope": 0.511,
+     "differences_too_small_by": 1.96,
+     "r2": 0.704
+    },
+    "miss_mean": 0.203,
+    "miss_by_paint": {
+     "yellow": 0.097,
+     "red": 0.221,
+     "blue": 0.29
+    },
+    "inside_range": 2,
+    "dark_floor": {
+     "yellow": [
+      0.25,
+      0.32
+     ],
+     "red": [
+      0.26,
+      0.28
+     ],
+     "blue": [
+      0.47,
+      0.53
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.85,
+      "red": 0.29,
+      "blue": -0.83
+     },
+     "red": {
+      "yellow": 0.77,
+      "red": 0.93,
+      "blue": -0.8
+     },
+     "blue": {
+      "yellow": -0.87,
+      "red": -0.37,
+      "blue": 0.85
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 3.07,
+    "black_over_white": [
+     0.67,
+     0.577,
+     0.639,
+     0.627,
+     0.645,
+     0.669,
+     0.714,
+     0.783
+    ],
+    "black_over_white_440_670": [
+     0.58,
+     0.78
+    ],
+    "black_over_white_mean_440_670": 0.665,
+    "colour_channels_brighter_than_white": 0
+   }
+  },
+  "90.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.612,
+      0.474,
+      0.546,
+      0.906,
+      1.088,
+      1.067,
+      1.056,
+      0.873
+     ],
+     "red": [
+      0.473,
+      0.503,
+      0.481,
+      0.438,
+      0.457,
+      0.703,
+      1.073,
+      0.989
+     ],
+     "blue": [
+      0.513,
+      0.993,
+      0.871,
+      0.655,
+      0.598,
+      0.579,
+      0.604,
+      0.652
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.546,
+     "b_slope": 0.621,
+     "differences_too_small_by": 1.61,
+     "r2": 0.729
+    },
+    "fit_pure": {
+     "a_black_reads": 0.601,
+     "b_slope": 0.561,
+     "differences_too_small_by": 1.78,
+     "r2": 0.615
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.505,
+     "b_slope": 0.633,
+     "differences_too_small_by": 1.58,
+     "r2": 0.791
+    },
+    "miss_mean": 0.363,
+    "miss_by_paint": {
+     "yellow": 0.228,
+     "red": 0.419,
+     "blue": 0.442
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.47,
+      0.55
+     ],
+     "red": [
+      0.44,
+      0.5
+     ],
+     "blue": [
+      0.58,
+      0.65
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.86,
+      "red": 0.31,
+      "blue": -0.84
+     },
+     "red": {
+      "yellow": 0.73,
+      "red": 0.94,
+      "blue": -0.76
+     },
+     "blue": {
+      "yellow": -0.87,
+      "red": -0.39,
+      "blue": 0.85
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.23,
+    "black_over_white": [
+     0.667,
+     0.575,
+     0.634,
+     0.6,
+     0.615,
+     0.641,
+     0.69,
+     0.763
+    ],
+    "black_over_white_440_670": [
+     0.58,
+     0.76
+    ],
+    "black_over_white_mean_440_670": 0.646,
+    "colour_channels_brighter_than_white": 6
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.629,
+      0.478,
+      0.547,
+      0.968,
+      1.147,
+      1.113,
+      1.085,
+      0.886
+     ],
+     "red": [
+      0.481,
+      0.492,
+      0.476,
+      0.437,
+      0.444,
+      0.687,
+      1.112,
+      0.991
+     ],
+     "blue": [
+      0.502,
+      1.008,
+      0.89,
+      0.636,
+      0.568,
+      0.546,
+      0.555,
+      0.599
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.529,
+     "b_slope": 0.685,
+     "differences_too_small_by": 1.46,
+     "r2": 0.734
+    },
+    "fit_pure": {
+     "a_black_reads": 0.589,
+     "b_slope": 0.618,
+     "differences_too_small_by": 1.62,
+     "r2": 0.619
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.483,
+     "b_slope": 0.698,
+     "differences_too_small_by": 1.43,
+     "r2": 0.796
+    },
+    "miss_mean": 0.365,
+    "miss_by_paint": {
+     "yellow": 0.256,
+     "red": 0.418,
+     "blue": 0.42
+    },
+    "inside_range": 1,
+    "dark_floor": {
+     "yellow": [
+      0.48,
+      0.55
+     ],
+     "red": [
+      0.44,
+      0.49
+     ],
+     "blue": [
+      0.55,
+      0.6
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.83,
+      "red": 0.27,
+      "blue": -0.82
+     },
+     "red": {
+      "yellow": 0.72,
+      "red": 0.93,
+      "blue": -0.75
+     },
+     "blue": {
+      "yellow": -0.9,
+      "red": -0.45,
+      "blue": 0.88
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.27,
+    "black_over_white": [
+     0.687,
+     0.592,
+     0.652,
+     0.626,
+     0.643,
+     0.67,
+     0.714,
+     0.783
+    ],
+    "black_over_white_440_670": [
+     0.59,
+     0.78
+    ],
+    "black_over_white_mean_440_670": 0.669,
+    "colour_channels_brighter_than_white": 7
+   },
+   "10-06 corrected": {
+    "values": {
+     "yellow": [
+      0.551,
+      0.413,
+      0.486,
+      0.821,
+      0.992,
+      0.977,
+      0.97,
+      0.807
+     ],
+     "red": [
+      0.427,
+      0.439,
+      0.429,
+      0.398,
+      0.417,
+      0.644,
+      0.986,
+      0.914
+     ],
+     "blue": [
+      0.462,
+      0.863,
+      0.774,
+      0.594,
+      0.546,
+      0.53,
+      0.556,
+      0.604
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.489,
+     "b_slope": 0.583,
+     "differences_too_small_by": 1.71,
+     "r2": 0.756
+    },
+    "fit_pure": {
+     "a_black_reads": 0.539,
+     "b_slope": 0.531,
+     "differences_too_small_by": 1.88,
+     "r2": 0.65
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.453,
+     "b_slope": 0.589,
+     "differences_too_small_by": 1.7,
+     "r2": 0.805
+    },
+    "miss_mean": 0.3,
+    "miss_by_paint": {
+     "yellow": 0.169,
+     "red": 0.359,
+     "blue": 0.373
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.41,
+      0.49
+     ],
+     "red": [
+      0.4,
+      0.44
+     ],
+     "blue": [
+      0.53,
+      0.6
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.87,
+      "red": 0.34,
+      "blue": -0.86
+     },
+     "red": {
+      "yellow": 0.75,
+      "red": 0.94,
+      "blue": -0.78
+     },
+     "blue": {
+      "yellow": -0.87,
+      "red": -0.36,
+      "blue": 0.84
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.35,
+    "black_over_white": [
+     0.642,
+     0.54,
+     0.605,
+     0.576,
+     0.592,
+     0.62,
+     0.671,
+     0.748
+    ],
+    "black_over_white_440_670": [
+     0.54,
+     0.75
+    ],
+    "black_over_white_mean_440_670": 0.622,
+    "colour_channels_brighter_than_white": 4
+   },
+   "10-01 corrected": {
+    "values": {
+     "yellow": [
+      0.53,
+      0.391,
+      0.457,
+      0.829,
+      0.99,
+      0.967,
+      0.947,
+      0.779
+     ],
+     "red": [
+      0.407,
+      0.402,
+      0.398,
+      0.376,
+      0.385,
+      0.598,
+      0.97,
+      0.87
+     ],
+     "blue": [
+      0.484,
+      0.895,
+      0.812,
+      0.618,
+      0.568,
+      0.552,
+      0.564,
+      0.61
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.485,
+     "b_slope": 0.57,
+     "differences_too_small_by": 1.75,
+     "r2": 0.69
+    },
+    "fit_pure": {
+     "a_black_reads": 0.537,
+     "b_slope": 0.507,
+     "differences_too_small_by": 1.97,
+     "r2": 0.564
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.444,
+     "b_slope": 0.589,
+     "differences_too_small_by": 1.7,
+     "r2": 0.77
+    },
+    "miss_mean": 0.294,
+    "miss_by_paint": {
+     "yellow": 0.162,
+     "red": 0.327,
+     "blue": 0.394
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.39,
+      0.46
+     ],
+     "red": [
+      0.38,
+      0.4
+     ],
+     "blue": [
+      0.55,
+      0.61
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.85,
+      "red": 0.3,
+      "blue": -0.83
+     },
+     "red": {
+      "yellow": 0.74,
+      "red": 0.93,
+      "blue": -0.77
+     },
+     "blue": {
+      "yellow": -0.89,
+      "red": -0.41,
+      "blue": 0.87
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 2.42,
+    "black_over_white": [
+     0.648,
+     0.541,
+     0.609,
+     0.588,
+     0.608,
+     0.637,
+     0.685,
+     0.76
+    ],
+    "black_over_white_440_670": [
+     0.54,
+     0.76
+    ],
+    "black_over_white_mean_440_670": 0.632,
+    "colour_channels_brighter_than_white": 4
+   }
+  },
+  "89.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.728,
+      0.614,
+      0.665,
+      1.034,
+      1.238,
+      1.207,
+      1.183,
+      0.97
+     ],
+     "red": [
+      0.568,
+      0.634,
+      0.583,
+      0.505,
+      0.512,
+      0.777,
+      1.185,
+      1.083
+     ],
+     "blue": [
+      0.614,
+      1.257,
+      1.052,
+      0.754,
+      0.675,
+      0.65,
+      0.668,
+      0.702
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.646,
+     "b_slope": 0.659,
+     "differences_too_small_by": 1.52,
+     "r2": 0.654
+    },
+    "fit_pure": {
+     "a_black_reads": 0.708,
+     "b_slope": 0.579,
+     "differences_too_small_by": 1.73,
+     "r2": 0.523
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.596,
+     "b_slope": 0.687,
+     "differences_too_small_by": 1.46,
+     "r2": 0.744
+    },
+    "miss_mean": 0.471,
+    "miss_by_paint": {
+     "yellow": 0.345,
+     "red": 0.51,
+     "blue": 0.557
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.61,
+      0.66
+     ],
+     "red": [
+      0.51,
+      0.63
+     ],
+     "blue": [
+      0.65,
+      0.7
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.84,
+      "red": 0.26,
+      "blue": -0.82
+     },
+     "red": {
+      "yellow": 0.67,
+      "red": 0.92,
+      "blue": -0.7
+     },
+     "blue": {
+      "yellow": -0.89,
+      "red": -0.45,
+      "blue": 0.87
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.93,
+    "black_over_white": [
+     0.685,
+     0.617,
+     0.663,
+     0.619,
+     0.631,
+     0.654,
+     0.699,
+     0.769
+    ],
+    "black_over_white_440_670": [
+     0.62,
+     0.77
+    ],
+    "black_over_white_mean_440_670": 0.665,
+    "colour_channels_brighter_than_white": 9
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      0.751,
+      0.624,
+      0.673,
+      1.128,
+      1.313,
+      1.263,
+      1.223,
+      0.992
+     ],
+     "red": [
+      0.568,
+      0.627,
+      0.586,
+      0.517,
+      0.519,
+      0.777,
+      1.238,
+      1.09
+     ],
+     "blue": [
+      0.591,
+      1.262,
+      1.073,
+      0.748,
+      0.656,
+      0.624,
+      0.629,
+      0.666
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.639,
+     "b_slope": 0.723,
+     "differences_too_small_by": 1.38,
+     "r2": 0.665
+    },
+    "fit_pure": {
+     "a_black_reads": 0.706,
+     "b_slope": 0.638,
+     "differences_too_small_by": 1.57,
+     "r2": 0.536
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.585,
+     "b_slope": 0.751,
+     "differences_too_small_by": 1.33,
+     "r2": 0.751
+    },
+    "miss_mean": 0.484,
+    "miss_by_paint": {
+     "yellow": 0.388,
+     "red": 0.52,
+     "blue": 0.543
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.62,
+      0.67
+     ],
+     "red": [
+      0.52,
+      0.63
+     ],
+     "blue": [
+      0.62,
+      0.67
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.8,
+      "red": 0.21,
+      "blue": -0.78
+     },
+     "red": {
+      "yellow": 0.67,
+      "red": 0.92,
+      "blue": -0.71
+     },
+     "blue": {
+      "yellow": -0.91,
+      "red": -0.49,
+      "blue": 0.89
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.96,
+    "black_over_white": [
+     0.689,
+     0.613,
+     0.662,
+     0.629,
+     0.644,
+     0.669,
+     0.712,
+     0.78
+    ],
+    "black_over_white_440_670": [
+     0.61,
+     0.78
+    ],
+    "black_over_white_mean_440_670": 0.673,
+    "colour_channels_brighter_than_white": 9
+   }
+  },
+  "88.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.743,
+      0.623,
+      0.674,
+      1.046,
+      1.26,
+      1.23,
+      1.206,
+      0.985
+     ],
+     "red": [
+      0.574,
+      0.644,
+      0.587,
+      0.505,
+      0.518,
+      0.79,
+      1.21,
+      1.104
+     ],
+     "blue": [
+      0.623,
+      1.27,
+      1.049,
+      0.744,
+      0.665,
+      0.639,
+      0.656,
+      0.693
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.644,
+     "b_slope": 0.687,
+     "differences_too_small_by": 1.46,
+     "r2": 0.667
+    },
+    "fit_pure": {
+     "a_black_reads": 0.708,
+     "b_slope": 0.608,
+     "differences_too_small_by": 1.65,
+     "r2": 0.541
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.594,
+     "b_slope": 0.712,
+     "differences_too_small_by": 1.41,
+     "r2": 0.75
+    },
+    "miss_mean": 0.478,
+    "miss_by_paint": {
+     "yellow": 0.361,
+     "red": 0.521,
+     "blue": 0.551
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.62,
+      0.67
+     ],
+     "red": [
+      0.51,
+      0.64
+     ],
+     "blue": [
+      0.64,
+      0.69
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.84,
+      "red": 0.26,
+      "blue": -0.82
+     },
+     "red": {
+      "yellow": 0.67,
+      "red": 0.92,
+      "blue": -0.71
+     },
+     "blue": {
+      "yellow": -0.89,
+      "red": -0.45,
+      "blue": 0.86
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.94,
+    "black_over_white": [
+     0.697,
+     0.625,
+     0.668,
+     0.623,
+     0.634,
+     0.658,
+     0.701,
+     0.77
+    ],
+    "black_over_white_440_670": [
+     0.62,
+     0.77
+    ],
+    "black_over_white_mean_440_670": 0.669,
+    "colour_channels_brighter_than_white": 9
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      1.013,
+      0.925,
+      0.93,
+      1.517,
+      1.724,
+      1.619,
+      1.513,
+      1.174
+     ],
+     "red": [
+      0.749,
+      0.925,
+      0.801,
+      0.677,
+      0.656,
+      0.973,
+      1.523,
+      1.287
+     ],
+     "blue": [
+      0.795,
+      1.985,
+      1.55,
+      1.035,
+      0.876,
+      0.819,
+      0.795,
+      0.797
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.893,
+     "b_slope": 0.802,
+     "differences_too_small_by": 1.25,
+     "r2": 0.442
+    },
+    "fit_pure": {
+     "a_black_reads": 0.981,
+     "b_slope": 0.656,
+     "differences_too_small_by": 1.52,
+     "r2": 0.306
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.814,
+     "b_slope": 0.886,
+     "differences_too_small_by": 1.13,
+     "r2": 0.565
+    },
+    "miss_mean": 0.763,
+    "miss_by_paint": {
+     "yellow": 0.701,
+     "red": 0.733,
+     "blue": 0.857
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.93,
+      0.93
+     ],
+     "red": [
+      0.66,
+      0.93
+     ],
+     "blue": [
+      0.79,
+      0.88
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.66,
+      "red": 0.01,
+      "blue": -0.64
+     },
+     "red": {
+      "yellow": 0.56,
+      "red": 0.86,
+      "blue": -0.6
+     },
+     "blue": {
+      "yellow": -0.92,
+      "red": -0.54,
+      "blue": 0.89
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.63,
+    "black_over_white": [
+     0.747,
+     0.709,
+     0.736,
+     0.695,
+     0.701,
+     0.719,
+     0.751,
+     0.806
+    ],
+    "black_over_white_440_670": [
+     0.69,
+     0.81
+    ],
+    "black_over_white_mean_440_670": 0.731,
+    "colour_channels_brighter_than_white": 14
+   }
+  },
+  "87.0": {
+   "10-06": {
+    "values": {
+     "yellow": [
+      0.742,
+      0.649,
+      0.692,
+      1.066,
+      1.277,
+      1.246,
+      1.223,
+      0.99
+     ],
+     "red": [
+      0.576,
+      0.671,
+      0.605,
+      0.513,
+      0.527,
+      0.799,
+      1.225,
+      1.104
+     ],
+     "blue": [
+      0.6,
+      1.32,
+      1.075,
+      0.753,
+      0.669,
+      0.641,
+      0.658,
+      0.686
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 0.658,
+     "b_slope": 0.685,
+     "differences_too_small_by": 1.46,
+     "r2": 0.643
+    },
+    "fit_pure": {
+     "a_black_reads": 0.723,
+     "b_slope": 0.603,
+     "differences_too_small_by": 1.66,
+     "r2": 0.515
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.607,
+     "b_slope": 0.714,
+     "differences_too_small_by": 1.4,
+     "r2": 0.729
+    },
+    "miss_mean": 0.491,
+    "miss_by_paint": {
+     "yellow": 0.378,
+     "red": 0.533,
+     "blue": 0.563
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      0.65,
+      0.69
+     ],
+     "red": [
+      0.51,
+      0.67
+     ],
+     "blue": [
+      0.64,
+      0.69
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.83,
+      "red": 0.24,
+      "blue": -0.81
+     },
+     "red": {
+      "yellow": 0.66,
+      "red": 0.91,
+      "blue": -0.69
+     },
+     "blue": {
+      "yellow": -0.89,
+      "red": -0.46,
+      "blue": 0.87
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.89,
+    "black_over_white": [
+     0.691,
+     0.634,
+     0.675,
+     0.625,
+     0.634,
+     0.658,
+     0.702,
+     0.768
+    ],
+    "black_over_white_440_670": [
+     0.62,
+     0.77
+    ],
+    "black_over_white_mean_440_670": 0.671,
+    "colour_channels_brighter_than_white": 9
+   },
+   "10-01": {
+    "values": {
+     "yellow": [
+      1.143,
+      1.089,
+      1.067,
+      1.74,
+      1.946,
+      1.802,
+      1.667,
+      1.269
+     ],
+     "red": [
+      0.852,
+      1.089,
+      0.91,
+      0.77,
+      0.736,
+      1.081,
+      1.673,
+      1.388
+     ],
+     "blue": [
+      0.925,
+      2.346,
+      1.797,
+      1.184,
+      0.993,
+      0.912,
+      0.88,
+      0.869
+     ]
+    },
+    "fit_mid": {
+     "a_black_reads": 1.029,
+     "b_slope": 0.841,
+     "differences_too_small_by": 1.19,
+     "r2": 0.367
+    },
+    "fit_pure": {
+     "a_black_reads": 1.127,
+     "b_slope": 0.665,
+     "differences_too_small_by": 1.5,
+     "r2": 0.237
+    },
+    "fit_tinted": {
+     "a_black_reads": 0.936,
+     "b_slope": 0.954,
+     "differences_too_small_by": 1.05,
+     "r2": 0.494
+    },
+    "miss_mean": 0.912,
+    "miss_by_paint": {
+     "yellow": 0.869,
+     "red": 0.848,
+     "blue": 1.018
+    },
+    "inside_range": 0,
+    "dark_floor": {
+     "yellow": [
+      1.07,
+      1.09
+     ],
+     "red": [
+      0.74,
+      1.09
+     ],
+     "blue": [
+      0.87,
+      0.99
+     ]
+    },
+    "shape_correlation": {
+     "yellow": {
+      "yellow": 0.59,
+      "red": -0.08,
+      "blue": -0.57
+     },
+     "red": {
+      "yellow": 0.51,
+      "red": 0.83,
+      "blue": -0.55
+     },
+     "blue": {
+      "yellow": -0.92,
+      "red": -0.55,
+      "blue": 0.9
+     }
+    },
+    "shape_matches": {
+     "yellow": "yellow",
+     "red": "red",
+     "blue": "blue"
+    },
+    "yellow_620_over_440": 1.53,
+    "black_over_white": [
+     0.775,
+     0.74,
+     0.763,
+     0.722,
+     0.725,
+     0.74,
+     0.768,
+     0.816
+    ],
+    "black_over_white_440_670": [
+     0.72,
+     0.82
+    ],
+    "black_over_white_mean_440_670": 0.753,
+    "colour_channels_brighter_than_white": 15
+   }
+  }
+ },
+ "bottom_10_06": {
+  "values": {
+   "yellow": [
+    0.744,
+    0.65,
+    0.699,
+    1.068,
+    1.284,
+    1.255,
+    1.226,
+    0.993
+   ],
+   "red": [
+    0.574,
+    0.671,
+    0.606,
+    0.516,
+    0.528,
+    0.805,
+    1.228,
+    1.109
+   ],
+   "blue": [
+    0.603,
+    1.324,
+    1.078,
+    0.753,
+    0.67,
+    0.643,
+    0.658,
+    0.683
+   ]
+  },
+  "fit_mid": {
+   "a_black_reads": 0.66,
+   "b_slope": 0.69,
+   "differences_too_small_by": 1.45,
+   "r2": 0.644
+  },
+  "fit_pure": {
+   "a_black_reads": 0.724,
+   "b_slope": 0.607,
+   "differences_too_small_by": 1.65,
+   "r2": 0.516
+  },
+  "fit_tinted": {
+   "a_black_reads": 0.608,
+   "b_slope": 0.719,
+   "differences_too_small_by": 1.39,
+   "r2": 0.73
+  },
+  "miss_mean": 0.494,
+  "miss_by_paint": {
+   "yellow": 0.382,
+   "red": 0.536,
+   "blue": 0.564
+  },
+  "inside_range": 0,
+  "dark_floor": {
+   "yellow": [
+    0.65,
+    0.7
+   ],
+   "red": [
+    0.52,
+    0.67
+   ],
+   "blue": [
+    0.64,
+    0.68
+   ]
+  },
+  "shape_correlation": {
+   "yellow": {
+    "yellow": 0.83,
+    "red": 0.24,
+    "blue": -0.81
+   },
+   "red": {
+    "yellow": 0.66,
+    "red": 0.91,
+    "blue": -0.69
+   },
+   "blue": {
+    "yellow": -0.89,
+    "red": -0.47,
+    "blue": 0.87
+   }
+  },
+  "shape_matches": {
+   "yellow": "yellow",
+   "red": "red",
+   "blue": "blue"
+  },
+  "yellow_620_over_440": 1.89,
+  "black_over_white": [
+   0.688,
+   0.635,
+   0.674,
+   0.625,
+   0.636,
+   0.659,
+   0.702,
+   0.768
+  ],
+  "read_z": {
+   "H12": 87.0,
+   "H10": 86.5,
+   "H7": 86.5,
+   "H4": 86.5,
+   "H2": 86.5
+  },
+  "spread_percent_8_readings": {
+   "H12": [
+    1.08,
+    0.31,
+    0.26,
+    0.25,
+    0.18,
+    0.25,
+    0.15,
+    0.11
+   ],
+   "H10": [
+    0.0,
+    0.26,
+    0.24,
+    0.13,
+    0.1,
+    0.09,
+    0.0,
+    0.0
+   ],
+   "H7": [
+    1.54,
+    0.0,
+    0.0,
+    0.18,
+    0.13,
+    0.24,
+    0.11,
+    0.0
+   ],
+   "H4": [
+    1.13,
+    0.0,
+    0.29,
+    0.14,
+    0.21,
+    0.09,
+    0.14,
+    0.1
+   ],
+   "H2": [
+    0.0,
+    0.34,
+    0.28,
+    0.12,
+    0.16,
+    0.07,
+    0.07,
+    0.11
+   ]
+  }
+ },
+ "bottom_10_01": {
+  "as_measured": {
+   "miss_mean": 0.92,
+   "fit_mid": {
+    "a_black_reads": 1.036,
+    "b_slope": 0.846,
+    "differences_too_small_by": 1.18,
+    "r2": 0.363
+   },
+   "black_over_white_440_670": [
+    0.72,
+    0.82
+   ]
+  },
+  "second_landing_white": 0.442
+ },
+ "bottom_over_z92_total": {
+  "white": {
+   "10-06": 0.804,
+   "10-01": 0.744
+  },
+  "blue": {
+   "10-06": 0.876,
+   "10-01": 0.891
+  },
+  "black": {
+   "10-06": 0.828,
+   "10-01": 0.8
+  },
+  "red": {
+   "10-06": 0.893,
+   "10-01": 0.895
+  },
+  "yellow": {
+   "10-06": 0.919,
+   "10-01": 0.925
+  }
+ },
+ "white_z125_total": {
+  "10-06": 12155,
+  "10-01": 12016
+ },
+ "contact_camera": {
+  "H12": {
+   "match": 0.98,
+   "offset_px": [
+    -18,
+    23
+   ],
+   "steps": [
+    {
+     "z": 89.0,
+     "face_mm": -0.64,
+     "nozzle_mm": -1.31,
+     "face_followed": 0.64
+    },
+    {
+     "z": 88.5,
+     "face_mm": -1.01,
+     "nozzle_mm": -1.84,
+     "face_followed": 0.74
+    },
+    {
+     "z": 88.0,
+     "face_mm": -1.69,
+     "nozzle_mm": -2.6,
+     "face_followed": 1.37
+    },
+    {
+     "z": 87.5,
+     "face_mm": -1.75,
+     "nozzle_mm": -3.29,
+     "face_followed": 0.12
+    },
+    {
+     "z": 87.0,
+     "face_mm": -1.84,
+     "nozzle_mm": -3.88,
+     "face_followed": 0.19
+    }
+   ]
+  },
+  "H10": {
+   "match": 0.88,
+   "offset_px": [
+    -36,
+    23
+   ],
+   "steps": [
+    {
+     "z": 89.0,
+     "face_mm": -0.68,
+     "nozzle_mm": -1.35,
+     "face_followed": 0.68
+    },
+    {
+     "z": 88.5,
+     "face_mm": -1.2,
+     "nozzle_mm": -2.15,
+     "face_followed": 1.04
+    },
+    {
+     "z": 88.0,
+     "face_mm": -1.68,
+     "nozzle_mm": -2.68,
+     "face_followed": 0.96
+    },
+    {
+     "z": 87.5,
+     "face_mm": -2.1,
+     "nozzle_mm": -3.3,
+     "face_followed": 0.83
+    },
+    {
+     "z": 87.0,
+     "face_mm": -3.04,
+     "nozzle_mm": -4.02,
+     "face_followed": 1.9
+    },
+    {
+     "z": 86.5,
+     "face_mm": -3.39,
+     "nozzle_mm": -4.48,
+     "face_followed": 0.69
+    }
+   ]
+  },
+  "H7": {
+   "match": 0.76,
+   "offset_px": [
+    -65,
+    23
+   ],
+   "steps": [
+    {
+     "z": 89.0,
+     "face_mm": -0.9,
+     "nozzle_mm": -1.33,
+     "face_followed": 0.9
+    },
+    {
+     "z": 88.0,
+     "face_mm": -1.91,
+     "nozzle_mm": -2.77,
+     "face_followed": 1.01
+    },
+    {
+     "z": 87.0,
+     "face_mm": -2.93,
+     "nozzle_mm": -4.11,
+     "face_followed": 1.02
+    },
+    {
+     "z": 86.5,
+     "face_mm": -3.4,
+     "nozzle_mm": -4.6,
+     "face_followed": 0.94
+    }
+   ]
+  },
+  "H4": {
+   "match": 0.68,
+   "offset_px": [
+    -98,
+    24
+   ],
+   "steps": [
+    {
+     "z": 89.0,
+     "face_mm": -0.79,
+     "nozzle_mm": -1.29,
+     "face_followed": 0.79
+    },
+    {
+     "z": 88.0,
+     "face_mm": -1.82,
+     "nozzle_mm": -2.86,
+     "face_followed": 1.04
+    },
+    {
+     "z": 87.0,
+     "face_mm": -3.07,
+     "nozzle_mm": -4.12,
+     "face_followed": 1.24
+    },
+    {
+     "z": 86.5,
+     "face_mm": -3.42,
+     "nozzle_mm": -4.64,
+     "face_followed": 0.71
+    }
+   ]
+  },
+  "H2": {
+   "match": 0.66,
+   "offset_px": [
+    -120,
+    24
+   ],
+   "steps": [
+    {
+     "z": 89.0,
+     "face_mm": -0.92,
+     "nozzle_mm": -1.29,
+     "face_followed": 0.92
+    },
+    {
+     "z": 88.0,
+     "face_mm": -2.08,
+     "nozzle_mm": -2.81,
+     "face_followed": 1.16
+    },
+    {
+     "z": 87.0,
+     "face_mm": -3.37,
+     "nozzle_mm": -4.19,
+     "face_followed": 1.29
+    },
+    {
+     "z": 86.5,
+     "face_mm": -3.83,
+     "nozzle_mm": -4.77,
+     "face_followed": 0.94
+    }
+   ]
+  }
+ },
+ "landing_shift_mm": [
+  {
+   "well": "H12",
+   "photos": [
+    "20_over_plate_z125",
+    "34_z125"
+   ],
+   "match": 0.99,
+   "enclosure front": 0.57,
+   "enclosure top": 0.48,
+   "nozzle": 0.17,
+   "tip rack": 0.02,
+   "deck": 0.01
+  },
+  {
+   "well": "H10",
+   "photos": [
+    "35_xy95.38_192.24",
+    "47_z125"
+   ],
+   "match": 0.78,
+   "enclosure front": -0.09,
+   "enclosure top": -0.03,
+   "nozzle": -0.06,
+   "tip rack": -0.01,
+   "deck": -0.01
+  },
+  {
+   "well": "H7",
+   "photos": [
+    "48_xy68.38_192.24",
+    "58_z125"
+   ],
+   "match": 0.68,
+   "enclosure front": -0.01,
+   "enclosure top": 0.01,
+   "nozzle": 0.0,
+   "tip rack": 0.03,
+   "deck": 0.01
+  },
+  {
+   "well": "H4",
+   "photos": [
+    "59_xy41.38_192.24",
+    "69_z125"
+   ],
+   "match": 0.58,
+   "enclosure front": 0.01,
+   "enclosure top": 0.02,
+   "nozzle": -0.01,
+   "tip rack": 0.02,
+   "deck": 0.01
+  },
+  {
+   "well": "H2",
+   "photos": [
+    "70_xy23.38_192.24",
+    "80_z125"
+   ],
+   "match": 0.47,
+   "enclosure front": -0.03,
+   "enclosure top": 0.01,
+   "nozzle": 0.02,
+   "tip rack": 0.02,
+   "deck": 0.01
+  }
+ ],
+ "h12_z125_today_vs_10_01_mm": {
+  "enclosure front": -0.1,
+  "enclosure top": -0.01,
+  "nozzle": 0.04,
+  "tip rack": 0.02,
+  "deck": 0.0
+ }
+}

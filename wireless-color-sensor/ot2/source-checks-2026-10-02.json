@@ -1,0 +1,294 @@
+{
+ "channels_nm": [
+  410,
+  440,
+  470,
+  510,
+  550,
+  583,
+  620,
+  670
+ ],
+ "typical_centres_nm": [
+  415.0,
+  445.0,
+  480.0,
+  515.0,
+  555.0,
+  590.0,
+  630.0,
+  680.0
+ ],
+ "fwhm_nm": [
+  26.0,
+  30.0,
+  36.0,
+  39.0,
+  39.0,
+  40.0,
+  50.0,
+  52.0
+ ],
+ "scored_channels": "440-670 nm, as in every score since 2026-09-30",
+ "channel_tolerance": {
+  "what": "accuracy scores re-computed with the AS7341 passbands moved within the datasheet's centre-wavelength limits (DS000504 v3-00 Figs. 8-15: typ +/- 10 nm)",
+  "published_mid_moves_by_up_to": {
+   "yellow": {
+    "410 nm": 0.003,
+    "440 nm": 0.006,
+    "470 nm": 0.04,
+    "510 nm": 0.096,
+    "550 nm": 0.07,
+    "583 nm": 0.021,
+    "620 nm": 0.008,
+    "670 nm": 0.004
+   },
+   "red": {
+    "410 nm": 0.001,
+    "440 nm": 0.0,
+    "470 nm": 0.0,
+    "510 nm": 0.001,
+    "550 nm": 0.015,
+    "583 nm": 0.088,
+    "620 nm": 0.094,
+    "670 nm": 0.023
+   },
+   "blue": {
+    "410 nm": 0.03,
+    "440 nm": 0.018,
+    "470 nm": 0.013,
+    "510 nm": 0.02,
+    "550 nm": 0.016,
+    "583 nm": 0.007,
+    "620 nm": 0.002,
+    "670 nm": 0.001
+   }
+  },
+  "runs": {
+   "2026-09-30 19:15, spaced wells, resting on the plate": {
+    "miss_at_typical_centres": 0.142,
+    "black_reads": 0.27,
+    "differences_too_small_by": 1.29,
+    "miss_all_channels_shifted": {
+     "-10 nm": 0.155,
+     "-5 nm": 0.149,
+     "+0 nm": 0.142,
+     "+5 nm": 0.135,
+     "+10 nm": 0.127
+    },
+    "miss_independent_shifts": {
+     "p5": 0.135,
+     "median": 0.141,
+     "p95": 0.149,
+     "min": 0.129,
+     "max": 0.153
+    }
+   },
+   "2026-10-01, z 125 (foot ~37 mm up)": {
+    "miss_at_typical_centres": 0.154,
+    "black_reads": 0.28,
+    "differences_too_small_by": 2.36,
+    "miss_all_channels_shifted": {
+     "-10 nm": 0.162,
+     "-5 nm": 0.157,
+     "+0 nm": 0.154,
+     "+5 nm": 0.15,
+     "+10 nm": 0.147
+    },
+    "miss_independent_shifts": {
+     "p5": 0.148,
+     "median": 0.154,
+     "p95": 0.159,
+     "min": 0.145,
+     "max": 0.163
+    }
+   },
+   "2026-10-01, z 100 (foot ~12 mm up; best of ten heights)": {
+    "miss_at_typical_centres": 0.118,
+    "black_reads": 0.2,
+    "differences_too_small_by": 2.68,
+    "miss_all_channels_shifted": {
+     "-10 nm": 0.118,
+     "-5 nm": 0.117,
+     "+0 nm": 0.118,
+     "+5 nm": 0.122,
+     "+10 nm": 0.126
+    },
+    "miss_independent_shifts": {
+     "p5": 0.114,
+     "median": 0.119,
+     "p95": 0.125,
+     "min": 0.111,
+     "max": 0.13
+    }
+   },
+   "2026-10-01, z 92 (foot ~4.5 mm up)": {
+    "miss_at_typical_centres": 0.214,
+    "black_reads": 0.38,
+    "differences_too_small_by": 1.66,
+    "miss_all_channels_shifted": {
+     "-10 nm": 0.226,
+     "-5 nm": 0.22,
+     "+0 nm": 0.214,
+     "+5 nm": 0.208,
+     "+10 nm": 0.201
+    },
+    "miss_independent_shifts": {
+     "p5": 0.208,
+     "median": 0.214,
+     "p95": 0.219,
+     "min": 0.204,
+     "max": 0.224
+    }
+   },
+   "2026-10-01, z 86.5 (pressed ~1 mm onto the plate)": {
+    "miss_at_typical_centres": 0.92,
+    "black_reads": 1.04,
+    "differences_too_small_by": 1.18,
+    "miss_all_channels_shifted": {
+     "-10 nm": 0.926,
+     "-5 nm": 0.924,
+     "+0 nm": 0.92,
+     "+5 nm": 0.915,
+     "+10 nm": 0.91
+    },
+    "miss_independent_shifts": {
+     "p5": 0.912,
+     "median": 0.919,
+     "p95": 0.926,
+     "min": 0.905,
+     "max": 0.932
+    }
+   }
+  }
+ },
+ "black_over_white": {
+  "what": "black well / white well, board lamp subtracted, 440-670 nm; and the share of the white well's reading that is not the white paint, if every well reads s + k*R",
+  "published_black_over_white": [
+   0.021,
+   0.02,
+   0.021,
+   0.021,
+   0.022,
+   0.023,
+   0.025
+  ],
+  "grey_black_reflectance_assumed": 0.15,
+  "runs": {
+   "2026-09-30 15:47, white and black next to the colours, resting on the plate": {
+    "black_over_white": [
+     0.68,
+     0.76,
+     0.74,
+     0.77,
+     0.79,
+     0.82,
+     0.89
+    ],
+    "not_paint_share_black_as_published": [
+     0.68,
+     0.89
+    ],
+    "not_paint_share_black_grey": [
+     0.62,
+     0.87
+    ]
+   },
+   "2026-09-30 19:15, spaced wells, resting on the plate": {
+    "black_over_white": [
+     0.52,
+     0.58,
+     0.55,
+     0.57,
+     0.61,
+     0.66,
+     0.73
+    ],
+    "not_paint_share_black_as_published": [
+     0.51,
+     0.73
+    ],
+    "not_paint_share_black_grey": [
+     0.42,
+     0.68
+    ]
+   },
+   "2026-10-01, z 125 (foot ~37 mm up)": {
+    "black_over_white": [
+     0.81,
+     0.85,
+     0.85,
+     0.85,
+     0.86,
+     0.88,
+     0.91
+    ],
+    "not_paint_share_black_as_published": [
+     0.81,
+     0.91
+    ],
+    "not_paint_share_black_grey": [
+     0.78,
+     0.9
+    ]
+   },
+   "2026-10-01, z 100 (foot ~12 mm up; best of ten heights)": {
+    "black_over_white": [
+     0.66,
+     0.71,
+     0.7,
+     0.72,
+     0.74,
+     0.77,
+     0.83
+    ],
+    "not_paint_share_black_as_published": [
+     0.65,
+     0.83
+    ],
+    "not_paint_share_black_grey": [
+     0.59,
+     0.8
+    ]
+   },
+   "2026-10-01, z 92 (foot ~4.5 mm up)": {
+    "black_over_white": [
+     0.62,
+     0.67,
+     0.66,
+     0.67,
+     0.7,
+     0.74,
+     0.8
+    ],
+    "not_paint_share_black_as_published": [
+     0.61,
+     0.8
+    ],
+    "not_paint_share_black_grey": [
+     0.54,
+     0.77
+    ]
+   },
+   "2026-10-01, z 86.5 (pressed ~1 mm onto the plate)": {
+    "black_over_white": [
+     0.74,
+     0.76,
+     0.72,
+     0.73,
+     0.74,
+     0.77,
+     0.82
+    ],
+    "not_paint_share_black_as_published": [
+     0.72,
+     0.81
+    ],
+    "not_paint_share_black_grey": [
+     0.67,
+     0.78
+    ]
+   }
+  }
+ }
+}

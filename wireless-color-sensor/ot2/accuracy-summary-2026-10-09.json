@@ -1,0 +1,851 @@
+{
+ "what": "every accuracy attempt on one scale, and the current accuracy per colour (2026-10-09)",
+ "scale": "error = mean distance outside the published pigment range over 440-670 nm, % of white; accuracy = 100% - error",
+ "published_range": {
+  "yellow": {
+   "lo": [
+    0.042,
+    0.069,
+    0.251,
+    0.626,
+    0.786,
+    0.842,
+    0.878
+   ],
+   "hi": [
+    0.153,
+    0.233,
+    0.503,
+    0.821,
+    0.907,
+    0.931,
+    0.948
+   ],
+   "mean_width": 0.143
+  },
+  "red": {
+   "lo": [
+    0.01,
+    0.011,
+    0.012,
+    0.027,
+    0.114,
+    0.507,
+    0.792
+   ],
+   "hi": [
+    0.021,
+    0.021,
+    0.022,
+    0.029,
+    0.214,
+    0.598,
+    0.807
+   ],
+   "mean_width": 0.034
+  },
+  "blue": {
+   "lo": [
+    0.064,
+    0.06,
+    0.038,
+    0.029,
+    0.029,
+    0.031,
+    0.031
+   ],
+   "hi": [
+    0.44,
+    0.453,
+    0.358,
+    0.221,
+    0.15,
+    0.123,
+    0.113
+   ],
+   "mean_width": 0.225
+  }
+ },
+ "colour_blind": {
+  "grey": 0.144,
+  "yellow": {
+   "error_pct": 38.0,
+   "accuracy_pct": 62.0,
+   "in_range_of_7": 2
+  },
+  "red": {
+   "error_pct": 21.4,
+   "accuracy_pct": 78.6,
+   "in_range_of_7": 1
+  },
+  "blue": {
+   "error_pct": 0.7,
+   "accuracy_pct": 99.3,
+   "in_range_of_7": 5
+  },
+  "all": {
+   "error_pct": 20.0,
+   "accuracy_pct": 80.0,
+   "in_range_of_21": 8
+  }
+ },
+ "runs": [
+  {
+   "run": "09-30 13:25",
+   "what": "first paint reading (paint ÷ empty well)",
+   "resting": {
+    "yellow": {
+     "error_pct": 12.7,
+     "accuracy_pct": 87.3,
+     "in_range_of_7": 2
+    },
+    "red": {
+     "error_pct": 39.2,
+     "accuracy_pct": 60.8,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 35.4,
+     "accuracy_pct": 64.6,
+     "in_range_of_7": 0
+    },
+    "all": {
+     "error_pct": 29.1,
+     "accuracy_pct": 70.9,
+     "in_range_of_21": 2
+    }
+   },
+   "above": null,
+   "above_by_z": null
+  },
+  {
+   "run": "09-30 15:47",
+   "what": "+ white and black wells beside the paints",
+   "resting": {
+    "yellow": {
+     "error_pct": 27.0,
+     "accuracy_pct": 73.0,
+     "in_range_of_7": 0
+    },
+    "red": {
+     "error_pct": 19.7,
+     "accuracy_pct": 80.3,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 14.7,
+     "accuracy_pct": 85.3,
+     "in_range_of_7": 2
+    },
+    "all": {
+     "error_pct": 20.5,
+     "accuracy_pct": 79.5,
+     "in_range_of_21": 2
+    }
+   },
+   "above": null,
+   "above_by_z": null
+  },
+  {
+   "run": "09-30 19:15",
+   "what": "+ empty wells between the paints",
+   "resting": {
+    "yellow": {
+     "error_pct": 9.2,
+     "accuracy_pct": 90.8,
+     "in_range_of_7": 0
+    },
+    "red": {
+     "error_pct": 24.7,
+     "accuracy_pct": 75.3,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 8.7,
+     "accuracy_pct": 91.3,
+     "in_range_of_7": 1
+    },
+    "all": {
+     "error_pct": 14.2,
+     "accuracy_pct": 85.8,
+     "in_range_of_21": 1
+    }
+   },
+   "above": null,
+   "above_by_z": null
+  },
+  {
+   "run": "10-01",
+   "what": "plate moved to slot 7, cardboard, paint dried",
+   "resting": {
+    "all": {
+     "error_pct": 44.2
+    }
+   },
+   "above": {
+    "best_z": 100.0,
+    "yellow": {
+     "error_pct": 17.2,
+     "accuracy_pct": 82.8,
+     "in_range_of_7": 2
+    },
+    "red": {
+     "error_pct": 12.2,
+     "accuracy_pct": 87.8,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 9.0,
+     "accuracy_pct": 91.0,
+     "in_range_of_7": 3
+    },
+    "all": {
+     "error_pct": 12.8,
+     "accuracy_pct": 87.2,
+     "in_range_of_21": 5
+    }
+   },
+   "above_by_z": {
+    "100.0": {
+     "yellow": {
+      "error_pct": 17.2,
+      "accuracy_pct": 82.8,
+      "in_range_of_7": 2
+     },
+     "red": {
+      "error_pct": 12.2,
+      "accuracy_pct": 87.8,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 9.0,
+      "accuracy_pct": 91.0,
+      "in_range_of_7": 3
+     },
+     "all": {
+      "error_pct": 12.8,
+      "accuracy_pct": 87.2,
+      "in_range_of_21": 5
+     }
+    },
+    "95.0": {
+     "yellow": {
+      "error_pct": 13.2,
+      "accuracy_pct": 86.8,
+      "in_range_of_7": 3
+     },
+     "red": {
+      "error_pct": 14.8,
+      "accuracy_pct": 85.2,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 19.0,
+      "accuracy_pct": 81.0,
+      "in_range_of_7": 0
+     },
+     "all": {
+      "error_pct": 15.7,
+      "accuracy_pct": 84.3,
+      "in_range_of_21": 3
+     }
+    },
+    "92.0": {
+     "yellow": {
+      "error_pct": 9.7,
+      "accuracy_pct": 90.3,
+      "in_range_of_7": 2
+     },
+     "red": {
+      "error_pct": 22.1,
+      "accuracy_pct": 77.9,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 29.0,
+      "accuracy_pct": 71.0,
+      "in_range_of_7": 0
+     },
+     "all": {
+      "error_pct": 20.3,
+      "accuracy_pct": 79.7,
+      "in_range_of_21": 2
+     }
+    }
+   }
+  },
+  {
+   "run": "10-06 pm",
+   "what": "fresh colours, undiluted white/black, white paper",
+   "resting": {
+    "yellow": {
+     "error_pct": 38.3,
+     "accuracy_pct": 61.7,
+     "in_range_of_7": 0
+    },
+    "red": {
+     "error_pct": 53.6,
+     "accuracy_pct": 46.4,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 56.4,
+     "accuracy_pct": 43.6,
+     "in_range_of_7": 0
+    },
+    "all": {
+     "error_pct": 49.4,
+     "accuracy_pct": 50.6,
+     "in_range_of_21": 0
+    }
+   },
+   "above": {
+    "best_z": 100.0,
+    "yellow": {
+     "error_pct": 21.5,
+     "accuracy_pct": 78.5,
+     "in_range_of_7": 2
+    },
+    "red": {
+     "error_pct": 15.7,
+     "accuracy_pct": 84.3,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 10.7,
+     "accuracy_pct": 89.3,
+     "in_range_of_7": 3
+    },
+    "all": {
+     "error_pct": 16.0,
+     "accuracy_pct": 84.0,
+     "in_range_of_21": 5
+    }
+   },
+   "above_by_z": {
+    "100.0": {
+     "yellow": {
+      "error_pct": 21.5,
+      "accuracy_pct": 78.5,
+      "in_range_of_7": 2
+     },
+     "red": {
+      "error_pct": 15.7,
+      "accuracy_pct": 84.3,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 10.7,
+      "accuracy_pct": 89.3,
+      "in_range_of_7": 3
+     },
+     "all": {
+      "error_pct": 16.0,
+      "accuracy_pct": 84.0,
+      "in_range_of_21": 5
+     }
+    },
+    "95.0": {
+     "yellow": {
+      "error_pct": 13.4,
+      "accuracy_pct": 86.6,
+      "in_range_of_7": 2
+     },
+     "red": {
+      "error_pct": 18.4,
+      "accuracy_pct": 81.6,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 18.6,
+      "accuracy_pct": 81.4,
+      "in_range_of_7": 0
+     },
+     "all": {
+      "error_pct": 16.8,
+      "accuracy_pct": 83.2,
+      "in_range_of_21": 2
+     }
+    },
+    "92.0": {
+     "yellow": {
+      "error_pct": 10.0,
+      "accuracy_pct": 90.0,
+      "in_range_of_7": 2
+     },
+     "red": {
+      "error_pct": 25.7,
+      "accuracy_pct": 74.3,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 26.2,
+      "accuracy_pct": 73.8,
+      "in_range_of_7": 0
+     },
+     "all": {
+      "error_pct": 20.6,
+      "accuracy_pct": 79.4,
+      "in_range_of_21": 2
+     }
+    }
+   }
+  },
+  {
+   "run": "10-06 eve",
+   "what": "black paper instead of white",
+   "resting": {
+    "yellow": {
+     "error_pct": 45.6,
+     "accuracy_pct": 54.4,
+     "in_range_of_7": 0
+    },
+    "red": {
+     "error_pct": 42.0,
+     "accuracy_pct": 58.0,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 62.1,
+     "accuracy_pct": 37.9,
+     "in_range_of_7": 0
+    },
+    "all": {
+     "error_pct": 49.9,
+     "accuracy_pct": 50.1,
+     "in_range_of_21": 0
+    }
+   },
+   "above": {
+    "best_z": 92.0,
+    "yellow": {
+     "error_pct": 14.5,
+     "accuracy_pct": 85.5,
+     "in_range_of_7": 1
+    },
+    "red": {
+     "error_pct": 17.0,
+     "accuracy_pct": 83.0,
+     "in_range_of_7": 1
+    },
+    "blue": {
+     "error_pct": 5.3,
+     "accuracy_pct": 94.7,
+     "in_range_of_7": 3
+    },
+    "all": {
+     "error_pct": 12.2,
+     "accuracy_pct": 87.8,
+     "in_range_of_21": 5
+    }
+   },
+   "above_by_z": {
+    "100.0": {
+     "yellow": {
+      "error_pct": 26.9,
+      "accuracy_pct": 73.1,
+      "in_range_of_7": 3
+     },
+     "red": {
+      "error_pct": 14.3,
+      "accuracy_pct": 85.7,
+      "in_range_of_7": 1
+     },
+     "blue": {
+      "error_pct": 1.5,
+      "accuracy_pct": 98.5,
+      "in_range_of_7": 5
+     },
+     "all": {
+      "error_pct": 14.3,
+      "accuracy_pct": 85.7,
+      "in_range_of_21": 9
+     }
+    },
+    "95.0": {
+     "yellow": {
+      "error_pct": 23.3,
+      "accuracy_pct": 76.7,
+      "in_range_of_7": 3
+     },
+     "red": {
+      "error_pct": 13.5,
+      "accuracy_pct": 86.5,
+      "in_range_of_7": 0
+     },
+     "blue": {
+      "error_pct": 1.9,
+      "accuracy_pct": 98.1,
+      "in_range_of_7": 4
+     },
+     "all": {
+      "error_pct": 12.9,
+      "accuracy_pct": 87.1,
+      "in_range_of_21": 7
+     }
+    },
+    "92.0": {
+     "yellow": {
+      "error_pct": 14.5,
+      "accuracy_pct": 85.5,
+      "in_range_of_7": 1
+     },
+     "red": {
+      "error_pct": 17.0,
+      "accuracy_pct": 83.0,
+      "in_range_of_7": 1
+     },
+     "blue": {
+      "error_pct": 5.3,
+      "accuracy_pct": 94.7,
+      "in_range_of_7": 3
+     },
+     "all": {
+      "error_pct": 12.2,
+      "accuracy_pct": 87.8,
+      "in_range_of_21": 5
+     }
+    }
+   }
+  }
+ ],
+ "attempts": [
+  {
+   "when": "09-09",
+   "what": "read at z 120, not z 128",
+   "result": "colour disagreement between stops 55.7% -> 0.8%",
+   "change_pct": -98.6
+  },
+  {
+   "when": "09-10",
+   "what": "rail lights on",
+   "result": "5.6x the signal; noise floor 0.338 -> 0.018 share points",
+   "change_pct": -94.7
+  },
+  {
+   "when": "09-10",
+   "what": "reference read at the same spot, height and lights as the sample",
+   "result": "avoids errors of 0.30 / 3.12-9.67 / 2.55-2.80 share points (spot / height / lights)",
+   "avoided_pct_of_colour_signal": [
+    11,
+    120,
+    370,
+    98,
+    107
+   ]
+  },
+  {
+   "when": "09-10",
+   "what": "subtract the board's green glow before dividing",
+   "result": "residual 0.00 share points: all of it removed",
+   "change_pct": -100.0
+  },
+  {
+   "when": "09-10",
+   "what": "nobody near the robot during a reading",
+   "result": "avoids 1.40 share points (a forearm moved the total 31.7%)",
+   "avoided_pct_of_colour_signal": 54
+  },
+  {
+   "when": "09-30",
+   "what": "paint in a 96-well plate instead of vials",
+   "result": "largest colour signal 2.61 -> 4.16 share points",
+   "change_pct": 59.4
+  },
+  {
+   "when": "09-30",
+   "what": "robot's sides blacked out",
+   "result": "outside light at three fixed spots",
+   "change_pct": [
+    -24.3,
+    -22.7
+   ]
+  },
+  {
+   "when": "09-30",
+   "what": "white and black wells beside the paints",
+   "result": "error 29.1 -> 20.5",
+   "change_pct": -29.6
+  },
+  {
+   "when": "09-30",
+   "what": "empty wells between the paints (also new white/black, vials stirred)",
+   "result": "error 20.5 -> 14.2",
+   "change_pct": -30.7
+  },
+  {
+   "when": "10-01",
+   "what": "cardboard and wood over the robot",
+   "result": "outside light a further 6.7-15.3% less; biggest jump between two readings 5.35% -> 0.24%; colour error at z 125 24 -> 15, resting 13 -> 44: confounded (slot 1 -> 7, paint aged)",
+   "change_pct": {
+    "outside_light": [
+     -15.3,
+     -6.7
+    ],
+    "biggest_jump": -95.5
+   }
+  },
+  {
+   "when": "10-01",
+   "what": "read 4-12 mm above the plate instead of resting on it",
+   "result": "10-01: 44.2 -> 12.8 (z 100); 10-06 pm: 49.4 -> 16.0 (z 100); 10-06 eve: 49.9 -> 12.2 (z 92)",
+   "change_pct": [
+    -71.0,
+    -67.6,
+    -75.6
+   ]
+  },
+  {
+   "when": "10-01",
+   "what": "more readings per landing",
+   "result": "16 readings at one landing agreed within 0.1%",
+   "change_pct": 0.0
+  },
+  {
+   "when": "10-02",
+   "what": "board's green LED (checked, left on)",
+   "result": "a fixed offset that cancels in the white/black correction",
+   "change_pct": 0.0
+  },
+  {
+   "when": "10-06",
+   "what": "fresh colours, undiluted white and black, white paper (all at once)",
+   "result": "black / white at z 100 0.724 -> 0.643; error z 100 12.8 -> 16.0, z 92 20.3 -> 20.6, resting 44.2 -> 49.4",
+   "change_pct": {
+    "black_over_white_z100": -11.2,
+    "z100": 25.0,
+    "z92": 1.5,
+    "resting": 11.8
+   }
+  },
+  {
+   "when": "10-06",
+   "what": "black paper instead of white",
+   "result": "black / white at z 100 0.643 -> 0.548; error z 100 16.0 -> 14.3, z 92 20.6 -> 12.2, resting 49.4 -> 49.9",
+   "change_pct": {
+    "black_over_white_z100": -14.8,
+    "z100": -10.6,
+    "z92": -40.8,
+    "resting": 1.0
+   }
+  }
+ ],
+ "current": {
+  "setup": "10-06 evening: black paper, plate in slot 7, undiluted white H12 and black H7",
+  "resting_on_plate": {
+   "yellow": {
+    "error_pct": 45.6,
+    "accuracy_pct": 54.4,
+    "in_range_of_7": 0
+   },
+   "red": {
+    "error_pct": 42.0,
+    "accuracy_pct": 58.0,
+    "in_range_of_7": 0
+   },
+   "blue": {
+    "error_pct": 62.1,
+    "accuracy_pct": 37.9,
+    "in_range_of_7": 0
+   },
+   "all": {
+    "error_pct": 49.9,
+    "accuracy_pct": 50.1,
+    "in_range_of_21": 0
+   }
+  },
+  "above_z92_95_100": {
+   "100.0": {
+    "yellow": {
+     "error_pct": 26.9,
+     "accuracy_pct": 73.1,
+     "in_range_of_7": 3
+    },
+    "red": {
+     "error_pct": 14.3,
+     "accuracy_pct": 85.7,
+     "in_range_of_7": 1
+    },
+    "blue": {
+     "error_pct": 1.5,
+     "accuracy_pct": 98.5,
+     "in_range_of_7": 5
+    },
+    "all": {
+     "error_pct": 14.3,
+     "accuracy_pct": 85.7,
+     "in_range_of_21": 9
+    }
+   },
+   "95.0": {
+    "yellow": {
+     "error_pct": 23.3,
+     "accuracy_pct": 76.7,
+     "in_range_of_7": 3
+    },
+    "red": {
+     "error_pct": 13.5,
+     "accuracy_pct": 86.5,
+     "in_range_of_7": 0
+    },
+    "blue": {
+     "error_pct": 1.9,
+     "accuracy_pct": 98.1,
+     "in_range_of_7": 4
+    },
+    "all": {
+     "error_pct": 12.9,
+     "accuracy_pct": 87.1,
+     "in_range_of_21": 7
+    }
+   },
+   "92.0": {
+    "yellow": {
+     "error_pct": 14.5,
+     "accuracy_pct": 85.5,
+     "in_range_of_7": 1
+    },
+    "red": {
+     "error_pct": 17.0,
+     "accuracy_pct": 83.0,
+     "in_range_of_7": 1
+    },
+    "blue": {
+     "error_pct": 5.3,
+     "accuracy_pct": 94.7,
+     "in_range_of_7": 3
+    },
+    "all": {
+     "error_pct": 12.2,
+     "accuracy_pct": 87.8,
+     "in_range_of_21": 5
+    }
+   }
+  },
+  "bright_channels": {
+   "100.0": {
+    "yellow": {
+     "nm": [
+      550,
+      583,
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.48,
+      0.44,
+      0.34,
+      0.26
+     ]
+    },
+    "red": {
+     "nm": [
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.43,
+      0.21
+     ]
+    },
+    "blue": {
+     "nm": [
+      440,
+      470
+     ],
+     "fraction_of_published": [
+      0.88,
+      0.76
+     ]
+    }
+   },
+   "95.0": {
+    "yellow": {
+     "nm": [
+      550,
+      583,
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.6,
+      0.5,
+      0.43,
+      0.28
+     ]
+    },
+    "red": {
+     "nm": [
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.67,
+      0.34
+     ]
+    },
+    "blue": {
+     "nm": [
+      440,
+      470
+     ],
+     "fraction_of_published": [
+      1.07,
+      0.92
+     ]
+    }
+   },
+   "92.0": {
+    "yellow": {
+     "nm": [
+      550,
+      583,
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.87,
+      0.72,
+      0.62,
+      0.44
+     ]
+    },
+    "red": {
+     "nm": [
+      620,
+      670
+     ],
+     "fraction_of_published": [
+      0.97,
+      0.51
+     ]
+    },
+    "blue": {
+     "nm": [
+      440,
+      470
+     ],
+     "fraction_of_published": [
+      1.5,
+      1.33
+     ]
+    }
+   }
+  },
+  "differences_too_small_by": {
+   "100.0": 4.39,
+   "95.0": 3.36,
+   "92.0": 2.55
+  },
+  "shape_matches": {
+   "yellow": "yellow",
+   "red": "red",
+   "blue": "blue"
+  }
+ },
+ "first_to_best": {
+  "from": 29.1,
+  "to": 12.2,
+  "change_pct": -58.1
+ }
+}

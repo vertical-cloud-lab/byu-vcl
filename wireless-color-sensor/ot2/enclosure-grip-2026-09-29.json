@@ -1,0 +1,329 @@
+{
+ "date": "2026-09-29",
+ "timezone": "MDT (UTC-6)",
+ "request": "https://github.com/vertical-cloud-lab/byu-vcl/pull/202",
+ "robot": {
+  "serial": "OT2CEP20210722R13",
+  "api": "8.8.1",
+  "pipette": "p300_single_gen2, left"
+ },
+ "socket": "A2 (right-hand) of the charging base in slot 10",
+ "command_line": "enclosure_height_cal.py --no-sensor --no-live --carry-z 125 --carry-segment 400 --drop-dx -4.0",
+ "maintenance_run": "280304fb-7c4e-47a0-9391-f0f76a3ba94d",
+ "sensor": "board did not answer: 3 attempts x 20 s, broker round-trip fine",
+ "opentrons_source_checked": {
+  "package": "opentrons==8.8.1",
+  "tip_presence": "protocol_engine/execution/tip_handler.py: HardwareNotSupportedError -> 'Tip presence sensing is not supported on the OT2'",
+  "acceleration_mm_s2": {
+   "X": 3000,
+   "Y": 2000,
+   "Z": 1500
+  },
+  "max_speed_mm_s": {
+   "X": 600,
+   "Y": 400,
+   "Z": 125
+  }
+ },
+ "timeline": [
+  {
+   "t": "16:12",
+   "step": "read-only: deck photo, sensor 3x no reply"
+  },
+  {
+   "t": "16:23:10",
+   "step": "bare nozzle at (92.8, 316.5, 102); enclosure top vs 2026-09-25 same pose: 0 px"
+  },
+  {
+   "t": "16:25:46",
+   "step": "pickup: ladder to z 99"
+  },
+  {
+   "t": "16:26:03-16:26:46",
+   "step": "press 97.5, 96, 94, 92, 90 at 5 mm/s"
+  },
+  {
+   "t": "16:27:08",
+   "step": "lift 92.5 (4 s dwell)"
+  },
+  {
+   "t": "16:28:22",
+   "step": "up 94"
+  },
+  {
+   "t": "16:29:07-16:29:19",
+   "step": "jiggle y 0.3 20 10: 40 moves, 80 starts/stops at 10 mm/s"
+  },
+  {
+   "t": "16:30:58",
+   "step": "script stopped with SIGTERM (SIGINT ignored); run left open, no motion"
+  },
+  {
+   "t": "16:31:18",
+   "step": "release_in_place.py: z 95 at 5 mm/s, dropTipInPlace, z 110"
+  },
+  {
+   "t": "16:32:01-16:32:26",
+   "step": "home, maintenance run deleted, rail lights off"
+  }
+ ],
+ "pixel_scale": {
+  "nozzle_rows_per_mm_z": 1.07,
+  "basis": "nozzle housing moved 9.63 px from z 99 to z 90"
+ },
+ "grip_shift": {
+  "reference": "03_press_start_z99_robot.jpg",
+  "patches": {
+   "nozzle_housing": [
+    0,
+    64,
+    224,
+    352
+   ],
+   "enclosure_face": [
+    118,
+    166,
+    196,
+    292
+   ],
+   "base_static": [
+    170,
+    230,
+    90,
+    330
+   ]
+  },
+  "seam": [
+   148,
+   168,
+   210,
+   262
+  ],
+  "rows_positive": "down",
+  "photos": [
+   {
+    "photo": "04_press_z97.5_robot.jpg",
+    "seam_contrast": 38.7,
+    "nozzle_housing": {
+     "rows": 1.89,
+     "cols": -0.78,
+     "peak": 0.35
+    },
+    "enclosure_face": {
+     "rows": 0.02,
+     "cols": -0.01,
+     "peak": 0.85
+    },
+    "base_static": {
+     "rows": 0.0,
+     "cols": -0.02,
+     "peak": 0.79
+    }
+   },
+   {
+    "photo": "05_press_z96_robot.jpg",
+    "seam_contrast": 39.4,
+    "nozzle_housing": {
+     "rows": 2.98,
+     "cols": -1.37,
+     "peak": 0.3
+    },
+    "enclosure_face": {
+     "rows": 0.04,
+     "cols": -0.03,
+     "peak": 0.79
+    },
+    "base_static": {
+     "rows": 0.0,
+     "cols": 0.01,
+     "peak": 0.87
+    }
+   },
+   {
+    "photo": "06_press_z94_robot.jpg",
+    "seam_contrast": 43.2,
+    "nozzle_housing": {
+     "rows": 5.13,
+     "cols": -2.21,
+     "peak": 0.28
+    },
+    "enclosure_face": {
+     "rows": 0.09,
+     "cols": -0.03,
+     "peak": 0.69
+    },
+    "base_static": {
+     "rows": -0.01,
+     "cols": -0.01,
+     "peak": 0.85
+    }
+   },
+   {
+    "photo": "07_press_z92_robot.jpg",
+    "seam_contrast": 43.4,
+    "nozzle_housing": {
+     "rows": 7.7,
+     "cols": -3.21,
+     "peak": 0.28
+    },
+    "enclosure_face": {
+     "rows": 0.1,
+     "cols": -0.08,
+     "peak": 0.64
+    },
+    "base_static": {
+     "rows": 0.01,
+     "cols": -0.01,
+     "peak": 0.87
+    }
+   },
+   {
+    "photo": "08_press_z90_robot.jpg",
+    "seam_contrast": 51.1,
+    "nozzle_housing": {
+     "rows": 9.63,
+     "cols": -4.03,
+     "peak": 0.28
+    },
+    "enclosure_face": {
+     "rows": 0.69,
+     "cols": -0.07,
+     "peak": 0.43
+    },
+    "base_static": {
+     "rows": 0.02,
+     "cols": -0.02,
+     "peak": 0.79
+    }
+   },
+   {
+    "photo": "09_lifted_z92.5_robot.jpg",
+    "seam_contrast": 23.1,
+    "nozzle_housing": {
+     "rows": 6.92,
+     "cols": -3.1,
+     "peak": 0.38
+    },
+    "enclosure_face": {
+     "rows": -0.03,
+     "cols": 0.06,
+     "peak": 0.39
+    },
+    "base_static": {
+     "rows": -0.02,
+     "cols": -0.03,
+     "peak": 0.84
+    }
+   },
+   {
+    "photo": "10_up_z94_robot.jpg",
+    "seam_contrast": 62.2,
+    "nozzle_housing": {
+     "rows": 5.21,
+     "cols": -2.18,
+     "peak": 0.29
+    },
+    "enclosure_face": {
+     "rows": -2.22,
+     "cols": 0.73,
+     "peak": 0.37
+    },
+    "base_static": {
+     "rows": -0.01,
+     "cols": -0.02,
+     "peak": 0.87
+    }
+   },
+   {
+    "photo": "11_jiggled_y0.3x20_v10_robot.jpg",
+    "seam_contrast": 23.6,
+    "nozzle_housing": {
+     "rows": 5.39,
+     "cols": -2.14,
+     "peak": 0.27
+    },
+    "enclosure_face": {
+     "rows": -0.43,
+     "cols": 0.04,
+     "peak": 0.31
+    },
+    "base_static": {
+     "rows": -0.01,
+     "cols": -0.0,
+     "peak": 0.83
+    }
+   },
+   {
+    "photo": "12_release_pose_z95_robot.jpg",
+    "seam_contrast": 21.9,
+    "nozzle_housing": {
+     "rows": 4.31,
+     "cols": -1.99,
+     "peak": 0.34
+    },
+    "enclosure_face": {
+     "rows": -0.3,
+     "cols": 0.04,
+     "peak": 0.33
+    },
+    "base_static": {
+     "rows": -0.0,
+     "cols": 0.0,
+     "peak": 0.84
+    }
+   },
+   {
+    "photo": "13_after_eject_z110_robot.jpg",
+    "seam_contrast": 36.5,
+    "nozzle_housing": {
+     "rows": -12.07,
+     "cols": 5.56,
+     "peak": 0.22
+    },
+    "enclosure_face": {
+     "rows": 0.02,
+     "cols": -0.03,
+     "peak": 0.67
+    },
+    "base_static": {
+     "rows": 0.0,
+     "cols": -0.03,
+     "peak": 0.82
+    }
+   },
+   {
+    "photo": "14_final_robot.jpg",
+    "seam_contrast": 38.9,
+    "nozzle_housing": {
+     "rows": -7.76,
+     "cols": 8.07,
+     "peak": 0.05
+    },
+    "enclosure_face": {
+     "rows": 0.02,
+     "cols": -0.02,
+     "peak": 0.56
+    },
+    "base_static": {
+     "rows": 0.0,
+     "cols": 0.0,
+     "peak": 0.64
+    }
+   }
+  ]
+ },
+ "summary": {
+  "enclosure_above_rest_mm": {
+   "z94": 2.1,
+   "z94_after_80_jolts": 0.4,
+   "z95_release_pose": 0.3,
+   "z110_after_eject": 0.0
+  },
+  "slide_in_12_s_mm": [
+   1.0,
+   1.8
+  ],
+  "carried": false,
+  "fell": false
+ }
+}

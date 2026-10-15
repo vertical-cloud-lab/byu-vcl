@@ -1,0 +1,3650 @@
+{
+ "date": "2026-09-30",
+ "asked": "https://github.com/vertical-cloud-lab/byu-vcl/pull/202",
+ "request": "i put white in slot h12 and black in slot h 7. please run the test again but following your recommendations of having the color slots have an empty slot in between them",
+ "deck": {
+  "plate": "a fresh corning_96_wellplate_360ul_flat-type plate, slot 1 (not the 13:00 plate)",
+  "tips": "opentrons_96_tiprack_300ul, slot 6",
+  "vials": "the same three loose vials in slot 3, unmoved since 13:00",
+  "enclosure_base": "slot 10; the enclosure had been moved to the LEFT socket (A1), turned to a different face, by 18:05",
+  "trash": "fixed trash, slot 12"
+ },
+ "wells": {
+  "H2": {
+   "paint": "yellow",
+   "pigment": "PY74",
+   "how": "200 uL from its vial by the robot"
+  },
+  "H4": {
+   "paint": "red",
+   "pigment": "PR170 + PR9",
+   "how": "200 uL from its vial by the robot"
+  },
+  "H7": {
+   "paint": "black",
+   "pigment": "PBk11 (Liquitex BASICS Mars Black)",
+   "how": "by hand, before 17:53; volume and water ratio not recorded"
+  },
+  "H10": {
+   "paint": "blue",
+   "pigment": "PB15:3",
+   "how": "200 uL from its vial by the robot"
+  },
+  "H12": {
+   "paint": "white",
+   "pigment": "PW6 (Liquitex BASICS Titanium White)",
+   "how": "by hand, before 17:53; volume and water ratio not recorded"
+  },
+  "every other well": "empty"
+ },
+ "transfers": [
+  {
+   "paint": "yellow",
+   "tip": "F1",
+   "vial_xy": [
+    326.4,
+    39.4
+   ],
+   "well": "H2",
+   "tip_end_z_in_vial": 38.0,
+   "stirred": "3 x (aspirate 150 uL, dispense 150 uL back) at 30 uL/s, pushOut 0",
+   "volume_ul": 200,
+   "aspirate_ul_s": 30,
+   "dispense_tip_end_z": 6.22,
+   "dispense_ul_s": 30,
+   "blowout_tip_end_z": 13.22,
+   "route_with_paint": "up to tip-end z 110 over the vial, to y 2 (in front of the plate's front row), along y 2 to the well's x, then into the well; never over another well",
+   "mixed_local": "18:29:49",
+   "dispensed_local": "18:32:22",
+   "aspirated_local": "18:30:03",
+   "tip_to_trash_local": "18:33:56"
+  },
+  {
+   "paint": "red",
+   "tip": "G1",
+   "vial_xy": [
+    367.6,
+    41.8
+   ],
+   "well": "H4",
+   "tip_end_z_in_vial": 38.0,
+   "stirred": "3 x (aspirate 150 uL, dispense 150 uL back) at 30 uL/s, pushOut 0",
+   "volume_ul": 200,
+   "aspirate_ul_s": 30,
+   "dispense_tip_end_z": 6.22,
+   "dispense_ul_s": 30,
+   "blowout_tip_end_z": 13.22,
+   "route_with_paint": "up to tip-end z 110 over the vial, to y 2 (in front of the plate's front row), along y 2 to the well's x, then into the well; never over another well",
+   "mixed_local": "18:36:45",
+   "dispensed_local": "18:39:02",
+   "aspirated_local": "18:36:59",
+   "tip_to_trash_local": "18:40:31"
+  },
+  {
+   "paint": "blue",
+   "tip": "H1",
+   "vial_xy": [
+    291.6,
+    41.9
+   ],
+   "well": "H10",
+   "tip_end_z_in_vial": 38.0,
+   "stirred": "3 x (aspirate 150 uL, dispense 150 uL back) at 30 uL/s, pushOut 0",
+   "volume_ul": 200,
+   "aspirate_ul_s": 30,
+   "dispense_tip_end_z": 6.22,
+   "dispense_ul_s": 30,
+   "blowout_tip_end_z": 13.22,
+   "route_with_paint": "up to tip-end z 110 over the vial, to y 2 (in front of the plate's front row), along y 2 to the well's x, then into the well; never over another well",
+   "mixed_local": "18:43:24",
+   "dispensed_local": "18:45:42",
+   "aspirated_local": "18:43:40",
+   "tip_to_trash_local": "18:47:10"
+  }
+ ],
+ "first_attempt": {
+  "local": "18:10-18:16",
+  "tip": "E1",
+  "what": "mix's second aspirateInPlace refused: PipetteNotReadyToAspirateError (a dispense that empties the tip without pushOut 0 counts as pushing the plunger past the bottom). One stir cycle of 150 uL had gone into and back out of the yellow vial; the tip held nothing and went to the trash around the tip rack; the driver was restarted with pushOut 0"
+ },
+ "enclosure_trip": {
+  "driver": "enclosure_height_cal.py --socket-x 36.55 --socket-y 315.5 --press-z 89.0 --carry-z 125 --carry-segment 400 --drop-dx 0 --max-speed 3 --no-live --floor 86 --clear-z 90",
+  "maintenance_run": "c467292d",
+  "seated_before": [
+   440,
+   441
+  ],
+  "pickup": "left socket (36.55, 315.5): bare nozzle to z 102 without touching (enclosure <= 0.05 px), pressed 99 -> 89 in 2 mm steps (enclosure <= 0.13 px)",
+  "lift_z93_face_shift_px": -2.23,
+  "after_jiggle_y0.3x40_v3_face_shift_px": -2.29,
+  "grip_ratio": 7.2,
+  "left_base_local": "19:09:35",
+  "reseated_local": "19:31:25",
+  "read_z": 86.5,
+  "readings_per_visit": 8,
+  "order": [
+   "H7 black",
+   "H12 white",
+   "H10 blue",
+   "H4 red",
+   "H2 yellow",
+   "H4 red (again)"
+  ],
+  "released": {
+   "over_pocket_z100": [
+    2003,
+    2003
+   ],
+   "after_release": [
+    460,
+    459
+   ],
+   "homed": [
+    458,
+    460
+   ],
+   "camera_check": {
+    "photo": "72_backed_out_robot.jpg",
+    "rows": -0.1,
+    "cols": -0.05,
+    "peak": 0.71,
+    "seated": true,
+    "t": "19:31:29"
+   }
+  },
+  "sensor_answered_throughout": true
+ },
+ "readings": [
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-1-1790817341472",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 552,
+    "ch550": 777,
+    "ch583": 849,
+    "ch620": 974,
+    "ch670": 733
+   },
+   "total": 4377,
+   "t_request_utc": "2026-10-01T01:15:41.472Z",
+   "t_response_utc": "2026-10-01T01:15:42.897Z",
+   "local": "19:15:42",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-2-1790817342897",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 238,
+    "ch510": 552,
+    "ch550": 777,
+    "ch583": 850,
+    "ch620": 973,
+    "ch670": 732
+   },
+   "total": 4377,
+   "t_request_utc": "2026-10-01T01:15:42.897Z",
+   "t_response_utc": "2026-10-01T01:15:44.301Z",
+   "local": "19:15:44",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-3-1790817344301",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 552,
+    "ch550": 777,
+    "ch583": 848,
+    "ch620": 972,
+    "ch670": 732
+   },
+   "total": 4373,
+   "t_request_utc": "2026-10-01T01:15:44.301Z",
+   "t_response_utc": "2026-10-01T01:15:45.726Z",
+   "local": "19:15:45",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-4-1790817345726",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 551,
+    "ch550": 777,
+    "ch583": 848,
+    "ch620": 973,
+    "ch670": 731
+   },
+   "total": 4372,
+   "t_request_utc": "2026-10-01T01:15:45.726Z",
+   "t_response_utc": "2026-10-01T01:15:47.130Z",
+   "local": "19:15:47",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-5-1790817347130",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 238,
+    "ch510": 551,
+    "ch550": 776,
+    "ch583": 847,
+    "ch620": 972,
+    "ch670": 731
+   },
+   "total": 4370,
+   "t_request_utc": "2026-10-01T01:15:47.130Z",
+   "t_response_utc": "2026-10-01T01:15:48.534Z",
+   "local": "19:15:48",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-6-1790817348535",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 552,
+    "ch550": 776,
+    "ch583": 847,
+    "ch620": 972,
+    "ch670": 731
+   },
+   "total": 4370,
+   "t_request_utc": "2026-10-01T01:15:48.535Z",
+   "t_response_utc": "2026-10-01T01:15:49.959Z",
+   "local": "19:15:49",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-7-1790817349959",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 551,
+    "ch550": 775,
+    "ch583": 846,
+    "ch620": 971,
+    "ch670": 730
+   },
+   "total": 4365,
+   "t_request_utc": "2026-10-01T01:15:49.959Z",
+   "t_response_utc": "2026-10-01T01:15:51.363Z",
+   "local": "19:15:51",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H7",
+   "paint": "black",
+   "visit": 1,
+   "experiment_id": "cal-H7-black-8-1790817351363",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 551,
+    "ch550": 776,
+    "ch583": 848,
+    "ch620": 972,
+    "ch670": 731
+   },
+   "total": 4370,
+   "t_request_utc": "2026-10-01T01:15:51.363Z",
+   "t_response_utc": "2026-10-01T01:15:52.767Z",
+   "local": "19:15:52",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-1-1790817472147",
+   "channels": {
+    "ch410": 103,
+    "ch440": 361,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1230,
+    "ch583": 1372,
+    "ch620": 1470,
+    "ch670": 994
+   },
+   "total": 6812,
+   "t_request_utc": "2026-10-01T01:17:52.147Z",
+   "t_response_utc": "2026-10-01T01:17:53.552Z",
+   "local": "19:17:53",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-2-1790817473552",
+   "channels": {
+    "ch410": 104,
+    "ch440": 361,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1231,
+    "ch583": 1371,
+    "ch620": 1471,
+    "ch670": 994
+   },
+   "total": 6814,
+   "t_request_utc": "2026-10-01T01:17:53.552Z",
+   "t_response_utc": "2026-10-01T01:17:54.956Z",
+   "local": "19:17:54",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-3-1790817474956",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1231,
+    "ch583": 1373,
+    "ch620": 1471,
+    "ch670": 993
+   },
+   "total": 6815,
+   "t_request_utc": "2026-10-01T01:17:54.956Z",
+   "t_response_utc": "2026-10-01T01:17:56.360Z",
+   "local": "19:17:56",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-4-1790817476361",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1232,
+    "ch583": 1373,
+    "ch620": 1471,
+    "ch670": 994
+   },
+   "total": 6817,
+   "t_request_utc": "2026-10-01T01:17:56.361Z",
+   "t_response_utc": "2026-10-01T01:17:57.765Z",
+   "local": "19:17:57",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-5-1790817477765",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1230,
+    "ch583": 1371,
+    "ch620": 1469,
+    "ch670": 992
+   },
+   "total": 6809,
+   "t_request_utc": "2026-10-01T01:17:57.765Z",
+   "t_response_utc": "2026-10-01T01:17:59.169Z",
+   "local": "19:17:59",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-6-1790817479169",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 877,
+    "ch550": 1230,
+    "ch583": 1372,
+    "ch620": 1469,
+    "ch670": 993
+   },
+   "total": 6810,
+   "t_request_utc": "2026-10-01T01:17:59.169Z",
+   "t_response_utc": "2026-10-01T01:18:00.573Z",
+   "local": "19:18:00",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-7-1790817480574",
+   "channels": {
+    "ch410": 103,
+    "ch440": 361,
+    "ch470": 403,
+    "ch510": 877,
+    "ch550": 1229,
+    "ch583": 1369,
+    "ch620": 1468,
+    "ch670": 992
+   },
+   "total": 6802,
+   "t_request_utc": "2026-10-01T01:18:00.574Z",
+   "t_response_utc": "2026-10-01T01:18:01.978Z",
+   "local": "19:18:01",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H12",
+   "paint": "white",
+   "visit": 1,
+   "experiment_id": "cal-H12-white-8-1790817481978",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 877,
+    "ch550": 1229,
+    "ch583": 1369,
+    "ch620": 1469,
+    "ch670": 992
+   },
+   "total": 6805,
+   "t_request_utc": "2026-10-01T01:18:01.978Z",
+   "t_response_utc": "2026-10-01T01:18:03.583Z",
+   "local": "19:18:03",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-1-1790817607986",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 898,
+    "ch583": 973,
+    "ch620": 1094,
+    "ch670": 798
+   },
+   "total": 5136,
+   "t_request_utc": "2026-10-01T01:20:07.986Z",
+   "t_response_utc": "2026-10-01T01:20:09.391Z",
+   "local": "19:20:09",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-2-1790817609391",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 896,
+    "ch583": 973,
+    "ch620": 1093,
+    "ch670": 797
+   },
+   "total": 5132,
+   "t_request_utc": "2026-10-01T01:20:09.391Z",
+   "t_response_utc": "2026-10-01T01:20:10.795Z",
+   "local": "19:20:10",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-3-1790817610795",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 896,
+    "ch583": 973,
+    "ch620": 1093,
+    "ch670": 798
+   },
+   "total": 5133,
+   "t_request_utc": "2026-10-01T01:20:10.795Z",
+   "t_response_utc": "2026-10-01T01:20:12.199Z",
+   "local": "19:20:12",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-4-1790817612199",
+   "channels": {
+    "ch410": 79,
+    "ch440": 304,
+    "ch470": 327,
+    "ch510": 661,
+    "ch550": 896,
+    "ch583": 971,
+    "ch620": 1092,
+    "ch670": 797
+   },
+   "total": 5127,
+   "t_request_utc": "2026-10-01T01:20:12.199Z",
+   "t_response_utc": "2026-10-01T01:20:13.604Z",
+   "local": "19:20:13",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-5-1790817613604",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 896,
+    "ch583": 972,
+    "ch620": 1093,
+    "ch670": 797
+   },
+   "total": 5131,
+   "t_request_utc": "2026-10-01T01:20:13.604Z",
+   "t_response_utc": "2026-10-01T01:20:15.008Z",
+   "local": "19:20:15",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-6-1790817615008",
+   "channels": {
+    "ch410": 79,
+    "ch440": 304,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 896,
+    "ch583": 972,
+    "ch620": 1093,
+    "ch670": 798
+   },
+   "total": 5131,
+   "t_request_utc": "2026-10-01T01:20:15.008Z",
+   "t_response_utc": "2026-10-01T01:20:16.412Z",
+   "local": "19:20:16",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-7-1790817616412",
+   "channels": {
+    "ch410": 79,
+    "ch440": 304,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 896,
+    "ch583": 973,
+    "ch620": 1093,
+    "ch670": 798
+   },
+   "total": 5132,
+   "t_request_utc": "2026-10-01T01:20:16.412Z",
+   "t_response_utc": "2026-10-01T01:20:17.817Z",
+   "local": "19:20:17",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H10",
+   "paint": "blue",
+   "visit": 1,
+   "experiment_id": "cal-H10-blue-8-1790817617817",
+   "channels": {
+    "ch410": 79,
+    "ch440": 304,
+    "ch470": 327,
+    "ch510": 663,
+    "ch550": 897,
+    "ch583": 973,
+    "ch620": 1094,
+    "ch670": 798
+   },
+   "total": 5135,
+   "t_request_utc": "2026-10-01T01:20:17.817Z",
+   "t_response_utc": "2026-10-01T01:20:19.221Z",
+   "local": "19:20:19",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-1-1790817748111",
+   "channels": {
+    "ch410": 81,
+    "ch440": 236,
+    "ch470": 279,
+    "ch510": 619,
+    "ch550": 872,
+    "ch583": 1079,
+    "ch620": 1380,
+    "ch670": 921
+   },
+   "total": 5467,
+   "t_request_utc": "2026-10-01T01:22:28.111Z",
+   "t_response_utc": "2026-10-01T01:22:29.515Z",
+   "local": "19:22:29",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-2-1790817749516",
+   "channels": {
+    "ch410": 81,
+    "ch440": 237,
+    "ch470": 280,
+    "ch510": 622,
+    "ch550": 878,
+    "ch583": 1087,
+    "ch620": 1389,
+    "ch670": 925
+   },
+   "total": 5499,
+   "t_request_utc": "2026-10-01T01:22:29.516Z",
+   "t_response_utc": "2026-10-01T01:22:30.900Z",
+   "local": "19:22:30",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-3-1790817750900",
+   "channels": {
+    "ch410": 82,
+    "ch440": 239,
+    "ch470": 282,
+    "ch510": 626,
+    "ch550": 883,
+    "ch583": 1096,
+    "ch620": 1402,
+    "ch670": 933
+   },
+   "total": 5543,
+   "t_request_utc": "2026-10-01T01:22:30.900Z",
+   "t_response_utc": "2026-10-01T01:22:32.304Z",
+   "local": "19:22:32",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-4-1790817752304",
+   "channels": {
+    "ch410": 82,
+    "ch440": 238,
+    "ch470": 282,
+    "ch510": 625,
+    "ch550": 876,
+    "ch583": 1085,
+    "ch620": 1386,
+    "ch670": 924
+   },
+   "total": 5498,
+   "t_request_utc": "2026-10-01T01:22:32.304Z",
+   "t_response_utc": "2026-10-01T01:22:33.708Z",
+   "local": "19:22:33",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-5-1790817753709",
+   "channels": {
+    "ch410": 81,
+    "ch440": 236,
+    "ch470": 280,
+    "ch510": 621,
+    "ch550": 876,
+    "ch583": 1084,
+    "ch620": 1384,
+    "ch670": 922
+   },
+   "total": 5484,
+   "t_request_utc": "2026-10-01T01:22:33.709Z",
+   "t_response_utc": "2026-10-01T01:22:35.113Z",
+   "local": "19:22:35",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-6-1790817755113",
+   "channels": {
+    "ch410": 83,
+    "ch440": 241,
+    "ch470": 284,
+    "ch510": 631,
+    "ch550": 891,
+    "ch583": 1110,
+    "ch620": 1420,
+    "ch670": 943
+   },
+   "total": 5603,
+   "t_request_utc": "2026-10-01T01:22:35.113Z",
+   "t_response_utc": "2026-10-01T01:22:36.538Z",
+   "local": "19:22:36",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-7-1790817756538",
+   "channels": {
+    "ch410": 83,
+    "ch440": 241,
+    "ch470": 285,
+    "ch510": 633,
+    "ch550": 893,
+    "ch583": 1113,
+    "ch620": 1424,
+    "ch670": 947
+   },
+   "total": 5619,
+   "t_request_utc": "2026-10-01T01:22:36.538Z",
+   "t_response_utc": "2026-10-01T01:22:37.942Z",
+   "local": "19:22:37",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 1,
+   "experiment_id": "cal-H4-red-8-1790817757942",
+   "channels": {
+    "ch410": 83,
+    "ch440": 242,
+    "ch470": 285,
+    "ch510": 632,
+    "ch550": 891,
+    "ch583": 1111,
+    "ch620": 1424,
+    "ch670": 948
+   },
+   "total": 5616,
+   "t_request_utc": "2026-10-01T01:22:37.942Z",
+   "t_response_utc": "2026-10-01T01:22:39.347Z",
+   "local": "19:22:39",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-1-1790817877088",
+   "channels": {
+    "ch410": 94,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1216,
+    "ch583": 1367,
+    "ch620": 1488,
+    "ch670": 966
+   },
+   "total": 6473,
+   "t_request_utc": "2026-10-01T01:24:37.088Z",
+   "t_response_utc": "2026-10-01T01:24:38.492Z",
+   "local": "19:24:38",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-2-1790817878492",
+   "channels": {
+    "ch410": 93,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1368,
+    "ch620": 1489,
+    "ch670": 966
+   },
+   "total": 6475,
+   "t_request_utc": "2026-10-01T01:24:38.492Z",
+   "t_response_utc": "2026-10-01T01:24:39.897Z",
+   "local": "19:24:39",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-3-1790817879897",
+   "channels": {
+    "ch410": 94,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1367,
+    "ch620": 1488,
+    "ch670": 967
+   },
+   "total": 6475,
+   "t_request_utc": "2026-10-01T01:24:39.897Z",
+   "t_response_utc": "2026-10-01T01:24:41.301Z",
+   "local": "19:24:41",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-4-1790817881301",
+   "channels": {
+    "ch410": 94,
+    "ch440": 240,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1218,
+    "ch583": 1369,
+    "ch620": 1488,
+    "ch670": 966
+   },
+   "total": 6478,
+   "t_request_utc": "2026-10-01T01:24:41.301Z",
+   "t_response_utc": "2026-10-01T01:24:42.705Z",
+   "local": "19:24:42",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-5-1790817882705",
+   "channels": {
+    "ch410": 93,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1218,
+    "ch583": 1369,
+    "ch620": 1488,
+    "ch670": 966
+   },
+   "total": 6476,
+   "t_request_utc": "2026-10-01T01:24:42.705Z",
+   "t_response_utc": "2026-10-01T01:24:44.090Z",
+   "local": "19:24:44",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-6-1790817884090",
+   "channels": {
+    "ch410": 94,
+    "ch440": 239,
+    "ch470": 301,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1369,
+    "ch620": 1489,
+    "ch670": 967
+   },
+   "total": 6479,
+   "t_request_utc": "2026-10-01T01:24:44.090Z",
+   "t_response_utc": "2026-10-01T01:24:45.494Z",
+   "local": "19:24:45",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-7-1790817885494",
+   "channels": {
+    "ch410": 93,
+    "ch440": 239,
+    "ch470": 301,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1369,
+    "ch620": 1489,
+    "ch670": 966
+   },
+   "total": 6477,
+   "t_request_utc": "2026-10-01T01:24:45.494Z",
+   "t_response_utc": "2026-10-01T01:24:46.898Z",
+   "local": "19:24:46",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H2",
+   "paint": "yellow",
+   "visit": 1,
+   "experiment_id": "cal-H2-yellow-8-1790817886899",
+   "channels": {
+    "ch410": 94,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1368,
+    "ch620": 1488,
+    "ch670": 966
+   },
+   "total": 6475,
+   "t_request_utc": "2026-10-01T01:24:46.899Z",
+   "t_response_utc": "2026-10-01T01:24:48.303Z",
+   "local": "19:24:48",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-1-1790818027701",
+   "channels": {
+    "ch410": 84,
+    "ch440": 261,
+    "ch470": 300,
+    "ch510": 654,
+    "ch550": 914,
+    "ch583": 1112,
+    "ch620": 1371,
+    "ch670": 910
+   },
+   "total": 5606,
+   "t_request_utc": "2026-10-01T01:27:07.701Z",
+   "t_response_utc": "2026-10-01T01:27:09.106Z",
+   "local": "19:27:09",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-2-1790818029106",
+   "channels": {
+    "ch410": 88,
+    "ch440": 272,
+    "ch470": 311,
+    "ch510": 677,
+    "ch550": 950,
+    "ch583": 1164,
+    "ch620": 1426,
+    "ch670": 944
+   },
+   "total": 5832,
+   "t_request_utc": "2026-10-01T01:27:09.106Z",
+   "t_response_utc": "2026-10-01T01:27:10.530Z",
+   "local": "19:27:10",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-3-1790818030530",
+   "channels": {
+    "ch410": 87,
+    "ch440": 270,
+    "ch470": 308,
+    "ch510": 673,
+    "ch550": 946,
+    "ch583": 1157,
+    "ch620": 1417,
+    "ch670": 936
+   },
+   "total": 5794,
+   "t_request_utc": "2026-10-01T01:27:10.530Z",
+   "t_response_utc": "2026-10-01T01:27:11.914Z",
+   "local": "19:27:11",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-4-1790818031914",
+   "channels": {
+    "ch410": 87,
+    "ch440": 270,
+    "ch470": 308,
+    "ch510": 672,
+    "ch550": 942,
+    "ch583": 1152,
+    "ch620": 1411,
+    "ch670": 933
+   },
+   "total": 5775,
+   "t_request_utc": "2026-10-01T01:27:11.914Z",
+   "t_response_utc": "2026-10-01T01:27:13.319Z",
+   "local": "19:27:13",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-5-1790818033319",
+   "channels": {
+    "ch410": 86,
+    "ch440": 269,
+    "ch470": 307,
+    "ch510": 671,
+    "ch550": 942,
+    "ch583": 1150,
+    "ch620": 1408,
+    "ch670": 930
+   },
+   "total": 5763,
+   "t_request_utc": "2026-10-01T01:27:13.319Z",
+   "t_response_utc": "2026-10-01T01:27:14.723Z",
+   "local": "19:27:14",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-6-1790818034723",
+   "channels": {
+    "ch410": 86,
+    "ch440": 269,
+    "ch470": 307,
+    "ch510": 671,
+    "ch550": 941,
+    "ch583": 1149,
+    "ch620": 1405,
+    "ch670": 929
+   },
+   "total": 5757,
+   "t_request_utc": "2026-10-01T01:27:14.723Z",
+   "t_response_utc": "2026-10-01T01:27:16.127Z",
+   "local": "19:27:16",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-7-1790818036127",
+   "channels": {
+    "ch410": 86,
+    "ch440": 268,
+    "ch470": 307,
+    "ch510": 670,
+    "ch550": 941,
+    "ch583": 1148,
+    "ch620": 1404,
+    "ch670": 929
+   },
+   "total": 5753,
+   "t_request_utc": "2026-10-01T01:27:16.127Z",
+   "t_response_utc": "2026-10-01T01:27:17.532Z",
+   "local": "19:27:17",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "well": "H4",
+   "paint": "red",
+   "visit": 2,
+   "experiment_id": "cal-H4-red-2-8-1790818037532",
+   "channels": {
+    "ch410": 86,
+    "ch440": 269,
+    "ch470": 307,
+    "ch510": 670,
+    "ch550": 941,
+    "ch583": 1148,
+    "ch620": 1405,
+    "ch670": 929
+   },
+   "total": 5755,
+   "t_request_utc": "2026-10-01T01:27:17.532Z",
+   "t_response_utc": "2026-10-01T01:27:18.936Z",
+   "local": "19:27:18",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  }
+ ],
+ "ladder": [
+  {
+   "label": "seated",
+   "photo": 0,
+   "experiment_id": "cal-seated-1-1790816757950",
+   "channels": {
+    "ch410": 5,
+    "ch440": 4,
+    "ch470": 11,
+    "ch510": 164,
+    "ch550": 173,
+    "ch583": 40,
+    "ch620": 23,
+    "ch670": 20
+   },
+   "total": 440,
+   "t_request_utc": "2026-10-01T01:05:57.950Z",
+   "t_response_utc": "2026-10-01T01:05:59.474Z",
+   "local": "19:05:59",
+   "nozzle": null
+  },
+  {
+   "label": "seated",
+   "photo": 0,
+   "experiment_id": "cal-seated-2-1790816759474",
+   "channels": {
+    "ch410": 5,
+    "ch440": 4,
+    "ch470": 11,
+    "ch510": 164,
+    "ch550": 173,
+    "ch583": 41,
+    "ch620": 23,
+    "ch670": 20
+   },
+   "total": 441,
+   "t_request_utc": "2026-10-01T01:05:59.474Z",
+   "t_response_utc": "2026-10-01T01:06:00.878Z",
+   "local": "19:06:00",
+   "nozzle": null
+  },
+  {
+   "label": "lifted_z93",
+   "photo": 14,
+   "experiment_id": "cal-lifted_z93-1-1790816977299",
+   "channels": {
+    "ch410": 7,
+    "ch440": 17,
+    "ch470": 25,
+    "ch510": 181,
+    "ch550": 201,
+    "ch583": 75,
+    "ch620": 64,
+    "ch670": 58
+   },
+   "total": 628,
+   "t_request_utc": "2026-10-01T01:09:37.299Z",
+   "t_response_utc": "2026-10-01T01:09:38.724Z",
+   "local": "19:09:38",
+   "nozzle": [
+    36.55,
+    315.5,
+    93.0
+   ]
+  },
+  {
+   "label": "lifted_z93",
+   "photo": 14,
+   "experiment_id": "cal-lifted_z93-2-1790816978724",
+   "channels": {
+    "ch410": 8,
+    "ch440": 18,
+    "ch470": 25,
+    "ch510": 181,
+    "ch550": 201,
+    "ch583": 74,
+    "ch620": 64,
+    "ch670": 58
+   },
+   "total": 629,
+   "t_request_utc": "2026-10-01T01:09:38.724Z",
+   "t_response_utc": "2026-10-01T01:09:40.128Z",
+   "local": "19:09:40",
+   "nozzle": [
+    36.55,
+    315.5,
+    93.0
+   ]
+  },
+  {
+   "label": "up_z110",
+   "photo": 16,
+   "experiment_id": "cal-up_z110-1-1790817063046",
+   "channels": {
+    "ch410": 49,
+    "ch440": 232,
+    "ch470": 218,
+    "ch510": 483,
+    "ch550": 619,
+    "ch583": 565,
+    "ch620": 588,
+    "ch670": 408
+   },
+   "total": 3162,
+   "t_request_utc": "2026-10-01T01:11:03.046Z",
+   "t_response_utc": "2026-10-01T01:11:04.590Z",
+   "local": "19:11:04",
+   "nozzle": [
+    36.55,
+    315.5,
+    110.0
+   ]
+  },
+  {
+   "label": "up_z110",
+   "photo": 16,
+   "experiment_id": "cal-up_z110-2-1790817064591",
+   "channels": {
+    "ch410": 50,
+    "ch440": 238,
+    "ch470": 223,
+    "ch510": 491,
+    "ch550": 625,
+    "ch583": 573,
+    "ch620": 596,
+    "ch670": 414
+   },
+   "total": 3210,
+   "t_request_utc": "2026-10-01T01:11:04.591Z",
+   "t_response_utc": "2026-10-01T01:11:05.995Z",
+   "local": "19:11:05",
+   "nozzle": [
+    36.55,
+    315.5,
+    110.0
+   ]
+  },
+  {
+   "label": "carry_start_z190",
+   "photo": 17,
+   "experiment_id": "cal-carry_start_z190-1-1790817099433",
+   "channels": {
+    "ch410": 155,
+    "ch440": 796,
+    "ch470": 719,
+    "ch510": 1295,
+    "ch550": 1748,
+    "ch583": 1879,
+    "ch620": 1850,
+    "ch670": 1125
+   },
+   "total": 9567,
+   "t_request_utc": "2026-10-01T01:11:39.433Z",
+   "t_response_utc": "2026-10-01T01:11:40.838Z",
+   "local": "19:11:40",
+   "nozzle": [
+    36.55,
+    315.5,
+    190.0
+   ]
+  },
+  {
+   "label": "carry_start_z190",
+   "photo": 17,
+   "experiment_id": "cal-carry_start_z190-2-1790817100838",
+   "channels": {
+    "ch410": 155,
+    "ch440": 796,
+    "ch470": 719,
+    "ch510": 1294,
+    "ch550": 1750,
+    "ch583": 1879,
+    "ch620": 1851,
+    "ch670": 1126
+   },
+   "total": 9570,
+   "t_request_utc": "2026-10-01T01:11:40.838Z",
+   "t_response_utc": "2026-10-01T01:11:42.242Z",
+   "local": "19:11:42",
+   "nozzle": [
+    36.55,
+    315.5,
+    190.0
+   ]
+  },
+  {
+   "label": "over_plate_z125",
+   "photo": 23,
+   "experiment_id": "cal-over_plate_z125-1-1790817254419",
+   "channels": {
+    "ch410": 146,
+    "ch440": 622,
+    "ch470": 612,
+    "ch510": 1195,
+    "ch550": 1669,
+    "ch583": 1871,
+    "ch620": 1935,
+    "ch670": 1228
+   },
+   "total": 9278,
+   "t_request_utc": "2026-10-01T01:14:14.419Z",
+   "t_response_utc": "2026-10-01T01:14:15.844Z",
+   "local": "19:14:15",
+   "nozzle": [
+    68.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "over_plate_z125",
+   "photo": 23,
+   "experiment_id": "cal-over_plate_z125-2-1790817255844",
+   "channels": {
+    "ch410": 146,
+    "ch440": 622,
+    "ch470": 612,
+    "ch510": 1195,
+    "ch550": 1668,
+    "ch583": 1869,
+    "ch620": 1935,
+    "ch670": 1228
+   },
+   "total": 9275,
+   "t_request_utc": "2026-10-01T01:14:15.844Z",
+   "t_response_utc": "2026-10-01T01:14:17.248Z",
+   "local": "19:14:17",
+   "nozzle": [
+    68.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 24,
+   "experiment_id": "cal-z90-1-1790817281489",
+   "channels": {
+    "ch410": 69,
+    "ch440": 209,
+    "ch470": 256,
+    "ch510": 584,
+    "ch550": 823,
+    "ch583": 906,
+    "ch620": 1030,
+    "ch670": 765
+   },
+   "total": 4642,
+   "t_request_utc": "2026-10-01T01:14:41.489Z",
+   "t_response_utc": "2026-10-01T01:14:42.893Z",
+   "local": "19:14:42",
+   "nozzle": [
+    68.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 24,
+   "experiment_id": "cal-z90-2-1790817282893",
+   "channels": {
+    "ch410": 69,
+    "ch440": 209,
+    "ch470": 256,
+    "ch510": 584,
+    "ch550": 824,
+    "ch583": 906,
+    "ch620": 1031,
+    "ch670": 766
+   },
+   "total": 4645,
+   "t_request_utc": "2026-10-01T01:14:42.893Z",
+   "t_response_utc": "2026-10-01T01:14:44.298Z",
+   "local": "19:14:44",
+   "nozzle": [
+    68.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 25,
+   "experiment_id": "cal-z89-1-1790817293593",
+   "channels": {
+    "ch410": 66,
+    "ch440": 193,
+    "ch470": 241,
+    "ch510": 557,
+    "ch550": 785,
+    "ch583": 861,
+    "ch620": 985,
+    "ch670": 741
+   },
+   "total": 4429,
+   "t_request_utc": "2026-10-01T01:14:53.593Z",
+   "t_response_utc": "2026-10-01T01:14:54.997Z",
+   "local": "19:14:54",
+   "nozzle": [
+    68.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 25,
+   "experiment_id": "cal-z89-2-1790817294997",
+   "channels": {
+    "ch410": 66,
+    "ch440": 193,
+    "ch470": 240,
+    "ch510": 556,
+    "ch550": 785,
+    "ch583": 860,
+    "ch620": 985,
+    "ch670": 740
+   },
+   "total": 4425,
+   "t_request_utc": "2026-10-01T01:14:54.997Z",
+   "t_response_utc": "2026-10-01T01:14:56.401Z",
+   "local": "19:14:56",
+   "nozzle": [
+    68.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 26,
+   "experiment_id": "cal-z88-1-1790817304965",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 239,
+    "ch510": 552,
+    "ch550": 777,
+    "ch583": 850,
+    "ch620": 974,
+    "ch670": 732
+   },
+   "total": 4379,
+   "t_request_utc": "2026-10-01T01:15:04.965Z",
+   "t_response_utc": "2026-10-01T01:15:06.389Z",
+   "local": "19:15:06",
+   "nozzle": [
+    68.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 26,
+   "experiment_id": "cal-z88-2-1790817306390",
+   "channels": {
+    "ch410": 65,
+    "ch440": 191,
+    "ch470": 239,
+    "ch510": 552,
+    "ch550": 778,
+    "ch583": 851,
+    "ch620": 976,
+    "ch670": 734
+   },
+   "total": 4386,
+   "t_request_utc": "2026-10-01T01:15:06.390Z",
+   "t_response_utc": "2026-10-01T01:15:07.794Z",
+   "local": "19:15:07",
+   "nozzle": [
+    68.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 27,
+   "experiment_id": "cal-z87-1-1790817316133",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 238,
+    "ch510": 551,
+    "ch550": 772,
+    "ch583": 842,
+    "ch620": 966,
+    "ch670": 726
+   },
+   "total": 4350,
+   "t_request_utc": "2026-10-01T01:15:16.133Z",
+   "t_response_utc": "2026-10-01T01:15:17.558Z",
+   "local": "19:15:17",
+   "nozzle": [
+    68.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 27,
+   "experiment_id": "cal-z87-2-1790817317558",
+   "channels": {
+    "ch410": 65,
+    "ch440": 190,
+    "ch470": 237,
+    "ch510": 550,
+    "ch550": 774,
+    "ch583": 845,
+    "ch620": 969,
+    "ch670": 729
+   },
+   "total": 4359,
+   "t_request_utc": "2026-10-01T01:15:17.558Z",
+   "t_response_utc": "2026-10-01T01:15:18.942Z",
+   "local": "19:15:18",
+   "nozzle": [
+    68.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 28,
+   "experiment_id": "cal-z86.5-1-1790817327656",
+   "channels": {
+    "ch410": 65,
+    "ch440": 189,
+    "ch470": 237,
+    "ch510": 550,
+    "ch550": 772,
+    "ch583": 844,
+    "ch620": 968,
+    "ch670": 728
+   },
+   "total": 4353,
+   "t_request_utc": "2026-10-01T01:15:27.656Z",
+   "t_response_utc": "2026-10-01T01:15:29.060Z",
+   "local": "19:15:29",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 28,
+   "experiment_id": "cal-z86.5-2-1790817329061",
+   "channels": {
+    "ch410": 65,
+    "ch440": 189,
+    "ch470": 236,
+    "ch510": 549,
+    "ch550": 771,
+    "ch583": 841,
+    "ch620": 964,
+    "ch670": 725
+   },
+   "total": 4340,
+   "t_request_utc": "2026-10-01T01:15:29.061Z",
+   "t_response_utc": "2026-10-01T01:15:30.465Z",
+   "local": "19:15:30",
+   "nozzle": [
+    68.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 29,
+   "experiment_id": "cal-z125-1-1790817373630",
+   "channels": {
+    "ch410": 145,
+    "ch440": 615,
+    "ch470": 608,
+    "ch510": 1187,
+    "ch550": 1657,
+    "ch583": 1856,
+    "ch620": 1924,
+    "ch670": 1223
+   },
+   "total": 9215,
+   "t_request_utc": "2026-10-01T01:16:13.630Z",
+   "t_response_utc": "2026-10-01T01:16:15.015Z",
+   "local": "19:16:15",
+   "nozzle": [
+    68.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 29,
+   "experiment_id": "cal-z125-2-1790817375015",
+   "channels": {
+    "ch410": 145,
+    "ch440": 615,
+    "ch470": 607,
+    "ch510": 1186,
+    "ch550": 1656,
+    "ch583": 1855,
+    "ch620": 1922,
+    "ch670": 1223
+   },
+   "total": 9209,
+   "t_request_utc": "2026-10-01T01:16:15.015Z",
+   "t_response_utc": "2026-10-01T01:16:16.439Z",
+   "local": "19:16:16",
+   "nozzle": [
+    68.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy113.38_11.24",
+   "photo": 30,
+   "experiment_id": "cal-xy113.38_11.24-1-1790817397515",
+   "channels": {
+    "ch410": 185,
+    "ch440": 841,
+    "ch470": 788,
+    "ch510": 1504,
+    "ch550": 2087,
+    "ch583": 2339,
+    "ch620": 2339,
+    "ch670": 1416
+   },
+   "total": 11499,
+   "t_request_utc": "2026-10-01T01:16:37.515Z",
+   "t_response_utc": "2026-10-01T01:16:38.919Z",
+   "local": "19:16:38",
+   "nozzle": [
+    113.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy113.38_11.24",
+   "photo": 30,
+   "experiment_id": "cal-xy113.38_11.24-2-1790817398920",
+   "channels": {
+    "ch410": 185,
+    "ch440": 840,
+    "ch470": 788,
+    "ch510": 1504,
+    "ch550": 2084,
+    "ch583": 2337,
+    "ch620": 2336,
+    "ch670": 1414
+   },
+   "total": 11488,
+   "t_request_utc": "2026-10-01T01:16:38.920Z",
+   "t_response_utc": "2026-10-01T01:16:40.324Z",
+   "local": "19:16:40",
+   "nozzle": [
+    113.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 31,
+   "experiment_id": "cal-z90-1-1790817420618",
+   "channels": {
+    "ch410": 117,
+    "ch440": 443,
+    "ch470": 469,
+    "ch510": 983,
+    "ch550": 1374,
+    "ch583": 1535,
+    "ch620": 1616,
+    "ch670": 1064
+   },
+   "total": 7601,
+   "t_request_utc": "2026-10-01T01:17:00.618Z",
+   "t_response_utc": "2026-10-01T01:17:02.022Z",
+   "local": "19:17:02",
+   "nozzle": [
+    113.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 31,
+   "experiment_id": "cal-z90-2-1790817422022",
+   "channels": {
+    "ch410": 117,
+    "ch440": 443,
+    "ch470": 469,
+    "ch510": 983,
+    "ch550": 1374,
+    "ch583": 1534,
+    "ch620": 1617,
+    "ch670": 1064
+   },
+   "total": 7601,
+   "t_request_utc": "2026-10-01T01:17:02.022Z",
+   "t_response_utc": "2026-10-01T01:17:03.427Z",
+   "local": "19:17:03",
+   "nozzle": [
+    113.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 32,
+   "experiment_id": "cal-z89-1-1790817432674",
+   "channels": {
+    "ch410": 108,
+    "ch440": 386,
+    "ch470": 424,
+    "ch510": 909,
+    "ch550": 1274,
+    "ch583": 1423,
+    "ch620": 1518,
+    "ch670": 1018
+   },
+   "total": 7060,
+   "t_request_utc": "2026-10-01T01:17:12.674Z",
+   "t_response_utc": "2026-10-01T01:17:14.098Z",
+   "local": "19:17:14",
+   "nozzle": [
+    113.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 32,
+   "experiment_id": "cal-z89-2-1790817434098",
+   "channels": {
+    "ch410": 108,
+    "ch440": 386,
+    "ch470": 424,
+    "ch510": 909,
+    "ch550": 1275,
+    "ch583": 1424,
+    "ch620": 1519,
+    "ch670": 1018
+   },
+   "total": 7063,
+   "t_request_utc": "2026-10-01T01:17:14.098Z",
+   "t_response_utc": "2026-10-01T01:17:15.503Z",
+   "local": "19:17:15",
+   "nozzle": [
+    113.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 33,
+   "experiment_id": "cal-z88-1-1790817444293",
+   "channels": {
+    "ch410": 104,
+    "ch440": 365,
+    "ch470": 407,
+    "ch510": 881,
+    "ch550": 1236,
+    "ch583": 1379,
+    "ch620": 1477,
+    "ch670": 997
+   },
+   "total": 6846,
+   "t_request_utc": "2026-10-01T01:17:24.293Z",
+   "t_response_utc": "2026-10-01T01:17:25.698Z",
+   "local": "19:17:25",
+   "nozzle": [
+    113.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 33,
+   "experiment_id": "cal-z88-2-1790817445698",
+   "channels": {
+    "ch410": 104,
+    "ch440": 365,
+    "ch470": 407,
+    "ch510": 882,
+    "ch550": 1238,
+    "ch583": 1381,
+    "ch620": 1479,
+    "ch670": 1000
+   },
+   "total": 6856,
+   "t_request_utc": "2026-10-01T01:17:25.698Z",
+   "t_response_utc": "2026-10-01T01:17:27.082Z",
+   "local": "19:17:27",
+   "nozzle": [
+    113.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 34,
+   "experiment_id": "cal-z87-1-1790817455442",
+   "channels": {
+    "ch410": 103,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 877,
+    "ch550": 1230,
+    "ch583": 1371,
+    "ch620": 1469,
+    "ch670": 992
+   },
+   "total": 6808,
+   "t_request_utc": "2026-10-01T01:17:35.442Z",
+   "t_response_utc": "2026-10-01T01:17:36.867Z",
+   "local": "19:17:36",
+   "nozzle": [
+    113.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 34,
+   "experiment_id": "cal-z87-2-1790817456867",
+   "channels": {
+    "ch410": 103,
+    "ch440": 361,
+    "ch470": 404,
+    "ch510": 877,
+    "ch550": 1230,
+    "ch583": 1371,
+    "ch620": 1470,
+    "ch670": 993
+   },
+   "total": 6809,
+   "t_request_utc": "2026-10-01T01:17:36.867Z",
+   "t_response_utc": "2026-10-01T01:17:38.271Z",
+   "local": "19:17:38",
+   "nozzle": [
+    113.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 35,
+   "experiment_id": "cal-z86.5-1-1790817466312",
+   "channels": {
+    "ch410": 103,
+    "ch440": 361,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1231,
+    "ch583": 1371,
+    "ch620": 1469,
+    "ch670": 992
+   },
+   "total": 6809,
+   "t_request_utc": "2026-10-01T01:17:46.312Z",
+   "t_response_utc": "2026-10-01T01:17:47.736Z",
+   "local": "19:17:47",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 35,
+   "experiment_id": "cal-z86.5-2-1790817467736",
+   "channels": {
+    "ch410": 104,
+    "ch440": 362,
+    "ch470": 404,
+    "ch510": 878,
+    "ch550": 1230,
+    "ch583": 1370,
+    "ch620": 1469,
+    "ch670": 992
+   },
+   "total": 6809,
+   "t_request_utc": "2026-10-01T01:17:47.736Z",
+   "t_response_utc": "2026-10-01T01:17:49.141Z",
+   "local": "19:17:49",
+   "nozzle": [
+    113.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 36,
+   "experiment_id": "cal-z125-1-1790817516372",
+   "channels": {
+    "ch410": 185,
+    "ch440": 838,
+    "ch470": 787,
+    "ch510": 1505,
+    "ch550": 2087,
+    "ch583": 2339,
+    "ch620": 2338,
+    "ch670": 1416
+   },
+   "total": 11495,
+   "t_request_utc": "2026-10-01T01:18:36.372Z",
+   "t_response_utc": "2026-10-01T01:18:37.796Z",
+   "local": "19:18:37",
+   "nozzle": [
+    113.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 36,
+   "experiment_id": "cal-z125-2-1790817517796",
+   "channels": {
+    "ch410": 185,
+    "ch440": 837,
+    "ch470": 786,
+    "ch510": 1504,
+    "ch550": 2087,
+    "ch583": 2340,
+    "ch620": 2337,
+    "ch670": 1416
+   },
+   "total": 11492,
+   "t_request_utc": "2026-10-01T01:18:37.796Z",
+   "t_response_utc": "2026-10-01T01:18:39.281Z",
+   "local": "19:18:39",
+   "nozzle": [
+    113.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy95.38_11.24",
+   "photo": 37,
+   "experiment_id": "cal-xy95.38_11.24-1-1790817531271",
+   "channels": {
+    "ch410": 161,
+    "ch440": 716,
+    "ch470": 681,
+    "ch510": 1296,
+    "ch550": 1791,
+    "ch583": 2007,
+    "ch620": 2055,
+    "ch670": 1294
+   },
+   "total": 10001,
+   "t_request_utc": "2026-10-01T01:18:51.271Z",
+   "t_response_utc": "2026-10-01T01:18:52.696Z",
+   "local": "19:18:52",
+   "nozzle": [
+    95.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy95.38_11.24",
+   "photo": 37,
+   "experiment_id": "cal-xy95.38_11.24-2-1790817532696",
+   "channels": {
+    "ch410": 160,
+    "ch440": 716,
+    "ch470": 681,
+    "ch510": 1295,
+    "ch550": 1792,
+    "ch583": 2006,
+    "ch620": 2056,
+    "ch670": 1294
+   },
+   "total": 10000,
+   "t_request_utc": "2026-10-01T01:18:52.696Z",
+   "t_response_utc": "2026-10-01T01:18:54.100Z",
+   "local": "19:18:54",
+   "nozzle": [
+    95.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 38,
+   "experiment_id": "cal-z90-1-1790817556279",
+   "channels": {
+    "ch410": 92,
+    "ch440": 375,
+    "ch470": 385,
+    "ch510": 764,
+    "ch550": 1049,
+    "ch583": 1151,
+    "ch620": 1261,
+    "ch670": 886
+   },
+   "total": 5963,
+   "t_request_utc": "2026-10-01T01:19:16.279Z",
+   "t_response_utc": "2026-10-01T01:19:17.683Z",
+   "local": "19:19:17",
+   "nozzle": [
+    95.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 38,
+   "experiment_id": "cal-z90-2-1790817557683",
+   "channels": {
+    "ch410": 92,
+    "ch440": 373,
+    "ch470": 385,
+    "ch510": 762,
+    "ch550": 1035,
+    "ch583": 1137,
+    "ch620": 1254,
+    "ch670": 884
+   },
+   "total": 5922,
+   "t_request_utc": "2026-10-01T01:19:17.683Z",
+   "t_response_utc": "2026-10-01T01:19:19.088Z",
+   "local": "19:19:19",
+   "nozzle": [
+    95.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 39,
+   "experiment_id": "cal-z89-1-1790817567375",
+   "channels": {
+    "ch410": 76,
+    "ch440": 306,
+    "ch470": 321,
+    "ch510": 643,
+    "ch550": 861,
+    "ch583": 921,
+    "ch620": 1037,
+    "ch670": 749
+   },
+   "total": 4914,
+   "t_request_utc": "2026-10-01T01:19:27.375Z",
+   "t_response_utc": "2026-10-01T01:19:28.780Z",
+   "local": "19:19:28",
+   "nozzle": [
+    95.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 39,
+   "experiment_id": "cal-z89-2-1790817568780",
+   "channels": {
+    "ch410": 76,
+    "ch440": 308,
+    "ch470": 324,
+    "ch510": 648,
+    "ch550": 883,
+    "ch583": 948,
+    "ch620": 1063,
+    "ch670": 761
+   },
+   "total": 5011,
+   "t_request_utc": "2026-10-01T01:19:28.780Z",
+   "t_response_utc": "2026-10-01T01:19:30.204Z",
+   "local": "19:19:30",
+   "nozzle": [
+    95.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 40,
+   "experiment_id": "cal-z88-1-1790817578473",
+   "channels": {
+    "ch410": 81,
+    "ch440": 320,
+    "ch470": 340,
+    "ch510": 681,
+    "ch550": 924,
+    "ch583": 1004,
+    "ch620": 1124,
+    "ch670": 816
+   },
+   "total": 5290,
+   "t_request_utc": "2026-10-01T01:19:38.473Z",
+   "t_response_utc": "2026-10-01T01:19:39.898Z",
+   "local": "19:19:39",
+   "nozzle": [
+    95.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 40,
+   "experiment_id": "cal-z88-2-1790817579898",
+   "channels": {
+    "ch410": 81,
+    "ch440": 320,
+    "ch470": 340,
+    "ch510": 681,
+    "ch550": 930,
+    "ch583": 1014,
+    "ch620": 1136,
+    "ch670": 825
+   },
+   "total": 5327,
+   "t_request_utc": "2026-10-01T01:19:39.898Z",
+   "t_response_utc": "2026-10-01T01:19:41.322Z",
+   "local": "19:19:41",
+   "nozzle": [
+    95.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 41,
+   "experiment_id": "cal-z87-1-1790817590790",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 661,
+    "ch550": 896,
+    "ch583": 971,
+    "ch620": 1091,
+    "ch670": 796
+   },
+   "total": 5126,
+   "t_request_utc": "2026-10-01T01:19:50.790Z",
+   "t_response_utc": "2026-10-01T01:19:52.194Z",
+   "local": "19:19:52",
+   "nozzle": [
+    95.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 41,
+   "experiment_id": "cal-z87-2-1790817592194",
+   "channels": {
+    "ch410": 79,
+    "ch440": 304,
+    "ch470": 327,
+    "ch510": 661,
+    "ch550": 894,
+    "ch583": 969,
+    "ch620": 1089,
+    "ch670": 795
+   },
+   "total": 5118,
+   "t_request_utc": "2026-10-01T01:19:52.194Z",
+   "t_response_utc": "2026-10-01T01:19:53.579Z",
+   "local": "19:19:53",
+   "nozzle": [
+    95.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 42,
+   "experiment_id": "cal-z86.5-1-1790817602151",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 327,
+    "ch510": 662,
+    "ch550": 898,
+    "ch583": 974,
+    "ch620": 1096,
+    "ch670": 800
+   },
+   "total": 5141,
+   "t_request_utc": "2026-10-01T01:20:02.151Z",
+   "t_response_utc": "2026-10-01T01:20:03.575Z",
+   "local": "19:20:03",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 42,
+   "experiment_id": "cal-z86.5-2-1790817603575",
+   "channels": {
+    "ch410": 79,
+    "ch440": 305,
+    "ch470": 328,
+    "ch510": 663,
+    "ch550": 897,
+    "ch583": 972,
+    "ch620": 1094,
+    "ch670": 799
+   },
+   "total": 5137,
+   "t_request_utc": "2026-10-01T01:20:03.575Z",
+   "t_response_utc": "2026-10-01T01:20:04.980Z",
+   "local": "19:20:04",
+   "nozzle": [
+    95.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 43,
+   "experiment_id": "cal-z125-1-1790817648074",
+   "channels": {
+    "ch410": 161,
+    "ch440": 717,
+    "ch470": 682,
+    "ch510": 1300,
+    "ch550": 1799,
+    "ch583": 2018,
+    "ch620": 2067,
+    "ch670": 1302
+   },
+   "total": 10046,
+   "t_request_utc": "2026-10-01T01:20:48.074Z",
+   "t_response_utc": "2026-10-01T01:20:49.499Z",
+   "local": "19:20:49",
+   "nozzle": [
+    95.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 43,
+   "experiment_id": "cal-z125-2-1790817649499",
+   "channels": {
+    "ch410": 161,
+    "ch440": 717,
+    "ch470": 682,
+    "ch510": 1300,
+    "ch550": 1799,
+    "ch583": 2017,
+    "ch620": 2067,
+    "ch670": 1302
+   },
+   "total": 10045,
+   "t_request_utc": "2026-10-01T01:20:49.499Z",
+   "t_response_utc": "2026-10-01T01:20:50.923Z",
+   "local": "19:20:50",
+   "nozzle": [
+    95.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy41.38_11.24",
+   "photo": 44,
+   "experiment_id": "cal-xy41.38_11.24-1-1790817675221",
+   "channels": {
+    "ch410": 146,
+    "ch440": 605,
+    "ch470": 595,
+    "ch510": 1169,
+    "ch550": 1636,
+    "ch583": 1900,
+    "ch620": 2021,
+    "ch670": 1241
+   },
+   "total": 9313,
+   "t_request_utc": "2026-10-01T01:21:15.221Z",
+   "t_response_utc": "2026-10-01T01:21:16.645Z",
+   "local": "19:21:16",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy41.38_11.24",
+   "photo": 44,
+   "experiment_id": "cal-xy41.38_11.24-2-1790817676646",
+   "channels": {
+    "ch410": 146,
+    "ch440": 605,
+    "ch470": 594,
+    "ch510": 1169,
+    "ch550": 1634,
+    "ch583": 1896,
+    "ch620": 2016,
+    "ch670": 1239
+   },
+   "total": 9299,
+   "t_request_utc": "2026-10-01T01:21:16.646Z",
+   "t_response_utc": "2026-10-01T01:21:18.050Z",
+   "local": "19:21:18",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 45,
+   "experiment_id": "cal-z90-1-1790817697676",
+   "channels": {
+    "ch410": 89,
+    "ch440": 290,
+    "ch470": 326,
+    "ch510": 699,
+    "ch550": 982,
+    "ch583": 1193,
+    "ch620": 1434,
+    "ch670": 939
+   },
+   "total": 5952,
+   "t_request_utc": "2026-10-01T01:21:37.676Z",
+   "t_response_utc": "2026-10-01T01:21:39.081Z",
+   "local": "19:21:39",
+   "nozzle": [
+    41.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 45,
+   "experiment_id": "cal-z90-2-1790817699081",
+   "channels": {
+    "ch410": 91,
+    "ch440": 293,
+    "ch470": 329,
+    "ch510": 706,
+    "ch550": 995,
+    "ch583": 1215,
+    "ch620": 1466,
+    "ch670": 959
+   },
+   "total": 6054,
+   "t_request_utc": "2026-10-01T01:21:39.081Z",
+   "t_response_utc": "2026-10-01T01:21:40.545Z",
+   "local": "19:21:40",
+   "nozzle": [
+    41.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 46,
+   "experiment_id": "cal-z89-1-1790817708898",
+   "channels": {
+    "ch410": 80,
+    "ch440": 244,
+    "ch470": 285,
+    "ch510": 622,
+    "ch550": 867,
+    "ch583": 1063,
+    "ch620": 1348,
+    "ch670": 893
+   },
+   "total": 5402,
+   "t_request_utc": "2026-10-01T01:21:48.898Z",
+   "t_response_utc": "2026-10-01T01:21:50.302Z",
+   "local": "19:21:50",
+   "nozzle": [
+    41.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 46,
+   "experiment_id": "cal-z89-2-1790817710303",
+   "channels": {
+    "ch410": 80,
+    "ch440": 244,
+    "ch470": 285,
+    "ch510": 622,
+    "ch550": 867,
+    "ch583": 1063,
+    "ch620": 1349,
+    "ch670": 892
+   },
+   "total": 5402,
+   "t_request_utc": "2026-10-01T01:21:50.303Z",
+   "t_response_utc": "2026-10-01T01:21:51.707Z",
+   "local": "19:21:51",
+   "nozzle": [
+    41.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 47,
+   "experiment_id": "cal-z88-1-1790817720024",
+   "channels": {
+    "ch410": 83,
+    "ch440": 247,
+    "ch470": 291,
+    "ch510": 635,
+    "ch550": 892,
+    "ch583": 1108,
+    "ch620": 1416,
+    "ch670": 945
+   },
+   "total": 5617,
+   "t_request_utc": "2026-10-01T01:22:00.024Z",
+   "t_response_utc": "2026-10-01T01:22:01.569Z",
+   "local": "19:22:01",
+   "nozzle": [
+    41.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 47,
+   "experiment_id": "cal-z88-2-1790817721569",
+   "channels": {
+    "ch410": 87,
+    "ch440": 259,
+    "ch470": 301,
+    "ch510": 661,
+    "ch550": 927,
+    "ch583": 1155,
+    "ch620": 1459,
+    "ch670": 965
+   },
+   "total": 5814,
+   "t_request_utc": "2026-10-01T01:22:01.569Z",
+   "t_response_utc": "2026-10-01T01:22:02.973Z",
+   "local": "19:22:02",
+   "nozzle": [
+    41.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 48,
+   "experiment_id": "cal-z87-1-1790817731293",
+   "channels": {
+    "ch410": 82,
+    "ch440": 238,
+    "ch470": 282,
+    "ch510": 624,
+    "ch550": 881,
+    "ch583": 1093,
+    "ch620": 1397,
+    "ch670": 930
+   },
+   "total": 5527,
+   "t_request_utc": "2026-10-01T01:22:11.293Z",
+   "t_response_utc": "2026-10-01T01:22:12.697Z",
+   "local": "19:22:12",
+   "nozzle": [
+    41.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 48,
+   "experiment_id": "cal-z87-2-1790817732697",
+   "channels": {
+    "ch410": 81,
+    "ch440": 237,
+    "ch470": 280,
+    "ch510": 622,
+    "ch550": 882,
+    "ch583": 1095,
+    "ch620": 1399,
+    "ch670": 932
+   },
+   "total": 5528,
+   "t_request_utc": "2026-10-01T01:22:12.697Z",
+   "t_response_utc": "2026-10-01T01:22:14.101Z",
+   "local": "19:22:14",
+   "nozzle": [
+    41.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 49,
+   "experiment_id": "cal-z86.5-1-1790817742222",
+   "channels": {
+    "ch410": 82,
+    "ch440": 239,
+    "ch470": 283,
+    "ch510": 628,
+    "ch550": 877,
+    "ch583": 1086,
+    "ch620": 1389,
+    "ch670": 926
+   },
+   "total": 5510,
+   "t_request_utc": "2026-10-01T01:22:22.222Z",
+   "t_response_utc": "2026-10-01T01:22:23.667Z",
+   "local": "19:22:23",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 49,
+   "experiment_id": "cal-z86.5-2-1790817743667",
+   "channels": {
+    "ch410": 82,
+    "ch440": 239,
+    "ch470": 282,
+    "ch510": 626,
+    "ch550": 879,
+    "ch583": 1090,
+    "ch620": 1393,
+    "ch670": 928
+   },
+   "total": 5519,
+   "t_request_utc": "2026-10-01T01:22:23.667Z",
+   "t_response_utc": "2026-10-01T01:22:25.091Z",
+   "local": "19:22:25",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 50,
+   "experiment_id": "cal-z125-1-1790817788655",
+   "channels": {
+    "ch410": 145,
+    "ch440": 601,
+    "ch470": 591,
+    "ch510": 1164,
+    "ch550": 1628,
+    "ch583": 1888,
+    "ch620": 2007,
+    "ch670": 1233
+   },
+   "total": 9257,
+   "t_request_utc": "2026-10-01T01:23:08.655Z",
+   "t_response_utc": "2026-10-01T01:23:10.060Z",
+   "local": "19:23:10",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 50,
+   "experiment_id": "cal-z125-2-1790817790060",
+   "channels": {
+    "ch410": 146,
+    "ch440": 602,
+    "ch470": 593,
+    "ch510": 1166,
+    "ch550": 1630,
+    "ch583": 1893,
+    "ch620": 2011,
+    "ch670": 1235
+   },
+   "total": 9276,
+   "t_request_utc": "2026-10-01T01:23:10.060Z",
+   "t_response_utc": "2026-10-01T01:23:11.464Z",
+   "local": "19:23:11",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy23.38_11.24",
+   "photo": 51,
+   "experiment_id": "cal-xy23.38_11.24-1-1790817803334",
+   "channels": {
+    "ch410": 146,
+    "ch440": 585,
+    "ch470": 589,
+    "ch510": 1214,
+    "ch550": 1713,
+    "ch583": 1925,
+    "ch620": 1992,
+    "ch670": 1224
+   },
+   "total": 9388,
+   "t_request_utc": "2026-10-01T01:23:23.334Z",
+   "t_response_utc": "2026-10-01T01:23:24.739Z",
+   "local": "19:23:24",
+   "nozzle": [
+    23.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy23.38_11.24",
+   "photo": 51,
+   "experiment_id": "cal-xy23.38_11.24-2-1790817804739",
+   "channels": {
+    "ch410": 146,
+    "ch440": 586,
+    "ch470": 591,
+    "ch510": 1215,
+    "ch550": 1710,
+    "ch583": 1922,
+    "ch620": 1990,
+    "ch670": 1224
+   },
+   "total": 9384,
+   "t_request_utc": "2026-10-01T01:23:24.739Z",
+   "t_response_utc": "2026-10-01T01:23:26.143Z",
+   "local": "19:23:26",
+   "nozzle": [
+    23.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 52,
+   "experiment_id": "cal-z90-1-1790817825700",
+   "channels": {
+    "ch410": 101,
+    "ch440": 295,
+    "ch470": 349,
+    "ch510": 867,
+    "ch550": 1258,
+    "ch583": 1407,
+    "ch620": 1521,
+    "ch670": 984
+   },
+   "total": 6782,
+   "t_request_utc": "2026-10-01T01:23:45.700Z",
+   "t_response_utc": "2026-10-01T01:23:47.145Z",
+   "local": "19:23:47",
+   "nozzle": [
+    23.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 52,
+   "experiment_id": "cal-z90-2-1790817827145",
+   "channels": {
+    "ch410": 100,
+    "ch440": 292,
+    "ch470": 345,
+    "ch510": 857,
+    "ch550": 1224,
+    "ch583": 1365,
+    "ch620": 1478,
+    "ch670": 959
+   },
+   "total": 6620,
+   "t_request_utc": "2026-10-01T01:23:47.145Z",
+   "t_response_utc": "2026-10-01T01:23:48.549Z",
+   "local": "19:23:48",
+   "nozzle": [
+    23.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 53,
+   "experiment_id": "cal-z89-1-1790817836744",
+   "channels": {
+    "ch410": 90,
+    "ch440": 247,
+    "ch470": 305,
+    "ch510": 790,
+    "ch550": 1165,
+    "ch583": 1296,
+    "ch620": 1417,
+    "ch670": 921
+   },
+   "total": 6231,
+   "t_request_utc": "2026-10-01T01:23:56.744Z",
+   "t_response_utc": "2026-10-01T01:23:58.129Z",
+   "local": "19:23:58",
+   "nozzle": [
+    23.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 53,
+   "experiment_id": "cal-z89-2-1790817838129",
+   "channels": {
+    "ch410": 90,
+    "ch440": 247,
+    "ch470": 305,
+    "ch510": 789,
+    "ch550": 1167,
+    "ch583": 1298,
+    "ch620": 1418,
+    "ch670": 920
+   },
+   "total": 6234,
+   "t_request_utc": "2026-10-01T01:23:58.129Z",
+   "t_response_utc": "2026-10-01T01:23:59.593Z",
+   "local": "19:23:59",
+   "nozzle": [
+    23.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 54,
+   "experiment_id": "cal-z88-1-1790817849339",
+   "channels": {
+    "ch410": 88,
+    "ch440": 236,
+    "ch470": 294,
+    "ch510": 767,
+    "ch550": 1175,
+    "ch583": 1309,
+    "ch620": 1425,
+    "ch670": 928
+   },
+   "total": 6222,
+   "t_request_utc": "2026-10-01T01:24:09.339Z",
+   "t_response_utc": "2026-10-01T01:24:10.743Z",
+   "local": "19:24:10",
+   "nozzle": [
+    23.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 54,
+   "experiment_id": "cal-z88-2-1790817850743",
+   "channels": {
+    "ch410": 94,
+    "ch440": 251,
+    "ch470": 312,
+    "ch510": 817,
+    "ch550": 1220,
+    "ch583": 1365,
+    "ch620": 1480,
+    "ch670": 960
+   },
+   "total": 6499,
+   "t_request_utc": "2026-10-01T01:24:10.743Z",
+   "t_response_utc": "2026-10-01T01:24:12.147Z",
+   "local": "19:24:12",
+   "nozzle": [
+    23.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 55,
+   "experiment_id": "cal-z87-1-1790817860465",
+   "channels": {
+    "ch410": 92,
+    "ch440": 236,
+    "ch470": 297,
+    "ch510": 791,
+    "ch550": 1196,
+    "ch583": 1341,
+    "ch620": 1461,
+    "ch670": 951
+   },
+   "total": 6365,
+   "t_request_utc": "2026-10-01T01:24:20.465Z",
+   "t_response_utc": "2026-10-01T01:24:21.869Z",
+   "local": "19:24:21",
+   "nozzle": [
+    23.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 55,
+   "experiment_id": "cal-z87-2-1790817861869",
+   "channels": {
+    "ch410": 92,
+    "ch440": 237,
+    "ch470": 298,
+    "ch510": 795,
+    "ch550": 1199,
+    "ch583": 1344,
+    "ch620": 1464,
+    "ch670": 953
+   },
+   "total": 6382,
+   "t_request_utc": "2026-10-01T01:24:21.869Z",
+   "t_response_utc": "2026-10-01T01:24:23.274Z",
+   "local": "19:24:23",
+   "nozzle": [
+    23.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 56,
+   "experiment_id": "cal-z86.5-1-1790817871270",
+   "channels": {
+    "ch410": 94,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1216,
+    "ch583": 1367,
+    "ch620": 1487,
+    "ch670": 965
+   },
+   "total": 6471,
+   "t_request_utc": "2026-10-01T01:24:31.270Z",
+   "t_response_utc": "2026-10-01T01:24:32.674Z",
+   "local": "19:24:32",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 56,
+   "experiment_id": "cal-z86.5-2-1790817872675",
+   "channels": {
+    "ch410": 93,
+    "ch440": 239,
+    "ch470": 300,
+    "ch510": 803,
+    "ch550": 1217,
+    "ch583": 1367,
+    "ch620": 1487,
+    "ch670": 965
+   },
+   "total": 6471,
+   "t_request_utc": "2026-10-01T01:24:32.675Z",
+   "t_response_utc": "2026-10-01T01:24:34.079Z",
+   "local": "19:24:34",
+   "nozzle": [
+    23.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 57,
+   "experiment_id": "cal-z125-1-1790817940066",
+   "channels": {
+    "ch410": 146,
+    "ch440": 587,
+    "ch470": 591,
+    "ch510": 1219,
+    "ch550": 1717,
+    "ch583": 1932,
+    "ch620": 2000,
+    "ch670": 1229
+   },
+   "total": 9421,
+   "t_request_utc": "2026-10-01T01:25:40.066Z",
+   "t_response_utc": "2026-10-01T01:25:41.531Z",
+   "local": "19:25:41",
+   "nozzle": [
+    23.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z125",
+   "photo": 57,
+   "experiment_id": "cal-z125-2-1790817941531",
+   "channels": {
+    "ch410": 146,
+    "ch440": 587,
+    "ch470": 591,
+    "ch510": 1219,
+    "ch550": 1719,
+    "ch583": 1934,
+    "ch620": 2000,
+    "ch670": 1230
+   },
+   "total": 9426,
+   "t_request_utc": "2026-10-01T01:25:41.531Z",
+   "t_response_utc": "2026-10-01T01:25:42.955Z",
+   "local": "19:25:42",
+   "nozzle": [
+    23.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy41.38_11.24",
+   "photo": 58,
+   "experiment_id": "cal-xy41.38_11.24-1-1790817954888",
+   "channels": {
+    "ch410": 146,
+    "ch440": 602,
+    "ch470": 594,
+    "ch510": 1167,
+    "ch550": 1634,
+    "ch583": 1896,
+    "ch620": 2014,
+    "ch670": 1237
+   },
+   "total": 9290,
+   "t_request_utc": "2026-10-01T01:25:54.888Z",
+   "t_response_utc": "2026-10-01T01:25:56.292Z",
+   "local": "19:25:56",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "xy41.38_11.24",
+   "photo": 58,
+   "experiment_id": "cal-xy41.38_11.24-2-1790817956293",
+   "channels": {
+    "ch410": 146,
+    "ch440": 602,
+    "ch470": 593,
+    "ch510": 1168,
+    "ch550": 1634,
+    "ch583": 1896,
+    "ch620": 2015,
+    "ch670": 1237
+   },
+   "total": 9291,
+   "t_request_utc": "2026-10-01T01:25:56.293Z",
+   "t_response_utc": "2026-10-01T01:25:57.717Z",
+   "local": "19:25:57",
+   "nozzle": [
+    41.38,
+    11.24,
+    125.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 59,
+   "experiment_id": "cal-z90-1-1790817977349",
+   "channels": {
+    "ch410": 95,
+    "ch440": 306,
+    "ch470": 342,
+    "ch510": 735,
+    "ch550": 1039,
+    "ch583": 1281,
+    "ch620": 1544,
+    "ch670": 1006
+   },
+   "total": 6348,
+   "t_request_utc": "2026-10-01T01:26:17.349Z",
+   "t_response_utc": "2026-10-01T01:26:18.753Z",
+   "local": "19:26:18",
+   "nozzle": [
+    41.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z90",
+   "photo": 59,
+   "experiment_id": "cal-z90-2-1790817978754",
+   "channels": {
+    "ch410": 95,
+    "ch440": 306,
+    "ch470": 343,
+    "ch510": 735,
+    "ch550": 1039,
+    "ch583": 1281,
+    "ch620": 1544,
+    "ch670": 1006
+   },
+   "total": 6349,
+   "t_request_utc": "2026-10-01T01:26:18.754Z",
+   "t_response_utc": "2026-10-01T01:26:20.158Z",
+   "local": "19:26:20",
+   "nozzle": [
+    41.38,
+    11.24,
+    90.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 60,
+   "experiment_id": "cal-z89-1-1790817988861",
+   "channels": {
+    "ch410": 93,
+    "ch440": 293,
+    "ch470": 330,
+    "ch510": 715,
+    "ch550": 1009,
+    "ch583": 1246,
+    "ch620": 1517,
+    "ch670": 994
+   },
+   "total": 6197,
+   "t_request_utc": "2026-10-01T01:26:28.861Z",
+   "t_response_utc": "2026-10-01T01:26:30.245Z",
+   "local": "19:26:30",
+   "nozzle": [
+    41.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z89",
+   "photo": 60,
+   "experiment_id": "cal-z89-2-1790817990245",
+   "channels": {
+    "ch410": 93,
+    "ch440": 292,
+    "ch470": 330,
+    "ch510": 714,
+    "ch550": 1009,
+    "ch583": 1247,
+    "ch620": 1517,
+    "ch670": 993
+   },
+   "total": 6195,
+   "t_request_utc": "2026-10-01T01:26:30.245Z",
+   "t_response_utc": "2026-10-01T01:26:31.650Z",
+   "local": "19:26:31",
+   "nozzle": [
+    41.38,
+    11.24,
+    89.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 61,
+   "experiment_id": "cal-z88-1-1790817999973",
+   "channels": {
+    "ch410": 91,
+    "ch440": 287,
+    "ch470": 324,
+    "ch510": 706,
+    "ch550": 996,
+    "ch583": 1228,
+    "ch620": 1497,
+    "ch670": 984
+   },
+   "total": 6113,
+   "t_request_utc": "2026-10-01T01:26:39.973Z",
+   "t_response_utc": "2026-10-01T01:26:41.378Z",
+   "local": "19:26:41",
+   "nozzle": [
+    41.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z88",
+   "photo": 61,
+   "experiment_id": "cal-z88-2-1790818001378",
+   "channels": {
+    "ch410": 92,
+    "ch440": 287,
+    "ch470": 325,
+    "ch510": 707,
+    "ch550": 998,
+    "ch583": 1231,
+    "ch620": 1501,
+    "ch670": 986
+   },
+   "total": 6127,
+   "t_request_utc": "2026-10-01T01:26:41.378Z",
+   "t_response_utc": "2026-10-01T01:26:42.782Z",
+   "local": "19:26:42",
+   "nozzle": [
+    41.38,
+    11.24,
+    88.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 62,
+   "experiment_id": "cal-z87-1-1790818011011",
+   "channels": {
+    "ch410": 91,
+    "ch440": 283,
+    "ch470": 321,
+    "ch510": 701,
+    "ch550": 990,
+    "ch583": 1220,
+    "ch620": 1489,
+    "ch670": 978
+   },
+   "total": 6073,
+   "t_request_utc": "2026-10-01T01:26:51.011Z",
+   "t_response_utc": "2026-10-01T01:26:52.415Z",
+   "local": "19:26:52",
+   "nozzle": [
+    41.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z87",
+   "photo": 62,
+   "experiment_id": "cal-z87-2-1790818012416",
+   "channels": {
+    "ch410": 91,
+    "ch440": 283,
+    "ch470": 321,
+    "ch510": 701,
+    "ch550": 990,
+    "ch583": 1220,
+    "ch620": 1489,
+    "ch670": 977
+   },
+   "total": 6072,
+   "t_request_utc": "2026-10-01T01:26:52.416Z",
+   "t_response_utc": "2026-10-01T01:26:53.820Z",
+   "local": "19:26:53",
+   "nozzle": [
+    41.38,
+    11.24,
+    87.0
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 63,
+   "experiment_id": "cal-z86.5-1-1790818021906",
+   "channels": {
+    "ch410": 90,
+    "ch440": 281,
+    "ch470": 319,
+    "ch510": 697,
+    "ch550": 984,
+    "ch583": 1212,
+    "ch620": 1482,
+    "ch670": 975
+   },
+   "total": 6040,
+   "t_request_utc": "2026-10-01T01:27:01.906Z",
+   "t_response_utc": "2026-10-01T01:27:03.310Z",
+   "local": "19:27:03",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "z86.5",
+   "photo": 63,
+   "experiment_id": "cal-z86.5-2-1790818023310",
+   "channels": {
+    "ch410": 86,
+    "ch440": 270,
+    "ch470": 308,
+    "ch510": 674,
+    "ch550": 937,
+    "ch583": 1140,
+    "ch620": 1391,
+    "ch670": 919
+   },
+   "total": 5725,
+   "t_request_utc": "2026-10-01T01:27:03.310Z",
+   "t_response_utc": "2026-10-01T01:27:04.695Z",
+   "local": "19:27:04",
+   "nozzle": [
+    41.38,
+    11.24,
+    86.5
+   ]
+  },
+  {
+   "label": "over_pocket",
+   "photo": 71,
+   "experiment_id": "cal-over_pocket-1-1790818264500",
+   "channels": {
+    "ch410": 31,
+    "ch440": 128,
+    "ch470": 130,
+    "ch510": 351,
+    "ch550": 429,
+    "ch583": 333,
+    "ch620": 340,
+    "ch670": 261
+   },
+   "total": 2003,
+   "t_request_utc": "2026-10-01T01:31:04.500Z",
+   "t_response_utc": "2026-10-01T01:31:05.905Z",
+   "local": "19:31:05",
+   "nozzle": [
+    36.55,
+    315.5,
+    100.0
+   ]
+  },
+  {
+   "label": "over_pocket",
+   "photo": 71,
+   "experiment_id": "cal-over_pocket-2-1790818265905",
+   "channels": {
+    "ch410": 31,
+    "ch440": 128,
+    "ch470": 130,
+    "ch510": 351,
+    "ch550": 429,
+    "ch583": 333,
+    "ch620": 340,
+    "ch670": 261
+   },
+   "total": 2003,
+   "t_request_utc": "2026-10-01T01:31:05.905Z",
+   "t_response_utc": "2026-10-01T01:31:07.329Z",
+   "local": "19:31:07",
+   "nozzle": [
+    36.55,
+    315.5,
+    100.0
+   ]
+  },
+  {
+   "label": "backed_out",
+   "photo": 72,
+   "experiment_id": "cal-backed_out-1-1790818288477",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 12,
+    "ch510": 171,
+    "ch550": 178,
+    "ch583": 42,
+    "ch620": 24,
+    "ch670": 21
+   },
+   "total": 460,
+   "t_request_utc": "2026-10-01T01:31:28.477Z",
+   "t_response_utc": "2026-10-01T01:31:29.881Z",
+   "local": "19:31:29",
+   "nozzle": [
+    36.55,
+    315.5,
+    110.0
+   ]
+  },
+  {
+   "label": "backed_out",
+   "photo": 72,
+   "experiment_id": "cal-backed_out-2-1790818289881",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 12,
+    "ch510": 172,
+    "ch550": 177,
+    "ch583": 41,
+    "ch620": 24,
+    "ch670": 21
+   },
+   "total": 459,
+   "t_request_utc": "2026-10-01T01:31:29.881Z",
+   "t_response_utc": "2026-10-01T01:31:31.285Z",
+   "local": "19:31:31",
+   "nozzle": [
+    36.55,
+    315.5,
+    110.0
+   ]
+  },
+  {
+   "label": "homed",
+   "photo": 73,
+   "experiment_id": "cal-homed-1-1790818313037",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 12,
+    "ch510": 171,
+    "ch550": 177,
+    "ch583": 41,
+    "ch620": 24,
+    "ch670": 21
+   },
+   "total": 458,
+   "t_request_utc": "2026-10-01T01:31:53.037Z",
+   "t_response_utc": "2026-10-01T01:31:54.462Z",
+   "local": "19:31:54",
+   "nozzle": null
+  },
+  {
+   "label": "homed",
+   "photo": 73,
+   "experiment_id": "cal-homed-2-1790818314462",
+   "channels": {
+    "ch410": 6,
+    "ch440": 6,
+    "ch470": 12,
+    "ch510": 171,
+    "ch550": 178,
+    "ch583": 42,
+    "ch620": 24,
+    "ch670": 21
+   },
+   "total": 460,
+   "t_request_utc": "2026-10-01T01:31:54.462Z",
+   "t_response_utc": "2026-10-01T01:31:55.866Z",
+   "local": "19:31:55",
+   "nozzle": null
+  }
+ ],
+ "rail_lights": "on for every photo and reading, off again at the end"
+}

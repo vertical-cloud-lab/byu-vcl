@@ -1,0 +1,263 @@
+{
+ "source": "paint-plate-2026-09-30.json",
+ "channels": [
+  "ch410",
+  "ch440",
+  "ch470",
+  "ch510",
+  "ch550",
+  "ch583",
+  "ch620",
+  "ch670"
+ ],
+ "as7341_centre_nm": [
+  415.0,
+  445.0,
+  480.0,
+  515.0,
+  555.0,
+  590.0,
+  630.0,
+  680.0
+ ],
+ "as7341_fwhm_nm": [
+  26.0,
+  30.0,
+  36.0,
+  39.0,
+  39.0,
+  40.0,
+  50.0,
+  52.0
+ ],
+ "offset_subtracted": [
+  4.0,
+  3.0,
+  8.0,
+  160.5,
+  168.5,
+  35.0,
+  16.0,
+  11.5
+ ],
+ "reference": {
+  "what": "Color Mixing Tools database (Zsolt Kovacs-Vajna, University of Brescia), dried drawdowns, via rubenwiersma/painting_tools, CC BY-NC-SA 4.0",
+  "url": "https://raw.githubusercontent.com/rubenwiersma/painting_tools/72f2ced444c1508dfa13ccf5e5d4e25af83fbc38/painting_tools/measurements/pigments/cmt/pigments.rs"
+ },
+ "paints": {
+  "A1": {
+   "paint": "yellow",
+   "pigments": [
+    "PY74"
+   ],
+   "with_white": "PY74 50% TiO2",
+   "measured_over_empty": [
+    0.728,
+    0.467,
+    0.578,
+    0.729,
+    0.824,
+    0.858,
+    0.879,
+    0.876
+   ],
+   "measured_over_empty_no_offset": [
+    0.737,
+    0.47,
+    0.584,
+    0.769,
+    0.844,
+    0.861,
+    0.88,
+    0.878
+   ],
+   "reference_pure": [
+    0.04,
+    0.042,
+    0.069,
+    0.251,
+    0.626,
+    0.786,
+    0.842,
+    0.878
+   ],
+   "reference_low": [
+    0.04,
+    0.042,
+    0.069,
+    0.251,
+    0.626,
+    0.786,
+    0.842,
+    0.878
+   ],
+   "reference_high": [
+    0.14,
+    0.153,
+    0.233,
+    0.503,
+    0.821,
+    0.907,
+    0.931,
+    0.948
+   ]
+  },
+  "A2": {
+   "paint": "red",
+   "pigments": [
+    "PR170 F5RK Liquitex H.Body Artist Colors: 292-Naphthol Crimson",
+    "PR9 Chroma Atelier Interactive: 0032-Napthol Red Light"
+   ],
+   "with_white": null,
+   "measured_over_empty": [
+    0.635,
+    0.457,
+    0.535,
+    0.528,
+    0.571,
+    0.689,
+    0.828,
+    0.851
+   ],
+   "measured_over_empty_no_offset": [
+    0.647,
+    0.46,
+    0.542,
+    0.599,
+    0.62,
+    0.696,
+    0.83,
+    0.853
+   ],
+   "reference_pure": [
+    0.015,
+    0.014,
+    0.014,
+    0.016,
+    0.026,
+    0.144,
+    0.541,
+    0.799
+   ],
+   "reference_low": [
+    0.011,
+    0.01,
+    0.011,
+    0.012,
+    0.027,
+    0.114,
+    0.507,
+    0.792
+   ],
+   "reference_high": [
+    0.021,
+    0.021,
+    0.021,
+    0.022,
+    0.029,
+    0.214,
+    0.598,
+    0.807
+   ]
+  },
+  "A3": {
+   "paint": "blue",
+   "pigments": [
+    "PB15:3"
+   ],
+   "with_white": "PB15:3 50% TiO2",
+   "measured_over_empty": [
+    0.619,
+    0.589,
+    0.615,
+    0.56,
+    0.57,
+    0.607,
+    0.659,
+    0.738
+   ],
+   "measured_over_empty_no_offset": [
+    0.631,
+    0.591,
+    0.621,
+    0.626,
+    0.62,
+    0.615,
+    0.662,
+    0.741
+   ],
+   "reference_pure": [
+    0.047,
+    0.064,
+    0.06,
+    0.038,
+    0.029,
+    0.029,
+    0.031,
+    0.031
+   ],
+   "reference_low": [
+    0.047,
+    0.064,
+    0.06,
+    0.038,
+    0.029,
+    0.029,
+    0.031,
+    0.031
+   ],
+   "reference_high": [
+    0.333,
+    0.44,
+    0.453,
+    0.358,
+    0.221,
+    0.15,
+    0.123,
+    0.113
+   ]
+  }
+ },
+ "floor": {
+  "what": "lowest paint reading at each channel, as a fraction of the empty well",
+  "value": [
+   0.619,
+   0.457,
+   0.535,
+   0.528,
+   0.57,
+   0.607,
+   0.659,
+   0.738
+  ],
+  "paint": [
+   "blue",
+   "red",
+   "red",
+   "red",
+   "blue",
+   "blue",
+   "blue",
+   "blue"
+  ]
+ },
+ "fit_440_670": {
+  "pure pigments": {
+   "a_black_reads": 0.571,
+   "b_slope": 0.38,
+   "white_reads": 0.95,
+   "r2": 0.802
+  },
+  "yellow and blue with white": {
+   "a_black_reads": 0.532,
+   "b_slope": 0.358,
+   "white_reads": 0.89,
+   "r2": 0.72
+  }
+ },
+ "yellow_620_over_440": {
+  "reference_pure": 20.2,
+  "reference_with_white": 6.1,
+  "measured": 1.88
+ }
+}
