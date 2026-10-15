@@ -1,0 +1,532 @@
+1
+00:00:23,660 --> 00:00:25,320
+Yeah, it looks like it's dosing now.
+
+2
+00:00:27,600 --> 00:00:29,480
+Close to three grams at the moment.
+
+3
+00:00:29,760 --> 00:00:38,300
+Looks like it's flowing pretty well, too.
+
+4
+00:00:39,460 --> 00:00:41,520
+And we're getting into the funnel, which is good.
+
+5
+00:00:47,930 --> 00:00:49,310
+At least from what I can tell.
+
+6
+00:01:31,580 --> 00:01:33,260
+I'm a little surprised that it stopped.
+
+7
+00:01:36,920 --> 00:01:38,580
+Unless I didn't load enough in.
+
+8
+00:01:44,700 --> 00:01:48,940
+I guess I wasn't checking to see if it stopped.
+
+9
+00:01:49,260 --> 00:01:50,580
+I'll go back to the video.
+
+10
+00:01:56,260 --> 00:01:57,260
+And go live.
+
+11
+00:01:59,190 --> 00:02:02,190
+Let's go back until we get to the last.
+
+12
+00:02:02,510 --> 00:02:03,770
+point at which it was pouring.
+
+13
+00:02:06,170 --> 00:02:08,750
+OK, so it's going, going, going.
+
+14
+00:02:14,350 --> 00:02:15,810
+Still see it trickling.
+
+15
+00:02:23,770 --> 00:02:25,170
+Looks like it's tapping.
+
+16
+00:02:25,590 --> 00:02:32,310
+OK, and it stopped, even though it was still flowing powder.
+
+17
+00:02:34,020 --> 00:02:35,100
+What happened?
+
+18
+00:03:24,340 --> 00:03:26,420
+The new protocol it wrote.
+
+19
+00:03:33,130 --> 00:03:33,470
+Hey, good.
+
+20
+00:03:35,310 --> 00:03:35,910
+Yeah.
+
+21
+00:03:39,230 --> 00:03:40,970
+Bioheap transfer.
+
+22
+00:03:41,710 --> 00:03:43,170
+I'm not actually totally sure.
+
+23
+00:03:45,130 --> 00:03:46,810
+Yeah, currently it's the drain.
+
+24
+00:03:48,410 --> 00:03:52,710
+Also, I'm screen recording my session here.
+
+25
+00:03:53,090 --> 00:03:54,370
+This is the...
+
+26
+00:03:54,880 --> 00:04:19,640
+I'm going to stop
+
+27
+00:04:19,640 --> 00:04:22,870
+for some reason, and I don't know why.
+
+28
+00:04:23,290 --> 00:04:25,250
+What were you dosing some of the...
+
+29
+00:04:25,250 --> 00:04:26,970
+Yeah, the atomized.
+
+30
+00:04:27,210 --> 00:04:27,610
+Oh, yeah.
+
+31
+00:04:28,770 --> 00:04:29,630
+Yeah, sweet.
+
+32
+00:04:29,990 --> 00:04:32,270
+It was going great, and then it just stopped.
+
+33
+00:04:33,770 --> 00:04:34,930
+This team is awesome.
+
+34
+00:04:35,390 --> 00:04:35,510
+Yeah.
+
+35
+00:04:37,790 --> 00:04:38,790
+Who's lab is this?
+
+36
+00:04:39,050 --> 00:04:40,590
+This is Chris Dillon's lab.
+
+37
+00:04:41,510 --> 00:04:41,990
+Dr.
+
+38
+00:04:42,090 --> 00:04:42,290
+Dillon.
+
+39
+00:04:47,530 --> 00:04:47,850
+All right.
+
+40
+00:04:48,010 --> 00:04:48,010
+Yeah.
+
+41
+00:04:49,810 --> 00:04:50,290
+Okay.
+
+42
+00:04:50,650 --> 00:04:50,910
+Amazing.
+
+43
+00:04:51,390 --> 00:04:53,650
+And then I'll be able to bring this over pretty soon, I think.
+
+44
+00:04:55,920 --> 00:05:04,940
+That's a solid 6063.
+
+45
+00:05:08,160 --> 00:05:08,640
+Yeah.
+
+46
+00:05:08,900 --> 00:05:09,420
+Yeah, what you ordered.
+
+47
+00:05:13,300 --> 00:05:13,780
+Oh.
+
+48
+00:05:33,920 --> 00:05:35,820
+Is it important for you to do this one?
+
+49
+00:05:36,760 --> 00:05:37,120
+Nope.
+
+50
+00:05:38,160 --> 00:05:40,000
+Just clean it with IPA is the only thing.
+
+51
+00:05:42,300 --> 00:05:43,580
+You can throw both in if you want.
+
+52
+00:05:47,740 --> 00:07:20,770
+Medium just for
+
+53
+00:07:20,770 --> 00:07:21,890
+a faster response here.
+
+54
+00:08:04,620 --> 00:08:06,420
+That's what I get for trying to be fancy.
+
+55
+00:08:06,940 --> 00:08:08,000
+Bring a demo.
+
+56
+00:08:46,200 --> 00:08:47,920
+Oh, memory error.
+
+57
+00:09:39,330 --> 00:09:41,790
+Maybe I should get a Pico 2s.
+
+58
+00:09:42,250 --> 00:09:43,290
+Save my RAM.
+
+59
+00:09:44,670 --> 00:09:47,070
+This should be quite solvable.
+
+60
+00:18:21,070 --> 00:18:26,520
+Since I'm screen recording and I don't have my laptop, then I'm just kind of sitting here.
+
+61
+00:18:28,960 --> 00:18:29,500
+Kind of okay.
+
+62
+00:18:31,060 --> 00:18:32,300
+It's a little bit nice, actually.
+
+63
+00:19:01,800 --> 00:19:02,500
+I'm thirsty.
+
+64
+00:19:02,860 --> 00:19:03,660
+I'll go with some more.
+
+65
+00:19:32,500 --> 00:19:34,350
+No, I can't.
+
+66
+00:19:34,710 --> 00:19:36,350
+Is that on card access?
+
+67
+00:19:38,090 --> 00:19:38,410
+Hmm.
+
+68
+00:19:39,150 --> 00:19:39,610
+Never mind.
+
+69
+00:19:41,770 --> 00:19:43,530
+Something got messed up with my card access.
+
+70
+00:19:43,690 --> 00:19:45,110
+So if I leave, I can't get back in.
+
+71
+00:19:45,580 --> 00:19:49,240
+I need to call the engineering lab supervisor.
+
+72
+00:19:50,850 --> 00:19:52,050
+I will pull up.
+
+73
+00:21:06,120 --> 00:21:09,460
+I could update.
+
+74
+00:23:14,270 --> 00:23:16,950
+Okay, it looks like it's backup.
+
+75
+00:23:17,370 --> 00:23:29,480
+It looks like there's some pieces maybe
+
+76
+00:23:29,480 --> 00:23:31,320
+kind of stuck in there.
+
+77
+00:23:33,100 --> 00:23:37,380
+In the nozzle area, some of those larger pieces.
+
+78
+00:23:39,700 --> 00:23:52,630
+A larger, auger inner channel would help with that, or me just sitting
+
+79
+00:23:52,630 --> 00:23:55,570
+it with light amount, like I probably should have.
+
+80
+00:24:02,550 --> 00:24:04,290
+But it's still coming out.
+
+81
+00:25:04,250 --> 00:25:13,030
+And the views are not, or something else is happening.
+
+82
+00:25:15,110 --> 00:25:15,930
+That's light.
+
+83
+00:25:24,470 --> 00:25:35,750
+It looks like we're still getting powder, but yeah, there's really just some bigger pieces in the middle there.
+
+84
+00:25:57,140 --> 00:26:21,320
+It might
+
+85
+00:26:21,320 --> 00:26:22,800
+just not be mated properly.
+
+86
+00:26:32,520 --> 00:26:45,930
+Maybe that back clamp could be helping support
+
+87
+00:26:45,930 --> 00:26:46,730
+it a little bit better.
+
+88
+00:26:51,310 --> 00:26:53,330
+I think that put it in exactly though.
+
+89
+00:27:21,860 --> 00:27:27,390
+Yeah, those bigger chunks really gummed up the nozzle.
+
+90
+00:29:07,870 --> 00:29:09,870
+That's what Salmon will know about that.
+
+91
+00:29:22,280 --> 00:29:35,830
+Yeah, I
+
+92
+00:29:35,830 --> 00:29:47,250
+guess it's not going to be looking out with the clog up there.
+
+93
+00:29:48,080 --> 00:29:51,680
+Trying to get to 4.5, so it's actually kind of a ways away.
+
+94
+00:44:36,940 --> 00:51:46,140
+Yeah, it
+
+95
+00:51:46,140 --> 00:51:47,100
+looks like we're...
+
+96
+00:51:47,320 --> 00:51:48,580
+Going back again.
+
+97
+00:51:57,320 --> 00:52:00,180
+Still got that skipping or whatever's going on with the meter.
+
+98
+00:52:05,240 --> 00:52:06,620
+Even here it's slowing down.
+
+99
+00:52:07,020 --> 00:52:07,800
+It's getting closer.
+
+100
+00:52:09,950 --> 00:52:12,780
+Seeing stuff coming out still.
+
+101
+00:52:26,750 --> 00:52:28,010
+Slaying down even more.
+
+102
+00:52:28,650 --> 00:52:28,790
+Okay.
+
+103
+00:52:40,920 --> 00:52:41,840
+Three, two, zero.
+
+104
+00:52:42,140 --> 00:52:42,200
+Okay.
+
+105
+00:52:42,540 --> 00:52:42,640
+Yeah.
+
+106
+00:52:43,900 --> 00:52:45,500
+Pretty much on spot on.
+
+107
+00:52:46,400 --> 00:52:52,120
+That's the drift, which was just from the fume hood that we didn't get a perfect seal of the fume hood.
+
+108
+00:52:52,520 --> 00:52:54,240
+But overall, I'd say that's pretty good.
+
+109
+00:53:10,100 --> 00:53:14,190
+Probably gonna pop back up in a second.
+
+110
+00:53:17,580 --> 00:53:22,240
+Update saying it finished, hopefully.
+
+111
+00:53:22,700 --> 00:53:23,760
+Unless it's just still turning.
+
+112
+00:53:23,980 --> 00:53:24,460
+There we go.
+
+113
+00:53:27,730 --> 00:53:31,690
+Posited a, maybe, maybe not a small amount.
+
+114
+00:53:31,850 --> 00:53:33,920
+That last tilt back.
+
+115
+00:53:36,310 --> 00:53:38,890
+That tilt back could probably be a lot slower.
+
+116
+00:53:40,700 --> 00:53:41,480
+Less jarring.
+
+117
+00:53:45,450 --> 00:53:47,450
+Yeah, just a random other thing.
+
+118
+00:53:47,610 --> 00:53:54,930
+I noticed the solenoid actually bends a little bit when it hits, just because it's only fixtured on one side.
+
+119
+00:53:55,910 --> 00:54:06,100
+It's on the 3D print, fixtured to the 3D print, so actually cantilevers just a little bit.
+
+120
+00:54:06,610 --> 00:54:07,730
+It's kind of interesting.
+
+121
+00:54:13,030 --> 00:54:14,230
+It's on deflection.
+
+122
+00:54:19,100 --> 00:54:36,890
+Just hoping it will say it's done any minute.
+
+123
+00:55:05,970 --> 00:55:08,030
+Maybe I'll just call it there and grab it.
+
+124
+00:55:09,840 --> 00:55:12,140
+So I've got 8 grams.
+
+125
+00:55:13,000 --> 00:55:14,700
+Take a small amount.
+
+126
+00:55:15,340 --> 00:55:22,780
+Load it into the 4047 aluminum.
+
+127
+00:55:23,320 --> 00:55:29,830
+Load it into the 6063 one end closed tube.
+
+128
+00:55:30,910 --> 00:55:37,390
+And I gotta go.
+
+129
+00:55:37,750 --> 00:55:39,850
+So I'm going to...
+
+130
+00:55:45,260 --> 00:58:56,080
+Okay, we're
+
+131
+00:58:56,080 --> 00:58:56,700
+finished.
+
+132
+00:59:15,570 --> 00:59:28,370
+there it is we got balance reading enough time for that last one auger rpm so it kind of came back up a little bit yeah
+
+133
+00:59:28,370 --> 00:59:29,250
+there we go
+

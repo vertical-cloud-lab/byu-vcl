@@ -1,0 +1,672 @@
+{
+"video_id": "dXRB7c6GeDw",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 3576.10525,
+"segments": [
+{
+"start": 23.66,
+"end": 25.32,
+"text": "Yeah, it looks like it's dosing now."
+},
+{
+"start": 27.6,
+"end": 29.48,
+"text": "Close to three grams at the moment."
+},
+{
+"start": 29.76,
+"end": 38.3,
+"text": "Looks like it's flowing pretty well, too."
+},
+{
+"start": 39.46,
+"end": 41.52,
+"text": "And we're getting into the funnel, which is good."
+},
+{
+"start": 47.93,
+"end": 49.31,
+"text": "At least from what I can tell."
+},
+{
+"start": 91.58,
+"end": 93.26,
+"text": "I'm a little surprised that it stopped."
+},
+{
+"start": 96.92,
+"end": 98.58,
+"text": "Unless I didn't load enough in."
+},
+{
+"start": 104.7,
+"end": 108.94,
+"text": "I guess I wasn't checking to see if it stopped."
+},
+{
+"start": 109.26,
+"end": 110.58,
+"text": "I'll go back to the video."
+},
+{
+"start": 116.26,
+"end": 117.26,
+"text": "And go live."
+},
+{
+"start": 119.19,
+"end": 122.19,
+"text": "Let's go back until we get to the last."
+},
+{
+"start": 122.51,
+"end": 123.77,
+"text": "point at which it was pouring."
+},
+{
+"start": 126.17,
+"end": 128.75,
+"text": "OK, so it's going, going, going."
+},
+{
+"start": 134.35,
+"end": 135.81,
+"text": "Still see it trickling."
+},
+{
+"start": 143.77,
+"end": 145.17,
+"text": "Looks like it's tapping."
+},
+{
+"start": 145.59,
+"end": 152.31,
+"text": "OK, and it stopped, even though it was still flowing powder."
+},
+{
+"start": 154.02,
+"end": 155.1,
+"text": "What happened?"
+},
+{
+"start": 204.34,
+"end": 206.42,
+"text": "The new protocol it wrote."
+},
+{
+"start": 213.13,
+"end": 213.47,
+"text": "Hey, good."
+},
+{
+"start": 215.31,
+"end": 215.91,
+"text": "Yeah."
+},
+{
+"start": 219.23,
+"end": 220.97,
+"text": "Bioheap transfer."
+},
+{
+"start": 221.71,
+"end": 223.17,
+"text": "I'm not actually totally sure."
+},
+{
+"start": 225.13,
+"end": 226.81,
+"text": "Yeah, currently it's the drain."
+},
+{
+"start": 228.41,
+"end": 232.71,
+"text": "Also, I'm screen recording my session here."
+},
+{
+"start": 233.09,
+"end": 234.37,
+"text": "This is the..."
+},
+{
+"start": 234.88,
+"end": 259.64,
+"text": "I'm going to stop"
+},
+{
+"start": 259.64,
+"end": 262.87,
+"text": "for some reason, and I don't know why."
+},
+{
+"start": 263.29,
+"end": 265.25,
+"text": "What were you dosing some of the..."
+},
+{
+"start": 265.25,
+"end": 266.97,
+"text": "Yeah, the atomized."
+},
+{
+"start": 267.21,
+"end": 267.61,
+"text": "Oh, yeah."
+},
+{
+"start": 268.77,
+"end": 269.63,
+"text": "Yeah, sweet."
+},
+{
+"start": 269.99,
+"end": 272.27,
+"text": "It was going great, and then it just stopped."
+},
+{
+"start": 273.77,
+"end": 274.93,
+"text": "This team is awesome."
+},
+{
+"start": 275.39,
+"end": 275.51,
+"text": "Yeah."
+},
+{
+"start": 277.79,
+"end": 278.79,
+"text": "Who's lab is this?"
+},
+{
+"start": 279.05,
+"end": 280.59,
+"text": "This is Chris Dillon's lab."
+},
+{
+"start": 281.51,
+"end": 281.99,
+"text": "Dr."
+},
+{
+"start": 282.09,
+"end": 282.29,
+"text": "Dillon."
+},
+{
+"start": 287.53,
+"end": 287.85,
+"text": "All right."
+},
+{
+"start": 288.01,
+"end": 288.01,
+"text": "Yeah."
+},
+{
+"start": 289.81,
+"end": 290.29,
+"text": "Okay."
+},
+{
+"start": 290.65,
+"end": 290.91,
+"text": "Amazing."
+},
+{
+"start": 291.39,
+"end": 293.65,
+"text": "And then I'll be able to bring this over pretty soon, I think."
+},
+{
+"start": 295.92,
+"end": 304.94,
+"text": "That's a solid 6063."
+},
+{
+"start": 308.16,
+"end": 308.64,
+"text": "Yeah."
+},
+{
+"start": 308.9,
+"end": 309.42,
+"text": "Yeah, what you ordered."
+},
+{
+"start": 313.3,
+"end": 313.78,
+"text": "Oh."
+},
+{
+"start": 333.92,
+"end": 335.82,
+"text": "Is it important for you to do this one?"
+},
+{
+"start": 336.76,
+"end": 337.12,
+"text": "Nope."
+},
+{
+"start": 338.16,
+"end": 340.0,
+"text": "Just clean it with IPA is the only thing."
+},
+{
+"start": 342.3,
+"end": 343.58,
+"text": "You can throw both in if you want."
+},
+{
+"start": 347.74,
+"end": 440.77,
+"text": "Medium just for"
+},
+{
+"start": 440.77,
+"end": 441.89,
+"text": "a faster response here."
+},
+{
+"start": 484.62,
+"end": 486.42,
+"text": "That's what I get for trying to be fancy."
+},
+{
+"start": 486.94,
+"end": 488.0,
+"text": "Bring a demo."
+},
+{
+"start": 526.2,
+"end": 527.92,
+"text": "Oh, memory error."
+},
+{
+"start": 579.33,
+"end": 581.79,
+"text": "Maybe I should get a Pico 2s."
+},
+{
+"start": 582.25,
+"end": 583.29,
+"text": "Save my RAM."
+},
+{
+"start": 584.67,
+"end": 587.07,
+"text": "This should be quite solvable."
+},
+{
+"start": 1101.07,
+"end": 1106.52,
+"text": "Since I'm screen recording and I don't have my laptop, then I'm just kind of sitting here."
+},
+{
+"start": 1108.96,
+"end": 1109.5,
+"text": "Kind of okay."
+},
+{
+"start": 1111.06,
+"end": 1112.3,
+"text": "It's a little bit nice, actually."
+},
+{
+"start": 1141.8,
+"end": 1142.5,
+"text": "I'm thirsty."
+},
+{
+"start": 1142.86,
+"end": 1143.66,
+"text": "I'll go with some more."
+},
+{
+"start": 1172.5,
+"end": 1174.35,
+"text": "No, I can't."
+},
+{
+"start": 1174.71,
+"end": 1176.35,
+"text": "Is that on card access?"
+},
+{
+"start": 1178.09,
+"end": 1178.41,
+"text": "Hmm."
+},
+{
+"start": 1179.15,
+"end": 1179.61,
+"text": "Never mind."
+},
+{
+"start": 1181.77,
+"end": 1183.53,
+"text": "Something got messed up with my card access."
+},
+{
+"start": 1183.69,
+"end": 1185.11,
+"text": "So if I leave, I can't get back in."
+},
+{
+"start": 1185.58,
+"end": 1189.24,
+"text": "I need to call the engineering lab supervisor."
+},
+{
+"start": 1190.85,
+"end": 1192.05,
+"text": "I will pull up."
+},
+{
+"start": 1266.12,
+"end": 1269.46,
+"text": "I could update."
+},
+{
+"start": 1394.27,
+"end": 1396.95,
+"text": "Okay, it looks like it's backup."
+},
+{
+"start": 1397.37,
+"end": 1409.48,
+"text": "It looks like there's some pieces maybe"
+},
+{
+"start": 1409.48,
+"end": 1411.32,
+"text": "kind of stuck in there."
+},
+{
+"start": 1413.1,
+"end": 1417.38,
+"text": "In the nozzle area, some of those larger pieces."
+},
+{
+"start": 1419.7,
+"end": 1432.63,
+"text": "A larger, auger inner channel would help with that, or me just sitting"
+},
+{
+"start": 1432.63,
+"end": 1435.57,
+"text": "it with light amount, like I probably should have."
+},
+{
+"start": 1442.55,
+"end": 1444.29,
+"text": "But it's still coming out."
+},
+{
+"start": 1504.25,
+"end": 1513.03,
+"text": "And the views are not, or something else is happening."
+},
+{
+"start": 1515.11,
+"end": 1515.93,
+"text": "That's light."
+},
+{
+"start": 1524.47,
+"end": 1535.75,
+"text": "It looks like we're still getting powder, but yeah, there's really just some bigger pieces in the middle there."
+},
+{
+"start": 1557.14,
+"end": 1581.32,
+"text": "It might"
+},
+{
+"start": 1581.32,
+"end": 1582.8,
+"text": "just not be mated properly."
+},
+{
+"start": 1592.52,
+"end": 1605.93,
+"text": "Maybe that back clamp could be helping support"
+},
+{
+"start": 1605.93,
+"end": 1606.73,
+"text": "it a little bit better."
+},
+{
+"start": 1611.31,
+"end": 1613.33,
+"text": "I think that put it in exactly though."
+},
+{
+"start": 1641.86,
+"end": 1647.39,
+"text": "Yeah, those bigger chunks really gummed up the nozzle."
+},
+{
+"start": 1747.87,
+"end": 1749.87,
+"text": "That's what Salmon will know about that."
+},
+{
+"start": 1762.28,
+"end": 1775.83,
+"text": "Yeah, I"
+},
+{
+"start": 1775.83,
+"end": 1787.25,
+"text": "guess it's not going to be looking out with the clog up there."
+},
+{
+"start": 1788.08,
+"end": 1791.68,
+"text": "Trying to get to 4.5, so it's actually kind of a ways away."
+},
+{
+"start": 2676.94,
+"end": 3106.14,
+"text": "Yeah, it"
+},
+{
+"start": 3106.14,
+"end": 3107.1,
+"text": "looks like we're..."
+},
+{
+"start": 3107.32,
+"end": 3108.58,
+"text": "Going back again."
+},
+{
+"start": 3117.32,
+"end": 3120.18,
+"text": "Still got that skipping or whatever's going on with the meter."
+},
+{
+"start": 3125.24,
+"end": 3126.62,
+"text": "Even here it's slowing down."
+},
+{
+"start": 3127.02,
+"end": 3127.8,
+"text": "It's getting closer."
+},
+{
+"start": 3129.95,
+"end": 3132.78,
+"text": "Seeing stuff coming out still."
+},
+{
+"start": 3146.75,
+"end": 3148.01,
+"text": "Slaying down even more."
+},
+{
+"start": 3148.65,
+"end": 3148.79,
+"text": "Okay."
+},
+{
+"start": 3160.92,
+"end": 3161.84,
+"text": "Three, two, zero."
+},
+{
+"start": 3162.14,
+"end": 3162.2,
+"text": "Okay."
+},
+{
+"start": 3162.54,
+"end": 3162.64,
+"text": "Yeah."
+},
+{
+"start": 3163.9,
+"end": 3165.5,
+"text": "Pretty much on spot on."
+},
+{
+"start": 3166.4,
+"end": 3172.12,
+"text": "That's the drift, which was just from the fume hood that we didn't get a perfect seal of the fume hood."
+},
+{
+"start": 3172.52,
+"end": 3174.24,
+"text": "But overall, I'd say that's pretty good."
+},
+{
+"start": 3190.1,
+"end": 3194.19,
+"text": "Probably gonna pop back up in a second."
+},
+{
+"start": 3197.58,
+"end": 3202.24,
+"text": "Update saying it finished, hopefully."
+},
+{
+"start": 3202.7,
+"end": 3203.76,
+"text": "Unless it's just still turning."
+},
+{
+"start": 3203.98,
+"end": 3204.46,
+"text": "There we go."
+},
+{
+"start": 3207.73,
+"end": 3211.69,
+"text": "Posited a, maybe, maybe not a small amount."
+},
+{
+"start": 3211.85,
+"end": 3213.92,
+"text": "That last tilt back."
+},
+{
+"start": 3216.31,
+"end": 3218.89,
+"text": "That tilt back could probably be a lot slower."
+},
+{
+"start": 3220.7,
+"end": 3221.48,
+"text": "Less jarring."
+},
+{
+"start": 3225.45,
+"end": 3227.45,
+"text": "Yeah, just a random other thing."
+},
+{
+"start": 3227.61,
+"end": 3234.93,
+"text": "I noticed the solenoid actually bends a little bit when it hits, just because it's only fixtured on one side."
+},
+{
+"start": 3235.91,
+"end": 3246.1,
+"text": "It's on the 3D print, fixtured to the 3D print, so actually cantilevers just a little bit."
+},
+{
+"start": 3246.61,
+"end": 3247.73,
+"text": "It's kind of interesting."
+},
+{
+"start": 3253.03,
+"end": 3254.23,
+"text": "It's on deflection."
+},
+{
+"start": 3259.1,
+"end": 3276.89,
+"text": "Just hoping it will say it's done any minute."
+},
+{
+"start": 3305.97,
+"end": 3308.03,
+"text": "Maybe I'll just call it there and grab it."
+},
+{
+"start": 3309.84,
+"end": 3312.14,
+"text": "So I've got 8 grams."
+},
+{
+"start": 3313.0,
+"end": 3314.7,
+"text": "Take a small amount."
+},
+{
+"start": 3315.34,
+"end": 3322.78,
+"text": "Load it into the 4047 aluminum."
+},
+{
+"start": 3323.32,
+"end": 3329.83,
+"text": "Load it into the 6063 one end closed tube."
+},
+{
+"start": 3330.91,
+"end": 3337.39,
+"text": "And I gotta go."
+},
+{
+"start": 3337.75,
+"end": 3339.85,
+"text": "So I'm going to..."
+},
+{
+"start": 3345.26,
+"end": 3536.08,
+"text": "Okay, we're"
+},
+{
+"start": 3536.08,
+"end": 3536.7,
+"text": "finished."
+},
+{
+"start": 3555.57,
+"end": 3568.37,
+"text": "there it is we got balance reading enough time for that last one auger rpm so it kind of came back up a little bit yeah"
+},
+{
+"start": 3568.37,
+"end": 3569.25,
+"text": "there we go"
+}
+]
+}

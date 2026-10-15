@@ -1,0 +1,37 @@
+{
+"video_id": "07QOPRHIEvw",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 85.519125,
+"segments": [
+{
+"start": 54.8,
+"end": 61.17,
+"text": "All right, so we got the atomizer and the other stuff from those crates in here now."
+},
+{
+"start": 61.41,
+"end": 62.77,
+"text": "Got it cleaned up a little bit."
+},
+{
+"start": 63.62,
+"end": 68.12,
+"text": "So it's ready to be installed the rest of the way."
+},
+{
+"start": 68.22,
+"end": 76.26,
+"text": "They'll bring in the chilled water down from the top and run the argon there by that orange tape on the wall there with the tanks."
+},
+{
+"start": 76.76,
+"end": 81.78,
+"text": "And I think that should be it for everything for installing this."
+},
+{
+"start": 83.68,
+"end": 85.18,
+"text": "Commissioning it in about two weeks."
+}
+]
+}

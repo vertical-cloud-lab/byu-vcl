@@ -1,0 +1,1724 @@
+1
+00:00:08,160 --> 00:00:20,300
+First of all, let's start with getting
+
+2
+00:00:20,300 --> 00:00:20,800
+the power.
+
+3
+00:00:25,740 --> 00:00:28,930
+The main breaker.
+
+4
+00:00:29,890 --> 00:00:33,470
+So you can probably leave the one that fits to the transformer on.
+
+5
+00:00:33,730 --> 00:00:34,250
+All the time?
+
+6
+00:00:34,410 --> 00:00:34,970
+All the time.
+
+7
+00:00:35,190 --> 00:00:47,670
+And just shut this one in case if somebody is going to do anything around the equipment or walk around, it's better to have it fully powered
+
+8
+00:00:47,670 --> 00:00:47,970
+up.
+
+9
+00:00:54,310 --> 00:01:06,390
+So before we turn on the equipment I will show you what's actually inside of it so generally the standard
+
+10
+00:01:06,390 --> 00:01:18,490
+unit that we provide is a control cabinet plus the induction module but as the induction module doesn't really require everything that we put in the cabinet we were able to just add those things
+
+11
+00:01:18,490 --> 00:01:20,330
+internally here to the
+
+12
+00:01:20,820 --> 00:01:32,880
+furnace and fit everything together into one module so on the left side except for parts regarding the generator you have
+
+13
+00:01:32,880 --> 00:01:45,290
+the connection for the compressed air with the filters so if there is any moisture leftovers we are removing it here and we are reducing the pressure so we keep around four bars
+
+14
+00:01:45,290 --> 00:01:47,990
+during the flow and that's enough to cool down
+
+15
+00:01:48,640 --> 00:02:00,840
+but you always you always keep eight bars from the for argon from argon oh oh compressor is four down the transistor gotcha and we keep it at four bars in the flow uh it's also checking if the pressure
+
+16
+00:02:00,840 --> 00:02:13,050
+is enough if the pressure will not be enough you will not be able to use the ultrasonic vibrations you will get error and the system will shut down this option uh for you then we also
+
+17
+00:02:13,050 --> 00:02:18,030
+have the argon connections so you can see here and here
+
+18
+00:02:19,410 --> 00:02:23,610
+One line, this one, is going through the chamber.
+
+19
+00:02:23,890 --> 00:02:25,510
+So we are filling the chamber with it.
+
+20
+00:02:25,690 --> 00:02:29,330
+The other one is going directly to the furnace parts.
+
+21
+00:02:30,010 --> 00:02:30,950
+So those two regulators.
+
+22
+00:02:31,850 --> 00:02:34,510
+One, the top one, is called sealing rod.
+
+23
+00:02:35,110 --> 00:02:42,050
+And its only task is providing pressure to the system that moves up and down the rod in the furnace.
+
+24
+00:02:42,470 --> 00:02:44,710
+It closes and opens the furnace.
+
+25
+00:02:44,970 --> 00:02:48,230
+While the other one provides pressure to the whole system.
+
+26
+00:02:48,630 --> 00:02:52,450
+for filling, for purging, for other pneumatic systems.
+
+27
+00:02:52,710 --> 00:02:56,690
+The upper one is for the rod and the lower one is for the rest of the system.
+
+28
+00:02:56,790 --> 00:02:59,970
+For filling the furnace, the pneumatic system and everything else.
+
+29
+00:03:02,340 --> 00:03:11,880
+Also the cooling goes here, first for additional pressure reducer to make sure that it's not extremely high and don't damage the chamber.
+
+30
+00:03:12,500 --> 00:03:16,380
+Then the flow and temperature are being checked by the sensor there.
+
+31
+00:03:16,940 --> 00:03:28,960
+before it's distributed it goes first through the furnace and then through the cone and the chamber before returning from the hole that's nice you guys you just color coded it so all of the all the compressed
+
+32
+00:03:28,960 --> 00:03:37,540
+air is the blue right and the and i guess the silver and clear silver is argon okay so what you also can see here
+
+33
+00:03:38,360 --> 00:03:50,580
+is the exhaust from the device and you can see a filter on the back so this one is for the furnace so when we remove the gas from the furnace it's passing through two filters brass
+
+34
+00:03:50,580 --> 00:04:02,860
+filter here as a primary one in the furnace and then a more fine filter here on the back if you will have issues with removing the pressure from the furnace and it will be dirty it
+
+35
+00:04:02,860 --> 00:04:07,800
+requires to be replaced okay and basically that's
+
+36
+00:04:08,090 --> 00:04:20,850
+everything what we have on this side it should be maintenance free okay unless you can like hear a gas leak or anything if you know after a long time the hoses
+
+37
+00:04:20,850 --> 00:04:37,120
+will deteriorate it's good to just take a look over a few weeks or months if everything is fine in here but it should be generally maintenance uh free okay great and we make this for the operation this
+
+38
+00:04:37,120 --> 00:04:40,540
+is this is the breast filter yes it's so interesting that
+
+39
+00:04:40,780 --> 00:04:52,900
+um that's made for air to pass through and we have the left side so uh the here is a bit more cramped starting with the generator on the bottom so this
+
+40
+00:04:52,900 --> 00:05:05,080
+is the control system for the whole induction furnace right in here generally also no need to touch it no need to do anything with it as long as if it's working everything should
+
+41
+00:05:05,080 --> 00:05:10,040
+be fine unless like something loses or if for any reason it would fully break
+
+42
+00:05:10,540 --> 00:05:13,820
+But that's a bigger issue that we need to address.
+
+43
+00:05:14,440 --> 00:05:25,540
+The pneumatic system, so this is what controls all the valves in the furnace, so kind of like the vacuum, the purging, filling, removing the gas, everything.
+
+44
+00:05:25,900 --> 00:05:28,300
+The whole system here controls that.
+
+45
+00:05:29,340 --> 00:05:35,620
+While this system here is used to be connected to the chamber.
+
+46
+00:05:36,110 --> 00:05:48,230
+and that way we control the pressure and what's happening in the chamber we have the vacuum valve here and you can see that the vacuum valve is here while there is a tube going
+
+47
+00:05:48,230 --> 00:06:00,350
+from this spot here so the tube is going to the furnace parts so when we have the pump working then the furnace is always getting the vacuum if we want to provide
+
+48
+00:06:00,350 --> 00:06:03,670
+vacuum to the furnace we need to open that additional valve
+
+49
+00:06:04,030 --> 00:06:06,550
+So we have full manual control over that.
+
+50
+00:06:07,130 --> 00:06:09,650
+Then we have here the oxygen sensor.
+
+51
+00:06:10,210 --> 00:06:14,810
+And the oxygen sensor is connected to the valve in here.
+
+52
+00:06:15,150 --> 00:06:18,890
+That is providing like a very small leak all the time.
+
+53
+00:06:19,050 --> 00:06:19,850
+We can set it.
+
+54
+00:06:20,130 --> 00:06:24,070
+But the sensor in order to be precise it requires a flow through.
+
+55
+00:06:24,470 --> 00:06:30,150
+So a bit of the gas from the chamber should always escape through that valve.
+
+56
+00:06:30,530 --> 00:06:42,570
+it is open only if we are above 50 millibars so when we do the vacuum and everything it remains closed here we have the vent valve to remove the overpressure from the
+
+57
+00:06:42,570 --> 00:06:54,990
+system the pressure sensor here and the safety valve if the pressure in the chamber will exceed 0.8 bars it will automatically open
+
+58
+00:06:54,990 --> 00:06:58,410
+like mechanically even if the vent valve will not be working
+
+59
+00:06:58,980 --> 00:07:01,320
+This one will just open by itself.
+
+60
+00:07:02,280 --> 00:07:09,360
+Then here we have the HEPA filter to make sure that no powder is going to get into the sensors and the vacuum pump.
+
+61
+00:07:10,300 --> 00:07:13,900
+And here that tube is the inner gas.
+
+62
+00:07:16,040 --> 00:07:27,260
+So this used to be connected here, but in order to have a precise measurement from the oxygen sensor, it's better to have it connected directly to the chamber.
+
+63
+00:07:27,880 --> 00:07:39,940
+there shouldn't be any powder getting in here anything if so the gas is just going to get it out from the line very easily that's also why i have it going in an arc like that so
+
+64
+00:07:39,940 --> 00:07:52,560
+that the powder is not going to get to the that's smart but that way we are providing new argon directly into the chamber it mixes with the gas and that gas is then going to the sensor if
+
+65
+00:07:52,560 --> 00:07:55,820
+we would have those two next to each other we would just putting
+
+66
+00:07:56,640 --> 00:08:00,340
+argon into the sensor, which would show much lower value than it should.
+
+67
+00:08:00,660 --> 00:08:04,720
+So this can work only if there is no exchange sensor in the system.
+
+68
+00:08:05,400 --> 00:08:07,580
+How often does the HEPA filter need to be replaced?
+
+69
+00:08:07,980 --> 00:08:11,940
+To be honest, I would say months for most of the operation.
+
+70
+00:08:12,600 --> 00:08:18,980
+Let's say two months is a time where you at least should remove it and check if it's dirty or not.
+
+71
+00:08:19,240 --> 00:08:25,900
+You may have some powder leftovers here at the bottom as well, when the vacuum system will just take them in.
+
+72
+00:08:26,270 --> 00:08:32,410
+So it's good to just take it out, at least clean it, remove anything that's inside, and then check the condition.
+
+73
+00:08:33,210 --> 00:08:35,570
+Let's see, I guess you unscrew that.
+
+74
+00:08:35,570 --> 00:08:38,290
+I mean, you disconnect here, and disconnect here.
+
+75
+00:08:38,490 --> 00:08:44,850
+And remove the whole thing out, and then screw the bolts holding the cover, and the filter just pops out.
+
+76
+00:08:45,090 --> 00:08:49,630
+Okay, that way it doesn't get all over the inside.
+
+77
+00:08:50,590 --> 00:08:55,970
+So it's best to have some kind of metal tray or a metal basket that you can place it in.
+
+78
+00:08:57,500 --> 00:09:00,720
+You shouldn't have too much of the evaporate in it.
+
+79
+00:09:00,900 --> 00:09:02,440
+That's what we have in plasma.
+
+80
+00:09:02,700 --> 00:09:09,120
+There is the recylation system moving the gas through the filter because the arc is overheating everything, it evaporates a lot.
+
+81
+00:09:09,320 --> 00:09:19,700
+So we have a lot of very fine dust and that dust is maybe not really explosive but very prone to spontaneous combustion by itself.
+
+82
+00:09:20,430 --> 00:09:32,630
+and here unless you go with magnesium or something or you overheat something that starts to evaporate you may have a bit more of a fire and dust in the filter that's why it's best to put it in
+
+83
+00:09:32,630 --> 00:09:45,130
+the metal basket just in case if anything happens and have like some sand to cover it in case it's happening but usually if so it's happening very quickly it's just a rapid oxidation it's
+
+84
+00:09:45,130 --> 00:09:48,970
+not going to really burn the filter is just a thin layer of polyester
+
+85
+00:09:49,200 --> 00:10:01,570
+okay mesh so and so here we have the ultrasonic generator so uh and normally it's all connected everything is working uh however
+
+86
+00:10:01,570 --> 00:10:13,590
+if we would like to do some modifications some changes it is possible to connect to it and use an app to change the parameters uh so then we can connect to the front if for any reason we would
+
+87
+00:10:13,590 --> 00:10:15,430
+i would like i need some help in
+
+88
+00:10:16,420 --> 00:10:28,900
+sorting some issues we would maybe just need a remote connection with somebody like connecting to the generator and i could have a bit more control over it then here
+
+89
+00:10:28,900 --> 00:10:41,140
+we have all the internal controls we have the PLC in here all the connections for the control the transformers the fuses
+
+90
+00:10:41,140 --> 00:10:44,360
+for the furnace for vacuum pump
+
+91
+00:10:44,990 --> 00:10:57,490
+and all like the generator and everything else if an electrical part will not work this is the first place to take a look at just to make sure that the fuses are in a correct position and
+
+92
+00:10:57,490 --> 00:11:09,750
+that is generated sweet what was what was this guy in the top there uh this one yeah it's just part
+
+93
+00:11:09,750 --> 00:11:16,990
+of the generator for all the coils okay so it's related to the induction cool this one and this one
+
+94
+00:11:19,050 --> 00:11:19,870
+Very good.
+
+95
+00:11:19,990 --> 00:11:21,550
+Yeah, everything else should be here.
+
+96
+00:11:21,830 --> 00:11:26,910
+Here is the main switch that's just powering everything up all together.
+
+97
+00:11:27,330 --> 00:11:31,710
+So we kind of like change the internal connections and everything is hooked in here.
+
+98
+00:11:31,970 --> 00:11:34,290
+So this controls the whole device right now.
+
+99
+00:11:44,280 --> 00:11:56,040
+If we would ever need to, for example, like do an update of the system, in case of HMI, we would need to open it and actually get access to the audio.
+
+100
+00:11:56,650 --> 00:12:01,730
+to the USB port inside there, on the back of the HMR.
+
+101
+00:12:02,130 --> 00:12:08,010
+And in case of PLC, there is an SD card sitting in the PLC.
+
+102
+00:12:08,270 --> 00:12:12,850
+So it can be removed and the new software can be uploaded.
+
+103
+00:12:13,130 --> 00:12:15,510
+And you can keep the old one just in case.
+
+104
+00:12:15,850 --> 00:12:16,970
+Yeah, that's nice.
+
+105
+00:12:18,030 --> 00:12:26,710
+And same thing, if you are not doing any maintenance, it should remain old for safety.
+
+106
+00:12:27,220 --> 00:12:31,040
+It's okay if not, but can you hook up a mouse and a keyboard to this?
+
+107
+00:12:32,860 --> 00:12:34,240
+I don't know, maybe.
+
+108
+00:12:34,700 --> 00:12:36,620
+I'm not sure how useful would it be.
+
+109
+00:12:39,950 --> 00:12:48,670
+In general, I know it's also possible that if you connect with HMI, you can download some data, parameters.
+
+110
+00:12:49,410 --> 00:12:52,430
+That's also possible, so it has those capabilities.
+
+111
+00:12:52,830 --> 00:12:55,710
+But generally, we are using it as an app screen.
+
+112
+00:12:55,990 --> 00:12:59,650
+But there are definitely some additional options to change it.
+
+113
+00:13:00,290 --> 00:13:10,150
+So the back as we did yesterday, we have the connections for the heat exchanger, for the vacuum pump, the compressor, argon water.
+
+114
+00:13:10,630 --> 00:13:14,330
+What requires the most of the maintenance is the vacuum pump.
+
+115
+00:13:14,650 --> 00:13:17,510
+You need to check if the oil level is correct.
+
+116
+00:13:17,730 --> 00:13:19,030
+You see it on the other side.
+
+117
+00:13:19,490 --> 00:13:23,630
+There is just like a glass vial with marks.
+
+118
+00:13:25,230 --> 00:13:29,870
+And if the oil needs to be kept in the minimum and maximum.
+
+119
+00:13:30,270 --> 00:13:42,610
+it doesn't really matter it's like it's using standard vacuum pump oil it's nothing fancy so it can be easy to replace and what you have here is the oil mist filter
+
+120
+00:13:42,610 --> 00:13:50,710
+so when you pull the air through the vacuum pump you always get some of the oil mist coming through
+
+121
+00:13:51,240 --> 00:14:03,420
+inside of this filter is like a foam that caches this oil mist and the oil is just staying inside and that's in this blue canister here so you need so from time to time like every few weeks you need to take
+
+122
+00:14:03,420 --> 00:14:15,500
+it out and there is a blue yeah black screw here you remove that black screw and you just pour the oil out okay and it's most of the money that just remove the excess oil from the filter
+
+123
+00:14:15,500 --> 00:14:19,980
+uh if you will because they always still it's a little bit of smell and so on
+
+124
+00:14:20,520 --> 00:14:32,620
+it is possible to connect this filter to some exhaust or in some cases i just saw you know like a plastic bucket with a hole where you connect the tube in and the oil
+
+125
+00:14:32,620 --> 00:14:44,690
+mist instead of like going a bit like even a tiny bit instead of going into the room it's just kind of going into the bucket so you don't have like the smell and the situations cool
+
+126
+00:14:44,690 --> 00:14:49,490
+yeah does the vacuum need to be bolted to the floor oh no
+
+127
+00:14:49,860 --> 00:15:02,080
+it's okay it's okay it's like it also has a rubber feet oh good uh to keep off the vibrations and the heat exchanger so in this case just to check the oil uh so the
+
+128
+00:15:02,080 --> 00:15:14,150
+water level so you can always open it and take it in here and whoa is it supposed to be that dark i don't think it's that dark it
+
+129
+00:15:14,150 --> 00:15:18,820
+just may look like that seems to be fine
+
+130
+00:15:19,720 --> 00:15:23,800
+If there is anything in that, it just gets filtered through the filter.
+
+131
+00:15:24,620 --> 00:15:26,340
+I wouldn't care about that.
+
+132
+00:15:26,940 --> 00:15:30,360
+And you have the water level sensor in there.
+
+133
+00:15:32,720 --> 00:15:37,820
+If the water level would go down significantly, the whole thing will shut down.
+
+134
+00:15:40,030 --> 00:15:48,970
+Or if there is some issue with overheating, for example, if those bulbs are closed, then the water inside will start slowly overheating over time.
+
+135
+00:15:51,490 --> 00:15:53,410
+And the whole thing about it is that...
+
+136
+00:15:53,610 --> 00:15:55,630
+You just start it and that's all.
+
+137
+00:15:55,830 --> 00:15:57,190
+You don't need to do anything else.
+
+138
+00:15:57,370 --> 00:15:59,530
+Just start it and it's going to pop.
+
+139
+00:15:59,770 --> 00:16:01,370
+You just turn on the switch there.
+
+140
+00:16:02,530 --> 00:16:05,590
+So these are going to be open first though before we turn this on, right?
+
+141
+00:16:05,850 --> 00:16:08,230
+Yeah, but this is enough.
+
+142
+00:16:08,470 --> 00:16:09,630
+It's already a little bit open.
+
+143
+00:16:09,810 --> 00:16:10,130
+It's enough.
+
+144
+00:16:10,410 --> 00:16:14,530
+But the thing is that you can use it without those being open.
+
+145
+00:16:15,790 --> 00:16:19,710
+It will just, like the temperature size will slowly go up over time.
+
+146
+00:16:20,330 --> 00:16:22,110
+But it's a separate loop.
+
+147
+00:16:25,030 --> 00:16:25,950
+Because this...
+
+148
+00:16:26,160 --> 00:16:38,410
+there is the mechanical heat exchanger inside out so that your loop is cooling the internal loop if there will be nothing cooling the internal loop the internal temperature will just go
+
+149
+00:16:38,410 --> 00:16:54,210
+up slowly gotcha and you will see it both on the like hmi and here everywhere you will just get information just writing
+
+150
+00:16:54,210 --> 00:17:03,770
+this down so sure we have that okay i hope i go through the video and some more detail yeah and then when you are finally ready to
+
+151
+00:17:04,050 --> 00:17:18,250
+start turn it on perfect yeah you
+
+152
+00:17:18,250 --> 00:17:31,380
+can see that right now we have an error of cooling water flow low uh but i wouldn't start the heat exchanger until you're ready to start the heating just so right now we are avoiding the noise and so is
+
+153
+00:17:31,380 --> 00:17:42,120
+it off no this is on right now right it's off it's off oh it's off you cannot hear the pump running or anything so gotcha and does this compressed air need to be open uh yeah
+
+154
+00:17:42,560 --> 00:17:48,360
+Also, I mean, but the system is also just going to kind of prevent you doing anything wrong.
+
+155
+00:17:48,720 --> 00:17:54,020
+So right now, compressed air is used only to cool down the transducer for the ultrasonic system.
+
+156
+00:17:54,660 --> 00:17:58,640
+Without it working, you will not be able to start the vibrations.
+
+157
+00:17:59,020 --> 00:18:00,580
+It will just prevent you.
+
+158
+00:18:00,820 --> 00:18:03,000
+Same as we are not able to start the heating.
+
+159
+00:18:03,760 --> 00:18:08,700
+Any error that is displayed here is always stopping the heating instantly.
+
+160
+00:18:09,740 --> 00:18:09,980
+Gotcha.
+
+161
+00:18:13,390 --> 00:18:25,760
+through the HMI first so in this case you have accounts so you have these different accounts you can actually manage them so like admin for example
+
+162
+00:18:25,760 --> 00:18:38,280
+is one one one one it goes so all those goes like one one two two two three three four five and you can just change those accounts and change
+
+163
+00:18:38,280 --> 00:18:39,360
+the access okay
+
+164
+00:18:39,660 --> 00:18:52,790
+so for example people can go into the program but they cannot change the settings or can go into the program but cannot press anything what you
+
+165
+00:18:52,790 --> 00:19:16,720
+also have in here so you have the settings nothing really interested in here it's just for that let me just send the info to my colleague also
+
+166
+00:19:16,720 --> 00:19:21,790
+nothing with that is really like important for you that's the case
+
+167
+00:19:22,350 --> 00:19:24,410
+This is just some additional settings.
+
+168
+00:19:25,250 --> 00:19:37,590
+So for example, the high oxygen and critical oxygen level, those are like warnings for you to get an information that the oxygen level is too high to operate properly.
+
+169
+00:19:38,470 --> 00:19:40,810
+The timing is part of the system.
+
+170
+00:19:41,590 --> 00:19:43,090
+So it's like in Polish time.
+
+171
+00:19:44,350 --> 00:19:47,070
+It doesn't really matter too much for us.
+
+172
+00:19:47,250 --> 00:19:48,310
+The date is fine.
+
+173
+00:19:48,880 --> 00:19:55,580
+The total time is like the time when the device was on and the time when the ultrasonic vibrations were performed.
+
+174
+00:19:58,590 --> 00:20:00,990
+And then we have the advanced ultrasonics.
+
+175
+00:20:01,210 --> 00:20:03,950
+This is just for checking the ultrasonic vibrations.
+
+176
+00:20:04,390 --> 00:20:08,410
+So you also have access to this through the induction optimization program.
+
+177
+00:20:08,830 --> 00:20:18,130
+But right now we can also access it from here if we just want to prepare the ultrasonic system and do some basic checks.
+
+178
+00:20:18,540 --> 00:20:31,150
+so for example i am connecting everything it's not fully finished yet but let's say that i have right now connected transducer with the booster those two parts and
+
+179
+00:20:31,150 --> 00:20:43,410
+i want to check if it's working correctly okay and let's say i'm going to scan right now and we
+
+180
+00:20:43,410 --> 00:20:52,350
+get an error of no air pressure so it's basically stopping you from the next step and the relation is resolved that's nice
+
+181
+00:20:53,520 --> 00:20:59,910
+Now we have the cooling of the transistor.
+
+182
+00:21:00,730 --> 00:21:04,010
+We only need it for the few minutes of atomization.
+
+183
+00:21:07,060 --> 00:21:09,600
+And again, right now we can scan it.
+
+184
+00:21:10,930 --> 00:21:22,770
+And right now the generator is sending a very weak signal through the part to check what is at their best frequency to vibrate.
+
+185
+00:21:23,230 --> 00:21:29,770
+It makes this kind of graph and based on that we can say that, okay, we have one new key.
+
+186
+00:21:30,170 --> 00:21:33,590
+The more things you have, the more complex it will be.
+
+187
+00:21:34,190 --> 00:21:38,230
+But it's a transition booster, so that's why it's really wide and nice.
+
+188
+00:21:38,770 --> 00:21:40,230
+More peaks, more frequency?
+
+189
+00:21:41,090 --> 00:21:41,890
+Not really.
+
+190
+00:21:42,110 --> 00:21:43,950
+I mean, this is in general, this is better.
+
+191
+00:21:44,270 --> 00:21:44,510
+Okay.
+
+192
+00:21:44,790 --> 00:21:46,430
+This is a sign that it's really good.
+
+193
+00:21:46,730 --> 00:21:49,790
+The more things you have, the harder it for the system to vibrate.
+
+194
+00:21:50,010 --> 00:21:54,510
+That's why the perfect range of frequencies is going to be smaller.
+
+195
+00:21:55,740 --> 00:21:59,760
+And to this point, we can change the attitude and start the vibration.
+
+196
+00:22:01,850 --> 00:22:09,810
+When the vibrations are on, we can see the current frequency, power, and some other measurements.
+
+197
+00:22:10,170 --> 00:22:13,050
+But what we can control is the amplitude.
+
+198
+00:22:14,530 --> 00:22:17,190
+So, I can just change this by myself.
+
+199
+00:22:17,770 --> 00:22:20,050
+Antitude is the intensity of vibration.
+
+200
+00:22:23,340 --> 00:22:30,120
+And the cooling will remain for one minute after the vibrations are stopped.
+
+201
+00:22:32,100 --> 00:22:36,800
+What we have here in terms of parameters is the range of scan.
+
+202
+00:22:37,540 --> 00:22:39,500
+So you are using 40 kHz.
+
+203
+00:22:39,800 --> 00:22:43,920
+So we are usually scanning 1 kHz around.
+
+204
+00:22:44,520 --> 00:22:46,120
+So 39 to 41.
+
+205
+00:22:46,880 --> 00:22:52,540
+And the set is 5 kHz estimated a bit faster.
+
+206
+00:22:53,430 --> 00:23:00,590
+After the measurement is done and we get the draft, it's automatically setting the
+
+207
+00:23:00,920 --> 00:23:03,920
+F star, F top based on the offset.
+
+208
+00:23:04,300 --> 00:23:13,980
+So it's like, you have the graph, you have the F star offset, so it takes the top frequency and adds 200 Hz.
+
+209
+00:23:14,830 --> 00:23:22,090
+The F top offset is the lower frequency, it removes 600 Hz from it, and this is your working frame.
+
+210
+00:23:22,370 --> 00:23:24,110
+This is the F star, F top.
+
+211
+00:23:30,080 --> 00:23:40,500
+It automatically creates a good range for operation which is wider than the scan, but because when the system vibrates and heats up, the frequency will be going down.
+
+212
+00:23:40,700 --> 00:23:43,440
+That's why we allow it to go down a little bit more.
+
+213
+00:23:43,820 --> 00:23:47,780
+But it will adjust the frequency by itself when everything heats up.
+
+214
+00:23:48,340 --> 00:23:52,700
+Because the frequency is calculated based on things like that.
+
+215
+00:23:54,210 --> 00:24:06,350
+the frequency that you want to use the young modulus of the material the density of the material and then you get like the length of parts from it that's how we calibrate it but if the
+
+216
+00:24:06,350 --> 00:24:18,570
+young modules will change because of the heat or the parts will just change size because they will heat up even a little bit and that will already start changing the frequency but the generator is just changing it
+
+217
+00:24:18,570 --> 00:24:22,610
+by itself cool if it will get out from the range it will shut down
+
+218
+00:24:22,940 --> 00:24:35,090
+if it will work improperly and the power will go up it will shut down by itself so then you have the induction optimization which is the program that you generally are using
+
+219
+00:24:35,090 --> 00:24:47,410
+first of all you'll get a message wait for 10 seconds right now it's uh establishing a communication then it ensures that the furnace
+
+220
+00:24:47,410 --> 00:24:52,950
+is working and what we read from the furnace is the temperature
+
+221
+00:24:53,960 --> 00:24:57,580
+So we are reading what the current temperature of the parameters.
+
+222
+00:24:57,820 --> 00:24:58,700
+5 M bar.
+
+223
+00:24:59,730 --> 00:25:01,750
+Yeah, the pressure inside.
+
+224
+00:25:02,170 --> 00:25:02,590
+Oh, gotcha.
+
+225
+00:25:03,280 --> 00:25:05,280
+And the information about the oxygen.
+
+226
+00:25:05,760 --> 00:25:10,100
+It will not go over 1000 ppm because it's so precise, it's the maximum level.
+
+227
+00:25:11,140 --> 00:25:15,480
+You don't want to work if you have over like 100 ppm for sure.
+
+228
+00:25:15,660 --> 00:25:18,400
+The best value is 40-50 ppm.
+
+229
+00:25:18,840 --> 00:25:31,020
+it may go up when you start atomizing because there will be some oxygen going from the material plus something going from the chamber because of the heat depending on how well clean it is or if there's like some moisture
+
+230
+00:25:31,020 --> 00:25:43,390
+leftovers and so on that's it and he's saying general not it's not which uh over 100 ppm is too much right it tells you that it's
+
+231
+00:25:43,390 --> 00:25:46,170
+exceed limit and it's high oh gotcha
+
+232
+00:25:46,980 --> 00:25:52,060
+It's kind of like right now you have the warning and the full alert that something is wrong.
+
+233
+00:25:53,220 --> 00:26:02,000
+The middle part, just to control the basic vibrations during the operation, but you also have access to the part I told you about before.
+
+234
+00:26:02,590 --> 00:26:14,740
+So you can prepare everything from here as well, but during the, when you are ready to work, you just can use this, just start and stop it, change the basic parameters, make the scan and so on.
+
+235
+00:26:15,330 --> 00:26:19,410
+And that is used to control the pressure inside of the chamber.
+
+236
+00:26:20,250 --> 00:26:29,800
+So we have like a filling with the protective gas, we have the vent valve, cooling of the transistor, vacuum pipe.
+
+237
+00:26:30,580 --> 00:26:34,520
+So right now the vacuum pipe is working, but we do not have vacuum in the chamber.
+
+238
+00:26:35,500 --> 00:26:36,600
+Because it's open?
+
+239
+00:26:36,860 --> 00:26:39,780
+No, I mean the vacuum right now is given to the furnace.
+
+240
+00:26:40,480 --> 00:26:44,640
+If we want to give it to the chamber, we need to also open the valve.
+
+241
+00:26:49,200 --> 00:27:01,340
+option to gas wash is it's a cleaning of the chamber if you have like some minor leak or you want to just make sure that the atmosphere is really good the gas wash is filling
+
+242
+00:27:01,340 --> 00:27:13,700
+the chamber with like 500 millibars removing it with the vacuum pump but without going into vacuum because when you do the vacuum you will reach a limit where it's like okay that's the max and you have some leak from
+
+243
+00:27:13,700 --> 00:27:16,660
+the room anyway that way with the gas wash we
+
+244
+00:27:17,140 --> 00:27:20,440
+do not have that leak, we just pair the system with overpressure.
+
+245
+00:27:21,360 --> 00:27:29,380
+Pressure control is used to control exactly the pressure in the chamber by itself during the process.
+
+246
+00:27:31,460 --> 00:27:40,460
+Before this was made, it had to be controlled manually, and when we pour liquid metal into the chamber, the pressure would immediately go up.
+
+247
+00:27:40,560 --> 00:27:43,580
+It will affect the flow, so then you have to vent quickly.
+
+248
+00:27:44,180 --> 00:27:46,200
+So this was a major improvement.
+
+249
+00:27:46,800 --> 00:27:50,220
+That you don't need to worry about it, the system will keep it by itself.
+
+250
+00:27:51,160 --> 00:27:54,800
+And we can also set an automatic preparation of the chamber.
+
+251
+00:27:55,200 --> 00:28:00,980
+We just set what chamber pressure do we want to reach.
+
+252
+00:28:01,220 --> 00:28:09,700
+It will reach it, wait 30 seconds, fill it automatically with Argo, and if needed it will do it again or do the gas washers based on the oxygen relief.
+
+253
+00:28:10,160 --> 00:28:13,260
+So there is just one thing that we need to remember.
+
+254
+00:28:13,680 --> 00:28:15,540
+Because we are pretty high up...
+
+255
+00:28:15,710 --> 00:28:18,350
+We are not going to get to minus 1,000.
+
+256
+00:28:18,990 --> 00:28:23,570
+The maximum is minus 150 that I did yesterday.
+
+257
+00:28:24,030 --> 00:28:27,310
+Just because of how the sensor is calibrated.
+
+258
+00:28:28,110 --> 00:28:28,230
+Okay.
+
+259
+00:28:28,970 --> 00:28:30,350
+Minus 150?
+
+260
+00:28:31,250 --> 00:28:31,810
+850.
+
+261
+00:28:31,970 --> 00:28:32,350
+850.
+
+262
+00:28:32,610 --> 00:28:37,110
+So then in here, instead of this, we can use 848.
+
+263
+00:28:39,560 --> 00:28:48,710
+Yeah, it was at 50 millibars, so the option...
+
+264
+00:28:48,980 --> 00:29:01,430
+this valve was like open and closing because it was more or less at the exact level pretty simple the control is mostly manual and
+
+265
+00:29:01,430 --> 00:29:14,070
+we will go through the whole procedure later when we will be preparing the chamber in case of the furnace what we have here is that important note it
+
+266
+00:29:14,070 --> 00:29:22,390
+may not make much sense but before we can apply anything like the pressure then we need to use
+
+267
+00:29:22,780 --> 00:29:35,020
+this you need to get the green light in here in that place uh with it is that a button too or just a light it's also a button it just like disables it
+
+268
+00:29:35,020 --> 00:29:45,680
+so right now i am not able to apply any pressure this this switch is just to let the computer know that this is closed or yeah it's kind of a confirmation which
+
+269
+00:29:46,140 --> 00:29:54,500
+In the first model made by this company, the whole chamber was rotating and there was a manual sensor.
+
+270
+00:29:55,280 --> 00:29:59,480
+Then they removed it, but they never removed it from the software.
+
+271
+00:30:00,580 --> 00:30:04,120
+They are not making many changes to their machines.
+
+272
+00:30:04,380 --> 00:30:07,960
+It basically looks the same for 25 years, so it's slow.
+
+273
+00:30:08,660 --> 00:30:12,000
+But it's kind of just like a user confirmation.
+
+274
+00:30:12,780 --> 00:30:16,240
+So nobody without this special knowledge will be able to use the system.
+
+275
+00:30:18,630 --> 00:30:22,010
+You just mentioned this green light in here as the confirmation.
+
+276
+00:30:22,270 --> 00:30:24,370
+Right now you can apply the pressure.
+
+277
+00:30:24,850 --> 00:30:29,670
+If there is pressure or under pressure in the chamber it locks.
+
+278
+00:30:30,270 --> 00:30:32,290
+If there is a lock you cannot open it.
+
+279
+00:30:34,960 --> 00:30:37,180
+And the buttons allow you to do it.
+
+280
+00:30:37,300 --> 00:30:39,300
+So gas wash is used to fire the system.
+
+281
+00:30:39,790 --> 00:30:53,310
+however in order to do it properly you need to have the vacuum pump running now it will vacuum the furnace fill it with argon and it's set
+
+282
+00:30:53,310 --> 00:31:05,430
+for five repeats and after it's all done we just go straight to melting pressure so that over pressure that we're going to use to
+
+283
+00:31:05,430 --> 00:31:10,360
+melt the material before pouring it when we are ready to pour
+
+284
+00:31:11,280 --> 00:31:23,340
+We use the grainy pressure which is just another set value by us But it's usually higher and we will use it to push the material out of the furnace So melting pressure is slightly
+
+285
+00:31:23,340 --> 00:31:35,640
+lower than the pressure Melting pressure should be slightly lower than the chamber pressure Graining pressure should be higher than the chamber pressure in order to push material
+
+286
+00:31:35,640 --> 00:31:36,080
+out
+
+287
+00:31:38,040 --> 00:31:51,460
+it's just the control of the load closing and opening the furnace so is it is this open or closed when it's closed closed right now this is open yes you can also just see it moving okay oh
+
+288
+00:31:52,710 --> 00:32:04,800
+yeah cool uh turbo pressure is used manually when we have like a poor flow and want to push the material out a little bit more uh when we keep it the pressure in
+
+289
+00:32:04,800 --> 00:32:06,580
+the furnace will go to 1.5 bar
+
+290
+00:32:11,530 --> 00:32:24,050
+it goes down back to the melting or grading pressure setting you have the generator stop start so this is just a heating off heating on and you
+
+291
+00:32:24,050 --> 00:32:36,110
+don't really use those too much vacuum pump is just to make sure that we have the power going to the vacuum pump but we kind of like move around it and control it from
+
+292
+00:32:36,110 --> 00:32:38,970
+the HMI with our own equipment
+
+293
+00:32:40,460 --> 00:32:43,880
+And the top buttons here correspond to what you see on the screen.
+
+294
+00:32:44,540 --> 00:32:45,760
+So you can change the temperature.
+
+295
+00:32:46,140 --> 00:32:49,420
+You need to keep it on, then it just goes up faster.
+
+296
+00:32:55,150 --> 00:33:02,110
+You don't really change the program because we operate manually with HMI anyway.
+
+297
+00:33:03,290 --> 00:33:06,050
+And you have access to the program setup.
+
+298
+00:33:06,520 --> 00:33:10,680
+So here you can, for example, set maximum heating power.
+
+299
+00:33:11,640 --> 00:33:18,540
+Normally it's 100, but if you would like to slow down the heating, you can just limit the max power.
+
+300
+00:33:18,860 --> 00:33:23,160
+Or you can even create a heat ramp to heat up very slowly.
+
+301
+00:33:23,460 --> 00:33:29,320
+For example, if you would have some kind of ceramics inside, like some modified coosable and so on.
+
+302
+00:33:30,940 --> 00:33:36,180
+Melting pressure, as I said, we set it in here, same as the graining pressure set here.
+
+303
+00:33:36,440 --> 00:33:39,220
+And the graining pressure has a begin and end.
+
+304
+00:33:40,210 --> 00:33:52,270
+that's something that if you work with one material a lot and you can know what to expect from it you can set it even that at the beginning the pressure is a bit lower but then when
+
+305
+00:33:52,270 --> 00:34:04,340
+you get less material in the furnace the pressure is getting increased to just keep the same flow even if there is less material so kind of less of it pushing down and the maximum of
+
+306
+00:34:04,340 --> 00:34:09,180
+the turbo pressure 1.5 is the maximum but you can go lower
+
+307
+00:34:11,020 --> 00:34:15,500
+If you keep pressing the program setup, you go into the service mode.
+
+308
+00:34:18,590 --> 00:34:23,110
+So here you can access some parameters, but most of it is blocked.
+
+309
+00:34:23,350 --> 00:34:28,590
+We can change the thermocouple type, but we normally use the M type up to 1300.
+
+310
+00:34:29,610 --> 00:34:32,530
+That's what it is generally designed to reach.
+
+311
+00:34:36,230 --> 00:34:44,770
+And if you press it again and again, you also get information about the water flow and the water temperature from here.
+
+312
+00:34:45,450 --> 00:34:52,010
+So if you have an error, if you're trying to resolve it, you can see, for example, if there is any flow at all or if it's zero.
+
+313
+00:34:52,550 --> 00:34:56,390
+But it has to be over two liters per minute in order to operate.
+
+314
+00:34:59,610 --> 00:35:05,210
+Okay, and right now the preparation for the process is divided into two parts.
+
+315
+00:35:05,830 --> 00:35:09,050
+Preparation of the furnace and preparation of the chamber.
+
+316
+00:35:10,410 --> 00:35:13,870
+Actually, I need to open the chamber to do the proper furnace preparation.
+
+317
+00:35:36,820 --> 00:35:39,440
+There are also the videos from our site.
+
+318
+00:35:40,190 --> 00:35:53,410
+I don't know what I will be showing right now but it's important that I go through it and that you go through it later to life I'm ready to remove everything from the furnace starting
+
+319
+00:35:53,410 --> 00:36:05,640
+with the thermocouple this ceramic cover has a tendency to crack it's very thin so it's normal you have replacements don't worry about it and to
+
+320
+00:36:05,640 --> 00:36:10,560
+press the thermocoupling you just need to make sure that it's properly aligned with this
+
+321
+00:36:16,910 --> 00:36:21,830
+Unless this gets completely destroyed, it will always work.
+
+322
+00:36:24,410 --> 00:36:33,030
+Then to remove it, we need to remove the sealing rod, safety pin, and we take it out.
+
+323
+00:36:36,330 --> 00:36:38,110
+I think I'm just going to hold it.
+
+324
+00:36:38,210 --> 00:36:38,890
+I think it's easier.
+
+325
+00:36:39,510 --> 00:36:43,330
+Then we have the top insulation here.
+
+326
+00:36:44,570 --> 00:36:47,550
+It's a mix of silica and alumina.
+
+327
+00:36:52,010 --> 00:37:02,220
+Then we have the side insulation and the crucible itself.
+
+328
+00:37:02,400 --> 00:37:04,860
+To remove the crucible we need to remove a nut.
+
+329
+00:37:06,590 --> 00:37:10,190
+I will show you why.
+
+330
+00:37:10,710 --> 00:37:18,090
+So we have the crucible and there is nozzle holder with the graphic nozzle that we pour the material through.
+
+331
+00:37:19,220 --> 00:37:26,900
+And sometimes the nut holding everything from the bottom and the nozzle holder will stay like this, like slightly stuck.
+
+332
+00:37:27,530 --> 00:37:40,420
+you can try to remove the bottom insulation and then you can try to unscrew it while holding the nut at the same time so it doesn't fall
+
+333
+00:37:40,420 --> 00:37:53,540
+on the brake so from the bottom we have a graphite nut and the graphite seal from the top we have this nozzle holder also
+
+334
+00:37:53,860 --> 00:38:01,960
+graphite and one more graphite seal wow a lot of pieces
+
+335
+00:38:06,980 --> 00:38:19,610
+when there is no thermocoupling it's going to show an error of the master temperature sensor AC and the max temperature and
+
+336
+00:38:19,610 --> 00:38:30,610
+you can hear that there is like a very slight gas flow it's trying to put a little bit of argon because it sees that there is some kind of emergency so if we are doing some maintenance a good idea
+
+337
+00:38:36,850 --> 00:38:39,030
+Oh, so the argon comes up through here?
+
+338
+00:38:39,150 --> 00:38:40,570
+Ah, no, from the bottom.
+
+339
+00:38:40,670 --> 00:38:40,930
+From there.
+
+340
+00:38:41,190 --> 00:38:52,350
+But it's just kind of like, it sees it as an emergency, something bad happened, and it's just trying to keep us a little bit of argon flow, just to keep a good atmosphere and cool everything down faster.
+
+341
+00:38:53,250 --> 00:38:57,770
+So at this point, the last thing we can remove is the brass filter.
+
+342
+00:38:58,620 --> 00:39:00,640
+So this is just a preliminary filter.
+
+343
+00:39:00,940 --> 00:39:03,340
+It gets some of the evaporated material.
+
+344
+00:39:04,030 --> 00:39:18,780
+uh it's made of brass because the mascara sometimes may splash and just to get stick to it this one if it gets clogged you can use an ultrasonic bath to clean it okay it works pretty well and
+
+345
+00:39:18,780 --> 00:39:30,800
+right now what you would normally do is just put everything back together uh what you may need to replace is generally do need to replace is the graphite
+
+346
+00:39:30,800 --> 00:39:33,550
+nozzle so this is the point number one
+
+347
+00:39:34,050 --> 00:39:46,530
+we can take a look through make sure that there is nothing inside blocking it if it's not blocked we can use it again and that's also where it's good to have the precise drills or needles
+
+348
+00:39:46,530 --> 00:39:58,610
+because you if it gets clogged you can sometimes just try to unplug it sometimes it helps it works and in general you can also change the size of the opening so
+
+349
+00:39:58,610 --> 00:40:02,390
+right now it's 0.5 and if like all of them are 0.5
+
+350
+00:40:02,740 --> 00:40:15,360
+millimeters you have yeah but if you have a precise drill that you can use you can change it we use 0.7 sometimes up to like one millimeter is like the maximum
+
+351
+00:40:15,360 --> 00:40:27,710
+for standard operation unless it's something very strange that you're doing but one millimeter should be enough even for materials that do not want to flow so like the aluminum 4047
+
+352
+00:40:27,710 --> 00:40:31,670
+that i have it flow pretty well same copper tea
+
+353
+00:40:32,860 --> 00:40:45,020
+brass all always in general things like bismuth antimony that we atomize in here as well bismuth will be fun silver gold i mean bismuth is really easy to atomize
+
+354
+00:40:45,020 --> 00:40:57,220
+interesting particles silver gold yeah you can you can melt those in this unit or really yeah we have atomized those silver as well very easy to process because they
+
+355
+00:40:57,220 --> 00:41:01,400
+are not oxidizing they are flowing very well so in general that's like that's perfect
+
+356
+00:41:02,730 --> 00:41:04,470
+to work with here.
+
+357
+00:41:05,790 --> 00:41:14,390
+Then you have more, if you go into more of a aluminum model, magnesium, some strange compositions, that's when you make it slightly larger.
+
+358
+00:41:14,590 --> 00:41:18,030
+Okay, and we would just know that because we're not getting...
+
+359
+00:41:18,030 --> 00:41:24,290
+The flow, or like you get a little bit, then it gets clogged, you just see that it's not consistent.
+
+360
+00:41:24,850 --> 00:41:26,970
+And then usually you want it just a little bit bigger.
+
+361
+00:41:27,370 --> 00:41:29,750
+If it's too big, then you have too much.
+
+362
+00:41:30,340 --> 00:41:42,560
+but for example the aluminum silicon magnesium it can work with 0.5 but it's more reliable if you work with 0.7 okay okay it's something that for something much
+
+363
+00:41:42,560 --> 00:41:54,740
+as we already know in other cases it's a matter of running a test and experiment to see also the more contaminated and oxidized the material you have the worse the flow will be
+
+364
+00:41:59,270 --> 00:42:09,250
+So we have the standard graphite crucibles, we talked yesterday, you can coat them with like a boron nitride spray, e-tria spray, anything else you need.
+
+365
+00:42:09,530 --> 00:42:10,830
+So do we probably just buy that?
+
+366
+00:42:11,510 --> 00:42:13,630
+Like buy it and then pre-coat it?
+
+367
+00:42:14,350 --> 00:42:14,350
+Yeah.
+
+368
+00:42:14,530 --> 00:42:16,130
+Like do people do their own coating?
+
+369
+00:42:16,830 --> 00:42:17,090
+Yeah.
+
+370
+00:42:17,590 --> 00:42:22,310
+So like using kind of like a paint coating done to fit usually.
+
+371
+00:42:22,550 --> 00:42:28,730
+So the best one that we are using is the boron nitride with the...
+
+372
+00:42:29,000 --> 00:42:41,120
+alcohol solution and non-organic binders okay yeah that's like the best way it creates a very thin layer you don't need much just a tiny little bit and that's enough to operate remind me
+
+373
+00:42:41,120 --> 00:42:45,280
+how much one of those costs with the coating the spreader yeah with like this
+
+374
+00:42:45,630 --> 00:42:47,110
+Like with the boron nitride?
+
+375
+00:42:47,350 --> 00:42:49,150
+So we do not sell them with the coating.
+
+376
+00:42:49,750 --> 00:42:53,230
+You need to coat them before you wash them, you just let it dry.
+
+377
+00:42:53,490 --> 00:42:57,170
+If you want to be really precise, you can even heat it up a little bit.
+
+378
+00:42:57,690 --> 00:43:01,570
+But the best is to coat them the night before, let it dry.
+
+379
+00:43:02,970 --> 00:43:07,110
+But the coating is something that can just last a few processes.
+
+380
+00:43:08,290 --> 00:43:10,090
+So you don't sell it in the coat?
+
+381
+00:43:10,530 --> 00:43:14,150
+A whole bottle of spray, maybe it will cost $50.
+
+382
+00:43:20,330 --> 00:43:32,350
+the nozzles they come both in graphite and the boron nitride the ceiling rods are in graphite
+
+383
+00:43:32,350 --> 00:43:42,530
+but they are also some made from alumina we use it for some really reactive materials it's also worse to coat the ceiling rod because if the coating is too thick
+
+384
+00:43:43,090 --> 00:43:44,910
+The coating can just block the nozzle.
+
+385
+00:43:46,530 --> 00:43:48,490
+It's not perfect.
+
+386
+00:43:51,010 --> 00:43:56,910
+You also get some different insulation, some modified pieces.
+
+387
+00:43:57,410 --> 00:44:00,030
+But generally all of it serve the same purpose.
+
+388
+00:44:00,690 --> 00:44:02,170
+No matter how you use it or you change.
+
+389
+00:44:02,630 --> 00:44:08,610
+It's just that you have some more experimental equipment here as well to be used.
+
+390
+00:44:08,810 --> 00:44:12,650
+For most trials we just use exactly what you have here.
+
+391
+00:44:13,190 --> 00:44:19,990
+So before we put it all down, I will want to wipe it to make sure that it's all clean.
+
+392
+00:44:29,630 --> 00:44:34,950
+What's mostly important is to remove anything from the seal.
+
+393
+00:44:38,240 --> 00:44:51,460
+But when you have it open, you can also use a vacuum cleaner to remove some dust, some leftovers, like splashes from the material to make
+
+394
+00:44:51,460 --> 00:44:52,620
+sure that this is clean.
+
+395
+00:44:53,160 --> 00:44:55,000
+Otherwise, we may have a small...
+
+396
+00:44:55,600 --> 00:44:59,200
+You can also just remove the seal and fully clean it.
+
+397
+00:44:59,980 --> 00:45:05,910
+The glass, sometimes you will have to operate on it.
+
+398
+00:45:06,130 --> 00:45:07,430
+You just need to wipe it.
+
+399
+00:45:08,010 --> 00:45:09,530
+And the sealing surface.
+
+400
+00:45:23,540 --> 00:45:26,520
+And then we just put everything back together.
+
+401
+00:45:27,300 --> 00:45:31,100
+So, I will also wipe it off.
+
+402
+00:45:36,840 --> 00:45:38,020
+Is that always one of them dirty?
+
+403
+00:45:39,420 --> 00:45:40,760
+Yeah, that's pretty normal.
+
+404
+00:45:40,940 --> 00:45:45,640
+Every time you wipe it, you always get a little bit of...
+
+405
+00:45:45,900 --> 00:45:47,560
+The graphite just looks like that.
+
+406
+00:45:47,700 --> 00:45:49,780
+Yeah, you touch it and you get a graphite on you.
+
+407
+00:45:51,400 --> 00:45:53,240
+It's just how graphite is.
+
+408
+00:45:53,500 --> 00:45:54,300
+It's a great stuff.
+
+409
+00:45:54,800 --> 00:46:00,160
+So what I like to do is put the nozzle into the holder.
+
+410
+00:46:01,110 --> 00:46:02,210
+It doesn't matter which way, right?
+
+411
+00:46:02,610 --> 00:46:03,490
+It matters, yeah.
+
+412
+00:46:03,570 --> 00:46:03,810
+Oh, it does?
+
+413
+00:46:03,950 --> 00:46:04,130
+Okay.
+
+414
+00:46:04,130 --> 00:46:05,230
+The white one should be on the top.
+
+415
+00:46:05,390 --> 00:46:06,090
+Okay, so why don't...
+
+416
+00:46:06,090 --> 00:46:07,750
+Based on how it was treated.
+
+417
+00:46:08,190 --> 00:46:08,250
+Okay.
+
+418
+00:46:08,430 --> 00:46:11,430
+Then we connect the crucible to it.
+
+419
+00:46:13,290 --> 00:46:14,810
+It's crazy the graphite is threading.
+
+420
+00:46:15,090 --> 00:46:15,370
+Yeah.
+
+421
+00:46:17,450 --> 00:46:20,010
+I machined a bunch of custom graphite crucibles.
+
+422
+00:46:20,570 --> 00:46:25,610
+And right now, you want to tighten it, just not too much.
+
+423
+00:46:26,170 --> 00:46:29,500
+It's like you feel it's getting tight, that's it.
+
+424
+00:46:33,230 --> 00:46:48,630
+Then we just rebuild everything, starting with the graphite steel on the bottom, insulation, crucible.
+
+425
+00:46:52,740 --> 00:46:55,600
+And the thread goes through on the other side.
+
+426
+00:46:56,440 --> 00:46:58,080
+So right now the thread is in the chamber.
+
+427
+00:46:59,520 --> 00:47:01,820
+And we need to secure it with the nut.
+
+428
+00:47:02,430 --> 00:47:08,180
+So the whole thing is that when we are doing it, we tighten it a little bit.
+
+429
+00:47:08,960 --> 00:47:14,860
+Before you tighten it fully, you need to make sure that this hole is going to end up somewhere in here.
+
+430
+00:47:15,020 --> 00:47:17,300
+So that you can reach it with the thermocouple.
+
+431
+00:47:18,150 --> 00:47:18,850
+Oh, right.
+

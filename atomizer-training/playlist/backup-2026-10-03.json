@@ -1,0 +1,534 @@
+{
+ "taken_utc": "2026-10-03T22:48:22Z",
+ "videos": {
+  "raIcdus1lI0": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 3)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "KwY4KTY1UdI": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 3)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "79QQtmIm0JM": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 3)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "TvaFwSyqaog": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 3)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "osx7moehRnE": {
+   "snippet": {
+    "title": "Making the aluminum cups and plugs for the rePowder atomizer (narrated tutorial)",
+    "description": "How to make the aluminum cups and vented plugs that carry powder into the rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab: lathe footage of the first cups, the same steps animated from the CAD, the numbers to use, and what changes for the hydraulic-press versions.\n\n0:00 Intro\n0:28 Where the cups go\n0:44 The bar\n1:06 On the lathe\n2:15 The cup, step by step\n3:02 The plug, step by step\n3:52 Where the #60 drill is\n4:04 Why the air hole\n4:35 The numbers\n5:02 Four rules\n5:42 Hydraulic-press versions\n6:14 The drawing, and one request\n\nNumbers are from the parts made so far (issue #222). Cups: 2.750 in long, turned from 3/4 in 6063 bar (McMaster 1640T16), with a 1/2 in drill 2.25 in deep. Plugs: each cup's measured hole + .0005 to .0008 in (the first ones were .508 in), .5625 in long, with a #60 air hole. About 8.7 g of powder per cup.\n\nLinks\nThis tutorial (issue #248): https://github.com/vertical-cloud-lab/byu-vcl/issues/248\nCharge design (issue #222): https://github.com/vertical-cloud-lab/byu-vcl/issues/222\nDrawing, CAD and animations (PR #232): https://github.com/vertical-cloud-lab/byu-vcl/pull/232\nLathe footage, Gage Erickson: https://youtube.com/shorts/z6rwmQW_3Vg\nNarration text and build script: https://github.com/vertical-cloud-lab/byu-vcl/tree/edac3cd/atomizer-charge/tutorial\n\nThe CAD animations were made before the parts, so their out-of-date callouts have been corrected on screen. The narration is synthetic: Microsoft Edge TTS voice en-US-SteffanNeural.",
+    "tags": [
+     "BYU Vertical Cloud Lab",
+     "aluminum 6063",
+     "lathe",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "27",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "LpjXVa_TMXg": {
+   "snippet": {
+    "title": "rePowder atomizer, every recorded step: Part 1, the machine, and before a run (raw cut, draft 1)",
+    "description": "Part 1: the machine, and before a run. Raw cut, draft 1, for review. Every logged moment of the 26 atomizer videos on this channel (installation, the AMAZEMET rePowder training with Bartosz Kalicki on Sep 29–30 2026, the dosing sessions and the team's first run on Oct 2), reorganised into the order of a run and joined end to end: nothing narrated, stabilised or faded. The top bar names the source video, its day and the running source time; the yellow text is the timestamp log's note for the moment; subtitles are Whisper. Pauses with nothing logged are skipped, which is why the clips cut.\n\nChapters:\n0:09 1. Installation and commissioning\n8:48 2. The machine: a tour of the module\n23:52 3. The HMI: pages, scan, program and pressure logic\n39:48 4. Materials, boosters and particle size\n44:18 5. Safety and PPE\n46:16 6. Before a run: power-up and utilities\n58:24 7. Before a run: the ultrasonic stack\n2:04:49 8. Charge preparation: cups, rods and dosing\n2:35:25 9. Before a run: furnace, nozzle, crucible and loading\n3:08:10 10. Before a run: chamber, plate guard, bowl and container\n\nThe clip list, with a link to every source moment, and the procedure written out: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/stitch/edl.md). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "training"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Nz2Y1O3ekfg": {
+   "snippet": {
+    "title": "rePowder atomizer, every recorded step: Part 2, during and after a run (raw cut, draft 1)",
+    "description": "Part 2: during and after a run. Raw cut, draft 1, for review. Every logged moment of the 26 atomizer videos on this channel (installation, the AMAZEMET rePowder training with Bartosz Kalicki on Sep 29–30 2026, the dosing sessions and the team's first run on Oct 2), reorganised into the order of a run and joined end to end: nothing narrated, stabilised or faded. The top bar names the source video, its day and the running source time; the yellow text is the timestamp log's note for the moment; subtitles are Whisper. Pauses with nothing logged are skipped, which is why the clips cut.\n\nChapters:\n0:09 11. During a run: gas wash and heating\n1:25:04 12. During a run: the pour\n2:06:01 13. After a run: shutdown, cooldown, venting, powder out\n2:40:32 14. Cleaning between runs\n3:05:30 15. Tools, consumables and spares\n3:21:33 16. Lessons, planning and support\n\nPart 1: the machine, and before a run: https://www.youtube.com/watch?v=LpjXVa_TMXg\nThe clip list, with a link to every source moment, and the procedure written out: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/stitch/edl.md). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "training"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "hbaD2ii6f3c": {
+   "snippet": {
+    "title": "Unboxing of smaller crate w/ Atomizer pieces",
+    "description": "",
+    "categoryId": "24",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Kv9DT3Vo0GE": {
+   "snippet": {
+    "title": "Exciting Vertical Cloud Lab Construction Update!! Atomizer Will Be Installed Soon!",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "07QOPRHIEvw": {
+   "snippet": {
+    "title": "Placing the Atomizer!!!",
+    "description": "Spent some time cleaning the containment chamber out and unboxing the atomizer and crate to prepare for installation!",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "cKwQbKdE22Q": {
+   "snippet": {
+    "title": "Vacuum test",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "z6rwmQW_3Vg": {
+   "snippet": {
+    "title": "Lathe turning aluminum crucibles for atomizer experiments",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "2wMgeI-E7zw": {
+   "snippet": {
+    "title": "Atomizer training (sterling's phone)",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "wRc8p2_FnJo": {
+   "snippet": {
+    "title": "Video 1 of atomizer training",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "1F9_4ccwhss": {
+   "snippet": {
+    "title": "Atomizer Training Video 4",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "58wJ_Khwgyk": {
+   "snippet": {
+    "title": "Atomizer Training Video 5",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "tfb4fsVNIFI": {
+   "snippet": {
+    "title": "Atomizer Training Video 6",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "Pk0K5sBz-sQ": {
+   "snippet": {
+    "title": "Atomizer training",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "naePD8o9_Gk": {
+   "snippet": {
+    "title": "Atomizer Training Video 2",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "txH397FGTAU": {
+   "snippet": {
+    "title": "Atomizer Training Video 3",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "w02MRlZhpNk": {
+   "snippet": {
+    "title": "Dehumidifier troubleshooting",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "prj_xgeuQtM": {
+   "snippet": {
+    "title": "nzyjn0 AlSi10Mg-Al6063 dosing session",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "u-KjR5TENN4": {
+   "snippet": {
+    "title": "The expert cleaning the atomizer, pov",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "LSQmxwmlTkQ": {
+   "snippet": {
+    "title": "Drill press, number 70 bit, graphite nozzle",
+    "description": "https://github.com/vertical-cloud-lab/byu-vcl/issues/222#issuecomment-5914976661",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "f8KL31PN8bA": {
+   "snippet": {
+    "title": "Cartridge cleaning",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "TFpU4uqVF9c": {
+   "snippet": {
+    "title": "nzyjn0 atomization AlSi10Mg-Al6063",
+    "description": "also was mentioned that irregular and larger particles are better for compaction and oxidation,  respectively",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "FDRTt68Vfvo": {
+   "snippet": {
+    "title": "Atomizer Training Video 7",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "HTlUrAr5HVU": {
+   "snippet": {
+    "title": "Atomizer Training Video 8",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "9kn-HhXCr1o": {
+   "snippet": {
+    "title": "Atomizer Training Video 9",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "BxA7Z9Fliss": {
+   "snippet": {
+    "title": "Claude ping for dosing Al 4047",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "QXSj0j1OqL8": {
+   "snippet": {
+    "title": "Dosing Al 4047 powder",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "dXRB7c6GeDw": {
+   "snippet": {
+    "title": "Claude ping and troubleshooting for dosing Al 4047",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "qYyT39D5Yzo": {
+   "snippet": {
+    "title": "Atomizer Fri Oct 2 pt1",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "public"
+  },
+  "of5-LhkX_VQ": {
+   "snippet": {
+    "title": "Atomizer run Oct 2 part 2",
+    "description": "",
+    "categoryId": "28",
+    "defaultLanguage": "en",
+    "defaultAudioLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "p6jlgTJEOw4": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 0: installation and training overview (draft)",
+    "description": "Draft tutorial for review, assembled automatically from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos. Synthetic narration: Microsoft Edge TTS en-US-SteffanNeural at 1x, reading the SOP summary. Step animations and the written procedure with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "eKH7y4JgJD8": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft)",
+    "description": "Draft tutorial for review, assembled automatically from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos. Synthetic narration: Microsoft Edge TTS en-US-SteffanNeural at 1x, reading the SOP summary. Step animations and the written procedure with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "cGxBFZyFmCY": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft)",
+    "description": "Draft tutorial for review, assembled automatically from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos. Synthetic narration: Microsoft Edge TTS en-US-SteffanNeural at 1x, reading the SOP summary. Step animations and the written procedure with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "wPzP6I3jT5w": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft)",
+    "description": "Draft tutorial for review, assembled automatically from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos. Synthetic narration: Microsoft Edge TTS en-US-SteffanNeural at 1x, reading the SOP summary. Step animations and the written procedure with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "uVVeTokW3Us": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 0: the machine and how it works (draft 2)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "qiBB0lIXUDM": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 1: before a run (draft 2)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "sagBBb78pVQ": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 2: during a run (draft 2)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "50j8N8YyDxU": {
+   "snippet": {
+    "title": "rePowder atomizer at BYU VCL, tutorial 3: after a run (draft 2)",
+    "description": "Draft tutorial for review, assembled from the AMAZEMET rePowder training at BYU Vertical Cloud Lab (Sep 29–30 2026) and the team's first run (Oct 2 2026). Human narration: Bartosz Kalicki (AMAZEMET), cut from the training videos, stabilised and subtitled from Whisper. Synthetic narration: Microsoft Edge TTS en-US-AndrewMultilingualNeural at 1x, reading the SOP summary over 3D CadQuery/PyVista animations of each step and draw.io outlines. The written procedure, with a link to every moment of the source videos: https://github.com/vertical-cloud-lab/byu-vcl/pull/255 (atomizer-training/). Issue #124.",
+    "tags": [
+     "AMAZEMET",
+     "BYU VCL",
+     "atomizer",
+     "rePowder",
+     "tutorial"
+    ],
+    "categoryId": "28",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  },
+  "nPIPvVh38Dw": {
+   "snippet": {
+    "title": "Making the aluminum cups and plugs for the rePowder atomizer (narrated tutorial)",
+    "description": "How to make the aluminum cups and vented plugs that carry powder into the rePowder ultrasonic atomizer at the BYU Vertical Cloud Lab: lathe footage of the first cups, the same steps animated from the CAD, the numbers to use, and what changes for the hydraulic-press versions.\n\n0:00 Intro\n0:28 Where the cups go\n0:44 The bar\n1:06 On the lathe\n2:12 The cup, step by step\n2:58 The plug, step by step\n3:49 Where the #60 drill is\n4:01 Why the air hole\n4:32 The numbers\n4:59 Four rules\n5:39 Hydraulic-press versions\n6:11 The drawing, and one request\n\nNumbers are from the parts made so far (issue #222). Cups: 2.750 in long, turned from 3/4 in 6063 bar (McMaster 1640T16), with a 1/2 in drill 2.25 in deep. Plugs: each cup's measured hole + .0005 to .0008 in (the first ones were .508 in), .5625 in long, with a #60 air hole. About 8.7 g of powder per cup.\n\nLinks\nThis tutorial (issue #248): https://github.com/vertical-cloud-lab/byu-vcl/issues/248\nCharge design (issue #222): https://github.com/vertical-cloud-lab/byu-vcl/issues/222\nDrawing, CAD and animations (PR #232): https://github.com/vertical-cloud-lab/byu-vcl/pull/232\nLathe footage, Gage Erickson: https://youtube.com/shorts/z6rwmQW_3Vg\nNarration text and build script: https://github.com/vertical-cloud-lab/byu-vcl/tree/7a1d513/atomizer-charge/tutorial\n\nThe CAD animations were made before the parts, so their out-of-date callouts have been corrected on screen. The narration is synthetic: Microsoft Edge TTS voice en-US-SteffanNeural.",
+    "tags": [
+     "BYU Vertical Cloud Lab",
+     "aluminum 6063",
+     "lathe",
+     "metal powder",
+     "rePowder",
+     "tutorial",
+     "ultrasonic atomization"
+    ],
+    "categoryId": "27",
+    "defaultLanguage": "en"
+   },
+   "privacyStatus": "unlisted"
+  }
+ }
+}

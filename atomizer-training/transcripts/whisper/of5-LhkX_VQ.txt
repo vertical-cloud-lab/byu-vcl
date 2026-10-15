@@ -1,0 +1,196 @@
+[00:05] Probably, but
+[01:29] we can wipe it down.
+[01:36] Okay.
+[01:55] What time is it?
+[01:59] Uh-oh.
+[02:06] I'm supposed to meet Dr.
+[02:08] Barrett at 2.30, but I'll just tell him.
+[02:12] Wait.
+[02:24] We've just figured out some kinks and are about to start purging period.
+[02:36] Can we move our meeting back to 3 p.m.
+[02:39] push mark?
+[02:43] Maybe even 3.15 push mark?
+[03:00] Uh, you wiped it down?
+[03:01] Yeah.
+[03:04] Okay, which orientation should we put it in?
+[03:06] Just this way.
+[03:09] Probably the best.
+[03:15] I don't know.
+[03:21] I really don't know how fragile graphite is.
+[03:25] Barthage may sound like if you dropped it at all.
+[03:28] I don't like that at all, but I dropped
+[03:45] it.
+[03:48] Probably sound good.
+[03:59] That is down.
+[04:03] Alright, so.
+[04:05] Set at 250 degrees.
+[04:08] Still recording?
+[04:09] Yeah.
+[04:11] All right, green light is on.
+[04:18] Turn on pressure control.
+[04:23] All right, now we're going to put some vacuum pump and gas wash.
+[04:48] Yeah, so and then we'll do it.
+[04:53] We're doing it right now before we go temperature at almost.
+[04:57] Right now it's only sitting at 30 degrees.
+[05:05] Three washes, well, it's like four washes total.
+[05:08] So, yeah, one wash of the whole system at room temperature, then one wash at 250, then two washes at 500 if needed.
+[05:19] From the oxygen, accurate.
+[05:28] If it's under, if it's like low 20s, he says that's good.
+[06:32] Melting pressure.
+[06:54] It's kind of nice to know that all of this is for the chamber, and this is for like...
+[07:02] There's like two different, entirely different sections.
+[07:06] Yeah.
+[07:08] I don't know.
+[07:19] Maybe just put a date on that.
+[08:01] Now it's going back up with argon.
+[08:04] All right, now turn on this guy.
+[08:08] Open these a little bit.
+[08:19] Wait for cooling water flow to go off.
+[08:24] What's that say?
+[08:26] I know.
+[08:31] Seems like we could yeah, maybe we can figure out a way to Uh-huh 80
+[08:46] psi.
+[08:47] Hey, that's high.
+[09:04] Okay, so that's good now generator start.
+[09:18] Why is everything a whistle?
+[09:20] All right, so once that gets up to 250 degrees I'm gonna press vacuum pump and gas wash
+[09:32] again, right?
+[10:12] Yeah
+[10:39] No, it all does.
+[10:41] It just seems way faster.
+[10:44] Yeah, it's because this does five cycles.
+[10:47] Sorry, that's what I meant.
+[10:48] So five cycles per wash.
+[10:50] And only one cycle per wash.
+[10:52] Same cycle.
+[11:18] The washing cycle, you just press gas wash.
+[11:21] So vacuum pump, gas wash.
+[11:23] So then it has the ability to suck it out.
+[11:49] Melting pressure.
+[11:53] Then press.
+[11:59] So pressure control keeps this at 150 M bar.
+[12:02] I'm going to turn that off so we can suck it out.
+[12:04] Okay.
+[12:06] We just watch here now.
+[12:12] It's just
+[12:42] here.
+[12:42] Now we
+[13:07] can change this temperature up to 500.
+[13:18] It kind of surprises me there's no like manual setting where you can just like a keypad or something.
+[13:23] The what, sorry?
+[13:24] It surprises me there's no keypad or anything to type in an exact number.
+[13:28] All right.
+[13:29] Bartos are saying that the furnace system is like a different company and they won't let them like interface with each other.
+[13:41] And so that's why these are separate.
+[13:43] That's why it should be really easy to do a single button that does this entire cycle that we're doing.
+[13:49] But they can't because this company won't let them access it or something.
+[13:54] What?
+[13:57] And I don't know what the whole situation is.
+[13:58] Maybe it's not like that.
+[14:00] There's another reason.
+[14:02] That's what you made it sound like.
+[14:05] Yeah, I don't know.
+[14:06] That's what it sounds like to me, but I don't know what the real situation is.
+[14:20] Okay, so that's at 500.
+[14:22] Now we press vacuum pump and gas wash again.
+[14:33] These guys?
+[14:39] These are the chilled water.
+[14:46] Do you feel it?
+[14:47] It's like really cold.
+[14:50] This too.
+[15:02] So see that little white hat hose right there?
+[15:04] That's the argon into this tank.
+[15:06] I don't know where it comes from this side.
+[15:41] He said we could atomize gold and silver in this.
+[15:45] Can you imagine atomizing gold?
+[15:52] A bag of powder.
+[15:54] Yeah, I wonder what percent you'd actually get back on your wedding ring.
+[16:01] Yeah.
+[16:06] A 3D printed gold ring?
+[16:17] That'd be crazy.
+[16:26] Yeah, that's a good question.
+[16:31] All right, I'm going to turn off pressure control.
+[16:34] Okay, so
+[17:40] now pressure control.
+[18:10] okay so it's in low 20s so i think we're good we don't have to do the we don't have to do another purge cycle um so just write down
+[18:22] the m
+[19:15] bar all right now we can bring this up to 800.
+[19:33] is there a reason that you went to remember you went to 850 and then brought it down to 800 um that yeah i can't remember what that was about i think you just like felt like that was
+[19:45] a good amount so i guess we'll just have to play with it
+[19:48] it's not like exactly yeah i'm gonna set it to 8 30 and see how that does so we're hoping is that this is gonna mix well this is
+[20:01] still recording yep we're hoping this is gonna mix well oh it's starting to glow that'd be
+[20:20] sweet i'd invest in that i don't
+[22:02] think it's melting just yet though so how
+[22:15] many um how long were these uh caps that you made just looks
+[22:31] like maybe we don't need to make them so long since
+[22:34] It didn't go hardly in at all, you know?
+[22:48] What ordering could
+[23:16] explode.
+[23:27] I guess we'll see if .17 bar is high enough.
+[23:33] He kept turning it down.
+[23:37] Oh, hey, it's melting.
+[23:41] Oh, it's gone.
+[23:44] Definitely not a lot in there.
+[23:48] I'm not seeing...
+[23:50] Oh, wait.
+[23:54] I see something that looks like the powder might be clumped up again.
+[23:59] No, I think it's mixing.
+[24:02] Yeah, I think it wasn't there a little bit and then it melted or might be still something.
+[24:07] As the induction happens, it mixes it a little bit.
+[24:12] Yeah, exactly.
+[24:18] It's kind of amazing the heat from the window versus like...
+[24:23] Oh, this is like full.
+[24:24] Yeah.
+[24:27] Okay, so we let that go for about two minutes.
+[24:32] And then all hell is going to break loose when we try to get this to atomize properly.
+[24:37] Yeah, it
+[25:00] might be too much.
+[25:02] So I'm going to bring it to about 90.
+[25:09] What's interesting about this is you can't really know what that's set to.
+[25:23] So we're going to have to create digital readouts.
+[25:26] So we know, okay, this is 90, maybe, you know.
+[25:31] It's like 88 to 100 there.
+[25:34] Around 90, yeah.
+[25:48] All right, so I'm going to do the thing now.
+[25:52] Check the plate.
+[25:59] What plate is this?
+[26:03] Yeah.
+[26:06] I'm not going to go to the carpet.
+[26:09] All right,
+[26:25] hopefully this goes well.
+[26:26] We'll see.
+[26:26] Ceiling rod, grinning pressure.
+[26:48] Will you turn off the frequency?
+[26:50] Hey, look at that.
+[27:01] It's totally working.
+[27:08] Yep, I think so.
+[27:11] Most of it did not get atomized, unfortunately.
+[27:24] Okay, so it was definitely too high.
+[27:27] It should have been a lot lower, I think.
+[27:29] That would have helped a lot.
+[27:31] Let's see.
+[27:33] The plate needed to be a lot closer to the thing.
+[27:37] So I have more time to run down it.
+[27:41] Once I have a ceiling rod.
+[27:44] Dinner to stop.
+[27:47] And ultrasonic to start.
+[27:50] Cooler, yeah.
+[27:59] Temperature.
+[28:00] Bring this down to 250.
+[28:06] Well, we got some.
+[28:08] I don't know how much, but definitely some.
+[28:14] Yeah?
+[28:15] Like, you can see a pile?
+[28:17] Oh, good.
+[28:23] 250.
+[28:37] Okay, now we seem to wait until it's 400 degrees up here.
+[28:40] Then we can...
+[28:42] Open this and cool up faster and then we'll clean it It's the the
+[28:55] graphite when exposed to oxygen above 400 degrees or above 500 degrees Reacts with oxygen.
+[29:01] Okay, and so when it's below 400 or once it's at 400 degrees, it's safe to expose it to oxygen.
+[29:07] Kind of interesting, huh?
+[29:20] Right, I love it like water dripping on
+[29:30] No, this is leaking so we need to get up we need to tighten that more something Yeah, first atomizer
+[29:55] run by ourselves.
+[29:56] Whoo pause the
+[30:11] video

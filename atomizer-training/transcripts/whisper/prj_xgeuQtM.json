@@ -1,0 +1,12 @@
+{
+"video_id": "prj_xgeuQtM",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 4124.699875,
+"segments": [
+{
+"start": 17.07,
+"end": 18.03,
+"text": "Let's see how this looks"
+}
+]
+}

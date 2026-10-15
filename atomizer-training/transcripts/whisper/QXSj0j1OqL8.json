@@ -1,0 +1,237 @@
+{
+"video_id": "QXSj0j1OqL8",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, no vad)",
+"duration": 1334.195375,
+"segments": [
+{
+"start": 1.6,
+"end": 21.8,
+"text": "It's time to get to the end of"
+},
+{
+"start": 21.8,
+"end": 21.84,
+"text": "the day."
+},
+{
+"start": 35.78,
+"end": 37.18,
+"text": "so"
+},
+{
+"start": 64.8,
+"end": 66.2,
+"text": "so"
+},
+{
+"start": 91.0,
+"end": 92.4,
+"text": "So..."
+},
+{
+"start": 139.42,
+"end": 149.98,
+"text": "I'm going to make it a little bit more."
+},
+{
+"start": 153.8,
+"end": 155.2,
+"text": "so"
+},
+{
+"start": 202.62,
+"end": 204.48,
+"text": "This is..."
+},
+{
+"start": 221.76,
+"end": 224.56,
+"text": "so so"
+},
+{
+"start": 245.66,
+"end": 247.46,
+"text": "Thank you."
+},
+{
+"start": 275.72,
+"end": 277.12,
+"text": "so"
+},
+{
+"start": 301.7,
+"end": 301.94,
+"text": "We'll be back."
+},
+{
+"start": 334.54,
+"end": 334.66,
+"text": "We'll be right back."
+},
+{
+"start": 366.08,
+"end": 367.48,
+"text": "so"
+},
+{
+"start": 394.26,
+"end": 395.22,
+"text": "Thank you."
+},
+{
+"start": 421.04,
+"end": 422.78,
+"text": "Thank you."
+},
+{
+"start": 453.76,
+"end": 455.16,
+"text": "so"
+},
+{
+"start": 481.08,
+"end": 482.48,
+"text": "So..."
+},
+{
+"start": 516.74,
+"end": 518.14,
+"text": "so"
+},
+{
+"start": 540.46,
+"end": 541.86,
+"text": "So."
+},
+{
+"start": 578.08,
+"end": 579.48,
+"text": "so"
+},
+{
+"start": 610.74,
+"end": 613.54,
+"text": "so so"
+},
+{
+"start": 640.42,
+"end": 643.22,
+"text": "Thank you."
+},
+{
+"start": 663.14,
+"end": 664.54,
+"text": "so"
+},
+{
+"start": 693.42,
+"end": 694.82,
+"text": "so"
+},
+{
+"start": 725.36,
+"end": 726.76,
+"text": "so"
+},
+{
+"start": 752.62,
+"end": 754.02,
+"text": "so"
+},
+{
+"start": 787.28,
+"end": 788.68,
+"text": "so"
+},
+{
+"start": 814.82,
+"end": 816.22,
+"text": "so"
+},
+{
+"start": 843.88,
+"end": 845.28,
+"text": "so"
+},
+{
+"start": 878.72,
+"end": 878.78,
+"text": "Thank you."
+},
+{
+"start": 904.2,
+"end": 905.6,
+"text": "so"
+},
+{
+"start": 936.14,
+"end": 937.7,
+"text": "Thank you."
+},
+{
+"start": 969.68,
+"end": 971.08,
+"text": "So..."
+},
+{
+"start": 993.78,
+"end": 995.18,
+"text": "so"
+},
+{
+"start": 1024.04,
+"end": 1026.96,
+"text": "I don't know."
+},
+{
+"start": 1052.42,
+"end": 1053.26,
+"text": "We'll be back."
+},
+{
+"start": 1080.0,
+"end": 1081.38,
+"text": "I'm sorry."
+},
+{
+"start": 1112.26,
+"end": 1113.66,
+"text": "so"
+},
+{
+"start": 1140.08,
+"end": 1141.94,
+"text": "I'm sorry."
+},
+{
+"start": 1172.86,
+"end": 1174.26,
+"text": "so"
+},
+{
+"start": 1201.38,
+"end": 1202.78,
+"text": "So."
+},
+{
+"start": 1235.94,
+"end": 1236.04,
+"text": "We'll be right back."
+},
+{
+"start": 1261.46,
+"end": 1261.54,
+"text": "We'll be back."
+},
+{
+"start": 1290.26,
+"end": 1291.66,
+"text": "So."
+},
+{
+"start": 1330.0,
+"end": 1332.8,
+"text": "so you"
+}
+]
+}

@@ -1,0 +1,133 @@
+[00:23] Yeah, it looks like it's dosing now.
+[00:27] Close to three grams at the moment.
+[00:29] Looks like it's flowing pretty well, too.
+[00:39] And we're getting into the funnel, which is good.
+[00:47] At least from what I can tell.
+[01:31] I'm a little surprised that it stopped.
+[01:36] Unless I didn't load enough in.
+[01:44] I guess I wasn't checking to see if it stopped.
+[01:49] I'll go back to the video.
+[01:56] And go live.
+[01:59] Let's go back until we get to the last.
+[02:02] point at which it was pouring.
+[02:06] OK, so it's going, going, going.
+[02:14] Still see it trickling.
+[02:23] Looks like it's tapping.
+[02:25] OK, and it stopped, even though it was still flowing powder.
+[02:34] What happened?
+[03:24] The new protocol it wrote.
+[03:33] Hey, good.
+[03:35] Yeah.
+[03:39] Bioheap transfer.
+[03:41] I'm not actually totally sure.
+[03:45] Yeah, currently it's the drain.
+[03:48] Also, I'm screen recording my session here.
+[03:53] This is the...
+[03:54] I'm going to stop
+[04:19] for some reason, and I don't know why.
+[04:23] What were you dosing some of the...
+[04:25] Yeah, the atomized.
+[04:27] Oh, yeah.
+[04:28] Yeah, sweet.
+[04:29] It was going great, and then it just stopped.
+[04:33] This team is awesome.
+[04:35] Yeah.
+[04:37] Who's lab is this?
+[04:39] This is Chris Dillon's lab.
+[04:41] Dr.
+[04:42] Dillon.
+[04:47] All right.
+[04:48] Yeah.
+[04:49] Okay.
+[04:50] Amazing.
+[04:51] And then I'll be able to bring this over pretty soon, I think.
+[04:55] That's a solid 6063.
+[05:08] Yeah.
+[05:08] Yeah, what you ordered.
+[05:13] Oh.
+[05:33] Is it important for you to do this one?
+[05:36] Nope.
+[05:38] Just clean it with IPA is the only thing.
+[05:42] You can throw both in if you want.
+[05:47] Medium just for
+[07:20] a faster response here.
+[08:04] That's what I get for trying to be fancy.
+[08:06] Bring a demo.
+[08:46] Oh, memory error.
+[09:39] Maybe I should get a Pico 2s.
+[09:42] Save my RAM.
+[09:44] This should be quite solvable.
+[18:21] Since I'm screen recording and I don't have my laptop, then I'm just kind of sitting here.
+[18:28] Kind of okay.
+[18:31] It's a little bit nice, actually.
+[19:01] I'm thirsty.
+[19:02] I'll go with some more.
+[19:32] No, I can't.
+[19:34] Is that on card access?
+[19:38] Hmm.
+[19:39] Never mind.
+[19:41] Something got messed up with my card access.
+[19:43] So if I leave, I can't get back in.
+[19:45] I need to call the engineering lab supervisor.
+[19:50] I will pull up.
+[21:06] I could update.
+[23:14] Okay, it looks like it's backup.
+[23:17] It looks like there's some pieces maybe
+[23:29] kind of stuck in there.
+[23:33] In the nozzle area, some of those larger pieces.
+[23:39] A larger, auger inner channel would help with that, or me just sitting
+[23:52] it with light amount, like I probably should have.
+[24:02] But it's still coming out.
+[25:04] And the views are not, or something else is happening.
+[25:15] That's light.
+[25:24] It looks like we're still getting powder, but yeah, there's really just some bigger pieces in the middle there.
+[25:57] It might
+[26:21] just not be mated properly.
+[26:32] Maybe that back clamp could be helping support
+[26:45] it a little bit better.
+[26:51] I think that put it in exactly though.
+[27:21] Yeah, those bigger chunks really gummed up the nozzle.
+[29:07] That's what Salmon will know about that.
+[29:22] Yeah, I
+[29:35] guess it's not going to be looking out with the clog up there.
+[29:48] Trying to get to 4.5, so it's actually kind of a ways away.
+[44:36] Yeah, it
+[51:46] looks like we're...
+[51:47] Going back again.
+[51:57] Still got that skipping or whatever's going on with the meter.
+[52:05] Even here it's slowing down.
+[52:07] It's getting closer.
+[52:09] Seeing stuff coming out still.
+[52:26] Slaying down even more.
+[52:28] Okay.
+[52:40] Three, two, zero.
+[52:42] Okay.
+[52:42] Yeah.
+[52:43] Pretty much on spot on.
+[52:46] That's the drift, which was just from the fume hood that we didn't get a perfect seal of the fume hood.
+[52:52] But overall, I'd say that's pretty good.
+[53:10] Probably gonna pop back up in a second.
+[53:17] Update saying it finished, hopefully.
+[53:22] Unless it's just still turning.
+[53:23] There we go.
+[53:27] Posited a, maybe, maybe not a small amount.
+[53:31] That last tilt back.
+[53:36] That tilt back could probably be a lot slower.
+[53:40] Less jarring.
+[53:45] Yeah, just a random other thing.
+[53:47] I noticed the solenoid actually bends a little bit when it hits, just because it's only fixtured on one side.
+[53:55] It's on the 3D print, fixtured to the 3D print, so actually cantilevers just a little bit.
+[54:06] It's kind of interesting.
+[54:13] It's on deflection.
+[54:19] Just hoping it will say it's done any minute.
+[55:05] Maybe I'll just call it there and grab it.
+[55:09] So I've got 8 grams.
+[55:13] Take a small amount.
+[55:15] Load it into the 4047 aluminum.
+[55:23] Load it into the 6063 one end closed tube.
+[55:30] And I gotta go.
+[55:37] So I'm going to...
+[55:45] Okay, we're
+[58:56] finished.
+[59:15] there it is we got balance reading enough time for that last one auger rpm so it kind of came back up a little bit yeah
+[59:28] there we go
