@@ -1,0 +1,10 @@
+For SEM-EDS quantitative characterization of AlSi10Mg LPBF samples (cast or AM) to recover the Mg content (0.2-0.45 wt% nominal) and confirm the alloy composition per ASTM E1508-12AR19:
+1. Recommended accelerating voltage (kV): trade-offs between 10, 15, 20 kV for Mg/Al/Si K-line excitation, interaction volume, and absorption of soft Mg Kα.
+2. Recommended beam current / probe current / dead-time target. ASTM E1508 says 20-30 % dead time; how much beam current does that require on a typical Schottky FEG (Apreo/Helios/etc.) with an Octane Plus SDD?
+3. Live time: how long is required to get statistically meaningful Mg counts at 0.3 wt% Mg in Al with a 30 mm² SDD? Provide a rule-of-thumb or formula.
+4. Amplifier time constant: ASTM E1508 favors longer amp times for trace work; what is the optimal value for resolving Mg Kα from Al Kα tail?
+5. Working distance, take-off angle, magnification: optimal values and why. Is the change from 48.7° take-off (non-flat sample) to 35° (polished) likely to cause a problem?
+6. Standards: which Mg-bearing standards (pure Mg, MgO, Mg2Si, NIST SRM AlSi alloys) should be used, and how often should they be re-measured?
+7. Sample-prep workflow per ASTM E1078: metallographic mount in conductive epoxy, grind through 320/600/1200/2400 SiC, polish through 6/3/1 µm diamond + 0.05 µm colloidal silica, ultrasonic clean, dry, mount on stub with conductive tape and silver paint, optional carbon coat (~10 nm). Anything specific for AlSi10Mg / soft Al alloys (avoid smearing, recommended polishing time/load)?
+8. ICP-OES cross-validation: how often, and what's a reasonable accuracy expectation for ICP-OES Mg measurements on AlSi10Mg?
+Provide a concrete, parameter-by-parameter SOP. Cite ASTM E1508-12AR19, ASTM E1078-14R20, Goldstein et al. (4th ed.), NIST DTSA-II/EPQ, EDAX TEAM application notes, and recent AlSi10Mg LPBF characterization papers.
