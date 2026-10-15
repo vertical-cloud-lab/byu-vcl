@@ -29,6 +29,7 @@ Make every stub the same way. How the powder goes on changes the sizes you measu
 * Handle stubs only with clean tweezers, by the pin or the edge.
 * Stick a carbon tab on the stub, press it flat through its top liner with the back of the tweezers, then peel the liner off. Don't touch the adhesive.
 * Touch the cotton end of a wooden swab into the powder so that a little sticks. The handle has to be stiff, so the powder flies off in a narrow spray.
+* Stand the stub on the bottom of a clean glass beaker, so the hood's airflow can't carry the powder off and whatever misses stays in the beaker.
 * Hold the swab about 2 cm above the tab, cotton end over the tab, and flick the handle once with a finger.
 * Check under a loupe or the optical microscope. Aim for one layer, with most particles about their own diameter apart. If it's too sparse, flick again. If there are clumps or particles on top of each other, start a new stub.
 * Don't spread the powder around or press it into the tape. Particles that sink into carbon tape measure small: PNNL found 20-25% on their powder.
@@ -61,7 +62,7 @@ Make every stub the same way. How the powder goes on changes the sizes you measu
 
 On a loose sphere, the EDS result depends on where the beam lands on the curve. A polished section is flat, so it's the better check of how well the 4047 mixed in ([caliber PR #13](https://github.com/vertical-cloud-lab/caliber/pull/13#issuecomment-6032150138)). It also shows pores inside the particles.
 
-* Mount about 0.5 g of the powder by following the [polishing SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/157ab1e/SOP/sem-eds-polishing-sop.md), with the changes below.
+* Mount about 0.5 g of the powder by following the [polishing SOP](https://github.com/vertical-cloud-lab/byu-vcl/blob/157ab1e/SOP/sem-eds-polishing-sop.md) from Step 2 on, with the changes below.
 * **Use a conductive mounting powder.** Bakelite doesn't conduct, so particles sitting in it on their own charge up in the SEM.
     * Mix the powder with about 3 g of graphite-filled mounting powder (OnPoint CarbonMount `CBM-2001`, $29 per lb; the lab doesn't have it yet).
     * Spread the mix evenly over the press ram, top it up with the usual black Bakelite, and press as in Step 2.
