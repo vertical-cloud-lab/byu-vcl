@@ -50,6 +50,43 @@ from youtube.yt_service import get_youtube_service, upload_video
 Uploads default to `private`. Videos uploaded through the API from an unaudited Cloud
 project are locked private anyway; publish from YouTube Studio.
 
+## 3D print timelapses
+
+The printers record a timelapse of every print, and Bambu Studio downloads each one as
+`video_YYYY-MM-DD_HH-MM-SS.mp4`. Every one of them uploaded as public notified the
+channel's subscribers, including 16 in two days in October
+([#282](https://github.com/vertical-cloud-lab/byu-vcl/issues/282)). They are now collected,
+oldest print first, in the public playlist
+[3D Print Timelapses](https://www.youtube.com/playlist?list=PLTheyaYPoIfU), and all but a
+few are **unlisted**. Anyone with the playlist or a link can still watch them, but they
+stay off the channel page and send no notifications.
+
+**Uploading a new one:** in YouTube Studio's upload dialog, choose the *3D Print
+Timelapses* playlist and set the visibility to **Unlisted**. Unlisted uploads notify no one.
+Making a video public later notifies subscribers then, but only if it has never been public
+before: YouTube notifies only the first time a video goes public
+([YouTube Help](https://support.google.com/youtube/answer/9230970)). So swapping which
+already-published timelapses are public is free.
+
+[`print_timelapses.py`](print_timelapses.py) finds every upload with that file name (plus
+`EXTRA_IDS`, for ones renamed before upload), adds any that are missing to the playlist,
+and makes everything except `KEEP_PUBLIC` unlisted. It leaves private videos alone. When it
+updates a video's status it copies over the video's licence and other status fields,
+because `videos.update` resets any field it is not sent, and 16 of these timelapses are
+Creative Commons. The dry run needs only the upload token. `--apply` needs the full token,
+so it has to run under `@claude-youtube`:
+
+```bash
+python youtube/print_timelapses.py            # what would change
+python youtube/print_timelapses.py --apply
+```
+
+On 2026-10-15 all 49 timelapses were public; 44 of them became unlisted. The five that are
+still public are placeholders until Audrey picks her favourites. To use her picks, put
+them in `KEEP_PUBLIC` and run the script with `--apply`.
+[A contact sheet](../docs/images/print-timelapses-2026-10-15.jpg) numbers them in playlist
+order.
+
 ## The OAuth client
 
 Desktop-app OAuth client in a Cloud project owned by **vcl.hardware.streams@gmail.com**,
