@@ -275,6 +275,24 @@ the 8 mm whole-deck view, where the near wall hides about 4 mm of a 6.9 mm well.
 [`cad/coverage.py`](cad/coverage.py) draws this and writes the numbers to
 [`exports/deck_coverage.json`](exports/deck_coverage.json).
 
+![The 8 mm view with the mount over the middle of the deck](renders/wide_view_8mm.png)
+
+**All twelve slots at 8 mm.** Put the lens axis halfway between the left and right screws and
+186.1 mm behind the line through the two front screws. In a full-resolution still every slot
+is then 1,088 × 731 px and every well 58 px across, about 2,700 px inside its opening. By #84's
+options doc that is enough to detect a precipitate (~50 px) but short of the ~100 px it asks
+for to measure intensity. The fit is tight front to back: 8 mm to spare beyond the outermost
+wells, and none beyond the slot outlines. So the lens's widest setting must really reach
+8.38 mm or less, and the axis must land within about 8 mm of the mark front to back. Taller
+labware at the front and back edges can still be clipped, because its top sits nearer the
+lens. In the corner slots the camera looks into the wells at up to 22°, which leaves about a
+quarter of a corner well's floor in view; in slots 5 and 8 it is 70 %. A live preview has to
+show the whole sensor to judge this. [PR #84's `preview_server.py`](camera/README.md#use-the-whole-sensor)
+streams a 16:9 crop that hides 60 % of slots 1–3 and 10–12, so use
+[`camera/preview_server.py`](camera/preview_server.py) instead.
+[`cad/wide_view.py`](cad/wide_view.py) draws this and writes
+[`exports/wide_view_8mm.json`](exports/wide_view_8mm.json).
+
 So pick the slot from the protocol. As of 2026-10-12 the colour-sensing runs on
 [PR #202](https://github.com/vertical-cloud-lab/byu-vcl/pull/202) keep the plate in **slot 7**,
 with the tips in 6, the sensor dock in 10 and the paint in 3. For those runs, mount over slot 7
@@ -287,10 +305,11 @@ y +54.7) and zoom to about 14 mm. Both slots then fit, at about 100 px across a 
 1. Home the robot (the gantry parks at the back right, out of view) and put a plate in
    the slot you picked.
 2. Put the mount on the lid above that slot, with the arrow on the base pointing at the door.
-3. Start `preview_server.py`
-   ([#84](https://github.com/vertical-cloud-lab/byu-vcl/blob/e949ad0/ot2-overhead-camera/README.md#5-zoom-and-focus-live-preview))
-   and slide the mount until the plate is centred and square in the preview. Zoom first,
-   then focus.
+3. Start [`camera/preview_server.py`](camera/preview_server.py) on the camera's Pi and slide
+   the mount until the plate is centred and square in the preview. Zoom first, then focus.
+   It is #84's [preview server](https://github.com/vertical-cloud-lab/byu-vcl/blob/e949ad0/ot2-overhead-camera/README.md#5-zoom-and-focus-live-preview)
+   with the whole sensor in view; #84's own shows a 16:9 crop. Other ways to see the feed are
+   in [`camera/README.md`](camera/README.md).
 4. Tape the four tabs down.
 
 At this stage it images **through the window**. The collar keeps room light off the patch
