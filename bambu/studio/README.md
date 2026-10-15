@@ -56,8 +56,8 @@ To record it: `ffmpeg -f x11grab -framerate 15 -video_size 1920x1080 -i :99.0 -c
    - Three *Beta available* prompts: *Don't show me Beta updates again*.
    - A *Configuration update* (profile package): **Cancel**. That keeps the profiles bundled with
      the release, the ones `slice_a1mini.py` sliced with.
-4. **Login/Register** opens a WebKit page: e-mail, password, *I agree*, *Log In*, then the
-   authenticator code. See [Logging in](#logging-in-password-plus-an-authenticator-code).
+4. **Login/Register** opens a WebKit page: e-mail, password, *Log In*, then the authenticator
+   code. See [Logging in](#logging-in-password-plus-an-authenticator-code).
 5. **"Synchronise your personal data from Bambu Cloud?"**: *No*. The project brings its own
    presets.
 
@@ -70,13 +70,22 @@ runs no longer get `BAMBU_USERNAME` or `BAMBU_PASSWORD`, so they can prepare a p
 send it.
 
 1. Type the e-mail address and password from the environment, never as arguments:
-   `python ui.py typeenv BAMBU_USERNAME`, then `python ui.py typeenv BAMBU_PASSWORD`. Tick *I
-   agree* and press *Log In*.
-2. Bambu then asks for the 6-digit code from the authenticator app. Click its field and type
-   the current code with `bambu-totp | DISPLAY=:99 xdotool type --delay 90 --file -`. Inside
-   the last 5 s of a 30 s window, `bambu-totp` waits for the next one, so the code can't expire
-   between typing and confirming. No run has seen this dialog yet: find the field from a
-   screenshot the first time, and record its coordinates here.
+   `python ui.py typeenv BAMBU_USERNAME`, then `python ui.py typeenv BAMBU_PASSWORD`, and press
+   *Log In*. The runs up to 2026-10-08 also ticked *I agree*; on 2026-10-15 the page had no such
+   box. With Studio maximised, the Login window (648 × 819) opened centred, and these held:
+   e-mail field (960, 246), password field (930, 296), *Log In* (960, 374).
+2. Bambu then shows **Identity Verification**: "Please enter the 6-digit verification code from
+   the identity authentication app (Such as Google Authenticator, Duo Mobile)"
+   ([screenshot](../evidence/2026-10-15/login-test/authenticator-dialog.png)). Click the first
+   box, (751, 551), and type the current code with
+   `bambu-totp | DISPLAY=:99 xdotool type --delay 90 --file -`. Then click *Confirm*, (960, 632).
+   Inside the last 5 s of a 30 s window, `bambu-totp` waits for the next one, so the code can't
+   expire between typing and confirming.
+   - The six boxes are about 42 px square, centred on y 551 at x 751, 835, 918, 1002, 1086 and
+     1169. One `xdotool type` fills all six: each digit moves the focus on.
+   - It doesn't submit itself. *Confirm* spans x 713–1206, y 612–651. The ✕ is at (1198, 455).
+   - The dialog is drawn inside the Login window, so `wmctrl -l` still lists only *Login*.
+     Behind it, the e-mail address stays readable through the grey.
 3. If Bambu asks for an **e-mailed** code instead, stop and say so in the thread. **Never ask
    anyone to post an e-mailed code, and never post one.** Bambu accepts the account's e-mail
    address plus a current e-mailed code as a complete login, with no password, even with 2-step
@@ -92,6 +101,31 @@ deleted, but it is in git history.
 The typed e-mail address shows on screen until the login closes. So cut that stretch from any
 recording, mask it in any screenshot that leaves the runner, and delete the raw recording
 afterwards.
+
+**The first login this way, 2026-10-15** ([issue #281](https://github.com/vertical-cloud-lab/byu-vcl/issues/281),
+a login test with no print). Bambu asked for the authenticator code, not an e-mailed one, and the
+first code worked: *Log In* at 17:01:05 UTC, the code typed at 17:01:36, *Confirm* at 17:01:45.
+Five seconds later the Login window had closed and the *Synchronise* prompt was up. What else it
+found:
+
+- **Studio selects a printer by itself.** Once logged in, it picks the account's last-selected
+  printer (or else the first on the list), here the A1 mini, and connects to it through Bambu's
+  cloud, with no click (`DeviceManager::load_last_machine`; it lands in
+  `app.user_last_selected_machine` in `~/.config/BambuStudio/BambuStudio.conf`). The printer is
+  selected before anyone opens the Device page.
+- **The Device page fetches a camera still by itself.** In 02.08.02.61, showing the Device page
+  makes Studio download a "Printer Preview" still from the selected printer's camera, by LAN and
+  then the cloud (`MediaPlayCtrl::on_show_hide` → `start_device_image_flow`, if the printer's
+  firmware sets bit 42 of `cfg`). The live video still waits for ▶. So a run told not to open a
+  camera shouldn't open the Device page. This one didn't.
+- **After login, `BambuStudio.conf` holds the printers' LAN access codes**: an
+  `access_code.<serial>` entry for each printer on the account. Never upload or commit
+  `~/.config/BambuStudio`, for example as a job artifact. Those keys are also how this run
+  confirmed both printers are on the account without opening the Device page: there was one for
+  `H2D_SERIAL` and one for `A1_MINI_SERIAL`, matched without printing either.
+- **The sidebar shows the account's name** (`user_` and digits), not the e-mail address. It's
+  masked in the [signed-in screenshot](../evidence/2026-10-15/login-test/signed-in-home-masked.png)
+  all the same.
 
 ## The GUI resets a CLI project's changed settings
 
