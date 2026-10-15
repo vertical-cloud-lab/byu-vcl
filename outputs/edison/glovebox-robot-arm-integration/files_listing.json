@@ -1,0 +1,122 @@
+{
+  "data": [
+    {
+      "id": 28460048,
+      "data_storage_id": "645031b7-0670-4aca-aefe-f66b67d66b23",
+      "operation": "create",
+      "actor_id": "c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+      "actor_type": "trajectory",
+      "timestamp": "2026-09-15T23:08:39.504361Z",
+      "data_storage": {
+        "name": "pqa:docs:c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+        "description": null,
+        "is_collection": false,
+        "status": "active",
+        "content": null,
+        "embedding": null,
+        "user_id": "UxTMERa8SbeYkryBDMlwEgoJNF53",
+        "label": "a8a3fa3daa51",
+        "parent_id": null,
+        "dataset_id": "c374b16e-8eb8-456b-9942-5eb7aca5bb09",
+        "project_id": null,
+        "share_status": "private",
+        "short_alias": null,
+        "id": "645031b7-0670-4aca-aefe-f66b67d66b23",
+        "path": "a8a3fa3daa51",
+        "created_at": "2026-09-15T23:08:39.427126Z",
+        "modified_at": "2026-09-15T23:08:42.336876Z",
+        "tags": null,
+        "file_path": "/tmp/tmpy_ugffu2.pkl",
+        "metadata": {
+          "size": 104678638
+        },
+        "trajectory_id": null,
+        "project_name": null,
+        "project_description": null,
+        "is_kosmos_project": null
+      }
+    },
+    {
+      "id": 28459618,
+      "data_storage_id": "da39451f-f5a6-49f0-8f2f-306d6b857e3e",
+      "operation": "create",
+      "actor_id": "c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+      "actor_type": "trajectory",
+      "timestamp": "2026-09-15T23:04:00.893830Z",
+      "data_storage": {
+        "name": "BYU Glovebox Decision Matrix",
+        "description": "Risk-adjusted comparison of purpose-built internal automation, retrofitting a used purifier glovebox, and keeping the robot outside with automated transfer. The matrix separates advertised purchase price from the atmosphere, contamination, maintenance, and combustible-powder controls that will determine total project risk.",
+        "is_collection": false,
+        "status": "active",
+        "content": null,
+        "embedding": null,
+        "user_id": "UxTMERa8SbeYkryBDMlwEgoJNF53",
+        "label": "0ac3a273a6c3",
+        "parent_id": null,
+        "dataset_id": "f2ff301a-1bd8-4c8e-b71a-d699b3be0923",
+        "project_id": null,
+        "share_status": "private",
+        "short_alias": null,
+        "id": "da39451f-f5a6-49f0-8f2f-306d6b857e3e",
+        "path": "0ac3a273a6c3",
+        "created_at": "2026-09-15T23:04:00.868328Z",
+        "modified_at": "2026-09-15T23:04:00.893830Z",
+        "tags": null,
+        "file_path": null,
+        "metadata": {
+          "session_id": "c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+          "artifact_id": "e9e9e23f-d913-4169-96a5-5c572b3263bc",
+          "state_artifact_id": "artifact-01",
+          "artifact_type": "table",
+          "artifact_title": "BYU Glovebox Decision Matrix",
+          "artifact_caption": "Risk-adjusted comparison of purpose-built internal automation, retrofitting a used purifier glovebox, and keeping the robot outside with automated transfer. The matrix separates advertised purchase price from the atmosphere, contamination, maintenance, and combustible-powder controls that will determine total project risk."
+        },
+        "trajectory_id": null,
+        "project_name": null,
+        "project_description": null,
+        "is_kosmos_project": null
+      }
+    },
+    {
+      "id": 28459592,
+      "data_storage_id": "927105af-db08-4351-8768-15f0a0bbcc76",
+      "operation": "create",
+      "actor_id": "c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+      "actor_type": "trajectory",
+      "timestamp": "2026-09-15T23:01:14.619938Z",
+      "data_storage": {
+        "name": "Published Robotic Glovebox Precedents",
+        "description": "Published precedents for robotic automation in gloveboxes and related controlled-atmosphere enclosures, with the ambient-air A-Lab retained as an important engineering comparator. \u201cNot reported\u201d entries identify genuine documentation gaps that should not be interpreted as evidence of compatibility.",
+        "is_collection": false,
+        "status": "active",
+        "content": null,
+        "embedding": null,
+        "user_id": "UxTMERa8SbeYkryBDMlwEgoJNF53",
+        "label": "893fb99e4fb9",
+        "parent_id": null,
+        "dataset_id": "58cb41b8-960f-4f8d-824a-ba69815189aa",
+        "project_id": null,
+        "share_status": "private",
+        "short_alias": null,
+        "id": "927105af-db08-4351-8768-15f0a0bbcc76",
+        "path": "893fb99e4fb9",
+        "created_at": "2026-09-15T23:01:14.565943Z",
+        "modified_at": "2026-09-15T23:01:14.619938Z",
+        "tags": null,
+        "file_path": null,
+        "metadata": {
+          "session_id": "c623503e-0b50-4a1c-84ff-13a364e8e5fd",
+          "artifact_id": "6b2cd5a4-a352-48c6-a8c8-23e7db068158",
+          "state_artifact_id": "artifact-00",
+          "artifact_type": "table",
+          "artifact_title": "Published Robotic Glovebox Precedents",
+          "artifact_caption": "Published precedents for robotic automation in gloveboxes and related controlled-atmosphere enclosures, with the ambient-air A-Lab retained as an important engineering comparator. \u201cNot reported\u201d entries identify genuine documentation gaps that should not be interpreted as evidence of compatibility."
+        },
+        "trajectory_id": null,
+        "project_name": null,
+        "project_description": null,
+        "is_kosmos_project": null
+      }
+    }
+  ]
+}
