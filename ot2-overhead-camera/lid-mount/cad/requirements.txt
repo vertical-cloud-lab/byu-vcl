@@ -1,0 +1,5 @@
+cadquery>=2.4
+numpy
+pyvista        # render.py
+ezdxf          # template.py
+pymupdf        # template.py: checks the scale of the PDF

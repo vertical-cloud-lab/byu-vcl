@@ -1,0 +1,98 @@
+{
+ "date": "2026-09-26",
+ "rig": "record/rig.sh on the GitHub runner: Xvfb 1920x1080, headed Google Chrome 153 with SwiftShader WebGL, all traffic through an SSH SOCKS tunnel to the CubXL Pi (exits via AS6510, Brigham Young University); ffmpeg x11grab at 15 fps",
+ "account": "BYU VCL (ONSHAPE_USERNAME); signed in before ffmpeg started",
+ "folder": "vcl-shared > OT-2 Overhead Camera",
+ "takes": [
+  {
+   "take": 1,
+   "result": "all 14 features built, but volume 90,299.123 mm^3: Mirror 1 and Mirror 3 had nothing to mirror (a feature-list pick lands in the dialog's field over a second after the click; the script had moved on to the mirror-plane field). Not uploaded; document sent to Trash. Fixed with Ui.pick_into."
+  },
+  {
+   "take": 2,
+   "result": "correct part, volume 108,840.264 mm^3, but the recorder's 0.01 mm^3 tolerance was tighter than Onshape's own run-to-run noise, so it stopped before uploading. Tolerance now 1 mm^3 (one bolt hole is 95). Document sent to Trash."
+  },
+  {
+   "take": 3,
+   "result": "uploaded",
+   "video": "https://www.youtube.com/watch?v=AL11cyBySeE",
+   "privacy_requested": "unlisted",
+   "privacy_after_upload": "unlisted (videos.insert honoured it; no unaudited-project lock)",
+   "document": "https://cad.onshape.com/documents/a894b5c8d85967c6e3593a68/w/aa25c9a193fe7f6313710dcf/e/30e05f50a9e5bfb10c512f63",
+   "volume_mm3": 108840.264,
+   "recorded_s": 442.21,
+   "chapters": [
+    [
+     0.0,
+     "New document in vcl-shared › OT-2 Overhead Camera"
+    ],
+    [
+     33.69,
+     "Plate, 112 × 112 × 6 mm"
+    ],
+    [
+     90.71,
+     "Light collar, Ø52 mm"
+    ],
+    [
+     139.53,
+     "Lens aperture, Ø46 mm through"
+    ],
+    [
+     192.21,
+     "Posts: one drawn, three mirrored"
+    ],
+    [
+     302.57,
+     "Bolt holes: one drawn, three mirrored"
+    ],
+    [
+     431.39,
+     "Check: volume from Onshape's mass properties"
+    ]
+   ],
+   "known_problem": "no pointer, key badges or captions: overlay.js threw when run as an init script (no document element yet), so it was missing after the new document's full page load. The description's sentence about the overlay is wrong for this video; the upload-only token cannot edit it. Fixed in overlay.js. Superseded by take 4; delete it with the full token or in Studio."
+  },
+  {
+   "take": 4,
+   "result": "uploaded; the one to keep",
+   "video": "https://www.youtube.com/watch?v=UqWTBlqvQ0g",
+   "privacy": "unlisted",
+   "overlay": "pointer, key badges and captions present (checked on a frame after upload)",
+   "document": "https://cad.onshape.com/documents/a80d99ff55b9c1cb2129a983/w/670ac0efd52829e16b9c57af/e/6173b35d7be9bdc997305432",
+   "recorded_s": 445.88,
+   "volume_mm3_read_after_recording": 108840.264,
+   "known_problem": "the recording stops as the mass properties panel opens: the fixed 4 s wait read an empty Volume field and the script stopped. read_volume now polls.",
+   "chapters": [
+    [
+     0.0,
+     "New document in vcl-shared › OT-2 Overhead Camera"
+    ],
+    [
+     34.75,
+     "Plate, 112 × 112 × 6 mm"
+    ],
+    [
+     90.75,
+     "Light collar, Ø52 mm"
+    ],
+    [
+     141.59,
+     "Lens aperture, Ø46 mm through"
+    ],
+    [
+     197.73,
+     "Posts: one drawn, three mirrored"
+    ],
+    [
+     310.64,
+     "Bolt holes: one drawn, three mirrored"
+    ],
+    [
+     443.37,
+     "Check: volume from Onshape's mass properties"
+    ]
+   ]
+  }
+ ]
+}
