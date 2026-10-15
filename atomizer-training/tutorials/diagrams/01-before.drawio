@@ -1,0 +1,50 @@
+<mxfile host="make_diagrams.py" type="device">
+  <diagram id="Tutorial1Beforearun" name="Tutorial 1 · Before a run">
+    <mxGraphModel dx="1280" dy="720" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1280" pageHeight="720" background="#FFFFFF" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="bg_layer" value="Background (locked)" style="locked=1;" parent="0" />
+        <mxCell id="bg" value="" style="rounded=0;html=1;fillColor=#FFFFFF;strokeColor=none;" vertex="1" parent="bg_layer">
+          <mxGeometry x="0" y="0" width="1280" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="1" value="Outline" parent="0" />
+        <mxCell id="title" value="Tutorial 1 · Before a run" style="text;html=1;whiteSpace=wrap;align=center;verticalAlign=middle;fontSize=42;fontStyle=1;fontColor=#1F2937;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="22" width="1200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_box" value="&lt;span style=&quot;font-size:20px;font-weight:normal&quot;&gt;Step 1&lt;/span&gt;&lt;br&gt;Utilities" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fontSize=28;fontStyle=1;fillColor=#00897B;strokeColor=#00574B;strokeWidth=2;fontColor=#FFFFFF;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="30" y="119.4" width="276.5" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="s1_panel" value="&lt;ul style=&quot;margin:0;padding-left:22px&quot;&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;chilled water: facility valve &lt;span style=&quot;white-space:nowrap&quot;&gt;barely open&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;compressed air &lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;~4 bar&lt;/span&gt;&lt;/b&gt; (&lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;8 bar&lt;/span&gt;&lt;/b&gt; supply)&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;argon 5N, &lt;span style=&quot;white-space:nowrap&quot;&gt;regulator at &lt;/span&gt;&lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;8 bar&lt;/span&gt;&lt;/b&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:0px&quot;&gt;vacuum pump oil between min and max&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fontSize=22;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=14;fillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="30" y="239.4" width="276.5" height="443.2" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_box" value="&lt;span style=&quot;font-size:20px;font-weight:normal&quot;&gt;Step 2&lt;/span&gt;&lt;br&gt;Furnace" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fontSize=28;fontStyle=1;fillColor=#00897B;strokeColor=#00574B;strokeWidth=2;fontColor=#FFFFFF;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="344.5" y="119.4" width="276.5" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="s2_panel" value="&lt;ul style=&quot;margin:0;padding-left:22px&quot;&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;lid open, &lt;span style=&quot;white-space:nowrap&quot;&gt;rod lever up&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;nozzle &lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;0.5 / 0.7 mm&lt;/span&gt;&lt;/b&gt;, white side up&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;crucible &lt;span style=&quot;white-space:nowrap&quot;&gt;just tight&lt;/span&gt;; nut from below, &lt;span style=&quot;white-space:nowrap&quot;&gt;snug, never forced&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;insulation, then thermocouple&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;sealing rod in, &lt;span style=&quot;white-space:nowrap&quot;&gt;lever down&lt;/span&gt;, then the charge: &lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;≤ 20 mm&lt;/span&gt;&lt;/b&gt;, &lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;250–300 g&lt;/span&gt;&lt;/b&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:0px&quot;&gt;lid latched, no hissing&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fontSize=22;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=14;fillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="344.5" y="239.4" width="276.5" height="443.2" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_box" value="&lt;span style=&quot;font-size:20px;font-weight:normal&quot;&gt;Step 3&lt;/span&gt;&lt;br&gt;Chamber" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fontSize=28;fontStyle=1;fillColor=#00897B;strokeColor=#00574B;strokeWidth=2;fontColor=#FFFFFF;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="659" y="119.4" width="276.5" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="s3_panel" value="&lt;ul style=&quot;margin:0;padding-left:22px&quot;&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;splash disc in the &lt;span style=&quot;white-space:nowrap&quot;&gt;container's flange&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;container: flange &lt;span style=&quot;white-space:nowrap&quot;&gt;finger-tight&lt;/span&gt; &lt;span style=&quot;white-space:nowrap&quot;&gt;(a 2nd person helps)&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;catch bowl &lt;span style=&quot;white-space:nowrap&quot;&gt;through the door&lt;/span&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:0px&quot;&gt;covers over &lt;span style=&quot;white-space:nowrap&quot;&gt;the openings&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fontSize=22;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=14;fillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="659" y="239.4" width="276.5" height="443.2" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_box" value="&lt;span style=&quot;font-size:20px;font-weight:normal&quot;&gt;Step 4&lt;/span&gt;&lt;br&gt;Ultrasonic stack" style="rounded=1;arcSize=10;whiteSpace=wrap;html=1;fontSize=28;fontStyle=1;fillColor=#00897B;strokeColor=#00574B;strokeWidth=2;fontColor=#FFFFFF;spacing=6;" vertex="1" parent="1">
+          <mxGeometry x="973.5" y="119.4" width="276.5" height="104" as="geometry" />
+        </mxCell>
+        <mxCell id="s4_panel" value="&lt;ul style=&quot;margin:0;padding-left:22px&quot;&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;transducer → booster → sonotrode → plate&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;torque &lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;65 / 60 / 50 N·m&lt;/span&gt;&lt;/b&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;scan: one wide peak, &lt;span style=&quot;white-space:nowrap&quot;&gt;a little over &lt;/span&gt;&lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;40 kHz&lt;/span&gt;&lt;/b&gt;&lt;/li&gt;&lt;li style=&quot;margin-bottom:12px&quot;&gt;wet test; transducer cover on&lt;/li&gt;&lt;li style=&quot;margin-bottom:0px&quot;&gt;door shut with &lt;span style=&quot;white-space:nowrap&quot;&gt;all &lt;/span&gt;&lt;b style=&quot;white-space:nowrap&quot;&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt;3&lt;/span&gt;&lt;/b&gt;&lt;span style=&quot;white-space:nowrap&quot;&gt; bolts&lt;/span&gt;&lt;/li&gt;&lt;/ul&gt;" style="rounded=1;arcSize=5;whiteSpace=wrap;html=1;fontSize=22;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;spacingTop=14;fillColor=#E0F2F1;strokeColor=#00897B;strokeWidth=1;fontColor=#1F2937;" vertex="1" parent="1">
+          <mxGeometry x="973.5" y="239.4" width="276.5" height="443.2" as="geometry" />
+        </mxCell>
+        <mxCell id="a1" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s1_box" target="s2_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a2" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s2_box" target="s3_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a3" value="" style="edgeStyle=none;html=1;endArrow=block;endFill=1;endSize=5;strokeWidth=4;strokeColor=#4B5563;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="s3_box" target="s4_box">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

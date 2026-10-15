@@ -1,0 +1,524 @@
+1
+00:00:00,000 --> 00:00:07,330
+Alright, got our material.
+
+2
+00:00:10,170 --> 00:00:11,570
+I'm going to put that guy in.
+
+3
+00:00:12,240 --> 00:00:13,280
+Clean the material.
+
+4
+00:00:13,600 --> 00:00:19,120
+Put the material in.
+
+5
+00:00:26,210 --> 00:00:26,830
+This guy.
+
+6
+00:04:00,540 --> 00:04:01,560
+I met with Paul today.
+
+7
+00:04:03,080 --> 00:04:04,020
+I met with Paul.
+
+8
+00:04:04,960 --> 00:04:05,460
+Yeah.
+
+9
+00:04:08,720 --> 00:04:10,000
+Yeah, I think he'll do a good job.
+
+10
+00:04:12,940 --> 00:04:15,520
+I just gave him the list of things we put together, you know?
+
+11
+00:04:16,190 --> 00:04:17,830
+And kind of explain some things.
+
+12
+00:04:18,760 --> 00:04:22,570
+So hopefully he'll order that tea piece today.
+
+13
+00:04:25,420 --> 00:04:27,880
+He's going to look for some tools too.
+
+14
+00:04:28,350 --> 00:04:40,520
+oh geez all right this
+
+15
+00:04:41,130 --> 00:04:59,380
+i forgot something i think
+
+16
+00:04:59,380 --> 00:05:17,710
+we're ready i think we're ready finally okay got the list noise on
+
+17
+00:05:17,710 --> 00:05:30,210
+pressure control vacuum pump gas
+
+18
+00:05:30,210 --> 00:08:12,010
+wash it's gonna do its thing a couple times some pressure
+
+19
+00:08:12,010 --> 00:11:29,800
+okay what's
+
+20
+00:19:35,560 --> 00:19:40,590
+up um these ones will be about 80.
+
+21
+00:19:45,990 --> 00:19:46,530
+Not yet.
+
+22
+00:19:46,850 --> 00:19:47,450
+Well, I don't know.
+
+23
+00:19:47,550 --> 00:19:49,110
+We just got to look under the microscope first.
+
+24
+00:19:49,330 --> 00:19:55,040
+Then we'll know for sure, but the SEM stuff.
+
+25
+00:19:55,800 --> 00:19:57,220
+I also told S.
+
+26
+00:19:57,340 --> 00:19:59,920
+Paul to start making some SEM samples for us.
+
+27
+00:20:00,640 --> 00:20:02,120
+I don't know where the carbon tape is, though.
+
+28
+00:20:02,160 --> 00:20:03,200
+You might have to show them where that is.
+
+29
+00:20:06,810 --> 00:20:07,150
+Oh, yeah.
+
+30
+00:20:12,180 --> 00:20:12,680
+What's that?
+
+31
+00:20:14,950 --> 00:20:15,270
+Okay.
+
+32
+00:20:15,590 --> 00:20:16,450
+Do you want to see this, Ronnie?
+
+33
+00:20:16,610 --> 00:20:16,990
+Or Carl?
+
+34
+00:20:19,600 --> 00:20:37,610
+Not yet, but this isn't
+
+35
+00:20:37,610 --> 00:20:39,550
+like a 30-second thing.
+
+36
+00:20:39,550 --> 00:20:42,450
+It's like a 20-minute thing, but if you want to come watch and see how it works.
+
+37
+00:20:42,450 --> 00:20:43,010
+Let me see it.
+
+38
+00:20:43,420 --> 00:20:46,980
+Right now, it's filling up with argon gas.
+
+39
+00:20:47,670 --> 00:20:51,110
+So I'm just trying to see if this gets low enough, then it'll be good.
+
+40
+00:20:51,150 --> 00:20:53,660
+Otherwise, I'll have to do it again.
+
+41
+00:20:55,740 --> 00:20:56,760
+How low does that have to be?
+
+42
+00:20:57,080 --> 00:20:58,220
+Low 20s is good enough.
+
+43
+00:20:59,040 --> 00:21:00,020
+So that we're good enough?
+
+44
+00:21:00,200 --> 00:21:00,480
+Mm-hmm.
+
+45
+00:21:01,430 --> 00:21:05,050
+Yeah, so now it's 19 parts per ppm.
+
+46
+00:21:07,900 --> 00:21:08,820
+Particles per meter?
+
+47
+00:21:10,120 --> 00:21:10,860
+Parts per million.
+
+48
+00:21:11,080 --> 00:21:11,810
+Parts per million.
+
+49
+00:21:11,930 --> 00:21:12,150
+Yeah.
+
+50
+00:21:12,910 --> 00:21:14,590
+All right, so now...
+
+51
+00:21:15,210 --> 00:21:31,410
+we are going to put the temperature up to 900 and see what that does yeah so
+
+52
+00:21:36,630 --> 00:21:50,190
+now these should start melting have you
+
+53
+00:21:50,190 --> 00:22:02,460
+seen this run yet so what we're going to do for the next couple weeks is try to get some data on how consistently we
+
+54
+00:22:02,460 --> 00:22:10,790
+can make powders and sort of the cheapest runs possible basically so i'm not trying to go for the small stuff just yet
+
+55
+00:22:11,490 --> 00:22:13,030
+But we might, I mean, I don't know.
+
+56
+00:22:13,170 --> 00:22:14,010
+We'll see what this produces.
+
+57
+00:22:14,110 --> 00:22:15,150
+We'll see what we already have.
+
+58
+00:22:15,630 --> 00:22:15,730
+Yeah.
+
+59
+00:22:16,010 --> 00:22:17,350
+We've already got like five batches in there.
+
+60
+00:22:17,490 --> 00:22:19,030
+Did we find a sifter yet?
+
+61
+00:22:19,670 --> 00:22:20,070
+No.
+
+62
+00:22:22,600 --> 00:22:26,600
+There's a couple people in the chemical engineering department that said that they might have one.
+
+63
+00:22:26,940 --> 00:22:27,160
+Really?
+
+64
+00:22:27,540 --> 00:22:29,260
+That we could use forever?
+
+65
+00:22:29,680 --> 00:22:30,080
+No.
+
+66
+00:22:31,280 --> 00:22:32,980
+We should get our own.
+
+67
+00:22:33,040 --> 00:22:33,160
+Yeah.
+
+68
+00:22:34,020 --> 00:22:34,640
+But it's not expensive.
+
+69
+00:22:36,520 --> 00:22:38,540
+It depends on the grade of the sifter.
+
+70
+00:22:39,220 --> 00:22:41,340
+Well, if you've got time and you want to look for that, then...
+
+71
+00:22:42,060 --> 00:22:42,700
+That'd be great.
+
+72
+00:22:43,850 --> 00:22:45,070
+See how it's glowing in there.
+
+73
+00:22:47,460 --> 00:22:48,920
+Oh, that looks very warm.
+
+74
+00:22:49,420 --> 00:22:49,560
+Yeah.
+
+75
+00:22:50,820 --> 00:22:54,980
+I just don't know the best way, because you want it to be contained when it's being sifted, right?
+
+76
+00:22:55,080 --> 00:22:56,300
+Because you don't want to breathe it at all.
+
+77
+00:22:56,620 --> 00:22:56,860
+Yeah.
+
+78
+00:22:57,780 --> 00:23:02,370
+And I just sift it through the tube.
+
+79
+00:23:02,650 --> 00:23:03,410
+Oh, that's good, yeah.
+
+80
+00:23:09,320 --> 00:23:11,840
+So these will start melting like butter here in just a second.
+
+81
+00:23:18,940 --> 00:23:20,340
+Set a timer for 16 minutes.
+
+82
+00:23:23,700 --> 00:23:26,020
+That's how much time is left on the storage for the phone.
+
+83
+00:23:37,870 --> 00:23:40,070
+I just poke it in there real quick.
+
+84
+00:23:46,170 --> 00:23:47,830
+I want to get some like metaglasses.
+
+85
+00:23:49,510 --> 00:23:59,900
+Did you collect the power at the bottom of that?
+
+86
+00:24:00,800 --> 00:24:01,200
+Yeah.
+
+87
+00:24:01,840 --> 00:24:12,080
+It's kind of a crazy process actually.
+
+88
+00:24:25,870 --> 00:24:28,370
+Increase the pressure to 20 bar.
+
+89
+00:24:36,380 --> 00:24:38,660
+Last time we weren't, I don't think we had enough pressure.
+
+90
+00:24:49,890 --> 00:24:51,250
+PPM counts to 27.
+
+91
+00:24:54,550 --> 00:24:57,610
+Maybe we should have let it sit a little bit longer before.
+
+92
+00:26:20,930 --> 00:26:23,310
+Alright, I'll just have to remember for next time we gotta bring down.
+
+93
+00:26:23,850 --> 00:26:24,890
+I'm gonna bring down the...
+
+94
+00:26:25,660 --> 00:26:42,520
+the price per million to like seven just do one more purge at the end there let it settle the longer and then we'll guess where we need to be all right that's melting that's good bring this
+
+95
+00:26:42,520 --> 00:27:22,720
+down to 850 40 completely melted
+
+96
+00:27:22,720 --> 00:27:44,980
+now okay so let's let that go for two minutes well eight
+
+97
+00:27:44,980 --> 00:28:00,340
+nine ten point ten point five on that display there so it
+
+98
+00:28:00,340 --> 00:28:47,540
+sucks here this next
+
+99
+00:28:47,540 --> 00:28:52,160
+scanner is looking good i'm gonna press draining pressure
+
+100
+00:28:53,340 --> 00:29:18,900
+Ceiling rod and that's going to atomize it make sure the plate is in that position and use the turbo pump as needed I guess
+
+101
+00:29:18,900 --> 00:29:34,120
+it doesn't display above 10 minutes, so I'll just give it like 20 more seconds Then we'll start atomizing this spot.
+
+102
+00:29:34,260 --> 00:29:34,800
+Let's see.
+
+103
+00:29:35,000 --> 00:29:47,260
+Yeah, here we go
+
+104
+00:29:47,260 --> 00:30:29,810
+Getting out
+
+105
+00:30:33,270 --> 00:30:33,610
+of that.
+
+106
+00:30:35,340 --> 00:30:36,300
+That'd be why huh?
+
+107
+00:30:37,000 --> 00:30:44,940
+It was just too high at this point too late.
+
+108
+00:30:45,180 --> 00:31:12,410
+That's my
+
+109
+00:31:12,410 --> 00:31:12,710
+bad.
+
+110
+00:31:25,920 --> 00:31:26,640
+There we go.
+
+111
+00:32:11,980 --> 00:32:12,600
+We're done
+
+112
+00:32:35,180 --> 00:32:37,560
+Okay, so this is what happened.
+
+113
+00:32:38,670 --> 00:32:44,310
+That was too high, and so the stream was hitting that, blobbing up, and then falling under this.
+
+114
+00:32:44,830 --> 00:32:48,320
+And I couldn't see it, so I wasn't sure what was going on.
+
+115
+00:32:51,500 --> 00:32:53,280
+And then when I did, I was able to pull it back.
+
+116
+00:32:53,360 --> 00:32:56,900
+I'm able to get some atomization, but not nearly as much as we should have.
+
+117
+00:32:58,760 --> 00:33:05,390
+And then also, I forgot to turn on the ultrasonic system, so that was stupid.
+
+118
+00:33:06,850 --> 00:33:08,150
+Yeah, a big mistake by me.
+
+119
+00:33:09,260 --> 00:33:13,740
+But we still got enough powder to analyze in the SEM, which is the important part.
+
+120
+00:33:15,100 --> 00:33:16,320
+But, yeah.
+
+121
+00:33:16,620 --> 00:33:18,300
+So, definitely learned something.
+
+122
+00:33:18,420 --> 00:33:21,340
+It's not saying the oxygen accurate is 120 parts per million.
+
+123
+00:33:21,440 --> 00:33:23,340
+So, I don't know what that's about.
+
+124
+00:33:26,480 --> 00:33:32,770
+I don't know if melting the oxygen or the iron, I mean the aluminum, breath that out.
+
+125
+00:33:32,950 --> 00:33:36,780
+But, yeah, not good.
+
+126
+00:33:37,440 --> 00:33:42,940
+So, now we just need for this.
+
+127
+00:33:43,120 --> 00:33:44,160
+We need to wait for this.
+
+128
+00:33:44,670 --> 00:33:56,730
+to cool down to about 400 degrees and then after that we can open
+
+129
+00:33:56,730 --> 00:34:08,810
+it up definitely pretty rough we can do a
+
+130
+00:34:08,810 --> 00:34:24,530
+lot better for sure make sure
+
+131
+00:34:24,530 --> 00:34:34,320
+you can see that good so that got in the way so it's blobbing off the bath it's been harder to atomize still got a bunch
+

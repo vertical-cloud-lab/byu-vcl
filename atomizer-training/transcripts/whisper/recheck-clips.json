@@ -1,0 +1,1261 @@
+{
+ "model": "faster-whisper large-v3-turbo int8 (not batched, no vad, word timestamps)",
+ "clips": [
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    120,
+    160
+   ],
+   "beam": 5,
+   "checks": "Video 4 02:18 sealing block vs sealing rod",
+   "segments": [
+    {
+     "start": 127.52,
+     "end": 137.28,
+     "text": "see you back in here that just wipe or vacuum but in general this is like ready",
+     "avg_logprob": -0.42
+    },
+    {
+     "start": 137.28,
+     "end": 145.32,
+     "text": "to go and remove this in what now we can add the material how did you move it",
+     "avg_logprob": -0.42
+    },
+    {
+     "start": 145.32,
+     "end": 147.08,
+     "text": "That was with the ceiling we want.",
+     "avg_logprob": -0.72
+    },
+    {
+     "start": 147.22,
+     "end": 147.9,
+     "text": "Just cooking.",
+     "avg_logprob": -0.72
+    },
+    {
+     "start": 158.84,
+     "end": 159.82,
+     "text": "This is an induction.",
+     "avg_logprob": -0.72
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    130,
+    150
+   ],
+   "beam": 5,
+   "checks": "Video 4 02:18 sealing block vs sealing rod",
+   "segments": [
+    {
+     "start": 130.0,
+     "end": 140.62,
+     "text": "You see there is a mask here that will be good to just wipe or vacuum but in general this is like ready to go and we move the ceiling rod to cover.",
+     "avg_logprob": -0.42
+    },
+    {
+     "start": 141.32,
+     "end": 143.38,
+     "text": "Now we can add the material.",
+     "avg_logprob": -0.42
+    },
+    {
+     "start": 144.42,
+     "end": 147.26,
+     "text": "How did you move it down? That was with the ceiling rod bottle.",
+     "avg_logprob": -0.42
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    130,
+    150
+   ],
+   "beam": 1,
+   "checks": "Video 4 02:18 sealing block vs sealing rod",
+   "segments": [
+    {
+     "start": 130.0,
+     "end": 137.7,
+     "text": "you see there's a mask here that will be good to just wipe or vacuum but in general this is like ready to go",
+     "avg_logprob": -0.49
+    },
+    {
+     "start": 138.34,
+     "end": 143.36,
+     "text": "and we move this in the water now we can add the material",
+     "avg_logprob": -0.49
+    },
+    {
+     "start": 144.38,
+     "end": 147.28,
+     "text": "how did you move it down that was with the ceiling water bottle",
+     "avg_logprob": -0.49
+    },
+    {
+     "start": 147.28,
+     "end": 147.9,
+     "text": "just cooking",
+     "avg_logprob": -0.49
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    210,
+    232
+   ],
+   "beam": 5,
+   "checks": "Video 4 03:35 the 1300 phrase",
+   "segments": [
+    {
+     "start": 224.02,
+     "end": 230.78,
+     "text": "I can tell you that it is possible to go higher, it has enough energy to go up to 1600",
+     "avg_logprob": -0.49
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    212,
+    232
+   ],
+   "beam": 5,
+   "checks": "Video 4 03:35 the 1300 phrase",
+   "segments": [
+    {
+     "start": 212.0,
+     "end": 219.98,
+     "text": "yeah yeah yeah it's called uh yeah but generally this was not designed for uh iron nickel yeah",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 219.98,
+     "end": 226.94,
+     "text": "yeah so one thing is the 1300 lighting point i i can tell you that it is possible to go higher",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 226.94,
+     "end": 230.74,
+     "text": "then it has enough energy to go up to 1600.",
+     "avg_logprob": -0.35
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    212,
+    232
+   ],
+   "beam": 1,
+   "checks": "Video 4 03:35 the 1300 phrase",
+   "segments": [
+    {
+     "start": 212.0,
+     "end": 219.98,
+     "text": "yeah yeah it's called uh yeah but generally this was not designed for uh iron nickel yeah",
+     "avg_logprob": -0.38
+    },
+    {
+     "start": 219.98,
+     "end": 226.68,
+     "text": "yeah so once it's too high melting 1300 lighting point i i can tell you that it is possible to go",
+     "avg_logprob": -0.38
+    },
+    {
+     "start": 226.68,
+     "end": 231.4,
+     "text": "higher it has enough energy to go up to 1600 yeah",
+     "avg_logprob": -0.38
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    200,
+    250
+   ],
+   "beam": 5,
+   "checks": "Video 4 03:35 the 1300 phrase",
+   "segments": [
+    {
+     "start": 200.0,
+     "end": 211.12,
+     "text": "on its side if you had iron or something or nickel those you can get that yeah so um graph is uh",
+     "avg_logprob": -0.34
+    },
+    {
+     "start": 211.12,
+     "end": 218.42,
+     "text": "magnet ferromagnetic yeah yeah it's called uh yeah but generally this was not designed for uh",
+     "avg_logprob": -0.34
+    },
+    {
+     "start": 218.42,
+     "end": 226.68,
+     "text": "iron nickel yeah yeah because it's too high melting point i i can tell you that it is possible to go",
+     "avg_logprob": -0.34
+    },
+    {
+     "start": 226.68,
+     "end": 233.98,
+     "text": "higher it has enough energy to go up to 1600 yeah the problem is that most of the plates",
+     "avg_logprob": -0.19
+    },
+    {
+     "start": 234.68,
+     "end": 239.82,
+     "text": "are not going to survive it that's one thing and the other is that those materials are just very",
+     "avg_logprob": -0.19
+    },
+    {
+     "start": 239.82,
+     "end": 248.4,
+     "text": "reactive to graphite so they just use it in the more industrial organization when they use like",
+     "avg_logprob": -0.19
+    },
+    {
+     "start": 248.4,
+     "end": 249.7,
+     "text": "the same principle for gas",
+     "avg_logprob": -0.71
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    200,
+    250
+   ],
+   "beam": 1,
+   "checks": "Video 4 03:35 the 1300 phrase",
+   "segments": [
+    {
+     "start": 200.0,
+     "end": 210.18,
+     "text": "on its side if you had iron or something or nickel those can you get that yeah so um graphite is",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 211.72,
+     "end": 218.76,
+     "text": "magnet yeah yeah it's called a system yeah but generally this was not designed for uh iron",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 218.76,
+     "end": 225.96,
+     "text": "nickel and everything yeah yeah so one thing is the 1300 lighting point i i can tell you that it is",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 225.96,
+     "end": 234.0,
+     "text": "possible to go higher. It has enough energy to go up to 1600. The problem is that most of the plates",
+     "avg_logprob": -0.25
+    },
+    {
+     "start": 234.68,
+     "end": 239.82,
+     "text": "are not going to survive it, that's one thing, and the other is that those materials are just very",
+     "avg_logprob": -0.25
+    },
+    {
+     "start": 239.82,
+     "end": 248.4,
+     "text": "reactive to graphite, so they just use it in the more industrial organization when they use like",
+     "avg_logprob": -0.25
+    },
+    {
+     "start": 248.4,
+     "end": 249.98,
+     "text": "the same principle for gas atomization.",
+     "avg_logprob": -0.25
+    }
+   ]
+  },
+  {
+   "video_id": "1F9_4ccwhss",
+   "clip": [
+    560,
+    596
+   ],
+   "beam": 5,
+   "checks": "Video 4 09:30 oxygen sensor",
+   "segments": [
+    {
+     "start": 560.0,
+     "end": 564.22,
+     "text": "So first we wipe from the chamber, we open here, we move everything else.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 570.36,
+     "end": 574.1,
+     "text": "I was worried he was going to be like, you can't operate until you get an oxygen sensor.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 574.3,
+     "end": 574.94,
+     "text": "He's like ahhh!",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 575.92,
+     "end": 576.94,
+     "text": "He's the safety guy.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 578.42,
+     "end": 584.92,
+     "text": "Andrea, the amount of argon that we are moving through is not big enough to cause a danger.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 587.24,
+     "end": 589.26,
+     "text": "I still agree that it should be.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 591.76,
+     "end": 595.8,
+     "text": "And the last thing is the powder container itself.",
+     "avg_logprob": -0.59
+    }
+   ]
+  },
+  {
+   "video_id": "HTlUrAr5HVU",
+   "clip": [
+    30,
+    80
+   ],
+   "beam": 5,
+   "checks": "Video 8 00:37 nozzle drill size",
+   "segments": [
+    {
+     "start": 37.2,
+     "end": 41.76,
+     "text": "I went to Kevin and I was like, hey, I need a drill bit that's 0.05 millimeters.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 42.58,
+     "end": 45.82,
+     "text": "He's like, no, no, no, I'll have to look for it in inches.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 46.28,
+     "end": 50.04,
+     "text": "Then it translates into inches and he's like, that is so tiny.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 50.8,
+     "end": 51.96,
+     "text": "What are you doing with that?",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 54.62,
+     "end": 56.34,
+     "text": "Is that what you machined?",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 56.92,
+     "end": 57.8,
+     "text": "That's what that is.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 57.9,
+     "end": 58.6,
+     "text": "It's 0.05.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 58.6,
+     "end": 59.44,
+     "text": "Holy",
+     "avg_logprob": -0.7
+    },
+    {
+     "start": 65.28,
+     "end": 71.26,
+     "text": "Is that where the it drips out this is 07",
+     "avg_logprob": -0.7
+    },
+    {
+     "start": 74.82,
+     "end": 75.54,
+     "text": "Zycraft",
+     "avg_logprob": -0.7
+    }
+   ]
+  },
+  {
+   "video_id": "HTlUrAr5HVU",
+   "clip": [
+    165,
+    180
+   ],
+   "beam": 5,
+   "checks": "Video 8 02:52 hole or holder",
+   "segments": [
+    {
+     "start": 172.56,
+     "end": 174.46,
+     "text": "Okay, so it's something that's running, you see that holder?",
+     "avg_logprob": -0.55
+    },
+    {
+     "start": 175.18,
+     "end": 177.92,
+     "text": "It's important to have that, like, in the hut here.",
+     "avg_logprob": -0.55
+    }
+   ]
+  },
+  {
+   "video_id": "HTlUrAr5HVU",
+   "clip": [
+    445,
+    475
+   ],
+   "beam": 5,
+   "checks": "Video 8 07:30 100 %",
+   "segments": [
+    {
+     "start": 450.04,
+     "end": 455.9,
+     "text": "We should not be completely free of anything other than, or of any other metals?",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 457.5,
+     "end": 463.5,
+     "text": "We probably want to, you know, this is our aluminum one, this is our whatever, our copper",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 463.5,
+     "end": 463.82,
+     "text": "one.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 464.1,
+     "end": 464.44,
+     "text": "Yeah.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 465.7,
+     "end": 469.58,
+     "text": "Maybe depending on, but you don't have to be like 100% of it.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 471.86,
+     "end": 472.66,
+     "text": "Thank you.",
+     "avg_logprob": -0.99
+    }
+   ]
+  },
+  {
+   "video_id": "2wMgeI-E7zw",
+   "clip": [
+    145,
+    180
+   ],
+   "beam": 5,
+   "checks": "Sterling's phone 02:29 coolant flow",
+   "segments": [
+    {
+     "start": 145.7,
+     "end": 156.72,
+     "text": "And now we have the coolant going to the system, on the screen of the system here you will see the error of cooling water below which should disappear in the moment.",
+     "avg_logprob": -0.27
+    },
+    {
+     "start": 157.14,
+     "end": 160.42,
+     "text": "We can also go to the service mode and check it.",
+     "avg_logprob": -0.27
+    },
+    {
+     "start": 165.48,
+     "end": 171.54,
+     "text": "It has a small delay but you can see we have the freezers per minute flow rate, it just needs two.",
+     "avg_logprob": -0.27
+    },
+    {
+     "start": 171.54,
+     "end": 173.72,
+     "text": "Okay, it doesn't require too much.",
+     "avg_logprob": -0.64
+    },
+    {
+     "start": 176.04,
+     "end": 178.76,
+     "text": "This tunnel is quite level 7 dollars for now.",
+     "avg_logprob": -0.64
+    },
+    {
+     "start": 178.9,
+     "end": 179.58,
+     "text": "Okay, yeah, sure.",
+     "avg_logprob": -0.64
+    }
+   ]
+  },
+  {
+   "video_id": "2wMgeI-E7zw",
+   "clip": [
+    485,
+    505
+   ],
+   "beam": 5,
+   "checks": "Sterling's phone 08:03 ultrasonic run time",
+   "segments": [
+    {
+     "start": 485.0,
+     "end": 489.62,
+     "text": "have as much compressed air flow as possible in the transistors to keep it cold.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 490.18,
+     "end": 494.44,
+     "text": "It's worse in case of plasma process where you have ultrasonic system working continuously",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 494.44,
+     "end": 498.14,
+     "text": "for hours and in here it's just 10 minutes or 5 minutes.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 499.16,
+     "end": 503.86,
+     "text": "We just connect it in here, choose the right plate, the vibrating plate.",
+     "avg_logprob": -0.41
+    }
+   ]
+  },
+  {
+   "video_id": "TFpU4uqVF9c",
+   "clip": [
+    575,
+    615
+   ],
+   "beam": 5,
+   "checks": "RUN1 09:48 '10. Final one'",
+   "segments": [
+    {
+     "start": 587.78,
+     "end": 590.08,
+     "text": "Okay, final one.",
+     "avg_logprob": -0.63
+    },
+    {
+     "start": 606.98,
+     "end": 611.52,
+     "text": "Oxygen level is low, everything is stable, now we can raise the temperature.",
+     "avg_logprob": -0.23
+    }
+   ]
+  },
+  {
+   "video_id": "TFpU4uqVF9c",
+   "clip": [
+    1145,
+    1175
+   ],
+   "beam": 5,
+   "checks": "RUN1 19:14 pour-pressure label",
+   "segments": [
+    {
+     "start": 1153.76,
+     "end": 1162.1,
+     "text": "I will use the parameters of low graining pressure that I have used yesterday and we'll",
+     "avg_logprob": -0.27
+    },
+    {
+     "start": 1162.1,
+     "end": 1169.68,
+     "text": "just mostly control it through the pressure control let's do it like that just barely",
+     "avg_logprob": -0.27
+    },
+    {
+     "start": 1169.68,
+     "end": 1174.14,
+     "text": "anything there's also little material that's why manual control will be better",
+     "avg_logprob": -0.33
+    }
+   ]
+  },
+  {
+   "video_id": "TFpU4uqVF9c",
+   "clip": [
+    1220,
+    1245
+   ],
+   "beam": 5,
+   "checks": "RUN1 20:36 end-of-pour sequence",
+   "segments": [
+    {
+     "start": 1228.14,
+     "end": 1239.6,
+     "text": "Okay, it was fast, it was everything, so melting pressure, sealing rod down, generator stopped.",
+     "avg_logprob": -0.37
+    }
+   ]
+  },
+  {
+   "video_id": "qYyT39D5Yzo",
+   "clip": [
+    865,
+    900
+   ],
+   "beam": 5,
+   "checks": "OCT2a 14:42 torque setting",
+   "segments": [
+    {
+     "start": 865.0,
+     "end": 868.98,
+     "text": "we got some questions so just making sure it's linear",
+     "avg_logprob": -0.3
+    },
+    {
+     "start": 871.66,
+     "end": 873.88,
+     "text": "do you want to tighten that down yeah",
+     "avg_logprob": -0.3
+    },
+    {
+     "start": 873.88,
+     "end": 885.66,
+     "text": "this one is the 50 torque right yep and i already said it so",
+     "avg_logprob": -0.3
+    },
+    {
+     "start": 893.12,
+     "end": 897.56,
+     "text": "uh 17 or 18. 17 for yeah",
+     "avg_logprob": -0.66
+    }
+   ]
+  },
+  {
+   "video_id": "qYyT39D5Yzo",
+   "clip": [
+    1100,
+    1150
+   ],
+   "beam": 5,
+   "checks": "OCT2a 18:44 0.5 mm",
+   "segments": [
+    {
+     "start": 1100.0,
+     "end": 1102.9,
+     "text": "Start by pressing...",
+     "avg_logprob": -0.82
+    },
+    {
+     "start": 1106.8,
+     "end": 1109.4,
+     "text": "Purging at...",
+     "avg_logprob": -0.82
+    },
+    {
+     "start": 1122.08,
+     "end": 1125.72,
+     "text": "Did you already feel a .5mm?",
+     "avg_logprob": -0.82
+    },
+    {
+     "start": 1126.52,
+     "end": 1127.18,
+     "text": "Yeah.",
+     "avg_logprob": -0.82
+    },
+    {
+     "start": 1141.28,
+     "end": 1143.68,
+     "text": "We'll just be doing that crucible.",
+     "avg_logprob": -0.64
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    980,
+    1025
+   ],
+   "beam": 5,
+   "checks": "OCT2b 16:31 pressure control on or off",
+   "segments": [
+    {
+     "start": 986.2,
+     "end": 987.04,
+     "text": "Yeah, that's a good question.",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 991.34,
+     "end": 993.14,
+     "text": "All right, I'm going to turn off pressure control.",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 1019.36,
+     "end": 1020.76,
+     "text": "This is going up.",
+     "avg_logprob": -0.73
+    },
+    {
+     "start": 1021.0,
+     "end": 1022.06,
+     "text": "It's going down.",
+     "avg_logprob": -0.73
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1330,
+    1425
+   ],
+   "beam": 5,
+   "checks": "OCT2b 22:15-23:37 plug length and pour pressure",
+   "segments": [
+    {
+     "start": 1334.72,
+     "end": 1340.76,
+     "text": "so how many um how long were these um caps that you made",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1340.76,
+     "end": 1343.28,
+     "text": "um they're around like 20",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1345.04,
+     "end": 1347.48,
+     "text": "i have pictures of the magnets",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1350.6,
+     "end": 1353.54,
+     "text": "just looks like maybe we don't need to make them so long since",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1354.48,
+     "end": 1356.42,
+     "text": "it didn't go hardly in at all you know",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1356.42,
+     "end": 1359.8,
+     "text": "Those ones were like even smaller than the ones I have made.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1364.22,
+     "end": 1367.68,
+     "text": "Let's see, I made them according to what the GitHub issue said.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1368.7,
+     "end": 1372.58,
+     "text": "I think it was like .3 something.",
+     "avg_logprob": -0.33
+    },
+    {
+     "start": 1384.1,
+     "end": 1389.6,
+     "text": "What's the purpose of padding now, the plugs?",
+     "avg_logprob": -0.6
+    },
+    {
+     "start": 1394.38,
+     "end": 1396.82,
+     "text": "Apparently, what we're doing could explode.",
+     "avg_logprob": -0.6
+    },
+    {
+     "start": 1407.18,
+     "end": 1409.08,
+     "text": "I guess we'll see if",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1410.36,
+     "end": 1411.78,
+     "text": ".17 bar is",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1411.78,
+     "end": 1413.24,
+     "text": "high enough",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1413.24,
+     "end": 1414.9,
+     "text": "he kept turning it down",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1416.6,
+     "end": 1418.16,
+     "text": "oh hey it's melting",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1420.68,
+     "end": 1421.88,
+     "text": "oh it's gone",
+     "avg_logprob": -0.36
+    },
+    {
+     "start": 1421.88,
+     "end": 1422.66,
+     "text": "okay",
+     "avg_logprob": -0.36
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1395,
+    1415
+   ],
+   "beam": 5,
+   "checks": "OCT2b 23:17 pour pressure",
+   "segments": [
+    {
+     "start": 1395.0,
+     "end": 1396.8,
+     "text": "What we're doing could explode.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 1407.54,
+     "end": 1413.22,
+     "text": "Guess we'll see if .17 bar is high enough.",
+     "avg_logprob": -0.41
+    },
+    {
+     "start": 1413.44,
+     "end": 1414.82,
+     "text": "He kept turning it down.",
+     "avg_logprob": -0.41
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1395,
+    1415
+   ],
+   "beam": 1,
+   "checks": "OCT2b 23:17 pour pressure",
+   "segments": [
+    {
+     "start": 1395.0,
+     "end": 1396.8,
+     "text": "What we're doing could explode.",
+     "avg_logprob": -0.39
+    },
+    {
+     "start": 1397.1,
+     "end": 1397.78,
+     "text": "Oh.",
+     "avg_logprob": -0.39
+    },
+    {
+     "start": 1398.7,
+     "end": 1399.52,
+     "text": "Spinning pressure.",
+     "avg_logprob": -0.39
+    },
+    {
+     "start": 1407.76,
+     "end": 1413.24,
+     "text": "Guess we'll see if .17 bar is high enough.",
+     "avg_logprob": -0.39
+    },
+    {
+     "start": 1413.44,
+     "end": 1414.84,
+     "text": "He kept turning it down.",
+     "avg_logprob": -0.39
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1540,
+    1595
+   ],
+   "beam": 5,
+   "checks": "OCT2b 25:53 plate",
+   "segments": [
+    {
+     "start": 1547.88,
+     "end": 1550.44,
+     "text": "okay all right so i'm going to do the thing now",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 1552.64,
+     "end": 1553.78,
+     "text": "check the plate",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 1558.94,
+     "end": 1561.72,
+     "text": "what plate is this the mv",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 1565.06,
+     "end": 1568.48,
+     "text": "yeah i'm not as a coated carpet just yeah",
+     "avg_logprob": -0.57
+    },
+    {
+     "start": 1584.94,
+     "end": 1588.26,
+     "text": "Alright, hopefully this goes well, we'll see, ceiling rod grinning pressure.",
+     "avg_logprob": -0.41
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1550,
+    1575
+   ],
+   "beam": 5,
+   "checks": "OCT2b 25:53 plate",
+   "segments": [
+    {
+     "start": 1550.0,
+     "end": 1567.8,
+     "text": "now. Check the plate. What plate is this? The MW? Yeah. And not the coated carpet, it's",
+     "avg_logprob": -0.49
+    },
+    {
+     "start": 1567.8,
+     "end": 1569.58,
+     "text": "pure molybdenum. Yeah, pure molybdenum.",
+     "avg_logprob": -0.49
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1550,
+    1575
+   ],
+   "beam": 1,
+   "checks": "OCT2b 25:53 plate",
+   "segments": [
+    {
+     "start": 1551.8,
+     "end": 1553.78,
+     "text": "now check the plate",
+     "avg_logprob": -0.84
+    },
+    {
+     "start": 1558.82,
+     "end": 1561.7,
+     "text": "what plate is this the mv",
+     "avg_logprob": -0.84
+    },
+    {
+     "start": 1563.52,
+     "end": 1563.56,
+     "text": "yeah",
+     "avg_logprob": -0.84
+    },
+    {
+     "start": 1565.5,
+     "end": 1569.62,
+     "text": "and not the coated carpet just pure molybdenum",
+     "avg_logprob": -0.84
+    }
+   ]
+  },
+  {
+   "video_id": "of5-LhkX_VQ",
+   "clip": [
+    1595,
+    1640
+   ],
+   "beam": 5,
+   "checks": "OCT2b 26:45 pour",
+   "segments": [
+    {
+     "start": 1607.96,
+     "end": 1609.74,
+     "text": "Can you turn off the frequency?",
+     "avg_logprob": -0.53
+    },
+    {
+     "start": 1613.5,
+     "end": 1616.06,
+     "text": "Holy dang, the waves are flying out of there.",
+     "avg_logprob": -0.53
+    },
+    {
+     "start": 1620.08,
+     "end": 1621.0,
+     "text": "Hey, look at that.",
+     "avg_logprob": -0.53
+    },
+    {
+     "start": 1621.48,
+     "end": 1622.54,
+     "text": "It's totally working.",
+     "avg_logprob": -0.53
+    },
+    {
+     "start": 1626.9,
+     "end": 1627.82,
+     "text": "Is that all of it?",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 1628.54,
+     "end": 1629.46,
+     "text": "Yep, I think so.",
+     "avg_logprob": -0.35
+    },
+    {
+     "start": 1631.1,
+     "end": 1633.1,
+     "text": "Most of it did not get atomized, unfortunately.",
+     "avg_logprob": -0.35
+    }
+   ]
+  },
+  {
+   "video_id": "w02MRlZhpNk",
+   "clip": [
+    100,
+    125
+   ],
+   "beam": 5,
+   "checks": "dehumidifier 01:43 breaker",
+   "segments": [
+    {
+     "start": 101.62,
+     "end": 108.12,
+     "text": "Uh, then the question is why is it not, why is it not on?",
+     "avg_logprob": -0.42
+    },
+    {
+     "start": 112.52,
+     "end": 119.48,
+     "text": "I don't think, I don't think the breaker got tripped.",
+     "avg_logprob": -0.42
+    }
+   ]
+  },
+  {
+   "video_id": "Kv9DT3Vo0GE",
+   "clip": [
+    100,
+    110
+   ],
+   "beam": 5,
+   "checks": "construction 01:44 who drills the sink holes",
+   "segments": [
+    {
+     "start": 100.0,
+     "end": 106.36,
+     "text": "big sink put in that's so nice so that the drill the holes put in the finish",
+     "avg_logprob": -0.43
+    },
+    {
+     "start": 106.36,
+     "end": 109.88,
+     "text": "full finish plumbing there and looks like we got another",
+     "avg_logprob": -0.43
+    }
+   ]
+  },
+  {
+   "video_id": "prj_xgeuQtM",
+   "clip": [
+    0,
+    25
+   ],
+   "beam": 5,
+   "checks": "the only detected speech in the nzyjn0 dosing video",
+   "segments": [
+    {
+     "start": 11.02,
+     "end": 12.42,
+     "text": "I",
+     "avg_logprob": -0.97
+    },
+    {
+     "start": 17.12,
+     "end": 17.84,
+     "text": "See how this",
+     "avg_logprob": -0.97
+    }
+   ]
+  },
+  {
+   "video_id": "u-KjR5TENN4",
+   "clip": [
+    0,
+    6
+   ],
+   "beam": 5,
+   "checks": "the only VAD blip in the expert cleaning POV",
+   "segments": [
+    {
+     "start": 0.0,
+     "end": 1.12,
+     "text": "...",
+     "avg_logprob": -1.34
+    },
+    {
+     "start": 1.12,
+     "end": 3.42,
+     "text": "...",
+     "avg_logprob": -1.34
+    },
+    {
+     "start": 3.42,
+     "end": 4.16,
+     "text": "...",
+     "avg_logprob": -1.34
+    },
+    {
+     "start": 4.16,
+     "end": 4.28,
+     "text": "Thank you.",
+     "avg_logprob": -0.64
+    }
+   ]
+  }
+ ],
+ "vad_check": [
+  {
+   "video_id": "u-KjR5TENN4",
+   "threshold": 0.5,
+   "duration_s": 1124.9,
+   "speech_s": 0.0,
+   "regions": []
+  },
+  {
+   "video_id": "u-KjR5TENN4",
+   "threshold": 0.2,
+   "duration_s": 1124.9,
+   "speech_s": 1.0,
+   "regions": [
+    [
+     2.94,
+     3.91
+    ]
+   ]
+  },
+  {
+   "video_id": "QXSj0j1OqL8",
+   "threshold": 0.5,
+   "duration_s": 1334.2,
+   "speech_s": 0.0,
+   "regions": []
+  },
+  {
+   "video_id": "QXSj0j1OqL8",
+   "threshold": 0.2,
+   "duration_s": 1334.2,
+   "speech_s": 0.0,
+   "regions": []
+  },
+  {
+   "video_id": "prj_xgeuQtM",
+   "threshold": 0.5,
+   "duration_s": 4124.7,
+   "speech_s": 5.2,
+   "regions": [
+    [
+     9.56,
+     10.22
+    ],
+    [
+     12.6,
+     15.66
+    ],
+    [
+     17.24,
+     18.7
+    ]
+   ]
+  },
+  {
+   "video_id": "prj_xgeuQtM",
+   "threshold": 0.2,
+   "duration_s": 4124.7,
+   "speech_s": 7.1,
+   "regions": [
+    [
+     9.5,
+     11.11
+    ],
+    [
+     12.34,
+     16.04
+    ],
+    [
+     17.11,
+     18.92
+    ]
+   ]
+  }
+ ]
+}

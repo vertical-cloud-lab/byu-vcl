@@ -1,0 +1,117 @@
+{
+"video_id": "w02MRlZhpNk",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 177.5165625,
+"segments": [
+{
+"start": 2.0,
+"end": 3.14,
+"text": "Vajillion pipes."
+},
+{
+"start": 3.76,
+"end": 4.62,
+"text": "Looks good."
+},
+{
+"start": 5.04,
+"end": 6.16,
+"text": "Got lots of power."
+},
+{
+"start": 7.86,
+"end": 9.26,
+"text": "Rolling all over the place."
+},
+{
+"start": 10.71,
+"end": 11.07,
+"text": "Okay."
+},
+{
+"start": 11.75,
+"end": 23.8,
+"text": "We've got the dehumidifying and the 24 volts shorted to each other, so that should be working."
+},
+{
+"start": 24.3,
+"end": 24.48,
+"text": "We've got this."
+},
+{
+"start": 25.76,
+"end": 27.46,
+"text": "And we've got..."
+},
+{
+"start": 27.46,
+"end": 29.28,
+"text": "Oh, that's funny, I didn't realize."
+},
+{
+"start": 41.04,
+"end": 42.58,
+"text": "Okay, well, I heard a click."
+},
+{
+"start": 44.5,
+"end": 46.77,
+"text": "It's good, I guess."
+},
+{
+"start": 47.4,
+"end": 60.62,
+"text": "and then this pump which doesn't look like anything's actually attached to it and kind of the point is for the pump to get things out what's"
+},
+{
+"start": 68.43,
+"end": 80.95,
+"text": "going on on this side what's going on over here okay but we've got okay so it seems like is"
+},
+{
+"start": 80.95,
+"end": 92.13,
+"text": "the pump just not being used at all maybe uh but it's missing yeah we've got these two bare wires also"
+},
+{
+"start": 92.72,
+"end": 94.42,
+"text": "It looks like it's just connected directly."
+},
+{
+"start": 103.56,
+"end": 108.03,
+"text": "Then the question is why is it not on?"
+},
+{
+"start": 108.45,
+"end": 119.49,
+"text": "I don't think the breaker got tripped."
+},
+{
+"start": 128.06,
+"end": 130.02,
+"text": "I hear a little click right there."
+},
+{
+"start": 147.83,
+"end": 149.41,
+"text": "Same, click, click."
+},
+{
+"start": 152.37,
+"end": 155.39,
+"text": "I would have assumed that's the right way to turn it for a dryer."
+},
+{
+"start": 160.04,
+"end": 168.97,
+"text": "I'm just noting, okay, we've got that going into the side."
+},
+{
+"start": 173.9,
+"end": 176.56,
+"text": "And I'll try to go back down."
+}
+]
+}

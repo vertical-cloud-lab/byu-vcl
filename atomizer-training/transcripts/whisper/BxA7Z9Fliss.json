@@ -1,0 +1,52 @@
+{
+"video_id": "BxA7Z9Fliss",
+"model": "faster-whisper large-v3-turbo int8 (batched, word timestamps, vad)",
+"duration": 647.163375,
+"segments": [
+{
+"start": 0.75,
+"end": 11.9,
+"text": "So here I'm on GitHub, going down on one of these pull requests I have where I can ping Claude before I'd run another dosing."
+},
+{
+"start": 12.08,
+"end": 14.18,
+"text": "I basically just copy that prompt."
+},
+{
+"start": 17.48,
+"end": 18.84,
+"text": "Get down here."
+},
+{
+"start": 173.86,
+"end": 177.46,
+"text": "Also just going to go and wave to myself through the reflection."
+},
+{
+"start": 177.78,
+"end": 179.14,
+"text": "It's always interesting."
+},
+{
+"start": 180.62,
+"end": 182.14,
+"text": "Start doing camera workflows."
+},
+{
+"start": 182.8,
+"end": 185.8,
+"text": "And you get reflections, or daytime goes to nighttime."
+},
+{
+"start": 187.56,
+"end": 189.86,
+"text": "Suddenly you can see things that normally you wouldn't be able to."
+},
+{
+"start": 346.17,
+"end": 346.91,
+"text": "Almost forgot."
+}
+]
+}

@@ -1,0 +1,360 @@
+[00:00] All right, this video is a deep planing.
+[00:05] Well, orientation
+[01:34] doesn't matter, right?
+[03:36] I forgot to put this in.
+[06:08] We can, yeah, we can go get that.
+[06:14] We can temporarily, we can, there's a, in the, in the building next door, in the engineering building.
+[06:23] They have a place where they have all tools and just get what you need.
+[06:57] If there is the control cabinet, you get this and this and this.
+[07:02] It's automatically in the system.
+[07:05] That's why when you have no plasma parts, suddenly I have no 80mm tip.
+[07:12] Which actually at the beginning, I have added it specifically for the induction side.
+[07:20] But then over time, there were more people planning for the co-production.
+[07:30] He started to change it in a way that it doesn't always make sense.
+[07:38] Does that look good?
+[07:40] Yeah.
+[07:43] I sometimes miss the times when there was like no system mapping.
+[07:49] I had just a bunch of parts in the drawers and I was packing everything myself and just putting it in because I knew what is necessary.
+[08:02] Sounds like good times.
+[08:06] I know right now we have this scale and it's good.
+[08:14] In some cases we have to go through so many procedures, so many people to get things done.
+[08:23] Yeah.
+[08:30] In English we call that bureaucracy.
+[08:33] You know that word?
+[08:33] Yeah.
+[08:34] In Polish it's basically the same.
+[08:37] It's bureaucracy.
+[08:38] In this case it's fully internal.
+[08:43] I'm not sure if it makes it better or worse.
+[08:46] But that's the fact that right now, okay.
+[08:49] I wouldn't have time to sometimes just rub it carefully.
+[08:59] It goes...
+[09:02] Did you bring this?
+[09:03] Yeah.
+[09:04] It's cute.
+[09:12] Oh, wow.
+[09:14] It did go all the way through.
+[09:17] So we can reuse it.
+[09:18] Great.
+[09:19] Yeah, and this is exceptionally useful.
+[09:22] Little tweezers?
+[09:24] Yeah.
+[09:25] Because this one is just for the nuts.
+[09:28] This one is for just grabbing anything.
+[09:30] It takes no space and helps you out.
+[09:35] Okay, so I can put this all back together now, right?
+[09:37] This looks good.
+[09:40] So you could see that it did go so easily, probably because no oxygen was much, much, much better.
+[09:50] It's usually the same.
+[09:52] If there is no oxygen, suddenly nothing sticks to other parts.
+[09:58] Oxide seems to make everything like the surface is rough and so on.
+[10:02] And that's what makes it stuck.
+[10:04] Interesting.
+[10:08] What kind of metal is the plate?
+[10:10] This one?
+[10:11] Molybdenium alloy.
+[10:12] Oh, wow.
+[10:14] So, I just want to check if it will vibrate well.
+[10:18] Because right now it's like the best option for aluminium.
+[10:24] In case of atomization, the only drawback is that the process cannot be very long.
+[10:30] Because Molybdenium and Aluminium they will react at some point.
+[10:35] Oh really?
+[10:35] If the process goes on for too long, there may be some reactivity.
+[10:39] The same reactivity that helps us to get a good wetting and good optimization start.
+[10:44] At some point it may cause the effect to be damaged.
+[10:47] Wow.
+[11:30] I'm really happy that the company has grown.
+[11:34] And from people and people, we have like over 50.
+[11:44] You have over 60?
+[11:45] Yeah, over 60.
+[11:47] Wow.
+[12:01] Just a fish also.
+[12:03] As an initial scan, I had like a double fish in here, kind of like some disruption in that area.
+[12:11] Right now?
+[12:11] No, before.
+[12:12] That was like a second one.
+[12:14] I started it for a moment.
+[12:16] I made the scan again and it goes.
+[12:18] So, if you give the thing a little bit of vibration, it just like position itself well.
+[12:24] If there is some micro-friction, sometimes it just gets resolved by itself.
+[12:30] Take a look.
+[12:38] Oh yeah, it's nice.
+[12:39] You see the pattern?
+[12:42] If the pattern is straight, it means that the vibration plays this noise really well.
+[12:49] If the pattern would be like angle, it usually means that there is a track formation.
+[12:59] There will be a spot without optimization and it will go like around it.
+[13:04] Gotcha.
+[13:06] Let's try it.
+[13:08] I just want you to see the differences between all the combinations.
+[13:13] That's why we can quickly go with the one-to-one, make a trial with the reversed one, which can work, but it's hard sometimes.
+[13:24] It requires you to know how well it works, but then if you do that, it can...
+[13:49] This powder?
+[13:51] We'll get another jar.
+[13:54] What?
+[13:55] Another jar.
+[13:59] What's the application?
+[14:05] So we want to just, so we're trying to characterize powders and then use them for laser powder infusion printing and then
+[14:18] determine if we can, we want to characterize powders that have better properties than currently existing ones.
+[14:26] So specifically with rare earth metals, we want them to have less rare earth metals.
+[14:30] that have better the same properties you know okay so the one thing is don't get scared by the fact that some of the so the particles will be a little bit bigger especially when
+[14:42] the density is low it's normal for gold we have silver you have way smaller particles with the same technique but because the powder is so spherical the quality of it so it's
+[14:54] so good and the distribution is so narrow
+[14:57] Even a little bit larger particles are still fully usable.
+[15:02] You can get normal good results.
+[15:05] There will be stone and nice paper coming out.
+[15:08] I did it with Northwestern University.
+[15:11] I did atomized aluminum for them.
+[15:14] I tried to get the best results with the reverse booster and so on.
+[15:19] But you know, sometimes commercially you get power of like 15 to 45 minerals.
+[15:25] It's larger, but because it's very uniform, spherical and narrow distribution, the results are a little bit better.
+[15:34] It's still good for printing?
+[15:35] No.
+[15:36] Is it still good for printing even though it's bigger?
+[15:38] Yeah, exactly.
+[15:39] Interesting.
+[15:40] Because the sizes, okay, in some applications it depends on how precise the print is, okay, there may be some questions about it, but
+[15:53] in many cases...
+[15:54] There is like no exact reason behind it.
+[15:58] Just it's based on how well the powder from gas atomization behaves and what particle size you need to use to have a good properties at the end.
+[16:09] And they tend to use smaller particles in general.
+[16:12] Okay, we have everything in.
+[16:14] The vibrations are fine.
+[16:15] So, purging.
+[16:16] Weren't you doing the one-to-one booster this time?
+[16:18] Yeah, the one-to-one.
+[16:19] Oh, this is the one-to-one.
+[16:20] Oh.
+[16:21] And this is the previous one.
+[16:23] Oh, interesting.
+[16:24] It looks almost the same.
+[16:26] One to one is sliver.
+[16:28] This part is sliver because the amplification depends on the difference of weights or the diameters.
+[16:37] Gotcha.
+[16:39] Okay, so.
+[16:45] Purging without heat, then two purging without heat.
+[16:49] Purging without heat, purging, two purgings with the heat.
+[16:52] Okay, so the first purging, so we want to start by...
+[16:57] getting a vacuum pump and then gas wash.
+[17:00] On one side, the schematic is the same.
+[17:12] It's coming on down here.
+[17:14] Sometimes it doesn't work.
+[17:16] You can see how much you can screw it.
+[17:20] If you hit it, it doesn't mean that it doesn't align.
+[17:24] You can see right now.
+[17:31] Okay, is that what did you do?
+[17:33] Yeah.
+[17:35] And right now it should be pretty easy to do this.
+[17:53] Good.
+[17:55] So one side is always over pressure, the other is pergic.
+[18:04] And then they just reverse.
+[18:07] And then you do it at two temperatures in order to remove all the moisture from the material, from the crucibles.
+[18:14] If you put a new insulation, new crucible, like material, there may be some moisture in it, anything, the hill will help us to get it out and the pergic will remove it from the system.
+[18:36] largest particles because it's so light there is kind of like nothing we can do about it while gold copper
+[18:49] hours are much smaller particles in exactly the same process same plates and booster um so you said we do we do one
+[19:01] one purge and and then and then heat up and you do two purges right so for
+[19:22] example this powder
+[19:24] The distribution is narrow, it's perfect for DED.
+[19:27] For LPDF, maybe too big, but for DED, it would be really nice if you have it.
+[19:35] In general, DED is also much cheaper to use to get and simpler.
+[19:41] And still, it's all really nice results with it.
+[19:44] Quite a lot of results.
+[19:46] DED is just something that you can kind of like run and be like, whatever.
+[19:51] let's just make a pattern let's change the parameters on like each part uh cool shape it you can see all those like bigger pieces
+[20:03] go exactly on the top yeah that's pretty cool the iridescence of the greens yeah the
+[20:18] last cycle also melting pressure and now uh chamber um vacuum
+[20:31] buff yeah
+[20:33] Turn off that.
+[21:58] So this is at our max, but this is still going down.
+[22:02] So we wait for this too?
+[22:03] Don't worry about it.
+[22:04] So now we can...
+[22:05] In the vacuum, the oxygen sensor is just not going to tell you anything.
+[22:09] Gotcha.
+[22:10] So now we do protective gas and then redo?
+[22:12] Yeah.
+[22:14] They are typically letting it run for a little bit longer.
+[22:18] It's going to be fine.
+[22:19] But the effect will not be massive.
+[22:23] Now we back to the vacuum.
+[22:31] Yeah, I see a few things that we kind of changed in the newer version of the software.
+[22:37] If you think on how the logic between the battles work.
+[22:40] But this is something that I will check with the team if we can fix it.
+[22:46] Because I already saw here a few things and I reported it.
+[22:50] And they will check it.
+[22:52] Because the improvements are kind of like constant.
+[22:58] Sometimes it's happening too quickly.
+[23:01] From one device to another, it's always something new and again something new.
+[23:06] Like this one.
+[23:07] I saw like three versions of it.
+[23:09] This with old cabinet, like very old cabinet, old cabinet, new cabinet, standalone version.
+[23:18] I even remember the versions where it was like, you know, moving, rotating.
+[23:28] Okay, so now we put pressure control?
+[23:30] Yeah, pressure control and let's get the flow and start it.
+[23:43] So I'll have some water, but procedure is the same.
+[23:47] Okay, sorry.
+[30:16] Okay, I just changed the temperature to 500.
+[30:21] So, backthumb stays on, gas wash, right?
+[30:34] That burst then, okay.
+[30:38] Currently, it should keep the pressure, but if there would be a leak in between, we would start losing from
+[30:52] here.
+[30:55] So good.
+[31:08] So degradation that can happen is like,
+[31:11] in this area it can start cleaning off or just like cracking but this is fine if you can like remove some of it and you generally can uh the pieces that are like not oxidized and
+[31:23] good can stay okay and it will not affect the process cool if you have a lot of oxygen and there will be a lot of oxide on the plate then they expect either to fully clean
+[31:36] it or take in the plate you clean it the same way just with like
+[31:42] pulling off pieces yeah yeah i'm definitely
+[32:32] getting an air conditioner for here it's hot all right melt pressure turn off pressure control
+[32:44] this this
+[33:00] whole process of like starting at 250 purging this purging this then redoing it 500 purge this purge that could that all be automated no
+[33:13] no really the problem is that we have no control over this one
+[33:17] Here, yeah.
+[33:19] Here, not at all.
+[33:21] Is the software lost?
+[33:23] Yeah, I'm not sure.
+[33:25] The software is closer to, you know, having kind of like a punch card than actually a code, so that's most of the problem.
+[34:14] Okay, so do we want to do it again?
+[34:20] I will go again, yeah.
+[34:23] Okay.
+[34:23] But don't depend on this week when you have the vacuum inside anyway.
+[34:29] Gotcha.
+[34:29] So first clean it with protective gas.
+[34:32] Uh-huh.
+[34:33] And then check the reading.
+[34:35] If the reading is good, then we don't need to do it again.
+[34:40] I think it will be.
+[34:49] The more we do it, the better it is.
+[34:51] The heat from the process cleans it.
+[34:54] The vacuum cleans it.
+[34:55] So after a few rounds, it's still good.
+[34:59] Gotcha.
+[35:02] So I will just go to the max temperature.
+[35:06] To 1,000?
+[37:33] Okay.
+[37:34] So now it's melting.
+[37:37] Yep, starting to melt.
+[37:38] So the aluminum, when the whistle goes, the aluminum jumps up in the middle.
+[37:45] Yeah.
+[37:45] Why is that?
+[37:46] The induction is pulling it.
+[37:48] So the magnetic current is...
+[37:49] Yes.
+[37:50] Interesting.
+[37:51] So it also gives us some of the mixing.
+[37:56] It's so fun watching it.
+[38:32] Okay, so...
+[38:33] Yeah, go down.
+[38:35] Oh, down, that's right.
+[38:36] Yeah, as soon as...
+[38:37] I forgot about that part.
+[38:38] As soon as it starts melting.
+[38:42] Especially for the metal plate.
+[38:45] we don't need to go so high.
+[38:46] We'll be fine at like 7.9.
+[38:55] It's not much, but sometimes it has a high impact on the durability of the plate.
+[39:00] Same as the lower amplitude here we use, the better for the plate.
+[39:06] But sometimes if you go like all the way down, there may be like too little atomization that the material will be flowing through.
+[39:13] So sometimes you may need, especially at the beginning, to go with higher amplitude and then maybe reduce it a bit.
+[39:19] And that depends on the plate and also the material?
+[39:23] It's also what the booster does.
+[39:27] So the lower amplitude means smaller particles but the atomization is slower, more sensitive, more fragile.
+[39:37] You said lower amplitude means smaller particles?
+[39:40] So the same thing happens when this booster provides higher amplitude, this one lower amplitude.
+[39:47] And then you're going to still have some impact on the...
+[39:50] electrical signal from the generator to the transducer so this is like a mechanical control and this is the electrical control so is it from 50 to 100 percent it
+[40:03] does it corresponds to the current going from the the max current possible from the generator to the transducer so what is considered the high
+[40:15] amplitude what's considered low after high is 100 i would say going to like between
+[40:21] 80 and 100 is usually like 80 let's say 80 to 90 is like the best lower means that there is a chance that there will be like no optimization suddenly because the vibrations could be too weak gotcha
+[40:34] so i would start with somewhere around 90 and then adjust okay okay
+[40:52] so so i'm gonna test ultrasonic scan this is good i always just need to turn on the pulley do it
+[41:04] first
+[41:05] I mean, even without the scan, you could just turn on the cooling and it would work.
+[41:10] Oh, okay.
+[41:14] Yeah, I'm not surprised that it gives you full manual control.
+[41:17] In the newest version, it waits automatically one minute after the vibration.
+[41:22] In this case, it's not a problem.
+[41:24] It works for plasma, which is like four hours of force of atomization sometimes.
+[41:31] So, that's true.
+[41:37] Okay.
+[41:38] Sterling, we're about to start a round with the...
+[41:41] the metal plate.
+[41:45] Start the vibrations, graining pressure, sealing rod, turbo pressure.
+[41:54] Start the vibrations.
+[41:57] Then try to do it all as quickly as possible right now.
+[42:00] So sealing rod and graining pressure, right?
+[42:06] Turbo.
+[42:13] More amplitude.
+[42:28] Not too down.
+[42:29] Maybe a little bit too much pouring.
+[42:37] We should try to remove the grinding pressure.
+[42:53] Too much pressure makes it shoot out too fast?
+[42:56] Yeah.
+[43:05] I see that some of it is dropping.
+[43:12] If it was higher up on the plate, would it be better?
+[43:15] Maybe.
+[43:39] Maybe.
+[43:42] Okay.
+[43:48] But I see that it plays track for some reason.
+[43:51] It plays track?
+[43:52] Yeah, it's track on one side.
+[43:54] Oh.
+[43:55] And that can be what, like, uh...
+[43:58] disrupting the atomization a bit.
+[44:00] Now the
+[44:15] atomization with those parameters to degenerate is faster and more efficient.
+[44:22] It's not too bad.
+[44:23] It's quite
+[44:47] a stressor by a low.
+[44:58] Now, it was really good for a moment now.
+[45:03] Okay, we are done.
+[45:07] We saw the vibrations.
+[45:09] Oh yeah, it broke, huh?
+[45:11] Yeah, for some reason it started to break.
+[45:14] And after some point, when another piece broke,
+[45:18] It started to atomize much better, like some tension was released.
+[45:22] That's something we see sometimes in the metal plates, based on how they were rolled and cut, that when the heat is applied, sometimes they have some tension points, and when they
+[45:35] break, the atomization can actually be better.
+[45:37] So this one is faulty, from the factory probably?
+[45:41] Yeah.
+[45:43] But first, it was like...
+[45:45] small small piece broke, it was the bud and at the end another small piece broke and actually the application started to be mud part of it.
+[45:56] That's a small inch of an adjustment.
+[46:00] And you take some time.
+[46:05] And we have a, except for water, this go down here, we have a piece of really nice powder.
+[46:12] Let me get the light.
+[46:37] There's some?
+[46:40] Oh yeah.
+[46:51] Yeah.
+[47:00] I can turn this off it or no I have to wait for this too It's
+[47:42] a broader plate We also make them wider wider and longer it
+[47:56] could be quite beneficial for
+[48:02] If mafia doesn't spread so well, it helps a lot.
+[48:06] I expected it to generate to be better.
+[48:15] But the Russian area helps especially at low amplitude.
+[48:20] Mafia has more surface to spread and more time to atomize.
+[48:25] That makes sense.
+[48:27] I'm going to get some water real quick.
+[49:07] What's up, Ben?
+[49:21] Oh, wait.
+[49:23] Oh, good.
+[49:25] Are all of these molybdenium?
+[49:27] No difference.
+[49:28] We will go for that.
+[49:29] This is the wider molybdenum.
+[49:31] So you can see that it's a lot longer, yeah.
+[49:35] It helps a lot, especially with the low amplitude.
+[49:38] So for the lowest amplitude reverse booster, I would like to go with this.
+[49:43] Because then we definitely need more time to wet, more time to...
+[49:49] Do you want a chair?
+[49:51] I mean, generally, that would probably be all for today because it will take quite some time until it falls down.
+[49:58] Yeah, so are we okay to leave it as is right now?
+[50:22] so once it's like about 100 degrees you can turn off everything doesn't matter the order
+[50:30] So you can see that right now we cannot even leave the program.
+[50:35] Unless it's 80 degrees, it doesn't allow you to leave the program.
+[50:40] Because it means it keeps reminding you that you need to keep it all going.
+[50:45] So there's no problem to leave the powder in here overnight?
+[50:48] No.
+[50:49] It doesn't stick more?
+[50:50] No.
+[50:51] It will have more time to pass the rain slowly.
+[50:57] That's something I do quite often.
+[51:02] Not an hour.
