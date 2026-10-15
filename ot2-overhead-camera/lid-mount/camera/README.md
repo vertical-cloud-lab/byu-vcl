@@ -36,7 +36,7 @@ the tailnet-only listener, and the stop after `--minutes`.
 The live view is a third of full resolution: about 2.8 px/mm at 8 mm, or 19 px across a well.
 That's enough to position and focus by, not to measure.
 
-## 2026-10-15: the camera saw nothing of the deck
+## 2026-10-15, 17:39 UTC: the camera saw nothing of the deck
 
 ![Three frames from the lid camera on 2026-10-15](frames/2026-10-15/lid_camera_blocked.jpg)
 
@@ -53,3 +53,33 @@ Check, in this order:
 4. that the iris ring isn't closed.
 
 The numbers are in [`frames/2026-10-15/frames.json`](frames/2026-10-15/frames.json).
+
+## 2026-10-15, 22:04 UTC: the deck is in view, out of focus
+
+![Two lid-camera frames and the OT-2's own camera, 2026-10-15 22:04-22:08 UTC](frames/2026-10-15/lid_camera_in_view_defocused.jpg)
+
+Whatever blocked the lens has gone. Turning the rail lights on for 5 s (22:07, no run active,
+then back off) raised the camera's Lux reading from 4.6 to 136, and labware shows. But the
+frame is badly out of focus.
+
+The zoom already looks at or near the wide end. The dark labware at the top of the frame spans
+1,130 of the still's 4,056 px. A 128 mm labware footprint would span 1,086 px at 8 mm,
+1,358 at 10 mm and 1,629 at 12 mm. The corners are also dark, at 20–27 % of the centre's
+brightness, as expected below about 9 mm. The blur and the labware's height make this good
+to about a millimetre.
+
+Zoom, focus and iris are manual rings, each locked by its own thumbscrew, so they can only be
+set at the robot:
+
+![Which ring is which](frames/2026-10-15/lens_rings.jpg)
+
+1. Turn the zoom ring toward WIDE until it stops: that is 8 mm.
+2. Open the iris fully, which makes the sharpest point easiest to find.
+3. Turn the focus ring until the labware edges are sharp. The lens is varifocal: changing the
+   zoom moves the focus, so refocus after every zoom change.
+4. Tighten the three thumbscrews. Closing the iris a little afterwards adds depth of field.
+
+If no position of the focus ring gives a sharp picture, check the C–CS adapter: exactly one
+ring between the lens and the camera, as in step 6 of [the assembly](../README.md#2-assemble).
+In July a misplaced adapter ring is why the camera wouldn't focus (#84). The numbers are in
+[`frames/2026-10-15/frames_2204Z.json`](frames/2026-10-15/frames_2204Z.json).
